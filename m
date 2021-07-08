@@ -1,104 +1,104 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp559529lfg;
-        Thu, 8 Jul 2021 11:08:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnxPi8OT9q0dabzL3hntje3ht/hK8WVCXzdo+cFBqz4rxlrQCtltUkNukDNGkg1arXZJhO
-X-Received: by 2002:a17:907:2d9f:: with SMTP id gt31mr24555626ejc.423.1625767731534;
-        Thu, 08 Jul 2021 11:08:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625767731; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp560178lfg;
+        Thu, 8 Jul 2021 11:09:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzyWlBL1H6zXncYHSELWVNm0SbJxH0h/7SNIW6JHtEQbUMkmlwkVt2DXRaantlYImxAoXoZ
+X-Received: by 2002:a17:906:3658:: with SMTP id r24mr11604360ejb.179.1625767779079;
+        Thu, 08 Jul 2021 11:09:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625767779; cv=none;
         d=google.com; s=arc-20160816;
-        b=IKTRL2DhyysVq80nM568jDrJCnO/VM825khTaJ+G4pQWG3ogMpZX2p3poAh17vavwQ
-         5C8z62X8BONqwi+jAt65CyInqnp4ZT9Sl7+YH+rUFRo3HcyCzzxbaPD86p2nu0r0rU0J
-         jvY/ksij2OuqRz4AzersUSz7cANUustYkO+Bb0Xm0hP6ifjV8s6poR5YSC7furyno5bW
-         8l8PH0d862hHRAvKZXpAhWvVrtPkiV8lYyxioR4Gw+G8t132UCduOJMljmtHIvMHLccG
-         OEg28H+K2HsgU4BIpHjtRo9SJUrqDux2LR6BbS+AVb4oYicFaEYAi0YK8GERax/mjohw
-         5lpQ==
+        b=TWIwfkYmWhxFbexN1IVAO2AjvBVV1qkzNO3jPFKAFJtSL970e+4Fz4rJ3yGmFhRsTL
+         Nofr/WrHKx2tD8+6M62lruMeMdby5aAC6trko8iz5QsdIVgrjCkh6t8egUfmXS950P72
+         HlL/GVKWbCh6raXBO9hNcEeup1qhz3SoOk/Cky9BMSHMXNkO8dZGZGbj89LfIBj66OLj
+         bgKTLZzaOt8Lmbw1WaViCHUUslqVKqmHp/qZQOjfsSTdRy9JkiNI42vDRb4EcQn5PCl5
+         DlujCzuFFLAJsFAI6Tzt66BlgrbbpX74G7RxNWJqPenKh5Lox3UqnJXfj/14jGaEhFU4
+         7K6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=aJBd+10BkGIIVmzXLp594bdMAo8gioGUCst7HCHRV8M=;
-        b=L07LQEj67fCDCAqNUMDSl5+6embzLAeSHFTMSJ598Zjq/PcZOH2yCt6T2ex/UxuAnN
-         aoSHExvMfWYeYm6jyI92acSBYb8DjCH0LggHWVhg+hINJRjTyDtuiNmsHZ6tWofKMLhR
-         bLLqB3oePXUqtiK6cj5f5ZG6nM8w10/qu6bdDe0IeSOWroGWwZudm2NaNpGMhmlvLzIP
-         cpjhgOPrsutAe+0xeYDyhGBl8JYaps2pvJ1eOx3zoWHpO71jPYgexG2EVZG13YFBj5ub
-         Hj6lqCQimdx68JNM2+GyHLmKru4dabUXnm76UCv929b2qdxAtaTswAmWcIx943cTcGdv
-         K4UA==
+        bh=J3rhjoYKGEuwWrg7Wi4lk+VNKC07bHbA7CaMm4leJJw=;
+        b=0iWM/LvkQguY7mU3LVQ9XYzOYMYlSKu+IiMnk6GLYqV00fzzlzHS6WLbtvELbcKB4+
+         7h+JZiluFZEse02mdQpz+sX7/aTpQPcJfnqN8qPLh07lh3M3Px7oVz/J5zfrvjNvyzJY
+         HVjP026ZWk6sAeGTrFrO2Eq2SwG7Evdke/c72CP2hrkNS1F0Kr1BxjoWS427fAYBS987
+         NcEwTb4f10owcrhqmCUf/jvylSqAanvYuG2VRpoOPpuyE8l6URT8/cALfxzuDFFX7Kpr
+         ICvhPTGwNoXyqygxqcSUB/IUfQ92qvKD6ARyRrfUykjbuVZEhpKY+A88yECFy/SQ/DyU
+         ZUqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=kOQNFaUi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=NMN91+Ro;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eo22si4131338ejc.52.2021.07.08.11.08.51
+        by mx.google.com with ESMTPS id gn15si3954771ejc.181.2021.07.08.11.09.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jul 2021 11:08:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Jul 2021 11:09:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=kOQNFaUi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=NMN91+Ro;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:43674 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1YSA-0006z8-H3
-	for alex.bennee@linaro.org; Thu, 08 Jul 2021 14:08:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52704)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m1YSw-0000nA-0t
+	for alex.bennee@linaro.org; Thu, 08 Jul 2021 14:09:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51034)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3LzXnYAYKCkQzoz0yxmuumrk.iuswks0-jk1krtutmt0.uxm@flex--titusr.bounces.google.com>)
- id 1m1Xmv-0008M3-Pf
- for qemu-devel@nongnu.org; Thu, 08 Jul 2021 13:26:13 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:49800)
+ <39TPnYAYKCAg1q120zowwotm.kwuymu2-izuvwvov2.wzo@flex--titusr.bounces.google.com>)
+ id 1m1Xhp-0008FN-Lf
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:57 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49]:43897)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3LzXnYAYKCkQzoz0yxmuumrk.iuswks0-jk1krtutmt0.uxm@flex--titusr.bounces.google.com>)
- id 1m1Xmq-0005ii-II
- for qemu-devel@nongnu.org; Thu, 08 Jul 2021 13:26:13 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id
- v184-20020a257ac10000b02904f84a5c5297so7830302ybc.16
- for <qemu-devel@nongnu.org>; Thu, 08 Jul 2021 10:26:07 -0700 (PDT)
+ <39TPnYAYKCAg1q120zowwotm.kwuymu2-izuvwvov2.wzo@flex--titusr.bounces.google.com>)
+ id 1m1Xhn-00044c-6w
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:57 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ l16-20020a25cc100000b0290558245b7eabso7847062ybf.10
+ for <qemu-arm@nongnu.org>; Thu, 08 Jul 2021 10:20:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=aJBd+10BkGIIVmzXLp594bdMAo8gioGUCst7HCHRV8M=;
- b=kOQNFaUihty5lsFRYGxSccQFaC6nZeeyX4VqB7EVwgaRgz7Yg/m6mcJkN3p0Dfx3R9
- 7LHW9mmkxxh55Gfwa6xyy8+ynER1dUOdxWNHTOajWK9mxzOA9DftK5Obid1lPX3ehpuq
- v2Jg9zima7ucsgqMPL/2hWjCaECCLX9I2lGg7Ir+PL0oxyE5OQj6qoLB0aAIbM9MvV/l
- UG1klveIBpnoVGJ/m7AB72jO4cFNObxngETnBfyScXR0JCxNAPw5uiGTI17vLhnoBnoC
- x4COk8c/zV25XKesR7fEoE5U7/w/Iiu3oP6hYffLUIBcmhw7EEddyvMvBjhyZbucse4D
- Pq2w==
+ :cc; bh=J3rhjoYKGEuwWrg7Wi4lk+VNKC07bHbA7CaMm4leJJw=;
+ b=NMN91+RokvFpEZxyFLGXk7teLFtPqdyHQ8PbKiZXgiubsGi+enVkpGDEE6worMTLDS
+ O2GTj3YmVHLxE30bc75svouqk/qMBfFt32+LWlpz0q7ZmoAfxPR6f6IuMTJNb6WVO9aw
+ QiiyNSm4GBUmIgVEMRxLteIp8y+5ObEKWKVyAfDL8JeIJQ3WIRZzI1VK4VczP/Z1Vz8p
+ +dyxf09HWDx97Dd+eL3FuvsBXaStV8cJvUZj2zeqNXat1N4G31BrQ/D/tMIdMBwaaIdE
+ wlRWH+GQMyCY9x/lYAor/6LrZjfTrI9JujZ/qPI76mW/w9W5ytAjafsgmboqwS4mOPGd
+ GtAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=aJBd+10BkGIIVmzXLp594bdMAo8gioGUCst7HCHRV8M=;
- b=Y7a8qMwNcuubdQaKskHyOF+ngGnh1V7dLXy/aRXniq70jgLBifzvP2MlxKIuxjdKjO
- EAut0YOXF7LHAVO5N3dtKa/6CCsGo9IEM8uiRL6M1lECxWehmxIPFcfdgrDz86BQEybP
- yPAXX9tNRaO7TigOMiLgGxAmPSxAd2rjG99IzfaqTRCZ5bPuJQN2yvqTrgSwswKRVhZ+
- 32wZMPYTxc1gz/pbo8g3lrHZHxB+3nt75r6R155ATtRAxx7fvVbr1NtFkqOEVLuJN+LP
- 4uX3K5gw1hoIhZuVmDqwdY/UjvCL+MBYt8GYA+4MAT1ASwzQcIsfouEifwVJm0o8FELb
- srjg==
-X-Gm-Message-State: AOAM531xVyty75GeUa7pGVMRIP38LhTeXHVsS2z9uIDo9tJMeVE3KsxJ
- FacC/Nhr2HYiDnet/8Ea8clIXLWzMzw=
+ bh=J3rhjoYKGEuwWrg7Wi4lk+VNKC07bHbA7CaMm4leJJw=;
+ b=ujdv/knDDq8o/yg2W5he4Cg/oRQ4KlBzpTtu1C8daogeLpCunqkZkjH7XPwLUveBEG
+ v/GXRdP0lNFgfWWwWAbBFOMPT5iiQxRVd5oU3Sa2sdTIboIXpMPaEzBgJNpW6EIHs2HP
+ ycfs2jizgBBbbZP1wHDQJqnf/ZHVN1P68QcVR+VLxF+joB7Wrg/bfo9zU3GFx39A9Nym
+ P0cICLjYu7hCQwATpZSnm4ROynWoMRjOiqa2YMfnuqTTLse67QwZ4MOg8Nf0R3OK2Uea
+ PQZ1n56U0qCtwugQ545nfdVzvHZG2ckkxHi3XbJ2XR4C3ipJFo6H5dCNYNS6cMlV5+As
+ gVhQ==
+X-Gm-Message-State: AOAM5303OL3LTvE+K8nZkr/kPylGiizwhbqR4ygkk/u3HqaSEergZHGZ
+ fy5hIL7IRKHjONak90foglRcLeWtY2g=
 X-Received: from titusr.svl.corp.google.com
  ([2620:15c:2c5:13:6b42:285b:df15:bf])
- (user=titusr job=sendgmr) by 2002:a25:5388:: with SMTP id
- h130mr39307524ybb.236.1625765167214; 
- Thu, 08 Jul 2021 10:26:07 -0700 (PDT)
-Date: Thu,  8 Jul 2021 10:25:54 -0700
-In-Reply-To: <20210708172556.1868139-1-titusr@google.com>
-Message-Id: <20210708172556.1868139-4-titusr@google.com>
+ (user=titusr job=sendgmr) by 2002:a25:8b8b:: with SMTP id
+ j11mr40299148ybl.138.1625764853850; 
+ Thu, 08 Jul 2021 10:20:53 -0700 (PDT)
+Date: Thu,  8 Jul 2021 10:20:17 -0700
+In-Reply-To: <20210708172017.1865352-1-titusr@google.com>
+Message-Id: <20210708172017.1865352-6-titusr@google.com>
 Mime-Version: 1.0
-References: <20210708172556.1868139-1-titusr@google.com>
+References: <20210708172017.1865352-1-titusr@google.com>
 X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
-Subject: [PATCH v5 3/5] tests/qtest: add tests for ADM1272 device model
+Subject: [PATCH v5 5/5] tests/qtest: add tests for MAX34451 device model
 From: Titus Rwantare <titusr@google.com>
-To: Corey Minyard <minyard@acm.org>
+To: Corey Minyard <minyard@acm.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3LzXnYAYKCkQzoz0yxmuumrk.iuswks0-jk1krtutmt0.uxm@flex--titusr.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=39TPnYAYKCAg1q120zowwotm.kwuymu2-izuvwvov2.wzo@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -100
 X-Spam_score: -10.1
 X-Spam_bar: ----------
@@ -107,37 +107,37 @@ X-Spam_report: (-10.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.5,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fGqsVjjUa2Y1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IFKypsR1BooM
 
 Signed-off-by: Titus Rwantare <titusr@google.com>
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 ---
- tests/qtest/adm1272-test.c | 445 +++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build    |   1 +
- 2 files changed, 446 insertions(+)
- create mode 100644 tests/qtest/adm1272-test.c
+ tests/qtest/max34451-test.c | 336 ++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build     |   1 +
+ 2 files changed, 337 insertions(+)
+ create mode 100644 tests/qtest/max34451-test.c
 
-diff --git a/tests/qtest/adm1272-test.c b/tests/qtest/adm1272-test.c
+diff --git a/tests/qtest/max34451-test.c b/tests/qtest/max34451-test.c
 new file mode 100644
-index 0000000000..63f8514801
+index 0000000000..0c98d0764c
 --- /dev/null
-+++ b/tests/qtest/adm1272-test.c
-@@ -0,0 +1,445 @@
++++ b/tests/qtest/max34451-test.c
+@@ -0,0 +1,336 @@
 +/*
-+ * QTests for the ADM1272 hotswap controller
++ * QTests for the MAX34451 device
 + *
 + * Copyright 2021 Google LLC
 + *
@@ -145,7 +145,6 @@ index 0000000000..63f8514801
 + */
 +
 +#include "qemu/osdep.h"
-+#include <math.h>
 +#include "hw/i2c/pmbus_device.h"
 +#include "libqtest-single.h"
 +#include "libqos/qgraph.h"
@@ -154,139 +153,34 @@ index 0000000000..63f8514801
 +#include "qapi/qmp/qnum.h"
 +#include "qemu/bitops.h"
 +
-+#define TEST_ID "adm1272-test"
-+#define TEST_ADDR (0x10)
++#define TEST_ID "max34451-test"
++#define TEST_ADDR (0x4e)
 +
-+#define ADM1272_RESTART_TIME            0xCC
-+#define ADM1272_MFR_PEAK_IOUT           0xD0
-+#define ADM1272_MFR_PEAK_VIN            0xD1
-+#define ADM1272_MFR_PEAK_VOUT           0xD2
-+#define ADM1272_MFR_PMON_CONTROL        0xD3
-+#define ADM1272_MFR_PMON_CONFIG         0xD4
-+#define ADM1272_MFR_ALERT1_CONFIG       0xD5
-+#define ADM1272_MFR_ALERT2_CONFIG       0xD6
-+#define ADM1272_MFR_PEAK_TEMPERATURE    0xD7
-+#define ADM1272_MFR_DEVICE_CONFIG       0xD8
-+#define ADM1272_MFR_POWER_CYCLE         0xD9
-+#define ADM1272_MFR_PEAK_PIN            0xDA
-+#define ADM1272_MFR_READ_PIN_EXT        0xDB
-+#define ADM1272_MFR_READ_EIN_EXT        0xDC
++#define MAX34451_MFR_VOUT_PEAK          0xD4
++#define MAX34451_MFR_IOUT_PEAK          0xD5
++#define MAX34451_MFR_TEMPERATURE_PEAK   0xD6
++#define MAX34451_MFR_VOUT_MIN           0xD7
 +
-+#define ADM1272_HYSTERESIS_LOW          0xF2
-+#define ADM1272_HYSTERESIS_HIGH         0xF3
-+#define ADM1272_STATUS_HYSTERESIS       0xF4
-+#define ADM1272_STATUS_GPIO             0xF5
-+#define ADM1272_STRT_UP_IOUT_LIM        0xF6
++#define DEFAULT_VOUT                    0
++#define DEFAULT_UV_LIMIT                0
++#define DEFAULT_TEMPERATURE             2500
++#define DEFAULT_SCALE                   0x7FFF
++#define DEFAULT_OV_LIMIT                0x7FFF
++#define DEFAULT_OC_LIMIT                0x7FFF
++#define DEFAULT_OT_LIMIT                0x7FFF
++#define DEFAULT_VMIN                    0x7FFF
++#define DEFAULT_TON_FAULT_LIMIT         0xFFFF
++#define DEFAULT_CHANNEL_CONFIG          0x20
++#define DEFAULT_TEXT                    0x20
 +
-+/* Defaults */
-+#define ADM1272_OPERATION_DEFAULT       0x80
-+#define ADM1272_CAPABILITY_DEFAULT      0xB0
-+#define ADM1272_CAPABILITY_NO_PEC       0x30
-+#define ADM1272_DIRECT_MODE             0x40
-+#define ADM1272_HIGH_LIMIT_DEFAULT      0x0FFF
-+#define ADM1272_PIN_OP_DEFAULT          0x7FFF
-+#define ADM1272_PMBUS_REVISION_DEFAULT  0x22
-+#define ADM1272_MFR_ID_DEFAULT          "ADI"
-+#define ADM1272_MODEL_DEFAULT           "ADM1272-A1"
-+#define ADM1272_MFR_DEFAULT_REVISION    "25"
-+#define ADM1272_DEFAULT_DATE            "160301"
-+#define ADM1272_RESTART_TIME_DEFAULT    0x64
-+#define ADM1272_PMON_CONTROL_DEFAULT    0x1
-+#define ADM1272_PMON_CONFIG_DEFAULT     0x3F35
-+#define ADM1272_DEVICE_CONFIG_DEFAULT   0x8
-+#define ADM1272_HYSTERESIS_HIGH_DEFAULT     0xFFFF
-+#define ADM1272_STRT_UP_IOUT_LIM_DEFAULT    0x000F
-+#define ADM1272_VOLT_DEFAULT            12000
-+#define ADM1272_IOUT_DEFAULT            25000
-+#define ADM1272_PWR_DEFAULT             300  /* 12V 25A */
-+#define ADM1272_SHUNT                   300 /* micro-ohms */
-+#define ADM1272_VOLTAGE_COEFF_DEFAULT   1
-+#define ADM1272_CURRENT_COEFF_DEFAULT   3
-+#define ADM1272_PWR_COEFF_DEFAULT       7
-+#define ADM1272_IOUT_OFFSET             0x5000
-+#define ADM1272_IOUT_OFFSET             0x5000
-+
-+static const PMBusCoefficients adm1272_coefficients[] = {
-+    [0] = { 6770, 0, -2 },       /* voltage, vrange 60V */
-+    [1] = { 4062, 0, -2 },       /* voltage, vrange 100V */
-+    [2] = { 1326, 20480, -1 },   /* current, vsense range 15mV */
-+    [3] = { 663, 20480, -1 },    /* current, vsense range 30mV */
-+    [4] = { 3512, 0, -2 },       /* power, vrange 60V, irange 15mV */
-+    [5] = { 21071, 0, -3 },      /* power, vrange 100V, irange 15mV */
-+    [6] = { 17561, 0, -3 },      /* power, vrange 60V, irange 30mV */
-+    [7] = { 10535, 0, -3 },      /* power, vrange 100V, irange 30mV */
-+    [8] = { 42, 31871, -1 },     /* temperature */
-+};
-+
-+uint16_t pmbus_data2direct_mode(PMBusCoefficients c, uint32_t value)
-+{
-+    /* R is usually negative to fit large readings into 16 bits */
-+    uint16_t y = (c.m * value + c.b) * pow(10, c.R);
-+    return y;
-+}
-+
-+uint32_t pmbus_direct_mode2data(PMBusCoefficients c, uint16_t value)
-+{
-+    /* X = (Y * 10^-R - b) / m */
-+    uint32_t x = (value / pow(10, c.R) - c.b) / c.m;
-+    return x;
-+}
++#define MAX34451_NUM_PWR_DEVICES        16
++#define MAX34451_NUM_TEMP_DEVICES       5
 +
 +
-+static uint16_t adm1272_millivolts_to_direct(uint32_t value)
-+{
-+    PMBusCoefficients c = adm1272_coefficients[ADM1272_VOLTAGE_COEFF_DEFAULT];
-+    c.b = c.b * 1000;
-+    c.R = c.R - 3;
-+    return pmbus_data2direct_mode(c, value);
-+}
-+
-+static uint32_t adm1272_direct_to_millivolts(uint16_t value)
-+{
-+    PMBusCoefficients c = adm1272_coefficients[ADM1272_VOLTAGE_COEFF_DEFAULT];
-+    c.b = c.b * 1000;
-+    c.R = c.R - 3;
-+    return pmbus_direct_mode2data(c, value);
-+}
-+
-+static uint16_t adm1272_milliamps_to_direct(uint32_t value)
-+{
-+    PMBusCoefficients c = adm1272_coefficients[ADM1272_CURRENT_COEFF_DEFAULT];
-+    /* Y = (m * r_sense * x - b) * 10^R */
-+    c.m = c.m * ADM1272_SHUNT / 1000; /* micro-ohms */
-+    c.b = c.b * 1000;
-+    c.R = c.R - 3;
-+    return pmbus_data2direct_mode(c, value);
-+}
-+
-+static uint32_t adm1272_direct_to_milliamps(uint16_t value)
-+{
-+    PMBusCoefficients c = adm1272_coefficients[ADM1272_CURRENT_COEFF_DEFAULT];
-+    c.m = c.m * ADM1272_SHUNT / 1000;
-+    c.b = c.b * 1000;
-+    c.R = c.R - 3;
-+    return pmbus_direct_mode2data(c, value);
-+}
-+
-+static uint16_t adm1272_watts_to_direct(uint32_t value)
-+{
-+    PMBusCoefficients c = adm1272_coefficients[ADM1272_PWR_COEFF_DEFAULT];
-+    c.m = c.m * ADM1272_SHUNT / 1000;
-+    return pmbus_data2direct_mode(c, value);
-+}
-+
-+static uint32_t adm1272_direct_to_watts(uint16_t value)
-+{
-+    PMBusCoefficients c = adm1272_coefficients[ADM1272_PWR_COEFF_DEFAULT];
-+    c.m = c.m * ADM1272_SHUNT / 1000;
-+    return pmbus_direct_mode2data(c, value);
-+}
-+
-+static uint16_t qmp_adm1272_get(const char *id, const char *property)
++static uint16_t qmp_max34451_get(const char *id, const char *property)
 +{
 +    QDict *response;
-+    uint64_t ret;
-+
++    uint16_t ret;
 +    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
 +                   "'property': %s } }", id, property);
 +    g_assert(qdict_haskey(response, "return"));
@@ -295,20 +189,21 @@ index 0000000000..63f8514801
 +    return ret;
 +}
 +
-+static void qmp_adm1272_set(const char *id,
-+                            const char *property,
-+                            uint16_t value)
++static void qmp_max34451_set(const char *id,
++                             const char *property,
++                             uint16_t value)
 +{
 +    QDict *response;
 +
 +    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
-+                   "'property': %s, 'value': %u } }", id, property, value);
++                   "'property': %s, 'value': %u } }",
++                   id, property, value);
 +    g_assert(qdict_haskey(response, "return"));
 +    qobject_unref(response);
 +}
 +
 +/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big endian */
-+static uint16_t adm1272_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
++static uint16_t max34451_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
 +{
 +    uint8_t resp[2];
 +    i2c_read_block(i2cdev, reg, resp, sizeof(resp));
@@ -316,7 +211,7 @@ index 0000000000..63f8514801
 +}
 +
 +/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big endian */
-+static void adm1272_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t value)
++static void max34451_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t value)
 +{
 +    uint8_t data[2];
 +
@@ -325,274 +220,270 @@ index 0000000000..63f8514801
 +    i2c_write_block(i2cdev, reg, data, sizeof(data));
 +}
 +
++/* Test default values */
 +static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
 +{
 +    uint16_t value, i2c_value;
-+    int16_t err;
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    value = qmp_adm1272_get(TEST_ID, "vout");
-+    err = ADM1272_VOLT_DEFAULT - value;
-+    g_assert_cmpuint(abs(err), <, ADM1272_VOLT_DEFAULT / 20);
++    char *path;
 +
-+    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_OPERATION_DEFAULT);
++    /* Default temperatures and temperature fault limits */
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        path = g_strdup_printf("temperature[%d]", i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmpuint(value, ==, DEFAULT_TEMPERATURE);
++        g_free(path);
++
++        /* Temperature sensors start on page 16 */
++        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_TEMPERATURE);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OT_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OT_LIMIT);
++    }
++
++    /* Default voltages and fault limits */
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        path = g_strdup_printf("vout[%d]", i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmpuint(value, ==, DEFAULT_VOUT);
++        g_free(path);
++
++        i2c_set8(i2cdev, PMBUS_PAGE, i);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_VOUT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_UV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_UV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_MIN);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_VMIN);
++    }
 +
 +    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_DIRECT_MODE);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_HIGH_LIMIT_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_IOUT_OC_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_HIGH_LIMIT_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_HIGH_LIMIT_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_HIGH_LIMIT_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_HIGH_LIMIT_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_PIN_OP_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_PIN_OP_DEFAULT);
++    g_assert_cmphex(i2c_value, ==, 0x40); /* DIRECT mode */
 +
 +    i2c_value = i2c_get8(i2cdev, PMBUS_REVISION);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_PMBUS_REVISION_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, ADM1272_MFR_PMON_CONTROL);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_PMON_CONTROL_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_MFR_PMON_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_PMON_CONFIG_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_MFR_DEVICE_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_DEVICE_CONFIG_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_HYSTERESIS_HIGH);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_HYSTERESIS_HIGH_DEFAULT);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_STRT_UP_IOUT_LIM);
-+    g_assert_cmphex(i2c_value, ==, ADM1272_STRT_UP_IOUT_LIM_DEFAULT);
++    g_assert_cmphex(i2c_value, ==, 0x11); /* Rev 1.1 */
 +}
 +
-+/* test qmp access */
-+static void test_tx_rx(void *obj, void *data, QGuestAllocator *alloc)
++/* Test setting temperature */
++static void test_temperature(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    uint16_t i2c_value, value, i2c_voltage, i2c_pwr, lossy_value;
++    uint16_t value, i2c_value;
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
 +
-+    /* converting to direct mode is lossy - we generate the same loss here */
-+    lossy_value =
-+        adm1272_direct_to_millivolts(adm1272_millivolts_to_direct(1000));
-+    qmp_adm1272_set(TEST_ID, "vin", 1000);
-+    value = qmp_adm1272_get(TEST_ID, "vin");
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_VIN);
-+    i2c_voltage = adm1272_direct_to_millivolts(i2c_value);
-+    g_assert_cmpuint(value, ==, i2c_voltage);
-+    g_assert_cmpuint(i2c_voltage, ==, lossy_value);
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        path = g_strdup_printf("temperature[%d]", i);
++        qmp_max34451_set(TEST_ID, path, 0xBE00 + i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmphex(value, ==, 0xBE00 + i);
++        g_free(path);
++    }
 +
-+    lossy_value =
-+        adm1272_direct_to_millivolts(adm1272_millivolts_to_direct(1500));
-+    qmp_adm1272_set(TEST_ID, "vout", 1500);
-+    value = qmp_adm1272_get(TEST_ID, "vout");
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    i2c_voltage = adm1272_direct_to_millivolts(i2c_value);
-+    g_assert_cmpuint(value, ==, i2c_voltage);
-+    g_assert_cmpuint(i2c_voltage, ==, lossy_value);
++    /* compare qmp read with i2c read separately */
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        /* temperature[0] is on page 16 */
++        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++        g_assert_cmphex(i2c_value, ==, 0xBE00 + i);
 +
-+    lossy_value =
-+        adm1272_direct_to_milliamps(adm1272_milliamps_to_direct(1600));
-+    qmp_adm1272_set(TEST_ID, "iout", 1600);
-+    value = qmp_adm1272_get(TEST_ID, "iout");
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-+    i2c_value = adm1272_direct_to_milliamps(i2c_value);
-+    g_assert_cmphex(value, ==, i2c_value);
-+    g_assert_cmphex(i2c_value, ==, lossy_value);
-+
-+    lossy_value =
-+        adm1272_direct_to_watts(adm1272_watts_to_direct(320));
-+    qmp_adm1272_set(TEST_ID, "pin", 320);
-+    value = qmp_adm1272_get(TEST_ID, "pin");
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_PIN);
-+    i2c_pwr = adm1272_direct_to_watts(i2c_value);
-+    g_assert_cmphex(value, ==, i2c_pwr);
-+    g_assert_cmphex(i2c_pwr, ==, lossy_value);
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_TEMPERATURE_PEAK);
++        g_assert_cmphex(i2c_value, ==, 0xBE00 + i);
++    }
 +}
 +
-+/* test r/w registers */
++/* Test setting voltage */
++static void test_voltage(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t value, i2c_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
++
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        path = g_strdup_printf("vout[%d]", i);
++        qmp_max34451_set(TEST_ID, path, 3000 + i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmpuint(value, ==, 3000 + i);
++        g_free(path);
++    }
++
++    /* compare qmp read with i2c read separately */
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        i2c_set8(i2cdev, PMBUS_PAGE, i);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++        g_assert_cmpuint(i2c_value, ==, 3000 + i);
++
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_PEAK);
++        g_assert_cmpuint(i2c_value, ==, 3000 + i);
++
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_MIN);
++        g_assert_cmpuint(i2c_value, ==, 3000 + i);
++    }
++}
++
++/* Test setting some read/write registers */
 +static void test_rw_regs(void *obj, void *data, QGuestAllocator *alloc)
 +{
 +    uint16_t i2c_value;
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +
-+    adm1272_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT, 0xABCD);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0xABCD);
++    i2c_set8(i2cdev, PMBUS_PAGE, 11);
++    i2c_value = i2c_get8(i2cdev, PMBUS_PAGE);
++    g_assert_cmpuint(i2c_value, ==, 11);
 +
-+    adm1272_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT, 0xCDEF);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0xCDEF);
-+
-+    adm1272_i2c_set16(i2cdev, PMBUS_IOUT_OC_WARN_LIMIT, 0x1234);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_IOUT_OC_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0x1234);
-+
-+    adm1272_i2c_set16(i2cdev, PMBUS_OT_FAULT_LIMIT, 0x5678);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0x5678);
-+
-+    adm1272_i2c_set16(i2cdev, PMBUS_OT_WARN_LIMIT, 0xABDC);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0xABDC);
-+
-+    adm1272_i2c_set16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT, 0xCDEF);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VIN_OV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0xCDEF);
-+
-+    adm1272_i2c_set16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT, 0x2345);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_VIN_UV_WARN_LIMIT);
-+    g_assert_cmphex(i2c_value, ==, 0x2345);
-+
-+    i2c_set8(i2cdev, ADM1272_RESTART_TIME, 0xF8);
-+    i2c_value = i2c_get8(i2cdev, ADM1272_RESTART_TIME);
-+    g_assert_cmphex(i2c_value, ==, 0xF8);
-+
-+    i2c_set8(i2cdev, ADM1272_MFR_PMON_CONTROL, 0);
-+    i2c_value = i2c_get8(i2cdev, ADM1272_MFR_PMON_CONTROL);
-+    g_assert_cmpuint(i2c_value, ==, 0);
-+
-+    adm1272_i2c_set16(i2cdev, ADM1272_MFR_PMON_CONFIG, 0xDEF0);
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_MFR_PMON_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, 0xDEF0);
-+
-+    adm1272_i2c_set16(i2cdev, ADM1272_MFR_ALERT1_CONFIG, 0x0123);
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_MFR_ALERT1_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, 0x0123);
-+
-+    adm1272_i2c_set16(i2cdev, ADM1272_MFR_ALERT2_CONFIG, 0x9876);
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_MFR_ALERT2_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, 0x9876);
-+
-+    adm1272_i2c_set16(i2cdev, ADM1272_MFR_DEVICE_CONFIG, 0x3456);
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_MFR_DEVICE_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, 0x3456);
-+
-+    adm1272_i2c_set16(i2cdev, ADM1272_HYSTERESIS_LOW, 0xCABA);
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_HYSTERESIS_LOW);
-+    g_assert_cmphex(i2c_value, ==, 0xCABA);
-+
-+    adm1272_i2c_set16(i2cdev, ADM1272_HYSTERESIS_HIGH, 0x6789);
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_HYSTERESIS_HIGH);
-+    g_assert_cmphex(i2c_value, ==, 0x6789);
-+
-+    adm1272_i2c_set16(i2cdev, ADM1272_STRT_UP_IOUT_LIM, 0x9876);
-+    i2c_value = adm1272_i2c_get16(i2cdev, ADM1272_STRT_UP_IOUT_LIM);
-+    g_assert_cmphex(i2c_value, ==, 0x9876);
-+
-+    adm1272_i2c_set16(i2cdev, PMBUS_OPERATION, 0xA);
++    i2c_set8(i2cdev, PMBUS_OPERATION, 1);
 +    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-+    g_assert_cmphex(i2c_value, ==, 0xA);
++    g_assert_cmpuint(i2c_value, ==, 1);
++
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_HIGH, 5000);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    g_assert_cmpuint(i2c_value, ==, 5000);
++
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_LOW, 4000);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    g_assert_cmpuint(i2c_value, ==, 4000);
++
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 5500);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5500);
++
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT, 5600);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5600);
++
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT, 5700);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5700);
++
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT, 5800);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5800);
++
++    max34451_i2c_set16(i2cdev, PMBUS_POWER_GOOD_ON, 5900);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_POWER_GOOD_ON);
++    g_assert_cmpuint(i2c_value, ==, 5900);
++
++    max34451_i2c_set16(i2cdev, PMBUS_POWER_GOOD_OFF, 6100);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_POWER_GOOD_OFF);
++    g_assert_cmpuint(i2c_value, ==, 6100);
 +}
 +
-+/* test read-only registers */
++/* Test that Read only registers can't be written */
 +static void test_ro_regs(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    uint16_t i2c_init_value, i2c_value;
++    uint16_t i2c_value, i2c_init_value;
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +
-+    i2c_init_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_VIN);
-+    adm1272_i2c_set16(i2cdev, PMBUS_READ_VIN, 0xBEEF);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_VIN);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
++    i2c_set8(i2cdev, PMBUS_PAGE, 1); /* move to page 1 */
++    i2c_init_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
++    i2c_set8(i2cdev, PMBUS_CAPABILITY, 0xF9);
++    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
++    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
 +
-+    i2c_init_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    adm1272_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0x1234);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
++    i2c_init_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    max34451_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0xDEAD);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
++    g_assert_cmphex(i2c_value, !=, 0xDEAD);
 +
-+    i2c_init_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-+    adm1272_i2c_set16(i2cdev, PMBUS_READ_IOUT, 0x6547);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+    adm1272_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0x1597);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_PIN);
-+    adm1272_i2c_set16(i2cdev, PMBUS_READ_PIN, 0xDEAD);
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_READ_PIN);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
++    i2c_set8(i2cdev, PMBUS_PAGE, 16); /* move to page 16 */
++    i2c_init_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    max34451_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0xABBA);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
++    g_assert_cmphex(i2c_value, !=, 0xABBA);
 +}
 +
-+/* test voltage fault handling */
-+static void test_voltage_faults(void *obj, void *data, QGuestAllocator *alloc)
++/* test over voltage faults */
++static void test_ov_faults(void *obj, void *data, QGuestAllocator *alloc)
 +{
 +    uint16_t i2c_value;
 +    uint8_t i2c_byte;
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
++    /* Test ov fault reporting */
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        path = g_strdup_printf("vout[%d]", i);
++        i2c_set8(i2cdev, PMBUS_PAGE, i);
++        max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 5000);
++        qmp_max34451_set(TEST_ID, path, 5100);
++        g_free(path);
 +
-+    adm1272_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT,
-+                      adm1272_millivolts_to_direct(5000));
-+    qmp_adm1272_set(TEST_ID, "vout", 5100);
-+
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
-+    i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
-+    g_assert_true((i2c_value & PB_STATUS_VOUT) != 0);
-+    g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_WARN) != 0);
-+
-+    qmp_adm1272_set(TEST_ID, "vout", 4500);
-+    i2c_set8(i2cdev, PMBUS_CLEAR_FAULTS, 0);
-+    i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
-+    g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_WARN) == 0);
-+
-+    adm1272_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT,
-+                      adm1272_millivolts_to_direct(4600));
-+    i2c_value = adm1272_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
-+    i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
-+    g_assert_true((i2c_value & PB_STATUS_VOUT) != 0);
-+    g_assert_true((i2c_byte & PB_STATUS_VOUT_UV_WARN) != 0);
-+
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++        i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
++        g_assert_true((i2c_value & PB_STATUS_VOUT) != 0);
++        g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_FAULT) != 0);
++    }
 +}
 +
-+static void adm1272_register_nodes(void)
++/* test over temperature faults */
++static void test_ot_faults(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t i2c_value;
++    uint8_t i2c_byte;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
++
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        path = g_strdup_printf("temperature[%d]", i);
++        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
++        max34451_i2c_set16(i2cdev, PMBUS_OT_FAULT_LIMIT, 6000);
++        qmp_max34451_set(TEST_ID, path, 6100);
++        g_free(path);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++        i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_TEMPERATURE);
++        g_assert_true((i2c_value & PB_STATUS_TEMPERATURE) != 0);
++        g_assert_true((i2c_byte & PB_STATUS_OT_FAULT) != 0);
++    }
++}
++
++static void max34451_register_nodes(void)
 +{
 +    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "id=" TEST_ID ",address=0x10"
++        .extra_device_opts = "id=" TEST_ID ",address=0x4e"
 +    };
 +    add_qi2c_address(&opts, &(QI2CAddress) { TEST_ADDR });
 +
-+    qos_node_create_driver("adm1272", i2c_device_create);
-+    qos_node_consumes("adm1272", "i2c-bus", &opts);
++    qos_node_create_driver("max34451", i2c_device_create);
++    qos_node_consumes("max34451", "i2c-bus", &opts);
 +
-+    qos_add_test("test_defaults", "adm1272", test_defaults, NULL);
-+    qos_add_test("test_tx_rx", "adm1272", test_tx_rx, NULL);
-+    qos_add_test("test_rw_regs", "adm1272", test_rw_regs, NULL);
-+    qos_add_test("test_ro_regs", "adm1272", test_ro_regs, NULL);
-+    qos_add_test("test_ov_faults", "adm1272", test_voltage_faults, NULL);
++    qos_add_test("test_defaults", "max34451", test_defaults, NULL);
++    qos_add_test("test_temperature", "max34451", test_temperature, NULL);
++    qos_add_test("test_voltage", "max34451", test_voltage, NULL);
++    qos_add_test("test_rw_regs", "max34451", test_rw_regs, NULL);
++    qos_add_test("test_ro_regs", "max34451", test_ro_regs, NULL);
++    qos_add_test("test_ov_faults", "max34451", test_ov_faults, NULL);
++    qos_add_test("test_ot_faults", "max34451", test_ot_faults, NULL);
 +}
-+libqos_init(adm1272_register_nodes);
++libqos_init(max34451_register_nodes);
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 49de74ff59..99040885fb 100644
+index 99040885fb..48eb646889 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -201,6 +201,7 @@ qtests_s390x = \
- qos_test_ss = ss.source_set()
- qos_test_ss.add(
-   'ac97-test.c',
-+  'adm1272-test.c',
-   'ds1338-test.c',
-   'e1000-test.c',
-   'e1000e-test.c',
+@@ -208,6 +208,7 @@ qos_test_ss.add(
+   'eepro100-test.c',
+   'es1370-test.c',
+   'ipoctal232-test.c',
++  'max34451-test.c',
+   'megasas-test.c',
+   'ne2000-test.c',
+   'tulip-test.c',
 -- 
 2.32.0.93.g670b81a890-goog
 

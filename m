@@ -1,107 +1,104 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp490253lfg;
-        Thu, 8 Jul 2021 09:37:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyiOQFPyHiUAijIjhfFQW+VX+aCPGqhqsoXK+uEtoNcbr0lJqY0tpb8heC3fJMuB2RY2I2e
-X-Received: by 2002:a05:6402:b48:: with SMTP id bx8mr24939928edb.255.1625762275892;
-        Thu, 08 Jul 2021 09:37:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625762275; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp496803lfg;
+        Thu, 8 Jul 2021 09:47:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQGVeDrQflgUAMAaE2IToa2vwrSu1sY89wcjzVYxFQUZLd8cS1yuSbfNC1Y//tBfy8DIjp
+X-Received: by 2002:ab0:6416:: with SMTP id x22mr30515261uao.130.1625762829699;
+        Thu, 08 Jul 2021 09:47:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625762829; cv=none;
         d=google.com; s=arc-20160816;
-        b=VYGkB0twDeiIat/0VOrwyfqAcQsLynWsy3121GacOoERL55Xiok0AqvHSqJLBRGemP
-         Ueakrw15vsEpCAXOW/VyxD8SOIK02e/CIVVoJMSEoHykfoJoW7Jh42b+9hKvvriJXe45
-         kfqSD2LpnMJ/Avu21Z1htFftisT1FwVcbOcvWepjK1sk/80CjY1jpPBy5e/ifNGffCP8
-         htvRbMfjqo+NPBtY6sk6MPQGtSg/eGPqHBT91dkp6BzP7qWe3N4Vgg5p+taYJs/aFo0O
-         jiAcgbe1vUHmU1t04PducR5YkS1CA6LO8CCcgSKLOo1E8UmkEZb1QzhCygNP83euwxuY
-         ipSQ==
+        b=CbxOzegmP6DeUXcfGBUPn8whSi2ELGbIoBjqPtpJ6ALGUt6qfIBL59SKVTsbL4Pxtr
+         GAKz5xa2lJdMdOkzzSE09jmB/M/U2uqqZQFSmL2BanOioTmcLH1ia9GST3CleOhkU9Q3
+         RsASA9SMMuWztNDrRV/ixZ3K0od5Ek7wf8t4KXZPKPh4M1euMZ2JmI51TVMGE+eWwmFh
+         ghIfHnKMHvRdrYTzBhTPcPvzxaSvPazqmbQbwS/UZpbw9hKHi1mLs1C13UyNudJghYf8
+         xNLRp/7rVnAR7ONKWpZBuWY0CE5+0sOXY/rpAs00fT3tPZh5DyKEAAMgrIM7lO9EOEUk
+         +XEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=eZpKCaRdusV4eGZe74nOvcDLuOU61Kx6SreNJOZ24EQ=;
-        b=IJrncWF/Z8mX/Sih/UfEJ200iP6Ft1Xo2KMyOxRsyMF/TyP9ob4K7/1dFV0hJzNFCj
-         vHeWPpag2Nq160XPB6gVuMK3DDacV7sdNnLnmcfbb6m816BKbBTZ4cf9D7dJ30Q2FkJ8
-         gv6c0Q5cxyUJTFOa5l4g68MGRk/xzKCk5sh85LMLQ2JHEuIKlqZyAeurwxfqEgeP/sjk
-         fApUFeqIiVsvZ4in6Phh1HgkDwq3sESSJTnqo6insQq1n8x2uqIXYDkcjvOFNArSEJtt
-         9FQlYhejMM9C8VlKzPkRnGRc8Rl8D8QMVl2nmnBb1Z0gIxoLqtIxh3SGHXQcTu4RHaam
-         zQjw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=49PI5WBY3Pvxqfof2TOhUpfgHH/EfMKzNfo7c+g6lRc=;
+        b=g7d21xlmnPpSJDwnUo+CSXZaYpsZWzat0gEs4ZuBnCr2DFfhf5zYZYf/YZ/uWjUS7d
+         KksiBUPArTk9uaWJrxCFqu9qkhFNl6Xa0/xJ9MRloIkLdkNCWbKbANhlHFQLm1eIBf8h
+         0n8lsXUVKsQRqCUPcZaCi+lcGM4Q/HCppL4X+8RWQtp6Dn7p/OiCQXAwRup0KmnX8rKC
+         D9EOMUvT7Yh8XVyJ2tZI2opgOH/oiKsr12AVeHZ7PMIks9837sHW5MFXr2BgczOj15pK
+         seYZV7PIHaI6+pl/lGuNJYfj+uua12GX/t28SlPqJIIXwB2XtPJ/5J2W2CzTIWQJ6EQD
+         iUYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BtXMVz0m;
+       dkim=fail header.i=@linaro.org header.s=google header.b=D6Wnr89h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i15si3587595ejh.658.2021.07.08.09.37.55
+        by mx.google.com with ESMTPS id b19si3045297uap.170.2021.07.08.09.47.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jul 2021 09:37:55 -0700 (PDT)
+        Thu, 08 Jul 2021 09:47:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BtXMVz0m;
+       dkim=fail header.i=@linaro.org header.s=google header.b=D6Wnr89h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46870 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1X2A-0001Qm-TI
-	for alex.bennee@linaro.org; Thu, 08 Jul 2021 12:37:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59966)
+	id 1m1XB6-0006Bv-V9
+	for alex.bennee@linaro.org; Thu, 08 Jul 2021 12:47:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1m1WF7-0002yk-S9
- for qemu-devel@nongnu.org; Thu, 08 Jul 2021 11:47:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23157)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1m1WF6-0000Zl-5d
- for qemu-devel@nongnu.org; Thu, 08 Jul 2021 11:47:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625759231;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eZpKCaRdusV4eGZe74nOvcDLuOU61Kx6SreNJOZ24EQ=;
- b=BtXMVz0m7bA4uowykO4h5/IN0u3Qfj+Zb7pCUNoegw8OlJ7UAeB0zOaEW/LQtOp/3IhxJF
- wGycYeG3uoZqpzW9i4pdAm1yTWCC+dO6zK6FRFp4IJJzjqUIC+Ul+yUjGF0NfgWO6TN/sE
- pzlIZr5RQLCMLFDu2gamKTmyTIg2Gt4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-276-zYVzBVwbPtC7e8x1mSAbVA-1; Thu, 08 Jul 2021 11:47:10 -0400
-X-MC-Unique: zYVzBVwbPtC7e8x1mSAbVA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 819FA10C1ADC;
- Thu,  8 Jul 2021 15:47:09 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
- (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3E72D19C66;
- Thu,  8 Jul 2021 15:47:08 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 28/35] acpi: arm: virt: build_iort: use
- acpi_init_table()/acpi_table_composed() instead of build_header()
-Date: Thu,  8 Jul 2021 11:46:10 -0400
-Message-Id: <20210708154617.1538485-29-imammedo@redhat.com>
-In-Reply-To: <20210708154617.1538485-1-imammedo@redhat.com>
-References: <20210708154617.1538485-1-imammedo@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m1Wcq-0002Tv-6L
+ for qemu-devel@nongnu.org; Thu, 08 Jul 2021 12:11:44 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:46782)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m1Wco-0008Aw-Gj
+ for qemu-devel@nongnu.org; Thu, 08 Jul 2021 12:11:43 -0400
+Received: by mail-ed1-x533.google.com with SMTP id s15so9246980edt.13
+ for <qemu-devel@nongnu.org>; Thu, 08 Jul 2021 09:11:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=49PI5WBY3Pvxqfof2TOhUpfgHH/EfMKzNfo7c+g6lRc=;
+ b=D6Wnr89h5MG/aA53VBjotyrRPizqT971yL9eznGMqrmex5B9wf6z7uzdbLYfFJJDxS
+ xnYahVWV2OBJgRW12G+cWWQRfhpe5nWuAuO3n2UJliZubvqkjwuTWiUhjw06ysbQ6ZYi
+ HQfUiWgFIvsbNPIx6FELFfISs6lrtG55rRqRktQqPtreVulp49iPbDUj9/dIDS47+5j8
+ BP89NQB3bhfyfFu7DgrKn46lfEcZhfSkzQfF5ROfE4SW+geMBb8VozHcW6JFnoHbWlTO
+ gjQojPUo9Ti69lUlKF8mal/vRzhlZfkLIJx6j0ehVsGtBAlIXCDPYbG2QZ1jF7qZrVt9
+ rW7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=49PI5WBY3Pvxqfof2TOhUpfgHH/EfMKzNfo7c+g6lRc=;
+ b=np6X9/Vc4kMG/Gt8u7R8uRzs3Ydb2G1EqXWFlPUZtdfooPjrzYb21hf95+IAZK7UGA
+ oK5INPc0QDEzs+DHieR2wDirwGWFNS61kpajkvXXB0yRjB7QOvnoCchYFu0Qoxl8feHq
+ aNdunv+u/pA5K0g6C+iSU0aiMSTv4XwX/KguteUeKyDoRj0IBuht7EPBihGf4tipQ6D8
+ Qli6SYhnRrV7dXf66h/K052h6aD7VuFZ3YJenX+R2UDZd2eiWIFCBOfW5ixrb2/4o39x
+ ag0imRr/3auvggFiHBgbgbi0OitOL4mLbdG13NF26O4RuUMTG4ht9X4+i9KL65RyZYOM
+ O8bQ==
+X-Gm-Message-State: AOAM532/vu8RTWu+GSAezDpjj3aMwOa9sockweHUdWYprGEMWPIuNCco
+ hZAq+uakYf6tK7PeYxePP2LlfYCeXiCtA8EsWg3/Vg==
+X-Received: by 2002:aa7:c857:: with SMTP id g23mr38381346edt.100.1625760700942; 
+ Thu, 08 Jul 2021 09:11:40 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.45,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210630183226.3290849-1-richard.henderson@linaro.org>
+ <20210630183226.3290849-6-richard.henderson@linaro.org>
+ <CAFEAcA_EkW7a6SFuAHxdYvu_gdcdDwY4xQVOFnmtatcx+T1qGg@mail.gmail.com>
+ <88562e08-3d6c-3224-5d84-67e3ffd3774b@linaro.org>
+In-Reply-To: <88562e08-3d6c-3224-5d84-67e3ffd3774b@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Jul 2021 17:11:02 +0100
+Message-ID: <CAFEAcA8Xs0Ct6hDBAk-N7TVhb66dwv2EJudo83XzJ5dQn9k7VA@mail.gmail.com>
+Subject: Re: [PATCH v2 05/28] target/arm: Use gen_jmp for ISB and SB
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,144 +111,59 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, mst@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sQFgMdyuOBek
+X-TUID: AEI7lUhOHv1e
 
-it replaces error-prone pointer arithmetic for build_header() API,
-with 2 calls to start and finish table creation,
-which hides offsets magic from API user.
+On Thu, 8 Jul 2021 at 17:04, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 7/8/21 5:05 AM, Peter Maydell wrote:
+> > On Wed, 30 Jun 2021 at 19:47, Richard Henderson
+> > <richard.henderson@linaro.org> wrote:
+> >>
+> >> Using gen_goto_tb directly misses the single-step check.
+> >>
+> >> Cc: qemu-arm@nongnu.org
+> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> >> ---
+> >>   target/arm/translate.c | 4 ++--
+> >>   1 file changed, 2 insertions(+), 2 deletions(-)
+> >>
+> >> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> >> index a0c6cfa902..8cd31feeaa 100644
+> >> --- a/target/arm/translate.c
+> >> +++ b/target/arm/translate.c
+> >> @@ -8582,7 +8582,7 @@ static bool trans_ISB(DisasContext *s, arg_ISB *a)
+> >>        * self-modifying code correctly and also to take
+> >>        * any pending interrupts immediately.
+> >>        */
+> >> -    gen_goto_tb(s, 0, s->base.pc_next);
+> >> +    gen_jmp(s, s->base.pc_next);
+> >>       return true;
+> >>   }
+> >>
+> >> @@ -8596,7 +8596,7 @@ static bool trans_SB(DisasContext *s, arg_SB *a)
+> >>        * for TCG; MB and end the TB instead.
+> >>        */
+> >>       tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+> >> -    gen_goto_tb(s, 0, s->base.pc_next);
+> >> +    gen_jmp(s, s->base.pc_next);
+> >>       return true;
+> >
+> > Why isn't it enough here just to set is_jmp to DISAS_NEXT ?
+>
+> You mean DISAS_TOO_MANY?  That would work, yes.
+> At the time I was just thinking of replacing one jump with another.
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-CC: drjones@redhat.com
-CC: peter.maydell@linaro.org
-CC: shannon.zhaosl@gmail.com
-CC: qemu-arm@nongnu.org
----
- include/hw/acpi/acpi-defs.h | 14 ------------
- hw/arm/virt-acpi-build.c    | 43 +++++++++++++++----------------------
- 2 files changed, 17 insertions(+), 40 deletions(-)
+You've implicitly answered my question, which is that the main
+translator loop code treats DISAS_NEXT as "keep adding insns to
+the TB" :-)
 
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index bcada37601..195f90caf6 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -188,20 +188,6 @@ struct AcpiGenericTimerTable {
- } QEMU_PACKED;
- typedef struct AcpiGenericTimerTable AcpiGenericTimerTable;
- 
--/*
-- * Input Output Remapping Table (IORT)
-- * Conforms to "IO Remapping Table System Software on ARM Platforms",
-- * Document number: ARM DEN 0049B, October 2015
-- */
--
--struct AcpiIortTable {
--    ACPI_TABLE_HEADER_DEF     /* ACPI common table header */
--    uint32_t node_count;
--    uint32_t node_offset;
--    uint32_t reserved;
--} QEMU_PACKED;
--typedef struct AcpiIortTable AcpiIortTable;
--
- /*
-  * IORT node types
-  */
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index d15e67a39b..ac5e07e43c 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -239,18 +239,22 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
- }
- #endif
- 
-+/*
-+ * Input Output Remapping Table (IORT)
-+ * Conforms to "IO Remapping Table System Software on ARM Platforms",
-+ * Document number: ARM DEN 0049B, October 2015
-+ */
- static void
- build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
--    int nb_nodes, iort_start = table_data->len;
-+    int nb_nodes;
-     AcpiIortIdMapping *idmap;
-     AcpiIortItsGroup *its;
--    AcpiIortTable *iort;
-     AcpiIortSmmu3 *smmu;
--    size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
-+    size_t node_size, iort_node_offset = 48, smmu_offset = 0;
-     AcpiIortRC *rc;
--
--    iort = acpi_data_push(table_data, sizeof(*iort));
-+    AcpiTable table = { .sig = "IORT", .rev = 0, .oem_id = vms->oem_id,
-+                        .oem_table_id = vms->oem_table_id };
- 
-     if (vms->iommu == VIRT_IOMMU_SMMUV3) {
-         nb_nodes = 3; /* RC, ITS, SMMUv3 */
-@@ -258,18 +262,16 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         nb_nodes = 2; /* RC, ITS */
-     }
- 
--    iort_length = sizeof(*iort);
--    iort->node_count = cpu_to_le32(nb_nodes);
--    /*
--     * Use a copy in case table_data->data moves during acpi_data_push
--     * operations.
--     */
--    iort_node_offset = sizeof(*iort);
--    iort->node_offset = cpu_to_le32(iort_node_offset);
-+    /* Table 2 The IORT */
-+    acpi_init_table(&table, table_data);
-+    /* Number of IORT Nodes */
-+    build_append_int_noprefix(table_data, nb_nodes, 4);
-+    /* Offset to Array of IORT Nodes */
-+    build_append_int_noprefix(table_data, iort_node_offset, 4);
-+    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
- 
-     /* ITS group node */
-     node_size =  sizeof(*its) + sizeof(uint32_t);
--    iort_length += node_size;
-     its = acpi_data_push(table_data, node_size);
- 
-     its->type = ACPI_IORT_NODE_ITS_GROUP;
-@@ -283,7 +285,6 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         /* SMMUv3 node */
-         smmu_offset = iort_node_offset + node_size;
-         node_size = sizeof(*smmu) + sizeof(*idmap);
--        iort_length += node_size;
-         smmu = acpi_data_push(table_data, node_size);
- 
-         smmu->type = ACPI_IORT_NODE_SMMU_V3;
-@@ -308,7 +309,6 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
-     /* Root Complex Node */
-     node_size = sizeof(*rc) + sizeof(*idmap);
--    iort_length += node_size;
-     rc = acpi_data_push(table_data, node_size);
- 
-     rc->type = ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
-@@ -335,16 +335,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         idmap->output_reference = cpu_to_le32(iort_node_offset);
-     }
- 
--    /*
--     * Update the pointer address in case table_data->data moves during above
--     * acpi_data_push operations.
--     */
--    iort = (AcpiIortTable *)(table_data->data + iort_start);
--    iort->length = cpu_to_le32(iort_length);
--
--    build_header(linker, table_data, (void *)(table_data->data + iort_start),
--                 "IORT", table_data->len - iort_start, 0, vms->oem_id,
--                 vms->oem_table_id);
-+    acpi_table_composed(linker, &table);
- }
- 
- static void
--- 
-2.27.0
+It feels slightly like misuse to use DISAS_TOO_MANY, unless we
+renamed it to something like DISAS_END_TB (which is what it's
+actually doing).
 
+thanks
+-- PMM

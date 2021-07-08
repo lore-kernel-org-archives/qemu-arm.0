@@ -1,1039 +1,740 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp561859lfg;
-        Thu, 8 Jul 2021 11:11:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbTNDKFJFYcIVbXlUv2nXR75/BidEHtmcyaik0KZGPvQLuCS4Vk5Ik6iGjyrwJGuYmi+RJ
-X-Received: by 2002:a05:6402:10c7:: with SMTP id p7mr22859373edu.159.1625767901794;
-        Thu, 08 Jul 2021 11:11:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625767901; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp562588lfg;
+        Thu, 8 Jul 2021 11:12:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZxvAOUvepN0TkI2gKOSU7+PG+PH+rZgRnJ7V8x7/AZ8Z2fYxFocQo/MOfT82vS0pHOgWh
+X-Received: by 2002:a17:907:ea5:: with SMTP id ho37mr32325248ejc.109.1625767956822;
+        Thu, 08 Jul 2021 11:12:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625767956; cv=none;
         d=google.com; s=arc-20160816;
-        b=MUO2cN307c4Na9PJTr/hAHMFTrekneapmWs0k5ajLLvCjd0jqF7jchtI0tVY5xyTvb
-         vums1Dw05QQLTIB3nx8sgkpfhV1FEX2q74tIdBzUUC68EbW0DhLO594E6lgSVn819F+Z
-         Tdxk8KqWSLA0mPJWsTccx6xnMwhT5sxJqjOeXnQcQgkR5nNLANecAFnE4FUDYBtX92Qh
-         qlimUL9DsOj63VloMqVuKr8Xuw/ghNcho0tcli/pq5WRN03F4Q3wxLV+AcU6KYyJFzE7
-         OWzWen/f7a3qo42pQcge9XeObizuol5boT2R5q+7joaNHyQwQOkmlE2fqClX4OPm2Uu/
-         VSQw==
+        b=IOIRyKqboWQp87gGC6EnopXfHMXncNrCne6GJIEcXT3ui1gohsn5ByGH8b1GaSSppX
+         QoL6ir7PHJ0sItgPGVUi+ptiQncWzyfyvtEMN9hMgKIzCZp0Aue8vjoAYw1mlFnolt63
+         /LB0U79yERPvUC+2FvrHui1YAHf4HOuF7lwaI+qFmVXzBXlGPCs5MgJKd/6Rm2zazsOU
+         itST9Zsv9hrdZ0tybXEJ0xQqRJg39vXxWEg/BJNOgrfzPfe8OM+exHlfKEVyFoSKw4+6
+         A1brPmP8B9po7d0KPt130mvOB3G+51lTO/CzoWazNhHgC++XruMB00QfZF+9HcyjVaGm
+         +KEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:references:mime-version:message-id:in-reply-to:date
-         :dkim-signature;
-        bh=KvsKxBC2eFp+A8VE08VcTsZfKu+zoDoj6NmU2NUSpaI=;
-        b=shfS1gqNKoemAOJdZNwMItOCnHxbqZNywHTXdV60BFuNiB5G3tBG69bFV5oAZfFkxk
-         tKL4HncH8/5c3/1Tbdk7fjrMPx4hXZcXhDPF4tBEp9RJfprb9h+5sBPy2R7chocZzupp
-         hrpCMuxTr9rUd2fybGE/3zNol26QiNdXOmhJ49V7oW6iLVGSbygsGRWyer9OowP087Rt
-         Q3+zlGz0hRdKEHFreuE/qBZDZ4V+53Ko9Pz3ITJNiBUWkFElHf39H82Tfk/Fb8MR8ZXL
-         tTHLqdgCw+dZrnxKQOhuvh93pm4AMifR6y+ehZ35LFX3wlEu7oWHLclQUZNZ/5CRSiDc
-         s7PQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=cIeT4HtQSHZE6JnM7XI5/TL86CO6zZD8BOqdgh85jl0=;
+        b=umsA9+Iqm/85aQmkFfETG4PuldGjkHLY6DVsHZzy4ITSNLa1MMywkw+6kBiXU4cWWC
+         JeIJA+jnOpk09/Uht5cLZXH7+ewvmSv+PhiGDPJ7MKa2pWlgMPFc+HP65gXc1OxNci6o
+         QQtNSRpUa9U8Ht+Gr91tNqjLuo6TnxfcMVDrCRHWZASUifoC5jLzx+imkAFBtTxZZocM
+         p1zgAxBzOuA/1uIMAtU8zLXHQP36VBs1QAUD8nRRzpRmpHsZ3SEPsUTwzzjPkXrj9PI/
+         oZx4kOfXcjeQbdoSYobK3nEaTHE+MHa/QHNYoCqbooO+KAErWydiD8CdASH7DxVGWSLl
+         xrRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="azxJ/OWM";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gSWxQOMp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16si4154364edd.147.2021.07.08.11.11.41
+        by mx.google.com with ESMTPS id da6si3760600edb.108.2021.07.08.11.12.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jul 2021 11:11:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Jul 2021 11:12:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="azxJ/OWM";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:50426 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gSWxQOMp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1YUu-0003WE-LE
-	for alex.bennee@linaro.org; Thu, 08 Jul 2021 14:11:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52816)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m1YVn-0005yP-Os
+	for alex.bennee@linaro.org; Thu, 08 Jul 2021 14:12:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3MzXnYAYKCkg3s3421qyyqvo.myw0ow4-no5ovxyxqx4.y1q@flex--titusr.bounces.google.com>)
- id 1m1Xn1-0000B5-Tu
- for qemu-devel@nongnu.org; Thu, 08 Jul 2021 13:26:19 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:57245)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3MzXnYAYKCkg3s3421qyyqvo.myw0ow4-no5ovxyxqx4.y1q@flex--titusr.bounces.google.com>)
- id 1m1Xmu-0005ka-Ow
- for qemu-devel@nongnu.org; Thu, 08 Jul 2021 13:26:19 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id
- w5-20020a0569021005b029055b51419c7dso7803432ybt.23
- for <qemu-devel@nongnu.org>; Thu, 08 Jul 2021 10:26:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc:content-transfer-encoding;
- bh=KvsKxBC2eFp+A8VE08VcTsZfKu+zoDoj6NmU2NUSpaI=;
- b=azxJ/OWM6TdXlK/vhzpkQNJbC3QsPK1yA9VcQ9T/d1UoBiGgXIkeKWpRQiDD1fO8fM
- Yie9dFpsk3LbQnDnkKB4I8FTMQELDmMxpLP7RGFLKuOUp2pXYfzFmtOziU7zZfiV8TbU
- YArUt9vXganX65HX7ARy7THpZgeppG7HCbOwQVuq0AemzmkJu56Qrn9Jvj8Km6VFBZr2
- hqRnENkkSbCd86jAyX8uiByScu2GcGxom9dx3hBleEVS5USG9TP/C/6p4KRy/o5meGB+
- SbYj9Vugrgn1lojpHHstLKArla4xaIJiNz1LnC+p+00ZNEp3hx+T30h9JLBlYXxwDS6J
- STjA==
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1m1Xo8-0001sw-96
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:27:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52713)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1m1Xo4-000657-2R
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:27:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1625765242;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cIeT4HtQSHZE6JnM7XI5/TL86CO6zZD8BOqdgh85jl0=;
+ b=gSWxQOMpQj4B4DDSmqPAF6Z25/Ulxgj/iGdyBTDk0NaOz0fX/2KY+7LI6v1Ok9fvUTH8b6
+ smCDJEruHzmNh5TSKQmPNWfucRZVFrZbDcFqareIfWEDvniBn2JfBl4UcANTVtMluDjyGm
+ 5iDMbVwgchqxGCmypaig9EM1rkWoqRQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-357-3VIPsJU-P5KHPKKijWPEFw-1; Thu, 08 Jul 2021 13:27:21 -0400
+X-MC-Unique: 3VIPsJU-P5KHPKKijWPEFw-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ p9-20020a7bcc890000b02902190142995dso840652wma.4
+ for <qemu-arm@nongnu.org>; Thu, 08 Jul 2021 10:27:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc:content-transfer-encoding;
- bh=KvsKxBC2eFp+A8VE08VcTsZfKu+zoDoj6NmU2NUSpaI=;
- b=OgII7F9Ck9KGflgBVefN3MtjKidzHTotaJeGHp6IHLpDq7WXCjm8sRvOLc/rALHVG3
- PVcMKRHFC8AtXWn30PjDR6rhHcvHqxtfc9AElQDySBr+lFZ4O+MbqZxuBPZp7M6AXsKn
- M9gFcMkf9S7jddj4db4a272DdQZ2lO4sZZOXMy6/0Br8Ee9CzCGxavXBK+silog+/i4G
- eGfpyuBzwxQGLhxzg/wv12u+B50wVe8m+iOmMg/l9G+jWFPhaZl5OSqhQe9XRfKym6rI
- UjdJw9Wafu1ZmkNHwL+acCN4bUX19jGk8gNmt7OpJPHuy2f9hDp/8zTFDCFv0c9TLiw+
- Yjkw==
-X-Gm-Message-State: AOAM530rlXk0VoUOf+WjuILSrugcAF9r0Vyis16II3iEAWVJrXs02IcV
- /e5e3V/6AwveZ5fUQHsn6bUcnGnh3vQ=
-X-Received: from titusr.svl.corp.google.com
- ([2620:15c:2c5:13:6b42:285b:df15:bf])
- (user=titusr job=sendgmr) by 2002:a25:9981:: with SMTP id
- p1mr43023854ybo.246.1625765171242; 
- Thu, 08 Jul 2021 10:26:11 -0700 (PDT)
-Date: Thu,  8 Jul 2021 10:25:55 -0700
-In-Reply-To: <20210708172556.1868139-1-titusr@google.com>
-Message-Id: <20210708172556.1868139-5-titusr@google.com>
-Mime-Version: 1.0
-References: <20210708172556.1868139-1-titusr@google.com>
-X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
-Subject: [PATCH v5 4/5] hw/misc: add MAX34451 device
-From: Titus Rwantare <titusr@google.com>
-To: Corey Minyard <minyard@acm.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>,
- Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3MzXnYAYKCkg3s3421qyyqvo.myw0ow4-no5ovxyxqx4.y1q@flex--titusr.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
-X-Spam_score_int: -100
-X-Spam_score: -10.1
-X-Spam_bar: ----------
-X-Spam_report: (-10.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.5,
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cIeT4HtQSHZE6JnM7XI5/TL86CO6zZD8BOqdgh85jl0=;
+ b=EtngAqvhr9NroQq0TXqU4RhrLBox4eOrtFHDow3iiyrOdM8BNXZBGsChE63Aa9o75+
+ tfyiCDUsHH7Kr44XA5t1YfAQYP9FFjbckh4a8pRtUJSUynIjzHd0/Y/JX9yM+zbU/kT0
+ QL0Ho78kmD5v5PZ+fxCNQZFlvokB1mj1RCKDLrPPzGL0GRC2eMmVZ8otGYMIiJzGHrRO
+ 6GeFeU2qcwJ9yMj/HtqDVo+xYX9ofg7myTLmi2eMU2o5AjmKKHC+vXY0anBbY/wN6eq4
+ 19/PWJ0uXV9st0jddnX1ddysdj87B/Wh9pcveoaJ+pw8cFf0Hai2MLf29bcxYpqtS0Pq
+ OdrA==
+X-Gm-Message-State: AOAM531LUd1QC+NZFNCjqIBgRL5KHtI/coWlTUh9wDdylJ69UqvQy9h8
+ Yfq82ptA4L32VQFsrQ8CS2d2sNgZlXao80N9/2VnEISJTgC9CcL7lRuF1LZuz9E6uYzXvVPJwFR
+ EuSijekJjpGXA
+X-Received: by 2002:a7b:cb8b:: with SMTP id m11mr6624586wmi.106.1625765240146; 
+ Thu, 08 Jul 2021 10:27:20 -0700 (PDT)
+X-Received: by 2002:a7b:cb8b:: with SMTP id m11mr6624573wmi.106.1625765239942; 
+ Thu, 08 Jul 2021 10:27:19 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id l9sm2848408wrp.14.2021.07.08.10.27.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Jul 2021 10:27:19 -0700 (PDT)
+Subject: Re: [PATCH v5 02/10] hw/intc: GICv3 ITS register definitions added
+From: Eric Auger <eauger@redhat.com>
+To: Shashi Mallela <shashi.mallela@linaro.org>, peter.maydell@linaro.org,
+ leif@nuviainc.com, rad@semihalf.com, mst@redhat.com, imammedo@redhat.com
+References: <20210630153156.9421-1-shashi.mallela@linaro.org>
+ <20210630153156.9421-3-shashi.mallela@linaro.org>
+ <ff377aaf-2060-7d0a-fd0b-b4ee535181f6@redhat.com>
+Message-ID: <40478f50-4193-18dd-db27-0f40be7ed1f4@redhat.com>
+Date: Thu, 8 Jul 2021 19:27:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
+MIME-Version: 1.0
+In-Reply-To: <ff377aaf-2060-7d0a-fd0b-b4ee535181f6@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.45,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aJaVtuLeegM/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qtctpwX21Zem
 
-The MAX34451 is a Maxim power-supply system manager that can monitor up to =
-16 voltage rails or currents. It also contains a temperature sensor and sup=
-ports up to four external temperature sensors.
+Hi Shashi,
 
-This commit adds support for interfacing with it, and setting limits on the=
- supported sensors.
+On 7/6/21 11:29 AM, Eric Auger wrote:
+> Hi,
+> 
+> On 6/30/21 5:31 PM, Shashi Mallela wrote:
+>> Defined descriptors for ITS device table,collection table and ITS
+>> command queue entities.Implemented register read/write functions,
+>> extract ITS table parameters and command queue parameters,extended
+>> gicv3 common to capture qemu address space(which host the ITS table
+>> platform memories required for subsequent ITS processing) and
+>> initialize the same in ITS device.
+>>
+>> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  hw/intc/arm_gicv3_its.c                | 376 +++++++++++++++++++++++++
+>>  hw/intc/gicv3_internal.h               |  31 +-
+>>  include/hw/intc/arm_gicv3_common.h     |   3 +
+>>  include/hw/intc/arm_gicv3_its_common.h |  23 ++
+>>  4 files changed, 432 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+>> index 545cda3665..2d786a1e21 100644
+>> --- a/hw/intc/arm_gicv3_its.c
+>> +++ b/hw/intc/arm_gicv3_its.c
+>> @@ -28,6 +28,160 @@ struct GICv3ITSClass {
+>>      void (*parent_reset)(DeviceState *dev);
+>>  };
+>>  
+>> +static uint64_t baser_base_addr(uint64_t value, uint32_t page_sz)
+>> +{
+>> +    uint64_t result = 0;
+>> +
+>> +    switch (page_sz) {
+>> +    case GITS_PAGE_SIZE_4K:
+>> +    case GITS_PAGE_SIZE_16K:
+>> +        result = FIELD_EX64(value, GITS_BASER, PHYADDR);
+> << 12 ?
+Did you check that? Seems unchanged in v6?
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Signed-off-by: Titus Rwantare <titusr@google.com>
----
- hw/misc/max34451.c  | 775 ++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig      |   1 +
- hw/misc/Kconfig     |   4 +
- hw/misc/meson.build |   1 +
- 4 files changed, 781 insertions(+)
- create mode 100644 hw/misc/max34451.c
+Thanks
 
-diff --git a/hw/misc/max34451.c b/hw/misc/max34451.c
-new file mode 100644
-index 0000000000..1e7c68271e
---- /dev/null
-+++ b/hw/misc/max34451.c
-@@ -0,0 +1,775 @@
-+/*
-+ * Maxim MAX34451 PMBus 16-Channel V/I monitor and 12-Channel Sequencer/Ma=
-rginer
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/pmbus_device.h"
-+#include "hw/irq.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+
-+#define TYPE_MAX34451 "max34451"
-+#define MAX34451(obj) OBJECT_CHECK(MAX34451State, (obj), TYPE_MAX34451)
-+
-+#define MAX34451_MFR_MODE               0xD1
-+#define MAX34451_MFR_PSEN_CONFIG        0xD2
-+#define MAX34451_MFR_VOUT_PEAK          0xD4
-+#define MAX34451_MFR_IOUT_PEAK          0xD5
-+#define MAX34451_MFR_TEMPERATURE_PEAK   0xD6
-+#define MAX34451_MFR_VOUT_MIN           0xD7
-+#define MAX34451_MFR_NV_LOG_CONFIG      0xD8
-+#define MAX34451_MFR_FAULT_RESPONSE     0xD9
-+#define MAX34451_MFR_FAULT_RETRY        0xDA
-+#define MAX34451_MFR_NV_FAULT_LOG       0xDC
-+#define MAX34451_MFR_TIME_COUNT         0xDD
-+#define MAX34451_MFR_MARGIN_CONFIG      0xDF
-+#define MAX34451_MFR_FW_SERIAL          0xE0
-+#define MAX34451_MFR_IOUT_AVG           0xE2
-+#define MAX34451_MFR_CHANNEL_CONFIG     0xE4
-+#define MAX34451_MFR_TON_SEQ_MAX        0xE6
-+#define MAX34451_MFR_PWM_CONFIG         0xE7
-+#define MAX34451_MFR_SEQ_CONFIG         0xE8
-+#define MAX34451_MFR_STORE_ALL          0xEE
-+#define MAX34451_MFR_RESTORE_ALL        0xEF
-+#define MAX34451_MFR_TEMP_SENSOR_CONFIG 0xF0
-+#define MAX34451_MFR_STORE_SINGLE       0xFC
-+#define MAX34451_MFR_CRC                0xFE
-+
-+#define MAX34451_NUM_MARGINED_PSU       12
-+#define MAX34451_NUM_PWR_DEVICES        16
-+#define MAX34451_NUM_TEMP_DEVICES       5
-+#define MAX34451_NUM_PAGES              21
-+
-+#define DEFAULT_OP_ON                   0x80
-+#define DEFAULT_CAPABILITY              0x20
-+#define DEFAULT_ON_OFF_CONFIG           0x1a
-+#define DEFAULT_VOUT_MODE               0x40
-+#define DEFAULT_TEMPERATURE             2500
-+#define DEFAULT_SCALE                   0x7FFF
-+#define DEFAULT_OV_LIMIT                0x7FFF
-+#define DEFAULT_OC_LIMIT                0x7FFF
-+#define DEFAULT_OT_LIMIT                0x7FFF
-+#define DEFAULT_VMIN                    0x7FFF
-+#define DEFAULT_TON_FAULT_LIMIT         0xFFFF
-+#define DEFAULT_CHANNEL_CONFIG          0x20
-+#define DEFAULT_TEXT                    0x3130313031303130
-+
-+/**
-+ * MAX34451State:
-+ * @code: The command code received
-+ * @page: Each page corresponds to a device monitored by the Max 34451
-+ * The page register determines the available commands depending on device
-+  ________________________________________________________________________=
-___
-+ |   0   |  Power supply monitored by RS0, controlled by PSEN0, and       =
-   |
-+ |       |  margined with PWM0.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   1   |  Power supply monitored by RS1, controlled by PSEN1, and       =
-   |
-+ |       |  margined with PWM1.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   2   |  Power supply monitored by RS2, controlled by PSEN2, and       =
-   |
-+ |       |  margined with PWM2.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   3   |  Power supply monitored by RS3, controlled by PSEN3, and       =
-   |
-+ |       |  margined with PWM3.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   4   |  Power supply monitored by RS4, controlled by PSEN4, and       =
-   |
-+ |       |  margined with PWM4.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   5   |  Power supply monitored by RS5, controlled by PSEN5, and       =
-   |
-+ |       |  margined with PWM5.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   6   |  Power supply monitored by RS6, controlled by PSEN6, and       =
-   |
-+ |       |  margined with PWM6.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   7   |  Power supply monitored by RS7, controlled by PSEN7, and       =
-   |
-+ |       |  margined with PWM7.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   8   |  Power supply monitored by RS8, controlled by PSEN8, and       =
-   |
-+ |       | optionally margined by OUT0 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   9   |  Power supply monitored by RS9, controlled by PSEN9, and       =
-   |
-+ |       | optionally margined by OUT1 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   10  |  Power supply monitored by RS10, controlled by PSEN10, and     =
-   |
-+ |       | optionally margined by OUT2 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   11  |  Power supply monitored by RS11, controlled by PSEN11, and     =
-   |
-+ |       | optionally margined by OUT3 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   12  |  ADC channel 12 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   13  |  ADC channel 13 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   14  |  ADC channel 14 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   15  |  ADC channel 15 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   16  |  Internal temperature sensor.                                  =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   17  |  External DS75LV temperature sensor with I2C address 90h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   18  |  External DS75LV temperature sensor with I2C address 92h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   19  |  External DS75LV temperature sensor with I2C address 94h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   20  |  External DS75LV temperature sensor with I2C address 96h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ | 21=E2=80=93254|  Reserved.                                             =
-           |
-+ |_______|________________________________________________________________=
-___|
-+ |   255 |  Applies to all pages.                                         =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ *
-+ * @operation: Turn on and off power supplies
-+ * @on_off_config: Configure the power supply on and off transition behavi=
-our
-+ * @write_protect: protect against changes to the device's memory
-+ * @vout_margin_high: the voltage when OPERATION is set to margin high
-+ * @vout_margin_low: the voltage when OPERATION is set to margin low
-+ * @vout_scale: scale ADC reading to actual device reading if different
-+ * @iout_cal_gain: set ratio of the voltage at the ADC input to sensed cur=
-rent
-+ */
-+typedef struct MAX34451State {
-+    PMBusDevice parent;
-+
-+    uint16_t power_good_on[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t power_good_off[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t ton_delay[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t ton_max_fault_limit[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t toff_delay[MAX34451_NUM_MARGINED_PSU];
-+    uint8_t status_mfr_specific[MAX34451_NUM_PWR_DEVICES];
-+    /* Manufacturer specific function */
-+    uint64_t mfr_location;
-+    uint64_t mfr_date;
-+    uint64_t mfr_serial;
-+    uint16_t mfr_mode;
-+    uint32_t psen_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t vout_peak[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t iout_peak[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t temperature_peak[MAX34451_NUM_TEMP_DEVICES];
-+    uint16_t vout_min[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t nv_log_config;
-+    uint32_t fault_response[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t fault_retry;
-+    uint32_t fault_log;
-+    uint32_t time_count;
-+    uint16_t margin_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t fw_serial;
-+    uint16_t iout_avg[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t channel_config[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t ton_seq_max[MAX34451_NUM_MARGINED_PSU];
-+    uint32_t pwm_config[MAX34451_NUM_MARGINED_PSU];
-+    uint32_t seq_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t temp_sensor_config[MAX34451_NUM_TEMP_DEVICES];
-+    uint16_t store_single;
-+    uint16_t crc;
-+} MAX34451State;
-+
-+
-+static void max34451_check_limits(MAX34451State *s)
-+{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(s);
-+
-+    pmbus_check_limits(pmdev);
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        if (pmdev->pages[i].read_vout =3D=3D 0) { /* PSU disabled */
-+            continue;
-+        }
-+
-+        if (pmdev->pages[i].read_vout > s->vout_peak[i]) {
-+            s->vout_peak[i] =3D pmdev->pages[i].read_vout;
-+        }
-+
-+        if (pmdev->pages[i].read_vout < s->vout_min[i]) {
-+            s->vout_min[i] =3D pmdev->pages[i].read_vout;
-+        }
-+
-+        if (pmdev->pages[i].read_iout > s->iout_peak[i]) {
-+            s->iout_peak[i] =3D pmdev->pages[i].read_iout;
-+        }
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        if (pmdev->pages[i + 16].read_temperature_1 > s->temperature_peak[=
-i]) {
-+            s->temperature_peak[i] =3D pmdev->pages[i + 16].read_temperatu=
-re_1;
-+        }
-+    }
-+}
-+
-+static uint8_t max34451_read_byte(PMBusDevice *pmdev)
-+{
-+    MAX34451State *s =3D MAX34451(pmdev);
-+    switch (pmdev->code) {
-+
-+    case PMBUS_POWER_GOOD_ON:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->power_good_on[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_POWER_GOOD_OFF:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->power_good_off[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TON_DELAY:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_delay[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TON_MAX_FAULT_LIMIT:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_max_fault_limit[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TOFF_DELAY:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->toff_delay[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_STATUS_MFR_SPECIFIC:
-+        if (pmdev->page < 16) {
-+            pmbus_send8(pmdev, s->status_mfr_specific[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_MFR_ID:
-+        pmbus_send8(pmdev, 0x4d); /* Maxim */
-+        break;
-+
-+    case PMBUS_MFR_MODEL:
-+        pmbus_send8(pmdev, 0x59);
-+        break;
-+
-+    case PMBUS_MFR_LOCATION:
-+        pmbus_send64(pmdev, s->mfr_location);
-+        break;
-+
-+    case PMBUS_MFR_DATE:
-+        pmbus_send64(pmdev, s->mfr_date);
-+        break;
-+
-+    case PMBUS_MFR_SERIAL:
-+        pmbus_send64(pmdev, s->mfr_serial);
-+        break;
-+
-+    case MAX34451_MFR_MODE:
-+        pmbus_send16(pmdev, s->mfr_mode);
-+        break;
-+
-+    case MAX34451_MFR_PSEN_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->psen_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_PEAK:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->vout_peak[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_PEAK:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->iout_peak[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMPERATURE_PEAK:
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            pmbus_send16(pmdev, s->temperature_peak[pmdev->page % 16]);
-+        } else {
-+            pmbus_send16(pmdev, s->temperature_peak[0]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_MIN:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->vout_min[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_NV_LOG_CONFIG:
-+        pmbus_send16(pmdev, s->nv_log_config);
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RESPONSE:
-+        if (pmdev->page < 16) {
-+            pmbus_send32(pmdev, s->fault_response[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RETRY:
-+        pmbus_send32(pmdev, s->fault_retry);
-+        break;
-+
-+    case MAX34451_MFR_NV_FAULT_LOG:
-+        pmbus_send32(pmdev, s->fault_log);
-+        break;
-+
-+    case MAX34451_MFR_TIME_COUNT:
-+        pmbus_send32(pmdev, s->time_count);
-+        break;
-+
-+    case MAX34451_MFR_MARGIN_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->margin_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FW_SERIAL:
-+        if (pmdev->page =3D=3D 255) {
-+            pmbus_send16(pmdev, 1); /* Firmware revision */
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_AVG:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->iout_avg[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CHANNEL_CONFIG:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->channel_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TON_SEQ_MAX:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_seq_max[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_PWM_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->pwm_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_SEQ_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->seq_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMP_SENSOR_CONFIG:
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            pmbus_send32(pmdev, s->temp_sensor_config[pmdev->page % 16]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_STORE_SINGLE:
-+        pmbus_send32(pmdev, s->store_single);
-+        break;
-+
-+    case MAX34451_MFR_CRC:
-+        pmbus_send32(pmdev, s->crc);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: reading from unsupported register: 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+    }
-+    return 0xFF;
-+}
-+
-+static int max34451_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-+                               uint8_t len)
-+{
-+    MAX34451State *s =3D MAX34451(pmdev);
-+
-+    if (len =3D=3D 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func_=
-_);
-+        return -1;
-+    }
-+
-+    pmdev->code =3D buf[0]; /* PMBus command code */
-+
-+    if (len =3D=3D 1) {
-+        return 0;
-+    }
-+
-+    /* Exclude command code from buffer */
-+    buf++;
-+    len--;
-+    uint8_t index =3D pmdev->page;
-+
-+    switch (pmdev->code) {
-+    case MAX34451_MFR_STORE_ALL:
-+    case MAX34451_MFR_RESTORE_ALL:
-+    case MAX34451_MFR_STORE_SINGLE:
-+        /*
-+         * TODO: hardware behaviour is to move the contents of volatile
-+         * memory to non-volatile memory.
-+         */
-+        break;
-+
-+    case PMBUS_POWER_GOOD_ON: /* R/W word */
-+        if (pmdev->page < MAX34451_NUM_PWR_DEVICES) {
-+            s->power_good_on[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_POWER_GOOD_OFF: /* R/W word */
-+        if (pmdev->page < MAX34451_NUM_PWR_DEVICES) {
-+            s->power_good_off[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_TON_DELAY: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_delay[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_TON_MAX_FAULT_LIMIT: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_max_fault_limit[pmdev->page]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_TOFF_DELAY: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->toff_delay[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_MFR_LOCATION: /* R/W 64 */
-+        s->mfr_location =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case PMBUS_MFR_DATE: /* R/W 64 */
-+        s->mfr_date =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case PMBUS_MFR_SERIAL: /* R/W 64 */
-+        s->mfr_serial =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_MODE: /* R/W word */
-+         s->mfr_mode =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_PSEN_CONFIG: /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->psen_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_PEAK: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->vout_peak[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_PEAK: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->iout_peak[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMPERATURE_PEAK: /* R/W word */
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            s->temperature_peak[pmdev->page % 16]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_MIN: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->vout_min[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_NV_LOG_CONFIG: /* R/W word */
-+         s->nv_log_config =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RESPONSE: /* R/W 32 */
-+        if (pmdev->page < 16) {
-+            s->fault_response[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RETRY: /* R/W word */
-+        s->fault_retry =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_TIME_COUNT: /* R/W 32 */
-+        s->time_count =3D pmbus_receive32(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_MARGIN_CONFIG: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->margin_config[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CHANNEL_CONFIG: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->channel_config[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TON_SEQ_MAX: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_seq_max[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_PWM_CONFIG: /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->pwm_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_SEQ_CONFIG:  /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->seq_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMP_SENSOR_CONFIG:  /* R/W word */
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            s->temp_sensor_config[pmdev->page % 16]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CRC: /* R/W word */
-+        s->crc =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_NV_FAULT_LOG:
-+    case MAX34451_MFR_FW_SERIAL:
-+    case MAX34451_MFR_IOUT_AVG:
-+        /* Read only commands */
-+        pmdev->pages[index].status_word |=3D PMBUS_STATUS_CML;
-+        pmdev->pages[index].status_cml |=3D PB_CML_FAULT_INVALID_DATA;
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: writing to read-only register 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: writing to unsupported register: 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static void max34451_get(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    visit_type_uint16(v, name, (uint16_t *)opaque, errp);
-+}
-+
-+static void max34451_set(Object *obj, Visitor *v, const char *name,
-+                                 void *opaque, Error **errp)
-+{
-+    MAX34451State *s =3D MAX34451(obj);
-+    uint16_t *internal =3D opaque;
-+    uint16_t value;
-+    if (!visit_type_uint16(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    *internal =3D value;
-+    max34451_check_limits(s);
-+}
-+
-+/* used to init uint16_t arrays */
-+static inline void *memset_word(void *s, uint16_t c, size_t n)
-+{
-+    size_t i;
-+    uint16_t *p =3D s;
-+
-+    for (i =3D 0; i < n; i++) {
-+        p[i] =3D c;
-+    }
-+
-+    return s;
-+}
-+
-+static void max34451_exit_reset(Object *obj)
-+{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
-+    MAX34451State *s =3D MAX34451(obj);
-+    pmdev->capability =3D DEFAULT_CAPABILITY;
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PAGES; i++) {
-+        pmdev->pages[i].operation =3D DEFAULT_OP_ON;
-+        pmdev->pages[i].on_off_config =3D DEFAULT_ON_OFF_CONFIG;
-+        pmdev->pages[i].revision =3D 0x11;
-+        pmdev->pages[i].vout_mode =3D DEFAULT_VOUT_MODE;
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        pmdev->pages[i].vout_scale_monitor =3D DEFAULT_SCALE;
-+        pmdev->pages[i].vout_ov_fault_limit =3D DEFAULT_OV_LIMIT;
-+        pmdev->pages[i].vout_ov_warn_limit =3D DEFAULT_OV_LIMIT;
-+        pmdev->pages[i].iout_oc_warn_limit =3D DEFAULT_OC_LIMIT;
-+        pmdev->pages[i].iout_oc_fault_limit =3D DEFAULT_OC_LIMIT;
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_MARGINED_PSU; i++) {
-+        pmdev->pages[i].ton_max_fault_limit =3D DEFAULT_TON_FAULT_LIMIT;
-+    }
-+
-+    for (int i =3D 16; i < MAX34451_NUM_TEMP_DEVICES + 16; i++) {
-+        pmdev->pages[i].read_temperature_1 =3D DEFAULT_TEMPERATURE;
-+        pmdev->pages[i].ot_warn_limit =3D DEFAULT_OT_LIMIT;
-+        pmdev->pages[i].ot_fault_limit =3D DEFAULT_OT_LIMIT;
-+    }
-+
-+    memset_word(s->ton_max_fault_limit, DEFAULT_TON_FAULT_LIMIT,
-+                MAX34451_NUM_MARGINED_PSU);
-+    memset_word(s->channel_config, DEFAULT_CHANNEL_CONFIG,
-+                MAX34451_NUM_PWR_DEVICES);
-+    memset_word(s->vout_min, DEFAULT_VMIN, MAX34451_NUM_PWR_DEVICES);
-+
-+    s->mfr_location =3D DEFAULT_TEXT;
-+    s->mfr_date =3D DEFAULT_TEXT;
-+    s->mfr_serial =3D DEFAULT_TEXT;
-+}
-+
-+static const VMStateDescription vmstate_max34451 =3D {
-+    .name =3D TYPE_MAX34451,
-+    .version_id =3D 0,
-+    .minimum_version_id =3D 0,
-+    .fields =3D (VMStateField[]){
-+        VMSTATE_PMBUS_DEVICE(parent, MAX34451State),
-+        VMSTATE_UINT16_ARRAY(power_good_on, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(power_good_off, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(ton_delay, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(ton_max_fault_limit, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(toff_delay, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT8_ARRAY(status_mfr_specific, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT64(mfr_location, MAX34451State),
-+        VMSTATE_UINT64(mfr_date, MAX34451State),
-+        VMSTATE_UINT64(mfr_serial, MAX34451State),
-+        VMSTATE_UINT16(mfr_mode, MAX34451State),
-+        VMSTATE_UINT32_ARRAY(psen_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(vout_peak, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(iout_peak, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(temperature_peak, MAX34451State,
-+                             MAX34451_NUM_TEMP_DEVICES),
-+        VMSTATE_UINT16_ARRAY(vout_min, MAX34451State, MAX34451_NUM_PWR_DEV=
-ICES),
-+        VMSTATE_UINT16(nv_log_config, MAX34451State),
-+        VMSTATE_UINT32_ARRAY(fault_response, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16(fault_retry, MAX34451State),
-+        VMSTATE_UINT32(fault_log, MAX34451State),
-+        VMSTATE_UINT32(time_count, MAX34451State),
-+        VMSTATE_UINT16_ARRAY(margin_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16(fw_serial, MAX34451State),
-+        VMSTATE_UINT16_ARRAY(iout_avg, MAX34451State, MAX34451_NUM_PWR_DEV=
-ICES),
-+        VMSTATE_UINT16_ARRAY(channel_config, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(ton_seq_max, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT32_ARRAY(pwm_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT32_ARRAY(seq_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(temp_sensor_config, MAX34451State,
-+                             MAX34451_NUM_TEMP_DEVICES),
-+        VMSTATE_UINT16(store_single, MAX34451State),
-+        VMSTATE_UINT16(crc, MAX34451State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void max34451_init(Object *obj)
-+{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
-+    uint64_t psu_flags =3D PB_HAS_VOUT | PB_HAS_IOUT | PB_HAS_VOUT_MODE |
-+                         PB_HAS_IOUT_GAIN;
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        pmbus_page_config(pmdev, i, psu_flags);
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_MARGINED_PSU; i++) {
-+        pmbus_page_config(pmdev, i, psu_flags | PB_HAS_VOUT_MARGIN);
-+    }
-+
-+    for (int i =3D 16; i < MAX34451_NUM_TEMP_DEVICES + 16; i++) {
-+        pmbus_page_config(pmdev, i, PB_HAS_TEMPERATURE | PB_HAS_VOUT_MODE)=
-;
-+    }
-+
-+    /* get and set the voltage in millivolts, max is 32767 mV */
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        object_property_add(obj, "vout[*]", "uint16",
-+                            max34451_get,
-+                            max34451_set, NULL, &pmdev->pages[i].read_vout=
-);
-+    }
-+
-+    /*
-+     * get and set the temperature of the internal temperature sensor in
-+     * centidegrees Celcius i.e.: 2500 -> 25.00 C, max is 327.67 C
-+     */
-+    for (int i =3D 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        object_property_add(obj, "temperature[*]", "uint16",
-+                            max34451_get,
-+                            max34451_set,
-+                            NULL,
-+                            &pmdev->pages[i + 16].read_temperature_1);
-+    }
-+
-+}
-+
-+static void max34451_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(klass);
-+    dc->desc =3D "Maxim MAX34451 16-Channel V/I monitor";
-+    dc->vmsd =3D &vmstate_max34451;
-+    k->write_data =3D max34451_write_data;
-+    k->receive_byte =3D max34451_read_byte;
-+    k->device_num_pages =3D MAX34451_NUM_PAGES;
-+    rc->phases.exit =3D max34451_exit_reset;
-+}
-+
-+static const TypeInfo max34451_info =3D {
-+    .name =3D TYPE_MAX34451,
-+    .parent =3D TYPE_PMBUS_DEVICE,
-+    .instance_size =3D sizeof(MAX34451State),
-+    .instance_init =3D max34451_init,
-+    .class_init =3D max34451_class_init,
-+};
-+
-+static void max34451_register_types(void)
-+{
-+    type_register_static(&max34451_info);
-+}
-+
-+type_init(max34451_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index e141084a79..d689941f64 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -374,6 +374,7 @@ config NPCM7XX
-     select ADM1272
-     select ARM_GIC
-     select AT24C  # EEPROM
-+    select MAX34451
-     select PL310  # cache controller
-     select PMBUS
-     select SERIAL
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 0774c1f70c..1747667984 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -30,6 +30,10 @@ config EMC141X
-     bool
-     depends on I2C
-=20
-+config MAX34451
-+    bool
-+    depends on I2C
-+
- config ISA_DEBUG
-     bool
-     depends on ISA_BUS
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 8666e9225a..b62919e1fe 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -11,6 +11,7 @@ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp=
-105.c'))
- softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
- softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
- softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
-+softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
- softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
- softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
- softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
---=20
-2.32.0.93.g670b81a890-goog
+Eric
+>> +        break;
+>> +
+>> +    case GITS_PAGE_SIZE_64K:
+>> +        result = FIELD_EX64(value, GITS_BASER, PHYADDRL_64K) << 16;
+>> +        result |= FIELD_EX64(value, GITS_BASER, PHYADDRH_64K) << 48;
+>> +        break;
+>> +
+>> +    default:
+>> +        break;
+>> +    }
+>> +    return result;
+>> +}
+>> +
+>> +/*
+>> + * This function extracts the ITS Device and Collection table specific
+>> + * parameters (like base_addr, size etc) from GITS_BASER register.
+>> + * It is called during ITS enable and also during post_load migration
+>> + */
+>> +static void extract_table_params(GICv3ITSState *s)
+>> +{
+>> +    uint16_t num_pages = 0;
+>> +    uint8_t  page_sz_type;
+>> +    uint8_t type;
+>> +    uint32_t page_sz = 0;
+>> +    uint64_t value;
+>> +
+>> +    for (int i = 0; i < 8; i++) {
+>> +        value = s->baser[i];
+>> +
+>> +        if (!value) {
+>> +            continue;
+>> +        }
+>> +
+>> +        page_sz_type = FIELD_EX64(value, GITS_BASER, PAGESIZE);
+>> +
+>> +        switch (page_sz_type) {
+>> +        case 0:
+>> +            page_sz = GITS_PAGE_SIZE_4K;
+>> +            break;
+>> +
+>> +        case 1:
+>> +            page_sz = GITS_PAGE_SIZE_16K;
+>> +            break;
+>> +
+>> +        case 2:
+>> +        case 3:
+>> +            page_sz = GITS_PAGE_SIZE_64K;
+>> +            break;
+>> +
+>> +        default:
+>> +            g_assert_not_reached();
+>> +        }
+>> +
+>> +        num_pages = FIELD_EX64(value, GITS_BASER, SIZE) + 1;
+>> +
+>> +        type = FIELD_EX64(value, GITS_BASER, TYPE);
+>> +
+>> +        switch (type) {
+>> +
+>> +        case GITS_ITT_TYPE_DEVICE:
+>> +            memset(&s->dt, 0 , sizeof(s->dt));
+>> +            s->dt.valid = FIELD_EX64(value, GITS_BASER, VALID);
+>> +
+>> +            if (!s->dt.valid) {
+>> +                return;
+>> +            }
+>> +
+>> +            s->dt.page_sz = page_sz;
+>> +            s->dt.indirect = FIELD_EX64(value, GITS_BASER, INDIRECT);
+>> +            s->dt.entry_sz = FIELD_EX64(value, GITS_BASER, ENTRYSIZE);
+>> +
+>> +            if (!s->dt.indirect) {
+>> +                s->dt.max_entries = (num_pages * page_sz) / s->dt.entry_sz;
+>> +            } else {
+>> +                s->dt.max_entries = (((num_pages * page_sz) /
+>> +                                     L1TABLE_ENTRY_SIZE) *
+>> +                                     (page_sz / s->dt.entry_sz));
+>> +            }
+>> +
+>> +            s->dt.maxids.max_devids = (1UL << (FIELD_EX64(s->typer, GITS_TYPER,
+>> +                                       DEVBITS) + 1));
+>> +
+>> +            s->dt.base_addr = baser_base_addr(value, page_sz);
+>> +
+>> +            break;
+>> +
+>> +        case GITS_ITT_TYPE_COLLECTION:
+>> +            memset(&s->ct, 0 , sizeof(s->ct));
+>> +            s->ct.valid = FIELD_EX64(value, GITS_BASER, VALID);
+>> +
+>> +            /*
+>> +             * GITS_TYPER.HCC is 0 for this implementation
+>> +             * hence writes are discarded if ct.valid is 0
+>> +             */
+>> +            if (!s->ct.valid) {
+>> +                return;
+>> +            }
+>> +
+>> +            s->ct.page_sz = page_sz;
+>> +            s->ct.indirect = FIELD_EX64(value, GITS_BASER, INDIRECT);
+>> +            s->ct.entry_sz = FIELD_EX64(value, GITS_BASER, ENTRYSIZE);
+>> +
+>> +            if (!s->ct.indirect) {
+>> +                s->ct.max_entries = (num_pages * page_sz) / s->ct.entry_sz;
+>> +            } else {
+>> +                s->ct.max_entries = (((num_pages * page_sz) /
+>> +                                     L1TABLE_ENTRY_SIZE) *
+>> +                                     (page_sz / s->ct.entry_sz));
+>> +            }
+>> +
+>> +            if (FIELD_EX64(s->typer, GITS_TYPER, CIL)) {
+>> +                s->ct.maxids.max_collids = (1UL << (FIELD_EX64(s->typer,
+>> +                                            GITS_TYPER, CIDBITS) + 1));
+>> +            } else {
+>> +                /* 16-bit CollectionId supported when CIL == 0 */
+>> +                s->ct.maxids.max_collids = (1UL << 16);
+>> +            }
+>> +
+>> +            s->ct.base_addr = baser_base_addr(value, page_sz);
+>> +
+>> +            break;
+>> +
+>> +        default:
+>> +            break;
+>> +        }
+>> +    }
+>> +}
+>> +
+>> +static void extract_cmdq_params(GICv3ITSState *s)
+>> +{
+>> +    uint16_t num_pages = 0;
+>> +    uint64_t value = s->cbaser;
+>> +
+>> +    num_pages = FIELD_EX64(value, GITS_CBASER, SIZE) + 1;
+>> +
+>> +    memset(&s->cq, 0 , sizeof(s->cq));
+>> +    s->cq.valid = FIELD_EX64(value, GITS_CBASER, VALID);
+>> +
+>> +    if (s->cq.valid) {
+>> +        s->cq.max_entries = (num_pages * GITS_PAGE_SIZE_4K) /
+>> +                             GITS_CMDQ_ENTRY_SIZE;
+>> +        s->cq.base_addr = FIELD_EX64(value, GITS_CBASER, PHYADDR);
+>> +        s->cq.base_addr <<= R_GITS_CBASER_PHYADDR_SHIFT;
+>> +    }
+>> +}
+>> +
+>>  static MemTxResult gicv3_its_translation_write(void *opaque, hwaddr offset,
+>>                                                 uint64_t data, unsigned size,
+>>                                                 MemTxAttrs attrs)
+>> @@ -41,7 +195,99 @@ static MemTxResult its_writel(GICv3ITSState *s, hwaddr offset,
+>>                                uint64_t value, MemTxAttrs attrs)
+>>  {
+>>      MemTxResult result = MEMTX_OK;
+>> +    int index;
+>>  
+>> +    switch (offset) {
+>> +    case GITS_CTLR:
+>> +        s->ctlr |= (value & ~(s->ctlr));
+>> +
+>> +        if (s->ctlr & ITS_CTLR_ENABLED) {
+>> +            extract_table_params(s);
+>> +            extract_cmdq_params(s);
+>> +            s->creadr = 0;
+>> +        }
+>> +        break;
+>> +    case GITS_CBASER:
+>> +        /*
+>> +         * IMPDEF choice:- GITS_CBASER register becomes RO if ITS is
+>> +         *                 already enabled
+>> +         */
+>> +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
+>> +            s->cbaser = deposit64(s->cbaser, 0, 32, value);
+>> +            s->creadr = 0;
+>> +            s->cwriter = s->creadr;
+>> +        }
+>> +        break;
+>> +    case GITS_CBASER + 4:
+>> +        /*
+>> +         * IMPDEF choice:- GITS_CBASER register becomes RO if ITS is
+>> +         *                 already enabled
+>> +         */
+>> +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
+>> +            s->cbaser = deposit64(s->cbaser, 32, 32, value);
+>> +            s->creadr = 0;
+>> +            s->cwriter = s->creadr;
+>> +        }
+>> +        break;
+>> +    case GITS_CWRITER:
+>> +        s->cwriter = deposit64(s->cwriter, 0, 32,
+>> +                               (value & ~R_GITS_CWRITER_RETRY_MASK));
+>> +        break;
+>> +    case GITS_CWRITER + 4:
+>> +        s->cwriter = deposit64(s->cwriter, 32, 32, value);
+>> +        break;
+>> +    case GITS_CREADR:
+>> +        if (s->gicv3->gicd_ctlr & GICD_CTLR_DS) {
+>> +            s->creadr = deposit64(s->creadr, 0, 32,
+>> +                                  (value & ~R_GITS_CREADR_STALLED_MASK));
+>> +        } else {
+>> +            /* RO register, ignore the write */
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "%s: invalid guest write to RO register at offset "
+>> +                          TARGET_FMT_plx "\n", __func__, offset);
+>> +        }
+>> +        break;
+>> +    case GITS_CREADR + 4:
+>> +        if (s->gicv3->gicd_ctlr & GICD_CTLR_DS) {
+>> +            s->creadr = deposit64(s->creadr, 32, 32, value);
+>> +        } else {
+>> +            /* RO register, ignore the write */
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "%s: invalid guest write to RO register at offset "
+>> +                          TARGET_FMT_plx "\n", __func__, offset);
+>> +        }
+>> +        break;
+>> +    case GITS_BASER ... GITS_BASER + 0x3f:
+>> +        /*
+>> +         * IMPDEF choice:- GITS_BASERn register becomes RO if ITS is
+>> +         *                 already enabled
+>> +         */
+>> +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
+>> +            index = (offset - GITS_BASER) / 8;
+>> +
+>> +            if (offset & 7) {
+>> +                value <<= 32;
+>> +                value &= ~GITS_BASER_RO_MASK;
+>> +                s->baser[index] &= GITS_BASER_RO_MASK | MAKE_64BIT_MASK(0, 32);
+>> +                s->baser[index] |= value;
+>> +            } else {
+>> +                value &= ~GITS_BASER_RO_MASK;
+>> +                s->baser[index] &= GITS_BASER_RO_MASK | MAKE_64BIT_MASK(32, 32);
+>> +                s->baser[index] |= value;
+>> +            }
+>> +        }
+>> +        break;
+>> +    case GITS_IIDR:
+>> +    case GITS_IDREGS ... GITS_IDREGS + 0x2f:
+>> +        /* RO registers, ignore the write */
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: invalid guest write to RO register at offset "
+>> +                      TARGET_FMT_plx "\n", __func__, offset);
+>> +        break;
+>> +    default:
+>> +        result = MEMTX_ERROR;
+>> +        break;
+>> +    }
+>>      return result;
+>>  }
+>>  
+>> @@ -49,7 +295,55 @@ static MemTxResult its_readl(GICv3ITSState *s, hwaddr offset,
+>>                               uint64_t *data, MemTxAttrs attrs)
+>>  {
+>>      MemTxResult result = MEMTX_OK;
+>> +    int index;
+>>  
+>> +    switch (offset) {
+>> +    case GITS_CTLR:
+>> +        *data = s->ctlr;
+>> +        break;
+>> +    case GITS_IIDR:
+>> +        *data = gicv3_iidr();
+>> +        break;
+>> +    case GITS_IDREGS ... GITS_IDREGS + 0x2f:
+>> +        /* ID registers */
+>> +        *data = gicv3_idreg(offset - GITS_IDREGS);
+>> +        break;
+>> +    case GITS_TYPER:
+>> +        *data = extract64(s->typer, 0, 32);
+>> +        break;
+>> +    case GITS_TYPER + 4:
+>> +        *data = extract64(s->typer, 32, 32);
+>> +        break;
+>> +    case GITS_CBASER:
+>> +        *data = extract64(s->cbaser, 0, 32);
+>> +        break;
+>> +    case GITS_CBASER + 4:
+>> +        *data = extract64(s->cbaser, 32, 32);
+>> +        break;
+>> +    case GITS_CREADR:
+>> +        *data = extract64(s->creadr, 0, 32);
+>> +        break;
+>> +    case GITS_CREADR + 4:
+>> +        *data = extract64(s->creadr, 32, 32);
+>> +        break;
+>> +    case GITS_CWRITER:
+>> +        *data = extract64(s->cwriter, 0, 32);
+>> +        break;
+>> +    case GITS_CWRITER + 4:
+>> +        *data = extract64(s->cwriter, 32, 32);
+>> +        break;
+>> +    case GITS_BASER ... GITS_BASER + 0x3f:
+>> +        index = (offset - GITS_BASER) / 8;
+>> +        if (offset & 7) {
+>> +            *data = extract64(s->baser[index], 32, 32);
+>> +        } else {
+>> +            *data = extract64(s->baser[index], 0, 32);
+>> +        }
+>> +        break;
+>> +    default:
+>> +        result = MEMTX_ERROR;
+>> +        break;
+>> +    }
+>>      return result;
+>>  }
+>>  
+>> @@ -57,7 +351,54 @@ static MemTxResult its_writell(GICv3ITSState *s, hwaddr offset,
+>>                                 uint64_t value, MemTxAttrs attrs)
+>>  {
+>>      MemTxResult result = MEMTX_OK;
+>> +    int index;
+>>  
+>> +    switch (offset) {
+>> +    case GITS_BASER ... GITS_BASER + 0x3f:
+>> +        /*
+>> +         * IMPDEF choice:- GITS_BASERn register becomes RO if ITS is
+>> +         *                 already enabled
+>> +         */
+>> +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
+>> +            index = (offset - GITS_BASER) / 8;
+>> +            s->baser[index] &= GITS_BASER_RO_MASK;
+>> +            s->baser[index] |= (value & ~GITS_BASER_RO_MASK);
+>> +        }
+>> +        break;
+>> +    case GITS_CBASER:
+>> +        /*
+>> +         * IMPDEF choice:- GITS_CBASER register becomes RO if ITS is
+>> +         *                 already enabled
+>> +         */
+>> +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
+>> +            s->cbaser = value;
+>> +            s->creadr = 0;
+>> +            s->cwriter = s->creadr;
+>> +        }
+>> +        break;
+>> +    case GITS_CWRITER:
+>> +        s->cwriter = value & ~R_GITS_CWRITER_RETRY_MASK;
+>> +        break;
+>> +    case GITS_CREADR:
+>> +        if (s->gicv3->gicd_ctlr & GICD_CTLR_DS) {
+>> +            s->creadr = value & ~R_GITS_CREADR_STALLED_MASK;
+>> +        } else {
+>> +            /* RO register, ignore the write */
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "%s: invalid guest write to RO register at offset "
+>> +                          TARGET_FMT_plx "\n", __func__, offset);
+>> +        }
+>> +        break;
+>> +    case GITS_TYPER:
+>> +        /* RO registers, ignore the write */
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: invalid guest write to RO register at offset "
+>> +                      TARGET_FMT_plx "\n", __func__, offset);
+>> +        break;
+>> +    default:
+>> +        result = MEMTX_ERROR;
+>> +        break;
+>> +    }
+>>      return result;
+>>  }
+>>  
+>> @@ -65,7 +406,29 @@ static MemTxResult its_readll(GICv3ITSState *s, hwaddr offset,
+>>                                uint64_t *data, MemTxAttrs attrs)
+>>  {
+>>      MemTxResult result = MEMTX_OK;
+>> +    int index;
+>>  
+>> +    switch (offset) {
+>> +    case GITS_TYPER:
+>> +        *data = s->typer;
+>> +        break;
+>> +    case GITS_BASER ... GITS_BASER + 0x3f:
+>> +        index = (offset - GITS_BASER) / 8;
+>> +        *data = s->baser[index];
+>> +        break;
+>> +    case GITS_CBASER:
+>> +        *data = s->cbaser;
+>> +        break;
+>> +    case GITS_CREADR:
+>> +        *data = s->creadr;
+>> +        break;
+>> +    case GITS_CWRITER:
+>> +        *data = s->cwriter;
+>> +        break;
+>> +    default:
+>> +        result = MEMTX_ERROR;
+>> +        break;
+>> +    }
+>>      return result;
+>>  }
+>>  
+>> @@ -162,6 +525,9 @@ static void gicv3_arm_its_realize(DeviceState *dev, Error **errp)
+>>      gicv3_its_init_mmio(s, &gicv3_its_control_ops, &gicv3_its_translation_ops);
+>>  
+>>      if (s->gicv3->cpu->gicr_typer & GICR_TYPER_PLPIS) {
+>> +        address_space_init(&s->gicv3->dma_as, s->gicv3->dma,
+>> +                           "gicv3-its-sysmem");
+>> +
+>>          /* set the ITS default features supported */
+>>          s->typer = FIELD_DP64(s->typer, GITS_TYPER, PHYSICAL,
+>>                                GITS_TYPE_PHYSICAL);
+>> @@ -208,6 +574,14 @@ static void gicv3_its_reset(DeviceState *dev)
+>>      }
+>>  }
+>>  
+>> +static void gicv3_its_post_load(GICv3ITSState *s)
+>> +{
+>> +    if (s->ctlr & ITS_CTLR_ENABLED) {
+>> +        extract_table_params(s);
+>> +        extract_cmdq_params(s);
+>> +    }
+>> +}
+>> +
+>>  static Property gicv3_its_props[] = {
+>>      DEFINE_PROP_LINK("parent-gicv3", GICv3ITSState, gicv3, "arm-gicv3",
+>>                       GICv3State *),
+>> @@ -218,10 +592,12 @@ static void gicv3_its_class_init(ObjectClass *klass, void *data)
+>>  {
+>>      DeviceClass *dc = DEVICE_CLASS(klass);
+>>      GICv3ITSClass *ic = ARM_GICV3_ITS_CLASS(klass);
+>> +    GICv3ITSCommonClass *icc = ARM_GICV3_ITS_COMMON_CLASS(klass);
+>>  
+>>      dc->realize = gicv3_arm_its_realize;
+>>      device_class_set_props(dc, gicv3_its_props);
+>>      device_class_set_parent_reset(dc, gicv3_its_reset, &ic->parent_reset);
+>> +    icc->post_load = gicv3_its_post_load;
+>>  }
+>>  
+>>  static const TypeInfo gicv3_its_info = {
+>> diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+>> index e0b06930a7..dc2c1bc45b 100644
+>> --- a/hw/intc/gicv3_internal.h
+>> +++ b/hw/intc/gicv3_internal.h
+>> @@ -238,7 +238,7 @@ FIELD(GITS_BASER, PAGESIZE, 8, 2)
+>>  FIELD(GITS_BASER, SHAREABILITY, 10, 2)
+>>  FIELD(GITS_BASER, PHYADDR, 12, 36)
+>>  FIELD(GITS_BASER, PHYADDRL_64K, 16, 32)
+>> -FIELD(GITS_BASER, PHYADDRH_64K, 48, 4)
+>> +FIELD(GITS_BASER, PHYADDRH_64K, 12, 4)
+> should have been addressed earlier
+>>  FIELD(GITS_BASER, ENTRYSIZE, 48, 5)
+>>  FIELD(GITS_BASER, OUTERCACHE, 53, 3)
+>>  FIELD(GITS_BASER, TYPE, 56, 3)
+>> @@ -246,6 +246,20 @@ FIELD(GITS_BASER, INNERCACHE, 59, 3)
+>>  FIELD(GITS_BASER, INDIRECT, 62, 1)
+>>  FIELD(GITS_BASER, VALID, 63, 1)
+>>  
+>> +FIELD(GITS_CBASER, SIZE, 0, 8)
+>> +FIELD(GITS_CBASER, SHAREABILITY, 10, 2)
+>> +FIELD(GITS_CBASER, PHYADDR, 12, 40)
+>> +FIELD(GITS_CBASER, OUTERCACHE, 53, 3)
+>> +FIELD(GITS_CBASER, INNERCACHE, 59, 3)
+>> +FIELD(GITS_CBASER, VALID, 63, 1)
+>> +
+>> +FIELD(GITS_CREADR, STALLED, 0, 1)
+>> +FIELD(GITS_CREADR, OFFSET, 5, 15)
+>> +
+>> +FIELD(GITS_CWRITER, RETRY, 0, 1)
+>> +FIELD(GITS_CWRITER, OFFSET, 5, 15)
+>> +
+>> +FIELD(GITS_CTLR, ENABLED, 0, 1)
+>>  FIELD(GITS_CTLR, QUIESCENT, 31, 1)
+>>  
+>>  FIELD(GITS_TYPER, PHYSICAL, 0, 1)
+>> @@ -257,6 +271,13 @@ FIELD(GITS_TYPER, PTA, 19, 1)
+>>  FIELD(GITS_TYPER, CIDBITS, 32, 4)
+>>  FIELD(GITS_TYPER, CIL, 36, 1)
+>>  
+>> +#define GITS_IDREGS           0xFFD0
+>> +
+>> +#define ITS_CTLR_ENABLED               (1U)  /* ITS Enabled */
+>> +
+>> +#define GITS_BASER_RO_MASK                  (R_GITS_BASER_ENTRYSIZE_MASK | \
+>> +                                              R_GITS_BASER_TYPE_MASK)
+>> +
+>>  #define GITS_BASER_PAGESIZE_4K                0
+>>  #define GITS_BASER_PAGESIZE_16K               1
+>>  #define GITS_BASER_PAGESIZE_64K               2
+>> @@ -264,6 +285,14 @@ FIELD(GITS_TYPER, CIL, 36, 1)
+>>  #define GITS_ITT_TYPE_DEVICE                  1ULL
+>>  #define GITS_ITT_TYPE_COLLECTION              4ULL
+>>  
+>> +#define GITS_PAGE_SIZE_4K       0x1000
+>> +#define GITS_PAGE_SIZE_16K      0x4000
+>> +#define GITS_PAGE_SIZE_64K      0x10000
+>> +
+>> +#define L1TABLE_ENTRY_SIZE         8
+>> +
+>> +#define GITS_CMDQ_ENTRY_SIZE               32
+>> +
+>>  /**
+>>   * Default features advertised by this version of ITS
+>>   */
+>> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+>> index 91491a2f66..1fd5cedbbd 100644
+>> --- a/include/hw/intc/arm_gicv3_common.h
+>> +++ b/include/hw/intc/arm_gicv3_common.h
+>> @@ -226,6 +226,9 @@ struct GICv3State {
+>>      int dev_fd; /* kvm device fd if backed by kvm vgic support */
+>>      Error *migration_blocker;
+>>  
+>> +    MemoryRegion *dma;
+>> +    AddressSpace dma_as;
+>> +
+>>      /* Distributor */
+>>  
+>>      /* for a GIC with the security extensions the NS banked version of this
+>> diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+>> index 65d1191db1..4e79145dde 100644
+>> --- a/include/hw/intc/arm_gicv3_its_common.h
+>> +++ b/include/hw/intc/arm_gicv3_its_common.h
+>> @@ -41,6 +41,25 @@
+>>  
+>>  #define GITS_TRANSLATER  0x0040
+>>  
+>> +typedef struct {
+>> +    bool valid;
+>> +    bool indirect;
+>> +    uint16_t entry_sz;
+>> +    uint32_t page_sz;
+>> +    uint32_t max_entries;
+>> +    union {
+>> +        uint32_t max_devids;
+>> +        uint32_t max_collids;
+>> +    } maxids;
+>> +    uint64_t base_addr;
+>> +} TableDesc;
+>> +
+>> +typedef struct {
+>> +    bool valid;
+>> +    uint32_t max_entries;
+>> +    uint64_t base_addr;
+>> +} CmdQDesc;
+>> +
+>>  struct GICv3ITSState {
+>>      SysBusDevice parent_obj;
+>>  
+>> @@ -63,6 +82,10 @@ struct GICv3ITSState {
+>>      uint64_t creadr;
+>>      uint64_t baser[8];
+>>  
+>> +    TableDesc  dt;
+>> +    TableDesc  ct;
+>> +    CmdQDesc   cq;
+>> +
+>>      Error *migration_blocker;
+>>  };
+>>  
+>>
+> Besides
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> 
+> Eric
+> 
+> 
 

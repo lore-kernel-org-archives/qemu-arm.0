@@ -1,102 +1,104 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp524160lfg;
-        Thu, 8 Jul 2021 10:21:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwQpyHP4Qxbqgze6Jkxo9e9AzW3qnGXQNpYjw+Mh0mK6blYF7kPOEjdl2IEcJhH/go8APA0
-X-Received: by 2002:a05:6102:d8:: with SMTP id u24mr22921372vsp.50.1625764898566;
-        Thu, 08 Jul 2021 10:21:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625764898; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp524294lfg;
+        Thu, 8 Jul 2021 10:21:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdpXaa0/lmzLyDJID1R2XJzuk9VAC4NA+qh9yrccK72B44AutqgN9tgMfZL5NM0qvZo2+f
+X-Received: by 2002:a05:6102:3a4c:: with SMTP id c12mr23512470vsu.32.1625764911809;
+        Thu, 08 Jul 2021 10:21:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625764911; cv=none;
         d=google.com; s=arc-20160816;
-        b=CMeQjD3yKyJ//D+O2Z+7uTQv5ofSJTJ+7DkYQxT1pNHjFQ1YvPSIvR8ytUtRO5DfSf
-         koL2YtokmB0egwXMRcWDMtHLBn6zXqSv8m2Pp53h5aw94SzosI4X6t7EHWAgjQ/GtaXh
-         BLsKD+xHTXjgYdh26MleF/w6vzzfR6U/+QxjIIOj4yI/YsPprPbbxknzLLaNCwzVSGmq
-         YYo/POysBMOq0toAmFFtIQTOd2j3RSTAIAUVcUnidyNd9qldR2Hcc9Yy9RaDxJQfD8cM
-         HOq+ScmWeSkwXd0gJ9gDKk8K/8PbPYkSsx3k/EIxClCSxYO8XRyOpRs12VMNuL/Kkimc
-         5mZw==
+        b=tseiZ6Xb6OEfsOj/xsTZCI8CryWKk05eSJVHw2MtTYLjBXP+7kfmsQmJ6ek3/2oUET
+         RrWCdF1GVnofNPUfnpuQFRvyAToGSPnJQZkj1RLPQZFGDemjIXs+hSlUpcWKcZSRMfWX
+         Zp9KqZrN9ndrC3CNJVP9txFsiqOHpp497hA+K4TcZnW590Q3F8yybRL6/iOPDiQslIFH
+         t/0pLd0RO8ZgT+Jzyj5tUq4AZqRDNlrwbsWno0uiwkFz9gk0Olb96+XtPHxA6iHCqT/2
+         BO3R0diRNq737VD2luGxf1kEUNOqTWncE9rQV32GgCoQJPLcQe8CDIdKAC7nLp6hjFnU
+         nAXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:mime-version:message-id:date:dkim-signature;
-        bh=FHr7GpTjcPKiQulO8xLSX0cn+GAjyuX024ozidFHqF8=;
-        b=t4MXBoxrz+MUBGcxsr1vh1mNOZ5snpsDwZCuzr276MF7cQ7yK5QxyZLpu2NFBA8Al7
-         jj4Rq2n8G0RneBBz7mfBzVYyPnl26pm7pwEocpnr79Y1UNr2iQBAL7SDl/XJFT7Mc9iW
-         J34cYr4qBx1VJrmRF0L71+IQG1pE0X5kxTGs5LcOnN9u1rESe/VkYG2IaLYeXOavkLcs
-         CjDyAQAya7ETJCtUm6Yn/ub1IXyC00hC5Fvon0Cq7ecS+VU4NkLtkiXlWXKssQrhPiFg
-         g0ynZGoZ5s8pNM//J89AZGbtQKY1c5xp9gfbKpn1cwReEAB3LMaHlcFj3Ee4A1Y7kOnH
-         BR4w==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=h8JfMDq/isEIzVX+0Bh74epq6zyFGJ2pGT60ked+WY4=;
+        b=mDdyJQlwTCBeVP0/ZDrOC+vrdF9eSVdMpAeASKeoK2AK7cPnBp1Nhv2pEN06OzUlJV
+         4TnNcDnLAKcZsZlaFBlfNgj2g2iBQ0Pw072KKzIcwDVS8ysVkmbVdr62CFRPV3qD6K5L
+         YNmAzf9N6zv3aBt1RiG4cVqnZbBfzkZ+/8U/Q3QLya6/GhQ2sVniJytZFz7qw7uas91z
+         DlxF7b20Gf3BPf0l/weWzxCSDxBVMFnqbB+CjmD4bvytjJqAbl8le5MoxPivi8Vc6K7p
+         EMNxdHy2iLevThsqNScUrWvfB5JQPLlL7+UVAtlS7vnzRdcDMmMIrwXgRuFrXIiLz+SU
+         jUUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=U6n+48LR;
+       dkim=pass header.i=@google.com header.s=20161025 header.b="ek/3RyWQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m16si2740957vsk.365.2021.07.08.10.21.38
+        by mx.google.com with ESMTPS id u19si186848vsc.38.2021.07.08.10.21.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jul 2021 10:21:38 -0700 (PDT)
+        Thu, 08 Jul 2021 10:21:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=U6n+48LR;
+       dkim=pass header.i=@google.com header.s=20161025 header.b="ek/3RyWQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:48610 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1XiT-0008KY-Pg
-	for alex.bennee@linaro.org; Thu, 08 Jul 2021 13:21:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50874)
+	id 1m1Xih-0000jk-1R
+	for alex.bennee@linaro.org; Thu, 08 Jul 2021 13:21:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50944)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <36TPnYAYKCPovkvwutiqqing.eqosgow-ctopqpipw.qti@flex--titusr.bounces.google.com>)
- id 1m1Xhe-0007iX-LC
- for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:46 -0400
-Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749]:55286)
+ <37jPnYAYKCAEujuvtshpphmf.dpnrfnv-bsnopohov.psh@flex--titusr.bounces.google.com>)
+ id 1m1Xhk-0007zC-E5
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:52 -0400
+Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749]:42571)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <36TPnYAYKCPovkvwutiqqing.eqosgow-ctopqpipw.qti@flex--titusr.bounces.google.com>)
- id 1m1Xhb-00040H-Ik
- for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:46 -0400
+ <37jPnYAYKCAEujuvtshpphmf.dpnrfnv-bsnopohov.psh@flex--titusr.bounces.google.com>)
+ id 1m1Xhf-00042T-Qy
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:52 -0400
 Received: by mail-qk1-x749.google.com with SMTP id
- 4-20020a3709040000b02903b4d0f603a9so4349368qkj.21
- for <qemu-arm@nongnu.org>; Thu, 08 Jul 2021 10:20:42 -0700 (PDT)
+ o14-20020a05620a0d4eb02903a5eee61155so4370907qkl.9
+ for <qemu-arm@nongnu.org>; Thu, 08 Jul 2021 10:20:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc
- :content-transfer-encoding;
- bh=FHr7GpTjcPKiQulO8xLSX0cn+GAjyuX024ozidFHqF8=;
- b=U6n+48LR5NRD4ybZqBw/DIHVvTqxQlwgOhEinse2pV2jca8Wlu9Vk5gQmQE5DbibdF
- DdxcZwu1X6RrPfUw7B1jHIm8crpDvYmQBWDX5c4sltzLoXIITsNHWKecHRUBREvzSGMN
- kRRQdnKtNISR5tHuDUhXyKYZGq0L8n2g68psFX7xBKRkxm0UG2XSPA8byX0uF9ZB06n2
- qO0JyoVch7Me5qGK7L9edh9GTTcB7GIuDClAtbwMfHwTBSAeERdLP1Mtvmmjg8SyBbke
- FEn5+PNXTIF3+KUOGsb1788iEgAxKZ31bbqlsjnJvSQzlrlGAalioGZ8k46Km4coezbs
- +5gg==
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=h8JfMDq/isEIzVX+0Bh74epq6zyFGJ2pGT60ked+WY4=;
+ b=ek/3RyWQiXXDoc0ahtRzLzqaDHpacaRWWpbEbVwpAOBvSe9QarYO7nvUiGd1a6gUz+
+ ClzbcKgym+WP+YcNXdgOCNnhoSpAxZpsvNMwoCQE54qvVb9q1QawAjgihiEqSrDT0C+J
+ UGOs9feg9NK7WhPaIPaA2enDVULCkBVHA2Xtc3cmsDerdwPQP9borUAN+Ltqe7SR08Ep
+ nw5sKFc5LFj6RL8p9/QzW1Q00H9OBQHH/S3XBHAcirWFtmvM7f+EosoP+ZTYRVp7bW5b
+ NKr6IK3rPk20yzPPFrHS0M8q9ta2wz02SOMB/3ORZnxCy9bqn3cqO5RGFRv/v1MO9WiU
+ +ZZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc
- :content-transfer-encoding;
- bh=FHr7GpTjcPKiQulO8xLSX0cn+GAjyuX024ozidFHqF8=;
- b=m7sW/1lo2uEoLvI3t7sJP1JuZveUMo5lLMugOWH3XYFQpp/YC3EIjEOsc7RhrjEVf2
- TfuI3fCPGHSf/uAyWUvapEXL8a2mQuNcEU1C2TXisFIUthZ9M5bzYXAMELdGzDwRZCVx
- Ae9sA/fLwK74xGUjL0d25z4Vas/5vtSICLOzyc4aQHFtl/PohGA7Deyk7QVRqcrND+E7
- AzZqmRWC37xyr03pgEBewBzTZOjwgGtny+UnLU62lxhQD8gSIGRAUWKuuwsXzrj6dHE7
- Wbiqa7FibxVJekuDMEf6JyMnHSS5M1XYJk9NhJybJO0GSGtKeBowavNBAubXvfpiyCn0
- uFCQ==
-X-Gm-Message-State: AOAM531sQzfsSEmnQ0wqVV6d+eOdKRD3fNXOoAWzeTKhpC9XVZZHpL+u
- UGJVs6tYPQOOyD9IbgCHySzw6xIXE2c=
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=h8JfMDq/isEIzVX+0Bh74epq6zyFGJ2pGT60ked+WY4=;
+ b=XzoUiVvRV9LfD6BYKybRAaWiqWEUpIhEDQ086og+6cDJjWgZJCZsSO7w2r3GajvmBH
+ nic7BuNcFgpJeskg1FqY3K0j3FxZfdE04PHUpG0DxKoZeMIFbp8g+Jij2q35qvYDCyK0
+ Ll+PyXLqZ/SF4/kZfP87KYpIj0Zuhnh5ANQEAKoUFpdvvhZkq6cj+oHDUbURu0tyJO3r
+ dLXDW/QmjeigWbdojjly9wa0szlFrx33ImTo2CElLKH8xSaZf6ys9tTFDZQOk1rXiWVz
+ KZlK1UwU6+0rHQyk4MsOZ9QzWCBm564xt9/rrGEyceiHhUAHqFHd/lk1j9Bk7qBdBisy
+ vTJA==
+X-Gm-Message-State: AOAM532R4NYyoC/MY9yDeZRYcq+VDL+QHPgTEB5ymOKFvk3oB/AVK5lo
+ PcT5IrQN6jVHoMEwAtSo677vz/idsG0=
 X-Received: from titusr.svl.corp.google.com
  ([2620:15c:2c5:13:6b42:285b:df15:bf])
- (user=titusr job=sendgmr) by 2002:a05:6214:190:: with SMTP id
- q16mr31079439qvr.9.1625764841628; Thu, 08 Jul 2021 10:20:41 -0700 (PDT)
-Date: Thu,  8 Jul 2021 10:20:12 -0700
-Message-Id: <20210708172017.1865352-1-titusr@google.com>
+ (user=titusr job=sendgmr) by 2002:ad4:40c1:: with SMTP id
+ x1mr31146960qvp.33.1625764846375; 
+ Thu, 08 Jul 2021 10:20:46 -0700 (PDT)
+Date: Thu,  8 Jul 2021 10:20:14 -0700
+In-Reply-To: <20210708172017.1865352-1-titusr@google.com>
+Message-Id: <20210708172017.1865352-3-titusr@google.com>
 Mime-Version: 1.0
+References: <20210708172017.1865352-1-titusr@google.com>
 X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
-Subject: [PATCH v5 0/5] Add support for PMBus in QEMU
+Subject: [PATCH v5 2/5] hw/misc: add ADM1272 device
 From: Titus Rwantare <titusr@google.com>
 To: Corey Minyard <minyard@acm.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Titus Rwantare <titusr@google.com>
+ Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>,
+ Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2607:f8b0:4864:20::749;
- envelope-from=36TPnYAYKCPovkvwutiqqing.eqosgow-ctopqpipw.qti@flex--titusr.bounces.google.com;
+ envelope-from=37jPnYAYKCAEujuvtshpphmf.dpnrfnv-bsnopohov.psh@flex--titusr.bounces.google.com;
  helo=mail-qk1-x749.google.com
 X-Spam_score_int: -100
 X-Spam_score: -10.1
@@ -104,7 +106,7 @@ X-Spam_bar: ----------
 X-Spam_report: (-10.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.5,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,88 +121,616 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ScgWL1H8B3ul
+X-TUID: ZbSKcaLwuh9i
 
-Hello,
+The ADM1272 is a PMBus compliant Hot Swap Controller and Digital Power
+Monitor by Analog Devices.
 
-This patch series adds an interface to start supporting PMBus devices in QE=
-MU.
-I=E2=80=99ve included two PMBus devices: MAX34451 and ADM1272.
+This commit adds support for interfacing with it, and support for
+setting and monitoring sensor limits.
 
-PMBus is a variant of SMBus meant for digital management of power supplies.
-PMBus adds to the SMBus standard by defining a number of constants and comm=
-ands
-used by compliant devices. The specification for PMBus can be found at:
+Datasheet: https://www.analog.com/media/en/technical-documentation/data-sheets/ADM1272.pdf
 
-https://pmbus.org/specification-archives/
-
-Currently, the goal for these devices is to emulate basic functionality by
-reading and writing registers. Timing, and some logical operation is not
-implemented. This implementation supports nearly all available registers fo=
-r
-PMBus including:
-   - Voltage inputs and outputs
-   - Current inputs and outputs
-   - Temperature sensors
-
-Unimplimented registers get passed through to the device model, and device
-models can opt out of using the standard registers with flags. The included
-devices make use of these fields and illustrate how to interface with the p=
-mbus
-class.
-
-Datasheets for sensors:
-
-https://datasheets.maximintegrated.com/en/ds/MAX34451.pdf
-https://www.analog.com/media/en/technical-documentation/data-sheets/ADM1272=
-.pdf
-
-Since v4:
-- switched to BIT_ULL for flags to enable 32 bit hosts
-
-Since v3:
-- added VMState descriptions. Adding PMBusPage info to the vmsd has proven =
-to be tricky, it's a TODO for now.
-
-Since v2:
-- bump for feedback
-- removed commented out code
-
-Since v1:
-- addressed Joel's comments
-- split out tests into their own patches
-
-Thanks for reviewing,
-
-Titus Rwantare
-
-Titus Rwantare (5):
-  hw/i2c: add support for PMBus
-  hw/misc: add ADM1272 device
-  tests/qtest: add tests for ADM1272 device model
-  hw/misc: add MAX34451 device
-  tests/qtest: add tests for MAX34451 device model
-
- include/hw/i2c/pmbus_device.h |  517 +++++++++++
- hw/i2c/pmbus_device.c         | 1612 +++++++++++++++++++++++++++++++++
- hw/misc/adm1272.c             |  544 +++++++++++
- hw/misc/max34451.c            |  775 ++++++++++++++++
- tests/qtest/adm1272-test.c    |  445 +++++++++
- tests/qtest/max34451-test.c   |  336 +++++++
- hw/arm/Kconfig                |    3 +
- hw/i2c/Kconfig                |    4 +
- hw/i2c/meson.build            |    1 +
- hw/misc/Kconfig               |    8 +
- hw/misc/meson.build           |    2 +
- tests/qtest/meson.build       |    2 +
- 12 files changed, 4249 insertions(+)
- create mode 100644 include/hw/i2c/pmbus_device.h
- create mode 100644 hw/i2c/pmbus_device.c
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Titus Rwantare <titusr@google.com>
+---
+ hw/misc/adm1272.c   | 544 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig      |   1 +
+ hw/misc/Kconfig     |   4 +
+ hw/misc/meson.build |   1 +
+ 4 files changed, 550 insertions(+)
  create mode 100644 hw/misc/adm1272.c
- create mode 100644 hw/misc/max34451.c
- create mode 100644 tests/qtest/adm1272-test.c
- create mode 100644 tests/qtest/max34451-test.c
 
---=20
+diff --git a/hw/misc/adm1272.c b/hw/misc/adm1272.c
+new file mode 100644
+index 0000000000..c1f9cf3afd
+--- /dev/null
++++ b/hw/misc/adm1272.c
+@@ -0,0 +1,544 @@
++/*
++ * Analog Devices ADM1272 High Voltage Positive Hot Swap Controller and Digital
++ * Power Monitor with PMBus
++ *
++ * Copyright 2021 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include <string.h>
++#include "hw/i2c/pmbus_device.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "trace.h"
++
++#define TYPE_ADM1272 "adm1272"
++#define ADM1272(obj) OBJECT_CHECK(ADM1272State, (obj), TYPE_ADM1272)
++
++#define ADM1272_RESTART_TIME            0xCC
++#define ADM1272_MFR_PEAK_IOUT           0xD0
++#define ADM1272_MFR_PEAK_VIN            0xD1
++#define ADM1272_MFR_PEAK_VOUT           0xD2
++#define ADM1272_MFR_PMON_CONTROL        0xD3
++#define ADM1272_MFR_PMON_CONFIG         0xD4
++#define ADM1272_MFR_ALERT1_CONFIG       0xD5
++#define ADM1272_MFR_ALERT2_CONFIG       0xD6
++#define ADM1272_MFR_PEAK_TEMPERATURE    0xD7
++#define ADM1272_MFR_DEVICE_CONFIG       0xD8
++#define ADM1272_MFR_POWER_CYCLE         0xD9
++#define ADM1272_MFR_PEAK_PIN            0xDA
++#define ADM1272_MFR_READ_PIN_EXT        0xDB
++#define ADM1272_MFR_READ_EIN_EXT        0xDC
++
++#define ADM1272_HYSTERESIS_LOW          0xF2
++#define ADM1272_HYSTERESIS_HIGH         0xF3
++#define ADM1272_STATUS_HYSTERESIS       0xF4
++#define ADM1272_STATUS_GPIO             0xF5
++#define ADM1272_STRT_UP_IOUT_LIM        0xF6
++
++/* Defaults */
++#define ADM1272_OPERATION_DEFAULT       0x80
++#define ADM1272_CAPABILITY_DEFAULT      0xB0
++#define ADM1272_CAPABILITY_NO_PEC       0x30
++#define ADM1272_DIRECT_MODE             0x40
++#define ADM1272_HIGH_LIMIT_DEFAULT      0x0FFF
++#define ADM1272_PIN_OP_DEFAULT          0x7FFF
++#define ADM1272_PMBUS_REVISION_DEFAULT  0x22
++#define ADM1272_MFR_ID_DEFAULT          "ADI"
++#define ADM1272_MODEL_DEFAULT           "ADM1272-A1"
++#define ADM1272_MFR_DEFAULT_REVISION    "25"
++#define ADM1272_DEFAULT_DATE            "160301"
++#define ADM1272_RESTART_TIME_DEFAULT    0x64
++#define ADM1272_PMON_CONTROL_DEFAULT    0x1
++#define ADM1272_PMON_CONFIG_DEFAULT     0x3F35
++#define ADM1272_DEVICE_CONFIG_DEFAULT   0x8
++#define ADM1272_HYSTERESIS_HIGH_DEFAULT     0xFFFF
++#define ADM1272_STRT_UP_IOUT_LIM_DEFAULT    0x000F
++#define ADM1272_VOLT_DEFAULT            12000
++#define ADM1272_IOUT_DEFAULT            25000
++#define ADM1272_PWR_DEFAULT             300  /* 12V 25A */
++#define ADM1272_SHUNT                   300 /* micro-ohms */
++#define ADM1272_VOLTAGE_COEFF_DEFAULT   1
++#define ADM1272_CURRENT_COEFF_DEFAULT   3
++#define ADM1272_PWR_COEFF_DEFAULT       7
++#define ADM1272_IOUT_OFFSET             0x5000
++#define ADM1272_IOUT_OFFSET             0x5000
++
++
++typedef struct ADM1272State {
++    PMBusDevice parent;
++
++    uint64_t ein_ext;
++    uint32_t pin_ext;
++    uint8_t restart_time;
++
++    uint16_t peak_vin;
++    uint16_t peak_vout;
++    uint16_t peak_iout;
++    uint16_t peak_temperature;
++    uint16_t peak_pin;
++
++    uint8_t pmon_control;
++    uint16_t pmon_config;
++    uint16_t alert1_config;
++    uint16_t alert2_config;
++    uint16_t device_config;
++
++    uint16_t hysteresis_low;
++    uint16_t hysteresis_high;
++    uint8_t status_hysteresis;
++    uint8_t status_gpio;
++
++    uint16_t strt_up_iout_lim;
++
++} ADM1272State;
++
++static const PMBusCoefficients adm1272_coefficients[] = {
++    [0] = { 6770, 0, -2 },        /* voltage, vrange 60V */
++    [1] = { 4062, 0, -2 },        /* voltage, vrange 100V */
++    [2] = { 1326, 20480, -1 },    /* current, vsense range 15mV */
++    [3] = { 663, 20480, -1 },     /* current, vsense range 30mV */
++    [4] = { 3512, 0, -2 },        /* power, vrange 60V, irange 15mV */
++    [5] = { 21071, 0, -3 },       /* power, vrange 100V, irange 15mV */
++    [6] = { 17561, 0, -3 },       /* power, vrange 60V, irange 30mV */
++    [7] = { 10535, 0, -3 },       /* power, vrange 100V, irange 30mV */
++    [8] = { 42, 31871, -1 },      /* temperature */
++};
++
++static void adm1272_check_limits(ADM1272State *s)
++{
++    PMBusDevice *pmdev = PMBUS_DEVICE(s);
++
++    pmbus_check_limits(pmdev);
++
++    if (pmdev->pages[0].read_vout > s->peak_vout) {
++        s->peak_vout = pmdev->pages[0].read_vout;
++    }
++
++    if (pmdev->pages[0].read_vin > s->peak_vin) {
++        s->peak_vin = pmdev->pages[0].read_vin;
++    }
++
++    if (pmdev->pages[0].read_iout > s->peak_iout) {
++        s->peak_iout = pmdev->pages[0].read_iout;
++    }
++
++    if (pmdev->pages[0].read_temperature_1 > s->peak_temperature) {
++        s->peak_temperature = pmdev->pages[0].read_temperature_1;
++    }
++
++    if (pmdev->pages[0].read_pin > s->peak_pin) {
++        s->peak_pin = pmdev->pages[0].read_pin;
++    }
++}
++
++static uint16_t adm1272_millivolts_to_direct(uint32_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_VOLTAGE_COEFF_DEFAULT];
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_data2direct_mode(c, value);
++}
++
++static uint32_t adm1272_direct_to_millivolts(uint16_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_VOLTAGE_COEFF_DEFAULT];
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_direct_mode2data(c, value);
++}
++
++static uint16_t adm1272_milliamps_to_direct(uint32_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_CURRENT_COEFF_DEFAULT];
++    /* Y = (m * r_sense * x - b) * 10^R */
++    c.m = c.m * ADM1272_SHUNT / 1000; /* micro-ohms */
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_data2direct_mode(c, value);
++}
++
++static uint32_t adm1272_direct_to_milliamps(uint16_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_CURRENT_COEFF_DEFAULT];
++    c.m = c.m * ADM1272_SHUNT / 1000;
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_direct_mode2data(c, value);
++}
++
++static uint16_t adm1272_watts_to_direct(uint32_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_PWR_COEFF_DEFAULT];
++    c.m = c.m * ADM1272_SHUNT / 1000;
++    return pmbus_data2direct_mode(c, value);
++}
++
++static uint32_t adm1272_direct_to_watts(uint16_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_PWR_COEFF_DEFAULT];
++    c.m = c.m * ADM1272_SHUNT / 1000;
++    return pmbus_direct_mode2data(c, value);
++}
++
++static void adm1272_exit_reset(Object *obj)
++{
++    ADM1272State *s = ADM1272(obj);
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++
++    pmdev->page = 0;
++    pmdev->pages[0].operation = ADM1272_OPERATION_DEFAULT;
++
++
++    pmdev->capability = ADM1272_CAPABILITY_NO_PEC;
++    pmdev->pages[0].revision = ADM1272_PMBUS_REVISION_DEFAULT;
++    pmdev->pages[0].vout_mode = ADM1272_DIRECT_MODE;
++    pmdev->pages[0].vout_ov_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].vout_uv_warn_limit = 0;
++    pmdev->pages[0].iout_oc_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].ot_fault_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].ot_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].vin_ov_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].vin_uv_warn_limit = 0;
++    pmdev->pages[0].pin_op_warn_limit = ADM1272_PIN_OP_DEFAULT;
++
++    pmdev->pages[0].status_word = 0;
++    pmdev->pages[0].status_vout = 0;
++    pmdev->pages[0].status_iout = 0;
++    pmdev->pages[0].status_input = 0;
++    pmdev->pages[0].status_temperature = 0;
++    pmdev->pages[0].status_mfr_specific = 0;
++
++    pmdev->pages[0].read_vin
++        = adm1272_millivolts_to_direct(ADM1272_VOLT_DEFAULT);
++    pmdev->pages[0].read_vout
++        = adm1272_millivolts_to_direct(ADM1272_VOLT_DEFAULT);
++    pmdev->pages[0].read_iout
++        = adm1272_milliamps_to_direct(ADM1272_IOUT_DEFAULT);
++    pmdev->pages[0].read_temperature_1 = 0;
++    pmdev->pages[0].read_pin = adm1272_watts_to_direct(ADM1272_PWR_DEFAULT);
++    pmdev->pages[0].revision = ADM1272_PMBUS_REVISION_DEFAULT;
++    pmdev->pages[0].mfr_id = ADM1272_MFR_ID_DEFAULT;
++    pmdev->pages[0].mfr_model = ADM1272_MODEL_DEFAULT;
++    pmdev->pages[0].mfr_revision = ADM1272_MFR_DEFAULT_REVISION;
++    pmdev->pages[0].mfr_date = ADM1272_DEFAULT_DATE;
++
++    s->pin_ext = 0;
++    s->ein_ext = 0;
++    s->restart_time = ADM1272_RESTART_TIME_DEFAULT;
++
++    s->peak_vin = 0;
++    s->peak_vout = 0;
++    s->peak_iout = 0;
++    s->peak_temperature = 0;
++    s->peak_pin = 0;
++
++    s->pmon_control = ADM1272_PMON_CONTROL_DEFAULT;
++    s->pmon_config = ADM1272_PMON_CONFIG_DEFAULT;
++    s->alert1_config = 0;
++    s->alert2_config = 0;
++    s->device_config = ADM1272_DEVICE_CONFIG_DEFAULT;
++
++    s->hysteresis_low = 0;
++    s->hysteresis_high = ADM1272_HYSTERESIS_HIGH_DEFAULT;
++    s->status_hysteresis = 0;
++    s->status_gpio = 0;
++
++    s->strt_up_iout_lim = ADM1272_STRT_UP_IOUT_LIM_DEFAULT;
++}
++
++static uint8_t adm1272_read_byte(PMBusDevice *pmdev)
++{
++    ADM1272State *s = ADM1272(pmdev);
++
++    switch (pmdev->code) {
++    case ADM1272_RESTART_TIME:
++        pmbus_send8(pmdev, s->restart_time);
++        break;
++
++    case ADM1272_MFR_PEAK_IOUT:
++        pmbus_send16(pmdev, s->peak_iout);
++        break;
++
++    case ADM1272_MFR_PEAK_VIN:
++        pmbus_send16(pmdev, s->peak_vin);
++        break;
++
++    case ADM1272_MFR_PEAK_VOUT:
++        pmbus_send16(pmdev, s->peak_vout);
++        break;
++
++    case ADM1272_MFR_PMON_CONTROL:
++        pmbus_send8(pmdev, s->pmon_control);
++        break;
++
++    case ADM1272_MFR_PMON_CONFIG:
++        pmbus_send16(pmdev, s->pmon_config);
++        break;
++
++    case ADM1272_MFR_ALERT1_CONFIG:
++        pmbus_send16(pmdev, s->alert1_config);
++        break;
++
++    case ADM1272_MFR_ALERT2_CONFIG:
++        pmbus_send16(pmdev, s->alert2_config);
++        break;
++
++    case ADM1272_MFR_PEAK_TEMPERATURE:
++        pmbus_send16(pmdev, s->peak_temperature);
++        break;
++
++    case ADM1272_MFR_DEVICE_CONFIG:
++        pmbus_send16(pmdev, s->device_config);
++        break;
++
++    case ADM1272_MFR_PEAK_PIN:
++        pmbus_send16(pmdev, s->peak_pin);
++        break;
++
++    case ADM1272_MFR_READ_PIN_EXT:
++        pmbus_send32(pmdev, s->pin_ext);
++        break;
++
++    case ADM1272_MFR_READ_EIN_EXT:
++        pmbus_send64(pmdev, s->ein_ext);
++        break;
++
++    case ADM1272_HYSTERESIS_LOW:
++        pmbus_send16(pmdev, s->hysteresis_low);
++        break;
++
++    case ADM1272_HYSTERESIS_HIGH:
++        pmbus_send16(pmdev, s->hysteresis_high);
++        break;
++
++    case ADM1272_STATUS_HYSTERESIS:
++        pmbus_send16(pmdev, s->status_hysteresis);
++        break;
++
++    case ADM1272_STATUS_GPIO:
++        pmbus_send16(pmdev, s->status_gpio);
++        break;
++
++    case ADM1272_STRT_UP_IOUT_LIM:
++        pmbus_send16(pmdev, s->strt_up_iout_lim);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: reading from unsupported register: 0x%02x\n",
++                      __func__, pmdev->code);
++        return 0xFF;
++        break;
++    }
++
++    return 0;
++}
++
++static int adm1272_write_data(PMBusDevice *pmdev, const uint8_t *buf,
++                              uint8_t len)
++{
++    ADM1272State *s = ADM1272(pmdev);
++
++    if (len == 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
++        return -1;
++    }
++
++    pmdev->code = buf[0]; /* PMBus command code */
++
++    if (len == 1) {
++        return 0;
++    }
++
++    /* Exclude command code from buffer */
++    buf++;
++    len--;
++
++    switch (pmdev->code) {
++
++    case ADM1272_RESTART_TIME:
++        s->restart_time = pmbus_receive8(pmdev);
++        break;
++
++    case ADM1272_MFR_PMON_CONTROL:
++        s->pmon_control = pmbus_receive8(pmdev);
++        break;
++
++    case ADM1272_MFR_PMON_CONFIG:
++        s->pmon_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_ALERT1_CONFIG:
++        s->alert1_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_ALERT2_CONFIG:
++        s->alert2_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_DEVICE_CONFIG:
++        s->device_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_POWER_CYCLE:
++        adm1272_exit_reset((Object *)s);
++        break;
++
++    case ADM1272_HYSTERESIS_LOW:
++        s->hysteresis_low = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_HYSTERESIS_HIGH:
++        s->hysteresis_high = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_STRT_UP_IOUT_LIM:
++        s->strt_up_iout_lim = pmbus_receive16(pmdev);
++        adm1272_check_limits(s);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: writing to unsupported register: 0x%02x\n",
++                      __func__, pmdev->code);
++        break;
++    }
++    return 0;
++}
++
++static void adm1272_get(Object *obj, Visitor *v, const char *name, void *opaque,
++                        Error **errp)
++{
++    uint16_t value;
++
++    if (strcmp(name, "vin") == 0 || strcmp(name, "vout") == 0) {
++        value = adm1272_direct_to_millivolts(*(uint16_t *)opaque);
++    } else if (strcmp(name, "iout") == 0) {
++        value = adm1272_direct_to_milliamps(*(uint16_t *)opaque);
++    } else if (strcmp(name, "pin") == 0) {
++        value = adm1272_direct_to_watts(*(uint16_t *)opaque);
++    } else {
++        value = *(uint16_t *)opaque;
++    }
++
++    visit_type_uint16(v, name, &value, errp);
++}
++
++static void adm1272_set(Object *obj, Visitor *v, const char *name, void *opaque,
++                        Error **errp)
++{
++    ADM1272State *s = ADM1272(obj);
++    uint16_t *internal = opaque;
++    uint16_t value;
++
++    if (!visit_type_uint16(v, name, &value, errp)) {
++        return;
++    }
++
++    if (strcmp(name, "vin") == 0 || strcmp(name, "vout") == 0) {
++        *internal = adm1272_millivolts_to_direct(value);
++    } else if (strcmp(name, "iout") == 0) {
++        *internal = adm1272_milliamps_to_direct(value);
++    } else if (strcmp(name, "pin") == 0) {
++        *internal = adm1272_watts_to_direct(value);
++    } else {
++        *internal = value;
++    }
++
++    adm1272_check_limits(s);
++}
++
++static const VMStateDescription vmstate_adm1272 = {
++    .name = "ADM1272",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]){
++        VMSTATE_PMBUS_DEVICE(parent, ADM1272State),
++        VMSTATE_UINT64(ein_ext, ADM1272State),
++        VMSTATE_UINT32(pin_ext, ADM1272State),
++        VMSTATE_UINT8(restart_time, ADM1272State),
++
++        VMSTATE_UINT16(peak_vin, ADM1272State),
++        VMSTATE_UINT16(peak_vout, ADM1272State),
++        VMSTATE_UINT16(peak_iout, ADM1272State),
++        VMSTATE_UINT16(peak_temperature, ADM1272State),
++        VMSTATE_UINT16(peak_pin, ADM1272State),
++
++        VMSTATE_UINT8(pmon_control, ADM1272State),
++        VMSTATE_UINT16(pmon_config, ADM1272State),
++        VMSTATE_UINT16(alert1_config, ADM1272State),
++        VMSTATE_UINT16(alert2_config, ADM1272State),
++        VMSTATE_UINT16(device_config, ADM1272State),
++
++        VMSTATE_UINT16(hysteresis_low, ADM1272State),
++        VMSTATE_UINT16(hysteresis_high, ADM1272State),
++        VMSTATE_UINT8(status_hysteresis, ADM1272State),
++        VMSTATE_UINT8(status_gpio, ADM1272State),
++
++        VMSTATE_UINT16(strt_up_iout_lim, ADM1272State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void adm1272_init(Object *obj)
++{
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    uint64_t flags = PB_HAS_VOUT_MODE | PB_HAS_VOUT | PB_HAS_VIN | PB_HAS_IOUT |
++                     PB_HAS_PIN | PB_HAS_TEMPERATURE | PB_HAS_MFR_INFO;
++
++    pmbus_page_config(pmdev, 0, flags);
++
++    object_property_add(obj, "vin", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_vin);
++
++    object_property_add(obj, "vout", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_vout);
++
++    object_property_add(obj, "iout", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_iout);
++
++    object_property_add(obj, "pin", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_pin);
++
++}
++
++static void adm1272_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
++
++    dc->desc = "Analog Devices ADM1272 Hot Swap controller";
++    dc->vmsd = &vmstate_adm1272;
++    k->write_data = adm1272_write_data;
++    k->receive_byte = adm1272_read_byte;
++    k->device_num_pages = 1;
++
++    rc->phases.exit = adm1272_exit_reset;
++}
++
++static const TypeInfo adm1272_info = {
++    .name = TYPE_ADM1272,
++    .parent = TYPE_PMBUS_DEVICE,
++    .instance_size = sizeof(ADM1272State),
++    .instance_init = adm1272_init,
++    .class_init = adm1272_class_init,
++};
++
++static void adm1272_register_types(void)
++{
++    type_register_static(&adm1272_info);
++}
++
++type_init(adm1272_register_types)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 20bd60f10b..e141084a79 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -371,6 +371,7 @@ config XLNX_VERSAL
+ config NPCM7XX
+     bool
+     select A9MPCORE
++    select ADM1272
+     select ARM_GIC
+     select AT24C  # EEPROM
+     select PL310  # cache controller
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index c71ed25820..0774c1f70c 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -14,6 +14,10 @@ config ARMSSE_CPU_PWRCTRL
+ config MAX111X
+     bool
+ 
++config ADM1272
++    bool
++    depends on I2C
++
+ config TMP105
+     bool
+     depends on I2C
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 66e1648533..8666e9225a 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -10,6 +10,7 @@ softmmu_ss.add(when: 'CONFIG_SGA', if_true: files('sga.c'))
+ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+ softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
+ softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
++softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
+ softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+ softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
+ softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
+-- 
 2.32.0.93.g670b81a890-goog
 

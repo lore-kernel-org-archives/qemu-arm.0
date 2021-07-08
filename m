@@ -1,116 +1,110 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp504003lfg;
-        Thu, 8 Jul 2021 09:57:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJziuBwWaKyoGvCYpiCd4FXnkpbO1OJqG/7AgCjx8f+D7dGcnbZj/zrvXpp1/5VglDAPUy2g
-X-Received: by 2002:ab0:5bc9:: with SMTP id z9mr27007190uae.16.1625763420267;
-        Thu, 08 Jul 2021 09:57:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625763420; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp524160lfg;
+        Thu, 8 Jul 2021 10:21:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwQpyHP4Qxbqgze6Jkxo9e9AzW3qnGXQNpYjw+Mh0mK6blYF7kPOEjdl2IEcJhH/go8APA0
+X-Received: by 2002:a05:6102:d8:: with SMTP id u24mr22921372vsp.50.1625764898566;
+        Thu, 08 Jul 2021 10:21:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625764898; cv=none;
         d=google.com; s=arc-20160816;
-        b=tqnmkkfz0T+RHELvbRfYymX6CHlqXp5H1QO1bKVe2AN7UNya0aFgSV7C6HeEovekKz
-         alwOGakjoftmPI6cSktbH+ml1p+zgCvp0vVbJBp15fJIwzhTH0Uff4AxkxWhETzClwhd
-         8Kfq3/hxFgg5ZhDfpO6Hz5Z1HLcwsn1JhjnSkdfHcdxe4OBCGpjF1SS9uzZoHTYPissY
-         HZPI/m3wXYWVRqhAg75W3BSw8wdAYjFBTn6fqXZscEDN35sb2QE2Hy3d2zUv1PgNwHfj
-         7y/55oP0y7fDUY0HGoUhFGZtELNnuRwlNRP0neSYF9E5SeP6Lv4u5a3Zi265z9ElDuYq
-         lOBA==
+        b=CMeQjD3yKyJ//D+O2Z+7uTQv5ofSJTJ+7DkYQxT1pNHjFQ1YvPSIvR8ytUtRO5DfSf
+         koL2YtokmB0egwXMRcWDMtHLBn6zXqSv8m2Pp53h5aw94SzosI4X6t7EHWAgjQ/GtaXh
+         BLsKD+xHTXjgYdh26MleF/w6vzzfR6U/+QxjIIOj4yI/YsPprPbbxknzLLaNCwzVSGmq
+         YYo/POysBMOq0toAmFFtIQTOd2j3RSTAIAUVcUnidyNd9qldR2Hcc9Yy9RaDxJQfD8cM
+         HOq+ScmWeSkwXd0gJ9gDKk8K/8PbPYkSsx3k/EIxClCSxYO8XRyOpRs12VMNuL/Kkimc
+         5mZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=5kLWuL0Tj4Wxx+sgrfGzoimIIY7mOxQRdqHTGLcOp+8=;
-        b=Q2qusx7sWMxXOyFnDYXE8e9P0wBO51E6govvopOVe58N1Dz56WYI7460g1dm4Ix0n3
-         mDX6+yQacRtNJEUsHXDhw9XEBKewZM+KdJYjr8PrdMxSfFwbBR/BW7sRaH80BmGq/9yb
-         b73zRRc4Emm4Td47ArOzRZpy/pXb6yweVhOsCnMChA/sjbUOpdotu4DtMgvOBAryJ/Er
-         2CxnZz/pYFZa1QnHYP6YcIoHC4U/cWf3R3grScsqTFARrPP1QAcFrq/gymEeINz/qT+j
-         JPU6zwauKdSTWgNe9dqfdWir4vHiUSILzoqDf47UXUFjck+bXMzeNYgA5O6wSczRHHs6
-         jZxg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:mime-version:message-id:date:dkim-signature;
+        bh=FHr7GpTjcPKiQulO8xLSX0cn+GAjyuX024ozidFHqF8=;
+        b=t4MXBoxrz+MUBGcxsr1vh1mNOZ5snpsDwZCuzr276MF7cQ7yK5QxyZLpu2NFBA8Al7
+         jj4Rq2n8G0RneBBz7mfBzVYyPnl26pm7pwEocpnr79Y1UNr2iQBAL7SDl/XJFT7Mc9iW
+         J34cYr4qBx1VJrmRF0L71+IQG1pE0X5kxTGs5LcOnN9u1rESe/VkYG2IaLYeXOavkLcs
+         CjDyAQAya7ETJCtUm6Yn/ub1IXyC00hC5Fvon0Cq7ecS+VU4NkLtkiXlWXKssQrhPiFg
+         g0ynZGoZ5s8pNM//J89AZGbtQKY1c5xp9gfbKpn1cwReEAB3LMaHlcFj3Ee4A1Y7kOnH
+         BR4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Vv1k/Ns0";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=U6n+48LR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m62si2931399vsc.5.2021.07.08.09.57.00
+        by mx.google.com with ESMTPS id m16si2740957vsk.365.2021.07.08.10.21.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jul 2021 09:57:00 -0700 (PDT)
+        Thu, 08 Jul 2021 10:21:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Vv1k/Ns0";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=U6n+48LR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51824 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:48610 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1XKd-0003ol-JW
-	for alex.bennee@linaro.org; Thu, 08 Jul 2021 12:56:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38938)
+	id 1m1XiT-0008KY-Pg
+	for alex.bennee@linaro.org; Thu, 08 Jul 2021 13:21:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m1Wid-0007Lq-8e
- for qemu-arm@nongnu.org; Thu, 08 Jul 2021 12:17:43 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529]:34721)
+ (Exim 4.90_1) (envelope-from
+ <36TPnYAYKCPovkvwutiqqing.eqosgow-ctopqpipw.qti@flex--titusr.bounces.google.com>)
+ id 1m1Xhe-0007iX-LC
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:46 -0400
+Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749]:55286)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m1WiY-0001jL-3a
- for qemu-arm@nongnu.org; Thu, 08 Jul 2021 12:17:42 -0400
-Received: by mail-pg1-x529.google.com with SMTP id 62so6566273pgf.1
- for <qemu-arm@nongnu.org>; Thu, 08 Jul 2021 09:17:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5kLWuL0Tj4Wxx+sgrfGzoimIIY7mOxQRdqHTGLcOp+8=;
- b=Vv1k/Ns0nHXFC3mIL9c732XFHM1v7TV91cmfrQ8wEe62enZyHxqmksriZeaN5yYf7U
- eIYsM5n+TZgnjtP89jh70JqSIfsBLlNast2WYgTxdR9mdu3kISIiu3mPMxwQcTacjSk4
- v2R3vLHD4I0OARc0zmYEQRwhH0m/5DwnPP9G88OX+M74y+eZfFCmYa2hJdt6bM7dJHdO
- M5ZtVymxVPr/ttubrUurAUOkDpBHMcMg1/SZ5RjEMCyV+hnANUUCBcE+NlfUkmm5Kxiw
- rwShWfyNhUjrjjQfpRxJNFpVaj06+agh3kpLVceDg5ThokxirX6y0P/+yZ0L3G23ExWh
- dtzw==
+ (Exim 4.90_1) (envelope-from
+ <36TPnYAYKCPovkvwutiqqing.eqosgow-ctopqpipw.qti@flex--titusr.bounces.google.com>)
+ id 1m1Xhb-00040H-Ik
+ for qemu-arm@nongnu.org; Thu, 08 Jul 2021 13:20:46 -0400
+Received: by mail-qk1-x749.google.com with SMTP id
+ 4-20020a3709040000b02903b4d0f603a9so4349368qkj.21
+ for <qemu-arm@nongnu.org>; Thu, 08 Jul 2021 10:20:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc
+ :content-transfer-encoding;
+ bh=FHr7GpTjcPKiQulO8xLSX0cn+GAjyuX024ozidFHqF8=;
+ b=U6n+48LR5NRD4ybZqBw/DIHVvTqxQlwgOhEinse2pV2jca8Wlu9Vk5gQmQE5DbibdF
+ DdxcZwu1X6RrPfUw7B1jHIm8crpDvYmQBWDX5c4sltzLoXIITsNHWKecHRUBREvzSGMN
+ kRRQdnKtNISR5tHuDUhXyKYZGq0L8n2g68psFX7xBKRkxm0UG2XSPA8byX0uF9ZB06n2
+ qO0JyoVch7Me5qGK7L9edh9GTTcB7GIuDClAtbwMfHwTBSAeERdLP1Mtvmmjg8SyBbke
+ FEn5+PNXTIF3+KUOGsb1788iEgAxKZ31bbqlsjnJvSQzlrlGAalioGZ8k46Km4coezbs
+ +5gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc
  :content-transfer-encoding;
- bh=5kLWuL0Tj4Wxx+sgrfGzoimIIY7mOxQRdqHTGLcOp+8=;
- b=hy+loip+Td2n70aWkY+BSrm1FkgITg2btU35GNiEDqHC0QSs+1cDUPtjVWS8QODban
- tKPd103Z43fhO9/zxKV6vmIbkxm5DW62t8tKxU/diMrL+BAKHIIhfNYUS1lgey86jM2h
- REFQz8ctzZrzodf2LNt9E8llUH8aJ5JBDdarn7FYnKDM1gcWfIGUc5YxkMalY2A/BXcw
- mAzPWg5rfQKr15j5+3IgOLs5/VaE0exTaneW7E4JIMsvbG8fJ0oEOCTzGbr/jtDAoLM4
- CdZPKK00omPGM+60gJBtOzGJJwXVL0KSWpjwBmqXwd7NVQUnxMy3Hh9U1xDnUHuIbLAu
- TpeA==
-X-Gm-Message-State: AOAM533ZMEyt5vela1fbT1BUiYi0n8M8ROIAu6jIvLxRQ/CcEPkSTMa5
- 88jCTIs5MwFSG3qMwZZ+foaQQ0/P1Zfqmw==
-X-Received: by 2002:a63:5156:: with SMTP id r22mr33542781pgl.264.1625761056528; 
- Thu, 08 Jul 2021 09:17:36 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id g10sm9908263pji.10.2021.07.08.09.17.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Jul 2021 09:17:36 -0700 (PDT)
-Subject: Re: [PATCH v2 05/28] target/arm: Use gen_jmp for ISB and SB
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210630183226.3290849-1-richard.henderson@linaro.org>
- <20210630183226.3290849-6-richard.henderson@linaro.org>
- <CAFEAcA_EkW7a6SFuAHxdYvu_gdcdDwY4xQVOFnmtatcx+T1qGg@mail.gmail.com>
- <88562e08-3d6c-3224-5d84-67e3ffd3774b@linaro.org>
- <CAFEAcA8Xs0Ct6hDBAk-N7TVhb66dwv2EJudo83XzJ5dQn9k7VA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <589d27e5-58e5-6af2-dfd8-11130fdbc2d9@linaro.org>
-Date: Thu, 8 Jul 2021 09:17:34 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8Xs0Ct6hDBAk-N7TVhb66dwv2EJudo83XzJ5dQn9k7VA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ bh=FHr7GpTjcPKiQulO8xLSX0cn+GAjyuX024ozidFHqF8=;
+ b=m7sW/1lo2uEoLvI3t7sJP1JuZveUMo5lLMugOWH3XYFQpp/YC3EIjEOsc7RhrjEVf2
+ TfuI3fCPGHSf/uAyWUvapEXL8a2mQuNcEU1C2TXisFIUthZ9M5bzYXAMELdGzDwRZCVx
+ Ae9sA/fLwK74xGUjL0d25z4Vas/5vtSICLOzyc4aQHFtl/PohGA7Deyk7QVRqcrND+E7
+ AzZqmRWC37xyr03pgEBewBzTZOjwgGtny+UnLU62lxhQD8gSIGRAUWKuuwsXzrj6dHE7
+ Wbiqa7FibxVJekuDMEf6JyMnHSS5M1XYJk9NhJybJO0GSGtKeBowavNBAubXvfpiyCn0
+ uFCQ==
+X-Gm-Message-State: AOAM531sQzfsSEmnQ0wqVV6d+eOdKRD3fNXOoAWzeTKhpC9XVZZHpL+u
+ UGJVs6tYPQOOyD9IbgCHySzw6xIXE2c=
+X-Received: from titusr.svl.corp.google.com
+ ([2620:15c:2c5:13:6b42:285b:df15:bf])
+ (user=titusr job=sendgmr) by 2002:a05:6214:190:: with SMTP id
+ q16mr31079439qvr.9.1625764841628; Thu, 08 Jul 2021 10:20:41 -0700 (PDT)
+Date: Thu,  8 Jul 2021 10:20:12 -0700
+Message-Id: <20210708172017.1865352-1-titusr@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
+Subject: [PATCH v5 0/5] Add support for PMBus in QEMU
+From: Titus Rwantare <titusr@google.com>
+To: Corey Minyard <minyard@acm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Titus Rwantare <titusr@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::749;
+ envelope-from=36TPnYAYKCPovkvwutiqqing.eqosgow-ctopqpipw.qti@flex--titusr.bounces.google.com;
+ helo=mail-qk1-x749.google.com
+X-Spam_score_int: -100
+X-Spam_score: -10.1
+X-Spam_bar: ----------
+X-Spam_report: (-10.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.5,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,33 +117,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fZg6W/OGvRV1
+X-TUID: ScgWL1H8B3ul
 
-On 7/8/21 9:11 AM, Peter Maydell wrote:
->>> Why isn't it enough here just to set is_jmp to DISAS_NEXT ?
->>
->> You mean DISAS_TOO_MANY?  That would work, yes.
->> At the time I was just thinking of replacing one jump with another.
-> 
-> You've implicitly answered my question, which is that the main
-> translator loop code treats DISAS_NEXT as "keep adding insns to
-> the TB" :-)
-> 
-> It feels slightly like misuse to use DISAS_TOO_MANY, unless we
-> renamed it to something like DISAS_END_TB (which is what it's
-> actually doing).
+Hello,
 
-Yeah, better naming would have been a good.  In this instance I think I chose an odd 
-colour for the bike shed.
+This patch series adds an interface to start supporting PMBus devices in QE=
+MU.
+I=E2=80=99ve included two PMBus devices: MAX34451 and ADM1272.
 
-The problem with just DISAS_END_TB is that there are many ways to end a tb, with at least: 
-(1) goto_tb next, (2) goto_ptr next, (3) exit_tb.  We wind up replicating these three 
-across many of the targets, so it would be a really nice cleanup to standardize, and with 
-good names.
+PMBus is a variant of SMBus meant for digital management of power supplies.
+PMBus adds to the SMBus standard by defining a number of constants and comm=
+ands
+used by compliant devices. The specification for PMBus can be found at:
 
+https://pmbus.org/specification-archives/
 
-r~
+Currently, the goal for these devices is to emulate basic functionality by
+reading and writing registers. Timing, and some logical operation is not
+implemented. This implementation supports nearly all available registers fo=
+r
+PMBus including:
+   - Voltage inputs and outputs
+   - Current inputs and outputs
+   - Temperature sensors
+
+Unimplimented registers get passed through to the device model, and device
+models can opt out of using the standard registers with flags. The included
+devices make use of these fields and illustrate how to interface with the p=
+mbus
+class.
+
+Datasheets for sensors:
+
+https://datasheets.maximintegrated.com/en/ds/MAX34451.pdf
+https://www.analog.com/media/en/technical-documentation/data-sheets/ADM1272=
+.pdf
+
+Since v4:
+- switched to BIT_ULL for flags to enable 32 bit hosts
+
+Since v3:
+- added VMState descriptions. Adding PMBusPage info to the vmsd has proven =
+to be tricky, it's a TODO for now.
+
+Since v2:
+- bump for feedback
+- removed commented out code
+
+Since v1:
+- addressed Joel's comments
+- split out tests into their own patches
+
+Thanks for reviewing,
+
+Titus Rwantare
+
+Titus Rwantare (5):
+  hw/i2c: add support for PMBus
+  hw/misc: add ADM1272 device
+  tests/qtest: add tests for ADM1272 device model
+  hw/misc: add MAX34451 device
+  tests/qtest: add tests for MAX34451 device model
+
+ include/hw/i2c/pmbus_device.h |  517 +++++++++++
+ hw/i2c/pmbus_device.c         | 1612 +++++++++++++++++++++++++++++++++
+ hw/misc/adm1272.c             |  544 +++++++++++
+ hw/misc/max34451.c            |  775 ++++++++++++++++
+ tests/qtest/adm1272-test.c    |  445 +++++++++
+ tests/qtest/max34451-test.c   |  336 +++++++
+ hw/arm/Kconfig                |    3 +
+ hw/i2c/Kconfig                |    4 +
+ hw/i2c/meson.build            |    1 +
+ hw/misc/Kconfig               |    8 +
+ hw/misc/meson.build           |    2 +
+ tests/qtest/meson.build       |    2 +
+ 12 files changed, 4249 insertions(+)
+ create mode 100644 include/hw/i2c/pmbus_device.h
+ create mode 100644 hw/i2c/pmbus_device.c
+ create mode 100644 hw/misc/adm1272.c
+ create mode 100644 hw/misc/max34451.c
+ create mode 100644 tests/qtest/adm1272-test.c
+ create mode 100644 tests/qtest/max34451-test.c
+
+--=20
+2.32.0.93.g670b81a890-goog
 

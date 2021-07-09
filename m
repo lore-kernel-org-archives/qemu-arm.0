@@ -1,109 +1,106 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp853894lfg;
-        Fri, 9 Jul 2021 09:31:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSBpLIupxtAsFtDuYer4fpAJ4h7GnWI1dj+FNK7lDDmh59C52ndADck98UX6kaLVkFpHDk
-X-Received: by 2002:adf:cf07:: with SMTP id o7mr4989752wrj.216.1625848270890;
-        Fri, 09 Jul 2021 09:31:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625848270; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp1104670lfg;
+        Fri, 9 Jul 2021 16:07:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwixyTbcS+wLA8yhYJzcryXa6jlaoVaf9G4y6JUryYqES6Ug2d2L1x5f5IdeIpvQ9BTMzmW
+X-Received: by 2002:ab0:7443:: with SMTP id p3mr21215170uaq.138.1625872029806;
+        Fri, 09 Jul 2021 16:07:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625872029; cv=none;
         d=google.com; s=arc-20160816;
-        b=ee8XQznb11SXsj4/AVTrG/6roLLeVyMopvw4VlxqjQHzoCfKvXJu6eIspRaXJLvRA1
-         SPHJceDnQhNT8FWyUtPQ6UmoyK/0p1zBKpA6PgIMuDGZjBdo91rPlIGArCayboenGc6u
-         inccPU/jPR5EwvXQefQoIxXT82Bfn+6qb+vw5bsWvfsMgIT/o2vEZuIFSXQEiN4yfpM+
-         4MYa7f7PQA3Ce0+9tI+gZDldltPzurgZc1BXJv+8PhSCzkADXnC2Iwv4sYTjc9wfGmiZ
-         ymerqCZnQEXsUvqxnbb+o38qrfEFnLTI+dzDXsxE5UcUC7FK7UD7KP2vHFEy+Q14581u
-         nlcQ==
+        b=TWIrZ4K8R13z49++ZA22Ec/SjVO0zBrP5H129STC9rewz+x8pqlyCn2yqTrlADKnR9
+         m6yhsA1Z2kfuoyIty1sQc8v1sIgiwjX6WqC/AQUP61lemh0RgQPzTZ8f0Fd8zzJPtncD
+         loARHv3SmU0zVndN6BJVVzBeaOoHWu4bY09AWgs84QroDXVL2me/HOXjdv+9Ccy2fK6J
+         081X2qjyRrPHuaTvpzbcPw8OH3yMCa68NO/R1GZpbrVxajoYuFS+Uc+iZMSA9KNsI2Cg
+         ZcuEOgJB/oY8NPetMBf004LL/aWcrKu1axqVrX6ysfDDv2mNzWIAGhJqliTMs3OQDw8q
+         LD8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-disposition:mime-version
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=VKGwhPniryUD+R7iA2Iuagn+/VdJ/qE11zRU7yzFitA=;
-        b=qAF6b2x6LVj9qRJyTV7oXWV7dzyqcg2BoZzLBySaCCO2yZPEj8B04r9A0/BzBNkFV9
-         ZWLwYXFPmyXGP1/3my7OPT+R+2zzaLDxrgZQ9r/hnbpN98Tna+1Ej+5lour5y7AsbmG7
-         pk9R4dSk1hb2Z0edo7elEqZhDIvx2tsAVFyzgXxBuwogbBGzXeKq+A60NTiq+yg27Ph5
-         z1NXZ9FGm+W+ap9Ko5tLrkA25fdjBQ9FOGil4Zh+596byGkik8p+w6jWtNuzzuuLKKuS
-         quCgVT/TMRCtnZ2afG957XJU+LKtgmo94D7AtyjNxpg6G+3nA/hqVUxlUjpr8Z6au5F4
-         aAHQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=P/cNFkCTIiADe6eqNZOM9+2HNoNfArmqqrxm5+r47oM=;
+        b=s0sfdWMS0w8zfK/zh2eHgDyLBUi1h7Wt25Ouiq0bD2DX9GDaq078k42zxrl9mceZn1
+         YHooeFo/BNPpZ1Lg9jR+FKvHSmQ03riMhed9wQYy4hr85IRfFy6YlXK8acpRyyGcn3aj
+         hFJeeg2gJGnw1cYMgZZz6qu20hFkhSSl9TJ+RCywKFKj4ltM5wH7jrMdpBVksRnlfhKq
+         wHCAAXGBKRvR/U0asq1zy3uWE6Nyc18eSwPEc530kr3WRlphEAxvJh9ersVHWyg3nyO0
+         K2iLn6GVuGgsMc0To5Df97/Z/BckGT7rAEx7FUmupMkAzO7+7W53/c/wx51ayi1+EeP4
+         jEsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="K4tE/03h";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=UkdwHndF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10si7854241wrp.533.2021.07.09.09.31.10
+        by mx.google.com with ESMTPS id w129si7545132vkg.38.2021.07.09.16.07.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Jul 2021 09:31:10 -0700 (PDT)
+        Fri, 09 Jul 2021 16:07:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="K4tE/03h";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35310 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=UkdwHndF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34130 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1tPB-0007HI-Ur
-	for alex.bennee@linaro.org; Fri, 09 Jul 2021 12:31:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41296)
+	id 1m1zaP-0000Mz-59
+	for alex.bennee@linaro.org; Fri, 09 Jul 2021 19:07:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1m1tOx-0007EM-MR; Fri, 09 Jul 2021 12:30:55 -0400
-Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36]:43571)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m1zZi-0000Mg-Ot
+ for qemu-arm@nongnu.org; Fri, 09 Jul 2021 19:06:26 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:41635)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1m1tOv-0002Cz-MX; Fri, 09 Jul 2021 12:30:55 -0400
-Received: by mail-oo1-xc36.google.com with SMTP id
- 68-20020a4a00470000b0290258a7ff4058so2401215ooh.10; 
- Fri, 09 Jul 2021 09:30:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:mime-version
- :content-disposition:content-transfer-encoding;
- bh=VKGwhPniryUD+R7iA2Iuagn+/VdJ/qE11zRU7yzFitA=;
- b=K4tE/03hcPGnf90lYazqs3u4W9G+UsevSHFeqmhO9YDBIqeBg0/dKkfuZOM4MxJTih
- LU/udQDTYMi7phAtMzmTmwczrtbfG0mT8+l1dw4l13Rka+Q00KLUor5oAYVoX2tqiE0K
- SpOaoP4UIEbDpHQoRAy61/rkspw+Tl+oskUaqtcV3mSw4WizMNv9nbFSCsxmfBI/4xlX
- d/q63UP9J9MlA5WU1ZXRzyMfPEfm3u6azZZ6Lug2XG/c0sz61zksvJPD+9WmcOtpmxO2
- KLjR/VBjJeU2szt24O/TvQ7F16lln2foknCBNajxGjq1iF7nd6BnugtGgVg+q/Hmvn5J
- exJA==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m1zZg-0004iS-M4
+ for qemu-arm@nongnu.org; Fri, 09 Jul 2021 19:06:26 -0400
+Received: by mail-pg1-x530.google.com with SMTP id s18so11417748pgg.8
+ for <qemu-arm@nongnu.org>; Fri, 09 Jul 2021 16:06:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P/cNFkCTIiADe6eqNZOM9+2HNoNfArmqqrxm5+r47oM=;
+ b=UkdwHndFkv6MjeoEsUm7ZjnSuKDj3ykEZ9kjjsVwCX9yGe9X7EZHETIYPlyKwhWtgt
+ eeP37Vz2HsQXa3oqnewbWUSYutxDLp0Vo+Ska8mWozwPSJKPcq20prydM41aHKtqJcam
+ u+rAuFywqXtbiHT6c54bZYjTuLq6X/lros8PY7Nxg74esE8S5ApA0SXwcyrinnSIeA7W
+ REbbZm32FvwzGMn7J83ITYXL4GBxHn5J8rN/tg7B7AfzWTx0VJ9Aut82Gsz554/0a2wc
+ R+av/2Cnd9gNbZ9DdbqhQWttbdeOwicfrKsw4/1DqfM8GvhO4BRRpA3fPSPszZJDMVum
+ 0FEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:mime-version:content-disposition:content-transfer-encoding;
- bh=VKGwhPniryUD+R7iA2Iuagn+/VdJ/qE11zRU7yzFitA=;
- b=Lmnvll7Nj7zaV+4nrWj/JUEpzx8jvgP3jSU590tfoZVv+lCRXmi994TcI2rY1LKdnI
- APJNz7Zz4/BMLAY5sPULHgn9vODLNMt2yMkamvZ+xXKdUluGZjGoJPTmoO7ytWF40zHd
- 1QJ6yzbGY9Nn8eI9UlNAZI7mCt5vEoicosBr+15Pi4Xq5QbuyIqm/v8zO7fRRQdTleew
- oPoqXqCqtbM+wMQD4aNiREyo7iYTXnTU/bGuLVVF1vo5jPXiHiLwzSdc4V2HBZkyFvJN
- 5Bi111Tj6GGIDXIRR7sPGhtQ+tnFxHkHhKxVGQOSvjjlq1W24UI9e9Ck3fTuuwfJ7aw4
- ZEpA==
-X-Gm-Message-State: AOAM533JC8HuTLKRijqOI+QJsl5VJ2/+PRfV9Nvx/tG9jVv2QsoLNdGJ
- f5bmLeHXCtvgNwm/k/ym7A==
-X-Received: by 2002:a4a:8241:: with SMTP id t1mr27441792oog.13.1625848250781; 
- Fri, 09 Jul 2021 09:30:50 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
- by smtp.gmail.com with ESMTPSA id p5sm1293271oip.35.2021.07.09.09.30.49
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P/cNFkCTIiADe6eqNZOM9+2HNoNfArmqqrxm5+r47oM=;
+ b=kFygIXqEVc7uWQ1rOJv/xu8gzzyCS1hD5WlOVzd9eMcJftnCycS+H8pGLzkQUKaBE9
+ 6pLQwebo73XGAHbZX3bV9aX18BBf6H6na55pAS0ha/Ubgb6BcxZvoH/j2ACBGzd4i5IJ
+ m/PWeGncXNVM8sNKTvXHOIVH57Bqor5p44YF9KqfmpKNU3jkwztO5RcOtMTjAiJOf9uA
+ fGy6pB61Xvikkkq/z/YCqyWTMRvC/TkajbqZMDA+2CKRoYZlabaSEQfmwkIEwox0SRn9
+ ZSnWEf2QC9dNv6Fy0iZTejJlUUqyXHGJM0ZtpKdGYaNfRNwmnPvPGhe3uThLHr3XIMEy
+ ucIg==
+X-Gm-Message-State: AOAM532cseacuYB3b4sZyILy0cqRR6XywdmzW98F8oeiEefCNN5uE5Sn
+ 2vaMVZ+ErFVRlruCte33jYQ0CA==
+X-Received: by 2002:a63:43c4:: with SMTP id
+ q187mr40218505pga.172.1625871982757; 
+ Fri, 09 Jul 2021 16:06:22 -0700 (PDT)
+Received: from localhost.localdomain ([71.212.149.176])
+ by smtp.gmail.com with ESMTPSA id d20sm7270414pfn.219.2021.07.09.16.06.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Jul 2021 09:30:49 -0700 (PDT)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:81c2:3042:a70b:e5b5])
- by serve.minyard.net (Postfix) with ESMTPSA id C1D7A180058;
- Fri,  9 Jul 2021 16:30:48 +0000 (UTC)
-Date: Fri, 9 Jul 2021 11:30:47 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [GIT PULL v2] I2C/IPMI bug fixes for QEMU 6.1
-Message-ID: <20210709163047.GC3599@minyard.net>
+ Fri, 09 Jul 2021 16:06:22 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/1] target/arm: Fix offsets for TTBCR (#187)
+Date: Fri,  9 Jul 2021 16:06:20 -0700
+Message-Id: <20210709230621.938821-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c36;
- envelope-from=tcminyard@gmail.com; helo=mail-oo1-xc36.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,163 +113,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: Titus Rwantare <titusr@google.com>, Jinhua Cao <caojinhua1@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, BALATON Zoltan <balaton@eik.bme.hu>,
- Andrzej Zaborowski <balrogg@gmail.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ImXj2w4Ivck+
+X-TUID: kOpH7rHYN/Hz
 
-The following changes since commit 38848ce565849e5b867a5e08022b3c755039c11a:
+This one patch fixes boot_linux_console test_arm_virt.
 
-  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20210616' into staging (2021-06-16 17:02:30 +0100)
+It does not fix all of the failures.  The next one on the
+list is test_arm_emcraft_sf2, where the cpu boots fine but
+the net device doesn't work correctly.
 
-are available in the Git repository at:
 
-  https://github.com/cminyard/qemu.git tags/for-qemu-6.1-2
+r~
 
-for you to fetch changes up to 7649086f455fe44bd076828749a93ab2a5bb0806:
 
-  tests/qtest: add tests for MAX34451 device model (2021-07-08 14:42:00 -0500)
+Richard Henderson (1):
+  target/arm: Fix offsets for TTBCR
 
-Changes from v1:
+ target/arm/helper.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-For the 64-bit field in the PMBus patch, use BIT_ULL for the bits to
-fix compile issues on 32-bit hosts.
-
-I updated my testing to build and test on a 32-bit host, which proved to
-be a bit more challenging than I expected.  But compiled and tested
-there, too.
-
-Thank you,
-
--corey
-
-----------------------------------------------------------------
-Some qemu updates for IPMI and I2C
-
-Move some ADC file to where they belong and move some sensors to a
-sensor directory, since with new BMCs coming in lots of different
-sensors should be coming in.  Keep from cluttering things up.
-
-Add support for I2C PMBus devices.
-
-Replace the confusing and error-prone i2c_send_recv and i2c_transfer with
-specific send and receive functions.  Several errors have already been
-made with these, avoid any new errors.
-
-Fix the watchdog_expired field in the IPMI watchdog, it's not a bool,
-it's a u8.  After a vmstate transfer, the new value could be wrong.
-
-----------------------------------------------------------------
-BALATON Zoltan (1):
-      hw/i2c: Make i2c_start_transfer() direction argument a boolean
-
-Corey Minyard (3):
-      adc: Move the zynq-xadc file to the adc directories
-      adc: Move the max111x driver to the adc directory
-      sensor: Move hardware sensors from misc to a sensor directory
-
-Jinhua Cao (1):
-      ipmi/sim: fix watchdog_expired data type error in IPMIBmcSim struct
-
-Philippe Mathieu-Daudé (14):
-      hw/input/lm832x: Move lm832x_key_event() declaration to "lm832x.h"
-      hw/input/lm832x: Define TYPE_LM8323 in public header
-      hw/display/sm501: Simplify sm501_i2c_write() logic
-      hw/display/sm501: Replace i2c_send_recv() by i2c_recv() & i2c_send()
-      hw/i2c/ppc4xx_i2c: Add reference to datasheet
-      hw/i2c/ppc4xx_i2c: Replace i2c_send_recv() by i2c_recv() & i2c_send()
-      hw/misc/auxbus: Fix MOT/classic I2C mode
-      hw/misc/auxbus: Explode READ_I2C / WRITE_I2C_MOT cases
-      hw/misc/auxbus: Replace 'is_write' boolean by its value
-      hw/misc/auxbus: Replace i2c_send_recv() by i2c_recv() & i2c_send()
-      hw/i2c: Remove confusing i2c_send_recv()
-      hw/i2c: Rename i2c_set_slave_address() -> i2c_slave_set_address()
-      hw/i2c: Extract i2c_do_start_transfer() from i2c_start_transfer()
-      hw/i2c: Introduce i2c_start_recv() and i2c_start_send()
-
-Titus Rwantare (5):
-      hw/i2c: add support for PMBus
-      hw/misc: add ADM1272 device
-      tests/qtest: add tests for ADM1272 device model
-      hw/misc: add MAX34451 device
-      tests/qtest: add tests for MAX34451 device model
-
- MAINTAINERS                                |   11 +-
- hw/Kconfig                                 |    1 +
- hw/adc/Kconfig                             |    3 +
- hw/{misc => adc}/max111x.c                 |    2 +-
- hw/adc/meson.build                         |    2 +
- hw/{misc => adc}/zynq-xadc.c               |    2 +-
- hw/arm/Kconfig                             |    3 +
- hw/arm/aspeed.c                            |    2 +-
- hw/arm/nseries.c                           |    5 +-
- hw/arm/pxa2xx.c                            |    2 +-
- hw/arm/spitz.c                             |    6 +-
- hw/arm/xilinx_zynq.c                       |    2 +-
- hw/display/ati.c                           |    2 +-
- hw/display/sm501.c                         |   16 +-
- hw/display/xlnx_dp.c                       |    2 +-
- hw/i2c/Kconfig                             |    4 +
- hw/i2c/core.c                              |   76 +-
- hw/i2c/imx_i2c.c                           |    2 +-
- hw/i2c/meson.build                         |    1 +
- hw/i2c/pm_smbus.c                          |    4 +-
- hw/i2c/pmbus_device.c                      | 1612 ++++++++++++++++++++++++++++
- hw/i2c/ppc4xx_i2c.c                        |   15 +-
- hw/i2c/smbus_master.c                      |   22 +-
- hw/input/lm832x.c                          |    2 +-
- hw/ipmi/ipmi_bmc_sim.c                     |    4 +-
- hw/meson.build                             |    1 +
- hw/misc/Kconfig                            |   15 -
- hw/misc/auxbus.c                           |   68 +-
- hw/misc/meson.build                        |    6 +-
- hw/sensor/Kconfig                          |   19 +
- hw/sensor/adm1272.c                        |  543 ++++++++++
- hw/{misc => sensor}/emc141x.c              |    2 +-
- hw/sensor/max34451.c                       |  775 +++++++++++++
- hw/sensor/meson.build                      |    5 +
- hw/{misc => sensor}/tmp105.c               |    2 +-
- hw/{misc => sensor}/tmp421.c               |    0
- include/hw/{misc => adc}/max111x.h         |    0
- include/hw/{misc => adc}/zynq-xadc.h       |    0
- include/hw/i2c/i2c.h                       |   46 +-
- include/hw/i2c/pmbus_device.h              |  517 +++++++++
- include/hw/input/lm832x.h                  |   28 +
- include/hw/{misc => sensor}/emc141x_regs.h |    0
- {hw/misc => include/hw/sensor}/tmp105.h    |    2 +-
- include/hw/{misc => sensor}/tmp105_regs.h  |    0
- tests/qtest/adm1272-test.c                 |  445 ++++++++
- tests/qtest/emc141x-test.c                 |    2 +-
- tests/qtest/max34451-test.c                |  336 ++++++
- tests/qtest/meson.build                    |    2 +
- tests/qtest/npcm7xx_smbus-test.c           |    2 +-
- tests/qtest/tmp105-test.c                  |    2 +-
- 50 files changed, 4496 insertions(+), 125 deletions(-)
- rename hw/{misc => adc}/max111x.c (99%)
- rename hw/{misc => adc}/zynq-xadc.c (99%)
- create mode 100644 hw/i2c/pmbus_device.c
- create mode 100644 hw/sensor/Kconfig
- create mode 100644 hw/sensor/adm1272.c
- rename hw/{misc => sensor}/emc141x.c (99%)
- create mode 100644 hw/sensor/max34451.c
- create mode 100644 hw/sensor/meson.build
- rename hw/{misc => sensor}/tmp105.c (99%)
- rename hw/{misc => sensor}/tmp421.c (100%)
- rename include/hw/{misc => adc}/max111x.h (100%)
- rename include/hw/{misc => adc}/zynq-xadc.h (100%)
- create mode 100644 include/hw/i2c/pmbus_device.h
- create mode 100644 include/hw/input/lm832x.h
- rename include/hw/{misc => sensor}/emc141x_regs.h (100%)
- rename {hw/misc => include/hw/sensor}/tmp105.h (97%)
- rename include/hw/{misc => sensor}/tmp105_regs.h (100%)
- create mode 100644 tests/qtest/adm1272-test.c
- create mode 100644 tests/qtest/max34451-test.c
-
+-- 
+2.25.1

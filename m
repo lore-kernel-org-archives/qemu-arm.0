@@ -1,107 +1,99 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp1104676lfg;
-        Fri, 9 Jul 2021 16:07:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzxx+hhs6eNo9dXrZM5Y/pt88fZ0WfVF2EfSWYr+uZ2MvE3ShTu+9dY/h55Z3ykGgtDuCen
-X-Received: by 2002:a67:ebd9:: with SMTP id y25mr9720641vso.55.1625872030079;
-        Fri, 09 Jul 2021 16:07:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625872030; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp2211424lfg;
+        Sun, 11 Jul 2021 01:17:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyd7KwbtI8TXU824W+W0oMB4+vLEeN0S4RiirtxO4Tqkn65/3jdxwCdts4z83qJPkAgWO4n
+X-Received: by 2002:a05:6214:518d:: with SMTP id kl13mr45760961qvb.31.1625991450690;
+        Sun, 11 Jul 2021 01:17:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625991450; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYUwHjopq+kNnY+Y/zB5xR/MQca1sjMyxbdyZFEIiFyibSBKJVl55+3yqGEk8rkFZG
-         L8OM3W0GPymETHxiZXlM8Z2sInCI45v68Tr3nTROPV2jB+DIV6MhzR7CBw7jwTLAYs4T
-         EOC9iaw3Zaul5F4WyspBgDz9/7ARrbKO3Xjw1ZSjugKxHfjvRvTTAAnR+mqE43crAyXG
-         ZVtq3GIZjIVBi3+iJ+2A6hCZdUZvJHPblo7pw7X+MU9LZRrKALR4WaTNDcEWmI1OxlmO
-         1HRn/gTfrCWPEdrTii6fYSyyD9JldiGy+QFWwyjCl6IAeiUZfLS8KC/6aDqFt5jL4/Aa
-         sCRg==
+        b=OAWPLbpl+UmpGJQXbHcs75NSyzlekCmF68OPCp3zWDwmULM6uykaw1hUfOZvh43lMb
+         14hrNmUHiF4mR+IKJKH3EKt1i37tOixkaWbjH21rDeb94qKFgNshtPq9Wt/zQzmUcCc7
+         rwvNnALMRolmmIjJfg5xRkBFs+NmG2srUqvlYQne0qYJeXljePKjn32gqHC2AIiouJk9
+         sNaV2ftnrlnIW7T9mEFVCDBiruhLEMW25V3dmJ5rZWlJ6SofuLk0G/9clzi9yLegqOzo
+         G60kMUJT5aExBfM8YL5xDzukWt+ScZHipifEH/4J+gup+KMsj83pFoQ6PUMlztcdEpJV
+         l8eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=/iDhmkz0f3T9GUt7lkp7w4neMFdEQE2MNAGQv76evlc=;
-        b=UXPt/tY+MqTvBSeVt3FjI8fwYB3qiEbO/AzQyLx5tSjeh9bQaF+N1GrSNegiqK+D2T
-         UGbBeLKBnVMliayoF0zQoibPs9/PJv9TZUlul2RFzO06gTElVrSNMZeke0m5YLbuU00l
-         B6sLqt1wpF3ZMr3U56MB4XMpOv7+9x//dIKuTnb62h6OH1Ro7dLRBfZJvFL89w639X2f
-         82K07BbMWrP9iS+2D7274GayuQPwzAex/Dhk/6wcXF9r5cKwcjvuX+PyZgVb5kq8idy6
-         qmCOW5ggC5YIj4cZgVr3EwtyGW7LEvX+6Et0moorBVO9XK0r9IgAcROb//qeZeWd5Xib
-         pLjw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=eaxiLLItV7DdIy9zXLyfsw0BgYEOi9f/6gMYgqfSqlQ=;
+        b=ro0xQ8wn1IgJ4fhUYunRLHPtA1rtMgZYgbZKO7H2mNMa/86/dSQM3LhSUbVIKzBgL0
+         DF48+rk01R4EeF2KbJ5KWBvcSQq1rypFM7XGfJCwvZ3mtahUugkqyJrhZpqNfii+5Lkk
+         iN2cjKkja9EnoFTLjR5aWOKpn4iZNpJ88zvusw6azf3/GEiD4SDNMcS5O3gNiao+JT64
+         7PGj8BIq9en9iz4WvJpG8YUIlEVrog3GaJSPaE+wTa7/m7b+tXEnF4YMKICHQ3SqFKhU
+         IukYC5zSioqCDSMAsxIoiloSz+WCg8APiEJN6G9cfGEuv3QSqO8akC3G1DD3+vGmnMN6
+         9rJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VqpBkuiR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VHqsXF/i";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1si7337727vsq.72.2021.07.09.16.07.09
+        by mx.google.com with ESMTPS id kj14si9852465qvb.1.2021.07.11.01.17.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Jul 2021 16:07:10 -0700 (PDT)
+        Sun, 11 Jul 2021 01:17:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VqpBkuiR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VHqsXF/i";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34126 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1zaP-0000Mw-EC
-	for alex.bennee@linaro.org; Fri, 09 Jul 2021 19:07:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59762)
+	id 1m2UeY-0000yQ-2e
+	for alex.bennee@linaro.org; Sun, 11 Jul 2021 04:17:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m1zZi-0000Mh-PG
- for qemu-arm@nongnu.org; Fri, 09 Jul 2021 19:06:26 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:35573)
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1m2UeP-0000xL-Gs; Sun, 11 Jul 2021 04:17:21 -0400
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236]:44983)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m1zZh-0004jR-0L
- for qemu-arm@nongnu.org; Fri, 09 Jul 2021 19:06:26 -0400
-Received: by mail-pf1-x432.google.com with SMTP id d12so10145068pfj.2
- for <qemu-arm@nongnu.org>; Fri, 09 Jul 2021 16:06:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/iDhmkz0f3T9GUt7lkp7w4neMFdEQE2MNAGQv76evlc=;
- b=VqpBkuiRUp/i9+4jEAq0AHdWD35YU1aAO18qYjpa3NDaABrIC+YySIMk1dVCDv81Oj
- 0l4PtypDCpoLAfL+QSu1A3yDe3IctT1A8lmLzlOMCP0cMbodDA1rtNeXAZ9TyJnTL+Ln
- nB6iAAfh+NX87BRCjEP+ZzNnMIGUI+nWtQ9NpZsS7BJi61YbPGcr7UaSUfGpd3WREi0l
- SVjkOOkIVgdDrb72chWUwbc+pbuMmvdlxXJETdKcXjcEY2rupsCuaBksAUSK7chPMtIK
- 5QExYP3HS1LC6zm45VrOAxi3gE5YDlSbdm+6X+m/w7X20KGUV3VW8qwp0gIBwEzUiBTA
- T/cQ==
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1m2UeM-0005ZC-Oq; Sun, 11 Jul 2021 04:17:21 -0400
+Received: by mail-oi1-x236.google.com with SMTP id x70so8605524oif.11;
+ Sun, 11 Jul 2021 01:17:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eaxiLLItV7DdIy9zXLyfsw0BgYEOi9f/6gMYgqfSqlQ=;
+ b=VHqsXF/iETXTjMdXYFDJA4An3UFSMiZ89L1YcM4G1tXN5iTD++q/El24KyCacVEDJa
+ rVjrKa01BbfN8Ba7uAsRFg0p1Kjt8YcTaYstJem3iylWkQqYy/43XoFuH7lAxHCk5ABX
+ Vs0fnVPrdpaF/HT5jA4N/YfCYj7D3pOafc5rOL+vUoyZeMNPZRPkwK/02KS36f9VX8o2
+ XREjpZuhUYu9dWe/yAwVRsJFN2awGLvMNQ2EnxkyYTlbhGJZ3wDCBwZKGhnqfZjJzm/Y
+ BrPROBQ2/P+8jXF1MFI9+oriv3gilb/GnRWuWLsejCWwfYxabYf1p7d+zivun94dqtEY
+ pEPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/iDhmkz0f3T9GUt7lkp7w4neMFdEQE2MNAGQv76evlc=;
- b=Qgyn3CbenBz9jn4kUoghge2EDen1Gp/RFa1Dpd/SFIl2U1MJXaNLOzmCGl1SjzGV7C
- /urA3ziAAKa1kC4088bLBOxS6xhBU05Jx+t0org9rMp4S8pX81PrMZkDGua43efqq6g1
- 5GB3960qkYOWG5OQOpLLsd9F0iJKwLBN9kIqlVIRKrileZQC7JWj+4JpdTA+BWz515/y
- irw0a2+LCFbphKCR/KbHydpi0jYLyx1ntKC2t6J+xbLjFbTjTIAFTar+BZixzNqGSEo3
- bTRVvjIWJw8LQnrYNaB56oknx4evhF4aY2IzPHXf1mgRwKY+i14pKl0IGmVDq1WxHQiw
- y1eQ==
-X-Gm-Message-State: AOAM533RxxOvYdJqO3+b81N08bsIq6aIywuV9HqNDYz7nrAxoN5GsIrp
- wrsxcMRC6DBLqsPudTX337txV0uwTxx5og==
-X-Received: by 2002:a05:6a00:b42:b029:31c:abd1:53ec with SMTP id
- p2-20020a056a000b42b029031cabd153ecmr33421380pfo.45.1625871983521; 
- Fri, 09 Jul 2021 16:06:23 -0700 (PDT)
-Received: from localhost.localdomain ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id d20sm7270414pfn.219.2021.07.09.16.06.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Jul 2021 16:06:23 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/1] target/arm: Fix offsets for TTBCR
-Date: Fri,  9 Jul 2021 16:06:21 -0700
-Message-Id: <20210709230621.938821-2-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210709230621.938821-1-richard.henderson@linaro.org>
-References: <20210709230621.938821-1-richard.henderson@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eaxiLLItV7DdIy9zXLyfsw0BgYEOi9f/6gMYgqfSqlQ=;
+ b=el6lzLB++jDv/yz+CDuBbAab5Aj6zSRadfMH6Lx4UBEO3LJ4thR5otyVl2iuUi+fNE
+ TFMm3815rzr4uqL5bh7vMvk5390xoBIRWCTiPIgPmAlF7lfaekvCez2aoZhfaWLojQu8
+ fwsrb3De4Fauaq8Mc9ZJ/3p6zS4vaJGRJ7ql0eREMWtnnPy2mB/Jke8TzlsgW5rDksyA
+ ch0G0ytppVaIcUo4RNeWsRkPk21U9YXomg3cDkymanjgmLk9C/0sl/zRD6ryYfKqARgl
+ p6HyhpJ1ZAfivkATw62CjMr+AWZoMODQTxfYk0Sk/OknJDc+3xxKpxF3oOt8dg8ZvXiG
+ ShiA==
+X-Gm-Message-State: AOAM533yfuZOGq7nnl/Pceed3EoIDcWV+FLiiZKq2FpXzkvScbls8lfH
+ n9Pl0Sfv27Kko7swpMxbEgl3/zfjMfUHGuGvtdI=
+X-Received: by 2002:aca:bdc4:: with SMTP id
+ n187mr34567446oif.169.1625991435783; 
+ Sun, 11 Jul 2021 01:17:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
+References: <CAAKa2jmatcBonTYeZCHnE4TR543FKQR4Lrv2iMKaZUprXH=3ng@mail.gmail.com>
+ <1437061986.489095.1625809641822@mail.yahoo.com>
+In-Reply-To: <1437061986.489095.1625809641822@mail.yahoo.com>
+From: Qiang Liu <cyruscyliu@gmail.com>
+Date: Sun, 11 Jul 2021 16:17:03 +0800
+Message-ID: <CAAKa2jksX=Sco3-ETvue8d4wpyoFBSzgOGua9Z8WyOfeY8jEFQ@mail.gmail.com>
+Subject: Re: [QEMU-SECURITY] Out-of-bounds read in xlnx_dp_read
+To: P J P <pj.pandit@yahoo.co.in>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::236;
+ envelope-from=cyruscyliu@gmail.com; helo=mail-oi1-x236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -116,55 +108,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Mathias Payer <mathias.payer@epfl.ch>,
+ "yajin@vm-kernel.org" <yajin@vm-kernel.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-security@nongnu.org" <qemu-security@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sz4xnX7h1DWa
+X-TUID: Hlq3z/uc5hMv
 
-The functions vmsa_ttbcr_write and vmsa_ttbcr_raw_write expect
-the offset to be for the complete TCR structure, not the offset
-to the low 32-bits of a uint64_t.  Using offsetoflow32 in this
-case breaks big-endian hosts.
+On Fri, Jul 9, 2021 at 1:47 PM P J P <pjp@fedoraproject.org> wrote:
+>
+> Hello Qiang,
+>
+> On Wednesday, 7 July, 2021, 11:38:09 am IST, Qiang Liu <cyruscyliu@gmail.com> wrote:
+> >I found an out-of-bounds read in xlxn_dp_read and here are the details.
+> >
+> >## Root Cause Analysis
+> >
+> >1. xlnx_dp_read allows one-element-off read at its default branch
+> >because of an improper index.
+> >
+> >```
+> >#define DP_CORE_REG_ARRAY_SIZE (0x3AF >> 2)
+> >struct XlnxDPState {
+> >    uint32_t core_registers[DP_CORE_REG_ARRAY_SIZE];
+> >    MemoryRegion core_iomem;
+> >}
+> >static uint64_t xlnx_dp_read(void *opaque, hwaddr ...
+> >    switch (offset) {
+> >        default:                            // (0x3AF >> 2) is equal
+> >to (0x3AC >> 2)
+> >            assert(offset <= (0x3AC >> 2));  // the op should be <
+> >            ret = s->core_registers[offset]; // one-element-off access
+> >            break;
+> >
+> >According to
+> >https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html,
+> >offset 0x3AC is allowed.
+> >
+> >```
+> >#!/bin/bash -x
+> >export QEMU=/root/qemu/build-ubsan/qemu-system-aarch64
+> >export BUILDROOT=./ cat << EOF | $QEMU \
+> >-machine xlnx-zcu102,accel=qtest -qtest stdio -monitor none -serial none \
+> >-display none -nodefaults -qtest stdio
+> >readl 0xfd4a03ac
+> >EOF
+> >```
+> >
+> >Let me know if I need to provide more information.
+>
+> * Thank you so much for reporting this issue and providing the details. I appreciate it.
+>
+> * It does not look like the issue maybe reproducible with KVM virtualization use case.
+>   The machine 'xlnx-zcu102' looks to be a SoC system used in industrial applications.
+>
+> * Is it reproducible with the KVM virtualization support?
+No, it is not. I got an aarch64 host yesterday and tested this
+machine. The answer is no.
 
-For TTBCR2, we do want the high 32-bits of a uint64_t.
-Use cp15.tcr_el[*].raw_tcr as the offsetofhigh32 argument to
-clarify this.
+I'm sorry to bother you. I will test arm/aarch64 machines more with
+the aarch64 host in the future.
 
-Buglink: https://gitlab.com/qemu-project/qemu/-/issues/187
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a66c1f0b9e..3292e212e0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4106,8 +4106,9 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .type = ARM_CP_ALIAS, .writefn = vmsa_ttbcr_write,
-       .raw_writefn = vmsa_ttbcr_raw_write,
--      .bank_fieldoffsets = { offsetoflow32(CPUARMState, cp15.tcr_el[3]),
--                             offsetoflow32(CPUARMState, cp15.tcr_el[1])} },
-+      /* No offsetoflow32 -- pass the entire TCR to writefn/raw_writefn. */
-+      .bank_fieldoffsets = { offsetof(CPUARMState, cp15.tcr_el[3]),
-+                             offsetof(CPUARMState, cp15.tcr_el[1])} },
-     REGINFO_SENTINEL
- };
- 
-@@ -4118,8 +4119,10 @@ static const ARMCPRegInfo ttbcr2_reginfo = {
-     .name = "TTBCR2", .cp = 15, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 3,
-     .access = PL1_RW, .accessfn = access_tvm_trvm,
-     .type = ARM_CP_ALIAS,
--    .bank_fieldoffsets = { offsetofhigh32(CPUARMState, cp15.tcr_el[3]),
--                           offsetofhigh32(CPUARMState, cp15.tcr_el[1]) },
-+    .bank_fieldoffsets = {
-+        offsetofhigh32(CPUARMState, cp15.tcr_el[3].raw_tcr),
-+        offsetofhigh32(CPUARMState, cp15.tcr_el[1].raw_tcr),
-+    },
- };
- 
- static void omap_ticonfig_write(CPUARMState *env, const ARMCPRegInfo *ri,
--- 
-2.25.1
-
+Best,
+Qiang

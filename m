@@ -1,152 +1,163 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp3235832lfg;
-        Mon, 12 Jul 2021 07:07:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzhzwbXhnGJHCtbj+9MRLp8bWgal5FYZKblgWMFsV9bfvVg3pgmHO0cP1MvJcJENVwnAGq6
-X-Received: by 2002:aa7:dc53:: with SMTP id g19mr64205379edu.226.1626098847597;
-        Mon, 12 Jul 2021 07:07:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626098847; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp3249117lfg;
+        Mon, 12 Jul 2021 07:21:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9INDZ7qXQrWVsqtdwyfFRabj10meUFh5o36MXJcRFUNemZ+5OcSrHGCBQZ47PMnWfpfKw
+X-Received: by 2002:a17:906:1390:: with SMTP id f16mr35059181ejc.441.1626099684363;
+        Mon, 12 Jul 2021 07:21:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626099684; cv=none;
         d=google.com; s=arc-20160816;
-        b=voXLa79RdMSiujy+y3s1ANQ8pd8TaiIsbnwNExV4w0QKt4SqrdmAWf0tCGigew3Yzx
-         9suwu4ALy9944w0vQqgx6esOlrOwjsi3rFe5D75TATT2M/12R7RG7+ho5s+XHS/HzVFa
-         hdAitKsQwEqdyr9WhjBOX8hGCKYkbVPIY34LsrhycEWb4NB8/ltzViogTCAUgRW7MqZj
-         wxgsagek0+55IF2ge+1rHoBZflvql8Ik+80oPk7vudzyyxAt/PxbzAd2xPKfMq1n/MYz
-         SDD5EWnbnHavr9+ltEUA+M0JxO0DIc9N65qOG013/X7LBRiODW4D0GdGsm4/I3vR6EBW
-         vd2g==
+        b=pCAz9kIBYIx5a9aqiQYPuZO2AEJ2tfT4Ea6m75vYgQ++Rd2im0n51Fy5dt+ULmIDI2
+         oBN/2aaL5uOZiHUx6+noC/ZXXqb2iTLZwbesh9DGg1ivzoYWzdSyFSyykQQkE05x2mqb
+         lR0v3kZ5gvuxXh8QQkIhZF5ZO5Y+J0Z5AEU04cnlrVJalWvabjQ1alXXzovYM1o5ar6c
+         eLcgKkDRZ09hj90J0vObmL5f+WT6fEaRuGZoJWa3dl7840EHW0P8cN10mM8k407oTYCz
+         Sam2kde7hSBAX69xFNqn2v/YeZbPUTckVtzeHOkTIL4Js6ZeQZM40A75WV909ecn1HiZ
+         yMqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hD8eEEhl0gf0c8FTo/j4mZpa3IL0vB//sj7qPPdpJlM=;
-        b=rKgCdSPM9iRarEqgK3r8gLNnJMBGFxVWn+8rz4ZKhFRDuOFzfKycqWmnvT2CYnN7Tz
-         AhvFsqiHqhEO++H1th3YvATA4MhNxW01Z/IuvOp8U5KPVg1iS8G3rG9xXeECznqwivHM
-         MOaRoaKtSyBi9AoCMvdHLhcdCBftspbwv1F6RyJbOY97PnEyfsgJnw2xd6LgT3CdHEGO
-         F84DGCK7+rokNrebqVLqN2hTKl7qDCFTuNAgJE3OCa0SMu0SuloLlT/pO+NdPltzr8Vy
-         xaXH0IhTT3mQKsGSrMK8dEwm6VZqODSX6+oFBZeiEgKD0A1lvnzdb0xTsz7oDibuAqYz
-         Gatw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Sq0ttdjpDSIMveEICqJHSEJXNaIe2NyoZtztj9IRPnw=;
+        b=G4H+oHJGSh9TS2uZm5UEeDCD0lhdkbPzJtEkKY/SnajKCDqQvnY9ceyMgsOKPZYTOn
+         F94qzsG/IhmhYfNxnHDqQ2k1z8jRnW50rS6zszBA59IxbbPhBb3el7dKkiyx4KIsaRIl
+         LxstHorcClapdZmYcXuba7o1HRo+SVRJE17gppNq8bzMrpQcDF6tp5kn0gz8huX7KqCg
+         bRjiHSjSru4tpF53t3z1BmFWpSiCGiCqSlNt1qrhMXQcb60l0f7Ao5cXes7h3tK0GpX7
+         Y4pJPTjDZV07bLLPEiZ1pmBaqitfsrUUZ9rqzsB7bZs5ags4qBhuuSxOjUBoFWlEdJxg
+         sIrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WwRdNsYN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HOajYmiJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y23si852129ejp.687.2021.07.12.07.07.27
+        by mx.google.com with ESMTPS id m4si15565944ejl.583.2021.07.12.07.21.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Jul 2021 07:07:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Jul 2021 07:21:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WwRdNsYN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48014 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HOajYmiJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m2wak-0005z8-OW
-	for alex.bennee@linaro.org; Mon, 12 Jul 2021 10:07:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37210)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m2woF-0005G9-ES
+	for alex.bennee@linaro.org; Mon, 12 Jul 2021 10:21:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42860)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m2wWU-0003Ge-1R
- for qemu-devel@nongnu.org; Mon, 12 Jul 2021 10:03:02 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:37785)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m2wo6-0005Fd-0v; Mon, 12 Jul 2021 10:21:14 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:44860)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m2wWR-0006J8-Nu
- for qemu-devel@nongnu.org; Mon, 12 Jul 2021 10:03:01 -0400
-Received: by mail-ej1-x632.google.com with SMTP id i20so34808569ejw.4
- for <qemu-devel@nongnu.org>; Mon, 12 Jul 2021 07:02:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hD8eEEhl0gf0c8FTo/j4mZpa3IL0vB//sj7qPPdpJlM=;
- b=WwRdNsYNUKMp0NgAZ2e2uOpnxGrCshpK9AE+9j2vr5Jzqhw2JQra6uwuWSXZWsKCBE
- BkuAZqmO37Sc2rezQXPVoYnh9qKJq6pzILJS+QczUgHlBA1tDxR7zIK2koIn7kfI5+Ce
- 6LfExeNxYC0fVDYZuYWwxzE+eOETaCpA9K0UAW51UVmSjZqdl1YjPPp8Bu+wsaJd0sg2
- JIDctfHwGK6mjtEJy7GyNauDVdyoTBXuRBoDZ4E2wdy8NR7PaiZYToOWuUN8uJjFme2e
- Nr7qlrnnLSJ9idsjAY6kNpcP1zTzHlo4bwpKyAdzvqjD8DgUhY1Y7isSyWvWrumsN3oK
- ERlw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m2wo4-0001ea-E1; Mon, 12 Jul 2021 10:21:13 -0400
+Received: by mail-wr1-x432.google.com with SMTP id f9so20201437wrq.11;
+ Mon, 12 Jul 2021 07:21:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Sq0ttdjpDSIMveEICqJHSEJXNaIe2NyoZtztj9IRPnw=;
+ b=HOajYmiJopg4BvFheVPsXN0gl3cFmkujRk9NcUhhp8JrdM0rAVoGMNJzfk73Zneww5
+ TJOwtU7NIyt2m60bIZnBhvnGxkwtb9gPW0Yd9CyFG623c/dMRYb+HtrLz4FJ3aljT6LR
+ kaLmqQ2etr/pVpKN2xIWjyLWVmatnwfT2BKFZfVtJNFsTGvm3SJbq7E8tTi3oXNTT25H
+ TG4a13B+9PhsmOv7EIdCM64mg2a2izLbNydrZ1mwhQ4B9HXSsJ18RbjuX0Lg9oi7twXr
+ NUjPZyR1Vfp0SgQhXRogAwalHDFY6WNyQVB7F7tSHgXQUWr6l61SkkFhMLvlw7TLli5u
+ HmIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hD8eEEhl0gf0c8FTo/j4mZpa3IL0vB//sj7qPPdpJlM=;
- b=TVWE+h6i12Qp5/q2Wq7nHlwZTXNAFOKFy/nfO1Y9RvuMUO7jQiUApxhophEWiNuz48
- xyRVsDX6PV3bbuksAHCXg1hcYxEP9kycak9gOu1ScklVcTDHqL9NB7sTujaE/LPEipae
- R/cnxG+iaZW7GU3j21ohrKV7YijXIcscNZod6rKfI0wOAdzHd4sZE1tSDlfAH81Y05ZV
- l3tsqixKzYxi9wpEGioEpr/52aGXNfyUzuYdo10NMfaKwvPv7GhREp1lT6EIFtaCL9P0
- M9K0HzgDCjyoTw8ifhK3TXXfpao3ulfE2jVDNG+fByLvbWIxUtRi/6f6x2/Y/d7YOBlA
- SSMw==
-X-Gm-Message-State: AOAM532xQGUi0BTWUy2iLZKPZAvmcIi6me0WAbJxFzUOs8tQJsPUwt9u
- DRtR6FKsjlu7ZM8h/DqwAuVRvMj8y4ReH1zKcm6z7A==
-X-Received: by 2002:a17:907:1691:: with SMTP id
- hc17mr51778533ejc.382.1626098576526; 
- Mon, 12 Jul 2021 07:02:56 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Sq0ttdjpDSIMveEICqJHSEJXNaIe2NyoZtztj9IRPnw=;
+ b=T2Zxf6sHbJbQMitIceYEusOCrKnOVW9oP8x5JEKN0FKhrTpZxZBK5yaRst6h5OFiEX
+ io+SZ+l7I0KcJWUgAh4oIuDm+IAJodDE0mXgE6js8iR3wY827BWdHo20DxKLDGH9CCb0
+ DboFl8EGnzVnOnn5WrDBN61ooX2gNPfVlivgrA15suPrTOv0ca2Puv33lhisBV1kPoZp
+ nRC6QX9gygR+r5vMAVBYDcGjIm2Shv3547DxTNMjIEUzpMF6Q8e1EEd7aQ5s8Zg5O0YV
+ Ksoxz+JymDSKuG3Km7zQ0cMUafvSJKq2Bnj0SFIHwEagOkD6Y5NStr/QriALZUxU6m7X
+ QiZQ==
+X-Gm-Message-State: AOAM533pnIjDqvc/egVkefjGanwlsKa92dOdF/gUzwv+gC43rO0szS8y
+ 349ZB9gGWm4PzBUMEFxAwR2Q8t7lIKtMEA==
+X-Received: by 2002:adf:e4d1:: with SMTP id v17mr6367012wrm.206.1626099670131; 
+ Mon, 12 Jul 2021 07:21:10 -0700 (PDT)
+Received: from [192.168.1.27] (abayonne-654-1-142-116.w86-222.abo.wanadoo.fr.
+ [86.222.93.116])
+ by smtp.gmail.com with ESMTPSA id f5sm15750477wrg.67.2021.07.12.07.21.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Jul 2021 07:21:09 -0700 (PDT)
+Subject: Re: [PATCH] hw: timer: Add i.MX sysctr timer implementation
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Daniel Baluta <daniel.baluta@gmail.com>
 References: <20210707113937.72602-1-daniel.baluta@oss.nxp.com>
  <CAFEAcA_L7nrw4zBV7pKYcV+H+4qJT60PFkJYA_w-8FSwOqNmXw@mail.gmail.com>
  <CAEnQRZCJC4WmrGy6NnMmwUkscjn-HcOQmvni580t58b4s7pFKQ@mail.gmail.com>
-In-Reply-To: <CAEnQRZCJC4WmrGy6NnMmwUkscjn-HcOQmvni580t58b4s7pFKQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Jul 2021 15:02:17 +0100
-Message-ID: <CAFEAcA-ZS0anZESVD0+bLE23K6Z_TSS-=NqRZGsK-buQ9OTkyA@mail.gmail.com>
-Subject: Re: [PATCH] hw: timer: Add i.MX sysctr timer implementation
-To: Daniel Baluta <daniel.baluta@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ <CAFEAcA-ZS0anZESVD0+bLE23K6Z_TSS-=NqRZGsK-buQ9OTkyA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6b3bbab4-b5fc-bf4a-5556-051a27522c11@amsat.org>
+Date: Mon, 12 Jul 2021 16:21:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-ZS0anZESVD0+bLE23K6Z_TSS-=NqRZGsK-buQ9OTkyA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-1.479,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Mancas Viorica <vioricamancas@yahoo.com>,
  Daniel Baluta <daniel.baluta@oss.nxp.com>,
  Daniel Baluta <daniel.baluta@nxp.com>, QEMU Developers <qemu-devel@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o91ASU7uKH9i
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tSUHHpsKKZjm
 
-On Mon, 12 Jul 2021 at 14:58, Daniel Baluta <daniel.baluta@gmail.com> wrote:
->
-> On Wed, Jul 7, 2021 at 10:21 PM Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Wed, 7 Jul 2021 at 12:39, Daniel Baluta <daniel.baluta@oss.nxp.com> wrote:
-> > >
-> > > From: Viorica Mancas <vioricamancas@yahoo.com>
-> > >
-> > > The System Counter (SYS_CTR) is a programmable system counter, which provides a
-> > > shared time base to multiple processors. It is intended for applications where the counter
-> > > is always powered on, and supports multiple unrelated clocks.
-> > >
-> > > This system counter can be found on NXP i.MX8MN.
-> > >
-> > > Signed-off-by: Viorica Mancas <vioricamancas@yahoo.com>
-> > > Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
-> >
-> > Is there a board model or an update to an existing board that
-> > would use this device? We don't usually take device models that
-> > are completely unused upstream.
->
-> Hi Peter,
->
-> This can be found in i.MX8MN board. Should we add this patch together
-> with the upcoming patches for i.MX8?
+On 7/12/21 4:02 PM, Peter Maydell wrote:
+> On Mon, 12 Jul 2021 at 14:58, Daniel Baluta <daniel.baluta@gmail.com> wrote:
+>>
+>> On Wed, Jul 7, 2021 at 10:21 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>
+>>> On Wed, 7 Jul 2021 at 12:39, Daniel Baluta <daniel.baluta@oss.nxp.com> wrote:
+>>>>
+>>>> From: Viorica Mancas <vioricamancas@yahoo.com>
+>>>>
+>>>> The System Counter (SYS_CTR) is a programmable system counter, which provides a
+>>>> shared time base to multiple processors. It is intended for applications where the counter
+>>>> is always powered on, and supports multiple unrelated clocks.
+>>>>
+>>>> This system counter can be found on NXP i.MX8MN.
+>>>>
+>>>> Signed-off-by: Viorica Mancas <vioricamancas@yahoo.com>
+>>>> Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
+>>>
+>>> Is there a board model or an update to an existing board that
+>>> would use this device? We don't usually take device models that
+>>> are completely unused upstream.
+>>
+>> Hi Peter,
+>>
+>> This can be found in i.MX8MN board. Should we add this patch together
+>> with the upcoming patches for i.MX8?
+> 
+> Yeah, you should start with a board model plus a minimal
+> set of devices as the initial part to try to upstream.
 
-Yeah, you should start with a board model plus a minimal
-set of devices as the initial part to try to upstream.
-
-thanks
--- PMM
+And documentation/test for this new board, so others know how to
+use your board, and tests will protect your code for regressions.

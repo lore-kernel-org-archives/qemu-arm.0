@@ -1,121 +1,132 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp2807426lfg;
-        Sun, 11 Jul 2021 19:51:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpS2q87yX69kI4WzB4EciAA64KLH5F0KT+m08SIDEoQ3zeFKMS+YjPo9ipD6SW8qFiHffL
-X-Received: by 2002:ac8:5c43:: with SMTP id j3mr17903912qtj.132.1626058319095;
-        Sun, 11 Jul 2021 19:51:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626058319; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp2891375lfg;
+        Sun, 11 Jul 2021 22:35:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPc/r0/4uyzwEKbLbrCKiWo5vr5HekI22Uo5kPp1YNwpav8+AS2xafda7eFXcxj2zTUbtK
+X-Received: by 2002:ad4:4bca:: with SMTP id l10mr1837751qvw.50.1626068120922;
+        Sun, 11 Jul 2021 22:35:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626068120; cv=none;
         d=google.com; s=arc-20160816;
-        b=pXXQoIAZ2Q6fJW6XChbMY2MGoVM5s/3JMLfQ5GhWMAchSIBRuDCXPa1G5FKkl4IxHT
-         D2m5BTsmMUEI6C9xHkjeQahTw0ewtqQnPasOImQnDXjOngPAeFcAD/R8pf0pIW5BOKAk
-         RXVI+P4im0Ko0gMSSq7KTy7HCa+jVwGzw72I1xr/dtP+3WyRu428rhD2xzlps2qt6BOZ
-         9VUlGCT0/s0tl8da0I/XLwCGC5ECZxREKB75nlecZu6sq66igbWeWABtSYnQOOPK4tLA
-         MOyKWRqcRnUuwydLpzeVfjBPuTUI+q5Hd7sbhegm1Z634yEPnOAWgIBPakHnQ/Qh9OSO
-         H+RA==
+        b=R4IVhYpl9o1gtNDn61hOBRTJ22AmdeIftpsQNMtIBI7o05aNnKWfuYjwy5SNdXnOY/
+         wRNlPE6X3fAL/Fo583vmnjsZacuXwsE7lBTHtqgX40lvgQpF26tIK4ZNPLQ4LAJDMkmd
+         zZLqifM91ZLtfXEeqbXbgJgNPD7euTilH1b1kJ39P8rFgt7t3Fqus61dLyORMc2s7Ssj
+         oO/cGR6+rLSDrAf9uSDg/+Td0AOEpxL5kjtWrwfxGQlyF1SxiiTFKJDUlUztCUveD+FR
+         j3H4hmq9nbzj0qoYKYfgEgTUDOd6aWvsfVGrbsoAKgPEohWvzK6EP7UWD8n7Ju2P0T3I
+         Y4FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=8DGn1qWm5G6Fvms7r3nUuLxYojKgKbMndwcYTLWaCNs=;
-        b=bzY+7O+wCE19mVFPg4V0EaSJUIDHkoJ4HRa5Pl72CO88fw7ragQGbkeGKrdHoPAgf7
-         9g0Ryg37WfSuxK38AzkanaqNrT+cs/+q3bZ9CKx9hdcb8O2h5wxe4vz3cXb1zf+Z9ZkP
-         8K84OthvAk+fNiOcZswFhKhvi+e1RQZ61FMNncnZ+AfDCaAdIWUakBHCI1c6XYsKVflU
-         YjEgHHQw/aP7gX4jgZXYSfQKCeOlBXfIuhkQBs80PrMvcpQrO3rOGYllDmM02irW9Oh1
-         81BEMFfKiru5DatrMqTAI5VU9EtkDnqwlyVKDKa4wrheb82AUoOqZiAig+TTVNxFyAA9
-         tu8w==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:to:from:date:dkim-signature;
+        bh=4Kl/GmnYXAaK7DHjfYps1/T8DK0PbqCvKOvOap6/l3k=;
+        b=DAGZZU0nydo2J621NJl2LLN5pl5ZTdySeNyIocObsaRPEsZu3pV6ceQZfsFRRT01N6
+         7+nNdmo5YFs5nTGL09PuHIFz8QXp0qSfEs9LKw5U4Dql22ikIQ296gMbpY7JA2MEVrId
+         zbgyBp2GIUIil5RvkSHneBGHwL6mmQKYgc+X0QULnU1HJPhDM55eUDrEly70XwjFwNkD
+         VEUXE+Doz+KNuK5OZ+eEUcs1rZQOtPj7z08e4wjB0SHRu+Xs5lV2chXFzqqRiokOSoeu
+         nh396xXp6srWacgGWAQqiK9lRX+cSVABdZLh7+3P9L3mHyIYHsH8DdIqUFHcagSKIm/l
+         Obmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@alistair23.me header.s=fm1 header.b=cZPc7y4U;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ACj8QC1s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@yahoo.com header.s=s2048 header.b=B67bvjco;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fedoraproject.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u24si2666237qtq.59.2021.07.11.19.51.58
+        by mx.google.com with ESMTPS id s14si13272394qkg.229.2021.07.11.22.35.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Jul 2021 19:51:59 -0700 (PDT)
+        Sun, 11 Jul 2021 22:35:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@alistair23.me header.s=fm1 header.b=cZPc7y4U;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ACj8QC1s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39536 helo=lists1p.gnu.org)
+       dkim=fail header.i=@yahoo.com header.s=s2048 header.b=B67bvjco;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fedoraproject.org
+Received: from localhost ([::1]:58110 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m2m34-0003Xd-Ej
-	for alex.bennee@linaro.org; Sun, 11 Jul 2021 22:51:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45800)
+	id 1m2obA-0001ts-82
+	for alex.bennee@linaro.org; Mon, 12 Jul 2021 01:35:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46546)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
- id 1m2m2w-0003WO-Kn; Sun, 11 Jul 2021 22:51:50 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:35333)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
- id 1m2m2u-0004qa-FV; Sun, 11 Jul 2021 22:51:50 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 744585C009C;
- Sun, 11 Jul 2021 22:51:45 -0400 (EDT)
-Received: from imap43 ([10.202.2.93])
- by compute3.internal (MEProxy); Sun, 11 Jul 2021 22:51:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
- h=mime-version:message-id:in-reply-to:references:date:from:to
- :cc:subject:content-type; s=fm1; bh=8DGn1qWm5G6Fvms7r3nUuLxYojKg
- KbMndwcYTLWaCNs=; b=cZPc7y4UOzvpjqhDTsFXt+m2Ab2efYgMPmpltXxfwhAY
- obvvlZIyd9j0CthNEorZaCSFXMHHqCCwFBwqsQdy3JL+3JUIGMIxTtvgGFsyNywH
- dwVBWpp8FWrx3z5ROn7+hKQk8rWN0BsARVCs6HeBCIX31dqeH8otUZ7/a5M7kEB4
- aWpOXmxUpXa3gevQWJmybYSTjHodE3t3uPwMMRg4pB0tnvFVzHJw12PrX0qE6DP1
- 6a1sX2flq2IqIl2Gth/QuQColiwCCTutYY60VaNsqmzfk7b09TfVdBnrfa1cbeLA
- V0VHuYRd8ppReXKITwVpBzhfvwv01bCrV6zMYmob2w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=8DGn1q
- Wm5G6Fvms7r3nUuLxYojKgKbMndwcYTLWaCNs=; b=ACj8QC1s0alGFU3po24EG1
- psZc5KTxPOqsftGt7WutuH0lfQX63D/qVa+W10YeTe5Ov9uM4kRAQx/oq8vd9gUg
- vJZNuAdQ4QviooKe0SAXAqH+fGP6ccUdkElOkkgA/vbX8P7VqQ0rjZ/05Bp4GToI
- 9DILOx5iROFqM9Zgfy07LdsRbRVr/YyJfjOTNE0d+Iglh0yENCczReqS5CQOvmLV
- zLlH/swRLTbmQTIbPvyBg3uN6AwzQzf4qU0x60ffIxFKuKZCfVNoyEg8+nEVTFdD
- rP4cxCRCK8Xxr+yEuxM1GPZKL9syrz8D8CfC1ZETyim7MSokw+/HAjAcCV8CzLkw
- ==
-X-ME-Sender: <xms:QK7rYGeluSKTorlBdtI9_sJesUMaNzksR8gFxROEfiHY8F3bVK04XQ>
- <xme:QK7rYAMTkKjmudg2EviHbP_-ehOmoqcaHB1jxnezbfMBdFJSc8mAq8E1KbuaH4SDT
- 7troQcAN6nKzyAQ8d4>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddruddugdeivdcutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpeetlhhishht
- rghirhcuoegrlhhishhtrghirhesrghlihhsthgrihhrvdefrdhmvgeqnecuggftrfgrth
- htvghrnhepvdeujeeuuefgiedvvedugeeltdefieefvdffffdvuddttddvgeetudfhteej
- ffeknecuffhomhgrihhnpeigihhlihhngidrtghomhenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrlhhishhtrghirhesrghlihhsthgrihhr
- vdefrdhmvg
-X-ME-Proxy: <xmx:QK7rYHgikU5wdcDZMIM9eHPaqGHYWjF_b1s2STYqoS0oRGcWJt4NSA>
- <xmx:QK7rYD_pRvTI0wzPEP2W_8FRQu_5fLVlo81VxaBs6CFud0HH3dXtMg>
- <xmx:QK7rYCuuF5wwcLXCyT7xJ0iyxpqvGJLrjoybUIj-d7Oe4IW5_q6z0Q>
- <xmx:Qa7rYEKIC5iNHOOo7D9CCAf9Y06hNQyKjZI_4F-QbsauN-x0u9hA7g>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id B8418AC0076; Sun, 11 Jul 2021 22:51:44 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.5.0-alpha0-531-g1160beca77-fm-20210705.001-g1160beca
-Mime-Version: 1.0
-Message-Id: <b524c816-b1ed-458a-9fd7-f303afc9bf04@www.fastmail.com>
-In-Reply-To: <CAAKa2jksX=Sco3-ETvue8d4wpyoFBSzgOGua9Z8WyOfeY8jEFQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <pjp@fedoraproject.org>)
+ id 1m2oZl-0008Jq-91
+ for qemu-arm@nongnu.org; Mon, 12 Jul 2021 01:33:53 -0400
+Received: from sonic304-19.consmr.mail.sg3.yahoo.com ([106.10.242.209]:44282)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pjp@fedoraproject.org>)
+ id 1m2oZj-0000wb-2j
+ for qemu-arm@nongnu.org; Mon, 12 Jul 2021 01:33:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1626068024; bh=4Kl/GmnYXAaK7DHjfYps1/T8DK0PbqCvKOvOap6/l3k=;
+ h=Date:From:Reply-To:To:Cc:In-Reply-To:References:Subject:From:Subject:Reply-To;
+ b=B67bvjcol7IjxS8bl+4zn/+2fXh16hhdRpC5m19g/+dfDrEpg3dET96joWSZ1LlxhVfvH0HCSgo+qys2CWQ6mVCwXa3kz3W5fKV36H+nu36bAn7Z0nIFsBxs51suWzW/zeoQP+vnU1ITf7n7Mynrjkuyh8HuEUt0nN/XmADOmyOpX4Kd4QotUpZoPur5vPLkqTMhIyeW/qwz8BKI8DacwyrJag4ZnpV/nebVpEJMuFXHLhcUi772p+G3/J9Uu67+UMCw3qVH8Fd2Py3LUWmdk+F657m6Zqdey1nfQKFO3hi8dsoclGCuDwUDIOnGD/+1J4Nh8n8MKz/hxp7hCSCWvA==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1626068024; bh=SumwDziySBaOn2aK8xyDmR5bdUFr+HUvligtFGw7NcR=;
+ h=X-Sonic-MF:Date:From:To:Subject:From:Subject;
+ b=Ga6ynAESutxEK6DGe4/gP6n82Wsr7dk6L/JO48QJIZ8ZO1BSgeXPF1M2a6IQ2RHeRTcjOOY21SyzWdW//Go0h51n1ewOFZkXu87yRHvtmDbZgwIAOC4NPztQ7VHvFcWaprIn7Rww48pZUFkwNfOFpTql1P8enYpKZwZODwAvuy4eUryAeZGj9o7FaSv63x0Z4QzyXjF9v0GAg14guetmGIcCF3HPMwJp5TwIql8ZmHuoLTAAtK7gziQiKwa6PhLsDSyTaK4xjrNmKN9pQluh1uObazyAWAFPcKqr3hQhz9fsaSIuB8J0A/l0JVZjSRSfZGMaAofMDKC5ekZ3tWlZGQ==
+X-YMail-OSG: KeHv63cVM1lz45BDuw3O9YCz5yd6eym2eehts7uftcRuJ5dEtQJj6YAq_Sw1UYf
+ Xji5ZYHLEZxKYTG9t8RmeXtCIDA1JL6G1txfeAmyOKZq2xHaB_KIVk6kWMR6uN3TGaU5UG74Q0st
+ S3bnhXowj9bez5og68qXtBWRHMnD6ixG6wxexrEAeIPmbu33P5ytmm5NxZrjUofNIcaJjq_NGz2L
+ Gb4iE7wCuyG8fHorP3mhOsayJVz1Wdz0BhxQ0sU3BhOAbh7iH0L1uH9EGS_bgezrkqPfLDXXZnPx
+ .ybOfSfdhUSyAHpGWvqwyXikiF_opzkPUZLEL6DnMc5epsrO6_5ICGk4hOgODZcOG7g2DHncukLh
+ uA_Dr3P0JdO9epTMd_20KeYrVnGS4rR7IhGVsFq5FtZl7SlMLLJbRsygQLosf4o8pWn.YPe2fDIZ
+ _VU9C16YtoxokCLtiYX3UIFtbZbBWGP1AcUOpaoKREb6cf8HKjxsyL8PNL_XcMxG5xw2ODvdTn7A
+ 8jacmEmQi4CRA5l0.veCsZBkadwBBcbh9yN2WmfIdZSiJbQ8bbr6FDK14RPZeHoFwxcAEUlPtVSf
+ KZSPTbpgkVGWBVyq9d_uMdugoHDa8niHNBs6z2GGgk8L8VkuMVak6EIryuc8xsH7eWqc6re.BIMa
+ oBocwWncbsXA8pZd5b3eXGJFuSVxuE1CrfL.AGF8Qpns6qv.0zyR14wqOoFXYt9827VnM09ib.EN
+ pqJxySYbj7WM_MUPOa7ymu5mhS3RFcfQKbo_O5ndI6E6IWpgKhtXT5qZLuf2_JZh5uUUMi9dS9M8
+ AbOyMOcv_ndLmPgIJjcZ4E_3BMjngz0K4CjEM5mBn0TTisTNOXMREhc3wEXxfQbNgkJ_YneaEcKH
+ 7zrt5cRRztCKclFpl3xOx6Q6e.kHoquhd5yAd5_x9QGUKbk8TLBUAmzQFPhu55E3_HibXqU5zaqK
+ 3vDPXszy0SW74.G6xxCTaXzFhAKoQC3Da5xC5LlvusheCIcqr4sc4KvnV8.9a4ENp3XZTRNO.Utz
+ g6OkqM6w7RkRR4G927eeWYg5mdPlLj6kEYn1JNYMHerwMhYxzWfzi7t5ApDOp2DRf25DvLbIc5di
+ jIOrzlYtvpg.l_Kyx2VG7j1YyUVq9GW9Z0zUe5VRIyngtMLbPhP2zSEGS32jF7VAV9zN1tPDoudv
+ AhLEUZq5Dd3FPBKgTSPv8ph6AvPnopvGErCB6yLwbbLSye..TCzKozmnvg_6E_pDUyToESr3eW1k
+ Rj05pDf67kGfwccwwi5AjAQQAXusDOSAqo3Xjy5oHcT9H.LbrY6FUKYEWL28b.NhM7sO5EBpISF1
+ yq4mETw.kxQsoMJhsfpJ_wIntroHTHSZ97YUhrMml_H9H04JoF.QgE3loRh9o.nu.RFEaUrtLp3U
+ fTvyFNs_TMpmKmhahz_i8zgW6NxP4mVvsMd_7niFUcORykjCuoTEsCCbrBG9oLFhJsc2U1PmWAyG
+ LmcDTNC6kEpf8JaaBh4Ihk0ZhXjCXuWbkLLLUI.LNnGxvICLNODs1TUioucjXRtA4QTk1Av0cCOd
+ ybxwum5zkTRyobipnvmonWNMjLJZThONeQP9i_f0Q85WUJMN0aTcAQCILx4tBVWkog3Jk36u63JF
+ wzEOUqRzlkxNusFmqCLnKDMGhv5bgSUHj8IyNM_JJtLs8g6_PqVEw5hAPSRzFkjm_aGNTgzAsC_t
+ Ps1Ls8pOEf2nxjLr12peXQPGgRzs2SktPf156l7Qo_JJDS._HPAS0sj6gGxN848Oiougk6ZhJQrX
+ bVxDBBufCYEzzOlk60LOUHz7xDHNGAPfZyUAxN3eXCqUsfaFSy3hGp7ylu1gmp8PqC00gb6TTIYC
+ yh8sXqTa6yLK95cb_ts0CKi3kHstq2HBYYmTxcrgomnBfOov3qu7QzqqhuYx81Cf.MywQbh4n6hq
+ UEaTPpbH2JKjH08twTrbskJJXje99ZR19HDsK1NmaKm5Dq4ekx9zFUoGdugOHUlILI3qf10s8ENv
+ 1pEBnLqK6vSFf3OTa8h4B0NLk5GTijJ7H9O2WBII3mzKs6CBYvk782oDu.GLS1V6SmujDdpBq.Nj
+ QbDi_4jzdufL8C.JeYyo5ELOuqLxzbbW8V7fl_mz5E9NIRYI9u4YW1PqWZ9RCyJeQCesTiZwjEKw
+ pmoPV7g6j6qrn3ukGK9Iqdiyb0IneLKH1V2brtQ328XrGZSmfTj3TAJaPwIbC4ktTtlPWORVnPRv
+ yQOgzIa9vVYtBLMGadmZ.GmOOHvgQm77zKSc71sOvM1ZFFlF.u8brE2WMG9cp.jvr_hQ740Dmv66
+ wjcTa4Uz1uy68yn20qYd9qDmZvY0Wz.sg8LkrXJeCiXyHkL8Hplhzo1bkxUJVgMUIXzZ.blNU4Ar
+ 7qECkyzlPkQM4w3.8wVxHuyEYNBJIzZm3g4aj5MB1TGKOqG3_GQkxcmh57ferwlK9oq4TWtgVR7C
+ 1PLFW3z1hoOwDQMRJOiHs.zWM3J5fpT9lqPwdX3v_5_rDDEGaLAbm1GkiLDfUkqIF2SW6gECZUDH
+ 7Z.iIWFj5NbocX1OCuBe0plDkh6IkDQEPusfsyFPp64ScRkDkoeRRWuEq0rT4stSIZXQy4ozQ5z4
+ O4NsR.enGM6ASl1Houusf_X9acvxyIZisOW1WogxQuBJdBll5JYG1bBYc0hurZFi7F.9ov7MAmGu
+ lHyBxTKbYuK_7_m5NoMiLP7YpmgDCHY8C_rP1.AUHaiCLST0697NGF__nIPDoHZqaJcD2ed5B3XR
+ eL3eOvjMf6f5pFWnV64d9DgiK7k8gudkz0nQoI6ktT2UMtiUCtYri5l0ch7IJzfXmJ9DGGmx3oyF
+ cCEn9.487m43o4d9kHdJ7gHMT5Qbc_PE4aOELuAVD1CY5XhlJVQdC5PmgPLUi8e4wYSUzDctw3w-
+ -
+X-Sonic-MF: <pjp@fedoraproject.org>
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic304.consmr.mail.sg3.yahoo.com with HTTP; Mon, 12 Jul 2021 05:33:44 +0000
+Date: Mon, 12 Jul 2021 05:33:40 +0000 (UTC)
+From: P J P <pjp@fedoraproject.org>
+To: Qiang Liu <cyruscyliu@gmail.com>, Alistair <alistair@alistair23.me>
+Message-ID: <916126920.406872.1626068020282@mail.yahoo.com>
+In-Reply-To: <b524c816-b1ed-458a-9fd7-f303afc9bf04@www.fastmail.com>
 References: <CAAKa2jmatcBonTYeZCHnE4TR543FKQR4Lrv2iMKaZUprXH=3ng@mail.gmail.com>
  <1437061986.489095.1625809641822@mail.yahoo.com>
  <CAAKa2jksX=Sco3-ETvue8d4wpyoFBSzgOGua9Z8WyOfeY8jEFQ@mail.gmail.com>
-Date: Mon, 12 Jul 2021 12:51:24 +1000
-From: Alistair <alistair@alistair23.me>
-To: "Qiang Liu" <cyruscyliu@gmail.com>, "P J P" <pj.pandit@yahoo.co.in>
+ <b524c816-b1ed-458a-9fd7-f303afc9bf04@www.fastmail.com>
 Subject: Re: [QEMU-SECURITY] Out-of-bounds read in xlnx_dp_read
-Content-Type: text/plain
-Received-SPF: none client-ip=66.111.4.26; envelope-from=alistair@alistair23.me;
- helo=out2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: WebService/1.1.18603 YMailNorrin
+Received-SPF: neutral client-ip=106.10.242.209;
+ envelope-from=pjp@fedoraproject.org;
+ helo=sonic304-19.consmr.mail.sg3.yahoo.com
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ FREEMAIL_FORGED_REPLYTO=2.095, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,6 +139,7 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: P J P <pj.pandit@yahoo.co.in>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "yajin@vm-kernel.org" <yajin@vm-kernel.org>,
  Mathias Payer <mathias.payer@epfl.ch>,
@@ -135,70 +147,35 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1LGwnT2JBR52
+X-TUID: DzdPEJoaEWFM
+
+Hello Qiang, Alistair
 
 On Sun, Jul 11, 2021, at 6:17 PM, Qiang Liu wrote:
 > On Fri, Jul 9, 2021 at 1:47 PM P J P <pjp@fedoraproject.org> wrote:
-> >
-> > Hello Qiang,
-> >
-> > On Wednesday, 7 July, 2021, 11:38:09 am IST, Qiang Liu <cyruscyliu@gmail.com> wrote:
-> > >I found an out-of-bounds read in xlxn_dp_read and here are the details.
-> > >
-> > >## Root Cause Analysis
-> > >
-> > >1. xlnx_dp_read allows one-element-off read at its default branch
-> > >because of an improper index.
-> > >
-> > >```
-> > >#define DP_CORE_REG_ARRAY_SIZE (0x3AF >> 2)
-> > >struct XlnxDPState {
-> > >    uint32_t core_registers[DP_CORE_REG_ARRAY_SIZE];
-> > >    MemoryRegion core_iomem;
-> > >}
-> > >static uint64_t xlnx_dp_read(void *opaque, hwaddr ...
-> > >    switch (offset) {
-> > >        default:                            // (0x3AF >> 2) is equal
-> > >to (0x3AC >> 2)
-> > >            assert(offset <= (0x3AC >> 2));  // the op should be <
-> > >            ret = s->core_registers[offset]; // one-element-off access
-> > >            break;
-> > >
-> > >According to
-> > >https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html,
-> > >offset 0x3AC is allowed.
-> > >
-> > >```
-> > >#!/bin/bash -x
-> > >export QEMU=/root/qemu/build-ubsan/qemu-system-aarch64
-> > >export BUILDROOT=./ cat << EOF | $QEMU \
-> > >-machine xlnx-zcu102,accel=qtest -qtest stdio -monitor none -serial none \
-> > >-display none -nodefaults -qtest stdio
-> > >readl 0xfd4a03ac
-> > >EOF
-> > >```
-> > >
-> > >Let me know if I need to provide more information.
-> >
-> > * Thank you so much for reporting this issue and providing the details. I appreciate it.
-> >
-> > * It does not look like the issue maybe reproducible with KVM virtualization use case.
-> >   The machine 'xlnx-zcu102' looks to be a SoC system used in industrial applications.
-> >
-> > * Is it reproducible with the KVM virtualization support?
+>>> * Is it reproducible with the KVM virtualization support?
+>
 > No, it is not. I got an aarch64 host yesterday and tested this
 > machine. The answer is no.
-> 
-> I'm sorry to bother you. I will test arm/aarch64 machines more with
-> the aarch64 host in the future.
 
-This should still be fixed though. Your proposed fix looks correct. Do you want to send a patch to the QEMU mailing list to fix the issue?
+* Okay. Thank you for the confirmation.
 
-As it doesn't effect KVM I don't think we need a CVE or to merge the patch quietly, so it should be ok to just send to the list. Someone let me know if they think otherwise though.
+On Monday, 12 July, 2021, 08:21:49 am IST, Alistair <alistair@alistair23.me=
+> wrote:
+>As it doesn't effect KVM I don't think we need a CVE or to merge the patch=
+ quietly,
+>so it should be ok to just send to the list. Someone let me know if they t=
+hink otherwise though.
 
-Alistair
+* Right. Since it does not affect KVM virtualization use case, it is not tr=
+eated as a security issue.
+=C2=A0 No CVE requried.
 
-> 
-> Best,
-> Qiang
-> 
+* Nonetheless, we should fix it as a regular bug. It is okay to send the pr=
+oposed patch
+=C2=A0 to the qemu-devel list for further review.
+
+Thank you.
+---
+=C2=A0 -P J P
+http://feedmug.com

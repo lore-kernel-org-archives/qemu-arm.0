@@ -1,63 +1,63 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1027805qvs;
-        Tue, 13 Jul 2021 14:22:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyiQ8Y8PcAJSPdrNkI84jHoIn+l/WvIrBWU7/fjQWglCgiMN0scaVi2MxYeNU3Zp44e9eyK
-X-Received: by 2002:a17:906:bcd8:: with SMTP id lw24mr1424034ejb.228.1626211323493;
-        Tue, 13 Jul 2021 14:22:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626211323; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1027831qvs;
+        Tue, 13 Jul 2021 14:22:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzqbVxqgzxgOrmQyG1pVxiZW14yRph2lLl1IUiOCtBKFmDaJlskKlGWeFDHkpNZveGU9pFl
+X-Received: by 2002:a17:906:af87:: with SMTP id mj7mr7979517ejb.397.1626211325951;
+        Tue, 13 Jul 2021 14:22:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626211325; cv=none;
         d=google.com; s=arc-20160816;
-        b=yVgjasFgxeyQiSj/xFskYJlfWhcQSqzDTs75yoB9K9gEAI1Dn6oH0VNzvjtxRqqlIH
-         JGNggqDP/djDW9xel9D86ORuNa/nGO+mx+vE8aTWb7IolW8h5+VkZqyuTmyDpoC7frj+
-         uYi5LIClL+Eufvd9V/RffYbAP0likao0j/a5oN6/X7+mNxoH64JWmjAHiyecbmDHcqJV
-         Z8vQS6iYb7wKzJj/OGbsDujikuU0cqTVhTsHlNc2QefA4ZyfPyxYRTRr9inqspowOh0X
-         mw3t1nLTfBVb4M569ojIdvMI4L97C2tuMeGYxyhK4khuPxZp6EFDbqCzmue71vVeFB43
-         k4qg==
+        b=ptE2+Z2WBe90zGKsfxvVQ2hJP0zM/jYpMquCoczE8IFjf9ofdG9+vE3/P2dlavAqr/
+         Pc5MwFx2m0cLR2Nza+zr8OxFexgs87RcS0o+ZoJxV3x+JixcWY09tw64SZLV5czBXXtt
+         4xufufYUxk7ISTe+c6pxhWOdhAZ2ZKslW/e4jG00Acu/LhyrF+96xl1pT0ELqibgJWgq
+         izHQrZVbttq44QxC70PwFFuBDUoKtxKc5PIbRNAygxHxVb0AxDwT0/Rfshags8t1bHhI
+         q1ZNVoybo/hsUJi9H18GUZflBBmmHtg47LESEIPTIIPyTQlX2FaGBifRG6K1UbpuZ1iI
+         t2CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zsU0FTFf2rMachGGbCL/tF0cIh/ZF+yOJZdnct0Lkq0=;
-        b=h0RW9spk6WtJ9F22yxuifgP1gPxOf/DRvNHSyBcON8iXmCzpat3vWqsKDiMdtxkQ7X
-         xJQNXeUuANA5RgDCgGuweNaskoxAZlIYFnBbvuq6MU/QBPWRR6AfI42KRXBtxkdjfSxF
-         QpRn7ut8zkAMyfEktHBZJi2VX7x0qPDpdbyfamtJn2EP+u+HqdHVGKOLkz736tOv5Ngp
-         am4X7Rzz1sx1Ko1xsp97dQhzeGNM3cZ5rDOhjyQ6mTgVBfuQUTvT28Q32llKxTDonJB5
-         uyJG9znPWmIw/kc7cCcOH0zG0MJeIgld7ADNto6nBdy44F83aAKcA9/napBmiD2waTzS
-         ZXtQ==
+        bh=8VEQG7uRmU1E/VwX2Tg7eiPcHjc2JykR0vK+XzqfOgY=;
+        b=ZYzQPhzlswR3N1L8et5PfbqGDV/SUTSXzHRFzw3WXxoMmfqSVtdzcZhspkfYTFjwAs
+         v4VT67qLXIleORNh3PKRWpOA1i9XzvHcDIr1vhSi0AtU/y61XlCIKZAa6Q8CfB6bNZeK
+         RZ4nCKhpIiXgZzy8piNIsbF24VthaAuHGHkBBbOOyvRLeV+nrCL7EOHmNfCeqXeHg2wf
+         AUFVFXmStr7QslQ7dYVVDxZ0nnRWXsdlfIhVgprzByJrRnTfg24PFY30xDvOmBR3rOnt
+         WtT/bQVYdNGHE0vldM0i5CvdAruqX8ucjBTf62Kmdxc2NAtfpR5AQoIN93nbSMGiiLBC
+         txBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5hTwZVI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kftn5TqX;
        spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id i19si4175edc.50.2021.07.13.14.22.03
+        by mx.google.com with ESMTPS id j5si21805498ejs.749.2021.07.13.14.22.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Jul 2021 14:22:03 -0700 (PDT)
+        Tue, 13 Jul 2021 14:22:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5hTwZVI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kftn5TqX;
        spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1626211322;
+	s=mimecast20190719; t=1626211324;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=zsU0FTFf2rMachGGbCL/tF0cIh/ZF+yOJZdnct0Lkq0=;
-	b=L5hTwZVI8mG6pa4qDOgSxUME5sEqzrdWBpvRoDfHZ1Ta52T07r/AmUhLGla1zQsLBTxoTL
-	TdO+fqRcXWX8Z37IcvhYfmtlEAFF3MiEcMzpGsTzOpH+2UD3dgiNSQQwAefroKMlNyBiz/
-	x7IuQ+QOa0Wic79Ngl5DjPwWUFPGnu4=
+	bh=8VEQG7uRmU1E/VwX2Tg7eiPcHjc2JykR0vK+XzqfOgY=;
+	b=Kftn5TqXHrGq06/Nqzic7Bn7mlfpnBFlm/Cn3X4Xd1twgEQVCDH5K+4Y6jj8lZouSAoMab
+	bejGnYYLFY9DA0AbVYa+EZCx+45gP4mPffpoubGVKIr2f+DE+LJ9BExu1KYjdZvRl9w/BK
+	LonbHt/2j4lbz9BxCmGDLyctgjnLTOo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-33-ePkmP2fKMMO6JuY_FgbEWw-1; Tue, 13 Jul 2021 17:22:00 -0400
-X-MC-Unique: ePkmP2fKMMO6JuY_FgbEWw-1
+ us-mta-159-ZnyprlTUMD6sFsIYQmTQYA-1; Tue, 13 Jul 2021 17:22:03 -0400
+X-MC-Unique: ZnyprlTUMD6sFsIYQmTQYA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 54D4E100B3AC;
-	Tue, 13 Jul 2021 21:21:58 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D63D3802C87;
+	Tue, 13 Jul 2021 21:22:00 +0000 (UTC)
 Received: from p50.localhost.net (ovpn-117-22.rdu2.redhat.com [10.10.117.22])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 036FA19C44;
-	Tue, 13 Jul 2021 21:21:55 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7578E19C44;
+	Tue, 13 Jul 2021 21:21:58 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
@@ -86,9 +86,9 @@ Cc: Greg Kurz <groug@kaod.org>,
 	Thomas Huth <thuth@redhat.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 19/23] tests/acceptance: Handle cpu tag on x86_cpu_model_versions tests
-Date: Tue, 13 Jul 2021 17:19:19 -0400
-Message-Id: <20210713211923.3809241-20-crosa@redhat.com>
+Subject: [PULL 20/23] python: Configure tox to skip missing interpreters
+Date: Tue, 13 Jul 2021 17:19:20 -0400
+Message-Id: <20210713211923.3809241-21-crosa@redhat.com>
 In-Reply-To: <20210713211923.3809241-1-crosa@redhat.com>
 References: <20210713211923.3809241-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -99,142 +99,83 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: OgIBRHA1P3Kn
+X-TUID: JqgnPTqa3qMt
 
 From: Wainer dos Santos Moschetta <wainersm@redhat.com>
 
-Some test cases on x86_cpu_model_versions.py are corner cases because they
-need to pass extra options to the -cpu argument. Once the avocado_qemu
-framework will set -cpu automatically, the value should be reset. This changed
-those tests so to call set_vm_arg() to overwrite the -cpu value.
+Currently tox tests against the installed interpreters, however if any
+supported interpreter is absent then it will return fail. It seems not
+reasonable to expect developers to have all supported interpreters
+installed on their systems. Luckily tox can be configured to skip
+missing interpreters.
+
+This changed the tox setup so that missing interpreters are skipped by
+default. On the CI, however, we still want to enforce it tests
+against all supported. This way on CI the
+--skip-missing-interpreters=false option is passed to tox.
 
 Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-Id: <20210630184546.456582-1-wainersm@redhat.com>
 Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-Message-Id: <20210430133414.39905-8-wainersm@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/acceptance/x86_cpu_model_versions.py | 40 +++++++++++++++++-----
- 1 file changed, 32 insertions(+), 8 deletions(-)
+ .gitlab-ci.d/static_checks.yml | 1 +
+ python/Makefile                | 5 ++++-
+ python/setup.cfg               | 1 +
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/tests/acceptance/x86_cpu_model_versions.py b/tests/acceptance/x86_cpu_model_versions.py
-index 77ed8597a4..0e9feda62d 100644
---- a/tests/acceptance/x86_cpu_model_versions.py
-+++ b/tests/acceptance/x86_cpu_model_versions.py
-@@ -252,10 +252,13 @@ def get_cpu_prop(self, prop):
-     def test_4_1(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.1
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         # machine-type only:
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server,x-force-features=on,check=off,enforce=off')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server,x-force-features=on,check=off,'
-+                        'enforce=off')
-         self.vm.launch()
-         self.assertFalse(self.get_cpu_prop('arch-capabilities'),
-                          'pc-i440fx-4.1 + Cascadelake-Server should not have arch-capabilities')
-@@ -263,9 +266,12 @@ def test_4_1(self):
-     def test_4_0(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.0
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server,x-force-features=on,check=off,enforce=off')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server,x-force-features=on,check=off,'
-+                        'enforce=off')
-         self.vm.launch()
-         self.assertFalse(self.get_cpu_prop('arch-capabilities'),
-                          'pc-i440fx-4.0 + Cascadelake-Server should not have arch-capabilities')
-@@ -273,10 +279,13 @@ def test_4_0(self):
-     def test_set_4_0(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.0
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         # command line must override machine-type if CPU model is not versioned:
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server,x-force-features=on,check=off,enforce=off,+arch-capabilities')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server,x-force-features=on,check=off,'
-+                        'enforce=off,+arch-capabilities')
-         self.vm.launch()
-         self.assertTrue(self.get_cpu_prop('arch-capabilities'),
-                         'pc-i440fx-4.0 + Cascadelake-Server,+arch-capabilities should have arch-capabilities')
-@@ -284,9 +293,12 @@ def test_set_4_0(self):
-     def test_unset_4_1(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.1
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server,x-force-features=on,check=off,enforce=off,-arch-capabilities')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server,x-force-features=on,check=off,'
-+                        'enforce=off,-arch-capabilities')
-         self.vm.launch()
-         self.assertFalse(self.get_cpu_prop('arch-capabilities'),
-                          'pc-i440fx-4.1 + Cascadelake-Server,-arch-capabilities should not have arch-capabilities')
-@@ -294,10 +306,13 @@ def test_unset_4_1(self):
-     def test_v1_4_0(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.0
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         # versioned CPU model overrides machine-type:
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server-v1,x-force-features=on,check=off,enforce=off')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server-v1,x-force-features=on,check=off,'
-+                        'enforce=off')
-         self.vm.launch()
-         self.assertFalse(self.get_cpu_prop('arch-capabilities'),
-                          'pc-i440fx-4.0 + Cascadelake-Server-v1 should not have arch-capabilities')
-@@ -305,9 +320,12 @@ def test_v1_4_0(self):
-     def test_v2_4_0(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.0
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server-v2,x-force-features=on,check=off,enforce=off')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server-v2,x-force-features=on,check=off,'
-+                        'enforce=off')
-         self.vm.launch()
-         self.assertTrue(self.get_cpu_prop('arch-capabilities'),
-                         'pc-i440fx-4.0 + Cascadelake-Server-v2 should have arch-capabilities')
-@@ -315,10 +333,13 @@ def test_v2_4_0(self):
-     def test_v1_set_4_0(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.0
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         # command line must override machine-type and versioned CPU model:
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server-v1,x-force-features=on,check=off,enforce=off,+arch-capabilities')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server-v1,x-force-features=on,check=off,'
-+                        'enforce=off,+arch-capabilities')
-         self.vm.launch()
-         self.assertTrue(self.get_cpu_prop('arch-capabilities'),
-                         'pc-i440fx-4.0 + Cascadelake-Server-v1,+arch-capabilities should have arch-capabilities')
-@@ -326,9 +347,12 @@ def test_v1_set_4_0(self):
-     def test_v2_unset_4_1(self):
-         """
-         :avocado: tags=machine:pc-i440fx-4.1
-+        :avocado: tags=cpu:Cascadelake-Server
-         """
-         self.vm.add_args('-S')
--        self.vm.add_args('-cpu', 'Cascadelake-Server-v2,x-force-features=on,check=off,enforce=off,-arch-capabilities')
-+        self.set_vm_arg('-cpu',
-+                        'Cascadelake-Server-v2,x-force-features=on,check=off,'
-+                        'enforce=off,-arch-capabilities')
-         self.vm.launch()
-         self.assertFalse(self.get_cpu_prop('arch-capabilities'),
-                          'pc-i440fx-4.1 + Cascadelake-Server-v2,-arch-capabilities should not have arch-capabilities')
+diff --git a/.gitlab-ci.d/static_checks.yml b/.gitlab-ci.d/static_checks.yml
+index b01f6ec231..96dbd9e310 100644
+--- a/.gitlab-ci.d/static_checks.yml
++++ b/.gitlab-ci.d/static_checks.yml
+@@ -43,6 +43,7 @@ check-python-tox:
+     - make -C python check-tox
+   variables:
+     GIT_DEPTH: 1
++    QEMU_TOX_EXTRA_ARGS: --skip-missing-interpreters=false
+   needs:
+     job: python-container
+   allow_failure: true
+diff --git a/python/Makefile b/python/Makefile
+index ac46ae33e7..fe27a3e12e 100644
+--- a/python/Makefile
++++ b/python/Makefile
+@@ -1,4 +1,5 @@
+ QEMU_VENV_DIR=.dev-venv
++QEMU_TOX_EXTRA_ARGS ?=
+ 
+ .PHONY: help
+ help:
+@@ -15,6 +16,8 @@ help:
+ 	@echo "    These tests use the newest dependencies."
+ 	@echo "    Requires: Python 3.6 - 3.10, and tox."
+ 	@echo "    Hint (Fedora): 'sudo dnf install python3-tox python3.10'"
++	@echo "    The variable QEMU_TOX_EXTRA_ARGS can be use to pass extra"
++	@echo "    arguments to tox".
+ 	@echo ""
+ 	@echo "make check-dev:"
+ 	@echo "    Run tests in a venv against your default python3 version."
+@@ -87,7 +90,7 @@ check:
+ 
+ .PHONY: check-tox
+ check-tox:
+-	@tox
++	@tox $(QEMU_TOX_EXTRA_ARGS)
+ 
+ .PHONY: clean
+ clean:
+diff --git a/python/setup.cfg b/python/setup.cfg
+index 11f71d5312..14bab90288 100644
+--- a/python/setup.cfg
++++ b/python/setup.cfg
+@@ -121,6 +121,7 @@ multi_line_output=3
+ 
+ [tox:tox]
+ envlist = py36, py37, py38, py39, py310
++skip_missing_interpreters = true
+ 
+ [testenv]
+ allowlist_externals = make
 -- 
 2.31.1

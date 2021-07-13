@@ -1,229 +1,189 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp508134lfc;
-        Tue, 13 Jul 2021 04:57:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBGuzu05I47lvzMLzrgKGXoMlZcUL7C6VneW8dFz9k9IqLODGVyc8Edf6Bx6EfoI4g15mB
-X-Received: by 2002:ac8:1249:: with SMTP id g9mr3541967qtj.53.1626177470006;
-        Tue, 13 Jul 2021 04:57:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626177470; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp594980lfc;
+        Tue, 13 Jul 2021 06:38:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9g03iewCbEFK3D986HmPgY4wkHeI+m/ppVr9NEpKaYldL7agJ6lVJj2tj52e9l7Raa9i/
+X-Received: by 2002:a17:906:bc8b:: with SMTP id lv11mr5708586ejb.331.1626183487936;
+        Tue, 13 Jul 2021 06:38:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626183487; cv=none;
         d=google.com; s=arc-20160816;
-        b=O3NFYRGGG/Olimoq8/d21ja/ZNkgBrlQeHMVD6LERR9R+gFXDrKYXtCIJSGNPj2P+o
-         msxeOata7qQQjPuxm9uP5uEPHRmctVihmK4B8djkcyj90UIXfPbeCkateqa7URr0S73N
-         Djjt0zDEg12Ao52IVdn093NXjyzSLh8DYh4l90kXU64lbPDhqEeCY+nRg4wqVAT2rdTi
-         73jhjLt5Q4Ng0THGBsdOOmWrriJVS0fn1Fv6EPGDsNg3bi5iDGvhVnp5jUy5pUppEPyq
-         LC6DdJe3P0f75tttGltNbd84Q8dkTyjifdIyjwqh7xXxZYmGqBQZATIEHtDyVoW2D1mu
-         KTNg==
+        b=xq4/dusFYncOmfNMcWkNG3smzkiHfB6dSeCpdae24iOh0SvUtcP+LxFoqxs1tJL7zN
+         FHqJ5V8IC9oC318I/qgo60PBEgL6BC3ljbZMDx3cXNnSaBg/3y2bNXVDJ6mOJNEiint1
+         Ma52D80EXbAxFyXhIlTk1giRfFoVlD/Rhvtxq/62oMyWqYGM51OY3nMCZwm4IqBbpGfm
+         TH5UCTy8Nd4HAImlc1GXAUUCcbTsbGiEBLQd4AdWKdSmHpikQ3nHnxWcWyDAuh1IXTsi
+         R5uuoASAm03S8ucM7W8htyhu9yAJiaEHTSt1WifRjh6EoPvRu3JMbGn+bqaUpJOP3HYH
+         ySjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=NXU0PYFM3uq576WZv55oeI5hBvm9Gh8eYHSUXbwzl98=;
-        b=KqpIyAV7nmXu3rwF0EQT1Wq5LMnL8INaZzWmUq5MIhYNHG66XB0MUlb0NHE7LRpL3E
-         qub+8+XJlp6Xs2xHb9qcIjy9+EEJnA556eA7Qnb65IqcKU/hPEp/071NiOpIR5Z4v9a9
-         e7nZEi23SoTOYYDJg+ZCRydAfMeUbNOo+lJ4dmFeR7w+87OqqdpuExUH38QH9mpbmvtz
-         OtECvBO0bIO/EGnuLNZWnFZSmG9INXtUkIQNLv/jG7P4SZHT2blznrA5I73VrpGsdh8j
-         v0IQfSljxyvpcxwqMilG4WRJjvhlhQhvpxxf6E7qpK4aWfwKWtKhcOFF/dgVjYremsnN
-         MPXg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=AyiWksB98Xn9P+lq/nb9KeFGaTnrfwhjfvza6KjKJFQ=;
+        b=IKWNzC1iL8af1oXmyk79khA8WKW8EzineuYuWt0mOa5kDnMBoIT7JYt+BRBJY/VTVn
+         cqxwKGC6UQdWY1nAqXZOCNWUwhnty413AkSYq4N/FNH+xAQNlSmOSpD0m+wum/g14kQN
+         /4TPk2YjwL2e8L+y/EgG2F+X3Q9dE2hQQ0FlML+Sq5aYLJ+K0cMKAeRzXL5H0XiIwsO/
+         yEufPO10t5JG6w5P1Rxviyoo7BFptA3ZDVcx6gAjJ+ppgZ6I9jNbMQVD6rAlSmVGAIVR
+         51astnaMtOnkRQDb3bqB8brUe9QARm02cBF7NWFvpwVk+LWHqXD5CtijBqXXfsPHkP8m
+         C8bA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f97Guda6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=WKDUGBIV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay17si2688565qkb.86.2021.07.13.04.57.49
+        by mx.google.com with ESMTPS id g14si15192099eds.289.2021.07.13.06.38.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 04:57:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Jul 2021 06:38:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f97Guda6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33022 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=WKDUGBIV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51762 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3H2r-0007Db-BB
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 07:57:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59996)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m3Ibu-0008En-RG
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 09:38:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1m3H1o-0006Hh-K2; Tue, 13 Jul 2021 07:56:44 -0400
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:43575)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m3IbM-0008EW-65
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:32 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:38886)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1m3H1m-0002nG-1M; Tue, 13 Jul 2021 07:56:44 -0400
-Received: by mail-oi1-x231.google.com with SMTP id w188so3730949oif.10;
- Tue, 13 Jul 2021 04:56:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=NXU0PYFM3uq576WZv55oeI5hBvm9Gh8eYHSUXbwzl98=;
- b=f97Guda6F/J3J+FJXm3cEVflhlLvk56ZJogDEsOHnnavzYzX6wbxrESWeAl99cHjxS
- IOfdMAcIRww4I3RlkJfl/LKik7NPPK3him6KWO4KUAoPiA/yeXLn0JE5VBxsebb7GcVg
- K40NEJgdtmyimHwbuTW7fUPs3r1YIOqFmVhH8VUPyVpoct9gpzmRbs7SSBpLrE+lchuk
- 5MtUiyhyKsW5qFIUoPXBJveuLTrUt/ZwOFu8ZfHMPswdT5Z2WfMnWXRxFeKC/dZ4Hnk7
- 4B3bBewKWdOvFgJfHtFui/I9qyKPU8+XwybzGn7wl9+s4YdgeEP5hcJ7u1+vvxxwTnl8
- NJDQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m3IbK-0003Zk-Le
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:31 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id g16so20621511wrw.5
+ for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 06:37:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AyiWksB98Xn9P+lq/nb9KeFGaTnrfwhjfvza6KjKJFQ=;
+ b=WKDUGBIV/+bHVnCyeBzJXGUHS7DmfJItsSX3VXIKxX1xF3uiiQmJbDkZbM1CbST/45
+ OaZ8RRw3iAsaSMCFSwS/m5WuYaEqN5oQDbF4TEtMbJp3IVLNWA5kUQYmUpEwnW3lIFvH
+ apu4rFhHfd904+4oC5z0U3mK9E5XuHUdayYRxQ17IdEqwtbZsqYj8mqyox9KAi6Vy+KR
+ bEUG13gUr+y/SKc/Z5s8FWTooFgnc2kMpXeie1nVNpUd/42VvRfsnv6XZFqt3Brxa2gv
+ tYCgakTk8/fufv/iqI49yEJdE4EHDSsL69u2MQwq9gy54a8cwSa5eqXJKW4i1Eqanwsm
+ 1hhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=NXU0PYFM3uq576WZv55oeI5hBvm9Gh8eYHSUXbwzl98=;
- b=RStVHv2J0HUQ+54TJdm5H3xPFpwxl6XpTgdRjyORLyjnM/yxNxIH/0iUvK218Vngl4
- J3KG5YBN7U7cTgAnq5OOvHq9iVYqqhdXyBwPqLhK++s5xiWifbDJlm8aoMFPNC1w+2Eb
- sP2zvcRbS/u+nYzQcsVf2GixhNes1DPK6vCnRaqV+4/FvQ/spjc96huee2ey5HjWLHCX
- GYgxehYTunyKfiTM3TKkOYaqIu99WTKZxq5p4Uxl6DkIa1E7j51WvGbBEETnn6MlzyBr
- qfGjsODW+LlfCQ2TMGxaJoAhaCgH0TxWlKQafmy7og5+VCk9s/uJm/sGeRhEPa9buVR/
- 7u+w==
-X-Gm-Message-State: AOAM532PGMqeHu2PmGwGwK5aTIFEMDovVSJ/vqSabtTWu2OSklYQ5Ijj
- WbQ1rNUZZSgF0Nbqg5dg4lya97Mwdjk5oRcXpQg=
-X-Received: by 2002:a05:6808:68d:: with SMTP id
- k13mr2837305oig.83.1626177400664; 
- Tue, 13 Jul 2021 04:56:40 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AyiWksB98Xn9P+lq/nb9KeFGaTnrfwhjfvza6KjKJFQ=;
+ b=tgBf28ZnHvLYWkyAHFeBEkZT80MibNx3Gnqm8zWEZpOcaRzkkRStLOIXOZhelKWG5p
+ LjEoyTBadwON5WwS85JUsLy1C1QHsgPkWKZRMTnrKz/v9iDJoQduiZWjC6bnXMDkTTFH
+ oxhbJRN8p0Z2/KUBrW1cZSW/hmfymMZwt8HqWZYz/VeJDZN62a4GmfxjjUQ0l4/ICst5
+ jDeGhyohmKiqrnWzLIELCwMCx/HuYjCk2lPIF/rrTVtq3DejrKn4OfC6HULB9+UFPcdy
+ Z+1N/IPV+0Zr7MqZ7Nq8jbUKJU9ghZ3s5HhMEs7Zq0MWDjmIP1ixOekGG4iVFeseHU1k
+ kqOA==
+X-Gm-Message-State: AOAM532ygWjEZsInOiwWRZNoBzl6pMhfXwVkIH7D21gm9rTCoSdIW0wU
+ DOndeowvusls1Jek5QY8PlfXsR7nrD9hJG+/
+X-Received: by 2002:a05:6000:18c:: with SMTP id
+ p12mr5955738wrx.98.1626183449102; 
+ Tue, 13 Jul 2021 06:37:29 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Jul 2021 06:37:28 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-6.2 00/34] target/arm: Third slice of MVE implementation
+Date: Tue, 13 Jul 2021 14:36:52 +0100
+Message-Id: <20210713133726.26842-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <1626146083-19434-1-git-send-email-cyruscyliu@gmail.com>
- <5c8d9875-ecf1-4f67-f26d-da010bdab9bb@amsat.org>
- <a0fe9b97-f9dd-9122-8b40-342ab3c8a232@amsat.org>
-In-Reply-To: <a0fe9b97-f9dd-9122-8b40-342ab3c8a232@amsat.org>
-From: Qiang Liu <cyruscyliu@gmail.com>
-Date: Tue, 13 Jul 2021 19:56:27 +0800
-Message-ID: <CAAKa2jmFKf4wMwtz+7nChR-vQcOtQc4ZKKVeyL7tJs0YXBbWtg@mail.gmail.com>
-Subject: Re: [PATCH] hw/display/xlnx_dp: fix an out-of-bounds read in
- xlnx_dp_read
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
- envelope-from=cyruscyliu@gmail.com; helo=mail-oi1-x231.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Alexander Bulekov <alxndr@redhat.com>,
- "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Awf2KXO1vfQl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4sp81odnVio5
 
-On Tue, Jul 13, 2021 at 6:24 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> On 7/13/21 12:20 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > On 7/13/21 5:14 AM, Qiang Liu wrote:
-> >> xlnx_dp_read allows an out-of-bounds read at its default branch becaus=
-e
-> >> of an improper index.
-> >>
-> >> According to
-> >> https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrasca=
-le-registers.html
-> >> (DP Module), registers 0x3A4/0x3A4/0x3AC are allowed.
-> >>
-> >> DP_INT_MASK  0x000003A4      32      mixed   0xFFFFF03F      Interrupt=
- Mask Register for intrN.
-> >> DP_INT_EN    0x000003A8      32      mixed   0x00000000      Interrupt=
- Enable Register.
-> >> DP_INT_DS    0x000003AC      32      mixed   0x00000000      Interrupt=
- Disable Register.
-> >>
-> >> In xlnx_dp_write, when the offset is 0x3A8 and 0x3AC, the virtual devi=
-ce
-> >> will write s->core_registers[0x3A4
-> >>>> 2]. That is to say, the maxize of s->core_registers could be ((0x3A4
-> >>>> 2) + 1). However, the current size of s->core_registers is (0x3AF >>
-> >>>> 2), that is ((0x3A4 >> 2) + 2), which is out of the range.
-> >> In xlxn_dp_read, the access to offset 0x3A8 or 0x3AC will be directed =
-to
-> >> the offset 0x3A8 (incorrect functionality) or 0x3AC (out-of-bounds rea=
-d)
-> >> rather than 0x3A4.
-> >>
-> >> This patch adjusts the size of s->core_registers and enforces the read
-> >> access to offset 0x3A* and 0x3AC to 0x3A4. BTW, because the size of th=
-is
-> >> MMIO region is 0x3AF, this patch also removes the assertion in
-> >> xlnx_dp_write.
-> >>
-> >> Fixes: 58ac482a66de ("introduce xlnx-dp")
-> >> Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
-> >> ---
-> >>  hw/display/xlnx_dp.c         | 7 ++++---
-> >>  include/hw/display/xlnx_dp.h | 2 +-
-> >>  2 files changed, 5 insertions(+), 4 deletions(-)
-> >
-> > Can you provide a qtest reproducer please?
->
-> See examples in tests/qtest/fuzz*test.c
-Yeah. I can add the qtest reproducer.
+This patchseries provides the third slice of the MVE implementation.
+In this series:
+ * fixes for minor bugs in a couple of the insns already upstream
+ * all the remaining integer instructions
+ * the remaining loads and stores (scatter-gather and interleaving)
 
-> >> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-> >> index 7bcbb13..8903181 100644
-> >> --- a/hw/display/xlnx_dp.c
-> >> +++ b/hw/display/xlnx_dp.c
-> >> @@ -713,8 +713,10 @@ static uint64_t xlnx_dp_read(void *opaque, hwaddr=
- offset, unsigned size)
-> >>          ret =3D 0;
-> >>          break;
-> >>      default:
-> >> -        assert(offset <=3D (0x3AC >> 2));
-> >> -        ret =3D s->core_registers[offset];
-> >> +        if (offset =3D=3D (0x3A8 >> 2) || offset =3D=3D (0x3AC >> 2))
-> >> +            ret =3D s->core_registers[DP_INT_MASK];
-> >> +        else
-> >
-> > Invalid code style.
-Will refine it.
+This is obviously for-6.2 material, so no urgency in reviewing it.
+But "all the integer stuff done" seemed like an obvious natural
+break point to send out what I've done so far.
 
-> >> +            ret =3D s->core_registers[offset];
-> >>          break;
-> >>      }
-> >>
-> >> @@ -876,7 +878,6 @@ static void xlnx_dp_write(void *opaque, hwaddr off=
-set, uint64_t value,
-> >>          xlnx_dp_update_irq(s);
-> >>          break;
-> >>      default:
-> >> -        assert(offset <=3D (0x504C >> 2));
-> >>          s->core_registers[offset] =3D value;
-> >>          break;
-> >>      }
-> >> diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp=
-.h
-> >> index e85e428..99a6d47 100644
-> >> --- a/include/hw/display/xlnx_dp.h
-> >> +++ b/include/hw/display/xlnx_dp.h
-> >> @@ -39,7 +39,7 @@
-> >>  #define AUD_CHBUF_MAX_DEPTH                 (32 * KiB)
-> >>  #define MAX_QEMU_BUFFER_SIZE                (4 * KiB)
-> >>
-> >> -#define DP_CORE_REG_ARRAY_SIZE              (0x3AF >> 2)
-> >> +#define DP_CORE_REG_ARRAY_SIZE              (0x3A8 >> 2)
-> >
-> > NAck: this breaks migration.
-I will not modify this.
+I apologize in advance for the final patch, which was tricky for
+me to write and is probably going to be painful to review too.
+This is mostly because I find the interleaving loads/stores
+rather confusing...
 
-> >>  #define DP_AVBUF_REG_ARRAY_SIZE             (0x238 >> 2)
-> >>  #define DP_VBLEND_REG_ARRAY_SIZE            (0x1DF >> 2)
-> >>  #define DP_AUDIO_REG_ARRAY_SIZE             (0x50 >> 2)
+thanks
+-- PMM
 
-Thank you for the review. I will resend the patch soon.
+Peter Maydell (34):
+  target/arm: Note that we handle VMOVL as a special case of VSHLL
+  target/arm: Print MVE VPR in CPU dumps
+  target/arm: Fix MVE VSLI by 0 and VSRI by <dt>
+  target/arm: Fix signed VADDV
+  target/arm: Fix mask handling for MVE narrowing operations
+  target/arm: Fix 48-bit saturating shifts
+  target/arm: Fix calculation of LTP mask when LR is 0
+  target/arm: Fix VPT advance when ECI is non-zero
+  target/arm: Factor out mve_eci_mask()
+  target/arm: Fix VLDRB/H/W for predicated elements
+  target/arm: Implement MVE VMULL (polynomial)
+  target/arm: Implement MVE incrementing/decrementing dup insns
+  target/arm: Factor out gen_vpst()
+  target/arm: Implement MVE integer vector comparisons
+  target/arm: Implement MVE integer vector-vs-scalar comparisons
+  target/arm: Implement MVE VPSEL
+  target/arm: Implement MVE VMLAS
+  target/arm: Implement MVE shift-by-scalar
+  target/arm: Move 'x' and 'a' bit definitions into vmlaldav formats
+  target/arm: Implement MVE integer min/max across vector
+  target/arm: Implement MVE VABAV
+  target/arm: Implement MVE narrowing moves
+  target/arm: Rename MVEGenDualAccOpFn to MVEGenLongDualAccOpFn
+  target/arm: Implement MVE VMLADAV and VMLSLDAV
+  target/arm: Implement MVE VMLA
+  target/arm: Implement MVE saturating doubling multiply accumulates
+  target/arm: Implement MVE VQABS, VQNEG
+  target/arm: Implement MVE VMAXA, VMINA
+  target/arm: Implement MVE VMOV to/from 2 general-purpose registers
+  target/arm: Implement MVE VPNOT
+  target/arm: Implement MVE VCTP
+  target/arm: Implement MVE scatter-gather insns
+  target/arm: Implement MVE scatter-gather immediate forms
+  target/arm: Implement MVE interleaving loads/stores
 
-Best,
-Qiang
+ target/arm/helper-mve.h    |  295 +++++++++
+ target/arm/translate-a32.h |    2 +
+ target/arm/vec_internal.h  |   11 +
+ target/arm/mve.decode      |  228 ++++++-
+ target/arm/t32.decode      |    1 +
+ target/arm/cpu.c           |    3 +
+ target/arm/mve_helper.c    | 1259 ++++++++++++++++++++++++++++++++++--
+ target/arm/translate-mve.c |  865 ++++++++++++++++++++++++-
+ target/arm/translate-vfp.c |    2 +-
+ target/arm/translate.c     |   33 +
+ target/arm/vec_helper.c    |   14 +-
+ 11 files changed, 2628 insertions(+), 85 deletions(-)
+
+-- 
+2.20.1
+

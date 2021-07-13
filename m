@@ -1,123 +1,99 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp150313lfc;
-        Mon, 12 Jul 2021 19:41:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxApZCetFfOoZv4oCDWYaUyZEFw0lxGaJw4Mgf0ZbfGGyZ16euEm15UOTibzHlExCHThnL4
-X-Received: by 2002:a67:e9c2:: with SMTP id q2mr3167101vso.36.1626144113294;
-        Mon, 12 Jul 2021 19:41:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626144113; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp171064lfc;
+        Mon, 12 Jul 2021 20:15:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxDhD3iOjqUx9JtBUJADdSfqyrBPkOH4PfdO+hxXJHdMpyVrYFp12vHFv/IQxrJXv2AFNX9
+X-Received: by 2002:a05:6122:17a7:: with SMTP id o39mr2617660vkf.25.1626146107451;
+        Mon, 12 Jul 2021 20:15:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626146107; cv=none;
         d=google.com; s=arc-20160816;
-        b=op7+AVXU2uzrtEKgobLNOATi6p81FU/tfhL9aCCkg4ouZhbPXyGdzJyp3yrVfByDOO
-         19sqez9bPt23Kc5Z4qrTOZgoMjM/F3Ka14l7eHd5Shuajj2MgoioVRmEVrrWyXgkEqQF
-         pnNeXaGfw3dxha53XQc0M3CPPEy8UyzT71vTiBrs2HDYTzH1R/PctcLslVmAfy+1t/pR
-         1l+v9Miuf/Ou2oUMX4PzlB8DtKd+6zVpeOaI6rVSjcHvzdhPBiyTsmshktBCWnGkMqRj
-         9gMO/iIUJzRV1RO/zlQUnSAlEgUxgeq1z154HV8x9kkENrFfgrOu7IC4/SbTYZ2B6nmc
-         CbeQ==
+        b=gFZ4pBnkGVq5X7GtoQknwxmr6jP1OzlrUcz6QRtR1EwG9OdXdK0AU9pwcRYO3znHGy
+         uX5rnFhTk7ZqYLlL4oXA+fKyifb0x/iwXzKujVApRgIQDNh6EDnjIXixFssgTj7Km5WO
+         IR/49oT3x4m1WwWJpJc2rR4Xvl9NPxuSXN8GotNJ4cc1Cj+WeWDerkzjEr2f2ZoOKX7q
+         anWxK5J4P/vJOwHhEKAe6xcWMNEzE2PcT2RfD+zEEjoWv8wgz/lnugZsqNQnDdMoqUoz
+         TI0O/DNphftlhSt5TsUWiUnSoSu0snL/PJNr1ma8hZOyIoCLHxYFWyaeltOpnJ/QuRkT
+         ofvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=GmPmLuzZOb8exTg9V/MMokFTNadVtf4wSAUb2Wfg1Zk=;
-        b=ZKXeDaPtWSQ+CFnoZPHR2cczC2m2yeFLT0YRCVSk1kYe+MbzeNHm8d19aDossktGFc
-         Sv9i9IiLH0hqFSSQGeUjTZUMXxUxJ0QX70SzZB8xvlJkRlFeoR36in8bUTm7JIsPJDBz
-         fW6heYZi6Wd/r4DyQIwoTEqMIiu0Sbx5th7loV0/Zto0elDX5dmNmf9y0aiYxztyh4be
-         pF4oTqoWFpLwUmDvs4wbrh3YcH4GVAQND2K840iaO6TAvzoMl2WiofwWRWRhAWCYbD8K
-         TTabmkU/FSHaRAOeK/Lo5Wr0x9WGkSiodVXAi07fgIX8eFb50TPfn3kVhBTNV4HqAKHV
-         3JlA==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=xOo8X9eGtDGtE4fN+bJhxWrOuktKzY54MAxp7iyHlZw=;
+        b=q4rO0xQxIlpe7rKbZIfJHHla9rK85z9LON/37HgNsFjG/3X5agMnC3b0jMv0gtn+2M
+         uhWzxgTWBmg+BovH527rp4qSH18WyfzrN7tJEgHe+e5t6wv27MyY04U1w9vfeQBeZ6jV
+         hNqn5h66W24JHQtTR6lylSaOl3MVobLLHc9Bet1gVoEwAtYBGn9THLorbrSf6XvWH7/r
+         VhXBAjH+MHkJs4RSXJPwkN3tki1oEFFxus6RQVY8VVRtmFu2+JJllTqBPRzmpujqwSMH
+         uaIELXRNw1o2OneBuAsN1/4k+VLOPGM4zHCPC+DLlYE9inio7bFZg+RfRakN5QI+IoVb
+         kX/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=UA2svfpb;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="QH/bL3ZO";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ix/oKmMF";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t17si16987909vso.217.2021.07.12.19.41.53
+        by mx.google.com with ESMTPS id s72si14435117vke.11.2021.07.12.20.15.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Jul 2021 19:41:53 -0700 (PDT)
+        Mon, 12 Jul 2021 20:15:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=UA2svfpb;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="QH/bL3ZO";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37208 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ix/oKmMF";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m38Mq-00059Y-K3
-	for alex.bennee@linaro.org; Mon, 12 Jul 2021 22:41:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45416)
+	id 1m38t0-0004hP-MX
+	for alex.bennee@linaro.org; Mon, 12 Jul 2021 23:15:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1m38Mh-00059J-9K; Mon, 12 Jul 2021 22:41:43 -0400
-Received: from wout5-smtp.messagingengine.com ([64.147.123.21]:44639)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1m38Mf-0000tF-Cq; Mon, 12 Jul 2021 22:41:43 -0400
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
- by mailout.west.internal (Postfix) with ESMTP id BED1832008FC;
- Mon, 12 Jul 2021 22:41:35 -0400 (EDT)
-Received: from imap43 ([10.202.2.93])
- by compute2.internal (MEProxy); Mon, 12 Jul 2021 22:41:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm3; bh=GmPmL
- uzZOb8exTg9V/MMokFTNadVtf4wSAUb2Wfg1Zk=; b=UA2svfpbvltXG4l1bg+0h
- zK9IS6tz+Mf11+DNXQkutGtIvU3Yysi3xJfdkkHzlcpyKv9oMHrWw2/1HtZ/cfY6
- rRFa0zWdf3Im27ylrL+6CPVcYturge491Tr0CNQ1lT2wgwy6KfyEKzP4RK+mLQPF
- 1NOW/R5dwbqy6tw821Yo0m2F3uSKaFzC17SfOZnPu6rLNAfJMKIbo7gR3dKC9K6Z
- oVxLpJEwa2TkP28q9AaTqVQ19NCHsgUBCx1BgO1d0EH2OAzYPQ8jO2dKQPx1AlRS
- Vsrj/9nvFiEZjeB5hzFPIMBU8cgg7AgVikvIB2s9fK4wb/J9igS4cMFmk9xPY22A
- A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; bh=GmPmLuzZOb8exTg9V/MMokFTNadVtf4wSAUb2Wfg1
- Zk=; b=QH/bL3ZOWsGsx+14NxirwQKGIrQLf+LiU4wICXEKI04zdTvUFGZBynxJT
- pSwiwFPNFnwaUIFM//CiSunDKEvWQZiJylUi8U16pX94L1MDQs5h3+R0A/JIezdJ
- fk2XOUTgcRp/+RQYofyQuxooBJbQ0lh37C+UrusW2fAQsafM3IdaU3Xn0Cx1YNx9
- wi2ktxCLYrX7Y8vQL50j+iw76vX0FR9o/9yt22qzEaIH3MpC1YGGa2/Xuzc6RoXr
- LdTCjikAyFMud3IEzzim/BYTyMhWMSdRMCle7dqlayMG6GQc1tAG23bUOyguRfDZ
- CkVkbWHguJw++gTzaXZWgk9xaRPZA==
-X-ME-Sender: <xms:Xv3sYN_o1vpUFH8aorAmFFFZFeTGIAwHXmL4ETIHHVxKUYbdFy4mpw>
- <xme:Xv3sYBudQzr24VEmEBdnH2l4LAJnLySdtN6G1YER3n8hxfp3iaU8l_hkAx8aShraN
- PPr1Bii33SZj7lvnQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrudeggdefhecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdetnhgu
- rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecuggftrf
- grthhtvghrnhepvdegkeehgeefvdfhteehhfduteetgeeugefgieeigeeuheekudegtdek
- gfelgfehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
- eprghnughrvgifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:Xv3sYLB-NMSYq_0rk2o8TUo5M1Lda_tIvwRi1bzWyt4qpsUm163PzA>
- <xmx:Xv3sYBd9T2NbWB9hlSIZCau2pPG7Tx7wz57U_-nQO4rOp9qQYkkeEA>
- <xmx:Xv3sYCOxsjJnYg1aU1tofn7u2HV04kBrzwzvSDiWb83kF58yq9gk_w>
- <xmx:X_3sYPqN41JuRddXY2FtZhRn4Jz9NykwMVyovcLNYjCBkDUhnfvnVQ>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 274ACAC0081; Mon, 12 Jul 2021 22:41:34 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.5.0-alpha0-533-gf73e617b8a-fm-20210712.002-gf73e617b
-Mime-Version: 1.0
-Message-Id: <b43af989-f4b9-4227-a84c-e0026a0f90bc@www.fastmail.com>
-In-Reply-To: <d222c518-13de-f4c5-3eb6-2045d7a26fba@amsat.org>
-References: <20210709053107.1829304-1-andrew@aj.id.au>
- <20210709053107.1829304-3-andrew@aj.id.au>
- <d222c518-13de-f4c5-3eb6-2045d7a26fba@amsat.org>
-Date: Tue, 13 Jul 2021 12:11:13 +0930
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "Cameron Esfahani via" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 2/2] watchdog: aspeed: Fix sequential control writes
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=64.147.123.21; envelope-from=andrew@aj.id.au;
- helo=wout5-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1m38sr-0004gn-9D; Mon, 12 Jul 2021 23:14:57 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:39697)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1m38sp-00052j-II; Mon, 12 Jul 2021 23:14:56 -0400
+Received: by mail-wr1-x435.google.com with SMTP id f17so28434019wrt.6;
+ Mon, 12 Jul 2021 20:14:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=xOo8X9eGtDGtE4fN+bJhxWrOuktKzY54MAxp7iyHlZw=;
+ b=ix/oKmMFdqsguxXtU+GHtM2B/zbH1S//SS13Itj1NFlGK/tMsG+Z/1/bGxdzZihVAI
+ wZ/tkwpEFDKk3CP+GD/30tkekF7tIVtIKbyMPd+UfBqy019SoljGvrQ29lDUHiH0X3CX
+ 21cFVhLAis9kz/RUNRXeFbU8YElIhtKRj2MX+bLzGYKw/MA9x38C31Bc1Dp2rdkmZDBT
+ ve45IUletnuJVK2pliYa59ndJcbwCdB+leioaJlj6EMaevJuG+7NDToTKPYch1ik6qm7
+ DRwtrQPw5VKIwe46oZAa65BipZdGX7SVFHdxdRj7vOXVZk/MFEBLyDC4CY5ooAQYDZpn
+ 4zPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=xOo8X9eGtDGtE4fN+bJhxWrOuktKzY54MAxp7iyHlZw=;
+ b=nOQGYiDsLqV8U/hgqwEzvkULKDMkz1P1wrBh2szNYfLaHqvP1WNj9Imi1jALwFyPtz
+ MDOH/XTlVj2UUinBa6n5CUEnsVoutS/FH52P6BcJbX8jj2UXOzmVnVuqJ9B0QcThCpex
+ XfgNoHVuZ8llQgLdMPneJPjctKND4bycljobtFAfkpitzo27h4yCSl00s/yn3Fc5CbwI
+ 8pXDGv7riHRD93u0yJaOU9xlwtRBd/sIZS6NyC/gvn83QCZEErGSGDZSYl+VagIPOB1f
+ J0qM7qeroDTvlPt0K5pKm7xX9VeSh6Q/cPIyT6iFubew+Nyk7zqeVwY/wsCSJNPkdkTh
+ 9erA==
+X-Gm-Message-State: AOAM530IQ/yX9H2c6YyyiJTiYuNEjeYJ/cz9d251jJpeFBlBqt+LmLcN
+ Ce6kX4Uo1+qXt1iI5PS+fE8=
+X-Received: by 2002:adf:a1c2:: with SMTP id v2mr2629308wrv.155.1626146092983; 
+ Mon, 12 Jul 2021 20:14:52 -0700 (PDT)
+Received: from localhost ([147.78.177.108])
+ by smtp.gmail.com with ESMTPSA id o3sm15293671wrm.5.2021.07.12.20.14.51
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 12 Jul 2021 20:14:52 -0700 (PDT)
+From: Qiang Liu <cyruscyliu@gmail.com>
+To: 
+Subject: [PATCH] hw/display/xlnx_dp: fix an out-of-bounds read in xlnx_dp_read
+Date: Tue, 13 Jul 2021 11:14:43 +0800
+Message-Id: <1626146083-19434-1-git-send-email-cyruscyliu@gmail.com>
+X-Mailer: git-send-email 2.7.4
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=cyruscyliu@gmail.com; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,52 +106,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Qiang Liu <cyruscyliu@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gPFsGaqPCkUW
+X-TUID: q5nhdlpv5mn0
 
+xlnx_dp_read allows an out-of-bounds read at its default branch because
+of an improper index.
 
+According to
+https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
+(DP Module), registers 0x3A4/0x3A4/0x3AC are allowed.
 
-On Fri, 9 Jul 2021, at 16:59, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 7/9/21 7:31 AM, Andrew Jeffery wrote:
-> > The logic in the handling for the control register required toggling=
- the
-> > enable state for writes to stick. Rework the condition chain to allo=
-w
-> > sequential writes that do not update the enable state.
-> >=20
-> > Fixes: 854123bf8d4b ("wdt: Add Aspeed watchdog device model")
-> > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> > ---
-> >  hw/watchdog/wdt_aspeed.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >=20
-> > diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> > index faa3d35fdf21..69c37af9a6e9 100644
-> > --- a/hw/watchdog/wdt_aspeed.c
-> > +++ b/hw/watchdog/wdt_aspeed.c
-> > @@ -166,6 +166,8 @@ static void aspeed_wdt_write(void *opaque, hwadd=
-r offset, uint64_t data,
-> >          } else if (!enable && aspeed_wdt_is_enabled(s)) {
-> >              s->regs[WDT_CTRL] =3D data;
-> >              timer_del(s->timer);
-> > +        } else {
-> > +            s->regs[WDT_CTRL] =3D data;
->=20
-> What about simplifying by moving here:
->=20
->                if (!enable && aspeed_wdt_is_enabled(s)) {
->                    timer_del(s->timer);
->                }
->=20
+DP_INT_MASK	0x000003A4	32	mixed	0xFFFFF03F	Interrupt Mask Register for intrN.
+DP_INT_EN	0x000003A8	32	mixed	0x00000000	Interrupt Enable Register.
+DP_INT_DS	0x000003AC	32	mixed	0x00000000	Interrupt Disable Register.
 
-I don't think that works, as aspeed_wdt_is_enabled() tests the value of=20=
+In xlnx_dp_write, when the offset is 0x3A8 and 0x3AC, the virtual device
+will write s->core_registers[0x3A4
+>> 2]. That is to say, the maxize of s->core_registers could be ((0x3A4
+>> 2) + 1). However, the current size of s->core_registers is (0x3AF >>
+>> 2), that is ((0x3A4 >> 2) + 2), which is out of the range.
+In xlxn_dp_read, the access to offset 0x3A8 or 0x3AC will be directed to
+the offset 0x3A8 (incorrect functionality) or 0x3AC (out-of-bounds read)
+rather than 0x3A4.
 
-s->regs[WDT_CTRL]. If you set it before you test then you end up in the=20=
+This patch adjusts the size of s->core_registers and enforces the read
+access to offset 0x3A* and 0x3AC to 0x3A4. BTW, because the size of this
+MMIO region is 0x3AF, this patch also removes the assertion in
+xlnx_dp_write.
 
-wrong state.
+Fixes: 58ac482a66de ("introduce xlnx-dp")
+Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
+---
+ hw/display/xlnx_dp.c         | 7 ++++---
+ include/hw/display/xlnx_dp.h | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
-Andrew
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index 7bcbb13..8903181 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -713,8 +713,10 @@ static uint64_t xlnx_dp_read(void *opaque, hwaddr offset, unsigned size)
+         ret = 0;
+         break;
+     default:
+-        assert(offset <= (0x3AC >> 2));
+-        ret = s->core_registers[offset];
++        if (offset == (0x3A8 >> 2) || offset == (0x3AC >> 2))
++            ret = s->core_registers[DP_INT_MASK];
++        else 
++            ret = s->core_registers[offset];
+         break;
+     }
+ 
+@@ -876,7 +878,6 @@ static void xlnx_dp_write(void *opaque, hwaddr offset, uint64_t value,
+         xlnx_dp_update_irq(s);
+         break;
+     default:
+-        assert(offset <= (0x504C >> 2));
+         s->core_registers[offset] = value;
+         break;
+     }
+diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp.h
+index e85e428..99a6d47 100644
+--- a/include/hw/display/xlnx_dp.h
++++ b/include/hw/display/xlnx_dp.h
+@@ -39,7 +39,7 @@
+ #define AUD_CHBUF_MAX_DEPTH                 (32 * KiB)
+ #define MAX_QEMU_BUFFER_SIZE                (4 * KiB)
+ 
+-#define DP_CORE_REG_ARRAY_SIZE              (0x3AF >> 2)
++#define DP_CORE_REG_ARRAY_SIZE              (0x3A8 >> 2)
+ #define DP_AVBUF_REG_ARRAY_SIZE             (0x238 >> 2)
+ #define DP_VBLEND_REG_ARRAY_SIZE            (0x1DF >> 2)
+ #define DP_AUDIO_REG_ARRAY_SIZE             (0x50 >> 2)
+-- 
+2.7.4
+

@@ -1,141 +1,290 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp749375lfc;
-        Tue, 13 Jul 2021 09:33:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwwOVBvMAqbwWVA0+4bCcfQNHtzsgvIOjpg0qU1UBjx8crwdvIA0dhS4VqWc+Tg1FiWG8rX
-X-Received: by 2002:a5d:67cd:: with SMTP id n13mr6948046wrw.201.1626194014894;
-        Tue, 13 Jul 2021 09:33:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626194014; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp760124lfc;
+        Tue, 13 Jul 2021 09:46:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJym2Z80AdB+pG5bJhbty9RMXwOj2AZ+Ud/iJMnH+DT3ASgqnVSMljVRDfQ9aMSrYZl3skEx
+X-Received: by 2002:ac5:c24e:: with SMTP id n14mr6147897vkk.23.1626194768128;
+        Tue, 13 Jul 2021 09:46:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626194768; cv=none;
         d=google.com; s=arc-20160816;
-        b=iJ7DKczn9hQg9hAxe/50B6xlBIPcJ9p0h8LTLE4mToqfPUdEfc9F7/xT2GTrRHshUO
-         DN333HaC0fEKnxS5E/sD03r3ZK1kxWy2L+jClgeDHhCj4vB1y2s9SfqV90bFL3vMM+9P
-         nrVSlLlrPMcbc+pU5Rs8CqQsOlsNjAazPS91bz0kx/9N+skpgsXQLCtkCSByBy/JYMT0
-         KF/46XHqgoOXwTxtTDzWsNRf9Nrv6X5VfKFMsd5OdM/eRImxr1A+YWYmFQEciw7K/rIS
-         A1o9DVf85zOJUG/2Oh8l3Q18nRbj3AyHEr0yqLspPSUBSAgOAe5dokioNs2WOqmCkQyv
-         5FYw==
+        b=Yv/3KOgUWdLJjFRzhfZOnv2YzZ1nvL7RmXZKqM+lv4xnwFwtG/GKhgjHD6pLkVsN+p
+         wb9vl1HRfGe6u97U2geWa8srOKBoD3JUdLlonei475+2RP/kSlIzWhfGojvw8NCaYFeg
+         x9GiiRexm0bGnElJ+ZcR4GBriKwNEVugZUd/5yMbyJ0IVRDqsOtsM3yTwtIW5XI3MtyV
+         +HhgR6GKw82oiYgS6zwBQSkd2yNaFDWd/UsHXRSgi6PinDOZKwc8Fe7t9decFd/wR1zl
+         8L9fibp/MW2v/hULbz9/7PxWbtpL6M+zl6cA4EcpGykIccEVFM8klm9GXcMsZ/AmyEQY
+         zY2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=FKcvy4P506OZELcLSPYwYcapLEA3QqyPpE/yLcD855U=;
-        b=GbGcKQ1WWWkLoOvHMhY5COeCDhYmkci3cdAIJrLlkrCiUPOweuuwQsqkmZfTTMmkoA
-         7zgxBX0eUs5QmTc1Q/v1ZmuBNy1s6dGB0H6J2YRUice85GfUZAegHFqoxsku28R433py
-         Ieg6SjS+JpRxVfn3Eb4xdF/iDYWZX+hfo3dkJqZsaxiebaRN7cTag6QqCoszUl0ufCVB
-         eKFsxt1vnqp76JEfkZJiymqdxgKw32CnujkuBy/qmEZoRlb8HiDRWu1DGUuM3c1WFFBm
-         vhFLhCufLshlgjwa9SnBqov9R1V9N5IuZnYVs3niGi736BhZo8I8aPD9WGk1TT+9G/kg
-         85ow==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=e+2QTsgDWMbYVZ1k9usTKdDYtySiUf2d6+/vVH5etHA=;
+        b=AS4wxw1ixyX/u8C25c+Hwje4P5XZpXVsbdC18kwBLl4XieyS8QZUwSsXxUcg7Gqi7Q
+         JiGIYzq3xO4+brHwvQFpXHClLRtwGAOFtKIpvWOdw62ngGAfz76/38tBlI05aN9UYghC
+         BpGT15EE9BAqu8+FEDzEaQij/g+Rt1Rbk4kMfEZJyJkVhYCVKmyl4S7MbBMmEnsYFoUF
+         9NVmKrmvhf7oL+9plFQsWwpuintAIvkuL0zLHQNFnGHHZuFKaGeYH+OFwegHsNSCBJPs
+         pYFNGPY1uV5Ct8Xevq91FP66kntRlg2Y6Edu/M1QbvFOfXNHcOnV4pFaC1/P8UWjhcvP
+         JdMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rpHoJcqE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=HfzSf6dn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p2si23330341wrm.503.2021.07.13.09.33.34
+        by mx.google.com with ESMTPS id b1si3016501vsf.64.2021.07.13.09.46.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 09:33:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Jul 2021 09:46:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rpHoJcqE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32992 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=HfzSf6dn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3LLh-00026a-Ul
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 12:33:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37434)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m3LXr-0007ST-BO
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 12:46:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41714)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m3LDp-0001Bs-Ji; Tue, 13 Jul 2021 12:25:25 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:39684)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m3LXf-0007O9-7r
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 12:45:55 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:36453)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m3LDo-0002A7-48; Tue, 13 Jul 2021 12:25:25 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- l18-20020a1ced120000b029014c1adff1edso2036221wmh.4; 
- Tue, 13 Jul 2021 09:25:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=FKcvy4P506OZELcLSPYwYcapLEA3QqyPpE/yLcD855U=;
- b=rpHoJcqExOQQ0yM47tZM1RcHVhrLpNgevEXnTNSMxAdbwAzQglBXHCfe9zZv41tpY8
- V+PLv+p5vX4lc9uhDTOBzksTSGPdaLqKvipey7OZcwJ3gd2bXAHU4hqjxf/baA0fFg+2
- QNVm/I1XZJSRQ4NnKXC78heW8daHE6xV6Oxh2yrgXIotGQD4zlxOwcbomJcQQEJskq4R
- jcOAd7CWaweASF17J66N1WK3TZEN0Ej+6ETmjNXD9hrvJkS6ReAbGJRIxeHKcpVtjvAJ
- N7qnJeMYoB4uPYlm4VKTUkGxGpMcFPmWQpdaO9w95AJNoJbSSsPERdRvWpBsKk50uUis
- o2BA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m3LXc-0008I5-K4
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 12:45:54 -0400
+Received: by mail-ej1-x631.google.com with SMTP id nd37so42689464ejc.3
+ for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 09:45:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=e+2QTsgDWMbYVZ1k9usTKdDYtySiUf2d6+/vVH5etHA=;
+ b=HfzSf6dnAHzrY6QnKSzkB6DSG1WAPjG6Y4EHuyZexSZsMcc6FVwW62IoJxgE/zm/PR
+ 9jvS5CDH1bAekVuAHdFbBAJ7vfhDRkEPX4tKL2Tng/5elUrHpp+o4XC7Ey9r10Oh6x8t
+ IkS1edNdiPzyG2yUoy7fotdb50O4HV+9MLsyrTVKQgakELjs5joLs+JyppxuYQSfqhVm
+ J7n1/NyDV/A/8TMbxMynEL0ofqAA/veOxRraheuSziu9jxGCkX7RAHimXzLJhtnkWZSc
+ 5RoL/rJcGzEauSPRUk1Csgz4S6Lk9559CElr55ZpwPfcDbrP0ca1Ekh0LUB4i87k9YFm
+ TM3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=FKcvy4P506OZELcLSPYwYcapLEA3QqyPpE/yLcD855U=;
- b=psjMo8ugek/McCHP5Con0DKdq+RMST0/i+HK+hwjhezzfYk83pqVtvHVQMM0dxqDOS
- OSje9cycXlgf1a9QKKhgCe0O7nPVMbUPrVhcPx4HPjCBU6fEbkFez0s+k0oCIWJ4Lgah
- Rz94YmVe+8UQWlQbMAzOzSl+6tCH5ZYmq6Z8NB+fkUcZ7Nzbfd8XSgqj/ocubzSYX68n
- UCro6YFGjCo1TlshPU3yQwV5ahNodpmqVDpZ8ujXwCM/JHmUBNgSCwK8KkWrEN+bm5pI
- 8wjY5UicQ1A1oehyQV+ELKt0MFjR2R+5aHgd40IGKFhoqcD0MFbFHBA8uzSCXzfwICSQ
- GMxQ==
-X-Gm-Message-State: AOAM530F+LmWQUILWvK8ss04trLkgVSdhpjr2f+TZX4OJtxasSzpJKac
- Esp9LVuV1rGwtJqpuQBtOJI=
-X-Received: by 2002:a05:600c:1c0d:: with SMTP id
- j13mr6141816wms.34.1626193522318; 
- Tue, 13 Jul 2021 09:25:22 -0700 (PDT)
-Received: from [192.168.1.24] (abayonne-654-1-142-116.w86-222.abo.wanadoo.fr.
- [86.222.93.116])
- by smtp.gmail.com with ESMTPSA id l14sm12644117wrs.22.2021.07.13.09.25.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Jul 2021 09:25:20 -0700 (PDT)
-Subject: Re: [PATCH v2 1/3] docs: Add skeletal documentation of cubieboard
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210713142226.19155-1-peter.maydell@linaro.org>
- <20210713142226.19155-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <65ba54f9-7e22-f323-0488-185e8c990bb3@amsat.org>
-Date: Tue, 13 Jul 2021 18:25:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=e+2QTsgDWMbYVZ1k9usTKdDYtySiUf2d6+/vVH5etHA=;
+ b=W0oXNinZ9gOdF8CRAqRV4bsbb5K2cbVWbVI+NpRUimSyDgdosXKi/1xB1hODK6WaVH
+ 2FId7OAGJLX4tTI5TitEFOhyO9gKdHDAY/v8st1Ub7AgDW1Z/UtGG2NT3qojvjbQLCUq
+ S8EupVXtr0sp9XXC0OeEtFrbhFHN+Vc1MPiZPyz1mldfAIaK08NXSqnregF0Psr03fM2
+ BkCMnNWZSs0gVaury31tgrBi/6guFfgZpIQB+qtgyDZWo5zPRxZbP6SHh22NDdRdxmnI
+ 4+uUEGGWMA52Bhae0CcrA4kR//5htarQ0AunE+oVpoXHWgL9eKsW4dMRZJsmaADRsNJw
+ ETHA==
+X-Gm-Message-State: AOAM530Js/ndIB6XawWPl1+/cftL/uCDp37OIAQGGjLTcqkqIrbd+Nqe
+ poXtiVNGxTydobAEO53olbufUxEHcTS0H61wzdbtwQ==
+X-Received: by 2002:a17:906:f9c5:: with SMTP id
+ lj5mr6858828ejb.482.1626194750907; 
+ Tue, 13 Jul 2021 09:45:50 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210713142226.19155-2-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.368,
+References: <20210707021815.45938-1-shashi.mallela@linaro.org>
+ <20210707021815.45938-7-shashi.mallela@linaro.org>
+In-Reply-To: <20210707021815.45938-7-shashi.mallela@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 13 Jul 2021 17:45:11 +0100
+Message-ID: <CAFEAcA_TpbKrV+XdkmWyRf45iVrX7hpRQZaJ9dGp0Go-i6Fd+g@mail.gmail.com>
+Subject: Re: [PATCH v6 06/10] hw/intc: GICv3 redistributor ITS processing
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, Rob Herring <robh@kernel.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0GcaaeIeXyBU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>, Leif Lindholm <leif@nuviainc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oSFgDQZvauPO
 
-On 7/13/21 4:22 PM, Peter Maydell wrote:
-> Add skeletal documentation of the cubieboard machine.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  docs/system/arm/cubieboard.rst | 16 ++++++++++++++++
->  docs/system/target-arm.rst     |  1 +
->  MAINTAINERS                    |  1 +
->  3 files changed, 18 insertions(+)
->  create mode 100644 docs/system/arm/cubieboard.rst
+On Wed, 7 Jul 2021 at 03:18, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+>
+> Implemented lpi processing at redistributor to get lpi config info
+> from lpi configuration table,determine priority,set pending state in
+> lpi pending table and forward the lpi to cpuif.Added logic to invoke
+> redistributor lpi processing with translated LPI which set/clear LPI
+> from ITS device as part of ITS INT,CLEAR,DISCARD command and
+> GITS_TRANSLATER processing.
+>
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> +
+> +void gicv3_redist_update_lpi(GICv3CPUState *cs)
+> +{
+> +    /*
+> +     * This function scans the LPI pending table and for each pending
+> +     * LPI, reads the corresponding entry from LPI configuration table
+> +     * to extract the priority info and determine if the current LPI
+> +     * priority is lower than the last computed high priority lpi interrupt.
+> +     * If yes, replace current LPI as the new high priority lpi interrupt.
+> +     */
+> +    AddressSpace *as = &cs->gic->dma_as;
+> +    uint64_t lpipt_baddr;
+> +    uint32_t pendt_size = 0;
+> +    uint8_t pend;
+> +    int i;
+> +    uint64_t idbits;
+> +
+> +    idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
+> +                 GICD_TYPER_IDBITS);
+> +
+> +    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
+> +        !cs->gicr_pendbaser || (idbits < GICR_PROPBASER_IDBITS_THRESHOLD)) {
+
+If you structure the loop below appropriately, you can avoid having to
+explicitly check idbits against GICR_PROPBASER_IDBITS_THRESHOLD; see below.
+
+> +        return;
+> +    }
+> +
+> +    cs->hpplpi.prio = 0xff;
+> +
+> +    lpipt_baddr = cs->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
+> +
+> +    /* Determine the highest priority pending interrupt among LPIs */
+> +    pendt_size = (1ULL << (idbits + 1));
+> +
+> +    for (i = 0; i < pendt_size / 8; i++) {
+> +        address_space_read(as, lpipt_baddr +
+> +                (((GICV3_LPI_INTID_START + i) / 8) * sizeof(pend)),
+> +                MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
+> +
+> +        if (!((1 << ((GICV3_LPI_INTID_START + i) % 8)) & pend)) {
+> +            continue;
+> +        }
+
+I don't think this code is right. The pending table size includes one
+bit for every interrupt ID, including the low ones below GICV3_LPID_INTID_START
+(ie there's a spare 1K for IMPDEF purposes at the start). Here the
+loop is iterating through the whole pending table with 'i' a byte
+offset into it -- but then when we calculate the address to read we
+add GICV3_LPI_INTID_START to it. The loop body seems to be written
+as if 'i' is an intid, but the for() is not doing that.
+
+Also, you read a byte of pending information, which tells you about
+the pending state of 8 interrupts, but you only call
+gicv3_redist_check_lpi_priority() for one of them.
+
+> +
+> +        gicv3_redist_check_lpi_priority(cs, GICV3_LPI_INTID_START + i);
+> +    }
+
+I think you probably want to structure the loop something like this:
+
+for (offset = GICV3_LPI_INTID_START / 8; offset < pendt_size / 8; offset++) {
+    read the byte at lpipt_baddr + offset;
+    while (byte) {
+        bit = ctz32(byte);
+        gicv3_redist_check_lpi_priority(cs, offset * 8 + bit);
+        byte &= ~(1 << bit);
+    }
+}
+
+(this is why you don't need to explicitly check GICR_PROPBASER_IDBITS_THRESHOLD:
+if idbits is too low then the loop condition is just always false and we
+don't check any pending bits.)
+
+
+> +}
+> +
+> +void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level)
+> +{
+> +    /*
+> +     * This function updates the pending bit in lpi pending table for
+> +     * the irq being activated or deactivated.
+> +     */
+> +    AddressSpace *as = &cs->gic->dma_as;
+> +    uint64_t lpipt_baddr;
+> +    bool ispend = false;
+> +    uint8_t pend;
+> +
+> +    /*
+> +     * get the bit value corresponding to this irq in the
+> +     * lpi pending table
+> +     */
+> +    lpipt_baddr = cs->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
+> +
+> +    address_space_read(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
+> +                       MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
+> +
+> +    ispend = extract32(pend, irq % 8, 1);
+> +
+> +    /* no change in the value of pending bit, return */
+> +    if (ispend == level) {
+> +        return;
+> +    }
+> +    pend = deposit32(pend, irq % 8, 1, level ? 1 : 0);
+> +
+> +    address_space_write(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
+> +                        MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
+> +
+> +    /*
+> +     * check if this LPI is better than the current hpplpi, if yes
+> +     * just set hpplpi.prio and .irq without doing a full rescan
+> +     */
+> +    if (level) {
+> +        gicv3_redist_check_lpi_priority(cs, irq);
+> +    } else {
+> +        if (irq == cs->hpplpi.irq) {
+> +            gicv3_redist_update_lpi(cs);
+> +        }
+> +    }
+> +}
+> +
+> +void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level)
+> +{
+> +    uint64_t idbits;
+> +
+> +    idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
+> +                 GICD_TYPER_IDBITS);
+
+You should ignore irq values less than GICV3_LPI_INTID_START here.
+(We checked when we put the map into the ITE but this is an easy
+way to get rid of the 1023 special case.)
+
+> +
+> +    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
+> +         !cs->gicr_pendbaser || (idbits < GICR_PROPBASER_IDBITS_THRESHOLD) ||
+
+You don't need to explicitly look for "idbits <
+GICR_PROPBASER_IDBITS_THRESHOLD":
+if that is true then the irq will always be greater than the maximum imposed by
+idbits and we'll throw it out that way.
+
+> +         (irq > (1ULL << (idbits + 1)))) {
+
+This is off by one -- 1 << (bitcount) is not the largest permitted intID,
+it is one greater than that.
+
+> +        return;
+> +    }
+> +
+> +    /* set/clear the pending bit for this irq */
+> +    gicv3_redist_lpi_pending(cs, irq, level);
+> +
+> +    gicv3_redist_update(cs);
+> +}
+
+thanks
+-- PMM

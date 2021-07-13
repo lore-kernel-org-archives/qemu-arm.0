@@ -1,103 +1,103 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp334805lfc;
-        Tue, 13 Jul 2021 00:42:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwtL6VLMEyXXAWvT9HyRqqtxwZFrZYRnu2YO09W/0oGPMKy2NLzgYRK/vx9BaPKpYjojC3I
-X-Received: by 2002:a67:b40a:: with SMTP id x10mr4437786vsl.6.1626162132334;
-        Tue, 13 Jul 2021 00:42:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626162132; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp337582lfc;
+        Tue, 13 Jul 2021 00:46:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzucWRMVvUi847czlk1tVOwxQo0h6N5oP8RP6+VXI5fIpAonjLVRxHzUldzd+36QrwwYVv/
+X-Received: by 2002:a1f:5381:: with SMTP id h123mr3660445vkb.25.1626162408174;
+        Tue, 13 Jul 2021 00:46:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626162408; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y7Kb/wuruuwsP1LOzQD0yQhYocSGdTBnkla0umD1YemJr9E7UofzX3lT00vg3cMXEf
-         GHmCFzqe2fZWGxIUWQL+5IXdjv6u/XEuApIxcLtVd2IhCITWmVijWwxuOuhe6XEGSQ5y
-         myd0ilp5WjMbid4jdSaZft8SX0Ggy74rmyAUk8omqt9KUjqN/rfX1V/9ztC87YBpODuz
-         u7/iRx4R4HSd0AtuTAt6hqEp/erMQSfGmeyhREn1l6i3gytwsq4nOBs/uZ4DKytdsHPg
-         vCye3zKCfMNy3WrKRBc49EUEyIagIAiUkR9ED+EsqvraJBDUl11VDJnOpvhb0p0Bro/L
-         jEuA==
+        b=a1d7/v772A/JLcbcTuwok9PDly2WH0Aj7G9lAvbjzjAm8xT8BQAhc92QbBb18mWkPx
+         4mhzQopcjg8bed6afRcJoI7uf9HMFvPN8/HHxWWHT2p1HTtq5NBtPU28Q/evKK6fbzgu
+         yKIyzZFCxJhyoczyi7+hb2cr+aBniKHneTIzpe4BnZ1K70LNuJGJD0SSv6ZGi2saRU00
+         T8jffkJu45II0GoIU1rtrHTJz/ThNE0uSt3z5Bdmer9M5ZOzJeQTRiaArDu58gDeucAi
+         rgdVWmtxSQK8OxnQE2Vock5d/5BujWFBxvQDcdwPnl5RYpoUfkfFScR3u11EbtPV1ejO
+         gCVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:user-agent:references:in-reply-to:date:to:from:subject
          :message-id:dkim-signature;
-        bh=zBIuddja685c24E6dnKH3bKIcRki0Rgq8+pCOGs0uIs=;
-        b=XqmC4Ko7qWMktnzhZisv8G9NGI+9t36fqJol6TASZ2A6PwtxPlYt8VhZv55dxxBckc
-         ejq4qIKYeUj0kqN7sZLd5sXZThspm4utawDrS1MZ8r1qC9VScD2GFpo0eVN9iBW2s3DI
-         5uOOrzHeJqm3NTVjYp+B/oRt3rmJN5zuJmecuyf8uWtkuqIpAuNZdkD8lzn5kS4xkY61
-         IcziyCgNpSu2W8uqYn2Mi7h5LZJJTHMmiq9dTrCPEhmb/YWZMgvN5N0I9PNcFUn2YA9X
-         f7T2O0+cmRTvQtWvJJneBr1/Qz1DY4QLtfAaI8gUrYxinT+IlTnrs7lrVZn8eRQeBgJ8
-         13kw==
+        bh=lL9gXCuPm/AvFCvn7u/yT0Zk+ZhHDauMRj2CA0gEiEM=;
+        b=sE2uHAxld+88Dy+DpXFTEXz5ceiH8jOxNVkucnKN8pU5gOxuDhH1dQN9I3SqxJRiWh
+         exanP/Q3ibJbx4IrfTrILA0+f8ZEZncU7cS3ScAkouW727GxLD6IuPFntbCcy1vbD6DW
+         73KJeAXq7cSiOBCRERcQOHQfXfL+sG2jxaF/Jc+VXig9oDOTqDMsQS7XJAqLF0C+DGHX
+         PZ9nIFgW8vqneV55JkQqmJBRtnmelJGbAzt/wJ+yHUqNQP+ZiF4SZoRWYFlBj2907OxR
+         /MxaFAOSqLwEPK6gBTnIqSlzEVqhRqBIJQ2OgJMrXyWpk4xQZq1qhoSuA8iizeITjQ0w
+         /ICw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DR2SO9Lr;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JsPXofdi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f13si15182554vsq.423.2021.07.13.00.42.12
+        by mx.google.com with ESMTPS id k44si17756225uag.114.2021.07.13.00.46.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 00:42:12 -0700 (PDT)
+        Tue, 13 Jul 2021 00:46:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DR2SO9Lr;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JsPXofdi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53722 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56424 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3D3T-00048g-Mh
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 03:42:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60474)
+	id 1m3D7v-0006EA-Ey
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 03:46:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <rashmica.g@gmail.com>)
- id 1m3D3L-00048R-Fw; Tue, 13 Jul 2021 03:42:03 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436]:37390)
+ id 1m3D7K-0006DY-JU; Tue, 13 Jul 2021 03:46:13 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:35667)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <rashmica.g@gmail.com>)
- id 1m3D3J-00070H-TZ; Tue, 13 Jul 2021 03:42:03 -0400
-Received: by mail-pf1-x436.google.com with SMTP id 17so18798976pfz.4;
- Tue, 13 Jul 2021 00:42:00 -0700 (PDT)
+ id 1m3D7I-0001QB-Th; Tue, 13 Jul 2021 03:46:10 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id n11so1140999plc.2;
+ Tue, 13 Jul 2021 00:46:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=message-id:subject:from:to:cc:date:in-reply-to:references
  :user-agent:mime-version:content-transfer-encoding;
- bh=zBIuddja685c24E6dnKH3bKIcRki0Rgq8+pCOGs0uIs=;
- b=DR2SO9LrRmyodTBTP2wVmctUfgpZ+gWUlB26jKsbzeLqJOipWNC+W8X+uMeksMR450
- 84fzfRzRO2BMXdwgFAbOxAWB55hVARd2z29vhqC5+6ryPF+Pa8NTKDCwtL3sz/TW3oUC
- QdSY8tVF7XjpLpDrBJKQDMvRQEo+hfWwqYNP2/FTYswjPjAJzNj49s+74d5uRwX/0hAC
- HLS0VWcGGTZmu+3BNaCvatZ80xwmcJWqb6LtjYvDVMN7/OGCIMFJP6LHPVmxrJj0tD60
- 2G9q4LBebn0XwCG2BiqhEsqIHkOTS1rpivCRKcngC/dKZLzMg24mflMX2ptwPesf/Vpk
- HHoQ==
+ bh=lL9gXCuPm/AvFCvn7u/yT0Zk+ZhHDauMRj2CA0gEiEM=;
+ b=JsPXofdiVBNSqsV7th+xlL4pSPWV9V/gJGyUbgKzYcqNI26jb9dl6n1vJoErREh/ku
+ zxIg7JVGy7+fdQtO8/l9wIWY+fvsnaMS+ZAHHxU+PIgbM+xkjRv/2ECP8ud9jVWcda/J
+ eqLzNIiDK3INrfiPYrgYCI8Yn76GlK5I7T3LkRfbkgfYFLtEDJxpsuiufjE7s+gEfxW6
+ Rc/HSRPM44fUNR5LfxnmZg3j1zGFR0thHjPZUed9o1NR5fC+Hmw7aJKp7Hf2mdaRUaD9
+ 32ShXzDXW359regJSr4HuPahjgZIxUOyxS98IsI6VA/vk+cZS6jP/mIzSotJxTV/OubN
+ h7ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
  :references:user-agent:mime-version:content-transfer-encoding;
- bh=zBIuddja685c24E6dnKH3bKIcRki0Rgq8+pCOGs0uIs=;
- b=lDaAXNoxnqfjtJm7Bx3Dee3GsOqHL0MZ6/qknKb9SG+lmLHlBgGcAlLGIhZvuXezU/
- 8R92+9ncKPdQvMA22BZ7jGtMjvXFSqRPTwbPj++LAGAjldA0mKP3nWi9Ou6ERkaGbNBT
- LzrlCZ1UgNpra+spt+v+VcUyElbiJAgM8cOMk/Atf0K06uJdN03zxJGTimNqyFjqn7RQ
- x89zBe+6lR+6i9MNF/q9xSmzSnktr/4JJSMzDOrIghHnFLm2GQoEySXpxyDW51kIzedK
- R+DPjI28oKukKBkQ3QUd+4xp7e0+VQmxAzOWVdIvrYAxvkasw/2hBib6ztV9Wb/zs9sw
- OQDg==
-X-Gm-Message-State: AOAM532j5xx6gYSjgGAX25J5YYa/6/CoCzdmCzGh683WgoTBFNpjWYen
- 79Xr2rqMYI0uOSUzRiRQqFE=
-X-Received: by 2002:a62:4e0f:0:b029:329:20be:287a with SMTP id
- c15-20020a624e0f0000b029032920be287amr3304167pfb.55.1626162119439; 
- Tue, 13 Jul 2021 00:41:59 -0700 (PDT)
+ bh=lL9gXCuPm/AvFCvn7u/yT0Zk+ZhHDauMRj2CA0gEiEM=;
+ b=LZygMNF+aZQoXKlvj9APflxatj0mxBcYT0dfQZE6xkCNcvJE9XTv2WF+OJTMx2khFN
+ Fc0s2jM1HLiVFUnUO4F+LOW1SZm3k+Tz6HMJUUOL7CTC85bHcpuIltqInCVA9Iwskf7e
+ zHvciO+AxspM+e2tVlq91CWoIPp0EhZ1urF4qTzLvgaGihr7FBSXJpFiaiFgdnSXSX8S
+ qA2knSIozn5djBBlhTthHiLJ5DHReWUgUYot6Vt+p0GomXq/YCDvydorgUT9wnm9gwAu
+ T9aUk7PUNAYTIeYcdjVPMLcm90XALd95hwSN4UIyG+KdyYRGtMFeWFyUFV2B333hIiHz
+ mV5g==
+X-Gm-Message-State: AOAM532abrDAbgXo74AcG+R2+1E0+Cz7E6UAiT1d5LbRa+YXoG+Qcjhs
+ b0OzGqj8/yY3GRoizDLfmfk=
+X-Received: by 2002:a17:902:8b8a:b029:129:d281:4a27 with SMTP id
+ ay10-20020a1709028b8ab0290129d2814a27mr2528983plb.9.1626162366895; 
+ Tue, 13 Jul 2021 00:46:06 -0700 (PDT)
 Received: from [10.0.20.43] ([103.217.166.124])
- by smtp.googlemail.com with ESMTPSA id y9sm17636881pfn.182.2021.07.13.00.41.56
+ by smtp.googlemail.com with ESMTPSA id u19sm12787278pfi.4.2021.07.13.00.46.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jul 2021 00:41:58 -0700 (PDT)
-Message-ID: <e3f179b3e2dc4ca79a3796a4001ca89bc8b819ff.camel@gmail.com>
-Subject: Re: [PATCH v2 1/3] hw: aspeed_gpio: Fix memory size
+ Tue, 13 Jul 2021 00:46:06 -0700 (PDT)
+Message-ID: <d788cdcc6e10846ceef50ce65cdd281f5661e01a.camel@gmail.com>
+Subject: Re: [PATCH v2 2/3] hw: aspeed_gpio: Simplify 1.8V defines
 From: Rashmica Gupta <rashmica.g@gmail.com>
 To: Joel Stanley <joel@jms.id.au>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
  <clg@kaod.org>
-Date: Tue, 13 Jul 2021 17:41:54 +1000
-In-Reply-To: <20210713065854.134634-2-joel@jms.id.au>
+Date: Tue, 13 Jul 2021 17:46:02 +1000
+In-Reply-To: <20210713065854.134634-3-joel@jms.id.au>
 References: <20210713065854.134634-1-joel@jms.id.au>
- <20210713065854.134634-2-joel@jms.id.au>
+ <20210713065854.134634-3-joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
 User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=rashmica.g@gmail.com; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=rashmica.g@gmail.com; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,61 +121,143 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wvEcmIcXK+JW
+X-TUID: 9s4lZnNp3HQR
 
 On Tue, 2021-07-13 at 16:28 +0930, Joel Stanley wrote:
-> The macro used to calculate the maximum memory size of the MMIO
-> region
-> had a mistake, causing all GPIO models to create a mapping of 0x9D8.
-> The intent was to have it be 0x9D8 - 0x800.
+> There's no need to define the registers relative to the 0x800 offset
+> where the controller is mapped, as the device is instantiated as it's
+> own model at the correct memory address.
 > 
-> This extra size doesn't matter on ast2400 and ast2500, which have a
-> 4KB
-> region set aside for the GPIO controller.
+> Simplify the defines and remove the offset to save future confusion.
 > 
-> On the ast2600 the 3.3V and 1.8V GPIO controllers are 2KB apart, so
-> the
-> regions would overlap. Worse was the 1.8V controller would map over
-> the
-> top of the following perianal, which happens to be the RTC.
-> 
-> The mmio region used by each device is a maximum of 2KB, so avoid the
-> calculations and hard code this as the maximum.
-> 
-> Fixes: 36d737ee82b2 ("hw/gpio: Add in AST2600 specific
-> implementation")
 > Signed-off-by: Joel Stanley <joel@jms.id.au>
 
-derp. Sorry about that. This looks correct.
-
+Makes sense, and it is cleaner.
 Reviewed-by: Rashmica Gupta <rashmica.g@gmail.com>
 > ---
->  hw/gpio/aspeed_gpio.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  hw/gpio/aspeed_gpio.c | 73 +++++++++++++++++++++--------------------
+> --
+>  1 file changed, 36 insertions(+), 37 deletions(-)
 > 
 > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> index 6ae0116be70b..b3dec4448009 100644
+> index b3dec4448009..dc721aec5da7 100644
 > --- a/hw/gpio/aspeed_gpio.c
 > +++ b/hw/gpio/aspeed_gpio.c
-> @@ -207,7 +207,6 @@
->  #define GPIO_1_8V_MEM_SIZE            0x9D8
->  #define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
->                                        GPIO_1_8V_REG_OFFSET) >> 2)
-> -#define GPIO_MAX_MEM_SIZE           MAX(GPIO_3_6V_MEM_SIZE,
-> GPIO_1_8V_MEM_SIZE)
+> @@ -169,44 +169,43 @@
+>  
+>  /* AST2600 only - 1.8V gpios */
+>  /*
+> - * The AST2600 has same 3.6V gpios as the AST2400 (memory offsets
+> 0x0-0x198)
+> - * and additional 1.8V gpios (memory offsets 0x800-0x9D4).
+> + * The AST2600 two copies of the GPIO controller: the same 3.6V
+> gpios as the
+> + * AST2400 (memory offsets 0x0-0x198) and a second controller with
+> 1.8V gpios
+> + * (memory offsets 0x800-0x9D4).
+>   */
+> -#define GPIO_1_8V_REG_OFFSET          0x800
+> -#define GPIO_1_8V_ABCD_DATA_VALUE     ((0x800 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_DIRECTION      ((0x804 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_INT_ENABLE     ((0x808 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_INT_SENS_0     ((0x80C -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_INT_SENS_1     ((0x810 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_INT_SENS_2     ((0x814 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_INT_STATUS     ((0x818 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_RESET_TOLERANT ((0x81C -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_DATA_VALUE        ((0x820 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_DIRECTION         ((0x824 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_INT_ENABLE        ((0x828 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_INT_SENS_0        ((0x82C -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_INT_SENS_1        ((0x830 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_INT_SENS_2        ((0x834 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_INT_STATUS        ((0x838 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_RESET_TOLERANT    ((0x83C -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_DEBOUNCE_1     ((0x840 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_DEBOUNCE_2     ((0x844 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_DEBOUNCE_1        ((0x848 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_DEBOUNCE_2        ((0x84C -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_DEBOUNCE_TIME_1     ((0x850 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_DEBOUNCE_TIME_2     ((0x854 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_DEBOUNCE_TIME_3     ((0x858 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_COMMAND_SRC_0  ((0x860 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_COMMAND_SRC_1  ((0x864 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_COMMAND_SRC_0     ((0x868 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_COMMAND_SRC_1     ((0x86C -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_DATA_READ      ((0x8C0 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_DATA_READ         ((0x8C4 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_ABCD_INPUT_MASK     ((0x9D0 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_E_INPUT_MASK        ((0x9D4 -
+> GPIO_1_8V_REG_OFFSET) >> 2)
+> -#define GPIO_1_8V_MEM_SIZE            0x9D8
+> -#define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
+> -                                      GPIO_1_8V_REG_OFFSET) >> 2)
+> +#define GPIO_1_8V_ABCD_DATA_VALUE     (0x000 >> 2)
+> +#define GPIO_1_8V_ABCD_DIRECTION      (0x004 >> 2)
+> +#define GPIO_1_8V_ABCD_INT_ENABLE     (0x008 >> 2)
+> +#define GPIO_1_8V_ABCD_INT_SENS_0     (0x00C >> 2)
+> +#define GPIO_1_8V_ABCD_INT_SENS_1     (0x010 >> 2)
+> +#define GPIO_1_8V_ABCD_INT_SENS_2     (0x014 >> 2)
+> +#define GPIO_1_8V_ABCD_INT_STATUS     (0x018 >> 2)
+> +#define GPIO_1_8V_ABCD_RESET_TOLERANT (0x01C >> 2)
+> +#define GPIO_1_8V_E_DATA_VALUE        (0x020 >> 2)
+> +#define GPIO_1_8V_E_DIRECTION         (0x024 >> 2)
+> +#define GPIO_1_8V_E_INT_ENABLE        (0x028 >> 2)
+> +#define GPIO_1_8V_E_INT_SENS_0        (0x02C >> 2)
+> +#define GPIO_1_8V_E_INT_SENS_1        (0x030 >> 2)
+> +#define GPIO_1_8V_E_INT_SENS_2        (0x034 >> 2)
+> +#define GPIO_1_8V_E_INT_STATUS        (0x038 >> 2)
+> +#define GPIO_1_8V_E_RESET_TOLERANT    (0x03C >> 2)
+> +#define GPIO_1_8V_ABCD_DEBOUNCE_1     (0x040 >> 2)
+> +#define GPIO_1_8V_ABCD_DEBOUNCE_2     (0x044 >> 2)
+> +#define GPIO_1_8V_E_DEBOUNCE_1        (0x048 >> 2)
+> +#define GPIO_1_8V_E_DEBOUNCE_2        (0x04C >> 2)
+> +#define GPIO_1_8V_DEBOUNCE_TIME_1     (0x050 >> 2)
+> +#define GPIO_1_8V_DEBOUNCE_TIME_2     (0x054 >> 2)
+> +#define GPIO_1_8V_DEBOUNCE_TIME_3     (0x058 >> 2)
+> +#define GPIO_1_8V_ABCD_COMMAND_SRC_0  (0x060 >> 2)
+> +#define GPIO_1_8V_ABCD_COMMAND_SRC_1  (0x064 >> 2)
+> +#define GPIO_1_8V_E_COMMAND_SRC_0     (0x068 >> 2)
+> +#define GPIO_1_8V_E_COMMAND_SRC_1     (0x06C >> 2)
+> +#define GPIO_1_8V_ABCD_DATA_READ      (0x0C0 >> 2)
+> +#define GPIO_1_8V_E_DATA_READ         (0x0C4 >> 2)
+> +#define GPIO_1_8V_ABCD_INPUT_MASK     (0x1D0 >> 2)
+> +#define GPIO_1_8V_E_INPUT_MASK        (0x1D4 >> 2)
+> +#define GPIO_1_8V_MEM_SIZE            0x1D8
+> +#define GPIO_1_8V_REG_ARRAY_SIZE      (GPIO_1_8V_MEM_SIZE >> 2)
 >  
 >  static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high,
 > int gpio)
 >  {
-> @@ -849,7 +848,7 @@ static void aspeed_gpio_realize(DeviceState *dev,
-> Error **errp)
->      }
->  
->      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
-> -            TYPE_ASPEED_GPIO, GPIO_MAX_MEM_SIZE);
-> +            TYPE_ASPEED_GPIO, 0x800);
->  
->      sysbus_init_mmio(sbd, &s->iomem);
->  }
 
 

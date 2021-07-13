@@ -1,109 +1,102 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp685836qvs;
-        Tue, 13 Jul 2021 07:29:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRUvs9y+GmQs2mINft06XSxCSp2n9/wy66yaJy7wXpcxt1JJS8gOBrnMC6PS50hM0ByUkC
-X-Received: by 2002:a17:906:fc6:: with SMTP id c6mr5909110ejk.65.1626186593787;
-        Tue, 13 Jul 2021 07:29:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626186593; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp657379lfc;
+        Tue, 13 Jul 2021 07:49:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmdikR8+0OCAuKhkkIxJh3M+djiOXhfkidPU8mMyjU1hBb409eObA5NMSb78XMQb5Kl5SM
+X-Received: by 2002:a92:d3c7:: with SMTP id c7mr3165664ilh.59.1626187745832;
+        Tue, 13 Jul 2021 07:49:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626187745; cv=none;
         d=google.com; s=arc-20160816;
-        b=HdJKFjzPPomFIzY5O7yCBiw/VStop32KnYICZ4PrMjkntSIWKwLNWRkk6FytIZGm6T
-         esK4H6UkzM/rDNG9vDddh+ihLOK9mfXIwpONDy5l8xZ/71n75m2wbJnQhz16wzBA3/Dq
-         gySPeEKufqY+TJGtgHm2fOzVvjibLaBZIdbItLi0fpmEWCGHLP3PfZkCIzDUO/o/bx10
-         KihF9y741T+zv1DQVqtYZnI9XrNg9V1S66ODzc4HjswPYOZCQ5mKHZmZCsPZM4klNDZX
-         ZtLOw9cO4kOXH+Pyc5bDeHKJnQoP1ExGi4wXNGa0+MsM/cuFTLoYprDUq8a8CPfcQ+iu
-         LdzA==
+        b=y5Q/Qbzk9laRzJPkgIQZfBoNuDOmvSOKSs+Ln/BVgAxF/lRvBitdnYWzKkXx9bEzc4
+         8TG2krN072tZX9GJWSV9FbaFnid+9jcjrzEVjwmLW0wG01BAyzTALyNahy41CmWgZO5g
+         Ta6t59MmknsDON8s+dS4d3ImOXRoSyO1Wz+S3McASRvemhXYgVGkOIvezKOgEa5n2Qoe
+         DA+Ov/z5VNnPvFHAMik5Nc4bQbZMsFeW/pNTj4ryT7PGahyvI8GdFDDHk6FOJjPn+tcY
+         t3a9dUk4BQJjy20i6VwJw6ltDxn/053SB6TF69dOJigvLBsVavE+AO94SOdk3B9ESA89
+         NjLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=W2SdpSDEP5iF6kitd9bg3QMHVJgptr67Uu5d9CUR6lI=;
-        b=C47qLe5WKmAz6El5p/3oR2Rqkk/Dl8QjYk/NnlEiNivqoeEXXFI7o+HuMGUvlGngJk
-         /EzTz7zDTvGn+2bnz0JlZoIgoLlkOgHQnrBL3iCnclNtyCV1oycvsr91fadDJrm08UpU
-         ZBlnKmmuuhXzjYLsH0x3YjggEGLZjdXA7VtMRWbnJxTZ1C8+SD3YVN4qrzlUyUWKPuZE
-         6YNBg9wIrhvhiHZHeoWZwKWMjoUDDIfExTgtNBspCmf4OJSD+QN22r+HjQ4CWFcHBF8A
-         ZID8PsMc12yOC7chf557/Qx6/MpGrvWx09bUoGk7/VXsABUPPXeel+yRohRpTcSNmh4h
-         taig==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=aOdTLvUu/CksPpsv5K8PPdX1hhzVsx/u/WQZzZ9mkTg=;
+        b=oXauipXDxLXcgY1ek1wCbs/oxJrq2cr1vC2ofOql04j5WZcXyqS9Zbg3ucOMNAWWGZ
+         UCI90hAlM4+GFbAzFT1+jCPftYPETAYCs+9qZre4yukdFHTI518QIJX4yYYo8ej4PIG5
+         tEUesFE2TefnowOmtjHAXIn918sDDom9SIVJESDJMprXtI71RbxLNs7oslrrp7euehoU
+         2tYRa5W/NK70rWpU6wK6tWy8DCl/M62+5Bxdq1JlXYqcYnw+cwmI91ti02YNoJH2rGuv
+         CMVoNyc62uydYPlnAwjMOl0dsI0ZmS/DttA8J57yPwjGvVk4RWseMwFGE2R8Hq6taJR+
+         TuNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=USvL12Vb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JkvBDf6+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cf9si3911414edb.132.2021.07.13.07.29.53
+        by mx.google.com with ESMTPS id p16si22574350jan.14.2021.07.13.07.49.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 07:29:53 -0700 (PDT)
+        Tue, 13 Jul 2021 07:49:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=USvL12Vb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JkvBDf6+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43508 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3JQ0-0007L5-RD
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 10:29:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37006)
+	id 1m3Jia-00042c-TE
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 10:49:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3JJ2-0001ih-84
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 10:22:40 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:52758)
+ id 1m3JiS-00042D-PV
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 10:48:56 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:38819)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3JIu-0001es-F9
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 10:22:38 -0400
-Received: by mail-wm1-x334.google.com with SMTP id g12so5939299wme.2
- for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 07:22:31 -0700 (PDT)
+ id 1m3JiR-00023Q-9U
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 10:48:56 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id gb6so41959509ejc.5
+ for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 07:48:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=W2SdpSDEP5iF6kitd9bg3QMHVJgptr67Uu5d9CUR6lI=;
- b=USvL12VbRuEdh/d5jaoQ545e4B1QfkKpoGPYl+VV2jq1ID8VPQZZmrOuOELNPtRPyO
- iFlr3Oni+6YFUqGd2PElOkrlCKHJXVUcstPsrCd1DdErcemQkRUw3o93gDIp5AlC+ti7
- BevrDpw8R7R9k9weqHsXAKz9DNwPb0XHzQ8bvOGBAkpcESz7+ZQ82q3SRjFPxR8GLl8c
- GUwP1Cx0IzgQSyK0tHaOoCdYm3ikdlxtl74AM1OzLc9llcFgCO/gOHOqyukXyQm6YjrF
- GM3w0rkEU3j6GBdHN0GRY3J8PBommKqDV57l/g9V7/rJ0fNpyr0hyqjoPRHR0932CU6j
- E1dw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aOdTLvUu/CksPpsv5K8PPdX1hhzVsx/u/WQZzZ9mkTg=;
+ b=JkvBDf6+PFrFn5g6kH6kbWcfo3tvjQc5fqGkyvt9o9zSpNo4t7K+d33reQNUwpfmmC
+ 5ooCDt/QJ6HMj8pTLQSOvewbOVx+XBsLyHBncFLqh/yqYMrdNsqTKuZwYwuQCzjZwjBs
+ boUZNf6LM65xQPYZL2goIhYPFnHHrm8aWFsivs2RfVc1bT/rbhwt3t37TaIg9VBToY0p
+ pIQPPMpjn9drNWZsPXe93leyhguaubvpn9mbzef7TSo9a8KmkUUULKoEDYJWqgsJI1vL
+ QWP1jHC6M/wDaIuYDTeDIqDZGwxxTlIEiDXUSVO2i0qfD24Dsa1LHRc20F/i+sI+gKB9
+ FBKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=W2SdpSDEP5iF6kitd9bg3QMHVJgptr67Uu5d9CUR6lI=;
- b=jvt81qjbN/xXk567D3Se25s0MExRoYL3BGdzSvO67LNBREArA0XmMv4hpnRpb9HNbw
- G146P/4W+ZCq2fLLzLdiaLll//mfejpt4RdmVQkZIvFMJist6JXnShwhkRiFkCjqlTEy
- eK8vmfTh8Ama2pknxAm877s1W01mQFrOudxTAJXxQ+Y5D0eJoJDBhCgSpMqvjykZzTT+
- 1o6zvuaH1Cis8njlArIR8vzdGdsC2rJSqpKjVgSkeoUluD6psgOE7Hq/xJG6DlsTTJSh
- iniZD/aDld6s4JxxOy2klN8PQA7OFZWAZWIPaeWLPJgenYMRFayTMA2WEVKwz7jfVxKD
- cwwg==
-X-Gm-Message-State: AOAM532MXSa/nEIUNCUOR4Wctpv6NyKmYEfaV8U+LmFB/BmtNqCaaq+7
- hx3n1VXFyTwOsXBILRfpMDmfgf5UtX/TyLkY
-X-Received: by 2002:a1c:ed08:: with SMTP id l8mr5279959wmh.38.1626186150437;
- Tue, 13 Jul 2021 07:22:30 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l15sm7916469wrv.87.2021.07.13.07.22.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jul 2021 07:22:30 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 2/3] docs: Add skeletal documentation of the emcraft-sf2
-Date: Tue, 13 Jul 2021 15:22:25 +0100
-Message-Id: <20210713142226.19155-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210713142226.19155-1-peter.maydell@linaro.org>
-References: <20210713142226.19155-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aOdTLvUu/CksPpsv5K8PPdX1hhzVsx/u/WQZzZ9mkTg=;
+ b=ZolEZsVM6Lp7qAqooT2BKYF3acPn0l13lXCotfIUqlx9J1HOue9Z5jEUey1ZAz655h
+ MwwX+mZ2zqVA35lT7bEBb0AV/QDGSgXTUzji4b2Y1IBRynX9rsY1QVOumtXVMnSWn2lb
+ POTM9svQ22hFOEIxlxiuTi95gJoQsSDNUq2lfN5sCqNudFO3uIbZCAogwEruEIIXvodb
+ 3ujemjPgeVuEwEcbMQ/d3LtTu9yOFhPQljvuedBo4Q9oEOTg8T3a8Ygs7d6jSh+F1JZP
+ sm7Ww0izu4Nd4JU5dH0pdCzNyF77mB7ACYG2D6Kk0B+9HEbP/2nwZxe59GSasMcWcSab
+ Gbbw==
+X-Gm-Message-State: AOAM532QHBoNkfOBbovalSorz2njiaGy7ap8N9jQhktUsZ8PdGLehpbs
+ VZmttNBKrTSp+wYbOMtm7lGQc5bwpfKB1tJFO+ZPBg==
+X-Received: by 2002:a17:906:924a:: with SMTP id
+ c10mr6171235ejx.85.1626187733832; 
+ Tue, 13 Jul 2021 07:48:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210709230621.938821-1-richard.henderson@linaro.org>
+In-Reply-To: <20210709230621.938821-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 13 Jul 2021 15:48:14 +0100
+Message-ID: <CAFEAcA8ozOismw-xUAe1qnWbq4DP=45qWjf1+YHwgKrRYqJ+yQ@mail.gmail.com>
+Subject: Re: [PATCH 0/1] target/arm: Fix offsets for TTBCR (#187)
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,68 +109,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2bPs0bGIQswy
+X-TUID: 6CYwo5vzVFn3
 
-Add skeletal documentation of the emcraft-sf2 machine.
+On Sat, 10 Jul 2021 at 00:07, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This one patch fixes boot_linux_console test_arm_virt.
+>
+> It does not fix all of the failures.  The next one on the
+> list is test_arm_emcraft_sf2, where the cpu boots fine but
+> the net device doesn't work correctly.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- docs/system/arm/emcraft-sf2.rst | 15 +++++++++++++++
- docs/system/target-arm.rst      |  1 +
- MAINTAINERS                     |  1 +
- 3 files changed, 17 insertions(+)
- create mode 100644 docs/system/arm/emcraft-sf2.rst
+Applied to target-arm.next, thanks.
 
-diff --git a/docs/system/arm/emcraft-sf2.rst b/docs/system/arm/emcraft-sf2.rst
-new file mode 100644
-index 00000000000..377e2487206
---- /dev/null
-+++ b/docs/system/arm/emcraft-sf2.rst
-@@ -0,0 +1,15 @@
-+Emcraft SmartFusion2 SOM kit (``emcraft-sf2``)
-+==============================================
-+
-+The ``emcraft-sf2`` board emulates the SmartFusion2 SOM kit from
-+Emcraft (M2S010). This is a System-on-Module from EmCraft systems,
-+based on the SmartFusion2 SoC FPGA from Microsemi Corporation.
-+The SoC is based on a Cortex-M4 processor.
-+
-+Emulated devices:
-+
-+- System timer
-+- System registers
-+- SPI controller
-+- UART
-+- EMAC
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index e2fcb64872d..c52902acdad 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -86,6 +86,7 @@ undocumented; you can get a complete list by running
-    arm/sabrelite
-    arm/digic
-    arm/cubieboard
-+   arm/emcraft-sf2
-    arm/musicpal
-    arm/gumstix
-    arm/nrf
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 93b9f900034..f23cf874c66 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1023,6 +1023,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/msf2-som.c
-+F: docs/system/arm/emcraft-sf2.rst
- 
- ASPEED BMCs
- M: Cédric Le Goater <clg@kaod.org>
--- 
-2.20.1
+I'm not sure the TCR struct's precalculation of mask and base_mask
+is still earning its keep as an optimization. We only use them in
+get_level1_table_address() which is old-style v5/v6 page tables only,
+and all it's saving us is a bitfield extract and some shifts, which
+is peanuts compared to everything else we do in a page table walk.
+Perhaps (not for 6.1) we could drop it entirely.
 
+-- PMM

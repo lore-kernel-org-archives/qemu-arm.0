@@ -1,63 +1,63 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1026454qvs;
-        Tue, 13 Jul 2021 14:20:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyw/ULhUb1w3nTKH0oApAwS7CIup8fzSBTsMMDncOW2m3RPu+JtpB5mMjM9HkZIPry9/Mce
-X-Received: by 2002:a17:906:4c8c:: with SMTP id q12mr8094119eju.254.1626211206435;
-        Tue, 13 Jul 2021 14:20:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626211206; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1026640qvs;
+        Tue, 13 Jul 2021 14:20:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyc47QzIdCF6XbK6adGAPO3WOrKzMdjhpvgRj9rBuwi3259LOltekWIYmS6KhO/e0BGGD1m
+X-Received: by 2002:a17:906:f294:: with SMTP id gu20mr8208067ejb.292.1626211223247;
+        Tue, 13 Jul 2021 14:20:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626211223; cv=none;
         d=google.com; s=arc-20160816;
-        b=0NqdBABEen4ADIlExZxaFhA3mXWh3dHNE7V8lHe8x2fd0SWfBI81dv3zzwGB9vLzWM
-         IDp8VadMYrEzJhr4+0ILmgt0o2t//+kbGEBcjsTJh+edRx7fT1B51eD2bw/Zcl7qkTVL
-         Ju2mGKo5zPcJjPFMQqjyrfWKseSpe81SAz+0yDE303HW9lNzFvk68QEQRvY8c+OfLgGW
-         mLpHtaguXxIqy9ZlpIjd8NJM8p0u1vUR6D+x2HhFfqOUgMzNwSFey5A3qvB+CEQjiANd
-         48gnTKLl+cn4ScKMGoZxf7IuoHKOJfNZ7ep9pPJW9dDQVCUEN/nyqKiKf0d4zVVnJsfB
-         u8Ng==
+        b=vYDzrp16ljLOVh8EhZh4/8ECFW75abYs7JpCdKnZjuS2I0fb5jTT/VZoB469ZODK3c
+         +cBqZ7WggLX3On71OiPtmhqcnoEK4GdhlYndYeAk+SmAcB2yaQkSEjytmthbqzH0kE+o
+         b6Pk7tapO5rT882tEbgcgP2GbVcK1gMjzBTXi3T9SUk80uN49sAghi8BvYL0FYHEGfEZ
+         l6BQJUTEiR4IIbEY6GWb6kMlFX9q9QYAmJ9dgYDL1nz2GoPQRJt1KboYsZyZxwTbsXHV
+         Ad8fxHtGGE+JgZLkn4HhmC8fFzEJtrTCq5lRCp1SmLU/8vtAjFn+nGNjaPLRR4oBTLx0
+         2N5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=o/hmecJHLqWZ/BY8YWnw3VpukSO4hxCzqvER0n9EBPk=;
-        b=y1outAQQMI9DR4rn3x1ZVyKMYO3d3Vs2aHYrpSw4r4kRZ0UG/3HLcVqukwLWpg/w7b
-         UOn78VxMHAzKuNUBdFGccK7MDc2p3h0ldruQr7zhHv17unokUUNsT4Vz6bzjwpLD+YQY
-         BC7nIXUuZctHouMdAaLqcJGbpUCK7fukP3dP92brxZFiHBjnEuJQFFWjtlceA27uFZyF
-         evza9kRefdGB4ME2BJg/6rTtFPwYNSU1BYcbm+tOgCak3WeKUV68b1lKZ7kfbccQf07a
-         IkfPEwoc4s0Adu2/aZwHn29xJXNMHpu30bkljXf038sw0Rgjx3mSUzWCTbFX1C2PHi6/
-         BbXw==
+        bh=5WjdnKvlhDKw/K0bGSWT2bC924E+aJKhN61S3ckmz/c=;
+        b=gfN0GQUYJhxzDfE1LAKGUDlwfcfqutyJVpuo8S1HD3SelGbVzYH1b2pK+qocHxCbbN
+         ntJCmvj3Kge3BBp2TjkwCRTSJrrSdzGdOu80fuij7nPL92fY0vUGOJC7lzdYRzwdJ2wW
+         tx4pxM37b9QaDERanUAG7Xi+N6PZYfmx9E+YjrHPE1snrSxQ/qzMlZO53lki5TaLwQM4
+         /+NNeol+9AanoEB5Ebs/A+ar+QCrDmeWmDBAGxmbBvmndKSBnz6ID6vV8Iv28ZO/zNAI
+         zurUpfG7Bt1gE45SqoTzHwsOwiKcsRuSjm+LSVRMK8vFLv+E1AJNfU4WaRxowooxEICd
+         lowQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dJn1xqq2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fB3UHC9E;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 26si21385873ejz.171.2021.07.13.14.20.06
+        by mx.google.com with ESMTPS id f21si21013513ejj.567.2021.07.13.14.20.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Jul 2021 14:20:06 -0700 (PDT)
+        Tue, 13 Jul 2021 14:20:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dJn1xqq2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fB3UHC9E;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1626211205;
+	s=mimecast20190719; t=1626211222;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=o/hmecJHLqWZ/BY8YWnw3VpukSO4hxCzqvER0n9EBPk=;
-	b=dJn1xqq2ls9d6feHKlXE45hEGZrb8ylbfzO15pMMGgZKhmwmbSwovhiKviADXNqejp9LCK
-	ubms1HY+Ek9A8Rswn3Nc26/2+wyUy6GlWJ66COQfUYfLo3zQprowQVnTC4yPOtOzqo6EbH
-	kxhQT4eIM+V05AdYlwPn07EMjVr/paI=
+	bh=5WjdnKvlhDKw/K0bGSWT2bC924E+aJKhN61S3ckmz/c=;
+	b=fB3UHC9EYFhmmVTdfTgtTa05clkOeuSaQqFpd/9KxhvJRBIigK3C0zMKpIsLtVHk6Y1s5n
+	I/HhXpQcC8KKVeZvhbmX0B6Lixthe34X0q7Dyc534B5i/IcXqO9baSe5DCtOQGZM8mkB54
+	0kmR90KXOYSJscGz+7M6LgKLXuVxLFQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-42-NpgRYWq_PeOXNyFr-_uV_g-1; Tue, 13 Jul 2021 17:19:58 -0400
-X-MC-Unique: NpgRYWq_PeOXNyFr-_uV_g-1
+ us-mta-284-fprFwuLMNGO2qHz9dF8DlA-1; Tue, 13 Jul 2021 17:20:20 -0400
+X-MC-Unique: fprFwuLMNGO2qHz9dF8DlA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E09AA1084F4B;
-	Tue, 13 Jul 2021 21:19:55 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 88122804300;
+	Tue, 13 Jul 2021 21:20:18 +0000 (UTC)
 Received: from p50.localhost.net (ovpn-117-22.rdu2.redhat.com [10.10.117.22])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 600DC19C44;
-	Tue, 13 Jul 2021 21:19:46 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0A5B019C45;
+	Tue, 13 Jul 2021 21:19:55 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
@@ -86,9 +86,9 @@ Cc: Greg Kurz <groug@kaod.org>,
 	Thomas Huth <thuth@redhat.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 01/23] Acceptance Tests: use the job work directory for created VMs
-Date: Tue, 13 Jul 2021 17:19:01 -0400
-Message-Id: <20210713211923.3809241-2-crosa@redhat.com>
+Subject: [PULL 02/23] Acceptance Tests: log information when creating QEMUMachine
+Date: Tue, 13 Jul 2021 17:19:02 -0400
+Message-Id: <20210713211923.3809241-3-crosa@redhat.com>
 In-Reply-To: <20210713211923.3809241-1-crosa@redhat.com>
 References: <20210713211923.3809241-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -99,39 +99,45 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: tkTXxcsl0dct
+X-TUID: Tb0Q6qb6Ya0Q
 
-The QEMUMachine uses a base temporary directory for all temporary
-needs.  By setting it to the Avocado's workdir, it's possible to
-keep the temporary files during debugging sessions much more
-easily by setting the "--keep-tmp" command line option.
-
-Reference: https://avocado-framework.readthedocs.io/en/85.0/api/test/avocado.html#avocado.Test.workdir
-Reference:
-https://avocado-framework.readthedocs.io/en/85.0/config/index.html#run-keep-tmp
+Including its base temporary directory, given that information useful
+for debugging can be put there.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Reviewed-by: John Snow <jsnow@redhat.com>
-Message-Id: <20210211220146.2525771-4-crosa@redhat.com>
+Message-Id: <20210211220146.2525771-5-crosa@redhat.com>
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/acceptance/avocado_qemu/__init__.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ tests/acceptance/avocado_qemu/__init__.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
-index 93c4b9851f..693c226d91 100644
+index 693c226d91..4ce09de4fa 100644
 --- a/tests/acceptance/avocado_qemu/__init__.py
 +++ b/tests/acceptance/avocado_qemu/__init__.py
-@@ -221,7 +221,8 @@ def setUp(self):
+@@ -219,10 +219,12 @@ def setUp(self):
+         if self.qemu_bin is None:
+             self.cancel("No QEMU binary defined or found in the build tree")
  
-     def _new_vm(self, *args):
+-    def _new_vm(self, *args):
++    def _new_vm(self, name, *args):
          self._sd = tempfile.TemporaryDirectory(prefix="avo_qemu_sock_")
--        vm = QEMUMachine(self.qemu_bin, sock_dir=self._sd.name)
-+        vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir,
-+                         sock_dir=self._sd.name)
+         vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir,
+                          sock_dir=self._sd.name)
++        self.log.debug('QEMUMachine "%s" created', name)
++        self.log.debug('QEMUMachine "%s" temp_dir: %s', name, vm.temp_dir)
          if args:
              vm.add_args(*args)
          return vm
+@@ -235,7 +237,7 @@ def get_vm(self, *args, name=None):
+         if not name:
+             name = str(uuid.uuid4())
+         if self._vms.get(name) is None:
+-            self._vms[name] = self._new_vm(*args)
++            self._vms[name] = self._new_vm(name, *args)
+             if self.machine is not None:
+                 self._vms[name].set_machine(self.machine)
+         return self._vms[name]
 -- 
 2.31.1

@@ -1,63 +1,63 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1026890qvs;
-        Tue, 13 Jul 2021 14:20:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyH8xi9yBMzHNYC2w1i5+x8ivJ44gjUxH+fOBW4sBbrlTRLZIIUNtfGCthKGDt+jhjorsx1
-X-Received: by 2002:aa7:ca05:: with SMTP id y5mr8517935eds.353.1626211245289;
-        Tue, 13 Jul 2021 14:20:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626211245; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1027045qvs;
+        Tue, 13 Jul 2021 14:20:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmqrsKwx+2KgxGSF0PaRvL5a2aTkkTuf+ZK7danE8Z6sG73ZDHTeeiKxMFUEGCdKJ+T538
+X-Received: by 2002:a17:906:844d:: with SMTP id e13mr7934660ejy.503.1626211257166;
+        Tue, 13 Jul 2021 14:20:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626211257; cv=none;
         d=google.com; s=arc-20160816;
-        b=npc+0PEdfKUwAXdIslXmr3RNV/qaJrplzCsQrV12PfzkzWJqTsDQiB7Z0fJW2SgLb7
-         PnGM0xyxtZFkUNuQHtzxnoaQSA+w2PdAKI2jNdjNN2CLHYTpPwuhCTn7MAz44l8FIg+V
-         yTr65389G4nT2Wuj2jV2AjaO5hdXLI3nimPxyuOpsAJiXiLWFdgLOFs/DwLbhF93Amfv
-         SkqF6IAcDz4h/NRsBxdB/qlBwaEQ5HNOFvvMUyQZvXpZ57J960B7iK+H7hTGf4kD9eIy
-         97POv4JtrgdmfSHcfKVGyxT25kM07JCgt5bHGACkxfidjfvcz+5Ww8TsKh2RHkFyQx9S
-         7LbA==
+        b=sAapS9FMYITOpR6y9WYmGifTwOwtjliD3Hj+qW/gDAN7z3xou8NLCrMxTFq8PhTDfw
+         J1CFkxdR95vp81yRCAP9H4CNSZRslO9OeEGw2QjEnWY3HIlyrufPrdS5BbM19S0/nNmr
+         ALNJl0vRIQSNloY05UQ9xhPTBN4kfvkxCSj/hSjzWnVFxBvn+pmI5AAFxfW2kAryyRA+
+         Nhfk+PzSHnOvGaGS4ymVYuYfMhphpmRyykPKtHakFU1bSbS6oa0kAXcKnZWicwXgJ/xJ
+         mlHOC4MYHp5WKW9KXlyPHP8+FOcs5dz00YFC/Ihw9VuIsUKDvMCohR3i+HFQiPbVJnkk
+         pzrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7I/gsK3Fum/jvHVEyzJdD3/PNj9ftt2gW1TCv6cq5vU=;
-        b=ttqmntzDNOImwQYSZDJKZq8tO8l1aM37GHJV14RaiQ+fI2McgFh+GtZW9RNDaiZqSv
-         W3WB75TcCvxn/90plRWbabcNW46fX/isp2oCqip9ICvRM40L0SZ3DvA19ubpHKYDiErM
-         KZRSDRvKF4G9gnBX8Pod//abO3UwhpQnvm463PHo3OL+oENqpIHojCPUD8fim4FIgVl3
-         YSsP9KxeK/EiqEXhYOQrFeIEl+vRhTzVqVc4twSLNqftEoBbdQxdXo6fPb5FY79mFh/J
-         DjZYpKAkjQTsegFHIQAWmtXn0V/rAsZhfudOVHF15OL1J9SlEbno48RoghvpofCG99N0
-         qXXw==
+        bh=dObAmHePKlBhssvuYSm7yPTQOhbUAmlem4+csh72HAU=;
+        b=lf1eaNzRfeqh90xa3NpFaj+VWAHyNNWpnT9JQmWfZg1gIRCbboRjJZjW2DVONp4+Yc
+         L2+QgVojwXECN2dSIdjayKmkOd0Fg/h6np2swUrlGi9U9EFa5E1DIBal0FMo+IotU8WO
+         VCWYTJy5/LMN1dWiP/tG5u6Yko7M0Im0919VwXV+klP0Om4TVx28NoPtOZZ9smohImK9
+         RB0g78nlONs61e0F441QDWJyvM8u8v078PkUcmnCqPUmv/2wz6L2QePftHVpFIm+sfFd
+         xB9RXb41sK1dO9zhT3rHM/DmS5sn5x3ieHDDRM2sscnxZnBvQAkuflajgOJtj0QacH0w
+         O+mA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=blBoumVk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CUYXJskt;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id i10si896999edr.278.2021.07.13.14.20.44
+        by mx.google.com with ESMTPS id h9si21902951edz.433.2021.07.13.14.20.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Jul 2021 14:20:45 -0700 (PDT)
+        Tue, 13 Jul 2021 14:20:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=blBoumVk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CUYXJskt;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1626211244;
+	s=mimecast20190719; t=1626211256;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7I/gsK3Fum/jvHVEyzJdD3/PNj9ftt2gW1TCv6cq5vU=;
-	b=blBoumVkHk2qVAn45DOX9n9U+J6t3ubwJjqzcTj1fml4jP/1j6o2zBpoz8Hodyh2tx+w2z
-	X96+Kke6dJQVLbb5QNNW9+L/LRxk4eJLl92EPwNKAnxKNY3vAhYxUChZO5kSmkzpJUtYV5
-	upBd91Fm2IZUkZ1O0RsocM9OuINpboA=
+	bh=dObAmHePKlBhssvuYSm7yPTQOhbUAmlem4+csh72HAU=;
+	b=CUYXJsktXEN8Aa5HjmrH4R5XTURNjQ5Uy8E10mK1haq8BTAdx39KvEdnH7Ifx4po6FDsNz
+	xJfWQHbN6zoneWU/kKzfAxkkPNtnthg5nf06BFIEUFdgWuHqZDM/3l6MXyxWoZJtESnh9t
+	BUknikZO0iU9mQ6ayKmkWZoS93PVIPg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-362-3wywiKNXMBu_9ZqYd_LMPA-1; Tue, 13 Jul 2021 17:20:41 -0400
-X-MC-Unique: 3wywiKNXMBu_9ZqYd_LMPA-1
+ us-mta-428-mn3Ms-AbMLClCHMfJe3Pkg-1; Tue, 13 Jul 2021 17:20:54 -0400
+X-MC-Unique: mn3Ms-AbMLClCHMfJe3Pkg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 469D01007273;
-	Tue, 13 Jul 2021 21:20:39 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 30B5818414A0;
+	Tue, 13 Jul 2021 21:20:52 +0000 (UTC)
 Received: from p50.localhost.net (ovpn-117-22.rdu2.redhat.com [10.10.117.22])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EE5ED19C44;
-	Tue, 13 Jul 2021 21:20:36 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 727DF17F72;
+	Tue, 13 Jul 2021 21:20:39 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
@@ -86,9 +86,9 @@ Cc: Greg Kurz <groug@kaod.org>,
 	Thomas Huth <thuth@redhat.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 06/23] Acceptance Tests: support choosing specific distro and version
-Date: Tue, 13 Jul 2021 17:19:06 -0400
-Message-Id: <20210713211923.3809241-7-crosa@redhat.com>
+Subject: [PULL 07/23] tests/acceptance: Ignore binary data sent on serial console
+Date: Tue, 13 Jul 2021 17:19:07 -0400
+Message-Id: <20210713211923.3809241-8-crosa@redhat.com>
 In-Reply-To: <20210713211923.3809241-1-crosa@redhat.com>
 References: <20210713211923.3809241-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -99,189 +99,54 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3INlONh9o5JW
+X-TUID: sMCX0u3zKXkP
 
-The tests based on the LinuxTest class give the test writer a ready to
-use guest operating system, currently pinned to Fedora 31.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-With this change, it's now possible to choose different distros and
-versions, similar to how other tags and parameter can be set for the
-target arch, accelerator, etc.
+If a guest sends binary data on the serial console, we get:
 
-One of the reasons for this work, is that some development features
-depend on updates on the guest side.  For instance the tests on
-virtiofs_submounts.py, require newer kernels, and may benefit from
-running, say on Fedora 34, without the need for a custom kernel.
+ File "tests/acceptance/avocado_qemu/__init__.py", line 92,
+   in _console_interaction msg = console.readline().strip()
+ File "/usr/lib64/python3.8/codecs.py", line 322,
+   in decode (result, consumed) = self._buffer_decode(data, self.errors, final)
+ UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa9 in position 2: invalid start byte
 
-Please notice that the pre-caching of the Fedora 31 images done during
-the early stages of `make check-acceptance` (before the tests are
-actually executed) are not expanded here to cover every new image
-added.  But, the tests will download other needed images (and cache
-them) during the first execution.
+Since we use the console with readline(), fix it the easiest
+way possible: ignore binary data (all current tests compare
+text string anyway).
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Message-Id: <20210414221457.1653745-4-crosa@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210515134555.307404-2-f4bug@amsat.org>
+Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- docs/devel/testing.rst                    | 65 +++++++++++++++++++++++
- tests/acceptance/avocado_qemu/__init__.py | 47 ++++++++++++----
- 2 files changed, 102 insertions(+), 10 deletions(-)
+ tests/acceptance/avocado_qemu/__init__.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index 4e42392810..19cbf532ae 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -922,6 +922,39 @@ The preserved value of the ``qemu_bin`` parameter or the result of the
- dynamic probe for a QEMU binary in the current working directory or
- source tree.
- 
-+LinuxTest
-+~~~~~~~~~
-+
-+Besides the attributes present on the ``avocado_qemu.Test`` base
-+class, the ``avocado_qemu.LinuxTest`` adds the following attributes:
-+
-+distro
-+......
-+
-+The name of the Linux distribution used as the guest image for the
-+test.  The name should match the **Provider** column on the list
-+of images supported by the avocado.utils.vmimage library:
-+
-+https://avocado-framework.readthedocs.io/en/latest/guides/writer/libs/vmimage.html#supported-images
-+
-+distro_version
-+..............
-+
-+The version of the Linux distribution as the guest image for the
-+test.  The name should match the **Version** column on the list
-+of images supported by the avocado.utils.vmimage library:
-+
-+https://avocado-framework.readthedocs.io/en/latest/guides/writer/libs/vmimage.html#supported-images
-+
-+distro_checksum
-+...............
-+
-+The sha256 hash of the guest image file used for the test.
-+
-+If this value is not set in the code or by a test parameter (with the
-+same name), no validation on the integrity of the image will be
-+performed.
-+
- Parameter reference
- -------------------
- 
-@@ -962,6 +995,38 @@ qemu_bin
- 
- The exact QEMU binary to be used on QEMUMachine.
- 
-+LinuxTest
-+~~~~~~~~~
-+
-+Besides the parameters present on the ``avocado_qemu.Test`` base
-+class, the ``avocado_qemu.LinuxTest`` adds the following parameters:
-+
-+distro
-+......
-+
-+The name of the Linux distribution used as the guest image for the
-+test.  The name should match the **Provider** column on the list
-+of images supported by the avocado.utils.vmimage library:
-+
-+https://avocado-framework.readthedocs.io/en/latest/guides/writer/libs/vmimage.html#supported-images
-+
-+distro_version
-+..............
-+
-+The version of the Linux distribution as the guest image for the
-+test.  The name should match the **Version** column on the list
-+of images supported by the avocado.utils.vmimage library:
-+
-+https://avocado-framework.readthedocs.io/en/latest/guides/writer/libs/vmimage.html#supported-images
-+
-+distro_checksum
-+...............
-+
-+The sha256 hash of the guest image file used for the test.
-+
-+If this value is not set in the code or by this parameter no
-+validation on the integrity of the image will be performed.
-+
- Skipping tests
- --------------
- The Avocado framework provides Python decorators which allow for easily skip
 diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
-index 3a144cded4..1f1728ab83 100644
+index 1f1728ab83..c3163af3b7 100644
 --- a/tests/acceptance/avocado_qemu/__init__.py
 +++ b/tests/acceptance/avocado_qemu/__init__.py
-@@ -345,8 +345,39 @@ class LinuxTest(Test, LinuxSSHMixIn):
-     username = 'root'
-     password = 'password'
- 
-+    def _set_distro(self):
-+        distro = self.params.get(
-+            'distro',
-+            default=self._get_unique_tag_val('distro'))
-+        if not distro:
-+            distro = 'fedora'
-+        self.distro = distro
-+
-+        distro_version = self.params.get(
-+            'distro_version',
-+            default=self._get_unique_tag_val('distro_version'))
-+        if not distro_version:
-+            distro_version = '31'
-+        self.distro_version = distro_version
-+
-+        # The distro checksum behaves differently than distro name and
-+        # version. First, it does not respect a tag with the same
-+        # name, given that it's not expected to be used for filtering
-+        # (distro name versions are the natural choice).  Second, the
-+        # order of precedence is: parameter, attribute and then value
-+        # from KNOWN_DISTROS.
-+        distro_checksum = self.params.get('distro_checksum',
-+                                          default=self.distro_checksum)
-+        if not distro_checksum:
-+            distro_checksum = get_known_distro_checksum(self.distro,
-+                                                        self.distro_version,
-+                                                        self.arch)
-+        if distro_checksum:
-+            self.distro_checksum = distro_checksum
-+
-     def setUp(self, ssh_pubkey=None, network_device_type='virtio-net'):
-         super(LinuxTest, self).setUp()
-+        self._set_distro()
-         self.vm.add_args('-smp', '2')
-         self.vm.add_args('-m', '1024')
-         # The following network device allows for SSH connections
-@@ -382,20 +413,16 @@ def download_boot(self):
-         vmimage.QEMU_IMG = qemu_img
- 
-         self.log.info('Downloading/preparing boot image')
--        distro = 'fedora'
--        distro_version = '31'
--        known_distro_checksum = get_known_distro_checksum(distro,
--                                                          distro_version,
--                                                          self.arch)
--        distro_checksum = self.distro_checksum or known_distro_checksum
-         # Fedora 31 only provides ppc64le images
-         image_arch = self.arch
--        if image_arch == 'ppc64':
--            image_arch = 'ppc64le'
-+        if self.distro == 'fedora':
-+            if image_arch == 'ppc64':
-+                image_arch = 'ppc64le'
-+
-         try:
-             boot = vmimage.get(
--                distro, arch=image_arch, version=distro_version,
--                checksum=distro_checksum,
-+                self.distro, arch=image_arch, version=self.distro_version,
-+                checksum=self.distro_checksum,
-                 algorithm='sha256',
-                 cache_dir=self.cache_dirs[0],
-                 snapshot_dir=self.workdir)
+@@ -86,14 +86,17 @@ def _console_interaction(test, success_message, failure_message,
+     assert not keep_sending or send_string
+     if vm is None:
+         vm = test.vm
+-    console = vm.console_socket.makefile()
++    console = vm.console_socket.makefile(mode='rb', encoding='utf-8')
+     console_logger = logging.getLogger('console')
+     while True:
+         if send_string:
+             vm.console_socket.sendall(send_string.encode())
+             if not keep_sending:
+                 send_string = None # send only once
+-        msg = console.readline().strip()
++        try:
++            msg = console.readline().decode().strip()
++        except UnicodeDecodeError:
++            msg = None
+         if not msg:
+             continue
+         console_logger.debug(msg)
 -- 
 2.31.1

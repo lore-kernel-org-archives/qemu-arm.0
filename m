@@ -1,290 +1,189 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp760124lfc;
-        Tue, 13 Jul 2021 09:46:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJym2Z80AdB+pG5bJhbty9RMXwOj2AZ+Ud/iJMnH+DT3ASgqnVSMljVRDfQ9aMSrYZl3skEx
-X-Received: by 2002:ac5:c24e:: with SMTP id n14mr6147897vkk.23.1626194768128;
-        Tue, 13 Jul 2021 09:46:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626194768; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1026265qvs;
+        Tue, 13 Jul 2021 14:19:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyoVMh+yVt2OjvZo6PhehqLmDF2utYnUmg3XTd4vPtWpThgEOrcTvk9UFIc261gAlFZEFxA
+X-Received: by 2002:a05:6402:1c19:: with SMTP id ck25mr8485012edb.128.1626211191447;
+        Tue, 13 Jul 2021 14:19:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626211191; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yv/3KOgUWdLJjFRzhfZOnv2YzZ1nvL7RmXZKqM+lv4xnwFwtG/GKhgjHD6pLkVsN+p
-         wb9vl1HRfGe6u97U2geWa8srOKBoD3JUdLlonei475+2RP/kSlIzWhfGojvw8NCaYFeg
-         x9GiiRexm0bGnElJ+ZcR4GBriKwNEVugZUd/5yMbyJ0IVRDqsOtsM3yTwtIW5XI3MtyV
-         +HhgR6GKw82oiYgS6zwBQSkd2yNaFDWd/UsHXRSgi6PinDOZKwc8Fe7t9decFd/wR1zl
-         8L9fibp/MW2v/hULbz9/7PxWbtpL6M+zl6cA4EcpGykIccEVFM8klm9GXcMsZ/AmyEQY
-         zY2Q==
+        b=hr4I/ss/sr8rALsnVPVvwFmuLFKq29hEiF/3zXFHv3L+0NaZPYp73d4tYu0pqKi6tj
+         lkFfUFKsAOesI53TXUgKIWKeseec3GwgdZw2637Kw0RPgOhR2wHPmpUWQMc2pkjtjF60
+         poLuZiW6HfONcPRk4xcVrDCvg1FE+4B2CK6GSlh17M7fnbf0XWwTrA6R2VWP/7czsIwE
+         7iv0G1TYTrs5VyOPdNMAmnEUSJuaaqxVD06NWVNS1zjqP+qUlMkbR85oxzlslqdYfqnm
+         vxYCvqErqQ0ZL17qZ8D7RxXRSjrmShxSc8qhz0CpnE0FfR14JAxmayBiOcUcxv7sNpZv
+         5fJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=e+2QTsgDWMbYVZ1k9usTKdDYtySiUf2d6+/vVH5etHA=;
-        b=AS4wxw1ixyX/u8C25c+Hwje4P5XZpXVsbdC18kwBLl4XieyS8QZUwSsXxUcg7Gqi7Q
-         JiGIYzq3xO4+brHwvQFpXHClLRtwGAOFtKIpvWOdw62ngGAfz76/38tBlI05aN9UYghC
-         BpGT15EE9BAqu8+FEDzEaQij/g+Rt1Rbk4kMfEZJyJkVhYCVKmyl4S7MbBMmEnsYFoUF
-         9NVmKrmvhf7oL+9plFQsWwpuintAIvkuL0zLHQNFnGHHZuFKaGeYH+OFwegHsNSCBJPs
-         pYFNGPY1uV5Ct8Xevq91FP66kntRlg2Y6Edu/M1QbvFOfXNHcOnV4pFaC1/P8UWjhcvP
-         JdMA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=TRw2JWAFiZW1xwot6O1tpJeMWowi6ioBe8SxCUBf3gQ=;
+        b=KdBeMoOe8ikHgLbkNh0EL7PlPme4apTQr0SNQGkl+5sCdWCegatv7On4kdlHWduP9A
+         g+Wxx0qWiL+CT8aKjEetiG5EmPGihTZLLfl9attrAnXoS31VvesCjaYzCX83r2Z6WDTm
+         uWc772xXk0C55LE6ZeXENxEBkDt/QWGIM/HI1ebDGfYJnsjvqh2WZ5ByQYXfGPl9WU4k
+         v47XqlxFz3MdTKGe8gbJzjL9kE6nNuxABF11gYFL3Axq+Cx3cwh23+p1T6kCDnc+0ehC
+         Wm8z5ntGgKLYm/QrisM8Zjn10zbokvqf9+YLDiCaRMKHUxZp3vYfM83a00OMf8W4Zf+r
+         JnOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HfzSf6dn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1si3016501vsf.64.2021.07.13.09.46.07
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RKGO6CEp;
+       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <crosa@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id s22si21971603edr.67.2021.07.13.14.19.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 09:46:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Jul 2021 14:19:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HfzSf6dn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37526 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3LXr-0007ST-BO
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 12:46:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41714)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3LXf-0007O9-7r
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 12:45:55 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:36453)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3LXc-0008I5-K4
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 12:45:54 -0400
-Received: by mail-ej1-x631.google.com with SMTP id nd37so42689464ejc.3
- for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 09:45:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=e+2QTsgDWMbYVZ1k9usTKdDYtySiUf2d6+/vVH5etHA=;
- b=HfzSf6dnAHzrY6QnKSzkB6DSG1WAPjG6Y4EHuyZexSZsMcc6FVwW62IoJxgE/zm/PR
- 9jvS5CDH1bAekVuAHdFbBAJ7vfhDRkEPX4tKL2Tng/5elUrHpp+o4XC7Ey9r10Oh6x8t
- IkS1edNdiPzyG2yUoy7fotdb50O4HV+9MLsyrTVKQgakELjs5joLs+JyppxuYQSfqhVm
- J7n1/NyDV/A/8TMbxMynEL0ofqAA/veOxRraheuSziu9jxGCkX7RAHimXzLJhtnkWZSc
- 5RoL/rJcGzEauSPRUk1Csgz4S6Lk9559CElr55ZpwPfcDbrP0ca1Ekh0LUB4i87k9YFm
- TM3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=e+2QTsgDWMbYVZ1k9usTKdDYtySiUf2d6+/vVH5etHA=;
- b=W0oXNinZ9gOdF8CRAqRV4bsbb5K2cbVWbVI+NpRUimSyDgdosXKi/1xB1hODK6WaVH
- 2FId7OAGJLX4tTI5TitEFOhyO9gKdHDAY/v8st1Ub7AgDW1Z/UtGG2NT3qojvjbQLCUq
- S8EupVXtr0sp9XXC0OeEtFrbhFHN+Vc1MPiZPyz1mldfAIaK08NXSqnregF0Psr03fM2
- BkCMnNWZSs0gVaury31tgrBi/6guFfgZpIQB+qtgyDZWo5zPRxZbP6SHh22NDdRdxmnI
- 4+uUEGGWMA52Bhae0CcrA4kR//5htarQ0AunE+oVpoXHWgL9eKsW4dMRZJsmaADRsNJw
- ETHA==
-X-Gm-Message-State: AOAM530Js/ndIB6XawWPl1+/cftL/uCDp37OIAQGGjLTcqkqIrbd+Nqe
- poXtiVNGxTydobAEO53olbufUxEHcTS0H61wzdbtwQ==
-X-Received: by 2002:a17:906:f9c5:: with SMTP id
- lj5mr6858828ejb.482.1626194750907; 
- Tue, 13 Jul 2021 09:45:50 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RKGO6CEp;
+       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1626211190;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=TRw2JWAFiZW1xwot6O1tpJeMWowi6ioBe8SxCUBf3gQ=;
+	b=RKGO6CEpLGeMoAEB0kqp4F+pi+yfbMHp7m1Sd8weMnxMWi9U3N0/erNhvCPlpP5Y1odTXa
+	amJ1eUCPpAfmYyyuQ5hPiB2phzIM2UDgcUu3fGj08Aky1v6bUaIzXtBDIZh+HsQf8jUiZt
+	Aj0Uq8kT77zhQ91qRd/JTdHxxg2txIg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-567-5EHMeTpJNUSvrcIR9PKLbw-1; Tue, 13 Jul 2021 17:19:49 -0400
+X-MC-Unique: 5EHMeTpJNUSvrcIR9PKLbw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 59FA9804307;
+	Tue, 13 Jul 2021 21:19:46 +0000 (UTC)
+Received: from p50.localhost.net (ovpn-117-22.rdu2.redhat.com [10.10.117.22])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 868C019C45;
+	Tue, 13 Jul 2021 21:19:29 +0000 (UTC)
+From: Cleber Rosa <crosa@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Cc: Greg Kurz <groug@kaod.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Ryo ONODERA <ryoon@netbsd.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Willian Rampazzo <willianr@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	John Snow <jsnow@redhat.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Willian Rampazzo <wrampazz@redhat.com>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Beraldo Leal <bleal@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-arm@nongnu.org,
+	Eric Auger <eric.auger@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-ppc@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Thomas Huth <thuth@redhat.com>,
+	Kamil Rytarowski <kamil@netbsd.org>,
+	Cleber Rosa <crosa@redhat.com>
+Subject: [PULL 00/23] Python and Acceptance Tests
+Date: Tue, 13 Jul 2021 17:19:00 -0400
+Message-Id: <20210713211923.3809241-1-crosa@redhat.com>
 MIME-Version: 1.0
-References: <20210707021815.45938-1-shashi.mallela@linaro.org>
- <20210707021815.45938-7-shashi.mallela@linaro.org>
-In-Reply-To: <20210707021815.45938-7-shashi.mallela@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Jul 2021 17:45:11 +0100
-Message-ID: <CAFEAcA_TpbKrV+XdkmWyRf45iVrX7hpRQZaJ9dGp0Go-i6Fd+g@mail.gmail.com>
-Subject: Re: [PATCH v6 06/10] hw/intc: GICv3 redistributor ITS processing
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>, Leif Lindholm <leif@nuviainc.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oSFgDQZvauPO
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: at4D9abKLlmj
 
-On Wed, 7 Jul 2021 at 03:18, Shashi Mallela <shashi.mallela@linaro.org> wrote:
->
-> Implemented lpi processing at redistributor to get lpi config info
-> from lpi configuration table,determine priority,set pending state in
-> lpi pending table and forward the lpi to cpuif.Added logic to invoke
-> redistributor lpi processing with translated LPI which set/clear LPI
-> from ITS device as part of ITS INT,CLEAR,DISCARD command and
-> GITS_TRANSLATER processing.
->
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-
-> +
-> +void gicv3_redist_update_lpi(GICv3CPUState *cs)
-> +{
-> +    /*
-> +     * This function scans the LPI pending table and for each pending
-> +     * LPI, reads the corresponding entry from LPI configuration table
-> +     * to extract the priority info and determine if the current LPI
-> +     * priority is lower than the last computed high priority lpi interrupt.
-> +     * If yes, replace current LPI as the new high priority lpi interrupt.
-> +     */
-> +    AddressSpace *as = &cs->gic->dma_as;
-> +    uint64_t lpipt_baddr;
-> +    uint32_t pendt_size = 0;
-> +    uint8_t pend;
-> +    int i;
-> +    uint64_t idbits;
-> +
-> +    idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
-> +                 GICD_TYPER_IDBITS);
-> +
-> +    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
-> +        !cs->gicr_pendbaser || (idbits < GICR_PROPBASER_IDBITS_THRESHOLD)) {
-
-If you structure the loop below appropriately, you can avoid having to
-explicitly check idbits against GICR_PROPBASER_IDBITS_THRESHOLD; see below.
-
-> +        return;
-> +    }
-> +
-> +    cs->hpplpi.prio = 0xff;
-> +
-> +    lpipt_baddr = cs->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
-> +
-> +    /* Determine the highest priority pending interrupt among LPIs */
-> +    pendt_size = (1ULL << (idbits + 1));
-> +
-> +    for (i = 0; i < pendt_size / 8; i++) {
-> +        address_space_read(as, lpipt_baddr +
-> +                (((GICV3_LPI_INTID_START + i) / 8) * sizeof(pend)),
-> +                MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-> +
-> +        if (!((1 << ((GICV3_LPI_INTID_START + i) % 8)) & pend)) {
-> +            continue;
-> +        }
-
-I don't think this code is right. The pending table size includes one
-bit for every interrupt ID, including the low ones below GICV3_LPID_INTID_START
-(ie there's a spare 1K for IMPDEF purposes at the start). Here the
-loop is iterating through the whole pending table with 'i' a byte
-offset into it -- but then when we calculate the address to read we
-add GICV3_LPI_INTID_START to it. The loop body seems to be written
-as if 'i' is an intid, but the for() is not doing that.
-
-Also, you read a byte of pending information, which tells you about
-the pending state of 8 interrupts, but you only call
-gicv3_redist_check_lpi_priority() for one of them.
-
-> +
-> +        gicv3_redist_check_lpi_priority(cs, GICV3_LPI_INTID_START + i);
-> +    }
-
-I think you probably want to structure the loop something like this:
-
-for (offset = GICV3_LPI_INTID_START / 8; offset < pendt_size / 8; offset++) {
-    read the byte at lpipt_baddr + offset;
-    while (byte) {
-        bit = ctz32(byte);
-        gicv3_redist_check_lpi_priority(cs, offset * 8 + bit);
-        byte &= ~(1 << bit);
-    }
-}
-
-(this is why you don't need to explicitly check GICR_PROPBASER_IDBITS_THRESHOLD:
-if idbits is too low then the loop condition is just always false and we
-don't check any pending bits.)
-
-
-> +}
-> +
-> +void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level)
-> +{
-> +    /*
-> +     * This function updates the pending bit in lpi pending table for
-> +     * the irq being activated or deactivated.
-> +     */
-> +    AddressSpace *as = &cs->gic->dma_as;
-> +    uint64_t lpipt_baddr;
-> +    bool ispend = false;
-> +    uint8_t pend;
-> +
-> +    /*
-> +     * get the bit value corresponding to this irq in the
-> +     * lpi pending table
-> +     */
-> +    lpipt_baddr = cs->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
-> +
-> +    address_space_read(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
-> +                       MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-> +
-> +    ispend = extract32(pend, irq % 8, 1);
-> +
-> +    /* no change in the value of pending bit, return */
-> +    if (ispend == level) {
-> +        return;
-> +    }
-> +    pend = deposit32(pend, irq % 8, 1, level ? 1 : 0);
-> +
-> +    address_space_write(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
-> +                        MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-> +
-> +    /*
-> +     * check if this LPI is better than the current hpplpi, if yes
-> +     * just set hpplpi.prio and .irq without doing a full rescan
-> +     */
-> +    if (level) {
-> +        gicv3_redist_check_lpi_priority(cs, irq);
-> +    } else {
-> +        if (irq == cs->hpplpi.irq) {
-> +            gicv3_redist_update_lpi(cs);
-> +        }
-> +    }
-> +}
-> +
-> +void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level)
-> +{
-> +    uint64_t idbits;
-> +
-> +    idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
-> +                 GICD_TYPER_IDBITS);
-
-You should ignore irq values less than GICV3_LPI_INTID_START here.
-(We checked when we put the map into the ITE but this is an easy
-way to get rid of the 1023 special case.)
-
-> +
-> +    if (!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
-> +         !cs->gicr_pendbaser || (idbits < GICR_PROPBASER_IDBITS_THRESHOLD) ||
-
-You don't need to explicitly look for "idbits <
-GICR_PROPBASER_IDBITS_THRESHOLD":
-if that is true then the irq will always be greater than the maximum imposed by
-idbits and we'll throw it out that way.
-
-> +         (irq > (1ULL << (idbits + 1)))) {
-
-This is off by one -- 1 << (bitcount) is not the largest permitted intID,
-it is one greater than that.
-
-> +        return;
-> +    }
-> +
-> +    /* set/clear the pending bit for this irq */
-> +    gicv3_redist_lpi_pending(cs, irq, level);
-> +
-> +    gicv3_redist_update(cs);
-> +}
-
-thanks
--- PMM
+The following changes since commit 708f50199b59476ec4b45ebcdf171550086d6292=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/ericb/tags/pull-nbd-2021-07-09-v2' =
+into staging (2021-07-13 14:32:20 +0100)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  https://gitlab.com/cleber.gnu/qemu.git/ tags/python-next-pull-request=0D
+=0D
+for you to fetch changes up to c4e2d499c94fb7d6ea43d28e2613559861ef5d79:=0D
+=0D
+  tests/acceptance/cpu_queries.py: use the proper logging channels (2021-07=
+-13 16:27:43 -0400)=0D
+=0D
+----------------------------------------------------------------=0D
+Python and Acceptance Tests=0D
+=0D
+- New SMMUv3 and Intel IOMMU tests=0D
+- Respect "cpu" tags and reduce boiler plate code=0D
+- Improved logging of qemu execution output=0D
+- Other misc improvements=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Cleber Rosa (9):=0D
+  Acceptance Tests: use the job work directory for created VMs=0D
+  Acceptance Tests: log information when creating QEMUMachine=0D
+  Acceptance Tests: distinguish between temp and logs dir=0D
+  Acceptance Tests: rename attribute holding the distro image checksum=0D
+  Acceptance Tests: move definition of distro checksums to the framework=0D
+  Acceptance Tests: support choosing specific distro and version=0D
+  Acceptance tests: do not try to reuse packages from the system=0D
+  tests/acceptance/linux_ssh_mips_malta.py: drop identical setUp=0D
+  tests/acceptance/cpu_queries.py: use the proper logging channels=0D
+=0D
+Eric Auger (2):=0D
+  avocado_qemu: Add SMMUv3 tests=0D
+  avocado_qemu: Add Intel iommu tests=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (2):=0D
+  tests/acceptance: Ignore binary data sent on serial console=0D
+  tests/acceptance: Tag NetBSD tests as 'os:netbsd'=0D
+=0D
+Wainer dos Santos Moschetta (8):=0D
+  tests/acceptance: Automatic set -cpu to the test vm=0D
+  tests/acceptance: Fix mismatch on cpu tagged tests=0D
+  tests/acceptance: Let the framework handle "cpu:VALUE" tagged tests=0D
+  tests/acceptance: Tagging tests with "cpu:VALUE"=0D
+  python/qemu: Add args property to the QEMUMachine class=0D
+  tests/acceptance: Add set_vm_arg() to the Test class=0D
+  tests/acceptance: Handle cpu tag on x86_cpu_model_versions tests=0D
+  python: Configure tox to skip missing interpreters=0D
+=0D
+Willian Rampazzo (2):=0D
+  avocado_qemu: Fix KNOWN_DISTROS map into the LinuxDistro class=0D
+  Acceptance Tests: Add default kernel params and pxeboot url to the=0D
+    KNOWN_DISTROS collection=0D
+=0D
+ .gitlab-ci.d/static_checks.yml             |   1 +=0D
+ MAINTAINERS                                |   1 +=0D
+ docs/devel/testing.rst                     |  82 ++++++++++=0D
+ python/Makefile                            |   5 +-=0D
+ python/qemu/machine/machine.py             |  22 ++-=0D
+ python/setup.cfg                           |   1 +=0D
+ tests/Makefile.include                     |   2 +-=0D
+ tests/acceptance/avocado_qemu/__init__.py  | 179 +++++++++++++++++++--=0D
+ tests/acceptance/boot_linux.py             |  11 --=0D
+ tests/acceptance/boot_linux_console.py     |  14 +-=0D
+ tests/acceptance/boot_xen.py               |   1 -=0D
+ tests/acceptance/cpu_queries.py            |   4 +-=0D
+ tests/acceptance/intel_iommu.py            | 119 ++++++++++++++=0D
+ tests/acceptance/linux_ssh_mips_malta.py   |   7 +-=0D
+ tests/acceptance/machine_mips_malta.py     |   7 +-=0D
+ tests/acceptance/pc_cpu_hotplug_props.py   |   2 +-=0D
+ tests/acceptance/ppc_prep_40p.py           |   2 +=0D
+ tests/acceptance/replay_kernel.py          |  17 +-=0D
+ tests/acceptance/reverse_debugging.py      |   2 +-=0D
+ tests/acceptance/smmu.py                   | 137 ++++++++++++++++=0D
+ tests/acceptance/tcg_plugins.py            |  15 +-=0D
+ tests/acceptance/virtio-gpu.py             |   4 +-=0D
+ tests/acceptance/x86_cpu_model_versions.py |  40 ++++-=0D
+ 23 files changed, 603 insertions(+), 72 deletions(-)=0D
+ create mode 100644 tests/acceptance/intel_iommu.py=0D
+ create mode 100644 tests/acceptance/smmu.py=0D
+=0D
+--=20=0D
+2.31.1=0D
+=0D

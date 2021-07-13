@@ -1,424 +1,337 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp606782lfc;
-        Tue, 13 Jul 2021 06:52:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyIuUE/4YKzlSYgcdQmZoL/JgwM6FZfBOZPRroukp4F12OZJJksgpGAQd2HOKtMcYEbsA3D
-X-Received: by 2002:a17:906:5e04:: with SMTP id n4mr5700314eju.277.1626184372162;
-        Tue, 13 Jul 2021 06:52:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626184372; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp606823lfc;
+        Tue, 13 Jul 2021 06:52:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsSbebF9RYnbU3c5OsKwHJ3BDogalM+e3gjxan7QqB/jcxg8NB6R6K2jA1wyEEri50wdfZ
+X-Received: by 2002:a17:906:3c14:: with SMTP id h20mr5880290ejg.176.1626184375923;
+        Tue, 13 Jul 2021 06:52:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626184375; cv=none;
         d=google.com; s=arc-20160816;
-        b=TObUemp9+25aMb5sU1jU3miBeJLBPCR00rMbQLauy/xyy1BRQVM+QzaI/iNAxHEEKy
-         jygFuZPZ3sMJQOwtWYwKRNd3k2rK4rafFLAemZ90qk2dPq+7zB7g5fWGBO2SnjoYo+2w
-         paoqDNSIQ5jmPy4Uj0TTmYtRl6lcZPbeAi22K0OY3C1Ffw9WuEWywqy1vAt4oDXKxgbB
-         4ROfIBbN6UC0QkqB0/cvusjWNB3xsxLO8Cnc7GgMRH8B1ZmqOMgbB0+iZypLTWZr01YO
-         gp9Pkg+9nzRSjpm5zSYTqgn6wmM+yZ5Y+hK5RCyZLS9nYSfoYKtLGRBXsl/m2hatNecJ
-         V2PQ==
+        b=rjvzU2cOGdNx5aebolxBpvWkifuMsfFIoCZz3gG8+mpmvnlLCZ0D809Nn/rlgIbyZQ
+         qMVqgE4IV4buGNcrPGEjKzYmoYoejzI46bWgT51nEtfLuIB7pjUZJazrEkp6eCepS8HY
+         gNeGSYgqXaU5mDWhk9yw8GN8+3EH5gdklUyAXJV9dHrpw2V85ypQDKTTH9oPyRjuLiDe
+         8SoiGqo2IJJ0WgEEbocpOvx4HAWMZWlcorc426iRiLMlbeWdNRqB+TWA8VbCwME3cTse
+         Sp0CTfITeBhn5mAI/pICZnvhq5xqqZV9kyE2vYim8tjmA91gATeIJ+ZKOxepnjK3gPhy
+         7xyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=lF5a95h+76qUaqN85b2/xOD4AS8PIdYh9+rcTl/1F90=;
-        b=qZjBp+kbmHwi2O7XR3It2f8N99lEMJwz6Xa0Qfl8sF0HeGi1VB6/W9cqvtcubH+FFx
-         SurKyvQy1cVl8PNdKI/AHpxLWAba5Kj0Vz7uBJjOcwCtaaWjYl3OTYqblQC0zBvvUAYa
-         4jQRKB1LWu96YmxDrPvze7sgwVH4pEg1/0FcY2jtiEWRiXLA2ZfQLJ0jesasTkr+DIGY
-         5Clonrq78SZG1VL054NyglsHjuk5iYABAg3xnMfwli0izNG3jQkliCuSps/SYkF4K1XD
-         NbNKmW5XLCuKfHpIfqBX411wKPGPVxGASR3wyvfeFllQmA9UKyld6SyBCOl9PWvtbTPH
-         XV8Q==
+        bh=gzlJnyMrAHKkx+BzpZ7aFiX7hVIlIkOtXpndBsdqVDU=;
+        b=KptNWlwTQ0BAQaWivdaadidDSg2TaguSDGhaVSpfmWKmwCJs8rd8qoIyCvcyMCzNeq
+         f3QbFoJhEXBoM3HKeJ9F0QRVnhlX8MyDAVDWi5mbAr7dDXJJ5RW5C5k0TCdGkoYkMHT/
+         iCWW/uDI/Jz6vgs0nlqdMQwSXEewrnu2VCiIEkEtR8MBTLo2CugiEqBbjnmNp6DBIfkk
+         H/4+otlQUP68831omyiQH+DhTqoDrcjBMQ2/ZPN1dxeYLcJphvv/o6DY6J+3cNS9ItUu
+         M1+Q+FqDM4hcxnLi6RPwWg6tfpDie37p+sYA/Y5UU9uXv3QN5s2ugbKE3KIZ5TFySJik
+         tz2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oucua9Qn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fyL9kYmL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si412557edc.64.2021.07.13.06.52.51
+        by mx.google.com with ESMTPS id l2si16165088edv.207.2021.07.13.06.52.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 06:52:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Jul 2021 06:52:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oucua9Qn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fyL9kYmL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36778 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38532 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3IqB-0002QH-1q
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 09:52:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54194)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m3IqE-0003cU-RR
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 09:52:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54536)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3IbZ-0008W1-Eo
- for qemu-devel@nongnu.org; Tue, 13 Jul 2021 09:37:49 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:33602)
+ id 1m3Ibj-0000E2-4z
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:56 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:38509)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3IbT-0003ff-J5
- for qemu-devel@nongnu.org; Tue, 13 Jul 2021 09:37:45 -0400
-Received: by mail-wr1-x429.google.com with SMTP id d2so30571830wrn.0
- for <qemu-devel@nongnu.org>; Tue, 13 Jul 2021 06:37:39 -0700 (PDT)
+ id 1m3Ibb-0003kZ-Mm
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:54 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ b14-20020a1c1b0e0000b02901fc3a62af78so1658861wmb.3
+ for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 06:37:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=lF5a95h+76qUaqN85b2/xOD4AS8PIdYh9+rcTl/1F90=;
- b=oucua9Qn6TDUxkvokKcKOMGAZjyqS8NEWD9tNvIzQhDM8i+xQl7xGmP7Aj3eNscREs
- 98ejT5S4MsdhsBZeU2wc9ZVcgEXX0KjN/CxOr22iJ/s2hrJK36D0DzboJo3eO2UhFCk4
- Zjw1wLQb57+D50FNECKK8TzObYgH0+mgDp5IKIaytP73fEBjgyeN8QOvlxTRWLrpjp7g
- pH5/D5KcM7QP00qg5g4Lnm1V7IRZus+EzMuFhj+DPa6i4TJFAr+b0d8WKliWO8t4gsXY
- 3QcWLfdKEGXj6OOnkbLAxcfK4HgU0Xfrs+/fjOe15r5mNc6Qsowr9kfz7XxB8/zmZZUs
- ri5A==
+ bh=gzlJnyMrAHKkx+BzpZ7aFiX7hVIlIkOtXpndBsdqVDU=;
+ b=fyL9kYmLHS0panODdQJ1HznzgaPj4CvG7lLCY19bQYtXRRACR9rmf2A8ekIP9RCsfa
+ gjF3PHapA1fR4gnzGbI0gC/iNKa0L8lAfpIS3LS9nFZ/Q9CYUDBYoNFyMlcdsqTTy+sC
+ xM209QduJaeuzil/hVx2ma+veMOshY9twm1Em3/KYkgtVVYlbaPN9bd/m9HIwkxZICCI
+ RAh8ko4mGJbYGJmSAsCM8Y5fTE1PStMKqVDsRZDi2OgV5SLfJLqTE3moBOcJfnuT2slB
+ JFKkVoY/cH/DY0VcAL6MA8W6/V4MEvubfogZslEY6U2FOr5bpCoeknauYx4YE7JSwssH
+ N0/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lF5a95h+76qUaqN85b2/xOD4AS8PIdYh9+rcTl/1F90=;
- b=bfbs+hAmfxSP5ESbmfsTJ8Frwsz+QQ4eMztpiWvuUbHs54807FdH45mmPmUSQ8ScUS
- oJavtHMAN4IT+pgXSD5SToWakHyo7OZjKeeV6oV8weBVT+gE0AkK1Un+reT7L/vk5ZHi
- AJXmn7YZPew+wKGVWEpuWIDxqA2aIA4t/+udjnNcTAgS/tb8F8YSAVZkJGbCTARUM5MW
- mSyDgiILeVPSnU0KEOkKBXP4Y8fZvwQhNYaWTe+OY6c7TInXyUS6R/0jBB/KIQQjUY0N
- 0Z3zYXQu+9vdqSjOw4RKr0ZlnugWRVoAnda6wP5p3VDERlxaWHVeJNvLgRaH8GW5TXk7
- C+dg==
-X-Gm-Message-State: AOAM531W0r2lynlPgAtlMzZoJhDg3Pcw4/hRQyDMOYRWqMJJNtHftVDS
- V6sbCzBuVS9FD9/HdByY3wTZbQ==
-X-Received: by 2002:adf:e3cf:: with SMTP id k15mr5738030wrm.60.1626183458182; 
- Tue, 13 Jul 2021 06:37:38 -0700 (PDT)
+ bh=gzlJnyMrAHKkx+BzpZ7aFiX7hVIlIkOtXpndBsdqVDU=;
+ b=DjChi13OJzxgmqNXmb3GTVV1fhRFjyOaKG0DKuGrAlTrMd9mOiTcvJjY1Vs9OlOi0y
+ YOAJj283vlRTYQiM6AMSs6Q/5naNJ/bZRwYInTR81cXRhqkSUVBoXp0J4Gzwds7Vmzqn
+ LXInNc6IGYvDr2LqRSGhNIlWD7hIi1/HNQrn8xvsSL9DEk/z7IxLmPFeVK91lSykf8k7
+ tUtGcS8GIUCVrPlvOL0LdMiqlRwmX0YLvrUhHByssCCYOCv1ZNf5zjpyAiNeFq+z7x5B
+ J2M2JrvMaat9KdHK2p/wGI1Dos8KXaceNnYDO3MWm4632jQV47s1iSog1Zn8zXa4Bupp
+ U/EQ==
+X-Gm-Message-State: AOAM533Y1Afpbhxy1cMVhzAgjNstfPvasShbtt9EvTm0hKVcIfMvw8+Z
+ 4dF81YqJbm2sP6tcWeaiYwziG3odBZSLBQGk
+X-Received: by 2002:a05:600c:22d2:: with SMTP id
+ 18mr5135904wmg.63.1626183465698; 
+ Tue, 13 Jul 2021 06:37:45 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.37
+ by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jul 2021 06:37:37 -0700 (PDT)
+ Tue, 13 Jul 2021 06:37:45 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 12/34] target/arm: Implement MVE
- incrementing/decrementing dup insns
-Date: Tue, 13 Jul 2021 14:37:04 +0100
-Message-Id: <20210713133726.26842-13-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 22/34] target/arm: Implement MVE narrowing moves
+Date: Tue, 13 Jul 2021 14:37:14 +0100
+Message-Id: <20210713133726.26842-23-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210713133726.26842-1-peter.maydell@linaro.org>
 References: <20210713133726.26842-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VOk5d+svQ1F1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dwmaYW3QdKQo
 
-Implement the MVE incrementing/decrementing dup insns VIDUP, VDDUP,
-VIWDUP and VDWDUP.  These fill the elements of a vector with
-successively incrementing values, starting at the offset specified in
-a general purpose register.  The final value of the offset is written
-back to this register.  The wrapping variants take a second general
-purpose register which specifies the point where the count should
-wrap back to 0.
+Implement the MVE narrowing move insns VMOVN, VQMOVN and VQMOVUN.
+These take a double-width input, narrow it (possibly saturating) and
+store the result to either the top or bottom half of the output
+element.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper-mve.h    |  16 +++++
- target/arm/mve.decode      |  25 ++++++++
- target/arm/mve_helper.c    |  64 ++++++++++++++++++++
- target/arm/translate-mve.c | 118 +++++++++++++++++++++++++++++++++++++
- 4 files changed, 223 insertions(+)
+ target/arm/helper-mve.h    | 20 ++++++++++
+ target/arm/mve.decode      | 12 ++++++
+ target/arm/mve_helper.c    | 78 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-mve.c | 22 +++++++++++
+ 4 files changed, 132 insertions(+)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 84adfb21517..54b252e98af 100644
+index 5c3f8a26df0..84aa9de6e06 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -35,6 +35,22 @@ DEF_HELPER_FLAGS_3(mve_vstrh_w, TCG_CALL_NO_WG, void, env, ptr, i32)
+@@ -80,6 +80,26 @@ DEF_HELPER_FLAGS_3(mve_vnegw, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_3(mve_vfnegh, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_3(mve_vfnegs, TCG_CALL_NO_WG, void, env, ptr, ptr)
  
- DEF_HELPER_FLAGS_3(mve_vdup, TCG_CALL_NO_WG, void, env, ptr, i32)
- 
-+DEF_HELPER_FLAGS_4(mve_vidupb, TCG_CALL_NO_WG, i32, env, ptr, i32, i32)
-+DEF_HELPER_FLAGS_4(mve_viduph, TCG_CALL_NO_WG, i32, env, ptr, i32, i32)
-+DEF_HELPER_FLAGS_4(mve_vidupw, TCG_CALL_NO_WG, i32, env, ptr, i32, i32)
++DEF_HELPER_FLAGS_3(mve_vmovnbb, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vmovnbh, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vmovntb, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vmovnth, TCG_CALL_NO_WG, void, env, ptr, ptr)
 +
-+DEF_HELPER_FLAGS_4(mve_vddupb, TCG_CALL_NO_WG, i32, env, ptr, i32, i32)
-+DEF_HELPER_FLAGS_4(mve_vdduph, TCG_CALL_NO_WG, i32, env, ptr, i32, i32)
-+DEF_HELPER_FLAGS_4(mve_vddupw, TCG_CALL_NO_WG, i32, env, ptr, i32, i32)
++DEF_HELPER_FLAGS_3(mve_vqmovunbb, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovunbh, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovuntb, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovunth, TCG_CALL_NO_WG, void, env, ptr, ptr)
 +
-+DEF_HELPER_FLAGS_5(mve_viwdupb, TCG_CALL_NO_WG, i32, env, ptr, i32, i32, i32)
-+DEF_HELPER_FLAGS_5(mve_viwduph, TCG_CALL_NO_WG, i32, env, ptr, i32, i32, i32)
-+DEF_HELPER_FLAGS_5(mve_viwdupw, TCG_CALL_NO_WG, i32, env, ptr, i32, i32, i32)
++DEF_HELPER_FLAGS_3(mve_vqmovnbsb, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovnbsh, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovntsb, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovntsh, TCG_CALL_NO_WG, void, env, ptr, ptr)
 +
-+DEF_HELPER_FLAGS_5(mve_vdwdupb, TCG_CALL_NO_WG, i32, env, ptr, i32, i32, i32)
-+DEF_HELPER_FLAGS_5(mve_vdwduph, TCG_CALL_NO_WG, i32, env, ptr, i32, i32, i32)
-+DEF_HELPER_FLAGS_5(mve_vdwdupw, TCG_CALL_NO_WG, i32, env, ptr, i32, i32, i32)
++DEF_HELPER_FLAGS_3(mve_vqmovnbub, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovnbuh, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovntub, TCG_CALL_NO_WG, void, env, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vqmovntuh, TCG_CALL_NO_WG, void, env, ptr, ptr)
 +
- DEF_HELPER_FLAGS_3(mve_vclsb, TCG_CALL_NO_WG, void, env, ptr, ptr)
- DEF_HELPER_FLAGS_3(mve_vclsh, TCG_CALL_NO_WG, void, env, ptr, ptr)
- DEF_HELPER_FLAGS_3(mve_vclsw, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vand, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vbic, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vorr, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index de079ec517d..88c9c18ebf1 100644
+index bf6cf6f8383..79c529e762f 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -35,6 +35,8 @@
- &2scalar qd qn rm size
- &1imm qd imm cmode op
- &2shift qd qm shift size
-+&vidup qd rn size imm
-+&viwdup qd rn rm size imm
+@@ -153,6 +153,9 @@ VMUL             1110 1111 0 . .. ... 0 ... 0 1001 . 1 . 1 ... 0 @2op
+   VSHLL_BS       111 0 1110 0 . 11 .. 01 ... 0 1110 0 0 . 0 ... 1 @2_shll_esize_b
+   VSHLL_BS       111 0 1110 0 . 11 .. 01 ... 0 1110 0 0 . 0 ... 1 @2_shll_esize_h
  
- @vldr_vstr ....... . . . . l:1 rn:4 ... ...... imm:7 &vldr_vstr qd=%qd u=0
- # Note that both Rn and Qd are 3 bits only (no D bit)
-@@ -259,6 +261,29 @@ VDUP             1110 1110 1 1 10 ... 0 .... 1011 . 0 0 1 0000 @vdup size=0
- VDUP             1110 1110 1 0 10 ... 0 .... 1011 . 0 1 1 0000 @vdup size=1
- VDUP             1110 1110 1 0 10 ... 0 .... 1011 . 0 0 1 0000 @vdup size=2
++  VQMOVUNB       111 0 1110 0 . 11 .. 01 ... 0 1110 1 0 . 0 ... 1 @1op
++  VQMOVN_BS      111 0 1110 0 . 11 .. 11 ... 0 1110 0 0 . 0 ... 1 @1op
++
+   VMULH_S        111 0 1110 0 . .. ...1 ... 0 1110 . 0 . 0 ... 1 @2op
+ }
  
-+# Incrementing and decrementing dup
+@@ -160,6 +163,9 @@ VMUL             1110 1111 0 . .. ... 0 ... 0 1001 . 1 . 1 ... 0 @2op
+   VSHLL_BU       111 1 1110 0 . 11 .. 01 ... 0 1110 0 0 . 0 ... 1 @2_shll_esize_b
+   VSHLL_BU       111 1 1110 0 . 11 .. 01 ... 0 1110 0 0 . 0 ... 1 @2_shll_esize_h
+ 
++  VMOVNB         111 1 1110 0 . 11 .. 01 ... 0 1110 1 0 . 0 ... 1 @1op
++  VQMOVN_BU      111 1 1110 0 . 11 .. 11 ... 0 1110 0 0 . 0 ... 1 @1op
 +
-+# VIDUP, VDDUP format immediate: 1 << (immh:imml)
-+%imm_vidup 7:1 0:1 !function=vidup_imm
+   VMULH_U        111 1 1110 0 . .. ...1 ... 0 1110 . 0 . 0 ... 1 @2op
+ }
+ 
+@@ -167,6 +173,9 @@ VMUL             1110 1111 0 . .. ... 0 ... 0 1001 . 1 . 1 ... 0 @2op
+   VSHLL_TS       111 0 1110 0 . 11 .. 01 ... 1 1110 0 0 . 0 ... 1 @2_shll_esize_b
+   VSHLL_TS       111 0 1110 0 . 11 .. 01 ... 1 1110 0 0 . 0 ... 1 @2_shll_esize_h
+ 
++  VQMOVUNT       111 0 1110 0 . 11 .. 01 ... 1 1110 1 0 . 0 ... 1 @1op
++  VQMOVN_TS      111 0 1110 0 . 11 .. 11 ... 1 1110 0 0 . 0 ... 1 @1op
 +
-+# VIDUP, VDDUP registers: Rm bits [3:1] from insn, bit 0 is 1;
-+# Rn bits [3:1] from insn, bit 0 is 0
-+%vidup_rm 1:3 !function=times_2_plus_1
-+%vidup_rn 17:3 !function=times_2
+   VRMULH_S       111 0 1110 0 . .. ...1 ... 1 1110 . 0 . 0 ... 1 @2op
+ }
+ 
+@@ -174,6 +183,9 @@ VMUL             1110 1111 0 . .. ... 0 ... 0 1001 . 1 . 1 ... 0 @2op
+   VSHLL_TU       111 1 1110 0 . 11 .. 01 ... 1 1110 0 0 . 0 ... 1 @2_shll_esize_b
+   VSHLL_TU       111 1 1110 0 . 11 .. 01 ... 1 1110 0 0 . 0 ... 1 @2_shll_esize_h
+ 
++  VMOVNT         111 1 1110 0 . 11 .. 01 ... 1 1110 1 0 . 0 ... 1 @1op
++  VQMOVN_TU      111 1 1110 0 . 11 .. 11 ... 1 1110 0 0 . 0 ... 1 @1op
 +
-+@vidup           .... .... . . size:2 .... .... .... .... .... \
-+                 qd=%qd imm=%imm_vidup rn=%vidup_rn &vidup
-+@viwdup          .... .... . . size:2 .... .... .... .... .... \
-+                 qd=%qd imm=%imm_vidup rm=%vidup_rm rn=%vidup_rn &viwdup
-+{
-+  VIDUP          1110 1110 0 . .. ... 1 ... 0 1111 . 110 111 . @vidup
-+  VIWDUP         1110 1110 0 . .. ... 1 ... 0 1111 . 110 ... . @viwdup
-+}
-+{
-+  VDDUP          1110 1110 0 . .. ... 1 ... 1 1111 . 110 111 . @vidup
-+  VDWDUP         1110 1110 0 . .. ... 1 ... 1 1111 . 110 ... . @viwdup
-+}
-+
- # multiply-add long dual accumulate
- # rdahi: bits [3:1] from insn, bit 0 is 1
- # rdalo: bits [3:1] from insn, bit 0 is 0
+   VRMULH_U       111 1 1110 0 . .. ...1 ... 1 1110 . 0 . 0 ... 1 @2op
+ }
+ 
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index db5ec9266d1..0ef5f5d8871 100644
+index 4eb5dbce6d7..725fe64a348 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -1698,3 +1698,67 @@ uint32_t HELPER(mve_sqrshr)(CPUARMState *env, uint32_t n, uint32_t shift)
+@@ -1668,6 +1668,84 @@ DO_VSHRN_SAT_UH(vqrshrnb_uh, vqrshrnt_uh, DO_RSHRN_UH)
+ DO_VSHRN_SAT_SB(vqrshrunbb, vqrshruntb, DO_RSHRUN_B)
+ DO_VSHRN_SAT_SH(vqrshrunbh, vqrshrunth, DO_RSHRUN_H)
+ 
++#define DO_VMOVN(OP, TOP, ESIZE, TYPE, LESIZE, LTYPE)                   \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
++    {                                                                   \
++        LTYPE *m = vm;                                                  \
++        TYPE *d = vd;                                                   \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned le;                                                    \
++        mask >>= ESIZE * TOP;                                           \
++        for (le = 0; le < 16 / LESIZE; le++, mask >>= LESIZE) {         \
++            mergemask(&d[H##ESIZE(le * 2 + TOP)],                       \
++                      m[H##LESIZE(le)], mask);                          \
++        }                                                               \
++        mve_advance_vpt(env);                                           \
++    }
++
++DO_VMOVN(vmovnbb, false, 1, uint8_t, 2, uint16_t)
++DO_VMOVN(vmovnbh, false, 2, uint16_t, 4, uint32_t)
++DO_VMOVN(vmovntb, true, 1, uint8_t, 2, uint16_t)
++DO_VMOVN(vmovnth, true, 2, uint16_t, 4, uint32_t)
++
++#define DO_VMOVN_SAT(OP, TOP, ESIZE, TYPE, LESIZE, LTYPE, FN)           \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
++    {                                                                   \
++        LTYPE *m = vm;                                                  \
++        TYPE *d = vd;                                                   \
++        uint16_t mask = mve_element_mask(env);                          \
++        bool qc = false;                                                \
++        unsigned le;                                                    \
++        mask >>= ESIZE * TOP;                                           \
++        for (le = 0; le < 16 / LESIZE; le++, mask >>= LESIZE) {         \
++            bool sat = false;                                           \
++            TYPE r = FN(m[H##LESIZE(le)], &sat);                        \
++            mergemask(&d[H##ESIZE(le * 2 + TOP)], r, mask);             \
++            qc |= sat & mask & 1;                                       \
++        }                                                               \
++        if (qc) {                                                       \
++            env->vfp.qc[0] = qc;                                        \
++        }                                                               \
++        mve_advance_vpt(env);                                           \
++    }
++
++#define DO_VMOVN_SAT_UB(BOP, TOP, FN)                           \
++    DO_VMOVN_SAT(BOP, false, 1, uint8_t, 2, uint16_t, FN)       \
++    DO_VMOVN_SAT(TOP, true, 1, uint8_t, 2, uint16_t, FN)
++
++#define DO_VMOVN_SAT_UH(BOP, TOP, FN)                           \
++    DO_VMOVN_SAT(BOP, false, 2, uint16_t, 4, uint32_t, FN)      \
++    DO_VMOVN_SAT(TOP, true, 2, uint16_t, 4, uint32_t, FN)
++
++#define DO_VMOVN_SAT_SB(BOP, TOP, FN)                           \
++    DO_VMOVN_SAT(BOP, false, 1, int8_t, 2, int16_t, FN)         \
++    DO_VMOVN_SAT(TOP, true, 1, int8_t, 2, int16_t, FN)
++
++#define DO_VMOVN_SAT_SH(BOP, TOP, FN)                           \
++    DO_VMOVN_SAT(BOP, false, 2, int16_t, 4, int32_t, FN)        \
++    DO_VMOVN_SAT(TOP, true, 2, int16_t, 4, int32_t, FN)
++
++#define DO_VQMOVN_SB(N, SATP)                           \
++    do_sat_bhs((int64_t)(N), INT8_MIN, INT8_MAX, SATP)
++#define DO_VQMOVN_UB(N, SATP)                           \
++    do_sat_bhs((uint64_t)(N), 0, UINT8_MAX, SATP)
++#define DO_VQMOVUN_B(N, SATP)                           \
++    do_sat_bhs((int64_t)(N), 0, UINT8_MAX, SATP)
++
++#define DO_VQMOVN_SH(N, SATP)                           \
++    do_sat_bhs((int64_t)(N), INT16_MIN, INT16_MAX, SATP)
++#define DO_VQMOVN_UH(N, SATP)                           \
++    do_sat_bhs((uint64_t)(N), 0, UINT16_MAX, SATP)
++#define DO_VQMOVUN_H(N, SATP)                           \
++    do_sat_bhs((int64_t)(N), 0, UINT16_MAX, SATP)
++
++DO_VMOVN_SAT_SB(vqmovnbsb, vqmovntsb, DO_VQMOVN_SB)
++DO_VMOVN_SAT_SH(vqmovnbsh, vqmovntsh, DO_VQMOVN_SH)
++DO_VMOVN_SAT_UB(vqmovnbub, vqmovntub, DO_VQMOVN_UB)
++DO_VMOVN_SAT_UH(vqmovnbuh, vqmovntuh, DO_VQMOVN_UH)
++DO_VMOVN_SAT_SB(vqmovunbb, vqmovuntb, DO_VQMOVUN_B)
++DO_VMOVN_SAT_SH(vqmovunbh, vqmovunth, DO_VQMOVUN_H)
++
+ uint32_t HELPER(mve_vshlc)(CPUARMState *env, void *vd, uint32_t rdm,
+                            uint32_t shift)
  {
-     return do_sqrshl_bhs(n, -(int8_t)shift, 32, true, &env->QF);
- }
-+
-+#define DO_VIDUP(OP, ESIZE, TYPE, FN)                           \
-+    uint32_t HELPER(mve_##OP)(CPUARMState *env, void *vd,       \
-+                           uint32_t offset, uint32_t imm)       \
-+    {                                                           \
-+        TYPE *d = vd;                                           \
-+        uint16_t mask = mve_element_mask(env);                  \
-+        unsigned e;                                             \
-+        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {      \
-+            mergemask(&d[H##ESIZE(e)], offset, mask);           \
-+            offset = FN(offset, imm);                           \
-+        }                                                       \
-+        mve_advance_vpt(env);                                   \
-+        return offset;                                          \
-+    }
-+
-+#define DO_VIWDUP(OP, ESIZE, TYPE, FN)                          \
-+    uint32_t HELPER(mve_##OP)(CPUARMState *env, void *vd,       \
-+                              uint32_t offset, uint32_t wrap,   \
-+                              uint32_t imm)                     \
-+    {                                                           \
-+        TYPE *d = vd;                                           \
-+        uint16_t mask = mve_element_mask(env);                  \
-+        unsigned e;                                             \
-+        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {      \
-+            mergemask(&d[H##ESIZE(e)], offset, mask);           \
-+            offset = FN(offset, wrap, imm);                     \
-+        }                                                       \
-+        mve_advance_vpt(env);                                   \
-+        return offset;                                          \
-+    }
-+
-+#define DO_VIDUP_ALL(OP, FN)                    \
-+    DO_VIDUP(OP##b, 1, int8_t, FN)              \
-+    DO_VIDUP(OP##h, 2, int16_t, FN)             \
-+    DO_VIDUP(OP##w, 4, int32_t, FN)
-+
-+#define DO_VIWDUP_ALL(OP, FN)                   \
-+    DO_VIWDUP(OP##b, 1, int8_t, FN)             \
-+    DO_VIWDUP(OP##h, 2, int16_t, FN)            \
-+    DO_VIWDUP(OP##w, 4, int32_t, FN)
-+
-+static uint32_t do_add_wrap(uint32_t offset, uint32_t wrap, uint32_t imm)
-+{
-+    offset += imm;
-+    if (offset == wrap) {
-+        offset = 0;
-+    }
-+    return offset;
-+}
-+
-+static uint32_t do_sub_wrap(uint32_t offset, uint32_t wrap, uint32_t imm)
-+{
-+    if (offset == 0) {
-+        offset = wrap;
-+    }
-+    offset -= imm;
-+    return offset;
-+}
-+
-+DO_VIDUP_ALL(vidup, DO_ADD)
-+DO_VIDUP_ALL(vddup, DO_SUB)
-+DO_VIWDUP_ALL(viwdup, do_add_wrap)
-+DO_VIWDUP_ALL(vdwdup, do_sub_wrap)
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index d318f34b2bc..52400864692 100644
+index c304b8d6e41..ba5b7809b09 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -25,6 +25,11 @@
- #include "translate.h"
- #include "translate-a32.h"
+@@ -275,6 +275,28 @@ DO_1OP(VCLS, vcls)
+ DO_1OP(VABS, vabs)
+ DO_1OP(VNEG, vneg)
  
-+static inline int vidup_imm(DisasContext *s, int x)
-+{
-+    return 1 << x;
-+}
-+
- /* Include the generated decoder */
- #include "decode-mve.c.inc"
- 
-@@ -36,6 +41,8 @@ typedef void MVEGenTwoOpShiftFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
- typedef void MVEGenDualAccOpFn(TCGv_i64, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i64);
- typedef void MVEGenVADDVFn(TCGv_i32, TCGv_ptr, TCGv_ptr, TCGv_i32);
- typedef void MVEGenOneOpImmFn(TCGv_ptr, TCGv_ptr, TCGv_i64);
-+typedef void MVEGenVIDUPFn(TCGv_i32, TCGv_ptr, TCGv_ptr, TCGv_i32, TCGv_i32);
-+typedef void MVEGenVIWDUPFn(TCGv_i32, TCGv_ptr, TCGv_ptr, TCGv_i32, TCGv_i32, TCGv_i32);
- 
- /* Return the offset of a Qn register (same semantics as aa32_vfp_qreg()) */
- static inline long mve_qreg_offset(unsigned reg)
-@@ -1059,3 +1066,114 @@ static bool trans_VSHLC(DisasContext *s, arg_VSHLC *a)
-     mve_update_eci(s);
-     return true;
- }
-+
-+static bool do_vidup(DisasContext *s, arg_vidup *a, MVEGenVIDUPFn *fn)
-+{
-+    TCGv_ptr qd;
-+    TCGv_i32 rn;
-+
-+    /*
-+     * Vector increment/decrement with wrap and duplicate (VIDUP, VDDUP).
-+     * This fills the vector with elements of successively increasing
-+     * or decreasing values, starting from Rn.
-+     */
-+    if (!dc_isar_feature(aa32_mve, s) || !mve_check_qreg_bank(s, a->qd)) {
-+        return false;
-+    }
-+    if (a->size == MO_64) {
-+        /* size 0b11 is another encoding */
-+        return false;
-+    }
-+    if (!mve_eci_check(s) || !vfp_access_check(s)) {
-+        return true;
++/* Narrowing moves: only size 0 and 1 are valid */
++#define DO_VMOVN(INSN, FN) \
++    static bool trans_##INSN(DisasContext *s, arg_1op *a)       \
++    {                                                           \
++        static MVEGenOneOpFn * const fns[] = {                  \
++            gen_helper_mve_##FN##b,                             \
++            gen_helper_mve_##FN##h,                             \
++            NULL,                                               \
++            NULL,                                               \
++        };                                                      \
++        return do_1op(s, a, fns[a->size]);                      \
 +    }
 +
-+    qd = mve_qreg_ptr(a->qd);
-+    rn = load_reg(s, a->rn);
-+    fn(rn, cpu_env, qd, rn, tcg_constant_i32(a->imm));
-+    store_reg(s, a->rn, rn);
-+    tcg_temp_free_ptr(qd);
-+    mve_update_eci(s);
-+    return true;
-+}
++DO_VMOVN(VMOVNB, vmovnb)
++DO_VMOVN(VMOVNT, vmovnt)
++DO_VMOVN(VQMOVUNB, vqmovunb)
++DO_VMOVN(VQMOVUNT, vqmovunt)
++DO_VMOVN(VQMOVN_BS, vqmovnbs)
++DO_VMOVN(VQMOVN_TS, vqmovnts)
++DO_VMOVN(VQMOVN_BU, vqmovnbu)
++DO_VMOVN(VQMOVN_TU, vqmovntu)
 +
-+static bool do_viwdup(DisasContext *s, arg_viwdup *a, MVEGenVIWDUPFn *fn)
-+{
-+    TCGv_ptr qd;
-+    TCGv_i32 rn, rm;
-+
-+    /*
-+     * Vector increment/decrement with wrap and duplicate (VIWDUp, VDWDUP)
-+     * This fills the vector with elements of successively increasing
-+     * or decreasing values, starting from Rn. Rm specifies a point where
-+     * the count wraps back around to 0. The updated offset is written back
-+     * to Rn.
-+     */
-+    if (!dc_isar_feature(aa32_mve, s) || !mve_check_qreg_bank(s, a->qd)) {
-+        return false;
-+    }
-+    if (!fn || a->rm == 13 || a->rm == 15) {
-+        /*
-+         * size 0b11 is another encoding; Rm == 13 is UNPREDICTABLE;
-+         * Rm == 13 is VIWDUP, VDWDUP.
-+         */
-+        return false;
-+    }
-+    if (!mve_eci_check(s) || !vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    qd = mve_qreg_ptr(a->qd);
-+    rn = load_reg(s, a->rn);
-+    rm = load_reg(s, a->rm);
-+    fn(rn, cpu_env, qd, rn, rm, tcg_constant_i32(a->imm));
-+    store_reg(s, a->rn, rn);
-+    tcg_temp_free_ptr(qd);
-+    tcg_temp_free_i32(rm);
-+    mve_update_eci(s);
-+    return true;
-+}
-+
-+static bool trans_VIDUP(DisasContext *s, arg_vidup *a)
-+{
-+    static MVEGenVIDUPFn * const fns[] = {
-+        gen_helper_mve_vidupb,
-+        gen_helper_mve_viduph,
-+        gen_helper_mve_vidupw,
-+        NULL,
-+    };
-+    return do_vidup(s, a, fns[a->size]);
-+}
-+
-+static bool trans_VDDUP(DisasContext *s, arg_vidup *a)
-+{
-+    static MVEGenVIDUPFn * const fns[] = {
-+        gen_helper_mve_vddupb,
-+        gen_helper_mve_vdduph,
-+        gen_helper_mve_vddupw,
-+        NULL,
-+    };
-+    return do_vidup(s, a, fns[a->size]);
-+}
-+
-+static bool trans_VIWDUP(DisasContext *s, arg_viwdup *a)
-+{
-+    static MVEGenVIWDUPFn * const fns[] = {
-+        gen_helper_mve_viwdupb,
-+        gen_helper_mve_viwduph,
-+        gen_helper_mve_viwdupw,
-+        NULL,
-+    };
-+    return do_viwdup(s, a, fns[a->size]);
-+}
-+
-+static bool trans_VDWDUP(DisasContext *s, arg_viwdup *a)
-+{
-+    static MVEGenVIWDUPFn * const fns[] = {
-+        gen_helper_mve_vdwdupb,
-+        gen_helper_mve_vdwduph,
-+        gen_helper_mve_vdwdupw,
-+        NULL,
-+    };
-+    return do_viwdup(s, a, fns[a->size]);
-+}
+ static bool trans_VREV16(DisasContext *s, arg_1op *a)
+ {
+     static MVEGenOneOpFn * const fns[] = {
 -- 
 2.20.1
 

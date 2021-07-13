@@ -1,114 +1,103 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp3249117lfg;
-        Mon, 12 Jul 2021 07:21:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9INDZ7qXQrWVsqtdwyfFRabj10meUFh5o36MXJcRFUNemZ+5OcSrHGCBQZ47PMnWfpfKw
-X-Received: by 2002:a17:906:1390:: with SMTP id f16mr35059181ejc.441.1626099684363;
-        Mon, 12 Jul 2021 07:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626099684; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp307545lfc;
+        Tue, 13 Jul 2021 00:02:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymhsTYwbEQCQO7NRoKfLUHIBQh2hcs7FgBO7vg/dONcWePe2va+zWge/TxNBfI8fuNYGoJ
+X-Received: by 2002:a67:7d8b:: with SMTP id y133mr4182929vsc.60.1626159744067;
+        Tue, 13 Jul 2021 00:02:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626159744; cv=none;
         d=google.com; s=arc-20160816;
-        b=pCAz9kIBYIx5a9aqiQYPuZO2AEJ2tfT4Ea6m75vYgQ++Rd2im0n51Fy5dt+ULmIDI2
-         oBN/2aaL5uOZiHUx6+noC/ZXXqb2iTLZwbesh9DGg1ivzoYWzdSyFSyykQQkE05x2mqb
-         lR0v3kZ5gvuxXh8QQkIhZF5ZO5Y+J0Z5AEU04cnlrVJalWvabjQ1alXXzovYM1o5ar6c
-         eLcgKkDRZ09hj90J0vObmL5f+WT6fEaRuGZoJWa3dl7840EHW0P8cN10mM8k407oTYCz
-         Sam2kde7hSBAX69xFNqn2v/YeZbPUTckVtzeHOkTIL4Js6ZeQZM40A75WV909ecn1HiZ
-         yMqw==
+        b=KmEGimjuvV0I0Toxc6bkgbN0VCXZn+DNwRme/eMFdKfYHCYqn0fQPdR94AQ1bRK6aQ
+         Q8lZYI8eY/tkvEtVYE+qPMBlaOk26MNk8zfk5HX+IvAjj6Hke/sGaTYFnkKQkV+jmgxr
+         IPH1mF7V3zLe0CliDKAtJVhN/DO6cO79j++aZdtHlUxQNdGkyI9kNhnJoEvK+WguW0FG
+         yCUFfvXlZcmTrBDfC7ujDJt8klIMB32ZFPjRpQIK/baa87DTx67ivKA8/gDw1jPxE1Vh
+         3z/wpoxacmORFNr4As97r3eCmRiC/aDluYcUEh5O9k24M7laoCvKnEN12hhQHcdl1x04
+         Ydew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Sq0ttdjpDSIMveEICqJHSEJXNaIe2NyoZtztj9IRPnw=;
-        b=G4H+oHJGSh9TS2uZm5UEeDCD0lhdkbPzJtEkKY/SnajKCDqQvnY9ceyMgsOKPZYTOn
-         F94qzsG/IhmhYfNxnHDqQ2k1z8jRnW50rS6zszBA59IxbbPhBb3el7dKkiyx4KIsaRIl
-         LxstHorcClapdZmYcXuba7o1HRo+SVRJE17gppNq8bzMrpQcDF6tp5kn0gz8huX7KqCg
-         bRjiHSjSru4tpF53t3z1BmFWpSiCGiCqSlNt1qrhMXQcb60l0f7Ao5cXes7h3tK0GpX7
-         Y4pJPTjDZV07bLLPEiZ1pmBaqitfsrUUZ9rqzsB7bZs5ags4qBhuuSxOjUBoFWlEdJxg
-         sIrg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=cDs3bdfAQMPC9lkUzbAT0OAQiURncrmQf0DNcbcYf7w=;
+        b=0r+W+qB5EXwLPxbB+X/IS1r8WJtV7xhysE4+QstaFCQ0Uc6w6aWaCLLy2kPpclE39h
+         oF+RlDE0Km86WuFZEN5J618wuW6clV9fxERs/CdEWKhvdyWheuFlmre1SU2B9keaPigh
+         HjvbYupZJrBDy7CMcn0+yf9rwW9q/a4Lock1VDwqdHmB6lBOfrm++0oXszbTEN74KRAB
+         QaO/yzUzrWaPsYoxUFKjofqLjSG8+GM12n/KVRocrAhMeyVPjxoQJ911g0LESmwA4hLI
+         ImtONw3XUX6sjwnaf4RdBpiXUwDDrYljDfADJz+9gXrb937dm6vGFZwtqsglzkaPDt6G
+         TszQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HOajYmiJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jqR43t/Z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4si15565944ejl.583.2021.07.12.07.21.24
+        by mx.google.com with ESMTPS id n11si18752697uaa.79.2021.07.13.00.02.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Jul 2021 07:21:24 -0700 (PDT)
+        Tue, 13 Jul 2021 00:02:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HOajYmiJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jqR43t/Z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57386 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m2woF-0005G9-ES
-	for alex.bennee@linaro.org; Mon, 12 Jul 2021 10:21:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42860)
+	id 1m3CQw-0000pP-Rl
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 03:02:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53204)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m2wo6-0005Fd-0v; Mon, 12 Jul 2021 10:21:14 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:44860)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1m3CNo-0006l3-ES; Tue, 13 Jul 2021 02:59:10 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:42538)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m2wo4-0001ea-E1; Mon, 12 Jul 2021 10:21:13 -0400
-Received: by mail-wr1-x432.google.com with SMTP id f9so20201437wrq.11;
- Mon, 12 Jul 2021 07:21:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1m3CNm-0001vP-Ad; Tue, 13 Jul 2021 02:59:08 -0400
+Received: by mail-pf1-x433.google.com with SMTP id y4so18665054pfi.9;
+ Mon, 12 Jul 2021 23:59:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Sq0ttdjpDSIMveEICqJHSEJXNaIe2NyoZtztj9IRPnw=;
- b=HOajYmiJopg4BvFheVPsXN0gl3cFmkujRk9NcUhhp8JrdM0rAVoGMNJzfk73Zneww5
- TJOwtU7NIyt2m60bIZnBhvnGxkwtb9gPW0Yd9CyFG623c/dMRYb+HtrLz4FJ3aljT6LR
- kaLmqQ2etr/pVpKN2xIWjyLWVmatnwfT2BKFZfVtJNFsTGvm3SJbq7E8tTi3oXNTT25H
- TG4a13B+9PhsmOv7EIdCM64mg2a2izLbNydrZ1mwhQ4B9HXSsJ18RbjuX0Lg9oi7twXr
- NUjPZyR1Vfp0SgQhXRogAwalHDFY6WNyQVB7F7tSHgXQUWr6l61SkkFhMLvlw7TLli5u
- HmIg==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cDs3bdfAQMPC9lkUzbAT0OAQiURncrmQf0DNcbcYf7w=;
+ b=jqR43t/Z3IQNMI4x2BWgwN/LueCdX3aH6ovQF1gzecGy8bmliVe0+ImMSM1Pn1eBXJ
+ gThkccXitAL0SlaFX/MvYtUiJqXvnaApQlResV1VSm16gVxczZ5FoMzMkNp/FqGYBGMD
+ jFzIrB0wT3vB6pfsMhG8t7BkTKm5CF6BnpAmVu1hixs4jd9q8EHhRJNATQAadjFOMXEz
+ 7A1rqGd6MsDZrIVAR555D467gHSf5ujuiqwRF/zjlGbISSogK+jDES1huOWx0Rfhv4Qn
+ FM+gmcD1GxjICBt5313YgQQy7qgpDzmdplP/U5PDVyjrEeLwM1/lP1M98plDtZUmRSfd
+ 3/JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Sq0ttdjpDSIMveEICqJHSEJXNaIe2NyoZtztj9IRPnw=;
- b=T2Zxf6sHbJbQMitIceYEusOCrKnOVW9oP8x5JEKN0FKhrTpZxZBK5yaRst6h5OFiEX
- io+SZ+l7I0KcJWUgAh4oIuDm+IAJodDE0mXgE6js8iR3wY827BWdHo20DxKLDGH9CCb0
- DboFl8EGnzVnOnn5WrDBN61ooX2gNPfVlivgrA15suPrTOv0ca2Puv33lhisBV1kPoZp
- nRC6QX9gygR+r5vMAVBYDcGjIm2Shv3547DxTNMjIEUzpMF6Q8e1EEd7aQ5s8Zg5O0YV
- Ksoxz+JymDSKuG3Km7zQ0cMUafvSJKq2Bnj0SFIHwEagOkD6Y5NStr/QriALZUxU6m7X
- QiZQ==
-X-Gm-Message-State: AOAM533pnIjDqvc/egVkefjGanwlsKa92dOdF/gUzwv+gC43rO0szS8y
- 349ZB9gGWm4PzBUMEFxAwR2Q8t7lIKtMEA==
-X-Received: by 2002:adf:e4d1:: with SMTP id v17mr6367012wrm.206.1626099670131; 
- Mon, 12 Jul 2021 07:21:10 -0700 (PDT)
-Received: from [192.168.1.27] (abayonne-654-1-142-116.w86-222.abo.wanadoo.fr.
- [86.222.93.116])
- by smtp.gmail.com with ESMTPSA id f5sm15750477wrg.67.2021.07.12.07.21.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jul 2021 07:21:09 -0700 (PDT)
-Subject: Re: [PATCH] hw: timer: Add i.MX sysctr timer implementation
-To: Peter Maydell <peter.maydell@linaro.org>,
- Daniel Baluta <daniel.baluta@gmail.com>
-References: <20210707113937.72602-1-daniel.baluta@oss.nxp.com>
- <CAFEAcA_L7nrw4zBV7pKYcV+H+4qJT60PFkJYA_w-8FSwOqNmXw@mail.gmail.com>
- <CAEnQRZCJC4WmrGy6NnMmwUkscjn-HcOQmvni580t58b4s7pFKQ@mail.gmail.com>
- <CAFEAcA-ZS0anZESVD0+bLE23K6Z_TSS-=NqRZGsK-buQ9OTkyA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6b3bbab4-b5fc-bf4a-5556-051a27522c11@amsat.org>
-Date: Mon, 12 Jul 2021 16:21:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=cDs3bdfAQMPC9lkUzbAT0OAQiURncrmQf0DNcbcYf7w=;
+ b=LEWni2ZZU+jSiiolS+BtyKUYz22wvuk+avU5+mi2ZtsVok7wYXln+ltosAYgEIleVC
+ zMCBnDqGcT8OCllibDVnppnX8quQYnicijAhC14ScFfwn8QmFKUnfi5hh3vBpAblmA3U
+ iirhKWNWeFzV+21fC5uD4MH3fujk1yAI0ztwaeBQBtZtaV7sKXw5ZAo0JbC6AOGnePel
+ V/iPd4EscKL6D1L226R3bOy+o3fssnhMNt7DP2tby3lKAmHY1QN1ZfJunJ/vLrIEGdIc
+ ws2pHiURseBTz15RA/heN9//On78RsGD1KmhMvSamaW2LeYpAXmLlbyrvnuPeYavqU7D
+ bI5w==
+X-Gm-Message-State: AOAM531V6MBs+PurJwg+AgJsG/+A2P27H3w3jujtTJi4IKdUY0t/36k/
+ Mu1ThuGI2lIrwm9rMrvkSIM=
+X-Received: by 2002:a62:2bc6:0:b029:2e7:a7c2:201 with SMTP id
+ r189-20020a622bc60000b02902e7a7c20201mr3231560pfr.64.1626159544320; 
+ Mon, 12 Jul 2021 23:59:04 -0700 (PDT)
+Received: from localhost.localdomain ([45.124.203.14])
+ by smtp.gmail.com with ESMTPSA id o184sm20334846pga.18.2021.07.12.23.59.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Jul 2021 23:59:03 -0700 (PDT)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v2 0/3] hw: aspeed_gpio: MMIO region fix and cleanups
+Date: Tue, 13 Jul 2021 16:28:51 +0930
+Message-Id: <20210713065854.134634-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-ZS0anZESVD0+bLE23K6Z_TSS-=NqRZGsK-buQ9OTkyA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=joel.stan@gmail.com; helo=mail-pf1-x433.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-1.479,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,43 +110,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mancas Viorica <vioricamancas@yahoo.com>,
- Daniel Baluta <daniel.baluta@oss.nxp.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Rashmica Gupta <rashmica.g@gmail.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tSUHHpsKKZjm
+X-TUID: gKe0qYf80D/r
 
-On 7/12/21 4:02 PM, Peter Maydell wrote:
-> On Mon, 12 Jul 2021 at 14:58, Daniel Baluta <daniel.baluta@gmail.com> wrote:
->>
->> On Wed, Jul 7, 2021 at 10:21 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->>>
->>> On Wed, 7 Jul 2021 at 12:39, Daniel Baluta <daniel.baluta@oss.nxp.com> wrote:
->>>>
->>>> From: Viorica Mancas <vioricamancas@yahoo.com>
->>>>
->>>> The System Counter (SYS_CTR) is a programmable system counter, which provides a
->>>> shared time base to multiple processors. It is intended for applications where the counter
->>>> is always powered on, and supports multiple unrelated clocks.
->>>>
->>>> This system counter can be found on NXP i.MX8MN.
->>>>
->>>> Signed-off-by: Viorica Mancas <vioricamancas@yahoo.com>
->>>> Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
->>>
->>> Is there a board model or an update to an existing board that
->>> would use this device? We don't usually take device models that
->>> are completely unused upstream.
->>
->> Hi Peter,
->>
->> This can be found in i.MX8MN board. Should we add this patch together
->> with the upcoming patches for i.MX8?
-> 
-> Yeah, you should start with a board model plus a minimal
-> set of devices as the initial part to try to upstream.
+This fixes the MMIO region so that the rtc works again on the ast2600.
+The two patches after that are cleanups.
 
-And documentation/test for this new board, so others know how to
-use your board, and tests will protect your code for regressions.
+Joel Stanley (3):
+  hw: aspeed_gpio: Fix memory size
+  hw: aspeed_gpio: Simplify 1.8V defines
+  hw: aspeed_gpio: Clarify GPIO controller name
+
+ hw/gpio/aspeed_gpio.c | 100 +++++++++++++++++++++---------------------
+ 1 file changed, 49 insertions(+), 51 deletions(-)
+
+-- 
+2.32.0
+

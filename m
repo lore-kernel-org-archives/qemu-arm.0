@@ -1,104 +1,102 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp616508lfc;
-        Tue, 13 Jul 2021 07:03:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwkRpeFc5MdWxYikamhglDRdXZ4UOgOMFldyDsHodgmUGrB8pTFORXtSQcmnntFywyQ45Jb
-X-Received: by 2002:a05:600c:4a17:: with SMTP id c23mr230474wmp.50.1626185031273;
-        Tue, 13 Jul 2021 07:03:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626185031; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp617001lfc;
+        Tue, 13 Jul 2021 07:04:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyVfxmNtKsjFp56T/B2mx0BGmUAPF26Pcx0kMLH/mGzTUawLBuXGCOU8SP0PxpGustdiKD
+X-Received: by 2002:a5d:67cc:: with SMTP id n12mr5950939wrw.131.1626185057202;
+        Tue, 13 Jul 2021 07:04:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626185057; cv=none;
         d=google.com; s=arc-20160816;
-        b=Czx2zknFKxRelotNfDPGyRfHwYvdiKSWn7L8zrbf5r09UjSq5cFPRgQWUi5UOr0Hz8
-         Cp4q3HnOMkDvV5tc0L67hi3aCzdvozXCIk27nA7JowAXsQ2qR3Rk0qYz1X/VsxAFF8ac
-         eSkEVXbRm/xRQaknyof6FZcIcO1cAWDJPgmmZEsvSnIQ4ARHPuat++L+/54GYyhzsKsz
-         XoicHyNtQpXuQHj+1S5ihpXx71n+1INmQdn70HP45CwkLNuZ/WVitDGPT2bgYc1a1joH
-         2WTXqeVotGgGviCEc0JQh9wmvjMcDGWng/Twhw2YUDP+3NgeXRaK43dBNv3kTMu8fHdW
-         WQ8w==
+        b=bJrJGz75PBbm015VBjkydGG4q7SFPajJ2zU8tOJpS2S+phI8ppirEZOozG0JlIb43A
+         GkfZna1LezavA0HECz2EUgyM3KnU4uPcG9baMfVEFkUHyhAGWPofCO2vKt28pyyEQR9x
+         Rpo1wCJTCClsIuvzM7h6EjGSrkFNn+R8T8s8CNpWq0psddV4zWC2SxexTHOdrb+vd6e5
+         pRkpbuj9HkR+PP1VRrA0p5ln3apMfhUFF6uHWOvEGSXtXPk2lHyN/cC51cMV2ilOahUi
+         cakyDyZ8y7JKgi6iefpHwura+KgQWfXocrbPvCzudWwNp3C6F68dzIm/+cbism70tl/r
+         T6/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Et1w9KDJpjyqBux8DZYeptECVaTj09BTPY/nUeH3xIw=;
-        b=FYHKOj8AgF4Fk1Ei5luB2iBw+2snO9ANnDNYlH97DSvz+HLXRBGVqTfssG+wznw0k/
-         QSqEgMsAdfnwpehpl8tL9hfAd9pJMSsBmYGS3UYoRvMj9COG2vGjBATmmu5ejCCEoiIm
-         KsPZn6payvsnEVKpmMafhr8goiZctmikv99+f+XhZICcF3XBRTBgjUmjDulDqUD60T2P
-         cUdvR+rqhAsR6Z/u0Tt6YWf528wrE5deZKHqtt1P49Nsu8fIf9M2lNPCYl0PUuy55l4z
-         j0ddsG3+JO6zZRSc5Bjv+PW7BodQd7TO1TniBrvGu+jCUjr2fBBg0rLZatTy1f6Tznka
-         BZ+w==
+        bh=ezvyuOx6k7IOrukp8TdSAl9DSXaSG8vwOoLlVakuAlI=;
+        b=neGYHUeosBTG4mp/S9aIyb2ez7J/knrtHLS7l7H8dbI3+LDyTr6Pz4p1t6p5uYu/tc
+         JDhLN4mcxRvzIzytRnoyRvGO7d/TUA2Wum7DWoi0LlKB8ewdieeW8etNOwgHx3YE9tem
+         q9ILvoqYhNjid2OucD4vJXCAWMAFi+vNiJSNMbCBeLid5rgqNnePlyH8BUNu1/dxVV+x
+         svLk9P4qTdLeaREsw409gpeFAmMlsOWghzriWc1T9FK0xTSDySiDM2ViMQP7+gRAEMwq
+         TR/cXD9iGkrzWRopFxdBEzBfEXhCkoTN31HTvy5IzlNu4CQm/wmh04v7s6p/OL8jpunA
+         FmPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RquzfShV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xMSOWfwd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m38si9181978wms.168.2021.07.13.07.03.51
+        by mx.google.com with ESMTPS id y3si26359573wrh.171.2021.07.13.07.04.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 07:03:51 -0700 (PDT)
+        Tue, 13 Jul 2021 07:04:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RquzfShV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xMSOWfwd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47556 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3J0o-0003bA-3g
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 10:03:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54830)
+	id 1m3J1E-0004jb-2w
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 10:04:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54784)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3Ibw-0000i3-BD
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:38:08 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:34650)
+ id 1m3Ibu-0000Yd-8o
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:38:06 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:33608)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3Ibl-0003sx-RC
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:38:08 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- u5-20020a7bc0450000b02901480e40338bso1662369wmc.1
- for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 06:37:57 -0700 (PDT)
+ id 1m3Ibj-0003qx-NC
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:38:06 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id d2so30572861wrn.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 06:37:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=Et1w9KDJpjyqBux8DZYeptECVaTj09BTPY/nUeH3xIw=;
- b=RquzfShV97q9g9kI92zneLZcyjWwQThRcXscsnLjkKMgHaUFacAbpy1Mt+VRr8Z9Mr
- C7xC6hIMzBMcyHzNCToUenDQr1sBq2HZKl9FuvGrGZTKzmLzJOv2rBj6Z0eIQzVMg46K
- K8ESG4fhz2THSSBuytDqn8/j9DmVCsF41bewcaPHNj65kxzOCIE9o4FF3AHuIhh2nOzR
- c3AF19qgj+vIOWnedMXty44HUQn8ybhm+5R6a07OWgRFBAxloC/QqpIw6JeCi5oGth93
- e3x1ohha35GMS2nI8xg86zzHjXXoj2smC4ljaPJVzMPsDgUgtbX4psg/r5OX3dgZ8ldr
- H/+w==
+ bh=ezvyuOx6k7IOrukp8TdSAl9DSXaSG8vwOoLlVakuAlI=;
+ b=xMSOWfwdSthijX6JAvnMlLZaLu+AH+h4Fx09tR86/x5tp6RrF+Jc+LqMezl6tmR7T3
+ inXeTfzCz7P+maVwXvlIMx04bxxWfTE0hKop6cM9n5cqxYWrMMZCMoinoYNde7jAa0Xc
+ kBX8nsu2MSOtvQN8WismVwv+4FBJYACoUf1azlaiZJEQIkTcVn/OaOIiyW1g2H0gwpfg
+ No5dZQDAAQL7ylEB/ClydrDCviyBqWmjhiH3zj16T5j1JAKMiP5Fl00SkT0MEDsgOcvE
+ bivPHVSEqr7oS2LlWW2Mj0F6NcMIogIYIpSmfSf6A7N7Di2rFT4v+OSVFmDD3+G5T5En
+ iTRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Et1w9KDJpjyqBux8DZYeptECVaTj09BTPY/nUeH3xIw=;
- b=eON5EO/Rf/O0yNBp8hv2RF7yywg0+pSa5S2kWzTWteqFTKvCHUBWXEHbQ76Lr6znFQ
- WD7s7BlJW2CdR5htkgL6P9pmZ3atMPBJR+XlR+e5fihr/4ei+94mA8MSKePurVzILcgO
- YBEPJIiQdkx+rzWIjQEdxXTVUc7AFw+LpIQdkk+UzHQHjzsXD8rYpdbSlxt59+jCFWwg
- h4xjTvNUFNUviD+w8MpU6dyLd9E4l/iq910Bd38aqPEQPk4dyTCtGDiKRM5Q20xoLXOY
- kFpb0dijFzgZc9VtR/Y4XzwvGyXdlfBnRoaJnRtDu3NmQGa6WAn3C8rCG+RjvumHs1Hp
- Dncw==
-X-Gm-Message-State: AOAM533SoKLKNBAylFi4/irKQIL10MTht7byax+wJK0xovFreBiflocD
- 6n9PKD5Ua+NcQBM6YB8UUAqYJIiGdqnWhiFM
-X-Received: by 2002:a1c:f613:: with SMTP id w19mr91098wmc.136.1626183476497;
- Tue, 13 Jul 2021 06:37:56 -0700 (PDT)
+ bh=ezvyuOx6k7IOrukp8TdSAl9DSXaSG8vwOoLlVakuAlI=;
+ b=JyU9LdqsBsAfjGrj4G4XTwmkqYpddsOJ9fSC1I/QLtIuxygx21qjvKkWlcaCSvyEQC
+ fMZCxT+qcK9L/QGz1S9p6ye1SKPIQVFloIhpsxCxjEQ6m0QLggxQ/GDJfPdF1r36zPV/
+ jwQj6b1L46slmW/KPhRjHTHHCnVHSZc8mxZiPwgFyY2eJZtpkx4CNpJu39bytIz0ptPn
+ CzA/ZTbvZg7UlvbN/psZmnRXB0zv7F8b6zsSYeXH6TTnYboliJXHIJ1slrmmks9dF9v4
+ 0D9arh3fR65mN5g8J1DGbxI/YPWovAY5RJYvghC13EgrtL632Gi6V7B7Mo9wKTKRFohl
+ wYkw==
+X-Gm-Message-State: AOAM530E+dEpvQ1YfEorx7y68QQLTHFZLMR2KcyRIua4ykQ0ybBJuBPo
+ OrhCfZqUo0/Ij6HH/8h8M/bEYzDidu9GT+AF
+X-Received: by 2002:a5d:6b06:: with SMTP id v6mr5975506wrw.146.1626183474415; 
+ Tue, 13 Jul 2021 06:37:54 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.55
+ by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jul 2021 06:37:56 -0700 (PDT)
+ Tue, 13 Jul 2021 06:37:54 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 34/34] target/arm: Implement MVE interleaving
- loads/stores
-Date: Tue, 13 Jul 2021 14:37:26 +0100
-Message-Id: <20210713133726.26842-35-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 32/34] target/arm: Implement MVE scatter-gather insns
+Date: Tue, 13 Jul 2021 14:37:24 +0100
+Message-Id: <20210713133726.26842-33-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210713133726.26842-1-peter.maydell@linaro.org>
 References: <20210713133726.26842-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,593 +118,340 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DeS+RQity7Sv
+X-TUID: mYXiCb3djLVr
 
-Implement the MVE interleaving load/store functions VLD2, VLD4, VST2
-and VST4.  VLD2 loads 16 bytes of data from memory and writes to 2
-consecutive Qregs; VLD4 loads 16 bytes of data from memory and writes
-to 4 consecutive Qregs.  The 'pattern' field in the encoding
-determines the offset into memory which is accessed and also which
-elements in the Qregs are written to.  (The intention is that a
-sequence of four consecutive VLD4 with different pattern values
-performs a complete de-interleaving load of 64 bytes into all
-elements of the 4 Qregs.) VST2 and VST4 do the same, but for stores.
+Implement the MVE gather-loads and scatter-stores which
+form the address by adding a base value from a scalar
+register to an offset in each element of a vector.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-I found the pseudocode description of these instructions pretty
-hard to follow, because (1) it is written to be generic over all
-sizes and pattern values and beat counts and (2) it accesses
-the vector elements by (Qreg number, beat within Qreg, element
-within beat). I ended up writing a little program to print out the
-various intermediate numbers and also calculate "index of element
-within the whole Qreg", which is what QEMU wants to access
-elements by. You can find that here:
-  https://people.linaro.org/~peter.maydell/ldinter.c
-I then just stared at the numbers for each (pattern, esize)
-specialization and tried to come up with something that does
-less gluing together of random bits from curBeat, pattern and
-e than the pseudocode...
----
- target/arm/helper-mve.h    |  48 ++++++
- target/arm/mve.decode      |  11 ++
- target/arm/mve_helper.c    | 342 +++++++++++++++++++++++++++++++++++++
- target/arm/translate-mve.c |  94 ++++++++++
- 4 files changed, 495 insertions(+)
+ target/arm/helper-mve.h    |  32 +++++++++
+ target/arm/mve.decode      |  12 ++++
+ target/arm/mve_helper.c    | 129 +++++++++++++++++++++++++++++++++++++
+ target/arm/translate-mve.c |  91 ++++++++++++++++++++++++++
+ 4 files changed, 264 insertions(+)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 16799b110fd..9d1453ca174 100644
+index 55f9151ccbf..9c570270c61 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -70,6 +70,54 @@ DEF_HELPER_FLAGS_4(mve_vldrd_sg_wb_ud, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(mve_vstrw_sg_wb_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(mve_vstrd_sg_wb_ud, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+@@ -33,6 +33,38 @@ DEF_HELPER_FLAGS_3(mve_vstrb_h, TCG_CALL_NO_WG, void, env, ptr, i32)
+ DEF_HELPER_FLAGS_3(mve_vstrb_w, TCG_CALL_NO_WG, void, env, ptr, i32)
+ DEF_HELPER_FLAGS_3(mve_vstrh_w, TCG_CALL_NO_WG, void, env, ptr, i32)
  
-+DEF_HELPER_FLAGS_3(mve_vld20b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld20h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld20w, TCG_CALL_NO_WG, void, env, i32, i32)
++DEF_HELPER_FLAGS_4(mve_vldrb_sg_sh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrb_sg_sw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrh_sg_sw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(mve_vld21b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld21h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld21w, TCG_CALL_NO_WG, void, env, i32, i32)
++DEF_HELPER_FLAGS_4(mve_vldrb_sg_ub, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrb_sg_uh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrb_sg_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrh_sg_uh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrh_sg_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrw_sg_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrd_sg_ud, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(mve_vld40b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld40h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld40w, TCG_CALL_NO_WG, void, env, i32, i32)
++DEF_HELPER_FLAGS_4(mve_vstrb_sg_ub, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrb_sg_uh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrb_sg_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrh_sg_uh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrh_sg_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrw_sg_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrd_sg_ud, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(mve_vld41b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld41h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld41w, TCG_CALL_NO_WG, void, env, i32, i32)
++DEF_HELPER_FLAGS_4(mve_vldrh_sg_os_sw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(mve_vld42b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld42h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld42w, TCG_CALL_NO_WG, void, env, i32, i32)
++DEF_HELPER_FLAGS_4(mve_vldrh_sg_os_uh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrh_sg_os_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrw_sg_os_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vldrd_sg_os_ud, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(mve_vld43b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld43h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vld43w, TCG_CALL_NO_WG, void, env, i32, i32)
-+
-+DEF_HELPER_FLAGS_3(mve_vst20b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst20h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst20w, TCG_CALL_NO_WG, void, env, i32, i32)
-+
-+DEF_HELPER_FLAGS_3(mve_vst21b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst21h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst21w, TCG_CALL_NO_WG, void, env, i32, i32)
-+
-+DEF_HELPER_FLAGS_3(mve_vst40b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst40h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst40w, TCG_CALL_NO_WG, void, env, i32, i32)
-+
-+DEF_HELPER_FLAGS_3(mve_vst41b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst41h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst41w, TCG_CALL_NO_WG, void, env, i32, i32)
-+
-+DEF_HELPER_FLAGS_3(mve_vst42b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst42h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst42w, TCG_CALL_NO_WG, void, env, i32, i32)
-+
-+DEF_HELPER_FLAGS_3(mve_vst43b, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst43h, TCG_CALL_NO_WG, void, env, i32, i32)
-+DEF_HELPER_FLAGS_3(mve_vst43w, TCG_CALL_NO_WG, void, env, i32, i32)
++DEF_HELPER_FLAGS_4(mve_vstrh_sg_os_uh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrh_sg_os_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrw_sg_os_uw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vstrd_sg_os_ud, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 +
  DEF_HELPER_FLAGS_3(mve_vdup, TCG_CALL_NO_WG, void, env, ptr, i32)
  
  DEF_HELPER_FLAGS_4(mve_vidupb, TCG_CALL_NO_WG, i32, env, ptr, i32, i32)
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 76e9b9c721c..faff94cf6d5 100644
+index 82dc07bc30e..b0e39f36723 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -44,6 +44,7 @@
+@@ -42,11 +42,18 @@
+ &shl_scalar qda rm size
+ &vmaxv qm rda size
  &vabav qn qm rda size
- &vldst_sg qd qm rn size msize os
- &vldst_sg_imm qd qm a w imm
-+&vldst_il qd rn size pat w
++&vldst_sg qd qm rn size msize os
++
++# scatter-gather memory size is in bits 6:4
++%sg_msize 6:1 4:1
  
- # scatter-gather memory size is in bits 6:4
- %sg_msize 6:1 4:1
-@@ -59,6 +60,10 @@
- @vldst_sg_imm .... .... a:1 . w:1 . .... .... .... . imm:7 &vldst_sg_imm \
-               qd=%qd qm=%qn
+ @vldr_vstr ....... . . . . l:1 rn:4 ... ...... imm:7 &vldr_vstr qd=%qd u=0
+ # Note that both Rn and Qd are 3 bits only (no D bit)
+ @vldst_wn ... u:1 ... . . . . l:1 . rn:3 qd:3 . ... .. imm:7 &vldr_vstr
  
-+# Deinterleaving load/interleaving store
-+@vldst_il .... .... .. w:1 . rn:4 .... ... size:2 pat:2 ..... &vldst_il \
-+          qd=%qd
++@vldst_sg .... .... .... rn:4 .... ... size:2 ... ... os:1 &vldst_sg \
++          qd=%qd qm=%qm msize=%sg_msize
 +
  @1op .... .... .... size:2 .. .... .... .... .... &1op qd=%qd qm=%qm
  @1op_nosz .... .... .... .... .... .... .... .... &1op qd=%qd qm=%qm size=0
  @2op .... .... .. size:2 .... .... .... .... .... &2op qd=%qd qm=%qm qn=%qn
-@@ -158,6 +163,12 @@ VLDRD_sg_imm     111 1 1101 ... 1 ... 0 ... 1 1111 .... .... @vldst_sg_imm
- VSTRW_sg_imm     111 1 1101 ... 0 ... 0 ... 1 1110 .... .... @vldst_sg_imm
- VSTRD_sg_imm     111 1 1101 ... 0 ... 0 ... 1 1111 .... .... @vldst_sg_imm
+@@ -136,6 +143,11 @@ VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111101 .......   @vldr_vstr \
+ VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111110 .......   @vldr_vstr \
+                  size=2 p=1
  
-+# deinterleaving loads/interleaving stores
-+VLD2             1111 1100 1 .. 1 .... ... 1 111 .. .. 00000 @vldst_il
-+VLD4             1111 1100 1 .. 1 .... ... 1 111 .. .. 00001 @vldst_il
-+VST2             1111 1100 1 .. 0 .... ... 1 111 .. .. 00000 @vldst_il
-+VST4             1111 1100 1 .. 0 .... ... 1 111 .. .. 00001 @vldst_il
++# gather loads/scatter stores
++VLDR_S_sg        111 0 1100 1 . 01 .... ... 0 111 . .... .... @vldst_sg
++VLDR_U_sg        111 1 1100 1 . 01 .... ... 0 111 . .... .... @vldst_sg
++VSTR_sg          111 0 1100 1 . 00 .... ... 0 111 . .... .... @vldst_sg
 +
  # Moves between 2 32-bit vector lanes and 2 general purpose registers
  VMOV_to_2gp      1110 1100 0 . 00 rt2:4 ... 0 1111 000 idx:1 rt:4 qd=%qd
  VMOV_from_2gp    1110 1100 0 . 01 rt2:4 ... 0 1111 000 idx:1 rt:4 qd=%qd
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 293c0e11819..ec9677395fc 100644
+index 210e70d1727..36592b88372 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -369,6 +369,348 @@ DO_VLDR64_SG(vldrd_sg_wb_ud, ADDR_ADD, true)
- DO_VSTR_SG(vstrw_sg_wb_uw, stl, 4, uint32_t, ADDR_ADD, true)
- DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
+@@ -213,6 +213,135 @@ DO_VSTR(vstrh_w, 2, stw, 4, int32_t)
+ #undef DO_VLDR
+ #undef DO_VSTR
  
 +/*
-+ * Deinterleaving loads/interleaving stores.
-+ *
-+ * For these helpers we are passed the index of the first Qreg
-+ * (VLD2/VST2 will also access Qn+1, VLD4/VST4 access Qn .. Qn+3)
-+ * and the value of the base address register Rn.
-+ * The helpers are specialized for pattern and element size, so
-+ * for instance vld42h is VLD4 with pattern 2, element size MO_16.
-+ *
-+ * These insns are beatwise but not predicated, so we must honour ECI,
-+ * but need not look at mve_element_mask().
-+ *
-+ * The pseudocode implements these insns with multiple memory accesses
-+ * of the element size, but rules R_VVVG and R_FXDM permit us to make
-+ * one 32-bit memory access per beat.
++ * Gather loads/scatter stores. Here each element of Qm specifies
++ * an offset to use from the base register Rm. In the _os_ versions
++ * that offset is scaled by the element size.
++ * For loads, predicated lanes are zeroed instead of retaining
++ * their previous values.
 + */
-+#define DO_VLD4B(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
++#define DO_VLDR_SG(OP, LDTYPE, ESIZE, TYPE, OFFTYPE, ADDRFN)            \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
 +                          uint32_t base)                                \
 +    {                                                                   \
-+        int beat, e;                                                    \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
++        TYPE *d = vd;                                                   \
++        OFFTYPE *m = vm;                                                \
++        uint16_t mask = mve_element_mask(env);                          \
++        uint16_t eci_mask = mve_eci_mask(env);                          \
++        unsigned e;                                                     \
++        uint32_t addr;                                                  \
++        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) { \
++            if (!(eci_mask & 1)) {                                      \
 +                continue;                                               \
 +            }                                                           \
-+            addr = base + off[beat] * 4;                                \
-+            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            for (e = 0; e < 4; e++, data >>= 8) {                       \
-+                uint8_t *qd = (uint8_t *)aa32_vfp_qreg(env, qnidx + e); \
-+                qd[H1(off[beat])] = data;                               \
-+            }                                                           \
++            addr = ADDRFN(base, m[H##ESIZE(e)]);                        \
++            d[H##ESIZE(e)] = (mask & 1) ?                               \
++                cpu_##LDTYPE##_data_ra(env, addr, GETPC()) : 0;         \
 +        }                                                               \
++        mve_advance_vpt(env);                                           \
 +    }
 +
-+#define DO_VLD4H(OP, O1, O2)                                            \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
++/* We know here TYPE is unsigned so always the same as the offset type */
++#define DO_VSTR_SG(OP, STTYPE, ESIZE, TYPE, ADDRFN)                     \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
 +                          uint32_t base)                                \
 +    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O1, O2, O2 };                          \
-+        uint32_t addr, data;                                            \
-+        int y; /* y counts 0 2 0 2 */                                   \
-+        uint16_t *qd;                                                   \
-+        for (beat = 0, y = 0; beat < 4; beat++, mask >>= 4, y ^= 2) {   \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
++        TYPE *d = vd;                                                   \
++        TYPE *m = vm;                                                   \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned e;                                                     \
++        uint32_t addr;                                                  \
++        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {              \
++            addr = ADDRFN(base, m[H##ESIZE(e)]);                        \
++            if (mask & 1) {                                             \
++                cpu_##STTYPE##_data_ra(env, addr, d[H##ESIZE(e)], GETPC()); \
 +            }                                                           \
-+            addr = base + off[beat] * 8 + (beat & 1) * 4;               \
-+            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + y);             \
-+            qd[H2(off[beat])] = data;                                   \
-+            data >>= 16;                                                \
-+            qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + y + 1);         \
-+            qd[H2(off[beat])] = data;                                   \
 +        }                                                               \
++        mve_advance_vpt(env);                                           \
 +    }
 +
-+#define DO_VLD4W(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
++/*
++ * 64-bit accesses are slightly different: they are done as two 32-bit
++ * accesses, controlled by the predicate mask for the relevant beat,
++ * and with a single 32-bit offset in the first of the two Qm elements.
++ * Note that for QEMU our IMPDEF AIRCR.ENDIANNESS is always 0 (little).
++ */
++#define DO_VLDR64_SG(OP, ADDRFN)                                        \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
 +                          uint32_t base)                                \
 +    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        uint32_t *qd;                                                   \
-+        int y;                                                          \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
++        uint32_t *d = vd;                                               \
++        uint32_t *m = vm;                                               \
++        uint16_t mask = mve_element_mask(env);                          \
++        uint16_t eci_mask = mve_eci_mask(env);                          \
++        unsigned e;                                                     \
++        uint32_t addr;                                                  \
++        for (e = 0; e < 16 / 4; e++, mask >>= 4, eci_mask >>= 4) {      \
++            if (!(eci_mask & 1)) {                                      \
 +                continue;                                               \
 +            }                                                           \
-+            addr = base + off[beat] * 4;                                \
-+            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            y = (beat + (O1 & 2)) & 3;                                  \
-+            qd = (uint32_t *)aa32_vfp_qreg(env, qnidx + y);             \
-+            qd[H4(off[beat] >> 2)] = data;                              \
++            addr = ADDRFN(base, m[H4(e & ~1)]);                         \
++            addr += 4 * (e & 1);                                        \
++            d[H4(e)] = (mask & 1) ? cpu_ldl_data_ra(env, addr, GETPC()) : 0; \
 +        }                                                               \
++        mve_advance_vpt(env);                                           \
 +    }
 +
-+DO_VLD4B(vld40b, 0, 1, 10, 11)
-+DO_VLD4B(vld41b, 2, 3, 12, 13)
-+DO_VLD4B(vld42b, 4, 5, 14, 15)
-+DO_VLD4B(vld43b, 6, 7, 8, 9)
-+
-+DO_VLD4H(vld40h, 0, 5)
-+DO_VLD4H(vld41h, 1, 6)
-+DO_VLD4H(vld42h, 2, 7)
-+DO_VLD4H(vld43h, 3, 4)
-+
-+DO_VLD4W(vld40w, 0, 1, 10, 11)
-+DO_VLD4W(vld41w, 2, 3, 12, 13)
-+DO_VLD4W(vld42w, 4, 5, 14, 15)
-+DO_VLD4W(vld43w, 6, 7, 8, 9)
-+
-+#define DO_VLD2B(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
++#define DO_VSTR64_SG(OP, ADDRFN)                                        \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm,         \
 +                          uint32_t base)                                \
 +    {                                                                   \
-+        int beat, e;                                                    \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        uint8_t *qd;                                                    \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat] * 2;                                \
-+            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            for (e = 0; e < 4; e++, data >>= 8) {                       \
-+                qd = (uint8_t *)aa32_vfp_qreg(env, qnidx + (e & 1));    \
-+                qd[H1(off[beat] + (e >> 1))] = data;                    \
++        uint32_t *d = vd;                                               \
++        uint32_t *m = vm;                                               \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned e;                                                     \
++        uint32_t addr;                                                  \
++        for (e = 0; e < 16 / 4; e++, mask >>= 4) {                      \
++            addr = ADDRFN(base, m[H4(e & ~1)]);                         \
++            addr += 4 * (e & 1);                                        \
++            if (mask & 1) {                                             \
++                cpu_stl_data_ra(env, addr, d[H4(e)], GETPC());          \
 +            }                                                           \
 +        }                                                               \
++        mve_advance_vpt(env);                                           \
 +    }
 +
-+#define DO_VLD2H(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        int e;                                                          \
-+        uint16_t *qd;                                                   \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat] * 4;                                \
-+            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            for (e = 0; e < 2; e++, data >>= 16) {                      \
-+                qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + e);         \
-+                qd[H2(off[beat])] = data;                               \
-+            }                                                           \
-+        }                                                               \
-+    }
++#define ADDR_ADD(BASE, OFFSET) ((BASE) + (OFFSET))
++#define ADDR_ADD_OSH(BASE, OFFSET) ((BASE) + ((OFFSET) << 1))
++#define ADDR_ADD_OSW(BASE, OFFSET) ((BASE) + ((OFFSET) << 2))
++#define ADDR_ADD_OSD(BASE, OFFSET) ((BASE) + ((OFFSET) << 3))
 +
-+#define DO_VLD2W(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        uint32_t *qd;                                                   \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat];                                    \
-+            data = cpu_ldl_le_data_ra(env, addr, GETPC());              \
-+            qd = (uint32_t *)aa32_vfp_qreg(env, qnidx + (beat & 1));    \
-+            qd[H4(off[beat] >> 3)] = data;                              \
-+        }                                                               \
-+    }
++DO_VLDR_SG(vldrb_sg_sh, ldsb, 2, int16_t, uint16_t, ADDR_ADD)
++DO_VLDR_SG(vldrb_sg_sw, ldsb, 4, int32_t, uint32_t, ADDR_ADD)
++DO_VLDR_SG(vldrh_sg_sw, ldsw, 4, int32_t, uint32_t, ADDR_ADD)
 +
-+DO_VLD2B(vld20b, 0, 2, 12, 14)
-+DO_VLD2B(vld21b, 4, 6, 8, 10)
++DO_VLDR_SG(vldrb_sg_ub, ldub, 1, uint8_t, uint8_t, ADDR_ADD)
++DO_VLDR_SG(vldrb_sg_uh, ldub, 2, uint16_t, uint16_t, ADDR_ADD)
++DO_VLDR_SG(vldrb_sg_uw, ldub, 4, uint32_t, uint32_t, ADDR_ADD)
++DO_VLDR_SG(vldrh_sg_uh, lduw, 2, uint16_t, uint16_t, ADDR_ADD)
++DO_VLDR_SG(vldrh_sg_uw, lduw, 4, uint32_t, uint32_t, ADDR_ADD)
++DO_VLDR_SG(vldrw_sg_uw, ldl, 4, uint32_t, uint32_t, ADDR_ADD)
++DO_VLDR64_SG(vldrd_sg_ud, ADDR_ADD)
 +
-+DO_VLD2H(vld20h, 0, 1, 6, 7)
-+DO_VLD2H(vld21h, 2, 3, 4, 5)
++DO_VLDR_SG(vldrh_sg_os_sw, ldsw, 4, int32_t, uint32_t, ADDR_ADD_OSH)
++DO_VLDR_SG(vldrh_sg_os_uh, lduw, 2, uint16_t, uint16_t, ADDR_ADD_OSH)
++DO_VLDR_SG(vldrh_sg_os_uw, lduw, 4, uint32_t, uint32_t, ADDR_ADD_OSH)
++DO_VLDR_SG(vldrw_sg_os_uw, ldl, 4, uint32_t, uint32_t, ADDR_ADD_OSW)
++DO_VLDR64_SG(vldrd_sg_os_ud, ADDR_ADD_OSD)
 +
-+DO_VLD2W(vld20w, 0, 4, 24, 28)
-+DO_VLD2W(vld21w, 8, 12, 16, 20)
++DO_VSTR_SG(vstrb_sg_ub, stb, 1, uint8_t, ADDR_ADD)
++DO_VSTR_SG(vstrb_sg_uh, stb, 2, uint16_t, ADDR_ADD)
++DO_VSTR_SG(vstrb_sg_uw, stb, 4, uint32_t, ADDR_ADD)
++DO_VSTR_SG(vstrh_sg_uh, stw, 2, uint16_t, ADDR_ADD)
++DO_VSTR_SG(vstrh_sg_uw, stw, 4, uint32_t, ADDR_ADD)
++DO_VSTR_SG(vstrw_sg_uw, stl, 4, uint32_t, ADDR_ADD)
++DO_VSTR64_SG(vstrd_sg_ud, ADDR_ADD)
 +
-+#define DO_VST4B(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat, e;                                                    \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat] * 4;                                \
-+            data = 0;                                                   \
-+            for (e = 3; e >= 0; e--) {                                  \
-+                uint8_t *qd = (uint8_t *)aa32_vfp_qreg(env, qnidx + e); \
-+                data = (data << 8) | qd[H1(off[beat])];                 \
-+            }                                                           \
-+            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+        }                                                               \
-+    }
-+
-+#define DO_VST4H(OP, O1, O2)                                            \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O1, O2, O2 };                          \
-+        uint32_t addr, data;                                            \
-+        int y; /* y counts 0 2 0 2 */                                   \
-+        uint16_t *qd;                                                   \
-+        for (beat = 0, y = 0; beat < 4; beat++, mask >>= 4, y ^= 2) {   \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat] * 8 + (beat & 1) * 4;               \
-+            qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + y);             \
-+            data = qd[H2(off[beat])];                                   \
-+            qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + y + 1);         \
-+            data |= qd[H2(off[beat])] << 16;                            \
-+            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+        }                                                               \
-+    }
-+
-+#define DO_VST4W(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        uint32_t *qd;                                                   \
-+        int y;                                                          \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat] * 4;                                \
-+            y = (beat + (O1 & 2)) & 3;                                  \
-+            qd = (uint32_t *)aa32_vfp_qreg(env, qnidx + y);             \
-+            data = qd[H4(off[beat] >> 2)];                              \
-+            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+        }                                                               \
-+    }
-+
-+DO_VST4B(vst40b, 0, 1, 10, 11)
-+DO_VST4B(vst41b, 2, 3, 12, 13)
-+DO_VST4B(vst42b, 4, 5, 14, 15)
-+DO_VST4B(vst43b, 6, 7, 8, 9)
-+
-+DO_VST4H(vst40h, 0, 5)
-+DO_VST4H(vst41h, 1, 6)
-+DO_VST4H(vst42h, 2, 7)
-+DO_VST4H(vst43h, 3, 4)
-+
-+DO_VST4W(vst40w, 0, 1, 10, 11)
-+DO_VST4W(vst41w, 2, 3, 12, 13)
-+DO_VST4W(vst42w, 4, 5, 14, 15)
-+DO_VST4W(vst43w, 6, 7, 8, 9)
-+
-+#define DO_VST2B(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat, e;                                                    \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        uint8_t *qd;                                                    \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat] * 2;                                \
-+            data = 0;                                                   \
-+            for (e = 3; e >= 0; e--) {                                  \
-+                qd = (uint8_t *)aa32_vfp_qreg(env, qnidx + (e & 1));    \
-+                data = (data << 8) | qd[H1(off[beat] + (e >> 1))];      \
-+            }                                                           \
-+            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+        }                                                               \
-+    }
-+
-+#define DO_VST2H(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        int e;                                                          \
-+        uint16_t *qd;                                                   \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat] * 4;                                \
-+            data = 0;                                                   \
-+            for (e = 1; e >= 0; e--) {                                  \
-+                qd = (uint16_t *)aa32_vfp_qreg(env, qnidx + e);         \
-+                data = (data << 16) | qd[H2(off[beat])];                \
-+            }                                                           \
-+            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+        }                                                               \
-+    }
-+
-+#define DO_VST2W(OP, O1, O2, O3, O4)                                    \
-+    void HELPER(mve_##OP)(CPUARMState *env, uint32_t qnidx,             \
-+                          uint32_t base)                                \
-+    {                                                                   \
-+        int beat;                                                       \
-+        uint16_t mask = mve_eci_mask(env);                              \
-+        const int off[4] = { O1, O2, O3, O4 };                          \
-+        uint32_t addr, data;                                            \
-+        uint32_t *qd;                                                   \
-+        for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-+            if ((mask & 1) == 0) {                                      \
-+                /* ECI says skip this beat */                           \
-+                continue;                                               \
-+            }                                                           \
-+            addr = base + off[beat];                                    \
-+            qd = (uint32_t *)aa32_vfp_qreg(env, qnidx + (beat & 1));    \
-+            data = qd[H4(off[beat] >> 3)];                              \
-+            cpu_stl_le_data_ra(env, addr, data, GETPC());               \
-+        }                                                               \
-+    }
-+
-+DO_VST2B(vst20b, 0, 2, 12, 14)
-+DO_VST2B(vst21b, 4, 6, 8, 10)
-+
-+DO_VST2H(vst20h, 0, 1, 6, 7)
-+DO_VST2H(vst21h, 2, 3, 4, 5)
-+
-+DO_VST2W(vst20w, 0, 4, 24, 28)
-+DO_VST2W(vst21w, 8, 12, 16, 20)
++DO_VSTR_SG(vstrh_sg_os_uh, stw, 2, uint16_t, ADDR_ADD_OSH)
++DO_VSTR_SG(vstrh_sg_os_uw, stw, 4, uint32_t, ADDR_ADD_OSH)
++DO_VSTR_SG(vstrw_sg_os_uw, stl, 4, uint32_t, ADDR_ADD_OSW)
++DO_VSTR64_SG(vstrd_sg_os_ud, ADDR_ADD_OSD)
 +
  /*
   * The mergemask(D, R, M) macro performs the operation "*D = R" but
   * storing only the bytes which correspond to 1 bits in M,
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index f4229e308ba..3ebc6356e4c 100644
+index be5a3e1a1f5..b0e4bdeb1c5 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -35,6 +35,7 @@ static inline int vidup_imm(DisasContext *s, int x)
+@@ -34,6 +34,7 @@ static inline int vidup_imm(DisasContext *s, int x)
+ #include "decode-mve.c.inc"
  
  typedef void MVEGenLdStFn(TCGv_ptr, TCGv_ptr, TCGv_i32);
- typedef void MVEGenLdStSGFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
-+typedef void MVEGenLdStIlFn(TCGv_ptr, TCGv_i32, TCGv_i32);
++typedef void MVEGenLdStSGFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
  typedef void MVEGenOneOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr);
  typedef void MVEGenTwoOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr);
  typedef void MVEGenTwoOpScalarFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
-@@ -366,6 +367,99 @@ static bool trans_VSTRD_sg_imm(DisasContext *s, arg_vldst_sg_imm *a)
-     return do_ldst_sg_imm(s, a, fns[a->w], MO_64);
- }
+@@ -209,6 +210,96 @@ DO_VLDST_WIDE_NARROW(VLDSTB_H, vldrb_sh, vldrb_uh, vstrb_h, MO_8)
+ DO_VLDST_WIDE_NARROW(VLDSTB_W, vldrb_sw, vldrb_uw, vstrb_w, MO_8)
+ DO_VLDST_WIDE_NARROW(VLDSTH_W, vldrh_sw, vldrh_uw, vstrh_w, MO_16)
  
-+static bool do_vldst_il(DisasContext *s, arg_vldst_il *a, MVEGenLdStIlFn *fn,
-+                        int addrinc)
++static bool do_ldst_sg(DisasContext *s, arg_vldst_sg *a, MVEGenLdStSGFn fn)
 +{
-+    TCGv_i32 rn;
++    TCGv_i32 addr;
++    TCGv_ptr qd, qm;
 +
 +    if (!dc_isar_feature(aa32_mve, s) ||
-+        !mve_check_qreg_bank(s, a->qd) ||
-+        !fn || (a->rn == 13 && a->w) || a->rn == 15) {
-+        /* Variously UNPREDICTABLE or UNDEF or related-encoding */
++        !mve_check_qreg_bank(s, a->qd | a->qm) ||
++        !fn || a->rn == 15) {
++        /* Rn case is UNPREDICTABLE */
 +        return false;
 +    }
++
 +    if (!mve_eci_check(s) || !vfp_access_check(s)) {
 +        return true;
 +    }
 +
-+    rn = load_reg(s, a->rn);
-+    /*
-+     * We pass the index of Qd, not a pointer, because the helper must
-+     * access multiple Q registers starting at Qd and working up.
-+     */
-+    fn(cpu_env, tcg_constant_i32(a->qd), rn);
++    addr = load_reg(s, a->rn);
 +
-+    if (a->w) {
-+        tcg_gen_addi_i32(rn, rn, addrinc);
-+        store_reg(s, a->rn, rn);
-+    } else {
-+        tcg_temp_free_i32(rn);
-+    }
-+    mve_update_and_store_eci(s);
++    qd = mve_qreg_ptr(a->qd);
++    qm = mve_qreg_ptr(a->qm);
++    fn(cpu_env, qd, qm, addr);
++    tcg_temp_free_ptr(qd);
++    tcg_temp_free_ptr(qm);
++    tcg_temp_free_i32(addr);
++    mve_update_eci(s);
 +    return true;
 +}
 +
++/*
++ * The naming scheme here is "vldrb_sg_sh == in-memory byte loads
++ * signextended to halfword elements in register". _os_ indicates that
++ * the offsets in Qm should be scaled by the element size.
++ */
 +/* This macro is just to make the arrays more compact in these functions */
 +#define F(N) gen_helper_mve_##N
 +
-+static bool trans_VLD2(DisasContext *s, arg_vldst_il *a)
++/* VLDRB/VSTRB (ie msize 1) with OS=1 is UNPREDICTABLE; we UNDEF */
++static bool trans_VLDR_S_sg(DisasContext *s, arg_vldst_sg *a)
 +{
-+    static MVEGenLdStIlFn * const fns[4][4] = {
-+        { F(vld20b), F(vld20h), F(vld20w), NULL, },
-+        { F(vld21b), F(vld21h), F(vld21w), NULL, },
-+        { NULL, NULL, NULL, NULL },
-+        { NULL, NULL, NULL, NULL },
++    static MVEGenLdStSGFn * const fns[2][4][4] = { {
++            { NULL, F(vldrb_sg_sh), F(vldrb_sg_sw), NULL },
++            { NULL, NULL,           F(vldrh_sg_sw), NULL },
++            { NULL, NULL,           NULL,           NULL },
++            { NULL, NULL,           NULL,           NULL }
++        }, {
++            { NULL, NULL,              NULL,              NULL },
++            { NULL, NULL,              F(vldrh_sg_os_sw), NULL },
++            { NULL, NULL,              NULL,              NULL },
++            { NULL, NULL,              NULL,              NULL }
++        }
 +    };
-+    if (a->qd > 6) {
-+        return false;
-+    }
-+    return do_vldst_il(s, a, fns[a->pat][a->size], 32);
++    return do_ldst_sg(s, a, fns[a->os][a->msize][a->size]);
 +}
 +
-+static bool trans_VLD4(DisasContext *s, arg_vldst_il *a)
++static bool trans_VLDR_U_sg(DisasContext *s, arg_vldst_sg *a)
 +{
-+    static MVEGenLdStIlFn * const fns[4][4] = {
-+        { F(vld40b), F(vld40h), F(vld40w), NULL, },
-+        { F(vld41b), F(vld41h), F(vld41w), NULL, },
-+        { F(vld42b), F(vld42h), F(vld42w), NULL, },
-+        { F(vld43b), F(vld43h), F(vld43w), NULL, },
++    static MVEGenLdStSGFn * const fns[2][4][4] = { {
++            { F(vldrb_sg_ub), F(vldrb_sg_uh), F(vldrb_sg_uw), NULL },
++            { NULL,           F(vldrh_sg_uh), F(vldrh_sg_uw), NULL },
++            { NULL,           NULL,           F(vldrw_sg_uw), NULL },
++            { NULL,           NULL,           NULL,           F(vldrd_sg_ud) }
++        }, {
++            { NULL, NULL,              NULL,              NULL },
++            { NULL, F(vldrh_sg_os_uh), F(vldrh_sg_os_uw), NULL },
++            { NULL, NULL,              F(vldrw_sg_os_uw), NULL },
++            { NULL, NULL,              NULL,              F(vldrd_sg_os_ud) }
++        }
 +    };
-+    if (a->qd > 4) {
-+        return false;
-+    }
-+    return do_vldst_il(s, a, fns[a->pat][a->size], 64);
++    return do_ldst_sg(s, a, fns[a->os][a->msize][a->size]);
 +}
 +
-+static bool trans_VST2(DisasContext *s, arg_vldst_il *a)
++static bool trans_VSTR_sg(DisasContext *s, arg_vldst_sg *a)
 +{
-+    static MVEGenLdStIlFn * const fns[4][4] = {
-+        { F(vst20b), F(vst20h), F(vst20w), NULL, },
-+        { F(vst21b), F(vst21h), F(vst21w), NULL, },
-+        { NULL, NULL, NULL, NULL },
-+        { NULL, NULL, NULL, NULL },
++    static MVEGenLdStSGFn * const fns[2][4][4] = { {
++            { F(vstrb_sg_ub), F(vstrb_sg_uh), F(vstrb_sg_uw), NULL },
++            { NULL,           F(vstrh_sg_uh), F(vstrh_sg_uw), NULL },
++            { NULL,           NULL,           F(vstrw_sg_uw), NULL },
++            { NULL,           NULL,           NULL,           F(vstrd_sg_ud) }
++        }, {
++            { NULL, NULL,              NULL,              NULL },
++            { NULL, F(vstrh_sg_os_uh), F(vstrh_sg_os_uw), NULL },
++            { NULL, NULL,              F(vstrw_sg_os_uw), NULL },
++            { NULL, NULL,              NULL,              F(vstrd_sg_os_ud) }
++        }
 +    };
-+    if (a->qd > 6) {
-+        return false;
-+    }
-+    return do_vldst_il(s, a, fns[a->pat][a->size], 32);
-+}
-+
-+static bool trans_VST4(DisasContext *s, arg_vldst_il *a)
-+{
-+    static MVEGenLdStIlFn * const fns[4][4] = {
-+        { F(vst40b), F(vst40h), F(vst40w), NULL, },
-+        { F(vst41b), F(vst41h), F(vst41w), NULL, },
-+        { F(vst42b), F(vst42h), F(vst42w), NULL, },
-+        { F(vst43b), F(vst43h), F(vst43w), NULL, },
-+    };
-+    if (a->qd > 4) {
-+        return false;
-+    }
-+    return do_vldst_il(s, a, fns[a->pat][a->size], 64);
++    return do_ldst_sg(s, a, fns[a->os][a->msize][a->size]);
 +}
 +
 +#undef F

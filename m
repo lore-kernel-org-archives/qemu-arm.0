@@ -1,106 +1,109 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp594980lfc;
-        Tue, 13 Jul 2021 06:38:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9g03iewCbEFK3D986HmPgY4wkHeI+m/ppVr9NEpKaYldL7agJ6lVJj2tj52e9l7Raa9i/
-X-Received: by 2002:a17:906:bc8b:: with SMTP id lv11mr5708586ejb.331.1626183487936;
-        Tue, 13 Jul 2021 06:38:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626183487; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp595001lfc;
+        Tue, 13 Jul 2021 06:38:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyc4tOn62/THJ7Ig41iDVh0O4YEc4rUJkj5SV0zMVRx2Qq+i9PXm9aJ85aMRVOPY9mHBKsL
+X-Received: by 2002:a67:7dd0:: with SMTP id y199mr5991877vsc.11.1626183489517;
+        Tue, 13 Jul 2021 06:38:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626183489; cv=none;
         d=google.com; s=arc-20160816;
-        b=xq4/dusFYncOmfNMcWkNG3smzkiHfB6dSeCpdae24iOh0SvUtcP+LxFoqxs1tJL7zN
-         FHqJ5V8IC9oC318I/qgo60PBEgL6BC3ljbZMDx3cXNnSaBg/3y2bNXVDJ6mOJNEiint1
-         Ma52D80EXbAxFyXhIlTk1giRfFoVlD/Rhvtxq/62oMyWqYGM51OY3nMCZwm4IqBbpGfm
-         TH5UCTy8Nd4HAImlc1GXAUUCcbTsbGiEBLQd4AdWKdSmHpikQ3nHnxWcWyDAuh1IXTsi
-         R5uuoASAm03S8ucM7W8htyhu9yAJiaEHTSt1WifRjh6EoPvRu3JMbGn+bqaUpJOP3HYH
-         ySjQ==
+        b=BgCtfzY3luNIv1LMCdj4rhDQZRz4xGr4IlNN7tcI8Tp7gEeYe86qDW7ttUWz4/XwpX
+         OQpCGaYCVC09/z6mKtsXrOY7hEMOqIQm5E6lQSG6A7KTRmf9k0PaJOu8YEnbmSuj0GWs
+         5/VF27iCkqLpBSMtSvftG3M4d1sqvWB18Jc+tu57L5bLCUiGqxTcM1U8isjxIERi3fKz
+         MpRvUKmC15V4DNa2mw8bHn5SvM0tJqV1JzMp5Le976GXXPR/csGv03W7qgvxRtWDUjEp
+         /1sEg6ekrir/jlNvdaEzbB5cGD1eTp9qQalgVZtOQG5pvtnOmbBWoBk2DuBhVp6XdXIn
+         Isvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=AyiWksB98Xn9P+lq/nb9KeFGaTnrfwhjfvza6KjKJFQ=;
-        b=IKWNzC1iL8af1oXmyk79khA8WKW8EzineuYuWt0mOa5kDnMBoIT7JYt+BRBJY/VTVn
-         cqxwKGC6UQdWY1nAqXZOCNWUwhnty413AkSYq4N/FNH+xAQNlSmOSpD0m+wum/g14kQN
-         /4TPk2YjwL2e8L+y/EgG2F+X3Q9dE2hQQ0FlML+Sq5aYLJ+K0cMKAeRzXL5H0XiIwsO/
-         yEufPO10t5JG6w5P1Rxviyoo7BFptA3ZDVcx6gAjJ+ppgZ6I9jNbMQVD6rAlSmVGAIVR
-         51astnaMtOnkRQDb3bqB8brUe9QARm02cBF7NWFvpwVk+LWHqXD5CtijBqXXfsPHkP8m
-         C8bA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=5FuhIcPQ8dqLKfYvxbInQRrJHkLhIPar3p6mkfICIW0=;
+        b=kavz8kMNXC2XkWQJEouyYuXFmyVR3xUWgGqIHDZ7/eYdBotv1E9FJWfd7+JwEMcbxz
+         cjl3LwGyR/7ac0ea0H3+7Br2BxzwzKYAHD3Jlj2P5VrxsOCCGEMdrzej/ZoEWcqI26yr
+         FLLFLmw2QLCtFByy0Lq6iAvwWPlLlBddOQuHSuTdDdjTloPSeGyJQSmk0pwSYpQxtocW
+         7Q71dg9h/9erWn4fTYDFZGhmZUdHNyuFHkLa/hsHoVSa2UeiDnmCOdpTf2bWXy1YNLGw
+         Ysml9up9cDbRyfRea2npzIq0Jrf2TAX915wxnyD2osY856FukHa2EiResW7bUFVTg2VK
+         6PjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WKDUGBIV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XJhNEyiu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g14si15192099eds.289.2021.07.13.06.38.07
+        by mx.google.com with ESMTPS id u196si1239402vkb.14.2021.07.13.06.38.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 06:38:07 -0700 (PDT)
+        Tue, 13 Jul 2021 06:38:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WKDUGBIV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XJhNEyiu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51762 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51828 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3Ibu-0008En-RG
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 09:38:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53792)
+	id 1m3Ibw-0008HH-MW
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 09:38:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53844)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3IbM-0008EW-65
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:32 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:38886)
+ id 1m3IbN-0008F3-J1
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:36 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:36508)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3IbK-0003Zk-Le
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:31 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id g16so20621511wrw.5
- for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 06:37:30 -0700 (PDT)
+ id 1m3IbL-0003aZ-Jc
+ for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:37:33 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id v5so30524934wrt.3
+ for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 06:37:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=AyiWksB98Xn9P+lq/nb9KeFGaTnrfwhjfvza6KjKJFQ=;
- b=WKDUGBIV/+bHVnCyeBzJXGUHS7DmfJItsSX3VXIKxX1xF3uiiQmJbDkZbM1CbST/45
- OaZ8RRw3iAsaSMCFSwS/m5WuYaEqN5oQDbF4TEtMbJp3IVLNWA5kUQYmUpEwnW3lIFvH
- apu4rFhHfd904+4oC5z0U3mK9E5XuHUdayYRxQ17IdEqwtbZsqYj8mqyox9KAi6Vy+KR
- bEUG13gUr+y/SKc/Z5s8FWTooFgnc2kMpXeie1nVNpUd/42VvRfsnv6XZFqt3Brxa2gv
- tYCgakTk8/fufv/iqI49yEJdE4EHDSsL69u2MQwq9gy54a8cwSa5eqXJKW4i1Eqanwsm
- 1hhw==
+ bh=5FuhIcPQ8dqLKfYvxbInQRrJHkLhIPar3p6mkfICIW0=;
+ b=XJhNEyiucku7u8UM6V38+9h7Q5Hyad6ta8uLbCnbwn62ovCSz7KmKa7g095ws9Z8HP
+ phq8j57Ms7ZEiSPy5i3GoP2UJwiYYizZywJxZ4iTt/ijI5edjMbpV5HUY5uGmzqCbDK9
+ Xdf7rqAXaKpY4+Nvw8yWCmT1qhCxvneinW7Qe2W50JKcMLET3mJJELcfSq5aOAHA3jBr
+ TtmZnoK7Qs+JgylXrPEKn90AUeLVAPfXCobXXoAP64C3wp2nyVnr1mFwsevyGjA/AA52
+ 3VzhodbApH7eC8WME7j+BD+jZShRai0UTaMlm1q0f4wU/eyjWfxhFqrbyF4jh6+8CpGc
+ n2vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=AyiWksB98Xn9P+lq/nb9KeFGaTnrfwhjfvza6KjKJFQ=;
- b=tgBf28ZnHvLYWkyAHFeBEkZT80MibNx3Gnqm8zWEZpOcaRzkkRStLOIXOZhelKWG5p
- LjEoyTBadwON5WwS85JUsLy1C1QHsgPkWKZRMTnrKz/v9iDJoQduiZWjC6bnXMDkTTFH
- oxhbJRN8p0Z2/KUBrW1cZSW/hmfymMZwt8HqWZYz/VeJDZN62a4GmfxjjUQ0l4/ICst5
- jDeGhyohmKiqrnWzLIELCwMCx/HuYjCk2lPIF/rrTVtq3DejrKn4OfC6HULB9+UFPcdy
- Z+1N/IPV+0Zr7MqZ7Nq8jbUKJU9ghZ3s5HhMEs7Zq0MWDjmIP1ixOekGG4iVFeseHU1k
- kqOA==
-X-Gm-Message-State: AOAM532ygWjEZsInOiwWRZNoBzl6pMhfXwVkIH7D21gm9rTCoSdIW0wU
- DOndeowvusls1Jek5QY8PlfXsR7nrD9hJG+/
-X-Received: by 2002:a05:6000:18c:: with SMTP id
- p12mr5955738wrx.98.1626183449102; 
- Tue, 13 Jul 2021 06:37:29 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=5FuhIcPQ8dqLKfYvxbInQRrJHkLhIPar3p6mkfICIW0=;
+ b=GuG/+iLOn3EFGlHs+NHDxg+2HIMAmSXl0xSzlvflfs6ntMJ0IqEwCSST3E+GSYVkc+
+ +I/t+6g/x6EHa+6deOehoCzgxUqcyce/Z5vkTsFX59O6NkIf69504q/FwOPYO5TUdVAi
+ Kn/JUgVH+Qhe7XNUre4o4DZ7SDSKTjZPqtFzyrMTzVkuEXD7UKHszuzn/193hXHvCMEg
+ qalE+tGg4lnJ/pS6iA7gN3hwf95yab7QXiOlnSl4DwsCMYzAVXAD1jz0IsJRAMTM3PaS
+ eW343c5k0HCsM2IR1jcjdAPQklk5V7Uda26yEGMpD9i4EbqU01ja3LomkF0RJ9WD2Xfj
+ Z9ww==
+X-Gm-Message-State: AOAM533q0fcp9dmjtS3NxzfGdemtGqzx1BUN2Z3P4ym0+fbSvMlgi40T
+ m+NA9Csgs4WyVCLlucrtwnLA0x3bjbYOvu46
+X-Received: by 2002:adf:de84:: with SMTP id w4mr5876809wrl.104.1626183450436; 
+ Tue, 13 Jul 2021 06:37:30 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.28
+ by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jul 2021 06:37:28 -0700 (PDT)
+ Tue, 13 Jul 2021 06:37:30 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 00/34] target/arm: Third slice of MVE implementation
-Date: Tue, 13 Jul 2021 14:36:52 +0100
-Message-Id: <20210713133726.26842-1-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 02/34] target/arm: Print MVE VPR in CPU dumps
+Date: Tue, 13 Jul 2021 14:36:54 +0100
+Message-Id: <20210713133726.26842-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210713133726.26842-1-peter.maydell@linaro.org>
+References: <20210713133726.26842-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,75 +118,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4sp81odnVio5
+X-TUID: 7/0sZdy5q4jo
 
-This patchseries provides the third slice of the MVE implementation.
-In this series:
- * fixes for minor bugs in a couple of the insns already upstream
- * all the remaining integer instructions
- * the remaining loads and stores (scatter-gather and interleaving)
+Include the MVE VPR register value in the CPU dumps produced by
+arm_cpu_dump_state() if we are printing FPU information. This
+makes it easier to interpret debug logs when predication is
+active.
 
-This is obviously for-6.2 material, so no urgency in reviewing it.
-But "all the integer stuff done" seemed like an obvious natural
-break point to send out what I've done so far.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-I apologize in advance for the final patch, which was tricky for
-me to write and is probably going to be painful to review too.
-This is mostly because I find the interleaving loads/stores
-rather confusing...
-
-thanks
--- PMM
-
-Peter Maydell (34):
-  target/arm: Note that we handle VMOVL as a special case of VSHLL
-  target/arm: Print MVE VPR in CPU dumps
-  target/arm: Fix MVE VSLI by 0 and VSRI by <dt>
-  target/arm: Fix signed VADDV
-  target/arm: Fix mask handling for MVE narrowing operations
-  target/arm: Fix 48-bit saturating shifts
-  target/arm: Fix calculation of LTP mask when LR is 0
-  target/arm: Fix VPT advance when ECI is non-zero
-  target/arm: Factor out mve_eci_mask()
-  target/arm: Fix VLDRB/H/W for predicated elements
-  target/arm: Implement MVE VMULL (polynomial)
-  target/arm: Implement MVE incrementing/decrementing dup insns
-  target/arm: Factor out gen_vpst()
-  target/arm: Implement MVE integer vector comparisons
-  target/arm: Implement MVE integer vector-vs-scalar comparisons
-  target/arm: Implement MVE VPSEL
-  target/arm: Implement MVE VMLAS
-  target/arm: Implement MVE shift-by-scalar
-  target/arm: Move 'x' and 'a' bit definitions into vmlaldav formats
-  target/arm: Implement MVE integer min/max across vector
-  target/arm: Implement MVE VABAV
-  target/arm: Implement MVE narrowing moves
-  target/arm: Rename MVEGenDualAccOpFn to MVEGenLongDualAccOpFn
-  target/arm: Implement MVE VMLADAV and VMLSLDAV
-  target/arm: Implement MVE VMLA
-  target/arm: Implement MVE saturating doubling multiply accumulates
-  target/arm: Implement MVE VQABS, VQNEG
-  target/arm: Implement MVE VMAXA, VMINA
-  target/arm: Implement MVE VMOV to/from 2 general-purpose registers
-  target/arm: Implement MVE VPNOT
-  target/arm: Implement MVE VCTP
-  target/arm: Implement MVE scatter-gather insns
-  target/arm: Implement MVE scatter-gather immediate forms
-  target/arm: Implement MVE interleaving loads/stores
-
- target/arm/helper-mve.h    |  295 +++++++++
- target/arm/translate-a32.h |    2 +
- target/arm/vec_internal.h  |   11 +
- target/arm/mve.decode      |  228 ++++++-
- target/arm/t32.decode      |    1 +
- target/arm/cpu.c           |    3 +
- target/arm/mve_helper.c    | 1259 ++++++++++++++++++++++++++++++++++--
- target/arm/translate-mve.c |  865 ++++++++++++++++++++++++-
- target/arm/translate-vfp.c |    2 +-
- target/arm/translate.c     |   33 +
- target/arm/vec_helper.c    |   14 +-
- 11 files changed, 2628 insertions(+), 85 deletions(-)
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 9cddfd6a442..6d6b8888037 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1016,6 +1016,9 @@ static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+                          i, v);
+         }
+         qemu_fprintf(f, "FPSCR: %08x\n", vfp_get_fpscr(env));
++        if (cpu_isar_feature(aa32_mve, cpu)) {
++            qemu_fprintf(f, "VPR: %08x\n", env->v7m.vpr);
++        }
+     }
+ }
+ 
 -- 
 2.20.1
 

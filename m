@@ -1,102 +1,102 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp612234lfc;
-        Tue, 13 Jul 2021 06:59:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTDskvzXk8BIa9GRLKFUsIuDOtfKVGQIfkssRUusGtEiIIAyds/IrOkupdxpVNHunrdiWj
-X-Received: by 2002:ab0:13e8:: with SMTP id n37mr6002992uae.44.1626184780339;
-        Tue, 13 Jul 2021 06:59:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626184780; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp615442lfc;
+        Tue, 13 Jul 2021 07:02:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwCXMQ3tRNFLqhWGUxXeGbwida/U55Mr8Csp9DDPP8Dc4VHVG+n0GU28OOXTvq+dwVaq2u7
+X-Received: by 2002:a1c:988a:: with SMTP id a132mr151301wme.175.1626184971728;
+        Tue, 13 Jul 2021 07:02:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626184971; cv=none;
         d=google.com; s=arc-20160816;
-        b=UldY/OFXuXwkhTJbm+q2OohVh+Uv/FponihiGTV2ZlilV36XEp3F3jXqURZNhdBJ24
-         Ehhhoghdd4Rwx/iQMx2Ah7CRj3sr2KcFbs9DEeBWiOMixGUZ8Gtc5AEjO8UHa55OXl7l
-         lM6PLOHjdMpbONxYoMVJqvG93hbZ2adbo9lkqSQPu0pQt6b/eqP31eXsq4lGEC1eAKIj
-         kXO90ji1b3hAgsRS45LzMX1MB+42Lk3RCFuWEUWTJIwGgxvvp4D915HpJ4FVNi15qHy8
-         Fa968RV8N/KwDmhKn5CKo/YcaqmzDzkF2/kfovt+z4JYR0l1raKh0qfkKkgrdba+tTjP
-         2nHA==
+        b=Dgqe+gstq+3ImmAE0OjzjDFDtPkLhUHKVgjMVEwbJzBSXAfYEk+vPdjJQvpbdiBrKn
+         wySDIcko+8dybTgXrdRaBGdBoD/gdJMbZ2cSoIbQutwN2WR7AekWaRD8RJ2O578zjacl
+         vvnaG/Vu/fmbbJJcQzb8DlY2ZPJ+gADBASrdKftsY93sYy2uUm9LSPUCI2kOlI6Mnqfv
+         BPily8lucrtSiaaUcoQztQLt0ptUPkPND09gMsIZnUcDPmI+xaAiSGQEywpMWmZJyOkM
+         F04fCDGzoVQpnFAUChfd0o/hdnrURVpWEmpjifJ6WqKubWEcpPKkSzX7TeMfOFwnPauI
+         RH6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xdTiVrTGrjwqxBrVWc02ZyC5Zuxj4JEnIGJ5DSfl9U4=;
-        b=Urj31Fky5l9yTVQe2wjBOG6HBn9YmCZ1S/c0KeLPkLwKav/1YNbsDTMyh1+lGTgBxl
-         enxa3wMWtKz7Poabb5IeAI6yPtIT831WeGdXPhqgSQmS9vcxpHOUIM+oRkVq2mMaRIv/
-         bOna4EAxMWr/UBn9dJO37T1EEV+YwGXiCLOLjrnD/ernX7bF3d8eu3C7AM00a5wKNnbC
-         il0hUUeubMdjeKzsNwH76lNkE3GSfrUJFnpAsC7Z+6KI6zIpW4bIbfE6gWsyA/2jyhlW
-         eZJSGRLa1VeVJmR0LNvUBm7kVzb6CmxMXKHeKYmk4D5PenHsCvE9kcd4mCDUdMfrEhJ4
-         fZIA==
+        bh=jcneWcHtRSIWZQaKInlpxUM3P5jf//GWQwWQ0tWibxQ=;
+        b=Ji4S2K9QPfx2ZKHm8oHXnTQ4hJFPPdojow+QwTAHqzTGbSfRwvJpUCxPOjU6FEbFPl
+         gt1xP06qu3UVkwd4u53v/IUVuTnz5TUVznmSuXbTrHDRazLx/emfnFjEAXQzpZaCt0uP
+         YmasNNbPOcXf1+vNKt13K/BgxrvmfdfK/wZbVvikgUoxoxpREiMC3YfYlDjgxEzOoBRT
+         YjUtmYTdKHCGjFjZ38lu4DYU9AQ/3WX42TPwpbwQmy318us7FY8p8lTAsxVnRfiP/5Y9
+         mCQ0pM4EjUmIUeAb/sBG0Shd6bAb4+EliWMNfy0+5p0TpPH/Me2pTrYOa+DrOrQMNe2j
+         L4xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AXeeUJfe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VLLBm8gz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22si18047947vsg.331.2021.07.13.06.59.40
+        by mx.google.com with ESMTPS id i14si5941312wry.363.2021.07.13.07.02.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 06:59:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Jul 2021 07:02:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AXeeUJfe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VLLBm8gz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36494 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3Iwl-0004Jf-Jo
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 09:59:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54742)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m3Izq-0000Gc-Lh
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 10:02:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54758)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3Ibs-0000Rj-7b
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:38:04 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:41812)
+ id 1m3Ibt-0000W4-8B
+ for qemu-devel@nongnu.org; Tue, 13 Jul 2021 09:38:05 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:40501)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3Ibi-0003q6-JY
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 09:38:03 -0400
-Received: by mail-wr1-x433.google.com with SMTP id k4so24198005wrc.8
- for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 06:37:54 -0700 (PDT)
+ id 1m3Ibi-0003qR-RG
+ for qemu-devel@nongnu.org; Tue, 13 Jul 2021 09:38:04 -0400
+Received: by mail-wr1-x432.google.com with SMTP id l7so29613268wrv.7
+ for <qemu-devel@nongnu.org>; Tue, 13 Jul 2021 06:37:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=xdTiVrTGrjwqxBrVWc02ZyC5Zuxj4JEnIGJ5DSfl9U4=;
- b=AXeeUJfeCTahTk0Hs73SVfHTU3+XXQffQhq6aAS4UwsRCaCxnCXzeCQgCp8gZZ+Gkf
- bC55Qcx3c4lwH5PLeRJniY5IMp2RrANCfDv4Y08EmaUlSCw73xzTV3ga0gGyEdsWRtn5
- /b1D0b7HKTYgZCOCMh0EjoWTeOgN1R8pl10X9jdwS6B/eHp1gTKn+8dzmA0axYfFI8A0
- yXVtZJGsVYqyS2y+BztJ125ZUAejHKkSYrIbClWXpM93Bvxy5I6SBSvzkZc7gslhwGqk
- eYKc8Fn8FbQWG8tGKgoTZ15a7WAi1kUaidzG6trDZTL217/Wrm4akrGnX5mto2s4Fb95
- vTsg==
+ bh=jcneWcHtRSIWZQaKInlpxUM3P5jf//GWQwWQ0tWibxQ=;
+ b=VLLBm8gzy+J77EPIHFW42M3zd3AfUbT2GcsCckWaLh8SURn9o8j+YwUvnSdsuk5e26
+ nc9jqmgr4pay/VBhOG/JGxStW7KJD1xsNR5YykBujOSGBHMxFz3kgBFYKaUHMCumq53l
+ +l/pHZ3ITgNNTLwIcHtUQqpDblxyrZVfjjhEIDt0bvE35hD5Vx8VK+1fIeiSJviNd0MA
+ 7CacftQNpqE10Ovb/7sIcVFKuYLnrLCVGI23u7+9ETJ7KkTPRVQgWkUAqK4ZDC/DgEME
+ otYsUMciM45ubOOXqHC5dz4oUtX0iKRJbgKx6BCf8RUe3Pr7W688y5KeBYRu+G7uAlXV
+ DLLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xdTiVrTGrjwqxBrVWc02ZyC5Zuxj4JEnIGJ5DSfl9U4=;
- b=XF5CTw++FBncdCBZeYmVR4i7ay9uaNMl5JlEAJOYFeGtc2v0+nSgMG7wPEyXOt1cS7
- H003PU+xeHK8DCHeQC7qOHD+C6SJvrWodH5abWskJADqCKTflR64TFXhU7MZa73Cg3JI
- i1/DwMsvU7ARelsETWbyAFU5VuLZQUwmaU6VDyA/NK61kW4VEKKSlBCIGg2U52Vh+3np
- 6Ga1O4p0qhl8Q4CTsgypNjrKOh5TAFaDSsyTlTF2pvLTyrMZddnUs3edI8cxSFzUabFY
- 62rq9S1ev2nyl5SGP6SAzMqQAdQB+2n1uZA/gJYfBVMIcdWk0XduJeoXYTnRqqSJR40h
- 2nLA==
-X-Gm-Message-State: AOAM533SmByd4jd7jAAVUBzhCNsCy78SIM9dtDiPKHvuR5AihOvWfSRh
- IqJa/JJd1pELtauysWyds4xFktDEpOXq9QZn
-X-Received: by 2002:a5d:420b:: with SMTP id n11mr5816072wrq.395.1626183471783; 
- Tue, 13 Jul 2021 06:37:51 -0700 (PDT)
+ bh=jcneWcHtRSIWZQaKInlpxUM3P5jf//GWQwWQ0tWibxQ=;
+ b=X7zaAY5p5RizHvgfLhhJPBVucW0f0ztQDCRU1YbaPtwwfUBVDOaB7kM3y44TJvawdi
+ Z0XCIHUN5H+osy9btlElobjL0Cpis9/CqMLxOaWlondFtrhPQZCvzLzQ/hVHn3krGhJD
+ 6+rdRspoNthgsH8J28MVwAxTfYmj9rY+2QWiq9iXMQ9S/9BTa9GZld4fxEYl+3l7zFvP
+ N7xjaRRf8QrY16sZb5gAodvIa/MDme5u5ZVmYdfKBj+onW/yFHkbxJ/zs9EwlSjbZv4c
+ 908g/dTkXNCZGwU6I17BrZ7PmtjYjxS0uDDMyedLTPdO2nrAwk8qjCNPLX4+ZhjtE0cA
+ NqvA==
+X-Gm-Message-State: AOAM53202ZuA9p9DkKyqFvA+2W9mtX6tJc2hfMPHbZmPPEi4oPObLeNt
+ BuTPfOm0mciHFMmCTq3QEpUOCg==
+X-Received: by 2002:a5d:48ce:: with SMTP id p14mr5919155wrs.170.1626183473595; 
+ Tue, 13 Jul 2021 06:37:53 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.51
+ by smtp.gmail.com with ESMTPSA id j6sm9827443wrm.97.2021.07.13.06.37.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jul 2021 06:37:51 -0700 (PDT)
+ Tue, 13 Jul 2021 06:37:53 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 30/34] target/arm: Implement MVE VPNOT
-Date: Tue, 13 Jul 2021 14:37:22 +0100
-Message-Id: <20210713133726.26842-31-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 31/34] target/arm: Implement MVE VCTP
+Date: Tue, 13 Jul 2021 14:37:23 +0100
+Message-Id: <20210713133726.26842-32-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210713133726.26842-1-peter.maydell@linaro.org>
 References: <20210713133726.26842-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,78 +105,105 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aIbSIY0jJ+u6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WjfSruDYxavS
 
-Implement the MVE VPNOT insn, which inverts the bits in VPR.P0
-(subject to both predication and to beatwise execution).
+Implement the MVE VCTP insn, which sets the VPR.P0 predicate bits so
+as to predicate any element at index Rn or greater is predicated.  As
+with VPNOT, this insn itself is predicable and subject to beatwise
+execution.
+
+The calculation of the mask is the same as is used to determine
+ltpmask in mve_element_mask(), but we precalculate masklen in
+generated code to avoid having to have 4 helpers specialized by size.
+
+We put the decode line in with the low-overhead-loop insns in
+t32.decode because it's logically part of that collection of insn
+patterns, even though it is an MVE only insn.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper-mve.h    |  1 +
- target/arm/mve.decode      |  1 +
- target/arm/mve_helper.c    | 17 +++++++++++++++++
- target/arm/translate-mve.c | 19 +++++++++++++++++++
- 4 files changed, 38 insertions(+)
+ target/arm/helper-mve.h    |  2 ++
+ target/arm/translate-a32.h |  1 +
+ target/arm/t32.decode      |  1 +
+ target/arm/mve_helper.c    | 20 ++++++++++++++++++++
+ target/arm/translate-mve.c |  2 +-
+ target/arm/translate.c     | 33 +++++++++++++++++++++++++++++++++
+ 6 files changed, 58 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index c36640e75e9..5844bb891ed 100644
+index 5844bb891ed..55f9151ccbf 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -123,6 +123,7 @@ DEF_HELPER_FLAGS_4(mve_vorn, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_veor, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- 
+@@ -125,6 +125,8 @@ DEF_HELPER_FLAGS_4(mve_veor, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
  DEF_HELPER_FLAGS_4(mve_vpsel, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_1(mve_vpnot, TCG_CALL_NO_WG, void, env)
+ DEF_HELPER_FLAGS_1(mve_vpnot, TCG_CALL_NO_WG, void, env)
  
++DEF_HELPER_FLAGS_2(mve_vctp, TCG_CALL_NO_WG, void, env, i32)
++
  DEF_HELPER_FLAGS_4(mve_vaddb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
  DEF_HELPER_FLAGS_4(mve_vaddh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 6ac9cb8e4d4..82dc07bc30e 100644
---- a/target/arm/mve.decode
-+++ b/target/arm/mve.decode
-@@ -573,6 +573,7 @@ VCMPGT            1111 1110 0 . .. ... 1 ... 1 1111 0 0 . 0 ... 1 @vcmp
- VCMPLE            1111 1110 0 . .. ... 1 ... 1 1111 1 0 . 0 ... 1 @vcmp
+ DEF_HELPER_FLAGS_4(mve_vaddw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+diff --git a/target/arm/translate-a32.h b/target/arm/translate-a32.h
+index 6f4d65ddb00..88f15df60e8 100644
+--- a/target/arm/translate-a32.h
++++ b/target/arm/translate-a32.h
+@@ -48,6 +48,7 @@ long neon_element_offset(int reg, int element, MemOp memop);
+ void gen_rev16(TCGv_i32 dest, TCGv_i32 var);
+ void clear_eci_state(DisasContext *s);
+ bool mve_eci_check(DisasContext *s);
++void mve_update_eci(DisasContext *s);
+ void mve_update_and_store_eci(DisasContext *s);
+ bool mve_skip_vmov(DisasContext *s, int vn, int index, int size);
  
- {
-+  VPNOT           1111 1110 0 0 11 000 1 000 0 1111 0100 1101
-   VPST            1111 1110 0 . 11 000 1 ... 0 1111 0100 1101 mask=%mask_22_13
-   VCMPEQ_scalar   1111 1110 0 . .. ... 1 ... 0 1111 0 1 0 0 .... @vcmp_scalar
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index 2d47f31f143..78fadef9d62 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -748,5 +748,6 @@ BL               1111 0. .......... 11.1 ............         @branch24
+       # This is DLSTP
+       DLS        1111 0 0000 0 size:2 rn:4 1110 0000 0000 0001
+     }
++    VCTP         1111 0 0000 0 size:2 rn:4 1110 1000 0000 0001
+   ]
  }
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 40e652229d6..6efb3c69636 100644
+index 6efb3c69636..210e70d1727 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -2214,6 +2214,23 @@ void HELPER(mve_vpsel)(CPUARMState *env, void *vd, void *vn, void *vm)
+@@ -2231,6 +2231,26 @@ void HELPER(mve_vpnot)(CPUARMState *env)
      mve_advance_vpt(env);
  }
  
-+void HELPER(mve_vpnot)(CPUARMState *env)
++/*
++ * VCTP: P0 unexecuted bits unchanged, predicated bits zeroed,
++ * otherwise set according to value of Rn. The calculation of
++ * newmask here works in the same way as the calculation of the
++ * ltpmask in mve_element_mask(), but we have pre-calculated
++ * the masklen in the generated code.
++ */
++void HELPER(mve_vctp)(CPUARMState *env, uint32_t masklen)
 +{
-+    /*
-+     * P0 bits for unexecuted beats (where eci_mask is 0) are unchanged.
-+     * P0 bits for predicated lanes in executed bits (where mask is 0) are 0.
-+     * P0 bits otherwise are inverted.
-+     * (This is the same logic as VCMP.)
-+     * This insn is itself subject to predication and to beat-wise execution,
-+     * and after it executes VPT state advances in the usual way.
-+     */
 +    uint16_t mask = mve_element_mask(env);
 +    uint16_t eci_mask = mve_eci_mask(env);
-+    uint16_t beatpred = ~env->v7m.vpr & mask;
-+    env->v7m.vpr = (env->v7m.vpr & ~(uint32_t)eci_mask) | (beatpred & eci_mask);
++    uint16_t newmask;
++
++    assert(masklen <= 16);
++    newmask = masklen ? MAKE_64BIT_MASK(0, masklen) : 0;
++    newmask &= mask;
++    env->v7m.vpr = (env->v7m.vpr & ~(uint32_t)eci_mask) | (newmask & eci_mask);
 +    mve_advance_vpt(env);
 +}
 +
@@ -184,35 +211,62 @@ index 40e652229d6..6efb3c69636 100644
      void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
      {                                                                   \
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 43f917e609e..be961864ada 100644
+index be961864ada..be5a3e1a1f5 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -889,6 +889,25 @@ static bool trans_VPST(DisasContext *s, arg_VPST *a)
+@@ -93,7 +93,7 @@ bool mve_eci_check(DisasContext *s)
+     }
+ }
+ 
+-static void mve_update_eci(DisasContext *s)
++void mve_update_eci(DisasContext *s)
+ {
+     /*
+      * The helper function will always update the CPUState field,
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 28e478927df..e0b0cabc39f 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -8677,6 +8677,39 @@ static bool trans_LCTP(DisasContext *s, arg_LCTP *a)
      return true;
  }
  
-+static bool trans_VPNOT(DisasContext *s, arg_VPNOT *a)
++static bool trans_VCTP(DisasContext *s, arg_VCTP *a)
 +{
 +    /*
-+     * Invert the predicate in VPR.P0. We have call out to
-+     * a helper because this insn itself is beatwise and can
-+     * be predicated.
++     * M-profile Create Vector Tail Predicate. This insn is itself
++     * predicated and is subject to beatwise execution.
 +     */
-+    if (!dc_isar_feature(aa32_mve, s)) {
++    TCGv_i32 rn_shifted, masklen;
++
++    if (!dc_isar_feature(aa32_mve, s) || a->rn == 13 || a->rn == 15) {
 +        return false;
 +    }
++
 +    if (!mve_eci_check(s) || !vfp_access_check(s)) {
 +        return true;
 +    }
 +
-+    gen_helper_mve_vpnot(cpu_env);
++    /*
++     * We pre-calculate the mask length here to avoid having
++     * to have multiple helpers specialized for size.
++     * We pass the helper "rn <= (1 << (4 - size)) ? (rn << size) : 16".
++     */
++    rn_shifted = tcg_temp_new_i32();
++    masklen = load_reg(s, a->rn);
++    tcg_gen_shli_i32(rn_shifted, masklen, a->size);
++    tcg_gen_movcond_i32(TCG_COND_LEU, masklen,
++                        masklen, tcg_constant_i32(1 << (4 - a->size)),
++                        rn_shifted, tcg_constant_i32(16));
++    gen_helper_mve_vctp(cpu_env, masklen);
++    tcg_temp_free_i32(masklen);
++    tcg_temp_free_i32(rn_shifted);
 +    mve_update_eci(s);
 +    return true;
 +}
-+
- static bool trans_VADDV(DisasContext *s, arg_VADDV *a)
+ 
+ static bool op_tbranch(DisasContext *s, arg_tbranch *a, bool half)
  {
-     /* VADDV: vector add across vector */
 -- 
 2.20.1
 

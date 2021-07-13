@@ -1,100 +1,110 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp731061lfc;
-        Tue, 13 Jul 2021 09:12:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwP1Fsx1Ub53qzEYsNwRjVktA+suNuun2abLoTuop9qEmCCsVtfc1vnBNO+t/XcNUZIyzGj
-X-Received: by 2002:a5d:4086:: with SMTP id o6mr6607049wrp.379.1626192723795;
-        Tue, 13 Jul 2021 09:12:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626192723; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp741743lfc;
+        Tue, 13 Jul 2021 09:24:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyY2GzPTeIGj42jvgKUQCYTasa4v0XUB/BJpTUkVP3njSy5dvaNH/N0iln3/P7dSFX/xYGe
+X-Received: by 2002:adf:ce8d:: with SMTP id r13mr6903514wrn.304.1626193475221;
+        Tue, 13 Jul 2021 09:24:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626193475; cv=none;
         d=google.com; s=arc-20160816;
-        b=zmJHw5VEciQgnruDet6t3vyuAZ/NlchVT5BbOsmUtrm/LVcLvdymh+0lU8giGGfI4M
-         LyIunuRrgjp9EwaDnMQFYif9KRRupEr9//WRh+laAPb/YFkQS+SZBvSwObVzm0xgCN1m
-         u/0wj4WFymJo55dApjhkGCgPrGBwdDzIghnWpMLOAiRbvtMa/xIe6Pvdzex85Hq3Coah
-         PsHTWr3XT7wETlxGs7+tWhak+umtxkybfPo/gAnkqWfH+aydXFnBqkzWC9Nah2vXhWqi
-         mjUkvFp3U1e63m1GD3wOw9Cim/Vz7xUeyV0iPN2XXUD3k3pW0Y1AJq+Xgd2APM+8dvBb
-         q+dA==
+        b=ITQTKW+D6B0JzUlvYqK5qO7ge7hJmutvvd4fJI1SubiEWfWmwAk8A/2gOz83n/P6ut
+         YFK13A30q6f2w7n6HCyyAUmATQe3yUexseFmmb21/J/ABW5IenEnhPZyZYlDTYzhIt6x
+         DS7AyGpAJdk4AxAUAXR+PtkPbXeSvLUuvjseJdm9QNY5MyG2f0LbeTgGnGp78xbA5Ma+
+         WhJLZ2ra59jeomgzDwKhHd0NApcYSN4pzIStaOFuz/UcwHbyyzMEhE1vWSuYC051DuS7
+         4jc7XP/4XMJ97lZe2lKfqoLMF3dAq1I15H8y+FzYMUGimxU3xur8V/uhpnYha6xEoLF1
+         Wqcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kfY6BCkwjlJ4LDV/iry76szb8KUaYGFeVpi5xEVG/nE=;
-        b=PD4D1gTBwpLOGDKUdpNjOQdl+wQrmJ16xhTO+n8/IazBb+wq4dzn22CrhsY8/ByUEz
-         kXOiviFYnQpkdP0eriINcyaD9f3WpA/T9k0DZt7+ZpKK/FDC99M1vcaeq/jFxQ7GeJ0q
-         KZ2CfHgjvv3epQ+jVxnfLtIN+q7NIBsaScFI5eTgy32VXJbgOAd/NlLP2KpMkKkiN65p
-         memb40BDTTxEBSxcz3lzoQWlx2kv5ppRnwHi09aMlfeBYuoT77zshjDwxjzcs6joHDYS
-         5Kf9Z5tD92JDb9gFhuILYQEsyTGMGbZoNGCVC8rA1nmJ8HV6RVDNqk7GFI0HVk4lvSyU
-         w1Kw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=y0vViRMjpqkTSyc4fjw/W29l2Wkps3fOgSDo0DAkqaE=;
+        b=xOM8yfChJ35NMKm3Q2KLKH68qZ9nLM3OZ4cpc7esecmu2/lDzETrCyOdZ722AeTbtG
+         FaCfrTyRkzREqEH0YFiSbAohceRWitt2Q24VloypOqlMZ5nQ1Sni33TbXaw9l2i9S7rK
+         P8dKOPEw6BS5SKyU0X2+P7LIerXX4HAoIi3cerwt2oTFOlHcRBfUK78l+SYgZtue1mFQ
+         e+19V9ewlsMtkT8Kltsw3ozciS1HVbwLPi8ugc90CTcxlLhXrSafKt2IfFcmQXTq3M/A
+         Bl3Jb+iXrc7d7CoEqmTZWmW7zJLHlr5Y7lqTKoIW1jxiIqBOnK5zzwrgHQe44mLPOtR0
+         ifgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NPcyJvD7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sso9tEG7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8si24732995wru.108.2021.07.13.09.12.03
+        by mx.google.com with ESMTPS id m11si23801219wrn.321.2021.07.13.09.24.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jul 2021 09:12:03 -0700 (PDT)
+        Tue, 13 Jul 2021 09:24:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NPcyJvD7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60708 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sso9tEG7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m3L0s-0005gd-J8
-	for alex.bennee@linaro.org; Tue, 13 Jul 2021 12:12:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35026)
+	id 1m3LD0-0007AP-BH
+	for alex.bennee@linaro.org; Tue, 13 Jul 2021 12:24:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3L0j-0005e4-E1
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 12:11:53 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:45589)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m3LCg-00075W-5H; Tue, 13 Jul 2021 12:24:14 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:41588)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m3L0g-0001OI-GR
- for qemu-arm@nongnu.org; Tue, 13 Jul 2021 12:11:53 -0400
-Received: by mail-ed1-x536.google.com with SMTP id x17so2585311edd.12
- for <qemu-arm@nongnu.org>; Tue, 13 Jul 2021 09:11:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kfY6BCkwjlJ4LDV/iry76szb8KUaYGFeVpi5xEVG/nE=;
- b=NPcyJvD7ChjAoidXvMJ+Lncnr+aMO0kRUnBvakYEYTsPF2ONtaTsv9ErtfcRMmD4HO
- XV1ufsDdeHxPpYv0LtuPAQhvUF4DDhIGqk87JmzVOTTHp2Trfl+LbjbcFLdADCdXlT8c
- xXeZ2Y6yCCOSDdezTt6buI/f/E+jESBYhbdE8euxLyrvRVimwTej3BUNh9J+PzDhuFmU
- foXw7J+gvwkps8X8xs16CWoKUbHO3g4P1n2NERljuPh4Ik7sq4KYt8teZleGG/7HexTZ
- Da8ikmOHqghjlVLSpTD21KyDv4fFQTBQujBPS29NgNIhnrYBBNAPWBfW3o5oSUX+Te7H
- a5lA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m3LCe-0001Rc-H6; Tue, 13 Jul 2021 12:24:13 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id k4so24931471wrc.8;
+ Tue, 13 Jul 2021 09:24:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=y0vViRMjpqkTSyc4fjw/W29l2Wkps3fOgSDo0DAkqaE=;
+ b=sso9tEG7N48MyijDvBMndpac6VMzwkJE8i9JqydrLDJSHQme24+5uDRH7n4SfAjbHl
+ dil+jdYn9JzHDw7+ng8IGIcUavQnv9sAli2E/8viBxiOkIPqqiOddPQcYDKJz+Blszub
+ O+PeHuwcO1/ppQ/quAty5Mz9Xy9nuW9Hm+Xw6G9wt0l8JpmRDFZJIRbyBCEMqwz93YiN
+ 6xhXBxXc1HKI0DU22m0MV4WtQtIcDdQ4Owk4fKP+uB7iv+O3usPDWjkS9EHNTlXIF3MZ
+ Ar9pq/l9xkX9rvDCvg+k7Fhg7EzRwyh0MG6f96EOoCYvbm2/VDm3yu1a45aRxScLCAMp
+ G4qQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kfY6BCkwjlJ4LDV/iry76szb8KUaYGFeVpi5xEVG/nE=;
- b=DwoaAHC6kbCus/S9WmkyeVn8Ru/U+Opjl2/Ol21puAF81vCm38BwY8cvuNf5oDKrxd
- pugMfKaIOzW2CacszxKtnskXn6PTxHXV4PDT9dK7gv3dw7qacZjJhV/81tvGc9SAGdmK
- Rd30naHjMn9fTpHms/jycMvkiKiS5mYzXsoZMwFacD4VxmDtmQkv5cIGmpRgFiGz+5X9
- U5S9Y7cNambC7MJOl7JRcLZESEWz8KCX1SbNd6BKCwWIxQalBMIqBfFhEqhdnhV8dkR6
- 3Ud+lOXuzjFyIzSrvzW+M/pVFZ0h4At8qJuQI6pofJ75r86UwHC0V2Qw1GMPP120sc6/
- OnTA==
-X-Gm-Message-State: AOAM531vpVuG0VgTQOLRIustxCDUMMiKaBB6dvVf4oinfPBaPP8+Y8uu
- GEtu98tnWDNHNdHuYcit98f/QO8HjCsGFsns619PKA==
-X-Received: by 2002:aa7:d809:: with SMTP id v9mr6864496edq.146.1626192708814; 
- Tue, 13 Jul 2021 09:11:48 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=y0vViRMjpqkTSyc4fjw/W29l2Wkps3fOgSDo0DAkqaE=;
+ b=J7HSVrqjKf2paLMf8eL4dBkszLbWHVnWUXj9FRi8wCd1otNPzcQkzvwb4C+YBGo2At
+ awG61HwqEiOEHfrvLo8u6i73nnXS5ACtO0aX2ULpS7EXlT+MkQIOQDp6HmtPAAXpJB6Y
+ dzGi9ICSsNNg66lBPm2aMj76b91RG6mD1jmgThoqO67uMyZGPweRd9zmlH2MtyIwW7xV
+ hhcVXWnE0T+w7SEFdFS/I57ancJu+jbZFtocIJEp72VWbSrXQvlJqwaWS2bO2O0L+K47
+ frK/3T4Sm+Z26kTsdXvvsMDvumj2VWFdD4FDmTm8H4gP0Mf9dtNB4pWein1EA8yUkABa
+ dkqw==
+X-Gm-Message-State: AOAM5312w7bu7AuDCZp6nK/GN/rlL1JkASwRfEaGEmHG26yQXz/AkAGI
+ LeGCckEBcwpIsYE2EC5UOhA=
+X-Received: by 2002:adf:d0d0:: with SMTP id z16mr6981176wrh.29.1626193450336; 
+ Tue, 13 Jul 2021 09:24:10 -0700 (PDT)
+Received: from [192.168.1.24] (abayonne-654-1-142-116.w86-222.abo.wanadoo.fr.
+ [86.222.93.116])
+ by smtp.gmail.com with ESMTPSA id c10sm15762692wmb.40.2021.07.13.09.24.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Jul 2021 09:24:08 -0700 (PDT)
+Subject: Re: [PATCH v2 2/3] docs: Add skeletal documentation of the emcraft-sf2
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210713142226.19155-1-peter.maydell@linaro.org>
+ <20210713142226.19155-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <89083c7c-be18-cbc4-c7ff-edd83b9fe37a@amsat.org>
+Date: Tue, 13 Jul 2021 18:24:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210707021815.45938-1-shashi.mallela@linaro.org>
- <20210707021815.45938-5-shashi.mallela@linaro.org>
-In-Reply-To: <20210707021815.45938-5-shashi.mallela@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Jul 2021 17:11:09 +0100
-Message-ID: <CAFEAcA8rvqNZ0RBrdp3pcWTguLYvkDRqLXz3ejJmjPfEvp4Rsw@mail.gmail.com>
-Subject: Re: [PATCH v6 04/10] hw/intc: GICv3 ITS Command processing
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20210713142226.19155-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.368,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -109,281 +119,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>, Leif Lindholm <leif@nuviainc.com>
+Cc: Beniamino Galvani <b.galvani@gmail.com>, Rob Herring <robh@kernel.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qCtwwMOhxHA8
+X-TUID: mWLKRYhL1+W0
 
-On Wed, 7 Jul 2021 at 03:18, Shashi Mallela <shashi.mallela@linaro.org> wrote:
->
-> Added ITS command queue handling for MAPTI,MAPI commands,handled ITS
-> translation which triggers an LPI via INT command as well as write
-> to GITS_TRANSLATER register,defined enum to differentiate between ITS
-> command interrupt trigger and GITS_TRANSLATER based interrupt trigger.
-> Each of these commands make use of other functionalities implemented to
-> get device table entry,collection table entry or interrupt translation
-> table entry required for their processing.
->
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+On 7/13/21 4:22 PM, Peter Maydell wrote:
+> Add skeletal documentation of the emcraft-sf2 machine.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  docs/system/arm/emcraft-sf2.rst | 15 +++++++++++++++
+>  docs/system/target-arm.rst      |  1 +
+>  MAINTAINERS                     |  1 +
+>  3 files changed, 17 insertions(+)
+>  create mode 100644 docs/system/arm/emcraft-sf2.rst
 
-Couple of minor things below; otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-> +static bool get_ite(GICv3ITSState *s, uint32_t eventid, uint64_t dte,
-> +                    uint16_t *icid, uint32_t *pIntid, MemTxResult *res)
-> +{
-> +    AddressSpace *as = &s->gicv3->dma_as;
-> +    uint64_t itt_addr;
-> +    bool status = false;
-> +    IteEntry ite;
-> +
-> +    itt_addr = (dte & GITS_DTE_ITTADDR_MASK) >> GITS_DTE_ITTADDR_SHIFT;
-> +    itt_addr <<= ITTADDR_SHIFT; /* 256 byte aligned */
-> +
-> +    memset(&ite, 0 , sizeof(ite));
-
-"IteEntry ite = {};" will zero-initialize it without the need for a memset.
-
-> +    ite.itel = address_space_ldq_le(as, itt_addr +
-> +                                    (eventid * sizeof(uint64_t)),
-> +                                    MEMTXATTRS_UNSPECIFIED, res);
-> +
-> +    if (*res == MEMTX_OK) {
-> +        ite.iteh = address_space_ldl_le(as, itt_addr + ((eventid +
-> +                                    sizeof(uint64_t)) * sizeof(uint32_t)),
-> +                                    MEMTXATTRS_UNSPECIFIED, res);
-> +
-> +        if (*res == MEMTX_OK) {
-> +            if (ite.itel & TABLE_ENTRY_VALID_MASK) {
-> +                if ((ite.itel >> ITE_ENTRY_INTTYPE_SHIFT) &
-> +                    GITS_TYPE_PHYSICAL) {
-> +                    *pIntid = (ite.itel & ITE_ENTRY_INTID_MASK) >>
-> +                               ITE_ENTRY_INTID_SHIFT;
-> +                    *icid = ite.iteh & ITE_ENTRY_ICID_MASK;
-> +                    status = true;
-> +                }
-> +            }
-> +        }
-> +    }
-> +    return status;
-> +}
-
-
-> +/*
-> + * This function handles the processing of following commands based on
-> + * the ItsCmdType parameter passed:-
-> + * 1. triggering of lpi interrupt translation via ITS INT command
-> + * 2. triggering of lpi interrupt translation via gits_translater register
-> + * 3. handling of ITS CLEAR command
-> + * 4. handling of ITS DISCARD command
-> + */
-> +static MemTxResult process_its_cmd(GICv3ITSState *s, uint64_t value,
-> +                                   uint32_t offset, ItsCmdType cmd)
-> +{
-> +    AddressSpace *as = &s->gicv3->dma_as;
-> +    uint32_t devid, eventid;
-> +    MemTxResult res = MEMTX_OK;
-> +    bool dte_valid;
-> +    uint64_t dte = 0;
-> +    uint32_t max_eventid;
-> +    uint16_t icid = 0;
-> +    uint32_t pIntid = 0;
-> +    bool ite_valid = false;
-> +    uint64_t cte = 0;
-> +    bool cte_valid = false;
-> +    IteEntry ite;
-> +
-> +    if (cmd == NONE) {
-> +        devid = offset;
-> +    } else {
-> +        devid = ((value & DEVID_MASK) >> DEVID_SHIFT);
-> +
-> +        offset += NUM_BYTES_IN_DW;
-> +        value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> +                                     MEMTXATTRS_UNSPECIFIED, &res);
-> +    }
-> +
-> +    if (res != MEMTX_OK) {
-> +        return res;
-> +    }
-> +
-> +    eventid = (value & EVENTID_MASK);
-> +
-> +    dte = get_dte(s, devid, &res);
-> +
-> +    if (res != MEMTX_OK) {
-> +        return res;
-> +    }
-> +    dte_valid = dte & TABLE_ENTRY_VALID_MASK;
-> +
-> +    if (dte_valid) {
-> +        max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) + 1));
-> +
-> +        ite_valid = get_ite(s, eventid, dte, &icid, &pIntid, &res);
-> +
-> +        if (res != MEMTX_OK) {
-> +            return res;
-> +        }
-> +
-> +        if (ite_valid) {
-> +            cte_valid = get_cte(s, icid, &cte, &res);
-> +        }
-> +
-> +        if (res != MEMTX_OK) {
-> +            return res;
-> +        }
-> +    }
-> +
-> +    if ((devid > s->dt.maxids.max_devids) || !dte_valid || !ite_valid ||
-> +            !cte_valid || (eventid > max_eventid)) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: invalid command attributes "
-> +                      "devid %d or eventid %d or invalid dte %d or"
-> +                      "invalid cte %d or invalid ite %d\n",
-> +                      __func__, devid, eventid, dte_valid, cte_valid,
-> +                      ite_valid);
-> +        /*
-> +         * in this implementation, in case of error
-> +         * we ignore this command and move onto the next
-> +         * command in the queue
-> +         */
-> +    } else {
-> +        /*
-> +         * Current implementation only supports rdbase == procnum
-> +         * Hence rdbase physical address is ignored
-> +         */
-> +        if (cmd == DISCARD) {
-> +            memset(&ite, 0 , sizeof(ite));
-
-Again here you could make 'ite' local to this code block and write
-it "IteEntry ite = {};" instead of the memset.
-
-> +            /* remove mapping from interrupt translation table */
-> +            res = update_ite(s, eventid, dte, ite);
-> +        }
-> +    }
-> +
-> +    return res;
-> +}
-> +
-> +static MemTxResult process_mapti(GICv3ITSState *s, uint64_t value,
-> +                                 uint32_t offset, bool ignore_pInt)
-> +{
-> +    AddressSpace *as = &s->gicv3->dma_as;
-> +    uint32_t devid, eventid;
-> +    uint32_t pIntid = 0;
-> +    uint32_t max_eventid, max_Intid;
-> +    bool dte_valid;
-> +    MemTxResult res = MEMTX_OK;
-> +    uint16_t icid = 0;
-> +    uint64_t dte = 0;
-> +    IteEntry ite;
-> +    uint32_t int_spurious = INTID_SPURIOUS;
-> +
-> +    devid = ((value & DEVID_MASK) >> DEVID_SHIFT);
-> +    offset += NUM_BYTES_IN_DW;
-> +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> +                                 MEMTXATTRS_UNSPECIFIED, &res);
-> +
-> +    if (res != MEMTX_OK) {
-> +        return res;
-> +    }
-> +
-> +    eventid = (value & EVENTID_MASK);
-> +
-> +    if (!ignore_pInt) {
-> +        pIntid = ((value & pINTID_MASK) >> pINTID_SHIFT);
-> +    }
-> +
-> +    offset += NUM_BYTES_IN_DW;
-> +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> +                                 MEMTXATTRS_UNSPECIFIED, &res);
-> +
-> +    if (res != MEMTX_OK) {
-> +        return res;
-> +    }
-> +
-> +    icid = value & ICID_MASK;
-> +
-> +    dte = get_dte(s, devid, &res);
-> +
-> +    if (res != MEMTX_OK) {
-> +        return res;
-> +    }
-> +    dte_valid = dte & TABLE_ENTRY_VALID_MASK;
-> +
-> +    max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) + 1));
-> +
-> +    if (!ignore_pInt) {
-> +        max_Intid = (1ULL << (GICD_TYPER_IDBITS + 1));
-
-This is off by one -- the maximum int ID is
-(1ULL << (GICD_TYPER_IDBITS + 1)) - 1
-
-(if you have N bits then the largest ID value is 0b111..111,
-not 0b100...000).
-
-> +    }
-> +
-> +    if ((devid > s->dt.maxids.max_devids) || (icid > s->ct.maxids.max_collids)
-> +            || !dte_valid || (eventid > max_eventid) ||
-> +            (!ignore_pInt && ((pIntid < GICV3_LPI_INTID_START) ||
-> +               (pIntid > max_Intid)))) {
-
-1023 is also a permitted value here (meaning "no interrupt").
-
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: invalid command attributes "
-> +                      "devid %d or icid %d or eventid %d or pIntid %d or"
-> +                      "unmapped dte %d\n", __func__, devid, icid, eventid,
-> +                      pIntid, dte_valid);
-> +        /*
-> +         * in this implementation, in case of error
-> +         * we ignore this command and move onto the next
-> +         * command in the queue
-> +         */
-> +    } else {
-> +        memset(&ite, 0 , sizeof(ite));
-
-> +        /* add ite entry to interrupt translation table */
-> +        ite.itel = (dte_valid & TABLE_ENTRY_VALID_MASK) |
-> +                    (GITS_TYPE_PHYSICAL << ITE_ENTRY_INTTYPE_SHIFT);
-> +
-> +        if (ignore_pInt) {
-> +            ite.itel |= (eventid << ITE_ENTRY_INTID_SHIFT);
-> +        } else {
-> +            ite.itel |= (pIntid << ITE_ENTRY_INTID_SHIFT);
-> +        }
-> +        ite.itel |= (int_spurious << ITE_ENTRY_INTSP_SHIFT);
-> +        ite.iteh |= icid;
-
-If you use "=" here instead of "|=" to set ite.iteh then you've
-explicitly set all the members of "ite" and you don't need the
-memset at all.
-
-> +
-> +        res = update_ite(s, eventid, dte, ite);
-> +    }
-> +
-> +    return res;
-> +}
-> +
->  static MemTxResult update_cte(GICv3ITSState *s, uint16_t icid, bool valid,
->                                uint64_t rdbase)
->  {
-> @@ -128,7 +461,8 @@ static MemTxResult process_mapc(GICv3ITSState *s, uint32_t offset)
->
->      icid = value & ICID_MASK;
->
-> -    rdbase = (value >> R_MAPC_RDBASE_SHIFT) & RDBASE_PROCNUM_MASK;
-> +    rdbase = (value & R_MAPC_RDBASE_MASK) >> R_MAPC_RDBASE_SHIFT;
-> +    rdbase &= RDBASE_PROCNUM_MASK;
-
-This looks like something that should have been squashed into a
-previous patch.
-
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

@@ -1,63 +1,63 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1027998qvs;
-        Tue, 13 Jul 2021 14:22:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwH5FKJeSRK8f5VKFDig23e7K7DGbm6P4ZDFhNMzncFXTfcgEa7Z+k7PgJTNSpDcSJCa4K/
-X-Received: by 2002:a17:906:4e52:: with SMTP id g18mr8144032ejw.214.1626211341233;
-        Tue, 13 Jul 2021 14:22:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626211341; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1028032qvs;
+        Tue, 13 Jul 2021 14:22:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLCTbzlBqdJoqV599LXWbe9Px48+r5nlyVdkKlUdUOdKnp88MhkyYGs+pswmZsBkmSi10y
+X-Received: by 2002:a05:6402:53:: with SMTP id f19mr8441101edu.200.1626211344253;
+        Tue, 13 Jul 2021 14:22:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626211344; cv=none;
         d=google.com; s=arc-20160816;
-        b=bTEvnn0lTdsBHT1eEaGNN8MfL2gxE5PWZrTYVylhJRo/vCXANx59oiWZga+e6Gm5B4
-         eImR10k0u6WClCEcg9BobU9N1p2vqOzPW+BZtmJlDRNMhR+4Cn5edUhXXVKNhv/Ea7il
-         PfdDa6Rd0+SN4GoVGOIV4F7L/jEstNIYQbhCqxKI+2U9AqcKufWEaFX3esk6pJkmY7Oz
-         NttAsYjfmFINGz5puE7FAkAYF6Fk2wkzvWoJ/FNaQ4JwGYsK1K1qxnVdmQzEZE5ZRKS0
-         wIvXz/4uiAbm++pb7nJcxAofhM16zW3VN2iiiJYbFEGQNYP4QmtSKzVvjKOKDiUIaz1p
-         tGTw==
+        b=FdCwrPlymfqHVrSfeqiYL27OETyJJA0rylBMDMfIX3xuJLx+rCJsbNIj78hOrlQG8h
+         3UDcqmgKw6SKeJhr2HJiGzF3XNciArkiTOkdGP1+t6wqkjrPvr3b6rmijA5sB9UFkf4E
+         3ZhzJWULoIcYIyq50EloyTa4c3l09dkwAHJWO/BNVDbHGAoFMhoDrKKsSB3yi2iXAsv+
+         1g06/NYizA2E44QTVD8znpxVIGwdfIJnD3gq7yDCdaqF83B9WCa0ZiHjKGvWn2HXL87f
+         XtYrKLlvCcTlsvbzR1xZpfcPyYiRZFTCt6uL+RgMrDj8O0wEPrSXcJTf22NvOtkpss2T
+         AScA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GRT3B5Wxzq0jFQitt44SK22Id/avAGWaSnYHAamy4vs=;
-        b=FSg9SmDShTZlMHFj7b8N85QmGO3Ru05KInT1H8xcdhhQZEg3cMVkuhYWgdI4LDS0t+
-         KwTacgk2sFbAYS4rCFFtvIuNr0hHk2FC94N5JURZrJ8FtAqEMZHH+87mLuHQmiTNPE4w
-         xTwFj37AZ4a/a7uCLTjcuDwxknVHW5J15CVfp1V9Rw9ekCVZXLrxi75gLvnHCKw82wkJ
-         s7BJ/G0zRePayo9DVrfHxy16sWHCk4G7WK+fUSezWcXEZLmMCcrQ6ngazTEe1bB+zLmJ
-         A9lDckBJml/N2/0/RcLf72IaJgjDo36HWX6EOvzH5vy+FdATeauVJ3scijh+26GOZE4p
-         kWFQ==
+        bh=OE0RXGHiytwQOy8y8co9KIBkuupfuxKbiZAGpPKU0pk=;
+        b=D8wicZg3l5SFX/4NE/HdJU3ea/B7cBW5xbDkCRjiRRO2SjxlWc7wqed+1A12vziG1g
+         w/yQhPwF4RClsc207nr4Je7JM8gYpbkdbX5TjTHA91/2ppGvoZpNuxx8WSTJk2huF/Mn
+         j81RivosF4+vze1WXGJn1bW9WFcoAODAC5lNgMJ1AR9BIBmNbGawYUfiMIHGlYjavDdL
+         YQ0k9upLIlr4A2uYVXq3/ByuS/3RWPtMdQB1lI2pGO3uZ8S+SSKN/cIX/E96oJDr0I0f
+         NpN2Ke1fExOo4/P6SiqWjFoiFcJ+q9qBqb+GT5j9J36xwPzAXGzaWtoHXFtfHthXtaG2
+         inew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Fq/SlV8f";
-       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P42DE2dy;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id op26si7527833ejb.151.2021.07.13.14.22.20
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id z1si16991865edd.187.2021.07.13.14.22.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Jul 2021 14:22:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Tue, 13 Jul 2021 14:22:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Fq/SlV8f";
-       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P42DE2dy;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1626211340;
+	s=mimecast20190719; t=1626211343;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=GRT3B5Wxzq0jFQitt44SK22Id/avAGWaSnYHAamy4vs=;
-	b=Fq/SlV8fovt9OrQj7bW/VJw9jT9nwNhIYLRpjbH+XBh0aVain8UZrv+aZqWBpbH5s4No8E
-	OjudgbvzumOsgwFswJyKJZa+UMK/jS1eR5sdt5jRECjuJTaJWENHfU3Scg458PChXgtvIJ
-	JQHXIFHNBh60yPyEKzYgG5jZq4LqcQQ=
+	bh=OE0RXGHiytwQOy8y8co9KIBkuupfuxKbiZAGpPKU0pk=;
+	b=P42DE2dyzzi21cJTvpIC86HSIyrFCXwlAk0il/FNRxHsbYryvZeGhTphnr3LqoVLUPltIr
+	0xGU0Ioy4RGouHaxKO4fGM7DCHwK+FYyPAwfGyrr/83mcj9rk0RVod3rl7hARiPaE2zMxP
+	ABcOIZu2IiAjwb3Gzu1T9BzlqBJjGII=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-483-p2cEvcV-NqyaIX27ub0M4Q-1; Tue, 13 Jul 2021 17:22:18 -0400
-X-MC-Unique: p2cEvcV-NqyaIX27ub0M4Q-1
+ us-mta-478-SId_0mjvMMmD8Kj80f83yg-1; Tue, 13 Jul 2021 17:22:20 -0400
+X-MC-Unique: SId_0mjvMMmD8Kj80f83yg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3806E1084F55;
-	Tue, 13 Jul 2021 21:22:16 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D114100B3AE;
+	Tue, 13 Jul 2021 21:22:18 +0000 (UTC)
 Received: from p50.localhost.net (ovpn-117-22.rdu2.redhat.com [10.10.117.22])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BCBAB19C44;
-	Tue, 13 Jul 2021 21:22:13 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B32F19C45;
+	Tue, 13 Jul 2021 21:22:16 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
@@ -86,9 +86,9 @@ Cc: Greg Kurz <groug@kaod.org>,
 	Thomas Huth <thuth@redhat.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 22/23] tests/acceptance/linux_ssh_mips_malta.py: drop identical setUp
-Date: Tue, 13 Jul 2021 17:19:22 -0400
-Message-Id: <20210713211923.3809241-23-crosa@redhat.com>
+Subject: [PULL 23/23] tests/acceptance/cpu_queries.py: use the proper logging channels
+Date: Tue, 13 Jul 2021 17:19:23 -0400
+Message-Id: <20210713211923.3809241-24-crosa@redhat.com>
 In-Reply-To: <20210713211923.3809241-1-crosa@redhat.com>
 References: <20210713211923.3809241-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -97,51 +97,45 @@ Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: XgE3kjuni9Or
+Content-Type: text/plain; charset="US-ASCII"
+X-TUID: k3YfCKy3c8kJ
 
-These tests' setUp do not do anything beyong what their base class do.
-And while they do decorate the setUp() we can decorate the classes
-instead, so no functionality is lost here.
+The test contains methods for the proper log of test related
+information.  Let's use that and remove the print and the unused
+logging import.
 
-This is possible because since Avocado 76.0 we can decorate setUp()
-directly.
-
+Reference: https://avocado-framework.readthedocs.io/en/87.0/api/test/avocado.html#avocado.Test.log
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Message-Id: <20210415215141.1865467-4-crosa@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210415215141.1865467-6-crosa@redhat.com>
 Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-[PMD: added note to commit message about Avocado feature/version]
+Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/acceptance/linux_ssh_mips_malta.py | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ tests/acceptance/cpu_queries.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/tests/acceptance/linux_ssh_mips_malta.py b/tests/acceptance/linux_ssh_mips_malta.py
-index 61c9079d04..4de1947418 100644
---- a/tests/acceptance/linux_ssh_mips_malta.py
-+++ b/tests/acceptance/linux_ssh_mips_malta.py
-@@ -19,6 +19,8 @@
- from avocado.utils import ssh
+diff --git a/tests/acceptance/cpu_queries.py b/tests/acceptance/cpu_queries.py
+index 293dccb89a..cc9e380cc7 100644
+--- a/tests/acceptance/cpu_queries.py
++++ b/tests/acceptance/cpu_queries.py
+@@ -8,8 +8,6 @@
+ # This work is licensed under the terms of the GNU GPL, version 2 or
+ # later.  See the COPYING file in the top-level directory.
  
- 
-+@skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
-+@skipUnless(ssh.SSH_CLIENT_BINARY, 'No SSH client available')
- class LinuxSSH(Test, LinuxSSHMixIn):
- 
-     timeout = 150 # Not for 'configure --enable-debug --enable-debug-tcg'
-@@ -65,11 +67,6 @@ def get_kernel_info(self, endianess, wordsize):
-         kernel_hash = self.IMAGE_INFO[endianess]['kernel_hash'][wordsize]
-         return kernel_url, kernel_hash
- 
--    @skipUnless(ssh.SSH_CLIENT_BINARY, 'No SSH client available')
--    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
--    def setUp(self):
--        super(LinuxSSH, self).setUp()
+-import logging
 -
-     def ssh_disconnect_vm(self):
-         self.ssh_session.quit()
+ from avocado_qemu import Test
  
+ class QueryCPUModelExpansion(Test):
+@@ -27,7 +25,7 @@ def test(self):
+ 
+         cpus = self.vm.command('query-cpu-definitions')
+         for c in cpus:
+-            print(repr(c))
++            self.log.info("Checking CPU: %s", c)
+             self.assertNotIn('', c['unavailable-features'], c['name'])
+ 
+         for c in cpus:
 -- 
 2.31.1

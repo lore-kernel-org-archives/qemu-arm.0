@@ -1,63 +1,63 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1027045qvs;
-        Tue, 13 Jul 2021 14:20:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmqrsKwx+2KgxGSF0PaRvL5a2aTkkTuf+ZK7danE8Z6sG73ZDHTeeiKxMFUEGCdKJ+T538
-X-Received: by 2002:a17:906:844d:: with SMTP id e13mr7934660ejy.503.1626211257166;
-        Tue, 13 Jul 2021 14:20:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626211257; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1027067qvs;
+        Tue, 13 Jul 2021 14:21:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy2qTnSXBDGGjABCHGm/rmIPi+hHG+h9FmLIDC2zDKW6EXzibqpTvROc7b6c+wlc2x0fEvc
+X-Received: by 2002:a17:906:b53:: with SMTP id v19mr7808942ejg.262.1626211260262;
+        Tue, 13 Jul 2021 14:21:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626211260; cv=none;
         d=google.com; s=arc-20160816;
-        b=sAapS9FMYITOpR6y9WYmGifTwOwtjliD3Hj+qW/gDAN7z3xou8NLCrMxTFq8PhTDfw
-         J1CFkxdR95vp81yRCAP9H4CNSZRslO9OeEGw2QjEnWY3HIlyrufPrdS5BbM19S0/nNmr
-         ALNJl0vRIQSNloY05UQ9xhPTBN4kfvkxCSj/hSjzWnVFxBvn+pmI5AAFxfW2kAryyRA+
-         Nhfk+PzSHnOvGaGS4ymVYuYfMhphpmRyykPKtHakFU1bSbS6oa0kAXcKnZWicwXgJ/xJ
-         mlHOC4MYHp5WKW9KXlyPHP8+FOcs5dz00YFC/Ihw9VuIsUKDvMCohR3i+HFQiPbVJnkk
-         pzrQ==
+        b=BlW8x2C+sOup2NplCcl+vhYRqCAtaWnvXaDArH0CsO6h4s6xeUXOaimVJt5Q/qAhYP
+         EWzt+F/jeDsyIGxRg3cFUQgfytYEdqwdX0ARJGsQYOIgD34yMxYmFE0uKKvGC4tc5CoL
+         KDqqPwnVrwMls8Feyx3em9Q9qoGrQFgqiTfDYl94COPDIJmUtIR6sCdOwPVH2TnC2bGr
+         2RboV032R4YqZceZF3yUhr/a94gUVfPUZcQR1uyQ6/HbLfqzqEmUA2mpKNmx2DOo24zK
+         82TBsuJqg47RV5dgls6wWrhcQUHvLCvIJt+/R54gqyCaPuWE25F4OeFn17FSykYDH8xY
+         P2bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dObAmHePKlBhssvuYSm7yPTQOhbUAmlem4+csh72HAU=;
-        b=lf1eaNzRfeqh90xa3NpFaj+VWAHyNNWpnT9JQmWfZg1gIRCbboRjJZjW2DVONp4+Yc
-         L2+QgVojwXECN2dSIdjayKmkOd0Fg/h6np2swUrlGi9U9EFa5E1DIBal0FMo+IotU8WO
-         VCWYTJy5/LMN1dWiP/tG5u6Yko7M0Im0919VwXV+klP0Om4TVx28NoPtOZZ9smohImK9
-         RB0g78nlONs61e0F441QDWJyvM8u8v078PkUcmnCqPUmv/2wz6L2QePftHVpFIm+sfFd
-         xB9RXb41sK1dO9zhT3rHM/DmS5sn5x3ieHDDRM2sscnxZnBvQAkuflajgOJtj0QacH0w
-         O+mA==
+        bh=UK5a17W+X7crhERhK6kAeWAmsiRofQ74sUVXfii3LxI=;
+        b=IMC0aPUKuY3P9lVPaxbi/vKOiJAhziL2L1AmUmc0XqrgA6r0RKKZ3QXMs43kWyXe0Z
+         eYJ42tNl0WWFJgA2izZd7OPzR7idHE4ayB0qAVx5+zu7NYZZ835WNWGXx7Oy52Gog3Eu
+         LDhboY2f76K26DFL9xxN3BhKcK+/jb3uBSDnPbMAx5YrrOhtlyidLJSEhDqRMbluuPF6
+         1Pag6x67kH5qrGURkyWQZJsQSgtcVA4LNwcCf+eSuKWv5bme6TA63BmMqHN5oeX4slaa
+         4M8r/9BQfmS5ZtVQvCGTnVEVqm8OpaWSpoNZPwfNlRmUR3Dh8mg1jHPrfcGEzY6/syR/
+         mNnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CUYXJskt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PIFtywMN;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id h9si21902951edz.433.2021.07.13.14.20.56
+        by mx.google.com with ESMTPS id i20si22714757edc.238.2021.07.13.14.20.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Jul 2021 14:20:57 -0700 (PDT)
+        Tue, 13 Jul 2021 14:21:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CUYXJskt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PIFtywMN;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1626211256;
+	s=mimecast20190719; t=1626211259;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dObAmHePKlBhssvuYSm7yPTQOhbUAmlem4+csh72HAU=;
-	b=CUYXJsktXEN8Aa5HjmrH4R5XTURNjQ5Uy8E10mK1haq8BTAdx39KvEdnH7Ifx4po6FDsNz
-	xJfWQHbN6zoneWU/kKzfAxkkPNtnthg5nf06BFIEUFdgWuHqZDM/3l6MXyxWoZJtESnh9t
-	BUknikZO0iU9mQ6ayKmkWZoS93PVIPg=
+	bh=UK5a17W+X7crhERhK6kAeWAmsiRofQ74sUVXfii3LxI=;
+	b=PIFtywMN+tb8xcx8XulGBE+gu+gpVFR4qnkIdejFXrOvXVbCxhMCjYd1D+Q6RtC9MUSGHr
+	XIqry0imeqZY99Crjd4yXT7eWMW9PlU29wiSJ9hFv0bn3JgyyF66MYJy1wIAew4sTOxzWV
+	VxOnJNYyo/Y1dXEnr4zsJLBbG1N6FS4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-428-mn3Ms-AbMLClCHMfJe3Pkg-1; Tue, 13 Jul 2021 17:20:54 -0400
-X-MC-Unique: mn3Ms-AbMLClCHMfJe3Pkg-1
+ us-mta-394-5Y87oJ-eOMGVcSH0BqTNxg-1; Tue, 13 Jul 2021 17:20:56 -0400
+X-MC-Unique: 5Y87oJ-eOMGVcSH0BqTNxg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 30B5818414A0;
-	Tue, 13 Jul 2021 21:20:52 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB896802921;
+	Tue, 13 Jul 2021 21:20:54 +0000 (UTC)
 Received: from p50.localhost.net (ovpn-117-22.rdu2.redhat.com [10.10.117.22])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 727DF17F72;
-	Tue, 13 Jul 2021 21:20:39 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 510D919C44;
+	Tue, 13 Jul 2021 21:20:52 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
@@ -86,9 +86,9 @@ Cc: Greg Kurz <groug@kaod.org>,
 	Thomas Huth <thuth@redhat.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 07/23] tests/acceptance: Ignore binary data sent on serial console
-Date: Tue, 13 Jul 2021 17:19:07 -0400
-Message-Id: <20210713211923.3809241-8-crosa@redhat.com>
+Subject: [PULL 08/23] avocado_qemu: Fix KNOWN_DISTROS map into the LinuxDistro class
+Date: Tue, 13 Jul 2021 17:19:08 -0400
+Message-Id: <20210713211923.3809241-9-crosa@redhat.com>
 In-Reply-To: <20210713211923.3809241-1-crosa@redhat.com>
 References: <20210713211923.3809241-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -97,56 +97,171 @@ Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: sMCX0u3zKXkP
+Content-Type: text/plain; charset="US-ASCII"
+X-TUID: C5X2Y0C7FDzn
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Willian Rampazzo <willianr@redhat.com>
 
-If a guest sends binary data on the serial console, we get:
+As the KNOWN_DISTROS grows, more loosely methods will be created in
+the avocado_qemu/__init__.py file.
 
- File "tests/acceptance/avocado_qemu/__init__.py", line 92,
-   in _console_interaction msg = console.readline().strip()
- File "/usr/lib64/python3.8/codecs.py", line 322,
-   in decode (result, consumed) = self._buffer_decode(data, self.errors, final)
- UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa9 in position 2: invalid start byte
+Let's refactor the code so that KNOWN_DISTROS and related methods are
+packaged in a class
 
-Since we use the console with readline(), fix it the easiest
-way possible: ignore binary data (all current tests compare
-text string anyway).
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20210515134555.307404-2-f4bug@amsat.org>
-Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Message-Id: <20210706131729.30749-2-eric.auger@redhat.com>
+[CR: moved aarch64 definition from patch 2 to 1]
+[CR: protect get() when arch is not defined]
+[CR: split long lines]
+Acked-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/acceptance/avocado_qemu/__init__.py | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ tests/acceptance/avocado_qemu/__init__.py | 86 +++++++++++++----------
+ 1 file changed, 49 insertions(+), 37 deletions(-)
 
 diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
-index 1f1728ab83..c3163af3b7 100644
+index c3163af3b7..256befafc4 100644
 --- a/tests/acceptance/avocado_qemu/__init__.py
 +++ b/tests/acceptance/avocado_qemu/__init__.py
-@@ -86,14 +86,17 @@ def _console_interaction(test, success_message, failure_message,
-     assert not keep_sending or send_string
-     if vm is None:
-         vm = test.vm
--    console = vm.console_socket.makefile()
-+    console = vm.console_socket.makefile(mode='rb', encoding='utf-8')
-     console_logger = logging.getLogger('console')
-     while True:
-         if send_string:
-             vm.console_socket.sendall(send_string.encode())
-             if not keep_sending:
-                 send_string = None # send only once
--        msg = console.readline().strip()
+@@ -306,34 +306,50 @@ def ssh_command(self, command):
+                          f'Guest command failed: {command}')
+         return stdout_lines, stderr_lines
+ 
++class LinuxDistro:
++    """Represents a Linux distribution
+ 
+-#: A collection of known distros and their respective image checksum
+-KNOWN_DISTROS = {
+-    'fedora': {
+-        '31': {
+-            'x86_64':
+-            {'checksum': ('e3c1b309d9203604922d6e255c2c5d09'
+-                          '8a309c2d46215d8fc026954f3c5c27a0')},
+-            'aarch64':
+-            {'checksum': ('1e18d9c0cf734940c4b5d5ec592facae'
+-                          'd2af0ad0329383d5639c997fdf16fe49')},
+-            'ppc64':
+-            {'checksum': ('7c3528b85a3df4b2306e892199a9e1e4'
+-                          '3f991c506f2cc390dc4efa2026ad2f58')},
+-            's390x':
+-            {'checksum': ('4caaab5a434fd4d1079149a072fdc789'
+-                          '1e354f834d355069ca982fdcaf5a122d')},
++    Holds information of known distros.
++    """
++    #: A collection of known distros and their respective image checksum
++    KNOWN_DISTROS = {
++        'fedora': {
++            '31': {
++                'x86_64':
++                {'checksum': ('e3c1b309d9203604922d6e255c2c5d09'
++                              '8a309c2d46215d8fc026954f3c5c27a0')},
++                'aarch64':
++                {'checksum': ('1e18d9c0cf734940c4b5d5ec592facae'
++                              'd2af0ad0329383d5639c997fdf16fe49')},
++                'ppc64':
++                {'checksum': ('7c3528b85a3df4b2306e892199a9e1e4'
++                              '3f991c506f2cc390dc4efa2026ad2f58')},
++                's390x':
++                {'checksum': ('4caaab5a434fd4d1079149a072fdc789'
++                              '1e354f834d355069ca982fdcaf5a122d')},
+             }
+         }
+     }
+ 
++    def __init__(self, name, version, arch):
++        self.name = name
++        self.version = version
++        self.arch = arch
 +        try:
-+            msg = console.readline().decode().strip()
-+        except UnicodeDecodeError:
-+            msg = None
-         if not msg:
-             continue
-         console_logger.debug(msg)
++            info = self.KNOWN_DISTROS.get(name).get(version).get(arch)
++        except AttributeError:
++            # Unknown distro
++            info = None
++        self._info = info or {}
+ 
+-def get_known_distro_checksum(distro, distro_version, arch):
+-    try:
+-        return KNOWN_DISTROS.get(distro).get(distro_version).\
+-            get(arch).get('checksum')
+-    except AttributeError:
+-        return None
++    @property
++    def checksum(self):
++        """Gets the cloud-image file checksum"""
++        return self._info.get('checksum', None)
++
++    @checksum.setter
++    def checksum(self, value):
++        self._info['checksum'] = value
+ 
+ 
+ class LinuxTest(Test, LinuxSSHMixIn):
+@@ -344,24 +360,24 @@ class LinuxTest(Test, LinuxSSHMixIn):
+     """
+ 
+     timeout = 900
+-    distro_checksum = None
++    distro = None
+     username = 'root'
+     password = 'password'
+ 
+     def _set_distro(self):
+-        distro = self.params.get(
++        distro_name = self.params.get(
+             'distro',
+             default=self._get_unique_tag_val('distro'))
+-        if not distro:
+-            distro = 'fedora'
+-        self.distro = distro
++        if not distro_name:
++            distro_name = 'fedora'
+ 
+         distro_version = self.params.get(
+             'distro_version',
+             default=self._get_unique_tag_val('distro_version'))
+         if not distro_version:
+             distro_version = '31'
+-        self.distro_version = distro_version
++
++        self.distro = LinuxDistro(distro_name, distro_version, self.arch)
+ 
+         # The distro checksum behaves differently than distro name and
+         # version. First, it does not respect a tag with the same
+@@ -370,13 +386,9 @@ def _set_distro(self):
+         # order of precedence is: parameter, attribute and then value
+         # from KNOWN_DISTROS.
+         distro_checksum = self.params.get('distro_checksum',
+-                                          default=self.distro_checksum)
+-        if not distro_checksum:
+-            distro_checksum = get_known_distro_checksum(self.distro,
+-                                                        self.distro_version,
+-                                                        self.arch)
++                                          default=None)
+         if distro_checksum:
+-            self.distro_checksum = distro_checksum
++            self.distro.checksum = distro_checksum
+ 
+     def setUp(self, ssh_pubkey=None, network_device_type='virtio-net'):
+         super(LinuxTest, self).setUp()
+@@ -418,14 +430,14 @@ def download_boot(self):
+         self.log.info('Downloading/preparing boot image')
+         # Fedora 31 only provides ppc64le images
+         image_arch = self.arch
+-        if self.distro == 'fedora':
++        if self.distro.name == 'fedora':
+             if image_arch == 'ppc64':
+                 image_arch = 'ppc64le'
+ 
+         try:
+             boot = vmimage.get(
+-                self.distro, arch=image_arch, version=self.distro_version,
+-                checksum=self.distro_checksum,
++                self.distro.name, arch=image_arch, version=self.distro.version,
++                checksum=self.distro.checksum,
+                 algorithm='sha256',
+                 cache_dir=self.cache_dirs[0],
+                 snapshot_dir=self.workdir)
 -- 
 2.31.1

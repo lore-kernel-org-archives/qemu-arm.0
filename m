@@ -1,63 +1,63 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1026849qvs;
-        Tue, 13 Jul 2021 14:20:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzk27CZP7qZmIDIVGC3tuaAMEEMdAzoNH3QpkD4dfJHhxiFD6AC15/vaj2Eq2NanSDmyV4I
-X-Received: by 2002:aa7:cc0c:: with SMTP id q12mr8563460edt.90.1626211240822;
-        Tue, 13 Jul 2021 14:20:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626211240; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp1026862qvs;
+        Tue, 13 Jul 2021 14:20:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwtOXyX6qqzgJPmmNJD5RklHbf2U6rL0LyLKQv9HfgZ4dOErvWjlYYuXH1QL5gFc0FRWrEp
+X-Received: by 2002:aa7:da13:: with SMTP id r19mr7702674eds.252.1626211242338;
+        Tue, 13 Jul 2021 14:20:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626211242; cv=none;
         d=google.com; s=arc-20160816;
-        b=U19DYwOuB3eqe9HiqcUaV26XJqrtVTAHZuKUind9PVekjBb6IrEjyZhu4AvRTPsebt
-         Kz+dQH3W9p98j9fHmv9wjqOqjTACAuFmruJJKuXVDmODaNhdFdOkVg0qHRcYq+jmBnuC
-         QIIle5m28rzQBzsZv7OrouLhCUbSusKK6iH7VYmrkn/uwiyTHVYmmA9kOflfQzILdsRJ
-         VZtjCqKS6khF+T0CtyI1WBuKIb5r+4AUUk2C44GEFn/nidc8pR1bU0oOuU3DivcnnyG1
-         jwS1NIMlAEuxmVnu/s+RhzqbFXmMK/E9inpBpIOXfwFkuutAXl/m3UAjo7oKrT1yqp08
-         thtg==
+        b=ZPR0zduPls369gSOgMjMhz65I/4gqy9yXebRK4LmPxdBf6fYAEOdRDdRCP4Mg3/LCz
+         jeZeqoBT5xTwiCEEvQCho14xwWzhV9bpU1yQDVQ3rrX8YHorlbRLCrvvYWYnrvwiu0+F
+         QRwOm1szSG7f8q9DftKfecfvZyaxLfW56KP3DUo9qR2OihmimnWR4G/+g8ZZqtbbTDGb
+         YO+6lDvkBhzuj9p9wPR1dLexajpnPJ7o6/f3VgiCVAvf8DQlcUSiDlD/KlO4VzcuxLL2
+         nxuz5Y1HEmQwCCcEqrnJ/iAqDjpiyR+9O/PKkUA0jO8xrhnrujaGYZRm/VwxYHj/LEcu
+         xCPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OS8v8CG+34mphZBpB0HybgdUv1BniMG/SDhz9sxy3DQ=;
-        b=PGhZsyDGPTSYM8FoxwqS0RsveuGq/rLSVEJuJy5iotJVH/ZV72Iqw5BgYs1QUDscWK
-         MtL9curvGMoP2PeMXstrzOcki5bmTs06p+XjO9AcEsbI5H+uU3ufElkRcttFicFgsFZh
-         0ra0RPb0x+zJrPyVfTVWo1M1TWPggiDu/Xd5Dxobz31PLmaMl8vCHW5khhVd4Eno2bu8
-         pzVclWH/uss8Vq/WzMFpq5bKM+K6IybCtTk/WEilIyuIHvPJDgl/sHaJxHBSZ1BNw66v
-         rEbRsOVI8UihDoMBx2uPGfms/TYLsSEtc4G9UFBi056QrX8YuylfEwrOkuBqMG/kVGyi
-         zRBQ==
+        bh=THmLqQsKEXOZbRKhS9beyVzcLcgkjletg78pbbNWyqE=;
+        b=xdAaY9b5OimGjT151sxEPbbAPVzCYQzgKVxznRAtL1yYyXB3VN/vFSdOLNlgT9cper
+         kEsczA9zCNburij5cZx9QqO/LhXTMJ/rfvuwpXZ/gGWff6eKZH0eWaO6m0WzK1cpxKu9
+         HD2Adli4X6NSuHS+jF3aCnKhrJyISfhsAtMkthGYFG2eoF6x9+Jpw5ecOQdo+zEKounl
+         VebnvYSc/nHWQZqnddRjEzVkfYpme5FLE4x6Ig0JD1kwhyU6SczcZfn7KrW/TBHU9Y/Y
+         ulBTFosT27AXkyx7Ov1ZqMZT1ED8ZPhNr+uxvA0CL710O3UCwhXHgs15aTdOE/Z9/bM0
+         0s3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vsekz69R;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="I/d7rox9";
        spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id k20si20998060ejj.639.2021.07.13.14.20.40
+        by mx.google.com with ESMTPS id x16si4615361edd.147.2021.07.13.14.20.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Jul 2021 14:20:40 -0700 (PDT)
+        Tue, 13 Jul 2021 14:20:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vsekz69R;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="I/d7rox9";
        spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1626211239;
+	s=mimecast20190719; t=1626211241;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=OS8v8CG+34mphZBpB0HybgdUv1BniMG/SDhz9sxy3DQ=;
-	b=Vsekz69RDAGhBCSB8izCf3LPOzAYDfxX2Z8n9hF474Jqa/5wzJDKFxfmz4oCVy9GtpeHZE
-	nQMs7ZkTRU4QVzUecGMn+E1rC7R30iQD8Ia5PdADaJwF7npK93cZKHpu7wxv2Rqd5d7Fui
-	8JPMV1+OTI08JbEh0TIceZrPVyMlR5Y=
+	bh=THmLqQsKEXOZbRKhS9beyVzcLcgkjletg78pbbNWyqE=;
+	b=I/d7rox9QWGCfd1IA33t2hex23EywHHc6lhpkh5r7J6SUo9psykh/mMXcsaTTldGlhwLmo
+	wmeQB9cRPo7NDGbl+PEaPscL9zhhQj8omiFwPsRJLjUZj95eLtV2+pF97l1/lx8lb32rN3
+	UhzWz+o4mnaKN4AOW05Za7fiF8ifugY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-151-_rGCbJSxO0GpXpu42Le2Tg-1; Tue, 13 Jul 2021 17:20:34 -0400
-X-MC-Unique: _rGCbJSxO0GpXpu42Le2Tg-1
+ us-mta-189-oqOCcSalMbupp5Khgj-0Ew-1; Tue, 13 Jul 2021 17:20:39 -0400
+X-MC-Unique: oqOCcSalMbupp5Khgj-0Ew-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9CC431005E46;
-	Tue, 13 Jul 2021 21:20:31 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CF1211084F54;
+	Tue, 13 Jul 2021 21:20:36 +0000 (UTC)
 Received: from p50.localhost.net (ovpn-117-22.rdu2.redhat.com [10.10.117.22])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A5A9119C44;
-	Tue, 13 Jul 2021 21:20:18 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7218A19C44;
+	Tue, 13 Jul 2021 21:20:34 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
@@ -86,9 +86,9 @@ Cc: Greg Kurz <groug@kaod.org>,
 	Thomas Huth <thuth@redhat.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 03/23] Acceptance Tests: distinguish between temp and logs dir
-Date: Tue, 13 Jul 2021 17:19:03 -0400
-Message-Id: <20210713211923.3809241-4-crosa@redhat.com>
+Subject: [PULL 05/23] Acceptance Tests: move definition of distro checksums to the framework
+Date: Tue, 13 Jul 2021 17:19:05 -0400
+Message-Id: <20210713211923.3809241-6-crosa@redhat.com>
 In-Reply-To: <20210713211923.3809241-1-crosa@redhat.com>
 References: <20210713211923.3809241-1-crosa@redhat.com>
 MIME-Version: 1.0
@@ -97,102 +97,137 @@ Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-X-TUID: 1x1rAsMsWKE3
+X-TUID: 5yptSbF9p1G5
 
-Logs can be very important to debug issues, and currently QEMUMachine
-instances will remove logs that are created under the temporary
-directories.
+Instead of having, by default, the checksum in the tests, and the
+definition of tests in the framework, let's keep them together.
 
-With this change, the stdout and stderr generated by the QEMU process
-started by QEMUMachine will always be kept along the test results
-directory.
+A central definition for distributions is available, and it should
+allow other known distros to be added more easily.
+
+No behavior change is expected here, and tests can still define
+a distro_checksum value if for some reason they want to override
+the known distribution information.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Message-Id: <20210211220146.2525771-6-crosa@redhat.com>
-Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-Id: <20210414221457.1653745-3-crosa@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Acked-by: Eric Auger <eric.auger@redhat.com>
+[CR: split long lines]
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- python/qemu/machine/machine.py            | 17 ++++++++++++++---
- tests/acceptance/avocado_qemu/__init__.py |  3 ++-
- 2 files changed, 16 insertions(+), 4 deletions(-)
+ tests/acceptance/avocado_qemu/__init__.py | 39 +++++++++++++++++++++--
+ tests/acceptance/boot_linux.py            | 12 -------
+ 2 files changed, 37 insertions(+), 14 deletions(-)
 
-diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
-index d47ab3d896..94846dd71b 100644
---- a/python/qemu/machine/machine.py
-+++ b/python/qemu/machine/machine.py
-@@ -96,7 +96,8 @@ def __init__(self,
-                  socket_scm_helper: Optional[str] = None,
-                  sock_dir: Optional[str] = None,
-                  drain_console: bool = False,
--                 console_log: Optional[str] = None):
-+                 console_log: Optional[str] = None,
-+                 log_dir: Optional[str] = None):
-         '''
-         Initialize a QEMUMachine
- 
-@@ -110,6 +111,7 @@ def __init__(self,
-         @param sock_dir: where to create socket (defaults to base_temp_dir)
-         @param drain_console: (optional) True to drain console socket to buffer
-         @param console_log: (optional) path to console log file
-+        @param log_dir: where to create and keep log files
-         @note: Qemu process is not started until launch() is used.
-         '''
-         # pylint: disable=too-many-arguments
-@@ -123,6 +125,7 @@ def __init__(self,
-         self._name = name or "qemu-%d" % os.getpid()
-         self._base_temp_dir = base_temp_dir
-         self._sock_dir = sock_dir or self._base_temp_dir
-+        self._log_dir = log_dir
-         self._socket_scm_helper = socket_scm_helper
- 
-         if monitor_address is not None:
-@@ -314,8 +317,6 @@ def _base_args(self) -> List[str]:
-         return args
- 
-     def _pre_launch(self) -> None:
--        self._qemu_log_path = os.path.join(self.temp_dir, self._name + ".log")
--
-         if self._console_set:
-             self._remove_files.append(self._console_address)
- 
-@@ -332,6 +333,7 @@ def _pre_launch(self) -> None:
-         # NOTE: Make sure any opened resources are *definitely* freed in
-         # _post_shutdown()!
-         # pylint: disable=consider-using-with
-+        self._qemu_log_path = os.path.join(self.log_dir, self._name + ".log")
-         self._qemu_log_file = open(self._qemu_log_path, 'wb')
- 
-     def _post_launch(self) -> None:
-@@ -770,3 +772,12 @@ def temp_dir(self) -> str:
-             self._temp_dir = tempfile.mkdtemp(prefix="qemu-machine-",
-                                               dir=self._base_temp_dir)
-         return self._temp_dir
-+
-+    @property
-+    def log_dir(self) -> str:
-+        """
-+        Returns a directory to be used for writing logs
-+        """
-+        if self._log_dir is None:
-+            return self.temp_dir
-+        return self._log_dir
 diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
-index 4ce09de4fa..420c00f1a9 100644
+index 0e62c15c60..3a144cded4 100644
 --- a/tests/acceptance/avocado_qemu/__init__.py
 +++ b/tests/acceptance/avocado_qemu/__init__.py
-@@ -222,9 +222,10 @@ def setUp(self):
-     def _new_vm(self, name, *args):
-         self._sd = tempfile.TemporaryDirectory(prefix="avo_qemu_sock_")
-         vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir,
--                         sock_dir=self._sd.name)
-+                         sock_dir=self._sd.name, log_dir=self.logdir)
-         self.log.debug('QEMUMachine "%s" created', name)
-         self.log.debug('QEMUMachine "%s" temp_dir: %s', name, vm.temp_dir)
-+        self.log.debug('QEMUMachine "%s" log_dir: %s', name, vm.log_dir)
-         if args:
-             vm.add_args(*args)
-         return vm
+@@ -304,6 +304,35 @@ def ssh_command(self, command):
+         return stdout_lines, stderr_lines
+ 
+ 
++#: A collection of known distros and their respective image checksum
++KNOWN_DISTROS = {
++    'fedora': {
++        '31': {
++            'x86_64':
++            {'checksum': ('e3c1b309d9203604922d6e255c2c5d09'
++                          '8a309c2d46215d8fc026954f3c5c27a0')},
++            'aarch64':
++            {'checksum': ('1e18d9c0cf734940c4b5d5ec592facae'
++                          'd2af0ad0329383d5639c997fdf16fe49')},
++            'ppc64':
++            {'checksum': ('7c3528b85a3df4b2306e892199a9e1e4'
++                          '3f991c506f2cc390dc4efa2026ad2f58')},
++            's390x':
++            {'checksum': ('4caaab5a434fd4d1079149a072fdc789'
++                          '1e354f834d355069ca982fdcaf5a122d')},
++            }
++        }
++    }
++
++
++def get_known_distro_checksum(distro, distro_version, arch):
++    try:
++        return KNOWN_DISTROS.get(distro).get(distro_version).\
++            get(arch).get('checksum')
++    except AttributeError:
++        return None
++
++
+ class LinuxTest(Test, LinuxSSHMixIn):
+     """Facilitates having a cloud-image Linux based available.
+ 
+@@ -353,14 +382,20 @@ def download_boot(self):
+         vmimage.QEMU_IMG = qemu_img
+ 
+         self.log.info('Downloading/preparing boot image')
++        distro = 'fedora'
++        distro_version = '31'
++        known_distro_checksum = get_known_distro_checksum(distro,
++                                                          distro_version,
++                                                          self.arch)
++        distro_checksum = self.distro_checksum or known_distro_checksum
+         # Fedora 31 only provides ppc64le images
+         image_arch = self.arch
+         if image_arch == 'ppc64':
+             image_arch = 'ppc64le'
+         try:
+             boot = vmimage.get(
+-                'fedora', arch=image_arch, version='31',
+-                checksum=self.distro_checksum,
++                distro, arch=image_arch, version=distro_version,
++                checksum=distro_checksum,
+                 algorithm='sha256',
+                 cache_dir=self.cache_dirs[0],
+                 snapshot_dir=self.workdir)
+diff --git a/tests/acceptance/boot_linux.py b/tests/acceptance/boot_linux.py
+index 3901c23690..34c4366366 100644
+--- a/tests/acceptance/boot_linux.py
++++ b/tests/acceptance/boot_linux.py
+@@ -20,9 +20,6 @@ class BootLinuxX8664(LinuxTest):
+     :avocado: tags=arch:x86_64
+     """
+ 
+-    distro_checksum = ('e3c1b309d9203604922d6e255c2c5d09'
+-                       '8a309c2d46215d8fc026954f3c5c27a0')
+-
+     def test_pc_i440fx_tcg(self):
+         """
+         :avocado: tags=machine:pc
+@@ -67,9 +64,6 @@ class BootLinuxAarch64(LinuxTest):
+     :avocado: tags=machine:gic-version=2
+     """
+ 
+-    distro_checksum = ('1e18d9c0cf734940c4b5d5ec592facae'
+-                       'd2af0ad0329383d5639c997fdf16fe49')
+-
+     def add_common_args(self):
+         self.vm.add_args('-bios',
+                          os.path.join(BUILD_DIR, 'pc-bios',
+@@ -121,9 +115,6 @@ class BootLinuxPPC64(LinuxTest):
+     :avocado: tags=arch:ppc64
+     """
+ 
+-    distro_checksum = ('7c3528b85a3df4b2306e892199a9e1e4'
+-                       '3f991c506f2cc390dc4efa2026ad2f58')
+-
+     def test_pseries_tcg(self):
+         """
+         :avocado: tags=machine:pseries
+@@ -139,9 +130,6 @@ class BootLinuxS390X(LinuxTest):
+     :avocado: tags=arch:s390x
+     """
+ 
+-    distro_checksum = ('4caaab5a434fd4d1079149a072fdc789'
+-                       '1e354f834d355069ca982fdcaf5a122d')
+-
+     @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
+     def test_s390_ccw_virtio_tcg(self):
+         """
 -- 
 2.31.1

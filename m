@@ -1,108 +1,109 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp1473887lfc;
-        Fri, 16 Jul 2021 09:59:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzMRM6o/PFoirsZptdob+q8h6FgS2CzDy9wDo+klBkSqxyCApKamD/qxNHRJJoJAwcv+AQy
-X-Received: by 2002:a37:41c7:: with SMTP id o190mr11022491qka.201.1626454760837;
-        Fri, 16 Jul 2021 09:59:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626454760; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp1487663lfc;
+        Fri, 16 Jul 2021 10:14:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzDx0S4fnPml1JPaoLmxkOD7Irq3Zwp81M/uvdxIVDqhbpJcnjOtZ8/3oF+tIjzu7QvY7EJ
+X-Received: by 2002:a2e:9cd5:: with SMTP id g21mr9737317ljj.99.1626455694944;
+        Fri, 16 Jul 2021 10:14:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626455694; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dp8ZhfFidZyE3StnQ4RLUj6x+cGowxqQ17sYksduTRiZU+w4GZpsj+3PtMc9NlPttG
-         AJAKKMirqXvJiMIA9nXlarlxdRO84v1Tozz6FRykaSWSrjMyKHugxpA/gqwlx50xHqE3
-         bL3pEpG7J4Qh12rLkvSBGqqQvOByHtA5RHAry6JmPhLCRA/Y3ngFx0fxKsEfz6cez5Is
-         +jx9FEbPROMAQqsFnch87p+u+D+46xaqRUYOToeYK4CIox60AkUbz4qA5TKdyXARWmbC
-         VJ4ukxMGpNsSML2BxE4LNjuO17LV7sX/rfoHBD2MV6Ie5As3BYlfmaOJye7q519VoZJH
-         Fpdg==
+        b=kul+fV967tX6rpw4UIJZvW5QKi7XBXLyBuYhEz+ZF9W3Zbs5/6rkqdC1j7+4uQmpkQ
+         mdj5H5RaabGil33ny5XxuKu4vYsc9hfkrY6V8O2n7dy+bYinos7q6Cnyc8zDqOpi+1xg
+         ryU9owGi1yPlprfb06CxF302ai2PwsVZdyegBu9tMK4o8hxzLB33Xg4Tx5+Q9J+RUrPd
+         P3lJLv5iYDxElxJiVoEB2apFQR2AQ3M2vK50F0ex8P5snTjBI1//u+RHM3WZZc4BFF5k
+         /7T+T5ssM1XUBvQCc3+DxZAx28mM9SK/qeXXim2+4223eD4vdKHc9d0ydhqKTBfAyrgA
+         CDBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=85w98ZHdXri9LNUBYklPMhrggvGL2og7RnDkOwo6Goc=;
-        b=cMWfax1thmHSDAr2heV+3uPNhTmSywmrlg8wlCZgbnH1WGlPru5WTo4F/ggVyz2/fu
-         nmCK3NRo9XRQNkQE+Pb64tj2OpOajRMtPvA2IldESIz568fPgtHoClTXvA8TptmgbDYj
-         hohd/5FVtwfYUD6bvpS+7maeJpC2f65PsQ2Qq5lmjMQL4FexACKDG0b9QsyrkrzjLHvU
-         T2yvSobc0GVa1DnJIz/A2Hep6Vfc4PD/bBQ6Hsm8wNTszbwu1Z0/UZKycnPR6NMN8JAJ
-         0x5eooXjtOdS+fZ/hQWnSY0xRuYAel/dTqaVQkvP5YzF2OnTKgjU42p5X1ujReh4diJB
-         CldQ==
+        bh=R6J2a96iBCrBCZ7L2u6WV78KqOA1yJ63V1u5u7JjtPA=;
+        b=DGxyS2zKuHvJ6cfk6zMtU1RX+kAnYk/mCu8WHFQkppg9ZgQTKKSrtqTcVV50OyXvhG
+         vWXneolnEIamae7p0MD6Si9TxWoMxVT57nOyiEN/2PKe0JQ4esmIXmcdqsamdPc7RxGi
+         OHEs/+tmGP6GjV3iQf8a9tewL9GI0dspagmqXfdLtLi53LnQz8AYB6X409252viXLbj0
+         mI/5SG1kQln0g8wV7Riirvrgo5ar3WTRgR92PCsCS8zYvB6EePtlMdqlnvv+PcFttDpU
+         iOQFyfer6SiWpTckf4bySzd5qeAlaMBlgxB7XBKa75biWG2GtTIijgWlImaqzH2ElOxR
+         TTQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i83cZoA6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hKjgJ3ig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21si6311750qko.13.2021.07.16.09.59.20
+        by mx.google.com with ESMTPS id r19si14618608lji.166.2021.07.16.10.14.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Jul 2021 09:59:20 -0700 (PDT)
+        Fri, 16 Jul 2021 10:14:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i83cZoA6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hKjgJ3ig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40070 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45368 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m4RBI-0004lE-54
-	for alex.bennee@linaro.org; Fri, 16 Jul 2021 12:59:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52812)
+	id 1m4RQL-0000eO-VF
+	for alex.bennee@linaro.org; Fri, 16 Jul 2021 13:14:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54740)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m4RAh-0004kN-Vy
- for qemu-arm@nongnu.org; Fri, 16 Jul 2021 12:58:45 -0400
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:40702)
+ id 1m4RQD-0000dZ-8h
+ for qemu-arm@nongnu.org; Fri, 16 Jul 2021 13:14:45 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:39439)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m4RAg-0007dy-IR
- for qemu-arm@nongnu.org; Fri, 16 Jul 2021 12:58:43 -0400
-Received: by mail-pg1-x52e.google.com with SMTP id k20so10531804pgg.7
- for <qemu-arm@nongnu.org>; Fri, 16 Jul 2021 09:58:42 -0700 (PDT)
+ id 1m4RQB-0001Tb-Qi
+ for qemu-arm@nongnu.org; Fri, 16 Jul 2021 13:14:45 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ p14-20020a17090ad30eb02901731c776526so9224365pju.4
+ for <qemu-arm@nongnu.org>; Fri, 16 Jul 2021 10:14:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=85w98ZHdXri9LNUBYklPMhrggvGL2og7RnDkOwo6Goc=;
- b=i83cZoA62PhL/LhJS1mtzmjvpBqKTVuw+bb99p/7vZeUnUcRS9kjoRxTZUUiT9XnBw
- 2lv2s8OSCQ+2gLgFapuwgDH6oRdLLvLy+lm5DklkgtjxpKTI7UxfGi4gMS8h7tSVIqdm
- 3ND+gW1MY/lBCbfT78NINPru25+SkB5+xbQmsgQosFKOCq7lxoTuR3n5skyFxGb+uT3Z
- eRIEqVmOq+fxFOnir7bIlwnnvFRvii5dW46h1NOQdq2vm6Lcv62yyeXDt+23cUaipHPq
- /E6J4aw3OPhKAV+3CJaXO6YPHITdms8aVb5KWeYB3qxgvfcGQFdJ/gqr/ATHJBgps7LS
- Vcww==
+ bh=R6J2a96iBCrBCZ7L2u6WV78KqOA1yJ63V1u5u7JjtPA=;
+ b=hKjgJ3igzN47yVr1kN0ZKYZs7tX01+WEPg5mBMPhEQmGlQeSFCyPPyX6Opq031Rn2Y
+ BF7YK3Awv786ZTVV6xC2JssTD98H+l5lAbJlb+4d8OLqZD0WtuO73s1Q3nE3AcmTOUKm
+ eIXSnNlu4DJN6NgczVLBa4wyM6DUb6+dEIp/batKIoUEG4XL1dJPn76dDfJrCd/Pzne2
+ jLfnfIiXknfhxnZF8z7MbgEChAy+YDww0egIcQkABCdMZAO39nNHk9AKs+/neI4lQPqr
+ zm0pCQikQiV6O871P1lwI0+U3N6ihedOwfM3DXwO4/Epx/PxzP+N/I15pdHpTkgGS8C7
+ W0dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=85w98ZHdXri9LNUBYklPMhrggvGL2og7RnDkOwo6Goc=;
- b=f5p6X11+5dRfcGlOlVSdQSHnvn1vv6RB9gliCnrc+Qqn1zJ8rIEhsoSE3CKZUJUl9p
- +qwNyzvHt9Ya0BGBad7Lagy4sB6k4dMgwihWCZ+FiEs7E8rCxOyVO0kRamr7qpNplVvV
- RJRLnpsvIz7MxMWXJ9Xn4jVSinhrjzkNYi2+qbfAdmvyiRo27BhWOrGLJjW9ZhVmR7Xp
- 20uXZEC08SVLi3nsNIYSawsLEuTLXSdFbYrDRr2uzaS17kXk6jrl7hT5wX0noLBq2hSE
- dwiZwNqNootVLmFDkDqeWSs3WNCSRjw3fDaVsRifB9/8oHhDz0J7YuwZEvXPyTfPQqyQ
- VOuw==
-X-Gm-Message-State: AOAM532RpBwR81DwwRRNz0ky3OnhsQ0CWGv8Wf20Hwu892S+E82DfJXl
- SeD5aAOMmgZWbZmaX1NAUElKng==
-X-Received: by 2002:a63:9d46:: with SMTP id i67mr11005231pgd.225.1626454721249; 
- Fri, 16 Jul 2021 09:58:41 -0700 (PDT)
+ bh=R6J2a96iBCrBCZ7L2u6WV78KqOA1yJ63V1u5u7JjtPA=;
+ b=cSI45QdHH9Lxdagl4sHlx+zn1yTfg83Ns0UUh2JB1DXjkSATjZ4VwsxKiB6P+1aS9Y
+ gcpHKQNoeoYMOgXpdk0Q0Z1+jUmWsu0G6ppVK1ZQa2LfOsQnMH3vDBQfEDGiuFf6GNno
+ zxDynAP1GVXSBgEW5H7eoBj4AO3suZpKYWrrkp5ZH9sqjriKIsstH7WLtRQv6WNP06ZF
+ fo72cRZ+Y1SwffiDiRcq7jh+1MCaVheJOMbDtGzIZwsW7/w4JHMGcbWdsE4veb5wDujN
+ vYKbQ7zAv43jxk5mMe2/+rUP0Mwj10GknBUcMBkLiPwUT902CTBY1N3MtmNhSG0fqTzR
+ 8D7w==
+X-Gm-Message-State: AOAM532wuYJ9ue3DF6B0dsivP6B1TpLK/IpLDdavki0DufWOTxdot07l
+ 0rmGwPuv0FsquuTe++DtG0OEXA==
+X-Received: by 2002:a17:90a:5896:: with SMTP id
+ j22mr10314208pji.125.1626455682047; 
+ Fri, 16 Jul 2021 10:14:42 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id e13sm11130985pfd.11.2021.07.16.09.58.40
+ by smtp.gmail.com with ESMTPSA id w123sm10783394pfb.109.2021.07.16.10.14.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Jul 2021 09:58:40 -0700 (PDT)
-Subject: Re: [PATCH for-6.2 10/34] target/arm: Fix VLDRB/H/W for predicated
- elements
+ Fri, 16 Jul 2021 10:14:41 -0700 (PDT)
+Subject: Re: [PATCH for-6.2 11/34] target/arm: Implement MVE VMULL (polynomial)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210713133726.26842-1-peter.maydell@linaro.org>
- <20210713133726.26842-11-peter.maydell@linaro.org>
+ <20210713133726.26842-12-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9ede02f9-e42d-d4b0-9137-c1ac1e4cec49@linaro.org>
-Date: Fri, 16 Jul 2021 09:58:39 -0700
+Message-ID: <04056c2e-04eb-bb9f-584f-ef188c2b6e03@linaro.org>
+Date: Fri, 16 Jul 2021 10:14:40 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210713133726.26842-11-peter.maydell@linaro.org>
+In-Reply-To: <20210713133726.26842-12-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,20 +125,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aTVD8wcsugt6
+X-TUID: Ap492odYwAwQ
 
 On 7/13/21 6:37 AM, Peter Maydell wrote:
-> For vector loads, predicated elements are zeroed, instead of
-> retaining their previous values (as happens for most data
-> processing operations). This means we need to distinguish
-> "beat not executed due to ECI" (don't touch destination
-> element) from "beat executed but predicated out" (zero
-> destination element).
+> Implement the MVE VMULL (polynomial) insn.  Unlike Neon, this comes
+> in two flavours: 8x8->16 and a 16x16->32.  Also unlike Neon, the
+> inputs are in either the low or the high half of each double-width
+> element.
+> 
+> The assembler for this insn indicates the size with "P8" or "P16",
+> encoded into bit 28 as size = 0 or 1. We choose to follow the
+> same encoding as VQDMULL and decode this into a->size as MO_16
+> or MO_32 indicating the size of the result elements. This then
+> carries through to the helper function names where it then
+> matches up with the existing pmull_h() which does an 8x8->16
+> operation and a new pmull_w() which does the 16x16->32.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/mve_helper.c | 8 +++++---
->   1 file changed, 5 insertions(+), 3 deletions(-)
+>   target/arm/helper-mve.h    |  5 +++++
+>   target/arm/vec_internal.h  | 11 +++++++++++
+>   target/arm/mve.decode      | 14 ++++++++++----
+>   target/arm/mve_helper.c    | 16 ++++++++++++++++
+>   target/arm/translate-mve.c | 28 ++++++++++++++++++++++++++++
+>   target/arm/vec_helper.c    | 14 +++++++++++++-
+>   6 files changed, 83 insertions(+), 5 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

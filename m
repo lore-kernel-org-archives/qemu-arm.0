@@ -1,105 +1,116 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp1082083lfc;
-        Fri, 16 Jul 2021 01:33:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwDlykj6cGWNRKFAfDl5hmK1gd1+j+MjidRseYzT0+SqX1WhN3WydYk9MNpFoKJEKetFirC
-X-Received: by 2002:ac8:58cb:: with SMTP id u11mr7980677qta.342.1626424393021;
-        Fri, 16 Jul 2021 01:33:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626424393; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp1605623lfc;
+        Fri, 16 Jul 2021 12:58:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxD1N6httn1xipamTT94zxK2LCNFajnHAG6W1MTm9LPqIv++FFsNaaK8O37uTDyQvCHfAH2
+X-Received: by 2002:ab0:6197:: with SMTP id h23mr16166297uan.54.1626465486024;
+        Fri, 16 Jul 2021 12:58:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626465486; cv=none;
         d=google.com; s=arc-20160816;
-        b=sgmTQBpxijZeaeEUaKR05++F9fxs6KY16JAWFU7wul47i1mJTgbAk01aIjcmsa4aA2
-         a9KvPyW8iVDV72yv3nCGXDffc/2aqJuyW4MVLjfypStKnlm4x6qakvXeDKQYP4L+TzHG
-         aAPN48ip+UjPhYhL+HgPbhwrXb9vZiYUOQNLGJ/UXXHRdYE7WGQ+1mGwQDm6cbEmKaK+
-         Qq1Xi7wmeyL9ZMG8er7LLD3nKOA0UbASAx7btU1Wai+DKnSLMB0KMLmFspR3uIXdjdhw
-         G/OKXORBALUU4xMEWQy4U67LgjFWKOA9cQ9rdLkkmvaI34Vf7H+5R28vF/RlHYEPKYTm
-         lRcw==
+        b=bNMjZ6rzCQaiV+qAf8TW1usLh7fFOpTHwMlMclXq9leiuPNbWMVAtq3B6p7jm2MpAD
+         esgOFxkudee8lNzITRUbfAnw4Gf5SPE8PmS4awdjIa5WcOdzSyyYMm2h8v6N28BnC4Rv
+         4/RAJg/8HNJa2hv1GtKKI+Qr9SVj39b/JcvGAn4C4GcTV8k2TCBXalUEDUkiCGefs42r
+         Pfvuh+51KHkS5kx7wzMO4qOW4u+6yrI3Cxt8nhtfubdC/EGyEt/0evF6nBryYz4fN0+V
+         70oysNFUSf949G8nUvZ3A6wX30VmVaZvMBI6ToeWjxWgkw+F7Z3hSOrE/f6EkuiM4x0S
+         G5Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
-        b=cyhZb4bE8+zBSgCS+Xm2YD6SMgOlP3Eq2LapLUOmyScvhrGJMjC0MVhxxy0aTiGi4C
-         LaNB9WxnOdpf0TaMjjo41G4zGvQLbgNYKeaLUJLmZGC08rSI4EbctaAwwbHQ4rB7kl0u
-         Y0E+YiyuwPjOan/xpbOPcK1eFTvNJ7IbJQg5lsLOBnUweD96893P3in/O/X/1fh1HYmK
-         fvnHEtp3D4lMijZ0d9X7SYPXYdXrQsf7INzuReGca50Jjpf9bxWatvgV3XPbK2m6rOWo
-         9pL1qeeM6pjWRC9y50PREix6gmXkbuAoVvgp5LPFXzLh+iCzP5sOzuF/o0Sqr3l68Db3
-         +P+A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=mBWvxVQ+4lM+5pd6/LRpX+9YbUiacDr7n+RUY2UmbKI=;
+        b=UD1B5vlfrfGyLmHV9MBA5o9eUthbsRwVrzc36D7k17q4LvZN0vrwMth9Ha7e9dFRAe
+         u6GEMfF/OVBYgFvPTG9/OVpwnVQz6iw/alAplzjoaD276pCmyxfQoevhZMd5B3ItSc2B
+         j9je10M/aMXKxuqhkwq3BvMXw+vHjWpqtEByrxMcneUtJHs589xBwuhdITCafll0Fr64
+         IFfzduKJ9LGXLlkuIr536zLTJ+ZxtWrwVw4mE4JykhKEIrSSln61vMBerj4iqQdY9wwb
+         Ns6ZRvypvUpdgomuJCEFpyfbC449ywre3YAO2Y/DuJ9ktAwdNopWd1wRbSeZcgkOgq9J
+         gisg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pf8zSlwH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fk6zIMtq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1si7500621qke.293.2021.07.16.01.33.12
+        by mx.google.com with ESMTPS id m5si10660781vsh.427.2021.07.16.12.58.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Jul 2021 01:33:13 -0700 (PDT)
+        Fri, 16 Jul 2021 12:58:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pf8zSlwH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fk6zIMtq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49000 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m4JHU-000824-7u
-	for alex.bennee@linaro.org; Fri, 16 Jul 2021 04:33:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60618)
+	id 1m4TyH-0007TB-AE
+	for alex.bennee@linaro.org; Fri, 16 Jul 2021 15:58:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m4JHH-00081w-Ro
- for qemu-arm@nongnu.org; Fri, 16 Jul 2021 04:32:59 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:41877)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m4Ty8-0007Sv-Bc
+ for qemu-arm@nongnu.org; Fri, 16 Jul 2021 15:57:56 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a]:35608)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m4JHF-0007vZ-RR
- for qemu-arm@nongnu.org; Fri, 16 Jul 2021 04:32:59 -0400
-Received: by mail-ed1-x536.google.com with SMTP id w14so11876753edc.8
- for <qemu-arm@nongnu.org>; Fri, 16 Jul 2021 01:32:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m4Ty6-00040Q-Tm
+ for qemu-arm@nongnu.org; Fri, 16 Jul 2021 15:57:56 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id n11so5853520plc.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Jul 2021 12:57:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
- b=Pf8zSlwHL1hWY2cy5rA8H0Gv/ZiDhfRRmM/wsCCythm2yVfvs0Zpi95X6yNWIyuaP0
- LCMtknpKsJZmPYhAIWHsmVYVM+O6s8dfdxvF09STw2ERfWSjRntd2cB45YR8jY6UB/gy
- 236BlZlwwYsdxicEtNAeRe5Dcd4Kp9og0996isJICvF5slkM4KNB4OyqGWZAzFGXROsH
- PXqu7bfo38bPDPQI/8ggATAdIfNAej9Ogya7kPf5xEpfOyu4NpxpyEGfX6gL/AplV64I
- G7JLbenCBEY6JuSQt260pNaFuz0Vg1rTWVnaUTT8hI5enTE1jtGxLP3xpHZXO/2VCC7Q
- o4gg==
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=mBWvxVQ+4lM+5pd6/LRpX+9YbUiacDr7n+RUY2UmbKI=;
+ b=Fk6zIMtq6ZXMTClkqh9/hgAskOqRBEMuYO//HQXWcBXOaP8rCp5mtuluXCjVMsH7ON
+ qIsK4RE9EzLdDeEc4MFSCXKvwfHptU5Z5mK0P2lEw/e8/JKt1a/aXjjGPMIpyjB+/e0j
+ jE89IntlHJOIYwQ9Jqlx7jm3RfeTJ8a/JZRiFLQTFWeletPTn+vSZwE3wvMUl0Dh9Y2x
+ FKQlvgA8qUHxvz9IDtbXXKkw8s8/NAGkTRPJEQtqnKKYbs9keNoQJ8dTAr3PS38k6mza
+ k4Y5+PdHIgCQ0bBZf7RLXSOeonp9vxNc1jIM+AViORONB0NOaQ794VM9k/VywJkjkw9N
+ B+sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
- b=tCXp4pLA8sdQl3swfCQDPkvoWzAKSrOkHnCR8ymqJtMM5Uu0XVJWoKDqLN8upQYnIV
- vzMwNmb+H/oIe9vCNou+yA/JoVzn+hJvVvL/Ki6ySaVZNEcaFJz9VN5VekElDudCdz+U
- LQW6FxlinaVNvby3VoclxPtkVtVk+M72tY9Hjp0ZgFd8m0avJWY7r+IiO23Fs2LTSJOm
- WiyK7RrJcUHkjrTLr9rUSDmaBxU4YH/YPGqB3gGVaAFqfxztJLdFPelX2qbGFRAh8YXQ
- sBp8mJR7wToAuD7fUnq/dVZMq658HTYWmcheqXQx+ukhmxZPg4AHPlxFWVtUR+q20TCt
- YEsg==
-X-Gm-Message-State: AOAM532mP2pe8LqTHGm6Eci9bzgU80MvvHBRMdXt6thLVxJiP47K6Z5Q
- LxPgmJQxjWEG2+3PNvTSFhjcRI8/3TJ1Gutu+y6DDA==
-X-Received: by 2002:aa7:d809:: with SMTP id v9mr13242739edq.146.1626424375856; 
- Fri, 16 Jul 2021 01:32:55 -0700 (PDT)
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=mBWvxVQ+4lM+5pd6/LRpX+9YbUiacDr7n+RUY2UmbKI=;
+ b=j61yH8wbOpPelTmPwerm1afz/pkJMe+TStSBt9fEED1dQKWEtSv+7jvAkEoC5a3ldh
+ FlLrqDxWskJO9dZBZqCOLcgFY1rqNl/7CmY+VMm80v2NKygL0vo/Nr0Rd8kUogyhTS8S
+ pzIIE20ujX0YI+1Le+wttWFbrlll1BVqIgi+5EyhEJ1Ewq54MpvtMCFRK2pPUxJjxRCx
+ At9So2FU9N0VklEpA9W3/qGkTkW2xWI7Xzzy9xhVjzG/am/lsUQJIKdlqbSlQ1RWQ/b7
+ s+FEcZXruAgzreofvCj2eDEds/OTwrdmKPShkKvOswDsFJ+nMTaAHUOLTLdNxoc8/yjD
+ f/JA==
+X-Gm-Message-State: AOAM530z/xPLXmnblhWXGxcakjm5rtJzzp2kvxfjq8/8dNysvDbNRWQk
+ Bwr1NYLQBZ1JPiLcQjRLU/9qhg==
+X-Received: by 2002:a17:90b:338d:: with SMTP id
+ ke13mr17214198pjb.151.1626465472911; 
+ Fri, 16 Jul 2021 12:57:52 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.149.176])
+ by smtp.gmail.com with ESMTPSA id a23sm10784892pff.43.2021.07.16.12.57.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Jul 2021 12:57:52 -0700 (PDT)
+Subject: Re: [PATCH for-6.2 12/34] target/arm: Implement MVE
+ incrementing/decrementing dup insns
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210713133726.26842-1-peter.maydell@linaro.org>
+ <20210713133726.26842-13-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <170925ed-040a-d117-9e16-fbee7604f820@linaro.org>
+Date: Fri, 16 Jul 2021 12:57:50 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
-In-Reply-To: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Jul 2021 09:32:15 +0100
-Message-ID: <CAFEAcA97bUkyHL+=LuToYgG-HWgppfbBc=BqO=BdboSWfF=Kcg@mail.gmail.com>
-Subject: Re: [PATCH] hw/intc/arm_gicv3: Fix GICv3 redistributor security
- checking
-To: Tianrui Wei <tianrui-wei@outlook.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+In-Reply-To: <20210713133726.26842-13-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,73 +123,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Sergey Fedorov <sergey.fedorov@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Shlomo Pongratz <shlomo.pongratz@huawei.com>,
- Jonathan Balkind <jbalkind@ucsb.edu>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Shannon Zhao <shannon.zhao@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4kEd//lM2tuw
+X-TUID: zOVpJpY4hQyy
 
-On Wed, 14 Jul 2021 at 20:46, Tianrui Wei <tianrui-wei@outlook.com> wrote:
->
-> For redistributor to send sgi, we must test NSACR bits in secure mode.
-> However, current implementation inverts the security check, wrongly
-> skipping this it when the CPU is in secure state, and only carrying out
-> the check when the CPU is not secure or security is not implemented.
-> This patch corrects this problem by correcting the inversion of CPU
-> secure state checking. It has been tested to work with Linux version 5.11
-> in both aarch64 and arm version of qemu.
->
-> According to =E2=80=9CArm Generic Interrupt Controller Architecture
-> Specification GIC architecture version 3 and version 4,=E2=80=9D p. 930, =
-2008.
-> Chapter 12, page 530, when there is only one security state implemented,
-> GICD.CTLR.DS is always 0, thus checking NSACR in non-secure state. When
-> cpu is in secure state, ns =3D 0, thus the NSACR check is never performed=
-.
->
-> Signed-off-by: Tianrui Wei <tianrui-wei@outlook.com>
-> Signed-off-by: Jonathan Balkind <jbalkind@ucsb.edu>
-> Tested-by: Tianrui Wei <tianrui-wei@outlook.com>
-> ---
->  hw/intc/arm_gicv3_redist.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-> index 53da703ed8..84cfcfd18f 100644
-> --- a/hw/intc/arm_gicv3_redist.c
-> +++ b/hw/intc/arm_gicv3_redist.c
-> @@ -564,7 +564,7 @@ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp=
-, int irq, bool ns)
->          return;
->      }
->
-> -    if (ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +    if (!ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
->          /* If security is enabled we must test the NSACR bits */
->          int nsaccess =3D gicr_ns_access(cs, irq);
+On 7/13/21 6:37 AM, Peter Maydell wrote:
+> +#define DO_VIDUP(OP, ESIZE, TYPE, FN)                           \
+> +    uint32_t HELPER(mve_##OP)(CPUARMState *env, void *vd,       \
+> +                           uint32_t offset, uint32_t imm)       \
+> +    {                                                           \
+> +        TYPE *d = vd;                                           \
+> +        uint16_t mask = mve_element_mask(env);                  \
+> +        unsigned e;                                             \
+> +        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {      \
+> +            mergemask(&d[H##ESIZE(e)], offset, mask);           \
+> +            offset = FN(offset, imm);                           \
+> +        }                                                       \
+> +        mve_advance_vpt(env);                                   \
+> +        return offset;                                          \
+> +    }
+> +
+> +#define DO_VIWDUP(OP, ESIZE, TYPE, FN)                          \
+> +    uint32_t HELPER(mve_##OP)(CPUARMState *env, void *vd,       \
+> +                              uint32_t offset, uint32_t wrap,   \
+> +                              uint32_t imm)                     \
+> +    {                                                           \
+> +        TYPE *d = vd;                                           \
+> +        uint16_t mask = mve_element_mask(env);                  \
+> +        unsigned e;                                             \
+> +        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {      \
+> +            mergemask(&d[H##ESIZE(e)], offset, mask);           \
+> +            offset = FN(offset, wrap, imm);                     \
+> +        }                                                       \
+> +        mve_advance_vpt(env);                                   \
+> +        return offset;                                          \
+> +    }
+> +
+> +#define DO_VIDUP_ALL(OP, FN)                    \
+> +    DO_VIDUP(OP##b, 1, int8_t, FN)              \
+> +    DO_VIDUP(OP##h, 2, int16_t, FN)             \
+> +    DO_VIDUP(OP##w, 4, int32_t, FN)
+> +
+> +#define DO_VIWDUP_ALL(OP, FN)                   \
+> +    DO_VIWDUP(OP##b, 1, int8_t, FN)             \
+> +    DO_VIWDUP(OP##h, 2, int16_t, FN)            \
+> +    DO_VIWDUP(OP##w, 4, int32_t, FN)
 
-So, before this change:
- * if the access to ICC_SGI[01]R_EL1 attempting to kick off this SGI
-   is done in Secure state, we allow it
- * if the GIC has security disabled (GICD_CTLR.DS is 1), we allow it
- * if the access is from NonSecure and the GIC does not have security
-   disabled, we check the NSACR bits to see if we should allow it
+Would it be useful to merge VIDUP and VIWDUP by passing wrap == 0?
+Or merging VIDUP and VDDUP by negating imm?
 
-With this change, we check the NSACR bits for accesses from Secure
-state, and we don't check them for accesses from NonSecure.
-This doesn't seem to me to match what the spec requires: in version
-IHI0069G of the GICv3 spec, section 12.1.10, the tables show that
-only accesses from NonSecure are subject to NSACR checks. (This makes
-intuitive sense: the GICR_NSACR is the NonSecure Access Control
-Register and it is controls NonSecure accesses, not Secure accesses.)
+Anyway,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-What bug are you trying to fix with this patch ?
 
-thanks
--- PMM
+r~

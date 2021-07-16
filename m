@@ -1,108 +1,184 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp577444lfc;
-        Thu, 15 Jul 2021 12:29:42 -0700 (PDT)
-X-Received: by 2002:a17:907:1b29:: with SMTP id mp41mr7013089ejc.459.1626377382788;
-        Thu, 15 Jul 2021 12:29:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626377382; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp1082083lfc;
+        Fri, 16 Jul 2021 01:33:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDlykj6cGWNRKFAfDl5hmK1gd1+j+MjidRseYzT0+SqX1WhN3WydYk9MNpFoKJEKetFirC
+X-Received: by 2002:ac8:58cb:: with SMTP id u11mr7980677qta.342.1626424393021;
+        Fri, 16 Jul 2021 01:33:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626424393; cv=none;
         d=google.com; s=arc-20160816;
-        b=JyFyQYDX4DH8Qi7kqkU6w5uncudzQF+0cyFQ8pabpTg/HU3OSvxhkyicEBNVDC2iuv
-         rdxP6Xo3ewUlga+OOY2uzJ0m4nWufJ2PRqsPy0OtPfizmZ7BNSlr3QmIMEB+uaoT0VRu
-         4MaTVmyBVuhNx7H4sf1Gl3BRkFtwm30WLjZCV6eeEA26uOeipF5L0rgknGmUiRWfx8bY
-         NE607vk971EmPtFxO1lxVz1qlZnlEB/+R1FNiw9DM7Ofhp0wmb4OWll2yjKc9FpnjEnh
-         vgEAe7ApdkfkUywfy4xidXiQ1nYdLeg2ApezY9PpquRolgXoN2AnOosGf0HrHFm8MBpz
-         7tHw==
+        b=sgmTQBpxijZeaeEUaKR05++F9fxs6KY16JAWFU7wul47i1mJTgbAk01aIjcmsa4aA2
+         a9KvPyW8iVDV72yv3nCGXDffc/2aqJuyW4MVLjfypStKnlm4x6qakvXeDKQYP4L+TzHG
+         aAPN48ip+UjPhYhL+HgPbhwrXb9vZiYUOQNLGJ/UXXHRdYE7WGQ+1mGwQDm6cbEmKaK+
+         Qq1Xi7wmeyL9ZMG8er7LLD3nKOA0UbASAx7btU1Wai+DKnSLMB0KMLmFspR3uIXdjdhw
+         G/OKXORBALUU4xMEWQy4U67LgjFWKOA9cQ9rdLkkmvaI34Vf7H+5R28vF/RlHYEPKYTm
+         lRcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=iOgTNX8o23idiqZD3+PahvcNwv4GJBpkYn5xX1HkZzU=;
-        b=PkjshphNmQAHpuoxsLuM2fKIPGa7R5J+DmKp4rqu7I9IvbSGwwV2+w/AdSMI75kbx1
-         t3IA6KO2qvgPDCr/D0QUr7h/y6y5udLdEmE2YbTwAP1EwpjpQYi/1Onl9Yjdj6jMfSQg
-         k+YOKY+viGmFawZJOC5sTCdO12Wg9Ga7esdnM5XSwWRjxOTwmY++a9veCTm3fyEMZKmI
-         Pi+IaWu/mDbPfzqZG+m4o6ye7sxClxifKsqon5d1n2reWXb2ZbfhoYv2K3FIOrY8EjXM
-         NB7hBN2chvoRffh1J+zpjS2tnX8NWlBvUsuuQaZW8IaiMygqt9TqwYoym6l3scaF5tzM
-         12fg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
+        b=cyhZb4bE8+zBSgCS+Xm2YD6SMgOlP3Eq2LapLUOmyScvhrGJMjC0MVhxxy0aTiGi4C
+         LaNB9WxnOdpf0TaMjjo41G4zGvQLbgNYKeaLUJLmZGC08rSI4EbctaAwwbHQ4rB7kl0u
+         Y0E+YiyuwPjOan/xpbOPcK1eFTvNJ7IbJQg5lsLOBnUweD96893P3in/O/X/1fh1HYmK
+         fvnHEtp3D4lMijZ0d9X7SYPXYdXrQsf7INzuReGca50Jjpf9bxWatvgV3XPbK2m6rOWo
+         9pL1qeeM6pjWRC9y50PREix6gmXkbuAoVvgp5LPFXzLh+iCzP5sOzuF/o0Sqr3l68Db3
+         +P+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jLIvxLVE;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u24sor6933748edo.6.2021.07.15.12.29.42
+       dkim=fail header.i=@linaro.org header.s=google header.b=Pf8zSlwH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b1si7500621qke.293.2021.07.16.01.33.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 15 Jul 2021 12:29:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 16 Jul 2021 01:33:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jLIvxLVE;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=iOgTNX8o23idiqZD3+PahvcNwv4GJBpkYn5xX1HkZzU=;
-        b=jLIvxLVE0b+RxSnedLTx1uDIN+fvM0to5FIpjM8AEBnN/I73/L0F77cOWxF2j42T3R
-         /wiTdZdyRPhNJ6h1TZHYX/fs77iUtwribDxL70mTw6fUsslztFpiDZQ5unKCNQ4WvRja
-         yb/AYvDd3GRsiZYSYuU8leR8kJL0/aaTp3Eak/6/QMSVWP0ok5Yu4T1s98mBHCEZlqUt
-         1q+STdjEh8OWokmqwboq/eU+oRUPuACug5nOYm6s6OcmzQOIsziCLVWJINcHuYKI8hb/
-         JnDnCnQcKRCl5ypXZATUQoYgEaTk//kHiRVdlqdubMk0xFuLlJO32euBqr8dGIMBfezf
-         lzdg==
+       dkim=fail header.i=@linaro.org header.s=google header.b=Pf8zSlwH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49000 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m4JHU-000824-7u
+	for alex.bennee@linaro.org; Fri, 16 Jul 2021 04:33:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60618)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m4JHH-00081w-Ro
+ for qemu-arm@nongnu.org; Fri, 16 Jul 2021 04:32:59 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:41877)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m4JHF-0007vZ-RR
+ for qemu-arm@nongnu.org; Fri, 16 Jul 2021 04:32:59 -0400
+Received: by mail-ed1-x536.google.com with SMTP id w14so11876753edc.8
+ for <qemu-arm@nongnu.org>; Fri, 16 Jul 2021 01:32:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
+ b=Pf8zSlwHL1hWY2cy5rA8H0Gv/ZiDhfRRmM/wsCCythm2yVfvs0Zpi95X6yNWIyuaP0
+ LCMtknpKsJZmPYhAIWHsmVYVM+O6s8dfdxvF09STw2ERfWSjRntd2cB45YR8jY6UB/gy
+ 236BlZlwwYsdxicEtNAeRe5Dcd4Kp9og0996isJICvF5slkM4KNB4OyqGWZAzFGXROsH
+ PXqu7bfo38bPDPQI/8ggATAdIfNAej9Ogya7kPf5xEpfOyu4NpxpyEGfX6gL/AplV64I
+ G7JLbenCBEY6JuSQt260pNaFuz0Vg1rTWVnaUTT8hI5enTE1jtGxLP3xpHZXO/2VCC7Q
+ o4gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=iOgTNX8o23idiqZD3+PahvcNwv4GJBpkYn5xX1HkZzU=;
-        b=JIKsfn654H5+zJ3pj1fJI0LR6jLK6vnyLUO7jUuanHbwiI+i6ZvyFHbjv3szfwI0M7
-         H6acfv1O1f1NpswUyPhStEUfs+Wteh0ola0GcABApPhi+m7vyJBBfv8tBWb7jfaWeRfs
-         Opnaax5DTm+/w9tmAcbyQQrM7E09m47fLvesPBdX0DQ94eS23KZg7qIUJbYxhXJM/aTZ
-         9PZ6na66QL7vU/4mWdELcJu8tjAu8IVIHZYCU/FahuoNRgYOh7C+vu1Zplth/og1RJ0t
-         wCpB3CBn35fpjOTthdvIwaXkhAhLgAsd82QWDAJOxSkJYVYLaZIwWyowmI/rPZ8ICR4H
-         KSgA==
-X-Gm-Message-State: AOAM533z5dxoMJbiCCt9YwYczVppc4eYESpuHCW+wmF9SvEQf9oxB0bA
-	u7o3lelCPBHcDaXQSfhi0RXqKKi+NV8A9VtysHXwbuG1
-X-Google-Smtp-Source: ABdhPJyetSuZEgbJOHFFjfsdtSJpD4r7SDE/VG+UDmHm4UTsp2Yd16ZL3rVOYCq1dVzI9odDdiuHi/albWXb21OE5hQ=
-X-Received: by 2002:a05:6402:1ca4:: with SMTP id cz4mr9297241edb.52.1626377382438;
- Thu, 15 Jul 2021 12:29:42 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
+ b=tCXp4pLA8sdQl3swfCQDPkvoWzAKSrOkHnCR8ymqJtMM5Uu0XVJWoKDqLN8upQYnIV
+ vzMwNmb+H/oIe9vCNou+yA/JoVzn+hJvVvL/Ki6ySaVZNEcaFJz9VN5VekElDudCdz+U
+ LQW6FxlinaVNvby3VoclxPtkVtVk+M72tY9Hjp0ZgFd8m0avJWY7r+IiO23Fs2LTSJOm
+ WiyK7RrJcUHkjrTLr9rUSDmaBxU4YH/YPGqB3gGVaAFqfxztJLdFPelX2qbGFRAh8YXQ
+ sBp8mJR7wToAuD7fUnq/dVZMq658HTYWmcheqXQx+ukhmxZPg4AHPlxFWVtUR+q20TCt
+ YEsg==
+X-Gm-Message-State: AOAM532mP2pe8LqTHGm6Eci9bzgU80MvvHBRMdXt6thLVxJiP47K6Z5Q
+ LxPgmJQxjWEG2+3PNvTSFhjcRI8/3TJ1Gutu+y6DDA==
+X-Received: by 2002:aa7:d809:: with SMTP id v9mr13242739edq.146.1626424375856; 
+ Fri, 16 Jul 2021 01:32:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <1624662174-175828-1-git-send-email-joe.komlodi@xilinx.com>
- <CAFEAcA_vxA12WMi6qdV2_wNiNAKZ4j6-FTKnwfphT7nGznJoYw@mail.gmail.com> <12d4c7de-1346-2aee-75f5-4db729b7f1c7@linaro.org>
-In-Reply-To: <12d4c7de-1346-2aee-75f5-4db729b7f1c7@linaro.org>
+References: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
+In-Reply-To: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Jul 2021 20:29:02 +0100
-Message-ID: <CAFEAcA9kdOm1kLg=SqCg7oK=2mq-Sya9+ydS7L9vx_PuQOCLyw@mail.gmail.com>
-Subject: Re: [PATCH 0/1] target/arm: Check NaN mode before silencing NaN
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Joe Komlodi <joe.komlodi@xilinx.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Fri, 16 Jul 2021 09:32:15 +0100
+Message-ID: <CAFEAcA97bUkyHL+=LuToYgG-HWgppfbBc=BqO=BdboSWfF=Kcg@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/arm_gicv3: Fix GICv3 redistributor security
+ checking
+To: Tianrui Wei <tianrui-wei@outlook.com>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: jUB0L4NizZZl
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Sergey Fedorov <sergey.fedorov@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Shlomo Pongratz <shlomo.pongratz@huawei.com>,
+ Jonathan Balkind <jbalkind@ucsb.edu>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Shannon Zhao <shannon.zhao@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4kEd//lM2tuw
 
-On Mon, 28 Jun 2021 at 16:05, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 14 Jul 2021 at 20:46, Tianrui Wei <tianrui-wei@outlook.com> wrote:
 >
-> On 6/28/21 7:54 AM, Peter Maydell wrote:
-> > Richard, Alex: what is the assertion trying to achieve ? It doesn't
-> > seem entirely obvious to me that because we're in default-NaN mode
-> > (which is a property of the *output* of FPU insns) that we should
-> > blow up on calling float*_silence_nan() (which is typically an action
-> > performed on the *input* of FPU insns).
+> For redistributor to send sgi, we must test NSACR bits in secure mode.
+> However, current implementation inverts the security check, wrongly
+> skipping this it when the CPU is in secure state, and only carrying out
+> the check when the CPU is not secure or security is not implemented.
+> This patch corrects this problem by correcting the inversion of CPU
+> secure state checking. It has been tested to work with Linux version 5.11
+> in both aarch64 and arm version of qemu.
 >
-> This was in response to e9e5534ff30.
+> According to =E2=80=9CArm Generic Interrupt Controller Architecture
+> Specification GIC architecture version 3 and version 4,=E2=80=9D p. 930, =
+2008.
+> Chapter 12, page 530, when there is only one security state implemented,
+> GICD.CTLR.DS is always 0, thus checking NSACR in non-secure state. When
+> cpu is in secure state, ns =3D 0, thus the NSACR check is never performed=
+.
 >
-> My assumption in adding the assert is that it was probably a configuration error.  If you
-> disagree, I suppose we can revert it, as it's not critical.
+> Signed-off-by: Tianrui Wei <tianrui-wei@outlook.com>
+> Signed-off-by: Jonathan Balkind <jbalkind@ucsb.edu>
+> Tested-by: Tianrui Wei <tianrui-wei@outlook.com>
+> ---
+>  hw/intc/arm_gicv3_redist.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+> index 53da703ed8..84cfcfd18f 100644
+> --- a/hw/intc/arm_gicv3_redist.c
+> +++ b/hw/intc/arm_gicv3_redist.c
+> @@ -564,7 +564,7 @@ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp=
+, int irq, bool ns)
+>          return;
+>      }
+>
+> -    if (ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
+> +    if (!ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
+>          /* If security is enabled we must test the NSACR bits */
+>          int nsaccess =3D gicr_ns_access(cs, irq);
 
-I just ran across this again, in a different context. For MVE VMAXNMV
-(which uses the "default FPSCR value"), I need to silence input SNaNs
-before performing the max/min operation. The logical way to do that is
-to call float*_silence_nan(). Except that that barfs on this assertion.
+So, before this change:
+ * if the access to ICC_SGI[01]R_EL1 attempting to kick off this SGI
+   is done in Secure state, we allow it
+ * if the GIC has security disabled (GICD_CTLR.DS is 1), we allow it
+ * if the access is from NonSecure and the GIC does not have security
+   disabled, we check the NSACR bits to see if we should allow it
 
-So I think that having run into this assertion() twice now it's
-more awkward than helpful and I intend to put a patch deleting it
-in the appropriate part of my next MVE series.
+With this change, we check the NSACR bits for accesses from Secure
+state, and we don't check them for accesses from NonSecure.
+This doesn't seem to me to match what the spec requires: in version
+IHI0069G of the GICv3 spec, section 12.1.10, the tables show that
+only accesses from NonSecure are subject to NSACR checks. (This makes
+intuitive sense: the GICR_NSACR is the NonSecure Access Control
+Register and it is controls NonSecure accesses, not Secure accesses.)
 
-(In theory I could work around it by deliberately squashing the
-"use the default NaN value flag" in a local copy of the fp_status,
-but that seems like unnecessary work.)
+What bug are you trying to fix with this patch ?
 
 thanks
 -- PMM

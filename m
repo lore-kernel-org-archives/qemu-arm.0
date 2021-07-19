@@ -1,93 +1,93 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp3819530lfc;
-        Mon, 19 Jul 2021 05:57:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzHUMhJiCSaPelfRG4OEMNxTy7UUTytxvB/y9Nf3KFpj7t3R1Q8U6cvVxqsbXjUq1QMYse
-X-Received: by 2002:a25:ad96:: with SMTP id z22mr32202446ybi.178.1626699452261;
-        Mon, 19 Jul 2021 05:57:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626699452; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp3819815lfc;
+        Mon, 19 Jul 2021 05:57:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJycHToIw5rUzPQ9AjTKoOnEmj+3LEr948yE8n0GSkys1GJVo3+QwvuvxNwb4ppQKjCARoBm
+X-Received: by 2002:a25:b9c3:: with SMTP id y3mr31098688ybj.10.1626699472000;
+        Mon, 19 Jul 2021 05:57:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626699471; cv=none;
         d=google.com; s=arc-20160816;
-        b=vdf8aQtpXpoVpIwuiQqo0CETWZQDZLtznCFvcfJ8iQMU4lhNoEbKjtwMkcnBfEHEwc
-         DcGdTYR0X+PhAQQ8xAg6FRcGHxvKzdjMrffEfeL4QaX432VMoOHdJjBBcFOLRN1OwEdh
-         jowZl5e3dwxS1CnhCwhVsxHSfkZ+G74lfCdjc4NytnBxOpZIuvE+AFBijroP0BMT9O1d
-         tUTwQEveGpEZKwDWd/zIxxSI0bx5e9zbH9WuWVJ2P52dqAcT8bhrz8RWEWYhSJmOn0Hp
-         6FxE4ALv6vW1nyTtA47lESFHAKCT37cfJi1DxuxDBEISpwNYEAWgD/Q0Fdrt2fAEVttM
-         RDuQ==
+        b=C1cY1b5IgFlI6xWgE3cAtmfLY4LlZUIfsHoIBGOhBgXqQqistEcF5EezFK4vj0UnNX
+         ftd4z1xzD6zXvlbSOCttZDKc54WA7pzkIemC+nFQG7d02a6KEApqYBsvI40eQ54heG9W
+         GhMZJCYsd3UU3scym7pIG0D6aZCLfx0auCLKa4gXr4YgWKk1viJ9MA8bLmGbM61GZsD0
+         Fx5aDF+QhDiNEayiAnC3pd3t9FqpqstRxJ2mjDQPHScXUCTUUfZ3wiXmFVQn5hn2IC+l
+         TE1KjSKEWMM8khlPHsXRL2YpRF1TvZPnK8fm5lA0LZUO2XhI1ihtLZDc0dJp8MkaDhMk
+         YEuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zYvO5vH/6ycZ3HLaq9mAB8JCvyq3PmppixcoiEfCufI=;
-        b=EfLDnrGIbpF3MoVHRTRXtj5IVImLBzcUGDd9mJaiAiAJ0jx2qnLRmIRf9GRaJTA4Fv
-         eJ7j9FOJaXbW5k1EYUdRJBKOhCUhySbI9OQJmEoK1ZtmhRUCtkeR/iXD1Cjk+UN9LLju
-         2nFoj7fnh6t+a/SNPug9JJ9PVYzTEOp9Um05Osj7ixgb0QKWistX+28enX6XqSCYTe+4
-         LZZJOgKp9VJ/tblAOIpTZNogtIGMGlDWLRBFR0LIDs54WNwE7m4S/zAS+aJgFBlZCyqV
-         +TYIX9gjnuEoIDuof/iJ6TIFqPr7cGc4k6fICCBDA5QZPOQpTxVAAhZL4atrLqaoFyIC
-         Tqig==
+        bh=5HQknEjTIN1tSqJiCVeSfVqHdr7Ga/K4X1FOAufQKm0=;
+        b=tb1BK6FtJ2joX+5l3hIv5p29WuXbK2AoVIlqY468roJ3q3Lr1sgA5lXUQYDjtFvo4B
+         3xaBCJ8ux1rtQJBKj+MTsJIQim/JotZuiYhZsg7SI9MCGPoDX8qbE6y/GeKXr6jbpuGp
+         EUXt2uUw2epGm+ZzlG4WgbAcb3PLxGCEW/HD18n03X/Sz7174CVz5bAmsvvzTgNYb7nU
+         zBna4rG5lEQUU7e8WDXPgrELp29ahG0xVsMJnsOdiedh0zUqLyOIN/n5Ylq0m5Z/ieT9
+         rjHQCfNO2dSjfHWRqF9yOC86ubwdw0xvIgzNVdQX4iE10LqA6WbsfKET7ctv1s2L9gHw
+         QQOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yymkiuru;
+       dkim=fail header.i=@linaro.org header.s=google header.b="PD/My/wS";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y196si20403047ybe.243.2021.07.19.05.57.32
+        by mx.google.com with ESMTPS id l8si22193957ybt.50.2021.07.19.05.57.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Jul 2021 05:57:32 -0700 (PDT)
+        Mon, 19 Jul 2021 05:57:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yymkiuru;
+       dkim=fail header.i=@linaro.org header.s=google header.b="PD/My/wS";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45396 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46030 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m5Spv-0003iK-JC
-	for alex.bennee@linaro.org; Mon, 19 Jul 2021 08:57:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42726)
+	id 1m5SqF-00048J-EJ
+	for alex.bennee@linaro.org; Mon, 19 Jul 2021 08:57:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42936)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m5SpU-0003gR-4u
- for qemu-arm@nongnu.org; Mon, 19 Jul 2021 08:57:04 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:40806)
+ id 1m5Spy-000468-PM
+ for qemu-arm@nongnu.org; Mon, 19 Jul 2021 08:57:34 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:39686)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m5SpS-0006gr-LV
- for qemu-arm@nongnu.org; Mon, 19 Jul 2021 08:57:03 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id dp20so26592829ejc.7
- for <qemu-arm@nongnu.org>; Mon, 19 Jul 2021 05:57:02 -0700 (PDT)
+ id 1m5Sps-00071e-PU
+ for qemu-arm@nongnu.org; Mon, 19 Jul 2021 08:57:34 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id ga14so28530807ejc.6
+ for <qemu-arm@nongnu.org>; Mon, 19 Jul 2021 05:57:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zYvO5vH/6ycZ3HLaq9mAB8JCvyq3PmppixcoiEfCufI=;
- b=yymkiuruDumPphv3lqfIRv8wCJFWor7muUDfj0rUU8XDQfk6ezJdt+Govha2zmjQs3
- CqTlZgxlkwKVMCqLim9V+DII90AXqWXlX87Mg5JzdROsvadHlN/Ai3ID9kVcMkxhjxGq
- UMGBK4052EUZNZkD0aElzt+bSTsjT4j7rrwnmdL0bBr9Ec7p+6lP/Ef2sjKZKEQr/tK/
- lUe3ArOirfT8rlBu4JmqnPPg29IQ6hs5w7riwIVmKhk2IiEy6BI/PfpIex2UNlD1jdcZ
- hunip624Ln/Upy2t7rGPVSa9gg+A+PO9xq3FHD5WtgFgDkbb0DJkpgYZp8p/T05pMm88
- ookg==
+ :cc; bh=5HQknEjTIN1tSqJiCVeSfVqHdr7Ga/K4X1FOAufQKm0=;
+ b=PD/My/wSYjUiBtw2f4y+ovfpqNiHHymU0Esi51lJy/BcFCpnOdOn1q/sq6gcS0jGaq
+ M16+nlWxjiDscRud6rSzJSRG3GsDsmjuwpvheXafTNP0G1sRM+5+W/DZcnpNURWaGQlS
+ cePVTmMzJn1gG3FUcweqZrhhmHU5+WeOwQHfhRSc6xdYcgGF7Pvxcu4j54UBnjZC9PId
+ gYDYsoPWel1xgQdlFbaGY55TTZXctcVwYyszV4DGpA4cP0LdANYkPAmGbijBwumEYdOU
+ nAiBfbalYjwoJZ1Z4udxAYO1AfYL28uFROKE1tn2wVIsA8Ys8tnbLWhoPJ3MFZ3t6w/u
+ kFBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zYvO5vH/6ycZ3HLaq9mAB8JCvyq3PmppixcoiEfCufI=;
- b=OBspl3+3xj+DiNH1+i5BEp1sPxO+ytTxO+Pahp7J/wuDbtPAdoO6Q1kxampFvuWjk7
- exFRO5uOZr3Z83ajewojL4+7rx1cPCu5OzRsnpriINp38nHuful5YoBz0SmvIkIat8Cs
- GvkJ7CMVItvl1H327R2ZI/OBDD5R+VbyDpjSZPw0tZzVMhZdQ8t5zUM1D0fur5HyyDpE
- OYCU0D5tZjr7n+xlco+MXoMuPq7lGRmkgtpcLvfyyTcthwIuLjD48/Algi27E5jO1aIp
- vbkPdPv4aaYBXjovEFMubghIcNsz4wdrSz5MEM4UBo+uA+vJANHvUHXRA9EUyHw4a83v
- 85QQ==
-X-Gm-Message-State: AOAM532wj6MjLDInCtfAU14inc6HUXPaGe5d5DUUyyNM7dpBRsanb+Qd
- Blqs5lE53ywzniuZyKjNV4iTBllt5KENzRhB9Rg4fw==
-X-Received: by 2002:a17:906:a2d7:: with SMTP id
- by23mr26667995ejb.382.1626699421334; 
- Mon, 19 Jul 2021 05:57:01 -0700 (PDT)
+ bh=5HQknEjTIN1tSqJiCVeSfVqHdr7Ga/K4X1FOAufQKm0=;
+ b=KzVDc8zGQqiWdhYubTWoAlXeYXh4h+yShsBO/zj5z9ZnGoJ4wUeK7Ty8+ITUSPxv/d
+ MEWS05DiQwMu+VjTqKjUZRNxV+7DWLYSgZBZwHYg9EEsk7SsbI7PfcvvoylZQJOlCxWh
+ xYsgqcuVONXqGvArzbf5HHUoAQfIOK9JigTJBc9ZDT+OmIXwzgmXC+ty/Ml0gek9h7jC
+ +o3vA9Xk1nM7QpedQX1XulVOCoWw4Wk6GtmgB0Quni2sqgd36WySeMpkaID0hxNIrTRi
+ ZE3JkYh9Opq923bmEMmuF8ZOjUwVvoOxrdv2kAkwud7Ekx39Lh+EgkFix5rnmFUIVPM6
+ 7zAA==
+X-Gm-Message-State: AOAM533jXFTkl1fK2bjkBKEofSSciOd9W5uoaX9e/HX/DbIEFM6Kh5yQ
+ sXi9Ru9GdPtZckuGvo4L2bCICmWdf11K5UmdnYpuBg==
+X-Received: by 2002:a17:906:382:: with SMTP id
+ b2mr20488836eja.85.1626699447508; 
+ Mon, 19 Jul 2021 05:57:27 -0700 (PDT)
 MIME-Version: 1.0
 References: <1626413223-32264-1-git-send-email-ishii.shuuichir@fujitsu.com>
- <1626413223-32264-5-git-send-email-ishii.shuuichir@fujitsu.com>
-In-Reply-To: <1626413223-32264-5-git-send-email-ishii.shuuichir@fujitsu.com>
+ <1626413223-32264-4-git-send-email-ishii.shuuichir@fujitsu.com>
+In-Reply-To: <1626413223-32264-4-git-send-email-ishii.shuuichir@fujitsu.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Jul 2021 13:56:20 +0100
-Message-ID: <CAFEAcA-Dd0eh35CUo7_-_adye+DrTuFK471-A3JfBbegxoU9Jg@mail.gmail.com>
-Subject: Re: [PATCH 4/4] docs/system: Add a64fx(Fujitsu A64FX processor) to
- supported guest CPU type
+Date: Mon, 19 Jul 2021 13:56:46 +0100
+Message-ID: <CAFEAcA_GX7u4TxS8ha8s0utO=b4c5FcUvucJkChH8oZnhJ3Bxg@mail.gmail.com>
+Subject: Re: [PATCH 3/4] tests/arm-cpu-features: Add A64FX processor related
+ tests
 To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
@@ -116,31 +116,34 @@ Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uty0blFcyJOr
+X-TUID: jH+4sTJuRfLs
 
 On Fri, 16 Jul 2021 at 06:27, Shuuichirou Ishii
 <ishii.shuuichir@fujitsu.com> wrote:
 >
 > Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
 > ---
->  docs/system/arm/virt.rst | 1 +
->  1 file changed, 1 insertion(+)
+>  tests/qtest/arm-cpu-features.c | 3 +++
+>  1 file changed, 3 insertions(+)
 >
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index 27652ad..5329e95 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -55,6 +55,7 @@ Supported guest CPU types:
->  - ``cortex-a53`` (64-bit)
->  - ``cortex-a57`` (64-bit)
->  - ``cortex-a72`` (64-bit)
-> +- ``a64fx`` (64-bit)
->  - ``host`` (with KVM only)
->  - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
+> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> index 8252b85..979c6f8 100644
+> --- a/tests/qtest/arm-cpu-features.c
+> +++ b/tests/qtest/arm-cpu-features.c
+> @@ -472,6 +472,9 @@ static void test_query_cpu_model_expansion(const void *data)
+>          assert_has_feature_enabled(qts, "max", "sve128");
+>          assert_has_feature_enabled(qts, "cortex-a57", "pmu");
+>          assert_has_feature_enabled(qts, "cortex-a57", "aarch64");
+> +        assert_has_feature_enabled(qts, "a64fx", "pmu");
+> +        assert_has_feature_enabled(qts, "a64fx", "aarch64");
+> +        assert_has_feature_enabled(qts, "a64fx", "sve");
+>
+>          sve_tests_default(qts, "max");
+>          pauth_tests_default(qts, "max");
+> --
+> 1.8.3.1
 
-This adds a64fx to the list of CPUs we support in the 'virt' board,
-but it hasn't changed the valid_cpus[] array in hw/arm/virt.c, so
-trying to actually use -cpu a64fx with -machine virt will fail.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

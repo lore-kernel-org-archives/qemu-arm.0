@@ -1,136 +1,102 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp2750123lfc;
-        Sat, 17 Jul 2021 22:29:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyF/TRJWgIdcUzVjAwmS+5Zbl0KdnnTTtfNK+qCDormZ2nw491TjY/lx1xt6Np41DLCrhhO
-X-Received: by 2002:a6b:2b44:: with SMTP id r65mr13222190ior.99.1626586158318;
-        Sat, 17 Jul 2021 22:29:18 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1626586158; cv=pass;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp3815735lfc;
+        Mon, 19 Jul 2021 05:52:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwlykXH7eHXfZnbThDFyAw/NR3XDWtfEKXQH7gm6rJasT1xJ1FX5OuP8rQVNPBA+ZwhV+U1
+X-Received: by 2002:a25:41c7:: with SMTP id o190mr31178259yba.256.1626699125770;
+        Mon, 19 Jul 2021 05:52:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626699125; cv=none;
         d=google.com; s=arc-20160816;
-        b=lBhqj2p5qhAJrmnu8TXl485A/6vkX+pToGW7xlyRcHuvGFrGQemxIWiyGLUfcR30H+
-         X2nGjiM7pA7KWEOiSy3nW1UrWZT3Z8Vk7EWhCOuJu3bBtCIAsG7IkFMfTJquzSf8kZHb
-         rWSvPj5Ov/8VlFTQBKQem37UoyDL1bwU/1Ltz4m7VyjNE3lsJxS5/FKDwo8Ap4fn03/Z
-         B2DuTGUGRP0bsgB5HB7u3mzVIzdehPBC0AoCfYnAA380FatE5O60LUeJdMb2K8e3jfK4
-         KJaGtnTT7chS62Hkk+NOA7Emd4bGlEatN0fKvN/6q3l/Y7AClJWwmagy76TB5Z14vJFB
-         cs9w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Pbq9kjymxkIiQBLAgpVkcHvv226ZcTNq+jdneZj+pPryo2mlruZlqSKwEi7AvAeuSP
+         G27XFNkgiIyFC7UR6Gc7kH+eiz2wFSVGQlwNndKi3M1DywxkbPFNYc7/VixZAB281KS9
+         61erLpIDR68Nlgowz0ugGCh+WYIj5blRO+NiZUdYhAUosMWpnn1t4pHTsyBjcN5xrrm9
+         RAzBxHrInt0trNtgK+FXEOaJqhd61J4XommyArjoalosd7UWLODBRcUjTXqJOVK2znAw
+         CllQPjIyD5T3NYcEefaJ6DGIngWQe5zLiu/m5wTaKPmAglxbk/MA5eCNvHRV1GHZkXq9
+         /jcg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:to:subject
-         :message-id:date:from:in-reply-to:references:dkim-signature;
-        bh=Qlf4Y0ObHa0xvePkXiOdWhZLxCv/EM9/4O+EabAwRgw=;
-        b=uRfR0nq3DLyDopKJl9tDGwNsXKf08yCSzrE0rwwtzgmCC1ifGo+rrBJk7qFqeI2Wo+
-         Mq6Suq8OSCUu0RYcxmkfUuKxzBvpXDv627AmEBFjytK4hdADXNjYWOlj3A7FJnIrXdn+
-         mHNbjXjuMH8l6Ak3vRv2X7TQc1iTUq1t0N4YTR/9AhoZlSBBwmuemrc4AlnbRd40m03B
-         cptH1gWyM0t0iBGi2VoVJvp+DUzNtkgD0C6DZWz7qsAl+TyjtPxMmpo/6XtAxHUrY1Gx
-         RMJ23ilbP5WJeRMql4KC48C8tByqh/yjXuq9NI2wxkbuIemsvJCyoisrujbvabzri1kq
-         dP6A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@outlook.com header.s=selector1 header.b=pZ+yXkeR;
-       arc=pass (i=1);
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=zJzQp4T6VNZjp7OmGTaglG3Oa2ZKq03BUH4VsfaK33A=;
+        b=sxZlkUPyKxk8g3NPot6K8oQm8AgzNjdWuIR4FNG2/FtENbP+0kInI4lP4QJRDpT4AB
+         btGUfDuY5nyu5OSTGbRlFA55V99+6LGQWpEzWxKf5vQl0TMNLecVewCRLsUT2glcrmGC
+         G1Qbd8BbOhEx5eqtb2n+E0RF5q0B7bm6vbWRSfXoogK7tawf0U7cxUMxqJEderXHu9UJ
+         WjoWoLe1keDyc+BLyJKOiRIWoaAdvabzvcmhowtscuG+me5cWSSf/a0jKKI2VMqE72eI
+         ICjZdE4w58bPy3Tyz90AdPbpZM/Gtz/pbqGEguk0eKlCnVRWg5uptuoSGlyb5Sgdbgk5
+         IGPg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=FOhK0ICE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=outlook.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3si6754799ilu.88.2021.07.17.22.29.18
+        by mx.google.com with ESMTPS id m132si20912622ybf.260.2021.07.19.05.52.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Jul 2021 22:29:18 -0700 (PDT)
+        Mon, 19 Jul 2021 05:52:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@outlook.com header.s=selector1 header.b=pZ+yXkeR;
-       arc=pass (i=1);
+       dkim=fail header.i=@linaro.org header.s=google header.b=FOhK0ICE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=outlook.com
-Received: from localhost ([::1]:40396 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37106 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m4zMb-0004w4-LT
-	for alex.bennee@linaro.org; Sun, 18 Jul 2021 01:29:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56450)
+	id 1m5Skf-0006JU-5W
+	for alex.bennee@linaro.org; Mon, 19 Jul 2021 08:52:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tianrui-wei@outlook.com>)
- id 1m4zMR-0004vj-Ct; Sun, 18 Jul 2021 01:29:07 -0400
-Received: from mail-me3aus01olkn2140.outbound.protection.outlook.com
- ([40.92.63.140]:20685 helo=AUS01-ME3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tianrui-wei@outlook.com>)
- id 1m4zMO-0001x0-5C; Sun, 18 Jul 2021 01:29:07 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Go2pEAoYH+d0P9uuz3RbXouLwRN/anA7Bb3cNs7t6g8uSalLw801g5kDjjra/Wrz3R4sscWRINwky8sjCREziYd9eO6SKHFgomXjt62ALejvH7uBksOp/rKm0jpzqEdSDIaZ2d1zKBZnipvL9gPiXl9iu/0seKhWbrNulrztKyJPowLHD+nEqPRy734uelJr+7VTnkRL9EZoqCZAkVAp3AU/ACS7Sw6nif1yWvCnYQzz7aEeecwft91uc9nsiiXlO7kNxwahJfOXO3DkujPwbgjZmBfb2/E2OcFW1wesE+o5HawCS47EwOdy+MUktW+IM/AjO7IMsSZ/M1Rb0U/C4w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Qlf4Y0ObHa0xvePkXiOdWhZLxCv/EM9/4O+EabAwRgw=;
- b=W6SAw1bMqykQ1lbuhB4+RBZNg8Z9DWuv63z/XORmSiH2MS1eIs1dKaCUM8y8JsTvy63JJCtKiPLP15cybZLtJR2iNo8qtOPHDvAUBlUWsPLESBNAbWydhUGwBknYAULv76otLRF4Ek72NI9PtDWtGJU5RnxF83PpKKQVxnn4OveCUzh31QX893IdrxKhfb/h/ntDYEZo8rWuc3xvq8CewBHziXX9fyKiFhYG8DeuJZnuIgcfpm011es5Akhq5hRboPXGmk5SzlSt5Q0BF+fuZLviXfJq4tTJ86pP80NItK1dA6bFOpj6DPGDs/c93Jl/N1W+lofIhHJWYD+C+sTvTA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Qlf4Y0ObHa0xvePkXiOdWhZLxCv/EM9/4O+EabAwRgw=;
- b=pZ+yXkeRsM25wSYyWMCecKo+P/r5C6IqWdIsF9+YNxsSwAXCRwIJgvMAYO9acRSupiFDS/O1RhDeMRK5ne8AqlZFPTfGRsXaHEKZwisRcd71ZhN3qXjRk6OY4O+3RtrSuNZ3KtbXwh3fPxo7nNvnholL0tg5hnAupxPRRs6XBqK0q8L/GGLh6mJ1xCoAsKMm6zRIjLonFMO7NccaBO3WKLW7p+NjCzvwAflDup8okNDqa37ahJ7W1/ZnvsJ3T8sjJAogbKC0qXadn8ekjqYJkcNFS5/mzFJWsRs84mCeAQur8fcGCVnxl8tetH0+YWMTmAEhmJPQFRYHeBvVbTgzBQ==
-Received: from SY4PR01MB6798.ausprd01.prod.outlook.com (2603:10c6:10:137::12)
- by SY4PR01MB5738.ausprd01.prod.outlook.com (2603:10c6:10:fa::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.21; Sun, 18 Jul
- 2021 05:28:56 +0000
-Received: from SY4PR01MB6798.ausprd01.prod.outlook.com
- ([fe80::a44f:289d:7a25:339b]) by SY4PR01MB6798.ausprd01.prod.outlook.com
- ([fe80::a44f:289d:7a25:339b%4]) with mapi id 15.20.4331.031; Sun, 18 Jul 2021
- 05:28:56 +0000
-X-Gm-Message-State: AOAM533NZMZJP7mHvdj7uHzZGMI9cyA/DmkRmZCLj9OyaOimrEM6Uu40
- DinD9zShEyLm9hzSFXlv/4ElWJTBauKUu5Uo4YE=
-X-Received: by 2002:a05:6e02:550:: with SMTP id
- i16mr12018048ils.207.1626585670148; 
- Sat, 17 Jul 2021 22:21:10 -0700 (PDT)
-References: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
- <CAFEAcA97bUkyHL+=LuToYgG-HWgppfbBc=BqO=BdboSWfF=Kcg@mail.gmail.com>
-In-Reply-To: <CAFEAcA97bUkyHL+=LuToYgG-HWgppfbBc=BqO=BdboSWfF=Kcg@mail.gmail.com>
-From: Tianrui Wei <tianrui-wei@outlook.com>
-Date: Sun, 18 Jul 2021 13:20:34 +0800
-X-Gmail-Original-Message-ID: <CAD5SOmeT-E8vrebsK5iN6j8bm=iFsOU7_m2Mc90mowsw6ktzZw@mail.gmail.com>
-Message-ID: <SY4PR01MB679862ABE7F461977519D0D7F6E09@SY4PR01MB6798.ausprd01.prod.outlook.com>
-Subject: Re: [PATCH] hw/intc/arm_gicv3: Fix GICv3 redistributor security
- checking
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="00000000000010e5f005c75efd01"
-X-TMN: [7iFJTsVoG57iQtpto5HNmqTdcZwPvyrx]
-X-ClientProxiedBy: CH2PR07CA0062.namprd07.prod.outlook.com
- (2603:10b6:610:5b::36) To SY4PR01MB6798.ausprd01.prod.outlook.com
- (2603:10c6:10:137::12)
-X-Microsoft-Original-Message-ID: <CAD5SOmeT-E8vrebsK5iN6j8bm=iFsOU7_m2Mc90mowsw6ktzZw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m5SkK-0006Gz-G0
+ for qemu-arm@nongnu.org; Mon, 19 Jul 2021 08:51:44 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:43778)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m5SkI-0002sw-L2
+ for qemu-arm@nongnu.org; Mon, 19 Jul 2021 08:51:44 -0400
+Received: by mail-ed1-x530.google.com with SMTP id l26so23755682eda.10
+ for <qemu-arm@nongnu.org>; Mon, 19 Jul 2021 05:51:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zJzQp4T6VNZjp7OmGTaglG3Oa2ZKq03BUH4VsfaK33A=;
+ b=FOhK0ICEOJd4x2mgTSGxXQ/uLTciaPCksnplAc1/MoUdlzQXi5YFVxBtehb5ocTIyV
+ 8z+Z+9x8axFXRlNNg56976I5wgE/5krQWiZoHwvK5wgholHvjLBiI4chbfEyjUDpkIuC
+ ir9BUirZfMEweX+KNqag+CDc6VC2P4GRvNX88GDbqhN5iwR9NxuZPTGILPgi2hc2gCb0
+ vBp+3wpWSVOBzBpggrWEdIn6mIFTCDpr95UKK3ToCqBGj2EFa7UgswTCCojxn07ef7Uh
+ 3yh9ZNEUy6alxAcuwm+fq6hlc4JegbnsxXlWBnA3GNGXuNn5pJzMPtqElY2NNb1WlutB
+ Z9Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zJzQp4T6VNZjp7OmGTaglG3Oa2ZKq03BUH4VsfaK33A=;
+ b=otERb91Tv9rph1HMZUz3MwdVvrlwBUsCCRaHLPxXWpXL7wvwHDgcC5fzmbxpGofT4a
+ CTKOGUg4n8ayKq0BVQIO0DVpZzdKjS2I/vlDHY7stLdEcU4CBnHiCwnzDRy9TdXRehdf
+ +/IOUY3lXd0Z8LRqygIcgYTrvl78yAPDpoV00C/OGmMW6XI+465F7AQW6E3++TV7gsSe
+ NdrBse+ZLwgDYcBT2doXogEdAX5M+DMQ9L3GN/63b8pZr2elJ9P8Zm/wJcxNiSC9rfyt
+ zlVf9MMM60IOdQrMgRsP73zMkRBBOZlNettEXOzLywYo7I++89HozLqeRI6cIwEX7eS9
+ Zecw==
+X-Gm-Message-State: AOAM530ggAEhO5xV5BCQ5oQra0d73pdWyZTNK/z5V/PUM2R+A/RCIfzs
+ ruWirsH6Rciki3Xf+GVWXe4GyUGd5dSdkL/GLtSRgg==
+X-Received: by 2002:a05:6402:697:: with SMTP id
+ f23mr33713046edy.44.1626699101120; 
+ Mon, 19 Jul 2021 05:51:41 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from mail-io1-f45.google.com (209.85.166.45) by
- CH2PR07CA0062.namprd07.prod.outlook.com (2603:10b6:610:5b::36) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4331.22 via Frontend Transport; Sun, 18 Jul 2021 05:28:56 +0000
-Received: by mail-io1-f45.google.com with SMTP id z17so9181006iog.12;
- Sat, 17 Jul 2021 22:28:56 -0700 (PDT)
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 286d9f0e-8c3b-4e09-8c45-08d949acf036
-X-MS-TrafficTypeDiagnostic: SY4PR01MB5738:
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: N9PgLO9QNAFuk6/YSYx2ZMRQM+/tohpTYA0LP1d76WAFWr1G5TA08nfw5I3xpFLX5iBqBgYX3UcyLBXyzZLT++26V2+6XVBB0kKFXndxZzkC3+CKkgxLpJm2JTi5t/RXZPdcHWC5ITt5qns7YGGltbokFJe9CoUbi3F1TeiN/kcePud0MCrKgR10YXQtJq8fdwGIQkAMc/BezJUY5DOqS4nS6oeViPtARWSBqSTVrNpMcvE4zXYgAQiIKSGUrL3KmX3zeNosSxk5McAUebxwia8+1Ugx6utTtAwIORBSHYU2juK5rSpibXUyffZOfQfyNG46TEPfTXFUqIZ4ak0GtIal0VE0ZTrOqlzStOqzDzSO0WVdk+AW32boI+e9EBEKimddOL47FC6DM8bEwKz4Ehe2Kum0CZXIw6BigVTBkveFwUjlAp360ef73xAwF93k
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: AC7FgvjBTpu9uYO8upNZukxAsi9ZRuWMsbDBfhGRyx8XiqAmax2HN7+4SNCeR9EOoTSrDRdGFsMWQvgCUv/tFswgdVBrOdVGAVO/wSZD6hrjRGaTE+85NyKi0D1uLi0k4rz0ivOTEIu1l/kuvjgBYw==
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 286d9f0e-8c3b-4e09-8c45-08d949acf036
-X-MS-Exchange-CrossTenant-AuthSource: SY4PR01MB6798.ausprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2021 05:28:56.4926 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SY4PR01MB5738
-Received-SPF: pass client-ip=40.92.63.140;
- envelope-from=tianrui-wei@outlook.com;
- helo=AUS01-ME3-obe.outbound.protection.outlook.com
+References: <1626413223-32264-1-git-send-email-ishii.shuuichir@fujitsu.com>
+ <1626413223-32264-2-git-send-email-ishii.shuuichir@fujitsu.com>
+In-Reply-To: <1626413223-32264-2-git-send-email-ishii.shuuichir@fujitsu.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 19 Jul 2021 13:51:00 +0100
+Message-ID: <CAFEAcA8MbO1qSaF__ytMVho7wu70K8jM=0V03zkOcdH46Hy_dw@mail.gmail.com>
+Subject: Re: [PATCH 1/4] target-arm: Introduce ARM_FEATURE_A64FX
+To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -144,193 +110,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Sergey Fedorov <sergey.fedorov@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Shlomo Pongratz <shlomo.pongratz@huawei.com>,
- Jonathan Balkind <jbalkind@ucsb.edu>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Shannon Zhao <shannon.zhao@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pn1juOij3YXH
+X-TUID: Qf4JM0uk4IZx
 
---00000000000010e5f005c75efd01
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Peter,
-
-Many thanks for your detailed explanation. Upon further reflection, it
-seems that I have misinterpreted some of the explanations in
-the manual. Sorry for the confusion, the original implementation is
-correct.
-
-Thanks,
-Tianrui
-
-On Fri, Jul 16, 2021 at 4:32 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Wed, 14 Jul 2021 at 20:46, Tianrui Wei <tianrui-wei@outlook.com> wrote=
-:
-> >
-> > For redistributor to send sgi, we must test NSACR bits in secure mode.
-> > However, current implementation inverts the security check, wrongly
-> > skipping this it when the CPU is in secure state, and only carrying out
-> > the check when the CPU is not secure or security is not implemented.
-> > This patch corrects this problem by correcting the inversion of CPU
-> > secure state checking. It has been tested to work with Linux version 5.=
-11
-> > in both aarch64 and arm version of qemu.
-> >
-> > According to =E2=80=9CArm Generic Interrupt Controller Architecture
-> > Specification GIC architecture version 3 and version 4,=E2=80=9D p. 930=
-, 2008.
-> > Chapter 12, page 530, when there is only one security state implemented=
-,
-> > GICD.CTLR.DS is always 0, thus checking NSACR in non-secure state. When
-> > cpu is in secure state, ns =3D 0, thus the NSACR check is never perform=
-ed.
-> >
-> > Signed-off-by: Tianrui Wei <tianrui-wei@outlook.com>
-> > Signed-off-by: Jonathan Balkind <jbalkind@ucsb.edu>
-> > Tested-by: Tianrui Wei <tianrui-wei@outlook.com>
-> > ---
-> >  hw/intc/arm_gicv3_redist.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-> > index 53da703ed8..84cfcfd18f 100644
-> > --- a/hw/intc/arm_gicv3_redist.c
-> > +++ b/hw/intc/arm_gicv3_redist.c
-> > @@ -564,7 +564,7 @@ void gicv3_redist_send_sgi(GICv3CPUState *cs, int
-> grp, int irq, bool ns)
-> >          return;
-> >      }
-> >
-> > -    if (ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> > +    if (!ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> >          /* If security is enabled we must test the NSACR bits */
-> >          int nsaccess =3D gicr_ns_access(cs, irq);
+On Fri, 16 Jul 2021 at 06:27, Shuuichirou Ishii
+<ishii.shuuichir@fujitsu.com> wrote:
 >
-> So, before this change:
->  * if the access to ICC_SGI[01]R_EL1 attempting to kick off this SGI
->    is done in Secure state, we allow it
->  * if the GIC has security disabled (GICD_CTLR.DS is 1), we allow it
->  * if the access is from NonSecure and the GIC does not have security
->    disabled, we check the NSACR bits to see if we should allow it
+> This function is used to distinguish HPC extensions in the Fujitsu A64FX processor.
 >
-> With this change, we check the NSACR bits for accesses from Secure
-> state, and we don't check them for accesses from NonSecure.
-> This doesn't seem to me to match what the spec requires: in version
-> IHI0069G of the GICv3 spec, section 12.1.10, the tables show that
-> only accesses from NonSecure are subject to NSACR checks. (This makes
-> intuitive sense: the GICR_NSACR is the NonSecure Access Control
-> Register and it is controls NonSecure accesses, not Secure accesses.)
+> HPC (High Performance Computing) extensions are A64FX processor-specific features
+> that are implemented to improve application performance for HPC.
 >
-> What bug are you trying to fix with this patch ?
+> Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+> ---
+>  target/arm/cpu.h | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> thanks
-> -- PMM
->
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index be9a4dc..e5c8645 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2140,6 +2140,7 @@ enum arm_features {
+>      ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
+>      ARM_FEATURE_M_MAIN, /* M profile Main Extension */
+>      ARM_FEATURE_V8_1M, /* M profile extras only in v8.1M and later */
+> +    ARM_FEATURE_A64FX, /* Fujitsu A64FX processor HPC extensions support */
+>  };
 
---00000000000010e5f005c75efd01
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi; as far as I can see there's nothing in your patchset that ever
+tests this feature bit and behaves differently as a result. We
+shouldn't add the feature flag until we have something we want to
+control with it.
 
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><d=
-iv dir=3D"ltr">Hi Peter,<div><br></div><div>Many thanks for your detailed e=
-xplanation. Upon further reflection, it</div><div>seems that I have misinte=
-rpreted some of the explanations in</div><div>the manual. Sorry&nbsp;for th=
-e confusion, the original implementation is</div><div>correct.</div><div><b=
-r></div><div>Thanks,</div><div>Tianrui</div></div><br><div class=3D"gmail_q=
-uote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jul 16, 2021 at 4:32 PM=
- Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydel=
-l@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
-g-left:1ex">On Wed, 14 Jul 2021 at 20:46, Tianrui Wei &lt;<a href=3D"mailto=
-:tianrui-wei@outlook.com" target=3D"_blank">tianrui-wei@outlook.com</a>&gt;=
- wrote:<br>
-&gt;<br>
-&gt; For redistributor to send sgi, we must test NSACR bits in secure mode.=
-<br>
-&gt; However, current implementation inverts the security check, wrongly<br=
->
-&gt; skipping this it when the CPU is in secure state, and only carrying ou=
-t<br>
-&gt; the check when the CPU is not secure or security is not implemented.<b=
-r>
-&gt; This patch corrects this problem by correcting the inversion of CPU<br=
->
-&gt; secure state checking. It has been tested to work with Linux version 5=
-.11<br>
-&gt; in both aarch64 and arm version of qemu.<br>
-&gt;<br>
-&gt; According to =E2=80=9CArm Generic Interrupt Controller Architecture<br=
->
-&gt; Specification GIC architecture version 3 and version 4,=E2=80=9D p. 93=
-0, 2008.<br>
-&gt; Chapter 12, page 530, when there is only one security state implemente=
-d,<br>
-&gt; GICD.CTLR.DS is always 0, thus checking NSACR in non-secure state. Whe=
-n<br>
-&gt; cpu is in secure state, ns =3D 0, thus the NSACR check is never perfor=
-med.<br>
-&gt;<br>
-&gt; Signed-off-by: Tianrui Wei &lt;<a href=3D"mailto:tianrui-wei@outlook.c=
-om" target=3D"_blank">tianrui-wei@outlook.com</a>&gt;<br>
-&gt; Signed-off-by: Jonathan Balkind &lt;<a href=3D"mailto:jbalkind@ucsb.ed=
-u" target=3D"_blank">jbalkind@ucsb.edu</a>&gt;<br>
-&gt; Tested-by: Tianrui Wei &lt;<a href=3D"mailto:tianrui-wei@outlook.com" =
-target=3D"_blank">tianrui-wei@outlook.com</a>&gt;<br>
-&gt; ---<br>
-&gt;&nbsp; hw/intc/arm_gicv3_redist.c | 2 +-<br>
-&gt;&nbsp; 1 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt;<br>
-&gt; diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c<b=
-r>
-&gt; index 53da703ed8..84cfcfd18f 100644<br>
-&gt; --- a/hw/intc/arm_gicv3_redist.c<br>
-&gt; +++ b/hw/intc/arm_gicv3_redist.c<br>
-&gt; @@ -564,7 +564,7 @@ void gicv3_redist_send_sgi(GICv3CPUState *cs, int =
-grp, int irq, bool ns)<br>
-&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return;<br>
-&gt;&nbsp; &nbsp; &nbsp; }<br>
-&gt;<br>
-&gt; -&nbsp; &nbsp; if (ns &amp;&amp; !(cs-&gt;gic-&gt;gicd_ctlr &amp; GICD=
-_CTLR_DS)) {<br>
-&gt; +&nbsp; &nbsp; if (!ns &amp;&amp; !(cs-&gt;gic-&gt;gicd_ctlr &amp; GIC=
-D_CTLR_DS)) {<br>
-&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* If security is enabled we must te=
-st the NSACR bits */<br>
-&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int nsaccess =3D gicr_ns_access(cs, =
-irq);<br>
-<br>
-So, before this change:<br>
-&nbsp;* if the access to ICC_SGI[01]R_EL1 attempting to kick off this SGI<b=
-r>
-&nbsp; &nbsp;is done in Secure state, we allow it<br>
-&nbsp;* if the GIC has security disabled (GICD_CTLR.DS is 1), we allow it<b=
-r>
-&nbsp;* if the access is from NonSecure and the GIC does not have security<=
-br>
-&nbsp; &nbsp;disabled, we check the NSACR bits to see if we should allow it=
-<br>
-<br>
-With this change, we check the NSACR bits for accesses from Secure<br>
-state, and we don't check them for accesses from NonSecure.<br>
-This doesn't seem to me to match what the spec requires: in version<br>
-IHI0069G of the GICv3 spec, section 12.1.10, the tables show that<br>
-only accesses from NonSecure are subject to NSACR checks. (This makes<br>
-intuitive sense: the GICR_NSACR is the NonSecure Access Control<br>
-Register and it is controls NonSecure accesses, not Secure accesses.)<br>
-<br>
-What bug are you trying to fix with this patch ?<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---00000000000010e5f005c75efd01--
+thanks
+-- PMM

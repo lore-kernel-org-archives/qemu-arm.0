@@ -1,105 +1,127 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp4657573lfc;
-        Tue, 20 Jul 2021 03:15:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzh1Slt5lNcPvJThACJBtf1xD7hHbyotBTPuA06/bAjxsMS49BPVhTfdXZIrHmXitEjXQEl
-X-Received: by 2002:a25:c0d4:: with SMTP id c203mr39490729ybf.55.1626776100973;
-        Tue, 20 Jul 2021 03:15:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626776100; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp4707553lfc;
+        Tue, 20 Jul 2021 04:25:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzBkg7MDiPUNvH4NaC6TcIK8U40aCjq6WhwGdXYG93mex3D+sf3z8cZzk0FM8AXX+n8hJTB
+X-Received: by 2002:a05:6102:2259:: with SMTP id e25mr9636984vsb.4.1626780332318;
+        Tue, 20 Jul 2021 04:25:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626780332; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q/OHijFH4gjWBe0GL0FhionA23jdqAVYfLUdwDYIjyDGLwTAHhgEaVP8U0BOYj2Kdy
-         w/oS+3oRN+CEjEKkB6eoyhvQExU2WphdbDzLll+cYLy/xko/R95abDbIwlFn1GS1Wcvo
-         /7oe8/nHpQ0V2Ebh6ACqEN2kNCB8b64HyiQr5h/lOtXb4bs6IffPDkanpW2WgtTb5iD0
-         chlZlqcrYBqEQTy+T7pxyfdrfPouYnyX2gRkvb61+Go+H6jwliDcajo3DFEGGRp5SSau
-         lx44r5Qo+SM8nz3UaLuMyKSxnLo+Ro2rpKvWi1dcsvr0wFEO6UKhXYCUG6p2QfLGLj/A
-         EwIQ==
+        b=OhrjvVehyGOIw73mvTAmEXOKdQOuMnlcJyq4tZc3dh2zrA79KOkmXfoup1vO2+PWE9
+         +AHXqDuJsmQBD+WcdxVa/QkAwCpWyn6S2t6P0dP/9KwCbmEkFQLQL+YI5DUZhiu0PM//
+         nWchJ4cTTci/bBMwBCz4Q0Y6KZpLFBzaDv2lpCpuLoHpnS7QAJhNUsqUbnIx5Q00bRqB
+         X0dyskMMmG0Al1z64e3NdET58HBSlv34+P3OH4brqzdNqhXAcWrYJvyL/eODJklBEzh/
+         czin1VTLfrxORghYC2xAJ00PP+las3sCT0VTYi+cecORag0mPcVUku9ifk0e30k72JJ/
+         RVhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mW686d8CzXXo6vR09hsa2ZRksOH50HGdZbESPDq1rzc=;
-        b=mYh4wi9utky64nSblhAekGW37cliNulRxLGycVJ3gAyMmGApIHokQjkiVpSd0bGzCt
-         ikFr7p9QefZg/e7DkxvLUZDSWtxnkRc+Np7eAFE7VqZf+a1Z6k6MuJZL7FGCtXRtUkM7
-         JfWGezBg1RrPyF1TUlQnp1RWzS/wf8L6UBzAJwbMh470Uxy7vsjmz5pmymGSbSMwuVks
-         F64iZkhxNqC8MarnV3552EHorC/CGvT2mABcP6NpyTy639wRf/aGns5+hwar8+xCdzLX
-         GgW59hVrZMmTj1vyzLRcgzJDzaet/j7o7+DRbFgTxUZs7lzx4Jto0glI5SWWN/8CCXBp
-         tZUA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NIGmNb/O1ANuIWDglBDjPw549fxXaik6yyKDAD0bx+A=;
+        b=nmQikW4T9eTUrTzpT3l7P0yZmk7yvSvlXC6pgAJcbrDkdBzBCwAT5Kp789Zlj3209r
+         KKMHWFqlxkVERDqx6RqPe/IrAnXTlSHH9jrQVVhv4xDwDdyhoj5+thCKsxXABUS55UIC
+         1TPhixVMl0/FRs6DfmKJO5GC5tQsWzmIrXj+5HcVWHcZZNVrd6f3VjplkPKq135pDIGl
+         GOpp65w1x7vAmihl3tYNVmLRIonNP8W9aWhG9QQzqX6J5IVVok9smIOVv96XxzWqAZs3
+         eNkAaQEFPFs2Z7mq9VDuAQwv7b0dlh/HjbqMZ0HlynPMWzjn4TFNvUDEnuujPlUDlDt/
+         44yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NMrlUyPQ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ArOi/4Zs";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e136si20671274ybb.496.2021.07.20.03.15.00
+        by mx.google.com with ESMTPS id a15si18688341vsl.22.2021.07.20.04.25.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Jul 2021 03:15:00 -0700 (PDT)
+        Tue, 20 Jul 2021 04:25:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NMrlUyPQ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ArOi/4Zs";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42704 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:32792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m5mmC-0003Tc-9R
-	for alex.bennee@linaro.org; Tue, 20 Jul 2021 06:15:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47438)
+	id 1m5nsR-0005Fe-KB
+	for alex.bennee@linaro.org; Tue, 20 Jul 2021 07:25:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33148)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m5mlv-0003TL-He
- for qemu-arm@nongnu.org; Tue, 20 Jul 2021 06:14:46 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:39886)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m5mlr-0003wn-Np
- for qemu-arm@nongnu.org; Tue, 20 Jul 2021 06:14:42 -0400
-Received: by mail-ej1-x629.google.com with SMTP id ga14so33532250ejc.6
- for <qemu-arm@nongnu.org>; Tue, 20 Jul 2021 03:14:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mW686d8CzXXo6vR09hsa2ZRksOH50HGdZbESPDq1rzc=;
- b=NMrlUyPQq8UyBom/mvDJylsNMPgF9LqA5UaKnumhN4ZfdQyZU5LmfjbU1v6DdG1l5B
- G4HBc3DbkucVdh+nZhNecwYX8j1ZYEtwPVrq5ZjSPkHoiBpp1dTPwzecUQaQcRCjlEwX
- gcW3m4bIEpXE9lI9qLFFZBFeSwna2lPR6/E+xORUQI7Gr1qBSGRRrNHJn8oHi4OKS55i
- O/q5wLIgv0Fly0x2ZGPrP+/KiIEwNOAqS088vFh0esRux7pWKTsExo+KHAY2ZrqSIjAe
- tFcZA03afv16TrCb6LZaAhHe5c5qvlXJzvMubK+rOrZQ52AKm1ilmFOY/nSucpr5DBsB
- EsTA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m5ns3-0005FJ-6E
+ for qemu-arm@nongnu.org; Tue, 20 Jul 2021 07:25:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22943)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m5nrz-0008S2-VM
+ for qemu-arm@nongnu.org; Tue, 20 Jul 2021 07:25:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626780302;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NIGmNb/O1ANuIWDglBDjPw549fxXaik6yyKDAD0bx+A=;
+ b=ArOi/4ZsI/vt+rp4vXPUDk16QR0lqtfuyBrUPmWXvURJ+P/3M55tCkQxQ7MoKLKcGNSdbf
+ NXbHwBsHzHTtZAfRzkaLOkQ96N5XOpi0D9bjK9NVoP9Ek0v2Y14ipqmIc8UWOVX27tkhrQ
+ QpGR24YQSP6U1J0McpidNKMoIwy4zcg=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-536-s_J3SpIgP72eN1GEVAyk5Q-1; Tue, 20 Jul 2021 07:25:00 -0400
+X-MC-Unique: s_J3SpIgP72eN1GEVAyk5Q-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ r9-20020a5d49890000b02901524df25ad7so506536wrq.8
+ for <qemu-arm@nongnu.org>; Tue, 20 Jul 2021 04:24:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mW686d8CzXXo6vR09hsa2ZRksOH50HGdZbESPDq1rzc=;
- b=LBcDWSbupQni8JWjwWTWWEs+Qt9Xf9zHIC89QBEG67ibniIIvI8DIIH8L7lx5OKO49
- PEGI9s8n4D7ci/jdO6cnoxLeRXbL6yc5Tdr8yjwTJ0cgTK0oK9oeCBInfcbI2i76nCG+
- 1ne3SILh1iNTEDzjTiewlGl6yQP+RNPb9NJT3SMx0JM21mS90sFmT7aygSBpalgOVMUw
- ARpet8Jeya86ElAqKaii9AsYLWyClCaWpOh563ozwHeuk8ZQIyQjMUC2eB6sCgyWuitS
- YDvIpFaOcI1tvNvgkRX7NWTB7XC5L54x9i4SKc71NSfCIJ7dpa0fpknQW7bTJHFGuo9m
- LHRQ==
-X-Gm-Message-State: AOAM533FfxkwKq4QXkygEmTGlVw9T/iBIQ54Ed1qqCizDKEBIkkg3Pb+
- FFF1ugOWveoR1lkTHU/xtI2ZToIhF48QSH9SHoV+aw==
-X-Received: by 2002:a17:906:a2d7:: with SMTP id
- by23mr31325754ejb.382.1626776076769; 
- Tue, 20 Jul 2021 03:14:36 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=NIGmNb/O1ANuIWDglBDjPw549fxXaik6yyKDAD0bx+A=;
+ b=PTXyuB7zvvAwMSLH99oRnqQBxDsl57XPQIsCNRKcAP4FIz4bQg3Hzbz/tyT8FAF6o1
+ GTJ2lAXFJ57l2Z7D0+xTz4nj/N2H+jjCkRxyXihchb+yFCAqHeJlvq8/+bbipc4w2y32
+ 8EhsR51lO1axL/0gF1Z9SxNVFkYVW9UpgjhSMopEovIMotcvQxEcSStOOBqdYq8nsj24
+ C+cGzXcVFAnojzMEa5P2t4B8ccANhloOJloB3QfqSYGrGMbbtD9cWrNUioWl8u9zsIbP
+ m+8WpdTXkhYaF7xACpXEfN1ebYJxyASM8pjMU9TjO3Ynm0rOWH+rh9QZGCCgUb64ek14
+ uo4w==
+X-Gm-Message-State: AOAM533wwg9f4s2jUyB9BblvsRw0fjcUJFOhDdbLUlt0TFVbL2xev3V3
+ 4uDDpaPn3i1UUkJrHAEJU2urLIzE/Z+v5vV2ipqkAQwu6yfds/brnc70AwQHgrrP+iWJwwHbiuA
+ JfDdLpCI4MfJq
+X-Received: by 2002:a7b:c24a:: with SMTP id b10mr15506390wmj.154.1626780298924; 
+ Tue, 20 Jul 2021 04:24:58 -0700 (PDT)
+X-Received: by 2002:a7b:c24a:: with SMTP id b10mr15506377wmj.154.1626780298747; 
+ Tue, 20 Jul 2021 04:24:58 -0700 (PDT)
+Received: from [192.168.1.36] (122.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.122])
+ by smtp.gmail.com with ESMTPSA id z13sm23963201wro.79.2021.07.20.04.24.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Jul 2021 04:24:58 -0700 (PDT)
+Subject: Re: [PATCH 0/4] Add support for Fujitsu A64FX processor
+To: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>,
+ 'Peter Maydell' <peter.maydell@linaro.org>
+References: <1626413223-32264-1-git-send-email-ishii.shuuichir@fujitsu.com>
+ <CAFEAcA_xMdsLtsyX3aV+JKoLuNiaR3zHmv1NXwVUkWRSAbQuAA@mail.gmail.com>
+ <TYCPR01MB61601256BD8311CE6D2A6767E9E29@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <324188bb-3837-318f-4542-1a1762bc6943@redhat.com>
+Date: Tue, 20 Jul 2021 13:24:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210713133726.26842-1-peter.maydell@linaro.org>
- <20210713133726.26842-18-peter.maydell@linaro.org>
- <e3f557f7-c65d-428e-a0b5-68d1ffc01df4@linaro.org>
- <CAFEAcA-o=rC1Zm6JyFECZ_uXndbRurrZdYVWTn9aq=dHXsWJSw@mail.gmail.com>
- <6e31e5da-b4c8-4555-7a70-7d9b4a6e55b1@linaro.org>
-In-Reply-To: <6e31e5da-b4c8-4555-7a70-7d9b4a6e55b1@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Jul 2021 11:13:55 +0100
-Message-ID: <CAFEAcA_o3dkXrMTMOsuxcC5RYTTi+8yOQcqTWrBQqPZU=WN7kg@mail.gmail.com>
-Subject: Re: [PATCH for-6.2 17/34] target/arm: Implement MVE VMLAS
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <TYCPR01MB61601256BD8311CE6D2A6767E9E29@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.474,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,56 +134,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3Pd4kN71J0Ys
+X-TUID: JHjrHxl3FLGk
 
-On Sat, 17 Jul 2021 at 21:40, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 7/17/21 3:06 AM, Peter Maydell wrote:
-> > On Fri, 16 Jul 2021 at 23:12, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >>
-> >> On 7/13/21 6:37 AM, Peter Maydell wrote:
-> >>> Implement the MVE VMLAS insn, which multiplies a vector by a vector
-> >>> and adds a scalar.
-> >>>
-> >>> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> >>> ---
-> >>>    target/arm/helper-mve.h    |  8 ++++++++
-> >>>    target/arm/mve.decode      |  3 +++
-> >>>    target/arm/mve_helper.c    | 31 +++++++++++++++++++++++++++++++
-> >>>    target/arm/translate-mve.c |  2 ++
-> >>>    4 files changed, 44 insertions(+)
-> >> ...
-> >>
-> >>> +/* Vector by vector plus scalar */
-> >>> +#define DO_VMLAS(D, N, M) ((N) * (D) + (M))
-> >>> +
-> >>> +DO_2OP_ACC_SCALAR_S(vmlass, DO_VMLAS)
-> >>> +DO_2OP_ACC_SCALAR_U(vmlasu, DO_VMLAS)
-> >>
-> >> This is confusing.  The ARM says
-> >>
-> >> # Operations that do not perform
-> >> # widening are always unsigned (encoded with U=1),
-> >
-> > I have noticed that that text often appears for insns where it doesn't
-> > really apply. I mostly ignore the text in favour of looking at
-> > the pseudocode for working out what is supposed to be done.
+Hi Ishii,
 
-NB that in the latest version of the v8M Arm ARM (B.p) the
-"operations that do not perform widening..." text has been removed.
+On 7/20/21 9:34 AM, ishii.shuuichir@fujitsu.com wrote:
+> Hi, peter
+> Thank you for your comment.
+> 
+>> Hi; it looks like something with your outgoing email setup still disagrees
+>> with QEMU's mailing list server :-(  As far as I can tell these emails didn't
+>> make it to the list, so only people on the direct-cc list will have
+>> seen them :-(
+> 
+> As you said, it seems that I am not listed in the mail server again.
+> When I contacted the server administrator before, 
+> the server administrator took care of it so that my e-mail address would not be judged as spam mail, 
+> but I am in the process of contacting the server administrator again.
 
-> Yes, but in this case there's nothing about the pseudocode that suggests that sign matters
-> at all.  Neither the multiply nor the addition are widening.  So is there really a signed
-> VMLAS instruction?
+Meanwhile you can send your series via sourcehut: https://sr.ht/
 
-There really is a U bit, but it doesn't affect the result :-)
-I will remove the unnecessary extra set of helpers (similarly
-for VMLA vector-by-scalar-plus-vector)...
+> If the mail server is able to list it correctly,
+> should we resubmit the V1 patch series to list it properly?
+> Or, since there are patches that have already been commented on,
+> should I post them as a V2 patch series that reflects those comments?
+> 
+> Best regards.
+> 
+>> -----Original Message-----
+>> From: Peter Maydell <peter.maydell@linaro.org>
+>> Sent: Monday, July 19, 2021 9:49 PM
+>> To: Ishii, Shuuichirou/石井 周一郎 <ishii.shuuichir@fujitsu.com>
+>> Cc: Thomas Huth <thuth@redhat.com>; Laurent Vivier <lvivier@redhat.com>;
+>> Paolo Bonzini <pbonzini@redhat.com>; qemu-arm <qemu-arm@nongnu.org>;
+>> QEMU Developers <qemu-devel@nongnu.org>
+>> Subject: Re: [PATCH 0/4] Add support for Fujitsu A64FX processor
+>>
+>> On Fri, 16 Jul 2021 at 06:27, Shuuichirou Ishii
+>> <ishii.shuuichir@fujitsu.com> wrote:
+>>>
+>>> Hello, everyone.
+>>
+>> Hi; it looks like something with your outgoing email setup still disagrees
+>> with QEMU's mailing list server :-(  As far as I can tell these emails didn't
+>> make it to the list, so only people on the direct-cc list will have
+>> seen them :-(
+>>
+>> thanks
+>> -- PMM
 
-thanks
--- PMM

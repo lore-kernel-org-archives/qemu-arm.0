@@ -1,103 +1,102 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp6679756lfc;
-        Thu, 22 Jul 2021 06:29:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxi4ywL/Lejp0oE9DRjCcPEi0RP4W0or1f+AK3GqCGtv+zdd03BZO2jNBcHh37zioojW55e
-X-Received: by 2002:a92:b003:: with SMTP id x3mr27910079ilh.93.1626960560375;
-        Thu, 22 Jul 2021 06:29:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626960560; cv=none;
+Received: by 2002:a05:6214:acc:0:0:0:0 with SMTP id g12csp1603984qvi;
+        Thu, 22 Jul 2021 10:53:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxlk968Uz/1C84F3aSbdd3tul4ZckEVmOs3La19JAgMNPCr0WSDnGx1dijlIpk4m0+9NnF8
+X-Received: by 2002:a25:ab8b:: with SMTP id v11mr961137ybi.375.1626976433198;
+        Thu, 22 Jul 2021 10:53:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626976433; cv=none;
         d=google.com; s=arc-20160816;
-        b=jRwVHP9NLNO7mETsBXygd1lGRM6xq8RuYxkwxs/lXoJSmOMDqxfI6vhVD5bc4OMvj5
-         2d3a26oAi+4CCHtkQu4DDVQyWr1PKzp1T9vZFOhqUEHkRc2aG23L3lmKiTYf6YtO4Pt2
-         hX/3OCQAFLvTEZ6X/93BeIpUok8t56snZG+J3jGduOVbyHkMbQ+fAitR79NLXDWahLUm
-         8/rokMIis/F05TRCqjftkWgja/0OYb44kqICg+TCk/xoI67iExhazbFlmED7Fh3Ma0fP
-         liZmEvEuw4E28redJrPl4mR6XB/86m3CNKgTaYhdzuqdufzKttndTXA4UQsiqvnA9LiS
-         J42Q==
+        b=kNMYfSK13/n0c5xZ9yvW9LP7yfL3NAR0FofF3QdUHmAmhw5mFZsNPOOq6VoY4UA0SG
+         dJ5LNCe6RDEd3AfafNrBQaEXpXDPr4SjEgf+EZ/qC41sveZ/hkcBC0PtYDd2AeJQf5mn
+         fNeFA2d+PtLXz0ZNA1Oavwd/CaXryU+6tlZ4pX8+kiwOwqlUJ2GSUF1U4I8W/7iweCW2
+         c72RH0qf8jVRIrOfCbn6n0Gi41t9nfIAH6eUye+sl+yH7LaL2XlWNoCdsOC8/wOiPjbp
+         W3XbjNTia+1Jf0drqNllBrKcjGHphkg/EgSL1Rk0doDosbQWFrCqBxxPV4ySevjv6QwH
+         /CQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=HB3fjmBy+2S0/yWo6feEEIcp9TK6xEjDwv2/H4f8XCU=;
-        b=0/0tQmotFm5vbB2woaPQzkP3nUUaaRPVNY3rRZjYxRRGD3ekhkfnUNRcQEsmF/y8rd
-         7TGGSwIyo7K7aJFAuj/b6dtkz6sN3eWRrLsyDrXK9ja/RYsUqpoyV6v0WsmPv5p266gT
-         9Lm+RQZ13BS3vW0NF7KDQc93x7HKTYTwHZubV0CLt8QTRoqjyLhYT/h9XLTYAhiNXZxI
-         tTrxufE86JXUk7AlRhfBRcJhirWhdjpvW+21eeQ/guLyHYR8UjoMiTkSuUbpBtEw30/k
-         SEcBXUJfpoTe126xsdGtVpDuW0C/mY8uTcdTKhPLHP7F45Y3wH2JCDjoG0IMCJg2dTF7
-         sFQg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=74AMX+VajwPc+ookRW0s5hdtSo5qMBlwijgEZGDrXLg=;
+        b=GwgsY2KxVZRCLXNjemkxBhch1Y2lzSR+Cz+9/mQZgRGqAy6xbP+IOgwmi9Am7QtTVG
+         ao8v9eB5Y1D6SoWI1YxBW1b7UjO4kOJWln1fVYm5ff8TKHubqEDOhUPjP9JztplOjBCB
+         lHluaxb9l8rH/IG1VIW75S5PrS1o1Mx9B39v00bs3ETGhV4m7LcwVTzejtSNZwRVHExV
+         Pr5aUOrh+FoDJU+zngSCgDvYbkIhVDdwWIFpBOovUgCntaJ0prZe3eZF0PinZkpwVh2M
+         80+bEge5SB06gtC2BMWGSdqf6c0xkCxSJ3aduXI+EY2+0PhW4skNR1UxgytN4cZOFkAO
+         O8pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fu6i+Mnd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZXNUT8Jm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18si31557254jat.46.2021.07.22.06.29.20
+        by mx.google.com with ESMTPS id o6si31389613ybp.356.2021.07.22.10.53.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Jul 2021 06:29:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Jul 2021 10:53:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fu6i+Mnd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44548 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZXNUT8Jm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56418 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m6YlL-0006sv-Km
-	for alex.bennee@linaro.org; Thu, 22 Jul 2021 09:29:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35800)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m6ctM-00076V-LZ
+	for alex.bennee@linaro.org; Thu, 22 Jul 2021 13:53:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60024)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m6YkL-0006LL-4T
- for qemu-arm@nongnu.org; Thu, 22 Jul 2021 09:28:20 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:37415)
+ id 1m6cs9-0004MW-E9
+ for qemu-devel@nongnu.org; Thu, 22 Jul 2021 13:52:37 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:50861)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m6YkJ-0003sA-QZ
- for qemu-arm@nongnu.org; Thu, 22 Jul 2021 09:28:16 -0400
-Received: by mail-ej1-x629.google.com with SMTP id hc15so8401333ejc.4
- for <qemu-arm@nongnu.org>; Thu, 22 Jul 2021 06:28:15 -0700 (PDT)
+ id 1m6cs7-00021C-5e
+ for qemu-devel@nongnu.org; Thu, 22 Jul 2021 13:52:37 -0400
+Received: by mail-wm1-x335.google.com with SMTP id l6so3849362wmq.0
+ for <qemu-devel@nongnu.org>; Thu, 22 Jul 2021 10:52:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HB3fjmBy+2S0/yWo6feEEIcp9TK6xEjDwv2/H4f8XCU=;
- b=Fu6i+MndvDS6hdYz2VC4EARW6i1Vdx7yrKOXWY0ihC9MtaWWoJy9g5UlIEMeSA4DBP
- 4YJOuAJWi4T3qnyK0OGIqduxZPH0NIaKkrPrt7Kz3BK+rUepkNwY4pROED6xyZ4KPgwG
- yiyteSN9VuPX9KCVWvShLDkSdUWtDzBrzT1TpIUf775yxWXMa2tfC72srYjoHSyQpVAL
- Dg7lKY2gO8ycYDNRi+TilsCK2AF4HpApU6vgmwcfbG8qjYUq32xyBlM/LcIE6wFA37g/
- xC3fOKylgRgwT0XclP6guiwaHWBTtzVUpF4ZZfmt+pKVv963q007arAdu7aEddVTUxuR
- GiyQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=74AMX+VajwPc+ookRW0s5hdtSo5qMBlwijgEZGDrXLg=;
+ b=ZXNUT8Jm8w2XlQ7sMGfmybUMLbYwAjAduQMr0QJFcbgjEQV52LuCALEQUrEhKmZDIr
+ ZU9Gb16TSKsN9sP5uwl01oCUu7VJeFeWZ9lehTdwQDX8DklAeCD9ucDwV57jxT91LY4F
+ BTvG5wH25pe1nxgW3/NWArR5EWZ/e3aN2hqey0luZxvQaS0kTx6aKLqWg6G/3Mm1f44J
+ 4vuQsP2i3JnVvRLIwMQLABqx6sz3S7KUGUekFTHYBVozqWvZEPchMNonZr1L3z9TLMgt
+ BUpPRvZOQIwPnduUDgvX6h9FjL5EyQiHW6WhpbH9Eqr//xpijqwszAI/vGnvOWSyna4M
+ Cp7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HB3fjmBy+2S0/yWo6feEEIcp9TK6xEjDwv2/H4f8XCU=;
- b=q784kTReDkPG4wlMihHKBNnH38Q33lPkEUWP2wn72slIpG2/Olr9PFDasmNp8AKops
- DERHiIddd/JCCh+VItnL2rcFz2utKnSFJ0SaWDSQghele2t0gkY11vX5cHJFaeBPr0WP
- hNK4VsrxDaFhl7YdivbULGet06kCgLftM6lHsxNGGwRcGNqjiykjzOvJv93vpUO5opJP
- vRpiRCuzzUHdpJmLR+5fdsEnMsRiWPErFqy7X8Skvin+CN5xx9lXXKw6AWIpp9yJbWJx
- wsImHw7lEkrYy9mt2JEzwB/vvDuhT4Nhhn6CKkoBeA9KC2lXr4MUr3x8ytggtTVZCkyw
- UFzg==
-X-Gm-Message-State: AOAM532S+oBlfl9KRNbWcTLYUspUCaT1MfyZ4RLQsQGIAhecxEJc1nad
- JL2HfARqYmKQhaJRm6cVFqupX9fUhwlWSlxuLVV7bQ==
-X-Received: by 2002:a17:907:3e02:: with SMTP id
- hp2mr42953283ejc.4.1626960494343; 
- Thu, 22 Jul 2021 06:28:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <ef4df56d-5b60-99f1-fec6-fe2e62434d3f@huawei.com>
- <82c78e1f-98ef-982e-fbcc-34da6b8aaad7@redhat.com>
- <91d179e0-8365-e3b4-cee6-d05ce918a32d@huawei.com>
- <1d9123e9-705a-36ef-3286-b2f347ec5894@redhat.com>
- <5ccf2a18-0615-8f1c-47cb-163f80037feb@huawei.com>
- <eb63f96e-59e8-55cb-d8ba-119f75ce032f@redhat.com> <YORmWw4MUBV+VTen@work-vm>
- <fc630856-cc51-4830-9f85-4cf89e632819@redhat.com>
- <87fsw6ebaw.fsf@secure.mitica>
-In-Reply-To: <87fsw6ebaw.fsf@secure.mitica>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=74AMX+VajwPc+ookRW0s5hdtSo5qMBlwijgEZGDrXLg=;
+ b=VNcRAeUcCjjLhc4p9WdU1+PZN8mWEFNqUY1G/f85FBkfZdJWdD+kTUTxKSBFeqHVnV
+ Ox/J4RZfsB4jGkIvLSD7dkeLt5witJPd01JDbcOukXzroJ7U+JDh4lVeE3k4vmSeQWoD
+ 0l+G5y8cQ3uyy/53u7E5Lhsobmp9ENkmp2rfaQrtpLNKCPTFERq2XXjpM4tNXtTPvhc+
+ U4kWdVHn6mXxBV5bkU4kbu0wJFAk1yNNWiHm5XEPJ8GipJ9PamTRKsCLPJfV2BwLNXCT
+ ABGhxiqq5YV2H84MzC2Z/+KNKULAa9+VJeLI7qJR3KUT1KqpVOxp4W89aSojEmwzRII6
+ j0oQ==
+X-Gm-Message-State: AOAM533EODGJnOkMPVbKE+7YTAQ5ESwZHF3ajbw5dUcm2NpWbJ8X0I5/
+ z1gIY7ELfNZjE08BAA6L/YDBo/tfmWe0VQ==
+X-Received: by 2002:a1c:23d0:: with SMTP id j199mr732538wmj.176.1626976353748; 
+ Thu, 22 Jul 2021 10:52:33 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id s13sm30278651wrm.13.2021.07.22.10.52.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 22 Jul 2021 10:52:33 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Jul 2021 14:27:33 +0100
-Message-ID: <CAFEAcA8TjHHoOjOn_iyfKRNVpHYQTa3Mg-o9tfXCErDEYtUWDg@mail.gmail.com>
-Subject: Re: [question] Shall we flush ITS tables into guest RAM when shutdown
- the VM?
-To: Juan Quintela <quintela@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-6.1 3/3] docs: Add documentation of Arm 'imx25-pdk' board
+Date: Thu, 22 Jul 2021 18:52:29 +0100
+Message-Id: <20210722175229.29065-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210722175229.29065-1-peter.maydell@linaro.org>
+References: <20210722175229.29065-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,45 +105,81 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shenming Lu <lushenming@huawei.com>, Kunkun Jiang <jiangkunkun@huawei.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Peter Xu <peterx@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Eric Auger <eric.auger@redhat.com>,
- "open list:ARM cores" <qemu-arm@nongnu.org>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2dR3MoE5CagF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CvrePrkBu5qp
 
-On Thu, 22 Jul 2021 at 14:19, Juan Quintela <quintela@redhat.com> wrote:
->
-> Eric Auger <eric.auger@redhat.com> wrote:
-> > Hi Dave,
-> >
-> > On 7/6/21 4:19 PM, Dr. David Alan Gilbert wrote:
-> > That's consistent with what you suggested in the past ans what is logged
-> > in the commit message of
-> >
-> > cddafd8f353d2d251b1a5c6c948a577a85838582 ("hw/intc/arm_gicv3_its:
-> > Implement state save/restore").
->
-> Hi
->
-> Ouch, it is really a mess.  Why do we need to save it to RAM instead of
-> saving it to anywhere else?
+Add brief documentation of the Arm 'imx25-pdk' board.
 
-The ITS tables are in guest RAM because that is how the real
-hardware works, and so it is also how the emulated version
-has to behave...
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ docs/system/arm/imx25-pdk.rst | 19 +++++++++++++++++++
+ docs/system/target-arm.rst    |  1 +
+ MAINTAINERS                   |  1 +
+ 3 files changed, 21 insertions(+)
+ create mode 100644 docs/system/arm/imx25-pdk.rst
 
--- PMM
+diff --git a/docs/system/arm/imx25-pdk.rst b/docs/system/arm/imx25-pdk.rst
+new file mode 100644
+index 00000000000..2a9711e8a79
+--- /dev/null
++++ b/docs/system/arm/imx25-pdk.rst
+@@ -0,0 +1,19 @@
++NXP i.MX25 PDK board (``imx25-pdk``)
++====================================
++
++The ``imx25-pdk`` board emulates the NXP i.MX25 Product Development Kit
++board, which is based on an i.MX25 SoC which uses an ARM926 CPU.
++
++Emulated devices:
++
++- SD controller
++- AVIC
++- CCM
++- GPT
++- EPIT timers
++- FEC
++- RNGC
++- I2C
++- GPIO controllers
++- Watchdog timer
++- USB controllers
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index d423782d661..91ebc26c6db 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -95,6 +95,7 @@ undocumented; you can get a complete list by running
+    arm/nrf
+    arm/nseries
+    arm/nuvoton
++   arm/imx25-pdk
+    arm/orangepi
+    arm/palm
+    arm/raspi
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 063d8e07b75..2ea17d68f6e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -684,6 +684,7 @@ F: hw/watchdog/wdt_imx2.c
+ F: include/hw/arm/fsl-imx25.h
+ F: include/hw/misc/imx25_ccm.h
+ F: include/hw/watchdog/wdt_imx2.h
++F: docs/system/arm/imx25-pdk.rst
+ 
+ i.MX31 (kzm)
+ M: Peter Maydell <peter.maydell@linaro.org>
+-- 
+2.20.1
+

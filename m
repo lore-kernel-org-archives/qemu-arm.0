@@ -1,105 +1,114 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp6785lfc;
-        Thu, 22 Jul 2021 11:10:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+iZWBEiWTgc8yZt6MaAh2vGeDiXKVzgriRYgdYVbEHZ7uFcniKBDPAdxa08/Eg4tSvk7S
-X-Received: by 2002:a92:db4e:: with SMTP id w14mr760682ilq.188.1626977429128;
-        Thu, 22 Jul 2021 11:10:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626977429; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp78707lfc;
+        Thu, 22 Jul 2021 13:03:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0VSfNvcfl3uI1NF/fr2qqWthtumrSLvdnSfzSjTzzgIcstNElTlqqQFI2L4ASHfTrObQh
+X-Received: by 2002:a25:aa09:: with SMTP id s9mr1632491ybi.165.1626984195290;
+        Thu, 22 Jul 2021 13:03:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626984195; cv=none;
         d=google.com; s=arc-20160816;
-        b=OJV+Jw+dQUXsCt5Vz2zuNVz0FxxgN9Hg7gATjj8UIw6qCwdc4ij0vQhb4Pm+XxU4lX
-         06dwCw5FG12rNzAxHapl8t3JLQpsbaipUC1TvqHR2US/IQpMEWuB0uUeLBL4oCSD95VK
-         aqLHWtjJvjgB3DGz9OCssOUaaJj4FXcb7IVOmQQpiTkEIZMUslSRuGC5d1MI4vYadm0W
-         ugwWloR5i+GBUmbSVdAvYAGBKe7GfZhWAY7YxUS0dxLsVlOL2vWRNiCZzMIx4j1nMu4q
-         ZUyaIw4fUL2DynUGl+LNyTIf2fQozI7fZIUKMct+uHYYVL1+8+4kkxTQEu3lP5wQ7R92
-         6A7g==
+        b=dWFIuDr7bWDkPIcIAS8abLtgTyDTH1hyM3piDFTajFBrbC+bvmQ+tWoOzpA/XsW3CZ
+         XU3ga6q0Gxpmp3PzZ69ziZhh4YHquo30s4jGHPC6FonaAvPuhdGULF1l94jSMpv6swZl
+         oyFjHtBzWidB+D00f5y3B2a6ICA8W/4GYmtP6P7viLvPsawRzO61YSKxGCOE74kgzNH9
+         IqgjB50BrC1y5RX87xzg/KD862xelywncgq4x5BViBchjxnwTmA7Oq/UGd0cStiuSPUu
+         //bjTm3EhCtqwCbo1fdTGXoT13FWdEqDfNlcTGSsChgOJT8smXMbRpDY31pfR4K9DKao
+         6VTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=CXVfymAfVkltRwBq4Zm7LccAFojVqmx4XsEN39Q8M6I=;
-        b=bx9kdGrlHcZcObVQn5oevSjHM5C7KLwyfG8oSPD0mmFE7LwiXpNk257eJXWGw2RQnJ
-         kSb2QcNyneRV5dfClqOZx8cejcvAg1PNR5bkmh5wPsLYsckOGOSzWbZR6m+RnwbHZMwb
-         qAlqXJv0CbvKkk275RYC3BhA+6s4BPzjSIkLGLeZHMP8h6A9D10DIg+29wIaaHoYZ8KK
-         QLuU4rSQCKW3+b41CSXc7xpOqNkaPpMzus0PT6uFIHi8nq/FSDisUhG9r+cBG/kWyZtj
-         R2zQ0gW+RLSCL73IA2l7y9oW2Ib6q2E3qtfB0X9CCnZ9oz2G/K6xTwp/xJcsOBYkpzhq
-         FNQw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=MPb+UZPPToxxk24vH6DkoyxFhS0dCO5Qv5JFT6QuOzE=;
+        b=e+LQ36BpeyM1RO1mB2cFE/iR0iSb0WnTCxYZQLncXe2AtDQ9IrEUD7mEpekLgMcTES
+         7n1mxGWkKu8rGqGbiIuwudhSxNGlZbOeG+5ETyjYbJAUbbD3u4fJyQlWfoIkPf9eM456
+         Lwo2JwgOdPes2bksrwLCA4TV+WLFXNilNiWZET/wVAi7/oCjL04pYV0P1nTF0nLaS+Vs
+         7zBgqgmBQcB8q11bpZ1SeVDohaW+sbA8d2ArZ3gsyN6MY4FaEWPLU27IaflAcSMEhUlP
+         1zKRzATYf5ee1dkaFpSluStWxw2kAf8u91G7NOXJvvmu0GuyTn3mJtzDGJM2E/oNx2Ib
+         KJZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aGL4tWAj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=J6Z9x6uO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n1si32717805ilt.39.2021.07.22.11.10.19
+        by mx.google.com with ESMTPS id o7si15694141ybu.11.2021.07.22.13.03.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Jul 2021 11:10:29 -0700 (PDT)
+        Thu, 22 Jul 2021 13:03:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aGL4tWAj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=J6Z9x6uO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49648 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m6d9H-00070H-4F
-	for alex.bennee@linaro.org; Thu, 22 Jul 2021 14:10:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35112)
+	id 1m6euY-0007Bg-Lr
+	for alex.bennee@linaro.org; Thu, 22 Jul 2021 16:03:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m6d8u-0006x9-1g
- for qemu-arm@nongnu.org; Thu, 22 Jul 2021 14:09:56 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:39447)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m6euO-000786-Ie
+ for qemu-arm@nongnu.org; Thu, 22 Jul 2021 16:03:04 -0400
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:35618)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m6d8s-0004zD-HR
- for qemu-arm@nongnu.org; Thu, 22 Jul 2021 14:09:55 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id f17so6863865wrt.6
- for <qemu-arm@nongnu.org>; Thu, 22 Jul 2021 11:09:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m6euM-0005Kl-Rt
+ for qemu-arm@nongnu.org; Thu, 22 Jul 2021 16:03:04 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ pf12-20020a17090b1d8cb0290175c085e7a5so5884208pjb.0
+ for <qemu-arm@nongnu.org>; Thu, 22 Jul 2021 13:03:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CXVfymAfVkltRwBq4Zm7LccAFojVqmx4XsEN39Q8M6I=;
- b=aGL4tWAj6qeKPYijZ4Kh9kGGACwBB5xNYfI9U32/KQbbDgaN2cBsoLs7Ax7tIDtnW5
- fRKZy4Q0cSbCrSusdGjQ/+0+Ri3Je1Xjl8uwVVgSA+O/ur9z/zCjF67oFEkR16CXsReN
- BhTYQ6/tTychaaiLhn+qEuOOORj+l63klTmKmQ7SUc+8auvKru2u/0pdBzKOPPGQ6OtJ
- 7Onq8cytUGJWpn+2iHYEmi1E1FiG4WZ+Y2SH4oZjQpuZ5xge6hMaqHjoXjIQWgEkKbBL
- CCOkY2lKZhQo3a/BWH8KHoVS0OzXrxmKFT0QBpiREIs37s5HRxmJOcHr/Ob6JvzKPg4X
- MiSQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=MPb+UZPPToxxk24vH6DkoyxFhS0dCO5Qv5JFT6QuOzE=;
+ b=J6Z9x6uO9CuAU4r1sU0AYyIf40Xhn3gYhryyzmOf8p5sLZkI4VojDcLZbIwST5Zst5
+ Fs/U/WU1fsdXAIyFpkvwZP8epvJpcGdK8Zx8ZD4NsbwU9sFMVPE1WBquWhmMecBEhTEa
+ Gb9FqkE4atj18t+FvDcv/9ErFIKAxjJe7GhjEBU/bZnMp7vMWqFuj/h8s0aAhB66W/bo
+ EYRJu4i2BIqQpiAnZLlT4ARBXAcyhlWvn5g1m6+T9XGVBbSMHR0GB1Ms5rjy26xp/NyI
+ pV1Pjh7G3AoCCGpm96mN4hoeR1XVLTHFGr0/r2RTxRo0TjVQ/fAgS2sE0iY91RlwFzSq
+ ak9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=CXVfymAfVkltRwBq4Zm7LccAFojVqmx4XsEN39Q8M6I=;
- b=huXqsxD+7elkMuMHg0fQrTldGm3y1wGAUcnUUGQNXEHVSySexDERL94VjLISlZX5Ch
- 6p4f1YirjAfqhcPOkA4sZozxcu/t23u46+vKZ3aDEu510NedRMizelmUWGyfYmAUFiu6
- NuKmimRY5U0X6KLCWO7ggzqFEhZg7zGr4rbxmNx4NSl6kI0jsei+K/Kne566+KJCKOUc
- CjS7CF3VXAYR1FUg2M8sO+VjCojmlNOVN4WjIj7ZYxn5q1aHu06zet95l92cG7FoSOg+
- ikWjBdk9sm5x/jV37g3BCHe2MLxLsOyw+M5lKOaREcqa73KaK79C3hX3EODGXoaLfVuL
- ZDeQ==
-X-Gm-Message-State: AOAM533qcpqgFlWaY6yIoyrtLIke99Pl8ZCYpPXg2wFULMvpIDESgQSt
- Xf12WF5joVKyx6FDrVIqwg//xOTTrsP4XQ==
-X-Received: by 2002:adf:f2d1:: with SMTP id d17mr1252819wrp.254.1626977392941; 
- Thu, 22 Jul 2021 11:09:52 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id v15sm3394080wmj.39.2021.07.22.11.09.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Jul 2021 11:09:52 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] MAINTAINERS: Don't list Andrzej Zaborowski for various
+ bh=MPb+UZPPToxxk24vH6DkoyxFhS0dCO5Qv5JFT6QuOzE=;
+ b=HpD/wfikn93NGMt8iCETts9xnur4OkqSJHgsaGaPlt7MmaGSXr0AuL4rCi/DoyKpad
+ vlIxcn9+WM7tWnthv9NVlQK8cCW4D41yTOGRh/tlZopzOY2Ph3NTGPcYE1wRHOaNnCho
+ SHVLhjHoO0ArYYJ90eNOoQLIIuzwLfVkqRFaLv9kDVNAP0B0uCjdLHNTlPokR0AFVyZQ
+ zqwngWsYLn/2vuAz8RmurSuf6ecikQSVnp7MLJ9vyXz+Q2kHxu11nqGS3Mr/uSYXPSAQ
+ 3jpJ+jA5QW+uqk2wzsJFj7FBBgogPKRHd7H3pUeH0BxI2jEwVKBW/aSaKTfhtwyMrXEC
+ XCFA==
+X-Gm-Message-State: AOAM533qh/s3Fz61WNyr39kowzybqJivuscUmfXVIeDYKH9F2vs++m/8
+ C9jBHpGkZKweZa2qqcZbnIEKiQ==
+X-Received: by 2002:a63:470b:: with SMTP id u11mr1598798pga.340.1626984180999; 
+ Thu, 22 Jul 2021 13:03:00 -0700 (PDT)
+Received: from [192.168.3.43] (204-210-126-223.res.spectrum.com.
+ [204.210.126.223])
+ by smtp.gmail.com with ESMTPSA id 202sm34128517pfy.198.2021.07.22.13.02.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 22 Jul 2021 13:03:00 -0700 (PDT)
+Subject: Re: [PATCH] MAINTAINERS: Don't list Andrzej Zaborowski for various
  components
-Date: Thu, 22 Jul 2021 19:09:51 +0100
-Message-Id: <20210722180951.29802-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210722180951.29802-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <56d144c3-303c-318b-5622-919b220cc63e@linaro.org>
+Date: Thu, 22 Jul 2021 10:02:57 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20210722180951.29802-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.203,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -114,74 +123,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrzej Zaborowski <balrogg@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ys+xVsYZAGkC
+X-TUID: hXyRrdz9/KHO
 
-Andrzej Zaborowski is listed as an "Odd Fixes" maintainer for the
-nSeries, Palm and PXA2XX boards, as well as the "Maintained" status
-Arm 32-bit TCG backend.
+On 7/22/21 8:09 AM, Peter Maydell wrote:
+> Andrzej Zaborowski is listed as an "Odd Fixes" maintainer for the
+> nSeries, Palm and PXA2XX boards, as well as the "Maintained" status
+> Arm 32-bit TCG backend.
+> 
+> Andrzej's last email to qemu-devel was back in 2017, and the email
+> before that was all the way back in 2013.  We don't really need to
+> fill his email up with CCs on QEMU patches any more...
+> 
+> Remove Andrzej from the various boards sections (leaving them still
+> Odd Fixes with me as the backup patch reviewer).  Add Richard
+> Henderson as the maintainer for the Arm TCG backend, since removing
+> Andrzej would otherwise leave that section with no M: line at all.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Andrzej: if you're reading this, thanks for all the work you did
+> on QEMU back in the day; and if you do want to still be CCd on
+> patches let me know and I'll happily drop this MAINTAINERS update.
+> 
+> Richard: are you happy with (a) being listed for Arm TCG and
+> (b) it being "Maintained" status?
 
-Andrzej's last email to qemu-devel was back in 2017, and the email
-before that was all the way back in 2013.  We don't really need to
-fill his email up with CCs on QEMU patches any more...
+Yep.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Remove Andrzej from the various boards sections (leaving them still
-Odd Fixes with me as the backup patch reviewer).  Add Richard
-Henderson as the maintainer for the Arm TCG backend, since removing
-Andrzej would otherwise leave that section with no M: line at all.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Andrzej: if you're reading this, thanks for all the work you did
-on QEMU back in the day; and if you do want to still be CCd on
-patches let me know and I'll happily drop this MAINTAINERS update.
-
-Richard: are you happy with (a) being listed for Arm TCG and
-(b) it being "Maintained" status?
----
- MAINTAINERS | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4256ad1adbb..8c44a26bcce 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -786,7 +786,6 @@ F: roms/vbootrom
- F: docs/system/arm/nuvoton.rst
- 
- nSeries
--M: Andrzej Zaborowski <balrogg@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
-@@ -804,7 +803,6 @@ F: tests/acceptance/machine_arm_n8x0.py
- F: docs/system/arm/nseries.rst
- 
- Palm
--M: Andrzej Zaborowski <balrogg@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
-@@ -837,7 +835,6 @@ F: include/hw/intc/realview_gic.h
- F: docs/system/arm/realview.rst
- 
- PXA2XX
--M: Andrzej Zaborowski <balrogg@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
-@@ -3037,7 +3034,7 @@ F: disas/arm-a64.cc
- F: disas/libvixl/
- 
- ARM TCG target
--M: Andrzej Zaborowski <balrogg@gmail.com>
-+M: Richard Henderson <richard.henderson@linaro.org>
- S: Maintained
- L: qemu-arm@nongnu.org
- F: tcg/arm/
--- 
-2.20.1
-
+r~

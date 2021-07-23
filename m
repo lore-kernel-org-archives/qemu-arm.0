@@ -1,109 +1,110 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp711605lfc;
-        Fri, 23 Jul 2021 09:23:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxEYA8MLl6EBWhb/TSUbMYerLwh7k5cXH1XZthMV78tMbN0lHr22745MrNGEU8npknUbGtk
-X-Received: by 2002:a25:dc8c:: with SMTP id y134mr7731150ybe.301.1627057389586;
-        Fri, 23 Jul 2021 09:23:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627057389; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp713319lfc;
+        Fri, 23 Jul 2021 09:25:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZ2K3k81QvlL7lNTMZudrUA4dKkImoIcyrYHAMWjSn6vLIEdBxGRP/000DnVHVvuvvWX/c
+X-Received: by 2002:a05:6e02:12ab:: with SMTP id f11mr4050192ilr.200.1627057535360;
+        Fri, 23 Jul 2021 09:25:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627057535; cv=none;
         d=google.com; s=arc-20160816;
-        b=xp30L0WwNXuO2Oas7wKx0x4EanrS2ckqZQsPnV1uxF/X3h6ugLgSsDqBcPIK3SmoZe
-         d7DwUDwp1yXwjf9Sa4Ey5XoJDeDxHT4UigjuW+1Pxjdo46evh5mmxm9/1qBRm8AoWTrG
-         lVQoFqTyJ/zzXDY6XO9q0OYS2Wdm/+Scn5I3FozMKAcjUr0f5SZxyQdygYq9d8wAYCQa
-         xMqe4keklAq7x/Qa1GMnM7KICkbqdGrMFfRUf9voxNmLOxcj1/ftZ2+pVfWm+N8XlXrv
-         IH/nyivF8QIc27Q8DT4KUXzihuUanEsuDalSkNxwRNypPKmPSFhketA6FtTi5JtnGLsL
-         nA4Q==
+        b=rxj6ZSLUr0uj3+4DlLkodetbMG9M8BfXoaMz+rG7TBYJNYIyM1+J0iHumr6ai0+eIz
+         7WqTnmnpmcj0DCdsHFlqHsETzNHEKDTNbzLVo/3dvf8dfnaAIUvoFRsCpE1FHPmpAUBb
+         1EFCPKVYjxv8GcW2wNBr9PgZhsDvI/Wl8Dn2rJpj7RLp/mpF5RHHEQYIXIRTcOzoyIld
+         X4MihJbEJ8d4hlxnFzU21M8xR/MUOy7TbSqqek7VcPqPxZ7gEJ8Tlghhyd0EnJxfOBpe
+         7+Wguvr4uO20IPKD4vMSXArvF4zCkXsxCy9EKJVf/YQ1MnUbEY+LNhL51X2VqPyFdBzm
+         KRRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ACI532LNdXUXkP6ZLogSGJNZsbzdsfTkMdhJh+PsYgE=;
-        b=ELRcjO9aW52Sa2jQLtq00fOVIfwjDWmGx30px2z5IWDwtPJL0YLfgMEsNjLCCuF+k+
-         bolPJjMZLJvXX6unnPxAJAL8ojUuo4syA46kznLzMYiY7zoacQr17BCB1XJmoBxHVxW2
-         psxCp3wtyF4aMZDkHm/vl2Fq+HefL0LiQsPRmXNDF8KTo0pW5O1FlslRoXvY7W6US7cH
-         rokXlp1ohoYqhKnXwO1UJf/hpIHwyKw9doHF1krPWVcS4oP8JFSYHkHz5niVi3+xQHJV
-         aclL2Gr2fOrZ/g3hM0ccb+WHB5JLvHOwztPyM6Am8QXx3kKuC9j1IvOHyaMUWmItqYhG
-         2OGg==
+        bh=9nvGoOgx6h6XmbBua01EVVw7UXwgA9qVC9DjO1im9I8=;
+        b=OHIsdwBOC3lbUQ0VxKD4dZFV8aqMNjVYVfMHRzZzUCszBQkpp+wD4OC/QmDMlw7BHF
+         SgZJ+P1XHpsWf6QLkXKQT3z7vv9OfVlpDTobO+Ya2RyZD9pdvR/ChQBhAmTz6arqWuSY
+         oVXVrzqYr62V0jTMRQsS81vz/BhgYz5g8NAJAnKBNt/+dAV8WW3tTR2+pMoEtl6qraV+
+         gZaCJMtaW/ilF9WcwnkTfWuz4huPbAQr4RhulIt9ouXexFIVa/sq/99V73IBRQtQ0UMP
+         //vGjTG8bifiXWtmNqWNTG9mR3Pnc9nScyjC7yvE/otA72RS+vcKq3yPjRnnlyiKktz7
+         3tRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="R/0Fftc4";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mU5feMaC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16si6911783ybl.89.2021.07.23.09.23.09
+        by mx.google.com with ESMTPS id x90si23735559jah.3.2021.07.23.09.25.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Jul 2021 09:23:09 -0700 (PDT)
+        Fri, 23 Jul 2021 09:25:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="R/0Fftc4";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mU5feMaC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46480 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53972 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m6xx6-0001li-V8
-	for alex.bennee@linaro.org; Fri, 23 Jul 2021 12:23:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49422)
+	id 1m6xzS-0006pf-LY
+	for alex.bennee@linaro.org; Fri, 23 Jul 2021 12:25:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m6xvv-00005R-7l
- for qemu-arm@nongnu.org; Fri, 23 Jul 2021 12:21:55 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:46627)
+ id 1m6xvt-0008Rv-Ps
+ for qemu-arm@nongnu.org; Fri, 23 Jul 2021 12:21:53 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:45776)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m6xvt-0000mT-EY
- for qemu-arm@nongnu.org; Fri, 23 Jul 2021 12:21:54 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id w12so2896172wro.13
- for <qemu-arm@nongnu.org>; Fri, 23 Jul 2021 09:21:52 -0700 (PDT)
+ id 1m6xvs-0000lg-48
+ for qemu-arm@nongnu.org; Fri, 23 Jul 2021 12:21:53 -0400
+Received: by mail-wr1-x436.google.com with SMTP id b9so2123955wrx.12
+ for <qemu-arm@nongnu.org>; Fri, 23 Jul 2021 09:21:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=ACI532LNdXUXkP6ZLogSGJNZsbzdsfTkMdhJh+PsYgE=;
- b=R/0Fftc4OuG+6LGRRv1QsPli84hUDQxMqxbibcURt/PPTyiojlJe8/n4LJe2tMtXde
- 2zkhE5azVv2EudV1syzBz5n4D6yQrghixe63AibGYDTDohKpcHzR24yzSzmEXmEKErt6
- NdiNDNJhGzEBCbRZ5TcCzqdd9amLnHm3dEGKVxjn4aEH34gEtNED0cu6VNTsj7hUh+7c
- kLoNqTH/Z0p1yYKM2jl/1+rCUEmv7LYyLRRJNRFexKsyxq4xS0X8wp4HP7O/9hecCubU
- khrY510pN9rLdr0jUwEvG5ZpdlDtNRZOHbv+MbeugYMzn2lu19rX4jZMmnyjM5bDf8/L
- ywYw==
+ bh=9nvGoOgx6h6XmbBua01EVVw7UXwgA9qVC9DjO1im9I8=;
+ b=mU5feMaCGu8BBRFIKhPl/v5gTzExIgjISaZWcEaPKwyDQc27xBkXLZeR9ndAsAnjkY
+ eblmDUyFFhZTq/lu2EZjXYfdrMQj39T7jsJIBXe3ZPtM7hWLuajBXfqfe00skItUaYiw
+ z7eRLDKTCnTNwDmW2tTanUE3eMWsww4gpc+5eUxe/ksVQMzGPPEY7AuJJ8ioa1V2Onkz
+ 1FkT0/omccDIYwsRWB/76VtdLNlPoNgGgt882L2PduHLJ0ADZrQOgVS6cG420w+9Wqan
+ NwJCFtCWNXaMI17R+kfa3c/Qt8y32MaQ5jhNCXikNL0lGil0fljDMDXFjpieNER0ua+g
+ W/uA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ACI532LNdXUXkP6ZLogSGJNZsbzdsfTkMdhJh+PsYgE=;
- b=QT4JKgqpg6Si/Hdutq+nBeZmx2JRBo39L0g3X07j+JWjqRSJjYLwVlA6G09du6e0TJ
- DBMUyPDezTDGtKaWj0SsrrwZdiG1x5zOEvmInnRcdjIioDa1Zt0FNRFhr89VxMOpnZbb
- SzXNGWb6A9DbJY6l8Q/hYP9T89z8c3IHd031zSDxaJB6pSpnaex6b1qrfvRBWnSgNwSC
- 1PnHBVF/eoPpDqiXP1dePQh6x95dsoLIsaB34BxIHuMxjM4OIqsxSZfHM+ZLqpck5LEO
- HXgPStu70HoT9128VAQXEUbSSqVFs0jTYFDdXWJL1g+3l44TSwpq9SzuIoaZPKISPbxK
- lIAQ==
-X-Gm-Message-State: AOAM5333dl05iIfpy/kZxRsPWY5kxMENVc5hVEXDXxxV5JrMVbBUbikD
- 3s3mFsUWhX+KRw+akmUMjHulPIMXpZ1ElQ==
-X-Received: by 2002:adf:fcca:: with SMTP id f10mr6048912wrs.323.1627057310098; 
+ bh=9nvGoOgx6h6XmbBua01EVVw7UXwgA9qVC9DjO1im9I8=;
+ b=m/7nn/N1qdtx2QnqVVP5xskfnx03n4AWG50jMUKKWmFh1gILKYjh7QrSY0NHzxJeTQ
+ 6YNj9PA8QkwkdRkvqZXMmOy+DnKp0NHkxn0N+DJr31s+X9T8mgzqeiqIouEuAQd7m2lw
+ 80Q8Tn2qHjTLVjDKmtwS6gQc/9LfolPo2ZgmY4mggndt4TxznbNGV9qwm7k2fMqL+U+l
+ jPyfgOU4P5I0+gWp/lY5HVzzKezAU3YkmY7qjFbiY6IHguZn2ms6R/U2fz2G9k+veUdg
+ KTEehBycXMRTk2smG6fPun2fdFEd9r3IjlkA5sMKLzLRoQUqgcRvpdAleKY/35EDxCWt
+ LS/A==
+X-Gm-Message-State: AOAM532fuKHwxQ1f1RVVHxGZEFaMl+eadDFfUVk0oKuEr1p6Q5eDtbmw
+ dkgaefpDgoI6O8sl4eqZrtRl96wvCb5glg==
+X-Received: by 2002:adf:e610:: with SMTP id p16mr6456978wrm.98.1627057310805; 
  Fri, 23 Jul 2021 09:21:50 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y11sm5721416wmi.33.2021.07.23.09.21.49
+ by smtp.gmail.com with ESMTPSA id y11sm5721416wmi.33.2021.07.23.09.21.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Jul 2021 09:21:49 -0700 (PDT)
+ Fri, 23 Jul 2021 09:21:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.1 2/6] target/arm: Add missing 'return's after calling
- v7m_exception_taken()
-Date: Fri, 23 Jul 2021 17:21:42 +0100
-Message-Id: <20210723162146.5167-3-peter.maydell@linaro.org>
+Subject: [PATCH for-6.1 3/6] target/arm: Report M-profile alignment faults
+ correctly to the guest
+Date: Fri, 23 Jul 2021 17:21:43 +0100
+Message-Id: <20210723162146.5167-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210723162146.5167-1-peter.maydell@linaro.org>
 References: <20210723162146.5167-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,49 +119,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RJLqahf5N7sX
+X-TUID: c+TLxC/5lL+Q
 
-In do_v7m_exception_exit(), we perform various checks as part of
-performing the exception return.  If one of these checks fails, the
-architecture requires that we take an appropriate exception on the
-existing stackframe.  We implement this by calling
-v7m_exception_taken() to set up to take the new exception, and then
-immediately returning from do_v7m_exception_exit() without proceeding
-any further with the unstack-and-exception-return process.
+For M-profile, we weren't reporting alignment faults triggered by the
+generic TCG code correctly to the guest.  These get passed into
+arm_v7m_cpu_do_interrupt() as an EXCP_DATA_ABORT with an A-profile
+style exception.fsr value of 1.  We didn't check for this, and so
+they fell through into the default of "assume this is an MPU fault"
+and were reported to the guest as a data access violation MPU fault.
 
-In a couple of checks that are new in v8.1M, we forgot the "return"
-statement, with the effect that if bad code in the guest tripped over
-these checks we would set up to take a UsageFault exception but then
-blunder on trying to also unstack and return from the original
-exception, with the probable result that the guest would crash.
-
-Add the missing return statements.
+Report these alignment faults as UsageFaults which set the UNALIGNED
+bit in the UFSR.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/m_helper.c | 2 ++
- 1 file changed, 2 insertions(+)
+The other approach would be to have arm_cpu_do_unaligned_access()
+raise the EXCP_UNALIGNED which we already use for Unaligned
+UsageFaults which are raised by m-profile specific helper code,
+but I think this way is in line with the current design that
+generally prefers to report exception information in an A-profile
+format and then re-arrange that into the M-profile information
+in arm_v7m_cpu_do_interrupt().
+---
+ target/arm/m_helper.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index f9a9cb466c9..f352346a964 100644
+index f352346a964..20761c94877 100644
 --- a/target/arm/m_helper.c
 +++ b/target/arm/m_helper.c
-@@ -1554,6 +1554,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-                     qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on existing "
-                         "stackframe: NSACR prevents clearing FPU registers\n");
-                     v7m_exception_taken(cpu, excret, true, false);
-+                    return;
-                 } else if (!cpacr_pass) {
-                     armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE,
-                                             exc_secure);
-@@ -1561,6 +1562,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-                     qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on existing "
-                         "stackframe: CPACR prevents clearing FPU registers\n");
-                     v7m_exception_taken(cpu, excret, true, false);
-+                    return;
-                 }
+@@ -2248,6 +2248,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+         env->v7m.sfsr |= R_V7M_SFSR_LSERR_MASK;
+         break;
+     case EXCP_UNALIGNED:
++        /* Unaligned faults reported by M-profile aware code */
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE, env->v7m.secure);
+         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_UNALIGNED_MASK;
+         break;
+@@ -2320,6 +2321,13 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
              }
-             /* Clear s0..s15, FPSCR and VPR */
+             armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_BUS, false);
+             break;
++        case 0x1: /* Alignment fault reported by generic code */
++            qemu_log_mask(CPU_LOG_INT,
++                          "...really UsageFault with UFSR.UNALIGNED\n");
++            env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_UNALIGNED_MASK;
++            armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE,
++                                    env->v7m.secure);
++            break;
+         default:
+             /*
+              * All other FSR values are either MPU faults or "can't happen
 -- 
 2.20.1
 

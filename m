@@ -1,119 +1,119 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp2246158lfc;
-        Sun, 25 Jul 2021 11:17:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVVaaIhN29M3xvcL8Fv7EyM0IkY6SkY5QwYZmUDF7ZP/dCzyP7vAjC6Z8UWI6CAh0x1oWZ
-X-Received: by 2002:a05:6e02:1d0f:: with SMTP id i15mr9685743ila.199.1627237057393;
-        Sun, 25 Jul 2021 11:17:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627237057; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp2247705lfc;
+        Sun, 25 Jul 2021 11:20:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw0K/sxZhGjC5lEwaDxZhWnvOH+Ai1pPkplGHHsdNZziFqOgZTqhEt4IQrx/vDHkmPZfcVE
+X-Received: by 2002:a05:6638:25c7:: with SMTP id u7mr13000928jat.26.1627237216093;
+        Sun, 25 Jul 2021 11:20:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627237216; cv=none;
         d=google.com; s=arc-20160816;
-        b=uRARCkyWICEupZvVr77rBtVlv3XYFHzOwzEG3OpavIk26qDFrhq/sXZuttlwelaqh+
-         dujR3qUid5/SaEliwSV7r7aFa4/KpZ1MhwuYlaFGmM5ZN15HF1o7puyP7lhVcUN0XGLp
-         CtTzNvUa46fHeuKNKhS80l7rW5C7xX8dRPcPV17uvq6S63LizbaxtdftgizXBPfQgkfg
-         5JH2cuJr7jIW3StolUeYYQWkLuABwxTiOTLaio8ktl0ZG3PkKwyJ7iBaq4/1Wk0+jeqa
-         mu6W7XqUKxcDfE5T6+NjfiggC2QcJ8I3jCOJraRTMTMKXwwFiOsAKjXUnsH3Bp4f+bKx
-         YOYg==
+        b=GLUD/6u6yzmweK3NyJVTvGQOBDv7LUSXlVX60GCht2AUqxurT8kNpNmaEl+eHc9wH3
+         dDqewzWxDOBw3fFDP0FsCWVG4nZCh+qXr1hzTLvOSE5nqEsHmorP3ASsG7zmSItuAX8h
+         pevTdki1k1WIMVnCKaDjnW7+ibNYPQLwMgatbQjnPrBvJ+fbvr3dj7GZtZRcmCBVcnB7
+         gN280BQfKsxNhIa5cmoLMhO4h2K6PR118RdD6kSqxwBT/LBrKpLEsY1D2AN2qrDjOsWN
+         wYdttAIjbwUHyhf17Q3PBqMvETB87fwe1ezcHmRambc4VA90oqzyDd2ttE2rMNyk9JOA
+         B9XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=T0rXdxYYGfrICfq2Vs2XvjqztMZXQxCus06EsOgZ6x8=;
-        b=O+ptUBCg9dC+mfz0mW8k2g45fF0qfR9ld4KxiEs8uX9De8MpFGCu4q5xxt1wDCHGe7
-         pLpgwHCbb/L/jwMApKwKusYrOCprbSIntGyLoet6GPQhjwxY0syl4eHe709cJkSHdqbJ
-         a2I0x3ETrXmpmNu2oQFeEgb2RkOVRC4t10csJUe2Yh3pZ/gqy9rRC7AQUIoeZ6R3sZ46
-         3O6qxThJGnOqZ+tYrgSengkRhofxaH9ehChtV8ehFFcZs6dye9IJWWv9klyc2+veHoOa
-         i2IkJUlynDCGx5iQPSOJRC2IGyh6/yBkIAnkbvUpy12dc2/Nb7wnzItv3jO7HtLDxVpG
-         LDUQ==
+        bh=JBKtoajRFqAQmYRHIJJ0fkQH8d+bSUkkequ4cY7/wgI=;
+        b=dacZjgfa9A7AMwiElR1IKps3wfaPxUNwGHiiGJosnh2quXW4mNcQYZ6oPRIhTyNEMz
+         zO2vv/qjOEiT+AwwBCFAVg/FLG5oL9rd8reEWkptwcxfzlETzmk2wRj65QF+7SkGbjGE
+         IGD4CW+kHrkQ4Ebt8sbliG+rVq/vre2ewFI/tBMp5PAzI8OgoSualYCMmdsvkX3CoAqp
+         iI7qr05mQc5YEyonZdNZptkzLM5/H/dAB4NoyUOjCDDOPk/MQLOzd0JPSF76FscEgoFQ
+         0bQecMS8mzW204AJXGd8X9WL2icGbnr0edUhGGZ5Yp46HGzy2fpGc8AB4/fLIb5HWUlP
+         p+Ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="QpwX/jF5";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TAkzfKwm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3si42337889ile.109.2021.07.25.11.17.37
+        by mx.google.com with ESMTPS id b14si28465130ilv.52.2021.07.25.11.20.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Jul 2021 11:17:37 -0700 (PDT)
+        Sun, 25 Jul 2021 11:20:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="QpwX/jF5";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TAkzfKwm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59930 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m7igy-0005fK-NL
-	for alex.bennee@linaro.org; Sun, 25 Jul 2021 14:17:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38322)
+	id 1m7ijX-00005U-FQ
+	for alex.bennee@linaro.org; Sun, 25 Jul 2021 14:20:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m7ifm-00046f-J1
- for qemu-arm@nongnu.org; Sun, 25 Jul 2021 14:16:26 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029]:34407)
+ id 1m7ihh-0006nl-5U
+ for qemu-arm@nongnu.org; Sun, 25 Jul 2021 14:18:22 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:41500)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m7ifj-0002Xr-Mk
- for qemu-arm@nongnu.org; Sun, 25 Jul 2021 14:16:22 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- p5-20020a17090a8685b029015d1a9a6f1aso11021697pjn.1
- for <qemu-arm@nongnu.org>; Sun, 25 Jul 2021 11:16:19 -0700 (PDT)
+ id 1m7ihd-0003st-4V
+ for qemu-arm@nongnu.org; Sun, 25 Jul 2021 14:18:19 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ q17-20020a17090a2e11b02901757deaf2c8so11122059pjd.0
+ for <qemu-arm@nongnu.org>; Sun, 25 Jul 2021 11:18:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=T0rXdxYYGfrICfq2Vs2XvjqztMZXQxCus06EsOgZ6x8=;
- b=QpwX/jF5Dohfk8jht0UmVIuUTZR7hyIQrfXDmDG/JSwI7KHvld0dFFH/x+aDoN/o7M
- kbQEF0M2Mv7Mlmm3PrueaKMJjF4ZhusBS/6RGHLtvNrdSLXdkWdWBTa/3gaGPdaH9cbn
- c4H5oPjIlKqcOvBf9gAXnIjxepmtI4flGDIU/quhnnlfEZTmMcwyg4CZasl+tcBbxI+S
- b7+Ara+yJW/KoUJ1zgC1YhA1XTjbGl7w3KPROuHUaZd+WUy0NXQOERHqkmgl5uXyFQYk
- WdY87VGAjIkKx5x4w4RZff6w0r9a203yoYTVWMwTlzJ+AtUqty1q869/+IPqz6N3fb55
- +vnQ==
+ bh=JBKtoajRFqAQmYRHIJJ0fkQH8d+bSUkkequ4cY7/wgI=;
+ b=TAkzfKwmBifcXRmyDdqIUJG7bHydT2k2D93tjpOyKfl7+OaC/7kWOa6cqmqiZD8bWc
+ lZsSwbO59fGaeKs+rHhM/NUE3JJ8VLKC1CxrXiDngMZeL+S2oVzhmYdTwQNSCuAKBdoz
+ HopPo1UbwVtT5E6K8Z6TFV+bQZ63/IboKC6KL0lxqdYw3u/ktP08tl5CZmK/+ldLxnQW
+ 1Y2/MLZUXwjd5QXmMyJz7wOSfaetcfrF3NlAcjgcfOebO6oF0PC5ckCRHxgD4X8bQCtK
+ yThnOBBD+GSP3m0bnPYgV2uKvBwy0s9zIOFkaKDCbJf3twG7OMEKG42nTOM/vb/Qz7Eu
+ Yi3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=T0rXdxYYGfrICfq2Vs2XvjqztMZXQxCus06EsOgZ6x8=;
- b=iRz+Dw7lVYY1kJA1u+9qCJvMr2hT2+ah0bnwHx6f6uZjX62f+AKMx3CUzyXKat5wX0
- 3MMZ6dmfYSGLDFZaFU/2q89teOE/Fep5uulf68xfmsiCB3jNuUu4XlVCXlJHn5R2jWcl
- Nuwy0x5176PLfHEVMydZm01zlyfRsn/YvDdAU9QfHDWCev+tfV6Z08uWzVrhPH/78gOx
- Du/nrv0XTFdwjxBm88TIh1zijEa/IuY6krZSW6pPx5XC6Jhyqod6GFXq+dXdTgB6xWlr
- vHD4qimU571W+oh/jOlSm76SFnapODii2wfG4bvGt9cVhYDa+sQomK2uaSajMSQinOTp
- PfZQ==
-X-Gm-Message-State: AOAM532JgGCTYL51eeKk2U9+cmK2/v4/58W9qoQNNVZ+PfuSccng9DXf
- NZ9ib3xRlpNLtNmlnvt8CyzUyA==
-X-Received: by 2002:aa7:8284:0:b029:312:1c62:cc0f with SMTP id
- s4-20020aa782840000b02903121c62cc0fmr14584730pfm.75.1627236978397; 
- Sun, 25 Jul 2021 11:16:18 -0700 (PDT)
+ bh=JBKtoajRFqAQmYRHIJJ0fkQH8d+bSUkkequ4cY7/wgI=;
+ b=UDbjj7T9HZWsbmh0smmHhI4E9AitTGuRELXJV8PibHGivamf5qK/PXmHXaByirdYk3
+ k81kvzdW3zx2fPDHIBT4fyl13FI6tzobn0KnbRVKxrmm1OEoqzqRzeDb5IRHkxrNrnE2
+ 8skXJA8OWCrkmeMQ43bUMlJX/PHY2J2rL/0hgNtrjVA54zrb+otnxFgHyjzY2GESF9u3
+ 03qcxqkB9nY7VYk/jzf9J24TQWwZ+E4JaUGMzNybjKHJW3hWXqbdppSSAbrZvpTfkSq6
+ dovcy3hYvFxjkRPLAtlw7dHg6v0IxfMvlS8rf2M6snBdz8R7VaQ0IHP/j5qDgIzGdYme
+ ZLQQ==
+X-Gm-Message-State: AOAM533sX8Jbxf89egi8gOgDPb7UOGOmPd1sSVtfOw+Df/N2KJV3XYfb
+ 78w3FUxDFZHRI5DAFDmJEyXODg==
+X-Received: by 2002:a17:90a:a013:: with SMTP id
+ q19mr22288467pjp.224.1627237095792; 
+ Sun, 25 Jul 2021 11:18:15 -0700 (PDT)
 Received: from ?IPv6:2603:800c:3202:ffa7:497b:6ae4:953c:7ad1?
  (2603-800c-3202-ffa7-497b-6ae4-953c-7ad1.res6.spectrum.com.
  [2603:800c:3202:ffa7:497b:6ae4:953c:7ad1])
- by smtp.gmail.com with ESMTPSA id h20sm41200296pfn.173.2021.07.25.11.16.17
+ by smtp.gmail.com with ESMTPSA id f5sm8498143pjo.23.2021.07.25.11.18.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 25 Jul 2021 11:16:18 -0700 (PDT)
-Subject: Re: [PATCH for-6.1 3/6] target/arm: Report M-profile alignment faults
- correctly to the guest
+ Sun, 25 Jul 2021 11:18:15 -0700 (PDT)
+Subject: Re: [PATCH for-6.1 4/6] hw/intc/armv7m_nvic: ISCR.ISRPENDING is set
+ for non-enabled pending interrupts
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210723162146.5167-1-peter.maydell@linaro.org>
- <20210723162146.5167-4-peter.maydell@linaro.org>
+ <20210723162146.5167-5-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e8fa3d4f-1521-6090-3052-62760ea12047@linaro.org>
-Date: Sun, 25 Jul 2021 08:16:15 -1000
+Message-ID: <9df91161-c097-81b2-6062-c7961fec3938@linaro.org>
+Date: Sun, 25 Jul 2021 08:18:13 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210723162146.5167-4-peter.maydell@linaro.org>
+In-Reply-To: <20210723162146.5167-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.091,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,31 +128,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lBc60wt527L9
+X-TUID: QAO3Bd2gmjXY
 
 On 7/23/21 6:21 AM, Peter Maydell wrote:
-> For M-profile, we weren't reporting alignment faults triggered by the
-> generic TCG code correctly to the guest.  These get passed into
-> arm_v7m_cpu_do_interrupt() as an EXCP_DATA_ABORT with an A-profile
-> style exception.fsr value of 1.  We didn't check for this, and so
-> they fell through into the default of "assume this is an MPU fault"
-> and were reported to the guest as a data access violation MPU fault.
+> The ISCR.ISRPENDING bit is set when an external interrupt is pending.
+> This is true whether that external interrupt is enabled or not.
+> This means that we can't use 's->vectpending == 0' as a shortcut to
+> "ISRPENDING is zero", because s->vectpending indicates only the
+> highest priority pending enabled interrupt.
 > 
-> Report these alignment faults as UsageFaults which set the UNALIGNED
-> bit in the UFSR.
+> Remove the incorrect optimization so that if there is no pending
+> enabled interrupt we fall through to scanning through the whole
+> interrupt array.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
-> The other approach would be to have arm_cpu_do_unaligned_access()
-> raise the EXCP_UNALIGNED which we already use for Unaligned
-> UsageFaults which are raised by m-profile specific helper code,
-> but I think this way is in line with the current design that
-> generally prefers to report exception information in an A-profile
-> format and then re-arrange that into the M-profile information
-> in arm_v7m_cpu_do_interrupt().
-> ---
->   target/arm/m_helper.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+>   hw/intc/armv7m_nvic.c | 9 ++++-----
+>   1 file changed, 4 insertions(+), 5 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

@@ -1,87 +1,117 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp1917960lfc;
-        Sun, 25 Jul 2021 01:06:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+RFYDyJ+zydF0oi42FRb178nI2oYidN9V+CWH8GT6+k1tdwK+VAF8N0A0D/hwJ0YD9WiI
-X-Received: by 2002:a05:6902:4e1:: with SMTP id w1mr16302688ybs.370.1627200398944;
-        Sun, 25 Jul 2021 01:06:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627200398; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp2244832lfc;
+        Sun, 25 Jul 2021 11:15:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzF7ch89cULI2snjge3MRCYHMOJK1HAOtNjWOyVFRt7hGuLQRZebb/AFYY9kWK4p0MgBH5I
+X-Received: by 2002:a92:1908:: with SMTP id 8mr10503857ilz.149.1627236901186;
+        Sun, 25 Jul 2021 11:15:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627236901; cv=none;
         d=google.com; s=arc-20160816;
-        b=RzJ5i/NRFj8D+w190VAAXVsoESZ7M+GJUBh+8gWKRkx4tA2ecqbwRrFuBdPuiN8r+T
-         cX6/UwdJBWaLUvQyQcIzG75MquGTFSeMnOUkUSIctglSdXog1Qg0Dnws8qJh77Ix5Oij
-         RrNM56BAbU07yojpCauzm59/mzpcid99G51jMjP1Dyzhnw6H7HxcWebyEXPmZzCAu9yW
-         x+fORVX0Z3gPgbC1xcbE3Sp/3CGqAiLP1Lfoadah5LD/xW08a/AMCyqplYftCk39FqKl
-         mFdL7BIx3Jtau9Feea/yGJa02U+YNnoqHW7ce5WagMYNnmkOfmYLfLxV8Kewzf+pdjLD
-         m7XQ==
+        b=s07CB8v5MZb3HY0x1G+IIRQIlYRve707l7ZBJ2r1FPmjebLiPF3AaySBvxMX6iTrfj
+         ZBwtOlhAngNAB3WVTGmdT/OMbRdqzepuJ2snj1uDYU/EEg6+gk100Z6K64fiCduVu+qK
+         nYXey+rcNKP+Hbe/41/YbY/plyr6ivdfLmkIdvAagBuxpFmFfhOnLdx3merXumtj56eW
+         Bd2aA78Gs/cQgioB6b/XxD4oMbkH9fDzvRj7Tc9DcGV/hh23Ud59u20WOduxW7d7aQES
+         0GqaSgF1yvcyBYDu/AdtAig7C4ZiqBdOJgQw2J1CinD1ppbv17dIq2YmMSSZ9dr2UhZI
+         hqIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=YkSShU/WfQKmU+QoAFuwA07yQuUmCePmPC02tRDmL7s=;
-        b=FagDK8m+TRuJPbCIXC1Szs15R618SPAmA3S5spPHO1ZQ2N8r6WpZNSGCquTtkCDRYW
-         UnN905oi5G5HxztiU5HN/N5EnghS8bpd1L4F7kEFFqSDdTKE4Yt4ezMH3a/HRJiDfVQp
-         p5giT4QP5pNtfMMY59yd7MPt7kuTPg+qgKtTnoY3FkGPpM2fddDog7WvI1b1p5bQk0RR
-         A4fUAlVDQhLXX/sJw3TjoBLTVZa78sGrKktamaiQosA8plksVOHu68wu5Jf8/6HpEa/l
-         DIvR7u9nyUCpJjnr2Px1vWLkOceqpb5dMMJDgc1+hDTFsYEzPLU1Lp3qq2qqRtsUGjPi
-         z22A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=pYBq0fkzpUJJtZwHSaA7momNQhe5XHofPt87G+4DNis=;
+        b=X8TZtCgG3csI2XmD+nbs9vEJgYXxZgvYAfYCaXuTcibNvI4n0eRNJIKCMIV2dnG140
+         pQpJ9hY1jAgsKMStIXMkEb8Uc6+34RKDgHzZFx8cPdP7yLDaU/OyIjXxOioiHweX9jwX
+         G3pDtuSKXQxJMZ05R0uXhR88IqITO5m0jEi5TgaDHqJh+uaLIDT9gKRM6ro6Co/yN3Nw
+         MEM/ANeivKoB/OLy36SdhuFUOGkfPG0BzshOLS9Y1Kz2ppSq2CrPXJ5m2dqRf06HDPJW
+         FSCsGXCgXA4aOn/r+ojFUGBNlT+TDNckT4h+fQbzmoJDHTmhV5MLGtgOOJGTa40RpQEZ
+         q25Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=O3N1THtx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oufxN63s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si544936ybk.307.2021.07.25.01.06.38
+        by mx.google.com with ESMTPS id t23si39789162iog.21.2021.07.25.11.15.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Jul 2021 01:06:38 -0700 (PDT)
+        Sun, 25 Jul 2021 11:15:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=O3N1THtx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oufxN63s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:50022 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m7Z9i-00050U-9k
-	for alex.bennee@linaro.org; Sun, 25 Jul 2021 04:06:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52962)
+	id 1m7ieS-0002HH-IM
+	for alex.bennee@linaro.org; Sun, 25 Jul 2021 14:15:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1m7Z9X-0004zI-OO; Sun, 25 Jul 2021 04:06:27 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:50922)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1m7Z9V-00085B-C3; Sun, 25 Jul 2021 04:06:27 -0400
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id DB7B6C6019D;
- Sun, 25 Jul 2021 10:06:19 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1627200379;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=YkSShU/WfQKmU+QoAFuwA07yQuUmCePmPC02tRDmL7s=;
- b=O3N1THtxXww/SE451FmYSj/UXwBl5bOcZmX4fCQGgXoNB3AO1OsCqtVOiuqjFT1V2atng4
- 0DQRkZWHGDhE2dAGkvJjoGfnu/377LiSryDb5DsLkppWuLil5qb3Tx9kKG31ffAU6lORj2
- uCGw1O6lJZwhb/E3/BKdqeF1KpMHmxK+aEN9Gw/bDqoAV+ZCBqPa0FjN2Fy0mc5yhjMaoN
- WErMy/G3YK3NHK6LtyQbHnOmhBHvJFzobVrYN+uSQT1Lc7E3LZ3DYtWcIddJLroUlobuQ9
- uqPdXw+tO2gcfg4sSsTD7nqn0STnHz0UTdznovM+6hH3ROBi5bzCUEEDvcEgcw==
-Date: Sun, 25 Jul 2021 10:08:17 +0200
-From: Luc Michel <luc@lmichel.fr>
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>
-Subject: Re: [PATCH] hw/intc/arm_gic: Fix set/clear pending of PPI/SPI
-Message-ID: <20210725080817.ivlkutnow7sojoyd@sekoia-pc.home.lmichel.fr>
-References: <20210709094948.60344-1-sebastian.huber@embedded-brains.de>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m7ieK-0002H1-6D
+ for qemu-arm@nongnu.org; Sun, 25 Jul 2021 14:14:52 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:35431)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m7ieI-0001YZ-M6
+ for qemu-arm@nongnu.org; Sun, 25 Jul 2021 14:14:51 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id n10so1285246plc.2
+ for <qemu-arm@nongnu.org>; Sun, 25 Jul 2021 11:14:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=pYBq0fkzpUJJtZwHSaA7momNQhe5XHofPt87G+4DNis=;
+ b=oufxN63s1/SrTBUjkyq/VJ/diXtpoi6DlvSiLQxjrFyPof1YtakEQtxBYIHVwOd2Td
+ NbqQY1r8GMqwCurVcCBD4AzqljDArc6FDL3M0scGp874WZyv8aHLMGcbD10oEOwpPirp
+ YumCJw/aLaCQm74MVW871QREa46mE7rz8lPjvtn9hydodV41e5p9etMUC9lQtEE+aqrT
+ KtWU7EsG9mp7V39XNPAyxamkWTbtHMmcYTgwJg1IRvRaFMe1ZLErNfYKm12s0NcSzhas
+ hFUJfMKiAvtiFxLkLpBfHuw5Y6iYGlPeqlLTckwZzbyOMjl+DtdhPwa36/n6Kn38SUbl
+ DuOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=pYBq0fkzpUJJtZwHSaA7momNQhe5XHofPt87G+4DNis=;
+ b=OyPoNuGjuOtYQRdqIq1ur97cPhJ5dRkJhqoddMSD5Sfj9E8+LOqWfutSDxgEwqWMal
+ CvvV+JVjHNM5gb5tEujHvorMC/YuRxFblingNAYLJQreGtpdRp4FKcTM8qBuu7YJzpnR
+ 3c5gEbJpenD9NH705hWsJK8MCi1BbR0gDxPSv5SQLnJeqgCw+6oO7YR1IqmOFhCnnSbv
+ KGtT/zVzBsfi0K4ZRAnCIpqtsvsJn9+JomtvjiXds2APkajB0Ptjh6uQZnxo0y0FoZmI
+ RTc2KlKQ4KPlumebTMnl+g9o+3Kx7xwAZ8FDueOPXD76t6AtEjTLq/nYggJLZKt6tYFq
+ 0oxA==
+X-Gm-Message-State: AOAM530AWwNSfSyhBGXRyHnDZnMYWB1zWsh3stD/pt4OjYe54QiU4DRT
+ 7xIOF85Ig02SVpj4rQGpCTW15w==
+X-Received: by 2002:a17:90b:1645:: with SMTP id
+ il5mr13469349pjb.113.1627236889156; 
+ Sun, 25 Jul 2021 11:14:49 -0700 (PDT)
+Received: from ?IPv6:2603:800c:3202:ffa7:497b:6ae4:953c:7ad1?
+ (2603-800c-3202-ffa7-497b-6ae4-953c-7ad1.res6.spectrum.com.
+ [2603:800c:3202:ffa7:497b:6ae4:953c:7ad1])
+ by smtp.gmail.com with ESMTPSA id t19sm16674870pfg.216.2021.07.25.11.14.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 25 Jul 2021 11:14:48 -0700 (PDT)
+Subject: Re: [PATCH for-6.1 1/6] target/arm: Enforce that M-profile SP low 2
+ bits are always zero
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210723162146.5167-1-peter.maydell@linaro.org>
+ <20210723162146.5167-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <78c107f3-23ac-3279-99e1-84df8c5498b8@linaro.org>
+Date: Sun, 25 Jul 2021 08:14:46 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210709094948.60344-1-sebastian.huber@embedded-brains.de>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210723162146.5167-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.091,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -95,90 +125,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7yCU0plYMCCb
+X-TUID: 0KiuMjadKkoh
 
-Hi Sebastian,
-
-On 11:49 Fri 09 Jul     , Sebastian Huber wrote:
-> According to the GICv3 specification register GICD_ISPENDR0 is Banked for each
-You're referring to GICv3 but actually modifying GICv2 model. Having a
-look at GICv2 reference manual, your affirmation still hold though.
-
-> connected PE with GICR_TYPER.Processor_Number < 8.  For Qemu this is the case
-> since GIC_NCPU == 8.
-This is GICv3 specific. For GICv2 the architectural limit is 8 CPUs.
-
+On 7/23/21 6:21 AM, Peter Maydell wrote:
+> For M-profile, unlike A-profile, the low 2 bits of SP are defined to be
+> RES0H, which is to say that they must be hardwired to zero so that
+> guest attempts to write non-zero values to them are ignored.
 > 
-> For SPI, make the interrupt pending on all CPUs and not just the processor
-> targets of the interrupt.
-So you're not referring to GICD_ISPENDR0 anymore right? SPIs starts at
-IRQ number 32.  GICD_ISPENDR0 is for IRQs 0 to 31, which are SGIs and
-PPIs (This is why this reg is banked, meaning that a CPU can only
-trigger a PPI of its own). Maybe make it clear in your commit message
-that you are now talking about GICD_ISPENDRn with n > 0
-
-Moreover your statement regarding SPIs seems weird to me. Setting an
-SPI pending (in GICD_ISPENDRn with n > 0) should really be like having
-it being triggered from the IRQ line. It makes it pending in the
-distributor. The distributor then forward it as normal. Why the
-GICD_ITARGETSRn configuration should be ignored in this case? At least I
-can't find any reference to such a behaviour in the reference manual.
-
+> Implement this behaviour by masking out the low bits:
+>   * for writes to r13 by the gdbstub
+>   * for writes to any of the various flavours of SP via MSR
+>   * for writes to r13 via store_reg() in generated code
 > 
-> This behaviour is at least present on the i.MX7D which uses an Cortex-A7MPCore.
-Which has a GICv2, not a v3 right?
-
+> Note that all the direct uses of cpu_R[] in translate.c are in places
+> where the register is definitely not r13 (usually because that has
+> been checked for as an UNDEFINED or UNPREDICTABLE case and handled as
+> UNDEF).
 > 
-> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+> All the other writes to regs[13] in C code are either:
+>   * A-profile only code
+>   * writes of values we can guarantee to be aligned, such as
+>     - writes of previous-SP-value plus or minus a 4-aligned constant
+>     - writes of the value in an SP limit register (which we already
+>       enforce to be aligned)
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->  hw/intc/arm_gic.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index a994b1f024..8e377bac59 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -1294,12 +1294,14 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
->  
->          for (i = 0; i < 8; i++) {
->              if (value & (1 << i)) {
-> +                int cm = (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
-> +
-Indeed, I think the current implementation for PPIs is wrong
-(GIC_DIST_TARGET(irq + i) is probably 0 in this case, so a set pending
-request for a PPI will get incorrectly ignored). So I agree with the irq <
-GIC_INTERNAL case. But for SPIs my concerns still hold (see my comment
-in the commit message).
 
->                  if (s->security_extn && !attrs.secure &&
->                      !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
->                      continue; /* Ignore Non-secure access of Group0 IRQ */
->                  }
->  
-> -                GIC_DIST_SET_PENDING(irq + i, GIC_DIST_TARGET(irq + i));
-> +                GIC_DIST_SET_PENDING(irq + i, cm);
->              }
->          }
->      } else if (offset < 0x300) {
-> @@ -1317,11 +1319,10 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
->                  continue; /* Ignore Non-secure access of Group0 IRQ */
->              }
->  
-> -            /* ??? This currently clears the pending bit for all CPUs, even
-> -               for per-CPU interrupts.  It's unclear whether this is the
-> -               corect behavior.  */
->              if (value & (1 << i)) {
-> -                GIC_DIST_CLEAR_PENDING(irq + i, ALL_CPU_MASK);
-> +                int cm = (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
-> +
-> +                GIC_DIST_CLEAR_PENDING(irq + i, cm);
-I agree with this change too, but you are modifying the GICD_ICPENDRn
-register behaviour without mentioning it in the commit message.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Thanks,
-
--- 
-Luc
+r~

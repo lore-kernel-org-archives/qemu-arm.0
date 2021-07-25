@@ -1,109 +1,87 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp848143lfc;
-        Fri, 23 Jul 2021 13:36:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzApzJee2UPKPCKU1BeBebwRoyrxG2VJLhSOaA7+tiZGlc8efm0rbnM8PdegrwfzCTyL10y
-X-Received: by 2002:a67:ee13:: with SMTP id f19mr6755809vsp.11.1627072586698;
-        Fri, 23 Jul 2021 13:36:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627072586; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp1917960lfc;
+        Sun, 25 Jul 2021 01:06:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+RFYDyJ+zydF0oi42FRb178nI2oYidN9V+CWH8GT6+k1tdwK+VAF8N0A0D/hwJ0YD9WiI
+X-Received: by 2002:a05:6902:4e1:: with SMTP id w1mr16302688ybs.370.1627200398944;
+        Sun, 25 Jul 2021 01:06:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627200398; cv=none;
         d=google.com; s=arc-20160816;
-        b=yZhFh/ZjU9/p+ZcYt34+w4N8aNf9BUEIRx2HOu9bv5bSPPgsOXEQgc2pjHPdicQfJH
-         FYGub8xoA/68JFN9iA5ys7NFqtqPUnkcsNhz8LZKDcNEg61opkBKPPFx2mce1yAWkujQ
-         St/TCofTuzW1u5Se+/RxxnXmvgzOblPvltJRRaoAIi9fMXVIvwnGYmaWTZHwQjtHYo2u
-         q3vIpSpySebXOrES6033WDlGXAKj5mF+28mFn1mjEUlLyxKWjOl855Cc8U/TcRHDWUp0
-         bc1JVD60iTYGV67zBbJ6VgxIuBw2GRm8LvQp9KnIXAtbEI+oaTLjjcPTWE3ACTJVYCpO
-         zXFg==
+        b=RzJ5i/NRFj8D+w190VAAXVsoESZ7M+GJUBh+8gWKRkx4tA2ecqbwRrFuBdPuiN8r+T
+         cX6/UwdJBWaLUvQyQcIzG75MquGTFSeMnOUkUSIctglSdXog1Qg0Dnws8qJh77Ix5Oij
+         RrNM56BAbU07yojpCauzm59/mzpcid99G51jMjP1Dyzhnw6H7HxcWebyEXPmZzCAu9yW
+         x+fORVX0Z3gPgbC1xcbE3Sp/3CGqAiLP1Lfoadah5LD/xW08a/AMCyqplYftCk39FqKl
+         mFdL7BIx3Jtau9Feea/yGJa02U+YNnoqHW7ce5WagMYNnmkOfmYLfLxV8Kewzf+pdjLD
+         m7XQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=0quSyCi9kfxfY1A8lHcxgbeKm6SRDXR67Drrk/c6Yu4=;
-        b=JJ6guDrImE0Fn/18+ezmTQwjbJ5rNbKhvwMclmXaT4lBuZToRVGxrupT5ILYfqlwWb
-         ErTrF4nNW8m02N+kP1V4bEBnUoOnJWX+FjFViLEo+Wkd4VdjNXT6Vn0OPeG9UkZcO8Pd
-         GZTXnAM5DVSJB66P1Ly2vWVCpsg3XRzJ+eMicS8RDSdwPEZgB1NTRA9Q5zC36BILRVaU
-         LTtCMt4hZjyNOTVZxzYoye8lJYI2n4KO6/wUz7mV7g4yYv7xR1PtTf/IEIjgR2S8Aup6
-         t8oXbdn5AwL0CjNPo6AQyhS1wnQ9voMNRfdBYllG50v65frESOdaefGIlimSUJ0upuQi
-         eJJg==
+        bh=YkSShU/WfQKmU+QoAFuwA07yQuUmCePmPC02tRDmL7s=;
+        b=FagDK8m+TRuJPbCIXC1Szs15R618SPAmA3S5spPHO1ZQ2N8r6WpZNSGCquTtkCDRYW
+         UnN905oi5G5HxztiU5HN/N5EnghS8bpd1L4F7kEFFqSDdTKE4Yt4ezMH3a/HRJiDfVQp
+         p5giT4QP5pNtfMMY59yd7MPt7kuTPg+qgKtTnoY3FkGPpM2fddDog7WvI1b1p5bQk0RR
+         A4fUAlVDQhLXX/sJw3TjoBLTVZa78sGrKktamaiQosA8plksVOHu68wu5Jf8/6HpEa/l
+         DIvR7u9nyUCpJjnr2Px1vWLkOceqpb5dMMJDgc1+hDTFsYEzPLU1Lp3qq2qqRtsUGjPi
+         z22A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OSBpaMGh;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=O3N1THtx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l7si27966817vsh.374.2021.07.23.13.36.26
+        by mx.google.com with ESMTPS id d5si544936ybk.307.2021.07.25.01.06.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Jul 2021 13:36:26 -0700 (PDT)
+        Sun, 25 Jul 2021 01:06:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OSBpaMGh;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=O3N1THtx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57804 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:50022 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m71uD-0005CV-R4
-	for alex.bennee@linaro.org; Fri, 23 Jul 2021 16:36:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48686)
+	id 1m7Z9i-00050U-9k
+	for alex.bennee@linaro.org; Sun, 25 Jul 2021 04:06:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m71ro-0000I1-1s
- for qemu-arm@nongnu.org; Fri, 23 Jul 2021 16:33:56 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:42733)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m71rk-0008DR-Iq
- for qemu-arm@nongnu.org; Fri, 23 Jul 2021 16:33:55 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id i1so4413713plr.9
- for <qemu-arm@nongnu.org>; Fri, 23 Jul 2021 13:33:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=0quSyCi9kfxfY1A8lHcxgbeKm6SRDXR67Drrk/c6Yu4=;
- b=OSBpaMGhhw746qwKkwIKUkAMur1lohlJaZND/Y3xNGl44Pt8+895w4JiI49WzIElO3
- rHZNxaR26h2dIjY9RmkoiJobIwUH7EJRRcEBZMedr2dyhMeKRMYPCAvQowBWdTbvbauJ
- o8YdebP8hT9iIKEHdv7RPhbjCPdMHvcAY8B+Cgnbh2lzb1aTgSdCOoO/I9N6x3tF6kTC
- opQdLvwFNjzmcPIo/FILP0nCwByPwZYXRKW5EMEZbDkm+AMPNwCib1IAGfE+fSncfk1C
- +PFkksP+N5zrp3jAcG5ZB7mjXkJiNS97GanzulD8s4oWPhvDv2+TnqIfT60a0xicq+F4
- 7QsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=0quSyCi9kfxfY1A8lHcxgbeKm6SRDXR67Drrk/c6Yu4=;
- b=SzG9S7p4C2OfER4gsUMmRQ+ZUYQZQxEmpMn05v604TMFxLxrVMTzo3gdHiuQzyuPhm
- /wdAUvkFZx2yGD12wZB/qgea9M6rAySP+91TBUQtCC43SvZLQ0pd3k3TOcnRgw73njZc
- eb76BijmQUVVH1JNREEjWaCtPD5w2/O+0L5Gol6liAZX9gqcEeqJ6zI1JyinJP5sApuE
- BzKPv2SFk874E8nHZ44AZaKJacYcFB0hvOi6lKmTQo8V2khL76Wan3/72sGXYEcqBxxj
- RRRFWxMlrfSkb39ids53xaw5TKGEABwiGZ0IInhVE9IvTjRL08z9E/+YQ4FzGwMH9e37
- ocLQ==
-X-Gm-Message-State: AOAM530IdvJQMQ2vprgOY+w26QDCCfLVoz0Z/mTAZjXTtUxwX9NMW5Mt
- F+ABOeSlPvkBv7ziiJmVdWY7lQ==
-X-Received: by 2002:a17:90a:e453:: with SMTP id
- jp19mr15421410pjb.19.1627072431283; 
- Fri, 23 Jul 2021 13:33:51 -0700 (PDT)
-Received: from localhost.localdomain (204-210-126-223.res.spectrum.com.
- [204.210.126.223])
- by smtp.gmail.com with ESMTPSA id v23sm6904754pje.33.2021.07.23.13.33.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Jul 2021 13:33:51 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/3] target/arm: Add sve-default-vector-length cpu property
-Date: Fri, 23 Jul 2021 10:33:44 -1000
-Message-Id: <20210723203344.968563-4-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210723203344.968563-1-richard.henderson@linaro.org>
-References: <20210723203344.968563-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1m7Z9X-0004zI-OO; Sun, 25 Jul 2021 04:06:27 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:50922)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1m7Z9V-00085B-C3; Sun, 25 Jul 2021 04:06:27 -0400
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id DB7B6C6019D;
+ Sun, 25 Jul 2021 10:06:19 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1627200379;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=YkSShU/WfQKmU+QoAFuwA07yQuUmCePmPC02tRDmL7s=;
+ b=O3N1THtxXww/SE451FmYSj/UXwBl5bOcZmX4fCQGgXoNB3AO1OsCqtVOiuqjFT1V2atng4
+ 0DQRkZWHGDhE2dAGkvJjoGfnu/377LiSryDb5DsLkppWuLil5qb3Tx9kKG31ffAU6lORj2
+ uCGw1O6lJZwhb/E3/BKdqeF1KpMHmxK+aEN9Gw/bDqoAV+ZCBqPa0FjN2Fy0mc5yhjMaoN
+ WErMy/G3YK3NHK6LtyQbHnOmhBHvJFzobVrYN+uSQT1Lc7E3LZ3DYtWcIddJLroUlobuQ9
+ uqPdXw+tO2gcfg4sSsTD7nqn0STnHz0UTdznovM+6hH3ROBi5bzCUEEDvcEgcw==
+Date: Sun, 25 Jul 2021 10:08:17 +0200
+From: Luc Michel <luc@lmichel.fr>
+To: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Subject: Re: [PATCH] hw/intc/arm_gic: Fix set/clear pending of PPI/SPI
+Message-ID: <20210725080817.ivlkutnow7sojoyd@sekoia-pc.home.lmichel.fr>
+References: <20210709094948.60344-1-sebastian.huber@embedded-brains.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210709094948.60344-1-sebastian.huber@embedded-brains.de>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,170 +95,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b2kXUXWcKKoo
+X-TUID: 7yCU0plYMCCb
 
-Mirror the behavour of /proc/sys/abi/sve_default_vector_length
-under the real linux kernel.  We have no way of passing along
-a real default across exec like the kernel can, but this is a
-decent way of adjusting the startup vector length of a process.
+Hi Sebastian,
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/482
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- docs/system/arm/cpu-features.rst | 11 ++++++
- target/arm/cpu.h                 |  5 +++
- target/arm/cpu.c                 | 14 ++++++--
- target/arm/cpu64.c               | 60 ++++++++++++++++++++++++++++++++
- 4 files changed, 88 insertions(+), 2 deletions(-)
+On 11:49 Fri 09 Jul     , Sebastian Huber wrote:
+> According to the GICv3 specification register GICD_ISPENDR0 is Banked for each
+You're referring to GICv3 but actually modifying GICv2 model. Having a
+look at GICv2 reference manual, your affirmation still hold though.
 
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index c455442eaf..4ff36cc83f 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -376,3 +376,14 @@ verbose command lines.  However, the recommended way to select vector
- lengths is to explicitly enable each desired length.  Therefore only
- example's (1), (4), and (6) exhibit recommended uses of the properties.
- 
-+SVE User-mode Default Vector Length Property
-+--------------------------------------------
-+
-+For qemu-aarch64, the cpu property `sve-default-vector-length=N` is
-+defined to mirror the Linux kernel parameter file
-+`/proc/sys/abi/sve_default_vector_length`.  The default length, `N`,
-+is in units of bytes and must be between 16 and 8192.  
-+If not specified, the default vector length is 64.
-+
-+If the default length is larger than the maximum vector length enabled
-+with `sve<N>` properties, the actual vector length will be reduced.
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index be9a4dceae..9f0a5f84d5 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1006,6 +1006,11 @@ struct ARMCPU {
-     /* Used to set the maximum vector length the cpu will support.  */
-     uint32_t sve_max_vq;
- 
-+#ifdef CONFIG_USER_ONLY
-+    /* Used to set the default vector length at process start. */
-+    uint32_t sve_default_vq;
-+#endif
-+
-     /*
-      * In sve_vq_map each set bit is a supported vector length of
-      * (bit-number + 1) * 16 bytes, i.e. each bit number + 1 is the vector
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 752b15bb79..2866dd7658 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -201,7 +201,8 @@ static void arm_cpu_reset(DeviceState *dev)
-         env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
-         /* with reasonable vector length */
-         if (cpu_isar_feature(aa64_sve, cpu)) {
--            env->vfp.zcr_el[1] = MIN(cpu->sve_max_vq - 1, 3);
-+            env->vfp.zcr_el[1] =
-+                aarch64_sve_zcr_get_valid_len(cpu, cpu->sve_default_vq - 1);
-         }
-         /*
-          * Enable TBI0 but not TBI1.
-@@ -1051,7 +1052,16 @@ static void arm_cpu_initfn(Object *obj)
-     QLIST_INIT(&cpu->pre_el_change_hooks);
-     QLIST_INIT(&cpu->el_change_hooks);
- 
--#ifndef CONFIG_USER_ONLY
-+#ifdef CONFIG_USER_ONLY
-+# ifdef TARGET_AARCH64
-+    /*
-+     * The linux kernel defaults to 512-bit vectors, when sve is supported.
-+     * See documentation for /proc/sys/abi/sve_default_vector_length, and
-+     * our corresponding sve-default-vector-length cpu property.
-+     */
-+    cpu->sve_default_vq = 4;
-+# endif
-+#else
-     /* Our inbound IRQ and FIQ lines */
-     if (kvm_enabled()) {
-         /* VIRQ and VFIQ are unused with KVM but we add them to maintain
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index c7a1626bec..c690318a9b 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -559,6 +559,59 @@ static void cpu_arm_set_sve(Object *obj, bool value, Error **errp)
-     cpu->isar.id_aa64pfr0 = t;
- }
- 
-+#ifdef CONFIG_USER_ONLY
-+/* Mirror linux /proc/sys/abi/sve_default_vector_length. */
-+static void cpu_arm_set_sve_default_vec_len(Object *obj, Visitor *v,
-+                                            const char *name, void *opaque,
-+                                            Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    int32_t default_len, default_vq, remainder;
-+
-+    if (!visit_type_int32(v, name, &default_len, errp)) {
-+        return;
-+    }
-+
-+    /* Undocumented, but the kernel allows -1 to indicate "maximum". */
-+    if (default_len == -1) {
-+        cpu->sve_default_vq = ARM_MAX_VQ;
-+        return;
-+    }
-+
-+    default_vq = default_len / 16;
-+    remainder = default_len % 16;
-+
-+    /*
-+     * Note that the 512 max comes from include/uapi/asm/sve_context.h
-+     * and is the maximum architectural width of ZCR_ELx.LEN.
-+     */
-+    if (remainder || default_vq < 1 || default_vq > 512) {
-+        error_setg(errp, "cannot set sve-default-vector-length");
-+        if (remainder) {
-+            error_append_hint(errp, "Vector length not a multiple of 16\n");
-+        } else if (default_vq < 1) {
-+            error_append_hint(errp, "Vector length smaller than 16\n");
-+        } else {
-+            error_append_hint(errp, "Vector length larger than %d\n",
-+                              512 * 16);
-+        }
-+        return;
-+    }
-+
-+    cpu->sve_default_vq = default_vq;
-+}
-+
-+static void cpu_arm_get_sve_default_vec_len(Object *obj, Visitor *v,
-+                                            const char *name, void *opaque,
-+                                            Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    int32_t value = cpu->sve_default_vq * 16;
-+
-+    visit_type_int32(v, name, &value, errp);
-+}
-+#endif
-+
- void aarch64_add_sve_properties(Object *obj)
- {
-     uint32_t vq;
-@@ -571,6 +624,13 @@ void aarch64_add_sve_properties(Object *obj)
-         object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
-                             cpu_arm_set_sve_vq, NULL, NULL);
-     }
-+
-+#ifdef CONFIG_USER_ONLY
-+    /* Mirror linux /proc/sys/abi/sve_default_vector_length. */
-+    object_property_add(obj, "sve-default-vector-length", "int32",
-+                        cpu_arm_get_sve_default_vec_len,
-+                        cpu_arm_set_sve_default_vec_len, NULL, NULL);
-+#endif
- }
- 
- void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+> connected PE with GICR_TYPER.Processor_Number < 8.  For Qemu this is the case
+> since GIC_NCPU == 8.
+This is GICv3 specific. For GICv2 the architectural limit is 8 CPUs.
+
+> 
+> For SPI, make the interrupt pending on all CPUs and not just the processor
+> targets of the interrupt.
+So you're not referring to GICD_ISPENDR0 anymore right? SPIs starts at
+IRQ number 32.  GICD_ISPENDR0 is for IRQs 0 to 31, which are SGIs and
+PPIs (This is why this reg is banked, meaning that a CPU can only
+trigger a PPI of its own). Maybe make it clear in your commit message
+that you are now talking about GICD_ISPENDRn with n > 0
+
+Moreover your statement regarding SPIs seems weird to me. Setting an
+SPI pending (in GICD_ISPENDRn with n > 0) should really be like having
+it being triggered from the IRQ line. It makes it pending in the
+distributor. The distributor then forward it as normal. Why the
+GICD_ITARGETSRn configuration should be ignored in this case? At least I
+can't find any reference to such a behaviour in the reference manual.
+
+> 
+> This behaviour is at least present on the i.MX7D which uses an Cortex-A7MPCore.
+Which has a GICv2, not a v3 right?
+
+> 
+> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+> ---
+>  hw/intc/arm_gic.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index a994b1f024..8e377bac59 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -1294,12 +1294,14 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
+>  
+>          for (i = 0; i < 8; i++) {
+>              if (value & (1 << i)) {
+> +                int cm = (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
+> +
+Indeed, I think the current implementation for PPIs is wrong
+(GIC_DIST_TARGET(irq + i) is probably 0 in this case, so a set pending
+request for a PPI will get incorrectly ignored). So I agree with the irq <
+GIC_INTERNAL case. But for SPIs my concerns still hold (see my comment
+in the commit message).
+
+>                  if (s->security_extn && !attrs.secure &&
+>                      !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
+>                      continue; /* Ignore Non-secure access of Group0 IRQ */
+>                  }
+>  
+> -                GIC_DIST_SET_PENDING(irq + i, GIC_DIST_TARGET(irq + i));
+> +                GIC_DIST_SET_PENDING(irq + i, cm);
+>              }
+>          }
+>      } else if (offset < 0x300) {
+> @@ -1317,11 +1319,10 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
+>                  continue; /* Ignore Non-secure access of Group0 IRQ */
+>              }
+>  
+> -            /* ??? This currently clears the pending bit for all CPUs, even
+> -               for per-CPU interrupts.  It's unclear whether this is the
+> -               corect behavior.  */
+>              if (value & (1 << i)) {
+> -                GIC_DIST_CLEAR_PENDING(irq + i, ALL_CPU_MASK);
+> +                int cm = (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
+> +
+> +                GIC_DIST_CLEAR_PENDING(irq + i, cm);
+I agree with this change too, but you are modifying the GICD_ICPENDRn
+register behaviour without mentioning it in the commit message.
+
+Thanks,
+
 -- 
-2.25.1
-
+Luc

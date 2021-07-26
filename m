@@ -1,97 +1,97 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp2743047lfc;
-        Mon, 26 Jul 2021 03:59:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2vMPEDBfAQj4qZJIGhUnRtxysGSEuqpWU6SaMQssLP3HYAjP94p15ObWjTqazPUPGgwHT
-X-Received: by 2002:a05:620a:16b2:: with SMTP id s18mr16973437qkj.446.1627297140852;
-        Mon, 26 Jul 2021 03:59:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627297140; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp2756088lfc;
+        Mon, 26 Jul 2021 04:14:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMnvnq6AyZLVNHMy+qY1UjM21380ZBplFMCHcG1VuyKrb8hFeaqfX0KMwoPs8InAyq0zdG
+X-Received: by 2002:a67:d71d:: with SMTP id p29mr11435415vsj.26.1627298063608;
+        Mon, 26 Jul 2021 04:14:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627298063; cv=none;
         d=google.com; s=arc-20160816;
-        b=TOAig0wejRjsGjMsNYs525T5B+YEDPQkptynXL3cxUK+brlaQpdoL2LYZhBfxWn9xp
-         RDvHr2wor9EyHpbjlqSoB+2n9qcdQmdLrp4wTWEFKjeecJnji7ZEj1fKqjGXVN2q8YR/
-         oQRCGpYntzNqAa8m3VhfdqZZ1E+RfBuHf0znsBoBEY/JG6Vxsq4Nu7OaP2qXATH6hfUy
-         8TvyWalleh4Gx/NcehB4mJVkjrGT34Bc1zjFXKORhGjili+iaYK0ng4rB77WBRiYvNly
-         sLT3yDUcQEIt2cMTauFlmt03QvfIqvt+sLtraUuUKutflf5Pxq6p9osgVS77UT9oNWCJ
-         MDqg==
+        b=rwFIj+hVMcvAotFRYcNoJqq8xvZRgLUSgO7CKld2xaCYhhTS3s2TSqEm/GDRp0Us/i
+         KMLPNIbtlWpFkOh/ixJB+QqNV8ucQSxdAYXntdszJaMsXyYm4W7W+U9WI7KT1iidN23N
+         6LCIaxU2GaclSAk2pS2/Tdk9SU8ZnyDTZ9fCk90OVJxKNjFK7vFlJB4pPB+V+YE5PQaR
+         ig6dNJ/IoKsJM3HSCQfzXD7CcN5jSxGhuPhig4Aa72feZPWfXKFXPIM5RmtE9A1MqbX6
+         Bi7rjKClHHOSqH/a0CUiliwar86EHbcrN/c2tm+8+7rU9lvetqb14+G+wzDMernjq5xL
+         zLwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=8SwKjOO8BjFaUhzND46a8R8MOCw0txwo5331iV6iddE=;
-        b=U6F3KMjg5aQzQ83RGNEURTd99PvQTgnnaIEIPjMLU6xzBXF75vI4ID3TxC5HYu+xtK
-         mqZbNx2rtFU1rklaO/IubwRP+GqsboyCPBh7OOIj7y6O73rpKh+8IkOTNcq7173enjVI
-         fwZ6Ahu25w6gVgw+Rwl1mT9mfmJ1Cx2o6MhSmVsan43DN0mAqGh42TUDhqqiP4tJVxby
-         f8wp/enNtcLMBI/hTmrAveGA24cShgqbkZ//7qZ/XsrzOMlTOmudAxBshn5K5BAd6P69
-         /DSj4Ylo02KfQNfNj2PFWzPDXBGpuHQ3G9uKWlYamRe4vREXA3Ih2plmfnUYvZeB7K7P
-         o8HQ==
+        bh=6e6cV89XlK2v89HMMmtC5h9tNKDmc8LAVownlsIndJo=;
+        b=f2Q8gGMx9HMiTvG+cS/ZEMX+M6YG/dXxADX+O8Bivu11l3LYtFhzpzzIGmXnbpJ3Xt
+         D48BuK4ZdUm+I8KJRE680JXPPQZw9kWSqUe+3zJabkFY/YjCJ0f/zh/djS8wMXO/wFX4
+         rc9p5Y6js0otA5fKJdbfKcau6nnTeNHvtuk6vFzqJJ0H4YOZqeSaInD0Me8yCYJxDZdj
+         c3BIhvqLJ3aE/LlIqq7JIo4NSmNQrr3gi5bkUeiF2+DdGvxpHJK4U7rUJG/GFN3ejwj4
+         ++PaXVov7pC3qh+YKZEnmceGpWiE+uF+NZDJwEhc5+IUI6pMBY14sZvhQEoRnpQVNvO6
+         a2Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eglba7Gf;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ydAJQewm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c13si26796183qvc.85.2021.07.26.03.59.00
+        by mx.google.com with ESMTPS id k19si8892306uab.34.2021.07.26.04.14.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Jul 2021 03:59:00 -0700 (PDT)
+        Mon, 26 Jul 2021 04:14:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eglba7Gf;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ydAJQewm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58874 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m7yK4-0003bN-73
-	for alex.bennee@linaro.org; Mon, 26 Jul 2021 06:59:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48902)
+	id 1m7yYw-0007Qs-QV
+	for alex.bennee@linaro.org; Mon, 26 Jul 2021 07:14:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m7yIx-0002Ln-Al
- for qemu-devel@nongnu.org; Mon, 26 Jul 2021 06:57:51 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:34751)
+ id 1m7ySh-0004nS-1X
+ for qemu-devel@nongnu.org; Mon, 26 Jul 2021 07:07:56 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:41893)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m7yIv-0006z9-OL
- for qemu-devel@nongnu.org; Mon, 26 Jul 2021 06:57:51 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id v21so15878425ejg.1
- for <qemu-devel@nongnu.org>; Mon, 26 Jul 2021 03:57:49 -0700 (PDT)
+ id 1m7ySf-0006Mn-8s
+ for qemu-devel@nongnu.org; Mon, 26 Jul 2021 07:07:54 -0400
+Received: by mail-ej1-x630.google.com with SMTP id hb6so15759874ejc.8
+ for <qemu-devel@nongnu.org>; Mon, 26 Jul 2021 04:07:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8SwKjOO8BjFaUhzND46a8R8MOCw0txwo5331iV6iddE=;
- b=eglba7GfqIaR9TTttvYEAaL/EdgGJEWQY7ebQvx6t8TosjhJfmm3JRxN4E+oSDEImo
- vuUs/pT411EpaKaD9WiH7fVLr4eCxHrhny3F1OZ+sUENybkNODBK2VVWxO1P4Juv/Tce
- yCPIaUKXdH+JSUmm+NH3lCik5+lPE5rmLT0/Yv+1rjyHVCn9GrIqOzZ4amwd5MpXNYzd
- ZnVk0tcvuJoeF7bTzJmxo6ZpOpPyra+OLYMgDqWfDwCsQqTKKB3sv9CSOzoWXMwU//wd
- 5OeJWfFpg9aSroFnxdnMQ6tV1Q6hN67ex0VsobTl5qEjlHnJAcYV3I4ep4CpwZKjC3Tj
- MmiA==
+ :cc; bh=6e6cV89XlK2v89HMMmtC5h9tNKDmc8LAVownlsIndJo=;
+ b=ydAJQewm+vQZCYBSGyMS8gYXVRUWP5vQyPi/C0r5+3haFDrfksYxdE4a/pII+gqtM9
+ zRxEr/eCSM/m322WcXxXVV3lSRcOf+O9lywNxkIUD/sbsOIXQQbevozkg6GsDAO4iC9i
+ JdQHAByS8mXiaE7Mz2Lv9S0gVu0fcllFew2AK8osSykmmWif6z/mUf07dXt764vaf/TB
+ AS9gXBoAkDEU+d74jkEHIxUi4eyweiQER5/DxTmllbvsAhiVOzPkdbZBOWqI1UTE0dlm
+ JYfuKCcYcm5SWk1kcr2lNOa0K5jOt/X77Tt1e+3IzLjNkW1XYkXb/mVTA004PRwTW7JQ
+ 5UdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=8SwKjOO8BjFaUhzND46a8R8MOCw0txwo5331iV6iddE=;
- b=ssdet5aOBCzZhcr2yrNaQphpt2IgRDWVe8EtiETl0EbpPGeT+F5AUiSEJRQD53QZ/j
- nYqEeNLkyvbHog0g0Jsq6BwpE+JvXQLj6hPBLdrBuNOrH4VoBoJ0Y1+7f0Rb5kzyKyhF
- 8IXPeVTl4SCC0ZeX2cfDKULVH0RPsmQuaRskyoReQAifSkqsVdFD3LhArGEr9UOgX1dQ
- zxmDUzXylwOwy/RdlzRbc2egZQXa7Jn0qZR1Gf0ovY2BbnxfL52SE/HiOQ0VTbjDc1ag
- FJPGAl7MhuF3lkMfvWr22FKq1zktzecpmJjEFjo1dUlS7dHlZLE4acnYGvFj2MmSHQ/e
- lfjg==
-X-Gm-Message-State: AOAM533bHYdzdHYPRL10rsrfK34msmEGlC3I9iu4NaLODkTYIBv6Y9Lo
- HO0MT+gHM2YHpdTPqlJqTTqXJPZVpduBwhFEDP5U9Q==
-X-Received: by 2002:a17:907:3e02:: with SMTP id
- hp2mr16323358ejc.4.1627297067576; 
- Mon, 26 Jul 2021 03:57:47 -0700 (PDT)
+ bh=6e6cV89XlK2v89HMMmtC5h9tNKDmc8LAVownlsIndJo=;
+ b=MD9LyEt/NFvZNjhbUfxL6e3VqqkZjkM3/r+eB/U8b0AsyV9FAZ6pKKFDaxlu9zD0hU
+ jj0rMmEsOa/A5CpfeJEi7Cxzj92v2AAK/18ukRS8DMoxDfzLomDWHPLfUGn9CmPc5D57
+ La0lsHLVBr9cizUwc0hc2/9rpb9XvZkJPaycs4vrHkosR2CcSJltYgRHxrr6YMeeyQho
+ 5zOr7BR7N7xH/JwrpUrw3h34fNGERGm+syJdUTSORwcIES8Cu/WgX6+vexQINM9Uly7K
+ RKTY4gGAImCe4zl+zIrZgn6DfNG84UUPKrO6ejtdWRaFGFXLT7ng1fDyxP1V3E8u4QNo
+ Ggag==
+X-Gm-Message-State: AOAM531RxRjWdFHrsl0FoWbuDf3U7+3xEGUwu24nFFehDO3Sa8zLNdvi
+ epeCdcThuC2ugW8DlgX4ja4NR+7sRuo7VVwNkZBqRw==
+X-Received: by 2002:a17:907:3581:: with SMTP id
+ ao1mr16664821ejc.85.1627297671385; 
+ Mon, 26 Jul 2021 04:07:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210723203344.968563-1-richard.henderson@linaro.org>
- <20210723203344.968563-2-richard.henderson@linaro.org>
-In-Reply-To: <20210723203344.968563-2-richard.henderson@linaro.org>
+ <20210723203344.968563-4-richard.henderson@linaro.org>
+In-Reply-To: <20210723203344.968563-4-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Jul 2021 11:57:05 +0100
-Message-ID: <CAFEAcA_EVQQWN-pzBEr8NVsN0RXftJF29coz-hM7xQYwA=N5Hw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] target/arm: Correctly bound length in
- sve_zcr_get_valid_len
+Date: Mon, 26 Jul 2021 12:07:09 +0100
+Message-ID: <CAFEAcA_0_cGcSDFVk+WqUS9Koi9hsQjRs7=7O1jiqQwv5fO2+w@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] target/arm: Add sve-default-vector-length cpu
+ property
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,22 +114,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8pQhZ+MLVnl7
+X-TUID: Vl1L5MXzB2m7
 
 On Fri, 23 Jul 2021 at 21:36, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Currently, our only caller is sve_zcr_len_for_el, which has
-> already masked the length extracted from ZCR_ELx, so the
-> masking done here is a nop.  But we will shortly have uses
-> from other locations, where the length will be unmasked.
+> Mirror the behavour of /proc/sys/abi/sve_default_vector_length
+> under the real linux kernel.  We have no way of passing along
+> a real default across exec like the kernel can, but this is a
+> decent way of adjusting the startup vector length of a process.
 >
-> Saturate the length to ARM_MAX_VQ instead of truncating to
-> the low 4 bits.
->
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/482
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
+>  docs/system/arm/cpu-features.rst | 11 ++++++
+>  target/arm/cpu.h                 |  5 +++
+>  target/arm/cpu.c                 | 14 ++++++--
+>  target/arm/cpu64.c               | 60 ++++++++++++++++++++++++++++++++
+>  4 files changed, 88 insertions(+), 2 deletions(-)
+>
+> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+> index c455442eaf..4ff36cc83f 100644
+> --- a/docs/system/arm/cpu-features.rst
+> +++ b/docs/system/arm/cpu-features.rst
+> @@ -376,3 +376,14 @@ verbose command lines.  However, the recommended way to select vector
+>  lengths is to explicitly enable each desired length.  Therefore only
+>  example's (1), (4), and (6) exhibit recommended uses of the properties.
+>
+> +SVE User-mode Default Vector Length Property
+> +--------------------------------------------
+> +
+> +For qemu-aarch64, the cpu property `sve-default-vector-length=N` is
 
+You probably don't want single-backticks. In rST this means
+"interpreted text", which can be handled as a bunch of different
+things if tagged with a specific "role":
+https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#interpreted-text
+The default "role" if none is specified is "title_reference", intended for
+references to book or article titles, and it renders into the HTML
+as <cite>...</cite> (usually comes out as italics).
+
+If you want fixed-width-font text, that's double backtick: ``text``.
+If you want italics, that's *emphasised text*.
+If you want bold, that's **strong text**.
+
+> +defined to mirror the Linux kernel parameter file
+> +`/proc/sys/abi/sve_default_vector_length`.  The default length, `N`,
+> +is in units of bytes and must be between 16 and 8192.
+> +If not specified, the default vector length is 64.
+> +
+> +If the default length is larger than the maximum vector length enabled
+> +with `sve<N>` properties, the actual vector length will be reduced.
+
+We should document the -1 case too, something like:
+
+If this property is set to ``-1`` then the default vector length
+is set to the maximum possible length.
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

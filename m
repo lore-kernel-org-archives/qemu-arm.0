@@ -1,101 +1,104 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp3520219lfc;
-        Tue, 27 Jul 2021 01:03:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTImNzFdEaTD+VRDK9A3nya8dp4/xjhdfCDbH1KZijwtbj9bHPHjAkD+1ruJcKpIuYnGS2
-X-Received: by 2002:ac8:4741:: with SMTP id k1mr18442102qtp.374.1627372993416;
-        Tue, 27 Jul 2021 01:03:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627372993; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp3563882lfc;
+        Tue, 27 Jul 2021 02:19:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyz7/f6PW5h2YatGB8adxiF9UwIb7HyJ8tjk6Sd1gqXgTsToS45BIdW/MxftBQf/UCeKp4D
+X-Received: by 2002:a25:255:: with SMTP id 82mr9233580ybc.212.1627377554619;
+        Tue, 27 Jul 2021 02:19:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627377554; cv=none;
         d=google.com; s=arc-20160816;
-        b=0JLqgY+hBd0PGNepEKiq682qdyFBlIDPbdmWVNwh4kyb2nyWE0+oZXLgcsnMi4e1UF
-         ig4y3ltAOuHLvmEPyOWu7rMzU0OC3bOiv5nbW5rnm1c5mZygRmtNfAtLw3mPH0RTJNZY
-         p7oUm1pMN2Mweh3v8TYqvCHowN9V8I72QI8fgrKbqgHRtCS4OeRZbt/ptGapniPo9n1f
-         h7ekJ5ppjYseBHlvfj2M+Jalma6HEP7yRn/kuh6Nz9XjjSTDluF2gX6DAC3pguEWX1m7
-         aUvC48qak/wpWAU8qB9hX1tOp17gTNiIMH+QM/1snIWnRQgRkCemK3/0ATExrxzMvdKF
-         IuRA==
+        b=m8Mf/weB4p270oRfOuRAvUQFOKXpqhQJdX7bt1RDsyNh7VAiEzOc9fXYgnf7ERlI0v
+         jeOf0wwsz56F1okgTPVjp1gYDJ8/gcAof+JsRTPj+6JfPKlSno5hWofBE3E4Azbao8Xj
+         V0vUNckBTAPQ2dPzG298Zgl1ycaAzbjLGsE8v228//oBBCJ7AxC/2dSP+4zXb1WImBrc
+         XQZIHx+78kLQBBSfRAwcA9X39qdwiD4XqW7BzBg95+FvsBxFT1rN9lPUfrH7C8qHHhBP
+         3HG79X1AxXnlAK+S+/Mw2YIPNNzNYqyAwOjfZp29A0u+Lu8f1H7jonHJzwGz2KwhakfX
+         /PAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=jN7UpphmA47gcdFkRfOr3Vi5bpHQ5t1x0cnEDH0ZD4I=;
-        b=SP6EeZEnnsmynJ1QbJaYRex/hEK2BNEJX6x0OYKxwfrXAFPDeg01xPdJDg4WwS+ULS
-         opVlU+uV8lERmPRoGCMwGpqBkty81V0C9aZahBHnRcQ4+b5AfAHxD5IGgJjyk9mF7PeO
-         RQH+53ekntiVFYIvuVpl0wUOVArjre0m2Ol4ijW8fZnzNVl4LNxWmxjhKBjxnYpwzCTI
-         Ln/rDanDfS+VZP5Z0YQo2wZsVJZ6qwz6ERocCqRdFbX81uF4U+jf6/scOjn6q/e6J3Mp
-         mRvHc03eEOtnu1LyApOCY+AEmKHt0zvVLMDSz/UYuBBi2s3QUKpHf9EyIb/+TnqcJCwC
-         VUXA==
+        bh=peTq3EUlBydrgfKap+VyP4eLWmc3Zuk125IpO8u02Z8=;
+        b=QQh3aQIfIRLIlTXf9r9AWiOgeoZpZPByK+Dc6JKKe9viuEKfJ7ROxlfD5XN/a8/++R
+         Dds0V03V8w0+Uwvcc6tqXPJkZc96ytfwF543WuQbtJInx2SAu6sw5Yyj3EKvpcSKU2VS
+         ga5SEts8YYaJSR4of2d14AX9wWW6/wZkdbNit0z6n5T16Z1mKZgHFz8KOoDv3YGundk7
+         jVNTrn8UNQ1MfmQfYkY1KUL9pwKWtDYkHTxu7YyCMJPfrKdtQRUuiTNxrULmu7wqRXg+
+         MgV1CJE10PtQXMvkhRP2zsAgInvrVLhtH5c00EyCRTTJzwv8Zg61zBKEbJGpY5wLWmzh
+         mvIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=LoFRJWJJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=heGxfIdo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 139si1173797qkk.333.2021.07.27.01.03.13
+        by mx.google.com with ESMTPS id i7si2197964ybh.469.2021.07.27.02.19.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Jul 2021 01:03:13 -0700 (PDT)
+        Tue, 27 Jul 2021 02:19:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=LoFRJWJJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47782 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=heGxfIdo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53262 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m8I3U-00014j-M3
-	for alex.bennee@linaro.org; Tue, 27 Jul 2021 04:03:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37508)
+	id 1m8JF3-0005QN-UQ
+	for alex.bennee@linaro.org; Tue, 27 Jul 2021 05:19:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1m8I2s-00014C-N5; Tue, 27 Jul 2021 04:02:34 -0400
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836]:44645)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m8JEt-0005JT-Kf
+ for qemu-arm@nongnu.org; Tue, 27 Jul 2021 05:19:04 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:42691)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1m8I2q-0007Qb-NM; Tue, 27 Jul 2021 04:02:34 -0400
-Received: by mail-qt1-x836.google.com with SMTP id g11so8914561qts.11;
- Tue, 27 Jul 2021 01:02:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m8JEl-0003DV-0I
+ for qemu-arm@nongnu.org; Tue, 27 Jul 2021 05:19:03 -0400
+Received: by mail-ed1-x530.google.com with SMTP id p21so7329033edi.9
+ for <qemu-arm@nongnu.org>; Tue, 27 Jul 2021 02:18:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=jN7UpphmA47gcdFkRfOr3Vi5bpHQ5t1x0cnEDH0ZD4I=;
- b=LoFRJWJJ8fZniC75MSkIyv3haIQZjGTdpYiKWLvoav8ydgC9MCCv0qcCXgTO3dmNvl
- vVgEtUYx5Y2/3E+v+qqp7TPd/1z4jjEx/hGudyjXLaN2U+VghTK1ua4KNDKJlTKej4S+
- WjPYukitquky3+il4uOge+XU0v45qMSzqKMQc=
+ bh=peTq3EUlBydrgfKap+VyP4eLWmc3Zuk125IpO8u02Z8=;
+ b=heGxfIdobrCHXGSDzgigIjFbVNJ0wdSEFxKOe6enu80xQd3CNmFxCVBvAhHApK4+Bx
+ G9YFtwADL6YpKsp1kbg0ocVbsDSBipY4kK1u/BN6HO7vvn8pdFZq5BmTjfaZh0+D94JP
+ YwC+POSbP4cppsRUd2bSSMvBCCMwEQHEIE0pEMKuPXylfRKNacS/gkYuVcVsdX/F1C4P
+ MnOjibvAeDdmqegzT6YzcGibrFD4E2WUPc5mLf3d9e4RufzwgfRnQZMOiYltiAtHVw9n
+ 9VTk04PmPFzJwa9A08areSkNGVQLKtl56vWu2AqvW5LDHQcU2+J70RQoekzaMvxFiePc
+ o31w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=jN7UpphmA47gcdFkRfOr3Vi5bpHQ5t1x0cnEDH0ZD4I=;
- b=GE7ZnltVCGL2FOFda0AJ4yOTY3WsbDHqSxZvZ2/VkOJ2KNM1YZjPmcuJN9f6Mppmky
- Rjjy/mrXK63Fmy++gB6+Yv5Mz2t5k4ZhIqe/dvKgFdZfAsPTSeFQgFdWmyESEaSkGzdJ
- INafMYtffCy366NSbhvOWyK9DSO2pThtzRoKYF0Exf9zVvjOvIAzkbHKsBjqCNl5UpPr
- eaO+yg65fPVA9XUD7TTuAPCXmK/63Y56w+PiWEDe+hXnINAK3UTirwIu6BYLCR+vw/IK
- xb01GmqTiSBAYKLmtXtQST3dNg7oVKQJVR5IuV3fKK48Nk7Ka26blzkr+mZh1A7iUDVC
- dW6Q==
-X-Gm-Message-State: AOAM532tFxqEO5nfPmghmrUWxVeIF3JOFBGoHQo0kKdKy/j+bcnqJGgf
- 55Le6dvYaS5T6P0CzMSF8UHcfSH7gn04URwfLqY=
-X-Received: by 2002:ac8:5289:: with SMTP id s9mr18200371qtn.385.1627372949921; 
- Tue, 27 Jul 2021 01:02:29 -0700 (PDT)
+ bh=peTq3EUlBydrgfKap+VyP4eLWmc3Zuk125IpO8u02Z8=;
+ b=OnchNFMQH1Eh6Yr6H1G6bzgsEuS+MVPeE1QzxNldrRchxIo4+Ug9jjX9G6fr9NHC5d
+ IdQlaRn1n/LybWVMilo8EBY6uQR2sAXZtP38Dp9iIP4yfBvj0CFf+QinkR6Zs/x97PCm
+ 8WDgW6rX07kBU+uLF8rNmFhVyFp6fKXGVzVWHM2T5UQrGqviXi+w7TDlVdMmw3+U+ENS
+ 2k45sIHs5EiYneIW8i2zr0inZ32JTnzw+A+S8zy08zmvEaOd7t4bObBnhWrAtlwCkH/w
+ J+AInQX2gWGlEuWJgOxxImUNw8KZE1QTjlrYnSWnx7qZWJAJaEYUR+7vg4mYOxZagyn8
+ uuPw==
+X-Gm-Message-State: AOAM5304rVX4FOA+E5cJN6qRpFle/FvHV5Q8nE1dAYxCX6qBniO2cmPn
+ S2Z69ZrFXDNViVBMrGGKV/yqFKWMXg38Jv7seOSyog==
+X-Received: by 2002:aa7:c857:: with SMTP id g23mr26163809edt.100.1627377532630; 
+ Tue, 27 Jul 2021 02:18:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210713065854.134634-1-joel@jms.id.au>
- <20210713065854.134634-2-joel@jms.id.au>
- <7c5dd20c-4710-4bdb-605f-e35ed7bfb35a@kaod.org>
-In-Reply-To: <7c5dd20c-4710-4bdb-605f-e35ed7bfb35a@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Tue, 27 Jul 2021 08:02:17 +0000
-Message-ID: <CACPK8Xe=v4KRT1TqC8-DFWxqUoCak1MisWr84_9ug-xfXezWEA@mail.gmail.com>
-Subject: Re: [SPAM] [PATCH v2 1/3] hw: aspeed_gpio: Fix memory size
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>
+References: <20210726150953.1218690-1-f4bug@amsat.org>
+In-Reply-To: <20210726150953.1218690-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 27 Jul 2021 10:18:10 +0100
+Message-ID: <CAFEAcA9M5u-NF9v1MmGctbCh_LMRyhtvLc9yKzuP2SFsgPbViQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/nseries: Display hexadecimal value with '0x' prefix
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
- envelope-from=joel.stan@gmail.com; helo=mail-qt1-x836.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,72 +111,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Rashmica Gupta <rashmica.g@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Andrzej Zaborowski <balrogg@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4oHo0T78OVoK
+X-TUID: tHaNYAfA+mNI
 
-On Mon, 19 Jul 2021 at 16:02, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Mon, 26 Jul 2021 at 16:09, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> On 7/13/21 8:58 AM, Joel Stanley wrote:
-> > The macro used to calculate the maximum memory size of the MMIO region
-> > had a mistake, causing all GPIO models to create a mapping of 0x9D8.
-> > The intent was to have it be 0x9D8 - 0x800.
-> >
-> > This extra size doesn't matter on ast2400 and ast2500, which have a 4KB
-> > region set aside for the GPIO controller.
-> >
-> > On the ast2600 the 3.3V and 1.8V GPIO controllers are 2KB apart, so the
-> > regions would overlap. Worse was the 1.8V controller would map over the
-> > top of the following perianal, which happens to be the RTC.
-> >
-> > The mmio region used by each device is a maximum of 2KB, so avoid the
-> > calculations and hard code this as the maximum.
-> >
-> > Fixes: 36d737ee82b2 ("hw/gpio: Add in AST2600 specific implementation")
-> > Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/nseries.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
+> index 906c915df78..af3164c5519 100644
+> --- a/hw/arm/nseries.c
+> +++ b/hw/arm/nseries.c
+> @@ -692,7 +692,7 @@ static uint32_t mipid_txrx(void *opaque, uint32_t cmd=
+, int len)
+>      default:
+>      bad_cmd:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> -                      "%s: unknown command %02x\n", __func__, s->cmd);
+> +                      "%s: unknown command 0x%02x\n", __func__, s->cmd);
+>          break;
+>      }
 
-Cedric, Peter; can we please get this merged for 6.1? Without it the
-RTC model is not functional on the ast2500.
 
-The other patches in this series are cleanups that can wait for future rele=
-ases.
 
-Cheers,
+Applied to target-arm.next, thanks.
 
-Joel
-
->
-> > ---
-> >  hw/gpio/aspeed_gpio.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> >
-> > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> > index 6ae0116be70b..b3dec4448009 100644
-> > --- a/hw/gpio/aspeed_gpio.c
-> > +++ b/hw/gpio/aspeed_gpio.c
-> > @@ -207,7 +207,6 @@
-> >  #define GPIO_1_8V_MEM_SIZE            0x9D8
-> >  #define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
-> >                                        GPIO_1_8V_REG_OFFSET) >> 2)
-> > -#define GPIO_MAX_MEM_SIZE           MAX(GPIO_3_6V_MEM_SIZE, GPIO_1_8V_=
-MEM_SIZE)
-> >
-> >  static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int=
- gpio)
-> >  {
-> > @@ -849,7 +848,7 @@ static void aspeed_gpio_realize(DeviceState *dev, E=
-rror **errp)
-> >      }
-> >
-> >      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
-> > -            TYPE_ASPEED_GPIO, GPIO_MAX_MEM_SIZE);
-> > +            TYPE_ASPEED_GPIO, 0x800);
-> >
-> >      sysbus_init_mmio(sbd, &s->iomem);
-> >  }
-> >
->
+-- PMM

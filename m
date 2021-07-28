@@ -1,102 +1,198 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp2704209lfc;
-        Mon, 26 Jul 2021 03:02:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylN4AK+Yu3BHySGaE6joTqLhRtyPbnJKGd5rAYS/ItT+uDdolnJ5AG2e6wQZPNk2xexlXb
-X-Received: by 2002:a05:6102:10dd:: with SMTP id t29mr10746979vsr.24.1627293775699;
-        Mon, 26 Jul 2021 03:02:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627293775; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5132406lfc;
+        Wed, 28 Jul 2021 16:45:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyqcDF/nQ0EZIMLKVx3aRHbL63WiUh3WsXwVlCRiWYENEGbPygHSdY3WVyPXtUdbCPm6Gw+
+X-Received: by 2002:a92:cac5:: with SMTP id m5mr1583237ilq.66.1627515926811;
+        Wed, 28 Jul 2021 16:45:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1627515926; cv=pass;
         d=google.com; s=arc-20160816;
-        b=pZFc/ACcfjc/n3AiLtvBaRpAVDeqQDGpN9IgwdSS4/CURTpNbhgH0qvP423Jkl/vla
-         4xVny/YM2nvzhbt/Vp4GBsqgRpBTQ/v6zyp8dU8vf7yzdjitqPPs9cypQVMXB1WavJ0y
-         6IlL1+xBOYlb1muI9ti2Lapo9CyYfCcov1SP2G/8NmWrhe6mOs9VtHvQu4blE8M/7KHj
-         V50RXvhQf+6P2vXMHiO2/BI8ItSt4LhyycpELTAU6jOtfpkn5o0SsAQxAe2lSLMleOyl
-         BTcgW8JxKzE2Z5i8HNZa1GN9qEYuOLK3NZj3DuEKFXdncq5evPx8B20vz2PIrUrbbmmN
-         nvCg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Htvw24MVh5A0pXhRf9L8qYMLD0DfhQirDus41SiFM5FWF3nUn85W+KIfhvbPKCdWrP
+         uGv44CXS9MVDSpHIyPIxu+EnpXnv6YGhmv+Kfrd0y1KIK9EIvJ5sgFP0DKMtbAEKmdKo
+         ENd0svApiasICE9R/MNOdblLDvKWbrhmqm84M9aXk8jOHvnGmNVU/bRALkG/guCTD9Su
+         j15ukKvEEYTv7jF9kb8J8nRC1ICT2iVGYPVHphrpDCP0Dv4lgXrg4q1LEL+B3/JDiWal
+         UYbrPYJ6fX0X+RhKrix/3Iq9HGLDn5Jt1xoZykaIv0nqjKlAGgTxIRKqUNDFudHb80FI
+         YCIw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=m4VkulIYQcMhIJJ2RLtcbuvBhPAP3tn/v0h72b4fJeM=;
-        b=tyHvBjYgOvwjzUzmBG9d66f3NSKjgu/854X/CgFnCfU2iuuU8YxhlB9Lwe3ZVf2UD6
-         Mn9n+B9DblK+XJ1M8rI7odxqqcC+keaoHqUpJkhj8j+6WlXJlYkp6EcSY2S3y0cEvo60
-         DFDihdNIcHI53V/3iN5bCUQD0KkBGIBnEoRwuiI8JLO2w8M2xtCfmpMZ1za+ka78JMDT
-         vNj9EMUBOJ+K77gQYx2rXEuubg4Q+QOFJbbFljU+IlYjOX2F4HQOdzQpXUDX0h8C4ehU
-         Sybk7FPsIGJSropZKfobLvgcqF0iHgCvovfOALvGyNT3MRKXM2Y49Dr5d0qvTDosAguE
-         kAkw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QjD3cZWr;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
+        bh=0qGhqb/pY/2Y5EgTm2k/w9Spg4daTVLoVwMYiSG2PEQ=;
+        b=QJftxJ9qux98B0+a4tQplq8Hctab3E7j1mavjrbx6c5TI5dpGBofO4r0pi2+LLYGs7
+         tEQYIxM8ZJronbW/J6gtz65rrWXgGVMu08SApBA8cQucNwXLjyDteUaQQ+d4bLQ+qXBR
+         nq9+GBlC7nxcpgKKFvkoF4U3sewa8BH19cnHGAfbeKqZGBl1JKGYYd7apmS6M/tDzl0d
+         N4PXzpn61TgqoDfqY+vTcQJ5+imzophQcuZ1Yn9jxb97fGyhtp6RO6xWCvmAeeHcfUUn
+         VnEB+LVSm+VDY/5H9KwwwXvMBZZyoB84I6WQbVD970yK/QwMFpfo/ADk48nBbCuVL5xS
+         Tfcg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=Xv8sJQaB;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=Hj1OxKEt;
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l10si29068893vse.70.2021.07.26.03.02.55
+        by mx.google.com with ESMTPS id y8si1507934ior.35.2021.07.28.16.45.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Jul 2021 03:02:55 -0700 (PDT)
+        Wed, 28 Jul 2021 16:45:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QjD3cZWr;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=Xv8sJQaB;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=Hj1OxKEt;
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45114 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Received: from localhost ([::1]:45116 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m7xRm-0001QY-SM
-	for alex.bennee@linaro.org; Mon, 26 Jul 2021 06:02:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34210)
+	id 1m8tEs-0006GX-3S
+	for alex.bennee@linaro.org; Wed, 28 Jul 2021 19:45:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m7xRf-0001Pv-G9
- for qemu-arm@nongnu.org; Mon, 26 Jul 2021 06:02:47 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:45640)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m7xRd-00087V-RP
- for qemu-arm@nongnu.org; Mon, 26 Jul 2021 06:02:47 -0400
-Received: by mail-ed1-x534.google.com with SMTP id x14so4984458edr.12
- for <qemu-arm@nongnu.org>; Mon, 26 Jul 2021 03:02:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=m4VkulIYQcMhIJJ2RLtcbuvBhPAP3tn/v0h72b4fJeM=;
- b=QjD3cZWr9hBORB3y8gA+4zsv153/Mv5171AlZ3Fl0eexKu92DN3n/k1sa2+p+pdGll
- luCI71ynBZUsM9ylg//hT10cwaANwA3/0KiL0iXhlawLa4DviNq7d0Ki92mFK+OJ2uAZ
- sdfjH8zETjLdf5OZbiiiQi7LvquY8kTv9bKLYmyS3Nu6Q0mjx62dvQVPWi7JyysP8AR+
- k9ppihKYAy/iuTOF4lfeoq44vhh4147v9gbr0R8Vr769c4Z/UVzSAxDuNocAi6aeAtnv
- TtlReCqFJGWofNwjNE8ZWwC+RotrVT247HC1iDMUfkubuXX+hCWmb0mM2URY0VNSFBb4
- 7o7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=m4VkulIYQcMhIJJ2RLtcbuvBhPAP3tn/v0h72b4fJeM=;
- b=uccnvGklBqcpYoRBvrDKpwOgPIR9nYhmHe0fqw6EgWWjZHdETWMA2JAA2nK3vYo0sG
- zq8hmvATHJ2sOJvld4VkDRfFNhzoDKkevDTjnh2MJ8+rd5K82n8anWKjYZRsbjYxu5eY
- nrkAIhdPPVmAvmoc8WsXLdo2r+oZVdqS/VjP1vodv8IWnkFykYTqtD5yA5PseS/kcOrM
- ZQawY+yY361e7Jowl3IH8kBKQSX/3szryufgnhDE778j0VeTg+UmBeYxggfrLQbTBTEF
- HQNuPWUNxjG9m6nKYtkkHOQAJeDVaDuEZInmy6KOrwOWYiZ5HIl+Xmm+McF7DpwxXllL
- e4qQ==
-X-Gm-Message-State: AOAM530VmvfEjiqWrLdMcRGMpZLUoBqe8ofq0WdT6Rchrz/A0AG1XVjD
- j5WDnmlanKDXHb+qPpFasHsJISdbmqWB9qEWulz8Ug==
-X-Received: by 2002:a05:6402:1ca4:: with SMTP id
- cz4mr20400397edb.52.1627293764011; 
- Mon, 26 Jul 2021 03:02:44 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1m8tE7-0006G2-6p; Wed, 28 Jul 2021 19:44:39 -0400
+Received: from esa5.fujitsucc.c3s2.iphmx.com ([68.232.159.76]:40288)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1m8tE4-0001b3-6v; Wed, 28 Jul 2021 19:44:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
+ t=1627515876; x=1659051876;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=0qGhqb/pY/2Y5EgTm2k/w9Spg4daTVLoVwMYiSG2PEQ=;
+ b=Xv8sJQaBtrg4S9xiUHIWJBgK0WQ++vBvHjxfU2w7oW2oB0GT2iZs2vza
+ HvW/oSvDo/AbvqZryFyWz2ZhUWJ7OmXys6PM/RRbXOo9W5egWE2xUKWXo
+ xYO4l5mG2LzFoO+QpfGNmdtbioLsYovLe2j4NjKtI+sJA6sJl+4P8ynCD
+ vp9cdf3DMk43lnyF0oq7ll2VArlvy6XSzFmhvxngRHCCnqkFW54BL4gxP
+ y50+g1OjrQuET9+4wlw8gKbHlLBDDMJPAw3avMtaQp3d4q6+7A27SVyY1
+ G86up5U69PjGRJp1tidkv0UCoNEE/DY6oolLFueDg4r+78IBqtuLp2G9R w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10059"; a="35765766"
+X-IronPort-AV: E=Sophos;i="5.84,276,1620658800"; d="scan'208";a="35765766"
+Received: from mail-pu1apc01lp2057.outbound.protection.outlook.com (HELO
+ APC01-PU1-obe.outbound.protection.outlook.com) ([104.47.126.57])
+ by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jul 2021 08:44:30 +0900
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ojo44IFtCxGcsaIJxDB93sdd6AR0smyaIUiz47Pv4TxOvfbab7ZEVVUPYpuzaWdm3Fu1HfjzAsGeR91KTXv4tjNG/67no2M6tJm5bjD32WPibaMyqvQ4qIy6Jcm52TDZbFxwWdyHtQg9ZzOREXxH/2Dt52g7soOOSjgcbnghs8Fl7tHCVVA13jUx/xTOTvJjVI4S0OOLPxG2nlux9youJC9/Snuo88FgE1Ma7udCgL+xe4KwJc66svh+EPOBi2y+bQVCY5NnuW7PBwEw2i/8cdU1qZ39jKHB5PUYM401g9ump4BW55PQtuTcz5QerXTy5OQfc5t2+Sm78DVFunV2Kg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0qGhqb/pY/2Y5EgTm2k/w9Spg4daTVLoVwMYiSG2PEQ=;
+ b=J4ER0H3RVFNX8JBp/UZtj3qyq4LUu25+3upTdRe19mPUMHdB//WvUyPxj+C5xv1YxxU9wcyX+EoDxxYzvJaEsMKY5YnlcV80AKOqk/HR7vufa8kEcYvf+6LmhhYAemr79RZaVf7eYlCk7hMdHhn9Z3c6b7l4qjPq2rZ6BoYf+RvgHAFhSu2K5QbQ7HM5eobqiKqHI/QP/C/Rqhe0HzcXjVNg1vZ/asRP+m+rbQGrVpWu+/b2A7jgOhZ+nfWXvnaKaNKL4G8rXCinfWlfZrMZdgRH42IH5w02HDZMPSi1NhCFC2Pqq30j5rIPH0aKJhGjs5k9ub0q5x2OMtk/J6MltA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
+ dkim=pass header.d=fujitsu.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0qGhqb/pY/2Y5EgTm2k/w9Spg4daTVLoVwMYiSG2PEQ=;
+ b=Hj1OxKEtePrc+6zAkExM/PT8XVv1LfCLlHe7/E69SetKCQEDB2re+gHIi74AZBzHYKzHW3SWA2i9iA6Mz7oZgV37fJUGyaDi9Ub7QpFV2gUCi+BK9KyZ2H1K8Wuhvgyp7XRi4Q4saqeTSapz3GoZ4zDdvggWIOcXOVrZHDg9AAM=
+Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com (2603:1096:400:4f::8)
+ by TY2PR01MB3916.jpnprd01.prod.outlook.com (2603:1096:404:e0::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4352.29; Wed, 28 Jul
+ 2021 23:44:27 +0000
+Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com
+ ([fe80::154e:70ee:e0c5:f482]) by TYCPR01MB6160.jpnprd01.prod.outlook.com
+ ([fe80::154e:70ee:e0c5:f482%8]) with mapi id 15.20.4373.021; Wed, 28 Jul 2021
+ 23:44:26 +0000
+From: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+To: 'Peter Maydell' <peter.maydell@linaro.org>
+Subject: RE: [PATCH v2] This is a test mail
+Thread-Topic: [PATCH v2] This is a test mail
+Thread-Index: AQHXgfchhDu0sJ7xaEysUeLESXxCSqtVBp+AgAQIgYA=
+Date: Wed, 28 Jul 2021 23:44:26 +0000
+Message-ID: <TYCPR01MB616021B2E87B70F902E199DCE9EA9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
 References: <1627287631-6595-1-git-send-email-ishii.shuuichir@fujitsu.com>
-In-Reply-To: <1627287631-6595-1-git-send-email-ishii.shuuichir@fujitsu.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Jul 2021 11:02:01 +0100
-Message-ID: <CAFEAcA8dJ_=zroP1vuXA2Lndq=ahTjQ8N=jXSzUDvBmw-QQmUA@mail.gmail.com>
-Subject: Re: [PATCH v2] This is a test mail
-To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ <CAFEAcA8dJ_=zroP1vuXA2Lndq=ahTjQ8N=jXSzUDvBmw-QQmUA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8dJ_=zroP1vuXA2Lndq=ahTjQ8N=jXSzUDvBmw-QQmUA@mail.gmail.com>
+Accept-Language: ja-JP, en-US
+Content-Language: ja-JP
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: =?utf-8?B?TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2Uw?=
+ =?utf-8?B?NTBfQWN0aW9uSWQ9ODA1MWY4ZDQtYzk5Ni00ZjlkLTlkZjYtNTRiNzliM2Y3?=
+ =?utf-8?B?YjMzO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRm?=
+ =?utf-8?B?ZWNlMDUwX0NvbnRlbnRCaXRzPTA7TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5?=
+ =?utf-8?B?LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfRW5hYmxlZD10cnVlO01TSVBfTGFi?=
+ =?utf-8?B?ZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRmZWNlMDUwX01ldGhv?=
+ =?utf-8?B?ZD1TdGFuZGFyZDtNU0lQX0xhYmVsX2E3Mjk1Y2MxLWQyNzktNDJhYy1hYjRk?=
+ =?utf-8?B?LTNiMGY0ZmVjZTA1MF9OYW1lPUZVSklUU1UtUkVTVFJJQ1RFRO+/ou++gA==?=
+ =?utf-8?B?776LO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRm?=
+ =?utf-8?B?ZWNlMDUwX1NldERhdGU9MjAyMS0wNy0yOFQyMzozNzoyOVo7TVNJUF9MYWJl?=
+ =?utf-8?B?bF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfU2l0ZUlk?=
+ =?utf-8?Q?=3Da19f121d-81e1-4858-a9d8-736e267fd4c7;?=
+authentication-results: linaro.org; dkim=none (message not signed)
+ header.d=none;linaro.org; dmarc=none action=none header.from=fujitsu.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 55d9ec0e-7e3d-4b8c-9354-08d95221a2e4
+x-ms-traffictypediagnostic: TY2PR01MB3916:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <TY2PR01MB3916318B54145E3F44BB1A87E9EA9@TY2PR01MB3916.jpnprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ophqudMdPYN8hgiFQyDhJvs4LUwrR30Xy4fUWGknqydsUOQVNGlznQ5jE8roLOG8rqEIX3/KHwY4YPA6ApsZ5XS9BkITUhiXRornh06n17Bp/r8douZmbmBPA8Ro3RffalSp6OYWG7fNDii/BndaaoUrCjFZFFzMa6T6csuv/ZBaj3KIjX20OU5qwwVsPtwbN8pY2CDhsDGjloGgG6JTpDy8ssO69alTycAi9GwWf7uKu5Yrzacz2gMfelxh8lG+KMz7aKO4kNa0Gzjyzc6rdPxIp/v8sXDLnnSltfhLVum87Wm4LAjZURt4AFqq25P6XxRlz+fw3+qt9ZiSHxZtcfgmNsM8sNhLPMCMo0ZYLenBuuC/BNSY7Lvak13maKwFcWoXe1ERSmxtPPcnJ/JMDvqlx0CXbCIGowu/CNpqkEjRLRJQ+hEk8Ds3r9VZVNfe+oUFdR3q7DMPvVdaWzyHw+/GLoMM2h35C9bvDopwYDo4sDPBI3IA87LFnQ1/Mcajbu6OBaB/5oyrQFkXjaunkZp9kG/KXYjsLceqzY1RN2rlCa4IeNeWkQzwF3FHIgX4N98EtNx4ukUY/URRb0i9q6PYl5bZ5eFtoN9urLUDuhaK5KvhLabkmrtYQdeyKQM6zZVHSu0XqCnoQJXgbJ8mh9YEXbABAfdfdpyJ8G1vVjRnvuxD87HHYS52fyn+V7cFI19NS0W7eN/zalXMLGDnWZ1WHiWrTkc6z12297GSLhhv/EWQlJZCUcIeShhKuRxiA2ephArtt1RQUcKWfnzaR2wEqwwZqUPHz0bzt3Xzltk=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYCPR01MB6160.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(136003)(346002)(376002)(396003)(366004)(52536014)(66476007)(55016002)(316002)(66446008)(107886003)(8676002)(71200400001)(8936002)(66556008)(64756008)(966005)(66946007)(76116006)(86362001)(53546011)(7696005)(54906003)(26005)(186003)(83380400001)(33656002)(4326008)(9686003)(5660300002)(2906002)(478600001)(6506007)(85182001)(38100700002)(122000001)(6916009)(38070700005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZEtJUlpIbWsrb29rUmpjU0RFWHlpSVpYUFNCQktjNlQ0c2JZV2g5cE5EKytF?=
+ =?utf-8?B?dGZxL2JobUU5ejRtMjdPdGpkaUFnK2NGTXFpaFIzbTl4ZlRQOWplcVpjRHRk?=
+ =?utf-8?B?aWJKT0IyUHo2UUtTbE96SktrVGJTYXd0OGdsNk5zR2hoQVQ0eHNzMTR1K2Jm?=
+ =?utf-8?B?SFpSYUQyMWJ4S2YzYW9PTjF0cVVCYVIxVkFjZ1dOSXBiRFBHVldSa2tlakxY?=
+ =?utf-8?B?U0U0aXBEU1pMZit6bnlhL21RejBNTjFWQmJyTGNNanlpcjlDVUNsdm9rbFFj?=
+ =?utf-8?B?Y2ExN0N5NG1QRlduUkI1MWNqWXdQVTNUL3N4UTJ4VG1GaHFBQWJ3R3U2Y1Ur?=
+ =?utf-8?B?UWsxYzVQNzg2bEl1Rjd5K3hzMWs0Q2FWb1R3cHVQRGRRWmlOTThIais1czNu?=
+ =?utf-8?B?WDMrR01EYjd0Q011dGt1dzJLczlEand4Sm1qYTlIaFA0Z3RMaldPb3JqTVBM?=
+ =?utf-8?B?dU1JYkxTVUZmai9icTN6YlI2NVluTm1EQmxkYmRjMGNvTy8wcm51MVpJaHVX?=
+ =?utf-8?B?ZkJiVEpSYlhRUjFXVjV5WHJoM0cxY2pjZi8wUy9zVTNLM2NTMytjaGxMVGhw?=
+ =?utf-8?B?citKS20rK0lSSTg0dWZzeDIxZlN5eVhDZEhRbU1lS0VKbXBBVnpxNElvREVM?=
+ =?utf-8?B?UndrWTFrTCtIZTJ1NGRLZjk5YXZsZVBXODNHbW9xY0NIYktzaXpDVHFUWW1t?=
+ =?utf-8?B?K05DVnpxVU4zYUdGd3FkVUFmOXZXeUgwempCL1NhUU4wYUpST1V0cWNUZy8r?=
+ =?utf-8?B?REo5bldjZkNta1JRdllTVG9tc2c1WENoOUdoY0ZheTVrMWFqSWpqQXA2NytK?=
+ =?utf-8?B?QTZIS0RIVkFCb2dYYVFwdEtodnlIT2I1RlEveXdGckxpcUtzVFVreXlIQzc0?=
+ =?utf-8?B?cG9iQjZCY1pVbHErQllibzF6SFRDMEp2MTVPb0Zsd0xkNGx6TEwrU2lzQndm?=
+ =?utf-8?B?TVRQMmNYL20ydGIzd2VQbkIwdU42aFo5bjZPRTJEdlFzVnVrZGtPdXFHeHZi?=
+ =?utf-8?B?VTg4RlRnanBBakpsMlphNXZZUnFsTXlRREpITnpWQWg5VHp0ZjUvTUdjVU0z?=
+ =?utf-8?B?YUlWVWVlRFZGMStndG43MWJCZHA1blJVbWtpVzMyM29hNFdqM3hUaHA1UE54?=
+ =?utf-8?B?THBXenovV2poNzJCZnBMOWg2ZnpFU1IrSldyMlpST2VCeHVWM2dDRzVaUmla?=
+ =?utf-8?B?UlJHbUFib0hoUENiUVZoTG9hNHRQenFScXI1elppdENuZFgvK1lkSXcybENJ?=
+ =?utf-8?B?V2U0MGtkSzh0YlVFYlpySURGVllFeGFtdGUyajZwMGJ6R2VPUkFlWXhYSUlq?=
+ =?utf-8?B?THA5amNaYkcyN0N4L3ZqQlMrYlZMTDB6aG1pNmhpY0hxZTB5aWFsaGpMeklL?=
+ =?utf-8?B?Ukp6YVhTOVg1a0pLZzk1NWRTVUpXQzc3MU5aQlpVZ1I5VnhKbmFlTkVnbi8w?=
+ =?utf-8?B?alI1ZGRrazRHQUp4YkViUS9RZi9zOGdrcHRFcDNUemtCdUJoeU9sdHpPUVdI?=
+ =?utf-8?B?MVIyQURldEEzWFZtWndabXI2VFNNYnhNU0pLNmNjVlh4R0ZxRlpxaklKQyt4?=
+ =?utf-8?B?TDZ1M1dqOFYxYUYxaGdXa1BSb01ZYTFvVkMzUUtrZk9rajhCS3RqL1NoUm16?=
+ =?utf-8?B?ZTBMY0R1OXJOT0NMYllmYTB5N2cvbmtXOCtPK3RQUnY4dmpibU9RdDhQamd3?=
+ =?utf-8?B?U0tEbnJESzdvZks1d3IvSmZmUkd5YmZ6VWx6MitIRElIdWJyQ3l2b3NZcmNK?=
+ =?utf-8?Q?3qojLVSa9N8WDqvPySuHyTqYrPDj0x8KfXcDbyr?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: fujitsu.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB6160.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 55d9ec0e-7e3d-4b8c-9354-08d95221a2e4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Jul 2021 23:44:26.9116 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: mDe6TzMj8g4FAeuQlZiWSQQq3r0R2E+yc5EofxUki59DZNrEIh7ETOMlDAmZhEnBvhGxei36QOSOkRfqRZB9tQuOzq3rxr19saYmKmUTJ/k=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY2PR01MB3916
+Received-SPF: pass client-ip=68.232.159.76;
+ envelope-from=ishii.shuuichir@fujitsu.com; helo=esa5.fujitsucc.c3s2.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,23 +205,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hYJIcCmrU4Gg
+X-TUID: sitgLZe5nzVP
 
-On Mon, 26 Jul 2021 at 09:21, Shuuichirou Ishii
-<ishii.shuuichir@fujitsu.com> wrote:
->
-> This is a test mail to check the behavior of my mail
-> because it is not listed in the ML of qemu-devel.
-> I may send several test mails.
->
-> I apologize and thank you for your patience.
-
-These ones seem to have reached both qemu-devel and qemu-devel \o/
-
-https://lists.gnu.org/archive/html/qemu-devel/2021-07/msg06355.html
-https://lists.gnu.org/archive/html/qemu-arm/2021-07/msg00391.html
-
--- PMM
+SGkgUGV0ZXIuDQoNCj4gVGhlc2Ugb25lcyBzZWVtIHRvIGhhdmUgcmVhY2hlZCBib3RoIHFlbXUt
+ZGV2ZWwgYW5kIHFlbXUtZGV2ZWwgXG8vDQo+IA0KPiBodHRwczovL2xpc3RzLmdudS5vcmcvYXJj
+aGl2ZS9odG1sL3FlbXUtZGV2ZWwvMjAyMS0wNy9tc2cwNjM1NS5odG1sDQo+IGh0dHBzOi8vbGlz
+dHMuZ251Lm9yZy9hcmNoaXZlL2h0bWwvcWVtdS1hcm0vMjAyMS0wNy9tc2cwMDM5MS5odG1sDQoN
+ClRoYW5rIHlvdSBmb3IgY29udGFjdGluZyB1cy4NClNpbmNlIG91ciBlbWFpbCBzZWVtcyB0byBo
+YXZlIHN1Y2Nlc3NmdWxseSBtYWRlIHRoZSBsaXN0LCANCkkgd291bGQgbGlrZSB0byBjcmVhdGUg
+YW5kIHBvc3QgVjIgb2YgdGhlIHBhdGNoIHNlcmllcyANCiggaHR0cHM6Ly9saXN0cy5ub25nbnUu
+b3JnL2FyY2hpdmUvaHRtbC9xZW11LWFybS8yMDIxLTA3L21zZzAwMzIyLmh0bWwgKSANCnRoYXQg
+eW91IGNvbW1lbnRlZCBvbiB0aGUgb3RoZXIgZGF5LiANCg0KQmVzdCByZWdhcmRzLg0KDQo+IC0t
+LS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IFBldGVyIE1heWRlbGwgPHBldGVyLm1h
+eWRlbGxAbGluYXJvLm9yZz4NCj4gU2VudDogTW9uZGF5LCBKdWx5IDI2LCAyMDIxIDc6MDIgUE0N
+Cj4gVG86IElzaGlpLCBTaHV1aWNoaXJvdQ0KPiBDYzogcWVtdS1hcm0gPHFlbXUtYXJtQG5vbmdu
+dS5vcmc+OyBRRU1VIERldmVsb3BlcnMNCj4gPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4NCj4gU3Vi
+amVjdDogUmU6IFtQQVRDSCB2Ml0gVGhpcyBpcyBhIHRlc3QgbWFpbA0KPiANCj4gT24gTW9uLCAy
+NiBKdWwgMjAyMSBhdCAwOToyMSwgU2h1dWljaGlyb3UgSXNoaWkgPGlzaGlpLnNodXVpY2hpckBm
+dWppdHN1LmNvbT4NCj4gd3JvdGU6DQo+ID4NCj4gPiBUaGlzIGlzIGEgdGVzdCBtYWlsIHRvIGNo
+ZWNrIHRoZSBiZWhhdmlvciBvZiBteSBtYWlsIGJlY2F1c2UgaXQgaXMgbm90DQo+ID4gbGlzdGVk
+IGluIHRoZSBNTCBvZiBxZW11LWRldmVsLg0KPiA+IEkgbWF5IHNlbmQgc2V2ZXJhbCB0ZXN0IG1h
+aWxzLg0KPiA+DQo+ID4gSSBhcG9sb2dpemUgYW5kIHRoYW5rIHlvdSBmb3IgeW91ciBwYXRpZW5j
+ZS4NCj4gDQo+IFRoZXNlIG9uZXMgc2VlbSB0byBoYXZlIHJlYWNoZWQgYm90aCBxZW11LWRldmVs
+IGFuZCBxZW11LWRldmVsIFxvLw0KPiANCj4gaHR0cHM6Ly9saXN0cy5nbnUub3JnL2FyY2hpdmUv
+aHRtbC9xZW11LWRldmVsLzIwMjEtMDcvbXNnMDYzNTUuaHRtbA0KPiBodHRwczovL2xpc3RzLmdu
+dS5vcmcvYXJjaGl2ZS9odG1sL3FlbXUtYXJtLzIwMjEtMDcvbXNnMDAzOTEuaHRtbA0KPiANCj4g
+LS0gUE1NDQo=

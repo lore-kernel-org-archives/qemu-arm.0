@@ -1,127 +1,166 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp4168695lfc;
-        Tue, 27 Jul 2021 16:53:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzMdt00H4jOeBO5T5sPcI7ZrgpWha8HDrKZlVFXm3xspj5mEIddg+q59LS6l3Y/n3/c8VsO
-X-Received: by 2002:a05:6e02:ecd:: with SMTP id i13mr19536746ilk.182.1627429987732;
-        Tue, 27 Jul 2021 16:53:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627429987; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp4413019lfc;
+        Wed, 28 Jul 2021 00:30:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7nPmB1x8WCchcFKDJNo09vlne8WWx0AjH5g2S/5mlpvd49/RShiDogp+slKsYfL1nlqqg
+X-Received: by 2002:a05:6602:1203:: with SMTP id y3mr22954501iot.192.1627457456808;
+        Wed, 28 Jul 2021 00:30:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627457456; cv=none;
         d=google.com; s=arc-20160816;
-        b=r+Kdbfi+MQagZtoMjhXYuQZD9OkPbolcjFPKLal68dp9GoyChYHePC904O3b46bpDl
-         RQ6FMhLftk+LqBkcZF4Z9FZKNnszmr0fgWW/DTszStGULCVgMk+Saqq9peocbOiE2Wey
-         bixJeMEwdyfcs04FgIb+PpdKsIKUZ55h72auXHpATeZVouDMgobdQ8ziugrwKP7tQMoy
-         xBZ8BhN1kIadNlv2WUOB4JzFhQTYRmX2U6AiT1nTD00HZgNVCiguB+HKXPQYVaGvdcsj
-         i4IGG6sXqaqzhF6/BRKFZW2mGmn1WQdEFJ0u/jFHllYhMOl7i/Pw6YIDeOi3A856bMLT
-         aTCA==
+        b=WWOlI9O63nn0Vl08DBb+tGuAkTigtKqnkYwTMgwr4IeOAufHmbYG53hrl/4Gc9TRba
+         MxC1bv2K3GgEDyUrdtLAPsS8wN4KXdLnSSBzQP1ikbav0yrvDMze9XhEBFEjJC957Akh
+         QFN5qoIpdFvtDqr635A4evPe9lDn4j4YJbZQnwWYbFAl2J8n9PNIGsnP9LLsyrmvLzRI
+         J2Kj1KgtaVopUF7V1diNLtE2FGvbSMqXxaYQMm4Ozr1q5nE86RiWByqVjHSxBZVZ55qk
+         7sh9vFeKcyS/I7n+uFCh6U1zzui3Axe6Qg+gcA7Dc9hLcWGvCn2egS7osAfc7UABpplC
+         DAMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:to:from;
-        bh=vw8NgPXChClATKPbp7IoNu6djc6GIqsc38pYPb7AHBk=;
-        b=kAzd2DugAtuLT7effqDaM4nbsHi6UyZ7T4FQjw8/CBcclULDmroJ0cts/w2u7FEY7I
-         Wdu6+1yPlLlGfgZDlAyQ0F1tJrVpiD9/zpetius09fMBjtIV0fBGiPGZla0Cj5cO0JO1
-         LxWFbwuOtlx3LQTE1lwJ1fzVjAWibMuNALs8UwjPKezetGO3QwLS38Ml2yDQM2DdHo6T
-         fht+LkvcA2w6Hqe4I6LopfvSGc7qU/7hX8SCJ/791IXL3KFKlMivXsuvrMIhIQP2raws
-         zoao4MrHOb/4uO5GYRCAHh7FkdbJtAjWa+fVKDGhdO2gEyVaYUBSyNLFK5yma65EFuje
-         +WMA==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=gBzmiE2KaP1Rkx4ybMUdQ6OFEaFkTJDJ5ZMf+LCZDks=;
+        b=wbbcOVf4HSRcK3vGnwFFRRGsYjvkf1HTA0+GNztQvTYCDdP3n9AkUDPl2jvLeE/Jem
+         P0T27xE/rPy9MdnH0DcG0hRFgIAcKfG9i1ZOfBmAulE9L8HNPsG1i+kjZ3JzMKzY6/xr
+         6GarImOnWCLGPsSNt/WAPowYRQJZq8D16YXDUo5QHmLm/dFcPrM2pN3eml55cfa/eMFl
+         tDIKjURrKCOqw33CL6fF69TQQKcfGLbSVarR9/pd/mGBqkGhan7KotSMMfJT27sORa6N
+         n+CnsZR2lJwW3DabZ060nuzM1/G5lwjV5byx4vJiPAInj+Tphk+T+TZ1F+KxXtK2GChH
+         zBSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HdCdZrmn;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id a9si5223530ilr.103.2021.07.27.16.53.07;
-        Tue, 27 Jul 2021 16:53:07 -0700 (PDT)
+        by mx.google.com with ESMTP id f2si6307994jat.114.2021.07.28.00.30.56;
+        Wed, 28 Jul 2021 00:30:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HdCdZrmn;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232837AbhG0XxH (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 27 Jul 2021 19:53:07 -0400
-Received: from h2.fbrelay.privateemail.com ([131.153.2.43]:48920 "EHLO
-        h2.fbrelay.privateemail.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S232786AbhG0XxG (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Tue, 27 Jul 2021 19:53:06 -0400
-Received: from MTA-07-3.privateemail.com (mta-07-1.privateemail.com [198.54.122.57])
-        (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-        (No client certificate requested)
-        by h1.fbrelay.privateemail.com (Postfix) with ESMTPS id 9BCA5800AA
-        for <kvm@vger.kernel.org>; Tue, 27 Jul 2021 19:53:05 -0400 (EDT)
-Received: from mta-07.privateemail.com (localhost [127.0.0.1])
-        by mta-07.privateemail.com (Postfix) with ESMTP id 3EC15180022F;
-        Tue, 27 Jul 2021 19:53:04 -0400 (EDT)
-Received: from hal-station.. (unknown [10.20.151.235])
-        by mta-07.privateemail.com (Postfix) with ESMTPA id 75B38180021B;
-        Tue, 27 Jul 2021 19:53:03 -0400 (EDT)
-From:   Hamza Mahfooz <someguy@effective-light.com>
-To:     qemu-devel@nongnu.org
-Cc:     Hamza Mahfooz <someguy@effective-light.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-        kvm@vger.kernel.org
-Subject: [PATCH] target/arm: kvm: use RCU_READ_LOCK_GUARD() in kvm_arch_fixup_msi_route()
-Date:   Tue, 27 Jul 2021 19:52:01 -0400
-Message-Id: <20210727235201.11491-1-someguy@effective-light.com>
-X-Mailer: git-send-email 2.32.0
+        id S234963AbhG1Hay (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 28 Jul 2021 03:30:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48379 "EHLO
+        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S234950AbhG1Hax (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Wed, 28 Jul 2021 03:30:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1627457451;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=gBzmiE2KaP1Rkx4ybMUdQ6OFEaFkTJDJ5ZMf+LCZDks=;
+        b=HdCdZrmn4KKGal5Bha2pIAH33b8zgofbACG5cWw5zem/fibKJpFjjcFi0JaPal+aXkhPj+
+        rWXscPqkrD8TebSUsx/fdpGLB+EO93egDF63knJmOPV++HEwPQd45cxvfMWmiIuAkAXCgQ
+        sEA27JScT+nBvoSgYMJIFJxPGXBVmiY=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-325-YDMJHPmKM2yPDnFKY8kbtw-1; Wed, 28 Jul 2021 03:30:50 -0400
+X-MC-Unique: YDMJHPmKM2yPDnFKY8kbtw-1
+Received: by mail-ej1-f72.google.com with SMTP id g21-20020a1709061e15b029052292d7c3b4so497461ejj.9
+        for <kvm@vger.kernel.org>; Wed, 28 Jul 2021 00:30:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=gBzmiE2KaP1Rkx4ybMUdQ6OFEaFkTJDJ5ZMf+LCZDks=;
+        b=iJxfQqwROoAXoNRLXLA6ri20NnDjg8wHnD0yUxwisVYd20nuslep8p8QLrHJPwYcC9
+         N8WaloR8Py7y28DaYPkaeCaYumBVwwq0Lm5eJeHBj2zyQCiCdeUXixi4CX75VAwG/MlV
+         xnL3nBrcOXWdW56VwML82EU4diI2QiR3ZagXh3CcscbNnsMWP5TuOUDLj/QG8U2WRa03
+         8LovaUunCBcnhNVm+ei4NiaaoXMc8CED+NBraOoJs9L6Oz79cfdCvIVVV2lRvZ1u1tk6
+         cK3PkKc8VynBiP0il24BP36qpaknkYAtYDrJKwlTC/7IZ6EBOdCCz/UwyMCaN/b0YOfG
+         VVnw==
+X-Gm-Message-State: AOAM533Dcit5GiPPn9v12WccFzbO10K7wplTFnyAeUZQddvsiZbxnxPy
+        XKhkUfGubtU0nSxNwLw/2qBB3lYxwzLXz3bVcDpfFD34srNODKwPpUvLzUf2LOOJLia/vN2HHu6
+        z16QJ61jhu+pV
+X-Received: by 2002:a05:6402:170d:: with SMTP id y13mr4083406edu.228.1627457449047;
+        Wed, 28 Jul 2021 00:30:49 -0700 (PDT)
+X-Received: by 2002:a05:6402:170d:: with SMTP id y13mr4083394edu.228.1627457448889;
+        Wed, 28 Jul 2021 00:30:48 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:5e2c:eb9a:a8b6:fd3e? ([2001:b07:6468:f312:5e2c:eb9a:a8b6:fd3e])
+        by smtp.gmail.com with ESMTPSA id n17sm2220109edr.84.2021.07.28.00.30.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Jul 2021 00:30:48 -0700 (PDT)
+Subject: Re: [PATCH] target/arm: kvm: use RCU_READ_LOCK_GUARD() in
+ kvm_arch_fixup_msi_route()
+To:     Hamza Mahfooz <someguy@effective-light.com>, qemu-devel@nongnu.org
+Cc:     Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+        qemu-arm@nongnu.org
+References: <20210727235201.11491-1-someguy@effective-light.com>
+From:   Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <e84e3fe7-e644-7059-22cc-ddefd8bfc8c4@redhat.com>
+Date:   Wed, 28 Jul 2021 09:30:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: ClamAV using ClamSMTP
+In-Reply-To: <20210727235201.11491-1-someguy@effective-light.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: vqH6+vB46cbT
+X-TUID: wWWQt7RQyKNp
 
-As per commit 5626f8c6d468 ("rcu: Add automatically released rcu_read_lock
-variants"), RCU_READ_LOCK_GUARD() should be used instead of
-rcu_read_{un}lock().
+On 28/07/21 01:52, Hamza Mahfooz wrote:
+> As per commit 5626f8c6d468 ("rcu: Add automatically released rcu_read_lock
+> variants"), RCU_READ_LOCK_GUARD() should be used instead of
+> rcu_read_{un}lock().
+> 
+> Signed-off-by: Hamza Mahfooz <someguy@effective-light.com>
+> ---
 
-Signed-off-by: Hamza Mahfooz <someguy@effective-light.com>
----
- target/arm/kvm.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index d8381ba224..5d55de1a49 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -998,7 +998,6 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-     hwaddr xlat, len, doorbell_gpa;
-     MemoryRegionSection mrs;
-     MemoryRegion *mr;
--    int ret = 1;
- 
-     if (as == &address_space_memory) {
-         return 0;
-@@ -1006,15 +1005,19 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
- 
-     /* MSI doorbell address is translated by an IOMMU */
- 
--    rcu_read_lock();
-+    RCU_READ_LOCK_GUARD();
-+
-     mr = address_space_translate(as, address, &xlat, &len, true,
-                                  MEMTXATTRS_UNSPECIFIED);
-+
-     if (!mr) {
--        goto unlock;
-+        return 1;
-     }
-+
-     mrs = memory_region_find(mr, xlat, 1);
-+
-     if (!mrs.mr) {
--        goto unlock;
-+        return 1;
-     }
- 
-     doorbell_gpa = mrs.offset_within_address_space;
-@@ -1025,11 +1028,7 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
- 
-     trace_kvm_arm_fixup_msi_route(address, doorbell_gpa);
- 
--    ret = 0;
--
--unlock:
--    rcu_read_unlock();
--    return ret;
-+    return 0;
- }
- 
- int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
--- 
-2.32.0
+>   target/arm/kvm.c | 17 ++++++++---------
+>   1 file changed, 8 insertions(+), 9 deletions(-)
+> 
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index d8381ba224..5d55de1a49 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -998,7 +998,6 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
+>       hwaddr xlat, len, doorbell_gpa;
+>       MemoryRegionSection mrs;
+>       MemoryRegion *mr;
+> -    int ret = 1;
+>   
+>       if (as == &address_space_memory) {
+>           return 0;
+> @@ -1006,15 +1005,19 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
+>   
+>       /* MSI doorbell address is translated by an IOMMU */
+>   
+> -    rcu_read_lock();
+> +    RCU_READ_LOCK_GUARD();
+> +
+>       mr = address_space_translate(as, address, &xlat, &len, true,
+>                                    MEMTXATTRS_UNSPECIFIED);
+> +
+>       if (!mr) {
+> -        goto unlock;
+> +        return 1;
+>       }
+> +
+>       mrs = memory_region_find(mr, xlat, 1);
+> +
+>       if (!mrs.mr) {
+> -        goto unlock;
+> +        return 1;
+>       }
+>   
+>       doorbell_gpa = mrs.offset_within_address_space;
+> @@ -1025,11 +1028,7 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
+>   
+>       trace_kvm_arm_fixup_msi_route(address, doorbell_gpa);
+>   
+> -    ret = 0;
+> -
+> -unlock:
+> -    rcu_read_unlock();
+> -    return ret;
+> +    return 0;
+>   }
+>   
+>   int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
+> 

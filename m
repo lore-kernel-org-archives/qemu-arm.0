@@ -1,103 +1,103 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5538180lfc;
-        Thu, 29 Jul 2021 04:17:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFpxUbMAj7bTSpaCz0efDk2w/xJcNava4mtMImov+wMeU1CWSxkV4ejUqlgJNT3Vh55S0H
-X-Received: by 2002:a67:7c90:: with SMTP id x138mr3268928vsc.23.1627557429088;
-        Thu, 29 Jul 2021 04:17:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627557429; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5538263lfc;
+        Thu, 29 Jul 2021 04:17:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/vcpNBUVOn90udeAxz8RgjEmbFu4xMkdS7f8ljDGpQG0A+Ji7QoKlzLcUb6VgrsxCcvtF
+X-Received: by 2002:ab0:728a:: with SMTP id w10mr3733233uao.12.1627557437223;
+        Thu, 29 Jul 2021 04:17:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627557437; cv=none;
         d=google.com; s=arc-20160816;
-        b=iWVlbrtlIFSVyH0vE5tx0YIZ1tQv1zDkm6DfLKDqoiLLsL8rwfEQw8yzT9WJ6WHbTk
-         pg+jbx+igNAVskqCf/WRJfnCAbiHHOHYzI9Hd/kMJqM9q6iLCtM7r29bby2vcDetcMeS
-         j/KAR0Gff0bMZBub2M36xuXmMNVEOaMIEXmTD2kZSklLYr5Zhk3bm6gf56A0wcZ8LEmo
-         NUGoROW5vnxh2/HtE5gqEMfxiweTvJSINOubXovgdBb/fOog3x1G14Qc3OAZZRjo3mQi
-         Rsj7nuTVrP7MXl69whKYeGYlaWbTFMYw45cRAyrcCgQXJFW5g7MlgIDAKGg10pE9kGac
-         LIDQ==
+        b=1GQwAyMEDkjE/P1srep8WrutZaQbCjCAZouQH0jNUc0oJyQDlK1Wc4DbHCFC7aQZ/3
+         5nmev6qV4ejonnC02H0iCHIjwK9VhcjoALyMnD1WkiLp6qPZ5VHznYDlzvx9M10EsunM
+         3RyGjAl0w8vzzOE72OY9TJL3EhBz4YkBfaBxLInLnqJHu/AQGJ/3Set4Xop1XbEsuzhx
+         Eayn9QOsVFFgUbTeMN4tZQa2RIN2y1ABlk6ltp6PSzihX/b1t1iDhpProjwTEUk9Q+pH
+         d2UQUfpk53zJMsRBm6if9eHDkTf6HRtC+JNzxPDyGi7kgoSPsIQa+OxJTnf+lsdO2zi5
+         r8ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=lutAo5Z1ewFuThzfMPVLqlhd9Ml/H60A8yYUE67fuT0=;
-        b=xDBGljo3tlICGazu1TXb2/DdVyl7XULWeVVz14KnPpnWMlPdZ+aNW/rQ6EFhJse3lP
-         yUoRIP0geJ+Mg7GgB+GRzoq/OXY3sTJxmlfDgiR+IZYaISekS8AoScewH5Z0HFboiSAN
-         BULKxV5bp0nH0FDFa4gxyapIs3LkgrJZV7NS0M7lqKEdf8+eoyYjwuXnjBlqjIAmA21C
-         j+Ot8tinhhwIKBJUbznahWp0ycLtSf1/jJ5ko/gFldX6nhm8SlQ9WBiJTCpfdJ7lEz98
-         LZa4pjKaF9B8PccbLpuo6gC3PYI7zZGkIaFCcLMirjbZqua+lIi8ipBmp3u63kbcWhth
-         OU2A==
+        bh=GGF4FybEKy96gYcYMu+JcP8KcGdVIAGNRtBK4g3nQ2Y=;
+        b=MrwwdUBBSLiY0+Vpx3+k54w/AbFdXRCVDj4TlMvetsBt1otJfGPQPnVA/xQ3xWBUDR
+         DnX7ZhlMEDriXsGm3tJD33hjdQaqUjLz2SksFbhA0HxRAf+Pcbe83fcZAkOeCW9K04O3
+         E1/lQBajI+wlRCjHeSCeAhRQbkrmwmtzg3tq40mj3e72YqHHG6GAi7/ol0moe1ohHBi4
+         HgtZsR4HZRxM7cR4EdhPldcp+xNGO46at60H9pM+NNsigZuXVrz4v1Lil/PW2qOcfjsw
+         eDzKf4W64Xqb7JSRF+0j7C5ULB3a5eYEE83QqMijPHcsHe4Wwu5g021tghFm19+p7OfU
+         ihJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S4g7euqE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CDDI2YZ3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si1200669vsj.163.2021.07.29.04.17.08
+        by mx.google.com with ESMTPS id q7si121775vsn.312.2021.07.29.04.17.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Jul 2021 04:17:09 -0700 (PDT)
+        Thu, 29 Jul 2021 04:17:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S4g7euqE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CDDI2YZ3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48930 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m942G-0001wj-9V
-	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:17:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39868)
+	id 1m942O-0002Jp-F5
+	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:17:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m940k-0000Qf-4N
- for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:15:37 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:42510)
+ id 1m940a-0008SI-DA
+ for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:15:24 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:54095)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m940a-000117-53
- for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:15:33 -0400
-Received: by mail-wr1-x432.google.com with SMTP id j2so6433683wrx.9
- for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:22 -0700 (PDT)
+ id 1m940U-0000vS-P6
+ for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:15:23 -0400
+Received: by mail-wm1-x331.google.com with SMTP id k4so3468730wms.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=lutAo5Z1ewFuThzfMPVLqlhd9Ml/H60A8yYUE67fuT0=;
- b=S4g7euqEWzT7bP4rdD2sYvFbBbwSftKuNMyQE+CZ1s+ARt7R9TS3+C6p/2rOJT2HJg
- fEYHxyHOEqppsnGzSzfi6kwZ+0tSKYqQdnQPRfA+0ITUNmrRQmLfmKLAzRSgF3FnaPJf
- rKhPjpt6l+TA72FhplyEOLwY1x8abyO0hdMG1jNnSWFuvIuUgsuNj6rWphl71XXmJnrV
- CSX+UBH6SwsI2o1Oog/UqklRbIHVd28P/8v6MPRqZsNn+F3SZ8mgNx4/k0f7C9BZzEQJ
- RSlZJOFqtShsAJuSXlp3146YPX2up/EAjLeV6fF9/Pg07V8v44hRn+v5Bo882sMevKaw
- dXzg==
+ bh=GGF4FybEKy96gYcYMu+JcP8KcGdVIAGNRtBK4g3nQ2Y=;
+ b=CDDI2YZ3ES72TH9b5xS0B5e8W9Cg1RLQ98gNketTfJN72pYLOY/giiTD+xjj2kQnG6
+ d3r/u1uQJRmY0HbVH0iIGLTt2mfXsa1aIeUUSTQ2Ub17R2Cgr/i71CQYIRK5I0SK2kXN
+ YMhzkUujolcy8/uaLcpl3YxA2vkghvHqX9JVfYXQ7MRp/Un5Rq0R6IuBR/V0Z8Yr5gpN
+ mYGEZL7W7Er9zHDMjXpNMyf8ADZapEfiCpwuIrXTR5did2uP4s8pL2vhauU64OqHVgXS
+ zZldVBvs0mOiRcAXzNhirIIWK+jh4QEa65jS49e3PUg/zNvGjJSKlhcvDucbSD6lXMIr
+ q23A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lutAo5Z1ewFuThzfMPVLqlhd9Ml/H60A8yYUE67fuT0=;
- b=VQfyY809HGgy066GPOoGRIt0i9WS9cz1EuT/aADMy5MtJTgzP9IYY60MO2sKhkG0vE
- qEpht8/74SnKnX2f+K2UPcVsuG81dLJVp7z753YCfIyy5UJIrkugQDVFqxQN4b3KHX8O
- 9gddqAnoLqyb2XzeYgLDsDZCgfUic23R904OgMe7b8XmhDyGMFgDTTFIG2kGtuA5u+Ay
- 5iZdwIQZAgVc6noPM1auKdYOm8bb6nq9vakcmZZ0YDQ3aoovH7PyOJyoTaRl5Vm+UxVM
- XmcYJ+i8Fed+PXWFNEMS8JrmBbGhBTpvyYEZuZUBHyA84dxS2xuQB/KKsOjYvGFr/jYw
- pSZg==
-X-Gm-Message-State: AOAM532sbRWGaKt6FhVuFgzDFRtiB7XvdigqiyVtFlOLXD75hStIMBm1
- CMziU8QLTGrxVcXEq/s9zKLxitD9YojJCQ==
-X-Received: by 2002:adf:e10c:: with SMTP id t12mr4264501wrz.36.1627557321312; 
- Thu, 29 Jul 2021 04:15:21 -0700 (PDT)
+ bh=GGF4FybEKy96gYcYMu+JcP8KcGdVIAGNRtBK4g3nQ2Y=;
+ b=AXYCJ4H1t3b6yaYpRrIFg3X4oQUiiZYNF5N6OhoLlEoHTmwfhu5xREJmpkbCBVbtHj
+ MeCRrn0TLkPUlFRs3rIT13sQ37+zhg1eBRAzIxuPgTyH90Nxi7mOaNRKTprG8df56vxF
+ imDNyplwwPzmiBHB02K5e274ZmvBauLcAEUD40mSKwe8QR1++AvD9VawujBAZ4ni68qM
+ v6qLwyzoB5dEkafmtPMGTvBJcXKhrHXUM7PJdWkc5sbg1Usu6qQm+du4j9mNVU84wAPp
+ 6XJRSfj2gJJYkt3YVWvojY2kacuzTdWRZl4+qFFpA3kG4diH8AatYtLE/vcyGd+E09Kp
+ 9SxA==
+X-Gm-Message-State: AOAM531b6CFzeTBcwmtB6sMYqYfoxs1JibeQFq2KD0HQKUKewWpfBaR+
+ /jdBKjnt9GWcMDgVVSzq06VT6qz7Og5/JQ==
+X-Received: by 2002:a05:600c:4c96:: with SMTP id
+ g22mr13543761wmp.70.1627557317253; 
+ Thu, 29 Jul 2021 04:15:17 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.20
+ by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 04:15:20 -0700 (PDT)
+ Thu, 29 Jul 2021 04:15:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 08/53] target/arm: Fix calculation of LTP mask when LR
- is 0
-Date: Thu, 29 Jul 2021 12:14:27 +0100
-Message-Id: <20210729111512.16541-9-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 03/53] target/arm: Fix MVE VSLI by 0 and VSRI by <dt>
+Date: Thu, 29 Jul 2021 12:14:22 +0100
+Message-Id: <20210729111512.16541-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210729111512.16541-1-peter.maydell@linaro.org>
 References: <20210729111512.16541-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,34 +119,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J9zdtEWfsmtz
+X-TUID: DftS+Iz5Ea7K
 
-In mve_element_mask(), we calculate a mask for tail predication which
-should have a number of 1 bits based on the value of LR.  However,
-our MAKE_64BIT_MASK() macro has undefined behaviour when passed a
-zero length.  Special case this to give the all-zeroes mask we
-require.
+In the MVE shift-and-insert insns, we special case VSLI by 0
+and VSRI by <dt>. VSRI by <dt> means "don't update the destination",
+which is what we've implemented. However VSLI by 0 is "set
+destination to the input", so we don't want to use the same
+special-casing that we do for VSRI by <dt>.
+
+Since the generic logic gives the right answer for a shift
+by 0, just use that.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/mve_helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/mve_helper.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 1a4b2ef8075..bc67b86e700 100644
+index db5d6220854..f14fa914b68 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -64,7 +64,8 @@ static uint16_t mve_element_mask(CPUARMState *env)
-          */
-         int masklen = env->regs[14] << env->v7m.ltpsize;
-         assert(masklen <= 16);
--        mask &= MAKE_64BIT_MASK(0, masklen);
-+        uint16_t ltpmask = masklen ? MAKE_64BIT_MASK(0, masklen) : 0;
-+        mask &= ltpmask;
-     }
- 
-     if ((env->condexec_bits & 0xf) == 0) {
+@@ -1279,11 +1279,12 @@ DO_2SHIFT_S(vrshli_s, DO_VRSHLS)
+         uint16_t mask;                                                  \
+         uint64_t shiftmask;                                             \
+         unsigned e;                                                     \
+-        if (shift == 0 || shift == ESIZE * 8) {                         \
++        if (shift == ESIZE * 8) {                                       \
+             /*                                                          \
+-             * Only VSLI can shift by 0; only VSRI can shift by <dt>.   \
+-             * The generic logic would give the right answer for 0 but  \
+-             * fails for <dt>.                                          \
++             * Only VSRI can shift by <dt>; it should mean "don't       \
++             * update the destination". The generic logic can't handle  \
++             * this because it would try to shift by an out-of-range    \
++             * amount, so special case it here.                         \
+              */                                                         \
+             goto done;                                                  \
+         }                                                               \
 -- 
 2.20.1
 

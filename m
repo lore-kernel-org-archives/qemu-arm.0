@@ -1,103 +1,103 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5557930lfc;
-        Thu, 29 Jul 2021 04:46:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxlkGbfbIRs1KKWZDYmDV3LseeRx0eGQ+vgp/T08Vqb4TNyoAR2Sysv1HJWAKg8bhGW19M/
-X-Received: by 2002:a25:dad7:: with SMTP id n206mr6187163ybf.119.1627559184020;
-        Thu, 29 Jul 2021 04:46:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627559184; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5558312lfc;
+        Thu, 29 Jul 2021 04:47:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy9GZPQQ/dtAwJNNzDpUI3lvQc0Yw3mSRWwDUztTnDtj/2tnhkCDu3UZjzNUCua5DLXhsX0
+X-Received: by 2002:a5b:504:: with SMTP id o4mr6092127ybp.332.1627559220830;
+        Thu, 29 Jul 2021 04:47:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627559220; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gt11Iysf7gfhQ5UoTUHafGzWqOQ9KTPaI+aGoGpWA5fZFfE5XrK+Mo3xQx5TsoKnCM
-         FK50lsofqpCP+qW53IAdPkkHpwTB2icmsLSDl9m0IjrkypG3ZNs75At7DvoQ/sKzSKDb
-         O53QrdvaRH/m1IwcGdVTRZJCBm4fYiySw5T7uagcVv6qT358d/E3ai5V1gEcNODe/e5q
-         CFQe3BFcnA96JZAUKS3RTTQYIBSk0B6hAC47F1tMEE9araXO4UO92qpXpivubUWd4DGi
-         IqubRFVnQBlXoNckhlgV5AQQrnJEUgF4BqVvykiC+SUtoevBMl8tjynxTjZrnWY2npo3
-         lAXg==
+        b=NtuQrBmB+gBPEBEl1+sKzoDh43SOp4Fe87oX/TwP6SDrJtGh1p7eRlIMMu0h99M9dd
+         WQsJHCgDuDMNkaSm2DlJFpnr32UsXUdwjZ9q9w8vvp4frDzh2VdhaQfu3+eJPSeY0a+1
+         28ujGNlDCZyTXkE4LwmO5L2Tz68sZfz6ZHVh+ypPFzQXOVdPDb40Z7v3rxoqp6oJM47M
+         2jVcG2JCBYqGTUsS5XQygvjyS+FGm6oS1x7i5jk1dFx1/t4ceIMWcJ7cK+UtzdxcHM7M
+         10NV5FB7zXR2P1pjeeC7+2FM5GC2sdD5zxFo0Ac43UiwGfzP9Hg1K/4oibWzYyRIWLSn
+         MzNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=hZoXvoCnZRqFIIUh7VxjDF986CnTtjaaiZusPA7tfs8=;
-        b=RqQFa03ZNVxBRQcyeRc5Aj742DzBeKKfV5zLfJ+CdlXCHm1S959Hj8MRjvsahQON13
-         AYmDSTdjhYkSjoO/c3Ims2yl4wjyzREVns6y1iX4+n8xZjNpJ66KwRV+yB7UZHpIJt+G
-         CHQ/pGiRRmlrydoREPlnXcDHyPFLsMR0Xn05PTVUwjDEdqgyIimvxUR7F2TIGOixTrwX
-         9iJNRLqCgLZRFIIAM3sZ6B0W/KkOIx8XJND+WsYEkCFOnHPQsYFReu/q7vKWswi85MjH
-         ne5VpEESbcvo2W8P1RL8IdzzzGfnNgUYCInm1tMaP0h4YZ64IiVjUa9dUtMSw+JK9+aX
-         E9eA==
+        bh=cK3D9jr6c7rzAtNnX4xQNMbIJISTN5Ct4CVgZ3O8Kso=;
+        b=TpRPktbuuctf3OXwePyphRPoBv2VMZLhrYaR7+OrLHknW51yE8JlCtmh+t+G4lYi7Q
+         nJdAKkRfpEx+Ts+ul35JQMSE9QYAbcHeXy3awB6GRkWAx5tSxOwoBx1UrSA1+Zhn4Vhp
+         7JnIFL07HI/6ko0YUTiDBfO/7V9Nh8nJstzQiaNq8GkWBNRnLqlyZVXhSMW3yIf6dVD1
+         ML9RPg1ZzIhvC4T8m+QBPTrMQrgT1byywxDJK/AEr5kQn503U9eC1A8KU9fCmv6SkVXb
+         051NcyfPaGTvBm/Vk7gy2GFMib5xqrqc53+bGC+35IepY4duR7do8euGCfqWFSYv9uO1
+         76NQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nhY4KIem;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P1odjIMT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x79si2385807ybg.479.2021.07.29.04.46.23
+        by mx.google.com with ESMTPS id m206si2377229ybc.141.2021.07.29.04.47.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Jul 2021 04:46:24 -0700 (PDT)
+        Thu, 29 Jul 2021 04:47:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nhY4KIem;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P1odjIMT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52574 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m94UZ-0002LG-B5
-	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:46:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41014)
+	id 1m94VA-0003Jd-3E
+	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:47:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40912)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m941X-0001LQ-UY
- for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:24 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:56222)
+ id 1m941R-0001Ig-OS
+ for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:18 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:43002)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m9415-0001Q8-P5
- for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:23 -0400
-Received: by mail-wm1-x335.google.com with SMTP id n21so3461557wmq.5
- for <qemu-devel@nongnu.org>; Thu, 29 Jul 2021 04:15:52 -0700 (PDT)
+ id 1m940z-0001My-KA
+ for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:17 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ e25-20020a05600c4b99b0290253418ba0fbso3781142wmp.1
+ for <qemu-devel@nongnu.org>; Thu, 29 Jul 2021 04:15:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=hZoXvoCnZRqFIIUh7VxjDF986CnTtjaaiZusPA7tfs8=;
- b=nhY4KIem0tqLbQDewOxpT0Dfez4pSsZezW2AiLxC+Vq3qioL6SFWbatt0U7Fm7NWsM
- IfuuA9km/36oEnWte8nsvQBN4Lrb3ZRS0fs2iLlGCtwCboYpmNGEAdyR73OEIyKPE6ex
- rPj2grxFJ4vx+S/HHAE5fWXrFVub49ObQBXY3rj7PW+BnJwbheNm6V7mA1PY//wxhs2l
- XVQ/yZiBDLcYw41upOzomBePpHu19789b9en6i8+Uc3r7iSlgGGRG89kAarSsiY8Rgnq
- 3NRX1o/NDh3PlEtFGvERQjPgkR2rvucI7ri3cfiyHaKO6vX9KESp1SiZnTm3KzwXHOZC
- LTDg==
+ bh=cK3D9jr6c7rzAtNnX4xQNMbIJISTN5Ct4CVgZ3O8Kso=;
+ b=P1odjIMTRYjYSFFBtb1yZpj1h5TcF/+2wj7oDXOHhgMpqdRbUOhFtg2UZn/iw1ZYK+
+ Axn+6eXfo3HI532e98hy6iysWIQ5NKgYkvtsjBbatMXV6DAvgTZUAHVaDLBt3o44uRvv
+ /loKG09RLI6UwNmpuxiMLAhngZA84gUyK3uuU/+GWXc4lK+PWnuyK8GbofgV3MATnHAx
+ ZXqx5yo+pqRGRfLdegW3gPV9egkDk99zL7wuAlsskPYeSTp1LVrxqoamCt0plqqQz/tQ
+ VtFhmZPL3B4rJIHvAR/A19vTLoNQOeBgXwnPMSfNkVarkmdY4Mfyh6WZmPhPUtubPdxs
+ vGjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hZoXvoCnZRqFIIUh7VxjDF986CnTtjaaiZusPA7tfs8=;
- b=leKBdVpeg4QEk/PjHHOY/ho7Cd5kVcDWFuWf7UJDjT4mbgzA3MwrpkuL0eQegHPDWo
- /2rt0ULGwWow60Ix2Hgp8DlZSIXY4YB3Hd8MHxd8Migry45ocEBsdL6HF1olrMX7gmJK
- N1PCA+1vHQpgvuvei0uQTE6NmGFMFOYalDPlCGrK/znAJFZXvGpOYO49RPY2gMw/khJI
- uDbnKyqfGs5S+KtrQHeJQH8wZBCxcOXx2p0VA2Z4pGsnwEDp9Hop/aUKU8g3C+Mclv1H
- OApNrznxkmFDDvCOAP4u/hs3ZQWhZcYEdlYCHrRGGK88W5Eoe5v7fkQSWM3egHZLtX0v
- LQiA==
-X-Gm-Message-State: AOAM530Bq1HlIUsIeGmUI2G+yWFBUSSBT3BkOVrFCbzIA8Re6AcbYyoL
- kD1zxrQGBRPmi2mEaRsb8dYK2MGc1eDbcQ==
-X-Received: by 2002:a7b:c255:: with SMTP id b21mr4296737wmj.100.1627557351563; 
- Thu, 29 Jul 2021 04:15:51 -0700 (PDT)
+ bh=cK3D9jr6c7rzAtNnX4xQNMbIJISTN5Ct4CVgZ3O8Kso=;
+ b=YQy6z4tsvYr7FsMnpyb/dEbs49q9zJOTnH5fzLu4fDGzjmSEbhMF/0gvc42MtF0k4l
+ cKv7v78MSM5+prCFH+EKMqOY7mTU/8CqgCFwv4s3um2a0I3jbbsMyhfnhTOscm3p8zIx
+ jzn2osTTmAxnA91H/H/m9DoRtoePaKnxA9qfarvt5Ysk5SFSIvk0NVVxISNZTHgAmn3e
+ 4EWyNJrVi2+hLRXZN7kSxVE67nsPFAhdl0/e4CoMDoMmcZyrYDSBcfNXNGRtbUCeFTnS
+ WAFEhXZHmV76yHmm96NzN7S3ShEWKKzWSg2MFwMgJ1q/wj9RhineXkUAASoTRG79OwQq
+ BuiA==
+X-Gm-Message-State: AOAM530UB8aIrY0xi1rp2+nkr+5SlVz8VZSEYDgw9T7TQq3+HHy1T32m
+ YNWqUKnPyKLOU5NbAI99/o4kNw==
+X-Received: by 2002:a1c:4409:: with SMTP id r9mr4241289wma.150.1627557348260; 
+ Thu, 29 Jul 2021 04:15:48 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.50
+ by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 04:15:51 -0700 (PDT)
+ Thu, 29 Jul 2021 04:15:47 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 44/53] softfloat: Remove assertion preventing
- silencing of NaN in default-NaN mode
-Date: Thu, 29 Jul 2021 12:15:03 +0100
-Message-Id: <20210729111512.16541-45-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 40/53] target/arm: Implement MVE VCMUL and VCMLA
+Date: Thu, 29 Jul 2021 12:14:59 +0100
+Message-Id: <20210729111512.16541-41-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210729111512.16541-1-peter.maydell@linaro.org>
 References: <20210729111512.16541-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,41 +119,211 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SBaEjJQZo8zW
+X-TUID: wuTrqF3H1orJ
 
-In commit a777d6033447a we added an assertion to parts_silence_nan() that
-prohibits calling float*_silence_nan() when in default-NaN mode.
-This ties together a property of the output ("do we generate a default
-NaN when the result is a NaN?") with an operation on an input ("silence
-this input NaN").
-
-It's true that most of the time when in default-NaN mode you won't
-need to silence an input NaN, because you can just produce the
-default NaN as the result instead.  But some functions like
-float*_maxnum() are defined to be able to work with quiet NaNs, so
-silencing an input SNaN is still reasonable.  In particular, the
-upcoming implementation of MVE VMAXNMV would fall over this assertion
-if we didn't delete it.
-
-Delete the assertion.
+Implement the MVE VCMUL and VCMLA insns.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- fpu/softfloat-specialize.c.inc | 1 -
- 1 file changed, 1 deletion(-)
+ target/arm/helper-mve.h    | 18 ++++++++
+ target/arm/mve.decode      | 35 ++++++++++++----
+ target/arm/mve_helper.c    | 86 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-mve.c |  8 ++++
+ 4 files changed, 139 insertions(+), 8 deletions(-)
 
-diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-specialize.c.inc
-index 12467bb9bba..f2ad0f335e6 100644
---- a/fpu/softfloat-specialize.c.inc
-+++ b/fpu/softfloat-specialize.c.inc
-@@ -198,7 +198,6 @@ static void parts128_default_nan(FloatParts128 *p, float_status *status)
- static uint64_t parts_silence_nan_frac(uint64_t frac, float_status *status)
- {
-     g_assert(!no_signaling_nans(status));
--    g_assert(!status->default_nan_mode);
+diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
+index c230610d25c..73950403bc3 100644
+--- a/target/arm/helper-mve.h
++++ b/target/arm/helper-mve.h
+@@ -440,6 +440,24 @@ DEF_HELPER_FLAGS_4(mve_vfmas, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vfmsh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vfmss, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
  
-     /* The only snan_bit_is_one target without default_nan_mode is HPPA. */
-     if (snan_bit_is_one(status)) {
++DEF_HELPER_FLAGS_4(mve_vcmul0h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmul0s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmul90h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmul90s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmul180h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmul180s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmul270h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmul270s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++
++DEF_HELPER_FLAGS_4(mve_vcmla0h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmla0s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmla90h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmla90s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmla180h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmla180s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmla270h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vcmla270s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++
+ DEF_HELPER_FLAGS_4(mve_vadd_scalarb, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vadd_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vadd_scalarw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+diff --git a/target/arm/mve.decode b/target/arm/mve.decode
+index 3a2056f6b34..403381eef61 100644
+--- a/target/arm/mve.decode
++++ b/target/arm/mve.decode
+@@ -286,15 +286,29 @@ VQSHL_U          111 1 1111 0 . .. ... 0 ... 0 0100 . 1 . 1 ... 0 @2op_rev
+ VQRSHL_S         111 0 1111 0 . .. ... 0 ... 0 0101 . 1 . 1 ... 0 @2op_rev
+ VQRSHL_U         111 1 1111 0 . .. ... 0 ... 0 0101 . 1 . 1 ... 0 @2op_rev
+ 
+-VQDMLADH         1110 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
+-VQDMLADHX        1110 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
+-VQRDMLADH        1110 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
+-VQRDMLADHX       1110 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
++{
++  VCMUL0         111 . 1110 0 . 11 ... 0 ... 0 1110 . 0 . 0 ... 0 @2op_sz28
++  VQDMLADH       1110  1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
++  VQDMLSDH       1111  1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
++}
+ 
+-VQDMLSDH         1111 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
+-VQDMLSDHX        1111 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
+-VQRDMLSDH        1111 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
+-VQRDMLSDHX       1111 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
++{
++  VCMUL180       111 . 1110 0 . 11 ... 0 ... 1 1110 . 0 . 0 ... 0 @2op_sz28
++  VQDMLADHX      111 0 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
++  VQDMLSDHX      111 1 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
++}
++
++{
++  VCMUL90        111 . 1110 0 . 11 ... 0 ... 0 1110 . 0 . 0 ... 1 @2op_sz28
++  VQRDMLADH      111 0 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
++  VQRDMLSDH      111 1 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
++}
++
++{
++  VCMUL270       111 . 1110 0 . 11 ... 0 ... 1 1110 . 0 . 0 ... 1 @2op_sz28
++  VQRDMLADHX     111 0 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
++  VQRDMLSDHX     111 1 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
++}
+ 
+ VQDMULLB         111 . 1110 0 . 11 ... 0 ... 0 1111 . 0 . 0 ... 1 @2op_sz28
+ VQDMULLT         111 . 1110 0 . 11 ... 0 ... 1 1111 . 0 . 0 ... 1 @2op_sz28
+@@ -642,3 +656,8 @@ VCADD270_fp       1111 1101 1 . 0 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_
+ 
+ VFMA              1110 1111 0 . 0 . ... 0 ... 0 1100 . 1 . 1 ... 0 @2op_fp
+ VFMS              1110 1111 0 . 1 . ... 0 ... 0 1100 . 1 . 1 ... 0 @2op_fp
++
++VCMLA0            1111 110 00 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
++VCMLA90           1111 110 01 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
++VCMLA180          1111 110 10 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
++VCMLA270          1111 110 11 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
+diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
+index 0146137d18f..489892344b4 100644
+--- a/target/arm/mve_helper.c
++++ b/target/arm/mve_helper.c
+@@ -2935,3 +2935,89 @@ DO_VFMA(vfmah, 2, uint16_t, float16_muladd)
+ DO_VFMA(vfmas, 4, uint32_t, float32_muladd)
+ DO_VFMA(vfmsh, 2, uint16_t, DO_VFMS16)
+ DO_VFMA(vfmss, 4, uint32_t, DO_VFMS32)
++
++#define DO_VCMLA(OP, ESIZE, TYPE, ROT, CHS, FN)                         \
++    void HELPER(glue(mve_, OP))(CPUARMState *env,                       \
++                                void *vd, void *vn, void *vm)           \
++    {                                                                   \
++        TYPE *d = vd, *n = vn, *m = vm;                                 \
++        TYPE r0, r1, e1, e2, e3, e4;                                    \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned e;                                                     \
++        float_status *fpst0, *fpst1;                                    \
++        float_status scratch_fpst;                                      \
++        /* We loop through pairs of elements at a time */               \
++        for (e = 0; e < 16 / ESIZE; e += 2, mask >>= ESIZE * 2) {       \
++            if ((mask & MAKE_64BIT_MASK(0, ESIZE * 2)) == 0) {          \
++                continue;                                               \
++            }                                                           \
++            fpst0 = (ESIZE == 2) ? &env->vfp.standard_fp_status_f16 :   \
++                &env->vfp.standard_fp_status;                           \
++            fpst1 = fpst0;                                              \
++            if (!(mask & 1)) {                                          \
++                scratch_fpst = *fpst0;                                  \
++                fpst0 = &scratch_fpst;                                  \
++            }                                                           \
++            if (!(mask & (1 << ESIZE))) {                               \
++                scratch_fpst = *fpst1;                                  \
++                fpst1 = &scratch_fpst;                                  \
++            }                                                           \
++            switch (ROT) {                                              \
++            case 0:                                                     \
++                e1 = m[H##ESIZE(e)];                                    \
++                e2 = n[H##ESIZE(e)];                                    \
++                e3 = m[H##ESIZE(e + 1)];                                \
++                e4 = n[H##ESIZE(e)];                                    \
++                break;                                                  \
++            case 1:                                                     \
++                e1 = CHS(m[H##ESIZE(e + 1)]);                           \
++                e2 = n[H##ESIZE(e + 1)];                                \
++                e3 = m[H##ESIZE(e)];                                    \
++                e4 = n[H##ESIZE(e + 1)];                                \
++                break;                                                  \
++            case 2:                                                     \
++                e1 = CHS(m[H##ESIZE(e)]);                               \
++                e2 = n[H##ESIZE(e)];                                    \
++                e3 = CHS(m[H##ESIZE(e + 1)]);                           \
++                e4 = n[H##ESIZE(e)];                                    \
++                break;                                                  \
++            case 3:                                                     \
++                e1 = m[H##ESIZE(e + 1)];                                \
++                e2 = n[H##ESIZE(e + 1)];                                \
++                e3 = CHS(m[H##ESIZE(e)]);                               \
++                e4 = n[H##ESIZE(e + 1)];                                \
++                break;                                                  \
++            default:                                                    \
++                g_assert_not_reached();                                 \
++            }                                                           \
++            r0 = FN(e2, e1, d[H##ESIZE(e)], fpst0);                     \
++            r1 = FN(e4, e3, d[H##ESIZE(e + 1)], fpst1);                 \
++            mergemask(&d[H##ESIZE(e)], r0, mask);                       \
++            mergemask(&d[H##ESIZE(e + 1)], r1, mask >> ESIZE);          \
++        }                                                               \
++        mve_advance_vpt(env);                                           \
++    }
++
++#define DO_VCMULH(N, M, D, S) float16_mul(N, M, S)
++#define DO_VCMULS(N, M, D, S) float32_mul(N, M, S)
++
++#define DO_VCMLAH(N, M, D, S) float16_muladd(N, M, D, 0, S)
++#define DO_VCMLAS(N, M, D, S) float32_muladd(N, M, D, 0, S)
++
++DO_VCMLA(vcmul0h, 2, uint16_t, 0, float16_chs, DO_VCMULH)
++DO_VCMLA(vcmul0s, 4, uint32_t, 0, float32_chs, DO_VCMULS)
++DO_VCMLA(vcmul90h, 2, uint16_t, 1, float16_chs, DO_VCMULH)
++DO_VCMLA(vcmul90s, 4, uint32_t, 1, float32_chs, DO_VCMULS)
++DO_VCMLA(vcmul180h, 2, uint16_t, 2, float16_chs, DO_VCMULH)
++DO_VCMLA(vcmul180s, 4, uint32_t, 2, float32_chs, DO_VCMULS)
++DO_VCMLA(vcmul270h, 2, uint16_t, 3, float16_chs, DO_VCMULH)
++DO_VCMLA(vcmul270s, 4, uint32_t, 3, float32_chs, DO_VCMULS)
++
++DO_VCMLA(vcmla0h, 2, uint16_t, 0, float16_chs, DO_VCMLAH)
++DO_VCMLA(vcmla0s, 4, uint32_t, 0, float32_chs, DO_VCMLAS)
++DO_VCMLA(vcmla90h, 2, uint16_t, 1, float16_chs, DO_VCMLAH)
++DO_VCMLA(vcmla90s, 4, uint32_t, 1, float32_chs, DO_VCMLAS)
++DO_VCMLA(vcmla180h, 2, uint16_t, 2, float16_chs, DO_VCMLAH)
++DO_VCMLA(vcmla180s, 4, uint32_t, 2, float32_chs, DO_VCMLAS)
++DO_VCMLA(vcmla270h, 2, uint16_t, 3, float16_chs, DO_VCMLAH)
++DO_VCMLA(vcmla270s, 4, uint32_t, 3, float32_chs, DO_VCMLAS)
+diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
+index d61abc6d46f..d62ed1fc295 100644
+--- a/target/arm/translate-mve.c
++++ b/target/arm/translate-mve.c
+@@ -856,6 +856,14 @@ DO_2OP_FP(VCADD90_fp, vfcadd90)
+ DO_2OP_FP(VCADD270_fp, vfcadd270)
+ DO_2OP_FP(VFMA, vfma)
+ DO_2OP_FP(VFMS, vfms)
++DO_2OP_FP(VCMUL0, vcmul0)
++DO_2OP_FP(VCMUL90, vcmul90)
++DO_2OP_FP(VCMUL180, vcmul180)
++DO_2OP_FP(VCMUL270, vcmul270)
++DO_2OP_FP(VCMLA0, vcmla0)
++DO_2OP_FP(VCMLA90, vcmla90)
++DO_2OP_FP(VCMLA180, vcmla180)
++DO_2OP_FP(VCMLA270, vcmla270)
+ 
+ static bool do_2op_scalar(DisasContext *s, arg_2scalar *a,
+                           MVEGenTwoOpScalarFn fn)
 -- 
 2.20.1
 

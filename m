@@ -1,109 +1,110 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5538460lfc;
-        Thu, 29 Jul 2021 04:17:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyz0VbLz3I5W+mikjfjZ8585w1PEvyu7ABncr3y9Zas3zwA/POyAjMd0f1w2oWROPDu4rx0
-X-Received: by 2002:a05:6638:1356:: with SMTP id u22mr4063253jad.39.1627557453006;
-        Thu, 29 Jul 2021 04:17:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627557453; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5539429lfc;
+        Thu, 29 Jul 2021 04:19:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3Ve0lCgZaMZvN+DUk769Koh0WDWcilh0x0ed3As0Og4eR5rXx+3r34c2NPhgsJeHNKjZq
+X-Received: by 2002:a25:6e45:: with SMTP id j66mr5966367ybc.449.1627557540066;
+        Thu, 29 Jul 2021 04:19:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627557540; cv=none;
         d=google.com; s=arc-20160816;
-        b=P9VXX335dwysWZed0LKJi/Ym4GVMICzdJythUUtUPn/Xtm0k7HP4sMG3n991GEEPeW
-         xeJzSaVrbWGXmRarLeJ/Ytf6cjRqnF0gj4h8+ox2q1Q4FeNrUPU5qUEjaM1G5BgTdHcK
-         aGQF6VYoxLlqf8KqBaNjQvdF2TDEuAQTAYyj/Bdyr4djIqMdTXXc6R5A6hkYl5AbsZr0
-         S3m6OSfmjpUAf8Vyd3BGqDtgwFPL2ZmXPQyApqp9USXKfbl2BXh4IjZmY0QV/bh0ueKN
-         Ohxmp2vD8jYvKGguldpvrFyInCL8B0Fx2QGgHFQ1n+SAqS8V18KSGsnihtimQSaKx3Dp
-         bVZg==
+        b=Nbx+wqm8o052dHBzM1TxxxS9Fs0g5Dv5OLHU9vPtwBDwbWcZ51fEwp5xCAp75GKMcD
+         vqJWftt3CITYhHpIysP1DjT3fruu0dseV05Gbu7OxkOpovqn9Sgxz7Y6C/ciruid/xZ/
+         Tn9Dy71zo3lQyWjscYUOB8B6+1D6Ydse5Pk52ACl4QMwS3gbMex+88idPzbkvoFp1o4u
+         DfBomLZEhvADP+0bxgXtoy6xNJVZBGNbdT7nOhdr2hZTHAA4f8Ebz8WQVyRIZ5hjeY/L
+         iarDz7Uhz3EtTvbcWBP4hNGIYb5IS3VRHnwlupYduSHad+m/5c2poIq0KRfjzt5qY/eQ
+         geXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2AKLx+FAZSEHTDgotUySXrnfQs5xm57wonDC26WVk28=;
-        b=A5kvkgMC+dOd0vHWq+AvN+Y6nLzcQfImuDNw7Ft5ltkT6jnps8rHD8iO2u2ammKrye
-         N6Mo1+RIHQ0eQYiAuEktS2pfDAIisLRZ5KjTcPvhRdeGlfgYtm/I6mCfr82oNaLDT8E1
-         IYzb9gW9Mpdalk2DNiaHPbAHMGjcwM6CaXt9rchnsU3fcdJG/5PaAM8YTgymbVVyr7Y6
-         IhjW0Vvs1STe24DjgJ3FRoiRcumFzLNr+qOYK1SaInQXhMiWIOLnTgtSd/l+mshpK9Qx
-         4aDo4XdWfy5GMr1swUt1RGDDWMYNHZxxHDdgUnAmdVCgKF5V6dw0DjruGhdaEB73M5XR
-         tBnA==
+        bh=znndHHEoxoWMeYC4H5uF/7NDy7y5s/e+PfCtHxh/c/4=;
+        b=h0X+kyT9mGpWFv1GDO8Kwmgiqh6DMH3qWtrV98oYbS4bkp9XIs69ohSi9/bX6uG4sc
+         dsP1hlGr4sCZ5NPM3TPhW2U1rNh036uSTYPWt4zIASFDN5/FsecKsddoFMToQGZAKkEo
+         o9ztpnz0SlkUCm/IK+H/n2v5BgZgvUBmRQzzAW0Qgy1BFYXJb1AKAGjbIq1QTHHzPoZl
+         lOI5FooqH0oHywnpaGuJUK/wCak6/O9mR0sShxdRPXotes711n6Jzk05Nk76zqwxCnfV
+         RJQNbRlP5zQDC05t5qqTBOHEhryuTQZU1eQSVjASvWi95KjR+TWCfWAqVjjN0KV0J0gN
+         PN4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="m/8jrRsI";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hDH0Ozfz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n12si2241094ilm.119.2021.07.29.04.17.32
+        by mx.google.com with ESMTPS id e19si2295318ybb.353.2021.07.29.04.18.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Jul 2021 04:17:32 -0700 (PDT)
+        Thu, 29 Jul 2021 04:19:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="m/8jrRsI";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hDH0Ozfz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50472 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m942e-00039B-6w
-	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:17:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39642)
+	id 1m9443-0006fE-G1
+	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:18:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m940a-0008UK-VK
- for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:15:24 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:44824)
+ id 1m940b-0008Ue-36
+ for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:15:25 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:51957)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m940V-0000we-CP
+ id 1m940T-0000tn-B6
  for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:15:24 -0400
-Received: by mail-wr1-x432.google.com with SMTP id z4so6441385wrv.11
- for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:18 -0700 (PDT)
+Received: by mail-wm1-x329.google.com with SMTP id u15so3475285wmj.1
+ for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=2AKLx+FAZSEHTDgotUySXrnfQs5xm57wonDC26WVk28=;
- b=m/8jrRsIdWQaEvtiM0ZzsiP7w+nuqXtKnLnbQL/QIreJnepWWyOIrMQxJsrQzy7L3f
- wtBAzFj04ma9Fyo97gjRcLkfAE8qoOETf5rcQTGy3h1KKM2Zgv5rNjKxlZebZGiJEA7Z
- h9xDfd0/Pxr0A3d+OcwI6o4NIjxdsnbWFFCKEt9hYm5irFPO8UrO/Ton4ezT03Bwz6ce
- 5ejtZc907GIR7G5aQVJqbX2+KHSvuZiFoTCn+1L86rvt8n/PmUPT9iL2mt8kLL6zJ71B
- r0OMFJHpxQLXvOiVuuSVDwXDlEh8BTynQiqQSpqFVuKmeSL1Tj1Dc8m4fjNf10mkREnz
- AZ0g==
+ bh=znndHHEoxoWMeYC4H5uF/7NDy7y5s/e+PfCtHxh/c/4=;
+ b=hDH0OzfzKq/VoVFYYOvBUXnPy++Usa1W6fy+pMV0Imgoj78x9wg2A2Fi4GCoCSwipp
+ 8Vjmvpo+ph2j9j48N02yAKldrw+BsCtikUM5F4Y4oascaUMAvEmfUQgMvRXraRAVZgpw
+ NQHcWbs7+EpSIs3g65sS9IpsYMypzmiBcnssFE/tBKZPEE6LhjGsWpkg2OSdZVC0SiJr
+ 6rhWV7psFd8iPy4/YxUwTmwtGc+mN1HnOthjWoinJk9Wvn1TfakKpO1oU5O7ptD6Pd+E
+ 4asIti0LvSVtlTzWDowu5Eqhcg6eR6r/uONnm46bxiiqTK3gK4RfhizhVRc3j0BRjiiZ
+ NUIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2AKLx+FAZSEHTDgotUySXrnfQs5xm57wonDC26WVk28=;
- b=sKZFcu+E+aJ7aJXvqU2BeSTUkY9OrgmchHzAW2xgnhqt9m/Fe+Pw4lJot4AKa8eAO5
- dtbUFSaPsRtZYcUuBFAt8phQWC6CRkarQwfof8BsftIs0FXokL3iaENKCkLYLz1LVMyH
- 50HAcvSW/jaEIwMwHsrmY0bGMlG9e3nOBvMNFRtHBlQNPJsDmqJo8QjaqtqNZAoL/66p
- WaRueLy+8PjhmhYY69JS2L2U9zMT7qWRuxB/9PCR3uXvA7Gk9Wezx8ba/5c7CD9erkkT
- Sc8LcmCOV+4WnxKHKgrOwptdOX3c26p5nfEzivRGjHBIB9MGRir9D0J9l0yS15be9FjH
- EDPQ==
-X-Gm-Message-State: AOAM5331Fpa9eqSxOFtvqC7iiBYnH0Da4cD2+YcO2QxX291ppt9Xv4vC
- ZmbX4PLVGirHiS9xk3znHJ85Wovo2LHdAA==
-X-Received: by 2002:adf:de8a:: with SMTP id w10mr4293021wrl.61.1627557318090; 
- Thu, 29 Jul 2021 04:15:18 -0700 (PDT)
+ bh=znndHHEoxoWMeYC4H5uF/7NDy7y5s/e+PfCtHxh/c/4=;
+ b=NTcjUDPjDzrmFdu6YTa9Or/ln5YAAXLauDzVz6xQWJozs5ljfzb3UYm/XbTVKtR3jm
+ bI0/mj7ZSM4lTiRKxVoqfh6t/agl68ID+GemKms+OwVHjl3cXAR3Ha5njKz69U2VfPsP
+ NselojjDuUy8pQ+/C7qYQAzKhM/O+CsVhf2xt0/InQDq9LLPupxoe0XJFegJEZ6xAAzC
+ R+kKyvtFuWmKgfBn5XXvTKY6UplvqEkpWD/RkX5RGjEUeLdtVnuHKQxDoPZSwLih4omV
+ rdogxOY6l3CD3Iron8VpC6J557EsOf6kblhUOxjo3oeu999QT3nn1w6ExmOcXK5sLSS9
+ FNTg==
+X-Gm-Message-State: AOAM531DWwszo9XmMvfyP7aQQa0Hl7KusHGKAqkLFEYk/Kcm0XBfmo6C
+ AbkwsV7ZkWZRJIJDFYibZ7VMQqGGEk2T7A==
+X-Received: by 2002:a1c:7402:: with SMTP id p2mr14015548wmc.111.1627557315734; 
+ Thu, 29 Jul 2021 04:15:15 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.17
+ by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 04:15:17 -0700 (PDT)
+ Thu, 29 Jul 2021 04:15:15 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 04/53] target/arm: Fix signed VADDV
-Date: Thu, 29 Jul 2021 12:14:23 +0100
-Message-Id: <20210729111512.16541-5-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 01/53] target/arm: Note that we handle VMOVL as a
+ special case of VSHLL
+Date: Thu, 29 Jul 2021 12:14:20 +0100
+Message-Id: <20210729111512.16541-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210729111512.16541-1-peter.maydell@linaro.org>
 References: <20210729111512.16541-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,34 +119,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h8+0conjlX9p
+X-TUID: OeHq/FeMIeV3
 
-A cut-and-paste error meant we handled signed VADDV like
-unsigned VADDV; fix the type used.
+Although the architecture doesn't define it as an alias, VMOVL
+(vector move long) is encoded as a VSHLL with a zero shift.
+Add a comment in the decode file noting that we handle VMOVL
+as part of VSHLL.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/mve_helper.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target/arm/mve.decode | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index f14fa914b68..82151b06200 100644
---- a/target/arm/mve_helper.c
-+++ b/target/arm/mve_helper.c
-@@ -1182,9 +1182,9 @@ DO_LDAVH(vrmlsldavhxsw, int32_t, int64_t, true, true)
-         return ra;                                              \
-     }                                                           \
+diff --git a/target/arm/mve.decode b/target/arm/mve.decode
+index 595d97568eb..fa9d921f933 100644
+--- a/target/arm/mve.decode
++++ b/target/arm/mve.decode
+@@ -364,6 +364,8 @@ VRSHRI_U          111 1 1111 1 . ... ... ... 0 0010 0 1 . 1 ... 0 @2_shr_h
+ VRSHRI_U          111 1 1111 1 . ... ... ... 0 0010 0 1 . 1 ... 0 @2_shr_w
  
--DO_VADDV(vaddvsb, 1, uint8_t)
--DO_VADDV(vaddvsh, 2, uint16_t)
--DO_VADDV(vaddvsw, 4, uint32_t)
-+DO_VADDV(vaddvsb, 1, int8_t)
-+DO_VADDV(vaddvsh, 2, int16_t)
-+DO_VADDV(vaddvsw, 4, int32_t)
- DO_VADDV(vaddvub, 1, uint8_t)
- DO_VADDV(vaddvuh, 2, uint16_t)
- DO_VADDV(vaddvuw, 4, uint32_t)
+ # VSHLL T1 encoding; the T2 VSHLL encoding is elsewhere in this file
++# Note that VMOVL is encoded as "VSHLL with a zero shift count"; we
++# implement it that way rather than special-casing it in the decode.
+ VSHLL_BS          111 0 1110 1 . 1 .. ... ... 0 1111 0 1 . 0 ... 0 @2_shll_b
+ VSHLL_BS          111 0 1110 1 . 1 .. ... ... 0 1111 0 1 . 0 ... 0 @2_shll_h
+ 
 -- 
 2.20.1
 

@@ -1,111 +1,112 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5186848lfc;
-        Wed, 28 Jul 2021 18:11:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpRo9hNBCeuKv1TjlBPnp4RlUxj55GasUuyd0g02yNc3auQnmMvEHahjhs9doHFJuyeNk3
-X-Received: by 2002:a92:d8c5:: with SMTP id l5mr1801404ilo.79.1627521094486;
-        Wed, 28 Jul 2021 18:11:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627521094; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5364800lfc;
+        Wed, 28 Jul 2021 23:33:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNXhWTmjzbVDAJhk/7NqP2NJcC/g6Twd2ViQBduvZW1HdDxOKeZjm80F+hx9DnLduAPEyw
+X-Received: by 2002:a05:6e02:1a05:: with SMTP id s5mr2530678ild.232.1627540391217;
+        Wed, 28 Jul 2021 23:33:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627540391; cv=none;
         d=google.com; s=arc-20160816;
-        b=ktGBykH8/mxvfNbzcHYeDhtwX0QjZ2/EfNnhchsnOQNFDUdL2Lt54okgDGpFR/UZTF
-         HgQIrsgtLPA/FWfQyqJfIUvCFXBEwPjkwJdsDE36sKn8RYXS4SXaXTFvps8FOVJ+GHo5
-         8KlFzopzRes4KY257inYsNi82eo9WAuNLUQFbREKpgPWW6yQwte3DjmKzYsTmfpgGSLW
-         ABsMMXATUVFVHcYzdNytZ6W6mT1FWqavpMFEAHxo6YdtxjqszmL1IcyMKGXQLdVgPR41
-         0K21CRQQr8OFZD9uGzVDagMjKIxCL2Yy6f9peRpRrd73vY5b75abYG/lEphmBu5bfb0W
-         S7dA==
+        b=LdtKV71r/PjWG711Q1SBdJk4LHHboY54XcvVebQJkpDZQJcVVTMO+4roYn5Ip4QuGD
+         T06tBDEYXoIzv7mUnATEHHNrqL6KZApfJ9yzA4XNcccg04u1HUHdO3P2NoIBjZBm1+yb
+         11UPhxCn9mEJ/iQZ6GZ9uSIQdOxM6lOO/RJK94ofU7xdWHiC0Fh2GM9h9jZgdUeb2P8U
+         MkdhSOGrrnXS9WmF2/a0yLH5P8m6v4K7ApzRKBflur9qWnqhLJjvMpJZuCZ8rYMRYHpi
+         CEE0H/sFKcpdIK+7p20HGMv1cTGz4KEFXe4P/OilhtnHISRMoiBg5WQnQcNSq63NvZnB
+         khIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=KtHrCMSK7Nl7NnSRCIKaSQmUffpETjRi2cgM4IGILXk=;
-        b=YvNaei0WAZQCOFpe1IwwN/kjUCCRpwXyXz4OikJBHNkhPmagVlkwinF3tnwldC6GVe
-         o23F80lEqkcJdETLFMfOPy5owD4oP6cdQGncEIMGnvb/8xQrLJ6+D9zf5RNP1L8UoYAR
-         R/+yNRDI0MwMrQthIgDwyd0KYX3J9PuVu1FIqaQuPMY5B02pDrHiAIpoXlw92pWlY8wp
-         Uqaaq/iH9g9AyoGbprFdIuTWcZKsmvJClryF0frYtMe90FWLXcCBUNfZYqSvUxgpI6dl
-         aXt7nxxsJUAezM9ZbPXkaPXvfos4T4bU9lLsjJq1EhWqlynJLksCsAoWfkx1AYA8U4ow
-         EI/w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=HCHdsQzanzJy4nKWlivVc4Sng8fP/PG7w5X+Z2gtq4g=;
+        b=fOYT9PEm3qSTuSlmAM4Cz49vWcZTV1ugC6bgSev5LzyTrtdLC4DClJWprrpMbomYd6
+         AAaybgWRYf/RzTtHkY6aRhbqF//p/drTZzWTuhfL305+mhPD5+9bWdOxwvzmoVnG6AfB
+         XFrTfOjmoCIvcGH8w0ym5xu24Fjhn3ddGn7BdxyJ8Kqv8/D24n65k9KN/NOh2ZEoO7dF
+         8ubaPFyS8EagC06Sitf63aCyjHYPm9QJouOsIDFQUPtxr68aQASFRMf+nxWCwyEINr4d
+         Tiy4QjxOsHU6QmmLfsENWySzSpwp7qxV/op0ph3dc6DzPPXSQsLLx43O1Q2ZTcN5uqkY
+         RBFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="j3GNIJ/s";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jMjTGC9a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y1si1496124ilm.61.2021.07.28.18.11.34
+        by mx.google.com with ESMTPS id w4si2305737ioa.95.2021.07.28.23.33.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Jul 2021 18:11:34 -0700 (PDT)
+        Wed, 28 Jul 2021 23:33:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="j3GNIJ/s";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38512 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jMjTGC9a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56802 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m8uaC-0005Q6-1Q
-	for alex.bennee@linaro.org; Wed, 28 Jul 2021 21:11:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37406)
+	id 1m8zbS-0002F2-Ju
+	for alex.bennee@linaro.org; Thu, 29 Jul 2021 02:33:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34356)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m8uD7-0005BF-BZ
- for qemu-arm@nongnu.org; Wed, 28 Jul 2021 20:47:42 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:33433)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m8zbI-0002DS-4i; Thu, 29 Jul 2021 02:33:01 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:42978)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m8uD4-0002sE-Ga
- for qemu-arm@nongnu.org; Wed, 28 Jul 2021 20:47:41 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id a20so4928833plm.0
- for <qemu-arm@nongnu.org>; Wed, 28 Jul 2021 17:47:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=KtHrCMSK7Nl7NnSRCIKaSQmUffpETjRi2cgM4IGILXk=;
- b=j3GNIJ/sGSFpN9dynQcKz//YSj3thPyDIM2xPSBXsFY7YNjyawt3BLpcgkGMmhlwQx
- UlxJdmNMW5Dbw/YAdQkyNV39lNiDL3qVg8Xb0ogopWVZC1L2eLj2x9srnJxOOB8ADKEX
- fT/FVMf4KSU7hcj53NWSjW8By7UrV7SRM4kp2oERWbj6GPBclEdxUJVVjZ07s9LjNFkc
- lXCw+dFAv2I364nAvS85xvKYa9Jt791URSCuj5R6Kc6Ua64EOzYKv9RR1BmKVY0L13fS
- kwDULizwgkVixdO+/n+Nu6wRALp64xULSneA2IsftFedR5zBUVd0CndCSKMV8BUobHz7
- KhcA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m8zbG-0007nj-NP; Thu, 29 Jul 2021 02:32:59 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ e25-20020a05600c4b99b0290253418ba0fbso3240933wmp.1; 
+ Wed, 28 Jul 2021 23:32:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=HCHdsQzanzJy4nKWlivVc4Sng8fP/PG7w5X+Z2gtq4g=;
+ b=jMjTGC9a1vP+m1LXGLp61zv9mBPcp6eytMmeMJHAeh1f1Uv3DwmrkRdpLYuPbfMPPK
+ cxwo/We7z233wezwYVOU0nlDrNjgU9mpBgv6/p4CBKXgVoOUdklZMS4tACyd6UMWfrRz
+ wrlflNhjn5fMWX+qqjBJrwF5x4DW1KiCJXFG8HTLIuY0MewLCEGe4YGRQgD0uSHaaH2F
+ H2UkdCZAj0rSskB9339QSo7ihKO6B/kucDYg5xRiHCNL2OekindMpIRRpo8fPY2SXAQh
+ qFg9VO7sYx8TvplT+L7rr8pby1GSusLmpsBVeTfvMrpZkVr1ODuwOAO1Gy8U1AB5Ki+l
+ 4QLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=KtHrCMSK7Nl7NnSRCIKaSQmUffpETjRi2cgM4IGILXk=;
- b=j9Qx//xLUoKSx3lFgue5qPvtndcgOI1gp6IiHrfB4oK9SPPQcUJfZnsyk8aCOYOHw/
- kghTVJz5UrSuj7VVJ+s40xbmibgmmddxk1ASjW/pbyXe9PNN4kV4Zi+atu2E4ipdGR+E
- pLczznPyW7MY6tr6MG/xm7yCzC2N/4xvI+n7Iuw68ZQX3jgJAla4YBnyvNC9+OmCP42s
- hp0Voi8/RwhqCH0/XwYYuJf1VN/veM9GdqIiY4ED2d0oMZK87+oRvWeO3wQz7GrGS3js
- Itpewl70aJjaD+xekFaFfU1sHIhWn7MVGeyZSIkoL6xIRarWZaWYbRfy1uGLHRrSmYO3
- UmDQ==
-X-Gm-Message-State: AOAM530ZnPTTG1S+X2Z/8AwMNZ8NPotbdw3PPtPUN6jzguz2zRUh/dgA
- VMX/IyjAaeVYyKGCfYyMN7Zi3fmNNl3bDw==
-X-Received: by 2002:aa7:9ac9:0:b029:377:8e8d:910e with SMTP id
- x9-20020aa79ac90000b02903778e8d910emr2313159pfp.28.1627519655767; 
- Wed, 28 Jul 2021 17:47:35 -0700 (PDT)
-Received: from cloudburst.home
- (2603-800c-3202-ffa7-dcaa-9e71-a2b2-2604.res6.spectrum.com.
- [2603:800c:3202:ffa7:dcaa:9e71:a2b2:2604])
- by smtp.gmail.com with ESMTPSA id t205sm1305005pfc.32.2021.07.28.17.47.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Jul 2021 17:47:35 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 38/43] target/arm: Use cpu_*_mmu instead of
- helper_*_mmu
-Date: Wed, 28 Jul 2021 14:46:42 -1000
-Message-Id: <20210729004647.282017-39-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210729004647.282017-1-richard.henderson@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=HCHdsQzanzJy4nKWlivVc4Sng8fP/PG7w5X+Z2gtq4g=;
+ b=SkJXXNYTIXHGTc8xvHBY+FAAC7p8ffjjQFTTXSVBNwqI0MhmmA33OcgYsvmQIFoQs3
+ 2BBslG+AzuZy2gmECE69r36WMv+nq3kbk77tJ6HZZc4MBraz/RKMae0zmsIXZwjWOGPz
+ r9KiZDsppiLlsk1QYhKNFd7KB6/nXZ13vkk2xiAKngOKk4yyH9ctbXV42ataUrl40BEv
+ PmE5oWcNFF25wdfP9fC1ZUE+sC4DoseTahWE/wP3+kptHbw90y20CIR7xEZRuR00pShA
+ fRRrZQBGvrTIkgJ3XLvVF0OWnuk6g8/njuaTlezP6M7k+I4NOhYszIbm4KbqT519arsq
+ dP3g==
+X-Gm-Message-State: AOAM530Fu+ByLpHikXVEBvm3XDIFNWO6OiuSxRNHKZTb/RuZo7cG4njC
+ 2CPZ0m4KjqplsEI/YNXY9cOEKbwV0ZsM2g==
+X-Received: by 2002:a7b:c081:: with SMTP id r1mr12714958wmh.72.1627540376606; 
+ Wed, 28 Jul 2021 23:32:56 -0700 (PDT)
+Received: from [192.168.1.36] (122.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.122])
+ by smtp.gmail.com with ESMTPSA id w5sm2636679wro.45.2021.07.28.23.32.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 28 Jul 2021 23:32:56 -0700 (PDT)
+Subject: Re: [PATCH for-6.2 27/43] target/arm: Use MO_128 for 16 byte atomics
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 References: <20210729004647.282017-1-richard.henderson@linaro.org>
+ <20210729004647.282017-28-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <cf2612dc-57e5-8f32-1dae-d4c8374218d9@amsat.org>
+Date: Thu, 29 Jul 2021 08:32:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <20210729004647.282017-28-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.277,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,125 +122,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aXXkS6fb8cHS
+X-TUID: gsRQnTBf/wds
 
-The helper_*_mmu functions were the only thing available
-when this code was written.  This could have been adjusted
-when we added cpu_*_mmuidx_ra, but now we can most easily
-use the newest set of interfaces.
+On 7/29/21 2:46 AM, Richard Henderson wrote:
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper-a64.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper-a64.c | 52 +++++++----------------------------------
- target/arm/m_helper.c   |  6 ++---
- 2 files changed, 11 insertions(+), 47 deletions(-)
-
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index f1a4089a4f..17c0ebebb2 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -512,37 +512,19 @@ uint64_t HELPER(paired_cmpxchg64_le)(CPUARMState *env, uint64_t addr,
-     uintptr_t ra = GETPC();
-     uint64_t o0, o1;
-     bool success;
--
--#ifdef CONFIG_USER_ONLY
--    /* ??? Enforce alignment.  */
--    uint64_t *haddr = g2h(env_cpu(env), addr);
--
--    set_helper_retaddr(ra);
--    o0 = ldq_le_p(haddr + 0);
--    o1 = ldq_le_p(haddr + 1);
--    oldv = int128_make128(o0, o1);
--
--    success = int128_eq(oldv, cmpv);
--    if (success) {
--        stq_le_p(haddr + 0, int128_getlo(newv));
--        stq_le_p(haddr + 1, int128_gethi(newv));
--    }
--    clear_helper_retaddr();
--#else
-     int mem_idx = cpu_mmu_index(env, false);
-     MemOpIdx oi0 = make_memop_idx(MO_LEQ | MO_ALIGN_16, mem_idx);
-     MemOpIdx oi1 = make_memop_idx(MO_LEQ, mem_idx);
- 
--    o0 = helper_le_ldq_mmu(env, addr + 0, oi0, ra);
--    o1 = helper_le_ldq_mmu(env, addr + 8, oi1, ra);
-+    o0 = cpu_ldq_le_mmu(env, addr + 0, oi0, ra);
-+    o1 = cpu_ldq_le_mmu(env, addr + 8, oi1, ra);
-     oldv = int128_make128(o0, o1);
- 
-     success = int128_eq(oldv, cmpv);
-     if (success) {
--        helper_le_stq_mmu(env, addr + 0, int128_getlo(newv), oi1, ra);
--        helper_le_stq_mmu(env, addr + 8, int128_gethi(newv), oi1, ra);
-+        cpu_stq_le_mmu(env, addr + 0, int128_getlo(newv), oi1, ra);
-+        cpu_stq_le_mmu(env, addr + 8, int128_gethi(newv), oi1, ra);
-     }
--#endif
- 
-     return !success;
- }
-@@ -582,37 +564,19 @@ uint64_t HELPER(paired_cmpxchg64_be)(CPUARMState *env, uint64_t addr,
-     uintptr_t ra = GETPC();
-     uint64_t o0, o1;
-     bool success;
--
--#ifdef CONFIG_USER_ONLY
--    /* ??? Enforce alignment.  */
--    uint64_t *haddr = g2h(env_cpu(env), addr);
--
--    set_helper_retaddr(ra);
--    o1 = ldq_be_p(haddr + 0);
--    o0 = ldq_be_p(haddr + 1);
--    oldv = int128_make128(o0, o1);
--
--    success = int128_eq(oldv, cmpv);
--    if (success) {
--        stq_be_p(haddr + 0, int128_gethi(newv));
--        stq_be_p(haddr + 1, int128_getlo(newv));
--    }
--    clear_helper_retaddr();
--#else
-     int mem_idx = cpu_mmu_index(env, false);
-     MemOpIdx oi0 = make_memop_idx(MO_BEQ | MO_ALIGN_16, mem_idx);
-     MemOpIdx oi1 = make_memop_idx(MO_BEQ, mem_idx);
- 
--    o1 = helper_be_ldq_mmu(env, addr + 0, oi0, ra);
--    o0 = helper_be_ldq_mmu(env, addr + 8, oi1, ra);
-+    o1 = cpu_ldq_be_mmu(env, addr + 0, oi0, ra);
-+    o0 = cpu_ldq_be_mmu(env, addr + 8, oi1, ra);
-     oldv = int128_make128(o0, o1);
- 
-     success = int128_eq(oldv, cmpv);
-     if (success) {
--        helper_be_stq_mmu(env, addr + 0, int128_gethi(newv), oi1, ra);
--        helper_be_stq_mmu(env, addr + 8, int128_getlo(newv), oi1, ra);
-+        cpu_stq_be_mmu(env, addr + 0, int128_gethi(newv), oi1, ra);
-+        cpu_stq_be_mmu(env, addr + 8, int128_getlo(newv), oi1, ra);
-     }
--#endif
- 
-     return !success;
- }
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index efb522dc44..b6019595f5 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -1947,9 +1947,9 @@ static bool do_v7m_function_return(ARMCPU *cpu)
-          * do them as secure, so work out what MMU index that is.
-          */
-         mmu_idx = arm_v7m_mmu_idx_for_secstate(env, true);
--        oi = make_memop_idx(MO_LE, arm_to_core_mmu_idx(mmu_idx));
--        newpc = helper_le_ldul_mmu(env, frameptr, oi, 0);
--        newpsr = helper_le_ldul_mmu(env, frameptr + 4, oi, 0);
-+        oi = make_memop_idx(MO_LEUL, arm_to_core_mmu_idx(mmu_idx));
-+        newpc = cpu_ldl_le_mmu(env, frameptr, oi, 0);
-+        newpsr = cpu_ldl_le_mmu(env, frameptr + 4, oi, 0);
- 
-         /* Consistency checks on new IPSR */
-         newpsr_exc = newpsr & XPSR_EXCP;
--- 
-2.25.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

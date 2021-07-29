@@ -1,103 +1,103 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5558312lfc;
-        Thu, 29 Jul 2021 04:47:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy9GZPQQ/dtAwJNNzDpUI3lvQc0Yw3mSRWwDUztTnDtj/2tnhkCDu3UZjzNUCua5DLXhsX0
-X-Received: by 2002:a5b:504:: with SMTP id o4mr6092127ybp.332.1627559220830;
-        Thu, 29 Jul 2021 04:47:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627559220; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5558654lfc;
+        Thu, 29 Jul 2021 04:47:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxw3fIUTQNFVQN5VcGuTOt+dvdWjUfmHHd4FOHhS8nSJCHlh6yCvq8WAPKfHO1wLIqGLGaC
+X-Received: by 2002:a25:14c4:: with SMTP id 187mr5980672ybu.236.1627559250208;
+        Thu, 29 Jul 2021 04:47:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627559250; cv=none;
         d=google.com; s=arc-20160816;
-        b=NtuQrBmB+gBPEBEl1+sKzoDh43SOp4Fe87oX/TwP6SDrJtGh1p7eRlIMMu0h99M9dd
-         WQsJHCgDuDMNkaSm2DlJFpnr32UsXUdwjZ9q9w8vvp4frDzh2VdhaQfu3+eJPSeY0a+1
-         28ujGNlDCZyTXkE4LwmO5L2Tz68sZfz6ZHVh+ypPFzQXOVdPDb40Z7v3rxoqp6oJM47M
-         2jVcG2JCBYqGTUsS5XQygvjyS+FGm6oS1x7i5jk1dFx1/t4ceIMWcJ7cK+UtzdxcHM7M
-         10NV5FB7zXR2P1pjeeC7+2FM5GC2sdD5zxFo0Ac43UiwGfzP9Hg1K/4oibWzYyRIWLSn
-         MzNA==
+        b=mr6CfMBgj0+i6dNHx2HF7jJk0K+R/96h3AP5YZnkNbES2xVPXf8mYHXqRhyNP/5FpL
+         J6dTv8A01FveGCagrod9/2SAkbNm52AeoL6x//CJSPNNWRze+DdJ8aP9LgE5eRgfxfo1
+         6ETqRDlTEpEyy6XRQwDz8kd023kdXSs31P3xeWsCXu1ek4Gjj6OINgGaFjIsMge6tpDQ
+         8XNTPonqEmeoxVlYj0hTANo6UYP+O8BhGDOCtpsfLCC0TXtkcOUymquR5rehLQs7p4Jd
+         KWS/qsrGpn2TP5QcNAhB0/xmTge0Fa7lhxGIrIh+8qD934W2kyOqk29FFkLr/HD7wzi7
+         tD6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cK3D9jr6c7rzAtNnX4xQNMbIJISTN5Ct4CVgZ3O8Kso=;
-        b=TpRPktbuuctf3OXwePyphRPoBv2VMZLhrYaR7+OrLHknW51yE8JlCtmh+t+G4lYi7Q
-         nJdAKkRfpEx+Ts+ul35JQMSE9QYAbcHeXy3awB6GRkWAx5tSxOwoBx1UrSA1+Zhn4Vhp
-         7JnIFL07HI/6ko0YUTiDBfO/7V9Nh8nJstzQiaNq8GkWBNRnLqlyZVXhSMW3yIf6dVD1
-         ML9RPg1ZzIhvC4T8m+QBPTrMQrgT1byywxDJK/AEr5kQn503U9eC1A8KU9fCmv6SkVXb
-         051NcyfPaGTvBm/Vk7gy2GFMib5xqrqc53+bGC+35IepY4duR7do8euGCfqWFSYv9uO1
-         76NQ==
+        bh=nWalocP07tEKh2jpkIuDwJz8kFwTS8kRNLKBL8PDYDM=;
+        b=xrDh2zyONdt03JazYuYeQrHNpd26GyHaUIDEw8ki/dy/aydGIO9UnEptPUyIP28zuB
+         dI5/rgww9AN39bcWZRlVP9P/YnCfQoMKDVy40U98Uf6Rbmfp5AZu6MSG3IqODcAn5fKJ
+         cZ/i4daC7L1WAYbfNlO6aNs30rq2I1jtoRsKV/xGjXqAutthTbA8Tz1oVD0UAHio1vE/
+         dm2FtRjX5iWYM7JFh8pueoSLNP3nl8yi12xhaiFkeXC/RhnSIwrTsrIhMfJbJcm0KVrY
+         V1jmpSxa8GicxsfLSFGFFnw467koJYeVa2WL3jEwwAe0O0be9ZIhs3aTGQJw/ipvWswI
+         59LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P1odjIMT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=i4uKGvwN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m206si2377229ybc.141.2021.07.29.04.47.00
+        by mx.google.com with ESMTPS id o14si3339276ybu.374.2021.07.29.04.47.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Jul 2021 04:47:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Jul 2021 04:47:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P1odjIMT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=i4uKGvwN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52574 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55564 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m94VA-0003Jd-3E
-	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:47:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40912)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m94Vd-0005hR-G5
+	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:47:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41062)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m941R-0001Ig-OS
- for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:18 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:43002)
+ id 1m941Z-0001MU-Ia
+ for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:25 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:35453)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m940z-0001My-KA
- for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:17 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- e25-20020a05600c4b99b0290253418ba0fbso3781142wmp.1
- for <qemu-devel@nongnu.org>; Thu, 29 Jul 2021 04:15:49 -0700 (PDT)
+ id 1m9416-0001SS-3F
+ for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:25 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ u15-20020a05600c19cfb02902501bdb23cdso6596998wmq.0
+ for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=cK3D9jr6c7rzAtNnX4xQNMbIJISTN5Ct4CVgZ3O8Kso=;
- b=P1odjIMTRYjYSFFBtb1yZpj1h5TcF/+2wj7oDXOHhgMpqdRbUOhFtg2UZn/iw1ZYK+
- Axn+6eXfo3HI532e98hy6iysWIQ5NKgYkvtsjBbatMXV6DAvgTZUAHVaDLBt3o44uRvv
- /loKG09RLI6UwNmpuxiMLAhngZA84gUyK3uuU/+GWXc4lK+PWnuyK8GbofgV3MATnHAx
- ZXqx5yo+pqRGRfLdegW3gPV9egkDk99zL7wuAlsskPYeSTp1LVrxqoamCt0plqqQz/tQ
- VtFhmZPL3B4rJIHvAR/A19vTLoNQOeBgXwnPMSfNkVarkmdY4Mfyh6WZmPhPUtubPdxs
- vGjA==
+ bh=nWalocP07tEKh2jpkIuDwJz8kFwTS8kRNLKBL8PDYDM=;
+ b=i4uKGvwNbc2QsxZyOMMqVapJzBpYGvkoUfyuU1qQF6d88FgF4r8244dAdcaJkLysdv
+ JUNgMGFS4Ji4JFGkuMKg6Vdww5xKYpmB7o0YvambR6Oi3IR8grnsFRb7jAXPCqPjYl7L
+ cFUlV4HO0i40jVt5jfWKDbQZU69ojZjSZ1YAjG8Ujm7chIE79CU2sSkyLeHRtJHB4TPK
+ qL4UfgheXkl3bJb9v0DbEJQeG7e/tABftBI2W0H5gFni+TnLvhL/WphLdsv7PKqgJevW
+ Gk2D9MBwjB3UTolJtfKSqYFv7HQE4/+7AH/scLvCqoNc0FFcMbH7xGX1bOw8KZJaVYT/
+ 10zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cK3D9jr6c7rzAtNnX4xQNMbIJISTN5Ct4CVgZ3O8Kso=;
- b=YQy6z4tsvYr7FsMnpyb/dEbs49q9zJOTnH5fzLu4fDGzjmSEbhMF/0gvc42MtF0k4l
- cKv7v78MSM5+prCFH+EKMqOY7mTU/8CqgCFwv4s3um2a0I3jbbsMyhfnhTOscm3p8zIx
- jzn2osTTmAxnA91H/H/m9DoRtoePaKnxA9qfarvt5Ysk5SFSIvk0NVVxISNZTHgAmn3e
- 4EWyNJrVi2+hLRXZN7kSxVE67nsPFAhdl0/e4CoMDoMmcZyrYDSBcfNXNGRtbUCeFTnS
- WAFEhXZHmV76yHmm96NzN7S3ShEWKKzWSg2MFwMgJ1q/wj9RhineXkUAASoTRG79OwQq
- BuiA==
-X-Gm-Message-State: AOAM530UB8aIrY0xi1rp2+nkr+5SlVz8VZSEYDgw9T7TQq3+HHy1T32m
- YNWqUKnPyKLOU5NbAI99/o4kNw==
-X-Received: by 2002:a1c:4409:: with SMTP id r9mr4241289wma.150.1627557348260; 
- Thu, 29 Jul 2021 04:15:48 -0700 (PDT)
+ bh=nWalocP07tEKh2jpkIuDwJz8kFwTS8kRNLKBL8PDYDM=;
+ b=UdOmFfEVHSNGBEUUvvMhjCxfCf58NdGdYtxfwlmwJHbHdRT0tSM7amFvabMsWtB83U
+ zLzMyfrGHe1nWBHJqw/pCFzEr5chD/n7uou4W+aInc/YlazA4RiNpb8ZvbuKcT22lbjC
+ GCeIXjM+cb+VKyX7sdLuvE3Cg/p6nds9Rc6ggp1nN/x0ZKE6GNe13M1FCwGrr4HIxlXq
+ iuyi9PUfH3+gDR4GEQTA6LzFZYJncBiIkZHP/twtBlU1gxNMfoHr2yZvKWVFHYcZN450
+ yhMrIxtUNuz3yrqNzJVodvFvClKY1rp9HPhEuL1SEw8RnY6Xjd5guf6qLO9+tXIqhQA0
+ N9tQ==
+X-Gm-Message-State: AOAM5328DGLyBtur56cnxTI/iYdV6lLLmJ+viQIDGydQY74USapjYMiu
+ xm1cpCaeWRMcLA1Q7Z2tSS4wRbJ9W8P7cw==
+X-Received: by 2002:a1c:a510:: with SMTP id o16mr13916814wme.162.1627557354135; 
+ Thu, 29 Jul 2021 04:15:54 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.47
+ by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 04:15:47 -0700 (PDT)
+ Thu, 29 Jul 2021 04:15:53 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 40/53] target/arm: Implement MVE VCMUL and VCMLA
-Date: Thu, 29 Jul 2021 12:14:59 +0100
-Message-Id: <20210729111512.16541-41-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 47/53] target/arm: Implement MVE fp scalar comparisons
+Date: Thu, 29 Jul 2021 12:15:06 +0100
+Message-Id: <20210729111512.16541-48-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210729111512.16541-1-peter.maydell@linaro.org>
 References: <20210729111512.16541-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,224 +106,263 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wuTrqF3H1orJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rO9kj2z3DDRr
 
-Implement the MVE VCMUL and VCMLA insns.
+Implement the MVE fp scalar comparisons VCMP and VPT.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper-mve.h    | 18 ++++++++
- target/arm/mve.decode      | 35 ++++++++++++----
- target/arm/mve_helper.c    | 86 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-mve.c |  8 ++++
- 4 files changed, 139 insertions(+), 8 deletions(-)
+ target/arm/helper-mve.h    | 18 +++++++++++
+ target/arm/mve.decode      | 61 +++++++++++++++++++++++++++++--------
+ target/arm/mve_helper.c    | 62 ++++++++++++++++++++++++++++++--------
+ target/arm/translate-mve.c | 14 +++++++++
+ 4 files changed, 131 insertions(+), 24 deletions(-)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index c230610d25c..73950403bc3 100644
+index 0c15c531641..9ee841cdf01 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -440,6 +440,24 @@ DEF_HELPER_FLAGS_4(mve_vfmas, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vfmsh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vfmss, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+@@ -831,6 +831,24 @@ DEF_HELPER_FLAGS_3(mve_vfcmpgts, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_3(mve_vfcmpleh, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_3(mve_vfcmples, TCG_CALL_NO_WG, void, env, ptr, ptr)
  
-+DEF_HELPER_FLAGS_4(mve_vcmul0h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmul0s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmul90h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmul90s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmul180h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmul180s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmul270h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmul270s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vfcmpeq_scalarh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vfcmpeq_scalars, TCG_CALL_NO_WG, void, env, ptr, i32)
 +
-+DEF_HELPER_FLAGS_4(mve_vcmla0h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmla0s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmla90h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmla90s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmla180h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmla180s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmla270h, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vcmla270s, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_3(mve_vfcmpne_scalarh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vfcmpne_scalars, TCG_CALL_NO_WG, void, env, ptr, i32)
 +
- DEF_HELPER_FLAGS_4(mve_vadd_scalarb, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(mve_vadd_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(mve_vadd_scalarw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vfcmpge_scalarh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vfcmpge_scalars, TCG_CALL_NO_WG, void, env, ptr, i32)
++
++DEF_HELPER_FLAGS_3(mve_vfcmplt_scalarh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vfcmplt_scalars, TCG_CALL_NO_WG, void, env, ptr, i32)
++
++DEF_HELPER_FLAGS_3(mve_vfcmpgt_scalarh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vfcmpgt_scalars, TCG_CALL_NO_WG, void, env, ptr, i32)
++
++DEF_HELPER_FLAGS_3(mve_vfcmple_scalarh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vfcmple_scalars, TCG_CALL_NO_WG, void, env, ptr, i32)
++
+ DEF_HELPER_FLAGS_4(mve_vfadd_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vfadd_scalars, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ 
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 3a2056f6b34..403381eef61 100644
+index 7767ecae2ac..aa113279dc5 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -286,15 +286,29 @@ VQSHL_U          111 1 1111 0 . .. ... 0 ... 0 0100 . 1 . 1 ... 0 @2op_rev
- VQRSHL_S         111 0 1111 0 . .. ... 0 ... 0 0101 . 1 . 1 ... 0 @2op_rev
- VQRSHL_U         111 1 1111 0 . .. ... 0 ... 0 0101 . 1 . 1 ... 0 @2op_rev
+@@ -127,6 +127,11 @@
+ @vcmp_fp .... .... .... qn:3 . .... .... .... .... &vcmp \
+          qm=%qm size=%2op_fp_scalar_size mask=%mask_22_13
  
--VQDMLADH         1110 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
--VQDMLADHX        1110 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
--VQRDMLADH        1110 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
--VQRDMLADHX       1110 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
-+{
-+  VCMUL0         111 . 1110 0 . 11 ... 0 ... 0 1110 . 0 . 0 ... 0 @2op_sz28
-+  VQDMLADH       1110  1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
-+  VQDMLSDH       1111  1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
-+}
++# Bit 28 is a 2op_fp_scalar_size bit, but we do not decode it in this
++# format to avoid complicated overlapping-instruction-groups
++@vcmp_fp_scalar .... .... .... qn:3 . .... .... .... rm:4 &vcmp_scalar \
++                mask=%mask_22_13
++
+ @vmaxv .... .... .... size:2 .. rda:4 .... .... .... &vmaxv qm=%qm
  
--VQDMLSDH         1111 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 0 @2op
--VQDMLSDHX        1111 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
--VQRDMLSDH        1111 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
--VQRDMLSDHX       1111 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
+ @2op_fp .... .... .... .... .... .... .... .... &2op \
+@@ -400,8 +405,10 @@ VDUP             1110 1110 1 0 10 ... 0 .... 1011 . 0 0 1 0000 @vdup size=2
+   VIWDUP         1110 1110 0 . .. ... 1 ... 0 1111 . 110 ... . @viwdup
+ }
+ {
+-  VDDUP          1110 1110 0 . .. ... 1 ... 1 1111 . 110 111 . @vidup
+-  VDWDUP         1110 1110 0 . .. ... 1 ... 1 1111 . 110 ... . @viwdup
++  VCMPGT_fp_scalar 1110 1110 0 . 11 ... 1 ... 1 1111  0110 .... @vcmp_fp_scalar size=2
++  VCMPLE_fp_scalar 1110 1110 0 . 11 ... 1 ... 1 1111  1110 .... @vcmp_fp_scalar size=2
++  VDDUP            1110 1110 0 . .. ... 1 ... 1 1111 . 110 111 . @vidup
++  VDWDUP           1110 1110 0 . .. ... 1 ... 1 1111 . 110 ... . @viwdup
+ }
+ 
+ # multiply-add long dual accumulate
+@@ -472,8 +479,17 @@ VMLADAV_U        1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
+ 
+ # Scalar operations
+ 
+-VADD_scalar      1110 1110 0 . .. ... 1 ... 0 1111 . 100 .... @2scalar
+-VSUB_scalar      1110 1110 0 . .. ... 1 ... 1 1111 . 100 .... @2scalar
 +{
-+  VCMUL180       111 . 1110 0 . 11 ... 0 ... 1 1110 . 0 . 0 ... 0 @2op_sz28
-+  VQDMLADHX      111 0 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
-+  VQDMLSDHX      111 1 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
++  VCMPEQ_fp_scalar 1110 1110 0 . 11 ... 1 ... 0 1111  0100 .... @vcmp_fp_scalar size=2
++  VCMPNE_fp_scalar 1110 1110 0 . 11 ... 1 ... 0 1111  1100 .... @vcmp_fp_scalar size=2
++  VADD_scalar      1110 1110 0 . .. ... 1 ... 0 1111 . 100 .... @2scalar
 +}
 +
 +{
-+  VCMUL90        111 . 1110 0 . 11 ... 0 ... 0 1110 . 0 . 0 ... 1 @2op_sz28
-+  VQRDMLADH      111 0 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
-+  VQRDMLSDH      111 1 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
++  VCMPLT_fp_scalar 1110 1110 0 . 11 ... 1 ... 1 1111  1100 .... @vcmp_fp_scalar size=2
++  VCMPGE_fp_scalar 1110 1110 0 . 11 ... 1 ... 1 1111  0100 .... @vcmp_fp_scalar size=2
++  VSUB_scalar      1110 1110 0 . .. ... 1 ... 1 1111 . 100 .... @2scalar
++}
+ 
+ {
+   VSHL_S_scalar   1110 1110 0 . 11 .. 01 ... 1 1110 0110 .... @shl_scalar
+@@ -703,17 +719,38 @@ VSHLC             111 0 1110 1 . 1 imm:5 ... 0 1111 1100 rdm:4 qd=%qd
+ }
+ 
+ {
+-  VPNOT           1111 1110 0 0 11 000 1 000 0 1111 0100 1101
+-  VPST            1111 1110 0 . 11 000 1 ... 0 1111 0100 1101 mask=%mask_22_13
+-  VCMPEQ_scalar   1111 1110 0 . .. ... 1 ... 0 1111 0 1 0 0 .... @vcmp_scalar
++  VPNOT            1111 1110 0 0 11 000 1 000 0 1111 0100 1101
++  VPST             1111 1110 0 . 11 000 1 ... 0 1111 0100 1101 mask=%mask_22_13
++  VCMPEQ_fp_scalar 1111 1110 0 . 11 ... 1 ... 0 1111 0100 .... @vcmp_fp_scalar size=1
++  VCMPEQ_scalar    1111 1110 0 . .. ... 1 ... 0 1111 0100 .... @vcmp_scalar
+ }
+-VCMPNE_scalar     1111 1110 0 . .. ... 1 ... 0 1111 1 1 0 0 .... @vcmp_scalar
++
++{
++  VCMPNE_fp_scalar 1111 1110 0 . 11 ... 1 ... 0 1111 1100 .... @vcmp_fp_scalar size=1
++  VCMPNE_scalar    1111 1110 0 . .. ... 1 ... 0 1111 1100 .... @vcmp_scalar
 +}
 +
 +{
-+  VCMUL270       111 . 1110 0 . 11 ... 0 ... 1 1110 . 0 . 0 ... 1 @2op_sz28
-+  VQRDMLADHX     111 0 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
-+  VQRDMLSDHX     111 1 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
++  VCMPGT_fp_scalar 1111 1110 0 . 11 ... 1 ... 1 1111 0110 .... @vcmp_fp_scalar size=1
++  VCMPGT_scalar    1111 1110 0 . .. ... 1 ... 1 1111 0110 .... @vcmp_scalar
 +}
- 
- VQDMULLB         111 . 1110 0 . 11 ... 0 ... 0 1111 . 0 . 0 ... 1 @2op_sz28
- VQDMULLT         111 . 1110 0 . 11 ... 0 ... 1 1111 . 0 . 0 ... 1 @2op_sz28
-@@ -642,3 +656,8 @@ VCADD270_fp       1111 1101 1 . 0 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_
- 
- VFMA              1110 1111 0 . 0 . ... 0 ... 0 1100 . 1 . 1 ... 0 @2op_fp
- VFMS              1110 1111 0 . 1 . ... 0 ... 0 1100 . 1 . 1 ... 0 @2op_fp
 +
-+VCMLA0            1111 110 00 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
-+VCMLA90           1111 110 01 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
-+VCMLA180          1111 110 10 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
-+VCMLA270          1111 110 11 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
++{
++  VCMPLE_fp_scalar 1111 1110 0 . 11 ... 1 ... 1 1111 1110 .... @vcmp_fp_scalar size=1
++  VCMPLE_scalar    1111 1110 0 . .. ... 1 ... 1 1111 1110 .... @vcmp_scalar
++}
++
++{
++  VCMPGE_fp_scalar 1111 1110 0 . 11 ... 1 ... 1 1111 0100 .... @vcmp_fp_scalar size=1
++  VCMPGE_scalar    1111 1110 0 . .. ... 1 ... 1 1111 0100 .... @vcmp_scalar
++}
++{
++  VCMPLT_fp_scalar 1111 1110 0 . 11 ... 1 ... 1 1111 1100 .... @vcmp_fp_scalar size=1
++  VCMPLT_scalar    1111 1110 0 . .. ... 1 ... 1 1111 1100 .... @vcmp_scalar
++}
++
+ VCMPCS_scalar     1111 1110 0 . .. ... 1 ... 0 1111 0 1 1 0 .... @vcmp_scalar
+ VCMPHI_scalar     1111 1110 0 . .. ... 1 ... 0 1111 1 1 1 0 .... @vcmp_scalar
+-VCMPGE_scalar     1111 1110 0 . .. ... 1 ... 1 1111 0 1 0 0 .... @vcmp_scalar
+-VCMPLT_scalar     1111 1110 0 . .. ... 1 ... 1 1111 1 1 0 0 .... @vcmp_scalar
+-VCMPGT_scalar     1111 1110 0 . .. ... 1 ... 1 1111 0 1 1 0 .... @vcmp_scalar
+-VCMPLE_scalar     1111 1110 0 . .. ... 1 ... 1 1111 1 1 1 0 .... @vcmp_scalar
+ 
+ # 2-operand FP
+ VADD_fp           1110 1111 0 . 0 . ... 0 ... 0 1101 . 1 . 0 ... 0 @2op_fp
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 0146137d18f..489892344b4 100644
+index ebfd5746b13..0aeccc12d69 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -2935,3 +2935,89 @@ DO_VFMA(vfmah, 2, uint16_t, float16_muladd)
- DO_VFMA(vfmas, 4, uint32_t, float32_muladd)
- DO_VFMA(vfmsh, 2, uint16_t, DO_VFMS16)
- DO_VFMA(vfmss, 4, uint32_t, DO_VFMS32)
-+
-+#define DO_VCMLA(OP, ESIZE, TYPE, ROT, CHS, FN)                         \
-+    void HELPER(glue(mve_, OP))(CPUARMState *env,                       \
-+                                void *vd, void *vn, void *vm)           \
+@@ -3196,6 +3196,44 @@ DO_FP_VMAXMINV(vminnmavs, 4, uint32_t, float32, true, float32_minnum)
+         mve_advance_vpt(env);                                           \
+     }
+ 
++#define DO_VCMP_FP_SCALAR(OP, ESIZE, TYPE, FN)                          \
++    void HELPER(glue(mve_, OP))(CPUARMState *env, void *vn,             \
++                                uint32_t rm)                            \
 +    {                                                                   \
-+        TYPE *d = vd, *n = vn, *m = vm;                                 \
-+        TYPE r0, r1, e1, e2, e3, e4;                                    \
++        TYPE *n = vn;                                                   \
 +        uint16_t mask = mve_element_mask(env);                          \
++        uint16_t eci_mask = mve_eci_mask(env);                          \
++        uint16_t beatpred = 0;                                          \
++        uint16_t emask = MAKE_64BIT_MASK(0, ESIZE);                     \
 +        unsigned e;                                                     \
-+        float_status *fpst0, *fpst1;                                    \
++        float_status *fpst;                                             \
 +        float_status scratch_fpst;                                      \
-+        /* We loop through pairs of elements at a time */               \
-+        for (e = 0; e < 16 / ESIZE; e += 2, mask >>= ESIZE * 2) {       \
-+            if ((mask & MAKE_64BIT_MASK(0, ESIZE * 2)) == 0) {          \
++        bool r;                                                         \
++        for (e = 0; e < 16 / ESIZE; e++, emask <<= ESIZE) {             \
++            if ((mask & emask) == 0) {                                  \
 +                continue;                                               \
 +            }                                                           \
-+            fpst0 = (ESIZE == 2) ? &env->vfp.standard_fp_status_f16 :   \
++            fpst = (ESIZE == 2) ? &env->vfp.standard_fp_status_f16 :    \
 +                &env->vfp.standard_fp_status;                           \
-+            fpst1 = fpst0;                                              \
-+            if (!(mask & 1)) {                                          \
-+                scratch_fpst = *fpst0;                                  \
-+                fpst0 = &scratch_fpst;                                  \
++            if (!(mask & (1 << (e * ESIZE)))) {                         \
++                /* We need the result but without updating flags */     \
++                scratch_fpst = *fpst;                                   \
++                fpst = &scratch_fpst;                                   \
 +            }                                                           \
-+            if (!(mask & (1 << ESIZE))) {                               \
-+                scratch_fpst = *fpst1;                                  \
-+                fpst1 = &scratch_fpst;                                  \
-+            }                                                           \
-+            switch (ROT) {                                              \
-+            case 0:                                                     \
-+                e1 = m[H##ESIZE(e)];                                    \
-+                e2 = n[H##ESIZE(e)];                                    \
-+                e3 = m[H##ESIZE(e + 1)];                                \
-+                e4 = n[H##ESIZE(e)];                                    \
-+                break;                                                  \
-+            case 1:                                                     \
-+                e1 = CHS(m[H##ESIZE(e + 1)]);                           \
-+                e2 = n[H##ESIZE(e + 1)];                                \
-+                e3 = m[H##ESIZE(e)];                                    \
-+                e4 = n[H##ESIZE(e + 1)];                                \
-+                break;                                                  \
-+            case 2:                                                     \
-+                e1 = CHS(m[H##ESIZE(e)]);                               \
-+                e2 = n[H##ESIZE(e)];                                    \
-+                e3 = CHS(m[H##ESIZE(e + 1)]);                           \
-+                e4 = n[H##ESIZE(e)];                                    \
-+                break;                                                  \
-+            case 3:                                                     \
-+                e1 = m[H##ESIZE(e + 1)];                                \
-+                e2 = n[H##ESIZE(e + 1)];                                \
-+                e3 = CHS(m[H##ESIZE(e)]);                               \
-+                e4 = n[H##ESIZE(e + 1)];                                \
-+                break;                                                  \
-+            default:                                                    \
-+                g_assert_not_reached();                                 \
-+            }                                                           \
-+            r0 = FN(e2, e1, d[H##ESIZE(e)], fpst0);                     \
-+            r1 = FN(e4, e3, d[H##ESIZE(e + 1)], fpst1);                 \
-+            mergemask(&d[H##ESIZE(e)], r0, mask);                       \
-+            mergemask(&d[H##ESIZE(e + 1)], r1, mask >> ESIZE);          \
++            r = FN(n[H##ESIZE(e)], (TYPE)rm, fpst);                     \
++            /* Comparison sets 0/1 bits for each byte in the element */ \
++            beatpred |= r * emask;                                      \
 +        }                                                               \
++        beatpred &= mask;                                               \
++        env->v7m.vpr = (env->v7m.vpr & ~(uint32_t)eci_mask) |           \
++            (beatpred & eci_mask);                                      \
 +        mve_advance_vpt(env);                                           \
 +    }
 +
-+#define DO_VCMULH(N, M, D, S) float16_mul(N, M, S)
-+#define DO_VCMULS(N, M, D, S) float32_mul(N, M, S)
++#define DO_VCMP_FP_BOTH(VOP, SOP, ESIZE, TYPE, FN)      \
++    DO_VCMP_FP(VOP, ESIZE, TYPE, FN)                    \
++    DO_VCMP_FP_SCALAR(SOP, ESIZE, TYPE, FN)
 +
-+#define DO_VCMLAH(N, M, D, S) float16_muladd(N, M, D, 0, S)
-+#define DO_VCMLAS(N, M, D, S) float32_muladd(N, M, D, 0, S)
-+
-+DO_VCMLA(vcmul0h, 2, uint16_t, 0, float16_chs, DO_VCMULH)
-+DO_VCMLA(vcmul0s, 4, uint32_t, 0, float32_chs, DO_VCMULS)
-+DO_VCMLA(vcmul90h, 2, uint16_t, 1, float16_chs, DO_VCMULH)
-+DO_VCMLA(vcmul90s, 4, uint32_t, 1, float32_chs, DO_VCMULS)
-+DO_VCMLA(vcmul180h, 2, uint16_t, 2, float16_chs, DO_VCMULH)
-+DO_VCMLA(vcmul180s, 4, uint32_t, 2, float32_chs, DO_VCMULS)
-+DO_VCMLA(vcmul270h, 2, uint16_t, 3, float16_chs, DO_VCMULH)
-+DO_VCMLA(vcmul270s, 4, uint32_t, 3, float32_chs, DO_VCMULS)
-+
-+DO_VCMLA(vcmla0h, 2, uint16_t, 0, float16_chs, DO_VCMLAH)
-+DO_VCMLA(vcmla0s, 4, uint32_t, 0, float32_chs, DO_VCMLAS)
-+DO_VCMLA(vcmla90h, 2, uint16_t, 1, float16_chs, DO_VCMLAH)
-+DO_VCMLA(vcmla90s, 4, uint32_t, 1, float32_chs, DO_VCMLAS)
-+DO_VCMLA(vcmla180h, 2, uint16_t, 2, float16_chs, DO_VCMLAH)
-+DO_VCMLA(vcmla180s, 4, uint32_t, 2, float32_chs, DO_VCMLAS)
-+DO_VCMLA(vcmla270h, 2, uint16_t, 3, float16_chs, DO_VCMLAH)
-+DO_VCMLA(vcmla270s, 4, uint32_t, 3, float32_chs, DO_VCMLAS)
+ /*
+  * Some care is needed here to get the correct result for the unordered case.
+  * Architecturally EQ, GE and GT are defined to be false for unordered, but
+@@ -3208,20 +3246,20 @@ DO_FP_VMAXMINV(vminnmavs, 4, uint32_t, float32, true, float32_minnum)
+ #define DO_GT16(X, Y, S) float16_lt(Y, X, S)
+ #define DO_GT32(X, Y, S) float32_lt(Y, X, S)
+ 
+-DO_VCMP_FP(vfcmpeqh, 2, uint16_t, float16_eq)
+-DO_VCMP_FP(vfcmpeqs, 4, uint32_t, float32_eq)
++DO_VCMP_FP_BOTH(vfcmpeqh, vfcmpeq_scalarh, 2, uint16_t, float16_eq)
++DO_VCMP_FP_BOTH(vfcmpeqs, vfcmpeq_scalars, 4, uint32_t, float32_eq)
+ 
+-DO_VCMP_FP(vfcmpneh, 2, uint16_t, !float16_eq)
+-DO_VCMP_FP(vfcmpnes, 4, uint32_t, !float32_eq)
++DO_VCMP_FP_BOTH(vfcmpneh, vfcmpne_scalarh, 2, uint16_t, !float16_eq)
++DO_VCMP_FP_BOTH(vfcmpnes, vfcmpne_scalars, 4, uint32_t, !float32_eq)
+ 
+-DO_VCMP_FP(vfcmpgeh, 2, uint16_t, DO_GE16)
+-DO_VCMP_FP(vfcmpges, 4, uint32_t, DO_GE32)
++DO_VCMP_FP_BOTH(vfcmpgeh, vfcmpge_scalarh, 2, uint16_t, DO_GE16)
++DO_VCMP_FP_BOTH(vfcmpges, vfcmpge_scalars, 4, uint32_t, DO_GE32)
+ 
+-DO_VCMP_FP(vfcmplth, 2, uint16_t, !DO_GE16)
+-DO_VCMP_FP(vfcmplts, 4, uint32_t, !DO_GE32)
++DO_VCMP_FP_BOTH(vfcmplth, vfcmplt_scalarh, 2, uint16_t, !DO_GE16)
++DO_VCMP_FP_BOTH(vfcmplts, vfcmplt_scalars, 4, uint32_t, !DO_GE32)
+ 
+-DO_VCMP_FP(vfcmpgth, 2, uint16_t, DO_GT16)
+-DO_VCMP_FP(vfcmpgts, 4, uint32_t, DO_GT32)
++DO_VCMP_FP_BOTH(vfcmpgth, vfcmpgt_scalarh, 2, uint16_t, DO_GT16)
++DO_VCMP_FP_BOTH(vfcmpgts, vfcmpgt_scalars, 4, uint32_t, DO_GT32)
+ 
+-DO_VCMP_FP(vfcmpleh, 2, uint16_t, !DO_GT16)
+-DO_VCMP_FP(vfcmples, 4, uint32_t, !DO_GT32)
++DO_VCMP_FP_BOTH(vfcmpleh, vfcmple_scalarh, 2, uint16_t, !DO_GT16)
++DO_VCMP_FP_BOTH(vfcmples, vfcmple_scalars, 4, uint32_t, !DO_GT32)
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index d61abc6d46f..d62ed1fc295 100644
+index da14a6f790e..e8a3dec6683 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -856,6 +856,14 @@ DO_2OP_FP(VCADD90_fp, vfcadd90)
- DO_2OP_FP(VCADD270_fp, vfcadd270)
- DO_2OP_FP(VFMA, vfma)
- DO_2OP_FP(VFMS, vfms)
-+DO_2OP_FP(VCMUL0, vcmul0)
-+DO_2OP_FP(VCMUL90, vcmul90)
-+DO_2OP_FP(VCMUL180, vcmul180)
-+DO_2OP_FP(VCMUL270, vcmul270)
-+DO_2OP_FP(VCMLA0, vcmla0)
-+DO_2OP_FP(VCMLA90, vcmla90)
-+DO_2OP_FP(VCMLA180, vcmla180)
-+DO_2OP_FP(VCMLA270, vcmla270)
+@@ -1771,6 +1771,20 @@ DO_VCMP(VCMPLE, vcmple)
+             return false;                                       \
+         }                                                       \
+         return do_vcmp(s, a, fns[a->size]);                     \
++    }                                                           \
++    static bool trans_##INSN##_scalar(DisasContext *s,          \
++                                      arg_vcmp_scalar *a)       \
++    {                                                           \
++        static MVEGenScalarCmpFn * const fns[] = {              \
++            NULL,                                               \
++            gen_helper_mve_##FN##_scalarh,                      \
++            gen_helper_mve_##FN##_scalars,                      \
++            NULL,                                               \
++        };                                                      \
++        if (!dc_isar_feature(aa32_mve_fp, s)) {                 \
++            return false;                                       \
++        }                                                       \
++        return do_vcmp_scalar(s, a, fns[a->size]);              \
+     }
  
- static bool do_2op_scalar(DisasContext *s, arg_2scalar *a,
-                           MVEGenTwoOpScalarFn fn)
+ DO_VCMP_FP(VCMPEQ_fp, vfcmpeq)
 -- 
 2.20.1
 

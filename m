@@ -1,109 +1,110 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5562973lfc;
-        Thu, 29 Jul 2021 04:53:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuEXMWUHNagTgLTACrXXjUdop7vEbOlTVdw+K1khUke53WPXCaDyKbZ0VZWKkbzHb50dsM
-X-Received: by 2002:ac8:6b45:: with SMTP id x5mr3771168qts.249.1627559638317;
-        Thu, 29 Jul 2021 04:53:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627559638; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5563583lfc;
+        Thu, 29 Jul 2021 04:54:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwd0CMBn20cwhq0GZbKN+scMQgR7mTBIGUSbEwYIx0ZfmDPjw/KVgUDpwd6/wQL4Osnd5q3
+X-Received: by 2002:a92:b74d:: with SMTP id c13mr3447385ilm.176.1627559698954;
+        Thu, 29 Jul 2021 04:54:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627559698; cv=none;
         d=google.com; s=arc-20160816;
-        b=BeoAUPPetWQwd621zsbA4b37P2Cms8tzhrxAQfyCNkkIRKZm+yPCojDQy03niR2tSa
-         BEQmke/SwF9SuM9vZHVkmUoPdBvRtmTGmA4NVtuoFtgbRHbNQubuEOh/ER0OPt/NuWSq
-         WfIqXKQWmB+j9Tjug4Xnd5uStEcmojzEvBIhrLK03yKyN+4LjUWFoDl0Gl6F2dE5U8jm
-         PwoeMJCQJQ8K3abK7Z2riIU/rkt3Pph7gz4AgB327n6l+gc2FtLdddxC9/bv8Gbhsg3n
-         kxj2TwtgrF/svanAYrz4kPWqM5JpIoUol+zDh9zzXTrbduS2M1gMax1pFJNF3VPi+iGs
-         ScNQ==
+        b=ioKsA3Dk0oVsucPHEQP/oizEo4FYdFktckCe95MVrdcpdMbFE5xFiQJe7AhU4LbWmT
+         g273FwZKVhsRGK9sNs8/VvFJNDvJk0kZDpEYWn4jw1TQPJa8OWqr7LByBDXq9YQAaWGP
+         dmXc09059fm4/j9+0VkIFurKV4Ua9jgKvTMtnE/o38QR/cqs7Mbd9cKTpkPtI8UmUqMC
+         7QcGsJTcZF0ZeTHJQK5I0SSuXu1EU04c5g75MZdYff4tQO7EHWnA8A5fwOllxqXoHUhL
+         k3lc7ESOZKKg9zfPWTtxQjlGTE1KKQE6ku5qhnRMbIrUT6cTLeXMqvb1gPEmmW3OjTGr
+         00Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=p/PVosmr3NDaaW48KULGfEDE4gWAQBCxNNHpd5+4wvQ=;
-        b=SgnpxjVBkt4XGOVeK3EHSQBVLgQEjPIU8V3vGGGDy/ewf2x1DCiLs46aEaJ/bvuQV/
-         +kjNxXO/mo+/Xp/tqpRXJtrCTDGfMryGmMvPXppp4HTjRX5pX2ynXNsoK6IMcF+28IMQ
-         eTFLHy793wJaLO1l9pIp8panE0Qw7OZ9W+7kLFOFwxh13P8wtZrLWYe/66wEdHfnAp6X
-         WkHPyFlvh5liwK022kJgROca0Wg6wg7aKoS7Dc5GWqj3iH7E9ql3YyQSfME1qRluIMRK
-         +YF5WA/vq1bqE2eg6WKDKg28+vMqZVyLvvZ+rSNaKZFHix4pxrZS6P6SvkZdMh5OdfyS
-         nAJw==
+        bh=XkZ/M1G+THrDlmqrCgDLQ+Zh1oSvNMXSv94gr49fYtc=;
+        b=hVNYoit1ZEyAQsRZH10fJP/r6lvyBDdswV3mV4YGUxvRB8mULT6LLVVqhIzsHgMGF4
+         ejMY7zLNyYGea7DVes7wGrVYyWgg6SEoSI5gmPvfNuNycX9+MpuzCMgcAoFMnkuwSGle
+         1SqYq1oxf8Jh8NQ0y3yrKpUdThlC0MKdEAGm/ViG+7Hhd3gAJnk2R/V6gJjcG+Gf04ws
+         2Y/MQi4kCw022e6LS2+64MRgw2X8QmcHkppANS09lsK26UMzcm5rY6Zzpz90fQvqebVe
+         yQkUHH91dU4VwNteelzYmqRgPIVl7LAb3lJkoa7N7b9bdbL503/mDTQljTpLiQxV/Ym/
+         lc1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XYZD9OiF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rtHNOSok;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1si1767252qkw.230.2021.07.29.04.53.58
+        by mx.google.com with ESMTPS id h28si3590217ioz.12.2021.07.29.04.54.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Jul 2021 04:53:58 -0700 (PDT)
+        Thu, 29 Jul 2021 04:54:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XYZD9OiF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rtHNOSok;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49198 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m94bt-000451-I3
-	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:53:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41054)
+	id 1m94cs-0006ur-8K
+	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:54:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m941Z-0001M7-9i
- for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:25 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:37763)
+ id 1m941b-0001Pj-7x
+ for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:27 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:47098)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m9414-0001Pj-Us
- for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:24 -0400
-Received: by mail-wr1-x433.google.com with SMTP id d8so6457115wrm.4
- for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:51 -0700 (PDT)
+ id 1m9419-0001TN-5s
+ for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:26 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id c16so6429839wrp.13
+ for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=p/PVosmr3NDaaW48KULGfEDE4gWAQBCxNNHpd5+4wvQ=;
- b=XYZD9OiFWNXRZANimC6KdeeBOd9/IP8LQwcic3/Rr3WwYgFrxe3bJjVz8xSG0yaAOH
- rAWPsLKED3IpwtUl6dHRiZgAmaVlGkhV3JHkH3ZCEUAxEdKe9l1uMkZo2xYexpNiHkac
- y45+iqJsCP8zqra12ipRDT7YCi5XUbl5P48p4TlvJr7Q+PaEJXDu/SE0l39t4Xcduorf
- N4xpd95zg3pq2UYf3enw+F5Ewe3ulOAscw5WkFnffbG+4DjALaOo5nfV4fPr9RaE0Lua
- gcVlTfGtuOOVSp4869uIJzd3ug2niSENL9OGhjOJ99xG2HaqOoFzPEq56YlHuZNxP0w3
- +PmQ==
+ bh=XkZ/M1G+THrDlmqrCgDLQ+Zh1oSvNMXSv94gr49fYtc=;
+ b=rtHNOSokLA8O5zBaYcAJ706IaGOPtRtKB8qEQCm/lbzm8zRHqwjRnsi+Cv9v0E/hnd
+ jvBCK5WZGhpvohQQJe43cZRDSHPBOIZCzSinso+S50uJg9erueW2hVoV+BIP/HG9JLQt
+ yZxdqLnoxpk947RKLtsVRmmZLnsEV2HcNjE+U1mgWxlbP7XnS71mKUF1xOm1ClxVpx1x
+ GArQ+e6DNSrbbgWGko5ap5RbPJ8MST3Cm81nflBb3OlitRTaLiW4einbijV9E8SAk7g+
+ U4mueMPlBW1dLxjJlF4mFimJ+hXaGH63g/jcTCNUcZsGxuS76HC+7BVKCSbMdwCyRxhW
+ wD+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=p/PVosmr3NDaaW48KULGfEDE4gWAQBCxNNHpd5+4wvQ=;
- b=d93V7o4CYbB33ZoAm3uwU3I1WWep8CbjNm3FCLZGwL+ZC1LMqgtF8s/lJTrYq2m0+W
- Yxg/JffqQjE/jT4mx9dJldD7//clFV/ULbslTjikq4BVa/MwpTA5lu8rQw5ioF5zIZJw
- hbugLfAmDwpmDOyCw093K/+s5zunaMuB5InIcNZhmd00MrWOS1alBo+JNaTafiKqzQV1
- 97CJKk3/ySqdw6rchpbTq8v0u8jw1E69YgeT5HqMr167iNJz6MCq94ipIOoPzY8sJ3GQ
- hMqo6aTB+ysSIOrlH0czwmsedI77wsPMrcOuXrHLorml7eddLWHNnRNBZ/vRL2B1FXUy
- l0Bg==
-X-Gm-Message-State: AOAM531btboFq53RxAGNVN+12fqXuCBRfcdUmsLwevzsVs6x2ZHuXl09
- ScUiLdpqj66znlF/f0vIaKScBrC+IWssRQ==
-X-Received: by 2002:adf:dcd1:: with SMTP id x17mr4209511wrm.59.1627557350653; 
- Thu, 29 Jul 2021 04:15:50 -0700 (PDT)
+ bh=XkZ/M1G+THrDlmqrCgDLQ+Zh1oSvNMXSv94gr49fYtc=;
+ b=AqIL+N/o4l+EkDnW/IJ05A7OE6C0yiqatRAB/LKMuFnsIN+R68n46LyLRT1M3vc+SN
+ co9j316i8flMxqDIdnlNXjML25S1AbcQ7THq0goHqd2d5Kx+mqkknlmdLoJIDupd285z
+ M3hHHJQp/f6oq/CbZSDYPxsIUa0AFLj+us/6ugcII1v7NO9fHrKM+GpvDg7FQemETUr1
+ LRLTTzTxQ34XLvRVYLX6FHWP3MESuaTa/hI6Suy7s+TzzkiQC2UXSVcxGsG2CKNb/N9b
+ AtqRciXPtNEZNjH3wrUWWn5EbftAMIgmkyKkmu7HqsUfWtMxeBCB+0YPrGQiVV2MdWWI
+ bxfw==
+X-Gm-Message-State: AOAM531YuxY7KWTV/TqsDshQW6UBW/v88K4MA8TjMvk2viRMViyAWrVG
+ 0bnh8BIw9VmPMs2w4KUsc+ApHv5EOzIP9Q==
+X-Received: by 2002:a5d:6c63:: with SMTP id r3mr2822447wrz.405.1627557354932; 
+ Thu, 29 Jul 2021 04:15:54 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.49
+ by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 04:15:50 -0700 (PDT)
+ Thu, 29 Jul 2021 04:15:54 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 43/53] target/arm: Implement MVE fp-with-scalar VFMA,
- VFMAS
-Date: Thu, 29 Jul 2021 12:15:02 +0100
-Message-Id: <20210729111512.16541-44-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 48/53] target/arm: Implement MVE VCVT between floating
+ and fixed point
+Date: Thu, 29 Jul 2021 12:15:07 +0100
+Message-Id: <20210729111512.16541-49-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210729111512.16541-1-peter.maydell@linaro.org>
 References: <20210729111512.16541-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,72 +119,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GFlg9JTcJEJx
+X-TUID: kkI9zvoagW5j
 
-Implement the MVE fp-with-scalar VFMA and VFMAS insns.
+Implement the MVE VCVT insns which convert between floating and fixed
+point.  As with the Neon equivalents, these use essentially the same
+constant encoding as right-shift-by-immediate.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper-mve.h    |  6 ++++++
- target/arm/mve.decode      | 14 +++++++++++---
- target/arm/mve_helper.c    | 37 +++++++++++++++++++++++++++++++++++++
- target/arm/translate-mve.c |  2 ++
- 4 files changed, 56 insertions(+), 3 deletions(-)
+ target/arm/helper-mve.h    |  9 +++++++++
+ target/arm/mve.decode      | 19 +++++++++++++++++++
+ target/arm/mve_helper.c    | 36 ++++++++++++++++++++++++++++++++++++
+ target/arm/translate-mve.c | 18 ++++++++++++++++++
+ 4 files changed, 82 insertions(+)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 091ec4b4270..cb7b6423239 100644
+index 9ee841cdf01..f3c2b43bf43 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -809,3 +809,9 @@ DEF_HELPER_FLAGS_4(mve_vfsub_scalars, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+@@ -863,3 +863,12 @@ DEF_HELPER_FLAGS_4(mve_vfma_scalars, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
  
- DEF_HELPER_FLAGS_4(mve_vfmul_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(mve_vfmul_scalars, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vfmas_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vfmas_scalars, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_4(mve_vfma_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(mve_vfma_scalars, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(mve_vfmas_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(mve_vfmas_scalars, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_sh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_uh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_hs, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_hu, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_sf, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_uf, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_fs, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(mve_vcvt_fu, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 5ba8b6deeaa..d2bd6815bc3 100644
+index aa113279dc5..d9fcc42d36d 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -508,9 +508,17 @@ VSUB_scalar      1110 1110 0 . .. ... 1 ... 1 1111 . 100 .... @2scalar
-   VQRDMULH_scalar 1111  1110 0 . .. ... 1 ... 0 1110 . 110 .... @2scalar
- }
- 
--# The U bit (28) is don't-care because it does not affect the result
--VMLA             111- 1110 0 . .. ... 1 ... 0 1110 . 100 .... @2scalar
--VMLAS            111- 1110 0 . .. ... 1 ... 1 1110 . 100 .... @2scalar
-+{
-+  VFMA_scalar     111 . 1110 0 . 11 ... 1 ... 0 1110 . 100 .... @2op_fp_scalar
-+  # The U bit (28) is don't-care because it does not affect the result
-+  VMLA            111 - 1110 0 . .. ... 1 ... 0 1110 . 100 .... @2scalar
-+}
+@@ -771,3 +771,22 @@ VCMLA0            1111 110 00 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_
+ VCMLA90           1111 110 01 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
+ VCMLA180          1111 110 10 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
+ VCMLA270          1111 110 11 . 1 . ... 0 ... 0 1000 . 1 . 0 ... 0 @2op_fp_size_rev
 +
-+{
-+  VFMAS_scalar    111 . 1110 0 . 11 ... 1 ... 1 1110 . 100 .... @2op_fp_scalar
-+  # The U bit (28) is don't-care because it does not affect the result
-+  VMLAS           111 - 1110 0 . .. ... 1 ... 1 1110 . 100 .... @2scalar
-+}
- 
- VQRDMLAH         1110 1110 0 . .. ... 0 ... 0 1110 . 100 .... @2scalar
- VQRDMLASH        1110 1110 0 . .. ... 0 ... 1 1110 . 100 .... @2scalar
++# floating-point <-> fixed-point conversions. Naming convention:
++# VCVT_<from><to>, S = signed int, U = unsigned int, H = halfprec, F = singleprec
++@vcvt             .... .... .. 1 ..... .... .. 1 . .... .... &2shift \
++                  qd=%qd qm=%qm shift=%rshift_i5 size=2
++@vcvt_f16         .... .... .. 11 .... .... .. 0 . .... .... &2shift \
++                  qd=%qd qm=%qm shift=%rshift_i4 size=1
++
++VCVT_SH_fixed     1110 1111 1 . ...... ... 0 11 . 0 01 . 1 ... 0 @vcvt_f16
++VCVT_UH_fixed     1111 1111 1 . ...... ... 0 11 . 0 01 . 1 ... 0 @vcvt_f16
++
++VCVT_HS_fixed     1110 1111 1 . ...... ... 0 11 . 1 01 . 1 ... 0 @vcvt_f16
++VCVT_HU_fixed     1111 1111 1 . ...... ... 0 11 . 1 01 . 1 ... 0 @vcvt_f16
++
++VCVT_SF_fixed     1110 1111 1 . ...... ... 0 11 . 0 01 . 1 ... 0 @vcvt
++VCVT_UF_fixed     1111 1111 1 . ...... ... 0 11 . 0 01 . 1 ... 0 @vcvt
++
++VCVT_FS_fixed     1110 1111 1 . ...... ... 0 11 . 1 01 . 1 ... 0 @vcvt
++VCVT_FU_fixed     1111 1111 1 . ...... ... 0 11 . 1 01 . 1 ... 0 @vcvt
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 4175bacfaa4..3b243aaefa2 100644
+index 0aeccc12d69..8e1184db3b4 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -3080,3 +3080,40 @@ DO_2OP_FP_SCALAR(vfsub_scalarh, 2, uint16_t, float16_sub)
- DO_2OP_FP_SCALAR(vfsub_scalars, 4, uint32_t, float32_sub)
- DO_2OP_FP_SCALAR(vfmul_scalarh, 2, uint16_t, float16_mul)
- DO_2OP_FP_SCALAR(vfmul_scalars, 4, uint32_t, float32_mul)
+@@ -3263,3 +3263,39 @@ DO_VCMP_FP_BOTH(vfcmpgts, vfcmpgt_scalars, 4, uint32_t, DO_GT32)
+ 
+ DO_VCMP_FP_BOTH(vfcmpleh, vfcmple_scalarh, 2, uint16_t, !DO_GT16)
+ DO_VCMP_FP_BOTH(vfcmples, vfcmple_scalars, 4, uint32_t, !DO_GT32)
 +
-+#define DO_2OP_FP_ACC_SCALAR(OP, ESIZE, TYPE, FN)                       \
-+    void HELPER(glue(mve_, OP))(CPUARMState *env,                       \
-+                                void *vd, void *vn, uint32_t rm)        \
++#define DO_VCVT_FIXED(OP, ESIZE, TYPE, FN)                              \
++    void HELPER(glue(mve_, OP))(CPUARMState *env, void *vd, void *vm,   \
++                                uint32_t shift)                         \
 +    {                                                                   \
-+        TYPE *d = vd, *n = vn;                                          \
-+        TYPE r, m = rm;                                                 \
++        TYPE *d = vd, *m = vm;                                          \
++        TYPE r;                                                         \
 +        uint16_t mask = mve_element_mask(env);                          \
 +        unsigned e;                                                     \
 +        float_status *fpst;                                             \
@@ -199,34 +207,49 @@ index 4175bacfaa4..3b243aaefa2 100644
 +                scratch_fpst = *fpst;                                   \
 +                fpst = &scratch_fpst;                                   \
 +            }                                                           \
-+            r = FN(n[H##ESIZE(e)], m, d[H##ESIZE(e)], 0, fpst);         \
++            r = FN(m[H##ESIZE(e)], shift, fpst);                        \
 +            mergemask(&d[H##ESIZE(e)], r, mask);                        \
 +        }                                                               \
 +        mve_advance_vpt(env);                                           \
 +    }
 +
-+/* VFMAS is vector * vector + scalar, so swap op2 and op3 */
-+#define DO_VFMAS_SCALARH(N, M, D, F, S) float16_muladd(N, D, M, F, S)
-+#define DO_VFMAS_SCALARS(N, M, D, F, S) float32_muladd(N, D, M, F, S)
-+
-+/* VFMA is vector * scalar + vector */
-+DO_2OP_FP_ACC_SCALAR(vfma_scalarh, 2, uint16_t, float16_muladd)
-+DO_2OP_FP_ACC_SCALAR(vfma_scalars, 4, uint32_t, float32_muladd)
-+DO_2OP_FP_ACC_SCALAR(vfmas_scalarh, 2, uint16_t, DO_VFMAS_SCALARH)
-+DO_2OP_FP_ACC_SCALAR(vfmas_scalars, 4, uint32_t, DO_VFMAS_SCALARS)
++DO_VCVT_FIXED(vcvt_sh, 2, int16_t, helper_vfp_shtoh)
++DO_VCVT_FIXED(vcvt_uh, 2, uint16_t, helper_vfp_uhtoh)
++DO_VCVT_FIXED(vcvt_hs, 2, int16_t, helper_vfp_toshh_round_to_zero)
++DO_VCVT_FIXED(vcvt_hu, 2, uint16_t, helper_vfp_touhh_round_to_zero)
++DO_VCVT_FIXED(vcvt_sf, 4, int32_t, helper_vfp_sltos)
++DO_VCVT_FIXED(vcvt_uf, 4, uint32_t, helper_vfp_ultos)
++DO_VCVT_FIXED(vcvt_fs, 4, int32_t, helper_vfp_tosls_round_to_zero)
++DO_VCVT_FIXED(vcvt_fu, 4, uint32_t, helper_vfp_touls_round_to_zero)
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index bc4b3f840a0..3627ba227f2 100644
+index e8a3dec6683..9269dbc3324 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -979,6 +979,8 @@ static bool trans_VQDMULLT_scalar(DisasContext *s, arg_2scalar *a)
- DO_2OP_FP_SCALAR(VADD_fp_scalar, vfadd_scalar)
- DO_2OP_FP_SCALAR(VSUB_fp_scalar, vfsub_scalar)
- DO_2OP_FP_SCALAR(VMUL_fp_scalar, vfmul_scalar)
-+DO_2OP_FP_SCALAR(VFMA_scalar, vfma_scalar)
-+DO_2OP_FP_SCALAR(VFMAS_scalar, vfmas_scalar)
+@@ -1439,6 +1439,24 @@ DO_2SHIFT(VRSHRI_U, vrshli_u, true)
+ DO_2SHIFT(VSRI, vsri, false)
+ DO_2SHIFT(VSLI, vsli, false)
  
- static bool do_long_dual_acc(DisasContext *s, arg_vmlaldav *a,
-                              MVEGenLongDualAccOpFn *fn)
++#define DO_2SHIFT_FP(INSN, FN)                                  \
++    static bool trans_##INSN(DisasContext *s, arg_2shift *a)    \
++    {                                                           \
++        if (!dc_isar_feature(aa32_mve_fp, s)) {                 \
++            return false;                                       \
++        }                                                       \
++        return do_2shift(s, a, gen_helper_mve_##FN, false);     \
++    }
++
++DO_2SHIFT_FP(VCVT_SH_fixed, vcvt_sh)
++DO_2SHIFT_FP(VCVT_UH_fixed, vcvt_uh)
++DO_2SHIFT_FP(VCVT_HS_fixed, vcvt_hs)
++DO_2SHIFT_FP(VCVT_HU_fixed, vcvt_hu)
++DO_2SHIFT_FP(VCVT_SF_fixed, vcvt_sf)
++DO_2SHIFT_FP(VCVT_UF_fixed, vcvt_uf)
++DO_2SHIFT_FP(VCVT_FS_fixed, vcvt_fs)
++DO_2SHIFT_FP(VCVT_FU_fixed, vcvt_fu)
++
+ static bool do_2shift_scalar(DisasContext *s, arg_shl_scalar *a,
+                              MVEGenTwoOpShiftFn *fn)
+ {
 -- 
 2.20.1
 

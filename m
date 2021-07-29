@@ -1,103 +1,105 @@
-Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5550485lfc;
-        Thu, 29 Jul 2021 04:34:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdE/4xx4+389a+kY8m1e5EKLJv6+qvnenbMU+07hXlXeSfMU1yYpOONa4nA/wAmOf/7EuW
-X-Received: by 2002:a25:9942:: with SMTP id n2mr6173898ybo.230.1627558465653;
-        Thu, 29 Jul 2021 04:34:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627558465; cv=none;
+Received: by 2002:a19:7b1b:0:0:0:0:0 with SMTP id w27csp5550670lfc;
+        Thu, 29 Jul 2021 04:34:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwY9yi3bYjIv355tRqEG1po3Eox4I05aHdAh9VdRSVCCnR1ZsgvDHP72AJX/CJ6rNrbjauh
+X-Received: by 2002:a67:fe47:: with SMTP id m7mr1051214vsr.28.1627558481992;
+        Thu, 29 Jul 2021 04:34:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627558481; cv=none;
         d=google.com; s=arc-20160816;
-        b=cx7e9FNztHo4kl9Sv9Cd+cchxjPT9lc5ixcyJB/ZEXH/9BDJ0Ge7K+hxjhV5jU/5/y
-         N9sudTMiypx3zoi1VK7P6CrShvl5b1xjPTP1VoTP1QtpAalXnd0gZZeARZBiWhkBWbX1
-         c5bVA/TpcBX5CvnQRaamAKnYWgB1yrqpi0ff45SQtpUebOCE+3ljk776+UnOFsmDPBoG
-         Xsyhlqu7l9jXazoakiEAAghRz9MDqa98FIPbC1FQerAqeJlQtxDYvVAjo6iX7dGX4JY1
-         z9v9G4WpuQKuEIuUCpgpTyD+4FUGkoUPgyrCnH8cUqt3gbjl9VC9oIMKRW1Iy4zdpit4
-         tX9w==
+        b=Y3/Od3VqUDiL8JA5MYQ6I/ouVGoygyk84wSKd06bL3vZxwIUq7QBWaS5Y9BsbK/+zs
+         QDej9pQm6UpI0xHMCvf9qHLu2jwr/BE3bdUYd+EZLGhdtH8QUrkotzjakXAUxwVlfNiD
+         qoSDDn7HRnhx2Fy5yqICwVvr5NypzivC1/ddhJ8gPBL/h/2+BM/uhYTfNQtyoYU9hAFI
+         hng1x9y+c9heoZbrtxz72RjYj3low9/ju00OCN1oGLH9pVvtVP1Babh9ax5LqHDvVmrg
+         xxuIYjgwSLsci3NE0aS0nimzj8Zjwn3vrHORji27PRKaRcbpQcCh40e0yLd+3sFXejM7
+         5Fqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZsgiYwh7qNLAcSkC7LxnVfqa/pmBeTfF8iAebdcRKSo=;
-        b=y0cyXth60RIPyICpCh8pdwnb6KrfVyBMyjXzjYX6QQ5X7trTEbrOeiwYYoCx1R3c4X
-         kZPyDljRiQa9rzb8mZ5QCUTHOPis/hqTwbnN/rHUxV8FH2OGHsK84/nw9G8/gSnJ7CaA
-         JISrqtoV9iOcdv08y+If3FvUSfFh+qZDUThEQYNueuX4ZnaYZzQwkgfLyzPIBZjmRtvt
-         DLb6sFf3RIrbRBbqp/6NSmXoNg7JVOFZrUzzQ0ScFrnC9ofaIeEPwgqj6H1sqtst4y7c
-         QA8hcz25oiZA95pYSMXeddTe45Fcbl/RUM6l1GMMRbjqJPIROQgGg4rLl41AmfYLzZ22
-         OSWg==
+        bh=Qp88lepzk56QVkhZRSGO2VDv/JbZJtAi4P83EneyDdw=;
+        b=E+G2jZMnq/eapU1fUASMryGpA2fklThJ7uShIvzAB5HOYZrr0+I4YbUUJlVIstGU/g
+         lUZJqa1Wv2JeEes9v+sXGXjuEn8TqpnBq9TtcNHFvYEQ+oA+kdwBEZi1YGCAlbr/8EyM
+         JetJzDuPOQSYZMXfKkM4Jtf+Lk/kS+OJ/lYS3Y/d/UAHtcfnqNar3v1bSbb1wPxYlGlj
+         eT5EbSQQDKidVB7BYlhjzovxMiTq+Do1iYSGL+wXeORXR5HQqGjyKhoI2gRl/Mze6yvx
+         g5CHeP7KOx+gD+/OvsakecSxlFm7QMOb0v7Ll1p23N89sjQF3FGbUmIMDh9cXxezq34p
+         oV9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SOZtKpR6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=FakOkKQx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r17si2608575ybd.123.2021.07.29.04.34.25
+        by mx.google.com with ESMTPS id n12si1192663vse.375.2021.07.29.04.34.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Jul 2021 04:34:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Jul 2021 04:34:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SOZtKpR6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=FakOkKQx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48464 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47900 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m94Iy-00066t-UY
-	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:34:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40696)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m94JF-0005hn-6z
+	for alex.bennee@linaro.org; Thu, 29 Jul 2021 07:34:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m941G-00018y-0r
- for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:06 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:34768)
+ id 1m941E-00016Y-5D
+ for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:05 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:37485)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m940s-0001Iu-VQ
- for qemu-arm@nongnu.org; Thu, 29 Jul 2021 07:16:05 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- l4-20020a05600c1d04b02902506f89ad2dso5539503wms.1
- for <qemu-arm@nongnu.org>; Thu, 29 Jul 2021 04:15:41 -0700 (PDT)
+ id 1m940r-0001IY-44
+ for qemu-devel@nongnu.org; Thu, 29 Jul 2021 07:16:03 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ l34-20020a05600c1d22b02902573c214807so1131089wms.2
+ for <qemu-devel@nongnu.org>; Thu, 29 Jul 2021 04:15:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=ZsgiYwh7qNLAcSkC7LxnVfqa/pmBeTfF8iAebdcRKSo=;
- b=SOZtKpR6e95OuMwwg5Vj4v3FwmrUCpQVqO8qaGID1yX7o7SYO9cVmMhoa/Dc4rS5Eh
- PKxOOg46CuNQvjyoZ5WNsC1TmKxuao3hPYdHtNSdgxjjNh7zQAe9bH5XvmjBH5JzXexX
- WoCbBD6ZKfh0Rn147v3pj8F+m6O7IVtEIK80kGYmzW5a9t1c+ImG2wOE81OhIZvHY5E2
- N9WmJqKE++EViMSydP8sJBPkZ5yryXQQCcZPC77xdh4cyFQDTkjPA9mXckCF4KRQEU1U
- GSRW0N3sUVa2rJeviUpF8Oroxd2Bhvp7aoFvpszgF5LMrCMKFXQKuMe3QTvaBYpdsAPB
- pxpw==
+ bh=Qp88lepzk56QVkhZRSGO2VDv/JbZJtAi4P83EneyDdw=;
+ b=FakOkKQxABmcFJham9NEs+Cu2LZ2OT5L1gfSiSMDKJiJTp3WutvQUxidPYUcb/dM2i
+ N4NcYPxQDCklozTuarkXs8u1CuLIDlCZbJuXP+lKn1pjkLIT95jbN+Wkhj8CljxCrukH
+ dAuQl7JeG6abHc3DuDNvgl/79SwbKQkE9kaKj52XzZDS49fc+MajBzpBbMpz28SMQ2md
+ KHEqiZdR6mU2b1EsI9Lij3sVAH3Sx0oED6nfzNnZY+M82hoV7cuCCGbRUvBZB0ZhqOMn
+ IRc53ZZrPBfRcumHWPJzuJgnS0b9okqOZBoVgQfCneoNxPNwALlmc7l3zfmcYnyT6AG/
+ mZpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZsgiYwh7qNLAcSkC7LxnVfqa/pmBeTfF8iAebdcRKSo=;
- b=ugP288qc45ofw/zcQpb/I0i+JaSTtdjTkUC2WcdpotylX68SzHciaGMcCfuzJ8fzdo
- QbmSNKn+Pyhvn82QAA5tSNptyxZppHdA1RaoVqHZQuG0bHhX4TSuMfPl2fKjygggVJzo
- 1ZzyjFgdHSnYbqQt2P7Lrue4TkCDAiRknqe5yPpf4SKjtzlPFdhOYQ7rqD9crWjYsb3D
- 1d2tIIr3/5jl4M69qaXaqolzP/2hH3Ni4+A5zLMqoiFrnzcQKVwf2uWThrMg+qyXDQ+2
- Jfq21kS5YLSKaJ/OoekRUCrAoo+LmdPB2AznrQWbGSqjXiqi2EF/rhLczmEuANdrtAKO
- xERA==
-X-Gm-Message-State: AOAM530pusa7uyOApAKjswbNaeO5+k5s9b4/vzHchJFkxGAV07SLsgnu
- SCcgpYz8+scglS1mi7WA9jlGmZX6QHHMjQ==
-X-Received: by 2002:a1c:238e:: with SMTP id j136mr4272553wmj.91.1627557340414; 
- Thu, 29 Jul 2021 04:15:40 -0700 (PDT)
+ bh=Qp88lepzk56QVkhZRSGO2VDv/JbZJtAi4P83EneyDdw=;
+ b=fq6mEO/Al+Vna3jJHksZLY5m44ixIqaTiysIiK7J3tGhLWV8HdZgPNSN39tU/D+iYJ
+ PKwAk0V4ChDdz+vA/XZ0DqHfoIcKjDEMgNuxkXShRNvm8SW/6ug3qjskOR5rc8imdcn8
+ tStU7rztzlb6HFXJpxWnowUmy5LBKWJBKbgHWOJepV8sKZ2bS8G5eQXam/L1qRLplFJc
+ 0qVFtW5sI8F8bzfLkzP2Mc5psZqZqD1DKuyKOn3f6tmBA2R776nRrEAkuIPH8lppQW+l
+ aHtg3LTN3CaHqzwiNBAPH0NlbdvqDF+ZVPAq8BFLXE8fWstlv5mUq3TuDksRaqt46HZc
+ 6n7g==
+X-Gm-Message-State: AOAM530vnpTZxuU2conSm8+D6ApedePLG5Vz63SSuq3Fk9BdqNUID+oV
+ 8KR6YuVmLWMBhGzRDppltX4fis+5yVyjHA==
+X-Received: by 2002:a05:600c:3b98:: with SMTP id
+ n24mr13998775wms.182.1627557339571; 
+ Thu, 29 Jul 2021 04:15:39 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.39
+ by smtp.gmail.com with ESMTPSA id j140sm3037829wmj.37.2021.07.29.04.15.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 29 Jul 2021 04:15:39 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 31/53] target/arm: Implement MVE VPNOT
-Date: Thu, 29 Jul 2021 12:14:50 +0100
-Message-Id: <20210729111512.16541-32-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 30/53] target/arm: Implement MVE VMOV to/from 2
+ general-purpose registers
+Date: Thu, 29 Jul 2021 12:14:49 +0100
+Message-Id: <20210729111512.16541-31-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210729111512.16541-1-peter.maydell@linaro.org>
 References: <20210729111512.16541-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,115 +108,166 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LL1zu9s8yPad
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lLvZX5vEfFCV
 
-Implement the MVE VPNOT insn, which inverts the bits in VPR.P0
-(subject to both predication and to beatwise execution).
+Implement the MVE VMOV forms that move data between 2 general-purpose
+registers and 2 32-bit lanes in a vector register.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-mve.h    |  1 +
- target/arm/mve.decode      |  1 +
- target/arm/mve_helper.c    | 17 +++++++++++++++++
- target/arm/translate-mve.c | 19 +++++++++++++++++++
- 4 files changed, 38 insertions(+)
+ target/arm/translate-a32.h |  1 +
+ target/arm/mve.decode      |  4 ++
+ target/arm/translate-mve.c | 85 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-vfp.c |  2 +-
+ 4 files changed, 91 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 651020aaad8..8cb941912fc 100644
---- a/target/arm/helper-mve.h
-+++ b/target/arm/helper-mve.h
-@@ -119,6 +119,7 @@ DEF_HELPER_FLAGS_4(mve_vorn, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_veor, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+diff --git a/target/arm/translate-a32.h b/target/arm/translate-a32.h
+index 6dfcafe1796..6f4d65ddb00 100644
+--- a/target/arm/translate-a32.h
++++ b/target/arm/translate-a32.h
+@@ -49,6 +49,7 @@ void gen_rev16(TCGv_i32 dest, TCGv_i32 var);
+ void clear_eci_state(DisasContext *s);
+ bool mve_eci_check(DisasContext *s);
+ void mve_update_and_store_eci(DisasContext *s);
++bool mve_skip_vmov(DisasContext *s, int vn, int index, int size);
  
- DEF_HELPER_FLAGS_4(mve_vpsel, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_1(mve_vpnot, TCG_CALL_NO_WG, void, env)
- 
- DEF_HELPER_FLAGS_4(mve_vaddb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vaddh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ static inline TCGv_i32 load_cpu_offset(int offset)
+ {
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 774ee2a1a5b..40bd0c04b59 100644
+index 0955ed0cc22..774ee2a1a5b 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -571,6 +571,7 @@ VCMPGT            1111 1110 0 . .. ... 1 ... 1 1111 0 0 . 0 ... 1 @vcmp
- VCMPLE            1111 1110 0 . .. ... 1 ... 1 1111 1 0 . 0 ... 1 @vcmp
+@@ -136,6 +136,10 @@ VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111101 .......   @vldr_vstr \
+ VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111110 .......   @vldr_vstr \
+                  size=2 p=1
  
- {
-+  VPNOT           1111 1110 0 0 11 000 1 000 0 1111 0100 1101
-   VPST            1111 1110 0 . 11 000 1 ... 0 1111 0100 1101 mask=%mask_22_13
-   VCMPEQ_scalar   1111 1110 0 . .. ... 1 ... 0 1111 0 1 0 0 .... @vcmp_scalar
- }
-diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index d326205cbf0..c22a00c5ed6 100644
---- a/target/arm/mve_helper.c
-+++ b/target/arm/mve_helper.c
-@@ -2201,6 +2201,23 @@ void HELPER(mve_vpsel)(CPUARMState *env, void *vd, void *vn, void *vm)
-     mve_advance_vpt(env);
- }
- 
-+void HELPER(mve_vpnot)(CPUARMState *env)
-+{
-+    /*
-+     * P0 bits for unexecuted beats (where eci_mask is 0) are unchanged.
-+     * P0 bits for predicated lanes in executed bits (where mask is 0) are 0.
-+     * P0 bits otherwise are inverted.
-+     * (This is the same logic as VCMP.)
-+     * This insn is itself subject to predication and to beat-wise execution,
-+     * and after it executes VPT state advances in the usual way.
-+     */
-+    uint16_t mask = mve_element_mask(env);
-+    uint16_t eci_mask = mve_eci_mask(env);
-+    uint16_t beatpred = ~env->v7m.vpr & mask;
-+    env->v7m.vpr = (env->v7m.vpr & ~(uint32_t)eci_mask) | (beatpred & eci_mask);
-+    mve_advance_vpt(env);
-+}
++# Moves between 2 32-bit vector lanes and 2 general purpose registers
++VMOV_to_2gp      1110 1100 0 . 00 rt2:4 ... 0 1111 000 idx:1 rt:4 qd=%qd
++VMOV_from_2gp    1110 1100 0 . 01 rt2:4 ... 0 1111 000 idx:1 rt:4 qd=%qd
 +
- #define DO_1OP_SAT(OP, ESIZE, TYPE, FN)                                 \
-     void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
-     {                                                                   \
+ # Vector 2-op
+ VAND             1110 1111 0 . 00 ... 0 ... 0 0001 . 1 . 1 ... 0 @2op_nosz
+ VBIC             1110 1111 0 . 01 ... 0 ... 0 0001 . 1 . 1 ... 0 @2op_nosz
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 93707fdd681..cc2e58cfe2f 100644
+index 02c26987a2d..93707fdd681 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -887,6 +887,25 @@ static bool trans_VPST(DisasContext *s, arg_VPST *a)
-     return true;
- }
+@@ -1507,3 +1507,88 @@ static bool do_vabav(DisasContext *s, arg_vabav *a, MVEGenVABAVFn *fn)
  
-+static bool trans_VPNOT(DisasContext *s, arg_VPNOT *a)
+ DO_VABAV(VABAV_S, vabavs)
+ DO_VABAV(VABAV_U, vabavu)
++
++static bool trans_VMOV_to_2gp(DisasContext *s, arg_VMOV_to_2gp *a)
 +{
 +    /*
-+     * Invert the predicate in VPR.P0. We have call out to
-+     * a helper because this insn itself is beatwise and can
-+     * be predicated.
++     * VMOV two 32-bit vector lanes to two general-purpose registers.
++     * This insn is not predicated but it is subject to beat-wise
++     * execution if it is not in an IT block. For us this means
++     * only that if PSR.ECI says we should not be executing the beat
++     * corresponding to the lane of the vector register being accessed
++     * then we should skip perfoming the move, and that we need to do
++     * the usual check for bad ECI state and advance of ECI state.
++     * (If PSR.ECI is non-zero then we cannot be in an IT block.)
 +     */
-+    if (!dc_isar_feature(aa32_mve, s)) {
++    TCGv_i32 tmp;
++    int vd;
++
++    if (!dc_isar_feature(aa32_mve, s) || !mve_check_qreg_bank(s, a->qd) ||
++        a->rt == 13 || a->rt == 15 || a->rt2 == 13 || a->rt2 == 15 ||
++        a->rt == a->rt2) {
++        /* Rt/Rt2 cases are UNPREDICTABLE */
 +        return false;
 +    }
 +    if (!mve_eci_check(s) || !vfp_access_check(s)) {
 +        return true;
 +    }
 +
-+    gen_helper_mve_vpnot(cpu_env);
-+    mve_update_eci(s);
++    /* Convert Qreg index to Dreg for read_neon_element32() etc */
++    vd = a->qd * 2;
++
++    if (!mve_skip_vmov(s, vd, a->idx, MO_32)) {
++        tmp = tcg_temp_new_i32();
++        read_neon_element32(tmp, vd, a->idx, MO_32);
++        store_reg(s, a->rt, tmp);
++    }
++    if (!mve_skip_vmov(s, vd + 1, a->idx, MO_32)) {
++        tmp = tcg_temp_new_i32();
++        read_neon_element32(tmp, vd + 1, a->idx, MO_32);
++        store_reg(s, a->rt2, tmp);
++    }
++
++    mve_update_and_store_eci(s);
 +    return true;
 +}
 +
- static bool trans_VADDV(DisasContext *s, arg_VADDV *a)
++static bool trans_VMOV_from_2gp(DisasContext *s, arg_VMOV_to_2gp *a)
++{
++    /*
++     * VMOV two general-purpose registers to two 32-bit vector lanes.
++     * This insn is not predicated but it is subject to beat-wise
++     * execution if it is not in an IT block. For us this means
++     * only that if PSR.ECI says we should not be executing the beat
++     * corresponding to the lane of the vector register being accessed
++     * then we should skip perfoming the move, and that we need to do
++     * the usual check for bad ECI state and advance of ECI state.
++     * (If PSR.ECI is non-zero then we cannot be in an IT block.)
++     */
++    TCGv_i32 tmp;
++    int vd;
++
++    if (!dc_isar_feature(aa32_mve, s) || !mve_check_qreg_bank(s, a->qd) ||
++        a->rt == 13 || a->rt == 15 || a->rt2 == 13 || a->rt2 == 15) {
++        /* Rt/Rt2 cases are UNPREDICTABLE */
++        return false;
++    }
++    if (!mve_eci_check(s) || !vfp_access_check(s)) {
++        return true;
++    }
++
++    /* Convert Qreg idx to Dreg for read_neon_element32() etc */
++    vd = a->qd * 2;
++
++    if (!mve_skip_vmov(s, vd, a->idx, MO_32)) {
++        tmp = load_reg(s, a->rt);
++        write_neon_element32(tmp, vd, a->idx, MO_32);
++        tcg_temp_free_i32(tmp);
++    }
++    if (!mve_skip_vmov(s, vd + 1, a->idx, MO_32)) {
++        tmp = load_reg(s, a->rt2);
++        write_neon_element32(tmp, vd + 1, a->idx, MO_32);
++        tcg_temp_free_i32(tmp);
++    }
++
++    mve_update_and_store_eci(s);
++    return true;
++}
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index b2991e21ec7..e2eb797c829 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -581,7 +581,7 @@ static bool trans_VCVT(DisasContext *s, arg_VCVT *a)
+     return true;
+ }
+ 
+-static bool mve_skip_vmov(DisasContext *s, int vn, int index, int size)
++bool mve_skip_vmov(DisasContext *s, int vn, int index, int size)
  {
-     /* VADDV: vector add across vector */
+     /*
+      * In a CPU with MVE, the VMOV (vector lane to general-purpose register)
 -- 
 2.20.1
 

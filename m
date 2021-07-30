@@ -1,111 +1,111 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp523899lff;
-        Fri, 30 Jul 2021 12:48:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwetJDb0G/Y7NkloiZOOcJQ5HXdQULw2p8U1S6CeqssMKFt4Ywgi6Vy78QGnQ1eYIl9soVx
-X-Received: by 2002:a25:a286:: with SMTP id c6mr5112779ybi.349.1627674491857;
-        Fri, 30 Jul 2021 12:48:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627674491; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp525563lff;
+        Fri, 30 Jul 2021 12:50:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6US5KhTvKUSURBVw7xj1kc/Dz7fPTH0cA8CUbOlzLDx/gS6HtuQ8yZTV6fmrcY28M9K0H
+X-Received: by 2002:a25:8489:: with SMTP id v9mr5493739ybk.477.1627674644492;
+        Fri, 30 Jul 2021 12:50:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627674644; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q66x21MNepYK34qBBoZ45h7XToomruJeeK72NTIOgXdkAevoco0Kl0+IdWajgw/Qyw
-         ZeYBZh9f8IPSH925PPdm6wiN0QLWmHz3+h7FwPrdX+Wl9wn8p8uUjdmxhx0t1C6TRQw/
-         62UsCBwpH/Ac7yDy5ASWWMeyYwnHA6SaDR97+qEmyAqzfAmjaf0OUAcW3GmZMZ938wVw
-         3X/maBnfgKh8X0jRN7pFj37uDoIhZfpwAHQIdJwMS763zbOEnU4OjRCZfQf7feVIktsA
-         acUw7CUpE6SpYlyZSGMTRmtIzlSPHlfFgwlIZCeTfemeIxmQ0fekPnaGvRSH07lrzTqw
-         wxHg==
+        b=TFpNNGTtL9N7s7NBk0BajublNRfAeEXKfIuXdaLzBBk16yMcoCUIKoi8Pi17zUIfDH
+         Y0KERMO6bRcEHHwl5xKrQnkTSpnFD110+f9MGBBGebIAD2dHpCSYbbKW13Res7TDZnQV
+         MCIEmB/a0KThdmYfRAWVyKRQ4GKkY92LzRT4EKUNOABJ11ajMBhDhm67AeKXz1YJzCC7
+         E4JIsTgRiGpktss4lQMeZkxIPv872hA7dlIoCDgdPKfF+ftbJCnVIwcNkvG2SUzYNtBh
+         lFnPSywGY1fRG5P/V5Wa91hM7m2Cbo9G+9jE87nnZnoTL1ImVC9XoEsT9ET/pPL2eSct
+         o1yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Y1fVlefxzFWTPDME/a9xIKg0QQWtUb1i1gNesZX+mJ8=;
-        b=OoAr8RSv/xYX+AkZIdYBuPw7/CT8O42M5rl6rKRB9jlyWwp3EEMtFbfCzV29A3F2pp
-         my4Wf03d+HoMtDFaInRceITaW4TAW8oUbPwsgElcb6xUmLzWoS9RUTWUJLwUPb7WDsTK
-         6pIciOeAmvMTR7qbk9zl8pXJjfPPQFMlHNAR2UybG2+EmAh9BKdGNMiMS5G/DBjOImYD
-         lVEg3DonjPINHEZE4SSfCE6OWNxaCtjpxTIxEUC9E7bPP0Yb1kiXtaUM2dDTmv3Hkgv5
-         l3UvjhCG8eiRliqQJoEZZ5BFIXX8kUwmZNMLiBKxKHyX8/LVJCkxzGXgvZRxdAl7PcG7
-         WXGA==
+        bh=bmlIp+0ON9Qts3yqUGeH75l1oWQ/NEKpeZrMW4pqUZQ=;
+        b=RawS5/O6j5CXkC4+pFrvIMg6Yf+0bdY2ThalPFEd/hANJczvfKxS5m1h/Y4ptsBWvn
+         jEMy+tbgRQFOGR2acbLD+o/zngY3O2BurnCiLBas7ZpK30uCovZW4GTrmRXQYFaH8FBJ
+         Gr6KjAVD1B2RIXeCbkkgE1sRk+2ZJ7la/MrZQVmODtzMI+jlKAsNB+qJzAmaTFZ6yA+H
+         tFpwLqp3gSPcex+Kvm4zy8CG9g5AbkXoPEhBZnJGdk9p1WoHspBqUxvuKU3zGluMdB09
+         FHmq8exsXtJDbY1t9D8x054y7OBxOLJadQU1ebjvU8Sm7ukLbef32YtHgnGNiHenFpzn
+         43Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CrZW72gm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vPJUWtBj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c186si2306283ybb.161.2021.07.30.12.48.11
+        by mx.google.com with ESMTPS id q18si2831979ybp.33.2021.07.30.12.50.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Jul 2021 12:48:11 -0700 (PDT)
+        Fri, 30 Jul 2021 12:50:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CrZW72gm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vPJUWtBj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52750 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56586 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m9YUN-0008LV-0f
-	for alex.bennee@linaro.org; Fri, 30 Jul 2021 15:48:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44412)
+	id 1m9YWp-0002g1-GJ
+	for alex.bennee@linaro.org; Fri, 30 Jul 2021 15:50:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m9YU3-0008Kw-Df
- for qemu-arm@nongnu.org; Fri, 30 Jul 2021 15:47:51 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f]:47005)
+ id 1m9YWd-0002eV-2R
+ for qemu-arm@nongnu.org; Fri, 30 Jul 2021 15:50:31 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633]:45983)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m9YU1-0004zd-Sr
- for qemu-arm@nongnu.org; Fri, 30 Jul 2021 15:47:51 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- g23-20020a17090a5797b02901765d605e14so15878595pji.5
- for <qemu-arm@nongnu.org>; Fri, 30 Jul 2021 12:47:49 -0700 (PDT)
+ id 1m9YWb-0006j8-I9
+ for qemu-arm@nongnu.org; Fri, 30 Jul 2021 15:50:30 -0400
+Received: by mail-pl1-x633.google.com with SMTP id k1so12311917plt.12
+ for <qemu-arm@nongnu.org>; Fri, 30 Jul 2021 12:50:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=Y1fVlefxzFWTPDME/a9xIKg0QQWtUb1i1gNesZX+mJ8=;
- b=CrZW72gm8eVN2Pibpl1CTyfxrdupFrjGu2OxdpP1EHwgUJp+67mfL5IuNyuNlluVsG
- H7AK4t45+d12nmLtM5yNNbskUywFaViwDaiwC0MTpNbir0mgoogevdDJKdY5rA00TJXr
- Lq7cHtp9LJnXGKuEHTB8Uy+7j1Zy7zFik48ZbLuOK1AkURtXAQqPJPKJ5u14w7sBZQx0
- UENorTkvlVHiJRBV9W0fYJQPTabt+Sr1ng6wSJrHc2ze4CnrJyMMLkmmtDbGU8JYTiy8
- 7KsUybCrL1t13eaY6l2/pC3PYCdA2uMm4glQ8lVvkuNvD4gz4pXNf2S2DVvo4dHsehUP
- z6Fw==
+ bh=bmlIp+0ON9Qts3yqUGeH75l1oWQ/NEKpeZrMW4pqUZQ=;
+ b=vPJUWtBj5WoR8EYQdYENAECx3R1qFrWuL+1On/ddB47XR41Cb9kb3szY5hysGQtKlX
+ v15zickptdYgiHGla1JubVyzwelzvT9/lWEJTUGDAB+AFAkd+s8iZGqyUDx2IJfCGjgC
+ Vy6dPiALpWh9NXwJVVbPOwCLoccJuFWFMpyOQm19qCuEzIo2y45/Zy2mah5nTpOB0WDB
+ id+FoGkZV6ITJSfDqY0IKRC1tnqmcrDWHPnlkxWd8Xm+4/7njzVq9096QRe2ZuA7ViAa
+ CPrectVq6aNkqX/HJBPpnC9NSQ5gMsNmtiTm5VAj3nNsvuGZJ0K5v3KWB1qrXAuUYwTJ
+ UbIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Y1fVlefxzFWTPDME/a9xIKg0QQWtUb1i1gNesZX+mJ8=;
- b=Hu0fPfOyfb+YAHSHYuAhBu9gsAThtCCs+FB9CRiJawDgrl+ISy7laRQ/3kqD5ygTcI
- I3NGKJUCwaJi/8wt4D3LXT+8YATCnWOx7FLKxvwSoZl3QwASnYbz2e14dP3CN23AI795
- soe5BDLDMb6LjNmEbnICe92xFpKjU5lozvyBYM71ucZAexnSmy1cYMBs4XrPXEBpOxb/
- P79WpFn/Lt5hQkTaMm9PBLIdByoIoYixt75sZHWmsnx7uswajogI2F7cmHNLJVlq5saR
- K9ai6KpuSnW9XpiZhBvpzLsNeUp+OMpBgyIwG6AKbBg+6YwO1ZJdOG6nxLe3a6dDrWIn
- Xmqg==
-X-Gm-Message-State: AOAM530RgcOwZeRqxSKjxhUBjNJZqeE1OFRU0jz2/91p07vijNPOJnWY
- PifRk0j0aIBSwpXFcPpncJfVyA==
-X-Received: by 2002:a05:6a00:1c6d:b029:338:322:137d with SMTP id
- s45-20020a056a001c6db02903380322137dmr4208616pfw.38.1627674468173; 
- Fri, 30 Jul 2021 12:47:48 -0700 (PDT)
+ bh=bmlIp+0ON9Qts3yqUGeH75l1oWQ/NEKpeZrMW4pqUZQ=;
+ b=EnkpP4klja56/yku2usr0v0SUE+Wg+jj5/AgNrjQrWYsUSxO3OTaOC0GxvAOKE434X
+ 81xKMjC5Zb9MeRrW4Ls5b6oKkQmYztRzuVeGsLXgQ0UVAVzV4kgVeM55MfXbwruJYbCy
+ FI4mrCPrCEqcf7hXCL5bu0FhSJnMRcgjMFAXzPbBUQUoI/Ylr035fSd7UKF2vAYl602/
+ eMhLrsJymqNkFqvGc9KgRFtxUSqQhGOJpq/eAC1/l6JrYiWHKrbiDhGxeEVhoFSgVxdp
+ 8sUYGnm3wbEGBB0EH0Tzu7BClFBbddHDNnwDduloqSR938OIP9+9ohuPBi28HfY3u59Q
+ CLfw==
+X-Gm-Message-State: AOAM531F+nOkhCVG7JKenBgGzvqhfIW7DOx4T+thKRUWgTaCHiaRU3Cg
+ 2P/AuP3b+gq2Wkx7UJwEgWfPWw==
+X-Received: by 2002:aa7:921a:0:b029:2cf:b55b:9d52 with SMTP id
+ 26-20020aa7921a0000b02902cfb55b9d52mr4264439pfo.35.1627674628348; 
+ Fri, 30 Jul 2021 12:50:28 -0700 (PDT)
 Received: from ?IPv6:2603:800c:3202:ffa7:c4c7:6719:c57e:8ffe?
  (2603-800c-3202-ffa7-c4c7-6719-c57e-8ffe.res6.spectrum.com.
  [2603:800c:3202:ffa7:c4c7:6719:c57e:8ffe])
- by smtp.gmail.com with ESMTPSA id n22sm3299812pfo.125.2021.07.30.12.47.46
+ by smtp.gmail.com with ESMTPSA id s20sm129804pji.51.2021.07.30.12.50.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 30 Jul 2021 12:47:47 -0700 (PDT)
-Subject: Re: [PATCH for-6.2 40/53] target/arm: Implement MVE VCMUL and VCMLA
+ Fri, 30 Jul 2021 12:50:28 -0700 (PDT)
+Subject: Re: [PATCH for-6.2 41/53] target/arm: Implement MVE VMAXNMA and
+ VMINNMA
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210729111512.16541-1-peter.maydell@linaro.org>
- <20210729111512.16541-41-peter.maydell@linaro.org>
+ <20210729111512.16541-42-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <b598cb8c-2b68-ae6c-f634-ddcf3287a408@linaro.org>
-Date: Fri, 30 Jul 2021 09:47:44 -1000
+Message-ID: <b525a3cb-1809-28dd-3f72-0ab51b5d739d@linaro.org>
+Date: Fri, 30 Jul 2021 09:50:25 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210729111512.16541-41-peter.maydell@linaro.org>
+In-Reply-To: <20210729111512.16541-42-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -127,26 +127,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n+QdLgqaK57P
+X-TUID: 0PM3c+LL4RSI
 
-On 7/29/21 1:14 AM, Peter Maydell wrote:
-> +#define DO_VCMULH(N, M, D, S) float16_mul(N, M, S)
-> +#define DO_VCMULS(N, M, D, S) float32_mul(N, M, S)
-> +
-> +#define DO_VCMLAH(N, M, D, S) float16_muladd(N, M, D, 0, S)
-> +#define DO_VCMLAS(N, M, D, S) float32_muladd(N, M, D, 0, S)
-> +
-> +DO_VCMLA(vcmul0h, 2, uint16_t, 0, float16_chs, DO_VCMULH)
-> +DO_VCMLA(vcmul0s, 4, uint32_t, 0, float32_chs, DO_VCMULS)
-> +DO_VCMLA(vcmul90h, 2, uint16_t, 1, float16_chs, DO_VCMULH)
-> +DO_VCMLA(vcmul90s, 4, uint32_t, 1, float32_chs, DO_VCMULS)
-> +DO_VCMLA(vcmul180h, 2, uint16_t, 2, float16_chs, DO_VCMULH)
-> +DO_VCMLA(vcmul180s, 4, uint32_t, 2, float32_chs, DO_VCMULS)
-> +DO_VCMLA(vcmul270h, 2, uint16_t, 3, float16_chs, DO_VCMULH)
-> +DO_VCMLA(vcmul270s, 4, uint32_t, 3, float32_chs, DO_VCMULS)
-
-Here you don't need to pass in floatN_chs if you use floatN as TYPE.  The macros to merge 
-mul and muladd are clever.
+On 7/29/21 1:15 AM, Peter Maydell wrote:
+> Implement the MVE VMAXNMA and VMINNMA insns; these are 2-operand, but
+> the destination register must be the same as one of the source
+> registers.
+> 
+> We defer the decode of the size in bit 28 to the individual insn
+> patterns rather than doing it in the format, because otherwise we
+> would have a single insn pattern that overlapped with two groups (eg
+> VMAXNMA with the VMULH_S and VMULH_U groups). Having two insn
+> patterns per insn seems clearer than a complex multilevel nesting
+> of overlapping and non-overlapping groups.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   target/arm/helper-mve.h    |  6 ++++++
+>   target/arm/mve.decode      | 11 +++++++++++
+>   target/arm/mve_helper.c    | 25 +++++++++++++++++++++++++
+>   target/arm/translate-mve.c |  2 ++
+>   4 files changed, 44 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

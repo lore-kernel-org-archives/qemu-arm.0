@@ -1,106 +1,105 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2359786lff;
-        Tue, 3 Aug 2021 02:03:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzfwub/ZNfBE5JV824clgrq02GgOg+4Q0QpdJr1ohgCqqai6IAJkfAATtj/obl45jpvqB46
-X-Received: by 2002:a05:620a:1790:: with SMTP id ay16mr2388322qkb.67.1627981437833;
-        Tue, 03 Aug 2021 02:03:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627981437; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2360130lff;
+        Tue, 3 Aug 2021 02:04:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxnRydsFFjB+gRwGJ9R5KBjhuDu6VRXSeD6ATiCrI3su3sKp+1K2wRiDLORVEKOsyfAghlH
+X-Received: by 2002:a92:d388:: with SMTP id o8mr636700ilo.247.1627981468958;
+        Tue, 03 Aug 2021 02:04:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627981468; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZYzGhJgZ6z/+kVhQYEdWgOHEaIxbK/V0KAM7epIL+2hS/piAK9HMFdWBkc0qEWsxb9
-         jOBeGsoKUBU1b+D2t/O8oiabxK+8omaffUgJTrGv3Oh+xlJGXbTOogx1C37IbiOvlOJ6
-         vKRQX9QnxoIpGf+964RjbVtqpZkaoM25Bbn+Q82sWJ4MGUubqg6R72vP5i5CvY++6L3V
-         7aJiAT+MzGw/hUBQw05JeRqUASXs6cirO6zKbLxMWwTLP+Kryr/RUcFWCnVkidVyO78W
-         y/xhqkZxjtfiVDw/FwRizfNHiZ76vNBZ6nhgesBnO4d1Zx1tu2v3+lELZuPXls1epnNh
-         sOtw==
+        b=zNngMUTu1gqp/VsbqtIrhgmxipV7UAsupVrbb5yUaIISyL/pKRmH4OCVJNHZOxoEvN
+         PQO7Y+JCZ08ktHB0uHuUxnonJJ3TZfejRQzVqkVczUKPZY+BoHEgRvmUAVxdWurcYRA+
+         bsp/pOEXkToIupzJflsRGqkqFFFLoKI1ZsTcLqZxP+ttG7pvLHozbVhXpTh7o3ulBoWW
+         9Ygq5O+4AWbmbYNPOtK58/TWnVbpALecwB8JqKZaF19B4NwP77uPhtWKIWSRQWW+Rw96
+         r79ju8T0HoNxNO9xhB14O5qLITVNc4gqo5rApsGGonljBesqft5usqPFuG/Mj7hqDMPL
+         vZ4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=r8fpJyJTQYiSETFPNIE3u8CFQLrci8TghacHJJ7RsgM=;
-        b=PHhU/4Cc01g++i8lqEpPXeYULX+IT88OLKaNBkAOHCaU+0aVziYlMVMuaZuMibGtsf
-         TnpN0cCaqgFhGecSAJk3JeGAvxFl/oydqo8f18tK1FL4mN8sXyQhaHdF8HGgaeSJoM+o
-         Al+4ZYqwP3JSb4gsn62JV16gmfaFw8FXGPYo7PpII21VeFy2pVRiCgbwKxOzwckzonRa
-         paF/UbBzCzFBjaDIUcg07Jq8ToDpYoMMBMdChn3Ihbo/57VlkoacAHkANu8Q3SCndW3Q
-         lBLHOI38o65D/TQclVY+FNdJsrDMpn0bGjlU431DFh0ljL4rEIRMtEpCzLmK/S3KU5pU
-         xIdw==
+        bh=d64XEW3wUlV0KaJdc/F+hRb1GggDsSVbQTTFUSTUnXY=;
+        b=DplnXdPtd/QkDUPRwjP31eEKg/Vj9dPVjLyQJM7/YmVbBq8NTHw536dQLtw5LpDjxd
+         4Vd6+KXVF0ruXuTvlNdJmuwExQtlQHN2ZfVEe2d8zGF8Cbn9T5EpwDGuK6/EyCavS34w
+         STE60kgN4hOGWYaanYUIRcEpnhH06w3QszlUTckFzqr3Igkr4D+yHCSrohgXcrmvDeer
+         S0k8p/by5QtfK7w2jaD75JejATwkVkbblJzMwm/16pFN2+/Wnzjqf0W8ORuTOe3+XhFy
+         YLwqR+iLgl10TIukRcw+KcPWG7SQday/o2br8gNBLkGRhgZsMmg3Zlf91J/dpKGPEWhv
+         H0vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fcx8NZy8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=aUCAu2MJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18si8225358qkv.110.2021.08.03.02.03.57
+        by mx.google.com with ESMTPS id l20si14792492ion.36.2021.08.03.02.04.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Aug 2021 02:03:57 -0700 (PDT)
+        Tue, 03 Aug 2021 02:04:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fcx8NZy8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=aUCAu2MJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48292 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49546 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mAqL6-0000My-Ul
-	for alex.bennee@linaro.org; Tue, 03 Aug 2021 05:03:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48194)
+	id 1mAqLc-0001Fh-5Y
+	for alex.bennee@linaro.org; Tue, 03 Aug 2021 05:04:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mAqK2-0007Kr-Ae
- for qemu-devel@nongnu.org; Tue, 03 Aug 2021 05:02:50 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:46827)
+ id 1mAqKJ-0007xh-DW
+ for qemu-devel@nongnu.org; Tue, 03 Aug 2021 05:03:07 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:39717)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mAqK0-0002qt-0j
- for qemu-devel@nongnu.org; Tue, 03 Aug 2021 05:02:50 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id f13so28005372edq.13
- for <qemu-devel@nongnu.org>; Tue, 03 Aug 2021 02:02:47 -0700 (PDT)
+ id 1mAqKH-00037M-3r
+ for qemu-devel@nongnu.org; Tue, 03 Aug 2021 05:03:07 -0400
+Received: by mail-ed1-x533.google.com with SMTP id y12so28091308edo.6
+ for <qemu-devel@nongnu.org>; Tue, 03 Aug 2021 02:03:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=r8fpJyJTQYiSETFPNIE3u8CFQLrci8TghacHJJ7RsgM=;
- b=Fcx8NZy8QeHiIQwfZ6zg96fZJ0CcXvgSwPLjAXwRf7Q1je+WUaUVjKSY3kBQO3jTaQ
- WNe961M22L9v9yjIr9Yy9IpWDCqhHR97vkFXC4NASXDyXZzMB2mn5l9NxDjL7EYdBuZ3
- GnHRWCj+Q7qDMJ7hb105n0W6RUHzHIwouNlhbJZmr0e6dFZ43aFJOlemamFxCV8J83Ci
- R9rw1w+4HSplT2BzaS1gOfOwozTEJlBS76uBK2zlVhg8DS+bQwlM6m336mjX44I9HxSZ
- bHKA3lYum229Gwn96GeEOI9Il5cIX2BEF8EDgPIawkxsoUscfxJi0qrJNJriWd14SSS7
- E7Rg==
+ bh=d64XEW3wUlV0KaJdc/F+hRb1GggDsSVbQTTFUSTUnXY=;
+ b=aUCAu2MJHYVv3QE3WeylkrOYvaHkPxqL8FuKX1aXd2QK/KBzyDALnZbgoKMTh0ks5o
+ dcpsUaqa+dSMhxXRdA7EmF4oO4cJZjqLP4Yb97COdF3/VLPW322uFVpW2xU3bsh+T9zq
+ L6x3oQpcYG+HqwJMPjLMM9lvwg9dAbyMg+u4m8vfGxlj6lDh6L/OxrQGMfjBwCpsMZgH
+ t9R8SrksvHn2VhdGfjvYMln6rxcWfd0q6xuumI6XbOPMV2H/Q4ck+FN1jFYFFTRV/O/E
+ xGWacEPERfDv/G5T9iJtw4m/iLJW2+bMwe3vcWg5WwW2WiAoiNFtGSBMU31sSKNKvCUR
+ BSUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=r8fpJyJTQYiSETFPNIE3u8CFQLrci8TghacHJJ7RsgM=;
- b=ViOk1sjTSo+wK7CuoOPjrOpgZ6DCY3imTm4z85dm6ccZL4kv1aa7opKiYSAm7CCb1D
- TVCrGSyAru2LtvAcd66X9bfLXQHv78dZ+lLG9ZKHK+6Bqw8IdHSTkcisXe3rqzTFXYYS
- jr5eDRNrRWcuXQzUAE+Lico4v1HWIJdA+qxMzXmTmw98rNcN7m2IJkLULVbEDZVuSAuX
- XFpDbg4dPM/CcxiGnklL8WOVUMF0J7w5KHCTCY6BK7jNOmh2X/VjJY5Wyr/4wRqS+uhB
- xIG6L1TenE3jUUYhnXwyiU+0QLiaCWXniavO+Ct8VzfpCfPfwdRPaU7jgc/oCo172XSK
- KFgA==
-X-Gm-Message-State: AOAM532Wn+tv4hSj0aT/vGYY+Izp7Yn71zwH5nqTb+BMJb9E1VdsgtRV
- P++KD5DZghjt67rsonQIeLrvGOMa7E6c3DlFDCAbrQ==
-X-Received: by 2002:a50:f615:: with SMTP id c21mr25006041edn.146.1627981365932; 
- Tue, 03 Aug 2021 02:02:45 -0700 (PDT)
+ bh=d64XEW3wUlV0KaJdc/F+hRb1GggDsSVbQTTFUSTUnXY=;
+ b=CTtphdRbAKvzBA3RY6SMASCX7jUuA1GDtZEdunenuGKhT26b4HTKMK0UshrZl23syD
+ CtwDKEILiVTc573O6/eQncubXdWDu5LfdW3l6NuSDnSKTisRq3Zkw2nOTuWtkbsVAAMJ
+ ItkYqs+WiH1qCcT3siJ7eSXCWdvKKpNL9kk6mCTaUti1trc3y85c2NXeZ8JFFZG/uMY3
+ 7HjwDM0oqFbNDjf5VWw+vsTqIXXevSMW/5x9JrzeBM2rVDoF580WI5zT3x9TLsTw+NBO
+ 9a83/q70QsyOOtftU/Y1Li324LsknCWW9XLL7A7jSGxK8upp9k34rfme+iHQZZg/ZAll
+ iYNw==
+X-Gm-Message-State: AOAM530Nwor2fY1Wr2VOSirqvgKvIybh+1qnMSHUa71ZvbslxHc8ySlk
+ zLqvoM1QnytKDQYJFQEvdvCFZt3zR9ocp01L2IykUw==
+X-Received: by 2002:aa7:c857:: with SMTP id g23mr23847042edt.100.1627981383638; 
+ Tue, 03 Aug 2021 02:03:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210802235524.3417739-1-f4bug@amsat.org>
- <20210802235524.3417739-3-f4bug@amsat.org>
-In-Reply-To: <20210802235524.3417739-3-f4bug@amsat.org>
+ <20210802235524.3417739-2-f4bug@amsat.org>
+In-Reply-To: <20210802235524.3417739-2-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Aug 2021 10:02:02 +0100
-Message-ID: <CAFEAcA9r4vwz1CsBXhCvtVkNAPAu_UsKK-6CwfP7oyf4cXFreQ@mail.gmail.com>
-Subject: Re: [PATCH-for-6.1 v2 2/2] hw/sd/sdcard: Fix assertion accessing
- out-of-range addresses with CMD30
+Date: Tue, 3 Aug 2021 10:02:20 +0100
+Message-ID: <CAFEAcA_2ZjWPAicq+yUDW1y6rqfTXRuG3HVXGSs7hT2s9qJC+w@mail.gmail.com>
+Subject: Re: [PATCH-for-6.1 v2 1/2] hw/sd/sdcard: Document out-of-range
+ addresses for SEND_WRITE_PROT
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,55 +112,62 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Qemu-block <qemu-block@nongnu.org>, Bin Meng <bin.meng@windriver.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-stable <qemu-stable@nongnu.org>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Bin Meng <bin.meng@windriver.com>, Alexander Bulekov <alxndr@bu.edu>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Qemu-block <qemu-block@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TxMWr9YNOYiD
+X-TUID: lDugsuDt40ZD
 
 On Tue, 3 Aug 2021 at 00:55, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
 wrote:
 >
-> OSS-Fuzz found sending illegal addresses when querying the write
-> protection bits triggers the assertion added in commit 84816fb63e5
-> ("hw/sd/sdcard: Assert if accessing an illegal group"):
+> Per the 'Physical Layer Simplified Specification Version 3.01',
+> Table 4-22: 'Block Oriented Write Protection Commands'
 >
->   qemu-fuzz-i386-target-generic-fuzz-sdhci-v3: ../hw/sd/sd.c:824: uint32_=
-t sd_wpbits(SDState *, uint64_t):
->   Assertion `wpnum < sd->wpgrps_size' failed.
->   #3 0x7f62a8b22c91 in __assert_fail
->   #4 0x5569adcec405 in sd_wpbits hw/sd/sd.c:824:9
->   #5 0x5569adce5f6d in sd_normal_command hw/sd/sd.c:1389:38
->   #6 0x5569adce3870 in sd_do_command hw/sd/sd.c:1737:17
->   #7 0x5569adcf1566 in sdbus_do_command hw/sd/core.c:100:16
->   #8 0x5569adcfc192 in sdhci_send_command hw/sd/sdhci.c:337:12
->   #9 0x5569adcfa3a3 in sdhci_write hw/sd/sdhci.c:1186:9
->   #10 0x5569adfb3447 in memory_region_write_accessor softmmu/memory.c:492=
-:5
+>   SEND_WRITE_PROT (CMD30)
 >
-> It is legal for the CMD30 to query for out-of-range addresses.
-> Such invalid addresses are simply ignored in the response (write
-> protection bits set to 0).
+>   If the card provides write protection features, this command asks
+>   the card to send the status of the write protection bits [1].
 >
-> In commit 84816fb63e5 ("hw/sd/sdcard: Assert if accessing an illegal
-> group") we misplaced the assertion *before* we test the address is
-> in range. Move it *after*.
+>   [1] 32 write protection bits (representing 32 write protect groups
+>   starting at the specified address) [...]
+>   The last (least significant) bit of the protection bits corresponds
+>   to the first addressed group. If the addresses of the last groups
+>   are outside the valid range, then the corresponding write protection
+>   bits shall be set to 0.
 >
-> Include the qtest reproducer provided by Alexander Bulekov:
+> Split the if() statement (without changing the behaviour of the code)
+> to better position the description comment.
 >
->   $ make check-qtest-i386
->   ...
->   Running test qtest-i386/fuzz-sdcard-test
->   qemu-system-i386: ../hw/sd/sd.c:824: sd_wpbits: Assertion `wpnum < sd->=
-wpgrps_size' failed.
->
-> Cc: qemu-stable@nongnu.org
-> Reported-by: OSS-Fuzz (Issue 29225)
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Fixes: 84816fb63e5 ("hw/sd/sdcard: Assert if accessing an illegal group")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/495
+> Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/sd/sd.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> index 1f964e022b1..707dcc12a14 100644
+> --- a/hw/sd/sd.c
+> +++ b/hw/sd/sd.c
+> @@ -822,7 +822,14 @@ static uint32_t sd_wpbits(SDState *sd, uint64_t addr=
+)
+>
+>      for (i =3D 0; i < 32; i++, wpnum++, addr +=3D WPGROUP_SIZE) {
+>          assert(wpnum < sd->wpgrps_size);
+> -        if (addr < sd->size && test_bit(wpnum, sd->wp_groups)) {
+> +        if (addr >=3D sd->size) {
+> +            /*
+> +             * If the addresses of the last groups are outside the valid=
+ range,
+> +             * then the corresponding write protection bits shall be set=
+ to 0.
+> +             */
+> +            continue;
+> +        }
+> +        if (test_bit(wpnum, sd->wp_groups)) {
+>              ret |=3D (1 << i);
+
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

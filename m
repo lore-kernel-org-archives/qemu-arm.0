@@ -1,106 +1,201 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2065897lff;
-        Mon, 2 Aug 2021 16:55:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwT9ktMsX3Zm5jmKaHF12pR83stRcJlzQuC9J6H5CHyu2THGAh01+nyihKxi9Mxe3Qllzl9
-X-Received: by 2002:a92:d2c1:: with SMTP id w1mr124666ilg.280.1627948547509;
-        Mon, 02 Aug 2021 16:55:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627948547; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2083259lff;
+        Mon, 2 Aug 2021 17:22:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPjOnzc8O3CHu9i8Mpx+qrAosIzTnIb8MWtX1Ee2fL1KKMZ6xonoxAZO0pVeq7y0eAW6m4
+X-Received: by 2002:a5e:c109:: with SMTP id v9mr333484iol.76.1627950133222;
+        Mon, 02 Aug 2021 17:22:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1627950133; cv=pass;
         d=google.com; s=arc-20160816;
-        b=BxhHmy0PHKHhEMPVdkAcKGdAQ4VoI8cX2ZrjOEaGhf35H0+EL0KxkClpVAx+iXEBhi
-         oRn8qdChRSGN1vO5m7XjUE/IHXy89E+GDBk6qdFOhF5u0RreLA9HbCFQIwm+3o90zNtL
-         Gd/sFIcnSTajpNJxyy9ngkVeKu7iChNq0hfYYpZeEUZDI2Tlngfqiw00wYnm6n19Ir/8
-         8TPoPGCvBwG06lQ/Sm5dc1CWq8DhZAPKtCtgyg26ID9b290g/LvNartBcPb6fmxnz5dr
-         dkFHIudIWsUvWcMmMO93wWKzY3X+noGYDVhBC/5JeENYTqhnG11S524icgLsesatYztG
-         88Xw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=roOUOsAqNpbc5h7FgiYGInU2uNkV21aG4jf2GmpuxBHAMnExQzjYJinh5UBlR4OPzv
+         5fxBhocM9PnNk0ImwOEXbvI4D5kMx88EzOtjIH+wL6X5JglAt2A3CniHKmSGHr0kYEmK
+         m+bVQk3btuhNMnwkCuEkgnqOA0Dyyh2hbIMAWDuC2JrWjX3k9p2CYkMwtTLF2IA3NHjs
+         aoIXgfKMN5w6UkSJWtRHHhLcJSrbeOjedyZz7L+bIM12YStNZd+mqsmFFuoGqFJZjE2D
+         Ev/Tg0Wt602c4SM1M61j8kQce2pOtQZzaE7t/tNLpKuorKOpDn9Sg/FoIlTq8G6TSZ+B
+         urDQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=GPSIHv4eRtDJzkdd5cdvK6iIW9NuIx+8aNEvZFnhPOQ=;
-        b=lwGv4nVZxUfPTWjEyL6TAooCgBXCF4kifE+9KVXL89riI3fyW1CNrJrOOwtgVhMqoG
-         5O1G8hfOTJQH67QAmpRHGOSQuQvK8XjFv3k350ct5dWUQhranMlJwVRmMZk6GtjsfdSJ
-         2+IwZmbWV/ma7Qx/pQ0fRIBMMYM4jd3xUTEzJWPw96PxHCgbzGV9TjPzL6ypuyov9ucG
-         8xQwhsFODum6VDr+LSGAbzFmo+ZLA730m9iyotZNAGx9R1P4Xb76OvOOhiT8lFpwfMHa
-         zB1zZnZignsh41kCRLXdRRCYqF7vRMIGcEvqig3o0KXSBGX3UI4DPjOyUG3/9HHBj5Z9
-         YcQA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vMXzftWH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
+        bh=GJug/S7X51ML1Vvil35v/j5XOIgnuNsOy08ZzFTmnZc=;
+        b=qHvKCPq/e1XymgYNt7LED55vAnzUwWwSJPJHFSHqNIHruWKCusijAO584AP68kk9es
+         JsPUNJ4mt5zq5xc4qP/OiEnAKxJyrNC4mlmbyCCWbPsofp1JF08iZ7IPXNUW6I7Be7IW
+         Ic8ZHBMAJ4SBwhbm3c6Q2Eo4hh70RaPE6/T2N5TovuWSzsr8yzrw1j/Lhq4SWgwO7w40
+         xr3Li8Lcg6JHpXp0dMZtbO5MkCLKuNV4eE2np1fat75ERRFKQmYtQxHfPvkNNRKsJlwI
+         rI1vJPqVorvld3+l13QOsItNqOXcAXjjIJeZZHHhl5FLGvHeJvinvFN4bHoCtVHvV5cc
+         V9Sw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=XjkyGey1;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b="pMu/t3eR";
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x29si13013624jap.52.2021.08.02.16.55.47
+        by mx.google.com with ESMTPS id b39si13051387jav.0.2021.08.02.17.22.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Aug 2021 16:55:47 -0700 (PDT)
+        Mon, 02 Aug 2021 17:22:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vMXzftWH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40196 helo=lists1p.gnu.org)
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=XjkyGey1;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b="pMu/t3eR";
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Received: from localhost ([::1]:48796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mAhmc-000576-N0
-	for alex.bennee@linaro.org; Mon, 02 Aug 2021 19:55:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37086)
+	id 1mAiCC-0004CG-FI
+	for alex.bennee@linaro.org; Mon, 02 Aug 2021 20:22:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mAhmO-00054d-Db; Mon, 02 Aug 2021 19:55:32 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:42519)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mAhmL-0006MQ-3a; Mon, 02 Aug 2021 19:55:32 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- e25-20020a05600c4b99b0290253418ba0fbso991540wmp.1; 
- Mon, 02 Aug 2021 16:55:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=GPSIHv4eRtDJzkdd5cdvK6iIW9NuIx+8aNEvZFnhPOQ=;
- b=vMXzftWHxOrP+obSluB+DOS23Yl9gi7Eoig1Ty+H5g8bW7xYT0Ntmhqtc0+hZ8gyoH
- M1BqQUn8Pyq/a8pL8tV1aHRNq8ChtPzFBC1gH6IpEfbbLXYcesNZ7wJQRHqexT3sxPeT
- 6BmvsuyHPdisaB6g3cm9Y3Vwofr9xmk2M0ugVv2/nBsS8Mjoh1xk+15QwFQ4J8Y/bX3t
- 7yiUGgVbP66lTTyf0p/CR/sslYHBxE7VaEMPt89oO5qTpIr1iHLmie+nBLsOn0cf620k
- fW+mZqvCKo7048IhIGIecS+Iq5aVhl6S3vAyzO0QR4qUCiA8hJ9eWErYG+Xf4pRkyxj+
- A+FQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=GPSIHv4eRtDJzkdd5cdvK6iIW9NuIx+8aNEvZFnhPOQ=;
- b=M4KPRmAqZlzrGuXBq4g1KLffz8JEQZQvjiHQ1+wJ7FWwXKvmNkL5j+neud+T0rmwC8
- 8081X0fcv/fCx688xJEoOk3m30lMSmHnfES+NgMlE9t9jONjk+Fri8VU3gT5LFImofqQ
- kwn72U4qAeL+TgVR8m24ajs0zDhjauUloyuqAlleGUvyLo+iyiajqkDP44UdbZJjXY3I
- mBGkcH9BdZ0DfCeP6lG/U/Ou/GTPsRnJrDYs95NTZackaRo0NKlJtbBLG2ZaplrqA1tm
- GyRPzKzIm3elY4dxTcpquX/FDR9QfzHAFExIOFg/1/zlH716qIStNjklhJRBN4NT/yCa
- WvCQ==
-X-Gm-Message-State: AOAM530+yNH+I72tYMWEqUyinzLPL9DA325Gxc1ejL/QiS4LdE0/hkvn
- FYPbTBzLfe3cORfXTVwPnelyNZEP6+sN/w==
-X-Received: by 2002:a1c:1d13:: with SMTP id d19mr1357046wmd.0.1627948526620;
- Mon, 02 Aug 2021 16:55:26 -0700 (PDT)
-Received: from x1w.redhat.com (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id d15sm12492424wrn.28.2021.08.02.16.55.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Aug 2021 16:55:25 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-6.1 v2 0/2] hw/sd/sdcard: Fix assertion accessing
- out-of-range addresses with CMD30
-Date: Tue,  3 Aug 2021 01:55:22 +0200
-Message-Id: <20210802235524.3417739-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mAiBj-0004C3-St; Mon, 02 Aug 2021 20:21:43 -0400
+Received: from esa20.fujitsucc.c3s2.iphmx.com ([216.71.158.65]:51916)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mAiBh-0006OU-6U; Mon, 02 Aug 2021 20:21:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
+ t=1627950101; x=1659486101;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=GJug/S7X51ML1Vvil35v/j5XOIgnuNsOy08ZzFTmnZc=;
+ b=XjkyGey1B+FgocSBQkNAXLrqFYJJPXUhxIjhXNGYip4fgXwI05LgDddW
+ hINkfGJosJmFg2F2X4NeYwnPE+1vy1YicQ9S1SVlqiKcQuO8AMtR0F2No
+ gZbnlG1VTtNZm/N/mG3OY73JY6UKdFMEfvI/muuITE3Cs4pdaxcRhoIM/
+ g1YPJteYbY8x+8wqNJI2i9yMNb+kPImGQ9D/S4npYVN1EOQqbVTW0LD08
+ AN3UL0GXp+YzAiKSbwXmTkhLBx08QH7jeb0JwUZHFniEC2QCsHiz29KH4
+ YymEUa0d8pbl0VyHLdqcfNZYGSpqNMShWclovh+yTQqdbDm/ECslCLbWY Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10064"; a="35948865"
+X-IronPort-AV: E=Sophos;i="5.84,290,1620658800"; d="scan'208";a="35948865"
+Received: from mail-os2jpn01lp2058.outbound.protection.outlook.com (HELO
+ JPN01-OS2-obe.outbound.protection.outlook.com) ([104.47.92.58])
+ by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Aug 2021 09:21:34 +0900
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jCWAc8TMjHRlL8RTecCgJYynnHEW23vmfom+3TRG2i+SJnX2KHdN9HQCfxf8kPwwBlTa5lUSahvNkZlR+HVUn4zNH78JhAvwrNzNqhaZX/SIFCAPdI4ZlNU+qw7fRUGpLAFo1dDanNpCticNwfuXKSLTOXVe/LMNCxF1U6R1b2HriNBNuOLWkkkU6/xp5qSQJE2w3KWhawLoESFeqtk2mqqeTvN8cdgv91B90smZ3jPp5TKHogaLGzp5TkLGn6VOEfU+zXX/mBZGQLmitO5S5jgisC80NJHhg3nATB9UqGgO6e1KCvXutWwhnz1Ts44YyqzNJKzZyKgaFAMHEo7Emw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GJug/S7X51ML1Vvil35v/j5XOIgnuNsOy08ZzFTmnZc=;
+ b=JJZGWdGfG/z99lkkGD8j7IbbbOZvMmu1U/a2bXReBUB5TNc4nIkF+xMSXSyCJSKkva8ZV0BmzM5npqnx4dHoILY1GKp5I4DJWHDRTTXGej1UmYbzBumhwTjcs3suw2593PI6FhqkRpZO+d3bAfhh6WFFbJVsl9h/yxcnIExyVnezsIi1axb9Bp2UiQbYaXnFp65JGduEvnQyLPfuOg3BYQA/zwAxGiTVvUzSyFYTyxdYKHFz++Lfn97l9/EDDZJKstU0ZEf5VJe8VV1+H6L2hU/13mwr2z0q5l+R1l18/v1MMbppvnL9WZ6B4ke4h44E7f5QU1cFxCLPN/ap8ppLPQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
+ dkim=pass header.d=fujitsu.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GJug/S7X51ML1Vvil35v/j5XOIgnuNsOy08ZzFTmnZc=;
+ b=pMu/t3eRa1FjRN2uuO7P7WDMdQbv0JK/s51+EUH16iF4BlAt7IMUKILLZqn9lWRkn22PMo2/qMF1HglYWUvwQ0veDyXdQRzicxUVxT936y6F0ab506SBxT44RVh90UtwWeICKPQZbx11sGsPDtDhKlKJbF3kPka/sn8IEbFKzFE=
+Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com (2603:1096:400:4f::8)
+ by TYAPR01MB5899.jpnprd01.prod.outlook.com (2603:1096:404:8059::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4373.22; Tue, 3 Aug
+ 2021 00:21:31 +0000
+Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com
+ ([fe80::154e:70ee:e0c5:f482]) by TYCPR01MB6160.jpnprd01.prod.outlook.com
+ ([fe80::154e:70ee:e0c5:f482%8]) with mapi id 15.20.4373.026; Tue, 3 Aug 2021
+ 00:21:31 +0000
+From: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+To: 'Peter Maydell' <peter.maydell@linaro.org>
+Subject: RE: [PATCH v2 3/3] target-arm: Add A64FX processor support to virt
+ machine
+Thread-Topic: [PATCH v2 3/3] target-arm: Add A64FX processor support to virt
+ machine
+Thread-Index: AQHXhPAwUrMdV08kP0ScbvzbOPFOY6tbU4QAgAWZzTA=
+Date: Tue, 3 Aug 2021 00:21:31 +0000
+Message-ID: <TYCPR01MB61600FAAA3FBCAF52E47630FE9F09@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+References: <20210730030821.231106-1-ishii.shuuichir@fujitsu.com>
+ <20210730030821.231106-4-ishii.shuuichir@fujitsu.com>
+ <CAFEAcA-F3V2ByQ=AJjNWU8H1FHiHZBUYAN4UAfEFMjmo8PK7eA@mail.gmail.com>
+In-Reply-To: <CAFEAcA-F3V2ByQ=AJjNWU8H1FHiHZBUYAN4UAfEFMjmo8PK7eA@mail.gmail.com>
+Accept-Language: ja-JP, en-US
+Content-Language: ja-JP
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: =?utf-8?B?TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2Uw?=
+ =?utf-8?B?NTBfQWN0aW9uSWQ9OWQ5M2NlMDMtM2I5ZC00YjlkLWI2ZDItMTkxYjUzYTE0?=
+ =?utf-8?B?YTFkO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRm?=
+ =?utf-8?B?ZWNlMDUwX0NvbnRlbnRCaXRzPTA7TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5?=
+ =?utf-8?B?LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfRW5hYmxlZD10cnVlO01TSVBfTGFi?=
+ =?utf-8?B?ZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRmZWNlMDUwX01ldGhv?=
+ =?utf-8?B?ZD1TdGFuZGFyZDtNU0lQX0xhYmVsX2E3Mjk1Y2MxLWQyNzktNDJhYy1hYjRk?=
+ =?utf-8?B?LTNiMGY0ZmVjZTA1MF9OYW1lPUZVSklUU1UtUkVTVFJJQ1RFRO+/ou++gA==?=
+ =?utf-8?B?776LO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRm?=
+ =?utf-8?B?ZWNlMDUwX1NldERhdGU9MjAyMS0wOC0wM1QwMDowNzo1MFo7TVNJUF9MYWJl?=
+ =?utf-8?B?bF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfU2l0ZUlk?=
+ =?utf-8?Q?=3Da19f121d-81e1-4858-a9d8-736e267fd4c7;?=
+authentication-results: linaro.org; dkim=none (message not signed)
+ header.d=none;linaro.org; dmarc=none action=none header.from=fujitsu.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7684f728-1410-43e3-d881-08d95614a4f0
+x-ms-traffictypediagnostic: TYAPR01MB5899:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <TYAPR01MB5899C0D24FC2DFBCDEA4A039E9F09@TYAPR01MB5899.jpnprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: qeokYYkEA4PtXuzuKrxdrOasm1fiNSNaZ1qoCgX+VADgauzzkI9xOtQSgxuspBSOtK+n5c5r6ZXLG8ny6Tp3JQ9SyStJC10DbeUPHJVabB0LBEXC3/DDTsHyPi3u3gtUKnww1mAbmAP6q66wARpSpu72YGF7MaVuWYEM2q8jEC1K/2bi/wcSo52/w4DZ/GhOXG2+DJodf8CrKIavVhnM2CT6y1QoMr8k+VaAKMe1V9rWTtk5Ma45n9q865/AKy3GmWPQXLdhsfh2HWXcWowTDGyhd6KYyxgw14cWi9dXeXhorH4+ZcOhSQLuV9IgQaHBE4ejDuJQcFxsxVXo0GJBozl7IWcUwjE49XLQrEKo8uTom86M/95edm1+MUf2Y76u3Mkr2NEVSJcz84hrAQ/hSBWeqeoQ9N2Dz3acV1b0MYM9RLWPtQuH9+xRv+HyQx+um+j7B6483oRVSnJEb3yBWh+4N0lj6pqf5wwd5SNdIVhG9J5j2mH3iE82a5mHR5/LLjgwXXscu6oLHVKV4PWDlEp4qHabC+hrgbIJxKoLoRXoosH6InT6V7fs2gaxKzszlgbYGZ4+GqCfIFf+FCazhw5PZSnhLootXiSXWO9659Qi9YAxgH2V5sX9GNbqiRB8FisYQhVloGCfEVOSszBLY6i5CLw/xRyI0eiw8D4XWPQ6c+DrQLlVWFoKHNdoDzAILRLvA/gAdiATAA0yjM9LgJCE8fz3N5uxHr974MjvFxcsAT+2WvtaKNIW2+fZ3/cdm7q6aZkG8D8i8xXADLGzpw2dN1LfX2jK2J6k6K/UJB0=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYCPR01MB6160.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(39860400002)(376002)(136003)(366004)(396003)(55016002)(316002)(186003)(54906003)(8676002)(52536014)(478600001)(2906002)(66476007)(64756008)(66556008)(966005)(66446008)(8936002)(9686003)(33656002)(76116006)(107886003)(66946007)(4326008)(6916009)(85182001)(83380400001)(7696005)(26005)(122000001)(38100700002)(38070700005)(5660300002)(71200400001)(86362001)(6506007)(53546011);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WHhRT2RacGl2R3o1SHhSbXdYZEM5NFc0eUJNYnBuRWEyZHpiRi9JVFEyVThh?=
+ =?utf-8?B?MlVxYW5LWlhHY0YrRXAxMzZBTHZzbTc0bWRueDdiRWYraWs0UStaN1d2Y1hY?=
+ =?utf-8?B?bWFUaHpUUHlrRm4yUFNHb0MwdDRoSnhaTXBsTVRjdzRtQ3VHNXVWMFdsRlN1?=
+ =?utf-8?B?VU54VUk5SjVWTmQxL2x3YTBhTCtJVzFLdGVIdXpBWUpPU3dsTGJTQ3lobHRC?=
+ =?utf-8?B?aGZ4cit1S3Z4TlZyRW95Z3d1ZUk2ZTVBNndtNXlFc2JwZ01Na1h0UzY1dWZU?=
+ =?utf-8?B?TmplOC9UL2tmNWNwUlpjOVVCWTdnaUprN1ZLV2laTW5rcnlQM3B0NUEzdzNF?=
+ =?utf-8?B?VjhMU0JYQWtDL0RXVERER0ZFcTJMdk9nNHMyaWgyd1AwZG9DS3ZsRytDcHA4?=
+ =?utf-8?B?Q2d3WklaUWM0THZmajRjcW1yZXYrSWZCOG1SUjlvbEp6Y0J5NzQra1dWQm0w?=
+ =?utf-8?B?S3pMcnNpQXRJRGpZUmxPd1krTkhSdnVsbWJ3M2NNQVdWeE10NjBxYlZqZnEy?=
+ =?utf-8?B?REhxbVN1MG9NdG42SEF0TnlZYXlTaGJxaWVhWVpjcmV5NUdjL0hUWWlGS2JH?=
+ =?utf-8?B?THFsQkhMRXlqZjg3aEIwUEx4eFY1bnZaSGM1bjZxNmNJdkowTHdEc1pERUV6?=
+ =?utf-8?B?TGZweWFaQWVrV2hySS9POVJ4RE9uNGdxSFJyT05UUHRjNVJYbWpRZmc3MzJW?=
+ =?utf-8?B?NCtqRTBIK1lhSTBNTHM5S3gxQUM2ZDB5VkxQL0F1c0VkckZ3Nnd1ZHl0ejlB?=
+ =?utf-8?B?YUtLOTBaOHMxUlFCcWVoVExPZHFsZXR3dEw2VlYvV3FCVlV5Z1hsRTVqMStp?=
+ =?utf-8?B?RndTWU4rZXo4ejlweGVjbFI4VnJzclhna1FXVHlQWk1xVTI2ZXNaaXppRjVt?=
+ =?utf-8?B?SXJkdUZ4MW1TVTQ2Z2lUREpNV2ZicDhaN2ZybkhLZFNSS3BsOVErVE9SdDNv?=
+ =?utf-8?B?aTYrNFhWTGhpVjJjT1BCTlI3TlFuUXVvQmh2Vjl1SW9UVmpsdU9Ld1BhWGJu?=
+ =?utf-8?B?d2dhNGJUbld4b29kaVRLa3d2QUlNVUxraUFTZmFwQnpyc0RnV0pnQnlMMytL?=
+ =?utf-8?B?RHMxcUx2UGNZS0pNUVE3dXhsbnZocGFaZGVFR2t6UXRXTHh2cTBmRms1Sm91?=
+ =?utf-8?B?dXY5OFRlK0FwTEE3b3hXUk0rNDd5cGVNYm9VWGxuLzNYOC96ck5FR1QvM3Yx?=
+ =?utf-8?B?dk0vbFBmdVR5dmNBS2VUTzhaYVpETlNTL0xQYkJ1NU9pajhabFROMWxGSU5R?=
+ =?utf-8?B?Y1EzZDBFM05GNzRhTzJQU2dadkFEaTY3MG56WTdZMHkxTzM5ZVY4eUJQR1RM?=
+ =?utf-8?B?U25OZlpaK1lTR0taejZ5ZTFlcWRobGZqUjBtdDgyU2E2MVRTU0x5UnpiZzh3?=
+ =?utf-8?B?SmtvalcybXdnTVFaNVF0bWt3WktVQXRyaVY4VVphcXNZMUFSRURMUVV3ZCta?=
+ =?utf-8?B?RE1Hdk4yRll2L25iZ3RjVlFpelFRUytkR3JQNGxiYVRoblVqay9XVjhCTmR4?=
+ =?utf-8?B?WWFia1k0QkhUeCtOVkpvcEhrNUNZeGNxTjZydFA1c2RZQkhRRzFPeThwSmRP?=
+ =?utf-8?B?MXhkc0hxTHFxdXMreGQ2ZkVJVEtzTUgvZEpNYzBqRXhRUklUb1YvNTc1QzZW?=
+ =?utf-8?B?SlZ6RnllWDJNTFNLTFhaV3p2OHRIanJvQUp2ZDhZUlBma0czL1YvcWtMNnJD?=
+ =?utf-8?B?clhpSmdaRkorSC85eURNWXFLaUczRGh2eVhONmh5bnd4OW9xcUlDL3IreE5s?=
+ =?utf-8?Q?pIvWDGSPlP4YB/2mnp6cWioi4ZfaRKBiiLxJj8r?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: fujitsu.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB6160.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7684f728-1410-43e3-d881-08d95614a4f0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Aug 2021 00:21:31.4744 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: pbm8vKjifnfylV8W1P4zj4xG4hTFdMHc5x4hPzGRVDzk+R2pscDcYTQdh5zAbahP/KBuBQqK+HsMGlRrx3d3VAoS1+LPMu4kosg9ybBjP0w=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYAPR01MB5899
+Received-SPF: pass client-ip=216.71.158.65;
+ envelope-from=ishii.shuuichir@fujitsu.com; helo=esa20.fujitsucc.c3s2.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,30 +208,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Bin Meng <bin.meng@windriver.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3igxykWiXU+8
+X-TUID: iUla/BsaRZc0
 
-Fix an assertion reported by OSS-Fuzz, add corresponding qtest.=0D
-=0D
-The change is (now) simple enough for the next rc.=0D
-=0D
-Since v1:=0D
-- Simplified/corrected following Peter's suggestion=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (2):=0D
-  hw/sd/sdcard: Document out-of-range addresses for SEND_WRITE_PROT=0D
-  hw/sd/sdcard: Fix assertion accessing out-of-range addresses with=0D
-    CMD30=0D
-=0D
- hw/sd/sd.c                     |  9 ++++++++-=0D
- tests/qtest/fuzz-sdcard-test.c | 36 ++++++++++++++++++++++++++++++++++=0D
- 2 files changed, 44 insertions(+), 1 deletion(-)=0D
-=0D
--- =0D
-2.31.1=0D
-=0D
+DQo+IENvbW1pdCBtZXNzYWdlcyBzaG91bGQgZGVzY3JpYmUgd2hhdCB0aGUgcGF0Y2ggaXMgZG9p
+bmcgYW5kIHdoeSwgc28gdGhlIHJlYWRlcg0KPiBjYW4gdW5kZXJzdGFuZCBpdCB3aXRob3V0IGhh
+dmluZyB0byBjcm9zcy1yZWZlcmVuY2Ugb2xkIG1haWxpbmcgbGlzdCB0aHJlYWRzLg0KDQpUaGFu
+ayB5b3UgZm9yIHlvdXIgY29tbWVudC4NCkkgdW5kZXJzdG9vZCB5b3VyIHBvaW50Lg0KDQpCZXN0
+IHJlZ2FyZHMuDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IFBldGVyIE1h
+eWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4NCj4gU2VudDogRnJpZGF5LCBKdWx5IDMw
+LCAyMDIxIDc6MzYgUE0NCj4gVG86IElzaGlpLCBTaHV1aWNoaXJvdSA8aXNoaWkuc2h1dWljaGly
+QGZ1aml0c3UuY29tPg0KPiBDYzogcWVtdS1hcm0gPHFlbXUtYXJtQG5vbmdudS5vcmc+OyBRRU1V
+IERldmVsb3BlcnMNCj4gPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4NCj4gU3ViamVjdDogUmU6IFtQ
+QVRDSCB2MiAzLzNdIHRhcmdldC1hcm06IEFkZCBBNjRGWCBwcm9jZXNzb3Igc3VwcG9ydCB0byB2
+aXJ0DQo+IG1hY2hpbmUNCj4gDQo+IE9uIEZyaSwgMzAgSnVsIDIwMjEgYXQgMDQ6MDgsIFNodXVp
+Y2hpcm91IElzaGlpIDxpc2hpaS5zaHV1aWNoaXJAZnVqaXRzdS5jb20+DQo+IHdyb3RlOg0KPiA+
+DQo+ID4gRml4IGZvciBwYXRjaCBjb25zaXN0ZW5jeS4NCj4gPiBodHRwczovL2xpc3RzLmdudS5v
+cmcvYXJjaGl2ZS9odG1sL3FlbXUtZGV2ZWwvMjAyMS0wNy9tc2cwNjk5My5odG1sDQo+IA0KPiBD
+b21taXQgbWVzc2FnZXMgc2hvdWxkIGRlc2NyaWJlIHdoYXQgdGhlIHBhdGNoIGlzIGRvaW5nIGFu
+ZCB3aHksIHNvIHRoZSByZWFkZXINCj4gY2FuIHVuZGVyc3RhbmQgaXQgd2l0aG91dCBoYXZpbmcg
+dG8gY3Jvc3MtcmVmZXJlbmNlIG9sZCBtYWlsaW5nIGxpc3QgdGhyZWFkcy4NCj4gDQo+ID4gU2ln
+bmVkLW9mZi1ieTogU2h1dWljaGlyb3UgSXNoaWkgPGlzaGlpLnNodXVpY2hpckBmdWppdHN1LmNv
+bT4NCj4gPiAtLS0NCj4gPiAgZG9jcy9zeXN0ZW0vYXJtL3ZpcnQucnN0IHwgMSArDQo+ID4gIGh3
+L2FybS92aXJ0LmMgICAgICAgICAgICB8IDEgKw0KPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDIgaW5z
+ZXJ0aW9ucygrKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2RvY3Mvc3lzdGVtL2FybS92aXJ0LnJz
+dCBiL2RvY3Mvc3lzdGVtL2FybS92aXJ0LnJzdCBpbmRleA0KPiA+IDI3NjUyYWRmYWUuLjUzMjll
+OTUyY2YgMTAwNjQ0DQo+ID4gLS0tIGEvZG9jcy9zeXN0ZW0vYXJtL3ZpcnQucnN0DQo+ID4gKysr
+IGIvZG9jcy9zeXN0ZW0vYXJtL3ZpcnQucnN0DQo+ID4gQEAgLTU1LDYgKzU1LDcgQEAgU3VwcG9y
+dGVkIGd1ZXN0IENQVSB0eXBlczoNCj4gPiAgLSBgYGNvcnRleC1hNTNgYCAoNjQtYml0KQ0KPiA+
+ICAtIGBgY29ydGV4LWE1N2BgICg2NC1iaXQpDQo+ID4gIC0gYGBjb3J0ZXgtYTcyYGAgKDY0LWJp
+dCkNCj4gPiArLSBgYGE2NGZ4YGAgKDY0LWJpdCkNCj4gPiAgLSBgYGhvc3RgYCAod2l0aCBLVk0g
+b25seSkNCj4gPiAgLSBgYG1heGBgIChzYW1lIGFzIGBgaG9zdGBgIGZvciBLVk07IGJlc3QgcG9z
+c2libGUgZW11bGF0aW9uIHdpdGgNCj4gPiBUQ0cpDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcv
+YXJtL3ZpcnQuYyBiL2h3L2FybS92aXJ0LmMgaW5kZXgNCj4gPiA4MWVkYTQ2YjBiLi4xMDI4NmQz
+ZmQ2IDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FybS92aXJ0LmMNCj4gPiArKysgYi9ody9hcm0vdmly
+dC5jDQo+ID4gQEAgLTIwMCw2ICsyMDAsNyBAQCBzdGF0aWMgY29uc3QgY2hhciAqdmFsaWRfY3B1
+c1tdID0gew0KPiA+ICAgICAgQVJNX0NQVV9UWVBFX05BTUUoImNvcnRleC1hNTMiKSwNCj4gPiAg
+ICAgIEFSTV9DUFVfVFlQRV9OQU1FKCJjb3J0ZXgtYTU3IiksDQo+ID4gICAgICBBUk1fQ1BVX1RZ
+UEVfTkFNRSgiY29ydGV4LWE3MiIpLA0KPiA+ICsgICAgQVJNX0NQVV9UWVBFX05BTUUoImE2NGZ4
+IiksDQo+ID4gICAgICBBUk1fQ1BVX1RZUEVfTkFNRSgiaG9zdCIpLA0KPiA+ICAgICAgQVJNX0NQ
+VV9UWVBFX05BTUUoIm1heCIpLA0KPiA+ICB9Ow0KPiANCj4gdGhhbmtzDQo+IC0tIFBNTQ0K

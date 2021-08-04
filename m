@@ -1,65 +1,65 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp3529763lff;
-        Wed, 4 Aug 2021 07:39:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy84pJ2/wtVxt9f4kTiy1pOtRDKVy9cAkfwPGqK9ZJ7x5fTM8mkF+7kWCxjvU+iBEfCHZ7t
-X-Received: by 2002:a17:907:82a6:: with SMTP id mr38mr25736195ejc.218.1628087943432;
-        Wed, 04 Aug 2021 07:39:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628087943; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp3529836lff;
+        Wed, 4 Aug 2021 07:39:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzI6cw3CQOqVmQYJlDk9GVjLoIsAfn5xnkl3xLYS3TAIwtatuX0CHECzIFVyY0iboRMaKnt
+X-Received: by 2002:aa7:d84c:: with SMTP id f12mr217eds.375.1628087949996;
+        Wed, 04 Aug 2021 07:39:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628087949; cv=none;
         d=google.com; s=arc-20160816;
-        b=bsg6Ua+ODDqPV9QCrxtozsDYgaVYywMUGiM3J8keI9C6OlgfHU6qN6t6skZEEMgm4u
-         zGj99lpsqF/wZPR8XUFKV/F0+3wNMVG8G5pq8QGdEn76razKsHS5Ra+6d6S4RJB95QDH
-         wn/9+DdtQhLvzSPCidoHz9kXzVzt0rCkD3UsbqL6NcSagmwOwAi+vOV4f/H5jHIESbbs
-         yrFnL5biBQ8iAWJfjQRM1od++H4UiRMfdhUcBdYZSh1EPQ37eBc9RRw0nynHrE7l+UQC
-         l1dGbtXRSBLYYzklXQiNHPsXKuBmTCTPjuCP7sqONbn/VGKkI8y1GCtYW9gfOpC1Cdlg
-         OcyQ==
+        b=U00LI6UrlBdUvalGyxKedqEZMywAnKBaySvfKKxD7faLShGbx04BesZ9KSzPuAyHvW
+         wWZQ2+4VllXwpbNC/xMJJgJ0MSz9z4xrmY7KQmmCnSneXWL0OXIinzUYuuJPdd3HIDcM
+         a2ooSIzL3P1UQrGXAExrd1HPSZtpgi4AMzPxAMKtEKqT+t62z4y5jOCyipytiA1mKeWI
+         glHI3Pz+X5OmxOdB82B1QPefKnQX5zaUx542tLbI6MRBWjCg15kVUROWrLC1Bx1608qr
+         h+yO22WW2Q6VWeZDpOD7cA9To7naIDjPLQrOzbkGKyNI6le+bQCz89Ap2uxUB3Lq9y1t
+         zMqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RcDDtrWhY9XhPC4htW9Xg4gnbyXr0tQCG0YWoOOdoXg=;
-        b=wiSzJVJnoZ2+oOrJwjwTGXi6ZiT9mUcmAUabDf3EU05dieHIEPUXE5KFFPDpeT3It0
-         WD1kXcoNVZLuf5NGQVBrpoZwjiMRt46LbK9hi1BKcCebcJzPGERUFcAKkZsDjxtnGOIP
-         aDVo5VOUxtBnl+KRHSwcMaqUlDn8AZ4P7p3v+UmRYXwG5SvDVOjeD66m5nnGXmS4n44i
-         3S3FQeKkhuuB0Waj72NW9soKg2ivBdyPj/+h9Gd2mNY2kYm3RyQocALWt2Vm/k39lGGi
-         NFvjWlwkZZI7siWoK+KCKtOzZIeQLAYkG470UGKG3UErkz1Ja4W6Jdqru+wYjb3zJsUE
-         Y62g==
+        bh=R6cgfPGC1Q7hET/NndgwW3RREa4+kZ9Bk4qC2KpBy1E=;
+        b=DNreBa7C82M3AkedWcjKXDMoQrho1DmBwlzhDNiUyR0QURHUbOMWwe1aZpvpF/wBY2
+         6z+bFLkM50R8F6JibhQ2FSgowfv0v1IJJNS/EQ4PmYY7hJ+y4ZV3xaa6zvkU3BULywm6
+         dpVSey2zQUag7a9X1vt3M0uQrSMbXSUXHOZ2s0fuNMhnfsB7PdNHBW5422tp0cL/ckJG
+         dCCgz78sl2r1BxHOGoHpVIVD+S0UJrcIyT1yrqNZPtyq4t9u9I+FS53kYYs7NAxwAjPL
+         T8YrbpirgS4bzFw7BTrHXb3sJp/72u5zwB55KoxcS1asML5FsTj4QqcAsUeW25pNwMWb
+         bz3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NMSZna4v;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Rthcnwh+;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id p10si2180308ejl.495.2021.08.04.07.39.02
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id k10si2333938ejk.439.2021.08.04.07.39.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Aug 2021 07:39:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Wed, 04 Aug 2021 07:39:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NMSZna4v;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Rthcnwh+;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1628087942;
+	s=mimecast20190719; t=1628087949;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=RcDDtrWhY9XhPC4htW9Xg4gnbyXr0tQCG0YWoOOdoXg=;
-	b=NMSZna4v6KQ9FNJTsOPeWM93N3HWWP6GP4GjhyLYfpu7xBRSOYZqh04ggxed8jmdiYEDy+
-	Ts2NieFTbFRgw//X8+eKU/ykjqsx6uW4LpvsWkjjxKcFZXTxg+3sIFrQIep9GqcPk3YZeK
-	aHbUF09XrwzlBc6ZCgs8ae0q4TLXkNs=
+	bh=R6cgfPGC1Q7hET/NndgwW3RREa4+kZ9Bk4qC2KpBy1E=;
+	b=Rthcnwh+Z0DD54uzIoGcTbuWHtpxyKhigz4454wGUtXAJR5YD72nn2sB/+au/Mr12FtwvK
+	a2ZXcOctDRx1eT5phsd5EH48QPP8sHQ91hM8A910J/xjSuiLXIbCxfdGjDIzuEsXNc0epk
+	nKncXsPu45tYKjsfdnkBQXZNPfkyMKw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-480-oQn2a_ylOZqH93MnRmtUnQ-1; Wed, 04 Aug 2021 10:39:01 -0400
-X-MC-Unique: oQn2a_ylOZqH93MnRmtUnQ-1
+ us-mta-299-f9Ry4tSiNIeYQFOKttzkWQ-1; Wed, 04 Aug 2021 10:39:07 -0400
+X-MC-Unique: f9Ry4tSiNIeYQFOKttzkWQ-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF9BA101C8A0;
-	Wed,  4 Aug 2021 14:38:58 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43E201940922;
+	Wed,  4 Aug 2021 14:39:05 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.193.3])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3E73010016F2;
-	Wed,  4 Aug 2021 14:38:58 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 19D811036D05;
+	Wed,  4 Aug 2021 14:39:01 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 8C0D8180098B; Wed,  4 Aug 2021 16:38:26 +0200 (CEST)
+	id A1365180098C; Wed,  4 Aug 2021 16:38:26 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -85,9 +85,9 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 5/7] tcg/module: Add tlb_flush to TCGModuleOps
-Date: Wed,  4 Aug 2021 16:38:24 +0200
-Message-Id: <20210804143826.3402872-6-kraxel@redhat.com>
+Subject: [PATCH 6/7] tcg/module: Add tlb_flush_page to TCGModuleOps
+Date: Wed,  4 Aug 2021 16:38:25 +0200
+Message-Id: <20210804143826.3402872-7-kraxel@redhat.com>
 In-Reply-To: <20210804143826.3402872-1-kraxel@redhat.com>
 References: <20210804143826.3402872-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -98,391 +98,121 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: a0b+dXimUrkE
+X-TUID: EX7t6C/5v97+
 
 Move stub from exec-all.h to tcg-module.c.
 
-Move tcg_flush_softmmu_tlb to cpu-exec-common.c
-so it gets compiled into core qemu.
-
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/exec/exec-all.h       |  4 +---
- include/tcg/tcg-module.h      |  1 +
- accel/tcg/cpu-exec-common.c   |  8 ++++++++
- accel/tcg/cputlb.c            |  7 +++++++
- accel/tcg/tcg-module.c        |  5 +++++
- accel/tcg/translate-all.c     |  8 --------
- cpu.c                         |  2 +-
- softmmu/physmem.c             |  6 +++---
- target/arm/helper.c           | 22 +++++++++++-----------
- target/i386/helper.c          |  8 ++++----
- target/i386/machine.c         |  2 +-
- target/i386/tcg/fpu_helper.c  |  2 +-
- target/i386/tcg/misc_helper.c |  2 +-
- target/mips/sysemu/cp0.c      |  2 +-
- target/s390x/gdbstub.c        |  2 +-
- target/s390x/sigp.c           |  2 +-
- 16 files changed, 47 insertions(+), 36 deletions(-)
+ include/exec/exec-all.h  | 3 ---
+ include/tcg/tcg-module.h | 3 +++
+ accel/tcg/cputlb.c       | 1 +
+ accel/tcg/tcg-module.c   | 5 +++++
+ softmmu/physmem.c        | 4 ++--
+ target/arm/helper.c      | 4 ++--
+ 6 files changed, 13 insertions(+), 7 deletions(-)
 
 diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 5d1b6d80fbd3..ddb1ab797978 100644
+index ddb1ab797978..43d89699e989 100644
 --- a/include/exec/exec-all.h
 +++ b/include/exec/exec-all.h
-@@ -25,6 +25,7 @@
- #include "exec/cpu_ldst.h"
- #endif
- #include "sysemu/cpu-timers.h"
-+#include "tcg/tcg-module.h"
- 
- /* allow to see translation results - the slowdown should be negligible, so we leave it */
- #define DEBUG_DISAS
-@@ -337,9 +338,6 @@ static inline void tlb_flush_page_all_cpus_synced(CPUState *src,
-                                                   target_ulong addr)
+@@ -328,9 +328,6 @@ static inline void tlb_init(CPUState *cpu)
+ static inline void tlb_destroy(CPUState *cpu)
  {
  }
--static inline void tlb_flush(CPUState *cpu)
+-static inline void tlb_flush_page(CPUState *cpu, target_ulong addr)
 -{
 -}
- static inline void tlb_flush_all_cpus(CPUState *src_cpu)
+ static inline void tlb_flush_page_all_cpus(CPUState *src, target_ulong addr)
  {
  }
 diff --git a/include/tcg/tcg-module.h b/include/tcg/tcg-module.h
-index 7e87aecb2357..b94bfdd362ed 100644
+index b94bfdd362ed..a903e3ee62c0 100644
 --- a/include/tcg/tcg-module.h
 +++ b/include/tcg/tcg-module.h
-@@ -2,6 +2,7 @@
+@@ -1,8 +1,11 @@
+ #ifndef TCG_MODULE_H
  #define TCG_MODULE_H
  
++#include "exec/exec-all.h"
++
  struct TCGModuleOps {
-+    void (*tlb_flush)(CPUState *cpu);
+     void (*tlb_flush)(CPUState *cpu);
++    void (*tlb_flush_page)(CPUState *cpu, target_ulong addr);
  };
  extern struct TCGModuleOps tcg;
  
-diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-index be6fe45aa5a8..777ad00befc8 100644
---- a/accel/tcg/cpu-exec-common.c
-+++ b/accel/tcg/cpu-exec-common.c
-@@ -81,3 +81,11 @@ void cpu_loop_exit_atomic(CPUState *cpu, uintptr_t pc)
-     cpu->exception_index = EXCP_ATOMIC;
-     cpu_loop_exit_restore(cpu, pc);
- }
-+
-+/* This is a wrapper for common code that can not use CONFIG_SOFTMMU */
-+void tcg_flush_softmmu_tlb(CPUState *cs)
-+{
-+#ifdef CONFIG_SOFTMMU
-+    tcg.tlb_flush(cs);
-+#endif
-+}
 diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index b1e5471f949f..40c3d1b65ac5 100644
+index 40c3d1b65ac5..1fcdb71a10a0 100644
 --- a/accel/tcg/cputlb.c
 +++ b/accel/tcg/cputlb.c
-@@ -2767,3 +2767,10 @@ uint64_t cpu_ldq_code(CPUArchState *env, abi_ptr addr)
-     TCGMemOpIdx oi = make_memop_idx(MO_TEQ, cpu_mmu_index(env, true));
-     return full_ldq_code(env, addr, oi, 0);
+@@ -2771,6 +2771,7 @@ uint64_t cpu_ldq_code(CPUArchState *env, abi_ptr addr)
+ static void tcg_module_ops_tlb(void)
+ {
+     tcg.tlb_flush = tlb_flush;
++    tcg.tlb_flush_page = tlb_flush_page;
  }
-+
-+static void tcg_module_ops_tlb(void)
-+{
-+    tcg.tlb_flush = tlb_flush;
-+}
-+
-+type_init(tcg_module_ops_tlb);
+ 
+ type_init(tcg_module_ops_tlb);
 diff --git a/accel/tcg/tcg-module.c b/accel/tcg/tcg-module.c
-index e864fb20c141..a1e5728c8c1b 100644
+index a1e5728c8c1b..4d62160628bd 100644
 --- a/accel/tcg/tcg-module.c
 +++ b/accel/tcg/tcg-module.c
-@@ -1,5 +1,10 @@
- #include "qemu/osdep.h"
- #include "tcg/tcg-module.h"
+@@ -5,6 +5,11 @@ static void update_cpu_stub(CPUState *cpu)
+ {
+ }
  
-+static void update_cpu_stub(CPUState *cpu)
++static void tlb_flush_page_stub(CPUState *cpu, target_ulong addr)
 +{
 +}
 +
  struct TCGModuleOps tcg = {
-+    .tlb_flush = update_cpu_stub,
+     .tlb_flush = update_cpu_stub,
++    .tlb_flush_page = tlb_flush_page_stub,
  };
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index bbfcfb698c07..c7547cd923b4 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -2463,11 +2463,3 @@ int page_unprotect(target_ulong address, uintptr_t pc)
-     return 0;
- }
- #endif /* CONFIG_USER_ONLY */
--
--/* This is a wrapper for common code that can not use CONFIG_SOFTMMU */
--void tcg_flush_softmmu_tlb(CPUState *cs)
--{
--#ifdef CONFIG_SOFTMMU
--    tlb_flush(cs);
--#endif
--}
-diff --git a/cpu.c b/cpu.c
-index e1799a15bcf5..26277f387baf 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -51,7 +51,7 @@ static int cpu_common_post_load(void *opaque, int version_id)
-     /* 0x01 was CPU_INTERRUPT_EXIT. This line can be removed when the
-        version_id is increased. */
-     cpu->interrupt_request &= ~0x01;
--    tlb_flush(cpu);
-+    tcg.tlb_flush(cpu);
- 
-     /* loadvm has just updated the content of RAM, bypassing the
-      * usual mechanisms that ensure we flush TBs for writes to
 diff --git a/softmmu/physmem.c b/softmmu/physmem.c
-index 3c1912a1a07d..d99b4ce55d8f 100644
+index d99b4ce55d8f..845b9e99e819 100644
 --- a/softmmu/physmem.c
 +++ b/softmmu/physmem.c
-@@ -589,7 +589,7 @@ static void tcg_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
-     if (!notifier->active) {
-         return;
-     }
--    tlb_flush(notifier->cpu);
-+    tcg.tlb_flush(notifier->cpu);
-     notifier->active = false;
-     /* We leave the notifier struct on the list to avoid reallocating it later.
-      * Generally the number of IOMMUs a CPU deals with will be small.
-@@ -796,7 +796,7 @@ int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+@@ -794,7 +794,7 @@ int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+ 
+     in_page = -(addr | TARGET_PAGE_MASK);
      if (len <= in_page) {
-         tlb_flush_page(cpu, addr);
+-        tlb_flush_page(cpu, addr);
++        tcg.tlb_flush_page(cpu, addr);
      } else {
--        tlb_flush(cpu);
-+        tcg.tlb_flush(cpu);
+         tcg.tlb_flush(cpu);
      }
+@@ -825,7 +825,7 @@ void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint)
+ {
+     QTAILQ_REMOVE(&cpu->watchpoints, watchpoint, entry);
  
-     if (watchpoint)
-@@ -2652,7 +2652,7 @@ static void tcg_commit(MemoryListener *listener)
-      */
-     d = address_space_to_dispatch(cpuas->as);
-     qatomic_rcu_set(&cpuas->memory_dispatch, d);
--    tlb_flush(cpuas->cpu);
-+    tcg.tlb_flush(cpuas->cpu);
+-    tlb_flush_page(cpu, watchpoint->vaddr);
++    tcg.tlb_flush_page(cpu, watchpoint->vaddr);
+ 
+     g_free(watchpoint);
  }
- 
- static void memory_map_init(void)
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 155d8bf23997..e0848f9bcea8 100644
+index e0848f9bcea8..047d4360b65f 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -674,7 +674,7 @@ static void dacr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-     ARMCPU *cpu = env_archcpu(env);
- 
-     raw_write(env, ri, value);
--    tlb_flush(CPU(cpu)); /* Flush TLB as domain not tracked in TLB */
-+    tcg.tlb_flush(CPU(cpu)); /* Flush TLB as domain not tracked in TLB */
- }
- 
- static void fcse_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-@@ -685,7 +685,7 @@ static void fcse_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         /* Unlike real hardware the qemu TLB uses virtual addresses,
-          * not modified virtual addresses, so this causes a TLB flush.
-          */
--        tlb_flush(CPU(cpu));
-+        tcg.tlb_flush(CPU(cpu));
-         raw_write(env, ri, value);
-     }
- }
-@@ -701,7 +701,7 @@ static void contextidr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-          * format) this register includes the ASID, so do a TLB flush.
-          * For PMSA it is purely a process ID and no action is needed.
-          */
--        tlb_flush(CPU(cpu));
-+        tcg.tlb_flush(CPU(cpu));
-     }
-     raw_write(env, ri, value);
- }
-@@ -758,7 +758,7 @@ static void tlbiall_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -772,7 +772,7 @@ static void tlbimva_write(CPUARMState *env, const ARMCPRegInfo *ri,
      if (tlb_force_broadcast(env)) {
-         tlb_flush_all_cpus_synced(cs);
+         tlb_flush_page_all_cpus_synced(cs, value);
      } else {
--        tlb_flush(cs);
-+        tcg.tlb_flush(cs);
+-        tlb_flush_page(cs, value);
++        tcg.tlb_flush_page(cs, value);
      }
  }
  
-@@ -785,7 +785,7 @@ static void tlbiasid_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -799,7 +799,7 @@ static void tlbimvaa_write(CPUARMState *env, const ARMCPRegInfo *ri,
      if (tlb_force_broadcast(env)) {
-         tlb_flush_all_cpus_synced(cs);
+         tlb_flush_page_all_cpus_synced(cs, value);
      } else {
--        tlb_flush(cs);
-+        tcg.tlb_flush(cs);
+-        tlb_flush_page(cs, value);
++        tcg.tlb_flush_page(cs, value);
      }
  }
  
-@@ -3826,7 +3826,7 @@ static void pmsav7_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     }
- 
-     u32p += env->pmsav7.rnr[M_REG_NS];
--    tlb_flush(CPU(cpu)); /* Mappings may have changed - purge! */
-+    tcg.tlb_flush(CPU(cpu)); /* Mappings may have changed - purge! */
-     *u32p = value;
- }
- 
-@@ -3968,7 +3968,7 @@ static void vmsa_ttbcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         /* With LPAE the TTBCR could result in a change of ASID
-          * via the TTBCR.A1 bit, so do a TLB flush.
-          */
--        tlb_flush(CPU(cpu));
-+        tcg.tlb_flush(CPU(cpu));
-     }
-     /* Preserve the high half of TCR_EL1, set via TTBCR2.  */
-     value = deposit64(tcr->raw_tcr, 0, 32, value);
-@@ -3994,7 +3994,7 @@ static void vmsa_tcr_el12_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     TCR *tcr = raw_ptr(env, ri);
- 
-     /* For AArch64 the A1 bit could result in a change of ASID, so TLB flush. */
--    tlb_flush(CPU(cpu));
-+    tcg.tlb_flush(CPU(cpu));
-     tcr->raw_tcr = value;
- }
- 
-@@ -4005,7 +4005,7 @@ static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     if (cpreg_field_is_64bit(ri) &&
-         extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
-         ARMCPU *cpu = env_archcpu(env);
--        tlb_flush(CPU(cpu));
-+        tcg.tlb_flush(CPU(cpu));
-     }
-     raw_write(env, ri, value);
- }
-@@ -5021,7 +5021,7 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     raw_write(env, ri, value);
- 
-     /* This may enable/disable the MMU, so do a TLB flush.  */
--    tlb_flush(CPU(cpu));
-+    tcg.tlb_flush(CPU(cpu));
- 
-     if (ri->type & ARM_CP_SUPPRESS_TB_END) {
-         /*
-@@ -5560,7 +5560,7 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
-      * HCR_DCT enables tagging on (disabled) stage1 translation
-      */
-     if ((env->cp15.hcr_el2 ^ value) & (HCR_VM | HCR_PTW | HCR_DC | HCR_DCT)) {
--        tlb_flush(CPU(cpu));
-+        tcg.tlb_flush(CPU(cpu));
-     }
-     env->cp15.hcr_el2 = value;
- 
-diff --git a/target/i386/helper.c b/target/i386/helper.c
-index 533b29cb91b6..100add713c5d 100644
---- a/target/i386/helper.c
-+++ b/target/i386/helper.c
-@@ -103,7 +103,7 @@ void x86_cpu_set_a20(X86CPU *cpu, int a20_state)
- 
-         /* when a20 is changed, all the MMU mappings are invalid, so
-            we must flush everything */
--        tlb_flush(cs);
-+        tcg.tlb_flush(cs);
-         env->a20_mask = ~(1 << 20) | (a20_state << 20);
-     }
- }
-@@ -116,7 +116,7 @@ void cpu_x86_update_cr0(CPUX86State *env, uint32_t new_cr0)
-     qemu_log_mask(CPU_LOG_MMU, "CR0 update: CR0=0x%08x\n", new_cr0);
-     if ((new_cr0 & (CR0_PG_MASK | CR0_WP_MASK | CR0_PE_MASK)) !=
-         (env->cr[0] & (CR0_PG_MASK | CR0_WP_MASK | CR0_PE_MASK))) {
--        tlb_flush(CPU(cpu));
-+        tcg.tlb_flush(CPU(cpu));
-     }
- 
- #ifdef TARGET_X86_64
-@@ -156,7 +156,7 @@ void cpu_x86_update_cr3(CPUX86State *env, target_ulong new_cr3)
-     if (env->cr[0] & CR0_PG_MASK) {
-         qemu_log_mask(CPU_LOG_MMU,
-                         "CR3 update: CR3=" TARGET_FMT_lx "\n", new_cr3);
--        tlb_flush(env_cpu(env));
-+        tcg.tlb_flush(env_cpu(env));
-     }
- }
- 
-@@ -170,7 +170,7 @@ void cpu_x86_update_cr4(CPUX86State *env, uint32_t new_cr4)
-     if ((new_cr4 ^ env->cr[4]) &
-         (CR4_PGE_MASK | CR4_PAE_MASK | CR4_PSE_MASK |
-          CR4_SMEP_MASK | CR4_SMAP_MASK | CR4_LA57_MASK)) {
--        tlb_flush(env_cpu(env));
-+        tcg.tlb_flush(env_cpu(env));
-     }
- 
-     /* Clear bits we're going to recompute.  */
-diff --git a/target/i386/machine.c b/target/i386/machine.c
-index f6f094f1c938..571e98853c64 100644
---- a/target/i386/machine.c
-+++ b/target/i386/machine.c
-@@ -383,7 +383,7 @@ static int cpu_post_load(void *opaque, int version_id)
-         env->dr[7] = dr7 & ~(DR7_GLOBAL_BP_MASK | DR7_LOCAL_BP_MASK);
-         cpu_x86_update_dr7(env, dr7);
-     }
--    tlb_flush(cs);
-+    tcg.tlb_flush(cs);
-     return 0;
- }
- 
-diff --git a/target/i386/tcg/fpu_helper.c b/target/i386/tcg/fpu_helper.c
-index cdd8e9f9471f..eddf0bb9dfc4 100644
---- a/target/i386/tcg/fpu_helper.c
-+++ b/target/i386/tcg/fpu_helper.c
-@@ -2874,7 +2874,7 @@ void helper_xrstor(CPUX86State *env, target_ulong ptr, uint64_t rfbm)
-         }
-         if (env->pkru != old_pkru) {
-             CPUState *cs = env_cpu(env);
--            tlb_flush(cs);
-+            tcg.tlb_flush(cs);
-         }
-     }
- }
-diff --git a/target/i386/tcg/misc_helper.c b/target/i386/tcg/misc_helper.c
-index baffa5d7ba9a..dc974dad6acc 100644
---- a/target/i386/tcg/misc_helper.c
-+++ b/target/i386/tcg/misc_helper.c
-@@ -142,5 +142,5 @@ void helper_wrpkru(CPUX86State *env, uint32_t ecx, uint64_t val)
-     }
- 
-     env->pkru = val;
--    tlb_flush(cs);
-+    tcg.tlb_flush(cs);
- }
-diff --git a/target/mips/sysemu/cp0.c b/target/mips/sysemu/cp0.c
-index bae37f515bf8..f966991c7cc9 100644
---- a/target/mips/sysemu/cp0.c
-+++ b/target/mips/sysemu/cp0.c
-@@ -81,7 +81,7 @@ void cpu_mips_store_status(CPUMIPSState *env, target_ulong val)
- #if defined(TARGET_MIPS64)
-     if ((env->CP0_Status ^ old) & (old & (7 << CP0St_UX))) {
-         /* Access to at least one of the 64-bit segments has been disabled */
--        tlb_flush(env_cpu(env));
-+        tcg.tlb_flush(env_cpu(env));
-     }
- #endif
-     if (ase_mt_available(env)) {
-diff --git a/target/s390x/gdbstub.c b/target/s390x/gdbstub.c
-index a5d69d0e0bc5..b60bdc1fbded 100644
---- a/target/s390x/gdbstub.c
-+++ b/target/s390x/gdbstub.c
-@@ -191,7 +191,7 @@ static int cpu_write_c_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-     case S390_C0_REGNUM ... S390_C15_REGNUM:
-         env->cregs[n] = ldtul_p(mem_buf);
-         if (tcg_enabled()) {
--            tlb_flush(env_cpu(env));
-+            tcg.tlb_flush(env_cpu(env));
-         }
-         cpu_synchronize_post_init(env_cpu(env));
-         return 8;
-diff --git a/target/s390x/sigp.c b/target/s390x/sigp.c
-index d57427ced84d..d2c0b877cee4 100644
---- a/target/s390x/sigp.c
-+++ b/target/s390x/sigp.c
-@@ -294,7 +294,7 @@ static void sigp_set_prefix(CPUState *cs, run_on_cpu_data arg)
-     }
- 
-     cpu->env.psa = addr;
--    tlb_flush(cs);
-+    tcg.tlb_flush(cs);
-     cpu_synchronize_post_init(cs);
-     si->cc = SIGP_CC_ORDER_CODE_ACCEPTED;
- }
 -- 
 2.31.1

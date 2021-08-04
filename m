@@ -1,65 +1,64 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp3529485lff;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp3529487lff;
         Wed, 4 Aug 2021 07:38:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrUf77RVzbZGlsIwiRrx32P4bmvL0yjTTQspp5iV/HjL0TKITGCTYmDfhaP3gs8dH+iU81
-X-Received: by 2002:a17:906:6d56:: with SMTP id a22mr25349363ejt.95.1628087924391;
+X-Google-Smtp-Source: ABdhPJzFPkTe92qSk/Zgeq9hj0ZMJEVR/dY9TcrGEiUB+OXBP40PPhZ0Q2wZAHdo5/ibnzAggnSD
+X-Received: by 2002:a50:8713:: with SMTP id i19mr56287edb.310.1628087924576;
         Wed, 04 Aug 2021 07:38:44 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1628087924; cv=none;
         d=google.com; s=arc-20160816;
-        b=M/i4Tv7+KC5xUDwnH3oAIWh3MmuQEKqngUa/WaR1dXsXv9e4ojkEsLi8IRUme3AWig
-         KN1tN7KyFOKcvCsM67WVZtv96vIeDfAGf9w9Ee7LDwON7mFRqn5Fne9T97kOLkXl44mk
-         slsJUiA2YxvmfWZDmTa4dihhMmO4XoR8a3b2UbOylfAGhhh7GjgoaD+UP3NKO9QMwSxE
-         7BM2asgNdFDvRRYIz0KeXFuD8lC79gNY7xWD7krfXSlhmYvT4kt5tp6WiQqhutD542yf
-         1CVsVoCWUTbWyIz4XxdgwJ0czAEH91oDb5Pkjhz7goD7BnqDBdldrrrFKMqR8pu31Yrb
-         egOg==
+        b=q+qDdVWs7xpOno1obPDoZGz14pZORaF5eXOZUQWhIhSH3tVezI/ne1cpHUGKXwOh8l
+         QBD+WDzVw0QBBQq89FC+xs6/Di06M/+I4/hLhJoWDq9eGqVVf/aFCcMBXZVv594M0mUS
+         XCtrLYVj+cbcTmKUMv5PtKIKIIKEMCy7lMKIV/SKu2mkmNgc4roIyLQisNphjJE3lJS8
+         F9QQMALDpNa4F0nNbwr+468IXNHcjyReppdGrN5Ttm2DbsupcruaL/uBvgN6GjOoZhb/
+         qGh6ahDgDv44Q6LHZM0TlKS5nNPA88mct8WuAOtjwRLkET+Kc/eJfhtJY75WpxhFBeZD
+         ZQyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/+bxiSHimRiYpcXZxGdOcnOJfTSfsz3hlx2jOddl6Pw=;
-        b=nWkaTtvEYwvwCaQ7y5Q81brf271iSnkGiXF/G5GIoXFpr8Y4DOZNHIjN36udJt4diG
-         g8CHbVq7qILgQnNOqyNByvXlzQbMc3Wz1qo4CFgo+AhGzKILQBaV8XnO9v8kS4Po5JPa
-         dlQ8OPoSp+GpV2pvHXjnojXGOoH6CrBgvy9xO7RtuLZzDLceFaJkQjFSJuLurgLvxKeC
-         lMcYNeyVFB3AZsFVIXgUU2z9tZ02izroIsfHFUuucUtyMFItU61D19woofjFucGAvz6K
-         voQ/DfgUwKDXQq/VAY9n8NCxcriJJ3t2BlGdkYUjhksXmJuMYyI9q+sY3h1xx2TKRpsf
-         CTgA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=p6d17G2f/vY6Ohutt77Uwcqq6xVqFidX+CoxKbVzyPE=;
+        b=RjCpMrncY/4QURooiOCBwUxclwjYjbji0VA/Hlu7E3kzMEexOGyF8naHEQ3tpCso+4
+         7NHUTlQl634WB7Jpei5UweY5LwXu7n2Fn7j65rrtzuv7Ht++CylCZTaN09Y2UH0n08Na
+         znCXV8TkyBQ8v48A6qR7ZiWEbezV3bnm2lVjxgIxgPJxG1wyHFJh1yg1wCyEgPSRZprA
+         c2Iq/tfUYeknbpqOIU0LPUb7uhAJ06R4Hqry3vhitZlkYkR3xUCGX+uEjyQkGTbagjiu
+         UsKgDyXfWB/gQU15v31SjLeytqWyYJIc0/WzQOBZrtGvhI6JVqWqfWR9E+4s2nJMFZM/
+         93Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FfzDXORX;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cLrl6hB9;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id i19si2420720edx.178.2021.08.04.07.38.44
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id y19si2231824edw.429.2021.08.04.07.38.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
         Wed, 04 Aug 2021 07:38:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FfzDXORX;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cLrl6hB9;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
 	s=mimecast20190719; t=1628087923;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/+bxiSHimRiYpcXZxGdOcnOJfTSfsz3hlx2jOddl6Pw=;
-	b=FfzDXORXlBPQ5pHsM7+jiJz1hGeRLhbYOPQczjVWH71etxgT9JDJ/mMhyBrk4q5pXX8K5/
-	eIEQB/Lm9xLKeErUacu+h2DLq6Q1tLQRNuztNhJKqclZPAGrxaNX/XKkc5i+oRujhTEaQG
-	2STI7EzYCBjSf54ZSkdySsfQigqE9Qk=
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=p6d17G2f/vY6Ohutt77Uwcqq6xVqFidX+CoxKbVzyPE=;
+	b=cLrl6hB9r6KJa6dO2HlEBZbvf7Vy3O0Ya4ft+5/+zInlSGHdasiHgfijKZZCBa7sfoIOja
+	1v+UApix60VUynBI5av0hdPI64CIR6h7S030D/3xS5Al0k97gl4iRUVKyRIyJPtGMJUuI7
+	t4aPpGMvMg45mhPy9cqF2eKV7NRb000=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-290-_SiDGjwhNNa5K4TLLO5HXA-1; Wed, 04 Aug 2021 10:38:42 -0400
-X-MC-Unique: _SiDGjwhNNa5K4TLLO5HXA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+ us-mta-549-lCpcxupgMoOhJMbThaXKxA-1; Wed, 04 Aug 2021 10:38:42 -0400
+X-MC-Unique: lCpcxupgMoOhJMbThaXKxA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE4F9C73A2;
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B5DBC87D543;
 	Wed,  4 Aug 2021 14:38:39 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.193.3])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0DA6466FFF;
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D4DB5D9C6;
 	Wed,  4 Aug 2021 14:38:28 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 3899A1800986; Wed,  4 Aug 2021 16:38:26 +0200 (CEST)
+	id 288611800983; Wed,  4 Aug 2021 16:38:26 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -85,98 +84,55 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 1/7] plugins: register qemu_plugin_opts using opts_init()
-Date: Wed,  4 Aug 2021 16:38:20 +0200
-Message-Id: <20210804143826.3402872-2-kraxel@redhat.com>
-In-Reply-To: <20210804143826.3402872-1-kraxel@redhat.com>
-References: <20210804143826.3402872-1-kraxel@redhat.com>
+Subject: [PATCH 0/7] tcg: some small towards more modular tcg
+Date: Wed,  4 Aug 2021 16:38:19 +0200
+Message-Id: <20210804143826.3402872-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-X-TUID: QsTUFPIvj6q2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 2C6bMjJX0Krz
 
-Little preparation for building tcg modular.
-No functional change.
-
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- include/qemu/plugin.h | 7 -------
- linux-user/main.c     | 2 +-
- plugins/loader.c      | 9 ++++++++-
- softmmu/vl.c          | 1 -
- 4 files changed, 9 insertions(+), 10 deletions(-)
-
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index 9a8438f6836c..57bdcdecdb42 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -37,13 +37,6 @@ struct qemu_plugin_desc;
- typedef QTAILQ_HEAD(, qemu_plugin_desc) QemuPluginList;
- 
- #ifdef CONFIG_PLUGIN
--extern QemuOptsList qemu_plugin_opts;
--
--static inline void qemu_plugin_add_opts(void)
--{
--    qemu_add_opts(&qemu_plugin_opts);
--}
--
- void qemu_plugin_opt_parse(const char *optarg, QemuPluginList *head);
- int qemu_plugin_load_list(QemuPluginList *head, Error **errp);
- 
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 37ed50d98e2e..f9d2c6e2de31 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -661,7 +661,7 @@ int main(int argc, char **argv, char **envp)
-     cpu_model = NULL;
- 
-     qemu_add_opts(&qemu_trace_opts);
--    qemu_plugin_add_opts();
-+    module_call_init(MODULE_INIT_OPTS);
- 
-     optind = parse_args(argc, argv);
- 
-diff --git a/plugins/loader.c b/plugins/loader.c
-index 05df40398d62..71b03721dffc 100644
---- a/plugins/loader.c
-+++ b/plugins/loader.c
-@@ -53,7 +53,7 @@ struct qemu_plugin_parse_arg {
-     struct qemu_plugin_desc *curr;
- };
- 
--QemuOptsList qemu_plugin_opts = {
-+static QemuOptsList qemu_plugin_opts = {
-     .name = "plugin",
-     .implied_opt_name = "file",
-     .head = QTAILQ_HEAD_INITIALIZER(qemu_plugin_opts.head),
-@@ -403,3 +403,10 @@ void plugin_reset_uninstall(qemu_plugin_id_t id,
-         plugin_reset_destroy(data);
-     }
- }
-+
-+static void plugin_register_config(void)
-+{
-+    qemu_add_opts(&qemu_plugin_opts);
-+}
-+opts_init(plugin_register_config);
-+module_opts("plugin");
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 4dee472c7942..ea87c83db347 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -2725,7 +2725,6 @@ void qemu_init(int argc, char **argv, char **envp)
-     qemu_add_opts(&qemu_global_opts);
-     qemu_add_opts(&qemu_mon_opts);
-     qemu_add_opts(&qemu_trace_opts);
--    qemu_plugin_add_opts();
-     qemu_add_opts(&qemu_option_rom_opts);
-     qemu_add_opts(&qemu_accel_opts);
-     qemu_add_opts(&qemu_mem_opts);
--- 
-2.31.1
+=0D
+=0D
+Gerd Hoffmann (7):=0D
+  plugins: register qemu_plugin_opts using opts_init()=0D
+  tcg/module: move hmp.c to tcg module=0D
+  tcg/module: move cpu-exec-common.c from tcg_ss to specific_ss=0D
+  tcg/module: add some infrastructure for modular tcg.=0D
+  tcg/module: Add tlb_flush to TCGModuleOps=0D
+  tcg/module: Add tlb_flush_page to TCGModuleOps=0D
+  tcg/module: Add tlb_reset_dirty to TCGModuleOps=0D
+=0D
+ include/exec/exec-all.h       |  8 +-------=0D
+ include/qemu/plugin.h         |  7 -------=0D
+ include/tcg/tcg-module.h      | 15 +++++++++++++++=0D
+ accel/tcg/cpu-exec-common.c   |  8 ++++++++=0D
+ accel/tcg/cputlb.c            | 11 ++++++++++-=0D
+ accel/tcg/tcg-module.c        | 24 ++++++++++++++++++++++++=0D
+ accel/tcg/translate-all.c     |  8 --------=0D
+ cpu.c                         |  2 +-=0D
+ linux-user/main.c             |  2 +-=0D
+ plugins/loader.c              |  9 ++++++++-=0D
+ softmmu/physmem.c             | 12 ++++++------=0D
+ softmmu/vl.c                  |  1 -=0D
+ target/arm/helper.c           | 26 +++++++++++++-------------=0D
+ target/i386/helper.c          |  8 ++++----=0D
+ target/i386/machine.c         |  2 +-=0D
+ target/i386/tcg/fpu_helper.c  |  2 +-=0D
+ target/i386/tcg/misc_helper.c |  2 +-=0D
+ target/mips/sysemu/cp0.c      |  2 +-=0D
+ target/s390x/gdbstub.c        |  2 +-=0D
+ target/s390x/sigp.c           |  2 +-=0D
+ accel/tcg/meson.build         | 11 +++++++++--=0D
+ 21 files changed, 106 insertions(+), 58 deletions(-)=0D
+ create mode 100644 include/tcg/tcg-module.h=0D
+ create mode 100644 accel/tcg/tcg-module.c=0D
+=0D
+--=20=0D
+2.31.1=0D
+=0D

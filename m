@@ -1,140 +1,182 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2360691lff;
-        Tue, 3 Aug 2021 02:05:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzldTC6v6e6uGtET9p4KntHWttYo9s4LThW9qqLhwS6o1qNvU7rEDeuM+b/FG8AksT/5b2v
-X-Received: by 2002:a5d:9599:: with SMTP id a25mr223240ioo.86.1627981520061;
-        Tue, 03 Aug 2021 02:05:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627981520; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp3529485lff;
+        Wed, 4 Aug 2021 07:38:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyrUf77RVzbZGlsIwiRrx32P4bmvL0yjTTQspp5iV/HjL0TKITGCTYmDfhaP3gs8dH+iU81
+X-Received: by 2002:a17:906:6d56:: with SMTP id a22mr25349363ejt.95.1628087924391;
+        Wed, 04 Aug 2021 07:38:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628087924; cv=none;
         d=google.com; s=arc-20160816;
-        b=l+lSFAk8ZZzblQ6tEFEXesGxZuH/Ol4csGWBRg8AtGoLXFzfaqCxBZQp9Ic+sJ6OwR
-         Z+6e3sdhfvVm5cTh0Ov1id7y8nuhPbBetS7oM13BKt0CsBsirdEDD/Sqi/qz1If1NXXa
-         +00wfKOF7NonYzKosaP9pRQTdvMoTOC3f4zj6FrwNic3rBzINMGzmKfoS5JqEp3b8zAQ
-         pmDWg5NMbxdQJZxsOVBnEqawxUYaRiOxfqdUSXX8tyv7CnQWe3B80ZuquXITLH8/iRoY
-         HDNwBvsGVl8BZ49WL+FfPOlMcbRqK1zXlIthLbAuGt6J6eRkTgbplVKTRnvbtLppq2no
-         wtdg==
+        b=M/i4Tv7+KC5xUDwnH3oAIWh3MmuQEKqngUa/WaR1dXsXv9e4ojkEsLi8IRUme3AWig
+         KN1tN7KyFOKcvCsM67WVZtv96vIeDfAGf9w9Ee7LDwON7mFRqn5Fne9T97kOLkXl44mk
+         slsJUiA2YxvmfWZDmTa4dihhMmO4XoR8a3b2UbOylfAGhhh7GjgoaD+UP3NKO9QMwSxE
+         7BM2asgNdFDvRRYIz0KeXFuD8lC79gNY7xWD7krfXSlhmYvT4kt5tp6WiQqhutD542yf
+         1CVsVoCWUTbWyIz4XxdgwJ0czAEH91oDb5Pkjhz7goD7BnqDBdldrrrFKMqR8pu31Yrb
+         egOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/nL1N8J/kAZD6OZneyvpICTLnNqpZHKan2Reg9Ci1y0=;
-        b=eIpNlIPCsQ3U7p4lJ2JydLmmNNzNl4WGIRCKLDU6DIOnhxQgdxMbLFMRAEySXFOo/G
-         ry73d78sFCmzPQtgj3PeCDGjeEJvsjPmvTLkzgncpYpTd+GVEYBXnIk0Pm4GfVBFMx85
-         LR8U55NEAYu2XTfkw+rHBhNLrkZGBKpdDwUV++jmFvIrgiJl0X7wXkmhjPuYNy4V29hl
-         r90H186IcOMq/X/z9WCwWGkLq/sXIBcDtG66oZIaYjI3Odp0e7zRjyqYJYdc/fMLY+Sk
-         sGY+LFiK/2OxaagM5QbGlH4eloIzpMUjX2fDbCvVfCRrvrMDGlkZNj675ZS62sGfxRzf
-         nPqg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=/+bxiSHimRiYpcXZxGdOcnOJfTSfsz3hlx2jOddl6Pw=;
+        b=nWkaTtvEYwvwCaQ7y5Q81brf271iSnkGiXF/G5GIoXFpr8Y4DOZNHIjN36udJt4diG
+         g8CHbVq7qILgQnNOqyNByvXlzQbMc3Wz1qo4CFgo+AhGzKILQBaV8XnO9v8kS4Po5JPa
+         dlQ8OPoSp+GpV2pvHXjnojXGOoH6CrBgvy9xO7RtuLZzDLceFaJkQjFSJuLurgLvxKeC
+         lMcYNeyVFB3AZsFVIXgUU2z9tZ02izroIsfHFUuucUtyMFItU61D19woofjFucGAvz6K
+         voQ/DfgUwKDXQq/VAY9n8NCxcriJJ3t2BlGdkYUjhksXmJuMYyI9q+sY3h1xx2TKRpsf
+         CTgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="lyMs/Qb/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d24si14439168iob.3.2021.08.03.02.05.19
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FfzDXORX;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kraxel@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id i19si2420720edx.178.2021.08.04.07.38.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Aug 2021 02:05:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Aug 2021 07:38:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="lyMs/Qb/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54170 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mAqMR-0004Hz-Ec
-	for alex.bennee@linaro.org; Tue, 03 Aug 2021 05:05:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48662)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mAqLG-0001i1-G3
- for qemu-arm@nongnu.org; Tue, 03 Aug 2021 05:04:06 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:39725)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mAqLB-0003vz-EK
- for qemu-arm@nongnu.org; Tue, 03 Aug 2021 05:04:06 -0400
-Received: by mail-ed1-x531.google.com with SMTP id y12so28094139edo.6
- for <qemu-arm@nongnu.org>; Tue, 03 Aug 2021 02:04:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/nL1N8J/kAZD6OZneyvpICTLnNqpZHKan2Reg9Ci1y0=;
- b=lyMs/Qb/I9nVQCDfNhyHylNrIsKkmeTik1pgjtFGUohKyzxQQKyU3g3fxAdq/98Awz
- CERZDDJu/nbmMAMoHWKdhNhfSc+F7cNUx/HwVgWaF1FW6JG4gpQU3Nnl9rswQDQ9VUW7
- xgplq1dTiFwVv5QDt5Y2UMRblyYciE7P7gCAYMPwkd6QXtns2WyG8c8pD0dCDgPJA4Mk
- QXpULLjQfsaV+vBUcvOjFfAfKLFvD/TwCThCVF9cMARCQ6UNmgIRoUWAv2LYdKLQnxZo
- ZhaLbyQ0cf/DAE3Hb+Wwm/dLcMc/ityTU7U5VifPYKPpRWTKgf8Nr0NDZ80l+6piHEvB
- UxrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/nL1N8J/kAZD6OZneyvpICTLnNqpZHKan2Reg9Ci1y0=;
- b=KQQoriJ2t5Q+bkABHZqp32QzDxa6Bu+afFHGYLsAkDp6Zfg4a5fJDTH4vTkQ1xZAz9
- 45wZakkByY+MXKzA23kDTgxzaKqI1KKY4HBSGMVpuMoREEBQbJnQyQVK38+Qyz6Rt7VA
- j70lt1S34BdRE+yvVKrHoh6/ILEgmb46NpUGQo53rRbaPSjT6E+BsXjFfGjqeeGWKbdm
- zA6aRcTumNMSUPT8HhTnrLwmybB63j3JgPYZlI/dTHjJq1jr64bU+Uto0av7Wfw0zKZl
- HuXunHPzdwMd52Fe7Dev8WunFfrvyqAO50KhwfEJOJHygZIjHRHNKOE5ZrDV8UudT+rv
- Cj1Q==
-X-Gm-Message-State: AOAM5309c+ry508a9gVUt4MN2izzqoNLEFqlb4qgUFxr05jM1jcfvD8f
- F4s1/xLTs2P1E8eP+uJQwx4UQ2CsvFYOk9xEIHwGWA==
-X-Received: by 2002:a05:6402:2789:: with SMTP id
- b9mr12956623ede.44.1627981440050; 
- Tue, 03 Aug 2021 02:04:00 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FfzDXORX;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1628087923;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/+bxiSHimRiYpcXZxGdOcnOJfTSfsz3hlx2jOddl6Pw=;
+	b=FfzDXORXlBPQ5pHsM7+jiJz1hGeRLhbYOPQczjVWH71etxgT9JDJ/mMhyBrk4q5pXX8K5/
+	eIEQB/Lm9xLKeErUacu+h2DLq6Q1tLQRNuztNhJKqclZPAGrxaNX/XKkc5i+oRujhTEaQG
+	2STI7EzYCBjSf54ZSkdySsfQigqE9Qk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-290-_SiDGjwhNNa5K4TLLO5HXA-1; Wed, 04 Aug 2021 10:38:42 -0400
+X-MC-Unique: _SiDGjwhNNa5K4TLLO5HXA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE4F9C73A2;
+	Wed,  4 Aug 2021 14:38:39 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.193.3])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0DA6466FFF;
+	Wed,  4 Aug 2021 14:38:28 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 3899A1800986; Wed,  4 Aug 2021 16:38:26 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Xu <peterx@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	David Hildenbrand <david@redhat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH 1/7] plugins: register qemu_plugin_opts using opts_init()
+Date: Wed,  4 Aug 2021 16:38:20 +0200
+Message-Id: <20210804143826.3402872-2-kraxel@redhat.com>
+In-Reply-To: <20210804143826.3402872-1-kraxel@redhat.com>
+References: <20210804143826.3402872-1-kraxel@redhat.com>
 MIME-Version: 1.0
-References: <20210730030821.231106-1-ishii.shuuichir@fujitsu.com>
- <CAFEAcA_=685EKqdsLh=rnXPXQNSRJ+PNuDYec5LTxr_rcAbeOQ@mail.gmail.com>
- <TYCPR01MB616096BA80EBBA7FFA10A119E9F09@TYCPR01MB6160.jpnprd01.prod.outlook.com>
-In-Reply-To: <TYCPR01MB616096BA80EBBA7FFA10A119E9F09@TYCPR01MB6160.jpnprd01.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Aug 2021 10:03:16 +0100
-Message-ID: <CAFEAcA_VS9MfZM2NumtScxk_8mXtF=D_-YPsb+tt_acO3r3U7w@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] Add support for Fujitsu A64FX processor
-To: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gy8g4zOdDoiU
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+X-TUID: QsTUFPIvj6q2
 
-On Tue, 3 Aug 2021 at 01:37, ishii.shuuichir@fujitsu.com
-<ishii.shuuichir@fujitsu.com> wrote:
->
-> > I'm afraid this isn't the way a v2 patchseries should be structured.
-> > The idea is that a v2 series should be complete in itself, not based on whatever v1
-> > was. So when you make the changes requested in review of v1, you update the
-> > commits in your local git branch, and then you send out the patches as the v2. v2
-> > should apply cleanly on to master, and all the patches in it should be logically
-> > separated out changes (with no "patch 1 makes a change and then patch 2
-> > changes the code that was added in patch 1" effects).
->
-> Thank you for comments.
-> We apologize for the inconvenience caused by our lack of understanding.
-> I understood your point.
->
-> Just to confirm,
-> should I update to v3 and resubmit it as a patch series based on the points you mentioned?
+Little preparation for building tcg modular.
+No functional change.
 
-Yes, please.
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ include/qemu/plugin.h | 7 -------
+ linux-user/main.c     | 2 +-
+ plugins/loader.c      | 9 ++++++++-
+ softmmu/vl.c          | 1 -
+ 4 files changed, 9 insertions(+), 10 deletions(-)
 
-thanks
--- PMM
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index 9a8438f6836c..57bdcdecdb42 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -37,13 +37,6 @@ struct qemu_plugin_desc;
+ typedef QTAILQ_HEAD(, qemu_plugin_desc) QemuPluginList;
+ 
+ #ifdef CONFIG_PLUGIN
+-extern QemuOptsList qemu_plugin_opts;
+-
+-static inline void qemu_plugin_add_opts(void)
+-{
+-    qemu_add_opts(&qemu_plugin_opts);
+-}
+-
+ void qemu_plugin_opt_parse(const char *optarg, QemuPluginList *head);
+ int qemu_plugin_load_list(QemuPluginList *head, Error **errp);
+ 
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 37ed50d98e2e..f9d2c6e2de31 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -661,7 +661,7 @@ int main(int argc, char **argv, char **envp)
+     cpu_model = NULL;
+ 
+     qemu_add_opts(&qemu_trace_opts);
+-    qemu_plugin_add_opts();
++    module_call_init(MODULE_INIT_OPTS);
+ 
+     optind = parse_args(argc, argv);
+ 
+diff --git a/plugins/loader.c b/plugins/loader.c
+index 05df40398d62..71b03721dffc 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -53,7 +53,7 @@ struct qemu_plugin_parse_arg {
+     struct qemu_plugin_desc *curr;
+ };
+ 
+-QemuOptsList qemu_plugin_opts = {
++static QemuOptsList qemu_plugin_opts = {
+     .name = "plugin",
+     .implied_opt_name = "file",
+     .head = QTAILQ_HEAD_INITIALIZER(qemu_plugin_opts.head),
+@@ -403,3 +403,10 @@ void plugin_reset_uninstall(qemu_plugin_id_t id,
+         plugin_reset_destroy(data);
+     }
+ }
++
++static void plugin_register_config(void)
++{
++    qemu_add_opts(&qemu_plugin_opts);
++}
++opts_init(plugin_register_config);
++module_opts("plugin");
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 4dee472c7942..ea87c83db347 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -2725,7 +2725,6 @@ void qemu_init(int argc, char **argv, char **envp)
+     qemu_add_opts(&qemu_global_opts);
+     qemu_add_opts(&qemu_mon_opts);
+     qemu_add_opts(&qemu_trace_opts);
+-    qemu_plugin_add_opts();
+     qemu_add_opts(&qemu_option_rom_opts);
+     qemu_add_opts(&qemu_accel_opts);
+     qemu_add_opts(&qemu_mem_opts);
+-- 
+2.31.1

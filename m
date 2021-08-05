@@ -1,81 +1,85 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp517958lff;
-        Thu, 5 Aug 2021 00:31:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmvrTdNrGv0ftc+gMZT75FrOICSbshD/3YDwyQWh70E/Mj0j9TBzf/nqpyzWgLGN1wHeKc
-X-Received: by 2002:a05:6214:528a:: with SMTP id kj10mr3832828qvb.38.1628148684164;
-        Thu, 05 Aug 2021 00:31:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628148684; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp518035lff;
+        Thu, 5 Aug 2021 00:31:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypDlwQSw7AmKnx4lB9L4MjnZXZMR9gv+wL1ZpRVGkUT9stB2AVop8zPx0rtKsZ/Sqv4oT1
+X-Received: by 2002:ad4:530b:: with SMTP id y11mr3815609qvr.36.1628148688308;
+        Thu, 05 Aug 2021 00:31:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628148688; cv=none;
         d=google.com; s=arc-20160816;
-        b=hxhxOc0asGwqsTDWLLE+AIflm37MCHcgtatpFbIKDQJjxIZXN+exVHIFJqneo7LrGk
-         /wuhSohwKIXFmwlNt2dpq3xoaRBg5v2Z2m/z1khGKtCRXROrBE8AEw5XGdML+9QEFkds
-         c5v5rPYzv/4iGkr/ZD2sF7+cqyul9YeC9+rK4n2Azh2ioikum/8Q7ETNtVw9o4hQ4M4o
-         R9lzG5enMxP64z1RJhJVXvNBcZB2miU10wBSk+bPFPhf3ICQd3fZyUZIJWqa5m/4pLY9
-         pGnDOZTxeTlTb4BUHLQrPOHNfAuWVFIsNLUpRwl3MoBwaB6lRPhCN5rAppldxVJDE8R0
-         7iOg==
+        b=i3cp0tFa73te7bsowuXIIlVLI2pGvNbPFRRq7BedC0onDL/gHuIG8XZO618WxGAcOS
+         svntJv5HBgUs4ToWwW7khFX7SfnzCVG8LGMvaEHw3pZreJREZ5FmmEGVcuu0/kWl8ZcU
+         vDs+H1b06u9RLGQUgTCvi5jCr2dNtWSr9qHWSSi3apeAbXhbIJij4rLNynk0Y3a5xoV4
+         +k7M6PbkmPmStkCb5TNXuJ2ZIQpK2G6iJUk5AieQDXUXLoYABTDBJxsZODYpoqBY8EwJ
+         vITvCFsahltmk5zr317RBWRl/oVLUrX2ahYf2+9gG7GIhM0KTqTPOxKED88ZboHSg6/s
+         DFiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:ironport-sdr;
-        bh=BGrBc8A0D1TlhCd2Z+xcJuZgR7GHRKKQNiq/w8p1Qt4=;
-        b=Vw+N132k1hfFLQpobET40PVjeelLSGPpcnV4dH3RuFNGsgf52Ha2aAUgFm2LIDY9BO
-         pdUXFAEE5VQkfXgjrAJZ3IE85bhkWETTR497FXTcKW+wm21moJ0xkevqzE22owa1nBi2
-         vBBTDUwNP4w9A+V/UTeXL7lJPg4GXB8Qtekr973zySrj7OmCLv95M7AZ2B4iAOjFUQq2
-         d4Y7RhHsHoHpd8BlDStzEvika7mkK5erS4Tj/d4feYQmPSHz0drqFR7MBjGC8WmcjfyQ
-         occyN9GgL5enqw8BhexVN5JxT4hwXWH6ro5SSaFw2rF2PgHeElvVrNmV30/mr7UVHrmK
-         xpbQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :ironport-sdr;
+        bh=CdSAhGn6HKVmxL7c3+LP2uE0x1jmS2CEEs40SKy86Cg=;
+        b=cm7QOFjqvWs/W5wFcKP4qXQ2N1Mohe4NRoNgVmHLr3Tmd2wRWPH6DAsu+B9/V2M20h
+         B9mIExjPDQx7BdD4rH/sgd5QnLushoMZj+XcFQzcp1Mfikca9Fo3yogZTERMiJfeTuMg
+         9WjLYHXu0vn1UC9ODsCrQ8XB33udOVIiJOts7raz8SXQtNXLF6D7SE6gE8HUGHZSZ1BD
+         /Trp1np/sOMndQGS6JmMftC4i7IbBBv72eDgpzz49igAPcgac+unsb3avFVEe47ZVwZX
+         MoM5ZQ43ILPx66qlWF0RFyxAJ6w+Dj2a+ZkgMwOjTjPF2LJ+WbYj6+vhaS0T4qAd1fgj
+         7oRw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s20si901738qtn.181.2021.08.05.00.31.24
+        by mx.google.com with ESMTPS id f26si3407935qkm.239.2021.08.05.00.31.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Aug 2021 00:31:24 -0700 (PDT)
+        Thu, 05 Aug 2021 00:31:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
-Received: from localhost ([::1]:47038 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mBXqd-0002o8-Df
-	for alex.bennee@linaro.org; Thu, 05 Aug 2021 03:31:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51382)
+	id 1mBXqh-00030U-BG
+	for alex.bennee@linaro.org; Thu, 05 Aug 2021 03:31:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1mBXqF-0002nD-2F; Thu, 05 Aug 2021 03:30:59 -0400
-Received: from esa4.hc1455-7.c3s2.iphmx.com ([68.232.139.117]:21524)
+ id 1mBXqF-0002nH-89; Thu, 05 Aug 2021 03:30:59 -0400
+Received: from esa4.hc1455-7.c3s2.iphmx.com ([68.232.139.117]:21527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1mBXqD-00045y-79; Thu, 05 Aug 2021 03:30:58 -0400
-IronPort-SDR: apHBzlpypUKmFqoDvAtsYxsGspDFNS6wG8G32UmxdmPPUl3DbBT6jlwdBMDzcIrPxoETRDfMSf
- 8XMo3ciUbrTxlQPGwUVxy3nR54qxN9z4ujyri83VSMIBdj45qpiop5+eNHLWJNktA+JXDQmPgw
- T/IXs3/j3Go+jo1PBzUcTxvcV35brBc9RP/WtxKdqxRldHFGgJtuDgBGeegnSVxZOLuxGWy7OG
- 2HTP6+o2p5kYQV/IisTNs7XoW8S97FSiTuWRDizpa6mvzm4DrUjmEW268ZPtP4zRzsCgA9ksuw
- xBBTLKCcU/7FprjvW85X9FEi
-X-IronPort-AV: E=McAfee;i="6200,9189,10066"; a="39050093"
-X-IronPort-AV: E=Sophos;i="5.84,296,1620658800"; d="scan'208";a="39050093"
-Received: from unknown (HELO yto-r2.gw.nic.fujitsu.com) ([218.44.52.218])
- by esa4.hc1455-7.c3s2.iphmx.com with ESMTP; 05 Aug 2021 16:30:51 +0900
-Received: from yto-m3.gw.nic.fujitsu.com (yto-nat-yto-m3.gw.nic.fujitsu.com
- [192.168.83.66])
- by yto-r2.gw.nic.fujitsu.com (Postfix) with ESMTP id 9D33E6AB6A;
- Thu,  5 Aug 2021 16:30:50 +0900 (JST)
+ id 1mBXqD-00048Q-8K; Thu, 05 Aug 2021 03:30:59 -0400
+IronPort-SDR: VEchjHVpUwrjDwg6yU71jlMCzRh8bDNeFVCnbqYY5S3XReIkaHB9VLzxcGz9n33VmjJ7UK2D86
+ ge5nRGdvV1/+Kst/uWJNZfDpRnaHDP+5st6fyfhrRDc/hPesS7KlYDcuN/Yjqpu35D8S760/su
+ rtrlrDlue3wnHeoPv4ko9qg8C7aADHs7gZLUy7ibHQMw76pCl/1niIf0Woox+GlkAZrzU2hSlI
+ pmOVtpLAHQM2LfM1SpXPAahyoUVg2LNa4Pw7iEdlMVZ60MRKB3qRS7LSBfTeqeD73mMtFbRYKI
+ XPiKutoch6wviC4ZNz4AdRJK
+X-IronPort-AV: E=McAfee;i="6200,9189,10066"; a="39050101"
+X-IronPort-AV: E=Sophos;i="5.84,296,1620658800"; d="scan'208";a="39050101"
+Received: from unknown (HELO oym-r2.gw.nic.fujitsu.com) ([210.162.30.90])
+ by esa4.hc1455-7.c3s2.iphmx.com with ESMTP; 05 Aug 2021 16:30:54 +0900
+Received: from oym-m4.gw.nic.fujitsu.com (oym-nat-oym-m4.gw.nic.fujitsu.com
+ [192.168.87.61])
+ by oym-r2.gw.nic.fujitsu.com (Postfix) with ESMTP id BEEA1E6806;
+ Thu,  5 Aug 2021 16:30:53 +0900 (JST)
 Received: from yto-om2.fujitsu.com (yto-om2.o.css.fujitsu.com [10.128.89.163])
- by yto-m3.gw.nic.fujitsu.com (Postfix) with ESMTP id DAA66E37C2;
- Thu,  5 Aug 2021 16:30:49 +0900 (JST)
+ by oym-m4.gw.nic.fujitsu.com (Postfix) with ESMTP id DCF1A166AE8;
+ Thu,  5 Aug 2021 16:30:52 +0900 (JST)
 Received: from localhost.localdomain (n3235113.np.ts.nmh.cs.fujitsu.co.jp
  [10.123.235.113])
- by yto-om2.fujitsu.com (Postfix) with ESMTP id B022B400C23D1;
- Thu,  5 Aug 2021 16:30:49 +0900 (JST)
+ by yto-om2.fujitsu.com (Postfix) with ESMTP id A4613400C23B9;
+ Thu,  5 Aug 2021 16:30:52 +0900 (JST)
 From: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
 To: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v3 0/3] Add support for Fujitsu A64FX processor
-Date: Thu,  5 Aug 2021 16:30:42 +0900
-Message-Id: <20210805073045.916622-1-ishii.shuuichir@fujitsu.com>
+Subject: [PATCH v3 2/3] hw/arm/virt: target-arm: Add A64FX processor support
+ to virt machine
+Date: Thu,  5 Aug 2021 16:30:44 +0900
+Message-Id: <20210805073045.916622-3-ishii.shuuichir@fujitsu.com>
 X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210805073045.916622-1-ishii.shuuichir@fujitsu.com>
+References: <20210805073045.916622-1-ishii.shuuichir@fujitsu.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
@@ -101,39 +105,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: ishii.shuuichir@fujitsu.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BgItSNBYizWi
+X-TUID: Q4qSCBYmWrLY
 
-This is the v3 patch series.
+Add -cpu a64fx to use A64FX processor when -machine virt option is specified.
+In addition, add a64fx to the Supported guest CPU types in the virt.rst document.
 
-v3:
-When we created the v2 patch series, we based it on the v1 patch series
-that had not been merged into the upstream, so we created the v3 patch
-series as a patch series that can be applied independently.
+Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+---
+ docs/system/arm/virt.rst | 1 +
+ hw/arm/virt.c            | 1 +
+ 2 files changed, 2 insertions(+)
 
-v2:
-No features have been added or removed from the v1 patch series. Removal
-of unused definitions that were added in excess, and consolidation of
-patches for the purpose of functional consistency.
-
-For patch 1, Implemented Identification registers for A64FX processor.
-HPC extension registers will be implemented in the future.
-
-For patch 2, A64FX processor can now be used by specifying the -cpu
-a64fx option when the -macine virt option is specified.
-
-For patch 3, added A64FX processor related tests.
-
-Shuuichirou Ishii (3):
-  target-arm: cpu64: Add support for Fujitsu A64FX
-  hw/arm/virt: target-arm: Add A64FX processor support to virt machine
-  tests/arm-cpu-features: Add A64FX processor related tests
-
- docs/system/arm/virt.rst       |  1 +
- hw/arm/virt.c                  |  1 +
- target/arm/cpu64.c             | 44 ++++++++++++++++++++++++++++++++++
- tests/qtest/arm-cpu-features.c |  3 +++
- 4 files changed, 49 insertions(+)
-
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 59acf0eeaf..850787495b 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -55,6 +55,7 @@ Supported guest CPU types:
+ - ``cortex-a53`` (64-bit)
+ - ``cortex-a57`` (64-bit)
+ - ``cortex-a72`` (64-bit)
++- ``a64fx`` (64-bit)
+ - ``host`` (with KVM only)
+ - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 81eda46b0b..10286d3fd6 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -200,6 +200,7 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a53"),
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("cortex-a72"),
++    ARM_CPU_TYPE_NAME("a64fx"),
+     ARM_CPU_TYPE_NAME("host"),
+     ARM_CPU_TYPE_NAME("max"),
+ };
 -- 
 2.27.0
 

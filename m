@@ -1,108 +1,111 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp639380lff;
-        Thu, 5 Aug 2021 15:31:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6Eg4ZvQZvKIGvamOKiC1HspXMkGTpNLJ8cxuNloGqNnUNUbTUxFH5kzYGi/G4gX/mDdy6
-X-Received: by 2002:a05:6638:418f:: with SMTP id az15mr6922397jab.8.1628202710876;
-        Thu, 05 Aug 2021 15:31:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628202710; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp639665lff;
+        Thu, 5 Aug 2021 15:32:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXOH5KMc/2p453/QvLWpPexukkZvcT6oaNEexIwcuElf132ygVO2G/J3oRpn5t5Qi8VGBo
+X-Received: by 2002:a05:6602:328c:: with SMTP id d12mr293584ioz.41.1628202741413;
+        Thu, 05 Aug 2021 15:32:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628202741; cv=none;
         d=google.com; s=arc-20160816;
-        b=jLpg1V+R7FBtFcuoLo7NWtYQcAjH2jG0Fo1qf8jpWIAGOoU5tqz48Y+thsVwpM4mN4
-         EehADdCuktrft2RlqefiK64ynFIllsgKFE2F0s3S2wAZ79y78o4HlPbPwZ6z/DevxcwI
-         YcSZ9LIDqpjTTOeLY865uBlrO4jrgYHSNkc76Lfz5azrRIQIuEAoDFxKJpmYkDvWUUEA
-         /DmjvCk8hGUf2ZX46PElDb36r0WgiwHgUspx35LlCl21CSi5e7X01nS7kn1oni+VTtzt
-         YPEbC72pXEnKcRBdqSfP/vgl3XQQ89O81DUjufQG1UW0YVUclkuuA925UIIbMjodnYdU
-         KU4w==
+        b=qPoVlghQV6ebdpEd7iLtym4bOcPcfvLKCHd2JY32tYrdCUyevjmJRsumR92ehapSsj
+         SASQ6SLPnsPYSNixRhxqT1/GhX/39m4Ca0E8Yv0NQJe1GqHqEOD1368qtdnLB3h2TzF9
+         FkJ98C7SSmc3w/jWy3ddX6HgYLF/JiViOtEe9Z5g0pGC84q4XKvC+2A6NIAS1jWDVtut
+         qGPPmxdZXiIAMS9zZrplPjeSXApBuyre+lJgzTh26m1lXNjmGbQj9BerXphCr35mzyns
+         to/VxnCzPKbU9TJFIkfqgBg37yZ0OUPybfibjaXYSWMZojfha2kdNHyMEQoJY1d6lm1t
+         dWOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=tTgbBm4KYGMmUC6CaEAnzc2MAY8fHUQJmsMQCASd5Nk=;
-        b=B2LxgLaKpHjHGl5JjPsRRNjocgUrAgCtwpY8vR6imyqL3HtXcxUCSoNWwcPvXlAjSC
-         LuPpHhA7zdrz1x7iUJeH87l7lBCxy5fNPV5jztZt0pmOsIfFnOh4+IedQPztg/SsDnpE
-         M6FtLRbmnb/l3NaA76+u1f1VjWbC9XjHJbeykxXl5b+gyew+EVAFeRuJ61Z6pVx5EMUn
-         MFsBoRZU4Lafzf6iu0ewnkt7UxRK3o0LiqXORA7C3UP3McyA2HusycUOpsS+y+pQN37m
-         l4Xjgr1frN8UB8ERBUxDW8LdA/JcHYfVU5mJ+M9kjBqd39SL2218hbKZclFhbrTex40c
-         dMjw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=oINuPGEcryVgocqWb2UboVny7kYUXzklLGzq6cJvadg=;
+        b=n+FevIyQyuNz155BKQG4c1GDr7tGg403Z97f1nt2K7yKEyFkaOGmlRg6u2B9SFQkj7
+         D9lqG4Ad8kMLPztsdZ+vPqrz5Ht6MLR4FRrR6LKB0homXY9YDB7yaqjsBhlCaBoDQJv2
+         fSk3HTDmUtdY2USmHB0Ph3MmSP2Gqbc+SPeN+uWYFny2ElCWzSBPtb+1rF/FjsTV1Lq1
+         KaCEeEY2oeMZlth5Zx5HsofLvVxdwSxLgQf+CK+QDsswTL2yhB2ey5IMlCcvLrXkHYES
+         OdS7NGV6wvGI/unvxQ2ZuSl/uELvJyRcKq/xLmn8tYzdVjQzxbCIAtGN4Tv4aH83/xpC
+         GOWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ha4WWEC5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RzXdWhhd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n12si7497707ilq.134.2021.08.05.15.31.50
+        by mx.google.com with ESMTPS id f22si7299802jam.121.2021.08.05.15.32.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Aug 2021 15:31:50 -0700 (PDT)
+        Thu, 05 Aug 2021 15:32:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ha4WWEC5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RzXdWhhd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57024 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mBlu2-0001uQ-7D
-	for alex.bennee@linaro.org; Thu, 05 Aug 2021 18:31:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58792)
+	id 1mBluW-00033U-KW
+	for alex.bennee@linaro.org; Thu, 05 Aug 2021 18:32:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1mBlsM-0007gK-51
- for qemu-devel@nongnu.org; Thu, 05 Aug 2021 18:30:06 -0400
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731]:43733)
+ id 1mBlsR-0007oo-RW
+ for qemu-devel@nongnu.org; Thu, 05 Aug 2021 18:30:11 -0400
+Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734]:41667)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1mBlsK-0005qI-G4
- for qemu-devel@nongnu.org; Thu, 05 Aug 2021 18:30:05 -0400
-Received: by mail-qk1-x731.google.com with SMTP id f12so6798908qkh.10
- for <qemu-devel@nongnu.org>; Thu, 05 Aug 2021 15:30:03 -0700 (PDT)
+ id 1mBlsN-0005sf-WA
+ for qemu-devel@nongnu.org; Thu, 05 Aug 2021 18:30:11 -0400
+Received: by mail-qk1-x734.google.com with SMTP id t68so7968069qkf.8
+ for <qemu-devel@nongnu.org>; Thu, 05 Aug 2021 15:30:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tTgbBm4KYGMmUC6CaEAnzc2MAY8fHUQJmsMQCASd5Nk=;
- b=Ha4WWEC5L9gIk4CBjPBHdxywZfF2kG+xE6Z6XJMm9SN/eBuUJpebgv9oWfCVjyfLPc
- 4rUHfCg9I0za4yMirGSrl2kjxh9sBzK7664gFuxPhHlivXgr/KAPM181r7yQdhx1kd/P
- rgXIvvPW/DZTipbYfxTJ25/g0Rh+xW/Uaau/oHkeb/nI1orHSQXy7fLXg81PKDeBAbYK
- 0YsQbkPcwhlkSK0SGRey109Hhl6jaL29VWn2y4IabBnkNsRwaMHMF9KK/+GFgQnkwZw+
- lQYGKT1EAa3+tFWKjpGDvFax3kOSpYWcaoAu9oGdkDBRUIf6LXEqCy7Xva9k6RuvEEFe
- ZBtg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=oINuPGEcryVgocqWb2UboVny7kYUXzklLGzq6cJvadg=;
+ b=RzXdWhhdMc8Ib9vJMThsDDAPhXD2DlvlzJs3fYciXVdd2ZrzR+iFeBTL97XSHXBKOw
+ e9LzkFQvwv3He4R8Gh5AYpHrrkgythrutNk3SC/s4V/9kUK96R0xWASgSpsDl/NBUEdz
+ rtlab6C7iLD9vHgEeGBXlbqkRHwI3uNfDQWKBLXXbQyAA5w1GHn96kIJPkx+hV5soJb1
+ hznilmdCrJLNEcfrNXS3WJZbmAcWnsTd/0DH6hKgrqjZgkrc26pSJnnztpGkOy+IsQOF
+ 9wBDi57v9gfqDKPKB+HzwREUXuKRKTyFuCu4wKI8gc0x9ozEuhSeS/W55jHfXkIyquwS
+ v2YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tTgbBm4KYGMmUC6CaEAnzc2MAY8fHUQJmsMQCASd5Nk=;
- b=X5Q+5uvcW//WhS1+QzhDoY7iJNTakwU8kMJ9konhnBDIcvRcWT/ZHXD2qFtPp4Vpss
- iNU++OPQn1x/w3LuZutpjMa3sEOZup8MFlq2NJB0P9on5B+27sInEIg8QN8agfpXt3Ep
- MqYlztP51ttqF0/FLvhbu6ywNywCci+9vwos24v9ARQcrcufq+MeuA/C+juserqdIlzz
- NE+Tl9MIXZ9O7VDZ3exvKoJyJuCoxLi11qKQ7kgJtwNwqpWVARJy6B2M+p5M1huhublS
- NGP1IXnWF66VpQQOxEDvV3SR9rVKkr7RuZdQh/MCTEoIfk7GdGI0EyMAeoQp9EEAuBNs
- fUTA==
-X-Gm-Message-State: AOAM533qn/gL8Ren+vNzqGMyTDurHdASfd/mskKqgw980ZuWHazrkLI9
- iDnX7nkm6UBIxMoN686525dCbQ==
-X-Received: by 2002:a05:620a:639:: with SMTP id
- 25mr7140363qkv.179.1628202603301; 
- Thu, 05 Aug 2021 15:30:03 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=oINuPGEcryVgocqWb2UboVny7kYUXzklLGzq6cJvadg=;
+ b=k7CtVysFnJL34Zq9CuL+yiAMA9HeGukwqzovijcO5RKG8KriUkwVI9kgkujDKbVSNk
+ eWGdyV5rU2hxMGg+xolzelYZ+/B1qGHAuPUAZDjy0TSQtcfd08iKQY1GKqz8Snm6UX0e
+ dgEXkJbp8PR22g3kpCRj5gu2H+S6weaJus2hx7+o5GSNOq6wG053mPLX8fnLKsVtDhUo
+ 7mQy3DZeiMoSQYc2H9ZCLRuQZYsnhD4MsHRCSS8bKJ7QGCUue0XRkSKBcG4c12N5o9G4
+ fkOr+9ot0LrsZdr5139cIwwm2muKUtzFaFXhRtSkQjX2of7iHCu0AhKwdVAG3+FWNncU
+ psKw==
+X-Gm-Message-State: AOAM531Qa43kZSXzVM2mFfAC5jcHuIYQOy1xWioYdH5KQsAWWOf1X/Rf
+ T56NZ1e/cEDuVNNHq2xtmMlX6Q==
+X-Received: by 2002:a05:620a:5f6:: with SMTP id
+ z22mr7191832qkg.195.1628202607012; 
+ Thu, 05 Aug 2021 15:30:07 -0700 (PDT)
 Received: from localhost.localdomain
  (bras-base-stsvon1503w-grc-22-142-114-143-47.dsl.bell.ca. [142.114.143.47])
- by smtp.googlemail.com with ESMTPSA id d28sm3655195qkj.25.2021.08.05.15.30.02
+ by smtp.googlemail.com with ESMTPSA id d28sm3655195qkj.25.2021.08.05.15.30.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Aug 2021 15:30:02 -0700 (PDT)
+ Thu, 05 Aug 2021 15:30:06 -0700 (PDT)
 From: Shashi Mallela <shashi.mallela@linaro.org>
 To: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
  mst@redhat.com, imammedo@redhat.com
-Subject: [PATCH v7 00/10] GICv3 LPI and ITS feature implementation
-Date: Thu,  5 Aug 2021 18:29:52 -0400
-Message-Id: <20210805223002.144855-1-shashi.mallela@linaro.org>
+Subject: [PATCH v7 05/10] hw/intc: GICv3 ITS Feature enablement
+Date: Thu,  5 Aug 2021 18:29:57 -0400
+Message-Id: <20210805223002.144855-6-shashi.mallela@linaro.org>
 X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210805223002.144855-1-shashi.mallela@linaro.org>
+References: <20210805223002.144855-1-shashi.mallela@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x731.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::734;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x734.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,67 +121,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h1+NKzEkrNfx
+X-TUID: zjEBMqkzt5RH
 
-This patchset implements qemu device model for enabling physical
-LPI support and ITS functionality in GIC as per GICv3 specification.
-Both flat table and 2 level tables are implemented.The ITS commands
-for adding/deleting ITS table entries,trigerring LPI interrupts are
-implemented.Translated LPI interrupt ids are processed by redistributor
-to determine priority and set pending state appropriately before
-forwarding the same to cpu interface.
-The ITS feature support has been added to sbsa-ref platform as well as
-virt platform,wherein the emulated functionality co-exists with kvm
-kernel functionality.
+Added properties to enable ITS feature and define qemu system
+address space memory in gicv3 common,setup distributor and
+redistributor registers to indicate LPI support.
 
-Changes in v7:
- - Restructured the lpi pending table scan logic as per comments in v6
- - Addressed minor comments from v6
- - For sbsa-ref platform,ITS memory map has been inserted between
-   distributor & redistributors region similar to GIC-600 layout.
-   Also, introduced sbsa-ref versioning to reflect the latest its memory
-   map change and subsequent future use for helper functions
- - All kvm_unit_tests PASS
- - Verified Linux Boot functionality
+Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv3_common.c         | 12 ++++++++++++
+ hw/intc/arm_gicv3_dist.c           |  5 ++++-
+ hw/intc/arm_gicv3_redist.c         | 12 +++++++++---
+ hw/intc/gicv3_internal.h           |  2 ++
+ include/hw/intc/arm_gicv3_common.h |  1 +
+ 5 files changed, 28 insertions(+), 4 deletions(-)
 
-Shashi Mallela (10):
-  hw/intc: GICv3 ITS initial framework
-  hw/intc: GICv3 ITS register definitions added
-  hw/intc: GICv3 ITS command queue framework
-  hw/intc: GICv3 ITS Command processing
-  hw/intc: GICv3 ITS Feature enablement
-  hw/intc: GICv3 redistributor ITS processing
-  hw/arm/sbsa-ref: add ITS support in SBSA GIC
-  tests/data/acpi/virt: Add IORT files for ITS
-  hw/arm/virt: add ITS support in virt GIC
-  tests/data/acpi/virt: Update IORT files for ITS
-
- hw/arm/sbsa-ref.c                      |   79 +-
- hw/arm/virt.c                          |   28 +-
- hw/intc/arm_gicv3.c                    |   14 +
- hw/intc/arm_gicv3_common.c             |   13 +
- hw/intc/arm_gicv3_cpuif.c              |    7 +-
- hw/intc/arm_gicv3_dist.c               |    5 +-
- hw/intc/arm_gicv3_its.c                | 1298 ++++++++++++++++++++++++
- hw/intc/arm_gicv3_its_common.c         |    7 +-
- hw/intc/arm_gicv3_its_kvm.c            |    2 +-
- hw/intc/arm_gicv3_redist.c             |  153 ++-
- hw/intc/gicv3_internal.h               |  188 +++-
- hw/intc/meson.build                    |    1 +
- include/hw/arm/virt.h                  |    2 +
- include/hw/intc/arm_gicv3_common.h     |   13 +
- include/hw/intc/arm_gicv3_its_common.h |   32 +-
- target/arm/kvm_arm.h                   |    4 +-
- tests/data/acpi/virt/IORT              |  Bin 0 -> 124 bytes
- tests/data/acpi/virt/IORT.memhp        |  Bin 0 -> 124 bytes
- tests/data/acpi/virt/IORT.numamem      |  Bin 0 -> 124 bytes
- tests/data/acpi/virt/IORT.pxb          |  Bin 0 -> 124 bytes
- 20 files changed, 1818 insertions(+), 28 deletions(-)
- create mode 100644 hw/intc/arm_gicv3_its.c
- create mode 100644 tests/data/acpi/virt/IORT
- create mode 100644 tests/data/acpi/virt/IORT.memhp
- create mode 100644 tests/data/acpi/virt/IORT.numamem
- create mode 100644 tests/data/acpi/virt/IORT.pxb
-
---
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 58ef65f589..53dea2a775 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -345,6 +345,11 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (s->lpi_enable && !s->dma) {
++        error_setg(errp, "Redist-ITS: Guest 'sysmem' reference link not set");
++        return;
++    }
++
+     s->cpu = g_new0(GICv3CPUState, s->num_cpu);
+ 
+     for (i = 0; i < s->num_cpu; i++) {
+@@ -381,6 +386,10 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+             (1 << 24) |
+             (i << 8) |
+             (last << 4);
++
++        if (s->lpi_enable) {
++            s->cpu[i].gicr_typer |= GICR_TYPER_PLPIS;
++        }
+     }
+ }
+ 
+@@ -494,9 +503,12 @@ static Property arm_gicv3_common_properties[] = {
+     DEFINE_PROP_UINT32("num-cpu", GICv3State, num_cpu, 1),
+     DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
+     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
++    DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
+     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
+     DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
+                       redist_region_count, qdev_prop_uint32, uint32_t),
++    DEFINE_PROP_LINK("sysmem", GICv3State, dma, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
+index b65f56f903..43128b376d 100644
+--- a/hw/intc/arm_gicv3_dist.c
++++ b/hw/intc/arm_gicv3_dist.c
+@@ -371,7 +371,9 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
+          * A3V == 1 (non-zero values of Affinity level 3 supported)
+          * IDbits == 0xf (we support 16-bit interrupt identifiers)
+          * DVIS == 0 (Direct virtual LPI injection not supported)
+-         * LPIS == 0 (LPIs not supported)
++         * LPIS == 1 (LPIs are supported if affinity routing is enabled)
++         * num_LPIs == 0b00000 (bits [15:11],Number of LPIs as indicated
++         *                      by GICD_TYPER.IDbits)
+          * MBIS == 0 (message-based SPIs not supported)
+          * SecurityExtn == 1 if security extns supported
+          * CPUNumber == 0 since for us ARE is always 1
+@@ -386,6 +388,7 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
+         bool sec_extn = !(s->gicd_ctlr & GICD_CTLR_DS);
+ 
+         *data = (1 << 25) | (1 << 24) | (sec_extn << 10) |
++            (s->lpi_enable << GICD_TYPER_LPIS_SHIFT) |
+             (0xf << 19) | itlinesnumber;
+         return MEMTX_OK;
+     }
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 53da703ed8..2108abfe9c 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -248,10 +248,16 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+     case GICR_CTLR:
+         /* For our implementation, GICR_TYPER.DPGS is 0 and so all
+          * the DPG bits are RAZ/WI. We don't do anything asynchronously,
+-         * so UWP and RWP are RAZ/WI. And GICR_TYPER.LPIS is 0 (we don't
+-         * implement LPIs) so Enable_LPIs is RES0. So there are no writable
+-         * bits for us.
++         * so UWP and RWP are RAZ/WI. GICR_TYPER.LPIS is 1 (we
++         * implement LPIs) so Enable_LPIs is programmable.
+          */
++        if (cs->gicr_typer & GICR_TYPER_PLPIS) {
++            if (value & GICR_CTLR_ENABLE_LPIS) {
++                cs->gicr_ctlr |= GICR_CTLR_ENABLE_LPIS;
++            } else {
++                cs->gicr_ctlr &= ~GICR_CTLR_ENABLE_LPIS;
++            }
++        }
+         return MEMTX_OK;
+     case GICR_STATUSR:
+         /* RAZ/WI for our implementation */
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index 1966444790..530d1c1789 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -68,6 +68,8 @@
+ #define GICD_CTLR_E1NWF             (1U << 7)
+ #define GICD_CTLR_RWP               (1U << 31)
+ 
++#define GICD_TYPER_LPIS_SHIFT          17
++
+ /* 16 bits EventId */
+ #define GICD_TYPER_IDBITS            0xf
+ 
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 0715b0bc2a..c1348cc60a 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -221,6 +221,7 @@ struct GICv3State {
+     uint32_t num_cpu;
+     uint32_t num_irq;
+     uint32_t revision;
++    bool lpi_enable;
+     bool security_extn;
+     bool irq_reset_nonsecure;
+     bool gicd_no_migration_shift_bug;
+-- 
 2.27.0
+

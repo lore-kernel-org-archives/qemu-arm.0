@@ -1,481 +1,215 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp16512lff;
-        Thu, 5 Aug 2021 01:11:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhRjQSJA5bqhfjBX+1c+HyuuM9Fah8tC58+VgDosWcShexiY6uMjI7hMg3kF7WzfldQhUg
-X-Received: by 2002:ac8:72d2:: with SMTP id o18mr3359344qtp.170.1628151093170;
-        Thu, 05 Aug 2021 01:11:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628151093; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp204613lff;
+        Thu, 5 Aug 2021 05:42:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzasyiyDxsTEDdpNfw8lRg1bX+1R+D6BMtQUW5it4VASAEGX1pv+GjC3h+lyha4TIC8Oz8r
+X-Received: by 2002:a05:622a:102:: with SMTP id u2mr4243175qtw.190.1628167351105;
+        Thu, 05 Aug 2021 05:42:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628167351; cv=none;
         d=google.com; s=arc-20160816;
-        b=FnhugimONBbo9y0OQ0fQQ6nHiqpnUp/f9k+NFXI6jSJqJLMvD/toK0RM8gztX0OSZQ
-         6jRWqNT5+rVEL+h7vUaHix31UD9ULRLFcZZxZB55qujAFxXOPYq1kt82wELIgPn4jbXd
-         74WlPRCtVg4glY9AMkgTQk0CCpuaGdCt4R3ZfolMyaVB2rqOTLdGjEYlvW3ej3pilniX
-         rKlt/fIgi/33wfHC6HvXPytUwNzt5ud/X4JhHO023tNrwuSbupGjvOqF1ethJLbm7d8d
-         fD0RfJC69LCFteWG6BeCy12HYXiAnCPF+G2jqTXisckslyKXo4terZWN1RMQi7Md95Se
-         dJKg==
+        b=FDOkWb9Cn4P++in/H1fjOypf6TqiErmoYpFaVreM/54myDsivhN9uI9ZZItd8mBDJR
+         RMTYfu6Y9g7qs3ujH29CiE26bKGI8VnEG4ya+sBam8uuusw+V/A+8sLO2mfsKezOUWst
+         aMynxLFCA468VXsCLRCmGlhJMsqnnkbVBLMmFMzSs9QrWc3Ut3oKslbRid2aVlVQw1VL
+         FBP0+SSdWt0ioaBI0DuOzOEq94BKLiGW8pQvgcR0CgPVaZohyMBO2zQDCE7W2uhWWrgZ
+         oaw0YH8wksHDnlJU1XwpeN1LK4hei7IvVnKhbj+VLGSF4wr/hTJ/6TIfNCdN3voSGJ+F
+         tkhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=uyMVpSPCzfxfbXy1zPhgX43o73F6xIE5BSVPS5jhYnk=;
-        b=pnAFVTpxLk7N6hMJkPr80Z2/XXLIpMxYCp/9xGPJ6wgcLioxQ7ewXjmR/Q0QOHxnYh
-         OqacxeUuBk//JPr0MfLes7o84WM5bqVR4Cb4VEa+HtEy3SYMJuhvZKndFehxlbs02Hry
-         GBv7958bO6Lpx2tqZtVvEi58CCkJJK8BP4YRb4u+ZxiNEKTFjl2ERVX27v+TtoU+fe/q
-         JinC9nnc7KGbOj+v36yLwmIeAPl/4iVwq6AzmIzlCtV5tbFvwfK9WYOowdV9Gm6WoSWY
-         9OnJnSNuNEIzuY3Z139Hlnaghc94eAF8Dn+v0Vm8uytJPkCCaZoX59Df1vq88H+9PdTn
-         Tiaw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=DXBW/OyXAWE1Vj7dYUDb2Fv3iX3nAyaFaOSOypZo7dM=;
+        b=d3dPW7HVgjCtqKHXYhWJH/FKvHLo/l2VXz2jo8BEm64PfetfhKw2VRw+bZ1Yx4zggw
+         U93NDIxOA5jBFunzPi4FMXqsCpikd6VGDGzLkNirBqfb23H7IKfEF2CoaG9rVc26RlL3
+         WadPGubTkTn3/0k3B0DFub/WcnCEbe9CkehQfbff13f4LxpqIkiveIAuyKW7FmzZJbDJ
+         Q1v5XsRjxTIeoMn8d2iZlu+E3m/MFHoUGdyAmfcesyZL4xdqEu4CBCd80N7KQ1a1Qynt
+         pYG628UWe9dsup9gVeGw/mdJdA4qADR0Q5gg+SCWNOqlPGae6rSqfHFh4gQ45h9hbfKc
+         PT7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IjG2Dx35;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w23si3543965qtn.400.2021.08.05.01.11.32
+        by mx.google.com with ESMTPS id 15si4717687qve.218.2021.08.05.05.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Aug 2021 01:11:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Aug 2021 05:42:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IjG2Dx35;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59402 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:49552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mBYTU-0006K8-FC
-	for alex.bennee@linaro.org; Thu, 05 Aug 2021 04:11:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58764)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mBchi-0007jh-CC
+	for alex.bennee@linaro.org; Thu, 05 Aug 2021 08:42:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mBYSx-0006IR-Dl
- for qemu-arm@nongnu.org; Thu, 05 Aug 2021 04:11:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:28441)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mBcf1-000450-40; Thu, 05 Aug 2021 08:39:43 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3106)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mBYSs-0004cg-VU
- for qemu-arm@nongnu.org; Thu, 05 Aug 2021 04:10:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628151049;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uyMVpSPCzfxfbXy1zPhgX43o73F6xIE5BSVPS5jhYnk=;
- b=IjG2Dx35XB0InCDrlTppd3COXUYog30TjlIyn+4jWqAM5JPhyyiexA82CCKChEFXwWweAS
- 7KSSSlHsU6/kiAi5XFxW1g51fFqRpQWJRTCjayp5G54knjI3+2eYpQhuYAm0yW/b6Xfwx0
- 2uylfAsPV1eIV6/TwhxTDQYETZzstDI=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-272-WeTgXh9DPgWTYuuLMVGeOQ-1; Thu, 05 Aug 2021 04:10:48 -0400
-X-MC-Unique: WeTgXh9DPgWTYuuLMVGeOQ-1
-Received: by mail-wm1-f70.google.com with SMTP id
- r125-20020a1c2b830000b0290197a4be97b7so1353942wmr.9
- for <qemu-arm@nongnu.org>; Thu, 05 Aug 2021 01:10:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=uyMVpSPCzfxfbXy1zPhgX43o73F6xIE5BSVPS5jhYnk=;
- b=BX4XpiC+Gp8EwRBN5tSIbUub+PZ4BsbUs0IbDfE7MbwHyMlMMFiWiwRIBlWaqHGmtl
- 3eOu1qwbLST5/Q+E/fQa1kQTDVlmSyL1pViGVYczy7J2QXSIWqFY8/VPnBofo8pgPjXs
- VXU7stpN57WzxuKwT3ONmkRFH7t9dn5g9a9SFAIjxBppkBtndqbAipQc8N5gqbPXGD+W
- taE+Zs4QMRnn8hR2taRThJEFhLG59P2gyaaw/fZ8YKqUIccgzk3yeUOXaQbhGROfSk28
- YypiA39JblnHsCbIwU8x4CUd97/VekN+LwtX8u3ExOWiU7YPYJkZqWIa5KyOdOGbEfIy
- U8QQ==
-X-Gm-Message-State: AOAM5314aGq/JHMvA+Miqq/sRJe3g1GALdd9CxyOLpqbqYIIh8soHIUx
- /AqMYap2KpKKI4uBXjSNVccH95wpapo5bO4QOHsgqcjR2V6CvDyiFm5y/mDsL/OOUZvDLi0Br6F
- 2NXCnU/xXwHQJ
-X-Received: by 2002:a7b:c452:: with SMTP id l18mr13831573wmi.22.1628151046996; 
- Thu, 05 Aug 2021 01:10:46 -0700 (PDT)
-X-Received: by 2002:a7b:c452:: with SMTP id l18mr13831546wmi.22.1628151046731; 
- Thu, 05 Aug 2021 01:10:46 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id f5sm5321578wrs.5.2021.08.05.01.10.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Aug 2021 01:10:46 -0700 (PDT)
-Subject: Re: [RESEND RFC] hw/arm/smmuv3: add device properties to disable
- cached iotlb
-To: "chenxiang (M)" <chenxiang66@hisilicon.com>
-References: <1628066969-29945-1-git-send-email-chenxiang66@hisilicon.com>
- <5fc0cd6c-1e1d-3cb3-51e5-f20c10736643@redhat.com>
- <c3224918-bf19-4dab-3779-afb616902c39@hisilicon.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <5c64c2b3-b8c3-f50f-0842-cce58e7a7591@redhat.com>
-Date: Thu, 5 Aug 2021 10:10:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mBcew-000616-AV; Thu, 05 Aug 2021 08:39:42 -0400
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4GgSkW37nrz84LP;
+ Thu,  5 Aug 2021 20:35:31 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Thu, 5 Aug 2021 20:39:23 +0800
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Thu, 5 Aug 2021 20:39:22 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
+ <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>
+Subject: [PATCH for-6.2 v5 0/5] hw/arm/virt: Introduce cpu topology support
+Date: Thu, 5 Aug 2021 20:39:16 +0800
+Message-ID: <20210805123921.62540-1-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-In-Reply-To: <c3224918-bf19-4dab-3779-afb616902c39@hisilicon.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.132, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, linuxarm@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x+iMHY+O/wzk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ wanghaibin.wang@huawei.com, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3jP6VAlkktJ8
 
-Hi Chenxiang,
-On 8/5/21 9:48 AM, chenxiang (M) wrote:
-> Hi Eric,
->
->
-> 在 2021/8/5 0:26, Eric Auger 写道:
->> Hi Chenxiang,
->>
->> On 8/4/21 10:49 AM, chenxiang wrote:
->>> From: Xiang Chen <chenxiang66@hisilicon.com>
->>>
->>> It splits invalidations into ^2 range invalidations in the patch
->>> 6d9cd115b(" hw/arm/smmuv3: Enforce invalidation on a power of two
->>> range").
->>> So for some scenarios such as the size of invalidation is not ^2 range
->>> invalidation, it costs more time to invalidate.
->> this ^² split is not only necessary for internal TLB management but also
->> for IOMMU MR notifier calls (which use a mask), ie. IOTLB unmap
->> notifications used for both vhost and vfio integrations.
->> So you can disable the internal IOTLB but we can't simply remove the pow
->> of 2 split. See below.
-> Right, in current code of qemu,  it is not right to simply remove the
-> pow of 2 split.
-> But i find that in my local repo, there is a private patch which seems
-> solve the issue, so it works on my test.
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 4a7a183..83d24e1 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -825,7 +825,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->      event.type = IOMMU_NOTIFIER_UNMAP;
->      event.entry.target_as = &address_space_memory;
->      event.entry.iova = iova;
-> -    event.entry.addr_mask = num_pages * (1 << granule) - 1;
-> +    event.entry.addr_mask = (1 << granule) - 1;
-> +       event.entry.num_pages = num_pages;
-OK I see. But you change the existing semantic of addr_mask which
-originally matches the mask of the  full addr range of the IOTLB
-operation and you replace it by the granule mask and add another
-num_pages field.
+Hi,
 
-This is a change in the memory.h API and should be discussed with other
-memory.h and vIOMMU maintainers if you want to go that way. This
-typically breaks vhost integration which does not use num_pages and
-would typically fail invalidating the full range.
+This is a new version (v5) of the series [1] that I posted to introduce
+support for generating cpu topology descriptions to virt machine guest.
 
-So we have 2 different things: the disablement of the internal IOTLB (x-
-prop) which can be done easily but what you mostly want it to remove the
-pow of 2 splits to reduce the interactions with the physical IOMMU in
-the VFIO/SMMU use case , right? pow of 2 splits is also needed for vhost
-integration at the moment. Note this use case is not upstreamed and far
-from being upstreamed given the /dev/iommu redesign, so it will be
-difficult to justify that kind of change at thims moment.
+Once the view of an accurate virtual cpu topology is provided to guest,
+with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
+e.g., the scheduling performance improvement. See Dario Faggioli's
+research and the related performance tests in [2] for reference.
 
-Thanks
+This patch series introduces cpu topology support for ARM platform.
+Both cpu-map in DT and ACPI PPTT table are introduced to store the
+topology information. And we only describe the topology information
+to 6.2 and newer virt machines, considering compatibility.
 
-Eric
->      event.entry.perm = IOMMU_NONE;
->      event.entry.flags = IOMMU_INV_FLAGS_ARCHID;
->      event.entry.arch_id = asid;
-> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> index a863b7d..7b026f0 100644
-> --- a/hw/vfio/common.c
-> +++ b/hw/vfio/common.c
-> @@ -639,7 +639,7 @@ static void vfio_iommu_unmap_notify(IOMMUNotifier
-> *n, IOMMUTLBEntry *iotlb)
->      {
->          hwaddr start = iotlb->iova + giommu->iommu_offset;
->          struct iommu_inv_addr_info *addr_info;
-> -        size_t size = iotlb->addr_mask + 1;
-> +        size_t size = iotlb->num_pages * (iotlb->addr_mask + 1);
->          int archid = -1;
->
->          addr_info = &ustruct.info.granu.addr_info;
-> @@ -653,8 +653,8 @@ static void vfio_iommu_unmap_notify(IOMMUNotifier
-> *n, IOMMUTLBEntry *iotlb)
->          }
->          addr_info->archid = archid;
->          addr_info->addr = start;
-> -        addr_info->granule_size = size;
-> -        addr_info->nb_granules = 1;
-> +        addr_info->granule_size = iotlb->addr_mask + 1;
-> +               addr_info->nb_granules = iotlb->num_pages;
->          trace_vfio_iommu_addr_inv_iotlb(archid, start, size,
->                                          1, iotlb->leaf);
->          break;
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 0c4389c..268a395 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -110,6 +110,7 @@ struct IOMMUTLBEntry {
->      hwaddr           iova;
->      hwaddr           translated_addr;
->      hwaddr           addr_mask;
-> +       uint64_t         num_pages;
->      IOMMUAccessFlags perm;
->      IOMMUInvGranularity granularity;
->  #define IOMMU_INV_FLAGS_PASID  (1 << 0)
->
->
->>
->> internal TLB could be disabled through a property but I would rather set
->> it as an "x-" experimental property for debug purpose. Until recently
->> this was indeed helpful to debug bugs related to internal IOTLB
->> management (RIL support) ;-) I hope this period is over though ;-)
-> Ok, maybe we set it as "x-" experimental property currently.
->
->>> Currently smmuv3_translate is rarely used (i only see it is used when
->>> binding msi), so i think maybe we can disable cached iotlb to promote
->>> efficiency of invalidation. So add device property disable_cached_iotlb
->>> to disable cached iotlb, and then we can send non-^2 range invalidation
->>> directly.
->>> Use tool dma_map_benchmark to have a test on the latency of unmap,
->>> and we can see it promotes much on unmap when the size of invalidation
->>> is not ^2 range invalidation (such as g = 7/15/31/511):
->>>
->>> t = 1(thread = 1)
->>>             before opt(us)   after opt(us)
->>> g=1(4K size)    0.2/7.6        0.2/7.5
->>> g=4(8K size)    0.4/7.9        0.4/7.9
->>> g=7(28K size)    0.6/10.2        0.6/8.2
->>> g=8(32K size)    0.6/8.3        0.6/8.3
->>> g=15(60K size)    1.1/12.1        1.1/9.1
->>> g=16(64K size)    1.1/9.2        1.1/9.1
->>> g=31(124K size)    2.0/14.8        2.0/10.7
->>> g=32(128K size)    2.1/14.8        2.1/10.7
->>> g=511(2044K size)    30.9/65.1        31.1/55.9
->>> g=512(2048K size) 0.3/32.1        0.3/32.1
->>> t = 10(thread = 10)
->>>             before opt(us)   after opt(us)
->>> g=1(4K size)    0.2/39.9        0.2/39.1
->>> g=4(8K size)    0.5/42.6        0.5/42.4
->>> g=7(28K size)    0.6/66.4        0.6/45.3
->>> g=8(32K size)    0.7/45.8        0.7/46.1
->>> g=15(60K size)    1.1/80.5        1.1/49.6
->>> g=16(64K size)    1.1/49.8        1.1/50.2
->>> g=31(124K size)    2.0/98.3        2.1/58.0
->>> g=32(128K size)    2.1/57.7        2.1/58.2
->>> g=511(2044K size)    35.2/322.2        35.3/236.7
->>> g=512(2048K size) 0.8/238.2        0.9/240.3
->>>
->>> Note: i test it based on VSMMU enabled with the patchset
->>> ("vSMMUv3/pSMMUv3 2 stage VFIO integration").
->>>
->>> Signed-off-by: Xiang Chen <chenxiang66@hisilicon.com>
->>> ---
->>>   hw/arm/smmuv3.c         | 77
->>> ++++++++++++++++++++++++++++++++-----------------
->>>   include/hw/arm/smmuv3.h |  1 +
->>>   2 files changed, 52 insertions(+), 26 deletions(-)
->>>
->>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>> index 01b60be..7ae668f 100644
->>> --- a/hw/arm/smmuv3.c
->>> +++ b/hw/arm/smmuv3.c
->>> @@ -19,6 +19,7 @@
->>>   #include "qemu/osdep.h"
->>>   #include "qemu/bitops.h"
->>>   #include "hw/irq.h"
->>> +#include "hw/qdev-properties.h"
->>>   #include "hw/sysbus.h"
->>>   #include "migration/vmstate.h"
->>>   #include "hw/qdev-core.h"
->>> @@ -682,19 +683,21 @@ static IOMMUTLBEntry
->>> smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->>>       page_mask = (1ULL << (tt->granule_sz)) - 1;
->>>       aligned_addr = addr & ~page_mask;
->>>   -    cached_entry = smmu_iotlb_lookup(bs, cfg, tt, aligned_addr);
->>> -    if (cached_entry) {
->>> -        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
->>> IOMMU_WO)) {
->>> -            status = SMMU_TRANS_ERROR;
->>> -            if (event.record_trans_faults) {
->>> -                event.type = SMMU_EVT_F_PERMISSION;
->>> -                event.u.f_permission.addr = addr;
->>> -                event.u.f_permission.rnw = flag & 0x1;
->>> +    if (s->disable_cached_iotlb) {
->>> +        cached_entry = smmu_iotlb_lookup(bs, cfg, tt, aligned_addr);
->>> +        if (cached_entry) {
->>> +            if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
->>> IOMMU_WO)) {
->>> +                status = SMMU_TRANS_ERROR;
->>> +                if (event.record_trans_faults) {
->>> +                    event.type = SMMU_EVT_F_PERMISSION;
->>> +                    event.u.f_permission.addr = addr;
->>> +                    event.u.f_permission.rnw = flag & 0x1;
->>> +                }
->>> +            } else {
->>> +                status = SMMU_TRANS_SUCCESS;
->>>               }
->>> -        } else {
->>> -            status = SMMU_TRANS_SUCCESS;
->>> +            goto epilogue;
->>>           }
->>> -        goto epilogue;
->>>       }
->>>         cached_entry = g_new0(SMMUTLBEntry, 1);
->>> @@ -742,7 +745,9 @@ static IOMMUTLBEntry
->>> smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->>>           }
->>>           status = SMMU_TRANS_ERROR;
->>>       } else {
->>> -        smmu_iotlb_insert(bs, cfg, cached_entry);
->>> +        if (s->disable_cached_iotlb) {
->>> +            smmu_iotlb_insert(bs, cfg, cached_entry);
->>> +        }
->>>           status = SMMU_TRANS_SUCCESS;
->>>       }
->>>   @@ -855,8 +860,9 @@ static void
->>> smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova,
->>>       }
->>>   }
->>>   -static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
->>> +static void smmuv3_s1_range_inval(SMMUv3State *s, Cmd *cmd)
->>>   {
->>> +    SMMUState *bs = ARM_SMMU(s);
->>>       dma_addr_t end, addr = CMD_ADDR(cmd);
->>>       uint8_t type = CMD_TYPE(cmd);
->>>       uint16_t vmid = CMD_VMID(cmd);
->>> @@ -876,7 +882,9 @@ static void smmuv3_s1_range_inval(SMMUState *s,
->>> Cmd *cmd)
->>>       if (!tg) {
->>>           trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, 1, ttl,
->>> leaf);
->>>           smmuv3_inv_notifiers_iova(s, asid, addr, tg, 1);
->>> -        smmu_iotlb_inv_iova(s, asid, addr, tg, 1, ttl);
->>> +        if (s->disable_cached_iotlb) {
->>> +            smmu_iotlb_inv_iova(s, asid, addr, tg, 1, ttl);
->>> +        }
->>>           return;
->>>       }
->>>   @@ -885,17 +893,23 @@ static void smmuv3_s1_range_inval(SMMUState
->>> *s, Cmd *cmd)
->>>       num_pages = (num + 1) * BIT_ULL(scale);
->>>       granule = tg * 2 + 10;
->>>   -    /* Split invalidations into ^2 range invalidations */
->>> -    end = addr + (num_pages << granule) - 1;
->>> -
->>> -    while (addr != end + 1) {
->>> -        uint64_t mask = dma_aligned_pow2_mask(addr, end, 64);
->>> -
->>> -        num_pages = (mask + 1) >> granule;
->>> +    if (s->disable_cached_iotlb) {
->>>           trace_smmuv3_s1_range_inval(vmid, asid, addr, tg,
->>> num_pages, ttl, leaf);
->>>           smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
->>> -        smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
->> smmuv3_inv_notifiers_iova()
->> also needs to be called with power of 2 ranges
->> as it eventually calls memory_region_notify_iommu_one() which sets
->> event.entry.addr_mask = num_pages * (1 << granule) - 1;
->>
->>> -        addr += mask + 1;
->>> +    } else {
->>> +        /* Split invalidations into ^2 range invalidations */
->>> +        end = addr + (num_pages << granule) - 1;
->>> +
->>> +        while (addr != end + 1) {
->>> +            uint64_t mask = dma_aligned_pow2_mask(addr, end, 64);
->>> +
->>> +            num_pages = (mask + 1) >> granule;
->>> +            trace_smmuv3_s1_range_inval(vmid, asid, addr,
->>> +                                        tg, num_pages, ttl, leaf);
->>> +            smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
->>> +            smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
->>> +            addr += mask + 1;
->>> +        }
->>>       }
->>>   }
->>>   @@ -1028,18 +1042,22 @@ static int smmuv3_cmdq_consume(SMMUv3State
->>> *s)
->>>                 trace_smmuv3_cmdq_tlbi_nh_asid(asid);
->>>               smmu_inv_notifiers_all(&s->smmu_state);
->>> -            smmu_iotlb_inv_asid(bs, asid);
->>> +            if (s->disable_cached_iotlb) {
->>> +                smmu_iotlb_inv_asid(bs, asid);
->>> +            }
->>>               break;
->>>           }
->>>           case SMMU_CMD_TLBI_NH_ALL:
->>>           case SMMU_CMD_TLBI_NSNH_ALL:
->>>               trace_smmuv3_cmdq_tlbi_nh();
->>>               smmu_inv_notifiers_all(&s->smmu_state);
->>> -            smmu_iotlb_inv_all(bs);
->>> +            if (s->disable_cached_iotlb) {
->>> +                smmu_iotlb_inv_all(bs);
->>> +            }
->>>               break;
->>>           case SMMU_CMD_TLBI_NH_VAA:
->>>           case SMMU_CMD_TLBI_NH_VA:
->>> -            smmuv3_s1_range_inval(bs, &cmd);
->>> +            smmuv3_s1_range_inval(s, &cmd);
->>>               break;
->>>           case SMMU_CMD_TLBI_EL3_ALL:
->>>           case SMMU_CMD_TLBI_EL3_VA:
->>> @@ -1506,6 +1524,12 @@ static void smmuv3_instance_init(Object *obj)
->>>       /* Nothing much to do here as of now */
->>>   }
->>>   +static Property smmuv3_properties[] = {
->>> +    DEFINE_PROP_BOOL("disable_cached_iotlb", SMMUv3State,
->>> +                     disable_cached_iotlb, true),
->>> +    DEFINE_PROP_END_OF_LIST(),
->>> +};
->>> +
->>>   static void smmuv3_class_init(ObjectClass *klass, void *data)
->>>   {
->>>       DeviceClass *dc = DEVICE_CLASS(klass);
->>> @@ -1515,6 +1539,7 @@ static void smmuv3_class_init(ObjectClass
->>> *klass, void *data)
->>>       device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
->>>       c->parent_realize = dc->realize;
->>>       dc->realize = smmu_realize;
->>> +    device_class_set_props(dc, smmuv3_properties);
->>>   }
->>>     static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
->>> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
->>> index c641e60..c94ab7e 100644
->>> --- a/include/hw/arm/smmuv3.h
->>> +++ b/include/hw/arm/smmuv3.h
->>> @@ -62,6 +62,7 @@ struct SMMUv3State {
->>>         qemu_irq     irq[4];
->>>       QemuMutex mutex;
->>> +    bool disable_cached_iotlb; /* Whether disable/enable cached
->>> iotlb */
->>>   };
->>>     typedef enum {
->> Thanks
->>
->> Eric
->>
->>
->> .
->>
->
->
+[1] https://lore.kernel.org/qemu-devel/20210622093413.13360-1-wangyanan55@huawei.com/
+[2] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines
+-friend-or-foe-dario-faggioli-suse
+
+Some tests:
+1) -smp 16,sockets=2,cores=4,threads=2,maxcpus=16
+lscpu:
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              16
+On-line CPU(s) list: 0-15
+Thread(s) per core:  2
+Core(s) per socket:  4
+Socket(s):           2
+NUMA node(s):        1
+Vendor ID:           ARM
+Model:               2
+Model name:          Cortex-A72
+Stepping:            r0p2
+BogoMIPS:            100.00
+NUMA node0 CPU(s):   0-15
+
+cat /sys/devices/system/cpu/present  -->  0-15
+cat /sys/devices/system/cpu/possible -->  0-15
+
+2) -smp 8,sockets=2,cores=4,threads=2,maxcpus=16
+lscpu:
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              8
+On-line CPU(s) list: 0-7
+Thread(s) per core:  2
+Core(s) per socket:  4
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           ARM
+Model:               2
+Model name:          Cortex-A72
+Stepping:            r0p2
+BogoMIPS:            100.00
+NUMA node0 CPU(s):   0-7
+
+cat /sys/devices/system/cpu/present  -->  0-7
+cat /sys/devices/system/cpu/possible -->  0-7
+
+---
+
+Changelogs:
+
+v4->v5:
+- drop the added -smp "expose=on|off" parameter and only describe topology
+  for 6.2 and newer machines
+- rebased the code on patch series [3] which has introduced some fix and
+  improvement for smp parsing
+- [3]: https://lore.kernel.org/qemu-devel/20210803080527.156556-1-wangyanan55@huawei.com/
+
+v3->v4:
+- add new -smp parameter "expose=on|off" for users to enable/disable the feature
+- add stricter -smp cmdline parsing rules on "expose=on" case
+- move build_pptt to generic aml-build.c
+- add default cluster node in the cpu-map
+- rebase on top of latest upstream master
+- v3: https://lore.kernel.org/qemu-devel/20210516102900.28036-1-wangyanan55@huawei.com/
+
+v2->v3:
+- address comments from David, Philippe, and Andrew. Thanks!
+- split some change into separate commits for ease of review
+- adjust parsing rules of virt_smp_parse to be more strict
+  (after discussion with Andrew)
+- adjust author credit for the patches
+
+v1->v2:
+- Address Andrew Jones's comments
+- Address Michael S. Tsirkin's comments
+
+---
+
+Andrew Jones (2):
+  hw/arm/virt: Add cpu-map to device tree
+  hw/acpi/aml-build: Generate PPTT table
+
+Yanan Wang (3):
+  hw/arm/virt: Only describe cpu topology to guest since virt 6.2
+  device_tree: Add qemu_fdt_add_path
+  hw/acpi/aml-build: Add Processor hierarchy node structure
+
+ hw/acpi/aml-build.c          | 76 ++++++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c     |  8 +++-
+ hw/arm/virt.c                | 62 ++++++++++++++++++++++++-----
+ include/hw/acpi/aml-build.h  |  7 ++++
+ include/hw/arm/virt.h        |  4 +-
+ include/sysemu/device_tree.h |  1 +
+ softmmu/device_tree.c        | 44 ++++++++++++++++++++-
+ 7 files changed, 188 insertions(+), 14 deletions(-)
+
+-- 
+2.19.1
 

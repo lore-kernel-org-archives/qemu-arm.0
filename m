@@ -1,86 +1,87 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp656465lff;
-        Fri, 6 Aug 2021 14:16:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzufALD/PEi0ZuBYkM/PCorHPDvygSC3w4EFBqQpcNEYDFNCW3qLHxYVkUSWg1PDa3gFwUU
-X-Received: by 2002:a5d:8596:: with SMTP id f22mr25300ioj.147.1628284576555;
-        Fri, 06 Aug 2021 14:16:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628284576; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp657210lff;
+        Fri, 6 Aug 2021 14:17:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8JQ7RD2gNhhAr5j/h+jFEVO3TXNc5RjzokyasHmGomlVsJMONebP0oTGKHyfspbvfKAJO
+X-Received: by 2002:a5e:d508:: with SMTP id e8mr1202744iom.101.1628284638890;
+        Fri, 06 Aug 2021 14:17:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628284638; cv=none;
         d=google.com; s=arc-20160816;
-        b=T8HhgEypPK6aY1AS+QS9bVj4+Fb0jhuHb1kG+Hn+J76bIJnT5+qvkQGdAAjT5AEw4v
-         yTXyxAF3sI+L2uNU3yBcZEfDZOiN2eG6C7RoWd7damGJJ134BH7m7wUPlbSzLFjLIhry
-         RyaXYINa0fY4LCLXa3+AqQn7ek/4bkuInLuXDsmeKbbl2aBI4qSToSWUfIZkS90Xd5TJ
-         mPaURA0Fdjku/W1eVpHoh0wyONKfb9J6Cyv+dy4VMyibhBrHYwHYn0qRZcGWfIONG0rE
-         d76zAZ5GxxTVRu0MB9DJb8ylewa2prO5pUnvg8x8E6TV1zeVebo8q6kIWjRxGT4UWk16
-         6pxQ==
+        b=HANbU2QGQb37QAM6tMw9WxhP6/A53oVO7bhs1yzEt58iRpP6g52U0z8HIqp3ZyFQ8P
+         CipSHggVF1SpbtcLHAOeTi5OBBBGZa0EBLvTzHTzz4SrdColqLAhwzThC2Ac8kB0vITs
+         cjsFZ2O75pSFIiV8bkisXMhnkf7CKe67FJqMawgeJI5dhw4hjJWZk9LqhEME8QG06wZn
+         ypOFZ0imz3tsHculE7nTwCV+wdBy8tf6JVYGjaI9RWP34qdoTCG933fCE2+Zk5N7RJ/t
+         IsKMArJToJCCLth6tuLuhw8pUtVHzu/5v76/etCflI6F5uo4+LtQEx+gqfb7fFVXZ5rV
+         jf1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=g4IVbQRin8nlExux9nzLQXs10lZD8Z6nZvHg0J/1trY=;
-        b=QqiRQfc8Igq23/HLRb+vDN648E3zNDaTeuRQdJbn7dYXNyoWQMTBqoGKpVQmTauMhD
-         s09HKoxsyqrqZp6vY4jjqWLKP2VK6bmdjerhUDFcqvQo8r2Vw97VGLROyOKx/pP1CoH2
-         vYKwxc1XhhOZGQF1Z/cFZtTwAS9Hoofulq59mPrVOyyFFNpb1UGjAUyOifNsOmHtLMzO
-         HyAZEW44ybQptdpxMvBXawzHfg5lCTSKwqjgyEAY9dF4yDt0wdGhnaOj9t35fKQqK7Pd
-         otJlBbEFXl+h/FKUGaE9em4czlJeqHTf3oh4ELZherzmv5SLFYFEeTlxYZSgJrv//g2w
-         Dlzw==
+        bh=6e3bCxX80xhER1z4RL3u0qqk2lfZ8RbsC+ozol/nQBU=;
+        b=q4nnquAp8mAJQ/9HrC5pzXrYVxaqI2ejqeXNGwkKIWBS4uVPmGmCp5FjzjQshAoL9v
+         eIYoSqN9g4Hpgnl1bcqe8ude7qKync++mn3Fp4xGEukPmTSVdmnqt2ypf2tlmkSG4g9O
+         XuYpUgNKHA8O21UeIMKWyoLm9f0HKBC+xVKUtrba2t8AnqqqdWpflpxa8Ax3Uu8JQjBt
+         pgZyhbXNT6L8pZV6xlis5cBD/CezlMT4tPx3zi0xtiBnouQPRP6H+2R5OZVUY6bzWD1L
+         Gmap05XNN9pkuc4FD3USsbmH+1rRtkuzlWQoe4D2rmTAUYP5sGrOsw5yCJcPWPXLL5i0
+         UHuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HXiXD7JI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g6fwr60W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si10099792jap.71.2021.08.06.14.16.16
+        by mx.google.com with ESMTPS id az3si10215530jab.111.2021.08.06.14.17.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Aug 2021 14:16:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Aug 2021 14:17:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HXiXD7JI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g6fwr60W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41056 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mC7CR-0007zy-Gg
-	for alex.bennee@linaro.org; Fri, 06 Aug 2021 17:16:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39772)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mC7DR-0003j5-Uj
+	for alex.bennee@linaro.org; Fri, 06 Aug 2021 17:17:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mC79M-0002Sy-Qs
- for qemu-devel@nongnu.org; Fri, 06 Aug 2021 17:13:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50907)
+ id 1mC79P-0002aS-OG
+ for qemu-arm@nongnu.org; Fri, 06 Aug 2021 17:13:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56064)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mC79L-0004lW-5E
- for qemu-devel@nongnu.org; Fri, 06 Aug 2021 17:13:04 -0400
+ id 1mC79N-0004qN-7H
+ for qemu-arm@nongnu.org; Fri, 06 Aug 2021 17:13:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628284382;
+ s=mimecast20190719; t=1628284384;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g4IVbQRin8nlExux9nzLQXs10lZD8Z6nZvHg0J/1trY=;
- b=HXiXD7JIcm4/FTXXXQg7SEh106+3bhWkGQNOw9/Lnu2RP3WlSYMmwqpAmsq7P3KaG7AHcF
- dKn5bt33aydpKjNBWIpeR0OiFB4REo3lfRQZ0AVQfW8UIqjEguyd+O384A+/MHuuLzdT5i
- pKQPrFhDqfO0TiXiui3OhgsJ8ze8Bz4=
+ bh=6e3bCxX80xhER1z4RL3u0qqk2lfZ8RbsC+ozol/nQBU=;
+ b=g6fwr60WFEv0p7ZP73Uc3nWR0Nxn+wraTPj3lVUpiye4usJo3zs78NEDQ/UJCZiCyF8/9H
+ fM8wqZ+3IoW+43Czhmy5Xcuukne+aHSpoh/T0bB9hZ6FWdlgh21oFtpyZ+W8i74WU14Kf/
+ 9Gp035YXi2nJUSbkEXNkekyCJflpSkY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-161-MTjtXVsxPWmHEHLr0BBBQA-1; Fri, 06 Aug 2021 17:13:01 -0400
-X-MC-Unique: MTjtXVsxPWmHEHLr0BBBQA-1
+ us-mta-299-PiZpCBDZNpit99vp44GDXg-1; Fri, 06 Aug 2021 17:13:03 -0400
+X-MC-Unique: PiZpCBDZNpit99vp44GDXg-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 804521008061;
- Fri,  6 Aug 2021 21:13:00 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 32F161008060;
+ Fri,  6 Aug 2021 21:13:02 +0000 (UTC)
 Received: from localhost (unknown [10.22.11.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 492DD100164C;
- Fri,  6 Aug 2021 21:13:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 017CB10190AA;
+ Fri,  6 Aug 2021 21:13:01 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 08/12] npcm7xx_clk: Use DECLARE_INSTANCE_CHECKER
-Date: Fri,  6 Aug 2021 17:11:23 -0400
-Message-Id: <20210806211127.646908-9-ehabkost@redhat.com>
+Subject: [PATCH for-6.2 10/12] [automated] Use DECLARE_OBJ_CHECKERS when
+ possible
+Date: Fri,  6 Aug 2021 17:11:25 -0400
+Message-Id: <20210806211127.646908-11-ehabkost@redhat.com>
 In-Reply-To: <20210806211127.646908-1-ehabkost@redhat.com>
 References: <20210806211127.646908-1-ehabkost@redhat.com>
 MIME-Version: 1.0
@@ -101,31 +102,32 @@ X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  "Daniel P. Berrange" <berrange@redhat.com>,
  Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LCHhuvtfOVTr
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DKzgAdfy0aT2
 
-Use DECLARE_INSTANCE_CHECKER instead of defining the
-NPCM7XX_CLOCK_PLL, NPCM7XX_CLOCK_SEL, and NPCM7XX_CLOCK_DIVIDER
-macros manually.
+This automatically convert
+DECLARE_INSTANCE_CHECKER/DECLARE_CLASS_CHECKER pairs to
+DECLARE_OBJ_CHECKERS.
 
-These changes had to be done manually because the codeconverter
-script isn't smart enough to figure out that the typedefs exist
-in a separate header.
+Generated using:
+
+  $ ./scripts/codeconverter/converter.py -i \
+    --pattern=AddDeclareObjCheckers $(git grep -l '' -- '*.[ch]')
 
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
@@ -134,34 +136,27 @@ Cc: Tyrone Ting <kfting@nuvoton.com>
 Cc: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org
 ---
- hw/misc/npcm7xx_clk.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ include/hw/nvram/npcm7xx_otp.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
-index da6b14c545d..5247acfeb5a 100644
---- a/hw/misc/npcm7xx_clk.c
-+++ b/hw/misc/npcm7xx_clk.c
-@@ -110,14 +110,14 @@ static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] = {
- /* Clock converter functions */
+diff --git a/include/hw/nvram/npcm7xx_otp.h b/include/hw/nvram/npcm7xx_otp.h
+index 0a3ebb091d5..377cf462090 100644
+--- a/include/hw/nvram/npcm7xx_otp.h
++++ b/include/hw/nvram/npcm7xx_otp.h
+@@ -58,11 +58,9 @@ struct NPCM7xxOTPState {
+ typedef struct NPCM7xxOTPState NPCM7xxOTPState;
  
- #define TYPE_NPCM7XX_CLOCK_PLL "npcm7xx-clock-pll"
--#define NPCM7XX_CLOCK_PLL(obj) OBJECT_CHECK(NPCM7xxClockPLLState, \
--        (obj), TYPE_NPCM7XX_CLOCK_PLL)
-+DECLARE_INSTANCE_CHECKER(NPCM7xxClockPLLState, NPCM7XX_CLOCK_PLL,
-+                         TYPE_NPCM7XX_CLOCK_PLL)
- #define TYPE_NPCM7XX_CLOCK_SEL "npcm7xx-clock-sel"
--#define NPCM7XX_CLOCK_SEL(obj) OBJECT_CHECK(NPCM7xxClockSELState, \
--        (obj), TYPE_NPCM7XX_CLOCK_SEL)
-+DECLARE_INSTANCE_CHECKER(NPCM7xxClockSELState, NPCM7XX_CLOCK_SEL,
-+                         TYPE_NPCM7XX_CLOCK_SEL)
- #define TYPE_NPCM7XX_CLOCK_DIVIDER "npcm7xx-clock-divider"
--#define NPCM7XX_CLOCK_DIVIDER(obj) OBJECT_CHECK(NPCM7xxClockDividerState, \
--        (obj), TYPE_NPCM7XX_CLOCK_DIVIDER)
-+DECLARE_INSTANCE_CHECKER(NPCM7xxClockDividerState, NPCM7XX_CLOCK_DIVIDER,
-+                         TYPE_NPCM7XX_CLOCK_DIVIDER)
+ #define TYPE_NPCM7XX_OTP "npcm7xx-otp"
+-DECLARE_INSTANCE_CHECKER(NPCM7xxOTPState, NPCM7XX_OTP,
+-                         TYPE_NPCM7XX_OTP)
+ typedef struct NPCM7xxOTPClass NPCM7xxOTPClass;
+-DECLARE_CLASS_CHECKERS(NPCM7xxOTPClass, NPCM7XX_OTP,
+-                       TYPE_NPCM7XX_OTP)
++DECLARE_OBJ_CHECKERS(NPCM7xxOTPState, NPCM7xxOTPClass,
++                     NPCM7XX_OTP, TYPE_NPCM7XX_OTP)
  
- static void npcm7xx_clk_update_pll(void *opaque)
- {
+ #define TYPE_NPCM7XX_KEY_STORAGE "npcm7xx-key-storage"
+ #define TYPE_NPCM7XX_FUSE_ARRAY "npcm7xx-fuse-array"
 -- 
 2.31.1
 

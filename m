@@ -1,137 +1,163 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp375357lff;
-        Fri, 6 Aug 2021 07:48:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw435/e3ZpBNjFEdhEmHqRN+YcM54IcUdPcInnPe1JQ3GOflZtg+/3iFmDYUP+dRrLDQuEG
-X-Received: by 2002:a92:6610:: with SMTP id a16mr368262ilc.71.1628261322341;
-        Fri, 06 Aug 2021 07:48:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628261322; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp742560lff;
+        Fri, 6 Aug 2021 16:49:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxESHd7dKSQB6y3I7cKT4npalT9HBnmlkB0UjniKt1rT6CjPvdR0O4yUqgcStKhxBeFe+jG
+X-Received: by 2002:a5d:93d1:: with SMTP id j17mr338650ioo.123.1628293780558;
+        Fri, 06 Aug 2021 16:49:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628293780; cv=none;
         d=google.com; s=arc-20160816;
-        b=BDrOFC1dNUnbxVAE8cU3Lj637NlWeASHjJEDtJ77njqN0U+DouCBZfNTZis+HqpTlv
-         Wn6vdTwR/KfyFOHFCaGL9HGPfF6asw53gHsMjRJM0BvrgChQPQ7qq7ndyZfixNuXMLQY
-         yv2xR7+YPyVvVwQd5UGfOKzCGtGOoNLgZOhZr7CO/4Dq5M+34lSskiAZrOZjNxQtCyz0
-         qUT7AZzBriTDzBP4uXcu50bv6IGx/eP9KfV8r98Xprjrt+CVaURGqKfFW54VYFeFPuOW
-         haVoz/owtwUbQJiYIfgd3LigomCbm3hQ6KNSeFp/rEPlElzu+ZaihL/+GfQDgRtuj7Ik
-         0nCg==
+        b=gh3WOJxDwIFOLS9iUKwrQwHQKv50Qv8lDken48M1MLgHiuaSMeY57NFJx6300aK90b
+         rAukk9vOsd5D4FAiY+8Gdhiq1OwlbsA8BUwj06nYLFNXyvxFGcKuhGuBNbBgpHSl6tQl
+         Zo01CSmH1oflJS1OHWTMIONVHjG6jJpCkCplCaYouK22FLgbFXPJAbvyyS5Wo/oCuOgo
+         Rc10XWlpmc5x6ykv7ZRaC/WoOzJ7LHyl7y3mVaeDKbNL2fpTo8tyjXsw9A5clKfPR2/f
+         LliV/ysy94kpoTmzVGnETclvr3eQuNqtHptIYcl8hxysMK502qyQQZiZZoKSIhY11f7z
+         S4Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=tVEyoCBkInmz24RP6Iwpxg9bAXDXrHYkeGkLkYITn7I=;
-        b=kgT1LtqlvnCvsiq/ysQtFsm3WU6VHsg89g08dtbervBd6k7TbhyNvlHn403y2felkL
-         VaK5XzbuJ/s2Vec1hhzg9hN2Vwrukm4DUjaso2Hy+0M5KlK0f9otAgrCRnNVpm8Y8O7s
-         QL3mUc+MVyO+IhJOqJtlAiFoPUEoEZS70I6+xHd664u2eXWuJz3fYyV9n6SdMzOE8BP2
-         GJCv++m2++ot2dtbFjlvedlfmjZbQ0M/0a4s5E3n8PbmTcFLkpTLywUPK2j09fjPFWhM
-         KC9x6VHTLQSEHDti+6/LNiGGGQFVe9eeQ9k76PGtuc/ARkdWYXEpgb7vIfAN7LnBK6/1
-         dDTQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=IlWXFMCa0UMgwIUaqgru3sFdgAucXJ3aH12PDRfT6H0=;
+        b=NmCqCBndJnaM5+2I/da+zaMBCplnPz0NFbJcigP+vDGq2dTdtrnDX7iCm49h7TMtKz
+         YL2K4R5Q0Sk85p6L07Kz3Nm6ZUgXCZq1NjuLjPLJu+eNXoztdwZmYBPdsvURd+ifNADU
+         ICHijA0vqSqXepUSq3stWuy7CFfxGYZrR90T0JZurM/z3DQJCPUMQZuKVcA8lsXxy46/
+         WAGrdRtO3tvZ/JermcNu1bUaA03VX9UGnCLMDgqJ2NDknNhIUAnqqsQFKc19Ju9uMxaY
+         hKr3Fy9hk7fmYfgZbF6EO8jiN8nxogENA1W4cpgSl8Nb4oxwacLk6bab+tYPxcqktPz9
+         nfxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=TFE4bTtl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6si8451393ilj.25.2021.08.06.07.48.42
+        by mx.google.com with ESMTPS id s13si11471775ilp.102.2021.08.06.16.49.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Aug 2021 07:48:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Aug 2021 16:49:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46254 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=TFE4bTtl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:38464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mC19N-0006U9-NJ
-	for alex.bennee@linaro.org; Fri, 06 Aug 2021 10:48:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38136)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mC9at-0005MC-Sq
+	for alex.bennee@linaro.org; Fri, 06 Aug 2021 19:49:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1mC18N-0005KI-HS
- for qemu-devel@nongnu.org; Fri, 06 Aug 2021 10:47:39 -0400
-Received: from metis.ext.pengutronix.de
- ([2001:67c:670:201:290:27ff:fe1d:cc33]:39715)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1mC18M-0000ix-7s
- for qemu-devel@nongnu.org; Fri, 06 Aug 2021 10:47:39 -0400
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <jlu@pengutronix.de>)
- id 1mC18E-0004Jn-2u; Fri, 06 Aug 2021 16:47:30 +0200
-Received: from [2a0a:edc0:0:1101:1d::39] (helo=dude03.red.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.92)
- (envelope-from <jlu@pengutronix.de>)
- id 1mC18C-0005fb-TH; Fri, 06 Aug 2021 16:47:28 +0200
-Received: from jlu by dude03.red.stw.pengutronix.de with local (Exim 4.92)
- (envelope-from <jlu@pengutronix.de>)
- id 1mC18C-00Fk4c-Pz; Fri, 06 Aug 2021 16:47:28 +0200
-From: Jan Luebbe <jlu@pengutronix.de>
-To: qemu-arm@nongnu.org
-Subject: [PATCH] hw/char/pl011: add support for sending break
-Date: Fri,  6 Aug 2021 16:47:00 +0200
-Message-Id: <20210806144700.3751979-1-jlu@pengutronix.de>
-X-Mailer: git-send-email 2.30.2
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: jlu@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: qemu-devel@nongnu.org
-Received-SPF: pass client-ip=2001:67c:670:201:290:27ff:fe1d:cc33;
- envelope-from=jlu@pengutronix.de; helo=metis.ext.pengutronix.de
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3gcoNYQUKCFwMNG4IAIIAF8.6IGK8GO-4LGHIHAHO.ILA@flex--stmao.bounces.google.com>)
+ id 1mC9af-0005Ll-3U
+ for qemu-arm@nongnu.org; Fri, 06 Aug 2021 19:49:25 -0400
+Received: from mail-qv1-xf49.google.com ([2607:f8b0:4864:20::f49]:42561)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3gcoNYQUKCFwMNG4IAIIAF8.6IGK8GO-4LGHIHAHO.ILA@flex--stmao.bounces.google.com>)
+ id 1mC9ad-0002qv-04
+ for qemu-arm@nongnu.org; Fri, 06 Aug 2021 19:49:24 -0400
+Received: by mail-qv1-xf49.google.com with SMTP id
+ g2-20020a0cdf020000b029033bc8be6d4aso926175qvl.9
+ for <qemu-arm@nongnu.org>; Fri, 06 Aug 2021 16:49:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=IlWXFMCa0UMgwIUaqgru3sFdgAucXJ3aH12PDRfT6H0=;
+ b=TFE4bTtlMnFUHaFi70DEOFaabTsq0uj0ybz1GrScuyx+8Cw6sRxiWIk/uHg3fXV/0A
+ +JGSU8kOiO2ihdQZR6cBxe1r/q81+iwxZI78it6YSj9KTH6/lSAh5xplO3IcsqMJ5QmB
+ afSxIZbmG45bXEYoWEsewxYz0h7GJqjnrvx7rFQVl/LRyRmbt9CBhwsd6PD9PlnocoO5
+ /qjuvVgkpBK+9NqBXphud+fhMKzBQI4qoH2HvVzx04AJh+sBNi2M3te8vkOYQ5q3Q1jI
+ PhXzqcag0l0aSIZCI1Kst1K4ANXgL/+PBp1BrhK56Ncy09v4KVna/ekdjtr9UQ/idzfT
+ kTNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=IlWXFMCa0UMgwIUaqgru3sFdgAucXJ3aH12PDRfT6H0=;
+ b=nNGJddUDDsvjBX9OixWZ/Vn+RJJzel/UnT0O+az+CFAMhkxQmMZtGqOC3/p3qkLg36
+ UepazXJPVCjW/VlhsJq5Ty+1RMA3erBK2622KOskjc7Sh2WTonjMjHYJmNB06jhLHE75
+ 9qPaWB9fSIx1YrN8OEz75WXc+STCjaYXLQDybj6CvnrRVWJuo8hWkhYFAFqdO6Ri8a3B
+ BL42CwjqJ1x/nCjlcrzgOQZWk0TVaOi3HzBOTmObtvkcMX86xZcobmQ1KPlenBwtygCg
+ oRYv4Tziz377D+HbRseIuz2OK+U5o/hnFO5zFwE+dwo9vu61aov31PN13MD+oj3JBo1R
+ gdlw==
+X-Gm-Message-State: AOAM532FeCBUEdS6VGufX7M4KQG3aiNRy4oUJIcmD+/AOMz8+yP7+Ke6
+ ehPZKTYmH3w5J1X8kdEDnNwONswGYQ==
+X-Received: from smvm.c.googlers.com ([fda3:e722:ac3:cc00:14:4d90:c0a8:2d5f])
+ (user=stmao job=sendgmr) by 2002:a05:6214:2428:: with SMTP id
+ gy8mr2492492qvb.49.1628293761235; Fri, 06 Aug 2021 16:49:21 -0700 (PDT)
+Date: Fri,  6 Aug 2021 23:49:16 +0000
+Message-Id: <20210806234918.122457-1-stmao@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.32.0.605.g8dce9f2422-goog
+Subject: [PATCH v4 0/2] Add remote I2C device to support external I2C device
+From: Shengtan Mao <stmao@google.com>
+To: cminyard@mvista.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, crauer@google.com, 
+ wuhaotsh@google.com, venture@google.com, maoshengtan2011@gmail.com, 
+ Shengtan Mao <stmao@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f49;
+ envelope-from=3gcoNYQUKCFwMNG4IAIIAF8.6IGK8GO-4LGHIHAHO.ILA@flex--stmao.bounces.google.com;
+ helo=mail-qv1-xf49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Jan Luebbe <jlu@pengutronix.de>,
- qemu-devel@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: danIajyQIx2y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PK4/j6d/ufwQ
 
-Break events are currently only handled by chardev/char-serial.c, so we
-just ignore errors, which results in no behaviour change for other
-chardevs.
+This patch implements the remote I2C device.  The remote I2C device allows an
+external I2C device to communicate with the I2C controller in QEMU through the
+remote I2C protocol.  Users no longer have to directly modify QEMU to add new
+I2C devices and can instead implement the emulated device externally and
+connect it to the remote I2C device.
 
-Signed-off-by: Jan Luebbe <jlu@pengutronix.de>
----
- hw/char/pl011.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Previous work by Wolfram Sang
+(https://git.kernel.org/pub/scm/virt/qemu/wsa/qemu.git/commit/?h=i2c-passthrough)
+was referenced.  It shares the similar idea of redirecting the actual I2C device
+functionalities, but Sang focuses on physical devices, and we focus on emulated devices.
+The work by Sang mainly utilizes file descriptors while ours utilizes character
+devices, which offers better support for emulated devices. The work by Sang is
+not meant to offer full I2C device support; it only implements the receive
+functionality.  Our work implements full support for I2C devices: send, recv,
+and event (match_and_add is not applicable for external devices).
 
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index dc85527a5f92..6e2d7f75095c 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -26,6 +26,7 @@
- #include "hw/qdev-properties-system.h"
- #include "migration/vmstate.h"
- #include "chardev/char-fe.h"
-+#include "chardev/char-serial.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "trace.h"
-@@ -231,6 +232,11 @@ static void pl011_write(void *opaque, hwaddr offset,
-             s->read_count = 0;
-             s->read_pos = 0;
-         }
-+        if ((s->lcr ^ value) & 0x1) {
-+            int break_enable = value & 0x1;
-+            qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
-+                              &break_enable);
-+        }
-         s->lcr = value;
-         pl011_set_read_trigger(s);
-         break;
+v1 -> v2
+    fixed terminology errors in the description comments.
+v2 -> v3
+    corrected patch set emailing errors.
+v3 -> v4
+    added remote I2C protocol description in docs/specs
+
+Shengtan Mao (2):
+  hw/i2c: add remote I2C device
+  docs/specs: add remote i2c docs
+
+ docs/specs/index.rst          |   1 +
+ docs/specs/remote-i2c.rst     |  51 ++++++++
+ hw/arm/Kconfig                |   1 +
+ hw/i2c/Kconfig                |   4 +
+ hw/i2c/meson.build            |   1 +
+ hw/i2c/remote-i2c.c           | 117 ++++++++++++++++++
+ tests/qtest/meson.build       |   1 +
+ tests/qtest/remote-i2c-test.c | 216 ++++++++++++++++++++++++++++++++++
+ 8 files changed, 392 insertions(+)
+ create mode 100644 docs/specs/remote-i2c.rst
+ create mode 100644 hw/i2c/remote-i2c.c
+ create mode 100644 tests/qtest/remote-i2c-test.c
+
 -- 
-2.30.2
+2.32.0.605.g8dce9f2422-goog
 

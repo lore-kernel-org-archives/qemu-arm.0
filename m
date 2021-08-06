@@ -1,106 +1,79 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp164899lff;
-        Mon, 9 Aug 2021 02:13:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyypx943WPRADjd6UFHMPIqmEI1cDHJM0obuiXLxldO1MwgI5X4rwvbe9GKBLIOQEQyG6iY
-X-Received: by 2002:a92:2009:: with SMTP id j9mr317429ile.108.1628500436740;
-        Mon, 09 Aug 2021 02:13:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628500436; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp372008lff;
+        Fri, 6 Aug 2021 07:44:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypHuaBPxKgfJprkyC1dOKdZMme5GKVK7KfIX4b3Nn0pPGHFMnIFWi60VRPpuRMTwk0xuAT
+X-Received: by 2002:ab0:74cc:: with SMTP id f12mr8478976uaq.28.1628261041447;
+        Fri, 06 Aug 2021 07:44:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628261041; cv=none;
         d=google.com; s=arc-20160816;
-        b=VD/9slKn/gJyvi1Hhi46AanM1BVm655kfdigaKl5lPswe1qFr+dPFpgnQHrPVo8qb5
-         dNP1Y+YZyHLbpV3Fd7oy+vGNgiKln1UgxBmMRoNY4uuKU8/NBKaoGzAf0QjLzvFPig+7
-         bL6Uo6sM+x6+mp3QcarhtzamKRLIEeIXXTdQG2SlstJWNFoyVS1PKyjFphmPUZh8vSut
-         gjsqK8PW1hN1dWhEMqC41uQtWGBryeHEC3X2HQLYxOI7QB77+cUPuwPcNKCfOxoosv8P
-         d1+Bxi5JR7aQHwQlr9SaPyaFCiIBrg/ulKaV5USjKK14nji+lCw8lkc8ciqaDgH0b7np
-         WqwQ==
+        b=i3kvBFz++SMn41TL34XiA9FQZwm3oMi66jPQkrBINtGmNy71Et0owKBj41OTISp0cc
+         B3WYBwU4kul0m1nMIoPXqn6l/5kQcM47y0Bp6GWL7DpqkYogiIqU1wc2QW00VWF5s79W
+         xvg3g5LANPJUIsKMNCzWmDlkh5rj8ULEXA5EC7MjaGysScypcIynGI9GN/OhVxCZGZv8
+         T7JxMCknYXlLTKSg8w0GGon3wYybLDqj16vrfv3oXHG5Emp1WWrXFrdkDxslLIyjnkLh
+         8F+qypy45G2bsYJPoyIV9UuokfnCutQSyeZ1/kWqWYpsFOY6RRtmXnoX2/meKMyjvnjF
+         Awuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=O/SUyjpCKPa1NyUnM0sSjnDbTlJNyAN0RvOXoyd3MXU=;
-        b=ws2QaJF5nayrHdStD1CxGiGnabbeGieBOUKNUwDos0DM1E5usJPlkZiU4BFMUMqsen
-         HcCsyGuviQCD0DdryLqEjrALeUiIUOwR+C2837IoayK4gAF1/2v8nM2Ld4DZB+yDvv1R
-         Ieu6zJWNELCovcBa+PjfGutCWL9r2bTJFOzfRxRjnyGai7qpgF2liKpHvAs5Y9vgNjrq
-         zxxrX3ttlHRkiQRX7npmLk2lV0W1y4lj+H+zogliKOjG3c4zuBNtPP4fFCebe1T+MRPF
-         MHuzGMJjSEIyG0wNT3kFdW5wMWvbMb4x94b7gWWjoN7HR1SiHVmCDAa2uYezsb9KrsXm
-         y3MA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date;
+        bh=AgbwJTab3poX9zGImUrzIaCRTjeWe7N4B/s6zdyCUV0=;
+        b=VlwEswUCyTccBBb4aubNNUI3AAhauzVxOsYuXUV7FegMuEh8HNI+uJ+qViphkzLCMz
+         bQ8SpNJ/tXnH26tBHvoXalfSaJspYP0Skcd8t1wZrRJwmaEY78/U4NWnMOWr8Y9/4zBs
+         KzVDC9/d8KcSasw0oa1BvlapPdQrMtkC3pcExes4oPp1SuRyozIHH4nTegZmdMxRAhGy
+         DoEVG9SqmC8XHObgiCMBaRoXa6wgrK+O9dhHFbT5k7bJlHQ7xAe1Eqf3XrFc08NuS6RQ
+         yhEqLWn1eoQLXq887udTK2x4eyA+V3OrVEzXR/m/TvOwFbQNL47Ps3IYhmSwJtA+erHB
+         6EGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HeYrPIQv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bu.edu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si15707544iln.130.2021.08.09.02.13.56
+        by mx.google.com with ESMTPS id 30si4566984uab.144.2021.08.06.07.44.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 02:13:56 -0700 (PDT)
+        Fri, 06 Aug 2021 07:44:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HeYrPIQv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36362 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bu.edu
+Received: from localhost ([::1]:34898 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mD1M4-0007v6-3K
-	for alex.bennee@linaro.org; Mon, 09 Aug 2021 05:13:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38522)
+	id 1mC14q-0007DB-P7
+	for alex.bennee@linaro.org; Fri, 06 Aug 2021 10:44:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1mD1Lv-0007sa-A8
- for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:13:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29448)
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1mC14e-0007Ah-4C; Fri, 06 Aug 2021 10:43:48 -0400
+Received: from relay68.bu.edu ([128.197.228.73]:41381)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1mD1Lt-0001kx-0z
- for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:13:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628500423;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=O/SUyjpCKPa1NyUnM0sSjnDbTlJNyAN0RvOXoyd3MXU=;
- b=HeYrPIQvbeHQnQe676xoopYfob7OP+pR30+Kiqavu0N12dBg0HzWtRFoqgB8A2y8HboTSU
- E/ZsAvELGRE2jjnwwiab9sKvbRnLnk00GnWqIbUfKXG3Lb0tOYlhzmxN1cIQQpJMWBNb+R
- MyE5Lb0qDEJwGNOf/dUPaGbpNq8YpJc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-553-LvUADNntNNCb0I0PJMOs4g-1; Mon, 09 Aug 2021 05:13:42 -0400
-X-MC-Unique: LvUADNntNNCb0I0PJMOs4g-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C47C1190B2A3;
- Mon,  9 Aug 2021 09:13:40 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.193.3])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 780104A66;
- Mon,  9 Aug 2021 09:13:33 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id B34121800981; Mon,  9 Aug 2021 11:13:31 +0200 (CEST)
-Date: Mon, 9 Aug 2021 11:13:31 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Alexander Bulekov <alxndr@bu.edu>
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1mC14c-0006Mk-D9; Fri, 06 Aug 2021 10:43:47 -0400
+X-Envelope-From: alxndr@bu.edu
+X-BU-AUTH: mozz.bu.edu [128.197.127.33]
+Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
+ bits=0)
+ by relay68.bu.edu (8.14.3/8.14.3) with ESMTP id 176Eg9pc027907
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
+ Fri, 6 Aug 2021 10:42:12 -0400
+Date: Fri, 6 Aug 2021 10:42:09 -0400
+From: Alexander Bulekov <alxndr@bu.edu>
+To: Qiang Liu <cyruscyliu@gmail.com>
 Subject: Re: [PATCH v2] hw/display/xlnx_dp: fix an out-of-bounds read in
  xlnx_dp_read
-Message-ID: <20210809091331.s2hy6qc566zhgg2a@sirius.home.kraxel.org>
+Message-ID: <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
 References: <1628059910-12060-1-git-send-email-cyruscyliu@gmail.com>
- <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
 MIME-Version: 1.0
-In-Reply-To: <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.707,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <1628059910-12060-1-git-send-email-cyruscyliu@gmail.com>
+Received-SPF: pass client-ip=128.197.228.73; envelope-from=alxndr@bu.edu;
+ helo=relay68.bu.edu
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.998,
+ HK_RANDOM_FROM=0.998, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,29 +88,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Qiang Liu <cyruscyliu@gmail.com>, Alistair Francis <alistair@alistair23.me>,
+ Alistair Francis <alistair@alistair23.me>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
  Bandan Das <bsd@redhat.com>,
  "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>,
  Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W0V6TB8jr6rS
+X-TUID: y7GLUmQpPYc3
 
-  Hi,
+On 210804 1451, Qiang Liu wrote:
+> xlnx_dp_read allows an out-of-bounds read at its default branch because
+> of an improper index.
+> 
+> According to
+> https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
+> (DP Module), registers 0x3A4/0x3A4/0x3AC are allowed.
+> 
+> DP_INT_MASK     0x000003A4      32      mixed   0xFFFFF03F      Interrupt Mask Register for intrN.
+> DP_INT_EN       0x000003A8      32      mixed   0x00000000      Interrupt Enable Register.
+> DP_INT_DS       0x000003AC      32      mixed   0x00000000      Interrupt Disable Register.
+> 
+> In xlnx_dp_write, when the offset is 0x3A8 and 0x3AC, the virtual device
+> will write s->core_registers[0x3A4
+> >> 2]. That is to say, the maxize of s->core_registers could be ((0x3A4
+> >> 2) + 1). However, the current size of s->core_registers is (0x3AF >>
+> >> 2), that is ((0x3A4 >> 2) + 2), which is out of the range.
+> In xlxn_dp_read, the access to offset 0x3A8 or 0x3AC will be directed to
+> the offset 0x3A8 (incorrect functionality) or 0x3AC (out-of-bounds read)
+> rather than 0x3A4.
+> 
+> This patch enforces the read access to offset 0x3A8 and 0x3AC to 0x3A4,
+> but does not adjust the size of s->core_registers to avoid breaking
+> migration.
+> 
+> Fixes: 58ac482a66de ("introduce xlnx-dp")
+> Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
 
-> As a side note(not strictly related to this fix) should we continue
-> joining reproducer patches with the fixes? In order to test the
-> reproducer, you need to cleave the fix off the patch. At the same time
-> we don't want to mess up bisection, so does it make sense to have the
-> reproducer patch be separate but come last in the series?
+Acked-by: Alexander Bulekov <alxndr@bu.edu>
 
-Yes, I think it makes sense to send the testcase as separate patch, and
-the ordering (fix first, testcase second) makes sense too.  If they are
-separated it is easy enough to create a local test branch with a
-different order, or to just temporarily revert the fix to test the
-testcase.
+If there is somehow a regression, the test won't fail in a fatal way, so
+maybe it makes sense to throw in a setenv(UBSAN_OPTIONS=halt_on_error=1)
 
-take care,
-  Gerd
+As a side note(not strictly related to this fix) should we continue
+joining reproducer patches with the fixes? In order to test the
+reproducer, you need to cleave the fix off the patch. At the same time
+we don't want to mess up bisection, so does it make sense to have the
+reproducer patch be separate but come last in the series?
 
+Thanks

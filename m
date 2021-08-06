@@ -1,236 +1,270 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp144165lff;
-        Thu, 5 Aug 2021 04:27:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxwgBbAWW1rzZzUgBPgQx42aBDzCb6unsd8/1nag9WYVj3q6dFm7b143MlT9mr9iALRGR9
-X-Received: by 2002:a92:3642:: with SMTP id d2mr448243ilf.253.1628162831989;
-        Thu, 05 Aug 2021 04:27:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628162831; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp189681lff;
+        Fri, 6 Aug 2021 04:09:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDMtwrgMkgpdVNBCuD1XhDrhXu163aFEU0mHJeos3xrG9qwiBofnITN/dKHGNOMHXgFR2q
+X-Received: by 2002:a67:3303:: with SMTP id z3mr8046895vsz.51.1628248196656;
+        Fri, 06 Aug 2021 04:09:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628248196; cv=none;
         d=google.com; s=arc-20160816;
-        b=cbaYNYetL5VG/aRE0aS8q3JMk67QJgfp4HBzBbT8pgiDwOdxxk86ln6UG5YwNo06Ze
-         OkJ9bKqFzo6nZiVgIS0SgNwNw6GVKk9EQcpB9vJS7fV79UKMp7Fx+gfyf31okuKF8/la
-         GvOSH0M2LlsXRcbkX48j0j8dg2Agp0c1axSmNBhqUhkhaSPiRqRT0IUpr9pk4liFtwTz
-         wb/zbyBbVfxvBVSB7Vm+qld8vV0gbUoKKhs36q1JyETLAdTIVcuzl5YoZlcjd4mHLdzy
-         uDIyOhm62KsNt5WXoH4oCSSxjAMaEZhN6Ak8TSANBb2/G1aR0EzjIHYe/YmmICtbUeWK
-         11vA==
+        b=uZGX9KMiduBZDjHyDakt10jTH89g5GSBRLIpGMgu9xmtbe+NF1UEiYb3xzaLLbsPx8
+         3+1HkalFwnmCdgIlKur2O/+RX7vqyEHT8oo4DOXD9xyDXzc9fQ7BvjzVX9w+2S6mZ85G
+         Uu0ZeqZ0Od6Do3RazJcrERCCciQ0JPP8RmplN4YPnq5bEU+h+SF9sBNT04QMaFotHaRr
+         kO5jn9+3M86ciuXumJVii+guGWcl3iqTki8Lp1rixkr4HeNGwNruGbTVF5trU9LIkf1G
+         6ujE7byXLqXMb2O3pJU/J5m3NE2Cpe/4+0jFguph+zsxLT5xWzrec5WtvOGEvZOCtFZL
+         OtjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=VbprFqjcDUoeJtGQ5sTHQvzLtyDFXeKF9/nWQHU6IB4=;
-        b=BTS13OybsIuAhyEtH1qs7bQcn4BldTrvhwrAESy3uvKCw0cMw9SO0N4TztEvCbPof5
-         eHm8399XQK2MpIbT44rvPHSQ5MhkeKg4LVoM+MzK11+othRu3hNM1ZHjrf99D8YEI+8X
-         //F0lZ28eR9ZCD4NQUqoaX/oiG4KAPWaU1CZNcYY/bSfM184wJXQL/94XnqS7zQGbHDz
-         kpEAw3vOH826kR4y3y5QO7yabJiQSe+uwWDMJLQ1QnhPw1aI1u60yFhAVdqDJEkiae3H
-         Mg+vUgYSmH2Wk3sDURc2+u5eE9/9e6JCDYpX5L00vqKy6nYfv9JyWoFf24/1nCbs6Nb+
-         QX0Q==
+        bh=aWjmKjThFTSe6cDKPN97O/jPxW0XsSO8y6vkajE3fgU=;
+        b=ipSa+lyi4Ehxpu+qBgag57CCAvq+SyEGR8zdvWY3wn7lkQq1doRZgR78S6rGTlepiH
+         OaeBpBNyecZiana2qheSNvEncG3PMpwpV3f/M4XQsR15FfbWvbWz47Uv8B1S8+472Vor
+         ArHI/YVcwDBUItvDb7iyvsNYQJgvL2gUaKROOkLv/Qby2EJ4d7ccYk8OZVKE/AwdyE9U
+         koUdE4BcFHrProETvyED4Mo0rbWk6ZVrBleQACaMyd29FMJAFC3kCLZm6IZwKszJR1F6
+         a1YE0G+OZHRg25smYSvyulpcrFgJTVRD+EanivBhgsJlOzhdEJQxERoUMdFFaEmvRyoa
+         Ai1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DadWyx90;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DUQ4ipST;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16si5435311jan.31.2021.08.05.04.27.11
+        by mx.google.com with ESMTPS id y26si4182526vsd.223.2021.08.06.04.09.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Aug 2021 04:27:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Aug 2021 04:09:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DadWyx90;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59346 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DUQ4ipST;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33040 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mBbWn-0004sm-8F
-	for alex.bennee@linaro.org; Thu, 05 Aug 2021 07:27:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39338)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mBxjf-0004pv-V0
+	for alex.bennee@linaro.org; Fri, 06 Aug 2021 07:09:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mBbUN-0002T1-UM
- for qemu-devel@nongnu.org; Thu, 05 Aug 2021 07:24:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39784)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mBxjV-0004pO-Px
+ for qemu-arm@nongnu.org; Fri, 06 Aug 2021 07:09:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:49274)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mBbUM-000169-9X
- for qemu-devel@nongnu.org; Thu, 05 Aug 2021 07:24:39 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mBxjS-0001tJ-NQ
+ for qemu-arm@nongnu.org; Fri, 06 Aug 2021 07:09:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628162677;
+ s=mimecast20190719; t=1628248181;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VbprFqjcDUoeJtGQ5sTHQvzLtyDFXeKF9/nWQHU6IB4=;
- b=DadWyx90A6+d7FoClO4Nk/KLyytcVWIslgcXqwSAPPdS9u/SLUzkhnttN2yfvWshEiEVyx
- RdYQ0W/1csLbLmcmxoQ0HMZGx1pt4/I02n1Iui+KYJN4wIyPMhhxGeo0uKfJ8/qZhO3igO
- kbglsuyKGR0K6XD0oNs98zeNI7vFBTI=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-441-B5aImtY9OVqy7ML1pPy-zA-1; Thu, 05 Aug 2021 07:24:36 -0400
-X-MC-Unique: B5aImtY9OVqy7ML1pPy-zA-1
-Received: by mail-ej1-f71.google.com with SMTP id
- z20-20020a1709069454b0290595651dca8eso1923202ejx.23
- for <qemu-devel@nongnu.org>; Thu, 05 Aug 2021 04:24:36 -0700 (PDT)
+ bh=aWjmKjThFTSe6cDKPN97O/jPxW0XsSO8y6vkajE3fgU=;
+ b=DUQ4ipST4k0aZDZFlRQzc/H8Nv2URTZfnPtJM0zsQclgReCBzdJBtsthkrb/8F0T042S4e
+ WIjdGi0cR1+j4z0v8jcA7h3NQGwdsFQWC88+4iFdS5jzbL8wtejxnNX3x8gX/i0gWft9VC
+ R3lCHCfsxe/k4An/00G2y0heEkrseY0=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-600-FJext5PBPve0RBAznFluog-1; Fri, 06 Aug 2021 07:09:40 -0400
+X-MC-Unique: FJext5PBPve0RBAznFluog-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ a9-20020a0560000509b029015485b95d0cso3042686wrf.5
+ for <qemu-arm@nongnu.org>; Fri, 06 Aug 2021 04:09:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=VbprFqjcDUoeJtGQ5sTHQvzLtyDFXeKF9/nWQHU6IB4=;
- b=p8dA2e3uPOKTo1lxTs/8Cf6DkhduOwda9wsWufVgRtdgK5zJO12eOyAFtkpz5W76cZ
- +U6O6UR7lZcN5axihwuI6YgFe3PWzX3lv7MWADTQo8Aid4fiK/AagvFK49wA+pPzncc9
- 9XrJe4KiZln3OV58cb5UWWyNAYUSjbQ2EcbRhaNpvnCtI3Q1vuDCfaQlGL0jaxworcTm
- xabTqR6rovlB5oqY25LAp24lJoFPXC5w31h+j/zFcx5Y9oc+EKxmjVhLr8s1aRWV3l2a
- PtFyCieM1/sNDcHKGLhA6xFVmgccek5ULCnrvqoi+TmM+jHW/yLn9HtQac9UZPPOBYV3
- YbDw==
-X-Gm-Message-State: AOAM533jOryTJ1tWaisUXSjn4R4NaHJHNXTNAymnPkhqzKYGlmc+egm9
- acEIqtMHpWkd/oeHk0vyBATOKWaTRdif9oFQEukndKtTfgBR72U8OeO7dly4kZYL7okspfEsigv
- 5IZ6v3lvtxl6gsF4=
-X-Received: by 2002:a17:906:3699:: with SMTP id
- a25mr4265315ejc.452.1628162675435; 
- Thu, 05 Aug 2021 04:24:35 -0700 (PDT)
-X-Received: by 2002:a17:906:3699:: with SMTP id
- a25mr4265298ejc.452.1628162675222; 
- Thu, 05 Aug 2021 04:24:35 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id gv7sm1600327ejc.5.2021.08.05.04.24.33
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=aWjmKjThFTSe6cDKPN97O/jPxW0XsSO8y6vkajE3fgU=;
+ b=seezctTmoopvh+Ab5tl+kvfvDl4PVEeuu/StAvyvKGuRgHKPie81KxfEuqutfOfkUa
+ xrZ8HrRlNps+pPlpPtGdWkk1/vHBCPur3LVB1HRiZQ3DDI3+vrmXtTye961aYgTJBFeO
+ gVBr42XBL0GWgPlyg1HTgtlJzNKIq/chnwqPYfkpKqTgaQIillp7mOrSrDYbEQi0DqCa
+ hDzgiLc7FaIou9VdXHeX5mzH2JGg+pi464LJzCJTymWsVLv+mgrdDsFakmRMVWdq6GfU
+ r+2pjvj2pMRMTgpCYDX5MrvX0QM6FGRxi+RLHAOpHqWbXcX4EdoZeEwugrzvMNPcHXrM
+ VZvA==
+X-Gm-Message-State: AOAM530xj7bk/ThLyIZsNhDICYzIM/giExEjyKbtDycjWLILNGBy4ltN
+ sjuMAkowKuYkYW7zCUK4eQmCYQWznUwfl6Tbu0HZVGGbmQbta8rms57++QjcvU5dDkHIsBvr2I9
+ KKZ//0HOu3WNm
+X-Received: by 2002:a5d:4c92:: with SMTP id z18mr10395184wrs.228.1628248179679; 
+ Fri, 06 Aug 2021 04:09:39 -0700 (PDT)
+X-Received: by 2002:a5d:4c92:: with SMTP id z18mr10395160wrs.228.1628248179459; 
+ Fri, 06 Aug 2021 04:09:39 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id s2sm8045813wmh.46.2021.08.06.04.09.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Aug 2021 04:24:34 -0700 (PDT)
-Date: Thu, 5 Aug 2021 13:24:32 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-Subject: Re: [PATCH v3 1/3] target-arm: cpu64: Add support for Fujitsu A64FX
-Message-ID: <20210805112432.mjrqizexwyammfm5@gator.home>
-References: <20210805073045.916622-1-ishii.shuuichir@fujitsu.com>
- <20210805073045.916622-2-ishii.shuuichir@fujitsu.com>
+ Fri, 06 Aug 2021 04:09:39 -0700 (PDT)
+Date: Fri, 6 Aug 2021 13:09:37 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Subject: Re: [PATCH v7 09/10] hw/arm/virt: add ITS support in virt GIC
+Message-ID: <20210806130937.1a354b30@redhat.com>
+In-Reply-To: <20210805223002.144855-10-shashi.mallela@linaro.org>
+References: <20210805223002.144855-1-shashi.mallela@linaro.org>
+ <20210805223002.144855-10-shashi.mallela@linaro.org>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20210805073045.916622-2-ishii.shuuichir@fujitsu.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wTvGXRqUUdsK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mst@redhat.com, rad@semihalf.com,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ leif@nuviainc.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jE+MYnJAg7wX
 
-On Thu, Aug 05, 2021 at 04:30:43PM +0900, Shuuichirou Ishii wrote:
-> Add a definition for the Fujitsu A64FX processor.
+On Thu,  5 Aug 2021 18:30:01 -0400
+Shashi Mallela <shashi.mallela@linaro.org> wrote:
+
+> Included creation of ITS as part of virt platform GIC
+> initialization. This Emulated ITS model now co-exists with kvm
+> ITS and is enabled in absence of kvm irq kernel support in a
+> platform.
 > 
-> The A64FX processor does not implement the AArch32 Execution state,
-> so there are no associated AArch32 Identification registers.
-> 
-> Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/cpu64.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 44 insertions(+)
+>  hw/arm/virt.c         | 28 ++++++++++++++++++++++++++--
+>  include/hw/arm/virt.h |  2 ++
+>  target/arm/kvm_arm.h  |  4 ++--
+>  3 files changed, 30 insertions(+), 4 deletions(-)
 > 
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index c690318a9b..612644941b 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -847,10 +847,54 @@ static void aarch64_max_initfn(Object *obj)
->                          cpu_max_set_sve_max_vq, NULL, NULL);
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 81eda46b0b..99cf4f9dbd 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -583,6 +583,12 @@ static void create_its(VirtMachineState *vms)
+>      const char *itsclass = its_class_name();
+>      DeviceState *dev;
+>  
+> +    if (!strcmp(itsclass, "arm-gicv3-its")) {
+> +        if (!vms->tcg_its) {
+> +            itsclass = NULL;
+> +        }
+> +    }
+> +
+>      if (!itsclass) {
+>          /* Do nothing if not supported */
+>          return;
+> @@ -620,7 +626,7 @@ static void create_v2m(VirtMachineState *vms)
+>      vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
 >  }
 >  
-> +static void aarch64_a64fx_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    cpu->dtb_compatible = "arm,a64fx";
-> +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
-> +    cpu->midr = 0x461f0010;
-> +    cpu->revidr = 0x00000000;
-> +    cpu->ctr = 86668006;
-> +    cpu->reset_sctlr = 0x30000180;
-> +    cpu->isar.id_aa64pfr0 =   0x0000000101111111; /* No RAS Extensions */
-> +    cpu->isar.id_aa64pfr1 = 0x0000000000000000;
-> +    cpu->isar.id_aa64dfr0 = 0x0000000010305408;
-> +    cpu->isar.id_aa64dfr1 = 0x0000000000000000;
-> +    cpu->id_aa64afr0 = 0x0000000000000000;
-> +    cpu->id_aa64afr1 = 0x0000000000000000;
-> +    cpu->isar.id_aa64mmfr0 = 0x0000000000001122;
-> +    cpu->isar.id_aa64mmfr1 = 0x0000000011212100;
-> +    cpu->isar.id_aa64mmfr2 = 0x0000000000001011;
-> +    cpu->isar.id_aa64isar0 = 0x0000000010211120;
-> +    cpu->isar.id_aa64isar1 = 0x0000000000010001;
-> +    cpu->isar.id_aa64zfr0 = 0x0000000000000000;
-> +    cpu->clidr = 0x0000000080000023;
-> +    cpu->ccsidr[0] = 0x7007e01c; /* 64KB L1 dcache */
-> +    cpu->ccsidr[1] = 0x2007e01c; /* 64KB L1 icache */
-> +    cpu->ccsidr[2] = 0x70ffe07c; /* 8MB L2 cache */
-> +    cpu->dcz_blocksize = 6; /* 256 bytes */
-> +    cpu->gic_num_lrs = 4;
-> +    cpu->gic_vpribits = 5;
-> +    cpu->gic_vprebits = 5;
-> +    /* TODO:  Add A64FX specific HPC extension registers */
-> +
-> +    aarch64_add_sve_properties(obj);
-> +    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
-> +                        cpu_max_set_sve_max_vq, NULL, NULL);
-
-I'm not a huge fan of the sve-max-vq property since it's not a good idea
-to use it with KVM, because it's not explicit enough for migration[1]. I
-realize the a64fx cpu type will likely never be used with KVM, but since
-sve-max-vq isn't necessary[2], than I would avoid propagating it to
-another cpu type. Finally, if you want the a64fx cpu model to represent
-the current a64fx cpu, then don't you want to explicitly set the supported
-vector lengths[3] and deny the user the option to change them? You could
-do that by directly setting the vq map and not adding the sve properties.
-
-[1] With KVM, sve-max-vq only tells you the maximum vq, but it won't tell
-you that the host doesn't support non-power-of-2 vector lengths. So you
-don't get an explicit vector length list on the command line. Being
-explicit is the only safe way to migrate (see
-docs/system/arm/cpu-features.rst:"SVE CPU Property Recommendations").
-
-[2] If a shorthand is desired for specifying vector lengths, then just
-use a single sve<N> property. For example, sve-max-vq=4 and sve512=on
-are identical (but keep [1] in mind).
-
-[3] a64fx only support 128, 256, and 512 bit vector lengths, afaik.
-
-Thanks,
-drew
-
-> +}
-> +
->  static const ARMCPUInfo aarch64_cpus[] = {
->      { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
->      { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
->      { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
-> +    { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
->      { .name = "max",                .initfn = aarch64_max_initfn },
->  };
+> -static void create_gic(VirtMachineState *vms)
+> +static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+>  {
+>      MachineState *ms = MACHINE(vms);
+>      /* We create a standalone GIC */
+> @@ -654,6 +660,14 @@ static void create_gic(VirtMachineState *vms)
+>                               nb_redist_regions);
+>          qdev_prop_set_uint32(vms->gic, "redist-region-count[0]", redist0_count);
 >  
-> -- 
-> 2.27.0
-> 
-> 
+> +        if (!kvm_irqchip_in_kernel()) {
+> +            if (vms->tcg_its) {
+> +                object_property_set_link(OBJECT(vms->gic), "sysmem",
+> +                                         OBJECT(mem), &error_fatal);
+> +                qdev_prop_set_bit(vms->gic, "has-lpi", true);
+> +            }
+> +        }
+> +
+>          if (nb_redist_regions == 2) {
+>              uint32_t redist1_capacity =
+>                      vms->memmap[VIRT_HIGH_GIC_REDIST2].size / GICV3_REDIST_SIZE;
+> @@ -2043,7 +2057,7 @@ static void machvirt_init(MachineState *machine)
+>  
+>      virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
+>  
+> -    create_gic(vms);
+> +    create_gic(vms, sysmem);
+>  
+>      virt_cpu_post_init(vms, sysmem);
+>  
+> @@ -2746,6 +2760,12 @@ static void virt_instance_init(Object *obj)
+>      } else {
+>          /* Default allows ITS instantiation */
+>          vms->its = true;
+> +
+> +        if (vmc->no_tcg_its) {
+> +            vms->tcg_its = false;
+> +        } else {
+> +            vms->tcg_its = true;
+> +        }
+>      }
+>  
+>      /* Default disallows iommu instantiation */
+> @@ -2795,8 +2815,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
+>  
+>  static void virt_machine_6_0_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_6_1_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+> +    /* qemu ITS was introduced with 6.1 */
+> +    vmc->no_tcg_its = true;
+
+given it's not going to be in 6.1, shouldn't it be moved to
+virt_machine_6_1_options() with updated comment?
+
+>  }
+>  DEFINE_VIRT_MACHINE(6, 0)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 9661c46699..b461b8d261 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -120,6 +120,7 @@ struct VirtMachineClass {
+>      MachineClass parent;
+>      bool disallow_affinity_adjustment;
+>      bool no_its;
+> +    bool no_tcg_its;
+>      bool no_pmu;
+>      bool claim_edge_triggered_timers;
+>      bool smbios_old_sys_ver;
+> @@ -141,6 +142,7 @@ struct VirtMachineState {
+>      bool highmem;
+>      bool highmem_ecam;
+>      bool its;
+> +    bool tcg_its;
+>      bool virt;
+>      bool ras;
+>      bool mte;
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 34f8daa377..0613454975 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -525,8 +525,8 @@ static inline const char *its_class_name(void)
+>          /* KVM implementation requires this capability */
+>          return kvm_direct_msi_enabled() ? "arm-its-kvm" : NULL;
+>      } else {
+> -        /* Software emulation is not implemented yet */
+> -        return NULL;
+> +        /* Software emulation based model */
+> +        return "arm-gicv3-its";
+>      }
+>  }
+>  
 

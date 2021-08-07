@@ -1,104 +1,104 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp986389lff;
-        Sat, 7 Aug 2021 01:05:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxrTiyuI38D1MKHs1mzgOGZyKcCuarJ0MBKwzQcjcHFxKlR48ObEbrYdeN1uZFdRhs7G7Gv
-X-Received: by 2002:a92:cac2:: with SMTP id m2mr5750ilq.75.1628323529065;
-        Sat, 07 Aug 2021 01:05:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628323529; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp988743lff;
+        Sat, 7 Aug 2021 01:09:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyrMLQYM8HQ/0GpbfvQ2zumdUPOO7IPBRnNHcbcJREH1JDpi/SVSKS/iR4SZG4S5nEd3npI
+X-Received: by 2002:a05:6602:2e11:: with SMTP id o17mr27812iow.55.1628323796656;
+        Sat, 07 Aug 2021 01:09:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628323796; cv=none;
         d=google.com; s=arc-20160816;
-        b=nnpTBtN4xbA1wAmT6tjKoIZivmUZoqLoTyQxySd3RNq+OTZW3Pvy/8uo7UDjUKIH3d
-         rYEUVwLjtB6MlAH+NmmaTzHdfwJXVJAagyj2V1NIwHvNdjWvPRpJPb1Nj3HDcSo5xEmW
-         7c+ZOSyxFxb8Vg72mpvCFqBS0k2ScbKFER26AgPq49zSzKSXeANRhJqPBcX8abRi6W6b
-         x86zyQgyzJ5EfupGbyjaTixXdGfl3PkIFp+ttbwRXuT3R1h1poCCn7qGc8AdmxxHq2AL
-         7bkUfpqICPJhsbrHa0xxTI/IMA20u8oazuFgS3qsyS2PDYdvaNkUcPJf7n6903k0WaU+
-         Wovg==
+        b=Zqpcea/3mrFy4ladgX4+0lIwWTDkiraILzTMpypITUkxS1PiXwDuMkvAZvBHCftmA2
+         fBlzw3kl1ygWek2cumKlB65USfjpbdx3fd83lspj9e63dAlzadrDlEMnDk/vJMsjV81X
+         SX/CER3+CYSgreN3LZisIwH4u4u3QDIDx5KjC5rK3j+9iECIUWeYJDeS4COubwCJ6BxP
+         4xWCU9YfO49B/UKDVheo7LWe7dY4UyiiM0HNtkpkcNDHCOVO/eMZuxeycLwbv08HFIDf
+         qaF7qjlfNKhtC+7ioEzbLkv/AKoATOnNdyoU/s3Cy9ntWGVmrDrgvsqNNF3ZugFDus4k
+         SgEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=D3N3nduqFPgBRWlekmjotDybCkoNoQB5jW/JLWB1u3g=;
-        b=Nnew8zVC3+IuAKF1zj8Jx6ySEkOwn/GAXQNG6h2ygMUwnIYU3HRz0QRm49br83kyYP
-         ixHbWNr2K6sWdOMt+PYH1GmivGHw1nKw23XrAn7DMVO5oHDs8OdQliQ4a1ieO/NXeexV
-         14kX8nilgGuLRAT0Dc5FZb/s4ihjvRgs2A8WANhvkP5C2+UVKWM0W4ImwR3VbLWwy1AQ
-         oVxr5g784E3iUMgfGNwX2lQxR8DDo4Km794ZmAsZciP3t+iaeBAXzTHDpL9AbXhN7DXS
-         L7bkhuMDV5Det2KKlievA98Y9VOjJIs+NYrIRQFSh7qV2HMmxJNgy9ADvqW49CbGZLzN
-         IfYw==
+        bh=XsgXu+vGFYzBvFSuWaAnX9REy7MG6QA6UbtFJBGCKC8=;
+        b=TSlRinLXlqdTXKEII1s0iJD8oUbQy6yx8MaoXi3KMBhVkLxBXSrZWd68vfiUP1NPG6
+         s2eYaxkI3y+7ZMY73ur6uZ7PoQcqMYrNjalFj52kxw1wohwKgVvAAiqxCVCVAmj+Q/hb
+         V+sCwmaxMRdmjBWO2Q2zv49NMbRdFngCIuEqaK5Kw3+VQvqVls3DUxnO45AiMCs3gYsl
+         yU9jid/TKNgtytr7dEqtbGMVbagOxDRb6Mp4um0iBrRHx6NDAg8buwY9AX7rBJwX+HNY
+         zl6C5e1tzgm/WHAups4W3+OZhZN1PvBL/15FT/xE+1Wei4X/k768f+SXWSKCiqauOmpC
+         8Q/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZpbY4KBZ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KP3xBu7a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si12151424ilv.84.2021.08.07.01.05.28
+        by mx.google.com with ESMTPS id h4si10320234ilj.137.2021.08.07.01.09.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Aug 2021 01:05:29 -0700 (PDT)
+        Sat, 07 Aug 2021 01:09:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZpbY4KBZ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KP3xBu7a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51014 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mCHKi-00022B-Eh
-	for alex.bennee@linaro.org; Sat, 07 Aug 2021 04:05:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49310)
+	id 1mCHP1-0003i1-V3
+	for alex.bennee@linaro.org; Sat, 07 Aug 2021 04:09:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mCHIp-0000MM-Hi; Sat, 07 Aug 2021 04:03:31 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:38715)
+ id 1mCHOf-00037Y-O7; Sat, 07 Aug 2021 04:09:33 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:47021)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mCHIn-0005RK-VP; Sat, 07 Aug 2021 04:03:31 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id l18so14104531wrv.5;
- Sat, 07 Aug 2021 01:03:28 -0700 (PDT)
+ id 1mCHOd-0001vO-Oi; Sat, 07 Aug 2021 04:09:33 -0400
+Received: by mail-wr1-x436.google.com with SMTP id c16so14072682wrp.13;
+ Sat, 07 Aug 2021 01:09:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=D3N3nduqFPgBRWlekmjotDybCkoNoQB5jW/JLWB1u3g=;
- b=ZpbY4KBZEczacTQ9cvGOUJYHQH4qdY8Y4Ep+fsT8uWb+7V7EOU+h2oVEEApWHLzgkM
- W0KFwXEnL4uvmwts0rAm+jV3qD9u6EBfw1zWqkacf2u1YbpNM8uMgUC/4e8ZDnrpxqTV
- voxG2euU258BvJHyI9jn6Z+iUpR4OaBx+jjXpRGqhyaE0xFS7fCla5zhnL8YmBz7sxit
- iEiDx3u9Rnght+Ip8Ffxeg5uBBz3QDDupIbTwPLRlHNU6/roQcKwJa1WcBr+tlH00C2C
- x13nEU7+AIUvKLuHmsbFUC0J+fC87m5VGuH5VfDuQRcZUzxpBeCDqkkgRhFqPLQklJgn
- BaOw==
+ bh=XsgXu+vGFYzBvFSuWaAnX9REy7MG6QA6UbtFJBGCKC8=;
+ b=KP3xBu7azKvgVdt+UGZXSTMKmj50GKANKYgDuIPRHbDdiQJdjb+luS/kF8ON0f+nVI
+ F9+Fn6fobIfU4MOqzqXBYMOfokhnKHnOZoEWpfnMwzfjOHKe/jI/zORsD6XOkIrR0q6z
+ RVxuJP9DrRfAdFRkLo0mk4pg+qwEwWalks+AiKb90qOTpOwvUq5aIysj7BZN+Blo7VlT
+ RwB3Bxu3KVl/afW41pbJqmVZ3Ys5HkvQZizaEqWb3uGx2dOMP6V3yF4tNjYQv6WFHlJ4
+ 19e+v2UZJTJbgiznc0d4PI77ilVS/BCgy/jprnCFg4cUs8nxJZfBq5/4d0T4aumHRvVH
+ R5lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=D3N3nduqFPgBRWlekmjotDybCkoNoQB5jW/JLWB1u3g=;
- b=DDYWYID2AIpDB9oEp1m4xXR/SLDGAn6lpOThGhN2VoQFV1doME5fZyuvB/DsPPJtzV
- oePUwveTwf3Pc4vojS+TNZVwWYlFFC/jDg5kgB2hu4IbVe72WfoT8ANMsNG7zQNfX/8j
- GWtRtL3rQo8GIYa3uZWCgzPjfst6+L5LWP3bEoTR27+u6Irk6qokgrOvzTSz+xBajYhH
- tAGM4vrpplmtCow2ltWDMx3Ay0sLufAVt+8/mNwrZ2WnvcFxcgoBkmlOmJXkQgeC5cCQ
- 0MmGe1fH9a5tc4kr9qlXj16OS7Zi9POJB65YmxATAcKNpzFzwXdYH5K2JLxfI0MicsQK
- GwlQ==
-X-Gm-Message-State: AOAM531E2Ilou2KSx//0dWAHAd2caLGqqYIztj43ffxriPEDOCEMwVMZ
- if9MpHbcBOSa3k+dbD2xtz4=
-X-Received: by 2002:adf:e548:: with SMTP id z8mr14742963wrm.57.1628323407521; 
- Sat, 07 Aug 2021 01:03:27 -0700 (PDT)
+ bh=XsgXu+vGFYzBvFSuWaAnX9REy7MG6QA6UbtFJBGCKC8=;
+ b=O/Oa1y4AXqGl6dc3lDUNUzbBd4XBD4aXEEdl7jhMSaAhSdlMVYgmJwp/ZNet4eMBMo
+ L79Z0CLErNJa3kvNHfGhGC3oz4hEpEmCds10H1Do6D9qdb8BbqjQ6Pkratr/7qkgcVjq
+ wwC18XP+JTshbe+IJ+s50L6OkEhYYfmCRmuuHr8xDwO29EBE63Pz8NJu5fXE0qeKEDBB
+ 0kWF71DboyeNkD3LzYgI7h9XQANurr5923v/X0d54s2RH89eLtBlJAX8hBjRP3Uhvua3
+ apGpkUHDLrXabB/FmXXcQa5bXs9/eLnedtb3iCbDJ8ZGYIzKQliO8QJhQUG8WSrIcDTx
+ 6jTw==
+X-Gm-Message-State: AOAM530LYh4aGZ9aNasufdaYTlNtMIUfXBzV3YRbGMyOdOfKXovOIUFT
+ GdZr1JScFD66fy5ESZomk/A=
+X-Received: by 2002:a5d:5650:: with SMTP id j16mr14743100wrw.46.1628323768389; 
+ Sat, 07 Aug 2021 01:09:28 -0700 (PDT)
 Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
  [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id t16sm12566865wmi.13.2021.08.07.01.03.26
+ by smtp.gmail.com with ESMTPSA id f17sm14346925wrt.18.2021.08.07.01.09.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 07 Aug 2021 01:03:27 -0700 (PDT)
-Subject: Re: [PATCH for-6.2 04/12] [automated] Add struct names to typedefs
- used by QOM types
+ Sat, 07 Aug 2021 01:09:27 -0700 (PDT)
+Subject: Re: [PATCH for-6.2 12/12] [automated] Use OBJECT_DECLARE_SIMPLE_TYPE
+ when possible
 To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
 References: <20210806211127.646908-1-ehabkost@redhat.com>
- <20210806211127.646908-5-ehabkost@redhat.com>
+ <20210806211127.646908-13-ehabkost@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <47a5d368-811c-a2ce-3729-e6592d011d8a@amsat.org>
-Date: Sat, 7 Aug 2021 10:03:25 +0200
+Message-ID: <b35db3c5-614c-325c-4632-50eb902bf343@amsat.org>
+Date: Sat, 7 Aug 2021 10:09:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210806211127.646908-5-ehabkost@redhat.com>
+In-Reply-To: <20210806211127.646908-13-ehabkost@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -40
 X-Spam_score: -4.1
 X-Spam_bar: ----
@@ -119,50 +119,149 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-riscv@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, Vijai Kumar K <vijai@behindbytes.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Klaus Jensen <its@irrelevant.dk>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Paul Burton <paulburton@kernel.org>, Tyrone Ting <kfting@nuvoton.com>,
+ David Hildenbrand <david@redhat.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Keith Busch <kbusch@kernel.org>, "Daniel P. Berrange" <berrange@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ qemu-block@nongnu.org, Francisco Iglesias <francisco.iglesias@xilinx.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Vijai Kumar K <vijai@behindbytes.com>,
- "Daniel P. Berrange" <berrange@redhat.com>
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Thomas Huth <huth@tuxfamily.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ePoW1ogB5ax8
+X-TUID: N3e7aopddXxp
 
 On 8/6/21 11:11 PM, Eduardo Habkost wrote:
-> Anonymous structs on QOM typedefs make the code harder to convert
-> to OBJECT_DEFINE* macros, as the macros expect the struct name to
-> exist.
-> 
-> Use a codeconverter rule to automatically add names to the
-> structs used in QOM typedefs.
+> Replace typedef + DECLARE_INSTANCE_CHECKER with
+> equivalent OBJECT_DECLARE_SIMPLE_TYPE macro.
 > 
 > Generated using:
 > 
->  $ ./scripts/codeconverter/converter.py -i \
->    --pattern=AddNamesToTypedefs $(git grep -l '' -- '*.[ch]')
+> $ ./scripts/codeconverter/converter.py -i \
+>   --pattern=AddObjectDeclareSimpleType $(git grep -l '' -- '*.[ch]')
 > 
 > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 > ---
-> Cc: "Marc-André Lureau" <marcandre.lureau@redhat.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
 > Cc: Thomas Huth <huth@tuxfamily.org>
+> Cc: Paul Burton <paulburton@kernel.org>
+> Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+> Cc: "Philippe Mathieu-Daudé" <f4bug@amsat.org>
+> Cc: Aurelien Jarno <aurelien@aurel32.net>
+> Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
 > Cc: Havard Skinnemoen <hskinnemoen@google.com>
 > Cc: Tyrone Ting <kfting@nuvoton.com>
+> Cc: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+> Cc: Vikram Garhwal <fnu.vikram@xilinx.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: Klaus Jensen <its@irrelevant.dk>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: Halil Pasic <pasic@linux.ibm.com>
+> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
 > Cc: Vijai Kumar K <vijai@behindbytes.com>
+> Cc: Alistair Francis <Alistair.Francis@wdc.com>
+> Cc: Bin Meng <bin.meng@windriver.com>
+> Cc: Palmer Dabbelt <palmer@dabbelt.com>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Cc: "Cédric Le Goater" <clg@kaod.org>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> Cc: Francisco Iglesias <francisco.iglesias@xilinx.com>
+> Cc: David Gibson <david@gibson.dropbear.id.au>
+> Cc: Greg Kurz <groug@kaod.org>
 > Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 > Cc: qemu-devel@nongnu.org
 > Cc: qemu-arm@nongnu.org
+> Cc: qemu-block@nongnu.org
+> Cc: qemu-s390x@nongnu.org
 > Cc: qemu-riscv@nongnu.org
+> Cc: qemu-ppc@nongnu.org
 > ---
->  include/hw/adc/npcm7xx_adc.h            | 2 +-
->  include/hw/char/shakti_uart.h           | 2 +-
->  include/hw/tricore/tricore_testdevice.h | 2 +-
->  chardev/char-parallel.c                 | 4 ++--
->  hw/m68k/mcf5206.c                       | 2 +-
->  hw/misc/sbsa_ec.c                       | 2 +-
->  6 files changed, 7 insertions(+), 7 deletions(-)
+>  hw/nvme/nvme.h                              | 10 +++-------
+>  hw/usb/hcd-xhci-pci.h                       |  4 +---
+>  hw/usb/hcd-xhci-sysbus.h                    |  4 +---
+>  include/hw/adc/npcm7xx_adc.h                |  4 +---
+>  include/hw/char/shakti_uart.h               |  4 +---
+>  include/hw/dma/sifive_pdma.h                |  4 +---
+>  include/hw/dma/xlnx_csu_dma.h               |  4 +---
+>  include/hw/gpio/sifive_gpio.h               |  4 +---
+>  include/hw/intc/m68k_irqc.h                 |  4 +---
+>  include/hw/intc/sifive_clint.h              |  4 +---
+>  include/hw/intc/sifive_plic.h               |  4 +---
+>  include/hw/misc/aspeed_lpc.h                |  4 +---
+>  include/hw/misc/bcm2835_cprman_internals.h  | 12 ++++--------
+>  include/hw/misc/led.h                       |  3 +--
+>  include/hw/misc/mchp_pfsoc_dmc.h            |  8 ++------
+>  include/hw/misc/mchp_pfsoc_ioscb.h          |  4 +---
+>  include/hw/misc/mchp_pfsoc_sysreg.h         |  4 +---
+>  include/hw/misc/npcm7xx_clk.h               |  3 +--
+>  include/hw/misc/npcm7xx_gcr.h               |  4 +---
+>  include/hw/misc/npcm7xx_mft.h               |  4 +---
+>  include/hw/misc/npcm7xx_pwm.h               |  3 +--
+>  include/hw/misc/sifive_e_prci.h             |  4 +---
+>  include/hw/misc/sifive_test.h               |  4 +---
+>  include/hw/misc/sifive_u_otp.h              |  4 +---
+>  include/hw/misc/sifive_u_prci.h             |  4 +---
+>  include/hw/misc/xlnx-versal-xramc.h         |  4 +---
+>  include/hw/net/npcm7xx_emc.h                |  4 +---
+>  include/hw/net/xlnx-zynqmp-can.h            |  4 +---
+>  include/hw/ppc/spapr_drc.h                  |  4 +---
+>  include/hw/register.h                       |  3 +--
+>  include/hw/riscv/microchip_pfsoc.h          |  4 +---
+>  include/hw/riscv/shakti_c.h                 |  8 ++------
+>  include/hw/riscv/sifive_e.h                 |  4 +---
+>  include/hw/riscv/sifive_u.h                 |  4 +---
+>  include/hw/sd/cadence_sdhci.h               |  4 +---
+>  include/hw/ssi/sifive_spi.h                 |  4 +---
+>  include/hw/timer/npcm7xx_timer.h            |  3 +--
+>  include/hw/tricore/tricore_testdevice.h     |  4 +---
+>  include/hw/usb/hcd-dwc3.h                   |  4 +---
+>  include/hw/usb/xlnx-versal-usb2-ctrl-regs.h |  4 +---
+>  hw/m68k/mcf5206.c                           |  4 +---
+>  hw/mips/boston.c                            |  4 +---
+>  hw/misc/npcm7xx_clk.c                       |  9 +++------
+>  hw/net/can/ctucan_pci.c                     |  4 +---
+>  hw/s390x/vhost-user-fs-ccw.c                |  4 +---
+>  hw/sensor/adm1272.c                         |  4 +---
+>  hw/sensor/max34451.c                        |  4 +---
+>  47 files changed, 56 insertions(+), 154 deletions(-)
+
+> diff --git a/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h b/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
+> index 701302ad044..2576193e673 100644
+> --- a/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
+> +++ b/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
+> @@ -29,9 +29,7 @@
+>  
+>  #define TYPE_XILINX_VERSAL_USB2_CTRL_REGS "xlnx.versal-usb2-ctrl-regs"
+>  
+> -typedef struct VersalUsb2CtrlRegs VersalUsb2CtrlRegs;
+> -DECLARE_INSTANCE_CHECKER(VersalUsb2CtrlRegs, XILINX_VERSAL_USB2_CTRL_REGS,
+> -                         TYPE_XILINX_VERSAL_USB2_CTRL_REGS)
+> +OBJECT_DECLARE_SIMPLE_TYPE(VersalUsb2CtrlRegs, XILINX_VERSAL_USB2_CTRL_REGS)
+
+Unrelated to this patch, we should remove the _regs suffix from
+this model.
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

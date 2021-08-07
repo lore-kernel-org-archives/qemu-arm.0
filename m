@@ -1,108 +1,110 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp808306lff;
-        Fri, 6 Aug 2021 18:55:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCUnEfk1gZsI1uFe/DMk70YmZthlvvq/ne5/ZWkRoSlSONByIYLRzsvJV1b52sn5liSVeJ
-X-Received: by 2002:ae9:f504:: with SMTP id o4mr13296125qkg.17.1628301332455;
-        Fri, 06 Aug 2021 18:55:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628301332; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp982699lff;
+        Sat, 7 Aug 2021 00:59:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyLB6X+p6NCTeX9H5cZo28uaVSupjK0dRDRJ5k9RHQ7f6ucMg4/xrZt1dgC3BgCwYn73Y/u
+X-Received: by 2002:a5d:9d93:: with SMTP id ay19mr573572iob.114.1628323195399;
+        Sat, 07 Aug 2021 00:59:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628323195; cv=none;
         d=google.com; s=arc-20160816;
-        b=QqPN3Wk2blXbF1L+6GM3theMuT3NXAWi07WHoJ4HFoSSgwSG0cvZZstYRb1NtAOgXI
-         Ki8i5JhTVxAXZQXoFeFjeA6iyX739QC5bzGmgkT3/sbuvQwDMKdDPL8FjdESv4jgd2OI
-         FwbDRSVKTllWGphJggirexQ55yr4vZZj11Dw+gaowKwXWtpg2Ds8UlMPbPRcONWldpmW
-         63Q4CPI1guI1w+I0J7XYdwCuLuOlXcJb1mT57QWGzUEoG0lFb5Q61z/AzO4qfzryiQof
-         NCcwUCdKRb9F6XtO0j3EJ2tDffatM1a7csTwVfaGfVORx/sqx1HCNrLoiymNL+Z6Vo6m
-         wl3A==
+        b=pNXGd7CcwS17Z70ocaQm9eTklAtc9OW+7yP5yI4DXU/FLSDXA4GFzfqciqf5wcDjAA
+         eLhxzwt/S6OmcGTIrKNwB8qBCPBG7DXG4UsIlF2tKxwLLeHPFJhpLSr1RrhtsJLZx+JR
+         OEcLPQTXgzScQ9/ywft64eRWqCJSrXAoTF8IHh5+Qp/5N1DMraMoXml9Nu/KVMYdQSoe
+         thziQ3mCKCbcKTYSru9jB9O0162dmO/T4K+F5y3EtIy95rwsckDFSSlNLcUOFt75ccNm
+         pHnect27ECOkV2LUftDFQ9C+DlxsUk+vkUiHGVhM9Da2zRQCGCdc0PMl3hOQLHWWM0tt
+         bZOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=4cXqB+FTxI5aRyhujQz2ebQvHuahgfa7ioOP30DeqwU=;
-        b=NY82IW+Ht/cMCSbdhuNcc+VFGJYmspIMEFHF+ES5kJVNWs4PyVohPzkeGHvSvp7tHB
-         yadx1s1AQLTaEMjQPfQHY0AQH9AIQy5S390IGJWVXsOVXPQimGx7FTHFQDJFrwYy5+23
-         mbZBSV6oqYAeoSHBB91fmljpVrXv0+0pOYTSXiEbc3hSm5PBhIfEbFSFV855ywCW4tDz
-         /1yRgTSPNnkdEwftw4uY0lWc6ARqK9jRHDMdjGcjTx2x1cMv78dld2gJu9UswQ/hU2GI
-         H4VrE+UOcKM8SwWXAlL7uZDxFdSrQ1r7lTRXAOEWkQm6lXs2wfd/w+zqNYLpd1g2zVbE
-         jSQQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=QLiv8i5t0PRA2lFWUtHsI2WYPqf9Azi2kSZ1aVvvnDc=;
+        b=JkKz34Ok+qQiV4BGYN8TcBwBhnmaVfSDRhIXgajxZ2ywkwXcGF7N8NE5v5VmWQLeFD
+         Yb/xJ52kogJRmo7t3tnZ5dw9Zq7+tXCXQBEfo6b0jWi0QDRxjyeabuwxEmHvh4hzWjiF
+         L/qZ2LvhbV75RNmsY3G/hinwfrZfYzNVRFl5NE8IRa+7C2GB/eqkvpLdJeyeux7VStak
+         n5F7bdahpyRSdT/76j+N9n6jH208FdhsET2NvfHa3nVusnZ8x2oMTZhZhj46Gt4gUFBL
+         Xqk2yCzCCtjdIJFyauVpJ4kOvIk1WT/GhIaqqv3Ahqkq2cSK16Gxj0I603E0nQX0bVFx
+         hDxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=WcyU2x+K;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LtUOeM9K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8si8308012qtm.374.2021.08.06.18.55.32
+        by mx.google.com with ESMTPS id z4si11541116ilo.41.2021.08.07.00.59.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Aug 2021 18:55:32 -0700 (PDT)
+        Sat, 07 Aug 2021 00:59:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=WcyU2x+K;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LtUOeM9K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59746 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mCBYh-0000fd-LA
-	for alex.bennee@linaro.org; Fri, 06 Aug 2021 21:55:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46482)
+	id 1mCHFK-0004SS-O2
+	for alex.bennee@linaro.org; Sat, 07 Aug 2021 03:59:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1mCBYR-0000fA-I0
- for qemu-arm@nongnu.org; Fri, 06 Aug 2021 21:55:15 -0400
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:42825)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mCHF9-0004SG-Q0; Sat, 07 Aug 2021 03:59:43 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:34627)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1mCBYN-00065R-Qf
- for qemu-arm@nongnu.org; Fri, 06 Aug 2021 21:55:14 -0400
-Received: by mail-ot1-x335.google.com with SMTP id
- d10-20020a9d4f0a0000b02904f51c5004e3so6652352otl.9
- for <qemu-arm@nongnu.org>; Fri, 06 Aug 2021 18:55:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mvista-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
- :content-disposition:in-reply-to;
- bh=4cXqB+FTxI5aRyhujQz2ebQvHuahgfa7ioOP30DeqwU=;
- b=WcyU2x+Ku4mDuuHInrWlXMpkp9mYBxHIgqPZSRe+sQhG4xpFuGt2hgiqoFtkER70fO
- fzJ3eEoDjnq33rQH8jL+dhyBMYWC9wq7aPcpYZdb8P/yL063exTvlfzi0aNGnVIV0ccW
- 6jPmZiC8dm19wxEDr7pjO6dZ16j8T/yE+pc7ACuVPCShBYm78or+zHQZfMgXhckZfkLK
- uxCYnd9X/Hu8nJqH3HQea+VhpBOJd2ev9ptJkv/HFucabaIXu0T8X05nKhv/MJHRF9M6
- LIapqeMyHK8VWpVyUs+7VYQVjbN6BnWkBO5zFcxXXTuJ0eMZXKLseZl/fGByW77LNUPZ
- GrPg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mCHF8-0001yo-Be; Sat, 07 Aug 2021 03:59:43 -0400
+Received: by mail-wr1-x431.google.com with SMTP id h13so14075341wrp.1;
+ Sat, 07 Aug 2021 00:59:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=QLiv8i5t0PRA2lFWUtHsI2WYPqf9Azi2kSZ1aVvvnDc=;
+ b=LtUOeM9K5Ul/gv3Z/Ao7rn1HRcRuxpbefjaBNk2JGTYQzDdK0/zU5fVLPDMdFnnm2r
+ BTGOZpf3ds3XziH2m/PsHB71p5YLQ6fkpDTS6uWt4U2kLsIDP7elk1lgpBt05uYV7LHK
+ bYLdbBkJAV49E4W6IqjKQz183DUThMuuVgWKV/uwRL5dMEJzTEbLW9IiLqVIdE4jeL4X
+ rbVglor/CHAd0QJ+KbMRNhcJmNA8/mwZ40dgsbfWPHPdmB2gR9lz0mrGqF9RwJf4Smy5
+ ZECTgtbBhv1Ka8r8v7v6PxLal7i5gFqUHE6APEHlSmv9q11U+1gZYYuqBbzmWkHAax3f
+ rsvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
- :references:mime-version:content-disposition:in-reply-to;
- bh=4cXqB+FTxI5aRyhujQz2ebQvHuahgfa7ioOP30DeqwU=;
- b=m/ZsExAS9CmbNUqmjpWGA2+EDwuR+JHlLBFRmAXHWEXnZg5+ENAgCWMX+Kc+oC4ZZ3
- Hmj1baY1+NwLLuU+UIV+XgNAP4v1r+87msj2lFuhA/rIoSB3w4D6WNOPf4K/VTDnqASN
- xhd/j2Jnsvc+ZBpQtXZilohw2zXxHK3ELEusk0vckjAI5f4l4vV+cG6eD4gMAt/qifyr
- pjvoDYLe0fsOyNmTv96GXW61s6eFx9c66q6DRuqbi+l0IlseWDcefzp+ZuF4+IVM59wJ
- MWhDYf51nm+hA1R/ZNFQpx+T1vXQmT34fidgMCbK/vrVORpofPLd628DS0ZJO73lYX35
- 86Eg==
-X-Gm-Message-State: AOAM533pMznJYHY1ATjyJVcQD27TQuQqFk8h/Kk2CMIETTJxLC4dSPp/
- kElsw9prWjAilENWYJVi6IHl5A==
-X-Received: by 2002:a05:6830:1dd0:: with SMTP id
- a16mr9271770otj.22.1628301309614; 
- Fri, 06 Aug 2021 18:55:09 -0700 (PDT)
-Received: from minyard.net ([2001:470:b8f6:1b:54cf:2a6b:50cd:9862])
- by smtp.gmail.com with ESMTPSA id s7sm360548ooj.45.2021.08.06.18.55.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Aug 2021 18:55:09 -0700 (PDT)
-Date: Fri, 6 Aug 2021 20:55:07 -0500
-From: Corey Minyard <cminyard@mvista.com>
-To: Shengtan Mao <stmao@google.com>
-Subject: Re: [PATCH v4 0/2] Add remote I2C device to support external I2C
- device
-Message-ID: <20210807015507.GE3431@minyard.net>
-References: <20210806234918.122457-1-stmao@google.com>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=QLiv8i5t0PRA2lFWUtHsI2WYPqf9Azi2kSZ1aVvvnDc=;
+ b=Q5W5Z1elqylrxYxdgLp6UvFsfTkZqVdTYQGLtw1CFnwoiClzJwWq1lPRA1Ld2UuaY5
+ x2HJccP9SQr4ziBRn1fGB2E/tZvOuKA9ppmSwKAkPJRRZ3YR8oy8TyMAndDb9pQ3VmcK
+ yUpxFVq/YooAdmdLhAsEzIfJwMLh41tTJGNNyc/7DnItEaNZPKAh3/7yZf3WSV9jeffs
+ 4NicBdaCWiptYYzYEWfsbRD0omh+6NMKVJ/CtLFOIplys75SpHOP3mICxYdMBD50AIcK
+ NPzjuISXb1ntUGGnjfwIm+gosNqM0hpj0Z8WiOqgHImay9BzpVSGC+LXfYuT1k1IcDcy
+ G35w==
+X-Gm-Message-State: AOAM531sU4FEf1japM0876PrNUKKbDApfqkFL3IWQ+kXB8KuT43yKm83
+ bMuCQZXWrWpRS0XLu6Mh63E=
+X-Received: by 2002:adf:d085:: with SMTP id y5mr14532341wrh.272.1628323180460; 
+ Sat, 07 Aug 2021 00:59:40 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id t17sm11833980wru.94.2021.08.07.00.59.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 07 Aug 2021 00:59:39 -0700 (PDT)
+Subject: Re: [PATCH for-6.2 08/12] npcm7xx_clk: Use DECLARE_INSTANCE_CHECKER
+To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
+References: <20210806211127.646908-1-ehabkost@redhat.com>
+ <20210806211127.646908-9-ehabkost@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6e3a1c96-b85b-17e5-965f-e29405641809@amsat.org>
+Date: Sat, 7 Aug 2021 09:59:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210806234918.122457-1-stmao@google.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
- envelope-from=cminyard@mvista.com; helo=mail-ot1-x335.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210806211127.646908-9-ehabkost@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.619,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,86 +118,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: cminyard@mvista.com
-Cc: venture@google.com, qemu-devel@nongnu.org, wuhaotsh@google.com,
- qemu-arm@nongnu.org, maoshengtan2011@gmail.com, crauer@google.com
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +gzyndfK4LXm
+X-TUID: A0ntxHOmlapy
 
-On Fri, Aug 06, 2021 at 11:49:16PM +0000, Shengtan Mao wrote:
-> This patch implements the remote I2C device.  The remote I2C device allows an
-> external I2C device to communicate with the I2C controller in QEMU through the
-> remote I2C protocol.  Users no longer have to directly modify QEMU to add new
-> I2C devices and can instead implement the emulated device externally and
-> connect it to the remote I2C device.
-
-I got to spend some time on this today, and I like the concept, but
-there is one major issue.  When you do a read, you are blocking the
-entire qemu I/O system until the read returns, which may result in
-issues.  At least that's may understanding of how the qemu I/O system
-works, which may be dated or wrong.
-
-If you look at the IPMI code, it as an external BMC that can handle
-async I/O from the chardev.  But the IPMI subsystem is designed to
-handle this sort of thing.
-
-Unfortunately, the I2C code really isn't set up to handle async
-operations.  I'm not sure how hard it would be to modify the I2C core to
-handle this, but it doesn't look trivial.  Well, the changes to the core
-wouldn't be terrible, but all the host devices are set up for
-synchronous operation.  You could add a separate asynchronous interface,
-and only host devices that were modified could use it, and your device
-would only work on those host devices.
-
-Another issue is that you aren't handling errors from the chr read/write
-calls.  If the remote connection dies, this isn't going to be good.  You
-have to do error handling.
-
-There is also no way for the remote end to return a NACK.  That's pretty
-important, I think.  It will, unfortunately, complicate your nice simple
-protocol.
-
-Sorry to be the bearer of bad news.  Maybe I'm wrong about the blocking
-thing, I'd be happy to be wrong.
-
--corey
-
+On 8/6/21 11:11 PM, Eduardo Habkost wrote:
+> Use DECLARE_INSTANCE_CHECKER instead of defining the
+> NPCM7XX_CLOCK_PLL, NPCM7XX_CLOCK_SEL, and NPCM7XX_CLOCK_DIVIDER
+> macros manually.
 > 
-> Previous work by Wolfram Sang
-> (https://git.kernel.org/pub/scm/virt/qemu/wsa/qemu.git/commit/?h=i2c-passthrough)
-> was referenced.  It shares the similar idea of redirecting the actual I2C device
-> functionalities, but Sang focuses on physical devices, and we focus on emulated devices.
-> The work by Sang mainly utilizes file descriptors while ours utilizes character
-> devices, which offers better support for emulated devices. The work by Sang is
-> not meant to offer full I2C device support; it only implements the receive
-> functionality.  Our work implements full support for I2C devices: send, recv,
-> and event (match_and_add is not applicable for external devices).
+> These changes had to be done manually because the codeconverter
+> script isn't smart enough to figure out that the typedefs exist
+> in a separate header.
 > 
-> v1 -> v2
->     fixed terminology errors in the description comments.
-> v2 -> v3
->     corrected patch set emailing errors.
-> v3 -> v4
->     added remote I2C protocol description in docs/specs
-> 
-> Shengtan Mao (2):
->   hw/i2c: add remote I2C device
->   docs/specs: add remote i2c docs
-> 
->  docs/specs/index.rst          |   1 +
->  docs/specs/remote-i2c.rst     |  51 ++++++++
->  hw/arm/Kconfig                |   1 +
->  hw/i2c/Kconfig                |   4 +
->  hw/i2c/meson.build            |   1 +
->  hw/i2c/remote-i2c.c           | 117 ++++++++++++++++++
->  tests/qtest/meson.build       |   1 +
->  tests/qtest/remote-i2c-test.c | 216 ++++++++++++++++++++++++++++++++++
->  8 files changed, 392 insertions(+)
->  create mode 100644 docs/specs/remote-i2c.rst
->  create mode 100644 hw/i2c/remote-i2c.c
->  create mode 100644 tests/qtest/remote-i2c-test.c
-> 
-> -- 
-> 2.32.0.605.g8dce9f2422-goog
-> 
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> ---
+> Cc: Havard Skinnemoen <hskinnemoen@google.com>
+> Cc: Tyrone Ting <kfting@nuvoton.com>
+> Cc: qemu-arm@nongnu.org
+> Cc: qemu-devel@nongnu.org
+> ---
+>  hw/misc/npcm7xx_clk.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

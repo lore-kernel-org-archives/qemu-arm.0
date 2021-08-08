@@ -1,89 +1,104 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp58765lff;
-        Fri, 6 Aug 2021 00:46:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4DnyktNx0spqxxhUlS+yGGv8FHCUvRUi3UXKfSH8nQz0WLm8ckjU/NzzKu2vCOLwNsS5O
-X-Received: by 2002:a92:de09:: with SMTP id x9mr905093ilm.284.1628236017571;
-        Fri, 06 Aug 2021 00:46:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628236017; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2114774lff;
+        Sun, 8 Aug 2021 13:05:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjeayu3j+cSxXnvf2MjIL43wO+3mlQRU1SHdNU//zqa9xViE3Uo+vPCTseOVzYzl/8gmKr
+X-Received: by 2002:a1f:600c:: with SMTP id u12mr12688897vkb.4.1628453113897;
+        Sun, 08 Aug 2021 13:05:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628453113; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xmmttg3W0ksfRnku+7Fhi4N6BwbJ8bUHtQ1CHMjit350sGnNdOpuJG5WJ9HJezuvdo
-         Oms5B1IqrYADHuvH4E1ljReIBhzFTOkTvcLlUG5gHWLz99g1Qbu4vQz1IA8MkShkyJx1
-         tMbSIVyELfhoIEoyuSbpsMeRiqAqJ8nK39BtEgbLwL8dJY7S2SGh1zlUM304P8it2kd9
-         RikvqZtBVyLlESY1OAGRkC0OUZZLBByeBk/TT+10TdaapXuTFFCNPdAoeX9SAPf4HhNa
-         LYUz+ttMLWxJBLea+p/QNlqOK9PHHwlwX9tUaaHqCqGIda2MLFevr6kGpD93SocV7HDI
-         Os9Q==
+        b=LlJKDaV94tShAKqVUlEaU8tssKK+qw6IJkmeSShi7/DbpdaxTGx/bAZcFxJU927rIm
+         +lEavGIQl83TE6Yu4aqThImJlpnl7WqMdg1T3LGuCyuKkuIgnQP4ZVByWM6Km/eLZp9i
+         /l5ijIAuOq0p7Qxp6HTgimzsYWBKasyZlgz00QgZMVktbznYVLNjxXs7J4NzjTK7zneG
+         2BK/I59XnNjWlWq0vpPZ6bDKKXStznMasJ852bdAl6Ll/Y/Mh9FP0H81zt1Nkyfk+PBF
+         KD9mOS2xMZF0u/WyRjE8IhqpoNIQIS8232U1BmYQxFOuHc1Gi50+dFgWsqZPy1fdq0kb
+         LtVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=IZqViuUCaSPBNrD6lMH9dp3l9aa4753HBfneBwaBFwk=;
-        b=PMFxDAMJs872ifZM8SciHC53Xgfu8Ira+JtzL3ViP9fy71CSxHLfoy+tJfOcaIhuzT
-         66hQ3KKTl7OAZIfS/PHlXrY0r2iObEA1ufk8CIruRA4MkukB0zNEPRN9ribezBfk6vso
-         awSnjo1u9Qlmbh5+bpPDbrWy1HmKbxbIwWxgNVEN05yqzctLGeLXAPzHc1r5NlnIvfT9
-         0TF/xHC1XHFpybI1AOM57PIjyz6dxXeH0KlkrX4TegnOtr8R+2yEhca+JWgy8fesJk2h
-         QR5XTwveYL5/w7lEvmme+DFBvtweCoSxV44lum8BIAp01S503dC8Qx2E+nlPXrrz0K2V
-         CcBw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ad0oRzqd+slEAoRGho7cketIboNmyDYqM7sd3qFWXr8=;
+        b=fo+WmqCNnUX2WzAkyLwRRzcpGyhGpHFPzXfJx9vxHg9A2aQYYdUnnn0rES+rHbn3Uf
+         uwGmYFhwxoXdAVGIKg0HCakp8N2JNQUq+ZZPp0SBVQCLVIP2u821v+si8+WeHEsgT5TN
+         uNXmSnV/0HbakLfILnvLNStvHeIAJYIBND7Uec9lO9VB1FjDw7WpLGhJI2eaf2X5OXmn
+         qt5vwSqI/qOVbrXJmJdoJ2KcjOp7qVCkxLHKHxnPSJR0xXEOW637XNS18vtFvPCuc1im
+         Y1R4ZwxqRpwShqCUNtKejSAs1tlkmZTn8rb8CWLzYA2j0hgda2XNArMWGUrEUNq0RZ5g
+         Fjzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hisilicon.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="u9ba3r/A";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x11si6456343ion.51.2021.08.06.00.46.57
+        by mx.google.com with ESMTPS id e27si2197576vkd.93.2021.08.08.13.05.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Aug 2021 00:46:57 -0700 (PDT)
+        Sun, 08 Aug 2021 13:05:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hisilicon.com
-Received: from localhost ([::1]:57080 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="u9ba3r/A";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56122 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mBuZE-000603-SP
-	for alex.bennee@linaro.org; Fri, 06 Aug 2021 03:46:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50928)
+	id 1mCp2n-0002ax-73
+	for alex.bennee@linaro.org; Sun, 08 Aug 2021 16:05:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chenxiang66@hisilicon.com>)
- id 1mBuZ4-0005zT-TW; Fri, 06 Aug 2021 03:46:46 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2273)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chenxiang66@hisilicon.com>)
- id 1mBuZ1-0003C3-86; Fri, 06 Aug 2021 03:46:46 -0400
-Received: from dggeme756-chm.china.huawei.com (unknown [172.30.72.55])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4GgyGP3YVzz1CSnn;
- Fri,  6 Aug 2021 15:46:21 +0800 (CST)
-Received: from [127.0.0.1] (10.40.193.166) by dggeme756-chm.china.huawei.com
- (10.3.19.102) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Fri, 6 Aug
- 2021 15:46:29 +0800
-Subject: Re: [RESEND RFC] hw/arm/smmuv3: add device properties to disable
- cached iotlb
-To: <eric.auger@redhat.com>
-References: <1628066969-29945-1-git-send-email-chenxiang66@hisilicon.com>
- <5fc0cd6c-1e1d-3cb3-51e5-f20c10736643@redhat.com>
- <c3224918-bf19-4dab-3779-afb616902c39@hisilicon.com>
- <5c64c2b3-b8c3-f50f-0842-cce58e7a7591@redhat.com>
-From: "chenxiang (M)" <chenxiang66@hisilicon.com>
-Message-ID: <a8e9205d-c6be-9a93-b2df-45e087f7e54e@hisilicon.com>
-Date: Fri, 6 Aug 2021 15:46:28 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.2.0
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mCp2d-0002ZT-3R; Sun, 08 Aug 2021 16:05:03 -0400
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:45897)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mCp2b-0001cC-CJ; Sun, 08 Aug 2021 16:05:02 -0400
+Received: by mail-oi1-x231.google.com with SMTP id o20so20549568oiw.12;
+ Sun, 08 Aug 2021 13:05:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ad0oRzqd+slEAoRGho7cketIboNmyDYqM7sd3qFWXr8=;
+ b=u9ba3r/ACi9WjSDDB1YD0xUfuHQqBc9GLBeDVphVAqDNXdS8ySYR/r0LloMGKwJ7wZ
+ Dox8UzCTB3pAZHLWt5ni/vWZWKxBMD9z7AzuTmgZZoW2Re802IOq0JFKS0IxsDPuypRn
+ HntQtE/J9SljWI/gjTVZG2Pm4fzUpT8aB7kjOgJ58UekOvoKNJVtLqNX2PY7wwG7yPbF
+ ZFxYPSs1vqARW3qC654pYm4oaVihtr9saEH5Rcsc80jUfu8E4biYFBQ+v6mJ7VjhL+Dq
+ 2udihhC12BIHDRe1iHqvsgsFYzL9pgolXaGxHME5syp1a5V+/gPIkr7XYPqlXrkkwWat
+ 81QQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=ad0oRzqd+slEAoRGho7cketIboNmyDYqM7sd3qFWXr8=;
+ b=ah/iBvhnjN6p2xP2UfGLGtQtHIKSvimUnIKGAnSAwD1/kc0arjFo4ZJv9lSdf2RraX
+ TUJAFHRvFE3EkWYRFjh5IZE1O1fM9K3DY52sjvRi0yMwmDNaFlXWmNU251R9ox0UTTGh
+ mGhjcaZeVPRfS4DNvBpaanjOVl5BosiNPbDcoeGJS/NxNgglynJSQ2r89jZl4SNBczL8
+ gxbvIdeAF3FhMs20ECvnOYl4LbZO0dGyR6Ue1oUSa6/Q8J+j16/UjOHmMUTupc+67MYW
+ OEWVMFTAEXqLBndKpTpOoCQUCAgYnjhJL2fZMadaGuiAwYJaW6V0+HyMK51lhrc45KfO
+ 1CBw==
+X-Gm-Message-State: AOAM530KCkvnhihkxr/pmgVuxm32VrgmRRXLsohPVXu7MNVTL32mtGMt
+ qSIdo+ApZAS/Tzip4+F6Y7w=
+X-Received: by 2002:a05:6808:1494:: with SMTP id
+ e20mr20586202oiw.122.1628453099933; 
+ Sun, 08 Aug 2021 13:04:59 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ p2sm2880300oip.35.2021.08.08.13.04.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 08 Aug 2021 13:04:59 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH] hw: arm: aspeed: Enable eth0 interface for aspeed-ast2600-evb
+Date: Sun,  8 Aug 2021 13:04:57 -0700
+Message-Id: <20210808200457.889955-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <5c64c2b3-b8c3-f50f-0842-cce58e7a7591@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.40.193.166]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggeme756-chm.china.huawei.com (10.3.19.102)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=chenxiang66@hisilicon.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.132,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
+ envelope-from=groeck7@gmail.com; helo=mail-oi1-x231.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,361 +111,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, linuxarm@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X7//83nmuKWD
+X-TUID: KwWMQUd52Fvz
 
-Hi Eric,
+Commit 7582591ae7 ("aspeed: Support AST2600A1 silicon revision") switched
+the silicon revision for AST2600 to revision A1. On revision A1, the first
+Ethernet interface is operational. Enable it.
 
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ hw/arm/aspeed.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-在 2021/8/5 16:10, Eric Auger 写道:
-> Hi Chenxiang,
-> On 8/5/21 9:48 AM, chenxiang (M) wrote:
->> Hi Eric,
->>
->>
->> 在 2021/8/5 0:26, Eric Auger 写道:
->>> Hi Chenxiang,
->>>
->>> On 8/4/21 10:49 AM, chenxiang wrote:
->>>> From: Xiang Chen <chenxiang66@hisilicon.com>
->>>>
->>>> It splits invalidations into ^2 range invalidations in the patch
->>>> 6d9cd115b(" hw/arm/smmuv3: Enforce invalidation on a power of two
->>>> range").
->>>> So for some scenarios such as the size of invalidation is not ^2 range
->>>> invalidation, it costs more time to invalidate.
->>> this ^² split is not only necessary for internal TLB management but also
->>> for IOMMU MR notifier calls (which use a mask), ie. IOTLB unmap
->>> notifications used for both vhost and vfio integrations.
->>> So you can disable the internal IOTLB but we can't simply remove the pow
->>> of 2 split. See below.
->> Right, in current code of qemu,  it is not right to simply remove the
->> pow of 2 split.
->> But i find that in my local repo, there is a private patch which seems
->> solve the issue, so it works on my test.
->>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 4a7a183..83d24e1 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -825,7 +825,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->>       event.type = IOMMU_NOTIFIER_UNMAP;
->>       event.entry.target_as = &address_space_memory;
->>       event.entry.iova = iova;
->> -    event.entry.addr_mask = num_pages * (1 << granule) - 1;
->> +    event.entry.addr_mask = (1 << granule) - 1;
->> +       event.entry.num_pages = num_pages;
-> OK I see. But you change the existing semantic of addr_mask which
-> originally matches the mask of the  full addr range of the IOTLB
-> operation and you replace it by the granule mask and add another
-> num_pages field.
->
-> This is a change in the memory.h API and should be discussed with other
-> memory.h and vIOMMU maintainers if you want to go that way. This
-> typically breaks vhost integration which does not use num_pages and
-> would typically fail invalidating the full range.
->
-> So we have 2 different things: the disablement of the internal IOTLB (x-
-> prop) which can be done easily but what you mostly want it to remove the
-> pow of 2 splits to reduce the interactions with the physical IOMMU in
-> the VFIO/SMMU use case , right?
-
-Yes, i mainly want to remove the pow of 2 splits to reduce the times of 
-invalidations which i think
-it will affect the performance.
-
->   pow of 2 splits is also needed for vhost
-> integration at the moment. Note this use case is not upstreamed and far
-> from being upstreamed given the /dev/iommu redesign, so it will be
-> difficult to justify that kind of change at thims moment.
-
-I am not familar with vhost, and maybe need more investigate on it.
-Do you have any suggestion about how to improve the issue?
-
->
-> Thanks
->
-> Eric
->>       event.entry.perm = IOMMU_NONE;
->>       event.entry.flags = IOMMU_INV_FLAGS_ARCHID;
->>       event.entry.arch_id = asid;
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index a863b7d..7b026f0 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -639,7 +639,7 @@ static void vfio_iommu_unmap_notify(IOMMUNotifier
->> *n, IOMMUTLBEntry *iotlb)
->>       {
->>           hwaddr start = iotlb->iova + giommu->iommu_offset;
->>           struct iommu_inv_addr_info *addr_info;
->> -        size_t size = iotlb->addr_mask + 1;
->> +        size_t size = iotlb->num_pages * (iotlb->addr_mask + 1);
->>           int archid = -1;
->>
->>           addr_info = &ustruct.info.granu.addr_info;
->> @@ -653,8 +653,8 @@ static void vfio_iommu_unmap_notify(IOMMUNotifier
->> *n, IOMMUTLBEntry *iotlb)
->>           }
->>           addr_info->archid = archid;
->>           addr_info->addr = start;
->> -        addr_info->granule_size = size;
->> -        addr_info->nb_granules = 1;
->> +        addr_info->granule_size = iotlb->addr_mask + 1;
->> +               addr_info->nb_granules = iotlb->num_pages;
->>           trace_vfio_iommu_addr_inv_iotlb(archid, start, size,
->>                                           1, iotlb->leaf);
->>           break;
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index 0c4389c..268a395 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -110,6 +110,7 @@ struct IOMMUTLBEntry {
->>       hwaddr           iova;
->>       hwaddr           translated_addr;
->>       hwaddr           addr_mask;
->> +       uint64_t         num_pages;
->>       IOMMUAccessFlags perm;
->>       IOMMUInvGranularity granularity;
->>   #define IOMMU_INV_FLAGS_PASID  (1 << 0)
->>
->>
->>> internal TLB could be disabled through a property but I would rather set
->>> it as an "x-" experimental property for debug purpose. Until recently
->>> this was indeed helpful to debug bugs related to internal IOTLB
->>> management (RIL support) ;-) I hope this period is over though ;-)
->> Ok, maybe we set it as "x-" experimental property currently.
->>
->>>> Currently smmuv3_translate is rarely used (i only see it is used when
->>>> binding msi), so i think maybe we can disable cached iotlb to promote
->>>> efficiency of invalidation. So add device property disable_cached_iotlb
->>>> to disable cached iotlb, and then we can send non-^2 range invalidation
->>>> directly.
->>>> Use tool dma_map_benchmark to have a test on the latency of unmap,
->>>> and we can see it promotes much on unmap when the size of invalidation
->>>> is not ^2 range invalidation (such as g = 7/15/31/511):
->>>>
->>>> t = 1(thread = 1)
->>>>              before opt(us)   after opt(us)
->>>> g=1(4K size)    0.2/7.6        0.2/7.5
->>>> g=4(8K size)    0.4/7.9        0.4/7.9
->>>> g=7(28K size)    0.6/10.2        0.6/8.2
->>>> g=8(32K size)    0.6/8.3        0.6/8.3
->>>> g=15(60K size)    1.1/12.1        1.1/9.1
->>>> g=16(64K size)    1.1/9.2        1.1/9.1
->>>> g=31(124K size)    2.0/14.8        2.0/10.7
->>>> g=32(128K size)    2.1/14.8        2.1/10.7
->>>> g=511(2044K size)    30.9/65.1        31.1/55.9
->>>> g=512(2048K size) 0.3/32.1        0.3/32.1
->>>> t = 10(thread = 10)
->>>>              before opt(us)   after opt(us)
->>>> g=1(4K size)    0.2/39.9        0.2/39.1
->>>> g=4(8K size)    0.5/42.6        0.5/42.4
->>>> g=7(28K size)    0.6/66.4        0.6/45.3
->>>> g=8(32K size)    0.7/45.8        0.7/46.1
->>>> g=15(60K size)    1.1/80.5        1.1/49.6
->>>> g=16(64K size)    1.1/49.8        1.1/50.2
->>>> g=31(124K size)    2.0/98.3        2.1/58.0
->>>> g=32(128K size)    2.1/57.7        2.1/58.2
->>>> g=511(2044K size)    35.2/322.2        35.3/236.7
->>>> g=512(2048K size) 0.8/238.2        0.9/240.3
->>>>
->>>> Note: i test it based on VSMMU enabled with the patchset
->>>> ("vSMMUv3/pSMMUv3 2 stage VFIO integration").
->>>>
->>>> Signed-off-by: Xiang Chen <chenxiang66@hisilicon.com>
->>>> ---
->>>>    hw/arm/smmuv3.c         | 77
->>>> ++++++++++++++++++++++++++++++++-----------------
->>>>    include/hw/arm/smmuv3.h |  1 +
->>>>    2 files changed, 52 insertions(+), 26 deletions(-)
->>>>
->>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>>> index 01b60be..7ae668f 100644
->>>> --- a/hw/arm/smmuv3.c
->>>> +++ b/hw/arm/smmuv3.c
->>>> @@ -19,6 +19,7 @@
->>>>    #include "qemu/osdep.h"
->>>>    #include "qemu/bitops.h"
->>>>    #include "hw/irq.h"
->>>> +#include "hw/qdev-properties.h"
->>>>    #include "hw/sysbus.h"
->>>>    #include "migration/vmstate.h"
->>>>    #include "hw/qdev-core.h"
->>>> @@ -682,19 +683,21 @@ static IOMMUTLBEntry
->>>> smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->>>>        page_mask = (1ULL << (tt->granule_sz)) - 1;
->>>>        aligned_addr = addr & ~page_mask;
->>>>    -    cached_entry = smmu_iotlb_lookup(bs, cfg, tt, aligned_addr);
->>>> -    if (cached_entry) {
->>>> -        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
->>>> IOMMU_WO)) {
->>>> -            status = SMMU_TRANS_ERROR;
->>>> -            if (event.record_trans_faults) {
->>>> -                event.type = SMMU_EVT_F_PERMISSION;
->>>> -                event.u.f_permission.addr = addr;
->>>> -                event.u.f_permission.rnw = flag & 0x1;
->>>> +    if (s->disable_cached_iotlb) {
->>>> +        cached_entry = smmu_iotlb_lookup(bs, cfg, tt, aligned_addr);
->>>> +        if (cached_entry) {
->>>> +            if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
->>>> IOMMU_WO)) {
->>>> +                status = SMMU_TRANS_ERROR;
->>>> +                if (event.record_trans_faults) {
->>>> +                    event.type = SMMU_EVT_F_PERMISSION;
->>>> +                    event.u.f_permission.addr = addr;
->>>> +                    event.u.f_permission.rnw = flag & 0x1;
->>>> +                }
->>>> +            } else {
->>>> +                status = SMMU_TRANS_SUCCESS;
->>>>                }
->>>> -        } else {
->>>> -            status = SMMU_TRANS_SUCCESS;
->>>> +            goto epilogue;
->>>>            }
->>>> -        goto epilogue;
->>>>        }
->>>>          cached_entry = g_new0(SMMUTLBEntry, 1);
->>>> @@ -742,7 +745,9 @@ static IOMMUTLBEntry
->>>> smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->>>>            }
->>>>            status = SMMU_TRANS_ERROR;
->>>>        } else {
->>>> -        smmu_iotlb_insert(bs, cfg, cached_entry);
->>>> +        if (s->disable_cached_iotlb) {
->>>> +            smmu_iotlb_insert(bs, cfg, cached_entry);
->>>> +        }
->>>>            status = SMMU_TRANS_SUCCESS;
->>>>        }
->>>>    @@ -855,8 +860,9 @@ static void
->>>> smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova,
->>>>        }
->>>>    }
->>>>    -static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
->>>> +static void smmuv3_s1_range_inval(SMMUv3State *s, Cmd *cmd)
->>>>    {
->>>> +    SMMUState *bs = ARM_SMMU(s);
->>>>        dma_addr_t end, addr = CMD_ADDR(cmd);
->>>>        uint8_t type = CMD_TYPE(cmd);
->>>>        uint16_t vmid = CMD_VMID(cmd);
->>>> @@ -876,7 +882,9 @@ static void smmuv3_s1_range_inval(SMMUState *s,
->>>> Cmd *cmd)
->>>>        if (!tg) {
->>>>            trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, 1, ttl,
->>>> leaf);
->>>>            smmuv3_inv_notifiers_iova(s, asid, addr, tg, 1);
->>>> -        smmu_iotlb_inv_iova(s, asid, addr, tg, 1, ttl);
->>>> +        if (s->disable_cached_iotlb) {
->>>> +            smmu_iotlb_inv_iova(s, asid, addr, tg, 1, ttl);
->>>> +        }
->>>>            return;
->>>>        }
->>>>    @@ -885,17 +893,23 @@ static void smmuv3_s1_range_inval(SMMUState
->>>> *s, Cmd *cmd)
->>>>        num_pages = (num + 1) * BIT_ULL(scale);
->>>>        granule = tg * 2 + 10;
->>>>    -    /* Split invalidations into ^2 range invalidations */
->>>> -    end = addr + (num_pages << granule) - 1;
->>>> -
->>>> -    while (addr != end + 1) {
->>>> -        uint64_t mask = dma_aligned_pow2_mask(addr, end, 64);
->>>> -
->>>> -        num_pages = (mask + 1) >> granule;
->>>> +    if (s->disable_cached_iotlb) {
->>>>            trace_smmuv3_s1_range_inval(vmid, asid, addr, tg,
->>>> num_pages, ttl, leaf);
->>>>            smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
->>>> -        smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
->>> smmuv3_inv_notifiers_iova()
->>> also needs to be called with power of 2 ranges
->>> as it eventually calls memory_region_notify_iommu_one() which sets
->>> event.entry.addr_mask = num_pages * (1 << granule) - 1;
->>>
->>>> -        addr += mask + 1;
->>>> +    } else {
->>>> +        /* Split invalidations into ^2 range invalidations */
->>>> +        end = addr + (num_pages << granule) - 1;
->>>> +
->>>> +        while (addr != end + 1) {
->>>> +            uint64_t mask = dma_aligned_pow2_mask(addr, end, 64);
->>>> +
->>>> +            num_pages = (mask + 1) >> granule;
->>>> +            trace_smmuv3_s1_range_inval(vmid, asid, addr,
->>>> +                                        tg, num_pages, ttl, leaf);
->>>> +            smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
->>>> +            smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
->>>> +            addr += mask + 1;
->>>> +        }
->>>>        }
->>>>    }
->>>>    @@ -1028,18 +1042,22 @@ static int smmuv3_cmdq_consume(SMMUv3State
->>>> *s)
->>>>                  trace_smmuv3_cmdq_tlbi_nh_asid(asid);
->>>>                smmu_inv_notifiers_all(&s->smmu_state);
->>>> -            smmu_iotlb_inv_asid(bs, asid);
->>>> +            if (s->disable_cached_iotlb) {
->>>> +                smmu_iotlb_inv_asid(bs, asid);
->>>> +            }
->>>>                break;
->>>>            }
->>>>            case SMMU_CMD_TLBI_NH_ALL:
->>>>            case SMMU_CMD_TLBI_NSNH_ALL:
->>>>                trace_smmuv3_cmdq_tlbi_nh();
->>>>                smmu_inv_notifiers_all(&s->smmu_state);
->>>> -            smmu_iotlb_inv_all(bs);
->>>> +            if (s->disable_cached_iotlb) {
->>>> +                smmu_iotlb_inv_all(bs);
->>>> +            }
->>>>                break;
->>>>            case SMMU_CMD_TLBI_NH_VAA:
->>>>            case SMMU_CMD_TLBI_NH_VA:
->>>> -            smmuv3_s1_range_inval(bs, &cmd);
->>>> +            smmuv3_s1_range_inval(s, &cmd);
->>>>                break;
->>>>            case SMMU_CMD_TLBI_EL3_ALL:
->>>>            case SMMU_CMD_TLBI_EL3_VA:
->>>> @@ -1506,6 +1524,12 @@ static void smmuv3_instance_init(Object *obj)
->>>>        /* Nothing much to do here as of now */
->>>>    }
->>>>    +static Property smmuv3_properties[] = {
->>>> +    DEFINE_PROP_BOOL("disable_cached_iotlb", SMMUv3State,
->>>> +                     disable_cached_iotlb, true),
->>>> +    DEFINE_PROP_END_OF_LIST(),
->>>> +};
->>>> +
->>>>    static void smmuv3_class_init(ObjectClass *klass, void *data)
->>>>    {
->>>>        DeviceClass *dc = DEVICE_CLASS(klass);
->>>> @@ -1515,6 +1539,7 @@ static void smmuv3_class_init(ObjectClass
->>>> *klass, void *data)
->>>>        device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
->>>>        c->parent_realize = dc->realize;
->>>>        dc->realize = smmu_realize;
->>>> +    device_class_set_props(dc, smmuv3_properties);
->>>>    }
->>>>      static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
->>>> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
->>>> index c641e60..c94ab7e 100644
->>>> --- a/include/hw/arm/smmuv3.h
->>>> +++ b/include/hw/arm/smmuv3.h
->>>> @@ -62,6 +62,7 @@ struct SMMUv3State {
->>>>          qemu_irq     irq[4];
->>>>        QemuMutex mutex;
->>>> +    bool disable_cached_iotlb; /* Whether disable/enable cached
->>>> iotlb */
->>>>    };
->>>>      typedef enum {
->>> Thanks
->>>
->>> Eric
->>>
->>>
->>> .
->>>
->>
->
-> .
->
-
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 9d43e26c51..ecf0c9cfac 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -959,7 +959,8 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
+     amc->fmc_model = "w25q512jv";
+     amc->spi_model = "mx66u51235f";
+     amc->num_cs    = 1;
+-    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
++                     ASPEED_MAC3_ON;
+     amc->i2c_init  = ast2600_evb_i2c_init;
+     mc->default_ram_size = 1 * GiB;
+     mc->default_cpus = mc->min_cpus = mc->max_cpus =
+-- 
+2.25.1
 

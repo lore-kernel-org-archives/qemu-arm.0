@@ -1,104 +1,104 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp465078lff;
-        Mon, 9 Aug 2021 08:48:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwTl8QhtslxCtt8iM1dm0mZRBTO+CvMqSoAMr3DioHhpzezDbI4cugGGH8nptODPvrCMq1d
-X-Received: by 2002:a37:7806:: with SMTP id t6mr15872292qkc.44.1628524131646;
-        Mon, 09 Aug 2021 08:48:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628524131; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp470046lff;
+        Mon, 9 Aug 2021 08:55:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyL8qQsAwlUmpNojllQv0DAxG0e8a0IRORQsONTmp/ygVpPi5Dw8A4yDRkBI7+655zFscEJ
+X-Received: by 2002:ac8:7d4c:: with SMTP id h12mr20754488qtb.257.1628524559336;
+        Mon, 09 Aug 2021 08:55:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628524559; cv=none;
         d=google.com; s=arc-20160816;
-        b=AjaSswZA0tP6kLlqwjcUrXLwJWArp0WkYhB0/qqMrMrEiskhNYWY8y+irlR2AjhHhi
-         Kb4FjoKuQcBPWQlQ2W9OUtVteKkK9C0Gh5YUVxJ2EsHV7qrA9BAy6ggBLJB4e+JTGvcw
-         0A1My/xgQOO9yQ077hdSt6hRn9iez38Wydwt0DS2fX/xF77jY/A+XUX5azEDHiZ0FMR9
-         379n7cQeC1WtdwjLb6LGC/KLnRs0J7QyLQ9NebJMuHggUGZQdObDTDowonb9hSZckLrE
-         PDBEEzrefiQdPAqEhEwjosW5QUtylM5q/bFjJG8VUmxopdmtzr1QHXhmMZ8YKuFrzexS
-         MkNA==
+        b=EUaJsmU8ZsTYn0okEroT54mj1isfFv70h2lecQsKDR0+Sg/vZCkMLtxefjzPQ4HLnN
+         DxSMnMhftgnmHn2YUlXA/Mt+12yaBrSOMSOkTDm44V3xfp8SIgsZ8uiCwDjXxb1h3vnu
+         s7JglI/YKiLvjXP3X9lyTD9f1jH5P/X9SdpGJ2Bw04nDUbXmI+ZRrRhZPinfdpQq93dh
+         7LAG5Ky4mcSMZoR41vL37xNC7JalCuqJsKhZAQCiqHFd5IA5eNU5RN9WnvziwIn8z1Zz
+         Jq5k05BQ/rGg0QqmhU7z7EvgxDUeudhQreBgGMyrWYHyT2eKe66Bg3xCarYMeBXOdhy7
+         EuBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=A80UFhLaEIL5T+HKUQPB+W+ONKgn6werpPn4PC1/494=;
-        b=C6Pt3+CsEcBshpunPNulVVtOSnxXNQrXHAu0PUQ1GDJg0kbvhUuKjfWdSP9RPnu5Uo
-         ptHf41OFnizhsm9smoUgDSuLSfdlTHie7i6t0hcyT8ddtr+fvY1uaVqrMuqKnXwXsdfM
-         /RFqiGrqwqRaJqEXswavi1nFV4wWzIVCCl7RlA9ytqhLR19c9Bu7knz4WR4rCy12u1Hb
-         XCcDY+h+TW8UWSxghvXbb9U3JNAMNEVygFK3e3DwnY6E1nMz5sLWxW/kpLLMMlNnRFBV
-         jImXCZJn4AEtXECd+AK4H1TY7k0KsbQNMWuP7nmwqB9i8AFh8hrzaUUVtkATof1LnlxZ
-         Tgpw==
+        bh=FZ9lCCZF3xP8RXLcSvof1xt1odnHTPoLFE4m74RpMc4=;
+        b=OVxg91jZi0A6ma3BtSSXFLNzEzmu6L5ptxAnRjI6hDm94v90QuEOAvwY/CfMzjJAxG
+         S0S9EYe+GUNkhCTHvF1E1rqRTu5+fnSNsDHy4LvfIW83KQ+MprB5VatwfSLKO9tZkjOd
+         k0JHWYE3w7Vp1VpgKCBGAikkFuwbnpAZaQX3c4oy2Ws5zO0D0C6dAmDQl8oYAbn4TrQ1
+         3CExXIiopJNwXOLlsIOQ48Bd3pviWUj0aNj5ymBi9yriHguyL447BKZHmsmH5Q0lzzC+
+         g7D1Sjqci8V5IFn+Y+g4Q9sIlI5yj29ZXzMJO8cyM3RvmFkvJfKoXamh9UA4l/QfWKpv
+         9e7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W1GowpzX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bO0OFflD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e7si11128900qvf.28.2021.08.09.08.48.51
+        by mx.google.com with ESMTPS id k64si10737915qke.20.2021.08.09.08.55.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 08:48:51 -0700 (PDT)
+        Mon, 09 Aug 2021 08:55:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W1GowpzX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bO0OFflD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34874 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mD7WF-0005a0-2Q
-	for alex.bennee@linaro.org; Mon, 09 Aug 2021 11:48:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43608)
+	id 1mD7d8-0002Tj-Mx
+	for alex.bennee@linaro.org; Mon, 09 Aug 2021 11:55:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mD7Vo-0005ZV-Uc; Mon, 09 Aug 2021 11:48:24 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:43887)
+ id 1mD7cr-0002B8-6i; Mon, 09 Aug 2021 11:55:41 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:44815)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mD7Vn-00051I-FE; Mon, 09 Aug 2021 11:48:24 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id h14so22049762wrx.10;
- Mon, 09 Aug 2021 08:48:22 -0700 (PDT)
+ id 1mD7cp-0001kn-Kg; Mon, 09 Aug 2021 11:55:40 -0400
+Received: by mail-wr1-x435.google.com with SMTP id z4so22119509wrv.11;
+ Mon, 09 Aug 2021 08:55:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=A80UFhLaEIL5T+HKUQPB+W+ONKgn6werpPn4PC1/494=;
- b=W1GowpzXjkXwL+Xac7AO3FWpYCtf6/NCSPQOXI/rYs9zoRobyrr9UkQQB20qiENiHJ
- Mcx/n5zJQ7Q5/+oGde/sqLUDByDC+bSRKCQeZhfhko4VITj9k7hqdO90OXOGecludM4g
- nXKFya2Z2CI3RbkvfSpOKD+OpGDypdHX7YFwRMzimbrKSMHLWgaxdSlBl12wzQJRd922
- zWGsFQq6SVvPyy6q2RKGIkRbKf9BbW2jSyZG5/e9hCmJyTa5yqa+HCnEpTGn3Jjh2EV6
- 3RIosca6gvbgft1g+SzU13rr1kJMJV4GRWhF5f0Zd51Y5SxPMFuQzjnPftdlgShp3Tow
- 0mOQ==
+ bh=FZ9lCCZF3xP8RXLcSvof1xt1odnHTPoLFE4m74RpMc4=;
+ b=bO0OFflD6GJabneN56xdDJ8rHJvDqqZnooy4NJovJrKSt10Fe1ksp8kcr4ZGrGAUAD
+ /JZ7qcUdCWDeH++S9AV9AFkA2svwZvBOMCawuUaTBlLQFo3729LshyLeQam/oo1BHIUS
+ ie90oB8UqYi1YjWCz3PaSradGuz3QRIPdBnOZuliFLe7CUsWVgQJHlxHtDjSqwGHNhhe
+ O7oDbko0q8yFNd/1mOSREvvg0nokhMpevgUyQ1d7geuauGc+HSQiJPIXOGeHPTQfzCpw
+ UJGeRV1K6uqmOuWYRLQiiXXiHnTqRDvw5LTqaXaLfRO9WquJsPmdC0HlJyWJi9Yw5oSw
+ sJOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=A80UFhLaEIL5T+HKUQPB+W+ONKgn6werpPn4PC1/494=;
- b=VPDerWxYV10PK+rRH6uP/4WmOEpThjxUFr+VXKfTQ4A3Qws7w3XCPCeDnG3fkPhYiC
- xr/nFUM/gaEWrXkeZP6bM4Z3acbYQXDBQX1bcUXCLTZbZMvobO4SyRO7pjb7KGkY1rkv
- VoJN1tz7fBLtb1Z+/Tb9Qu6sEjyZFZ5DbXq6ZGBYpkVcaPhFNd+yHjbLZ2ZZjbOmrTYE
- Pu0RYQ3Y4NSw55CQ7EtXBP9e4qR4qXxJf46Fc/YNaBQmIW3gKIEjFFdV+yvwWSMoezeF
- gqJNClgtVHxhn/EA5uGoGW1J1ehTEcMKjnx2udf/5PlLvwgVgjsAdpFweirBhwegFpls
- +fOg==
-X-Gm-Message-State: AOAM532aISITzm+408u8KOAQs3qUOdg+AlPw8baJ+ThME/A96RKemMhS
- fupG7EIyL0D/EtAj26nsy3iQZEpi/kE=
-X-Received: by 2002:a5d:5745:: with SMTP id q5mr24882741wrw.409.1628524101358; 
- Mon, 09 Aug 2021 08:48:21 -0700 (PDT)
+ bh=FZ9lCCZF3xP8RXLcSvof1xt1odnHTPoLFE4m74RpMc4=;
+ b=coiTZzPRfnDMcgaZ7tWbgIkCz0Cx1iAj+AMt7VnAkGP2XviEPmBvQWEdhp44uSQxIj
+ MeM6aIR9ot8odJxo+zKIy2sJ3HYQYgG2g+Z38BbuwinZWDcG/ixWme0VuqZfQsI3Sl/I
+ mK2DgmU2EWErjzf1FPp4SanxtR3j9NwjlN8mzfYIWpt8KJiYfnXuavSJZAGSOa3At9R+
+ /CeQ86d6LKv9lYh/5uNBMX/qvQsuyePSCORtj8Ks4Qdq7PL46hXFNz+I4IGYZ9SvdcwS
+ ND1/HDmUNLLwmJnjLHivmIQ6jcW1PKYFDOt0jVVnBUOkOM6asqOOtjcPQvsZuNuf2Oax
+ y5hA==
+X-Gm-Message-State: AOAM532Jr96a/JbTrsSpswTOjOvz9wIIywMM8Eu5EQmkOb84pSTGxI1W
+ oOzVkkfnNb/DzY267adYP8Tt3cU2AyE=
+X-Received: by 2002:a5d:4521:: with SMTP id j1mr24837388wra.44.1628524537497; 
+ Mon, 09 Aug 2021 08:55:37 -0700 (PDT)
 Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
  [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id l2sm7650185wme.28.2021.08.09.08.48.20
+ by smtp.gmail.com with ESMTPSA id l9sm5720208wrt.95.2021.08.09.08.55.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Aug 2021 08:48:20 -0700 (PDT)
-Subject: Re: [PATCH 03/10] watchdog: aspeed: Fix sequential control writes
+ Mon, 09 Aug 2021 08:55:36 -0700 (PDT)
+Subject: Re: [PATCH 08/10] aspeed: Emulate the AST2600A3
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20210809131556.686260-1-clg@kaod.org>
- <20210809131556.686260-4-clg@kaod.org>
+ <20210809131556.686260-9-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <fe5aa2fd-70b1-ca61-ec08-131cc7ee4989@amsat.org>
-Date: Mon, 9 Aug 2021 17:48:19 +0200
+Message-ID: <d41fddce-4c87-5356-faf0-762f9f4fd32b@amsat.org>
+Date: Mon, 9 Aug 2021 17:55:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210809131556.686260-4-clg@kaod.org>
+In-Reply-To: <20210809131556.686260-9-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -123,46 +123,113 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VtQcc3azJMsI
+X-TUID: kklX7eI816zJ
 
 On 8/9/21 3:15 PM, Cédric Le Goater wrote:
-> From: Andrew Jeffery <andrew@aj.id.au>
+> From: Joel Stanley <joel@jms.id.au>
 > 
-> The logic in the handling for the control register required toggling the
-> enable state for writes to stick. Rework the condition chain to allow
-> sequential writes that do not update the enable state.
+> This is the latest revision of the ASPEED 2600 SoC. As there is no
+> need to model multiple revisions of the same SoC for the moment,
+> update the SCU AST2600 to model the A3 revision instead of the A1 and
+> adapt the AST2600 SoC and machines.
 > 
-> Fixes: 854123bf8d4b ("wdt: Add Aspeed watchdog device model")
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
-> Message-Id: <20210709053107.1829304-3-andrew@aj.id.au>
+> Reset values are taken from v8 of the datasheet.
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> [ clg: - Introduced an Aspeed "ast2600-a3" SoC class
+>        - Commit log update ]
+> Message-Id: <20210407171637.777743-21-clg@kaod.org>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> Message-Id: <20210629142336.750058-3-clg@kaod.org>
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->  hw/watchdog/wdt_aspeed.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index faa3d35fdf21..69c37af9a6e9 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -166,6 +166,8 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
->          } else if (!enable && aspeed_wdt_is_enabled(s)) {
->              s->regs[WDT_CTRL] = data;
->              timer_del(s->timer);
-> +        } else {
-> +            s->regs[WDT_CTRL] = data;
->          }
+>  include/hw/misc/aspeed_scu.h |  2 ++
+>  hw/arm/aspeed.c              |  6 +++---
+>  hw/arm/aspeed_ast2600.c      |  6 +++---
+>  hw/misc/aspeed_scu.c         | 36 +++++++++++++++++++++++++++++-------
+>  4 files changed, 37 insertions(+), 13 deletions(-)
 
-Alternatively easier to review:
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 40a38ebd8549..05edebedeb46 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -101,14 +101,24 @@
+>  #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
+>  #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
+>  #define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
+> +#define AST2600_DEBUG_CTRL        TO_REG(0xC8)
+> +#define AST2600_DEBUG_CTRL2       TO_REG(0xD8)
+>  #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+>  #define AST2600_HPLL_PARAM        TO_REG(0x200)
+>  #define AST2600_HPLL_EXT          TO_REG(0x204)
+> +#define AST2600_APLL_PARAM        TO_REG(0x210)
+> +#define AST2600_APLL_EXT          TO_REG(0x214)
+> +#define AST2600_MPLL_PARAM        TO_REG(0x220)
+>  #define AST2600_MPLL_EXT          TO_REG(0x224)
+> +#define AST2600_EPLL_PARAM        TO_REG(0x240)
+>  #define AST2600_EPLL_EXT          TO_REG(0x244)
+> +#define AST2600_DPLL_PARAM        TO_REG(0x260)
+> +#define AST2600_DPLL_EXT          TO_REG(0x264)
+>  #define AST2600_CLK_SEL           TO_REG(0x300)
+>  #define AST2600_CLK_SEL2          TO_REG(0x304)
+> -#define AST2600_CLK_SEL3          TO_REG(0x310)
+> +#define AST2600_CLK_SEL3          TO_REG(0x308)
 
-           } else {
-               if (!enable && aspeed_wdt_is_enabled(s)) {
-                   timer_del(s->timer);
-               }
-               s->regs[WDT_CTRL] = data;
-           }
+Is it a bugfix? Otherwise this is annoying.
 
->          break;
->      case WDT_RESET_WIDTH:
-> 
+Maybe:
 
+ #define AST2600A1_CLK_SEL3          TO_REG(0x310)
+ #define AST2600A3_CLK_SEL3          TO_REG(0x308)
+
+and...
+
+> +#define AST2600_CLK_SEL4          TO_REG(0x310)
+> +#define AST2600_CLK_SEL5          TO_REG(0x314)
+>  #define AST2600_HW_STRAP1         TO_REG(0x500)
+>  #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+>  #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+> @@ -433,6 +443,8 @@ static uint32_t aspeed_silicon_revs[] = {
+>      AST2500_A1_SILICON_REV,
+>      AST2600_A0_SILICON_REV,
+>      AST2600_A1_SILICON_REV,
+> +    AST2600_A2_SILICON_REV,
+> +    AST2600_A3_SILICON_REV,
+>  };
+>  
+>  bool is_supported_silicon_rev(uint32_t silicon_rev)
+> @@ -651,16 +663,26 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
+>      .valid.unaligned = false,
+>  };
+>  
+> -static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+> +static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+>      [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
+> -    [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
+> +    [AST2600_SYS_RST_CTRL2]     = 0x0DFFFFFC,
+>      [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
+>      [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
+> +    [AST2600_DEBUG_CTRL]        = 0x00000FFF,
+> +    [AST2600_DEBUG_CTRL2]       = 0x000000FF,
+>      [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
+> -    [AST2600_HPLL_PARAM]        = 0x1000405F,
+> +    [AST2600_HPLL_PARAM]        = 0x1000408F,
+> +    [AST2600_APLL_PARAM]        = 0x1000405F,
+> +    [AST2600_MPLL_PARAM]        = 0x1008405F,
+> +    [AST2600_EPLL_PARAM]        = 0x1004077F,
+> +    [AST2600_DPLL_PARAM]        = 0x1078405F,
+> +    [AST2600_CLK_SEL]           = 0xF3940000,
+> +    [AST2600_CLK_SEL2]          = 0x00700000,
+> +    [AST2600_CLK_SEL3]          = 0x00000000,
+
+... use AST2600A3_CLK_SEL3 here?
+
+So someone wanting the emulate the A1 doesn't get
+the nasty bug of having CLK_SEL3 misplaced.
+
+> +    [AST2600_CLK_SEL4]          = 0xF3F40000,
+> +    [AST2600_CLK_SEL5]          = 0x30000000,
+>      [AST2600_CHIP_ID0]          = 0x1234ABCD,
+>      [AST2600_CHIP_ID1]          = 0x88884444,
+> -
+>  };

@@ -1,90 +1,90 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp349004lff;
-        Mon, 9 Aug 2021 06:29:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFSSKeNmYrSdPKu2TrBfNWM7H/ccyn3Nf7r5J9GyaMlbC05QtIl8k5bhs9LZtyf1OFs7Ez
-X-Received: by 2002:a67:ffd3:: with SMTP id w19mr16366658vsq.10.1628515775008;
-        Mon, 09 Aug 2021 06:29:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628515775; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp350280lff;
+        Mon, 9 Aug 2021 06:31:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzD8zgpxDKcp3WBppOfkRkWaoXZ1NgerpxH9fiNwMxovPiK2tBsozIf+U5ih7QQ3hysKhuO
+X-Received: by 2002:a05:6402:184b:: with SMTP id v11mr30082026edy.267.1628515869540;
+        Mon, 09 Aug 2021 06:31:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628515869; cv=none;
         d=google.com; s=arc-20160816;
-        b=PPLE2IC5mOPFwB2zjRqpYlurIuh28J3Ky/GPR7PzRyMC8b/4nyWB62y48XcDEMux6q
-         1/cMvLLNwVtn4cbNHatXp1/G4K9fKinr19eEQljo6oqanP+EGf/pPnYqXwsfJHYIKlPG
-         z8++G85/pNIvNQ7Xto8bXCD+3R5/NNN4M/2+/t6Gkq5Nkx6c1brljFzSB1uJ91eGOuHM
-         wNooPfurtJtFuMJem5ZEbDFNLkePE2dxTjg4oYfL9lnr7eXKin39XH5QfgRIIBclAWA5
-         mVsl9ce54SdUcCkdE/TAUxWltnhhwgu28dP3BCaBs12/0IyKMePq3PGbqcyBQBtF8+7K
-         4gOA==
+        b=bixYDkZPDtuUXSkQwZfVHPpU9ijlfkA38tLdpUaShFgP4j9kG7b6UBx5Q1nCNEhLji
+         qKsk5HZvU6B2g+s+2N4nG9WJzfLuYs8qN1d7qNzfrfO48oHY7A/W8tN6BjKrwJ91tKhQ
+         Q63+4x/yhWXMEKZ9+TUFYf74guDdjs5DVSYJtY0Qz3dapK7J9WkfxDzP3IJBJ18E0BB1
+         90yG7+C8jfs1934L3L7kmgm2hRSQTcjizJTfUpMrHfmuCaTPK9+Wuc/HuDJ0KF834ZzX
+         MoADG406hJzhqkzoPnfEAI4OJ9S7Xz/RtBZ4dMT3npwz9FyePKu1hUYI+E9qyVwV9XZD
+         u/4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=hN8YuKp4OqxjAiacLUaoNHLoK5jF+VJG+6cwi7/O+Xw=;
-        b=SjefsMwzaZk+FCq+8+T+EB9Z1Ao/Zc1/ZbTxNb1gl0+SyAga8bZsQJa0iZ6iNIPNHm
-         xrpcFXhNkBlif3qFZh3iGf72uD8ktoamLHpK2QS18ICZ50ekMhh0uM+a+wjleJErmpDW
-         eG1chQXpOnJ/oFXRSZvS3VTjFlSZ76nfYq50aVAAMA8digq/9GWwhZpjqtW0Nh4PnTge
-         doCVkCOwkf1vm5AxKOQ0t6A0bd+TpvANWXn+OOZZsII9qdu4wCM+bYEtgsm63MxUJSJw
-         1KpCwTK4TVRJyLWpryHO+l35NmtkOBUQdBH4SGK+ZdTy2qz810fSYnRryIr9rqdv4oRX
-         aRPQ==
+        bh=w1V/tQW82dv0tTPCarYbZjpNbB9ZkBvmzb5oslYFZqY=;
+        b=BMSCCSfAUBqpFVctpIMUP74D3v2T9lzQDGqids9pXksC71bKmkWyjVEPF3YBi7BT0r
+         4TAVq4eFNBxdhho8msBtst40BP6Vhz6oK6Nvx0HXWFOHFIAnlAbzRw4KgWNF9on+YMZ9
+         LCtWErCFgQhGfmWIIxZ70k0GhWE5gD/XpqQO1E8wEt5ILOcy2e9r+4jt+2YNmAyYf3Fp
+         yckvFrX4GDOooT4yXCjKRyvIpWe1Mz7a2aWgH+6BYZ6AKtMr9vWKKcRqSwlFa5HcE7e0
+         AgdNymCMOk1nDG0FE8CufU12KY15INtlcxIgAfkQjULUEbdejF9+BjeLlmV1IXXQM8AM
+         5hcA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d23si4287667uam.13.2021.08.09.06.29.34
+        by mx.google.com with ESMTPS id f26si4040786ejr.32.2021.08.09.06.31.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 06:29:35 -0700 (PDT)
+        Mon, 09 Aug 2021 06:31:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40476 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mD5LS-0004lA-7C
-	for alex.bennee@linaro.org; Mon, 09 Aug 2021 09:29:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48596)
+	id 1mD5My-0008BQ-G1
+	for alex.bennee@linaro.org; Mon, 09 Aug 2021 09:31:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mD58g-0004tO-67; Mon, 09 Aug 2021 09:16:23 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:28002)
+ id 1mD58v-000585-Ki; Mon, 09 Aug 2021 09:16:37 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:46496)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mD58e-00050R-Ik; Mon, 09 Aug 2021 09:16:21 -0400
+ id 1mD58s-0005Dl-Gg; Mon, 09 Aug 2021 09:16:37 -0400
 Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 179D4h2n091289; Mon, 9 Aug 2021 09:16:06 -0400
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3aax6c2mru-1
+ 179DGRd6165257; Mon, 9 Aug 2021 09:16:27 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3aax6c2mvc-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Aug 2021 09:16:06 -0400
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 179CxR5j030283;
- Mon, 9 Aug 2021 13:16:03 GMT
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
- (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
- by ppma03ams.nl.ibm.com with ESMTP id 3a9ht8v1b7-1
+ Mon, 09 Aug 2021 09:16:09 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 179Cw72T021873;
+ Mon, 9 Aug 2021 13:16:07 GMT
+Received: from b06avi18626390.portsmouth.uk.ibm.com
+ (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
+ by ppma06ams.nl.ibm.com with ESMTP id 3a9hehc1j3-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Aug 2021 13:16:03 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 179DG0HO52167052
+ Mon, 09 Aug 2021 13:16:06 +0000
+Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
+ [9.149.105.60])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 179DCv1n46399872
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 9 Aug 2021 13:16:01 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 86F5E11C054;
- Mon,  9 Aug 2021 13:16:00 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2980F11C05E;
- Mon,  9 Aug 2021 13:16:00 +0000 (GMT)
+ Mon, 9 Aug 2021 13:12:57 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5C6AC42047;
+ Mon,  9 Aug 2021 13:16:04 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 00CB74203F;
+ Mon,  9 Aug 2021 13:16:04 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Mon,  9 Aug 2021 13:16:00 +0000 (GMT)
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Mon,  9 Aug 2021 13:16:03 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.54.114])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 4C30F220032;
- Mon,  9 Aug 2021 15:15:59 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 2482C22016C;
+ Mon,  9 Aug 2021 15:16:03 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 02/10] watchdog: aspeed: Sanitize control register values
-Date: Mon,  9 Aug 2021 15:15:48 +0200
-Message-Id: <20210809131556.686260-3-clg@kaod.org>
+Subject: [PATCH 07/10] arm/aspeed: rainier: Add i2c eeproms and muxes
+Date: Mon,  9 Aug 2021 15:15:53 +0200
+Message-Id: <20210809131556.686260-8-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210809131556.686260-1-clg@kaod.org>
 References: <20210809131556.686260-1-clg@kaod.org>
@@ -92,8 +92,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: K61MWtn2aKbqnKgb5JGH8Xy0E6Dnll1K
-X-Proofpoint-ORIG-GUID: K61MWtn2aKbqnKgb5JGH8Xy0E6Dnll1K
+X-Proofpoint-GUID: l7lWy-xua4FVnipe3PqaK9QyiHQN-Kph
+X-Proofpoint-ORIG-GUID: l7lWy-xua4FVnipe3PqaK9QyiHQN-Kph
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
  definitions=2021-08-09_04:2021-08-06,
  2021-08-09 signatures=0
@@ -128,126 +128,175 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9ldLGFh4dwJu
+X-TUID: 8RnovhhC/ek1
 
-From: Andrew Jeffery <andrew@aj.id.au>
+From: Joel Stanley <joel@jms.id.au>
 
-While some of the critical fields remain the same, there is variation in
-the definition of the control register across the SoC generations.
-Reserved regions are adjusted, while in other cases the mutability or
-behaviour of fields change.
+These are the devices documented by the Rainier device tree. With this
+we can see the guest discovering the multiplexers and probing the eeprom
+devices:
 
-Introduce a callback to sanitize the value on writes to ensure model
-behaviour reflects the hardware.
+ i2c i2c-2: Added multiplexed i2c bus 16
+ i2c i2c-2: Added multiplexed i2c bus 17
+ i2c i2c-2: Added multiplexed i2c bus 18
+ i2c i2c-2: Added multiplexed i2c bus 19
+ i2c-mux-gpio i2cmux: 4 port mux on 1e78a180.i2c-bus adapter
+ at24 20-0050: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+ i2c i2c-4: Added multiplexed i2c bus 20
+ at24 21-0051: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+ i2c i2c-4: Added multiplexed i2c bus 21
+ at24 22-0052: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
 
-Fixes: 854123bf8d4b ("wdt: Add Aspeed watchdog device model")
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20210709053107.1829304-2-andrew@aj.id.au>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+[ clg: Introduced aspeed_eeprom_init ]
+Message-Id: <20210625050643.161042-1-joel@jms.id.au>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Message-Id: <20210629142336.750058-2-clg@kaod.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/watchdog/wdt_aspeed.h |  1 +
- hw/watchdog/wdt_aspeed.c         | 24 ++++++++++++++++++++++--
- 2 files changed, 23 insertions(+), 2 deletions(-)
+ hw/arm/aspeed.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_a=
-speed.h
-index 80b03661e303..f945cd6c5833 100644
---- a/include/hw/watchdog/wdt_aspeed.h
-+++ b/include/hw/watchdog/wdt_aspeed.h
-@@ -44,6 +44,7 @@ struct AspeedWDTClass {
-     uint32_t reset_ctrl_reg;
-     void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
-     void (*wdt_reload)(AspeedWDTState *s);
-+    uint64_t (*sanitize_ctrl)(uint64_t data);
- };
-=20
- #endif /* WDT_ASPEED_H */
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 6352ba1b0e5b..faa3d35fdf21 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -118,13 +118,27 @@ static void aspeed_wdt_reload_1mhz(AspeedWDTState *=
-s)
-     }
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index ecf0c9cfacb8..c93941789fd4 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -674,9 +674,21 @@ static void g220a_bmc_i2c_init(AspeedMachineState *b=
+mc)
+                           eeprom_buf);
  }
 =20
-+static uint64_t aspeed_2400_sanitize_ctrl(uint64_t data)
++static void aspeed_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize=
+)
 +{
-+    return data & 0xffff;
++    I2CSlave *i2c_dev =3D i2c_slave_new("at24c-eeprom", addr);
++    DeviceState *dev =3D DEVICE(i2c_dev);
++
++    qdev_prop_set_uint32(dev, "rom-size", rsize);
++    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
 +}
 +
-+static uint64_t aspeed_2500_sanitize_ctrl(uint64_t data)
-+{
-+    return (data & ~(0xfUL << 8)) | WDT_CTRL_1MHZ_CLK;
-+}
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc =3D &bmc->soc;
++    I2CSlave *i2c_mux;
 +
-+static uint64_t aspeed_2600_sanitize_ctrl(uint64_t data)
-+{
-+    return data & ~(0x7UL << 7);
-+}
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB)=
+;
 =20
- static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
-                              unsigned size)
- {
-     AspeedWDTState *s =3D ASPEED_WDT(opaque);
-     AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(s);
--    bool enable =3D data & WDT_CTRL_ENABLE;
-+    bool enable;
+     /* The rainier expects a TMP275 but a TMP105 is compatible */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
+5,
+@@ -685,11 +697,20 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
+ *bmc)
+                      0x49);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
+5,
+                      0x4a);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4)=
+,
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
 =20
-     offset >>=3D 2;
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
+5,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
+5,
+                      0x49);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5)=
+,
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
 =20
-@@ -144,6 +158,8 @@ static void aspeed_wdt_write(void *opaque, hwaddr off=
-set, uint64_t data,
-         }
-         break;
-     case WDT_CTRL:
-+        data =3D awc->sanitize_ctrl(data);
-+        enable =3D data & WDT_CTRL_ENABLE;
-         if (enable && !aspeed_wdt_is_enabled(s)) {
-             s->regs[WDT_CTRL] =3D data;
-             awc->wdt_reload(s);
-@@ -207,11 +223,12 @@ static const MemoryRegionOps aspeed_wdt_ops =3D {
- static void aspeed_wdt_reset(DeviceState *dev)
- {
-     AspeedWDTState *s =3D ASPEED_WDT(dev);
-+    AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(s);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
+5,
+                      0x48);
+@@ -697,6 +718,12 @@ static void rainier_bmc_i2c_init(AspeedMachineState =
+*bmc)
+                      0x4a);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
+5,
+                      0x4b);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6)=
+,
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
 =20
-     s->regs[WDT_STATUS] =3D 0x3EF1480;
-     s->regs[WDT_RELOAD_VALUE] =3D 0x03EF1480;
-     s->regs[WDT_RESTART] =3D 0;
--    s->regs[WDT_CTRL] =3D 0;
-+    s->regs[WDT_CTRL] =3D awc->sanitize_ctrl(0);
-     s->regs[WDT_RESET_WIDTH] =3D 0xFF;
+     /* Bus 7: TODO dps310@76 */
+     /* Bus 7: TODO max31785@52 */
+@@ -704,11 +731,15 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
+ *bmc)
+     /* Bus 7: TODO si7021-a20@20 */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP10=
+5,
+                      0x48);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB)=
+;
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB)=
+;
 =20
-     timer_del(s->timer);
-@@ -293,6 +310,7 @@ static void aspeed_2400_wdt_class_init(ObjectClass *k=
-lass, void *data)
-     awc->ext_pulse_width_mask =3D 0xff;
-     awc->reset_ctrl_reg =3D SCU_RESET_CONTROL1;
-     awc->wdt_reload =3D aspeed_wdt_reload;
-+    awc->sanitize_ctrl =3D aspeed_2400_sanitize_ctrl;
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
+5,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
+5,
+                      0x4a);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB)=
+;
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB)=
+;
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552",=
+ 0x61);
+     /* Bus 8: ucd90320@11 */
+     /* Bus 8: ucd90320@b */
+@@ -716,14 +747,27 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
+ *bmc)
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
+0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
+0x4d);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB=
+);
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
+ 0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
+ 0x4d);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * Ki=
+B);
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
+05,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
+05,
+                      0x49);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11=
+),
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB=
+);
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB=
+);
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB=
+);
  }
 =20
- static const TypeInfo aspeed_2400_wdt_info =3D {
-@@ -328,6 +346,7 @@ static void aspeed_2500_wdt_class_init(ObjectClass *k=
-lass, void *data)
-     awc->reset_ctrl_reg =3D SCU_RESET_CONTROL1;
-     awc->reset_pulse =3D aspeed_2500_wdt_reset_pulse;
-     awc->wdt_reload =3D aspeed_wdt_reload_1mhz;
-+    awc->sanitize_ctrl =3D aspeed_2500_sanitize_ctrl;
- }
-=20
- static const TypeInfo aspeed_2500_wdt_info =3D {
-@@ -348,6 +367,7 @@ static void aspeed_2600_wdt_class_init(ObjectClass *k=
-lass, void *data)
-     awc->reset_ctrl_reg =3D AST2600_SCU_RESET_CONTROL1;
-     awc->reset_pulse =3D aspeed_2500_wdt_reset_pulse;
-     awc->wdt_reload =3D aspeed_wdt_reload_1mhz;
-+    awc->sanitize_ctrl =3D aspeed_2600_sanitize_ctrl;
- }
-=20
- static const TypeInfo aspeed_2600_wdt_info =3D {
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
 --=20
 2.31.1
 

@@ -1,93 +1,100 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp115445lff;
-        Mon, 9 Aug 2021 00:45:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy4fvvGF+Wrz6dzKe1I83B5KhPJel/JsQjtVTlisElJYGA8ku7w+5VV3eFSVaORO3xHiJKj
-X-Received: by 2002:a5d:990f:: with SMTP id x15mr112360iol.200.1628495153567;
-        Mon, 09 Aug 2021 00:45:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628495153; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp123871lff;
+        Mon, 9 Aug 2021 01:02:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwfzXCgmXX+cDhcYSlH3S+Xed661UnXQUib/I1WzQWu+b6pMpmtzXtMSPiy3fnH+aVsqt9z
+X-Received: by 2002:a02:a40f:: with SMTP id c15mr22055313jal.38.1628496140445;
+        Mon, 09 Aug 2021 01:02:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628496140; cv=none;
         d=google.com; s=arc-20160816;
-        b=SxqiL/Rh7pLsN2GGOCwKjafvtEgijpfQYG0kObhze4IoGKV3WXVTS0cSb8UCktcVe1
-         F6fpugZnq/0eRvq6ADB7P7Ldf6PqiPlOnX3FqHBHtT2vRaS+ewuSPVWRh4vpYvxmabhk
-         k8QK04qQA7x2XE+R26I5Oqr5U34MdHFjys4hXlN1gHaEKGpub80DpCBB9YJhkXLKNNS3
-         N8oBPqHHjbWMSnOrv5xHfucH/7TgpYU4H4gWIFMrl2ftcBHXU7lE/sw3BP4oEAmypicI
-         KYCKMVgOhizbUwx01vcCnhzD7PzbLijE+8NFeKozb/eDG40KJAKBE0lYALzAaOYNOvN1
-         nfRg==
+        b=lzr/ztW65IiXu9GMGZUxt9qXT8KiovKAKSO+/D8Wf66GywVEhsyykIjZLcjxGYtTJR
+         pf//Kbjy3aYm6HQ9EuaArmOjJJhne4hMw/5W6sCcj+0yeZaWFWSkzsP3+0JeeOS6T9Zk
+         umeeMKo+bfbLdRPb3DWQ5fZHQiavPgULRmHnB9aFnzTQH4kWN6yKEBRHFUIIgwUt+vst
+         Bu6B3mWiTR3anagWUedRWFVNKnSylKsTkbugAOD+9A7QXiZna/SDdsw6lgExnHJ/ubYf
+         wwH6PgnCR473tnjZTiJAL7jFZizLY2tkBW/ZFUrq7yT8jZNvuMnmeOufaOb5CALN5pCf
+         yXqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=zRQA2RVsW2SvSmYFx/u+xGhd5THB3mTiiGqcvfpmdJQ=;
-        b=fEsjH2wYutyJ8pHV4yGE+rELvN4wfqTi1p5d6mu3WUtRE2mNkm1cBGIX5KqP/9Bq1/
-         JDHGp9h8WAovrszLKJDYIydsWmtH9zrAOtYQZnEaFkkPNBzYAYJnv3Bnaxdj6OpDzNs4
-         CwSQwS8+uQagz4yX8/Shtmb3SiFCH2+Yc0s6FBxf/fGZIGvkbgGKKJrL1IjtoOnUvh53
-         3pPCYUTp3henGCNS+Q+ocnZUH60O0ggI+zRWSPgdBkCOFUQulaG8gcwcQGxm6pW5FWkS
-         C7pDif/EOzJiSrshZ/xoZ7b9/GMc0G3YiUcOrKlyjFim6RqYTkl+ln/L7RUG3/XA1yIT
-         JOBA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=BydnRyj+mX6ZIkbViJ77Ocuamd+zridYzLaZmzCtBkI=;
+        b=DDllRDefn6Tq/R3yVmQLqpLIZUkeaDJmAEsp0OrNZuvkjIzD9mYcnh3EqdYYx3xTHi
+         kl+5P/O39wdLgtJFPl088M+FaZofg77uqfrs4jhKT40HeJuT4luLf454eaMxgHL/gd8Y
+         /bd9JUnOghVmJ9mXz8VVopHvzKF/qntmexGKlyjw+TNgb3KjQuq0v3r+H2OOKFOmYaXU
+         xiY0jutff12yfOP9qkahBrIFLUE7WbV2fwXXOv/xaghAX7xeUuZXf3jIXM5lBW3r/3mq
+         TEZHMHmsB9Il/rhdeyDIb1Yek8cdWSAIZimd9Fm6QaVF50SdKMGWe+QozFVwkv54AGLW
+         2kvg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=iSSRkymX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11si19829128ilc.143.2021.08.09.00.45.53
+        by mx.google.com with ESMTPS id l41si18189294jac.52.2021.08.09.01.02.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 00:45:53 -0700 (PDT)
+        Mon, 09 Aug 2021 01:02:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=iSSRkymX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47172 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mCzyq-0003WY-U5
-	for alex.bennee@linaro.org; Mon, 09 Aug 2021 03:45:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41970)
+	id 1mD0El-00039w-M6
+	for alex.bennee@linaro.org; Mon, 09 Aug 2021 04:02:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mCzyC-0003WF-JE
- for qemu-arm@nongnu.org; Mon, 09 Aug 2021 03:45:12 -0400
-Received: from 6.mo52.mail-out.ovh.net ([188.165.49.222]:58343)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mCzyA-0006KE-JF
- for qemu-arm@nongnu.org; Mon, 09 Aug 2021 03:45:12 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.10])
- by mo52.mail-out.ovh.net (Postfix) with ESMTPS id 6EDF228E7C9;
- Mon,  9 Aug 2021 09:44:58 +0200 (CEST)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 9 Aug
- 2021 09:44:57 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R0047da2b7bb-6430-4523-be2e-a1fa655c8335,
- 12D865CA04D90D97A6A977E4DA2B50F9FD60493E) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.89.73.13
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1mD0EI-000397-Ry; Mon, 09 Aug 2021 04:01:50 -0400
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d]:45851)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1mD0EG-0001Tl-O4; Mon, 09 Aug 2021 04:01:50 -0400
+Received: by mail-qt1-x82d.google.com with SMTP id d9so11789501qty.12;
+ Mon, 09 Aug 2021 01:01:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=BydnRyj+mX6ZIkbViJ77Ocuamd+zridYzLaZmzCtBkI=;
+ b=iSSRkymXDCUgsgzYSALDnE+x6aFHlRXB+x720/ROtGrl9V8+3+xruNKfSeEu3NwpF6
+ D2KIvwdOOYXUfWAi0rpMOF6cTyZvZo2Mtt46VAcWLthjVk+U8sDFYl1btfm2YmaxDzsQ
+ LZrEMkcoCARCJsRlYgYh3IzUqhJmZx9t3DZWI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=BydnRyj+mX6ZIkbViJ77Ocuamd+zridYzLaZmzCtBkI=;
+ b=n+2HPK3KzCwMmzbwKP3S/goeaEzg6M4gazuZWclFPBgzk4znvy9BdTiC8uE6aHUaT7
+ VkOolzS07mV1FIZXAseQTUzhEqzJGxL8KFj78+XA7Qp7CN3P1ypQzPT2rbSJ/PtURVAc
+ Edzy0a1VBp6CayzYR6mB0HETAwDmYVgPEAqpnX+t8SEWgq1eQ2D7EG8rEMU93oWZPaVW
+ 6P3L/NAF9tkeKlfn6EI2zIsGcQgTzmhMc/G88n2IE0OPzOLxUHyU0lHMOxeAydqHGlft
+ qVG9tRhpTPxPRX8DLzKOngBLFARCxmeTBCK0MNBk8Bz3uQZYGtmfXOzQGWpSJQXXyLHZ
+ C+wg==
+X-Gm-Message-State: AOAM5334EcUCzGMHRCPJ/3wfLlg3r6RTiufWK6rQyWgFu+eA6XvhUs5Z
+ 9qd6cv/ibnCze8Vki45g57RKtuKgqQmC26CY/r0=
+X-Received: by 2002:ac8:5949:: with SMTP id 9mr13067349qtz.135.1628496106943; 
+ Mon, 09 Aug 2021 01:01:46 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210808200457.889955-1-linux@roeck-us.net>
+ <7f49fccc-fb76-cd50-02d2-aa47f410d73e@kaod.org>
+In-Reply-To: <7f49fccc-fb76-cd50-02d2-aa47f410d73e@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Mon, 9 Aug 2021 08:01:35 +0000
+Message-ID: <CACPK8XchtnxGyZ=wFMJU7S0V7SPUF0KoFn5BJiF7vT8bu3Qd3w@mail.gmail.com>
 Subject: Re: [PATCH] hw: arm: aspeed: Enable eth0 interface for
  aspeed-ast2600-evb
-To: Guenter Roeck <linux@roeck-us.net>
-References: <20210808200457.889955-1-linux@roeck-us.net>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <7f49fccc-fb76-cd50-02d2-aa47f410d73e@kaod.org>
-Date: Mon, 9 Aug 2021 09:44:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <20210808200457.889955-1-linux@roeck-us.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: aa669f09-dd6c-46ab-9379-60ca2c905a87
-X-Ovh-Tracer-Id: 15922757961430371110
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrjeeigdduudekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgedvieejfedvhfduhfffueevheeludffhfdvkeehleegtddttdfhieegveeghfffnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehlihhnuhigsehrohgvtghkqdhushdrnhgvth
-Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
- helo=6.mo52.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=joel.stan@gmail.com; helo=mail-qt1-x82d.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,48 +108,64 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y0y0Q8Y2IuU7
+X-TUID: i906jrIgtKb3
 
-On 8/8/21 10:04 PM, Guenter Roeck wrote:
-> Commit 7582591ae7 ("aspeed: Support AST2600A1 silicon revision") switched
-> the silicon revision for AST2600 to revision A1. On revision A1, the first
-> Ethernet interface is operational. Enable it.
+On Mon, 9 Aug 2021 at 07:45, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 8/8/21 10:04 PM, Guenter Roeck wrote:
+> > Commit 7582591ae7 ("aspeed: Support AST2600A1 silicon revision") switch=
+ed
+> > the silicon revision for AST2600 to revision A1. On revision A1, the fi=
+rst
+> > Ethernet interface is operational. Enable it.
+>
+> Indeed.
+>
+> I see that commit ba56f464f0c ("ARM: dts: aspeed: ast2600evb: Add MAC0")
+> reintroduced it a while ago. But my A0 doesn't support it. I am missing
+> something.
+>
+> Joel, why this patch didn't reach the OpenBMC kernel ?
 
-Indeed. 
+Because your a0 doesn't support it, so it would break that. That's the
+only reason.
 
-I see that commit ba56f464f0c ("ARM: dts: aspeed: ast2600evb: Add MAC0")
-reintroduced it a while ago. But my A0 doesn't support it. I am missing
-something.
+For this patch,
 
-Joel, why this patch didn't reach the OpenBMC kernel ? 
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-Thanks,
-
-C.  
-
-
-> 
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
->  hw/arm/aspeed.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 9d43e26c51..ecf0c9cfac 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -959,7 +959,8 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
->      amc->fmc_model = "w25q512jv";
->      amc->spi_model = "mx66u51235f";
->      amc->num_cs    = 1;
-> -    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-> +    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
-> +                     ASPEED_MAC3_ON;
->      amc->i2c_init  = ast2600_evb_i2c_init;
->      mc->default_ram_size = 1 * GiB;
->      mc->default_cpus = mc->min_cpus = mc->max_cpus =
-> 
-
+>
+> Thanks,
+>
+> C.
+>
+>
+> >
+> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > ---
+> >  hw/arm/aspeed.c | 3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index 9d43e26c51..ecf0c9cfac 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -959,7 +959,8 @@ static void aspeed_machine_ast2600_evb_class_init(O=
+bjectClass *oc, void *data)
+> >      amc->fmc_model =3D "w25q512jv";
+> >      amc->spi_model =3D "mx66u51235f";
+> >      amc->num_cs    =3D 1;
+> > -    amc->macs_mask  =3D ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_=
+ON;
+> > +    amc->macs_mask =3D ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_O=
+N |
+> > +                     ASPEED_MAC3_ON;
+> >      amc->i2c_init  =3D ast2600_evb_i2c_init;
+> >      mc->default_ram_size =3D 1 * GiB;
+> >      mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+> >
+>

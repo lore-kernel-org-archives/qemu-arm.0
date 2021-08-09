@@ -1,83 +1,127 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp178596lff;
-        Mon, 9 Aug 2021 02:38:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzg0rTh4898mXNaXLbDGE5+ZS5CQvR30Bss2Q3PoaKTmhnsAK61h2kACwXyxXc9QjQw3Sa9
-X-Received: by 2002:a5d:8456:: with SMTP id w22mr156518ior.63.1628501902748;
-        Mon, 09 Aug 2021 02:38:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628501902; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp181478lff;
+        Mon, 9 Aug 2021 02:43:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzANKa7pakqTqexXcgzYDKDFzFeBKbj7Gk/NTuVmelxXJZQTioCiJMo7TzJmlLDmfEs+HLw
+X-Received: by 2002:a02:2307:: with SMTP id u7mr21925048jau.28.1628502195128;
+        Mon, 09 Aug 2021 02:43:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628502195; cv=none;
         d=google.com; s=arc-20160816;
-        b=GH9H/DdpTM0i/zll3gP1YcOejkw6R756zE687tNkEhLM/h+UvETdyqHTPOIoQejmnw
-         MQPOxHDb5eYEHuS3Mz/lVyTT+tI4v6FB7Dgd3PTtUZMd6oqFKvHs5LG1Kt99DC7UYX5C
-         6L6WigsZuk5dKZ/fruscmGhNFfwJWTAQ7jDj+kx5W2mVQ546QerLE9tTutyzpnsSO+Vd
-         2BfBDJbtpvI9fV0j7+jYhKmhIP4eA6K9tCDL2BjoHOVTtB4ot7bL2cUdlSBLTebNpp+Z
-         HKcoSsFpGiSixjvF1voJj0XR6GavrFmuRgHvfAneN/QxH2SHs9uFBy9NAZMv35yxSkDo
-         hYZw==
+        b=povT9MjVeUWif0iQ4WeZsorpxIstzL0fy553vno6MooJYPYYDwbVlzXRehQz4yt8w4
+         yivF/H/WJSp1NZVW10eqwaMpO69B572HqtnC/6YB+I5nMaUMqZoGZiXi82iKcm24xO1w
+         DmP+XDXulvO0xat92Jyx17ml1DkYBKSkxsYxRIT0geQk6VhNZs+nrku2FGRL2Jgvkw7o
+         cn/5rFnUMgHv0wTnBK0066LUdZwYcIdFDV07JnacJC9fzPEIIljUloTLZfUqCbkEe5Re
+         ulw1q7Ku/082godNEsseicgMLP74WQiTUcIl+OPQCwcYIcV4gMRlF5Wvr2BfTaPag/DQ
+         Dt2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date;
-        bh=5xGtNtuXZebbmIJIrdRP6hJjNgGB3F3GO0W4SXqCAKY=;
-        b=J7AQ9ivka1P+iFXdlieIv7H/ccYfgvR7puxJVYqV96ZrMVANOx+pE5M/HDsJ6hD/eR
-         fr1xOypvMJUph7uGuduqzgdtfywJakbrfhyt0cEaHmZSZZNliGf1QCGAVBVQBYZUWhoU
-         hXBd1L6JVDPuhfSZJWp0DJMvOfra3g6XpJN4wqSuwY5VnrCmUiUnxiqXOUawZhX9GXgi
-         RbyZexPCJMJ+t0whaXzDzCJM/u8Toug3ZmNE3OlhxpVppBLtw8VWFSO0DK2RaslAvXFL
-         SdHpjfjDm2TpFN5EvEKyZGZxpDh+FSXvN7KC5WbK2hHShGcOIS6httRkqw4X3MdiDxpA
-         RzMw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=phHGFTgZcZXvvM5+o9c+ifc0Qj+hb69JthB2fj1Y7wY=;
+        b=xLHa/LzgaOM7Si7E2WppW0vGZiL6AnmRxuDRASqFDerdigr3+RYpL3RrKnUW/BrSnV
+         giaLjDXr9OTKyG0WC+sHvy+UJnJUXgURDdN9wrJYFP3eZM6NitY4vN6sYf3bZJ81ngMx
+         geO0o9ATmcEZRWpFDlYLin4O27oX8lSFY65ywilTtKGsx7NKQVBN5HDaV42bWvBEHVaS
+         7lrKFQE2UDGuff2kQJtzUZ47VBGcjt7WVqD39ojsAr80cQ4Fu9/5/lNu3gS0DABeLpAo
+         Jrhq7zVEUMs/deckNQlafb7wJ6IEZSMIalFNQ4JO7LeFB/+SEAecHupUDKVIxzYuPz+C
+         Sxzg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UAvfES6R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bu.edu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1si17921084jao.24.2021.08.09.02.38.22
+        by mx.google.com with ESMTPS id x9si16073970ill.152.2021.08.09.02.43.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 02:38:22 -0700 (PDT)
+        Mon, 09 Aug 2021 02:43:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UAvfES6R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bu.edu
-Received: from localhost ([::1]:55866 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mD1ji-0005OF-10
-	for alex.bennee@linaro.org; Mon, 09 Aug 2021 05:38:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47254)
+	id 1mD1oQ-0002cU-D5
+	for alex.bennee@linaro.org; Mon, 09 Aug 2021 05:43:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1mD1jO-0005M4-1V; Mon, 09 Aug 2021 05:38:02 -0400
-Received: from relay68.bu.edu ([128.197.228.73]:55308)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mD1o9-0002cI-Hb
+ for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:42:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58480)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1mD1jM-0002oe-3x; Mon, 09 Aug 2021 05:38:01 -0400
-X-Envelope-From: alxndr@bu.edu
-X-BU-AUTH: mozz.bu.edu [128.197.127.33]
-Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
- bits=0)
- by relay68.bu.edu (8.14.3/8.14.3) with ESMTP id 1799bLnL015881
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Mon, 9 Aug 2021 05:37:23 -0400
-Date: Mon, 9 Aug 2021 05:37:20 -0400
-From: Alexander Bulekov <alxndr@bu.edu>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mD1o8-0006Lr-3Z
+ for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:42:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1628502175;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=phHGFTgZcZXvvM5+o9c+ifc0Qj+hb69JthB2fj1Y7wY=;
+ b=UAvfES6RRqgyHp41O1Kq8r2V85zkyJybVLDOty398pYxFa8PyY72cN8sRTiknK56Ic2fAi
+ uafbpEW/zgfcQuLbZYvFaWCSU4exyGrv39WvpsFz30bb49qN1Wr6m9LkVDdP44Kq1PMf3P
+ 5yfRQfR74onUrae7DwO7E2CFib5xvpc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-309-Rjs8Nh8dP-a4K9SI0PVM5w-1; Mon, 09 Aug 2021 05:42:54 -0400
+X-MC-Unique: Rjs8Nh8dP-a4K9SI0PVM5w-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ e21-20020a05600c4b95b029025b007a168dso6637835wmp.4
+ for <qemu-arm@nongnu.org>; Mon, 09 Aug 2021 02:42:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=phHGFTgZcZXvvM5+o9c+ifc0Qj+hb69JthB2fj1Y7wY=;
+ b=J6v8K5xPJhlmcac5Bd2MnRO5Bio1KGUhAQdY4diURoRgFUpJXWXExw+PpFRnCsKjPy
+ OyJfrAaItO2vkGreCTjKYRQEX09C5qIuJjQubYENkWLEqWCvrl54Oujy0lEPciW0oLuM
+ Grts3+S3vzM0SMs7zXgQTgJvP5utdhIpDj3m7ikRbylYMoXl/hA5ui7DdLkHaXXCVvGP
+ aZgSDcOhIM00HbG+NpfyS0gyc2qnTIWFv96auR7lzvj+t8eYUhel1zoeQIOwcpaT5N+E
+ 0HnqHGd6yCyZAuIiM99TMj5eviDEA2UGdELs5awyiJ+WhwERVpGiQeQhFmaLYKr8g9AN
+ SuPw==
+X-Gm-Message-State: AOAM532RDtZJJ4rEZPxwDStu8ASus95+/kiznW0dHP+CuuRmAFLe41os
+ FTkwJMiKIPppic68QjTG4zERfdtUW/PPzo1TjWa89FxUmtPrSrQFnB4fvCD81F/JYGBQy5+Tc0G
+ 7ButK0sjzsZuF
+X-Received: by 2002:a7b:ce08:: with SMTP id m8mr33100227wmc.21.1628502173396; 
+ Mon, 09 Aug 2021 02:42:53 -0700 (PDT)
+X-Received: by 2002:a7b:ce08:: with SMTP id m8mr33100212wmc.21.1628502173238; 
+ Mon, 09 Aug 2021 02:42:53 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id 129sm17119071wmz.26.2021.08.09.02.42.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Aug 2021 02:42:52 -0700 (PDT)
 Subject: Re: [PATCH v2] hw/display/xlnx_dp: fix an out-of-bounds read in
  xlnx_dp_read
-Message-ID: <20210809093720.fslgjimjd5wa3j35@mozz.bu.edu>
+To: Qiang Liu <cyruscyliu@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <1628059910-12060-1-git-send-email-cyruscyliu@gmail.com>
  <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
- <31b39c41-17e9-3901-66c3-622afc653121@redhat.com>
+ <CAFEAcA9Qn+PMGWRLtBdPXWpzz=JzoNc+XiaEpPXGv4Wb+YX3=A@mail.gmail.com>
+ <CAAKa2j=zjGEEcfSz4fv=wOW6+OajXQp1Gy=VYjbH5QMrBXNHMg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <cefaded8-e2cb-3a73-131c-01ad5505933c@redhat.com>
+Date: Mon, 9 Aug 2021 11:42:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <CAAKa2j=zjGEEcfSz4fv=wOW6+OajXQp1Gy=VYjbH5QMrBXNHMg@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <31b39c41-17e9-3901-66c3-622afc653121@redhat.com>
-Received-SPF: pass client-ip=128.197.228.73; envelope-from=alxndr@bu.edu;
- helo=relay68.bu.edu
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.998,
- HK_RANDOM_FROM=0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.707,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -90,56 +134,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Qiang Liu <cyruscyliu@gmail.com>, Alistair Francis <alistair@alistair23.me>,
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Bandan Das <bsd@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Bandan Das <bsd@redhat.com>,
  "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>,
  Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B5ASn6THUVuI
+X-TUID: yEZ3OZjUd/3p
 
-On 210809 1131, Philippe Mathieu-Daudé wrote:
-> On 8/6/21 4:42 PM, Alexander Bulekov wrote:
-> > On 210804 1451, Qiang Liu wrote:
-> >> xlnx_dp_read allows an out-of-bounds read at its default branch because
-> >> of an improper index.
-> >>
-> >> According to
-> >> https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
-> >> (DP Module), registers 0x3A4/0x3A4/0x3AC are allowed.
-> >>
-> >> DP_INT_MASK     0x000003A4      32      mixed   0xFFFFF03F      Interrupt Mask Register for intrN.
-> >> DP_INT_EN       0x000003A8      32      mixed   0x00000000      Interrupt Enable Register.
-> >> DP_INT_DS       0x000003AC      32      mixed   0x00000000      Interrupt Disable Register.
-> >>
-> >> In xlnx_dp_write, when the offset is 0x3A8 and 0x3AC, the virtual device
-> >> will write s->core_registers[0x3A4
-> >>>> 2]. That is to say, the maxize of s->core_registers could be ((0x3A4
-> >>>> 2) + 1). However, the current size of s->core_registers is (0x3AF >>
-> >>>> 2), that is ((0x3A4 >> 2) + 2), which is out of the range.
-> >> In xlxn_dp_read, the access to offset 0x3A8 or 0x3AC will be directed to
-> >> the offset 0x3A8 (incorrect functionality) or 0x3AC (out-of-bounds read)
-> >> rather than 0x3A4.
-> >>
-> >> This patch enforces the read access to offset 0x3A8 and 0x3AC to 0x3A4,
-> >> but does not adjust the size of s->core_registers to avoid breaking
-> >> migration.
-> >>
-> >> Fixes: 58ac482a66de ("introduce xlnx-dp")
-> >> Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
-> > 
-> > Acked-by: Alexander Bulekov <alxndr@bu.edu>
-> > 
-> > If there is somehow a regression, the test won't fail in a fatal way, so
-> > maybe it makes sense to throw in a setenv(UBSAN_OPTIONS=halt_on_error=1)
-> 
-> Where? Main meson? qtests meson? setenv() in the test (but would
-> override preset variable)?
-> 
+On 8/9/21 11:33 AM, Qiang Liu wrote:
+> Thank you for all the insightful comments about the separated patches.
+> This would be my first time to format a serial of patches. Does it
+> look like below?
 
-Probably in the test, with overwrite = 0 ? Without halt_on_error the
-test will succeed even if the problem returns..
--Alex
+> [PATCH v3 00/2] title
+>      [PATCH v3 01/2] fix
+>      [PATCH v3 02/2] test
+
+Exactly. Otherwise, adding the test before the fix would
+make an incremental build to fail.
+

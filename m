@@ -1,125 +1,104 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp175082lff;
-        Mon, 9 Aug 2021 02:32:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysIl0b556lST4gcxnEByyOE9vT3nn80P31F4Ei1h0pO0e1GAZw6RaSB3GYwcMnvolJHVVe
-X-Received: by 2002:a0c:8dc6:: with SMTP id u6mr11485757qvb.57.1628501526605;
-        Mon, 09 Aug 2021 02:32:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628501526; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp171008lff;
+        Mon, 9 Aug 2021 02:25:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwd1NtB1gWK99LYe7PwqMgCseC2yjRFuoxGHjPGMB5gK7UdboYKBSSUP8C+B6kRdLFwzqVb
+X-Received: by 2002:a25:694a:: with SMTP id e71mr21642575ybc.114.1628501100829;
+        Mon, 09 Aug 2021 02:25:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628501100; cv=none;
         d=google.com; s=arc-20160816;
-        b=g/v+HLHtkVFPCrukWq/zZl/3Y6TytxpFcm/C1+vO5zHbNPfaXUNA/k0aU7PSEkSL17
-         MHiwsl0hS6irzN5u+n8K/VUEz9CAN1wZUbg8EriICITclcoBth8K+F7rQevPENcAQE3I
-         1IyRQrflbpeUxu+9Jc6h68gDCYXSMimwg+MYs30NUV8JG2qnDYSVvWsb5rSqW6IMok1t
-         rWM6KBj7YcxWkF8HNEpK6ZvlCgoXSeV+7xxKXD8GjGUQXshCx8cUrhuL27+VnUliFENP
-         As4pp3GWShfYT0i3BFqtrdlSx7YN/s6arRXRDvY/EpL98jD0F2pgoMbtX9sbss9OveGN
-         7QyA==
+        b=W6lEuBSV9a0XljSI3rcSAffgxfVqseJyNI/MGCYKKtGfaaGGflBnR6j8Q77PZez/I3
+         UeGe2BhEZaXKLtzosFrE9RmffLkGMh2O3ZAtZ33h5lf4wABJNeQLvSHKOJAI59JAu52j
+         PwVZdBBq7rimdVrQGHLB7cfcIxAGNY3IGs3yqPuFYr/zcbbP0el9epw79+FcMkrnhQ9E
+         lTCvsnp5mTOB4EU+2RG0AgqNXZqfbMkOQUSrLiWUB3N7Nu1yPQ93GVJgzLr5SCvljF+S
+         IzLrLkBaSMNHGYt4Xs+sUF39YvMD33sH/m5nFI0n6r2mlrEdJi4zguc0DfZzI7bskd7l
+         0ujQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=K6BF3LXD3SuIw1YI02Dj1lw/a9hpC+xf2JrGcnvQFX0=;
-        b=NRRzGq+du5AS6aH/gsI3Jj2pfU9ezHpLFsoY089HipEk5yU1eERr1t7css/rA/ayLi
-         hElgTuIRPlFxyeyziHbs4K0rLIbZNuHTvx7Cp2kqDBNXt8WNBPrANyFo1vjIIeWly0gv
-         my+PMSO/eG53lLURjI4PeixH/cxgqTqlhbbooFgbyJt3p0mA2zSz/mliHyouHccgVDPm
-         VgT9vB/EK8q4Gnw98L6XFdBpG0Xf0Kb5S4m4i03g7N+O7bwn2JogxnzmNV7+VkxlL1pg
-         MMOrA5MAmCkdYyOVsfZ3tVDtebEQl7CmbeGunp60iEpD6+AeSs0a1L1iAAIKURhbv3+9
-         6NQw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Zc9LsCX3eHrN5oT51AgJ576zFqbHehbvKRXwn5MJQs4=;
+        b=Wb04EH+Lg/6bT+/wc632bLOfHEpOFX0QiFTKZuTcP7LRuNZLkF6TkvHl33q2YoSc7u
+         Jo/IaJr/EqJUBGu7uTnyxXm/Z2YlfzB8mgHgGAJ3+GtoOoypGVcWkngJyMzkfBjI0I5q
+         EdOOTaLv2JxIFW9UcSoUmInoyaKxgzhJXvtSRn0i07p3f2bIKCRadvM8QdW1nhEh5K86
+         a57LY2FhQkDGl+JyvUKwgnYe4ScDbGVSy61S2gjyKGUh4Sv7WeQaEy3pYaneZc7QjRt9
+         2RfxVG1ZnOrOKx8dZL9Ff7/o8I0GMpeJ3CgO+vuQSB4Pz6J9JqF3SskxGsrmcaQ033ym
+         EfLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PoumDVye;
+       dkim=fail header.i=@linaro.org header.s=google header.b="y1B/rG5p";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i10si10958129qkg.118.2021.08.09.02.32.06
+        by mx.google.com with ESMTPS id a1si6527692ybs.241.2021.08.09.02.25.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 02:32:06 -0700 (PDT)
+        Mon, 09 Aug 2021 02:25:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PoumDVye;
+       dkim=fail header.i=@linaro.org header.s=google header.b="y1B/rG5p";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45116 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42168 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mD1dd-0006Lg-Tu
-	for alex.bennee@linaro.org; Mon, 09 Aug 2021 05:32:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44050)
+	id 1mD1Wm-0003uQ-79
+	for alex.bennee@linaro.org; Mon, 09 Aug 2021 05:25:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41414)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mD1dT-0006Kg-QV
- for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:31:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:60717)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mD1dR-0006id-13
- for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:31:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628501512;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=K6BF3LXD3SuIw1YI02Dj1lw/a9hpC+xf2JrGcnvQFX0=;
- b=PoumDVyeI2v2v3RmnoyzkzHGq4ioq09HYQ2tXdvXZiBJfU6vfut15gBofj8twusItjPhJ1
- rpi3JscjSSFyWJh9Mp4E/66Q5pvwGPA5VHt3aCxV4gNmRy+wTuRK89wR5Z6DYtkGbnyJD8
- GRVJambKhhTceZKD/pF839WzyWTh1C0=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-452-cdbsRBE7NHaCcXrPs_FFjA-1; Mon, 09 Aug 2021 05:31:49 -0400
-X-MC-Unique: cdbsRBE7NHaCcXrPs_FFjA-1
-Received: by mail-wm1-f72.google.com with SMTP id
- l19-20020a05600c4f13b029025b036c91c6so3849507wmq.2
- for <qemu-arm@nongnu.org>; Mon, 09 Aug 2021 02:31:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mD1Wd-0003tG-K3
+ for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:24:51 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:40875)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mD1Wc-0001D7-2a
+ for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:24:51 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id oz16so11589545ejc.7
+ for <qemu-arm@nongnu.org>; Mon, 09 Aug 2021 02:24:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Zc9LsCX3eHrN5oT51AgJ576zFqbHehbvKRXwn5MJQs4=;
+ b=y1B/rG5pN2hmtC0mUGFn2ckXQZ722GXVFvW4vvOVxusZ1aqEfeyQdPuhJjZhq1hipT
+ 2OqN6GRbrUWrb8R+UIvduJY1BIFzwwYPxlTPHWOqgb6CNmcEKG0PdJKYZOOUI2TQ1YFR
+ HmnzHFm3jyNMqsXIB5PM/pV11llC3cw+biKhyNlZIzb8k0BeXz7oM9PTwFYNWdurCRwA
+ a99IB0k6SOJ0e+x8czJj9AZ0lIwV0ly4xOyhupiW/TZ5fiyoRJcuHIRWmTzNvjUiC3Dn
+ 4A50k6ucfIaEGUXn74WaudSygtZ4NAlA2MOWQRJcTXXaKF8e57jOnhVR0C6vpDX3xmWN
+ rDMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=K6BF3LXD3SuIw1YI02Dj1lw/a9hpC+xf2JrGcnvQFX0=;
- b=k3jYoUnVPkzP6n9tK1nt0jaPjqeez4h2JUBEZPoY15DgezkLqFvKsW/i1R3Hzt96TJ
- xV7SJQZ/ueTr7RIDB+fIeaYJqKauZeI/MpxUZxZRLjXw7idRXXaEgWbsgFjBaQP5znM1
- 8WYn/H0tiN+tAGnLGJQZ4R10SSx/71T564dvpx38Sx9B27IuE2fDg3iTE6j6jt5FngLE
- p0otQCIfmOxzYDNxW9o3tTfiRLHq/kQEW8iTdqY38mMCD2+iFWB+otr7TuuczRFCVtG2
- XRa7JTbvMdN7hKWf6bxBKfb2oGHkiTpX19jAqdVL+NICLxDV9634c+/dlb9BHHW1tAOs
- Tgfg==
-X-Gm-Message-State: AOAM532ufunVOaNzTutP2kSLvx8t7toOCGEZ5Tsa4TiuaymtIh0VgO23
- BHWXea+gIgSQ7SXkmFauAB1n6g8fQ6vUqU6KmGXo5BLU251nBPuzGLMgP2lKQ0h8m0JukMHsCoB
- brNxC3DExhkDK
-X-Received: by 2002:a1c:e919:: with SMTP id q25mr11109875wmc.28.1628501508262; 
- Mon, 09 Aug 2021 02:31:48 -0700 (PDT)
-X-Received: by 2002:a1c:e919:: with SMTP id q25mr11109852wmc.28.1628501508000; 
- Mon, 09 Aug 2021 02:31:48 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id t16sm19097436wmi.13.2021.08.09.02.31.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Aug 2021 02:31:47 -0700 (PDT)
-Subject: Re: [PATCH v2] hw/display/xlnx_dp: fix an out-of-bounds read in
- xlnx_dp_read
-To: Alexander Bulekov <alxndr@bu.edu>, Qiang Liu <cyruscyliu@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Zc9LsCX3eHrN5oT51AgJ576zFqbHehbvKRXwn5MJQs4=;
+ b=B8LVo97Z0IBCULgjg29ZBq0Dr/DImK05hIciDvzOYKN98ArmxNFKrZue9S2yIv/+8N
+ tsc5L0JKdU/v44jzgIbSgwv/uScu7BJG9GewENmUCAXTGNfd08xMEjwOl+LzPpvlDvKS
+ TsGJq0WGgeHtVK3Hh9HtleAcvuug+Ronr6vHWI9kJkmPNbNzH8UBcQEM8AD2igFoVWRm
+ 3VXhLa+NP5Isrkx0C9CDiLM44V0IPtgjZbZvb5FHzwAsDxCHJtghoeA81vrIh9YRyX9s
+ 4bVsR/hmIPhNf9Ohw2RAvR6nTXtwPqjypTxmGhORUE5Q2vYp6lL1eBkc5UG15+mVF8rw
+ eRrg==
+X-Gm-Message-State: AOAM532KclX2LgJriTPVRudY1KqLhzlzWXHbujEiYbSJEbAOZLuKEEEy
+ P3eyE2ZJoDJN3y5ntUFzJ44mE9hA5l5vFnnleaGv0Q==
+X-Received: by 2002:a17:906:c085:: with SMTP id
+ f5mr22229847ejz.250.1628501087931; 
+ Mon, 09 Aug 2021 02:24:47 -0700 (PDT)
+MIME-Version: 1.0
 References: <1628059910-12060-1-git-send-email-cyruscyliu@gmail.com>
  <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <31b39c41-17e9-3901-66c3-622afc653121@redhat.com>
-Date: Mon, 9 Aug 2021 11:31:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
 In-Reply-To: <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.707,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Aug 2021 10:24:03 +0100
+Message-ID: <CAFEAcA9Qn+PMGWRLtBdPXWpzz=JzoNc+XiaEpPXGv4Wb+YX3=A@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/display/xlnx_dp: fix an out-of-bounds read in
+ xlnx_dp_read
+To: Alexander Bulekov <alxndr@bu.edu>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -132,51 +111,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Qiang Liu <cyruscyliu@gmail.com>, Alistair Francis <alistair@alistair23.me>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
  Bandan Das <bsd@redhat.com>,
  "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>,
  Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 95z48ilbBjc4
+X-TUID: xuNJL3j0wsuz
 
-On 8/6/21 4:42 PM, Alexander Bulekov wrote:
-> On 210804 1451, Qiang Liu wrote:
->> xlnx_dp_read allows an out-of-bounds read at its default branch because
->> of an improper index.
->>
->> According to
->> https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
->> (DP Module), registers 0x3A4/0x3A4/0x3AC are allowed.
->>
->> DP_INT_MASK     0x000003A4      32      mixed   0xFFFFF03F      Interrupt Mask Register for intrN.
->> DP_INT_EN       0x000003A8      32      mixed   0x00000000      Interrupt Enable Register.
->> DP_INT_DS       0x000003AC      32      mixed   0x00000000      Interrupt Disable Register.
->>
->> In xlnx_dp_write, when the offset is 0x3A8 and 0x3AC, the virtual device
->> will write s->core_registers[0x3A4
->>>> 2]. That is to say, the maxize of s->core_registers could be ((0x3A4
->>>> 2) + 1). However, the current size of s->core_registers is (0x3AF >>
->>>> 2), that is ((0x3A4 >> 2) + 2), which is out of the range.
->> In xlxn_dp_read, the access to offset 0x3A8 or 0x3AC will be directed to
->> the offset 0x3A8 (incorrect functionality) or 0x3AC (out-of-bounds read)
->> rather than 0x3A4.
->>
->> This patch enforces the read access to offset 0x3A8 and 0x3AC to 0x3A4,
->> but does not adjust the size of s->core_registers to avoid breaking
->> migration.
->>
->> Fixes: 58ac482a66de ("introduce xlnx-dp")
->> Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
-> 
-> Acked-by: Alexander Bulekov <alxndr@bu.edu>
-> 
-> If there is somehow a regression, the test won't fail in a fatal way, so
-> maybe it makes sense to throw in a setenv(UBSAN_OPTIONS=halt_on_error=1)
+On Fri, 6 Aug 2021 at 15:43, Alexander Bulekov <alxndr@bu.edu> wrote:
+> As a side note(not strictly related to this fix) should we continue
+> joining reproducer patches with the fixes? In order to test the
+> reproducer, you need to cleave the fix off the patch. At the same time
+> we don't want to mess up bisection, so does it make sense to have the
+> reproducer patch be separate but come last in the series?
 
-Where? Main meson? qtests meson? setenv() in the test (but would
-override preset variable)?
+My preference is for the test case as a separate patch, last
+in the series. For this kind of minor easy-to-review fix it
+matters less, but sometimes the right fix for a problem might
+be larger or more complicated, and then having the test case
+in the same patch makes that patch awkwardly large.
 
+Also the person able to review the code change and the person
+able to review the test case might not be the same...
+
+thanks
+-- PMM

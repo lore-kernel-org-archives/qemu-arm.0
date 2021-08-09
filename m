@@ -1,126 +1,106 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp36659lff;
-        Fri, 6 Aug 2021 00:09:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzNd5bo05auB+4aVEn9OLMboekWLBEMTLsLowj4+FfQPWs//PPCByrPahH9rK6WcDIUTqqM
-X-Received: by 2002:a05:6638:2186:: with SMTP id s6mr8375491jaj.127.1628233790002;
-        Fri, 06 Aug 2021 00:09:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628233789; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp164899lff;
+        Mon, 9 Aug 2021 02:13:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyypx943WPRADjd6UFHMPIqmEI1cDHJM0obuiXLxldO1MwgI5X4rwvbe9GKBLIOQEQyG6iY
+X-Received: by 2002:a92:2009:: with SMTP id j9mr317429ile.108.1628500436740;
+        Mon, 09 Aug 2021 02:13:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628500436; cv=none;
         d=google.com; s=arc-20160816;
-        b=KgFeGWEJfKS2zdkeqvtzGK7vHcfRwESCvZp1xhmvCXVurcB9iEDyi7cXrICmhBy1c7
-         Gxiwjq5e/KmdjAot3/hserNTZIjeabLxD+tJAVg+XxA9thZ8RVB6srUnFFm0tcplljk7
-         9trlSyLACIKzrhQkmwlFHt0q9KbVFo/wKM/2HOLDmqOsaO06qBNUSK/3QgeWYl3qwRHg
-         oo7hDVVCnCmgSvLjQq/eK0kaq66a2rYaeFk1mB02Fzk+KyAJytW+43WdSqtQ/YpCir0T
-         9Cyidh2FH44rqSQJNmA6FyduoLeoCivWgyj885/cl7OU0u5/Mun1RLuozrrrKcQE9Rag
-         ZCcg==
+        b=VD/9slKn/gJyvi1Hhi46AanM1BVm655kfdigaKl5lPswe1qFr+dPFpgnQHrPVo8qb5
+         dNP1Y+YZyHLbpV3Fd7oy+vGNgiKln1UgxBmMRoNY4uuKU8/NBKaoGzAf0QjLzvFPig+7
+         bL6Uo6sM+x6+mp3QcarhtzamKRLIEeIXXTdQG2SlstJWNFoyVS1PKyjFphmPUZh8vSut
+         gjsqK8PW1hN1dWhEMqC41uQtWGBryeHEC3X2HQLYxOI7QB77+cUPuwPcNKCfOxoosv8P
+         d1+Bxi5JR7aQHwQlr9SaPyaFCiIBrg/ulKaV5USjKK14nji+lCw8lkc8ciqaDgH0b7np
+         WqwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=xTsqqTAh9rgL5puHOUW2vUf8hv8RUIKLGRdtAAgA7zE=;
-        b=ArQNz9ZD8pSPZRvQclZ2noaFp2pHvFTpHFYbchaL78Ik9N0G06sVd6zptkAhtMcPy2
-         9d4+wlDqyJeC3nKKFzSNs6frtFcMixhW/+o1BepmYbC/CPHL9BBwm3HNVenC93syFQEd
-         Oz7KrUHUZhQYJN2eoDhe1Af2F0ZTrHBXfi4VR2OJVGYn+f6z350Vggs6eOha1JzL2JGX
-         5yWdyaXsoPnF9KeuYOIXVnG7zV03XnTdfNYyBQi5VMmOVF4YpPXDXFcbpunCjMcFZkUh
-         BUd93wYInVPN1AEE8FN00+K48fwMD0vA41opsct7sAPmtKK+76u72IZtzNeJ5nkq12+s
-         3suA==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=O/SUyjpCKPa1NyUnM0sSjnDbTlJNyAN0RvOXoyd3MXU=;
+        b=ws2QaJF5nayrHdStD1CxGiGnabbeGieBOUKNUwDos0DM1E5usJPlkZiU4BFMUMqsen
+         HcCsyGuviQCD0DdryLqEjrALeUiIUOwR+C2837IoayK4gAF1/2v8nM2Ld4DZB+yDvv1R
+         Ieu6zJWNELCovcBa+PjfGutCWL9r2bTJFOzfRxRjnyGai7qpgF2liKpHvAs5Y9vgNjrq
+         zxxrX3ttlHRkiQRX7npmLk2lV0W1y4lj+H+zogliKOjG3c4zuBNtPP4fFCebe1T+MRPF
+         MHuzGMJjSEIyG0wNT3kFdW5wMWvbMb4x94b7gWWjoN7HR1SiHVmCDAa2uYezsb9KrsXm
+         y3MA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WIedMSfT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HeYrPIQv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k40si8074095jav.47.2021.08.06.00.09.49
+        by mx.google.com with ESMTPS id t4si15707544iln.130.2021.08.09.02.13.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Aug 2021 00:09:49 -0700 (PDT)
+        Mon, 09 Aug 2021 02:13:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WIedMSfT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HeYrPIQv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57858 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mBtzJ-0001kp-9u
-	for alex.bennee@linaro.org; Fri, 06 Aug 2021 03:09:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43556)
+	id 1mD1M4-0007v6-3K
+	for alex.bennee@linaro.org; Mon, 09 Aug 2021 05:13:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38522)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mBtzA-0001jZ-3d
- for qemu-arm@nongnu.org; Fri, 06 Aug 2021 03:09:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50544)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1mD1Lv-0007sa-A8
+ for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:13:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29448)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mBtz7-0004di-MC
- for qemu-arm@nongnu.org; Fri, 06 Aug 2021 03:09:39 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1mD1Lt-0001kx-0z
+ for qemu-arm@nongnu.org; Mon, 09 Aug 2021 05:13:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628233776;
+ s=mimecast20190719; t=1628500423;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xTsqqTAh9rgL5puHOUW2vUf8hv8RUIKLGRdtAAgA7zE=;
- b=WIedMSfTBheIym+qefnQmtMoPauM36g+WPaOGzFbRkU7PoKdHepBIZ9DyXfQh2ssjXgNIG
- vFxUzctAXkHPO3iz1WstMiF7lN4rL6bpUEt78AkWI3ulKsXlziBpicC0tGlJf1S+yHM4PU
- y+u1vDnvmWz4J1T7a9ri9mo5y0mRtWE=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-586-88mf-xRANXa3nF0SauTvdA-1; Fri, 06 Aug 2021 03:09:34 -0400
-X-MC-Unique: 88mf-xRANXa3nF0SauTvdA-1
-Received: by mail-wm1-f70.google.com with SMTP id
- g187-20020a1c20c40000b02902458d430db6so1695663wmg.9
- for <qemu-arm@nongnu.org>; Fri, 06 Aug 2021 00:09:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xTsqqTAh9rgL5puHOUW2vUf8hv8RUIKLGRdtAAgA7zE=;
- b=TvL+Nkt/Vx8Xh86VPE3IkFJmZ6GDZ3dXSC5iu5IE0kqt5LYsnzROu6lE7seSc3aJZh
- HBwlJhxazcAHaPXmMb98kOKYU2Tf5vNZ+dNF7RYnLMKPtTM95nmnrGrgRRMhp/ohYjkf
- athxItEti/fzK/hsNuUbSBqYakGRTmBwsG6b6e9f4+IYyPgYzk/GIhhoEd+y50o5CQ0M
- XaEGef4Y7LMXYw1bNuSQQ+p+1qxjoZT31lhgmZCJg+Rlc9sC99msWm8hD9uu2B2foiE0
- FbUI3tZhHzSkc7MLE5Obye4PTaadz8K0iijp1B2RyVRpw4+MXilugtsqNp36OM/ddWH/
- qH2A==
-X-Gm-Message-State: AOAM5339v1QA6kMf5fXbOouV+OPILYDko5VInyjjhrSVwvHABJZpwj4G
- D1SxTQtg0AtYgWn7TM5q4JQRPz17hueMc5ZdMiDSVE29/KtLgM/Rd2CezmIwt+1JHVvV2+dd92U
- brsSdrHC2Z/jr
-X-Received: by 2002:a1c:4b04:: with SMTP id y4mr1730412wma.133.1628233773641; 
- Fri, 06 Aug 2021 00:09:33 -0700 (PDT)
-X-Received: by 2002:a1c:4b04:: with SMTP id y4mr1730385wma.133.1628233773372; 
- Fri, 06 Aug 2021 00:09:33 -0700 (PDT)
-Received: from thuth.remote.csb
- (dynamic-046-114-147-107.46.114.pool.telefonica.de. [46.114.147.107])
- by smtp.gmail.com with ESMTPSA id a12sm11040458wmj.22.2021.08.06.00.09.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Aug 2021 00:09:32 -0700 (PDT)
+ bh=O/SUyjpCKPa1NyUnM0sSjnDbTlJNyAN0RvOXoyd3MXU=;
+ b=HeYrPIQvbeHQnQe676xoopYfob7OP+pR30+Kiqavu0N12dBg0HzWtRFoqgB8A2y8HboTSU
+ E/ZsAvELGRE2jjnwwiab9sKvbRnLnk00GnWqIbUfKXG3Lb0tOYlhzmxN1cIQQpJMWBNb+R
+ MyE5Lb0qDEJwGNOf/dUPaGbpNq8YpJc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-553-LvUADNntNNCb0I0PJMOs4g-1; Mon, 09 Aug 2021 05:13:42 -0400
+X-MC-Unique: LvUADNntNNCb0I0PJMOs4g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C47C1190B2A3;
+ Mon,  9 Aug 2021 09:13:40 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.193.3])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 780104A66;
+ Mon,  9 Aug 2021 09:13:33 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id B34121800981; Mon,  9 Aug 2021 11:13:31 +0200 (CEST)
+Date: Mon, 9 Aug 2021 11:13:31 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Alexander Bulekov <alxndr@bu.edu>
 Subject: Re: [PATCH v2] hw/display/xlnx_dp: fix an out-of-bounds read in
  xlnx_dp_read
-To: Qiang Liu <cyruscyliu@gmail.com>
+Message-ID: <20210809091331.s2hy6qc566zhgg2a@sirius.home.kraxel.org>
 References: <1628059910-12060-1-git-send-email-cyruscyliu@gmail.com>
- <22f355e1-1c2c-cf24-ad41-45c937221bea@redhat.com>
- <CAAKa2jn++EK1S1WDChL=uu8YsX2y7DbqoF11_70jLYaw7ytMuA@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <b33a6638-260d-72fe-2b7e-cde99594d059@redhat.com>
-Date: Fri, 6 Aug 2021 09:09:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
 MIME-Version: 1.0
-In-Reply-To: <CAAKa2jn++EK1S1WDChL=uu8YsX2y7DbqoF11_70jLYaw7ytMuA@mail.gmail.com>
+In-Reply-To: <20210806144209.nbx4vlm6ofkza5pl@mozz.bu.edu>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
+X-Spam_score_int: -34
+X-Spam_score: -3.5
 X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.707,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.132, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -134,94 +114,30 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Qiang Liu <cyruscyliu@gmail.com>, Alistair Francis <alistair@alistair23.me>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Alexander Bulekov <alxndr@bu.edu>, Bandan Das <bsd@redhat.com>,
+ Bandan Das <bsd@redhat.com>,
  "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>,
  Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wQ7eH1M4iCxi
+X-TUID: W0V6TB8jr6rS
 
-On 06/08/2021 09.00, Qiang Liu wrote:
-> On Wed, Aug 4, 2021 at 3:43 PM Thomas Huth <thuth@redhat.com> wrote:
->>
->> On 04/08/2021 08.51, Qiang Liu wrote:
->>> xlnx_dp_read allows an out-of-bounds read at its default branch because
->>> of an improper index.
->>>
->>> According to
->>> https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
->>> (DP Module), registers 0x3A4/0x3A4/0x3AC are allowed.
->>>
->>> DP_INT_MASK     0x000003A4      32      mixed   0xFFFFF03F      Interrupt Mask Register for intrN.
->>> DP_INT_EN       0x000003A8      32      mixed   0x00000000      Interrupt Enable Register.
->>> DP_INT_DS       0x000003AC      32      mixed   0x00000000      Interrupt Disable Register.
->>>
->>> In xlnx_dp_write, when the offset is 0x3A8 and 0x3AC, the virtual device
->>> will write s->core_registers[0x3A4
->>>>> 2]. That is to say, the maxize of s->core_registers could be ((0x3A4
->>>>> 2) + 1). However, the current size of s->core_registers is (0x3AF >>
->>>>> 2), that is ((0x3A4 >> 2) + 2), which is out of the range.
->>> In xlxn_dp_read, the access to offset 0x3A8 or 0x3AC will be directed to
->>> the offset 0x3A8 (incorrect functionality) or 0x3AC (out-of-bounds read)
->>> rather than 0x3A4.
->>>
->>> This patch enforces the read access to offset 0x3A8 and 0x3AC to 0x3A4,
->>> but does not adjust the size of s->core_registers to avoid breaking
->>> migration.
->>>
->>> Fixes: 58ac482a66de ("introduce xlnx-dp")
->>> Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
->>> ---
->>> v2:
->>>     - not change DP_CORE_REG_ARRAY_SIZE
->>>     - add a qtest reproducer
->>>     - update the code style
->>>
->>> I have a question about the QTest reproducer. Before patching xlnx-dp,
->>> (0x3ac >> 2) will exceed the right bound of s->core_registers.  However,
->>> this is allowed by the assertion. There is no warning and this
->>> reproducer will pass. Is the reprodocer OK?
->>>
->>>    hw/display/xlnx_dp.c            |  6 +++++-
->>>    tests/qtest/fuzz-xlnx-dp-test.c | 33 +++++++++++++++++++++++++++++++++
->>>    tests/qtest/meson.build         |  1 +
->>>    3 files changed, 39 insertions(+), 1 deletion(-)
->>>    create mode 100644 tests/qtest/fuzz-xlnx-dp-test.c
->>>
->>> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
->>> index 7bcbb13..747df6e 100644
->>> --- a/hw/display/xlnx_dp.c
->>> +++ b/hw/display/xlnx_dp.c
->>> @@ -714,7 +714,11 @@ static uint64_t xlnx_dp_read(void *opaque, hwaddr offset, unsigned size)
->>>            break;
->>>        default:
->>>            assert(offset <= (0x3AC >> 2));
->>> -        ret = s->core_registers[offset];
->>> +        if (offset == (0x3A8 >> 2) || offset == (0x3AC >> 2)) {
->>> +            ret = s->core_registers[DP_INT_MASK];
->>> +        } else {
->>> +            ret = s->core_registers[offset];
->>> +        }
->>>            break;
->>>        }
->>>
->>> diff --git a/tests/qtest/fuzz-xlnx-dp-test.c b/tests/qtest/fuzz-xlnx-dp-test.c
->>> new file mode 100644
->>> index 0000000..69eb6c0
->>> --- /dev/null
->>> +++ b/tests/qtest/fuzz-xlnx-dp-test.c
->>
->> Would it make sense to call the file xlnx-zcu102.c instead, in case we want
->> to add other tests related to this machine later?
-> It seems that each file in tests/qtest is called by the name of a
-> single virtual device. I follow this pattern. Additionally, maybe if,
-> in the future, xlnx-dp is used by another machine, then it is not
-> proper to call the file xlnx-zcu102. What do you think about it?
+  Hi,
 
-Ok, fair points, then let's keep the name as you suggested.
+> As a side note(not strictly related to this fix) should we continue
+> joining reproducer patches with the fixes? In order to test the
+> reproducer, you need to cleave the fix off the patch. At the same time
+> we don't want to mess up bisection, so does it make sense to have the
+> reproducer patch be separate but come last in the series?
 
-  Thomas
+Yes, I think it makes sense to send the testcase as separate patch, and
+the ordering (fix first, testcase second) makes sense too.  If they are
+separated it is easy enough to create a local test branch with a
+different order, or to just temporarily revert the fix to test the
+testcase.
+
+take care,
+  Gerd
 

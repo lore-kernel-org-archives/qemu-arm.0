@@ -1,229 +1,205 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1334770lff;
-        Tue, 10 Aug 2021 06:41:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwsc6N5pmckJl75Mfa/Oh9pxzfVYXID5GzoLm7CO5XEkzYq90TDkkvxY2JXf4bEKPjggPYo
-X-Received: by 2002:a17:906:a40b:: with SMTP id l11mr3840681ejz.185.1628602861838;
-        Tue, 10 Aug 2021 06:41:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628602861; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1346833lff;
+        Tue, 10 Aug 2021 06:56:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyR5/TyBC6640wIc9KALbq3tgU2U64eww+t/8v/kDvFusHIsFq1A9MQWQyrOvQzLiQilrDI
+X-Received: by 2002:a5d:8611:: with SMTP id f17mr185682iol.153.1628603809043;
+        Tue, 10 Aug 2021 06:56:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628603809; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z5plDildndSij4KRmrDHNNZ5ng8aQGPCBncGfvqcVxrbqPUFLGpUQTyDnSmJjaG1MF
-         n+9DEGQ/WUTEAvEOXoAm8eu48vdq5YubY24mwIjHwV/MsDEn35IF8faSJfeVCehbXvIr
-         maPV3zOkBWMXdA26xROXhy7MUFR8WYRQ1eEdG0nJM/k9j7UUZP/m8DW/HIaPEC2HSGV2
-         S1Ho5y0hYvYKH+sEZ4yI3lK89Wx3lGZmjKTofx7Oe9a3uwQQa6JjRJzkZpQKF2RhGIbw
-         DnyVIDueKMxdsUSBb+IfF8bsh9fzgFR45GepuSWmlWnCfqhN5sxgADvGHZYTyij7QfNh
-         +MaA==
+        b=fgjAYylIm+y4BhFKbwcu/l/XdUW8FBCYdp3nxzmt6cCjicHds+mLZg/U/N6QwOh21P
+         0nE3dXNxvg83GA/2UoCz/n8hWEPVkJ9Rpr77j74z5Hb0CaPyu/vO7YCFyQaHBkexaz7K
+         POsxmTNjjyxXJmPOpGw4c9yCJ4L9gYf/lyG/C8BEwav+++0nj96plk1XyC2nLFQ6xJHx
+         iuypqb3qLIlGblaWiW1yiO70SU9XNUq93pXFsoBW0ksGs2KNtKzoqJCtE8q0G7GqmNw2
+         mijKdYC2hF4kcaEWaOMe4CtfBhMemCBCgC6kA64Lievym4VKGlyUUz6BCHOAoAwlYoyu
+         QfqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=RIardBH1mTSGd3Gukf1lpAbUgykGFuWsjwLIk8uxa5I=;
-        b=YewGxtyOWBjwulOq0um90PY+Gw39Q2tOHvcryjkUUhQRYc9bt29iiB610I//Dm3ee/
-         pweLmnHeIlrfDv+Bvx2grGeKCDck4j72EwoT3ydJ/0rS0Dtotcp7SH72UC/U8WUcji4X
-         4EOBa6u0l6BIMY/05vMQaGSWl48u+PAzNZ8dcJJuVmnOIBFjLhrad4iK3Acb4iLz78Ox
-         IChfDEIG93DbxARtNx9bL8XMU0LkSYWvwqSOApbGe4jX4neqW5WHnKDpcQBKU9hrUcCs
-         2opjtC0mLQ5v6w03IeM/S4cMhW6GnNMfcNzqKONoEoprPI3IzfBCO5NBeH2tc4cHD0H6
-         9/Pw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=/1uWyKvScPVWUF8clQne09JaGyiFt2d8093+tFdd7dI=;
+        b=qVsDJg+pxW1VWOlgBqN7rTgkjvZBrBn/hjB/E7EUC8sFdj2k8ALCL8LHKaC85oN735
+         DrW8ShKl8sqs4Ywjg/TsboLm1lN4U++fOFkW5VKmFtPUGASG4X1qkXyd1HVHVbLU0VrE
+         WeH5C8C5jGsc645OV0Ss0m0npILmEZ5yiRPxy7TkZud4Zn+3UwKJp5YXgKb0N2F3y9YD
+         lhOGb9XD7no3LN1DpJTO0HZR/HGoI4j9AfZcgZAkO70lye+yIz01xtLmE1j4YxJBq/ji
+         iZB2o0VZev+kuWKmOPtL06JCC/XZTGISXmlQP298iaHobAcBmiP+mS28xRA1el3mu71m
+         3UJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=ptQl0i++;
-       spf=softfail (google.com: domain of transitioning david.edmondson@oracle.com does not designate 66.111.4.237 as permitted sender) smtp.mailfrom=david.edmondson@oracle.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <david.edmondson@oracle.com>
-Received: from forward3-smtp.messagingengine.com (forward3-smtp.messagingengine.com. [66.111.4.237])
-        by mx.google.com with ESMTPS id re18si8734307ejb.89.2021.08.10.06.41.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Aug 2021 06:41:01 -0700 (PDT)
-Received-SPF: softfail (google.com: domain of transitioning david.edmondson@oracle.com does not designate 66.111.4.237 as permitted sender) client-ip=66.111.4.237;
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b="CYm/qART";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y14si26853236ill.48.2021.08.10.06.56.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Aug 2021 06:56:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=ptQl0i++;
-       spf=softfail (google.com: domain of transitioning david.edmondson@oracle.com does not designate 66.111.4.237 as permitted sender) smtp.mailfrom=david.edmondson@oracle.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailforward.nyi.internal (Postfix) with ESMTP id 1AB341940138;
-	Tue, 10 Aug 2021 09:41:01 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute4.internal (MEProxy); Tue, 10 Aug 2021 09:41:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:date:from
-	:message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=RIardBH1mTSGd3Guk
-	f1lpAbUgykGFuWsjwLIk8uxa5I=; b=ptQl0i++7W6T1/TxKrcKqz78gSDb1iOcm
-	jJ1jUAjU9knEaJ7FXzr/At/yulmRCmbPItZhqKYk2zgs1ybf+uxVkP5G+GSHeZMs
-	jSyCVP73o5YZ/QpVMeTV0I8/1npmFc1XhxYoSNhw9Nt6R+9TJFLOEXPN75ZyMwNg
-	duSPAfWw6yWX5uJvrbau8q6OJKyYDzgEavj6JmkrrAFa2B4G8KeA2xUFL3e0HqxT
-	EL+A/Re3abDOwtGMa6wRe0IhjAXMnc0XSG2Onkle9zzUIiSJBf0tJgxeQBa2CX0g
-	vc3Yk42wSp9EIsn4NoUZq29wg6H8UkuksPb0OaQRNodcRL3Q7dDIg==
-X-ME-Sender: <xms:5oESYQ3nhkQ-4OKgLklrcTyroVDvuzdLH6F2jit1TZYVZuvEQfocFA>
-    <xme:5oESYbEq-O6IIRD8Dkx2o296f4jik9yMjIbLpZK6409GrwUYBY0LxamB4CfP98Z19
-    fF0pLEZETnbx53eScM>
-X-ME-Received: <xmr:5oESYY6LkYb6GPuXfG-D9nR_Ae6fi3X852q4DB_Yz20wLrcv8NuNxRg7E0hmGENMh6A8mErm9wcQ-hz7BMLAzdT4MPT6bfPVD7Cstlbyyes>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrjeelgdeikecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefhvffufffkofgggfestdekredtredttdenucfhrhhomhepffgrvhhiugcugfgu
-    mhhonhgushhonhcuoegurghvihgurdgvughmohhnughsohhnsehorhgrtghlvgdrtghomh
-    eqnecuggftrfgrthhtvghrnhephfeftdeiveelteeuueekffdvffefiefgtddvffegiedt
-    geefffeliefhvedtkeefnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhush
-    htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegurghvihgurdgvughm
-    ohhnughsohhnsehorhgrtghlvgdrtghomh
-X-ME-Proxy: <xmx:5oESYZ1rJR_l5MvtXSHXUetblso4pycW9ewM26w3i7-fchX7G_2EUg>
-    <xmx:5oESYTGknXg16pvpqPHQ-HksKbz0trzQdvmJVd3iUAC2F-SgBTcnJg>
-    <xmx:5oESYS-LtVjGVILpx0oRDUCvceqVeulRRoG6cz_GGV8B3zBRVbafWQ>
-    <xmx:7YESYZV6f_pmHt5T144ubg6dhsh0aa21LQe73FQxEiPBnyNms3L0kD3VDHk>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 10 Aug 2021 09:40:52 -0400 (EDT)
-Received: from localhost (disaster-area.hh.sledj.net [local])
-	by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 2a9d1ee0;
-	Tue, 10 Aug 2021 13:40:50 +0000 (UTC)
-From: David Edmondson <david.edmondson@oracle.com>
-To: qemu-devel@nongnu.org
-Cc: "Shannon Zhao" <shannon.zhaosl@gmail.com>,
-	Max Reitz <mreitz@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	"Igor Mammedov" <imammedo@redhat.com>,
-	qemu-arm@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>,
-	"Peter Maydell" <peter.maydell@linaro.org>,
-	=?UTF-8?q?haibinzhang=28=E5=BC=A0=E6=B5=B7=E6=96=8C=29?= <haibinzhang@tencent.com>,
-	"John Snow" <jsnow@redhat.com>,
-	"Stefano Garzarella" <sgarzare@redhat.com>,
-	qemu-block@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Stefan Hajnoczi" <stefanha@redhat.com>,
-	"Xu Yandong" <xuyandong2@huawei.com>,
-	"Paolo Bonzini" <pbonzini@redhat.com>,
-	"Markus Armbruster" <armbru@redhat.com>,
-	"Zheng Xiang" <zhengxiang9@huawei.com>,
-	David Edmondson <david.edmondson@oracle.com>
-Subject: [PATCH v4 0/1] hw/pflash_cfi01: Allow an administrator to reduce the memory consumption of flash devices
-Date: Tue, 10 Aug 2021 14:40:49 +0100
-Message-Id: <20210810134050.396747-1-david.edmondson@oracle.com>
-X-Mailer: git-send-email 2.30.2
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b="CYm/qART";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:39852 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mDSFL-0003dq-VO
+	for alex.bennee@linaro.org; Tue, 10 Aug 2021 09:56:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46006)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1mDSDV-0001Qo-OA; Tue, 10 Aug 2021 09:54:53 -0400
+Received: from mail.kernel.org ([198.145.29.99]:47814)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1mDSDR-0002v4-KQ; Tue, 10 Aug 2021 09:54:52 -0400
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 96B2E61073;
+ Tue, 10 Aug 2021 13:54:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628603687;
+ bh=3t7sOCgcZ7Voa/1oPqI18JDCHx5GjM2EIHW1CY/E5J8=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=CYm/qARTWjc83aVWplI7XBZOiCptYd497fCf3mT/7OUtoFvS0EbR3Cf4JljJ34pmS
+ 50zc4Kb+pYa4h15BUlJIkRl6nxFPhrU0mQxcT6U/gqtSY4SVfMPyhHaSOL1rPC/Qqh
+ oavirCjc7HISre3jEjblAcxCZN3fTE4XrlUvOtEF2faqEEVJir+r8nMgVRZiwZD3Gn
+ V7BdJnSFWapFCKSipY207dhWxALZ7siIlfFbux4MHwfmV8mSoeM735dcbFnTMrkIZ7
+ KQ6gehwcaIqPqIXmanPGlV4p11A5RB2lUvczb3gNuBkQP7cr/X4SbJ4YiTB5cgJCHb
+ X+Pf4bhYWQ70w==
+Received: by mail-ot1-f48.google.com with SMTP id
+ e13-20020a9d63cd0000b02904fa42f9d275so11174923otl.1; 
+ Tue, 10 Aug 2021 06:54:47 -0700 (PDT)
+X-Gm-Message-State: AOAM533r3UkNHvBJWJhCTQwGqQDs+FfVT7AlVTfu1GbqCtAxsGjqdbAC
+ 7lRIW0GBf+Yiwmi6YsFqP5fwix9aDHTw5XfolG8=
+X-Received: by 2002:a9d:5cb:: with SMTP id 69mr21058780otd.90.1628603686954;
+ Tue, 10 Aug 2021 06:54:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: DLbCZxQN1n6e
+References: <20210810083057.99651-1-eric.auger@redhat.com>
+ <CAMj1kXHie7aFoQ-7aMcckX2OMepbGeE6SLV8x=FDppeZHws5OA@mail.gmail.com>
+ <4dae638d-6f96-c036-2a6b-5ef179012029@redhat.com>
+ <PAXPR08MB6987EDE1A3331050FC312AC490F79@PAXPR08MB6987.eurprd08.prod.outlook.com>
+In-Reply-To: <PAXPR08MB6987EDE1A3331050FC312AC490F79@PAXPR08MB6987.eurprd08.prod.outlook.com>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Tue, 10 Aug 2021 15:54:35 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXGeVZBqi00Xg8xhE_CoCQnDDmbbhawg-5reNpTTr=bCvA@mail.gmail.com>
+Message-ID: <CAMj1kXGeVZBqi00Xg8xhE_CoCQnDDmbbhawg-5reNpTTr=bCvA@mail.gmail.com>
+Subject: Re: [PATCH for-6.2] hw/arm/virt_acpi_build: Generate DBG2 table
+To: Samer El-Haj-Mahmoud <Samer.El-Haj-Mahmoud@arm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=198.145.29.99; envelope-from=ardb@kernel.org;
+ helo=mail.kernel.org
+X-Spam_score_int: -77
+X-Spam_score: -7.8
+X-Spam_bar: -------
+X-Spam_report: (-7.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.704,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ "jcm@redhat.com" <jcm@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Al Stone <ahs3@redhat.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uKHkMbEx/hsm
 
-As described in
-https://lore.kernel.org/r/20201116104216.439650-1-david.edmondson@oracle.com
-and
-https://lore.kernel.org/r/20210222174757.2329740-1-david.edmondson@oracle.com
-I'd like to reduce the amount of memory consumed by QEMU mapping UEFI
-images on aarch64.
-
-To recap:
-
-> Currently ARM UEFI images are typically built as 2MB/768kB flash
-> images for code and variables respectively. These images are both
-> then padded out to 64MB before being loaded by QEMU.
+On Tue, 10 Aug 2021 at 15:11, Samer El-Haj-Mahmoud
+<Samer.El-Haj-Mahmoud@arm.com> wrote:
 >
-> Because the images are 64MB each, QEMU allocates 128MB of memory to
-> read them, and then proceeds to read all 128MB from disk (dirtying
-> the memory). Of this 128MB less than 3MB is useful - the rest is
-> zero padding.
 >
-> On a machine with 100 VMs this wastes over 12GB of memory.
+>
+> > -----Original Message-----
+> > From: Eric Auger <eric.auger@redhat.com>
+> > Sent: Tuesday, August 10, 2021 6:25 AM
+> > To: Ard Biesheuvel <ardb@kernel.org>
+> > Cc: eric.auger.pro@gmail.com; Michael S. Tsirkin <mst@redhat.com>; Igor
+> > Mammedov <imammedo@redhat.com>; Philippe Mathieu-Daud=C3=A9
+> > <philmd@redhat.com>; Peter Maydell <peter.maydell@linaro.org>; Shannon
+> > Zhao <shannon.zhaosl@gmail.com>; qemu-arm <qemu-arm@nongnu.org>;
+> > qemu-devel@nongnu.org; Andrew Jones <drjones@redhat.com>;
+> > gshan@redhat.com; Samer El-Haj-Mahmoud <Samer.El-Haj-
+> > Mahmoud@arm.com>; Al Stone <ahs3@redhat.com>; jcm@redhat.com
+> > Subject: Re: [PATCH for-6.2] hw/arm/virt_acpi_build: Generate DBG2 tabl=
+e
+> >
+> > Hello Ard,
+> > On 8/10/21 11:36 AM, Ard Biesheuvel wrote:
+> > > On Tue, 10 Aug 2021 at 10:31, Eric Auger <eric.auger@redhat.com> wrot=
+e:
+> > >> ARM SBBR specification mandates DBG2 table (Debug Port Table 2).
+> > >> this latter allows to describe one or more debug ports.
+> > >>
+> > >> Generate an DBG2 table featuring a single debug port, the PL011.
+> > >>
+> > >> The DBG2 specification can be found at:
+> > >> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/ac=
+pi-
+> > debug-port-table?redirectedfrom=3DMSDN
+> > >>
+> > > Have the legal issues around this table been resolved in the mean
+> > > time?
+> > I don't know exactly what they are. Adding Al and Jon in the loop they
+> > have more information about this.
+> > How did you resolve the issue for EDK2
+> > (DynamicTablesPkg/Library/Acpi/Arm/AcpiDbg2LibArm/Dbg2Generator.c)?
+> > >  Also, any clue why this table is mandatory to begin with? The
+> > > SBBR has been very trigger happy lately with making things mandatory
+> > > that aren't truly required from a functional perspective.
+> > It seems there are kernel FW test suites that check all mandated tables
+> > are available and they currently fail for ARM virt.
+> > Indeed from a function pov, I don't know much about its usage on ARM.
+> >
+> > Maybe the SBBR spec should not flag the DBG2 as mandatory and test
+> > suites shall be updated. I think this should be clarified at ARM then,
+> > all the more so if there are legal issues as its spec is owned by Micro=
+soft?
+> >
+>
+> DBG2 has been required in SBBR since SBBR ver 1.0 (published 2016, with t=
+he 0.9 draft since 2014)
+> https://developer.arm.com/documentation/den0044/b/?lang=3Den
+>
+> SBBR requires DBG2 because Windows requires it on all systems: https://do=
+cs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-system-descrip=
+tion-tables#debug-port-table-2-dbg2 , and Windows is one of the key OSes ta=
+rgeted by SBBR.
+>
+> The DBG2 (and SPCR) spec license issue has been resolved since August 201=
+5. Microsoft updated both specs with identical license language, giving pat=
+ent rights for implementations under the Microsoft Community Promise, and t=
+he Open OWF 1.0. This Foundation.
+>
+> DBG2: https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/a=
+cpi-debug-port-table
+> SPCR: https://docs.microsoft.com/en-us/windows-hardware/drivers/serports/=
+serial-port-console-redirection-table
+>
 
-Some of the cleanups in the previous patches were incorporated, but
-the patch that reduced memory consumption was not accepted. This is
-essentially that patch rebased after some unrelated changes. Having
-investigated alternatives, I think that the patch here is useful as it
-stands.
+Thanks Samer, for stating this on record here - and apologies for
+suggesting that this was another frivolous addition to a recent SBBR
+revision.
 
-All read/write operations to areas outside of the underlying block
-device are handled directly. Reads return 0, writes either fail
-(read-only devices) or are discarded (writable devices).
+As for the difference between the two: SPCR describes the serial
+console, which is an actual interactive console used for maintenance,
+which exists in addition to the full blown Windows GUI, which is
+always the primary interface.
 
-This reduces the memory consumption for the AAVMF code image from
-64MiB to around 2MB and that for the AAVMF vars from 64MiB to 768KiB
-(presuming that the UEFI images are adjusted accordingly).
-
-For read-only devices (such as the AAVMF code) this seems completely
-safe.
-
-For writable devices there is a change in behaviour - previously it
-was possible to write anywhere in the extent of the flash device, read
-back the data written and have that data persist through a restart of
-QEMU. This is no longer the case - writes outside of the extent of the
-underlying backing block device will be discarded. That is, a read
-after a write will *not* return the written data, either immediately
-or after a QEMU restart - it will return zeros.
-
-Looking at the AAVMF implementation, it seems to me that if the
-initial VARS image is prepared as being 768KiB in size (which it is),
-none of AAVMF itself will attempt to write outside of that extent, and
-so I believe that this is an acceptable compromise.
-
-It would be relatively straightforward to allow writes outside of the
-backing device to persist for the lifetime of a particular QEMU by
-allocating memory on demand (i.e. when there is a write to the
-relevant region). This would allow a read to return the relevant data,
-but only until a QEMU restart, at which point the data would be lost.
-
-It may be possible to persist writes by extending the underlying
-backing device to accommodate a new extent. This would definitely add
-complication, as ideally the size of the memory sub-region would also
-be updated. I have not investigated this further.
-
-There was a suggestion in a previous thread that perhaps the pflash
-driver could be re-worked to use the block IO interfaces to access the
-underlying device "on demand" rather than reading in the entire image
-at startup (at least, that's how I understood the comment).
-
-An implementation of this based around mapping the flash region only
-for IO, which meant that every read or write had to be handled
-directly by the pflash driver (there was no ROMD style operation),
-made booting an aarch64 VM significantly slower - getting through the
-firmware went from under 1 second to around 10 seconds. It's possible
-that this could be improved by caching blocks or some other mechanism,
-but I have not pursued it further.
-
-Philippe implemented a suggestion to use mmap() to avoid the need to
-allocate (and dirty) memory for read-only pflash images in
-https://lore.kernel.org/qemu-devel/20210301115329.411762-1-philmd@redhat.com/.
-
-This solution was, I believe, considered incomplete, as:
-- it does not handle the case where the image underlying a pflash
-  device is changed via QAPI,
-- it does not handle writable devices.
-
-There is also an assumption that multiple QEMU instances on a single
-host will share the same AAVMF code image (to benefit from a shared
-mapping) - this is not the case in the environment that I am looking
-to support.
-
-If using mmap() for read-only device is particularly valuable, it
-could be combined with the patches here - the benefit would be
-cumulative.
-
-The only drawback that I see with this patch is the change in
-behaviour for writes beyond the extent of an underlying image. Unless
-the AAVMF build process is modified to generate smaller images (768kB
-for the variables, for example), this will never be a problem in
-reality, as the underlying image will match the size of the device.
-
-Only when a deliberate decision is taken to use an image smaller than
-the device does this drawback come to the fore, which is a tradeoff
-that an administrator can choose to make if they wish.
-
-v2:
-- Unify the approach for both read-only and writable devices, saving
-  another 63MiB per QEMU instance.
-
-v3:
-- Add Reviewed-by: for two changes (Philippe).
-- Call blk_pread() directly rather than using
-  blk_check_size_and_read_all(), given that we know how much we want
-  to read.
-
-v4:
-- Remove changes already upstream.
-- Rebase.
-
-David Edmondson (1):
-  hw/pflash_cfi01: Allow backing devices to be smaller than memory
-    region
-
- hw/block/pflash_cfi01.c | 105 ++++++++++++++++++++++++++++++++--------
- hw/block/trace-events   |   3 ++
- 2 files changed, 87 insertions(+), 21 deletions(-)
-
--- 
-2.30.2
+DBG2 is used as a debug port, which is used for the kernel debugger,
+if I am not mistaken. So SPCR and DBG2 are complementary, and it does
+make sense to have both.

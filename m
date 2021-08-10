@@ -1,240 +1,235 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1382070lff;
-        Tue, 10 Aug 2021 07:33:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyssex0ZNh8djcvdSudDXinkuUHhHE5lKDHjbjpGRJCr5it3BXuGxnc0qp9N7kr576qcvuj
-X-Received: by 2002:a05:620a:c0c:: with SMTP id l12mr28587359qki.318.1628606034415;
-        Tue, 10 Aug 2021 07:33:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628606034; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1486855lff;
+        Tue, 10 Aug 2021 09:36:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPH49XMFFizJS35ijfNUaWPMz9s0uxUQoZzov+Svetmz4g56Sth6xM+H80evXIz2OPgCV5
+X-Received: by 2002:a67:b304:: with SMTP id a4mr22728206vsm.19.1628613394832;
+        Tue, 10 Aug 2021 09:36:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628613394; cv=none;
         d=google.com; s=arc-20160816;
-        b=P9Noy245gcRRPXR7j7jFox8w+yC+6dLNAzgv/OmXezJhsuqhcdHlNG5wBVcrmxKIeo
-         8ZHevgGOSr0t67l6NwP2o4bo1XWBdG78CreNSFUpHyPqU/Nev+xn2HMEfvI10RW3UhN3
-         8BLObJmscnLpRL/paPo/59kdgTTh36LksGn1MmKhxcobaERJM2C7jNqQfHmuG+WtCbq3
-         aE7+IgbpP60ZsxPWdZk6wBZPMrS9pXaT75YHAvSJ42AmkL311t+jdbvpa/YlccH++GY5
-         smbsYMPMWIiel+QRKCNQvjywm7O6TH5XWdr/V5vQIrk8IjBfdaFKbGRBHE3y9dJ/wUbo
-         Xx0Q==
+        b=jYYVT5WvPZskRIqBb669jgCEg6aSGU8PYJc1NjNITABcObcpxf4LtLVAFUAPD+nkrc
+         rp7u28YoqUP6iJmQrfPfk2SWxlJdbdR9hvJBNLikZuQiSp4syP7nBlRgyvsND6DClcof
+         3rkt8LL647LfOZ8ZovRXjSsTIc5wabxaTaMtVHq+Q0gyaFm8w3ruWdlfsMY8u02Mfgq/
+         za8R+8qbj1d5ZXKJ2nByOb+0f57USZ7gucbi+I/D9gwg73pJAUAo5Uzm7OsY22D0zhFV
+         5pkXxXcMGGkdsTqCFYggfvV1UVTlba+w41jLYkp/dYXZVGfs0TZzk+Bbs1nhFu8uGeUv
+         LQHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=ozv5IuBXeN9fI37tZJ80jNX1pPdk/rvqOi5Y1U+6zNc=;
-        b=KY3qT64p3oSXjMJJl7hqIiOiFzOYR0BReSmN4mc4tbphSDFRgP2fx9k9NAlU5BATWg
-         IJO9OxiRNUb8x8QZ9QdJiO3I91ZAw1GydvSPneO7Tonojb97j0vIt/WxhJS7H3WcpYZp
-         7IP2S22Q5wLpHvGLEMkZPWDjIuxXkCI0lKRJMBnudcbhQ8zvK3ksthT32Di6RaEFiqIE
-         i3Q7w9hbQPuQL1z1bQ+kab3HgfAjNkB/G75fo365FbhNyPqR7LG52U5erw6FCeHiD2Ig
-         hZYv+ZIvO94gItlgxUGtxnJDmqU8myOXRf1Bdsmmdi/RbHsN7nV6klZHXn4zhP98Hqbo
-         aO8Q==
+        bh=EvEBLJLgxQmdogfkfpgOZJ1W2XzmWBOzsXrdlDlzJ0k=;
+        b=Qf1sWgNtt/5ZCOY7ojIaIg8zn/eWfsJpXtUSu6Z9yvhkLbjhwetKzb12sxD2+gqz25
+         ASfoa8ZMMAFSc6acG9v8M+gkiMbS6gPSZ1TgaU2UE310UVK8FYDDG+48NSTFTNGnx7uM
+         YETneAZMw5qXBoMaSFcrU7qFr8f3aUWELlZH7ODOXoIK6bX2Y4rV7Uu7t6fBMfKgXfBH
+         BfdsFWdFHuuAQ8dwdskQWNovYVu4Hm61U33i80lv5Uk8jwpzvfkn0S7xsKc6HdvMbJKe
+         WU008rJ2VU4CQieJjNWNs7pU6A6gtkMsfr601elgEEp7DyGxw/ZhAuE1TrRkVENaw1Kw
+         Xymg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KR0/D9uC";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MKYv39y1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f13si13770762qti.247.2021.08.10.07.33.54
+        by mx.google.com with ESMTPS id b13si9837364uaj.200.2021.08.10.09.36.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Aug 2021 07:33:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Aug 2021 09:36:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KR0/D9uC";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43470 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MKYv39y1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDSpF-0003nI-Rj
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 10:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56996)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mDUjy-0002SK-4v
+	for alex.bennee@linaro.org; Tue, 10 Aug 2021 12:36:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mDSp3-0003mK-Ky
- for qemu-arm@nongnu.org; Tue, 10 Aug 2021 10:33:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45483)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mDSp0-00027a-4R
- for qemu-arm@nongnu.org; Tue, 10 Aug 2021 10:33:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628606016;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ozv5IuBXeN9fI37tZJ80jNX1pPdk/rvqOi5Y1U+6zNc=;
- b=KR0/D9uCA8W5DjZM3lFlQdnpjWcBxR5GDUYWeBosy0DyplTe5vbzCzR3TpiMtPf8XDg69S
- fIfX11F/QSBNcoT+Wzlu6lRwl+/W5bO6qTWei3UkF16KXWmNwMhkx1hKsMoOcnXC59fP7t
- 8UB4pEKys4vBQfsyuJ32EhwZIgtTl7M=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-204-47U3orWHPoCFxFT7zJNlOQ-1; Tue, 10 Aug 2021 10:33:34 -0400
-X-MC-Unique: 47U3orWHPoCFxFT7zJNlOQ-1
-Received: by mail-wm1-f71.google.com with SMTP id
- i6-20020a05600c3546b029025b0d825fd2so1066236wmq.4
- for <qemu-arm@nongnu.org>; Tue, 10 Aug 2021 07:33:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mDUiF-0001Af-0n; Tue, 10 Aug 2021 12:34:48 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:34591)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mDUi9-00072u-MB; Tue, 10 Aug 2021 12:34:43 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ o1-20020a05600c5101b02902e676fe1f04so2150069wms.1; 
+ Tue, 10 Aug 2021 09:34:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=EvEBLJLgxQmdogfkfpgOZJ1W2XzmWBOzsXrdlDlzJ0k=;
+ b=MKYv39y1FTN4jqu00O5yWhRoYsHf6j/ESZ00iD0TkbQdmaoSC9Afn+m+h+9p9cp5Fc
+ SgFV1ODP6bCEQOoNh8FMLCuuLjwIU+J/v0uTM4jb1IEuKhT+U/9IKU3OO9K5Bbvs9lq7
+ rX5MT2JZfPVqYYC5VxgMkbMg/lg4unF+TGWxHBpZv4w3RpZJqybC0t2P5sqaSLGgnfbG
+ WpFf/0wDAfiupcqsXplv0y4NGdGWYl2I1xJWO43tlCmsevQ1TN/aQcQL/O1fzN4SGzZU
+ yYORTOSuy2BM4kM6/mbyiDXJ8UbRniny21zdtbm+/fmzipi3h9FTnQ0QtfKSw9yKH6dV
+ eZ+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=ozv5IuBXeN9fI37tZJ80jNX1pPdk/rvqOi5Y1U+6zNc=;
- b=cXMenIxA9RefL7g7S6Kmo6XkG0BByB3Ovwrwnyq/2OyTG+CZORtZNJDQOipp+TKyp7
- smuiTcthARy8O7DKkeQJ4Uswinza7mwZ7Rjf6W+Go8dNr1LmaUsoqxrLBumMmg58LLKh
- j6VYHgbYd8FvHXISSKtswnCBwe9c7uNA/mhblSAbFb1UXaXO8hz288eP65p6CE4YVf9S
- DQF7cjl+1HPb3x3VZr/Vukt5DTQ6BhHYKeoRZKvKLLyllA10FBKcVqGiBHPdBT7gUne5
- jFtruG+CAVkjk5DVL5DymckKKDE5rrrQLKhu2jFRvuNF68Jb6njQxUNmgvOudXwbKWlB
- wSRA==
-X-Gm-Message-State: AOAM532LDeFQsQs1pQ3lPM5/rk5CUprHst4/jMW5/daHaUp+ScBaHIQZ
- 7XY8pCN8PNV/A32Y1rrkK7Tn/jwRGUv1brxDHA+4GqaDm71fKwjVk+EXdkN1U1IKNKT2/ojj3JH
- 33HqzHsCVVtrb
-X-Received: by 2002:a1c:7907:: with SMTP id l7mr5094454wme.87.1628606012850;
- Tue, 10 Aug 2021 07:33:32 -0700 (PDT)
-X-Received: by 2002:a1c:7907:: with SMTP id l7mr5094411wme.87.1628606012534;
- Tue, 10 Aug 2021 07:33:32 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id p14sm3034796wmi.42.2021.08.10.07.33.30
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=EvEBLJLgxQmdogfkfpgOZJ1W2XzmWBOzsXrdlDlzJ0k=;
+ b=DYlPrJIlwnR9d54WYUX+enoBSIjYVYWK5S1o4XBB0053mEJczf8wv/4ZnbjqqIx7cC
+ 3LupJme4isC8jApqGfOzDH3nVsy/oUSC/v1wCNllO+1i1YJ7HUL7PUy37b01ceBfIQ7N
+ DB7Wkp8AOzoSQ3tN9VzLhfmmEqcs8VZXyIR8VfraWb0YBICjG1xRWyX4qUKjc8APIpe0
+ GcTeZvzxJQGedcoHeL2J2W7Zv1MpoiO2GladitafBSVL2sIBGbmIXkzpOvh1YZ/VSZbf
+ s0r4Tf5l67IBhsVXVR8lswk7T0lerGXuEbdX6/UNn8BvHHHLJvRAJgZlJC+qKTm6wCFf
+ Ra9w==
+X-Gm-Message-State: AOAM533MnyAuYTSaTVl7hBXrOY29t6zgSbRjKoADV2PucfhUif4dk+D3
+ tE7xONoAwqhvXScjGA72tNQ=
+X-Received: by 2002:a1c:20c5:: with SMTP id g188mr3965031wmg.142.1628613279114; 
+ Tue, 10 Aug 2021 09:34:39 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id h9sm2670382wrv.84.2021.08.10.09.34.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Aug 2021 07:33:32 -0700 (PDT)
-Subject: Re: [PATCH for-6.2] hw/arm/virt_acpi_build: Generate DBG2 table
-To: Ard Biesheuvel <ardb@kernel.org>,
- Samer El-Haj-Mahmoud <Samer.El-Haj-Mahmoud@arm.com>
-References: <20210810083057.99651-1-eric.auger@redhat.com>
- <CAMj1kXHie7aFoQ-7aMcckX2OMepbGeE6SLV8x=FDppeZHws5OA@mail.gmail.com>
- <4dae638d-6f96-c036-2a6b-5ef179012029@redhat.com>
- <PAXPR08MB6987EDE1A3331050FC312AC490F79@PAXPR08MB6987.eurprd08.prod.outlook.com>
- <CAMj1kXGeVZBqi00Xg8xhE_CoCQnDDmbbhawg-5reNpTTr=bCvA@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <1b031fe5-60f3-4727-052b-b103fed20910@redhat.com>
-Date: Tue, 10 Aug 2021 16:33:30 +0200
+ Tue, 10 Aug 2021 09:34:38 -0700 (PDT)
+Subject: Re: [PATCH v2] fsl-imx6ul: Instantiate SAI1/2/3 and ASRC as
+ unimplemented devices
+To: Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20210810160318.87376-1-linux@roeck-us.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6e8a0fb5-04e9-d6e6-989a-41de4eacf303@amsat.org>
+Date: Tue, 10 Aug 2021 18:34:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <CAMj1kXGeVZBqi00Xg8xhE_CoCQnDDmbbhawg-5reNpTTr=bCvA@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20210810160318.87376-1-linux@roeck-us.net>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) DKIMWL_WL_HIGH=-0.704, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- "jcm@redhat.com" <jcm@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Al Stone <ahs3@redhat.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1MHdhu3nChYN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FtbdRs1aFygR
 
-Hi Samer, Ard,
+On 8/10/21 6:03 PM, Guenter Roeck wrote:
+> Instantiate SAI1/2/3 and ASRC as unimplemented devices to avoid random
+> Linux kernel crashes, such as
+> 
+> Unhandled fault: external abort on non-linefetch (0x808) at 0xd1580010^M
+> pgd = (ptrval)^M
+> [d1580010] *pgd=8231b811, *pte=02034653, *ppte=02034453^M
+> Internal error: : 808 [#1] SMP ARM^M
+> ...
+> [<c095e974>] (regmap_mmio_write32le) from [<c095eb48>] (regmap_mmio_write+0x3c/0x54)^M
+> [<c095eb48>] (regmap_mmio_write) from [<c09580f4>] (_regmap_write+0x4c/0x1f0)^M
+> [<c09580f4>] (_regmap_write) from [<c095837c>] (_regmap_update_bits+0xe4/0xec)^M
+> [<c095837c>] (_regmap_update_bits) from [<c09599b4>] (regmap_update_bits_base+0x50/0x74)^M
+> [<c09599b4>] (regmap_update_bits_base) from [<c0d3e9e4>] (fsl_asrc_runtime_resume+0x1e4/0x21c)^M
+> [<c0d3e9e4>] (fsl_asrc_runtime_resume) from [<c0942464>] (__rpm_callback+0x3c/0x108)^M
+> [<c0942464>] (__rpm_callback) from [<c0942590>] (rpm_callback+0x60/0x64)^M
+> [<c0942590>] (rpm_callback) from [<c0942b60>] (rpm_resume+0x5cc/0x808)^M
+> [<c0942b60>] (rpm_resume) from [<c0942dfc>] (__pm_runtime_resume+0x60/0xa0)^M
+> [<c0942dfc>] (__pm_runtime_resume) from [<c0d3ecc4>] (fsl_asrc_probe+0x2a8/0x708)^M
+> [<c0d3ecc4>] (fsl_asrc_probe) from [<c0935b08>] (platform_probe+0x58/0xb8)^M
+> [<c0935b08>] (platform_probe) from [<c0933264>] (really_probe.part.0+0x9c/0x334)^M
+> [<c0933264>] (really_probe.part.0) from [<c093359c>] (__driver_probe_device+0xa0/0x138)^M
+> [<c093359c>] (__driver_probe_device) from [<c0933664>] (driver_probe_device+0x30/0xc8)^M
+> [<c0933664>] (driver_probe_device) from [<c0933c88>] (__driver_attach+0x90/0x130)^M
+> [<c0933c88>] (__driver_attach) from [<c0931060>] (bus_for_each_dev+0x78/0xb8)^M
+> [<c0931060>] (bus_for_each_dev) from [<c093254c>] (bus_add_driver+0xf0/0x1d8)^M
+> [<c093254c>] (bus_add_driver) from [<c0934a30>] (driver_register+0x88/0x118)^M
+> [<c0934a30>] (driver_register) from [<c01022c0>] (do_one_initcall+0x7c/0x3a4)^M
+> [<c01022c0>] (do_one_initcall) from [<c1601204>] (kernel_init_freeable+0x198/0x22c)^M
+> [<c1601204>] (kernel_init_freeable) from [<c0f5ff2c>] (kernel_init+0x10/0x128)^M
+> [<c0f5ff2c>] (kernel_init) from [<c010013c>] (ret_from_fork+0x14/0x38)^M
+> 
+> or
+> 
+> Unhandled fault: external abort on non-linefetch (0x808) at 0xd19b0000^M
+> pgd = (ptrval)^M
+> [d19b0000] *pgd=82711811, *pte=308a0653, *ppte=308a0453^M
+> Internal error: : 808 [#1] SMP ARM^M
+> ...
+> [<c095e974>] (regmap_mmio_write32le) from [<c095eb48>] (regmap_mmio_write+0x3c/0x54)^M
+> [<c095eb48>] (regmap_mmio_write) from [<c09580f4>] (_regmap_write+0x4c/0x1f0)^M
+> [<c09580f4>] (_regmap_write) from [<c0959b28>] (regmap_write+0x3c/0x60)^M
+> [<c0959b28>] (regmap_write) from [<c0d41130>] (fsl_sai_runtime_resume+0x9c/0x1ec)^M
+> [<c0d41130>] (fsl_sai_runtime_resume) from [<c0942464>] (__rpm_callback+0x3c/0x108)^M
+> [<c0942464>] (__rpm_callback) from [<c0942590>] (rpm_callback+0x60/0x64)^M
+> [<c0942590>] (rpm_callback) from [<c0942b60>] (rpm_resume+0x5cc/0x808)^M
+> [<c0942b60>] (rpm_resume) from [<c0942dfc>] (__pm_runtime_resume+0x60/0xa0)^M
+> [<c0942dfc>] (__pm_runtime_resume) from [<c0d4231c>] (fsl_sai_probe+0x2b8/0x65c)^M
+> [<c0d4231c>] (fsl_sai_probe) from [<c0935b08>] (platform_probe+0x58/0xb8)^M
+> [<c0935b08>] (platform_probe) from [<c0933264>] (really_probe.part.0+0x9c/0x334)^M
+> [<c0933264>] (really_probe.part.0) from [<c093359c>] (__driver_probe_device+0xa0/0x138)^M
+> [<c093359c>] (__driver_probe_device) from [<c0933664>] (driver_probe_device+0x30/0xc8)^M
+> [<c0933664>] (driver_probe_device) from [<c0933c88>] (__driver_attach+0x90/0x130)^M
+> [<c0933c88>] (__driver_attach) from [<c0931060>] (bus_for_each_dev+0x78/0xb8)^M
+> [<c0931060>] (bus_for_each_dev) from [<c093254c>] (bus_add_driver+0xf0/0x1d8)^M
+> [<c093254c>] (bus_add_driver) from [<c0934a30>] (driver_register+0x88/0x118)^M
+> [<c0934a30>] (driver_register) from [<c01022c0>] (do_one_initcall+0x7c/0x3a4)^M
+> [<c01022c0>] (do_one_initcall) from [<c1601204>] (kernel_init_freeable+0x198/0x22c)^M
+> [<c1601204>] (kernel_init_freeable) from [<c0f5ff2c>] (kernel_init+0x10/0x128)^M
+> [<c0f5ff2c>] (kernel_init) from [<c010013c>] (ret_from_fork+0x14/0x38)^M
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+> v2: Updated description to include tracebacks and to use the term 'instantiate'
+>     Added inline comments describing devices in more detail
 
-On 8/10/21 3:54 PM, Ard Biesheuvel wrote:
-> On Tue, 10 Aug 2021 at 15:11, Samer El-Haj-Mahmoud
-> <Samer.El-Haj-Mahmoud@arm.com> wrote:
->>
->>
->>> -----Original Message-----
->>> From: Eric Auger <eric.auger@redhat.com>
->>> Sent: Tuesday, August 10, 2021 6:25 AM
->>> To: Ard Biesheuvel <ardb@kernel.org>
->>> Cc: eric.auger.pro@gmail.com; Michael S. Tsirkin <mst@redhat.com>; Igor
->>> Mammedov <imammedo@redhat.com>; Philippe Mathieu-Daudé
->>> <philmd@redhat.com>; Peter Maydell <peter.maydell@linaro.org>; Shannon
->>> Zhao <shannon.zhaosl@gmail.com>; qemu-arm <qemu-arm@nongnu.org>;
->>> qemu-devel@nongnu.org; Andrew Jones <drjones@redhat.com>;
->>> gshan@redhat.com; Samer El-Haj-Mahmoud <Samer.El-Haj-
->>> Mahmoud@arm.com>; Al Stone <ahs3@redhat.com>; jcm@redhat.com
->>> Subject: Re: [PATCH for-6.2] hw/arm/virt_acpi_build: Generate DBG2 table
->>>
->>> Hello Ard,
->>> On 8/10/21 11:36 AM, Ard Biesheuvel wrote:
->>>> On Tue, 10 Aug 2021 at 10:31, Eric Auger <eric.auger@redhat.com> wrote:
->>>>> ARM SBBR specification mandates DBG2 table (Debug Port Table 2).
->>>>> this latter allows to describe one or more debug ports.
->>>>>
->>>>> Generate an DBG2 table featuring a single debug port, the PL011.
->>>>>
->>>>> The DBG2 specification can be found at:
->>>>> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-
->>> debug-port-table?redirectedfrom=MSDN
->>>> Have the legal issues around this table been resolved in the mean
->>>> time?
->>> I don't know exactly what they are. Adding Al and Jon in the loop they
->>> have more information about this.
->>> How did you resolve the issue for EDK2
->>> (DynamicTablesPkg/Library/Acpi/Arm/AcpiDbg2LibArm/Dbg2Generator.c)?
->>>>  Also, any clue why this table is mandatory to begin with? The
->>>> SBBR has been very trigger happy lately with making things mandatory
->>>> that aren't truly required from a functional perspective.
->>> It seems there are kernel FW test suites that check all mandated tables
->>> are available and they currently fail for ARM virt.
->>> Indeed from a function pov, I don't know much about its usage on ARM.
->>>
->>> Maybe the SBBR spec should not flag the DBG2 as mandatory and test
->>> suites shall be updated. I think this should be clarified at ARM then,
->>> all the more so if there are legal issues as its spec is owned by Microsoft?
->>>
->> DBG2 has been required in SBBR since SBBR ver 1.0 (published 2016, with the 0.9 draft since 2014)
->> https://developer.arm.com/documentation/den0044/b/?lang=en
->>
->> SBBR requires DBG2 because Windows requires it on all systems: https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-system-description-tables#debug-port-table-2-dbg2 , and Windows is one of the key OSes targeted by SBBR.
->>
->> The DBG2 (and SPCR) spec license issue has been resolved since August 2015. Microsoft updated both specs with identical license language, giving patent rights for implementations under the Microsoft Community Promise, and the Open OWF 1.0. This Foundation.
-OK thank you for confirming all the previously known DBG2 legal issues
-were resolved.
->>
->> DBG2: https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table
->> SPCR: https://docs.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
->>
-> Thanks Samer, for stating this on record here - and apologies for
-> suggesting that this was another frivolous addition to a recent SBBR
-> revision.
->
-> As for the difference between the two: SPCR describes the serial
-> console, which is an actual interactive console used for maintenance,
-> which exists in addition to the full blown Windows GUI, which is
-> always the primary interface.
-https://bugzilla.redhat.com/show_bug.cgi?id=1661288#c56
-seems to contradict the above statement. Do I understand correctly that
-if the SPCR is exposed and if "console=ttyAMA0 console=tty0" is not set
-in the kernel params, the serial becomes the primary console instead of
-the tty0 (hence your choice of developping console preference DXE in
-tianocore)?
+Thank you!
 
-Anyway I will respin this patch and use the build_append_int_noprefix() API.
+Peter you might want to s/^M// when queueing ;)
 
-Thanks
-
-Eric
->
-> DBG2 is used as a debug port, which is used for the kernel debugger,
-> if I am not mistaken. So SPCR and DBG2 are complementary, and it does
-> make sense to have both.
->
-
+>     Added Philippe's Reviewed-by: tag
+> 
+>  hw/arm/fsl-imx6ul.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> 
+> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> index e0128d7316..1d1a708dd9 100644
+> --- a/hw/arm/fsl-imx6ul.c
+> +++ b/hw/arm/fsl-imx6ul.c
+> @@ -534,6 +534,13 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+>       */
+>      create_unimplemented_device("sdma", FSL_IMX6UL_SDMA_ADDR, 0x4000);
+>  
+> +    /*
+> +     * SAI (Audio SSI (Synchronous Serial Interface))
+> +     */
+> +    create_unimplemented_device("sai1", FSL_IMX6UL_SAI1_ADDR, 0x4000);
+> +    create_unimplemented_device("sai2", FSL_IMX6UL_SAI2_ADDR, 0x4000);
+> +    create_unimplemented_device("sai3", FSL_IMX6UL_SAI3_ADDR, 0x4000);
+> +
+>      /*
+>       * PWM
+>       */
+> @@ -542,6 +549,11 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+>      create_unimplemented_device("pwm3", FSL_IMX6UL_PWM3_ADDR, 0x4000);
+>      create_unimplemented_device("pwm4", FSL_IMX6UL_PWM4_ADDR, 0x4000);
+>  
+> +    /*
+> +     * Audio ASRC (asynchronous sample rate converter)
+> +     */
+> +    create_unimplemented_device("asrc", FSL_IMX6UL_ASRC_ADDR, 0x4000);
+> +
+>      /*
+>       * CAN
+>       */
+> 

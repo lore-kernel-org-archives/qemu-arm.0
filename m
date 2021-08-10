@@ -1,187 +1,305 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1304827lff;
-        Tue, 10 Aug 2021 06:07:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOds1Hs2SmxlRwtspxS6sZx84CojNgP7tKiWMDQuyy3FMw6U72+UbpVO0lkcLJRkM+VlmB
-X-Received: by 2002:a17:907:9602:: with SMTP id gb2mr27855527ejc.354.1628600829670;
-        Tue, 10 Aug 2021 06:07:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628600829; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1334772lff;
+        Tue, 10 Aug 2021 06:41:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwG6BfnPRth4xiJhj4gAUFspgsMzKz7mLWG8hkXdIdMbDB70BCZKUNfcO/uRPuzmvJLvmg2
+X-Received: by 2002:a50:f699:: with SMTP id d25mr4885601edn.323.1628602861958;
+        Tue, 10 Aug 2021 06:41:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628602861; cv=none;
         d=google.com; s=arc-20160816;
-        b=G9qHKq4pJyT/UpYgnvDkeaiw3oNshkICJH50mBg/pFfnCWMKQoEdOG1jzMhWAZJJEw
-         OxQT2qtKKUcEDF6hVt8Gr8gIHpMwLepFYchbxGOouy1XQs68qeLGyMnkzKJtBAExLzgI
-         5Jn4bqKiQrk2P4M/57BYIcrrUOaJHc2qaRqRB2wL2ZXF3o3gCdoSCc8wdn3QuyoJ6Odb
-         8bWwteQaLYnUoalhQzxeG9GtPNFhNI+L3zZIxXSdXIBhehyzUxon+YwTdvjDMaK0wi2b
-         pGJe/tjtn24SPpAp6rf1FQNpPcqSAlZinMpinLVZmDN88tQk+qgri+VOPsPi9Ui7uj+K
-         20Kw==
+        b=N5n6MOsxQIVtKfaZJB0kRLLrtpNLHZlMm//TEQl8H9QZMxd7oJ/8u6KXDlrPiMs2EH
+         ymt4TulDhcF7VukrybSdgsadoXBvV6fmKvv4tBvpCi3Md2N5kSj1CLWBY+G1XRw4ha57
+         RCfAbNMrywBmat86SrsVQJ5fvKbmtgUKRaAmugAK2ghtg61lL3KnLyHnv2NaiqdDZqsm
+         cPg8vXUh0oEIxY0fNan1i/pUoD2CyzC3XRvkU0J5QxQF5YDJ0Oy8lBxLcNeZQpe16jDX
+         tbLbVKMHePEQKK9RimiUY6p4B6RvEeqX3N+s7lZXP58oH2NhMqhTiiSQWeEKA0lJ2dZE
+         NQdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=D2v8w1PU4a87XmsGvh3awPCADXRMG9ow8c7kJz2jiyw=;
-        b=iTbgbsTXWXRvtCZ68f4TU1KZh/6Ke+JVEjasHpt7mwGdRxnFaycHlOgAVy8YB9zc3e
-         XLG3BXM21V+Cf6j8LsaFOYRco6OdSok4faKXgElvCK+U8x+QLKYgkPef88B/8o5OiePS
-         V80sYgs8b9J/NY9IwnyZJTs1tAm+K9VNUAaNAYLvNu2q6eTml2kQ125DRdsXRe+V+UPe
-         VbtHSPMBG7h6GX3XpOShy2YmTpykugxog3fDFFnFzW6wIbifFAFvGzg6VamBI2rceT7p
-         NH6vPKJ3TOE7pU1Wqqyb7yTS0aYUaHV5ZiOdspalyWVKooJOdT6Q51kd3G//vARQvWAj
-         WY+w==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=B7yw234pFsdlhlhxFOpTGWvxm5kTKGDXEngEIAXEhMk=;
+        b=kecF+FwDt1qM066Hl/xMlblh4KPzO/zt0sQ7q7A5IkfJJ8g43g9VrVVzBVLMvWV1H2
+         1+6Qqs3pcvtEfkdS0GtR2no4zF4alYrrNi0AnTyRisl3rxwwBVvb/+hkiDOYLAsWMl6T
+         GlADZkmf07CiodBA6LK+K8hXFpu2dGENbH1I+QHNlSYVxx3/TTAu64wRTMaWGM/jdOsB
+         Z9NDeqBOYLjtyxcwaOequCd6ka57HdhsNwng2Xlr6DRcbTRiDdD+3aCuVnocLjnWASPf
+         SOzdw7FXQHtbuyOGJQb8lD22/wOYAPGKqN1TFlMqTO+L36yBpBtMqH9Rf2vCLG9D7O/v
+         Gjkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W73f2HSS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si957083eds.548.2021.08.10.06.07.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Aug 2021 06:07:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=uP85APQq;
+       spf=softfail (google.com: domain of transitioning david.edmondson@oracle.com does not designate 66.111.4.237 as permitted sender) smtp.mailfrom=david.edmondson@oracle.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <david.edmondson@oracle.com>
+Received: from forward3-smtp.messagingengine.com (forward3-smtp.messagingengine.com. [66.111.4.237])
+        by mx.google.com with ESMTPS id ee28si10123791edb.265.2021.08.10.06.41.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Aug 2021 06:41:01 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning david.edmondson@oracle.com does not designate 66.111.4.237 as permitted sender) client-ip=66.111.4.237;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W73f2HSS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33272 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDRTI-0000Aa-PA
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 09:07:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35346)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mDRT8-00007A-0I
- for qemu-arm@nongnu.org; Tue, 10 Aug 2021 09:06:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56464)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mDRT4-0001V0-RC
- for qemu-arm@nongnu.org; Tue, 10 Aug 2021 09:06:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628600814;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=D2v8w1PU4a87XmsGvh3awPCADXRMG9ow8c7kJz2jiyw=;
- b=W73f2HSSlO/+YlTo98tp5vRBMlZdnqflVKrnA05tJMHHScTkXoT/FyoC9cj+IhC75MCYCM
- sWhIvvnq+YeFZWhjPNIf7RdMTkXReEVubYkFvNxoKQRiR1dKJrlQzbNtz0wodWFzYQFR+M
- DLHimFvGOc0+Yj/EjV+m2FBvAibVmOY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-226-4FL5BMSrP-yuymjKoiMKmQ-1; Tue, 10 Aug 2021 09:06:53 -0400
-X-MC-Unique: 4FL5BMSrP-yuymjKoiMKmQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E20901026222;
- Tue, 10 Aug 2021 13:06:47 +0000 (UTC)
-Received: from localhost (unknown [10.22.32.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E6D543AFD;
- Tue, 10 Aug 2021 13:06:44 +0000 (UTC)
-Date: Tue, 10 Aug 2021 09:06:44 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Juan Quintela <quintela@redhat.com>
-Subject: Re: [PATCH for-6.2 05/12] [automated] Move QOM typedefs and add
- missing includes
-Message-ID: <20210810130644.k3cyqdj52bcloyfn@habkost.net>
-References: <20210806211127.646908-1-ehabkost@redhat.com>
- <20210806211127.646908-6-ehabkost@redhat.com>
- <877dgt1paz.fsf@secure.mitica>
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=uP85APQq;
+       spf=softfail (google.com: domain of transitioning david.edmondson@oracle.com does not designate 66.111.4.237 as permitted sender) smtp.mailfrom=david.edmondson@oracle.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailforward.nyi.internal (Postfix) with ESMTP id 3FD36194009B;
+	Tue, 10 Aug 2021 09:41:01 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute4.internal (MEProxy); Tue, 10 Aug 2021 09:41:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:date:from
+	:in-reply-to:message-id:mime-version:references:subject:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; bh=B7yw234pFsdlhlhxFOpTGWvxm5kTKGDXEngEIAXEhMk=; b=uP85APQq
+	y2gyKcmmvscMiYWdtLq+tTS+znnD8y499eaRiFdJ+TOjqYlFl0IOhEj4//e4gs5b
+	AqypzEL9qCdYOnYjzaFGBIm9AlQiJtiq1jW8w/s2x9B6YZoRSoxtSFddMWDwa8dc
+	5ZkOJ9l2eVdCttRzUalrSD/ow8O6SpTjd0dgyvn7KCfKZtlb/1AXipldMNWuHVqb
+	g38qaq0UEfA1VwTYp3VwDLQIGo3ake80FWACI5gbOUgX2dMbCuaszDvUpLLBo1LR
+	/6k5EH2XDQlYxxJevLkSOP6aVkI+kc+iphmCLbUHgMVqdGrAKbTsMZetyts751+Z
+	VuQYROM2XRJhmg==
+X-ME-Sender: <xms:54ESYW3OLKBfthajFApo0l4OaaHj5htGNG3mv4nxMyWv-k7P_zMPsA>
+    <xme:54ESYZHu-44K4_ewGiCXwk-BPrWbK86NCcQXyJYRknagIyYLyl0Alw9ltp_2shANm
+    UQGGqCu0eiMdv9N-vo>
+X-ME-Received: <xmr:54ESYe4xp9xo0to5_tq1dhhrV88_1gh2zVW6_Dp8nYFzzudgG4R5JoG7hotj7OFF_S2fugwY3bwexN5r9IDsl9poAn8wr3WI1v5WmTntfpI>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrjeelgdeikecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpefhvffufffkofgjfhgggfestdekredtredttdenucfhrhhomhepffgrvhhiugcu
+    gfgumhhonhgushhonhcuoegurghvihgurdgvughmohhnughsohhnsehorhgrtghlvgdrtg
+    homheqnecuggftrfgrthhtvghrnhepudefteejgfefhfdtjefhhedtffethfetkeehgfel
+    heffhfeihfeglefgjedtheeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpe
+    hmrghilhhfrhhomhepuggrvhhiugdrvggumhhonhgushhonhesohhrrggtlhgvrdgtohhm
+X-ME-Proxy: <xmx:54ESYX2CV9rcWwWbJacSOPnzMdixaUBAoHG-11_zNSvJjAFDW_tcTg>
+    <xmx:54ESYZGh_oPf4u9gFVco9t9-q_qqeku1ZDz_OQJlRMHGtBPDzNp9xQ>
+    <xmx:54ESYQ-tJSnL90F4WO-HrcGJq21W8VJC_sZLj9edZtNiqQXbedGfSg>
+    <xmx:7YESYfXkKEW_sAjrVS2fF7mhNoPc7i7TRup81WHfOUwtMYdBY8jQPJB25Ak>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 10 Aug 2021 09:40:53 -0400 (EDT)
+Received: from localhost (disaster-area.hh.sledj.net [local])
+	by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id a555f518;
+	Tue, 10 Aug 2021 13:40:50 +0000 (UTC)
+From: David Edmondson <david.edmondson@oracle.com>
+To: qemu-devel@nongnu.org
+Cc: "Shannon Zhao" <shannon.zhaosl@gmail.com>,
+	Max Reitz <mreitz@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	"Igor Mammedov" <imammedo@redhat.com>,
+	qemu-arm@nongnu.org,
+	Kevin Wolf <kwolf@redhat.com>,
+	"Peter Maydell" <peter.maydell@linaro.org>,
+	=?UTF-8?q?haibinzhang=28=E5=BC=A0=E6=B5=B7=E6=96=8C=29?= <haibinzhang@tencent.com>,
+	"John Snow" <jsnow@redhat.com>,
+	"Stefano Garzarella" <sgarzare@redhat.com>,
+	qemu-block@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Stefan Hajnoczi" <stefanha@redhat.com>,
+	"Xu Yandong" <xuyandong2@huawei.com>,
+	"Paolo Bonzini" <pbonzini@redhat.com>,
+	"Markus Armbruster" <armbru@redhat.com>,
+	"Zheng Xiang" <zhengxiang9@huawei.com>,
+	David Edmondson <david.edmondson@oracle.com>
+Subject: [PATCH v4 1/1] hw/pflash_cfi01: Allow backing devices to be smaller than memory region
+Date: Tue, 10 Aug 2021 14:40:50 +0100
+Message-Id: <20210810134050.396747-2-david.edmondson@oracle.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210810134050.396747-1-david.edmondson@oracle.com>
+References: <20210810134050.396747-1-david.edmondson@oracle.com>
 MIME-Version: 1.0
-In-Reply-To: <877dgt1paz.fsf@secure.mitica>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.704,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Alexey Kardashevskiy <aik@ozlabs.ru>,
- Andrew Jeffery <andrew@aj.id.au>, Jason Wang <jasowang@redhat.com>,
- Bin Meng <bin.meng@windriver.com>, David Hildenbrand <david@redhat.com>,
- qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Vijai Kumar K <vijai@behindbytes.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Klaus Jensen <its@irrelevant.dk>, Vikram Garhwal <fnu.vikram@xilinx.com>,
- qemu-block@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>,
- qemu-ppc@nongnu.org, Huacai Chen <chenhuacai@kernel.org>,
- Havard Skinnemoen <hskinnemoen@google.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Corey Minyard <minyard@acm.org>, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, Bandan Das <bsd@redhat.com>,
- qemu-arm@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Keith Busch <kbusch@kernel.org>, qemu-riscv@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>,
- Thomas Huth <huth@tuxfamily.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Tyrone Ting <kfting@nuvoton.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /Hg4Ej/FBm5I
+Content-Transfer-Encoding: 8bit
+X-TUID: +7BVyY1IupSb
 
-On Tue, Aug 10, 2021 at 02:01:40PM +0200, Juan Quintela wrote:
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > Some typedefs and macros are defined after the type check macros.
-> > This makes it difficult to automatically replace their
-> > definitions with OBJECT_DECLARE_TYPE.
-> >
-> > Patch generated using:
-> >
-> >  $ ./scripts/codeconverter/converter.py -i --pattern=MoveSymbols \
-> >     $(git grep -l '' -- '*.[ch]')
-> >
-> > which will:
-> > - split "typdef struct { ... } TypedefName" declarations
-> > - move the typedefs and #defines above the type check macros
-> > - add missing #include "qom/object.h" lines if necessary
-> >
-> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> 
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
+Allow the backing device to be smaller than the extent of the flash
+device by mapping it as a subregion of the flash device region.
 
-Thanks!
+Return zeroes for all reads of the flash device beyond the extent of
+the backing device.
 
-> 
-> Just curious, how did my name ended on the CC'd list?  I don't see any
-> file that I touched or that is migration related.
+For writes beyond the extent of the underlying device, fail on
+read-only devices and discard them for writable devices.
 
-include/hw/vmstate-if.h is in the migration section in
-MAINTAINERS.
+Signed-off-by: David Edmondson <david.edmondson@oracle.com>
+---
+ hw/block/pflash_cfi01.c | 105 ++++++++++++++++++++++++++++++++--------
+ hw/block/trace-events   |   3 ++
+ 2 files changed, 87 insertions(+), 21 deletions(-)
 
+diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+index 81f9f971d8..f3289b6a2f 100644
+--- a/hw/block/pflash_cfi01.c
++++ b/hw/block/pflash_cfi01.c
+@@ -83,6 +83,8 @@ struct PFlashCFI01 {
+     uint64_t counter;
+     unsigned int writeblock_size;
+     MemoryRegion mem;
++    MemoryRegion mem_outer;
++    char outer_name[64];
+     char *name;
+     void *storage;
+     VMChangeStateEntry *vmstate;
+@@ -434,7 +436,6 @@ static inline void pflash_data_write(PFlashCFI01 *pfl, hwaddr offset,
+         }
+         break;
+     }
+-
+ }
+ 
+ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+@@ -656,8 +657,44 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+ }
+ 
+ 
+-static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr, uint64_t *value,
+-                                              unsigned len, MemTxAttrs attrs)
++static MemTxResult pflash_outer_read_with_attrs(void *opaque, hwaddr addr,
++                                                uint64_t *value, unsigned len,
++                                                MemTxAttrs attrs)
++{
++    PFlashCFI01 *pfl = opaque;
++
++    trace_pflash_outer_read(pfl->name, addr, len);
++    *value = 0;
++    return MEMTX_OK;
++}
++
++static MemTxResult pflash_outer_write_with_attrs(void *opaque, hwaddr addr,
++                                                 uint64_t value, unsigned len,
++                                                 MemTxAttrs attrs)
++{
++    PFlashCFI01 *pfl = opaque;
++
++    trace_pflash_outer_write(pfl->name, addr, len);
++    if (pfl->ro) {
++        return MEMTX_ERROR;
++    } else {
++        warn_report_once("%s: "
++                         "attempt to write outside of the backing block device "
++                         "(offset " TARGET_FMT_plx ") ignored",
++                         pfl->name, addr);
++        return MEMTX_OK;
++    }
++}
++
++static const MemoryRegionOps pflash_cfi01_outer_ops = {
++    .read_with_attrs = pflash_outer_read_with_attrs,
++    .write_with_attrs = pflash_outer_write_with_attrs,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr,
++                                              uint64_t *value, unsigned len,
++                                              MemTxAttrs attrs)
+ {
+     PFlashCFI01 *pfl = opaque;
+     bool be = !!(pfl->features & (1 << PFLASH_BE));
+@@ -670,8 +707,9 @@ static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr, uint64_
+     return MEMTX_OK;
+ }
+ 
+-static MemTxResult pflash_mem_write_with_attrs(void *opaque, hwaddr addr, uint64_t value,
+-                                               unsigned len, MemTxAttrs attrs)
++static MemTxResult pflash_mem_write_with_attrs(void *opaque, hwaddr addr,
++                                               uint64_t value, unsigned len,
++                                               MemTxAttrs attrs)
+ {
+     PFlashCFI01 *pfl = opaque;
+     bool be = !!(pfl->features & (1 << PFLASH_BE));
+@@ -800,7 +838,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+ {
+     ERRP_GUARD();
+     PFlashCFI01 *pfl = PFLASH_CFI01(dev);
+-    uint64_t total_len;
++    uint64_t outer_len, inner_len;
+     int ret;
+ 
+     if (pfl->sector_len == 0) {
+@@ -816,35 +854,60 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    total_len = pfl->sector_len * pfl->nb_blocs;
+-
+-    memory_region_init_rom_device(
+-        &pfl->mem, OBJECT(dev),
+-        &pflash_cfi01_ops,
+-        pfl,
+-        pfl->name, total_len, errp);
+-    if (*errp) {
+-        return;
+-    }
+-
+-    pfl->storage = memory_region_get_ram_ptr(&pfl->mem);
+-    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
++    outer_len = pfl->sector_len * pfl->nb_blocs;
+ 
+     if (pfl->blk) {
+         uint64_t perm;
++
+         pfl->ro = !blk_supports_write_perm(pfl->blk);
+         perm = BLK_PERM_CONSISTENT_READ | (pfl->ro ? 0 : BLK_PERM_WRITE);
+         ret = blk_set_perm(pfl->blk, perm, BLK_PERM_ALL, errp);
+         if (ret < 0) {
+             return;
+         }
++
++        inner_len = blk_getlength(pfl->blk);
++
++        if (inner_len > outer_len) {
++            error_setg(errp, "%s: "
++                       "block backend provides %" PRIu64 " bytes, "
++                       "device limited to %" PRIu64 " bytes",
++                       pfl->name, inner_len, outer_len);
++            return;
++        }
+     } else {
+         pfl->ro = false;
++        inner_len = outer_len;
+     }
+ 
++    trace_pflash_realize(pfl->name, pfl->ro, inner_len, outer_len);
++
++    snprintf(pfl->outer_name, sizeof(pfl->outer_name),
++             "%s container", pfl->name);
++    memory_region_init_io(&pfl->mem_outer, OBJECT(dev),
++                          &pflash_cfi01_outer_ops,
++                          pfl, pfl->outer_name, outer_len);
++
++    memory_region_init_rom_device(&pfl->mem, OBJECT(dev),
++                                  &pflash_cfi01_ops,
++                                  pfl, pfl->name, inner_len, errp);
++    if (*errp) {
++        return;
++    }
++
++    memory_region_add_subregion(&pfl->mem_outer, 0, &pfl->mem);
++
++    pfl->storage = memory_region_get_ram_ptr(&pfl->mem);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem_outer);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
++
+     if (pfl->blk) {
+-        if (!blk_check_size_and_read_all(pfl->blk, pfl->storage, total_len,
+-                                         errp)) {
++        int ret = blk_pread(pfl->blk, 0, pfl->storage, inner_len);
++
++        if (ret < 0) {
++            error_setg_errno(errp, -ret,
++                             "cannot read %" PRIu64 " "
++                             "bytes from block backend", inner_len);
+             vmstate_unregister_ram(&pfl->mem, DEVICE(pfl));
+             return;
+         }
+diff --git a/hw/block/trace-events b/hw/block/trace-events
+index d86b53520c..3d1e07261e 100644
+--- a/hw/block/trace-events
++++ b/hw/block/trace-events
+@@ -21,10 +21,13 @@ pflash_io_read(const char *name, uint64_t offset, unsigned int size, uint32_t va
+ pflash_io_write(const char *name, uint64_t offset, unsigned int size, uint32_t value, uint8_t wcycle) "%s: offset:0x%04"PRIx64" size:%u value:0x%04x wcycle:%u"
+ pflash_manufacturer_id(const char *name, uint16_t id) "%s: read manufacturer ID: 0x%04x"
+ pflash_mode_read_array(const char *name) "%s: read array mode"
++pflash_outer_read(const char *name, uint64_t addr, unsigned int len) "%s: addr:0x%" PRIx64 " len:%d"
++pflash_outer_write(const char *name, uint64_t addr, unsigned int len) "%s: addr:0x%" PRIx64 " len:%d"
+ pflash_postload_cb(const char *name)  "%s: updating bdrv"
+ pflash_read_done(const char *name, uint64_t offset, uint64_t ret) "%s: ID:0x%" PRIx64 " ret:0x%" PRIx64
+ pflash_read_status(const char *name, uint32_t ret) "%s: status:0x%x"
+ pflash_read_unknown_state(const char *name, uint8_t cmd) "%s: unknown command state:0x%x"
++pflash_realize(const char *name, bool ro, uint64_t blk_len, uint64_t total_len) "%s: ro:%d blk_len:0x%" PRIx64 " total_len:0x%" PRIx64
+ pflash_reset(const char *name) "%s: reset"
+ pflash_sector_erase_start(const char *name, int width1, uint64_t start, int width2, uint64_t end) "%s: start sector erase at: 0x%0*" PRIx64 "-0x%0*" PRIx64
+ pflash_timer_expired(const char *name, uint8_t cmd) "%s: command 0x%02x done"
 -- 
-Eduardo
-
+2.30.2

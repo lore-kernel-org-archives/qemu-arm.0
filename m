@@ -1,235 +1,194 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1486855lff;
-        Tue, 10 Aug 2021 09:36:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPH49XMFFizJS35ijfNUaWPMz9s0uxUQoZzov+Svetmz4g56Sth6xM+H80evXIz2OPgCV5
-X-Received: by 2002:a67:b304:: with SMTP id a4mr22728206vsm.19.1628613394832;
-        Tue, 10 Aug 2021 09:36:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628613394; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1548875lff;
+        Tue, 10 Aug 2021 10:57:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwk8wodZ/AbtMaOkeUfgzB8w5P4rQfV076XIERIRC0JTH+SLFv//S9dsZjtzL6j+Y7q3HLA
+X-Received: by 2002:a05:622a:610:: with SMTP id z16mr26320772qta.99.1628618222621;
+        Tue, 10 Aug 2021 10:57:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628618222; cv=none;
         d=google.com; s=arc-20160816;
-        b=jYYVT5WvPZskRIqBb669jgCEg6aSGU8PYJc1NjNITABcObcpxf4LtLVAFUAPD+nkrc
-         rp7u28YoqUP6iJmQrfPfk2SWxlJdbdR9hvJBNLikZuQiSp4syP7nBlRgyvsND6DClcof
-         3rkt8LL647LfOZ8ZovRXjSsTIc5wabxaTaMtVHq+Q0gyaFm8w3ruWdlfsMY8u02Mfgq/
-         za8R+8qbj1d5ZXKJ2nByOb+0f57USZ7gucbi+I/D9gwg73pJAUAo5Uzm7OsY22D0zhFV
-         5pkXxXcMGGkdsTqCFYggfvV1UVTlba+w41jLYkp/dYXZVGfs0TZzk+Bbs1nhFu8uGeUv
-         LQHw==
+        b=SIJ0Xz9lyoP5ouQlOKps3zcz7nsTNRn9Vf2S16ALGxqCOZOo5vXW4d56w427o90wPK
+         SZ5JiYpp3nfySb+zPupfY3doVzrzuyITNmh2J3xD3095utO3q09bkLOFo0Ov1u0MP16y
+         2IrSAR1QNQ1E6SOasX6LPB2z6ZMn0Dw8XGXUOliT1nJOdDEbRoAFGGPjALfWzTbKPfXe
+         qcnqWq0zvfuqyXwArkUoAB6iJLxM9ZoMEWDPBP+c3glrU1b2IDqO178EVb/r8U7IPe3b
+         lSevbP9yYuz78lV8Tew4qdEnrgrXtH8HRXHk3imZGZxBjlHxfYo5miIoULdm1YS7CFDa
+         PkZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=EvEBLJLgxQmdogfkfpgOZJ1W2XzmWBOzsXrdlDlzJ0k=;
-        b=Qf1sWgNtt/5ZCOY7ojIaIg8zn/eWfsJpXtUSu6Z9yvhkLbjhwetKzb12sxD2+gqz25
-         ASfoa8ZMMAFSc6acG9v8M+gkiMbS6gPSZ1TgaU2UE310UVK8FYDDG+48NSTFTNGnx7uM
-         YETneAZMw5qXBoMaSFcrU7qFr8f3aUWELlZH7ODOXoIK6bX2Y4rV7Uu7t6fBMfKgXfBH
-         BfdsFWdFHuuAQ8dwdskQWNovYVu4Hm61U33i80lv5Uk8jwpzvfkn0S7xsKc6HdvMbJKe
-         WU008rJ2VU4CQieJjNWNs7pU6A6gtkMsfr601elgEEp7DyGxw/ZhAuE1TrRkVENaw1Kw
-         Xymg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=qS/22leVWfTTilKCAwDu9JaM+8d73K/CskvFmLZ/x2o=;
+        b=PkwUUFFus8RH08tC8D+9A6254CKLMcWX4evwtk0/0UcuUv82Q5a1fYxb4oAOa7781r
+         Vofk1qGkShQB66L760JI13knj839kMizISWWIYoImHhh6BJcrZXa68Sc+pgPf3SrImiH
+         kqhXVAxuhZBYASFWYI2ppDp9Xju2r0hge2G4MBP6lKMLDT40GBmwkKeJrq2FywBQM8Gp
+         X0b16Ne4Eupt0BsN8N1CX5r+TF2Ek9nJ381dHpK/aXIPcKLd/fyy4Gs/waYQyUMPUc68
+         4FI8MISl5e/JeXGieHXnntL1KtKg4okXZX7WZR4maG3D8dqEEfYUUBPIxof1dddCnI5J
+         UZfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MKYv39y1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tRcutMaz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b13si9837364uaj.200.2021.08.10.09.36.34
+        by mx.google.com with ESMTPS id o13si4312748qtm.224.2021.08.10.10.57.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Aug 2021 09:36:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Aug 2021 10:57:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MKYv39y1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52196 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tRcutMaz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDUjy-0002SK-4v
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 12:36:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60540)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mDVzq-0005DS-3F
+	for alex.bennee@linaro.org; Tue, 10 Aug 2021 13:57:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mDUiF-0001Af-0n; Tue, 10 Aug 2021 12:34:48 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:34591)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mDVz3-0004Is-ET; Tue, 10 Aug 2021 13:56:13 -0400
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f]:43967)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mDUi9-00072u-MB; Tue, 10 Aug 2021 12:34:43 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- o1-20020a05600c5101b02902e676fe1f04so2150069wms.1; 
- Tue, 10 Aug 2021 09:34:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mDVz1-0006tM-Oi; Tue, 10 Aug 2021 13:56:13 -0400
+Received: by mail-ot1-x32f.google.com with SMTP id
+ r16-20020a0568304190b02904f26cead745so33771otu.10; 
+ Tue, 10 Aug 2021 10:56:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EvEBLJLgxQmdogfkfpgOZJ1W2XzmWBOzsXrdlDlzJ0k=;
- b=MKYv39y1FTN4jqu00O5yWhRoYsHf6j/ESZ00iD0TkbQdmaoSC9Afn+m+h+9p9cp5Fc
- SgFV1ODP6bCEQOoNh8FMLCuuLjwIU+J/v0uTM4jb1IEuKhT+U/9IKU3OO9K5Bbvs9lq7
- rX5MT2JZfPVqYYC5VxgMkbMg/lg4unF+TGWxHBpZv4w3RpZJqybC0t2P5sqaSLGgnfbG
- WpFf/0wDAfiupcqsXplv0y4NGdGWYl2I1xJWO43tlCmsevQ1TN/aQcQL/O1fzN4SGzZU
- yYORTOSuy2BM4kM6/mbyiDXJ8UbRniny21zdtbm+/fmzipi3h9FTnQ0QtfKSw9yKH6dV
- eZ+g==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qS/22leVWfTTilKCAwDu9JaM+8d73K/CskvFmLZ/x2o=;
+ b=tRcutMazKZq/76aJ6+IiJrAcTR6ufedTzc40tj25timU4JI1snepvR+r/QNm5xmCt7
+ LRkHlAVF3ITPUhms8fkWWB//UhmCs82CfoXMYkEAnEdd/eDPfysivXCiNTDCJLG7BiyX
+ JJARqH3YkAdJkSS8x8g7aPYFVSgP1yyMEjoZ6FMuOyL2rGQSZHQJQLFSj46nmp0slu/E
+ fncYMB7VejQ7Qug/Hp1iNyUI/LA4OCNaWb8hkebcM8wlR7ED7a7Z7YxebdJ8JW5pAqEw
+ HWdFR+7NjvylpMrHqM10fnEGl8TGjpowUfkkojF9Wg5TAjNBptVqUxuN0dDdzQi6f09y
+ mAqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EvEBLJLgxQmdogfkfpgOZJ1W2XzmWBOzsXrdlDlzJ0k=;
- b=DYlPrJIlwnR9d54WYUX+enoBSIjYVYWK5S1o4XBB0053mEJczf8wv/4ZnbjqqIx7cC
- 3LupJme4isC8jApqGfOzDH3nVsy/oUSC/v1wCNllO+1i1YJ7HUL7PUy37b01ceBfIQ7N
- DB7Wkp8AOzoSQ3tN9VzLhfmmEqcs8VZXyIR8VfraWb0YBICjG1xRWyX4qUKjc8APIpe0
- GcTeZvzxJQGedcoHeL2J2W7Zv1MpoiO2GladitafBSVL2sIBGbmIXkzpOvh1YZ/VSZbf
- s0r4Tf5l67IBhsVXVR8lswk7T0lerGXuEbdX6/UNn8BvHHHLJvRAJgZlJC+qKTm6wCFf
- Ra9w==
-X-Gm-Message-State: AOAM533MnyAuYTSaTVl7hBXrOY29t6zgSbRjKoADV2PucfhUif4dk+D3
- tE7xONoAwqhvXScjGA72tNQ=
-X-Received: by 2002:a1c:20c5:: with SMTP id g188mr3965031wmg.142.1628613279114; 
- Tue, 10 Aug 2021 09:34:39 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id h9sm2670382wrv.84.2021.08.10.09.34.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Aug 2021 09:34:38 -0700 (PDT)
-Subject: Re: [PATCH v2] fsl-imx6ul: Instantiate SAI1/2/3 and ASRC as
- unimplemented devices
-To: Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210810160318.87376-1-linux@roeck-us.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6e8a0fb5-04e9-d6e6-989a-41de4eacf303@amsat.org>
-Date: Tue, 10 Aug 2021 18:34:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=qS/22leVWfTTilKCAwDu9JaM+8d73K/CskvFmLZ/x2o=;
+ b=XHSA7oT53C7bQRuQWh4hTYrXu6dgi9EE29z3XnBELFcsaPa1Gxq5qb5AqNwIy7eJfC
+ bypPswE4V6V3ej/4l0TEwiBA+fg05QE4V6UA0HoTamDB6Rt/1DdkDvfcqNe7AhkHrKPE
+ zkuYQPukUBvjnjemWCHIIVJIao6h9s/FLkz9W2obvUOOMEHB1b2/F8KPAGOCRwfUrVq5
+ bhW3o/c5nTVTGxilOXd6vxGT3+nTKgeUnBiMBHKlue4GXXqPZ+8CG3FabDl42uIZ3oYr
+ HcoBI3Ozrq7KSJYX9oV+SXq6JdkfLy2eKX6l1AGLYAJW1YxsasPJ33lU7b7rYu1QZ05+
+ 0Xiw==
+X-Gm-Message-State: AOAM533s/ld6L1Bb6LxmIPTv2BE4jWLplDmPkXjP7iWyzNIbMwDJVe5v
+ P/lYkKNlXuEGrfkRqyDFMH0=
+X-Received: by 2002:a9d:1c85:: with SMTP id l5mr17138262ota.5.1628618170398;
+ Tue, 10 Aug 2021 10:56:10 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ e3sm3427270oow.34.2021.08.10.10.56.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Aug 2021 10:56:09 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] fsl-imx7: Instantiate SAI1/2/3 as unimplemented devices
+Date: Tue, 10 Aug 2021 10:56:07 -0700
+Message-Id: <20210810175607.538090-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210810160318.87376-1-linux@roeck-us.net>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x32f.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FtbdRs1aFygR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aJ1Ro8NIHeUX
 
-On 8/10/21 6:03 PM, Guenter Roeck wrote:
-> Instantiate SAI1/2/3 and ASRC as unimplemented devices to avoid random
-> Linux kernel crashes, such as
-> 
-> Unhandled fault: external abort on non-linefetch (0x808) at 0xd1580010^M
-> pgd = (ptrval)^M
-> [d1580010] *pgd=8231b811, *pte=02034653, *ppte=02034453^M
-> Internal error: : 808 [#1] SMP ARM^M
-> ...
-> [<c095e974>] (regmap_mmio_write32le) from [<c095eb48>] (regmap_mmio_write+0x3c/0x54)^M
-> [<c095eb48>] (regmap_mmio_write) from [<c09580f4>] (_regmap_write+0x4c/0x1f0)^M
-> [<c09580f4>] (_regmap_write) from [<c095837c>] (_regmap_update_bits+0xe4/0xec)^M
-> [<c095837c>] (_regmap_update_bits) from [<c09599b4>] (regmap_update_bits_base+0x50/0x74)^M
-> [<c09599b4>] (regmap_update_bits_base) from [<c0d3e9e4>] (fsl_asrc_runtime_resume+0x1e4/0x21c)^M
-> [<c0d3e9e4>] (fsl_asrc_runtime_resume) from [<c0942464>] (__rpm_callback+0x3c/0x108)^M
-> [<c0942464>] (__rpm_callback) from [<c0942590>] (rpm_callback+0x60/0x64)^M
-> [<c0942590>] (rpm_callback) from [<c0942b60>] (rpm_resume+0x5cc/0x808)^M
-> [<c0942b60>] (rpm_resume) from [<c0942dfc>] (__pm_runtime_resume+0x60/0xa0)^M
-> [<c0942dfc>] (__pm_runtime_resume) from [<c0d3ecc4>] (fsl_asrc_probe+0x2a8/0x708)^M
-> [<c0d3ecc4>] (fsl_asrc_probe) from [<c0935b08>] (platform_probe+0x58/0xb8)^M
-> [<c0935b08>] (platform_probe) from [<c0933264>] (really_probe.part.0+0x9c/0x334)^M
-> [<c0933264>] (really_probe.part.0) from [<c093359c>] (__driver_probe_device+0xa0/0x138)^M
-> [<c093359c>] (__driver_probe_device) from [<c0933664>] (driver_probe_device+0x30/0xc8)^M
-> [<c0933664>] (driver_probe_device) from [<c0933c88>] (__driver_attach+0x90/0x130)^M
-> [<c0933c88>] (__driver_attach) from [<c0931060>] (bus_for_each_dev+0x78/0xb8)^M
-> [<c0931060>] (bus_for_each_dev) from [<c093254c>] (bus_add_driver+0xf0/0x1d8)^M
-> [<c093254c>] (bus_add_driver) from [<c0934a30>] (driver_register+0x88/0x118)^M
-> [<c0934a30>] (driver_register) from [<c01022c0>] (do_one_initcall+0x7c/0x3a4)^M
-> [<c01022c0>] (do_one_initcall) from [<c1601204>] (kernel_init_freeable+0x198/0x22c)^M
-> [<c1601204>] (kernel_init_freeable) from [<c0f5ff2c>] (kernel_init+0x10/0x128)^M
-> [<c0f5ff2c>] (kernel_init) from [<c010013c>] (ret_from_fork+0x14/0x38)^M
-> 
-> or
-> 
-> Unhandled fault: external abort on non-linefetch (0x808) at 0xd19b0000^M
-> pgd = (ptrval)^M
-> [d19b0000] *pgd=82711811, *pte=308a0653, *ppte=308a0453^M
-> Internal error: : 808 [#1] SMP ARM^M
-> ...
-> [<c095e974>] (regmap_mmio_write32le) from [<c095eb48>] (regmap_mmio_write+0x3c/0x54)^M
-> [<c095eb48>] (regmap_mmio_write) from [<c09580f4>] (_regmap_write+0x4c/0x1f0)^M
-> [<c09580f4>] (_regmap_write) from [<c0959b28>] (regmap_write+0x3c/0x60)^M
-> [<c0959b28>] (regmap_write) from [<c0d41130>] (fsl_sai_runtime_resume+0x9c/0x1ec)^M
-> [<c0d41130>] (fsl_sai_runtime_resume) from [<c0942464>] (__rpm_callback+0x3c/0x108)^M
-> [<c0942464>] (__rpm_callback) from [<c0942590>] (rpm_callback+0x60/0x64)^M
-> [<c0942590>] (rpm_callback) from [<c0942b60>] (rpm_resume+0x5cc/0x808)^M
-> [<c0942b60>] (rpm_resume) from [<c0942dfc>] (__pm_runtime_resume+0x60/0xa0)^M
-> [<c0942dfc>] (__pm_runtime_resume) from [<c0d4231c>] (fsl_sai_probe+0x2b8/0x65c)^M
-> [<c0d4231c>] (fsl_sai_probe) from [<c0935b08>] (platform_probe+0x58/0xb8)^M
-> [<c0935b08>] (platform_probe) from [<c0933264>] (really_probe.part.0+0x9c/0x334)^M
-> [<c0933264>] (really_probe.part.0) from [<c093359c>] (__driver_probe_device+0xa0/0x138)^M
-> [<c093359c>] (__driver_probe_device) from [<c0933664>] (driver_probe_device+0x30/0xc8)^M
-> [<c0933664>] (driver_probe_device) from [<c0933c88>] (__driver_attach+0x90/0x130)^M
-> [<c0933c88>] (__driver_attach) from [<c0931060>] (bus_for_each_dev+0x78/0xb8)^M
-> [<c0931060>] (bus_for_each_dev) from [<c093254c>] (bus_add_driver+0xf0/0x1d8)^M
-> [<c093254c>] (bus_add_driver) from [<c0934a30>] (driver_register+0x88/0x118)^M
-> [<c0934a30>] (driver_register) from [<c01022c0>] (do_one_initcall+0x7c/0x3a4)^M
-> [<c01022c0>] (do_one_initcall) from [<c1601204>] (kernel_init_freeable+0x198/0x22c)^M
-> [<c1601204>] (kernel_init_freeable) from [<c0f5ff2c>] (kernel_init+0x10/0x128)^M
-> [<c0f5ff2c>] (kernel_init) from [<c010013c>] (ret_from_fork+0x14/0x38)^M
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> v2: Updated description to include tracebacks and to use the term 'instantiate'
->     Added inline comments describing devices in more detail
+Instantiate SAI1/2/3 as unimplemented devices to avoid Linux kernel crashes
+such as the following.
 
-Thank you!
+Unhandled fault: external abort on non-linefetch (0x808) at 0xd19b0000
+pgd = (ptrval)
+[d19b0000] *pgd=82711811, *pte=308a0653, *ppte=308a0453
+Internal error: : 808 [#1] SMP ARM
+Modules linked in:
+CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-rc5 #1
+...
+[<c095e974>] (regmap_mmio_write32le) from [<c095eb48>] (regmap_mmio_write+0x3c/0x54)
+[<c095eb48>] (regmap_mmio_write) from [<c09580f4>] (_regmap_write+0x4c/0x1f0)
+[<c09580f4>] (_regmap_write) from [<c0959b28>] (regmap_write+0x3c/0x60)
+[<c0959b28>] (regmap_write) from [<c0d41130>] (fsl_sai_runtime_resume+0x9c/0x1ec)
+[<c0d41130>] (fsl_sai_runtime_resume) from [<c0942464>] (__rpm_callback+0x3c/0x108)
+[<c0942464>] (__rpm_callback) from [<c0942590>] (rpm_callback+0x60/0x64)
+[<c0942590>] (rpm_callback) from [<c0942b60>] (rpm_resume+0x5cc/0x808)
+[<c0942b60>] (rpm_resume) from [<c0942dfc>] (__pm_runtime_resume+0x60/0xa0)
+[<c0942dfc>] (__pm_runtime_resume) from [<c0d4231c>] (fsl_sai_probe+0x2b8/0x65c)
+[<c0d4231c>] (fsl_sai_probe) from [<c0935b08>] (platform_probe+0x58/0xb8)
+[<c0935b08>] (platform_probe) from [<c0933264>] (really_probe.part.0+0x9c/0x334)
+[<c0933264>] (really_probe.part.0) from [<c093359c>] (__driver_probe_device+0xa0/0x138)
+[<c093359c>] (__driver_probe_device) from [<c0933664>] (driver_probe_device+0x30/0xc8)
+[<c0933664>] (driver_probe_device) from [<c0933c88>] (__driver_attach+0x90/0x130)
+[<c0933c88>] (__driver_attach) from [<c0931060>] (bus_for_each_dev+0x78/0xb8)
+[<c0931060>] (bus_for_each_dev) from [<c093254c>] (bus_add_driver+0xf0/0x1d8)
+[<c093254c>] (bus_add_driver) from [<c0934a30>] (driver_register+0x88/0x118)
+[<c0934a30>] (driver_register) from [<c01022c0>] (do_one_initcall+0x7c/0x3a4)
+[<c01022c0>] (do_one_initcall) from [<c1601204>] (kernel_init_freeable+0x198/0x22c)
+[<c1601204>] (kernel_init_freeable) from [<c0f5ff2c>] (kernel_init+0x10/0x128)
+[<c0f5ff2c>] (kernel_init) from [<c010013c>] (ret_from_fork+0x14/0x38)
 
-Peter you might want to s/^M// when queueing ;)
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ hw/arm/fsl-imx7.c         | 7 +++++++
+ include/hw/arm/fsl-imx7.h | 5 +++++
+ 2 files changed, 12 insertions(+)
 
->     Added Philippe's Reviewed-by: tag
-> 
->  hw/arm/fsl-imx6ul.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-> index e0128d7316..1d1a708dd9 100644
-> --- a/hw/arm/fsl-imx6ul.c
-> +++ b/hw/arm/fsl-imx6ul.c
-> @@ -534,6 +534,13 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->       */
->      create_unimplemented_device("sdma", FSL_IMX6UL_SDMA_ADDR, 0x4000);
->  
-> +    /*
-> +     * SAI (Audio SSI (Synchronous Serial Interface))
-> +     */
-> +    create_unimplemented_device("sai1", FSL_IMX6UL_SAI1_ADDR, 0x4000);
-> +    create_unimplemented_device("sai2", FSL_IMX6UL_SAI2_ADDR, 0x4000);
-> +    create_unimplemented_device("sai3", FSL_IMX6UL_SAI3_ADDR, 0x4000);
-> +
->      /*
->       * PWM
->       */
-> @@ -542,6 +549,11 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->      create_unimplemented_device("pwm3", FSL_IMX6UL_PWM3_ADDR, 0x4000);
->      create_unimplemented_device("pwm4", FSL_IMX6UL_PWM4_ADDR, 0x4000);
->  
-> +    /*
-> +     * Audio ASRC (asynchronous sample rate converter)
-> +     */
-> +    create_unimplemented_device("asrc", FSL_IMX6UL_ASRC_ADDR, 0x4000);
-> +
->      /*
->       * CAN
->       */
-> 
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index 908aa6ca8a..81daac7747 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -483,6 +483,13 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("can1", FSL_IMX7_CAN1_ADDR, FSL_IMX7_CANn_SIZE);
+     create_unimplemented_device("can2", FSL_IMX7_CAN2_ADDR, FSL_IMX7_CANn_SIZE);
+ 
++    /*
++     * SAI (Audio SSI (Synchronous Serial Interface))
++     */
++    create_unimplemented_device("sai1", FSL_IMX7_SAI1_ADDR, FSL_IMX7_SAIn_SIZE);
++    create_unimplemented_device("sai2", FSL_IMX7_SAI2_ADDR, FSL_IMX7_SAIn_SIZE);
++    create_unimplemented_device("sai2", FSL_IMX7_SAI3_ADDR, FSL_IMX7_SAIn_SIZE);
++
+     /*
+      * OCOTP
+      */
+diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
+index 6cc5752457..e8d963b6fb 100644
+--- a/include/hw/arm/fsl-imx7.h
++++ b/include/hw/arm/fsl-imx7.h
+@@ -175,6 +175,11 @@ enum FslIMX7MemoryMap {
+     FSL_IMX7_UART6_ADDR           = 0x30A80000,
+     FSL_IMX7_UART7_ADDR           = 0x30A90000,
+ 
++    FSL_IMX7_SAI1_ADDR            = 0x308A0000,
++    FSL_IMX7_SAI2_ADDR            = 0x308B0000,
++    FSL_IMX7_SAI3_ADDR            = 0x308C0000,
++    FSL_IMX7_SAIn_SIZE            = 0x10000,
++
+     FSL_IMX7_ENET1_ADDR           = 0x30BE0000,
+     FSL_IMX7_ENET2_ADDR           = 0x30BF0000,
+ 
+-- 
+2.25.1
+

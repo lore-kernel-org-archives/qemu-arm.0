@@ -1,96 +1,97 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp953114lff;
-        Mon, 9 Aug 2021 21:11:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTnHL5vvYUmqh78wf5lHJgCpQxRWk9+qsftSx6gEcoN8LNvLfcGKMNolLu95/UA7mRc+iK
-X-Received: by 2002:a5e:c311:: with SMTP id a17mr368001iok.22.1628568676265;
-        Mon, 09 Aug 2021 21:11:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628568676; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp945421lff;
+        Mon, 9 Aug 2021 20:58:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwU9mcSj4uYRF+BVBHhlkCc5HYm2Fa8iewdyy37LT8KrGGnHbQefxp+5W1b/5tQiqdkBOZl
+X-Received: by 2002:ac8:6b05:: with SMTP id w5mr8780534qts.340.1628567886288;
+        Mon, 09 Aug 2021 20:58:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628567886; cv=none;
         d=google.com; s=arc-20160816;
-        b=OMlRVpxOJs2M3JT1wz32tuLvt6W5TSVVn0OldeLH2vrqio+Tw7VBxZDthJ9I75jQgC
-         KW9QhqhmvPrP8M6y+MGwpNmdHsTYfFJZMVIdr5DJkmKm1EWUDEGU61XmFok90Gs6c8gZ
-         NJ2Z73YvGZA3An69eyo7GqM7vwvAtpHpC89Cyfuk0JgZWtswHk6mp/4c6Eu4VrdGZxtm
-         6Nsj7uQWjJDbITkRyCuXDWBnuyV/ST2T5EszfEvhMi3MeqZwsVQCTEZVLW4RdSObTFuO
-         C5CrFHu4va4lkYasiaRllmi9su0MzhzjDLIGiWKZEIEF+d8dAjHKB1iwBPUqJ8K4iag0
-         cptg==
+        b=yHdQBBcCVf6UHXSPi0ieGbzm6HsqKjLlroubi/EPfoJ4cTSX4wmNQLAmOkNj6+LWD3
+         i8t/zQs8eTbjwXBx+aBpZv4n6lMvKzF1u9CrEXbWoGoe78EU+sNS7NR+Awlj5KzKJFHu
+         30qV5cyt8HSy9bvpxg8prU08roiYBj5sQzChJAskSocap5aB/zfSVfmBEWQoPItq8MQL
+         Vs8bj4xwKI3ijuZ79wbxr1JeNSd+KeTwuV4hlEdLjPZ743p3ztnulCO8ab/YmDwJ0cQi
+         ON5+yLLp5MJrMAVyDAqcmVXsBhAiRiQ+BAqmxgTYXxvLx6jXnUWdBibtvIIMMoggexUL
+         9asQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=njxWMkv2+EaP0kqKDqzOIBFjNBpUtXvw399rua1kgCw=;
-        b=XMBlFwim8qvGqkL3AnRCIvliqFp7lGjVlRqj72U9GU4wPON87/6cXDNoC/hwtkCx+j
-         5RDxKqKzfen3Y18eXyEcHdJfTJi5o3JKUO1tz1lLh7Ln3O+6sGrpPoaO6kiteMt2Az2X
-         IsFsgmVTKQvULRNeFr/bk/2tF+zF/g7CorhbZ0b/SmzcT5PzkH+lZ8RUtth9xpYXS6P5
-         YpVXsFLtis+fvwhAJTCXWQ70S96XKp7AqxyTOkM0AQE8ZTWFnhTEJKyditxHCr7q5Oj2
-         gUfnz1FeP5L7VT90a5tK56ahxxmmLYSRwHGbgkkFGPI7Cz3/Ovak3pH6bvvHarfZTF37
-         4e8w==
+        bh=rS/7i3KindezxRe9g1hVBP/26sJAIOp7n+LWpi6n8B4=;
+        b=V7Vh8PMp27+XeLR6o3piRastkcze2X3lKIR20F0jxtKOYPl07g0mGabHLER5FlWvId
+         KhWj1eo/iBC3XiGwCT4hNasOlK43tIUnUUWY/MeyzYLbxUyrgriasLEm0UlCGstUzjgc
+         CXPc8JaJ6lCUpBDaFwmPwxVVB796LDxTasD7/3/Vzxco/SmLO/zMUwLqHhzbMxSbPSJN
+         zrz+upa8dAVFcC2KDSntsbdhW3Q6eZmrq16Pajcjf1BUftniVJXTQ1dstWBUks4Ruioo
+         UCkbwpY22ecBk7Y8j3aT3PISKionYHbZEoYEdNwtJrQ6umQKTUj7Qf7yEBPTtmH7t+f/
+         c9og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kobG7R2i;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BPCumjma;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17si20467147ilf.150.2021.08.09.21.11.16
+        by mx.google.com with ESMTPS id w2si211273qkp.327.2021.08.09.20.58.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 21:11:16 -0700 (PDT)
+        Mon, 09 Aug 2021 20:58:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kobG7R2i;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BPCumjma;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33718 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDJ6h-00048I-Kn
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 00:11:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51482)
+	id 1mDItx-0001A8-Lj
+	for alex.bennee@linaro.org; Mon, 09 Aug 2021 23:58:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mDJ6Z-00047u-HJ; Tue, 10 Aug 2021 00:11:07 -0400
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229]:44861)
+ id 1mDIti-00019n-K3; Mon, 09 Aug 2021 23:57:50 -0400
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d]:37790)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mDJ6W-000470-G5; Tue, 10 Aug 2021 00:11:07 -0400
-Received: by mail-oi1-x229.google.com with SMTP id w6so27054765oiv.11;
- Mon, 09 Aug 2021 21:11:03 -0700 (PDT)
+ id 1mDItg-00017P-VX; Mon, 09 Aug 2021 23:57:50 -0400
+Received: by mail-ot1-x32d.google.com with SMTP id
+ v24-20020a0568300918b02904f3d10c9742so17235999ott.4; 
+ Mon, 09 Aug 2021 20:57:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=njxWMkv2+EaP0kqKDqzOIBFjNBpUtXvw399rua1kgCw=;
- b=kobG7R2ijwZojCi0UHAehiIF6oNDIJMJ3Kd59vcSyADK1I6b4Rlyq4riSjpJu8bzDl
- Hm1zQgYkbCTmKxZITkrJxE0X1HIw6bGrXZLUmNi/2lBAIRCdeUFTGFTjxuaXJxdZiK+I
- ktghctx9MkGw6vyNOSQ8ehZRUve5mrmy/jP16dioBbkGGgQGIKufWMmIKFBnLqiyh1Sm
- WpSE/HwMUBVsVxNMWFCkcK4ldVogoeEg9Cf5+h4tCha31XTjn19CmSjVMOQp1dIvBL2l
- rFs5SbcGbLOe30z1dHJuiYnDPbiWWWDS5AenUuSJjLYQoiNOlxwHhjn/TRRDPEDrmDBH
- MyIw==
+ bh=rS/7i3KindezxRe9g1hVBP/26sJAIOp7n+LWpi6n8B4=;
+ b=BPCumjmaoOhr9sja5BosRM1nxe4sv6SvzBbxU/x/I5DjPJ7XQKrE8VAphBeF7pkt2s
+ PLgRg7/52XslT8tleP67qMKv+cyPrQGQvcKgdTHpcu8biyVFhgrHTm2I7IZbA89lr1Mq
+ pumlHk4hNvu3OkJvIzxIh3P+TcGhzrq0NO/PnjMvAZYZF8ZBbPaflGVS8QkvpjpfEVHT
+ Gw2Tp4w9u0XaPbTnMKlqLsI6ebqNKa4ocKb0WKQpQPBK6F+PQSmP5Mk8NYPrHkXxiys3
+ 8gNEOvHGC1JjmdoHcinaAQRiEGUSDebTG816VzqJrLR5wh+gU2KN2paJARwQsNci5fhC
+ GXiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=njxWMkv2+EaP0kqKDqzOIBFjNBpUtXvw399rua1kgCw=;
- b=gQKwOweN/5jTRLCW200yMcqdcopMGLYhYeedXj7pGEruo8hMKUT0cG8MwNNS2cPayC
- Rov4VmPuFovm1qqh5tOiLdFuuHPkmPMX4kmUfGZACNHrsoWhHsSZ4h+b/3CV4jAmyWm7
- fiv/O4pfB/Ps8c4vj9faq7OchYNoIyS5TS7q7TS+6h1j7oAwr4mlrzx5fK659Q9IkPXu
- rO+oM4if2y+bgnz3qlQfXr0EzZ7SLSoOq4bpjb5aUrajH3bHn2pzgnBvv1p1MvvhvI3j
- j29kpZ+ydBKLXeCmNO4b1kUKf/UT7m25r/MBntNf3fxcSg+jC0OYtNmNjFDh2LAIGs9N
- Vqvw==
-X-Gm-Message-State: AOAM532UtujLllIKcxkJJuYpMfRuOZe4+poOr9zTYygVEhgjbJ/kXAlK
- gxPy+ppjByK2xcFLx3lGiqM=
-X-Received: by 2002:a05:6808:2109:: with SMTP id
- r9mr1925828oiw.101.1628568662464; 
- Mon, 09 Aug 2021 21:11:02 -0700 (PDT)
+ bh=rS/7i3KindezxRe9g1hVBP/26sJAIOp7n+LWpi6n8B4=;
+ b=n+ysiHKMXtcLRzf05RfMt6hgfySf0KLU0rUo5suXxzrVZsa3J7ZGelH13QPFcWuamJ
+ 0hsGk8cE8J7RvrrfBzhdotB5v3aCXNAXvedG9sSGlIn89nGX6kwT8Q9/fU1pze8+e26q
+ URsqVQm4jgscZFO1k/MSJSAGw91EboiEKhWYN39kC+byfdxPIvfn7FJW2EK4MbT4kG9o
+ RYR10JjaeQCv6YetY94njMjcA+OOk5xKgkdBD8oXMdDZDnXa9CO62xOTZi5t81cltMcj
+ komcFF/EwHamsir2KScuVpkisdj2lGqzbqH3nCO44SbfOitdAlC42Q/tjhw+Gldt102X
+ GA5A==
+X-Gm-Message-State: AOAM530XWxiZvjPXSoUMFkaC0B60U6iMqGGwP4sD54wwH5EMmFXTjnqU
+ 12SKjFUCQ77MMAImNXOoyEk=
+X-Received: by 2002:a05:6830:1511:: with SMTP id
+ k17mr1504368otp.19.1628567866922; 
+ Mon, 09 Aug 2021 20:57:46 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- r15sm3696079oth.7.2021.08.09.21.11.01
+ t24sm1043135oou.48.2021.08.09.20.57.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Aug 2021 21:11:02 -0700 (PDT)
+ Mon, 09 Aug 2021 20:57:46 -0700 (PDT)
 From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] fsl-imx6ul: add SAI1/2/3 and ASRC as unimplemented devices
-Date: Mon,  9 Aug 2021 21:10:59 -0700
-Message-Id: <20210810041059.553384-1-linux@roeck-us.net>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH] hw: arm: aspeed: Enable mac0/1 instead of mac1/2 for g220a
+Date: Mon,  9 Aug 2021 20:57:42 -0700
+Message-Id: <20210810035742.550391-1-linux@roeck-us.net>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::229;
- envelope-from=groeck7@gmail.com; helo=mail-oi1-x229.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32d;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x32d.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -111,51 +112,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f7nE9LzuQE+v
+X-TUID: CweTLSpFUdyE
 
-Define SAI1/2/3 and ASRC as unimplemented devices to avoid random
-Linux kernel crashes.
+According to its dts file in the Linux kernel, we need mac0 and mac1 enabled
+instead of mac1 and mac2. Also, g220a is based on aspeed-g5 (ast2500) which
+doesn't even have the third interface.
 
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- hw/arm/fsl-imx6ul.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ hw/arm/aspeed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-index e0128d7316..48b60eb3ce 100644
---- a/hw/arm/fsl-imx6ul.c
-+++ b/hw/arm/fsl-imx6ul.c
-@@ -534,6 +534,13 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-      */
-     create_unimplemented_device("sdma", FSL_IMX6UL_SDMA_ADDR, 0x4000);
- 
-+    /*
-+     * SAI
-+     */
-+    create_unimplemented_device("sai1", FSL_IMX6UL_SAI1_ADDR, 0x4000);
-+    create_unimplemented_device("sai2", FSL_IMX6UL_SAI2_ADDR, 0x4000);
-+    create_unimplemented_device("sai3", FSL_IMX6UL_SAI3_ADDR, 0x4000);
-+
-     /*
-      * PWM
-      */
-@@ -542,6 +549,11 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("pwm3", FSL_IMX6UL_PWM3_ADDR, 0x4000);
-     create_unimplemented_device("pwm4", FSL_IMX6UL_PWM4_ADDR, 0x4000);
- 
-+    /*
-+     * ASRC
-+     */
-+    create_unimplemented_device("asrc", FSL_IMX6UL_ASRC_ADDR, 0x4000);
-+
-     /*
-      * CAN
-      */
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index ecf0c9cfac..20e3a77160 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -997,7 +997,7 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
+     amc->fmc_model = "n25q512a";
+     amc->spi_model = "mx25l25635e";
+     amc->num_cs    = 2;
+-    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON;
++    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+     amc->i2c_init  = g220a_bmc_i2c_init;
+     mc->default_ram_size = 1024 * MiB;
+     mc->default_cpus = mc->min_cpus = mc->max_cpus =
 -- 
 2.25.1
 

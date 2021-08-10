@@ -1,129 +1,95 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1295430lff;
-        Tue, 10 Aug 2021 05:56:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxQVi7dshx3pRXiulRtdtB8EZYMlGs7vWqKOJBfLrvFY7bE2mM7+TkfhN+oHvuN5zMq02Cj
-X-Received: by 2002:a05:6638:40ab:: with SMTP id m43mr15144127jam.52.1628600214322;
-        Tue, 10 Aug 2021 05:56:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628600214; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1385566lff;
+        Tue, 10 Aug 2021 07:38:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyOcvKYF0Rz/j4TxCpRLaG3fInz96rihikXqP/lMLNcs7ks90UpGNgrn9l2cO+tzHfumTJd
+X-Received: by 2002:a1f:9e03:: with SMTP id h3mr19123981vke.0.1628606290603;
+        Tue, 10 Aug 2021 07:38:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628606290; cv=none;
         d=google.com; s=arc-20160816;
-        b=RZqSf4EzZajIEIlsek/XmTKGcBIjXDdZhDJN9wt9RZNCocEuDgaj3gvOVYfVgAnm+G
-         PCz7eSaTr00JHScmtLUFEyc6gZIcWcuK20y7/n0EDVVUbUvR1fPvlOsauDhIYUmUmWUV
-         uZ0AfdaDKPMps0mhXtW4b/PrK8RsCldSHwgWxeGyicbrR+QWfvcJQvXh4cgBUbK7jrJF
-         mUAdWAmrHpm1qq2l9gROhNo1nzT/U2LADJiT6sAMqwieIcmZRh2T/3tq9mKp4X78+ggu
-         uKMbOoaMEktOm/psMXsxvPD5+KmlyM/7IqXT9eFXKiG5U++F13BN3zFyCJ8EQ/zjEqAq
-         4wZw==
+        b=Pa5nWKkQNpO2de2iiPQo2xbO8Yw3tLiLWYjPi63ynU5Bd9UiwaPCtwES50vhZpE3Dj
+         /vzuiDZEnM3pzl+PBEkZDlG/ps/hVLvuf6x3940yUAZHTdJPvZLEENWWmN/aY1Q06jKY
+         hY5gmQIoOe923V/C+5f8wYYwM/HmrTA6dBJXi1BmlhoAXRjd/hjMMqR7kJF/GDXie28z
+         Wjpsa1sqNovbMwLCe9XkuWXMv1WYUt/5nsylJijjoTw47zQhabCTM2RJSUC4hCnak5iU
+         VnVByQeSGo8Nmg1cQJeaH6FJB7tCJrjRuxsxj/gKkY08+9cIF+1kmd1anQ58je1SDSB/
+         5a6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=z/9S0D4bpgWAG2512j/e+pI9MZT9pW8I4pymunQDuuw=;
-        b=HgvN8ciYnOxgf2uzu6E/6+FyWOATG5LOD1LzUkEiVP+FPGqFVhxEir4jOxh27Vxiw7
-         qJUskrowbag3Ke8+Yl67GMaG1566TKZ8+WaFoAR4eCZDBIq5nFf/T8hK05tUFB08ye3W
-         Icbq6mlIGjwlClnQFBs+wZGAdzlc8wWxABhFp+7WeBTt+0TgiKZQ2BzmJKejoyuL4aaz
-         9P+SqXoKE7K8hFJET9a7MPF79m08CaPy8+BlkfMOtvBby9az77TyygtHGapvR6dfAtkz
-         hph+c65TuSyPubrG9GC3kTUp8cfUD2pQRnAvO+xzYbQPFo3OzDgzEM2ecPzisNYtTV5I
-         yTAg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=hXDMC+WhzD+nk7egkcAzVPY9Lc+dkARSCREcGCt5rwA=;
+        b=dM5VpPtWWCluQbOuRwlLjcbUE7gYUSo2xoVqdYp5Bh/xELgn4f/G93Y1Lx2p+ZGwKG
+         +yTMNXRj4maeW9rsPRsDCPQMpkEAT62PSIzUQmWy2Dc1l9A6t0vr3oi744CsoloSeUA0
+         qi3yXgZ0RGekDHpZqe6fNOMwXV6Prp40SdQBvKouR+nGUa58t+QlHrYgqJkLKIavWjzV
+         93Zls8axztaHzBJCdS+x0uov7Y014nWS/mHP81Y+pqbFmsakBbneWWd2ZQ0dz5C72YcV
+         W67nQf3JRVNoO+ra60/ZcR8t3t9kxves5+kseMvnB8REjEg9Hruh0OfjDqUwM8fkj4wK
+         tizw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PqY9KgBZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si25293126ilm.90.2021.08.10.05.56.54
+        by mx.google.com with ESMTPS id a10si8362072vsr.10.2021.08.10.07.38.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Aug 2021 05:56:54 -0700 (PDT)
+        Tue, 10 Aug 2021 07:38:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PqY9KgBZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48348 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50966 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDRJN-0007gp-Iw
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 08:56:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33144)
+	id 1mDStO-0000e7-1m
+	for alex.bennee@linaro.org; Tue, 10 Aug 2021 10:38:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mDRIs-0007fZ-Qc
- for qemu-arm@nongnu.org; Tue, 10 Aug 2021 08:56:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:37038)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mDStF-0000dM-NP
+ for qemu-arm@nongnu.org; Tue, 10 Aug 2021 10:38:01 -0400
+Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:57051)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mDRIo-0003rS-Tr
- for qemu-arm@nongnu.org; Tue, 10 Aug 2021 08:56:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628600177;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=z/9S0D4bpgWAG2512j/e+pI9MZT9pW8I4pymunQDuuw=;
- b=PqY9KgBZG5ZPdUx21y9rWljS7f2U6K3pzRIALgAn2pTq2I+BWmzEOhYwqTLJ5NgVBa7H+O
- 6qmJCXDMidUYwOKG4LFDJVe86koxmuFSmDAoVkrAkmVSHWFShlioVOk/jfOKktT1F+ZtXl
- XjosiMzBI3egX5PzdDXplAWXffU6wLU=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-288-xPQ_20IjOr2mzEhtkPvyOw-1; Tue, 10 Aug 2021 08:56:15 -0400
-X-MC-Unique: xPQ_20IjOr2mzEhtkPvyOw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- b196-20020a1c80cd0000b02902e677003785so1015240wmd.7
- for <qemu-arm@nongnu.org>; Tue, 10 Aug 2021 05:56:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=z/9S0D4bpgWAG2512j/e+pI9MZT9pW8I4pymunQDuuw=;
- b=g2ehlfmyQwFp9LW7xD4tASCbc0y/WgcpPsoD6hc9bGSN0cU1xuykvXzNBKg2242N1f
- T3r8JXNuA8QC6JtAVxOAYRpo+mOyevMQ/3VhzdLVz7SRal0teb1CMCDOJh82pwP1n962
- IDJ536CRr84F+NuWdQE4R670m/DdbBfUSUOnVe+rMHn1Zink7Q/JY85sUUINS5B+9iAc
- h9pKRBTswDo0g28xFW3WcEpcJTA+9dGM/EHo7gg3CcjcAs9aYxIMa3Iy6K0Rxq4W2gWX
- C9e/tM3Xbab9/Gc0hMtyLh99sppkEpsMaz1gl90UWQ6e9CYzTdrtTsMcNofdvILdVA64
- fcCQ==
-X-Gm-Message-State: AOAM533Umin9597uVtHjrsPfRHwcqcR8aUGMj7nIa5Uv6dHmxl6nOmkW
- 5hK5y9GLzi8zGZSaeHmPn3R23RePbIbZ9tzvFKYb2tjjE9SCga9VcYdcHJ+Viv2OrABmiNNbutX
- dVEJ+e8BvOi++
-X-Received: by 2002:a7b:cc8b:: with SMTP id p11mr4563575wma.25.1628600173768; 
- Tue, 10 Aug 2021 05:56:13 -0700 (PDT)
-X-Received: by 2002:a7b:cc8b:: with SMTP id p11mr4563539wma.25.1628600173470; 
- Tue, 10 Aug 2021 05:56:13 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id d5sm23078116wre.77.2021.08.10.05.56.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Aug 2021 05:56:12 -0700 (PDT)
-Subject: Re: [PATCH for-6.2] hw/arm/virt_acpi_build: Generate DBG2 table
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20210810083057.99651-1-eric.auger@redhat.com>
- <20210810125214.7dadd76b@redhat.com>
- <09fd10e1-8952-8ba7-2467-d3545a08bddf@redhat.com>
- <20210810142000.03fffdd4@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <9d4ba236-05ac-50ef-54d8-06a0e9bd31ca@redhat.com>
-Date: Tue, 10 Aug 2021 14:56:11 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mDStD-00058l-Dt
+ for qemu-arm@nongnu.org; Tue, 10 Aug 2021 10:38:01 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.140])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id D1D5513B0E3;
+ Tue, 10 Aug 2021 14:37:55 +0000 (UTC)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 10 Aug
+ 2021 16:37:55 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R00619c9d008-4f8d-46d3-856b-9073f1f7f66e,
+ 8F36BE46FB8773C29BD4C9A30C998E4B5B7B2B54) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
+Subject: Re: [PATCH 09/10] hw/misc: Add Infineon DPS310 sensor model
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+References: <20210809131556.686260-1-clg@kaod.org>
+ <20210809131556.686260-10-clg@kaod.org>
+ <1efe1466-a8ee-40be-c703-6cf868721110@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6298b15a-fa2b-806f-9ba6-c801628000f1@kaod.org>
+Date: Tue, 10 Aug 2021 16:37:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210810142000.03fffdd4@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <1efe1466-a8ee-40be-c703-6cf868721110@amsat.org>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 204f9705-a13e-4d99-a5e2-829bea33d5bc
+X-Ovh-Tracer-Id: 10323094772207029030
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrjeelgdejlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuhfelfeefjeeukeetvdevtddttdevgfelveffleektdefuddvfeekfedtledvffenucffohhmrghinhepihhnfhhinhgvohhnrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout2.3005.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) DKIMWL_WL_HIGH=-0.704, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -136,245 +102,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: peter.maydell@linaro.org, drjones@redhat.com, gshan@redhat.com,
- mst@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, philmd@redhat.com, ardb@kernel.org,
- eric.auger.pro@gmail.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1F6nU9vKmNzx
+X-TUID: FImQYw21XU89
 
-Hi Igor,
-
-On 8/10/21 2:20 PM, Igor Mammedov wrote:
-> On Tue, 10 Aug 2021 14:05:40 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> Hi Igor,
+On 8/9/21 5:59 PM, Philippe Mathieu-Daudé wrote:
+> On 8/9/21 3:15 PM, Cédric Le Goater wrote:
+>> From: Joel Stanley <joel@jms.id.au>
 >>
->> On 8/10/21 12:52 PM, Igor Mammedov wrote:
->>> On Tue, 10 Aug 2021 10:30:57 +0200
->>> Eric Auger <eric.auger@redhat.com> wrote:
->>>  
->>>> ARM SBBR specification mandates DBG2 table (Debug Port Table 2).
->>>> this latter allows to describe one or more debug ports.
->>>>
->>>> Generate an DBG2 table featuring a single debug port, the PL011.
->>>>
->>>> The DBG2 specification can be found at:
->>>> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table?redirectedfrom=MSDN
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>  
->>> using packed structures for composing ACPI tables is discouraged,
->>> pls use build_append_int_noprefix() API instead. You can look at
->>> build_amd_iommu() as an example.  
->> I understand this for new code outside of hw/arm/virt-acpi-build.c.
->> However build_append_int_noprefix() is not (yet) used in
->> virt-acpi-build.c so this would bring heterogeneity. So does it mean
->> that any new ACPI description introduced there should also adopt this
->> new style? Drew will suggest to migrate everything but well ;-)
->
-> new style should be used for any new ACPI code.
-> There is a series on list that converts old style to new style across tree
-> (currently planned for merging into 6.2)
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg822151.html
-Ak OK I missed that refactoring. Now I better understand ;-)
-> So I'm going to push back any new patches that use old style
-> to reduce time on rewriting others code when it could be written
-> using preferred style.
->
-> PS:
-> Perhaps you'd like to review ARM related patches.
-
-Sure!
-
-Thanks
-
-Eric
->
->
->> Thanks
+>> This contains some hardcoded register values that were obtained from the
+>> hardware after reading the temperature.
 >>
->> Eric
->>> PS:
->>> Also note field comments format.
->>> /it should be verbatim copy of entry name from respective table in spec/
->>>  
->>>> ---
->>>>
->>>> Tested by comparing the content with the table generated
->>>> by EDK2 along with the SBSA-REF machine (code generated by
->>>> DynamicTablesPkg/Library/Acpi/Arm/AcpiDbg2LibArm/Dbg2Generator.c).
->>>>
->>>> I reused the Generic Address Structure filled by QEMU in the SPCR, ie.
->>>> bit_width = 8 and byte access. While EDK2 sets bit_width = 32 and
->>>> dword access. Also the name exposed by acpica tools is different:
->>>> 'COM0' in my case where '\_SB.COM0' in SBSA-REF case?
->>>> ---
->>>>  hw/arm/virt-acpi-build.c    | 77 ++++++++++++++++++++++++++++++++++++-
->>>>  include/hw/acpi/acpi-defs.h | 50 ++++++++++++++++++++++++
->>>>  2 files changed, 126 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>>> index 037cc1fd82..35f27b41df 100644
->>>> --- a/hw/arm/virt-acpi-build.c
->>>> +++ b/hw/arm/virt-acpi-build.c
->>>> @@ -563,6 +563,78 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>>                   vms->oem_table_id);
->>>>  }
->>>>  
->>>> +#define ACPI_DBG2_PL011_UART_LENGTH 0x1000
->>>> +
->>>> +/* DBG2 */
->>>> +static void
->>>> +build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>> +{
->>>> +    int addr_offset, addrsize_offset, namespace_offset, namespace_length;
->>>> +    const MemMapEntry *uart_memmap = &vms->memmap[VIRT_UART];
->>>> +    struct AcpiGenericAddress *base_address;
->>>> +    int dbg2_start = table_data->len;
->>>> +    AcpiDbg2Device *dbg2dev;
->>>> +    char name[] = "COM0";
->>>> +    AcpiDbg2Table *dbg2;
->>>> +    uint32_t *addr_size;
->>>> +    uint8_t *namespace;
->>>> +
->>>> +    dbg2 = acpi_data_push(table_data, sizeof *dbg2);
->>>> +    dbg2->info_offset = sizeof *dbg2;
->>>> +    dbg2->info_count = 1;
->>>> +
->>>> +    /* debug device info structure */
->>>> +
->>>> +    dbg2dev = acpi_data_push(table_data, sizeof(AcpiDbg2Device));
->>>> +
->>>> +    dbg2dev->revision = 0;
->>>> +    namespace_length = sizeof name;
->>>> +    dbg2dev->length = sizeof *dbg2dev + sizeof(struct AcpiGenericAddress) +
->>>> +                      4 + namespace_length;
->>>> +    dbg2dev->register_count = 1;
->>>> +
->>>> +    addr_offset = sizeof *dbg2dev;
->>>> +    addrsize_offset = addr_offset + sizeof(struct AcpiGenericAddress);
->>>> +    namespace_offset = addrsize_offset + 4;
->>>> +
->>>> +    dbg2dev->namepath_length = cpu_to_le16(namespace_length);
->>>> +    dbg2dev->namepath_offset = cpu_to_le16(namespace_offset);
->>>> +    dbg2dev->oem_data_length = cpu_to_le16(0);
->>>> +    dbg2dev->oem_data_offset = cpu_to_le16(0); /* No OEM data is present */
->>>> +    dbg2dev->port_type = cpu_to_le16(ACPI_DBG2_SERIAL_PORT);
->>>> +    dbg2dev->port_subtype = cpu_to_le16(ACPI_DBG2_ARM_PL011);
->>>> +
->>>> +    dbg2dev->base_address_offset = cpu_to_le16(addr_offset);
->>>> +    dbg2dev->address_size_offset = cpu_to_le16(addrsize_offset);
->>>> +
->>>> +    /*
->>>> +     * variable length content:
->>>> +     * BaseAddressRegister[1]
->>>> +     * AddressSize[1]
->>>> +     * NamespaceString[1]
->>>> +     */
->>>> +
->>>> +    base_address = acpi_data_push(table_data,
->>>> +                                  sizeof(struct AcpiGenericAddress));
->>>> +
->>>> +    base_address->space_id = AML_SYSTEM_MEMORY;
->>>> +    base_address->bit_width = 8;
->>>> +    base_address->bit_offset = 0;
->>>> +    base_address->access_width = 1;
->>>> +    base_address->address = cpu_to_le64(uart_memmap->base);
->>>> +
->>>> +    addr_size = acpi_data_push(table_data, sizeof *addr_size);
->>>> +    *addr_size = cpu_to_le32(ACPI_DBG2_PL011_UART_LENGTH);
->>>> +
->>>> +    namespace = acpi_data_push(table_data, namespace_length);
->>>> +    memcpy(namespace, name, namespace_length);
->>>> +
->>>> +    build_header(linker, table_data,
->>>> +                 (void *)(table_data->data + dbg2_start), "DBG2",
->>>> +                 table_data->len - dbg2_start, 3, vms->oem_id,
->>>> +                 vms->oem_table_id);
->>>> +}
->>>> +
->>>>  /* MADT */
->>>>  static void
->>>>  build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>> @@ -790,7 +862,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>>>      dsdt = tables_blob->len;
->>>>      build_dsdt(tables_blob, tables->linker, vms);
->>>>  
->>>> -    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
->>>> +    /* FADT MADT GTDT MCFG SPCR DBG2 pointed to by RSDT */
->>>>      acpi_add_table(table_offsets, tables_blob);
->>>>      build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
->>>>  
->>>> @@ -813,6 +885,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>>>      acpi_add_table(table_offsets, tables_blob);
->>>>      build_spcr(tables_blob, tables->linker, vms);
->>>>  
->>>> +    acpi_add_table(table_offsets, tables_blob);
->>>> +    build_dbg2(tables_blob, tables->linker, vms);
->>>> +
->>>>      if (vms->ras) {
->>>>          build_ghes_error_table(tables->hardware_errors, tables->linker);
->>>>          acpi_add_table(table_offsets, tables_blob);
->>>> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
->>>> index cf9f44299c..bdb2ebed2c 100644
->>>> --- a/include/hw/acpi/acpi-defs.h
->>>> +++ b/include/hw/acpi/acpi-defs.h
->>>> @@ -618,4 +618,54 @@ struct AcpiIortRC {
->>>>  } QEMU_PACKED;
->>>>  typedef struct AcpiIortRC AcpiIortRC;
->>>>  
->>>> +/* DBG2 */
->>>> +
->>>> +/* Types for port_type field above */
->>>> +
->>>> +#define ACPI_DBG2_SERIAL_PORT       0x8000
->>>> +#define ACPI_DBG2_1394_PORT         0x8001
->>>> +#define ACPI_DBG2_USB_PORT          0x8002
->>>> +#define ACPI_DBG2_NET_PORT          0x8003
->>>> +
->>>> +/* Subtypes for port_subtype field above */
->>>> +
->>>> +#define ACPI_DBG2_16550_COMPATIBLE  0x0000
->>>> +#define ACPI_DBG2_16550_SUBSET      0x0001
->>>> +#define ACPI_DBG2_ARM_PL011         0x0003
->>>> +#define ACPI_DBG2_ARM_SBSA_32BIT    0x000D
->>>> +#define ACPI_DBG2_ARM_SBSA_GENERIC  0x000E
->>>> +#define ACPI_DBG2_ARM_DCC           0x000F
->>>> +#define ACPI_DBG2_BCM2835           0x0010
->>>> +
->>>> +#define ACPI_DBG2_1394_STANDARD     0x0000
->>>> +
->>>> +#define ACPI_DBG2_USB_XHCI          0x0000
->>>> +#define ACPI_DBG2_USB_EHCI          0x0001
->>>> +
->>>> +/* Debug Device Information Subtable */
->>>> +
->>>> +struct AcpiDbg2Device {
->>>> +    uint8_t  revision;
->>>> +    uint16_t length;
->>>> +    uint8_t  register_count; /* Number of base_address registers */
->>>> +    uint16_t namepath_length;
->>>> +    uint16_t namepath_offset;
->>>> +    uint16_t oem_data_length;
->>>> +    uint16_t oem_data_offset;
->>>> +    uint16_t port_type;
->>>> +    uint16_t port_subtype;
->>>> +    uint8_t  reserved[2];
->>>> +    uint16_t base_address_offset;
->>>> +    uint16_t address_size_offset;
->>>> +}  QEMU_PACKED;
->>>> +typedef struct AcpiDbg2Device AcpiDbg2Device;
->>>> +
->>>> +struct AcpiDbg2Table {
->>>> +    ACPI_TABLE_HEADER_DEF /* ACPI common table header */
->>>> +    uint32_t info_offset; /* offset to the first debug struct */
->>>> +    uint32_t info_count;  /* number of debug device info struct entries */
->>>> +    uint8_t  dbg2_device_info[];
->>>> +} QEMU_PACKED;
->>>> +typedef struct AcpiDbg2Table AcpiDbg2Table;
->>>> +
->>>>  #endif  
+>> It does enough to test the Linux kernel driver. The FIFO mode, IRQs and
+>> operation modes other than the default as used by Linux are not modelled.
+>>
+>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>> [ clg: Fix sequential reading ]
+>> Message-Id: <20210616073358.750472-2-joel@jms.id.au>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> Message-Id: <20210629142336.750058-4-clg@kaod.org>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  hw/misc/dps310.c    | 227 ++++++++++++++++++++++++++++++++++++++++++++
+>>  hw/arm/Kconfig      |   1 +
+>>  hw/misc/Kconfig     |   4 +
+>>  hw/misc/meson.build |   1 +
+>>  4 files changed, 233 insertions(+)
+>>  create mode 100644 hw/misc/dps310.c
+>>
+>> diff --git a/hw/misc/dps310.c b/hw/misc/dps310.c
+>> new file mode 100644
+>> index 000000000000..893521ab8516
+>> --- /dev/null
+>> +++ b/hw/misc/dps310.c
+>> @@ -0,0 +1,227 @@
+>> +// SPDX-License-Identifier: GPL-2.0-or-later
+>> +/*
+>> + * Copyright 2017-2021 Joel Stanley <joel@jms.id.au>, IBM Corporation
+>> + *
+>> + * Infineon DPS310 temperature and humidity sensor
+>> + *
+>> + * https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/log.h"
+>> +#include "hw/hw.h"
+>> +#include "hw/i2c/i2c.h"
+>> +#include "qapi/error.h"
+>> +#include "qapi/visitor.h"
+>> +#include "migration/vmstate.h"
+>> +
+>> +#define NUM_REGISTERS   0x33
+>> +
+>> +typedef struct DPS310State {
+>> +    /*< private >*/
+>> +    I2CSlave i2c;
+>> +
+>> +    /*< public >*/
+>> +    uint8_t regs[NUM_REGISTERS];
+>> +
+>> +    uint8_t len;
+>> +    uint8_t pointer;
+>> +
+>> +} DPS310State;
+> 
+>> +static void dps310_reset(DeviceState *dev)
+>> +{
+>> +    DPS310State *s = DPS310(dev);
+>> +
+>> +    static const uint8_t regs_reset_state[] = {
+> 
+>        static const uint8_t regs_reset_state[NUM_REGISTERS] = {
+
+How about :
+
+    static const uint8_t regs_reset_state[sizeof(s->regs)] = {
+
+I wonder if that compiles always. I will try with a gitlab CI.
+
+>> +        0xfe, 0x2f, 0xee, 0x02, 0x69, 0xa6, 0x00, 0x80, 0xc7, 0x00, 0x00, 0x00,
+>> +        0x00, 0x10, 0x00, 0x00, 0x0e, 0x1e, 0xdd, 0x13, 0xca, 0x5f, 0x21, 0x52,
+>> +        0xf9, 0xc6, 0x04, 0xd1, 0xdb, 0x47, 0x00, 0x5b, 0xfb, 0x3a, 0x00, 0x00,
+>> +        0x20, 0x49, 0x4e, 0xa5, 0x90, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> +        0x60, 0x15, 0x02
+>> +    };
+>> +
+>> +    QEMU_BUILD_BUG_ON(sizeof(regs_reset_state) != sizeof(s->regs));
+> 
+> and drop QEMU_BUILD_BUG_ON?
+
+yes.
+
+thanks,
+
+C.
+
+>> +
+>> +    memcpy(s->regs, regs_reset_state, sizeof(s->regs));
+>> +    s->pointer = 0;
+>> +
+>> +    /* TODO: assert these after some timeout ? */
+>> +    s->regs[DPS310_MEAS_CFG] = DPS310_COEF_RDY | DPS310_SENSOR_RDY
+>> +        | DPS310_TMP_RDY | DPS310_PRS_RDY;
+>> +}
 

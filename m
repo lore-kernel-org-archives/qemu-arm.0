@@ -1,201 +1,316 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp993072lff;
-        Mon, 9 Aug 2021 22:20:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy64QyxDf7OETDW0h16QZBXZExNodZjUYGbSu/lsHh4711A0cqumT5f9Vv4o9d+V/gQaMnJ
-X-Received: by 2002:a37:40cf:: with SMTP id n198mr26950775qka.180.1628572808374;
-        Mon, 09 Aug 2021 22:20:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628572808; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1020355lff;
+        Mon, 9 Aug 2021 23:08:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx3gPCJY998SefImDIj60Y65udYDAfvxRL4H75VrVk0jhXGZbcJdFbpDcpj4MfTrb5BmBaw
+X-Received: by 2002:a02:6606:: with SMTP id k6mr26279812jac.51.1628575699066;
+        Mon, 09 Aug 2021 23:08:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628575699; cv=none;
         d=google.com; s=arc-20160816;
-        b=ApJ3D6rk4zN00JWyspUjGQdko3zHmNqPDDrP5BrSmV9CGQGATxlmNIVlOY8Sl5TSkR
-         c6ll3aK98A2UTd6EEkJRYZuUtN91+JZQeb0Lo/JVkXIPnH9lCb1yjz7x/YIEZp7EwaHK
-         P20XHFXFy/CYI+6BgfVwEjIL0gUkRMdxh79MrAezytxUfiAHu6asYAr3ZxvtHYQ/91J/
-         TyYCvrT5lqD6KRyWnOFjJjqHX1lEdwM6MD/fCTygEQ6uzVyAwZzCAuKwGvyEJzKd7IjS
-         jyVZI1s8WL6+s4yc1zODXdZ98cVJtNo2j8goebtC1+9ydljvfB1OAEV0iKIJC9RFmxny
-         4n2Q==
+        b=RFXGeGpRVt4iZrZGKhjzyyv44oPn43/F18HyoUyl4jp1Dweh2KwWFyhmx8OnrrVn1D
+         eEXsX/3lqGW/N37z8QtOcexSLI9AI7kyRmlMYUgZ737UKkU/C0isDKLOISIUPYlqy1M9
+         Jb/eEQykAQTF7/mVUpMU0y/FGLNcCOsW1X3vpoDkNHumSvdc8raBOKqoF6J/YVzM1pfa
+         DmAnxFHwJjg5jX2lwcV14I0eF+njK/6sxurp0pMjhJK6+3IIqcgb7+bnwRFqNHuGAHUd
+         lCZ4m0HkTj+GtladI8mKJlTbP0a3vnqF19jPrMFZpcEKlylPfBjqeepB87VSVmv+DSzl
+         LlrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=W+Ek/FQM1vnO/sLlgjELhxHO6P+5qop+j3W5LXxENUE=;
-        b=tQb8XSPnnUO7GvzJN4LhpecPLViDlzrIZfrdHT/lX4XAFtvY3kntKEmfXLKDaYa9+4
-         qO8wLprD4K5b3r3GidYonYvxQGxCOJH4pllCG4NGJz0kGzWg4jE8nGU915mu7AlCihzv
-         5o3953RDESzGvKjRTF4UNP6FP/lNDZqObIlnGxJLF6UBuJQLIisrZHG5vSHCN5+NEKPi
-         8TglWVODQ5uEZ9Qrbl6AjbpOKkpRGoKyZ3C658EGtCasItSw3QM9zU4KaNj9ct22eEdg
-         TyVnjgx/x0kzog2Iy2EP3ctkwyHyoHMZGaBnVw+vPRT0OKhE9UzWlVON0ydpJ6m/ATyo
-         RnWQ==
+         :mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:to:from:dkim-signature;
+        bh=y6zyUXg5aIke+6Rm01WBiRgebbKin/ZJfq9RD2qXyio=;
+        b=IVrW1ZcZ+XJp9pRoycui25jU6HAYPzllazfZocbiDMY8irWrxhGgpgubZDqWKRlcJJ
+         yNGS4piU2vp1iazbOnGIW2l674sflVjtf6UW44WafkIqONUPeoj4iy2GfXnNa1TlVtWr
+         tdXPH+grlbLZpR3w4gHpItrS2TcKGG8xdW4pJmoTJo7x+yPjjdnjS3JHlAGE98oEbMI3
+         r33qZDApNXYe4SyhQ8VdqI2p4oNdA6cdqlHCHY1kvwKwKM4qNafebHsdOvO3KwTDk8tJ
+         e0wGOTvzAYDkX5HIvaMrFwXif/pQvHlOkBwKm8nFgGZ2k2AkAyhNB/kTY3LRPoS/0lFk
+         cPpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dyZv1VR2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gVQn0j3s;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17si13105783qkp.184.2021.08.09.22.20.08
+        by mx.google.com with ESMTPS id l4si26896504jaj.29.2021.08.09.23.08.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Aug 2021 22:20:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Aug 2021 23:08:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dyZv1VR2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45310 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gVQn0j3s;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40270 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDKBL-0001Xy-L7
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 01:20:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33272)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mDKvy-0002KB-5k
+	for alex.bennee@linaro.org; Tue, 10 Aug 2021 02:08:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39058)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mDKBB-0001V1-3S; Tue, 10 Aug 2021 01:19:57 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:45003)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mDKB9-0004qL-8c; Tue, 10 Aug 2021 01:19:56 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- d131-20020a1c1d890000b02902516717f562so1633062wmd.3; 
- Mon, 09 Aug 2021 22:19:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=W+Ek/FQM1vnO/sLlgjELhxHO6P+5qop+j3W5LXxENUE=;
- b=dyZv1VR2yymH8YTar4/0N1ssWsBC/jl9xRNA6Uk1DBeWMhyfMnqbpUIWlHoa0y+lsW
- d4PUoDd5kZ5AwU1/dAo9tpqgIkkNYnUjFKzvmd5pBpDC665nDxOPhmR3Lh/lfWVqWnlN
- NlbDban/6Ly2fe2K966J/qBBl3hN4u7BgsZUQzvkW8nG7mWx5ZN2RTj2otzVj9DcHDb+
- L6uMsMwkQdWSdk/nuSbxoZV+cv1MLvSOElDqmowngNcOYD8mO+WEsofW/DESFN2faViX
- d7ZxkRrnrcaxEvMJS2g9dGnyG3+TCL0YLZOsTjuzNdn8RajIXfl9AAv0KoJ3V+SdCRH+
- RxWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=W+Ek/FQM1vnO/sLlgjELhxHO6P+5qop+j3W5LXxENUE=;
- b=h6G/tOtABb6PpXshdRXVFGXR2iCH31hTiaaqipcyzqjBowpOZJnyS0rtpM1k3jpEfu
- 1RgC+2XZ1V8Wx1uZhvw7DCAAC9M/Rb1uSDnRXVQvMForttpxLo5KtD7BrlmOqIBL6lIv
- v73LsFmiRG/tbjXI6+m67UGtixW40SpME6LUzh2U4NeiR8JPU1tOUapELqWnEf/lj4vt
- cSICysahOJbyFvNRYF6AWLFvoYSg0yD7CY7+mSAcS6tozIcMMQ3DZgUz5y1sIQeZ8bbM
- G5MLwROgWtlPvTb7VQIdbR6TrcTQzJDwf/vpZpFCvhkMRQF8Y1t/B6HWE2kyqxW7/Tzt
- At1A==
-X-Gm-Message-State: AOAM5304t/SM5apZlLLoMhxyEKGT1ZjELkCRbQ+o7qtvn0hnXR+Tsykd
- db/3j0U9hQHY67dKSTOZR1A=
-X-Received: by 2002:a05:600c:3b15:: with SMTP id
- m21mr20474630wms.99.1628572793124; 
- Mon, 09 Aug 2021 22:19:53 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id t1sm1485328wma.25.2021.08.09.22.19.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Aug 2021 22:19:52 -0700 (PDT)
-Subject: Re: [PATCH] fsl-imx6ul: add SAI1/2/3 and ASRC as unimplemented devices
-To: Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210810041059.553384-1-linux@roeck-us.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ddf1935f-bcbb-aedd-4d8c-8f7a2522f1ea@amsat.org>
-Date: Tue, 10 Aug 2021 07:19:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1mDKv2-0001E6-9L
+ for qemu-devel@nongnu.org; Tue, 10 Aug 2021 02:07:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38463)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1mDKuz-000475-EZ
+ for qemu-devel@nongnu.org; Tue, 10 Aug 2021 02:07:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1628575635;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=y6zyUXg5aIke+6Rm01WBiRgebbKin/ZJfq9RD2qXyio=;
+ b=gVQn0j3s34D2co3AouoqVOp65MdlWWxz03pI+xI/r5mOS8jOHkV8OsVcBW68O1WG3FH4XP
+ fSMpfP0n2ezGwxr8odVaPOZe+0Ku617wFC/vum4AndFhGrQI9kdiBPdLVF3SEwhxtSlPeB
+ kz5vvIhVnBUlkkjZNDnq9iS8gxPDEYo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-351-FF-UTNQXPrmXIkMPRwKgtg-1; Tue, 10 Aug 2021 02:07:14 -0400
+X-MC-Unique: FF-UTNQXPrmXIkMPRwKgtg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 783481074661;
+ Tue, 10 Aug 2021 06:07:08 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.120])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4123B60C05;
+ Tue, 10 Aug 2021 06:06:39 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH for-6.2 05/12] [automated] Move QOM typedefs and add
+ missing includes
+In-Reply-To: <20210806211127.646908-6-ehabkost@redhat.com>
+Organization: Red Hat GmbH
+References: <20210806211127.646908-1-ehabkost@redhat.com>
+ <20210806211127.646908-6-ehabkost@redhat.com>
+User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
+Date: Tue, 10 Aug 2021 08:06:37 +0200
+Message-ID: <877dgtygsy.fsf@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210810041059.553384-1-linux@roeck-us.net>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.702,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zx7FlSzmeebr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexey Kardashevskiy <aik@ozlabs.ru>,
+ Andrew Jeffery <andrew@aj.id.au>, Jason Wang <jasowang@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, David Hildenbrand <david@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Vijai Kumar K <vijai@behindbytes.com>,
+ Taylor Simpson <tsimpson@quicinc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Klaus Jensen <its@irrelevant.dk>, "Edgar
+ E. Iglesias" <edgar.iglesias@gmail.com>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ qemu-ppc@nongnu.org, Huacai Chen <chenhuacai@kernel.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Corey Minyard <minyard@acm.org>, qemu-s390x@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Bandan Das <bsd@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?utf-8?Q?C=C3=A9dr?= =?utf-8?Q?ic?= Le Goater <clg@kaod.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Keith Busch <kbusch@kernel.org>, qemu-riscv@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Francisco Iglesias <francisco.iglesias@xilinx.com>,
+ Thomas Huth <huth@tuxfamily.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: S65x9eNSxOcK
 
-Hi Guenter,
+On Fri, Aug 06 2021, Eduardo Habkost <ehabkost@redhat.com> wrote:
 
-On 8/10/21 6:10 AM, Guenter Roeck wrote:
-> Define SAI1/2/3 and ASRC as unimplemented devices to avoid random
-> Linux kernel crashes.
-
-Relevant dmesg output could be useful.
-
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> Some typedefs and macros are defined after the type check macros.
+> This makes it difficult to automatically replace their
+> definitions with OBJECT_DECLARE_TYPE.
+>
+> Patch generated using:
+>
+>  $ ./scripts/codeconverter/converter.py -i --pattern=3DMoveSymbols \
+>     $(git grep -l '' -- '*.[ch]')
+>
+> which will:
+> - split "typdef struct { ... } TypedefName" declarations
+> - move the typedefs and #defines above the type check macros
+> - add missing #include "qom/object.h" lines if necessary
+>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 > ---
->  hw/arm/fsl-imx6ul.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-> index e0128d7316..48b60eb3ce 100644
-> --- a/hw/arm/fsl-imx6ul.c
-> +++ b/hw/arm/fsl-imx6ul.c
-> @@ -534,6 +534,13 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->       */
->      create_unimplemented_device("sdma", FSL_IMX6UL_SDMA_ADDR, 0x4000);
->  
-> +    /*
-> +     * SAI
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> Cc: "Philippe Mathieu-Daud=C3=A9" <f4bug@amsat.org>
+> Cc: Thomas Huth <huth@tuxfamily.org>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Alexander Bulekov <alxndr@bu.edu>
+> Cc: Bandan Das <bsd@redhat.com>
+> Cc: Stefan Hajnoczi <stefanha@redhat.com>
+> Cc: Huacai Chen <chenhuacai@kernel.org>
+> Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
+> Cc: Aurelien Jarno <aurelien@aurel32.net>
+> Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+> Cc: Havard Skinnemoen <hskinnemoen@google.com>
+> Cc: Tyrone Ting <kfting@nuvoton.com>
+> Cc: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+> Cc: Vikram Garhwal <fnu.vikram@xilinx.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: Klaus Jensen <its@irrelevant.dk>
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: Halil Pasic <pasic@linux.ibm.com>
+> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: Vijai Kumar K <vijai@behindbytes.com>
+> Cc: Alistair Francis <Alistair.Francis@wdc.com>
+> Cc: Bin Meng <bin.meng@windriver.com>
+> Cc: Palmer Dabbelt <palmer@dabbelt.com>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Cc: Corey Minyard <minyard@acm.org>
+> Cc: "C=C3=A9dric Le Goater" <clg@kaod.org>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: Francisco Iglesias <francisco.iglesias@xilinx.com>
+> Cc: David Gibson <david@gibson.dropbear.id.au>
+> Cc: Greg Kurz <groug@kaod.org>
+> Cc: Alexey Kardashevskiy <aik@ozlabs.ru>
+> Cc: "Herv=C3=A9 Poussineau" <hpoussin@reactos.org>
+> Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+> Cc: Juan Quintela <quintela@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> Cc: "Daniel P. Berrang=C3=A9" <berrange@redhat.com>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
+> Cc: Taylor Simpson <tsimpson@quicinc.com>
+> Cc: qemu-devel@nongnu.org
+> Cc: qemu-arm@nongnu.org
+> Cc: qemu-block@nongnu.org
+> Cc: qemu-s390x@nongnu.org
+> Cc: qemu-riscv@nongnu.org
+> Cc: qemu-ppc@nongnu.org
+> ---
+>  hw/nvme/nvme.h                              |  6 ++++--
+>  hw/usb/hcd-uhci.h                           |  1 +
+>  hw/usb/hcd-xhci-pci.h                       |  6 ++++--
+>  hw/usb/hcd-xhci-sysbus.h                    |  6 ++++--
+>  hw/usb/u2f.h                                |  6 ++++--
+>  include/hw/acpi/acpi_dev_interface.h        |  2 +-
+>  include/hw/adc/npcm7xx_adc.h                |  1 +
+>  include/hw/arm/linux-boot-if.h              |  2 +-
+>  include/hw/arm/npcm7xx.h                    | 11 +++++++----
+>  include/hw/char/shakti_uart.h               |  6 ++++--
+>  include/hw/core/accel-cpu.h                 |  1 +
+>  include/hw/dma/sifive_pdma.h                |  1 +
+>  include/hw/dma/xlnx_csu_dma.h               |  1 +
+>  include/hw/fw-path-provider.h               |  2 +-
+>  include/hw/gpio/npcm7xx_gpio.h              |  1 +
+>  include/hw/hotplug.h                        |  2 +-
+>  include/hw/i2c/npcm7xx_smbus.h              |  1 +
+>  include/hw/intc/intc.h                      |  2 +-
+>  include/hw/intc/m68k_irqc.h                 |  6 ++++--
+>  include/hw/intc/sifive_clint.h              |  6 ++++--
+>  include/hw/ipmi/ipmi.h                      |  2 +-
+>  include/hw/mem/memory-device.h              |  2 +-
+>  include/hw/mem/npcm7xx_mc.h                 |  1 +
+>  include/hw/misc/aspeed_lpc.h                |  6 ++++--
+>  include/hw/misc/bcm2835_cprman.h            |  1 +
+>  include/hw/misc/bcm2835_cprman_internals.h  |  1 +
+>  include/hw/misc/mchp_pfsoc_dmc.h            |  1 +
+>  include/hw/misc/mchp_pfsoc_ioscb.h          |  1 +
+>  include/hw/misc/mchp_pfsoc_sysreg.h         |  1 +
+>  include/hw/misc/npcm7xx_clk.h               |  1 +
+>  include/hw/misc/npcm7xx_gcr.h               |  1 +
+>  include/hw/misc/npcm7xx_pwm.h               |  1 +
+>  include/hw/misc/npcm7xx_rng.h               |  1 +
+>  include/hw/misc/xlnx-versal-xramc.h         |  6 ++++--
+>  include/hw/net/npcm7xx_emc.h                |  1 +
+>  include/hw/net/xlnx-zynqmp-can.h            |  6 ++++--
+>  include/hw/nmi.h                            |  2 +-
+>  include/hw/nvram/npcm7xx_otp.h              |  1 +
+>  include/hw/ppc/spapr_drc.h                  | 15 +++++++++------
+>  include/hw/ppc/spapr_xive.h                 | 11 +++++++----
+>  include/hw/ppc/vof.h                        |  1 +
+>  include/hw/rdma/rdma.h                      |  2 +-
+>  include/hw/riscv/microchip_pfsoc.h          |  1 +
+>  include/hw/riscv/shakti_c.h                 | 11 +++++++----
+>  include/hw/riscv/sifive_e.h                 |  6 ++++--
+>  include/hw/riscv/sifive_u.h                 | 11 +++++++----
+>  include/hw/rtc/m48t59.h                     |  2 +-
+>  include/hw/sd/cadence_sdhci.h               |  1 +
+>  include/hw/ssi/npcm7xx_fiu.h                |  1 +
+>  include/hw/ssi/sifive_spi.h                 |  6 ++++--
+>  include/hw/stream.h                         |  2 +-
+>  include/hw/timer/npcm7xx_timer.h            |  1 +
+>  include/hw/tricore/tricore_testdevice.h     |  6 ++++--
+>  include/hw/usb/hcd-dwc3.h                   |  6 ++++--
+>  include/hw/usb/msd.h                        |  1 +
+>  include/hw/usb/xlnx-usb-subsystem.h         |  6 ++++--
+>  include/hw/usb/xlnx-versal-usb2-ctrl-regs.h |  6 ++++--
+>  include/hw/vmstate-if.h                     |  2 +-
+>  include/hw/watchdog/sbsa_gwdt.h             |  6 ++++--
+>  include/qom/object_interfaces.h             |  2 +-
+>  include/sysemu/tpm.h                        |  2 +-
+>  target/arm/idau.h                           |  2 +-
+>  target/hexagon/cpu.h                        | 11 +++++++----
+>  accel/tcg/tcg-all.c                         |  1 +
+>  chardev/char-parallel.c                     |  1 +
+>  hw/arm/bcm2836.c                            |  1 +
+>  hw/m68k/mcf5206.c                           |  1 +
+>  hw/mem/sparse-mem.c                         |  6 ++++--
+>  hw/mips/loongson3_virt.c                    |  1 +
+>  hw/misc/npcm7xx_clk.c                       |  1 +
+>  hw/misc/sbsa_ec.c                           |  1 +
+>  hw/net/can/ctucan_pci.c                     |  1 +
+>  hw/nvram/npcm7xx_otp.c                      |  1 +
+>  hw/s390x/vhost-user-fs-ccw.c                |  1 +
+>  hw/sensor/adm1272.c                         |  6 ++++--
+>  hw/sensor/max34451.c                        |  6 ++++--
+>  hw/usb/u2f-emulated.c                       |  1 +
+>  hw/usb/u2f-passthru.c                       |  1 +
+>  hw/virtio/vhost-user-i2c-pci.c              |  1 +
+>  tests/unit/check-qom-interface.c            |  2 +-
+>  ui/vdagent.c                                |  1 +
+>  81 files changed, 179 insertions(+), 82 deletions(-)
 
-"Audio SSI (Synchronous Serial Interface)"
-
-> +     */
-> +    create_unimplemented_device("sai1", FSL_IMX6UL_SAI1_ADDR, 0x4000);
-> +    create_unimplemented_device("sai2", FSL_IMX6UL_SAI2_ADDR, 0x4000);
-> +    create_unimplemented_device("sai3", FSL_IMX6UL_SAI3_ADDR, 0x4000);
-
-Hmm I see these named SSI[123] in the datasheet.
-
-  The Synchronous Serial Interface (SSI) is a full-duplex serial
-  port that allows communication with external devices using a
-  variety of serial protocols. The SSI supports a wide variety of
-  protocols (SSI normal, SSI network, I2S, and AC-97), bit depths
-  (up to 24 bits per word), and clock/frame sync options.
-
-  The three SSIs may support three audio streams (possibly at
-  different sample rates) simultaneously. SSI1, SSI2 and SSI3 are
-  located on the Shared Peripheral Bus. Since the SDMA can directly
-  access SSI1...SSI3 (being on the Shared Peripheral Bus), they can
-  be used for high-bandwidth data transfers in order to optimize
-  bus bandwidth consumption.
-
-Since QEMU models SPI devices in hw/ssi/, having the devices named
-"sai*" is OK.
-
-> +
->      /*
->       * PWM
->       */
-> @@ -542,6 +549,11 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->      create_unimplemented_device("pwm3", FSL_IMX6UL_PWM3_ADDR, 0x4000);
->      create_unimplemented_device("pwm4", FSL_IMX6UL_PWM4_ADDR, 0x4000);
->  
-> +    /*
-> +     * ASRC
-
-"Audio ASRC (asynchronous sample rate converter)"
-
-Preferably updating the descriptions:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> +     */
-> +    create_unimplemented_device("asrc", FSL_IMX6UL_ASRC_ADDR, 0x4000);
-> +
->      /*
->       * CAN
->       */
-> 
+Acked-by: Cornelia Huck <cohuck@redhat.com>
 

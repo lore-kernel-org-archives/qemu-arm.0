@@ -1,109 +1,106 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1237781lff;
-        Tue, 10 Aug 2021 04:42:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOcpGCdN0Fs7OyLl4EH9VyYj7LkU6SubfmXDMxKwNP7XvmQpKESacBTeLuEdEReXtZMb1W
-X-Received: by 2002:a5e:8d16:: with SMTP id m22mr25733ioj.60.1628595778450;
-        Tue, 10 Aug 2021 04:42:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628595778; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1246418lff;
+        Tue, 10 Aug 2021 04:55:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxIJ3MLzrAnAoqHGQmnCdopG343TL0SdBk+DsgGxzEZpL1PelWrV69TPEufqH75808/kh09
+X-Received: by 2002:a05:6e02:1561:: with SMTP id k1mr46083ilu.25.1628596530382;
+        Tue, 10 Aug 2021 04:55:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628596530; cv=none;
         d=google.com; s=arc-20160816;
-        b=QiyjCFrihTBDjRiZljZqrc1gWh7s9ThIYeg40Mqgugb/jXLDY9isgFkHiGjvvYrvYJ
-         ZH+16khEXJu53lotrR2mJuSoTcZD+ZRGSOZV3VMOtv7CWYgPpSouxgcEFlmji6k9my0N
-         atc2cy55YCiBCej/Jkvx/xuX+j7d/zo5GK8tBqnhOfhp1XCF2YDBSKvS8Z7SZr90SkJu
-         jXIJ6YTiN6MWMWB67gBM3l5xq/Tc8gFsKhxy9qlZ93/ANpqE+3FcmbLmyrYMfVzR3KQK
-         qrExeUCpeoIk6RcdJ3SyD3PtfP/JOqLyXhFga7g9BISIrPuCeW8lXd6bJn1Lw/Oy3+ue
-         enUw==
+        b=kUX4go/HHMW3bfuZzjVgK6f6ONY8Bk6WHqkVTuP7Bi3xomjHGSf7JgZWSDTa3JX1lg
+         gudbtr2rSvCXdCQDXZxCcbSj/HImwcriGY1t2J6unAXiyDJpnszHLBrUquHaSVIL/Upc
+         /V3i42UNRM1gdJDE2GmvDEYVhrNV0YSFD+4zXkaKsnFsCOlcMxtzoZNexoSsBTTLXgjN
+         TDvOap5aEU9twr9HwjUPqi+UTxeUu02osZucP5I11tQBVKOdMQD1CL1M3i3nEjf+sE4D
+         mUI7PYYnWvbfioRswP5OrLX1NbzhKwuvBDAywWaJzZvEzh98uwG0ub/AqT8gT0iv7Hru
+         neWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=t/xRQh+r13mTJygYYK/SMGowHF/ULBU11mRcXlPxUPo=;
-        b=oRTHpK395ouVLTWdjzlxEtJkmLJsit+YhhiTZPv14kUL1SuXJn2lQIbpCzhha2+BVn
-         zhBO9ijJb2zadnFyCyydh4GUKzh9ZnUz3EYuFJb6Z/Gzy3VeT2iPAoHk2U6+Af5VotPS
-         x7INtO4qEvxM0WbcJsXsDam4FsyNHjtXf/uH//RZUbad56hdl2CYhcogU7vtz62UZccQ
-         i3lHg4OTqn0SpazYpe9qiCi+HIHwtlJ10Du2+giePYA7P+Pf7xccN4gwNLXdk4ZwXhuc
-         e23owIl49WAI887gdt9PnA/VlAk2igt6TrZB7BiLKt4ug+BZ+pq9zTzmgfIacJEPBovl
-         Px2g==
+        bh=Lrll1cw2JOAbQ+KC4AC+QJPmOk9rxjzqjrhQ8vsXsEM=;
+        b=v2by/nPcBkrvwWKFOZYwpH1kvS762B333CaVHL2XP/K3N/Wzw7zkOCBDoIZTPBGCDn
+         mkT43c1q/DawP9+PSiburOwy7dNLg368cWxZBtdPjty4oDjSwji0bRIHL9RQFBGlkO23
+         uvauv83YkJIILWDr8sQ2st8ghlng3HMYglTnQL593Tv+f3ZO61PdKdzg7g+upJ+uboEb
+         2yrRiT4wCN/rQeVyDrC4g4k2VNCabMRmqa/4+iPnol0Dr9TLjGWEekYOZjEAcliJGS1N
+         YzlpMvjowBbdpjAutZ3Xre1PZnXSJg7nBTKdcFdivDTplsTr3bhEqxLkkAiZtjoKBBKJ
+         4nNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z0XieZpe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=agfUJH4+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d131si31556197iog.11.2021.08.10.04.42.58
+        by mx.google.com with ESMTPS id h12si26459758ild.123.2021.08.10.04.55.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Aug 2021 04:42:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Aug 2021 04:55:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z0XieZpe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35056 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=agfUJH4+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDQ9p-00061y-Qk
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 07:42:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45400)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mDQLx-0001fY-Lv
+	for alex.bennee@linaro.org; Tue, 10 Aug 2021 07:55:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mDQ8S-0005Iv-Fl
- for qemu-devel@nongnu.org; Tue, 10 Aug 2021 07:41:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39626)
+ id 1mDQLo-0001em-KQ
+ for qemu-arm@nongnu.org; Tue, 10 Aug 2021 07:55:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24240)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mDQ8P-0006Zv-H2
- for qemu-devel@nongnu.org; Tue, 10 Aug 2021 07:41:32 -0400
+ id 1mDQLm-0008HX-8O
+ for qemu-arm@nongnu.org; Tue, 10 Aug 2021 07:55:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628595688;
+ s=mimecast20190719; t=1628596517;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=t/xRQh+r13mTJygYYK/SMGowHF/ULBU11mRcXlPxUPo=;
- b=Z0XieZpelxUuHYQ0TuBXOkD6OFBV+JlF4Jk9Am8S9EPM2sdl/KaL5ArZSnpihPll6+zbh3
- QvKpgU/H0cnPvkvcwbY16PKNyNy1Skk3RRB5hRpGULx1xs8yiqkwzSZwOgbt8gQ/ect2/2
- vg2WHeW3w6MFqdqbntGHP6NmPTportQ=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-255-TF75UZSWMjmeg5Ra2DwDQw-1; Tue, 10 Aug 2021 07:41:27 -0400
-X-MC-Unique: TF75UZSWMjmeg5Ra2DwDQw-1
-Received: by mail-ed1-f72.google.com with SMTP id
- b25-20020a05640202d9b02903be7281a80cso2068855edx.3
- for <qemu-devel@nongnu.org>; Tue, 10 Aug 2021 04:41:27 -0700 (PDT)
+ bh=Lrll1cw2JOAbQ+KC4AC+QJPmOk9rxjzqjrhQ8vsXsEM=;
+ b=agfUJH4+ZI57OOPt5fgwFR+1LV2S4hTvn8ARZWQlIDCVfnD1WKQcF8SkezJB0E2uHbRAFe
+ U7bucOdhqEcUmOEVx20ZS0TD6mwTXm3sbbAYMEP8R/CcR+5buC3ECc0uxbw9A/gbdHI2vF
+ y0Xr1pjOSxex8k+KZGAs9Iu+d/sYKy4=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-441-HPCpXvOmO_yraVOzQ4gFjg-1; Tue, 10 Aug 2021 07:55:16 -0400
+X-MC-Unique: HPCpXvOmO_yraVOzQ4gFjg-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ l18-20020a0564021252b02903be7bdd65ccso4925edw.12
+ for <qemu-arm@nongnu.org>; Tue, 10 Aug 2021 04:55:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=t/xRQh+r13mTJygYYK/SMGowHF/ULBU11mRcXlPxUPo=;
- b=PfVNTH8qmLu0IsFIzbPDmUFrO2WQjlZxhnGAOulvHOO5qFeUOSJZtlWj+CBMo9YAd8
- Y3ntvwOZZbsPZpGf9rhhGHyIUmu8iuMlc3czhqH85vs8M8vpNnqK6+D1Iff8I7ngUp4a
- Bwmt+RoOxinRwlvp5tMwBTYBp+PqDenTwFAI+XMyojp6OMBj/m1oyU5bRECVNAWa6Gzc
- +JJUS5R/maPobahww1oP85yZbBJhv147d0N/CliVC8eDGlrOSrqll/0upuMghduBKcUH
- 2e+yOMRrjGPAKNG6UNV/f1MFY00l2feS1tM4APWxaz279IHVlo4PhnTeJQVAd73HiE/B
- 6qmg==
-X-Gm-Message-State: AOAM530zlPSjUl7jXRlXLa8UyNGmwwaOY8RbM633MGC7U6Ki8vDEGMN3
- bNpFZeeTP2Tii1JAbIIX18YbgGCaC/Wx1YtOrrb4GrQ2FwnwrZQzZSkn2Otye5/AU5KRqzKZrM7
- 2Q115TD23yxi2xIU=
-X-Received: by 2002:a17:906:b811:: with SMTP id
- dv17mr27046074ejb.444.1628595686043; 
- Tue, 10 Aug 2021 04:41:26 -0700 (PDT)
-X-Received: by 2002:a17:906:b811:: with SMTP id
- dv17mr27046054ejb.444.1628595685741; 
- Tue, 10 Aug 2021 04:41:25 -0700 (PDT)
+ bh=Lrll1cw2JOAbQ+KC4AC+QJPmOk9rxjzqjrhQ8vsXsEM=;
+ b=X+qMjFnJekXFoHLeVv3OaK8MCR1Zp3z41khvVIHQqNq6RkwCQ3tCS3UUNYHnKr7OOK
+ uPtxPnrQGem6+IKdDJWk5Tu8Ggp8RXqU+WoO8gQDyVemdDQ9rOtLChI9TYmJd+f1Sp4+
+ ngUyyDg69MI7HaW0TxFS50Bac7Z0RiMNYbrfPzvcd6G5GSJT8lP2hEDPxHM+TL7QOvZE
+ XvOnwA2upL1Qj4GVj2Qj8LpvQFGFQvYKTr06FLYG9UaSZRNmxyGJdbiKO8e5MMxxedhu
+ 31fzFmK62oHgEPo62c8EmtQpRIQpeJFh2u4pFt+2OW2sRAXXSBJ0Ct474pH8rsq9K9bG
+ 8yHQ==
+X-Gm-Message-State: AOAM533IPYe7Xt7BMJjichYCjqqM2yFhSO6MrSljTeyay2MNTVmWqaA0
+ PTrjnTtXO35TRz+amnFi0D6OnuwKGRFOBxaLoS6ZVUp7Hu0cL5ZccypLI3RfcH0nGrO+Z3bMLs/
+ ML4wl5PBQ4Ar7
+X-Received: by 2002:a50:ee15:: with SMTP id g21mr4445880eds.88.1628596514959; 
+ Tue, 10 Aug 2021 04:55:14 -0700 (PDT)
+X-Received: by 2002:a50:ee15:: with SMTP id g21mr4445848eds.88.1628596514715; 
+ Tue, 10 Aug 2021 04:55:14 -0700 (PDT)
 Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id i6sm6752561ejd.57.2021.08.10.04.41.24
+ by smtp.gmail.com with ESMTPSA id gl2sm121425ejb.110.2021.08.10.04.55.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Aug 2021 04:41:25 -0700 (PDT)
-Date: Tue, 10 Aug 2021 13:41:23 +0200
+ Tue, 10 Aug 2021 04:55:13 -0700 (PDT)
+Date: Tue, 10 Aug 2021 13:55:11 +0200
 From: Andrew Jones <drjones@redhat.com>
-To: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
-Subject: Re: [PATCH v3 1/3] target-arm: cpu64: Add support for Fujitsu A64FX
-Message-ID: <20210810114123.yn6uftzurby25q4b@gator.home>
-References: <20210805073045.916622-1-ishii.shuuichir@fujitsu.com>
- <20210805073045.916622-2-ishii.shuuichir@fujitsu.com>
- <20210805112432.mjrqizexwyammfm5@gator.home>
- <TYCPR01MB6160A85D5A15580645876DB9E9F79@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH for-6.2] hw/arm/virt_acpi_build: Generate DBG2 table
+Message-ID: <20210810115511.oq2wcjgniy7mitto@gator.home>
+References: <20210810083057.99651-1-eric.auger@redhat.com>
+ <CAMj1kXHie7aFoQ-7aMcckX2OMepbGeE6SLV8x=FDppeZHws5OA@mail.gmail.com>
+ <4dae638d-6f96-c036-2a6b-5ef179012029@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <TYCPR01MB6160A85D5A15580645876DB9E9F79@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+In-Reply-To: <4dae638d-6f96-c036-2a6b-5ef179012029@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -120,260 +117,255 @@ X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.704,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 267F0HPH8tx7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Samer El-Haj-Mahmoud <Samer.El-Haj-Mahmoud@arm.com>, gshan@redhat.com,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jonathan Masters <jcm@redhat.com>,
+ qemu-devel@nongnu.org, Al Stone <ahs3@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Ard Biesheuvel <ardb@kernel.org>, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u+IugjihZHT9
 
-On Tue, Aug 10, 2021 at 08:23:39AM +0000, ishii.shuuichir@fujitsu.com wrote:
-> 
-> Thanks for your comments.
-> 
-> Before reposting the fix patch series,
-> based on your comments and the v3 1/3 patch,
-> we have considered the following fixes.
-> 
-> If you have any comments on the fixes, please let us know.
-> 
-> ---
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 9f0a5f84d5..84ebca731a 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2145,6 +2145,7 @@ enum arm_features {
->      ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
->      ARM_FEATURE_M_MAIN, /* M profile Main Extension */
->      ARM_FEATURE_V8_1M, /* M profile extras only in v8.1M and later */
-> +    ARM_FEATURE_A64FX, /* Fujitsu A64FX processor */
->  };
-> 
->  static inline int arm_feature(CPUARMState *env, int feature)
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 612644941b..62dcb6a919 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -248,6 +248,21 @@ static void aarch64_a72_initfn(Object *obj)
->      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
->  }
-> 
-> +static void a64fx_cpu_set_sve(ARMCPU *cpu)
-> +{
-> +    /* Suppport of A64FX's vector length are 128,256 and 512byte only */
+On Tue, Aug 10, 2021 at 12:25:07PM +0200, Eric Auger wrote:
+> Hello Ard,
+> On 8/10/21 11:36 AM, Ard Biesheuvel wrote:
+> > On Tue, 10 Aug 2021 at 10:31, Eric Auger <eric.auger@redhat.com> wrote:
+> >> ARM SBBR specification mandates DBG2 table (Debug Port Table 2).
+> >> this latter allows to describe one or more debug ports.
+> >>
+> >> Generate an DBG2 table featuring a single debug port, the PL011.
+> >>
+> >> The DBG2 specification can be found at:
+> >> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table?redirectedfrom=MSDN
+> >>
+> > Have the legal issues around this table been resolved in the mean
+> > time?
+> I don't know exactly what they are. Adding Al and Jon in the loop they
+> have more information about this.
+> How did you resolve the issue for EDK2
+> (DynamicTablesPkg/Library/Acpi/Arm/AcpiDbg2LibArm/Dbg2Generator.c)?
+> >  Also, any clue why this table is mandatory to begin with? The
+> > SBBR has been very trigger happy lately with making things mandatory
+> > that aren't truly required from a functional perspective.
+> It seems there are kernel FW test suites that check all mandated tables
+> are available and they currently fail for ARM virt.
+> Indeed from a function pov, I don't know much about its usage on ARM.
 
-Missing spaces in text and s/byte/bit/
+There's also a bug with getting console output on tty0 with graphical VMs
 
-> +    bitmap_zero(cpu->sve_vq_map, ARM_MAX_VQ);
-> +    bitmap_zero(cpu->sve_vq_init, ARM_MAX_VQ);
-> +    set_bit(0, cpu->sve_vq_map); /* 128byte */
-> +    set_bit(0, cpu->sve_vq_init);
-> +    set_bit(1, cpu->sve_vq_map); /* 256byte */
-> +    set_bit(1, cpu->sve_vq_init);
-> +    set_bit(3, cpu->sve_vq_map); /* 512byte */
-> +    set_bit(3, cpu->sve_vq_init);
+https://bugzilla.redhat.com/show_bug.cgi?id=1661288
 
-For all the comments in the above function s/byte/bit/
-
-> +    cpu->sve_max_vq = find_last_bit(cpu->sve_vq_map, ARM_MAX_VQ) + 1;
-> +
-
-Extra blank line
-
-> +}
->  void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->  {
->      /*
-> @@ -448,6 +463,10 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-> 
->      /* From now on sve_max_vq is the actual maximum supported length. */
->      cpu->sve_max_vq = max_vq;
-> +
-> +       if(arm_feature(&cpu->env, ARM_FEATURE_A64FX)) {
-> +        a64fx_cpu_set_sve(cpu);
-> +    }
-
-Bad indentation and spacing, but I don't think this is the right place
-for this. I wouldn't even let ARM_FEATURE_A64FX enter
-arm_cpu_sve_finalize, since we know it doesn't support sve cpu properties.
-While it's ugly wherever we put it, since we have to special case it, I
-think it's less ugly at the callsite
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2866dd765882..225800ec361c 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1350,10 +1350,14 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-     Error *local_err = NULL;
- 
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
--        arm_cpu_sve_finalize(cpu, &local_err);
--        if (local_err != NULL) {
--            error_propagate(errp, local_err);
--            return;
-+        if (arm_feature(&cpu->env, ARM_FEATURE_A64FX)) {
-+            a64fx_cpu_set_sve(cpu);
-+        } else {
-+            arm_cpu_sve_finalize(cpu, &local_err);
-+            if (local_err != NULL) {
-+                error_propagate(errp, local_err);
-+                return;
-+            }
-         }
- 
-         /*
-
->  }
-> 
->  static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
-> @@ -852,6 +871,7 @@ static void aarch64_a64fx_initfn(Object *obj)
->      ARMCPU *cpu = ARM_CPU(obj);
-> 
->      cpu->dtb_compatible = "arm,a64fx";
-> +    set_feature(&cpu->env, ARM_FEATURE_A64FX);
->      set_feature(&cpu->env, ARM_FEATURE_V8);
->      set_feature(&cpu->env, ARM_FEATURE_NEON);
->      set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> @@ -884,10 +904,6 @@ static void aarch64_a64fx_initfn(Object *obj)
->      cpu->gic_vpribits = 5;
->      cpu->gic_vprebits = 5;
->      /* TODO:  Add A64FX specific HPC extension registers */
-> -
-> -    aarch64_add_sve_properties(obj);
-> -    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
-> -                        cpu_max_set_sve_max_vq, NULL, NULL);
->  }
-> 
->  static const ARMCPUInfo aarch64_cpus[] = {
-
-Otherwise looks OK to me.
+Discussion that includes DBG2 as a possible solution starts around comment
+47. I just skimmed the BZ again though and there doesn't appear to be a
+clear consensus that DBG2 is the solution.
 
 Thanks,
 drew
 
 > 
-> ---
+> Maybe the SBBR spec should not flag the DBG2 as mandatory and test
+> suites shall be updated. I think this should be clarified at ARM then,
+> all the more so if there are legal issues as its spec is owned by Microsoft?
 > 
-> Best regards.
+> Thanks
 > 
-> 
-> > -----Original Message-----
-> > From: Andrew Jones <drjones@redhat.com>
-> > Sent: Thursday, August 5, 2021 8:25 PM
-> > To: Ishii, Shuuichirou <ishii.shuuichir@fujitsu.com>
-> > Cc: peter.maydell@linaro.org; qemu-arm@nongnu.org; qemu-devel@nongnu.org
-> > Subject: Re: [PATCH v3 1/3] target-arm: cpu64: Add support for Fujitsu A64FX
-> > 
-> > On Thu, Aug 05, 2021 at 04:30:43PM +0900, Shuuichirou Ishii wrote:
-> > > Add a definition for the Fujitsu A64FX processor.
-> > >
-> > > The A64FX processor does not implement the AArch32 Execution state, so
-> > > there are no associated AArch32 Identification registers.
-> > >
-> > > Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-> > > ---
-> > >  target/arm/cpu64.c | 44
-> > ++++++++++++++++++++++++++++++++++++++++++++
-> > >  1 file changed, 44 insertions(+)
-> > >
-> > > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c index
-> > > c690318a9b..612644941b 100644
-> > > --- a/target/arm/cpu64.c
-> > > +++ b/target/arm/cpu64.c
-> > > @@ -847,10 +847,54 @@ static void aarch64_max_initfn(Object *obj)
-> > >                          cpu_max_set_sve_max_vq, NULL, NULL);  }
-> > >
-> > > +static void aarch64_a64fx_initfn(Object *obj) {
-> > > +    ARMCPU *cpu = ARM_CPU(obj);
-> > > +
-> > > +    cpu->dtb_compatible = "arm,a64fx";
-> > > +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> > > +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> > > +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> > > +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> > > +    set_feature(&cpu->env, ARM_FEATURE_EL2);
-> > > +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> > > +    set_feature(&cpu->env, ARM_FEATURE_PMU);
-> > > +    cpu->midr = 0x461f0010;
-> > > +    cpu->revidr = 0x00000000;
-> > > +    cpu->ctr = 86668006;
-> > > +    cpu->reset_sctlr = 0x30000180;
-> > > +    cpu->isar.id_aa64pfr0 =   0x0000000101111111; /* No RAS Extensions
-> > */
-> > > +    cpu->isar.id_aa64pfr1 = 0x0000000000000000;
-> > > +    cpu->isar.id_aa64dfr0 = 0x0000000010305408;
-> > > +    cpu->isar.id_aa64dfr1 = 0x0000000000000000;
-> > > +    cpu->id_aa64afr0 = 0x0000000000000000;
-> > > +    cpu->id_aa64afr1 = 0x0000000000000000;
-> > > +    cpu->isar.id_aa64mmfr0 = 0x0000000000001122;
-> > > +    cpu->isar.id_aa64mmfr1 = 0x0000000011212100;
-> > > +    cpu->isar.id_aa64mmfr2 = 0x0000000000001011;
-> > > +    cpu->isar.id_aa64isar0 = 0x0000000010211120;
-> > > +    cpu->isar.id_aa64isar1 = 0x0000000000010001;
-> > > +    cpu->isar.id_aa64zfr0 = 0x0000000000000000;
-> > > +    cpu->clidr = 0x0000000080000023;
-> > > +    cpu->ccsidr[0] = 0x7007e01c; /* 64KB L1 dcache */
-> > > +    cpu->ccsidr[1] = 0x2007e01c; /* 64KB L1 icache */
-> > > +    cpu->ccsidr[2] = 0x70ffe07c; /* 8MB L2 cache */
-> > > +    cpu->dcz_blocksize = 6; /* 256 bytes */
-> > > +    cpu->gic_num_lrs = 4;
-> > > +    cpu->gic_vpribits = 5;
-> > > +    cpu->gic_vprebits = 5;
-> > > +    /* TODO:  Add A64FX specific HPC extension registers */
-> > > +
-> > > +    aarch64_add_sve_properties(obj);
-> > > +    object_property_add(obj, "sve-max-vq", "uint32",
-> > cpu_max_get_sve_max_vq,
-> > > +                        cpu_max_set_sve_max_vq, NULL, NULL);
-> > 
-> > I'm not a huge fan of the sve-max-vq property since it's not a good idea to use it
-> > with KVM, because it's not explicit enough for migration[1]. I realize the a64fx cpu
-> > type will likely never be used with KVM, but since sve-max-vq isn't necessary[2],
-> > than I would avoid propagating it to another cpu type. Finally, if you want the a64fx
-> > cpu model to represent the current a64fx cpu, then don't you want to explicitly set
-> > the supported vector lengths[3] and deny the user the option to change them? You
-> > could do that by directly setting the vq map and not adding the sve properties.
-> > 
-> > [1] With KVM, sve-max-vq only tells you the maximum vq, but it won't tell you that
-> > the host doesn't support non-power-of-2 vector lengths. So you don't get an
-> > explicit vector length list on the command line. Being explicit is the only safe way
-> > to migrate (see docs/system/arm/cpu-features.rst:"SVE CPU Property
-> > Recommendations").
-> > 
-> > [2] If a shorthand is desired for specifying vector lengths, then just use a single
-> > sve<N> property. For example, sve-max-vq=4 and sve512=on are identical (but
-> > keep [1] in mind).
-> > 
-> > [3] a64fx only support 128, 256, and 512 bit vector lengths, afaik.
-> > 
-> > Thanks,
-> > drew
-> > 
-> > > +}
-> > > +
-> > >  static const ARMCPUInfo aarch64_cpus[] = {
-> > >      { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
-> > >      { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-> > >      { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
-> > > +    { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
-> > >      { .name = "max",                .initfn = aarch64_max_initfn },
-> > >  };
-> > >
-> > > --
-> > > 2.27.0
-> > >
-> > >
+> Eric
+> >
+> >
+> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >>
+> >> ---
+> >>
+> >> Tested by comparing the content with the table generated
+> >> by EDK2 along with the SBSA-REF machine (code generated by
+> >> DynamicTablesPkg/Library/Acpi/Arm/AcpiDbg2LibArm/Dbg2Generator.c).
+> >>
+> >> I reused the Generic Address Structure filled by QEMU in the SPCR, ie.
+> >> bit_width = 8 and byte access. While EDK2 sets bit_width = 32 and
+> >> dword access. Also the name exposed by acpica tools is different:
+> >> 'COM0' in my case where '\_SB.COM0' in SBSA-REF case?
+> >> ---
+> >>  hw/arm/virt-acpi-build.c    | 77 ++++++++++++++++++++++++++++++++++++-
+> >>  include/hw/acpi/acpi-defs.h | 50 ++++++++++++++++++++++++
+> >>  2 files changed, 126 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> >> index 037cc1fd82..35f27b41df 100644
+> >> --- a/hw/arm/virt-acpi-build.c
+> >> +++ b/hw/arm/virt-acpi-build.c
+> >> @@ -563,6 +563,78 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>                   vms->oem_table_id);
+> >>  }
+> >>
+> >> +#define ACPI_DBG2_PL011_UART_LENGTH 0x1000
+> >> +
+> >> +/* DBG2 */
+> >> +static void
+> >> +build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >> +{
+> >> +    int addr_offset, addrsize_offset, namespace_offset, namespace_length;
+> >> +    const MemMapEntry *uart_memmap = &vms->memmap[VIRT_UART];
+> >> +    struct AcpiGenericAddress *base_address;
+> >> +    int dbg2_start = table_data->len;
+> >> +    AcpiDbg2Device *dbg2dev;
+> >> +    char name[] = "COM0";
+> >> +    AcpiDbg2Table *dbg2;
+> >> +    uint32_t *addr_size;
+> >> +    uint8_t *namespace;
+> >> +
+> >> +    dbg2 = acpi_data_push(table_data, sizeof *dbg2);
+> >> +    dbg2->info_offset = sizeof *dbg2;
+> >> +    dbg2->info_count = 1;
+> >> +
+> >> +    /* debug device info structure */
+> >> +
+> >> +    dbg2dev = acpi_data_push(table_data, sizeof(AcpiDbg2Device));
+> >> +
+> >> +    dbg2dev->revision = 0;
+> >> +    namespace_length = sizeof name;
+> >> +    dbg2dev->length = sizeof *dbg2dev + sizeof(struct AcpiGenericAddress) +
+> >> +                      4 + namespace_length;
+> >> +    dbg2dev->register_count = 1;
+> >> +
+> >> +    addr_offset = sizeof *dbg2dev;
+> >> +    addrsize_offset = addr_offset + sizeof(struct AcpiGenericAddress);
+> >> +    namespace_offset = addrsize_offset + 4;
+> >> +
+> >> +    dbg2dev->namepath_length = cpu_to_le16(namespace_length);
+> >> +    dbg2dev->namepath_offset = cpu_to_le16(namespace_offset);
+> >> +    dbg2dev->oem_data_length = cpu_to_le16(0);
+> >> +    dbg2dev->oem_data_offset = cpu_to_le16(0); /* No OEM data is present */
+> >> +    dbg2dev->port_type = cpu_to_le16(ACPI_DBG2_SERIAL_PORT);
+> >> +    dbg2dev->port_subtype = cpu_to_le16(ACPI_DBG2_ARM_PL011);
+> >> +
+> >> +    dbg2dev->base_address_offset = cpu_to_le16(addr_offset);
+> >> +    dbg2dev->address_size_offset = cpu_to_le16(addrsize_offset);
+> >> +
+> >> +    /*
+> >> +     * variable length content:
+> >> +     * BaseAddressRegister[1]
+> >> +     * AddressSize[1]
+> >> +     * NamespaceString[1]
+> >> +     */
+> >> +
+> >> +    base_address = acpi_data_push(table_data,
+> >> +                                  sizeof(struct AcpiGenericAddress));
+> >> +
+> >> +    base_address->space_id = AML_SYSTEM_MEMORY;
+> >> +    base_address->bit_width = 8;
+> >> +    base_address->bit_offset = 0;
+> >> +    base_address->access_width = 1;
+> >> +    base_address->address = cpu_to_le64(uart_memmap->base);
+> >> +
+> >> +    addr_size = acpi_data_push(table_data, sizeof *addr_size);
+> >> +    *addr_size = cpu_to_le32(ACPI_DBG2_PL011_UART_LENGTH);
+> >> +
+> >> +    namespace = acpi_data_push(table_data, namespace_length);
+> >> +    memcpy(namespace, name, namespace_length);
+> >> +
+> >> +    build_header(linker, table_data,
+> >> +                 (void *)(table_data->data + dbg2_start), "DBG2",
+> >> +                 table_data->len - dbg2_start, 3, vms->oem_id,
+> >> +                 vms->oem_table_id);
+> >> +}
+> >> +
+> >>  /* MADT */
+> >>  static void
+> >>  build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >> @@ -790,7 +862,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+> >>      dsdt = tables_blob->len;
+> >>      build_dsdt(tables_blob, tables->linker, vms);
+> >>
+> >> -    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
+> >> +    /* FADT MADT GTDT MCFG SPCR DBG2 pointed to by RSDT */
+> >>      acpi_add_table(table_offsets, tables_blob);
+> >>      build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+> >>
+> >> @@ -813,6 +885,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+> >>      acpi_add_table(table_offsets, tables_blob);
+> >>      build_spcr(tables_blob, tables->linker, vms);
+> >>
+> >> +    acpi_add_table(table_offsets, tables_blob);
+> >> +    build_dbg2(tables_blob, tables->linker, vms);
+> >> +
+> >>      if (vms->ras) {
+> >>          build_ghes_error_table(tables->hardware_errors, tables->linker);
+> >>          acpi_add_table(table_offsets, tables_blob);
+> >> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> >> index cf9f44299c..bdb2ebed2c 100644
+> >> --- a/include/hw/acpi/acpi-defs.h
+> >> +++ b/include/hw/acpi/acpi-defs.h
+> >> @@ -618,4 +618,54 @@ struct AcpiIortRC {
+> >>  } QEMU_PACKED;
+> >>  typedef struct AcpiIortRC AcpiIortRC;
+> >>
+> >> +/* DBG2 */
+> >> +
+> >> +/* Types for port_type field above */
+> >> +
+> >> +#define ACPI_DBG2_SERIAL_PORT       0x8000
+> >> +#define ACPI_DBG2_1394_PORT         0x8001
+> >> +#define ACPI_DBG2_USB_PORT          0x8002
+> >> +#define ACPI_DBG2_NET_PORT          0x8003
+> >> +
+> >> +/* Subtypes for port_subtype field above */
+> >> +
+> >> +#define ACPI_DBG2_16550_COMPATIBLE  0x0000
+> >> +#define ACPI_DBG2_16550_SUBSET      0x0001
+> >> +#define ACPI_DBG2_ARM_PL011         0x0003
+> >> +#define ACPI_DBG2_ARM_SBSA_32BIT    0x000D
+> >> +#define ACPI_DBG2_ARM_SBSA_GENERIC  0x000E
+> >> +#define ACPI_DBG2_ARM_DCC           0x000F
+> >> +#define ACPI_DBG2_BCM2835           0x0010
+> >> +
+> >> +#define ACPI_DBG2_1394_STANDARD     0x0000
+> >> +
+> >> +#define ACPI_DBG2_USB_XHCI          0x0000
+> >> +#define ACPI_DBG2_USB_EHCI          0x0001
+> >> +
+> >> +/* Debug Device Information Subtable */
+> >> +
+> >> +struct AcpiDbg2Device {
+> >> +    uint8_t  revision;
+> >> +    uint16_t length;
+> >> +    uint8_t  register_count; /* Number of base_address registers */
+> >> +    uint16_t namepath_length;
+> >> +    uint16_t namepath_offset;
+> >> +    uint16_t oem_data_length;
+> >> +    uint16_t oem_data_offset;
+> >> +    uint16_t port_type;
+> >> +    uint16_t port_subtype;
+> >> +    uint8_t  reserved[2];
+> >> +    uint16_t base_address_offset;
+> >> +    uint16_t address_size_offset;
+> >> +}  QEMU_PACKED;
+> >> +typedef struct AcpiDbg2Device AcpiDbg2Device;
+> >> +
+> >> +struct AcpiDbg2Table {
+> >> +    ACPI_TABLE_HEADER_DEF /* ACPI common table header */
+> >> +    uint32_t info_offset; /* offset to the first debug struct */
+> >> +    uint32_t info_count;  /* number of debug device info struct entries */
+> >> +    uint8_t  dbg2_device_info[];
+> >> +} QEMU_PACKED;
+> >> +typedef struct AcpiDbg2Table AcpiDbg2Table;
+> >> +
+> >>  #endif
+> >> --
+> >> 2.26.3
+> >>
 > 
 

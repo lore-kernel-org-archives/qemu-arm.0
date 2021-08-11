@@ -1,115 +1,94 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp1567415lff;
-        Tue, 10 Aug 2021 11:19:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyvBxH4uClWRXOkd2d9SP8A1C5G9rHoMXdq4a6p7+J25INwddHtQCLf4T9tgNMjh1rzqzN
-X-Received: by 2002:a05:6602:1848:: with SMTP id d8mr428747ioi.72.1628619560403;
-        Tue, 10 Aug 2021 11:19:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628619560; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2078854lff;
+        Wed, 11 Aug 2021 01:09:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVRsoDqRY0v7wmBFF9u8DOQmD+hNIKZNypH3YvVxfCikKll9wvPDcud40pGmQ4I2e3mnRI
+X-Received: by 2002:a02:9a02:: with SMTP id b2mr3813767jal.89.1628669397991;
+        Wed, 11 Aug 2021 01:09:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628669397; cv=none;
         d=google.com; s=arc-20160816;
-        b=Na457AlDvgiCDq59gYylh53UbAwnnTDzySrZmvqRWWqckvtXozzcGbYi1fJzqQrVMa
-         as33/NfATITk9OWzouNCteKPXsPDOMy1EANesFg5jpxLNlkbOkME0PBBXi1Dg3rxAyqP
-         KizZokvrm0KJl1XlsQdgsJxjbMpLEpFiB+gNzQaOKXDTIHwiqKMJuUwpPzloW4IoQ8hR
-         fDMeLlkVtCBIf4RvEQ01h2IxkzQ6RNb5AugzEEwx2nwkgrgmz68kCVmfHHcbjppb2Yez
-         hZ3f28C2ftk4JBYYSWvUphIt1GhKNVdF0Ic6CdwDSA9W//+s277Mxiteeq4/BiZrsDN1
-         xJdQ==
+        b=pdHKZyFbCsYpDJbo80Kk8dOhZJl4xCRf7YjZphoX05auuNiLO+y+cSfBvyOa7Iuf8C
+         DsnFHPK2mRv128B8DDhZoZM33mhiOU4i7/0zCwkEU+p6Vc94gfNn8mTZdvpq6jCjVwtS
+         B0+1o8e99UA6X84B4rzJ/2xzamiwCfDSF50OY4jrSWQvlXW1JnYyatFbmUoxBBoWu7GU
+         3T6Bv49b4Q6FkTJizXmuz0leQFy5eEko5moCsPThSm68iwiwWeEcxh3I6/xjhYTvUYeB
+         j49RFvYzO7kXWh8xPLFasGqSZ4bN5CZQXQI0uIJwCEJGxNuJPksMIidbJnz7AAruPxh8
+         D4Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ioSh5jkDrnRsdX5nqCnftjHFXdUlgh2KyGUM+scEUBY=;
-        b=bBBYJmXGXtK4NWk19ESe1R74eaK9x1e6EzeRN5XIv5mlbcYXaB0/sFXjVFlh23Sar9
-         PS+ZBedJ1R9fmr5SI2Yc2zBqJQppUXTQ/XNicxcAaZWamA7eG2vP0uDB8shkixHYmGY5
-         l+uvmojrXP5ifztZN778pq69QBlp13ZuL7i1CA+dmbxo4hFtHPRMBKm8sd0PyhEpRrcA
-         SiKV4UbsHI4ZxLaKmwTNbxuBTBs/2DOKM92HIgHshWd+Wr/ShfsEuGxgM7ACn/2vOVkF
-         txJYBcYDukVyfWfFDLH8+Hqp2XN2NJTgMSNYmqjc/5kkKY+EGUYV/yUobiXniScMEyBY
-         eY5Q==
+         :message-id:from:references:to:subject;
+        bh=gwEJRb7cmFKaoE5qiTXjarbkyGA/T1dcMSFEZwdbHQE=;
+        b=ImAV/p756QpJjDlWaUn9YtuLNbzMMX6SRkBAm+xV7w1TQHhENalM/N5QX1JdG7mfOF
+         S4dVL/yPQpZ36d/Dewa9i0TgtmRXZ4Xx6KS+44LLjnK531tDeM6UuXr2homs5R915uue
+         baxUDT9rdHPEq+sb1li5Qxtx2F4Dz8jJzRL6p6PfTYLROixgvxIAy3Vy8WvyLlfyaikp
+         8BkyBF08+cqVdPkUgwRYlksh06AkLcufa1w1epqIC2IIl7ZdTxI6nwL8ksPBie+dwvtL
+         187kUuXgOEoteyq1LmcxstztvuqqhOXFDHZ2SyNtglEp76VSBVM43x7dUHW7013nLiYU
+         +0xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="m/KVHAz2";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r17si25620304iov.104.2021.08.10.11.19.20
+        by mx.google.com with ESMTPS id l2si26147642jak.45.2021.08.11.01.09.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Aug 2021 11:19:20 -0700 (PDT)
+        Wed, 11 Aug 2021 01:09:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="m/KVHAz2";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55556 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDWLP-0000Js-Ns
-	for alex.bennee@linaro.org; Tue, 10 Aug 2021 14:19:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55680)
+	id 1mDjJF-0003O9-9Q
+	for alex.bennee@linaro.org; Wed, 11 Aug 2021 04:09:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mDWLD-0000Jg-8u; Tue, 10 Aug 2021 14:19:07 -0400
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f]:41684)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mDWLB-0006FM-Bd; Tue, 10 Aug 2021 14:19:07 -0400
-Received: by mail-oo1-xc2f.google.com with SMTP id
- f33-20020a4a89240000b029027c19426fbeso5576228ooi.8; 
- Tue, 10 Aug 2021 11:19:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ioSh5jkDrnRsdX5nqCnftjHFXdUlgh2KyGUM+scEUBY=;
- b=m/KVHAz2cho45IptUYukTvI2vCQgpHRLNGEgHNv/HIBc6o+M7vQr8gvivcL1gCOxwe
- EqMTZBgfs8G2GKk7i3c5ZosxGdDi+BjVP8O+XfniJ5HV0oSPDrmgzr1sWTerchFIT07z
- 2fjmy2C+8r6X5NPs+7zxr0jVDuzpZRmvleAxFGbt75WLJzgltcUZh9rGujYLtgB1E0oq
- QVad/lkNEqglko4IqRasYTzjw/IcPglIhCcBGMVkkBFOnCoDPeLeeOHaUbm8CerU1U0w
- O+05NOZgDunrQ7TfREHiSBLD6kywTIdlXYC06z4LpToXlfEljoKxTTHays4Jm7zwf2Ax
- j1ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ioSh5jkDrnRsdX5nqCnftjHFXdUlgh2KyGUM+scEUBY=;
- b=aJVh2Y0/a20WbzX4bSEMaYGpZA90GHP5yz79a/LswdHeZEAMZcfHi/aZVYtb5q+DUC
- Qjlz2L+o1TpzbJyIdpJayNN8NK0doOJISOi+iVVAsd5f1mvbNmc/He8Zi5poOKfE0sfS
- KOjZR7MazqoUr3XVsxGHXxSCUAD80wESp/03ATCCcSnkqninpgWHcWPh7N9td0iCq+3a
- AxOnuuq6mv1TvJg3Mql7S0eod5MDrxFJ/haMnvVR+iwaCmVqRhxNaRWd0wjfF5WIzr3p
- 8LAn9ZbqYQ5hnj78fL8nxO6uf9TKaHzW/DTIEahWt4SEobai3mxwexHbOx8Sc/VxJA4X
- ZQfw==
-X-Gm-Message-State: AOAM531o0T8lfJQdk72XUvgflS5JPZPyJWwC5wm1+mve11kJMo3pCJIa
- qiGdisCmaAQt5Y9PcmSo3l0=
-X-Received: by 2002:a4a:98e1:: with SMTP id b30mr17570457ooj.34.1628619543864; 
- Tue, 10 Aug 2021 11:19:03 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- c11sm3973161otm.37.2021.08.10.11.19.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Aug 2021 11:19:03 -0700 (PDT)
-Subject: Re: [PATCH v2] fsl-imx6ul: Instantiate SAI1/2/3 and ASRC as
- unimplemented devices
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210810160318.87376-1-linux@roeck-us.net>
- <6e8a0fb5-04e9-d6e6-989a-41de4eacf303@amsat.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <18e4325c-fda0-ad11-5275-28202001acec@roeck-us.net>
-Date: Tue, 10 Aug 2021 11:19:02 -0700
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mDjJ6-0003Ni-IZ; Wed, 11 Aug 2021 04:09:48 -0400
+Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:35241)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mDjJ4-00024J-5M; Wed, 11 Aug 2021 04:09:48 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.124])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id D63CC13D943;
+ Wed, 11 Aug 2021 08:09:41 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Wed, 11 Aug
+ 2021 10:09:40 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G003838a321f-8fe8-42da-b5bf-e23922552251,
+ F37E8DF54766F004E000311A84F7FEB06F086262) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
+Subject: Re: [PATCH 08/10] aspeed: Emulate the AST2600A3
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+References: <20210809131556.686260-1-clg@kaod.org>
+ <20210809131556.686260-9-clg@kaod.org>
+ <d41fddce-4c87-5356-faf0-762f9f4fd32b@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d62848e5-910c-0d81-fcf9-3a6ebd9794db@kaod.org>
+Date: Wed, 11 Aug 2021 10:09:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <6e8a0fb5-04e9-d6e6-989a-41de4eacf303@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <d41fddce-4c87-5356-faf0-762f9f4fd32b@amsat.org>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2f;
- envelope-from=groeck7@gmail.com; helo=mail-oo1-xc2f.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: b5974f8b-8a51-458c-9ce1-afa31d1bcf5b
+X-Ovh-Tracer-Id: 9639110579892620070
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrkeduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout3.3005.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,123 +101,127 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MwfpWRJGSbSC
+X-TUID: DpM/Ev9DbPR6
 
-On 8/10/21 9:34 AM, Philippe Mathieu-Daudé wrote:
-> On 8/10/21 6:03 PM, Guenter Roeck wrote:
->> Instantiate SAI1/2/3 and ASRC as unimplemented devices to avoid random
->> Linux kernel crashes, such as
+On 8/9/21 5:55 PM, Philippe Mathieu-Daudé wrote:
+> On 8/9/21 3:15 PM, Cédric Le Goater wrote:
+>> From: Joel Stanley <joel@jms.id.au>
 >>
->> Unhandled fault: external abort on non-linefetch (0x808) at 0xd1580010^M
->> pgd = (ptrval)^M
->> [d1580010] *pgd=8231b811, *pte=02034653, *ppte=02034453^M
->> Internal error: : 808 [#1] SMP ARM^M
->> ...
->> [<c095e974>] (regmap_mmio_write32le) from [<c095eb48>] (regmap_mmio_write+0x3c/0x54)^M
->> [<c095eb48>] (regmap_mmio_write) from [<c09580f4>] (_regmap_write+0x4c/0x1f0)^M
->> [<c09580f4>] (_regmap_write) from [<c095837c>] (_regmap_update_bits+0xe4/0xec)^M
->> [<c095837c>] (_regmap_update_bits) from [<c09599b4>] (regmap_update_bits_base+0x50/0x74)^M
->> [<c09599b4>] (regmap_update_bits_base) from [<c0d3e9e4>] (fsl_asrc_runtime_resume+0x1e4/0x21c)^M
->> [<c0d3e9e4>] (fsl_asrc_runtime_resume) from [<c0942464>] (__rpm_callback+0x3c/0x108)^M
->> [<c0942464>] (__rpm_callback) from [<c0942590>] (rpm_callback+0x60/0x64)^M
->> [<c0942590>] (rpm_callback) from [<c0942b60>] (rpm_resume+0x5cc/0x808)^M
->> [<c0942b60>] (rpm_resume) from [<c0942dfc>] (__pm_runtime_resume+0x60/0xa0)^M
->> [<c0942dfc>] (__pm_runtime_resume) from [<c0d3ecc4>] (fsl_asrc_probe+0x2a8/0x708)^M
->> [<c0d3ecc4>] (fsl_asrc_probe) from [<c0935b08>] (platform_probe+0x58/0xb8)^M
->> [<c0935b08>] (platform_probe) from [<c0933264>] (really_probe.part.0+0x9c/0x334)^M
->> [<c0933264>] (really_probe.part.0) from [<c093359c>] (__driver_probe_device+0xa0/0x138)^M
->> [<c093359c>] (__driver_probe_device) from [<c0933664>] (driver_probe_device+0x30/0xc8)^M
->> [<c0933664>] (driver_probe_device) from [<c0933c88>] (__driver_attach+0x90/0x130)^M
->> [<c0933c88>] (__driver_attach) from [<c0931060>] (bus_for_each_dev+0x78/0xb8)^M
->> [<c0931060>] (bus_for_each_dev) from [<c093254c>] (bus_add_driver+0xf0/0x1d8)^M
->> [<c093254c>] (bus_add_driver) from [<c0934a30>] (driver_register+0x88/0x118)^M
->> [<c0934a30>] (driver_register) from [<c01022c0>] (do_one_initcall+0x7c/0x3a4)^M
->> [<c01022c0>] (do_one_initcall) from [<c1601204>] (kernel_init_freeable+0x198/0x22c)^M
->> [<c1601204>] (kernel_init_freeable) from [<c0f5ff2c>] (kernel_init+0x10/0x128)^M
->> [<c0f5ff2c>] (kernel_init) from [<c010013c>] (ret_from_fork+0x14/0x38)^M
+>> This is the latest revision of the ASPEED 2600 SoC. As there is no
+>> need to model multiple revisions of the same SoC for the moment,
+>> update the SCU AST2600 to model the A3 revision instead of the A1 and
+>> adapt the AST2600 SoC and machines.
 >>
->> or
+>> Reset values are taken from v8 of the datasheet.
 >>
->> Unhandled fault: external abort on non-linefetch (0x808) at 0xd19b0000^M
->> pgd = (ptrval)^M
->> [d19b0000] *pgd=82711811, *pte=308a0653, *ppte=308a0453^M
->> Internal error: : 808 [#1] SMP ARM^M
->> ...
->> [<c095e974>] (regmap_mmio_write32le) from [<c095eb48>] (regmap_mmio_write+0x3c/0x54)^M
->> [<c095eb48>] (regmap_mmio_write) from [<c09580f4>] (_regmap_write+0x4c/0x1f0)^M
->> [<c09580f4>] (_regmap_write) from [<c0959b28>] (regmap_write+0x3c/0x60)^M
->> [<c0959b28>] (regmap_write) from [<c0d41130>] (fsl_sai_runtime_resume+0x9c/0x1ec)^M
->> [<c0d41130>] (fsl_sai_runtime_resume) from [<c0942464>] (__rpm_callback+0x3c/0x108)^M
->> [<c0942464>] (__rpm_callback) from [<c0942590>] (rpm_callback+0x60/0x64)^M
->> [<c0942590>] (rpm_callback) from [<c0942b60>] (rpm_resume+0x5cc/0x808)^M
->> [<c0942b60>] (rpm_resume) from [<c0942dfc>] (__pm_runtime_resume+0x60/0xa0)^M
->> [<c0942dfc>] (__pm_runtime_resume) from [<c0d4231c>] (fsl_sai_probe+0x2b8/0x65c)^M
->> [<c0d4231c>] (fsl_sai_probe) from [<c0935b08>] (platform_probe+0x58/0xb8)^M
->> [<c0935b08>] (platform_probe) from [<c0933264>] (really_probe.part.0+0x9c/0x334)^M
->> [<c0933264>] (really_probe.part.0) from [<c093359c>] (__driver_probe_device+0xa0/0x138)^M
->> [<c093359c>] (__driver_probe_device) from [<c0933664>] (driver_probe_device+0x30/0xc8)^M
->> [<c0933664>] (driver_probe_device) from [<c0933c88>] (__driver_attach+0x90/0x130)^M
->> [<c0933c88>] (__driver_attach) from [<c0931060>] (bus_for_each_dev+0x78/0xb8)^M
->> [<c0931060>] (bus_for_each_dev) from [<c093254c>] (bus_add_driver+0xf0/0x1d8)^M
->> [<c093254c>] (bus_add_driver) from [<c0934a30>] (driver_register+0x88/0x118)^M
->> [<c0934a30>] (driver_register) from [<c01022c0>] (do_one_initcall+0x7c/0x3a4)^M
->> [<c01022c0>] (do_one_initcall) from [<c1601204>] (kernel_init_freeable+0x198/0x22c)^M
->> [<c1601204>] (kernel_init_freeable) from [<c0f5ff2c>] (kernel_init+0x10/0x128)^M
->> [<c0f5ff2c>] (kernel_init) from [<c010013c>] (ret_from_fork+0x14/0x38)^M
->>
->> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>> [ clg: - Introduced an Aspeed "ast2600-a3" SoC class
+>>        - Commit log update ]
+>> Message-Id: <20210407171637.777743-21-clg@kaod.org>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> Message-Id: <20210629142336.750058-3-clg@kaod.org>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 >> ---
->> v2: Updated description to include tracebacks and to use the term 'instantiate'
->>      Added inline comments describing devices in more detail
+>>  include/hw/misc/aspeed_scu.h |  2 ++
+>>  hw/arm/aspeed.c              |  6 +++---
+>>  hw/arm/aspeed_ast2600.c      |  6 +++---
+>>  hw/misc/aspeed_scu.c         | 36 +++++++++++++++++++++++++++++-------
+>>  4 files changed, 37 insertions(+), 13 deletions(-)
 > 
-> Thank you!
+>> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+>> index 40a38ebd8549..05edebedeb46 100644
+>> --- a/hw/misc/aspeed_scu.c
+>> +++ b/hw/misc/aspeed_scu.c
+>> @@ -101,14 +101,24 @@
+>>  #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
+>>  #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
+>>  #define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
+>> +#define AST2600_DEBUG_CTRL        TO_REG(0xC8)
+>> +#define AST2600_DEBUG_CTRL2       TO_REG(0xD8)
+>>  #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+>>  #define AST2600_HPLL_PARAM        TO_REG(0x200)
+>>  #define AST2600_HPLL_EXT          TO_REG(0x204)
+>> +#define AST2600_APLL_PARAM        TO_REG(0x210)
+>> +#define AST2600_APLL_EXT          TO_REG(0x214)
+>> +#define AST2600_MPLL_PARAM        TO_REG(0x220)
+>>  #define AST2600_MPLL_EXT          TO_REG(0x224)
+>> +#define AST2600_EPLL_PARAM        TO_REG(0x240)
+>>  #define AST2600_EPLL_EXT          TO_REG(0x244)
+>> +#define AST2600_DPLL_PARAM        TO_REG(0x260)
+>> +#define AST2600_DPLL_EXT          TO_REG(0x264)
+>>  #define AST2600_CLK_SEL           TO_REG(0x300)
+>>  #define AST2600_CLK_SEL2          TO_REG(0x304)
+>> -#define AST2600_CLK_SEL3          TO_REG(0x310)
+>> +#define AST2600_CLK_SEL3          TO_REG(0x308)
 > 
-> Peter you might want to s/^M// when queueing ;)
+> Is it a bugfix? Otherwise this is annoying.
+
+This is a bug in the model. These registers have the same layout
+on the A1.
+
+Thanks,
+
+C.
+
 > 
-
-Outch. Sorry for that.
-
-Guenter
-
->>      Added Philippe's Reviewed-by: tag
->>
->>   hw/arm/fsl-imx6ul.c | 12 ++++++++++++
->>   1 file changed, 12 insertions(+)
->>
->> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
->> index e0128d7316..1d1a708dd9 100644
->> --- a/hw/arm/fsl-imx6ul.c
->> +++ b/hw/arm/fsl-imx6ul.c
->> @@ -534,6 +534,13 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->>        */
->>       create_unimplemented_device("sdma", FSL_IMX6UL_SDMA_ADDR, 0x4000);
->>   
->> +    /*
->> +     * SAI (Audio SSI (Synchronous Serial Interface))
->> +     */
->> +    create_unimplemented_device("sai1", FSL_IMX6UL_SAI1_ADDR, 0x4000);
->> +    create_unimplemented_device("sai2", FSL_IMX6UL_SAI2_ADDR, 0x4000);
->> +    create_unimplemented_device("sai3", FSL_IMX6UL_SAI3_ADDR, 0x4000);
->> +
->>       /*
->>        * PWM
->>        */
->> @@ -542,6 +549,11 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->>       create_unimplemented_device("pwm3", FSL_IMX6UL_PWM3_ADDR, 0x4000);
->>       create_unimplemented_device("pwm4", FSL_IMX6UL_PWM4_ADDR, 0x4000);
->>   
->> +    /*
->> +     * Audio ASRC (asynchronous sample rate converter)
->> +     */
->> +    create_unimplemented_device("asrc", FSL_IMX6UL_ASRC_ADDR, 0x4000);
->> +
->>       /*
->>        * CAN
->>        */
->>
+> Maybe:
+> 
+>  #define AST2600A1_CLK_SEL3          TO_REG(0x310)
+>  #define AST2600A3_CLK_SEL3          TO_REG(0x308)
+> 
+> and...
+> 
+>> +#define AST2600_CLK_SEL4          TO_REG(0x310)
+>> +#define AST2600_CLK_SEL5          TO_REG(0x314)
+>>  #define AST2600_HW_STRAP1         TO_REG(0x500)
+>>  #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+>>  #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+>> @@ -433,6 +443,8 @@ static uint32_t aspeed_silicon_revs[] = {
+>>      AST2500_A1_SILICON_REV,
+>>      AST2600_A0_SILICON_REV,
+>>      AST2600_A1_SILICON_REV,
+>> +    AST2600_A2_SILICON_REV,
+>> +    AST2600_A3_SILICON_REV,
+>>  };
+>>  
+>>  bool is_supported_silicon_rev(uint32_t silicon_rev)
+>> @@ -651,16 +663,26 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
+>>      .valid.unaligned = false,
+>>  };
+>>  
+>> -static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+>> +static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+>>      [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
+>> -    [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
+>> +    [AST2600_SYS_RST_CTRL2]     = 0x0DFFFFFC,
+>>      [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
+>>      [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
+>> +    [AST2600_DEBUG_CTRL]        = 0x00000FFF,
+>> +    [AST2600_DEBUG_CTRL2]       = 0x000000FF,
+>>      [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
+>> -    [AST2600_HPLL_PARAM]        = 0x1000405F,
+>> +    [AST2600_HPLL_PARAM]        = 0x1000408F,
+>> +    [AST2600_APLL_PARAM]        = 0x1000405F,
+>> +    [AST2600_MPLL_PARAM]        = 0x1008405F,
+>> +    [AST2600_EPLL_PARAM]        = 0x1004077F,
+>> +    [AST2600_DPLL_PARAM]        = 0x1078405F,
+>> +    [AST2600_CLK_SEL]           = 0xF3940000,
+>> +    [AST2600_CLK_SEL2]          = 0x00700000,
+>> +    [AST2600_CLK_SEL3]          = 0x00000000,
+> 
+> ... use AST2600A3_CLK_SEL3 here?
+> 
+> So someone wanting the emulate the A1 doesn't get
+> the nasty bug of having CLK_SEL3 misplaced.
+> 
+>> +    [AST2600_CLK_SEL4]          = 0xF3F40000,
+>> +    [AST2600_CLK_SEL5]          = 0x30000000,
+>>      [AST2600_CHIP_ID0]          = 0x1234ABCD,
+>>      [AST2600_CHIP_ID1]          = 0x88884444,
+>> -
+>>  };
 

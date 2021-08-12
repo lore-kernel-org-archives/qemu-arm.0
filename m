@@ -1,111 +1,104 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp198867lff;
-        Thu, 12 Aug 2021 02:47:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOSeZN3jETLZxJ+AjDwd/Gjavf3wp4CYGj3z0K77e2rKWVPedspsREhJ0HWzD78vQZ87PS
-X-Received: by 2002:a37:2d04:: with SMTP id t4mr3704228qkh.160.1628761677231;
-        Thu, 12 Aug 2021 02:47:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628761677; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp199075lff;
+        Thu, 12 Aug 2021 02:48:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxw5+6B7wurbAkdhxkLuVE3TL7co47T6IC+wSjIC/YytOUfhZIsTa2Kl3St0oqIvIQEZWMH
+X-Received: by 2002:a0c:c345:: with SMTP id j5mr2948158qvi.1.1628761693406;
+        Thu, 12 Aug 2021 02:48:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628761693; cv=none;
         d=google.com; s=arc-20160816;
-        b=IZP7MJ3yre+IWYWeDJJ52nRbSGi1k4J8QBPt/lFDpcdos+4+1tJq/pwMTNJWjYzdY8
-         rJ7VPAlP3UmIEFS3Zb/rhs/5Cyx6nW7KiKvkhCfa+X+wcEVK8UJKw06kn9Xbf4ynf3p3
-         xhwXWljk1XMw0o2RhzKkmnxyep+kxVGSzA2eVjN3UyLdS8QiXlp76blt6ndAc7aMQp/B
-         I5YI7nUo58XAEDHuUZwVVA5983uSO4JrkPuKfg0NSMrryp2/PMSzVIyWQ2wPYV2hMsTb
-         LWiD+fmFNxAEImnx6gi1qTtomuaZHBaJdh2sRTtb6DYiqiSg4Rt39TWE48M6mMwY86G2
-         MAzQ==
+        b=FZ1TR5NXU4HI1KQBIqFtvMSLL3gN8D+eLtk6jwOX55QnUnlve/lA36Z1GoWd+zQV+M
+         L5iOYx1lpYZpzyr/BrB5iprNFb9HsT6v2sZ2N/8Tn338HAULOY5nFF62Of9g/orEJ1ll
+         envnvGNWeqVvuWeUjQCLac2Pk0E+QXQrWK7aCq91xuKXlo84IyS+NlJd21KjMnyjIk2M
+         GVJnmOYQvMxmDgNJl359WszoECx0H+d5uaukjd0i9CjFeYIpuhIQUlHgnYtbGcfvz6SL
+         RXjBYb3UFrs6VfQibY6rlTAKAOkSSf2UcR7W9ImsmB5B5Sj0YSxfQTwxgzTi/Ov/r2D6
+         YpCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HhvybS859OcUptSSqet3BEb/fRS6bALyy8jbPeiYrJ4=;
-        b=njhQqHILdgdFB08hAiSpVT9SpFsdHiCbadnlyiANRrcpbpGVU7PmAR3BaObvaGDGED
-         Tz3dYdlWDWAYY2fInj6XIn3IBQvnaONi3gWbFSYgfEFjfApChuv4yvBORgn4VsoMtuZE
-         GB13WZSmKTWm2zRcjVzwTjGH2EnAED3CA9Mbg+98zKcJyLwbqUHApcOBuufMxNvdCwp7
-         lKPDPh2TMom75Pnh1qbu+Vi6RbcjSDcoS55AjGkHG3ErFeYaEmc+pZJZSeZmGfxBMQ/l
-         FB9ejgqZts4st56K04cVMZQh3RpVisoIva+FwOhvCTKwAJYOT5CBszyJdo2CDqbWJ1wv
-         brCQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=O4oM2TISiijknuGwtIZQfdQCC3usHnin2N3rXpO0bjM=;
+        b=cUc/4SwSqRFqlj6DJr2iMgyUaxLyevPRtDYmPohLvh4vXWHeVnpsoGJgIFxYexuYNc
+         PghcpLAreltE4aDpaYWKRCCakWP4pdIIdfGyCQN/6i8Rht9yUGJMXMp4tZMjh0Dff+CC
+         36cA1PlowcqlMGDa+LyPV4IWyQHoQtyfa/Fp++iWa6Tji+a3I2KnNj+XAj/I4Pn9lkSu
+         giaexEC2cn/vj4fmCGcbwfbB0/031NYlvHqfDQ8itxoyg5+pqEA6OTpJVtubcgld5rSg
+         9TuCZ5FOKXdfv11N7Us9iFlNI3vs+pP4chC7VbKSNBA9ExertfPVsQwEo6+lDOhf/75a
+         SS9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="XA/zqOI1";
+       dkim=fail header.i=@linaro.org header.s=google header.b=RgJ13VWS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 190si1538474qkn.367.2021.08.12.02.47.57
+        by mx.google.com with ESMTPS id gg12si1695887qvb.151.2021.08.12.02.48.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 02:47:57 -0700 (PDT)
+        Thu, 12 Aug 2021 02:48:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="XA/zqOI1";
+       dkim=fail header.i=@linaro.org header.s=google header.b=RgJ13VWS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44688 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE7Jc-00032Z-GK
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:47:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46872)
+	id 1mE7Js-0003tA-M4
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:48:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47436)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76c-0006Pa-80
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:30 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:43880)
+ id 1mE79K-0006Af-W2
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:37:20 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:33783)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76V-00086G-RQ
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:29 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- k5-20020a05600c1c85b02902e699a4d20cso4055709wms.2
- for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:23 -0700 (PDT)
+ id 1mE79I-00025O-6g
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:37:18 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id by4so8785207edb.0
+ for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:37:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=HhvybS859OcUptSSqet3BEb/fRS6bALyy8jbPeiYrJ4=;
- b=XA/zqOI17ahAlXSqhm0owgAV/izId0SqYJfOHJO6ZSbt+PpjUFiVHWjVU5mJ5cNafX
- FE89Vi0/WO8fPiCTMLBi+kslKG5y41sVjIbYnFU+T6suHNAPehb5amgyBAGU5YHA5k0H
- Bs3zwU2kgJ0Frkyc+VPTqAB370+p/MmOd7jRdOcnKFQ8/lqpBfWqM+8YI9upYvG6tzOM
- ewPHxvcD7G5K1XgNoRXx2N9h3jU6/YrIz41hqCYg65pOLpUmhs64s+L7HkHbMbL5tjGH
- 53QcYfZ+d5OgkK0C+ErdB+R5iwDbTG5VrcRvYOA1D96UMW9OOtAj6KAQrnEQD9BYtzMH
- cSxQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=O4oM2TISiijknuGwtIZQfdQCC3usHnin2N3rXpO0bjM=;
+ b=RgJ13VWSgrRB/cQsUGkTpbZw3OD3wSrwuxIsdr6G5gmNM24zwMfGdYGc4Kxe3ZvLPn
+ 7RBJQG9i3n4vyo9UZ2pG8HvJJDSNKgsNvLpuVeeONYBArq4fUHufnlGgVcV/smw9jM83
+ mWvzKmdF3lh1448RAQtAxVdJPuJdI5PDtnnfClrsmdKStOJCNfdOoVpgtVSYxUtPEfGI
+ B97Wlh5Q/pMfppamD9T1Kqx/eKsCMl2Hz1dS2Ql54XYBN2Isnsljsxc/QwTlCqHYY/+T
+ pjWmILAoVi2Ead+usfHvpD01SDl0w76J/OaYifiVghGGVyj3Ytro7gAVjYZGF8qCe3qD
+ M0EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=HhvybS859OcUptSSqet3BEb/fRS6bALyy8jbPeiYrJ4=;
- b=seYhIriGcvkNXwsFCYJrn96MsrtsB8mHxqQ9PJ2OSSnt1Ae60zg8IP+pijaeb9Qw8+
- eJxFiKR60P3AoUwlUj7DtJ6LM4eo9+uIbUrWYAY8OK9ErpDoPv96Dm2KHyu4K7hXNOVZ
- fiLe2dDDLy4z1B+mVv4nxSb8adTGBsYCioqHfBysGHwVJPDwXMj8EBIgyf/YeJfk5yF9
- F4UbpnCGbMrzw/OhRyay1cFBtg1uAuBaHrD4gR1sqks5WjJHXmBoeuRoVE7gwETwaEj4
- sTH4gjWfvGSYgXxofN7h0IqrKYfFKaP+Qs+IuBD5ibTL8VAZbsXKJmWGsVbk7hGxP/YE
- WgYg==
-X-Gm-Message-State: AOAM532jmMFPymg9pXMSnu+Z476mv2PE/4CDUlTGBhy/xUyp7tXdpJmk
- ZnKvVL3wlSBvMwj3wFkdo7NZgA==
-X-Received: by 2002:a7b:c144:: with SMTP id z4mr14184996wmi.55.1628760862280; 
- Thu, 12 Aug 2021 02:34:22 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 02:34:21 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 24/25] hw/timer/stellaris-gptm: Use Clock input
- instead of system_clock_scale
-Date: Thu, 12 Aug 2021 10:33:55 +0100
-Message-Id: <20210812093356.1946-25-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210812093356.1946-1-peter.maydell@linaro.org>
-References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=O4oM2TISiijknuGwtIZQfdQCC3usHnin2N3rXpO0bjM=;
+ b=uSw08NiUzMzUT7jNAThvurTg8/ERkAWhV0y3r+sJabm4HmEusv2ICY5+XpIPA+REh4
+ rCgFNvtGoPea27kcKmwe5tHZ07XhZk75Z/9iOKANISmtVR5ac5b0aFXLxwuagBrmzkg9
+ KNLNVsU7mJUbdofsHFuaOVdY7dJqKUiHdPbN8GCgkI9RJzSVYZJH8Jv0DfMW7TFsbQpK
+ +VtrVP6Eot+0yai0QUIhYPYxPWmfy1BItS1ADe0QGr2KQ2Gzvg2nUw/q3YgRJPHSnoq4
+ QO37AyokWwbadna3D/EIsqNosjEsmy2Az9tABeH2j3nmXxZRc50wYVftBM0aLx+sIiaz
+ qYHA==
+X-Gm-Message-State: AOAM531lV1hZP8P7IXBW8MSYRa7aZlesAZsWLFSIqXSXe63BH3WOSWbc
+ x2wy6qHZjE9u8AVUBk/NAtF8b23mE1BhMkZgAM5Mv6K01gw=
+X-Received: by 2002:a50:ff03:: with SMTP id a3mr4325295edu.100.1628761034406; 
+ Thu, 12 Aug 2021 02:37:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+References: <20210812060440.1330348-1-ishii.shuuichir@fujitsu.com>
+ <20210812060440.1330348-2-ishii.shuuichir@fujitsu.com>
+ <20210812091650.i5np3szvdoelu2cx@gator.home>
+ <20210812092517.mwcfhksoe4cgy3cl@gator.home>
+In-Reply-To: <20210812092517.mwcfhksoe4cgy3cl@gator.home>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Aug 2021 10:36:29 +0100
+Message-ID: <CAFEAcA84OeEooeYG_ierHBYh1akz7tw_6hAkbG=3J2DpiRJJ=w@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] target-arm: Add support for Fujitsu A64FX
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,162 +111,19 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Alexandre Iooss <erdnaxe@crans.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Nx/ULBVbIfNf
+X-TUID: lRT0fSCv6d3B
 
-The stellaris-gptm timer currently uses system_clock_scale for one of
-its timer modes where the timer runs at the CPU clock rate.  Make it
-use a Clock input instead.
+On Thu, 12 Aug 2021 at 10:25, Andrew Jones <drjones@redhat.com> wrote:
+> On second thought, do we want the QMP CPU model expansion query to show
+> that this CPU type has sve,sve128,sve256,sve512? If so, then our SVE work
+> isn't complete, because we need those properties, set true by default, but
+> forbidden from changing.
 
-We don't try to make the timer handle changes in the clock frequency
-while the downcounter is running.  This is not a change in behaviour
-from the previous system_clock_scale implementation -- we will pick
-up the new frequency only when the downcounter hits zero.  Handling
-dynamic clock changes when the counter is running would require state
-that the current gptm implementation doesn't have.
+Do we have precedent elsewhere (arm, x86, wherever) for "this CPU object
+exposes these properties as constant unwriteable" ?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-As noted in the comment, ideally we would convert the device to use
-ptimer for its downcounter, which supports frequency changes while
-the counter is running and would also allow reading the timer value.
-But I don't want to make and test that change to a minor timer device
-in a board model I wouldn't recommend anybody actually use; this
-series is long enough as it is...
----
- include/hw/timer/stellaris-gptm.h |  3 +++
- hw/arm/stellaris.c                | 12 +++++++++---
- hw/timer/stellaris-gptm.c         | 26 ++++++++++++++++++++++----
- 3 files changed, 34 insertions(+), 7 deletions(-)
-
-diff --git a/include/hw/timer/stellaris-gptm.h b/include/hw/timer/stellaris-gptm.h
-index b8fa43c94bf..fde1fc6f0c7 100644
---- a/include/hw/timer/stellaris-gptm.h
-+++ b/include/hw/timer/stellaris-gptm.h
-@@ -13,6 +13,7 @@
- #include "qom/object.h"
- #include "hw/sysbus.h"
- #include "hw/irq.h"
-+#include "hw/clock.h"
- 
- #define TYPE_STELLARIS_GPTM "stellaris-gptm"
- OBJECT_DECLARE_SIMPLE_TYPE(gptm_state, STELLARIS_GPTM)
-@@ -22,6 +23,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(gptm_state, STELLARIS_GPTM)
-  *  + sysbus MMIO region 0: register bank
-  *  + sysbus IRQ 0: timer interrupt
-  *  + unnamed GPIO output 0: trigger output for the ADC
-+ *  + Clock input "clk": the 32-bit countdown timer runs at this speed
-  */
- struct gptm_state {
-     SysBusDevice parent_obj;
-@@ -43,6 +45,7 @@ struct gptm_state {
-     /* The timers have an alternate output used to trigger the ADC.  */
-     qemu_irq trigger;
-     qemu_irq irq;
-+    Clock *clk;
- };
- 
- #endif
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index 8c547f146a9..3e7d1dabad1 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1090,9 +1090,15 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     }
-     for (i = 0; i < 4; i++) {
-         if (board->dc2 & (0x10000 << i)) {
--            dev = sysbus_create_simple(TYPE_STELLARIS_GPTM,
--                                       0x40030000 + i * 0x1000,
--                                       qdev_get_gpio_in(nvic, timer_irq[i]));
-+            SysBusDevice *sbd;
-+
-+            dev = qdev_new(TYPE_STELLARIS_GPTM);
-+            sbd = SYS_BUS_DEVICE(dev);
-+            qdev_connect_clock_in(dev, "clk",
-+                                  qdev_get_clock_out(ssys_dev, "SYSCLK"));
-+            sysbus_realize_and_unref(sbd, &error_fatal);
-+            sysbus_mmio_map(sbd, 0, 0x40030000 + i * 0x1000);
-+            sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(nvic, timer_irq[i]));
-             /* TODO: This is incorrect, but we get away with it because
-                the ADC output is only ever pulsed.  */
-             qdev_connect_gpio_out(dev, 0, adc);
-diff --git a/hw/timer/stellaris-gptm.c b/hw/timer/stellaris-gptm.c
-index 7846fe5f84e..fd71c79be48 100644
---- a/hw/timer/stellaris-gptm.c
-+++ b/hw/timer/stellaris-gptm.c
-@@ -10,9 +10,10 @@
- #include "qemu/osdep.h"
- #include "qemu/log.h"
- #include "qemu/timer.h"
-+#include "qapi/error.h"
- #include "migration/vmstate.h"
-+#include "hw/qdev-clock.h"
- #include "hw/timer/stellaris-gptm.h"
--#include "hw/timer/armv7m_systick.h" /* Needed only for system_clock_scale */
- 
- static void gptm_update_irq(gptm_state *s)
- {
-@@ -39,7 +40,7 @@ static void gptm_reload(gptm_state *s, int n, int reset)
-         /* 32-bit CountDown.  */
-         uint32_t count;
-         count = s->load[0] | (s->load[1] << 16);
--        tick += (int64_t)count * system_clock_scale;
-+        tick += clock_ticks_to_ns(s->clk, count);
-     } else if (s->config == 1) {
-         /* 32-bit RTC.  1Hz tick.  */
-         tick += NANOSECONDS_PER_SECOND;
-@@ -247,8 +248,8 @@ static const MemoryRegionOps gptm_ops = {
- 
- static const VMStateDescription vmstate_stellaris_gptm = {
-     .name = "stellaris_gptm",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(config, gptm_state),
-         VMSTATE_UINT32_ARRAY(mode, gptm_state, 2),
-@@ -263,6 +264,7 @@ static const VMStateDescription vmstate_stellaris_gptm = {
-         VMSTATE_UINT32(rtc, gptm_state),
-         VMSTATE_INT64_ARRAY(tick, gptm_state, 2),
-         VMSTATE_TIMER_PTR_ARRAY(timer, gptm_state, 2),
-+        VMSTATE_CLOCK(clk, gptm_state),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -281,11 +283,27 @@ static void stellaris_gptm_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->iomem);
- 
-     s->opaque[0] = s->opaque[1] = s;
-+
-+    /*
-+     * TODO: in an ideal world we would model the effects of changing
-+     * the input clock frequency while the countdown timer is active.
-+     * The best way to do this would be to convert the device to use
-+     * ptimer instead of hand-rolling its own timer. This would also
-+     * make it easy to implement reading the current count from the
-+     * TAR and TBR registers.
-+     */
-+    s->clk = qdev_init_clock_in(dev, "clk", NULL, NULL, 0);
- }
- 
- static void stellaris_gptm_realize(DeviceState *dev, Error **errp)
- {
-     gptm_state *s = STELLARIS_GPTM(dev);
-+
-+    if (!clock_has_source(s->clk)) {
-+        error_setg(errp, "stellaris-gptm: clk must be connected");
-+        return;
-+    }
-+
-     s->timer[0] = timer_new_ns(QEMU_CLOCK_VIRTUAL, gptm_tick, &s->opaque[0]);
-     s->timer[1] = timer_new_ns(QEMU_CLOCK_VIRTUAL, gptm_tick, &s->opaque[1]);
- }
--- 
-2.20.1
-
+-- PMM

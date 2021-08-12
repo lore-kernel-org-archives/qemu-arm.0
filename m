@@ -1,142 +1,149 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2903002lff;
-        Wed, 11 Aug 2021 20:35:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyAwFnvqDhBBiXmQZrg64/LEVQblTebJbn46uC2SFcp7wj+KRYHmAHM6qUjDq5UOIv8oOiK
-X-Received: by 2002:a37:42c9:: with SMTP id p192mr2572865qka.60.1628739341702;
-        Wed, 11 Aug 2021 20:35:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628739341; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp73918lff;
+        Wed, 11 Aug 2021 23:22:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYEKOYGj5DsUK7hWwfibZBqMwkY1tQTg4EucEz50r9AZssDSzGPeO8OATfYb6chX7swuxO
+X-Received: by 2002:a05:6e02:1d89:: with SMTP id h9mr1619628ila.46.1628749342599;
+        Wed, 11 Aug 2021 23:22:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628749342; cv=none;
         d=google.com; s=arc-20160816;
-        b=BsL6wZdMofEIE85/+XxqWSwZBRgAU/GQntel68AFElo0xwkVD0HM36vRp9tF4Az3e9
-         /3I4jvw8A1mfwQzCMP7KgPWueR0tdJd4xGwbGFxmWDfoI/Fa/u1Y2ooGQeK8UPD/ndpy
-         sn/Yk5kgkcObV4FpfkZLiJmcVhtsbfoAFE+HCDg+/mjUnkhLVQYprUtIXwIBd0MbNZpa
-         kODQQAYA1g0AZsqI0SPlqGeCe8RXQCqOvOU3VB+7hUKE+sP+sSwMOXPcw5vnn8PvM2td
-         dzkJ791rMmCpDtz+qiHLYUeKRWJi2+us6LAySCSbOq0He2MLV8U8lHRJYbWq5OeQUlF8
-         G/rw==
+        b=lPW/piKoQawvueunv4wFqUISPemH6cJ4lRICq/FQdvbEI269+Q1mOaJZyWnFZeMKU6
+         iu7BSztrUvVvQI9mTaVmDAoA4VAvtaiafIvaI3pgdQTkLjiHdPyC92/QMbndmlH3zpAS
+         1R7U0NaK/eKWsUaXemf5XFBRDJJNnxMyWT8Tzmf6Q6JSs1VymRApwUTpUc9X0QbJCIYU
+         iu4V4V/96foNPLoH2j6Ctelmjs5URTtAwObOq0fz44cFJs5xXZd4MgiAs7DpDemm/y/i
+         NVytEJKzKeS4baaMIkiliY5oqmFcF3MTffm+Bbd4lbrwJE64wFux/YuEO88HWBYh2yMR
+         XCzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=e5DSPciE22KHIDU6/6n+a9phao9qTwglFCEv7jPfpqY=;
-        b=fZMi90XoLOj67CxZqxRTrYhp4ImIcHgEyYjDQHQ4hKeL9YiUUDMeu0of7qHRZYHn5Z
-         Qgd52BwtxocPFDfRSaFbQTJ+skOOUMjLQZy80hneXUohKEiXbRWBo9Nl9XeL7nwzDSRG
-         ObkNq2vhb2PxFLXHY8PSZNAoarEmzIIU7zdjz+lX2G09LuQp/nVaarxGe8p/N4MG7ewG
-         amUBeh1DQ78rwrLNsjj1vhIB4ch+Er6v6c9tE0xjo0c2/qbbKIHguMRqKcMdcjcwrbn9
-         PP7V7VQqln/5eXOsHUiwlijFvnXR160Eft2Ah0i/RT3y2xw31fkli7FZ2tS+NRt9ByFL
-         oSig==
+         :mime-version:message-id:date:subject:to:from:ironport-sdr;
+        bh=KeoYDFYuZjOSvag10ciQ+dk5sdSmwsM/C+3OWuPBeOk=;
+        b=jhPIN1Isldc8RoGY8c/uMf/iju7E0ZLc9wvpo/O/onfZAurB1hbObLBbUPykiH0FsZ
+         p40VqdkFwtVA3AIuDvqegdrqtZpHQRkIlbzxazMeYjvZX5owwFaCXKNgMExQ8PlCwrgz
+         R9JHpZbm03OIppaq2NNgychs81fbbzlo5oKaewVKnoHKhKjrMGJ3MWwbZc42n9mHgNqQ
+         VOzPPDnW0XP1AzGbzWNymQVgEvVFEzJ5ZAmulBXKL773p26R3wQv534yW5uPzfINkavF
+         TyuIsvl7Hj3cEr2aulsczVKqC03owHwucs92G02Mx1WSoepugD+NlrjEeL7Mx8DxcwrG
+         B3gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@anisinha-ca.20150623.gappssmtp.com header.s=20150623 header.b=hzjBbC1i;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id im10si976703qvb.7.2021.08.11.20.35.41
+        by mx.google.com with ESMTPS id v19si2121675jat.96.2021.08.11.23.22.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Aug 2021 20:35:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Aug 2021 23:22:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@anisinha-ca.20150623.gappssmtp.com header.s=20150623 header.b=hzjBbC1i;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57690 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Received: from localhost ([::1]:52324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE1VN-0005I2-2y
-	for alex.bennee@linaro.org; Wed, 11 Aug 2021 23:35:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39594)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mE46f-0004xv-Rz
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 02:22:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mE1U7-000452-Ut
- for qemu-devel@nongnu.org; Wed, 11 Aug 2021 23:34:23 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:55854)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mE1U6-0002Gt-CT
- for qemu-devel@nongnu.org; Wed, 11 Aug 2021 23:34:23 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id w14so7098588pjh.5
- for <qemu-devel@nongnu.org>; Wed, 11 Aug 2021 20:34:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=anisinha-ca.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=e5DSPciE22KHIDU6/6n+a9phao9qTwglFCEv7jPfpqY=;
- b=hzjBbC1iVfeAKe3lbQXqqejHoA887nOpi6cLWCb3m76M/wAdo6nyI0HqzpJfSYqo/m
- 0dmdbnD4fuVLXLLPGDVojE1Y0N2OpkfDB23nwrb8Ugc0DvfXiudNBsLwH9pwkGMpLjPV
- x7PbLfbQb5URkdKbWhV64bTHQteUT/stpxM3a9BUvEkhVZOLME9kQ19SUA8TQnulADnl
- j82rckgA6jNyJBTN9qjjFbp0Sznj0WGIFjvcCH+vrF+RJv7H+fei7P28nYYP4kWRRyUH
- QINlxBQQfuyM859EYuckloJBw4MVWWsJHPuI8/XmETqG3I8SZ0TBzF/T7KerB6tIF5u8
- SQ+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=e5DSPciE22KHIDU6/6n+a9phao9qTwglFCEv7jPfpqY=;
- b=hdvJ5scPjqzEv1tdqbaxSubBl7AoMZQ/mzVh9eqx+gMXvmyZKmZzCAi2Pq8npbE9TR
- EC6BlxwRp1Cmpihe8JV7A4pJYUwj1o45tH+tbCFmDgXP/PUv2rzndOzgogsaLCNua5jP
- jCmV9nYxbSwMmuQ6AiJu5sIrEKeYmWLfLdJ6i4lXWRBy5OWUXGVmFG8i5SLo+OTqtk0u
- yD3rh8v+ob64ZND2OaxWQTK5qfjBIU9tN/qVv2GWmuR6WXtphHSaxdNfgSZBDV7pMA5t
- 90iM/7jtRdZ+JZDipVUSuNhwsLq72LJQqUmuwyWgm289L4XArEFdPvdgZQT5J3QHzfkg
- f32g==
-X-Gm-Message-State: AOAM532SGPHTVSWcOu/zlWW1y6YXNo4PLFHtuZMop4r0lKGgzXO6nlNW
- E24h/sj3OVFKdHZAGAz1IXko82L26lFRgQ==
-X-Received: by 2002:a62:8042:0:b029:3cd:8339:7551 with SMTP id
- j63-20020a6280420000b02903cd83397551mr2043918pfd.79.1628739260570; 
- Wed, 11 Aug 2021 20:34:20 -0700 (PDT)
-Received: from anisinha-lenovo.ba.nuagenetworks.net ([203.212.241.160])
- by smtp.googlemail.com with ESMTPSA id h24sm1130571pfn.180.2021.08.11.20.34.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 20:34:20 -0700 (PDT)
-From: Ani Sinha <ani@anisinha.ca>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/Kconfig: no need to enable ACPI_MEMORY_HOTPLUG
- explicitly
-Date: Thu, 12 Aug 2021 09:04:05 +0530
-Message-Id: <20210812033405.362985-1-ani@anisinha.ca>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mE46I-0004ww-T5; Thu, 12 Aug 2021 02:21:58 -0400
+Received: from esa4.hc1455-7.c3s2.iphmx.com ([68.232.139.117]:31997)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mE46H-00013a-0K; Thu, 12 Aug 2021 02:21:58 -0400
+IronPort-SDR: tCtwidWFow+CLdILVxJtQf7Ufow1iSRUfTUGHQ30qFX82QiX8wqjXkPU7mM73Xe0fPLY+Xd2jb
+ v+CFScdr4jldxXRga8KW17ipCnFFWX1GlB+LQRnkOnK5VuZhB2opSv5owvmDYuu2ARFmpswAd0
+ VLaaj7yjy1R+iNuBlfnvcVu689oXlpnExrnhfCRgOwTBWHUDvUAkP0oqG1gDd7yJSHBdWrIa/5
+ o/RgPPmRMymEQJwDZhDlRffw6WZq0DEnUv6gn8L33B8a9Gi7agMTsbbRkHssZLsaybMKspQnKx
+ Q3S7kRjDwOaEEl2qfUiocnsT
+X-IronPort-AV: E=McAfee;i="6200,9189,10073"; a="39768468"
+X-IronPort-AV: E=Sophos;i="5.84,315,1620658800"; d="scan'208";a="39768468"
+Received: from unknown (HELO yto-r1.gw.nic.fujitsu.com) ([218.44.52.217])
+ by esa4.hc1455-7.c3s2.iphmx.com with ESMTP; 12 Aug 2021 15:21:52 +0900
+Received: from yto-m1.gw.nic.fujitsu.com (yto-nat-yto-m1.gw.nic.fujitsu.com
+ [192.168.83.64])
+ by yto-r1.gw.nic.fujitsu.com (Postfix) with ESMTP id 3C611E9E8D;
+ Thu, 12 Aug 2021 15:21:51 +0900 (JST)
+Received: from yto-om2.fujitsu.com (yto-om2.o.css.fujitsu.com [10.128.89.163])
+ by yto-m1.gw.nic.fujitsu.com (Postfix) with ESMTP id 80285C9CCF;
+ Thu, 12 Aug 2021 15:21:50 +0900 (JST)
+Received: from localhost.localdomain (n3235113.np.ts.nmh.cs.fujitsu.co.jp
+ [10.123.235.113])
+ by yto-om2.fujitsu.com (Postfix) with ESMTP id 5F0D94007B7FD;
+ Thu, 12 Aug 2021 15:21:50 +0900 (JST)
+From: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+To: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v4 0/3] Add support for Fujitsu A64FX processor
+Date: Thu, 12 Aug 2021 15:04:37 +0900
+Message-Id: <20210812060440.1330348-1-ishii.shuuichir@fujitsu.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::102c;
- envelope-from=ani@anisinha.ca; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+X-TM-AS-GCONF: 00
+Received-SPF: pass client-ip=68.232.139.117;
+ envelope-from=ishii.shuuichir@fujitsu.com; helo=esa4.hc1455-7.c3s2.iphmx.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Ani Sinha <ani@anisinha.ca>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: idD5bqw2h1Nu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com, qemu-devel@nongnu.org, ishii.shuuichir@fujitsu.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dqqVnNlCW2yX
 
-ACPI_MEMORY_HOTPLUG is implicitly turned on when ACPI_HW_REDUCED is selected.
-ACPI_HW_REDUCED is already enabled. No need to turn on ACPI_MEMORY_HOTPLUG
-explicitly. This is a minor cleanup.
+This is the v4 patch series.
 
-Signed-off-by: Ani Sinha <ani@anisinha.ca>
----
- hw/arm/Kconfig | 1 -
- 1 file changed, 1 deletion(-)
+v4:
+The following changes have been made to match the SVE specification of
+the A64FX processor.
+- Implemented internally only the vector lengths of 128, 256, and 512 bit
+  supported by the A64FX processor.
+- Removed sve and sve-max-vq properties due to the above changes, and
+  fixed them so that no explicit options can be specified.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4ba0aca067..38cf9f44e2 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -25,7 +25,6 @@ config ARM_VIRT
-     select ACPI_PCI
-     select MEM_DEVICE
-     select DIMM
--    select ACPI_MEMORY_HOTPLUG
-     select ACPI_HW_REDUCED
-     select ACPI_NVDIMM
-     select ACPI_APEI
+v3:
+When we created the v2 patch series, we based it on the v1 patch series
+that had not been merged into the upstream, so we created the v3 patch
+series as a patch series that can be applied independently.
+
+v2:
+No features have been added or removed from the v1 patch series. Removal
+of unused definitions that were added in excess, and consolidation of
+patches for the purpose of functional consistency.
+
+For patch 1, Implemented Identification registers for A64FX processor.
+HPC extension registers will be implemented in the future.
+For SVE, the A64FX processor supports only 128,256 and 512bit vector lengths.
+
+For patch 2, A64FX processor can now be used by specifying the -cpu
+a64fx option when the -macine virt option is specified.
+
+For patch 3, added A64FX processor related tests.
+
+Shuuichirou Ishii (3):
+  target-arm: Add support for Fujitsu A64FX
+  hw/arm/virt: target-arm: Add A64FX processor support to virt machine
+  tests/arm-cpu-features: Add A64FX processor related tests
+
+ docs/system/arm/virt.rst       |  1 +
+ hw/arm/virt.c                  |  1 +
+ target/arm/cpu.c               | 27 ++++++++++++++++++----
+ target/arm/cpu.h               |  1 +
+ target/arm/cpu64.c             | 42 ++++++++++++++++++++++++++++++++++
+ tests/qtest/arm-cpu-features.c |  2 ++
+ 6 files changed, 70 insertions(+), 4 deletions(-)
+
 -- 
-2.25.1
+2.27.0
 

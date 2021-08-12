@@ -1,459 +1,181 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp873660lff;
-        Thu, 12 Aug 2021 18:24:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzrewB++zZrqXiqZ9PFHmWoGKuHCdQwKtYgErqMOAqIBTrwAMwZqtjQRBvmUeMzuLvuK2Qb
-X-Received: by 2002:ad4:4ea8:: with SMTP id ed8mr259508qvb.2.1628817875133;
-        Thu, 12 Aug 2021 18:24:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628817875; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp537183lff;
+        Thu, 12 Aug 2021 09:56:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbqW0k1/6yCPkeS1WAooxXCmpS2vkBYb87Sxqnx/+GM95+GkZvpGdm4qLZQm1LUQXzlN5Z
+X-Received: by 2002:a67:be0d:: with SMTP id x13mr4015481vsq.49.1628787367421;
+        Thu, 12 Aug 2021 09:56:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628787367; cv=none;
         d=google.com; s=arc-20160816;
-        b=QIm7qHoc/PAuNqdgp/TEL81fB3F5K39VtpDlnMeT0a9GjF2dDlCJMjJ1L5hTxd1y2W
-         pcFr/fZy0tgozSDbRo1qMPdEFd+H+YpuS25eOY2PD3uwe0ZWPD/q5cMvfbGo8u4loNuF
-         A7EYVDDdm2bcAlQBPXdYufngtGHFsrN6E1M5Y2yaTuYGsHSiT6K97qZx5EDb+tJXRvuM
-         fftTkomHwMpvuQldZJhIszTeS//2aQaymj5Q/2iKscpdffXkDlIf7ugUlocIX7usgBRx
-         3T1NPfMV/ywV9Srpf9Dzn21XzwUQXrncnYh4Z7bBGTZ8AvAQNU6GupRUDiP2R65tNhql
-         VnRg==
+        b=BZU4yr2/6p7/7oQUfyM4CsDlVQ3dBz1u/uA+fqoIxHWTzU2iO2CeeocKzIM7njCCJe
+         c7lkqZ2l1EW1PdIRAdo0b99MSbhjbsTz0A0GwErzpmdNLYsVWf9/qSftqRmul9Lfi3aI
+         r7pYLYqNEkZFMTccOXbVKCLWsADiNC9JW1jkrNElgTJQ96r6JsAqNy9gFkbP6NqN8uXs
+         YwzvuWVdRca0zFrB6/WnNgWZaRfzOZQ2loHtQWWbZbNfSh7rSWsJU5TmlIdE28sJxmjJ
+         BLkQHXsKXozRPvMGJ4NksWCowLFC0IuymZTaXfDnuPvByILqYOJ2qkm5pBaeBAgoBPmo
+         KzcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=FRCDefRJ1d7lY4pN8iRdS0yA7ApORhkIMpidirYVlyc=;
-        b=eOXXB7weM9x9DMN7nYt+CPrraIqOiQY3GPVxbjZR0tHJADADCT4+9XnWc/BIEGaTmh
-         +n/nNTiYu+I6zC+bPqc7EZhX+LJnZeBE3+Gsun8nFcBhCCSGN9TsUZokMIB0mvA+8bVT
-         IW9uDb9QmXqEyQ+P1WHHqDNI+sFJEmjDSHAVDCSGkipE8e3JLFfs2b6y6lVlEWcYc9Ff
-         rBsyF4F22OFbPywDBOidfDBBnZyLom6rbCdHjoXY1TI80RXIdyvnCAteouwumPrgBiVE
-         yuTWrJou2mZxfrq4ExcHjv7YlSkjIYYh8eZIdU9lyiP3anYZP4nZkcGDMLk5EWjeV1vn
-         OPDQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=xLc4riw3FaP4r2MMUFC1UfsjaEnoNlJKICJNpIiofFA=;
+        b=GhITWfeHL8Rn37L0cM6ZwlUFgJs8JCzqWoMEzqDH74cth+wuH3SOLUb5/0QvNPnTO8
+         uruMxSdyzAg6KGvxMOkvTlFWp8e29Y8Vt4VUuaajyInD5l+NtR4VItSGKQz/U+/3L1aX
+         WOlE0O8yHNUmPyQfR/jt8YQ/ZcjbxFMIUz4Yhg6cqyPVFanUqTUrLeZC5ekXNY5lHmEA
+         U9yJ16+6HakgiJCl7Lx6Nx8e+M9TUmCIpLF5TpeegLDw4yfq9Z2hTBpNPA81BA+ZxRIn
+         KiV+gHh3SlFgPG5NCVpEPziLFMELF3eAbbhOdUjfnmkL43y+Hlj7lzyCCfcSmnwrzYmh
+         VeSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="NpggPJ/G";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=dw7sH+FV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u35si3227713qtc.130.2021.08.12.18.24.34
+        by mx.google.com with ESMTPS id x18si1554006vsg.371.2021.08.12.09.56.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 18:24:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Aug 2021 09:56:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="NpggPJ/G";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52068 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=dw7sH+FV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54184 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mELw2-0002Hh-E7
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 21:24:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37128)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mEDzy-0001zk-ME
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 12:56:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mELvp-0002ET-B7; Thu, 12 Aug 2021 21:24:21 -0400
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:35519)
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1mEDxm-0007jb-Qo
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 12:53:50 -0400
+Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f]:44852)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mELvn-00014e-6c; Thu, 12 Aug 2021 21:24:21 -0400
-Received: by mail-io1-xd2b.google.com with SMTP id s184so11182710ios.2;
- Thu, 12 Aug 2021 18:24:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FRCDefRJ1d7lY4pN8iRdS0yA7ApORhkIMpidirYVlyc=;
- b=NpggPJ/G+JWcMrLEbxqLLOq6+HqUIo9h0PMEDM6o1+XrIcn+FUv7pOU+StTKRvcHJg
- imfdmIiEEh2x5uGnrULYOMikxuG24MtsBwz3oAwNoKvndZu3h+888GWFlHH3ADa+6EWo
- 5XOmLj8cenEzS65+TRO9cw7j9T1anApoFw5X/Wsg/41ENdJXws/xxQKElg8waE9UF27e
- r/4FJnou4lpMJ63dlhYtrh2lva8xdWDZVRh3LBOmqHB15I0A06iXZ+cLI6+YF4a+6y9g
- kcz/Vu3VBZRRNKcC0EtUWgbYuhsWhZvD2pLaLXQB+uuAqSqKi/g2ROlY5HX232C5VvEX
- 7OCw==
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1mEDxh-0005zT-Fb
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 12:53:50 -0400
+Received: by mail-qt1-x82f.google.com with SMTP id h10so5739909qtj.11
+ for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 09:53:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xLc4riw3FaP4r2MMUFC1UfsjaEnoNlJKICJNpIiofFA=;
+ b=dw7sH+FVrfvOMIAF/Ic7hefNVQztMGYeKrFaVkBSc6zgMGts/TK1Jv5VS0RTymQBkT
+ FWMOvKgb5MTeJRE8jnPJhXSNOa/+6R7TtrrAUR9wZ0nKn+yzQ1D14JYQPP5x/DDQHME4
+ GPK4DEhFTDvdk44IH/hIgu5EptukLGVd/jyijHiuo3KOTFgC77sGs4umFKEK5504CGM5
+ avFwi8KpC65zcm5B7g6CbyNW/JutxoehPEs4p0gYOUlpOkG+6CuL0JP0/qc9yjmsCMFK
+ Fdp/Ouut6hhWAtJcgri1LDBORcAc3M9ecCtsBRLH7xrm+bwALnEfv8kggIYoh9DH7c4J
+ h0xA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=FRCDefRJ1d7lY4pN8iRdS0yA7ApORhkIMpidirYVlyc=;
- b=FNYp7pBXsu9395QorGKlWgB5ewHTrnupnqzNaC99CYVDdzzcF4gbAVcwnbAX8S+HV1
- fS972Ys1MfGPlqiworoXyD5k5Q3VYI+B2xFY1rN9vtiYAS/0Ub2AzhcQJoy0T/DhOT0N
- DlM6agyGQrdlTnZk5w+ghMCLnIxjzuOViFLZJSIQjqcP9KyqtftaI7JhUuuMQfNeFKXP
- he7PFTYbTAxo4QnTOaD/jtAmosNl5IAaQvW0yrYwgUrC3c1xTZVLVMCIRaJtneFY9++D
- oTVO8M8MJWmpv52i5BZKhfSnLlfWfz821QSezzv3ezwEKRFxUhDZsNL3uOPdjc9fTFsE
- M6Tg==
-X-Gm-Message-State: AOAM532MxakanJYIe4gcdYtbIQbIkw4Fl8xEmJCIJ+dItAp7tPEz1I5n
- huup/UHSeobX8U0ehTlbAaM3J84uVKQoRJFskUw=
-X-Received: by 2002:a6b:8f08:: with SMTP id r8mr3188iod.42.1628817857650; Thu,
- 12 Aug 2021 18:24:17 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xLc4riw3FaP4r2MMUFC1UfsjaEnoNlJKICJNpIiofFA=;
+ b=NG6pWOgTEs/F7/141wvaGatX4c/4uqC2+fK8KWFZ29hCqpwvykQ79Zv0i4UR9yh5RL
+ AVisCm86+f7qSczL37weIOyTelFLsNbv0tYZx5LylD3d8WW8lEw3tE329TQ9TDzkb1Sj
+ 0ezTL2HsdeS5FEn1NoDbY1fScnLyzfP6cyWlMrc0lfGaZUxeYYUvcM7iqfe/8HoX5hR+
+ 1m4kwVOykk9fZD3ndlCaxU0dvVLNd6Vwn3DJBmv2tKy+ufQ/Qbil7GmnKYoU0+jNOd3F
+ Q7sXMgufZ+dbwQ5qTT04g5zbukzLJC3ZTy8vTBpSWn58LKmWPxS/N48aFEDSf8oFewyD
+ Q+YA==
+X-Gm-Message-State: AOAM532SBFMLQ3sO3dnSLkdwzsOscETCxqQj+aca+1YjrognYlJKVIrY
+ ufCSgSgG0MhZj8EWZ29uhdWmxA==
+X-Received: by 2002:a05:622a:1106:: with SMTP id
+ e6mr4684116qty.172.1628787223760; 
+ Thu, 12 Aug 2021 09:53:43 -0700 (PDT)
+Received: from localhost.localdomain
+ (bras-base-stsvon1503w-grc-22-142-114-143-47.dsl.bell.ca. [142.114.143.47])
+ by smtp.googlemail.com with ESMTPSA id c69sm1714864qkg.1.2021.08.12.09.53.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Aug 2021 09:53:43 -0700 (PDT)
+From: Shashi Mallela <shashi.mallela@linaro.org>
+To: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
+ mst@redhat.com, imammedo@redhat.com
+Subject: [PATCH v8 00/10] GICv3 LPI and ITS feature implementation
+Date: Thu, 12 Aug 2021 12:53:31 -0400
+Message-Id: <20210812165341.40784-1-shashi.mallela@linaro.org>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-3-peter.maydell@linaro.org>
-In-Reply-To: <20210812093356.1946-3-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 13 Aug 2021 11:23:51 +1000
-Message-ID: <CAKmqyKNanjD9D_vYkRCC4=LK+p=_w-X5K8ZJrdu2UtbVVQKkag@mail.gmail.com>
-Subject: Re: [PATCH for-6.2 02/25] arm: Move systick device creation from NVIC
- to ARMv7M object
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd2b.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82f;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-qt1-x82f.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mQisXP2UQfQP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ narmstrong@baylibre.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VjbYUJusWpbe
 
-On Thu, Aug 12, 2021 at 7:36 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> There's no particular reason why the NVIC should be owning the
-> SysTick device objects; move them into the ARMv7M container object
-> instead, as part of consolidating the "create the devices which are
-> built into an M-profile CPU and map them into their architected
-> locations in the address space" work into one place.
->
-> This involves temporarily creating a duplicate copy of the
-> nvic_sysreg_ns_ops struct and its read/write functions (renamed as
-> v7m_sysreg_ns_*), but we will delete the NVIC's copy of this code in
-> a subsequent patch.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+This patchset implements qemu device model for enabling physical
+LPI support and ITS functionality in GIC as per GICv3 specification.
+Both flat table and 2 level tables are implemented.The ITS commands
+for adding/deleting ITS table entries,trigerring LPI interrupts are
+implemented.Translated LPI interrupt ids are processed by redistributor
+to determine priority and set pending state appropriately before
+forwarding the same to cpu interface.
+The ITS feature support has been added to sbsa-ref platform as well as
+virt platform,wherein the emulated functionality co-exists with kvm
+kernel functionality.
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Changes in v8:
+ - moved tcg ITS support to virt platform 6.1 options (since it will be
+   supported in 6.2)
+ - modified the ite entry access offset based on latest test results
+ - All kvm_unit_tests PASS
+ - Verified Linux Boot functionality  
 
-Alistair
+Shashi Mallela (10):
+  hw/intc: GICv3 ITS initial framework
+  hw/intc: GICv3 ITS register definitions added
+  hw/intc: GICv3 ITS command queue framework
+  hw/intc: GICv3 ITS Command processing
+  hw/intc: GICv3 ITS Feature enablement
+  hw/intc: GICv3 redistributor ITS processing
+  hw/arm/sbsa-ref: add ITS support in SBSA GIC
+  tests/data/acpi/virt: Add IORT files for ITS
+  hw/arm/virt: add ITS support in virt GIC
+  tests/data/acpi/virt: Update IORT files for ITS
 
-> ---
->  include/hw/arm/armv7m.h       |  12 ++++
->  include/hw/intc/armv7m_nvic.h |   4 --
->  hw/arm/armv7m.c               | 125 ++++++++++++++++++++++++++++++++++
->  hw/intc/armv7m_nvic.c         |  73 --------------------
->  4 files changed, 137 insertions(+), 77 deletions(-)
->
-> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-> index 4cae0d7eeaa..360c35c5fb2 100644
-> --- a/include/hw/arm/armv7m.h
-> +++ b/include/hw/arm/armv7m.h
-> @@ -60,11 +60,23 @@ struct ARMv7MState {
->      BitBandState bitband[ARMV7M_NUM_BITBANDS];
->      ARMCPU *cpu;
->      ARMv7MRAS ras;
-> +    SysTickState systick[M_REG_NUM_BANKS];
->
->      /* MemoryRegion we pass to the CPU, with our devices layered on
->       * top of the ones the board provides in board_memory.
->       */
->      MemoryRegion container;
-> +    /*
-> +     * MemoryRegion which passes the transaction to either the S or the
-> +     * NS systick device depending on the transaction attributes
-> +     */
-> +    MemoryRegion systickmem;
-> +    /*
-> +     * MemoryRegion which enforces the S/NS handling of the systick
-> +     * device NS alias region and passes the transaction to the
-> +     * NS systick device if appropriate.
-> +     */
-> +    MemoryRegion systick_ns_mem;
->
->      /* Properties */
->      char *cpu_type;
-> diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
-> index 33b6d8810c7..6a6a99090c7 100644
-> --- a/include/hw/intc/armv7m_nvic.h
-> +++ b/include/hw/intc/armv7m_nvic.h
-> @@ -81,16 +81,12 @@ struct NVICState {
->
->      MemoryRegion sysregmem;
->      MemoryRegion sysreg_ns_mem;
-> -    MemoryRegion systickmem;
-> -    MemoryRegion systick_ns_mem;
->      MemoryRegion container;
->      MemoryRegion defaultmem;
->
->      uint32_t num_irq;
->      qemu_irq excpout;
->      qemu_irq sysresetreq;
-> -
-> -    SysTickState systick[M_REG_NUM_BANKS];
->  };
->
->  #endif
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 8964730d153..364ac069702 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -124,6 +124,85 @@ static const hwaddr bitband_output_addr[ARMV7M_NUM_BITBANDS] = {
->      0x22000000, 0x42000000
->  };
->
-> +static MemTxResult v7m_sysreg_ns_write(void *opaque, hwaddr addr,
-> +                                       uint64_t value, unsigned size,
-> +                                       MemTxAttrs attrs)
-> +{
-> +    MemoryRegion *mr = opaque;
-> +
-> +    if (attrs.secure) {
-> +        /* S accesses to the alias act like NS accesses to the real region */
-> +        attrs.secure = 0;
-> +        return memory_region_dispatch_write(mr, addr, value,
-> +                                            size_memop(size) | MO_TE, attrs);
-> +    } else {
-> +        /* NS attrs are RAZ/WI for privileged, and BusFault for user */
-> +        if (attrs.user) {
-> +            return MEMTX_ERROR;
-> +        }
-> +        return MEMTX_OK;
-> +    }
-> +}
-> +
-> +static MemTxResult v7m_sysreg_ns_read(void *opaque, hwaddr addr,
-> +                                      uint64_t *data, unsigned size,
-> +                                      MemTxAttrs attrs)
-> +{
-> +    MemoryRegion *mr = opaque;
-> +
-> +    if (attrs.secure) {
-> +        /* S accesses to the alias act like NS accesses to the real region */
-> +        attrs.secure = 0;
-> +        return memory_region_dispatch_read(mr, addr, data,
-> +                                           size_memop(size) | MO_TE, attrs);
-> +    } else {
-> +        /* NS attrs are RAZ/WI for privileged, and BusFault for user */
-> +        if (attrs.user) {
-> +            return MEMTX_ERROR;
-> +        }
-> +        *data = 0;
-> +        return MEMTX_OK;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps v7m_sysreg_ns_ops = {
-> +    .read_with_attrs = v7m_sysreg_ns_read,
-> +    .write_with_attrs = v7m_sysreg_ns_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static MemTxResult v7m_systick_write(void *opaque, hwaddr addr,
-> +                                     uint64_t value, unsigned size,
-> +                                     MemTxAttrs attrs)
-> +{
-> +    ARMv7MState *s = opaque;
-> +    MemoryRegion *mr;
-> +
-> +    /* Direct the access to the correct systick */
-> +    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]), 0);
-> +    return memory_region_dispatch_write(mr, addr, value,
-> +                                        size_memop(size) | MO_TE, attrs);
-> +}
-> +
-> +static MemTxResult v7m_systick_read(void *opaque, hwaddr addr,
-> +                                    uint64_t *data, unsigned size,
-> +                                    MemTxAttrs attrs)
-> +{
-> +    ARMv7MState *s = opaque;
-> +    MemoryRegion *mr;
-> +
-> +    /* Direct the access to the correct systick */
-> +    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]), 0);
-> +    return memory_region_dispatch_read(mr, addr, data, size_memop(size) | MO_TE,
-> +                                       attrs);
-> +}
-> +
-> +static const MemoryRegionOps v7m_systick_ops = {
-> +    .read_with_attrs = v7m_systick_read,
-> +    .write_with_attrs = v7m_systick_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
->  static void armv7m_instance_init(Object *obj)
->  {
->      ARMv7MState *s = ARMV7M(obj);
-> @@ -137,6 +216,13 @@ static void armv7m_instance_init(Object *obj)
->      object_property_add_alias(obj, "num-irq",
->                                OBJECT(&s->nvic), "num-irq");
->
-> +    object_initialize_child(obj, "systick-reg-ns", &s->systick[M_REG_NS],
-> +                            TYPE_SYSTICK);
-> +    /*
-> +     * We can't initialize the secure systick here, as we don't know
-> +     * yet if we need it.
-> +     */
-> +
->      for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
->          object_initialize_child(obj, "bitband[*]", &s->bitband[i],
->                                  TYPE_BITBAND);
-> @@ -231,6 +317,45 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
->      memory_region_add_subregion(&s->container, 0xe0000000,
->                                  sysbus_mmio_get_region(sbd, 0));
->
-> +    /* Create and map the systick devices */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), errp)) {
-> +        return;
-> +    }
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), 0,
-> +                       qdev_get_gpio_in_named(DEVICE(&s->nvic),
-> +                                              "systick-trigger", M_REG_NS));
-> +
-> +    if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY)) {
-> +        /*
-> +         * We couldn't init the secure systick device in instance_init
-> +         * as we didn't know then if the CPU had the security extensions;
-> +         * so we have to do it here.
-> +         */
-> +        object_initialize_child(OBJECT(dev), "systick-reg-s",
-> +                                &s->systick[M_REG_S], TYPE_SYSTICK);
-> +
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_S]), errp)) {
-> +            return;
-> +        }
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->systick[M_REG_S]), 0,
-> +                           qdev_get_gpio_in_named(DEVICE(&s->nvic),
-> +                                                  "systick-trigger", M_REG_S));
-> +    }
-> +
-> +    memory_region_init_io(&s->systickmem, OBJECT(s),
-> +                          &v7m_systick_ops, s,
-> +                          "v7m_systick", 0xe0);
-> +
-> +    memory_region_add_subregion_overlap(&s->container, 0xe000e010,
-> +                                        &s->systickmem, 1);
-> +    if (arm_feature(&s->cpu->env, ARM_FEATURE_V8)) {
-> +        memory_region_init_io(&s->systick_ns_mem, OBJECT(s),
-> +                              &v7m_sysreg_ns_ops, &s->systickmem,
-> +                              "v7m_systick_ns", 0xe0);
-> +        memory_region_add_subregion_overlap(&s->container, 0xe002e010,
-> +                                            &s->systick_ns_mem, 1);
-> +    }
-> +
->      /* If the CPU has RAS support, create the RAS register block */
->      if (cpu_isar_feature(aa32_ras, s->cpu)) {
->          object_initialize_child(OBJECT(dev), "armv7m-ras",
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index a5975592dfa..2b3e79a3da9 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -2517,38 +2517,6 @@ static const MemoryRegionOps nvic_sysreg_ns_ops = {
->      .endianness = DEVICE_NATIVE_ENDIAN,
->  };
->
-> -static MemTxResult nvic_systick_write(void *opaque, hwaddr addr,
-> -                                      uint64_t value, unsigned size,
-> -                                      MemTxAttrs attrs)
-> -{
-> -    NVICState *s = opaque;
-> -    MemoryRegion *mr;
-> -
-> -    /* Direct the access to the correct systick */
-> -    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]), 0);
-> -    return memory_region_dispatch_write(mr, addr, value,
-> -                                        size_memop(size) | MO_TE, attrs);
-> -}
-> -
-> -static MemTxResult nvic_systick_read(void *opaque, hwaddr addr,
-> -                                     uint64_t *data, unsigned size,
-> -                                     MemTxAttrs attrs)
-> -{
-> -    NVICState *s = opaque;
-> -    MemoryRegion *mr;
-> -
-> -    /* Direct the access to the correct systick */
-> -    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]), 0);
-> -    return memory_region_dispatch_read(mr, addr, data, size_memop(size) | MO_TE,
-> -                                       attrs);
-> -}
-> -
-> -static const MemoryRegionOps nvic_systick_ops = {
-> -    .read_with_attrs = nvic_systick_read,
-> -    .write_with_attrs = nvic_systick_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> -};
-> -
->  /*
->   * Unassigned portions of the PPB space are RAZ/WI for privileged
->   * accesses, and fault for non-privileged accesses.
-> @@ -2801,29 +2769,6 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
->
->      s->num_prio_bits = arm_feature(&s->cpu->env, ARM_FEATURE_V7) ? 8 : 2;
->
-> -    if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), errp)) {
-> -        return;
-> -    }
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), 0,
-> -                       qdev_get_gpio_in_named(dev, "systick-trigger",
-> -                                              M_REG_NS));
-> -
-> -    if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY)) {
-> -        /* We couldn't init the secure systick device in instance_init
-> -         * as we didn't know then if the CPU had the security extensions;
-> -         * so we have to do it here.
-> -         */
-> -        object_initialize_child(OBJECT(dev), "systick-reg-s",
-> -                                &s->systick[M_REG_S], TYPE_SYSTICK);
-> -
-> -        if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_S]), errp)) {
-> -            return;
-> -        }
-> -        sysbus_connect_irq(SYS_BUS_DEVICE(&s->systick[M_REG_S]), 0,
-> -                           qdev_get_gpio_in_named(dev, "systick-trigger",
-> -                                                  M_REG_S));
-> -    }
-> -
->      /*
->       * This device provides a single sysbus memory region which
->       * represents the whole of the "System PPB" space. This is the
-> @@ -2877,23 +2822,11 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
->                            "nvic_sysregs", 0x1000);
->      memory_region_add_subregion(&s->container, 0xe000, &s->sysregmem);
->
-> -    memory_region_init_io(&s->systickmem, OBJECT(s),
-> -                          &nvic_systick_ops, s,
-> -                          "nvic_systick", 0xe0);
-> -
-> -    memory_region_add_subregion_overlap(&s->container, 0xe010,
-> -                                        &s->systickmem, 1);
-> -
->      if (arm_feature(&s->cpu->env, ARM_FEATURE_V8)) {
->          memory_region_init_io(&s->sysreg_ns_mem, OBJECT(s),
->                                &nvic_sysreg_ns_ops, &s->sysregmem,
->                                "nvic_sysregs_ns", 0x1000);
->          memory_region_add_subregion(&s->container, 0x2e000, &s->sysreg_ns_mem);
-> -        memory_region_init_io(&s->systick_ns_mem, OBJECT(s),
-> -                              &nvic_sysreg_ns_ops, &s->systickmem,
-> -                              "nvic_systick_ns", 0xe0);
-> -        memory_region_add_subregion_overlap(&s->container, 0x2e010,
-> -                                            &s->systick_ns_mem, 1);
->      }
->
->      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
-> @@ -2905,12 +2838,6 @@ static void armv7m_nvic_instance_init(Object *obj)
->      NVICState *nvic = NVIC(obj);
->      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
->
-> -    object_initialize_child(obj, "systick-reg-ns", &nvic->systick[M_REG_NS],
-> -                            TYPE_SYSTICK);
-> -    /* We can't initialize the secure systick here, as we don't know
-> -     * yet if we need it.
-> -     */
-> -
->      sysbus_init_irq(sbd, &nvic->excpout);
->      qdev_init_gpio_out_named(dev, &nvic->sysresetreq, "SYSRESETREQ", 1);
->      qdev_init_gpio_in_named(dev, nvic_systick_trigger, "systick-trigger",
-> --
-> 2.20.1
->
->
+ hw/arm/sbsa-ref.c                      |   79 +-
+ hw/arm/virt.c                          |   28 +-
+ hw/intc/arm_gicv3.c                    |   14 +
+ hw/intc/arm_gicv3_common.c             |   13 +
+ hw/intc/arm_gicv3_cpuif.c              |    7 +-
+ hw/intc/arm_gicv3_dist.c               |    5 +-
+ hw/intc/arm_gicv3_its.c                | 1301 ++++++++++++++++++++++++
+ hw/intc/arm_gicv3_its_common.c         |    7 +-
+ hw/intc/arm_gicv3_its_kvm.c            |    2 +-
+ hw/intc/arm_gicv3_redist.c             |  153 ++-
+ hw/intc/gicv3_internal.h               |  188 +++-
+ hw/intc/meson.build                    |    1 +
+ include/hw/arm/virt.h                  |    2 +
+ include/hw/intc/arm_gicv3_common.h     |   13 +
+ include/hw/intc/arm_gicv3_its_common.h |   32 +-
+ target/arm/kvm_arm.h                   |    4 +-
+ tests/data/acpi/virt/IORT              |  Bin 0 -> 124 bytes
+ tests/data/acpi/virt/IORT.memhp        |  Bin 0 -> 124 bytes
+ tests/data/acpi/virt/IORT.numamem      |  Bin 0 -> 124 bytes
+ tests/data/acpi/virt/IORT.pxb          |  Bin 0 -> 124 bytes
+ 20 files changed, 1821 insertions(+), 28 deletions(-)
+ create mode 100644 hw/intc/arm_gicv3_its.c
+ create mode 100644 tests/data/acpi/virt/IORT
+ create mode 100644 tests/data/acpi/virt/IORT.memhp
+ create mode 100644 tests/data/acpi/virt/IORT.numamem
+ create mode 100644 tests/data/acpi/virt/IORT.pxb
+
+--
+2.27.0

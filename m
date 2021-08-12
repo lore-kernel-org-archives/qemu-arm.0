@@ -1,109 +1,112 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp195147lff;
-        Thu, 12 Aug 2021 02:42:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7bzQhmZv3sfHVG2tBwxyRRxtGmCOFczUuH3fa1SrnjUs7kaS02LApMX0LgbyqY/BPCdfm
-X-Received: by 2002:a6b:f714:: with SMTP id k20mr2322997iog.148.1628761329058;
-        Thu, 12 Aug 2021 02:42:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628761329; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp195568lff;
+        Thu, 12 Aug 2021 02:42:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOVT5b3f45NqHzO0A08oT2t0OA9P8Yt6KsxycAj/VG0QVnPvdxnuehf0VJ6scKh1Vyh9J1
+X-Received: by 2002:a5d:91c2:: with SMTP id k2mr2298673ior.117.1628761369242;
+        Thu, 12 Aug 2021 02:42:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628761369; cv=none;
         d=google.com; s=arc-20160816;
-        b=CQvnGlY8cJxUKbqNtaznvkaiHWWD9rlzAWCmgvUh7mU9uTn3UlLsJzYmJwiBkAWXGN
-         FOYkznfO2AVbnxBFZfTgYi5ouWNPlPeb7WaQmJXo+9WEfREq5yqLJX6b4YxZWxMzVblD
-         63GzRJOJab8hfFx/iXdJaRQdIJOTDDrrmBWrtIcPb6mzE9e/sDWgrBaLYHXEfWTqOnJE
-         rJeRZR7D3LUtnveJ0JjSD0HjwR2t7B6zvDBc/b321/fqOOY6gH4I5qbay1C1HdgcFSOv
-         KAfRO0Bri4f8Yi5Fg8ZFmfchJO48LeISNDnsRG6vdv5FDaH9FNBSJh+pcdeDJuAUnSar
-         azUw==
+        b=Hky2Ng8FviiIsvpPoLYL6bCV0BSC2HPZjWybNAwa3tZ+Z4K+uI7/Mg4QmZHU5TKZh2
+         Bqmid8FfzehyU+0cYCUu+oSUJ5Zg13AeQqLtL09XGRhlUZ9nf8pY+P5nKLkibQrxTX8X
+         xp5vVqXcqxVBhyrXGsMRp2WFO7yQu4ymhfrHxUovrM/TgQLvfPVTpnhojp77WoYkytTn
+         yUMypQX0y7I+LjXWroWDikO3VIKWd6d6X2dHOMnNY1XIG6jERXSCFlPXe6jAD4KCA7hA
+         D6v5nUWSCGzdw4SPcENg1ZcbvlYs/dm7spzPiZJC5IUKFEvz5CGw0/aXkp1OAP+j3yty
+         U3IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=JrO8pXzBjKu0CYeoFLRGkh6olNA2hx/ha44oSWqPp6c=;
-        b=ulWYvluxosS6ZzPmFw2c9O/IijVgJRB2QbAITW+lCKkOND/vF4LBtmQsASjAng6Pfd
-         o5NcSXJkwm3NHRLPaNvW7gOMdY31qz+b4oAlinX4PHJeKhvO/0XBnFfoE5ZkRf62DvbQ
-         UPkxUMHKYtEbJZVe2pHRRkPtfelt5MQQ9uG/gdLcy45j+kp7+CXGY/nMPF3rqZdk2xbc
-         Nwe9aKfkjeILXBbJznMGwBiDkV7UlO04tQfeiR9UgMqOS5c/zM4PXmQnq4t5GsDk5+tz
-         MQp+uHvpwhCtl0UEi/Yd5qzL3gE17KPFuN/n4mAaknXkPbe8by1Xe7gVUBE28mRjRwj1
-         Hj2g==
+        bh=S85mczGKeYB6Z3kjaTFVhQoQPK+mNif0lbrV6vtdZ2g=;
+        b=OMnvPVH2gB8Vd6gnxuFhnvOleWLVdwMivXqM1lWSZ01+n2TnDrTeK4JvkHQMRkD2Bc
+         Uciz68vM/qD/i1sSt/3qsm23Ws+5ZUcLvewx8qqkmWoQPuwrIbiNtpO5y/oJZZXZaU/W
+         Q1RoqvM//BHAq9npzxuNvcVDUy409Y/S9EBn2k8ilJw1JqrnYvnF2mFI1+p71wNt3RLs
+         82tqukiSYBQqhDi+rZsYfLaqcbvhgql7NnCDjtwmS2c5HAVLyyzIbxvYeVHF/c5zfvGI
+         P6IDCA7lSVQmej8P2Im5NdLQz+yE9eOK0vBGHbCNgPP57RzUVCEZt3h8Bdykew/GcCZM
+         Rr9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="I3glhpa/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=A+niVkl7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h10si2161771ioe.21.2021.08.12.02.42.08
+        by mx.google.com with ESMTPS id d20si2319853ioo.61.2021.08.12.02.42.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 02:42:09 -0700 (PDT)
+        Thu, 12 Aug 2021 02:42:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="I3glhpa/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=A+niVkl7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50826 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53636 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE7E0-0005JW-Ag
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:42:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46920)
+	id 1mE7Ee-000787-KN
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:42:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76e-0006Zf-N7
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 05:34:32 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:33482)
+ id 1mE76X-00064v-75
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 05:34:25 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:41543)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76W-000876-PM
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 05:34:32 -0400
-Received: by mail-wr1-x432.google.com with SMTP id r7so7426792wrs.0
- for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 02:34:24 -0700 (PDT)
+ id 1mE76T-00083m-96
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 05:34:24 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ c129-20020a1c35870000b02902e6b6135279so2590365wma.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 02:34:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=JrO8pXzBjKu0CYeoFLRGkh6olNA2hx/ha44oSWqPp6c=;
- b=I3glhpa/FzBgLVPthKziZ6PuybZux2jd5E09mE2lu41sX4fmy4pORIOU9zZncIXGIQ
- ImPG+afXJfjB0fTZyQx0Novx9eDrHehiFW87W1Mmk/nG/ScwVBvx1KDhUkliW5YOe0mG
- GH5kQgkpXnLa0H1BkT+ecJU43o8fYYQqQIXmo23lRKmOsDMN07/bb2pBnqlITX8pfJYP
- B2sqgN8aPqGwvv3AotLWIxJpkMBi2R7ZrubsybPuo9KQ8ot5+Fkd6IP81KnXokhGkZul
- G+cL/qxzTwjgJO+2W4QEVlwa1t6M1FK/tfWe+HfpXgsgIrilAM9lfjkUvjBMkXuWNwBi
- 53Jw==
+ bh=S85mczGKeYB6Z3kjaTFVhQoQPK+mNif0lbrV6vtdZ2g=;
+ b=A+niVkl7heApCx6WM+MSahWmhsNtnl/zzMMWg1nez2HXFsT13hGVvdF9Icp/kxXqF3
+ x9W5AcMHV1fDHha3H+nDScX4Kr3vI2NAvx7xTVGSjfZg/S7COAcPLD5mSIInXmqRL7OA
+ 5nzn5xJvfbq8r6iR01HUtQPg0XjHfYrMUpxliOQynPGj7upG+3ClBjslku5/7BD69Zwq
+ CoL3dgBpxIzFG0k+c235ZTwOKM/GYDjkate8beJ7TwJghjRkWsrlYdYfJbUWrFqINlkP
+ z1tvAxzlPAjH6MgyvzHaoC3O6xj1omZCPi7kZdaJM0FvWczfWrdw7SvDbTYP41576mRh
+ b/2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=JrO8pXzBjKu0CYeoFLRGkh6olNA2hx/ha44oSWqPp6c=;
- b=Prio8rXrO6HwPCnphWgaggmwuYx7NdqnBJDV0YzvDj7KLGRxGeZHWEyS0jUtzSZCLY
- YUdHWY1bmjfm2e265yOJoqUeDs+2FsVS5eCwzYW09J4X8F6NLYwr8eyIeBv+lT92Bde4
- OgpMPdAulKwc09+ykb+7NH45eueSqc3Ii3sbTSZ+1IL8WlXtrZnBvW6uH7CtsCgY8pB2
- GJSKDds+wVC6WURAX0kk/K8bPfQwhkiWJn80YdC5jk9C1urpI0hRIczVQBJOtX/84ihG
- G7PYszGsrxqFvI7xEGCGj3GwAfuLdtIb9FT5ai6eFsuBSey+TD2ltsq92IqNL20znala
- BrCw==
-X-Gm-Message-State: AOAM530QbtytcFtkOIiIHF4cnj0zzlCHl2PUBdM8PgTxpC3WKqzSTZRi
- RPWaOaqn+BoGZWC0cBUD5nOA0dJK46Nyxg==
-X-Received: by 2002:adf:ba4d:: with SMTP id t13mr2902037wrg.424.1628760863212; 
- Thu, 12 Aug 2021 02:34:23 -0700 (PDT)
+ bh=S85mczGKeYB6Z3kjaTFVhQoQPK+mNif0lbrV6vtdZ2g=;
+ b=t2rz3nNk0ED+zcauQtDK17XTLsGMRBt9zIR+DPeVZ3Y2LR+jFPOdjze9Fax4lJARVa
+ TIr0JWEWdCZy4sej+oDtWVZidMXtNi0ujlGhEM0fd3JlZmekgA5GjeoYtfa1vJ4DcXKk
+ FyyGThSfEejXIgeWXdNFGCpKvQ6Eh1s/JhNtdqPQZXOnsj5q9TWiOv6gVDQNNSsKf5Tn
+ MZJPQlRMuCtTPljLiGooF7/ixWVtdih503h7P2jC+zwUlXxgrnyJMA/DoMlVp6dW2/Oo
+ q2FFIrBoOW90yLxp0LGdItnti2R6rILZOsy75W2yFSt5iCro8fKjQxWiHd1CDf7EDxZP
+ ktng==
+X-Gm-Message-State: AOAM532kjrBZn2XAgqI6qEoMgqoB4sc9ARd8epWiFWiTNiL4qz0a4wuo
+ g4lEiLp8DTH2hT9DnTzVpEq7EeVFP97V+A==
+X-Received: by 2002:a05:600c:a49:: with SMTP id
+ c9mr13057935wmq.159.1628760859973; 
+ Thu, 12 Aug 2021 02:34:19 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.22
+ by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 02:34:22 -0700 (PDT)
+ Thu, 12 Aug 2021 02:34:19 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 25/25] arm: Remove system_clock_scale global
-Date: Thu, 12 Aug 2021 10:33:56 +0100
-Message-Id: <20210812093356.1946-26-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 22/25] hw/arm/stellaris: Fix code style issues in GPTM
+ code
+Date: Thu, 12 Aug 2021 10:33:53 +0100
+Message-Id: <20210812093356.1946-23-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210812093356.1946-1-peter.maydell@linaro.org>
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,216 +125,50 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wjyoh84E7Hz/
+X-TUID: 4ZJglSmXggF5
 
-All the devices that used to use system_clock_scale have now been
-converted to use Clock inputs instead, so the global is no longer
-needed; remove it and all the code that sets it.
+Fix the code style issues in the Stellaris general purpose timer
+module code, so that when we move it to a different file in a
+following patch checkpatch doesn't complain.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/timer/armv7m_systick.h | 22 ----------------------
- hw/arm/armsse.c                   | 17 +----------------
- hw/arm/mps2.c                     |  2 --
- hw/arm/msf2-soc.c                 |  2 --
- hw/arm/netduino2.c                |  2 --
- hw/arm/netduinoplus2.c            |  2 --
- hw/arm/nrf51_soc.c                |  2 --
- hw/arm/stellaris.c                |  7 ++++---
- hw/arm/stm32vldiscovery.c         |  2 --
- hw/timer/armv7m_systick.c         |  2 --
- 10 files changed, 5 insertions(+), 55 deletions(-)
+ hw/arm/stellaris.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/timer/armv7m_systick.h b/include/hw/timer/armv7m_systick.h
-index 38adf8d274e..ee09b138810 100644
---- a/include/hw/timer/armv7m_systick.h
-+++ b/include/hw/timer/armv7m_systick.h
-@@ -47,26 +47,4 @@ struct SysTickState {
-     Clock *cpuclk;
- };
- 
--/*
-- * Multiplication factor to convert from system clock ticks to qemu timer
-- * ticks. This should be set (by board code, usually) to a value
-- * equal to NANOSECONDS_PER_SECOND / frq, where frq is the clock frequency
-- * in Hz of the CPU.
-- *
-- * This value is used by the systick device when it is running in
-- * its "use the CPU clock" mode (ie when SYST_CSR.CLKSOURCE == 1) to
-- * set how fast the timer should tick.
-- *
-- * TODO: we should refactor this so that rather than using a global
-- * we use a device property or something similar. This is complicated
-- * because (a) the property would need to be plumbed through from the
-- * board code down through various layers to the systick device
-- * and (b) the property needs to be modifiable after realize, because
-- * the stellaris board uses this to implement the behaviour where the
-- * guest can reprogram the PLL registers to downclock the CPU, and the
-- * systick device needs to react accordingly. Possibly this should
-- * be deferred until we have a good API for modelling clock trees.
-- */
--extern int system_clock_scale;
--
- #endif
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 70b52c3d4b9..aecdeb9815a 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -689,17 +689,6 @@ static void armsse_forward_sec_resp_cfg(ARMSSE *s)
-     qdev_connect_gpio_out(dev_splitter, 2, s->sec_resp_cfg_in);
- }
- 
--static void armsse_mainclk_update(void *opaque, ClockEvent event)
--{
--    ARMSSE *s = ARM_SSE(opaque);
--
--    /*
--     * Set system_clock_scale from our Clock input; this is what
--     * controls the tick rate of the CPU SysTick timer.
--     */
--    system_clock_scale = clock_ticks_to_ns(s->mainclk, 1);
--}
--
- static void armsse_init(Object *obj)
- {
-     ARMSSE *s = ARM_SSE(obj);
-@@ -711,8 +700,7 @@ static void armsse_init(Object *obj)
-     assert(info->sram_banks <= MAX_SRAM_BANKS);
-     assert(info->num_cpus <= SSE_MAX_CPUS);
- 
--    s->mainclk = qdev_init_clock_in(DEVICE(s), "MAINCLK",
--                                    armsse_mainclk_update, s, ClockUpdate);
-+    s->mainclk = qdev_init_clock_in(DEVICE(s), "MAINCLK", NULL, NULL, 0);
-     s->s32kclk = qdev_init_clock_in(DEVICE(s), "S32KCLK", NULL, NULL, 0);
- 
-     memory_region_init(&s->container, obj, "armsse-container", UINT64_MAX);
-@@ -1654,9 +1642,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-      * devices in the ARMSSE.
-      */
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
--
--    /* Set initial system_clock_scale from MAINCLK */
--    armsse_mainclk_update(s, ClockUpdate);
- }
- 
- static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index 3671f49ad7b..4634aa1a1ca 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -439,8 +439,6 @@ static void mps2_common_init(MachineState *machine)
-                  qdev_get_gpio_in(armv7m,
-                                   mmc->fpga_type == FPGA_AN511 ? 47 : 13));
- 
--    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
--
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-                        0x400000);
- }
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index dbc6d936a76..b5fe9f364d5 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -144,8 +144,6 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-         return;
-     }
- 
--    system_clock_scale = clock_ticks_to_ns(s->m3clk, 1);
--
-     for (i = 0; i < MSF2_NUM_UARTS; i++) {
-         if (serial_hd(i)) {
-             serial_mm_init(get_system_memory(), uart_addr[i], 2,
-diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-index b5c0ba23ee5..3365da11bf7 100644
---- a/hw/arm/netduino2.c
-+++ b/hw/arm/netduino2.c
-@@ -39,8 +39,6 @@ static void netduino2_init(MachineState *machine)
-     DeviceState *dev;
-     Clock *sysclk;
- 
--    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
--
-     /* This clock doesn't need migration because it is fixed-frequency */
-     sysclk = clock_new(OBJECT(machine), "SYSCLK");
-     clock_set_hz(sysclk, SYSCLK_FRQ);
-diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-index a5a8999cc8c..76cea8e4891 100644
---- a/hw/arm/netduinoplus2.c
-+++ b/hw/arm/netduinoplus2.c
-@@ -39,8 +39,6 @@ static void netduinoplus2_init(MachineState *machine)
-     DeviceState *dev;
-     Clock *sysclk;
- 
--    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
--
-     /* This clock doesn't need migration because it is fixed-frequency */
-     sysclk = clock_new(OBJECT(machine), "SYSCLK");
-     clock_set_hz(sysclk, SYSCLK_FRQ);
-diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index e3e849a32b1..34da0d62f00 100644
---- a/hw/arm/nrf51_soc.c
-+++ b/hw/arm/nrf51_soc.c
-@@ -84,8 +84,6 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
-      * will always provide one).
-      */
- 
--    system_clock_scale = NANOSECONDS_PER_SECOND / HCLK_FRQ;
--
-     object_property_set_link(OBJECT(&s->cpu), "memory", OBJECT(&s->container),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->cpu), errp)) {
 diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index 3e7d1dabad1..78827ace6b8 100644
+index 8c8bd39e2fe..a32c567ce11 100644
 --- a/hw/arm/stellaris.c
 +++ b/hw/arm/stellaris.c
-@@ -263,17 +263,18 @@ static bool ssys_use_rcc2(ssys_state *s)
-  */
- static void ssys_calculate_system_clock(ssys_state *s, bool propagate_clock)
+@@ -97,10 +97,11 @@ static void gptm_stop(gptm_state *s, int n)
+ static void gptm_reload(gptm_state *s, int n, int reset)
  {
-+    int period_ns;
-     /*
-      * SYSDIV field specifies divisor: 0 == /1, 1 == /2, etc.  Input
-      * clock is 200MHz, which is a period of 5 ns. Dividing the clock
-      * frequency by X is the same as multiplying the period by X.
-      */
-     if (ssys_use_rcc2(s)) {
--        system_clock_scale = 5 * (((s->rcc2 >> 23) & 0x3f) + 1);
-+        period_ns = 5 * (((s->rcc2 >> 23) & 0x3f) + 1);
-     } else {
--        system_clock_scale = 5 * (((s->rcc >> 23) & 0xf) + 1);
-+        period_ns = 5 * (((s->rcc >> 23) & 0xf) + 1);
-     }
--    clock_set_ns(s->sysclk, system_clock_scale);
-+    clock_set_ns(s->sysclk, period_ns);
-     if (propagate_clock) {
-         clock_propagate(s->sysclk);
-     }
-diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
-index 9b79004703b..04036da3ee0 100644
---- a/hw/arm/stm32vldiscovery.c
-+++ b/hw/arm/stm32vldiscovery.c
-@@ -42,8 +42,6 @@ static void stm32vldiscovery_init(MachineState *machine)
-     DeviceState *dev;
-     Clock *sysclk;
+     int64_t tick;
+-    if (reset)
++    if (reset) {
+         tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-    else
++    } else {
+         tick = s->tick[n];
++    }
  
--    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
--
-     /* This clock doesn't need migration because it is fixed-frequency */
-     sysclk = clock_new(OBJECT(machine), "SYSCLK");
-     clock_set_hz(sysclk, SYSCLK_FRQ);
-diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
-index 39cca206cfd..9f92830968b 100644
---- a/hw/timer/armv7m_systick.c
-+++ b/hw/timer/armv7m_systick.c
-@@ -29,8 +29,6 @@
- #define SYSCALIB_NOREF (1U << 31)
- #define SYSCALIB_SKEW (1U << 30)
+     if (s->config == 0) {
+         /* 32-bit CountDown.  */
+@@ -227,9 +228,11 @@ static void gptm_write(void *opaque, hwaddr offset,
+     gptm_state *s = (gptm_state *)opaque;
+     uint32_t oldval;
  
--int system_clock_scale;
--
- static void systick_set_period_from_clock(SysTickState *s)
- {
-     /*
+-    /* The timers should be disabled before changing the configuration.
+-       We take advantage of this and defer everything until the timer
+-       is enabled.  */
++    /*
++     * The timers should be disabled before changing the configuration.
++     * We take advantage of this and defer everything until the timer
++     * is enabled.
++     */
+     switch (offset) {
+     case 0x00: /* CFG */
+         s->config = value;
 -- 
 2.20.1
 

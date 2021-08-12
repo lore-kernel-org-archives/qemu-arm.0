@@ -1,102 +1,106 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp256939lff;
-        Thu, 12 Aug 2021 04:09:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3KB/IhXydWCfUrLQsA7Ugexra1jZf57VEmqe8LbR2LevVUmyA0TtUC3WOfh4RBT9A1CDQ
-X-Received: by 2002:a67:f68e:: with SMTP id n14mr2102341vso.39.1628766551965;
-        Thu, 12 Aug 2021 04:09:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628766551; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp534525lff;
+        Thu, 12 Aug 2021 09:52:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwrFRVMflFS9zbxf24O6WY7TF7ww5kbZ6BtVEMBk8g8xOGP/yFS4k3AjycpaZuQ6jjceOi8
+X-Received: by 2002:a05:6102:3053:: with SMTP id w19mr4398220vsa.30.1628787125522;
+        Thu, 12 Aug 2021 09:52:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628787125; cv=none;
         d=google.com; s=arc-20160816;
-        b=YBJPAWK02QdcCP47Vl52KJMRkhyrGqW8/Xay0SIF0KM5PcdNLTkAxhN6RICzbJdQUR
-         eX/rxN2IFmYJaLODGXIW9p1vxHp5aMB1Hl7CiY9uXVcAqygp9ufX4yj9Rdgf1HqPL99F
-         oRL7c8pCVWclcQDQHkZW7xnfjHWB9+q+46EbfvJUQQIrvLfJ1Z0ywmiv4NUXOaNXArO0
-         +dNRW/ilASU51mSl3zmg7D8CBSAYBL+Z/N5ENBlHtAs/vfU+K1DOjJlhH+vE/QjPSpl2
-         od0moX1nYO3GtNHIMaplNKLxEy2J9s5jXVvYsSRIbNyxhyfi+f/PdcuXAxBLuon8DAO9
-         JZJA==
+        b=q1a2kOk+ec3+6ue/Aubsa2ThH/oRJLJRoNsZquQzGF8+O8yUnZR6QOB/HNUeWZr53F
+         G7QcS3ZrbNcqWuHpq3dd4ZhAO+CLCzJVIoL9OM4F1Ttnn4StBPgQ6UIUBcSoSiBdERIZ
+         dWRs8AH31LhG5XzE046NqH/v06ZPDOFFIb3VtFKqEHZmYfZKTGM7dAyStcAsHMUaSutO
+         iSNg7gscb8eppf7x7sCrRuIKKQSL/iJ+NDvdLntT3JbLIqb55T0KTSxzqv5nCq5pZx3C
+         ls14wAW/9LZWstSkvuG+lSHWQpMOiOBF7TFhFSh7fm6p6wSDrnRovs/ITwb3fiD2yvEm
+         E07w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
-         :user-agent:date:message-id:subject:organization:from:references:to
-         :dkim-signature;
-        bh=KeU7SA7D5vBxxg0dueOqhY+fwUypSKXay6jqtZxyAaE=;
-        b=JoWQqdWjr2FkPr7CALJUsBxFuju8nfF0lBVSq9S8eRCF637kJLwXaYO5LXhwuziESK
-         ZKFLPiFK/bxphGIXJObJ4hydeBTKJ2yGBvRtHyI5nDy6xp6O0o3FNew5y9KBvm1Q6meA
-         PNN7sT/N+dOzWgS+x7lE1TQXDnJyKNrOeci6erycILd6bUtPCajYpiiUpILuCaaYyv+0
-         cGLlKgc9tk2zQ3gZ522RHGxW4LCtzXEPglI6pwjT9fEvm4//EwN98PzjcwDKBPr5XLGK
-         HT+31w8LSJNLDEEaKRetRyM8sW4QNdMkpxjEOOCfSDiXHweTQAXYY3vOcdygFp6Vg5uC
-         kmUA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=IgDbqQkROLZ+hF9ZHWVLiB8Z7efmJC72i/zQV/DqupQ=;
+        b=Vpz9wH+0q7tySi54f7iqDed9clLnjWVuyS9pEek9PaJ3dAi0Ppp2UZB3pJshu6iTKJ
+         AEV+xZLDyRgkwmx2mwusxgX+Ze6Bg5CWzIXW+8Y9UndyW4dH7v9+023Ri5BNZg3liyjd
+         Gb7RmgjojWWrouTQvzmfnO+79MeQUoEFAuOfzBi4ZoZ3sLAkiBHvRDjI2aqHu2ChfZSS
+         THPAuDMUCppWS8EWDjhdQPryndJJXyUsdscUpJwe1YnM5XgJQW1GikAUpkpd8kfXmV3z
+         YlIvcsuJKoy4feHA3CUNue0M1u9eu/fxZQKtlIIa8zpVdhIB/J9ceBV5feG/1L609wAN
+         xRdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b=o8XNUxh6;
+       dkim=pass header.i=@google.com header.s=20161025 header.b="fctyY/5J";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h1si727020vsk.186.2021.08.12.04.09.11
+        by mx.google.com with ESMTPS id ba34si2103309uab.204.2021.08.12.09.52.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 04:09:11 -0700 (PDT)
+        Thu, 12 Aug 2021 09:52:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b=o8XNUxh6;
+       dkim=pass header.i=@google.com header.s=20161025 header.b="fctyY/5J";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Received: from localhost ([::1]:47696 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:47770 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE8aF-0004js-9f
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 07:09:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37472)
+	id 1mEDw4-0005xp-PB
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 12:52:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1mE8ZQ-0003iC-1Y; Thu, 12 Aug 2021 07:08:20 -0400
-Received: from redisdead.crans.org ([185.230.79.39]:57656)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1mE8ZN-0004f2-3x; Thu, 12 Aug 2021 07:08:19 -0400
-Received: from [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f] (unknown
- [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by redisdead.crans.org (Postfix) with ESMTPSA id D80A5251;
- Thu, 12 Aug 2021 13:08:06 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
- t=1628766487; bh=NWjZaSD65qWn59Gs3uGCGufl2goQf8IHo7OT/zm4g3E=;
- h=To:Cc:References:From:Subject:Date:In-Reply-To:From;
- b=o8XNUxh6nRy7lV9vfnhPnPji1ABSfI/qiCEJTJx33wt2u3Q7pIt804rs+Fk73xGlk
- BYUq+AHQCV8A0C8tu1eHPQGSIzd4uN3e2wzZTEjHJ+ewxuJPzgD8LfLExS1SJq2Whb
- 5vvDx8RhuYyRxQ2BLwMuybt5c8jrsYK9N0dQ8FwtldRLQRIZ2ndonMvDNfI2nTQEyu
- 5SjjGA2zMwl7w1Rd2PhxZjwb1Tw6qd6RlNLP45dzESV95nwq3OkSKmpmwbhQGg4DTF
- Ij8XFkmZhMiH6Jszc+QDVOeOu9UuXIrjKJi19dlVGq/FpACi2dhjbqblJ16rqZpYZw
- dze+UK/Gi3kNdJIGM9AktZv+yfngvxCHxSHqY9tWLebQ+2UvvfivjBEDtLHfaBpO07
- p8BqhwYZshZidnIMp+bodZxa5weinK1bRSnWP3s6L3lmnCAUk1nEAB1IlE1GPahpSo
- hyRDviJO7HOtb6HvsdYOUouXTlYsrJN1Pdn2jSIbu+dMJkt7dE/cmU6bpq/8SSPeCS
- JBzSdaaOg6+Pl+8JFdDyT4gEWCdib5tUimo3xpzITTKGID5hOIo1QFupiR8Whhpz0L
- A3U8uR0cSAdypW7jaPTwiROia4kJED0mmNgE17FLgbSia7mUWbcCDZIGbKU19Onc7e
- 9nFexcPf+xqx6IYwmMeUMP6Q=
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-2-peter.maydell@linaro.org>
-From: Alexandre IOOSS <erdnaxe@crans.org>
-Organization: Crans
-Subject: Re: [PATCH for-6.2 01/25] arm: Move M-profile RAS register block into
- its own device
-Message-ID: <d712c8dc-1976-c197-2ecb-75cf35ac1f29@crans.org>
-Date: Thu, 12 Aug 2021 13:08:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
-MIME-Version: 1.0
-In-Reply-To: <20210812093356.1946-2-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="ypbc5Ge5R1P3ij04zDzqjmMtHCudHT73h"
-Received-SPF: pass client-ip=185.230.79.39; envelope-from=erdnaxe@crans.org;
- helo=redisdead.crans.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3jlEVYQgKCJULJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
+ id 1mEDva-0005wR-8p
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 12:51:34 -0400
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:36372)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3jlEVYQgKCJULJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
+ id 1mEDvW-0004rs-5Z
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 12:51:34 -0400
+Received: by mail-pl1-x649.google.com with SMTP id
+ w23-20020a170902d71700b0012d8286e44bso1190720ply.3
+ for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 09:51:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=IgDbqQkROLZ+hF9ZHWVLiB8Z7efmJC72i/zQV/DqupQ=;
+ b=fctyY/5JctRY/o2Y2il1JALgBXODamJhBOM5TLx2Nj7vd+NY6+xrYwHRBsmoCbVCft
+ pJ28oncbeFYo/OHYt7DqAwWqA/NKTLrQmXq0xuVRq+BU46FDLcZFliiyf7oKqxzD4NSR
+ Nx5vDEEr2MkkKyLcrLhtM6xBzlvLnST3xN/esoRXdYo/yn/V9fgGT6iX+JX7Z64p3IDw
+ 5EKXEaEU1I+BY0s6KGVV1FZnhrMWWXFzaalCMVQ7GBiAkqzqb7WvE0Qm0yGWOGcsUafn
+ 1vRdm6+Zq7FTVKRAn/ke8KRw34cFWlKcTkvlUK3OX3F2ggHiNzKh+2KSxQNR8jZelAYv
+ PfaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=IgDbqQkROLZ+hF9ZHWVLiB8Z7efmJC72i/zQV/DqupQ=;
+ b=lZ18w4Cwlx01PMLrxadQReIAJK9dgzF7MHJbGUpr8+dr7m7XgUdz05+tybi/wyPilO
+ 7bqssjlhIJvr5Hhkr+WBDVPvFSZAs5rsoZ/oZ99TU3ug47tklrr3K4+WxukhrCx652lr
+ 6liVJjIRVLBbR1wwCiEZjMSCPmdtuR6819dHF0ieR5Lc73CB8XF03MqAj1EbanO+yRAh
+ ZE2vME/3E9BfWJ/GuHekbkbgpcRT2uC0FC7nyHIF0kt2iNe86mO+HA0uc/HX8BTl6iud
+ AVudVDtoXFkv1YDcJNOIN4egIJPm5A+Vj+NN9P5KadQu+p9JBNn4uDt/tR2OXg6C5kNT
+ 8QTQ==
+X-Gm-Message-State: AOAM533GelPw4a+m7/x4HOi5sXHg7lKg5pHvHBbGZU3xLbYRQPfKh/R+
+ B4YGK1tbH8Cjud4f+afyd9eHorlXoHevbA==
+X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
+ (user=wuhaotsh job=sendgmr) by 2002:a17:90a:d910:: with SMTP id
+ c16mr3709066pjv.33.1628787086780; Thu, 12 Aug 2021 09:51:26 -0700 (PDT)
+Date: Thu, 12 Aug 2021 09:51:06 -0700
+Message-Id: <20210812165106.1800627-1-wuhaotsh@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.33.0.rc1.237.g0d66db33f3-goog
+Subject: [PATCH] hw/sensor: Add SB-TSI Temperature Sensor Interface
+From: Hao Wu <wuhaotsh@google.com>
+To: minyard@acm.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
+ titusr@google.com, venture@google.com, Doug Evans <dje@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3jlEVYQgKCJULJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x649.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,418 +113,691 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
- Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gTSiI2Rn7b23
+X-TUID: vR+QkfZ5Idgf
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---ypbc5Ge5R1P3ij04zDzqjmMtHCudHT73h
-Content-Type: multipart/mixed; boundary="IGga0ErnbAeZGPRXW46CxdSoeL5XTP6A8";
- protected-headers="v1"
-From: Alexandre IOOSS <erdnaxe@crans.org>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Luc Michel <luc@lmichel.fr>, Damien Hedde <damien.hedde@greensocs.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
-Message-ID: <d712c8dc-1976-c197-2ecb-75cf35ac1f29@crans.org>
-Subject: Re: [PATCH for-6.2 01/25] arm: Move M-profile RAS register block into
- its own device
-References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-2-peter.maydell@linaro.org>
-In-Reply-To: <20210812093356.1946-2-peter.maydell@linaro.org>
+SB Temperature Sensor Interface (SB-TSI) is an SMBus compatible
+interface that reports AMD SoC's Ttcl (normalized temperature),
+and resembles a typical 8-pin remote temperature sensor's I2C interface
+to BMC.
 
---IGga0ErnbAeZGPRXW46CxdSoeL5XTP6A8
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+This patch implements a basic AMD SB-TSI sensor that is
+compatible with the open-source data sheet from AMD and Linux
+kernel driver.
 
+Reference:
+Linux kernel driver:
+https://lkml.org/lkml/2020/12/11/968
+Register Map:
+https://developer.amd.com/wp-content/resources/56255_3_03.PDF
+(Chapter 6)
 
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Reviewed-by: Doug Evans <dje@google.com>
+---
+ hw/sensor/Kconfig            |   4 +
+ hw/sensor/meson.build        |   1 +
+ hw/sensor/tmp_sbtsi.c        | 393 +++++++++++++++++++++++++++++++++++
+ hw/sensor/trace-events       |   5 +
+ hw/sensor/trace.h            |   1 +
+ meson.build                  |   1 +
+ tests/qtest/meson.build      |   1 +
+ tests/qtest/tmp_sbtsi-test.c | 180 ++++++++++++++++
+ 8 files changed, 586 insertions(+)
+ create mode 100644 hw/sensor/tmp_sbtsi.c
+ create mode 100644 hw/sensor/trace-events
+ create mode 100644 hw/sensor/trace.h
+ create mode 100644 tests/qtest/tmp_sbtsi-test.c
 
-On 8/12/21 11:33 AM, Peter Maydell wrote:
-> Currently we implement the RAS register block within the NVIC device.
-> It isn't really very tightly coupled with the NVIC proper, so instead
-> move it out into a sysbus device of its own and have the top level
-> ARMv7M container create it and map it into memory at the right
-> address.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   include/hw/arm/armv7m.h       |  2 +
->   include/hw/intc/armv7m_nvic.h |  1 -
->   include/hw/misc/armv7m_ras.h  | 37 ++++++++++++++
->   hw/arm/armv7m.c               | 12 +++++
->   hw/intc/armv7m_nvic.c         | 56 ---------------------
->   hw/misc/armv7m_ras.c          | 93 ++++++++++++++++++++++++++++++++++=
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index a2b55a4fdb..31e78e6fd5 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -17,3 +17,7 @@ config ADM1272
+ config MAX34451
+     bool
+     depends on I2C
 +
->   MAINTAINERS                   |  2 +
->   hw/misc/meson.build           |  2 +
->   8 files changed, 148 insertions(+), 57 deletions(-)
->   create mode 100644 include/hw/misc/armv7m_ras.h
->   create mode 100644 hw/misc/armv7m_ras.c
->=20
-> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-> index bc6733c5184..4cae0d7eeaa 100644
-> --- a/include/hw/arm/armv7m.h
-> +++ b/include/hw/arm/armv7m.h
-> @@ -12,6 +12,7 @@
->  =20
->   #include "hw/sysbus.h"
->   #include "hw/intc/armv7m_nvic.h"
-> +#include "hw/misc/armv7m_ras.h"
->   #include "target/arm/idau.h"
->   #include "qom/object.h"
->  =20
-> @@ -58,6 +59,7 @@ struct ARMv7MState {
->       NVICState nvic;
->       BitBandState bitband[ARMV7M_NUM_BITBANDS];
->       ARMCPU *cpu;
-> +    ARMv7MRAS ras;
->  =20
->       /* MemoryRegion we pass to the CPU, with our devices layered on
->        * top of the ones the board provides in board_memory.
-> diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvi=
-c.h
-> index 39c71e15936..33b6d8810c7 100644
-> --- a/include/hw/intc/armv7m_nvic.h
-> +++ b/include/hw/intc/armv7m_nvic.h
-> @@ -83,7 +83,6 @@ struct NVICState {
->       MemoryRegion sysreg_ns_mem;
->       MemoryRegion systickmem;
->       MemoryRegion systick_ns_mem;
-> -    MemoryRegion ras_mem;
->       MemoryRegion container;
->       MemoryRegion defaultmem;
->  =20
-> diff --git a/include/hw/misc/armv7m_ras.h b/include/hw/misc/armv7m_ras.=
-h
-> new file mode 100644
-> index 00000000000..f8773e65b14
-> --- /dev/null
-> +++ b/include/hw/misc/armv7m_ras.h
-> @@ -0,0 +1,37 @@
-> +/*
-> + * Arm M-profile RAS block
-> + *
-> + * Copyright (c) 2021 Linaro Limited
-> + *
-> + *  This program is free software; you can redistribute it and/or modi=
-fy
-> + *  it under the terms of the GNU General Public License version 2 or
-> + *  (at your option) any later version.
-> + */
++config AMDSBTSI
++    bool
++    depends on I2C
+diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+index 034e3e0207..4e6747b2f2 100644
+--- a/hw/sensor/meson.build
++++ b/hw/sensor/meson.build
+@@ -3,3 +3,4 @@ softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
+ softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
+ softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
+ softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
++softmmu_ss.add(when: 'CONFIG_AMDSBTSI', if_true: files('tmp_sbtsi.c'))
+diff --git a/hw/sensor/tmp_sbtsi.c b/hw/sensor/tmp_sbtsi.c
+new file mode 100644
+index 0000000000..b68c7ebf61
+--- /dev/null
++++ b/hw/sensor/tmp_sbtsi.c
+@@ -0,0 +1,393 @@
++/*
++ * AMD SBI Temperature Sensor Interface (SB-TSI)
++ *
++ * Copyright 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/i2c/smbus_slave.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "trace.h"
++
++#define TYPE_SBTSI "sbtsi"
++#define SBTSI(obj) OBJECT_CHECK(SBTSIState, (obj), TYPE_SBTSI)
++
++/**
++ * SBTSIState:
++ * temperatures are in units of 0.125 degrees
++ * @temperature: Temperature
++ * @limit_low: Lowest temperature
++ * @limit_high: Highest temperature
++ * @status: The status register
++ * @config: The config register
++ * @alert_config: The config for alarm_l output.
++ * @addr: The address to read/write for the next cmd.
++ * @alarm: The alarm_l output pin (GPIO)
++ */
++typedef struct SBTSIState {
++    SMBusDevice parent;
++
++    uint32_t temperature;
++    uint32_t limit_low;
++    uint32_t limit_high;
++    uint8_t status;
++    uint8_t config;
++    uint8_t alert_config;
++    uint8_t addr;
++    qemu_irq alarm;
++} SBTSIState;
++
++/*
++ * SB-TSI registers only support SMBus byte data access. "_INT" registers are
++ * the integer part of a temperature value or limit, and "_DEC" registers are
++ * corresponding decimal parts.
++ */
++#define SBTSI_REG_TEMP_INT      0x01 /* RO */
++#define SBTSI_REG_STATUS        0x02 /* RO */
++#define SBTSI_REG_CONFIG        0x03 /* RO */
++#define SBTSI_REG_TEMP_HIGH_INT 0x07 /* RW */
++#define SBTSI_REG_TEMP_LOW_INT  0x08 /* RW */
++#define SBTSI_REG_CONFIG_WR     0x09 /* RW */
++#define SBTSI_REG_TEMP_DEC      0x10 /* RO */
++#define SBTSI_REG_TEMP_HIGH_DEC 0x13 /* RW */
++#define SBTSI_REG_TEMP_LOW_DEC  0x14 /* RW */
++#define SBTSI_REG_ALERT_CONFIG  0xBF /* RW */
++#define SBTSI_REG_MAN           0xFE /* RO */
++#define SBTSI_REG_REV           0xFF /* RO */
++
++#define SBTSI_STATUS_HIGH_ALERT BIT(4)
++#define SBTSI_STATUS_LOW_ALERT  BIT(3)
++#define SBTSI_CONFIG_ALERT_MASK BIT(7)
++#define SBTSI_ALARM_EN          BIT(0)
++
++#define SBTSI_LIMIT_LOW_DEFAULT (0)
++#define SBTSI_LIMIT_HIGH_DEFAULT (560)
++#define SBTSI_MAN_DEFAULT (0)
++#define SBTSI_REV_DEFAULT (4)
++#define SBTSI_ALARM_L "alarm_l"
++
++/* The temperature we stored are in units of 0.125 degrees. */
++#define SBTSI_TEMP_UNIT_IN_MILLIDEGREE 125
++
++/*
++ * The integer part and decimal of the temperature both 8 bits.
++ * Only the top 3 bits of the decimal parts are used.
++ * So the max temperature is (2^8-1) + (2^3-1)/8 = 255.875 degrees.
++ */
++#define SBTSI_TEMP_MAX 255875
++
++/* The integer part of the temperature in terms of 0.125 degrees. */
++static uint8_t get_temp_int(uint32_t temp)
++{
++    return temp >> 3;
++}
++
++/*
++ * The decimal part of the temperature, in terms of 0.125 degrees.
++ * H/W store it in the top 3 bits so we shift it by 5.
++ */
++static uint8_t get_temp_dec(uint32_t temp)
++{
++    return (temp & 0x7) << 5;
++}
++
++/*
++ * Compute the temperature using the integer and decimal part,
++ * in terms of 0.125 degrees. The decimal part are only the top 3 bits
++ * so we shift it by 5 here.
++ */
++static uint32_t compute_temp(uint8_t integer, uint8_t decimal)
++{
++    return (integer << 3) + (decimal >> 5);
++}
++
++/* Compute new temp with new int part of the temperature. */
++static uint32_t compute_temp_int(uint32_t temp, uint8_t integer)
++{
++    return compute_temp(integer, get_temp_dec(temp));
++}
++
++/* Compute new temp with new dec part of the temperature. */
++static uint32_t compute_temp_dec(uint32_t temp, uint8_t decimal)
++{
++    return compute_temp(get_temp_int(temp), decimal);
++}
++
++/* The integer part of the temperature. */
++static void sbtsi_update_status(SBTSIState *s)
++{
++    s->status = 0;
++    if (s->alert_config & SBTSI_ALARM_EN) {
++        if (s->temperature >= s->limit_high) {
++            s->status |= SBTSI_STATUS_HIGH_ALERT;
++        }
++        if (s->temperature <= s->limit_low) {
++            s->status |= SBTSI_STATUS_LOW_ALERT;
++        }
++    }
++}
++
++static void sbtsi_update_alarm(SBTSIState *s)
++{
++    sbtsi_update_status(s);
++    if (s->status != 0 && !(s->config & SBTSI_CONFIG_ALERT_MASK)) {
++        qemu_irq_raise(s->alarm);
++    } else {
++        qemu_irq_lower(s->alarm);
++    }
++}
++
++static uint8_t sbtsi_read_byte(SMBusDevice *d)
++{
++    SBTSIState *s = SBTSI(d);
++    uint8_t data = 0;
++
++    switch (s->addr) {
++    case SBTSI_REG_TEMP_INT:
++        data = get_temp_int(s->temperature);
++        break;
++
++    case SBTSI_REG_TEMP_DEC:
++        data = get_temp_dec(s->temperature);
++        break;
++
++    case SBTSI_REG_TEMP_HIGH_INT:
++        data = get_temp_int(s->limit_high);
++        break;
++
++    case SBTSI_REG_TEMP_LOW_INT:
++        data = get_temp_int(s->limit_low);
++        break;
++
++    case SBTSI_REG_TEMP_HIGH_DEC:
++        data = get_temp_dec(s->limit_high);
++        break;
++
++    case SBTSI_REG_TEMP_LOW_DEC:
++        data = get_temp_dec(s->limit_low);
++        break;
++
++    case SBTSI_REG_CONFIG:
++    case SBTSI_REG_CONFIG_WR:
++        data = s->config;
++        break;
++
++    case SBTSI_REG_STATUS:
++        sbtsi_update_alarm(s);
++        data = s->status;
++        break;
++
++    case SBTSI_REG_ALERT_CONFIG:
++        data = s->alert_config;
++        break;
++
++    case SBTSI_REG_MAN:
++        data = SBTSI_MAN_DEFAULT;
++        break;
++
++    case SBTSI_REG_REV:
++        data = SBTSI_REV_DEFAULT;
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: reading from invalid reg: 0x%02x\n",
++                __func__, s->addr);
++        break;
++    }
++
++    trace_tmp_sbtsi_read_data(s->addr, data);
++    return data;
++}
++
++static void sbtsi_write(SBTSIState *s, uint8_t data)
++{
++    trace_tmp_sbtsi_write_data(s->addr, data);
++    switch (s->addr) {
++    case SBTSI_REG_CONFIG_WR:
++        s->config = data;
++        break;
++
++    case SBTSI_REG_TEMP_HIGH_INT:
++        s->limit_high = compute_temp_int(s->limit_high, data);
++        break;
++
++    case SBTSI_REG_TEMP_LOW_INT:
++        s->limit_low = compute_temp_int(s->limit_low, data);
++        break;
++
++    case SBTSI_REG_TEMP_HIGH_DEC:
++        s->limit_high = compute_temp_dec(s->limit_high, data);
++        break;
++
++    case SBTSI_REG_TEMP_LOW_DEC:
++        s->limit_low = compute_temp_dec(s->limit_low, data);
++        break;
++
++    case SBTSI_REG_ALERT_CONFIG:
++        s->alert_config = data;
++        break;
++
++    case SBTSI_REG_TEMP_INT:
++    case SBTSI_REG_TEMP_DEC:
++    case SBTSI_REG_CONFIG:
++    case SBTSI_REG_STATUS:
++    case SBTSI_REG_MAN:
++    case SBTSI_REG_REV:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: writing to read only reg: 0x%02x data: 0x%02x\n",
++                __func__, s->addr, data);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: writing to invalid reg: 0x%02x data: 0x%02x\n",
++                __func__, s->addr, data);
++        break;
++    }
++    sbtsi_update_alarm(s);
++}
++
++static int sbtsi_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
++{
++    SBTSIState *s = SBTSI(d);
++
++    if (len == 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
++        return -1;
++    }
++
++    s->addr = buf[0];
++    if (len > 1) {
++        sbtsi_write(s, buf[1]);
++        if (len > 2) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: extra data at end\n", __func__);
++        }
++    }
++    return 0;
++}
++
++/* Units are millidegrees. */
++static void sbtsi_get_temperature(Object *obj, Visitor *v, const char *name,
++                                  void *opaque, Error **errp)
++{
++    SBTSIState *s = SBTSI(obj);
++    uint32_t temp = s->temperature * SBTSI_TEMP_UNIT_IN_MILLIDEGREE;
++
++    visit_type_uint32(v, name, &temp, errp);
++}
++
++/* Units are millidegrees. */
++static void sbtsi_set_temperature(Object *obj, Visitor *v, const char *name,
++                                  void *opaque, Error **errp)
++{
++    SBTSIState *s = SBTSI(obj);
++    uint32_t temp;
++
++    if (!visit_type_uint32(v, name, &temp, errp)) {
++        return;
++    }
++    if (temp > SBTSI_TEMP_MAX) {
++        error_setg(errp, "value %" PRIu32 ".%03" PRIu32 " C is out of range",
++                   temp / 1000, temp % 1000);
++        return;
++    }
++
++    s->temperature = temp / SBTSI_TEMP_UNIT_IN_MILLIDEGREE;
++    sbtsi_update_alarm(s);
++}
++
++static int sbtsi_post_load(void *opaque, int version_id)
++{
++    SBTSIState *s = opaque;
++
++    sbtsi_update_alarm(s);
++    return 0;
++}
++
++static const VMStateDescription vmstate_sbtsi = {
++    .name = "SBTSI",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .post_load = sbtsi_post_load,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(temperature, SBTSIState),
++        VMSTATE_UINT32(limit_low, SBTSIState),
++        VMSTATE_UINT32(limit_high, SBTSIState),
++        VMSTATE_UINT8(config, SBTSIState),
++        VMSTATE_UINT8(status, SBTSIState),
++        VMSTATE_UINT8(addr, SBTSIState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void sbtsi_enter_reset(Object *obj, ResetType type)
++{
++    SBTSIState *s = SBTSI(obj);
++
++    s->config = 0;
++    s->limit_low = SBTSI_LIMIT_LOW_DEFAULT;
++    s->limit_high = SBTSI_LIMIT_HIGH_DEFAULT;
++}
++
++static void sbtsi_hold_reset(Object *obj)
++{
++    SBTSIState *s = SBTSI(obj);
++
++    qemu_irq_lower(s->alarm);
++}
++
++static void sbtsi_init(Object *obj)
++{
++    SBTSIState *s = SBTSI(obj);
++
++    /* Current temperature in millidegrees. */
++    object_property_add(obj, "temperature", "uint32",
++                        sbtsi_get_temperature, sbtsi_set_temperature,
++                        NULL, NULL);
++    qdev_init_gpio_out_named(DEVICE(obj), &s->alarm, SBTSI_ALARM_L, 0);
++}
++
++static void sbtsi_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SMBusDeviceClass *k = SMBUS_DEVICE_CLASS(klass);
++
++    dc->desc = "SB-TSI Temperature Sensor";
++    dc->vmsd = &vmstate_sbtsi;
++    k->write_data = sbtsi_write_data;
++    k->receive_byte = sbtsi_read_byte;
++    rc->phases.enter = sbtsi_enter_reset;
++    rc->phases.hold = sbtsi_hold_reset;
++}
++
++static const TypeInfo sbtsi_info = {
++    .name          = TYPE_SBTSI,
++    .parent        = TYPE_SMBUS_DEVICE,
++    .instance_size = sizeof(SBTSIState),
++    .instance_init = sbtsi_init,
++    .class_init    = sbtsi_class_init,
++};
++
++static void sbtsi_register_types(void)
++{
++    type_register_static(&sbtsi_info);
++}
++
++type_init(sbtsi_register_types)
+diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
+new file mode 100644
+index 0000000000..21ab3809e2
+--- /dev/null
++++ b/hw/sensor/trace-events
+@@ -0,0 +1,5 @@
++# See docs/devel/tracing.rst for syntax documentation.
++
++# tmp_sbtsi.c
++tmp_sbtsi_write_data(uint8_t addr, uint8_t value) "SBTSI write addr:0x%02x data: 0x%02x"
++tmp_sbtsi_read_data(uint8_t addr, uint8_t value) "SBTSI read addr:0x%02x data: 0x%02x"
+diff --git a/hw/sensor/trace.h b/hw/sensor/trace.h
+new file mode 100644
+index 0000000000..e4721560b0
+--- /dev/null
++++ b/hw/sensor/trace.h
+@@ -0,0 +1 @@
++#include "trace/trace-hw_sensor.h"
+diff --git a/meson.build b/meson.build
+index b3e7ec0e92..e62db1163a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2138,6 +2138,7 @@ if have_system
+     'hw/rtc',
+     'hw/s390x',
+     'hw/scsi',
++    'hw/sensor',
+     'hw/sd',
+     'hw/sparc',
+     'hw/sparc64',
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index e22a0792c5..72671e316a 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -222,6 +222,7 @@ qos_test_ss.add(
+   'spapr-phb-test.c',
+   'tmp105-test.c',
+   'emc141x-test.c',
++  'tmp_sbtsi-test.c',
+   'usb-hcd-ohci-test.c',
+   'virtio-test.c',
+   'virtio-blk-test.c',
+diff --git a/tests/qtest/tmp_sbtsi-test.c b/tests/qtest/tmp_sbtsi-test.c
+new file mode 100644
+index 0000000000..7f5fafacc7
+--- /dev/null
++++ b/tests/qtest/tmp_sbtsi-test.c
+@@ -0,0 +1,180 @@
++/*
++ * QTests for the SBTSI temperature sensor
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++
++#include "libqtest-single.h"
++#include "libqos/qgraph.h"
++#include "libqos/i2c.h"
++#include "qapi/qmp/qdict.h"
++#include "qemu/bitops.h"
++
++#define TEST_ID   "sbtsi-test"
++#define TEST_ADDR (0x4c)
++
++/*
++ * SB-TSI registers only support SMBus byte data access. "_INT" registers are
++ * the integer part of a temperature value or limit, and "_DEC" registers are
++ * corresponding decimal parts.
++ */
++#define REG_TEMP_INT      0x01 /* RO */
++#define REG_STATUS        0x02 /* RO */
++#define REG_CONFIG        0x03 /* RO */
++#define REG_TEMP_HIGH_INT 0x07 /* RW */
++#define REG_TEMP_LOW_INT  0x08 /* RW */
++#define REG_CONFIG_WR     0x09 /* RW */
++#define REG_TEMP_DEC      0x10 /* RO */
++#define REG_TEMP_HIGH_DEC 0x13 /* RW */
++#define REG_TEMP_LOW_DEC  0x14 /* RW */
++#define REG_ALERT_CONFIG  0xBF /* RW */
++
++#define STATUS_HIGH_ALERT BIT(4)
++#define STATUS_LOW_ALERT  BIT(3)
++#define CONFIG_ALERT_MASK BIT(7)
++#define ALARM_EN          BIT(0)
++
++/* The temperature stored are in units of 0.125 degrees. */
++#define TEMP_UNIT_IN_MILLIDEGREE 125
++#define LIMIT_LOW (10500)
++#define LIMIT_HIGH (55125)
++
++static uint32_t qmp_sbtsi_get_temperature(const char *id)
++{
++    QDict *response;
++    int ret;
++
++    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
++                   "'property': 'temperature' } }", id);
++    g_assert(qdict_haskey(response, "return"));
++    ret = (uint32_t)qdict_get_int(response, "return");
++    qobject_unref(response);
++    return ret;
++}
++
++static void qmp_sbtsi_set_temperature(const char *id, uint32_t value)
++{
++    QDict *response;
++
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': 'temperature', 'value': %d } }", id, value);
++    g_assert(qdict_haskey(response, "return"));
++    qobject_unref(response);
++}
++
++/*
++ * Compute the temperature using the integer and decimal part and return
++ * millidegrees. The decimal part are only the top 3 bits so we shift it by
++ * 5 here.
++ */
++static uint32_t regs_to_temp(uint8_t integer, uint8_t decimal)
++{
++    return ((integer << 3) + (decimal >> 5)) * TEMP_UNIT_IN_MILLIDEGREE;
++}
++
++/*
++ * Compute the integer and decimal parts of the temperature in millidegrees.
++ * H/W store the decimal in the top 3 bits so we shift it by 5.
++ */
++static void temp_to_regs(uint32_t temp, uint8_t *integer, uint8_t *decimal)
++{
++    temp /= TEMP_UNIT_IN_MILLIDEGREE;
++    *integer = temp >> 3;
++    *decimal = (temp & 0x7) << 5;
++}
++
++static void tx_rx(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t value;
++    uint8_t integer, decimal;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    /* Test default values */
++    value = qmp_sbtsi_get_temperature(TEST_ID);
++    g_assert_cmpuint(value, ==, 0);
++
++    integer = i2c_get8(i2cdev, REG_TEMP_INT);
++    decimal = i2c_get8(i2cdev, REG_TEMP_DEC);
++    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, 0);
++
++    /* Test setting temperature */
++    qmp_sbtsi_set_temperature(TEST_ID, 20000);
++    value = qmp_sbtsi_get_temperature(TEST_ID);
++    g_assert_cmpuint(value, ==, 20000);
++
++    integer = i2c_get8(i2cdev, REG_TEMP_INT);
++    decimal = i2c_get8(i2cdev, REG_TEMP_DEC);
++    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, 20000);
++
++    /* Set alert mask in config */
++    i2c_set8(i2cdev, REG_CONFIG_WR, CONFIG_ALERT_MASK);
++    value = i2c_get8(i2cdev, REG_CONFIG);
++    g_assert_cmphex(value, ==, CONFIG_ALERT_MASK);
++    /* Enable alarm_en */
++    i2c_set8(i2cdev, REG_ALERT_CONFIG, ALARM_EN);
++    value = i2c_get8(i2cdev, REG_ALERT_CONFIG);
++    g_assert_cmphex(value, ==, ALARM_EN);
++
++    /* Test setting limits */
++    /* Limit low = 10.500 */
++    temp_to_regs(LIMIT_LOW, &integer, &decimal);
++    i2c_set8(i2cdev, REG_TEMP_LOW_INT, integer);
++    i2c_set8(i2cdev, REG_TEMP_LOW_DEC, decimal);
++    integer = i2c_get8(i2cdev, REG_TEMP_LOW_INT);
++    decimal = i2c_get8(i2cdev, REG_TEMP_LOW_DEC);
++    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, LIMIT_LOW);
++    /* Limit high = 55.125 */
++    temp_to_regs(LIMIT_HIGH, &integer, &decimal);
++    i2c_set8(i2cdev, REG_TEMP_HIGH_INT, integer);
++    i2c_set8(i2cdev, REG_TEMP_HIGH_DEC, decimal);
++    integer = i2c_get8(i2cdev, REG_TEMP_HIGH_INT);
++    decimal = i2c_get8(i2cdev, REG_TEMP_HIGH_DEC);
++    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, LIMIT_HIGH);
++    /* No alert is generated. */
++    value = i2c_get8(i2cdev, REG_STATUS);
++    g_assert_cmphex(value, ==, 0);
++
++    /* Test alert for low temperature */
++    qmp_sbtsi_set_temperature(TEST_ID, LIMIT_LOW);
++    value = i2c_get8(i2cdev, REG_STATUS);
++    g_assert_cmphex(value, ==, STATUS_LOW_ALERT);
++
++    /* Test alert for high temperature */
++    qmp_sbtsi_set_temperature(TEST_ID, LIMIT_HIGH);
++    value = i2c_get8(i2cdev, REG_STATUS);
++    g_assert_cmphex(value, ==, STATUS_HIGH_ALERT);
++
++    /* Disable alarm_en */
++    i2c_set8(i2cdev, REG_ALERT_CONFIG, 0);
++    value = i2c_get8(i2cdev, REG_ALERT_CONFIG);
++    g_assert_cmphex(value, ==, 0);
++    /* No alert when alarm_en is false. */
++    value = i2c_get8(i2cdev, REG_STATUS);
++    g_assert_cmphex(value, ==, 0);
++}
++
++static void sbtsi_register_nodes(void)
++{
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" TEST_ID ",address=0x4c"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { TEST_ADDR });
++
++    qos_node_create_driver("sbtsi", i2c_device_create);
++    qos_node_consumes("sbtsi", "i2c-bus", &opts);
++
++    qos_add_test("tx-rx", "sbtsi", tx_rx, NULL);
++}
++libqos_init(sbtsi_register_nodes);
+-- 
+2.33.0.rc1.237.g0d66db33f3-goog
 
-Maybe it would be a good idea here to change to "Arm M-profile RAS=20
-(Reliability, Availability, and Serviceability) block" to define the=20
-acronym at least once in the device code?
-
-> +
-> +/*
-> + * This is a model of the RAS register block of an M-profile CPU
-> + * (the registers starting at 0xE0005000 with ERRFRn).
-> + *
-> + * QEMU interface:
-> + *  + sysbus MMIO region 0: the register bank
-> + *
-> + * The QEMU implementation currently provides "minimal RAS" only.
-> + */
-> +
-> +#ifndef HW_MISC_ARMV7M_RAS_H
-> +#define HW_MISC_ARMV7M_RAS_H
-> +
-> +#include "hw/sysbus.h"
-> +
-> +#define TYPE_ARMV7M_RAS "armv7m-ras"
-> +OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MRAS, ARMV7M_RAS)
-> +
-> +struct ARMv7MRAS {
-> +    /*< private >*/
-> +    SysBusDevice parent_obj;
-> +
-> +    /*< public >*/
-> +    MemoryRegion iomem;
-> +};
-> +
-> +#endif
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 9ce5c30cd5c..8964730d153 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -231,6 +231,18 @@ static void armv7m_realize(DeviceState *dev, Error=
- **errp)
->       memory_region_add_subregion(&s->container, 0xe0000000,
->                                   sysbus_mmio_get_region(sbd, 0));
->  =20
-> +    /* If the CPU has RAS support, create the RAS register block */
-> +    if (cpu_isar_feature(aa32_ras, s->cpu)) {
-> +        object_initialize_child(OBJECT(dev), "armv7m-ras",
-> +                                &s->ras, TYPE_ARMV7M_RAS);
-> +        sbd =3D SYS_BUS_DEVICE(&s->ras);
-> +        if (!sysbus_realize(sbd, errp)) {
-> +            return;
-> +        }
-> +        memory_region_add_subregion_overlap(&s->container, 0xe0005000,=
-
-> +                                            sysbus_mmio_get_region(sbd=
-, 0), 1);
-> +    }
-> +
->       for (i =3D 0; i < ARRAY_SIZE(s->bitband); i++) {
->           if (s->enable_bitband) {
->               Object *obj =3D OBJECT(&s->bitband[i]);
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 1e7ddcb94cb..a5975592dfa 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -2549,56 +2549,6 @@ static const MemoryRegionOps nvic_systick_ops =3D=
- {
->       .endianness =3D DEVICE_NATIVE_ENDIAN,
->   };
->  =20
-> -
-> -static MemTxResult ras_read(void *opaque, hwaddr addr,
-> -                            uint64_t *data, unsigned size,
-> -                            MemTxAttrs attrs)
-> -{
-> -    if (attrs.user) {
-> -        return MEMTX_ERROR;
-> -    }
-> -
-> -    switch (addr) {
-> -    case 0xe10: /* ERRIIDR */
-> -        /* architect field =3D Arm; product/variant/revision 0 */
-> -        *data =3D 0x43b;
-> -        break;
-> -    case 0xfc8: /* ERRDEVID */
-> -        /* Minimal RAS: we implement 0 error record indexes */
-> -        *data =3D 0;
-> -        break;
-> -    default:
-> -        qemu_log_mask(LOG_UNIMP, "Read RAS register offset 0x%x\n",
-> -                      (uint32_t)addr);
-> -        *data =3D 0;
-> -        break;
-> -    }
-> -    return MEMTX_OK;
-> -}
-> -
-> -static MemTxResult ras_write(void *opaque, hwaddr addr,
-> -                             uint64_t value, unsigned size,
-> -                             MemTxAttrs attrs)
-> -{
-> -    if (attrs.user) {
-> -        return MEMTX_ERROR;
-> -    }
-> -
-> -    switch (addr) {
-> -    default:
-> -        qemu_log_mask(LOG_UNIMP, "Write to RAS register offset 0x%x\n"=
-,
-> -                      (uint32_t)addr);
-> -        break;
-> -    }
-> -    return MEMTX_OK;
-> -}
-> -
-> -static const MemoryRegionOps ras_ops =3D {
-> -    .read_with_attrs =3D ras_read,
-> -    .write_with_attrs =3D ras_write,
-> -    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> -};
-> -
->   /*
->    * Unassigned portions of the PPB space are RAZ/WI for privileged
->    * accesses, and fault for non-privileged accesses.
-> @@ -2946,12 +2896,6 @@ static void armv7m_nvic_realize(DeviceState *dev=
-, Error **errp)
->                                               &s->systick_ns_mem, 1);
->       }
->  =20
-> -    if (cpu_isar_feature(aa32_ras, s->cpu)) {
-> -        memory_region_init_io(&s->ras_mem, OBJECT(s),
-> -                              &ras_ops, s, "nvic_ras", 0x1000);
-> -        memory_region_add_subregion(&s->container, 0x5000, &s->ras_mem=
-);
-> -    }
-> -
->       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
->   }
->  =20
-> diff --git a/hw/misc/armv7m_ras.c b/hw/misc/armv7m_ras.c
-> new file mode 100644
-> index 00000000000..a2b4f4b8dc8
-> --- /dev/null
-> +++ b/hw/misc/armv7m_ras.c
-> @@ -0,0 +1,93 @@
-> +/*
-> + * Arm M-profile RAS block
-> + *
-> + * Copyright (c) 2021 Linaro Limited
-> + *
-> + *  This program is free software; you can redistribute it and/or modi=
-fy
-> + *  it under the terms of the GNU General Public License version 2 or
-> + *  (at your option) any later version.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/misc/armv7m_ras.h"
-> +#include "qemu/log.h"
-> +
-> +static MemTxResult ras_read(void *opaque, hwaddr addr,
-> +                            uint64_t *data, unsigned size,
-> +                            MemTxAttrs attrs)
-> +{
-> +    if (attrs.user) {
-> +        return MEMTX_ERROR;
-> +    }
-> +
-> +    switch (addr) {
-> +    case 0xe10: /* ERRIIDR */
-> +        /* architect field =3D Arm; product/variant/revision 0 */
-> +        *data =3D 0x43b;
-> +        break;
-> +    case 0xfc8: /* ERRDEVID */
-> +        /* Minimal RAS: we implement 0 error record indexes */
-> +        *data =3D 0;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP, "Read RAS register offset 0x%x\n",
-> +                      (uint32_t)addr);
-> +        *data =3D 0;
-> +        break;
-> +    }
-> +    return MEMTX_OK;
-> +}
-> +
-> +static MemTxResult ras_write(void *opaque, hwaddr addr,
-> +                             uint64_t value, unsigned size,
-> +                             MemTxAttrs attrs)
-> +{
-> +    if (attrs.user) {
-> +        return MEMTX_ERROR;
-> +    }
-> +
-> +    switch (addr) {
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP, "Write to RAS register offset 0x%x\n"=
-,
-> +                      (uint32_t)addr);
-> +        break;
-> +    }
-> +    return MEMTX_OK;
-> +}
-> +
-> +static const MemoryRegionOps ras_ops =3D {
-> +    .read_with_attrs =3D ras_read,
-> +    .write_with_attrs =3D ras_write,
-> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +
-> +static void armv7m_ras_init(Object *obj)
-> +{
-> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> +    ARMv7MRAS *s =3D ARMV7M_RAS(obj);
-> +
-> +    memory_region_init_io(&s->iomem, obj, &ras_ops,
-> +                          s, "armv7m-ras", 0x1000);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +}
-> +
-> +static void armv7m_ras_class_init(ObjectClass *klass, void *data)
-> +{
-> +    /* This device has no state: no need for vmstate or reset */
-> +}
-> +
-> +static const TypeInfo armv7m_ras_info =3D {
-> +    .name =3D TYPE_ARMV7M_RAS,
-> +    .parent =3D TYPE_SYS_BUS_DEVICE,
-> +    .instance_size =3D sizeof(ARMv7MRAS),
-> +    .instance_init =3D armv7m_ras_init,
-> +    .class_init =3D armv7m_ras_class_init,
-> +};
-
-Pure curiosity: is `.class_init` defined because it needs to be defined=20
-or is it only a good practise in QEMU code to always define it?
-
-> +
-> +static void armv7m_ras_register_types(void)
-> +{
-> +    type_register_static(&armv7m_ras_info);
-> +}
-> +
-> +type_init(armv7m_ras_register_types);
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 37b1a8e4428..3cac393bb48 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -617,6 +617,7 @@ F: hw/intc/gic_internal.h
->   F: hw/misc/a9scu.c
->   F: hw/misc/arm11scu.c
->   F: hw/misc/arm_l2x0.c
-> +F: hw/misc/armv7m_ras.c
->   F: hw/timer/a9gtimer*
->   F: hw/timer/arm*
->   F: include/hw/arm/arm*.h
-> @@ -626,6 +627,7 @@ F: include/hw/misc/arm11scu.h
->   F: include/hw/timer/a9gtimer.h
->   F: include/hw/timer/arm_mptimer.h
->   F: include/hw/timer/armv7m_systick.h
-> +F: include/hw/misc/armv7m_ras.h
->   F: tests/qtest/test-arm-mptimer.c
->  =20
->   Exynos
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index a53b849a5a0..3f41a3a5b27 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -17,6 +17,8 @@ softmmu_ss.add(when: 'CONFIG_INTEGRATOR_DEBUG', if_tr=
-ue: files('arm_integrator_d
->   softmmu_ss.add(when: 'CONFIG_A9SCU', if_true: files('a9scu.c'))
->   softmmu_ss.add(when: 'CONFIG_ARM11SCU', if_true: files('arm11scu.c'))=
-
->  =20
-> +softmmu_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_ras.c'))=
-
-> +
->   # Mac devices
->   softmmu_ss.add(when: 'CONFIG_MOS6522', if_true: files('mos6522.c'))
->  =20
->=20
-
-Looks good to me! My review is weak because I am still new to QEMU codeba=
-se.
-
-Reviewed-by: Alexandre Iooss <erdnaxe@crans.org>
-
--- Alexandre
-
-
---IGga0ErnbAeZGPRXW46CxdSoeL5XTP6A8--
-
---ypbc5Ge5R1P3ij04zDzqjmMtHCudHT73h
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmEVARYFAwAAAAAACgkQbHknjz/NzALq
-Hg//QCG5rLDkXRbqVoYCnO8Kd0354QFfbXVRKBPRW5vHW5E5KG2WXY6JqtTNkI/2CXGCJdKQBThG
-6fOWPsLC983ZwwwLMFkeUoNi6jBvorH1lRx2HVg7wEkrJ1nmYNtyhMSGAMKAAUm89nDmWRaXjzNA
-y/wUWz0MYLEjTRUpjq8ByuFlJTrU3fiuXVNJeBUB1FOfBXIUHBKfG10gd4b0O4xmEJbz8TigFt5I
-Kh1lcCbypKhyS+8e2/W+1yKHm52SO7NQ/HCkWkePVB/tuvXHENkecdzTir/WpZGfczcT6lRGZ0ia
-PZJ8nVZlvSNzx5v75SZdaKxD5hXdl8N0SYu2uiorH47l0Phctw1n2muk+TS2xwAEx1lIEOPkH2yP
-7CdmXKQWCf5hpnocl6legpVZA45novJLBg3Y31ox5zgoxrCMJbdnGzN3aZ2TFSL9exNPlUY0+teg
-HIoth5WDYEq3qMS+uPJi11z2cpm25yex6Zf10vzfFiqFm/uPm+LbyOYkE2/QtAcTEEGFMWcVQPrS
-GdsbbfpAS8UZp5eNVWDUBuLpPXMU0kRuP2axNbmh2PurBpMzSE7uanluZVga2tZSUvlaNIsCPhYd
-DnTXvA49TRV1QK1kKx7TTZgpONsGv/sPmtXu1yH2X+VVIhuI7MPZi1wMkwRdGJRMXqA7WlT+avIC
-cXk=
-=Yy3O
------END PGP SIGNATURE-----
-
---ypbc5Ge5R1P3ij04zDzqjmMtHCudHT73h--

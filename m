@@ -1,103 +1,102 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp193333lff;
-        Thu, 12 Aug 2021 02:39:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw+OSdisk86nI13eow4DPKnwFLGP4Js5PH9w9BRsQzw9NwTjgvbX5jp+kJageXcbuwS8NEp
-X-Received: by 2002:a37:6682:: with SMTP id a124mr3558658qkc.127.1628761158272;
-        Thu, 12 Aug 2021 02:39:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628761158; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp193474lff;
+        Thu, 12 Aug 2021 02:39:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxDlVldQgdHaNM9Ivd7kZu75WcNNzmUcgQf0rfiwDs74Wlk3sqzinyzcgBv1VAPNVGahaQX
+X-Received: by 2002:ac8:570a:: with SMTP id 10mr2977135qtw.139.1628761172474;
+        Thu, 12 Aug 2021 02:39:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628761172; cv=none;
         d=google.com; s=arc-20160816;
-        b=XOVkQaNsiXHl8X4+A96fnEb595d0WRz803yN6tR64byvU8cbxvMTjqnyP+y3XqO7lw
-         2k1kGUXFcAhb/YSmrBHdSCKCsFzSMGsamSRD8gvgfI0dZY2tzSN+a48O0pzrCanGv53+
-         q+qD/kmYRKirYI8l+ZqnnU6eQhik+fMnmck4tY7D8AfADPc7tkRy9w+HBkryohw5i5C4
-         OlgMqwtGCBtRlLOQsoaFNixwiG2O9Q18t0frOMgxUN0g83E95U42ppcf8CeDNxdBVpg1
-         8TmJDoFrqcDAjWe28xTR5B4VXFHf3io23jsaGtHWuoDAG0OvHUnBy6pPeyYGd1LOgy+8
-         YWFQ==
+        b=z1QrB3Pkj8dKew4VSHqcqz7iOjNgiXbrKvFiEvuqr8idyMXLc4jQW8g1T133WHL1Bo
+         gyuc3nY08zMCUuztJxtIuvyb6uoTX269T7IzNnblQDKjJEUDS+9Qd3/E1MJAuYdoTSjM
+         nx6s+8MdilRieJuZMAC7pgf710H+PAwBJG0IySEyOKqCPRjNkIJ5oDfUHDumRAty4z8Z
+         IRoN8Pbp7V06ZiRw3WAlzhqbPnz9+Y5Yz0RZrvUItrZLxQyNJZOI2pBDhWrGSoXDE15j
+         62cMscnKFElCo9TKwLYXvARsJophOcbTp0MIa8aS546Mq8MSfF0yuOgmGO1IJVeFxiSP
+         JNiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ylx+ciRLSX1VOp2PZHd/2EZv1BHv9jNlhqLtZX6B8Y0=;
-        b=TjWk8C1gUpVxVDmD3yopuK9WqlH+QwwrIfDULMHKYu65Rpg1cYClu75OvvMM3a+eps
-         RTFIVP6p8jD8g6wsd+9BLeH2KRD96C0GiccH1PchAspzmuHF+Ot0wfAznSVN4JTO9tmL
-         RE3hCARItJhrGlS9kIcSP4+MTxxC1qXbjph8REgX7rTXWQbv/p7ZljOxIBFw9NYHWrsE
-         UymxPRqvR8tLptQ0SM3ocTnz5MVj2BBn3K6+M0yg2U0Ki2NeTkgDCb92mhjIAtrTZDGc
-         E5dwhJX/3131Acmz8CrgooyraMMpZgXazv7wrvneQZxPxwPwG+tvwd+H91ZgGZeVLjy+
-         ufJw==
+        bh=ziCsEIjr/6TL4DulcAYvJ5WYZ2Dy4YbpYnG7GIAD+KQ=;
+        b=qEJdsytxQTk1xi2Vhm9wILHHUqr4LoGtde3R0P6VGjLyL/F43UViGl5A5vvbpWwM0Y
+         6P4+aOyYJXaUvz5I++T7nWABjtfvwfuDOhHkdn9Gw0MCYMknEJnq5kM2/rnP4Rj8eW53
+         9WKpSp2sWU85n1/AIRYJ0ErSOUt3ieS5PADbnbfXOYGEsHcXJto11+iB9Qya51ezXEbS
+         hWSLg6v8+bSVJyKL4+wA8IVaQcXuhD9Qr4YDk4+AP8hc5p594O2TIa//ochWVVEXXYK/
+         WJa1mqNYx5/nm98G1QAJaeTYpgArDcyTIMT326u+D4/TKvMmCM79N7kKBsC8WEhMd7px
+         YYUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MGkLFDtN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uLI4GHlr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n1si1453443qvp.45.2021.08.12.02.39.18
+        by mx.google.com with ESMTPS id n22si1707333qta.182.2021.08.12.02.39.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 02:39:18 -0700 (PDT)
+        Thu, 12 Aug 2021 02:39:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MGkLFDtN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uLI4GHlr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36190 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE7BF-0003y6-Gt
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:39:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46306)
+	id 1mE7BT-0004sW-Ha
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:39:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76J-0005BJ-Iw
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:11 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:46767)
+ id 1mE76R-0005gt-Rv
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:20 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:54230)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76E-0007os-85
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:11 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- h24-20020a1ccc180000b029022e0571d1a0so4043923wmb.5
- for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:05 -0700 (PDT)
+ id 1mE76P-0007xc-3p
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:19 -0400
+Received: by mail-wm1-x334.google.com with SMTP id k4so3998643wms.3
+ for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ylx+ciRLSX1VOp2PZHd/2EZv1BHv9jNlhqLtZX6B8Y0=;
- b=MGkLFDtNFqsalT3ezMKfPwRD55To5J7yqy0f9sNNcZYGd3EgXGShnvNdcVXCvOGq+c
- KP+yaU0gn8Sz4WYNhBH9ROfTW9rlGPqPt870pdFSRP9v8N6NaWLANyweKwfhQpN1qul0
- DNvx9n1WK8+F4OCZUBjLk45DdPOytRnpmyb8ZuG+U0V1foh86TSM5UTPvbSy8Mdy2+NR
- YY/Z09gdeOlLXZrjHJWdEXtIHmnLLFRm6GiSAmzvON2Yrpp1P7RN5UezYBbmOgqWTJyk
- hFKglV7MXEUwzqzgVn8v0OQYJBrbqgDwRFg9PF0pxvEeM9lLOi1sKYYtOWcMA0h9yk6X
- x9XA==
+ bh=ziCsEIjr/6TL4DulcAYvJ5WYZ2Dy4YbpYnG7GIAD+KQ=;
+ b=uLI4GHlrahoEjmoi9UbRyyOH2CvIYVp0nKK6wuNVR9wIej28PUgEpsdbdhQWId79ub
+ piv5iObOY/1xfZZ0HKGLSs+kqOaFPBmzU/Q1wpL3Z9Tnqczi7pj+tBjDZ7Vt32MxSZZl
+ P3zQuCkF67R2WmeNB20rvd2T2qxFQT4E6JR60GwRGp98xBosY1FN8mPKKR9F1z3mrJUr
+ 8UlU0Zk4XBtsXEFggXGcuxe31k1wZdZ7/Znoh1g6UFm3Sb/iTs+x5okkbI04uWGX6xr+
+ X74QsoqSHneNy/Rrj5yET5HbJ0JMorDiv8DdVouhdYxYK6vdz+S820b8/35LZD152EEm
+ Dwng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ylx+ciRLSX1VOp2PZHd/2EZv1BHv9jNlhqLtZX6B8Y0=;
- b=sTKOfyx3Y2RIZQEfdmZtgRds6ccqIp0mCGVstjewwxP1ee7IBfru/CzuL5wx1t++o0
- gfewv8+e0uQ5XtN8l+mkENH3SxJRf/3K1k8bcRu/j/e5HJcTJbIVsKuHDus+iKIlbmks
- JNmvS1m0e+YSOQEHCO/vxho0Byh5iRvOi8ZR2VRmATnAm5QOB/A9LC2F644hsl/ouGxq
- PXaGJDB/tSf5ZuTh73FunAU8npGUzKuoZ9mvwZwo5eqPq4/rsL6JGrh0LeOl4rJuGqtT
- alcMVcSgGCM1khfTUMQVI9bUSmm2JpGWHhFERfIdU8geEn1egrSFr4hpyzY1n5DEB/3p
- yMvA==
-X-Gm-Message-State: AOAM533UtZ9Lb+MemrvxksMKrqMc9pHMaTfE2aQ/BkdwVy+QxNxNavoJ
- 7wz6wEXKx5NGjxRv87FYWxU7Bw==
-X-Received: by 2002:a7b:c083:: with SMTP id r3mr3023821wmh.65.1628760844921;
- Thu, 12 Aug 2021 02:34:04 -0700 (PDT)
+ bh=ziCsEIjr/6TL4DulcAYvJ5WYZ2Dy4YbpYnG7GIAD+KQ=;
+ b=NhVvHsVwLaHT6D6SFCYiV+MkOCXpqPRN4eiH6aYca4FAuseE938I8KaCPd8KCaOKxe
+ nA2ulrqx3QAILLIb+eSpcYUUcfqyxRiGLW+JodNmKMfpVaGzgc9YwFzbA8MEkCaLy21y
+ vCDR80/lmb6HanXneSLdfhg90Q75LwKKv1BlHwkSGnBjo/Zp1H7XbYtcWY0ydgmmcRXP
+ THJFZeVBVZmkzeqzwyMy+oWoldPBpVPwgDsq3Lo/Hbvnd9oB1l59QI+hnpe7wi4QAkeW
+ zNPrrlVT5aCzEkIFoDh0rSDYBDsj7Xq2HdIGQQHvwM8FaYzC9zwnV7UbuB8oo29FXnd8
+ +G8A==
+X-Gm-Message-State: AOAM530G3dkL5GCnBX7Fa9OH2Kk3PhY15jXG0lPnvySTELVAUie74Jlz
+ LTcmaw7Iabr+nXHlSOv8smDdUQ==
+X-Received: by 2002:a1c:27c5:: with SMTP id n188mr1085350wmn.126.1628760854226; 
+ Thu, 12 Aug 2021 02:34:14 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.04
+ by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 02:34:04 -0700 (PDT)
+ Thu, 12 Aug 2021 02:34:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 06/25] hw/arm/armv7m: Create input clocks
-Date: Thu, 12 Aug 2021 10:33:37 +0100
-Message-Id: <20210812093356.1946-7-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 16/25] hw/arm/stellaris: split stellaris_sys_init()
+Date: Thu, 12 Aug 2021 10:33:47 +0100
+Message-Id: <20210812093356.1946-17-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210812093356.1946-1-peter.maydell@linaro.org>
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,121 +122,120 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C/3mSMga9pEr
+X-TUID: wbsorLCL4Zpu
 
-Create input clocks on the armv7m container object which pass through
-to the systick timers, so that users of the armv7m object can specify
-the clocks being used.
+Currently the stellaris_sys_init() function creates the
+TYPE_STELLARIS_SYS object, sets its properties, realizes it, maps its
+MMIO region and connects its IRQ.  In order to support wiring the
+sysclk up to the armv7m object, we need to split this function apart,
+because to connect the clock output of the STELLARIS_SYS object to
+the armv7m object we need to create the STELLARIS_SYS object before
+the armv7m object, but we can't wire up the IRQ until after we've
+created the armv7m object.
+
+Remove the stellaris_sys_init() function, and instead put the
+create/configure/realize parts before we create the armv7m object and
+the mmio/irq connection parts afterwards.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armv7m.h |  6 ++++++
- hw/arm/armv7m.c         | 23 +++++++++++++++++++++++
- 2 files changed, 29 insertions(+)
+ hw/arm/stellaris.c | 56 +++++++++++++++++++++-------------------------
+ 1 file changed, 25 insertions(+), 31 deletions(-)
 
-diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-index fe8b248a6c6..b7ba0ff409c 100644
---- a/include/hw/arm/armv7m.h
-+++ b/include/hw/arm/armv7m.h
-@@ -15,6 +15,7 @@
- #include "hw/misc/armv7m_ras.h"
- #include "target/arm/idau.h"
- #include "qom/object.h"
-+#include "hw/clock.h"
- 
- #define TYPE_BITBAND "ARM-bitband-memory"
- OBJECT_DECLARE_SIMPLE_TYPE(BitBandState, BITBAND)
-@@ -51,6 +52,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MState, ARMV7M)
-  * + Property "vfp": enable VFP (forwarded to CPU object)
-  * + Property "dsp": enable DSP (forwarded to CPU object)
-  * + Property "enable-bitband": expose bitbanded IO
-+ * + Clock input "refclk" is the external reference clock for the systick timers
-+ * + Clock input "cpuclk" is the main CPU clock
-  */
- struct ARMv7MState {
-     /*< private >*/
-@@ -82,6 +85,9 @@ struct ARMv7MState {
-     /* MR providing default PPB behaviour */
-     MemoryRegion defaultmem;
- 
-+    Clock *refclk;
-+    Clock *cpuclk;
-+
-     /* Properties */
-     char *cpu_type;
-     /* MemoryRegion the board provides to us (with its devices, RAM, etc) */
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 7e7fb7a3ad3..db1bfa98df0 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -14,12 +14,14 @@
- #include "hw/arm/boot.h"
- #include "hw/loader.h"
- #include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
- #include "elf.h"
- #include "sysemu/reset.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "qemu/log.h"
- #include "target/arm/idau.h"
-+#include "migration/vmstate.h"
- 
- /* Bitbanded IO.  Each word corresponds to a single bit.  */
- 
-@@ -265,6 +267,9 @@ static void armv7m_instance_init(Object *obj)
-         object_initialize_child(obj, "bitband[*]", &s->bitband[i],
-                                 TYPE_BITBAND);
-     }
-+
-+    s->refclk = qdev_init_clock_in(DEVICE(obj), "refclk", NULL, NULL, 0);
-+    s->cpuclk = qdev_init_clock_in(DEVICE(obj), "cpuclk", NULL, NULL, 0);
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index ad48cf26058..bf24abd44fd 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -755,33 +755,6 @@ static void stellaris_sys_instance_init(Object *obj)
+     s->sysclk = qdev_init_clock_out(DEVICE(s), "SYSCLK");
  }
  
- static void armv7m_realize(DeviceState *dev, Error **errp)
-@@ -416,6 +421,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-     }
+-static DeviceState *stellaris_sys_init(uint32_t base, qemu_irq irq,
+-                                       stellaris_board_info *board,
+-                                       uint8_t *macaddr)
+-{
+-    DeviceState *dev = qdev_new(TYPE_STELLARIS_SYS);
+-    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+-
+-    /* Most devices come preprogrammed with a MAC address in the user data. */
+-    qdev_prop_set_uint32(dev, "user0",
+-                         macaddr[0] | (macaddr[1] << 8) | (macaddr[2] << 16));
+-    qdev_prop_set_uint32(dev, "user1",
+-                         macaddr[3] | (macaddr[4] << 8) | (macaddr[5] << 16));
+-    qdev_prop_set_uint32(dev, "did0", board->did0);
+-    qdev_prop_set_uint32(dev, "did1", board->did1);
+-    qdev_prop_set_uint32(dev, "dc0", board->dc0);
+-    qdev_prop_set_uint32(dev, "dc1", board->dc1);
+-    qdev_prop_set_uint32(dev, "dc2", board->dc2);
+-    qdev_prop_set_uint32(dev, "dc3", board->dc3);
+-    qdev_prop_set_uint32(dev, "dc4", board->dc4);
+-
+-    sysbus_realize_and_unref(sbd, &error_fatal);
+-    sysbus_mmio_map(sbd, 0, base);
+-    sysbus_connect_irq(sbd, 0, irq);
+-
+-    return dev;
+-}
+-
+ /* I2C controller.  */
  
-     /* Create and map the systick devices */
-+    qdev_connect_clock_in(DEVICE(&s->systick[M_REG_NS]), "refclk", s->refclk);
-+    qdev_connect_clock_in(DEVICE(&s->systick[M_REG_NS]), "cpuclk", s->cpuclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), errp)) {
-         return;
-     }
-@@ -431,6 +438,10 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-          */
-         object_initialize_child(OBJECT(dev), "systick-reg-s",
-                                 &s->systick[M_REG_S], TYPE_SYSTICK);
-+        qdev_connect_clock_in(DEVICE(&s->systick[M_REG_S]), "refclk",
-+                              s->refclk);
-+        qdev_connect_clock_in(DEVICE(&s->systick[M_REG_S]), "cpuclk",
-+                              s->cpuclk);
+ #define TYPE_STELLARIS_I2C "stellaris-i2c"
+@@ -1349,6 +1322,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     DeviceState *ssys_dev;
+     int i;
+     int j;
++    uint8_t *macaddr;
  
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_S]), errp)) {
-             return;
-@@ -504,11 +515,23 @@ static Property armv7m_properties[] = {
-     DEFINE_PROP_END_OF_LIST(),
- };
+     MemoryRegion *sram = g_new(MemoryRegion, 1);
+     MemoryRegion *flash = g_new(MemoryRegion, 1);
+@@ -1366,6 +1340,26 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+                            &error_fatal);
+     memory_region_add_subregion(system_memory, 0x20000000, sram);
  
-+static const VMStateDescription vmstate_armv7m = {
-+    .name = "armv7m",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_CLOCK(refclk, SysTickState),
-+        VMSTATE_CLOCK(cpuclk, SysTickState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
++    /*
++     * Create the system-registers object early, because we will
++     * need its sysclk output.
++     */
++    ssys_dev = qdev_new(TYPE_STELLARIS_SYS);
++    /* Most devices come preprogrammed with a MAC address in the user data. */
++    macaddr = nd_table[0].macaddr.a;
++    qdev_prop_set_uint32(ssys_dev, "user0",
++                         macaddr[0] | (macaddr[1] << 8) | (macaddr[2] << 16));
++    qdev_prop_set_uint32(ssys_dev, "user1",
++                         macaddr[3] | (macaddr[4] << 8) | (macaddr[5] << 16));
++    qdev_prop_set_uint32(ssys_dev, "did0", board->did0);
++    qdev_prop_set_uint32(ssys_dev, "did1", board->did1);
++    qdev_prop_set_uint32(ssys_dev, "dc0", board->dc0);
++    qdev_prop_set_uint32(ssys_dev, "dc1", board->dc1);
++    qdev_prop_set_uint32(ssys_dev, "dc2", board->dc2);
++    qdev_prop_set_uint32(ssys_dev, "dc3", board->dc3);
++    qdev_prop_set_uint32(ssys_dev, "dc4", board->dc4);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(ssys_dev), &error_fatal);
 +
- static void armv7m_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
+     nvic = qdev_new(TYPE_ARMV7M);
+     qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
+     qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
+@@ -1375,6 +1369,10 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     /* This will exit with an error if the user passed us a bad cpu_type */
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(nvic), &error_fatal);
  
-     dc->realize = armv7m_realize;
-+    dc->vmsd = &vmstate_armv7m;
-     device_class_set_props(dc, armv7m_properties);
- }
++    /* Now we can wire up the IRQ and MMIO of the system registers */
++    sysbus_mmio_map(SYS_BUS_DEVICE(ssys_dev), 0, 0x400fe000);
++    sysbus_connect_irq(SYS_BUS_DEVICE(ssys_dev), 0, qdev_get_gpio_in(nvic, 28));
++
+     if (board->dc1 & (1 << 16)) {
+         dev = sysbus_create_varargs(TYPE_STELLARIS_ADC, 0x40038000,
+                                     qdev_get_gpio_in(nvic, 14),
+@@ -1397,10 +1395,6 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+         }
+     }
+ 
+-    ssys_dev = stellaris_sys_init(0x400fe000, qdev_get_gpio_in(nvic, 28),
+-                                  board, nd_table[0].macaddr.a);
+-
+-
+     if (board->dc1 & (1 << 3)) { /* watchdog present */
+         dev = qdev_new(TYPE_LUMINARY_WATCHDOG);
  
 -- 
 2.20.1

@@ -1,106 +1,102 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp534525lff;
-        Thu, 12 Aug 2021 09:52:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrFRVMflFS9zbxf24O6WY7TF7ww5kbZ6BtVEMBk8g8xOGP/yFS4k3AjycpaZuQ6jjceOi8
-X-Received: by 2002:a05:6102:3053:: with SMTP id w19mr4398220vsa.30.1628787125522;
-        Thu, 12 Aug 2021 09:52:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628787125; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp289077lff;
+        Thu, 12 Aug 2021 04:57:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzy9Z7rSupGqR2ZavAPg8PeZp1CjhvFlg5wW8xAR9HO/NrJhJt/+s5aOvldLiU40tL7FOQP
+X-Received: by 2002:a1f:198a:: with SMTP id 132mr2582341vkz.21.1628769429403;
+        Thu, 12 Aug 2021 04:57:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628769429; cv=none;
         d=google.com; s=arc-20160816;
-        b=q1a2kOk+ec3+6ue/Aubsa2ThH/oRJLJRoNsZquQzGF8+O8yUnZR6QOB/HNUeWZr53F
-         G7QcS3ZrbNcqWuHpq3dd4ZhAO+CLCzJVIoL9OM4F1Ttnn4StBPgQ6UIUBcSoSiBdERIZ
-         dWRs8AH31LhG5XzE046NqH/v06ZPDOFFIb3VtFKqEHZmYfZKTGM7dAyStcAsHMUaSutO
-         iSNg7gscb8eppf7x7sCrRuIKKQSL/iJ+NDvdLntT3JbLIqb55T0KTSxzqv5nCq5pZx3C
-         ls14wAW/9LZWstSkvuG+lSHWQpMOiOBF7TFhFSh7fm6p6wSDrnRovs/ITwb3fiD2yvEm
-         E07w==
+        b=oLmHavg1J9OU+/tqarSb1ztZspPiAE731EkEF1FLiQL7fOJNEZaLp2NUNBTSSzlafk
+         PFA1gradRz7ARiBgw894ZplREE+L20frxczOIqAL2UpYBLu7FuNwvGYwj7VQF9TxZ7+D
+         /Aduscm88EnzDaoaLzQDlagTXr+9gfkEMrAIalyZmGg8bxZ5JlKwXy2V/ADpuGpBDRA3
+         1CeTwbUku0irGYS3/rgvJeGGGZzfwPMf6hfl+pf5fwsCdlaYUGg1Q+RX7NTH4G3pvSVN
+         lRGjpHNhbndQBvs2qhNEMIz8XComiUdJhKTii+7iCT7OeBuGKELS8IbWEEEfplHsiVC9
+         /+xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=IgDbqQkROLZ+hF9ZHWVLiB8Z7efmJC72i/zQV/DqupQ=;
-        b=Vpz9wH+0q7tySi54f7iqDed9clLnjWVuyS9pEek9PaJ3dAi0Ppp2UZB3pJshu6iTKJ
-         AEV+xZLDyRgkwmx2mwusxgX+Ze6Bg5CWzIXW+8Y9UndyW4dH7v9+023Ri5BNZg3liyjd
-         Gb7RmgjojWWrouTQvzmfnO+79MeQUoEFAuOfzBi4ZoZ3sLAkiBHvRDjI2aqHu2ChfZSS
-         THPAuDMUCppWS8EWDjhdQPryndJJXyUsdscUpJwe1YnM5XgJQW1GikAUpkpd8kfXmV3z
-         YlIvcsuJKoy4feHA3CUNue0M1u9eu/fxZQKtlIIa8zpVdhIB/J9ceBV5feG/1L609wAN
-         xRdQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
+         :user-agent:date:message-id:subject:organization:from:references:to
+         :dkim-signature;
+        bh=cnbuA3hY1C91C8rCG7sFxomW2ICHg7DECFeFKjYNkFQ=;
+        b=CROqnR6vasZfzOlQh7j8zRRt70zL2bAGqVIgP952Es+rsLD43k0HqjTDUUMm05sSjM
+         quDBoM3QyzHQWsCLFUmQyJf2M0qrKA4dZamtCuQxiBVhywZaJAowbKwyNQKTvkSmGR2M
+         deTt1yaSB4RZYfkzEv8V/zP89DImdtFSZsHBiDoy6026MP3tIJTBOMxbQpOOngk8MBQ3
+         txb7quumBOMjaTV5CoMUA4bofwbIE6tw8cyhcRTJtyuk/rm/0rSUKWKTfgNbFOcXnxzf
+         1l3mcz3IexOeePdDHn3CSu6AIh1Gw/yRzFojBopQmPVmk6nw4gDQvCQQYxwtM+rY241a
+         dOOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="fctyY/5J";
+       dkim=fail header.i=@crans.org header.s=mail header.b=L1zDmOQ6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ba34si2103309uab.204.2021.08.12.09.52.05
+        by mx.google.com with ESMTPS id z24si1342678uaa.156.2021.08.12.04.57.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 09:52:05 -0700 (PDT)
+        Thu, 12 Aug 2021 04:57:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="fctyY/5J";
+       dkim=fail header.i=@crans.org header.s=mail header.b=L1zDmOQ6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47770 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
+Received: from localhost ([::1]:45606 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEDw4-0005xp-PB
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 12:52:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50218)
+	id 1mE9Ke-0007uY-Lr
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 07:57:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3jlEVYQgKCJULJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
- id 1mEDva-0005wR-8p
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 12:51:34 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:36372)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3jlEVYQgKCJULJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
- id 1mEDvW-0004rs-5Z
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 12:51:34 -0400
-Received: by mail-pl1-x649.google.com with SMTP id
- w23-20020a170902d71700b0012d8286e44bso1190720ply.3
- for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 09:51:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=IgDbqQkROLZ+hF9ZHWVLiB8Z7efmJC72i/zQV/DqupQ=;
- b=fctyY/5JctRY/o2Y2il1JALgBXODamJhBOM5TLx2Nj7vd+NY6+xrYwHRBsmoCbVCft
- pJ28oncbeFYo/OHYt7DqAwWqA/NKTLrQmXq0xuVRq+BU46FDLcZFliiyf7oKqxzD4NSR
- Nx5vDEEr2MkkKyLcrLhtM6xBzlvLnST3xN/esoRXdYo/yn/V9fgGT6iX+JX7Z64p3IDw
- 5EKXEaEU1I+BY0s6KGVV1FZnhrMWWXFzaalCMVQ7GBiAkqzqb7WvE0Qm0yGWOGcsUafn
- 1vRdm6+Zq7FTVKRAn/ke8KRw34cFWlKcTkvlUK3OX3F2ggHiNzKh+2KSxQNR8jZelAYv
- PfaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=IgDbqQkROLZ+hF9ZHWVLiB8Z7efmJC72i/zQV/DqupQ=;
- b=lZ18w4Cwlx01PMLrxadQReIAJK9dgzF7MHJbGUpr8+dr7m7XgUdz05+tybi/wyPilO
- 7bqssjlhIJvr5Hhkr+WBDVPvFSZAs5rsoZ/oZ99TU3ug47tklrr3K4+WxukhrCx652lr
- 6liVJjIRVLBbR1wwCiEZjMSCPmdtuR6819dHF0ieR5Lc73CB8XF03MqAj1EbanO+yRAh
- ZE2vME/3E9BfWJ/GuHekbkbgpcRT2uC0FC7nyHIF0kt2iNe86mO+HA0uc/HX8BTl6iud
- AVudVDtoXFkv1YDcJNOIN4egIJPm5A+Vj+NN9P5KadQu+p9JBNn4uDt/tR2OXg6C5kNT
- 8QTQ==
-X-Gm-Message-State: AOAM533GelPw4a+m7/x4HOi5sXHg7lKg5pHvHBbGZU3xLbYRQPfKh/R+
- B4YGK1tbH8Cjud4f+afyd9eHorlXoHevbA==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90a:d910:: with SMTP id
- c16mr3709066pjv.33.1628787086780; Thu, 12 Aug 2021 09:51:26 -0700 (PDT)
-Date: Thu, 12 Aug 2021 09:51:06 -0700
-Message-Id: <20210812165106.1800627-1-wuhaotsh@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.33.0.rc1.237.g0d66db33f3-goog
-Subject: [PATCH] hw/sensor: Add SB-TSI Temperature Sensor Interface
-From: Hao Wu <wuhaotsh@google.com>
-To: minyard@acm.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- titusr@google.com, venture@google.com, Doug Evans <dje@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3jlEVYQgKCJULJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com;
- helo=mail-pl1-x649.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1mE9KU-0007u1-SF; Thu, 12 Aug 2021 07:56:59 -0400
+Received: from redisdead.crans.org ([185.230.79.39]:59786)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1mE9KR-00056W-V9; Thu, 12 Aug 2021 07:56:58 -0400
+Received: from [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f] (unknown
+ [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by redisdead.crans.org (Postfix) with ESMTPSA id 01FCD2AB;
+ Thu, 12 Aug 2021 13:56:51 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
+ t=1628769412; bh=8r70ZV2Q+7/QJ1OgXFRW0VOByghHd7FJ8SRYONyMKL4=;
+ h=To:Cc:References:From:Subject:Date:In-Reply-To:From;
+ b=L1zDmOQ68j1eJYYokg6l3zZTA1vWgpFuv8J/zUwkTM/O58tPo2Yk4EeuVyfIWArcv
+ WNYntGcMis2bcCj+45KsjNeqXhH2bBH3gZZvGJ02ZljP7wPBs021FfxVSrfCcpvY3w
+ f+nQY0z4HKQia4neGojr05talSOZp/njSDcuQDph1zjjNYO2ZtrW02Y3N2UBX0oT1l
+ tc35eETKjFedd4k3zuoRDFVAsHgLbZCCmGh+hmq017wET7EdCyxEOIl6iqttu4rqNh
+ ovIpFRvOlbY3my3mXVKR3fS3mDuoPnoVlEvFjK67skZiGD8a2R+5DueohsrWrwOB2K
+ KxbeYQUJjwgmpLMmjNz2PWTq2nAcdo0O9sM9taPU5AhdgvVr0DS01rsLmyHCuZXaxp
+ Q5LNfAN1aS4RXDCmnCQ4M4B+zyPYNX4dLTMeAx8o8yPnH0Ux/OXd7kKi4h68pyrxMO
+ O6oOfwv4hbfKIhMlCEwrZ1H2bj/DqNzBU2Nhs/O2EXXhmlZ0dWXIDOfXHfM1e8cbpF
+ jbKagBKrep1FywWQpyIyk0J5S4lH93jO73xvZx1QDmQYOXBqrlMFA85zYTgmnSS8Lf
+ Q2BGLCLOOmqJjyY8fJFUQ6CdLetlzrEbQoEustFgIf1MfclGjKi4dDxtam2GMapF8J
+ rMbW0jZfJ51RK1RUT3vILm0Q=
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-4-peter.maydell@linaro.org>
+From: Alexandre IOOSS <erdnaxe@crans.org>
+Organization: Crans
+Subject: Re: [PATCH for-6.2 03/25] arm: Move system PPB container handling to
+ armv7m
+Message-ID: <1cec6123-9844-8515-38c0-172daea678c3@crans.org>
+Date: Thu, 12 Aug 2021 13:56:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
+MIME-Version: 1.0
+In-Reply-To: <20210812093356.1946-4-peter.maydell@linaro.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="nzmiXVFpqSdCGmI2AK2l9vzVqT9ulCb6r"
+Received-SPF: pass client-ip=185.230.79.39; envelope-from=erdnaxe@crans.org;
+ helo=redisdead.crans.org
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,691 +109,470 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
+ Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vR+QkfZ5Idgf
+X-TUID: /AtaKGsPDDJ8
 
-SB Temperature Sensor Interface (SB-TSI) is an SMBus compatible
-interface that reports AMD SoC's Ttcl (normalized temperature),
-and resembles a typical 8-pin remote temperature sensor's I2C interface
-to BMC.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--nzmiXVFpqSdCGmI2AK2l9vzVqT9ulCb6r
+Content-Type: multipart/mixed; boundary="PPr2rwnIUGzGLG5LgkFuDknIYRRBJ9tU1";
+ protected-headers="v1"
+From: Alexandre IOOSS <erdnaxe@crans.org>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Luc Michel <luc@lmichel.fr>, Damien Hedde <damien.hedde@greensocs.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
+Message-ID: <1cec6123-9844-8515-38c0-172daea678c3@crans.org>
+Subject: Re: [PATCH for-6.2 03/25] arm: Move system PPB container handling to
+ armv7m
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-4-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-4-peter.maydell@linaro.org>
 
-This patch implements a basic AMD SB-TSI sensor that is
-compatible with the open-source data sheet from AMD and Linux
-kernel driver.
+--PPr2rwnIUGzGLG5LgkFuDknIYRRBJ9tU1
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Reference:
-Linux kernel driver:
-https://lkml.org/lkml/2020/12/11/968
-Register Map:
-https://developer.amd.com/wp-content/resources/56255_3_03.PDF
-(Chapter 6)
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Doug Evans <dje@google.com>
----
- hw/sensor/Kconfig            |   4 +
- hw/sensor/meson.build        |   1 +
- hw/sensor/tmp_sbtsi.c        | 393 +++++++++++++++++++++++++++++++++++
- hw/sensor/trace-events       |   5 +
- hw/sensor/trace.h            |   1 +
- meson.build                  |   1 +
- tests/qtest/meson.build      |   1 +
- tests/qtest/tmp_sbtsi-test.c | 180 ++++++++++++++++
- 8 files changed, 586 insertions(+)
- create mode 100644 hw/sensor/tmp_sbtsi.c
- create mode 100644 hw/sensor/trace-events
- create mode 100644 hw/sensor/trace.h
- create mode 100644 tests/qtest/tmp_sbtsi-test.c
 
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index a2b55a4fdb..31e78e6fd5 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -17,3 +17,7 @@ config ADM1272
- config MAX34451
-     bool
-     depends on I2C
-+
-+config AMDSBTSI
-+    bool
-+    depends on I2C
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index 034e3e0207..4e6747b2f2 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -3,3 +3,4 @@ softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
- softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
- softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
- softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
-+softmmu_ss.add(when: 'CONFIG_AMDSBTSI', if_true: files('tmp_sbtsi.c'))
-diff --git a/hw/sensor/tmp_sbtsi.c b/hw/sensor/tmp_sbtsi.c
-new file mode 100644
-index 0000000000..b68c7ebf61
---- /dev/null
-+++ b/hw/sensor/tmp_sbtsi.c
-@@ -0,0 +1,393 @@
-+/*
-+ * AMD SBI Temperature Sensor Interface (SB-TSI)
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/smbus_slave.h"
-+#include "hw/irq.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "trace.h"
-+
-+#define TYPE_SBTSI "sbtsi"
-+#define SBTSI(obj) OBJECT_CHECK(SBTSIState, (obj), TYPE_SBTSI)
-+
-+/**
-+ * SBTSIState:
-+ * temperatures are in units of 0.125 degrees
-+ * @temperature: Temperature
-+ * @limit_low: Lowest temperature
-+ * @limit_high: Highest temperature
-+ * @status: The status register
-+ * @config: The config register
-+ * @alert_config: The config for alarm_l output.
-+ * @addr: The address to read/write for the next cmd.
-+ * @alarm: The alarm_l output pin (GPIO)
-+ */
-+typedef struct SBTSIState {
-+    SMBusDevice parent;
-+
-+    uint32_t temperature;
-+    uint32_t limit_low;
-+    uint32_t limit_high;
-+    uint8_t status;
-+    uint8_t config;
-+    uint8_t alert_config;
-+    uint8_t addr;
-+    qemu_irq alarm;
-+} SBTSIState;
-+
-+/*
-+ * SB-TSI registers only support SMBus byte data access. "_INT" registers are
-+ * the integer part of a temperature value or limit, and "_DEC" registers are
-+ * corresponding decimal parts.
-+ */
-+#define SBTSI_REG_TEMP_INT      0x01 /* RO */
-+#define SBTSI_REG_STATUS        0x02 /* RO */
-+#define SBTSI_REG_CONFIG        0x03 /* RO */
-+#define SBTSI_REG_TEMP_HIGH_INT 0x07 /* RW */
-+#define SBTSI_REG_TEMP_LOW_INT  0x08 /* RW */
-+#define SBTSI_REG_CONFIG_WR     0x09 /* RW */
-+#define SBTSI_REG_TEMP_DEC      0x10 /* RO */
-+#define SBTSI_REG_TEMP_HIGH_DEC 0x13 /* RW */
-+#define SBTSI_REG_TEMP_LOW_DEC  0x14 /* RW */
-+#define SBTSI_REG_ALERT_CONFIG  0xBF /* RW */
-+#define SBTSI_REG_MAN           0xFE /* RO */
-+#define SBTSI_REG_REV           0xFF /* RO */
-+
-+#define SBTSI_STATUS_HIGH_ALERT BIT(4)
-+#define SBTSI_STATUS_LOW_ALERT  BIT(3)
-+#define SBTSI_CONFIG_ALERT_MASK BIT(7)
-+#define SBTSI_ALARM_EN          BIT(0)
-+
-+#define SBTSI_LIMIT_LOW_DEFAULT (0)
-+#define SBTSI_LIMIT_HIGH_DEFAULT (560)
-+#define SBTSI_MAN_DEFAULT (0)
-+#define SBTSI_REV_DEFAULT (4)
-+#define SBTSI_ALARM_L "alarm_l"
-+
-+/* The temperature we stored are in units of 0.125 degrees. */
-+#define SBTSI_TEMP_UNIT_IN_MILLIDEGREE 125
-+
-+/*
-+ * The integer part and decimal of the temperature both 8 bits.
-+ * Only the top 3 bits of the decimal parts are used.
-+ * So the max temperature is (2^8-1) + (2^3-1)/8 = 255.875 degrees.
-+ */
-+#define SBTSI_TEMP_MAX 255875
-+
-+/* The integer part of the temperature in terms of 0.125 degrees. */
-+static uint8_t get_temp_int(uint32_t temp)
-+{
-+    return temp >> 3;
-+}
-+
-+/*
-+ * The decimal part of the temperature, in terms of 0.125 degrees.
-+ * H/W store it in the top 3 bits so we shift it by 5.
-+ */
-+static uint8_t get_temp_dec(uint32_t temp)
-+{
-+    return (temp & 0x7) << 5;
-+}
-+
-+/*
-+ * Compute the temperature using the integer and decimal part,
-+ * in terms of 0.125 degrees. The decimal part are only the top 3 bits
-+ * so we shift it by 5 here.
-+ */
-+static uint32_t compute_temp(uint8_t integer, uint8_t decimal)
-+{
-+    return (integer << 3) + (decimal >> 5);
-+}
-+
-+/* Compute new temp with new int part of the temperature. */
-+static uint32_t compute_temp_int(uint32_t temp, uint8_t integer)
-+{
-+    return compute_temp(integer, get_temp_dec(temp));
-+}
-+
-+/* Compute new temp with new dec part of the temperature. */
-+static uint32_t compute_temp_dec(uint32_t temp, uint8_t decimal)
-+{
-+    return compute_temp(get_temp_int(temp), decimal);
-+}
-+
-+/* The integer part of the temperature. */
-+static void sbtsi_update_status(SBTSIState *s)
-+{
-+    s->status = 0;
-+    if (s->alert_config & SBTSI_ALARM_EN) {
-+        if (s->temperature >= s->limit_high) {
-+            s->status |= SBTSI_STATUS_HIGH_ALERT;
-+        }
-+        if (s->temperature <= s->limit_low) {
-+            s->status |= SBTSI_STATUS_LOW_ALERT;
-+        }
-+    }
-+}
-+
-+static void sbtsi_update_alarm(SBTSIState *s)
-+{
-+    sbtsi_update_status(s);
-+    if (s->status != 0 && !(s->config & SBTSI_CONFIG_ALERT_MASK)) {
-+        qemu_irq_raise(s->alarm);
-+    } else {
-+        qemu_irq_lower(s->alarm);
-+    }
-+}
-+
-+static uint8_t sbtsi_read_byte(SMBusDevice *d)
-+{
-+    SBTSIState *s = SBTSI(d);
-+    uint8_t data = 0;
-+
-+    switch (s->addr) {
-+    case SBTSI_REG_TEMP_INT:
-+        data = get_temp_int(s->temperature);
-+        break;
-+
-+    case SBTSI_REG_TEMP_DEC:
-+        data = get_temp_dec(s->temperature);
-+        break;
-+
-+    case SBTSI_REG_TEMP_HIGH_INT:
-+        data = get_temp_int(s->limit_high);
-+        break;
-+
-+    case SBTSI_REG_TEMP_LOW_INT:
-+        data = get_temp_int(s->limit_low);
-+        break;
-+
-+    case SBTSI_REG_TEMP_HIGH_DEC:
-+        data = get_temp_dec(s->limit_high);
-+        break;
-+
-+    case SBTSI_REG_TEMP_LOW_DEC:
-+        data = get_temp_dec(s->limit_low);
-+        break;
-+
-+    case SBTSI_REG_CONFIG:
-+    case SBTSI_REG_CONFIG_WR:
-+        data = s->config;
-+        break;
-+
-+    case SBTSI_REG_STATUS:
-+        sbtsi_update_alarm(s);
-+        data = s->status;
-+        break;
-+
-+    case SBTSI_REG_ALERT_CONFIG:
-+        data = s->alert_config;
-+        break;
-+
-+    case SBTSI_REG_MAN:
-+        data = SBTSI_MAN_DEFAULT;
-+        break;
-+
-+    case SBTSI_REG_REV:
-+        data = SBTSI_REV_DEFAULT;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: reading from invalid reg: 0x%02x\n",
-+                __func__, s->addr);
-+        break;
-+    }
-+
-+    trace_tmp_sbtsi_read_data(s->addr, data);
-+    return data;
-+}
-+
-+static void sbtsi_write(SBTSIState *s, uint8_t data)
-+{
-+    trace_tmp_sbtsi_write_data(s->addr, data);
-+    switch (s->addr) {
-+    case SBTSI_REG_CONFIG_WR:
-+        s->config = data;
-+        break;
-+
-+    case SBTSI_REG_TEMP_HIGH_INT:
-+        s->limit_high = compute_temp_int(s->limit_high, data);
-+        break;
-+
-+    case SBTSI_REG_TEMP_LOW_INT:
-+        s->limit_low = compute_temp_int(s->limit_low, data);
-+        break;
-+
-+    case SBTSI_REG_TEMP_HIGH_DEC:
-+        s->limit_high = compute_temp_dec(s->limit_high, data);
-+        break;
-+
-+    case SBTSI_REG_TEMP_LOW_DEC:
-+        s->limit_low = compute_temp_dec(s->limit_low, data);
-+        break;
-+
-+    case SBTSI_REG_ALERT_CONFIG:
-+        s->alert_config = data;
-+        break;
-+
-+    case SBTSI_REG_TEMP_INT:
-+    case SBTSI_REG_TEMP_DEC:
-+    case SBTSI_REG_CONFIG:
-+    case SBTSI_REG_STATUS:
-+    case SBTSI_REG_MAN:
-+    case SBTSI_REG_REV:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: writing to read only reg: 0x%02x data: 0x%02x\n",
-+                __func__, s->addr, data);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: writing to invalid reg: 0x%02x data: 0x%02x\n",
-+                __func__, s->addr, data);
-+        break;
-+    }
-+    sbtsi_update_alarm(s);
-+}
-+
-+static int sbtsi_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
-+{
-+    SBTSIState *s = SBTSI(d);
-+
-+    if (len == 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
-+        return -1;
-+    }
-+
-+    s->addr = buf[0];
-+    if (len > 1) {
-+        sbtsi_write(s, buf[1]);
-+        if (len > 2) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: extra data at end\n", __func__);
-+        }
-+    }
-+    return 0;
-+}
-+
-+/* Units are millidegrees. */
-+static void sbtsi_get_temperature(Object *obj, Visitor *v, const char *name,
-+                                  void *opaque, Error **errp)
-+{
-+    SBTSIState *s = SBTSI(obj);
-+    uint32_t temp = s->temperature * SBTSI_TEMP_UNIT_IN_MILLIDEGREE;
-+
-+    visit_type_uint32(v, name, &temp, errp);
-+}
-+
-+/* Units are millidegrees. */
-+static void sbtsi_set_temperature(Object *obj, Visitor *v, const char *name,
-+                                  void *opaque, Error **errp)
-+{
-+    SBTSIState *s = SBTSI(obj);
-+    uint32_t temp;
-+
-+    if (!visit_type_uint32(v, name, &temp, errp)) {
-+        return;
-+    }
-+    if (temp > SBTSI_TEMP_MAX) {
-+        error_setg(errp, "value %" PRIu32 ".%03" PRIu32 " C is out of range",
-+                   temp / 1000, temp % 1000);
-+        return;
-+    }
-+
-+    s->temperature = temp / SBTSI_TEMP_UNIT_IN_MILLIDEGREE;
-+    sbtsi_update_alarm(s);
-+}
-+
-+static int sbtsi_post_load(void *opaque, int version_id)
-+{
-+    SBTSIState *s = opaque;
-+
-+    sbtsi_update_alarm(s);
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_sbtsi = {
-+    .name = "SBTSI",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .post_load = sbtsi_post_load,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(temperature, SBTSIState),
-+        VMSTATE_UINT32(limit_low, SBTSIState),
-+        VMSTATE_UINT32(limit_high, SBTSIState),
-+        VMSTATE_UINT8(config, SBTSIState),
-+        VMSTATE_UINT8(status, SBTSIState),
-+        VMSTATE_UINT8(addr, SBTSIState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void sbtsi_enter_reset(Object *obj, ResetType type)
-+{
-+    SBTSIState *s = SBTSI(obj);
-+
-+    s->config = 0;
-+    s->limit_low = SBTSI_LIMIT_LOW_DEFAULT;
-+    s->limit_high = SBTSI_LIMIT_HIGH_DEFAULT;
-+}
-+
-+static void sbtsi_hold_reset(Object *obj)
-+{
-+    SBTSIState *s = SBTSI(obj);
-+
-+    qemu_irq_lower(s->alarm);
-+}
-+
-+static void sbtsi_init(Object *obj)
-+{
-+    SBTSIState *s = SBTSI(obj);
-+
-+    /* Current temperature in millidegrees. */
-+    object_property_add(obj, "temperature", "uint32",
-+                        sbtsi_get_temperature, sbtsi_set_temperature,
-+                        NULL, NULL);
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->alarm, SBTSI_ALARM_L, 0);
-+}
-+
-+static void sbtsi_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    SMBusDeviceClass *k = SMBUS_DEVICE_CLASS(klass);
-+
-+    dc->desc = "SB-TSI Temperature Sensor";
-+    dc->vmsd = &vmstate_sbtsi;
-+    k->write_data = sbtsi_write_data;
-+    k->receive_byte = sbtsi_read_byte;
-+    rc->phases.enter = sbtsi_enter_reset;
-+    rc->phases.hold = sbtsi_hold_reset;
-+}
-+
-+static const TypeInfo sbtsi_info = {
-+    .name          = TYPE_SBTSI,
-+    .parent        = TYPE_SMBUS_DEVICE,
-+    .instance_size = sizeof(SBTSIState),
-+    .instance_init = sbtsi_init,
-+    .class_init    = sbtsi_class_init,
-+};
-+
-+static void sbtsi_register_types(void)
-+{
-+    type_register_static(&sbtsi_info);
-+}
-+
-+type_init(sbtsi_register_types)
-diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-new file mode 100644
-index 0000000000..21ab3809e2
---- /dev/null
-+++ b/hw/sensor/trace-events
-@@ -0,0 +1,5 @@
-+# See docs/devel/tracing.rst for syntax documentation.
-+
-+# tmp_sbtsi.c
-+tmp_sbtsi_write_data(uint8_t addr, uint8_t value) "SBTSI write addr:0x%02x data: 0x%02x"
-+tmp_sbtsi_read_data(uint8_t addr, uint8_t value) "SBTSI read addr:0x%02x data: 0x%02x"
-diff --git a/hw/sensor/trace.h b/hw/sensor/trace.h
-new file mode 100644
-index 0000000000..e4721560b0
---- /dev/null
-+++ b/hw/sensor/trace.h
-@@ -0,0 +1 @@
-+#include "trace/trace-hw_sensor.h"
-diff --git a/meson.build b/meson.build
-index b3e7ec0e92..e62db1163a 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2138,6 +2138,7 @@ if have_system
-     'hw/rtc',
-     'hw/s390x',
-     'hw/scsi',
-+    'hw/sensor',
-     'hw/sd',
-     'hw/sparc',
-     'hw/sparc64',
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index e22a0792c5..72671e316a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -222,6 +222,7 @@ qos_test_ss.add(
-   'spapr-phb-test.c',
-   'tmp105-test.c',
-   'emc141x-test.c',
-+  'tmp_sbtsi-test.c',
-   'usb-hcd-ohci-test.c',
-   'virtio-test.c',
-   'virtio-blk-test.c',
-diff --git a/tests/qtest/tmp_sbtsi-test.c b/tests/qtest/tmp_sbtsi-test.c
-new file mode 100644
-index 0000000000..7f5fafacc7
---- /dev/null
-+++ b/tests/qtest/tmp_sbtsi-test.c
-@@ -0,0 +1,180 @@
-+/*
-+ * QTests for the SBTSI temperature sensor
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "libqtest-single.h"
-+#include "libqos/qgraph.h"
-+#include "libqos/i2c.h"
-+#include "qapi/qmp/qdict.h"
-+#include "qemu/bitops.h"
-+
-+#define TEST_ID   "sbtsi-test"
-+#define TEST_ADDR (0x4c)
-+
-+/*
-+ * SB-TSI registers only support SMBus byte data access. "_INT" registers are
-+ * the integer part of a temperature value or limit, and "_DEC" registers are
-+ * corresponding decimal parts.
-+ */
-+#define REG_TEMP_INT      0x01 /* RO */
-+#define REG_STATUS        0x02 /* RO */
-+#define REG_CONFIG        0x03 /* RO */
-+#define REG_TEMP_HIGH_INT 0x07 /* RW */
-+#define REG_TEMP_LOW_INT  0x08 /* RW */
-+#define REG_CONFIG_WR     0x09 /* RW */
-+#define REG_TEMP_DEC      0x10 /* RO */
-+#define REG_TEMP_HIGH_DEC 0x13 /* RW */
-+#define REG_TEMP_LOW_DEC  0x14 /* RW */
-+#define REG_ALERT_CONFIG  0xBF /* RW */
-+
-+#define STATUS_HIGH_ALERT BIT(4)
-+#define STATUS_LOW_ALERT  BIT(3)
-+#define CONFIG_ALERT_MASK BIT(7)
-+#define ALARM_EN          BIT(0)
-+
-+/* The temperature stored are in units of 0.125 degrees. */
-+#define TEMP_UNIT_IN_MILLIDEGREE 125
-+#define LIMIT_LOW (10500)
-+#define LIMIT_HIGH (55125)
-+
-+static uint32_t qmp_sbtsi_get_temperature(const char *id)
-+{
-+    QDict *response;
-+    int ret;
-+
-+    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
-+                   "'property': 'temperature' } }", id);
-+    g_assert(qdict_haskey(response, "return"));
-+    ret = (uint32_t)qdict_get_int(response, "return");
-+    qobject_unref(response);
-+    return ret;
-+}
-+
-+static void qmp_sbtsi_set_temperature(const char *id, uint32_t value)
-+{
-+    QDict *response;
-+
-+    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
-+                   "'property': 'temperature', 'value': %d } }", id, value);
-+    g_assert(qdict_haskey(response, "return"));
-+    qobject_unref(response);
-+}
-+
-+/*
-+ * Compute the temperature using the integer and decimal part and return
-+ * millidegrees. The decimal part are only the top 3 bits so we shift it by
-+ * 5 here.
-+ */
-+static uint32_t regs_to_temp(uint8_t integer, uint8_t decimal)
-+{
-+    return ((integer << 3) + (decimal >> 5)) * TEMP_UNIT_IN_MILLIDEGREE;
-+}
-+
-+/*
-+ * Compute the integer and decimal parts of the temperature in millidegrees.
-+ * H/W store the decimal in the top 3 bits so we shift it by 5.
-+ */
-+static void temp_to_regs(uint32_t temp, uint8_t *integer, uint8_t *decimal)
-+{
-+    temp /= TEMP_UNIT_IN_MILLIDEGREE;
-+    *integer = temp >> 3;
-+    *decimal = (temp & 0x7) << 5;
-+}
-+
-+static void tx_rx(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t value;
-+    uint8_t integer, decimal;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    /* Test default values */
-+    value = qmp_sbtsi_get_temperature(TEST_ID);
-+    g_assert_cmpuint(value, ==, 0);
-+
-+    integer = i2c_get8(i2cdev, REG_TEMP_INT);
-+    decimal = i2c_get8(i2cdev, REG_TEMP_DEC);
-+    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, 0);
-+
-+    /* Test setting temperature */
-+    qmp_sbtsi_set_temperature(TEST_ID, 20000);
-+    value = qmp_sbtsi_get_temperature(TEST_ID);
-+    g_assert_cmpuint(value, ==, 20000);
-+
-+    integer = i2c_get8(i2cdev, REG_TEMP_INT);
-+    decimal = i2c_get8(i2cdev, REG_TEMP_DEC);
-+    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, 20000);
-+
-+    /* Set alert mask in config */
-+    i2c_set8(i2cdev, REG_CONFIG_WR, CONFIG_ALERT_MASK);
-+    value = i2c_get8(i2cdev, REG_CONFIG);
-+    g_assert_cmphex(value, ==, CONFIG_ALERT_MASK);
-+    /* Enable alarm_en */
-+    i2c_set8(i2cdev, REG_ALERT_CONFIG, ALARM_EN);
-+    value = i2c_get8(i2cdev, REG_ALERT_CONFIG);
-+    g_assert_cmphex(value, ==, ALARM_EN);
-+
-+    /* Test setting limits */
-+    /* Limit low = 10.500 */
-+    temp_to_regs(LIMIT_LOW, &integer, &decimal);
-+    i2c_set8(i2cdev, REG_TEMP_LOW_INT, integer);
-+    i2c_set8(i2cdev, REG_TEMP_LOW_DEC, decimal);
-+    integer = i2c_get8(i2cdev, REG_TEMP_LOW_INT);
-+    decimal = i2c_get8(i2cdev, REG_TEMP_LOW_DEC);
-+    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, LIMIT_LOW);
-+    /* Limit high = 55.125 */
-+    temp_to_regs(LIMIT_HIGH, &integer, &decimal);
-+    i2c_set8(i2cdev, REG_TEMP_HIGH_INT, integer);
-+    i2c_set8(i2cdev, REG_TEMP_HIGH_DEC, decimal);
-+    integer = i2c_get8(i2cdev, REG_TEMP_HIGH_INT);
-+    decimal = i2c_get8(i2cdev, REG_TEMP_HIGH_DEC);
-+    g_assert_cmpuint(regs_to_temp(integer, decimal), ==, LIMIT_HIGH);
-+    /* No alert is generated. */
-+    value = i2c_get8(i2cdev, REG_STATUS);
-+    g_assert_cmphex(value, ==, 0);
-+
-+    /* Test alert for low temperature */
-+    qmp_sbtsi_set_temperature(TEST_ID, LIMIT_LOW);
-+    value = i2c_get8(i2cdev, REG_STATUS);
-+    g_assert_cmphex(value, ==, STATUS_LOW_ALERT);
-+
-+    /* Test alert for high temperature */
-+    qmp_sbtsi_set_temperature(TEST_ID, LIMIT_HIGH);
-+    value = i2c_get8(i2cdev, REG_STATUS);
-+    g_assert_cmphex(value, ==, STATUS_HIGH_ALERT);
-+
-+    /* Disable alarm_en */
-+    i2c_set8(i2cdev, REG_ALERT_CONFIG, 0);
-+    value = i2c_get8(i2cdev, REG_ALERT_CONFIG);
-+    g_assert_cmphex(value, ==, 0);
-+    /* No alert when alarm_en is false. */
-+    value = i2c_get8(i2cdev, REG_STATUS);
-+    g_assert_cmphex(value, ==, 0);
-+}
-+
-+static void sbtsi_register_nodes(void)
-+{
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "id=" TEST_ID ",address=0x4c"
-+    };
-+    add_qi2c_address(&opts, &(QI2CAddress) { TEST_ADDR });
-+
-+    qos_node_create_driver("sbtsi", i2c_device_create);
-+    qos_node_consumes("sbtsi", "i2c-bus", &opts);
-+
-+    qos_add_test("tx-rx", "sbtsi", tx_rx, NULL);
-+}
-+libqos_init(sbtsi_register_nodes);
--- 
-2.33.0.rc1.237.g0d66db33f3-goog
+On 8/12/21 11:33 AM, Peter Maydell wrote:
+> Instead of having the NVIC device provide a single sysbus memory
+> region covering the whole of the "System PPB" space, which implements
+> the default behaviour for unimplemented ranges and provides the NS
+> alias window to the sysregs as well as the main sysreg MR, move this
+> handling to the container armv7m device.  The NVIC now provides a
+> single memory region which just implements the system registers.
+> This consolidates all the handling of "map various devices in the
+> PPB" into the armv7m container where it belongs.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   include/hw/arm/armv7m.h       |   4 +
+>   include/hw/intc/armv7m_nvic.h |   3 -
+>   hw/arm/armv7m.c               | 100 ++++++++++++++++++++++-
+>   hw/intc/armv7m_nvic.c         | 145 +--------------------------------=
+-
+>   4 files changed, 107 insertions(+), 145 deletions(-)
+>=20
+> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+> index 360c35c5fb2..fe8b248a6c6 100644
+> --- a/include/hw/arm/armv7m.h
+> +++ b/include/hw/arm/armv7m.h
+> @@ -77,6 +77,10 @@ struct ARMv7MState {
+>        * NS systick device if appropriate.
+>        */
+>       MemoryRegion systick_ns_mem;
+> +    /* Ditto, for the sysregs region provided by the NVIC */
+> +    MemoryRegion sysreg_ns_mem;
+> +    /* MR providing default PPB behaviour */
+> +    MemoryRegion defaultmem;
+>  =20
+>       /* Properties */
+>       char *cpu_type;
+> diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvi=
+c.h
+> index 6a6a99090c7..0180c7b0ca1 100644
+> --- a/include/hw/intc/armv7m_nvic.h
+> +++ b/include/hw/intc/armv7m_nvic.h
+> @@ -80,9 +80,6 @@ struct NVICState {
+>       int vectpending_prio; /* group prio of the exeception in vectpend=
+ing */
+>  =20
+>       MemoryRegion sysregmem;
+> -    MemoryRegion sysreg_ns_mem;
+> -    MemoryRegion container;
+> -    MemoryRegion defaultmem;
+>  =20
+>       uint32_t num_irq;
+>       qemu_irq excpout;
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index 364ac069702..7e7fb7a3ad3 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -18,6 +18,7 @@
+>   #include "sysemu/reset.h"
+>   #include "qemu/error-report.h"
+>   #include "qemu/module.h"
+> +#include "qemu/log.h"
+>   #include "target/arm/idau.h"
+>  =20
+>   /* Bitbanded IO.  Each word corresponds to a single bit.  */
+> @@ -203,6 +204,43 @@ static const MemoryRegionOps v7m_systick_ops =3D {=
 
+>       .endianness =3D DEVICE_NATIVE_ENDIAN,
+>   };
+>  =20
+> +/*
+> + * Unassigned portions of the PPB space are RAZ/WI for privileged
+> + * accesses, and fault for non-privileged accesses.
+> + */
+> +static MemTxResult ppb_default_read(void *opaque, hwaddr addr,
+> +                                    uint64_t *data, unsigned size,
+> +                                    MemTxAttrs attrs)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "Read of unassigned area of PPB: offset 0=
+x%x\n",
+> +                  (uint32_t)addr);
+> +    if (attrs.user) {
+> +        return MEMTX_ERROR;
+> +    }
+> +    *data =3D 0;
+> +    return MEMTX_OK;
+> +}
+> +
+> +static MemTxResult ppb_default_write(void *opaque, hwaddr addr,
+> +                                     uint64_t value, unsigned size,
+> +                                     MemTxAttrs attrs)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "Write of unassigned area of PPB: offset =
+0x%x\n",
+> +                  (uint32_t)addr);
+> +    if (attrs.user) {
+> +        return MEMTX_ERROR;
+> +    }
+> +    return MEMTX_OK;
+> +}
+> +
+> +static const MemoryRegionOps ppb_default_ops =3D {
+> +    .read_with_attrs =3D ppb_default_read,
+> +    .write_with_attrs =3D ppb_default_write,
+> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> +    .valid.min_access_size =3D 1,
+> +    .valid.max_access_size =3D 8,
+> +};
+> +
+>   static void armv7m_instance_init(Object *obj)
+>   {
+>       ARMv7MState *s =3D ARMV7M(obj);
+> @@ -309,13 +347,73 @@ static void armv7m_realize(DeviceState *dev, Erro=
+r **errp)
+>       qdev_pass_gpios(DEVICE(&s->nvic), dev, "SYSRESETREQ");
+>       qdev_pass_gpios(DEVICE(&s->nvic), dev, "NMI");
+>  =20
+> +    /*
+> +     * We map various devices into the continer MR at their architecte=
+d
+> +     * addresses. In particular, we map everything corresponding to th=
+e
+> +     * "System PPB" space. This is the range from 0xe0000000 to 0xe00f=
+ffff
+> +     * and includes the NVIC, the System Control Space (system registe=
+rs),
+> +     * the systick timer, and for CPUs with the Security extension an =
+NS
+> +     * banked version of all of these.
+
+I believe there is a typo: "continer". Is it "container"?
+
+> +     *
+> +     * The default behaviour for unimplemented registers/ranges
+> +     * (for instance the Data Watchpoint and Trace unit at 0xe0001000)=
+
+> +     * is to RAZ/WI for privileged access and BusFault for non-privile=
+ged
+> +     * access.
+> +     *
+> +     * The NVIC and System Control Space (SCS) starts at 0xe000e000
+> +     * and looks like this:
+> +     *  0x004 - ICTR
+> +     *  0x010 - 0xff - systick
+> +     *  0x100..0x7ec - NVIC
+> +     *  0x7f0..0xcff - Reserved
+> +     *  0xd00..0xd3c - SCS registers
+> +     *  0xd40..0xeff - Reserved or Not implemented
+> +     *  0xf00 - STIR
+> +     *
+> +     * Some registers within this space are banked between security st=
+ates.
+> +     * In v8M there is a second range 0xe002e000..0xe002efff which is =
+the
+> +     * NonSecure alias SCS; secure accesses to this behave like NS acc=
+esses
+> +     * to the main SCS range, and non-secure accesses (including when
+> +     * the security extension is not implemented) are RAZ/WI.
+> +     * Note that both the main SCS range and the alias range are defin=
+ed
+> +     * to be exempt from memory attribution (R_BLJT) and so the memory=
+
+> +     * transaction attribute always matches the current CPU security
+> +     * state (attrs.secure =3D=3D env->v7m.secure). In the v7m_sysreg_=
+ns_ops
+> +     * wrappers we change attrs.secure to indicate the NS access; so
+> +     * generally code determining which banked register to use should
+> +     * use attrs.secure; code determining actual behaviour of the syst=
+em
+> +     * should use env->v7m.secure.
+> +     *
+> +     * Within the PPB space, some MRs overlap, and the priority
+> +     * of overlapping regions is:
+> +     *  - default region (for RAZ/WI and BusFault) : -1
+> +     *  - system register regions (provided by the NVIC) : 0
+> +     *  - systick : 1
+> +     * This is because the systick device is a small block of register=
+s
+> +     * in the middle of the other system control registers.
+> +     */
+> +
+> +    memory_region_init_io(&s->defaultmem, OBJECT(s), &ppb_default_ops,=
+ s,
+> +                          "nvic-default", 0x100000);
+> +    memory_region_add_subregion_overlap(&s->container, 0xe0000000,
+> +                                        &s->defaultmem, -1);
+> +
+>       /* Wire the NVIC up to the CPU */
+>       sbd =3D SYS_BUS_DEVICE(&s->nvic);
+>       sysbus_connect_irq(sbd, 0,
+>                          qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ))=
+;
+>  =20
+> -    memory_region_add_subregion(&s->container, 0xe0000000,
+> +    memory_region_add_subregion(&s->container, 0xe000e000,
+>                                   sysbus_mmio_get_region(sbd, 0));
+> +    if (arm_feature(&s->cpu->env, ARM_FEATURE_V8)) {
+> +        /* Create the NS alias region for the NVIC sysregs */
+> +        memory_region_init_io(&s->sysreg_ns_mem, OBJECT(s),
+> +                              &v7m_sysreg_ns_ops,
+> +                              sysbus_mmio_get_region(sbd, 0),
+> +                              "nvic_sysregs_ns", 0x1000);
+> +        memory_region_add_subregion(&s->container, 0xe002e000,
+> +                                    &s->sysreg_ns_mem);
+> +    }
+>  =20
+>       /* Create and map the systick devices */
+>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), errp))=
+ {
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 2b3e79a3da9..13df002ce4d 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -2470,90 +2470,6 @@ static const MemoryRegionOps nvic_sysreg_ops =3D=
+ {
+>       .endianness =3D DEVICE_NATIVE_ENDIAN,
+>   };
+>  =20
+> -static MemTxResult nvic_sysreg_ns_write(void *opaque, hwaddr addr,
+> -                                        uint64_t value, unsigned size,=
+
+> -                                        MemTxAttrs attrs)
+> -{
+> -    MemoryRegion *mr =3D opaque;
+> -
+> -    if (attrs.secure) {
+> -        /* S accesses to the alias act like NS accesses to the real re=
+gion */
+> -        attrs.secure =3D 0;
+> -        return memory_region_dispatch_write(mr, addr, value,
+> -                                            size_memop(size) | MO_TE, =
+attrs);
+> -    } else {
+> -        /* NS attrs are RAZ/WI for privileged, and BusFault for user *=
+/
+> -        if (attrs.user) {
+> -            return MEMTX_ERROR;
+> -        }
+> -        return MEMTX_OK;
+> -    }
+> -}
+> -
+> -static MemTxResult nvic_sysreg_ns_read(void *opaque, hwaddr addr,
+> -                                       uint64_t *data, unsigned size,
+> -                                       MemTxAttrs attrs)
+> -{
+> -    MemoryRegion *mr =3D opaque;
+> -
+> -    if (attrs.secure) {
+> -        /* S accesses to the alias act like NS accesses to the real re=
+gion */
+> -        attrs.secure =3D 0;
+> -        return memory_region_dispatch_read(mr, addr, data,
+> -                                           size_memop(size) | MO_TE, a=
+ttrs);
+> -    } else {
+> -        /* NS attrs are RAZ/WI for privileged, and BusFault for user *=
+/
+> -        if (attrs.user) {
+> -            return MEMTX_ERROR;
+> -        }
+> -        *data =3D 0;
+> -        return MEMTX_OK;
+> -    }
+> -}
+> -
+> -static const MemoryRegionOps nvic_sysreg_ns_ops =3D {
+> -    .read_with_attrs =3D nvic_sysreg_ns_read,
+> -    .write_with_attrs =3D nvic_sysreg_ns_write,
+> -    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> -};
+> -
+> -/*
+> - * Unassigned portions of the PPB space are RAZ/WI for privileged
+> - * accesses, and fault for non-privileged accesses.
+> - */
+> -static MemTxResult ppb_default_read(void *opaque, hwaddr addr,
+> -                                    uint64_t *data, unsigned size,
+> -                                    MemTxAttrs attrs)
+> -{
+> -    qemu_log_mask(LOG_UNIMP, "Read of unassigned area of PPB: offset 0=
+x%x\n",
+> -                  (uint32_t)addr);
+> -    if (attrs.user) {
+> -        return MEMTX_ERROR;
+> -    }
+> -    *data =3D 0;
+> -    return MEMTX_OK;
+> -}
+> -
+> -static MemTxResult ppb_default_write(void *opaque, hwaddr addr,
+> -                                     uint64_t value, unsigned size,
+> -                                     MemTxAttrs attrs)
+> -{
+> -    qemu_log_mask(LOG_UNIMP, "Write of unassigned area of PPB: offset =
+0x%x\n",
+> -                  (uint32_t)addr);
+> -    if (attrs.user) {
+> -        return MEMTX_ERROR;
+> -    }
+> -    return MEMTX_OK;
+> -}
+> -
+> -static const MemoryRegionOps ppb_default_ops =3D {
+> -    .read_with_attrs =3D ppb_default_read,
+> -    .write_with_attrs =3D ppb_default_write,
+> -    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> -    .valid.min_access_size =3D 1,
+> -    .valid.max_access_size =3D 8,
+> -};
+> -
+>   static int nvic_post_load(void *opaque, int version_id)
+>   {
+>       NVICState *s =3D opaque;
+> @@ -2770,66 +2686,13 @@ static void armv7m_nvic_realize(DeviceState *de=
+v, Error **errp)
+>       s->num_prio_bits =3D arm_feature(&s->cpu->env, ARM_FEATURE_V7) ? =
+8 : 2;
+>  =20
+>       /*
+> -     * This device provides a single sysbus memory region which
+> -     * represents the whole of the "System PPB" space. This is the
+> -     * range from 0xe0000000 to 0xe00fffff and includes the NVIC,
+> -     * the System Control Space (system registers), the systick timer,=
+
+> -     * and for CPUs with the Security extension an NS banked version
+> -     * of all of these.
+> -     *
+> -     * The default behaviour for unimplemented registers/ranges
+> -     * (for instance the Data Watchpoint and Trace unit at 0xe0001000)=
+
+> -     * is to RAZ/WI for privileged access and BusFault for non-privile=
+ged
+> -     * access.
+> -     *
+> -     * The NVIC and System Control Space (SCS) starts at 0xe000e000
+> -     * and looks like this:
+> -     *  0x004 - ICTR
+> -     *  0x010 - 0xff - systick
+> -     *  0x100..0x7ec - NVIC
+> -     *  0x7f0..0xcff - Reserved
+> -     *  0xd00..0xd3c - SCS registers
+> -     *  0xd40..0xeff - Reserved or Not implemented
+> -     *  0xf00 - STIR
+> -     *
+> -     * Some registers within this space are banked between security st=
+ates.
+> -     * In v8M there is a second range 0xe002e000..0xe002efff which is =
+the
+> -     * NonSecure alias SCS; secure accesses to this behave like NS acc=
+esses
+> -     * to the main SCS range, and non-secure accesses (including when
+> -     * the security extension is not implemented) are RAZ/WI.
+> -     * Note that both the main SCS range and the alias range are defin=
+ed
+> -     * to be exempt from memory attribution (R_BLJT) and so the memory=
+
+> -     * transaction attribute always matches the current CPU security
+> -     * state (attrs.secure =3D=3D env->v7m.secure). In the nvic_sysreg=
+_ns_ops
+> -     * wrappers we change attrs.secure to indicate the NS access; so
+> -     * generally code determining which banked register to use should
+> -     * use attrs.secure; code determining actual behaviour of the syst=
+em
+> -     * should use env->v7m.secure.
+> -     *
+> -     * The container covers the whole PPB space. Within it the priorit=
+y
+> -     * of overlapping regions is:
+> -     *  - default region (for RAZ/WI and BusFault) : -1
+> -     *  - system register regions : 0
+> -     *  - systick : 1
+> -     * This is because the systick device is a small block of register=
+s
+> -     * in the middle of the other system control registers.
+> +     * This device provides a single memory region which covers the
+> +     * sysreg/NVIC registers from 0xE000E000 .. 0xE000EFFF, with the
+> +     * exception of the systick timer registers 0xE000E010 .. 0xE000E0=
+FF.
+>        */
+> -    memory_region_init(&s->container, OBJECT(s), "nvic", 0x100000);
+> -    memory_region_init_io(&s->defaultmem, OBJECT(s), &ppb_default_ops,=
+ s,
+> -                          "nvic-default", 0x100000);
+> -    memory_region_add_subregion_overlap(&s->container, 0, &s->defaultm=
+em, -1);
+>       memory_region_init_io(&s->sysregmem, OBJECT(s), &nvic_sysreg_ops,=
+ s,
+>                             "nvic_sysregs", 0x1000);
+> -    memory_region_add_subregion(&s->container, 0xe000, &s->sysregmem);=
+
+> -
+> -    if (arm_feature(&s->cpu->env, ARM_FEATURE_V8)) {
+> -        memory_region_init_io(&s->sysreg_ns_mem, OBJECT(s),
+> -                              &nvic_sysreg_ns_ops, &s->sysregmem,
+> -                              "nvic_sysregs_ns", 0x1000);
+> -        memory_region_add_subregion(&s->container, 0x2e000, &s->sysreg=
+_ns_mem);
+> -    }
+> -
+> -    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->sysregmem);
+>   }
+>  =20
+>   static void armv7m_nvic_instance_init(Object *obj)
+>=20
+
+My review is week because I am new to this codebase.
+
+Reviewed-by: Alexandre Iooss <erdnaxe@crans.org>
+
+Thanks,
+-- Alexandre
+
+
+--PPr2rwnIUGzGLG5LgkFuDknIYRRBJ9tU1--
+
+--nzmiXVFpqSdCGmI2AK2l9vzVqT9ulCb6r
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmEVDIMFAwAAAAAACgkQbHknjz/NzAKm
+7A//e2MD0jAYnVM4II+KtwfrivjrtEpokkaGjkt2Dw5R6EQ7KYh134+5W9Rh6NQIkNUF1NsYcPa+
+acDDtQi127CIG0fWWwIBtN+l4NuWzuHpr2MzhDbz0fzUp+hZ9iK3QP0FzFfOJ+ZPDLznrOR/TRR9
+H7bIh88aHHfQcAGETtmk3Cz9xe1+tHvm/gRlAZuROtsnt27KF4CZpOGFY1VFAm0IJfez0xwkyDFv
+qAo7EqH613EyJ4fRsjpEx5rD+MHQjLpJmJFhHDO5Mdlz6+0sHWGdcmF7yshhtVltAmL8r9FQWTx9
+xeL8nNT0TKxH24nV053kn7773P4VJSFHiPAYF+5ehUemX6JFzp4y861TRLu5GnlyCWcEO5vUVT4L
+Yb7YzvB06hNS9n2yKrRFpFctcjueJ0e5nSJ3F42JzrS0svKElqRSQH5aQcmhN5ATnG8NFvLnjK7p
+P2XL5cnpolyMaDKyIAGYKE8kqU46DThc4MwA1Mgk4ToPp555+PEnpYN8NrsEoc/pjE8LdX2uP052
+J0DxxHimmdZf8jqjaKIboUMIn9Cv+oLQxduATj2EV0tBUB47pSHAKxm/GFpw9vsYfho+zOaJHIZY
+gnAWwpMMu11nMUqJnjy1JzqWvzGFM9zGj/QvocGRz+KNbNQYyRiRorgSz7k6Es5jetjonpWK7Lp9
+a8Y=
+=MAIq
+-----END PGP SIGNATURE-----
+
+--nzmiXVFpqSdCGmI2AK2l9vzVqT9ulCb6r--

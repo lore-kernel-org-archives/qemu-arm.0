@@ -1,94 +1,105 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp2078854lff;
-        Wed, 11 Aug 2021 01:09:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVRsoDqRY0v7wmBFF9u8DOQmD+hNIKZNypH3YvVxfCikKll9wvPDcud40pGmQ4I2e3mnRI
-X-Received: by 2002:a02:9a02:: with SMTP id b2mr3813767jal.89.1628669397991;
-        Wed, 11 Aug 2021 01:09:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628669397; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp258845lff;
+        Thu, 12 Aug 2021 04:12:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy1fAjGd3wAT8WwWnOxQcjopCAqbiPA0WUA4w/ceoHt1Z3sAQZiVav++GIsACKzTxkFIpoQ
+X-Received: by 2002:a67:f550:: with SMTP id z16mr2106966vsn.23.1628766720198;
+        Thu, 12 Aug 2021 04:12:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628766720; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdHKZyFbCsYpDJbo80Kk8dOhZJl4xCRf7YjZphoX05auuNiLO+y+cSfBvyOa7Iuf8C
-         DsnFHPK2mRv128B8DDhZoZM33mhiOU4i7/0zCwkEU+p6Vc94gfNn8mTZdvpq6jCjVwtS
-         B0+1o8e99UA6X84B4rzJ/2xzamiwCfDSF50OY4jrSWQvlXW1JnYyatFbmUoxBBoWu7GU
-         3T6Bv49b4Q6FkTJizXmuz0leQFy5eEko5moCsPThSm68iwiwWeEcxh3I6/xjhYTvUYeB
-         j49RFvYzO7kXWh8xPLFasGqSZ4bN5CZQXQI0uIJwCEJGxNuJPksMIidbJnz7AAruPxh8
-         D4Gw==
+        b=xgDREs/h2Q998q9nFTSR62KcP9SmA50LUAw08mcfKnTMAuODFc0hhdcGxtS+WamYH2
+         suKuG3yEX3VVfz8++VCpctpbom44g13ZPPTT/gS6bJLyVMcdlB/So8xsP+zuHJAYdSDC
+         OyZwEnWZbgLCZgs15Ug+sTGcVV45OTLuusSl3HtH/onTFB+rkO7atXKOd0Fjlg+JX/Xu
+         oGy4X5Y0uoS+QhChbnLv4U8STTFpWI4oiyjeu6NFcXgSiOqsUOngWWX8+NrgdWW5+cQD
+         0B5fwxKBm7FrRzyjt/BVz58kLRxIF3NwXHjf7byZqLhMsz47fD7eM1PkROyIQEoyodco
+         Z4bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=gwEJRb7cmFKaoE5qiTXjarbkyGA/T1dcMSFEZwdbHQE=;
-        b=ImAV/p756QpJjDlWaUn9YtuLNbzMMX6SRkBAm+xV7w1TQHhENalM/N5QX1JdG7mfOF
-         S4dVL/yPQpZ36d/Dewa9i0TgtmRXZ4Xx6KS+44LLjnK531tDeM6UuXr2homs5R915uue
-         baxUDT9rdHPEq+sb1li5Qxtx2F4Dz8jJzRL6p6PfTYLROixgvxIAy3Vy8WvyLlfyaikp
-         8BkyBF08+cqVdPkUgwRYlksh06AkLcufa1w1epqIC2IIl7ZdTxI6nwL8ksPBie+dwvtL
-         187kUuXgOEoteyq1LmcxstztvuqqhOXFDHZ2SyNtglEp76VSBVM43x7dUHW7013nLiYU
-         +0xw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=BnMZ5/l7Xa/tJLNjzFQ5kQZ8kLnP3BLkYUUjoj+0CGc=;
+        b=AMjtXNVb2fPFr5CdxNmFxM6poxcw1C5uBb5n21pfMUHQoRIhuSPJVKKjra8CH+U0i8
+         V8z9I95Mw/Sb1950sS4Fqck1NEU3iWQnQ8le+KgvRNwTzQZzKMYFofKDE3M2QUZpDuff
+         TatkqGdkMHsFCjbp0SnBozg0eV2vcnM+wk66MbvOYVrekwCS7oRy9vC8625uOkuwaZmu
+         h33hIWfpVI4CPVIRSl0tIAqUHvaAVJTCqDXd4lPIkRbD9m7dVmxUh45MsEZ6CWQT2CSa
+         aef3JsUPJ4xUddx6ZtwfGtX1+pPlFcR/CNixgioOjrurXv1topUuVhRZ9cjf/wWPVPw1
+         Bp9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=ps2ertKX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l2si26147642jak.45.2021.08.11.01.09.57
+        by mx.google.com with ESMTPS id b13si709795vsr.65.2021.08.12.04.11.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Aug 2021 01:09:57 -0700 (PDT)
+        Thu, 12 Aug 2021 04:12:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48880 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ps2ertKX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51864 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mDjJF-0003O9-9Q
-	for alex.bennee@linaro.org; Wed, 11 Aug 2021 04:09:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58354)
+	id 1mE8cx-0007fj-GK
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 07:11:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mDjJ6-0003Ni-IZ; Wed, 11 Aug 2021 04:09:48 -0400
-Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:35241)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mDjJ4-00024J-5M; Wed, 11 Aug 2021 04:09:48 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.124])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id D63CC13D943;
- Wed, 11 Aug 2021 08:09:41 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Wed, 11 Aug
- 2021 10:09:40 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G003838a321f-8fe8-42da-b5bf-e23922552251,
- F37E8DF54766F004E000311A84F7FEB06F086262) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.89.73.13
-Subject: Re: [PATCH 08/10] aspeed: Emulate the AST2600A3
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
- <peter.maydell@linaro.org>
-References: <20210809131556.686260-1-clg@kaod.org>
- <20210809131556.686260-9-clg@kaod.org>
- <d41fddce-4c87-5356-faf0-762f9f4fd32b@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <d62848e5-910c-0d81-fcf9-3a6ebd9794db@kaod.org>
-Date: Wed, 11 Aug 2021 10:09:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mE8ba-0006l9-JC
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 07:10:34 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:38558)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mE8bY-0006J4-RY
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 07:10:34 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id z20so10804667ejf.5
+ for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 04:10:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BnMZ5/l7Xa/tJLNjzFQ5kQZ8kLnP3BLkYUUjoj+0CGc=;
+ b=ps2ertKXjz+RMOrkCBHhS6x4p+M8UHT6xvZfpm4VntieGrVuGZmGEEcGZXeMvtQzFV
+ fH7eWdc/ZQZyNXkMzAsfUXp54Wczl8GJSq19b8JAGAzJ+wfYWvPNwKXyidJ9marEyikI
+ VwgihyaGhlw7XMrDgtc76TUfnFJc3bfVU/OFmLT21gXgpknJOi8lJqoKaXdENBNcA9re
+ 3fxZ8iNIlCPEszcdcrZ8CZe9MsPB7c5r3AaPtg0UHQ32kgtpw0jJzsOZOI8aNXUm5Ipz
+ hrpnlcmw77xWHYehckalRI8RPhVxl5mm/CXhKx+QG6BWQ39YaxLb1uZYtSinuLkppSmO
+ XhFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BnMZ5/l7Xa/tJLNjzFQ5kQZ8kLnP3BLkYUUjoj+0CGc=;
+ b=lmlRIBl8M13nT1CzwokvR2zTmcWlxq43qM3tVCd6dJ9TDVTFX4Sb9Rh4agep0nFAgC
+ Uw6Cdp+7n3QPvoDUPXGFdmjm7aluMK6z2KEbx/s/BPItSzDCFt9GzTnkuMDJ2fjT+J9u
+ q+03hwkA8ssJwNk966Ta0ffXN+dVjOEyd9LQJnIsFzsO/eerdXTGf9S4Zdhk/aSIWYAx
+ jxFOGj5limQzsTHaFg5vm3pD03PRCmGwg40OQyPZLxlthmH2RXx02ICAycr+t3vW1ejH
+ hnwA8exL8bSTNOGRa56XxCyR03Z8FIudjJxWGTzrRjr52xdVH+wfRfrvaS8dmsxIzpGm
+ pSow==
+X-Gm-Message-State: AOAM532k2W9Pxq09Or66Q/NTaFMwLK1+cXDNaZ9343SpHFi/oCHcgrXc
+ I0dcXmzYzHjKqz2AJXTzWxZVsHwmZB5+V9+gepVyI6jWd4A=
+X-Received: by 2002:a17:906:a108:: with SMTP id
+ t8mr3059428ejy.407.1628766630791; 
+ Thu, 12 Aug 2021 04:10:30 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <d41fddce-4c87-5356-faf0-762f9f4fd32b@amsat.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: b5974f8b-8a51-458c-9ce1-afa31d1bcf5b
-X-Ovh-Tracer-Id: 9639110579892620070
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrkeduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout3.3005.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-2-peter.maydell@linaro.org>
+ <d712c8dc-1976-c197-2ecb-75cf35ac1f29@crans.org>
+In-Reply-To: <d712c8dc-1976-c197-2ecb-75cf35ac1f29@crans.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Aug 2021 12:09:45 +0100
+Message-ID: <CAFEAcA_QHYhFnNknzEe_jY=3tvQyYZg6ozG2f7270rg9yFrfFw@mail.gmail.com>
+Subject: Re: [PATCH for-6.2 01/25] arm: Move M-profile RAS register block into
+ its own device
+To: Alexandre IOOSS <erdnaxe@crans.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,127 +112,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DpM/Ev9DbPR6
+X-TUID: XgDBN6mtZRe7
 
-On 8/9/21 5:55 PM, Philippe Mathieu-Daudé wrote:
-> On 8/9/21 3:15 PM, Cédric Le Goater wrote:
->> From: Joel Stanley <joel@jms.id.au>
->>
->> This is the latest revision of the ASPEED 2600 SoC. As there is no
->> need to model multiple revisions of the same SoC for the moment,
->> update the SCU AST2600 to model the A3 revision instead of the A1 and
->> adapt the AST2600 SoC and machines.
->>
->> Reset values are taken from v8 of the datasheet.
->>
->> Signed-off-by: Joel Stanley <joel@jms.id.au>
->> [ clg: - Introduced an Aspeed "ast2600-a3" SoC class
->>        - Commit log update ]
->> Message-Id: <20210407171637.777743-21-clg@kaod.org>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> Message-Id: <20210629142336.750058-3-clg@kaod.org>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>  include/hw/misc/aspeed_scu.h |  2 ++
->>  hw/arm/aspeed.c              |  6 +++---
->>  hw/arm/aspeed_ast2600.c      |  6 +++---
->>  hw/misc/aspeed_scu.c         | 36 +++++++++++++++++++++++++++++-------
->>  4 files changed, 37 insertions(+), 13 deletions(-)
-> 
->> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
->> index 40a38ebd8549..05edebedeb46 100644
->> --- a/hw/misc/aspeed_scu.c
->> +++ b/hw/misc/aspeed_scu.c
->> @@ -101,14 +101,24 @@
->>  #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
->>  #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
->>  #define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
->> +#define AST2600_DEBUG_CTRL        TO_REG(0xC8)
->> +#define AST2600_DEBUG_CTRL2       TO_REG(0xD8)
->>  #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
->>  #define AST2600_HPLL_PARAM        TO_REG(0x200)
->>  #define AST2600_HPLL_EXT          TO_REG(0x204)
->> +#define AST2600_APLL_PARAM        TO_REG(0x210)
->> +#define AST2600_APLL_EXT          TO_REG(0x214)
->> +#define AST2600_MPLL_PARAM        TO_REG(0x220)
->>  #define AST2600_MPLL_EXT          TO_REG(0x224)
->> +#define AST2600_EPLL_PARAM        TO_REG(0x240)
->>  #define AST2600_EPLL_EXT          TO_REG(0x244)
->> +#define AST2600_DPLL_PARAM        TO_REG(0x260)
->> +#define AST2600_DPLL_EXT          TO_REG(0x264)
->>  #define AST2600_CLK_SEL           TO_REG(0x300)
->>  #define AST2600_CLK_SEL2          TO_REG(0x304)
->> -#define AST2600_CLK_SEL3          TO_REG(0x310)
->> +#define AST2600_CLK_SEL3          TO_REG(0x308)
-> 
-> Is it a bugfix? Otherwise this is annoying.
+On Thu, 12 Aug 2021 at 12:08, Alexandre IOOSS <erdnaxe@crans.org> wrote:
+>
+>
+>
+> On 8/12/21 11:33 AM, Peter Maydell wrote:
+> > Currently we implement the RAS register block within the NVIC device.
+> > It isn't really very tightly coupled with the NVIC proper, so instead
+> > move it out into a sysbus device of its own and have the top level
+> > ARMv7M container create it and map it into memory at the right
+> > address.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >   include/hw/arm/armv7m.h       |  2 +
+> >   include/hw/intc/armv7m_nvic.h |  1 -
+> >   include/hw/misc/armv7m_ras.h  | 37 ++++++++++++++
+> >   hw/arm/armv7m.c               | 12 +++++
+> >   hw/intc/armv7m_nvic.c         | 56 ---------------------
+> >   hw/misc/armv7m_ras.c          | 93 +++++++++++++++++++++++++++++++++++
+> >   MAINTAINERS                   |  2 +
+> >   hw/misc/meson.build           |  2 +
+> >   8 files changed, 148 insertions(+), 57 deletions(-)
+> >   create mode 100644 include/hw/misc/armv7m_ras.h
+> >   create mode 100644 hw/misc/armv7m_ras.c
+> >
+> > diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+> > index bc6733c5184..4cae0d7eeaa 100644
+> > --- a/include/hw/arm/armv7m.h
+> > +++ b/include/hw/arm/armv7m.h
+> > @@ -12,6 +12,7 @@
+> >
+> >   #include "hw/sysbus.h"
+> >   #include "hw/intc/armv7m_nvic.h"
+> > +#include "hw/misc/armv7m_ras.h"
+> >   #include "target/arm/idau.h"
+> >   #include "qom/object.h"
+> >
+> > @@ -58,6 +59,7 @@ struct ARMv7MState {
+> >       NVICState nvic;
+> >       BitBandState bitband[ARMV7M_NUM_BITBANDS];
+> >       ARMCPU *cpu;
+> > +    ARMv7MRAS ras;
+> >
+> >       /* MemoryRegion we pass to the CPU, with our devices layered on
+> >        * top of the ones the board provides in board_memory.
+> > diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
+> > index 39c71e15936..33b6d8810c7 100644
+> > --- a/include/hw/intc/armv7m_nvic.h
+> > +++ b/include/hw/intc/armv7m_nvic.h
+> > @@ -83,7 +83,6 @@ struct NVICState {
+> >       MemoryRegion sysreg_ns_mem;
+> >       MemoryRegion systickmem;
+> >       MemoryRegion systick_ns_mem;
+> > -    MemoryRegion ras_mem;
+> >       MemoryRegion container;
+> >       MemoryRegion defaultmem;
+> >
+> > diff --git a/include/hw/misc/armv7m_ras.h b/include/hw/misc/armv7m_ras.h
+> > new file mode 100644
+> > index 00000000000..f8773e65b14
+> > --- /dev/null
+> > +++ b/include/hw/misc/armv7m_ras.h
+> > @@ -0,0 +1,37 @@
+> > +/*
+> > + * Arm M-profile RAS block
+> > + *
+> > + * Copyright (c) 2021 Linaro Limited
+> > + *
+> > + *  This program is free software; you can redistribute it and/or modify
+> > + *  it under the terms of the GNU General Public License version 2 or
+> > + *  (at your option) any later version.
+> > + */
+>
+> Maybe it would be a good idea here to change to "Arm M-profile RAS
+> (Reliability, Availability, and Serviceability) block" to define the
+> acronym at least once in the device code?
 
-This is a bug in the model. These registers have the same layout
-on the A1.
+Yeah, we could perhaps put a comment in there somewhere.
+Though really you need to look in the spec to understand
+what the block is doing, at which point you'll find out what
+the register block is for.
 
-Thanks,
+> > +static void armv7m_ras_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    /* This device has no state: no need for vmstate or reset */
+> > +}
+> > +
+> > +static const TypeInfo armv7m_ras_info = {
+> > +    .name = TYPE_ARMV7M_RAS,
+> > +    .parent = TYPE_SYS_BUS_DEVICE,
+> > +    .instance_size = sizeof(ARMv7MRAS),
+> > +    .instance_init = armv7m_ras_init,
+> > +    .class_init = armv7m_ras_class_init,
+> > +};
+>
+> Pure curiosity: is `.class_init` defined because it needs to be defined
+> or is it only a good practise in QEMU code to always define it?
 
-C.
+It's optional, and in this case it's only there because it makes
+a place to put the comment, I guess.
 
-> 
-> Maybe:
-> 
->  #define AST2600A1_CLK_SEL3          TO_REG(0x310)
->  #define AST2600A3_CLK_SEL3          TO_REG(0x308)
-> 
-> and...
-> 
->> +#define AST2600_CLK_SEL4          TO_REG(0x310)
->> +#define AST2600_CLK_SEL5          TO_REG(0x314)
->>  #define AST2600_HW_STRAP1         TO_REG(0x500)
->>  #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
->>  #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
->> @@ -433,6 +443,8 @@ static uint32_t aspeed_silicon_revs[] = {
->>      AST2500_A1_SILICON_REV,
->>      AST2600_A0_SILICON_REV,
->>      AST2600_A1_SILICON_REV,
->> +    AST2600_A2_SILICON_REV,
->> +    AST2600_A3_SILICON_REV,
->>  };
->>  
->>  bool is_supported_silicon_rev(uint32_t silicon_rev)
->> @@ -651,16 +663,26 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
->>      .valid.unaligned = false,
->>  };
->>  
->> -static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
->> +static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
->>      [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
->> -    [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
->> +    [AST2600_SYS_RST_CTRL2]     = 0x0DFFFFFC,
->>      [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
->>      [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
->> +    [AST2600_DEBUG_CTRL]        = 0x00000FFF,
->> +    [AST2600_DEBUG_CTRL2]       = 0x000000FF,
->>      [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
->> -    [AST2600_HPLL_PARAM]        = 0x1000405F,
->> +    [AST2600_HPLL_PARAM]        = 0x1000408F,
->> +    [AST2600_APLL_PARAM]        = 0x1000405F,
->> +    [AST2600_MPLL_PARAM]        = 0x1008405F,
->> +    [AST2600_EPLL_PARAM]        = 0x1004077F,
->> +    [AST2600_DPLL_PARAM]        = 0x1078405F,
->> +    [AST2600_CLK_SEL]           = 0xF3940000,
->> +    [AST2600_CLK_SEL2]          = 0x00700000,
->> +    [AST2600_CLK_SEL3]          = 0x00000000,
-> 
-> ... use AST2600A3_CLK_SEL3 here?
-> 
-> So someone wanting the emulate the A1 doesn't get
-> the nasty bug of having CLK_SEL3 misplaced.
-> 
->> +    [AST2600_CLK_SEL4]          = 0xF3F40000,
->> +    [AST2600_CLK_SEL5]          = 0x30000000,
->>      [AST2600_CHIP_ID0]          = 0x1234ABCD,
->>      [AST2600_CHIP_ID1]          = 0x88884444,
->> -
->>  };
-
+-- PMM

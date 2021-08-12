@@ -1,103 +1,104 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp197685lff;
-        Thu, 12 Aug 2021 02:46:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzg61OfUM36fPu0Cye7g9+lksNN3ffbMQS0jIfO2gz/JUIL8IsYu13+4VQ7y5QYbCEf8gSJ
-X-Received: by 2002:a6b:6d16:: with SMTP id a22mr2343758iod.209.1628761578198;
-        Thu, 12 Aug 2021 02:46:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628761578; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp197840lff;
+        Thu, 12 Aug 2021 02:46:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxlM9Ks7gBtPqLlGyRqiXtqUVPLE//MhJg21e5l4axJbkHxNa3TrMDOS9rtnO4545hWW5aY
+X-Received: by 2002:a92:6a03:: with SMTP id f3mr2091992ilc.43.1628761592425;
+        Thu, 12 Aug 2021 02:46:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628761592; cv=none;
         d=google.com; s=arc-20160816;
-        b=WLlxuvYVrR6GMYtP/LAG5E+9Ql0orXgRwSvgvjt+4HvZtqYl59HkPWnGonsnHSA2sU
-         shkhlFTIwBGH2Lxz5RJDsvvOyK+3Wv7V0MXUX2rUr5e+YTym988gdw1iUmoyCygML8WL
-         fityPsQP6Vj7jyGMhubmaSNI0ym0VnhplWwKZ6iZgK1DkoZNyGpnMqavE0aQrAo6tvTu
-         FeK7mp39GOMZBCoF8uzU6c0Bb6Bw/Wg3JR5rMPyfmNvorUWtCxQhox8fmVeoCq39Bs3q
-         L1PRi+bFz2Ny1f+eZbgz8IJKWzJmWGbAPOG5jemU8xAD3ZpblPEVRAiqou8o9aFGTWK0
-         x08g==
+        b=XtMAAbpRx96SBUQ6ly4WkbVKkOPgWhnuJl0sRRtmgJD6MHS13bN98/qN/ZAl3hRX31
+         pEeyLadGJuq96DETealmn24QdbU4Aa5YGjIcoPyItk2BNOOCrc0LF7JzS/xGhm/nE358
+         Wn/9JR5hTbcPe/Afa+E1UBbFLpDBIMzIPWSU/SIw2fvGuMM8I2NlxT7aElqXlniXrYHT
+         QNa1INmas9/p5Hv8p/rOjIlnr2rgXUky/WniN5XGftrq9ZSsvcKgs6CugqL46Hk7Xdho
+         EFlyFM3notpExe3GTKr8V8ecxOichdNQmIAww8s0tyHfWBDeO6WO0eBNkz7/TGMscNgq
+         MK7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+ohWM8OWbk1iWiPzDar2gc3/n7qlkWreHSd+FbDbzw4=;
-        b=x/LeifeI2rVWPR0rWWxcd9JW7/tTmihE4jB3fEvUpCh7qYMw2OodW/Twy1j4NHUYi8
-         gxNDl9qKBoIfd6Ku/nFyKS5MExeB6aCslnWMQ23f+pY16cXx7pG42KIfOmpfHg3ujAk3
-         NE6Nge4KI22O2rODrUze7INVpkzDUI11eZMDQooat+OrDSSG5KjRfNIbve3xcZpaLVhx
-         zIrxSKswRfMEgEKibZ1XYfLPbBqcaFNoMX192Ao4yZH9Fx/AeyTB4HrPRTF9K4CX716s
-         OY4WO3zO1NIxhRy58spBnTwLa3jTD/821pXRml+s27L6EUTiLT/3uzbHVaS2gzzQvi7m
-         mrMA==
+        bh=rD6Gs6UZYHCYOmO7OPcudD+C6p8+ffTj/hCxqJpj3NU=;
+        b=UeDQQzYq1zfQRv84KIZ+EvrGy8butPRXwP47BokECRj10JCIMTmCA9hm9oh1I55YX+
+         yRy8B3So9WICbe2+8UDtbOCNBxvpEgMnm/VoM5sKIIEXYP/AO0ef1LqxlFaWnw8tp/xk
+         ipduJb1LteTWoGBMmpbCjGtuSStzjXWatUPrY9lYlF+hPDvoj9M7e/OYDb5Zif2gogvv
+         szAQH2m7w2nf5nF1Daf6cfPC5vkmf+rxWyzGo6uwyC3DgFVg4DUkkbQh7rHe3+fOA2Ib
+         bZAT+MtCj0EYnV67RWMeolUHtxS9Cy+VGpZKSWafTqK8nzq8Hrzfgq4MQ5YU68+/NDgh
+         4XLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dXbbU1Ow;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gqaBm9Or;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g14si2907162jat.28.2021.08.12.02.46.17
+        by mx.google.com with ESMTPS id e11si2194296iot.82.2021.08.12.02.46.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 02:46:18 -0700 (PDT)
+        Thu, 12 Aug 2021 02:46:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dXbbU1Ow;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gqaBm9Or;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37768 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE7I1-0006vc-Gg
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:46:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46842)
+	id 1mE7IF-0007wA-NN
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:46:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76a-0006HW-8C
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:28 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:35554)
+ id 1mE76U-0005s0-8W
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:22 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:33720)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76U-00085R-Uc
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:27 -0400
-Received: by mail-wr1-x430.google.com with SMTP id q10so7379338wro.2
- for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:22 -0700 (PDT)
+ id 1mE76Q-00080T-Fc
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:21 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ l10-20020a05600c4f0a00b002e6be174c29so546892wmq.0
+ for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+ohWM8OWbk1iWiPzDar2gc3/n7qlkWreHSd+FbDbzw4=;
- b=dXbbU1Ow+65aQcHovQA7Awmq/i9b7Rz0OAzPBIVSFzjyJLKFL7rDBL9wnGH3m+XYFf
- Kddao1imyy6/gApvGKoLlRHNKzyIkgUk0H3qOtCnx/MCbS2d2oME4VCIrvofBYlg95xQ
- dkOcWzIZQyWNNo6djRnzLGlXt9EEhEmK+TzgLFJV0dqQOBVML+yaIUBKHtPLWQPkK7P8
- oc3UHfze+PuaQ6H2iooYNIzLoj/2K0nNUQLc5pL87x9K59+SrfWfaW1XDHo56MQ9ghOM
- 0ZE5HvuELcAN9FseWJzzZ4AruNoKxGTjFTAewN7qEY4BnHG/qNYA5pMTNsssM8O+kT5F
- Z0Bg==
+ bh=rD6Gs6UZYHCYOmO7OPcudD+C6p8+ffTj/hCxqJpj3NU=;
+ b=gqaBm9OrUHr0znGAbo/QVByRruWa0JaFkdbyFoAiN8MzH9sBsnLRWlcNe5V9VHdD9i
+ xWn3gVQEmVn5TA5ajQ0fgJxKSYnUmfj068xSuOqZtcb+r1g0HJGLJH17QZjDcNhHIXDR
+ B8FD/9CQymY8h/YqjZqClrVpgYKa8xcnmFUg9JfVcr+f2CqV9AhsirBtpjlSMBP5mm/Z
+ x7cQHdC6Q2f9969Eh2YG3PhdllanveyCyW+DmjIknF3FlFj+6gCwydXF2w22A7EJ8wQ/
+ iUAz5EvMfnR/WuYvhehaBtsF3agjm71Op3Qr1bhX9IXBRcWnGs5Mt1E5WSY1rHqleMZS
+ eg5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+ohWM8OWbk1iWiPzDar2gc3/n7qlkWreHSd+FbDbzw4=;
- b=BzuF7rMS78g8Bu8yjfsxa4zjoGT4kuJQbGiToL89wsRoW2jtoq2vqYZxHqiTaAno0J
- aUsl2YRhDcrqddYDjT84aJS7GLN3re1jJmo86fLc+8fa2YKPa0z4o1xYgk+VkpvO4WwY
- JzE4/B035t4njMKBeeAoTWXofGrIsc0co1L5ycOIw4jxm6s4hyJoF7ptWBoQ+vWZXIEQ
- jnbe8HSDYV3AgNwg1zrUcNSDGkMnfU9AFbaw28dH5eUhZCBYUdYcBA75DuNJcJovn+P6
- hxSm9SwqehfitQaChao1fgMFYTX8rK+pA2uofZGLmHu57DPPMoGINy1gexFBMJ2ycmQx
- F3rw==
-X-Gm-Message-State: AOAM532viwV4y37PMxmcV6SPbaFxgzwdRsztyk9mAwEt44seSvhFYwYI
- WqeNK44A0fEv54AY8e7+v+Fbng==
-X-Received: by 2002:a5d:6908:: with SMTP id t8mr1863582wru.182.1628760861252; 
- Thu, 12 Aug 2021 02:34:21 -0700 (PDT)
+ bh=rD6Gs6UZYHCYOmO7OPcudD+C6p8+ffTj/hCxqJpj3NU=;
+ b=boKuBlfC9dUhqu0HZEf2s4g5rrOOCFDYnIdY5EJOT7sTPdVPUIcYo2+I/BYysdrY55
+ JiCiQYC2eV4Culc54IV4g8CRorAntnRr3Md6zlGvxxiItjdvMbaydrYaq7YTvGJBkv+8
+ 7T7kMl/07qV1hIu6hNU0QmsOnjBHpySvtdsmMOfeLfTEMcyFj2Lcs8XTPJG0htUPn44Y
+ cms7laa42zOJzX3cTmQ0k75Qb7ErBCP9KvnP1OY5UyUNxpoaFytsX20E/F/5U2RwysXj
+ 4gjc6PYjstFAIMgNmpaxb36TvWW5Q1jz/Pg8sr5BoVeQA0wW+E6x+GOF72wOmJTTbNdT
+ Vt7Q==
+X-Gm-Message-State: AOAM533IqvkeoZ2uUiDap60KG8VOaCiT4/t0Mu2E9dPYS6n6UEcDuhul
+ 3aLO2p/qOXyRqt8JiThM8xtz5w==
+X-Received: by 2002:a1c:7c19:: with SMTP id x25mr5340208wmc.172.1628760857087; 
+ Thu, 12 Aug 2021 02:34:17 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.20
+ by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 02:34:20 -0700 (PDT)
+ Thu, 12 Aug 2021 02:34:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 23/25] hw/arm/stellaris: Split stellaris-gptm into its
- own file
-Date: Thu, 12 Aug 2021 10:33:54 +0100
-Message-Id: <20210812093356.1946-24-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 19/25] hw/arm/msf2: Use Clock input to MSF2_SOC
+ instead of m3clk property
+Date: Thu, 12 Aug 2021 10:33:50 +0100
+Message-Id: <20210812093356.1946-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210812093356.1946-1-peter.maydell@linaro.org>
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,791 +124,152 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pZd21nEhRTWk
+X-TUID: WF5cl3aFLDaC
 
-The implementation of the Stellaris general purpose timer module
-device stellaris-gptm is currently in the same source file as the
-board model.  Split it out into its own source file in hw/timer.
-
-Apart from the new file comment headers and the Kconfig and
-meson.build changes, this is just code movement.
+Instead of passing the MSF2 SoC an integer property specifying the
+CPU clock rate, pass it a Clock instead.  This lets us wire that
+clock up to the armv7m object.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/timer/stellaris-gptm.h |  48 +++++
- hw/arm/stellaris.c                | 321 +-----------------------------
- hw/timer/stellaris-gptm.c         | 314 +++++++++++++++++++++++++++++
- hw/arm/Kconfig                    |   1 +
- hw/timer/Kconfig                  |   3 +
- hw/timer/meson.build              |   1 +
- 6 files changed, 368 insertions(+), 320 deletions(-)
- create mode 100644 include/hw/timer/stellaris-gptm.h
- create mode 100644 hw/timer/stellaris-gptm.c
+ include/hw/arm/msf2-soc.h |  3 ++-
+ hw/arm/msf2-soc.c         | 28 +++++++++++++++++-----------
+ hw/arm/msf2-som.c         |  7 ++++++-
+ 3 files changed, 25 insertions(+), 13 deletions(-)
 
-diff --git a/include/hw/timer/stellaris-gptm.h b/include/hw/timer/stellaris-gptm.h
-new file mode 100644
-index 00000000000..b8fa43c94bf
---- /dev/null
-+++ b/include/hw/timer/stellaris-gptm.h
-@@ -0,0 +1,48 @@
-+/*
-+ * Luminary Micro Stellaris General Purpose Timer Module
-+ *
-+ * Copyright (c) 2006 CodeSourcery.
-+ * Written by Paul Brook
-+ *
-+ * This code is licensed under the GPL.
-+ */
-+
-+#ifndef HW_TIMER_STELLARIS_GPTM_H
-+#define HW_TIMER_STELLARIS_GPTM_H
-+
-+#include "qom/object.h"
-+#include "hw/sysbus.h"
-+#include "hw/irq.h"
-+
-+#define TYPE_STELLARIS_GPTM "stellaris-gptm"
-+OBJECT_DECLARE_SIMPLE_TYPE(gptm_state, STELLARIS_GPTM)
-+
-+/*
-+ * QEMU interface:
-+ *  + sysbus MMIO region 0: register bank
-+ *  + sysbus IRQ 0: timer interrupt
-+ *  + unnamed GPIO output 0: trigger output for the ADC
-+ */
-+struct gptm_state {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    uint32_t config;
-+    uint32_t mode[2];
-+    uint32_t control;
-+    uint32_t state;
-+    uint32_t mask;
-+    uint32_t load[2];
-+    uint32_t match[2];
-+    uint32_t prescale[2];
-+    uint32_t match_prescale[2];
-+    uint32_t rtc;
-+    int64_t tick[2];
-+    struct gptm_state *opaque[2];
-+    QEMUTimer *timer[2];
-+    /* The timers have an alternate output used to trigger the ADC.  */
-+    qemu_irq trigger;
-+    qemu_irq irq;
-+};
-+
-+#endif
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index a32c567ce11..8c547f146a9 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -26,6 +26,7 @@
- #include "hw/watchdog/cmsdk-apb-watchdog.h"
- #include "migration/vmstate.h"
- #include "hw/misc/unimp.h"
-+#include "hw/timer/stellaris-gptm.h"
- #include "hw/qdev-clock.h"
+diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+index 38e10ce20aa..01f904cec47 100644
+--- a/include/hw/arm/msf2-soc.h
++++ b/include/hw/arm/msf2-soc.h
+@@ -30,6 +30,7 @@
+ #include "hw/misc/msf2-sysreg.h"
+ #include "hw/ssi/mss-spi.h"
+ #include "hw/net/msf2-emac.h"
++#include "hw/clock.h"
  #include "qom/object.h"
  
-@@ -55,309 +56,6 @@ typedef const struct {
-     uint32_t peripherals;
- } stellaris_board_info;
+ #define TYPE_MSF2_SOC     "msf2-soc"
+@@ -57,7 +58,7 @@ struct MSF2State {
+     uint64_t envm_size;
+     uint64_t esram_size;
  
--/* General purpose timer module.  */
--
--#define TYPE_STELLARIS_GPTM "stellaris-gptm"
--OBJECT_DECLARE_SIMPLE_TYPE(gptm_state, STELLARIS_GPTM)
--
--struct gptm_state {
--    SysBusDevice parent_obj;
--
--    MemoryRegion iomem;
--    uint32_t config;
--    uint32_t mode[2];
--    uint32_t control;
--    uint32_t state;
--    uint32_t mask;
--    uint32_t load[2];
--    uint32_t match[2];
--    uint32_t prescale[2];
--    uint32_t match_prescale[2];
--    uint32_t rtc;
--    int64_t tick[2];
--    struct gptm_state *opaque[2];
--    QEMUTimer *timer[2];
--    /* The timers have an alternate output used to trigger the ADC.  */
--    qemu_irq trigger;
--    qemu_irq irq;
--};
--
--static void gptm_update_irq(gptm_state *s)
--{
--    int level;
--    level = (s->state & s->mask) != 0;
--    qemu_set_irq(s->irq, level);
--}
--
--static void gptm_stop(gptm_state *s, int n)
--{
--    timer_del(s->timer[n]);
--}
--
--static void gptm_reload(gptm_state *s, int n, int reset)
--{
--    int64_t tick;
--    if (reset) {
--        tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--    } else {
--        tick = s->tick[n];
--    }
--
--    if (s->config == 0) {
--        /* 32-bit CountDown.  */
--        uint32_t count;
--        count = s->load[0] | (s->load[1] << 16);
--        tick += (int64_t)count * system_clock_scale;
--    } else if (s->config == 1) {
--        /* 32-bit RTC.  1Hz tick.  */
--        tick += NANOSECONDS_PER_SECOND;
--    } else if (s->mode[n] == 0xa) {
--        /* PWM mode.  Not implemented.  */
--    } else {
--        qemu_log_mask(LOG_UNIMP,
--                      "GPTM: 16-bit timer mode unimplemented: 0x%x\n",
--                      s->mode[n]);
--        return;
--    }
--    s->tick[n] = tick;
--    timer_mod(s->timer[n], tick);
--}
--
--static void gptm_tick(void *opaque)
--{
--    gptm_state **p = (gptm_state **)opaque;
--    gptm_state *s;
--    int n;
--
--    s = *p;
--    n = p - s->opaque;
--    if (s->config == 0) {
--        s->state |= 1;
--        if ((s->control & 0x20)) {
--            /* Output trigger.  */
--            qemu_irq_pulse(s->trigger);
--        }
--        if (s->mode[0] & 1) {
--            /* One-shot.  */
--            s->control &= ~1;
--        } else {
--            /* Periodic.  */
--            gptm_reload(s, 0, 0);
--        }
--    } else if (s->config == 1) {
--        /* RTC.  */
--        uint32_t match;
--        s->rtc++;
--        match = s->match[0] | (s->match[1] << 16);
--        if (s->rtc > match)
--            s->rtc = 0;
--        if (s->rtc == 0) {
--            s->state |= 8;
--        }
--        gptm_reload(s, 0, 0);
--    } else if (s->mode[n] == 0xa) {
--        /* PWM mode.  Not implemented.  */
--    } else {
--        qemu_log_mask(LOG_UNIMP,
--                      "GPTM: 16-bit timer mode unimplemented: 0x%x\n",
--                      s->mode[n]);
--    }
--    gptm_update_irq(s);
--}
--
--static uint64_t gptm_read(void *opaque, hwaddr offset,
--                          unsigned size)
--{
--    gptm_state *s = (gptm_state *)opaque;
--
--    switch (offset) {
--    case 0x00: /* CFG */
--        return s->config;
--    case 0x04: /* TAMR */
--        return s->mode[0];
--    case 0x08: /* TBMR */
--        return s->mode[1];
--    case 0x0c: /* CTL */
--        return s->control;
--    case 0x18: /* IMR */
--        return s->mask;
--    case 0x1c: /* RIS */
--        return s->state;
--    case 0x20: /* MIS */
--        return s->state & s->mask;
--    case 0x24: /* CR */
--        return 0;
--    case 0x28: /* TAILR */
--        return s->load[0] | ((s->config < 4) ? (s->load[1] << 16) : 0);
--    case 0x2c: /* TBILR */
--        return s->load[1];
--    case 0x30: /* TAMARCHR */
--        return s->match[0] | ((s->config < 4) ? (s->match[1] << 16) : 0);
--    case 0x34: /* TBMATCHR */
--        return s->match[1];
--    case 0x38: /* TAPR */
--        return s->prescale[0];
--    case 0x3c: /* TBPR */
--        return s->prescale[1];
--    case 0x40: /* TAPMR */
--        return s->match_prescale[0];
--    case 0x44: /* TBPMR */
--        return s->match_prescale[1];
--    case 0x48: /* TAR */
--        if (s->config == 1) {
--            return s->rtc;
--        }
--        qemu_log_mask(LOG_UNIMP,
--                      "GPTM: read of TAR but timer read not supported\n");
--        return 0;
--    case 0x4c: /* TBR */
--        qemu_log_mask(LOG_UNIMP,
--                      "GPTM: read of TBR but timer read not supported\n");
--        return 0;
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "GPTM: read at bad offset 0x02%" HWADDR_PRIx "\n",
--                      offset);
--        return 0;
--    }
--}
--
--static void gptm_write(void *opaque, hwaddr offset,
--                       uint64_t value, unsigned size)
--{
--    gptm_state *s = (gptm_state *)opaque;
--    uint32_t oldval;
--
--    /*
--     * The timers should be disabled before changing the configuration.
--     * We take advantage of this and defer everything until the timer
--     * is enabled.
--     */
--    switch (offset) {
--    case 0x00: /* CFG */
--        s->config = value;
--        break;
--    case 0x04: /* TAMR */
--        s->mode[0] = value;
--        break;
--    case 0x08: /* TBMR */
--        s->mode[1] = value;
--        break;
--    case 0x0c: /* CTL */
--        oldval = s->control;
--        s->control = value;
--        /* TODO: Implement pause.  */
--        if ((oldval ^ value) & 1) {
--            if (value & 1) {
--                gptm_reload(s, 0, 1);
--            } else {
--                gptm_stop(s, 0);
--            }
--        }
--        if (((oldval ^ value) & 0x100) && s->config >= 4) {
--            if (value & 0x100) {
--                gptm_reload(s, 1, 1);
--            } else {
--                gptm_stop(s, 1);
--            }
--        }
--        break;
--    case 0x18: /* IMR */
--        s->mask = value & 0x77;
--        gptm_update_irq(s);
--        break;
--    case 0x24: /* CR */
--        s->state &= ~value;
--        break;
--    case 0x28: /* TAILR */
--        s->load[0] = value & 0xffff;
--        if (s->config < 4) {
--            s->load[1] = value >> 16;
--        }
--        break;
--    case 0x2c: /* TBILR */
--        s->load[1] = value & 0xffff;
--        break;
--    case 0x30: /* TAMARCHR */
--        s->match[0] = value & 0xffff;
--        if (s->config < 4) {
--            s->match[1] = value >> 16;
--        }
--        break;
--    case 0x34: /* TBMATCHR */
--        s->match[1] = value >> 16;
--        break;
--    case 0x38: /* TAPR */
--        s->prescale[0] = value;
--        break;
--    case 0x3c: /* TBPR */
--        s->prescale[1] = value;
--        break;
--    case 0x40: /* TAPMR */
--        s->match_prescale[0] = value;
--        break;
--    case 0x44: /* TBPMR */
--        s->match_prescale[0] = value;
--        break;
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "GPTM: write at bad offset 0x02%" HWADDR_PRIx "\n",
--                      offset);
--    }
--    gptm_update_irq(s);
--}
--
--static const MemoryRegionOps gptm_ops = {
--    .read = gptm_read,
--    .write = gptm_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
--};
--
--static const VMStateDescription vmstate_stellaris_gptm = {
--    .name = "stellaris_gptm",
--    .version_id = 1,
--    .minimum_version_id = 1,
--    .fields = (VMStateField[]) {
--        VMSTATE_UINT32(config, gptm_state),
--        VMSTATE_UINT32_ARRAY(mode, gptm_state, 2),
--        VMSTATE_UINT32(control, gptm_state),
--        VMSTATE_UINT32(state, gptm_state),
--        VMSTATE_UINT32(mask, gptm_state),
--        VMSTATE_UNUSED(8),
--        VMSTATE_UINT32_ARRAY(load, gptm_state, 2),
--        VMSTATE_UINT32_ARRAY(match, gptm_state, 2),
--        VMSTATE_UINT32_ARRAY(prescale, gptm_state, 2),
--        VMSTATE_UINT32_ARRAY(match_prescale, gptm_state, 2),
--        VMSTATE_UINT32(rtc, gptm_state),
--        VMSTATE_INT64_ARRAY(tick, gptm_state, 2),
--        VMSTATE_TIMER_PTR_ARRAY(timer, gptm_state, 2),
--        VMSTATE_END_OF_LIST()
--    }
--};
--
--static void stellaris_gptm_init(Object *obj)
--{
--    DeviceState *dev = DEVICE(obj);
--    gptm_state *s = STELLARIS_GPTM(obj);
--    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
--
--    sysbus_init_irq(sbd, &s->irq);
--    qdev_init_gpio_out(dev, &s->trigger, 1);
--
--    memory_region_init_io(&s->iomem, obj, &gptm_ops, s,
--                          "gptm", 0x1000);
--    sysbus_init_mmio(sbd, &s->iomem);
--
--    s->opaque[0] = s->opaque[1] = s;
--}
--
--static void stellaris_gptm_realize(DeviceState *dev, Error **errp)
--{
--    gptm_state *s = STELLARIS_GPTM(dev);
--    s->timer[0] = timer_new_ns(QEMU_CLOCK_VIRTUAL, gptm_tick, &s->opaque[0]);
--    s->timer[1] = timer_new_ns(QEMU_CLOCK_VIRTUAL, gptm_tick, &s->opaque[1]);
--}
--
- /* System controller.  */
+-    uint32_t m3clk;
++    Clock *m3clk;
+     uint8_t apb0div;
+     uint8_t apb1div;
  
- #define TYPE_STELLARIS_SYS "stellaris-sys"
-@@ -1642,22 +1340,6 @@ static const TypeInfo stellaris_i2c_info = {
-     .class_init    = stellaris_i2c_class_init,
- };
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index f36788054b3..0a1e594aee6 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -29,6 +29,7 @@
+ #include "hw/char/serial.h"
+ #include "hw/arm/msf2-soc.h"
+ #include "hw/misc/unimp.h"
++#include "hw/qdev-clock.h"
+ #include "sysemu/sysemu.h"
  
--static void stellaris_gptm_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    dc->vmsd = &vmstate_stellaris_gptm;
--    dc->realize = stellaris_gptm_realize;
--}
--
--static const TypeInfo stellaris_gptm_info = {
--    .name          = TYPE_STELLARIS_GPTM,
--    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(gptm_state),
--    .instance_init = stellaris_gptm_init,
--    .class_init    = stellaris_gptm_class_init,
--};
--
- static void stellaris_adc_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -1696,7 +1378,6 @@ static const TypeInfo stellaris_sys_info = {
- static void stellaris_register_types(void)
- {
-     type_register_static(&stellaris_i2c_info);
--    type_register_static(&stellaris_gptm_info);
-     type_register_static(&stellaris_adc_info);
-     type_register_static(&stellaris_sys_info);
+ #define MSF2_TIMER_BASE       0x40004000
+@@ -73,6 +74,8 @@ static void m2sxxx_soc_initfn(Object *obj)
+     }
+ 
+     object_initialize_child(obj, "emac", &s->emac, TYPE_MSS_EMAC);
++
++    s->m3clk = qdev_init_clock_in(DEVICE(obj), "m3clk", NULL, NULL, 0);
  }
-diff --git a/hw/timer/stellaris-gptm.c b/hw/timer/stellaris-gptm.c
-new file mode 100644
-index 00000000000..7846fe5f84e
---- /dev/null
-+++ b/hw/timer/stellaris-gptm.c
-@@ -0,0 +1,314 @@
-+/*
-+ * Luminary Micro Stellaris General Purpose Timer Module
-+ *
-+ * Copyright (c) 2006 CodeSourcery.
-+ * Written by Paul Brook
-+ *
-+ * This code is licensed under the GPL.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/timer.h"
-+#include "migration/vmstate.h"
-+#include "hw/timer/stellaris-gptm.h"
-+#include "hw/timer/armv7m_systick.h" /* Needed only for system_clock_scale */
-+
-+static void gptm_update_irq(gptm_state *s)
-+{
-+    int level;
-+    level = (s->state & s->mask) != 0;
-+    qemu_set_irq(s->irq, level);
-+}
-+
-+static void gptm_stop(gptm_state *s, int n)
-+{
-+    timer_del(s->timer[n]);
-+}
-+
-+static void gptm_reload(gptm_state *s, int n, int reset)
-+{
-+    int64_t tick;
-+    if (reset) {
-+        tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    } else {
-+        tick = s->tick[n];
-+    }
-+
-+    if (s->config == 0) {
-+        /* 32-bit CountDown.  */
-+        uint32_t count;
-+        count = s->load[0] | (s->load[1] << 16);
-+        tick += (int64_t)count * system_clock_scale;
-+    } else if (s->config == 1) {
-+        /* 32-bit RTC.  1Hz tick.  */
-+        tick += NANOSECONDS_PER_SECOND;
-+    } else if (s->mode[n] == 0xa) {
-+        /* PWM mode.  Not implemented.  */
-+    } else {
-+        qemu_log_mask(LOG_UNIMP,
-+                      "GPTM: 16-bit timer mode unimplemented: 0x%x\n",
-+                      s->mode[n]);
+ 
+ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+@@ -84,6 +87,11 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+ 
+     MemoryRegion *system_memory = get_system_memory();
+ 
++    if (!clock_has_source(s->m3clk)) {
++        error_setg(errp, "m3clk must be wired up by the board code");
 +        return;
 +    }
-+    s->tick[n] = tick;
-+    timer_mod(s->timer[n], tick);
-+}
 +
-+static void gptm_tick(void *opaque)
-+{
-+    gptm_state **p = (gptm_state **)opaque;
-+    gptm_state *s;
-+    int n;
-+
-+    s = *p;
-+    n = p - s->opaque;
-+    if (s->config == 0) {
-+        s->state |= 1;
-+        if ((s->control & 0x20)) {
-+            /* Output trigger.  */
-+            qemu_irq_pulse(s->trigger);
-+        }
-+        if (s->mode[0] & 1) {
-+            /* One-shot.  */
-+            s->control &= ~1;
-+        } else {
-+            /* Periodic.  */
-+            gptm_reload(s, 0, 0);
-+        }
-+    } else if (s->config == 1) {
-+        /* RTC.  */
-+        uint32_t match;
-+        s->rtc++;
-+        match = s->match[0] | (s->match[1] << 16);
-+        if (s->rtc > match)
-+            s->rtc = 0;
-+        if (s->rtc == 0) {
-+            s->state |= 8;
-+        }
-+        gptm_reload(s, 0, 0);
-+    } else if (s->mode[n] == 0xa) {
-+        /* PWM mode.  Not implemented.  */
-+    } else {
-+        qemu_log_mask(LOG_UNIMP,
-+                      "GPTM: 16-bit timer mode unimplemented: 0x%x\n",
-+                      s->mode[n]);
-+    }
-+    gptm_update_irq(s);
-+}
-+
-+static uint64_t gptm_read(void *opaque, hwaddr offset,
-+                          unsigned size)
-+{
-+    gptm_state *s = (gptm_state *)opaque;
-+
-+    switch (offset) {
-+    case 0x00: /* CFG */
-+        return s->config;
-+    case 0x04: /* TAMR */
-+        return s->mode[0];
-+    case 0x08: /* TBMR */
-+        return s->mode[1];
-+    case 0x0c: /* CTL */
-+        return s->control;
-+    case 0x18: /* IMR */
-+        return s->mask;
-+    case 0x1c: /* RIS */
-+        return s->state;
-+    case 0x20: /* MIS */
-+        return s->state & s->mask;
-+    case 0x24: /* CR */
-+        return 0;
-+    case 0x28: /* TAILR */
-+        return s->load[0] | ((s->config < 4) ? (s->load[1] << 16) : 0);
-+    case 0x2c: /* TBILR */
-+        return s->load[1];
-+    case 0x30: /* TAMARCHR */
-+        return s->match[0] | ((s->config < 4) ? (s->match[1] << 16) : 0);
-+    case 0x34: /* TBMATCHR */
-+        return s->match[1];
-+    case 0x38: /* TAPR */
-+        return s->prescale[0];
-+    case 0x3c: /* TBPR */
-+        return s->prescale[1];
-+    case 0x40: /* TAPMR */
-+        return s->match_prescale[0];
-+    case 0x44: /* TBPMR */
-+        return s->match_prescale[1];
-+    case 0x48: /* TAR */
-+        if (s->config == 1) {
-+            return s->rtc;
-+        }
-+        qemu_log_mask(LOG_UNIMP,
-+                      "GPTM: read of TAR but timer read not supported\n");
-+        return 0;
-+    case 0x4c: /* TBR */
-+        qemu_log_mask(LOG_UNIMP,
-+                      "GPTM: read of TBR but timer read not supported\n");
-+        return 0;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "GPTM: read at bad offset 0x02%" HWADDR_PRIx "\n",
-+                      offset);
-+        return 0;
-+    }
-+}
-+
-+static void gptm_write(void *opaque, hwaddr offset,
-+                       uint64_t value, unsigned size)
-+{
-+    gptm_state *s = (gptm_state *)opaque;
-+    uint32_t oldval;
-+
+     memory_region_init_rom(&s->nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_size,
+                            &error_fatal);
+     /*
+@@ -106,19 +114,14 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+     qdev_prop_set_uint32(armv7m, "num-irq", 81);
+     qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
++    qdev_connect_clock_in(armv7m, "cpuclk", s->m3clk);
+     object_property_set_link(OBJECT(&s->armv7m), "memory",
+                              OBJECT(get_system_memory()), &error_abort);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
+         return;
+     }
+ 
+-    if (!s->m3clk) {
+-        error_setg(errp, "Invalid m3clk value");
+-        error_append_hint(errp, "m3clk can not be zero\n");
+-        return;
+-    }
+-
+-    system_clock_scale = NANOSECONDS_PER_SECOND / s->m3clk;
++    system_clock_scale = clock_ticks_to_ns(s->m3clk, 1);
+ 
+     for (i = 0; i < MSF2_NUM_UARTS; i++) {
+         if (serial_hd(i)) {
+@@ -129,8 +132,13 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+     }
+ 
+     dev = DEVICE(&s->timer);
+-    /* APB0 clock is the timer input clock */
+-    qdev_prop_set_uint32(dev, "clock-frequency", s->m3clk / s->apb0div);
 +    /*
-+     * The timers should be disabled before changing the configuration.
-+     * We take advantage of this and defer everything until the timer
-+     * is enabled.
++     * APB0 clock is the timer input clock.
++     * TODO: ideally the MSF2 timer device should use a Clock rather than a
++     * clock-frequency integer property.
 +     */
-+    switch (offset) {
-+    case 0x00: /* CFG */
-+        s->config = value;
-+        break;
-+    case 0x04: /* TAMR */
-+        s->mode[0] = value;
-+        break;
-+    case 0x08: /* TBMR */
-+        s->mode[1] = value;
-+        break;
-+    case 0x0c: /* CTL */
-+        oldval = s->control;
-+        s->control = value;
-+        /* TODO: Implement pause.  */
-+        if ((oldval ^ value) & 1) {
-+            if (value & 1) {
-+                gptm_reload(s, 0, 1);
-+            } else {
-+                gptm_stop(s, 0);
-+            }
-+        }
-+        if (((oldval ^ value) & 0x100) && s->config >= 4) {
-+            if (value & 0x100) {
-+                gptm_reload(s, 1, 1);
-+            } else {
-+                gptm_stop(s, 1);
-+            }
-+        }
-+        break;
-+    case 0x18: /* IMR */
-+        s->mask = value & 0x77;
-+        gptm_update_irq(s);
-+        break;
-+    case 0x24: /* CR */
-+        s->state &= ~value;
-+        break;
-+    case 0x28: /* TAILR */
-+        s->load[0] = value & 0xffff;
-+        if (s->config < 4) {
-+            s->load[1] = value >> 16;
-+        }
-+        break;
-+    case 0x2c: /* TBILR */
-+        s->load[1] = value & 0xffff;
-+        break;
-+    case 0x30: /* TAMARCHR */
-+        s->match[0] = value & 0xffff;
-+        if (s->config < 4) {
-+            s->match[1] = value >> 16;
-+        }
-+        break;
-+    case 0x34: /* TBMATCHR */
-+        s->match[1] = value >> 16;
-+        break;
-+    case 0x38: /* TAPR */
-+        s->prescale[0] = value;
-+        break;
-+    case 0x3c: /* TBPR */
-+        s->prescale[1] = value;
-+        break;
-+    case 0x40: /* TAPMR */
-+        s->match_prescale[0] = value;
-+        break;
-+    case 0x44: /* TBPMR */
-+        s->match_prescale[0] = value;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "GPTM: write at bad offset 0x02%" HWADDR_PRIx "\n",
-+                      offset);
-+    }
-+    gptm_update_irq(s);
-+}
-+
-+static const MemoryRegionOps gptm_ops = {
-+    .read = gptm_read,
-+    .write = gptm_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static const VMStateDescription vmstate_stellaris_gptm = {
-+    .name = "stellaris_gptm",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(config, gptm_state),
-+        VMSTATE_UINT32_ARRAY(mode, gptm_state, 2),
-+        VMSTATE_UINT32(control, gptm_state),
-+        VMSTATE_UINT32(state, gptm_state),
-+        VMSTATE_UINT32(mask, gptm_state),
-+        VMSTATE_UNUSED(8),
-+        VMSTATE_UINT32_ARRAY(load, gptm_state, 2),
-+        VMSTATE_UINT32_ARRAY(match, gptm_state, 2),
-+        VMSTATE_UINT32_ARRAY(prescale, gptm_state, 2),
-+        VMSTATE_UINT32_ARRAY(match_prescale, gptm_state, 2),
-+        VMSTATE_UINT32(rtc, gptm_state),
-+        VMSTATE_INT64_ARRAY(tick, gptm_state, 2),
-+        VMSTATE_TIMER_PTR_ARRAY(timer, gptm_state, 2),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void stellaris_gptm_init(Object *obj)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+    gptm_state *s = STELLARIS_GPTM(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+    qdev_init_gpio_out(dev, &s->trigger, 1);
-+
-+    memory_region_init_io(&s->iomem, obj, &gptm_ops, s,
-+                          "gptm", 0x1000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+
-+    s->opaque[0] = s->opaque[1] = s;
-+}
-+
-+static void stellaris_gptm_realize(DeviceState *dev, Error **errp)
-+{
-+    gptm_state *s = STELLARIS_GPTM(dev);
-+    s->timer[0] = timer_new_ns(QEMU_CLOCK_VIRTUAL, gptm_tick, &s->opaque[0]);
-+    s->timer[1] = timer_new_ns(QEMU_CLOCK_VIRTUAL, gptm_tick, &s->opaque[1]);
-+}
-+
-+static void stellaris_gptm_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_stellaris_gptm;
-+    dc->realize = stellaris_gptm_realize;
-+}
-+
-+static const TypeInfo stellaris_gptm_info = {
-+    .name          = TYPE_STELLARIS_GPTM,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(gptm_state),
-+    .instance_init = stellaris_gptm_init,
-+    .class_init    = stellaris_gptm_class_init,
-+};
-+
-+static void stellaris_gptm_register_types(void)
-+{
-+    type_register_static(&stellaris_gptm_info);
-+}
-+
-+type_init(stellaris_gptm_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4ba0aca0676..a261b6f13bd 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -237,6 +237,7 @@ config STELLARIS
-     select SSI_SD
-     select STELLARIS_INPUT
-     select STELLARIS_ENET # ethernet
-+    select STELLARIS_GPTM # general purpose timer module
-     select UNIMP
++    qdev_prop_set_uint32(dev, "clock-frequency",
++                         clock_get_hz(s->m3clk) / s->apb0div);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer), errp)) {
+         return;
+     }
+@@ -207,8 +215,6 @@ static Property m2sxxx_soc_properties[] = {
+     DEFINE_PROP_UINT64("eNVM-size", MSF2State, envm_size, MSF2_ENVM_MAX_SIZE),
+     DEFINE_PROP_UINT64("eSRAM-size", MSF2State, esram_size,
+                         MSF2_ESRAM_MAX_SIZE),
+-    /* Libero GUI shows 100Mhz as default for clocks */
+-    DEFINE_PROP_UINT32("m3clk", MSF2State, m3clk, 100 * 1000000),
+     /* default divisors in Libero GUI */
+     DEFINE_PROP_UINT8("apb0div", MSF2State, apb0div, 2),
+     DEFINE_PROP_UINT8("apb1div", MSF2State, apb1div, 2),
+diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+index 343ec977c07..396e8b99138 100644
+--- a/hw/arm/msf2-som.c
++++ b/hw/arm/msf2-som.c
+@@ -29,6 +29,7 @@
+ #include "hw/boards.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/boot.h"
++#include "hw/qdev-clock.h"
+ #include "exec/address-spaces.h"
+ #include "hw/arm/msf2-soc.h"
  
- config STM32VLDISCOVERY
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index bac25117155..1e73da7e120 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -52,5 +52,8 @@ config SSE_COUNTER
- config SSE_TIMER
-     bool
+@@ -49,6 +50,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
+     BusState *spi_bus;
+     MemoryRegion *sysmem = get_system_memory();
+     MemoryRegion *ddr = g_new(MemoryRegion, 1);
++    Clock *m3clk;
  
-+config STELLARIS_GPTM
-+    bool
-+
- config AVR_TIMER16
-     bool
-diff --git a/hw/timer/meson.build b/hw/timer/meson.build
-index 1aa3cd22844..e67478a8f10 100644
---- a/hw/timer/meson.build
-+++ b/hw/timer/meson.build
-@@ -31,6 +31,7 @@ softmmu_ss.add(when: 'CONFIG_SH_TIMER', if_true: files('sh_timer.c'))
- softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_timer.c'))
- softmmu_ss.add(when: 'CONFIG_SSE_COUNTER', if_true: files('sse-counter.c'))
- softmmu_ss.add(when: 'CONFIG_SSE_TIMER', if_true: files('sse-timer.c'))
-+softmmu_ss.add(when: 'CONFIG_STELLARIS_GPTM', if_true: files('stellaris-gptm.c'))
- softmmu_ss.add(when: 'CONFIG_STM32F2XX_TIMER', if_true: files('stm32f2xx_timer.c'))
- softmmu_ss.add(when: 'CONFIG_XILINX', if_true: files('xilinx_timer.c'))
- specific_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_timer.c'))
+     if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
+         error_report("This board can only be used with CPU %s",
+@@ -72,7 +74,10 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
+      * in Libero. CPU clock is divided by APB0 and APB1 divisors for
+      * peripherals. Emcraft's SoM kit comes with these settings by default.
+      */
+-    qdev_prop_set_uint32(dev, "m3clk", 142 * 1000000);
++    /* This clock doesn't need migration because it is fixed-frequency */
++    m3clk = clock_new(OBJECT(machine), "m3clk");
++    clock_set_hz(m3clk, 142 * 1000000);
++    qdev_connect_clock_in(dev, "m3clk", m3clk);
+     qdev_prop_set_uint32(dev, "apb0div", 2);
+     qdev_prop_set_uint32(dev, "apb1div", 2);
+ 
 -- 
 2.20.1
 

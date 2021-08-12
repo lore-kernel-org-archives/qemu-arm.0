@@ -1,103 +1,102 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp311667lff;
-        Thu, 12 Aug 2021 05:23:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFAiiYpCU1s8k40gpiaIuWiGAy2b3DoGBsc0+dx4UF14KSsQ32cNmhtXwGfAHkHlIXtf2u
-X-Received: by 2002:a67:4382:: with SMTP id q124mr1613835vsa.6.1628771032252;
-        Thu, 12 Aug 2021 05:23:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628771032; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp314076lff;
+        Thu, 12 Aug 2021 05:27:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwadaeXO4LhC26O+RU2WByH1ruAJMrC4fTgZwQileVSiwp5lcJXl/PUWrjPLGsHf7UPtDed
+X-Received: by 2002:a05:6102:31b0:: with SMTP id d16mr2804820vsh.10.1628771246585;
+        Thu, 12 Aug 2021 05:27:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628771246; cv=none;
         d=google.com; s=arc-20160816;
-        b=a9WA/y7vuydQAq/wVshQiRWVGBsXSulSNamMe3/uknwd7CgIjJl3IFMbg1ua7fyCDL
-         CphhtkjHTMi2SnZe5RT5jngZAkgfdj5IynTMZeLo5FLUKzGtAo9UUx7j6PKC2cdxZ30R
-         IAyRuyso6hvh3eZQPvir2tp18HwX1iEu5j6PVlMl0J9PFWsIcaOlDtgUspb2F9yrXeKr
-         spv/VAJFY+KCMnxu+h32KFSF0feoiLDBmNwAbWkZ2zCIuvw4/6Ccl+XYopTm8rpdA8v8
-         aK4blSHPmltpl/WehrQl5r1uyUazJuJNzevAAnEbUU1PNNUk9iUoB7y/3sZK/jjU5jOi
-         yLLg==
+        b=XkOHGqfDXb0fN0ADTqcUUmBQ3hOUdIxLyjcwT5iFRjzDWYzu8s3CptEv12gCgVsrIh
+         cYHHUiKU1yrp+LgGv/bgpb4gmEqSrbTVvemcjRJzSwtfHiSXldkJDblh6uZgiXmMxP+J
+         OCXle28prJppu0oCcBNj0Pcgy2o3YcMOUF7NH79y58Cnq1V9KXa+Nr/7FTE7sr2gPu9P
+         FuMT6V24ZM4AvWBZJrrkO6uSIwRG3OpTazLlf0hA2vcH9v5/Gtgjoq4xteOTjYUStxWn
+         xJ+uOMgrFXwvfyFnTFJdrgT5lwpgbd7B9ewL0AQZHYRK0lh7Ebo75GoJjuoADbZdM4SD
+         Oy4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=FB1Nqq2kM3Ah3RRR9gw4IQx5hqcTQ+AmfQ9BChqvCLk=;
-        b=PGDGqsGUzvopdhhsPIcv/KK7leP55zL0C2YVwnCpsP3QtK1AY+/wYBUP0eI8a3HVBE
-         4vvKwg2Dvvlykj7vvfK/p2RVmIbQgt7nrKYshgbvwAyze5WufSeLmUbAP4kPoc3DeNYT
-         nsrJiAFVPxLxS45efMZvRoX/qOE2+kZa6VrrAw1CKezBTtakVB+Q5ydtLtJSsIf71p+x
-         gtmmJcwNv3UZ/5aTF4CFcpbJygjohAEiepWL1wGYC58OAyf0aX5QGxXgUtfqFw6elxae
-         eNVdoGggI0OZwOnrrW1DXUAO8IF0up2wlA2jQx2JtT3WeIqVX0UYNnKeAN8i8Ul4U8Gg
-         xj7g==
+         :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:to:subject
+         :dkim-signature;
+        bh=dwrHmw/ZWV5jGvpMYJV8I+tVI1NWMKZPbGlC8UnoaNo=;
+        b=diWztVsIw+TneBHHxpSYQ9dDxkGq02Kdi4CoBChuTt85Tbhlhp38h2ZVdAk93pf1U8
+         Az3WJXdgD9BFWahvRTzU0KLjMmfC4UItiGvaGTXmNcnI/inkR65sRNB0m8W+4Sd5g6Wr
+         bo5MrMSI35TVPpf0sl9iTe5JkblWVUICezG0aCBmFvXSkjQ2yXx2xDPwxPUn64dveQ++
+         SW9ghA2nqlI1eOEMfi60d9ke1iBxVkdrNx8dbDDceZ2ryCsx41Ya7rJiVjfV4ouBiE4B
+         jbnu4BGfVEBLEtfMnr8WoKpjdSNIDlMuYNHYveUeHt/hYod2emcJlpJZ5SGH0ogEqhJq
+         rk7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vLOvQOzX;
+       dkim=fail header.i=@crans.org header.s=mail header.b=GBPZ12Gy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w75si861594vsw.319.2021.08.12.05.23.52
+        by mx.google.com with ESMTPS id q1si682032vsk.71.2021.08.12.05.27.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 05:23:52 -0700 (PDT)
+        Thu, 12 Aug 2021 05:27:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vLOvQOzX;
+       dkim=fail header.i=@crans.org header.s=mail header.b=GBPZ12Gy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38034 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
+Received: from localhost ([::1]:42654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE9kV-0007Nc-Jv
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 08:23:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53934)
+	id 1mE9nx-0002Dl-VX
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 08:27:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE9kM-0007N5-OG
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 08:23:42 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:36852)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE9kL-0006un-3T
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 08:23:42 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id b7so9432214edu.3
- for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 05:23:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FB1Nqq2kM3Ah3RRR9gw4IQx5hqcTQ+AmfQ9BChqvCLk=;
- b=vLOvQOzXoAbNIb+fE1NWVy2WRB/Wh2E65jIRaxEw9BUdl+U4iGPFX/InomcpsfEw9+
- GS+FyVaJdV7/PCFvoBTSP2Hpz1E2X5VkqjuwVXsTU46AouGVL9+aogoomO+rEmo35QQX
- 6XnATIFb2L7utiH64jKevz930LCThMUu60pQ5FIvPfXnF2E+hCaMFkWLgjOl6atH+2G2
- puS3erNzkTOB5AytROIILyY3+9ZMNJIx7eAgusOtu/INwFHY38SXQHU5x/RUDD7g9mIf
- n+RwcVwK+zRP7y+9iTXLND1sKw3bsJOVGUUfrLcjkdiFJasfO2EPyBruV8zt8jOBbqgL
- SpOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=FB1Nqq2kM3Ah3RRR9gw4IQx5hqcTQ+AmfQ9BChqvCLk=;
- b=Oq8jZwZQxFhWmMxWhevnWoBKCdd/XJQBFsoTw4K5E/dSfBKEp9heE6QlAUJb1Dsxu+
- wPgYDBmUOuLByUJ6H9Ph5XpSEaOe+VT1zN3Bd41uzyPxJ9O/wB4MT5s51IbUevA6m74W
- cdAnM/ir8ygp/uNDqLpjfSdSF2ZUE2fc49CvjHyCVcKKArxP6QuxtFxO19ZHwO2Eo5am
- LNUS6Cbli6iNx1pVrc96lCidRt7QgnOXK+HPu5QbRnEga1nzIOjuv1DyferG6Q/n7eD2
- jphPRxRx8RnvqzdAlz91RrwHbFyRdz9pJdElQJ7w4AfHmmVUuqg+bFPao2pVqK3dKBRH
- EUAA==
-X-Gm-Message-State: AOAM532ut1UAFAIU38mQwyLSqSf7vU79XWmTwzSN0hb+jymEUK4ljZ3P
- sKs1z/lAeKynowfZnCMBOcV5UhEU7zFZ7de0v8uX0A==
-X-Received: by 2002:a50:f615:: with SMTP id c21mr5293629edn.146.1628771019034; 
- Thu, 12 Aug 2021 05:23:39 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1mE9nf-0002DQ-Hm; Thu, 12 Aug 2021 08:27:07 -0400
+Received: from redisdead.crans.org ([2a0c:700:2::ff:fe01:2402]:49228)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1mE9nd-000847-OH; Thu, 12 Aug 2021 08:27:07 -0400
+Received: from [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f] (unknown
+ [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by redisdead.crans.org (Postfix) with ESMTPSA id A7E1A251;
+ Thu, 12 Aug 2021 14:27:02 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
+ t=1628771222; bh=Sz4xjoMFQyq2+Tf5YFpPUeLNWXw7+iMJJctcJBs19rU=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=GBPZ12GyMI/JjcL1mvAQvyVQTSw+DYJsU1Iq+ZUrz8U2bB8QIKWx0hlrx0gHzmUm6
+ UCKIRTeURdNsywrqqJ215M0U9YuHvSOpKd8GDbH0nGy4z6NlFvt+/bq8DU+P9hwsz/
+ RImqLTzPiFLvZl3rjSF3OsS3mNf/YzEJBxi6CsoamzflNRjYWHZsxWz3a6aU5jXZht
+ tWf+xySjumSyo7wHFib9fPK9wvkITf36bEkOTIaaqeAcoty7EbP6C66l6HkbY+rDts
+ IToV2Q3uC+0vVuFLyL36/weYzp8V5EibUY82UQGLZNvOg4LZ10GPmhPzTUOwEh9s/F
+ HJblyuwpvjsdVZjRSF+Rt6KIAJ2HMvg2r3jSQ+oMrDXZ7WHU9UVZYa3ldz9hsyzrQO
+ Y4/0Kpv/aI3+NiV4T+vx45ytGlgzmZ1kQQuNdUHO5rEvPwCXaOjuRcoBYg6xcQLbVI
+ SQV2eN2FnYJ8R4e3dyae2LatRg9rFM/dddhQWtoDBt1HJF19U+mw5iLsRUNtKA5j16
+ tuR2Ebqrb/CsOVNYxnkh2wbdO239+WEnzcwQR44k6kN6r311dUZgaoR/KMvIYdJ8Lx
+ 0u1R8FQg36U8wAmhr5h1fG09aLbtSsMNAAWCMVq6I3WdmBB3BozG1sAJc2GOOg0ceJ
+ Kxj6PjelCT+RzBZZ1rMwsqNo=
+Subject: Re: [PATCH for-6.2 14/25] hw/arm/stm32vldiscovery: Delete trailing
+ blank line
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-10-peter.maydell@linaro.org>
- <6a0f3bcc-cb85-2f02-32f3-3ea85b0b9c43@crans.org>
-In-Reply-To: <6a0f3bcc-cb85-2f02-32f3-3ea85b0b9c43@crans.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Aug 2021 13:22:54 +0100
-Message-ID: <CAFEAcA-byMR2cEj6FCcGRFztNLsW3_-LR3v5B5+VVy69xfAU8g@mail.gmail.com>
-Subject: Re: [PATCH for-6.2 09/25] clock: Provide builtin multiplier/divider
-To: Alexandre IOOSS <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+ <20210812093356.1946-15-peter.maydell@linaro.org>
+From: Alexandre IOOSS <erdnaxe@crans.org>
+Organization: Crans
+Message-ID: <cd01ec10-d648-19a0-4abd-2a263815cd8b@crans.org>
+Date: Thu, 12 Aug 2021 14:27:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
+MIME-Version: 1.0
+In-Reply-To: <20210812093356.1946-15-peter.maydell@linaro.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="fIAhslYSOWGT5tecnf7JL9P8y81fJlGk5"
+Received-SPF: pass client-ip=2a0c:700:2::ff:fe01:2402;
+ envelope-from=erdnaxe@crans.org; helo=redisdead.crans.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,78 +109,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
+ Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vX5tTUrpyh0F
+X-TUID: L/JB9IixYmpU
 
-On Thu, 12 Aug 2021 at 13:08, Alexandre IOOSS <erdnaxe@crans.org> wrote:
->
->
-> On 8/12/21 11:33 AM, Peter Maydell wrote:
-> > It is quite common for a clock tree to involve possibly programmable
-> > clock multipliers or dividers, where the frequency of a clock is for
-> > instance divided by 8 to produce a slower clock to feed to a
-> > particular device.
-> >
-> > Currently we provide no convenient mechanism for modelling this.  You
-> > can implement it by having an input Clock and an output Clock, and
-> > manually setting the period of the output clock in the period-changed
-> > callback of the input clock, but that's quite clunky.
-> >
-> > This patch adds support in the Clock objects themselves for setting a
-> > multiplier or divider.  The effect of setting this on a clock is that
-> > when the clock's period is changed, all the children of the clock are
-> > set to period * multiplier / divider, rather than being set to the
-> > same period as the parent clock.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   docs/devel/clocks.rst   | 23 +++++++++++++++++++++++
-> >   include/hw/clock.h      | 29 +++++++++++++++++++++++++++++
-> >   hw/core/clock-vmstate.c | 24 +++++++++++++++++++++++-
-> >   hw/core/clock.c         | 29 +++++++++++++++++++++++++----
-> >   4 files changed, 100 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> > index 956bd147ea0..430fbd842e5 100644
-> > --- a/docs/devel/clocks.rst
-> > +++ b/docs/devel/clocks.rst
-> > @@ -260,6 +260,29 @@ clocks get the new clock period value: *Clock 2*, *Clock 3* and *Clock 4*.
-> >   It is not possible to disconnect a clock or to change the clock connection
-> >   after it is connected.
-> >
-> > +Clock multiplier and divider settings
-> > +-------------------------------------
-> > +
-> > +By default, when clocks are connected together, the child
-> > +clocks run with the same period as their source (parent) clock.
-> > +The Clock API supports a built-in period multiplier/divider
-> > +mechanism so you can configure a clock to make its children
-> > +run at a different period from its own. If you call the
-> > +``clock_set_mul_div()`` function you can specify the clock's
-> > +multiplier and divider values. The children of that clock
-> > +will all run with a period of ``parent_period * multiplier / divider``.
-> > +For instance, if the clock has a frequency of 8MHz and you set its
-> > +multiplier to 2 and its divider to 3, the child clocks will run
-> > +at 12MHz.
-> > +
-> > +You can change the multiplier and divider of a clock at runtime,
-> > +so you can use this to model clock controller devices which
-> > +have guest-programmable frequency multipliers or dividers.
->
-> This looks nice!
-> Does this imply that if I am going to implement the STM32 RCC (Reset and
-> Clock Controller) device, then I should use this new feature?
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--fIAhslYSOWGT5tecnf7JL9P8y81fJlGk5
+Content-Type: multipart/mixed; boundary="ntQfvTq6GbBMkGNkfiX0LybC6YmKfbWFC";
+ protected-headers="v1"
+From: Alexandre IOOSS <erdnaxe@crans.org>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Luc Michel <luc@lmichel.fr>, Damien Hedde <damien.hedde@greensocs.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
+Message-ID: <cd01ec10-d648-19a0-4abd-2a263815cd8b@crans.org>
+Subject: Re: [PATCH for-6.2 14/25] hw/arm/stm32vldiscovery: Delete trailing
+ blank line
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-15-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-15-peter.maydell@linaro.org>
 
-I haven't looked at the RCC spec in detail, but yeah, I'd expect
-that you'd have a device with one (or perhaps more) input clocks
-and a lot of output clocks, and as the guest writes to registers
-that set divider/multiplier settings you'd use clock_set_mul_div()
-to configure the appropriate output clocks.
+--ntQfvTq6GbBMkGNkfiX0LybC6YmKfbWFC
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
--- PMM
+
+On 8/12/21 11:33 AM, Peter Maydell wrote:
+> Delete the trailing blank line at the end of the source file.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/arm/stm32vldiscovery.c | 1 -
+>   1 file changed, 1 deletion(-)
+>=20
+> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+> index 07e401a818d..9b79004703b 100644
+> --- a/hw/arm/stm32vldiscovery.c
+> +++ b/hw/arm/stm32vldiscovery.c
+> @@ -65,4 +65,3 @@ static void stm32vldiscovery_machine_init(MachineClas=
+s *mc)
+>   }
+>  =20
+>   DEFINE_MACHINE("stm32vldiscovery", stm32vldiscovery_machine_init)
+> -
+>=20
+
+Reviewed-by: Alexandre Iooss <erdnaxe@crans.org>
+
+Thanks,
+-- Alexandre
+
+
+--ntQfvTq6GbBMkGNkfiX0LybC6YmKfbWFC--
+
+--fIAhslYSOWGT5tecnf7JL9P8y81fJlGk5
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmEVE5YFAwAAAAAACgkQbHknjz/NzALG
+8hAAsWzUo2ry57dmtrgUHDcnY1gTBm8V7BhyKWRCPn50osIzFALd6zFqZNhFrVcawsY/KHJeidUO
+14aYByj90PGe5tsrh+ijAbfKXP+29ngNMDlTov+a5HNHANRDbc+B6QngyTS98WPehqzJZaFGijtr
+e2hzK6VRkgjj2XzXCrgw1sgMr8n46opaZyOYkCk/mOw2g2nRhPQk3GOeOGW5Ihdlrzeci6L4sLkY
+ijmA/dW1ce+BWs+6dbAosfOkCoO7+ahtULkXsM+46XC99XXaeP9xQqIBT3N12F7WRvBDShZgEWTK
+bxTc1Wk/1E3tT8TYaxVBsoj4VRgA+25dV/PPapjiwRQ8GHqg+S/J2/q6QMK244/EvdfjPCLTi9sC
+YmnTLJHePQNnEytDwJcYrQrxHgWVB6FgCRJRbuHlZ+lbgV3iOmDKG06eESEhy3YQGts7xywtrtZ0
+76pIZU3If95Hc4CDEDEfY/47y86XG4AIDBu3Y319nyHOvF3Zj+TC2oNYCws7F2SpVOejaiGga8D+
+UnlsKJqERaWiHDuULsV9eipWGWMOTrePqs3y25kGunfPRtMWUVgv5/ZAvzpJW2qdKqHU+8RvOML0
+RF0jUytWSKW1yyCQfJY58UOwSmtolujcJ3n0tjOkOlkiMUQE00sd/2fVauGEX+0i+Z2TrXbn+RC8
+nVI=
+=E7ue
+-----END PGP SIGNATURE-----
+
+--fIAhslYSOWGT5tecnf7JL9P8y81fJlGk5--

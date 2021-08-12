@@ -1,95 +1,98 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp192645lff;
-        Thu, 12 Aug 2021 02:38:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9Bk2+FFwijTbfPjrayX0ewMQ1lAwY9LxSTtq2L3QySZBJeR6YPc4I0Q4VjVIIYAh93cMX
-X-Received: by 2002:a92:d9c2:: with SMTP id n2mr2158092ilq.214.1628761093637;
-        Thu, 12 Aug 2021 02:38:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628761093; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp192704lff;
+        Thu, 12 Aug 2021 02:38:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2xyRgwHAlSdki4UYZLMjWO+3o3/dvzgA467LXsf00qGNKv+C3vuG/fQSYu3f+AQioYOjp
+X-Received: by 2002:a6b:e702:: with SMTP id b2mr2370070ioh.118.1628761098634;
+        Thu, 12 Aug 2021 02:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628761098; cv=none;
         d=google.com; s=arc-20160816;
-        b=iN7e+8DnXUOKCk5zjcYI6ZOs9EFWAi1s0BCGKDEUHBkaxRvx7orHvQJPZQYct34EX3
-         sO8StT58V4RxfJ204eq9kMFWPWFYVOVdn1u+K+XQIkLypFmBx0/usD9+svnUwWsCzLPh
-         whUPTbsKMxHjqjs5PVXWii1C7KdL0eIhzi2wBtl8PIdf4wsvFPvY3VnCOo227Mm2hVgh
-         Mo8Zkm2aWDfNON4annrRquoGCis9/abuhaTx2Fg5i2VFAPMXsD/H3dXBJ672cpcpp/Gj
-         ytG4v8GXj7kI1YLjMRk2pmmCRMbUQFo5EyKj3NwrdW6IP0jGlibwzCtGl706yAKO9iPl
-         6QEw==
+        b=nPu6fURC/hXMkdYwxAvIUoSo2zHE1zW78H8apv4I0Zvdx4Kp4o6RX1PZMtwRIqYZr+
+         ONw1YF8f00mhK5qvDdfrLwunXWZB/0/Arf0y60+sbnKm/IDR2rPBBYJh0lVGpkdPJ9ST
+         CquiIuDv7y6Odby/HKOMuAoWCkDeNlnSOhysIRj3iEsd7NIMxP8+3+330Jno7laxMpX8
+         1ysW+yWCZs4HX7jBUujrMe0C+uDW7TKqxjit3rcn+v/k+mEsQryjQUcInPmaqZ94UySQ
+         DOvL2XsAei8o+vIk6aFOVkmCbGmQxnCYPb8kt7oz5k2imR0Fj8BEYOv92+9JI/kuRjWa
+         DCIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Gy7QIjwsa6xMVXE5/WQWgxzP9shOsuOqrCvuoAh1kM0=;
-        b=ICXHIcAIxsETQ5WwHQ9BJM+eTYg43NkmvYcWW6CQGzwEGZRmZ28DIXXeQ0IMHCV7KU
-         ldYZpjsDBYoDRdxR0R4qGw7Ccy9tV+nr1NVEAGMvLpabzxSArdIyKsUQiRCRF+v/98rE
-         E3jE3k2puOafIsSi6wBBtJLmuMr+kMgfcsxUeLSU+/AryF4ElyKvFA1z0vB1BiDB2nsV
-         jKJP8P7QO/VgkRXFQNeuWwWStm48GCN6K9oBiAYqTAE+XQZRra/XE82WhcRSVvA70iAc
-         2bHge7vJ/MXBq/OWuBMge88eviZYE9ma0KqVAzR2HuOx0D6XhIzs6z+v00Y0u+pS01Nx
-         HG+w==
+        bh=QZ34cRsgLtFiqWjLUrzVojRfLDZmQXmFHIvftQxhUGw=;
+        b=YeVjM3ryeZZCvFgdfhOGqN7AkWknKaY9inD2V4+fgu7kQsZTpR3ZzE80F/SBtmYwO5
+         sDupyn5w3rIeVyw6JVbrQ0lKFz0DOygD+9XnONvqSi1WNq5YWinvRGcjv+bDLL81f7SK
+         3kEeysdtOy1M9zyim1VgW6n+8MGxxL1oGcJuVg6ckEd0XysmxgZotCU4osNxBGzEpDnc
+         C7lEuqSNHi7QaJv4HdMnby+IMO97uB45Km8DpbEztvwFGNph1ro9ROV1b3uaZGLs4Wrp
+         E6wBszn0eiZb/rfKZC/H3sVU0VGqUBC9ZmanhmbpTnKhHM1dI91tZgLFh1Ntu0bZpFbC
+         EkYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yjEztFIi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=yRx4qrad;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z21si2570325jao.126.2021.08.12.02.38.13
+        by mx.google.com with ESMTPS id ay15si2378541jab.111.2021.08.12.02.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 02:38:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Aug 2021 02:38:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yjEztFIi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=yRx4qrad;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59230 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE7AC-0000Z4-Vx
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:38:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46302)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mE7AH-0008RU-Sw
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:38:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76J-0005Aw-EM
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 05:34:11 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:53061)
+ id 1mE76M-0005Mt-OT
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:14 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:44654)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76F-0007pR-Bq
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 05:34:10 -0400
-Received: by mail-wm1-x335.google.com with SMTP id f10so874591wml.2
- for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 02:34:06 -0700 (PDT)
+ id 1mE76H-0007s3-PG
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:14 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ l7-20020a1c2507000000b002e6be5d86b3so613349wml.3
+ for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Gy7QIjwsa6xMVXE5/WQWgxzP9shOsuOqrCvuoAh1kM0=;
- b=yjEztFIiLyTiFaUGHat3wweOHC+q7B1SVZktRxyNoKabbUmXzq9zgwbvQHWkRlskJR
- PH0GtkH6Js8m1bZRrw+PUP5heepK13l56bubLm8B8GNQSIKdnblBTW3yBugpEiH0qMmK
- aqUWHQX6fBC0xSWJn/4i9hkbNtzErj0qBLTrDoW44DpCiEQVEkN7LLd3QHgvirYs4ufx
- cS8557TZEjDNjxUb1ZUW0maKaeUMrHTzYIHJNDoW4oazsoF2rGbHFUvOgJPQfZO5JMF1
- MA3hkthZJTZGv7a9+z43gWFUmnfTledZGrMOjx0/LPvx7YnBxNh53ZBGVskn0egqKfgY
- ywdQ==
+ bh=QZ34cRsgLtFiqWjLUrzVojRfLDZmQXmFHIvftQxhUGw=;
+ b=yRx4qradlovMgIPQYHHX3TBntkvWqqJYA7i5X29khpZ4XoUJDetnKlX27tLiCC8KyP
+ 0kpdwgB0z1Mmpf5J5x+j384ix4X33biY1cu9zpPC+itwc8N8zyyFwvfpLY0Od+d5WNhc
+ R/lRTNd+KlWFn5qkXp/vO3aCyNesU1LOFeyV2ca/MCJNLh6FqB6lD5J8fCqf+e2zBSlT
+ qsc5XCzZ0TMRH2EFkVulOVSlKY3BqFwfwnOp/5Nm9YTYFH37oIvk1uHHMgUMqBrmu2FJ
+ c9Ak0zHl3io3VGxoPhA68QGPUNzfikUvmxdYw+6xQmTUPLDWIexpmEOdheyisivD+mEh
+ IZpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Gy7QIjwsa6xMVXE5/WQWgxzP9shOsuOqrCvuoAh1kM0=;
- b=BCnuvV7bJtOMoanGyFYQjIOc/rEPvdj67ZOi5ji8XtkOe2q/CmeHZRJbJyQqFTXTbD
- Hi4IWjY9OZOQqFmgtPBiXg33ZhBbQdB6bX5GsdEzBftVIdr34lBTU3LkWc2JOZKdZBSO
- Ncb/F4c1sfBpZyOWjC3v04vii2+80GtPEDL0oipkecUcfezQHT3HjwH7m9kHm1+3rs2z
- fVsnlALuztUQt4umE7NrNdJ59b5jaipI39ZmnTtWSIydwTFtwEYQKQcn9k0/FmeSUJS9
- 5BgL3p1t2O2Lb3xgpw+Yut5/lC8B/3JrewjF5hq0JJYcfN9fj9k/NZrbWiczjULxfgrD
- qTVQ==
-X-Gm-Message-State: AOAM531/qE8nqLxVQugD7s2jOGEPsygEVp9gDJw2nuQVBhZIdKu79zL2
- obfyHI4U7c8GPdrDrDo7gIMZfn6ANlwsbg==
-X-Received: by 2002:a1c:f206:: with SMTP id s6mr14389545wmc.15.1628760845800; 
- Thu, 12 Aug 2021 02:34:05 -0700 (PDT)
+ bh=QZ34cRsgLtFiqWjLUrzVojRfLDZmQXmFHIvftQxhUGw=;
+ b=TNOMBksx0CsFmiJmq81zHjtoqCa39Oo5JGZrEYyiF1+6V8Uz88/IZP15sfFbK/PEL5
+ FZ2U4jJ7tePe/FaoClKc0Un7e//LeD/czQ1SzRJOIUvKDgYut+T4myyV/1ubD1tj1NZ7
+ emS3gA3NiK8S+JAXJ6lmT7LTA3hGjn449D9cBnBHeL2EgAop3OKI9ziAcahPp3PHL8hx
+ V1agNSXFdBnFAMpTAXLXLelUrIT/CfPfz5lixL2aH8b/IfpXnvenZRBlNQgCjtMubI5x
+ QCcjFuidxBLXv4OjOp92cHqG/khVcwa7vL3zG32NRA/eOFc64UTT6AN48WTmbc8CXVav
+ bCWg==
+X-Gm-Message-State: AOAM530OQCd914420F026A1m2JsxCqrIClQzs0fXi+ZOBBHm1FZ6qdTA
+ xyGaSm0KkwyTLPMaA3izTk5JCg==
+X-Received: by 2002:a05:600c:ad8:: with SMTP id
+ c24mr14212401wmr.28.1628760848595; 
+ Thu, 12 Aug 2021 02:34:08 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.05
+ by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 02:34:05 -0700 (PDT)
+ Thu, 12 Aug 2021 02:34:08 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 07/25] armsse: Wire up systick cpuclk clock
-Date: Thu, 12 Aug 2021 10:33:38 +0100
-Message-Id: <20210812093356.1946-8-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 10/25] hw/arm: Don't allocate separate MemoryRegions
+ in stm32 SoC realize
+Date: Thu, 12 Aug 2021 10:33:41 +0100
+Message-Id: <20210812093356.1946-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210812093356.1946-1-peter.maydell@linaro.org>
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
@@ -105,54 +108,140 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  Alistair Francis <alistair@alistair23.me>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>, Joel Stanley <joel@jms.id.au>,
  Alexandre Iooss <erdnaxe@crans.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sHCVsQus9ptl
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cFXNe1wnPqTQ
 
-Wire up the cpuclk for the systick devices to the SSE object's
-existing mainclk clock.
-
-We do not wire up the refclk because the SSE subsystems do not
-provide a refclk.  (This is documented in the IoTKit and SSE-200
-TRMs; the SSE-300 TRM doesn't mention it but we assume it follows the
-same approach.) When we update the systick device later to honour "no
-refclk connected" this will fix a minor emulation inaccuracy for the
-SSE-based boards.
+In the realize methods of the stm32f100 and stm32f205 SoC objects, we
+call g_new() to create new MemoryRegion objjects for the sram, flash,
+and flash_alias.  This is unnecessary (and leaves open the
+possibility of leaking the allocations if we exit from realize with
+an error).  Make these MemoryRegions member fields of the device
+state struct instead, as stm32f405 already does.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/armsse.c | 3 +++
- 1 file changed, 3 insertions(+)
+ include/hw/arm/stm32f100_soc.h |  4 ++++
+ include/hw/arm/stm32f205_soc.h |  4 ++++
+ hw/arm/stm32f100_soc.c         | 17 +++++++----------
+ hw/arm/stm32f205_soc.c         | 17 +++++++----------
+ 4 files changed, 22 insertions(+), 20 deletions(-)
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index a1456cb0f42..70b52c3d4b9 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -995,6 +995,9 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         int j;
-         char *gpioname;
+diff --git a/include/hw/arm/stm32f100_soc.h b/include/hw/arm/stm32f100_soc.h
+index 71bffcf4fd5..b7d71c6c634 100644
+--- a/include/hw/arm/stm32f100_soc.h
++++ b/include/hw/arm/stm32f100_soc.h
+@@ -52,6 +52,10 @@ struct STM32F100State {
  
-+        qdev_connect_clock_in(cpudev, "cpuclk", s->mainclk);
-+        /* The SSE subsystems do not wire up a systick refclk */
+     STM32F2XXUsartState usart[STM_NUM_USARTS];
+     STM32F2XXSPIState spi[STM_NUM_SPIS];
 +
-         qdev_prop_set_uint32(cpudev, "num-irq", s->exp_numirq + NUM_SSE_IRQS);
-         /*
-          * In real hardware the initial Secure VTOR is set from the INITSVTOR*
++    MemoryRegion sram;
++    MemoryRegion flash;
++    MemoryRegion flash_alias;
+ };
+ 
+ #endif
+diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_soc.h
+index 985ff63aa9e..75251494917 100644
+--- a/include/hw/arm/stm32f205_soc.h
++++ b/include/hw/arm/stm32f205_soc.h
+@@ -63,6 +63,10 @@ struct STM32F205State {
+     STM32F2XXSPIState spi[STM_NUM_SPIS];
+ 
+     qemu_or_irq *adc_irqs;
++
++    MemoryRegion sram;
++    MemoryRegion flash;
++    MemoryRegion flash_alias;
+ };
+ 
+ #endif
+diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
+index 0c4a5c66451..0be92b2c475 100644
+--- a/hw/arm/stm32f100_soc.c
++++ b/hw/arm/stm32f100_soc.c
+@@ -67,25 +67,22 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+     int i;
+ 
+     MemoryRegion *system_memory = get_system_memory();
+-    MemoryRegion *sram = g_new(MemoryRegion, 1);
+-    MemoryRegion *flash = g_new(MemoryRegion, 1);
+-    MemoryRegion *flash_alias = g_new(MemoryRegion, 1);
+ 
+     /*
+      * Init flash region
+      * Flash starts at 0x08000000 and then is aliased to boot memory at 0x0
+      */
+-    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F100.flash",
++    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F100.flash",
+                            FLASH_SIZE, &error_fatal);
+-    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
+-                             "STM32F100.flash.alias", flash, 0, FLASH_SIZE);
+-    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, flash);
+-    memory_region_add_subregion(system_memory, 0, flash_alias);
++    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
++                             "STM32F100.flash.alias", &s->flash, 0, FLASH_SIZE);
++    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
++    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
+ 
+     /* Init SRAM region */
+-    memory_region_init_ram(sram, NULL, "STM32F100.sram", SRAM_SIZE,
++    memory_region_init_ram(&s->sram, NULL, "STM32F100.sram", SRAM_SIZE,
+                            &error_fatal);
+-    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
++    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
+ 
+     /* Init ARMv7m */
+     armv7m = DEVICE(&s->armv7m);
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index 9cd41bf56da..0bd215aebd7 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -84,21 +84,18 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+     int i;
+ 
+     MemoryRegion *system_memory = get_system_memory();
+-    MemoryRegion *sram = g_new(MemoryRegion, 1);
+-    MemoryRegion *flash = g_new(MemoryRegion, 1);
+-    MemoryRegion *flash_alias = g_new(MemoryRegion, 1);
+ 
+-    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F205.flash",
++    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F205.flash",
+                            FLASH_SIZE, &error_fatal);
+-    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
+-                             "STM32F205.flash.alias", flash, 0, FLASH_SIZE);
++    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
++                             "STM32F205.flash.alias", &s->flash, 0, FLASH_SIZE);
+ 
+-    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, flash);
+-    memory_region_add_subregion(system_memory, 0, flash_alias);
++    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
++    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
+ 
+-    memory_region_init_ram(sram, NULL, "STM32F205.sram", SRAM_SIZE,
++    memory_region_init_ram(&s->sram, NULL, "STM32F205.sram", SRAM_SIZE,
+                            &error_fatal);
+-    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
++    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
+ 
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
 -- 
 2.20.1
 

@@ -1,102 +1,103 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp193304lff;
-        Thu, 12 Aug 2021 02:39:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwshgD+oqssLyaHWWXX2Zdm0+hi0vMP3uefUBS83GMFSiBPSIb+tPrx57ZTUahCF0EnCyVU
-X-Received: by 2002:a05:6638:214d:: with SMTP id z13mr2932478jaj.113.1628761156768;
-        Thu, 12 Aug 2021 02:39:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628761156; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp193333lff;
+        Thu, 12 Aug 2021 02:39:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw+OSdisk86nI13eow4DPKnwFLGP4Js5PH9w9BRsQzw9NwTjgvbX5jp+kJageXcbuwS8NEp
+X-Received: by 2002:a37:6682:: with SMTP id a124mr3558658qkc.127.1628761158272;
+        Thu, 12 Aug 2021 02:39:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628761158; cv=none;
         d=google.com; s=arc-20160816;
-        b=tjgGk+nWda3ADddQWRzih7w0SQZ5buaK+AAh21p3bXLmOZCLUoy7pJydtRdi2sStPj
-         eD0/4T4fMFW8wTmUd6lqkl/aiBz7ozhWZySA5A2xE4TM3078xAr58bRQez9mKwhAw+0v
-         iXB1OpE3KYbWjSRKXsQKTpESysVccJEmqn9W0d6JKwjEdpZxS7qA2ttGUjw1PnXTPZ5O
-         3eLnxjBBB8/YsEeUIZ+cbM0AQmzghBEo7JO21KxOanVeSTJCR+IKXafdDMkk0NFviMbf
-         lHU9ogl49GOghoxX0sTiuuDDBFZXQCc5AwcNxl3EeaBk2sd1d/4gn8e2YhR+w6ZOVRGK
-         +ArA==
+        b=XOVkQaNsiXHl8X4+A96fnEb595d0WRz803yN6tR64byvU8cbxvMTjqnyP+y3XqO7lw
+         2k1kGUXFcAhb/YSmrBHdSCKCsFzSMGsamSRD8gvgfI0dZY2tzSN+a48O0pzrCanGv53+
+         q+qD/kmYRKirYI8l+ZqnnU6eQhik+fMnmck4tY7D8AfADPc7tkRy9w+HBkryohw5i5C4
+         OlgMqwtGCBtRlLOQsoaFNixwiG2O9Q18t0frOMgxUN0g83E95U42ppcf8CeDNxdBVpg1
+         8TmJDoFrqcDAjWe28xTR5B4VXFHf3io23jsaGtHWuoDAG0OvHUnBy6pPeyYGd1LOgy+8
+         YWFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UVgw7AO0m4VkhMh5uz4efVOx0eI266AWuBpF1oyx+bo=;
-        b=bwQoUw0iiKPeQbqkqz/QJtoQX7lpbUC/siwYw4iHTwO+w4kF8NZp3hYwEIhaSwmT7s
-         E8Urkrm/FEoI7JNAhXAW8vyhIJtlzHx58fpakDXOzo8V9nf0Pw44+Y+y4pvmhKvMaN+D
-         8d5a4cgtn66ULkt0QHDD7SzToBf214OpPwj5sn1bqYYm59xhoeA6QOowY7cE2/ljqQ0w
-         8GADG4tVNrR3ioe/Bs+Z5mU7x32xdoE8G6Y3tzpl74Q5w6edCWKVJVAhhyI8KVAnKIWc
-         v5TxnIzfSViU+zmwKo/A2oIQU/rFt5SxrD/wyQyotMgjjC37RXFKP0d5u8STVMX3z/cw
-         HJNg==
+        bh=ylx+ciRLSX1VOp2PZHd/2EZv1BHv9jNlhqLtZX6B8Y0=;
+        b=TjWk8C1gUpVxVDmD3yopuK9WqlH+QwwrIfDULMHKYu65Rpg1cYClu75OvvMM3a+eps
+         RTFIVP6p8jD8g6wsd+9BLeH2KRD96C0GiccH1PchAspzmuHF+Ot0wfAznSVN4JTO9tmL
+         RE3hCARItJhrGlS9kIcSP4+MTxxC1qXbjph8REgX7rTXWQbv/p7ZljOxIBFw9NYHWrsE
+         UymxPRqvR8tLptQ0SM3ocTnz5MVj2BBn3K6+M0yg2U0Ki2NeTkgDCb92mhjIAtrTZDGc
+         E5dwhJX/3131Acmz8CrgooyraMMpZgXazv7wrvneQZxPxwPwG+tvwd+H91ZgGZeVLjy+
+         ufJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IFTVvxOU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MGkLFDtN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l15si2596166jak.4.2021.08.12.02.39.16
+        by mx.google.com with ESMTPS id n1si1453443qvp.45.2021.08.12.02.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 02:39:16 -0700 (PDT)
+        Thu, 12 Aug 2021 02:39:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IFTVvxOU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MGkLFDtN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36120 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE7BE-0003vR-2u
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:39:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46384)
+	id 1mE7BF-0003y6-Gt
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 05:39:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46306)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76M-0005JV-0I
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:14 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:45700)
+ id 1mE76J-0005BJ-Iw
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:11 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:46767)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mE76H-0007qk-6X
- for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:13 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id v4so234606wro.12
- for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:08 -0700 (PDT)
+ id 1mE76E-0007os-85
+ for qemu-devel@nongnu.org; Thu, 12 Aug 2021 05:34:11 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ h24-20020a1ccc180000b029022e0571d1a0so4043923wmb.5
+ for <qemu-devel@nongnu.org>; Thu, 12 Aug 2021 02:34:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UVgw7AO0m4VkhMh5uz4efVOx0eI266AWuBpF1oyx+bo=;
- b=IFTVvxOU0rNfXGT9+5kkc10y+Qs3B7irl5seuip3uspEfYfOu/xDHZ+4Nnue1CJF3G
- /3w24TfFtQ7dCiYRgHi+0/gM5cH0XC/gfVnMS67ytCFTIwO9Bq/9w+6IhK8v0txjsnOA
- ZTyltqQwRTavjpKQo3xLtmt4oN/WpznMc8VnpMTILHHCr8K11/BxQ3GVaUsFCiEoGy1P
- qLGDgZv6l1fK7XcQwLIEM/tNmtO8DHYRVqzxR0Bi9yGZHDooKiIYu5Vp3OuYXhkszcGy
- TSYJfhz2zPzoNuIndJ/kn9SmM5Cz99jhlQdqaFeWFeq7hmdqKOc3MhpIeb7tyE5QctEe
- ghdQ==
+ bh=ylx+ciRLSX1VOp2PZHd/2EZv1BHv9jNlhqLtZX6B8Y0=;
+ b=MGkLFDtNFqsalT3ezMKfPwRD55To5J7yqy0f9sNNcZYGd3EgXGShnvNdcVXCvOGq+c
+ KP+yaU0gn8Sz4WYNhBH9ROfTW9rlGPqPt870pdFSRP9v8N6NaWLANyweKwfhQpN1qul0
+ DNvx9n1WK8+F4OCZUBjLk45DdPOytRnpmyb8ZuG+U0V1foh86TSM5UTPvbSy8Mdy2+NR
+ YY/Z09gdeOlLXZrjHJWdEXtIHmnLLFRm6GiSAmzvON2Yrpp1P7RN5UezYBbmOgqWTJyk
+ hFKglV7MXEUwzqzgVn8v0OQYJBrbqgDwRFg9PF0pxvEeM9lLOi1sKYYtOWcMA0h9yk6X
+ x9XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UVgw7AO0m4VkhMh5uz4efVOx0eI266AWuBpF1oyx+bo=;
- b=LkchDxgwS0IglOqhzGdraWO6zzFgrPi5F+8/bQ279MwnP7YS7mJ/hWCd+rDVMBT8me
- Id7G+dCjrJcD+XpGnz2mJV70izH+nx49V0yVMMzgt7sTKmjSWbST31l38CfbxQPAPk0v
- av0O4zgFAPfoDQ3sXDsDk5j6xvhdyXk5VTVEyDZZsmA/y/mHA6bhlTtYFSCaKOTuUrKi
- 3tFDDbwQShAehFueRJBkgr7EN4sXSL1EoxMHpq+lcdpwu06pfQZsBJ42gicqU/93pyia
- Wg9un0GkwYWhswyohFTQq34dfHeV5R+LY/w7h0vfEKu+XPra5r4b9eSTaDRL9vsSPVHb
- CEXQ==
-X-Gm-Message-State: AOAM53009xm07drcBhM4I20oua7XB8Hf1au68d98pLDgWy4fgJFlFpHv
- kblGdzvp1vYA+iGRrzLVilQmWQ==
-X-Received: by 2002:adf:cf07:: with SMTP id o7mr2914341wrj.216.1628760847642; 
- Thu, 12 Aug 2021 02:34:07 -0700 (PDT)
+ bh=ylx+ciRLSX1VOp2PZHd/2EZv1BHv9jNlhqLtZX6B8Y0=;
+ b=sTKOfyx3Y2RIZQEfdmZtgRds6ccqIp0mCGVstjewwxP1ee7IBfru/CzuL5wx1t++o0
+ gfewv8+e0uQ5XtN8l+mkENH3SxJRf/3K1k8bcRu/j/e5HJcTJbIVsKuHDus+iKIlbmks
+ JNmvS1m0e+YSOQEHCO/vxho0Byh5iRvOi8ZR2VRmATnAm5QOB/A9LC2F644hsl/ouGxq
+ PXaGJDB/tSf5ZuTh73FunAU8npGUzKuoZ9mvwZwo5eqPq4/rsL6JGrh0LeOl4rJuGqtT
+ alcMVcSgGCM1khfTUMQVI9bUSmm2JpGWHhFERfIdU8geEn1egrSFr4hpyzY1n5DEB/3p
+ yMvA==
+X-Gm-Message-State: AOAM533UtZ9Lb+MemrvxksMKrqMc9pHMaTfE2aQ/BkdwVy+QxNxNavoJ
+ 7wz6wEXKx5NGjxRv87FYWxU7Bw==
+X-Received: by 2002:a7b:c083:: with SMTP id r3mr3023821wmh.65.1628760844921;
+ Thu, 12 Aug 2021 02:34:04 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.06
+ by smtp.gmail.com with ESMTPSA id l38sm8158506wmp.15.2021.08.12.02.34.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 02:34:07 -0700 (PDT)
+ Thu, 12 Aug 2021 02:34:04 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 09/25] clock: Provide builtin multiplier/divider
-Date: Thu, 12 Aug 2021 10:33:40 +0100
-Message-Id: <20210812093356.1946-10-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 06/25] hw/arm/armv7m: Create input clocks
+Date: Thu, 12 Aug 2021 10:33:37 +0100
+Message-Id: <20210812093356.1946-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210812093356.1946-1-peter.maydell@linaro.org>
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,220 +123,120 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: piaPsJj2vBcB
+X-TUID: C/3mSMga9pEr
 
-It is quite common for a clock tree to involve possibly programmable
-clock multipliers or dividers, where the frequency of a clock is for
-instance divided by 8 to produce a slower clock to feed to a
-particular device.
-
-Currently we provide no convenient mechanism for modelling this.  You
-can implement it by having an input Clock and an output Clock, and
-manually setting the period of the output clock in the period-changed
-callback of the input clock, but that's quite clunky.
-
-This patch adds support in the Clock objects themselves for setting a
-multiplier or divider.  The effect of setting this on a clock is that
-when the clock's period is changed, all the children of the clock are
-set to period * multiplier / divider, rather than being set to the
-same period as the parent clock.
+Create input clocks on the armv7m container object which pass through
+to the systick timers, so that users of the armv7m object can specify
+the clocks being used.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/devel/clocks.rst   | 23 +++++++++++++++++++++++
- include/hw/clock.h      | 29 +++++++++++++++++++++++++++++
- hw/core/clock-vmstate.c | 24 +++++++++++++++++++++++-
- hw/core/clock.c         | 29 +++++++++++++++++++++++++----
- 4 files changed, 100 insertions(+), 5 deletions(-)
+ include/hw/arm/armv7m.h |  6 ++++++
+ hw/arm/armv7m.c         | 23 +++++++++++++++++++++++
+ 2 files changed, 29 insertions(+)
 
-diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-index 956bd147ea0..430fbd842e5 100644
---- a/docs/devel/clocks.rst
-+++ b/docs/devel/clocks.rst
-@@ -260,6 +260,29 @@ clocks get the new clock period value: *Clock 2*, *Clock 3* and *Clock 4*.
- It is not possible to disconnect a clock or to change the clock connection
- after it is connected.
+diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+index fe8b248a6c6..b7ba0ff409c 100644
+--- a/include/hw/arm/armv7m.h
++++ b/include/hw/arm/armv7m.h
+@@ -15,6 +15,7 @@
+ #include "hw/misc/armv7m_ras.h"
+ #include "target/arm/idau.h"
+ #include "qom/object.h"
++#include "hw/clock.h"
  
-+Clock multiplier and divider settings
-+-------------------------------------
-+
-+By default, when clocks are connected together, the child
-+clocks run with the same period as their source (parent) clock.
-+The Clock API supports a built-in period multiplier/divider
-+mechanism so you can configure a clock to make its children
-+run at a different period from its own. If you call the
-+``clock_set_mul_div()`` function you can specify the clock's
-+multiplier and divider values. The children of that clock
-+will all run with a period of ``parent_period * multiplier / divider``.
-+For instance, if the clock has a frequency of 8MHz and you set its
-+multiplier to 2 and its divider to 3, the child clocks will run
-+at 12MHz.
-+
-+You can change the multiplier and divider of a clock at runtime,
-+so you can use this to model clock controller devices which
-+have guest-programmable frequency multipliers or dividers.
-+
-+Note that ``clock_set_mul_div()`` does not automatically call
-+``clock_propagate()``. If you make a runtime change to the
-+multiplier or divider you must call clock_propagate() yourself.a
-+
- Unconnected input clocks
- ------------------------
- 
-diff --git a/include/hw/clock.h b/include/hw/clock.h
-index a7187eab95e..11f67fb9701 100644
---- a/include/hw/clock.h
-+++ b/include/hw/clock.h
-@@ -81,6 +81,10 @@ struct Clock {
-     void *callback_opaque;
-     unsigned int callback_events;
- 
-+    /* Ratio of the parent clock to run the child clocks at */
-+    uint32_t multiplier;
-+    uint32_t divider;
-+
-     /* Clocks are organized in a clock tree */
-     Clock *source;
-     QLIST_HEAD(, Clock) children;
-@@ -350,4 +354,29 @@ static inline bool clock_is_enabled(const Clock *clk)
+ #define TYPE_BITBAND "ARM-bitband-memory"
+ OBJECT_DECLARE_SIMPLE_TYPE(BitBandState, BITBAND)
+@@ -51,6 +52,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MState, ARMV7M)
+  * + Property "vfp": enable VFP (forwarded to CPU object)
+  * + Property "dsp": enable DSP (forwarded to CPU object)
+  * + Property "enable-bitband": expose bitbanded IO
++ * + Clock input "refclk" is the external reference clock for the systick timers
++ * + Clock input "cpuclk" is the main CPU clock
   */
- char *clock_display_freq(Clock *clk);
+ struct ARMv7MState {
+     /*< private >*/
+@@ -82,6 +85,9 @@ struct ARMv7MState {
+     /* MR providing default PPB behaviour */
+     MemoryRegion defaultmem;
  
-+/**
-+ * clock_set_mul_div: set multiplier/divider for child clocks
-+ * @clk: clock
-+ * @multiplier: multiplier value
-+ * @divider: divider value
-+ *
-+ * By default, a Clock's children will all run with the same period
-+ * as their parent. This function allows you to adjust the multiplier
-+ * and divider used to derive the child clock frequency.
-+ * For example, setting a multiplier of 2 and a divider of 3
-+ * will run child clocks with a period 2/3 of the parent clock,
-+ * so if the parent clock is an 8MHz clock the children will
-+ * be 12MHz.
-+ *
-+ * Setting the multiplier to 0 will stop the child clocks.
-+ * Setting the divider to 0 is a programming error (diagnosed with
-+ * an assertion failure).
-+ * Setting a multiplier value that results in the child period
-+ * overflowing is not diagnosed.
-+ *
-+ * Note that this function does not call clock_propagate(); the
-+ * caller should do that if necessary.
-+ */
-+void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider);
++    Clock *refclk;
++    Clock *cpuclk;
 +
- #endif /* QEMU_HW_CLOCK_H */
-diff --git a/hw/core/clock-vmstate.c b/hw/core/clock-vmstate.c
-index 260b13fc2c8..07bb45d7ed4 100644
---- a/hw/core/clock-vmstate.c
-+++ b/hw/core/clock-vmstate.c
-@@ -14,6 +14,24 @@
- #include "migration/vmstate.h"
- #include "hw/clock.h"
+     /* Properties */
+     char *cpu_type;
+     /* MemoryRegion the board provides to us (with its devices, RAM, etc) */
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 7e7fb7a3ad3..db1bfa98df0 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -14,12 +14,14 @@
+ #include "hw/arm/boot.h"
+ #include "hw/loader.h"
+ #include "hw/qdev-properties.h"
++#include "hw/qdev-clock.h"
+ #include "elf.h"
+ #include "sysemu/reset.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+ #include "target/arm/idau.h"
++#include "migration/vmstate.h"
  
-+static bool muldiv_needed(void *opaque)
-+{
-+    Clock *clk = opaque;
+ /* Bitbanded IO.  Each word corresponds to a single bit.  */
+ 
+@@ -265,6 +267,9 @@ static void armv7m_instance_init(Object *obj)
+         object_initialize_child(obj, "bitband[*]", &s->bitband[i],
+                                 TYPE_BITBAND);
+     }
 +
-+    return clk->multiplier != 1 || clk->divider != 1;
-+}
-+
-+const VMStateDescription vmstate_muldiv = {
-+    .name = "clock/muldiv",
++    s->refclk = qdev_init_clock_in(DEVICE(obj), "refclk", NULL, NULL, 0);
++    s->cpuclk = qdev_init_clock_in(DEVICE(obj), "cpuclk", NULL, NULL, 0);
+ }
+ 
+ static void armv7m_realize(DeviceState *dev, Error **errp)
+@@ -416,6 +421,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* Create and map the systick devices */
++    qdev_connect_clock_in(DEVICE(&s->systick[M_REG_NS]), "refclk", s->refclk);
++    qdev_connect_clock_in(DEVICE(&s->systick[M_REG_NS]), "cpuclk", s->cpuclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), errp)) {
+         return;
+     }
+@@ -431,6 +438,10 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+          */
+         object_initialize_child(OBJECT(dev), "systick-reg-s",
+                                 &s->systick[M_REG_S], TYPE_SYSTICK);
++        qdev_connect_clock_in(DEVICE(&s->systick[M_REG_S]), "refclk",
++                              s->refclk);
++        qdev_connect_clock_in(DEVICE(&s->systick[M_REG_S]), "cpuclk",
++                              s->cpuclk);
+ 
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->systick[M_REG_S]), errp)) {
+             return;
+@@ -504,11 +515,23 @@ static Property armv7m_properties[] = {
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
++static const VMStateDescription vmstate_armv7m = {
++    .name = "armv7m",
 +    .version_id = 1,
 +    .minimum_version_id = 1,
-+    .needed = muldiv_needed,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(multiplier, Clock),
-+        VMSTATE_UINT32(divider, Clock),
-+    },
++        VMSTATE_CLOCK(refclk, SysTickState),
++        VMSTATE_CLOCK(cpuclk, SysTickState),
++        VMSTATE_END_OF_LIST()
++    }
 +};
 +
- const VMStateDescription vmstate_clock = {
-     .name = "clock",
-     .version_id = 0,
-@@ -21,5 +39,9 @@ const VMStateDescription vmstate_clock = {
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT64(period, Clock),
-         VMSTATE_END_OF_LIST()
--    }
-+    },
-+    .subsections = (const VMStateDescription*[]) {
-+        &vmstate_muldiv,
-+        NULL
-+    },
- };
-diff --git a/hw/core/clock.c b/hw/core/clock.c
-index fc5a99683f8..c371b9e977a 100644
---- a/hw/core/clock.c
-+++ b/hw/core/clock.c
-@@ -64,6 +64,15 @@ bool clock_set(Clock *clk, uint64_t period)
-     return true;
- }
- 
-+static uint64_t clock_get_child_period(Clock *clk)
-+{
-+    /*
-+     * Return the period to be used for child clocks, which is the parent
-+     * clock period adjusted for for multiplier and divider effects.
-+     */
-+    return muldiv64(clk->period, clk->multiplier, clk->divider);
-+}
-+
- static void clock_call_callback(Clock *clk, ClockEvent event)
+ static void armv7m_class_init(ObjectClass *klass, void *data)
  {
-     /*
-@@ -78,15 +87,16 @@ static void clock_call_callback(Clock *clk, ClockEvent event)
- static void clock_propagate_period(Clock *clk, bool call_callbacks)
- {
-     Clock *child;
-+    uint64_t child_period = clock_get_child_period(clk);
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
-     QLIST_FOREACH(child, &clk->children, sibling) {
--        if (child->period != clk->period) {
-+        if (child->period != child_period) {
-             if (call_callbacks) {
-                 clock_call_callback(child, ClockPreUpdate);
-             }
--            child->period = clk->period;
-+            child->period = child_period;
-             trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
--                               CLOCK_PERIOD_TO_HZ(clk->period),
-+                               CLOCK_PERIOD_TO_HZ(child->period),
-                                call_callbacks);
-             if (call_callbacks) {
-                 clock_call_callback(child, ClockUpdate);
-@@ -110,7 +120,7 @@ void clock_set_source(Clock *clk, Clock *src)
- 
-     trace_clock_set_source(CLOCK_PATH(clk), CLOCK_PATH(src));
- 
--    clk->period = src->period;
-+    clk->period = clock_get_child_period(src);
-     QLIST_INSERT_HEAD(&src->children, clk, sibling);
-     clk->source = src;
-     clock_propagate_period(clk, false);
-@@ -133,10 +143,21 @@ char *clock_display_freq(Clock *clk)
-     return freq_to_str(clock_get_hz(clk));
- }
- 
-+void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider)
-+{
-+    assert(divider != 0);
-+
-+    clk->multiplier = multiplier;
-+    clk->divider = divider;
-+}
-+
- static void clock_initfn(Object *obj)
- {
-     Clock *clk = CLOCK(obj);
- 
-+    clk->multiplier = 1;
-+    clk->divider = 1;
-+
-     QLIST_INIT(&clk->children);
+     dc->realize = armv7m_realize;
++    dc->vmsd = &vmstate_armv7m;
+     device_class_set_props(dc, armv7m_properties);
  }
  
 -- 

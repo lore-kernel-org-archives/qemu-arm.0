@@ -1,102 +1,103 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp304238lff;
-        Thu, 12 Aug 2021 05:14:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2NelLmcGQ0JIHUB8i9KQzPCzPX0n98r+wubbqamfZLOvW6Ph8/fXm/ZGGIiXZ3nT/xIAp
-X-Received: by 2002:a67:8751:: with SMTP id j78mr2400279vsd.50.1628770453547;
-        Thu, 12 Aug 2021 05:14:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628770453; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp311667lff;
+        Thu, 12 Aug 2021 05:23:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwFAiiYpCU1s8k40gpiaIuWiGAy2b3DoGBsc0+dx4UF14KSsQ32cNmhtXwGfAHkHlIXtf2u
+X-Received: by 2002:a67:4382:: with SMTP id q124mr1613835vsa.6.1628771032252;
+        Thu, 12 Aug 2021 05:23:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628771032; cv=none;
         d=google.com; s=arc-20160816;
-        b=LDWwSJjS63+h5yu3UCbv832J6Q5Cop//36XU4Ew34hXkiSU6aie+brk81xjKoAYTAG
-         uPxvty8rGe/HAnkIxPLrzADnQvJ+0Dq9btZE4gyBSpcr1s5UAgHGTzMXujdR+bUHnVL2
-         Id/UZjQHcjnkrsJxZCTjAeC9c0V4r+RLWwn3j9V4cMUVmyV6Ry0d/5FAmMcGPG7Kq5Oi
-         2XlPflbY9+VxMacIKqXrxw1yXLrD9H+S0aAug4OYezS/U4qlBlKX4Me/7BJFtcVqaikO
-         +3ax4HpHsOheq9q4xoHJyRLEE8YclhXFRUE0zBkYoxBsH2HRIIDYFTKmQgeeK7g3Ecru
-         OMwQ==
+        b=a9WA/y7vuydQAq/wVshQiRWVGBsXSulSNamMe3/uknwd7CgIjJl3IFMbg1ua7fyCDL
+         CphhtkjHTMi2SnZe5RT5jngZAkgfdj5IynTMZeLo5FLUKzGtAo9UUx7j6PKC2cdxZ30R
+         IAyRuyso6hvh3eZQPvir2tp18HwX1iEu5j6PVlMl0J9PFWsIcaOlDtgUspb2F9yrXeKr
+         spv/VAJFY+KCMnxu+h32KFSF0feoiLDBmNwAbWkZ2zCIuvw4/6Ccl+XYopTm8rpdA8v8
+         aK4blSHPmltpl/WehrQl5r1uyUazJuJNzevAAnEbUU1PNNUk9iUoB7y/3sZK/jjU5jOi
+         yLLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:to:subject
-         :dkim-signature;
-        bh=vQP17avesgB0x1IluWEUa9ysUrAZkEpN5tdJPGaU7hY=;
-        b=aFtG3IJN3M4bkJwLdaQ4Pzalv5cFjKcDaRAVtPa/8dqOeYnpW17QmrEz12JXAIr7KI
-         jhjU9x1k2tJh7T931ucL9Hz4jkznIzCY1KIQqI1pOZYhj34SvHZFKxHMTxfQR0X3VbHc
-         jNxv/n09mQcksgnJ+hKfWG21mK1rKTtfMkCXjAWeTCEH3ZevCyToeYKe91PcYy8ko+AA
-         dkQx0skj61/qiTA+e/c++RV4o/Q37vCTgRhqgL975fmnQf1cPm/gNKs5fmmeJGmlhXbM
-         CWLuaqnAZI33S4pK5CY2IB70ytNXakSmFMbD1K8ruALFo8cENTZxdQt5BU48hV7mUSd3
-         LoZw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=FB1Nqq2kM3Ah3RRR9gw4IQx5hqcTQ+AmfQ9BChqvCLk=;
+        b=PGDGqsGUzvopdhhsPIcv/KK7leP55zL0C2YVwnCpsP3QtK1AY+/wYBUP0eI8a3HVBE
+         4vvKwg2Dvvlykj7vvfK/p2RVmIbQgt7nrKYshgbvwAyze5WufSeLmUbAP4kPoc3DeNYT
+         nsrJiAFVPxLxS45efMZvRoX/qOE2+kZa6VrrAw1CKezBTtakVB+Q5ydtLtJSsIf71p+x
+         gtmmJcwNv3UZ/5aTF4CFcpbJygjohAEiepWL1wGYC58OAyf0aX5QGxXgUtfqFw6elxae
+         eNVdoGggI0OZwOnrrW1DXUAO8IF0up2wlA2jQx2JtT3WeIqVX0UYNnKeAN8i8Ul4U8Gg
+         xj7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b="TTg/HPNu";
+       dkim=fail header.i=@linaro.org header.s=google header.b=vLOvQOzX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6si851480vsk.6.2021.08.12.05.14.13
+        by mx.google.com with ESMTPS id w75si861594vsw.319.2021.08.12.05.23.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 05:14:13 -0700 (PDT)
+        Thu, 12 Aug 2021 05:23:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b="TTg/HPNu";
+       dkim=fail header.i=@linaro.org header.s=google header.b=vLOvQOzX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Received: from localhost ([::1]:35202 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38034 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mE9bA-00047s-Rj
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 08:14:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51322)
+	id 1mE9kV-0007Nc-Jv
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 08:23:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53934)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1mE9ay-00047c-EF; Thu, 12 Aug 2021 08:14:00 -0400
-Received: from redisdead.crans.org ([185.230.79.39]:60814)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1mE9at-00005f-QU; Thu, 12 Aug 2021 08:14:00 -0400
-Received: from [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f] (unknown
- [IPv6:2a0c:700:3012:13:7783:661a:ffa4:4d1f])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by redisdead.crans.org (Postfix) with ESMTPSA id 163782C3;
- Thu, 12 Aug 2021 14:13:52 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
- t=1628770432; bh=RsXXIjsLjTLrdc7D318x5yAlKbLUsl5sHzo5jGvrO9k=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=TTg/HPNunD+Ypx89F1Hl3IiYt0q5bjXlQ+DCqGlKABL51aAMNMvnXnN1iqdlJA7s4
- 7vWdzN673rVp2w6WMa2x5llVy/oqUaradQz3TGdD2N4FSn9PqZfLXnPpQhy9UY4rm9
- xDOoStvk57Lwi2g1odnfNokYrTgqX6zTVhm/8lbOr+8xO5GmGNe3R+QfDXs+GYiemJ
- KgPm9SHe1JCEGTR6U1rV3IHtUIo4XhIc1jDiJKa4aWskHTTJ1Xmp3Xby2Kk3yrKsox
- vqpMMISBgzbOupL5s2chCKRGr3WB/UHoxzOnXCChk3SY+uH8Tmq//bUCyJaTKhYMxL
- c4BLmuXs3O443S6aLX+/hJVxVcoXuBnNqbtQrscKjW1ad0/FRIhIvzF5/n4bKpbCA/
- 4WqCynuTozUSYgABHZ9WV7Cz4KEGlVolhtqGaijhbSQMqiCIF65G8o3PuFtOtsnFU8
- wyvDuxl86OeM8QnEI3A+XOARmCxVhP6a6cuUQjmhtnNNe3m1NvzlAR8RC0VMXpJUNk
- 0/yDR2vV7nD/uU3CNQvLA3VEsayuRejmNFtFW6MdJ3fTmwP7OIuwnqNIcsfsIMSGy+
- Per0wTH3h1UqeAvuMFaWuW7AgEggk7fK8JKhk+rom7kVdo9w34JHAuf3RyOPehbqpL
- LtN16tfd/SBPKv061pQEA6Lg=
-Subject: Re: [PATCH for-6.2 10/25] hw/arm: Don't allocate separate
- MemoryRegions in stm32 SoC realize
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-11-peter.maydell@linaro.org>
-From: Alexandre IOOSS <erdnaxe@crans.org>
-Organization: Crans
-Message-ID: <275a1045-f797-4348-2ee8-c19586ea8225@crans.org>
-Date: Thu, 12 Aug 2021 14:13:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mE9kM-0007N5-OG
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 08:23:42 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:36852)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mE9kL-0006un-3T
+ for qemu-arm@nongnu.org; Thu, 12 Aug 2021 08:23:42 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id b7so9432214edu.3
+ for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 05:23:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FB1Nqq2kM3Ah3RRR9gw4IQx5hqcTQ+AmfQ9BChqvCLk=;
+ b=vLOvQOzXoAbNIb+fE1NWVy2WRB/Wh2E65jIRaxEw9BUdl+U4iGPFX/InomcpsfEw9+
+ GS+FyVaJdV7/PCFvoBTSP2Hpz1E2X5VkqjuwVXsTU46AouGVL9+aogoomO+rEmo35QQX
+ 6XnATIFb2L7utiH64jKevz930LCThMUu60pQ5FIvPfXnF2E+hCaMFkWLgjOl6atH+2G2
+ puS3erNzkTOB5AytROIILyY3+9ZMNJIx7eAgusOtu/INwFHY38SXQHU5x/RUDD7g9mIf
+ n+RwcVwK+zRP7y+9iTXLND1sKw3bsJOVGUUfrLcjkdiFJasfO2EPyBruV8zt8jOBbqgL
+ SpOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FB1Nqq2kM3Ah3RRR9gw4IQx5hqcTQ+AmfQ9BChqvCLk=;
+ b=Oq8jZwZQxFhWmMxWhevnWoBKCdd/XJQBFsoTw4K5E/dSfBKEp9heE6QlAUJb1Dsxu+
+ wPgYDBmUOuLByUJ6H9Ph5XpSEaOe+VT1zN3Bd41uzyPxJ9O/wB4MT5s51IbUevA6m74W
+ cdAnM/ir8ygp/uNDqLpjfSdSF2ZUE2fc49CvjHyCVcKKArxP6QuxtFxO19ZHwO2Eo5am
+ LNUS6Cbli6iNx1pVrc96lCidRt7QgnOXK+HPu5QbRnEga1nzIOjuv1DyferG6Q/n7eD2
+ jphPRxRx8RnvqzdAlz91RrwHbFyRdz9pJdElQJ7w4AfHmmVUuqg+bFPao2pVqK3dKBRH
+ EUAA==
+X-Gm-Message-State: AOAM532ut1UAFAIU38mQwyLSqSf7vU79XWmTwzSN0hb+jymEUK4ljZ3P
+ sKs1z/lAeKynowfZnCMBOcV5UhEU7zFZ7de0v8uX0A==
+X-Received: by 2002:a50:f615:: with SMTP id c21mr5293629edn.146.1628771019034; 
+ Thu, 12 Aug 2021 05:23:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210812093356.1946-11-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="Mgn0ICL0g8JOX7c1OPXyVNgfPdr0nU6N9"
-Received-SPF: pass client-ip=185.230.79.39; envelope-from=erdnaxe@crans.org;
- helo=redisdead.crans.org
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-10-peter.maydell@linaro.org>
+ <6a0f3bcc-cb85-2f02-32f3-3ea85b0b9c43@crans.org>
+In-Reply-To: <6a0f3bcc-cb85-2f02-32f3-3ea85b0b9c43@crans.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Aug 2021 13:22:54 +0100
+Message-ID: <CAFEAcA-byMR2cEj6FCcGRFztNLsW3_-LR3v5B5+VVy69xfAU8g@mail.gmail.com>
+Subject: Re: [PATCH for-6.2 09/25] clock: Provide builtin multiplier/divider
+To: Alexandre IOOSS <erdnaxe@crans.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,207 +110,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
- Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mNBT4rYSTlZf
+X-TUID: vX5tTUrpyh0F
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---Mgn0ICL0g8JOX7c1OPXyVNgfPdr0nU6N9
-Content-Type: multipart/mixed; boundary="VrxQxIOj1wTkTnFWnEqEt9s7q11AP4q1w";
- protected-headers="v1"
-From: Alexandre IOOSS <erdnaxe@crans.org>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Luc Michel <luc@lmichel.fr>, Damien Hedde <damien.hedde@greensocs.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
-Message-ID: <275a1045-f797-4348-2ee8-c19586ea8225@crans.org>
-Subject: Re: [PATCH for-6.2 10/25] hw/arm: Don't allocate separate
- MemoryRegions in stm32 SoC realize
-References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-11-peter.maydell@linaro.org>
-In-Reply-To: <20210812093356.1946-11-peter.maydell@linaro.org>
+On Thu, 12 Aug 2021 at 13:08, Alexandre IOOSS <erdnaxe@crans.org> wrote:
+>
+>
+> On 8/12/21 11:33 AM, Peter Maydell wrote:
+> > It is quite common for a clock tree to involve possibly programmable
+> > clock multipliers or dividers, where the frequency of a clock is for
+> > instance divided by 8 to produce a slower clock to feed to a
+> > particular device.
+> >
+> > Currently we provide no convenient mechanism for modelling this.  You
+> > can implement it by having an input Clock and an output Clock, and
+> > manually setting the period of the output clock in the period-changed
+> > callback of the input clock, but that's quite clunky.
+> >
+> > This patch adds support in the Clock objects themselves for setting a
+> > multiplier or divider.  The effect of setting this on a clock is that
+> > when the clock's period is changed, all the children of the clock are
+> > set to period * multiplier / divider, rather than being set to the
+> > same period as the parent clock.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >   docs/devel/clocks.rst   | 23 +++++++++++++++++++++++
+> >   include/hw/clock.h      | 29 +++++++++++++++++++++++++++++
+> >   hw/core/clock-vmstate.c | 24 +++++++++++++++++++++++-
+> >   hw/core/clock.c         | 29 +++++++++++++++++++++++++----
+> >   4 files changed, 100 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+> > index 956bd147ea0..430fbd842e5 100644
+> > --- a/docs/devel/clocks.rst
+> > +++ b/docs/devel/clocks.rst
+> > @@ -260,6 +260,29 @@ clocks get the new clock period value: *Clock 2*, *Clock 3* and *Clock 4*.
+> >   It is not possible to disconnect a clock or to change the clock connection
+> >   after it is connected.
+> >
+> > +Clock multiplier and divider settings
+> > +-------------------------------------
+> > +
+> > +By default, when clocks are connected together, the child
+> > +clocks run with the same period as their source (parent) clock.
+> > +The Clock API supports a built-in period multiplier/divider
+> > +mechanism so you can configure a clock to make its children
+> > +run at a different period from its own. If you call the
+> > +``clock_set_mul_div()`` function you can specify the clock's
+> > +multiplier and divider values. The children of that clock
+> > +will all run with a period of ``parent_period * multiplier / divider``.
+> > +For instance, if the clock has a frequency of 8MHz and you set its
+> > +multiplier to 2 and its divider to 3, the child clocks will run
+> > +at 12MHz.
+> > +
+> > +You can change the multiplier and divider of a clock at runtime,
+> > +so you can use this to model clock controller devices which
+> > +have guest-programmable frequency multipliers or dividers.
+>
+> This looks nice!
+> Does this imply that if I am going to implement the STM32 RCC (Reset and
+> Clock Controller) device, then I should use this new feature?
 
---VrxQxIOj1wTkTnFWnEqEt9s7q11AP4q1w
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+I haven't looked at the RCC spec in detail, but yeah, I'd expect
+that you'd have a device with one (or perhaps more) input clocks
+and a lot of output clocks, and as the guest writes to registers
+that set divider/multiplier settings you'd use clock_set_mul_div()
+to configure the appropriate output clocks.
 
-On 8/12/21 11:33 AM, Peter Maydell wrote:
-> In the realize methods of the stm32f100 and stm32f205 SoC objects, we
-> call g_new() to create new MemoryRegion objjects for the sram, flash,
-> and flash_alias.  This is unnecessary (and leaves open the
-> possibility of leaking the allocations if we exit from realize with
-> an error).  Make these MemoryRegions member fields of the device
-> state struct instead, as stm32f405 already does.
-
-There is a typo in "objjects".
-
-This is something I had issue understanding as I was seeing both=20
-patterns in the codebase, thank you for making this clear.
-
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   include/hw/arm/stm32f100_soc.h |  4 ++++
->   include/hw/arm/stm32f205_soc.h |  4 ++++
->   hw/arm/stm32f100_soc.c         | 17 +++++++----------
->   hw/arm/stm32f205_soc.c         | 17 +++++++----------
->   4 files changed, 22 insertions(+), 20 deletions(-)
->=20
-> diff --git a/include/hw/arm/stm32f100_soc.h b/include/hw/arm/stm32f100_=
-soc.h
-> index 71bffcf4fd5..b7d71c6c634 100644
-> --- a/include/hw/arm/stm32f100_soc.h
-> +++ b/include/hw/arm/stm32f100_soc.h
-> @@ -52,6 +52,10 @@ struct STM32F100State {
->  =20
->       STM32F2XXUsartState usart[STM_NUM_USARTS];
->       STM32F2XXSPIState spi[STM_NUM_SPIS];
-> +
-> +    MemoryRegion sram;
-> +    MemoryRegion flash;
-> +    MemoryRegion flash_alias;
->   };
->  =20
->   #endif
-> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_=
-soc.h
-> index 985ff63aa9e..75251494917 100644
-> --- a/include/hw/arm/stm32f205_soc.h
-> +++ b/include/hw/arm/stm32f205_soc.h
-> @@ -63,6 +63,10 @@ struct STM32F205State {
->       STM32F2XXSPIState spi[STM_NUM_SPIS];
->  =20
->       qemu_or_irq *adc_irqs;
-> +
-> +    MemoryRegion sram;
-> +    MemoryRegion flash;
-> +    MemoryRegion flash_alias;
->   };
->  =20
->   #endif
-> diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
-> index 0c4a5c66451..0be92b2c475 100644
-> --- a/hw/arm/stm32f100_soc.c
-> +++ b/hw/arm/stm32f100_soc.c
-> @@ -67,25 +67,22 @@ static void stm32f100_soc_realize(DeviceState *dev_=
-soc, Error **errp)
->       int i;
->  =20
->       MemoryRegion *system_memory =3D get_system_memory();
-> -    MemoryRegion *sram =3D g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash =3D g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash_alias =3D g_new(MemoryRegion, 1);
->  =20
->       /*
->        * Init flash region
->        * Flash starts at 0x08000000 and then is aliased to boot memory =
-at 0x0
->        */
-> -    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F100.flash",
-> +    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F100.flas=
-h",
->                              FLASH_SIZE, &error_fatal);
-> -    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
-> -                             "STM32F100.flash.alias", flash, 0, FLASH_=
-SIZE);
-> -    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, fla=
-sh);
-> -    memory_region_add_subregion(system_memory, 0, flash_alias);
-> +    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
-> +                             "STM32F100.flash.alias", &s->flash, 0, FL=
-ASH_SIZE);
-> +    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s-=
->flash);
-> +    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
->  =20
->       /* Init SRAM region */
-> -    memory_region_init_ram(sram, NULL, "STM32F100.sram", SRAM_SIZE,
-> +    memory_region_init_ram(&s->sram, NULL, "STM32F100.sram", SRAM_SIZE=
-,
->                              &error_fatal);
-> -    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram=
-);
-> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->=
-sram);
->  =20
->       /* Init ARMv7m */
->       armv7m =3D DEVICE(&s->armv7m);
-> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-> index 9cd41bf56da..0bd215aebd7 100644
-> --- a/hw/arm/stm32f205_soc.c
-> +++ b/hw/arm/stm32f205_soc.c
-> @@ -84,21 +84,18 @@ static void stm32f205_soc_realize(DeviceState *dev_=
-soc, Error **errp)
->       int i;
->  =20
->       MemoryRegion *system_memory =3D get_system_memory();
-> -    MemoryRegion *sram =3D g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash =3D g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash_alias =3D g_new(MemoryRegion, 1);
->  =20
-> -    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F205.flash",
-> +    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F205.flas=
-h",
->                              FLASH_SIZE, &error_fatal);
-> -    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
-> -                             "STM32F205.flash.alias", flash, 0, FLASH_=
-SIZE);
-> +    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
-> +                             "STM32F205.flash.alias", &s->flash, 0, FL=
-ASH_SIZE);
->  =20
-> -    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, fla=
-sh);
-> -    memory_region_add_subregion(system_memory, 0, flash_alias);
-> +    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s-=
->flash);
-> +    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
->  =20
-> -    memory_region_init_ram(sram, NULL, "STM32F205.sram", SRAM_SIZE,
-> +    memory_region_init_ram(&s->sram, NULL, "STM32F205.sram", SRAM_SIZE=
-,
->                              &error_fatal);
-> -    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram=
-);
-> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->=
-sram);
->  =20
->       armv7m =3D DEVICE(&s->armv7m);
->       qdev_prop_set_uint32(armv7m, "num-irq", 96);
->=20
-
-Reviewed-by: Alexandre Iooss <erdnaxe@crans.org>
-
-Thanks,
--- Alexandre
-
-
---VrxQxIOj1wTkTnFWnEqEt9s7q11AP4q1w--
-
---Mgn0ICL0g8JOX7c1OPXyVNgfPdr0nU6N9
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmEVEH8FAwAAAAAACgkQbHknjz/NzAJ3
-QQ//Z9k0JSkNdMt6kmrwYpjyvyfILclkJfrZROFAqCgC4aK9lPpVP1nbe4lpwp+i1TtBlbYxSyrV
-xYaX6jqoG7Wd8XyIxwapfdT04xEwuM9vaff455N2bwFVKmW+RQbHV80TVMWlEFKBM9FHr1K6ls64
-LemyujgvtUXPSCy7O2gASa+KzfVw/WoOXFsHHwtQunMV7f94jP6MCyc+covGK0ynlRqZf7Gkz0P/
-YsgvoqEmBNwqdm4bSSYcIIA2cBYIvx1bAKOwS3Pq8XPy2LQf+TPjbDwXOW4xVUkgIVH4kLmofE4t
-x5VZIMsSZqkJnaUCYyPy/Z08UlwwXtkYC2yi5B4R4DaWb8jLS1RXmoV5Q9y+xsYcFP8KyTltDyNk
-ymfteXmeHzhTjOxpoLAaWtxOtYXnIhU3A0HDThViMImhAoCyxPK73cN5vqKzRks1VmdJELO1EMKf
-lucB2Wbw0vAfjF5dSJSu/aN5XFCVkQ1wBm5pTaKTU8JDp3QQ/lZEoxd2k9hRqCX9QdSYLvzSXdDJ
-OPBZwilANXRVUwXO7VJ9WZSixSpDuj+5KYsssgnTAg4jHjTStHtitsEqdtKW7Dbc1i41Wr2gAWIK
-I0+FXjqZnG4+K8bFbRqygWWF0bEb2wS5uURB8czqozuUXkXBgoK6BQtatvOYS0/I8eulZ8nqX6nf
-+tU=
-=tCqe
------END PGP SIGNATURE-----
-
---Mgn0ICL0g8JOX7c1OPXyVNgfPdr0nU6N9--
+-- PMM

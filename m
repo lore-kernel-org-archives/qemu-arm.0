@@ -1,99 +1,101 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp881466lff;
-        Thu, 12 Aug 2021 18:39:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzxQ7L7BcKHCAgLtZyJL6+d5G/pfAhWZAGdIZc6lp9UkUm0h28Ebpqkdhndl6x2MfCEc059
-X-Received: by 2002:ae9:e113:: with SMTP id g19mr8044042qkm.182.1628818774653;
-        Thu, 12 Aug 2021 18:39:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628818774; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp881667lff;
+        Thu, 12 Aug 2021 18:39:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwz6Y6KO9GqvWmo7oH36fBSilo+Tj5W27YLL/Dng/XKCrW3EPJQ0MAVIRfIS2+BzndYwhBh
+X-Received: by 2002:a37:b3c6:: with SMTP id c189mr7648073qkf.343.1628818792153;
+        Thu, 12 Aug 2021 18:39:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628818792; cv=none;
         d=google.com; s=arc-20160816;
-        b=LMAvIoBJDgmw66EV0fWqwKrOyHPaGwXutIVxuEOLVeKvFfufqdi5a/NGKLsan7OGf+
-         laBGhHWnicpD2qpd6XjNpHP6DT6NSneCj4+Ldp/dx88LFwe4WJHngxguLmruit3NnqfE
-         HfS/xnAN764p+myaYgW7p+AG7n3uHfwDn1CaXpD0hMraGw9L/PjtgQzPX+OHqwHm/0d1
-         5E0CkV5l1pzpRwhUUmmfr4jkdhULZYquh/q75rbe1NOQuk+xZyN86Z5HSaKO16Ht1KT0
-         1JFqZvs7Pfa57COB954+7Wao0Fn8p/DX+axPgHI5NjGHm1iD8RNFpGnS3hs6a1r0AWI1
-         vPrA==
+        b=JOc7CUjKOLNkq9QnPkssGs9eV0lx6vSK5QMwWVCYNCFMWIut6qrRa7dmByMBU7Naic
+         NOVQC/7q1jTf3/vQPge4soJ0YS6dkojt8OKvuchD8cKPeNudcTfrRvYp1thZbhRvtrnY
+         g3yNt/UsBm6hGwp7AzX1kgdqhe2bvjKC08y/xJS1zAPVKV9eGtoj4YXP/r/qNFu+s+EM
+         Bk3AE10jqBLNZQM0sIjCLrXCQYKl0kHCgHal6119bnIVsM3MXh2AP/PsikXr8ONyJFYb
+         fCJFJ18SeS2BwAbzEptuxH4eS/udZ0S7kp1wd0Gi2ex/DF7yMaCYjaxDZ6m79UOuwPI2
+         arqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=amGi0SMAVglzC1C1KS71BYCeGwnKa+Vqk5zM6VDfBog=;
-        b=GSgg1SBgXy7bDg7lH81/5Wwm+lizM1Tg+tdLlndSCD5v8Giwzah+zesipThHvl3Vgn
-         GoQomtcT+POHHKTOm77fWEbc0cIfP6ovV3sGaIVqBT3O8VSPw2VcL8ipfebhr81Pz2qT
-         AzRr0QLCl6NObiNZbVS8JLU97MdkfZuincn5Oyz8FJrQKOLFuveTfI6qjfyYixZbjSn/
-         UqlWgDN2vONpenRumhMfPy6CMn0+hYf4Vn6kPiZFE+kaYLP2biZswDHJISL3jSnYoy3R
-         dbgdRTM3U2ZS9DfQihX3hr4sF+SQ5RG3fANDheqWtoko7Vc5WQP9+CjiscE2w1HzNjOZ
-         2nMg==
+        bh=a2YE3M6FXRW65W1ZJ6O4/UmdH4r055aWSH6uw+saxuk=;
+        b=vaKXfs4QFemNfnICP/snhqw34nAX4lBu5yhLXZ2xfC6IVv9MKzJE4zw2Lt1cq6vx9u
+         IAOJ0iq3IOVwdJjRKWflRFT9UG6OtJorObgwLS+bWkeE2LeAQrL42SkZESwt69tLtj+k
+         lZFNuFcvTcQ/eCMbBRkmbqs/2KNe/6BHCpvxSxIipV8oNzk2ZiiaHrnJ4RuvWS1EAQOO
+         injmziN+1rtPX1a1/FiGcnHF86cH8lNxNuZkVLiHXsJm3sqNB/8TSkybWqVrzL/XaERu
+         8F8hKi59ERe1Ww6GPMdM4NIzam1tSRLZDDEgeceA5RPe5jcTraIfpEOUAGsV3MOgBqJI
+         +2Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fn1hU9T6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dtMoZuC1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b8si1455869qtk.183.2021.08.12.18.39.34
+        by mx.google.com with ESMTPS id d12si12442qkc.317.2021.08.12.18.39.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 18:39:34 -0700 (PDT)
+        Thu, 12 Aug 2021 18:39:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fn1hU9T6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dtMoZuC1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47956 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEMAX-0002HJ-Uu
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 21:39:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39558)
+	id 1mEMAp-00038m-F4
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 21:39:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mEMAN-0002Fp-SX; Thu, 12 Aug 2021 21:39:23 -0400
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32]:41644)
+ id 1mEMAf-00033i-LO; Thu, 12 Aug 2021 21:39:41 -0400
+Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c]:33514)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mEMAM-00034V-A3; Thu, 12 Aug 2021 21:39:23 -0400
-Received: by mail-io1-xd32.google.com with SMTP id 188so11148620ioa.8;
- Thu, 12 Aug 2021 18:39:21 -0700 (PDT)
+ id 1mEMAe-0003GJ-CS; Thu, 12 Aug 2021 21:39:41 -0400
+Received: by mail-il1-x12c.google.com with SMTP id z2so9252821iln.0;
+ Thu, 12 Aug 2021 18:39:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=amGi0SMAVglzC1C1KS71BYCeGwnKa+Vqk5zM6VDfBog=;
- b=Fn1hU9T6xCNDEzMeJRkHPWTw1Cd/XwQ0Mf2b9hkObX4h6R7fAOpnqblHGXW7K/402w
- ro/2oxpkI0SvbpzIaBpo3rQhZIcp20p0wTyYMPy7qh+Sx6ZBFFRJnBukweMsUHYoDyWl
- oiwZYbs95uFNr2jM8CU9GUJjv1KD415FXRnl3dTM07+yEGpkJYpoPQALspDI19rupedx
- 01rlrm1gv4B7YepOV1MyyUokuNFM+btZFNMzPzaMrK9LCupKTR6iTjz/USRdfxe3rl5g
- D9msDrBgLrIOg2G/f1oNloK1uIVGNLpK4qxAm7boK1SvVwnApj6AxV6LVq+jxRdB9dxc
- s85g==
+ :cc; bh=a2YE3M6FXRW65W1ZJ6O4/UmdH4r055aWSH6uw+saxuk=;
+ b=dtMoZuC1J3SYwMOnMLFpkWLA0vz1IudFDZFML5WxilejOPoN2YRL18D6LYyJV+ZsH3
+ oVdHFWSXLDyUEpUIt7I1EGY193qPlZXPFU6H58hpPMapqxfAeIChfBmdOIRYKNSeyD+1
+ UImzY8EA5g4QWr6N7X9kULJLJWVwk6QYBWfEZ5a3qu71hozHazIgONHhSWcBICScFJls
+ 44ZwqGKwomQ53ubK8hz81uYx3BY7kh5cyiCfuxzQJxxGBwFLuwU3qtO9pFp5IMT2xlTz
+ hSYzyB5d4Y2UbKFrE5X5GsKsbqPIWAePC1R0WmltwTgacoCxlLxpmFV4iLmxlQNip9iP
+ y+Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=amGi0SMAVglzC1C1KS71BYCeGwnKa+Vqk5zM6VDfBog=;
- b=nOeMd1Pebdwe+dsRyttyxrt5BHG8oe3/jVevHSr8sFcbJ/5ab/pzuOoJ/SOcRiyq71
- sypFofNSTRlZayAYyZWu7lxmHbCQv63u8p1D62p3A7DuzkGIhgrCjSygyit4T5Is7QeA
- vmxE5OpSghj510Wfr7vONZ5VW29I78aHvDh1DH6kgbnwomsiGfbPV1r//v5DMlSl93cl
- lGSALbO8x93Ssh+0m9JUeIgYLiXGlI+kDqxbI1OFIS0YM8GnXWTzY/M8vcNAocYzKnHI
- 6Wmc6wzoPD3vMavLC8ZSYPtG+58wodzBZgVvjdd7nFdORcFfdNaZ7Pfb77mDmNEYAMsR
- IHgg==
-X-Gm-Message-State: AOAM530StyaGFb/VE3I5zIwRtJpB/yFv0Mu14w/gD6F5n3oSannNKyQI
- KVvhGekhFb761yVh/KS5KWYClybaRnTS6GMF3Bc=
-X-Received: by 2002:a02:cc22:: with SMTP id o2mr6193866jap.26.1628818760526;
- Thu, 12 Aug 2021 18:39:20 -0700 (PDT)
+ bh=a2YE3M6FXRW65W1ZJ6O4/UmdH4r055aWSH6uw+saxuk=;
+ b=rHwzD3bv7UBzY2r5zwUFokm/2cEm4lJgee4GWR8nxvzER432wyOWqYBykL/0H2hXt1
+ 5pOptSuNnbaHjlvjHoXeo+fSTpig8Z3smIMyeZKNR/mhjlsV8KgXQWdrS+DeZKeWD3fQ
+ 5C12fc6mEtXYQmb/H3cJxYGQ5BHF5kmcyY5iDl8MBCTyn42+4ecCirO67JlY/v61p1si
+ j0dRPO/UBQbPIzfxbGiuQPtfhQFsjLHvoOSWiJDRR+/7uzr1L8AZx3tBN1sUQ0BBYppB
+ P3gDhhCPDwR3H7dH5WskBaVVEktnDG5anTq1wICBeQLhtEV86tK/QD1eNqKXo9BRWb/1
+ Xubg==
+X-Gm-Message-State: AOAM530BeQrZmQJEua0Kazaxw+ECuGKup1wZZVAtO5fLEv2NA0joX3to
+ QtQ57njfLVgnbhSeKPxQtMFolQ9NHcIJDowoa/g=
+X-Received: by 2002:a92:8707:: with SMTP id m7mr15471ild.177.1628818779026;
+ Thu, 12 Aug 2021 18:39:39 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-13-peter.maydell@linaro.org>
-In-Reply-To: <20210812093356.1946-13-peter.maydell@linaro.org>
+ <20210812093356.1946-15-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-15-peter.maydell@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 13 Aug 2021 11:38:54 +1000
-Message-ID: <CAKmqyKPUOjjVkNH_Jw=_h-g1tjJNWaugV4kBp_05nF466y=Eaw@mail.gmail.com>
-Subject: Re: [PATCH for-6.2 12/25] hw/arm/stm32f205: Wire up sysclk and refclk
+Date: Fri, 13 Aug 2021 11:39:13 +1000
+Message-ID: <CAKmqyKNQ3DUaw0GYOBjjBLM_GJqFsjotF5vtVPP35X1EV-W7oQ@mail.gmail.com>
+Subject: Re: [PATCH for-6.2 14/25] hw/arm/stm32vldiscovery: Delete trailing
+ blank line
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d32;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd32.google.com
-X-Spam_score_int: 1
-X-Spam_score: 0.1
-X-Spam_bar: /
-X-Spam_report: (0.1 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12c;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x12c.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,22 +116,11 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KSEkuvWI2ec7
+X-TUID: 1hiLsbxP1Dy+
 
-On Thu, Aug 12, 2021 at 7:38 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Thu, Aug 12, 2021 at 7:44 PM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Wire up the sysclk and refclk for the stm32f205 SoC.  This SoC always
-> runs the systick refclk at 1/8 the frequency of the main CPU clock,
-> so the board code only needs to provide a single sysclk clock.
->
-> Because there is only one board using this SoC, we convert the SoC
-> and the board together, rather than splitting it into "add clock to
-> SoC; connect clock in board; add error check in SoC code that clock
-> is wired up".
->
-> When the systick device starts honouring its clock inputs, this will
-> fix an emulation inaccuracy in the netduino2 board where the systick
-> reference clock was running at 1MHz rather than 15MHz.
+> Delete the trailing blank line at the end of the source file.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
@@ -138,130 +129,18 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/arm/stm32f205_soc.h |  4 ++++
->  hw/arm/netduino2.c             | 12 +++++++-----
->  hw/arm/stm32f205_soc.c         | 30 ++++++++++++++++++++++++++++++
->  3 files changed, 41 insertions(+), 5 deletions(-)
+>  hw/arm/stm32vldiscovery.c | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_soc.h
-> index 75251494917..849d3ed8891 100644
-> --- a/include/hw/arm/stm32f205_soc.h
-> +++ b/include/hw/arm/stm32f205_soc.h
-> @@ -32,6 +32,7 @@
->  #include "hw/or-irq.h"
->  #include "hw/ssi/stm32f2xx_spi.h"
->  #include "hw/arm/armv7m.h"
-> +#include "hw/clock.h"
->  #include "qom/object.h"
->
->  #define TYPE_STM32F205_SOC "stm32f205-soc"
-> @@ -67,6 +68,9 @@ struct STM32F205State {
->      MemoryRegion sram;
->      MemoryRegion flash;
->      MemoryRegion flash_alias;
-> +
-> +    Clock *sysclk;
-> +    Clock *refclk;
->  };
->
->  #endif
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index 1733b71507c..b5c0ba23ee5 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -26,6 +26,7 @@
->  #include "qapi/error.h"
->  #include "hw/boards.h"
->  #include "hw/qdev-properties.h"
-> +#include "hw/qdev-clock.h"
->  #include "qemu/error-report.h"
->  #include "hw/arm/stm32f205_soc.h"
->  #include "hw/arm/boot.h"
-> @@ -36,16 +37,17 @@
->  static void netduino2_init(MachineState *machine)
->  {
->      DeviceState *dev;
-> +    Clock *sysclk;
->
-> -    /*
-> -     * TODO: ideally we would model the SoC RCC and let it handle
-> -     * system_clock_scale, including its ability to define different
-> -     * possible SYSCLK sources.
-> -     */
->      system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
->
-> +    /* This clock doesn't need migration because it is fixed-frequency */
-> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
-> +    clock_set_hz(sysclk, SYSCLK_FRQ);
-> +
->      dev = qdev_new(TYPE_STM32F205_SOC);
->      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
-> +    qdev_connect_clock_in(dev, "sysclk", sysclk);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->
->      armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-> index 0bd215aebd7..c6b75a381d9 100644
-> --- a/hw/arm/stm32f205_soc.c
-> +++ b/hw/arm/stm32f205_soc.c
-> @@ -29,6 +29,7 @@
->  #include "exec/address-spaces.h"
->  #include "hw/arm/stm32f205_soc.h"
->  #include "hw/qdev-properties.h"
-> +#include "hw/qdev-clock.h"
->  #include "sysemu/sysemu.h"
->
->  /* At the moment only Timer 2 to 5 are modelled */
-> @@ -74,6 +75,9 @@ static void stm32f205_soc_initfn(Object *obj)
->      for (i = 0; i < STM_NUM_SPIS; i++) {
->          object_initialize_child(obj, "spi[*]", &s->spi[i], TYPE_STM32F2XX_SPI);
->      }
-> +
-> +    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
-> +    s->refclk = qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
+> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+> index 07e401a818d..9b79004703b 100644
+> --- a/hw/arm/stm32vldiscovery.c
+> +++ b/hw/arm/stm32vldiscovery.c
+> @@ -65,4 +65,3 @@ static void stm32vldiscovery_machine_init(MachineClass *mc)
 >  }
 >
->  static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
-> @@ -85,6 +89,30 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
->
->      MemoryRegion *system_memory = get_system_memory();
->
-> +    /*
-> +     * We use s->refclk internally and only define it with qdev_init_clock_in()
-> +     * so it is correctly parented and not leaked on an init/deinit; it is not
-> +     * intended as an externally exposed clock.
-> +     */
-> +    if (clock_has_source(s->refclk)) {
-> +        error_setg(errp, "refclk clock must not be wired up by the board code");
-> +        return;
-> +    }
-> +
-> +    if (!clock_has_source(s->sysclk)) {
-> +        error_setg(errp, "sysclk clock must be wired up by the board code");
-> +        return;
-> +    }
-> +
-> +    /*
-> +     * TODO: ideally we should model the SoC RCC and its ability to
-> +     * change the sysclk frequency and define different sysclk sources.
-> +     */
-> +
-> +    /* The refclk always runs at frequency HCLK / 8 */
-> +    clock_set_mul_div(s->refclk, 8, 1);
-> +    clock_set_source(s->refclk, s->sysclk);
-> +
->      memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F205.flash",
->                             FLASH_SIZE, &error_fatal);
->      memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
-> @@ -101,6 +129,8 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
->      qdev_prop_set_uint32(armv7m, "num-irq", 96);
->      qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
->      qdev_prop_set_bit(armv7m, "enable-bitband", true);
-> +    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
-> +    qdev_connect_clock_in(armv7m, "refclk", s->refclk);
->      object_property_set_link(OBJECT(&s->armv7m), "memory",
->                               OBJECT(get_system_memory()), &error_abort);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
+>  DEFINE_MACHINE("stm32vldiscovery", stm32vldiscovery_machine_init)
+> -
 > --
 > 2.20.1
 >

@@ -1,111 +1,101 @@
-Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp261062lfk;
-        Fri, 13 Aug 2021 08:48:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy7Gmf2+HHs66s7UAD2fINwgWSuHiPjFMzRSU5QMUVJdoCseARz7YeYgtuSUQaNeapmgdLx
-X-Received: by 2002:a67:f551:: with SMTP id z17mr2570046vsn.17.1628869727858;
-        Fri, 13 Aug 2021 08:48:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628869727; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp992249lff;
+        Thu, 12 Aug 2021 22:08:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxoHhPPJ/0PqoUiL2ss5UBBkfSlwLfIigeX8hPTP6kMwzf26rYhafcukg6iUwS+br83PaTP
+X-Received: by 2002:ac8:1245:: with SMTP id g5mr381284qtj.71.1628831328018;
+        Thu, 12 Aug 2021 22:08:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628831328; cv=none;
         d=google.com; s=arc-20160816;
-        b=OJATQZYL5mIwmFyJrC2T5Heyq26rb+v3NMr6PhGbCqhKJ30eLWhVrOLzETD4KFzZgv
-         kYrHD7InRJuIhWAnruub+FeqMbVKkmyhGboeSmMxBhxQE39yWRE4hQ4IOFfzI9lwDER9
-         ZrVHtdGc7gN4jlbXXyHsjyEqwkqP9r+tbO+NoZBE+zoXDuCHgPtl9mYJPEucmSmGcRAK
-         ffsRE9m0sL3S/NGu6W/hHmHg4+pO82CR/EgdGYMKToR5iO72/QHr1by2yU+4/+nJcSq1
-         UV10GYrpVyWbzCNLn0MPqUw9aos8ltkY6uViqrr8PHozf2AuUaLmg9p2SH4dzorGBikr
-         IqDw==
+        b=cBVYTwlloQoSGEKGS24R9r2yH+tFA+5CF/KQpC6uBf+3ixLiE0BGCIxF8m6odhuCaC
+         RgrI2X4hbX3QcI3Qol8VvtRKy7KDuIZf90bJgy2K+COBZYMOug9zfmaht2ik5dA8YRZf
+         89idLl+IfFMiILmWOOd9mn9P8o5LkIHrGSvZ7kncSlQTJ+fdkboEIdy2hOh6btni+cAe
+         hfZTJqUs6j9X2Mcq+1A/8i1XegytIcbA27crPO3H8RRzYjA63AHjujMmqeTdpPHhl43Q
+         rUEJAx4JSGs60ApMaPnlmYarGhvmH1upHlJQ4nTnGaqWwtl42cdUUEMbUx24ahuS2/Md
+         wH8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=6JZdrJ/l1EIlAcRJCZQSCmvgBLaip8y9ZHOuabJ/Zlg=;
-        b=IBb8GcVTJFS5J7c4gEKsD7QqraDBSfW/9ruTNyqfhWK8b+7YpEI1VIKhF+KYnI2Mr6
-         P2572R3iP9PUrIhjd/ON/Dh+rAU3BhdMbRHhTRVu3nNew2UbqHc4C8NyBtbVx8MMXG9C
-         DYF2sXqUtE/kRG1dIFSq+UR06Dl/3gvbzigJ1b4cdGSPqw8Oh3QRsitlQCGK5ywnuSmk
-         BLHkb7z+Wjf0mt/b0+RVeX+aZKApsFWDjs8cGe65NvIy0y29ZWwllGM4E8hAlbUmBzTQ
-         pZU8vDlO8rDl6aVtpmpl8eP19KycODnptRlCKmEWPefR+s3xiKLlWeJ4l09ykltXHfVs
-         wIqw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=G39VKCNnXoNN3aeYBRpLyA4ui4yGoHosJjC4pbb+byU=;
+        b=wjn9H8LS6B9wTQt40s5GgxPHEl/2pp2tes7uOEEdAB9dQqFaJNSG/5DztyOo0v2Bx4
+         15ceT2FhaP4B7PAqVN6GkDcjMdI5ZPqU3YhSRr9watG78QDyM+t4PoMWFr6ZLryCEJz+
+         WBLkgrgEx6U2lLCZd49SHbix6StPIdam8mbFpDimK78fppQf3+uGCicdOWdYwC9uHIn+
+         292YBgytItw1KinH1URhE8VPL15SB7M1ZQKbcuv9Kq8t92hvdKwXKk74//DBYHMQIGY5
+         PKoitn7mVsKV5R71JGCnYEJqoTe+Yt+LWZd1APN0rWEA5Y8Hlg7HD8wrP2wEXV7bbafu
+         hymw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=D37bzXQy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BsnD2nc+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si1066083vsh.30.2021.08.13.08.48.47
+        by mx.google.com with ESMTPS id 60si243509qta.124.2021.08.12.22.08.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Aug 2021 08:48:47 -0700 (PDT)
+        Thu, 12 Aug 2021 22:08:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=D37bzXQy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49842 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BsnD2nc+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEZQM-0002Z1-K0
-	for alex.bennee@linaro.org; Fri, 13 Aug 2021 11:48:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47782)
+	id 1mEPR1-0002gh-BM
+	for alex.bennee@linaro.org; Fri, 13 Aug 2021 01:08:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1mEZQC-0002YM-7g
- for qemu-arm@nongnu.org; Fri, 13 Aug 2021 11:48:36 -0400
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d]:37380)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mEPQn-0002fx-QI; Fri, 13 Aug 2021 01:08:33 -0400
+Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f]:42868)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1mEZQ7-00082C-9E
- for qemu-arm@nongnu.org; Fri, 13 Aug 2021 11:48:36 -0400
-Received: by mail-ot1-x32d.google.com with SMTP id
- n1-20020a9d1e810000b0290514da4485e4so9771719otn.4
- for <qemu-arm@nongnu.org>; Fri, 13 Aug 2021 08:48:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mvista-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
- :content-disposition:in-reply-to;
- bh=6JZdrJ/l1EIlAcRJCZQSCmvgBLaip8y9ZHOuabJ/Zlg=;
- b=D37bzXQy3oVLl3sFe3xhJV935bLr/Z/23aPx7PXuY7ym+Bf2G7kGdS7KTPjgzhNDRA
- uEbxGfrVK6uoGX92wkLdcqwbzs83aeqO1qhJDfcUXOiBbmRGnjgRsY7Lceo60kYs70UF
- spM5hyBZd/jRbtfr9Clwg/2X7Z74ON0+g5qqWCHsoQMXNTdi2xd28WcbHPNzxf/K9iAx
- IsGKH80AjK5SDhF1FHKj4DEF5FYmsr5xUq/KXKDiyOdc9kR4prvxioiK3kT4Ublc4VQQ
- KA2M0VBbF+d3kVeI97hn7h2/9ARgJ20OvapL+SB8/B/J90p+cVkyEdbARKLmitEpvBCC
- LhiQ==
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mEPQl-0004Zx-Dy; Fri, 13 Aug 2021 01:08:33 -0400
+Received: by mail-il1-x12f.google.com with SMTP id s16so1305950ilo.9;
+ Thu, 12 Aug 2021 22:08:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=G39VKCNnXoNN3aeYBRpLyA4ui4yGoHosJjC4pbb+byU=;
+ b=BsnD2nc+zU/jhmzOvyyUuCwK30odB7aQT63diT693nEGpEiynbcEeEa/hu7zQp9xqM
+ pZqrxIeKuC3njwEfFdkY7woGoKELyrvodMMoFRnpRGqoyV2bGoi1V5UE35pMmXuq26iD
+ 4/t0ADBglBart/r4xJoAmOa2S1OVKY/OjjCfc8zvcCbPOYWSu55CGXgrdgLaphh2tZSn
+ Y+QuNyyUkEN1PO0T4SXqerWne24JXxmqf9MyZfkanNOGCPwMR176ocwdpuETjVAHBQKV
+ 9/GOeAz8/UmHFyDrpowXuBzRWX4rPT1w9I+wiKA94B5gipBj6hATyTdqtKDE07MHlrfb
+ wHWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
- :references:mime-version:content-disposition:in-reply-to;
- bh=6JZdrJ/l1EIlAcRJCZQSCmvgBLaip8y9ZHOuabJ/Zlg=;
- b=m07qwacA93MnwIkcyeP/iZaH3Ve9/22u1jVZZeQmwphxVRk/0fuJtpcr6TN9sdogEB
- aH0ZTro2q4Od+RqUSTG6ePINtYGwOiwggcw9maphi9jYoY2SvA9xfCftkCGvgJOcln6w
- OyQV3JSONpn852NjprYukmkLRNylDoqG8ZfU3a2hX6hrL4w2diMeK0jKrznqb6Vcm+S/
- +2wn0tkUbx2bqIP4F86gb7krtAb4FSiJXDZgkwXhprAg7rChSpXxUhJ6AaBJiWB4IfFk
- JzoFVpYC3Kjnhc/44TrrtyuuciCcLWmKrIGjoFA9RzhkjBjWa5UgI9i50Fu3STTZ+yhg
- wKeg==
-X-Gm-Message-State: AOAM531dYByI2u7/H6YERjH8n9vay33JNLDc/V/c+p39O8SUHdS0p1Xz
- 4xsDduyZS9HXGP0U/eCbfd1hUw==
-X-Received: by 2002:a05:6830:9c7:: with SMTP id
- y7mr2601169ott.111.1628869708484; 
- Fri, 13 Aug 2021 08:48:28 -0700 (PDT)
-Received: from minyard.net ([2001:470:b8f6:1b:f438:435c:47fc:5ccc])
- by smtp.gmail.com with ESMTPSA id e2sm370375otk.14.2021.08.13.08.48.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Aug 2021 08:48:28 -0700 (PDT)
-Date: Fri, 13 Aug 2021 10:48:26 -0500
-From: Corey Minyard <cminyard@mvista.com>
-To: Shengtan Mao <stmao@google.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v4 0/2] Add remote I2C device to support external I2C
- device
-Message-ID: <20210813154826.GV3431@minyard.net>
-References: <20210806234918.122457-1-stmao@google.com>
- <20210807015507.GE3431@minyard.net>
- <CAMiADQ8uZRZ-XjR9hrN5KazPgAFbsYCPOq9RU7Pkwqw+Y-vVBg@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=G39VKCNnXoNN3aeYBRpLyA4ui4yGoHosJjC4pbb+byU=;
+ b=c0YguPJUBwnpViPwVtNFe+6fJcizJDm/KG9vwy4tsf7eXNSF9hn1N4OCAL1+LR1ZEq
+ 4iDUx2LFLiMirVxRQ0JzFmkoLhYG8Zscs3xUJZ1I7BqxgDZUiU2A2ewlz+78RYVctCNu
+ B0I7bD25/I3/49IqoB2DGdWobXGRuQzdsQqyk3+SR5248/sQiBNg0Y2Vh6olVfaAY4k2
+ jxvU2KUk6JlIR3X3t5e9UZ9cGfUj1pLC6xcA1bY5cqaFv9aO+df3HlKn29KI+zJ2JNGu
+ d6P9th27PhdqPtnXDhWYBeLeUJCKsvtBzlmWRGGVKacM3adWwYRoQL/QLq25D5eQWBQ1
+ W6Cg==
+X-Gm-Message-State: AOAM532ndiP2Z4r5aqB4SauHN8B+l6/VNCN+I+ZdlS5ukRUuiKGStQQF
+ e+vd9Ive9EyyUO96dvQvqjTx87z+KNPpBGWNnos=
+X-Received: by 2002:a92:c24d:: with SMTP id k13mr512556ilo.227.1628831309880; 
+ Thu, 12 Aug 2021 22:08:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAMiADQ8uZRZ-XjR9hrN5KazPgAFbsYCPOq9RU7Pkwqw+Y-vVBg@mail.gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32d;
- envelope-from=cminyard@mvista.com; helo=mail-ot1-x32d.google.com
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-26-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-26-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 13 Aug 2021 15:08:03 +1000
+Message-ID: <CAKmqyKPXXbFPXD75Og3QT9a8pmcEEvOT2yTyMZpWKb3h2pi9qw@mail.gmail.com>
+Subject: Re: [PATCH for-6.2 25/25] arm: Remove system_clock_scale global
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12f;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x12f.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,155 +108,231 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: cminyard@mvista.com
-Cc: Patrick Venture <venture@google.com>, qemu-devel@nongnu.org,
- Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org, maoshengtan2011@gmail.com,
- Chris Rauer <crauer@google.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kkz3aX3XPhyH
+X-TUID: fh5ZIQq89Bou
 
-On Fri, Aug 13, 2021 at 10:37:00AM -0400, Shengtan Mao wrote:
-> Hi Corey,
-> Thank you so much for your feedback. I took some time to discuss these
-> points with my team.
-> 
-> 1. Blocking QEMU I/O
-> Thanks for bringing this to our attention. We acknowledge it as a drawback,
-> but we hope that by indicating this clearly in an updated docs, the user
-> will accept these drawbacks when they use it. In short, we hope that you
-> will consider merging this patch despite this drawback.
+On Thu, Aug 12, 2021 at 7:52 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> All the devices that used to use system_clock_scale have now been
+> converted to use Clock inputs instead, so the global is no longer
+> needed; remove it and all the code that sets it.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-I understand the complexity this will add.  I'm not sure of the general
-QEMU policy on this.  Everything that I know of that relies on remote
-responses is done with async I/O.  The way you have proposed it would be
-ok for testing, I suppose, but I don't think it would be ok in a
-production system.  Things like this have a way of sneaking in to more
-uses than you imagined.  (Hey, we can use this to tie in to a real
-TPM!).
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-So I don't know.  I'll add Peter to the To: and see if he can speak to
-this.
+Alistair
 
-> 
-> 2. Error Handling
-> We will add them for the next version.
-> 
-> 3. Remote end NACK
-> It  would be helpful to have a bit more information on this. The remote I2C
-> in QEMU redirects the return value (which can indicate NACK / ACK) from the
-> external device, so the remote end should be able to NACK if prompted by
-> the external device. If you are saying that the remote I2C should be able
-> to NACK independently, then no, it doesn't support that, but we can take
-> steps to add it.
-
-I believe you will eventually need the ability to get a remote NACK.
-You may also need the ability to signal an interrupt from the remote
-device (though that will require async input).  The information back
-from the remote needs some sort of tag to make it extensible.
-
-> 
-> I am leaving google, so I will be passing this project to my team. Thank
-> you again for your feedback.
-
-Well, bummer.  This is a good idea hopefully we can see it through.
-
-Thanks,
-
--corey
-
-
-> 
-> best,
-> Shengtan
-> 
-> On Fri, Aug 6, 2021 at 9:55 PM Corey Minyard <cminyard@mvista.com> wrote:
-> 
-> > On Fri, Aug 06, 2021 at 11:49:16PM +0000, Shengtan Mao wrote:
-> > > This patch implements the remote I2C device.  The remote I2C device
-> > allows an
-> > > external I2C device to communicate with the I2C controller in QEMU
-> > through the
-> > > remote I2C protocol.  Users no longer have to directly modify QEMU to
-> > add new
-> > > I2C devices and can instead implement the emulated device externally and
-> > > connect it to the remote I2C device.
-> >
-> > I got to spend some time on this today, and I like the concept, but
-> > there is one major issue.  When you do a read, you are blocking the
-> > entire qemu I/O system until the read returns, which may result in
-> > issues.  At least that's may understanding of how the qemu I/O system
-> > works, which may be dated or wrong.
-> >
-> > If you look at the IPMI code, it as an external BMC that can handle
-> > async I/O from the chardev.  But the IPMI subsystem is designed to
-> > handle this sort of thing.
-> >
-> > Unfortunately, the I2C code really isn't set up to handle async
-> > operations.  I'm not sure how hard it would be to modify the I2C core to
-> > handle this, but it doesn't look trivial.  Well, the changes to the core
-> > wouldn't be terrible, but all the host devices are set up for
-> > synchronous operation.  You could add a separate asynchronous interface,
-> > and only host devices that were modified could use it, and your device
-> > would only work on those host devices.
-> >
-> > Another issue is that you aren't handling errors from the chr read/write
-> > calls.  If the remote connection dies, this isn't going to be good.  You
-> > have to do error handling.
-> >
-> > There is also no way for the remote end to return a NACK.  That's pretty
-> > important, I think.  It will, unfortunately, complicate your nice simple
-> > protocol.
-> >
-> > Sorry to be the bearer of bad news.  Maybe I'm wrong about the blocking
-> > thing, I'd be happy to be wrong.
-> >
-> > -corey
-> >
-> > >
-> > > Previous work by Wolfram Sang
-> > > (
-> > https://git.kernel.org/pub/scm/virt/qemu/wsa/qemu.git/commit/?h=i2c-passthrough
-> > )
-> > > was referenced.  It shares the similar idea of redirecting the actual
-> > I2C device
-> > > functionalities, but Sang focuses on physical devices, and we focus on
-> > emulated devices.
-> > > The work by Sang mainly utilizes file descriptors while ours utilizes
-> > character
-> > > devices, which offers better support for emulated devices. The work by
-> > Sang is
-> > > not meant to offer full I2C device support; it only implements the
-> > receive
-> > > functionality.  Our work implements full support for I2C devices: send,
-> > recv,
-> > > and event (match_and_add is not applicable for external devices).
-> > >
-> > > v1 -> v2
-> > >     fixed terminology errors in the description comments.
-> > > v2 -> v3
-> > >     corrected patch set emailing errors.
-> > > v3 -> v4
-> > >     added remote I2C protocol description in docs/specs
-> > >
-> > > Shengtan Mao (2):
-> > >   hw/i2c: add remote I2C device
-> > >   docs/specs: add remote i2c docs
-> > >
-> > >  docs/specs/index.rst          |   1 +
-> > >  docs/specs/remote-i2c.rst     |  51 ++++++++
-> > >  hw/arm/Kconfig                |   1 +
-> > >  hw/i2c/Kconfig                |   4 +
-> > >  hw/i2c/meson.build            |   1 +
-> > >  hw/i2c/remote-i2c.c           | 117 ++++++++++++++++++
-> > >  tests/qtest/meson.build       |   1 +
-> > >  tests/qtest/remote-i2c-test.c | 216 ++++++++++++++++++++++++++++++++++
-> > >  8 files changed, 392 insertions(+)
-> > >  create mode 100644 docs/specs/remote-i2c.rst
-> > >  create mode 100644 hw/i2c/remote-i2c.c
-> > >  create mode 100644 tests/qtest/remote-i2c-test.c
-> > >
-> > > --
-> > > 2.32.0.605.g8dce9f2422-goog
-> > >
-> >
+> ---
+>  include/hw/timer/armv7m_systick.h | 22 ----------------------
+>  hw/arm/armsse.c                   | 17 +----------------
+>  hw/arm/mps2.c                     |  2 --
+>  hw/arm/msf2-soc.c                 |  2 --
+>  hw/arm/netduino2.c                |  2 --
+>  hw/arm/netduinoplus2.c            |  2 --
+>  hw/arm/nrf51_soc.c                |  2 --
+>  hw/arm/stellaris.c                |  7 ++++---
+>  hw/arm/stm32vldiscovery.c         |  2 --
+>  hw/timer/armv7m_systick.c         |  2 --
+>  10 files changed, 5 insertions(+), 55 deletions(-)
+>
+> diff --git a/include/hw/timer/armv7m_systick.h b/include/hw/timer/armv7m_systick.h
+> index 38adf8d274e..ee09b138810 100644
+> --- a/include/hw/timer/armv7m_systick.h
+> +++ b/include/hw/timer/armv7m_systick.h
+> @@ -47,26 +47,4 @@ struct SysTickState {
+>      Clock *cpuclk;
+>  };
+>
+> -/*
+> - * Multiplication factor to convert from system clock ticks to qemu timer
+> - * ticks. This should be set (by board code, usually) to a value
+> - * equal to NANOSECONDS_PER_SECOND / frq, where frq is the clock frequency
+> - * in Hz of the CPU.
+> - *
+> - * This value is used by the systick device when it is running in
+> - * its "use the CPU clock" mode (ie when SYST_CSR.CLKSOURCE == 1) to
+> - * set how fast the timer should tick.
+> - *
+> - * TODO: we should refactor this so that rather than using a global
+> - * we use a device property or something similar. This is complicated
+> - * because (a) the property would need to be plumbed through from the
+> - * board code down through various layers to the systick device
+> - * and (b) the property needs to be modifiable after realize, because
+> - * the stellaris board uses this to implement the behaviour where the
+> - * guest can reprogram the PLL registers to downclock the CPU, and the
+> - * systick device needs to react accordingly. Possibly this should
+> - * be deferred until we have a good API for modelling clock trees.
+> - */
+> -extern int system_clock_scale;
+> -
+>  #endif
+> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+> index 70b52c3d4b9..aecdeb9815a 100644
+> --- a/hw/arm/armsse.c
+> +++ b/hw/arm/armsse.c
+> @@ -689,17 +689,6 @@ static void armsse_forward_sec_resp_cfg(ARMSSE *s)
+>      qdev_connect_gpio_out(dev_splitter, 2, s->sec_resp_cfg_in);
+>  }
+>
+> -static void armsse_mainclk_update(void *opaque, ClockEvent event)
+> -{
+> -    ARMSSE *s = ARM_SSE(opaque);
+> -
+> -    /*
+> -     * Set system_clock_scale from our Clock input; this is what
+> -     * controls the tick rate of the CPU SysTick timer.
+> -     */
+> -    system_clock_scale = clock_ticks_to_ns(s->mainclk, 1);
+> -}
+> -
+>  static void armsse_init(Object *obj)
+>  {
+>      ARMSSE *s = ARM_SSE(obj);
+> @@ -711,8 +700,7 @@ static void armsse_init(Object *obj)
+>      assert(info->sram_banks <= MAX_SRAM_BANKS);
+>      assert(info->num_cpus <= SSE_MAX_CPUS);
+>
+> -    s->mainclk = qdev_init_clock_in(DEVICE(s), "MAINCLK",
+> -                                    armsse_mainclk_update, s, ClockUpdate);
+> +    s->mainclk = qdev_init_clock_in(DEVICE(s), "MAINCLK", NULL, NULL, 0);
+>      s->s32kclk = qdev_init_clock_in(DEVICE(s), "S32KCLK", NULL, NULL, 0);
+>
+>      memory_region_init(&s->container, obj, "armsse-container", UINT64_MAX);
+> @@ -1654,9 +1642,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+>       * devices in the ARMSSE.
+>       */
+>      sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
+> -
+> -    /* Set initial system_clock_scale from MAINCLK */
+> -    armsse_mainclk_update(s, ClockUpdate);
+>  }
+>
+>  static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
+> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+> index 3671f49ad7b..4634aa1a1ca 100644
+> --- a/hw/arm/mps2.c
+> +++ b/hw/arm/mps2.c
+> @@ -439,8 +439,6 @@ static void mps2_common_init(MachineState *machine)
+>                   qdev_get_gpio_in(armv7m,
+>                                    mmc->fpga_type == FPGA_AN511 ? 47 : 13));
+>
+> -    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+> -
+>      armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+>                         0x400000);
+>  }
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index dbc6d936a76..b5fe9f364d5 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -144,8 +144,6 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+>          return;
+>      }
+>
+> -    system_clock_scale = clock_ticks_to_ns(s->m3clk, 1);
+> -
+>      for (i = 0; i < MSF2_NUM_UARTS; i++) {
+>          if (serial_hd(i)) {
+>              serial_mm_init(get_system_memory(), uart_addr[i], 2,
+> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
+> index b5c0ba23ee5..3365da11bf7 100644
+> --- a/hw/arm/netduino2.c
+> +++ b/hw/arm/netduino2.c
+> @@ -39,8 +39,6 @@ static void netduino2_init(MachineState *machine)
+>      DeviceState *dev;
+>      Clock *sysclk;
+>
+> -    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+> -
+>      /* This clock doesn't need migration because it is fixed-frequency */
+>      sysclk = clock_new(OBJECT(machine), "SYSCLK");
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
+> index a5a8999cc8c..76cea8e4891 100644
+> --- a/hw/arm/netduinoplus2.c
+> +++ b/hw/arm/netduinoplus2.c
+> @@ -39,8 +39,6 @@ static void netduinoplus2_init(MachineState *machine)
+>      DeviceState *dev;
+>      Clock *sysclk;
+>
+> -    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+> -
+>      /* This clock doesn't need migration because it is fixed-frequency */
+>      sysclk = clock_new(OBJECT(machine), "SYSCLK");
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+> index e3e849a32b1..34da0d62f00 100644
+> --- a/hw/arm/nrf51_soc.c
+> +++ b/hw/arm/nrf51_soc.c
+> @@ -84,8 +84,6 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+>       * will always provide one).
+>       */
+>
+> -    system_clock_scale = NANOSECONDS_PER_SECOND / HCLK_FRQ;
+> -
+>      object_property_set_link(OBJECT(&s->cpu), "memory", OBJECT(&s->container),
+>                               &error_abort);
+>      if (!sysbus_realize(SYS_BUS_DEVICE(&s->cpu), errp)) {
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index 3e7d1dabad1..78827ace6b8 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -263,17 +263,18 @@ static bool ssys_use_rcc2(ssys_state *s)
+>   */
+>  static void ssys_calculate_system_clock(ssys_state *s, bool propagate_clock)
+>  {
+> +    int period_ns;
+>      /*
+>       * SYSDIV field specifies divisor: 0 == /1, 1 == /2, etc.  Input
+>       * clock is 200MHz, which is a period of 5 ns. Dividing the clock
+>       * frequency by X is the same as multiplying the period by X.
+>       */
+>      if (ssys_use_rcc2(s)) {
+> -        system_clock_scale = 5 * (((s->rcc2 >> 23) & 0x3f) + 1);
+> +        period_ns = 5 * (((s->rcc2 >> 23) & 0x3f) + 1);
+>      } else {
+> -        system_clock_scale = 5 * (((s->rcc >> 23) & 0xf) + 1);
+> +        period_ns = 5 * (((s->rcc >> 23) & 0xf) + 1);
+>      }
+> -    clock_set_ns(s->sysclk, system_clock_scale);
+> +    clock_set_ns(s->sysclk, period_ns);
+>      if (propagate_clock) {
+>          clock_propagate(s->sysclk);
+>      }
+> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+> index 9b79004703b..04036da3ee0 100644
+> --- a/hw/arm/stm32vldiscovery.c
+> +++ b/hw/arm/stm32vldiscovery.c
+> @@ -42,8 +42,6 @@ static void stm32vldiscovery_init(MachineState *machine)
+>      DeviceState *dev;
+>      Clock *sysclk;
+>
+> -    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+> -
+>      /* This clock doesn't need migration because it is fixed-frequency */
+>      sysclk = clock_new(OBJECT(machine), "SYSCLK");
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+> diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
+> index 39cca206cfd..9f92830968b 100644
+> --- a/hw/timer/armv7m_systick.c
+> +++ b/hw/timer/armv7m_systick.c
+> @@ -29,8 +29,6 @@
+>  #define SYSCALIB_NOREF (1U << 31)
+>  #define SYSCALIB_SKEW (1U << 30)
+>
+> -int system_clock_scale;
+> -
+>  static void systick_set_period_from_clock(SysTickState *s)
+>  {
+>      /*
+> --
+> 2.20.1
+>
+>

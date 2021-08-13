@@ -1,190 +1,377 @@
-Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp139331lfk;
-        Fri, 13 Aug 2021 06:25:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWE3dHnmpq6SV9RuHxoiVw4f7gkSw9GH1EtPb80TmWLmWaUWp489XxjtEte28E1o+SxifN
-X-Received: by 2002:a17:906:d057:: with SMTP id bo23mr2466938ejb.208.1628861106480;
-        Fri, 13 Aug 2021 06:25:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628861106; cv=none;
+Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp200678lfk;
+        Fri, 13 Aug 2021 07:37:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwnWwLdPM+tFua8g/BFleeE6EC/TuHGbgxEGyAVLEx15ZATXPlMTRNxgkTKvimt/Gpga/Ux
+X-Received: by 2002:adf:dd92:: with SMTP id x18mr3622425wrl.123.1628865452273;
+        Fri, 13 Aug 2021 07:37:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628865452; cv=none;
         d=google.com; s=arc-20160816;
-        b=AKJvS4sf1tmsdb7vpTBS1qCrjzrtKxlU8GyS43mh/K1M1V6d1AqfF4RQHw1wbZPem9
-         xlSAgvCmfNy2iI/v6DKPWdTMB0fOPpqOBTHsmfTuBnasLCWvq6UopRVZigpFZU+Q6IRz
-         BzVwtPNkY/qmQVWnAcdV8WSIEg0N71Rc6wHd6EAsciarwEYQAeri/OHVyTyi7T5LuRAe
-         z2wMAK+HdO+GPYpfoYc4L/iQp45VdAG4d3OcKeTONMI4XObYMJPp7H/IvHgT01GgVWeG
-         nEjBxBZrvfo+PiUqv9DV31E1noJgyvTl+frydF+Pd5/NeYXlhCj9LJERGr8KDqaQbNXv
-         vOsg==
+        b=JtRqQRAhg9YrKkuhcZ2JgN+6ZzbxHieukXej5hkJETtQsfES/mrXHGEmpgGunelUHJ
+         l1er8bOetWgIxq7NzrQSGWnYNWSTLDrMMyR1BpkVxXxdMR3kIcCJdoyw4LP5AAYm4WL8
+         zpGx+VwWIzRbSFcHk8f1uDn0kO0aE2/tnoLd20PZ4QpZeqkWLLbonYZuQxmo1zRkIa+K
+         DWmKviShN2UuMRFcwCAEPdacHt/VFNbP0nJEnjrzeOSnfRs2jglfiXDWwaFhZc40VCRA
+         920yTxNzNC9iM35aJ7r8Jknj1toZ05ptE1Zth21ZxKWSospxjVWvRFL18TrZp73YC4jM
+         E1Yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Mpfyk7/1xkPWCm67v6Q4b34MWfBO1kqI/kzOqeHhh68=;
-        b=sNuDy69ngXqtA+EhTdwkhtg+Xp6Dp/FJfs/FEeHWaF6A3L3XuVK1cZCwsANMMIJmE/
-         M2dBYuhX1XlHuAEfYZaiTkLLPg/BQIotr0mxo81RmUUq0s8Zggo/xPsJoqyCXeanU7HW
-         penovh2rtrt79aqJz8DBf5rjqSjH3s+0auI0fEgeWfVRTGLELDR9G4e30exxVi7B/KTR
-         50G/YMxqfFpFM7BXrizzfXlgRR3Fw9G/7eWx85I1ltE8AFpGfPxs1DeEzsY/HVzALc/p
-         FvVZGphIN4Usq1wHFYk1YaVIn1ti95KcaP6azInA4Sk0Sx1jyR3Kc5wZS0eEKlMCPNvJ
-         qMTQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=eSW7KlB2a1B6abDS5Zifp5VGmOsYaibq5Zr44ACSu/4=;
+        b=R8ucc/vJWH4J7RX21zf17q99gMkLU+wIj7MtukTv0gb3+5z/3ZCd5eqK2mnRBnKcP9
+         cnPLqa5B1oRpudFE9iBk8CHBI8JSqZa2njVQYToTbaSEdYIEkFDz0r0SdIAWcZ08mfyh
+         h8ZEOcIuFrpjP3haabTPMiWfxDv2kx6vprGhyk1QDfE8ioXIAEwePJFweHlND2OZWGIZ
+         s/luncAcE3olRgDc4My1lUkvMoj+usHdPE0TyVv/uWLFxwEUdgGY9eorkJfhKoYo5WOt
+         7qiNXOt2HDeRTE1FF0yW25kU5rwY6am0xSVtj83JssTsI/oayJ8ElWwSQfKvM1DwXe6m
+         2Ofg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mpUHRByN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=biPx0Lom;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cx17si1663991edb.153.2021.08.13.06.25.06
+        by mx.google.com with ESMTPS id 95si1793198wrm.394.2021.08.13.07.37.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Aug 2021 06:25:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Aug 2021 07:37:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mpUHRByN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46668 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=biPx0Lom;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:37052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEXBJ-0002H0-K2
-	for alex.bennee@linaro.org; Fri, 13 Aug 2021 09:25:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46914)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mEYJP-0004wb-9Z
+	for alex.bennee@linaro.org; Fri, 13 Aug 2021 10:37:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35170)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mEX4k-00060N-VH
- for qemu-devel@nongnu.org; Fri, 13 Aug 2021 09:18:20 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:35758)
+ (Exim 4.90_1) (envelope-from <stmao@google.com>) id 1mEYJD-0004uW-CT
+ for qemu-arm@nongnu.org; Fri, 13 Aug 2021 10:37:19 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:40811)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mEX4i-0001Au-Tf
- for qemu-devel@nongnu.org; Fri, 13 Aug 2021 09:18:18 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- q11-20020a7bce8b0000b02902e6880d0accso9690922wmj.0
- for <qemu-devel@nongnu.org>; Fri, 13 Aug 2021 06:18:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Mpfyk7/1xkPWCm67v6Q4b34MWfBO1kqI/kzOqeHhh68=;
- b=mpUHRByNGlwsgFsz6qJ1k9zn6TWNEH5dr9CSJ1aYY7KQwHUK7EC1T1fAf7IHbPJfu/
- bdI6SZgL6LGpTcEjPiwpwWc2de2lMy3gTvzLu1ClMXbu8F+MlSeOLb8XNE0Lc7D1JBRJ
- ddYxixB3vcK7SQQbXKv6Y5guHSbMU1+wR9Vn7G0r8VXcI0DYk+tC0OjLcfMNp8PPhzji
- YA5fVP2GFPRLV5uNQA5JE3IQH6rZC6G7wDmFelGtJ5pzTu7wK0YUtIiWwWhcs3kzxpXo
- grhBbJMEzQw2hlXZkkuz5BbOAH5NrjRKJXy0y7KugOxex3qV86iMjiOCW8+x05wcClYe
- fP0Q==
+ (Exim 4.90_1) (envelope-from <stmao@google.com>) id 1mEYJA-0001N2-6f
+ for qemu-arm@nongnu.org; Fri, 13 Aug 2021 10:37:19 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ f12-20020a05600c4e8c00b002e6bdd6ffe2so4036674wmq.5
+ for <qemu-arm@nongnu.org>; Fri, 13 Aug 2021 07:37:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eSW7KlB2a1B6abDS5Zifp5VGmOsYaibq5Zr44ACSu/4=;
+ b=biPx0LomRcma35ni94Kd7KHgKgmI4s8Imefh7r2Mg7JFucO7DU1mhRtUmZGxVeUrzm
+ /0tZ0tgnXpq9+dErT1Bpngx7wFhdWW6hA8DezgYSslIWASTuHZlBwZK0b4e3UV2NtuZK
+ T1p0e1/11AO5ov1cmkBeoFIDEhs/H8nQCp5aUpWlZqpiDN1iLuNxaVRvSk5xF+TmTPsp
+ gWtd2qb+RltOFtIS/8lB94KcbTaf7Zf+WaEUgdd/09Qz5x7BPofIq/6BEqqr3Mwk+Kro
+ FzXmYvY8qCJjYsbz0FhidcD1r9F8X0QTBEji930H0EWhOscsH9Hq/XiI/INug7DgWmsR
+ tUng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Mpfyk7/1xkPWCm67v6Q4b34MWfBO1kqI/kzOqeHhh68=;
- b=MkfjSV0Sb4dY6GHReFh4in7Woz9XVbHDdap4uHrZirSyHMVmggluYXQJwYnYTjEpUy
- YMKEtbeI5tUbo3/yfq8aO+yAPPxgG3hhqCNR7OzuUML4hfW+LIhx/HZV+mU98OCJCphX
- 9Iv8jOIJHLD57vGjsx28/YWF94SttDulGE+8Bcd0qHpCNDdBogAn+m/aak1XaHzZ3ws/
- dqfw6+xOu8LplpoxqDr0CrOwPGF+lX1GQ7q9ajtlf/fNfYg2rX5aLMfED92dxa/WM4b8
- 6BpuXQE3HolumiPxEJrBESBAqJr0dzuDiUywDLhgfRIoSQ/S93PI6zQX6VPP46BSq5EH
- p/yg==
-X-Gm-Message-State: AOAM532Nl5nB+Sx8akiqxUTjCfylwpWmH7cYM7zAU2xvTt8WX28s2b18
- FAQXnE/LplwO7D9Zxs4BVqQUag==
-X-Received: by 2002:a1c:7711:: with SMTP id t17mr2646248wmi.77.1628860695706; 
- Fri, 13 Aug 2021 06:18:15 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q75sm1585705wme.40.2021.08.13.06.18.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Aug 2021 06:18:15 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 5/7] linux-user: Provide new force_sig_fault() function
-Date: Fri, 13 Aug 2021 14:18:07 +0100
-Message-Id: <20210813131809.28655-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210813131809.28655-1-peter.maydell@linaro.org>
-References: <20210813131809.28655-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eSW7KlB2a1B6abDS5Zifp5VGmOsYaibq5Zr44ACSu/4=;
+ b=ol2YWtXrE85wUQGerAh8+yVCAGnb3KbROiHDQtYETLLibSniG1GuNYi75mFjJTv06z
+ xbnBh/ckOJ5YBm0UeKbU/zFnoGfidQIYYzwZV7riWiEfHFBiWcilGatFHKodhIhN4gB9
+ CF3Q0jqWsMJ6JVioDW15TkZx9n4MBfLZCsru3C8YKLo/4tRcsDTdWPXjSIxFHM1hEhHr
+ QnguP4beOjTGlKrW3ThW07viVF1ZZVGwi/WIEOVhC3qQLsG3Dd/gfjjaz/PzpArpowrx
+ R09Vm1vQtx47Hd6blh0PrOXDmx8JanTj4V/o0rbGwFWavdZiAp5QX/cyz+hd2QWaCKWY
+ vEHQ==
+X-Gm-Message-State: AOAM533d7K+GCvYGvj1ixPNm5p77FpdQNaKeh8ADWhG3PNXFvoYKJXbf
+ 8PaHfHlH+imIM7A+14aoxA9WnO7Bk5utYI64UldrZw==
+X-Received: by 2002:a1c:1f88:: with SMTP id f130mr3078999wmf.24.1628865431501; 
+ Fri, 13 Aug 2021 07:37:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210806234918.122457-1-stmao@google.com>
+ <20210807015507.GE3431@minyard.net>
+In-Reply-To: <20210807015507.GE3431@minyard.net>
+From: Shengtan Mao <stmao@google.com>
+Date: Fri, 13 Aug 2021 10:37:00 -0400
+Message-ID: <CAMiADQ8uZRZ-XjR9hrN5KazPgAFbsYCPOq9RU7Pkwqw+Y-vVBg@mail.gmail.com>
+Subject: Re: [PATCH v4 0/2] Add remote I2C device to support external I2C
+ device
+To: Corey Minyard <cminyard@mvista.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Chris Rauer <crauer@google.com>, Hao Wu <wuhaotsh@google.com>, 
+ Patrick Venture <venture@google.com>, maoshengtan2011@gmail.com
+Content-Type: multipart/alternative; boundary="0000000000006f613505c971c906"
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=stmao@google.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hETvqPfjxcO0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q3M1s4T175yV
 
-In many places in the linux-user code we need to queue a signal for
-the guest using the QEMU_SI_FAULT si_type.  This requires that the
-caller sets up and passes us a target_siginfo, including setting the
-appropriate part of the _sifields union for the si_type. In a number
-of places the code forgets to set the _sifields union field.
+--0000000000006f613505c971c906
+Content-Type: text/plain; charset="UTF-8"
 
-Provide a new force_sig_fault() function, which does the same thing
-as the Linux kernel function of that name -- it takes the signal
-number, the si_code value and the address to use in
-_sifields._sigfault, and assembles the target_siginfo itself.  This
-makes the callsites simpler and means it's harder to forget to pass
-in an address value.
+Hi Corey,
+Thank you so much for your feedback. I took some time to discuss these
+points with my team.
 
-We follow force_sig() and the kernel's force_sig_fault() in not
-requiring the caller to pass in the CPU pointer but always acting
-on the CPU of the current thread.
+1. Blocking QEMU I/O
+Thanks for bringing this to our attention. We acknowledge it as a drawback,
+but we hope that by indicating this clearly in an updated docs, the user
+will accept these drawbacks when they use it. In short, we hope that you
+will consider merging this patch despite this drawback.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- linux-user/signal-common.h |  1 +
- linux-user/signal.c        | 17 +++++++++++++++++
- 2 files changed, 18 insertions(+)
+2. Error Handling
+We will add them for the next version.
 
-diff --git a/linux-user/signal-common.h b/linux-user/signal-common.h
-index ea86328b289..536c7ac2c20 100644
---- a/linux-user/signal-common.h
-+++ b/linux-user/signal-common.h
-@@ -40,6 +40,7 @@ void tswap_siginfo(target_siginfo_t *tinfo,
- void set_sigmask(const sigset_t *set);
- void force_sig(int sig);
- void force_sigsegv(int oldsig);
-+void force_sig_fault(int sig, int code, abi_ulong addr);
- #if defined(TARGET_ARCH_HAS_SETUP_FRAME)
- void setup_frame(int sig, struct target_sigaction *ka,
-                  target_sigset_t *set, CPUArchState *env);
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index fd3c6a3e60d..5ea8e4584a7 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -646,6 +646,23 @@ void force_sig(int sig)
-     queue_signal(env, info.si_signo, QEMU_SI_KILL, &info);
- }
- 
-+/*
-+ * Force a synchronously taken QEMU_SI_FAULT signal. For QEMU the
-+ * 'force' part is handled in process_pending_signals().
-+ */
-+void force_sig_fault(int sig, int code, abi_ulong addr)
-+{
-+    CPUState *cpu = thread_cpu;
-+    CPUArchState *env = cpu->env_ptr;
-+    target_siginfo_t info = {};
-+
-+    info.si_signo = sig;
-+    info.si_errno = 0;
-+    info.si_code = code;
-+    info._sifields._sigfault._addr = addr;
-+    queue_signal(env, sig, QEMU_SI_FAULT, &info);
-+}
-+
- /* Force a SIGSEGV if we couldn't write to memory trying to set
-  * up the signal frame. oldsig is the signal we were trying to handle
-  * at the point of failure.
--- 
-2.20.1
+3. Remote end NACK
+It  would be helpful to have a bit more information on this. The remote I2C
+in QEMU redirects the return value (which can indicate NACK / ACK) from the
+external device, so the remote end should be able to NACK if prompted by
+the external device. If you are saying that the remote I2C should be able
+to NACK independently, then no, it doesn't support that, but we can take
+steps to add it.
 
+I am leaving google, so I will be passing this project to my team. Thank
+you again for your feedback.
+
+best,
+Shengtan
+
+On Fri, Aug 6, 2021 at 9:55 PM Corey Minyard <cminyard@mvista.com> wrote:
+
+> On Fri, Aug 06, 2021 at 11:49:16PM +0000, Shengtan Mao wrote:
+> > This patch implements the remote I2C device.  The remote I2C device
+> allows an
+> > external I2C device to communicate with the I2C controller in QEMU
+> through the
+> > remote I2C protocol.  Users no longer have to directly modify QEMU to
+> add new
+> > I2C devices and can instead implement the emulated device externally and
+> > connect it to the remote I2C device.
+>
+> I got to spend some time on this today, and I like the concept, but
+> there is one major issue.  When you do a read, you are blocking the
+> entire qemu I/O system until the read returns, which may result in
+> issues.  At least that's may understanding of how the qemu I/O system
+> works, which may be dated or wrong.
+>
+> If you look at the IPMI code, it as an external BMC that can handle
+> async I/O from the chardev.  But the IPMI subsystem is designed to
+> handle this sort of thing.
+>
+> Unfortunately, the I2C code really isn't set up to handle async
+> operations.  I'm not sure how hard it would be to modify the I2C core to
+> handle this, but it doesn't look trivial.  Well, the changes to the core
+> wouldn't be terrible, but all the host devices are set up for
+> synchronous operation.  You could add a separate asynchronous interface,
+> and only host devices that were modified could use it, and your device
+> would only work on those host devices.
+>
+> Another issue is that you aren't handling errors from the chr read/write
+> calls.  If the remote connection dies, this isn't going to be good.  You
+> have to do error handling.
+>
+> There is also no way for the remote end to return a NACK.  That's pretty
+> important, I think.  It will, unfortunately, complicate your nice simple
+> protocol.
+>
+> Sorry to be the bearer of bad news.  Maybe I'm wrong about the blocking
+> thing, I'd be happy to be wrong.
+>
+> -corey
+>
+> >
+> > Previous work by Wolfram Sang
+> > (
+> https://git.kernel.org/pub/scm/virt/qemu/wsa/qemu.git/commit/?h=i2c-passthrough
+> )
+> > was referenced.  It shares the similar idea of redirecting the actual
+> I2C device
+> > functionalities, but Sang focuses on physical devices, and we focus on
+> emulated devices.
+> > The work by Sang mainly utilizes file descriptors while ours utilizes
+> character
+> > devices, which offers better support for emulated devices. The work by
+> Sang is
+> > not meant to offer full I2C device support; it only implements the
+> receive
+> > functionality.  Our work implements full support for I2C devices: send,
+> recv,
+> > and event (match_and_add is not applicable for external devices).
+> >
+> > v1 -> v2
+> >     fixed terminology errors in the description comments.
+> > v2 -> v3
+> >     corrected patch set emailing errors.
+> > v3 -> v4
+> >     added remote I2C protocol description in docs/specs
+> >
+> > Shengtan Mao (2):
+> >   hw/i2c: add remote I2C device
+> >   docs/specs: add remote i2c docs
+> >
+> >  docs/specs/index.rst          |   1 +
+> >  docs/specs/remote-i2c.rst     |  51 ++++++++
+> >  hw/arm/Kconfig                |   1 +
+> >  hw/i2c/Kconfig                |   4 +
+> >  hw/i2c/meson.build            |   1 +
+> >  hw/i2c/remote-i2c.c           | 117 ++++++++++++++++++
+> >  tests/qtest/meson.build       |   1 +
+> >  tests/qtest/remote-i2c-test.c | 216 ++++++++++++++++++++++++++++++++++
+> >  8 files changed, 392 insertions(+)
+> >  create mode 100644 docs/specs/remote-i2c.rst
+> >  create mode 100644 hw/i2c/remote-i2c.c
+> >  create mode 100644 tests/qtest/remote-i2c-test.c
+> >
+> > --
+> > 2.32.0.605.g8dce9f2422-goog
+> >
+>
+
+--0000000000006f613505c971c906
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Corey,<div>Thank you so much for your feedback. I took =
+some time to discuss these points with my team.</div><div><br></div><div>1.=
+ Blocking QEMU I/O</div><div>Thanks for bringing this to our attention. We =
+acknowledge it as a drawback, but we hope that by indicating this clearly i=
+n an updated docs, the user will accept these drawbacks when they use it. I=
+n short, we hope that you will consider merging this patch despite this dra=
+wback.</div><div><br></div><div>2. Error Handling</div><div>We will add the=
+m for the next version.</div><div><br></div><div>3. Remote end NACK</div><d=
+iv>It=C2=A0 would be helpful to have a bit more information on this. The re=
+mote I2C in QEMU redirects the return value (which can indicate NACK / ACK)=
+ from the external device, so the remote end should be able to NACK if prom=
+pted by the external device. If you are saying that the remote I2C should b=
+e able to NACK independently, then no, it doesn&#39;t support that, but we =
+can take steps to add it.</div><div><br></div><div>I am leaving google, so =
+I will be passing this project to my team. Thank you again for your feedbac=
+k.</div><div><br></div><div>best,</div><div>Shengtan</div></div><br><div cl=
+ass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Aug 6, 20=
+21 at 9:55 PM Corey Minyard &lt;<a href=3D"mailto:cminyard@mvista.com">cmin=
+yard@mvista.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex">On Fri, Aug 06, 2021 at 11:49:16PM +0000, Shengtan Mao wrote=
+:<br>
+&gt; This patch implements the remote I2C device.=C2=A0 The remote I2C devi=
+ce allows an<br>
+&gt; external I2C device to communicate with the I2C controller in QEMU thr=
+ough the<br>
+&gt; remote I2C protocol.=C2=A0 Users no longer have to directly modify QEM=
+U to add new<br>
+&gt; I2C devices and can instead implement the emulated device externally a=
+nd<br>
+&gt; connect it to the remote I2C device.<br>
+<br>
+I got to spend some time on this today, and I like the concept, but<br>
+there is one major issue.=C2=A0 When you do a read, you are blocking the<br=
+>
+entire qemu I/O system until the read returns, which may result in<br>
+issues.=C2=A0 At least that&#39;s may understanding of how the qemu I/O sys=
+tem<br>
+works, which may be dated or wrong.<br>
+<br>
+If you look at the IPMI code, it as an external BMC that can handle<br>
+async I/O from the chardev.=C2=A0 But the IPMI subsystem is designed to<br>
+handle this sort of thing.<br>
+<br>
+Unfortunately, the I2C code really isn&#39;t set up to handle async<br>
+operations.=C2=A0 I&#39;m not sure how hard it would be to modify the I2C c=
+ore to<br>
+handle this, but it doesn&#39;t look trivial.=C2=A0 Well, the changes to th=
+e core<br>
+wouldn&#39;t be terrible, but all the host devices are set up for<br>
+synchronous operation.=C2=A0 You could add a separate asynchronous interfac=
+e,<br>
+and only host devices that were modified could use it, and your device<br>
+would only work on those host devices.<br>
+<br>
+Another issue is that you aren&#39;t handling errors from the chr read/writ=
+e<br>
+calls.=C2=A0 If the remote connection dies, this isn&#39;t going to be good=
+.=C2=A0 You<br>
+have to do error handling.<br>
+<br>
+There is also no way for the remote end to return a NACK.=C2=A0 That&#39;s =
+pretty<br>
+important, I think.=C2=A0 It will, unfortunately, complicate your nice simp=
+le<br>
+protocol.<br>
+<br>
+Sorry to be the bearer of bad news.=C2=A0 Maybe I&#39;m wrong about the blo=
+cking<br>
+thing, I&#39;d be happy to be wrong.<br>
+<br>
+-corey<br>
+<br>
+&gt; <br>
+&gt; Previous work by Wolfram Sang<br>
+&gt; (<a href=3D"https://git.kernel.org/pub/scm/virt/qemu/wsa/qemu.git/comm=
+it/?h=3Di2c-passthrough" rel=3D"noreferrer" target=3D"_blank">https://git.k=
+ernel.org/pub/scm/virt/qemu/wsa/qemu.git/commit/?h=3Di2c-passthrough</a>)<b=
+r>
+&gt; was referenced.=C2=A0 It shares the similar idea of redirecting the ac=
+tual I2C device<br>
+&gt; functionalities, but Sang focuses on physical devices, and we focus on=
+ emulated devices.<br>
+&gt; The work by Sang mainly utilizes file descriptors while ours utilizes =
+character<br>
+&gt; devices, which offers better support for emulated devices. The work by=
+ Sang is<br>
+&gt; not meant to offer full I2C device support; it only implements the rec=
+eive<br>
+&gt; functionality.=C2=A0 Our work implements full support for I2C devices:=
+ send, recv,<br>
+&gt; and event (match_and_add is not applicable for external devices).<br>
+&gt; <br>
+&gt; v1 -&gt; v2<br>
+&gt;=C2=A0 =C2=A0 =C2=A0fixed terminology errors in the description comment=
+s.<br>
+&gt; v2 -&gt; v3<br>
+&gt;=C2=A0 =C2=A0 =C2=A0corrected patch set emailing errors.<br>
+&gt; v3 -&gt; v4<br>
+&gt;=C2=A0 =C2=A0 =C2=A0added remote I2C protocol description in docs/specs=
+<br>
+&gt; <br>
+&gt; Shengtan Mao (2):<br>
+&gt;=C2=A0 =C2=A0hw/i2c: add remote I2C device<br>
+&gt;=C2=A0 =C2=A0docs/specs: add remote i2c docs<br>
+&gt; <br>
+&gt;=C2=A0 docs/specs/index.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
+=C2=A01 +<br>
+&gt;=C2=A0 docs/specs/remote-i2c.rst=C2=A0 =C2=A0 =C2=A0|=C2=A0 51 ++++++++=
+<br>
+&gt;=C2=A0 hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 =C2=A01 +<br>
+&gt;=C2=A0 hw/i2c/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 =C2=A04 +<br>
+&gt;=C2=A0 hw/i2c/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
+=A0 =C2=A01 +<br>
+&gt;=C2=A0 hw/i2c/remote-i2c.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 11=
+7 ++++++++++++++++++<br>
+&gt;=C2=A0 tests/qtest/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A0=
+1 +<br>
+&gt;=C2=A0 tests/qtest/remote-i2c-test.c | 216 ++++++++++++++++++++++++++++=
+++++++<br>
+&gt;=C2=A0 8 files changed, 392 insertions(+)<br>
+&gt;=C2=A0 create mode 100644 docs/specs/remote-i2c.rst<br>
+&gt;=C2=A0 create mode 100644 hw/i2c/remote-i2c.c<br>
+&gt;=C2=A0 create mode 100644 tests/qtest/remote-i2c-test.c<br>
+&gt; <br>
+&gt; -- <br>
+&gt; 2.32.0.605.g8dce9f2422-goog<br>
+&gt; <br>
+</blockquote></div>
+
+--0000000000006f613505c971c906--

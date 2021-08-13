@@ -1,98 +1,95 @@
-Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp134966lfk;
-        Fri, 13 Aug 2021 06:20:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxXphYIuW5TuqHSeSyQylTCBw6R5H+h8Kfk+zJuN09rw5pc85OvknzFhRj7VavnlEBjmWH
-X-Received: by 2002:a17:907:7e89:: with SMTP id qb9mr2410918ejc.333.1628860830825;
-        Fri, 13 Aug 2021 06:20:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628860830; cv=none;
+Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp135108lfk;
+        Fri, 13 Aug 2021 06:20:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyOtK5w3OYzd7TVDl5sEUKu3bhWhKpsXmPdPEvSJMio2KLZHUV7gPw7XZcN2n99Swh31KOa
+X-Received: by 2002:a17:906:919:: with SMTP id i25mr2303649ejd.171.1628860837600;
+        Fri, 13 Aug 2021 06:20:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628860837; cv=none;
         d=google.com; s=arc-20160816;
-        b=oEAXkM43zsGEfcpOZxsuy9PiGtFiogjvotEmlibyLa2Aa1ZAHxjDB/2tZGLKLQRU9r
-         aN42ed48p0JpVviVguZwxj72UsxmUiekx9CnQarcbYlhoKDTkMFHJPLYwGFzkqrRVF1y
-         AijzEwhDjl0Kvjs5oSAgWUrklRZgV1g7qn+vwEUWH2yHX3SNbkrbxobrSxrbk5zTcgdj
-         NoK8U00rIInDluBzdn+cw2w8AYnlgL4ds1ElNNRnt2XWFbsaGhpoHKkmFB6KiGaraOef
-         xq8CBmcaSWOFPDpw8IjDinWvaa6xLv39oadK6IJZwbprHNr9L+DlH7rG1UvWMdUPeCzz
-         mL0Q==
+        b=ehovgLvwjr3zP5MP27bjhcnPLlkMerddyZZ8a07aUJBAMcnCOpEu5xbsvjAWE8hUA2
+         EyOJ9Wm/Y87pSews/XQLGXQAVcpW44SdL3WPTiZqqx6Z0+aYTYDuEuvq89PvDXVCVE0Y
+         pex3ccnR27D9ngAntN9IhdHvGYqDB5NZOaUhx90yFwGl4HLMoPLw+NbpICQkQGQuU21v
+         Y1PIvcKEPYKwqezy6APr3TksDEMejU91dL+fS8eIVrHVlR711dYnz5LUci23+rsUVQa1
+         k4gB/OfwXl6+KlqZWqIAoJAcMOD7Ck9XXFkxutX/bc0gbB4+Nwl8hefCpx2rfzEyXC+x
+         AaLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OwsRmN+On96JlTIEqDrfPOxNFjdnyRq58apo5gMpvTk=;
-        b=gjZisWr8HKGwt1tpp77Z8xmIPZLmPbjMUYFsN9625KxY8LfEqWxQjand2b+oxghpY8
-         5NeHlKAzViiy+SuNaPY5ilIgSwOLbEMiyPHflMqiiiuah5f3hqQjzUGNCnOY5rrgCfaD
-         h46es2QI+GkbxeeIyEsTIXAP4wYtsZ29lDO/v3V8RmXtQTZZWn03ias/h7TEMyhWR++z
-         tt9lIHbIEVhjtdJBhnoe/CyLAixtCCcipIqTfkhqGkPdz/1ppmt2tHO8AKbro4oAC8qe
-         yjDTGIPzs20ONOH2lTC7GThItfvwXb6vfTAekID2e9s2961qlVlQdv/Eac/ThOTk2i6P
-         yggg==
+        bh=fJIpsv1H5kq5YSGMr5mAwnnyIFFq6TrksBVoWM/ILDs=;
+        b=vtffUp6PLL3QGfv/nD6cpU1LHYealXUblyDd4CIDozP5l/WVak+AsuPWw3YbfuJnMY
+         W69SMcq6QneFIEcd9PZlIVeFlUyAZrw+xpqZ5CyXo/6enzcWK4ZubAt3i0A+HswJBWC5
+         boG7LGyg5TNGIUw9e3bUqyInNFHe9l3nVZMpZqjg4xlM/Lo4VFUCGSW/8sKAoChk/LiF
+         EnTi1YyLLPMiKill1pDsSAQs3Q4JLg+KTe3Z65WLp8/ZJosfxWkuHhPXJ/5a5uFCtS2S
+         o5Z9hkQmiiI/h2X4Zv91ghptuJ0c7foajyyk5mdvJ5gCz91eqw7pZT+rx1fPqk7er+UZ
+         hkPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p9le70mF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eCR11VKx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si1559989ejn.647.2021.08.13.06.20.30
+        by mx.google.com with ESMTPS id bl3si1550685ejb.204.2021.08.13.06.20.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Aug 2021 06:20:30 -0700 (PDT)
+        Fri, 13 Aug 2021 06:20:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p9le70mF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eCR11VKx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59748 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59898 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEX6r-0000Lg-U6
-	for alex.bennee@linaro.org; Fri, 13 Aug 2021 09:20:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46802)
+	id 1mEX6y-0000TZ-Fz
+	for alex.bennee@linaro.org; Fri, 13 Aug 2021 09:20:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mEX4i-0005yv-AP
- for qemu-devel@nongnu.org; Fri, 13 Aug 2021 09:18:16 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:33332)
+ id 1mEX4m-00061h-6y
+ for qemu-devel@nongnu.org; Fri, 13 Aug 2021 09:18:20 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:56318)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mEX4g-00019O-N8
- for qemu-devel@nongnu.org; Fri, 13 Aug 2021 09:18:16 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- l10-20020a05600c4f0a00b002e6be174c29so2810072wmq.0
- for <qemu-devel@nongnu.org>; Fri, 13 Aug 2021 06:18:14 -0700 (PDT)
+ id 1mEX4j-0001BH-MV
+ for qemu-devel@nongnu.org; Fri, 13 Aug 2021 09:18:19 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id 6so6880892wme.5
+ for <qemu-devel@nongnu.org>; Fri, 13 Aug 2021 06:18:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OwsRmN+On96JlTIEqDrfPOxNFjdnyRq58apo5gMpvTk=;
- b=p9le70mF9teyB9QiwtTF3Q7MmormSg/wO6A3fKftC92iY2oxwMG0uV0pqCPAwa7vFJ
- hG1va1lBAdhCfrHTzPafO3IPPbS9PaNDd9UdoV4CmD9AVo5zCzzRazqlNwNUn8/qlPSA
- tASBOQMIS7N1xDWeT9ZRWwEClY29Fqz4+FvecWxLdTOSng8FIY1ei0e/1WATZK8U4Suz
- 7u7QUvYChJ8BT7PXdV/mWq42AAqgH3k0kfzPMEnCXM8+AFBCvCf6O685wOyIZ8vd/Z0A
- pOqvN11b+BUcsHBI5b9/Qv2BVL76SjBZXui7QwU46tOcIYWNtlSQcbbYXTkG+tEvp1nJ
- O6fA==
+ bh=fJIpsv1H5kq5YSGMr5mAwnnyIFFq6TrksBVoWM/ILDs=;
+ b=eCR11VKxyvxY/s1Xko6dkF1JxhyzTULV3anFfycSnEX6mGtPr/tFCz2Wv9GRutP4cK
+ FlP1u2jv+Pi+Omogx2TgVfOPA5tDgw/wpzZEgW08Oj5Fy8EWxzLdyrpgh24kNAuI9Nfg
+ 37ue0u5jMNvvTmvQ8dQxyRvWUX84yjn+5KpGFNQMiYLXmQ/5Ou58Bzc1YJYbPVNRnAbI
+ 4HE1Utx8fI/n8fB9LzBOnVwlfyG36RaRga2jb3CLYeYmCrLqSJDqmClJJRXwLjnb44eU
+ 1LLZF9HlrLTN92eTnFGHh84oKpfhSke0vPM1hmnT4XRxj9e3ZuEYsVrNFve9jXdKnU2o
+ WvZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=OwsRmN+On96JlTIEqDrfPOxNFjdnyRq58apo5gMpvTk=;
- b=HsEhXmLpXxV0HQZGA5y9cMOARV70k2KSN8ApNoQAKevz0C5GMzXR5vceFViuUpPmjd
- 2jkIsCHji4ZS0VnmKJqDhAWQ9wAMb3fOYKCzP7u3QIJWX1swMdWhZ5LMicPWRDIDsq1e
- rOKw3D899rrp9Au/F51VFcwfBEFgGZVhlqflH18UmqUZ5/ade8mZ2ergyPwgm1V+kAm/
- 9FBznO3g4yZ+hn1FjZfX7VbjAjW4LiBjnZwhVr813vWodY3Iy6uLMt0WhHuT5DCdKrLh
- Pe8BbsZgODieOxOyt+1wppzKqaUmd/5CpayuKbvn4ItcKHeoLHzxLEOBSVfL/56rq9of
- KEBA==
-X-Gm-Message-State: AOAM533hjQETa3eLcIK4lu0es1AprNJYPa6QMl4TxTpn4AxWepyTqbMB
- 32Bqvei8orWroBjuoOokGK31Lg==
-X-Received: by 2002:a05:600c:5114:: with SMTP id
- o20mr2665051wms.176.1628860693052; 
- Fri, 13 Aug 2021 06:18:13 -0700 (PDT)
+ bh=fJIpsv1H5kq5YSGMr5mAwnnyIFFq6TrksBVoWM/ILDs=;
+ b=YRQVFknYsaHPGO8dDH9crxzaKfJIgrSn1vDnpiPw3eqeKMivivvMBSLrcoh7uTtm2C
+ zYDu/dcVwH3FZU9aJWsua/NgMX3eJkshX83cE1ChxLDqXGfobo1aN7YnYSmXz1KRsNiE
+ h6wLS3C0rzCod0wIf/Ii9WVpoOdwcImz6BouZF7tArps4ZnkO+mM6S+mxmOmIM4BmNDS
+ 027DJHM20Yh30eWbpnjmqc+1G+CFf/SY5wEoJfYp3FV6v0t9QTvEsagMu+2a13b9JjEh
+ EBf0PFtH3KQhdpDGHLH9xcWW9cqJHi63pnHUMqdgcCc0PB/Y4o9TN+s/jIMFyJ91+pY+
+ yGPA==
+X-Gm-Message-State: AOAM530ftmqCrAbuciXS0qdTrVgBGvuP6VP0q5PiaHMaNQm1dTySbVIx
+ KWVGN4m/HqvHLzfmAbiLtf/yIg==
+X-Received: by 2002:a1c:6a07:: with SMTP id f7mr2575581wmc.15.1628860696444;
+ Fri, 13 Aug 2021 06:18:16 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q75sm1585705wme.40.2021.08.13.06.18.12
+ by smtp.gmail.com with ESMTPSA id q75sm1585705wme.40.2021.08.13.06.18.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Aug 2021 06:18:12 -0700 (PDT)
+ Fri, 13 Aug 2021 06:18:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.2 2/7] linux-user/arm: Set siginfo_t addr field for
- SIGTRAP signals
-Date: Fri, 13 Aug 2021 14:18:04 +0100
-Message-Id: <20210813131809.28655-3-peter.maydell@linaro.org>
+Subject: [PATCH for-6.2 6/7] linux-user/arm: Use force_sig_fault()
+Date: Fri, 13 Aug 2021 14:18:08 +0100
+Message-Id: <20210813131809.28655-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210813131809.28655-1-peter.maydell@linaro.org>
 References: <20210813131809.28655-1-peter.maydell@linaro.org>
@@ -106,7 +103,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,29 +119,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Laurent Vivier <laurent@vivier.eu>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cUZszFsCWdmo
+X-TUID: mBTPr2fOelDy
 
-When generating a TRAP_BRKPT SIGTRAP, set the siginfo_t addr field
-to the PC where the breakpoint/singlestep trap occurred; this is
-what the kernel does for this signal for this architecture.
+Use the new force_sig_fault() function instead of setting up
+a target_siginfo_t and calling queue_signal().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- linux-user/arm/cpu_loop.c | 1 +
- 1 file changed, 1 insertion(+)
+I threw in a comment confirming that the si_addr value for the "bad
+SWI immediate" SIGILL really is different from the PC value reported
+in the ucontext_t and resumed from if the handler returns, because it
+looked like a bug to me when I was reading the code...
+---
+ linux-user/arm/cpu_loop.c | 54 ++++++++++++---------------------------
+ 1 file changed, 16 insertions(+), 38 deletions(-)
 
 diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-index 69632d15be1..007752f5b74 100644
+index 44324976196..d4b4f0c71fc 100644
 --- a/linux-user/arm/cpu_loop.c
 +++ b/linux-user/arm/cpu_loop.c
-@@ -453,6 +453,7 @@ void cpu_loop(CPUARMState *env)
-             info.si_signo = TARGET_SIGTRAP;
-             info.si_errno = 0;
-             info.si_code = TARGET_TRAP_BRKPT;
-+            info._sifields._sigfault._addr = env->regs[15];
-             queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+@@ -22,6 +22,7 @@
+ #include "qemu.h"
+ #include "elf.h"
+ #include "cpu_loop-common.h"
++#include "signal-common.h"
+ #include "semihosting/common-semi.h"
+ 
+ #define get_user_code_u32(x, gaddr, env)                \
+@@ -92,7 +93,6 @@ static void arm_kernel_cmpxchg64_helper(CPUARMState *env)
+ {
+     uint64_t oldval, newval, val;
+     uint32_t addr, cpsr;
+-    target_siginfo_t info;
+ 
+     /* Based on the 32 bit code in do_kernel_trap */
+ 
+@@ -141,12 +141,9 @@ segv:
+     end_exclusive();
+     /* We get the PC of the entry address - which is as good as anything,
+        on a real kernel what you get depends on which mode it uses. */
+-    info.si_signo = TARGET_SIGSEGV;
+-    info.si_errno = 0;
+     /* XXX: check env->error_code */
+-    info.si_code = TARGET_SEGV_MAPERR;
+-    info._sifields._sigfault._addr = env->exception.vaddress;
+-    queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
++    force_sig_fault(TARGET_SIGSEGV, TARGET_SEGV_MAPERR,
++                    env->exception.vaddress);
+ }
+ 
+ /* Handle a jump to the kernel code page.  */
+@@ -284,8 +281,6 @@ void cpu_loop(CPUARMState *env)
+     CPUState *cs = env_cpu(env);
+     int trapnr;
+     unsigned int n, insn;
+-    target_siginfo_t info;
+-    uint32_t addr;
+     abi_ulong ret;
+ 
+     for(;;) {
+@@ -320,11 +315,8 @@ void cpu_loop(CPUARMState *env)
+                     break;
+                 }
+ 
+-                info.si_signo = TARGET_SIGILL;
+-                info.si_errno = 0;
+-                info.si_code = TARGET_ILL_ILLOPN;
+-                info._sifields._sigfault._addr = env->regs[15];
+-                queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
++                force_sig_fault(TARGET_SIGILL, TARGET_ILL_ILLOPN,
++                                env->regs[15]);
+             }
+             break;
+         case EXCP_SWI:
+@@ -392,18 +384,14 @@ void cpu_loop(CPUARMState *env)
+                              * Otherwise SIGILL. This includes any SWI with
+                              * immediate not originally 0x9fxxxx, because
+                              * of the earlier XOR.
++                             * Like the real kernel, we report the addr of the
++                             * SWI in the siginfo si_addr but leave the PC
++                             * pointing at the insn after the SWI.
+                              */
+-                            info.si_signo = TARGET_SIGILL;
+-                            info.si_errno = 0;
+-                            info.si_code = TARGET_ILL_ILLTRP;
+-                            info._sifields._sigfault._addr = env->regs[15];
+-                            if (env->thumb) {
+-                                info._sifields._sigfault._addr -= 2;
+-                            } else {
+-                                info._sifields._sigfault._addr -= 4;
+-                            }
+-                            queue_signal(env, info.si_signo,
+-                                         QEMU_SI_FAULT, &info);
++                            abi_ulong faultaddr = env->regs[15];
++                            faultaddr -= env->thumb ? 2 : 4;
++                            force_sig_fault(TARGET_SIGILL, TARGET_ILL_ILLTRP,
++                                            faultaddr);
+                         }
+                         break;
+                     }
+@@ -434,24 +422,14 @@ void cpu_loop(CPUARMState *env)
+             break;
+         case EXCP_PREFETCH_ABORT:
+         case EXCP_DATA_ABORT:
+-            addr = env->exception.vaddress;
+-            {
+-                info.si_signo = TARGET_SIGSEGV;
+-                info.si_errno = 0;
+-                /* XXX: check env->error_code */
+-                info.si_code = TARGET_SEGV_MAPERR;
+-                info._sifields._sigfault._addr = addr;
+-                queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+-            }
++            /* XXX: check env->error_code */
++            force_sig_fault(TARGET_SIGSEGV, TARGET_SEGV_MAPERR,
++                            env->exception.vaddress);
+             break;
+         case EXCP_DEBUG:
+         case EXCP_BKPT:
+         excp_debug:
+-            info.si_signo = TARGET_SIGTRAP;
+-            info.si_errno = 0;
+-            info.si_code = TARGET_TRAP_BRKPT;
+-            info._sifields._sigfault._addr = env->regs[15];
+-            queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
++            force_sig_fault(TARGET_SIGTRAP, TARGET_TRAP_BRKPT, env->regs[15]);
              break;
          case EXCP_KERNEL_TRAP:
+             if (do_kernel_trap(env))
 -- 
 2.20.1
 

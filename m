@@ -1,301 +1,455 @@
-Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp540838lff;
-        Thu, 12 Aug 2021 10:01:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7lY1ncEEilSlWca3o9NQHwLZSyst2qo6aC1+qvTThUq2cDJ1arofThl3PO86ToSO90i1p
-X-Received: by 2002:a05:6402:214d:: with SMTP id bq13mr6570637edb.263.1628787662797;
-        Thu, 12 Aug 2021 10:01:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628787662; cv=none;
+Received: by 2002:a19:c144:0:0:0:0:0 with SMTP id r65csp860382lff;
+        Thu, 12 Aug 2021 18:02:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9jVkIYWOGhF3ojiWbrUuJhuD1cLOetN9gMvNp/ne9p/bAJpirjiBPB9bNRoPb3QsYPZzg
+X-Received: by 2002:a05:6000:18c2:: with SMTP id w2mr6671776wrq.282.1628816524521;
+        Thu, 12 Aug 2021 18:02:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628816524; cv=none;
         d=google.com; s=arc-20160816;
-        b=MCAs67iTtVq9jeu+3J6SYEiXiohw8FmpBTaxZ6cyHQVg5wuhceBCFKU7XUOzgJLE1/
-         1kQjC78K5bU4Og2TWJulV+WV1EKUlA0OMz3y4rVJCmVi4GNkZ4Riv2Hxi48tgMQmD4ey
-         jM0YmYUcnwQEJNXRB1ddbSNbQkDX0euvMdr5sb8Yag9FgJC8ZJeJ12I22Rcv10ctMKnj
-         YM7+nyFHSqrHQ3WxR989bDAlsBoJ2/mkWUwBlB+GVBeHU5HQSPQG1GXbPE9a61mSWj/b
-         CY6Yvxm/XM1t+OsZrdlYdQa8BVNQ+OUorXrhYNAj1QXHScFJbjXx7dWD4FSN9puIGJHd
-         tlHQ==
+        b=sSvJ4I1btdiOvQy52uI6syLgSKFVjDQXswTK+eVf1D6b1Xl8FshCyytnNre3F3p8KF
+         oPXRgCNX4vKKSJl+H85Xk5B7eb/g0e/bvICiGFmKEJ4QnaWS4sLAzVVQQ9nkLGGDNFjF
+         Am1IkghaI91nMIkwKOrZaCXShzAJqkg/uwU12AOWCxd8TV9zDsGT1MQjyyrcafQVJOIC
+         CNkYrNDVWR4Wbsyv3CO5L0AS+I+PscnZtVaM6DBSejdjFTYZb1Ebsqt5TCCQZzyLNKpn
+         SWlDEnmDQrxUaQYCgCo+y2U35X1G7nAzwNulcX1Z0Q4fhMr8S+GZLTW+nz701JHEVagN
+         UmEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=vRtkRSWJCX6tGhWs/vBYUaAykj6RF3z+5UwVziTK5vE=;
-        b=uO5Jk2pnnzDLBieKs6jzh4K8/yvEtHbLYlMqJsbaDOA58nnMtF6bNQJDsS8o/qAzbM
-         WZfLwllr0lLHZNe7uYetWkS9HCYrC9O7y4P6fEUs+I9eI7X8Gl5rnuCgXc+AQcqSkuR1
-         oKIsCUayJsTk1xBjHY4NRKOKBVWnp49IcvRs9fuo6EDs7ILy64HGF/xIn4KIU67RTXdC
-         GKxE8b0K7SnNBuanIxVnyJsjyBeyZ8mNuHGEH0g2FvbIW24yWv35Cz2EpNjIUNm5JFqY
-         k1DB9IuBNSyGv7TEz12g5UNJkZHxjhMaVnv+GtByJx2MNhR51PHCujrv7HCZ4bor4pIx
-         ug8g==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=wk0FGQtWr03dL2h2pJ8Cwi1UdBv6qmuo7vNsSAR8f2I=;
+        b=uhJe9+EVnTRmMTGR2KVflYYNxwkCyWAwFGe0sQQH1E4JZ9fVmcDAS3TkKG/rrk7xLr
+         5XwHHQs6Iwe8XxyWFLgJRsbIQmz14wknGVDpzu38NTqdCc3JJ8bxzZ0n4ZIYmT476/jQ
+         NSbL9el0Dlw/W+soG0XS7qoPlbsaMAkPwt/9y3wmWtNg5DTLBS+9aLk42oSDE7b/vPiY
+         jn4N5ztcub63048brYcjZAfTuLOcpHZK8VhUOvYzXw8c+2TPWCiWQUco8g1aJ7Ds6Hb3
+         UKv30oQIF/IeOatJwCLr3bwNt4k0eF5FDtoy0TOtkuGgU+Xu3ut0Ftep1qFbeGepCLME
+         D2iA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W8B9Go45;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GvLAioYl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c24si4208009edx.510.2021.08.12.10.01.02
+        by mx.google.com with ESMTPS id z1si4108844wrq.373.2021.08.12.18.02.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Aug 2021 10:01:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Aug 2021 18:02:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W8B9Go45;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40052 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GvLAioYl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48136 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEE4j-000344-No
-	for alex.bennee@linaro.org; Thu, 12 Aug 2021 13:01:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50882)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mELaF-0006tQ-CV
+	for alex.bennee@linaro.org; Thu, 12 Aug 2021 21:02:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1mEDxw-0007rM-43
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 12:54:00 -0400
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835]:39842)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mELYN-00063h-7B; Thu, 12 Aug 2021 21:00:07 -0400
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:45038)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1mEDxo-000644-HY
- for qemu-arm@nongnu.org; Thu, 12 Aug 2021 12:53:59 -0400
-Received: by mail-qt1-x835.google.com with SMTP id d2so5763039qto.6
- for <qemu-arm@nongnu.org>; Thu, 12 Aug 2021 09:53:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=vRtkRSWJCX6tGhWs/vBYUaAykj6RF3z+5UwVziTK5vE=;
- b=W8B9Go45SNr3Y4Il2IFXLfCrCA8/6jE67+Rmp8c+OEdUScuC3zvbtwAElkEgp6blE2
- TsIyaX1pSFCtxY36+jKVw/9+WJiTfs16Tm+GHOwEPK1drrwL0mr7yqtQ2JF7J8xqzYcn
- g3V3OwNQ4mDDPvxzfK0wWPUvE8StQ0a3DWIK3xlRr2HHm3Lgf2oHOBs0SyPB0p3raeS0
- SK33Zxe7vA6ayYmdbi5g05jXBOiFQij6kA5hSrXeOYdbyl5kUdYCOA9Ko1L+gQqKo6Oq
- mt83xVp+dQxJpe2ccKm29/TS+AqPF+JvMifwY7gYPNfr5LRW9LLfTm/USoFltMMVJGQG
- qaKA==
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mELYJ-0001QC-UK; Thu, 12 Aug 2021 21:00:07 -0400
+Received: by mail-io1-xd34.google.com with SMTP id d22so11005025ioy.11;
+ Thu, 12 Aug 2021 18:00:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wk0FGQtWr03dL2h2pJ8Cwi1UdBv6qmuo7vNsSAR8f2I=;
+ b=GvLAioYln19jmDcb92CSu8BVQW1xAK5fsmve0wDKDFJz8Mm3MPJEdbYXjRjetV9qXi
+ 7WyD5pk3bThRVySwQT9hhXi8xoaMVig3syybiigYIw+nvyedCKKg32AqRxuHk3MVqB5l
+ 1CGilIxUJ88dDcP35hmSERq+YYCXtrEt/pDLjNj7okb9s5yJu7GIat2u9ch93Gv6YLSe
+ PtoxWUoEBGro9oGf4To17YBUR9fB26vrtLLS0ReXrdKw0O964R0Ed6O4O46QO8wXYIcR
+ y6WrJAauh6Kt3Dexmx22D39UI4jG+ensnwnuarS5YgnLj2dCLBiVc10RjWVwZfWJLh1Q
+ 7gwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=vRtkRSWJCX6tGhWs/vBYUaAykj6RF3z+5UwVziTK5vE=;
- b=A+h8qmU18ixY7fSAwZvZWCm/pQ08cRpKz3fDklLRWMV7C59tNa/H8qur2dJCKUv5xB
- vBmWWTtuEr5nBH6GUqBY7H7ngN2fdhM3FCQzLBd3IwIHu32HblQrhXlk6OgpMGv53nea
- Q8csJGF5iuN0bymohidJGtjDvWMnNdRGq7tl6YRjbnocXzZbiDl1u+HF5xjN9QAeihqO
- ogUlcZHjURL3e1erQ2z5IuWHP+OHjEGJqQUg02PSH6mhzKEzZ0PUm67J42dbMqDttRHU
- 5Q4f8mtNKQgH7zlBN1/GgK4hWqnQw6TKvGtEDBS0ijud7Hfpbs7pd18GGaCQ5NIp5erb
- LAOg==
-X-Gm-Message-State: AOAM530dQFOjAQwkmff3C7KEhk8Tmqrd6dTkGU4WV7fCQmaGSJTUVkvx
- mqRSf5grWxtD6j4Ybxw5BkBhMg==
-X-Received: by 2002:a05:622a:1998:: with SMTP id
- u24mr4744800qtc.40.1628787231439; 
- Thu, 12 Aug 2021 09:53:51 -0700 (PDT)
-Received: from localhost.localdomain
- (bras-base-stsvon1503w-grc-22-142-114-143-47.dsl.bell.ca. [142.114.143.47])
- by smtp.googlemail.com with ESMTPSA id c69sm1714864qkg.1.2021.08.12.09.53.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 09:53:51 -0700 (PDT)
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
- mst@redhat.com, imammedo@redhat.com
-Subject: [PATCH v8 07/10] hw/arm/sbsa-ref: add ITS support in SBSA GIC
-Date: Thu, 12 Aug 2021 12:53:38 -0400
-Message-Id: <20210812165341.40784-8-shashi.mallela@linaro.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210812165341.40784-1-shashi.mallela@linaro.org>
-References: <20210812165341.40784-1-shashi.mallela@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wk0FGQtWr03dL2h2pJ8Cwi1UdBv6qmuo7vNsSAR8f2I=;
+ b=DzJKpztZbTKeyGU6SdBdm/UfaXT5S5BKWLI22aIovlLXb0PoBx6ocYk57ABr2GX87M
+ zKSJTW2gQ0Wjzl984a1+rx2ZJLJlTzQRp1copbK0cH94+OfQ/kePGsRvMaLV9Tae1MMo
+ kO3lluDfgk9aIus7bfIXnNW4U5ZktvZAfJyQW1VaIWOz5vIENC0YCzyCeWPjxGPJN7TP
+ tdNmdMDJXuwgHITS14zRWhsOkl/H3BR8dCPMsVSM1GPJ8W8hyeqxiyzdBWPLrNzb3QZS
+ YUuDPHKgXKiJW6KHEk9hfds7gtiEra/QM2tBhLNGiGE+ODvwE0q5BZbsxcKAJooWG4xA
+ ZrGQ==
+X-Gm-Message-State: AOAM532bqiaw3H4I4k6CvEsyM+A7rfrtGg6dFX5hI4xwluWXzuj3+q9S
+ guxGVrGkQfBb/iUDqYZYZFUx3ZpLsmWx5LMZAhs=
+X-Received: by 2002:a02:c502:: with SMTP id s2mr6183856jam.135.1628816402344; 
+ Thu, 12 Aug 2021 18:00:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::835;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qt1-x835.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-2-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-2-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 13 Aug 2021 10:59:36 +1000
+Message-ID: <CAKmqyKMDrNpX_xkarpgT56TKQvA1exPX6KNj0ke4MD0JQAL2nQ@mail.gmail.com>
+Subject: Re: [PATCH for-6.2 01/25] arm: Move M-profile RAS register block into
+ its own device
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd34.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- narmstrong@baylibre.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z2GM4asjuxXJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: c5KTutDzYHP+
 
-Included creation of ITS as part of SBSA platform GIC
-initialization.
+On Thu, Aug 12, 2021 at 7:34 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Currently we implement the RAS register block within the NVIC device.
+> It isn't really very tightly coupled with the NVIC proper, so instead
+> move it out into a sysbus device of its own and have the top level
+> ARMv7M container create it and map it into memory at the right
+> address.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
----
- hw/arm/sbsa-ref.c | 79 ++++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 75 insertions(+), 4 deletions(-)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index c1629df603..feadae2f33 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -34,7 +34,7 @@
- #include "hw/boards.h"
- #include "hw/ide/internal.h"
- #include "hw/ide/ahci_internal.h"
--#include "hw/intc/arm_gicv3_common.h"
-+#include "hw/intc/arm_gicv3_its_common.h"
- #include "hw/loader.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/qdev-properties.h"
-@@ -58,12 +58,26 @@
- #define ARCH_TIMER_NS_EL1_IRQ  14
- #define ARCH_TIMER_NS_EL2_IRQ  10
- 
-+/*
-+ * Enumeration of the possible values of sbsa-ref version
-+ * property. These are arbitrary QEMU-internal values.
-+ * values are :-
-+ * DEFAULT = without ITS memory map
-+ * SBSA_GIC_ITS = with ITS memory map between distributor & redistributor
-+ *                regions. This is the current version supported.
-+ */
-+typedef enum SbsaRefVersion {
-+    SBSA_DEFAULT,
-+    SBSA_ITS,
-+} SbsaRefVersion;
-+
- enum {
-     SBSA_FLASH,
-     SBSA_MEM,
-     SBSA_CPUPERIPHS,
-     SBSA_GIC_DIST,
-     SBSA_GIC_REDIST,
-+    SBSA_GIC_ITS,
-     SBSA_SECURE_EC,
-     SBSA_GWDT,
-     SBSA_GWDT_REFRESH,
-@@ -91,6 +105,7 @@ struct SBSAMachineState {
-     void *fdt;
-     int fdt_size;
-     int psci_conduit;
-+    SbsaRefVersion version;
-     DeviceState *gic;
-     PFlashCFI01 *flash[2];
- };
-@@ -105,8 +120,11 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     [SBSA_SECURE_MEM] =         { 0x20000000, 0x20000000 },
-     /* Space reserved for CPU peripheral devices */
-     [SBSA_CPUPERIPHS] =         { 0x40000000, 0x00040000 },
-+    /* GIC components reserved space Start */
-     [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
--    [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
-+    [SBSA_GIC_ITS] =            { 0x40070000, 0x00020000 },
-+    [SBSA_GIC_REDIST] =         { 0x400B0000, 0x04000000 },
-+    /* GIC components reserved space End */
-     [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
-     [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
-     [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
-@@ -377,7 +395,20 @@ static void create_secure_ram(SBSAMachineState *sms,
-     memory_region_add_subregion(secure_sysmem, base, secram);
- }
- 
--static void create_gic(SBSAMachineState *sms)
-+static void create_its(SBSAMachineState *sms)
-+{
-+    DeviceState *dev;
-+
-+    dev = qdev_new(TYPE_ARM_GICV3_ITS);
-+    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-+
-+    object_property_set_link(OBJECT(dev), "parent-gicv3", OBJECT(sms->gic),
-+                             &error_abort);
-+    sysbus_realize_and_unref(s, &error_fatal);
-+    sysbus_mmio_map(s, 0, sbsa_ref_memmap[SBSA_GIC_ITS].base);
-+}
-+
-+static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
- {
-     unsigned int smp_cpus = MACHINE(sms)->smp.cpus;
-     SysBusDevice *gicbusdev;
-@@ -404,6 +435,10 @@ static void create_gic(SBSAMachineState *sms)
-     qdev_prop_set_uint32(sms->gic, "len-redist-region-count", 1);
-     qdev_prop_set_uint32(sms->gic, "redist-region-count[0]", redist0_count);
- 
-+    object_property_set_link(OBJECT(sms->gic), "sysmem", OBJECT(mem),
-+                                 &error_fatal);
-+    qdev_prop_set_bit(sms->gic, "has-lpi", true);
-+
-     gicbusdev = SYS_BUS_DEVICE(sms->gic);
-     sysbus_realize_and_unref(gicbusdev, &error_fatal);
-     sysbus_mmio_map(gicbusdev, 0, sbsa_ref_memmap[SBSA_GIC_DIST].base);
-@@ -450,6 +485,7 @@ static void create_gic(SBSAMachineState *sms)
-         sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-     }
-+    create_its(sms);
- }
- 
- static void create_uart(const SBSAMachineState *sms, int uart,
-@@ -755,7 +791,7 @@ static void sbsa_ref_init(MachineState *machine)
- 
-     create_secure_ram(sms, secure_sysmem);
- 
--    create_gic(sms);
-+    create_gic(sms, sysmem);
- 
-     create_uart(sms, SBSA_UART, sysmem, serial_hd(0));
-     create_uart(sms, SBSA_SECURE_UART, secure_sysmem, serial_hd(1));
-@@ -825,10 +861,39 @@ sbsa_ref_get_default_cpu_node_id(const MachineState *ms, int idx)
-     return idx % ms->numa_state->num_nodes;
- }
- 
-+static char *sbsa_get_version(Object *obj, Error **errp)
-+{
-+    SBSAMachineState *sms = SBSA_MACHINE(obj);
-+
-+    switch (sms->version) {
-+    case SBSA_DEFAULT:
-+        return g_strdup("default");
-+    case SBSA_ITS:
-+        return g_strdup("sbsaits");
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void sbsa_set_version(Object *obj, const char *value, Error **errp)
-+{
-+    SBSAMachineState *sms = SBSA_MACHINE(obj);
-+
-+    if (!strcmp(value, "sbsaits")) {
-+        sms->version = SBSA_ITS;
-+    } else if (!strcmp(value, "default")) {
-+        sms->version = SBSA_DEFAULT;
-+    } else {
-+        error_setg(errp, "Invalid version value");
-+        error_append_hint(errp, "Valid values are default, sbsaits.\n");
-+    }
-+}
-+
- static void sbsa_ref_instance_init(Object *obj)
- {
-     SBSAMachineState *sms = SBSA_MACHINE(obj);
- 
-+    sms->version = SBSA_ITS;
-     sbsa_flash_create(sms);
- }
- 
-@@ -850,6 +915,12 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-     mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
-     mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
-+
-+    object_class_property_add_str(oc, "version", sbsa_get_version,
-+                                  sbsa_set_version);
-+    object_class_property_set_description(oc, "version",
-+                                          "Set the Version type. "
-+                                          "Valid values are default & sbsaits");
- }
- 
- static const TypeInfo sbsa_ref_info = {
--- 
-2.27.0
+Alistair
 
+> ---
+>  include/hw/arm/armv7m.h       |  2 +
+>  include/hw/intc/armv7m_nvic.h |  1 -
+>  include/hw/misc/armv7m_ras.h  | 37 ++++++++++++++
+>  hw/arm/armv7m.c               | 12 +++++
+>  hw/intc/armv7m_nvic.c         | 56 ---------------------
+>  hw/misc/armv7m_ras.c          | 93 +++++++++++++++++++++++++++++++++++
+>  MAINTAINERS                   |  2 +
+>  hw/misc/meson.build           |  2 +
+>  8 files changed, 148 insertions(+), 57 deletions(-)
+>  create mode 100644 include/hw/misc/armv7m_ras.h
+>  create mode 100644 hw/misc/armv7m_ras.c
+>
+> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+> index bc6733c5184..4cae0d7eeaa 100644
+> --- a/include/hw/arm/armv7m.h
+> +++ b/include/hw/arm/armv7m.h
+> @@ -12,6 +12,7 @@
+>
+>  #include "hw/sysbus.h"
+>  #include "hw/intc/armv7m_nvic.h"
+> +#include "hw/misc/armv7m_ras.h"
+>  #include "target/arm/idau.h"
+>  #include "qom/object.h"
+>
+> @@ -58,6 +59,7 @@ struct ARMv7MState {
+>      NVICState nvic;
+>      BitBandState bitband[ARMV7M_NUM_BITBANDS];
+>      ARMCPU *cpu;
+> +    ARMv7MRAS ras;
+>
+>      /* MemoryRegion we pass to the CPU, with our devices layered on
+>       * top of the ones the board provides in board_memory.
+> diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
+> index 39c71e15936..33b6d8810c7 100644
+> --- a/include/hw/intc/armv7m_nvic.h
+> +++ b/include/hw/intc/armv7m_nvic.h
+> @@ -83,7 +83,6 @@ struct NVICState {
+>      MemoryRegion sysreg_ns_mem;
+>      MemoryRegion systickmem;
+>      MemoryRegion systick_ns_mem;
+> -    MemoryRegion ras_mem;
+>      MemoryRegion container;
+>      MemoryRegion defaultmem;
+>
+> diff --git a/include/hw/misc/armv7m_ras.h b/include/hw/misc/armv7m_ras.h
+> new file mode 100644
+> index 00000000000..f8773e65b14
+> --- /dev/null
+> +++ b/include/hw/misc/armv7m_ras.h
+> @@ -0,0 +1,37 @@
+> +/*
+> + * Arm M-profile RAS block
+> + *
+> + * Copyright (c) 2021 Linaro Limited
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
+> +
+> +/*
+> + * This is a model of the RAS register block of an M-profile CPU
+> + * (the registers starting at 0xE0005000 with ERRFRn).
+> + *
+> + * QEMU interface:
+> + *  + sysbus MMIO region 0: the register bank
+> + *
+> + * The QEMU implementation currently provides "minimal RAS" only.
+> + */
+> +
+> +#ifndef HW_MISC_ARMV7M_RAS_H
+> +#define HW_MISC_ARMV7M_RAS_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_ARMV7M_RAS "armv7m-ras"
+> +OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MRAS, ARMV7M_RAS)
+> +
+> +struct ARMv7MRAS {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    MemoryRegion iomem;
+> +};
+> +
+> +#endif
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index 9ce5c30cd5c..8964730d153 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -231,6 +231,18 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+>      memory_region_add_subregion(&s->container, 0xe0000000,
+>                                  sysbus_mmio_get_region(sbd, 0));
+>
+> +    /* If the CPU has RAS support, create the RAS register block */
+> +    if (cpu_isar_feature(aa32_ras, s->cpu)) {
+> +        object_initialize_child(OBJECT(dev), "armv7m-ras",
+> +                                &s->ras, TYPE_ARMV7M_RAS);
+> +        sbd = SYS_BUS_DEVICE(&s->ras);
+> +        if (!sysbus_realize(sbd, errp)) {
+> +            return;
+> +        }
+> +        memory_region_add_subregion_overlap(&s->container, 0xe0005000,
+> +                                            sysbus_mmio_get_region(sbd, 0), 1);
+> +    }
+> +
+>      for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+>          if (s->enable_bitband) {
+>              Object *obj = OBJECT(&s->bitband[i]);
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 1e7ddcb94cb..a5975592dfa 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -2549,56 +2549,6 @@ static const MemoryRegionOps nvic_systick_ops = {
+>      .endianness = DEVICE_NATIVE_ENDIAN,
+>  };
+>
+> -
+> -static MemTxResult ras_read(void *opaque, hwaddr addr,
+> -                            uint64_t *data, unsigned size,
+> -                            MemTxAttrs attrs)
+> -{
+> -    if (attrs.user) {
+> -        return MEMTX_ERROR;
+> -    }
+> -
+> -    switch (addr) {
+> -    case 0xe10: /* ERRIIDR */
+> -        /* architect field = Arm; product/variant/revision 0 */
+> -        *data = 0x43b;
+> -        break;
+> -    case 0xfc8: /* ERRDEVID */
+> -        /* Minimal RAS: we implement 0 error record indexes */
+> -        *data = 0;
+> -        break;
+> -    default:
+> -        qemu_log_mask(LOG_UNIMP, "Read RAS register offset 0x%x\n",
+> -                      (uint32_t)addr);
+> -        *data = 0;
+> -        break;
+> -    }
+> -    return MEMTX_OK;
+> -}
+> -
+> -static MemTxResult ras_write(void *opaque, hwaddr addr,
+> -                             uint64_t value, unsigned size,
+> -                             MemTxAttrs attrs)
+> -{
+> -    if (attrs.user) {
+> -        return MEMTX_ERROR;
+> -    }
+> -
+> -    switch (addr) {
+> -    default:
+> -        qemu_log_mask(LOG_UNIMP, "Write to RAS register offset 0x%x\n",
+> -                      (uint32_t)addr);
+> -        break;
+> -    }
+> -    return MEMTX_OK;
+> -}
+> -
+> -static const MemoryRegionOps ras_ops = {
+> -    .read_with_attrs = ras_read,
+> -    .write_with_attrs = ras_write,
+> -    .endianness = DEVICE_NATIVE_ENDIAN,
+> -};
+> -
+>  /*
+>   * Unassigned portions of the PPB space are RAZ/WI for privileged
+>   * accesses, and fault for non-privileged accesses.
+> @@ -2946,12 +2896,6 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
+>                                              &s->systick_ns_mem, 1);
+>      }
+>
+> -    if (cpu_isar_feature(aa32_ras, s->cpu)) {
+> -        memory_region_init_io(&s->ras_mem, OBJECT(s),
+> -                              &ras_ops, s, "nvic_ras", 0x1000);
+> -        memory_region_add_subregion(&s->container, 0x5000, &s->ras_mem);
+> -    }
+> -
+>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
+>  }
+>
+> diff --git a/hw/misc/armv7m_ras.c b/hw/misc/armv7m_ras.c
+> new file mode 100644
+> index 00000000000..a2b4f4b8dc8
+> --- /dev/null
+> +++ b/hw/misc/armv7m_ras.c
+> @@ -0,0 +1,93 @@
+> +/*
+> + * Arm M-profile RAS block
+> + *
+> + * Copyright (c) 2021 Linaro Limited
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/misc/armv7m_ras.h"
+> +#include "qemu/log.h"
+> +
+> +static MemTxResult ras_read(void *opaque, hwaddr addr,
+> +                            uint64_t *data, unsigned size,
+> +                            MemTxAttrs attrs)
+> +{
+> +    if (attrs.user) {
+> +        return MEMTX_ERROR;
+> +    }
+> +
+> +    switch (addr) {
+> +    case 0xe10: /* ERRIIDR */
+> +        /* architect field = Arm; product/variant/revision 0 */
+> +        *data = 0x43b;
+> +        break;
+> +    case 0xfc8: /* ERRDEVID */
+> +        /* Minimal RAS: we implement 0 error record indexes */
+> +        *data = 0;
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "Read RAS register offset 0x%x\n",
+> +                      (uint32_t)addr);
+> +        *data = 0;
+> +        break;
+> +    }
+> +    return MEMTX_OK;
+> +}
+> +
+> +static MemTxResult ras_write(void *opaque, hwaddr addr,
+> +                             uint64_t value, unsigned size,
+> +                             MemTxAttrs attrs)
+> +{
+> +    if (attrs.user) {
+> +        return MEMTX_ERROR;
+> +    }
+> +
+> +    switch (addr) {
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "Write to RAS register offset 0x%x\n",
+> +                      (uint32_t)addr);
+> +        break;
+> +    }
+> +    return MEMTX_OK;
+> +}
+> +
+> +static const MemoryRegionOps ras_ops = {
+> +    .read_with_attrs = ras_read,
+> +    .write_with_attrs = ras_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +
+> +static void armv7m_ras_init(Object *obj)
+> +{
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +    ARMv7MRAS *s = ARMV7M_RAS(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &ras_ops,
+> +                          s, "armv7m-ras", 0x1000);
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +}
+> +
+> +static void armv7m_ras_class_init(ObjectClass *klass, void *data)
+> +{
+> +    /* This device has no state: no need for vmstate or reset */
+> +}
+> +
+> +static const TypeInfo armv7m_ras_info = {
+> +    .name = TYPE_ARMV7M_RAS,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(ARMv7MRAS),
+> +    .instance_init = armv7m_ras_init,
+> +    .class_init = armv7m_ras_class_init,
+> +};
+> +
+> +static void armv7m_ras_register_types(void)
+> +{
+> +    type_register_static(&armv7m_ras_info);
+> +}
+> +
+> +type_init(armv7m_ras_register_types);
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 37b1a8e4428..3cac393bb48 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -617,6 +617,7 @@ F: hw/intc/gic_internal.h
+>  F: hw/misc/a9scu.c
+>  F: hw/misc/arm11scu.c
+>  F: hw/misc/arm_l2x0.c
+> +F: hw/misc/armv7m_ras.c
+>  F: hw/timer/a9gtimer*
+>  F: hw/timer/arm*
+>  F: include/hw/arm/arm*.h
+> @@ -626,6 +627,7 @@ F: include/hw/misc/arm11scu.h
+>  F: include/hw/timer/a9gtimer.h
+>  F: include/hw/timer/arm_mptimer.h
+>  F: include/hw/timer/armv7m_systick.h
+> +F: include/hw/misc/armv7m_ras.h
+>  F: tests/qtest/test-arm-mptimer.c
+>
+>  Exynos
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index a53b849a5a0..3f41a3a5b27 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -17,6 +17,8 @@ softmmu_ss.add(when: 'CONFIG_INTEGRATOR_DEBUG', if_true: files('arm_integrator_d
+>  softmmu_ss.add(when: 'CONFIG_A9SCU', if_true: files('a9scu.c'))
+>  softmmu_ss.add(when: 'CONFIG_ARM11SCU', if_true: files('arm11scu.c'))
+>
+> +softmmu_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_ras.c'))
+> +
+>  # Mac devices
+>  softmmu_ss.add(when: 'CONFIG_MOS6522', if_true: files('mos6522.c'))
+>
+> --
+> 2.20.1
+>
+>

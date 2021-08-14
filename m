@@ -1,96 +1,96 @@
-Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp235910lfk;
-        Sat, 14 Aug 2021 02:02:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+OizcDWtaXsByqR7JFWa9Is52eTKdURkaBiWespO08by3WtB1XVpWXVukscCSeNeIx8mo
-X-Received: by 2002:a0c:8c0c:: with SMTP id n12mr6639227qvb.13.1628931766797;
-        Sat, 14 Aug 2021 02:02:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628931766; cv=none;
+Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp236726lfk;
+        Sat, 14 Aug 2021 02:04:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPNgvtWkom3Frnwv99tnqaYBOw9l1pzt3NeDDjiExpDbrTlOuJFmJAyEZtUb2vXqAY+2Oy
+X-Received: by 2002:a37:e43:: with SMTP id 64mr6191660qko.249.1628931843278;
+        Sat, 14 Aug 2021 02:04:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628931843; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hl/ZSxxFhloel6MJ77Ux+fCGsrNdIHrJi016UdNnNFHYuBVO5EduZixlPa4VWJCE1J
-         79zaiDydz7i4X5NhE2z3JtLw/PMJkwee7z+kr9U5Td33cNHPY+fzsvXkjsG8dX21sWeb
-         W5NxVgsZ77PoN++FQmrBQOWCM4mo9RXnRr3U6/fmiQ6PABh6LGRr5GgKIEuDP/52G30b
-         mKsaHJIeHtGuRTpxxX+AL2qlUkmit7hIPum5PWdDo6ISkj11juy7qyQ9Lax67apUoNIt
-         ItfYjCvInEDkiliqg39uor/aRV+Z1lwyRL8nbWuU7/mgwMVl0FU7e9CEBuc/Rk1SNtFi
-         pjOQ==
+        b=eKvm6vuS89BRLu4sqw15BLIjHL6ola+54vbFknVTx9TuzLlOvMMMvL9bSSevKauEdL
+         UNUlTs7J4zDBCb0dTDxtf3nXytuykvmZ8ras2AVjh2rec7DdrJFhJAPP6FcvhQ+fe0+H
+         EzZ5Jwl61CE4HbD06aGXI2IVHxGHffG7z+Vr9okPhp4YaGtCbMv2XVezF2hh5tWCHqhv
+         wP3J5znPKvqzflcs5bQnXNPfNx1wSmnnGIsXR3PhaBwKFdu6cK3O1JvN4dvovDQ3fK4n
+         b5dqRLngO3XQumWXqaWygPRFfWM3tDmjYtEJRGmuEq1F86guv5UK7/5jxbLrAdor4e0c
+         ooqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
          :user-agent:date:message-id:organization:from:references:to:subject
          :dkim-signature;
-        bh=mPc4UaWwnklz4ZMLEmtAtP4ac9sEkg8CuCxcGonmags=;
-        b=V3XgmqX7whR2oCEkcJ0xN5Qj79QvkdTBfA1r/c9GymRqP84QxyphEpkpxvRu9JJOUB
-         b3rARhTLWto6hLPjUruPiMiD4QwiNek9iPQ+UytdjOYT3NZmf6bd7V/w7vsvdaoBQkUn
-         b2+hRUoWRm1IPNKLRsFbS9hPYbCFwFnUTkDXgJgJXHpObieP77r6/7bZ721rIhIqLrWn
-         zjgHbDLgUzLMl+yNm/1JWd3/kOHUmE7uyU59a2KpUw2hiNGc0OHqM4jr+l5VStVtNJLf
-         hcKjPPg62FE/bC3tPFUYdhKQymfM8KFpFu8sPu61WwmlEs8/qLxwXLtM0TUAt0vKGSSA
-         4+7w==
+        bh=iHcimogn0ih7mXxoRVXNuhT3aHNmE19gYVUyqjxy16s=;
+        b=IdA1Ti0bZK0cNq6oebBmNcVZQqt5zMvuMxG1tJiE8lyDmUvfKhBB4vRQpiLBIx/MwE
+         /8C8jKpmm/iVNU1kTYYXa5bzG+pej3pI0v/nrX66nusrHA0BjCQeoZznLSCrctQ75cDE
+         kYVxb9C54i/S+YLLttEL+1CXsHbA0AVz4SK6epMS37+ww9yBhNoQPe9b2cEBqwbsXf+M
+         jVyBN8BwpEctLE854AqrT+TuH6N7t90XP1Qi0qFeqQMkyod+5bmYh5X0PHfZLxKLTuoE
+         QatvEdrvncT+cng4poo/1XvHoLZwuF3BCnCBnrF5WK8R+G657tOc4/ZMXKmMLqIQvQPO
+         MMQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b=dMIXwKeP;
+       dkim=fail header.i=@crans.org header.s=mail header.b=KKCXmqI0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17si2829537qtx.217.2021.08.14.02.02.46
+        by mx.google.com with ESMTPS id d14si2812079qkg.162.2021.08.14.02.04.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Aug 2021 02:02:46 -0700 (PDT)
+        Sat, 14 Aug 2021 02:04:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b=dMIXwKeP;
+       dkim=fail header.i=@crans.org header.s=mail header.b=KKCXmqI0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Received: from localhost ([::1]:37338 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40236 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEpZ0-00044r-4t
-	for alex.bennee@linaro.org; Sat, 14 Aug 2021 05:02:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58104)
+	id 1mEpaE-00062G-HH
+	for alex.bennee@linaro.org; Sat, 14 Aug 2021 05:04:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1mEpYm-00042M-5e; Sat, 14 Aug 2021 05:02:32 -0400
-Received: from redisdead.crans.org ([2a0c:700:2::ff:fe01:2402]:51518)
+ id 1mEpZy-0005xE-34; Sat, 14 Aug 2021 05:03:46 -0400
+Received: from redisdead.crans.org ([185.230.79.39]:35508)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1mEpYj-0004qz-PN; Sat, 14 Aug 2021 05:02:31 -0400
+ id 1mEpZv-0005fL-KC; Sat, 14 Aug 2021 05:03:45 -0400
 Received: from [IPv6:2a02:8428:4db:b001:83b5:a75:e190:e939]
  (2a02-8428-04db-b001-83b5-0a75-e190-e939.rev.sfr.net
  [IPv6:2a02:8428:4db:b001:83b5:a75:e190:e939])
  (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by redisdead.crans.org (Postfix) with ESMTPSA id 311E542A;
- Sat, 14 Aug 2021 11:02:26 +0200 (CEST)
+ by redisdead.crans.org (Postfix) with ESMTPSA id 0713946F;
+ Sat, 14 Aug 2021 11:03:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
- t=1628931746; bh=LkaTAdP6WDxZv+oyYqlKJRaTQwR4YdhZEZvDN3UkqdE=;
+ t=1628931822; bh=JE9RW2xI0iiuLnwuTv4YUBIAeTGhelihoJ/3Q3TH+1c=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=dMIXwKeP3omcEFtNqfrvznQOav60LKjHNc3DVQW98P+H70FM3L7417B4KRZqMjAu3
- M2zCUQhXZCFvMi+CajsP/a95xaw+n3am0u8/lAQRSIuZ0rFO0aO/4pxWwpr+iXLipl
- 7YXA7coDBtB2qpQGPX8naPridgZo6FmMObVv7M+Fn5nnl8CsbqbDaiHIIdwg72eNhW
- kII1bMPYEfDq1WZn3trrlgKoqnCgOcv0Pkb2p+9oZhoqxNf5ZpxWaajzqrxt+OhAyh
- 3bsTOxzv4O/lbfuVG2QsVPma0rXYbeii73OgpcEwNHuabNrNmWdQZN8AMGkNhEVjqm
- wAoYhvuCY384rcB/oFRyMC7MsuD5E3xGp+45wKA4HNYMzWoVJiSVaecrEI5BwYzsMo
- /jcToYpypM04hByHSFrLHSx3IfxtRqjDW7i7g0WYb/YVoSAyemQve9rn2AyF3IAUlX
- HgQyiawLWj0beW4s3hGEnzut5+RDLJEfpz4O3Y6ahif0Qy4Tm6plHLYrIciL5J437m
- 852B3cQGE6eGR2ypNzM78DTrS/KtvjlvN6/QhnVUyfzofLriUqUfAysKnou/1PjzNq
- mBvFpmLj9F8+4FcbiHlFH3mBkBhuxUrjY2gsyS8VfnaLgGQHPIIMfXRGqwqbcTk9aC
- kZpYkP8UL3N36yOdeGrXqL8c=
-Subject: Re: [PATCH for-6.2 12/25] hw/arm/stm32f205: Wire up sysclk and refclk
+ b=KKCXmqI01wkN4m/kxepnyWDN+NYvnomeZSLfl7uJ/SG7VwfQJGLq+6Y9pqMxI5bj4
+ Q0xx3hYJVARYJ0nd75qDB7d1giKj6WxxLrm3g1cmtuD0C6UVMGufNYkClzhVD6I0IZ
+ 6kMeLOe1ZcCqB/jwinnTiYZlaOcFECJmhIr8eTc6LXM5SsPc80F8d488Z0wHWW8zpY
+ evxFIqCAVWWi5C7nJH1D/JJ/DKp5y8g54Dfj+Yx7kDuqdajiUleOGklYHKq4QcSjVZ
+ LLa5jSaAhwSulju9Iqm0Egah98qiGsdq5txogbhwP8AtHueA15OxgYn8+3FsfAOlwP
+ TJ24OGZDT9fy85qe8DVAD0bV6bPmMj/x7MY2l2aQSHDXvgpr1HV//eYDrSTr0jDhHf
+ 9R5e23K227MMYZn/cgVTpgWo6ecfcEe4eXW2TP3ZE8OtDTKLjeK+2Y8TZbXqa20Bis
+ S680cEGGbfZ7PdoSJ8GKJv6a5LOS/I8n01Y6JardvMu8hjzqM891enr9IPWj0+Mcgm
+ 4xUyGMqJ0V+zROpiVTZG09jUePUTNdvLB3/GVwfmzlx5Ioh4JGLW5JoY+uwZFAQf+I
+ zV8vIpN8fVj8t5p6y45NMn3KA4mvkmwODr7sZx/Bo4cr1aN1AuIJcuNE4fM8snEuqJ
+ 7f3va5GbEjvmKoRZScrsZlxo=
+Subject: Re: [PATCH for-6.2 13/25] hw/arm/stm32f405: Wire up sysclk and refclk
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-13-peter.maydell@linaro.org>
+ <20210812093356.1946-14-peter.maydell@linaro.org>
 From: Alexandre IOOSS <erdnaxe@crans.org>
 Organization: Crans
-Message-ID: <50546e3f-1c6c-bdfe-065f-993a7cc39da1@crans.org>
-Date: Sat, 14 Aug 2021 11:02:25 +0200
+Message-ID: <a8b89640-dfe0-32d3-f1af-f637a6daf225@crans.org>
+Date: Sat, 14 Aug 2021 11:03:41 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.12.0
 MIME-Version: 1.0
-In-Reply-To: <20210812093356.1946-13-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-14-peter.maydell@linaro.org>
 Content-Type: multipart/signed; micalg=pgp-sha256;
  protocol="application/pgp-signature";
- boundary="hcVs0lQM04e7FUmV52QPEUwYKpbRndaoU"
-Received-SPF: pass client-ip=2a0c:700:2::ff:fe01:2402;
- envelope-from=erdnaxe@crans.org; helo=redisdead.crans.org
+ boundary="whGbjnDBJkycBj91B7QkAP1QaPorZJtcc"
+Received-SPF: pass client-ip=185.230.79.39; envelope-from=erdnaxe@crans.org;
+ helo=redisdead.crans.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,11 +114,11 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wckrIOXlH9b3
+X-TUID: 0r8nJWKgpIJl
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---hcVs0lQM04e7FUmV52QPEUwYKpbRndaoU
-Content-Type: multipart/mixed; boundary="6VjDvIsHknyO8U3v6yyCvB8PtoE7kLb8G";
+--whGbjnDBJkycBj91B7QkAP1QaPorZJtcc
+Content-Type: multipart/mixed; boundary="vvbsBA9nbbhO2zxeuEood0mScZ1lHqqV9";
  protected-headers="v1"
 From: Alexandre IOOSS <erdnaxe@crans.org>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
@@ -126,20 +126,20 @@ To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 Cc: Luc Michel <luc@lmichel.fr>, Damien Hedde <damien.hedde@greensocs.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>,
  Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
-Message-ID: <50546e3f-1c6c-bdfe-065f-993a7cc39da1@crans.org>
-Subject: Re: [PATCH for-6.2 12/25] hw/arm/stm32f205: Wire up sysclk and refclk
+Message-ID: <a8b89640-dfe0-32d3-f1af-f637a6daf225@crans.org>
+Subject: Re: [PATCH for-6.2 13/25] hw/arm/stm32f405: Wire up sysclk and refclk
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-13-peter.maydell@linaro.org>
-In-Reply-To: <20210812093356.1946-13-peter.maydell@linaro.org>
+ <20210812093356.1946-14-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-14-peter.maydell@linaro.org>
 
---6VjDvIsHknyO8U3v6yyCvB8PtoE7kLb8G
+--vvbsBA9nbbhO2zxeuEood0mScZ1lHqqV9
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
 
 On 8/12/21 11:33 AM, Peter Maydell wrote:
-> Wire up the sysclk and refclk for the stm32f205 SoC.  This SoC always
+> Wire up the sysclk and refclk for the stm32f405 SoC.  This SoC always
 > runs the systick refclk at 1/8 the frequency of the main CPU clock,
 > so the board code only needs to provide a single sysclk clock.
 >=20
@@ -149,8 +149,8 @@ On 8/12/21 11:33 AM, Peter Maydell wrote:
 > is wired up".
 >=20
 > When the systick device starts honouring its clock inputs, this will
-> fix an emulation inaccuracy in the netduino2 board where the systick
-> reference clock was running at 1MHz rather than 15MHz.
+> fix an emulation inaccuracy in the netduinoplus2 board where the
+> systick reference clock was running at 1MHz rather than 21MHz.
 >=20
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
@@ -159,27 +159,27 @@ Reviewed-by: Alexandre Iooss <erdnaxe@crans.org>
 -- Alexandre
 
 
---6VjDvIsHknyO8U3v6yyCvB8PtoE7kLb8G--
+--vvbsBA9nbbhO2zxeuEood0mScZ1lHqqV9--
 
---hcVs0lQM04e7FUmV52QPEUwYKpbRndaoU
+--whGbjnDBJkycBj91B7QkAP1QaPorZJtcc
 Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="OpenPGP_signature"
 
 -----BEGIN PGP SIGNATURE-----
 
-wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmEXhqEFAwAAAAAACgkQbHknjz/NzALl
-Wg/9FAYdO3PwLIhyfULe0nWRfveu53SzUEWkJu47Y4SAztfM8gpu5mmkKAK6JyNO+F/b91GCeyja
-CxdqWKUkzvviSrrKpgc9RimxNg9v9CzfT1E7V0nw4dP1Vost8z01/DVp4ZYp490+6Jd0md7yo5Lx
-qCJ3MRXMDoQ9XvLTTWynzxi3MmyOGuVeplpugZD1gr+ucoXgO774vQQpsiz/Xs8Ae9N+T2naSX6u
-0cNyNdVuU60ebGvbvRNjfkORK5Umjoe9EGYNBCRmG2g4TwMOSQYBgp7taQhsQD1nKv0wpgCGHJzr
-Qekv576n2L0RJOdytWIWuxnNKqaqPjbEcM4lBi8nNcAgWRD6tvEfST+tUaucNYP6d92eSNh3Mmml
-kd0yKQnRMPc794/r76J9EhcMX3arqfdBa7rSL89Yl/JQlZMZudC6rOY6Xlccxd0Hw0aw4mhXm8Ov
-o3gUoQYAWs5PCo66KfSvbS80JjJ44K+lOfgCbFOg4Bg8ZBIncu+QqTb9eNnNAJF/2qDRPnkJNqoJ
-0nc3XJACDdGooKwVBRwXyec+YelyfjuIyWiSBaNaHVc10948T+nMcwqhZyFav/NkNGkpwyIDqi4+
-Grn4zJUBp//3YZKnL3GRmP5yQhE/Bv9aEvaTg16jMmPmW+uCvW+tBl4jM2VSlkImyG6CkgNhp7Kt
-wDM=
-=hgSx
+wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmEXhu0FAwAAAAAACgkQbHknjz/NzAL2
+8Q//aD1mia+I7mpGuJRcL1NcpXWXZj/Ma6mMsgOIiE2uZsCS+TPJ058wBg9nXkr65fwWsmlQszrG
+ATFUfhgm4E0mhxTIedR62YGn1TsuW+JntPSzbCbAbbM7wI1H8Cequ0hYRG0LX95dg0HvRpkoI0YA
+RshL2NRIT0nGGHaa0pPGvwnjQ243BZ44PnLDOwTzxdfFfK9Bhd8YbqgyDG0SsozxdQUIE+36QYY8
+X+xh87+FWqEr7+DcG/u5alINfOWyHO5zckQ9XCuHwYHeBFv4fO9eAqhpWbcZky9gFLUUEiq1jKct
+/3wHiNx2z1Tx6haDl7VZVakFzLmCbj+X2GlyJltpdpSWCb8M3VLNp2mCBvjqj1t+b0RTnKP+9FEn
+begnjpsbvsSzHphGg94ROv+j6IHLen2ON/YQ234fY5HjtqcOXDj+lvxhBcHalh1QSy1ABPG7maMQ
+GvYKVxqQD+Nve+J6sSp2tnn7J1B5+epfh1itBaHHzBamsKLle2+ujpxASb5cKw6FPQPYpCGI6OwH
+J3fTJZpZu28oakDuCjB98kua+BUM2zxBBlG26lPJnv34Qdnmx14NbAKNOdbP5t1XkuZ7/uJ2izKx
+OWKM5cPVD55GrViwnVtjij79HHHU664nHNOMxJMghW3WU7J4yk+jXBjbItwu4+zL2WHKjn1myt2T
+mbQ=
+=cqmA
 -----END PGP SIGNATURE-----
 
---hcVs0lQM04e7FUmV52QPEUwYKpbRndaoU--
+--whGbjnDBJkycBj91B7QkAP1QaPorZJtcc--

@@ -1,110 +1,102 @@
-Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp589291lfk;
-        Fri, 13 Aug 2021 16:42:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyS4amH7SiZaGtRqMsFZME7sEp8t04AAND0/cI9PQggpj3EHbrkO64s7TGiCYOOW00I4mNr
-X-Received: by 2002:a25:be48:: with SMTP id d8mr6151085ybm.521.1628898155842;
-        Fri, 13 Aug 2021 16:42:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1628898155; cv=none;
+Received: by 2002:a19:f24a:0:0:0:0:0 with SMTP id d10csp235226lfk;
+        Sat, 14 Aug 2021 02:01:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxntWIwqCKMj9OXCQHTC4OhZ3ue94d5WCgbFR52uDEhH909y78/H7qnsIBMFv+sIpsvVNdK
+X-Received: by 2002:ac8:570d:: with SMTP id 13mr5308503qtw.54.1628931689447;
+        Sat, 14 Aug 2021 02:01:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628931689; cv=none;
         d=google.com; s=arc-20160816;
-        b=LyPOq0rGtieZyiG0dhlp4WAneEDgogB+N5f2b8yPnm4W8k6QkLP6dXwiGWnut6ayiN
-         nvWrV6uSISc+PJId0QeX2EmiJT1aRWX+Tex3NnnYZihEAWjEVwtH2YrVVa9VVQPITT3r
-         S/Lvm7gILNKvPI8aITeSGLyPAZBnoq4q9QRr47ao28cqMXHDf5j+JX1rRDb5RyimkFHZ
-         ExGVIGOavu8PFeX7Y6aWerYN7sPQ0SJKMQe5WiIUKw3e3fdLe/Xo0fZIGpsHVz3AI3FH
-         j3Y9CoQ68T0c7DvPeQnn5B7rWeBieYl39VpplNqAdwNYQ7i9Jf0UMXpd9AqkhQfIWfLR
-         tjOw==
+        b=NMGkHOqH9jMtlmQjQsAfteiqqzye5Q6kcLNNcSjH2dqN/Icim8Aw0sMhSof6AsS9pO
+         12qf0bYd1kWZRzwBuRCwEo7ZPNzSZew0s+B9pxgcWY6YmcqfiDoSegSAWKUcNHVT9mpU
+         PScjavuHlPewnhjx5H6DHt/TMOWgknpc0ycbLSnoIZmAN/bUf5chc7ouFZOnrugf7K58
+         ODdcTrcRLnhg39Mz3gxEv/vpFA64lK7myjHB12l3dnhV0jWQ3JPZCicGlN1Hia4DUFDl
+         aeCnaxS4T3ApCj54weUiidpUe5kyy2XxPlBtfvg9xQlCEqwTf4Ph2qlV+L41iahnRfiC
+         A7FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=EBDYvPCRpxsguj2bn19Hqr2rt9KDvq/0ddQlCLgiBiE=;
-        b=DggWI5RUYsAPzW3j5u+/5phF7I3WPsydMLwk6f8lkNFdJSnpzLrUOQC4cyvcJPTzAV
-         oN8xfUnHVvrtDvRVOUY8l2Pr/BfzVKxouifbp28K1hfiQ4vORbvqMJKfctkC1TOKQzJe
-         kHS3oxB15RRmmAgM8F1RzszsaRFy+a5lOo2JpdnBEhWbNI9NkfFRPbsBGxnKt5OTS3kx
-         7lcTdjhFmir3OvlxBw3JCB53Bfgaz1Vva9PXVbFhe299d+RwKNshWjdN/Ldi5X+tlPLM
-         zr3fmx9JTU+CgzlKZEEPmW+FYB2Z8GUdCU3ejdp0xg2Il9Qeud8e6VnQ53m7Rlc6I4/u
-         Jj8w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:to:subject
+         :dkim-signature;
+        bh=WIO84Dg641FdBwuR+FOJeZ2gCMhnLUtvgOvHXJnCXrQ=;
+        b=ldQUQECbRQ3mEnByceiSqqMx0e6hgTU7ID2C/JhU15Uglq/aUlcY15nZc1cJZdolnU
+         iRKfu6Px41uOSIIbcLCWzCtZ89BuQk0GUK8jHPp+RzUnmbGyyhwY8ikzbGZPCsNsjNmn
+         Ta44WyijStaZxVgzl0hdcr+pcqYeSBPwVLg9nfNYduZ3EMHqK/aT3kWzit37AuFk7RtG
+         xIjNDrcCyJ5YcanWY2b4G8RrgLOYu5GCAOOS3/RinwFOTU8xXUDFTeLSLVNqKFWB+QwX
+         O4EzCkDXjlK6EgspUbwL43FRoVgnLxo2Go+rvg/e/YEPKv9DDSu6rX6rTDpWvZLKTXAR
+         ZlTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=RjYuZjRu;
+       dkim=fail header.i=@crans.org header.s=mail header.b=oL0t2pRE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y201si2969960yby.274.2021.08.13.16.42.35
+        by mx.google.com with ESMTPS id n1si977398qkn.279.2021.08.14.02.01.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Aug 2021 16:42:35 -0700 (PDT)
+        Sat, 14 Aug 2021 02:01:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=RjYuZjRu;
+       dkim=fail header.i=@crans.org header.s=mail header.b=oL0t2pRE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:53562 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
+Received: from localhost ([::1]:36008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mEgot-0007o1-6z
-	for alex.bennee@linaro.org; Fri, 13 Aug 2021 19:42:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53652)
+	id 1mEpXk-00039S-Ky
+	for alex.bennee@linaro.org; Sat, 14 Aug 2021 05:01:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3iQEXYQgKCPYusfYmrqfemmejc.amkocks-Ypklmlels.mpe@flex--wuhaotsh.bounces.google.com>)
- id 1mEghA-0003j8-Gj
- for qemu-arm@nongnu.org; Fri, 13 Aug 2021 19:34:36 -0400
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49]:36402)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3iQEXYQgKCPYusfYmrqfemmejc.amkocks-Ypklmlels.mpe@flex--wuhaotsh.bounces.google.com>)
- id 1mEgh9-0005xG-2p
- for qemu-arm@nongnu.org; Fri, 13 Aug 2021 19:34:36 -0400
-Received: by mail-yb1-xb49.google.com with SMTP id
- n20-20020a2540140000b0290593b8e64cd5so10670276yba.3
- for <qemu-arm@nongnu.org>; Fri, 13 Aug 2021 16:34:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=EBDYvPCRpxsguj2bn19Hqr2rt9KDvq/0ddQlCLgiBiE=;
- b=RjYuZjRuZdIIf2w59jM6gFqKJ1uGDYewBkjEFgSvszJWG5SZu/vp2qaqQbxUERFTmn
- rVbO0ZbVbTsKhCc1EJC/RK5UL6nokH8Bo2W14PPe0OMqfwLmBPZR5p03MupP/TLSDF+G
- N0F5zKqflj9X+3fk7aZ/KmIC9IV5hx0zCaeFtFBl3iTwCznKfZH3zzQyeWcOzSLCqx5w
- imdojcKbL7kFsqt7TU/foIH7nM33lujD8OWWxluPNUejvfXxB0MllxdcYp6kjfQttoi4
- 0FC6DL7tgJj03il/Am4w037qpHRfP07A3rmUnBaueJF9Hc9fCrmrS8bE8nyqIBRtVsH4
- RW6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=EBDYvPCRpxsguj2bn19Hqr2rt9KDvq/0ddQlCLgiBiE=;
- b=NenknlSiG7s15WoFODpCSxoxPYwFevEagjVLrB4smnG/MlIyLrhLUnAjsMkJ0ymcDL
- lM7QH0M8Xchci5iqd7ZrAymmitpGGtdUcg3mq6YU0nBCc3no910G9KoRjEAK0ugZ80ro
- /bT6my0FACmSnaT8yxXfrNuDDfNAnZJU1ZokP2dOgclJberUrUZJG7pKyEmC/o5Igbjt
- OuuZ89+ukRubAWjmMUiutgonp94ubEjCRhgrcr8RCe95EAzp/UOB8nsIUX9sBZuY7LwV
- WqAfwIggoVyNTYKZ5j29Z7OHxwGL0B6/VagAuEnNsHHS3Fo/bU96dJ4uviPsRPWP3Gbb
- 9LNw==
-X-Gm-Message-State: AOAM533Yp33Q5neiFAwoAhKtToL2w1u1WHqdMHJzwkvV8+FIAuB1DVZj
- 0mQZn4NqzXcscBFmq0pw4m4r3W1ddrstXA==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a25:404f:: with SMTP id
- n76mr6206163yba.494.1628897673685; Fri, 13 Aug 2021 16:34:33 -0700 (PDT)
-Date: Fri, 13 Aug 2021 16:33:50 -0700
-In-Reply-To: <20210813233353.2099459-1-wuhaotsh@google.com>
-Message-Id: <20210813233353.2099459-5-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20210813233353.2099459-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.33.0.rc1.237.g0d66db33f3-goog
-Subject: [PATCH 4/7] hw/adc: Make adci[*] R/W in NPCM7XX ADC
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, minyard@acm.org, 
- wuhaotsh@google.com, titusr@google.com, venture@google.com, 
- Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3iQEXYQgKCPYusfYmrqfemmejc.amkocks-Ypklmlels.mpe@flex--wuhaotsh.bounces.google.com;
- helo=mail-yb1-xb49.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1mEpXX-00039E-J3; Sat, 14 Aug 2021 05:01:15 -0400
+Received: from redisdead.crans.org ([185.230.79.39]:35270)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1mEpXV-0003vd-5U; Sat, 14 Aug 2021 05:01:15 -0400
+Received: from [IPv6:2a02:8428:4db:b001:83b5:a75:e190:e939]
+ (2a02-8428-04db-b001-83b5-0a75-e190-e939.rev.sfr.net
+ [IPv6:2a02:8428:4db:b001:83b5:a75:e190:e939])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by redisdead.crans.org (Postfix) with ESMTPSA id 8505846F;
+ Sat, 14 Aug 2021 11:01:01 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
+ t=1628931661; bh=TkeFYcChyDU6Jsom+FJLwp4/FDBtAN1AwORDqA4DVEM=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=oL0t2pREvlvc5YsXDddbXZ378bqbB4ti3TuadL3kNlm+tE99fgCB2DAGT5/dFz55x
+ xqmFwvV19RozmPN5cRXXxi4IGFdzDW3Kbqq5N1fKLToVADykyEO0ucOaPD5zDEluu3
+ xNZ99QNFQur9FISN8JAfYm4SM/w0M+/wDu5AZ9jPdHZJ6zXgknP7GPpNkuVHeIR/WR
+ 83r9pasPEmKCHQRDNXSbJw+YAnWZtoiGfaenSW4tOGkAiNYDqZ9V6VSOzPcLmKoBLs
+ SbD9fel78M1YWuLh1qfuM4/gz3z9Nanh4yJzBDyuGJ1t+GOArdIZeX2yIikOkk1EwO
+ Vr8N9U3128geqa8l/B6ZSFcDlwSWzxxfQNyqUv34Lie8UcUyrv0w4TJvRwoucsM/ZR
+ yX5Y5pxKfUVhhd18k7B8VUoKBkGU6hy1vNKqSVDOp3oWhU7z4SoIp6U1ri/KcCDB5/
+ AwV26JIUQm/pq2GuU/mYPle1gYIToygpx1WJ5QduujH62nXjIZvfRYCnE7lrGONraN
+ ggFdxSykYorZDAj7HtcF7I10i1PNnIQKHPoxz6UwPBnluEayrhDD3rWC8c7/COgoFU
+ 42HPl9tJs58ef0lKyDlpICAvsfnNrtnmb2Te+dN2nw17y3wHwhxFO2gChl6Gk3ktQq
+ +HN8YjFOrAYCmkCo9SdgviBM=
+Subject: Re: [PATCH for-6.2 11/25] hw/arm/stm32f100: Wire up sysclk and refclk
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-12-peter.maydell@linaro.org>
+From: Alexandre IOOSS <erdnaxe@crans.org>
+Organization: Crans
+Message-ID: <e7a42824-89d9-75f1-7c72-a97df8b52615@crans.org>
+Date: Sat, 14 Aug 2021 11:01:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
+MIME-Version: 1.0
+In-Reply-To: <20210812093356.1946-12-peter.maydell@linaro.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="2i3JHgCfAylnbZl1oVrMtJZgSCKS1Nfp0"
+Received-SPF: pass client-ip=185.230.79.39; envelope-from=erdnaxe@crans.org;
+ helo=redisdead.crans.org
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,33 +109,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
+ Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CpZqda1htjMR
+X-TUID: tA6ad70y1jyt
 
-Our sensor test requires both reading and writing from a sensor's
-QOM property. So we need to make the input of ADC module R/W instead
-of read only for that to work.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--2i3JHgCfAylnbZl1oVrMtJZgSCKS1Nfp0
+Content-Type: multipart/mixed; boundary="qOX3WHJHfHH3p17ELrw2lTLRWcHkGAVjN";
+ protected-headers="v1"
+From: Alexandre IOOSS <erdnaxe@crans.org>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Luc Michel <luc@lmichel.fr>, Damien Hedde <damien.hedde@greensocs.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>
+Message-ID: <e7a42824-89d9-75f1-7c72-a97df8b52615@crans.org>
+Subject: Re: [PATCH for-6.2 11/25] hw/arm/stm32f100: Wire up sysclk and refclk
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-12-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-12-peter.maydell@linaro.org>
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Titus Rwantare <titusr@google.com>
----
- hw/adc/npcm7xx_adc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--qOX3WHJHfHH3p17ELrw2lTLRWcHkGAVjN
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/adc/npcm7xx_adc.c b/hw/adc/npcm7xx_adc.c
-index 47fb9e5f74..bc6f3f55e6 100644
---- a/hw/adc/npcm7xx_adc.c
-+++ b/hw/adc/npcm7xx_adc.c
-@@ -242,7 +242,7 @@ static void npcm7xx_adc_init(Object *obj)
- 
-     for (i = 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
-         object_property_add_uint32_ptr(obj, "adci[*]",
--                &s->adci[i], OBJ_PROP_FLAG_WRITE);
-+                &s->adci[i], OBJ_PROP_FLAG_READWRITE);
-     }
-     object_property_add_uint32_ptr(obj, "vref",
-             &s->vref, OBJ_PROP_FLAG_WRITE);
--- 
-2.33.0.rc1.237.g0d66db33f3-goog
 
+On 8/12/21 11:33 AM, Peter Maydell wrote:
+> Wire up the sysclk and refclk for the stm32f100 SoC.  This SoC always
+> runs the systick refclk at 1/8 the frequency of the main CPU clock,
+> so the board code only needs to provide a single sysclk clock.
+>=20
+> Because there is only one board using this SoC, we convert the SoC
+> and the board together, rather than splitting it into "add clock to
+> SoC; connect clock in board; add error check in SoC code that clock
+> is wired up".
+>=20
+> When the systick device starts honouring its clock inputs, this will
+> fix an emulation inaccuracy in the stm32vldiscovery board where the
+> systick reference clock was running at 1MHz rather than 3MHz.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Alexandre Iooss <erdnaxe@crans.org>
+
+-- Alexandre
+
+
+--qOX3WHJHfHH3p17ELrw2lTLRWcHkGAVjN--
+
+--2i3JHgCfAylnbZl1oVrMtJZgSCKS1Nfp0
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmEXhkwFAwAAAAAACgkQbHknjz/NzALL
+Ew/9HwwbqXQn3bMh6m6u+iHonCxIplfihawK7SyLGwAh7tJP4+poqq54s9Jy8OkaQ3iWzWzEZEMJ
+IUYoCsht3xwz9KAPIEnRjlVCkCDVh8ggTL92/NRPEbH9zdEmPkNis46dyFHrt8za0ASvyhF0Mk7m
+otPNRwMQQ2O56K1cRueTdHTKByOPQN5xaeeUUWKop6rE9MTA14gtG/B8cHz+a6C7dnFLf8AthUKa
+UDBaUkWXnixb+SGZW6UmJmEhSGHA1aSgwlKGTZ+9EX++DUL+sy/SJ2XBSyn7775HFS1oVB9jC6FK
+deMU9/13tS79fYBAjF7jNyXbq2HiFWUN/wv0OBbmr9e28AKRmO+r8grKX1F92mSdlN5LJCtjipQF
+wg3vue1MH4CLWiWJGTzFzsVZOlwXVf9EsIUTVmSXqdK5GimlwDZjabPArpGYtUFF6b9zwvAVdMRK
+NDMi757Nyh2QZyrGL06JGzH1z5MXgtcrIpQlX/nR+vPdpHwwEmpmG7az3YAVYxnQgWQaVM484pRs
+SY0xZyYBOqoNcbAl88hJ5RhnrFLdPXas/QwrrlH1j6iikKWoN5nDsZbsFfIaTN0GUHS/z29TvogG
+cTyMDnF7RkSu2W/pv7NUUR/ONt0/uRp1DFbmqPH0EFlIwRgPxd6SDbXzool5A39jLDJnjXiT4rTF
+pWE=
+=aeGe
+-----END PGP SIGNATURE-----
+
+--2i3JHgCfAylnbZl1oVrMtJZgSCKS1Nfp0--

@@ -1,106 +1,106 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1182348lfg;
-        Mon, 16 Aug 2021 02:19:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOv2yYJwmOrFhwRm9AOHqFie+9F9wLvEz58gEmdb/mNdmodfSajI1wT4JxVpiyuTasLyiX
-X-Received: by 2002:a6b:8b4b:: with SMTP id n72mr7385169iod.18.1629105595451;
-        Mon, 16 Aug 2021 02:19:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629105595; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1190116lfg;
+        Mon, 16 Aug 2021 02:32:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJztARqK4UQGcbJPAOPEY6mhx/cJ2eSrkLK2mKV4gppG1QuLC2K+h2lcM7Dbmg7yofT2btPL
+X-Received: by 2002:a5b:9c9:: with SMTP id y9mr19837128ybq.460.1629106351823;
+        Mon, 16 Aug 2021 02:32:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629106351; cv=none;
         d=google.com; s=arc-20160816;
-        b=MhP++S/gvMwJHb4cztqPPAneI3CURjGxAFpbV55bln6rH1ZgLjUJhkn+EGX4lgy6Y6
-         ZX2mHhGe3sStO8y24kVrmaN8bo6FovGVivwXdwSRELTFkBmzdfGKtUrxQZT/dpWBtGdK
-         MgrCcMgPVvzq8Ez1+iu1UQ8hRvBHTB7jcbieufn/5XpVNc6hMREYedkaQVCKXrcd1wUv
-         27RQVhbcWoeHURxX01/o2/gyzn5dqbZ6q/TQ+JRt2gukoMo1HXAPCLTt27t+a2S8ys+W
-         wXqnyge1ZKaWMs19SQMj/l5znh2rQsLJWt0LCHamB4QlSSAhSuMN9G/JkYif/6dxsguj
-         zEZQ==
+        b=qxkYS6eV4cZvLNkq8SeHxx2woSxuIOhpgrgerneQC8hRktQIPUYlo/qOFEa1cXvbMg
+         2TRYuXpJq8GbkCnlROFYif/r8wp8ngot00+NGhr/ck7hBL0CXJZaDgif+cx1Lobd0r4p
+         1XPB3Qc7+RIYA9WY6X/9PEZi6j1S/2Bs3o3qXzkh5EoltAb0Uss6iU/T20plvqpXcQxw
+         Pp4ErLuBYAy1BcWDOoLMYHwuKe44WnbapB974wzu6b4NRDtlntyN6IHJKyXvTFfYfPd4
+         TTK+8VKMmtlGXJ+UxF8EILp+GojTWoxNCGfmTNO8EGxLLF1twYzA3YJyeIfBdcrEKrIy
+         i71A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=88UwPYwv7O+LMTGkC3QaSox+4Qe9iCz1Lh3YkyPWRpM=;
-        b=nZjUfXmbdiuqUd1gDN79vEOc5rmNnt7AFWe3jNGIRCkl67owvkQGADJWAOzmTpQGNa
-         pzYeNKA15qoQYao4mfD82XJfh02Fh2jdU8/LRtk6NOivCVy4zXVGZDEvgOpZrpUQDUAq
-         Xnr315PUIpyZd80wQ1GU+pZo++qdYOLQghtkfancnEt9riGDJcOv26t6A/BBdFhjRG9x
-         8eDHkJR57ZCmEZiPMExXUDNBBEwCysr3CZPBTIdcX0xcZC6sceNs9spt/h3wFSyuD6TY
-         v1Y3q5YE4swalFFpYAEFA3+PpeTCc9ZdvrnS0bg521YvtDVKT+JmLVXRN5255Nm35SW0
-         +5uQ==
+        bh=C72ax1ZASpe5hmE3eor77ksE8ToC+S3gZI4tjLB3s3Q=;
+        b=D4MPZp+rCn+wm0ZGE/A6WJN3kqPy5Q0S73X6wJ9YFenjU5Q9qGicaF5X64LxCbR+VS
+         NXx2j26uiflN9//G6HRjrRQiqjNx1MH2SbWC1QQM3q+KZ/jrPZrKbVsG9emvEmqf5RWu
+         w6DQsHlGj+Tbt2BLCeU+cphfA9mQOI1mxzZES1227UlIzu4P6CY6PHmvpvinExUW8Sgy
+         aC5eSGwLezjW3osD/++yj2Vm4/h6u3Z3a7NJq3xd8NAF6UHNev+rcx3KOiGSTyQ4feGd
+         thv0YUYT6DL9nsz+qqZnN7gQ2v1mtvaeN2W4oGPql8ZAGrV6f80/KRm4nBRsL1v/Xw05
+         J8vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lx8Pahma;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sCe8Rx8D;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9si13027573ilo.104.2021.08.16.02.19.55
+        by mx.google.com with ESMTPS id n12si9204051ybg.128.2021.08.16.02.32.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Aug 2021 02:19:55 -0700 (PDT)
+        Mon, 16 Aug 2021 02:32:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lx8Pahma;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sCe8Rx8D;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53084 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mFYmg-0002zF-PG
-	for alex.bennee@linaro.org; Mon, 16 Aug 2021 05:19:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52538)
+	id 1mFYys-00088X-Uv
+	for alex.bennee@linaro.org; Mon, 16 Aug 2021 05:32:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mFYmL-0002yy-LX; Mon, 16 Aug 2021 05:19:33 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:38532)
+ id 1mFYyi-00086H-2b; Mon, 16 Aug 2021 05:32:20 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:34664)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mFYmJ-0005WU-OB; Mon, 16 Aug 2021 05:19:33 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id u16so5426214wrn.5;
- Mon, 16 Aug 2021 02:19:31 -0700 (PDT)
+ id 1mFYyg-00084V-F6; Mon, 16 Aug 2021 05:32:19 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id h13so22660840wrp.1;
+ Mon, 16 Aug 2021 02:32:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=88UwPYwv7O+LMTGkC3QaSox+4Qe9iCz1Lh3YkyPWRpM=;
- b=lx8Pahma/T/W6xzS4C1/x79wWpsPMLxSDw4kQUDADd7NDmNkXFJSR9svGjaHmhTumB
- AeVYQLVj5rcBO7IqRFPrBiO9MLENnRM5Yche/KwCD1BJh35CUQzpGKxyJ5p7P6GkUNOz
- 0QzGVpw5r+nFGv3IWoOwImvFBow+FxGI0rbl3HQw4/b/K8IV2HQooCKOiPQG1ODu9m4R
- R9u6pIWbyC8gttktq3GMHnLOPVcnPBFJDzihtV2SG5OLOsdQZj/qTvaK8sohATsNxSFY
- 22mqMBiEKtA87jCpJsgppRhO150OmjUvQShyoCbmd5ZOyeJmmFDJHglZpnZTzRsHUcCC
- RwgA==
+ bh=C72ax1ZASpe5hmE3eor77ksE8ToC+S3gZI4tjLB3s3Q=;
+ b=sCe8Rx8DkYVd+w6HB/TCxzTtSZ7vlZGA3LMiWWQ4X8LsgFuZDxVQ3SwZ0k+DfdwRnH
+ WGw8DCoEQwGnUEK3I7AQKhWlBjC+C1MnpO8FQoAZWwiU7vJoBBacZlp0LexLOFucoQyh
+ SyJyMuqEsxI0P0Y1dqdBL5BiteAKo/X+yrpnfFa8ve5NPu3/nnJaFlVUDJZ7X6js6HoP
+ UzUiyRNfCq9cA1J3eAbUGFLyrUiMrYAjhMxGDKLnVd1VPATzVR3cqxdR//jEPKb8ngFh
+ wW6RQj08muAm2wWubpJIYAiuLO01UUzD41y7Ko5TMBILRD9WTbpfzD3q8b7bRVogsTxO
+ Vx9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=88UwPYwv7O+LMTGkC3QaSox+4Qe9iCz1Lh3YkyPWRpM=;
- b=LriwaAXLvROYk4Y4kvWzWVMMhtzkdJiC0AcjYmkGm12QFEQWRl8+QWjiF2cf97u2iI
- 5wVVWjMFnclqnoKOc7V3NH0UuUbpDJF5qIxPOACFXbUxp0inYtwMzbHKhx16yG0JcR3B
- t8bahUNh9TkiHNieJSYN7S44EALPSfUSfNtUgtM0Prazsjqw7diYEYJmulolJpi5S9yN
- npznYaSXtdAAosvIxGkOQcvN7/rM7Lcs3zRe+9Cj39b/068XLJOF4uR99bTTBb5lb3vd
- s3o+hz4c2YZHukXiplTd6JcQwqG8JqF4+0UZSSmONMnvPvQ2d1R4mogCdNyBM1zUQxhh
- O9Ig==
-X-Gm-Message-State: AOAM533eBdZjdtqQxe8o6An1+G4QyDHQRHwhTiQO9ZHRm7M9hwW19PdU
- qeT/yRcj1yDQ8RUh7QQOIOQ=
-X-Received: by 2002:adf:ba4d:: with SMTP id t13mr17116321wrg.424.1629105569899; 
- Mon, 16 Aug 2021 02:19:29 -0700 (PDT)
+ bh=C72ax1ZASpe5hmE3eor77ksE8ToC+S3gZI4tjLB3s3Q=;
+ b=RxoRQaHcShcgYixdANKgtWBTmQhOA4NhFgJnjYJMQ3/etjHsud2kFfC8rJY/VF0nh4
+ 2O8Nw4l1r3SKotJi6V+eYE+xFOD3dmbDuwyyubD1TWkOLcAC1FzMEL58J3PPie5SsfYc
+ kxglTP16G0w6/lU20K19M5lnkeoT7eVOgkBB6b6u13sZ/RcSbC7PiZNlOd/XVrnWo0JV
+ xvEdvgqeBMC5f6IuO2jEk+ud19fBg6ZhTAtUoSI+hjh4rRWW+dbl6Yg+Zc+byja6s/iR
+ YDdpGMSvEvzKWi92w4sTS/vDtnG9xOIlSTXInA2BSAkPTzsc/UYKjS+VlHkKPHiy0bOj
+ P8lQ==
+X-Gm-Message-State: AOAM533OQOA47tRYEsczdzRd5IttXjXYnA8rILe/d8ZMx29/HQ6kk04t
+ rdiV/3KZeRy6ac2jdTpjHNE=
+X-Received: by 2002:a05:6000:1086:: with SMTP id
+ y6mr17431838wrw.406.1629106335808; 
+ Mon, 16 Aug 2021 02:32:15 -0700 (PDT)
 Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
  [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id b201sm5484030wmb.6.2021.08.16.02.19.28
+ by smtp.gmail.com with ESMTPSA id p14sm10984395wro.3.2021.08.16.02.32.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Aug 2021 02:19:29 -0700 (PDT)
-Subject: Re: [PATCH v2] hw/dma/pl330: Add memory region to replace default
-To: "Wen, Jianxian" <Jianxian.Wen@verisilicon.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>,
- "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
- "alistair@alistair23.me" <alistair@alistair23.me>
-References: <4C23C17B8E87E74E906A25A3254A03F4FA1FC85F@SHASXM03.verisilicon.com>
+ Mon, 16 Aug 2021 02:32:15 -0700 (PDT)
+Subject: Re: [PATCH for-6.2 09/25] clock: Provide builtin multiplier/divider
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-10-peter.maydell@linaro.org>
+ <86d7a767-f53e-dfa2-3641-9e39512c0512@amsat.org>
+ <CAFEAcA8DNSS-0oXCDWeFNkin=mbNePS3CamnCgvvC+89KOWXTw@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <3425c177-6425-0e71-b3d6-2a2198b117e6@amsat.org>
-Date: Mon, 16 Aug 2021 11:19:28 +0200
+Message-ID: <bad5ee5a-0f13-6d12-5055-4c649f78aa4e@amsat.org>
+Date: Mon, 16 Aug 2021 11:32:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <4C23C17B8E87E74E906A25A3254A03F4FA1FC85F@SHASXM03.verisilicon.com>
+In-Reply-To: <CAFEAcA8DNSS-0oXCDWeFNkin=mbNePS3CamnCgvvC+89KOWXTw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
@@ -121,145 +121,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Liu,
- Renwei" <Renwei.Liu@verisilicon.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Li,
- Chunming" <Chunming.Li@verisilicon.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r2NYg/rllEwC
+X-TUID: /4LcUKvLwgRI
 
-Hi Jianxian,
-
-On 8/16/21 8:46 AM, Wen, Jianxian wrote:
-> L330 needs a memory region which can connect with SMMU IOMMU region to support SMMU translate.
+On 8/16/21 11:05 AM, Peter Maydell wrote:
+> On Sun, 15 Aug 2021 at 17:32, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> On 8/12/21 11:33 AM, Peter Maydell wrote:
+>>> It is quite common for a clock tree to involve possibly programmable
+>>> clock multipliers or dividers, where the frequency of a clock is for
+>>> instance divided by 8 to produce a slower clock to feed to a
+>>> particular device.
+>>>
+>>> Currently we provide no convenient mechanism for modelling this.  You
+>>> can implement it by having an input Clock and an output Clock, and
+>>> manually setting the period of the output clock in the period-changed
+>>> callback of the input clock, but that's quite clunky.
+>>>
+>>> This patch adds support in the Clock objects themselves for setting a
+>>> multiplier or divider.  The effect of setting this on a clock is that
+>>> when the clock's period is changed, all the children of the clock are
+>>> set to period * multiplier / divider, rather than being set to the
+>>> same period as the parent clock.
+>>
+>> This is super nice!
+>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>>  docs/devel/clocks.rst   | 23 +++++++++++++++++++++++
+>>>  include/hw/clock.h      | 29 +++++++++++++++++++++++++++++
+>>>  hw/core/clock-vmstate.c | 24 +++++++++++++++++++++++-
+>>>  hw/core/clock.c         | 29 +++++++++++++++++++++++++----
+>>>  4 files changed, 100 insertions(+), 5 deletions(-)
+>>
+>>> +void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider)
+>>> +{
+>>> +    assert(divider != 0);
+>>
+>> I only wonder if we shouldn't check clock_is_enabled() here.
+>> Maybe not assert, but at least report a GUEST_ERROR?
 > 
-> Signed-off-by: Jianxian Wen <jianxian.wen@verisilicon.com>
-> ---
-> Changes v1 -> v2 (after review of Peter Maydell):
->  - Use the dma_memory_read/dma_memory_write functions, update function AddressSpace* parameter.
-> 
->  hw/arm/exynos4210.c  |  3 +++
->  hw/arm/xilinx_zynq.c |  2 ++
->  hw/dma/pl330.c       | 20 ++++++++++++++++----
->  3 files changed, 21 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> index 5c7a51b..af0e482 100644
-> --- a/hw/arm/exynos4210.c
-> +++ b/hw/arm/exynos4210.c
-> @@ -171,8 +171,11 @@ static DeviceState *pl330_create(uint32_t base, qemu_or_irq *orgate,
->      SysBusDevice *busdev;
->      DeviceState *dev;
->      int i;
-> +    MemoryRegion *sysmem = get_system_memory();
->  
->      dev = qdev_new("pl330");
-> +    object_property_set_link(OBJECT(dev), "memory",
-> +                                    OBJECT(sysmem), &error_fatal);
+> Setting the multiplier on a disabled clock doesn't seem like
+> an error to me. I would expect a common way for the guest to
+> program a clock-controller would be "first set the divider
+> and any other parameters; finally, enable the clock".
 
-Incorrect style alignment. Maybe simply:
+Eh sorry I meant the other way around :/ It is usually either
+illegal or undefined behavior on real hw to change a clock scale
+while it is active. Personally I'd be interested to catch guests
+doing so. I was thinking of:
 
-       object_property_set_link(OBJECT(dev), "memory",
-                                OBJECT(get_system_memory()),
-                                &error_fatal);
-
->      qdev_prop_set_uint8(dev, "num_events", nevents);
->      qdev_prop_set_uint8(dev, "num_chnls",  8);
->      qdev_prop_set_uint8(dev, "num_periph_req",  nreq);
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 245af81..e0b3a73 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -312,6 +312,8 @@ static void zynq_init(MachineState *machine)
->      sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[39-IRQ_OFFSET]);
->  
->      dev = qdev_new("pl330");
-> +    object_property_set_link(OBJECT(dev), "memory",
-> +                                    OBJECT(address_space_mem), &error_fatal);
-
-Incorrect style alignment.
-
->      qdev_prop_set_uint8(dev, "num_chnls",  8);
->      qdev_prop_set_uint8(dev, "num_periph_req",  4);
->      qdev_prop_set_uint8(dev, "num_events",  16);
-> diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
-> index 944ba29..b8a4448 100644
-> --- a/hw/dma/pl330.c
-> +++ b/hw/dma/pl330.c
-> @@ -269,6 +269,9 @@ struct PL330State {
->      uint8_t num_faulting;
->      uint8_t periph_busy[PL330_PERIPH_NUM];
->  
-> +    /* Memory region that DMA operation access */
-> +    MemoryRegion *mem_mr;
-> +    AddressSpace mem_as;
->  };
->  
->  #define TYPE_PL330 "pl330"
-> @@ -1108,7 +1111,7 @@ static inline const PL330InsnDesc *pl330_fetch_insn(PL330Chan *ch)
->      uint8_t opcode;
->      int i;
->  
-> -    dma_memory_read(&address_space_memory, ch->pc, &opcode, 1);
-> +    dma_memory_read(&ch->parent->mem_as, ch->pc, &opcode, 1);
->      for (i = 0; insn_desc[i].size; i++) {
->          if ((opcode & insn_desc[i].opmask) == insn_desc[i].opcode) {
->              return &insn_desc[i];
-> @@ -1122,7 +1125,7 @@ static inline void pl330_exec_insn(PL330Chan *ch, const PL330InsnDesc *insn)
->      uint8_t buf[PL330_INSN_MAXSIZE];
->  
->      assert(insn->size <= PL330_INSN_MAXSIZE);
-> -    dma_memory_read(&address_space_memory, ch->pc, buf, insn->size);
-> +    dma_memory_read(&ch->parent->mem_as, ch->pc, buf, insn->size);
->      insn->exec(ch, buf[0], &buf[1], insn->size - 1);
->  }
->  
-> @@ -1186,7 +1189,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
->      if (q != NULL && q->len <= pl330_fifo_num_free(&s->fifo)) {
->          int len = q->len - (q->addr & (q->len - 1));
->  
-> -        dma_memory_read(&address_space_memory, q->addr, buf, len);
-> +        dma_memory_read(&s->mem_as, q->addr, buf, len);
->          trace_pl330_exec_cycle(q->addr, len);
->          if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
->              pl330_hexdump(buf, len);
-> @@ -1217,7 +1220,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
->              fifo_res = pl330_fifo_get(&s->fifo, buf, len, q->tag);
->          }
->          if (fifo_res == PL330_FIFO_OK || q->z) {
-> -            dma_memory_write(&address_space_memory, q->addr, buf, len);
-> +            dma_memory_write(&s->mem_as, q->addr, buf, len);
->              trace_pl330_exec_cycle(q->addr, len);
->              if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
->                  pl330_hexdump(buf, len);
-> @@ -1562,6 +1565,12 @@ static void pl330_realize(DeviceState *dev, Error **errp)
->                            "dma", PL330_IOMEM_SIZE);
->      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
->  
-> +    if (!s->mem_mr) {
-> +        error_setg(errp, "'mem_mr' link is not set");
-
-You use DEFINE_PROP_LINK("memory", ...) below, so use 'memory' in
-the error message.
-
-> +        return;
-> +    }
-> +    address_space_init(&s->mem_as, s->mem_mr, TYPE_PL330 "-memory");
-
-I'd rather not name an address space with '-memory' suffix (I'd expect
-a MemoryRegion instead). The last argument is just a description in the
-monitor (info mtree *).
-
->      s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, pl330_exec_cycle_timer, s);
->  
->      s->cfg[0] = (s->mgr_ns_at_rst ? 0x4 : 0) |
-> @@ -1656,6 +1665,9 @@ static Property pl330_properties[] = {
->      DEFINE_PROP_UINT8("rd_q_dep", PL330State, rd_q_dep, 16),
->      DEFINE_PROP_UINT16("data_buffer_dep", PL330State, data_buffer_dep, 256),
->  
-> +    DEFINE_PROP_LINK("memory", PL330State, mem_mr,
-> +                     TYPE_MEMORY_REGION, MemoryRegion *),
-> +
->      DEFINE_PROP_END_OF_LIST(),
->  };
+    if (clock_is_enabled(clk)) {
+        qemu_log_mask(LOG_GUEST_ERROR,
+                      "Changing scale of ENABLED clock '%s'\n'",
+                      CLOCK_PATH(clk));
+    }

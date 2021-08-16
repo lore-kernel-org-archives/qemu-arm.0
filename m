@@ -1,108 +1,106 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1588245lfg;
-        Mon, 16 Aug 2021 11:03:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwECB9N2vSU1lfPJNAmCfwH7XI9oUSz7Nz8xOX8wt9ZqE+AlSDdwkWAx7xbQ7z3f55cFf+r
-X-Received: by 2002:a7b:cb44:: with SMTP id v4mr301506wmj.169.1629137006608;
-        Mon, 16 Aug 2021 11:03:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629137006; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1588414lfg;
+        Mon, 16 Aug 2021 11:03:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzI7MV9Nz1pNUzRWs837z80V9Q7fImknyZFxzbG1xo74jIqZo/+A9BT6n+sx0iV64Y70oh4
+X-Received: by 2002:a17:906:7b53:: with SMTP id n19mr17205356ejo.14.1629137018769;
+        Mon, 16 Aug 2021 11:03:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629137018; cv=none;
         d=google.com; s=arc-20160816;
-        b=lm9RcghOB7bUNiGlppSbUe40KjN0FxYORY6lu71eAjZzh0mgg+3Tky2D6U2X0xBEVz
-         ksHBExtVK8PRdlOwzrEV/M3W1EHnKIWYl/V9G5WD4QeGlOjmHAJ1723HPjmVwDAiMd3O
-         FRelh6brO9+byPJR0e6lT7tEK9iIIvtUmRQoqAAWOlFeaMrPcgyxEwj8TBruspqu30vb
-         NbwnIHDZGau0uE+GaxZSI0iN31BeoCwtwPUZNvqc86tDnu6oshqnJ6FKJyvHYz9JwoLX
-         0cNWXbu94dqCut7bynb08qZ40D5ipcCBId9E8zmuwg2YKKo342QY5Shrly6HCbes6RuL
-         v56A==
+        b=lFFSCqIsliqUhtegTwU6i4NrAyolLEHxQ98Sf0tjhKo1bQJPniCWJ/tt/l/x4XZ/0k
+         Yx0fAmFqFa3JFTaULTU/P+YsmKBSqJhzx1FP0w/bavseQC2hbwO8EcbaJf5+9iJQPSV+
+         MCWb6G1SmOSTGla0cBmYNr15ICxruENUHya63416L91cDNs9JK5xQGfrzxrnc8Wphv69
+         bVDxfLGhqKb1D/NIRdUDtIYR30ffP1hxqNIj5srZuF80MpYIV1KcP64krMh2xjeEacbC
+         vK3/6lFY8s5LxOHQG/SjzxLFHURqQ3GgVb0cXeBhbW76SjH+R6JlTbetJmtVnyLosmIo
+         JyWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=8Cu4H8n9Z1bc76Lx0NocvUz9gleAslEdWynQ2KHVsWo=;
-        b=Soc99wJE/6fC2SZsN1Vptuy4hZAt9RPjB8WwruxZNq2/idPbJ9oQlZE0MYLTvQHgOi
-         7iEYv+AsVtPDlCCoethDc2JL5WXeJ6bxMPRHRspNgTNxakl0d9M5nUR349b4cKrNqhLm
-         7Reb+SxUMoq9YvcXoHSLSR+zUv/FCMaTPPAV0TowIasYLQ8vG4i9gsgIuo3llRUUyKfM
-         BBbHbry24oAPtoXUTwpVc1rO1MMLIrhxs0/RchFMlHL4ktSvrFV0MzmFpa4LtJ8/6phg
-         bjcT2Yn/FPKvo/nTYDIKAgBsKbq0DKBosMnwsNFdpQLy54GNdQaIqOzf5vbT93aqvvnT
-         c4+Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ICREgosjl79r6d8x49A4C7JTGWN+7MdRwms8enSQfIA=;
+        b=oOlCmJoJ96JnajLjQcniv1VE8cDteZqTBIJC6SpGdc79Y2tHOBboE4oBBOGkF8I7aM
+         oDTM1PIhjWgZJl6A/AhcAhXi6pH1GP4YZEvos3ZfBsdIUdpIbsSmbYkXghnJIEgaLUWc
+         S1idvtpokSb4/o4DMq4kmVd9bLei7z235LUTLcQqZ7okN6QR8QKC9/Y16w6vuwJuwxkv
+         yt9VhRAEWLxjJZOdDIXHuTqVtPXkB5VAcqRAFUbSdPP4nEYL9kgBIiVUb9KQN9D96Lgh
+         kyqnqdK4UmHXJawDnLJ6gDyirw3eCj19rokziDVGOf1rePfulWJ2U3BCqKZAzFU0C93J
+         Hupg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JuJWEkKa;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ux77/2C6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a19si5669177ejg.718.2021.08.16.11.03.26
+        by mx.google.com with ESMTPS id l1si11587841ejo.68.2021.08.16.11.03.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Aug 2021 11:03:26 -0700 (PDT)
+        Mon, 16 Aug 2021 11:03:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JuJWEkKa;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ux77/2C6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51982 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53418 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mFgxJ-0002lU-Gr
-	for alex.bennee@linaro.org; Mon, 16 Aug 2021 14:03:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59012)
+	id 1mFgxV-0003iO-TA
+	for alex.bennee@linaro.org; Mon, 16 Aug 2021 14:03:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58998)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mFgx7-0002fr-G9
- for qemu-arm@nongnu.org; Mon, 16 Aug 2021 14:03:13 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:35509)
+ id 1mFgx6-0002cC-Cd
+ for qemu-arm@nongnu.org; Mon, 16 Aug 2021 14:03:12 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:35508)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mFgx3-0004bu-Uz
- for qemu-arm@nongnu.org; Mon, 16 Aug 2021 14:03:13 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id q10so24867184wro.2
+ id 1mFgx3-0004bJ-JG
+ for qemu-arm@nongnu.org; Mon, 16 Aug 2021 14:03:12 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id q10so24867155wro.2
  for <qemu-arm@nongnu.org>; Mon, 16 Aug 2021 11:03:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ h=from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=8Cu4H8n9Z1bc76Lx0NocvUz9gleAslEdWynQ2KHVsWo=;
- b=JuJWEkKamTZxqZjmhAUVX2NKvw3HcOB/kG2ZCrkRpzrh959b95acSMH5yx6AXEV1Dx
- d1pRdLNLkRmdatGBD+R6tpHhVsfICQgzELoKKYCqilVHFjV4oDku8QiNZC/sAt9hEq9d
- 0arj0tsroNk/xE50+ltZZNMqPRtK61yczefRjHASGdI8n4+escw+dob8LPVF3x+GFv52
- ym/nG+WnpesuH32v4gU9MIPxf+D0uOQLTHDEszGKtnuEu5bxnaqcsSrlMScKpge4cBq8
- nP/jKaQ/yRmOChvYrjItrcZ9BKcDceS1qJeRQ/t5aCwct9CUiGLLWPmimWDxPLIIpbPx
- KMwQ==
+ bh=ICREgosjl79r6d8x49A4C7JTGWN+7MdRwms8enSQfIA=;
+ b=ux77/2C6mjdNp/vUo9iYF2vIDofnpaPnJlapq3TvgwfCBJ9iVEmYSCYHMJbCay5yQU
+ HGolHPdnZ4Uo9s/jA1Jyil6aYE6SUQsnGnVQzYzire46u0l9toN7y6xOxVShoznVfYU/
+ c1y0DwzPttR88lVWnTVItdQjdutLUXi188c0sjJj2HexDv8vEy/qqeiUXsUnmDRmQcZL
+ nbwW6fQHxCLeF8N4ijD1ribguvJcll1rFbE21vele+CroxBZiiDSL1NhJvXLPLWOgj+P
+ 5enD81xaWFj12HLwP987S8Jd+DYFf2d3IvgzNB/BB41Bgm/1EQLqkHcrHzxTpzNUX11v
+ eygQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=8Cu4H8n9Z1bc76Lx0NocvUz9gleAslEdWynQ2KHVsWo=;
- b=suRUqPcLDhReCHPTzyG8ZwqDQojQUuBGN63DYfjKysClN/vlmNSDFQtVw7LdXR7hYN
- EL2Ft//SL5RAw9kp6w7hYkJfZTnxz35wC0ZfyqbsKOAPwixsWUkDBnXf2uKQeXPa22Qo
- xkHefQx7Uhsj3cEDtmyNSsJ3qhNP87IZyRdTMgDjXvknxZvob9SIDmODiPeS0XuFqRR3
- +clvemJIxmfcwesSot+b0dNL0uvtXhGzvE7WnmQGkH24jXusmo9JSFx/wfG1jyHJjrAt
- DcLGuVej1O/Z87UbRD+VdMaOv0uru1275AmYbIjZOSKy9h5hfsAJsSV0V+yrpMfi0n06
- e4AQ==
-X-Gm-Message-State: AOAM531T1XwGk79dDVAUiBzCfmV8OGXUdkfzJXSvv8ri3ou6bvWqbuD9
- zyDpOqvTzQLh+7YZs+vmLkQ0x6OepN8B5A==
-X-Received: by 2002:a5d:67c6:: with SMTP id n6mr7646400wrw.150.1629136988403; 
- Mon, 16 Aug 2021 11:03:08 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ICREgosjl79r6d8x49A4C7JTGWN+7MdRwms8enSQfIA=;
+ b=iym86ppz+tRTTYZQ0o8efSm62zyGNZkQiHhFCGowOrRoWggSTbyjTh3waXSHV726lu
+ P4TxtzYMKWOHTA9ikj/RGsWua6hEXpRR/9IM72qt7Xus85qZSh+V0hIDP0l/ODoBkiGv
+ /qjb/DMZoFOJV6w0NC6KaMNB9XkLL/MeE+z1bhpnQGEhFziD77zAbTdmdnxEEzAKXdb5
+ rXt8DHinWT8UebfQbUFMjczCP1ZpmTXLcwO/XVceSzm+ER6vRL5qDub0WO7O2FXG0yzz
+ 3gs11rvBG67Y7ttGkktpwgxgJv243bxY+O45QRgxdEX2J3+bHHcoxkC5l8Yr6PCYcx/6
+ UEMQ==
+X-Gm-Message-State: AOAM531ORsJdfty7HVKepUGpx0w5bmQbUU6QSoim8UtBDwsdtmYylw91
+ 19S+Hwy60HxMBULOSZC1ow0ppeWvPiJoYQ==
+X-Received: by 2002:a5d:4311:: with SMTP id h17mr19849245wrq.263.1629136987625; 
+ Mon, 16 Aug 2021 11:03:07 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id u16sm240053wmc.41.2021.08.16.11.03.07
+ by smtp.gmail.com with ESMTPSA id u16sm240053wmc.41.2021.08.16.11.03.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Aug 2021 11:03:08 -0700 (PDT)
+ Mon, 16 Aug 2021 11:03:07 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 1/2] target/arm: Implement HSTR.TTEE
-Date: Mon, 16 Aug 2021 19:03:04 +0100
-Message-Id: <20210816180305.20137-2-peter.maydell@linaro.org>
+Subject: [PATCH 0/2] target/arm: Implement remaining HSTR functionality
+Date: Mon, 16 Aug 2021 19:03:03 +0100
+Message-Id: <20210816180305.20137-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210816180305.20137-1-peter.maydell@linaro.org>
-References: <20210816180305.20137-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,72 +115,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pqtxvu7O6yJY
+X-TUID: A9X3iSvGgLws
 
-In v7, the HSTR register has a TTEE bit which allows EL0/EL1 accesses
-to the Thumb2EE TEECR and TEEHBR registers to be trapped to the
-hypervisor. Implement these traps.
+I was going through some old todo items from years back, and one of
+them was "implement HSTR traps".  We actually already do the
+interesting part of this (traps of coprocessor register access), but
+there are a couple of small loose ends: v7A (but not v8A!) defines
+HSTR.TTEE and HSTR.TJDBX trap bits for trapping various bits of the
+trivial Thumb2EE and Jazelle implementation.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu.h    |  2 ++
- target/arm/helper.c | 18 ++++++++++++++++--
- 2 files changed, 18 insertions(+), 2 deletions(-)
+The documentation for this is in the v7A Arm ARM DDI0406C.d, section
+B1.14.10 and B1.14.11, but the summary is that these bits trap from
+NS EL0/EL1 to Hyp mode for:
+ * TEECR and TEEHBR accesses
+ * JOSCR or JMCR sysreg accesses
+ * execution of the BXJ insn
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9f0a5f84d50..cf3c90f768a 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1536,6 +1536,8 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_ENSCXT            (1U << 25)
- #define SCR_ATA               (1U << 26)
- 
-+#define HSTR_TTEE (1 << 16)
-+
- /* Return the current FPSCR value.  */
- uint32_t vfp_get_fpscr(CPUARMState *env);
- void vfp_set_fpscr(CPUARMState *env, uint32_t val);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 155d8bf2399..262e787f690 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2446,20 +2446,34 @@ static void teecr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     env->teecr = value;
- }
- 
-+static CPAccessResult teecr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   bool isread)
-+{
-+    /*
-+     * HSTR.TTEE only exists in v7A, not v8A, but v8A doesn't have T2EE
-+     * at all, so we don't need to check whether we're v8A.
-+     */
-+    if (arm_current_el(env) < 2 && !arm_is_secure_below_el3(env) &&
-+        (env->cp15.hstr_el2 & HSTR_TTEE)) {
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
- static CPAccessResult teehbr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                     bool isread)
- {
-     if (arm_current_el(env) == 0 && (env->teecr & 1)) {
-         return CP_ACCESS_TRAP;
-     }
--    return CP_ACCESS_OK;
-+    return teecr_access(env, ri, isread);
- }
- 
- static const ARMCPRegInfo t2ee_cp_reginfo[] = {
-     { .name = "TEECR", .cp = 14, .crn = 0, .crm = 0, .opc1 = 6, .opc2 = 0,
-       .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, teecr),
-       .resetvalue = 0,
--      .writefn = teecr_write },
-+      .writefn = teecr_write, .accessfn = teecr_access },
-     { .name = "TEEHBR", .cp = 14, .crn = 1, .crm = 0, .opc1 = 6, .opc2 = 0,
-       .access = PL0_RW, .fieldoffset = offsetof(CPUARMState, teehbr),
-       .accessfn = teehbr_access, .resetvalue = 0 },
+This patchset implements the last of the HSTR functionality,
+just so I can cross it off my todo list. I don't expect anybody
+to actually be using this :-)
+
+thanks
+-- PMM
+
+Peter Maydell (2):
+  target/arm: Implement HSTR.TTEE
+  target/arm: Implement HSTR.TJDBX
+
+ target/arm/cpu.h       |  3 +++
+ target/arm/helper.h    |  2 ++
+ target/arm/syndrome.h  |  7 +++++++
+ target/arm/helper.c    | 35 +++++++++++++++++++++++++++++++++--
+ target/arm/op_helper.c | 16 ++++++++++++++++
+ target/arm/translate.c | 12 ++++++++++++
+ 6 files changed, 73 insertions(+), 2 deletions(-)
+
 -- 
 2.20.1
-

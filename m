@@ -1,94 +1,113 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1224545lfg;
-        Mon, 16 Aug 2021 03:26:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyvJ8hjhoYaQdKBINPpRmeyXKVIlOS7sGCnuHsNzLD9H9dYPOI9PPKqWfakudq7HzOKU0JJ
-X-Received: by 2002:a05:6e02:961:: with SMTP id q1mr11909848ilt.76.1629109573192;
-        Mon, 16 Aug 2021 03:26:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629109573; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1233929lfg;
+        Mon, 16 Aug 2021 03:41:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyToumS+dNjlVu0arQFxSuyVph5iVOH3hRyXAxF41c9PlQJzN5IInXLW3P/puRKctSjG25b
+X-Received: by 2002:a92:c848:: with SMTP id b8mr10887023ilq.54.1629110478984;
+        Mon, 16 Aug 2021 03:41:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629110478; cv=none;
         d=google.com; s=arc-20160816;
-        b=W0jmVgCGHIxRQ7KFWHxah+0iWBqTujEQiyPTmlK3ItpP3JDd5vhfBokqErG9VjkFyq
-         E1OlXARUp+vCWSmG/9KhLOWlPeS/pV8Q2opZKtgvKt3t5OLAWTxg7ETu756CXbj9FYBl
-         1rkXzJcaHAbtJSyJLFV2Tmy+55E/5VK5Cw+ZBeJoVJpv5V3rroDSc+GYTuthnUctznD7
-         0VfbKCL+B0D78pXqdDIkkfsMMtgqKdVx7Bcd0faYhpVW6bZbuWCaOk4MUNKYaMAlUIJQ
-         PBrzvgZPQmgXv4Iq1lw+tPJbFJF9C9MUE0vpUHqtgQ2pbaLkMNaaplCH1fduB+zaOczn
-         +Z2A==
+        b=uMelG3sDmyebGZQzSLZ2wV7z4tvDwOOVOWwTEBJoJkrV3NqtoyD+wijvSG4wb01zHK
+         /hCcys/w1/gDafpRRa7cMUvBsBtYGLulmCFZ2/xTiZWtreHCE67woxPguy4Xy1HY4PXL
+         PMLjHHHQ7viZTCHssXt3Yi2g8eCTTp7kEse/QB8p9Bt2vjaOX/AQZjuO6h0sgRxBxANl
+         eRlJPv+MjmUji5BJVtvMJMkX8Ow0sSascxDm20k46bdgwfjggDiR1lT+VpINC2EouONe
+         z1J56lLOsdoPr3a/moJFSLePyomfUvPwCZ9jmUletr3F2Meckor8kP4vp9eXWSrfpr+n
+         Z2Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from
-         :dkim-signature:content-transfer-encoding:content-language;
-        bh=k4U0aPQwtrkplu6+YpYdpm90FbW+8UWDaBD5YWWH9mw=;
-        b=cNr6OzR8NtneBT6YAiDjkqNfbVhM2gW5EeJe1FA++fQv+9r/dlJuVHtzcRBQf3vx1V
-         hwlZDqfGP5cjhG3EsiHedGsOH2b1Mg1LR/Ah6vSZR3EkRMEkOk/+CQcEJ5tsWMjbzCZh
-         yovYSARj5Fms25NnfhdB7zouG6TlFmlVCqYLw9GOD68vbjJZb9fgmOiDWS5dqQsmw6AR
-         XkB1BIm+M4gaLSJgFvrcSmjkkbuLkHi6UKEGTA/kGhfSqvb+mJV7EkYlqaGz1cE+E8xM
-         OLAgFDaeq3Q8MQf+CcwjUEb9Or79KIkpa47xcfhRGR0psVCIA9cZTiy83eMzmc3zgXgG
-         sJug==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Tn3Em6ZFGrU10eyzUMf9rfYPSQbOP2pgU6DJJZoJD3c=;
+        b=WZBKP2ddWPxrMa7gVIKPGoquQwbmQtbq4Qb/O8Aih1boXau4/si2kZoWspM2aae+XM
+         c/vLd+QM1/6OL/0AJSdUIdNUcnU32r/yZnkIo3IN58HRiyaxasfLkkjrUEWm81vgItZz
+         MAZ5DNOwNBZNZbtXRC5Jq7tPqUdOha5CSjy/82NlIE8uv1aXBw+a/VrEuDdMpay2Z71p
+         fQh2Hw+m/YvIwjors4XS56p4KOZCXXCgko7HwnI2MdAMUajGCzX+2YOI8ox25r5pMQby
+         +CQSU67Vt4IVdECZiXVKht3KGr5tPIhwoD6n9nvYFPr97yJnADW2l2BwHcaqIPNGtflq
+         2ikA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=BMxPoOEM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=izJs+aHB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7si12082929iow.71.2021.08.16.03.26.12
+        by mx.google.com with ESMTPS id b19si3866590jaq.82.2021.08.16.03.41.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Aug 2021 03:26:13 -0700 (PDT)
+        Mon, 16 Aug 2021 03:41:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=BMxPoOEM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:44416 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=izJs+aHB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mFZoo-0004qd-Nj
-	for alex.bennee@linaro.org; Mon, 16 Aug 2021 06:26:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37376)
+	id 1mFa3S-00012r-6A
+	for alex.bennee@linaro.org; Mon, 16 Aug 2021 06:41:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40834)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Jianxian.Wen@verisilicon.com>)
- id 1mFZnn-0004qI-3e; Mon, 16 Aug 2021 06:25:08 -0400
-Received: from shasxm06.verisilicon.com ([101.89.135.45]:30873
- helo=shasxm03.verisilicon.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <Jianxian.Wen@verisilicon.com>)
- id 1mFZnf-0002eP-On; Mon, 16 Aug 2021 06:25:04 -0400
-Content-Language: zh-CN
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1629109483; h=from:subject:to:date:message-id;
- bh=L7N3RgSt5OFYwqCJC8cfNiV5OhDhg5XsfkpZAAdFzd4=;
- b=BMxPoOEMVvGmknyu3QhdsFBoz0R4DenLNVFXa4D8OE+bPjVnwxbD48qtdvE7LiDYZD2zZHQTwDz
- GvXdq0j3g7683SCAAAVziktuX6U/KD2jAnTt7SLOuAWkqaV32N+oscLHTzZeo6qY995Oky3DqVvuZ
- bF5AdaiPV79CamlkV2s=
-Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
- SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Mon, 16 Aug 2021 18:24:42 +0800
-From: "Wen, Jianxian" <Jianxian.Wen@verisilicon.com>
-To: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>, "edgar.iglesias@gmail.com"
- <edgar.iglesias@gmail.com>, "alistair@alistair23.me" <alistair@alistair23.me>
-Subject: [PATCH v3] hw/dma/pl330: Add memory region to replace default
-Thread-Topic: [PATCH v3] hw/dma/pl330: Add memory region to replace default
-Thread-Index: AdeSiOwk1WdB1iQlRpq1bXETNiKRMA==
-Date: Mon, 16 Aug 2021 10:24:41 +0000
-Message-ID: <4C23C17B8E87E74E906A25A3254A03F4FA1FC8CE@SHASXM03.verisilicon.com>
-Accept-Language: zh-CN, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [182.148.14.197]
-x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--6.106400-0.000000-31
-x-tm-as-user-approved-sender: Yes
-x-tm-as-user-blocked-sender: No
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mFa3H-00010o-HR; Mon, 16 Aug 2021 06:41:07 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:33510)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mFa3E-0008M5-8v; Mon, 16 Aug 2021 06:41:07 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id r7so22980302wrs.0;
+ Mon, 16 Aug 2021 03:41:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Tn3Em6ZFGrU10eyzUMf9rfYPSQbOP2pgU6DJJZoJD3c=;
+ b=izJs+aHB7t4r0UHIfQ9/5p6UFtQZWCIKwDabAZ2KT9MGa9/X9ENnngc00zXPK+yUIu
+ 9mehc+A/QoVqz1cRkyXdJzpUOYZbesqpTAZVTdYpBBZ2v2neZH/dXCqiS/J9fgnZSALg
+ 5/pQFvmBspiPunptEYrIk1ZDNm2eqOf1xXGkd+c/MUEh9390ETkyKM7MiPBNPXXwsLhd
+ RTKqOgf8GxmePfVaqk32Hnonjq53hMQPhmI67ts5IENZRGUNwLokxBV12uP3pTgsGWBH
+ 1MZpZZYF4dacr1NzRichYYN3O75va0a50gTmNmn2ehKCC62K6A6MI9fU3LoYR+bUPFtC
+ MV7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Tn3Em6ZFGrU10eyzUMf9rfYPSQbOP2pgU6DJJZoJD3c=;
+ b=sOaR9Y+Myv5Ano2HJNRgoNcWezwK0UTujOderhubJlV90PNRKViNiUuHLdJJIAatWa
+ mAAF+08a4s7iF+8f5a0PWsUSN3OBxTIralUI4gOERK9OvCM3qoyQ6INShSyc7cicjO2E
+ iKuq9JPOaKq2bhUpOGfez6SKVSJsCVUJ3AuwZwwpBNKM01+J7keNy9DFp+GVKgUxr8wo
+ ZvKhn/2C0TiD9r9hD+/tVYNxttDMaYnx6sdyPN/iPTZG3gcyfKQ0zrumYlOyrrRB0EX+
+ SgW27DHY3ERiO2E/MZl6avpI7jexCthy0YNSJanXGHTDyFCr1/DGbqYk9hydHmK4P59H
+ F9Ng==
+X-Gm-Message-State: AOAM533d2t8wq1fhzcNqjIewFZTYiq+b/8W9GsBhqJ3o9IOcq2kt/jCf
+ 72H7+jO+7Ygr00mYipR+k2k=
+X-Received: by 2002:adf:fbc9:: with SMTP id d9mr17705299wrs.152.1629110462298; 
+ Mon, 16 Aug 2021 03:41:02 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id z15sm10872649wrp.30.2021.08.16.03.41.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Aug 2021 03:41:01 -0700 (PDT)
+Subject: Re: [PATCH v3] hw/dma/pl330: Add memory region to replace default
+To: "Wen, Jianxian" <Jianxian.Wen@verisilicon.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>,
+ "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
+ "alistair@alistair23.me" <alistair@alistair23.me>
+References: <4C23C17B8E87E74E906A25A3254A03F4FA1FC8CE@SHASXM03.verisilicon.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <74c133ba-d318-4e27-76d3-11af5d72a214@amsat.org>
+Date: Mon, 16 Aug 2021 12:41:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Received-SPF: pass client-ip=101.89.135.45;
- envelope-from=Jianxian.Wen@verisilicon.com; helo=shasxm03.verisilicon.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+In-Reply-To: <4C23C17B8E87E74E906A25A3254A03F4FA1FC8CE@SHASXM03.verisilicon.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.147,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,131 +127,499 @@ Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Liu,
  Chunming" <Chunming.Li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2AzSz16TGVOs
+X-TUID: ZjhWFBRq1NIx
 
-PL330 needs a memory region which can connect with SMMU IOMMU region to sup=
-port SMMU translate.
+On 8/16/21 12:24 PM, Wen, Jianxian wrote:
+> PL330 needs a memory region which can connect with SMMU IOMMU region to support SMMU translate.
+> 
+> Signed-off-by: Jianxian Wen <jianxian.wen@verisilicon.com>
+> ---
+> Changes v1 -> v2 (after review of Peter Maydell):
+>  - Use the dma_memory_read/dma_memory_write functions, update function AddressSpace* parameter.
+> Changes v2 -> v3 (after review of Philippe Mathieu-Daudé):
+>  - Refine code to comply with code style, update error message if memory link is not set.
+> 
+>  hw/arm/exynos4210.c  |  3 +++
+>  hw/arm/xilinx_zynq.c |  3 +++
+>  hw/dma/pl330.c       | 20 ++++++++++++++++----
+>  3 files changed, 22 insertions(+), 4 deletions(-)
 
-Signed-off-by: Jianxian Wen <jianxian.wen@verisilicon.com>
----
-Changes v1 -> v2 (after review of Peter Maydell):
- - Use the dma_memory_read/dma_memory_write functions, update function Addr=
-essSpace* parameter.
-Changes v2 -> v3 (after review of Philippe Mathieu-Daud=E9):
- - Refine code to comply with code style, update error message if memory li=
-nk is not set.
+> @@ -1562,6 +1565,12 @@ static void pl330_realize(DeviceState *dev, Error **errp)
+>                            "dma", PL330_IOMEM_SIZE);
+>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+>  
+> +    if (!s->mem_mr) {
+> +        error_setg(errp, "'memory' link is not set");
+> +        return;
+> +    }
+> +    address_space_init(&s->mem_as, s->mem_mr, "pl330");
 
- hw/arm/exynos4210.c  |  3 +++
- hw/arm/xilinx_zynq.c |  3 +++
- hw/dma/pl330.c       | 20 ++++++++++++++++----
- 3 files changed, 22 insertions(+), 4 deletions(-)
+So when multiple controllers are created, this makes the 'info mtree'
+output longer, all AS named similarly:
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 5c7a51b..0299e81 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -173,6 +173,9 @@ static DeviceState *pl330_create(uint32_t base, qemu_or=
-_irq *orgate,
-     int i;
-=20
-     dev =3D qdev_new("pl330");
-+    object_property_set_link(OBJECT(dev), "memory",
-+                             OBJECT(get_system_memory()),
-+                             &error_fatal);
-     qdev_prop_set_uint8(dev, "num_events", nevents);
-     qdev_prop_set_uint8(dev, "num_chnls",  8);
-     qdev_prop_set_uint8(dev, "num_periph_req",  nreq);
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 245af81..69c333e 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -312,6 +312,9 @@ static void zynq_init(MachineState *machine)
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[39-IRQ_OFFSET]);
-=20
-     dev =3D qdev_new("pl330");
-+    object_property_set_link(OBJECT(dev), "memory",
-+                             OBJECT(address_space_mem),
-+                             &error_fatal);
-     qdev_prop_set_uint8(dev, "num_chnls",  8);
-     qdev_prop_set_uint8(dev, "num_periph_req",  4);
-     qdev_prop_set_uint8(dev, "num_events",  16);
-diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
-index 944ba29..c3bd30c 100644
---- a/hw/dma/pl330.c
-+++ b/hw/dma/pl330.c
-@@ -269,6 +269,9 @@ struct PL330State {
-     uint8_t num_faulting;
-     uint8_t periph_busy[PL330_PERIPH_NUM];
-=20
-+    /* Memory region that DMA operation access */
-+    MemoryRegion *mem_mr;
-+    AddressSpace mem_as;
- };
-=20
- #define TYPE_PL330 "pl330"
-@@ -1108,7 +1111,7 @@ static inline const PL330InsnDesc *pl330_fetch_insn(P=
-L330Chan *ch)
-     uint8_t opcode;
-     int i;
-=20
--    dma_memory_read(&address_space_memory, ch->pc, &opcode, 1);
-+    dma_memory_read(&ch->parent->mem_as, ch->pc, &opcode, 1);
-     for (i =3D 0; insn_desc[i].size; i++) {
-         if ((opcode & insn_desc[i].opmask) =3D=3D insn_desc[i].opcode) {
-             return &insn_desc[i];
-@@ -1122,7 +1125,7 @@ static inline void pl330_exec_insn(PL330Chan *ch, con=
-st PL330InsnDesc *insn)
-     uint8_t buf[PL330_INSN_MAXSIZE];
-=20
-     assert(insn->size <=3D PL330_INSN_MAXSIZE);
--    dma_memory_read(&address_space_memory, ch->pc, buf, insn->size);
-+    dma_memory_read(&ch->parent->mem_as, ch->pc, buf, insn->size);
-     insn->exec(ch, buf[0], &buf[1], insn->size - 1);
- }
-=20
-@@ -1186,7 +1189,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
-     if (q !=3D NULL && q->len <=3D pl330_fifo_num_free(&s->fifo)) {
-         int len =3D q->len - (q->addr & (q->len - 1));
-=20
--        dma_memory_read(&address_space_memory, q->addr, buf, len);
-+        dma_memory_read(&s->mem_as, q->addr, buf, len);
-         trace_pl330_exec_cycle(q->addr, len);
-         if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
-             pl330_hexdump(buf, len);
-@@ -1217,7 +1220,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
-             fifo_res =3D pl330_fifo_get(&s->fifo, buf, len, q->tag);
-         }
-         if (fifo_res =3D=3D PL330_FIFO_OK || q->z) {
--            dma_memory_write(&address_space_memory, q->addr, buf, len);
-+            dma_memory_write(&s->mem_as, q->addr, buf, len);
-             trace_pl330_exec_cycle(q->addr, len);
-             if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
-                 pl330_hexdump(buf, len);
-@@ -1562,6 +1565,12 @@ static void pl330_realize(DeviceState *dev, Error **=
-errp)
-                           "dma", PL330_IOMEM_SIZE);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
-=20
-+    if (!s->mem_mr) {
-+        error_setg(errp, "'memory' link is not set");
-+        return;
-+    }
-+    address_space_init(&s->mem_as, s->mem_mr, "pl330");
-+
-     s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, pl330_exec_cycle_timer, =
-s);
-=20
-     s->cfg[0] =3D (s->mgr_ns_at_rst ? 0x4 : 0) |
-@@ -1656,6 +1665,9 @@ static Property pl330_properties[] =3D {
-     DEFINE_PROP_UINT8("rd_q_dep", PL330State, rd_q_dep, 16),
-     DEFINE_PROP_UINT16("data_buffer_dep", PL330State, data_buffer_dep, 256=
-),
-=20
-+    DEFINE_PROP_LINK("memory", PL330State, mem_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
---=20
-2.7.4
+./qemu-system-arm -M smdkc210 -S -monitor stdio
+QEMU 6.0.93 monitor - type 'help' for more information
+(qemu) info mtree
+address-space: memory
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+    0000000002000000-000000000200ffff (prio 0, rom): alias
+exynos4210.irom_alias @exynos4210.irom 0000000000000000-000000000000ffff
+    0000000002020000-000000000203ffff (prio 0, ram): exynos4210.iram
+    0000000005000000-00000000050000ff (prio 0, i/o): lan9118-mmio
+    0000000010000000-0000000010000007 (prio 0, i/o): exynos4210.chipid
+    0000000010020000-0000000010023d0b (prio 0, i/o): exynos4210.pmu
+    0000000010030000-0000000010045103 (prio 0, i/o): exynos4210.clk
+    0000000010050000-0000000010050443 (prio 0, i/o): exynos4210-mct
+    0000000010070000-00000000100700ff (prio 0, i/o): exynos4210-rtc
+    0000000010440000-0000000010440107 (prio 0, i/o): exynos4210-combiner
+    0000000010448000-0000000010448107 (prio 0, i/o): exynos4210-combiner
+    0000000010480000-000000001048ffff (prio 0, i/o):
+exynos4210-cpu-container
+      0000000010480000-00000000104800ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu0 @gic_cpu 0000000000000000-00000000000000ff
+      0000000010488000-00000000104880ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu1 @gic_cpu 0000000000000000-00000000000000ff
+    0000000010490000-000000001049ffff (prio 0, i/o):
+exynos4210-dist-container
+      0000000010490000-0000000010490fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist0 @gic_dist 0000000000000000-0000000000000fff
+      0000000010498000-0000000010498fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist1 @gic_dist 0000000000000000-0000000000000fff
+    0000000010500000-0000000010501fff (prio 0, i/o): a9mp-priv-container
+      0000000010500000-00000000105000ff (prio 0, i/o): a9-scu
+      0000000010500100-00000000105001ff (prio 0, i/o): gic_cpu
+      0000000010500200-000000001050021f (prio 0, i/o): a9gtimer shared
+      0000000010500600-000000001050061f (prio 0, i/o): arm_mptimer_timer
+      0000000010500620-000000001050063f (prio 0, i/o): arm_mptimer_timer
+      0000000010501000-0000000010501fff (prio 0, i/o): gic_dist
+    0000000010502000-0000000010502fff (prio 0, i/o): l2x0_cc
+    0000000010830400-00000000108305ff (prio 0, i/o): exynos4210.rng
+    0000000011c00000-0000000011c04113 (prio 0, i/o): exynos4210.fimd
+    0000000012510000-00000000125100ff (prio 0, i/o): sdhci
+    0000000012520000-00000000125200ff (prio 0, i/o): sdhci
+    0000000012530000-00000000125300ff (prio 0, i/o): sdhci
+    0000000012540000-00000000125400ff (prio 0, i/o): sdhci
+    0000000012580000-0000000012580fff (prio 0, i/o): ehci
+      0000000012580000-000000001258000f (prio 0, i/o): capabilities
+      0000000012580010-0000000012580053 (prio 0, i/o): operational
+      0000000012580054-000000001258006b (prio 0, i/o): ports
+    0000000012680000-0000000012680fff (prio 0, i/o): dma
+    0000000012690000-0000000012690fff (prio 0, i/o): dma
+    0000000012850000-0000000012850fff (prio 0, i/o): dma
+    0000000013800000-000000001380003b (prio 0, i/o): exynos4210.uart
+    0000000013810000-000000001381003b (prio 0, i/o): exynos4210.uart
+    0000000013820000-000000001382003b (prio 0, i/o): exynos4210.uart
+    0000000013830000-000000001383003b (prio 0, i/o): exynos4210.uart
+    0000000013860000-0000000013860013 (prio 0, i/o): exynos4210.i2c
+    0000000013870000-0000000013870013 (prio 0, i/o): exynos4210.i2c
+    0000000013880000-0000000013880013 (prio 0, i/o): exynos4210.i2c
+    0000000013890000-0000000013890013 (prio 0, i/o): exynos4210.i2c
+    00000000138a0000-00000000138a0013 (prio 0, i/o): exynos4210.i2c
+    00000000138b0000-00000000138b0013 (prio 0, i/o): exynos4210.i2c
+    00000000138c0000-00000000138c0013 (prio 0, i/o): exynos4210.i2c
+    00000000138d0000-00000000138d0013 (prio 0, i/o): exynos4210.i2c
+    00000000138e0000-00000000138e0013 (prio 0, i/o): exynos4210.i2c
+    00000000139d0000-00000000139d004f (prio 0, i/o): exynos4210-pwm
+    0000000040000000-000000007fffffff (prio 0, ram): exynos4210.dram0
+
+address-space: I/O
+  0000000000000000-000000000000ffff (prio 0, i/o): io
+
+address-space: cpu-memory-0
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+    0000000002000000-000000000200ffff (prio 0, rom): alias
+exynos4210.irom_alias @exynos4210.irom 0000000000000000-000000000000ffff
+    0000000002020000-000000000203ffff (prio 0, ram): exynos4210.iram
+    0000000005000000-00000000050000ff (prio 0, i/o): lan9118-mmio
+    0000000010000000-0000000010000007 (prio 0, i/o): exynos4210.chipid
+    0000000010020000-0000000010023d0b (prio 0, i/o): exynos4210.pmu
+    0000000010030000-0000000010045103 (prio 0, i/o): exynos4210.clk
+    0000000010050000-0000000010050443 (prio 0, i/o): exynos4210-mct
+    0000000010070000-00000000100700ff (prio 0, i/o): exynos4210-rtc
+    0000000010440000-0000000010440107 (prio 0, i/o): exynos4210-combiner
+    0000000010448000-0000000010448107 (prio 0, i/o): exynos4210-combiner
+    0000000010480000-000000001048ffff (prio 0, i/o):
+exynos4210-cpu-container
+      0000000010480000-00000000104800ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu0 @gic_cpu 0000000000000000-00000000000000ff
+      0000000010488000-00000000104880ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu1 @gic_cpu 0000000000000000-00000000000000ff
+    0000000010490000-000000001049ffff (prio 0, i/o):
+exynos4210-dist-container
+      0000000010490000-0000000010490fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist0 @gic_dist 0000000000000000-0000000000000fff
+      0000000010498000-0000000010498fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist1 @gic_dist 0000000000000000-0000000000000fff
+    0000000010500000-0000000010501fff (prio 0, i/o): a9mp-priv-container
+      0000000010500000-00000000105000ff (prio 0, i/o): a9-scu
+      0000000010500100-00000000105001ff (prio 0, i/o): gic_cpu
+      0000000010500200-000000001050021f (prio 0, i/o): a9gtimer shared
+      0000000010500600-000000001050061f (prio 0, i/o): arm_mptimer_timer
+      0000000010500620-000000001050063f (prio 0, i/o): arm_mptimer_timer
+      0000000010501000-0000000010501fff (prio 0, i/o): gic_dist
+    0000000010502000-0000000010502fff (prio 0, i/o): l2x0_cc
+    0000000010830400-00000000108305ff (prio 0, i/o): exynos4210.rng
+    0000000011c00000-0000000011c04113 (prio 0, i/o): exynos4210.fimd
+    0000000012510000-00000000125100ff (prio 0, i/o): sdhci
+    0000000012520000-00000000125200ff (prio 0, i/o): sdhci
+    0000000012530000-00000000125300ff (prio 0, i/o): sdhci
+    0000000012540000-00000000125400ff (prio 0, i/o): sdhci
+    0000000012580000-0000000012580fff (prio 0, i/o): ehci
+      0000000012580000-000000001258000f (prio 0, i/o): capabilities
+      0000000012580010-0000000012580053 (prio 0, i/o): operational
+      0000000012580054-000000001258006b (prio 0, i/o): ports
+    0000000012680000-0000000012680fff (prio 0, i/o): dma
+    0000000012690000-0000000012690fff (prio 0, i/o): dma
+    0000000012850000-0000000012850fff (prio 0, i/o): dma
+    0000000013800000-000000001380003b (prio 0, i/o): exynos4210.uart
+    0000000013810000-000000001381003b (prio 0, i/o): exynos4210.uart
+    0000000013820000-000000001382003b (prio 0, i/o): exynos4210.uart
+    0000000013830000-000000001383003b (prio 0, i/o): exynos4210.uart
+    0000000013860000-0000000013860013 (prio 0, i/o): exynos4210.i2c
+    0000000013870000-0000000013870013 (prio 0, i/o): exynos4210.i2c
+    0000000013880000-0000000013880013 (prio 0, i/o): exynos4210.i2c
+    0000000013890000-0000000013890013 (prio 0, i/o): exynos4210.i2c
+    00000000138a0000-00000000138a0013 (prio 0, i/o): exynos4210.i2c
+    00000000138b0000-00000000138b0013 (prio 0, i/o): exynos4210.i2c
+    00000000138c0000-00000000138c0013 (prio 0, i/o): exynos4210.i2c
+    00000000138d0000-00000000138d0013 (prio 0, i/o): exynos4210.i2c
+    00000000138e0000-00000000138e0013 (prio 0, i/o): exynos4210.i2c
+    00000000139d0000-00000000139d004f (prio 0, i/o): exynos4210-pwm
+    0000000040000000-000000007fffffff (prio 0, ram): exynos4210.dram0
+
+address-space: cpu-memory-1
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+    0000000002000000-000000000200ffff (prio 0, rom): alias
+exynos4210.irom_alias @exynos4210.irom 0000000000000000-000000000000ffff
+    0000000002020000-000000000203ffff (prio 0, ram): exynos4210.iram
+    0000000005000000-00000000050000ff (prio 0, i/o): lan9118-mmio
+    0000000010000000-0000000010000007 (prio 0, i/o): exynos4210.chipid
+    0000000010020000-0000000010023d0b (prio 0, i/o): exynos4210.pmu
+    0000000010030000-0000000010045103 (prio 0, i/o): exynos4210.clk
+    0000000010050000-0000000010050443 (prio 0, i/o): exynos4210-mct
+    0000000010070000-00000000100700ff (prio 0, i/o): exynos4210-rtc
+    0000000010440000-0000000010440107 (prio 0, i/o): exynos4210-combiner
+    0000000010448000-0000000010448107 (prio 0, i/o): exynos4210-combiner
+    0000000010480000-000000001048ffff (prio 0, i/o):
+exynos4210-cpu-container
+      0000000010480000-00000000104800ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu0 @gic_cpu 0000000000000000-00000000000000ff
+      0000000010488000-00000000104880ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu1 @gic_cpu 0000000000000000-00000000000000ff
+    0000000010490000-000000001049ffff (prio 0, i/o):
+exynos4210-dist-container
+      0000000010490000-0000000010490fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist0 @gic_dist 0000000000000000-0000000000000fff
+      0000000010498000-0000000010498fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist1 @gic_dist 0000000000000000-0000000000000fff
+    0000000010500000-0000000010501fff (prio 0, i/o): a9mp-priv-container
+      0000000010500000-00000000105000ff (prio 0, i/o): a9-scu
+      0000000010500100-00000000105001ff (prio 0, i/o): gic_cpu
+      0000000010500200-000000001050021f (prio 0, i/o): a9gtimer shared
+      0000000010500600-000000001050061f (prio 0, i/o): arm_mptimer_timer
+      0000000010500620-000000001050063f (prio 0, i/o): arm_mptimer_timer
+      0000000010501000-0000000010501fff (prio 0, i/o): gic_dist
+    0000000010502000-0000000010502fff (prio 0, i/o): l2x0_cc
+    0000000010830400-00000000108305ff (prio 0, i/o): exynos4210.rng
+    0000000011c00000-0000000011c04113 (prio 0, i/o): exynos4210.fimd
+    0000000012510000-00000000125100ff (prio 0, i/o): sdhci
+    0000000012520000-00000000125200ff (prio 0, i/o): sdhci
+    0000000012530000-00000000125300ff (prio 0, i/o): sdhci
+    0000000012540000-00000000125400ff (prio 0, i/o): sdhci
+    0000000012580000-0000000012580fff (prio 0, i/o): ehci
+      0000000012580000-000000001258000f (prio 0, i/o): capabilities
+      0000000012580010-0000000012580053 (prio 0, i/o): operational
+      0000000012580054-000000001258006b (prio 0, i/o): ports
+    0000000012680000-0000000012680fff (prio 0, i/o): dma
+    0000000012690000-0000000012690fff (prio 0, i/o): dma
+    0000000012850000-0000000012850fff (prio 0, i/o): dma
+    0000000013800000-000000001380003b (prio 0, i/o): exynos4210.uart
+    0000000013810000-000000001381003b (prio 0, i/o): exynos4210.uart
+    0000000013820000-000000001382003b (prio 0, i/o): exynos4210.uart
+    0000000013830000-000000001383003b (prio 0, i/o): exynos4210.uart
+    0000000013860000-0000000013860013 (prio 0, i/o): exynos4210.i2c
+    0000000013870000-0000000013870013 (prio 0, i/o): exynos4210.i2c
+    0000000013880000-0000000013880013 (prio 0, i/o): exynos4210.i2c
+    0000000013890000-0000000013890013 (prio 0, i/o): exynos4210.i2c
+    00000000138a0000-00000000138a0013 (prio 0, i/o): exynos4210.i2c
+    00000000138b0000-00000000138b0013 (prio 0, i/o): exynos4210.i2c
+    00000000138c0000-00000000138c0013 (prio 0, i/o): exynos4210.i2c
+    00000000138d0000-00000000138d0013 (prio 0, i/o): exynos4210.i2c
+    00000000138e0000-00000000138e0013 (prio 0, i/o): exynos4210.i2c
+    00000000139d0000-00000000139d004f (prio 0, i/o): exynos4210-pwm
+    0000000040000000-000000007fffffff (prio 0, ram): exynos4210.dram0
+
+address-space: pl330
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+    0000000002000000-000000000200ffff (prio 0, rom): alias
+exynos4210.irom_alias @exynos4210.irom 0000000000000000-000000000000ffff
+    0000000002020000-000000000203ffff (prio 0, ram): exynos4210.iram
+    0000000005000000-00000000050000ff (prio 0, i/o): lan9118-mmio
+    0000000010000000-0000000010000007 (prio 0, i/o): exynos4210.chipid
+    0000000010020000-0000000010023d0b (prio 0, i/o): exynos4210.pmu
+    0000000010030000-0000000010045103 (prio 0, i/o): exynos4210.clk
+    0000000010050000-0000000010050443 (prio 0, i/o): exynos4210-mct
+    0000000010070000-00000000100700ff (prio 0, i/o): exynos4210-rtc
+    0000000010440000-0000000010440107 (prio 0, i/o): exynos4210-combiner
+    0000000010448000-0000000010448107 (prio 0, i/o): exynos4210-combiner
+    0000000010480000-000000001048ffff (prio 0, i/o):
+exynos4210-cpu-container
+      0000000010480000-00000000104800ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu0 @gic_cpu 0000000000000000-00000000000000ff
+      0000000010488000-00000000104880ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu1 @gic_cpu 0000000000000000-00000000000000ff
+    0000000010490000-000000001049ffff (prio 0, i/o):
+exynos4210-dist-container
+      0000000010490000-0000000010490fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist0 @gic_dist 0000000000000000-0000000000000fff
+      0000000010498000-0000000010498fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist1 @gic_dist 0000000000000000-0000000000000fff
+    0000000010500000-0000000010501fff (prio 0, i/o): a9mp-priv-container
+      0000000010500000-00000000105000ff (prio 0, i/o): a9-scu
+      0000000010500100-00000000105001ff (prio 0, i/o): gic_cpu
+      0000000010500200-000000001050021f (prio 0, i/o): a9gtimer shared
+      0000000010500600-000000001050061f (prio 0, i/o): arm_mptimer_timer
+      0000000010500620-000000001050063f (prio 0, i/o): arm_mptimer_timer
+      0000000010501000-0000000010501fff (prio 0, i/o): gic_dist
+    0000000010502000-0000000010502fff (prio 0, i/o): l2x0_cc
+    0000000010830400-00000000108305ff (prio 0, i/o): exynos4210.rng
+    0000000011c00000-0000000011c04113 (prio 0, i/o): exynos4210.fimd
+    0000000012510000-00000000125100ff (prio 0, i/o): sdhci
+    0000000012520000-00000000125200ff (prio 0, i/o): sdhci
+    0000000012530000-00000000125300ff (prio 0, i/o): sdhci
+    0000000012540000-00000000125400ff (prio 0, i/o): sdhci
+    0000000012580000-0000000012580fff (prio 0, i/o): ehci
+      0000000012580000-000000001258000f (prio 0, i/o): capabilities
+      0000000012580010-0000000012580053 (prio 0, i/o): operational
+      0000000012580054-000000001258006b (prio 0, i/o): ports
+    0000000012680000-0000000012680fff (prio 0, i/o): dma
+    0000000012690000-0000000012690fff (prio 0, i/o): dma
+    0000000012850000-0000000012850fff (prio 0, i/o): dma
+    0000000013800000-000000001380003b (prio 0, i/o): exynos4210.uart
+    0000000013810000-000000001381003b (prio 0, i/o): exynos4210.uart
+    0000000013820000-000000001382003b (prio 0, i/o): exynos4210.uart
+    0000000013830000-000000001383003b (prio 0, i/o): exynos4210.uart
+    0000000013860000-0000000013860013 (prio 0, i/o): exynos4210.i2c
+    0000000013870000-0000000013870013 (prio 0, i/o): exynos4210.i2c
+    0000000013880000-0000000013880013 (prio 0, i/o): exynos4210.i2c
+    0000000013890000-0000000013890013 (prio 0, i/o): exynos4210.i2c
+    00000000138a0000-00000000138a0013 (prio 0, i/o): exynos4210.i2c
+    00000000138b0000-00000000138b0013 (prio 0, i/o): exynos4210.i2c
+    00000000138c0000-00000000138c0013 (prio 0, i/o): exynos4210.i2c
+    00000000138d0000-00000000138d0013 (prio 0, i/o): exynos4210.i2c
+    00000000138e0000-00000000138e0013 (prio 0, i/o): exynos4210.i2c
+    00000000139d0000-00000000139d004f (prio 0, i/o): exynos4210-pwm
+    0000000040000000-000000007fffffff (prio 0, ram): exynos4210.dram0
+
+address-space: pl330
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+    0000000002000000-000000000200ffff (prio 0, rom): alias
+exynos4210.irom_alias @exynos4210.irom 0000000000000000-000000000000ffff
+    0000000002020000-000000000203ffff (prio 0, ram): exynos4210.iram
+    0000000005000000-00000000050000ff (prio 0, i/o): lan9118-mmio
+    0000000010000000-0000000010000007 (prio 0, i/o): exynos4210.chipid
+    0000000010020000-0000000010023d0b (prio 0, i/o): exynos4210.pmu
+    0000000010030000-0000000010045103 (prio 0, i/o): exynos4210.clk
+    0000000010050000-0000000010050443 (prio 0, i/o): exynos4210-mct
+    0000000010070000-00000000100700ff (prio 0, i/o): exynos4210-rtc
+    0000000010440000-0000000010440107 (prio 0, i/o): exynos4210-combiner
+    0000000010448000-0000000010448107 (prio 0, i/o): exynos4210-combiner
+    0000000010480000-000000001048ffff (prio 0, i/o):
+exynos4210-cpu-container
+      0000000010480000-00000000104800ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu0 @gic_cpu 0000000000000000-00000000000000ff
+      0000000010488000-00000000104880ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu1 @gic_cpu 0000000000000000-00000000000000ff
+    0000000010490000-000000001049ffff (prio 0, i/o):
+exynos4210-dist-container
+      0000000010490000-0000000010490fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist0 @gic_dist 0000000000000000-0000000000000fff
+      0000000010498000-0000000010498fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist1 @gic_dist 0000000000000000-0000000000000fff
+    0000000010500000-0000000010501fff (prio 0, i/o): a9mp-priv-container
+      0000000010500000-00000000105000ff (prio 0, i/o): a9-scu
+      0000000010500100-00000000105001ff (prio 0, i/o): gic_cpu
+      0000000010500200-000000001050021f (prio 0, i/o): a9gtimer shared
+      0000000010500600-000000001050061f (prio 0, i/o): arm_mptimer_timer
+      0000000010500620-000000001050063f (prio 0, i/o): arm_mptimer_timer
+      0000000010501000-0000000010501fff (prio 0, i/o): gic_dist
+    0000000010502000-0000000010502fff (prio 0, i/o): l2x0_cc
+    0000000010830400-00000000108305ff (prio 0, i/o): exynos4210.rng
+    0000000011c00000-0000000011c04113 (prio 0, i/o): exynos4210.fimd
+    0000000012510000-00000000125100ff (prio 0, i/o): sdhci
+    0000000012520000-00000000125200ff (prio 0, i/o): sdhci
+    0000000012530000-00000000125300ff (prio 0, i/o): sdhci
+    0000000012540000-00000000125400ff (prio 0, i/o): sdhci
+    0000000012580000-0000000012580fff (prio 0, i/o): ehci
+      0000000012580000-000000001258000f (prio 0, i/o): capabilities
+      0000000012580010-0000000012580053 (prio 0, i/o): operational
+      0000000012580054-000000001258006b (prio 0, i/o): ports
+    0000000012680000-0000000012680fff (prio 0, i/o): dma
+    0000000012690000-0000000012690fff (prio 0, i/o): dma
+    0000000012850000-0000000012850fff (prio 0, i/o): dma
+    0000000013800000-000000001380003b (prio 0, i/o): exynos4210.uart
+    0000000013810000-000000001381003b (prio 0, i/o): exynos4210.uart
+    0000000013820000-000000001382003b (prio 0, i/o): exynos4210.uart
+    0000000013830000-000000001383003b (prio 0, i/o): exynos4210.uart
+    0000000013860000-0000000013860013 (prio 0, i/o): exynos4210.i2c
+    0000000013870000-0000000013870013 (prio 0, i/o): exynos4210.i2c
+    0000000013880000-0000000013880013 (prio 0, i/o): exynos4210.i2c
+    0000000013890000-0000000013890013 (prio 0, i/o): exynos4210.i2c
+    00000000138a0000-00000000138a0013 (prio 0, i/o): exynos4210.i2c
+    00000000138b0000-00000000138b0013 (prio 0, i/o): exynos4210.i2c
+    00000000138c0000-00000000138c0013 (prio 0, i/o): exynos4210.i2c
+    00000000138d0000-00000000138d0013 (prio 0, i/o): exynos4210.i2c
+    00000000138e0000-00000000138e0013 (prio 0, i/o): exynos4210.i2c
+    00000000139d0000-00000000139d004f (prio 0, i/o): exynos4210-pwm
+    0000000040000000-000000007fffffff (prio 0, ram): exynos4210.dram0
+
+address-space: pl330
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+    0000000002000000-000000000200ffff (prio 0, rom): alias
+exynos4210.irom_alias @exynos4210.irom 0000000000000000-000000000000ffff
+    0000000002020000-000000000203ffff (prio 0, ram): exynos4210.iram
+    0000000005000000-00000000050000ff (prio 0, i/o): lan9118-mmio
+    0000000010000000-0000000010000007 (prio 0, i/o): exynos4210.chipid
+    0000000010020000-0000000010023d0b (prio 0, i/o): exynos4210.pmu
+    0000000010030000-0000000010045103 (prio 0, i/o): exynos4210.clk
+    0000000010050000-0000000010050443 (prio 0, i/o): exynos4210-mct
+    0000000010070000-00000000100700ff (prio 0, i/o): exynos4210-rtc
+    0000000010440000-0000000010440107 (prio 0, i/o): exynos4210-combiner
+    0000000010448000-0000000010448107 (prio 0, i/o): exynos4210-combiner
+    0000000010480000-000000001048ffff (prio 0, i/o):
+exynos4210-cpu-container
+      0000000010480000-00000000104800ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu0 @gic_cpu 0000000000000000-00000000000000ff
+      0000000010488000-00000000104880ff (prio 0, i/o): alias
+exynos4210-gic-alias_cpu1 @gic_cpu 0000000000000000-00000000000000ff
+    0000000010490000-000000001049ffff (prio 0, i/o):
+exynos4210-dist-container
+      0000000010490000-0000000010490fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist0 @gic_dist 0000000000000000-0000000000000fff
+      0000000010498000-0000000010498fff (prio 0, i/o): alias
+exynos4210-gic-alias_dist1 @gic_dist 0000000000000000-0000000000000fff
+    0000000010500000-0000000010501fff (prio 0, i/o): a9mp-priv-container
+      0000000010500000-00000000105000ff (prio 0, i/o): a9-scu
+      0000000010500100-00000000105001ff (prio 0, i/o): gic_cpu
+      0000000010500200-000000001050021f (prio 0, i/o): a9gtimer shared
+      0000000010500600-000000001050061f (prio 0, i/o): arm_mptimer_timer
+      0000000010500620-000000001050063f (prio 0, i/o): arm_mptimer_timer
+      0000000010501000-0000000010501fff (prio 0, i/o): gic_dist
+    0000000010502000-0000000010502fff (prio 0, i/o): l2x0_cc
+    0000000010830400-00000000108305ff (prio 0, i/o): exynos4210.rng
+    0000000011c00000-0000000011c04113 (prio 0, i/o): exynos4210.fimd
+    0000000012510000-00000000125100ff (prio 0, i/o): sdhci
+    0000000012520000-00000000125200ff (prio 0, i/o): sdhci
+    0000000012530000-00000000125300ff (prio 0, i/o): sdhci
+    0000000012540000-00000000125400ff (prio 0, i/o): sdhci
+    0000000012580000-0000000012580fff (prio 0, i/o): ehci
+      0000000012580000-000000001258000f (prio 0, i/o): capabilities
+      0000000012580010-0000000012580053 (prio 0, i/o): operational
+      0000000012580054-000000001258006b (prio 0, i/o): ports
+    0000000012680000-0000000012680fff (prio 0, i/o): dma
+    0000000012690000-0000000012690fff (prio 0, i/o): dma
+    0000000012850000-0000000012850fff (prio 0, i/o): dma
+    0000000013800000-000000001380003b (prio 0, i/o): exynos4210.uart
+    0000000013810000-000000001381003b (prio 0, i/o): exynos4210.uart
+    0000000013820000-000000001382003b (prio 0, i/o): exynos4210.uart
+    0000000013830000-000000001383003b (prio 0, i/o): exynos4210.uart
+    0000000013860000-0000000013860013 (prio 0, i/o): exynos4210.i2c
+    0000000013870000-0000000013870013 (prio 0, i/o): exynos4210.i2c
+    0000000013880000-0000000013880013 (prio 0, i/o): exynos4210.i2c
+    0000000013890000-0000000013890013 (prio 0, i/o): exynos4210.i2c
+    00000000138a0000-00000000138a0013 (prio 0, i/o): exynos4210.i2c
+    00000000138b0000-00000000138b0013 (prio 0, i/o): exynos4210.i2c
+    00000000138c0000-00000000138c0013 (prio 0, i/o): exynos4210.i2c
+    00000000138d0000-00000000138d0013 (prio 0, i/o): exynos4210.i2c
+    00000000138e0000-00000000138e0013 (prio 0, i/o): exynos4210.i2c
+    00000000139d0000-00000000139d004f (prio 0, i/o): exynos4210-pwm
+    0000000040000000-000000007fffffff (prio 0, ram): exynos4210.dram0
+
+memory-region: exynos4210.irom
+  0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+
+memory-region: gic_cpu
+  0000000000000000-00000000000000ff (prio 0, i/o): gic_cpu
+
+memory-region: gic_dist
+  0000000000000000-0000000000000fff (prio 0, i/o): gic_dist
+
+(qemu) info mtree -f
+FlatView #0
+ AS "I/O", root: io
+ Root memory region: io
+  0000000000000000-000000000000ffff (prio 0, i/o): io
+
+FlatView #1
+ AS "memory", root: system
+ AS "cpu-memory-0", root: system
+ AS "cpu-memory-1", root: system
+ AS "pl330", root: system
+ AS "pl330", root: system
+ AS "pl330", root: system
+ Root memory region: system
+  0000000000000000-000000000000ffff (prio 0, rom): exynos4210.irom
+  0000000002000000-000000000200ffff (prio 0, rom): exynos4210.irom
+  0000000002020000-000000000203ffff (prio 0, ram): exynos4210.iram
+  0000000005000000-00000000050000ff (prio 0, i/o): lan9118-mmio
+  0000000010000000-0000000010000007 (prio 0, i/o): exynos4210.chipid
+  0000000010020000-0000000010023d0b (prio 0, i/o): exynos4210.pmu
+  0000000010030000-0000000010045103 (prio 0, i/o): exynos4210.clk
+  0000000010050000-0000000010050443 (prio 0, i/o): exynos4210-mct
+  0000000010070000-00000000100700ff (prio 0, i/o): exynos4210-rtc
+  0000000010440000-0000000010440107 (prio 0, i/o): exynos4210-combiner
+  0000000010448000-0000000010448107 (prio 0, i/o): exynos4210-combiner
+  0000000010480000-00000000104800ff (prio 0, i/o): gic_cpu
+  0000000010488000-00000000104880ff (prio 0, i/o): gic_cpu
+  0000000010490000-0000000010490fff (prio 0, i/o): gic_dist
+  0000000010498000-0000000010498fff (prio 0, i/o): gic_dist
+  0000000010500000-00000000105000ff (prio 0, i/o): a9-scu
+  0000000010500100-00000000105001ff (prio 0, i/o): gic_cpu
+  0000000010500200-000000001050021f (prio 0, i/o): a9gtimer shared
+  0000000010500600-000000001050061f (prio 0, i/o): arm_mptimer_timer
+  0000000010500620-000000001050063f (prio 0, i/o): arm_mptimer_timer
+  0000000010501000-0000000010501fff (prio 0, i/o): gic_dist
+  0000000010502000-0000000010502fff (prio 0, i/o): l2x0_cc
+  0000000010830400-00000000108305ff (prio 0, i/o): exynos4210.rng
+  0000000011c00000-0000000011c04113 (prio 0, i/o): exynos4210.fimd
+  0000000012510000-00000000125100ff (prio 0, i/o): sdhci
+  0000000012520000-00000000125200ff (prio 0, i/o): sdhci
+  0000000012530000-00000000125300ff (prio 0, i/o): sdhci
+  0000000012540000-00000000125400ff (prio 0, i/o): sdhci
+  0000000012580000-000000001258000f (prio 0, i/o): capabilities
+  0000000012580010-0000000012580053 (prio 0, i/o): operational
+  0000000012580054-000000001258006b (prio 0, i/o): ports
+  0000000012680000-0000000012680fff (prio 0, i/o): dma
+  0000000012690000-0000000012690fff (prio 0, i/o): dma
+  0000000012850000-0000000012850fff (prio 0, i/o): dma
+  0000000013800000-000000001380003b (prio 0, i/o): exynos4210.uart
+  0000000013810000-000000001381003b (prio 0, i/o): exynos4210.uart
+  0000000013820000-000000001382003b (prio 0, i/o): exynos4210.uart
+  0000000013830000-000000001383003b (prio 0, i/o): exynos4210.uart
+  0000000013860000-0000000013860013 (prio 0, i/o): exynos4210.i2c
+  0000000013870000-0000000013870013 (prio 0, i/o): exynos4210.i2c
+  0000000013880000-0000000013880013 (prio 0, i/o): exynos4210.i2c
+  0000000013890000-0000000013890013 (prio 0, i/o): exynos4210.i2c
+  00000000138a0000-00000000138a0013 (prio 0, i/o): exynos4210.i2c
+  00000000138b0000-00000000138b0013 (prio 0, i/o): exynos4210.i2c
+  00000000138c0000-00000000138c0013 (prio 0, i/o): exynos4210.i2c
+  00000000138d0000-00000000138d0013 (prio 0, i/o): exynos4210.i2c
+  00000000138e0000-00000000138e0013 (prio 0, i/o): exynos4210.i2c
+  00000000139d0000-00000000139d004f (prio 0, i/o): exynos4210-pwm
+  0000000040000000-000000007fffffff (prio 0, ram): exynos4210.dram0
+
+'info mtree' is mostly for debugging, what matters is the flatview,
+so no need to make the controller model more complex by adding an
+'id' property (which would be useful for trace event btw).
+
+AS are not QOM so we can not pass them via link property,
+we have to use MR for that. So not much room to improve.
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

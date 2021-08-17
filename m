@@ -1,126 +1,106 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp673302lfg;
-        Tue, 17 Aug 2021 09:28:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwTpRTMJuBJ/unTuXs+rvRzPS7yPU1vukp0WNYMk6ukGmChaiJ0rMm0fdDdBG6Mfcn9Y8wD
-X-Received: by 2002:a1f:308d:: with SMTP id w135mr3368104vkw.15.1629217711360;
-        Tue, 17 Aug 2021 09:28:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629217711; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp834115lfg;
+        Tue, 17 Aug 2021 13:19:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2W9lvG+LgtXxJ0zueytT9xS8hLe3P3wfYemV67fm6Gye47vaFv7oDGx4F/8Ts7g80xwTS
+X-Received: by 2002:a54:4392:: with SMTP id u18mr3899095oiv.149.1629231540363;
+        Tue, 17 Aug 2021 13:19:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629231540; cv=none;
         d=google.com; s=arc-20160816;
-        b=aya+ECPuOr6QlUQ0z6twfG+sxwIeZMKKClyVzpRMQJI6IzHZ4ZSFgVuoyPohpEMmPo
-         pcvPAbggDV1FltObHyovR15Wwm52CDVgzQc7136CWN+jeAgqWis2vevIOl+YU/Ij54wa
-         ArvW7fPI1YoCwrwePktNVFf7VHO1IZRjVrIUSXvMJT5jx58QjhlBJMK1VZ1apWhJNh9B
-         LZVghxpPgMoT85mA0YJ+xGmg/eZlEebI1I0ChZOKGSeXMS6z/6WLisX68ACh5/K+sLL9
-         DnjbH66qxq5w6ok3DLOq4i89p3H98dgiSi2GyXtKNcGDuY3q7zW2TFBDpmTOtzc6Dyas
-         jxFQ==
+        b=OnYBgkSfoW+EwWGjmcdTunenyG8fscapkyQOpVy80NIJjtPpAYVcgHpE5ID5V5Gc8N
+         +K7ftaR7my3T9u+8ve4UjfOHuGx1u4EnsoqEMZ4+5TcUbHAGgC4TpE/ITde5mRR8t4g5
+         yYx9njc8RLKdimbZD1m3K7/7PsszzKQGhpWFD+XKzZ4XYygT40WSHVPM6YYsyfwllYMA
+         PnsMhFdQYgeZyN1b2vMN/GLmXyBEWDylFvbM5Q4lL+vDgsMOC15bFXBjSiu6/IBPG6Be
+         4H/0adNBXQ1OKbE64EptAhkeJUXAvi9HLmm5aZOPPQK1MCuf/0lqDmbovUIEWwqJ1A3O
+         s+iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=aX9fYUp8Bnps3b3KLSGFLkJzQmdpPbyDeYWUQoEFU6c=;
-        b=NGMGNb1KbW1qzdg8eakQFjp5lnoWWU1mIin1CQOwjpXySoIxZ4Cb2rIuBq64fcTdAI
-         zn0oMJPTcr9HCLip4TCzX6UWDul/00z2O968AnnUHeGN95J8MD6pNcPntuQnjwFeJbJH
-         U2LNIQIvgpsM8DvWqcNMBzA4JRDKAWUfiheiIaEG77Kols3ryGEs1+NvYK/ECG6k4X9w
-         DgbHurTngEoTeNwjcKKmDwnsj+qP0PTZfdDGN7jr4KLyC82AY7t1pNfCu4arlifKojc6
-         uJuZbKSzPKsb9O9O1lC8hOz6U79fynbVV+pS/K1oZk/7eNS/TEN65tK3USdKu1fbz69O
-         lmWg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=X9+TtUOGOW4Kke6aYkw3DIDjY+8T0v70IdNRT7rgM7I=;
+        b=HLxy1gqlXqQIL4cCkCbFAcRJl9qBmKI+TTs20PQTs2T/tm9YtAs+ek28LqcEQZXLwa
+         Vn1vWiMl2tQDSnGAOUelG//InNnlarmkOcaRNvpypjYFVVh0dGs100qUb5Qv9QyKoquZ
+         H2FaHF2ZxKvRzI6eoJYOHX58JcjXAD26bCwHEKupXjoJBbNH/UEHE+oI8XpJINhzG0b2
+         MeE4hTbkLbJocaP1jZWSJVBoFaQp5vlUOqPDHVVV2yb0/t0IAmVnF9PjYyaojB5fmn6B
+         EztiVXVBxSLkbCS9bjoyBTtFuZE/qJ+V5yM4TQwBpRU6BIfZaCVDjX9ht/vYzysU/Wnn
+         ttxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PPoZoWNe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pPJFuFNT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f25si1619132ual.219.2021.08.17.09.28.31
+        by mx.google.com with ESMTPS id w9si2471654oom.50.2021.08.17.13.19.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Aug 2021 09:28:31 -0700 (PDT)
+        Tue, 17 Aug 2021 13:19:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PPoZoWNe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pPJFuFNT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44948 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38312 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mG1x0-0006IU-GR
-	for alex.bennee@linaro.org; Tue, 17 Aug 2021 12:28:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57962)
+	id 1mG5Y3-0002Nd-K9
+	for alex.bennee@linaro.org; Tue, 17 Aug 2021 16:18:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mG1wo-0006Hy-Kw
- for qemu-arm@nongnu.org; Tue, 17 Aug 2021 12:28:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24421)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mG1wn-0007xw-37
- for qemu-arm@nongnu.org; Tue, 17 Aug 2021 12:28:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629217696;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=aX9fYUp8Bnps3b3KLSGFLkJzQmdpPbyDeYWUQoEFU6c=;
- b=PPoZoWNeUxYbWdaI+XkV29vVHtVOVCc5Fb9hze/AGffn7DCmzl4wnusLikFZTCMp9biii3
- 0mEcROPueDlNtudWlOX4Pdzj/l4HX0x1CyQBt39WMuU3rbcC7FlkYOfZswaRcTpVf9R+zm
- jig1s5kI/B0JiAq0kex0EDL3yAF5IcY=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-23-mCoQ1VpVNFWNrea-nFmHWg-1; Tue, 17 Aug 2021 12:28:15 -0400
-X-MC-Unique: mCoQ1VpVNFWNrea-nFmHWg-1
-Received: by mail-ej1-f71.google.com with SMTP id
- gg1-20020a170906e281b029053d0856c4cdso6232547ejb.15
- for <qemu-arm@nongnu.org>; Tue, 17 Aug 2021 09:28:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mG5Xu-0002N4-CO
+ for qemu-arm@nongnu.org; Tue, 17 Aug 2021 16:18:50 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:33539)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mG5Xs-0001lY-Ci
+ for qemu-arm@nongnu.org; Tue, 17 Aug 2021 16:18:50 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ a201-20020a1c7fd2000000b002e6d33447f9so2327403wmd.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Aug 2021 13:18:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=X9+TtUOGOW4Kke6aYkw3DIDjY+8T0v70IdNRT7rgM7I=;
+ b=pPJFuFNTeJ6OOOohE19+Rs2m2FR6yB+y4+0fmz2oaZpUQU0kgCsAarnTGPPK8lhCv1
+ QfzFyL0hBJG6XJQH41I0/qBxSwjaVgMjVgh0Olj7DQQRX4MZQDK0KCFKrXqCWB2ZGT86
+ XI4vldq+QDWS7o6KfxtjJe/JVuyycABVQwbCz89UNN2YIC8R1Hhd8UJAEwkOq/RyfWq9
+ MwVzoIymlScdR5NLqB3lq+lDaZJM95fHdZMHJqQqsC51dcm89tdbOByXCei31cqGdfhJ
+ hL62ZsWlgJsy0VoCb2HdvhITImYC7NmzvWszRS9c/cBwZvSg1vd9HVxBRCboftqI+p87
+ vQtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=aX9fYUp8Bnps3b3KLSGFLkJzQmdpPbyDeYWUQoEFU6c=;
- b=Rs7OR0JVyFadFdclvwKbTQex+BP6LE+2hMShgaRkJU4EVQMQuAF+OEkhHyJibUtFh6
- DFuc2Rvz/5aS86w7BAUSDMqVZIyOJKmGumsC3rRvLuwp0CNEb9jz4x9NUQqFXKRWfgNs
- 2RAh8fo2gfYz1qcplehSzFVsYG40YU3pZagBH64G7Aa+BiaxlvOCMd+ZBuYx0fB5UinM
- ym5WbUXy7UIzEZVGGFZ+EhvaXHoaw3qNP4z8yejSBrXbuuxrNOs+oNLiJ24qSxefnEvp
- +1TMSsvA/bhPWB8zvwzJu/4XtU+/u1SVAhJewLCh4NSgJATt0URQDVyuNenfZNFerswA
- dcGw==
-X-Gm-Message-State: AOAM531cJw5GqjDi+JAwaQFXWkz2Q7m5CNky5v0QaHnNh7ZhmGiaJ4qX
- mxebQcX76/xx7vWyIkLTL7FoeItLYHjJ+hPV0U7l73xvzeMoC/APJqbU8AeoQJ9XtvZ9ApTHq9Z
- 2mid2sjZAM2XM
-X-Received: by 2002:aa7:de98:: with SMTP id j24mr5130717edv.139.1629217694010; 
- Tue, 17 Aug 2021 09:28:14 -0700 (PDT)
-X-Received: by 2002:aa7:de98:: with SMTP id j24mr5130699edv.139.1629217693825; 
- Tue, 17 Aug 2021 09:28:13 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id d16sm1300380edu.8.2021.08.17.09.28.12
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=X9+TtUOGOW4Kke6aYkw3DIDjY+8T0v70IdNRT7rgM7I=;
+ b=RDFcdrSRkp+kIZPaTrrHDgv5oTPFt3b6RI5TFytgV4lCXrdosn9o0AQdfi3Y4WBTjh
+ btmwIOQJouBJMrwe+IFOi0D71bNpmxS0yjwjoJPY7cJGTbc3hAuZzmD3rWcXO30D7i3P
+ 2oFF0is90Gq7Ma1OD/4Z3u/yudQZl3YGkDgeS9sD5VKiNAvIFTsveD6n3UBvGudPkT7w
+ hOP8rtvvrVb5JjvctY4U6m+SVdcPptfvxE6hePFipwqKjaizWo3tC85L7uufbEI7CmT3
+ ilhpyfSpYDr9rED1enoGiUioP4x5ASXyu0sW6ggWBYbfYFV08msXCbg10oWxMAM0ZNNf
+ FjFg==
+X-Gm-Message-State: AOAM533o3HjDTOakSJ6bF79JufXOymGw6NyuWIPSN+YYKy6xmE/M7iYR
+ zGnVi7g/eO5xXdDNvYksJGAZzK1VkZBbxg==
+X-Received: by 2002:a1c:2905:: with SMTP id p5mr5119910wmp.146.1629231526559; 
+ Tue, 17 Aug 2021 13:18:46 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id w9sm2964785wmc.19.2021.08.17.13.18.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Aug 2021 09:28:13 -0700 (PDT)
-Date: Tue, 17 Aug 2021 18:28:11 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v4 1/3] target-arm: Add support for Fujitsu A64FX
-Message-ID: <20210817162811.u3i5hcx7eg52akyq@gator.home>
-References: <20210812060440.1330348-1-ishii.shuuichir@fujitsu.com>
- <20210812060440.1330348-2-ishii.shuuichir@fujitsu.com>
- <20210812091650.i5np3szvdoelu2cx@gator.home>
- <20210812092517.mwcfhksoe4cgy3cl@gator.home>
- <TYCPR01MB6160B0A6E08CAE7CB2C6D8F0E9FE9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
- <20210817115635.d2wxvnvis5kupegh@gator.home>
- <667f9384-cd28-8e4d-ebd1-4ed4b651676a@linaro.org>
- <20210817153639.o5fxdgmuhjusvyhq@gator.home>
- <3846b738-719f-a9a1-a59d-d7f54e71009c@linaro.org>
+ Tue, 17 Aug 2021 13:18:46 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Do hflags rebuild in cpsr_write()
+Date: Tue, 17 Aug 2021 21:18:43 +0100
+Message-Id: <20210817201843.3829-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <3846b738-719f-a9a1-a59d-d7f54e71009c@linaro.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -134,46 +114,117 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y9NMz+G254JD
+X-TUID: G/Nea2ogk1v/
 
-On Tue, Aug 17, 2021 at 05:53:34AM -1000, Richard Henderson wrote:
-> On 8/17/21 5:36 AM, Andrew Jones wrote:
-> > On Tue, Aug 17, 2021 at 05:23:17AM -1000, Richard Henderson wrote:
-> > > On 8/17/21 1:56 AM, Andrew Jones wrote:
-> > > > I guess it's fine. You could easily create a new cpu_arm_set_sve_vq()
-> > > > which would forbid changing the properties if you wanted to, but then
-> > > > we need to answer Peter's question in order to see if there's a
-> > > > precedent for that type of property.
-> > > 
-> > > I don't see the point in read-only properties.  If the user wants to set
-> > > non-standard values on the command-line, let them.  What is most important
-> > > is getting the correct default from '-cpu a64fx'.
-> > > 
-> > 
-> > So maybe we should just go ahead and add all sve* properties, but then
-> > make sure the default vq map is correct.
-> 
-> I think that's the right answer.
-> 
-> Presently we have a kvm_supported variable that's initialized by
-> kvm_arm_sve_get_vls().  I think we want to rename that variable and provide
-> a version of that function for tcg. Probably we should have done that
-> before, with a trivial function for -cpu max to set all bits.
-> 
-> Then eliminate most of the other kvm_enabled() checks in
-> arm_cpu_sve_finalize.  I think the only one we keep is the last, where we
-> verify that the final sve_vq_map matches kvm_enabled exactly, modulo max_vq.
-> 
-> This should minimize the differences in behaviour between tcg and kvm.
+Currently we rely on all the callsites of cpsr_write() to rebuild the
+cached hflags if they change one of the CPSR bits which we use as a
+TB flag and cache in hflags.  This is a bit awkward when we want to
+change the set of CPSR bits that we cache, because it means we need
+to re-audit all the cpsr_write() callsites to see which flags they
+are writing and whether they now need to rebuild the hflags.
 
-That's a good idea. I'll send a patch with your suggested-by.
+Switch instead to making cpsr_write() call arm_rebuild_hflags()
+itself if one of the bits being changed is a cached bit.
 
-Thanks,
-drew
+We don't do the rebuild for the CPSRWriteRaw write type, because that
+kind of write is generally doing something special anyway.  For the
+CPSRWriteRaw callsites in the KVM code and inbound migration we
+definitely don't want to recalculate the hflags; the callsites in
+boot.c and arm-powerctl.c have to do a rebuild-hflags call themselves
+anyway because of other CPU state changes they make.
+
+This allows us to drop explicit arm_rebuild_hflags() calls in a
+couple of places where the only reason we needed to call it was the
+CPSR write.
+
+This fixes a bug where we were incorrectly failing to rebuild hflags
+in the code path for a gdbstub write to CPSR, which meant that you
+could make QEMU assert by breaking into a running guest, altering the
+CPSR to change the value of, for example, CPSR.E, and then
+continuing.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I've included CPSR.IL on the list of "cached bits" on the assumption
+that my "honour PSTATE.IL" patch is going in, but this patch doesn't
+strictly depend on that one. Just in case, though:
+Based-on: id:20210817162118.24319-1-peter.maydell@linaro.org
+"[PATCH] target/arm: Take an exception if PSTATE.IL is set"
+
+ target/arm/cpu.h        | 10 ++++++++--
+ linux-user/arm/signal.c |  2 --
+ target/arm/helper.c     |  4 ++++
+ 3 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index be557bf5d83..4c0568f85a8 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1393,11 +1393,17 @@ uint32_t cpsr_read(CPUARMState *env);
+ typedef enum CPSRWriteType {
+     CPSRWriteByInstr = 0,         /* from guest MSR or CPS */
+     CPSRWriteExceptionReturn = 1, /* from guest exception return insn */
+-    CPSRWriteRaw = 2,             /* trust values, do not switch reg banks */
++    CPSRWriteRaw = 2,
++        /* trust values, no reg bank switch, no hflags rebuild */
+     CPSRWriteByGDBStub = 3,       /* from the GDB stub */
+ } CPSRWriteType;
+ 
+-/* Set the CPSR.  Note that some bits of mask must be all-set or all-clear.*/
++/*
++ * Set the CPSR.  Note that some bits of mask must be all-set or all-clear.
++ * This will do an arm_rebuild_hflags() if any of the bits in @mask
++ * correspond to TB flags bits cached in the hflags, unless @write_type
++ * is CPSRWriteRaw.
++ */
+ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+                 CPSRWriteType write_type);
+ 
+diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
+index 32b68ee302b..1dfcfd2d57b 100644
+--- a/linux-user/arm/signal.c
++++ b/linux-user/arm/signal.c
+@@ -289,7 +289,6 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
+     env->regs[14] = retcode;
+     env->regs[15] = handler & (thumb ? ~1 : ~3);
+     cpsr_write(env, cpsr, CPSR_IT | CPSR_T | CPSR_E, CPSRWriteByInstr);
+-    arm_rebuild_hflags(env);
+ 
+     return 0;
+ }
+@@ -547,7 +546,6 @@ restore_sigcontext(CPUARMState *env, struct target_sigcontext *sc)
+     __get_user(env->regs[15], &sc->arm_pc);
+     __get_user(cpsr, &sc->arm_cpsr);
+     cpsr_write(env, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
+-    arm_rebuild_hflags(env);
+ 
+     err |= !valid_user_regs(env);
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 201ecf8c67f..cdd6e0858fc 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9215,6 +9215,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+                 CPSRWriteType write_type)
+ {
+     uint32_t changed_daif;
++    bool rebuild_hflags = mask & (CPSR_M | CPSR_E | CPSR_IL);
+ 
+     if (mask & CPSR_NZCV) {
+         env->ZF = (~val) & CPSR_Z;
+@@ -9334,6 +9335,9 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+     }
+     mask &= ~CACHED_CPSR_BITS;
+     env->uncached_cpsr = (env->uncached_cpsr & ~mask) | (val & mask);
++    if (rebuild_hflags) {
++        arm_rebuild_hflags(env);
++    }
+ }
+ 
+ /* Sign/zero extend */
+-- 
+2.20.1
 

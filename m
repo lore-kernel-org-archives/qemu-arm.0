@@ -1,129 +1,93 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp535208lfg;
-        Tue, 17 Aug 2021 06:42:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyzX/o8wGSm3TDwT7acv48/fDA/EJcqPFMYbMmZskkCxsYC7498t+AMtZs5dC14mBzH3jqG
-X-Received: by 2002:a67:6d84:: with SMTP id i126mr2962029vsc.2.1629207767581;
-        Tue, 17 Aug 2021 06:42:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629207767; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp544150lfg;
+        Tue, 17 Aug 2021 06:54:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRG1Hmwmz2DC89biA7/PQ/gNv2eHn4JpvhdCApaVSlVhbJlsLgx9Xwi10Kx4p/l4K2pryL
+X-Received: by 2002:a67:7f53:: with SMTP id a80mr3001225vsd.13.1629208477280;
+        Tue, 17 Aug 2021 06:54:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629208477; cv=none;
         d=google.com; s=arc-20160816;
-        b=RrsoO/wfpxEsdttloIuECa2bzsGnGg9qqAjr+NTJ3geaHXatn0/ZM707r1JF2SLAZ9
-         68uYbnczP2inbV652MsH88pR2vwUaCbst7FJtCfoadMlvVkLuMsx7iiOV451efyrNbsq
-         5gJNo7EVkZHO6oCWdV/boQnYEwRitf5zuZbnY5wT2b09/mXy0Pt2/F1aainjXf6x+RX9
-         3CMOH0rYBxdUWML1ZxLhMiQp0AA7dHawAyiMYhENOuIawMywE02l2qe5T8QcmhL/NksI
-         xGoSsZSqmg/sJDNwHSxwaPYQ5XSrP5452/HmZUatdVeZ29TWxrU9CjSox8QGRrU+3pcn
-         vTCw==
+        b=W8ebQuRT2R6oWVvox2q4G1upGkvAFYWGOVGu98Y+2KCOdl9Yxk2/zwUuB3CQO17iwd
+         YqPGpD2gC4NwzsNpsOjkrbp1geHw5Usx4/2T0/APO5GmuEFfHFVTq+lKGPyc/7+qT92p
+         aDs+QwNsPu/Wr3V3R1MOVGubIe+ffNsmLwQiqsd+sGLhXEs4B0yWvzMkdQ7E9Dwvli2I
+         JG1sDTPIJZ4wufVfOxDnfcvljezcuSLvKRFyxY23ipQnD13AbmOw96cXfY6yNf4f5ZQo
+         2z2glAs0fUJFO4QY9LjIaKV6aF+IV5lvY+5GK7ZzYJezjyfVd0J14ZNzqW+01VMTHaCR
+         EhEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=oDqNSsdnUHRPHHMpK2HTyaEYbQzH/yLDOUFEq8H+JjU=;
-        b=p9fJWhyU6wQIEz0BUsAD/u/kN4Y721fs0uTynLVxAbUNNtD+nF5qOruEOSXV04VEpD
-         mJxqe6QHHMPGcaRZx/i3Lce5oQqiHJi/feTpNedur2hxXk0ZvYISawMiPPOELBD8eubS
-         F/wLtbj3kbKO8PAr3ICqGBnX42hcEKeHKZDwQ6FFzQb1t7Juz+5j3+8n+aOFgrLrms+d
-         MbEGl67hKshVc1HX32uOZcSOvdL9yDmg5jz8Q6Zatwr0S/YAYOh8ptmv0+5gGgHcIUyi
-         wLCjzBXGroslrdh1pd9YPXLTuOjNdAZg7oGizUZ/jF9fV9vK+z963THRq9Di7//E1kIj
-         mzpw==
+         :message-id:from:references:to:subject;
+        bh=6ZdOwtRDw0SOCBftjrmLnU1f4pp05luSvwkT0YlO0pQ=;
+        b=JsxHaXuIKu/cPx8DQm0hEDatS9Fnd5N7QMCOU9Xg7w7aSCYWo8jJ+H93Krs7HbVHW1
+         xLRbK/SdSoRW/grtInxYTJCK1aqf/nhJWR7Ai3CUkivAda6Auu5rWKIoB/96sdZOgmz2
+         eizex7jYo7TumYgoB9Hiar6Tn63sU76+TdT4qjAsSGVfxR1PwyG1Tyjw2exDcABlS9Q0
+         gZsEQl2mlRcFgUIf94HS77cV3qcJ/VHWc68JfB3+YVRes2Hh+dNv3U+TCNK0HHr6kzgu
+         A33GJz07rYjEuVXWRBVeOUvVS06LLrY0cMtN8h/JzMcfrtJJ79Qz5awun13s+UeYnEfL
+         JF+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z1Neipaa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7si1253696vsr.66.2021.08.17.06.42.47
+        by mx.google.com with ESMTPS id i1si1106869vko.91.2021.08.17.06.54.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Aug 2021 06:42:47 -0700 (PDT)
+        Tue, 17 Aug 2021 06:54:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z1Neipaa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35162 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:48214 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mFzMc-0006HX-Le
-	for alex.bennee@linaro.org; Tue, 17 Aug 2021 09:42:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37978)
+	id 1mFzY4-00077x-If
+	for alex.bennee@linaro.org; Tue, 17 Aug 2021 09:54:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mFzMR-0006EG-6g
- for qemu-arm@nongnu.org; Tue, 17 Aug 2021 09:42:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56665)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mFzXn-00076i-Vr; Tue, 17 Aug 2021 09:54:20 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:2287)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mFzMN-00085e-5P
- for qemu-arm@nongnu.org; Tue, 17 Aug 2021 09:42:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629207748;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oDqNSsdnUHRPHHMpK2HTyaEYbQzH/yLDOUFEq8H+JjU=;
- b=Z1Neipaa09dqdwhinEco5lXPZzr8ilx8/zZBgKBhRbLM3vxlUP2sCS+k92Nf0XEYGX7hip
- sfMX82GewM1pcjl1WgPZn9o32lSZgGZ26MWeLAHl/zvRhMIeXLZm5Yt+CfTJB9lOqO048T
- kSaWlLsYS/7wRfv7W/IjqhOq/jHG13U=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-413-snb-CHoWOk-hhyNomeNpeA-1; Tue, 17 Aug 2021 09:42:28 -0400
-X-MC-Unique: snb-CHoWOk-hhyNomeNpeA-1
-Received: by mail-ed1-f70.google.com with SMTP id
- ec47-20020a0564020d6fb02903be5e0a8cd2so10620303edb.0
- for <qemu-arm@nongnu.org>; Tue, 17 Aug 2021 06:42:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=oDqNSsdnUHRPHHMpK2HTyaEYbQzH/yLDOUFEq8H+JjU=;
- b=OUkt6jE4IJyLYKjlVPPpoEas/pdMfgma4zzhdyCqyYi5VLYeF15v6I+eLz/DTgAMY7
- uSrG5d+TQ+bxEtdtVCU2a78SxQRjZSi7mG3VP2jhbAB1XBfjh7W8mg9CjAcsPLtaxA0E
- z5Dwz2EUkgjfWFvZDL6yW9mmvEbSTIabZOORjOFkDVbTMacjyJ/tyzo5/3yQ4KXXXLXX
- Bha7jEl9q8dmWAUZFo1EE1Uat1kypKfhrrX6rCvGzJ/m/f58MQop5M59wSDTZLUwc+NV
- KpJGWF6ccvyEblnBJZIC0/ll0kIrA+k6hS3Izq/uUglKPL35BiZlPMkP0/Qk5yCEeS4L
- vLSQ==
-X-Gm-Message-State: AOAM5303yxwc1kIHutRZj4rG52C/LydfrfVbUA2VvoJoPWQToS9zqDiK
- sKO97Gm/q9RHOeSHAS0cxFwnLTlCKV4WaGMDxaOcVyENoEbtyhzHxy5Qt66F09pw6AhDJh4SI92
- yl9HZ5Hwd5FgFPGR8F6Q++iiJh4WBxEly7vDUsueMKlW1aUBXVEDdr51cLi2hk9fZlik=
-X-Received: by 2002:a17:906:378e:: with SMTP id
- n14mr3979162ejc.12.1629207746100; 
- Tue, 17 Aug 2021 06:42:26 -0700 (PDT)
-X-Received: by 2002:a17:906:378e:: with SMTP id
- n14mr3979124ejc.12.1629207745786; 
- Tue, 17 Aug 2021 06:42:25 -0700 (PDT)
-Received: from [192.168.43.95] ([37.173.36.144])
- by smtp.gmail.com with ESMTPSA id d16sm1096150edu.8.2021.08.17.06.42.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Aug 2021 06:42:25 -0700 (PDT)
-Subject: Re: [PATCH 4/6] hw/arm/virt: Remove device tree restriction for
- virtio-iommu
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20210810084505.2257983-1-jean-philippe@linaro.org>
- <20210810084505.2257983-5-jean-philippe@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <71dc152e-269b-fc32-e478-e2164008ff04@redhat.com>
-Date: Tue, 17 Aug 2021 15:42:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mFzXk-0007mv-Ov; Tue, 17 Aug 2021 09:54:19 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4GpsvD24zRz1CXkr;
+ Tue, 17 Aug 2021 21:53:44 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 17 Aug 2021 21:54:07 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Tue, 17 Aug 2021 21:54:06 +0800
+Subject: Re: [PATCH for-6.2 v5 3/5] hw/arm/virt: Add cpu-map to device tree
+To: Andrew Jones <drjones@redhat.com>
+References: <20210805123921.62540-1-wangyanan55@huawei.com>
+ <20210805123921.62540-4-wangyanan55@huawei.com>
+ <3bde66bd-d0ea-0960-b171-3bbd1990d977@huawei.com>
+ <20210817115120.kuo53uawx2o7hrhc@gator.home>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <eed9b40a-a09c-8481-6595-8a4b1efce84f@huawei.com>
+Date: Tue, 17 Aug 2021 21:54:05 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210810084505.2257983-5-jean-philippe@linaro.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20210817115120.kuo53uawx2o7hrhc@gator.home>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.961, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme718-chm.china.huawei.com (10.1.199.114) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
+X-Spam_score_int: -61
+X-Spam_score: -6.2
+X-Spam_bar: ------
+X-Spam_report: (-6.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.961,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -136,76 +100,199 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
- imammedo@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Salil Mehta <salil.mehta@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ wanghaibin.wang@huawei.com, Igor Mammedov <imammedo@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cVYi9v00RvKi
+X-TUID: tMjA0tFx+l1I
 
-Hi Jean,
 
-On 8/10/21 10:45 AM, Jean-Philippe Brucker wrote:
-> virtio-iommu is now supported with ACPI VIOT as well as device tree.
-> Remove the restriction that prevents from instantiating a virtio-iommu
-> device under ACPI.
+On 2021/8/17 19:51, Andrew Jones wrote:
+> On Tue, Aug 17, 2021 at 10:10:44AM +0800, wangyanan (Y) wrote:
+>> Hi,
+>> On 2021/8/5 20:39, Yanan Wang wrote:
+>>> From: Andrew Jones <drjones@redhat.com>
+>>>
+>>> Support device tree CPU topology descriptions.
+>>>
+>>> In accordance with the Devicetree Specification, the Linux Doc
+>>> "arm/cpus.yaml" requires that cpus and cpu nodes in the DT are
+>>> present. And we have already met the requirement by generating
+>>> /cpus/cpu@* nodes for members within ms->smp.cpus. Accordingly,
+>>> we should also create subnodes in cpu-map for the present cpus,
+>>> each of which relates to an unique cpu node.
+>>>
+>>> The Linux Doc "cpu/cpu-topology.txt" states that the hierarchy
+>>> of CPUs in a SMP system is defined through four entities and
+>>> they are socket/cluster/core/thread. It is also required that
+>>> a socket node's child nodes must be one or more cluster nodes.
+>>> Given that currently we are only provided with information of
+>>> socket/core/thread, we assume there is one cluster child node
+>>> in each socket node when creating cpu-map.
+>>>
+>>> Signed-off-by: Andrew Jones <drjones@redhat.com>
+>>> Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
+>>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+>>> ---
+>>>    hw/arm/virt.c | 59 ++++++++++++++++++++++++++++++++++++++++++---------
+>>>    1 file changed, 49 insertions(+), 10 deletions(-)
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 82f2eba6bd..d1e294be95 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -350,20 +350,21 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>>>        int cpu;
+>>>        int addr_cells = 1;
+>>>        const MachineState *ms = MACHINE(vms);
+>>> +    const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>>>        int smp_cpus = ms->smp.cpus;
+>>>        /*
+>>> -     * From Documentation/devicetree/bindings/arm/cpus.txt
+>>> -     *  On ARM v8 64-bit systems value should be set to 2,
+>>> -     *  that corresponds to the MPIDR_EL1 register size.
+>>> -     *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+>>> -     *  in the system, #address-cells can be set to 1, since
+>>> -     *  MPIDR_EL1[63:32] bits are not used for CPUs
+>>> -     *  identification.
+>>> +     * See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+>>> +     * On ARM v8 64-bit systems value should be set to 2,
+>>> +     * that corresponds to the MPIDR_EL1 register size.
+>>> +     * If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+>>> +     * in the system, #address-cells can be set to 1, since
+>>> +     * MPIDR_EL1[63:32] bits are not used for CPUs
+>>> +     * identification.
+>>>         *
+>>> -     *  Here we actually don't know whether our system is 32- or 64-bit one.
+>>> -     *  The simplest way to go is to examine affinity IDs of all our CPUs. If
+>>> -     *  at least one of them has Aff3 populated, we set #address-cells to 2.
+>>> +     * Here we actually don't know whether our system is 32- or 64-bit one.
+>>> +     * The simplest way to go is to examine affinity IDs of all our CPUs. If
+>>> +     * at least one of them has Aff3 populated, we set #address-cells to 2.
+>>>         */
+>>>        for (cpu = 0; cpu < smp_cpus; cpu++) {
+>>>            ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
+>>> @@ -406,8 +407,46 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>>>                    ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+>>>            }
+>>> +        if (!vmc->no_cpu_topology) {
+>>> +            qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle",
+>>> +                                  qemu_fdt_alloc_phandle(ms->fdt));
+>>> +        }
+>>> +
+>>>            g_free(nodename);
+>>>        }
+>>> +
+>>> +    if (!vmc->no_cpu_topology) {
+>>> +        /*
+>>> +         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
+>>> +         * In a SMP system, the hierarchy of CPUs is defined through four
+>>> +         * entities that are used to describe the layout of physical CPUs
+>>> +         * in the system: socket/cluster/core/thread.
+>>> +         */
+>>> +        qemu_fdt_add_subnode(ms->fdt, "/cpus/cpu-map");
+>>> +
+>>> +        for (cpu = smp_cpus - 1; cpu >= 0; cpu--) {
+>>> +            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
+>>> +            char *map_path;
+>>> +
+>>> +            if (ms->smp.threads > 1) {
+>>> +                map_path = g_strdup_printf(
+>>> +                    "/cpus/cpu-map/socket%d/cluster0/core%d/thread%d",
+>>> +                    cpu / (ms->smp.cores * ms->smp.threads),
+>>> +                    (cpu / ms->smp.threads) % ms->smp.cores,
+>>> +                    cpu % ms->smp.threads);
+>> It seems that there is some discrepancy between the documentation
+>> (Documentation/devicetree/bindings/cpu/cpu-topology.txt) and the
+>> actual implementation of DT topology parser for ARM64
+>> (function parse_dt_topology() in drivers/base/arch_topology.c).
+>>
+>> The doc says the cpu-map node's child nodes can be:
+>>      - one or more cluster nodes or
+>>      - one or more socket nodes in a multi-socket system
+>> which means a cpu-map can be defined as two formats such as:
+>> 1) cpu-map
+>>                     socket0
+>>                                  cluster0
+>>                                               core0
+>>                                               core1
+>>                                  cluster1
+>>                                               core0
+>>                                               core1
+>>                     socket1
+>>                                  cluster0
+>>                                               core0
+>>                                               core1
+>>                                  cluster1
+>>                                               core0
+>>                                               core1
+>>
+>> 2) cpu-map
+>>                     cluster0
+>>                                  cluster0
+>>                                               core0
+>>                                               core1
+>>                                  cluster1
+>>                                               core0
+>>                                               core1
+>>                     cluster1
+>>                                  cluster0
+>>                                               core0
+>>                                               core1
+>>                                  cluster1
+>>                                               core0
+>>                                               core1
+>>
+>> But current parser only assumes that there are nested clusters within
+>> cpu-map and is unaware of socket, the parser also ignore any information
+>> about the nesting of clusters and present the scheduler with a flat list of
+>> them. So based on current parser, we will get 4 packages (sockets) totally,
+>> 2 cores per package, 1 threads per core from 2), but will get nothing
+>> useful from 1).
+>>
+>> I think the ARM64 kernel DT parser should be optimized so that it's
+>> also aware of sockets and can parse both formats of cpu-map. But
+>> before this, I think we still have to build the cpu-map in format 2) if
+>> we hope to describe topology successfully through DT. :)
+> I would stick to implementing this per the documentation and as similarly
+> to the ACPI version as possible. I doubt there will be many cases where a
+> mach-virt VM is launched with a complex topology description and with DT
+> instead of ACPI anyway. And, if there is a use for that, then the Linux
+> parser needs to be fixed to match the documentation.
+Thanks for the suggestion!
+
+I agree at this point. We may need to keep consistence with the Doc.
+The guest kernel should try to enure itself can parse both cpu-map
+formats and should also accept the result if it can not get anything
+useful from a well defined cpu-map.
+
+Thanks,
+Yanan
+.
+> Thanks,
+> drew
 >
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
->  hw/arm/virt.c                | 10 ++--------
->  hw/virtio/virtio-iommu-pci.c |  7 -------
->  2 files changed, 2 insertions(+), 15 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 81eda46b0b..b4598d3fe6 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2551,16 +2551,10 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->      MachineClass *mc = MACHINE_GET_CLASS(machine);
->  
->      if (device_is_dynamic_sysbus(mc, dev) ||
-> -       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
-> +        object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
-> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->          return HOTPLUG_HANDLER(machine);
->      }
-> -    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-> -        VirtMachineState *vms = VIRT_MACHINE(machine);
-> -
-> -        if (!vms->bootinfo.firmware_loaded || !virt_is_acpi_enabled(vms)) {
-> -            return HOTPLUG_HANDLER(machine);
-> -        }
-> -    }
->      return NULL;
->  }
->  
-> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-> index 770c286be7..f30eb16cbf 100644
-> --- a/hw/virtio/virtio-iommu-pci.c
-> +++ b/hw/virtio/virtio-iommu-pci.c
-> @@ -48,16 +48,9 @@ static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
->      VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
->  
->      if (!qdev_get_machine_hotplug_handler(DEVICE(vpci_dev))) {
-> -        MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
-> -
-> -        error_setg(errp,
-> -                   "%s machine fails to create iommu-map device tree bindings",
-> -                   mc->name);
->          error_append_hint(errp,
->                            "Check your machine implements a hotplug handler "
->                            "for the virtio-iommu-pci device\n");
-> -        error_append_hint(errp, "Check the guest is booted without FW or with "
-> -                          "-no-acpi\n");
-We may check the vms->iommu is not already set to something else (to
-VIRT_IOMMU_SMMUV3 for instance).
-
-Thanks
-
-Eric
->          return;
->      }
->      for (int i = 0; i < s->nb_reserved_regions; i++) {
+>> Thanks,
+>> Yanan
+>> .
+>>> +            } else {
+>>> +                map_path = g_strdup_printf(
+>>> +                    "/cpus/cpu-map/socket%d/cluster0/core%d",
+>>> +                    cpu / ms->smp.cores,
+>>> +                    cpu % ms->smp.cores);
+>>> +            }
+>>> +            qemu_fdt_add_path(ms->fdt, map_path);
+>>> +            qemu_fdt_setprop_phandle(ms->fdt, map_path, "cpu", cpu_path);
+>>> +
+>>> +            g_free(map_path);
+>>> +            g_free(cpu_path);
+>>> +        }
+>>> +    }
+>>>    }
+>>>    static void fdt_add_its_gic_node(VirtMachineState *vms)
+> .
 

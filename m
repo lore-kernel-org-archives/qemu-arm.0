@@ -1,90 +1,90 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp356714lfg;
-        Tue, 17 Aug 2021 02:46:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJE8PJOPEwHkt56f2W7auP9nSyLVEJopyF9h1HvrGJmj4Tphs92Jnk0tiU/sEGpk+DT9h2
-X-Received: by 2002:a02:7312:: with SMTP id y18mr2102668jab.129.1629193580919;
-        Tue, 17 Aug 2021 02:46:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629193580; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp364940lfg;
+        Tue, 17 Aug 2021 03:00:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwZAFcKsFEfAuJu5MfR4JKMeh03uAbjo6xZz4f7Y7m27YeA23t3kg7SbNbb2bh+jZoaeI/N
+X-Received: by 2002:a1f:1fcb:: with SMTP id f194mr1947229vkf.18.1629194435671;
+        Tue, 17 Aug 2021 03:00:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629194435; cv=none;
         d=google.com; s=arc-20160816;
-        b=MMx/hCRy3R4z7c189kfVNOJVmLYiZ9EQAnN0U1jCD0dqCORkKdMbqC5EYdBrOF+D7t
-         xS0B7eTObm/4RVDFdoYfnKvqm0c84T+0f9wMzRZ93VSBZzkgo3JdN5SlZLRxBopzgva8
-         YtkovPGNqFnbZPBKUHg1tsXzjsIYJ7K/g3pGagrtJpO6hi4ienU48xeTfMVtVLf2Nf/0
-         eroLcvcsNMIULh6OvRc6NDa/P6Z9/OT+ZTjZ3npd3jp3hK9V6TR17/q/qrHCUw1oGuXw
-         /hnNJrzJIdbqXUybxEIPOvIHicnyBknWSh+HIfx//yzI4nQdGhlL+skz+mrYBLywwg4p
-         hhyA==
+        b=JDA+yeF6aXlIXaxwAWdi+xMFAFPJZz+2MEnpWBco6IpB+wvFUFH01iSR0v/tWmfzA0
+         qowmre0vgDe5cRurBq4NGaZbkxQL9pZMeckejjyqPWfdHkIGkUWKHRAjFSU7DuXsl4Wl
+         GB68OvSSe3ZAF+lAsxsJaa1tlONCv3riiYQbGeFFRovA+26V0IItSSwrrGUsDHKLMTwk
+         0J2p5WinJ+KTeqh2U9J1XKlYn5Z452RdNzKQjHAkpGYL210aW/8vLLtdaL+XCPJi8Gtf
+         v+mh5arwfxRSyCi3mMBsORmtphUyplETsPUurR/vW7yJgoonq0dBsXdXIsozETxXoYjI
+         +JBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=CViNIE5QNPJQkmjNcsvtBZ6czIIwa9Fny/6BXD0hwaY=;
-        b=Y9CTrPQaJJCdd3bU9liOZkgvZSh8Ye+HpVTVh0QXw7RE1E3ZPE/ai8Q1oxOq77drun
-         4owbhb1ieC/P2lwIUPKV5F+6dQK+lR9Lacy3W4RBFQyjKqbM4rtElu2Tufu6wEjzETXk
-         Pa5VwolTlAIjJiJzV3vpm/X105VQJS5zf/1qZ+bqXAEtizeJdmHuv1jD+smlqGIszOIc
-         qk2aewHMzbc0eOmb/QslXsmd/1MfoID470PSTIIS4hpuXVZwJ1eLOx+SHFbA1YbzrTtF
-         SgIhysnO4t8XYGwKQdh2m77+W5DKKm3QTyXhzJNa8wgOoJ4BhazZDSxxQeFbjEjGC6Xn
-         pVOg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=cM6Sf5OTkdz5rNX48R+XN99E7FX2KbQEoavqHHnxdPg=;
+        b=mIhGVfgBaDXKsA1Mde2ycZsF5z8EocJlxw3FQMP/vpqVv+tsGcfxojptI9u50BklLB
+         pb4IKyPo3Kf9+k5XyudJJOR9w2QSyEyf7ODDAJYfWKjgRqBrT34aGHsFc3iy3ykXxZ7m
+         yHVzODBBJpKKRPftXB7E5ayAUgLgstaTiF90Q/xWcGGPp/2HsF0Me63CQ1x8m/PiKP/O
+         4rN0wpvz8UOu/2Vz4xlN7JYmKByWm5kVtFihvBeBpcH2o/C6UTrXpP9Jw5wwyvfYdzA9
+         uAIWPIy7FRyF9FmudD4drbik8hCYN8A0wpGu6eEQCI9OutVccoR/HkM45eC3O5q1RCRA
+         sFMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=SdxVt3Mq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=6yKiE1yy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1si1780215ilj.117.2021.08.17.02.46.20
+        by mx.google.com with ESMTPS id 69si602854uao.242.2021.08.17.03.00.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Aug 2021 02:46:20 -0700 (PDT)
+        Tue, 17 Aug 2021 03:00:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=SdxVt3Mq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:32956 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=6yKiE1yy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42816 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mFvfo-0001IB-7Z
-	for alex.bennee@linaro.org; Tue, 17 Aug 2021 05:46:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43608)
+	id 1mFvta-0008Nb-LS
+	for alex.bennee@linaro.org; Tue, 17 Aug 2021 06:00:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1mFvfa-0001GR-Hp; Tue, 17 Aug 2021 05:46:07 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:54852)
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1mFvsL-0008MF-Ln; Tue, 17 Aug 2021 05:59:19 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:52178)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1mFvfX-0005mI-TH; Tue, 17 Aug 2021 05:46:06 -0400
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 3851AC6019D;
- Tue, 17 Aug 2021 11:46:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1629193561;
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1mFvsJ-0000Vy-4F; Tue, 17 Aug 2021 05:59:17 -0400
+Received: from [192.168.15.170] (unknown [195.68.53.70])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 2AFB92089E;
+ Tue, 17 Aug 2021 09:59:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1629194348;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CViNIE5QNPJQkmjNcsvtBZ6czIIwa9Fny/6BXD0hwaY=;
- b=SdxVt3MqjL1WLgl6ysSVRoziQOBGQ3ODmA7wJZNZrbai3Ml/QeDiRhwW/bbz0CoVuubkVF
- dCnRVKCj2waVTavnjgWmrN/AmvvxlA1ML4szHiyB2dNT9XXGtCo21sHHE+2t51tCQgeehV
- TqIyiNR+GpWDpkiWbV424ENDiBPAYQnaNi0aW9h4uGUOkDvh1kwt3ldhgZpKVm37mZ1c9g
- XlyQhYCdLN4vFApdHeu99/DpmMM4gjC/rkQ4K/RSVYi74sGTSZFsjW2J8VRN8/1X6NTMpJ
- LltmUgacraMMlrROd8q5Eb+gGMLRq9AxgehQOdL0Tj85WWt1kNm50COFlyjv9w==
-Date: Tue, 17 Aug 2021 11:48:13 +0200
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH for-6.2 14/25] hw/arm/stm32vldiscovery: Delete trailing
- blank line
-Message-ID: <20210817094813.wkkouxj3zi446z7q@sekoia-pc.home.lmichel.fr>
+ bh=cM6Sf5OTkdz5rNX48R+XN99E7FX2KbQEoavqHHnxdPg=;
+ b=6yKiE1yyIa1+qsgurh6UVEWrtHLs32IolbSDdIFEO056D/m15jsQa2mHKVlBA0BhzaPgpO
+ 1KRa/7CAEK32MgEiGQVYJzPu4JBcoO5JsTP4GC71ypmiZw044WWcaqhCP20s4o7dpyApJt
+ G/CR0SMgAMFLYh3btA1TeIWbYpoNnmA=
+Subject: Re: [PATCH for-6.2 09/25] clock: Provide builtin multiplier/divider
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-15-peter.maydell@linaro.org>
+ <20210812093356.1946-10-peter.maydell@linaro.org>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <37605028-f1c7-93d7-ce51-dc78f4ed8d8b@greensocs.com>
+Date: Tue, 17 Aug 2021 11:59:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210812093356.1946-15-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210812093356.1946-10-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=5.135.226.135;
+ envelope-from=damien.hedde@greensocs.com; helo=beetle.greensocs.com
+X-Spam_score_int: -57
+X-Spam_score: -5.8
+X-Spam_bar: -----
+X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.71,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,36 +97,239 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
+Cc: Alexandre Iooss <erdnaxe@crans.org>,
+ Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
+ Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zfkKi45EnVWP
+X-TUID: lGJsPtH7BzmK
 
-On 10:33 Thu 12 Aug     , Peter Maydell wrote:
-> Delete the trailing blank line at the end of the source file.
+
+
+On 8/12/21 11:33 AM, Peter Maydell wrote:
+> It is quite common for a clock tree to involve possibly programmable
+> clock multipliers or dividers, where the frequency of a clock is for
+> instance divided by 8 to produce a slower clock to feed to a
+> particular device.
+> 
+> Currently we provide no convenient mechanism for modelling this.  You
+> can implement it by having an input Clock and an output Clock, and
+> manually setting the period of the output clock in the period-changed
+> callback of the input clock, but that's quite clunky.
+> 
+> This patch adds support in the Clock objects themselves for setting a
+> multiplier or divider.  The effect of setting this on a clock is that
+> when the clock's period is changed, all the children of the clock are
+> set to period * multiplier / divider, rather than being set to the
+> same period as the parent clock.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-
 > ---
->  hw/arm/stm32vldiscovery.c | 1 -
->  1 file changed, 1 deletion(-)
+>  docs/devel/clocks.rst   | 23 +++++++++++++++++++++++
+>  include/hw/clock.h      | 29 +++++++++++++++++++++++++++++
+>  hw/core/clock-vmstate.c | 24 +++++++++++++++++++++++-
+>  hw/core/clock.c         | 29 +++++++++++++++++++++++++----
+>  4 files changed, 100 insertions(+), 5 deletions(-)
 > 
-> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
-> index 07e401a818d..9b79004703b 100644
-> --- a/hw/arm/stm32vldiscovery.c
-> +++ b/hw/arm/stm32vldiscovery.c
-> @@ -65,4 +65,3 @@ static void stm32vldiscovery_machine_init(MachineClass *mc)
+> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+> index 956bd147ea0..430fbd842e5 100644
+> --- a/docs/devel/clocks.rst
+> +++ b/docs/devel/clocks.rst
+> @@ -260,6 +260,29 @@ clocks get the new clock period value: *Clock 2*, *Clock 3* and *Clock 4*.
+>  It is not possible to disconnect a clock or to change the clock connection
+>  after it is connected.
+>  
+> +Clock multiplier and divider settings
+> +-------------------------------------
+> +
+> +By default, when clocks are connected together, the child
+> +clocks run with the same period as their source (parent) clock.
+> +The Clock API supports a built-in period multiplier/divider
+> +mechanism so you can configure a clock to make its children
+> +run at a different period from its own. If you call the
+> +``clock_set_mul_div()`` function you can specify the clock's
+> +multiplier and divider values. The children of that clock
+> +will all run with a period of ``parent_period * multiplier / divider``.
+> +For instance, if the clock has a frequency of 8MHz and you set its
+> +multiplier to 2 and its divider to 3, the child clocks will run
+> +at 12MHz.
+> +
+> +You can change the multiplier and divider of a clock at runtime,
+> +so you can use this to model clock controller devices which
+> +have guest-programmable frequency multipliers or dividers.
+> +
+> +Note that ``clock_set_mul_div()`` does not automatically call
+> +``clock_propagate()``. If you make a runtime change to the
+> +multiplier or divider you must call clock_propagate() yourself.a
+> +
+>  Unconnected input clocks
+>  ------------------------
+>  
+> diff --git a/include/hw/clock.h b/include/hw/clock.h
+> index a7187eab95e..11f67fb9701 100644
+> --- a/include/hw/clock.h
+> +++ b/include/hw/clock.h
+> @@ -81,6 +81,10 @@ struct Clock {
+>      void *callback_opaque;
+>      unsigned int callback_events;
+>  
+> +    /* Ratio of the parent clock to run the child clocks at */
+> +    uint32_t multiplier;
+> +    uint32_t divider;
+> +
+>      /* Clocks are organized in a clock tree */
+>      Clock *source;
+>      QLIST_HEAD(, Clock) children;
+> @@ -350,4 +354,29 @@ static inline bool clock_is_enabled(const Clock *clk)
+>   */
+>  char *clock_display_freq(Clock *clk);
+>  
+> +/**
+> + * clock_set_mul_div: set multiplier/divider for child clocks
+> + * @clk: clock
+> + * @multiplier: multiplier value
+> + * @divider: divider value
+> + *
+> + * By default, a Clock's children will all run with the same period
+> + * as their parent. This function allows you to adjust the multiplier
+> + * and divider used to derive the child clock frequency.
+> + * For example, setting a multiplier of 2 and a divider of 3
+> + * will run child clocks with a period 2/3 of the parent clock,
+> + * so if the parent clock is an 8MHz clock the children will
+> + * be 12MHz.
+> + *
+> + * Setting the multiplier to 0 will stop the child clocks.
+> + * Setting the divider to 0 is a programming error (diagnosed with
+> + * an assertion failure).
+> + * Setting a multiplier value that results in the child period
+> + * overflowing is not diagnosed.
+> + *
+> + * Note that this function does not call clock_propagate(); the
+> + * caller should do that if necessary.
+> + */
+> +void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider);
+> +
+>  #endif /* QEMU_HW_CLOCK_H */
+> diff --git a/hw/core/clock-vmstate.c b/hw/core/clock-vmstate.c
+> index 260b13fc2c8..07bb45d7ed4 100644
+> --- a/hw/core/clock-vmstate.c
+> +++ b/hw/core/clock-vmstate.c
+> @@ -14,6 +14,24 @@
+>  #include "migration/vmstate.h"
+>  #include "hw/clock.h"
+>  
+> +static bool muldiv_needed(void *opaque)
+> +{
+> +    Clock *clk = opaque;
+> +
+> +    return clk->multiplier != 1 || clk->divider != 1;
+> +}
+> +
+> +const VMStateDescription vmstate_muldiv = {
+> +    .name = "clock/muldiv",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = muldiv_needed,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(multiplier, Clock),
+> +        VMSTATE_UINT32(divider, Clock),
+> +    },
+> +};
+> +
+>  const VMStateDescription vmstate_clock = {
+>      .name = "clock",
+>      .version_id = 0,
+> @@ -21,5 +39,9 @@ const VMStateDescription vmstate_clock = {
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT64(period, Clock),
+>          VMSTATE_END_OF_LIST()
+> -    }
+> +    },
+> +    .subsections = (const VMStateDescription*[]) {
+> +        &vmstate_muldiv,
+> +        NULL
+> +    },
+>  };
+> diff --git a/hw/core/clock.c b/hw/core/clock.c
+> index fc5a99683f8..c371b9e977a 100644
+> --- a/hw/core/clock.c
+> +++ b/hw/core/clock.c
+> @@ -64,6 +64,15 @@ bool clock_set(Clock *clk, uint64_t period)
+>      return true;
 >  }
 >  
->  DEFINE_MACHINE("stm32vldiscovery", stm32vldiscovery_machine_init)
-> -
-> -- 
-> 2.20.1
+> +static uint64_t clock_get_child_period(Clock *clk)
+> +{
+> +    /*
+> +     * Return the period to be used for child clocks, which is the parent
+> +     * clock period adjusted for for multiplier and divider effects.
+> +     */
+> +    return muldiv64(clk->period, clk->multiplier, clk->divider);
+> +}
+> +
+>  static void clock_call_callback(Clock *clk, ClockEvent event)
+>  {
+>      /*
+> @@ -78,15 +87,16 @@ static void clock_call_callback(Clock *clk, ClockEvent event)
+>  static void clock_propagate_period(Clock *clk, bool call_callbacks)
+>  {
+>      Clock *child;
+> +    uint64_t child_period = clock_get_child_period(clk);
+>  
+>      QLIST_FOREACH(child, &clk->children, sibling) {
+> -        if (child->period != clk->period) {
+> +        if (child->period != child_period) {
+>              if (call_callbacks) {
+>                  clock_call_callback(child, ClockPreUpdate);
+>              }
+> -            child->period = clk->period;
+> +            child->period = child_period;
+>              trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
+> -                               CLOCK_PERIOD_TO_HZ(clk->period),
+> +                               CLOCK_PERIOD_TO_HZ(child->period),
+>                                 call_callbacks);
+>              if (call_callbacks) {
+>                  clock_call_callback(child, ClockUpdate);
+> @@ -110,7 +120,7 @@ void clock_set_source(Clock *clk, Clock *src)
+>  
+>      trace_clock_set_source(CLOCK_PATH(clk), CLOCK_PATH(src));
+>  
+> -    clk->period = src->period;
+> +    clk->period = clock_get_child_period(src);
+>      QLIST_INSERT_HEAD(&src->children, clk, sibling);
+>      clk->source = src;
+>      clock_propagate_period(clk, false);
+> @@ -133,10 +143,21 @@ char *clock_display_freq(Clock *clk)
+>      return freq_to_str(clock_get_hz(clk));
+>  }
+>  
+> +void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider)
+> +{
+> +    assert(divider != 0);
+> +
+> +    clk->multiplier = multiplier;
+> +    clk->divider = divider;
+> +}
+> +
+>  static void clock_initfn(Object *obj)
+>  {
+>      Clock *clk = CLOCK(obj);
+>  
+> +    clk->multiplier = 1;
+> +    clk->divider = 1;
+> +
+>      QLIST_INIT(&clk->children);
+>  }
+>  
 > 
 
--- 
+Regarding migration, you made the vmstate_muldiv subsection optional. I
+suppose it is to keep backward migration working in case of simple
+mul=1,div=1 clocks.
+
+Do we need to ensure multiplier and divider fields are set to 1 upon
+receiving a state if the vmstate_muldiv subsection is absent ? I
+remember there are post_load() tricks to achieve that.
+
+Thanks,
+Damien

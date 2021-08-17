@@ -1,82 +1,81 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp352964lfg;
-        Tue, 17 Aug 2021 02:39:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3HIZxpa7uzYCUkLct145IllugCCTHxH9dLoaN1BdVFJXvIr9/6AQh+d+A/OCfKg5kZ3+3
-X-Received: by 2002:ac8:5dd1:: with SMTP id e17mr2227150qtx.270.1629193190448;
-        Tue, 17 Aug 2021 02:39:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629193190; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp355336lfg;
+        Tue, 17 Aug 2021 02:43:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyW/Gm0lyeCMLqLQ2Y7iG1JNJEo/R5cl16HsrMyuZXJBWjljfLQxbfoaHq+vzE0ibamNjrX
+X-Received: by 2002:a05:620a:1294:: with SMTP id w20mr2776535qki.113.1629193432258;
+        Tue, 17 Aug 2021 02:43:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629193432; cv=none;
         d=google.com; s=arc-20160816;
-        b=RiDGrvAvqqEnurcMPfr9rLEc5suqe8uO4Y2cMH+yQBJ9yeTaX/0r7i4GtwBZgLZQLH
-         uLLVLAoCzTX2mJKYU9AIAkKhaIYhNjyZVe92PXucHFwh4fzJishrsxohuWJN5SyPJ2B9
-         wtxGSmUzU7y/RIc9/l77j5j4aoj0v8cYSd3jMKWXM0wMQVmxUCsT1d85x9jMEYW1pQDv
-         pBe+gEGGCM1nFP9eG5SlpqGWDNmqzuiBjlABns2aoLE1rfI4GqNY5VzMCkP/rljtSrrU
-         elA9TsJgutsj1u6cjRlG1tQR/rRqOVIR43kg0+vAHzkN+xroiN9y7J7h7iKvCsLU6ZwC
-         ldnA==
+        b=phn3skSw/lKwVSv016ZenAqBRInXSzfkO3xlSQFszzJICy6lT/rwxY69Y1KWlMEcjX
+         BEmK3TogPX+TfzkenmCCrBeylpmGyx+YWCeH67700+nC1DKQ3xut/Egu0mA0s1tc2i7Y
+         CWpfdmY+Ym5AYwiiSm/RN+6DmqQZuwbhJmy3h0GXB/Njd62uBkSgSW9D/iMcdi1KpNpV
+         f46mvDT1Dg87q4Yw027cRGrH3a0vemdHghIV5wjutYBXSb9/WV7v3GvkTjo3oftY+uZX
+         9ImtKjoQmHywYDHe2C8XvN00P6KXAJKfzUWh01Ox8ikqkMbVteYBwdCLf73sPFCTMOYs
+         dAJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=esSYkqaqvpLesv055491I1Ka52ygEF+D2tI2npKS0OE=;
-        b=RTFetv7brBogIULyZrv6tyCYkXGvufCvfnqXddoZrtIwwziYjyyUrp3Y896GD1wjsh
-         rdxCerqYbek0WhiNsn6OIHYRdbE7Np333Cx4M24LiIt/tLYnYRpou3LH23a20dBF8SzQ
-         Hu79W8S2woJYOudxl5DRPkKpNk70N69CpIEaV0jT0KiIocarDIie4LdlY7ocsSGBWZIB
-         5PbwoLAyV6oc5AWbe1BEiT3gF0257grMcFCQtw9VVohBOWZhBCgvR4kwEeDexQvGSL1n
-         Mirhv9Sv/FfwWacMNOflnaRw6+3VAhX83D5awMLLeIdE74iYp3reQszFWVAfCJ6yRyoE
-         qsYg==
+        bh=DwVJwkTnh0gjW+8d8UYLTpWePPbJq1pe/KSA4pXTc8s=;
+        b=KJ83JO8LUCKPfJyn2o4VY8R6+DeCUCBY6Uvc2QIZ7N+YJDkxn2BLdzWZ7WLTv6Izkj
+         t8NzqoGNPlvebpBtWNCzkhk1p9zIaParHo1Uf6iEcAfmo2Y9JWEo4KD3wRw/ytC4ts6Z
+         T6vnKz8BtAlaTorBPg5QCGWviC5MTJtfIdkdT/Zqq3QohmcJmHRdrjKOLsNZqH4amvmr
+         SM88jSX8m7R+8i27J+q0BOkCcMkbmYdc/rPuuGeLUxRfwamaS06ZfY8Wnhg3SoRfJoj3
+         rJslmCnuh1SLzW9AWm+vHFYBJYIpgHDtDZw8j+KRdX/XIWlOUYLziVp153coEPH/g7ph
+         EZrw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=HdIPAn2L;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="VyR+UTe/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi32si1292939qkb.150.2021.08.17.02.39.50
+        by mx.google.com with ESMTPS id w2si1452813qkp.327.2021.08.17.02.43.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Aug 2021 02:39:50 -0700 (PDT)
+        Tue, 17 Aug 2021 02:43:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=HdIPAn2L;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="VyR+UTe/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:52084 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55184 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mFvZV-0003Du-Nv
-	for alex.bennee@linaro.org; Tue, 17 Aug 2021 05:39:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42378)
+	id 1mFvdP-0005ZQ-Fw
+	for alex.bennee@linaro.org; Tue, 17 Aug 2021 05:43:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1mFvYx-0003CR-Nz; Tue, 17 Aug 2021 05:39:15 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:54506)
+ id 1mFvdD-0005XR-7P; Tue, 17 Aug 2021 05:43:39 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:54690)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1mFvYv-0008E6-Ac; Tue, 17 Aug 2021 05:39:15 -0400
+ id 1mFvdB-0003lm-BN; Tue, 17 Aug 2021 05:43:39 -0400
 Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 685C6C6019D;
- Tue, 17 Aug 2021 11:39:10 +0200 (CEST)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 5E788C6019D;
+ Tue, 17 Aug 2021 11:43:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1629193150;
+ t=1629193414;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=esSYkqaqvpLesv055491I1Ka52ygEF+D2tI2npKS0OE=;
- b=HdIPAn2LCtR/UTIfO0czVTNNS+AVA6aUhhgBK+JHxqKGhC2CEsJ6gupppPNkrgHiJR4y6N
- ci29I17OY7WVY33uC6Dg745DlYU2Q4I5o2jxo+ZIvQeyWu4FXBy8iW/Q4ea8O5pw6fo0aU
- ibVoLVnQLWmiarB7pe+s5fP6JKJGodHeP2JCo2YZGS8pPXhxeY7FYLrZbSTOqk9x8gKID9
- tTQ7WhPdC73PvJkaaVY23YVO4t646fqAwbPdRHKWt2jDaE/vhIutm8hNR5OmuIDTW7SQWd
- Gugzo7wAw5lkCTvgr4pruMdRdyJVXJRHdr0GmImTD7Ie3z1Eyg5m/ktr1Sbs3w==
-Date: Tue, 17 Aug 2021 11:41:22 +0200
+ bh=DwVJwkTnh0gjW+8d8UYLTpWePPbJq1pe/KSA4pXTc8s=;
+ b=VyR+UTe/VhI5XNsJJeXD6EEfjsOBfHCcbQ3PEhdUtKriqpxQvc5ZkLT1z7+qkBG/VceUaG
+ mQuXxWZb6a+3JFbwX45rLUOew7szObpKxb4sNHJqVUN/Edok0zTfHViMuOm6drhc9ZUkzw
+ n1i1LbVctY8GaYMLEO4w/S+yo460FG5mzJctm9JexAHIIo9n7YzM8D+JQ7CtlntEHWvgcS
+ 79OiklcrBa1iVTfl7eK/gU5lSz2ZKFaC5xqStDOLERkVL7BEhwVAlq6oJ1zxCBeU5Ppgnf
+ r5V/YZViptETY3xB0TM0CBG0el4WQC7swI5chZefQ4kRwoRXGCnyiJOdrguiVA==
+Date: Tue, 17 Aug 2021 11:45:46 +0200
 From: Luc Michel <luc@lmichel.fr>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH for-6.2 10/25] hw/arm: Don't allocate separate
- MemoryRegions in stm32 SoC realize
-Message-ID: <20210817094122.tirpikovtvhhhtyk@sekoia-pc.home.lmichel.fr>
+Subject: Re: [PATCH for-6.2 11/25] hw/arm/stm32f100: Wire up sysclk and refclk
+Message-ID: <20210817094546.zz6qffv7uplu2nb2@sekoia-pc.home.lmichel.fr>
 References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-11-peter.maydell@linaro.org>
+ <20210812093356.1946-12-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20210812093356.1946-11-peter.maydell@linaro.org>
+In-Reply-To: <20210812093356.1946-12-peter.maydell@linaro.org>
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
  helo=pharaoh.lmichel.fr
 X-Spam_score_int: -20
@@ -103,129 +102,151 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rdoRoz/wg1Wn
+X-TUID: tpcF3CykhbjM
 
 On 10:33 Thu 12 Aug     , Peter Maydell wrote:
-> In the realize methods of the stm32f100 and stm32f205 SoC objects, we
-> call g_new() to create new MemoryRegion objjects for the sram, flash,
-> and flash_alias.  This is unnecessary (and leaves open the
-> possibility of leaking the allocations if we exit from realize with
-> an error).  Make these MemoryRegions member fields of the device
-> state struct instead, as stm32f405 already does.
+> Wire up the sysclk and refclk for the stm32f100 SoC.  This SoC always
+> runs the systick refclk at 1/8 the frequency of the main CPU clock,
+> so the board code only needs to provide a single sysclk clock.
+> 
+> Because there is only one board using this SoC, we convert the SoC
+> and the board together, rather than splitting it into "add clock to
+> SoC; connect clock in board; add error check in SoC code that clock
+> is wired up".
+> 
+> When the systick device starts honouring its clock inputs, this will
+> fix an emulation inaccuracy in the stm32vldiscovery board where the
+> systick reference clock was running at 1MHz rather than 3MHz.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-(with the typo fixed)
 
 Reviewed-by: Luc Michel <luc@lmichel.fr>
 
 > ---
 >  include/hw/arm/stm32f100_soc.h |  4 ++++
->  include/hw/arm/stm32f205_soc.h |  4 ++++
->  hw/arm/stm32f100_soc.c         | 17 +++++++----------
->  hw/arm/stm32f205_soc.c         | 17 +++++++----------
->  4 files changed, 22 insertions(+), 20 deletions(-)
+>  hw/arm/stm32f100_soc.c         | 30 ++++++++++++++++++++++++++++++
+>  hw/arm/stm32vldiscovery.c      | 12 +++++++-----
+>  3 files changed, 41 insertions(+), 5 deletions(-)
 > 
 > diff --git a/include/hw/arm/stm32f100_soc.h b/include/hw/arm/stm32f100_soc.h
-> index 71bffcf4fd5..b7d71c6c634 100644
+> index b7d71c6c634..40cd415b284 100644
 > --- a/include/hw/arm/stm32f100_soc.h
 > +++ b/include/hw/arm/stm32f100_soc.h
-> @@ -52,6 +52,10 @@ struct STM32F100State {
+> @@ -29,6 +29,7 @@
+>  #include "hw/ssi/stm32f2xx_spi.h"
+>  #include "hw/arm/armv7m.h"
+>  #include "qom/object.h"
+> +#include "hw/clock.h"
 >  
->      STM32F2XXUsartState usart[STM_NUM_USARTS];
->      STM32F2XXSPIState spi[STM_NUM_SPIS];
+>  #define TYPE_STM32F100_SOC "stm32f100-soc"
+>  OBJECT_DECLARE_SIMPLE_TYPE(STM32F100State, STM32F100_SOC)
+> @@ -56,6 +57,9 @@ struct STM32F100State {
+>      MemoryRegion sram;
+>      MemoryRegion flash;
+>      MemoryRegion flash_alias;
 > +
-> +    MemoryRegion sram;
-> +    MemoryRegion flash;
-> +    MemoryRegion flash_alias;
->  };
->  
->  #endif
-> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_soc.h
-> index 985ff63aa9e..75251494917 100644
-> --- a/include/hw/arm/stm32f205_soc.h
-> +++ b/include/hw/arm/stm32f205_soc.h
-> @@ -63,6 +63,10 @@ struct STM32F205State {
->      STM32F2XXSPIState spi[STM_NUM_SPIS];
->  
->      qemu_or_irq *adc_irqs;
-> +
-> +    MemoryRegion sram;
-> +    MemoryRegion flash;
-> +    MemoryRegion flash_alias;
+> +    Clock *sysclk;
+> +    Clock *refclk;
 >  };
 >  
 >  #endif
 > diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
-> index 0c4a5c66451..0be92b2c475 100644
+> index 0be92b2c475..f7b344ba9fb 100644
 > --- a/hw/arm/stm32f100_soc.c
 > +++ b/hw/arm/stm32f100_soc.c
-> @@ -67,25 +67,22 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
->      int i;
+> @@ -30,6 +30,7 @@
+>  #include "exec/address-spaces.h"
+>  #include "hw/arm/stm32f100_soc.h"
+>  #include "hw/qdev-properties.h"
+> +#include "hw/qdev-clock.h"
+>  #include "hw/misc/unimp.h"
+>  #include "sysemu/sysemu.h"
+>  
+> @@ -57,6 +58,9 @@ static void stm32f100_soc_initfn(Object *obj)
+>      for (i = 0; i < STM_NUM_SPIS; i++) {
+>          object_initialize_child(obj, "spi[*]", &s->spi[i], TYPE_STM32F2XX_SPI);
+>      }
+> +
+> +    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
+> +    s->refclk = qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
+>  }
+>  
+>  static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+> @@ -68,6 +72,30 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
 >  
 >      MemoryRegion *system_memory = get_system_memory();
-> -    MemoryRegion *sram = g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash = g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash_alias = g_new(MemoryRegion, 1);
 >  
+> +    /*
+> +     * We use s->refclk internally and only define it with qdev_init_clock_in()
+> +     * so it is correctly parented and not leaked on an init/deinit; it is not
+> +     * intended as an externally exposed clock.
+> +     */
+> +    if (clock_has_source(s->refclk)) {
+> +        error_setg(errp, "refclk clock must not be wired up by the board code");
+> +        return;
+> +    }
+> +
+> +    if (!clock_has_source(s->sysclk)) {
+> +        error_setg(errp, "sysclk clock must be wired up by the board code");
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * TODO: ideally we should model the SoC RCC and its ability to
+> +     * change the sysclk frequency and define different sysclk sources.
+> +     */
+> +
+> +    /* The refclk always runs at frequency HCLK / 8 */
+> +    clock_set_mul_div(s->refclk, 8, 1);
+> +    clock_set_source(s->refclk, s->sysclk);
+> +
 >      /*
 >       * Init flash region
 >       * Flash starts at 0x08000000 and then is aliased to boot memory at 0x0
->       */
-> -    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F100.flash",
-> +    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F100.flash",
->                             FLASH_SIZE, &error_fatal);
-> -    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
-> -                             "STM32F100.flash.alias", flash, 0, FLASH_SIZE);
-> -    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, flash);
-> -    memory_region_add_subregion(system_memory, 0, flash_alias);
-> +    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
-> +                             "STM32F100.flash.alias", &s->flash, 0, FLASH_SIZE);
-> +    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
-> +    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
+> @@ -89,6 +117,8 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+>      qdev_prop_set_uint32(armv7m, "num-irq", 61);
+>      qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
+>      qdev_prop_set_bit(armv7m, "enable-bitband", true);
+> +    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+> +    qdev_connect_clock_in(armv7m, "refclk", s->refclk);
+>      object_property_set_link(OBJECT(&s->armv7m), "memory",
+>                               OBJECT(get_system_memory()), &error_abort);
+>      if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
+> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+> index 7e8191ebf5f..07e401a818d 100644
+> --- a/hw/arm/stm32vldiscovery.c
+> +++ b/hw/arm/stm32vldiscovery.c
+> @@ -27,6 +27,7 @@
+>  #include "qapi/error.h"
+>  #include "hw/boards.h"
+>  #include "hw/qdev-properties.h"
+> +#include "hw/qdev-clock.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/arm/stm32f100_soc.h"
+>  #include "hw/arm/boot.h"
+> @@ -39,16 +40,17 @@
+>  static void stm32vldiscovery_init(MachineState *machine)
+>  {
+>      DeviceState *dev;
+> +    Clock *sysclk;
 >  
->      /* Init SRAM region */
-> -    memory_region_init_ram(sram, NULL, "STM32F100.sram", SRAM_SIZE,
-> +    memory_region_init_ram(&s->sram, NULL, "STM32F100.sram", SRAM_SIZE,
->                             &error_fatal);
-> -    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
-> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
+> -    /*
+> -     * TODO: ideally we would model the SoC RCC and let it handle
+> -     * system_clock_scale, including its ability to define different
+> -     * possible SYSCLK sources.
+> -     */
+>      system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
 >  
->      /* Init ARMv7m */
->      armv7m = DEVICE(&s->armv7m);
-> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-> index 9cd41bf56da..0bd215aebd7 100644
-> --- a/hw/arm/stm32f205_soc.c
-> +++ b/hw/arm/stm32f205_soc.c
-> @@ -84,21 +84,18 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
->      int i;
+> +    /* This clock doesn't need migration because it is fixed-frequency */
+> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
+> +    clock_set_hz(sysclk, SYSCLK_FRQ);
+> +
+>      dev = qdev_new(TYPE_STM32F100_SOC);
+>      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+> +    qdev_connect_clock_in(dev, "sysclk", sysclk);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 >  
->      MemoryRegion *system_memory = get_system_memory();
-> -    MemoryRegion *sram = g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash = g_new(MemoryRegion, 1);
-> -    MemoryRegion *flash_alias = g_new(MemoryRegion, 1);
->  
-> -    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F205.flash",
-> +    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F205.flash",
->                             FLASH_SIZE, &error_fatal);
-> -    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
-> -                             "STM32F205.flash.alias", flash, 0, FLASH_SIZE);
-> +    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
-> +                             "STM32F205.flash.alias", &s->flash, 0, FLASH_SIZE);
->  
-> -    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, flash);
-> -    memory_region_add_subregion(system_memory, 0, flash_alias);
-> +    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
-> +    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
->  
-> -    memory_region_init_ram(sram, NULL, "STM32F205.sram", SRAM_SIZE,
-> +    memory_region_init_ram(&s->sram, NULL, "STM32F205.sram", SRAM_SIZE,
->                             &error_fatal);
-> -    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
-> +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
->  
->      armv7m = DEVICE(&s->armv7m);
->      qdev_prop_set_uint32(armv7m, "num-irq", 96);
+>      armv7m_load_kernel(ARM_CPU(first_cpu),
 > -- 
 > 2.20.1
 > 

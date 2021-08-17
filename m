@@ -1,91 +1,104 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp372777lfg;
-        Tue, 17 Aug 2021 03:11:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxget2gf+IH+aNLBbQfYbJG/JL56PigkE+HfNjrXgyXVz/iKjCfOCZZw6ABIVc6KvkwZUfF
-X-Received: by 2002:a67:f298:: with SMTP id m24mr1789690vsk.52.1629195061675;
-        Tue, 17 Aug 2021 03:11:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629195061; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp397357lfg;
+        Tue, 17 Aug 2021 03:47:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwB4OFZLpoNm/fvdSlG50GkElUgiFojc6mXrwuPV0FkHio2mwQdiqzkcI+FM/Df/SPDlD6/
+X-Received: by 2002:a37:58b:: with SMTP id 133mr3121179qkf.146.1629197256763;
+        Tue, 17 Aug 2021 03:47:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629197256; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zqg75i+71QlyvRL/buADfOnZPfoVQAg7j2CzOR6CFCn1tpePQmGBliMKUsnqHY+kwr
-         5WKRul21lfdccTbtgB/Kt+8QmCFjQq7NDAzQvPaRqrxohrR5idmpElMCQQobPccS2XMS
-         PqipJwiFvZ6RMbQC0qdeWS2hDHg2N/cguPHUC26VljwI0LaASzboOSXKtMsV5AWRueXu
-         bMaweUZ6Q7htYqbRUEMtcGBnzckPAdZbMfL8PDdcDp4q5rC/JweDjp/fLdlHlmVvrv8Y
-         Bc9uasPWbIj1KeR7cJkyI4hIuSOSMbug46XBNYlw0tl1uxfDR3S3ZeDoAWnX1eLA3GVw
-         F2UQ==
+        b=zxHZwYRM8xWdEo6r/3G4Dd1lfDfKPCsr1JFi4UshnweGOSPjX2XEz4LCzeTa3l3CUN
+         OqI2So8LaNHl6PH7EehbFXABorpo8ydac8QHqR/tZ/uElB58KDCvsScwoprSbYKaR9NG
+         2oXqoQS1z9o0RwRiMAE5adCCIw98ugMvLYQahdXQSlHrxteHrlQW2nJuV2NvfYYkvr02
+         o5EPhSQcjrS5sD+wrT0RXxJs9y/P9ZsSU5OlR97O2wN3M3NaFmqGxgOHDnwqY8zoA3US
+         3fPxN9KXV4gF5mlJl3Xdzr4ZhA1LNg92AdHd55Pl2Gxu9CCN9Dm/EoaLjUWbJuaQEN7F
+         oMRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=xD5r6k4rcJdIIpBFuqpV3DgInRnmNGSOlKVwtZbtWFs=;
-        b=zXmYBxmBJNrrYvU6G5HkJzDwxgohxpTarNfSv6SppVG2XkQyTcUOXrwL/zlNCn9SvY
-         u6cqII1HmeZJLKRT9pWJ/B0BSHHxRhmKrnDB4sS/SuIzKcDoEbCIDq5ormtlB2cv1i/6
-         KzwxpEyQ/zCTS4JYn7fnD0AvUNnNxkcvkuiDDltO3x0Udu69wQbSuzqmbJdPDv7oe+z0
-         yvG6Dc3go+HVhrn4jauBoIkSjrZwfyJiaLXtpIDmGfLt5KR4PaSPmn0WG0YdKvlcpVJo
-         2rlkVzGHQgZrBtsgjklOqMzSrNidWHgLz6z6ZWewSGNp6FzjCmtaDkxBye6PIcdxuTim
-         Wv8A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=lCmMLF1B5PMUUlvFw+laXWpCMvWq314GNcH272VKiYk=;
+        b=sdJld/Ov/DGXnvvKcbj9uvvHjVAmB6xMuglfeQY7IjLmtXyZubCFZ34/nCCkI8R7cc
+         9SP9SoSRFMphX48k8LzMXV2g5bpoTxG78G27NR5WqJD1Dcxwn2/SxEwiL9n0496/oHni
+         TS4Ym0nWLEGQUB/6C/7oTk6RFtl7BtHhEQ3heGo/gtYiKyBXgsIkuQLvcHxG+aLPAcf1
+         koqzF8tnrgVmx/4P9zPN3EYJ+sNDVMap2GPDZuW82uCvHU1W33WsozumVTyPjubN8XHM
+         Nfg07pdP+3VoMOKPEcYwi15TD+EaSYJ0JjyZOtSfYy3GLtJGjQbnSeR5y7ifF7NLUbTw
+         ZFwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="YU/QuZO5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=JrsTkG6+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10si616635uaj.193.2021.08.17.03.11.01
+        by mx.google.com with ESMTPS id j190si1405032qkd.372.2021.08.17.03.47.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Aug 2021 03:11:01 -0700 (PDT)
+        Tue, 17 Aug 2021 03:47:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="YU/QuZO5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48510 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=JrsTkG6+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mFw3g-0004Ry-Q5
-	for alex.bennee@linaro.org; Tue, 17 Aug 2021 06:11:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49278)
+	id 1mFwd6-00031K-3b
+	for alex.bennee@linaro.org; Tue, 17 Aug 2021 06:47:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
- id 1mFw3D-0004RM-NG; Tue, 17 Aug 2021 06:10:31 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:52270)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
- id 1mFw3B-00023Y-4y; Tue, 17 Aug 2021 06:10:31 -0400
-Received: from [192.168.15.170] (unknown [195.68.53.70])
- by beetle.greensocs.com (Postfix) with ESMTPSA id D29002089E;
- Tue, 17 Aug 2021 10:10:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1629195025;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xD5r6k4rcJdIIpBFuqpV3DgInRnmNGSOlKVwtZbtWFs=;
- b=YU/QuZO5/81X/TuDROfHYAI+TOY0/DlzYB2he0jaBhJHQQPikXB5sinN4X7xmCe/r/Tda7
- nhcr49pFqFXbrMQXTa8MU1qDxwuhMqccsU3jGbbnRbWZC5kB6QEHxstcJYZ9xt+Bb+P2MZ
- 26T37DuuCDKcOSuo3RQijvXRUmMOme4=
-Subject: Re: [PATCH for-6.2 01/25] arm: Move M-profile RAS register block into
- its own device
-To: Luc Michel <luc@lmichel.fr>, Peter Maydell <peter.maydell@linaro.org>
-References: <20210812093356.1946-1-peter.maydell@linaro.org>
- <20210812093356.1946-2-peter.maydell@linaro.org>
- <20210817082512.4snnzp6vmhj26mjn@sekoia-pc.home.lmichel.fr>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <fb281c0d-e186-21b2-73be-1d3dd003a5f8@greensocs.com>
-Date: Tue, 17 Aug 2021 12:10:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mFwcn-00030h-0S
+ for qemu-arm@nongnu.org; Tue, 17 Aug 2021 06:47:17 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:36814)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mFwck-0000Yn-I2
+ for qemu-arm@nongnu.org; Tue, 17 Aug 2021 06:47:16 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id bt14so21931099ejb.3
+ for <qemu-arm@nongnu.org>; Tue, 17 Aug 2021 03:47:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lCmMLF1B5PMUUlvFw+laXWpCMvWq314GNcH272VKiYk=;
+ b=JrsTkG6+Vup36vTJfULoFdrxd8HQ6sPWq4cU8L9Pcz71eREwtLwF8+UBiDjUOZkyD3
+ anWCBU2+6lmVaGedsa7G5K/LFXlsSmyfFLvpjSv53pwBKmkHERYxF4iRkLLTcZrytoBW
+ liYl7mQwMdGoXmITuCEe+9aZ5muTxwdtFTMyjlEob+AgknGfb04HYbShxWkmfPmrzYYr
+ CVXAJeEd50VGsbC5tVyMtG2sPU/6YuErT0+fa6HRT16jWGdUr6F0I0NsW1A5/SFaCGtU
+ sOZlh10wd87Q610JUytFLii8DM8uAFlggTawlkbBoHJy2WjsLkuV9rkV7W27bldZMdGY
+ pjvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lCmMLF1B5PMUUlvFw+laXWpCMvWq314GNcH272VKiYk=;
+ b=Mvut64FKF8YnSTbpDcfp9HO9qZrauo+HARWreEmyLVQjDaZwKv6ERBDfBW8QbVYNWT
+ QYljDxUsR5/7q1F5eUEJ4FPoArfBaBD/dsfyodRkHq2lZeSfmH/ShZ9Tyn9XgnA1c9H3
+ UGexCuQq1pqs5wLDte7Wuttp3T8t0MO68GDa/+5a/JuVOgswiCNsEJBbK+AOhjL/RISc
+ caQUJ93ajUzvn6oFJMEQG9QWN8YiFK9HX32PASARxBO0Q/yf0IBNAWFXnzYj40ALcFok
+ azgHEkKTecU6WHWxmBwgD9oQ3iuKb1asXZO3vxK3+57dVrDeGRYtx33+SIuof42e1SMW
+ /8bw==
+X-Gm-Message-State: AOAM533lDmYFtq//4rILhb5JX6Oj2zR3HpQpjrzw63MNOSUoYXgkwMjg
+ eb/oR1d+r2Fdj86srFFQgk6RAslBj5PJigVQj5zEnQ==
+X-Received: by 2002:a17:907:1048:: with SMTP id
+ oy8mr3205778ejb.382.1629197231874; 
+ Tue, 17 Aug 2021 03:47:11 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210817082512.4snnzp6vmhj26mjn@sekoia-pc.home.lmichel.fr>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=5.135.226.135;
- envelope-from=damien.hedde@greensocs.com; helo=beetle.greensocs.com
-X-Spam_score_int: -57
-X-Spam_score: -5.8
-X-Spam_bar: -----
-X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.71,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-10-peter.maydell@linaro.org>
+ <37605028-f1c7-93d7-ce51-dc78f4ed8d8b@greensocs.com>
+In-Reply-To: <37605028-f1c7-93d7-ce51-dc78f4ed8d8b@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Aug 2021 11:46:25 +0100
+Message-ID: <CAFEAcA9eU8h586eiK9dy_Jy7aDaeQzLC901SYf68FCi_LC+6GA@mail.gmail.com>
+Subject: Re: [PATCH for-6.2 09/25] clock: Provide builtin multiplier/divider
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -98,347 +111,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
+Cc: Luc Michel <luc@lmichel.fr>, Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
  Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fDPOMt7JAu8u
+X-TUID: O0ou5a7xBNET
 
+On Tue, 17 Aug 2021 at 10:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>
+>
+>
+> On 8/12/21 11:33 AM, Peter Maydell wrote:
 
+> > +void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider)
+> > +{
+> > +    assert(divider != 0);
+> > +
+> > +    clk->multiplier = multiplier;
+> > +    clk->divider = divider;
+> > +}
+> > +
+> >  static void clock_initfn(Object *obj)
+> >  {
+> >      Clock *clk = CLOCK(obj);
+> >
+> > +    clk->multiplier = 1;
+> > +    clk->divider = 1;
+> > +
+> >      QLIST_INIT(&clk->children);
+> >  }
+> >
+> >
+>
+> Regarding migration, you made the vmstate_muldiv subsection optional. I
+> suppose it is to keep backward migration working in case of simple
+> mul=1,div=1 clocks.
 
-On 8/17/21 10:25 AM, Luc Michel wrote:
-> On 10:33 Thu 12 Aug     , Peter Maydell wrote:
->> Currently we implement the RAS register block within the NVIC device.
->> It isn't really very tightly coupled with the NVIC proper, so instead
->> move it out into a sysbus device of its own and have the top level
->> ARMv7M container create it and map it into memory at the right
->> address.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> Reviewed-by: Luc Michel <luc@lmichel.fr>
+Yes -- we only send the subsection if the mul,div are
+something other than 1,1; an inbound migration stream without
+the subsection then means "use 1,1".
 
-Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
-> 
->> ---
->>  include/hw/arm/armv7m.h       |  2 +
->>  include/hw/intc/armv7m_nvic.h |  1 -
->>  include/hw/misc/armv7m_ras.h  | 37 ++++++++++++++
->>  hw/arm/armv7m.c               | 12 +++++
->>  hw/intc/armv7m_nvic.c         | 56 ---------------------
->>  hw/misc/armv7m_ras.c          | 93 +++++++++++++++++++++++++++++++++++
->>  MAINTAINERS                   |  2 +
->>  hw/misc/meson.build           |  2 +
->>  8 files changed, 148 insertions(+), 57 deletions(-)
->>  create mode 100644 include/hw/misc/armv7m_ras.h
->>  create mode 100644 hw/misc/armv7m_ras.c
->>
->> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
->> index bc6733c5184..4cae0d7eeaa 100644
->> --- a/include/hw/arm/armv7m.h
->> +++ b/include/hw/arm/armv7m.h
->> @@ -12,6 +12,7 @@
->>  
->>  #include "hw/sysbus.h"
->>  #include "hw/intc/armv7m_nvic.h"
->> +#include "hw/misc/armv7m_ras.h"
->>  #include "target/arm/idau.h"
->>  #include "qom/object.h"
->>  
->> @@ -58,6 +59,7 @@ struct ARMv7MState {
->>      NVICState nvic;
->>      BitBandState bitband[ARMV7M_NUM_BITBANDS];
->>      ARMCPU *cpu;
->> +    ARMv7MRAS ras;
->>  
->>      /* MemoryRegion we pass to the CPU, with our devices layered on
->>       * top of the ones the board provides in board_memory.
->> diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
->> index 39c71e15936..33b6d8810c7 100644
->> --- a/include/hw/intc/armv7m_nvic.h
->> +++ b/include/hw/intc/armv7m_nvic.h
->> @@ -83,7 +83,6 @@ struct NVICState {
->>      MemoryRegion sysreg_ns_mem;
->>      MemoryRegion systickmem;
->>      MemoryRegion systick_ns_mem;
->> -    MemoryRegion ras_mem;
->>      MemoryRegion container;
->>      MemoryRegion defaultmem;
->>  
->> diff --git a/include/hw/misc/armv7m_ras.h b/include/hw/misc/armv7m_ras.h
->> new file mode 100644
->> index 00000000000..f8773e65b14
->> --- /dev/null
->> +++ b/include/hw/misc/armv7m_ras.h
->> @@ -0,0 +1,37 @@
->> +/*
->> + * Arm M-profile RAS block
->> + *
->> + * Copyright (c) 2021 Linaro Limited
->> + *
->> + *  This program is free software; you can redistribute it and/or modify
->> + *  it under the terms of the GNU General Public License version 2 or
->> + *  (at your option) any later version.
->> + */
->> +
->> +/*
->> + * This is a model of the RAS register block of an M-profile CPU
->> + * (the registers starting at 0xE0005000 with ERRFRn).
->> + *
->> + * QEMU interface:
->> + *  + sysbus MMIO region 0: the register bank
->> + *
->> + * The QEMU implementation currently provides "minimal RAS" only.
->> + */
->> +
->> +#ifndef HW_MISC_ARMV7M_RAS_H
->> +#define HW_MISC_ARMV7M_RAS_H
->> +
->> +#include "hw/sysbus.h"
->> +
->> +#define TYPE_ARMV7M_RAS "armv7m-ras"
->> +OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MRAS, ARMV7M_RAS)
->> +
->> +struct ARMv7MRAS {
->> +    /*< private >*/
->> +    SysBusDevice parent_obj;
->> +
->> +    /*< public >*/
->> +    MemoryRegion iomem;
->> +};
->> +
->> +#endif
->> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
->> index 9ce5c30cd5c..8964730d153 100644
->> --- a/hw/arm/armv7m.c
->> +++ b/hw/arm/armv7m.c
->> @@ -231,6 +231,18 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
->>      memory_region_add_subregion(&s->container, 0xe0000000,
->>                                  sysbus_mmio_get_region(sbd, 0));
->>  
->> +    /* If the CPU has RAS support, create the RAS register block */
->> +    if (cpu_isar_feature(aa32_ras, s->cpu)) {
->> +        object_initialize_child(OBJECT(dev), "armv7m-ras",
->> +                                &s->ras, TYPE_ARMV7M_RAS);
->> +        sbd = SYS_BUS_DEVICE(&s->ras);
->> +        if (!sysbus_realize(sbd, errp)) {
->> +            return;
->> +        }
->> +        memory_region_add_subregion_overlap(&s->container, 0xe0005000,
->> +                                            sysbus_mmio_get_region(sbd, 0), 1);
->> +    }
->> +
->>      for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
->>          if (s->enable_bitband) {
->>              Object *obj = OBJECT(&s->bitband[i]);
->> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
->> index 1e7ddcb94cb..a5975592dfa 100644
->> --- a/hw/intc/armv7m_nvic.c
->> +++ b/hw/intc/armv7m_nvic.c
->> @@ -2549,56 +2549,6 @@ static const MemoryRegionOps nvic_systick_ops = {
->>      .endianness = DEVICE_NATIVE_ENDIAN,
->>  };
->>  
->> -
->> -static MemTxResult ras_read(void *opaque, hwaddr addr,
->> -                            uint64_t *data, unsigned size,
->> -                            MemTxAttrs attrs)
->> -{
->> -    if (attrs.user) {
->> -        return MEMTX_ERROR;
->> -    }
->> -
->> -    switch (addr) {
->> -    case 0xe10: /* ERRIIDR */
->> -        /* architect field = Arm; product/variant/revision 0 */
->> -        *data = 0x43b;
->> -        break;
->> -    case 0xfc8: /* ERRDEVID */
->> -        /* Minimal RAS: we implement 0 error record indexes */
->> -        *data = 0;
->> -        break;
->> -    default:
->> -        qemu_log_mask(LOG_UNIMP, "Read RAS register offset 0x%x\n",
->> -                      (uint32_t)addr);
->> -        *data = 0;
->> -        break;
->> -    }
->> -    return MEMTX_OK;
->> -}
->> -
->> -static MemTxResult ras_write(void *opaque, hwaddr addr,
->> -                             uint64_t value, unsigned size,
->> -                             MemTxAttrs attrs)
->> -{
->> -    if (attrs.user) {
->> -        return MEMTX_ERROR;
->> -    }
->> -
->> -    switch (addr) {
->> -    default:
->> -        qemu_log_mask(LOG_UNIMP, "Write to RAS register offset 0x%x\n",
->> -                      (uint32_t)addr);
->> -        break;
->> -    }
->> -    return MEMTX_OK;
->> -}
->> -
->> -static const MemoryRegionOps ras_ops = {
->> -    .read_with_attrs = ras_read,
->> -    .write_with_attrs = ras_write,
->> -    .endianness = DEVICE_NATIVE_ENDIAN,
->> -};
->> -
->>  /*
->>   * Unassigned portions of the PPB space are RAZ/WI for privileged
->>   * accesses, and fault for non-privileged accesses.
->> @@ -2946,12 +2896,6 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
->>                                              &s->systick_ns_mem, 1);
->>      }
->>  
->> -    if (cpu_isar_feature(aa32_ras, s->cpu)) {
->> -        memory_region_init_io(&s->ras_mem, OBJECT(s),
->> -                              &ras_ops, s, "nvic_ras", 0x1000);
->> -        memory_region_add_subregion(&s->container, 0x5000, &s->ras_mem);
->> -    }
->> -
->>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
->>  }
->>  
->> diff --git a/hw/misc/armv7m_ras.c b/hw/misc/armv7m_ras.c
->> new file mode 100644
->> index 00000000000..a2b4f4b8dc8
->> --- /dev/null
->> +++ b/hw/misc/armv7m_ras.c
->> @@ -0,0 +1,93 @@
->> +/*
->> + * Arm M-profile RAS block
->> + *
->> + * Copyright (c) 2021 Linaro Limited
->> + *
->> + *  This program is free software; you can redistribute it and/or modify
->> + *  it under the terms of the GNU General Public License version 2 or
->> + *  (at your option) any later version.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/misc/armv7m_ras.h"
->> +#include "qemu/log.h"
->> +
->> +static MemTxResult ras_read(void *opaque, hwaddr addr,
->> +                            uint64_t *data, unsigned size,
->> +                            MemTxAttrs attrs)
->> +{
->> +    if (attrs.user) {
->> +        return MEMTX_ERROR;
->> +    }
->> +
->> +    switch (addr) {
->> +    case 0xe10: /* ERRIIDR */
->> +        /* architect field = Arm; product/variant/revision 0 */
->> +        *data = 0x43b;
->> +        break;
->> +    case 0xfc8: /* ERRDEVID */
->> +        /* Minimal RAS: we implement 0 error record indexes */
->> +        *data = 0;
->> +        break;
->> +    default:
->> +        qemu_log_mask(LOG_UNIMP, "Read RAS register offset 0x%x\n",
->> +                      (uint32_t)addr);
->> +        *data = 0;
->> +        break;
->> +    }
->> +    return MEMTX_OK;
->> +}
->> +
->> +static MemTxResult ras_write(void *opaque, hwaddr addr,
->> +                             uint64_t value, unsigned size,
->> +                             MemTxAttrs attrs)
->> +{
->> +    if (attrs.user) {
->> +        return MEMTX_ERROR;
->> +    }
->> +
->> +    switch (addr) {
->> +    default:
->> +        qemu_log_mask(LOG_UNIMP, "Write to RAS register offset 0x%x\n",
->> +                      (uint32_t)addr);
->> +        break;
->> +    }
->> +    return MEMTX_OK;
->> +}
->> +
->> +static const MemoryRegionOps ras_ops = {
->> +    .read_with_attrs = ras_read,
->> +    .write_with_attrs = ras_write,
->> +    .endianness = DEVICE_NATIVE_ENDIAN,
->> +};
->> +
->> +
->> +static void armv7m_ras_init(Object *obj)
->> +{
->> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
->> +    ARMv7MRAS *s = ARMV7M_RAS(obj);
->> +
->> +    memory_region_init_io(&s->iomem, obj, &ras_ops,
->> +                          s, "armv7m-ras", 0x1000);
->> +    sysbus_init_mmio(sbd, &s->iomem);
->> +}
->> +
->> +static void armv7m_ras_class_init(ObjectClass *klass, void *data)
->> +{
->> +    /* This device has no state: no need for vmstate or reset */
->> +}
->> +
->> +static const TypeInfo armv7m_ras_info = {
->> +    .name = TYPE_ARMV7M_RAS,
->> +    .parent = TYPE_SYS_BUS_DEVICE,
->> +    .instance_size = sizeof(ARMv7MRAS),
->> +    .instance_init = armv7m_ras_init,
->> +    .class_init = armv7m_ras_class_init,
->> +};
->> +
->> +static void armv7m_ras_register_types(void)
->> +{
->> +    type_register_static(&armv7m_ras_info);
->> +}
->> +
->> +type_init(armv7m_ras_register_types);
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 37b1a8e4428..3cac393bb48 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -617,6 +617,7 @@ F: hw/intc/gic_internal.h
->>  F: hw/misc/a9scu.c
->>  F: hw/misc/arm11scu.c
->>  F: hw/misc/arm_l2x0.c
->> +F: hw/misc/armv7m_ras.c
->>  F: hw/timer/a9gtimer*
->>  F: hw/timer/arm*
->>  F: include/hw/arm/arm*.h
->> @@ -626,6 +627,7 @@ F: include/hw/misc/arm11scu.h
->>  F: include/hw/timer/a9gtimer.h
->>  F: include/hw/timer/arm_mptimer.h
->>  F: include/hw/timer/armv7m_systick.h
->> +F: include/hw/misc/armv7m_ras.h
->>  F: tests/qtest/test-arm-mptimer.c
->>  
->>  Exynos
->> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
->> index a53b849a5a0..3f41a3a5b27 100644
->> --- a/hw/misc/meson.build
->> +++ b/hw/misc/meson.build
->> @@ -17,6 +17,8 @@ softmmu_ss.add(when: 'CONFIG_INTEGRATOR_DEBUG', if_true: files('arm_integrator_d
->>  softmmu_ss.add(when: 'CONFIG_A9SCU', if_true: files('a9scu.c'))
->>  softmmu_ss.add(when: 'CONFIG_ARM11SCU', if_true: files('arm11scu.c'))
->>  
->> +softmmu_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_ras.c'))
->> +
->>  # Mac devices
->>  softmmu_ss.add(when: 'CONFIG_MOS6522', if_true: files('mos6522.c'))
->>  
->> -- 
->> 2.20.1
->>
-> 
+> Do we need to ensure multiplier and divider fields are set to 1 upon
+> receiving a state if the vmstate_muldiv subsection is absent ? I
+> remember there are post_load() tricks to achieve that.
+
+I was relying on "we set the default in clock_initfn()" (by analogy
+with being able to assume that fields in device state are at their
+reset values when an inbound migration happens, so if the migration
+doesn't set them then they stay at those reset values). But
+thinking about it a bit more I think you're right and we do have to
+have a pre_load function to set them to 1. Otherwise we would get
+wrong the case where a board/SoC/device sets a clock up on reset
+to have a non-1 multiplier, and then later the guest programs it to
+be 1, and then we migrate like that. (That is, the mul/div at point
+of migration will be the value-on-reset as set by the device etc
+code that created the clock, which might be different from what
+clock_initfn() set it to.)
+
+So we need to add something like
+
+static int clock_pre_load(void *opaque)
+{
+    Clock *clk = opaque;
+    /*
+     * The initial out-of-reset settings of the Clock might have been
+     * configured by the device to be different from what we set
+     * in clock_initfn(), so we must here set the default values to
+     * be used if they are not in the inbound migration state.
+     */
+    clk->multiplier = 1;
+    clk->divider = 1;
+}
+
+thanks
+-- PMM

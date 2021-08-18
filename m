@@ -1,92 +1,110 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp31253lfg;
-        Tue, 17 Aug 2021 19:47:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhukuP9bDQjBqmMyUP5D7kvmViHVB3TxfL0h64S2CmZoCgwVgraMNw88t159JnYHnPnf7I
-X-Received: by 2002:a05:6e02:1a6f:: with SMTP id w15mr4536972ilv.281.1629254861458;
-        Tue, 17 Aug 2021 19:47:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629254861; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp145411lfg;
+        Wed, 18 Aug 2021 01:29:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKUkH6mX0PZqmL5zltOBUTd3pwLKiW+HQzEUXHvMgbCYgcP9vfvrRVFMg2YYvD5QTPHRi6
+X-Received: by 2002:a25:3545:: with SMTP id c66mr9829418yba.317.1629275353827;
+        Wed, 18 Aug 2021 01:29:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629275353; cv=none;
         d=google.com; s=arc-20160816;
-        b=DOt8hSZaJ1o+PXe6N0KOridcCWXkMTGvjz+ZDgHRNzTKtszmHZENrmCMXfmgUsvbSZ
-         21LBGoK2ZWb8YGN7qNj1Icu9KBS0FnDcolVkhWm0utTGe9TNiGvtuq6ecwofqsioVH5r
-         7NIhS3SzhzUEVGzWSXtpFBQR3em1tqWYsLfdXmn2jhqODp0Y1QnK4DzlCO4bMLxflRgs
-         GVakYKjRTm+cSJdYuk2f/Egl8+v7l8lFOS58y7sbd5+bF+P2rqbhL4wTIFHHMDi3R+GX
-         ASb3jxCW9438ge7y3FwfL9BpI/pko0qqz6EsLpVgg+Gf7zOJMz7c25paFI2W0lOckgYv
-         NJug==
+        b=rzKws+zYH80cZSt27xq3ZMHYYXCI0eRuoRTdf80rKf/7nXHmHn3c8YOKXcW3Gup2Bp
+         dxpEyP1p1abe8NcmegTZs7hxg5hODnRzHAKKCpfxJ4HOWjkXFNNMP1rWzphDugFlilkC
+         n7TmXAkZ8mEZJN2h/BEDQMWIvzhohiLsBuaIMWmPhOFbOTQp6H5RD/By86147DtpfZuy
+         Ke5Na7hRnQXPvNilXwKM8I9dBmEmODG5gPzBzx+4GtT+YsNR/m9ZuWUJopGq3GhfRuoe
+         Fl5ewQpupNnuE8K3tirNlhes4nVA4e2gddGOqnBXT7Uv0iNhiwxMQVi0ggsooxBKQsQb
+         vAzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from
-         :dkim-signature:content-transfer-encoding:content-language;
-        bh=y57IKfgqSCs0CEZROFhjOwYRz2cQx3vE7oq0N0gZME4=;
-        b=hwjXhRPQhgH/neDisajPURzUeu3WPAp3tTc0WvV0gA365BIe5WOMkMKXDECvDbaQpa
-         q1Ag7/YYm9rPEEBK6Hif5Zhp26wlmMabJyU/EMYqc5RFPM0pdDVOB7FYI30OHKLXqlG7
-         23EWfIEXEwNzkzE4IFJXiZt+Od8KuN6iDJIqGBRRUvnsTkfYn6UsnqpIhPIVkm15jZru
-         NW8Ou6+z4jmFaipL4Ry2r1zWSAqGJh1J3zzWCsYIMusaEvpH12YKM63k7lukLD6Yueid
-         6i3FBTLKyIoKEIpOhPf4etn5RjXXyWH7Zwx9Y7v20LxUC8R3IV//0tcGHXWw1Wth6Yvs
-         PIew==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=EhRYHhZkuSmQ/7t1T5DdYukSxZipS5UhmUSBsC9VVkI=;
+        b=Uzqj1V64t9/ht6a7DxPEaEjclXJcQqhYWY31GFL704mvca6BJ2iPwmk4413g8y0JG4
+         nAK910MKkFSfve1sTHHk1ChA2EUyPqNxjitUHjCG2y8hsaAsL2mNoYsrr/QhKtmt9znY
+         ZoGa9HhU8HhLte3wR3QnNLxrv8DhOp+SW0b3N3NImj6bWFNHGLk8k/7TuXfCI1ZTAwlP
+         UJgwHH9cnAcc0KvRLVtaqp6/DLMKrCj4Z/ATPuE7bCGO21++6GAsWIx7DQ7oJpOu0NqJ
+         W1VUddakNKANBpbdz5iLTIR0rpacjOlHiP549Yc1txpNf+8QYJpsjjr8A2v2tJgt649b
+         INYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=JyyuZQAR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="p/tWqKOD";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6si4056705jal.120.2021.08.17.19.47.41
+        by mx.google.com with ESMTPS id u43si4208257ybi.411.2021.08.18.01.29.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Aug 2021 19:47:41 -0700 (PDT)
+        Wed, 18 Aug 2021 01:29:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=JyyuZQAR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:53190 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="p/tWqKOD";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48886 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGBcC-0002Jg-Qo
-	for alex.bennee@linaro.org; Tue, 17 Aug 2021 22:47:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39460)
+	id 1mGGwj-0006Uk-4A
+	for alex.bennee@linaro.org; Wed, 18 Aug 2021 04:29:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Jianxian.Wen@verisilicon.com>)
- id 1mGBc3-0002JB-Kq; Tue, 17 Aug 2021 22:47:32 -0400
-Received: from shasxm06.verisilicon.com ([101.89.135.45]:39700
- helo=shasxm03.verisilicon.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <Jianxian.Wen@verisilicon.com>)
- id 1mGBby-0000OX-LG; Tue, 17 Aug 2021 22:47:31 -0400
-Content-Language: zh-CN
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1629254835; h=from:subject:to:date:message-id;
- bh=FDc1ySJfRCYlDISf3/09hcGZ52sW9ciiPqhrizN2wdw=;
- b=JyyuZQARHJmWZph7YIXsT7MP7x567kwnD30FcU6xas9VjjN4P3zX+472qYxp/FPZCGmKw4vFlnI
- V8Vgh7KDsDecxR9zAkpWprbc30ilrXQO8nmSRmaGmBUNB1xfrWT1SmFPK866JiZ319pnUJqxU0r5a
- vQ+brJpLGTXy6fVkAbo=
-Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
- SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Wed, 18 Aug 2021 10:47:14 +0800
-From: "Wen, Jianxian" <Jianxian.Wen@verisilicon.com>
-To: "peter.maydell@linaro.org" <peter.maydell@linaro.org>
-Subject: [PATCH v4] hw/dma/pl330: Add memory region to replace default
-Thread-Topic: [PATCH v4] hw/dma/pl330: Add memory region to replace default
-Thread-Index: AdeT21hVhvipZIM9SGK9B7C2J+m9zw==
-Date: Wed, 18 Aug 2021 02:47:13 +0000
-Message-ID: <4C23C17B8E87E74E906A25A3254A03F4FA1FEB5D@SHASXM03.verisilicon.com>
-Accept-Language: zh-CN, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.10.25.16]
-x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--5.115600-0.000000-31
-x-tm-as-user-approved-sender: Yes
-x-tm-as-user-blocked-sender: No
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mGGwa-0006UX-8C; Wed, 18 Aug 2021 04:29:04 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:40756)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mGGwY-0001p8-IV; Wed, 18 Aug 2021 04:29:03 -0400
+Received: by mail-wr1-x436.google.com with SMTP id k29so2167155wrd.7;
+ Wed, 18 Aug 2021 01:29:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=EhRYHhZkuSmQ/7t1T5DdYukSxZipS5UhmUSBsC9VVkI=;
+ b=p/tWqKODBEsPJNzcRwTEHKPB+9YR1I36lSkQglX4SSxzE/TRQyvQUKXdbsnt59iMP/
+ dFiZalxBxHMDxbqij8fyJnsWeaCMh30pT9cllESm/PhB4I1QLd7T3AflooDeavwGvsvA
+ dHmNSJ8On8lar6f6PTSiRG3KjJnAMbhvAzNvCYtt5Qissfji3YtuU7clylrgiBnAkt43
+ nTlsT1X2VD/biKvBsT3+pU8nBPfSGtVZbj5J1HHkpVSp0Kz31t/GL+idg7P/vSiRZrrg
+ XMSZKTOy4BVpLHAYyuUqZ5a+Z9PklW1f0IAwQ5wO8NiGV4md9WhKKhMol1NtEptHerbr
+ eecw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=EhRYHhZkuSmQ/7t1T5DdYukSxZipS5UhmUSBsC9VVkI=;
+ b=PogVTo4ui03QH7XJJw8wifuWEYq2eVPf2M1cL4J/wW9+zYHsx+7yNLYV0Sgnw9bpBr
+ 4WTtWZN3pDvC+2zLKisuGLaDqH3yqpeOjRnLH3ToMKYbQ0dZqAW+wo7vW3b+mthVb276
+ 1BUZ4ro5j1HjYuAVk46qs2Ynj6US4fhdBEQdeZ1H8tMRbQ7pUF8XinFZSJwYeGu/2gvo
+ DaGnEM0qRZmVNCaypP80/IQZ9tRTF+CaZs28SBtBqGaOT7fa7cXxFG3zy28QjyuDqrM8
+ gsZmq766GqBK4SKed4n61MTKu/3OZMXoQMa5lcmZRM1zGPcczPZwYzf+o/9RWNVCXnTm
+ BDLA==
+X-Gm-Message-State: AOAM532JAD+gSnnMJpzNcEENLns+C5oj48x7QwikLDHp2JWkJ3imQs3Y
+ ew0xE6P1FTZ5frWCnq9P620=
+X-Received: by 2002:a5d:5592:: with SMTP id i18mr8962623wrv.271.1629275340507; 
+ Wed, 18 Aug 2021 01:29:00 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id b10sm6185694wrn.9.2021.08.18.01.28.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Aug 2021 01:28:59 -0700 (PDT)
+Subject: Re: [PATCH v4] hw/dma/pl330: Add memory region to replace default
+To: "Wen, Jianxian" <Jianxian.Wen@verisilicon.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+References: <4C23C17B8E87E74E906A25A3254A03F4FA1FEB5D@SHASXM03.verisilicon.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e58538ee-c3a7-cd83-1893-f1394c591a0e@amsat.org>
+Date: Wed, 18 Aug 2021 10:28:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Received-SPF: pass client-ip=101.89.135.45;
- envelope-from=Jianxian.Wen@verisilicon.com; helo=shasxm03.verisilicon.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+In-Reply-To: <4C23C17B8E87E74E906A25A3254A03F4FA1FEB5D@SHASXM03.verisilicon.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.961,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,103 +124,123 @@ Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Liu,
  Chunming" <Chunming.Li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R8L3CnLDjG1F
+X-TUID: XmerEFOA8kNm
 
-Add configurable property memory region which can connect with IOMMU region=
- to support SMMU translate.
+On 8/18/21 4:47 AM, Wen, Jianxian wrote:
+> Add configurable property memory region which can connect with IOMMU region to support SMMU translate.
+> 
+> Signed-off-by: Jianxian Wen <jianxian.wen@verisilicon.com>
+> ---
+> v3 -> v4 (after review of Philippe Mathieu-Daudé):
+>  - Avoid adding unnecessary AS, add AS if we connect with IOMMU region.
+> v2 -> v3 (after review of Philippe Mathieu-Daudé):
+>  - Refine code to comply with code style, update error message if memory link is not set.
+> v1 -> v2 (after review of Peter Maydell):
+>  - Data access use dma_memory_read/write functions, update function AddressSpace* parameter.
+> 
+>  hw/dma/pl330.c | 21 +++++++++++++++++----
+>  1 file changed, 17 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
+> index 944ba29..8ae56c7 100644
+> --- a/hw/dma/pl330.c
+> +++ b/hw/dma/pl330.c
+> @@ -269,6 +269,9 @@ struct PL330State {
+>      uint8_t num_faulting;
+>      uint8_t periph_busy[PL330_PERIPH_NUM];
+>  
+> +    /* Memory region that DMA operation access */
+> +    MemoryRegion *mem_mr;
+> +    AddressSpace *mem_as;
+>  };
+>  
+>  #define TYPE_PL330 "pl330"
+> @@ -1108,7 +1111,7 @@ static inline const PL330InsnDesc *pl330_fetch_insn(PL330Chan *ch)
+>      uint8_t opcode;
+>      int i;
+>  
+> -    dma_memory_read(&address_space_memory, ch->pc, &opcode, 1);
+> +    dma_memory_read(ch->parent->mem_as, ch->pc, &opcode, 1);
+>      for (i = 0; insn_desc[i].size; i++) {
+>          if ((opcode & insn_desc[i].opmask) == insn_desc[i].opcode) {
+>              return &insn_desc[i];
+> @@ -1122,7 +1125,7 @@ static inline void pl330_exec_insn(PL330Chan *ch, const PL330InsnDesc *insn)
+>      uint8_t buf[PL330_INSN_MAXSIZE];
+>  
+>      assert(insn->size <= PL330_INSN_MAXSIZE);
+> -    dma_memory_read(&address_space_memory, ch->pc, buf, insn->size);
+> +    dma_memory_read(ch->parent->mem_as, ch->pc, buf, insn->size);
+>      insn->exec(ch, buf[0], &buf[1], insn->size - 1);
+>  }
+>  
+> @@ -1186,7 +1189,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
+>      if (q != NULL && q->len <= pl330_fifo_num_free(&s->fifo)) {
+>          int len = q->len - (q->addr & (q->len - 1));
+>  
+> -        dma_memory_read(&address_space_memory, q->addr, buf, len);
+> +        dma_memory_read(s->mem_as, q->addr, buf, len);
+>          trace_pl330_exec_cycle(q->addr, len);
+>          if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
+>              pl330_hexdump(buf, len);
+> @@ -1217,7 +1220,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
+>              fifo_res = pl330_fifo_get(&s->fifo, buf, len, q->tag);
+>          }
+>          if (fifo_res == PL330_FIFO_OK || q->z) {
+> -            dma_memory_write(&address_space_memory, q->addr, buf, len);
+> +            dma_memory_write(s->mem_as, q->addr, buf, len);
+>              trace_pl330_exec_cycle(q->addr, len);
+>              if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
+>                  pl330_hexdump(buf, len);
+> @@ -1562,6 +1565,13 @@ static void pl330_realize(DeviceState *dev, Error **errp)
+>                            "dma", PL330_IOMEM_SIZE);
+>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+>  
+> +    if (s->mem_mr && (s->mem_mr != get_system_memory())) {
+> +        s->mem_as = g_malloc0(sizeof(AddressSpace));
+> +        address_space_init(s->mem_as, s->mem_mr, s->mem_mr->name);
 
-Signed-off-by: Jianxian Wen <jianxian.wen@verisilicon.com>
----
-v3 -> v4 (after review of Philippe Mathieu-Daud=E9):
- - Avoid adding unnecessary AS, add AS if we connect with IOMMU region.
-v2 -> v3 (after review of Philippe Mathieu-Daud=E9):
- - Refine code to comply with code style, update error message if memory li=
-nk is not set.
-v1 -> v2 (after review of Peter Maydell):
- - Data access use dma_memory_read/write functions, update function Address=
-Space* parameter.
+I'm not sure about the description. Anyhow, don't access MemoryRegion
+internals, use memory_region_name().
 
- hw/dma/pl330.c | 21 +++++++++++++++++----
- 1 file changed, 17 insertions(+), 4 deletions(-)
+> +    } else {
+> +        s->mem_as = &address_space_memory;
+> +    }
 
-diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
-index 944ba29..8ae56c7 100644
---- a/hw/dma/pl330.c
-+++ b/hw/dma/pl330.c
-@@ -269,6 +269,9 @@ struct PL330State {
-     uint8_t num_faulting;
-     uint8_t periph_busy[PL330_PERIPH_NUM];
-=20
-+    /* Memory region that DMA operation access */
-+    MemoryRegion *mem_mr;
-+    AddressSpace *mem_as;
- };
-=20
- #define TYPE_PL330 "pl330"
-@@ -1108,7 +1111,7 @@ static inline const PL330InsnDesc *pl330_fetch_insn(P=
-L330Chan *ch)
-     uint8_t opcode;
-     int i;
-=20
--    dma_memory_read(&address_space_memory, ch->pc, &opcode, 1);
-+    dma_memory_read(ch->parent->mem_as, ch->pc, &opcode, 1);
-     for (i =3D 0; insn_desc[i].size; i++) {
-         if ((opcode & insn_desc[i].opmask) =3D=3D insn_desc[i].opcode) {
-             return &insn_desc[i];
-@@ -1122,7 +1125,7 @@ static inline void pl330_exec_insn(PL330Chan *ch, con=
-st PL330InsnDesc *insn)
-     uint8_t buf[PL330_INSN_MAXSIZE];
-=20
-     assert(insn->size <=3D PL330_INSN_MAXSIZE);
--    dma_memory_read(&address_space_memory, ch->pc, buf, insn->size);
-+    dma_memory_read(ch->parent->mem_as, ch->pc, buf, insn->size);
-     insn->exec(ch, buf[0], &buf[1], insn->size - 1);
- }
-=20
-@@ -1186,7 +1189,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
-     if (q !=3D NULL && q->len <=3D pl330_fifo_num_free(&s->fifo)) {
-         int len =3D q->len - (q->addr & (q->len - 1));
-=20
--        dma_memory_read(&address_space_memory, q->addr, buf, len);
-+        dma_memory_read(s->mem_as, q->addr, buf, len);
-         trace_pl330_exec_cycle(q->addr, len);
-         if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
-             pl330_hexdump(buf, len);
-@@ -1217,7 +1220,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
-             fifo_res =3D pl330_fifo_get(&s->fifo, buf, len, q->tag);
-         }
-         if (fifo_res =3D=3D PL330_FIFO_OK || q->z) {
--            dma_memory_write(&address_space_memory, q->addr, buf, len);
-+            dma_memory_write(s->mem_as, q->addr, buf, len);
-             trace_pl330_exec_cycle(q->addr, len);
-             if (trace_event_get_state_backends(TRACE_PL330_HEXDUMP)) {
-                 pl330_hexdump(buf, len);
-@@ -1562,6 +1565,13 @@ static void pl330_realize(DeviceState *dev, Error **=
-errp)
-                           "dma", PL330_IOMEM_SIZE);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
-=20
-+    if (s->mem_mr && (s->mem_mr !=3D get_system_memory())) {
-+        s->mem_as =3D g_malloc0(sizeof(AddressSpace));
-+        address_space_init(s->mem_as, s->mem_mr, s->mem_mr->name);
-+    } else {
-+        s->mem_as =3D &address_space_memory;
-+    }
-+
-     s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, pl330_exec_cycle_timer, =
-s);
-=20
-     s->cfg[0] =3D (s->mgr_ns_at_rst ? 0x4 : 0) |
-@@ -1656,6 +1666,9 @@ static Property pl330_properties[] =3D {
-     DEFINE_PROP_UINT8("rd_q_dep", PL330State, rd_q_dep, 16),
-     DEFINE_PROP_UINT16("data_buffer_dep", PL330State, data_buffer_dep, 256=
-),
-=20
-+    DEFINE_PROP_LINK("memory", PL330State, mem_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
---=20
-2.7.4
+A bit convoluted but I like the result.
+
+Maybe easier to follow as:
+
+    if (!s->mem_mr) {
+        error_setg(errp, "'memory' link is not set");
+        return;
+    } else if (s->mem_mr == get_system_memory()) {
+        /* Avoid creating new AS for system memory. */
+        s->mem_as = &address_space_memory;
+    } else {
+        g_autofree char *desc =
+              g_strdup_printf("%s-as", memory_region_name(s->mem_mr);
+
+        s->mem_as = g_new0(AddressSpace, 1);
+        address_space_init(s->mem_as, s->mem_mr, desc);
+    }
+
+'desc' is optional, I don't mind if you prefer the simpler:
+
+        address_space_init(s->mem_as, s->mem_mr,
+                           memory_region_name(s->mem_mr));
+
+>      s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, pl330_exec_cycle_timer, s);
+>  
+>      s->cfg[0] = (s->mgr_ns_at_rst ? 0x4 : 0) |
+> @@ -1656,6 +1666,9 @@ static Property pl330_properties[] = {
+>      DEFINE_PROP_UINT8("rd_q_dep", PL330State, rd_q_dep, 16),
+>      DEFINE_PROP_UINT16("data_buffer_dep", PL330State, data_buffer_dep, 256),
+>  
+> +    DEFINE_PROP_LINK("memory", PL330State, mem_mr,
+> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+> +
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> 
+

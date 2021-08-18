@@ -1,115 +1,91 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp218102lfg;
-        Wed, 18 Aug 2021 03:24:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwIUs+NY/RzGGR+FYh+tIoSokITDlfHGHLJC7uItLqFgF+xAz9x6jKb0SUI8rwITuEx16TP
-X-Received: by 2002:a05:622a:c1:: with SMTP id p1mr7213316qtw.365.1629282269236;
-        Wed, 18 Aug 2021 03:24:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629282269; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp289096lfg;
+        Wed, 18 Aug 2021 05:04:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzI/0rVgkSzGgR5jSiLDbLodLIr/E74uZIAMsgw4PyR6Tqb7EZIay2BFukwohZL/2T8XvHJ
+X-Received: by 2002:a05:6402:2794:: with SMTP id b20mr10051905ede.126.1629288266448;
+        Wed, 18 Aug 2021 05:04:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629288266; cv=none;
         d=google.com; s=arc-20160816;
-        b=cmkeCjMl3EVntRTVDvbGKQ27ys3hY9u4IggHgrLlkI/yO93xq52yD2XsTf32NRTTFF
-         yshaCYen7rNczPRGHvwP3KwZy8MkcrUzdJLGC4n3hHkeCRArSrduwA477e5bV00ClNSg
-         Pl9hNvc5EsOuVtVKR+IqvFAmcpEkMyKWFHGy+/l8ghAXQPlHiE6E7R5ZcIEFTHeHDldh
-         1VnAEkKWInUmuOTlXd8d8l1z/LNEk5uU2ApswGJxEQPOejM4yH6HEe+YPyJSq6bz4+gC
-         6mdQZ0X+Il2C/bCrwBNWrYt4JiIYTXe+9PkegT1UorbPDATDYTH+LVbU7ipr4eLJlL9t
-         PunA==
+        b=jNnaBPo6bDbhlXHzMZZ1pexQcBz3uG/9W4IegRT6KvsQbRglQm5MBcp1nD3NDBtzLl
+         gcezzkY/0e9AV/exOypa6NiXeWZPXX42fIY306NU2I3E+3NAR71W5pwncTlwR7KrKdkD
+         DWF5eKUcoNzF+RCUrag0L24qRpY5H1tfvAbxbFDsqJ1+L9TGmCgV22+g0Zpyizk2Wh4a
+         TrIu/3/Jxwq4f0EvP5mHxLaXWI1+XE4eRrgehAS7T5RfUbzdaiyVfmY8mKLLH6qaBufP
+         4HI3qwqBzIF4UA8lXLLL/3iI42cfoGgWqVdQ0UXhUQRG7PVgkJKVzvoGR18bqkOatbUg
+         O+4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=giQ8mSMhuFPGoovLdha6G+J/bDJyUq+OOhgtz2p2MSo=;
-        b=tWNyhDkvKhcfYSjVQlOK8siuYfQnPvhXMQUfiwkfFz1sxDPDn/CPHOs7SMZY2TkIjR
-         /q4HRZPzcYdrRTRvq+wXBcSvNMgafKl8/jNTGakuSCp5THiSL0HTdM08o9TedTKI2gO8
-         YStKtgfxJbkVE2seldF7gxd9gLOsLBIVDNnehdIDf7hCK7SP7jSccBpjwfXeZzoT9ktW
-         X7aV4j3TjGI33j1pm68HJHXzHMDlGU0xNyuBChVf4nSml2vtpG8+V9J3pxpxakFERW8P
-         zLcc5a7rONDn5pRuaOavE51Lb9/gnLi20dHjOHzxP4lH4lhPmQQI1ej6U+W8MuTyuB2k
-         Aquw==
+        bh=GCPClIadaSHLoRtE8XPqz88rJHF0fVEOWxuu86gmRAc=;
+        b=k9L5W6pR8v9CupWgllVXXCltte+Y0MPCaZe5WaBNhMqJs1TD1xAyEkSPaowb8MWqVT
+         2xNUaHdbvWQbL6fbFTqjoD6AhuraaLQ6GE3WxYyFfCC2m/1Z3o9HBDr9GXh4ektBROYD
+         6+0rXxYl18eJjurVSQowxx0UyHqeAellpgEULNufFIzugSjPhjp4l218IApJw0VGTeQb
+         YFq4r24giXLx3mMhA3DOUDxZ0F64lRbqLLvRjSRMgXAQZmvRUdhpwWQ4Ktd2TpZ1wlbd
+         yA8h6PG+msuoI1+IzxTioixo5HPHTp3Ctr0BypF7uMLRAjBdH70EYj1Xi0ezrMzsuU2p
+         +6VA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AU1SiIbu;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=wLeLPFKr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k18si2748339qkk.77.2021.08.18.03.24.29
+        by mx.google.com with ESMTPS id n16si5934512edy.42.2021.08.18.05.04.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Aug 2021 03:24:29 -0700 (PDT)
+        Wed, 18 Aug 2021 05:04:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AU1SiIbu;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=wLeLPFKr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40616 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59456 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGIkG-0004mV-G9
-	for alex.bennee@linaro.org; Wed, 18 Aug 2021 06:24:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41334)
+	id 1mGKIz-0001Mv-8G
+	for alex.bennee@linaro.org; Wed, 18 Aug 2021 08:04:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mGIk5-0004hj-0F; Wed, 18 Aug 2021 06:24:17 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:46869)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mGIk3-000196-Lz; Wed, 18 Aug 2021 06:24:16 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- h24-20020a1ccc180000b029022e0571d1a0so1429052wmb.5; 
- Wed, 18 Aug 2021 03:24:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=giQ8mSMhuFPGoovLdha6G+J/bDJyUq+OOhgtz2p2MSo=;
- b=AU1SiIbuqfNF6SNfg3B9DxcM+HjV+JfyFgMgyrB/F6sQd059tt2BFClfPuGVpT9UQF
- PCvwQk4nLhQ/wkFysmBq+3HN2scdcjeY60NOdJsIEGN0IYj0K/mMjGuSXj4ezVeDoRRE
- 7jdcs18ZjmtVB6oeH+zZ2KxPBp38TT0ekfm2e+m4ou1MwFjYscvBtp7lI4xswOszHeY5
- OOmJQP27LA50oyJwVkhP6wjt2kMkEPGI43eRDQ76l5vFKytymNE/K4N2yasFYqB+K5Bc
- AgYJWExPPisEWuO3rR57dBibmHxVw4EF+V0DNtYE4lra9nTgW4dC9A4QhA/ZMdnYMD4K
- Gnfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=giQ8mSMhuFPGoovLdha6G+J/bDJyUq+OOhgtz2p2MSo=;
- b=KVO8B6jNk5UdQfir3YEht5nhdCEjImlbG9vZnY2o0M92axRsnTYzExGu8qgPhY1ROj
- 2iStSCLyE5qYZ+Wby7LKfKnAmwrT739bA63QRumWR2I4VdOIvR9YWu7lBQmn+rzMIshY
- lGFw8nSLqzcsylSRDDYe/gUAa8cH5ke07tezgokgZ4FmCumkDCdtAZv7iRX4hfTztKaI
- IY0dhQEWuWOPlD6/6FM3r/JjtcHCziMTTIXPPSjskGpKk/N82E03DWgNdtk/mRBS2MNt
- wD8u9VkZ+RRgK7/y/1uuaG8PlS5mr2NnRHg/gdcwJfOOc9xs/jq1aOdiZ7X5Ci830fg7
- ngfw==
-X-Gm-Message-State: AOAM5314+wcS2MCt5R2IK6WhOCEJKNqcnqAwicgmMn2YqyYO926vFaCx
- DI5A+PmzwTJ1FIJSpJV1jxk=
-X-Received: by 2002:a1c:115:: with SMTP id 21mr7744808wmb.95.1629282253868;
- Wed, 18 Aug 2021 03:24:13 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id d8sm5663070wrv.20.2021.08.18.03.24.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Aug 2021 03:24:13 -0700 (PDT)
-Subject: Re: [PATCH v5] hw/dma/pl330: Add memory region to replace default
-To: "Wen, Jianxian" <Jianxian.Wen@verisilicon.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>,
- "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
- "alistair@alistair23.me" <alistair@alistair23.me>
-References: <4C23C17B8E87E74E906A25A3254A03F4FA1FEC31@SHASXM03.verisilicon.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f52d6ea0-8003-7343-79d8-4c38a6a4c62b@amsat.org>
-Date: Wed, 18 Aug 2021 12:24:12 +0200
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1mGKIQ-0001Mg-B6; Wed, 18 Aug 2021 08:03:50 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:60528)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1mGKIN-0007sf-6Z; Wed, 18 Aug 2021 08:03:50 -0400
+Received: from [192.168.15.250] (unknown [195.68.53.70])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 79E6020783;
+ Wed, 18 Aug 2021 12:03:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1629288222;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GCPClIadaSHLoRtE8XPqz88rJHF0fVEOWxuu86gmRAc=;
+ b=wLeLPFKrnurHxohlPvNnLPk44a5o/05w/puud1sxsakQje+pjpkMPr/atLZgrzsFaM4aDx
+ JSq6bMwQdu/mxqN4nXewmHubUoO+KCLYNH42yTwdJOD2dlSBzmxGrynLoRBzeg5P2ae0z7
+ JZmkEbVC9LWuVsWj+t5yTmGRArVnCzk=
+Subject: Re: [PATCH for-6.2 24/25] hw/timer/stellaris-gptm: Use Clock input
+ instead of system_clock_scale
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210812093356.1946-1-peter.maydell@linaro.org>
+ <20210812093356.1946-25-peter.maydell@linaro.org>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <6fdf26e2-7d08-0c3b-baa9-666f0a2419da@greensocs.com>
+Date: Wed, 18 Aug 2021 14:03:41 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <4C23C17B8E87E74E906A25A3254A03F4FA1FEC31@SHASXM03.verisilicon.com>
+In-Reply-To: <20210812093356.1946-25-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.961,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=5.135.226.135;
+ envelope-from=damien.hedde@greensocs.com; helo=beetle.greensocs.com
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.961,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,31 +98,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Liu,
- Renwei" <Renwei.Liu@verisilicon.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Li,
- Chunming" <Chunming.Li@verisilicon.com>
+Cc: Alexandre Iooss <erdnaxe@crans.org>,
+ Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
+ Joel Stanley <joel@jms.id.au>, Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u9zYRRD/5F7i
+X-TUID: 2BRj25VEg+vG
 
-On 8/18/21 12:17 PM, Wen, Jianxian wrote:
-> Add property memory region which can connect with IOMMU region to support SMMU translate.
+
+
+On 8/12/21 11:33 AM, Peter Maydell wrote:
+> The stellaris-gptm timer currently uses system_clock_scale for one of
+> its timer modes where the timer runs at the CPU clock rate.  Make it
+> use a Clock input instead.
 > 
-> Signed-off-by: Jianxian Wen <jianxian.wen@verisilicon.com>
+> We don't try to make the timer handle changes in the clock frequency
+> while the downcounter is running.  This is not a change in behaviour
+> from the previous system_clock_scale implementation -- we will pick
+> up the new frequency only when the downcounter hits zero.  Handling
+> dynamic clock changes when the counter is running would require state
+> that the current gptm implementation doesn't have.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> v5 (after review of Philippe Mathieu-Daudé):
->  - Refine code and use memory_region_name() to get MR name.
-> v4 (after review of Philippe Mathieu-Daudé):
->  - Avoid creating new AS for system memory, add AS if we connect with IOMMU region.
-> v3 (after review of Philippe Mathieu-Daudé):
->  - Refine code to comply with code style, update error message if memory link is not set.
-> v2 (after review of Peter Maydell):
->  - Use dma_memory_read/write functions to do data access, update function AddressSpace* parameter.
+> As noted in the comment, ideally we would convert the device to use
+> ptimer for its downcounter, which supports frequency changes while
+> the counter is running and would also allow reading the timer value.
+> But I don't want to make and test that change to a minor timer device
+> in a board model I wouldn't recommend anybody actually use; this
+> series is long enough as it is...
+> ---
+>  include/hw/timer/stellaris-gptm.h |  3 +++
+>  hw/arm/stellaris.c                | 12 +++++++++---
+>  hw/timer/stellaris-gptm.c         | 26 ++++++++++++++++++++++----
+>  3 files changed, 34 insertions(+), 7 deletions(-)
 > 
->  hw/arm/exynos4210.c  |  3 +++
->  hw/arm/xilinx_zynq.c |  3 +++
->  hw/dma/pl330.c       | 26 ++++++++++++++++++++++----
->  3 files changed, 28 insertions(+), 4 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>

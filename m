@@ -1,1147 +1,316 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp965513lfg;
-        Wed, 18 Aug 2021 21:18:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwuUVeCl9/tE+8k4KMedCldnZKjjG/2BaCDY8fi7vHbcvFMinnQ6H6sder3umbYSmUCSJK7
-X-Received: by 2002:a05:6214:dac:: with SMTP id h12mr12534180qvh.36.1629346728768;
-        Wed, 18 Aug 2021 21:18:48 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1629346728; cv=pass;
+Received: by 2002:a05:6214:28c:0:0:0:0 with SMTP id l12csp1228844qvv;
+        Wed, 18 Aug 2021 22:18:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxO1b8tIoihGRugZAWAGc6CtUXzW9n74E2uIl0/37sHFNuSDTeSOdx6cHNZg6/QVk+w4n+0
+X-Received: by 2002:a92:7b0c:: with SMTP id w12mr8769157ilc.307.1629350283367;
+        Wed, 18 Aug 2021 22:18:03 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1629350283; cv=pass;
         d=google.com; s=arc-20160816;
-        b=OaoBMbq0rMs6A57tFLU66yeS+aaNmhRMlnVkaPTao++5xLy3dhP9Z2rxNy10fEPlWh
-         8ucHO7N78A0gEnHTOBkxxMSM50Pp8FRJVSTUpMub/DRDash58N+dSMPVJUdS7/e9Bt7k
-         0DxyPEYnh5L+H7lfpEaB+Pb/ClOMHaSOS/B2nYODzrylS2UWb91NA6KwvMZobfS0XsDY
-         7gA/wd6EibQ/HN7XeS9xW7sZewk9mjYbpwPuOdQXzMMOJs9dmYLh1rNTT7rJZkuCWeXD
-         JA5vMwchDXK2j96Vg2yldM80RsnReHzebHxBdw+3KY6/3VyShJhkqT6mlds2Eqs8ZGsa
-         Wthw==
+        b=ahV/+qPxT0Xhno9fvjg1dJqrMMbX+bniXgL/69FkgW1BAypQmVSdMn6B27hAMLxYYD
+         44ds/FYvsEsCC778BZRyL4rsrIPcXhV7oIxfn1YT3/6Vx6pjevQmouVfEFkfz79fVtyI
+         g3aY7ZimArBdt09jrmKDTH7uXR53RyKiFEXd7BHqGSE9KHqCOG7kXSvz3nrnAAVxpwKX
+         9ilUA81wSkkIAD/yB1aMITJWBYeiKJVklVTBJxWBOiuzknk0XbrBibbEQp6AEs6teD0i
+         pDMOOZTLAfIJHZfyGf8Nf3mr8QVTuxV1qYqvzqYXXRNcHy+VS4ovHaLI33HuXju8CpKl
+         e7mQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=MOgkE7VnUtSJRh/KxxLvvTBrCKF5iAhCUSZBpktaC6g=;
-        b=WZvnp9ux5M5gVbZigRqXV+NV3bqPjbuMgHbtCrpyOx6sQc49e2po8n8g9+Mq5HamPw
-         OJ0YARE8d2NKU2y3un8RoBzS7y3ioV1LWMagJwWzr/pLatquWmmvasNTFL+bRzeVoE3C
-         5TIOgijSpH6Pb6itGCeYozJJBp0JqNFLbaD3+4dqvf+2HMHM92a3S5om0+4GJcvN+YkC
-         9pTs7GRTzokVOjPNN/fI23lmyd4hX319g4rZd610Se1tzVnPLFlJDea34i5Zp4ORWcth
-         +HSCM5avhM1yhBPsaspBZiu2vOCph/nEN8U433PwnMybTWJ6qabhUrcike9YcBq4j+1M
-         cs3A==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
+        bh=FbsBuQdO4QnHNvIKyZBFdCNUoh464TiQyVgcinZistM=;
+        b=fZwIs3Y3921wwrh/s5rQNDbI1EcGznF7MTXLNd6+6onTqTDfrLMCoLrjoyBz2rEQQn
+         lxKBJcAk/wehwB8Xo1nifXqCUL6QfffW0FyNC1LFQAHW7MYjN3DjGjhQdzMe5U2wJ+k4
+         5/o+KmUXStCetQEOwZ6g9s8rg47erSRFl964JqO7+TXysWNHAGjrtOEePHy7Hlv85vg+
+         qa81SmjZ3vbWtPQKdzwtOl93UXVaNSfD5EeFsdYgnseC/apBTNm/cCxN0ehSStuOvuEI
+         SVWKj9ABHSc3FgKmWMJ98+qS1tFOQtIWznRlH+RqczRiTI+B+k4L/5d6FkyIGJhKNfC/
+         MFhg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=EntUIWGb;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=P6xxMOi1;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=WYvmERf4;
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ey7si1344234qvb.201.2021.08.18.21.18.48
+        by mx.google.com with ESMTPS id d12si2338967ilg.105.2021.08.18.22.18.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Aug 2021 21:18:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Aug 2021 22:18:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=EntUIWGb;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:55414 helo=lists1p.gnu.org)
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=P6xxMOi1;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=WYvmERf4;
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Received: from localhost ([::1]:34146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGZVv-0001Dh-VG
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 00:18:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38748)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mGaRG-0000qI-MW
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 01:18:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mGZOE-0001b1-6r; Thu, 19 Aug 2021 00:10:50 -0400
-Received: from mail-bn8nam08on2065.outbound.protection.outlook.com
- ([40.107.100.65]:50784 helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mGaR7-0000q4-6z; Thu, 19 Aug 2021 01:17:53 -0400
+Received: from esa12.fujitsucc.c3s2.iphmx.com ([216.71.156.125]:6151)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mGZHj-0003En-5S; Thu, 19 Aug 2021 00:04:12 -0400
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mGaR4-0002nr-C8; Thu, 19 Aug 2021 01:17:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
+ t=1629350271; x=1660886271;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=FbsBuQdO4QnHNvIKyZBFdCNUoh464TiQyVgcinZistM=;
+ b=P6xxMOi1gq4aQ6Lj7FCAZ8av2NlY+G7RqwDmG+6jL5q9Bc6E8sGaHS9M
+ G9damYJikCV9HGFBBaK5f24zEJcm9vcI5CElpAdHN53d61IiY/9FcLyis
+ RKA9lLcs92vW4NRfyNTlrM1IDnBjyVaZJBQIhx6Ft6FMk71JJu5W87pEu
+ So6+qFd5rJfMqN06HfKFnCncjhbmZU9q+WG8wUZWWokDIPjX26wFZNztm
+ 0os5htwb1H4R2NV0kjxakpU8TOiYJErKcmFhtvmDhau7ENr06kfZWZDNm
+ TjrXnYZ5Ld4BuI43ELaljCvcR+JbBmQAmic1rj8cijZO4Sgp7UAoBJlRM w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10080"; a="37026040"
+X-IronPort-AV: E=Sophos;i="5.84,333,1620658800"; d="scan'208";a="37026040"
+Received: from mail-os2jpn01lp2054.outbound.protection.outlook.com (HELO
+ JPN01-OS2-obe.outbound.protection.outlook.com) ([104.47.92.54])
+ by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Aug 2021 14:17:47 +0900
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ajurowNV/Ed7QHxb0Xa533VykM1y5DCxYvMce7TK5dJUvUYGCzk+2R/BzEM4eQkbLDydM1bt2y+TiCze7a/lR5Hb2r/89bLeSoX6oF5bubJ3lbPEALO74NxK0+kg8P0HYGuakjG2OY/9sB8eTcxyzHHNGJlbpegDmBwYntJlBQ7Go756fn0wgWqasS8zod22JebkkJc/UgQ62Q+/VX/TGZvKR5So8H2ZM07v5E7WL0eLyK9Y0ZzQYMgJnv4l+ri7G03P1Fp/ebSVHTR7hHz1eoodHOc14Cwmqg2deKpSJpXifwkH2qigSkW3Kq/i8VrgT1lVrug8LmR9ejL5dv4ecA==
+ b=i8IjcdDqRFpFoT/3XxDTadE1DspHMlmriDBhqRtkAplxLTj7YSxdrJNdlHNZalqpkM0sDN6F3R0b9bRVvJ/LP9w4beILWLEYYFOc42lrcD0GgMN0I5qkax5iSz8n26NpRcay0jKQ3pc/QywhFzVqSpmNgMill2hXwPTFByGwlzmMUe0EZiAtZBLFlwlBakRnJXyaR85R+asYa9n+e/n5GSNz9wRphM0Z7HTz/MRXCt8JXIMAfzFen5ICOQFYfh44FviF6D45N9BC81jWwr76RI6QGfVj5v9wIUU26r66uWAA52EV28qeXS8/1sUik0bL19f6A+UE7KQcqpiEvfZQvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MOgkE7VnUtSJRh/KxxLvvTBrCKF5iAhCUSZBpktaC6g=;
- b=GcGw8lZn8OzxyvI1Boa7BWJQonolLnqYMp80JDGBYbrlbVUT4JXIbH2CFBoCfMIZTvyGficQzLR8M+YtBfsjpJe5eHAqwfvaKPxqWj45EvNHMFGBeWwP9EhsAVqp09HSIeG2+OfMAkSZrXrs7ixEilU9uPy8q5hFoum4ndLf68iNG/yFJpJ3UyKbHgys47bbcbxwSy3hyVm7yZ7IwG3yRwM49LPKPJe70C5TisyT2T5Q/vwFpB+baeUHD4ypd8D5mtMFlnI3r2sUGBduVOI/IsZ4Q54dj4F/yXTfDVpWJATi3S96Indx0HIazfnVcxEm6zAQvWymkRqREzXF7BS0/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
+ bh=FbsBuQdO4QnHNvIKyZBFdCNUoh464TiQyVgcinZistM=;
+ b=gx+5MyIcfV5HEhEW2d4iKfUN/m9J5rW5cqECrPPtdbPIlcV0WyKPxN3T4xmsDTEnmw1PV2JfOmvVLlmLz74xO9BHoz/eGB+AG8l+jEQm+zs6nT9uCS1SN8KfahQT4udCpyhtILKvBDjWKCJMwXWP9KHPorQvooiX/yVuwmemJLPzM74v0f69gEPLLSnAWN+PIwWSga1wtB76/UyE3PQ9hEFUgk1TxUeMo9HbGILWyx+JRRcIQVcQmGvH0J0BoHixOqDgVb7dg/EHV6v2xHv+mmnjH4lCQE3NmsMY7bkUYsWdzKROBRGiQQ/5FfLl2hYZn9vseObeG033x0hpS3yl9w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
+ dkim=pass header.d=fujitsu.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MOgkE7VnUtSJRh/KxxLvvTBrCKF5iAhCUSZBpktaC6g=;
- b=EntUIWGbOSAFfC9DXoWTPKl7p+ySJ9gaMoTdX8avqPTz6GfWNEAypruX9EvMdpXHbZAro1LYpTTAk1wHqUyUCgmlzpdj3x7BSviUvBbuy9+iBm4lcm+91ZpNkuKiIRKWjrE08bauVIngMKbDTkSbsHV7W9lDbliSHYNBEuzNITg=
-Received: from SN7PR18CA0021.namprd18.prod.outlook.com (2603:10b6:806:f3::12)
- by DM6PR02MB6043.namprd02.prod.outlook.com (2603:10b6:5:1f8::33) with
+ bh=FbsBuQdO4QnHNvIKyZBFdCNUoh464TiQyVgcinZistM=;
+ b=WYvmERf4pSnKEMxGOnbdRdYfGOrO7y3SSvhHZxc+2vGqhR8lQ7eZ8ALutcpXy7uPLLAkskFYVx0b/0KtkZa0oWH8LTRJGZckjPnfLFrJp7WWixIJ/FbJmBxaImH1Mk7Sdrs8pTR+yaoY52xTSKysJe7H51IOZTUIFEnc/O773Rw=
+Received: from OS3PR01MB6151.jpnprd01.prod.outlook.com (2603:1096:604:d7::14)
+ by OSBPR01MB1767.jpnprd01.prod.outlook.com (2603:1096:603:2::11) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.17; Thu, 19 Aug
- 2021 04:04:03 +0000
-Received: from SN1NAM02FT0014.eop-nam02.prod.protection.outlook.com
- (2603:10b6:806:f3:cafe::79) by SN7PR18CA0021.outlook.office365.com
- (2603:10b6:806:f3::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19 via Frontend
- Transport; Thu, 19 Aug 2021 04:04:03 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
-Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
- SN1NAM02FT0014.mail.protection.outlook.com (10.97.4.112) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4436.19 via Frontend Transport; Thu, 19 Aug 2021 04:04:03 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Wed, 18 Aug 2021 21:04:00 -0700
-Received: from smtp.xilinx.com (172.19.127.95) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Wed, 18 Aug 2021 21:04:00 -0700
-Received: from [172.19.2.40] (port=52318 helo=xsjtongh40.xilinx.com)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <tong.ho@xilinx.com>)
- id 1mGZHc-0000M7-Mr; Wed, 18 Aug 2021 21:04:00 -0700
-From: Tong Ho <tong.ho@xilinx.com>
-To: <qemu-arm@nongnu.org>
-Subject: [PATCH 4/9] hw/nvram: Introduce Xilinx ZynqMP eFuse device
-Date: Wed, 18 Aug 2021 21:03:03 -0700
-Message-ID: <20210819040308.675057-5-tong.ho@xilinx.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210819040308.675057-1-tong.ho@xilinx.com>
-References: <20210819040308.675057-1-tong.ho@xilinx.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7156c61d-8c45-4e92-bb9c-08d962c661ea
-X-MS-TrafficTypeDiagnostic: DM6PR02MB6043:
-X-Microsoft-Antispam-PRVS: <DM6PR02MB60438719B029E2580A17CF64CDC09@DM6PR02MB6043.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:5516;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 850PHxoNw8mPodG2GOHI2PoQX6JURofbLphFJjBCe+A0pM3TROGNAJAEY6MTVaerGq4jlumMKjQGIlTW9xjYCtZR3Jznbm8Uh6If4Iqw10ww2QEyFlazB1khcH9fAsT1WCU+EjzEgvy/XmGg0WrwNQLEdCAk38g0MUd9OOUko6/T1s8G6HTyUWGOXeM6uYdm8MQOAuRiMTsGkHW6VPMje/pZVaYu23KOwe/yoilaLGvf+cmBKDlTAk/OTIe/4BjCtmwFQVVZwpGM8++fhLdia3QRKZR1AyhjobpFxuPzenoV6Y06aBBySFtNX8jK8Voon+unWNvSvK7iG6cXfgd1XPIliAqRhoAYRwBtjy1ctd/TFCBB3Px5HympqY9sEG8+XGLUcGct7ZMKvYtriTs+6y+2dzsfcsVK6oShssQmTgedgCam5H6dRhldY1p6LCP54dOTOipafdcYNStLL/CLM07n0ax2quYf6xevjStJ7ZJMNgbK0CahkbECDrFsni0vY380CfJAzaMoqNSgAgzKNCX/OdT19V6L5rOtbBhevbSR09LzgSgsSyx5BchxnDvklngZRRmArlLMcQVQd6kYK3kcLzLbcXz1p9S9XuSoujDnxgTaB/7zXS+q3sV2PtvH5mUj8HcU/HgoBpi1h9HF8/+4s4gYo5PUfePkKL0+yT/Mgx0XYIV0DRsaKaZxIUgdEjbqUvIN8amo8dsPMz86VDjsKSPJahZD6wIl28kTago=
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(4636009)(396003)(136003)(39860400002)(376002)(346002)(46966006)(36840700001)(47076005)(356005)(5660300002)(36756003)(316002)(54906003)(186003)(426003)(107886003)(26005)(36860700001)(8936002)(2616005)(36906005)(9786002)(8676002)(2906002)(4326008)(6916009)(82740400003)(478600001)(7636003)(30864003)(70206006)(70586007)(7696005)(83380400001)(336012)(82310400003)(44832011)(1076003)(102446001);
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.18; Thu, 19 Aug
+ 2021 05:17:43 +0000
+Received: from OS3PR01MB6151.jpnprd01.prod.outlook.com
+ ([fe80::496f:71bd:5d73:6c5d]) by OS3PR01MB6151.jpnprd01.prod.outlook.com
+ ([fe80::496f:71bd:5d73:6c5d%3]) with mapi id 15.20.4415.024; Thu, 19 Aug 2021
+ 05:17:43 +0000
+From: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+To: 'Andrew Jones' <drjones@redhat.com>
+Subject: RE: [PATCH v4 1/3] target-arm: Add support for Fujitsu A64FX
+Thread-Topic: [PATCH v4 1/3] target-arm: Add support for Fujitsu A64FX
+Thread-Index: AQHXj0JXKFl553Ufz0WuhVfBX6IF0atvlwsAgAACXYCABzQ/oIAA0a+AgAA5wICAAAO8gIAABLoAgAAJrICAAJht0IAAfBsAgAFQXfA=
+Date: Thu, 19 Aug 2021 05:17:42 +0000
+Message-ID: <OS3PR01MB615133E9E8A7A22C0F6A4CB8E9C09@OS3PR01MB6151.jpnprd01.prod.outlook.com>
+References: <20210812060440.1330348-2-ishii.shuuichir@fujitsu.com>
+ <20210812091650.i5np3szvdoelu2cx@gator.home>
+ <20210812092517.mwcfhksoe4cgy3cl@gator.home>
+ <TYCPR01MB6160B0A6E08CAE7CB2C6D8F0E9FE9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+ <20210817115635.d2wxvnvis5kupegh@gator.home>
+ <667f9384-cd28-8e4d-ebd1-4ed4b651676a@linaro.org>
+ <20210817153639.o5fxdgmuhjusvyhq@gator.home>
+ <3846b738-719f-a9a1-a59d-d7f54e71009c@linaro.org>
+ <20210817162811.u3i5hcx7eg52akyq@gator.home>
+ <TYCPR01MB6160151837F9C9C4167BB1B9E9FF9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+ <20210818085756.33lvgz2b6wnhwjn4@gator.home>
+In-Reply-To: <20210818085756.33lvgz2b6wnhwjn4@gator.home>
+Accept-Language: ja-JP, en-US
+Content-Language: ja-JP
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: =?utf-8?B?TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2Uw?=
+ =?utf-8?B?NTBfQWN0aW9uSWQ9MTg1NTkyYzctMzBmMC00MDBjLWI1YTctOGRjM2ZmMzEy?=
+ =?utf-8?B?NTcyO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRm?=
+ =?utf-8?B?ZWNlMDUwX0NvbnRlbnRCaXRzPTA7TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5?=
+ =?utf-8?B?LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfRW5hYmxlZD10cnVlO01TSVBfTGFi?=
+ =?utf-8?B?ZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRmZWNlMDUwX01ldGhv?=
+ =?utf-8?B?ZD1TdGFuZGFyZDtNU0lQX0xhYmVsX2E3Mjk1Y2MxLWQyNzktNDJhYy1hYjRk?=
+ =?utf-8?B?LTNiMGY0ZmVjZTA1MF9OYW1lPUZVSklUU1UtUkVTVFJJQ1RFRO+/ou++gA==?=
+ =?utf-8?B?776LO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQtM2IwZjRm?=
+ =?utf-8?B?ZWNlMDUwX1NldERhdGU9MjAyMS0wOC0xOVQwNTowMTo0OVo7TVNJUF9MYWJl?=
+ =?utf-8?B?bF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfU2l0ZUlk?=
+ =?utf-8?Q?=3Da19f121d-81e1-4858-a9d8-736e267fd4c7;?=
+authentication-results: redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=none action=none header.from=fujitsu.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bc2ab4de-67fb-488e-96aa-08d962d0ac20
+x-ms-traffictypediagnostic: OSBPR01MB1767:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <OSBPR01MB1767C6C40C74F4E368F6B269E9C09@OSBPR01MB1767.jpnprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Ix+ChU5XgkFQO+dUuIYFF7YukTrit7gwQE7h0gYrzrxYgbiFwWtfxXAgHCjeMkmojGka1AuXYeJPhzsvFeE9VcdcCHVpwI+Oeup2e6S5hGRy04/w4A+aRcjRmYRSY/VVyQC+laXTfAfyEv+YjwSJukXKiAtRQzX3P8LdXXTZ9XLyIKZMGOrbDfFk+ZJcy89cCCXwNKynOLDV22Yydn+Yq1wVRhCNlThpd/oizmjNlR3Em8PgmUAWYdduefJNm+T0ynwtEe0RA80pvh+55W4UB4XbAewpReZkT3kYuYONRm2N2sfpNgoesr13pS3VLu64L66Beiq6ij4GH2JtjL1NwOyZ8x7wHKu+UGqTMVaz1tBs2u8FxaIZw05pqeWRZhVANBPDHVJj42uxl1Q9OxD1DUjqR/aexJ20sg+LhOxJa27H/rQDJPoBAjWdcBw8Pw6Y1jwJJJBLmsDw4FP66juD3RBJL2yOe5qb9rJ1oG2VIrvP/uLmFA1ZvTvT+VlBpv3AK0AS0bK1wbFrGl9oDenl+CX0TC8xUBzSd8SM8oxvvup1NjDS7WISATP4klcotBgreDSJTer682jWdfGooEWzkoMJozMYPWNyQoTesNSN9iXsyIC9UJSjlWywqn/YU83u4T/vOx+Vuqlcl8qMnnYVvWfmlWJFED1/6bshcGXc4fYs3IVeiBaGY8kejlcmWYI9g9+Qxl05B8MkTLUC0MrhWw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:OS3PR01MB6151.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(346002)(376002)(366004)(136003)(396003)(54906003)(38070700005)(186003)(55016002)(4326008)(9686003)(5660300002)(122000001)(26005)(6916009)(33656002)(71200400001)(107886003)(85182001)(38100700002)(2906002)(8936002)(66946007)(316002)(53546011)(6506007)(66446008)(66556008)(66476007)(7696005)(76116006)(64756008)(83380400001)(52536014)(8676002)(86362001)(478600001);
  DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2021 04:04:03.4656 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7156c61d-8c45-4e92-bb9c-08d962c661ea
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1NAM02FT0014.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR02MB6043
-Received-SPF: pass client-ip=40.107.100.65; envelope-from=tongh@xilinx.com;
- helo=NAM04-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: 0
-X-Spam_score: -0.0
-X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MHpZNTlKc1UyRUJyZjlEZWRnWHBqZGkvaEQ2UWplU093eDN5OXVFMnZPVURC?=
+ =?utf-8?B?YTZrdWVYMUZycEdYdjFaTlk0U21vYmtkYVRZbFBSK3pkbFlXRTV6YnovQTNw?=
+ =?utf-8?B?aDBCaldqb1g5ZHFTYnpFN2F3NFcxUEZlcndPR1hXUEpiSlFaWElSb1ladDl6?=
+ =?utf-8?B?TGc2QlFteWV3L2JhSWxVZkFkU01QVDhGeCtHa0dpa2hKd2dHZ0NVWDRJWGUw?=
+ =?utf-8?B?VVoyZzFVV1daQXVTZjhOVnhpektESUgwbXpMRHlHbnJ1Yi9zODhkU1YyRno5?=
+ =?utf-8?B?S0IzUlVZalh1TzUvNk4wQ2xYOXNNUnFScFRaMXJHQ3U1UGo3bTl1dHI5UUQ5?=
+ =?utf-8?B?MS91V2tZdCtFUFo2QXhKOFZIRG1tamNCdGNrWHRvbTJPVGVuTGlOT2dWenhY?=
+ =?utf-8?B?SnhCaDR3Tmg2WjJialpReUc4TlA0ZXgzb2Y2ZUdvbk0xdXU2WXJRSVV3NDE4?=
+ =?utf-8?B?QUVlQ2NaUS9jUTNtanoxRUNUUnJkZnV1RHY2R05kVzVlU3NtRG9JZ0YvajBV?=
+ =?utf-8?B?bU1lSzVML0ZEQzMwNHBFemx0RGVOUkVpLzJqU0owcHVyZGM3NmQ1dTZ6OGk5?=
+ =?utf-8?B?SFdEc1ZjUmMvMXpERUhmWndtUFlFTm41dndDYWNHT2g5eDkrNVljalJGRE1u?=
+ =?utf-8?B?N2hHRmZvQVlkdG9Md3ZpT1dPRTdLMGhDNHgvczYrazQwd3l0RTkyV1ZaNWFq?=
+ =?utf-8?B?YldJMUVHOTYvdWNXcGRJRkt4cVhRazBVVVF3TGo0RC92TXBMUDh6OERXWTZj?=
+ =?utf-8?B?YkxKWnRHOXpaOVVVQlFjL1BERGVZOU8rai9PeEZFMFdGcXFYVmdhUkRnbndJ?=
+ =?utf-8?B?dmo2RTJ1SGdjSFBycDlsUU5ETmEvYmE5ZGlISFNpZ0lQZWs4MjVTcXQ1MWEx?=
+ =?utf-8?B?N2lzN2ozczNjdEErU3pwd0FOYW5VbEI1Tys2RFZOcWNYaFN1SlhmWlNlSVAx?=
+ =?utf-8?B?WTE1bkUzaFVBTUIyNjlyQjB4cFRaT0h6WVdwbUVzR3ZIT240dGV1RmtCbUtT?=
+ =?utf-8?B?SGFMMlpoWnFBbnFNWUNPSTVNajJQVG9mTkxHVmtoeERwUXcrVDVMbWpIS0I5?=
+ =?utf-8?B?bXJuWm44YmhoZkN3eWp5ZXUvUWlncTRrN21uakpma3U2aEYzZHRRbCtvZ3ll?=
+ =?utf-8?B?TWJNMkJTWWpxVFBjQ24vTU1IRG5FRXlIMmZpU1UrVTF2QnlCVHp2TURNWUlz?=
+ =?utf-8?B?V0lOSzFZTGF4ZjJuUEZCNzFBNjgwRzJySGcxMno3RVZtUzNrTFN1ZFRiaWQz?=
+ =?utf-8?B?RGJPUnUrVnVIcmNPRU1UWTRvT0dqeDBISlJFcjlNbjBaaDRGV2k5OVp5U05P?=
+ =?utf-8?B?UnF1L3o4bjlrVVl6NHVBTWZWTkdnS1doMVFLVG5ScW1OUGpwMkZBMHVRQ21s?=
+ =?utf-8?B?TTJvWGpHWDFZeW1JWDhvc2loMmdmK1d1bytnV1pBTW1BdHppZnF5T2hPU3VI?=
+ =?utf-8?B?QXdqSDlvandtWjE4OS9LNCtKMVZ1enUvU0dXcUlTM21GVFkya003SWRSTUxK?=
+ =?utf-8?B?Zy94Ylh6aHZRWTA0YkwwdkhwV2xTRjczbTEwVUxjWFBUSmhzWEFXa3VEbVlU?=
+ =?utf-8?B?NGRuYWpPeDR4ZFdOMExhVmtQMDNFNUpDM1FVWkIyNXZVUGhrRUZGS2Z2R2J2?=
+ =?utf-8?B?Z3Rkb2o0QVdEckpWc0VxSFJxd2g1enRTMWFxZ0d4YzIwMTJwYVdMeGtmZ2Rh?=
+ =?utf-8?B?MVpZbjY5SjdBNXVneXBVKzY2c2ZyUkJ1dDFJbVh5cXkvRjg2Uzg0TGMzTFY1?=
+ =?utf-8?Q?hmLJvxjPXDAqzlQLeKKIXt0zwnzHFODZ2VCie9U?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: fujitsu.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: OS3PR01MB6151.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bc2ab4de-67fb-488e-96aa-08d962d0ac20
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Aug 2021 05:17:42.9465 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: z9tB/cV46EuI7QykliXPXzx2KQED23N7OXWUSiWCXSQ21nfT+CfKX+xltZvG4xPPOkIDd/NCTDcHbLKAS5B7nnggc9SWs8bmj2RCfns2fKY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSBPR01MB1767
+Received-SPF: pass client-ip=216.71.156.125;
+ envelope-from=ishii.shuuichir@fujitsu.com; helo=esa12.fujitsucc.c3s2.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, peter.maydell@linaro.org,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, alistair@alistair23.me,
- qemu-devel@nongnu.org, tong.ho@xilinx.com, edgar.iglesias@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Sdga6lc5/gyP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dv0ReZetpb2t
 
-This implements the Xilinx ZynqMP eFuse, an one-time
-field-programmable non-volatile storage device.  There is
-only one such device in the Xilinx ZynqMP product family.
-
-The command argument:
-  -drive if=pflash,index=N,...
-Can be used to optionally connect the storage array to a
-backend storage, such that field-programmed values in one
-invocation can be made available to next invocation.
-
-The backend storage must be a seekable binary file, and
-its size must be 768 bytes or larger. A file with all
-binary 0's is a 'blank'.
-
-The drive 'index' value N has a default value of 3, but
-can be changed using command argument:
-  -global xlnx,efuse.drive-index=N
-
-Co-authored-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Co-authored-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Signed-off-by: Tong Ho <tong.ho@xilinx.com>
----
- hw/nvram/Kconfig                     |   5 +
- hw/nvram/meson.build                 |   2 +
- hw/nvram/xlnx-zynqmp-efuse.c         | 861 +++++++++++++++++++++++++++
- include/hw/nvram/xlnx-zynqmp-efuse.h |  45 ++
- 4 files changed, 913 insertions(+)
- create mode 100644 hw/nvram/xlnx-zynqmp-efuse.c
- create mode 100644 include/hw/nvram/xlnx-zynqmp-efuse.h
-
-diff --git a/hw/nvram/Kconfig b/hw/nvram/Kconfig
-index e96749ced3..cc3ed789fe 100644
---- a/hw/nvram/Kconfig
-+++ b/hw/nvram/Kconfig
-@@ -23,3 +23,8 @@ config XLNX_EFUSE_VERSAL
-     bool
-     default y if XLNX_VERSAL
-     select XLNX_EFUSE
-+
-+config XLNX_EFUSE_ZYNQMP
-+    bool
-+    default y if XLNX_ZYNQMP
-+    select XLNX_EFUSE
-diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
-index a432665158..f364520ad5 100644
---- a/hw/nvram/meson.build
-+++ b/hw/nvram/meson.build
-@@ -13,6 +13,8 @@ softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE', if_true: files('xlnx-efuse.c'))
- softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE_VERSAL', if_true: files(
-                                                    'xlnx-versal-efuse-cache.c',
-                                                    'xlnx-versal-efuse-ctrl.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE_ZYNQMP', if_true: files(
-+                                                   'xlnx-zynqmp-efuse.c'))
- if 'CONFIG_XLNX_BBRAM' in config_all or \
-    'CONFIG_XLNX_EFUSE' in config_all
-   softmmu_ss.add(files('xlnx-efuse-crc.c'))
-diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
-new file mode 100644
-index 0000000000..3591577498
---- /dev/null
-+++ b/hw/nvram/xlnx-zynqmp-efuse.c
-@@ -0,0 +1,861 @@
-+/*
-+ * QEMU model of the ZynqMP eFuse
-+ *
-+ * Copyright (c) 2015 Xilinx Inc.
-+ *
-+ * Written by Edgar E. Iglesias <edgari@xilinx.com>
-+ * Partially autogenerated by xregqemu.py 2015-01-02.
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/nvram/xlnx-zynqmp-efuse.h"
-+
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
-+
-+#ifndef ZYNQMP_EFUSE_ERR_DEBUG
-+#define ZYNQMP_EFUSE_ERR_DEBUG 0
-+#endif
-+
-+#define ZYNQMP_EFUSE(obj) \
-+     OBJECT_CHECK(XlnxZynqMPEFuse, (obj), TYPE_XLNX_ZYNQMP_EFUSE)
-+
-+REG32(WR_LOCK, 0x0)
-+    FIELD(WR_LOCK, LOCK, 0, 16)
-+REG32(CFG, 0x4)
-+    FIELD(CFG, SLVERR_ENABLE, 5, 1)
-+    FIELD(CFG, MARGIN_RD, 2, 2)
-+    FIELD(CFG, PGM_EN, 1, 1)
-+    FIELD(CFG, EFUSE_CLK_SEL, 0, 1)
-+REG32(STATUS, 0x8)
-+    FIELD(STATUS, AES_CRC_PASS, 7, 1)
-+    FIELD(STATUS, AES_CRC_DONE, 6, 1)
-+    FIELD(STATUS, CACHE_DONE, 5, 1)
-+    FIELD(STATUS, CACHE_LOAD, 4, 1)
-+    FIELD(STATUS, EFUSE_3_TBIT, 2, 1)
-+    FIELD(STATUS, EFUSE_2_TBIT, 1, 1)
-+    FIELD(STATUS, EFUSE_0_TBIT, 0, 1)
-+REG32(EFUSE_PGM_ADDR, 0xc)
-+    FIELD(EFUSE_PGM_ADDR, EFUSE, 11, 2)
-+    FIELD(EFUSE_PGM_ADDR, ROW, 5, 6)
-+    FIELD(EFUSE_PGM_ADDR, COLUMN, 0, 5)
-+REG32(EFUSE_RD_ADDR, 0x10)
-+    FIELD(EFUSE_RD_ADDR, EFUSE, 11, 2)
-+    FIELD(EFUSE_RD_ADDR, ROW, 5, 6)
-+REG32(EFUSE_RD_DATA, 0x14)
-+REG32(TPGM, 0x18)
-+    FIELD(TPGM, VALUE, 0, 16)
-+REG32(TRD, 0x1c)
-+    FIELD(TRD, VALUE, 0, 8)
-+REG32(TSU_H_PS, 0x20)
-+    FIELD(TSU_H_PS, VALUE, 0, 8)
-+REG32(TSU_H_PS_CS, 0x24)
-+    FIELD(TSU_H_PS_CS, VALUE, 0, 8)
-+REG32(TSU_H_CS, 0x2c)
-+    FIELD(TSU_H_CS, VALUE, 0, 4)
-+REG32(EFUSE_ISR, 0x30)
-+    FIELD(EFUSE_ISR, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_ISR, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_ISR, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_ISR, RD_DONE, 2, 1)
-+    FIELD(EFUSE_ISR, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_ISR, PGM_DONE, 0, 1)
-+REG32(EFUSE_IMR, 0x34)
-+    FIELD(EFUSE_IMR, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_IMR, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_IMR, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_IMR, RD_DONE, 2, 1)
-+    FIELD(EFUSE_IMR, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_IMR, PGM_DONE, 0, 1)
-+REG32(EFUSE_IER, 0x38)
-+    FIELD(EFUSE_IER, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_IER, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_IER, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_IER, RD_DONE, 2, 1)
-+    FIELD(EFUSE_IER, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_IER, PGM_DONE, 0, 1)
-+REG32(EFUSE_IDR, 0x3c)
-+    FIELD(EFUSE_IDR, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_IDR, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_IDR, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_IDR, RD_DONE, 2, 1)
-+    FIELD(EFUSE_IDR, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_IDR, PGM_DONE, 0, 1)
-+REG32(EFUSE_CACHE_LOAD, 0x40)
-+    FIELD(EFUSE_CACHE_LOAD, LOAD, 0, 1)
-+REG32(EFUSE_PGM_LOCK, 0x44)
-+    FIELD(EFUSE_PGM_LOCK, SPK_ID_LOCK, 0, 1)
-+REG32(EFUSE_AES_CRC, 0x48)
-+REG32(EFUSE_TBITS_PRGRMG_EN, 0x100)
-+    FIELD(EFUSE_TBITS_PRGRMG_EN, TBITS_PRGRMG_EN, 3, 1)
-+REG32(DNA_0, 0x100c)
-+REG32(DNA_1, 0x1010)
-+REG32(DNA_2, 0x1014)
-+REG32(IPDISABLE, 0x1018)
-+    FIELD(IPDISABLE, VCU_DIS, 8, 1)
-+    FIELD(IPDISABLE, GPU_DIS, 5, 1)
-+    FIELD(IPDISABLE, APU3_DIS, 3, 1)
-+    FIELD(IPDISABLE, APU2_DIS, 2, 1)
-+    FIELD(IPDISABLE, APU1_DIS, 1, 1)
-+    FIELD(IPDISABLE, APU0_DIS, 0, 1)
-+REG32(SYSOSC_CTRL, 0x101c)
-+    FIELD(SYSOSC_CTRL, SYSOSC_EN, 0, 1)
-+REG32(USER_0, 0x1020)
-+REG32(USER_1, 0x1024)
-+REG32(USER_2, 0x1028)
-+REG32(USER_3, 0x102c)
-+REG32(USER_4, 0x1030)
-+REG32(USER_5, 0x1034)
-+REG32(USER_6, 0x1038)
-+REG32(USER_7, 0x103c)
-+REG32(MISC_USER_CTRL, 0x1040)
-+    FIELD(MISC_USER_CTRL, FPD_SC_EN_0, 14, 1)
-+    FIELD(MISC_USER_CTRL, LPD_SC_EN_0, 11, 1)
-+    FIELD(MISC_USER_CTRL, LBIST_EN, 10, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_7, 7, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_6, 6, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_5, 5, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_4, 4, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_3, 3, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_2, 2, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_1, 1, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_0, 0, 1)
-+REG32(ROM_RSVD, 0x1044)
-+    FIELD(ROM_RSVD, PBR_BOOT_ERROR, 0, 3)
-+REG32(PUF_CHASH, 0x1050)
-+REG32(PUF_MISC, 0x1054)
-+    FIELD(PUF_MISC, REGISTER_DIS, 31, 1)
-+    FIELD(PUF_MISC, SYN_WRLK, 30, 1)
-+    FIELD(PUF_MISC, SYN_INVLD, 29, 1)
-+    FIELD(PUF_MISC, TEST2_DIS, 28, 1)
-+    FIELD(PUF_MISC, UNUSED27, 27, 1)
-+    FIELD(PUF_MISC, UNUSED26, 26, 1)
-+    FIELD(PUF_MISC, UNUSED25, 25, 1)
-+    FIELD(PUF_MISC, UNUSED24, 24, 1)
-+    FIELD(PUF_MISC, AUX, 0, 24)
-+REG32(SEC_CTRL, 0x1058)
-+    FIELD(SEC_CTRL, PPK1_INVLD, 30, 2)
-+    FIELD(SEC_CTRL, PPK1_WRLK, 29, 1)
-+    FIELD(SEC_CTRL, PPK0_INVLD, 27, 2)
-+    FIELD(SEC_CTRL, PPK0_WRLK, 26, 1)
-+    FIELD(SEC_CTRL, RSA_EN, 11, 15)
-+    FIELD(SEC_CTRL, SEC_LOCK, 10, 1)
-+    FIELD(SEC_CTRL, PROG_GATE_2, 9, 1)
-+    FIELD(SEC_CTRL, PROG_GATE_1, 8, 1)
-+    FIELD(SEC_CTRL, PROG_GATE_0, 7, 1)
-+    FIELD(SEC_CTRL, DFT_DIS, 6, 1)
-+    FIELD(SEC_CTRL, JTAG_DIS, 5, 1)
-+    FIELD(SEC_CTRL, ERROR_DIS, 4, 1)
-+    FIELD(SEC_CTRL, BBRAM_DIS, 3, 1)
-+    FIELD(SEC_CTRL, ENC_ONLY, 2, 1)
-+    FIELD(SEC_CTRL, AES_WRLK, 1, 1)
-+    FIELD(SEC_CTRL, AES_RDLK, 0, 1)
-+REG32(SPK_ID, 0x105c)
-+REG32(PPK0_0, 0x10a0)
-+REG32(PPK0_1, 0x10a4)
-+REG32(PPK0_2, 0x10a8)
-+REG32(PPK0_3, 0x10ac)
-+REG32(PPK0_4, 0x10b0)
-+REG32(PPK0_5, 0x10b4)
-+REG32(PPK0_6, 0x10b8)
-+REG32(PPK0_7, 0x10bc)
-+REG32(PPK0_8, 0x10c0)
-+REG32(PPK0_9, 0x10c4)
-+REG32(PPK0_10, 0x10c8)
-+REG32(PPK0_11, 0x10cc)
-+REG32(PPK1_0, 0x10d0)
-+REG32(PPK1_1, 0x10d4)
-+REG32(PPK1_2, 0x10d8)
-+REG32(PPK1_3, 0x10dc)
-+REG32(PPK1_4, 0x10e0)
-+REG32(PPK1_5, 0x10e4)
-+REG32(PPK1_6, 0x10e8)
-+REG32(PPK1_7, 0x10ec)
-+REG32(PPK1_8, 0x10f0)
-+REG32(PPK1_9, 0x10f4)
-+REG32(PPK1_10, 0x10f8)
-+REG32(PPK1_11, 0x10fc)
-+
-+#define BIT_POS(ROW, COLUMN)    (ROW * 32 + COLUMN)
-+#define R_MAX (R_PPK1_11 + 1)
-+
-+/* #define EFUSE_XOSC            26 */
-+
-+/*
-+ * eFUSE layout references:
-+ *   ZynqMP: UG1085 (v2.1) August 21, 2019, p.277, Table 12-13
-+ */
-+#define EFUSE_AES_RDLK        BIT_POS(22, 0)
-+#define EFUSE_AES_WRLK        BIT_POS(22, 1)
-+#define EFUSE_ENC_ONLY        BIT_POS(22, 2)
-+#define EFUSE_BBRAM_DIS       BIT_POS(22, 3)
-+#define EFUSE_ERROR_DIS       BIT_POS(22, 4)
-+#define EFUSE_JTAG_DIS        BIT_POS(22, 5)
-+#define EFUSE_DFT_DIS         BIT_POS(22, 6)
-+#define EFUSE_PROG_GATE_0     BIT_POS(22, 7)
-+#define EFUSE_PROG_GATE_1     BIT_POS(22, 7)
-+#define EFUSE_PROG_GATE_2     BIT_POS(22, 9)
-+#define EFUSE_SEC_LOCK        BIT_POS(22, 10)
-+#define EFUSE_RSA_EN          BIT_POS(22, 11)
-+#define EFUSE_RSA_EN14        BIT_POS(22, 25)
-+#define EFUSE_PPK0_WRLK       BIT_POS(22, 26)
-+#define EFUSE_PPK0_INVLD      BIT_POS(22, 27)
-+#define EFUSE_PPK0_INVLD_1    BIT_POS(22, 28)
-+#define EFUSE_PPK1_WRLK       BIT_POS(22, 29)
-+#define EFUSE_PPK1_INVLD      BIT_POS(22, 30)
-+#define EFUSE_PPK1_INVLD_1    BIT_POS(22, 31)
-+
-+/* Areas.  */
-+#define EFUSE_TRIM_START      BIT_POS(1, 0)
-+#define EFUSE_TRIM_END        BIT_POS(1, 30)
-+#define EFUSE_DNA_START       BIT_POS(3, 0)
-+#define EFUSE_DNA_END         BIT_POS(5, 31)
-+#define EFUSE_AES_START       BIT_POS(24, 0)
-+#define EFUSE_AES_END         BIT_POS(31, 31)
-+#define EFUSE_ROM_START       BIT_POS(17, 0)
-+#define EFUSE_ROM_END         BIT_POS(17, 31)
-+#define EFUSE_IPDIS_START     BIT_POS(6, 0)
-+#define EFUSE_IPDIS_END       BIT_POS(6, 31)
-+#define EFUSE_USER_START      BIT_POS(8, 0)
-+#define EFUSE_USER_END        BIT_POS(15, 31)
-+#define EFUSE_BISR_START      BIT_POS(32, 0)
-+#define EFUSE_BISR_END        BIT_POS(39, 31)
-+
-+#define EFUSE_USER_CTRL_START BIT_POS(16, 0)
-+#define EFUSE_USER_CTRL_END   BIT_POS(16, 16)
-+#define EFUSE_USER_CTRL_MASK  ((uint32_t)MAKE_64BIT_MASK(0, 17))
-+
-+#define EFUSE_PUF_CHASH_START BIT_POS(20, 0)
-+#define EFUSE_PUF_CHASH_END   BIT_POS(20, 31)
-+#define EFUSE_PUF_MISC_START  BIT_POS(21, 0)
-+#define EFUSE_PUF_MISC_END    BIT_POS(21, 31)
-+#define EFUSE_PUF_SYN_WRLK    BIT_POS(21, 30)
-+
-+#define EFUSE_SPK_START       BIT_POS(23, 0)
-+#define EFUSE_SPK_END         BIT_POS(23, 31)
-+
-+#define EFUSE_PPK0_START      BIT_POS(40, 0)
-+#define EFUSE_PPK0_END        BIT_POS(51, 31)
-+#define EFUSE_PPK1_START      BIT_POS(52, 0)
-+#define EFUSE_PPK1_END        BIT_POS(63, 31)
-+
-+#define EFUSE_CACHE_FLD(s, reg, field) \
-+    ARRAY_FIELD_DP32((s)->regs, reg, field, \
-+                     (xlnx_efuse_get_row((s->efuse), EFUSE_ ## field) \
-+                      >> (EFUSE_ ## field % 32)))
-+
-+#define EFUSE_CACHE_BIT(s, reg, field) \
-+    ARRAY_FIELD_DP32((s)->regs, reg, field, xlnx_efuse_get_bit((s->efuse), \
-+                EFUSE_ ## field))
-+
-+#define FBIT_UNKNOWN (~0)
-+
-+QEMU_BUILD_BUG_ON(R_MAX != ARRAY_SIZE(((XlnxZynqMPEFuse *)0)->regs));
-+
-+static void update_tbit_status(XlnxZynqMPEFuse *s)
-+{
-+    unsigned int check = xlnx_efuse_tbits_check(s->efuse);
-+    uint32_t val = s->regs[R_STATUS];
-+
-+    val = FIELD_DP32(val, STATUS, EFUSE_0_TBIT, !!(check & (1 << 0)));
-+    val = FIELD_DP32(val, STATUS, EFUSE_2_TBIT, !!(check & (1 << 1)));
-+    val = FIELD_DP32(val, STATUS, EFUSE_3_TBIT, !!(check & (1 << 2)));
-+
-+    s->regs[R_STATUS] = val;
-+}
-+
-+/* Update the u32 array from efuse bits. Slow but simple approach.  */
-+static void cache_sync_u32(XlnxZynqMPEFuse *s, unsigned int r_start,
-+                           unsigned int f_start, unsigned int f_end,
-+                           unsigned int f_written)
-+{
-+    uint32_t *u32 = &s->regs[r_start];
-+    unsigned int fbit, wbits = 0, u32_off = 0;
-+
-+    /* Avoid working on bits that are not relevant.  */
-+    if (f_written != FBIT_UNKNOWN
-+        && (f_written < f_start || f_written > f_end)) {
-+        return;
-+    }
-+
-+    for (fbit = f_start; fbit <= f_end; fbit++, wbits++) {
-+        if (wbits == 32) {
-+            /* Update the key offset.  */
-+            u32_off += 1;
-+            wbits = 0;
-+        }
-+        u32[u32_off] |= xlnx_efuse_get_bit(s->efuse, fbit) << wbits;
-+    }
-+}
-+
-+/*
-+ * Keep the syncs in bit order so we can bail out for the
-+ * slower ones.
-+ */
-+static void zynqmp_efuse_sync_cache(XlnxZynqMPEFuse *s, unsigned int bit)
-+{
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, AES_RDLK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, AES_WRLK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, ENC_ONLY);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, BBRAM_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, ERROR_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, JTAG_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, DFT_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PROG_GATE_0);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PROG_GATE_1);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PROG_GATE_2);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, SEC_LOCK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PPK0_WRLK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PPK1_WRLK);
-+
-+    EFUSE_CACHE_FLD(s, SEC_CTRL, RSA_EN);
-+    EFUSE_CACHE_FLD(s, SEC_CTRL, PPK0_INVLD);
-+    EFUSE_CACHE_FLD(s, SEC_CTRL, PPK1_INVLD);
-+
-+    /* Update the tbits.  */
-+    update_tbit_status(s);
-+
-+    /* Sync the various areas.  */
-+    s->regs[R_MISC_USER_CTRL] = xlnx_efuse_get_row(s->efuse,
-+                                                   EFUSE_USER_CTRL_START)
-+                                & EFUSE_USER_CTRL_MASK;
-+    s->regs[R_PUF_CHASH] = xlnx_efuse_get_row(s->efuse, EFUSE_PUF_CHASH_START);
-+    s->regs[R_PUF_MISC]  = xlnx_efuse_get_row(s->efuse, EFUSE_PUF_MISC_START);
-+
-+    cache_sync_u32(s, R_DNA_0, EFUSE_DNA_START, EFUSE_DNA_END, bit);
-+
-+    if (bit < EFUSE_AES_START) {
-+        return;
-+    }
-+
-+    cache_sync_u32(s, R_ROM_RSVD, EFUSE_ROM_START, EFUSE_ROM_END, bit);
-+    cache_sync_u32(s, R_IPDISABLE, EFUSE_IPDIS_START, EFUSE_IPDIS_END, bit);
-+    cache_sync_u32(s, R_USER_0, EFUSE_USER_START, EFUSE_USER_END, bit);
-+    cache_sync_u32(s, R_SPK_ID, EFUSE_SPK_START, EFUSE_SPK_END, bit);
-+    cache_sync_u32(s, R_PPK0_0, EFUSE_PPK0_START, EFUSE_PPK0_END, bit);
-+    cache_sync_u32(s, R_PPK1_0, EFUSE_PPK1_START, EFUSE_PPK1_END, bit);
-+}
-+
-+static void zynqmp_efuse_update_irq(XlnxZynqMPEFuse *s)
-+{
-+    bool pending = s->regs[R_EFUSE_ISR] & s->regs[R_EFUSE_IMR];
-+    qemu_set_irq(s->irq, pending);
-+}
-+
-+static void zynqmp_efuse_isr_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    zynqmp_efuse_update_irq(s);
-+}
-+
-+static uint64_t zynqmp_efuse_ier_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_EFUSE_IMR] |= val;
-+    zynqmp_efuse_update_irq(s);
-+    return 0;
-+}
-+
-+static uint64_t zynqmp_efuse_idr_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_EFUSE_IMR] &= ~val;
-+    zynqmp_efuse_update_irq(s);
-+    return 0;
-+}
-+
-+static void zynqmp_efuse_pgm_addr_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    unsigned bit = val64;
-+    unsigned page = FIELD_EX32(bit, EFUSE_PGM_ADDR, EFUSE);
-+    bool puf_prot = false;
-+    const char *errmsg = NULL;
-+
-+    /* Allow only valid array, and adjust for skipped array 1 */
-+    switch (page) {
-+    case 0:
-+        break;
-+    case 2 ... 3:
-+        bit = FIELD_DP32(bit, EFUSE_PGM_ADDR, EFUSE, page - 1);
-+        puf_prot = xlnx_efuse_get_bit(s->efuse, EFUSE_PUF_SYN_WRLK);
-+        break;
-+    default:
-+        errmsg = "Invalid address";
-+        goto pgm_done;
-+    }
-+
-+    if (ARRAY_FIELD_EX32(s->regs, WR_LOCK, LOCK)) {
-+        errmsg = "Array write-locked";
-+        goto pgm_done;
-+    }
-+
-+    if (!ARRAY_FIELD_EX32(s->regs, CFG, PGM_EN)) {
-+        errmsg = "Array pgm-disabled";
-+        goto pgm_done;
-+    }
-+
-+    if (puf_prot) {
-+        errmsg = "PUF_HD-store write-locked";
-+        goto pgm_done;
-+    }
-+
-+    if (ARRAY_FIELD_EX32(s->regs, SEC_CTRL, AES_WRLK)
-+        && bit >= EFUSE_AES_START && bit <= EFUSE_AES_END) {
-+        errmsg = "AES key-store Write-locked";
-+        goto pgm_done;
-+    }
-+
-+    if (!xlnx_efuse_set_bit(s->efuse, bit)) {
-+        errmsg = "Write failed";
-+    }
-+
-+ pgm_done:
-+    if (!errmsg) {
-+        ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_ERROR, 0);
-+    } else {
-+        ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_ERROR, 1);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s - eFuse write error: %s; addr=0x%x\n",
-+                      object_get_canonical_path(OBJECT(s)),
-+                      errmsg, (unsigned)val64);
-+    }
-+
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_DONE, 1);
-+    zynqmp_efuse_update_irq(s);
-+}
-+
-+static void zynqmp_efuse_rd_addr_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+
-+    /*
-+     * Grant reads only to allowed bits; reference sources:
-+     * 1/ XilSKey - XilSKey_ZynqMp_EfusePs_ReadRow()
-+     * 2/ UG1085, v2.0, table 12-13
-+     * (note: enumerates the masks as <first, last> per described in
-+     *  references to avoid mental translation).
-+     */
-+#define COL_MASK(L_, H_) \
-+    ((uint32_t)MAKE_64BIT_MASK((L_), (1 + (H_) - (L_))))
-+
-+    static const uint32_t ary0_col_mask[] = {
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_TBITS_ROW */
-+        [0]  = COL_MASK(28, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_USR{0:7}_FUSE_ROW */
-+        [8]  = COL_MASK(0, 31), [9]  = COL_MASK(0, 31),
-+        [10] = COL_MASK(0, 31), [11] = COL_MASK(0, 31),
-+        [12] = COL_MASK(0, 31), [13] = COL_MASK(0, 31),
-+        [14] = COL_MASK(0, 31), [15] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_MISC_USR_CTRL_ROW */
-+        [16] = COL_MASK(0, 7) | COL_MASK(10, 16),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PBR_BOOT_ERR_ROW */
-+        [17] = COL_MASK(0, 2),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PUF_CHASH_ROW */
-+        [20] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PUF_AUX_ROW */
-+        [21] = COL_MASK(0, 23) | COL_MASK(29, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_SEC_CTRL_ROW */
-+        [22] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_SPK_ID_ROW */
-+        [23] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PPK0_START_ROW */
-+        [40] = COL_MASK(0, 31), [41] = COL_MASK(0, 31),
-+        [42] = COL_MASK(0, 31), [43] = COL_MASK(0, 31),
-+        [44] = COL_MASK(0, 31), [45] = COL_MASK(0, 31),
-+        [46] = COL_MASK(0, 31), [47] = COL_MASK(0, 31),
-+        [48] = COL_MASK(0, 31), [49] = COL_MASK(0, 31),
-+        [50] = COL_MASK(0, 31), [51] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PPK1_START_ROW */
-+        [52] = COL_MASK(0, 31), [53] = COL_MASK(0, 31),
-+        [54] = COL_MASK(0, 31), [55] = COL_MASK(0, 31),
-+        [56] = COL_MASK(0, 31), [57] = COL_MASK(0, 31),
-+        [58] = COL_MASK(0, 31), [59] = COL_MASK(0, 31),
-+        [60] = COL_MASK(0, 31), [61] = COL_MASK(0, 31),
-+        [62] = COL_MASK(0, 31), [63] = COL_MASK(0, 31),
-+    };
-+
-+    uint32_t col_mask = COL_MASK(0, 31);
-+#undef COL_MASK
-+
-+    uint32_t efuse_idx = s->regs[R_EFUSE_RD_ADDR];
-+    uint32_t efuse_ary = FIELD_EX32(efuse_idx, EFUSE_RD_ADDR, EFUSE);
-+    uint32_t efuse_row = FIELD_EX32(efuse_idx, EFUSE_RD_ADDR, ROW);
-+
-+    switch (efuse_ary) {
-+    case 0:     /* Various */
-+        if (efuse_row >= ARRAY_SIZE(ary0_col_mask)) {
-+            goto denied;
-+        }
-+
-+        col_mask = ary0_col_mask[efuse_row];
-+        if (!col_mask) {
-+            goto denied;
-+        }
-+        break;
-+    case 2:     /* PUF helper data, adjust for skipped array 1 */
-+    case 3:
-+        val64 = FIELD_DP32(efuse_idx, EFUSE_RD_ADDR, EFUSE, efuse_ary - 1);
-+        break;
-+    default:
-+        goto denied;
-+    }
-+
-+    s->regs[R_EFUSE_RD_DATA] = xlnx_efuse_get_row(s->efuse, val64) & col_mask;
-+
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_ERROR, 0);
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_DONE, 1);
-+    zynqmp_efuse_update_irq(s);
-+    return;
-+
-+ denied:
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "%s: Denied efuse read from array %u, row %u\n",
-+                  object_get_canonical_path(OBJECT(s)),
-+                  efuse_ary, efuse_row);
-+
-+    s->regs[R_EFUSE_RD_DATA] = 0;
-+
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_ERROR, 1);
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_DONE, 0);
-+    zynqmp_efuse_update_irq(s);
-+}
-+
-+static void zynqmp_efuse_aes_crc_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    bool ok;
-+
-+    ok = xlnx_efuse_k256_check(s->efuse, (uint32_t)val64, EFUSE_AES_START);
-+
-+    ARRAY_FIELD_DP32(s->regs, STATUS, AES_CRC_PASS, (ok ? 1 : 0));
-+    ARRAY_FIELD_DP32(s->regs, STATUS, AES_CRC_DONE, 1);
-+
-+    s->regs[R_EFUSE_AES_CRC] = 0;   /* crc value is write-only */
-+}
-+
-+static uint64_t zynqmp_efuse_cache_load_prew(RegisterInfo *reg,
-+                                             uint64_t valu64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+
-+    if (valu64 & R_EFUSE_CACHE_LOAD_LOAD_MASK) {
-+        zynqmp_efuse_sync_cache(s, FBIT_UNKNOWN);
-+        ARRAY_FIELD_DP32(s->regs, STATUS, CACHE_DONE, 1);
-+        zynqmp_efuse_update_irq(s);
-+    }
-+
-+    return 0;
-+}
-+
-+static uint64_t zynqmp_efuse_wr_lock_prew(RegisterInfo *reg, uint64_t val)
-+{
-+    return val == 0xDF0D ? 0 : 1;
-+}
-+
-+static RegisterAccessInfo zynqmp_efuse_regs_info[] = {
-+    {   .name = "WR_LOCK",  .addr = A_WR_LOCK,
-+        .reset = 0x1,
-+        .pre_write = zynqmp_efuse_wr_lock_prew,
-+    },{ .name = "CFG",  .addr = A_CFG,
-+    },{ .name = "STATUS",  .addr = A_STATUS,
-+        .rsvd = 0x8,
-+        .ro = 0xff,
-+    },{ .name = "EFUSE_PGM_ADDR",  .addr = A_EFUSE_PGM_ADDR,
-+         .post_write = zynqmp_efuse_pgm_addr_postw
-+    },{ .name = "EFUSE_RD_ADDR",  .addr = A_EFUSE_RD_ADDR,
-+        .rsvd = 0x1f,
-+        .post_write = zynqmp_efuse_rd_addr_postw,
-+    },{ .name = "EFUSE_RD_DATA",  .addr = A_EFUSE_RD_DATA,
-+        .ro = 0xffffffff,
-+    },{ .name = "TPGM",  .addr = A_TPGM,
-+    },{ .name = "TRD",  .addr = A_TRD,
-+        .reset = 0x1b,
-+    },{ .name = "TSU_H_PS",  .addr = A_TSU_H_PS,
-+        .reset = 0xff,
-+    },{ .name = "TSU_H_PS_CS",  .addr = A_TSU_H_PS_CS,
-+        .reset = 0xb,
-+    },{ .name = "TSU_H_CS",  .addr = A_TSU_H_CS,
-+        .reset = 0x7,
-+    },{ .name = "EFUSE_ISR",  .addr = A_EFUSE_ISR,
-+        .rsvd = 0x7fffffe0,
-+        .w1c = 0x8000001f,
-+        .post_write = zynqmp_efuse_isr_postw,
-+    },{ .name = "EFUSE_IMR",  .addr = A_EFUSE_IMR,
-+        .reset = 0x8000001f,
-+        .rsvd = 0x7fffffe0,
-+        .ro = 0xffffffff,
-+    },{ .name = "EFUSE_IER",  .addr = A_EFUSE_IER,
-+        .rsvd = 0x7fffffe0,
-+        .pre_write = zynqmp_efuse_ier_prew,
-+    },{ .name = "EFUSE_IDR",  .addr = A_EFUSE_IDR,
-+        .rsvd = 0x7fffffe0,
-+        .pre_write = zynqmp_efuse_idr_prew,
-+    },{ .name = "EFUSE_CACHE_LOAD",  .addr = A_EFUSE_CACHE_LOAD,
-+        .pre_write = zynqmp_efuse_cache_load_prew,
-+    },{ .name = "EFUSE_PGM_LOCK",  .addr = A_EFUSE_PGM_LOCK,
-+    },{ .name = "EFUSE_AES_CRC",  .addr = A_EFUSE_AES_CRC,
-+        .post_write = zynqmp_efuse_aes_crc_postw,
-+    },{ .name = "EFUSE_TBITS_PRGRMG_EN",  .addr = A_EFUSE_TBITS_PRGRMG_EN,
-+        .reset = R_EFUSE_TBITS_PRGRMG_EN_TBITS_PRGRMG_EN_MASK,
-+    },{ .name = "DNA_0",  .addr = A_DNA_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "DNA_1",  .addr = A_DNA_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "DNA_2",  .addr = A_DNA_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "IPDISABLE",  .addr = A_IPDISABLE,
-+        .ro = 0xffffffff,
-+    },{ .name = "SYSOSC_CTRL",  .addr = A_SYSOSC_CTRL,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_0",  .addr = A_USER_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_1",  .addr = A_USER_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_2",  .addr = A_USER_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_3",  .addr = A_USER_3,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_4",  .addr = A_USER_4,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_5",  .addr = A_USER_5,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_6",  .addr = A_USER_6,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_7",  .addr = A_USER_7,
-+        .ro = 0xffffffff,
-+    },{ .name = "MISC_USER_CTRL",  .addr = A_MISC_USER_CTRL,
-+        .ro = 0xffffffff,
-+    },{ .name = "ROM_RSVD",  .addr = A_ROM_RSVD,
-+        .ro = 0xffffffff,
-+    },{ .name = "PUF_CHASH", .addr = A_PUF_CHASH,
-+        .ro = 0xffffffff,
-+    },{ .name = "PUF_MISC",  .addr = A_PUF_MISC,
-+        .ro = 0xffffffff,
-+    },{ .name = "SEC_CTRL",  .addr = A_SEC_CTRL,
-+        .ro = 0xffffffff,
-+    },{ .name = "SPK_ID",  .addr = A_SPK_ID,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_0",  .addr = A_PPK0_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_1",  .addr = A_PPK0_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_2",  .addr = A_PPK0_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_3",  .addr = A_PPK0_3,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_4",  .addr = A_PPK0_4,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_5",  .addr = A_PPK0_5,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_6",  .addr = A_PPK0_6,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_7",  .addr = A_PPK0_7,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_8",  .addr = A_PPK0_8,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_9",  .addr = A_PPK0_9,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_10",  .addr = A_PPK0_10,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_11",  .addr = A_PPK0_11,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_0",  .addr = A_PPK1_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_1",  .addr = A_PPK1_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_2",  .addr = A_PPK1_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_3",  .addr = A_PPK1_3,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_4",  .addr = A_PPK1_4,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_5",  .addr = A_PPK1_5,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_6",  .addr = A_PPK1_6,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_7",  .addr = A_PPK1_7,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_8",  .addr = A_PPK1_8,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_9",  .addr = A_PPK1_9,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_10",  .addr = A_PPK1_10,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_11",  .addr = A_PPK1_11,
-+        .ro = 0xffffffff,
-+    }
-+};
-+
-+static void zynqmp_efuse_reg_write(void *opaque, hwaddr addr,
-+                                   uint64_t data, unsigned size)
-+{
-+    RegisterInfoArray *reg_array = opaque;
-+    XlnxZynqMPEFuse *s;
-+    Object *dev;
-+
-+    assert(reg_array != NULL);
-+
-+    dev = reg_array->mem.owner;
-+    assert(dev);
-+
-+    s = ZYNQMP_EFUSE(dev);
-+
-+    if (addr != A_WR_LOCK && s->regs[R_WR_LOCK]) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s[reg_0x%02lx]: Attempt to write locked register.\n",
-+                      object_get_canonical_path(OBJECT(s)), (long)addr);
-+    } else {
-+        register_write_memory(opaque, addr, data, size);
-+    }
-+}
-+
-+static const MemoryRegionOps zynqmp_efuse_ops = {
-+    .read = register_read_memory,
-+    .write = zynqmp_efuse_reg_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void zynqmp_efuse_register_reset(RegisterInfo *reg)
-+{
-+    if (!reg->data || !reg->access) {
-+        return;
-+    }
-+
-+    /* Reset must not trigger some registers' writers */
-+    switch (reg->access->addr) {
-+    case A_EFUSE_AES_CRC:
-+        *(uint32_t *)reg->data = reg->access->reset;
-+        return;
-+    }
-+
-+    register_reset(reg);
-+}
-+
-+static void zynqmp_efuse_reset(DeviceState *dev)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(dev);
-+    unsigned int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-+        zynqmp_efuse_register_reset(&s->regs_info[i]);
-+    }
-+
-+    zynqmp_efuse_sync_cache(s, FBIT_UNKNOWN);
-+    ARRAY_FIELD_DP32(s->regs, STATUS, CACHE_DONE, 1);
-+    zynqmp_efuse_update_irq(s);
-+}
-+
-+static void zynqmp_efuse_realize(DeviceState *dev, Error **errp)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(dev);
-+    const char *prefix = object_get_canonical_path(OBJECT(dev));
-+
-+    if (!s->efuse) {
-+        error_setg(&error_abort, "%s: XLN-EFUSE not connected", prefix);
-+    }
-+
-+    s->efuse->dev = dev;
-+}
-+
-+static void zynqmp_efuse_init(Object *obj)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    RegisterInfoArray *reg_array;
-+
-+    memory_region_init(&s->iomem, obj, TYPE_XLNX_ZYNQMP_EFUSE, R_MAX * 4);
-+    reg_array =
-+        register_init_block32(DEVICE(obj), zynqmp_efuse_regs_info,
-+                              ARRAY_SIZE(zynqmp_efuse_regs_info),
-+                              s->regs_info, s->regs,
-+                              &zynqmp_efuse_ops,
-+                              ZYNQMP_EFUSE_ERR_DEBUG,
-+                              R_MAX * 4);
-+    memory_region_add_subregion(&s->iomem, 0, &reg_array->mem);
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+}
-+
-+static const VMStateDescription vmstate_efuse = {
-+    .name = TYPE_XLNX_ZYNQMP_EFUSE,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .minimum_version_id_old = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, XlnxZynqMPEFuse, R_MAX),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static Property zynqmp_efuse_props[] = {
-+    DEFINE_PROP_LINK("efuse",
-+                     XlnxZynqMPEFuse, efuse,
-+                     TYPE_XLNX_EFUSE, XLNXEFuse *),
-+
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void zynqmp_efuse_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = zynqmp_efuse_reset;
-+    dc->realize = zynqmp_efuse_realize;
-+    dc->vmsd = &vmstate_efuse;
-+    device_class_set_props(dc, zynqmp_efuse_props);
-+}
-+
-+
-+static const TypeInfo efuse_info = {
-+    .name          = TYPE_XLNX_ZYNQMP_EFUSE,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(XlnxZynqMPEFuse),
-+    .class_init    = zynqmp_efuse_class_init,
-+    .instance_init = zynqmp_efuse_init,
-+};
-+
-+static void efuse_register_types(void)
-+{
-+    type_register_static(&efuse_info);
-+}
-+
-+type_init(efuse_register_types)
-diff --git a/include/hw/nvram/xlnx-zynqmp-efuse.h b/include/hw/nvram/xlnx-zynqmp-efuse.h
-new file mode 100644
-index 0000000000..97ac521ae4
---- /dev/null
-+++ b/include/hw/nvram/xlnx-zynqmp-efuse.h
-@@ -0,0 +1,45 @@
-+/*
-+ * Copyright (c) 2021 Xilinx Inc.
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+#ifndef XLNX_ZYNQMP_EFUSE_H
-+#define XLNX_ZYNQMP_EFUSE_H
-+
-+#include "qemu/osdep.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+#include "hw/nvram/xlnx-efuse.h"
-+
-+#define TYPE_XLNX_ZYNQMP_EFUSE "xlnx,zynqmp-efuse"
-+
-+#define XLNX_ZYNQMP_EFUSE_R_MAX ((0x10fc / 4) + 1)
-+
-+typedef struct XlnxZynqMPEFuse {
-+    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    XLNXEFuse *efuse;
-+    uint32_t regs[XLNX_ZYNQMP_EFUSE_R_MAX];
-+    RegisterInfo regs_info[XLNX_ZYNQMP_EFUSE_R_MAX];
-+} XlnxZynqMPEFuse;
-+
-+#endif
--- 
-2.25.1
-
+PiBJIHRoaW5rIHRoaXMgd2lsbCBiZSBtb3JlIGNsZWFyIG9uY2UgSSBnZXQgdGhlIHBhdGNoIHBv
+c3RlZCAod2hpY2ggSSBoYXZlbid0IHN0YXJ0ZWQNCj4gd3JpdGluZyB5ZXQpLiBJJ2xsIHRyeSB0
+byBnZXQgaXQgcG9zdGVkIGJ5IHRvbW9ycm93IGV2ZW5pbmcgdGhvdWdoLCBzaW5jZSBJIGhhdmUN
+Cj4gdmFjYXRpb24gb24gRnJpZGF5Lg0KDQpXaGlsZSBBbmRyZXcgaXMgd29ya2luZyBvbiB0aGUg
+cGF0Y2ggaW4gYSBodXJyeSwgDQpJJ20gc29ycnksIEknbGwgYmUgb24gdmFjYXRpb24gZm9yIGEg
+d2hpbGUgc3RhcnRpbmcgRnJpZGF5IHRvbywNCnNvIG15IHJlcGx5IHdpbGwgYmUgZGVsYXllZC4N
+Cg0KQmVzdCByZWdhcmRzLg0KDQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJv
+bTogQW5kcmV3IEpvbmVzIDxkcmpvbmVzQHJlZGhhdC5jb20+DQo+IFNlbnQ6IFdlZG5lc2RheSwg
+QXVndXN0IDE4LCAyMDIxIDU6NTggUE0NCj4gVG86IElzaGlpLCBTaHV1aWNoaXJvdS/nn7PkupUg
+5ZGo5LiA6YOOIDxpc2hpaS5zaHV1aWNoaXJAZnVqaXRzdS5jb20+DQo+IENjOiBSaWNoYXJkIEhl
+bmRlcnNvbiA8cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZz47DQo+IHBldGVyLm1heWRlbGxA
+bGluYXJvLm9yZzsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnDQo+
+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjQgMS8zXSB0YXJnZXQtYXJtOiBBZGQgc3VwcG9ydCBmb3Ig
+RnVqaXRzdSBBNjRGWA0KPiANCj4gT24gV2VkLCBBdWcgMTgsIDIwMjEgYXQgMDg6Mjk6MTVBTSAr
+MDAwMCwgaXNoaWkuc2h1dWljaGlyQGZ1aml0c3UuY29tIHdyb3RlOg0KPiA+DQo+ID4gV2UgYXBw
+cmVjaWF0ZSBldmVyeW9uZSdzIGNvbW1lbnRzLg0KPiA+IEJlZm9yZSBtYWtpbmcgdGhlIFY1IHBh
+dGNoLCBwbGVhc2UgbGV0IG1lIGNoZWNrIHRoZSBwYXRjaCBjb250ZW50cy4NCj4gPg0KPiA+ID4g
+VGhpcyBsb29rcyByZWFzb25hYmxlIHRvIG1lLCBidXQgeW91IGFsc28gbmVlZCB0aGUgJ3N2ZScg
+cHJvcGVydHkNCj4gPiA+IHRoYXQgc3RhdGVzIHN2ZSBpbiBzdXBwb3J0ZWQgYXQgYWxsLg0KPiA+
+ID4gPiA+IFNvIG1heWJlIHdlIHNob3VsZCBqdXN0IGdvIGFoZWFkIGFuZCBhZGQgYWxsIHN2ZSog
+cHJvcGVydGllcywNCj4gPg0KPiA+IEluIHJlc3BvbnNlIHRvIHRoZSBhYm92ZSBjb21tZW50LA0K
+PiA+IFdlIHVuZGVyc3Rvb2QgdGhhdCB0aGUgc3ZlIHByb3BlcnR5IHdpbGwgYmUgYWRkZWQgdG8g
+dGhlIHY0IHBhdGNoLg0KPiA+DQo+ID4gaS5lLg0KPiA+IChRRU1VKSBxdWVyeS1jcHUtbW9kZWwt
+ZXhwYW5zaW9uIHR5cGU9ZnVsbCBtb2RlbD17Im5hbWUiOiJhNjRmeCJ9DQo+ID4geyJyZXR1cm4i
+OiB7Im1vZGVsIjogeyJuYW1lIjogImE2NGZ4IiwgInByb3BzIjogeyJzdmUxMjgiOiBmYWxzZSwN
+Cj4gPiAic3ZlMjU2IjogdHJ1ZSwgInN2ZSI6IHRydWUsICJzdmU1MTIiOiB0cnVlLCAiYWFyY2g2
+NCI6IHRydWUsICJwbXUiOg0KPiA+IHRydWV9fX19DQo+ID4NCj4gPiA+ID4gPiBidXQNCj4gPiA+
+ID4gPiB0aGVuIG1ha2Ugc3VyZSB0aGUgZGVmYXVsdCB2cSBtYXAgaXMgY29ycmVjdC4NCj4gPg0K
+PiA+IEZ1cnRoZXJtb3JlLCBXZSB1bmRlcnN0b29kIHRoYXQgSSBuZWVkIHRvIGFkZCB0aGUgYWJv
+dmUgcHJvY2VzcyBhcyB3ZWxsLCBpcw0KPiB0aGF0IGNvcnJlY3Q/DQo+ID4NCj4gPiA+IFRoYXQn
+cyBhIGdvb2QgaWRlYS4gSSdsbCBzZW5kIGEgcGF0Y2ggd2l0aCB5b3VyIHN1Z2dlc3RlZC1ieS4N
+Cj4gPg0KPiA+IElmIHRoYXQncyBjb3JyZWN0LA0KPiA+IEluIHRoZSBjdXJyZW50IHY0IHBhdGNo
+LCBpbiB0aGUgYWFyY2g2NF9hNjRmeF9pbml0Zm4gZnVuY3Rpb24sIHRoZQ0KPiA+IGE2NGZ4X2Nw
+dV9zZXRfc3ZlIGZ1bmN0aW9uIGlzIGV4ZWN1dGVkIHRvIHNldCB0aGUgU1ZFIHByb3BlcnR5LCBh
+bmQNCj4gPiB0aGUgYXJtX2NwdV9zdmVfZmluYWxpemUgZnVuY3Rpb24gaXMgbm90IGNhbGxlZC4N
+Cj4gPg0KPiA+IEluIHdoaWNoIGZ1bmN0aW9uIGlzIGl0IGFwcHJvcHJpYXRlIHRvIGV4ZWN1dGUg
+dGhlIG1vZHVsbyBtYXhfdnENCj4gPiBmdW5jdGlvbiAob3IgZXF1aXZhbGVudCBwcm9jZXNzKT8N
+Cj4gPg0KPiA+IElmIFdlIGFyZSBub3QgdW5kZXJzdGFuZGluZyB5b3UgY29ycmVjdGx5LCBXZSB3
+b3VsZCBhcHByZWNpYXRlIHlvdXINCj4gPiBjb21tZW50cy4NCj4gDQo+IFJpY2hhcmQncyBzdWdn
+ZXN0aW9uIGlzIHRvIGdlbmVyYWxpemUgdGhlICJzdXBwb3J0ZWQiIGJpdG1hcCBjb25jZXB0LCB3
+aGljaCBpcw0KPiBjdXJyZW50bHkgb25seSB1c2VkIGZvciBLVk0sIGluIG9yZGVyIHRvIGFsc28g
+dXNlIGl0IGZvciBUQ0cgY3B1IG1vZGVscy4gVGhlICdtYXgnDQo+IGNwdSB0eXBlIHdpbGwgaGF2
+ZSB0aGUgdHJpdmlhbCBhbGwtc2V0IHN1cHBvcnRlZCBiaXRtYXAsIGJ1dCB0aGUgYTY0Znggd2ls
+bCBoYXZlIGENCj4gc3BlY2lmaWMgb25lLiBJIHBsYW4gdG8gZG8gdGhpcyAic3VwcG9ydGVkIiBi
+aXRtYXAgZ2VuZXJhbGl6YXRpb24gYW5kIGFwcGx5IGl0IHRvIHRoZQ0KPiBUQ0cgbWF4IGNwdSB0
+eXBlLiBZb3UnbGwgbmVlZCB0byByZWJhc2UgdGhpcyBzZXJpZXMgb24gdGhvc2UgcGF0Y2hlcyBh
+bmQgcHJvdmlkZQ0KPiB0aGUgYTY0Znggc3VwcG9ydGVkIGJpdG1hcC4NCj4gDQo+IEkgdGhpbmsg
+dGhpcyB3aWxsIGJlIG1vcmUgY2xlYXIgb25jZSBJIGdldCB0aGUgcGF0Y2ggcG9zdGVkICh3aGlj
+aCBJIGhhdmVuJ3Qgc3RhcnRlZA0KPiB3cml0aW5nIHlldCkuIEknbGwgdHJ5IHRvIGdldCBpdCBw
+b3N0ZWQgYnkgdG9tb3Jyb3cgZXZlbmluZyB0aG91Z2gsIHNpbmNlIEkgaGF2ZQ0KPiB2YWNhdGlv
+biBvbiBGcmlkYXkuDQo+IA0KPiBUaGFua3MsDQo+IGRyZXcNCj4gDQo+IA0KPiA+DQo+ID4gQmVz
+dCByZWdhcmRzLg0KPiA+DQo+ID4gPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiA+ID4g
+RnJvbTogQW5kcmV3IEpvbmVzIDxkcmpvbmVzQHJlZGhhdC5jb20+DQo+ID4gPiBTZW50OiBXZWRu
+ZXNkYXksIEF1Z3VzdCAxOCwgMjAyMSAxOjI4IEFNDQo+ID4gPiBUbzogUmljaGFyZCBIZW5kZXJz
+b24gPHJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmc+DQo+ID4gPiBDYzogSXNoaWksIFNodXVp
+Y2hpcm91L+efs+S6lSDlkajkuIDpg44gPGlzaGlpLnNodXVpY2hpckBmdWppdHN1LmNvbT47DQo+
+ID4gPiBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IHFlbXUtYXJtQG5vbmdudS5vcmc7IHFlbXUt
+ZGV2ZWxAbm9uZ251Lm9yZw0KPiA+ID4gU3ViamVjdDogUmU6IFtQQVRDSCB2NCAxLzNdIHRhcmdl
+dC1hcm06IEFkZCBzdXBwb3J0IGZvciBGdWppdHN1DQo+ID4gPiBBNjRGWA0KPiA+ID4NCj4gPiA+
+IE9uIFR1ZSwgQXVnIDE3LCAyMDIxIGF0IDA1OjUzOjM0QU0gLTEwMDAsIFJpY2hhcmQgSGVuZGVy
+c29uIHdyb3RlOg0KPiA+ID4gPiBPbiA4LzE3LzIxIDU6MzYgQU0sIEFuZHJldyBKb25lcyB3cm90
+ZToNCj4gPiA+ID4gPiBPbiBUdWUsIEF1ZyAxNywgMjAyMSBhdCAwNToyMzoxN0FNIC0xMDAwLCBS
+aWNoYXJkIEhlbmRlcnNvbiB3cm90ZToNCj4gPiA+ID4gPiA+IE9uIDgvMTcvMjEgMTo1NiBBTSwg
+QW5kcmV3IEpvbmVzIHdyb3RlOg0KPiA+ID4gPiA+ID4gPiBJIGd1ZXNzIGl0J3MgZmluZS4gWW91
+IGNvdWxkIGVhc2lseSBjcmVhdGUgYSBuZXcNCj4gPiA+ID4gPiA+ID4gY3B1X2FybV9zZXRfc3Zl
+X3ZxKCkgd2hpY2ggd291bGQgZm9yYmlkIGNoYW5naW5nIHRoZQ0KPiA+ID4gPiA+ID4gPiBwcm9w
+ZXJ0aWVzIGlmIHlvdSB3YW50ZWQgdG8sIGJ1dCB0aGVuIHdlIG5lZWQgdG8gYW5zd2VyDQo+ID4g
+PiA+ID4gPiA+IFBldGVyJ3MgcXVlc3Rpb24gaW4gb3JkZXIgdG8gc2VlIGlmIHRoZXJlJ3MgYSBw
+cmVjZWRlbnQgZm9yIHRoYXQgdHlwZSBvZg0KPiBwcm9wZXJ0eS4NCj4gPiA+ID4gPiA+DQo+ID4g
+PiA+ID4gPiBJIGRvbid0IHNlZSB0aGUgcG9pbnQgaW4gcmVhZC1vbmx5IHByb3BlcnRpZXMuICBJ
+ZiB0aGUgdXNlcg0KPiA+ID4gPiA+ID4gd2FudHMgdG8gc2V0IG5vbi1zdGFuZGFyZCB2YWx1ZXMg
+b24gdGhlIGNvbW1hbmQtbGluZSwgbGV0DQo+ID4gPiA+ID4gPiB0aGVtLiAgV2hhdCBpcyBtb3N0
+IGltcG9ydGFudCBpcyBnZXR0aW5nIHRoZSBjb3JyZWN0IGRlZmF1bHQgZnJvbSAnLWNwdQ0KPiBh
+NjRmeCcuDQo+ID4gPiA+ID4gPg0KPiA+ID4gPiA+DQo+ID4gPiA+ID4gU28gbWF5YmUgd2Ugc2hv
+dWxkIGp1c3QgZ28gYWhlYWQgYW5kIGFkZCBhbGwgc3ZlKiBwcm9wZXJ0aWVzLA0KPiA+ID4gPiA+
+IGJ1dCB0aGVuIG1ha2Ugc3VyZSB0aGUgZGVmYXVsdCB2cSBtYXAgaXMgY29ycmVjdC4NCj4gPiA+
+ID4NCj4gPiA+ID4gSSB0aGluayB0aGF0J3MgdGhlIHJpZ2h0IGFuc3dlci4NCj4gPiA+ID4NCj4g
+PiA+ID4gUHJlc2VudGx5IHdlIGhhdmUgYSBrdm1fc3VwcG9ydGVkIHZhcmlhYmxlIHRoYXQncyBp
+bml0aWFsaXplZCBieQ0KPiA+ID4gPiBrdm1fYXJtX3N2ZV9nZXRfdmxzKCkuICBJIHRoaW5rIHdl
+IHdhbnQgdG8gcmVuYW1lIHRoYXQgdmFyaWFibGUNCj4gPiA+ID4gYW5kIHByb3ZpZGUgYSB2ZXJz
+aW9uIG9mIHRoYXQgZnVuY3Rpb24gZm9yIHRjZy4gUHJvYmFibHkgd2Ugc2hvdWxkDQo+ID4gPiA+
+IGhhdmUgZG9uZSB0aGF0IGJlZm9yZSwgd2l0aCBhIHRyaXZpYWwgZnVuY3Rpb24gZm9yIC1jcHUg
+bWF4IHRvIHNldCBhbGwgYml0cy4NCj4gPiA+ID4NCj4gPiA+ID4gVGhlbiBlbGltaW5hdGUgbW9z
+dCBvZiB0aGUgb3RoZXIga3ZtX2VuYWJsZWQoKSBjaGVja3MgaW4NCj4gPiA+ID4gYXJtX2NwdV9z
+dmVfZmluYWxpemUuICBJIHRoaW5rIHRoZSBvbmx5IG9uZSB3ZSBrZWVwIGlzIHRoZSBsYXN0LA0K
+PiA+ID4gPiB3aGVyZSB3ZSB2ZXJpZnkgdGhhdCB0aGUgZmluYWwgc3ZlX3ZxX21hcCBtYXRjaGVz
+IGt2bV9lbmFibGVkDQo+ID4gPiA+IGV4YWN0bHksIG1vZHVsbw0KPiA+ID4gbWF4X3ZxLg0KPiA+
+ID4gPg0KPiA+ID4gPiBUaGlzIHNob3VsZCBtaW5pbWl6ZSB0aGUgZGlmZmVyZW5jZXMgaW4gYmVo
+YXZpb3VyIGJldHdlZW4gdGNnIGFuZCBrdm0uDQo+ID4gPg0KPiA+ID4gVGhhdCdzIGEgZ29vZCBp
+ZGVhLiBJJ2xsIHNlbmQgYSBwYXRjaCB3aXRoIHlvdXIgc3VnZ2VzdGVkLWJ5Lg0KPiA+ID4NCj4g
+PiA+IFRoYW5rcywNCj4gPiA+IGRyZXcNCj4gPg0KDQo=

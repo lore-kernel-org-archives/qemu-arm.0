@@ -1,127 +1,109 @@
-Received: by 2002:a05:6512:3102:0:0:0:0 with SMTP id n2csp380388lfb;
-        Thu, 19 Aug 2021 07:36:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwm+AoPbK9yh6Q5CWDWCVqOcYMU9PELI+ZSMM07GB8LoybpuOf9VpV/mPZSzswNC8aGM3yP
-X-Received: by 2002:a67:ecd7:: with SMTP id i23mr12812308vsp.43.1629383817449;
-        Thu, 19 Aug 2021 07:36:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629383817; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp389514lfg;
+        Thu, 19 Aug 2021 07:39:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKpzgTD5vD2yfyB/TcTv+tmw3BbhxTilqQRAyguEVtBHbE+rdvKwV73SW3VxxZy5T0yqb2
+X-Received: by 2002:a9f:2286:: with SMTP id 6mr11188023uan.53.1629383996957;
+        Thu, 19 Aug 2021 07:39:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629383996; cv=none;
         d=google.com; s=arc-20160816;
-        b=aHj2y7N1/zwGFxhE9zFdd+mTG9bEiBw0h5I/XVUIjCwkeO5IxFciFetP+0dYThRB5H
-         GSj2ixnXtnr4c4TZruJyepBy2ZzwITnf5K2BcjzKEXEDL7mZXn9K3FLmzFW5jMXsza8X
-         VUaE7VaCSMl3SfLHwkPmBlL/0xWnyt4aAUmvsVT+d7Gb6IPkQ02kwOJVSQswW4l15PHv
-         YaFvkR5LYYne8V6XjyhzSljxrWD1N1Nj1ru4cHj5OFVfwRAiad/YaY6DN1fhvsyQZB/d
-         MYfA3fiQ9XNYiXKxJZaoh8h9XhDiFknJfjOfgF6X2HEsvbKuEcS/kATK/+jliyD+8tvV
-         5B/g==
+        b=C4il2u0/65I+rUO57IdpDtSUkFUdRmfLeZZiVqgVhysmry7PRKIVkUWszzZA2h9fGD
+         55g0pClO1r1mDA1ogjVotQwuyc0WAqNVUSB9xnIo+XxzXj2T8dis+Ts8fjBmxrtDJEjQ
+         4ewyepe7eQxSn2c1ccojpK2MAwVcOeyq840GbINE7imG7hX9wypChnqybBoc6yuxsF8s
+         YeOy3N4inXyQjKl+HVTKl82om5u8XkycPwRSidzhyvbTQecI1uFGVKZHm9Wu8v54dsLP
+         EtGubkcABn1ex0uwtg0VeeRCUgygfgOqQ34k+dooABph1v8q8gu1mBsNDQq1flViiejX
+         NiqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=GnvmcR9nr2c0K4VyZDFjDiNXdISt6DLhK5k4CQjqItg=;
-        b=am2Sou0erLIyikL9vzv5zWMyt9StDFjp6IQdZeyAf5c61HTzewk9+WaSMeAmIKPeAC
-         XVasIyPejo86dtCtzHBcHn1vrQQvw3mSKGjAU1ejO1YqWMyMr57mqX+Df0r/ffe5WQEM
-         hTdNbIEApO1pi887MPuby4NAQI7JEy8Y7oErul+vvba6jDqEAHzaYvMsWvGtofzLj6Bw
-         oFTx/iiW5mzBzYa13FtkEakc6LOAP1GX7jpcQSdCR9zcpRYheyc88L1Lg+TULs2Vnrsx
-         lrxbWQoKG8akK5A06Lu36XbcwIMzGtgZkXQL3xGG1xbKc720mCbgeJ6FP3bNJyETDrug
-         SwBA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=vVVDXr9oIYYY2xqnY+5rphyvS0aAAxMcD4SzkQgbEXw=;
+        b=HXKjSI2ETvAkYYjwF+202VCMOODXd0+TNpdD0pt73TY6mvt4EHF+ZdTkOG/MfVc1sf
+         7SO/E5knqRtX6U9cwSKGAO/uRUxTdADiZfBXmd/juNRjfQgEG84VXEXTnd3wnN/S9RU5
+         fvk1N29T12VTb70V3HPjzFVKuUQYQwLQTDQIpshMIcXDtlqbijCLAoWDOQMzueNffEMl
+         QuuKcG2TqsVjKWJvaMzFrS1fO0CLaKWof7EZNyTxLPUJEaee4RLREAdeQEbPVMC4GOcW
+         VtyoHZEM/O2d1QfgA+PXv8fxfeiKpN234s9RgAmkmaP2XZ/CiCb96S9YeFun9qLzkPSm
+         dryg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=INangwoU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dniTonSe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7si1835293vsr.309.2021.08.19.07.36.36
+        by mx.google.com with ESMTPS id u5si2147311uae.108.2021.08.19.07.39.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Aug 2021 07:36:57 -0700 (PDT)
+        Thu, 19 Aug 2021 07:39:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=INangwoU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dniTonSe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39332 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGj9o-0008Bp-9K
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 10:36:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58374)
+	id 1mGjD2-0005o6-9H
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 10:39:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59006)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGj9g-0008Av-FC
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 10:36:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:20763)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGj9e-0002bz-Nr
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 10:36:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629383786;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GnvmcR9nr2c0K4VyZDFjDiNXdISt6DLhK5k4CQjqItg=;
- b=INangwoU1njyh9+PFBZFVvnFhBR7gdTo+/oHDNxUCtgZ5YQeYnx1XuqBqka4HoKEZGyFI8
- HFggA74olUlzd5J3iBHO52UwCRs8QO/lHC87P8URNkEemXr6/xUHDFq+r1m9NWt0lUxVdY
- rhdxtKGzJgF0RHwDP5VOzbHgspafc+I=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-126-FZ634WBxPfuofdIYwot0BA-1; Thu, 19 Aug 2021 10:36:22 -0400
-X-MC-Unique: FZ634WBxPfuofdIYwot0BA-1
-Received: by mail-wr1-f72.google.com with SMTP id
- q4-20020a05600000c400b00156d811312aso1756144wrx.3
- for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 07:36:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mGjCD-0005Bl-4j
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 10:39:05 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:35431)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mGjCB-0004ul-F2
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 10:39:04 -0400
+Received: by mail-ej1-x634.google.com with SMTP id w5so13452028ejq.2
+ for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 07:39:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=vVVDXr9oIYYY2xqnY+5rphyvS0aAAxMcD4SzkQgbEXw=;
+ b=dniTonSeDFX1dneOf5zf7LvbP9IuI3aS+CX1CJ+iLuSMqqnZSPXNGalmNoVUpC4yt8
+ QmmhGNSFZUHauycI0wzU+temQDnNnXUu6iJd+aPyHDvrShFmKSJq4kEQbcgQORVAGD/O
+ jvtIoXT4vjK/D2OPc7+PsOAEd4ozytmERbMcFRlODGcmoUPhdN+K1vsYOd2pOVhGAx3x
+ 9hmymFTWSW4mwy+kPbIEvB3b4uiASRVi+2nUjjA0gA9Eg90cJ3BUxCNfxW63ztOVUbPz
+ xZb7It77v/K3ZLmyt0JdoYI/U2KdY7HJREQAGa6mscE/FQw3gv0XK/Avu7z5nzHxe7j2
+ ypoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=GnvmcR9nr2c0K4VyZDFjDiNXdISt6DLhK5k4CQjqItg=;
- b=sbasurOd/4JNvDFiPATt/gj+vycVBo7HvBnGFdrnHi999xynPerpmTBRfnrA7Jv7uS
- BQ1ErDGri6VDHtuSL5TTw+wYpcVphTf92mptj+UGkS09/i5f+5J+3na27tPdZEP6xqWb
- vNfzhy8ofXMKQBgkXBLJ7SdLsiQToL74Z/2Yv7QzgaXeaA0ACx018Rjr+zlWZBFneuTS
- l7nQD76iQofskzvBO1ucxAMhAJyXzci9orAW8e9xAJA+9Yxx1u2QjJWE893j8mUxB0hh
- TV6a1XP+iCoLa3jL/U6K8ZJRnVypEmRBWi5x/3mobWkdYOrst//vwOUUHnJWgzSqITjc
- rQJA==
-X-Gm-Message-State: AOAM533CsvolMg4kq+BT8bQscPICzZaQ1mJbIHe39aS+VqRf6xxZoGLm
- GSC9IsKr0WxYH9DtziXdQwEyJi6DrxbPvr2gZ/PidjskHzjv25k9g/2rvO1xZwotYNE4Ry3xjNY
- Raf0RyP4oJfyW
-X-Received: by 2002:a05:6000:1186:: with SMTP id
- g6mr4285995wrx.147.1629383781390; 
- Thu, 19 Aug 2021 07:36:21 -0700 (PDT)
-X-Received: by 2002:a05:6000:1186:: with SMTP id
- g6mr4285975wrx.147.1629383781256; 
- Thu, 19 Aug 2021 07:36:21 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id d18sm3272562wrb.16.2021.08.19.07.36.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Aug 2021 07:36:20 -0700 (PDT)
-Subject: Re: [PATCH 2/6] memory: Introduce address_space_create()
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210819142039.2825366-1-philmd@redhat.com>
- <20210819142039.2825366-3-philmd@redhat.com>
- <CAFEAcA_GxyOYSfg+Su4iNrGNXyBB-KCfNQ+m+k9RywBGkQa08A@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <c2935c37-9c08-ed76-31d1-85d69d8c8877@redhat.com>
-Date: Thu, 19 Aug 2021 16:36:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=vVVDXr9oIYYY2xqnY+5rphyvS0aAAxMcD4SzkQgbEXw=;
+ b=FXufSmwifPPbEcMi0QHyH8yRwVaMgi2f4ggVViJ01YsQrcNNee2C23Q17BuM3AlYM8
+ XRinutfZF6AWv9E7otEK1Ef3jSdfUiWJvcojT6hpkJGHcw6LSt68vQU3C7GHq1SyCN5a
+ CTDgyMdzRuOA9nhXTAUKfBa/JW6RHVEBn8oUNoXew52xMBnPbmjwYX8HSqv4wNVTadA6
+ Y8Enn6l4S2rNsgkCFIR/NhTsbDzjwzOywpkOQXt1s0nZSu+dXJwdROkvnwXV4WLQAbRd
+ 5GbuOCApWy+6U8NjXq+i8dg/4p8ydHXeqUXyIN9ZPoMiqa1bcUuXUIojwRN3eILcvi8I
+ MQyA==
+X-Gm-Message-State: AOAM532Bflw/nPmAN5iByxeFWb4DWkLw5boMX136wwY4g5tRzbXm5/vW
+ jFWKlFFR2iRJubVLmrv7Y0BsvXIsCsBjB4tEnfQTrQ==
+X-Received: by 2002:a17:907:1048:: with SMTP id
+ oy8mr15691623ejb.382.1629383941633; 
+ Thu, 19 Aug 2021 07:39:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_GxyOYSfg+Su4iNrGNXyBB-KCfNQ+m+k9RywBGkQa08A@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -60
-X-Spam_score: -6.1
-X-Spam_bar: ------
-X-Spam_report: (-6.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.591, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210819142039.2825366-1-philmd@redhat.com>
+ <20210819142039.2825366-5-philmd@redhat.com>
+ <CAFEAcA_MrsapWF9K4_HW7FNGcT8PHUJRer7FH_fMU4yf1wz4tw@mail.gmail.com>
+ <8fda9bc6-54ce-3a04-6c4c-b200ec699fa9@redhat.com>
+In-Reply-To: <8fda9bc6-54ce-3a04-6c4c-b200ec699fa9@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Aug 2021 15:38:15 +0100
+Message-ID: <CAFEAcA_kB0-fHYBk1hJ87=Qoj0U-EbjhzVruhVhJKnexViG8_g@mail.gmail.com>
+Subject: Re: [PATCH 4/6] hw/dma: Replace alloc() + address_space_init() by
+ address_space_create()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -143,53 +125,56 @@ Cc: David Hildenbrand <david@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dV4ysT5p9Osg
+X-TUID: ZHPCXr4EBgo3
 
-On 8/19/21 4:24 PM, Peter Maydell wrote:
-> On Thu, 19 Aug 2021 at 15:20, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> Introduce address_space_create(). In is similar to
->> address_space_init() but returns a pointer to a heap
->> allocated  AddressSpace.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  include/exec/memory.h | 14 ++++++++++++++
->>  softmmu/memory.c      | 10 ++++++++++
->>  2 files changed, 24 insertions(+)
->>
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index c3d417d317f..b353a48c25f 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -2418,6 +2418,20 @@ MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
->>   */
->>  void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name);
->>
->> +/**
->> + * address_space_create: Create and initializes an address space
->> + *
->> + * @root: a #MemoryRegion that routes addresses for the address space
->> + * @name: an address space name.  The name is only used for debugging
->> + *        output.
->> + *
->> + * Returns pointer to initialized #AddressSpace.
->> + *
->> + * The caller is responsible for releasing the pointer returned
->> + * with address_space_destroy() after use.
->> + */
->> +AddressSpace *address_space_create(MemoryRegion *root, const char *name);
->> +
-> 
-> I'm not really a fan of this as an API -- almost always I think
-> devices would do better to have an AddressSpace foo field in
-> their device struct and call address_space_init() on that.
-> Hiding the heap allocation inside this function makes it harder
-> to notice it during code review, I think.
+On Thu, 19 Aug 2021 at 15:32, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> On 8/19/21 4:22 PM, Peter Maydell wrote:
+> > On Thu, 19 Aug 2021 at 15:21, Philippe Mathieu-Daud=C3=A9 <philmd@redha=
+t.com> wrote:
+> >>
+> >> Replace g_malloc0() + address_space_init() by address_space_create().
+> >> Release the resource in DeviceUnrealize().
+> >>
+> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> >> ---
+> >>  hw/dma/xlnx-zdma.c    | 15 +++++++++------
+> >>  hw/dma/xlnx_csu_dma.c |  9 ++-------
+> >>  2 files changed, 11 insertions(+), 13 deletions(-)
+> >>
+> >> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> >> index fa38a556341..9f6b3fa47c6 100644
+> >> --- a/hw/dma/xlnx-zdma.c
+> >> +++ b/hw/dma/xlnx-zdma.c
+> >> @@ -777,15 +777,17 @@ static void zdma_realize(DeviceState *dev, Error=
+ **errp)
+> >>          };
+> >>      }
+> >>
+> >> -    if (s->dma_mr) {
+> >> -        s->dma_as =3D g_malloc0(sizeof(AddressSpace));
+> >> -        address_space_init(s->dma_as, s->dma_mr, NULL);
+> >> -    } else {
+> >> -        s->dma_as =3D &address_space_memory;
+> >> -    }
+> >> +    s->dma_as =3D address_space_create(s->dma_mr ?: get_system_memory=
+(), NULL);
+> >>      s->attr =3D MEMTXATTRS_UNSPECIFIED;
+> >>  }
+> >
+> > Why are these devices doing a heap allocation rather than
+> > having an AddressSpace whatever field in their device struct ?
+>
+> To easily use &address_space_memory if 'memory' link is NULL?
 
-So I understand you rather I discard this (simple) approach and
-rather modify 'info mtree' "was designed on the assumption that
-there's really only one or two interesting address spaces." [*]
+They could do that with
+    AddressSpace our_as;
+    AddressSpace *dma_as;
 
-[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg829821.html
+and set dma_as to &s->our_as or &address_space_memory.
 
+Or we could fix the two boards which create these devices to always
+pass in an MR to use for DMA and drop the conditionality.
+
+-- PMM

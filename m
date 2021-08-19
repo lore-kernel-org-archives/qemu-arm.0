@@ -1,228 +1,133 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp36139lfg;
-        Wed, 18 Aug 2021 23:34:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylsW7/BKqF+DHCrDqZCbBGvatVznzINRdTYjVUfDY2/ztGpRZOhr66J2vUrSZqQ29NtSC8
-X-Received: by 2002:a92:1908:: with SMTP id 8mr8682301ilz.149.1629354891140;
-        Wed, 18 Aug 2021 23:34:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629354891; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp278795lfg;
+        Thu, 19 Aug 2021 05:33:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2P19+DE1XmlNJ12AdODTtT0KBDHYNQZn79HnUFnSU5BH6t37hM3xRtRqACEftPiJv0uUz
+X-Received: by 2002:a05:6402:375:: with SMTP id s21mr16598388edw.318.1629376388575;
+        Thu, 19 Aug 2021 05:33:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629376388; cv=none;
         d=google.com; s=arc-20160816;
-        b=XpI2QPpP920tAtpYPRdSrs2AA8pWp0mrXL9eha8PZ2afXozmrhQ5Qej+hsV2mn76Yu
-         o95uiT7uNoHvZVBd+KOa5AlIte1U4U9pGE+bKO64DP6iH1tqV77NVao+DSqlrzRW76Uy
-         nC1ao/Y0t/bC+dv9TAkhf8JD8VWwu+oLhaFi2bsgpRJp+yQDkYhpvXGrFlQjBVCUnSis
-         5O9bIAlz/KfffZ9jLE/G0XGRHChHLF3Ze82dJ+YxEtLHJn6HZePChGarb67iykwM4i2k
-         MA4dgFvJN1qY2O5aOC7XnvIsYtedkxJkF8i757nBN9A6hQDUbX2c6Oh5hI/YL47GQr6/
-         lCZA==
+        b=NkMds4oAaO0w3dV/9bbAHiePmsMUCrTbqLs9E6Z1Ie0IM6BnyW5J1OZ/0F68WeTSjp
+         XTgMwPGWSAUMoKFJZ0FW9rgrUHdGeB7RPEIu0mlDl392rvqtigrqeKWvV6G3406xxMzN
+         OEfPMhtOkqdSvymQkkoTndKN3XLz2sB4mmUrKlEEI01A1iV0EoJa+6MaeXe+g99h3i8A
+         GVo1KtYqGkqRL/DBdr3RpK/hnX6rmuikBcHnk5CfC23Bdz3cY9IWXsBSdgqeDkCi3zrV
+         64I8P69w9/7Cd91B3rKToKgzFbl3UFmfm47w438PmuxIxuL6Fah1NgHHD22pLGw77Lzx
+         TAZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ssgLirzoqmiGO+jXtYOAlXHNVbgmhaBEXyHwDW6MJTk=;
-        b=NqzroRYmL53KVIyXXD3V4jdrKNTfSIOHR9IonSke3r4sK1MIBEZv/P0i9lT5GSrVGj
-         NZarTwCp5cgYfoJ28z4M8OCGn9s1mfQzMSN7ML22xi0+Jk7GuAsMESHfBeLYU9X/NadM
-         3Dyxt0BnvglNEeeThSkQYAJhdrEyhqmASGMqHMvz5dsTvLOM9BkG1PDHtjc9u2qjM/ce
-         glKE/RoTHZIDbmmIuLqHHE9kTfb37fRs2HrDLcf2GpWgrNLWm5Xxyj4IjAAvKtnFn74Z
-         XTeLXkytJx4hCC6SzQbplNYS3b0vjiug/7+M/Cd2b11UEKE2RETPqDvG6loPj5XeccG7
-         t0Xw==
+        bh=PdEqVwiOUrR2OxTB7UVLjUUjHayH7DXX5FSPQbzbmk0=;
+        b=ImzM+mSLKq1/5e+9l6Wb5RS0R2OVqKEel0iCAU3unwLYTHcrqVUR4hkgY85047EMj0
+         nQb9VXPiqF7rcOhTbtSnrM/ijw3q5du7AAry41cFs3fYsXnXUd5dO8fu+fK8/3g7UjVa
+         u12vJ9GZZksUd1Ekdjgl90Hrxnj9grjwdlnsL2B/APl/7OyzmoiwlGl1pUO/rkj07z8T
+         Wyg1mEN5rYSGLlMkjB80ZjKRrynqjSqKbwgSp6EoQjvvCcjEpOlBPcs1llqYqMZm8Xw5
+         grK1L4yspaU50THNjQxga86AafWU2YY7woit1jw9JDMVnQgl1YA2XbEnGg4EPFb7u5Lw
+         6LAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aeISrSCK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="Hqm5nt/A";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j23si2186446jam.32.2021.08.18.23.34.50
+        by mx.google.com with ESMTPS id f4si3439806ejl.218.2021.08.19.05.33.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Aug 2021 23:34:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Aug 2021 05:33:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aeISrSCK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57766 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="Hqm5nt/A";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGbda-00068s-GE
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 02:34:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40058)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mGhEJ-0001ZM-L6
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 08:33:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mGbc5-0003g9-0l; Thu, 19 Aug 2021 02:33:17 -0400
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31]:42621)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mGhE0-0001Yv-CM
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 08:32:48 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:44804)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mGbc3-0001K6-9I; Thu, 19 Aug 2021 02:33:16 -0400
-Received: by mail-io1-xd31.google.com with SMTP id d11so6251547ioo.9;
- Wed, 18 Aug 2021 23:33:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mGhDy-0003Em-Qq
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 08:32:48 -0400
+Received: by mail-ej1-x629.google.com with SMTP id bq25so12529366ejb.11
+ for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 05:32:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ssgLirzoqmiGO+jXtYOAlXHNVbgmhaBEXyHwDW6MJTk=;
- b=aeISrSCKlCIgywtme0ONP+qcRXyYVmTjWM9T38jFEoPmqSZNGLjIEjoiFEnF6YemV3
- GDGBEG34ivbkNEWw1y6f2UFSAOeenCsKZ70C8Wbpl1c2cLLp4Eklxkh2WdBoXSIlkwoW
- GW8LvDwRZN02k8Sf3+P3/s8g9OpdAMdi8u1EgPHaAyHf4vJAF5QXeQNRshAfo9MBwe3W
- PBo5VcphMddy1dET6sck53uBRH7pw5MftoUu/leiM0oq2FuE02vAOFNsbZQ7RXoN+Y+U
- 9GFqs+j87anc0+TC5BLQlDJUN+glee6JaQuHNgQB/RUP+cCkEzqoq+diCpivtn68EWkn
- MNfA==
+ :cc; bh=PdEqVwiOUrR2OxTB7UVLjUUjHayH7DXX5FSPQbzbmk0=;
+ b=Hqm5nt/Av0YMgRwQbj/nC3b/U3CwjvWgnJ621IxW03oUPt5gw14Q6o8Ou4wbwZcLHR
+ zy3UN/GKxCn12ttOyInzrfFiUKN7Ltw2vdTRlRaTxkDAu53oSxxRUeZ3/RqysBfIiHYL
+ Os51MWVbhAQU2yvzqGAZNkLKPVUpQozsh9RQtEJy2AwfVEh6fKXJOj9A9oMWWc++/ySJ
+ hRpQfUBg1CXXd4ZclTSHgEUnFJ/NN+XC89defBGpTwXetF8G1koAq14KWhaqKSrXKI+K
+ 5iuQUWXqfb+m08u6M4jq9ejCrzsWjZREFWMfdnItd0JIYdnIpaNGOJeBEFNWpbn/7wSv
+ 5HFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ssgLirzoqmiGO+jXtYOAlXHNVbgmhaBEXyHwDW6MJTk=;
- b=G3RHuMZlwOeRXaV8mnD+mHOCqpqmAB+j6LvpbH8+YK3wDwblQRHk+M53FSQY9bkooO
- BRCw7BhfcDxulCf7+o2+orXg9aoq3FmoJLYn0421GEY3jQLtRtKwyNOH6WPdKWQIlAqg
- WFMEpCDhDMBCmDvpWlEJfFCVA3hMWGB5f4PoHsX9OMDQt87N+5an57tm9YP8exe8u4pX
- wfr57lhafvEpsexEmBcNHb3+xqwEWA+gHAUQCdwlSbu5eXRGvla9IdgAeM+7cG+v1sNz
- GOuXjQYEm4cnuKQecpEx4KNNYr0DB1jqohDcqy6NjMtPyG0/yBxqGKW3qDooBLQvMUcR
- l4MA==
-X-Gm-Message-State: AOAM533fat3Nsua5cG1q0ne9u/a6e2Q/oEJA8LNUSAodRHxB7reFqm5o
- fmYeV5bj3GkaDnPhj0IFZYZ2/qLBY2c0b6sBtt0=
-X-Received: by 2002:a02:c80e:: with SMTP id p14mr11826079jao.8.1629354793708; 
- Wed, 18 Aug 2021 23:33:13 -0700 (PDT)
+ bh=PdEqVwiOUrR2OxTB7UVLjUUjHayH7DXX5FSPQbzbmk0=;
+ b=sY8lxO7X+scUuZSq1NNc9G4xtBrBlhvthyWl/V6BarJkVugKY+okrRNJ5/elKB9EWD
+ SUywyeBQn7P7qhOSlL7udGSFQtIPQ3WaM2GPpWCB1Q+QPpJHY5AL30jv7dPRuM9GV1/f
+ Ld1yqlYrePTo/7DRsFcW+27eFnknW55QoLxl5/GKHFeoVQ2MknttnHS3+cholycmZvB4
+ 7u/ICcK33MRdXPQO5G3/vzvidqzxpKw6w9nxqhfYxGwf8XUClG3+u0I+MD9bVKqn9vSA
+ yhpksrxNLBmKUTQyvNT8Sn2xASKmM3taUFWgjBEfx8vXYHLMpmrhRMgsWKExNp9v06ax
+ j6Jg==
+X-Gm-Message-State: AOAM533QnWqji+exOwIe3ftkCe9mNh9M/aIsoM5gPOnUU1bMafipSYLg
+ gQKBzjLu/Ce2zRMuBv7pJDVVWnMNlPlYYLKWxtRAJA==
+X-Received: by 2002:a17:906:a108:: with SMTP id
+ t8mr15420135ejy.407.1629376365013; 
+ Thu, 19 Aug 2021 05:32:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210819031525.653995-1-tong.ho@xilinx.com>
- <20210819031525.653995-3-tong.ho@xilinx.com>
-In-Reply-To: <20210819031525.653995-3-tong.ho@xilinx.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 19 Aug 2021 16:32:47 +1000
-Message-ID: <CAKmqyKOy_64vEeanV5Wk-XprF83QN3=k_ZBS8AJ+KbOgSGcgxA@mail.gmail.com>
-Subject: Re: [Patch 2/2] hw/arm/xlnx-zynqmp: Add unimplemented APU mmio
-To: Tong Ho <tong.ho@xilinx.com>
+References: <4C23C17B8E87E74E906A25A3254A03F4FA1FEC31@SHASXM03.verisilicon.com>
+In-Reply-To: <4C23C17B8E87E74E906A25A3254A03F4FA1FEC31@SHASXM03.verisilicon.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Aug 2021 13:31:58 +0100
+Message-ID: <CAFEAcA8pWb4v-ZhaY27k3vGmMnUZ_o1eEHpvQDSMBq=JUGZ0xQ@mail.gmail.com>
+Subject: Re: [PATCH v5] hw/dma/pl330: Add memory region to replace default
+To: "Wen, Jianxian" <Jianxian.Wen@verisilicon.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d31;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd31.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X3w4UT57P8no
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Liu, Renwei" <Renwei.Liu@verisilicon.com>, "Li,
+ Chunming" <Chunming.Li@verisilicon.com>,
+ "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>,
+ "alistair@alistair23.me" <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KCpO0ugYrgpk
 
-On Thu, Aug 19, 2021 at 1:22 PM Tong Ho <tong.ho@xilinx.com> wrote:
+On Wed, 18 Aug 2021 at 11:17, Wen, Jianxian
+<Jianxian.Wen@verisilicon.com> wrote:
 >
-> Add unimplemented APU mmio region to xlnx-zynqmp for booting
-> bare-metal guests built with standalone bsp published at:
->   https://github.com/Xilinx/embeddedsw/tree/master/lib/bsp/standalone/src/arm/ARMv8/64bit
+> Add property memory region which can connect with IOMMU region to support SMMU translate.
 >
-> Signed-off-by: Tong Ho <tong.ho@xilinx.com>
-
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+> Signed-off-by: Jianxian Wen <jianxian.wen@verisilicon.com>
 > ---
->  hw/arm/xlnx-zynqmp.c         | 32 ++++++++++++++++++++++++++++++++
->  include/hw/arm/xlnx-zynqmp.h |  7 +++++++
->  2 files changed, 39 insertions(+)
->
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 3597e8db4d..790df2b6f1 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -20,6 +20,7 @@
->  #include "qemu/module.h"
->  #include "hw/arm/xlnx-zynqmp.h"
->  #include "hw/intc/arm_gic_common.h"
-> +#include "hw/misc/unimp.h"
->  #include "hw/boards.h"
->  #include "sysemu/kvm.h"
->  #include "sysemu/sysemu.h"
-> @@ -56,6 +57,9 @@
->  #define DPDMA_ADDR          0xfd4c0000
->  #define DPDMA_IRQ           116
->
-> +#define APU_ADDR            0xfd5c0000
-> +#define APU_SIZE            0x100
-> +
->  #define IPI_ADDR            0xFF300000
->  #define IPI_IRQ             64
->
-> @@ -222,6 +226,32 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
->      qdev_realize(DEVICE(&s->rpu_cluster), NULL, &error_fatal);
->  }
->
-> +static void xlnx_zynqmp_create_unimp_mmio(XlnxZynqMPState *s)
-> +{
-> +    static const struct UnimpInfo {
-> +        const char *name;
-> +        hwaddr base;
-> +        hwaddr size;
-> +    } unimp_areas[ARRAY_SIZE(s->mr_unimp)] = {
-> +        { .name = "apu", APU_ADDR, APU_SIZE },
-> +    };
-> +
-> +    unsigned nr;
-> +
-> +    for (nr = 0; nr < ARRAY_SIZE(unimp_areas); nr++) {
-> +        const struct UnimpInfo *info = &unimp_areas[nr];
-> +        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
-> +        SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +
-> +        qdev_prop_set_string(dev, "name", info->name);
-> +        qdev_prop_set_uint64(dev, "size", info->size);
-> +        object_property_add_child(OBJECT(s), info->name, OBJECT(dev));
-> +
-> +        sysbus_realize_and_unref(sbd, &error_fatal);
-> +        sysbus_mmio_map(sbd, 0, info->base);
-> +    }
-> +}
-> +
->  static void xlnx_zynqmp_init(Object *obj)
->  {
->      MachineState *ms = MACHINE(qdev_get_machine());
-> @@ -616,6 +646,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, RTC_ADDR);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0, gic_spi[RTC_IRQ]);
->
-> +    xlnx_zynqmp_create_unimp_mmio(s);
-> +
->      for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
->          if (!object_property_set_uint(OBJECT(&s->gdma[i]), "bus-width", 128,
->                                        errp)) {
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index d3e2ef97f6..c84fe15996 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -79,6 +79,11 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
->  #define XLNX_ZYNQMP_MAX_RAM_SIZE (XLNX_ZYNQMP_MAX_LOW_RAM_SIZE + \
->                                    XLNX_ZYNQMP_MAX_HIGH_RAM_SIZE)
->
-> +/*
-> + * Unimplemented mmio regions needed to boot some images.
-> + */
-> +#define XLNX_ZYNQMP_NUM_UNIMP_AREAS 1
-> +
->  struct XlnxZynqMPState {
->      /*< private >*/
->      DeviceState parent_obj;
-> @@ -96,6 +101,8 @@ struct XlnxZynqMPState {
->      MemoryRegion *ddr_ram;
->      MemoryRegion ddr_ram_low, ddr_ram_high;
->
-> +    MemoryRegion mr_unimp[XLNX_ZYNQMP_NUM_UNIMP_AREAS];
-> +
->      CadenceGEMState gem[XLNX_ZYNQMP_NUM_GEMS];
->      CadenceUARTState uart[XLNX_ZYNQMP_NUM_UARTS];
->      XlnxZynqMPCANState can[XLNX_ZYNQMP_NUM_CAN];
-> --
-> 2.25.1
->
->
+
+
+
+Applied to target-arm.next for 6.2, thanks.
+
+-- PMM

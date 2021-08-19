@@ -1,109 +1,149 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp648215lfg;
-        Wed, 18 Aug 2021 12:43:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7r4Cc+0KyTR1zPXASD7J1nD4Otd5/DF3MGYvsv/exr7+T8YCurGweWyv6sysJmplfybUA
-X-Received: by 2002:a92:d70f:: with SMTP id m15mr7082362iln.162.1629315781850;
-        Wed, 18 Aug 2021 12:43:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629315781; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp932009lfg;
+        Wed, 18 Aug 2021 20:20:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz7S3eu/QITUK4M5AgScUNpO81a/9puXvLdI2te3GVcfmZEkrin1NYKbPRVG3m//IL7CoWE
+X-Received: by 2002:a1f:5381:: with SMTP id h123mr9887304vkb.25.1629343245602;
+        Wed, 18 Aug 2021 20:20:45 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1629343245; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rkByvzmXe6qbuqafVhAm3YsDujCebTF52I/3MrLzoybYGtvVriIVPvUvX2t6Ufwxi/
-         JmdWRg+TFv1wigkiSgX8QhaRJmvkKIWaHjlKeqi2JxmhoOM3XJUmmBPKmA4BSj56Me9Y
-         JXVoevr1jEE5F+VoLvKcPU0RjrmVkJPPhpLZpGwAniXdmGSc/UKQ9acNEzxfr1Mf7DSH
-         leiVLYevg4ae2Xo3QAfNVuYFak9zWRzY34hp/Dta1jNXmyQaayj11vbe3pya0lbUwiZX
-         tx4nH4k0kxKdtCL9A6aQWlhICu8W1i4/8oal76Lz0P8OVEvOkJLhVEcUTqKcDDQBbGET
-         vTuw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=VFKiSc3rtHpd0Uww3YMMba+9Ufx0YPK/xObpQ6OWWVCrIzmEBAzDEHNukshOeoBZgg
+         ioOUsC6VIS2owGdN0NWs5bC7gga6684vXfOKOfKCRVVyf6MCwQ1CxHZ6CjPJerUBn6Oo
+         hGnIXWV2tyBjjBlE7xXP4QkVq5mu63VJ2Hunsj2mSI6azpZghZgjF6Ok02G6WL5t5U8L
+         VcbjDtaxYXAPW7tI2Os/3cOCxBKtRjoVwm140VM76hihEWfnDxqguY5JhxM9Z5sZmD9t
+         729vNe2waFnIUtp2T0l/3EK/QbDDsJVA6GGwUS8dIMbGxA8qgbqZ3sSYcckUdquKsIHt
+         469g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=m05buOlilVsg1jOgQZXZCdgZzJEMTUJnbRDwgrpDcZU=;
-        b=X3BNOsugxegGON8WYUj1Dusb4Bdd8L2gjMQX2t7vufnPCz9gesBRXQcy12CRSKKo2k
-         CN79DRf1NzwbS+WhCI42D20KrSg1LpMeW9TqBO9p4Z6JoWJs0rXPG0mrC1zGOeJDqfNh
-         NLUfjMGmRvSwmXn9KgInVj3OnTpzxJiNKfMCnASBTkRMQ5/Tl8XRWbz6R8LPSLFKlQjJ
-         fpLWKrclvGCUG0yMd/dGtK9lRWALC2PuOQXxSwQSL70PJqdLP1Li2xUDxovWhi+vgv9s
-         JmV5CQB0fioc5OiJ5gLQGt6OBmfVIR6D0o1jr2Ol3HhEbm+2Bas1iGKjXXsmoaro5vGj
-         ag0w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q+FK48JK;
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=b/c9BLUhtmbNDEe/88BRYjzwQ0hiDEeJ15ucNR6lQTg=;
+        b=Y++jAyaqth16EdBSuv3oowvgi3RjjK8ajVYLjZVcFVz1qJBLP+y1gg8l7XicqBao5j
+         T6X8+nfe6J7kFn5f5lVQT95w0ajOb6gmGBlNJGpdW1Vt7JpqtQzY0Gpf60KIPfroKTxj
+         7oKh1hBcTs0+tNPHBqNhP419ccAlh009apkLU8oOuxsGed1O50YTW/z2CbXxoDIiXvRz
+         d/m4emHIjiLeePnn8L9LV4YWegriNV6EiBSwX4GeRScDlKgRuXY17hPYrEGkYHDuQbH5
+         ydexx2BMA6y23WcPEEyysjIVTatQQY3AWey1IyUdwNYOeBY75KhfB7p4zZ0HBBtETtKJ
+         Z3Dw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=q7qrN03K;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i12si707130ilu.162.2021.08.18.12.43.01
+        by mx.google.com with ESMTPS id m12si1010072vsp.147.2021.08.18.20.20.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Aug 2021 12:43:01 -0700 (PDT)
+        Wed, 18 Aug 2021 20:20:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q+FK48JK;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=q7qrN03K;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52440 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Received: from localhost ([::1]:58466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGRSm-000864-UV
-	for alex.bennee@linaro.org; Wed, 18 Aug 2021 15:43:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58144)
+	id 1mGYbk-00062e-QI
+	for alex.bennee@linaro.org; Wed, 18 Aug 2021 23:20:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mGR6a-0000tp-P6
- for qemu-devel@nongnu.org; Wed, 18 Aug 2021 15:20:04 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:37430)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mGR6W-0000IV-G2
- for qemu-devel@nongnu.org; Wed, 18 Aug 2021 15:20:04 -0400
-Received: by mail-pg1-x530.google.com with SMTP id 17so3299260pgp.4
- for <qemu-devel@nongnu.org>; Wed, 18 Aug 2021 12:20:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=m05buOlilVsg1jOgQZXZCdgZzJEMTUJnbRDwgrpDcZU=;
- b=Q+FK48JK/6YD/I2bhMtcX+5hmUNWMcqlnIu9BelaWfMa6qNIZv7Xp34aOiFVuhB5tP
- g78tvx5vcBdQUuTSvMUdkslgjEoRm/GUXqsB9d31ynKCDsvHMMe0Ng1n6GTMCgi++UNc
- JbdYQ4H3sUo+nXbCAYuLOtycHoFg588EBAg09B+magBz4us+e0zEqEJ7voPlLKSV94IG
- PjInz7toePIVb8CWDkGBbnpYvsB2zkGigP/UrEVbEIEey3BFMBCRDhW0Jdq6cIUUMmiN
- WKN12lPMSxlVPvmVe+iazeakE4LSJQDhxezsHF2SYsl9ZjQmPlyjyvfLujOqlI/N9mRn
- gqHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=m05buOlilVsg1jOgQZXZCdgZzJEMTUJnbRDwgrpDcZU=;
- b=Ru0sxRrJcbnITl9BV2zpi0HnUhnp85obAG9Wi0x8vle7aXNh1KJ1P2cGN2B86brscr
- z6lg/MtXPNyxTKuRhf0NJXvdJdZL3IOcaGwssirOQ7XfLkwKKjbLT7ZWAg9dwTuvtGF3
- rJP9op+AHCx0ulp85WL9vi+C95pibdDG6i4wd+oWThw6aftdYDVH38b0FVLoU0SfJ2w4
- ZhtVU0EDBhg+8BT1ngyUklbJYG/rm2dN15OeAPlGDU5LdeGUGHJyfLxIG49qMECPCWy/
- mYZeSzSqCnMhrHl6eZatFig0sCSc5xwJHF/9rjufrr/gGuVO3JFXQrsFR4ZVYpfl833K
- Qo1Q==
-X-Gm-Message-State: AOAM531MrOTkOTR6f4DP+qF+L8z0x9g3d05ibX3O/3OazCw6zfXZyxi/
- rdPoKuOcKjbYGwZLTABL8kLoWAyzAUcYew==
-X-Received: by 2002:a62:ea0f:0:b029:319:8eef:5ff1 with SMTP id
- t15-20020a62ea0f0000b02903198eef5ff1mr10983327pfh.74.1629314399259; 
- Wed, 18 Aug 2021 12:19:59 -0700 (PDT)
-Received: from localhost.localdomain ([173.197.107.15])
- by smtp.gmail.com with ESMTPSA id a6sm524108pjs.40.2021.08.18.12.19.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Aug 2021 12:19:59 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 30/66] target/arm: Use MO_128 for 16 byte atomics
-Date: Wed, 18 Aug 2021 09:18:44 -1000
-Message-Id: <20210818191920.390759-31-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
+ id 1mGYYH-0001af-5J; Wed, 18 Aug 2021 23:17:09 -0400
+Received: from mail-co1nam11on2065.outbound.protection.outlook.com
+ ([40.107.220.65]:43525 helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
+ id 1mGYYC-0007vZ-M0; Wed, 18 Aug 2021 23:17:07 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PlBwHsZod26EhyrPlVylKz07OUozBH7jRvR/dqahrpy4nuZFI+JBHQ7SeZw1rZxSQzyC3v4pMLjTY/x6pi+lmBVwEWVCHcKyM8oD41F5n8SM3Z4wtBXlk+3adZevIsaFn+Sm0CkVrwYDELHuhcOmdF57U3kQVVscFLT8mvesV2Dba3rfUjJIxCIpjxpGv7bD/0eY1ivokaMWLgRz8OBK6xPwlsnIlWDb0wAPT0IoKX87/4hXZpR6hy7mYQlpF4ZJh4NqQlViD32ETeaIywyVF1n30R1kYP+zHSH9clnv+DV3XD26OyxMCZDOtKOPFzsy0HpYqJpNVZrjMj0W4BG/Yg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=b/c9BLUhtmbNDEe/88BRYjzwQ0hiDEeJ15ucNR6lQTg=;
+ b=bKguDRrJYXtDiYoeAkdP4T0Sk2oGCPUbNDZNUqYi/lwTYT9Jp0QBd0qnh3ysmWh6R58QdudMUUum0A/0t44ehJJfH/6O7HX2OAoTLHjJ4ubd1FXs7B6l2Kq0Am10oCX1CS6YPpvLl23TNGp0hlpkdfG/We1JhuhXCSZh8DXkbnA1qkxXGTeW3VnLzBRjl5PFVcowVV7SOa51EYexTknlYjI7K/WJ+UD/vwtd4wMGNhv48+W+eWNtGuxIHi7YQoxYOSXOLBLrKxQ9180nLEV7sg8Ca+oeImDIt0fYHpNkHYkjBlD5tbshRvSGf8zydwsjbZLu7Ak7vl1XlJsh0/QojA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=b/c9BLUhtmbNDEe/88BRYjzwQ0hiDEeJ15ucNR6lQTg=;
+ b=q7qrN03K1+pMqe1b23g6M9RZAhIZm1s4tiXyDFoOdGY1RVr8ehBmxxaycbXkRQ4KczPYJIEcfgshc1N0Qj8vMhj+44ZzkrjE8i+0FZoNYi4YAYUSl0uXyb4D0cY4QFDztObW5v3rKhx/K4vkwbbbGueY20paUXcKe77O9MbSw7w=
+Received: from DM5PR06CA0026.namprd06.prod.outlook.com (2603:10b6:3:5d::12) by
+ BYAPR02MB4728.namprd02.prod.outlook.com (2603:10b6:a03:49::11) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4415.16; Thu, 19 Aug 2021 03:16:58 +0000
+Received: from DM3NAM02FT025.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:3:5d:cafe::8d) by DM5PR06CA0026.outlook.office365.com
+ (2603:10b6:3:5d::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19 via Frontend
+ Transport; Thu, 19 Aug 2021 03:16:58 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
+ smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=pass action=none header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
+Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
+ DM3NAM02FT025.mail.protection.outlook.com (10.13.4.112) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.4436.19 via Frontend Transport; Thu, 19 Aug 2021 03:16:58 +0000
+Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
+ xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.14; Wed, 18 Aug 2021 20:16:57 -0700
+Received: from smtp.xilinx.com (172.19.127.95) by
+ xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
+ 15.1.2176.14 via Frontend Transport; Wed, 18 Aug 2021 20:16:57 -0700
+Received: from [172.19.2.40] (port=52298 helo=xsjtongh40.xilinx.com)
+ by smtp.xilinx.com with esmtp (Exim 4.90)
+ (envelope-from <tong.ho@xilinx.com>)
+ id 1mGYY5-0002Wl-L7; Wed, 18 Aug 2021 20:16:57 -0700
+From: Tong Ho <tong.ho@xilinx.com>
+To: <qemu-arm@nongnu.org>
+Subject: [Patch 0/2] hw/arm/xlnx-versal: hw/arm/xlnx-zynqmp: Add unimplemented
+ mmio
+Date: Wed, 18 Aug 2021 20:15:23 -0700
+Message-ID: <20210819031525.653995-1-tong.ho@xilinx.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210818191920.390759-1-richard.henderson@linaro.org>
-References: <20210818191920.390759-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 82fa3266-f4a8-454a-4208-08d962bfcdf9
+X-MS-TrafficTypeDiagnostic: BYAPR02MB4728:
+X-Microsoft-Antispam-PRVS: <BYAPR02MB4728F53CE2EFD730DCC82F06CDC09@BYAPR02MB4728.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: wj0po+pCdIORUaZxyPx2OvgMTx/ujAtJoerUg41owe0KBwqZu+UR0ZQAOkQp6Paho+vre3Kb9RxMxKnc25ulKSgQVPS4iqIEHe7McyCMO8u4t4QNQXPsrGkoWHIWu/cjtBJTNHWVwoyb2BE67A0tgHbkvQ6VTL3DMeWAK+HTamaKMaV160hw0ib3uyxZs7DYDB1Xl6RydJl3xtEO2YcIVjQxPvSrn+CAczjTXkZcItphDEUOnC2+rxxJrnchrk4IVPJFRYaU60emJF//FF4tjXFM2B4nf+5Y4BjGgbuxS3Q8xzRasaS51azTQhSV4BGDvprtooprVHrYbj3C3ejHOJIzLvZrUzKjFJfAmp510SiuDITTbgAUEhRuWATJAOs0CbTtJOcANdwH936LKuVr/CMwPaqRdp05m/VAes40XS9r3dv6N3vbzPeHvwDkZrCz8XUmdCLZ6bjyOjwVITT9FAtzJuhmBWvk7p42TT6gVYdc2zyPiBlWdSTljNJycZF1ItIDP5Z9e5pGr1BDV+TUxNr4uNqMhsGmXXUH5AYHiCKgg8p7YUIedTmjkjhu3bEBLAi4kgMfOEM6EXzvIVTAotAWGhW1NtvxUbQsQ2V5gqwdnF86hUcrou73gkHjvMYM2VqM7rbZ0WvWI153/b6XhhkBJO7qOD5/NEQ5UGn7Zl3oABI6OHoODrhZX06cwhTaBUsy5V4RCOnDCwnNqJbtlUfDupND+bcoBtvoqSW+G6srZXH5I6I6OwWdd1cImIMizAVd8ql5UIVgnGHQ1xBvS4E5prv+d4NOSD4pIczx+axRYGnL+pOoxufpr8274qgM
+X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
+ PTR:unknown-62-198.xilinx.com; CAT:NONE;
+ SFS:(4636009)(346002)(396003)(376002)(39860400002)(136003)(46966006)(36840700001)(186003)(82310400003)(9786002)(6666004)(47076005)(1076003)(44832011)(6916009)(26005)(70206006)(70586007)(36756003)(7636003)(36906005)(2906002)(54906003)(82740400003)(2616005)(107886003)(316002)(8676002)(356005)(4326008)(4744005)(8936002)(5660300002)(426003)(478600001)(336012)(966005)(7696005)(36860700001)(102446001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2021 03:16:58.2666 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 82fa3266-f4a8-454a-4208-08d962bfcdf9
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
+ Helo=[xsj-pvapexch02.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT025.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB4728
+Received-SPF: pass client-ip=40.107.220.65; envelope-from=tongh@xilinx.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,59 +156,27 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: edgar.iglesias@gmail.com, alistair@alistair23.me,
+ Tong Ho <tong.ho@xilinx.com>, qemu-devel@nongnu.org, peter.maydell@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VlQKzzF9kKTR
+X-TUID: kyKlmxGkZyj9
 
-Cc: qemu-arm@nongnu.org
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper-a64.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+This series adds the APU mmio region as an unimplemented device
+to each of two Xilinx SoC to support booting guests built with
+the standalone bsp published at:
+  https://github.com/Xilinx/embeddedsw/tree/master/lib/bsp/standalone/src/arm/ARMv8/64bit
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 13d1e3f808..f06399f351 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -560,7 +560,7 @@ uint64_t HELPER(paired_cmpxchg64_le_parallel)(CPUARMState *env, uint64_t addr,
-     assert(HAVE_CMPXCHG128);
- 
-     mem_idx = cpu_mmu_index(env, false);
--    oi = make_memop_idx(MO_LEQ | MO_ALIGN_16, mem_idx);
-+    oi = make_memop_idx(MO_LE | MO_128 | MO_ALIGN, mem_idx);
- 
-     cmpv = int128_make128(env->exclusive_val, env->exclusive_high);
-     newv = int128_make128(new_lo, new_hi);
-@@ -630,7 +630,7 @@ uint64_t HELPER(paired_cmpxchg64_be_parallel)(CPUARMState *env, uint64_t addr,
-     assert(HAVE_CMPXCHG128);
- 
-     mem_idx = cpu_mmu_index(env, false);
--    oi = make_memop_idx(MO_BEQ | MO_ALIGN_16, mem_idx);
-+    oi = make_memop_idx(MO_BE | MO_128 | MO_ALIGN, mem_idx);
- 
-     /*
-      * High and low need to be switched here because this is not actually a
-@@ -656,7 +656,7 @@ void HELPER(casp_le_parallel)(CPUARMState *env, uint32_t rs, uint64_t addr,
-     assert(HAVE_CMPXCHG128);
- 
-     mem_idx = cpu_mmu_index(env, false);
--    oi = make_memop_idx(MO_LEQ | MO_ALIGN_16, mem_idx);
-+    oi = make_memop_idx(MO_LE | MO_128 | MO_ALIGN, mem_idx);
- 
-     cmpv = int128_make128(env->xregs[rs], env->xregs[rs + 1]);
-     newv = int128_make128(new_lo, new_hi);
-@@ -677,7 +677,7 @@ void HELPER(casp_be_parallel)(CPUARMState *env, uint32_t rs, uint64_t addr,
-     assert(HAVE_CMPXCHG128);
- 
-     mem_idx = cpu_mmu_index(env, false);
--    oi = make_memop_idx(MO_LEQ | MO_ALIGN_16, mem_idx);
-+    oi = make_memop_idx(MO_LE | MO_128 | MO_ALIGN, mem_idx);
- 
-     cmpv = int128_make128(env->xregs[rs + 1], env->xregs[rs]);
-     newv = int128_make128(new_lo, new_hi);
+Tong Ho (2):
+  hw/arm/xlnx-versal: Add unimplemented APU mmio
+  hw/arm/xlnx-zynqmp: Add unimplemented APU mmio
+
+ hw/arm/xlnx-versal.c         |  2 ++
+ hw/arm/xlnx-zynqmp.c         | 32 ++++++++++++++++++++++++++++++++
+ include/hw/arm/xlnx-versal.h |  2 ++
+ include/hw/arm/xlnx-zynqmp.h |  7 +++++++
+ 4 files changed, 43 insertions(+)
+
 -- 
 2.25.1
 

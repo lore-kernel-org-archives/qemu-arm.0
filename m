@@ -1,109 +1,113 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp485232lfg;
-        Thu, 19 Aug 2021 09:34:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzV7oSYjD+r/xwwVbZ0DTNBROh9QLjLoAjGVnULOnMZ6zPEjJISJKGuB22V+JuvuQhVNUHN
-X-Received: by 2002:a1c:1b49:: with SMTP id b70mr14830058wmb.17.1629390880194;
-        Thu, 19 Aug 2021 09:34:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629390880; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp485436lfg;
+        Thu, 19 Aug 2021 09:34:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxvAO56Fs5qZ+h6NETK6+J2vWmduyC23zmkBizZmeMs+i4Adu3IiF8hwoDEOTHPYSTXUfXQ
+X-Received: by 2002:a1c:27c2:: with SMTP id n185mr14199119wmn.20.1629390894787;
+        Thu, 19 Aug 2021 09:34:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629390894; cv=none;
         d=google.com; s=arc-20160816;
-        b=Iw5nVwXZ7cDTeMlRu2GjbWlwulGq5X6jpD5xhCx8oyCj3cz92M2b6pqcjH4sHpOMAH
-         9KZb3GpIj0d27G18wo9isncu2na8IwXpUVhScbxrLZcIJIkb0Ml3wqa/pY/ZLiHDYL60
-         2QNDblLgZCz9BcXs2dMpIZqhHLXvJ7zBZj2uJeaS4k5if8o8qDAb0SitZtP0NUmL29j8
-         +gJ0dC5kVqbKmypVWy7SGERn2rBoL3cmK+noVU5BUwRXbATdwWlxs+TU3ooikwVSa/V2
-         pnCuAfi6JcpYhcOa7cNimL+eI6S8rjpzQ9SjLug+xMozh71Na+UJpKM9bgXx0vsjYQI7
-         Sklw==
+        b=UGop6sBJ+rpaFskwxRM5WKpRmASA3TMY7sWZ4SHAy4VkrHtXUnQJFIoGMJnrX6dd6r
+         d0V/tKKHzlJxJZcUGRpMg7cZrjdG7L8NM3ZDxIMKyEl657IQmuVX+qgBtqxEAPKUtQeM
+         l3ZthErbCoVhrZassyk6xWVOSN2tN18ay7DTO9mv2ykYHOHI1d5qy6AuyUgl2jlMEAHT
+         xMJRTtGQFCN2gjHaNbj1z/42olr6uhDParTmCNSGmeLg0pPNNrXBBv5J71cUb1/5tvH1
+         y8zjXGzwgAeq1tHyCAET7XmCkaZl68wxAu8q7kO/gCZMGg4wPdwZDShAIM1g7DtQKZaW
+         1DxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=P40SZLAow2qKFOaot8Segjt7m5P0Tsh3DgGPbGXn+Zc=;
-        b=x6jnrcIawuT6E0bA6JxrwZEaSmNWF9KQsI0aMvVpwWpWam97jH3F4N0k+rg6hHyPkp
-         SfZNo2IIkpoG76R+ytrc6+p3pwKv+I/9qTsGiQTCAA5COs0qnyQBQ4ksQr+5s6l9m6nc
-         mVHjM4Nmhp6eEVZlNmE+tNcO1h3t6DI4LlybgYQ4uYm1Ph/0tGbXD6wUbB/lDyF1chlL
-         6i22ByYShcx9vu08yuZl3QCEOzt1b4wkSI0okaIZipHtq7pz4JQ/6AwSNuSuYUGWalUJ
-         GXlZn6o8UHeMg27B27ReYmIJe6VlYhM0rhMBW5sJyyzDZs/kyMKxWuQ0g4/lBtXmGm3O
-         j1jw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=5KRt8FFWQDNryBvxaWuh5UmPga4sUXhUn48F2GiPqnI=;
+        b=T36PvGAtMaSEoqQkitF42HytZd4GmNpyONarz+AnUjBpx1pY4YYHmMIksKo+oKutSw
+         jllEIXFlrv8RHEVOR7jBMlKmoFLafXw50exaz6wQXVydFAIN8oMWVKfhEsTLxuFqGFsR
+         Wdce534COlx3UyYZh6wYRcPhfNTqdjWuG9IKMtK5QRuS9HFhOu8LvWE2Gs43QLaOf13C
+         8Xqs9vfvrfAX2iDf0SeX2LlVtIRsDZOUBuUf65USeDzcxxPNVJC65DenzfoQCFFW34KA
+         JaGdCg2hcsNtYHd736kP+W8lg9/DGoGQ7CJhS9ylhhRfF3fQoMQVYd245yfLT1J90GZp
+         T7sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TaOURbTn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SXVwcAbv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j14si3460609wrm.221.2021.08.19.09.34.40
+        by mx.google.com with ESMTPS id v25si3678309wrv.349.2021.08.19.09.34.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Aug 2021 09:34:40 -0700 (PDT)
+        Thu, 19 Aug 2021 09:34:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TaOURbTn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SXVwcAbv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60552 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGl03-00029X-9A
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 12:34:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56268)
+	id 1mGl0H-0002MU-Uq
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 12:34:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGkzu-000279-RN
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23497)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGkzz-0002HA-1t
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44656)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGkzs-0005qd-Lc
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:30 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGkzx-0005tT-F5
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629390868;
+ s=mimecast20190719; t=1629390872;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=P40SZLAow2qKFOaot8Segjt7m5P0Tsh3DgGPbGXn+Zc=;
- b=TaOURbTnyXCGR6ZWYjsqNVfpEvOqGOcv8eIZFdeHb25JoyG7cdoIHsY9jtmohPaFiM4XUQ
- UFLTirP9UBD4mnGukiv35FaI69qTAkP1B+mKeVfZVHTKf7MtaITBst8DkgGyDbrAaAbihV
- K0Ib4uRBm7fSPSMvV9YPY1VyxuUVvgA=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-17-gpiu_nP0M2WOZJ2LUntLMA-1; Thu, 19 Aug 2021 12:34:25 -0400
-X-MC-Unique: gpiu_nP0M2WOZJ2LUntLMA-1
-Received: by mail-wm1-f72.google.com with SMTP id
- e12-20020a05600c218cb02902e6bbacdcd1so1695819wme.4
- for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 09:34:25 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5KRt8FFWQDNryBvxaWuh5UmPga4sUXhUn48F2GiPqnI=;
+ b=SXVwcAbvv3mTaiFWzjB9W4NG4xOQZqQyC14F63uPJ+74LSk+Y+QXD83RwCVncEswK02dzs
+ GYVFFdzpwTfoEtSJpU2vlATPDtELY6YbunG902UOquebyE30bpnorKuj5bfQphtcPYlL7E
+ JVDLIIDZUMinxv5bmfIaEGfolKAbMgk=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-230-LEJP4V3EM7uM9ccDSQ725g-1; Thu, 19 Aug 2021 12:34:31 -0400
+X-MC-Unique: LEJP4V3EM7uM9ccDSQ725g-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ z18-20020a1c7e120000b02902e69f6fa2e0so1463637wmc.9
+ for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 09:34:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=RgbSsE9quR7RENKnyXMZwWY+CLMoPahTuLam0TQ3O8Y=;
- b=b0gP640Cn8BTJuOfkWe6uYeJBrwsJ8EIm2gpAWgoHqVD5ZSH9ydU9zJkia0WqwD6RW
- iRbAFZp6TXWzo4dkau++cJxfwa/ezVaNVNTGpZZyhXLNJn2Hir5i5tSvufNY4H+k9JgP
- 97ySOhx2BX+DfKAdgdRN6VYCTTFKnm6dbcnkOwn8WnSE3rvvSjdhzT5UWjQvOz6VQ3YM
- qHlXJI6GB6hhb0fkQm3hje3Am2rPLks9+E+3old1Tb1wwNcVOBYq82zf9kJsUD+sEBq0
- svBIlUOHKIaYtkiQQFSojASzPWRvMkm6KSb3lRgLrcBW/pitKA/kWwPHgMRdcFiWU8Di
- JA5g==
-X-Gm-Message-State: AOAM531Vz+dCqAOpP8GpKOUNQWBg93axp55iCNTS3SLadzP5i3SUr2yo
- z0ebWA3ytgZEfexdrtIQdt3m3cvoKzdWnvrffA5QAhnaCpvsKLBugbWgshhVUiEw9ROofrGDEW0
- lFzUsSCkEvdgd
-X-Received: by 2002:a5d:4dc3:: with SMTP id f3mr5131612wru.302.1629390864554; 
- Thu, 19 Aug 2021 09:34:24 -0700 (PDT)
-X-Received: by 2002:a5d:4dc3:: with SMTP id f3mr5131594wru.302.1629390864383; 
- Thu, 19 Aug 2021 09:34:24 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=5KRt8FFWQDNryBvxaWuh5UmPga4sUXhUn48F2GiPqnI=;
+ b=t7UZ7PAtIQCLwc6OEqJXmnbgn0NHIYref6izehj2ht6fnm0fh5HqZ4l5br3eCyy72d
+ 9MFn1YTn0TW0Gso1ZYbQ1bPn+OznICz2ky/+YeZS1gEBINPpDeizeo7Q9fZ0N99ZU857
+ z1xglNxXGwaQX86EHXPfZWOn4YbW1Ez7lvOOH49QWogmEjWiHxdqnayY/33BOygw6dB2
+ 304BE/C/VkJuqHRWnAjur7oePAHt+/SNVs673zqm3krBv8nJQaLaVG4WKmAmvSNCeaZO
+ /vI0zqAiDbUNORQl1UA476zBHiU6nR4zccTwneiFFQ9PJZCat/q62+HsGAysZeC2qT2+
+ ZR7Q==
+X-Gm-Message-State: AOAM53107G2rmMlXE447bVHrqBWYsBiSO9pG1yWtwy79wX269n9XvIkq
+ z6ZQCDJ0AwSpyRfQJik+v1pSYti8wSmzdYtX283qZrLtRVxQ1RK2zSqTCwnxLGu1kJt1YdAt7gk
+ tutN0K2B8pCOB
+X-Received: by 2002:a7b:c922:: with SMTP id h2mr14674987wml.186.1629390869403; 
+ Thu, 19 Aug 2021 09:34:29 -0700 (PDT)
+X-Received: by 2002:a7b:c922:: with SMTP id h2mr14674964wml.186.1629390869134; 
+ Thu, 19 Aug 2021 09:34:29 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
  by smtp.gmail.com with ESMTPSA id
- z17sm3553511wrh.4.2021.08.19.09.34.23
+ g12sm3428397wru.85.2021.08.19.09.34.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Aug 2021 09:34:23 -0700 (PDT)
+ Thu, 19 Aug 2021 09:34:28 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 0/4] hw/dma: Always expect 'dma' link property to be set to
- simplify
-Date: Thu, 19 Aug 2021 18:34:18 +0200
-Message-Id: <20210819163422.2863447-1-philmd@redhat.com>
+Subject: [PATCH v2 1/4] hw/arm/xlnx-zynqmp: Realize qspi controller *after*
+ qspi_dma
+Date: Thu, 19 Aug 2021 18:34:19 +0200
+Message-Id: <20210819163422.2863447-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210819163422.2863447-1-philmd@redhat.com>
+References: <20210819163422.2863447-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
@@ -130,28 +134,78 @@ Cc: qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TDB2K+B7tdNn
+X-TUID: ChV/W3hoKUpu
 
-Fix a qdev realization ordering, then simplify a pair of DMA=0D
-devices by always passing a MemoryRegion property to the device.=0D
-Doing so we can move the AddressSpace field to the device struct,=0D
-removing need for heap allocation.=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (4):=0D
-  hw/arm/xlnx-zynqmp: Realize qspi controller *after* qspi_dma=0D
-  hw/dma/xlnx_csu_dma: Run trivial checks early in realize()=0D
-  hw/dma/xlnx_csu_dma: Always expect 'dma' link property to be set=0D
-  hw/dma/xlnx-zdma Always expect 'dma' link property to be set=0D
-=0D
- include/hw/dma/xlnx-zdma.h    |  2 +-=0D
- include/hw/dma/xlnx_csu_dma.h |  2 +-=0D
- hw/arm/xlnx-versal.c          |  2 ++=0D
- hw/arm/xlnx-zynqmp.c          | 54 +++++++++++++++++++++--------------=0D
- hw/dma/xlnx-zdma.c            | 24 ++++++++--------=0D
- hw/dma/xlnx_csu_dma.c         | 31 ++++++++++----------=0D
- 6 files changed, 63 insertions(+), 52 deletions(-)=0D
-=0D
---=20=0D
-2.31.1=0D
-=0D
+If we link QOM object (a) as a property of QOM object (b),
+we must set the property *before* (b) is realized.
+
+Move QSPI realization *after* QSPI DMA.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/arm/xlnx-zynqmp.c | 42 ++++++++++++++++++++----------------------
+ 1 file changed, 20 insertions(+), 22 deletions(-)
+
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 3597e8db4de..9724978761b 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -570,26 +570,6 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         g_free(bus_name);
+     }
+ 
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->qspi), errp)) {
+-        return;
+-    }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
+-    sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi), 0, gic_spi[QSPI_IRQ]);
+-
+-    for (i = 0; i < XLNX_ZYNQMP_NUM_QSPI_BUS; i++) {
+-        gchar *bus_name;
+-        gchar *target_bus;
+-
+-        /* Alias controller SPI bus to the SoC itself */
+-        bus_name = g_strdup_printf("qspi%d", i);
+-        target_bus = g_strdup_printf("spi%d", i);
+-        object_property_add_alias(OBJECT(s), bus_name,
+-                                  OBJECT(&s->qspi), target_bus);
+-        g_free(bus_name);
+-        g_free(target_bus);
+-    }
+-
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->dp), errp)) {
+         return;
+     }
+@@ -646,8 +626,26 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi_dma), 0, QSPI_DMA_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi_dma), 0, gic_spi[QSPI_IRQ]);
+-    object_property_set_link(OBJECT(&s->qspi), "stream-connected-dma",
+-                             OBJECT(&s->qspi_dma), errp);
++
++    if (!object_property_set_link(OBJECT(&s->qspi), "stream-connected-dma",
++                                  OBJECT(&s->qspi_dma), errp)) {
++         return;
++    }
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->qspi), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi), 0, gic_spi[QSPI_IRQ]);
++
++    for (i = 0; i < XLNX_ZYNQMP_NUM_QSPI_BUS; i++) {
++        g_autofree gchar *bus_name = g_strdup_printf("qspi%d", i);
++        g_autofree gchar *target_bus = g_strdup_printf("spi%d", i);
++
++        /* Alias controller SPI bus to the SoC itself */
++        object_property_add_alias(OBJECT(s), bus_name,
++                                  OBJECT(&s->qspi), target_bus);
++    }
+ }
+ 
+ static Property xlnx_zynqmp_props[] = {
+-- 
+2.31.1
 

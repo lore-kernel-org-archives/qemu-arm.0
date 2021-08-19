@@ -1,102 +1,102 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp485436lfg;
-        Thu, 19 Aug 2021 09:34:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxvAO56Fs5qZ+h6NETK6+J2vWmduyC23zmkBizZmeMs+i4Adu3IiF8hwoDEOTHPYSTXUfXQ
-X-Received: by 2002:a1c:27c2:: with SMTP id n185mr14199119wmn.20.1629390894787;
-        Thu, 19 Aug 2021 09:34:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629390894; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp485812lfg;
+        Thu, 19 Aug 2021 09:35:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxoHxVvN5zw3kljWLwtecmpR5Q0E42Z1Clt97eMm+Zi9u9DDhEhsnJpbhS6ouSohk8BXaNS
+X-Received: by 2002:a05:600c:ac3:: with SMTP id c3mr14435836wmr.44.1629390922176;
+        Thu, 19 Aug 2021 09:35:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629390922; cv=none;
         d=google.com; s=arc-20160816;
-        b=UGop6sBJ+rpaFskwxRM5WKpRmASA3TMY7sWZ4SHAy4VkrHtXUnQJFIoGMJnrX6dd6r
-         d0V/tKKHzlJxJZcUGRpMg7cZrjdG7L8NM3ZDxIMKyEl657IQmuVX+qgBtqxEAPKUtQeM
-         l3ZthErbCoVhrZassyk6xWVOSN2tN18ay7DTO9mv2ykYHOHI1d5qy6AuyUgl2jlMEAHT
-         xMJRTtGQFCN2gjHaNbj1z/42olr6uhDParTmCNSGmeLg0pPNNrXBBv5J71cUb1/5tvH1
-         y8zjXGzwgAeq1tHyCAET7XmCkaZl68wxAu8q7kO/gCZMGg4wPdwZDShAIM1g7DtQKZaW
-         1DxA==
+        b=kNIJqz8lX5Dlqo/FBRf7bmESVtXk6j6W5zpTT2PaWevZqiqVgHunQEtTUo9JgvkOiC
+         gJiNxImNJiFv7Ajq4daCtCn3qJs7+vfZqed85YfPonJkEIMMjZpMDO78iOj+xfN7kdWO
+         yxRu27RDVcxQ2JTCgBqwZwrb3CoD3eGXgZ4hhm0lltsknmm0ySsyjrBD7QGQW1stZtGt
+         hl5+KyB9KyeqLg38qk9wQBS7UR48AV0hhc9DpkWRczLYmDaGKuiLB3NbWD5AzxKsiGWY
+         i8CtWW/yTOIJgzvXX0Hdm0he/ed6/yT8CUeFeBHKjz0WEBjbrow4DdcDws9ud/arj+97
+         voAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=5KRt8FFWQDNryBvxaWuh5UmPga4sUXhUn48F2GiPqnI=;
-        b=T36PvGAtMaSEoqQkitF42HytZd4GmNpyONarz+AnUjBpx1pY4YYHmMIksKo+oKutSw
-         jllEIXFlrv8RHEVOR7jBMlKmoFLafXw50exaz6wQXVydFAIN8oMWVKfhEsTLxuFqGFsR
-         Wdce534COlx3UyYZh6wYRcPhfNTqdjWuG9IKMtK5QRuS9HFhOu8LvWE2Gs43QLaOf13C
-         8Xqs9vfvrfAX2iDf0SeX2LlVtIRsDZOUBuUf65USeDzcxxPNVJC65DenzfoQCFFW34KA
-         JaGdCg2hcsNtYHd736kP+W8lg9/DGoGQ7CJhS9ylhhRfF3fQoMQVYd245yfLT1J90GZp
-         T7sA==
+        bh=UUbBguyXCVYJjhJZ+w9myvvn9hfolADVgWzdBMV8UY0=;
+        b=mzds6W6wGN7GSQVYTC1cFihDPSKhzzbl3WHLn1aeHq4Av0BfkPNIUJ4i0mdN9GW+Cq
+         M7JvcncyPkEAJ8Y/dS1vncYcV/k6BzL25i3kiUO8OVtH3yyTBb4D+GBDstBxwaYqSGvg
+         j4aVN9IyWiUUuB56TAGmu69aiNQEF46SHru6cu+xOO/nlzNu5es5qIPHguq8tDQ+JVdD
+         7FPyAYiSdTotP5Kt9136VARWHovz7Zrrk191jsoeafWmE3W47X/WNX4NxzJDIq/yTzP2
+         MmgYSjvhV1LDUsXvlhZCs5wYNUjpxaigyRBjvr4VN8UxGZQQq0x0G/evel4mvJd0wjjA
+         BCVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SXVwcAbv;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KWNfi7ki;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v25si3678309wrv.349.2021.08.19.09.34.54
+        by mx.google.com with ESMTPS id l17si3522650wms.205.2021.08.19.09.35.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Aug 2021 09:34:54 -0700 (PDT)
+        Thu, 19 Aug 2021 09:35:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SXVwcAbv;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KWNfi7ki;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60880 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGl0H-0002MU-Uq
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 12:34:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56298)
+	id 1mGl0j-00035T-43
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 12:35:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGkzz-0002HA-1t
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44656)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGl0B-0002re-Vx
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58853)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGkzx-0005tT-F5
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:34 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGl0A-00063p-8N
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 12:34:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629390872;
+ s=mimecast20190719; t=1629390885;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5KRt8FFWQDNryBvxaWuh5UmPga4sUXhUn48F2GiPqnI=;
- b=SXVwcAbvv3mTaiFWzjB9W4NG4xOQZqQyC14F63uPJ+74LSk+Y+QXD83RwCVncEswK02dzs
- GYVFFdzpwTfoEtSJpU2vlATPDtELY6YbunG902UOquebyE30bpnorKuj5bfQphtcPYlL7E
- JVDLIIDZUMinxv5bmfIaEGfolKAbMgk=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-230-LEJP4V3EM7uM9ccDSQ725g-1; Thu, 19 Aug 2021 12:34:31 -0400
-X-MC-Unique: LEJP4V3EM7uM9ccDSQ725g-1
-Received: by mail-wm1-f70.google.com with SMTP id
- z18-20020a1c7e120000b02902e69f6fa2e0so1463637wmc.9
- for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 09:34:31 -0700 (PDT)
+ bh=UUbBguyXCVYJjhJZ+w9myvvn9hfolADVgWzdBMV8UY0=;
+ b=KWNfi7kioYTuFjci9olhb9aLIm7ytT2zkS9mhWXBmM3kaqIey7T1sjem5H7HHizwkL7qsi
+ 4brTMFTzcteDfJhFVIDy+Nbwt0FzqwYmptcIS2dC8WZrtNrEhV3tISWgLrQGINe9OlP7Uh
+ TVwvCzDY5dO8cCS1jVXm5/2ICRkpNL4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-288-FrThcv0AOAexwfdsoy1zYQ-1; Thu, 19 Aug 2021 12:34:44 -0400
+X-MC-Unique: FrThcv0AOAexwfdsoy1zYQ-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ z2-20020adff1c20000b0290154f60e3d2aso1876853wro.23
+ for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 09:34:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5KRt8FFWQDNryBvxaWuh5UmPga4sUXhUn48F2GiPqnI=;
- b=t7UZ7PAtIQCLwc6OEqJXmnbgn0NHIYref6izehj2ht6fnm0fh5HqZ4l5br3eCyy72d
- 9MFn1YTn0TW0Gso1ZYbQ1bPn+OznICz2ky/+YeZS1gEBINPpDeizeo7Q9fZ0N99ZU857
- z1xglNxXGwaQX86EHXPfZWOn4YbW1Ez7lvOOH49QWogmEjWiHxdqnayY/33BOygw6dB2
- 304BE/C/VkJuqHRWnAjur7oePAHt+/SNVs673zqm3krBv8nJQaLaVG4WKmAmvSNCeaZO
- /vI0zqAiDbUNORQl1UA476zBHiU6nR4zccTwneiFFQ9PJZCat/q62+HsGAysZeC2qT2+
- ZR7Q==
-X-Gm-Message-State: AOAM53107G2rmMlXE447bVHrqBWYsBiSO9pG1yWtwy79wX269n9XvIkq
- z6ZQCDJ0AwSpyRfQJik+v1pSYti8wSmzdYtX283qZrLtRVxQ1RK2zSqTCwnxLGu1kJt1YdAt7gk
- tutN0K2B8pCOB
-X-Received: by 2002:a7b:c922:: with SMTP id h2mr14674987wml.186.1629390869403; 
- Thu, 19 Aug 2021 09:34:29 -0700 (PDT)
-X-Received: by 2002:a7b:c922:: with SMTP id h2mr14674964wml.186.1629390869134; 
- Thu, 19 Aug 2021 09:34:29 -0700 (PDT)
+ bh=UUbBguyXCVYJjhJZ+w9myvvn9hfolADVgWzdBMV8UY0=;
+ b=iov4Il+a8MStcjy1BSHW+lqRz3PUhncbrvNbpt7e1JO6ej40dP9TiALq2PvPFVYPlK
+ DB9He5sXgv8Ni84d3CkqYdIV6GO7uO0M3R6/HJ8xyRvH37XYBhwx1F+QP6/zYSdkzIO4
+ YOH6pb0CMUtjVZsa8Qe/uuLcm3MdQRhFozjyh2BTrWM9loh9H390Aqb9cKR8O+CWUWYA
+ nWUAhaCr8N7n8LZ+ammhQd3W5Z4KxdxTvjIBM6+hRccx+1rR5MKvxyyFZI9wBgV+zW7E
+ 7Jk3QXUHJnzqWaPNYbfxdIhEy4KK+bASwo0Rvj31h6KdiLQj/OxERD9p0duY8NyjXDRc
+ E2bw==
+X-Gm-Message-State: AOAM532JZ6vdq+RDppR0PaD3ceI86hP5b7uj/pb3PiaqI8RscoaYeovw
+ Smc7+m0LaorQ9RcRWVpuzRfoiwK453Alv4UT0bt5eaIEXdO4cAOuUmRz+bgpf5OByGyDEGMl06j
+ bGynzhs4EgQWA
+X-Received: by 2002:a5d:610d:: with SMTP id v13mr4999048wrt.199.1629390882949; 
+ Thu, 19 Aug 2021 09:34:42 -0700 (PDT)
+X-Received: by 2002:a5d:610d:: with SMTP id v13mr4999028wrt.199.1629390882797; 
+ Thu, 19 Aug 2021 09:34:42 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
  by smtp.gmail.com with ESMTPSA id
- g12sm3428397wru.85.2021.08.19.09.34.28
+ b20sm3035140wmj.48.2021.08.19.09.34.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Aug 2021 09:34:28 -0700 (PDT)
+ Thu, 19 Aug 2021 09:34:42 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/4] hw/arm/xlnx-zynqmp: Realize qspi controller *after*
- qspi_dma
-Date: Thu, 19 Aug 2021 18:34:19 +0200
-Message-Id: <20210819163422.2863447-2-philmd@redhat.com>
+Subject: [PATCH v2 4/4] hw/dma/xlnx-zdma Always expect 'dma' link property to
+ be set
+Date: Thu, 19 Aug 2021 18:34:22 +0200
+Message-Id: <20210819163422.2863447-5-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210819163422.2863447-1-philmd@redhat.com>
 References: <20210819163422.2863447-1-philmd@redhat.com>
@@ -115,7 +115,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -134,78 +134,146 @@ Cc: qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ChV/W3hoKUpu
+X-TUID: g9k+3juUwQgc
 
-If we link QOM object (a) as a property of QOM object (b),
-we must set the property *before* (b) is realized.
+Simplify by always passing a MemoryRegion property to the device.
+Doing so we can move the AddressSpace field to the device struct,
+removing need for heap allocation.
 
-Move QSPI realization *after* QSPI DMA.
+Update the Xilinx ZynqMP / Versal SoC models to pass the default
+system memory instead of a NULL value.
 
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/arm/xlnx-zynqmp.c | 42 ++++++++++++++++++++----------------------
- 1 file changed, 20 insertions(+), 22 deletions(-)
+ include/hw/dma/xlnx-zdma.h |  2 +-
+ hw/arm/xlnx-versal.c       |  2 ++
+ hw/arm/xlnx-zynqmp.c       |  8 ++++++++
+ hw/dma/xlnx-zdma.c         | 24 ++++++++++++------------
+ 4 files changed, 23 insertions(+), 13 deletions(-)
 
+diff --git a/include/hw/dma/xlnx-zdma.h b/include/hw/dma/xlnx-zdma.h
+index 6602e7ffa72..efc75217d59 100644
+--- a/include/hw/dma/xlnx-zdma.h
++++ b/include/hw/dma/xlnx-zdma.h
+@@ -56,7 +56,7 @@ struct XlnxZDMA {
+     MemoryRegion iomem;
+     MemTxAttrs attr;
+     MemoryRegion *dma_mr;
+-    AddressSpace *dma_as;
++    AddressSpace dma_as;
+     qemu_irq irq_zdma_ch_imr;
+ 
+     struct {
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index fb776834f7e..d60eb4fb184 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -218,6 +218,8 @@ static void versal_create_admas(Versal *s, qemu_irq *pic)
+                                 TYPE_XLNX_ZDMA);
+         dev = DEVICE(&s->lpd.iou.adma[i]);
+         object_property_set_int(OBJECT(dev), "bus-width", 128, &error_abort);
++        object_property_set_link(OBJECT(dev), "dma",
++                                 OBJECT(get_system_memory()), &error_fatal);
+         sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+         mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
 diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 3597e8db4de..9724978761b 100644
+index 4344e223f2d..6cfce26210d 100644
 --- a/hw/arm/xlnx-zynqmp.c
 +++ b/hw/arm/xlnx-zynqmp.c
-@@ -570,26 +570,6 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-         g_free(bus_name);
+@@ -601,6 +601,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                                       errp)) {
+             return;
+         }
++        if (!object_property_set_link(OBJECT(&s->gdma[i]), "dma",
++                                      OBJECT(system_memory), errp)) {
++            return;
++        }
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->gdma[i]), errp)) {
+             return;
+         }
+@@ -611,6 +615,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
      }
  
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->qspi), errp)) {
--        return;
--    }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi), 0, gic_spi[QSPI_IRQ]);
--
--    for (i = 0; i < XLNX_ZYNQMP_NUM_QSPI_BUS; i++) {
--        gchar *bus_name;
--        gchar *target_bus;
--
--        /* Alias controller SPI bus to the SoC itself */
--        bus_name = g_strdup_printf("qspi%d", i);
--        target_bus = g_strdup_printf("spi%d", i);
--        object_property_add_alias(OBJECT(s), bus_name,
--                                  OBJECT(&s->qspi), target_bus);
--        g_free(bus_name);
--        g_free(target_bus);
--    }
--
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->dp), errp)) {
-         return;
+     for (i = 0; i < XLNX_ZYNQMP_NUM_ADMA_CH; i++) {
++        if (!object_property_set_link(OBJECT(&s->adma[i]), "dma",
++                                      OBJECT(system_memory), errp)) {
++            return;
++        }
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->adma[i]), errp)) {
+             return;
+         }
+diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+index fa38a556341..a5a92b4ff8c 100644
+--- a/hw/dma/xlnx-zdma.c
++++ b/hw/dma/xlnx-zdma.c
+@@ -320,9 +320,9 @@ static bool zdma_load_descriptor(XlnxZDMA *s, uint64_t addr,
+         return false;
      }
-@@ -646,8 +626,26 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
  
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi_dma), 0, QSPI_DMA_ADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi_dma), 0, gic_spi[QSPI_IRQ]);
--    object_property_set_link(OBJECT(&s->qspi), "stream-connected-dma",
--                             OBJECT(&s->qspi_dma), errp);
-+
-+    if (!object_property_set_link(OBJECT(&s->qspi), "stream-connected-dma",
-+                                  OBJECT(&s->qspi_dma), errp)) {
-+         return;
-+    }
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->qspi), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi), 0, gic_spi[QSPI_IRQ]);
-+
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_QSPI_BUS; i++) {
-+        g_autofree gchar *bus_name = g_strdup_printf("qspi%d", i);
-+        g_autofree gchar *target_bus = g_strdup_printf("spi%d", i);
-+
-+        /* Alias controller SPI bus to the SoC itself */
-+        object_property_add_alias(OBJECT(s), bus_name,
-+                                  OBJECT(&s->qspi), target_bus);
-+    }
+-    descr->addr = address_space_ldq_le(s->dma_as, addr, s->attr, NULL);
+-    descr->size = address_space_ldl_le(s->dma_as, addr + 8, s->attr, NULL);
+-    descr->attr = address_space_ldl_le(s->dma_as, addr + 12, s->attr, NULL);
++    descr->addr = address_space_ldq_le(&s->dma_as, addr, s->attr, NULL);
++    descr->size = address_space_ldl_le(&s->dma_as, addr + 8, s->attr, NULL);
++    descr->attr = address_space_ldl_le(&s->dma_as, addr + 12, s->attr, NULL);
+     return true;
  }
  
- static Property xlnx_zynqmp_props[] = {
+@@ -354,7 +354,7 @@ static void zdma_update_descr_addr(XlnxZDMA *s, bool type,
+     } else {
+         addr = zdma_get_regaddr64(s, basereg);
+         addr += sizeof(s->dsc_dst);
+-        next = address_space_ldq_le(s->dma_as, addr, s->attr, NULL);
++        next = address_space_ldq_le(&s->dma_as, addr, s->attr, NULL);
+     }
+ 
+     zdma_put_regaddr64(s, basereg, next);
+@@ -421,7 +421,7 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+             }
+         }
+ 
+-        address_space_write(s->dma_as, s->dsc_dst.addr, s->attr, buf, dlen);
++        address_space_write(&s->dma_as, s->dsc_dst.addr, s->attr, buf, dlen);
+         if (burst_type == AXI_BURST_INCR) {
+             s->dsc_dst.addr += dlen;
+         }
+@@ -497,7 +497,7 @@ static void zdma_process_descr(XlnxZDMA *s)
+                 len = s->cfg.bus_width / 8;
+             }
+         } else {
+-            address_space_read(s->dma_as, src_addr, s->attr, s->buf, len);
++            address_space_read(&s->dma_as, src_addr, s->attr, s->buf, len);
+             if (burst_type == AXI_BURST_INCR) {
+                 src_addr += len;
+             }
+@@ -765,6 +765,12 @@ static void zdma_realize(DeviceState *dev, Error **errp)
+     XlnxZDMA *s = XLNX_ZDMA(dev);
+     unsigned int i;
+ 
++    if (!s->dma_mr) {
++        error_setg(errp, TYPE_XLNX_ZDMA " 'dma' link not set");
++        return;
++    }
++    address_space_init(&s->dma_as, s->dma_mr, "zdma-dma");
++
+     for (i = 0; i < ARRAY_SIZE(zdma_regs_info); ++i) {
+         RegisterInfo *r = &s->regs_info[zdma_regs_info[i].addr / 4];
+ 
+@@ -777,12 +783,6 @@ static void zdma_realize(DeviceState *dev, Error **errp)
+         };
+     }
+ 
+-    if (s->dma_mr) {
+-        s->dma_as = g_malloc0(sizeof(AddressSpace));
+-        address_space_init(s->dma_as, s->dma_mr, NULL);
+-    } else {
+-        s->dma_as = &address_space_memory;
+-    }
+     s->attr = MEMTXATTRS_UNSPECIFIED;
+ }
+ 
 -- 
 2.31.1
 

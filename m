@@ -1,96 +1,96 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp339410lfg;
-        Thu, 19 Aug 2021 06:42:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJza5rTqOyKmXYcg1zhTEf6v9xSqeNIN/WkbswauUfms2Th71VI+R3++zck2Mzl7PXRY9Xww
-X-Received: by 2002:a1f:c9c1:: with SMTP id z184mr11215852vkf.7.1629380529826;
-        Thu, 19 Aug 2021 06:42:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629380529; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp344925lfg;
+        Thu, 19 Aug 2021 06:49:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4hXok6pgPrgnUQmaP4p3MM4rhX+F5TxiQbfpdqaklnrrn7oK0h5a6oU9FYVqnltmsrQhG
+X-Received: by 2002:a67:ca1c:: with SMTP id z28mr12244448vsk.40.1629380960656;
+        Thu, 19 Aug 2021 06:49:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629380960; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sv07x2AlfFcHaE+/s0YXHoydtPDD9y7MEUX7ESCF9Rh/NUWvXxUN7B93hUGdhSiq2a
-         AyjMQZTflfepUdDiFlFC77N37kYeGhdhzFsVhr+at3NKLVAfu4gwUeN/5WW9ys4TfVxd
-         5Z2bpsSLVtXhDlSqtmxEfVEvm8pVjvLfrRhE3JSU+xaiy0mq5g79KyekNZhwVcyCVUlW
-         CPhEIz5qqDTK6lAVBULkvE7HfAkhHRA6tRVSJt+fKZQ9Jbu8k9Umk7meq+yW68pToRaC
-         JN0nEaov+sQ+jbwG2dHxdCovu67hR0VtxOBIRmlVROMEIT7TZv5PZ0PWJpEMnb0rug5Z
-         7gdQ==
+        b=qUb7iZOU2hhCKUUkj8dFk5gY+IGR5hphvd4nGiJLxk6NQZcsG8zXt3um3bRsF4fha/
+         e9OoGxtQjv3GF+1Y62vapIqD9XAmF0G81CgHGc3Eg1dT2yyYYpDsCJNEryqjoVFvlTxf
+         Gdp7ziR2m/tugTw6TtwgicdawgvNh14n4lBTGGxaQF5zirrkzrtnEB5Z/SmqyTJbyxV9
+         T8EIz3RwCKN7YTlJaUte89xcvqgWsq9dFPLKwAkwiwuQCSP6xCDMNQhd6wy+uazTLNa7
+         B++df23AbCArEhOXRfe7MsGyHgPotQ1GEdzCTOqvM1KQVqGQ/JFciRaLek2NuyzQH8f+
+         /Iyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=7Zfur643o1ACOiDICbxUWdVXA/wTCxhPbgbWj4h2t6s=;
-        b=F7lJLiHO9pqlcJDPXtd9AU5ZfNJc8M/iItuv4ePFmuDvOzmwrinoaca5OxXe3A1f+t
-         XdVgruO0VuQg2y2L5s1mlzmnQ7Xo2GHl/uGTgLyiQCbSxEp+peMc8Cs+L7aJoBW75G4g
-         64o3Ge2ki9L5gkp5PaD6dmp7ZqqWOPmLF9jPuOmOOdQ/0lPeRhWauDE+9guBiuLvXLEW
-         gq7URHkJPwvaoqHG/ys3OZDn/u6l01v75XRmIKhvlkxpXoLuGNf17LZtOYvvCFdmAPVn
-         m2n+gucGmS4auAxiXVNnaEGf7WFY+ayO4usnZGvAVq1Yq8GklpaC3wB9p3f/cPdiLraG
-         PuBw==
+        bh=dMZLYIOfpnKXXXNu876DaFZq6/F+WJ79ngg4WXo5gsw=;
+        b=VbqSs/IppTVy5wQhXOZ0Uy6mcxxnNVLUYAX8FBD6MIqtlncs330RucSXhM+K1W8IHj
+         3wntPUYM8jHmf3jHgs6mczwkWwXTX+NrIbsmy7Dkr32Svvl72XZrObTybkFiuHr4R0Cu
+         Qc2mc7F0plJUVFqopcP3PdOzjQRsSqlSnUGe3TGEKX3rhZdufxbaJlkiQjEB4DQi4cEg
+         yfVgUByyMur62GA08kyQSVYxjkHiKvo/Z8xJqRyu3yEsD/BMKBYdE1w45soO98v8UoSf
+         d4NHxsBtD7XnCHQIyBniBKwWZ0oj6VKYVHsGFCRhe47PpzxV3DN2MIKJlwndIalr+1b2
+         ERUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NrjiztVO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CSVuo4A7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12si1611001vsi.186.2021.08.19.06.42.09
+        by mx.google.com with ESMTPS id i28si1772692vsj.403.2021.08.19.06.49.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Aug 2021 06:42:09 -0700 (PDT)
+        Thu, 19 Aug 2021 06:49:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NrjiztVO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CSVuo4A7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56574 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33548 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGiJ7-00013a-6f
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 09:42:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45168)
+	id 1mGiQ4-0004oY-0N
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 09:49:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mGiIg-00010c-NU
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:41:42 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:46919)
+ id 1mGiPt-0004oE-Lx
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:49:12 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:42546)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mGiIe-0005t2-Vr
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:41:42 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id gt38so12920923ejc.13
- for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 06:41:40 -0700 (PDT)
+ id 1mGiPs-0003XF-5f
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:49:09 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id bo19so8946559edb.9
+ for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 06:49:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7Zfur643o1ACOiDICbxUWdVXA/wTCxhPbgbWj4h2t6s=;
- b=NrjiztVOwaWnsRk+3qbVKFClGIyGBJJC8brT1msO3rM7A43DRViEIsaBr6t3F28gaW
- J55ftSR3BCxxeddADnewTvpG4bVMinxGtsBawY5R8zXuNqigA0tdadJKQJ67XSx9qcJU
- vWh4cEwZRxczyZedn++aDX/auURNPS0fLNJxW3/mw6egjbRvyPqQ+wxoyGeTB1y1n8gq
- yF3OQ1Nt9A0aMpeUDghe+EjcS9n/YhLhxqY2haWRSsKGMJ+LWSfyfv2GvSxGKorztqWr
- NBhdu75N+iPXjboW5uOjuRjLsVXs+7MmAfQMZ3rUYaFcHdkWTpKgUf7v1mlN3hnhMPuG
- DR8w==
+ :cc; bh=dMZLYIOfpnKXXXNu876DaFZq6/F+WJ79ngg4WXo5gsw=;
+ b=CSVuo4A7GU4n5I8gHHaFYibOt9JbsR65IBBFNlsWC4p+vONjkOd/uM7mD1XuAVWIS7
+ HiE40/ToaUghjIZF06e5RaSes/m/RwunVfhyiJg+Hu4uMk+QRHGZDfVAPUr/66tq/MIY
+ JYxJcF1/5mtGUIvb8UU+0SQiIHqwDUN2ltq5WwwQrCOt9C8yuTBXTFapFEmpn3Pp7kqC
+ O2ypLMIBsImIWNtyV6IM/VBuCjZSjnMvf6Oh6aT6K98bOnA7dHgn6yD9oHPC53YBSZQN
+ ORX9H3uXtNN7IYdyEjdDR2nvz14fDWCIdI7hAyBjBXhHrZ+CkbyicgoYUoHNtYQl9ezQ
+ 9jng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=7Zfur643o1ACOiDICbxUWdVXA/wTCxhPbgbWj4h2t6s=;
- b=AxmIEpQ4P78QMW6jbUI+fA6ceknszRSU51n0UEJ72Jqh0yAIGqcDiEv0K8hrXBj10p
- QTzxz9TzXO+ZMDfgWiSC2qyRXVtoPV4vBvc3cSRHGQgVWGu7XOp1GZK3UahwGAgnXwJH
- yZw2l7enfX0081jIcXpockhp2DnychqE76t1j3zSZkfDjQN0kQM5a3UWBgaYrPOyl6pD
- IfwnQqpE+R1g2CwQcwwrBSJ9M6TdGBheKeNXdleJfHUtUhZmnzDpJzK4tmelA9MfJNtw
- zhSqKeOQHvYqL/5/JrUzcjfmMHsTObMW2VpQpN4dKyRrPEVomxUeLwVgm+S+oy7G8REl
- YQKw==
-X-Gm-Message-State: AOAM532FfIxM5/u/a41NGUwvKuHI6nQecnWVKDtPe2SFcmeftwXDMnXA
- wzN4YXSIijT/C6QjpIez/N+lvwNe/OhRQvLJzkS5KQ==
-X-Received: by 2002:a17:906:aac7:: with SMTP id
- kt7mr15835594ejb.4.1629380499314; 
- Thu, 19 Aug 2021 06:41:39 -0700 (PDT)
+ bh=dMZLYIOfpnKXXXNu876DaFZq6/F+WJ79ngg4WXo5gsw=;
+ b=ZY9Ux38liftFS54NbuBPvClAhx6fDClEEebh5HjGVI036CZigFmuDtxrAUIvRZZ+XC
+ iUQVlmlXUUV68F5T/bpXmVOnYJ1J0ZoGiutc45E+8eeFp/NlbGlwv+cx22DeWa9LYeC9
+ 4Bf9fksA4/3ULVlYYExhPYG4xfmi0OBhW4eEgYytRLrylLi+Kj2iORZsdbPJsHbIgSQQ
+ PPcdBZFbpZ+bT11Q1JfyqvrhSh+ION0xYG3BKbH+nOhRcsvqD++rzFdrDC2MVqQ1Hi9k
+ GGs7qttgMLe/xoVEMHxZxtk6sQg17YQWp6cZRGv7sm+1SvkIIbZhcQ26iPxZFACVuSth
+ dveg==
+X-Gm-Message-State: AOAM532kneao3WFf9e8GH7Bn8hM5uEC7TJW9OzV9Vm7THzS9ejBVeTXG
+ AIEoXtBby9iIbTQlaUSYngxBAwH8tT6XOI1lXY2vMQ==
+X-Received: by 2002:aa7:c0c6:: with SMTP id j6mr5217640edp.146.1629380942565; 
+ Thu, 19 Aug 2021 06:49:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210818010041.337010-1-richard.henderson@linaro.org>
- <20210818010041.337010-4-richard.henderson@linaro.org>
-In-Reply-To: <20210818010041.337010-4-richard.henderson@linaro.org>
+ <20210818010041.337010-5-richard.henderson@linaro.org>
+In-Reply-To: <20210818010041.337010-5-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Aug 2021 14:40:53 +0100
-Message-ID: <CAFEAcA-v6z9UTbmdHqMugbtqv1n92SJ7EFGM8Gnk+_90FMyoBg@mail.gmail.com>
-Subject: Re: [PATCH 3/4] target/arm: Take an exception if PC is misaligned
+Date: Thu, 19 Aug 2021 14:48:16 +0100
+Message-ID: <CAFEAcA_fSTRTxDaU21HySQk7MoQjKZTRdE=Sqg6KZb86FQf2=Q@mail.gmail.com>
+Subject: Re: [PATCH 4/4] target/arm: Suppress bp for exceptions with more
+ priority
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,66 +113,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bD4fqLV6k3lk
+X-TUID: 2EDxE39Ad78m
 
-On Wed, 18 Aug 2021 at 02:04, Richard Henderson
+On Wed, 18 Aug 2021 at 02:01, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> For A64, any input to an indirect branch can cause this.
->
-> For A32, many indirect branch paths force the branch to be aligned,
-> but BXWritePC does not.  This includes the BX instruction but also
-> other interworking changes to PC.  Prior to v8, this case is UNDEFINED.
-> With v8, this is CONSTRAINED UNDEFINED and may either raise an
-> exception or force align the PC.
->
-> We choose to raise an exception because we have the infrastructure,
-> it makes the generated code for gen_bx simpler, and it has the
-> possibility of catching more guest bugs.
+> Both single-step and pc alignment faults have priority over
+> breakpoint exceptions.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->  static void arm_post_translate_insn(DisasContext *dc)
->  {
->      if (dc->condjmp && !dc->base.is_jmp) {
-> @@ -9500,7 +9504,25 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
->      CPUARMState *env = cpu->env_ptr;
->      unsigned int insn;
->
-> -    if (arm_pre_translate_insn(dc)) {
-> +    /* Singlestep exceptions have the highest priority. */
-> +    if (arm_check_ss_active(dc)) {
-> +        dc->base.pc_next += 4;
-> +        return;
-> +    }
+> ---
+>  target/arm/debug_helper.c | 23 +++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
 > +
-> +    if (dc->base.pc_next & 3) {
-> +        /*
-> +         * PC alignment fault.  This has priority over the instruction abort
-> +         * that we would receive from a translation fault via arm_ldl_code
-> +         * (or the execution of the kernelpage entrypoint).
-> +         */
-> +        gen_exception_insn(dc, dc->base.pc_next, EXCP_UDEF,
-> +                           syn_pcalignment(), default_exception_el(dc));
-> +        dc->base.pc_next = QEMU_ALIGN_UP(dc->base.pc_next, 4);
-> +        return;
+> +    /*
+> +     * PC alignment faults have priority over breakpoint exceptions.
+> +     */
+> +    pc = is_a64(env) ? env->pc : env->regs[15];
+> +    if ((is_a64(env) || !env->thumb) && (pc & 3) != 0) {
+> +        return false;
 > +    }
-> +
-> +    if (arm_check_kernelpage(dc)) {
->          dc->base.pc_next += 4;
->          return;
->      }
-> @@ -9570,7 +9592,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
->      uint32_t insn;
->      bool is_16bit;
->
-> -    if (arm_pre_translate_insn(dc)) {
-> +    if (arm_check_ss_active(dc) || arm_check_kernelpage(dc)) {
 
+Other than the obvious adjustment if we need to handle
+env->thumb && (pc & 1)
 
-Is it not possible to get a misaligned PC in the Thumb case ?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
->          dc->base.pc_next += 2;
->          return;
->      }
-
+thanks
 -- PMM

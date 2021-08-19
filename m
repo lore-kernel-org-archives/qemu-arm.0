@@ -1,106 +1,103 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp413268lfg;
-        Thu, 19 Aug 2021 08:09:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzM0yu1BGJsn99WNSIi0TF4V9Uu6ezJe4K18PBfAQQRRfXrgi4Ll/m1ZuX6F9t6X1x8Tv7k
-X-Received: by 2002:a05:600c:510a:: with SMTP id o10mr14319134wms.84.1629385741920;
-        Thu, 19 Aug 2021 08:09:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629385741; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp425392lfg;
+        Thu, 19 Aug 2021 08:22:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6JrDHBzEMTKQPN1zMoVCTEHjyiJLb6w2oAKd9SvHNYtcKi9siX5Va5TXgIVff2LvdhHyG
+X-Received: by 2002:a1f:e906:: with SMTP id g6mr11999726vkh.5.1629386526698;
+        Thu, 19 Aug 2021 08:22:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629386526; cv=none;
         d=google.com; s=arc-20160816;
-        b=gucKLRxXC8ACmnlyE5nshAZJTY2EvHHpzPaRslKXft9/I8etr6rXPJtSTYQGpmPMlV
-         zT2LP3cSHo7QmWT+WLdH+hpxDJyXodxVlbcDv2x1HWJ7xbKjE1xDjH4k3a/Oi8xWB7Kt
-         a5ghOSyKOASQgkar5PvCzef4DP9bwsJQ8Foa2vjWSKhsb28GqTGbw63+CDLhreEFM+Fv
-         rltQtRQdNZRqp7B14+HQryHJ5OQOoCB0NhgBzKtsWR/pb7p4B+N+QtPJhd+ayylY3BRL
-         txA7/Ye+jqt5eZUOA/RyEg+9Dh6NL5VBEvHknDGhIvCOrbtRdop8ScWFZWSsOqQvcwie
-         2RPw==
+        b=om6oE3mkKlQ+dLJChuUTKoVNAhvCSsHxG36f4Km4szoGpqrysmqYdCsYnxcD1/cS6N
+         qys/kRTVyqVH7SLvLbEfkII4uFyudGWcBf4RwUeuPtx1QceIwd9R72KxnudOG5QnUjGP
+         Uq3DAwg5cdynU3H6jaI4zLoS++c6JojAiwvnZtRvNNgZ8TfV1JC/BVTxuJN6HO/ftuNP
+         PgZiAhlTaYDpFcVhMgHIYLQNAQyQwSkpxfoLSH4srawbYDqyM2OpYrhrZyrmE5lZ42Sk
+         pvBNzjeH5w5L3tsbl6ygp3Jp0ApUjlEr9bAK1feQGIqbvBy34+Rm0oqwnXbFoP8XnBr9
+         s5rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=wTSfdHKyrfUWF/a3HOMjyp2gpqSV0AyL3rRVVlr+QnY=;
-        b=d1Bk4CZf7VR3roW+XpKzSteZvcdNd8p8A9Ki8FVKqUzp2Pz/YyDEOC5YuV+nm3bqCO
-         iPVQywtj8CTlQWN4FIFlocXF1/is4WshL+rBz1mN2dtlkkC/dDClcgRJZA2jaNwarNvi
-         Xsv7UPE6Cl41dC8JESOhENVIXCW0LPidjOnJ5V6zDHA/RrrJbZWdXaPTvweTjM7DKdvA
-         tBNH2XwuSB29nZQQL+J363aHTnuvkubfkvhuK68o+TRxLDKDB0SkGe87+SOH8VnARKoC
-         /j12i5G31lxfNVIvbj54nC2rP3KHSh5/9ZMjmNUlHIgPIohjIFkbkpmy27/x0JRUNE8L
-         4DEQ==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=OtGqtrJhvbcvm1gGX9oWt47bUo62G3HPsSvg/+6YGlE=;
+        b=TKGTVkcWAqRnMNBfMBEySWjocHeoDBL2K9WVF9851uQnIv2+geicxQpYjvmvi1asjN
+         5Xe3sof3BEe/p8+J3aubQm84VItpY1Ri0ZIriwzzGQSsFrtdbMfnB6PK1t67LH/H2zWU
+         lhV88/0qv7INESnbuQy5MGAoRnrwW5yAkBjEQcF9wyAaeup7bOT7IdPIiV93WM9kAkQd
+         PzrxWltXPYcZU6r/e7JMakY220P+bBy/xTm4yFYDISexZh2PKSJYUdHB/F9qUH4I+qTI
+         RDM/Bo6EpylwCOK0TnggRDKKeABXSYF92KOuYiMzOBAXqDJR6mzhffBfsOS9n+Ier5T4
+         oi6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LyDwb7pz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3si3297687wmc.93.2021.08.19.08.09.01
+        by mx.google.com with ESMTPS id x15si2263516vsr.22.2021.08.19.08.22.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Aug 2021 08:09:01 -0700 (PDT)
+        Thu, 19 Aug 2021 08:22:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LyDwb7pz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51668 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:38908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGjfB-00035m-0t
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 11:09:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37160)
+	id 1mGjrq-0005YD-22
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 11:22:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1mGjf3-00035a-0K; Thu, 19 Aug 2021 11:08:53 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d]:36425)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1mGjez-0005gq-Tn; Thu, 19 Aug 2021 11:08:52 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id r9so13730639lfn.3;
- Thu, 19 Aug 2021 08:08:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=wTSfdHKyrfUWF/a3HOMjyp2gpqSV0AyL3rRVVlr+QnY=;
- b=LyDwb7pzc56LuuPon7gZF8IGtd3dAfojDcmiZOX6dlg1uaZV+R5uwtyAi8jFQe0FkT
- XUxlEgErvFSGJjA7+RGDhIusOAz+KjnQDwISom1C/a12GqhfXpbpDqloWpTO3TZ33lXW
- N3pCfKDA2f9Q66TCUAktsiTXo+DGHNQCbxI2Or9MICX/oPqCq2nQveq5qZsXOvWiuk0H
- szNq2dTgGWuc+yiOCbu9KZfgERLIHS4/I0wy9EhDRakiwIee10FiEKu1NC7d7wPcmCWc
- kcAkQ9pZz1h1PsFhK3LjLid2V/A1y/qvZL2QJOtQUwdgMuPdcs1EMW+nK5X8DhYEAyzK
- js6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=wTSfdHKyrfUWF/a3HOMjyp2gpqSV0AyL3rRVVlr+QnY=;
- b=VDlAYas0SATB3pzNlAFjHs0XdfBxGZZC9rzWKbkPWmwcBKfG8A2DbtxHz7egxa/Nvn
- gNV8XbOeBawZWAo4aR54x4ufKpSMTNfbmKOjbw4+FXVU8TZ6do6F4x/hrM5lwdUMxid/
- Bfpb0y0MsossOVOyML0+B0WaIMOO948gvyH4fFcXOoeO3DDw6be/QA1wzq91j3fI6J3b
- Iz5s+6F3Mq6EBE7fdudBJb2JBX8p1GvlytS/NivtPLqZDy2tHcwoXVcZdB9irWBtAiQm
- mccsEDZCR+Q/uLCQYDWdJd4WliIzQUCI4pq1VvyMjsxOY1gsj6i3+4sCmWFcmHFMmBgE
- EoYw==
-X-Gm-Message-State: AOAM530qqaHgFzA08TQCKFbNh30OPAkk0L02iPDcnyeC9aSORRzO6oAz
- k5/eIdXvzDQ4IdQkhLLfwWc=
-X-Received: by 2002:a05:6512:3c9d:: with SMTP id
- h29mr3876131lfv.206.1629385726953; 
- Thu, 19 Aug 2021 08:08:46 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id v14sm287148lji.32.2021.08.19.08.08.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Aug 2021 08:08:45 -0700 (PDT)
-Date: Thu, 19 Aug 2021 17:08:45 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Tong Ho <tong.ho@xilinx.com>
-Subject: Re: [PATCH 0/9] hw/nvram: hw/arm: Introduce Xilinx eFUSE and BBRAM
-Message-ID: <20210819150845.GF3586016@toto>
-References: <20210819040308.675057-1-tong.ho@xilinx.com>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1mGjre-0005X7-RN; Thu, 19 Aug 2021 11:21:54 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2149)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1mGjrb-0000HE-OT; Thu, 19 Aug 2021 11:21:54 -0400
+Received: from fraeml710-chm.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Gr7kY2D9Xz6DKlv;
+ Thu, 19 Aug 2021 23:20:37 +0800 (CST)
+Received: from lhreml715-chm.china.huawei.com (10.201.108.66) by
+ fraeml710-chm.china.huawei.com (10.206.15.59) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Thu, 19 Aug 2021 17:21:37 +0200
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml715-chm.china.huawei.com (10.201.108.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Thu, 19 Aug 2021 16:21:37 +0100
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.2308.008; Thu, 19 Aug 2021 16:21:37 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>, "Ani
+ Sinha" <ani@anisinha.ca>
+Subject: RE: [PATCH] hw/arm/Kconfig: no need to enable ACPI_MEMORY_HOTPLUG
+ explicitly
+Thread-Topic: [PATCH] hw/arm/Kconfig: no need to enable ACPI_MEMORY_HOTPLUG
+ explicitly
+Thread-Index: AQHXjyshD1ecXEbjmUeOqcPoduSk96t3FiQAgAOwnoCAAAWCAIAAAyEAgAAUcgCAABem0A==
+Date: Thu, 19 Aug 2021 15:21:37 +0000
+Message-ID: <2ce72c03d5864522a3e886287c2c6fa7@huawei.com>
+References: <20210812033405.362985-1-ani@anisinha.ca>
+ <alpine.DEB.2.22.394.2108171014500.202364@anisinha-lenovo>
+ <CAFEAcA8Fu+mkzFi9JdTtbqMcnnV74Swk04xx2a1G4L_oATY2eQ@mail.gmail.com>
+ <alpine.DEB.2.22.394.2108191849260.417749@anisinha-lenovo>
+ <alpine.DEB.2.22.394.2108191905100.418214@anisinha-lenovo>
+ <16b11751-7ab2-8d68-0bf2-5453bc2938fc@redhat.com>
+In-Reply-To: <16b11751-7ab2-8d68-0bf2-5453bc2938fc@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.94.122]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210819040308.675057-1-tong.ho@xilinx.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,30 +111,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- alistair@alistair23.me
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q8JjcT6RRRxK
+X-TUID: OMBIL62dxHe2
 
-On Wed, Aug 18, 2021 at 09:02:59PM -0700, Tong Ho wrote:
-> This series implements the Xilinx eFUSE and BBRAM devices for
-> the Versal and ZynqMP product families.
-> 
-> Furthermore, both new devices are connected to the xlnx-versal-virt
-> board and the xlnx-zcu102 board.
-
-Hi Tong,
-
-A few general comments.
-
-Patch #1 should probably be moved to be the last patch of the series.
-
-I think we should remove the commands about register generation
-"Partially generated by xregqemu.py". It may be confusing to others
-since it's not a tool we run in the build process but rather a one
-off extraction of reg definitions...
-
-Thanks!
-Edgar
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGhpbGlwcGUgTWF0aGll
+dS1EYXVkw6kgW21haWx0bzpwaGlsbWRAcmVkaGF0LmNvbV0NCj4gU2VudDogMTkgQXVndXN0IDIw
+MjEgMTU6NTANCj4gVG86IEFuaSBTaW5oYSA8YW5pQGFuaXNpbmhhLmNhPg0KPiBDYzogUGV0ZXIg
+TWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPjsgUUVNVSBEZXZlbG9wZXJzDQo+IDxx
+ZW11LWRldmVsQG5vbmdudS5vcmc+OyBxZW11LWFybSA8cWVtdS1hcm1Abm9uZ251Lm9yZz47IE1p
+Y2hhZWwgUy4NCj4gVHNpcmtpbiA8bXN0QHJlZGhhdC5jb20+OyBJZ29yIE1hbW1lZG92IDxpbWFt
+bWVkb0ByZWRoYXQuY29tPjsNCj4gU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8c2hhbWVlcmFs
+aS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIXSBody9h
+cm0vS2NvbmZpZzogbm8gbmVlZCB0byBlbmFibGUNCj4gQUNQSV9NRU1PUllfSE9UUExVRyBleHBs
+aWNpdGx5DQo+IA0KPiBDYydpbmcgU2hhbWVlciBLb2xvdGh1bS4NCj4gDQo+IE9uIDgvMTkvMjEg
+MzozNiBQTSwgQW5pIFNpbmhhIHdyb3RlOg0KPiA+IE9uIFRodSwgMTkgQXVnIDIwMjEsIEFuaSBT
+aW5oYSB3cm90ZToNCj4gPj4gT24gVGh1LCAxOSBBdWcgMjAyMSwgUGV0ZXIgTWF5ZGVsbCB3cm90
+ZToNCj4gPj4+IE9uIFR1ZSwgMTcgQXVnIDIwMjEgYXQgMDU6NDUsIEFuaSBTaW5oYSA8YW5pQGFu
+aXNpbmhhLmNhPiB3cm90ZToNCj4gDQo+ID4+PiBJcyBpdCBpbnRlbmRlZCB0aGF0IEFDUElfSFdf
+UkVEVUNFRCBtdXN0IGFsd2F5cyBpbXBseQ0KPiA+Pj4gQUNQSV9NRU1PUllfSE9UUExVRywgb3Ig
+aXMgaXQganVzdCBhIGNvaW5jaWRlbmNlIHRoYXQgdGhlIHZpcnQgYm9hcmQNCj4gPj4+IGhhcHBl
+bnMgdG8gd2FudCBib3RoLCBhbmQgc28gd2Ugc2VsZWN0IGJvdGggPw0KPiANCj4gVGhlIEFDUEkg
+ZGVwZW5kZW5jeSB3YXMgbWlzc2luZyAoc2VlIGNvbW1pdCAzNmI3OWUzMjE5ZCwNCj4gImh3L2Fj
+cGkvS2NvbmZpZzogQWRkIG1pc3NpbmcgS2NvbmZpZyBkZXBlbmRlbmNpZXMgKGJ1aWxkIGVycm9y
+KSIsIG5vdyB3ZQ0KPiBkb24ndCBuZWVkIGl0IGV4cGxpY2l0bHkuDQoNClllcy4gQW5kIGl0IGxv
+b2tzIGxpa2UgQUNQSV9OVkRJTU0gYWxzbyBjYW4gYmUgcmVtb3ZlZCBub3cuDQoNClJlZ2FyZHMs
+DQpTaGFtZWVyDQoNCj4gPj4gRnJvbSBhIHB1cmVseSBjb2RlIGluc3BlY3Rpb24gcG9pbnQgb2Yg
+dmlldywgSSBub3RpY2VkIHRoYXQNCj4gPj4gZ2VuZXJpY19ldmVudF9kZXZpY2UuYyBkZXBlbmRz
+IG9uIENPTkZJR19BQ1BJX0hXX1JFRFVDRUQuIFRoZSBHRUQNCj4gPj4gZG9lcyB1c2UgbWVtb3J5
+IGhvdHBsdWcgYXBpcyAtIGZvciBleGFtcGxlIGFjcGlfZ2VkX2RldmljZV9wbHVnX2NiKCkNCj4g
+Pj4gdXNlcw0KPiA+PiBhY3BpX21lbW9yeV9wbHVnX2NiKCkgZXRjLg0KPiA+Pg0KPiA+PiBIZW5j
+ZSwgYXMgaXQgc3RhbmRzIHRvZGF5LCBDT05GSUdfQUNQSV9IV19SRURVQ0VEIHdpbGwgbmVlZCB0
+byBzZWxlY3QNCj4gPj4gQUNQSSBtZW1vcnkgaG90cGx1Zy4gVW5sZXNzIHdlIHJlbW92ZSB0aGUg
+R0VEIGRldmljZSdzIGRlcGVuZGVuY2Ugb24NCj4gPj4gQUNQSV9IV19SRURVQ0VEIHRoYXQgaXMu
+IEkgY2Fubm90IGNvbW1lbnQgd2hldGhlciB0aGF0IHdvdWxkIGJlIHdpc2UNCj4gPj4gb3IgaWYg
+d2Ugc2hvdWxkIHJlb3JnIHRoZSBjb2RlIGluIHNvbWUgb3RoZXIgd2F5Lg0KPiA+DQo+ID4gVGhl
+IG90aGVyIHF1ZXN0aW9uIHdlIHNob3VsZCBhc2sgaXMgd2hldGhlciBhcm0gcGxhdGZvcm0gcmVx
+dWlyZXMNCj4gPiBBQ1BJX01FTU9SWV9IT1RQTFVHIGluZGVwZW5kZW50IG9mIEFDUElfSFdfUkVE
+VUNFRC9HRUQgZGV2aWNlPw0KPiBJZiB0aGF0DQo+ID4gaXMgdGhlIGNhc2UsIHRoZW4gbWF5YmUg
+d2Ugc2hvdWxkIGtlZXAgdGhhdCBjb25maWcgb3B0aW9uIGFzIGlzLg0KPiA+IE1heWJlIEBxZW11
+LWFybSBjYW4gYW5zd2VyIHRoYXQ/DQo+IA0KPiBPciBnaXQtbG9nOg0KPiANCj4gY29tbWl0IGNm
+ZjUxYWM5NzhjNGZhMGIzZDBkZTBmZDYyZDc3MmQ5MDAzZjEyM2UNCj4gQXV0aG9yOiBTaGFtZWVy
+IEtvbG90aHVtIDxzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20+DQo+IERhdGU6
+ICAgV2VkIFNlcCAxOCAxNDowNjoyNyAyMDE5ICswMTAwDQo+IA0KPiAgICAgaHcvYXJtL3ZpcnQ6
+IEVuYWJsZSBkZXZpY2UgbWVtb3J5IGNvbGQvaG90IHBsdWcgd2l0aCBBQ1BJIGJvb3QNCj4gDQo+
+ICAgICBUaGlzIGluaXRpYWxpemVzIHRoZSBHRUQgZGV2aWNlIHdpdGggYmFzZSBtZW1vcnkgYW5k
+IGlycSwgY29uZmlndXJlcw0KPiAgICAgZ2VkIG1lbW9yeSBob3RwbHVnIGV2ZW50IGFuZCBidWls
+ZHMgdGhlIGNvcnJlc3BvbmRpbmcgYW1sIGNvZGUuIFdpdGgNCj4gICAgIHRoaXMsIGJvdGggaG90
+IGFuZCBjb2xkIHBsdWcgb2YgZGV2aWNlIG1lbW9yeSBpcyBlbmFibGVkIG5vdyBmb3INCj4gICAg
+IEd1ZXN0IHdpdGggQUNQSSBib290LiBNZW1vcnkgY29sZCBwbHVnIHN1cHBvcnQgd2l0aCBHdWVz
+dCBEVCBib290IGlzDQo+ICAgICBub3QgeWV0IHN1cHBvcnRlZC4NCj4gDQo+ID4+Pj4gT24gVGh1
+LCAxMiBBdWcgMjAyMSwgQW5pIFNpbmhhIHdyb3RlOg0KPiA+Pj4+DQo+IA0KPiBQbGVhc2UgcHJl
+cGVuZCBoZXJlICdTaW5jZSBjb21taXQgMzZiNzllMzIxOWQgKCJody9hY3BpL0tjb25maWc6IEFk
+ZA0KPiBtaXNzaW5nIEtjb25maWcgZGVwZW5kZW5jaWVzIiksJw0KPiANCj4gV2l0aCBpdDoNCj4g
+UmV2aWV3ZWQtYnk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAcmVkaGF0LmNvbT4N
+Cj4gDQo+ID4+Pj4+IEFDUElfTUVNT1JZX0hPVFBMVUcgaXMgaW1wbGljaXRseSB0dXJuZWQgb24g
+d2hlbg0KPiBBQ1BJX0hXX1JFRFVDRUQgaXMgc2VsZWN0ZWQuDQo+ID4+Pj4+IEFDUElfSFdfUkVE
+VUNFRCBpcyBhbHJlYWR5IGVuYWJsZWQuIE5vIG5lZWQgdG8gdHVybiBvbg0KPiA+Pj4+PiBBQ1BJ
+X01FTU9SWV9IT1RQTFVHIGV4cGxpY2l0bHkuIFRoaXMgaXMgYSBtaW5vciBjbGVhbnVwLg0KPiA+
+Pj4+Pg0KPiA+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBBbmkgU2luaGEgPGFuaUBhbmlzaW5oYS5jYT4N
+Cj4gPj4+Pj4gLS0tDQo+ID4+Pj4+ICBody9hcm0vS2NvbmZpZyB8IDEgLQ0KPiA+Pj4+PiAgMSBm
+aWxlIGNoYW5nZWQsIDEgZGVsZXRpb24oLSkNCj4gPj4+Pj4NCj4gPj4+Pj4gZGlmZiAtLWdpdCBh
+L2h3L2FybS9LY29uZmlnIGIvaHcvYXJtL0tjb25maWcgaW5kZXgNCj4gPj4+Pj4gNGJhMGFjYTA2
+Ny4uMzhjZjlmNDRlMiAxMDA2NDQNCj4gPj4+Pj4gLS0tIGEvaHcvYXJtL0tjb25maWcNCj4gPj4+
+Pj4gKysrIGIvaHcvYXJtL0tjb25maWcNCj4gPj4+Pj4gQEAgLTI1LDcgKzI1LDYgQEAgY29uZmln
+IEFSTV9WSVJUDQo+ID4+Pj4+ICAgICAgc2VsZWN0IEFDUElfUENJDQo+ID4+Pj4+ICAgICAgc2Vs
+ZWN0IE1FTV9ERVZJQ0UNCj4gPj4+Pj4gICAgICBzZWxlY3QgRElNTQ0KPiA+Pj4+PiAtICAgIHNl
+bGVjdCBBQ1BJX01FTU9SWV9IT1RQTFVHDQo+ID4+Pj4+ICAgICAgc2VsZWN0IEFDUElfSFdfUkVE
+VUNFRA0KPiA+Pj4+PiAgICAgIHNlbGVjdCBBQ1BJX05WRElNTQ0KPiA+Pj4+PiAgICAgIHNlbGVj
+dCBBQ1BJX0FQRUkNCj4gPj4+Pj4gLS0NCj4gPj4+Pj4gMi4yNS4xDQoNCg==

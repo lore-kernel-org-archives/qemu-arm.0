@@ -1,108 +1,112 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp374695lfg;
-        Thu, 19 Aug 2021 07:22:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwL1j4b+Phd1rtTOZBOlAR198klW6UTTd5CU3IOx+FXcI7rw5IWmWL1XDnvzZUGyV4VQ/Iq
-X-Received: by 2002:a05:6102:227c:: with SMTP id v28mr12577356vsd.29.1629382959508;
-        Thu, 19 Aug 2021 07:22:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629382959; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp374753lfg;
+        Thu, 19 Aug 2021 07:22:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2OgdF3tzoCBiI5k7t1PaJz8QW88G+DF76Onxp7AzwRD0NQHVmC/R9FXwKxrzV+/zYHG9p
+X-Received: by 2002:a67:c792:: with SMTP id t18mr12840699vsk.54.1629382962977;
+        Thu, 19 Aug 2021 07:22:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629382962; cv=none;
         d=google.com; s=arc-20160816;
-        b=bUyI8UhESp7olgMkKoy7o/0exHlf7hnFFqve2stqIiyBf2guR7Qj90m7b1Goo84uAm
-         DJPeTKNN/ECxV3YkMyV5mOeUnacXiSqn326JwHVlkY1HDb+UZ5pw4NLUMw1wnNK9RhfG
-         KrnqkDMXl8e/Pq2voYcZp56e/3d48Obtop+lxoayNSAndIkmhH6eHhCeXERnBnzRf977
-         tkDr/DDxY7ytOvPzR6N4IMV59yErNzQRt0y0dpCcppohBks64qWSKCSa3jm9qIc5r0ej
-         Z1amc2DYYhZAWuLTxm/564WzzEyjIcyiewlGf9ecVrM6pQo+c6LhC02MXDkeVPpEnla8
-         iWPw==
+        b=DQ1ATilqDRp707Y99IWSJXzndH9ZjZqhg0lDSNdOmqS/Ci4sRNOlFd1piBFPYUo2G3
+         qPuKer1ysZ+hZ60sBrb1oGlotyCGhg0e+zC0wDAQyqwFflkEqBoOWo9KVT6c5thvMr7h
+         Pyqmrrt/b81HdRaOOTqOC/wVIJyt365JA/7DLbFY3ngikda5a7qy4ktuSd3q+eIr2o8M
+         NoEexlxYLr88d57lil3GxW4EHI6gvFv/tnB6mebxAcn0MqTMqUVjGJaBojKNVQiNWMft
+         Drs1bElriGyW2KOryESEMtTL1xb/7YyF9Unx3rJrsltZGrxkjArslLg9m7AS7+DgycQ4
+         vVsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Fap7O0R9MEh6QL+DuYDv0PNmINz+on3L7VMf/wYDHNI=;
-        b=DBKs+QNSHZPQqzA7JZfVPfKz9GivuPDremhtptjAUwL85hWMt2qszVKIakaBOm7u3a
-         7cAcq+cPSsR32zV/z1qYWxl2Dzw+ZSPXrGWzmAOqPkw21n1bW2518zajksdZbOAABaeo
-         8J0dW/lvD7FdhYfLfJhpfSoEL5TDASJJzHBkeVU+G4jfpTNc1sKXJPXj+YrEFvDBUYS9
-         G3Bu9n3Ceey0dIaUmChhGENEFV1PyvE20sdlwjQTo2aRhLHbYxCPVkc9qpb8rbq4X008
-         s4g9VSLUmwaqY6g8XWEWxrMbbqyDQA4StLBG/09ZMXzdKRtERkYj2xB++Ori4DuQxFHk
-         XUUw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=y5OsBr5b+5HKE5I63CA5hALHkGW01POgsrNsZU+ahb0=;
+        b=EyBxGLf2rWn/rASCex28UESmMc3EUbhC3vY/qN7Ev+lzPbBH0oVHh7g4w0WsHQaALE
+         BHL8SMdEEJgmOs/6Wt0XNZOswIMlX/I8eMMMspUApHVsc/xajvqawXaOcngrXeNQ/Vsq
+         cp89cVBI7Yz2hwQIcr0QhpOGHHO+GktRe4xhCigXcgDQsG8Q62E2Vk3TM/JiFkITDY4/
+         onYcSvZ19cvXmRSKTpqtcLcoOphISRk8MV9cgSQ4O5xDIf1eByPn8yVNPCaFg4nj/rst
+         926XvXMeqOftcLLAP1fxd/sGey4uJl5LjEvbNjvj4Tu7L4d6mWUGLVT9nCLIXJGp2JBI
+         C4hQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E6ftzta3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e1N72JPy;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si2521290vkb.44.2021.08.19.07.22.39
+        by mx.google.com with ESMTPS id a25si1698045vsj.155.2021.08.19.07.22.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Aug 2021 07:22:39 -0700 (PDT)
+        Thu, 19 Aug 2021 07:22:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E6ftzta3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e1N72JPy;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53420 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGiwI-0004qX-RD
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 10:22:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54338)
+	id 1mGiwM-00053u-8y
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 10:22:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGiuU-0002UT-Ue
- for qemu-devel@nongnu.org; Thu, 19 Aug 2021 10:20:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34222)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGiuY-0002Wq-OU
+ for qemu-devel@nongnu.org; Thu, 19 Aug 2021 10:20:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:60291)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGiuS-0006G7-U5
- for qemu-devel@nongnu.org; Thu, 19 Aug 2021 10:20:46 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGiuX-0006K9-7W
+ for qemu-devel@nongnu.org; Thu, 19 Aug 2021 10:20:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629382844;
+ s=mimecast20190719; t=1629382848;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Fap7O0R9MEh6QL+DuYDv0PNmINz+on3L7VMf/wYDHNI=;
- b=E6ftzta3JVWElnjY9cT0fWRUvy4tv/ASSiZD9PXR0y/x/DPbyegsExX9MepMH7lsD1L5mq
- TCepEoFHqB4mNhZIzFQecgWIpAA/Mk8qVzWr1IT89M77Imp1rWljZn31UbdIz+iAckrqKO
- ngQEreEnPCi8rqbsS95ehFJ6/CaBotI=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-536-5iyM8qv1Nd-9PNFXCeAL9w-1; Thu, 19 Aug 2021 10:20:42 -0400
-X-MC-Unique: 5iyM8qv1Nd-9PNFXCeAL9w-1
-Received: by mail-wm1-f69.google.com with SMTP id
- w25-20020a1cf6190000b0290252505ddd56so1375825wmc.3
- for <qemu-devel@nongnu.org>; Thu, 19 Aug 2021 07:20:42 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=y5OsBr5b+5HKE5I63CA5hALHkGW01POgsrNsZU+ahb0=;
+ b=e1N72JPyAKWPod20xEnwPHf/9i62Bdlzm7lVmNS+S9flwmXqh0Lgwpk08VPSBy1OK7yUju
+ NOUB/ZpPIy1uSCk6UP0qLdnTwSvmzyTsyAHhIdCGPdScRk6FMDroNiS0zz2prkkzWwhxNM
+ +8vQ+GdXdKhFRwBnYfbI5POSAnCg674=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-294-33ttK-Z1PhOGwVoWGDp0eA-1; Thu, 19 Aug 2021 10:20:47 -0400
+X-MC-Unique: 33ttK-Z1PhOGwVoWGDp0eA-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ e12-20020a05600c218cb02902e6bbacdcd1so1595719wme.4
+ for <qemu-devel@nongnu.org>; Thu, 19 Aug 2021 07:20:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=TOIRuwgWaKxfUyVDEGAz6ihn0rKNZeaz2X3a4+u4JKE=;
- b=XDMgaHk08M+NBL3B75B+4TXTSFBQe1Q0GUSLLT4RGTdF6eguYtWd51Nfr+UFchJaIs
- XVZTueL3KQJ/89k6NGnMNjADJNuynj1ejlBbLI79zNjv3CMUVHmpHE30pAUijU6gS0qG
- 22AiRLNqJTGuaNV0zSfKaCoCAvnKwbr9Hiv2mBDc5mF8DFVj+mUsn0TZO0bq7j4TjK1+
- mabCS58iCxalxY2NZUUZl9zUDuQObEz6S6Qp6y75RC58CzjGV1qXyT/BZO2HQGehedTT
- n1fDp1QSfzlOYOsUNwOoNAhX9MXFhNoggG01gN020g8P1nEQmf2T2QKa0sr2icAKELXw
- tmTQ==
-X-Gm-Message-State: AOAM532noWVOaMl3+WfthrqKsvsqqB3BBCP5WKspSEiV62AUHE1Ba7Uj
- FHI2cmXqjH+olBVyfIZYeSHoEsvN7fp1dj2MgEaBKQGLbz9PQgxIE8vcRVqJGUa6gkR/p8BQpdu
- DBCB/E4hw61gz4w3UHKmzULKByDSUHg2SmdM+Xzm7/Xy+FT4gEedZHmVJq3vJmTIr
-X-Received: by 2002:a5d:674c:: with SMTP id l12mr4251236wrw.112.1629382841105; 
- Thu, 19 Aug 2021 07:20:41 -0700 (PDT)
-X-Received: by 2002:a5d:674c:: with SMTP id l12mr4251202wrw.112.1629382840917; 
- Thu, 19 Aug 2021 07:20:40 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=y5OsBr5b+5HKE5I63CA5hALHkGW01POgsrNsZU+ahb0=;
+ b=GzStCRYOZ5yJrKDcqS7NrvCrLFdj1hYAErbo3a4HXtqfoz9/h6g4oYKazHxCDeuP6k
+ BJhQgFVkS7LaqWmkAefFhnuqzgMWfQ9f3yrTMwHZvK519SJktHYHTppizAttpYrvQCap
+ +rsVkC+UDI1UlZ9VutI7ba1bU1khZgPcEysphvdhVnyrRTbdF7JzXx59lLhA3NpDlBW2
+ zSDuPqgFImOqOmWDNURsJaf7c+1m87kzbrGXWUZJL8Fqo4z8vfRHpTlTtgqib0w+1tbq
+ ei4phYIS1vhslvDy4I096NN6O6FtX+hOOERy0E/vmV+8TvE3jh5jaZjDeF8HLoyD8BbG
+ EIug==
+X-Gm-Message-State: AOAM530i/8yQvdguOEXSBCufcCHhk2TUurU/4TpB85M8QwgQCetAg6YR
+ TFkbkId6SQQO0eJ5BGW00rPof6lOsl/uAJhR1dXX0PPBgW+Ww6QLQwxigcd6L/ONgbqxad14wmS
+ +8JS820EqKmuhBDeNw1KygiD7ApU7mFeyf+39jttuykxPhb91YaX8u912XDlN7FmI
+X-Received: by 2002:adf:979d:: with SMTP id s29mr4193904wrb.264.1629382845868; 
+ Thu, 19 Aug 2021 07:20:45 -0700 (PDT)
+X-Received: by 2002:adf:979d:: with SMTP id s29mr4193876wrb.264.1629382845714; 
+ Thu, 19 Aug 2021 07:20:45 -0700 (PDT)
 Received: from x1w.redhat.com (163.red-83-52-55.dynamicip.rima-tde.net.
  [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id d4sm3114597wrp.57.2021.08.19.07.20.39
+ by smtp.gmail.com with ESMTPSA id j17sm2999870wrt.69.2021.08.19.07.20.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Aug 2021 07:20:40 -0700 (PDT)
+ Thu, 19 Aug 2021 07:20:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/6] memory: Introduce address_space_create(),
- re-use &address_space_memory
-Date: Thu, 19 Aug 2021 16:20:33 +0200
-Message-Id: <20210819142039.2825366-1-philmd@redhat.com>
+Subject: [PATCH 1/6] memory: Do not increase refcount on global system_memory
+ region
+Date: Thu, 19 Aug 2021 16:20:34 +0200
+Message-Id: <20210819142039.2825366-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210819142039.2825366-1-philmd@redhat.com>
+References: <20210819142039.2825366-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
@@ -135,40 +139,41 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YMiZZjFfh6q1
+X-TUID: rBl3PX6/t5he
 
-Introduce address_space_create() (return .heap allocated AddressSpace)=0D
-and return directly &address_space_memory if the root MemoryRegion is=0D
-get_system_memory().=0D
-=0D
-This simplifies the 'info mtree' output of some boards. Flatview is=0D
-unchanged.=0D
-=0D
-Inspired by this thread:=0D
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg829819.html=0D
-=0D
-Based-on: <20210819141527.2821842-1-philmd@redhat.com>=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (6):=0D
-  memory: Do not increase refcount on global system_memory region=0D
-  memory: Introduce address_space_create()=0D
-  memory: Have cpu_address_space_init() use address_space_create()=0D
-  hw/dma: Replace alloc() + address_space_init() by=0D
-    address_space_create()=0D
-  hw/usb: Replace alloc() + address_space_init() by=0D
-    address_space_create()=0D
-  memory: Have address_space_create() re-use global=0D
-    &address_space_memory=0D
-=0D
- include/exec/memory.h    | 14 ++++++++++++++=0D
- hw/dma/xlnx-zdma.c       | 15 +++++++++------=0D
- hw/dma/xlnx_csu_dma.c    |  9 ++-------=0D
- hw/usb/hcd-xhci-sysbus.c | 16 ++++++++++------=0D
- softmmu/memory.c         | 24 ++++++++++++++++++++++--=0D
- softmmu/physmem.c        |  4 ++--=0D
- 6 files changed, 59 insertions(+), 23 deletions(-)=0D
-=0D
---=20=0D
-2.31.1=0D
-=0D
+system_memory is statically allocated in memory_map_init()
+(softmmu/physmem.c) and is never destroyed. No need to
+increment its refcount.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ softmmu/memory.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index bfedaf9c4df..185f978c925 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -24,7 +24,7 @@
+ #include "qemu/qemu-print.h"
+ #include "qom/object.h"
+ #include "trace.h"
+-
++#include "exec/address-spaces.h"
+ #include "exec/memory-internal.h"
+ #include "exec/ram_addr.h"
+ #include "sysemu/kvm.h"
+@@ -2923,7 +2923,9 @@ void address_space_remove_listeners(AddressSpace *as)
+ 
+ void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name)
+ {
+-    memory_region_ref(root);
++    if (root != get_system_memory()) {
++        memory_region_ref(root);
++    }
+     as->root = root;
+     as->current_map = NULL;
+     as->ioeventfd_nb = 0;
+-- 
+2.31.1
 

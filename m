@@ -1,102 +1,110 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp316959lfg;
-        Thu, 19 Aug 2021 06:16:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyeV+fSfzINVOoF8IEMwz4KQPSOhgK+2LqluDQW33/QH3HJkGSyM8VblzO/zzV7lSET/Bx
-X-Received: by 2002:a5d:470f:: with SMTP id y15mr3894264wrq.292.1629378962782;
-        Thu, 19 Aug 2021 06:16:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629378962; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp325296lfg;
+        Thu, 19 Aug 2021 06:26:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8R+zWv3VpmMmX9Jt99mq2n0flLeAnmxbw3YHkv4jInfA19GNsBUr2aw6Mio6DRBQ/kcld
+X-Received: by 2002:a05:600c:3793:: with SMTP id o19mr13782642wmr.53.1629379564347;
+        Thu, 19 Aug 2021 06:26:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629379564; cv=none;
         d=google.com; s=arc-20160816;
-        b=BI+UeDbaBHV7I+LamM3nHehMlU2rmHFhWkE7KKnauv58rYFqFAPWmNuy3we0++YYxD
-         VsBLqs4pLu6aHt1hNMje0aWZcq/u6w01AbYpgsSpFOQVePEyygRQ8BFOhQ5bFm0s5g91
-         uLn22HPA9NgMX72K9jJTJi+S+v81U4oHpreT651LcOh4oHBUgwvYNrU3AixWYdtBHZoj
-         v6nNmc1p8panaJM2dKH9eUfTVE6qxlhbWoUk1HGdYqZWe05v67TKPCs42yvpVHR6R6cd
-         0Z7rckl2G7zWFiJ+/YJRrkYKsNCrsftewfa246/RmkF51MuRKF0eSvIj6GldNMp1gXLR
-         ZvPg==
+        b=J0gLtJQku/qI8rSqXFZ8gBhn6eUw0P/v1+ZrOsvpb43XBTj6oWSJP1OzEfWVg0BaXr
+         DTjeDHqW3BIBkfokyKLAW8oYPoJDoGEyFYO0AuKFNuXfwOOKpJdIHQ0+XHFuR33F0Y7n
+         UWkiFm43VvvIP3H0T+YBtJcUPlBCQ6KEs4TLyR+iuq1mBPjnnz9CQAgjejXHkNY31aSJ
+         QcwGibTrqKdznOv8k4BC8F3bf9fxoVgQrPU2Pnyph0A2NLcwtnE4Omxha0OZTtLAFEwi
+         wQkhuy6ltHmRdZEk5huyfwAbgk5fSEdlNXyLcNhvd72FdN58qxi8jzfEJYbexaMk5pmi
+         HDkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=bhFPMyl4/KhH1v5/AK9mR1o+Yq4S/nsOL12jd7z/lAU=;
-        b=ung0D+IZK7gd1/m9+In/tXkGHnLtwtE2AQaJijMSbJ73HhJqh/LMNODLoJs8qorVNZ
-         hFIld+k1fQ/z5saR6UmQEGTEh10yKvJ1whoIMeSVt3cbhML3qZSSmUF39enIYzJvriFb
-         mp4QtoNHWD4kq5dq54R7ZDvYgBoCd37ShVjnI9PAqwONoVTkpU1Vi6hyLs+svrlPZP8h
-         aPqJqLO9FqCQji1xjKTXeUVp1ncUsylU4gCbeRfuxvLpSuIbvE68AES8jCYSqCqahBKx
-         Sj9EZL/TBn5sddFpiEcpmkT9gy9yPtCC/LWOXW6A3SQg/dWWvjJi8BORdE2th542kjgH
-         TMhA==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:to:date:from
+         :dkim-signature;
+        bh=ZCeCNT6c52N3U/15IMWRqEXyIbZHw6KHnbku1vyRCZI=;
+        b=XEUQnoEuHgOkdvHelwFN6hUrnpU+S1KpCC95zr+lw/qlRDvQoVe3pM8SmE47/u+DxR
+         6pUyVxYLMWbhB9wN+h+f5W/clebwXv0aX1ckS5ihO93eLgbYWEb6tzvXFRlQciJVtPWa
+         XvA04ZO2YsjPZhCXZpeRLB90vnggIOveGtNItrdGQcFngySquYDNkB7uB+q3aLe9TFtE
+         7fxznWrYwkm3W3VW00WIrn0tQ3SHOqFa+/ebhdmoH8CnmJkWmLmF2ujYwkcEvI0f3PoG
+         obmpoLb0hmWbYDdIZkoSEgRd/D09DwpYXJJk8D8ZVW4dzAiCsEKundLFMGHXRWX6/R3c
+         VOKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HO/qwdz1";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@anisinha-ca.20150623.gappssmtp.com header.s=20150623 header.b=lXg3yqJr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t15si3986818wri.108.2021.08.19.06.16.02
+        by mx.google.com with ESMTPS id k1si3171699wrm.413.2021.08.19.06.26.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Aug 2021 06:16:02 -0700 (PDT)
+        Thu, 19 Aug 2021 06:26:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HO/qwdz1";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48224 helo=lists1p.gnu.org)
+       dkim=fail header.i=@anisinha-ca.20150623.gappssmtp.com header.s=20150623 header.b=lXg3yqJr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mGhtp-00006o-MI
-	for alex.bennee@linaro.org; Thu, 19 Aug 2021 09:16:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39782)
+	id 1mGi3X-00013t-Fx
+	for alex.bennee@linaro.org; Thu, 19 Aug 2021 09:26:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mGhtc-0008Vd-IP
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:15:50 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:36546)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mGi3N-00012v-4s
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:25:53 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:38577)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mGhtX-0000uh-Dn
- for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:15:48 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id bt14so12893072ejb.3
- for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 06:15:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bhFPMyl4/KhH1v5/AK9mR1o+Yq4S/nsOL12jd7z/lAU=;
- b=HO/qwdz11UDCBO4KiIKhZuaVbOiv/NbdEfQv6mRrC8N4dhuM/jwVaRw2EcuUhVDM2L
- 0dUximsN5Qcel4zDHndp0qTQelmv1UU+XSAJl8FDjwJh1KLLresByAEM7tOR/iAfawXl
- pXZhgrm+q0jtaIyiRGz1LNuIrLKStRGuh6yjZFbCGdBOGlF4jOQPrgmHuOEQkdMR6J9t
- AYGf3CuPoFpEG1ZfzvUow52vXG9qLvSwC1AxTcmAKxsyZabxjy5oQgTr453mxngjmQJJ
- 76BRR0MAA7v5N0YZMwL3CvF3tswhTNSDxf9ESHujfXUvO2+7sTaGWRcvB83DLdAsAPln
- R6DQ==
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mGi3K-0000It-Rj
+ for qemu-arm@nongnu.org; Thu, 19 Aug 2021 09:25:52 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id a5so3911755plh.5
+ for <qemu-arm@nongnu.org>; Thu, 19 Aug 2021 06:25:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20150623.gappssmtp.com; s=20150623;
+ h=from:date:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=ZCeCNT6c52N3U/15IMWRqEXyIbZHw6KHnbku1vyRCZI=;
+ b=lXg3yqJrnGPYGw0nbQwvQVXE6gnKry7VZU8QVwgLNfvWPS4A56AMHMAR8jiVH9HDxA
+ Y46dOlSTIh249fOmL6k93k4V9Ysnfuf2qC+T7Nf+rrg+Q1q7RNHQK6mWzMr3C6Squ4oq
+ h5b+weX7dBATI4maNG70qUyiLpidTpoi4r1TyWDPT3AbK6XUSMv5CidFnn5tqhax5zGy
+ Kb4QPYMOl6J5rWefibPlxQpo4n9LKn7d+lIYDM25aiIwk7zq5KW9UR3ZwYMPS9pqjsfc
+ jpbtXR6PwQYX0T+JjZ5U64W84cd/TLc/PSxW88FuV89l0RLhi+89XXZcoUQLNrUyDM1t
+ SGsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bhFPMyl4/KhH1v5/AK9mR1o+Yq4S/nsOL12jd7z/lAU=;
- b=HsdPBhEaI/SZoYOtB1JyrXZ8WLc/X7OTeyYx9psESHo2i+vO8sXkQH1tRutaS68qdb
- X9JseV0j+/HWeEc65BzTgMYJFNPxX+YDOL7t3TsHKRhNIglvYI4X+CnhT1/G88RDF1Mc
- G5IasImrdnQleVMNx5d9xLrInDzZ1kvB5d4f9saqQ9mvXrvGPeG/GuDNgAPGB05d6rOr
- 6b7VIM/Kls5R2PsFyKXWlqI0Q9swlLDpzdnuCMuvaXp4PTE0JNrgFKSC4UKZAofP7TPw
- AMrl9ob6avmCJ3MAIjEcSJROsvCZt3sE0+2hVhJMCUIceRXuaUvj+3YZcp69swpNtlI6
- nO/Q==
-X-Gm-Message-State: AOAM530bo+pHnrV2SNQTaGBv2zb/3fODZ8y3E4LzFkIuxb899kWb67jD
- RTHtLz0d1iefKVKsXZAtfsfz0KF8i/g05FEXpbMANA==
-X-Received: by 2002:a17:906:a108:: with SMTP id
- t8mr15614047ejy.407.1629378941856; 
- Thu, 19 Aug 2021 06:15:41 -0700 (PDT)
+ h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=ZCeCNT6c52N3U/15IMWRqEXyIbZHw6KHnbku1vyRCZI=;
+ b=NpIAmgjVdgtbnjmmWHMaNLVBHyY74rmFqYZXqO66RnsLg/wbhQi3Fme/3JI6AAko5K
+ XoDtrijOnkxZCNMwgvt554DMqYsbTx7wEWRlZGtm3p4+RV2yS0tsPduIb4ljpvs3LihR
+ BOPCoAMMd04bZ2WAIVfGN4xDSHf6V9eNHr4r6RVhQ2EgcO2SYQJCtpk+9gNl/f7jOzem
+ W7rxbTIy2i7iECQTomt0svcdNlL+h0e+ATd6BuNVdLLdIsdAR1dlzp6cGjJaYjQ3U60+
+ E6+onkM8PnvKFQPeG8mO0h2TiCE+/yMkEE+/OflErwABHDGrEHM1ypqc9mLhRjsUNx5L
+ xWYg==
+X-Gm-Message-State: AOAM530UX8dsK1qpIel9qUR0HHS1u5tWj4kEIkxgD1vxZiDLrJwQkEUu
+ Cj2k/goOxLtwmJa1fzCouZh/+A==
+X-Received: by 2002:a17:90a:b702:: with SMTP id
+ l2mr6705019pjr.71.1629379549103; 
+ Thu, 19 Aug 2021 06:25:49 -0700 (PDT)
+Received: from anisinha-lenovo ([203.163.234.32])
+ by smtp.googlemail.com with ESMTPSA id v20sm4327632pgi.39.2021.08.19.06.25.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Aug 2021 06:25:48 -0700 (PDT)
+From: Ani Sinha <ani@anisinha.ca>
+X-Google-Original-From: Ani Sinha <anisinha@anisinha.ca>
+Date: Thu, 19 Aug 2021 18:55:32 +0530 (IST)
+X-X-Sender: anisinha@anisinha-lenovo
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/arm/Kconfig: no need to enable ACPI_MEMORY_HOTPLUG
+ explicitly
+In-Reply-To: <CAFEAcA8Fu+mkzFi9JdTtbqMcnnV74Swk04xx2a1G4L_oATY2eQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2108191849260.417749@anisinha-lenovo>
+References: <20210812033405.362985-1-ani@anisinha.ca>
+ <alpine.DEB.2.22.394.2108171014500.202364@anisinha-lenovo>
+ <CAFEAcA8Fu+mkzFi9JdTtbqMcnnV74Swk04xx2a1G4L_oATY2eQ@mail.gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-References: <20210810175607.538090-1-linux@roeck-us.net>
-In-Reply-To: <20210810175607.538090-1-linux@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Aug 2021 14:14:55 +0100
-Message-ID: <CAFEAcA9awrjL8smkZsSZPJzyf8542Bv1yc=jyWLv6T_MjAA8dQ@mail.gmail.com>
-Subject: Re: [PATCH] fsl-imx7: Instantiate SAI1/2/3 as unimplemented devices
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: none client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=ani@anisinha.ca; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,19 +117,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>,
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LHa6Y2QKBvbI
+X-TUID: Wzi1CB3FH0FG
 
-On Tue, 10 Aug 2021 at 18:56, Guenter Roeck <linux@roeck-us.net> wrote:
+
+
+On Thu, 19 Aug 2021, Peter Maydell wrote:
+
+> On Tue, 17 Aug 2021 at 05:45, Ani Sinha <ani@anisinha.ca> wrote:
+> >
+> > ping ...
 >
-> Instantiate SAI1/2/3 as unimplemented devices to avoid Linux kernel crashes
-> such as the following.
+> You didn't cc any of the ACPI maintainers; I have done so.
+>
+
+oops! my bad. I used checkpatch and did not verify if Igor/Michael was
+cc'd.
+
+> Is it intended that ACPI_HW_REDUCED must always imply
+> ACPI_MEMORY_HOTPLUG, or is it just a coincidence that the
+> virt board happens to want both, and so we select both ?
+>
+
+From a purely code inspection point of view, I noticed that
+generic_event_device.c depends on CONFIG_ACPI_HW_REDUCED. The GED does use
+memory hotplug apis - for example acpi_ged_device_plug_cb() uses
+acpi_memory_plug_cb() etc.
+
+Hence, as it stands today, CONFIG_ACPI_HW_REDUCED will need to select ACPI
+memory hotplug. Unless we remove the GED device's dependence on
+ACPI_HW_REDUCED that is. I cannot comment whether that would be wise or if
+we should reorg the code in some other way.
 
 
-
-Applied to target-arm.next for 6.2, thanks.
-
--- PMM
+> > On Thu, 12 Aug 2021, Ani Sinha wrote:
+> >
+> > > ACPI_MEMORY_HOTPLUG is implicitly turned on when ACPI_HW_REDUCED is selected.
+> > > ACPI_HW_REDUCED is already enabled. No need to turn on ACPI_MEMORY_HOTPLUG
+> > > explicitly. This is a minor cleanup.
+> > >
+> > > Signed-off-by: Ani Sinha <ani@anisinha.ca>
+> > > ---
+> > >  hw/arm/Kconfig | 1 -
+> > >  1 file changed, 1 deletion(-)
+> > >
+> > > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > > index 4ba0aca067..38cf9f44e2 100644
+> > > --- a/hw/arm/Kconfig
+> > > +++ b/hw/arm/Kconfig
+> > > @@ -25,7 +25,6 @@ config ARM_VIRT
+> > >      select ACPI_PCI
+> > >      select MEM_DEVICE
+> > >      select DIMM
+> > > -    select ACPI_MEMORY_HOTPLUG
+> > >      select ACPI_HW_REDUCED
+> > >      select ACPI_NVDIMM
+> > >      select ACPI_APEI
+> > > --
+> > > 2.25.1
+> > >
+> > >
+>
+>
+> -- PMM
+>

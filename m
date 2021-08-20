@@ -1,183 +1,216 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1355581lfg;
-        Fri, 20 Aug 2021 07:24:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwx8d/DHOQ+PoYZuP42dReHin0wOFq3+OK5kfCDem/1DSk7homA27FufJ1UHmaAE8iA9YXv
-X-Received: by 2002:a7b:cd1a:: with SMTP id f26mr4242093wmj.136.1629469465419;
-        Fri, 20 Aug 2021 07:24:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629469465; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1364574lfg;
+        Fri, 20 Aug 2021 07:35:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9WCk7vTwthLgHNwMqApv+CEeICGo7Cv5+b8H1EwZfJZUXFw1bsYwDu35jC9RG6j9W1wdc
+X-Received: by 2002:a17:907:1b29:: with SMTP id mp41mr22360476ejc.459.1629470134623;
+        Fri, 20 Aug 2021 07:35:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629470134; cv=none;
         d=google.com; s=arc-20160816;
-        b=uyNV+KYU9rDZdrDWoQwwIGM06bUCyv6OvsebWKKdaAD19dATYriQxgzy2ZzAnU913B
-         KkkLv1gv2e/nLNyuoA6/LnIFM4YBWIFmMKpj56Gb9w9EOhEpK1SPceqgyoCmwQPtil9k
-         SYgCjmO+iLdr3OFRnBmbSTf3OyWPwLALEDWNlPU5hi7GBZFFaWjqB6eYjRfB3tl35f03
-         TIiQwCvMg4odbmOJ1MVJ4tGIUsFUrAGymqPbT1goO7RjUsuqLuLEYDk+iEfQNe/Lu+EJ
-         E5HLZfaQz/BPzksnm5VJWQ8LYlIZy9otxf14KNMVuZPAryCPS3310BYH8oLPxGcgAX0R
-         0uhg==
+        b=BIfQ1GZUg9wqghaULrQg88XIpjgUiNR3GM45cTC+MX02SdbcQYwYKEJLvKhs/b1dJ/
+         GZokTClfVEnIjwqE2gIDhycLYBSgJN41VwtZ2nMlLIkaboroFGrXuuat5TPBH4Hc1Aep
+         kem5REXX2gOTuriTetBmU8w0erIHjYOr8rhcpjdgPkHQYiCxRyz7iggH9wMor0m56Eyb
+         Gady2C6QbT/ImDOSxKem9raUxSZRw7nh4bzlQklDddCD/TBuD9zGYjua1fAugTjqc8Fz
+         YCdj4DszOyyl6HX4+rCLcOeucZXIqv7KB709a3FWDMGzudawsrXCJ3t0uSJhSMeMYPb0
+         0/nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=gWaaO7WqUakCyfTSQlSAKmL4DO2s7/pZ0OAOPrtmBgw=;
-        b=Dz1Ev9CbYgNCwimhooIGjTGjuRXiUSsnJTqCu0vPaxShc4RH0j+8EIAx+E4CPZb32X
-         +WNh6r4a/See7glNNCWE7aZXbODLqx6u/UVca/xbuxZA4rkpvwXk2bXO0v7ThuMvorG+
-         ogp9ZZo/jAuDZ9I+/o1Aq+cfwgnWcfyOOYjmzljynWGPepA6oOp0YqM8/BqouYedrGy0
-         A4qRwAMcaBKSJAplwyVbIXPgn1tyYJkYF+17+/Km7hSaJeVdDtfF/mib6LmBFRzFZQWe
-         TltPaNADKj8frCewZ4UhpExjAkOYvZvI5G7tUQAwn4cxMJZ1RSqKWx+fhCHdRYj4zfj3
-         PeLA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:from:references:to:subject:dkim-signature;
+        bh=IFMoMHsX3acG/G4fMeysK41r9vXpZscRxxVrpMvbbFw=;
+        b=WjCKOh6bdm8TgL43v+3W54FHYeUrg7QRI2jJumAoScq+bqK4aTtV7fZwLbwDOOq800
+         VdRMIAqxBOGnm4nNxnEtFYz+QUZOv2VrHVjACqKfsJCRXhsVvblIFTVo3707AWE+9SFm
+         0ppd1x+Wsl/uoC9pbgEmw7YLRs/kckAaVf74I6gxBfk5PizPAewozd2rbx06C22GVOUd
+         XPsligiuDwVyMgpGLSpPA5YepsX1X8iNi9SDrG/PNuBay2+/tpYx8HFuc8ed3VbhaafJ
+         T7HlgfALiUOxFJqfBfs+ro7u2QjizobQL1Qcux3UeveWztsde7FiN+38X5ZnJicjUt2F
+         vhnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SR4Hv1F8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JCJ1hri6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g82si7796858wma.124.2021.08.20.07.24.25
+        by mx.google.com with ESMTPS id l15si1904725edt.269.2021.08.20.07.35.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Aug 2021 07:24:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Aug 2021 07:35:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SR4Hv1F8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41648 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JCJ1hri6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45042 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mH5RY-00031i-Cv
-	for alex.bennee@linaro.org; Fri, 20 Aug 2021 10:24:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37040)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mH5cL-0007S7-LC
+	for alex.bennee@linaro.org; Fri, 20 Aug 2021 10:35:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mH5Pd-0000Ls-HL; Fri, 20 Aug 2021 10:22:26 -0400
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e]:38691)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mH5Pb-0006Hz-KC; Fri, 20 Aug 2021 10:22:25 -0400
-Received: by mail-yb1-xb2e.google.com with SMTP id a9so15677826ybr.5;
- Fri, 20 Aug 2021 07:22:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=gWaaO7WqUakCyfTSQlSAKmL4DO2s7/pZ0OAOPrtmBgw=;
- b=SR4Hv1F8oIPZReJjXCSZIWY2UMX+DYUJC0x8D46/pm3TY6IQ84Kcd8ujK1zRPLGzLY
- SU0bjmgRypZVmTvC4+97kFrxDx3Ksn6ydUKkc5jyqA7dvUN6+7ZPMzGNlrkz3TLcqjWS
- uDOEEQw+2FvEkfxTotKyi+stbTbhfIMVcgDGwLg3QJczw8vAY8SuySdhDy3kPOluWuUM
- vzn5gBDllvDvhkLqxr8XVvEJNtP+arKnFH4wMA9JQev2gA3N1m9RK2u56GmmRbzQy/Pc
- AfYS9nSr0wQXJfxIHHX6oWVDSNC101HRYW5OTdijKsasv6y6ICP97wiBmx1A8vg2Ykzm
- t+FQ==
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mH5b9-00066y-NW
+ for qemu-devel@nongnu.org; Fri, 20 Aug 2021 10:34:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28985)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1mH5b7-0007uz-Ak
+ for qemu-devel@nongnu.org; Fri, 20 Aug 2021 10:34:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1629470055;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IFMoMHsX3acG/G4fMeysK41r9vXpZscRxxVrpMvbbFw=;
+ b=JCJ1hri6yIWisldTKRNo4286IIGArXrNUuWWV0xWobaxcbHX4Cc67J8qET8AJpHwF50ZNo
+ VgZ/LHafv+7/Sl84VbI4zhVwotuKNWf68GC3UBYLwWgnBECPfyTc0s+JKAqm7qtbRevV3Z
+ FMqL+hYwUaTI8E+/g16UmqOFQ/NOlgM=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-437-Figt0lylNoSqKa0kVmucmg-1; Fri, 20 Aug 2021 10:34:14 -0400
+X-MC-Unique: Figt0lylNoSqKa0kVmucmg-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ m2-20020a0560000082b0290154f6e2e51fso2902631wrx.12
+ for <qemu-devel@nongnu.org>; Fri, 20 Aug 2021 07:34:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=gWaaO7WqUakCyfTSQlSAKmL4DO2s7/pZ0OAOPrtmBgw=;
- b=hWKa72CzGOuxh9wTmn/cxMP1ZSDaW9Z3JEQsC5X/Uee+WvnEfBXgRDpXFft7luO7LN
- 5tQz/CIPnHDKLtiO0p9HKKoWUIxc5gZTduRISuoO7OCj3MHDF7pVL0m+2yLMDNJJLaCm
- gPRmBNfsuwn8KsWKGCloj43niyhrwS5T7IOTyj6fCMwcRvv5+PphVklXPa7UW3L1I3YA
- UqpioHZ0Tt30daRt9sClvoYfiPkyoao19QwXvPqTaqg4obBKH1Hm3ZAp9JgiS/x/01bl
- Zr+33wfuPnHWpqK+I953lLAsQDPCWbwCv1qAEkg75l40vUSBRS9J1sTJpmlcg8RnHEgo
- ZHyA==
-X-Gm-Message-State: AOAM531yct7wowXVqYNvZx8ewVrcDirema/FO7uimfs5YEuks6FpDVkb
- EprKXaa8va9PY6YjReV1MxHoVxfqvOg19L0f1Ds=
-X-Received: by 2002:a5b:304:: with SMTP id j4mr25233107ybp.314.1629469342102; 
- Fri, 20 Aug 2021 07:22:22 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:organization
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=IFMoMHsX3acG/G4fMeysK41r9vXpZscRxxVrpMvbbFw=;
+ b=bPybvHHtpP9nxw6QaXVVgZm7XF9OjFr/cYj+I5bxJ1pq6TjiO39bzszWu7C7N5yySe
+ OyX6ditfYoMYvQ/gS62Zzgai8TraEHlctGcAWXrpsTCOUJA5sYeRO1f8Kyi2SBpN03LJ
+ 3AfC34VNbvzXqIW44Ohvvdzmm9Fkr510F9AA4tv9dSiftpjHkHHq9gIWTG9Byfzexiyj
+ M53K9oAAdHP5AemyyLQyVyLFfD1U1RWgXUWIi9yQMEyg+4ILxYBdAk65kCapQ7bIIr/l
+ pJsHKe1szjfHzgBoCc8wwbDlPoi/pcdiubmHRAWkxd0PaTOhTmFtVXyZR8IYTLq9V0+4
+ L3iw==
+X-Gm-Message-State: AOAM531DFKXuqgAI479WgV02KhZQNp2x08XULVKpTF9AP/EGmZ9uzaUe
+ wTJhv2M+9tgzOnnaxyiG8gJUadTvj7pocIiDi+CKVnBzVrLQC0xf5X91gJ8oxxK7gZgRx1fLcHD
+ lrNvcbiuh6JuiN5s=
+X-Received: by 2002:a05:600c:a4b:: with SMTP id
+ c11mr4279086wmq.97.1629470053434; 
+ Fri, 20 Aug 2021 07:34:13 -0700 (PDT)
+X-Received: by 2002:a05:600c:a4b:: with SMTP id
+ c11mr4279057wmq.97.1629470053213; 
+ Fri, 20 Aug 2021 07:34:13 -0700 (PDT)
+Received: from ?IPv6:2003:d8:2f0a:7f00:fad7:3bc9:69d:31f?
+ (p200300d82f0a7f00fad73bc9069d031f.dip0.t-ipconnect.de.
+ [2003:d8:2f0a:7f00:fad7:3bc9:69d:31f])
+ by smtp.gmail.com with ESMTPSA id s10sm7380156wrv.54.2021.08.20.07.34.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Aug 2021 07:34:12 -0700 (PDT)
+Subject: Re: xilinx-zynq-a9: cannot set up guest memory 'zynq.ext_ram'
+To: Bin Meng <bmeng.cn@gmail.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>
 References: <CAEUhbmUhKFFxSspve+t2BeppCGPegpb_Z5g-w8M5t-JMLy3Zsg@mail.gmail.com>
  <869f8be9-b76f-e315-9591-9c452bedf922@redhat.com>
-In-Reply-To: <869f8be9-b76f-e315-9591-9c452bedf922@redhat.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 20 Aug 2021 22:22:11 +0800
-Message-ID: <CAEUhbmUE4fb2NewE+Cze3Le5xOeH53NDbwdnKH==dnZeKGPQeQ@mail.gmail.com>
-Subject: Re: xilinx-zynq-a9: cannot set up guest memory 'zynq.ext_ram'
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <CAEUhbmUE4fb2NewE+Cze3Le5xOeH53NDbwdnKH==dnZeKGPQeQ@mail.gmail.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+Message-ID: <e833a774-d3bf-62d5-91d8-b24cbee0bfc4@redhat.com>
+Date: Fri, 20 Aug 2021 16:34:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <CAEUhbmUE4fb2NewE+Cze3Le5xOeH53NDbwdnKH==dnZeKGPQeQ@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.49, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g3oX9yX+hsvf
+ "Richard W.M. Jones" <rjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Hva7LEkp5gMu
 
-Hi Philippe,
+On 20.08.21 16:22, Bin Meng wrote:
+> Hi Philippe,
+> 
+> On Fri, Aug 20, 2021 at 10:10 PM Philippe Mathieu-Daudé
+> <philmd@redhat.com> wrote:
+>>
+>> Hi Bin,
+>>
+>> On 8/20/21 4:04 PM, Bin Meng wrote:
+>>> Hi,
+>>>
+>>> The following command used to work on QEMU 4.2.0, but is now broken
+>>> with QEMU head.
+>>>
+>>> $ qemu-system-arm -M xilinx-zynq-a9 -display none -m 40000000
+>>> -nographic -serial /dev/null -serial mon:stdio -monitor null -device
+>>> loader,file=u-boot-dtb.bin,addr=0x4000000,cpu-num=0
+>>> qemu-system-arm: cannot set up guest memory 'zynq.ext_ram': Cannot
+>>> allocate memory
+>>>
+>>> Any ideas?
+>>
+>> Richard hit that recently too.
+> 
+> I hit this when in the VM on Azure pipelines, but I was able to
+> reproduce this issue on my local machine.
+> 
+>>
+>> Can you provide:
+>>
+>> cat /proc/sys/vm/overcommit_kbytes
+>> cat /proc/sys/vm/overcommit_memory
+>> cat /proc/sys/vm/overcommit_ratio
+> 
+> $ cat /proc/sys/vm/overcommit_kbytes
+> 0
+> $ cat /proc/sys/vm/overcommit_memory
+> 0
+> $ cat /proc/sys/vm/overcommit_ratio
+> 50
+> 
+>>
+>> and
+>>
+>> cat /proc/meminfo
+>>
+>> (CommitLimit, Committed_AS)
+> 
+> $ cat /proc/meminfo
+> 
+> CommitLimit:    12388820 kB
+> Committed_AS:    5019088 kB
+> 
+>> and OOM messages.
+> 
+> I did not see any OOM messages.
 
-On Fri, Aug 20, 2021 at 10:10 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Hi Bin,
->
-> On 8/20/21 4:04 PM, Bin Meng wrote:
-> > Hi,
-> >
-> > The following command used to work on QEMU 4.2.0, but is now broken
-> > with QEMU head.
-> >
-> > $ qemu-system-arm -M xilinx-zynq-a9 -display none -m 40000000
-> > -nographic -serial /dev/null -serial mon:stdio -monitor null -device
-> > loader,file=3Du-boot-dtb.bin,addr=3D0x4000000,cpu-num=3D0
-> > qemu-system-arm: cannot set up guest memory 'zynq.ext_ram': Cannot
-> > allocate memory
-> >
-> > Any ideas?
->
-> Richard hit that recently too.
+-m 40000000
 
-I hit this when in the VM on Azure pipelines, but I was able to
-reproduce this issue on my local machine.
+corresponds to 38 TB if I am not wrong. Is that really what you want?
 
->
-> Can you provide:
->
-> cat /proc/sys/vm/overcommit_kbytes
-> cat /proc/sys/vm/overcommit_memory
-> cat /proc/sys/vm/overcommit_ratio
+How much main memory does your system have?
 
-$ cat /proc/sys/vm/overcommit_kbytes
-0
-$ cat /proc/sys/vm/overcommit_memory
-0
-$ cat /proc/sys/vm/overcommit_ratio
-50
+-- 
+Thanks,
 
->
-> and
->
-> cat /proc/meminfo
->
-> (CommitLimit, Committed_AS)
+David / dhildenb
 
-$ cat /proc/meminfo
-
-CommitLimit:    12388820 kB
-Committed_AS:    5019088 kB
-
-> and OOM messages.
-
-I did not see any OOM messages.
-
->
-> Per David, 'you can trick QEMU in trying to work around
-> that issue, specifying a memory-backend-ram with "reserve=3Doff"
-> as guest RAM.'
-
-Regards,
-Bin

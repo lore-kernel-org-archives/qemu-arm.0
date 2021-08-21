@@ -1,111 +1,179 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1540319lfg;
-        Fri, 20 Aug 2021 11:19:41 -0700 (PDT)
-X-Received: by 2002:adf:dc0b:: with SMTP id t11mr102306wri.259.1629483581880;
-        Fri, 20 Aug 2021 11:19:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629483581; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp406974lfg;
+        Sat, 21 Aug 2021 08:45:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy8grOLNJ0DBvcMR2ByGC7Yg0DdXgPl3xKWoclHqRD9yzRRNmwOmxkyd2GAVQKJVT6s5vxE
+X-Received: by 2002:a92:ddcf:: with SMTP id d15mr17782827ilr.184.1629560733701;
+        Sat, 21 Aug 2021 08:45:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629560733; cv=none;
         d=google.com; s=arc-20160816;
-        b=UuXI6Berr45ciE/iuFyGi5Jppt+hgIdrmFrJVAxAoDMZUUxn8VipCzLiqU4UBUXoPO
-         KX+RM4GhSmrTqntzZvRkeM5IcIzNOle8EigUnDNeJQlt+SPy9lzzk7o+XbVBhC0y3Tte
-         vAxpTz97K8sqMNC51jrI9Upyde0Ff5/HiuFOsXfu9l38Ct95tafPUvPtcnJkBpxLVgBQ
-         1CW/dR+DhT4LbAKoDwfga6UKPpejE5gspXQKrrS+K8rawfzkzis8r3ufdgN/hXXWdhyE
-         KDABjpFieGwPrDcOhc3kNUUKIsSDkAClm5WfziK5gl8CgJH6AvMMwdmH2ql3KGnCKlEo
-         az7g==
+        b=CDzcw3fkFbCPGofeGqpQqMSimGioPy2S6d/Tyat1lIDGys2opE2xrGf7KFLVGNNZ7/
+         oL09eIMm2vWdmeeMNUgZOhybum06o+Msef2tN8wCrCpOiuDOVyqblpqthvKPvwB8hhlb
+         VzJl9Ts9f8JdIU6tIpuHbUMaYGiVA4HhFuKKxI3XuiotSeY0EkYmXV2EcICr3eiDR+KJ
+         J3itYkfkz6+l7QifoF43BwE8xlCQayDJtbTGkgzrpGlKGpR1WRIUm82/kpI6rEjqujYk
+         Lt5hpb7W+N+efDbcwPHtc+qtetxgOWwN6R1U4spyMGgtKQ80bPir+vIqdB0PhVvl4Ehf
+         6ntA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature;
-        bh=6GTf8G00k/lbx16Y+ydCPShh4krPLmrh308MK2m0qQo=;
-        b=HqmPY4Z8aW+W5QukjAThOWrwLjg6gexVTQHzvv/XZDcDG16MbEadkLF9O01spsdyud
-         qU3Boo0aOp5FKbKv4XXbAaQgqKhZKkNmAaua4afDm+0xmW/rQFKN1DBStkNbDIqzGz0D
-         SL2gHMXvvlph0e+PSMrfF4hQMrPhpuN17JOe4gguBTNM/jZjNuE16rj+LeiED04gipDY
-         3A40IROTO5t3JTnvFKGZqeuS0pCb/ycA0HFksbpASqBFVRutrsH+ikVE1zuzZHW/8Ww/
-         XUPXQtCEtUUCMbWzzUEEGOXxLoOfFmDQB+OR4397+X+T8SNam9KwLe7pTKpLzsQ6Qe59
-         4r2A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=TNtcrfeWDh1xu3p2wPdO3YNUuTTB4Q8RsicutDqx+Ig=;
+        b=yYJWdxbWPX4CoEZBwQFsc4XKQjNCz4U0gT0ue1MoLglu3H2GO7Z7GBif3P4xHyidkt
+         JO/gW55uskS9IyP2Q3pxlqLd0fwgA3sqTdlk22pWDHGymPQ5I8xoNUN3WofiEBaYeF8y
+         5hL05WuONLfpxD+pwx/v7OS+CP5kVcgmJj76ItdBo5STOaKQiBhklB3pRmBb1frIuL50
+         GoSJHRbc+HDfzp4+O85DAeIdAUE4QyvSuVNJ3o2u2Kkh8dmsyU54YIKJgUSnfQ0El7lB
+         7fnBf/XpJq2gZPcrju4xYO9aFweOSz7nGAYBHaR3wVfIzgrY4ZOMFPVsqSZozUa7B3VZ
+         JZig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WlBuAjNI;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x3sor6289440wmj.29.2021.08.20.11.19.41
-        (Google Transport Security);
-        Fri, 20 Aug 2021 11:19:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lUi2RQUz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m4si10146869ili.30.2021.08.21.08.45.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 21 Aug 2021 08:45:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WlBuAjNI;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=6GTf8G00k/lbx16Y+ydCPShh4krPLmrh308MK2m0qQo=;
-        b=WlBuAjNIVPeY9y8GxcstkjFuj5UfQtM6qxvOdnGJwXTIzrTqifdxrwBz9xeOgZ7tZT
-         HNwuFeSYGpbTZIKs06ALDDTiC5WIr00Zmr9/dZ/Z0VCOGgDcxAJiJ16kKGw5x9F+mvMG
-         yvlwGznFdId45YRvZbrRikgGWLfGlKPkR8JZxXy3i48ByqhGey7tWbChsYzIXO770ANZ
-         yLC/2jANQsjAMLcpC6p7lmIUyhSa29ofTIrO7c4QiBo6lePZcOzuxjU2iR80E7nOnjpO
-         YtgOKA+PESpcFzUJY2Y+uVx/w2BUSS9NMIS/LR85Rv6e3QfTEpzWOyqDGR989Ls5JYEf
-         4QmQ==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lUi2RQUz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44462 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mHTBd-0001c8-3r
+	for alex.bennee@linaro.org; Sat, 21 Aug 2021 11:45:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49604)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mHTBN-0001bs-VJ; Sat, 21 Aug 2021 11:45:17 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632]:43814)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mHTBM-0002DF-HL; Sat, 21 Aug 2021 11:45:17 -0400
+Received: by mail-pl1-x632.google.com with SMTP id x1so5104015plg.10;
+ Sat, 21 Aug 2021 08:45:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TNtcrfeWDh1xu3p2wPdO3YNUuTTB4Q8RsicutDqx+Ig=;
+ b=lUi2RQUziOvcKHg78PaSlpTnSpWjAz0VYHpENpthZnHjNHHxzZVLMXP+4ihSPF3zwv
+ jOIaJfFuavgfYg5wMcTQLrE9vsZiakCcIwK3a4Pq6OoJaW9jt3X3kZfkG7xroM9LdJGn
+ 6P4M2xgNqWUDDbubhz5PPrTSTRht8JRzAf+J5gtvFgCBLAWTzgNyrMRVSb+GR9Fd7jG8
+ TbAkzDrNNbEESHt6iCIqm+eNW1bJqMvxodRXy30zYCJT7Ns/G7ofuYreCcWvkVKg0dBG
+ V02JSTvb35LKQwQyA/1dkDdwHb00tLG8Gl7lPSP0GWhrJ1abc+xzf0KPR9T/8Xt+x0dP
+ JXIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=6GTf8G00k/lbx16Y+ydCPShh4krPLmrh308MK2m0qQo=;
-        b=ozlYCtkDE5odZXVesviGqZHqxjkpJavraVEWpbrWErlGxEu1S4BId4a+nd0h4uMDJI
-         dD1RibjKSgn7YElkZ9aUlGhOdAIi0b0bf1CoAMqlJ32vgE+XrcIvbNSlklsCP+cYaFe1
-         +jTHrQTnnPltsABwXWyKYQqUDBkV382+MZWIpfW0j5Y+9/L319C9jBJyLQI+A4exr6Fs
-         oQ7X2715rmww3v7zBXRakwB2sc5nCpnEui4+w3dh4ciEAhIA3vzuaMYFXnDlBxaYQZzB
-         4rXouTGZbqKmrjeA9jX8G1wzJbPLnsd1RbqjhWcEhjpCXI5r4LncCLZ4iJJ0tKlbSQ+w
-         NRVw==
-X-Gm-Message-State: AOAM533A8s4112pWUAPacoqoeGFO3ZYft0MqgS/rR6txUxVzyoYlJlav
-	BpU+C6AqhBGoKInGcqZFwmc=
-X-Google-Smtp-Source: ABdhPJx6nujNbAsFA324mFQGKfQnwFDExMQwWY9lcX1rvvqrMIzPeIl7BJfzMc3LCZ4Hgu8A4zjtog==
-X-Received: by 2002:a1c:1904:: with SMTP id 4mr5149358wmz.93.1629483581566;
-        Fri, 20 Aug 2021 11:19:41 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id f17sm6753296wrt.49.2021.08.20.11.19.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Aug 2021 11:19:40 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v4 0/1] hw/pflash_cfi01: Allow an administrator to reduce
- the memory consumption of flash devices
-To: David Edmondson <david.edmondson@oracle.com>, qemu-devel@nongnu.org
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Max Reitz <mreitz@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?B?aGFpYmluemhhbmco5byg5rW35paMKQ==?= <haibinzhang@tencent.com>,
- John Snow <jsnow@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>,
- qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Xu Yandong <xuyandong2@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Zheng Xiang <zhengxiang9@huawei.com>
-References: <20210810134050.396747-1-david.edmondson@oracle.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <0a3bdfa0-5361-5be4-fbd9-d1573b2864ab@amsat.org>
-Date: Fri, 20 Aug 2021 20:19:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TNtcrfeWDh1xu3p2wPdO3YNUuTTB4Q8RsicutDqx+Ig=;
+ b=O7jdDjfH7p5aWNGxrA5nQz0KR7MwLlapApkYKAtByesUKBMnWJ6ONgXE5xyosQ/r4I
+ UgbXPrm1+v+eSuFpZ74JjgAVTGGxn60Wcbnl7htusS3dk2LSriaHs0zf6cFUK2RrYS4S
+ yQ8Ak2DKyzL6qIUlax7qw2NEZloAXQHEkxVMZdWpE2p8uLaceQIG0J7xp7huImB5YgJz
+ MsLpHUBb4Uqzt2Iq92mDCh8e8NO/5mmfRUF9S8n8KaEkhlFz5Z761z3iGt0APpzFJmT9
+ uFKIimQbjQOaTSVYaFEao5gV3/2JiHsEWLLewA81/ihkSR3dCqkHvHhJWq20OPp+nCAj
+ rzBA==
+X-Gm-Message-State: AOAM530XuVIJs++npBOI0jfEh6PPB2nGxCFCaz22pFPGRYPM/dxGXB27
+ qX6xQGcNcQG5kZ0GxA6w4uM=
+X-Received: by 2002:a17:903:3109:b029:12d:3160:a815 with SMTP id
+ w9-20020a1709033109b029012d3160a815mr20591783plc.45.1629560713370; 
+ Sat, 21 Aug 2021 08:45:13 -0700 (PDT)
+Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
+ [144.168.56.201])
+ by smtp.gmail.com with ESMTPSA id k10sm10350726pfu.139.2021.08.21.08.45.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 21 Aug 2021 08:45:13 -0700 (PDT)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Damien Hedde <damien.hedde@greensocs.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [For 6.1 PATCH] hw/arm: xilinx_zynq: Disconnect the UART clocks
+ temporarily
+Date: Sat, 21 Aug 2021 23:45:05 +0800
+Message-Id: <20210821154505.18033-1-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210810134050.396747-1-david.edmondson@oracle.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: hJTejd8dE9wY
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pl1-x632.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: j4zjmmpU2Lcj
 
-Hi David,
+As of today, when booting upstream U-Boot for Xilinx Zynq, the UART
+does not receive anything. Initial debugging shows that the UART clock
+frequency is 0 somehow which prevents the UART from receiving anything.
+Note the U-Boot can still output data to the UART tx fifo, which should
+not happen, as the design seems to prevent the data transmission when
+clock is not enabled but somehow it only applies to the Rx side.
 
-On 8/10/21 3:40 PM, David Edmondson wrote:
-> As described in
-> https://lore.kernel.org/r/20201116104216.439650-1-david.edmondson@oracle.com
-> and
-> https://lore.kernel.org/r/20210222174757.2329740-1-david.edmondson@oracle.com
-> I'd like to reduce the amount of memory consumed by QEMU mapping UEFI
-> images on aarch64.
+For anyone who is interested to give a try, here is the U-Boot defconfig:
+$ make xilinx_zynq_virt_defconfig
 
-> v4:
-> - Rebase.
+and QEMU commands to test U-Boot:
+$ qemu-system-arm -M xilinx-zynq-a9 -m 1G -display none -serial null -serial stdio \
+    -device loader,file=u-boot-dtb.bin,addr=0x4000000,cpu-num=0
 
-Sorry I haven't forgotten about your patch, I can't make room
-to think quietly about your problem. I reserved a dedicated
-slot of few hours next week.
+Note U-Boot used to boot properly in QEMU 4.2.0 which is the QEMU
+version used in current U-Boot's CI testing. The UART clock changes
+were introduced by the following 3 commits:
+
+38867cb7ec90 ("hw/misc/zynq_slcr: add clock generation for uarts")
+b636db306e06 ("hw/char/cadence_uart: add clock support")
+5b49a34c6800 ("hw/arm/xilinx_zynq: connect uart clocks to slcr")
+
+Looks like we don't have enough time to figure out a proper fix before
+6.1.0 release date, let's disconnect the UART clocks temporarily.
+
+Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+
+---
+
+ hw/arm/xilinx_zynq.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 245af81bbb..1bc749f6b8 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -257,16 +257,12 @@ static void zynq_init(MachineState *machine)
+     dev = qdev_new(TYPE_CADENCE_UART);
+     busdev = SYS_BUS_DEVICE(dev);
+     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
+-    qdev_connect_clock_in(dev, "refclk",
+-                          qdev_get_clock_out(slcr, "uart0_ref_clk"));
+     sysbus_realize_and_unref(busdev, &error_fatal);
+     sysbus_mmio_map(busdev, 0, 0xE0000000);
+     sysbus_connect_irq(busdev, 0, pic[59 - IRQ_OFFSET]);
+     dev = qdev_new(TYPE_CADENCE_UART);
+     busdev = SYS_BUS_DEVICE(dev);
+     qdev_prop_set_chr(dev, "chardev", serial_hd(1));
+-    qdev_connect_clock_in(dev, "refclk",
+-                          qdev_get_clock_out(slcr, "uart1_ref_clk"));
+     sysbus_realize_and_unref(busdev, &error_fatal);
+     sysbus_mmio_map(busdev, 0, 0xE0001000);
+     sysbus_connect_irq(busdev, 0, pic[82 - IRQ_OFFSET]);
+-- 
+2.25.1
+

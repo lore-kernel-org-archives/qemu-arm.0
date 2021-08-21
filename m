@@ -1,102 +1,103 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp554944lfg;
-        Sat, 21 Aug 2021 13:03:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdpNW7pq8xfv+GCQDKIiYsQ6LSjZ3MvHyjylIGP5PwiOMSI2l/j6qNyNFwVXX6ULY2uMqk
-X-Received: by 2002:a92:c609:: with SMTP id p9mr1197649ilm.135.1629576237644;
-        Sat, 21 Aug 2021 13:03:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629576237; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp554990lfg;
+        Sat, 21 Aug 2021 13:04:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwx0SS6S2Y434EbRkGXtlRFy7d0+A9ykAk+m7DWlQLCRhXoTqaFR3W6QMxOsyEvVzxAgB56
+X-Received: by 2002:a05:6e02:130e:: with SMTP id g14mr18165901ilr.81.1629576242459;
+        Sat, 21 Aug 2021 13:04:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629576242; cv=none;
         d=google.com; s=arc-20160816;
-        b=B7fkp+w+zKVrCp+b0POBX+EubVp17sxUks+AGju2LjeLzs5D5ZAPaszErxLCIqfZV5
-         gMPKevt1OCX+XoK6UWgPj4B5lDQVu5kFaCy8sO+TO35FYa1HkIkPixBDPBBetzIEIrO/
-         61h/EGAHvnXVjP2NerU/Gy6QnC+82xRUtq35CQQ9mvdoyIvcpGWJqOhTnfuS+/Cd8GA2
-         wJcaILNyyWFaHnjJzPju5lvsxbDYXP1qp5+gtJCC8jCoo3qrXF6zuhuPiSWPNixxWcYJ
-         5UM6x7kvUcW0sL680EYQehEC9R3P59wu3kT4XXQVFT576vMTpm/1StqkTx9Ap426+API
-         4NKQ==
+        b=h4Kk3PCOBZmnmcQZ7IoSvjGAsiOZSK9J6A/WJCvlkSi0xBLDYkKyO9jGJuTL9U5Nu0
+         +Bdrsddx7Fmu2sCQXvpO04ZfxdYdh78XgGBmliE/tD/IqLHfbcJ97tfZ90gkyNnpJHVg
+         iv5QHtuB9qn0gAJeupenUsnesyuBIFKzsKLG1NpMvKRKy8qNX3yYhUYPPO58yQoBYHbj
+         6pSLt5r9RgS0ALJCYcyW4CJMgITvrh8z23xFq3oJWjgu4d3svUFlHNt8oQftPmGoQTFi
+         C5++NWseYMLaZQCDEiNhFkVX49KRZIlHGYuPvzcJkCeNs37rEtEIbzIo15kFCLhUYzXW
+         JYMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=nW9fMChnRBXVS7c8vZgjblWrAXidwfTLKIZtt2ybyaE=;
-        b=U1VSavo0uy2KSFSMRSViunEjprRT7vjIbsEYZFUYDWPnzPoHdpWkxMmwNNsW/5A/yS
-         pS+BPfyVVjCLutWqS2KRLRu+N33+ueODHfpSM5RCL9fEDymEMjnkcL1lHPUpjDaUpqj3
-         1y5vMeoIhh86HrBVKkz7Ma+3b5sIYQvq0NfVlDI38ZAOPDehPTnMJkMckF+kbQ9sXhn8
-         pRnpb+J99s4lVBy2bk80WKLwt2CSRjYc0MF0xau1/PM6PuF7FGfFXNljlIO0ZXA7xN0Q
-         E/WroQdpnTS2d+wf7YfhwQQcgDb1EQt/C/wjRVYgx2lE3JVvREdeKaOgeLcH0ReLG18d
-         qSwQ==
+        bh=+ZAhinf24CQJmFBs0vLR+aQqqKuFbYYjrTVj6/rZMr0=;
+        b=D5mj/6AZO3XdEYhU9gx02D2LudqL0QAHHqur/Yle1qYI471D0tsY9Da/uTR/rAg4x6
+         scwWipJLYuDg/aIR/n3cMAnMvZLou+lbzCYBB9pJLzcAiw3tkfhVMoin3L/OqwTamxn8
+         LNWUk6erfVvygV2ktvQ50vDSh4wkpds8f7FxHWmv98+9rtQLRnObI2PwS+19SRF4012p
+         l+A5zWJdjUAqGDXTh3Y5iX3mGCKfZrt8d+FKBlmLw29EtJ5O8VSnDVnImvZxtqqzcWwF
+         tG737yEDnb/9q/dbNXL3qifTAb6Sy7BIST2rYwH9fedYay1oCQWzgJh06qeqeF84TjgX
+         wO/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="N/A6Bnyb";
+       dkim=pass header.i=@linaro.org header.s=google header.b=x8XzlXMq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z2si11706250ilh.121.2021.08.21.13.03.57
+        by mx.google.com with ESMTPS id d16si10676488ilr.157.2021.08.21.13.04.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Aug 2021 13:03:57 -0700 (PDT)
+        Sat, 21 Aug 2021 13:04:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="N/A6Bnyb";
+       dkim=pass header.i=@linaro.org header.s=google header.b=x8XzlXMq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48860 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49284 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mHXDh-0007ep-0Q
-	for alex.bennee@linaro.org; Sat, 21 Aug 2021 16:03:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49768)
+	id 1mHXDl-0007uo-Qf
+	for alex.bennee@linaro.org; Sat, 21 Aug 2021 16:04:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49818)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mHX9z-00029u-GQ
- for qemu-arm@nongnu.org; Sat, 21 Aug 2021 16:00:07 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:38666)
+ id 1mHXA1-0002G2-B0
+ for qemu-arm@nongnu.org; Sat, 21 Aug 2021 16:00:09 -0400
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:37436)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mHX9v-0004UL-KC
- for qemu-arm@nongnu.org; Sat, 21 Aug 2021 16:00:07 -0400
-Received: by mail-pl1-x631.google.com with SMTP id a5so7880080plh.5
- for <qemu-arm@nongnu.org>; Sat, 21 Aug 2021 13:00:03 -0700 (PDT)
+ id 1mHX9x-0004WN-EK
+ for qemu-arm@nongnu.org; Sat, 21 Aug 2021 16:00:09 -0400
+Received: by mail-pj1-x102d.google.com with SMTP id
+ j10-20020a17090a94ca00b00181f17b7ef7so3215786pjw.2
+ for <qemu-arm@nongnu.org>; Sat, 21 Aug 2021 13:00:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=nW9fMChnRBXVS7c8vZgjblWrAXidwfTLKIZtt2ybyaE=;
- b=N/A6BnybYHaEQ0iErEI5N9lHcQCR1qT0aUkfWVo35cgh9mNImUZNbfE6yQYSN3mL5X
- N2c97P5BfN4DqnKC+5ZKMcldTVoNDQaHLP6b/TFu9SDHZ2T7JxId4thCzOS/jPX8juwN
- P529i7ge1OTyybd2JThNWAz76YlmwIi5NTByU+gq/e9cvDdoXO4pxwvirHSj8FNJrnW0
- nJ7hkTrlhC0EW9zbiId+rEkmt7aGHu8M1eQRVzaPntCLbN1VKwFOV8B2nRU6r3ascUjr
- c7/GihWKYXGnB2P8Q6vsPzOChhtMA//pyfRkqMIqHnteeL/susz8Oi1EaGR6cmyJb7NP
- 5ZMw==
+ bh=+ZAhinf24CQJmFBs0vLR+aQqqKuFbYYjrTVj6/rZMr0=;
+ b=x8XzlXMqmNwEWr+RvHQwja3b0lcaWPiL2/HWJRE+q+Mv02ofI9U+RD1kU0CRrE/g2n
+ YlZNlvt5UfgZDDTEo2O9eVIX7CwOTUr6qQjSLT+lxpPbrEEcT2CTgwbXR7jWcF0VJdmg
+ FkeWjLd3niDydLoNQ+8ksEmI1XlO+cieLMJMs1WVdgvwXLi7ZpudUWYMUFfQNgnBxw/G
+ moGbzvBV1PTBxHkkY7i6yya4TqoUcSh/roxkGARu9yjXV5MtHRlifMl6cEG5Aq7Qe7yD
+ ZuoZj4GKHQh/PzlmD2qX7w7jtMiIQNS7V/pPt68RmzKMioRSc3X1Caa6z77MwM/0/ChN
+ ipRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nW9fMChnRBXVS7c8vZgjblWrAXidwfTLKIZtt2ybyaE=;
- b=RyLL6bJ8vEDw8c7U61SiBYvvt/+PUNyfRjJfSJPNCJd5embyyOn1fg8/vkwYEKHBQ6
- w9nT8osTBGntypqygIPzVJEzM5c6/o5R/rsv5Xl21Tc+brRMAhgmr0KtVl/CQqdM4GaR
- MvdP6eRSd2pcVbV8qgvCaKA0z6zmofAlxYYTiXjJblQVK/fP0XVwbVfgm3kpbDaM+Z21
- 56/6Y/EsPPy2p30m6PfXuYwvQyDBRwuceEUg5HvhY6/IX989c3owC7Uayoke4h+MLfj0
- oQz6sboYRLDLrueVhKKnrl4KZ0vwfOFtTItc6KhSzCriC92ytfhBQk5U7ZOR3iNFOM1w
- cXUQ==
-X-Gm-Message-State: AOAM530MWGIyAe/Lw1iaJNGgkO76crXECimrD6COjs8L3qlVCAYhH9FX
- TaET/FSW9liCf6LQoEatzhEHeaDH0XTYaw==
-X-Received: by 2002:a17:90a:d814:: with SMTP id
- a20mr7933793pjv.130.1629576002369; 
- Sat, 21 Aug 2021 13:00:02 -0700 (PDT)
+ bh=+ZAhinf24CQJmFBs0vLR+aQqqKuFbYYjrTVj6/rZMr0=;
+ b=XhsNZit+eHGp/YkbLDZKLGgrnerYoxPh/HX/jImgLrb+cxDaT33uWOXmyo1FDnYZJT
+ Z6eSDZyTQ+yA4VgUujMGYPDTJ8r+CUnItdBuqmlGOcE+xq0uaYYToe6mn0+kqKhlJW7H
+ LfKwMVbCc9JwXzSd9RB06c/mWhu/cZ2Zk0XX4j7Er+2sjM5Bd5MPCGolm8uLuYHVUu59
+ OUaLT45RsTtcwOt/KycSYMQtpe1Kh3QSiKKlgXED90D33SkBiZN6Jkp1DgwGfr773+ks
+ S/vpISEH5olejxRIXiOOxXDMPyleCRJyitjiADXgL87dHR/hOJgop/MHnSODE/XFlqx8
+ BQKw==
+X-Gm-Message-State: AOAM532pxAM+1oCV4GKt071yFp7mOfak8quWYHrQ0IKdMYUdNq60WPGn
+ pdxyZxrYFpCAMMr5p/fWBNsOHA==
+X-Received: by 2002:a17:902:8c90:b0:12f:699b:27 with SMTP id
+ t16-20020a1709028c9000b0012f699b0027mr15372004plo.28.1629576003929; 
+ Sat, 21 Aug 2021 13:00:03 -0700 (PDT)
 Received: from localhost.localdomain ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id h13sm12562257pgh.93.2021.08.21.13.00.01
+ by smtp.gmail.com with ESMTPSA id h13sm12562257pgh.93.2021.08.21.13.00.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Aug 2021 13:00:02 -0700 (PDT)
+ Sat, 21 Aug 2021 13:00:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 4/8] linux-user/arm: Report SIGBUS and SIGSEGV correctly
-Date: Sat, 21 Aug 2021 12:59:54 -0700
-Message-Id: <20210821195958.41312-5-richard.henderson@linaro.org>
+Subject: [PATCH v2 6/8] target/arm: Assert thumb pc is aligned
+Date: Sat, 21 Aug 2021 12:59:56 -0700
+Message-Id: <20210821195958.41312-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210821195958.41312-1-richard.henderson@linaro.org>
 References: <20210821195958.41312-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,83 +120,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GYlgIQvPNYJC
+X-TUID: B5RuZVef5CqC
 
-Pull the fault information from where we placed it, in
-arm_cpu_tlb_fill and arm_cpu_do_unaligned_access.
+Misaligned thumb PC is architecturally impossible.
+Assert is better than proceeding, in case we've missed
+something somewhere.
+
+Expand a comment about aligning the pc in gdbstub.
+Fail an incoming migrate if a thumb pc is misaligned.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-Pulled out from the larger unaligned data patch set.
-For short-form FSC, pc misalignment is reported in the same way.
----
- linux-user/arm/cpu_loop.c | 39 ++++++++++++++++++++++++++++++++++-----
- 1 file changed, 34 insertions(+), 5 deletions(-)
+ target/arm/gdbstub.c   | 9 +++++++--
+ target/arm/machine.c   | 9 +++++++++
+ target/arm/translate.c | 3 +++
+ 3 files changed, 19 insertions(+), 2 deletions(-)
 
-diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-index d4b4f0c71f..5731d3c937 100644
---- a/linux-user/arm/cpu_loop.c
-+++ b/linux-user/arm/cpu_loop.c
-@@ -24,6 +24,7 @@
- #include "cpu_loop-common.h"
- #include "signal-common.h"
- #include "semihosting/common-semi.h"
-+#include "target/arm/syndrome.h"
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 826601b341..a54b42418b 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -76,8 +76,13 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
  
- #define get_user_code_u32(x, gaddr, env)                \
-     ({ abi_long __r = get_user_u32((x), (gaddr));       \
-@@ -279,8 +280,8 @@ static bool emulate_arm_fpa11(CPUARMState *env, uint32_t opcode)
- void cpu_loop(CPUARMState *env)
- {
-     CPUState *cs = env_cpu(env);
--    int trapnr;
--    unsigned int n, insn;
-+    int trapnr, si_signo, si_code;
-+    unsigned int n, insn, ec, fsc;
-     abi_ulong ret;
+     tmp = ldl_p(mem_buf);
  
-     for(;;) {
-@@ -422,9 +423,37 @@ void cpu_loop(CPUARMState *env)
-             break;
-         case EXCP_PREFETCH_ABORT:
-         case EXCP_DATA_ABORT:
--            /* XXX: check env->error_code */
--            force_sig_fault(TARGET_SIGSEGV, TARGET_SEGV_MAPERR,
--                            env->exception.vaddress);
-+            /*
-+             * For user-only we don't set TTBCR_EAE, so we always get
-+             * short-form FSC, which then tells us to look at the FSR.
-+             */
-+            ec = syn_get_ec(env->exception.syndrome);
-+            assert(ec == EC_DATAABORT || ec == EC_INSNABORT);
-+            fsc = extract32(env->exception.syndrome, 0, 6);
-+            assert(fsc == 0x3f);
-+            switch (env->exception.fsr & 0x1f) {
-+            case 0x1: /* Alignment */
-+                si_signo = TARGET_SIGBUS;
-+                si_code = TARGET_BUS_ADRALN;
-+                break;
-+            case 0x3: /* Access flag fault, level 1 */
-+            case 0x6: /* Access flag fault, level 2 */
-+            case 0x9: /* Domain fault, level 1 */
-+            case 0xb: /* Domain fault, level 2 */
-+            case 0xd: /* Permision fault, level 1 */
-+            case 0xf: /* Permision fault, level 2 */
-+                si_signo = TARGET_SIGSEGV;
-+                si_code = TARGET_SEGV_ACCERR;
-+                break;
-+            case 0x5: /* Translation fault, level 1 */
-+            case 0x7: /* Translation fault, level 2 */
-+                si_signo = TARGET_SIGSEGV;
-+                si_code = TARGET_SEGV_MAPERR;
-+                break;
-+            default:
-+                g_assert_not_reached();
-+            }
-+            force_sig_fault(si_signo, si_code, env->exception.vaddress);
-             break;
-         case EXCP_DEBUG:
-         case EXCP_BKPT:
+-    /* Mask out low bit of PC to workaround gdb bugs.  This will probably
+-       cause problems if we ever implement the Jazelle DBX extensions.  */
++    /*
++     * Mask out low bits of PC to workaround gdb bugs.
++     * This avoids an assert in thumb_tr_translate_insn, because it is
++     * architecturally impossible to misalign the pc.
++     * This will probably cause problems if we ever implement the
++     * Jazelle DBX extensions.
++     */
+     if (n == 15) {
+         tmp &= ~1;
+     }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 81e30de824..b5004a67e9 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -781,6 +781,15 @@ static int cpu_post_load(void *opaque, int version_id)
+     hw_breakpoint_update_all(cpu);
+     hw_watchpoint_update_all(cpu);
+ 
++    /*
++     * Misaligned thumb pc is architecturally impossible.
++     * We have an assert in thumb_tr_translate_insn to verify this.
++     * Fail an incoming migrate to avoid this assert.
++     */
++    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
++        return -1;
++    }
++
+     if (!kvm_enabled()) {
+         pmu_op_finish(&cpu->env);
+     }
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index dfeaa2321d..a93ea3c47c 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -9595,6 +9595,9 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     uint32_t insn;
+     bool is_16bit;
+ 
++    /* Misaligned thumb PC is architecturally impossible. */
++    assert((dc->base.pc_next & 1) == 0);
++
+     if (arm_check_ss_active(dc) || arm_check_kernelpage(dc)) {
+         dc->base.pc_next += 2;
+         return;
 -- 
 2.25.1
 

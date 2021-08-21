@@ -1,338 +1,312 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp552938lfg;
-        Sat, 21 Aug 2021 13:00:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxBhljMIx7sEf4LQuYM3j7zDOPbsAu9aihCYE4OuPGOz31KCkK5tcR3LDYZRYuANeb+RHTA
-X-Received: by 2002:a5e:a81a:: with SMTP id c26mr20937624ioa.15.1629576026431;
-        Sat, 21 Aug 2021 13:00:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629576026; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp554078lfg;
+        Sat, 21 Aug 2021 13:02:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyR37iJDreJdlVth9ysycwnTv9FNTguuOhkLfDsIhRSN860KVBWqh6mOiCc73iX42KY4uwG
+X-Received: by 2002:a05:6e02:eca:: with SMTP id i10mr17468217ilk.27.1629576142088;
+        Sat, 21 Aug 2021 13:02:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629576142; cv=none;
         d=google.com; s=arc-20160816;
-        b=FSBAYj6uT0dKV3u0zNjvdOLL1IdTpcne5zxDZQ0S84FlPdqeEGQ/Nx/lb3yVeaMPlR
-         Ct0E82wfbgDLQTOU++st1TSPnHVFvb0xGmL+xY3Ibo3oVEm9ESDFbIEV1G5nBI7XRCxe
-         6sl9K/+e8Cl3a7ToSp2UDz/rU244KsnovNVUvTsO/Za7Az7EhKy0kFotqidN5JW2nrqe
-         ygwsrxbYtTeg4/R1cf1td1yAuYJJ/WXqHCeAbCiFJTM2KWVBuk5ccf8hjKRsUmeHBHaO
-         Pzor5riiMTvUJcMwWf0sxy0lBslFictLVGAWeoXZaDth/lQe4xSgVrq29L1Kk5fHbaLW
-         K+cQ==
+        b=Dh+IHd+8+3wSlP+pzJ927m0xvnHWvN9+UeLXwKDz6aJL2VhzlhXawEP5AA3Iso+3QU
+         R266pV6s2IVCJA9wuKFUmVtipl3ttx6prGIemsASlb44GwBWnou/Rn1r0AvU7JROgWA4
+         72zsDm3pKPB9IyoxhO+bhTSNUqM09CmlqZ7Mbmtew9B94ZElZHRPzCFXxYb0xP/B1wjK
+         ywsWEyL+Gop/N0KtRRWEFohEo/SNH3mRzkrqP1nOLPu2Gqx9Z3L03ayEEsQJZMaK54rQ
+         IL5ItstyfpM3ItYsGqfq3vVJOuT/XoUeQ6RCyNfMNfIsdDcntW8/5lUrwLr5KiV+vgUe
+         4jeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Hn7fpe16SCWF4h1OR7HYJ+ccPYtVq+eIAGolsqSBqQg=;
-        b=CEemHaXU2KgEiB6uc6SA7rKkRPLN6kq91s8e4jvIleSqf0IAohXrZlhEqd7qqSlGnc
-         aIydZF6wdMRCUHdAg8JEibTwLSC0TzTr4O3H5qiX95DsavtKRyYGhnZDKHnFV4krKAU+
-         ZzFpFvtTMGHFJjwg5pGvoDZYW0amGqz5SAQ4yZpfm+/tUQ/hNL41/tk96/kPjZ4rteqT
-         g9Os8qVLCARonMDgVw82o8lQLKhQcqxIXR41bWy765+p+YKifaFlo1X/ZqF4okRoCV3S
-         s2Dhz7bOWaqLXxaLo/EV8t3PnvoAEg5AX7gBZfdIcQ+C0Qf1himjkZayh7vZrhWpXIjz
-         9tmA==
+        bh=F7ZS4B4B8gzp6eqM0t7V6IZHzjuH9VIN8nrlPVI9Ws0=;
+        b=0pZWF5/SZaZ52T9Bt1SLfJ+zoqpySKtnWR4bGPXq/Y8HqloJ7G1HT9Kkjw4pvIfKgZ
+         MMsWRAlorRkvaN83UCIXQywUhC1p5N4kZqMOzoFczNC1081c9DNJHEGnNaf1nnoD4lpa
+         F+/GrtORVMLXzftqLdwMgZXwcLS1QmxPLaaxnmVLWEJFvkL2B5r8vBXyy86c+SkZtXtO
+         YELq6fqcA9Y3azSmNQZm0W46Wpx56Dj+ri/cwA52FmaBV4DLvW0oIMRJk2XAlsoj/M3A
+         vpfRpAWXUIq6TMFTBL2DjEeXabh4nfblVTcx3N/HDdWKNFz2K6qxrradRrbdMAJNfE4/
+         6SrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FPkA54iO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=kPR+Jjsp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o16si10345102ils.161.2021.08.21.13.00.26
+        by mx.google.com with ESMTPS id n16si3270363jaf.92.2021.08.21.13.02.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Aug 2021 13:00:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 21 Aug 2021 13:02:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FPkA54iO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40992 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=kPR+Jjsp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44104 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mHXAH-0002Jt-N8
-	for alex.bennee@linaro.org; Sat, 21 Aug 2021 16:00:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49796)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mHXC9-0004Ux-De
+	for alex.bennee@linaro.org; Sat, 21 Aug 2021 16:02:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mHXA0-0002Dt-MN
- for qemu-arm@nongnu.org; Sat, 21 Aug 2021 16:00:08 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:35512)
+ id 1mHX9x-00026t-F6
+ for qemu-devel@nongnu.org; Sat, 21 Aug 2021 16:00:05 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f]:33621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mHX9w-0004VZ-I8
- for qemu-arm@nongnu.org; Sat, 21 Aug 2021 16:00:08 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id e7so12644346pgk.2
- for <qemu-arm@nongnu.org>; Sat, 21 Aug 2021 13:00:04 -0700 (PDT)
+ id 1mHX9u-0004SL-7w
+ for qemu-devel@nongnu.org; Sat, 21 Aug 2021 16:00:05 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id w68so11712831pfd.0
+ for <qemu-devel@nongnu.org>; Sat, 21 Aug 2021 13:00:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Hn7fpe16SCWF4h1OR7HYJ+ccPYtVq+eIAGolsqSBqQg=;
- b=FPkA54iO9x5uIRs0eU6ZRiQrqcJBIYj4gLFIRCAqbF96eZDS4MOlnJQqrtbZlNVs6F
- YU8nraOK3x49ZTaV1DbJIt2CCFjWOKSazSFPAYYvbk5Yroh9VCboQSTwKiycn5P+BHEL
- 00kBPDaKye+51c197gCbSqqyeR7KdA3BxNkLjIW00rLGjKWAArvfrUiEHCOoa25aD+c6
- +EzkLcgdtqHHeQzA/eJusxb+OwlCx0JKY+i1mWnccaybqrW7vX310/5BvUznKq6WGhYH
- vQ+Kj0xtGkmvtfQeCiKl18cy9MMHmED0hYGCX86QdtXPj/YFNepeNg4CzNwuJUhoFcNC
- CGPw==
+ bh=F7ZS4B4B8gzp6eqM0t7V6IZHzjuH9VIN8nrlPVI9Ws0=;
+ b=kPR+JjspKzn/KUK/PGcDC15mMzEeU5jGa4VcNMqDMnkEaMfVV+8wVLXyRUKIWRCVWR
+ NhkUwZgxYVbT4uSgONJOCRpNU2lbxy9r4vQp+pyWWXLD7tM/og9s/oZOvnTQxz8z0klU
+ Whx3wAXBeGYBQ9X8xS9WS0Gvq0/NOUi53OP0FsG2w+rGrzL8+Zv/WR+aZ7sxY3bMS9Pq
+ LEuGkFSqQhFhF1sfSlF+JMGMJd3YpFxDR6zT1XFG2W8YO9ij5cEELMwIKRZgJE0oMuoX
+ ts0zNjoXEDLWBD/9m9hWDLatci8eQX457hG3IjNf0aiF3M6dtDKcApCUkITLngb0UdA0
+ 7DPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Hn7fpe16SCWF4h1OR7HYJ+ccPYtVq+eIAGolsqSBqQg=;
- b=dLa1+uMePtuojMdP4YEYm/3/Lu3FvoNRJACkkXLnfuLLqdGzLrChGFJfnEyHiCAgpu
- KhkktmdC4GE5rHuTPhkh+Hb0LymuBkNxX35jA8h7jlWbkveyvMgyzQC6Fqc+qgq14OsV
- Y63etj+quIx+2aYadvi12qNV0nr5wdVhjSF7ay/A1nvw7NRmUNCFQ+ML8p3CA7KJBzGn
- yygytMyG2KwNgRIMs7y6wnm7O8bJMo+g1/oUJVtNXF7wL0ukWJN9UN5dRZt0DynzkybP
- rh+BFOtltUHfDL2I38DOzO814r/9tsrFgt0pYqWRO+ayO/09CkKMvMbeI2Sko9Je8MTm
- zbWg==
-X-Gm-Message-State: AOAM531r7OiBHWlsq4k2Z34a55tJZTklaISfHw4MIvYtzfTNZx7puZ1H
- d0BCbbF0KW9G4o/dyH0uJDlG8A==
-X-Received: by 2002:a65:6398:: with SMTP id h24mr24869431pgv.367.1629576002913; 
- Sat, 21 Aug 2021 13:00:02 -0700 (PDT)
+ bh=F7ZS4B4B8gzp6eqM0t7V6IZHzjuH9VIN8nrlPVI9Ws0=;
+ b=rXccSiXYCrdfCaURJEiCGpS0kGs5NHXJC+DjGOuNKb9ArjQ06uixCj1JIoD/N2kbRg
+ NYdcnL2uMLjGx2cRSi1RLcMrzF8+AtgLVBAWU7JBLp038T7BaRJ+YNTB7TuIkzmc0JzS
+ 2ijVAy0TMUD4suXwtNwrTO3CCs5IyigJMXNMfhtm1+5fHjnJ/kvriTWU6mGLflY4+dJS
+ N+17aVwQzs33ARDk3fOG37eYaa1dyFtCf8bgEckA2GLJMRl3QvqmKcEw1IFfkHS8tU6R
+ Quq5UNVhTTRQ22T1yV6PaCrOmh7MTd88EwLRUD2nby/offc75y+8bzZtaR4kiUZ0QaMn
+ y75g==
+X-Gm-Message-State: AOAM530JVJkmLmKP6q+amRViNSEykOyZMwZySWwTG35o7KDZJwRFdVEf
+ Kt97SZRaKovyhkMKR1a1mmypGLYqQI7GdA==
+X-Received: by 2002:a05:6a00:2405:b0:3e1:9f65:9703 with SMTP id
+ z5-20020a056a00240500b003e19f659703mr26215560pfh.6.1629576000702; 
+ Sat, 21 Aug 2021 13:00:00 -0700 (PDT)
 Received: from localhost.localdomain ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id h13sm12562257pgh.93.2021.08.21.13.00.02
+ by smtp.gmail.com with ESMTPSA id h13sm12562257pgh.93.2021.08.21.13.00.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Aug 2021 13:00:02 -0700 (PDT)
+ Sat, 21 Aug 2021 13:00:00 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 5/8] target/arm: Take an exception if PC is misaligned
-Date: Sat, 21 Aug 2021 12:59:55 -0700
-Message-Id: <20210821195958.41312-6-richard.henderson@linaro.org>
+Subject: [PATCH v2 1/8] target/arm: Take an exception if PSTATE.IL is set
+Date: Sat, 21 Aug 2021 12:59:51 -0700
+Message-Id: <20210821195958.41312-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210821195958.41312-1-richard.henderson@linaro.org>
 References: <20210821195958.41312-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yHF0Q7QfxKDw
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vx7GfylsgeAr
 
-For A64, any input to an indirect branch can cause this.
+From: Peter Maydell <peter.maydell@linaro.org>
 
-For A32, many indirect branch paths force the branch to be aligned,
-but BXWritePC does not.  This includes the BX instruction but also
-other interworking changes to PC.  Prior to v8, this case is UNDEFINED.
-With v8, this is CONSTRAINED UNPREDICTABLE and may either raise an
-exception or force align the PC.
+In v8A, the PSTATE.IL bit is set for various kinds of illegal
+exception return or mode-change attempts.  We already set PSTATE.IL
+(or its AArch32 equivalent CPSR.IL) in all those cases, but we
+weren't implementing the part of the behaviour where attempting to
+execute an instruction with PSTATE.IL takes an immediate exception
+with an appropriate syndrome value.
 
-We choose to raise an exception because we have the infrastructure,
-it makes the generated code for gen_bx simpler, and it has the
-possibility of catching more guest bugs.
+Add a new TB flags bit tracking PSTATE.IL/CPSR.IL, and generate code
+to take an exception instead of whatever the instruction would have
+been.
 
+PSTATE.IL and CPSR.IL change only on exception entry, attempted
+exception exit, and various AArch32 mode changes via cpsr_write().
+These places generally already rebuild the hflags, so the only place
+we need an extra rebuild_hflags call is in the illegal-return
+codepath of the AArch64 exception_return helper.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20210817162118.24319-1-peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+[rth: Added missing returns; set IL bit in syndrome]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.h        |  1 +
+ target/arm/cpu.h           |  1 +
  target/arm/syndrome.h      |  5 +++++
- target/arm/tlb_helper.c    | 24 +++++++++++++++++++++++
- target/arm/translate-a64.c | 21 ++++++++++++++++++--
- target/arm/translate.c     | 39 +++++++++++++++++++++++++++++++-------
- 5 files changed, 81 insertions(+), 9 deletions(-)
+ target/arm/translate.h     |  2 ++
+ target/arm/helper-a64.c    |  1 +
+ target/arm/helper.c        |  8 ++++++++
+ target/arm/translate-a64.c | 11 +++++++++++
+ target/arm/translate.c     | 21 +++++++++++++++++++++
+ 7 files changed, 49 insertions(+)
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 248569b0cd..d629ee6859 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -47,6 +47,7 @@ DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
- DEF_HELPER_2(exception_internal, void, env, i32)
- DEF_HELPER_4(exception_with_syndrome, void, env, i32, i32, i32)
- DEF_HELPER_2(exception_bkpt_insn, void, env, i32)
-+DEF_HELPER_2(exception_pc_alignment, noreturn, env, tl)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_1(wfe, void, env)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9f0a5f84d5..be557bf5d8 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3441,6 +3441,7 @@ FIELD(TBFLAG_ANY, FPEXC_EL, 8, 2)
+ FIELD(TBFLAG_ANY, DEBUG_TARGET_EL, 10, 2)
+ /* Memory operations require alignment: SCTLR_ELx.A or CCR.UNALIGN_TRP */
+ FIELD(TBFLAG_ANY, ALIGN_MEM, 12, 1)
++FIELD(TBFLAG_ANY, PSTATE__IL, 13, 1)
+ 
+ /*
+  * Bit usage when in AArch32 state, both A- and M-profile.
 diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 54d135897b..e9d97fac6e 100644
+index 39a31260f2..54d135897b 100644
 --- a/target/arm/syndrome.h
 +++ b/target/arm/syndrome.h
-@@ -275,4 +275,9 @@ static inline uint32_t syn_illegalstate(void)
-     return (EC_ILLEGALSTATE << ARM_EL_EC_SHIFT) | ARM_EL_IL;
+@@ -270,4 +270,9 @@ static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
+            (cv << 24) | (cond << 20) | ti;
  }
  
-+static inline uint32_t syn_pcalignment(void)
++static inline uint32_t syn_illegalstate(void)
 +{
-+    return (EC_PCALIGNMENT << ARM_EL_EC_SHIFT) | ARM_EL_IL;
++    return (EC_ILLEGALSTATE << ARM_EL_EC_SHIFT) | ARM_EL_IL;
 +}
 +
  #endif /* TARGET_ARM_SYNDROME_H */
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index 3107f9823e..25c422976e 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -9,6 +9,7 @@
- #include "cpu.h"
- #include "internals.h"
- #include "exec/exec-all.h"
-+#include "exec/helper-proto.h"
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index 241596c5bd..af1b6fa03c 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -98,6 +98,8 @@ typedef struct DisasContext {
+     bool hstr_active;
+     /* True if memory operations require alignment */
+     bool align_mem;
++    /* True if PSTATE.IL is set */
++    bool pstate_il;
+     /*
+      * >= 0, a copy of PSTATE.BTYPE, which will be 0 without v8.5-BTI.
+      *  < 0, set by the current instruction.
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 26f79f9141..19445b3c94 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -1071,6 +1071,7 @@ illegal_return:
+     if (!arm_singlestep_active(env)) {
+         env->pstate &= ~PSTATE_SS;
+     }
++    helper_rebuild_hflags_a64(env, cur_el);
+     qemu_log_mask(LOG_GUEST_ERROR, "Illegal exception return at EL%d: "
+                   "resuming execution at 0x%" PRIx64 "\n", cur_el, env->pc);
+ }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 155d8bf239..201ecf8c67 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -13408,6 +13408,10 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+         DP_TBFLAG_A32(flags, HSTR_ACTIVE, 1);
+     }
  
- static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-                                             unsigned int target_el,
-@@ -123,6 +124,29 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-     arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
++    if (env->uncached_cpsr & CPSR_IL) {
++        DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
++    }
++
+     return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
  }
  
-+void helper_exception_pc_alignment(CPUARMState *env, target_ulong pc)
-+{
-+    int target_el = exception_target_el(env);
-+
-+    if (target_el == 2 || arm_el_is_aa64(env, target_el)) {
-+        /*
-+         * To aarch64 and aarch32 el2, pc alignment has a
-+         * special exception class.
-+         */
-+        env->exception.vaddress = pc;
-+        env->exception.fsr = 0;
-+        raise_exception(env, EXCP_PREFETCH_ABORT, syn_pcalignment(), target_el);
-+    } else {
-+        /*
-+         * To aarch32 el1, pc alignment is like data alignment
-+         * except with a prefetch abort.
-+         */
-+        ARMMMUFaultInfo fi = { .type = ARMFault_Alignment };
-+        arm_deliver_fault(env_archcpu(env), pc, MMU_INST_FETCH,
-+                          cpu_mmu_index(env, true), &fi);
-+    }
-+}
-+
- #if !defined(CONFIG_USER_ONLY)
+@@ -13502,6 +13506,10 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+         }
+     }
  
- /*
++    if (env->pstate & PSTATE_IL) {
++        DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
++    }
++
+     if (cpu_isar_feature(aa64_mte, env_archcpu(env))) {
+         /*
+          * Set MTE_ACTIVE if any access may be Checked, and leave clear
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 333bc836b2..39c2fb8c7e 100644
+index 422e2ac0c9..230cc8d83b 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -14752,8 +14752,10 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
- {
-     DisasContext *s = container_of(dcbase, DisasContext, base);
-     CPUARMState *env = cpu->env_ptr;
-+    uint64_t pc = s->base.pc_next;
-     uint32_t insn;
- 
-+    /* Singlestep exceptions have the highest priority. */
-     if (s->ss_active && !s->pstate_ss) {
-         /* Singlestep state is Active-pending.
-          * If we're in this state at the start of a TB then either
-@@ -14768,13 +14770,28 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         assert(s->base.num_insns == 1);
-         gen_swstep_exception(s, 0, 0);
-         s->base.is_jmp = DISAS_NORETURN;
-+        s->base.pc_next = pc + 4;
-         return;
-     }
- 
--    s->pc_curr = s->base.pc_next;
-+    if (pc & 3) {
-+        /*
-+         * PC alignment fault.  This has priority over the instruction abort
-+         * that we would receive from a translation fault via arm_ldl_code.
-+         * This should only be possible after an indirect branch, at the
-+         * start of the TB.
-+         */
-+        assert(s->base.num_insns == 1);
-+        gen_helper_exception_pc_alignment(cpu_env, tcg_constant_tl(pc));
-+        s->base.is_jmp = DISAS_NORETURN;
-+        s->base.pc_next = QEMU_ALIGN_UP(pc, 4);
-+        return;
-+    }
-+
-+    s->pc_curr = pc;
-     insn = arm_ldl_code(env, s->base.pc_next, s->sctlr_b);
-     s->insn = insn;
--    s->base.pc_next += 4;
-+    s->base.pc_next = pc + 4;
- 
+@@ -14662,6 +14662,16 @@ static void disas_a64_insn(CPUARMState *env, DisasContext *s)
      s->fp_access_checked = false;
      s->sve_access_checked = false;
+ 
++    if (s->pstate_il) {
++        /*
++         * Illegal execution state. This has priority over BTI
++         * exceptions, but comes after instruction abort exceptions.
++         */
++        gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
++                           syn_illegalstate(), default_exception_el(s));
++        return;
++    }
++
+     if (dc_isar_feature(aa64_bti, s)) {
+         if (s->base.num_insns == 1) {
+             /*
+@@ -14780,6 +14790,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+ #endif
+     dc->fp_excp_el = EX_TBFLAG_ANY(tb_flags, FPEXC_EL);
+     dc->align_mem = EX_TBFLAG_ANY(tb_flags, ALIGN_MEM);
++    dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
+     dc->sve_excp_el = EX_TBFLAG_A64(tb_flags, SVEEXC_EL);
+     dc->sve_len = (EX_TBFLAG_A64(tb_flags, ZCR_LEN) + 1) * 16;
+     dc->pauth_active = EX_TBFLAG_A64(tb_flags, PAUTH_ACTIVE);
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 5e0fc8a0a0..dfeaa2321d 100644
+index 80c282669f..5e0fc8a0a0 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -9452,7 +9452,7 @@ static void arm_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
-     dc->insn_start = tcg_last_op();
- }
- 
--static bool arm_pre_translate_insn(DisasContext *dc)
-+static bool arm_check_kernelpage(DisasContext *dc)
- {
- #ifdef CONFIG_USER_ONLY
-     /* Intercept jump to the magic kernel page.  */
-@@ -9464,7 +9464,11 @@ static bool arm_pre_translate_insn(DisasContext *dc)
-         return true;
-     }
- #endif
-+    return false;
-+}
- 
-+static bool arm_check_ss_active(DisasContext *dc)
-+{
-     if (dc->ss_active && !dc->pstate_ss) {
-         /* Singlestep state is Active-pending.
-          * If we're in this state at the start of a TB then either
-@@ -9498,17 +9502,38 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
- {
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-     CPUARMState *env = cpu->env_ptr;
-+    uint32_t pc = dc->base.pc_next;
-     unsigned int insn;
- 
--    if (arm_pre_translate_insn(dc)) {
--        dc->base.pc_next += 4;
-+    /* Singlestep exceptions have the highest priority. */
-+    if (arm_check_ss_active(dc)) {
-+        dc->base.pc_next = pc + 4;
+@@ -9045,6 +9045,16 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
          return;
      }
  
--    dc->pc_curr = dc->base.pc_next;
--    insn = arm_ldl_code(env, dc->base.pc_next, dc->sctlr_b);
-+    if (pc & 3) {
++    if (s->pstate_il) {
 +        /*
-+         * PC alignment fault.  This has priority over the instruction abort
-+         * that we would receive from a translation fault via arm_ldl_code
-+         * (or the execution of the kernelpage entrypoint). This should only
-+         * be possible after an indirect branch, at the start of the TB.
++         * Illegal execution state. This has priority over BTI
++         * exceptions, but comes after instruction abort exceptions.
 +         */
-+        assert(dc->base.num_insns == 1);
-+        gen_helper_exception_pc_alignment(cpu_env, tcg_constant_tl(pc));
-+        dc->base.is_jmp = DISAS_NORETURN;
-+        dc->base.pc_next = QEMU_ALIGN_UP(pc, 4);
++        gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
++                           syn_illegalstate(), default_exception_el(s));
 +        return;
 +    }
 +
-+    if (arm_check_kernelpage(dc)) {
-+        dc->base.pc_next = pc + 4;
-+        return;
-+    }
-+
-+    dc->pc_curr = pc;
-+    insn = arm_ldl_code(env, pc, dc->sctlr_b);
-     dc->insn = insn;
--    dc->base.pc_next += 4;
-+    dc->base.pc_next = pc + 4;
-     disas_arm_insn(dc, insn);
+     if (cond == 0xf) {
+         /* In ARMv3 and v4 the NV condition is UNPREDICTABLE; we
+          * choose to UNDEF. In ARMv5 and above the space is used
+@@ -9313,6 +9323,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+ #endif
+     dc->fp_excp_el = EX_TBFLAG_ANY(tb_flags, FPEXC_EL);
+     dc->align_mem = EX_TBFLAG_ANY(tb_flags, ALIGN_MEM);
++    dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
  
-     arm_post_translate_insn(dc);
-@@ -9570,7 +9595,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     uint32_t insn;
-     bool is_16bit;
- 
--    if (arm_pre_translate_insn(dc)) {
-+    if (arm_check_ss_active(dc) || arm_check_kernelpage(dc)) {
-         dc->base.pc_next += 2;
-         return;
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         dc->vfp_enabled = 1;
+@@ -9576,6 +9587,16 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
      }
+     dc->insn = insn;
+ 
++    if (dc->pstate_il) {
++        /*
++         * Illegal execution state. This has priority over BTI
++         * exceptions, but comes after instruction abort exceptions.
++         */
++        gen_exception_insn(dc, dc->pc_curr, EXCP_UDEF,
++                           syn_illegalstate(), default_exception_el(dc));
++        return;
++    }
++
+     if (dc->eci) {
+         /*
+          * For M-profile continuable instructions, ECI/ICI handling
 -- 
 2.25.1
 

@@ -1,110 +1,99 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp575833lfg;
-        Sat, 21 Aug 2021 13:46:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxy01R69Zgucd0LNLhWifh3efIGWG7pFR9qPfpAcqYG+A/tf+gH8K8+s5kFJwM/BDBDFnVY
-X-Received: by 2002:a25:b7c8:: with SMTP id u8mr33237157ybj.268.1629578814845;
-        Sat, 21 Aug 2021 13:46:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629578814; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1169181lfg;
+        Sun, 22 Aug 2021 09:09:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRgApKl5LeYLIp2b0tTETawierucB2qYkrYQru3vvhNJG/DNBzNuoUrhjaimRT7SONgGv1
+X-Received: by 2002:a6b:28b:: with SMTP id 133mr23354059ioc.107.1629648543714;
+        Sun, 22 Aug 2021 09:09:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629648543; cv=none;
         d=google.com; s=arc-20160816;
-        b=bscmpSZ4sEBwAAGfrf3h+OhCV/WZd3sQsNXfF6xXKwVRoKcN5ODuv69s9/DrdX8F/5
-         eNB5c4gctFF3WqC6TVzItiXEV+2Kr1LuY6y2+VYsc+U25UGxc6YuU4XaUOg1/4Ji90rA
-         19c8QUCeTvZzsudSeNveAYSgcHdPCD7JYco9BENP3T/utoSk+FlJvuX2UHmdo1UG0vEk
-         ovZDFh+Mkjdtecq4gRA4dgQOXNU4q9MUTzQ5Fi+GlWU23+kf5HSK8Klv/h9AFTn/RD1D
-         52HkBobWMhVh8Iy9GaK06lvPP3h5FFLZZ3GcpgMDAPlKjjuV1pAYovGnStxxgYjeT9+l
-         C3yw==
+        b=YDwKoq9W4USord45p91PqALF0beGYqrtyHybh7U/uBcHrvQuRfO8ya6abkmS+9Sw+3
+         kQm4zNmAb0DUCl2Oswlj19GEyikw6muSYHx4dE4APbxuLD6XgaeJ7ofMXN7Wk4vba3ix
+         W69Aoh6K+4V8jiyEaZR5W3Hpvn5Wdar+75LcwBeu/Z1FXET1NjIuO57xSrkJAFmjDzLE
+         t9w78lgmXcUyRwIo1Q9XB4SthRSQ5sPonPtyfJo1oUt6QSOBF4PQP6ZMormK8dCAki5p
+         lbcGNAc1q9Egx21RvuX547PoYHBt/FGQK41A7CU5NXJQ5SEwDkw2rsq00oPWkaQ39fbn
+         4qAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=h4uGQjs+Ka8euYwUU8a3RaHDpEGBMNcGwiViOnMWV1Q=;
-        b=FF4xOFK2QkJXi2YY9RHNyQ+FVpNKapL0jXZ2LFFVJo9aqzCIxTQS+OFsNbWdgVAn8D
-         zsZU2ReqEMWs82HnjCVFKdBIXhHi0Y5ChrlTgDXDiOUhyqNyWVHcO+1yLWWJP5hnlPzg
-         qcnsbMlI2VUKmEFPiH++YV5L/UFW7jsyi0JccLDlyQnXTHcafowlOuVZITIXw3a/pIdm
-         icHTRMRlKBG8svDYhuEU6JZUSYsrgIdjq25oPHv4/uVb7bmtRXeTO1vF+bFJogOhI/SA
-         cp0XhA4jLt8bSAYSaK8AVi8sT7LPJNJvg4dzzKadYUwHs5xzED+Dtv0u+G+2DWhIAO/Z
-         Lw6A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=EQ3UnmjaEwnBJi0SF7sp2sDlo5x4+uu/4H3+9r5hYzI=;
+        b=UrCO0t1EBu+UzDJQfI3tNSjuRON+8kbm2UyiVj+xG1ItYJhcC3aJcTl9XnM84PVsB2
+         MeOiegFFEWe2ojOfH+Vt5h7THlwQQvYKU8lMTBCWq7S/VbYD0ESBBSp+Pi81BLsbW0zm
+         ab5BuFMfv3hDxbHcyZzjEsWgui1Fvmok2aH2vyNYJnOU6B+MbFszt/6jCBDOjCmgKlUB
+         e0LWNdf56Rjr57ylamu+wfL2304mWjOso8EOmwBP2d50UTKtMD2q2851vpsUbrAaR9fT
+         sEs32loDk+EL2G/LClm6TiJ3FuJEsq53E4n+QYrdcgoAuaHeG4apOCt3zmPH+KPt92PM
+         /cvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IAHO4n/N";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lm8of4Zf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 205si1830178ybe.310.2021.08.21.13.46.54
+        by mx.google.com with ESMTPS id c18si7758114ioz.59.2021.08.22.09.09.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Aug 2021 13:46:54 -0700 (PDT)
+        Sun, 22 Aug 2021 09:09:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IAHO4n/N";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48288 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lm8of4Zf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34128 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mHXtG-0002Ud-92
-	for alex.bennee@linaro.org; Sat, 21 Aug 2021 16:46:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54306)
+	id 1mHq1v-0002Uj-1f
+	for alex.bennee@linaro.org; Sun, 22 Aug 2021 12:09:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mHXsz-0002UK-M4; Sat, 21 Aug 2021 16:46:41 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:46920)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mHq1l-0002UN-OU; Sun, 22 Aug 2021 12:08:53 -0400
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32]:34362)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mHXsw-0001t6-Jq; Sat, 21 Aug 2021 16:46:37 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- l24-20020a05600c089800b002e71a10130eso4895641wmp.5; 
- Sat, 21 Aug 2021 13:46:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mHq1k-0007bT-7z; Sun, 22 Aug 2021 12:08:53 -0400
+Received: by mail-yb1-xb32.google.com with SMTP id a93so29231239ybi.1;
+ Sun, 22 Aug 2021 09:08:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=h4uGQjs+Ka8euYwUU8a3RaHDpEGBMNcGwiViOnMWV1Q=;
- b=IAHO4n/Nxh8DpmPFDr2/+G84u5G2fjNMDdUlAZYnjM5RZOaztrXC1fDMTO9czrkjHE
- NTtWIp9+EL3Q3jC10yjkiyUFENVhfw4u/LmVhcS4Zsr/mtUcm9VkBBp7DRSwOXsgjGIx
- rMfl5U/d1DwXqo6VDcDld6FvLVqUupEJvM4lvGWxPtM/tPvk5YBgTaMgzXBKy99VUnlJ
- N0HtD2v80bnwR5eE651GSkIlVOWtstXkjwT5vi/CJ2HK4dTC0nybqw9Xue+Q+xiQ5+6y
- g/rNiu6g3HHiURKz2+8tuo3+T1hh0DtIKTdqQn6J7Dv7FTQwuv+zs8QNADymWd3TNKrQ
- LBng==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=EQ3UnmjaEwnBJi0SF7sp2sDlo5x4+uu/4H3+9r5hYzI=;
+ b=Lm8of4ZfEatfNW6HVW9aJjFrR3uBnXp9Xa4lyrmVW29VSqnpRNbdDiukeYUvcSIn96
+ xjeeYYJzXtLuPbc8DPWjE0MIsdvXln1PPCcHWE7ErA6APUWoIj+gRUTz9ln5jsd4MImb
+ VkFW7DsHkYwvBvJksiitcXGv0sYVTzicYzeeCKNxsE9rIcvNYntAyFZ+DD9J5eZgdPpF
+ yBtwUJdbj62gyzs7FPQLDmOqOIxGU4K0QB6lXNc+qqWzNseR+1AAe1zcEY+n1qZpryCg
+ OH8mY3PKcXYeIs+krDmp0fanK5lb1cM7CcY5XNeOzIv9Dow2G9rVtuRnl0q2W6c5hFj8
+ 3BOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=h4uGQjs+Ka8euYwUU8a3RaHDpEGBMNcGwiViOnMWV1Q=;
- b=omBFK6UoImyRMl5fzBLImDEiW8bA+ZQv+i5S5hR8FepuiNNvu0CtKAtgXyRc7uVnPs
- wfmmjWzqYAIweDv080KXst5AGagLHReplDmH54KY0l/EjWpzeZLVUik6gJMpt/TUub/y
- rFKjoJC92R0XDto/zDNd0nBrHcY6lCmejdWpNKVSiUiKtO+6q9OAvgNHMVgo/Uz/+2s6
- 9dHMagQ+3FDFAd22K1wJX8bHtXYzNEKA05vD32knjikRgKCyoqDg6LEFIQC2XDBadGl/
- 5xooOdpKZHU5kZtK8KMsr5VFNeXtQFfaGuLYFVQPGYY1S1b1h4gTwckU9mS+hI1zlCpb
- bl8Q==
-X-Gm-Message-State: AOAM530j4Dk5rzpOCeVC33bkOp4uGsdsDqhXIFswShrbEdPhLog1tuWS
- KX+y7yumic61ldDEm0k3+/6ynCLJBHg=
-X-Received: by 2002:a7b:ce0f:: with SMTP id m15mr53725wmc.62.1629578791171;
- Sat, 21 Aug 2021 13:46:31 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id g76sm2200847wme.16.2021.08.21.13.46.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 21 Aug 2021 13:46:30 -0700 (PDT)
-Subject: Re: [PATCH v2 6/8] target/arm: Assert thumb pc is aligned
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20210821195958.41312-1-richard.henderson@linaro.org>
- <20210821195958.41312-7-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <feb3dea5-99d4-05c6-ca38-5f7dbc31d08e@amsat.org>
-Date: Sat, 21 Aug 2021 22:46:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=EQ3UnmjaEwnBJi0SF7sp2sDlo5x4+uu/4H3+9r5hYzI=;
+ b=Kq/JweI8crO1ZA/nVymR+qU92KWy9iCXgzYxA4ZnGoksD3xOBvY2uyKixN2JM2BGAm
+ DXjfPQZSNo5nEGkLrnzcjcfEGshc7FYFWlR7hGN3M2Jfl+g5eYcWHDAu7gDjrYgNDVnY
+ RJiDjBxdqlo4mWIzOfy37Nw5j2XsSVofYEBG6S53kBVp6h3THR/T+wzdRdRSjPd+iTQq
+ hEwAumuet+Z/fsSN72Bi97n2zHmMfziQZFZP+zA3KVb6sTcAdrK0tK8Fk15I+W4T/F81
+ hDS6vi1iSIFiGAZqO66JbXu1KRugnOLQEj0KMHiwtqPfJnucjBybfX4mbISsgRgoIH2c
+ QMkg==
+X-Gm-Message-State: AOAM532p5aDsdUdXGzU0R8NXwUQqF9hIfsV7+CVnk4gGSkfONxdKKatj
+ W/S8mxzkU5JvhHsfT8i+mm392dweoPWtq0RHCgw=
+X-Received: by 2002:a5b:391:: with SMTP id k17mr39470676ybp.152.1629648530341; 
+ Sun, 22 Aug 2021 09:08:50 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210821195958.41312-7-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.49,
+References: <20210821154505.18033-1-bmeng.cn@gmail.com>
+ <CAFEAcA_xQP0YqgfbJOKtt-kCeJDyQaLjqyjgRcMxfUZuS0g4Gg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_xQP0YqgfbJOKtt-kCeJDyQaLjqyjgRcMxfUZuS0g4Gg@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Mon, 23 Aug 2021 00:08:39 +0800
+Message-ID: <CAEUhbmWGjcTJn51qkaMYX_4Lpq=1ocPHsc-ApBzt_FEKx7VsKQ@mail.gmail.com>
+Subject: Re: [For 6.1 PATCH] hw/arm: xilinx_zynq: Disconnect the UART clocks
+ temporarily
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -119,41 +108,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xg8J2fLNcBC3
+X-TUID: cdhDLNNTNmzB
 
-On 8/21/21 9:59 PM, Richard Henderson wrote:
-> Misaligned thumb PC is architecturally impossible.
-> Assert is better than proceeding, in case we've missed
-> something somewhere.
-> 
-> Expand a comment about aligning the pc in gdbstub.
-> Fail an incoming migrate if a thumb pc is misaligned.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/gdbstub.c   | 9 +++++++--
->  target/arm/machine.c   | 9 +++++++++
->  target/arm/translate.c | 3 +++
->  3 files changed, 19 insertions(+), 2 deletions(-)
+On Sun, Aug 22, 2021 at 2:14 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Sat, 21 Aug 2021 at 16:45, Bin Meng <bmeng.cn@gmail.com> wrote:
+> >
+> > As of today, when booting upstream U-Boot for Xilinx Zynq, the UART
+> > does not receive anything. Initial debugging shows that the UART clock
+> > frequency is 0 somehow which prevents the UART from receiving anything.
+> > Note the U-Boot can still output data to the UART tx fifo, which should
+> > not happen, as the design seems to prevent the data transmission when
+> > clock is not enabled but somehow it only applies to the Rx side.
+> >
+> > For anyone who is interested to give a try, here is the U-Boot defconfig:
+> > $ make xilinx_zynq_virt_defconfig
+> >
+> > and QEMU commands to test U-Boot:
+> > $ qemu-system-arm -M xilinx-zynq-a9 -m 1G -display none -serial null -serial stdio \
+> >     -device loader,file=u-boot-dtb.bin,addr=0x4000000,cpu-num=0
+> >
+> > Note U-Boot used to boot properly in QEMU 4.2.0 which is the QEMU
+> > version used in current U-Boot's CI testing. The UART clock changes
+> > were introduced by the following 3 commits:
+> >
+> > 38867cb7ec90 ("hw/misc/zynq_slcr: add clock generation for uarts")
+> > b636db306e06 ("hw/char/cadence_uart: add clock support")
+> > 5b49a34c6800 ("hw/arm/xilinx_zynq: connect uart clocks to slcr")
+> >
+> > Looks like we don't have enough time to figure out a proper fix before
+> > 6.1.0 release date, let's disconnect the UART clocks temporarily.
+>
+> This is too late for 6.1 regardless, I'm afraid.
 
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index dfeaa2321d..a93ea3c47c 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -9595,6 +9595,9 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
->      uint32_t insn;
->      bool is_16bit;
->  
-> +    /* Misaligned thumb PC is architecturally impossible. */
-> +    assert((dc->base.pc_next & 1) == 0);
+That's too bad :(
 
-What about using tcg_debug_assert() instead?
+I figured out a proper fix, and will send it out soon.
 
->      if (arm_check_ss_active(dc) || arm_check_kernelpage(dc)) {
->          dc->base.pc_next += 2;
->          return;
-> 
-
+Regards,
+Bin

@@ -1,106 +1,105 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1464725lfg;
-        Sun, 22 Aug 2021 19:10:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwDIjZAj9UUX7QMy13bzC0eU14eRBV5QkQWzGvkbRqLyGT24wfJWkzE7AyiTUQV4H+XmX2F
-X-Received: by 2002:a92:d741:: with SMTP id e1mr21212244ilq.18.1629684640740;
-        Sun, 22 Aug 2021 19:10:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629684640; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1465733lfg;
+        Sun, 22 Aug 2021 19:12:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzr4ruo9qmhVG7uDoweCYNv1v7/jACf5oCZUPSW0kdBde65eV8S7jttGyI2J3qndFLdlXUh
+X-Received: by 2002:a05:6638:ccf:: with SMTP id e15mr27670613jak.143.1629684757980;
+        Sun, 22 Aug 2021 19:12:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629684757; cv=none;
         d=google.com; s=arc-20160816;
-        b=mtpJ34ZpC9vIzSr6WR3xDtn6hlDM3o7U5UvJCOWbe6gzfvrvoCQh3rM7LfqdcglGyl
-         H1OWdLXttlDkDtMpul9Ar8R6lFsU8kDtkD43cDKA0L+sMj+XG7of6aBI4ruVwHJNBaCj
-         /jRgdQln09ELIr+3yKGZnlnlz9YmRydf/d8hsX6xI4PpQfL/WpErJxtK88eBsSIbOu9M
-         oBhQ+LNEhucwSwi5xLFZFpbP20oJLwRUuNfE6k1QpETbO5AxI5OaqNUykVgdWlMmbKSi
-         RLVHhxuqZ3SX0sWrnakpe+S//qqAWQ75iEFLopX2/aKDVfV6sGTaG6rhPj0xiY+nTAEP
-         aKdg==
+        b=BjveAogkjO/eifnwqww9qIS7Bo6yuFdzhAesPxff/i7U/TrBDZrF5BjrI1ocGCTCCE
+         ng7A7GocUKPv1ebjOXGLebeH7K2blOUURLW/vWCOGuYzcPbDOhrKyu0jrTDDRoZsojqq
+         IjR/OZo8acbAmZTHTwKy0B19a9OWWExxCJh7xjGkYWbdgAKqkKk1boXFd3Tq5xcOnzXc
+         G6XCGtrbeJibV6bJsHS0jkUOSGbt7l9r6zV/G6VUymTRUgsZAvTT/KpS+0OOZdvSphXH
+         4OyfPwm3LX82jQYAvIM51M/CluZf3dkZU/aVIhubcp+B9kfj23L+ljJxiOqfVTT7KXGM
+         vFzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Hy7Ff52qHjcDuSbVdO/SFd5G6FprlXnCV76MTgKBecE=;
-        b=TxyS45VNZ16na6ZAvnBBD5hsZgHbLz3pfqHpqdR8uErhc3gwUx17+NSSgBfCum+zT8
-         v5VEgH/rRfLfRuMCflw6K5n74xsNEzTWpi/dVqpdVJAWUwcQkAImzB7HUcuSY1p53X+C
-         y/EWIl0YrPMWzPklfoIBuENVKCuyZco8bA+Z0emmiOur5unwfu2NE++fZ8wvICR1dxUK
-         ZQntdnk3oZ3k6KtLcuPxoodNJf8dqcQepcDuhP9Hll7IGnqT4ZY24a+NlGRMpHh/CT/+
-         RA5nzJJj1UZAltrefkKDZrSICN7uQnoh8Asrp9UpgO9y5SeKL2nzwW2uQ5Ysy9zbznMV
-         M2iw==
+        bh=oKc66ttHB9slCrTYhnV9lkrcgvTcl8unFAGn2ufnt3E=;
+        b=i5fJ/osIIE/t2r3z9V26F+3IWwSvwen7JGt1dP816ncAG37AqVU8QzND3wYZmALKx1
+         fwz5Ea2s98MH63Mvn9jbrAcT7vki2SM83AEK4itc5jeqNwm+oXa00///ianVKB02t+Hd
+         0neSrZNgIOIa3wFP60vswBNerVPnw+RJIGOEnFXYMJ625uxy/YU6I1ORsthN+LztnUOp
+         yJjG39X3Q1vIH6qOpFZsjrIAeG5cbmcvQa8rsmklRmSubp7iK7jgEvsYL8Jx5MmSuhen
+         6wJZxXkJSwOv6eWodKJf4RfSFS5LgPtJf3QJOxDYpZZThWX2wAVlwcnYqxp1himbwIme
+         Uapw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OB0QI6VU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nBUL9HtH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si17398671jat.85.2021.08.22.19.10.40
+        by mx.google.com with ESMTPS id i17si12874533ila.149.2021.08.22.19.12.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Aug 2021 19:10:40 -0700 (PDT)
+        Sun, 22 Aug 2021 19:12:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OB0QI6VU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nBUL9HtH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33216 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mHzQ8-0006uw-3L
-	for alex.bennee@linaro.org; Sun, 22 Aug 2021 22:10:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57338)
+	id 1mHzRz-0001Hi-Tr
+	for alex.bennee@linaro.org; Sun, 22 Aug 2021 22:12:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mHzO4-0004UK-Ax; Sun, 22 Aug 2021 22:08:32 -0400
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:45954)
+ id 1mHzO1-0004L1-SQ; Sun, 22 Aug 2021 22:08:29 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:33296)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mHzO2-0005td-JU; Sun, 22 Aug 2021 22:08:32 -0400
-Received: by mail-pj1-x102d.google.com with SMTP id
- f11-20020a17090aa78b00b0018e98a7cddaso653869pjq.4; 
- Sun, 22 Aug 2021 19:08:29 -0700 (PDT)
+ id 1mHzO0-0005sI-EG; Sun, 22 Aug 2021 22:08:29 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id c17so15238514pgc.0;
+ Sun, 22 Aug 2021 19:08:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Hy7Ff52qHjcDuSbVdO/SFd5G6FprlXnCV76MTgKBecE=;
- b=OB0QI6VUiB++ENtQOwLSN6XuD8Uxi12SKUaT8ZmxEaL3byb6Jd1CBN1WCVvggYNFNh
- wczFFVwhBy/1RvLe1ixKvQjv/nW0uT1gntYdUCR/ZJZ9FxLppb9pTo0IB1k1tfxU7YsM
- scsI9/s370YWIlPqjEr2TAR1qoPS5pKeRikiHT7qf+xvtWSKyLL32ac8yNx3H9RPqNAP
- gp3qsU/RxRUUcHyGSI3WOlfSZJU+y2+X0Gz3pEPcyrj5AbMp8iB9rDdZdfa7nhddWtbA
- Gcw0MifBNH6ABuQHL1yMTYjAe1D6TQJ+Z0dQo1PvupMOtmDUGOzpVHxfaexbofIKRgo3
- 1H4Q==
+ bh=oKc66ttHB9slCrTYhnV9lkrcgvTcl8unFAGn2ufnt3E=;
+ b=nBUL9HtH1vd2z4jqXFxXyri7pfmzk28CGhANrUhhLhkCW1QepWH4DxEo0dZ2i8MCQK
+ dlpEjWWN2q8u57/GIe8tho3hJDKWBnvgr+sBp4RejhmUPWJSda4A35ciIBFb+LBQmgjM
+ L4R5l4p5GdYunn4CzU+wHS5ZzaU1mu2QYSXpxKODrmJVL+tejsR/SIPXa7NctZpZ3LEh
+ ln0QFQP5+3zN9ZKWX3xdjO8bsk6s8jbzrkk+ZnWxzm0kOvvRLLk1GM6rttkegOm6xS5y
+ 0pAD4aXfg3Nh2QFfFKIe63bgwoTj0q774m90HKwf1qM3EFpN9VJv8kZbYi8Bm0BAdYJx
+ FRbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Hy7Ff52qHjcDuSbVdO/SFd5G6FprlXnCV76MTgKBecE=;
- b=iY5I9aTGlrqW94pGl7U6RbP5L8Tei5djZdtO6ALGyc82GLfGl6F47izrqBLXt2EtWR
- B3fc1zZKiGA0sLl+Xz6LffRI5htWJx/5PYoIuPQVDdM2w2ROR+94Kn/J95N8QiPNaCk4
- kV4bsDjLV+4z6ZKnPrlKJWPrdKgVDp8+5lmzLdIlbcYl3gEtFuFhCVT/hzTKT3+DiXaN
- 3BvrIHIo66/i3PSxEl9PDwSJG6xqIju92wdnKmyILZwSWZq09kxRuPscZGtatmSR98Wq
- aTVQO/1jUUF/cCQFy1WiU4gfWIzJc2pJQOz98v3rLWrf8Tf+XMTNpfjL2JZjRa6qK4rZ
- EQug==
-X-Gm-Message-State: AOAM5304BMPfQLtRhKT42XL4r6PxN33fUYnOEGQpG0wgvJOJayughYwR
- niSs4lnfsUPRHU531Zl+s0I=
-X-Received: by 2002:a17:90a:d686:: with SMTP id
- x6mr17469269pju.227.1629684509018; 
- Sun, 22 Aug 2021 19:08:29 -0700 (PDT)
+ bh=oKc66ttHB9slCrTYhnV9lkrcgvTcl8unFAGn2ufnt3E=;
+ b=MlpkZFmUYZ1QULWYwSsa3CKBJRn+e7P4TY0X/uCNIz1iFa1TMufcnWUJ480ak4YerR
+ 4gacF+IDVrqGjcZqXEs7ph7gTwchImu0Pne8Wbi0+jxI4riJU9raZk8H1v/zQbd2npKG
+ nf56YqfFPnEzgUPIwxbcXPNFq/RdrzWI0GH02mupF0zZMCEJiZTxpxRWGGh14mbvyh2g
+ p6o+5BA2JyNkzvSty+8bHb8n1galutz1R1QEgQ8pSyA+2UEEkbrCkp0fJjjlxdhFOD56
+ zpIzcKuxLz8HdupvkPZBUVxbFlceKoFgH4XkFCvV550THuEF42lDnKClh+/f/ZfeE1mi
+ A9yw==
+X-Gm-Message-State: AOAM531Q7OsB6Siea9fC7TN90b65AzdQdLyZz3UdH6Ej78ryw/uXjB7b
+ AzpNc+Ea+lH8wq9PSdWYnZQ=
+X-Received: by 2002:a62:78d0:0:b029:3dd:8fc1:2797 with SMTP id
+ t199-20020a6278d00000b02903dd8fc12797mr31318902pfc.65.1629684506681; 
+ Sun, 22 Aug 2021 19:08:26 -0700 (PDT)
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
  [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id e26sm13804358pfj.46.2021.08.22.19.08.26
+ by smtp.gmail.com with ESMTPSA id e26sm13804358pfj.46.2021.08.22.19.08.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 22 Aug 2021 19:08:28 -0700 (PDT)
+ Sun, 22 Aug 2021 19:08:26 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Damien Hedde <damien.hedde@greensocs.com>,
  "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 3/3] hw/char: cadence_uart: Move clock/reset check to
- uart_can_receive()
-Date: Mon, 23 Aug 2021 10:08:13 +0800
-Message-Id: <20210823020813.25192-4-bmeng.cn@gmail.com>
+Subject: [PATCH 2/3] hw/char: cadence_uart: Disable transmit when input clock
+ is disabled
+Date: Mon, 23 Aug 2021 10:08:12 +0800
+Message-Id: <20210823020813.25192-3-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210823020813.25192-1-bmeng.cn@gmail.com>
 References: <20210823020813.25192-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pg1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,46 +122,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b0CSIMX/tgGd
+X-TUID: b4fD4VKTMTDi
 
-Currently the clock/reset check is done in uart_receive(), but we
-can move the check to uart_can_receive() which is earlier.
+At present when input clock is disabled, any character transmitted
+to tx fifo can still show on the serial line, which is wrong.
 
+Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
 Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-
 ---
 
- hw/char/cadence_uart.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ hw/char/cadence_uart.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index 154be34992..7326445385 100644
+index b4b5e8a3ee..154be34992 100644
 --- a/hw/char/cadence_uart.c
 +++ b/hw/char/cadence_uart.c
-@@ -235,6 +235,12 @@ static void uart_parameters_setup(CadenceUARTState *s)
- static int uart_can_receive(void *opaque)
+@@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_use, GIOCondition cond,
+ static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf,
+                                int size)
  {
-     CadenceUARTState *s = opaque;
-+
 +    /* ignore characters when unclocked or in reset */
 +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-+        return 0;
++        return;
 +    }
 +
-     int ret = MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE);
-     uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
- 
-@@ -358,11 +364,6 @@ static void uart_receive(void *opaque, const uint8_t *buf, int size)
-     CadenceUARTState *s = opaque;
-     uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
- 
--    /* ignore characters when unclocked or in reset */
--    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
--        return;
--    }
--
-     if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
-         uart_write_rx_fifo(opaque, buf, size);
+     if ((s->r[R_CR] & UART_CR_TX_DIS) || !(s->r[R_CR] & UART_CR_TX_EN)) {
+         return;
      }
 -- 
 2.25.1

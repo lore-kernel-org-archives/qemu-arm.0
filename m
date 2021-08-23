@@ -1,66 +1,66 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2082145lfg;
-        Mon, 23 Aug 2021 10:53:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9jkHnhpnm29NyOo2jUnDGo6RbRuDeANKnyXCmhvCReXjFjYa81+HTZUhagNQeLmJ+5/j6
-X-Received: by 2002:a05:6638:3048:: with SMTP id u8mr30266459jak.91.1629741209806;
-        Mon, 23 Aug 2021 10:53:29 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1629741209; cv=pass;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2082723lfg;
+        Mon, 23 Aug 2021 10:54:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzDZhjMB2WQC75opIMdcQe9Egg7OZXu46nokHi/HECGfkaBy7otzOBh0k7/2GoNxrtbA+Cn
+X-Received: by 2002:a05:6602:584:: with SMTP id v4mr27402689iox.85.1629741260439;
+        Mon, 23 Aug 2021 10:54:20 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1629741260; cv=pass;
         d=google.com; s=arc-20160816;
-        b=C4+jKbe1yBxigCCyJ+W3XpN8pLZpXogyyGN+FyA7mUBDnMwN8IgR+WPiQSqmsG50fQ
-         aMuhAF8Ofi/39AdGTpdhesrqK/GP1Ix5kMc/UXXIiXxDqFLKlnYzfI98A9oWBv7NSTsR
-         bKRJ6u1aFEbX0WLb5vccBTmdPDUUSoaiEu165Q0CaJVfeCNRVUL/dLSb3XJT0wxXOLQ0
-         OMYyktNOLAE+DlLBCOj6ffYsI0NclKYhR7OtiiLTArijXzBwYCUyEJOq6vaxVDqNWbPq
-         AwCP6jZxZITsk/Bg9MQ0vXSXvNukx6PfR61R4TqaKvN6Z7V4XaOK6MbthLJJqUpPfw+Y
-         JoCQ==
+        b=pBmR5oMrYasccyN83re56I36FpHctuv/IhL4dXQlOKHB8itWMPsN24wcyKlZPsSkEB
+         UnPAuUUJq4oQubVmujn8+zIKsPIz9vXS+7kOTbRLkmhE3M08mUuWK5QHi9FMUxvPEdsn
+         bNzt0nzSzNsFMzMctpV/xNoq2iYkS3R/gJbIQy4bYLbEJNTnXcC0i8UZ3FPsg4YQ5mL7
+         REI9NgKwY35htQivG1EdT5PajHNseVr+Mr7qpIfwS5Ki1q8Asew30ZPjfrdrg+AsmMY/
+         uWRydnOOPnoO766zXl/JGtcgN5G7yOHRzQTwxiTuW8xmDpMFPEOpHGC53W7030cRnCSc
+         9NFg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VIZzrTHTPg2hvJkv5+tkdgiz9LRtNILel/0waexwFcU=;
-        b=dZ2vsy+dpblOFUbXhhpfL5AnbpglWipccyjrj5eDJs/l2PgPPsuxtS7uUUvA1X49og
-         b4gVtnSyTGJrMcVkKdm7CA8C9HEdTlVNXjo3py4JfCZaG79xpF/ZQrgLC3k7Lf358q0K
-         JOgqBDn1cBBh2nCZvOIh9HV4XwYK6hyvasJwJkf6sGvAGwzc6n5a9N2hhWsNQ6gBMJFA
-         q337C4f7Yr0gBEtQrP7CkKpQezJKqqoIc7+JtPswyHVoO2ZQBiZi0/+R49WHKg0YOZC2
-         4IkEAhsPFMX1jEdiN3+vFgdBrbMJILxp+au+GcAfySQ9poFtzKgT/ZgnO16nClCbIakH
-         dutw==
+        bh=qDFGXeEFmCDawB6FaAp/l6GSmVzVmz3DIA0vVEp1oU0=;
+        b=mRLK0/i/VOeq0B2BsBYQ8AYkaqyVbfXlLkWdOZubyNZLPQvOp8dvCPz2H5TNXsFlId
+         CbqOzuitaG4kX4SlP+6VbU4oyJmP8QahLAcFIUL20VV4/SFUcEGw/0r/yUYbyZbNLq6j
+         irLH2MP12Lc08fHBYq9sNW7kuBPNIIw1/vXlv/yeQQmh/kxQ7dfPRL6gpr2FX/5+0GlW
+         CKL/xQEbpFJHPvig07X0NLo67V4Hdz1Em3b8SdUJ7g/ICkpFOKdqKSjbycg9PNIMAiZw
+         abeEU8UBxRGEGHLwkHd7vKRdHXEiy8l4XPftCcuNOnduKJ/UZ+wS/BvUIp6hXLghyMCt
+         eLaQ==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=s+u5C4hi;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=MJ70YqXG;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si8682485ion.34.2021.08.23.10.53.29
+        by mx.google.com with ESMTPS id u13si16046504jak.109.2021.08.23.10.54.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 10:53:29 -0700 (PDT)
+        Mon, 23 Aug 2021 10:54:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=s+u5C4hi;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=MJ70YqXG;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:41564 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45148 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIE8X-0004xc-2A
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 13:53:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33602)
+	id 1mIE9L-0007JW-NP
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 13:54:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33506)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mIE52-0005PG-Ij; Mon, 23 Aug 2021 13:49:52 -0400
-Received: from mail-bn8nam08on2042.outbound.protection.outlook.com
- ([40.107.100.42]:60448 helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+ id 1mIE4k-0004eM-PB; Mon, 23 Aug 2021 13:49:34 -0400
+Received: from mail-mw2nam08on2044.outbound.protection.outlook.com
+ ([40.107.101.44]:16896 helo=NAM04-MW2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mIE4y-0001KJ-11; Mon, 23 Aug 2021 13:49:52 -0400
+ id 1mIE4h-0001AD-Sd; Mon, 23 Aug 2021 13:49:34 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jasHHy64KircSaSS0tGPtf5FKPR9wCyDp2QhbFvGCGXD0AKKsuNsl0Q5x1/60CxVolzRB/XO49o0OL3ZBI24XOvOj0Z4Xok2wya6BeuQcS7c7/HsRrbDPe1ARPZ1EoZ7hU6QzGW8KKIcgbLP/A9bj8d9ZjSLvpCk7nFaqop7O8XRtX+OzafxCZh7LFvzwhjEm2g9yXAYByMXnBi3v4NHDM0rNk1Ue4PX2roo0uwM1n/Wdh+G3NJXgNeUokTVczL0cmxxTHBZxhCGMJ1K21KMjCERJKekGvFrYwcNNGt/XqU1LIYTnn07DU62fDY7HnhU+NotRYp5z0vC7c4OS7MEPw==
+ b=e9E9Sex6hx+vAZdKNTookYLUkm+pIMfpJEVTYku/4cBiygL9ZLFZxA0OzgkBv2XjA+VAkjMnOu26XIRDr0hVCab9T7o7EPdvoHgJUbW4FW28XOY5pDq798eHYh7ewznH3vsCvAx0MBaI8X3fWG5e1RM0HUG4cLjmG17B03Voy0mdY451uCvbyJCheX0kVGcMeyuncSJROZEA33Qn4SP4D7kZDq79HPygJaIhOWHmVJhm2Qub9FOzkUabVcb+RxV011ZexhxpJdkYMJQe2G2me+k6g3O4hicglEoG7/FUPGmsFQ4Ihghk0MvY8CWuybPsJ7LIMNM4gnNfEuNLYBelMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VIZzrTHTPg2hvJkv5+tkdgiz9LRtNILel/0waexwFcU=;
- b=DfrnKV0OZDtxLuAvxKplKb2LlUbG9IQnHJwuerth5/ALB8sgitUTBwe83TjcQ5hnPjIxYGgDP9hYjJUTpSheys8wLFtpCruVT4vmBjwtyupZ+RZYE0KOWSHn1wm2gq+i0oyaETWj+xnCFMLvU8LVSjkQQ8zixGPTqdyiuVL1FLiZiNEXoKk/XD1GiYTCn8ajugkEKa/jU0YhuuYapDJXANJ69xuyWbJWE0WZZ13mb4N2gVPX1tQLvh/SaII9aD46S6Mv4xp1pDdG2KNWG8FTguuVET0s0u1lxjxmT9WeO3SWMEzfDHSLDziSCccz1kdemQVbDQvvZPunrZcJd7pyLQ==
+ bh=qDFGXeEFmCDawB6FaAp/l6GSmVzVmz3DIA0vVEp1oU0=;
+ b=MUtUwHLC+ASk7M07AQT0TzCx6HeA+pW6DujkrJIP6tAfCFZpx41Vv55+aGEnz2jHIYNzNx8YQKlglED/4w+TtmTKawGYOFugxa71uluOpGFADyl96PKEYd2X/5PE+FwxpuEESnlZN5D5gHf+dZZCmhjE8/tB/Fp5NysATJHAUajpGaKEJHHoQj/WcGovVKlM/3aabsh5NFPjtbQgH8hHLpxu47z+aZI3TK5Y2bA4qTY5EqROrt1DwkR5M2LkmZLDUe97cpjrm2uYrg4bnfjvUosf9ZrxOAU2Kpmzm6af5LcODjDDsSL1mAoeL4Hy58aWXf7YZNwgBNngkyPc6ox6Rg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
  dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
@@ -68,18 +68,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VIZzrTHTPg2hvJkv5+tkdgiz9LRtNILel/0waexwFcU=;
- b=s+u5C4hitPuGTtc2C5yBHGGnTOeYRzUvT3GiMluOc2JTVkwuePvooe/M92vVtdOeaPMR60CX2XaFX525TT28VjXoUN1cgxMqOr6lKSs+ZElSkLlEHvo6q9DjwfHNAunWvjdh8rn6qrT+VgKDq+ku8Pem13UWO1pWLwVaPrEQpRU=
-Received: from DM5PR2001CA0020.namprd20.prod.outlook.com (2603:10b6:4:16::30)
- by BN7PR02MB5043.namprd02.prod.outlook.com (2603:10b6:408:21::28)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.22; Mon, 23 Aug
- 2021 17:49:37 +0000
-Received: from DM3NAM02FT004.eop-nam02.prod.protection.outlook.com
- (2603:10b6:4:16:cafe::8) by DM5PR2001CA0020.outlook.office365.com
- (2603:10b6:4:16::30) with Microsoft SMTP Server (version=TLS1_2,
+ bh=qDFGXeEFmCDawB6FaAp/l6GSmVzVmz3DIA0vVEp1oU0=;
+ b=MJ70YqXGaE3lDBM9kT5huga9JJR2d8jQVVYBgQ6iF+5CQFJlh+j0PX0tWOS73MJ73gWkgrvn8EJ+OARHf2bUYhLR1jojWvhRELGdMhowwEza8rnmjJ8UGNlArzBzhokGrNSKVw76tOiuYuvcseC6CtB+R2Mws8rMWTNxfyQ3+w8=
+Received: from DM5PR22CA0015.namprd22.prod.outlook.com (2603:10b6:3:101::25)
+ by BY5PR02MB6963.namprd02.prod.outlook.com (2603:10b6:a03:236::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19; Mon, 23 Aug
+ 2021 17:49:27 +0000
+Received: from DM3NAM02FT008.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:3:101:cafe::d4) by DM5PR22CA0015.outlook.office365.com
+ (2603:10b6:3:101::25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19 via Frontend
- Transport; Mon, 23 Aug 2021 17:49:37 +0000
+ Transport; Mon, 23 Aug 2021 17:49:26 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
  smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
  header.d=none;nongnu.org; dmarc=pass action=none header.from=xilinx.com;
@@ -87,9 +87,9 @@ Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
  149.199.62.198 as permitted sender) receiver=protection.outlook.com;
  client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
 Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
- DM3NAM02FT004.mail.protection.outlook.com (10.13.5.122) with Microsoft SMTP
+ DM3NAM02FT008.mail.protection.outlook.com (10.13.5.14) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4436.19 via Frontend Transport; Mon, 23 Aug 2021 17:49:37 +0000
+ 15.20.4436.19 via Frontend Transport; Mon, 23 Aug 2021 17:49:26 +0000
 Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
  xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
@@ -100,12 +100,12 @@ Received: from smtp.xilinx.com (172.19.127.95) by
 Received: from [172.19.2.40] (port=46976 helo=xsjtongh40.xilinx.com)
  by smtp.xilinx.com with esmtp (Exim 4.90)
  (envelope-from <tong.ho@xilinx.com>)
- id 1mIE4a-0007u4-OP; Mon, 23 Aug 2021 10:49:24 -0700
+ id 1mIE4a-0007u4-Ji; Mon, 23 Aug 2021 10:49:24 -0700
 From: Tong Ho <tong.ho@xilinx.com>
 To: <qemu-arm@nongnu.org>
-Subject: [PATCH v2 3/9] hw/nvram: Introduce Xilinx ZynqMP eFuse device
-Date: Mon, 23 Aug 2021 10:49:18 -0700
-Message-ID: <20210823174924.201669-4-tong.ho@xilinx.com>
+Subject: [PATCH v2 1/9] hw/nvram: Introduce Xilinx eFuse QOM
+Date: Mon, 23 Aug 2021 10:49:16 -0700
+Message-ID: <20210823174924.201669-2-tong.ho@xilinx.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210823174924.201669-1-tong.ho@xilinx.com>
 References: <20210823174924.201669-1-tong.ho@xilinx.com>
@@ -114,32 +114,32 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 871a283d-3027-4087-83cd-08d9665e6039
-X-MS-TrafficTypeDiagnostic: BN7PR02MB5043:
-X-Microsoft-Antispam-PRVS: <BN7PR02MB5043E0757A471E7556243A44CDC49@BN7PR02MB5043.namprd02.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: dc35039a-18fc-422b-7933-08d9665e59d2
+X-MS-TrafficTypeDiagnostic: BY5PR02MB6963:
+X-Microsoft-Antispam-PRVS: <BY5PR02MB69636C123B29D2EA5F52C0ECCDC49@BY5PR02MB6963.namprd02.prod.outlook.com>
 X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:5516;
+X-MS-Oob-TLC-OOBClassifiers: OLM:4303;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: RH26ZkHUn82DlmRRvE6Fni5eSu+9dsE1YOEowNHUHSgZlajftjDqGhOBXs8XkYkr58zjgt1E8qxW24Rm4fHij0UY5UkFQRG6h7FyEYqUWhvWjy59veTyymvA6+uG4HdzCCOrhWtoPFHqtR+c7gRjQp7PnL6gE6nq4dbgWyzFDcHl87op7+vpZZhIuR2vzFC5glj/Wsm1/cdeNzJZ4bkRX3gvfrp24KavBV/SGcMkYfAnVGSQ9eW8GKK5pW7B6sTkW4yY7K/5kF9qV321wEUKq8VeeAq53MiyTMC+vwsiFMr70WxRcOPAUyAFq6xe0Q97F6+58TDe62VFYSx8q3dFiCxFSbAvUVu96vIP3O+oJn+Z3MQhCVGZsOi1IVqchhv2joEQrb08pSF8zNH/lBxp0AT+COzwBemGFapOWrCJ2B0MMUp1CFpiVeL8et2TVeEpAE6RXdN7hKqF4fc0uKXnipN2JET8IWR12rMKvQ40SOvUecOuq7GgA0vPF9ZhDcFngzgtH+3n8kqjqvuhAViFRoT3PgPZ4gCZAKl/CpHv+mcaa2KjRE+zMush3pAcgwUacdaJUhr6uzbOWwkrRX5UPanxxCN4hbb1qr7iqWhHbg0cC+dx3VqLZKdXU9I2kavjyN5SyT6xQRnbzHEahlR/gCu9kAewe+Askh9R752L4nw8ADjZ1p1h00T+8z+dyPy4x90Ugrk9sx0WjGhc1MxlcArniMNBms9Rbp6Peff1K3U=
+X-Microsoft-Antispam-Message-Info: VpjdWXv6jNUftZcxSekRIpnjTi0T/nUSbMMCx0v22X7CXW9tTqxmtufGvm9Eb2wXhZ6mn6f6W+aNW3Dkve16E3dRTgXLB5arKv9upfOWpuJKIgMSw49eloh3cqqCjzpheZK5lx9CThdXDnQJzhIom09VQCbTmC/7io9Uv+uQKgxAN3sQ+Krgj73nRreBIuR/+sG2pBmznE1E/ijeSIc1wQeXAVsyJl6J9WNf1v4IVKy/53qhV05IzFf9D7omoly7niCvDqVqMjOALV9a+LUa1C8CLEbPm0qIuMHaa2irBjoLH+f0NFobzm00LK0hZy5f6NAEv80JsrLOloPGF4v8GGFkeQhepXeDzwUU+ukvvH8+DPw75wW7CYGdwywiY705+n9GggE8/OxWk9P+XBccIZTBzhCNbUhN4bQ4Y5X+NJjkj2kIW6T+HY3hgp7mnmcui3/fIac/GOiCfafRDe40jNiyGI3aBt1MadmKBMu3dDENGcPGAeU7yr7kOja+iLMDaegMmVvBZovdF4LBht8b8k4maa6D/sniIjhNdClQakVMnoPTkdndUB8R4LO2t5Vx+fzjWJqbyxraQb50pDSkUnLgwH0jYHddr6HYNMwPBEbYJjVt7mzJ9Q5LCLXQvXej2XSxSpjV35+Eti1aLutyfs3sgLYNMX7+sauRts69QmOH6i4wmL3LeILoLyI6n8gDuyDsjjKDWShUqQwy3Q1cFLGDu47gTRauVMaMeNjDJrRGj+3lfJ4W2N2Ro9Sm5jHWxKdex8B9bi7vwC776etSGkfHViMA52b/19iQG1/znVD+bYQaN1gNuFYmuP16yH/k8jnfAnyNRO0tyN90awQTV2/zjt1sufRe3czzuOobfb8=
 X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
  PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(4636009)(376002)(346002)(39860400002)(396003)(136003)(46966006)(36840700001)(1076003)(47076005)(36906005)(2616005)(107886003)(82310400003)(44832011)(478600001)(336012)(2906002)(83380400001)(8936002)(30864003)(36756003)(4326008)(82740400003)(426003)(6916009)(70206006)(70586007)(186003)(7696005)(5660300002)(9786002)(6666004)(26005)(356005)(54906003)(8676002)(316002)(7636003)(36860700001)(102446001);
+ SFS:(4636009)(136003)(346002)(376002)(39860400002)(396003)(46966006)(36840700001)(54906003)(6666004)(1076003)(6916009)(82740400003)(47076005)(4326008)(9786002)(7636003)(26005)(70586007)(356005)(44832011)(426003)(7696005)(186003)(82310400003)(70206006)(107886003)(30864003)(2906002)(966005)(478600001)(8676002)(36860700001)(8936002)(316002)(36906005)(336012)(2616005)(83380400001)(5660300002)(36756003)(102446001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2021 17:49:37.5787 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 871a283d-3027-4087-83cd-08d9665e6039
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2021 17:49:26.8651 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: dc35039a-18fc-422b-7933-08d9665e59d2
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
  Helo=[xsj-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT004.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT008.eop-nam02.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR02MB5043
-Received-SPF: pass client-ip=40.107.100.42; envelope-from=tongh@xilinx.com;
- helo=NAM04-BN8-obe.outbound.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB6963
+Received-SPF: pass client-ip=40.107.101.44; envelope-from=tongh@xilinx.com;
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -162,25 +162,13 @@ Cc: alistair@alistair23.me, tong.ho@xilinx.com, qemu-devel@nongnu.org,
  peter.maydell@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +AFFKLp/4W/I
+X-TUID: V66jMFZXJVr1
 
-This implements the Xilinx ZynqMP eFuse, an one-time
-field-programmable non-volatile storage device.  There is
-only one such device in the Xilinx ZynqMP product family.
+This introduces the QOM for Xilinx eFuse, an one-time
+field-programmable storage bit array.
 
-The command argument:
-  -drive if=pflash,index=N,...
-Can be used to optionally connect the storage array to a
-backend storage, such that field-programmed values in one
-invocation can be made available to next invocation.
-
-The backend storage must be a seekable binary file, and
-its size must be 768 bytes or larger. A file with all
-binary 0's is a 'blank'.
-
-The drive 'index' value N has a default value of 3, but
-can be changed using command argument:
-  -global xlnx,efuse.drive-index=N
+The actual mmio interface to the array varies by device
+families and will be provided in different change-sets.
 
 Co-authored-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 Co-authored-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
@@ -189,48 +177,146 @@ Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 Signed-off-by: Tong Ho <tong.ho@xilinx.com>
 ---
- hw/nvram/Kconfig                     |   5 +
- hw/nvram/meson.build                 |   2 +
- hw/nvram/xlnx-zynqmp-efuse.c         | 860 +++++++++++++++++++++++++++
- include/hw/nvram/xlnx-zynqmp-efuse.h |  45 ++
- 4 files changed, 912 insertions(+)
- create mode 100644 hw/nvram/xlnx-zynqmp-efuse.c
- create mode 100644 include/hw/nvram/xlnx-zynqmp-efuse.h
+ hw/nvram/xlnx-efuse-crc.c     | 118 ++++++++++++++++
+ hw/nvram/xlnx-efuse.c         | 252 ++++++++++++++++++++++++++++++++++
+ include/hw/nvram/xlnx-efuse.h |  80 +++++++++++
+ 3 files changed, 450 insertions(+)
+ create mode 100644 hw/nvram/xlnx-efuse-crc.c
+ create mode 100644 hw/nvram/xlnx-efuse.c
+ create mode 100644 include/hw/nvram/xlnx-efuse.h
 
-diff --git a/hw/nvram/Kconfig b/hw/nvram/Kconfig
-index e96749ced3..cc3ed789fe 100644
---- a/hw/nvram/Kconfig
-+++ b/hw/nvram/Kconfig
-@@ -23,3 +23,8 @@ config XLNX_EFUSE_VERSAL
-     bool
-     default y if XLNX_VERSAL
-     select XLNX_EFUSE
-+
-+config XLNX_EFUSE_ZYNQMP
-+    bool
-+    default y if XLNX_ZYNQMP
-+    select XLNX_EFUSE
-diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
-index a432665158..f364520ad5 100644
---- a/hw/nvram/meson.build
-+++ b/hw/nvram/meson.build
-@@ -13,6 +13,8 @@ softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE', if_true: files('xlnx-efuse.c'))
- softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE_VERSAL', if_true: files(
-                                                    'xlnx-versal-efuse-cache.c',
-                                                    'xlnx-versal-efuse-ctrl.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE_ZYNQMP', if_true: files(
-+                                                   'xlnx-zynqmp-efuse.c'))
- if 'CONFIG_XLNX_BBRAM' in config_all or \
-    'CONFIG_XLNX_EFUSE' in config_all
-   softmmu_ss.add(files('xlnx-efuse-crc.c'))
-diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
+diff --git a/hw/nvram/xlnx-efuse-crc.c b/hw/nvram/xlnx-efuse-crc.c
 new file mode 100644
-index 0000000000..a16a00aa55
+index 0000000000..bc12c39e00
 --- /dev/null
-+++ b/hw/nvram/xlnx-zynqmp-efuse.c
-@@ -0,0 +1,860 @@
++++ b/hw/nvram/xlnx-efuse-crc.c
+@@ -0,0 +1,118 @@
 +/*
-+ * QEMU model of the ZynqMP eFuse
++ * Xilinx eFuse/bbram CRC calculator
++ *
++ * Copyright (c) 2021 Xilinx Inc.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++#include "hw/nvram/xlnx-efuse.h"
++
++static uint32_t xlnx_efuse_u37_crc(uint32_t prev_crc, uint32_t data,
++                                   uint32_t addr)
++{
++    /* A table for 7-bit slicing */
++    static const uint32_t crc_tab[128] = {
++        0x00000000, 0xe13b70f7, 0xc79a971f, 0x26a1e7e8,
++        0x8ad958cf, 0x6be22838, 0x4d43cfd0, 0xac78bf27,
++        0x105ec76f, 0xf165b798, 0xd7c45070, 0x36ff2087,
++        0x9a879fa0, 0x7bbcef57, 0x5d1d08bf, 0xbc267848,
++        0x20bd8ede, 0xc186fe29, 0xe72719c1, 0x061c6936,
++        0xaa64d611, 0x4b5fa6e6, 0x6dfe410e, 0x8cc531f9,
++        0x30e349b1, 0xd1d83946, 0xf779deae, 0x1642ae59,
++        0xba3a117e, 0x5b016189, 0x7da08661, 0x9c9bf696,
++        0x417b1dbc, 0xa0406d4b, 0x86e18aa3, 0x67dafa54,
++        0xcba24573, 0x2a993584, 0x0c38d26c, 0xed03a29b,
++        0x5125dad3, 0xb01eaa24, 0x96bf4dcc, 0x77843d3b,
++        0xdbfc821c, 0x3ac7f2eb, 0x1c661503, 0xfd5d65f4,
++        0x61c69362, 0x80fde395, 0xa65c047d, 0x4767748a,
++        0xeb1fcbad, 0x0a24bb5a, 0x2c855cb2, 0xcdbe2c45,
++        0x7198540d, 0x90a324fa, 0xb602c312, 0x5739b3e5,
++        0xfb410cc2, 0x1a7a7c35, 0x3cdb9bdd, 0xdde0eb2a,
++        0x82f63b78, 0x63cd4b8f, 0x456cac67, 0xa457dc90,
++        0x082f63b7, 0xe9141340, 0xcfb5f4a8, 0x2e8e845f,
++        0x92a8fc17, 0x73938ce0, 0x55326b08, 0xb4091bff,
++        0x1871a4d8, 0xf94ad42f, 0xdfeb33c7, 0x3ed04330,
++        0xa24bb5a6, 0x4370c551, 0x65d122b9, 0x84ea524e,
++        0x2892ed69, 0xc9a99d9e, 0xef087a76, 0x0e330a81,
++        0xb21572c9, 0x532e023e, 0x758fe5d6, 0x94b49521,
++        0x38cc2a06, 0xd9f75af1, 0xff56bd19, 0x1e6dcdee,
++        0xc38d26c4, 0x22b65633, 0x0417b1db, 0xe52cc12c,
++        0x49547e0b, 0xa86f0efc, 0x8ecee914, 0x6ff599e3,
++        0xd3d3e1ab, 0x32e8915c, 0x144976b4, 0xf5720643,
++        0x590ab964, 0xb831c993, 0x9e902e7b, 0x7fab5e8c,
++        0xe330a81a, 0x020bd8ed, 0x24aa3f05, 0xc5914ff2,
++        0x69e9f0d5, 0x88d28022, 0xae7367ca, 0x4f48173d,
++        0xf36e6f75, 0x12551f82, 0x34f4f86a, 0xd5cf889d,
++        0x79b737ba, 0x988c474d, 0xbe2da0a5, 0x5f16d052
++    };
++
++    /*
++     * eFuse calculation is shown here:
++     *  https://github.com/Xilinx/embeddedsw/blob/release-2019.2/lib/sw_services/xilskey/src/xilskey_utils.c#L1496
++     *
++     * Each u32 word is appended a 5-bit value, for a total of 37 bits; see:
++     *  https://github.com/Xilinx/embeddedsw/blob/release-2019.2/lib/sw_services/xilskey/src/xilskey_utils.c#L1356
++     */
++    uint32_t crc = prev_crc;
++    const unsigned rshf = 7;
++    const uint32_t im = (1 << rshf) - 1;
++    const uint32_t rm = (1 << (32 - rshf)) - 1;
++    const uint32_t i2 = (1 << 2) - 1;
++    const uint32_t r2 = (1 << 30) - 1;
++
++    unsigned j;
++    uint32_t i, r;
++    uint64_t w;
++
++    w = (uint64_t)(addr) << 32;
++    w |= data;
++
++    /* Feed 35 bits, in 5 rounds, each a slice of 7 bits */
++    for (j = 0; j < 5; j++) {
++        r = rm & (crc >> rshf);
++        i = im & (crc ^ w);
++        crc = crc_tab[i] ^ r;
++
++        w >>= rshf;
++    }
++
++    /* Feed the remaining 2 bits */
++    r = r2 & (crc >> 2);
++    i = i2 & (crc ^ w);
++    crc = crc_tab[i << (rshf - 2)] ^ r;
++
++    return crc;
++}
++
++uint32_t xlnx_efuse_calc_crc(const uint32_t *data, unsigned u32_cnt,
++                             unsigned zpads)
++{
++    uint32_t crc = 0;
++    unsigned index;
++
++    for (index = zpads; index; index--) {
++        crc = xlnx_efuse_u37_crc(crc, 0, (index + u32_cnt));
++    }
++
++    for (index = u32_cnt; index; index--) {
++        crc = xlnx_efuse_u37_crc(crc, data[index - 1], index);
++    }
++
++    return crc;
++}
+diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
+new file mode 100644
+index 0000000000..09d48b0727
+--- /dev/null
++++ b/hw/nvram/xlnx-efuse.c
+@@ -0,0 +1,252 @@
++/*
++ * QEMU model of the EFUSE eFuse
 + *
 + * Copyright (c) 2015 Xilinx Inc.
 + *
@@ -256,847 +342,243 @@ index 0000000000..a16a00aa55
 + */
 +
 +#include "qemu/osdep.h"
-+#include "hw/nvram/xlnx-zynqmp-efuse.h"
++#include "hw/nvram/xlnx-efuse.h"
 +
++#include "qemu/error-report.h"
 +#include "qemu/log.h"
 +#include "qapi/error.h"
++#include "sysemu/blockdev.h"
 +#include "migration/vmstate.h"
 +#include "hw/qdev-properties.h"
++#include "hw/qdev-properties-system.h"
 +
-+#ifndef ZYNQMP_EFUSE_ERR_DEBUG
-+#define ZYNQMP_EFUSE_ERR_DEBUG 0
++#ifndef XLNX_EFUSE_ERR_DEBUG
++#define XLNX_EFUSE_ERR_DEBUG 0
 +#endif
 +
-+#define ZYNQMP_EFUSE(obj) \
-+     OBJECT_CHECK(XlnxZynqMPEFuse, (obj), TYPE_XLNX_ZYNQMP_EFUSE)
++#define XLNX_EFUSE(obj) \
++     OBJECT_CHECK(XLNXEFuse, (obj), TYPE_XLNX_EFUSE)
 +
-+REG32(WR_LOCK, 0x0)
-+    FIELD(WR_LOCK, LOCK, 0, 16)
-+REG32(CFG, 0x4)
-+    FIELD(CFG, SLVERR_ENABLE, 5, 1)
-+    FIELD(CFG, MARGIN_RD, 2, 2)
-+    FIELD(CFG, PGM_EN, 1, 1)
-+    FIELD(CFG, EFUSE_CLK_SEL, 0, 1)
-+REG32(STATUS, 0x8)
-+    FIELD(STATUS, AES_CRC_PASS, 7, 1)
-+    FIELD(STATUS, AES_CRC_DONE, 6, 1)
-+    FIELD(STATUS, CACHE_DONE, 5, 1)
-+    FIELD(STATUS, CACHE_LOAD, 4, 1)
-+    FIELD(STATUS, EFUSE_3_TBIT, 2, 1)
-+    FIELD(STATUS, EFUSE_2_TBIT, 1, 1)
-+    FIELD(STATUS, EFUSE_0_TBIT, 0, 1)
-+REG32(EFUSE_PGM_ADDR, 0xc)
-+    FIELD(EFUSE_PGM_ADDR, EFUSE, 11, 2)
-+    FIELD(EFUSE_PGM_ADDR, ROW, 5, 6)
-+    FIELD(EFUSE_PGM_ADDR, COLUMN, 0, 5)
-+REG32(EFUSE_RD_ADDR, 0x10)
-+    FIELD(EFUSE_RD_ADDR, EFUSE, 11, 2)
-+    FIELD(EFUSE_RD_ADDR, ROW, 5, 6)
-+REG32(EFUSE_RD_DATA, 0x14)
-+REG32(TPGM, 0x18)
-+    FIELD(TPGM, VALUE, 0, 16)
-+REG32(TRD, 0x1c)
-+    FIELD(TRD, VALUE, 0, 8)
-+REG32(TSU_H_PS, 0x20)
-+    FIELD(TSU_H_PS, VALUE, 0, 8)
-+REG32(TSU_H_PS_CS, 0x24)
-+    FIELD(TSU_H_PS_CS, VALUE, 0, 8)
-+REG32(TSU_H_CS, 0x2c)
-+    FIELD(TSU_H_CS, VALUE, 0, 4)
-+REG32(EFUSE_ISR, 0x30)
-+    FIELD(EFUSE_ISR, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_ISR, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_ISR, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_ISR, RD_DONE, 2, 1)
-+    FIELD(EFUSE_ISR, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_ISR, PGM_DONE, 0, 1)
-+REG32(EFUSE_IMR, 0x34)
-+    FIELD(EFUSE_IMR, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_IMR, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_IMR, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_IMR, RD_DONE, 2, 1)
-+    FIELD(EFUSE_IMR, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_IMR, PGM_DONE, 0, 1)
-+REG32(EFUSE_IER, 0x38)
-+    FIELD(EFUSE_IER, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_IER, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_IER, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_IER, RD_DONE, 2, 1)
-+    FIELD(EFUSE_IER, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_IER, PGM_DONE, 0, 1)
-+REG32(EFUSE_IDR, 0x3c)
-+    FIELD(EFUSE_IDR, APB_SLVERR, 31, 1)
-+    FIELD(EFUSE_IDR, CACHE_ERROR, 4, 1)
-+    FIELD(EFUSE_IDR, RD_ERROR, 3, 1)
-+    FIELD(EFUSE_IDR, RD_DONE, 2, 1)
-+    FIELD(EFUSE_IDR, PGM_ERROR, 1, 1)
-+    FIELD(EFUSE_IDR, PGM_DONE, 0, 1)
-+REG32(EFUSE_CACHE_LOAD, 0x40)
-+    FIELD(EFUSE_CACHE_LOAD, LOAD, 0, 1)
-+REG32(EFUSE_PGM_LOCK, 0x44)
-+    FIELD(EFUSE_PGM_LOCK, SPK_ID_LOCK, 0, 1)
-+REG32(EFUSE_AES_CRC, 0x48)
-+REG32(EFUSE_TBITS_PRGRMG_EN, 0x100)
-+    FIELD(EFUSE_TBITS_PRGRMG_EN, TBITS_PRGRMG_EN, 3, 1)
-+REG32(DNA_0, 0x100c)
-+REG32(DNA_1, 0x1010)
-+REG32(DNA_2, 0x1014)
-+REG32(IPDISABLE, 0x1018)
-+    FIELD(IPDISABLE, VCU_DIS, 8, 1)
-+    FIELD(IPDISABLE, GPU_DIS, 5, 1)
-+    FIELD(IPDISABLE, APU3_DIS, 3, 1)
-+    FIELD(IPDISABLE, APU2_DIS, 2, 1)
-+    FIELD(IPDISABLE, APU1_DIS, 1, 1)
-+    FIELD(IPDISABLE, APU0_DIS, 0, 1)
-+REG32(SYSOSC_CTRL, 0x101c)
-+    FIELD(SYSOSC_CTRL, SYSOSC_EN, 0, 1)
-+REG32(USER_0, 0x1020)
-+REG32(USER_1, 0x1024)
-+REG32(USER_2, 0x1028)
-+REG32(USER_3, 0x102c)
-+REG32(USER_4, 0x1030)
-+REG32(USER_5, 0x1034)
-+REG32(USER_6, 0x1038)
-+REG32(USER_7, 0x103c)
-+REG32(MISC_USER_CTRL, 0x1040)
-+    FIELD(MISC_USER_CTRL, FPD_SC_EN_0, 14, 1)
-+    FIELD(MISC_USER_CTRL, LPD_SC_EN_0, 11, 1)
-+    FIELD(MISC_USER_CTRL, LBIST_EN, 10, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_7, 7, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_6, 6, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_5, 5, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_4, 4, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_3, 3, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_2, 2, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_1, 1, 1)
-+    FIELD(MISC_USER_CTRL, USR_WRLK_0, 0, 1)
-+REG32(ROM_RSVD, 0x1044)
-+    FIELD(ROM_RSVD, PBR_BOOT_ERROR, 0, 3)
-+REG32(PUF_CHASH, 0x1050)
-+REG32(PUF_MISC, 0x1054)
-+    FIELD(PUF_MISC, REGISTER_DIS, 31, 1)
-+    FIELD(PUF_MISC, SYN_WRLK, 30, 1)
-+    FIELD(PUF_MISC, SYN_INVLD, 29, 1)
-+    FIELD(PUF_MISC, TEST2_DIS, 28, 1)
-+    FIELD(PUF_MISC, UNUSED27, 27, 1)
-+    FIELD(PUF_MISC, UNUSED26, 26, 1)
-+    FIELD(PUF_MISC, UNUSED25, 25, 1)
-+    FIELD(PUF_MISC, UNUSED24, 24, 1)
-+    FIELD(PUF_MISC, AUX, 0, 24)
-+REG32(SEC_CTRL, 0x1058)
-+    FIELD(SEC_CTRL, PPK1_INVLD, 30, 2)
-+    FIELD(SEC_CTRL, PPK1_WRLK, 29, 1)
-+    FIELD(SEC_CTRL, PPK0_INVLD, 27, 2)
-+    FIELD(SEC_CTRL, PPK0_WRLK, 26, 1)
-+    FIELD(SEC_CTRL, RSA_EN, 11, 15)
-+    FIELD(SEC_CTRL, SEC_LOCK, 10, 1)
-+    FIELD(SEC_CTRL, PROG_GATE_2, 9, 1)
-+    FIELD(SEC_CTRL, PROG_GATE_1, 8, 1)
-+    FIELD(SEC_CTRL, PROG_GATE_0, 7, 1)
-+    FIELD(SEC_CTRL, DFT_DIS, 6, 1)
-+    FIELD(SEC_CTRL, JTAG_DIS, 5, 1)
-+    FIELD(SEC_CTRL, ERROR_DIS, 4, 1)
-+    FIELD(SEC_CTRL, BBRAM_DIS, 3, 1)
-+    FIELD(SEC_CTRL, ENC_ONLY, 2, 1)
-+    FIELD(SEC_CTRL, AES_WRLK, 1, 1)
-+    FIELD(SEC_CTRL, AES_RDLK, 0, 1)
-+REG32(SPK_ID, 0x105c)
-+REG32(PPK0_0, 0x10a0)
-+REG32(PPK0_1, 0x10a4)
-+REG32(PPK0_2, 0x10a8)
-+REG32(PPK0_3, 0x10ac)
-+REG32(PPK0_4, 0x10b0)
-+REG32(PPK0_5, 0x10b4)
-+REG32(PPK0_6, 0x10b8)
-+REG32(PPK0_7, 0x10bc)
-+REG32(PPK0_8, 0x10c0)
-+REG32(PPK0_9, 0x10c4)
-+REG32(PPK0_10, 0x10c8)
-+REG32(PPK0_11, 0x10cc)
-+REG32(PPK1_0, 0x10d0)
-+REG32(PPK1_1, 0x10d4)
-+REG32(PPK1_2, 0x10d8)
-+REG32(PPK1_3, 0x10dc)
-+REG32(PPK1_4, 0x10e0)
-+REG32(PPK1_5, 0x10e4)
-+REG32(PPK1_6, 0x10e8)
-+REG32(PPK1_7, 0x10ec)
-+REG32(PPK1_8, 0x10f0)
-+REG32(PPK1_9, 0x10f4)
-+REG32(PPK1_10, 0x10f8)
-+REG32(PPK1_11, 0x10fc)
++#define TBIT0_OFFSET     28
++#define TBIT1_OFFSET     29
++#define TBIT2_OFFSET     30
++#define TBIT3_OFFSET     31
++#define TBITS_PATTERN    (0x0AU << TBIT0_OFFSET)
++#define TBITS_MASK       (0x0FU << TBIT0_OFFSET)
 +
-+#define BIT_POS(ROW, COLUMN)    (ROW * 32 + COLUMN)
-+#define R_MAX (R_PPK1_11 + 1)
-+
-+/* #define EFUSE_XOSC            26 */
-+
-+/*
-+ * eFUSE layout references:
-+ *   ZynqMP: UG1085 (v2.1) August 21, 2019, p.277, Table 12-13
-+ */
-+#define EFUSE_AES_RDLK        BIT_POS(22, 0)
-+#define EFUSE_AES_WRLK        BIT_POS(22, 1)
-+#define EFUSE_ENC_ONLY        BIT_POS(22, 2)
-+#define EFUSE_BBRAM_DIS       BIT_POS(22, 3)
-+#define EFUSE_ERROR_DIS       BIT_POS(22, 4)
-+#define EFUSE_JTAG_DIS        BIT_POS(22, 5)
-+#define EFUSE_DFT_DIS         BIT_POS(22, 6)
-+#define EFUSE_PROG_GATE_0     BIT_POS(22, 7)
-+#define EFUSE_PROG_GATE_1     BIT_POS(22, 7)
-+#define EFUSE_PROG_GATE_2     BIT_POS(22, 9)
-+#define EFUSE_SEC_LOCK        BIT_POS(22, 10)
-+#define EFUSE_RSA_EN          BIT_POS(22, 11)
-+#define EFUSE_RSA_EN14        BIT_POS(22, 25)
-+#define EFUSE_PPK0_WRLK       BIT_POS(22, 26)
-+#define EFUSE_PPK0_INVLD      BIT_POS(22, 27)
-+#define EFUSE_PPK0_INVLD_1    BIT_POS(22, 28)
-+#define EFUSE_PPK1_WRLK       BIT_POS(22, 29)
-+#define EFUSE_PPK1_INVLD      BIT_POS(22, 30)
-+#define EFUSE_PPK1_INVLD_1    BIT_POS(22, 31)
-+
-+/* Areas.  */
-+#define EFUSE_TRIM_START      BIT_POS(1, 0)
-+#define EFUSE_TRIM_END        BIT_POS(1, 30)
-+#define EFUSE_DNA_START       BIT_POS(3, 0)
-+#define EFUSE_DNA_END         BIT_POS(5, 31)
-+#define EFUSE_AES_START       BIT_POS(24, 0)
-+#define EFUSE_AES_END         BIT_POS(31, 31)
-+#define EFUSE_ROM_START       BIT_POS(17, 0)
-+#define EFUSE_ROM_END         BIT_POS(17, 31)
-+#define EFUSE_IPDIS_START     BIT_POS(6, 0)
-+#define EFUSE_IPDIS_END       BIT_POS(6, 31)
-+#define EFUSE_USER_START      BIT_POS(8, 0)
-+#define EFUSE_USER_END        BIT_POS(15, 31)
-+#define EFUSE_BISR_START      BIT_POS(32, 0)
-+#define EFUSE_BISR_END        BIT_POS(39, 31)
-+
-+#define EFUSE_USER_CTRL_START BIT_POS(16, 0)
-+#define EFUSE_USER_CTRL_END   BIT_POS(16, 16)
-+#define EFUSE_USER_CTRL_MASK  ((uint32_t)MAKE_64BIT_MASK(0, 17))
-+
-+#define EFUSE_PUF_CHASH_START BIT_POS(20, 0)
-+#define EFUSE_PUF_CHASH_END   BIT_POS(20, 31)
-+#define EFUSE_PUF_MISC_START  BIT_POS(21, 0)
-+#define EFUSE_PUF_MISC_END    BIT_POS(21, 31)
-+#define EFUSE_PUF_SYN_WRLK    BIT_POS(21, 30)
-+
-+#define EFUSE_SPK_START       BIT_POS(23, 0)
-+#define EFUSE_SPK_END         BIT_POS(23, 31)
-+
-+#define EFUSE_PPK0_START      BIT_POS(40, 0)
-+#define EFUSE_PPK0_END        BIT_POS(51, 31)
-+#define EFUSE_PPK1_START      BIT_POS(52, 0)
-+#define EFUSE_PPK1_END        BIT_POS(63, 31)
-+
-+#define EFUSE_CACHE_FLD(s, reg, field) \
-+    ARRAY_FIELD_DP32((s)->regs, reg, field, \
-+                     (xlnx_efuse_get_row((s->efuse), EFUSE_ ## field) \
-+                      >> (EFUSE_ ## field % 32)))
-+
-+#define EFUSE_CACHE_BIT(s, reg, field) \
-+    ARRAY_FIELD_DP32((s)->regs, reg, field, xlnx_efuse_get_bit((s->efuse), \
-+                EFUSE_ ## field))
-+
-+#define FBIT_UNKNOWN (~0)
-+
-+QEMU_BUILD_BUG_ON(R_MAX != ARRAY_SIZE(((XlnxZynqMPEFuse *)0)->regs));
-+
-+static void update_tbit_status(XlnxZynqMPEFuse *s)
++bool xlnx_efuse_get_bit(XLNXEFuse *s, unsigned int bit)
 +{
-+    unsigned int check = xlnx_efuse_tbits_check(s->efuse);
-+    uint32_t val = s->regs[R_STATUS];
-+
-+    val = FIELD_DP32(val, STATUS, EFUSE_0_TBIT, !!(check & (1 << 0)));
-+    val = FIELD_DP32(val, STATUS, EFUSE_2_TBIT, !!(check & (1 << 1)));
-+    val = FIELD_DP32(val, STATUS, EFUSE_3_TBIT, !!(check & (1 << 2)));
-+
-+    s->regs[R_STATUS] = val;
++    bool b = s->fuse32[bit / 32] & (1 << (bit % 32));
++    return b;
 +}
 +
-+/* Update the u32 array from efuse bits. Slow but simple approach.  */
-+static void cache_sync_u32(XlnxZynqMPEFuse *s, unsigned int r_start,
-+                           unsigned int f_start, unsigned int f_end,
-+                           unsigned int f_written)
++static void efuse_sync_bdrv(XLNXEFuse *s, unsigned int bit)
 +{
-+    uint32_t *u32 = &s->regs[r_start];
-+    unsigned int fbit, wbits = 0, u32_off = 0;
++    const int bswap_adj = (const_le32(0x1234) != 0x1234 ? 3 : 0);
++    unsigned int efuse_byte;
 +
-+    /* Avoid working on bits that are not relevant.  */
-+    if (f_written != FBIT_UNKNOWN
-+        && (f_written < f_start || f_written > f_end)) {
-+        return;
++    if (!s->blk || s->blk_ro) {
++        return;  /* Silient on read-only backend to avoid message flood */
 +    }
 +
-+    for (fbit = f_start; fbit <= f_end; fbit++, wbits++) {
-+        if (wbits == 32) {
-+            /* Update the key offset.  */
-+            u32_off += 1;
-+            wbits = 0;
-+        }
-+        u32[u32_off] |= xlnx_efuse_get_bit(s->efuse, fbit) << wbits;
++    efuse_byte = bit / 8;
++
++    if (blk_pwrite(s->blk, efuse_byte,
++                   ((uint8_t *) s->fuse32) + (efuse_byte ^ bswap_adj),
++                   1, 0) < 0) {
++        error_report("%s: write error in byte %" PRIu32 ".",
++                      __func__, efuse_byte);
 +    }
 +}
 +
-+/*
-+ * Keep the syncs in bit order so we can bail out for the
-+ * slower ones.
-+ */
-+static void zynqmp_efuse_sync_cache(XlnxZynqMPEFuse *s, unsigned int bit)
++static int efuse_ro_bits_cmp(const void *a, const void *b)
 +{
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, AES_RDLK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, AES_WRLK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, ENC_ONLY);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, BBRAM_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, ERROR_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, JTAG_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, DFT_DIS);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PROG_GATE_0);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PROG_GATE_1);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PROG_GATE_2);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, SEC_LOCK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PPK0_WRLK);
-+    EFUSE_CACHE_BIT(s, SEC_CTRL, PPK1_WRLK);
++    uint32_t i = *(const uint32_t *)a;
++    uint32_t j = *(const uint32_t *)b;
 +
-+    EFUSE_CACHE_FLD(s, SEC_CTRL, RSA_EN);
-+    EFUSE_CACHE_FLD(s, SEC_CTRL, PPK0_INVLD);
-+    EFUSE_CACHE_FLD(s, SEC_CTRL, PPK1_INVLD);
-+
-+    /* Update the tbits.  */
-+    update_tbit_status(s);
-+
-+    /* Sync the various areas.  */
-+    s->regs[R_MISC_USER_CTRL] = xlnx_efuse_get_row(s->efuse,
-+                                                   EFUSE_USER_CTRL_START)
-+                                & EFUSE_USER_CTRL_MASK;
-+    s->regs[R_PUF_CHASH] = xlnx_efuse_get_row(s->efuse, EFUSE_PUF_CHASH_START);
-+    s->regs[R_PUF_MISC]  = xlnx_efuse_get_row(s->efuse, EFUSE_PUF_MISC_START);
-+
-+    cache_sync_u32(s, R_DNA_0, EFUSE_DNA_START, EFUSE_DNA_END, bit);
-+
-+    if (bit < EFUSE_AES_START) {
-+        return;
-+    }
-+
-+    cache_sync_u32(s, R_ROM_RSVD, EFUSE_ROM_START, EFUSE_ROM_END, bit);
-+    cache_sync_u32(s, R_IPDISABLE, EFUSE_IPDIS_START, EFUSE_IPDIS_END, bit);
-+    cache_sync_u32(s, R_USER_0, EFUSE_USER_START, EFUSE_USER_END, bit);
-+    cache_sync_u32(s, R_SPK_ID, EFUSE_SPK_START, EFUSE_SPK_END, bit);
-+    cache_sync_u32(s, R_PPK0_0, EFUSE_PPK0_START, EFUSE_PPK0_END, bit);
-+    cache_sync_u32(s, R_PPK1_0, EFUSE_PPK1_START, EFUSE_PPK1_END, bit);
++    return (i > j) - (i < j);
 +}
 +
-+static void zynqmp_efuse_update_irq(XlnxZynqMPEFuse *s)
++static void efuse_ro_bits_sort(XLNXEFuse *s)
 +{
-+    bool pending = s->regs[R_EFUSE_ISR] & s->regs[R_EFUSE_IMR];
-+    qemu_set_irq(s->irq, pending);
++    uint32_t *ary = s->ro_bits;
++    const uint32_t cnt = s->ro_bits_cnt;
++
++    if (ary && cnt > 1) {
++        qsort(ary, cnt, sizeof(ary[0]), efuse_ro_bits_cmp);
++    }
 +}
 +
-+static void zynqmp_efuse_isr_postw(RegisterInfo *reg, uint64_t val64)
++static bool efuse_ro_bits_find(XLNXEFuse *s, uint32_t k)
 +{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    zynqmp_efuse_update_irq(s);
++    const uint32_t *ary = s->ro_bits;
++    const uint32_t cnt = s->ro_bits_cnt;
++
++    if (!ary || !cnt) {
++        return false;
++    }
++
++    return bsearch(&k, ary, cnt, sizeof(ary[0]), efuse_ro_bits_cmp) != NULL;
 +}
 +
-+static uint64_t zynqmp_efuse_ier_prew(RegisterInfo *reg, uint64_t val64)
++bool xlnx_efuse_set_bit(XLNXEFuse *s, unsigned int bit)
 +{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_EFUSE_IMR] |= val;
-+    zynqmp_efuse_update_irq(s);
-+    return 0;
-+}
-+
-+static uint64_t zynqmp_efuse_idr_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_EFUSE_IMR] &= ~val;
-+    zynqmp_efuse_update_irq(s);
-+    return 0;
-+}
-+
-+static void zynqmp_efuse_pgm_addr_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    unsigned bit = val64;
-+    unsigned page = FIELD_EX32(bit, EFUSE_PGM_ADDR, EFUSE);
-+    bool puf_prot = false;
-+    const char *errmsg = NULL;
-+
-+    /* Allow only valid array, and adjust for skipped array 1 */
-+    switch (page) {
-+    case 0:
-+        break;
-+    case 2 ... 3:
-+        bit = FIELD_DP32(bit, EFUSE_PGM_ADDR, EFUSE, page - 1);
-+        puf_prot = xlnx_efuse_get_bit(s->efuse, EFUSE_PUF_SYN_WRLK);
-+        break;
-+    default:
-+        errmsg = "Invalid address";
-+        goto pgm_done;
-+    }
-+
-+    if (ARRAY_FIELD_EX32(s->regs, WR_LOCK, LOCK)) {
-+        errmsg = "Array write-locked";
-+        goto pgm_done;
-+    }
-+
-+    if (!ARRAY_FIELD_EX32(s->regs, CFG, PGM_EN)) {
-+        errmsg = "Array pgm-disabled";
-+        goto pgm_done;
-+    }
-+
-+    if (puf_prot) {
-+        errmsg = "PUF_HD-store write-locked";
-+        goto pgm_done;
-+    }
-+
-+    if (ARRAY_FIELD_EX32(s->regs, SEC_CTRL, AES_WRLK)
-+        && bit >= EFUSE_AES_START && bit <= EFUSE_AES_END) {
-+        errmsg = "AES key-store Write-locked";
-+        goto pgm_done;
-+    }
-+
-+    if (!xlnx_efuse_set_bit(s->efuse, bit)) {
-+        errmsg = "Write failed";
-+    }
-+
-+ pgm_done:
-+    if (!errmsg) {
-+        ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_ERROR, 0);
-+    } else {
-+        ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_ERROR, 1);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s - eFuse write error: %s; addr=0x%x\n",
++    if (efuse_ro_bits_find(s, bit)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: WARN: "
++                      "Ignored setting of readonly efuse bit<%u,%u>!\n",
 +                      object_get_canonical_path(OBJECT(s)),
-+                      errmsg, (unsigned)val64);
++                      (bit / 32), (bit % 32));
++        return false;
 +    }
 +
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_DONE, 1);
-+    zynqmp_efuse_update_irq(s);
++    s->fuse32[bit / 32] |= 1 << (bit % 32);
++    efuse_sync_bdrv(s, bit);
++    return true;
 +}
 +
-+static void zynqmp_efuse_rd_addr_postw(RegisterInfo *reg, uint64_t val64)
++bool xlnx_efuse_k256_check(XLNXEFuse *s, uint32_t crc, unsigned start)
 +{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
++    uint32_t calc;
 +
-+    /*
-+     * Grant reads only to allowed bits; reference sources:
-+     * 1/ XilSKey - XilSKey_ZynqMp_EfusePs_ReadRow()
-+     * 2/ UG1085, v2.0, table 12-13
-+     * (note: enumerates the masks as <first, last> per described in
-+     *  references to avoid mental translation).
-+     */
-+#define COL_MASK(L_, H_) \
-+    ((uint32_t)MAKE_64BIT_MASK((L_), (1 + (H_) - (L_))))
++    /* A key always occupies multiple of whole rows */
++    assert((start % 32) == 0);
 +
-+    static const uint32_t ary0_col_mask[] = {
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_TBITS_ROW */
-+        [0]  = COL_MASK(28, 31),
++    calc = xlnx_efuse_calc_crc(&s->fuse32[start / 32], (256 / 32), 0);
++    return calc == crc;
++}
 +
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_USR{0:7}_FUSE_ROW */
-+        [8]  = COL_MASK(0, 31), [9]  = COL_MASK(0, 31),
-+        [10] = COL_MASK(0, 31), [11] = COL_MASK(0, 31),
-+        [12] = COL_MASK(0, 31), [13] = COL_MASK(0, 31),
-+        [14] = COL_MASK(0, 31), [15] = COL_MASK(0, 31),
++uint32_t xlnx_efuse_tbits_check(XLNXEFuse *s)
++{
++    int nr;
++    uint32_t check = 0;
 +
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_MISC_USR_CTRL_ROW */
-+        [16] = COL_MASK(0, 7) | COL_MASK(10, 16),
++    for (nr = s->efuse_nr; nr-- > 0; ) {
++        int efuse_start_row_num = (s->efuse_size * nr) / 32;
++        uint32_t data = s->fuse32[efuse_start_row_num];
 +
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PBR_BOOT_ERR_ROW */
-+        [17] = COL_MASK(0, 2),
++        /*
++         * If the option is on, auto-init blank T-bits.
++         * (non-blank will still be reported as '0' in the check, e.g.,
++         *  for error-injection tests)
++         */
++        if ((data & TBITS_MASK) == 0 && s->init_tbits) {
++            data |= TBITS_PATTERN;
 +
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PUF_CHASH_ROW */
-+        [20] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PUF_AUX_ROW */
-+        [21] = COL_MASK(0, 23) | COL_MASK(29, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_SEC_CTRL_ROW */
-+        [22] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_SPK_ID_ROW */
-+        [23] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PPK0_START_ROW */
-+        [40] = COL_MASK(0, 31), [41] = COL_MASK(0, 31),
-+        [42] = COL_MASK(0, 31), [43] = COL_MASK(0, 31),
-+        [44] = COL_MASK(0, 31), [45] = COL_MASK(0, 31),
-+        [46] = COL_MASK(0, 31), [47] = COL_MASK(0, 31),
-+        [48] = COL_MASK(0, 31), [49] = COL_MASK(0, 31),
-+        [50] = COL_MASK(0, 31), [51] = COL_MASK(0, 31),
-+
-+        /* XilSKey - XSK_ZYNQMP_EFUSEPS_PPK1_START_ROW */
-+        [52] = COL_MASK(0, 31), [53] = COL_MASK(0, 31),
-+        [54] = COL_MASK(0, 31), [55] = COL_MASK(0, 31),
-+        [56] = COL_MASK(0, 31), [57] = COL_MASK(0, 31),
-+        [58] = COL_MASK(0, 31), [59] = COL_MASK(0, 31),
-+        [60] = COL_MASK(0, 31), [61] = COL_MASK(0, 31),
-+        [62] = COL_MASK(0, 31), [63] = COL_MASK(0, 31),
-+    };
-+
-+    uint32_t col_mask = COL_MASK(0, 31);
-+#undef COL_MASK
-+
-+    uint32_t efuse_idx = s->regs[R_EFUSE_RD_ADDR];
-+    uint32_t efuse_ary = FIELD_EX32(efuse_idx, EFUSE_RD_ADDR, EFUSE);
-+    uint32_t efuse_row = FIELD_EX32(efuse_idx, EFUSE_RD_ADDR, ROW);
-+
-+    switch (efuse_ary) {
-+    case 0:     /* Various */
-+        if (efuse_row >= ARRAY_SIZE(ary0_col_mask)) {
-+            goto denied;
++            s->fuse32[efuse_start_row_num] = data;
++            efuse_sync_bdrv(s, (efuse_start_row_num * 32 + TBIT0_OFFSET));
 +        }
 +
-+        col_mask = ary0_col_mask[efuse_row];
-+        if (!col_mask) {
-+            goto denied;
-+        }
-+        break;
-+    case 2:     /* PUF helper data, adjust for skipped array 1 */
-+    case 3:
-+        val64 = FIELD_DP32(efuse_idx, EFUSE_RD_ADDR, EFUSE, efuse_ary - 1);
-+        break;
-+    default:
-+        goto denied;
++        check = (check << 1) | ((data & TBITS_MASK) == TBITS_PATTERN);
 +    }
 +
-+    s->regs[R_EFUSE_RD_DATA] = xlnx_efuse_get_row(s->efuse, val64) & col_mask;
-+
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_ERROR, 0);
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_DONE, 1);
-+    zynqmp_efuse_update_irq(s);
-+    return;
-+
-+ denied:
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "%s: Denied efuse read from array %u, row %u\n",
-+                  object_get_canonical_path(OBJECT(s)),
-+                  efuse_ary, efuse_row);
-+
-+    s->regs[R_EFUSE_RD_DATA] = 0;
-+
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_ERROR, 1);
-+    ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, RD_DONE, 0);
-+    zynqmp_efuse_update_irq(s);
++    return check;
 +}
 +
-+static void zynqmp_efuse_aes_crc_postw(RegisterInfo *reg, uint64_t val64)
++static void efuse_realize(DeviceState *dev, Error **errp)
 +{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+    bool ok;
-+
-+    ok = xlnx_efuse_k256_check(s->efuse, (uint32_t)val64, EFUSE_AES_START);
-+
-+    ARRAY_FIELD_DP32(s->regs, STATUS, AES_CRC_PASS, (ok ? 1 : 0));
-+    ARRAY_FIELD_DP32(s->regs, STATUS, AES_CRC_DONE, 1);
-+
-+    s->regs[R_EFUSE_AES_CRC] = 0;   /* crc value is write-only */
-+}
-+
-+static uint64_t zynqmp_efuse_cache_load_prew(RegisterInfo *reg,
-+                                             uint64_t valu64)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(reg->opaque);
-+
-+    if (valu64 & R_EFUSE_CACHE_LOAD_LOAD_MASK) {
-+        zynqmp_efuse_sync_cache(s, FBIT_UNKNOWN);
-+        ARRAY_FIELD_DP32(s->regs, STATUS, CACHE_DONE, 1);
-+        zynqmp_efuse_update_irq(s);
-+    }
-+
-+    return 0;
-+}
-+
-+static uint64_t zynqmp_efuse_wr_lock_prew(RegisterInfo *reg, uint64_t val)
-+{
-+    return val == 0xDF0D ? 0 : 1;
-+}
-+
-+static RegisterAccessInfo zynqmp_efuse_regs_info[] = {
-+    {   .name = "WR_LOCK",  .addr = A_WR_LOCK,
-+        .reset = 0x1,
-+        .pre_write = zynqmp_efuse_wr_lock_prew,
-+    },{ .name = "CFG",  .addr = A_CFG,
-+    },{ .name = "STATUS",  .addr = A_STATUS,
-+        .rsvd = 0x8,
-+        .ro = 0xff,
-+    },{ .name = "EFUSE_PGM_ADDR",  .addr = A_EFUSE_PGM_ADDR,
-+         .post_write = zynqmp_efuse_pgm_addr_postw
-+    },{ .name = "EFUSE_RD_ADDR",  .addr = A_EFUSE_RD_ADDR,
-+        .rsvd = 0x1f,
-+        .post_write = zynqmp_efuse_rd_addr_postw,
-+    },{ .name = "EFUSE_RD_DATA",  .addr = A_EFUSE_RD_DATA,
-+        .ro = 0xffffffff,
-+    },{ .name = "TPGM",  .addr = A_TPGM,
-+    },{ .name = "TRD",  .addr = A_TRD,
-+        .reset = 0x1b,
-+    },{ .name = "TSU_H_PS",  .addr = A_TSU_H_PS,
-+        .reset = 0xff,
-+    },{ .name = "TSU_H_PS_CS",  .addr = A_TSU_H_PS_CS,
-+        .reset = 0xb,
-+    },{ .name = "TSU_H_CS",  .addr = A_TSU_H_CS,
-+        .reset = 0x7,
-+    },{ .name = "EFUSE_ISR",  .addr = A_EFUSE_ISR,
-+        .rsvd = 0x7fffffe0,
-+        .w1c = 0x8000001f,
-+        .post_write = zynqmp_efuse_isr_postw,
-+    },{ .name = "EFUSE_IMR",  .addr = A_EFUSE_IMR,
-+        .reset = 0x8000001f,
-+        .rsvd = 0x7fffffe0,
-+        .ro = 0xffffffff,
-+    },{ .name = "EFUSE_IER",  .addr = A_EFUSE_IER,
-+        .rsvd = 0x7fffffe0,
-+        .pre_write = zynqmp_efuse_ier_prew,
-+    },{ .name = "EFUSE_IDR",  .addr = A_EFUSE_IDR,
-+        .rsvd = 0x7fffffe0,
-+        .pre_write = zynqmp_efuse_idr_prew,
-+    },{ .name = "EFUSE_CACHE_LOAD",  .addr = A_EFUSE_CACHE_LOAD,
-+        .pre_write = zynqmp_efuse_cache_load_prew,
-+    },{ .name = "EFUSE_PGM_LOCK",  .addr = A_EFUSE_PGM_LOCK,
-+    },{ .name = "EFUSE_AES_CRC",  .addr = A_EFUSE_AES_CRC,
-+        .post_write = zynqmp_efuse_aes_crc_postw,
-+    },{ .name = "EFUSE_TBITS_PRGRMG_EN",  .addr = A_EFUSE_TBITS_PRGRMG_EN,
-+        .reset = R_EFUSE_TBITS_PRGRMG_EN_TBITS_PRGRMG_EN_MASK,
-+    },{ .name = "DNA_0",  .addr = A_DNA_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "DNA_1",  .addr = A_DNA_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "DNA_2",  .addr = A_DNA_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "IPDISABLE",  .addr = A_IPDISABLE,
-+        .ro = 0xffffffff,
-+    },{ .name = "SYSOSC_CTRL",  .addr = A_SYSOSC_CTRL,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_0",  .addr = A_USER_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_1",  .addr = A_USER_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_2",  .addr = A_USER_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_3",  .addr = A_USER_3,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_4",  .addr = A_USER_4,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_5",  .addr = A_USER_5,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_6",  .addr = A_USER_6,
-+        .ro = 0xffffffff,
-+    },{ .name = "USER_7",  .addr = A_USER_7,
-+        .ro = 0xffffffff,
-+    },{ .name = "MISC_USER_CTRL",  .addr = A_MISC_USER_CTRL,
-+        .ro = 0xffffffff,
-+    },{ .name = "ROM_RSVD",  .addr = A_ROM_RSVD,
-+        .ro = 0xffffffff,
-+    },{ .name = "PUF_CHASH", .addr = A_PUF_CHASH,
-+        .ro = 0xffffffff,
-+    },{ .name = "PUF_MISC",  .addr = A_PUF_MISC,
-+        .ro = 0xffffffff,
-+    },{ .name = "SEC_CTRL",  .addr = A_SEC_CTRL,
-+        .ro = 0xffffffff,
-+    },{ .name = "SPK_ID",  .addr = A_SPK_ID,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_0",  .addr = A_PPK0_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_1",  .addr = A_PPK0_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_2",  .addr = A_PPK0_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_3",  .addr = A_PPK0_3,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_4",  .addr = A_PPK0_4,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_5",  .addr = A_PPK0_5,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_6",  .addr = A_PPK0_6,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_7",  .addr = A_PPK0_7,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_8",  .addr = A_PPK0_8,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_9",  .addr = A_PPK0_9,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_10",  .addr = A_PPK0_10,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK0_11",  .addr = A_PPK0_11,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_0",  .addr = A_PPK1_0,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_1",  .addr = A_PPK1_1,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_2",  .addr = A_PPK1_2,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_3",  .addr = A_PPK1_3,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_4",  .addr = A_PPK1_4,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_5",  .addr = A_PPK1_5,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_6",  .addr = A_PPK1_6,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_7",  .addr = A_PPK1_7,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_8",  .addr = A_PPK1_8,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_9",  .addr = A_PPK1_9,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_10",  .addr = A_PPK1_10,
-+        .ro = 0xffffffff,
-+    },{ .name = "PPK1_11",  .addr = A_PPK1_11,
-+        .ro = 0xffffffff,
-+    }
-+};
-+
-+static void zynqmp_efuse_reg_write(void *opaque, hwaddr addr,
-+                                   uint64_t data, unsigned size)
-+{
-+    RegisterInfoArray *reg_array = opaque;
-+    XlnxZynqMPEFuse *s;
-+    Object *dev;
-+
-+    assert(reg_array != NULL);
-+
-+    dev = reg_array->mem.owner;
-+    assert(dev);
-+
-+    s = ZYNQMP_EFUSE(dev);
-+
-+    if (addr != A_WR_LOCK && s->regs[R_WR_LOCK]) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s[reg_0x%02lx]: Attempt to write locked register.\n",
-+                      object_get_canonical_path(OBJECT(s)), (long)addr);
-+    } else {
-+        register_write_memory(opaque, addr, data, size);
-+    }
-+}
-+
-+static const MemoryRegionOps zynqmp_efuse_ops = {
-+    .read = register_read_memory,
-+    .write = zynqmp_efuse_reg_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void zynqmp_efuse_register_reset(RegisterInfo *reg)
-+{
-+    if (!reg->data || !reg->access) {
-+        return;
-+    }
-+
-+    /* Reset must not trigger some registers' writers */
-+    switch (reg->access->addr) {
-+    case A_EFUSE_AES_CRC:
-+        *(uint32_t *)reg->data = reg->access->reset;
-+        return;
-+    }
-+
-+    register_reset(reg);
-+}
-+
-+static void zynqmp_efuse_reset(DeviceState *dev)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(dev);
-+    unsigned int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-+        zynqmp_efuse_register_reset(&s->regs_info[i]);
-+    }
-+
-+    zynqmp_efuse_sync_cache(s, FBIT_UNKNOWN);
-+    ARRAY_FIELD_DP32(s->regs, STATUS, CACHE_DONE, 1);
-+    zynqmp_efuse_update_irq(s);
-+}
-+
-+static void zynqmp_efuse_realize(DeviceState *dev, Error **errp)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(dev);
++    XLNXEFuse *s = XLNX_EFUSE(dev);
++    BlockBackend *blk;
++    DriveInfo *dinfo;
++    unsigned int nr_bytes;
 +    const char *prefix = object_get_canonical_path(OBJECT(dev));
 +
-+    if (!s->efuse) {
-+        error_setg(&error_abort, "%s: XLN-EFUSE not connected", prefix);
++    if (s->drv_index < 0) {
++        /* Set legacy compatibility */
++        s->drv_index = s->efuse_size <= 2048 ? 3 : 1;
 +    }
 +
-+    s->efuse->dev = dev;
++    dinfo = drive_get_by_index(IF_PFLASH, s->drv_index);
++    blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
++
++    nr_bytes = ROUND_UP((s->efuse_nr * s->efuse_size) / 8, 4);
++    s->fuse32 = g_malloc0(nr_bytes);
++    if (blk) {
++        qdev_prop_set_drive(dev, "drive", blk);
++
++        s->blk_ro = !blk_supports_write_perm(s->blk);
++        if (s->blk_ro) {
++            warn_report("%s: update not saved: backstore is read-only",
++                        object_get_canonical_path(OBJECT(s)));
++        }
++        blk_set_perm(s->blk,
++                     (BLK_PERM_CONSISTENT_READ
++                      | (s->blk_ro ? 0 : BLK_PERM_WRITE)), BLK_PERM_ALL,
++                     &error_abort);
++
++        if (blk_pread(s->blk, 0, (void *) s->fuse32, nr_bytes) < 0) {
++            error_setg(&error_abort, "%s: Unable to read-out contents."
++                         "backing file too small? Expecting %" PRIu32" bytes",
++                          prefix,
++                          (unsigned int) (nr_bytes));
++        }
++        if (const_le32(0x1234) != 0x1234) {
++            /* Convert from little-endian backstore for each 32-bit row */
++            unsigned int nr_u32;
++
++            for (nr_u32 = 0; nr_u32 < (nr_bytes / 4); nr_u32++) {
++                s->fuse32[nr_u32] = le32_to_cpu(s->fuse32[nr_u32]);
++            }
++        }
++    }
++
++    /* Sort readonly-list for bsearch lookup */
++    efuse_ro_bits_sort(s);
 +}
 +
-+static void zynqmp_efuse_init(Object *obj)
-+{
-+    XlnxZynqMPEFuse *s = ZYNQMP_EFUSE(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    RegisterInfoArray *reg_array;
-+
-+    memory_region_init(&s->iomem, obj, TYPE_XLNX_ZYNQMP_EFUSE, R_MAX * 4);
-+    reg_array =
-+        register_init_block32(DEVICE(obj), zynqmp_efuse_regs_info,
-+                              ARRAY_SIZE(zynqmp_efuse_regs_info),
-+                              s->regs_info, s->regs,
-+                              &zynqmp_efuse_ops,
-+                              ZYNQMP_EFUSE_ERR_DEBUG,
-+                              R_MAX * 4);
-+    memory_region_add_subregion(&s->iomem, 0, &reg_array->mem);
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+}
++static Property efuse_properties[] = {
++    DEFINE_PROP_UINT8("efuse-nr", XLNXEFuse, efuse_nr, 3),
++    DEFINE_PROP_UINT32("efuse-size", XLNXEFuse, efuse_size, 64 * 32),
++    DEFINE_PROP_INT32("drive-index", XLNXEFuse, drv_index, -1),
++    DEFINE_PROP_DRIVE("drive", XLNXEFuse, blk),
++    DEFINE_PROP_BOOL("init-factory-tbits", XLNXEFuse, init_tbits, true),
++    DEFINE_PROP_ARRAY("read-only", XLNXEFuse, ro_bits_cnt, ro_bits,
++                      qdev_prop_uint32, uint32_t),
++    DEFINE_PROP_END_OF_LIST(),
++};
 +
 +static const VMStateDescription vmstate_efuse = {
-+    .name = TYPE_XLNX_ZYNQMP_EFUSE,
++    .name = TYPE_XLNX_EFUSE,
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .minimum_version_id_old = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, XlnxZynqMPEFuse, R_MAX),
 +        VMSTATE_END_OF_LIST(),
 +    }
 +};
 +
-+static Property zynqmp_efuse_props[] = {
-+    DEFINE_PROP_LINK("efuse",
-+                     XlnxZynqMPEFuse, efuse,
-+                     TYPE_XLNX_EFUSE, XLNXEFuse *),
-+
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void zynqmp_efuse_class_init(ObjectClass *klass, void *data)
++static void efuse_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->reset = zynqmp_efuse_reset;
-+    dc->realize = zynqmp_efuse_realize;
++    dc->realize = efuse_realize;
 +    dc->vmsd = &vmstate_efuse;
-+    device_class_set_props(dc, zynqmp_efuse_props);
++    device_class_set_props(dc, efuse_properties);
 +}
 +
-+
 +static const TypeInfo efuse_info = {
-+    .name          = TYPE_XLNX_ZYNQMP_EFUSE,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(XlnxZynqMPEFuse),
-+    .class_init    = zynqmp_efuse_class_init,
-+    .instance_init = zynqmp_efuse_init,
++    .name          = TYPE_XLNX_EFUSE,
++    .parent        = TYPE_DEVICE,
++    .instance_size = sizeof(XLNXEFuse),
++    .class_init    = efuse_class_init,
 +};
 +
 +static void efuse_register_types(void)
 +{
 +    type_register_static(&efuse_info);
 +}
-+
 +type_init(efuse_register_types)
-diff --git a/include/hw/nvram/xlnx-zynqmp-efuse.h b/include/hw/nvram/xlnx-zynqmp-efuse.h
+diff --git a/include/hw/nvram/xlnx-efuse.h b/include/hw/nvram/xlnx-efuse.h
 new file mode 100644
-index 0000000000..97ac521ae4
+index 0000000000..0aee3f84d7
 --- /dev/null
-+++ b/include/hw/nvram/xlnx-zynqmp-efuse.h
-@@ -0,0 +1,45 @@
++++ b/include/hw/nvram/xlnx-efuse.h
+@@ -0,0 +1,80 @@
 +/*
-+ * Copyright (c) 2021 Xilinx Inc.
++ * QEMU model of the Xilinx eFuse core
++ *
++ * Copyright (c) 2015 Xilinx Inc.
++ *
++ * Written by Edgar E. Iglesias <edgari@xilinx.com>
 + *
 + * Permission is hereby granted, free of charge, to any person obtaining a copy
 + * of this software and associated documentation files (the "Software"), to deal
@@ -1116,28 +598,59 @@ index 0000000000..97ac521ae4
 + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 + * THE SOFTWARE.
 + */
-+#ifndef XLNX_ZYNQMP_EFUSE_H
-+#define XLNX_ZYNQMP_EFUSE_H
++
++#ifndef XLNX_EFUSE_H
++#define XLNX_EFUSE_H
 +
 +#include "qemu/osdep.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+#include "hw/nvram/xlnx-efuse.h"
++#include "sysemu/block-backend.h"
++#include "hw/qdev-core.h"
 +
-+#define TYPE_XLNX_ZYNQMP_EFUSE "xlnx,zynqmp-efuse"
++#define TYPE_XLNX_EFUSE "xlnx,efuse"
 +
-+#define XLNX_ZYNQMP_EFUSE_R_MAX ((0x10fc / 4) + 1)
++typedef struct XLNXEFuseLkSpec {
++    uint16_t row;
++    uint16_t lk_bit;
++} XLNXEFuseLkSpec;
 +
-+typedef struct XlnxZynqMPEFuse {
-+    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+    qemu_irq irq;
++typedef struct XLNXEFuse {
++    DeviceState parent_obj;
++    BlockBackend *blk;
++    bool blk_ro;
++    uint32_t *fuse32;
 +
-+    XLNXEFuse *efuse;
-+    uint32_t regs[XLNX_ZYNQMP_EFUSE_R_MAX];
-+    RegisterInfo regs_info[XLNX_ZYNQMP_EFUSE_R_MAX];
-+} XlnxZynqMPEFuse;
++    DeviceState *dev;
++
++    bool init_tbits;
++    int drv_index;
++
++    uint8_t efuse_nr;
++    uint32_t efuse_size;
++
++    uint32_t *ro_bits;
++    uint32_t ro_bits_cnt;
++} XLNXEFuse;
++
++uint32_t xlnx_efuse_calc_crc(const uint32_t *data, unsigned u32_cnt,
++                             unsigned zpads);
++
++bool xlnx_efuse_get_bit(XLNXEFuse *s, unsigned int bit);
++bool xlnx_efuse_set_bit(XLNXEFuse *s, unsigned int bit);
++bool xlnx_efuse_k256_check(XLNXEFuse *s, uint32_t crc, unsigned start);
++uint32_t xlnx_efuse_tbits_check(XLNXEFuse *s);
++
++/* Return whole row containing the given bit address */
++static inline uint32_t xlnx_efuse_get_row(XLNXEFuse *s, unsigned int bit)
++{
++    if (!(s->fuse32)) {
++        return 0;
++    } else {
++        unsigned int row_idx = bit / 32;
++
++        assert(row_idx < (s->efuse_size * s->efuse_nr / 32));
++        return s->fuse32[row_idx];
++    }
++}
 +
 +#endif
 -- 

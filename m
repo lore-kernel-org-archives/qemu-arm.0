@@ -1,103 +1,93 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1604906lfg;
-        Sun, 22 Aug 2021 23:53:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmFN/J5sfJmEYsUUN+SrGojL/LjKeNnFC0IPR/F4Jt8ZEyuF8pgJ4fUWvmAtaNKAIFaRxK
-X-Received: by 2002:a5d:8a05:: with SMTP id w5mr16877324iod.155.1629701607924;
-        Sun, 22 Aug 2021 23:53:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629701607; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1637299lfg;
+        Mon, 23 Aug 2021 00:51:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLPgPliXFCY8srv9HHDedSjDjpwjXlmW2QyHSz/dT++ERu4xfmlyP/2RzjhwDleQj08u2v
+X-Received: by 2002:a05:6602:25da:: with SMTP id d26mr25401422iop.106.1629705064521;
+        Mon, 23 Aug 2021 00:51:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629705064; cv=none;
         d=google.com; s=arc-20160816;
-        b=LHx9GLmte/WKNUU0yE7j8fT2rLFgJ4e3j6NRXF4caGKwI/c4iQ60zhhxgyVClxy7nj
-         17CTUGBoLNYUojDHTIruR2IJ/JV3TNcIY6xWXfo5p9On++9RSmC1pWQHI7VuoVsEtaTB
-         r3DfffxNXKlw7ODq/XtxcM/9qR+QUO9QnBOa/3SWNAyd+HUIwZWmQlluOVUDHn9d2oQT
-         o0Oz5cXqc9j5HH1e+ld4Tj71dYHml7rxMnYWvS1rIF1E0wgrtCq4VTr4IbOoxJ7CPdnc
-         zVZ3jwHK0xm+pzYkyAidlr92gZrxwjSR8Lwz62e17Evtksw5/IJhjhbAL1y6EZO50oms
-         GB7w==
+        b=uQmazrm1zkNeH16wrpM2O6dfdCh+Zcno6G25J0GqCVE7Y/GRBAS/++KeTlDZhmn4XI
+         uWVIsIbT2+GG+0E7h2aDXk4PRCyb/U/IVpg9+YKT4B+qwG9JxhLAqEa7Hx2QJZDDzb2s
+         vYUhtsWPG9buSP+sqxtYx2OXX3b3rJO/awrSKHWuQZZ5UI2/K0vJO6yTmPsiA7meNHw0
+         4I/McDwdZdIU3KmfSKngNKBmzkvG7GgGiOR3wcsr5XyiYn9DC/i3t9HM7V7bh+cnMm1i
+         Gwgajx7J7P/2+NNtX9/EsW5W8Cx0ftE4EsVwHhQ/Qwdi9177N6+avhLqe47FMiMtLUAO
+         mqqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=uO2Mp78lySxPx+yK9SJCUMucZmEqrJNQe0KMLuRtxLk=;
-        b=Ue7GJxzVBHRClXl7nl16ulBdS0U9zzC+J1PYW2cizW0m6abBCVWWtf3LXtCeB7z/u+
-         oZJURuAKlIMCR30ja+TSTzr/zq7HSfXvjo9W04/+MuxZYLelQhlootd4c8itHgxssOai
-         XOg808qziFn4KWKP5/Ddq/ZVqRQsK5CgWb7wDVv7zq/6w7MEuBYcEtzs5j21hsxXkUEN
-         R2ghpcy6NbDx/P2oLtHVs/JR3VcSbqsOQeEGLMzv4ozEzGGiExyH8E2uDEKLC8JC28uY
-         QmwsMgFjM4AwV5wrgmFShkeQnwMHfudmfXLZFBpgfidw67MDR10iKU5C7NErpTht18jd
-         mDIw==
+         :list-unsubscribe:list-id:precedence:mime-version:accept-language
+         :message-id:date:thread-index:thread-topic:subject:to:from
+         :dkim-signature:content-transfer-encoding:content-language;
+        bh=c+Tao1+BsfDTN+XLllNllm5gzStyNtK9gbmeZvMRYT4=;
+        b=t+DsH5fBeySaxAnpBJWxI7XVxnuf7GMfArMi0/G7PI22v7ifEPV0UMEcX2ujR8yxOg
+         UjPC8G/1hDH4eqrTSEwzFS30aboH6JthbQN+4R9tXP2/bOinFKB41qkH0Ay6B3pvQDYF
+         Ibem5+50TXhXxempj/gISbvBOJvilo14yeOVj9TL1e9noamfnj9vPuSfsMka5vrX02I3
+         9wlZuElWODuSWQkeme6nTdd+Hrk6/y8bdsfUxQGFZCroo7TcJEWpUniE4IjpE8u6m3fV
+         A+yCgzJog7ETaz7g5YnM4DUpYyzyvgGOZkp0nJljrcFnrq5hgiIfzDRKHrWhp6ckgqse
+         xXCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lpmufmh5;
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=M+Ce2Pk8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17si5774253iow.29.2021.08.22.23.53.27
+        by mx.google.com with ESMTPS id u5si14028484jam.103.2021.08.23.00.51.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Aug 2021 23:53:27 -0700 (PDT)
+        Mon, 23 Aug 2021 00:51:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lpmufmh5;
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=M+Ce2Pk8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35898 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+Received: from localhost ([::1]:51146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mI3pn-0002qf-99
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 02:53:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37666)
+	id 1mI4jX-0007IL-Sz
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 03:51:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mI3pd-0002ok-V9; Mon, 23 Aug 2021 02:53:17 -0400
-Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f]:35479)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mI3pc-00034Q-Fx; Mon, 23 Aug 2021 02:53:17 -0400
-Received: by mail-io1-xd2f.google.com with SMTP id a15so20506192iot.2;
- Sun, 22 Aug 2021 23:53:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uO2Mp78lySxPx+yK9SJCUMucZmEqrJNQe0KMLuRtxLk=;
- b=Lpmufmh5yEIn/y82poP9By+pOOUkw6RI4uHUpUKUpw4NHUqnWODG9UNeZs4541IQLz
- eQ4zuW4jTEA/MccMnCwpzv3tINKUpElgzVJaQDwzEV6T9oEpOXrMaideJEl9L9TPoT7y
- AgtRXNl3UVXTMxEvg/zkpqVYQNL9FSE+xivCPZVCM+y7I1ctfqBe0yPkjRs0QnCAITb5
- HZZfZZliKZRIrnRScYtXiV99IxW6a+SEhz8ZDaNhel6vPXO1zy60fkWrvW8ZZ68dRmUo
- ZAlwQRHmfL54HcQj3B/1OCBmSVAeP5Cftn2V/yotzfg4Cc30pnwrIvcdXkZwqH9nH2kF
- VqyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uO2Mp78lySxPx+yK9SJCUMucZmEqrJNQe0KMLuRtxLk=;
- b=E7f65uNa1P1el8IGULPdZ3GqwofuScBrR6IIYOeMX39fMIRyWoyRD8BW2T25fPOq7m
- GyENwUTwI0a+N+Eq8W5686SK+UVgBvyL4BLgv7cmdoTdBEMn6oonziKd1FmsXd/slYrs
- y7p7xeKWFHL9SYvXGljbQm+yFGgjhzxr+gWb5aMnOsNp7gMOj7VnUbLsjNNgCP1PYGcV
- QxB0Yz55YLdqo7AhtZWq66zXpK8NDSihX0WJG3yZRKIE4K1UOrdBC39ow8MxWyeiPxhF
- FM4fVH1pqp+r5H7B2lJkbe7L0mz3V1CoL8awU7k8UHZCSj83ymSDhQmykmTsZW5Wax5C
- s7rA==
-X-Gm-Message-State: AOAM531ufZxFAp7Y9/1y9arZG0XszJGZYI4xTLLa7iJYiDLnVSXhDAGc
- Gk/MRbSCBbslXkHLq+s2PNwrLfZ6V5+Vhu0003s=
-X-Received: by 2002:a05:6602:3c5:: with SMTP id g5mr920298iov.42.1629701594959; 
- Sun, 22 Aug 2021 23:53:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <Renwei.Liu@verisilicon.com>)
+ id 1mI4jP-0007Hg-OD; Mon, 23 Aug 2021 03:50:55 -0400
+Received: from shasxm06.verisilicon.com ([101.89.135.45]:53942
+ helo=shasxm03.verisilicon.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <Renwei.Liu@verisilicon.com>)
+ id 1mI4jK-0000Fj-Uf; Mon, 23 Aug 2021 03:50:55 -0400
+Content-Language: zh-CN
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
+ c=simple/simple; t=1629705030; h=from:subject:to:date:message-id;
+ bh=o/GHdw+34+Z7SK9LYxDvgzBzBQFTEeRyXNHkEnmIzaU=;
+ b=M+Ce2Pk8H0ueEZOO6k1BSspL6p+RjZAw4eZIHIvtS+EL8rRQxTX88SLJge8laeHnwCOP6rI9aKZ
+ 6uixngj6TTQim/DUB24MazMUN9jG0RWKF0KLv+gOibBvHG3BgKgE0MwpxyToYtDVWeK2p7p99hcnl
+ i6F/9YqEpoJuA64V1kA=
+Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
+ SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
+ 14.03.0408.000; Mon, 23 Aug 2021 15:50:29 +0800
+From: "Liu, Renwei" <Renwei.Liu@verisilicon.com>
+To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>
+Subject: [PATCH v2] hw/arm/smmuv3: Simplify range invalidation
+Thread-Topic: [PATCH v2] hw/arm/smmuv3: Simplify range invalidation
+Thread-Index: AdeX84o6Zl+vD6dIRwucF0VY/o+mnw==
+Date: Mon, 23 Aug 2021 07:50:28 +0000
+Message-ID: <4FA89A717CD8094DBA0FE20FA5F98EAA010E6E9940@SHASXM03.verisilicon.com>
+Accept-Language: zh-CN, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.10.46.44]
+x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
+x-tm-as-result: No--3.261400-0.000000-31
+x-tm-as-user-approved-sender: Yes
+x-tm-as-user-blocked-sender: No
 MIME-Version: 1.0
-References: <20210823020813.25192-1-bmeng.cn@gmail.com>
- <20210823020813.25192-3-bmeng.cn@gmail.com>
- <CAKmqyKMzq-F=MYMA=_7MeLTodxY7Eo91Nta4nKuncvAZ=bQUOQ@mail.gmail.com>
- <CAEUhbmUscqN-8fe2BwJ3dRN63fJd5qVPQnnM+ifm5qjt1pPdhw@mail.gmail.com>
-In-Reply-To: <CAEUhbmUscqN-8fe2BwJ3dRN63fJd5qVPQnnM+ifm5qjt1pPdhw@mail.gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 23 Aug 2021 16:52:48 +1000
-Message-ID: <CAKmqyKN3WnF6iNTYOCJ9o71TurwUtu7yMD4MKpQfEbi8Hy2-qA@mail.gmail.com>
-Subject: Re: [PATCH 2/3] hw/char: cadence_uart: Disable transmit when input
- clock is disabled
-To: Bin Meng <bmeng.cn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2f;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd2f.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=101.89.135.45;
+ envelope-from=Renwei.Liu@verisilicon.com; helo=shasxm03.verisilicon.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,59 +101,124 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
+ Jianxian" <Jianxian.Wen@verisilicon.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Li,
+ Chunming" <Chunming.Li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yjpz0+9OUscO
+X-TUID: 6c4kH4xIyP/R
 
-On Mon, Aug 23, 2021 at 2:53 PM Bin Meng <bmeng.cn@gmail.com> wrote:
->
-> On Mon, Aug 23, 2021 at 12:43 PM Alistair Francis <alistair23@gmail.com> wrote:
-> >
-> > On Mon, Aug 23, 2021 at 12:11 PM Bin Meng <bmeng.cn@gmail.com> wrote:
-> > >
-> > > At present when input clock is disabled, any character transmitted
-> > > to tx fifo can still show on the serial line, which is wrong.
-> > >
-> > > Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
-> > > Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-> > > ---
-> > >
-> > >  hw/char/cadence_uart.c | 5 +++++
-> > >  1 file changed, 5 insertions(+)
-> > >
-> > > diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-> > > index b4b5e8a3ee..154be34992 100644
-> > > --- a/hw/char/cadence_uart.c
-> > > +++ b/hw/char/cadence_uart.c
-> > > @@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_use, GIOCondition cond,
-> > >  static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf,
-> > >                                 int size)
-> > >  {
-> > > +    /* ignore characters when unclocked or in reset */
-> > > +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-> > > +        return;
-> > > +    }
-> >
-> > Should we log a guest error here?
-> >
->
-> Not sure. Based on my past experience of many hardware, if the input
-> clock is disabled, accessing the whole register block might cause a
-> bus fault. But I believe such bus fault is not modeled in QEMU.
->
-> This change just mirrors the same check on the Rx side.
+Simplify range invalidation which can avoid to iterate over all
+iotlb entries multi-times. For instance invalidations patterns like
+"invalidate 32 4kB pages starting from 0xffacd000" need to iterate over
+all iotlb entries 6 times (num_pages: 1, 2, 16, 8, 4, 1). It only needs
+to iterate over all iotlb entries once with new implementation.
 
-Ok:
+Signed-off-by: Renwei Liu <renwei.liu@verisilicon.com>
+---
+v2:
+ - Remove file mode change.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+ hw/arm/smmu-common.c   |  6 +++---
+ hw/arm/smmu-internal.h |  2 +-
+ hw/arm/smmuv3.c        | 22 ++++------------------
+ 3 files changed, 8 insertions(+), 22 deletions(-)
 
-Alistair
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 0459850a93..ccb085f83c 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -142,8 +142,8 @@ static gboolean smmu_hash_remove_by_asid_iova(gpointer =
+key, gpointer value,
+     if (info->asid >=3D 0 && info->asid !=3D SMMU_IOTLB_ASID(iotlb_key)) {
+         return false;
+     }
+-    return ((info->iova & ~entry->addr_mask) =3D=3D entry->iova) ||
+-           ((entry->iova & ~info->mask) =3D=3D info->iova);
++    return (entry->iova >=3D info->iova) &&
++           ((entry->iova + entry->addr_mask) < (info->iova + info->range))=
+;
+ }
+=20
+ inline void
+@@ -167,7 +167,7 @@ smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t =
+iova,
+=20
+     SMMUIOTLBPageInvInfo info =3D {
+         .asid =3D asid, .iova =3D iova,
+-        .mask =3D (num_pages * 1 << granule) - 1};
++        .range =3D num_pages * 1 << granule};
+=20
+     g_hash_table_foreach_remove(s->iotlb,
+                                 smmu_hash_remove_by_asid_iova,
+diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+index 2d75b31953..f0e3a777af 100644
+--- a/hw/arm/smmu-internal.h
++++ b/hw/arm/smmu-internal.h
+@@ -101,7 +101,7 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize=
+,
+ typedef struct SMMUIOTLBPageInvInfo {
+     int asid;
+     uint64_t iova;
+-    uint64_t mask;
++    uint64_t range;
+ } SMMUIOTLBPageInvInfo;
+=20
+ typedef struct SMMUSIDRange {
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 01b60bee49..0b009107d1 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -857,7 +857,7 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int=
+ asid, dma_addr_t iova,
+=20
+ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+ {
+-    dma_addr_t end, addr =3D CMD_ADDR(cmd);
++    dma_addr_t addr =3D CMD_ADDR(cmd);
+     uint8_t type =3D CMD_TYPE(cmd);
+     uint16_t vmid =3D CMD_VMID(cmd);
+     uint8_t scale =3D CMD_SCALE(cmd);
+@@ -866,7 +866,6 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cm=
+d)
+     bool leaf =3D CMD_LEAF(cmd);
+     uint8_t tg =3D CMD_TG(cmd);
+     uint64_t num_pages;
+-    uint8_t granule;
+     int asid =3D -1;
+=20
+     if (type =3D=3D SMMU_CMD_TLBI_NH_VA) {
+@@ -880,23 +879,10 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *=
+cmd)
+         return;
+     }
+=20
+-    /* RIL in use */
+-
+     num_pages =3D (num + 1) * BIT_ULL(scale);
+-    granule =3D tg * 2 + 10;
+-
+-    /* Split invalidations into ^2 range invalidations */
+-    end =3D addr + (num_pages << granule) - 1;
+-
+-    while (addr !=3D end + 1) {
+-        uint64_t mask =3D dma_aligned_pow2_mask(addr, end, 64);
+-
+-        num_pages =3D (mask + 1) >> granule;
+-        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, =
+leaf);
+-        smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
+-        smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
+-        addr +=3D mask + 1;
+-    }
++    trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf=
+);
++    smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
++    smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
+ }
+=20
+ static gboolean
+--=20
+2.32.0
 
->
-> Regards,
-> Bin

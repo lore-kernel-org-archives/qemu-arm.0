@@ -1,114 +1,105 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1739608lfg;
-        Mon, 23 Aug 2021 03:44:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyH8VcR8k+0wswlmdiHUqdykuclZmFI8c+LbUxARkdtg8Nh3HL8bTodY7Oaj2nr0PLMyUqD
-X-Received: by 2002:a25:c7d1:: with SMTP id w200mr46518497ybe.161.1629715450917;
-        Mon, 23 Aug 2021 03:44:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629715450; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1857929lfg;
+        Mon, 23 Aug 2021 06:15:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyfXwTqqmjxZ8rLCgy6jUSsa0BvY4ceoF6cJv7ycbO9m9VlS7IIGsvOA9ouGzk767FWSKt
+X-Received: by 2002:adf:d4c2:: with SMTP id w2mr13860981wrk.235.1629724553379;
+        Mon, 23 Aug 2021 06:15:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629724553; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZbXdgaF/A2MUOtJv3IpJxkR6KEsUWlQiM7b+NGqNlic5i6EI79iEH/YZJgkhK3IVO
-         I98LkMeu+GFK4L1MAjv+cdp+EdnsoJDHV1ZnmhUPG+qz7Ni2aXAMaid8I5xeWIRn2B5D
-         DzLWC7wlzXDnLxDcpxKqeCOHHzL18N2RHFvpOuoJ+BBojvIiBDNLk9iF70MMq9+nb78x
-         5y0C+1RaanlDMXvyiCUh7rik/IxKhzqNXdCNbZHm93ak8ZIf0WfhO/s6DQYaWVkfBS1o
-         K4ewR8CPntoZsmdTujc2krCRLsNUWhjxNX9+C6TN1wGY+2X9jcAIn3QqFyaUU/VWybdJ
-         r3sA==
+        b=cQ3sKfcyaJ6qkgZYU5VOY9M4aixTILsjV4Klcw7uWDKf+ieKsEZMjqiFqFRo8lBM1b
+         l0pE3GBKNyiejyIjvhUedr6WtcZam98KeYlBQfyTvqrWAFaVc29nmIuP/Yn5Z2ydzvUz
+         OCXz5nkhYMh6/BELomx8F40hQ5F2xmpL1ge56Fsnet8VcAEh+H/KArZrGY04P7Zyl1c2
+         nJTbhGikUmM1V/gFikWTq0OO55yPN5ZQ5MVz0MoDi9GJGg8+/e8etmTKJ5WtSuX7eVqI
+         kyRjggvqBl7UMEOUTMrkvcy+MAH/7wAl+Y8DJA401LZRhft7JM5XKUqBN5nDUlKYnG7R
+         r+2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=EAHnzb/jk9Bwzx+S2TOYL6gtVJvewz88cp4uAB7MZAU=;
-        b=B3k6RpzhdrDkdE7hwyjIhyD7AJ1FJX+aMqutcg5+rAN7Um/ez9Q1A6qfUNwtO3ugoU
-         0TF50B9DC1br98cxrIMhDSU641txXStDAg2kRUziufLKCWTyRDCIcp9L7vreJo84X6Ky
-         L/YDpZ+OEatd1DG9fYrHnnqzJnG7BR8Q/XUz7oi9n1EpsmoPiN6/0j7RI3572XsDO51B
-         Zh8w2moxv1rVtjs7Plxk+SACAfPN0pefFLg//gHD5hlllFetOCB/hA5GR/j43l67xS71
-         gqDLGwsificKAy2y4lvtW3fqnRjC25Pev+6LcwdvsHj89sI8a61xAvSVFncpNvDkSLmC
-         HRfg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=spKdm9geKtE/E5yhEuEPimYw92h9jyC8g4zAbiYi/Xc=;
+        b=eJWWJcHfaxryFcX58MMA/3PJzUKv+P4Q9OGySzOLQhjie08loZbsDRwv9dXcNsQakd
+         BNypmAWZfeha89+C+kgh7fzISb5uHL7RqNknmfe86mecuFxmmwCRgz3NqJkF6lTrgiXN
+         EjNUxdVmvsHSn1/2Iq3sNp7zFotgBThaeqT24amfVj2K2ftWp0PE8ll0J4ZKKyc2NmRL
+         XW82kWg7k8J6RBHvGQqMjCb2NsHOM36AfA929ybEiPcYs8QGS5ezb2X2q/8kEdglveya
+         1Dcof4K4/v6fREn212FscC/GoEoO64zNHddPIE3Cg3G58RvObVI4HxZ1wq9TJg2fguNV
+         k05Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UoBqcnkF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DY86dlZq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n71si13563598ybn.60.2021.08.23.03.44.10
+        by mx.google.com with ESMTPS id k24si11429054wmj.53.2021.08.23.06.15.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 03:44:10 -0700 (PDT)
+        Mon, 23 Aug 2021 06:15:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UoBqcnkF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45540 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DY86dlZq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mI7R2-0004NC-Fu
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 06:44:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54046)
+	id 1mI9ns-0008OQ-8y
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 09:15:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55124)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mI7Qf-0004MV-UB; Mon, 23 Aug 2021 06:43:45 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:39825)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mI9n6-0008LP-Fv; Mon, 23 Aug 2021 09:15:04 -0400
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e]:36625)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mI7Qe-0004PC-6x; Mon, 23 Aug 2021 06:43:45 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- f9-20020a05600c1549b029025b0f5d8c6cso13704844wmg.4; 
- Mon, 23 Aug 2021 03:43:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mI9n4-00027s-QU; Mon, 23 Aug 2021 09:15:04 -0400
+Received: by mail-yb1-xb2e.google.com with SMTP id f15so5694094ybg.3;
+ Mon, 23 Aug 2021 06:15:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EAHnzb/jk9Bwzx+S2TOYL6gtVJvewz88cp4uAB7MZAU=;
- b=UoBqcnkFK8F2uIvQ2eeVB6q24Bbh00DETGujcTdSlwU76FtZtMyzTTsbfVtIl7sDgk
- cl5KMjZE9KVZpsD3AGg8TbEAJpK5PRWCs53J+IkTAYmO9NnW+5cjxhFw7PteWef3Z822
- IVAQxuzEkM+kJRuRj6b9AUp1HTu0AvMQbTxLrHEe/uIr/kbQCU33h+k4IX8B4hlEjM0j
- o6DGecNnIkLHHw8RvUdSIJUWjTs/XKg0sim/FvQahe0h65j+ApiSbGJiNM9niarPL3tP
- nf0ETav80GEOl3a26IVOYDptn+JlN1AQigaCxr99avYZRpQX3iZ5S7E6xsIpOelM0nlc
- oYxg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=spKdm9geKtE/E5yhEuEPimYw92h9jyC8g4zAbiYi/Xc=;
+ b=DY86dlZqQPXDGKsl9c20bhgOKqHvcQXr8wbpP1BJge1vHTOJMnyKdFnhpszq8Mutsw
+ Xa1gEeJYKJT45/7lVZ4OrlkqxXAkMZfleXpn7uanAj6J9wHe7+wD3mPMp2dECKo8ydWX
+ rlB+IjQDvSw8ANm2re+jHBXDKUxd6i/+A5XJnZqEac/ZKQgaImO32oqOLK21etJI68DS
+ WSYc1OvisvL4EowX5Y4voqJQKMNx8nf27v01f5QkbGV3yzbFQmA5PfbLrobPUGRt+KGN
+ OCTRSe/k3uUVMGUa8IrWljDlG3qVcaC20lVeBgvkwDGMa2syxJkAj1Sz6FPOWWZQUrbh
+ Au3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EAHnzb/jk9Bwzx+S2TOYL6gtVJvewz88cp4uAB7MZAU=;
- b=oOQmv5eair7td302ZTT+3hovUdY4fS0C7ZDwxn7a3Ynxu33GMYhvNHTvK+1D65vjKm
- UwGbiN3BAicYbh83aeDNmgv5u1sNLz28J4yy+Xxe0TZeqWJqm1I5Y59qXyM9t1XPoj9K
- A61Gd4exnpG8L7Id01OzBnHtYO6LfmO7/PxDEw7zTwoCL9v+hEye6m6r8TLvSWDlEAr5
- EQZKd+xhUDb7sRAtgCsXqcdVZ2b9Ukdd9itTCp+QBZ/Y2aZp+x8kJlQVqkfjXR0R8b/7
- aZed9Y2En5dfrU9ShUeZw52kdp0rA+j9g2TVeSxU6vc/g8/dC58a/+kL8PdMvc5AfEwF
- JcNQ==
-X-Gm-Message-State: AOAM533GtQw9nczfLtpCzMLB0o/fqXzwpFUNlbiO3NJGjvTOaAEIMJeR
- 2urfGYsITZUnuyp3TFjg7GA=
-X-Received: by 2002:a1c:7ecb:: with SMTP id
- z194mr15715989wmc.182.1629715421907; 
- Mon, 23 Aug 2021 03:43:41 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id t8sm17190831wrx.27.2021.08.23.03.43.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Aug 2021 03:43:41 -0700 (PDT)
-Subject: Re: [PATCH 2/3] hw/char: cadence_uart: Disable transmit when input
- clock is disabled
-To: Bin Meng <bmeng.cn@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=spKdm9geKtE/E5yhEuEPimYw92h9jyC8g4zAbiYi/Xc=;
+ b=ZB0J01vFcuODCuhZoFTv0+SnvYmFV1whaykl8Rlp8jakiekrv7lOhpk1lq8lR8SXE1
+ e91mmSmzJOGw4DWgV9knJB/LrtfqZZbHMWMvRFuPRqcz0YWUI6CagoT87uIdccnF9jT/
+ 21dtcqK/WPMOCotvRrCEQGODTS005HnLS4PsihupcEJALijdi/1wIKwEUXu166dIpsYs
+ GuQG1nxTtNo9o6xnvGbmC2IY8DkudepF/296IKhfxaSgMr6j3/lfp4AZyikVkEsx95Of
+ fql0w1bdV7lx5rFHyFELARA2reB7zEt1JooOmoOpjvt0GOlUJqS89La1bhULY02uiXry
+ vYSw==
+X-Gm-Message-State: AOAM533IemDNooXIQ17G6thtC0H1ts5IhKE4+zOGX8b4ZxoMdmA0s+zW
+ 9nPjJeB6vCRny4QyIZ0V5cdI7YXGA0gMxhWkXMQ=
+X-Received: by 2002:a5b:304:: with SMTP id j4mr42814204ybp.314.1629724501331; 
+ Mon, 23 Aug 2021 06:15:01 -0700 (PDT)
+MIME-Version: 1.0
 References: <20210823020813.25192-1-bmeng.cn@gmail.com>
  <20210823020813.25192-3-bmeng.cn@gmail.com>
  <7997927e-3a66-aa0e-6099-f1efe3cbb9ee@amsat.org>
  <CAEUhbmVVRKebU-=k0WaxpaRe-E_UsLy_82K0PzRE=7xNHp9hGQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <abf7ac8e-c5bc-e239-ab9b-a9d868b477dc@amsat.org>
-Date: Mon, 23 Aug 2021 12:43:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <CAEUhbmVVRKebU-=k0WaxpaRe-E_UsLy_82K0PzRE=7xNHp9hGQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+ <abf7ac8e-c5bc-e239-ab9b-a9d868b477dc@amsat.org>
+In-Reply-To: <abf7ac8e-c5bc-e239-ab9b-a9d868b477dc@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Mon, 23 Aug 2021 21:14:50 +0800
+Message-ID: <CAEUhbmUbeYzbO0dnj2d6A58_Yb=Z9bWFd=1U=iP4GZTqDuz6xQ@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/char: cadence_uart: Disable transmit when input
+ clock is disabled
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.959,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -124,118 +115,134 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g1qahGR/y1L6
+X-TUID: JHoG7XgZo9gC
 
-On 8/23/21 11:57 AM, Bin Meng wrote:
-> On Mon, Aug 23, 2021 at 4:14 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> On 8/23/21 4:08 AM, Bin Meng wrote:
->>> At present when input clock is disabled, any character transmitted
->>> to tx fifo can still show on the serial line, which is wrong.
->>>
->>> Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
->>> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
->>> ---
->>>
->>>  hw/char/cadence_uart.c | 5 +++++
->>>  1 file changed, 5 insertions(+)
->>>
->>> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
->>> index b4b5e8a3ee..154be34992 100644
->>> --- a/hw/char/cadence_uart.c
->>> +++ b/hw/char/cadence_uart.c
->>> @@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_use, GIOCondition cond,
->>>  static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf,
->>>                                 int size)
->>>  {
->>> +    /* ignore characters when unclocked or in reset */
->>> +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
->>> +        return;
->>> +    }
->>
->> Incorrect handler?
->>
-> 
-> Sorry I don't get it. This patch is for the Tx path, while patch #3 is
-> for the Rx path.
+On Mon, Aug 23, 2021 at 6:43 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 8/23/21 11:57 AM, Bin Meng wrote:
+> > On Mon, Aug 23, 2021 at 4:14 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org> wrote:
+> >>
+> >> On 8/23/21 4:08 AM, Bin Meng wrote:
+> >>> At present when input clock is disabled, any character transmitted
+> >>> to tx fifo can still show on the serial line, which is wrong.
+> >>>
+> >>> Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
+> >>> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+> >>> ---
+> >>>
+> >>>  hw/char/cadence_uart.c | 5 +++++
+> >>>  1 file changed, 5 insertions(+)
+> >>>
+> >>> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> >>> index b4b5e8a3ee..154be34992 100644
+> >>> --- a/hw/char/cadence_uart.c
+> >>> +++ b/hw/char/cadence_uart.c
+> >>> @@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_u=
+se, GIOCondition cond,
+> >>>  static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *b=
+uf,
+> >>>                                 int size)
+> >>>  {
+> >>> +    /* ignore characters when unclocked or in reset */
+> >>> +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s)=
+)) {
+> >>> +        return;
+> >>> +    }
+> >>
+> >> Incorrect handler?
+> >>
+> >
+> > Sorry I don't get it. This patch is for the Tx path, while patch #3 is
+> > for the Rx path.
+>
+> Sorry, I was not totally awake o_O
+>
+> -- >8 --
+> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> index b4b5e8a3ee0..78990ea79dc 100644
+> --- a/hw/char/cadence_uart.c
+> +++ b/hw/char/cadence_uart.c
+> @@ -403,15 +403,20 @@ static void uart_read_rx_fifo(CadenceUARTState *s,
+> uint32_t *c)
+>      uart_update_status(s);
+>  }
+>
+> -static void uart_write(void *opaque, hwaddr offset,
+> -                          uint64_t value, unsigned size)
+> +static MemTxResult uart_write(void *opaque, hwaddr offset, uint64_t valu=
+e,
+> +                              unsigned size, MemTxAttrs attrs)
+>  {
+>      CadenceUARTState *s =3D opaque;
+>
+> +    /* ignore characters when unclocked or in reset */
+> +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
+> +        return MEMTX_DECODE_ERROR;
+> +    }
+> +
+>      DB_PRINT(" offset:%x data:%08x\n", (unsigned)offset, (unsigned)value=
+);
+>      offset >>=3D 2;
+>      if (offset >=3D CADENCE_UART_R_MAX) {
+> -        return;
+> +        return MEMTX_OK;
+>      }
+>      switch (offset) {
+>      case R_IER: /* ier (wts imr) */
+> @@ -458,14 +463,21 @@ static void uart_write(void *opaque, hwaddr offset,
+>          break;
+>      }
+>      uart_update_status(s);
+> +
+> +    return MEMTX_OK;
+>  }
+>
+> -static uint64_t uart_read(void *opaque, hwaddr offset,
+> -        unsigned size)
+> +static MemTxResult uart_read(void *opaque, hwaddr offset, uint64_t *data=
+,
+> +                             unsigned size, MemTxAttrs attrs)
+>  {
+>      CadenceUARTState *s =3D opaque;
+>      uint32_t c =3D 0;
+>
+> +    /* ignore characters when unclocked or in reset */
+> +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
+> +        return MEMTX_DECODE_ERROR;
+> +    }
+> +
+>      offset >>=3D 2;
+>      if (offset >=3D CADENCE_UART_R_MAX) {
+>          c =3D 0;
+> @@ -476,12 +488,14 @@ static uint64_t uart_read(void *opaque, hwaddr offs=
+et,
+>      }
+>
+>      DB_PRINT(" offset:%x data:%08x\n", (unsigned)(offset << 2),
+> (unsigned)c);
+> -    return c;
+> +    *data =3D c;
+> +
+> +    return MEMTX_OK;
+>  }
+>
+>  static const MemoryRegionOps uart_ops =3D {
+> -    .read =3D uart_read,
+> -    .write =3D uart_write,
+> +    .read_with_attrs =3D uart_read,
+> +    .write_with_attrs =3D uart_write,
+>      .endianness =3D DEVICE_NATIVE_ENDIAN,
+>  };
 
-Sorry, I was not totally awake o_O
+Thanks, but I think the above change should be a totally separate patch.
 
--- >8 --
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index b4b5e8a3ee0..78990ea79dc 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -403,15 +403,20 @@ static void uart_read_rx_fifo(CadenceUARTState *s,
-uint32_t *c)
-     uart_update_status(s);
- }
-
--static void uart_write(void *opaque, hwaddr offset,
--                          uint64_t value, unsigned size)
-+static MemTxResult uart_write(void *opaque, hwaddr offset, uint64_t value,
-+                              unsigned size, MemTxAttrs attrs)
- {
-     CadenceUARTState *s = opaque;
-
-+    /* ignore characters when unclocked or in reset */
-+    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-+        return MEMTX_DECODE_ERROR;
-+    }
-+
-     DB_PRINT(" offset:%x data:%08x\n", (unsigned)offset, (unsigned)value);
-     offset >>= 2;
-     if (offset >= CADENCE_UART_R_MAX) {
--        return;
-+        return MEMTX_OK;
-     }
-     switch (offset) {
-     case R_IER: /* ier (wts imr) */
-@@ -458,14 +463,21 @@ static void uart_write(void *opaque, hwaddr offset,
-         break;
-     }
-     uart_update_status(s);
-+
-+    return MEMTX_OK;
- }
-
--static uint64_t uart_read(void *opaque, hwaddr offset,
--        unsigned size)
-+static MemTxResult uart_read(void *opaque, hwaddr offset, uint64_t *data,
-+                             unsigned size, MemTxAttrs attrs)
- {
-     CadenceUARTState *s = opaque;
-     uint32_t c = 0;
-
-+    /* ignore characters when unclocked or in reset */
-+    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-+        return MEMTX_DECODE_ERROR;
-+    }
-+
-     offset >>= 2;
-     if (offset >= CADENCE_UART_R_MAX) {
-         c = 0;
-@@ -476,12 +488,14 @@ static uint64_t uart_read(void *opaque, hwaddr offset,
-     }
-
-     DB_PRINT(" offset:%x data:%08x\n", (unsigned)(offset << 2),
-(unsigned)c);
--    return c;
-+    *data = c;
-+
-+    return MEMTX_OK;
- }
-
- static const MemoryRegionOps uart_ops = {
--    .read = uart_read,
--    .write = uart_write,
-+    .read_with_attrs = uart_read,
-+    .write_with_attrs = uart_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
----
+Regards,
+Bin

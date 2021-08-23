@@ -1,217 +1,117 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1894235lfg;
-        Mon, 23 Aug 2021 06:58:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVpD1rBX0UEmQb1ZPZM3zPJ+3319+cz6fdShsRyaxR7OYPbThyG+tlD6iCsffaW+Y6mW2c
-X-Received: by 2002:a37:f515:: with SMTP id l21mr17871056qkk.234.1629727133021;
-        Mon, 23 Aug 2021 06:58:53 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1629727133; cv=pass;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1913770lfg;
+        Mon, 23 Aug 2021 07:20:16 -0700 (PDT)
+X-Received: by 2002:a63:3244:: with SMTP id y65mr32543176pgy.210.1629728416324;
+        Mon, 23 Aug 2021 07:20:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629728416; cv=none;
         d=google.com; s=arc-20160816;
-        b=VJ988o16SsCBcKf5Cly8nOKpFHSJ/JENCwd+ANH3Uzq0QnhQ71pU2Dz5G0iAeCBL9D
-         0WFOiSIQ8qrV4YwLYGORk9XayOPVtdHo/hKqBODsqamNhGGhKyr9qSpy8dd4e60/hfop
-         aMInJLY+z4WimhG6kZU7r0DBCWX0KdW5npe2WhOEBo8Wu2P50fQsHqoEF1njOC46mMIH
-         8kIcjJoHBoyrbZDR2ld5C/2frv1ESqZYfHtFhLBwWzNGJm/keh0BSQSdsDwYX5fYa0kL
-         IXw+7ljt6kBGIOuSPt6TNqNOmxW94R8SBtOkAEOWjzfd6HOVtNo9MeKh7iHvp/D16rXE
-         OV7A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=3ccxWfg2wKZNbZqoEVKdVGQ/e62J5Mt2O8yA5x9PMk4=;
-        b=t7qTW6HBVLgbuT+4uNXWxpQgdxeVebYWFcTVzcVRLn8Gh7zakyoNZsNhb6vztA6Zq/
-         p7sHKPonKlRee2CUSLH4wRF1HDZxO/8YZ+FFSTI4vWNhuJW+VSCaHGjEmcSXjD9kzg6e
-         9lUMsUUi1hJM6fx5gWX8HkwOkVjYJirA+MBc/XaKd+pMU6R7nZQlE71+/T26Ck6VAwEo
-         TtSQrrw+sIgcUtm0pyyIDJacVvH63Gw3ST/b7YVWq8qx8iTSpMNkmkkvbcT2IiTDMdfw
-         KuZy27/zihTgHOuLlbWPExiyQ4EBhGzMu0+RcfWQHRM7SkIgbvHeskv4AKrubimwq7I0
-         8bBg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=Io8edpLs;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17si10229617qtm.117.2021.08.23.06.58.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 06:58:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=C2dLYitwaimQnzgNuG02AlHimJPRTl9TRzsNAGQ7SGJGOmG7VQmLY9BRG8ZfofIq9W
+         3WJa4/Ex6Bwqix3cJKo5oK35DKt49CZQG0HbGhHAq+PXztmAjh+RzMtvfLX9bhjSk4dN
+         R2ar6YLNQQMd2+faHBG0tG4t5JJ4h2epTWxHTBD9VL2+0POcIhpqlZVIuik2rHKeoDyB
+         SbP23kWV51ePL5JbDuz15J/qbyp9PWT96eQE8MD0PbtDBq7XAlfj3LK3uw02QWDxh2pZ
+         Yz0hyjjBPuu/8z5BjGjk/vtcjO5MPQ1yXt9hYoNjuVPR/tvpqEDf5IU70FbBoS4FfT+2
+         K4sA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=YtVdB5C8k0Qzn5lswuYfPJliMBYCJcEkDDFKWLRRXxk=;
+        b=0/m/l70x2SOuSDhC98mpNO1/pV0H60gxzuiK70cQNkcxESz6u9lX0cnGzb9jgu4lqV
+         bcB+kuLDKaQN74rA6ASHtGKkL9OUgkFjJfQHIQzRiS2KMjeNL1S9Tkaeg1TIehJyg8H3
+         R5k2Mab0H/eI5Cy7glGGGH2cxtjBlCaB71kiJxPsfOD9QGa7EsJTJAXVn4SgvWSNJ1L9
+         hluD73rYO1NtxHfjL/e7rAG9MGEoUW050fpkiskQQzRZxRQaAUFx8Qv9CxwrSYgwU83E
+         oIqYBgercHhNd8fMkAL+oMSRi1aMj5/j5vznABTHEfT2YTwd93Ln0X+dk2ufbLKfFZ0/
+         IKBA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ye8D5U6D;
+       spf=pass (google.com: domain of changbin.du@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=changbin.du@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <changbin.du@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v5sor7375212pgj.80.2021.08.23.07.20.16
+        (Google Transport Security);
+        Mon, 23 Aug 2021 07:20:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of changbin.du@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=Io8edpLs;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:33158 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIATU-00018G-9j
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 09:58:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36646)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1mIATL-000181-ND; Mon, 23 Aug 2021 09:58:43 -0400
-Received: from mail-bn8nam12on2040.outbound.protection.outlook.com
- ([40.107.237.40]:35520 helo=NAM12-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1mIATG-0004if-Ty; Mon, 23 Aug 2021 09:58:42 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jzJ0xtCxyWQIkHkPg+lt1TJJv+7dxLDUvi2SgxmuIqX50QjyDBo14X/p9IObaVjzpJPk3vcyq5o83ZdlCLCJQywBVrrFBg+0eyzdoTEktcO4e3HvB9v7hVAGy1eMOAE1wlgjLiRyH1JWK7ersCCTV/7GwLu9NHQAirXzPCObdMVThU9DyEmCfa73OxpdSlrohmWHPfLT1TbooQIA04zFMX/NznQfo6ohZ/hg9rTN5WbEmMpMBS4g9TRX7hGajoz8yCTuyXlqVNLkzftBbzeBIC964GekA91ZmNhjBBrm1U27wNOTGK2XPw/I8QN55Ze4OKCuNSvbbI7J/O2K7zqWwQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3ccxWfg2wKZNbZqoEVKdVGQ/e62J5Mt2O8yA5x9PMk4=;
- b=OEqqcO7wtFbXYe0c5EEaxkBJrUZNDpWIerBlmL4T5vPsBJYH1R25nvSic9+ZUL2t1Dph7eH+D7akj8XdSegpjYySOOWGbbY8gqV8UxRrJK5ta0DNxwa6UHsSX3tRzClIDvw7rR2rxoHFFriQMbOf7x2qCgdYgU8ueS40hS65GItEVfYADgvMTPkU0s9fx7ZNwrbfnZx/C64XON83juzA1XI/qAqlJuvi46F/bnwQuO4n9+ITajK6754kr0l0rYrlKC5Ao/VU4OOlgrPRUeC2i9DNGNPobt3KUmw1TZ3K3eDfZyVptLJ2xg4d2JMaFDMksCoxahWl7lcbiM62848nNA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=gmail.com smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ye8D5U6D;
+       spf=pass (google.com: domain of changbin.du@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=changbin.du@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3ccxWfg2wKZNbZqoEVKdVGQ/e62J5Mt2O8yA5x9PMk4=;
- b=Io8edpLsgRZvUqoMH27R1HmZXdgDhwWGRSWnE8ibLqzl4E4jMan3/zJHovmzVzYOLMxX5MCCiRqOvADLQBFdW/eWTEFTEzYlUjRn7zbsawK/RsNgRcqjMZi1kPPJHLHDVVVD9jPsGdBt2OESuCIz43xcPQIfUIHTGMrRJxZ/r+8=
-Received: from DM5PR06CA0070.namprd06.prod.outlook.com (2603:10b6:3:37::32) by
- DM5PR02MB2827.namprd02.prod.outlook.com (2603:10b6:3:109::18) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4436.24; Mon, 23 Aug 2021 13:58:33 +0000
-Received: from DM3NAM02FT063.eop-nam02.prod.protection.outlook.com
- (2603:10b6:3:37:cafe::83) by DM5PR06CA0070.outlook.office365.com
- (2603:10b6:3:37::32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19 via Frontend
- Transport; Mon, 23 Aug 2021 13:58:33 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
-Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
- DM3NAM02FT063.mail.protection.outlook.com (10.13.5.71) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4436.19 via Frontend Transport; Mon, 23 Aug 2021 13:58:33 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Mon, 23 Aug 2021 06:58:33 -0700
-Received: from smtp.xilinx.com (172.19.127.95) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Mon, 23 Aug 2021 06:58:33 -0700
-Received: from [10.71.116.242] (port=52116 helo=localhost)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <edgar@xilinx.com>)
- id 1mIATA-0005PZ-Im; Mon, 23 Aug 2021 06:58:33 -0700
-Date: Mon, 23 Aug 2021 15:58:31 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: Alistair Francis <alistair23@gmail.com>
-Subject: Re: [PATCH 2/3] hw/char: cadence_uart: Disable transmit when input
- clock is disabled
-Message-ID: <20210823135831.GB24187@toto>
-References: <20210823020813.25192-1-bmeng.cn@gmail.com>
- <20210823020813.25192-3-bmeng.cn@gmail.com>
- <CAKmqyKMzq-F=MYMA=_7MeLTodxY7Eo91Nta4nKuncvAZ=bQUOQ@mail.gmail.com>
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=YtVdB5C8k0Qzn5lswuYfPJliMBYCJcEkDDFKWLRRXxk=;
+        b=Ye8D5U6D5/t5pgn8Gw63JhzJjVgXCOEA1YSTznBGK+H2rtOL32awZ6ZuaYQK1US1/q
+         Z2hrAodnKXxEsTk8bj81E+jbjsu/FRjT1BOyhKV493ZTxeCc0BXSl6oGbhGtZqV+JPUF
+         5wflWMH9FSdBp5MfS0dTeLBMbTyXoLHrhvxJHV2FPhNr79PM6oqwbBgNl1h76lEz2rnl
+         +WgdfkydDszopFrKzBcnKIUuUQaFvS0nwBuh/diZPLYrUaIhQCkE84Q3pq/A8KQNkMuT
+         HO7tpuL6n03Yh0B9YM8O9KU9rxkAJ8u4p6B/ddrPDBfSQl5n+j4/VvAQrMncOPXoesy0
+         a+bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=YtVdB5C8k0Qzn5lswuYfPJliMBYCJcEkDDFKWLRRXxk=;
+        b=LGgoY/2mQX7SnN5qxccEzkeJKzCq7o2yIjeyRSm2SFhW9/H019FrnOZAUH10VaBCBt
+         8W5pI/5h2XMslxm2Pn4aVybBEdrQRtHdOjDH3Y5mtFbIul88Q51fHQWOQPPp9BdXaoMz
+         4vlRoBttS0z77rKlTEuf1kX8qgdHrerv8x9sdWw8IieoIQzvbNV9J+/lHwe/zUJVouv2
+         eMW85IQo3eZAcfWMJ9HhIJgkSN0mz+X5CyV57f9GXAXWl6QUDZ9AIj9YtE93igsGuP9A
+         k3dX6dl9wBdokVVDshi9lbavWNqUJ8vtQzhisY2GFMUACyPFd4uJDOFuS8Ar25hrWrqM
+         Fn6A==
+X-Gm-Message-State: AOAM531qxym/bU53owGCay3ut5dtjAJ2Oq+gV66304wB8ZDi+1PKj9ZA
+	NvY4n7Vfsbk2V41Eo++2ZjnB3u/OdEBJdQ==
+X-Google-Smtp-Source: ABdhPJwx5C6+xoLc6Rx/A3CH5Udb3y4JB9pyG5tGPazxJZGawfLQsv049RKizHj9UDZ+PAujOJsduQ==
+X-Received: by 2002:a63:a54f:: with SMTP id r15mr32298052pgu.212.1629728415703;
+        Mon, 23 Aug 2021 07:20:15 -0700 (PDT)
+Return-Path: <changbin.du@gmail.com>
+Received: from WRT-WX9.. ([141.164.41.4])
+        by smtp.gmail.com with ESMTPSA id ev12sm4700796pjb.57.2021.08.23.07.20.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Aug 2021 07:20:15 -0700 (PDT)
+From: Changbin Du <changbin.du@gmail.com>
+To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org,
+	Changbin Du <changbin.du@gmail.com>
+Subject: [PATCH 0/3] gdbstub: add support for switchable endianness
+Date: Mon, 23 Aug 2021 22:20:01 +0800
+Message-Id: <20210823142004.17935-1-changbin.du@gmail.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <CAKmqyKMzq-F=MYMA=_7MeLTodxY7Eo91Nta4nKuncvAZ=bQUOQ@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 42ce9a2f-061d-4e0e-d3bd-08d9663e18b7
-X-MS-TrafficTypeDiagnostic: DM5PR02MB2827:
-X-Microsoft-Antispam-PRVS: <DM5PR02MB2827BB0A8F0AB1C8DCB65CDDC2C49@DM5PR02MB2827.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:3631;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: QLUQK3cdC9cCg3wlDGZJ5iP3kf4DdtkkxcSTBYsMxXv1q+rvJVTkjlkKnPq4VtfH62uhw5/KbRDjOih0YIa10Ltguz9f1rdwXNEqgFnzBJ+60ot1EEXOzeYJbKYD2otwH0JrBav7g8X/+gY7Ku0/9OzUQN4c+kvpADwg+4xl8KTRZ16MpgdqcWAeHzp9HFPwUZR0fLlzp8uvEWdEjxcKaIwGrR7xRut6T/oIB6yj4F0ZgrTRQi2LB1Dcy4he3ur6N0ld7kZ5AAXpVayQxZC4bY10w17a7J13XK0x7u8GEU08GnN7URO57pCQoV/m+289tTgEIDyVIork+AL7Q+qluQyXprmu+cPX03VqPAStOtBl+AG4azzJ3qxIDiBBbdUiIcef15fcqkBO8j2yKoh19aILIUdHf0jhhzdSi4/ExZ/4kn2P+PImJfRMjZBQri2A6uRkpsRc+mLbKKVSfxkyqsZf4apLz1HwFEHFcvkjkZwdeHCA+OhE0hr3Pxn6hmNFaOJxnrLgh9H9h7P32ymUU5kP7BArggqQG3MZsbDwvBlxnQS2iuaoVSDbe/Ybwt4j9j1PPxaXrCsefJ7z2XCV4XTm+fWWGbg4OKIxt5SDV1jDsmydJK5ur5OhrLak/C+cT7BNd7+1rLf02mv/PUO3XdVNRPhz2EkECyXXUWacDt50lmUbS7+qNsFydUIVxAdltvqD5s0lcyVoEFr8MipCGg==
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(7916004)(4636009)(346002)(396003)(376002)(136003)(39860400002)(46966006)(36840700001)(186003)(356005)(36860700001)(7636003)(36906005)(426003)(478600001)(316002)(83380400001)(4326008)(47076005)(336012)(6916009)(33656002)(9786002)(26005)(8676002)(33716001)(9686003)(8936002)(5660300002)(82740400003)(54906003)(82310400003)(1076003)(53546011)(70206006)(70586007)(2906002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2021 13:58:33.7412 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 42ce9a2f-061d-4e0e-d3bd-08d9663e18b7
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch02.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT063.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB2827
-Received-SPF: pass client-ip=40.107.237.40; envelope-from=edgar@xilinx.com;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bmeng.cn@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: twfViH9EguJ8
+Content-Transfer-Encoding: 8bit
+X-TUID: Bhd5iwiXfM5Q
 
-On Mon, Aug 23, 2021 at 02:43:26PM +1000, Alistair Francis wrote:
-> On Mon, Aug 23, 2021 at 12:11 PM Bin Meng <bmeng.cn@gmail.com> wrote:
-> >
-> > At present when input clock is disabled, any character transmitted
-> > to tx fifo can still show on the serial line, which is wrong.
-> >
-> > Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
-> > Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-> > ---
-> >
-> >  hw/char/cadence_uart.c | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >
-> > diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-> > index b4b5e8a3ee..154be34992 100644
-> > --- a/hw/char/cadence_uart.c
-> > +++ b/hw/char/cadence_uart.c
-> > @@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_use, GIOCondition cond,
-> >  static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf,
-> >                                 int size)
-> >  {
-> > +    /* ignore characters when unclocked or in reset */
-> > +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-> > +        return;
-> > +    }
-> 
-> Should we log a guest error here?
-> 
+To resolve the issue to debug switchable targets, this serias introduces
+basic infrastructure for gdbstub and enable support for ARM and RISC-V
+targets.
 
+For example, now there is no problem to debug an big-enadian aarch64 target
+on x86 host.
 
-I think it's a good idea to log a guest error on the TX path.
+  $ qemu-system-aarch64 -gdb tcp::1234,endianness=big ...
 
-It's not uncommon for bare-metal applications to rely on FSBL/Bootloaders
-setting up clocks/resets. On QEMU, it's convenient to run applications
-directly without boot-loaders, particularly FSBL since it requires Xilinx tools
-to generate it. It's going to be hard for users to figure out what's going on
-with no console output and no guest error.
+Changbin Du (3):
+  gdbstub: add basic infrastructure to support switchable endianness
+  arm: gdbstub: add support for switchable endianness
+  riscv: gdbstub: add support for switchable endianness
 
-I also wonder how Linux handles this when CCF is not active?
-Do we need to use TYPE_ARM_LINUX_BOOT_IF?
+ configs/targets/aarch64-softmmu.mak |  1 +
+ configs/targets/arm-softmmu.mak     |  1 +
+ configs/targets/riscv32-softmmu.mak |  1 +
+ configs/targets/riscv64-softmmu.mak |  1 +
+ gdbstub.c                           | 11 +++++
+ include/exec/gdbstub.h              | 72 +++++++++++++++++++++--------
+ qemu-options.hx                     |  7 ++-
+ softmmu/vl.c                        | 50 +++++++++++++++++++-
+ target/arm/gdbstub.c                |  2 +-
+ target/arm/gdbstub64.c              |  2 +-
+ target/riscv/gdbstub.c              | 12 ++---
+ 11 files changed, 131 insertions(+), 29 deletions(-)
 
-Best regards,
-Edgar
-
-
+-- 
+2.32.0

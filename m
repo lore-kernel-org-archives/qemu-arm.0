@@ -1,128 +1,102 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1965279lfg;
-        Mon, 23 Aug 2021 08:21:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJG6FXjDGWDbu9JFycg/4BxDzWVKHRJril/qFUMVe/I0z/zkesQNuQQ6Vcw9X4nY3+5mY8
-X-Received: by 2002:a05:6402:1add:: with SMTP id ba29mr37976010edb.145.1629732072597;
-        Mon, 23 Aug 2021 08:21:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629732072; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1967873lfg;
+        Mon, 23 Aug 2021 08:24:27 -0700 (PDT)
+X-Received: by 2002:aa7:d3cc:: with SMTP id o12mr37251346edr.335.1629732267167;
+        Mon, 23 Aug 2021 08:24:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629732267; cv=none;
         d=google.com; s=arc-20160816;
-        b=roOtM685if78HTXuVhPqhhyYhdYZjXiEPxjwhyvjFyJj94ZLOX07onbR6lHGJyrzOn
-         gRyYMxemjkP5hnjL2roqJ3wd/la9eqDl1wSaHcjJcM8KP/zvvr2tRXZDHzyD2paka+5u
-         Ex66VQ2OIDnq+TC7Mk54ubhGwF2n/Y0LfRzEV0/WkN7t5WLk2LBCNvElfduCOO0kWImX
-         CK0ugBlHT9wNcdLKpD5vwTO4M9g+EPDcn1Lk+YFI8LxtdvGz4RMEs/2MCPh65H6relJd
-         FATAAUg6CcWFeieQz4FCb6DywTx6mySpbbWwSom/0/gfK5pdDK0hDq1IARVg0/rrbcUC
-         ZwEA==
+        b=kgGiQDU8vidyyBNyTFI/6CrQgPMORKe6vKfTfTRft19C1iKF5pZxkwtYFFTs1zADic
+         LbR54E49gVS7P2bPtgA3hv5L7PhxB8p7iiAG3JnH8du5nfbO53TowgbnPv//sZpLQs4S
+         zI9mIBtnKdVkGhgwHolg66XWDKEmpcer2Qzs4F/UZTueTrKsNqc7UNIWgoXaPu4S+ea2
+         tHyCx4pnOZJkp7dnb/LD2sUqkHo0HsZk6rFtj6bUwC4f7OzAbWkCgoUWVvuc5pldV7Qy
+         s7+UYkt0Z0Ade0AiFWDXdnG6XB0Rau+rpMeVmeMA1Iw0DnGSPneDRQpLveJ+WMRbTON9
+         iCHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=cpJihCXUzgpi+3OL+/LebXO+XMRlBWHGbhTpOkTFKxg=;
-        b=EonytCoZM5v5JqbpQoZtNxCRrxxBzzUogOa63v/k1YJlDP1Dmuq6YAilvzqDyWi+GA
-         vxxjTY7fntMijuc5jXLsFL5UHGu6ZFjWwK+cr7ZY9Ov8y9K4jv/DmmXmxGQhgc7pDjS6
-         hRkP9s2apw/q3pU4NFX9ykyxfSNR38VS7tEe9fFT6TGaj2OW4+C4Uah47PEISp2OBENA
-         lc5ZIzDMakJ3WJOUFg702xLrBv6XtXIy7LaKmoXvWcsQTsdDZcMgZ+HMKzKHiMN7vFnF
-         SufHZQH1resq4cF9nVfv08KBZk6AzntgPpiH3PJpbCmS6OsxR2ytphACzCICyAvviUOI
-         lNaw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=iyAYC9RN+9lBQIAbfVLcSBds/G54lZ6rxoaMkQ0DVAM=;
+        b=FhR+YgDw5IilHru47PKzs7Utf+zw7EN3SCXmyS49zdk8PA1Gw4XNpFU21YThs5NZSe
+         COJqRAcaivQNJjI06wnDhdS8AL8Ztgn+hTN8ken97UueblquQJkG6XRyF8wMGsUPM5XT
+         75kM2j1sk2mp7GO+oB8yw0lyIjISC+uofdF3AOw3OMIp9nunD7j7r7FjcWlA61HNVMzb
+         5CcX4PsHzz/PSmwlPkhPRqga6qrYorEAlEImLCuGs4CUOipZbH7wKClAo5knB3aKd3lQ
+         9cBGQ8mEefSemuG5PM6LFi/LfXSX5lvHPABHf4CeEl9ROmbfWwarB4VLR+KzmBsyUfco
+         463A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YduXYmiJ;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id m20si6150011edq.553.2021.08.23.08.21.12
+       dkim=pass header.i=@linaro.org header.s=google header.b=IP3ggqsu;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e22sor15253477edu.23.2021.08.23.08.24.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Aug 2021 08:21:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Mon, 23 Aug 2021 08:24:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YduXYmiJ;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1629732071;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cpJihCXUzgpi+3OL+/LebXO+XMRlBWHGbhTpOkTFKxg=;
-	b=YduXYmiJ/iEMz2Hn7oo9fmvF6ioB8IR81JuXjshQh+fokfRAq2x9EHjGQHiLwMLB81015e
-	j/9PAaBk+5xhGTy56gNEUg5DIATHd/ylWZdduUhxh1tZWT2GQhUMolCuf8neu8P+BZy+zu
-	FiWwQs8+VqymS+zQRtfCoHd4R9nG8eY=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-438-9shV5jJJOf-fy_wt3PCPOg-1; Mon, 23 Aug 2021 11:21:10 -0400
-X-MC-Unique: 9shV5jJJOf-fy_wt3PCPOg-1
-Received: by mail-wm1-f69.google.com with SMTP id o20-20020a05600c379400b002e755735eedso121976wmr.0
-        for <alex.bennee@linaro.org>; Mon, 23 Aug 2021 08:21:09 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=IP3ggqsu;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=iyAYC9RN+9lBQIAbfVLcSBds/G54lZ6rxoaMkQ0DVAM=;
+        b=IP3ggqsukFsyQvd085tX264U9mGoseI2K3ztdclDisPK/y1dCDdNCRIMktFymacNDN
+         Z8u8IxrTQLs1maMEgCW32UGsx0nxVim0ZuegYhn/qlaw9k2Wo1GU7gUFOE5ZXPOkX0W2
+         mscquJi1y9NOPeOw3f64+xkhCSWCSY4zk+IyNK5BUuDkSs6Wb192FONl3oZRvPpwHmDc
+         XM5G2fwh/JQbF+nUf9cl3q6G4GN+PqMZURAg7YeO+P3Jwewg2m8P5nbr8+IwTLX3BNjg
+         XRW7w5AcJP2taTVPfbLXmRNF8dzFoRuQzx11iBwNWqkPInNOTI+40FVrytylT2CmKiAS
+         Veag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=cpJihCXUzgpi+3OL+/LebXO+XMRlBWHGbhTpOkTFKxg=;
-        b=ohsHOntjyM2cqVJn6tRVj9sWvBtTvJycKhruyKdUTAVXNPf6simkigidyIoRmMyHNA
-         k0g+vErIGNcRo/xFcfxQSF0nyStqXxbnw+OPOqN68CZzNEI8r+87soAjLhR2m7QAaeS+
-         mXzLACKur9SEiZEYe4u/kfMJktHUgaAFQhjRfblsKEBbH7lV+UHXkjMVc2CFItigrGDN
-         Lzk32T+exoKac+j2aywS4QJS2kBMtPV5SvqYgmAez4uXDRuuI0ukzq3AyMjDRWZ2BKNZ
-         gLtHqdV48jYgrbtGIBevdrcQdGRYvsE42nAkaPyycKVB22ozS5QuP+sa7tK9AwkioLtL
-         7T5A==
-X-Gm-Message-State: AOAM531f5Q2PUJ3jAEMWJnM1TD1Ziqu40ODHnCt9OLSLZCmgwidjn658
-	YYtUNHS8wN9msxHmibm3/HYpA4dPbP5Keor4x29nbLaYjkkwNZ0uBGqPK2RceENpNrqJs1r9bZp
-	vDwQStGr4yRoG1QFC
-X-Received: by 2002:a7b:c04b:: with SMTP id u11mr16828902wmc.41.1629732068713;
-        Mon, 23 Aug 2021 08:21:08 -0700 (PDT)
-X-Received: by 2002:a7b:c04b:: with SMTP id u11mr16828884wmc.41.1629732068569;
-        Mon, 23 Aug 2021 08:21:08 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id n15sm7575253wmq.7.2021.08.23.08.21.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Aug 2021 08:21:08 -0700 (PDT)
-Subject: Re: [PATCH 0/3] gdbstub: add support for switchable endianness
-To: Changbin Du <changbin.du@gmail.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Palmer Dabbelt
- <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-References: <20210823142004.17935-1-changbin.du@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <7523c6ad-52cd-0b20-b09d-01bd537edbb3@redhat.com>
-Date: Mon, 23 Aug 2021 17:21:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=iyAYC9RN+9lBQIAbfVLcSBds/G54lZ6rxoaMkQ0DVAM=;
+        b=j+n2qPDIIe8fq5ym9b09c64xXRNQz1Q+S9Y2e5OS4wlHRFu/GRjuNwZoNN6Y2fSbY4
+         bawowKPi/Q7hRw25dMkJFjKX4NoAk5PcvO00fkCd4Rfgp05S7X/QxJF81vSxon44SAks
+         lTw6pitaH9OJEOpwSq7m/644ER5y+n1KkYF6zX+beH77e25PdYyl+tNggLaELfpX/9bO
+         7Q4ftG4HOhK9NmATP3IRQg3d9xOZqpT/iGt6d9JV6y3rrwhVkN06tqITWVo30TTjIDnC
+         yxsciMHTTKkxgFiC5seFzEYXig2mxMGU9w5Yh3CSXRfMI99v9/rOwiYER0oYenVfed/s
+         UCQQ==
+X-Gm-Message-State: AOAM533Y+vn/VDBAy/dVtjN7C/QbLcxP6mWgLUZwOeLlJHnWcIEU7pm+
+	7PZg2B2qwhWmticTkUQ4OreuG2uFKFke9nUrSPmIxQan
+X-Google-Smtp-Source: ABdhPJzoPcoBK6IWJsYo0rLSA1C7+N2f/kE6l+HTOp1I3fcflrxGhX1ji1SbTaA5swHpI6Ub+NKugw44ut1cHOyMx2Q=
+X-Received: by 2002:aa7:c0c6:: with SMTP id j6mr26770811edp.146.1629732266936;
+ Mon, 23 Aug 2021 08:24:26 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210823142004.17935-1-changbin.du@gmail.com>
 In-Reply-To: <20210823142004.17935-1-changbin.du@gmail.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: hvcFHc5SQH6u
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 23 Aug 2021 16:23:40 +0100
+Message-ID: <CAFEAcA9AqV7BoyPVwuMUdcX2uHOCahPK2wZobOLpLqD3WM5FPQ@mail.gmail.com>
+Subject: Re: [PATCH 0/3] gdbstub: add support for switchable endianness
+To: Changbin Du <changbin.du@gmail.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	"open list:RISC-V" <qemu-riscv@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 7/VRGbgq8Unw
 
-On 8/23/21 4:20 PM, Changbin Du wrote:
+On Mon, 23 Aug 2021 at 15:20, Changbin Du <changbin.du@gmail.com> wrote:
+>
 > To resolve the issue to debug switchable targets, this serias introduces
 > basic infrastructure for gdbstub and enable support for ARM and RISC-V
 > targets.
-> 
+
+As I understand it, fixing this problem requires support
+from gdb, not merely changes to QEMU. You would need to be
+able to have QEMU tell gdb "the guest's endianness is now
+little/big" and have gdb cope with that change.
+
 > For example, now there is no problem to debug an big-enadian aarch64 target
 > on x86 host.
-> 
+>
 >   $ qemu-system-aarch64 -gdb tcp::1234,endianness=big ...
 
-I don't understand why you need all that.
-Maybe you aren't using gdb-multiarch?
+I don't feel like this is the right approach. QEMU already
+knows the endianness of the guest at any point.
 
-You can install it or start it via QEMU Debian Docker image:
-
-$ docker run -it --rm -v /tmp:/tmp -u $UID --network=host \
-  registry.gitlab.com/qemu-project/qemu/qemu/debian10 \
-  gdb-multiarch -q \
-    --ex 'set architecture aarch64' \
-    --ex 'set endian big'
-The target architecture is assumed to be aarch64
-The target is assumed to be big endian
-(gdb) target remote 172.17.0.1:1234
-(gdb)
+thanks
+-- PMM

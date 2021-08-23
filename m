@@ -1,282 +1,189 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1688694lfg;
-        Mon, 23 Aug 2021 02:22:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKylC02O+pmyUXe1pESwTEd5vHmtRlH7zCedhTgmSawEiQKDfsreL5HWWtBTQgkAEzcKDo
-X-Received: by 2002:a05:6902:1344:: with SMTP id g4mr15592100ybu.333.1629710549631;
-        Mon, 23 Aug 2021 02:22:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629710549; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1709340lfg;
+        Mon, 23 Aug 2021 02:58:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCRGD7o8ASnv1Pk88yVlzpeF8+2/urzZ0IyFOJ70Ehg+KIxz/8BL/rDHfup90tUvZ/IyYZ
+X-Received: by 2002:a5e:8a4a:: with SMTP id o10mr11887977iom.11.1629712696976;
+        Mon, 23 Aug 2021 02:58:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629712696; cv=none;
         d=google.com; s=arc-20160816;
-        b=y6Q3E9OBr0YN3qQ/ezf8VMxSqIKY/NXR8MNf9Pak67v73h8ku9EOc8noFv33Phh8Xb
-         qdxPeB1q7o6UZZzfLBLVQEw30fBJq4eYbi2gW8wyaVISfxzNw7UJ0TzyvcnaLYjlbQIv
-         TWaA2tTvWPtHK4ddrUxXwcW1vMD8E9ihEOQNKsdeDSjLIaxbDfHj7X+imgJpQdXwQgcO
-         mbA7WlpQErU5QIN8KmEwMJK5b180kS3Cpk3BBAoHaF9O5AaHRakkggTReucl8Obi1nT3
-         JOToPblu+1Fh6/+ruHmWTNUHL3jBSvcN5DD2wqqD9fp/y11QlZt3mk8EbG+BbswkK4Hl
-         6IeQ==
+        b=QlPHLqcryqfcxbUw6zY0e5bIByblRzD8nvNJJTAia8NIW4E0X9bwDOCJcQR6vzjSMn
+         v14CkgLc/bB0mnIcYwUULVg0z4PeuoVoa97iyf+Ho5r8/7wXxrqJfb3wqauNgUzx/ewI
+         mA2Y/QZef9majHnITRvKHf0vFCK6YwAVTjIb8HPUDX81xr6bdwKfC8ilaYYJJX7PPIkd
+         bTZvOnwUL3mxWzw8nDhFY7M+ZgDw6rUHJdItqOOAVsGF57uLvhTtFCIi41i47BAi4cGF
+         OaCoIQXVu4FQTtSWDCrMJLZau9M/Iss9EN374DYqguU0qnJgmE/2NMPO2mncsswPUYnO
+         J09A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from
-         :dkim-signature:content-transfer-encoding:content-language;
-        bh=OUhqirIAZRYBLy+Z8Zd+ABbA3+5r7Rpha8u4ZGJ1rgM=;
-        b=mxkilbe6DrSDFXTu2B5qV3Ihob0lORdIQa7CbiJELYb2seDWLpl1/oimGUCjj0Ovjg
-         g9GjOr3AoJgx8VNuKrLdcJ2pujvO0ImlInLWApWQlS6LlmlboCNbFO4IL0GQ7I12Td8u
-         F01UZQZYZ77HfoFgYrQs471A8E65EKF/h5ji0kndM1mIjHZEOLv47xVfUOiQxNUIGySb
-         1UeXJ/iVo7hUFWgeAIChidr3KZHNfwLusl2zHEivOymBEILNxI5akg6NRzt6AE+Z7TLu
-         ZgjpnabT6gUFtOZ1UgJCRrS5B2KFv4ApZZden+Xhn5EfY22QDM6WWPVcvHxAoF+G4vpT
-         WeZg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=dSJP7vqY8fmMiEeFaZtbmFc3zOocAmOBfsrWlU+3TIw=;
+        b=YYIohSTrh2pVdhf01pwpLb3etbR4KZQNNxoU0YPymsRwV/k9egynJ1hWiqa/Ikhcvk
+         pEmMECpWkBP+Rynjayby3JspPyvOivprq1lzSFyLbwX+nRlDjSFHIky2h3/hVdUAsW+Q
+         XwtDS78q9zUeja78jtj/TR7kAzVO/N4r7FmjYlyyv0ZPAq7/ywWPTE99NsDijVXlyyKU
+         blmCrLAwFwm6DW37ad3zZvENHlhgsAf/jEzwns5wa6oNBXS35t296VnzKR9gqD5RSOey
+         xJ5WW+fO/r8VZWfJRQ7lArnKsCYMqKaQTYHqenGsKu290pAdWQ/PX7q7hd5SwWGfJeQQ
+         mTbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=DI61CgDC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W6rBFuUV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4si12199791ybs.362.2021.08.23.02.22.29
+        by mx.google.com with ESMTPS id u6si14406302ilq.19.2021.08.23.02.58.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 02:22:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Aug 2021 02:58:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=DI61CgDC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:60644 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W6rBFuUV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:32848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mI6A0-0004uA-Tw
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 05:22:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34776)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mI6ie-0000Al-8l
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 05:58:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44628)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mI65k-0007Fy-G6; Mon, 23 Aug 2021 05:18:04 -0400
-Received: from [101.89.135.45] (port=44451 helo=shasxm03.verisilicon.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mI65i-0004AC-Qg; Mon, 23 Aug 2021 05:18:04 -0400
-Content-Language: zh-CN
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1629710136; h=from:subject:to:date:message-id;
- bh=/d83uZwilZI2kFGml27QHxDjeK7QLSCbIffKzrxzPWA=;
- b=DI61CgDCmN4BUBq3ESvxYvM/RRnOhhhfBOYw7+wTyyzvrG5XpF1eXF95CIKnK0GaZ9++aQySu1m
- VrZ9ifwSm1Up8ezd6xfrwWfqwfiGFlb4b1Yk3njXRniquzB40BI1SrbxjA18vteNYY/h6bL6oNIqH
- Fqg/+pKSjcS23rTr3T0=
-Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
- SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Mon, 23 Aug 2021 17:15:36 +0800
-From: "Li, Chunming" <Chunming.Li@verisilicon.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Peter Maydell
- <peter.maydell@linaro.org>
-Subject: [PATCH v3 4/4] hw/arm/virt: Add PL330 DMA controller and connect
- with SMMU v3
-Thread-Topic: [PATCH v3 4/4] hw/arm/virt: Add PL330 DMA controller and
- connect with SMMU v3
-Thread-Index: AdeX/cXQfubTbMVRSQiPffisYYrlQAAAU9UA
-Date: Mon, 23 Aug 2021 09:15:35 +0000
-Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142F974D@SHASXM03.verisilicon.com>
-Accept-Language: zh-CN, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [182.148.13.223]
-x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--7.067000-0.000000-31
-x-tm-as-user-approved-sender: Yes
-x-tm-as-user-blocked-sender: No
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mI6iT-00008M-2g; Mon, 23 Aug 2021 05:58:05 -0400
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33]:46631)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mI6iQ-0007ZK-Ek; Mon, 23 Aug 2021 05:58:04 -0400
+Received: by mail-yb1-xb33.google.com with SMTP id k65so32908453yba.13;
+ Mon, 23 Aug 2021 02:58:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=dSJP7vqY8fmMiEeFaZtbmFc3zOocAmOBfsrWlU+3TIw=;
+ b=W6rBFuUVChzOisojXaufHPd9Fx8UoJDzu3XkKwJnT3IeJQ0xTO41Mrw+rQg0a6lvWt
+ ANVrCnJbSdNHK9SEfxw32Mom87o2wTVt+cks5KKeaAI3KEYxlf61flDPyGIvVac2U3RX
+ AtgSinczoqf6tzx3IwqMHuqoQai0tanC6bI7hPzhzLTRgLQ5C6Yj2R6VJnCZ6snBOk9A
+ lBNuGq/H5ObxTatOl4q9iDujKjFEL9ZiHo4Uy6AQGJhlJINGN7tKsrR63uIcJwENzZ3j
+ tFSyZVyHe15F/QO4/LeuT/8tQPxKeKDFfuERDoFesqsWTALsLCoH4Kq3vD3GfsrzlIqz
+ piWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=dSJP7vqY8fmMiEeFaZtbmFc3zOocAmOBfsrWlU+3TIw=;
+ b=Du9poJaJ8yP2dpaQvUjKlOi83DLnvqnAxBOeSz98P6Ng20BXWp00tUlg3z0RoNS5K2
+ ubjSZWRVAP79oFocLVM2faWqFotXC6MGEcI1MTZPlp+PxB5jbjbrjrah8Zl3MG7/x04f
+ IYjsb/5fzw4I1ht159eKODPvviXP38r28BMKJayN+Xqgo4240EelBziqr2ewy+T0oZbX
+ ojSp5fFi5QIhd6Mi77Sn/f6Vo4rL2lCpUC120q7BtCQYhd/rwIoWofLo5YK7KFDMtg4j
+ /LNO5dKacGC7dr9TlgS6Kw/NF4vDgt7eeYnmtDAK4KRImqIFvS8Xm+IpvMGEau1CSk1c
+ XHXQ==
+X-Gm-Message-State: AOAM531+r6LbYaW4hLdkRjH6GAOVTbj7EbeZBzNlwKU+f1bJxGAbWrcm
+ pLMwp83dahebLGi7elJAhgu7C14EcVJRjIF00pM=
+X-Received: by 2002:a25:cf8a:: with SMTP id
+ f132mr44621723ybg.387.1629712681084; 
+ Mon, 23 Aug 2021 02:58:01 -0700 (PDT)
 MIME-Version: 1.0
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 101.89.135.45 (deferred)
-Received-SPF: pass client-ip=101.89.135.45;
- envelope-from=Chunming.Li@verisilicon.com; helo=shasxm03.verisilicon.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20210823020813.25192-1-bmeng.cn@gmail.com>
+ <20210823020813.25192-3-bmeng.cn@gmail.com>
+ <7997927e-3a66-aa0e-6099-f1efe3cbb9ee@amsat.org>
+In-Reply-To: <7997927e-3a66-aa0e-6099-f1efe3cbb9ee@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Mon, 23 Aug 2021 17:57:49 +0800
+Message-ID: <CAEUhbmVVRKebU-=k0WaxpaRe-E_UsLy_82K0PzRE=7xNHp9hGQ@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/char: cadence_uart: Disable transmit when input
+ clock is disabled
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb33.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Liu, Renwei" <Renwei.Liu@verisilicon.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
- Jianxian" <Jianxian.Wen@verisilicon.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n0mfv9ejHT9y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b3gOnP9aGgEO
 
-Add PL330 DMA controller to test SMMU v3 connection and function.
-The default SID for PL330 is 1 but we test other values, it works well.
-
-Signed-off-by: Chunming Li <chunming.li@verisilicon.com>
-Signed-off-by: Renwei Liu <renwei.liu@verisilicon.com>
----
- hw/arm/virt.c         | 92 ++++++++++++++++++++++++++++++++++++++++++-
- include/hw/arm/virt.h |  1 +
- 2 files changed, 92 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index c3fd30e07..8180e4a33 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -143,6 +143,7 @@ static const MemMapEntry base_memmap[] =3D {
-     [VIRT_GIC_REDIST] =3D         { 0x080A0000, 0x00F60000 },
-     [VIRT_UART] =3D               { 0x09000000, 0x00001000 },
-     [VIRT_RTC] =3D                { 0x09010000, 0x00001000 },
-+    [VIRT_DMA] =3D                { 0x09011000, 0x00001000 },
-     [VIRT_FW_CFG] =3D             { 0x09020000, 0x00000018 },
-     [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =3D        { 0x09040000, 0x00001000 },
-@@ -188,6 +189,7 @@ static const int a15irqmap[] =3D {
-     [VIRT_GPIO] =3D 7,
-     [VIRT_SECURE_UART] =3D 8,
-     [VIRT_ACPI_GED] =3D 9,
-+    [VIRT_DMA] =3D 10,
-     [VIRT_MMIO] =3D 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
-     [VIRT_GIC_V2M] =3D 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
-     [VIRT_SMMU] =3D 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
-@@ -205,7 +207,7 @@ static const char *valid_cpus[] =3D {
- };
-=20
- static const uint16_t smmuv3_sidmap[] =3D {
--
-+    [VIRT_DMA] =3D 1,
- };
-=20
- static bool cpu_type_valid(const char *cpu)
-@@ -793,6 +795,92 @@ static void create_uart(const VirtMachineState *vms, i=
-nt uart,
-     g_free(nodename);
- }
-=20
-+static void create_dma(const VirtMachineState *vms)
-+{
-+    int i;
-+    char *nodename;
-+    hwaddr base =3D vms->memmap[VIRT_DMA].base;
-+    hwaddr size =3D vms->memmap[VIRT_DMA].size;
-+    int irq =3D vms->irqmap[VIRT_DMA];
-+    int sid =3D vms->sidmap[VIRT_DMA];
-+    const char compat[] =3D "arm,pl330\0arm,primecell";
-+    const char irq_names[] =3D "abort\0dma0\0dma1\0dma2\0dma3\0dma4\0dma5\=
-0dma6\0dma7";
-+    DeviceState *dev;
-+    MachineState *ms =3D MACHINE(vms);
-+    SysBusDevice *busdev;
-+    DeviceState *smmuv3_dev;
-+    SMMUState *smmuv3_sys;
-+    Object *smmuv3_memory;
-+
-+    dev =3D qdev_new("pl330");
-+
-+    if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3 && vms->iommu_phandle) {
-+        smmuv3_dev =3D vms->smmuv3;
-+        smmuv3_sys =3D ARM_SMMU(smmuv3_dev);
-+        g_autofree char *memname =3D g_strdup_printf("%s-peri-%d[0]",
-+                                                   smmuv3_sys->mrtypename,
-+                                                   sid);
-+
-+        smmuv3_memory =3D object_property_get_link(OBJECT(smmuv3_dev),
-+                                memname, &error_abort);
-+
-+        object_property_set_link(OBJECT(dev), "memory",
-+                                 OBJECT(smmuv3_memory),
-+                                 &error_fatal);
-+    } else {
-+        object_property_set_link(OBJECT(dev), "memory",
-+                                 OBJECT(get_system_memory()),
-+                                 &error_fatal);
-+    }
-+
-+    qdev_prop_set_uint8(dev, "num_chnls",  8);
-+    qdev_prop_set_uint8(dev, "num_periph_req",  4);
-+    qdev_prop_set_uint8(dev, "num_events",  16);
-+    qdev_prop_set_uint8(dev, "data_width",  64);
-+    qdev_prop_set_uint8(dev, "wr_cap",  8);
-+    qdev_prop_set_uint8(dev, "wr_q_dep",  16);
-+    qdev_prop_set_uint8(dev, "rd_cap",  8);
-+    qdev_prop_set_uint8(dev, "rd_q_dep",  16);
-+    qdev_prop_set_uint16(dev, "data_buffer_dep",  256);
-+
-+    busdev =3D SYS_BUS_DEVICE(dev);
-+    sysbus_realize_and_unref(busdev, &error_fatal);
-+    sysbus_mmio_map(busdev, 0, base);
-+
-+    for (i =3D 0; i < 9; ++i) {
-+        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(vms->gic, irq + i))=
-;
-+    }
-+
-+    nodename =3D g_strdup_printf("/pl330@%" PRIx64, base);
-+    qemu_fdt_add_subnode(ms->fdt, nodename);
-+    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compa=
-t));
-+    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-+                                 2, base, 2, size);
-+    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
-+                    GIC_FDT_IRQ_TYPE_SPI, irq, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 4, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 5, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 6, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 7, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 8, GIC_FDT_IRQ_FLAGS_LEVEL=
-_HI);
-+
-+    qemu_fdt_setprop(ms->fdt, nodename, "interrupt-names", irq_names,
-+                     sizeof(irq_names));
-+
-+    qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle)=
-;
-+    qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
-+
-+    if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3 && vms->iommu_phandle) {
-+        qemu_fdt_setprop_cells(ms->fdt, nodename, "iommus",
-+                               vms->iommu_phandle, sid);
-+        qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
-+    }
-+
-+    g_free(nodename);
-+}
- static void create_rtc(const VirtMachineState *vms)
+On Mon, Aug 23, 2021 at 4:14 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 8/23/21 4:08 AM, Bin Meng wrote:
+> > At present when input clock is disabled, any character transmitted
+> > to tx fifo can still show on the serial line, which is wrong.
+> >
+> > Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
+> > Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+> > ---
+> >
+> >  hw/char/cadence_uart.c | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> >
+> > diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> > index b4b5e8a3ee..154be34992 100644
+> > --- a/hw/char/cadence_uart.c
+> > +++ b/hw/char/cadence_uart.c
+> > @@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_use=
+, GIOCondition cond,
+> >  static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf=
+,
+> >                                 int size)
+> >  {
+> > +    /* ignore characters when unclocked or in reset */
+> > +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s)))=
  {
-     char *nodename;
-@@ -2081,6 +2169,8 @@ static void machvirt_init(MachineState *machine)
-=20
-     create_pcie(vms);
-=20
-+    create_dma(vms);
-+
-     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)=
-) {
-         vms->acpi_dev =3D create_acpi_ged(vms);
-     } else {
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index d3402a43d..f307b2658 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -72,6 +72,7 @@ enum {
-     VIRT_UART,
-     VIRT_MMIO,
-     VIRT_RTC,
-+    VIRT_DMA,
-     VIRT_FW_CFG,
-     VIRT_PCIE,
-     VIRT_PCIE_MMIO,
---
+> > +        return;
+> > +    }
+>
+> Incorrect handler?
+>
+
+Sorry I don't get it. This patch is for the Tx path, while patch #3 is
+for the Rx path.
+
+> -- >8 --
+> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> index b4b5e8a3ee0..4f096222f52 100644
+> --- a/hw/char/cadence_uart.c
+> +++ b/hw/char/cadence_uart.c
+> @@ -235,8 +235,16 @@ static void uart_parameters_setup(CadenceUARTState *=
+s)
+>  static int uart_can_receive(void *opaque)
+>  {
+>      CadenceUARTState *s =3D opaque;
+> -    int ret =3D MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE=
+);
+> -    uint32_t ch_mode =3D s->r[R_MR] & UART_MR_CHMODE;
+> +    int ret;
+> +    uint32_t ch_mode;
+> +
+> +    /* ignore characters when unclocked or in reset */
+> +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
+> +        return 0;
+> +    }
+> +
+> +    ret =3D MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE);
+> +    ch_mode =3D s->r[R_MR] & UART_MR_CHMODE;
+>
+>      if (ch_mode =3D=3D NORMAL_MODE || ch_mode =3D=3D ECHO_MODE) {
+>          ret =3D MIN(ret, CADENCE_UART_RX_FIFO_SIZE - s->rx_count);
+
+Regards,
+Bin

@@ -1,88 +1,88 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2002639lfg;
-        Mon, 23 Aug 2021 09:09:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzBJUDEE8F5bqm8hrM7SvcOlj8356uSZGkG9s8AFXEML3i34RqBiZgVO6yzNQxZeKKAitl9
-X-Received: by 2002:a17:906:1299:: with SMTP id k25mr35834165ejb.139.1629734965597;
-        Mon, 23 Aug 2021 09:09:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629734965; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2005780lfg;
+        Mon, 23 Aug 2021 09:13:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxH3sx9YR02cTlScen7BnWIX+5uVnVtLQ/xrBm1qDcR8WLfJERcQhCZarV9WFDJeZQswVK9
+X-Received: by 2002:aa7:d95a:: with SMTP id l26mr1941108eds.305.1629735184023;
+        Mon, 23 Aug 2021 09:13:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629735184; cv=none;
         d=google.com; s=arc-20160816;
-        b=RiPn1ihF2mhf3sSm+iEaBIydcHocdkRK3a8yPD0uxtpJYOdc8XPxZlmNoPfV24B/4Y
-         QhqEAjMLmFWyHq8mdbYfBdrPHbn0XHBvukhpGilPw7+HdFHRIIu+a+Zf3OpPBSyt9qZn
-         nTwbPL+FC7A5b988mgTS+pYe9YMeSFQUzYzrfC5XV3zFDasfFWz0m8Auft1r4tikxjJJ
-         /B6otMTpMMozE7gD00AVxSR/xyqlQO9awC0CjV5kibmUK8YlKDd/WkKl4JjH3btoyvER
-         A+j4FUoQvDfvpM6SDkaI7M4FsIsdvkajrNJIiKxgHUPe5KNbuO2TSvn9pgLolgrdVkeE
-         oF7g==
+        b=wkaut2hov2hshFUi3W/Xir3wzG2vJkVRSsrrS8OXtqtl8NDalxGzUR8mranX35MlKF
+         QpLR4oO0PLgPbj5+MxPLvIKUlJPhOz+mczRR26OQt25hMlw/z4deKqQ2OCTx3KM0OJ/h
+         0SMbb1eFOPKsVSNWH6c+6IhEPfnBlv2XTXiL8D3+F/mkNow/o4TYH+B+d5KHfQoXe5ZF
+         9RJjrE7bL3GnifLL6tueVmCnS8vpCURQ16wYK4j4uQM5330YJUJBjIt6OnTKjflfdd/T
+         +9plShgxl6BKdRauGxbEKJBruHl8BymXm8NU0K22PnQHs0vf2z+JZksjlaF8T7/Lqcx6
+         1eVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=F6hZCq7ceLceGLF20TICk10zkfoCK6YVKKuLrYp202c=;
-        b=dSyA5rN4Dvw24XIoUnvhkzqYTEdTU5q1QRrh3Zyvr/bes92noAymHwxZHfPqvPtOjl
-         EHBiM8uiwc88w4Xs15pSa5xebdcGVHwqjBQQ1L2fZ2RgyPhjLY3ktnrkPvCSvhXiZlbU
-         9KrAWGecXmNhiazf2c+xY1fXYxQ1SR0iuTIkfROLIoOlP9N5TClFCuQlbhrBlxp03XfA
-         x6rYb54RxmptATe8szLX1KSLi+/lJQgnicnnXMg/39JGOKZ/0wyT8xy58fLygp6Cuuks
-         uj1ZDBdfJBq10VIjkujVkyt5/vdsOgPI1ottTCUnIGYY4da3BLm+KSdFwR0bCBC39dLO
-         tliQ==
+        bh=T1X9/1+/2b9e9bKrOVFRBolcoPKcB32213cUj9YFLRg=;
+        b=VP/bB8G58LAbF7aMGYYDk47SYfuYD1oKKCiXrmShs+A6sMiHFyttyi+qGFqMlLO5vU
+         N5r7X8aS0MLbQXY5/fXJscdz501A4SctGKLxtQkcg+aDobR3xScxZkncKqy5Icd2F5s0
+         EJdsw1lXX/JCpEgdTvr1nOLKDxM6G/MxykHM7b1mgaAWukQUatjiwndUdtzpZXNezXv9
+         pUk85dNn1kxNlaww+54yriZfSDgch2poTYNOoyFc7a70bETuLrniwVaKDtj7sTctU93l
+         nYvSV9p30VXaOExkYLgUYX990UVXfPHCBm23Q+QRBMduU2pfVdRlvhSv+ujdfv5TaHux
+         97Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XKza9poq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JwC9G3vK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eb13si18592914edb.405.2021.08.23.09.09.25
+        by mx.google.com with ESMTPS id du3si5372397ejc.378.2021.08.23.09.13.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 09:09:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Aug 2021 09:13:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XKza9poq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JwC9G3vK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39738 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mICVo-0003Uh-MK
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 12:09:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41874)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mICZL-0008QW-2J
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 12:13:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mICTa-0007lK-Id
- for qemu-devel@nongnu.org; Mon, 23 Aug 2021 12:07:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57825)
+ id 1mICTb-0007ls-UV
+ for qemu-arm@nongnu.org; Mon, 23 Aug 2021 12:07:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58653)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mICTY-0000Ha-Dw
- for qemu-devel@nongnu.org; Mon, 23 Aug 2021 12:07:06 -0400
+ id 1mICTZ-0000Ji-C6
+ for qemu-arm@nongnu.org; Mon, 23 Aug 2021 12:07:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629734822;
+ s=mimecast20190719; t=1629734824;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F6hZCq7ceLceGLF20TICk10zkfoCK6YVKKuLrYp202c=;
- b=XKza9poq5VyywLcy/oKC7gLGRF9wSzoxBGqPzs/XpXI7TPIRsiFzJWU6cMfIS+8KrmQHQj
- ssmZtuBMZCfvnIYO44XMfx5MKBSS9SQ8HrLR0aOwv4k/shvDA8F1kfS7wxqd6Y3ZwNcNf3
- rhEMr8cuYmjbxxO1cl1B8v0ln6dAefw=
+ bh=T1X9/1+/2b9e9bKrOVFRBolcoPKcB32213cUj9YFLRg=;
+ b=JwC9G3vKs+VtJQvm61d+NCWIrlhgudEKhO9+nfggF4lLXanQYNhUugqC6eCcZxb8RKs4fS
+ wI8T8nuuO+hNYOHd+hMh/7C8W8AWRw7w9XLYeQZgSfN50P/Kz9M7b5qIXyb6tmXQFMtEQz
+ yUf9yFKREFoNFrcdjPfR9VO4PRtJKks=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-511-fNRKD2ghMO67J5rLR6uSew-1; Mon, 23 Aug 2021 12:07:01 -0400
-X-MC-Unique: fNRKD2ghMO67J5rLR6uSew-1
+ us-mta-23-wB1VN-8NNU2JIIILM1sMng-1; Mon, 23 Aug 2021 12:07:03 -0400
+X-MC-Unique: wB1VN-8NNU2JIIILM1sMng-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C10613E761;
- Mon, 23 Aug 2021 16:06:59 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 11B443E741;
+ Mon, 23 Aug 2021 16:07:02 +0000 (UTC)
 Received: from gator.redhat.com (unknown [10.40.194.250])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5F95B60C82;
- Mon, 23 Aug 2021 16:06:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3215560CC9;
+ Mon, 23 Aug 2021 16:07:00 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 3/4] target/arm/cpu64: Replace kvm_supported with
- sve_vq_supported
-Date: Mon, 23 Aug 2021 18:06:46 +0200
-Message-Id: <20210823160647.34028-4-drjones@redhat.com>
+Subject: [PATCH v2 4/4] target/arm/cpu64: Validate sve vector lengths are
+ supported
+Date: Mon, 23 Aug 2021 18:06:47 +0200
+Message-Id: <20210823160647.34028-5-drjones@redhat.com>
 In-Reply-To: <20210823160647.34028-1-drjones@redhat.com>
 References: <20210823160647.34028-1-drjones@redhat.com>
 MIME-Version: 1.0
@@ -91,8 +91,8 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
 Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
@@ -101,94 +101,171 @@ X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.743,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
  ishii.shuuichir@fujitsu.com, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0ngzo7dLUro4
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NMaFohS/FlFG
 
-Now that we have an ARMCPU member sve_vq_supported we no longer
-need the local kvm_supported bitmap for KVM's supported vector
-lengths.
+Future CPU types may specify which vector lengths are supported.
+We can apply nearly the same logic to validate those lengths
+as we do for KVM's supported vector lengths. We merge the code
+where we can, but unfortunately can't completely merge it because
+KVM requires all vector lengths, power-of-two or not, smaller than
+the maximum enabled length to also be enabled. The architecture
+only requires all the power-of-two lengths, though, so TCG will
+only enforce that.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- target/arm/cpu64.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ target/arm/cpu64.c | 101 ++++++++++++++++++++-------------------------
+ 1 file changed, 45 insertions(+), 56 deletions(-)
 
 diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index eb9318c83b74..557fd4757740 100644
+index 557fd4757740..2f0cbddab568 100644
 --- a/target/arm/cpu64.c
 +++ b/target/arm/cpu64.c
-@@ -265,14 +265,17 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-      * any of the above.  Finally, if SVE is not disabled, then at least one
-      * vector length must be enabled.
-      */
--    DECLARE_BITMAP(kvm_supported, ARM_MAX_VQ);
-     DECLARE_BITMAP(tmp, ARM_MAX_VQ);
-     uint32_t vq, max_vq = 0;
- 
--    /* Collect the set of vector lengths supported by KVM. */
--    bitmap_zero(kvm_supported, ARM_MAX_VQ);
-+    /*
-+     * CPU models specify a set of supported vector lengths which are
-+     * enabled by default.  Attempting to enable any vector length not set
-+     * in the supported bitmap results in an error.  When KVM is enabled we
-+     * fetch the supported bitmap from the host.
-+     */
-     if (kvm_enabled() && kvm_arm_sve_supported()) {
--        kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
-+        kvm_arm_sve_get_vls(CPU(cpu), cpu->sve_vq_supported);
-     } else if (kvm_enabled()) {
-         assert(!cpu_isar_feature(aa64_sve, cpu));
-     }
-@@ -299,7 +302,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-              * For KVM we have to automatically enable all supported unitialized
-              * lengths, even when the smaller lengths are not all powers-of-two.
-              */
--            bitmap_andnot(tmp, kvm_supported, cpu->sve_vq_init, max_vq);
-+            bitmap_andnot(tmp, cpu->sve_vq_supported, cpu->sve_vq_init, max_vq);
-             bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
-         } else {
-             /* Propagate enabled bits down through required powers-of-two. */
-@@ -322,12 +325,12 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-             /* Disabling a supported length disables all larger lengths. */
-             for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
-                 if (test_bit(vq - 1, cpu->sve_vq_init) &&
--                    test_bit(vq - 1, kvm_supported)) {
-+                    test_bit(vq - 1, cpu->sve_vq_supported)) {
+@@ -329,35 +329,26 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
                      break;
                  }
              }
-             max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
--            bitmap_andnot(cpu->sve_vq_map, kvm_supported,
-+            bitmap_andnot(cpu->sve_vq_map, cpu->sve_vq_supported,
-                           cpu->sve_vq_init, max_vq);
-             if (max_vq == 0 || bitmap_empty(cpu->sve_vq_map, max_vq)) {
-                 error_setg(errp, "cannot disable sve%d", vq * 128);
-@@ -392,7 +395,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+-            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
+-            bitmap_andnot(cpu->sve_vq_map, cpu->sve_vq_supported,
+-                          cpu->sve_vq_init, max_vq);
+-            if (max_vq == 0 || bitmap_empty(cpu->sve_vq_map, max_vq)) {
+-                error_setg(errp, "cannot disable sve%d", vq * 128);
+-                error_append_hint(errp, "Disabling sve%d results in all "
+-                                  "vector lengths being disabled.\n",
+-                                  vq * 128);
+-                error_append_hint(errp, "With SVE enabled, at least one "
+-                                  "vector length must be enabled.\n");
+-                return;
+-            }
+         } else {
+             /* Disabling a power-of-two disables all larger lengths. */
+-            if (test_bit(0, cpu->sve_vq_init)) {
+-                error_setg(errp, "cannot disable sve128");
+-                error_append_hint(errp, "Disabling sve128 results in all "
+-                                  "vector lengths being disabled.\n");
+-                error_append_hint(errp, "With SVE enabled, at least one "
+-                                  "vector length must be enabled.\n");
+-                return;
+-            }
+-            for (vq = 2; vq <= ARM_MAX_VQ; vq <<= 1) {
++            for (vq = 1; vq <= ARM_MAX_VQ; vq <<= 1) {
+                 if (test_bit(vq - 1, cpu->sve_vq_init)) {
+                     break;
+                 }
+             }
+-            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
+-            bitmap_complement(cpu->sve_vq_map, cpu->sve_vq_init, max_vq);
++        }
++
++        max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
++        bitmap_andnot(cpu->sve_vq_map, cpu->sve_vq_supported,
++                      cpu->sve_vq_init, max_vq);
++        if (max_vq == 0 || bitmap_empty(cpu->sve_vq_map, max_vq)) {
++            error_setg(errp, "cannot disable sve%d", vq * 128);
++            error_append_hint(errp, "Disabling sve%d results in all "
++                              "vector lengths being disabled.\n",
++                              vq * 128);
++            error_append_hint(errp, "With SVE enabled, at least one "
++                              "vector length must be enabled.\n");
++            return;
+         }
  
-     if (kvm_enabled()) {
-         /* Ensure the set of lengths matches what KVM supports. */
--        bitmap_xor(tmp, cpu->sve_vq_map, kvm_supported, max_vq);
-+        bitmap_xor(tmp, cpu->sve_vq_map, cpu->sve_vq_supported, max_vq);
-         if (!bitmap_empty(tmp, max_vq)) {
-             vq = find_last_bit(tmp, max_vq) + 1;
-             if (test_bit(vq - 1, cpu->sve_vq_map)) {
+         max_vq = find_last_bit(cpu->sve_vq_map, max_vq) + 1;
+@@ -393,46 +384,44 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+     assert(max_vq != 0);
+     bitmap_clear(cpu->sve_vq_map, max_vq, ARM_MAX_VQ - max_vq);
+ 
+-    if (kvm_enabled()) {
+-        /* Ensure the set of lengths matches what KVM supports. */
+-        bitmap_xor(tmp, cpu->sve_vq_map, cpu->sve_vq_supported, max_vq);
+-        if (!bitmap_empty(tmp, max_vq)) {
+-            vq = find_last_bit(tmp, max_vq) + 1;
+-            if (test_bit(vq - 1, cpu->sve_vq_map)) {
+-                if (cpu->sve_max_vq) {
+-                    error_setg(errp, "cannot set sve-max-vq=%d",
+-                               cpu->sve_max_vq);
+-                    error_append_hint(errp, "This KVM host does not support "
+-                                      "the vector length %d-bits.\n",
+-                                      vq * 128);
+-                    error_append_hint(errp, "It may not be possible to use "
+-                                      "sve-max-vq with this KVM host. Try "
+-                                      "using only sve<N> properties.\n");
+-                } else {
+-                    error_setg(errp, "cannot enable sve%d", vq * 128);
+-                    error_append_hint(errp, "This KVM host does not support "
+-                                      "the vector length %d-bits.\n",
+-                                      vq * 128);
+-                }
++    /* Ensure the set of lengths matches what is supported. */
++    bitmap_xor(tmp, cpu->sve_vq_map, cpu->sve_vq_supported, max_vq);
++    if (!bitmap_empty(tmp, max_vq)) {
++        vq = find_last_bit(tmp, max_vq) + 1;
++        if (test_bit(vq - 1, cpu->sve_vq_map)) {
++            if (cpu->sve_max_vq) {
++                error_setg(errp, "cannot set sve-max-vq=%d", cpu->sve_max_vq);
++                error_append_hint(errp, "This CPU does not support "
++                                  "the vector length %d-bits.\n", vq * 128);
++                error_append_hint(errp, "It may not be possible to use "
++                                  "sve-max-vq with this CPU. Try "
++                                  "using only sve<N> properties.\n");
+             } else {
++                error_setg(errp, "cannot enable sve%d", vq * 128);
++                error_append_hint(errp, "This CPU does not support "
++                                  "the vector length %d-bits.\n", vq * 128);
++            }
++            return;
++        } else {
++            if (kvm_enabled()) {
+                 error_setg(errp, "cannot disable sve%d", vq * 128);
+                 error_append_hint(errp, "The KVM host requires all "
+                                   "supported vector lengths smaller "
+                                   "than %d bits to also be enabled.\n",
+                                   max_vq * 128);
+-            }
+-            return;
+-        }
+-    } else {
+-        /* Ensure all required powers-of-two are enabled. */
+-        for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
+-            if (!test_bit(vq - 1, cpu->sve_vq_map)) {
+-                error_setg(errp, "cannot disable sve%d", vq * 128);
+-                error_append_hint(errp, "sve%d is required as it "
+-                                  "is a power-of-two length smaller than "
+-                                  "the maximum, sve%d\n",
+-                                  vq * 128, max_vq * 128);
+                 return;
++            } else {
++                /* Ensure all required powers-of-two are enabled. */
++                for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
++                    if (!test_bit(vq - 1, cpu->sve_vq_map)) {
++                        error_setg(errp, "cannot disable sve%d", vq * 128);
++                        error_append_hint(errp, "sve%d is required as it "
++                                          "is a power-of-two length smaller "
++                                          "than the maximum, sve%d\n",
++                                          vq * 128, max_vq * 128);
++                        return;
++                    }
++                }
+             }
+         }
+     }
 -- 
 2.31.1
 

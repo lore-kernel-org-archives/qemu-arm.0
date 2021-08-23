@@ -1,66 +1,66 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1884120lfg;
-        Mon, 23 Aug 2021 06:46:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy8dHew+Uh+CqvSNffvC/FH2S8vmiaD1njKXjO/5dVbHZE7CwyUuzJwavWe9qqEMZ+lnIGS
-X-Received: by 2002:a05:6102:22e4:: with SMTP id b4mr562254vsh.28.1629726364118;
-        Mon, 23 Aug 2021 06:46:04 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1629726364; cv=pass;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp1894235lfg;
+        Mon, 23 Aug 2021 06:58:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVpD1rBX0UEmQb1ZPZM3zPJ+3319+cz6fdShsRyaxR7OYPbThyG+tlD6iCsffaW+Y6mW2c
+X-Received: by 2002:a37:f515:: with SMTP id l21mr17871056qkk.234.1629727133021;
+        Mon, 23 Aug 2021 06:58:53 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1629727133; cv=pass;
         d=google.com; s=arc-20160816;
-        b=prpSgLWTg/pncWzlDrj+TfLX8Al6jjIWemRsEswsmRId8JspUFbVUoDqq+SsnU6n/n
-         UIBZpcuKZt/vBm/pubAZtNgfDRQdzHaRbNHeboL+PdIpO9MuIu1xWZjgNpxVNDVor44Y
-         HkDFayYy7ykS+IzAOLwWQmzNqIfyedFgJ9K7o3oa647pVJc3+nK09d1GhO/rTwieeSv/
-         m/8SXW7svbeXibiTDK70OehpfwKuJi5Q5m8jW+D2lnI2QMlyw3hG3/Dx88kMsJwlvfBT
-         SBR29paxMv7x3cI71mDMEdabTWtVOzqHfLkqIJrh9VDp6u2c2fkhrhUqCkw2uA+8ESTD
-         BJZw==
+        b=VJ988o16SsCBcKf5Cly8nOKpFHSJ/JENCwd+ANH3Uzq0QnhQ71pU2Dz5G0iAeCBL9D
+         0WFOiSIQ8qrV4YwLYGORk9XayOPVtdHo/hKqBODsqamNhGGhKyr9qSpy8dd4e60/hfop
+         aMInJLY+z4WimhG6kZU7r0DBCWX0KdW5npe2WhOEBo8Wu2P50fQsHqoEF1njOC46mMIH
+         8kIcjJoHBoyrbZDR2ld5C/2frv1ESqZYfHtFhLBwWzNGJm/keh0BSQSdsDwYX5fYa0kL
+         IXw+7ljt6kBGIOuSPt6TNqNOmxW94R8SBtOkAEOWjzfd6HOVtNo9MeKh7iHvp/D16rXE
+         OV7A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=fLHNJLt6tHLDxMOADysd6r/610EVXFfvqYsE653ttv8=;
-        b=zfpfZD0NorwBRL29gZIV7Wv2HpfcVLUkD3mwLUQSftFdt+qzn1nZnweh3BII2VXkJu
-         bB4yTCO8Rg+aoMgJAclAjti2conuYmuLTvXw0b/wK1qwDHujLWbY+nIRl3J+CJ3TbhKe
-         Sedf2xaPiwkciFgM4j1VHJKHmydAPw6VEiUXwNmLmLIbto7w1190/Zm1J8K7TKeW7HY8
-         3pg3IbstsqJddlq3GBU8tkKPFVBmFAmoVWiBMDOdrRH6b1HDcofvWEk+9NZTeNolZDYM
-         DjyQP/flNgfziOSvn3XpMsDAVGdgjicbuNyE/8EhrS1mwy55nzMHzUn+o7dHBTgDSxkE
-         k/FA==
+        bh=3ccxWfg2wKZNbZqoEVKdVGQ/e62J5Mt2O8yA5x9PMk4=;
+        b=t7qTW6HBVLgbuT+4uNXWxpQgdxeVebYWFcTVzcVRLn8Gh7zakyoNZsNhb6vztA6Zq/
+         p7sHKPonKlRee2CUSLH4wRF1HDZxO/8YZ+FFSTI4vWNhuJW+VSCaHGjEmcSXjD9kzg6e
+         9lUMsUUi1hJM6fx5gWX8HkwOkVjYJirA+MBc/XaKd+pMU6R7nZQlE71+/T26Ck6VAwEo
+         TtSQrrw+sIgcUtm0pyyIDJacVvH63Gw3ST/b7YVWq8qx8iTSpMNkmkkvbcT2IiTDMdfw
+         KuZy27/zihTgHOuLlbWPExiyQ4EBhGzMu0+RcfWQHRM7SkIgbvHeskv4AKrubimwq7I0
+         8bBg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=ArIph9vE;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=Io8edpLs;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h4si238251vsq.340.2021.08.23.06.46.03
+        by mx.google.com with ESMTPS id e17si10229617qtm.117.2021.08.23.06.58.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 06:46:04 -0700 (PDT)
+        Mon, 23 Aug 2021 06:58:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=ArIph9vE;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=Io8edpLs;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:53538 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33158 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIAH5-0003jQ-B3
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 09:46:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34026)
+	id 1mIATU-00018G-9j
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 09:58:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1mIAGr-0003ir-ON; Mon, 23 Aug 2021 09:45:49 -0400
-Received: from mail-bn8nam08on2063.outbound.protection.outlook.com
- ([40.107.100.63]:11424 helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+ id 1mIATL-000181-ND; Mon, 23 Aug 2021 09:58:43 -0400
+Received: from mail-bn8nam12on2040.outbound.protection.outlook.com
+ ([40.107.237.40]:35520 helo=NAM12-BN8-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1mIAGm-00021G-9X; Mon, 23 Aug 2021 09:45:48 -0400
+ id 1mIATG-0004if-Ty; Mon, 23 Aug 2021 09:58:42 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bEyyqq3gCszLknMpkxrQ7UzbdXhbxTPGgWHFzk78yKF9M+f48OvwCTMKa2RQ/D7345t8MvXxqaBYPNxFk3LkE2JrrI5VhlrSuutlXKzhKN567xbNCOkYH3CUwppKqhuLFeBinO8UzPe4NyBgX/EMyVbCsFtJj9hvvA04Wilp/Ol1JtFyzTKxdsy0ywh5qiQReHqTpFHJ8Nar8rro5GgkGkC09++9GUqyC36HRUTsI/k43e0tKSjQewXqONWsqHagcPRmDr/6IsamuIH7LUHUpP0yuMaHUVz4tYSKSVENbFFWoX93/ZL8p8Ie2viHNmx/uVaaSCXbxVCRm0CNmVK70A==
+ b=jzJ0xtCxyWQIkHkPg+lt1TJJv+7dxLDUvi2SgxmuIqX50QjyDBo14X/p9IObaVjzpJPk3vcyq5o83ZdlCLCJQywBVrrFBg+0eyzdoTEktcO4e3HvB9v7hVAGy1eMOAE1wlgjLiRyH1JWK7ersCCTV/7GwLu9NHQAirXzPCObdMVThU9DyEmCfa73OxpdSlrohmWHPfLT1TbooQIA04zFMX/NznQfo6ohZ/hg9rTN5WbEmMpMBS4g9TRX7hGajoz8yCTuyXlqVNLkzftBbzeBIC964GekA91ZmNhjBBrm1U27wNOTGK2XPw/I8QN55Ze4OKCuNSvbbI7J/O2K7zqWwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fLHNJLt6tHLDxMOADysd6r/610EVXFfvqYsE653ttv8=;
- b=UKG/1CkwqkHQJrst6y9Nm08n0jsvoW8UwmSxPw3Jdak34Fssk4XLbRQMQwOQBBhhCbj5Fv1DhPYHGbQ8IL/u/epLUOhPY3vA+bojfd0Bu9Vt/zc2VXMqJKWKl7BNcCQ0rj1+fnpPNXHQKsTXpXM5QcTVmLgMObLTSImfcR/bn97/5rwSRolJhP0lQKB3v8lAaP7OVrLEYdpzg3G9A6uoOQFl1NCuP6UOl95E1WfqAhF9skmw47hKFaOKyMi6qp0047SaYfNPWjpNz6Bij8fk7KM8DOXRIhKPPZ7QEwuN2HRmDNmI8T2i6rh/gZkDDZbu9I9e9MHXoCgBImnCFGortQ==
+ bh=3ccxWfg2wKZNbZqoEVKdVGQ/e62J5Mt2O8yA5x9PMk4=;
+ b=OEqqcO7wtFbXYe0c5EEaxkBJrUZNDpWIerBlmL4T5vPsBJYH1R25nvSic9+ZUL2t1Dph7eH+D7akj8XdSegpjYySOOWGbbY8gqV8UxRrJK5ta0DNxwa6UHsSX3tRzClIDvw7rR2rxoHFFriQMbOf7x2qCgdYgU8ueS40hS65GItEVfYADgvMTPkU0s9fx7ZNwrbfnZx/C64XON83juzA1XI/qAqlJuvi46F/bnwQuO4n9+ITajK6754kr0l0rYrlKC5Ao/VU4OOlgrPRUeC2i9DNGNPobt3KUmw1TZ3K3eDfZyVptLJ2xg4d2JMaFDMksCoxahWl7lcbiM62848nNA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  149.199.62.198) smtp.rcpttodomain=gmail.com smtp.mailfrom=xilinx.com;
  dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
@@ -68,81 +68,81 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fLHNJLt6tHLDxMOADysd6r/610EVXFfvqYsE653ttv8=;
- b=ArIph9vESP9/R3gIuh+U0BDPhtRW9pB9d/viiLf5yWuqomvziPOjLv/3jZ4tsOctfAepKBobwPgyMznAX2cL82O7IFfUP8vrMpohobSXWS6Y4nJcmqtn/GYiCZwYRsV9LX78fm9+gd5TE68a7l+JyylcsxcdWwTlhM/WuKi7V6s=
-Received: from BN6PR13CA0057.namprd13.prod.outlook.com (2603:10b6:404:11::19)
- by SA2PR02MB7849.namprd02.prod.outlook.com (2603:10b6:806:14c::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19; Mon, 23 Aug
- 2021 13:45:35 +0000
-Received: from BN1NAM02FT020.eop-nam02.prod.protection.outlook.com
- (2603:10b6:404:11:cafe::2e) by BN6PR13CA0057.outlook.office365.com
- (2603:10b6:404:11::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.9 via Frontend
- Transport; Mon, 23 Aug 2021 13:45:35 +0000
+ bh=3ccxWfg2wKZNbZqoEVKdVGQ/e62J5Mt2O8yA5x9PMk4=;
+ b=Io8edpLsgRZvUqoMH27R1HmZXdgDhwWGRSWnE8ibLqzl4E4jMan3/zJHovmzVzYOLMxX5MCCiRqOvADLQBFdW/eWTEFTEzYlUjRn7zbsawK/RsNgRcqjMZi1kPPJHLHDVVVD9jPsGdBt2OESuCIz43xcPQIfUIHTGMrRJxZ/r+8=
+Received: from DM5PR06CA0070.namprd06.prod.outlook.com (2603:10b6:3:37::32) by
+ DM5PR02MB2827.namprd02.prod.outlook.com (2603:10b6:3:109::18) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4436.24; Mon, 23 Aug 2021 13:58:33 +0000
+Received: from DM3NAM02FT063.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:3:37:cafe::83) by DM5PR06CA0070.outlook.office365.com
+ (2603:10b6:3:37::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19 via Frontend
+ Transport; Mon, 23 Aug 2021 13:58:33 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
  smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
  header.d=none;gmail.com; dmarc=pass action=none header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
  149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
-Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
- BN1NAM02FT020.mail.protection.outlook.com (10.13.2.135) with Microsoft SMTP
+ client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
+Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
+ DM3NAM02FT063.mail.protection.outlook.com (10.13.5.71) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4436.19 via Frontend Transport; Mon, 23 Aug 2021 13:45:34 +0000
+ 15.20.4436.19 via Frontend Transport; Mon, 23 Aug 2021 13:58:33 +0000
 Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
+ xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Mon, 23 Aug 2021 06:45:33 -0700
+ 15.1.2176.14; Mon, 23 Aug 2021 06:58:33 -0700
 Received: from smtp.xilinx.com (172.19.127.95) by
  xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Mon, 23 Aug 2021 06:45:33 -0700
-Received: from [10.71.116.242] (port=58247 helo=localhost)
+ 15.1.2176.14 via Frontend Transport; Mon, 23 Aug 2021 06:58:33 -0700
+Received: from [10.71.116.242] (port=52116 helo=localhost)
  by smtp.xilinx.com with esmtp (Exim 4.90)
  (envelope-from <edgar@xilinx.com>)
- id 1mIAGa-0003fV-Rc; Mon, 23 Aug 2021 06:45:33 -0700
-Date: Mon, 23 Aug 2021 15:45:31 +0200
+ id 1mIATA-0005PZ-Im; Mon, 23 Aug 2021 06:58:33 -0700
+Date: Mon, 23 Aug 2021 15:58:31 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 To: Alistair Francis <alistair23@gmail.com>
-Subject: Re: [PATCH 1/3] hw/misc: zynq_slcr: Correctly compute output clocks
- in the reset exit phase
-Message-ID: <20210823134531.GA24187@toto>
+Subject: Re: [PATCH 2/3] hw/char: cadence_uart: Disable transmit when input
+ clock is disabled
+Message-ID: <20210823135831.GB24187@toto>
 References: <20210823020813.25192-1-bmeng.cn@gmail.com>
- <20210823020813.25192-2-bmeng.cn@gmail.com>
- <CAKmqyKPnAQHi4hkTrSVCkHX4tHZyXFnkoESh9svc-qQNqG5-2Q@mail.gmail.com>
+ <20210823020813.25192-3-bmeng.cn@gmail.com>
+ <CAKmqyKMzq-F=MYMA=_7MeLTodxY7Eo91Nta4nKuncvAZ=bQUOQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <CAKmqyKPnAQHi4hkTrSVCkHX4tHZyXFnkoESh9svc-qQNqG5-2Q@mail.gmail.com>
+In-Reply-To: <CAKmqyKMzq-F=MYMA=_7MeLTodxY7Eo91Nta4nKuncvAZ=bQUOQ@mail.gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b6c25f13-56bb-4fa5-d18c-08d9663c488d
-X-MS-TrafficTypeDiagnostic: SA2PR02MB7849:
-X-Microsoft-Antispam-PRVS: <SA2PR02MB78499DBF6699E38442690B3CC2C49@SA2PR02MB7849.namprd02.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: 42ce9a2f-061d-4e0e-d3bd-08d9663e18b7
+X-MS-TrafficTypeDiagnostic: DM5PR02MB2827:
+X-Microsoft-Antispam-PRVS: <DM5PR02MB2827BB0A8F0AB1C8DCB65CDDC2C49@DM5PR02MB2827.namprd02.prod.outlook.com>
 X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:2150;
+X-MS-Oob-TLC-OOBClassifiers: OLM:3631;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: YkhGUNb1zJYy4QhbR7de7XoMmEZk045czhPCtffWpB4ilUS7BNQnXP07Xg2OZQR1RdAWRRECWUsWz+wqTYXE0288m5kc7RB1rRT44WnoZpkhTUIW0HF1keODI1sfj/lT1W231ieTU1PwZdIWYSDK1J4XEjXzlDAINyFkTDoOXveag60Sx4oHHRCFj6QRnQepqT3jABSY65L60hz7n9jdKT9cuNxd/eB85kcZPLjW1XpxYXHYUbcQolM6zdqSCllnLYg0Wciq1lOs5TWLL6xcRE74bNQa7980T3uIpjaJZL6SuqGIV032uhjDYkduF92TVdFn1MGELQSinCfp3yXtB7ykABKdmPUSng+9aqthDvFVEJvSesmHkZGAYuqILtWF7ZCSOHTY7Z1Z6WH5V/PdFFSyf+kt4DVxYauwLtRYNmHMFpcGDZ0vW/b1xlbslKLwNp/NSC8C7hu1s/Ulgj5Xz/7TG4lff2BVhCt8wSWvnS7fsm1kyPHMqmANyCfg4/1rONcm1jqwr39g14FDPj+itlQI8MYQZQrdDJ8ivbXZT/YRSukXnlriFkkq2/b4D4kslDvycG+UxMTgteGrXixG3PdgYk5YwFgoz5Ub2rFlXbSlSl030egcZZgKRooyVfn/xfcmpXYDupKjUmQOfXRoKuRNQ2Jh1OPWhJZTf0cIHLvGcIQQ2vihmJNZtvGY4z+9HDbC+ywqQ6bBw8wmDG6pMg==
+X-Microsoft-Antispam-Message-Info: QLUQK3cdC9cCg3wlDGZJ5iP3kf4DdtkkxcSTBYsMxXv1q+rvJVTkjlkKnPq4VtfH62uhw5/KbRDjOih0YIa10Ltguz9f1rdwXNEqgFnzBJ+60ot1EEXOzeYJbKYD2otwH0JrBav7g8X/+gY7Ku0/9OzUQN4c+kvpADwg+4xl8KTRZ16MpgdqcWAeHzp9HFPwUZR0fLlzp8uvEWdEjxcKaIwGrR7xRut6T/oIB6yj4F0ZgrTRQi2LB1Dcy4he3ur6N0ld7kZ5AAXpVayQxZC4bY10w17a7J13XK0x7u8GEU08GnN7URO57pCQoV/m+289tTgEIDyVIork+AL7Q+qluQyXprmu+cPX03VqPAStOtBl+AG4azzJ3qxIDiBBbdUiIcef15fcqkBO8j2yKoh19aILIUdHf0jhhzdSi4/ExZ/4kn2P+PImJfRMjZBQri2A6uRkpsRc+mLbKKVSfxkyqsZf4apLz1HwFEHFcvkjkZwdeHCA+OhE0hr3Pxn6hmNFaOJxnrLgh9H9h7P32ymUU5kP7BArggqQG3MZsbDwvBlxnQS2iuaoVSDbe/Ybwt4j9j1PPxaXrCsefJ7z2XCV4XTm+fWWGbg4OKIxt5SDV1jDsmydJK5ur5OhrLak/C+cT7BNd7+1rLf02mv/PUO3XdVNRPhz2EkECyXXUWacDt50lmUbS7+qNsFydUIVxAdltvqD5s0lcyVoEFr8MipCGg==
 X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
  PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(7916004)(4636009)(39860400002)(376002)(396003)(346002)(136003)(46966006)(36840700001)(36906005)(36860700001)(54906003)(9686003)(9786002)(7636003)(478600001)(5660300002)(316002)(82740400003)(70206006)(4326008)(70586007)(2906002)(82310400003)(33656002)(47076005)(83380400001)(53546011)(336012)(426003)(8936002)(186003)(6916009)(1076003)(33716001)(8676002)(26005)(356005);
+ SFS:(7916004)(4636009)(346002)(396003)(376002)(136003)(39860400002)(46966006)(36840700001)(186003)(356005)(36860700001)(7636003)(36906005)(426003)(478600001)(316002)(83380400001)(4326008)(47076005)(336012)(6916009)(33656002)(9786002)(26005)(8676002)(33716001)(9686003)(8936002)(5660300002)(82740400003)(54906003)(82310400003)(1076003)(53546011)(70206006)(70586007)(2906002);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2021 13:45:34.9631 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b6c25f13-56bb-4fa5-d18c-08d9663c488d
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2021 13:58:33.7412 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 42ce9a2f-061d-4e0e-d3bd-08d9663e18b7
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1NAM02FT020.eop-nam02.prod.protection.outlook.com
+ Helo=[xsj-pvapexch02.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT063.eop-nam02.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR02MB7849
-Received-SPF: pass client-ip=40.107.100.63; envelope-from=edgar@xilinx.com;
- helo=NAM04-BN8-obe.outbound.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB2827
+Received-SPF: pass client-ip=40.107.237.40; envelope-from=edgar@xilinx.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -168,110 +168,50 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Bin Meng <bmeng.cn@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oF+czvOK2Ii8
+X-TUID: twfViH9EguJ8
 
-On Mon, Aug 23, 2021 at 02:42:03PM +1000, Alistair Francis wrote:
-> On Mon, Aug 23, 2021 at 12:09 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+On Mon, Aug 23, 2021 at 02:43:26PM +1000, Alistair Francis wrote:
+> On Mon, Aug 23, 2021 at 12:11 PM Bin Meng <bmeng.cn@gmail.com> wrote:
 > >
-> > As of today, when booting upstream U-Boot for Xilinx Zynq, the UART
-> > does not receive anything. Debugging shows that the UART input clock
-> > frequency is zero which prevents the UART from receiving anything as
-> > per the logic in uart_receive().
+> > At present when input clock is disabled, any character transmitted
+> > to tx fifo can still show on the serial line, which is wrong.
 > >
-> > From zynq_slcr_reset_exit() comment, it intends to compute output
-> > clocks according to ps_clk and registers. zynq_slcr_compute_clocks()
-> > is called to accomplish the task, inside which device_is_in_reset()
-> > is called to actually make the attempt in vain.
-> >
-> > Rework reset_hold() and reset_exit() so that in the reset exit phase,
-> > the logic can really compute output clocks in reset_exit().
-> >
-> > With this change, upstream U-Boot boots properly again with:
-> >
-> > $ qemu-system-arm -M xilinx-zynq-a9 -m 1G -display none -serial null -serial stdio \
-> >     -device loader,file=u-boot-dtb.bin,addr=0x4000000,cpu-num=0
-> >
-> > Fixes: 38867cb7ec90 ("hw/misc/zynq_slcr: add clock generation for uarts")
+> > Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
 > > Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-> 
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-
-
-> 
-> Alistair
-> 
 > > ---
 > >
-> >  hw/misc/zynq_slcr.c | 31 ++++++++++++++++++-------------
-> >  1 file changed, 18 insertions(+), 13 deletions(-)
+> >  hw/char/cadence_uart.c | 5 +++++
+> >  1 file changed, 5 insertions(+)
 > >
-> > diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-> > index 5086e6b7ed..8b70285961 100644
-> > --- a/hw/misc/zynq_slcr.c
-> > +++ b/hw/misc/zynq_slcr.c
-> > @@ -269,6 +269,21 @@ static uint64_t zynq_slcr_compute_clock(const uint64_t periods[],
-> >      zynq_slcr_compute_clock((plls), (state)->regs[reg], \
-> >                              reg ## _ ## enable_field ## _SHIFT)
-> >
-> > +static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk)
-> > +{
-> > +    uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
-> > +    uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
-> > +    uint64_t ddr_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_DDR_PLL_CTRL]);
-> > +
-> > +    uint64_t uart_mux[4] = {io_pll, io_pll, arm_pll, ddr_pll};
-> > +
-> > +    /* compute uartX reference clocks */
-> > +    clock_set(s->uart0_ref_clk,
-> > +              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0));
-> > +    clock_set(s->uart1_ref_clk,
-> > +              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1));
-> > +}
-> > +
-> >  /**
-> >   * Compute and set the ouputs clocks periods.
-> >   * But do not propagate them further. Connected clocks
-> > @@ -283,17 +298,7 @@ static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
-> >          ps_clk = 0;
-> >      }
-> >
-> > -    uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
-> > -    uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
-> > -    uint64_t ddr_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_DDR_PLL_CTRL]);
-> > -
-> > -    uint64_t uart_mux[4] = {io_pll, io_pll, arm_pll, ddr_pll};
-> > -
-> > -    /* compute uartX reference clocks */
-> > -    clock_set(s->uart0_ref_clk,
-> > -              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0));
-> > -    clock_set(s->uart1_ref_clk,
-> > -              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1));
-> > +    zynq_slcr_compute_clocks_internal(s, ps_clk);
-> >  }
-> >
-> >  /**
-> > @@ -416,7 +421,7 @@ static void zynq_slcr_reset_hold(Object *obj)
-> >      ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> >
-> >      /* will disable all output clocks */
-> > -    zynq_slcr_compute_clocks(s);
-> > +    zynq_slcr_compute_clocks_internal(s, 0);
-> >      zynq_slcr_propagate_clocks(s);
-> >  }
-> >
-> > @@ -425,7 +430,7 @@ static void zynq_slcr_reset_exit(Object *obj)
-> >      ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> >
-> >      /* will compute output clocks according to ps_clk and registers */
-> > -    zynq_slcr_compute_clocks(s);
-> > +    zynq_slcr_compute_clocks_internal(s, clock_get(s->ps_clk));
-> >      zynq_slcr_propagate_clocks(s);
-> >  }
-> >
-> > --
-> > 2.25.1
-> >
-> >
+> > diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> > index b4b5e8a3ee..154be34992 100644
+> > --- a/hw/char/cadence_uart.c
+> > +++ b/hw/char/cadence_uart.c
+> > @@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_use, GIOCondition cond,
+> >  static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf,
+> >                                 int size)
+> >  {
+> > +    /* ignore characters when unclocked or in reset */
+> > +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
+> > +        return;
+> > +    }
+> 
+> Should we log a guest error here?
+> 
+
+
+I think it's a good idea to log a guest error on the TX path.
+
+It's not uncommon for bare-metal applications to rely on FSBL/Bootloaders
+setting up clocks/resets. On QEMU, it's convenient to run applications
+directly without boot-loaders, particularly FSBL since it requires Xilinx tools
+to generate it. It's going to be hard for users to figure out what's going on
+with no console output and no guest error.
+
+I also wonder how Linux handles this when CCF is not active?
+Do we need to use TYPE_ARM_LINUX_BOOT_IF?
+
+Best regards,
+Edgar
+
+

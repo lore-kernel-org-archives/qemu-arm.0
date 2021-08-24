@@ -1,85 +1,85 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2401262lfg;
-        Mon, 23 Aug 2021 19:22:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxqBS2rzE3g8atsXWKEaf2JEZmNVJ0wMsi/8UNLEWfqv4xFT4OIaBiiAwHy190H/ZRA6730
-X-Received: by 2002:a05:6e02:503:: with SMTP id d3mr25389766ils.107.1629771764766;
-        Mon, 23 Aug 2021 19:22:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629771764; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2402043lfg;
+        Mon, 23 Aug 2021 19:24:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzIOlZKueNNWixQ730KC9X7nc7Cc9OAkE/RzqPLTB0+tH86SfC5JqrnrA0cFT6CkYhlBIvu
+X-Received: by 2002:a6b:d20c:: with SMTP id q12mr29819102iob.121.1629771878560;
+        Mon, 23 Aug 2021 19:24:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629771878; cv=none;
         d=google.com; s=arc-20160816;
-        b=hYdkM0EP8jL4fffudIddZbTTMB2uOSNDdv7DLN8VEcUutBUwb9UWUdoRm9fgTE2d88
-         Hlv/ukFhwZQAEYxad+a2PxKJkrJ2aKCsxrKwZ/Ea8Hn4IWsNBu6NlrLvJDFiNAocCKwP
-         KUXZh5eCJw2PhY1iRQfna5Yp+OuuG1tIAYpjtvwxZZXuY3UxfGDuRjcZbErymlbp24Jw
-         YYACAITa4MMNa2+Cet/zfhoHQtc+j5QBYxFSMlnaYBX1XzmVhjoM6HVStEl4dv6hzTKb
-         nuH0FeCAXysShKBcKXY0f4fnteUA51CxnJWnxCZBWzVQueCHyT+DrMIFwWt0yczzDuoz
-         0krQ==
+        b=w6lPTbpwfqB808mOMO0GR1uS3cQlSV4mnl1iYaJ3m1BAxNDIsjuJt5Zc2hAxkZp5NJ
+         DtJS5QnJJkH3+sEnVlsTic7krGwRwdUpoqOHqQdVf8R53PO1aiW4abN1SsD+N+1/COaD
+         0CGE2ZC42l6I6Mw5jmI3GMmFk0rPtXHYc4vfeT5RFdix2Cerfi6FLWVF8mERzIEZLzxr
+         2pGrOtcvpiBRsfdXr7BjdHc99+3C0n/Jd/HDXGRg7jSrTkcsv1bVWvcCdPJFirAc0V/B
+         MwfpdMS5Pz0X67JoYVeytLRFXRV24j2ZHrBCQdh05CSoDT0TBpS/60Os3zNOGl23gXiB
+         EeBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:accept-language
          :message-id:date:thread-index:thread-topic:subject:to:from
          :dkim-signature:content-transfer-encoding:content-language;
         bh=1wIpgptmkLiyoD3P8tc9Zz8V2uSvDh1302o8I0j7CFQ=;
-        b=ktmCobcqmGjEXIhlynkkNCGB4s1xZq80VIkVuf3ZmyDtqJo4uF3YheTokP0+Xn95J5
-         zw2rzdB6pAO6mTthUyou2WYBFlJME6gXVIucY+bU+6KO4U5kZTwLUa16OO4Unw9iWXce
-         RawrUxvTiS5RqrsyEFediESpOnRABfHy4N39w0QLBEMCb/M04O8d1UDVuAliZg14V0ji
-         54Q9nG+YGDJY0UUlKlzGw/ItOMaOgpY17O43c7DkSCSMwJ3OBfUXuf0+THW34pzm0seS
-         e5p2ygAIFLM6FUV1qkKji4RIQerppG2JQLBdBU3BQ/+vHwvN75jxObFkv2YzbTKP9Mex
-         mR3A==
+        b=Y9/Ej2FtZNhnX1ux0p69E6sNwzOJbul5v33DTraWLh1BZfJ1f2HOg7iSYavSODBqV1
+         xfFkYfBf8ti/LGnLTquy5wdJmGPkkajuxhCRQ+R0T4l/ZxZPO6dM7oOgnK0ZVLSfXYpd
+         1Ahqk2scXUKv40iojUUayyUew0bClrqQBc4dzcFbnwyu5wlkBP0EXdURkMto+lqjg3+u
+         nN+NkkkFKMFd3DtiOeSwxN5ybzHxq+1HpGQkZXgB6ze2UuBslNxSnLacw6f484ymrxuQ
+         sjJF1We7gQstI4cmKwYpwQlS6a6x0963LyngVxT+Pfgaq3DKVhqHc7gvsgtdX+n+ix6B
+         0vVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=ejXfhbfY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=fX0qbucw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q14si16257753ilm.44.2021.08.23.19.22.44
+        by mx.google.com with ESMTPS id s15si15575203jaj.78.2021.08.23.19.24.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 19:22:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Aug 2021 19:24:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=ejXfhbfY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=fX0qbucw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:41246 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIM5M-0002so-20
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 22:22:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43786)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mIM7B-0005tY-Sg
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 22:24:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44200)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mIM3r-0002BZ-IR; Mon, 23 Aug 2021 22:21:11 -0400
-Received: from shasxm06.verisilicon.com ([101.89.135.45]:19046
+ id 1mIM72-0005t7-V8; Mon, 23 Aug 2021 22:24:28 -0400
+Received: from shasxm06.verisilicon.com ([101.89.135.45]:37689
  helo=shasxm03.verisilicon.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mIM3i-0008FZ-In; Mon, 23 Aug 2021 22:21:11 -0400
+ id 1mIM71-00021D-1e; Mon, 23 Aug 2021 22:24:28 -0400
 Content-Language: zh-CN
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1629771643; h=from:subject:to:date:message-id;
+ c=simple/simple; t=1629771863; h=from:subject:to:date:message-id;
  bh=jt/vgqUd9uzeDbtew/p+pEB5O//pERX6sPsNgm1B/MM=;
- b=ejXfhbfYlY1UR56B1mcGdK+2vKNyhMulIyed2u30nH9+JrLsM8OwwE5rrrbmJESGKJEgRthmM/E
- LZDQFKZ38aA9ShW8+PtKdvgvlIkKvjHmb53GVuxdD+EjNhG4LMzeODEFADqgN5R3DzFuMIdtjh3Ga
- C5pExNHlsI3hzE2j8hE=
+ b=fX0qbucwIIK+//958hREbDn9GlGI2knfc0mUadJLcGhNtGZMx1SDczx80WdmyhqYm49rO91QOBS
+ 6meboSBBKnKBcHsN55165GQgCIXhZtHxHgbRcp2BpO66q58t4OFuo/EjwLDbubU/U9zQM7KHvB1Ef
+ gQnTxX3GDR366hCzQIo=
 Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
  SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Tue, 24 Aug 2021 10:20:43 +0800
+ 14.03.0408.000; Tue, 24 Aug 2021 10:24:22 +0800
 From: "Li, Chunming" <Chunming.Li@verisilicon.com>
 To: "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "peter.maydell@linaro.org" <peter.maydell@linaro.org>
-Subject: [PATCH v3 1/4] hw/arm/smmuv3: Support non PCI/PCIe device connect
- with SMMU v3
-Thread-Topic: [PATCH v3 1/4] hw/arm/smmuv3: Support non PCI/PCIe device
- connect with SMMU v3
-Thread-Index: AQHXmIbEbLL46foKN0C6RVW6mDiUmauB6+4Q
-Date: Tue, 24 Aug 2021 02:20:42 +0000
-Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142FAB1C@SHASXM03.verisilicon.com>
+Subject: [PATCH v3 3/4] Update SMMU v3 creation to support non PCI/PCIe
+ device connection
+Thread-Topic: [PATCH v3 3/4] Update SMMU v3 creation to support non PCI/PCIe
+ device connection
+Thread-Index: AQHXmI8l4XtXoCMWSUOhSpeKHf4yPA==
+Date: Tue, 24 Aug 2021 02:24:21 +0000
+Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142FAB35@SHASXM03.verisilicon.com>
 Accept-Language: zh-CN, en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [10.10.46.39]
 x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--6.628200-0.000000-31
+x-tm-as-result: No--7.512700-0.000000-31
 x-tm-as-user-approved-sender: Yes
 x-tm-as-user-blocked-sender: No
 MIME-Version: 1.0
@@ -92,24 +92,24 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "Liu, Renwei" <Renwei.Liu@verisilicon.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
  Jianxian" <Jianxian.Wen@verisilicon.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MyzNnqnTX8Cp
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ruv7tvXwidot
 
 From: LCM <chunming.li@verisilicon.com>
 

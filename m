@@ -1,85 +1,85 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2401119lfg;
-        Mon, 23 Aug 2021 19:22:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxND/IZIqjqGdaN3Ego9busVawAxjEX7I8vBXv/FVmeYzdvn00DsPbijWII2U70o8nACdnu
-X-Received: by 2002:a5d:8b17:: with SMTP id k23mr29062943ion.17.1629771746892;
-        Mon, 23 Aug 2021 19:22:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629771746; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2401262lfg;
+        Mon, 23 Aug 2021 19:22:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxqBS2rzE3g8atsXWKEaf2JEZmNVJ0wMsi/8UNLEWfqv4xFT4OIaBiiAwHy190H/ZRA6730
+X-Received: by 2002:a05:6e02:503:: with SMTP id d3mr25389766ils.107.1629771764766;
+        Mon, 23 Aug 2021 19:22:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629771764; cv=none;
         d=google.com; s=arc-20160816;
-        b=u86pq+78yqYwWBQRb+Lzrw3nk4vwDz63KH96zlwwJX3/0s0r7vIG2Q0r36wIxhLM4w
-         Z5TgH5QAErzU0wC08GZFWZuW9tpn/YOTYO+etTfKo4oloBA6PFAxjzlz/xVeLmWXPa7Y
-         B7W0RGnRLEkNEzeD1nbUPV9B7p4uq8+P8oA1YuDSDxBAOkiX4+MGsLEiShuYdJLAnNgj
-         BHwFkhrh10dxdtipiUZKdY7eCEP80Y1KtHT36WLvyaqIbZz6fPsJ7gsNmRNKP/+kJ0af
-         BZ1aO/7KTC7s3MgNTYSyAUj35df56tz4gsxx0OgiLmEUigfdso5L8j5CNKwPurgoQoNL
-         +g3g==
+        b=hYdkM0EP8jL4fffudIddZbTTMB2uOSNDdv7DLN8VEcUutBUwb9UWUdoRm9fgTE2d88
+         Hlv/ukFhwZQAEYxad+a2PxKJkrJ2aKCsxrKwZ/Ea8Hn4IWsNBu6NlrLvJDFiNAocCKwP
+         KUXZh5eCJw2PhY1iRQfna5Yp+OuuG1tIAYpjtvwxZZXuY3UxfGDuRjcZbErymlbp24Jw
+         YYACAITa4MMNa2+Cet/zfhoHQtc+j5QBYxFSMlnaYBX1XzmVhjoM6HVStEl4dv6hzTKb
+         nuH0FeCAXysShKBcKXY0f4fnteUA51CxnJWnxCZBWzVQueCHyT+DrMIFwWt0yczzDuoz
+         0krQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:accept-language
          :message-id:date:thread-index:thread-topic:subject:to:from
          :dkim-signature:content-transfer-encoding:content-language;
-        bh=8Vx2ywXI8ow+noLT7sd1T2sWyWwqEw1BhxCHXZCLMis=;
-        b=0yFewapqhjYtFLPH3bkLYd44hpI4xtjdjkKMlShQL/hUMYWuXZgvzIuumQtqfAkCTS
-         L4RknFJBAFfiTUnzBTuYXXwrGJNsLGteWf3wIAFJ/n8gyaVOptla+0SZz4AeURcybRpm
-         kIfl7InNBQwFkWR0ZpaRudZPNBKSa0KNrDwgQqq5kqtgNDmxuX9LXT6hUGj5Uhx95Fuu
-         MSCRiIA93/ZhB/qzoJG2TZpZPI5elUED973JdhGSopoaAp7KoaPXKJtYLUxDAfJZe+XW
-         U+xpw1po3dPH3RfVNXDBpaoRr90jg2dHGcv3WoXtD3oaUDT6yn+ecv266vrWTw2AeD43
-         Wl6A==
+        bh=1wIpgptmkLiyoD3P8tc9Zz8V2uSvDh1302o8I0j7CFQ=;
+        b=ktmCobcqmGjEXIhlynkkNCGB4s1xZq80VIkVuf3ZmyDtqJo4uF3YheTokP0+Xn95J5
+         zw2rzdB6pAO6mTthUyou2WYBFlJME6gXVIucY+bU+6KO4U5kZTwLUa16OO4Unw9iWXce
+         RawrUxvTiS5RqrsyEFediESpOnRABfHy4N39w0QLBEMCb/M04O8d1UDVuAliZg14V0ji
+         54Q9nG+YGDJY0UUlKlzGw/ItOMaOgpY17O43c7DkSCSMwJ3OBfUXuf0+THW34pzm0seS
+         e5p2ygAIFLM6FUV1qkKji4RIQerppG2JQLBdBU3BQ/+vHwvN75jxObFkv2YzbTKP9Mex
+         mR3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=PQoZGU89;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=ejXfhbfY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s15si18714541jap.91.2021.08.23.19.22.26
+        by mx.google.com with ESMTPS id q14si16257753ilm.44.2021.08.23.19.22.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Aug 2021 19:22:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Aug 2021 19:22:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=PQoZGU89;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=ejXfhbfY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:41300 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41246 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIM54-0002uq-7q
-	for alex.bennee@linaro.org; Mon, 23 Aug 2021 22:22:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43834)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mIM5M-0002so-20
+	for alex.bennee@linaro.org; Mon, 23 Aug 2021 22:22:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mIM4Q-0002sN-P4; Mon, 23 Aug 2021 22:21:46 -0400
-Received: from shasxm06.verisilicon.com ([101.89.135.45]:37479
+ id 1mIM3r-0002BZ-IR; Mon, 23 Aug 2021 22:21:11 -0400
+Received: from shasxm06.verisilicon.com ([101.89.135.45]:19046
  helo=shasxm03.verisilicon.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mIM4P-0000Jm-0P; Mon, 23 Aug 2021 22:21:46 -0400
+ id 1mIM3i-0008FZ-In; Mon, 23 Aug 2021 22:21:11 -0400
 Content-Language: zh-CN
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1629771700; h=from:subject:to:date:message-id;
- bh=ajNAGCGzgMc9BX7WW9wqMRqhN83RK0ZWWGaydjpokWU=;
- b=PQoZGU89YzmbVJ7uH1QigzE6DEVdFqkZbWo1Y3vnPody44dPlAVRpQjbaD7edeZUVQnBDCqUz9c
- m2c/OFJM8bP6vWRCPbPWIiJUOWHIwe+6AqcjMccOP2keXDIPmOMPG4kwSDkg/8JYVpdl1QnlEtWjz
- 2b73dNFY1rsfwXmlIYw=
+ c=simple/simple; t=1629771643; h=from:subject:to:date:message-id;
+ bh=jt/vgqUd9uzeDbtew/p+pEB5O//pERX6sPsNgm1B/MM=;
+ b=ejXfhbfYlY1UR56B1mcGdK+2vKNyhMulIyed2u30nH9+JrLsM8OwwE5rrrbmJESGKJEgRthmM/E
+ LZDQFKZ38aA9ShW8+PtKdvgvlIkKvjHmb53GVuxdD+EjNhG4LMzeODEFADqgN5R3DzFuMIdtjh3Ga
+ C5pExNHlsI3hzE2j8hE=
 Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
  SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Tue, 24 Aug 2021 10:21:39 +0800
+ 14.03.0408.000; Tue, 24 Aug 2021 10:20:43 +0800
 From: "Li, Chunming" <Chunming.Li@verisilicon.com>
 To: "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "peter.maydell@linaro.org" <peter.maydell@linaro.org>
-Subject: [PATCH v3 2/4] hw/arm/smmuv3: Update implementation of CFGI
- commands based on device SID
-Thread-Topic: [PATCH v3 2/4] hw/arm/smmuv3: Update implementation of CFGI
- commands based on device SID
-Thread-Index: AQHXmIbD3OnG2hCkMEW/KA4QExXdU6uB7Eaw
-Date: Tue, 24 Aug 2021 02:21:38 +0000
-Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142FAB29@SHASXM03.verisilicon.com>
+Subject: [PATCH v3 1/4] hw/arm/smmuv3: Support non PCI/PCIe device connect
+ with SMMU v3
+Thread-Topic: [PATCH v3 1/4] hw/arm/smmuv3: Support non PCI/PCIe device
+ connect with SMMU v3
+Thread-Index: AQHXmIbEbLL46foKN0C6RVW6mDiUmauB6+4Q
+Date: Tue, 24 Aug 2021 02:20:42 +0000
+Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142FAB1C@SHASXM03.verisilicon.com>
 Accept-Language: zh-CN, en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [10.10.46.39]
 x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--2.672200-0.000000-31
+x-tm-as-result: No--6.628200-0.000000-31
 x-tm-as-user-approved-sender: Yes
 x-tm-as-user-blocked-sender: No
 MIME-Version: 1.0
@@ -92,134 +92,175 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: "Liu, Renwei" <Renwei.Liu@verisilicon.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
  Jianxian" <Jianxian.Wen@verisilicon.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tYTouaFR05Yd
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MyzNnqnTX8Cp
 
 From: LCM <chunming.li@verisilicon.com>
 
-"smmu_iommu_mr" function can't get MR according to SID for non PCI/PCIe dev=
-ices.
-So we replace "smmuv3_flush_config" with "g_hash_table_foreach_remove" base=
-d on devices SID.
+  . Add sid-map property to store non PCI/PCIe devices SID
+  . Create IOMMU memory regions for non PCI/PCIe devices based on their SID
+  . Update SID getting strategy for PCI/PCIe and non PCI/PCIe devices
 
 Signed-off-by: Chunming Li <chunming.li@verisilicon.com>
 Signed-off-by: Renwei Liu <renwei.liu@verisilicon.com>
 ---
- hw/arm/smmuv3.c              | 35 ++++++++++-------------------------
- include/hw/arm/smmu-common.h |  5 ++++-
- 2 files changed, 14 insertions(+), 26 deletions(-)
+ hw/arm/smmuv3.c              | 46 ++++++++++++++++++++++++++++++++++++
+ include/hw/arm/smmu-common.h |  7 +++++-
+ include/hw/arm/smmuv3.h      |  2 ++
+ 3 files changed, 54 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 11d7fe842..9f3f13fb8 100644
+index 01b60bee4..11d7fe842 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -613,14 +613,6 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sde=
-v, SMMUEventInfo *event)
-     return cfg;
+@@ -32,6 +32,7 @@
+ #include "hw/arm/smmuv3.h"
+ #include "smmuv3-internal.h"
+ #include "smmu-internal.h"
++#include "hw/qdev-properties.h"
+=20
+ /**
+  * smmuv3_trigger_irq - pulse @irq if enabled and update
+@@ -1430,6 +1431,19 @@ static void smmu_reset(DeviceState *dev)
+     smmuv3_init_regs(s);
  }
 =20
--static void smmuv3_flush_config(SMMUDevice *sdev)
--{
--    SMMUv3State *s =3D sdev->smmu;
--    SMMUState *bc =3D &s->smmu_state;
--
--    trace_smmuv3_config_cache_inv(smmu_get_sid(sdev));
--    g_hash_table_remove(bc->configs, sdev);
--}
-=20
- static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-                                       IOMMUAccessFlags flag, int iommu_idx=
++static SMMUDevice *smmu_find_peri_sdev(SMMUState *s, uint16_t sid)
++{
++    SMMUDevice *sdev;
++
++    QLIST_FOREACH(sdev, &s->peri_sdev_list, next) {
++        if (smmu_get_sid(sdev) =3D=3D sid) {
++            return sdev;
++        }
++    }
++
++    return NULL;
++}
++
+ static void smmu_realize(DeviceState *d, Error **errp)
+ {
+     SMMUState *sys =3D ARM_SMMU(d);
+@@ -1437,6 +1451,9 @@ static void smmu_realize(DeviceState *d, Error **errp=
 )
-@@ -964,22 +956,18 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         case SMMU_CMD_CFGI_STE:
-         {
-             uint32_t sid =3D CMD_SID(&cmd);
--            IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, sid);
--            SMMUDevice *sdev;
-+            SMMUSIDRange sid_range;
+     SMMUv3Class *c =3D ARM_SMMUV3_GET_CLASS(s);
+     SysBusDevice *dev =3D SYS_BUS_DEVICE(d);
+     Error *local_err =3D NULL;
++    SMMUDevice *sdev;
++    char *name =3D NULL;
++    uint16_t sid =3D 0;
 =20
-             if (CMD_SSEC(&cmd)) {
-                 cmd_error =3D SMMU_CERROR_ILL;
-                 break;
-             }
+     c->parent_realize(d, &local_err);
+     if (local_err) {
+@@ -1454,6 +1471,28 @@ static void smmu_realize(DeviceState *d, Error **err=
+p)
+     sysbus_init_mmio(dev, &sys->iomem);
 =20
--            if (!mr) {
--                break;
--            }
--
-+            sid_range.start =3D sid;
-+            sid_range.end =3D sid;
-             trace_smmuv3_cmdq_cfgi_ste(sid);
--            sdev =3D container_of(mr, SMMUDevice, iommu);
--            smmuv3_flush_config(sdev);
--
-+            g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste=
-,
-+                                        &sid_range);
-             break;
-         }
-         case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-@@ -1006,21 +994,18 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         case SMMU_CMD_CFGI_CD_ALL:
-         {
-             uint32_t sid =3D CMD_SID(&cmd);
--            IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, sid);
--            SMMUDevice *sdev;
-+            SMMUSIDRange sid_range;
+     smmu_init_irq(s, dev);
++
++    /* Create IOMMU memory region for peripheral devices based on their SI=
+D */
++    for (int i =3D 0; i < s->num_sid; i++) {
++        sid =3D s->sid_map[i];
++        sdev =3D smmu_find_peri_sdev(sys, sid);
++        if (sdev) {
++            continue;
++        }
++
++        sdev =3D g_new0(SMMUDevice, 1);
++        sdev->smmu =3D sys;
++        sdev->bus =3D NULL;
++        sdev->devfn =3D sid;
++
++        name =3D g_strdup_printf("%s-peri-%d", sys->mrtypename, sid);
++        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
++                                 sys->mrtypename,
++                                 OBJECT(sys), name, 1ULL << SMMU_MAX_VA_BI=
+TS);
++
++        QLIST_INSERT_HEAD(&sys->peri_sdev_list, sdev, next);
++        g_free(name);
++    }
+ }
 =20
-             if (CMD_SSEC(&cmd)) {
-                 cmd_error =3D SMMU_CERROR_ILL;
-                 break;
-             }
+ static const VMStateDescription vmstate_smmuv3_queue =3D {
+@@ -1506,6 +1545,12 @@ static void smmuv3_instance_init(Object *obj)
+     /* Nothing much to do here as of now */
+ }
 =20
--            if (!mr) {
--                break;
--            }
--
-+            sid_range.start =3D sid;
-+            sid_range.end =3D sid;
-             trace_smmuv3_cmdq_cfgi_cd(sid);
--            sdev =3D container_of(mr, SMMUDevice, iommu);
--            smmuv3_flush_config(sdev);
-+            g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste=
-,
-+                                        &sid_range);
-             break;
-         }
-         case SMMU_CMD_TLBI_NH_ASID:
++static Property smmuv3_properties[] =3D {
++    DEFINE_PROP_ARRAY("sid-map", SMMUv3State, num_sid, sid_map,
++                      qdev_prop_uint16, uint16_t),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void smmuv3_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -1515,6 +1560,7 @@ static void smmuv3_class_init(ObjectClass *klass, voi=
+d *data)
+     device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
+     c->parent_realize =3D dc->realize;
+     dc->realize =3D smmu_realize;
++    device_class_set_props(dc, smmuv3_properties);
+ }
+=20
+ static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
 diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 95cd12a4b..d016455d8 100644
+index 706be3c6d..95cd12a4b 100644
 --- a/include/hw/arm/smmu-common.h
 +++ b/include/hw/arm/smmu-common.h
-@@ -159,7 +159,10 @@ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMU=
-AccessFlags perm,
-  */
- SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova);
+@@ -117,6 +117,7 @@ struct SMMUState {
+     QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
+     uint8_t bus_num;
+     PCIBus *primary_bus;
++    QLIST_HEAD(, SMMUDevice) peri_sdev_list;
+ };
 =20
--/* Return the iommu mr associated to @sid, or NULL if none */
-+/**
-+ * Return the iommu mr associated to @sid, or NULL if none
-+ * Only for PCI device, check smmu_find_peri_sdev for non PCI/PCIe device
-+ */
- IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
+ struct SMMUBaseClass {
+@@ -138,7 +139,11 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_=
+t bus_num);
+ /* Return the stream ID of an SMMU device */
+ static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+ {
+-    return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
++    if (sdev->bus =3D=3D NULL) {
++        return sdev->devfn;
++    } else {
++        return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
++    }
+ }
 =20
- #define SMMU_IOTLB_MAX_SIZE 256
+ /**
+diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+index c641e6073..32ba84990 100644
+--- a/include/hw/arm/smmuv3.h
++++ b/include/hw/arm/smmuv3.h
+@@ -39,6 +39,8 @@ struct SMMUv3State {
+     uint32_t features;
+     uint8_t sid_size;
+     uint8_t sid_split;
++    uint32_t num_sid;
++    uint16_t *sid_map;
+=20
+     uint32_t idr[6];
+     uint32_t iidr;
 --=20
 
 

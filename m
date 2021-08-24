@@ -1,106 +1,87 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2742690lfg;
-        Tue, 24 Aug 2021 05:13:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9CYSFEj2lHDkJpCIwUxmaiZqr9wxPsM1tG6T00TCjFHcbloYQxwY92jqmAOSgfzudZFfn
-X-Received: by 2002:a05:6122:6b2:: with SMTP id r18mr2468278vkq.17.1629807200713;
-        Tue, 24 Aug 2021 05:13:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629807200; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2748717lfg;
+        Tue, 24 Aug 2021 05:20:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkgy+faGGaScKiXcDyJ0jBBYxS/u/PiJGT/zg2Lasdnz3WimoLCWsG3rE29ONhnI4Xf0kx
+X-Received: by 2002:a05:6102:2433:: with SMTP id l19mr27885866vsi.12.1629807659042;
+        Tue, 24 Aug 2021 05:20:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629807659; cv=none;
         d=google.com; s=arc-20160816;
-        b=CezCFyryybslVvcxFUixEc1vsfVaRmqrOgpRxodiKs9NiAPVjvthN4XefCAhAOiJPi
-         4Qfb+eiVfwvXpc7sU9QLjWz+BckYsrGTmBgx+ghfLZiDJ4EkNgdJbKyWn1inZDsJQVhJ
-         VddyOYfi7n0GUWVl0+xhpYaAKdVUqAHIGqBNsF8/BcxVxUTRmswm7dz9GPcA+ufHHS06
-         ub/yC786+GsT53vvpPc67yUshpT6zliLBI+ITw3qM0a7E+xYGKZW/HwEEo4ZvQYF9h5p
-         kq27Lnp5JlUu3NqaEvqHp6f0bnB5Zfshe+Quh/tg7yA3bOAUqm+WiCyayuIAoxZcpqY9
-         5Sug==
+        b=K2YLj/iWFOE7THXfD+SVKxfucUvFPHMWwXjffNm5SHgWvdwSCrz9YGOkVGhHMr/blb
+         qwc9oLIoDYbu4BMK9twwFAFCK2VwtAHwGcQlpszbQXzHlxzA35QxY9sdRHRU7QHsAraD
+         SeECumR11qjCHQTVQy8eg7uyIILBQtJ3pl1YgIFfV/8L1UYqw8OE6POmXxShbiuOXfnb
+         s2hoVmAiNewgsz9NTifiI+QRK0O39njUK6CqnBfb2Z8rHsA1TjGNXembRklPN0CnYiGm
+         +qK4qnyX6n/PCgBykWwPDqyURRHNCJqew51nBXl1U3HLpK16DS/1J/ydbNnHe1XBoKUI
+         5GwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Ohg2wtdusS0zs97D5JaK5lTDdflZxFN2moOkjyLsBU4=;
-        b=Lew8+EL1qOGItw5LQF0nuoJ/MF8sroZBdTyYRg84kLFW86wJ1g+iKJA1mH1SX9ttmr
-         gxRDF1/TyrXPbU2lZx6crxuYEnSkT6oruiJ2wFdLIeSPyeP8B3HZUrIIl+x8D58bPC3D
-         mRUgElmmNOW5+J0eBBClkyEO44fNgQyXTP7fJopeMXJYWoOfl82f23JxrEBth//bxcyW
-         BitcfNrrT3TUiSF4ASfUY+CT0hOYLcAtjYhvMg+ZBXbEgKQB0MmoAS0eVWyhzrqXatmr
-         DqbzWVpClbm4VbpgNK6ecPsz9sDP1dzBGn3vO94t8ovtW5H+fMIaNrCHZCpaJ8C0OJwn
-         WmBg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=PAJVGRJlwMahpmOeuEn07EGJfhcybsY9BtgA5Pa458A=;
+        b=GuQ4fSBDRJ5sNlHpUxxlUFLQy8GeV2gTHcmqWh4hnr+wpHmPQSTgMx1OJNcfcq3cEe
+         6G8UBonyRt+tYgpvOb+W8GQSI3dXdNEGnuL312rgI2P4f2Yr786e2vIR6Ue4EKWyMiWk
+         Q01XGE58/TTPosRiWdNy4TVV5WR3CAcJUhSpa7gFKlphM+ODrFRppjsJaP2tUtYkNwGe
+         NrSnIrBftUQGg+a0Pj08WB5t2qGl603lTA2QBRteYqyX+iXc+oX8gkwoXd/cRx/1Wjqf
+         i/Tf8SO1rL/p4vWmuBd+vXuRjg2+XDg9d1XpaDyBjArK0O8dT7cEd9g2RdAhaT+3qgO6
+         1tCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rso+8ws5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x23si3953090uai.45.2021.08.24.05.13.20
+        by mx.google.com with ESMTPS id h74si1660408vke.26.2021.08.24.05.20.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Aug 2021 05:13:20 -0700 (PDT)
+        Tue, 24 Aug 2021 05:20:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rso+8ws5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60054 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:39006 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIVIu-0001L9-1S
-	for alex.bennee@linaro.org; Tue, 24 Aug 2021 08:13:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53668)
+	id 1mIVQI-0007X1-7z
+	for alex.bennee@linaro.org; Tue, 24 Aug 2021 08:20:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1mIVIl-0001Kn-9X; Tue, 24 Aug 2021 08:13:11 -0400
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29]:39848)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1mIVIj-0007tr-FW; Tue, 24 Aug 2021 08:13:11 -0400
-Received: by mail-qv1-xf29.google.com with SMTP id dt3so11504316qvb.6;
- Tue, 24 Aug 2021 05:13:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Ohg2wtdusS0zs97D5JaK5lTDdflZxFN2moOkjyLsBU4=;
- b=rso+8ws5xFVg5ukRIHvAi/hv4PiLpGcYxTSQ6hUVgJa3anH9qkX93dxOQNIlmsleWj
- B3L7MOOYV6VNBzNqJCRFk4kQ5sxxBVAUcEV+AzKPhxpDXu75WigQSZrRNGd25rJ6hAb4
- 2wEF3Jb1VigHdi+Pl8nX0e7lmqIKJ+lRGm+aFdZpdPOLL6SmUNXmJxNJFEghFiHJliNZ
- +UT7S65l19iYRQS/1efGiOijU52zb3gsZIBhUDxmKOraIbSuf43WkUTDBsjWUVpI/prb
- iVZ4Nn0Vp5N4kejaWrDhSe2zrZ12MOJ9HdSdvDdgMNiul5+ULM0pAam23GEHh+hv7WhD
- zZ4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Ohg2wtdusS0zs97D5JaK5lTDdflZxFN2moOkjyLsBU4=;
- b=gBf38OjiTlupQ1UVznuMNEgg2VPCRgSZHiDak9AzNhqjlKPmD9btEoUfI+X7mSg1t3
- 5NHt/e7URdE82OpbWNzosylGrNqAQ8zFQiddCrzCzueUgXuCsWmLyfmaBLtI1uUc9kVV
- 6dqqtJ8Tl7JJHWQ+YvLJolSx2hThTDMWKjWvC2FMS1ir5zTgx3kZ7iX5dJL/Sj5iJX1I
- onBODWxqFwbpikgzaLleSXsSXYRe1MdmTMthSJBAeB34nCckFmpXijzoTZzF8Y4NmGjc
- bF80TT783N/JjCJm/1aeZ5GFlF2p/i33TaqpXBqbFd2qcfqg1WPGQn/fxnMCUCkaWIN+
- i85A==
-X-Gm-Message-State: AOAM533YlTy2gzb8e6x3gqcPpUbboWh4IYYVMwKb1YM1CLd7vHehMeVM
- rVigiAcVrOlPUmGg7K9Il7lPr2BnbxfBKaSR3yM=
-X-Received: by 2002:ad4:522c:: with SMTP id r12mr38102417qvq.17.1629807187751; 
- Tue, 24 Aug 2021 05:13:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mIVPu-0007RM-K6; Tue, 24 Aug 2021 08:20:35 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2525)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mIVPr-0003ZL-HL; Tue, 24 Aug 2021 08:20:34 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Gv7Tj4rypzYm1b;
+ Tue, 24 Aug 2021 20:19:53 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 24 Aug 2021 20:20:25 +0800
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 24 Aug 2021 20:20:25 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
+ <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>
+Subject: [PATCH v6 5/5] hw/acpi/aml-build: Generate PPTT table
+Date: Tue, 24 Aug 2021 20:20:16 +0800
+Message-ID: <20210824122016.144364-6-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20210824122016.144364-1-wangyanan55@huawei.com>
+References: <20210824122016.144364-1-wangyanan55@huawei.com>
 MIME-Version: 1.0
-References: <20210823164157.751807-1-philmd@redhat.com>
- <CAFEAcA9_=6n4w86gD3MHhiLeCiui9_+ePT7E2sSHdSRufUJdyA@mail.gmail.com>
- <YSQKHaGiJZE5OAk2@t490s>
- <CAFEAcA_23vc7hE3iaM-JVA6W38LK4hJoWae5KcknhPRD5fPBZA@mail.gmail.com>
- <20210824120153.altqys6jjiuxh35p@sirius.home.kraxel.org>
-In-Reply-To: <20210824120153.altqys6jjiuxh35p@sirius.home.kraxel.org>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Tue, 24 Aug 2021 20:12:31 +0800
-Message-ID: <CAKXe6S+4+j77QT5dk1JQ3+T0Vyu+3ZVn1RmhJR6m0_VMNAhARA@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 0/5] physmem: Have flaview API check bus permission
- from MemTxAttrs argument
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f29;
- envelope-from=liq3ea@gmail.com; helo=mail-qv1-xf29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,136 +95,193 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>, Alexander Bulekov <alxndr@bu.edu>,
- qemu-arm <qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ wanghaibin.wang@huawei.com, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y6ak+3ZFl66B
+X-TUID: 2MF+ylOb7Z12
 
-Gerd Hoffmann <kraxel@redhat.com> =E4=BA=8E2021=E5=B9=B48=E6=9C=8824=E6=97=
-=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=888:02=E5=86=99=E9=81=93=EF=BC=9A
->
->   Hi,
->
-> > I was vaguely tossing an idea around in the back of my mind
-> > about whether you could have a flag on devices that marked
-> > them as "this device is currently involved in IO", such that
-> > you could then just fail the last DMA (or qemu_irq_set, or
-> > whatever) that would complete the loop back to a device that
-> > was already doing IO. But that would need a lot of thinking
-> > through to figure out if it's feasible, and it's probably
-> > a lot of code change.
->
-> Quick & dirty hack trying the above.  Not much code, it is opt-in per
-> MemoryRegion (so less overhead for devices which already handle all DMA
-> in a BH), tracks state in DeviceState.  Adds a check to a rather hot
-> code path though.  Not tested yet (stopped investigating when I noticed
-> Philippe tries to fix the same thing with another approach).  Not
-> benchmarked.
->
-> Maybe it helps ...
->
+From: Andrew Jones <drjones@redhat.com>
 
-Gerd's patch just remind my approach here, Just add here:
+Add the Processor Properties Topology Table (PPTT) to expose
+CPU topology information defined by users to ACPI guests.
 
-https://mail.gnu.org/archive/html/qemu-devel/2020-09/msg00906.html
+Note, a DT-boot Linux guest with a non-flat CPU topology will
+see socket and core IDs being sequential integers starting
+from zero, which is different from ACPI-boot Linux guest,
+e.g. with -smp 4,sockets=2,cores=2,threads=1
 
-But I check and record it in the device MR handler.
+a DT boot produces:
 
-Thanks,
-Li Qiang
+ cpu:  0 package_id:  0 core_id:  0
+ cpu:  1 package_id:  0 core_id:  1
+ cpu:  2 package_id:  1 core_id:  0
+ cpu:  3 package_id:  1 core_id:  1
 
+an ACPI boot produces:
 
-> take care,
->   Gerd
->
-> From 80e58a2cd2c630f0bddd9d0eaee71abb7eeb9440 Mon Sep 17 00:00:00 2001
-> From: Gerd Hoffmann <kraxel@redhat.com>
-> Date: Tue, 17 Aug 2021 07:35:37 +0200
-> Subject: [PATCH] allow track active mmio handlers
->
-> ---
->  include/exec/memory.h  |  1 +
->  include/hw/qdev-core.h |  1 +
->  softmmu/memory.c       | 24 ++++++++++++++++++++++--
->  3 files changed, 24 insertions(+), 2 deletions(-)
->
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index c3d417d317f0..b1883d45e817 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -265,6 +265,7 @@ struct MemoryRegionOps {
->           */
->          bool unaligned;
->      } impl;
-> +    bool block_reenter;
->  };
->
->  typedef struct MemoryRegionClass {
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index bafc311bfa1b..4cf281a81fa9 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -191,6 +191,7 @@ struct DeviceState {
->      int instance_id_alias;
->      int alias_required_for_version;
->      ResettableState reset;
-> +    bool io_handler_active;
->  };
->
->  struct DeviceListener {
-> diff --git a/softmmu/memory.c b/softmmu/memory.c
-> index bfedaf9c4dfc..5eb5dd465dd2 100644
-> --- a/softmmu/memory.c
-> +++ b/softmmu/memory.c
-> @@ -437,7 +437,18 @@ static MemTxResult  memory_region_read_accessor(Memo=
-ryRegion *mr,
->  {
->      uint64_t tmp;
->
-> -    tmp =3D mr->ops->read(mr->opaque, addr, size);
-> +    if (mr->ops->block_reenter) {
-> +        DeviceState *dev =3D DEVICE(mr->owner);
-> +        if (!dev->io_handler_active) {
-> +            dev->io_handler_active =3D true;
-> +            tmp =3D mr->ops->read(mr->opaque, addr, size);
-> +            dev->io_handler_active =3D false;
-> +        } else {
-> +            tmp =3D MEMTX_OK;
-> +        }
-> +    } else {
-> +        tmp =3D mr->ops->read(mr->opaque, addr, size);
-> +    }
->      if (mr->subpage) {
->          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp,=
- size);
->      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_RE=
-AD)) {
-> @@ -489,7 +500,16 @@ static MemTxResult memory_region_write_accessor(Memo=
-ryRegion *mr,
->          trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp=
-, size,
->                                        memory_region_name(mr));
->      }
-> -    mr->ops->write(mr->opaque, addr, tmp, size);
-> +    if (mr->ops->block_reenter) {
-> +        DeviceState *dev =3D DEVICE(mr->owner);
-> +        if (!dev->io_handler_active) {
-> +            dev->io_handler_active =3D true;
-> +            mr->ops->write(mr->opaque, addr, tmp, size);
-> +            dev->io_handler_active =3D false;
-> +        }
-> +    } else {
-> +        mr->ops->write(mr->opaque, addr, tmp, size);
-> +    }
->      return MEMTX_OK;
->  }
->
-> --
-> 2.31.1
->
+ cpu:  0 package_id: 36 core_id:  0
+ cpu:  1 package_id: 36 core_id:  1
+ cpu:  2 package_id: 96 core_id:  2
+ cpu:  3 package_id: 96 core_id:  3
+
+This is due to several reasons:
+
+ 1) DT cpu nodes do not have an equivalent field to what the PPTT
+    ACPI Processor ID must be, i.e. something equal to the MADT CPU
+    UID or equal to the UID of an ACPI processor container. In both
+    ACPI cases those are platform dependant IDs assigned by the
+    vendor.
+
+ 2) While QEMU is the vendor for a guest, if the topology specifies
+    SMT (> 1 thread), then, with ACPI, it is impossible to assign a
+    core-id the same value as a package-id, thus it is not possible
+    to have package-id=0 and core-id=0. This is because package and
+    core containers must be in the same ACPI namespace and therefore
+    must have unique UIDs.
+
+ 3) ACPI processor containers are not mandatorily required for PPTT
+    tables to be used and, due to the limitations of which IDs are
+    selected described above in (2), they are not helpful for QEMU,
+    so we don't build them with this patch. In the absence of them,
+    Linux assigns its own unique IDs. The maintainers have chosen not
+    to use counters from zero, but rather ACPI table offsets, which
+    explains why the numbers are so much larger than with DT.
+
+ 4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
+    match the logical CPU IDs, because these IDs must be equal to the
+    MADT CPU UID (as no processor containers are present), and QEMU
+    uses the logical CPU ID for these MADT IDs.
+
+So in summary, with QEMU as the vendor for the guests, we simply
+use sequential integers starting from zero for the non-leaf nodes
+but with ID-valid flag unset, so that guest will ignore them and
+use table offsets as unique container IDs. And we use logical CPU
+IDs for the leaf nodes with the ID-valid flag set, which will be
+consistent with MADT.
+
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
+Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/acpi/aml-build.c         | 60 +++++++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c    |  8 ++++-
+ include/hw/acpi/aml-build.h |  3 ++
+ 3 files changed, 70 insertions(+), 1 deletion(-)
+
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 9fa5024414..bbf5526523 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1946,6 +1946,66 @@ void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+     }
+ }
+ 
++/* ACPI 6.2: 5.2.29 Processor Properties Topology Table (PPTT) */
++void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
++                const char *oem_id, const char *oem_table_id)
++{
++    int pptt_start = table_data->len;
++    int uid = 0;
++    int socket;
++
++    acpi_data_push(table_data, sizeof(AcpiTableHeader));
++
++    for (socket = 0; socket < ms->smp.sockets; socket++) {
++        uint32_t socket_offset = table_data->len - pptt_start;
++        int core;
++
++        build_processor_hierarchy_node(
++            table_data,
++            /*
++             * ACPI 6.2 - Physical package
++             * represents the boundary of a physical package
++             */
++            (1 << 0),
++            0, socket, NULL, 0);
++
++        for (core = 0; core < ms->smp.cores; core++) {
++            uint32_t core_offset = table_data->len - pptt_start;
++            int thread;
++
++            if (ms->smp.threads > 1) {
++                build_processor_hierarchy_node(
++                    table_data,
++                    /*
++                     * ACPI 6.2 - Physical package
++                     * doesn't represent the boundary of a physical package
++                     */
++                    (0 << 0),
++                    socket_offset, core, NULL, 0);
++
++                for (thread = 0; thread < ms->smp.threads; thread++) {
++                    build_processor_hierarchy_node(
++                        table_data,
++                        (1 << 1) | /* ACPI 6.2 - ACPI Processor ID valid */
++                        (1 << 2) | /* ACPI 6.3 - Processor is a Thread */
++                        (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
++                        core_offset, uid++, NULL, 0);
++                }
++            } else {
++                build_processor_hierarchy_node(
++                    table_data,
++                    (1 << 1) | /* ACPI 6.2 - ACPI Processor ID valid */
++                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
++                    socket_offset, uid++, NULL, 0);
++            }
++        }
++    }
++
++    build_header(linker, table_data,
++                 (void *)(table_data->data + pptt_start), "PPTT",
++                 table_data->len - pptt_start, 2, oem_id, oem_table_id);
++}
++
+ /* build rev1/rev3/rev5.1 FADT */
+ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+                 const char *oem_id, const char *oem_table_id)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 037cc1fd82..db23306a06 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -790,13 +790,19 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     dsdt = tables_blob->len;
+     build_dsdt(tables_blob, tables->linker, vms);
+ 
+-    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
++    /* FADT MADT PPTT GTDT MCFG SPCR pointed to by RSDT */
+     acpi_add_table(table_offsets, tables_blob);
+     build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+ 
++    if (!vmc->no_cpu_topology) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_pptt(tables_blob, tables->linker, ms,
++                   vms->oem_id, vms->oem_table_id);
++    }
++
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker, vms);
+ 
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index ea74b8f6ed..6c29f853cd 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -466,6 +466,9 @@ void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+                                     uint32_t parent, uint32_t id,
+                                     uint32_t *priv_rsrc, uint32_t priv_num);
+ 
++void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
++                const char *oem_id, const char *oem_table_id);
++
+ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+                 const char *oem_id, const char *oem_table_id);
+ 
+-- 
+2.19.1
+

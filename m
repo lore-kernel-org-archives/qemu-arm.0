@@ -1,198 +1,222 @@
-Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2802388lfg;
-        Tue, 24 Aug 2021 06:26:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwqs/Xwm5/PJcgPtDodHImA0MFpXf4t59pw920i0Zp1yhpQPgP+77UU8DmSWRAT0GHD89tK
-X-Received: by 2002:a92:c841:: with SMTP id b1mr27237153ilq.300.1629811602194;
-        Tue, 24 Aug 2021 06:26:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629811602; cv=none;
+Received: by 2002:a19:e212:0:0:0:0:0 with SMTP id z18csp2822654lfg;
+        Tue, 24 Aug 2021 06:51:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw1If1QlXQ0yZ8sRub8+U56xMlij5kPX/8XNZ2aYqC+CP7WlTrT7H4VXYWuevKuQGrvWf5A
+X-Received: by 2002:ab0:7a57:: with SMTP id a23mr6574409uat.100.1629813076997;
+        Tue, 24 Aug 2021 06:51:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629813076; cv=none;
         d=google.com; s=arc-20160816;
-        b=y7WgHickR2JZnWo3g69MZTubENsB6Ece5zkWH/4eRA2+EZ/Up8Gc5bvrOBGbz1HgJo
-         H6RB/V3bUIMeouAYnh+Ex3PbmLs8+o1DqWUKh90kMTjBO4qjzUvnnsvmjsYk4bQ7Iu+m
-         C8tcVGuDu68zO05ba8ZxXbxNuWa77cbaxb/fdDxpsYjSlBeqv9FnLYd9rUPifhAJTWnA
-         GBju8SezhVcetSxWWk/sPeIidVJzOqdLjssBT+3PnCwnPtlY4FZJw/eva4jNI964gLSF
-         NLV8Ycq1YjByRUgPPt9uwGiTITAeUccPMmZX09zVJXABPgNAJLS1A7QJnqGVOgn7+QNp
-         SVTA==
+        b=tWjLiPwbJTgwl6w0WSFPK1ssZd9u3zDB1IWbrcde/0yMsooaTApDsnCpl/GNuLHgib
+         w0bM0+tPbZzf8tO2RopGTkwWEBeaZg5X0VC4BQDeWCwQE1DcbnFSONSybWCwUDk+FmzE
+         g21kbf8RIDy9icjoEdPvdU9idCeV9uSAgtq/bY48VNUO94T8vmgyIvg+dIw3cEAUuuK2
+         L4Kl389PEBMLuu89kW9dKxjvV78chNxWvc3oAhKCNKNeNGn4iIOBZMM/6vK+WOS65eqr
+         pcUbaJXM0AI56dOQHpn0LxAEm6tgb7NMeVad783j4Ypg8YcKncvEIuZlqQQyox2AeUtL
+         zuAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=69FTIuPOz3bcduqd9RNtUiDlBnmr7FEoMJmCHTIVecA=;
-        b=IkRssE8XXJBLJv+DQDabyC0/7cKRXV52APT4Pi3xddZdkxg5BTLWwWJpWf2UqSuVh3
-         Oj7OqqXOSlRAKOR25muCMFItKKpI3eLwOGLoRJBHN9QXJP7cLqxicTfqmN+sap1joGbr
-         4op6eqWvoxC9X/VF+mmvCw6E4fE0lMZlUWISO7yB+M9nPK5Bewm8Mzbtbkfytq0YxI0X
-         yg8tEVr47Jha4RZrgjviGN2LQZOODhohEseWWA6kXdZgClqd9UUXcms8fDAO7/CNgDQP
-         NAVPG34CdmQNaBRAtHCBpQSxF7Y2uuU8A36wblef4a64dxejVppFXqTwWXxRYOU4c0lh
-         XiVw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ORi6sJgyuhSGqkWkhNjoAkcPgl1sO1msL3N7qn4mvvc=;
+        b=SIMYPyZKiz82NoMnshZwADSTvgrpzK3lwgEwjtj+PJaWRj6/7yBu5w/tIIkKAxLvi0
+         0ONYKW78cZ4B4XSbos0CaTvIBatNYQJrzy31fC3pN23XfPf2XANiByI3cJbmQ09S6M7s
+         3oRmR0h+XXYif1oxKumWTJCTNip08PDujpnRDI/Ajxcizfa5ESZhMRB9hmNYlFZJAnad
+         ozSlAlea3XBvUeBmM+J7Ge8LVPIQ8FmL9wE/7yILa0ZMy9qX3E5NtPilysNzYILKjk8Y
+         WDhivahLFzSMZ+s2qAQUv+OBN16dr6qICxDc/Fpjd6iUZUN5/7DsMsJF1u3jSWSY9POz
+         6x9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PrC7NFHL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BFqDcVFL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si16944337iot.82.2021.08.24.06.26.42
+        by mx.google.com with ESMTPS id x20si6605277ual.218.2021.08.24.06.51.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Aug 2021 06:26:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Aug 2021 06:51:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PrC7NFHL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BFqDcVFL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34516 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIWRt-0004wa-Iz
-	for alex.bennee@linaro.org; Tue, 24 Aug 2021 09:26:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39444)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mIWpg-0005nc-Aj
+	for alex.bennee@linaro.org; Tue, 24 Aug 2021 09:51:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45728)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1mIWRl-0004w4-O2
- for qemu-arm@nongnu.org; Tue, 24 Aug 2021 09:26:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36616)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mIWoq-0004aQ-6i
+ for qemu-devel@nongnu.org; Tue, 24 Aug 2021 09:50:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40406)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1mIWRi-0007JP-Qc
- for qemu-arm@nongnu.org; Tue, 24 Aug 2021 09:26:32 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mIWoo-0007L9-Aw
+ for qemu-devel@nongnu.org; Tue, 24 Aug 2021 09:50:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629811590;
+ s=mimecast20190719; t=1629813020;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=69FTIuPOz3bcduqd9RNtUiDlBnmr7FEoMJmCHTIVecA=;
- b=PrC7NFHLKsaWznarDQw18YmLEv7fDpqb30/R4Eg+voWayZEFmvAtgehY1WPDGBeYZ54nuA
- qzWVfYwm4yqKnZeOvmdfoZv7vxXyYFpJY1bg8CQdQJsPvJI/rEzvgG2D7Y9KS6/CfEQOGJ
- C8nFFbFbyUwXJBcexj3u3RY1jzQY2x8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-555-UufE8c1jPbi7dIfmpZpq6w-1; Tue, 24 Aug 2021 09:26:26 -0400
-X-MC-Unique: UufE8c1jPbi7dIfmpZpq6w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4F9F98799E0;
- Tue, 24 Aug 2021 13:26:25 +0000 (UTC)
-Received: from localhost (unknown [10.39.195.0])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9E9E960854;
- Tue, 24 Aug 2021 13:26:13 +0000 (UTC)
-Date: Tue, 24 Aug 2021 14:26:12 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH v2 0/5] physmem: Have flaview API check bus
- permission from MemTxAttrs argument
-Message-ID: <YSTzdP19h08bamT+@stefanha-x1.localdomain>
+ bh=ORi6sJgyuhSGqkWkhNjoAkcPgl1sO1msL3N7qn4mvvc=;
+ b=BFqDcVFL2tvMN7WJ19euK1kE6EPiYKLz+PS/Irv7Q8Hpbt+0wA2QhAVCozJj6OaGnhCIY/
+ AHlK5y6atcaB0vjg6EsDx6M9Gep927VymZjsRyMwLzUBYHvTI6+LX6USZ1aIhf/tW6cAe0
+ x+uu05EYkraK9fB4kik/mZyPEeVmgBY=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-8-B0kI9T1AMEyRLceFsB7x5A-1; Tue, 24 Aug 2021 09:50:19 -0400
+X-MC-Unique: B0kI9T1AMEyRLceFsB7x5A-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ v2-20020a7bcb420000b02902e6b108fcf1so1266142wmj.8
+ for <qemu-devel@nongnu.org>; Tue, 24 Aug 2021 06:50:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ORi6sJgyuhSGqkWkhNjoAkcPgl1sO1msL3N7qn4mvvc=;
+ b=X514cwsQTgR2VzfkOPXiagAc8+bkkoxSJXXWhjzQz5T1ZVU/uY1VCFiINw4n2FKQVN
+ 8CW5bj6s3QsOhPQ0MjB4VasfRscCCNTZS57wpmO+EobfGKSPl8lrO+NAxDInJ9bSO67b
+ ivJlIpD+BJHf3KMhefsrtXFXGTaU17iinq/ieDhWvSXHsQw1scrj4/u2gHyEbnQiZsqs
+ hwPqQPJKj8BMHmMaqHwXR7S0Ch5bLRGI33rFwEDOFkyGGMH3wanzxispXcVMLsWAXawm
+ /bUAZMAOYkkMxyJ5tVnGi3j41/jOe7GOqLbACGbeBGVrg1pmtzU9wqjnXet1mLz3zwmX
+ c3fQ==
+X-Gm-Message-State: AOAM532UGw4lZX6NS3X2Aocg/q42qZ/jqrfPWNOzZO5BkTWEBH9R2tPt
+ dg4ERSAIqogmBTomNXOgPveLZo6dgvw2dREjF/nfVCHi7pyeN88JmNt9Od5oDdd3XbHU9ztcP3W
+ rULqeFpHBNBrMwws=
+X-Received: by 2002:a1c:2905:: with SMTP id p5mr4268411wmp.146.1629813017967; 
+ Tue, 24 Aug 2021 06:50:17 -0700 (PDT)
+X-Received: by 2002:a1c:2905:: with SMTP id p5mr4268387wmp.146.1629813017764; 
+ Tue, 24 Aug 2021 06:50:17 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id q22sm2388386wmj.32.2021.08.24.06.50.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Aug 2021 06:50:17 -0700 (PDT)
+Subject: Re: [RFC PATCH v2 5/5] softmmu/physmem: Have flaview API check
+ MemTxAttrs::bus_perm field
+To: Stefan Hajnoczi <stefanha@redhat.com>
 References: <20210823164157.751807-1-philmd@redhat.com>
- <CAFEAcA9_=6n4w86gD3MHhiLeCiui9_+ePT7E2sSHdSRufUJdyA@mail.gmail.com>
+ <20210823164157.751807-6-philmd@redhat.com>
+ <YSTw9VPd44uIZ55L@stefanha-x1.localdomain>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <569b3a2f-2d05-700d-cae3-07d8b78fcd55@redhat.com>
+Date: Tue, 24 Aug 2021 15:50:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9_=6n4w86gD3MHhiLeCiui9_+ePT7E2sSHdSRufUJdyA@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <YSTw9VPd44uIZ55L@stefanha-x1.localdomain>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="pXjqXqLeBadI5u8Q"
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=stefanha@redhat.com;
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.747,
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.747,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.305, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, qemu-devel@nongnu.org,
  Peter Xu <peterx@redhat.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm <qemu-arm@nongnu.org>,
+ Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
  Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +oBsrQr9oyHz
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +pV2hJatA6A1
 
---pXjqXqLeBadI5u8Q
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 8/24/21 3:15 PM, Stefan Hajnoczi wrote:
+> On Mon, Aug 23, 2021 at 06:41:57PM +0200, Philippe Mathieu-Daudé wrote:
+>> Check bus permission in flatview_access_allowed() before
+>> running any bus transaction.
+>>
+>> There is not change for the default case (MEMTXPERM_UNSPECIFIED).
+>>
+>> The MEMTXPERM_UNRESTRICTED case works as an allow list. Devices
+>> using it won't be checked by flatview_access_allowed().
+>>
+>> The only deny list equivalent is MEMTXPERM_RAM_DEVICE: devices
+>> using this flag will reject transactions and set the optional
+>> MemTxResult to MEMTX_BUS_ERROR.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  softmmu/physmem.c | 17 ++++++++++++++++-
+>>  1 file changed, 16 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+>> index 0d31a2f4199..329542dba75 100644
+>> --- a/softmmu/physmem.c
+>> +++ b/softmmu/physmem.c
+>> @@ -2772,7 +2772,22 @@ static inline bool flatview_access_allowed(MemoryRegion *mr, MemTxAttrs attrs,
+>>                                             hwaddr addr, hwaddr len,
+>>                                             MemTxResult *result)
+>>  {
+>> -    return true;
+>> +    if (unlikely(attrs.bus_perm == MEMTXPERM_RAM_DEVICE)) {
+>> +        if (memory_region_is_ram(mr) || memory_region_is_ram_device(mr)) {
+>> +            return true;
+>> +        }
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "Invalid access to non-RAM device at "
+>> +                      "addr 0x%" HWADDR_PRIX ", size %" HWADDR_PRIu ", "
+>> +                      "region '%s'\n", addr, len, memory_region_name(mr));
+>> +        if (result) {
+>> +            *result |= MEMTX_BUS_ERROR;
+> 
+> Why bitwise OR?
 
-On Mon, Aug 23, 2021 at 08:10:50PM +0100, Peter Maydell wrote:
-> On Mon, 23 Aug 2021 at 17:42, Philippe Mathieu-Daud=E9 <philmd@redhat.com=
-> wrote:
-> >
-> > This series aim to kill a recent class of bug, the infamous
-> > "DMA reentrancy" issues found by Alexander while fuzzing.
-> >
-> > Introduce the 'bus_perm' field in MemTxAttrs, defining 3 bits:
-> >
-> > - MEMTXPERM_UNSPECIFIED (current default, unchanged behavior)
-> > - MEMTXPERM_UNRESTRICTED (allow list approach)
-> > - MEMTXPERM_RAM_DEVICE (example of deny list approach)
-> >
-> > If a transaction permission is not allowed (for example access
-> > to non-RAM device), we return the specific MEMTX_BUS_ERROR.
-> >
-> > Permissions are checked in after the flatview is resolved, and
-> > before the access is done, in a new function: flatview_access_allowed()=
-.
->=20
-> So I'm not going to say 'no' to this, because we have a real
-> recursive-device-handling problem and I don't have a better
-> idea to hand, but the thing about this is that we end up with
-> behaviour which is not what the real hardware does. I'm not
-> aware of any DMA device which has this kind of "can only DMA
-> to/from RAM, and aborts on access to a device" behaviour...
+MemTxResult is not an enum but used as a bitfield.
 
-Points that have come up in previous discussions on this topic:
+See access_with_adjusted_size():
 
-- We probably won't be able to find out the actual hardware behavior for
-  all device models in QEMU. Strict RAM-only DMA restrictions can be
-  merged early in the QEMU 6.2 development cycle so there's plenty of
-  time to identify regressions. The benefit of a strict policy is that
-  we eliminate this class of bugs for most devices now and in the
-  future.
+    MemTxResult r = MEMTX_OK;
+    ...
+    if (memory_region_big_endian(mr)) {
+        for (i = 0; i < size; i += access_size) {
+            r |= access_fn(mr, addr + i, value, access_size,
+                        (size - access_size - i) * 8,
+                        access_mask, attrs);
+        }
+    } else {
+        for (i = 0; i < size; i += access_size) {
+            r |= access_fn(mr, addr + i, value, access_size, i * 8,
+                        access_mask, attrs);
+        }
+    }
+    return r;
+}
 
-- If the risk of regressions is too high, then this API can be used on a
-  case-by-case basis to fix bugs such as those identified by Alexander's
-  fuzzer. We'll be plagued with this class of bugs in the future though,
-  so I prefer a strict policy.
+and flatview_read_continue() / flatview_write_continue():
 
-- DMA capabilities depend on the host bus adapter/controller. In order
-  to faithfully emulate real hardware we need to know how it behaves.
-  That needs to be done for each host bus adapter (e.g. PCI
-  controllers).
-
-- SysBus devices each have their own behavior wrt device-to-device DMA.
-
-Stefan
-
---pXjqXqLeBadI5u8Q
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmEk83QACgkQnKSrs4Gr
-c8hd7Af9F81o80rbVdusZu81LGkcxEOeyDWM1B89uLqZwVSyTbRnLsFnrDK9U54A
-z8kxAUey0AKLdGorw4fqgOMVmQnCnzWKqbQ3XwDog/QafD0bnJkj1hx1v2nynRAU
-svCLRvNwQCnGROVZKzI+nZXKb0uHUStxXmaM8uyyV88IqI65bFNGh0NdBDErGHv0
-rjxYIqiqP219Fluy4GzDLBI7/QpPMuTEVPcYkN3+OrHppLyO0pUhpx22AuEZQBoI
-yVB3UECkGl4F4VaEQijgl99prz3cUEeGMGiunoKUSZ9YUwRPofpBRDmWdkdVdXB3
-toNVmjshLD64LfOMXl8KMg9lvwI8yw==
-=Il8t
------END PGP SIGNATURE-----
-
---pXjqXqLeBadI5u8Q--
+    for (;;) {
+        if (!memory_access_is_direct(mr, true)) {
+            release_lock |= prepare_mmio_access(mr);
+            l = memory_access_size(mr, l, addr1);
+            val = ldn_he_p(buf, l);
+            result |= memory_region_dispatch_write(mr, addr1, val,
+                                                   size_memop(l),
+                                                   attrs);
+    ...
+    return result;
+}
 

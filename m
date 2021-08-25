@@ -1,264 +1,262 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp144867lfb;
-        Tue, 24 Aug 2021 12:46:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxt74OVUwSWR6NldG2PcMUvnzyllBaeCmm/oYbzLB1Oc90459hBdSoMQvRxcj2h04hEXJgy
-X-Received: by 2002:a92:b749:: with SMTP id c9mr27825495ilm.160.1629834415441;
-        Tue, 24 Aug 2021 12:46:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629834415; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp387291lfb;
+        Tue, 24 Aug 2021 19:25:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzDW5NXBkNt8q0eEU5Wa2x4uQkpR1C12NDLIrWKsQx6dRWvyDuVl1LRGCB0+g5nrqpIzmWV
+X-Received: by 2002:a05:6638:185:: with SMTP id a5mr4521472jaq.31.1629858301667;
+        Tue, 24 Aug 2021 19:25:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629858301; cv=none;
         d=google.com; s=arc-20160816;
-        b=TKm3P7vdaLOtJPNMUR7xKdXlOcPlwSAJLqob7YYLVdBPrbsV84e8TP1b1cLj9KS4+f
-         m0FebNlnCkikiRfTz9DNVNcjiR6nOQbfv6TmpoMk2BR2QRZIKjVjZf1cVh6BntKSd3cm
-         +AnN5SuOmzMYU6Cx3joN4azTSBsqF0+qGXqt3JI1kDBmUlr1DwkM10hK01H2Jy6e8ZfW
-         xi9Y+TlCC8G4cB1aa2MISxW2mAA181i6dUE+M1/Mv6gtHaw6HIRsWkZb7JWEVCmQdMit
-         dYcUJgK+6W3ycjj84aiNGFalEKd/j/d8Lo3uWFnSP/fzFLaIyJisKl7AMg3T2Dca5nYH
-         /IGA==
+        b=OmCL/fJI05AiaxHfKlP/Ya56tzMVFHkpJzwkJJE5rxL/lVpPFIPfhkGcTyCwQjgYfJ
+         mdkHiEN7/AMYgpfE1Adq+F0FIBBJCrBnR4137KiRj2AizaIILfI1wvifEVbiz8FcFjaL
+         ox9syr4sHZafwxL9oKhoFSZ7vukCOKELsn7Ixb+o367F14UilxOQUjvwW3VbXkVRHmcY
+         dCTBBT7ZP4Km1cb8hJdsgpsBN5hyDgDBfdrarYvL00CPDd9i62oipL9nVRJEfe/RVEcl
+         SkUytfiSvztRxf3GyjtBW74em3L8AkRGxKM17FJqLoiXK97ozIS1lP4l2C7pJFVeheNF
+         TfLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=5zD4QlhRM6Lo31cWQWvm/7PEflQtifZyIKIe0LDHdR4=;
-        b=eR8cCcwaxxWJY97HZz/IldCIDyjDM8z26TrG5MFl4LG7dNRESFlIkZwBdgot1GPH75
-         Dt76xUhItg+U9gmX/F6qIDrF6fGPO545OnFJCbJJIPsrgUw4haa3pN8HXdNuy+t3ZC5g
-         bSeqSju3IZKS1coN82xMIufu++s1kEqn1STYhfXS4ZKtsEJubKG7EGs7pTJ/Fbe/yrrN
-         3VqAP+HtmPm4ty7NRvIpB6SW4el3vnIsXeWAqjObzFXRh/0HVd6PcuJQADl9wzAk/0Vc
-         alSUSzd/E5renOY4EQ1fvzXbZH/vu57YCxPCPTfgdtgVxLllwXAnS9Gnrdo2znscOHyR
-         xjVA==
+         :list-unsubscribe:list-id:precedence:mime-version:accept-language
+         :message-id:date:thread-index:thread-topic:subject:to:from
+         :dkim-signature:content-transfer-encoding:content-language;
+        bh=5YGzENhRpMtWAWtDsqPxiHkZoYtm5ELhP0HKm6HCA54=;
+        b=JeyHQ8LRCPte6bFzlA2FCaprcesCGhx0TQ9aM5qODqMm10efYq/lOvTneoU/r6cM1E
+         SlyuXEvDENFrBt0vaW1tlqU8GZY7JFhENx01D3A7E1TODpnYAWCEtIeELHXhHdH0yi6o
+         7hfRDa17fqauvLpgJZRNuKrroFkCeSEGl8w5e0wTGKIckWG14f7xcwCDOQK6uzyENaTA
+         cF0LJiPpfLvi4p+5TlPr81nTK3GsD0AaPBtFniIQNkf23Z048M0fc1v9qRpXxSndeSAQ
+         zS/EMEHfOpUgn9+Ll8LtrzFZtYMVLsaW0xe1dYiRIh89NoUiNBOD7Vf5+WnY+HxAmh9S
+         3ZTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dodooZXq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=cbbLjGNL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q14si23046001ilo.128.2021.08.24.12.46.55
+        by mx.google.com with ESMTPS id j19si5475957jat.113.2021.08.24.19.25.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Aug 2021 12:46:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Aug 2021 19:25:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dodooZXq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51204 helo=lists1p.gnu.org)
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=cbbLjGNL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+Received: from localhost ([::1]:53498 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIcNq-0001jA-P2
-	for alex.bennee@linaro.org; Tue, 24 Aug 2021 15:46:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36260)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mIib6-0005dG-Rm
+	for alex.bennee@linaro.org; Tue, 24 Aug 2021 22:25:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1mIcN8-00011R-JL
- for qemu-devel@nongnu.org; Tue, 24 Aug 2021 15:46:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41823)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1mIcN2-00045C-3n
- for qemu-devel@nongnu.org; Tue, 24 Aug 2021 15:46:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1629834362;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=5zD4QlhRM6Lo31cWQWvm/7PEflQtifZyIKIe0LDHdR4=;
- b=dodooZXqEJOqKNRtgjzGaAhkrDQgLg29L18JwVUy20848xPAkWoPPH81OWVOwAIfzQoIky
- 7OAclkmRGqTOCZE53R2OqoSXt6twHohcFJv29VnI/Lnn/rPrLz2dPb/IVL60L+amUqYb7o
- RwE8VRydbe5XTScc1mTLcMTOtQ143z8=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-417-1fowIPGePi2h1H5pEOEVXQ-1; Tue, 24 Aug 2021 15:34:36 -0400
-X-MC-Unique: 1fowIPGePi2h1H5pEOEVXQ-1
-Received: by mail-qk1-f198.google.com with SMTP id
- 70-20020a370b49000000b003d2f5f0dcc6so15101069qkl.9
- for <qemu-devel@nongnu.org>; Tue, 24 Aug 2021 12:34:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=5zD4QlhRM6Lo31cWQWvm/7PEflQtifZyIKIe0LDHdR4=;
- b=FdMQkASagOvSBtiUixM5SsxW5gxmOXxND5kuJS62VbojeQCVkQXUMErbCWAKv5Nxuq
- enJlhD8cb8dllXXrjuH01KM4kWRbMl0P+ZwkrO4NVoxZqsKJNLdj8aYfs2D7la1/7hax
- Q1bqnMh6yTVA2cMa5E5UCfMJQvcyArWzvhk/GEzkfDYIemudbs3l3ZyDe6V79fRkQQNF
- U58ZIeJrkbLQ4O8Z4EryOrn4EIH6PKvsYfg4/TJwlBHOAcz7TB4xhaoZSAsn8h925vB4
- TvmSa1AISAgneZ11jdi0S5xBxo5HkTRtudTh2hxhFsqg8h5DnN5LJjtK2i0AP9Ecj5vQ
- 3Zxw==
-X-Gm-Message-State: AOAM531e9vaI7FSq+GhqrtrQJL9vCOseSLSAadQRyrmid8H9n4DLIVeJ
- q4LHruMNJaC0LIHoDQDecDEA7Syil8LU9GRGlr6ebeypr+qB9FaaBQZ2VyYhScd/k7zeenW3+Qu
- c9bwrSGIIHJW17V4=
-X-Received: by 2002:a05:6214:21ac:: with SMTP id
- t12mr2741140qvc.53.1629833676207; 
- Tue, 24 Aug 2021 12:34:36 -0700 (PDT)
-X-Received: by 2002:a05:6214:21ac:: with SMTP id
- t12mr2741108qvc.53.1629833675999; 
- Tue, 24 Aug 2021 12:34:35 -0700 (PDT)
-Received: from t490s ([2607:fea8:56a3:500::d413])
- by smtp.gmail.com with ESMTPSA id n11sm1279203qkk.17.2021.08.24.12.34.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Aug 2021 12:34:35 -0700 (PDT)
-Date: Tue, 24 Aug 2021 15:34:33 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH v2 0/5] physmem: Have flaview API check bus
- permission from MemTxAttrs argument
-Message-ID: <YSVJyYn5lBM4+XZ8@t490s>
-References: <20210823164157.751807-1-philmd@redhat.com>
- <CAFEAcA9_=6n4w86gD3MHhiLeCiui9_+ePT7E2sSHdSRufUJdyA@mail.gmail.com>
- <YSQKHaGiJZE5OAk2@t490s>
- <CAFEAcA_23vc7hE3iaM-JVA6W38LK4hJoWae5KcknhPRD5fPBZA@mail.gmail.com>
- <20210824120153.altqys6jjiuxh35p@sirius.home.kraxel.org>
+ (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
+ id 1mIiau-0005cc-H6; Tue, 24 Aug 2021 22:24:48 -0400
+Received: from shasxm06.verisilicon.com ([101.89.135.45]:50240
+ helo=shasxm03.verisilicon.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
+ id 1mIiar-0003QC-Jd; Tue, 24 Aug 2021 22:24:47 -0400
+Content-Language: zh-CN
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
+ c=simple/simple; t=1629858265; h=from:subject:to:date:message-id;
+ bh=4uq+uDOSvvfcwwktSQYDxovYMWaoeW0V175YPMhQjJ4=;
+ b=cbbLjGNLGm9OmsGY4ASrqPJjcNaX2NLgyQebQKcazGatE5hyKkdR7wC5GajKCGz10AdGQTnEuyy
+ Aa3oXPU25GSwIHbAhqRMnjVnl5fammP6SoqyCYP0cxzcgqPK6Vi4Ha/UDpNB0V5LzosG2EdLffU/F
+ DHnl+UPTFsJahdXlwR8=
+Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
+ SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
+ 14.03.0408.000; Wed, 25 Aug 2021 10:24:24 +0800
+From: "Li, Chunming" <Chunming.Li@verisilicon.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+Subject: [PATCH v4 1/4] hw/arm/smmuv3: Support non PCI/PCIe device connect
+ with SMMU v3
+Thread-Topic: [PATCH v4 1/4] hw/arm/smmuv3: Support non PCI/PCIe device
+ connect with SMMU v3
+Thread-Index: AQHXmVhRWoreZ5yDzkuccUw3TNhi8Q==
+Date: Wed, 25 Aug 2021 02:24:23 +0000
+Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142FB299@SHASXM03.verisilicon.com>
+Accept-Language: zh-CN, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [182.148.13.182]
+x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
+x-tm-as-result: No--6.815500-0.000000-31
+x-tm-as-user-approved-sender: Yes
+x-tm-as-user-blocked-sender: No
 MIME-Version: 1.0
-In-Reply-To: <20210824120153.altqys6jjiuxh35p@sirius.home.kraxel.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.747,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=101.89.135.45;
+ envelope-from=Chunming.Li@verisilicon.com; helo=shasxm03.verisilicon.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Qiuhao Li <Qiuhao.Li@outlook.com>, Alexander Bulekov <alxndr@bu.edu>,
- qemu-arm <qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: op7BPpMjnvXt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Liu, Renwei" <Renwei.Liu@verisilicon.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
+ Jianxian" <Jianxian.Wen@verisilicon.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nXssY5yk4oXk
 
-Hi, Peter, Gerd,
+  . Add sid-map property to store non PCI/PCIe devices SID
+  . Create IOMMU memory regions for non PCI/PCIe devices based on their SID
+  . Update SID getting strategy for PCI/PCIe and non PCI/PCIe devices
 
-On Tue, Aug 24, 2021 at 02:01:53PM +0200, Gerd Hoffmann wrote:
->   Hi,
-> 
-> > I was vaguely tossing an idea around in the back of my mind
-> > about whether you could have a flag on devices that marked
-> > them as "this device is currently involved in IO", such that
-> > you could then just fail the last DMA (or qemu_irq_set, or
-> > whatever) that would complete the loop back to a device that
-> > was already doing IO. But that would need a lot of thinking
-> > through to figure out if it's feasible, and it's probably
-> > a lot of code change.
+Signed-off-by: Li, Chunming <chunming.li@verisilicon.com>
+---
+ hw/arm/smmuv3.c              | 46 ++++++++++++++++++++++++++++++++++++
+ include/hw/arm/smmu-common.h |  7 +++++-
+ include/hw/arm/smmuv3.h      |  2 ++
+ 3 files changed, 54 insertions(+), 1 deletion(-)
 
-(Thanks for the write-up, Peter; it helps a lot)
-
-> 
-> Quick & dirty hack trying the above.  Not much code, it is opt-in per
-> MemoryRegion (so less overhead for devices which already handle all DMA
-> in a BH), tracks state in DeviceState.  Adds a check to a rather hot
-> code path though.  Not tested yet (stopped investigating when I noticed
-> Philippe tries to fix the same thing with another approach).  Not
-> benchmarked.
-> 
-> Maybe it helps ...
-> 
-> take care,
->   Gerd
-> 
-> From 80e58a2cd2c630f0bddd9d0eaee71abb7eeb9440 Mon Sep 17 00:00:00 2001
-> From: Gerd Hoffmann <kraxel@redhat.com>
-> Date: Tue, 17 Aug 2021 07:35:37 +0200
-> Subject: [PATCH] allow track active mmio handlers
-> 
-> ---
->  include/exec/memory.h  |  1 +
->  include/hw/qdev-core.h |  1 +
->  softmmu/memory.c       | 24 ++++++++++++++++++++++--
->  3 files changed, 24 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index c3d417d317f0..b1883d45e817 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -265,6 +265,7 @@ struct MemoryRegionOps {
->           */
->          bool unaligned;
->      } impl;
-> +    bool block_reenter;
->  };
->  
->  typedef struct MemoryRegionClass {
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index bafc311bfa1b..4cf281a81fa9 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -191,6 +191,7 @@ struct DeviceState {
->      int instance_id_alias;
->      int alias_required_for_version;
->      ResettableState reset;
-> +    bool io_handler_active;
->  };
->  
->  struct DeviceListener {
-> diff --git a/softmmu/memory.c b/softmmu/memory.c
-> index bfedaf9c4dfc..5eb5dd465dd2 100644
-> --- a/softmmu/memory.c
-> +++ b/softmmu/memory.c
-> @@ -437,7 +437,18 @@ static MemTxResult  memory_region_read_accessor(MemoryRegion *mr,
->  {
->      uint64_t tmp;
->  
-> -    tmp = mr->ops->read(mr->opaque, addr, size);
-> +    if (mr->ops->block_reenter) {
-> +        DeviceState *dev = DEVICE(mr->owner);
-> +        if (!dev->io_handler_active) {
-> +            dev->io_handler_active = true;
-> +            tmp = mr->ops->read(mr->opaque, addr, size);
-> +            dev->io_handler_active = false;
-> +        } else {
-> +            tmp = MEMTX_OK;
-> +        }
-> +    } else {
-> +        tmp = mr->ops->read(mr->opaque, addr, size);
-> +    }
->      if (mr->subpage) {
->          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
->      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
-> @@ -489,7 +500,16 @@ static MemTxResult memory_region_write_accessor(MemoryRegion *mr,
->          trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
->                                        memory_region_name(mr));
->      }
-> -    mr->ops->write(mr->opaque, addr, tmp, size);
-> +    if (mr->ops->block_reenter) {
-> +        DeviceState *dev = DEVICE(mr->owner);
-> +        if (!dev->io_handler_active) {
-> +            dev->io_handler_active = true;
-> +            mr->ops->write(mr->opaque, addr, tmp, size);
-> +            dev->io_handler_active = false;
-> +        }
-> +    } else {
-> +        mr->ops->write(mr->opaque, addr, tmp, size);
-> +    }
->      return MEMTX_OK;
->  }
-
-Can I read this as a better approach if it still allows P2P so things that
-Paolo and Qiang used to mention will still work?
-
-https://lore.kernel.org/qemu-devel/7e4fd726-07e9-dc09-d66b-5692dd51820f@redhat.com/
-https://lore.kernel.org/qemu-devel/CAKXe6S+v4z_PYbZ6MMzEZk7Q0Qc+q9tzL+a8918U_-XR=aj7RA@mail.gmail.com/
-
-Can we do that similarly for qemu_set_irq() and friends but based on IRQState?
-
-Thanks,
-
--- 
-Peter Xu
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 01b60bee4..11d7fe842 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -32,6 +32,7 @@
+ #include "hw/arm/smmuv3.h"
+ #include "smmuv3-internal.h"
+ #include "smmu-internal.h"
++#include "hw/qdev-properties.h"
+=20
+ /**
+  * smmuv3_trigger_irq - pulse @irq if enabled and update
+@@ -1430,6 +1431,19 @@ static void smmu_reset(DeviceState *dev)
+     smmuv3_init_regs(s);
+ }
+=20
++static SMMUDevice *smmu_find_peri_sdev(SMMUState *s, uint16_t sid)
++{
++    SMMUDevice *sdev;
++
++    QLIST_FOREACH(sdev, &s->peri_sdev_list, next) {
++        if (smmu_get_sid(sdev) =3D=3D sid) {
++            return sdev;
++        }
++    }
++
++    return NULL;
++}
++
+ static void smmu_realize(DeviceState *d, Error **errp)
+ {
+     SMMUState *sys =3D ARM_SMMU(d);
+@@ -1437,6 +1451,9 @@ static void smmu_realize(DeviceState *d, Error **errp=
+)
+     SMMUv3Class *c =3D ARM_SMMUV3_GET_CLASS(s);
+     SysBusDevice *dev =3D SYS_BUS_DEVICE(d);
+     Error *local_err =3D NULL;
++    SMMUDevice *sdev;
++    char *name =3D NULL;
++    uint16_t sid =3D 0;
+=20
+     c->parent_realize(d, &local_err);
+     if (local_err) {
+@@ -1454,6 +1471,28 @@ static void smmu_realize(DeviceState *d, Error **err=
+p)
+     sysbus_init_mmio(dev, &sys->iomem);
+=20
+     smmu_init_irq(s, dev);
++
++    /* Create IOMMU memory region for peripheral devices based on their SI=
+D */
++    for (int i =3D 0; i < s->num_sid; i++) {
++        sid =3D s->sid_map[i];
++        sdev =3D smmu_find_peri_sdev(sys, sid);
++        if (sdev) {
++            continue;
++        }
++
++        sdev =3D g_new0(SMMUDevice, 1);
++        sdev->smmu =3D sys;
++        sdev->bus =3D NULL;
++        sdev->devfn =3D sid;
++
++        name =3D g_strdup_printf("%s-peri-%d", sys->mrtypename, sid);
++        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
++                                 sys->mrtypename,
++                                 OBJECT(sys), name, 1ULL << SMMU_MAX_VA_BI=
+TS);
++
++        QLIST_INSERT_HEAD(&sys->peri_sdev_list, sdev, next);
++        g_free(name);
++    }
+ }
+=20
+ static const VMStateDescription vmstate_smmuv3_queue =3D {
+@@ -1506,6 +1545,12 @@ static void smmuv3_instance_init(Object *obj)
+     /* Nothing much to do here as of now */
+ }
+=20
++static Property smmuv3_properties[] =3D {
++    DEFINE_PROP_ARRAY("sid-map", SMMUv3State, num_sid, sid_map,
++                      qdev_prop_uint16, uint16_t),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void smmuv3_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -1515,6 +1560,7 @@ static void smmuv3_class_init(ObjectClass *klass, voi=
+d *data)
+     device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
+     c->parent_realize =3D dc->realize;
+     dc->realize =3D smmu_realize;
++    device_class_set_props(dc, smmuv3_properties);
+ }
+=20
+ static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 706be3c6d..95cd12a4b 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -117,6 +117,7 @@ struct SMMUState {
+     QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
+     uint8_t bus_num;
+     PCIBus *primary_bus;
++    QLIST_HEAD(, SMMUDevice) peri_sdev_list;
+ };
+=20
+ struct SMMUBaseClass {
+@@ -138,7 +139,11 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_=
+t bus_num);
+ /* Return the stream ID of an SMMU device */
+ static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+ {
+-    return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
++    if (sdev->bus =3D=3D NULL) {
++        return sdev->devfn;
++    } else {
++        return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
++    }
+ }
+=20
+ /**
+diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+index c641e6073..32ba84990 100644
+--- a/include/hw/arm/smmuv3.h
++++ b/include/hw/arm/smmuv3.h
+@@ -39,6 +39,8 @@ struct SMMUv3State {
+     uint32_t features;
+     uint8_t sid_size;
+     uint8_t sid_split;
++    uint32_t num_sid;
++    uint16_t *sid_map;
+=20
+     uint32_t idr[6];
+     uint32_t iidr;
+--=20
 

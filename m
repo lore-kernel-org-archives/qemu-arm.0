@@ -1,97 +1,92 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp387291lfb;
-        Tue, 24 Aug 2021 19:25:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzDW5NXBkNt8q0eEU5Wa2x4uQkpR1C12NDLIrWKsQx6dRWvyDuVl1LRGCB0+g5nrqpIzmWV
-X-Received: by 2002:a05:6638:185:: with SMTP id a5mr4521472jaq.31.1629858301667;
-        Tue, 24 Aug 2021 19:25:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629858301; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp246019lfb;
+        Wed, 25 Aug 2021 06:01:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx0PKrBAgnt2l5FNh0/2OWEzlNAfQe6XezMRVC5d5cYX8o8lFYaKZSy9lfO3/MscvTdX6Fw
+X-Received: by 2002:a1c:730a:: with SMTP id d10mr9280152wmb.59.1629896459954;
+        Wed, 25 Aug 2021 06:00:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629896459; cv=none;
         d=google.com; s=arc-20160816;
-        b=OmCL/fJI05AiaxHfKlP/Ya56tzMVFHkpJzwkJJE5rxL/lVpPFIPfhkGcTyCwQjgYfJ
-         mdkHiEN7/AMYgpfE1Adq+F0FIBBJCrBnR4137KiRj2AizaIILfI1wvifEVbiz8FcFjaL
-         ox9syr4sHZafwxL9oKhoFSZ7vukCOKELsn7Ixb+o367F14UilxOQUjvwW3VbXkVRHmcY
-         dCTBBT7ZP4Km1cb8hJdsgpsBN5hyDgDBfdrarYvL00CPDd9i62oipL9nVRJEfe/RVEcl
-         SkUytfiSvztRxf3GyjtBW74em3L8AkRGxKM17FJqLoiXK97ozIS1lP4l2C7pJFVeheNF
-         TfLw==
+        b=RhFC2bXmKNvy4jW4LL9LccveIQDIJazLGVvApF/f45jqBosZ8qhwg8iw+tX8ZJv1cD
+         CD4R/t2te9NPSnH/wWpZa/8/a70Br4RGgmdW+GaLCDhRT3VaLkzRPqPtYOATBl/lD4tz
+         8O+KXUFi5gFUTXGboyymslfiKzIGX670Fw3Qr1ZWk6KBKgLjgJ1e+LcQ06aIw8wqV8PP
+         lLZxQXy5ukesKXhh0sz3GXUmscrRpYKoY6JcLbEH865ndQhXPpbC/v31MnQKr0pzuWcM
+         i6bZrMJRYQyTND866rckD0rmbL3jbKHZmZkLEmCO9jB/F/j+uxEf8wz3MOViSoevergs
+         DPvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from
-         :dkim-signature:content-transfer-encoding:content-language;
-        bh=5YGzENhRpMtWAWtDsqPxiHkZoYtm5ELhP0HKm6HCA54=;
-        b=JeyHQ8LRCPte6bFzlA2FCaprcesCGhx0TQ9aM5qODqMm10efYq/lOvTneoU/r6cM1E
-         SlyuXEvDENFrBt0vaW1tlqU8GZY7JFhENx01D3A7E1TODpnYAWCEtIeELHXhHdH0yi6o
-         7hfRDa17fqauvLpgJZRNuKrroFkCeSEGl8w5e0wTGKIckWG14f7xcwCDOQK6uzyENaTA
-         cF0LJiPpfLvi4p+5TlPr81nTK3GsD0AaPBtFniIQNkf23Z048M0fc1v9qRpXxSndeSAQ
-         zS/EMEHfOpUgn9+Ll8LtrzFZtYMVLsaW0xe1dYiRIh89NoUiNBOD7Vf5+WnY+HxAmh9S
-         3ZTA==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=ZsBOUwcbt9HyG3oB0M/jgN+U6YGgQiivDFADOVfq6Hg=;
+        b=qdwCeZf1zufCLeRxCHJBDxIrbovMXZIuL/VXn4lws5Hq0pdFo/kMXdrQD42d+rjE41
+         etuwP5Cz+igiOHL4LgLOS+PkcWGH2uFacw3vFD7/xvcFBEMjSxNrVL84ebDbP1Xa3xmt
+         fRxPn7mfiyDDqmqjpho9VGmhnQDYpHtxPE+XFTWE3J/rX+yxkUUQwRy5ebCFHch3oshC
+         4ZYIiDKKcsKV6PS6SNJcK2yjusIWtDZdXgvVPmo5oQncpciWnYhx/kQVJYnFmj0uutUL
+         gZdr5t3TtfExLr6Cde+zs7zhjW14Zxxmkb8nGoDIl0OV9eogyT+qLleabZgHw5j2hhC4
+         CI+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=cbbLjGNL;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=X71kToX5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j19si5475957jat.113.2021.08.24.19.25.01
+        by mx.google.com with ESMTPS id f3si12443348wrf.52.2021.08.25.06.00.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Aug 2021 19:25:01 -0700 (PDT)
+        Wed, 25 Aug 2021 06:00:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=cbbLjGNL;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=X71kToX5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:53498 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Received: from localhost ([::1]:59368 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIib6-0005dG-Rm
-	for alex.bennee@linaro.org; Tue, 24 Aug 2021 22:25:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40046)
+	id 1mIsWZ-0002TE-08
+	for alex.bennee@linaro.org; Wed, 25 Aug 2021 09:00:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mIiau-0005cc-H6; Tue, 24 Aug 2021 22:24:48 -0400
-Received: from shasxm06.verisilicon.com ([101.89.135.45]:50240
- helo=shasxm03.verisilicon.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mIiar-0003QC-Jd; Tue, 24 Aug 2021 22:24:47 -0400
-Content-Language: zh-CN
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1629858265; h=from:subject:to:date:message-id;
- bh=4uq+uDOSvvfcwwktSQYDxovYMWaoeW0V175YPMhQjJ4=;
- b=cbbLjGNLGm9OmsGY4ASrqPJjcNaX2NLgyQebQKcazGatE5hyKkdR7wC5GajKCGz10AdGQTnEuyy
- Aa3oXPU25GSwIHbAhqRMnjVnl5fammP6SoqyCYP0cxzcgqPK6Vi4Ha/UDpNB0V5LzosG2EdLffU/F
- DHnl+UPTFsJahdXlwR8=
-Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
- SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Wed, 25 Aug 2021 10:24:24 +0800
-From: "Li, Chunming" <Chunming.Li@verisilicon.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>
-Subject: [PATCH v4 1/4] hw/arm/smmuv3: Support non PCI/PCIe device connect
- with SMMU v3
-Thread-Topic: [PATCH v4 1/4] hw/arm/smmuv3: Support non PCI/PCIe device
- connect with SMMU v3
-Thread-Index: AQHXmVhRWoreZ5yDzkuccUw3TNhi8Q==
-Date: Wed, 25 Aug 2021 02:24:23 +0000
-Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142FB299@SHASXM03.verisilicon.com>
-Accept-Language: zh-CN, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [182.148.13.182]
-x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--6.815500-0.000000-31
-x-tm-as-user-approved-sender: Yes
-x-tm-as-user-blocked-sender: No
-MIME-Version: 1.0
-Received-SPF: pass client-ip=101.89.135.45;
- envelope-from=Chunming.Li@verisilicon.com; helo=shasxm03.verisilicon.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ (Exim 4.90_1) (envelope-from <chunming_li1234@163.com>)
+ id 1mIoDK-0003sT-9M; Wed, 25 Aug 2021 04:24:50 -0400
+Received: from m12-13.163.com ([220.181.12.13]:48193)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <chunming_li1234@163.com>)
+ id 1mIoDG-00042E-Gb; Wed, 25 Aug 2021 04:24:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id; bh=ZsBOUwcbt9HyG3oB0M
+ /jgN+U6YGgQiivDFADOVfq6Hg=; b=X71kToX5cGE1pToGeuB9JZMY8HIQxJST0W
+ Q8EYtaXXaBq/BBDpVB3IoaY+tPgd/ram3VbHkTeMGS0VyZjNo/019hz2nbiOlApL
+ b4QL1+rfDc8Lxlj+uYrEuJq6kEFVVyuedqrbfHn10izFMr0awpoUOcUH866agOhP
+ /e0iw2lG4=
+Received: from localhost.localdomain (unknown [180.169.130.89])
+ by smtp9 (Coremail) with SMTP id DcCowABnCwWL+iVhtO7SAQ--.38418S6;
+ Wed, 25 Aug 2021 16:08:51 +0800 (CST)
+From: chunming <chunming_li1234@163.com>
+To: eric.auger@redhat.com,
+	peter.maydell@linaro.org
+Subject: [PATCH v5 3/4] hw/arm/virt: Update SMMU v3 creation to support non
+ PCI/PCIe device connection
+Date: Wed, 25 Aug 2021 16:08:41 +0800
+Message-Id: <1629878922-173270-4-git-send-email-chunming_li1234@163.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
+References: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
+X-CM-TRANSID: DcCowABnCwWL+iVhtO7SAQ--.38418S6
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WFyDCr1fXr1xCrykZw4ktFb_yoW8tFW3pF
+ 4kGF1vgry5W3WfWrZ2qr13u3W5Gw4kGw1UKrs7uw4Syw17t34UXr4DKa1YkFWDWF1kuF13
+ ZFs2gF47WF4xXrJanT9S1TB71UUUUjUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07bS2-5UUUUU=
+X-Originating-IP: [180.169.130.89]
+X-CM-SenderInfo: xfkx0zplqjszjlrsjki6rwjhhfrp/1tbiNRP5dlrPdFx6owAAsN
+Received-SPF: pass client-ip=220.181.12.13;
+ envelope-from=chunming_li1234@163.com; helo=m12-13.163.com
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 25 Aug 2021 09:00:07 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,160 +98,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Liu, Renwei" <Renwei.Liu@verisilicon.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
- Jianxian" <Jianxian.Wen@verisilicon.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: renwei.liu@verisilicon.com, qemu-arm@nongnu.org,
+ jianxian.wen@verisilicon.com, qemu-devel@nongnu.org,
+ chunming <chunming.li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nXssY5yk4oXk
+X-TUID: 3PX9m0q13QPZ
 
-  . Add sid-map property to store non PCI/PCIe devices SID
-  . Create IOMMU memory regions for non PCI/PCIe devices based on their SID
-  . Update SID getting strategy for PCI/PCIe and non PCI/PCIe devices
+From: chunming <chunming.li@verisilicon.com>
 
-Signed-off-by: Li, Chunming <chunming.li@verisilicon.com>
+  . Add "smmuv3_sidmap" to set non PCI/PCIe devices SID value
+  . Pass non PCI/PCIe devices SID value to SMMU v3 model creation
+  . Store SMMU v3 device in virtual machine then non PCI/PCIe can get its memory region later
+
+Signed-off-by: chunming <chunming.li@verisilicon.com>
 ---
- hw/arm/smmuv3.c              | 46 ++++++++++++++++++++++++++++++++++++
- include/hw/arm/smmu-common.h |  7 +++++-
- include/hw/arm/smmuv3.h      |  2 ++
- 3 files changed, 54 insertions(+), 1 deletion(-)
+ hw/arm/virt.c         | 18 +++++++++++++++++-
+ include/hw/arm/virt.h |  2 ++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 01b60bee4..11d7fe842 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -32,6 +32,7 @@
- #include "hw/arm/smmuv3.h"
- #include "smmuv3-internal.h"
- #include "smmu-internal.h"
-+#include "hw/qdev-properties.h"
-=20
- /**
-  * smmuv3_trigger_irq - pulse @irq if enabled and update
-@@ -1430,6 +1431,19 @@ static void smmu_reset(DeviceState *dev)
-     smmuv3_init_regs(s);
- }
-=20
-+static SMMUDevice *smmu_find_peri_sdev(SMMUState *s, uint16_t sid)
-+{
-+    SMMUDevice *sdev;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 81eda46b0b..c3fd30e071 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -204,6 +204,10 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("max"),
+ };
+ 
++static const uint16_t smmuv3_sidmap[] = {
 +
-+    QLIST_FOREACH(sdev, &s->peri_sdev_list, next) {
-+        if (smmu_get_sid(sdev) =3D=3D sid) {
-+            return sdev;
-+        }
-+    }
-+
-+    return NULL;
-+}
-+
- static void smmu_realize(DeviceState *d, Error **errp)
- {
-     SMMUState *sys =3D ARM_SMMU(d);
-@@ -1437,6 +1451,9 @@ static void smmu_realize(DeviceState *d, Error **errp=
-)
-     SMMUv3Class *c =3D ARM_SMMUV3_GET_CLASS(s);
-     SysBusDevice *dev =3D SYS_BUS_DEVICE(d);
-     Error *local_err =3D NULL;
-+    SMMUDevice *sdev;
-+    char *name =3D NULL;
-+    uint16_t sid =3D 0;
-=20
-     c->parent_realize(d, &local_err);
-     if (local_err) {
-@@ -1454,6 +1471,28 @@ static void smmu_realize(DeviceState *d, Error **err=
-p)
-     sysbus_init_mmio(dev, &sys->iomem);
-=20
-     smmu_init_irq(s, dev);
-+
-+    /* Create IOMMU memory region for peripheral devices based on their SI=
-D */
-+    for (int i =3D 0; i < s->num_sid; i++) {
-+        sid =3D s->sid_map[i];
-+        sdev =3D smmu_find_peri_sdev(sys, sid);
-+        if (sdev) {
-+            continue;
-+        }
-+
-+        sdev =3D g_new0(SMMUDevice, 1);
-+        sdev->smmu =3D sys;
-+        sdev->bus =3D NULL;
-+        sdev->devfn =3D sid;
-+
-+        name =3D g_strdup_printf("%s-peri-%d", sys->mrtypename, sid);
-+        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-+                                 sys->mrtypename,
-+                                 OBJECT(sys), name, 1ULL << SMMU_MAX_VA_BI=
-TS);
-+
-+        QLIST_INSERT_HEAD(&sys->peri_sdev_list, sdev, next);
-+        g_free(name);
-+    }
- }
-=20
- static const VMStateDescription vmstate_smmuv3_queue =3D {
-@@ -1506,6 +1545,12 @@ static void smmuv3_instance_init(Object *obj)
-     /* Nothing much to do here as of now */
- }
-=20
-+static Property smmuv3_properties[] =3D {
-+    DEFINE_PROP_ARRAY("sid-map", SMMUv3State, num_sid, sid_map,
-+                      qdev_prop_uint16, uint16_t),
-+    DEFINE_PROP_END_OF_LIST(),
 +};
 +
- static void smmuv3_class_init(ObjectClass *klass, void *data)
+ static bool cpu_type_valid(const char *cpu)
  {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-@@ -1515,6 +1560,7 @@ static void smmuv3_class_init(ObjectClass *klass, voi=
-d *data)
-     device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
-     c->parent_realize =3D dc->realize;
-     dc->realize =3D smmu_realize;
-+    device_class_set_props(dc, smmuv3_properties);
+     int i;
+@@ -1223,7 +1227,7 @@ static void create_pcie_irq_map(const MachineState *ms,
+                            0x7           /* PCI irq */);
  }
-=20
- static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 706be3c6d..95cd12a4b 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -117,6 +117,7 @@ struct SMMUState {
-     QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
-     uint8_t bus_num;
-     PCIBus *primary_bus;
-+    QLIST_HEAD(, SMMUDevice) peri_sdev_list;
- };
-=20
- struct SMMUBaseClass {
-@@ -138,7 +139,11 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_=
-t bus_num);
- /* Return the stream ID of an SMMU device */
- static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+ 
+-static void create_smmu(const VirtMachineState *vms,
++static void create_smmu(VirtMachineState *vms,
+                         PCIBus *bus)
  {
--    return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
-+    if (sdev->bus =3D=3D NULL) {
-+        return sdev->devfn;
-+    } else {
-+        return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
+     char *node;
+@@ -1244,6 +1248,16 @@ static void create_smmu(const VirtMachineState *vms,
+ 
+     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+                              &error_abort);
++
++    vms->smmuv3 = dev;
++
++    qdev_prop_set_uint32(dev, "len-sid-map", ARRAY_SIZE(smmuv3_sidmap));
++
++    for (i = 0; i < ARRAY_SIZE(smmuv3_sidmap); i++) {
++        g_autofree char *propname = g_strdup_printf("sid-map[%d]", i);
++        qdev_prop_set_uint16(dev, propname, smmuv3_sidmap[i]);
 +    }
- }
-=20
- /**
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index c641e6073..32ba84990 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -39,6 +39,8 @@ struct SMMUv3State {
-     uint32_t features;
-     uint8_t sid_size;
-     uint8_t sid_split;
-+    uint32_t num_sid;
-+    uint16_t *sid_map;
-=20
-     uint32_t idr[6];
-     uint32_t iidr;
---=20
++
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     for (i = 0; i < NUM_SMMU_IRQS; i++) {
+@@ -2762,6 +2776,8 @@ static void virt_instance_init(Object *obj)
+ 
+     vms->irqmap = a15irqmap;
+ 
++    vms->sidmap = smmuv3_sidmap;
++
+     virt_flash_create(vms);
+ 
+     vms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 9661c46699..d3402a43dd 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -167,6 +167,8 @@ struct VirtMachineState {
+     PCIBus *bus;
+     char *oem_id;
+     char *oem_table_id;
++    DeviceState *smmuv3;
++    const uint16_t *sidmap;
+ };
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+-- 
+2.30.2
+
 

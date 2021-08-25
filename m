@@ -1,81 +1,78 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp246602lfb;
-        Wed, 25 Aug 2021 06:01:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmAsAX0I5vm6lWuy+8BUWm4G2RdhtS4+PEYuKO4je34dhYbo2NrEyLq7qrUBaX4gPPy4zf
-X-Received: by 2002:adf:ffd2:: with SMTP id x18mr24884069wrs.184.1629896494567;
-        Wed, 25 Aug 2021 06:01:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629896494; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp253309lfb;
+        Wed, 25 Aug 2021 06:08:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz5ywBd62fWXoApxjJ9MQLSMGuTSh2T5cOH16oeRKnRzzvD7fqu+7oc2c+K9W5s+seDh6Pk
+X-Received: by 2002:a05:6000:1864:: with SMTP id d4mr26266642wri.250.1629896896163;
+        Wed, 25 Aug 2021 06:08:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629896896; cv=none;
         d=google.com; s=arc-20160816;
-        b=woMcrCp+v946aj13COBbneq1sjfQhVQne/F5YAbC69Pz48JCCk3cPYdjXSYARaCrLD
-         RbEaqi1ZvTLhxPjvl3wy1kl1Ap/Fp9H7w7ZDwyJeKc0gk6sLqqWExIAGc/BHAFTKxF9n
-         eQzfmnSHlUvjsjpfPWno6+5+fOC5FTCR2hBjiY/p4rs8Ze0I0My9t/+L8VTy3gO9ZMPI
-         CbdalKh5DX2oUycytCvJx/yfVMXvI7DWtoSqXDMu0K/t/6GXgNDVa6DHHO2+8Ex+qFV8
-         oGzvIklfFx20xOfKXleNf7OSTWCXqa5qiR5Zl+yOEUV82bqp/0ybf2D5YumtU77cST53
-         jaAg==
+        b=RC/8FJdJM4P6/oXe8YKurtlUvLEsMvR1ZfWpe8vERk18Z0/HofxL8VzacBXqYCLfQG
+         uGElW8Pl943yUufaUdsYQ5bVYb1ok/co4IQS7i3zIj3LrvXbPRyXqRpSQE49Fa+8IFiQ
+         nSR8Geg4cGk0+aB0RJagpjtqzJi6iBuWg/bi5cntqW7PfoV91t9nv2KS1rKtVb8HQuud
+         jYBJOkNlizz/3npZerMycTGy6lZK/hf8JieokS1j2byEZiqtiDfv9nbHZZAuE0qmXARd
+         1s46rkf5irc2JIzUz2UpXiXp1PeB1y/kFarD8UtFHGfXr17k8c4EIOqtSPVGNIVMgcxL
+         HNHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=xQDjiNNhDJEqwuElL0ZuUGPrmvLwmBF1vqp0UAkFOsw=;
-        b=D4TchR9vadRl6YCB8qRA2ZDsc59vphafoFb3aKUX+37VT7sYEpx8fSvwcTixIIEVQT
-         Oz28J8L3hQ8+5Ah4sl2hCEVootwqmEEXV7gMea48rISWLIefcXjETTWxRf9aXtqTyFwT
-         pci54m3gaEiy6sb173mDvaZabWzo60KlHVKhSPj37lsX8DKD5dQzQoL9wIbzE2kvQG8y
-         6e1JRB8RhjrRF++Vo4mRX2qWYFV4ar5gxYM+9JqXGRjgrBf77jMQlrESHPiPEqYNgpM3
-         69SVYYCLc5AINE6HO5jrvjLzBUCbCJCeBQEnMBDfXoQP/Crl4YZ6tmnJBOSEGmS6nkk0
-         CYqA==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=A4ons/D72mOTb9PTXTmdADsOkLkh1zX6jxX2rLQrLCA=;
+        b=0ZcETEmozyEno57hQ3NMcLqGaBAN62+732iYjZXEocdxMCWXLC1xXrHEG9oQ6zzUJu
+         X4o3GlLe+5fsoqEkcI+oGLMyv2ipHv3XTJBu5OQiPThi1rzRqnnOyWnvkW/xGzMP/1Rv
+         4P80T8FCssGVn5/r4OnVOpG8kkpXeQSOfU9a1Egbf/Z+1+6gmKal50GC0Bf5CqgwlKa1
+         Aj3HMO3aMQI+nvqa0gMARsjhDdHi9OF5YIYCBXhn2eFWcjGF1oDYejxDGqEOygj8atll
+         j2zGOiZUcYwf/PE7hgen3wWhcEaC2FGzvy9ODmjuvQXJ7Sq/pzzhDteonFW1i9pIF91B
+         n4aA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=o0+PVsnq;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=BJTOHhH2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u21si5823436wmj.135.2021.08.25.06.01.34
+        by mx.google.com with ESMTPS id b7si4793979wrp.410.2021.08.25.06.08.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Aug 2021 06:01:34 -0700 (PDT)
+        Wed, 25 Aug 2021 06:08:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=o0+PVsnq;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=BJTOHhH2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Received: from localhost ([::1]:60960 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58194 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mIsX7-0003fF-HB
-	for alex.bennee@linaro.org; Wed, 25 Aug 2021 09:01:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50234)
+	id 1mIsdb-0003tr-8B
+	for alex.bennee@linaro.org; Wed, 25 Aug 2021 09:08:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chunming_li1234@163.com>)
- id 1mIoDL-0003wy-DE; Wed, 25 Aug 2021 04:24:51 -0400
-Received: from m12-13.163.com ([220.181.12.13]:48191)
+ id 1mIoDN-000414-GW; Wed, 25 Aug 2021 04:24:53 -0400
+Received: from m12-13.163.com ([220.181.12.13]:48192)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <chunming_li1234@163.com>)
- id 1mIoDH-00042G-8b; Wed, 25 Aug 2021 04:24:51 -0400
+ id 1mIoDL-00042F-Ab; Wed, 25 Aug 2021 04:24:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id; bh=xQDjiNNhDJEqwuElL0
- ZuUGPrmvLwmBF1vqp0UAkFOsw=; b=o0+PVsnqfiCqslEaZRMflrczFkxlmRjtQf
- ooj2gotzgrEcpPlphm0pd0nbaVMWQMHIn0BZW9avUqXWNmzjYCwZnltMz0dz/eiF
- 6fbqj5iMRSvOv11yLg2AuGuIvwwg2bWCmwF/2gmpGtz2GfrlmwABieYi9FyH6Lle
- diBhIFsyc=
+ s=s110527; h=From:Subject:Date:Message-Id; bh=A4ons/D72mOTb9PTXT
+ mdADsOkLkh1zX6jxX2rLQrLCA=; b=BJTOHhH2kwLYQHb9ZOg1EVq4HQ69QngDjE
+ 2ledAeLuyKCwe0nCYxiL9dre59E8AWRt7cI/0ZYPt1N+XK6AijWPPtG2gSY/WUlV
+ JHkBs5TS7dfzMyx2EmM8ZR4dijQ4Fcr5Zhe+k734oGcY3j35E6UOc5atK0G9nmPq
+ L7m9daH8w=
 Received: from localhost.localdomain (unknown [180.169.130.89])
- by smtp9 (Coremail) with SMTP id DcCowABnCwWL+iVhtO7SAQ--.38418S7;
- Wed, 25 Aug 2021 16:08:51 +0800 (CST)
+ by smtp9 (Coremail) with SMTP id DcCowABnCwWL+iVhtO7SAQ--.38418S3;
+ Wed, 25 Aug 2021 16:08:50 +0800 (CST)
 From: chunming <chunming_li1234@163.com>
 To: eric.auger@redhat.com,
 	peter.maydell@linaro.org
-Subject: [PATCH v5 4/4] hw/arm/virt: Add PL330 DMA controller and connect with
- SMMU v3
-Date: Wed, 25 Aug 2021 16:08:42 +0800
-Message-Id: <1629878922-173270-5-git-send-email-chunming_li1234@163.com>
+Subject: [PATCH v5 0/4] hw/arm/smmuv3: Support non PCI/PCIe devices
+Date: Wed, 25 Aug 2021 16:08:38 +0800
+Message-Id: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
-References: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
-X-CM-TRANSID: DcCowABnCwWL+iVhtO7SAQ--.38418S7
-X-Coremail-Antispam: 1Uf129KBjvJXoW3AFyrGw17JF47tr43Kr4rKrg_yoW7Aw1DpF
- W5CFs8WrW0qr1SqrWa9F1FkF1rAw1vk3WDGr4I93yxC3W8WryrXr48tasrKrWUW348X3Z8
- Xa1DWFyvgwn7Wr7anT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07b4HqcUUUUU=
+X-CM-TRANSID: DcCowABnCwWL+iVhtO7SAQ--.38418S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uw1DCr48Wr4kGryrAr15XFb_yoW8GrW8pF
+ yYgrs8K39xCry3ur13Za1xWFZ8Ja93GFyqyrsrKrWfCr1DtFWUXr4Utw1rK3yUZFy8Zr47
+ ZrW2qF1Sgw1UZw7anT9S1TB71UUUUj7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07bOD73UUUUU=
 X-Originating-IP: [180.169.130.89]
-X-CM-SenderInfo: xfkx0zplqjszjlrsjki6rwjhhfrp/xtbBDRP5dlaEE6kM2AAAst
+X-CM-SenderInfo: xfkx0zplqjszjlrsjki6rwjhhfrp/xtbBrRL5dl75bWj18AABsW
 Received-SPF: pass client-ip=220.181.12.13;
  envelope-from=chunming_li1234@163.com; helo=m12-13.163.com
 X-Spam_score_int: -17
@@ -104,162 +101,41 @@ Cc: renwei.liu@verisilicon.com, qemu-arm@nongnu.org,
  chunming <chunming.li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iAwpS6tz83sv
+X-TUID: FwEKbhIx8j31
 
 From: chunming <chunming.li@verisilicon.com>
 
-Add PL330 DMA controller to test SMMU v3 connection and function.
-The default SID for PL330 is 1 but we test other values, it works well.
+The current SMMU v3 model only support PCI/PCIe devices, so we update it for 
+non-PCI/PCIe devices.
+  . Add independent IOMMU memory regions for non-PCI/PCIe devices
+  . Add SID value property setting for non-PCI/PCIe devices
+  . Add PL330 DMA controller into "virt" machine and connect with SMMU v3
+  . Test PL330 DMA controller and PCIe e1000 network with SMMU v3 enabled
 
-Signed-off-by: chunming <chunming.li@verisilicon.com>
----
- hw/arm/virt.c         | 92 ++++++++++++++++++++++++++++++++++++++++++-
- include/hw/arm/virt.h |  1 +
- 2 files changed, 92 insertions(+), 1 deletion(-)
+Notes:
+  You need apply PL330 memory region patch before compile "virt" machine:
+  https://patchew.org/QEMU/4C23C17B8E87E74E906A25A3254A03F4FA1FEC31@SHASXM03.verisilicon.com/
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index c3fd30e071..8180e4a331 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -143,6 +143,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
-     [VIRT_UART] =               { 0x09000000, 0x00001000 },
-     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
-+    [VIRT_DMA] =                { 0x09011000, 0x00001000 },
-     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
-@@ -188,6 +189,7 @@ static const int a15irqmap[] = {
-     [VIRT_GPIO] = 7,
-     [VIRT_SECURE_UART] = 8,
-     [VIRT_ACPI_GED] = 9,
-+    [VIRT_DMA] = 10,
-     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
-     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
-     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
-@@ -205,7 +207,7 @@ static const char *valid_cpus[] = {
- };
- 
- static const uint16_t smmuv3_sidmap[] = {
--
-+    [VIRT_DMA] = 1,
- };
- 
- static bool cpu_type_valid(const char *cpu)
-@@ -793,6 +795,92 @@ static void create_uart(const VirtMachineState *vms, int uart,
-     g_free(nodename);
- }
- 
-+static void create_dma(const VirtMachineState *vms)
-+{
-+    int i;
-+    char *nodename;
-+    hwaddr base = vms->memmap[VIRT_DMA].base;
-+    hwaddr size = vms->memmap[VIRT_DMA].size;
-+    int irq = vms->irqmap[VIRT_DMA];
-+    int sid = vms->sidmap[VIRT_DMA];
-+    const char compat[] = "arm,pl330\0arm,primecell";
-+    const char irq_names[] = "abort\0dma0\0dma1\0dma2\0dma3\0dma4\0dma5\0dma6\0dma7";
-+    DeviceState *dev;
-+    MachineState *ms = MACHINE(vms);
-+    SysBusDevice *busdev;
-+    DeviceState *smmuv3_dev;
-+    SMMUState *smmuv3_sys;
-+    Object *smmuv3_memory;
-+
-+    dev = qdev_new("pl330");
-+
-+    if (vms->iommu == VIRT_IOMMU_SMMUV3 && vms->iommu_phandle) {
-+        smmuv3_dev = vms->smmuv3;
-+        smmuv3_sys = ARM_SMMU(smmuv3_dev);
-+        g_autofree char *memname = g_strdup_printf("%s-peri-%d[0]",
-+                                                   smmuv3_sys->mrtypename,
-+                                                   sid);
-+
-+        smmuv3_memory = object_property_get_link(OBJECT(smmuv3_dev),
-+                                memname, &error_abort);
-+
-+        object_property_set_link(OBJECT(dev), "memory",
-+                                 OBJECT(smmuv3_memory),
-+                                 &error_fatal);
-+    } else {
-+        object_property_set_link(OBJECT(dev), "memory",
-+                                 OBJECT(get_system_memory()),
-+                                 &error_fatal);
-+    }
-+
-+    qdev_prop_set_uint8(dev, "num_chnls",  8);
-+    qdev_prop_set_uint8(dev, "num_periph_req",  4);
-+    qdev_prop_set_uint8(dev, "num_events",  16);
-+    qdev_prop_set_uint8(dev, "data_width",  64);
-+    qdev_prop_set_uint8(dev, "wr_cap",  8);
-+    qdev_prop_set_uint8(dev, "wr_q_dep",  16);
-+    qdev_prop_set_uint8(dev, "rd_cap",  8);
-+    qdev_prop_set_uint8(dev, "rd_q_dep",  16);
-+    qdev_prop_set_uint16(dev, "data_buffer_dep",  256);
-+
-+    busdev = SYS_BUS_DEVICE(dev);
-+    sysbus_realize_and_unref(busdev, &error_fatal);
-+    sysbus_mmio_map(busdev, 0, base);
-+
-+    for (i = 0; i < 9; ++i) {
-+        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(vms->gic, irq + i));
-+    }
-+
-+    nodename = g_strdup_printf("/pl330@%" PRIx64, base);
-+    qemu_fdt_add_subnode(ms->fdt, nodename);
-+    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-+                                 2, base, 2, size);
-+    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
-+                    GIC_FDT_IRQ_TYPE_SPI, irq, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 4, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 5, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 6, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 7, GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                    GIC_FDT_IRQ_TYPE_SPI, irq + 8, GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+
-+    qemu_fdt_setprop(ms->fdt, nodename, "interrupt-names", irq_names,
-+                     sizeof(irq_names));
-+
-+    qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
-+    qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
-+
-+    if (vms->iommu == VIRT_IOMMU_SMMUV3 && vms->iommu_phandle) {
-+        qemu_fdt_setprop_cells(ms->fdt, nodename, "iommus",
-+                               vms->iommu_phandle, sid);
-+        qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
-+    }
-+
-+    g_free(nodename);
-+}
- static void create_rtc(const VirtMachineState *vms)
- {
-     char *nodename;
-@@ -2081,6 +2169,8 @@ static void machvirt_init(MachineState *machine)
- 
-     create_pcie(vms);
- 
-+    create_dma(vms);
-+
-     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
-         vms->acpi_dev = create_acpi_ged(vms);
-     } else {
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index d3402a43dd..f307b26587 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -72,6 +72,7 @@ enum {
-     VIRT_UART,
-     VIRT_MMIO,
-     VIRT_RTC,
-+    VIRT_DMA,
-     VIRT_FW_CFG,
-     VIRT_PCIE,
-     VIRT_PCIE_MMIO,
+  The old PL330 model cannot configure its memory region manually. 
+  So we update it and provide path.
+  The patch was reviewed and will be merged in target-arm.next for 6.2.
+
+
+chunming (4):
+  hw/arm/smmuv3: Support non PCI/PCIe device connect with SMMU v3
+  hw/arm/smmuv3: Update implementation of CFGI commands based on device
+    SID
+  hw/arm/virt: Update SMMU v3 creation to support non PCI/PCIe device
+    connection
+  hw/arm/virt: Add PL330 DMA controller and connect with SMMU v3
+
+ hw/arm/smmuv3.c              |  81 ++++++++++++++++++--------
+ hw/arm/virt.c                | 108 ++++++++++++++++++++++++++++++++++-
+ include/hw/arm/smmu-common.h |  12 +++-
+ include/hw/arm/smmuv3.h      |   2 +
+ include/hw/arm/virt.h        |   3 +
+ 5 files changed, 178 insertions(+), 28 deletions(-)
+
 -- 
 2.30.2
 

@@ -1,103 +1,103 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp609027lfb;
-        Thu, 26 Aug 2021 06:24:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSn2vDyvdRrqeXfYyi0Bplr0zwfeb3uTB8+DcJwHljwmhwbx3f0N9oS4/+136T2glwuvBG
-X-Received: by 2002:a1c:448a:: with SMTP id r132mr3638748wma.117.1629984271675;
-        Thu, 26 Aug 2021 06:24:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629984271; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp609417lfb;
+        Thu, 26 Aug 2021 06:25:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyaC/2QXFzYkWH5BrEUZQo08qgPZbRdgqx+HogPVcadppQg1Lqisbuo12v/6D2zb+/n+Haa
+X-Received: by 2002:adf:e645:: with SMTP id b5mr3972017wrn.34.1629984300738;
+        Thu, 26 Aug 2021 06:25:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629984300; cv=none;
         d=google.com; s=arc-20160816;
-        b=nbzpBZyp85gfo2g+hG9xYpvuYtjeNxLfDcxtpCemfpU2OD+0yn35Gamr7FON4LHjMA
-         F9P+IwXRngl6xMkHbvkp9GWSiJmBEgyQUmUONrbX5+j3Bwcjgvp+WIyEJT0qF7oVi0yR
-         7cMB1ps8N2JgqMqwodFaG7jvWkVjC4E63d/faWzs3bedtfcsEmFugTyWfT+A5j/eSd2c
-         YHb2G4nHWTyeRU8uc1cQeyxnnR+io3HtP66yjouO6rI7yb0/GjLSCnRkQ8d1XDep03Mi
-         yEL9v16OBwcJsdUhEw7GS5ccpf80h4mNEJOOrDJ9fUD5V0xaox2pkDsMevviBydGOYKL
-         xuwA==
+        b=tjkrr2BmWFkoCxy89tSEksacLNz+x64YKaAFUP6MTz/NLf0EJKGxS+R0GMmolCaqHJ
+         4K+RzYx+FqscT0T9QPLQvn1VVHmIyolLM5VQRgzjUFU0r5xUL6wLxB9RyxsmPkv8lY2m
+         GPUUVpzv4V2oQjlF6CEcrMQInCO2bBg+i3BC+/2Qjwhx3H1z3U/RyK5lF9IvxGddLCHD
+         bVe14XYSP6yA1KaheXRbgQ0P64MKsYjf/5ULagRLknP59ztqCPyV0paGBJ1iNCQgzAvh
+         nHOMeSPzjC91H3HkMTLOq57eZWTo2TsHWWaeS+9IoK1Ap3a34y4Y+qHUaYjAPIV8H6V/
+         NfPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=DvhXlYYlfomJDUJCbAefggwT30WTKJdIb0Q3AVXh8mM=;
-        b=huymU5jwS0QY+7tuvXNkkSGPkoIkGl6pkAHP0Olcl1eeoVTb4rdIptohtoCcQHkxJm
-         XHHLStutaJBBCjA6jwPsNiBmRiVGq5mjHx+fK2Kwi9B0b4tT6GYPj7RaYMhlIT6H+wuL
-         tco/nXbsWL00NEXlBSvJASdI+0aakMklyQxepN+uV3YOJwG2GOVBpnpVXBv6H1AAsGss
-         NGnSICxMPgm3OZAtZ/6XhZ/pRRhkEYsESWQ6pbeRsZf2hT+D0hGoCAv7U3zrDQGmtqT0
-         Duc0ImSUUVTDRgu57aqLsopPvezuX/caN2dOVrsNl1fsx+3jlowcl1yD7YItJQOFNW0X
-         kMkw==
+        bh=dlNDMB/8L65w3rYQrh4g4+ZBy9+++yz/Uc57+3Riqgs=;
+        b=ZL8+bao1d9Pp1DNe7jVaZYen216DGFpOzfWuZzK+YBvEU0cR7ggsUiZ/jbgRLL0WC3
+         w9gi451vGEYMHWe7Fw3AUdsrv50CTe8q+0+f/99MOLamF9oVn2gvRaYHC9ICkcZNDd8K
+         yFVxM66Z+cEi4qpPBWNkJJ0E21AYFGrxJXh8orWAUNzQQtYxGEWU7Bdcc7vpqmDouTvk
+         Qf0Sgsad79JrmVB3AKCPuvKhh5xM2eZCL7HrBY3rjSEKsYWIL63qsmcV9YKn5W1owFYJ
+         JGOX2Oox3N5VIfke9v+3jvpzYcf0+7fHdvEx19wy1OTWBupY8IzK7MTaaYey24CubOe3
+         AI2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uV7gnocg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dpu1HB6Z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f11si4222742wry.335.2021.08.26.06.24.31
+        by mx.google.com with ESMTPS id u8si3087740wrq.136.2021.08.26.06.25.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Aug 2021 06:24:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Aug 2021 06:25:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uV7gnocg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dpu1HB6Z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43762 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJFMs-0002Zo-KG
-	for alex.bennee@linaro.org; Thu, 26 Aug 2021 09:24:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50574)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mJFNL-0002Zr-PQ
+	for alex.bennee@linaro.org; Thu, 26 Aug 2021 09:24:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mJFGF-0005m1-0g
- for qemu-arm@nongnu.org; Thu, 26 Aug 2021 09:17:40 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46630)
+ id 1mJFGN-0005rV-Up
+ for qemu-devel@nongnu.org; Thu, 26 Aug 2021 09:17:48 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:43893)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mJFGC-00051b-8u
- for qemu-arm@nongnu.org; Thu, 26 Aug 2021 09:17:38 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id f5so4956970wrm.13
- for <qemu-arm@nongnu.org>; Thu, 26 Aug 2021 06:17:35 -0700 (PDT)
+ id 1mJFGJ-00058o-LL
+ for qemu-devel@nongnu.org; Thu, 26 Aug 2021 09:17:47 -0400
+Received: by mail-wr1-x432.google.com with SMTP id b6so4982865wrh.10
+ for <qemu-devel@nongnu.org>; Thu, 26 Aug 2021 06:17:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=DvhXlYYlfomJDUJCbAefggwT30WTKJdIb0Q3AVXh8mM=;
- b=uV7gnocg7QyoQ0SZEor8AWM3Qdw+JYPG2LcEXM/w3vp2ZUwg4Jmf374e57dbU7EFCr
- E53k3yNqo1qhUTMsLbuCIiasAnjjMfX1piRBL9+0h60A/OIOEmM2vEwsK40gbujyM0lH
- rQwJiZmNG1I2zz6ZJZYHwVUMZ6WYqhhTD+BgYrzrhdxo6WJJLiz5Qgcf3NQuzldGB12X
- sGNnROf0iLv6XPIxyEKl6vSlK2ElFKSgY7pSPf+re4go36Eo5rTZj30g3M+N2f83Ishg
- oDqkKCCRBZmdHdEF7hWn3j6ioMFSDg27aZxGQxffMx+Cnv5gTTZ7Irkd7rtvrOO3AVnN
- smwg==
+ bh=dlNDMB/8L65w3rYQrh4g4+ZBy9+++yz/Uc57+3Riqgs=;
+ b=Dpu1HB6ZYs0R/dAonCyPjLR1P4ojBS4pAN2sPnw+rDp5eVsz6TO7GRJFBOjQfFiSWX
+ sz1uADaU3gT7sy82XLVhO15Yo99jHaebTVYXGIUGXHpXkefoO0dvzy4mEm232wSqW28r
+ 1LiQrhRNQcPht+9111eAE7s/nUplYsZjvEkBU6X41+ucXoKO1pHVjDpl6a5eTtziyEua
+ rtkpRVVgv/07QdN0TrzxzG++bAYTIRUjN67bYeiQlz7x6jp0UstycQebLKS+7QcrM6O+
+ E1YTQvcmkdgVxbLNtse8I0T2ZY2q+VHB55ftxgRfz5MdCjgpOeCBjtY1owmAbfBHJeJS
+ IL8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=DvhXlYYlfomJDUJCbAefggwT30WTKJdIb0Q3AVXh8mM=;
- b=PNGXPaus0NIsptLaDoxTe62edfA7NBaY1DQv+ZxEtro0lS43CF3Rq0KtnXAMTYrQm1
- k3/lbBUZ1pJzgXaphNKSSZjSjAJGjqEVNglkR00vEUvQtu88BHtikJchAGkX9gL5GyA1
- k88Kir0AKcFXiH+VdaNFhHcqnroshMP33qVIF+q6GCs8p/I8HSlKzbiKuuFHOIEjFKxF
- ONixAswaGxlFljf5nOZuCZDRomCa44P2vRWHL5kao73rjVF7pZlSk/4FLk4F1NixhBZ7
- +mUWnlZaVlqjSu8jOXQlyIIxYHc55kD6bNoayK3fYdxsVaaJ6gIFz1bempaFMgYAdXoa
- gcMg==
-X-Gm-Message-State: AOAM531qWWPjmsAkdEKKnjrAbJBb7T+RhZ1xNNU49ranhInyluav3xfR
- QEb/VzAQ+iVdKqDuCcznagOoR0KGSYwD0w==
-X-Received: by 2002:adf:ec8b:: with SMTP id z11mr3986340wrn.122.1629983854977; 
- Thu, 26 Aug 2021 06:17:34 -0700 (PDT)
+ bh=dlNDMB/8L65w3rYQrh4g4+ZBy9+++yz/Uc57+3Riqgs=;
+ b=AHrUBLaNSZAymmxT7wjS8rRsBJhi6IzVHXJaT8paUz9gESYQw++6Hcurw2xHagO38u
+ Lq2gUNhCkY3jOuFUBp1qaEUzFCm/0NMpCqA1sqcx1SK2MdII2ARkLz59LlnYxxfZhs/v
+ GPiaN/fzbNlAqRHgEXz7tmUp2N8jd41s4deYwsve8P8bqyPAly2PGfP7p/mhmJoC8DRl
+ O+w8VEzoFKq1SANJvwpX5HLk7CWaj6Te2ZNRE7PSzfWH5pAQed3AUoum+wmL4eTuYvLX
+ 34/USYDRMcymzlOZ6hd8Xgk/xwVsavdqtBD2u3PKhHVIh7ayfBMDvCbPkGiTuhKJJ76n
+ ItuA==
+X-Gm-Message-State: AOAM533bLXIsCYTG6wmrwzlCjYIl5ZkvdSIQ7uxLhJEii4aSGaZLCJeW
+ CYHbqP3f9XPBfjor1ylyCiSOwbXrImtcwg==
+X-Received: by 2002:a05:6000:1864:: with SMTP id
+ d4mr4120140wri.250.1629983862266; 
+ Thu, 26 Aug 2021 06:17:42 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id i17sm1341908wrc.38.2021.08.26.06.17.34
+ by smtp.gmail.com with ESMTPSA id i17sm1341908wrc.38.2021.08.26.06.17.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Aug 2021 06:17:34 -0700 (PDT)
+ Thu, 26 Aug 2021 06:17:41 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 09/18] softfloat: Remove assertion preventing silencing of
- NaN in default-NaN mode
-Date: Thu, 26 Aug 2021 14:17:16 +0100
-Message-Id: <20210826131725.22449-10-peter.maydell@linaro.org>
+Subject: [PATCH v2 18/18] target/arm: Enable MVE in Cortex-M55
+Date: Thu, 26 Aug 2021 14:17:25 +0100
+Message-Id: <20210826131725.22449-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210826131725.22449-1-peter.maydell@linaro.org>
 References: <20210826131725.22449-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,55 +106,50 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hzDdp2C5ETyv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JKU5zsSJfsX2
 
-In commit a777d6033447a we added an assertion to parts_silence_nan() that
-prohibits calling float*_silence_nan() when in default-NaN mode.
-This ties together a property of the output ("do we generate a default
-NaN when the result is a NaN?") with an operation on an input ("silence
-this input NaN").
-
-It's true that most of the time when in default-NaN mode you won't
-need to silence an input NaN, because you can just produce the
-default NaN as the result instead.  But some functions like
-float*_maxnum() are defined to be able to work with quiet NaNs, so
-silencing an input SNaN is still reasonable.  In particular, the
-upcoming implementation of MVE VMAXNMV would fall over this assertion
-if we didn't delete it.
-
-Delete the assertion.
+We now have a complete MVE emulation, so we can enable it in our
+Cortex-M55 model by setting the ID registers to match those of a
+Cortex-M55 with full MVE support.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- fpu/softfloat-specialize.c.inc | 1 -
- 1 file changed, 1 deletion(-)
+ target/arm/cpu_tcg.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-specialize.c.inc
-index 12467bb9bba..f2ad0f335e6 100644
---- a/fpu/softfloat-specialize.c.inc
-+++ b/fpu/softfloat-specialize.c.inc
-@@ -198,7 +198,6 @@ static void parts128_default_nan(FloatParts128 *p, float_status *status)
- static uint64_t parts_silence_nan_frac(uint64_t frac, float_status *status)
- {
-     g_assert(!no_signaling_nans(status));
--    g_assert(!status->default_nan_mode);
- 
-     /* The only snan_bit_is_one target without default_nan_mode is HPPA. */
-     if (snan_bit_is_one(status)) {
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index ed444bf436a..33cc75af57d 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -654,12 +654,9 @@ static void cortex_m55_initfn(Object *obj)
+     cpu->revidr = 0;
+     cpu->pmsav7_dregion = 16;
+     cpu->sau_sregion = 8;
+-    /*
+-     * These are the MVFR* values for the FPU, no MVE configuration;
+-     * we will update them later when we implement MVE
+-     */
++    /* These are the MVFR* values for the FPU + full MVE configuration */
+     cpu->isar.mvfr0 = 0x10110221;
+-    cpu->isar.mvfr1 = 0x12100011;
++    cpu->isar.mvfr1 = 0x12100211;
+     cpu->isar.mvfr2 = 0x00000040;
+     cpu->isar.id_pfr0 = 0x20000030;
+     cpu->isar.id_pfr1 = 0x00000230;
 -- 
 2.20.1
 

@@ -1,136 +1,137 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp634854lfb;
-        Thu, 26 Aug 2021 06:55:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxGQ1hFpKc7q+eNpQBJg6iQ75AQlsJlGKlVjikYS2n5Qo8Q4OQjECSMbHtxJXSwbMIjl/j/
-X-Received: by 2002:a67:c988:: with SMTP id y8mr2506770vsk.46.1629986159362;
-        Thu, 26 Aug 2021 06:55:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629986159; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp646576lfb;
+        Thu, 26 Aug 2021 07:08:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyDWPV3rvH2yStcpjD2AnhIEvfvkOC405fKGWRxaSl9P+nWHyZP+wbhsuPFCjIBB/G8yUGO
+X-Received: by 2002:a05:6402:1c1e:: with SMTP id ck30mr4464557edb.103.1629986927400;
+        Thu, 26 Aug 2021 07:08:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1629986927; cv=none;
         d=google.com; s=arc-20160816;
-        b=wxMkydH5yrvOZXWTKJWl1uSnPzIhaeHediGSSlpH0Q7MJHKfs2rvcMkVCFGw8ECX97
-         7I8vUw3rlUOMBxX7fMoMEqfZ5U+3YssnZPY5cpF35aZQ3HHXQD5HhoiRncbjGBTH2n/y
-         Adx9S/nf9lXSQejsDyWtYFy9u8qvTBN2AZcnKpfNWf0xRMCRWRErUFWQqhZpsfLTdOGD
-         Yky5zubkh0weCaqpizynsGy6SF5cd09Xe2TftLEouQVPhssoqUI9HdgBjfmcGf62e2Pq
-         K9XW9ou+aL2sb3F0EpAgQD3l8phQOk5nRl7YCeaUiwOcFWdbjq5w+5FpH4iTw9WUS4vM
-         5+zw==
+        b=W79cbRx3Xc4hjnDvAJsO6vzj3b0zxawo1oLwJfSyrBT1E/s8ILsxOC0aK1owZmTw41
+         FLtxJJtr2LcqjHWV38vl7dCc28JIrG3viJRdYKfj6VjTsUjAntcXa4xjHlDLed1UHcKZ
+         /79C+H8Jh3RMSZOXuLh3MQowg5YryQAyKiIcohpwDtSGG4zT31QmI1ps+nVIJy3YBaZA
+         Kh2z3kzT3Uo3Rm6p4F6mwdrZHmIJf+1MGs5NlJDps5gG1NGneywf28y/TTBtbWRzajLx
+         kl2PeWVIDicqn1asO+AkzEjMhDejMpEYdHNGICiqDBW0/krQe5CoNQppj8jY2C6RRwAu
+         9+WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=0ENOqJRI7zx+kAigR/DJ1FDbzxpcvWUU6DwpS4hAwNU=;
-        b=qGNoMxSj+0OJS/yzojoayrIDq+0hbC6wEYPI3RTAQqPsJjt9m/SJwk24xyPTxifo+G
-         6ri47aUDfUyjKCfIAkWFZS43W06QwjU+B3pV1tZy4fvZxnBeDbz/O2596Ap3OsglXUM6
-         NTXM2hiaJBhvAiJZsvU8tFTxITwy3qDB7R1FNCBWkjZNKl/qfxzrvDiAdQofWPDpHA1c
-         cHSPcCIX9pj26xX8niR5f19CNt5uCO6x1H5WxYXjzn14lE6d+KdFnXORZWMenAVozHI4
-         7jago2q92KsEjsmdmCCaAXA2YczhPahMvhCyaJgWkB3RNJCsWn3Za8sZ7LEkPVWdIeBl
-         luXw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=BjKuYdswOqSy3z980LflDXbiUQ4p4k3SDJCZrTQ02YY=;
+        b=bZ/Az6ttA+E/H37Ccpu2O44MCshDIFuZAk/cQ/O+n34eMgWy0h38iGszSCtQEVyt2Q
+         ISq7V8BG9wyn8P5P6gMISu4eSNRcG5OS3tToBK4dmM9277uHgArd14hIqF5BgVHC8j7h
+         MtzlKt6b7H2ppfeEtX0CzEkKhlECas1fAgOR0GAQu6J746o9k+VSBq6sCuxNge82agoh
+         eDEwjxqAFkJF7o+8AlyUXQMNIR2qROo98kYbwJfyYxkVU1EkxwEJj48odFMgRlUbf4Zu
+         6mVzyVOQ4TL1Hhgnm89pQ6w9ou4nO+cVggZ955lg0qsB44SH9BvrvAfyWhLa7/h5Pvmv
+         mkbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xiAM5Arr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YZNrI6h6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h13si1514158vsk.133.2021.08.26.06.55.59
+        by mx.google.com with ESMTPS id 26si3107229ejk.661.2021.08.26.07.08.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Aug 2021 06:55:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Aug 2021 07:08:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xiAM5Arr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39178 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YZNrI6h6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJFrK-0007tP-Nn
-	for alex.bennee@linaro.org; Thu, 26 Aug 2021 09:55:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60520)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mJG3i-0006XV-FT
+	for alex.bennee@linaro.org; Thu, 26 Aug 2021 10:08:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35104)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mJFqH-0006q9-Su
- for qemu-devel@nongnu.org; Thu, 26 Aug 2021 09:54:53 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:41472)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1mJG3a-0006XH-BV; Thu, 26 Aug 2021 10:08:38 -0400
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131]:36858)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mJFqG-00067K-D4
- for qemu-devel@nongnu.org; Thu, 26 Aug 2021 09:54:53 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id y5so4783952edp.8
- for <qemu-devel@nongnu.org>; Thu, 26 Aug 2021 06:54:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=0ENOqJRI7zx+kAigR/DJ1FDbzxpcvWUU6DwpS4hAwNU=;
- b=xiAM5Arr9AUBdd/15JYZ11KnJC72chXpURdJshjblJ9I5BnLQpDKP/j7/sRN6aY36k
- QUIBHcLP1hdFR8yOuGq29WeIqdIrlWEnU3rr/IwfJN72RjG0pFHp0rdgHnlmrgSrn/Jp
- K5mZUB4VmW/jsKb9gLjht/4ncGAnK0kAT79RdkIVNd6FzruKzCo3HgeOjGbVFWq57CEj
- S1NtLk6buNLcU5R2KOXgRCPoduXuwR5VTkLjtOxzlzJHWAeGB8Mk/gOgodm5LG0dc1GW
- PKW+zor6/PaJV18Ae4FKNhrXWRr4ngns3Bg8nItCi7WpCu4LbKSgIt48gJAWdaPQ5FVm
- mRUg==
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1mJG3Y-00073B-Rg; Thu, 26 Aug 2021 10:08:38 -0400
+Received: by mail-lf1-x131.google.com with SMTP id r9so7166005lfn.3;
+ Thu, 26 Aug 2021 07:08:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=BjKuYdswOqSy3z980LflDXbiUQ4p4k3SDJCZrTQ02YY=;
+ b=YZNrI6h6Ib4nKMbOwwqfDuJXIBC6uOdAbeYMqiluF5+cv6O97A7CpdsC8XsvkLl+Gk
+ ivYs7cYBYfu0QzjW257b4/EcTxPlDida2NF4ffKHKXjahVQYyZfom0SauqJdj2vnj8RZ
+ iGGXXVpk4fgBRjz4YnSvwwPslll99EgzWF/91/oihQmI52KY5Y43UPoJrHBXYfmjOaGi
+ IgHEiG2H5kVn1bBJxCd7SFxRqCmNDn675Y4L8FQGnFLICgg/M8W2XY1jqMtN5g0mv+yF
+ CuM80MlJS1TlnpBqhAp6VgpFeoQ74RH8vV5HMYWvtjMNTMm4z6y0U0LuqyL4jhDrTjPm
+ 6/xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=0ENOqJRI7zx+kAigR/DJ1FDbzxpcvWUU6DwpS4hAwNU=;
- b=PXGf2iWkCITWxs+LctacM+B7ajZ4ztJnK/J5MgGe6bIZqIdVHCpKWEb+rswh0zk2I7
- IxVqSlZvRB+TK60xrjGMsiDIbPKcz1tvwlSjIJeigt3lSBgotVrCRlZKJfq2cukVZg31
- YnNccQWW02zfqzh2l7K8ssrTGLFLwjE8G076Eiuf299c4BcKV5hUHuYGYtM8ZSdeN2WY
- Q3ZIzclzzpTR3OcFti+Cl6MhQcFXzmOhlrUpXlBMcbWIyFhNwvduntjDM4FarTfUAmAf
- pY0aUv6EKPW0RP3JyfOCgmnjndOHdi8jIDl7HAw5Mf1Vr7X6PTyBJanJGXB7mhFSoyml
- 90Wg==
-X-Gm-Message-State: AOAM531vmWsgJOhniUGfiMWRLPeJbwjbRpWT2WJsegpsbBAV73d0kDCM
- SQ1xht87IL/xmRMs8G+588OUTfjOSfKNTvbwP/ga3A==
-X-Received: by 2002:aa7:dd48:: with SMTP id o8mr4334298edw.44.1629986090905;
- Thu, 26 Aug 2021 06:54:50 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=BjKuYdswOqSy3z980LflDXbiUQ4p4k3SDJCZrTQ02YY=;
+ b=s5bx+tUnsmww76Vz+v3uRNGEvwvCCszqB0NB7vtaG2ZKMxEH7rLIl65AgjYGRsjcwh
+ p5+zjNpwS2VwwAUr5TdHEQ6RV9xrZxs5z97Bf3juq3Vs/H5P1sVqWRA0VVvB0LqHiszf
+ JiETHWLKekB4OCrdjFJr6VSIBUldpS5CIUJCe4NtOyT7RImS5qxskSMfuKdJZQtES3cW
+ 67AmDCg169pxJ9KqdLTjVDJW9JFDne4pLtlH102wv1D382UGetGfhiBc8/Gd/AwRWscL
+ 2/PbDxGnp/vb9R/VT/Z2jknAyyyWFel4zYDH7nhuC0hkpNoylcMGxUl84n8In90r0mtP
+ 8xeA==
+X-Gm-Message-State: AOAM532lo7y7cEXJzUTNhWRyWaV5StCGcGzfUOEg7bceuk8e+GrpJWfD
+ txxvDwrdzpEzzsp2xiB3YmI=
+X-Received: by 2002:a19:c197:: with SMTP id r145mr1986192lff.276.1629986913077; 
+ Thu, 26 Aug 2021 07:08:33 -0700 (PDT)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id 131sm354848ljj.52.2021.08.26.07.08.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Aug 2021 07:08:32 -0700 (PDT)
+Date: Thu, 26 Aug 2021 16:08:32 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Tong Ho <tong.ho@xilinx.com>
+Subject: Re: [PATCH v2 0/9] hw/nvram: hw/arm: Introduce Xilinx eFUSE and BBRAM
+Message-ID: <20210826140832.GL3586016@toto>
+References: <20210823174924.201669-1-tong.ho@xilinx.com>
 MIME-Version: 1.0
-References: <20210821195958.41312-1-richard.henderson@linaro.org>
- <20210821195958.41312-9-richard.henderson@linaro.org>
-In-Reply-To: <20210821195958.41312-9-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Aug 2021 14:54:03 +0100
-Message-ID: <CAFEAcA8Vf-mF4xpMkv+Xc6Cc-u1fW5yW1-fHwVSFqZ6EKNdmPA@mail.gmail.com>
-Subject: Re: [PATCH v2 8/8] tests/tcg: Add arm and aarch64 pc alignment tests
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210823174924.201669-1-tong.ho@xilinx.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6dlECs5mkkTN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ alistair@alistair23.me
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qoUx0SjjJ3If
 
-On Sat, 21 Aug 2021 at 21:09, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Mon, Aug 23, 2021 at 10:49:15AM -0700, Tong Ho wrote:
+> This series implements the Xilinx eFUSE and BBRAM devices for
+> the Versal and ZynqMP product families.
+> 
+> Furthermore, both new devices are connected to the xlnx-versal-virt
+> board and the xlnx-zcu102 board.
+> 
+> See changes in docs/system/arm/xlnx-versal-virt.rst for detail.
 
-> +    /*
-> +     * From v8, it is CONSTRAINED UNPREDICTABLE whether BXWritePC aligns
-> +     * the address or not.  If so, we can legitimately fall through.
-> +     */
-> +    return EXIT_SUCCESS;
-> +}
 
-Can we get the test harness to run the test on a cortex-a9 guest CPU
-so we can avoid the UNPREDICTABLE and can always check the signal
-happened ? The test is a bit weak if it doesn't actually test that
-we take an exception...
+Thanks Tong,
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On the entire series:
 
-thanks
--- PMM
+Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Tested-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>

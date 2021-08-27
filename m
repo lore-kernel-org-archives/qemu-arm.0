@@ -1,116 +1,116 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1841285lfb;
-        Fri, 27 Aug 2021 11:41:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwwZdvCEOkyMhh9k+QdGCaiEuqhIVqP1GJiMAH9BxIE6pMtrp6l1S7gs1hDB7yYKtB53hL6
-X-Received: by 2002:a9f:3625:: with SMTP id r34mr3612079uad.6.1630089711471;
-        Fri, 27 Aug 2021 11:41:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630089711; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1995272lfb;
+        Fri, 27 Aug 2021 15:37:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxI4jEV8z2wZIwZ3k5Z7e0AJgEq3mhpMoVsUObwQdcQ/fldreqMZ3NLPuZTJ5HJvbgPJqt/
+X-Received: by 2002:a67:f14d:: with SMTP id t13mr9481145vsm.29.1630103859841;
+        Fri, 27 Aug 2021 15:37:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630103859; cv=none;
         d=google.com; s=arc-20160816;
-        b=FC7GwVmPlicez5+eF+l7D0xCmXueTJgbj1UWzGgsPTo93IjAuWKUJdbgAnglnsp77S
-         gDEvLdGliD7Xfqe34JY39JkYpyfQnQTverVvgYrJXcCxPvYYOSF1jo+eszQbjR4qjBtx
-         oKvf2e5pwUTgHnaDm/2H4kfKK5ZfaEtLeOKU7A485VN5fUQpfWxqduyfsIrR6ojUUbaz
-         NJRufg5oTyeAOG391a+E5wIoiLC7PIVZxQMBxHQhZxS85nU1nOjXYaxAsRq1OZgyKfTd
-         S3MqBnV93N6XMxkcxmPLZDJ8UWqDnWlsJKRwwBTHgVaRfKA+YJwfL0FR+5xwxzDaSW8Y
-         fqpw==
+        b=zac4m4iedEkLP5zTyTiCj8+e7v0Wp8caIFk+tvuTD3aOQ3+y7rJZ02Jj5yAOtr/Yak
+         b5yCSnIQMqj5JZ+ghvw2uA5gTU00M/AO5bL5KIaVZraE5EYncQ+y3mmoHqVnMPFU3Ye0
+         4kz4LMGay0K1ltUQfLPAe0FuPG9QSr/bFcSFTZOWpYwKpW5J1jdbNDFQyvoJU5+AYM8s
+         wFP+bFEWtaF9Zd+VIMZ0gwXZj74LKNFMFxSyJW6Tf/v0GqcHXxTHvtjZOO8UeJPIoE2a
+         Y64PhuVc74hB8GCMmJUTWPWvSeXw2iCOAmsBjpArLse7XSLnOAqqmG+P5mjzkZxzfubz
+         04XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=tUKEmAIVWGAUDdNwaPnLSPyB8egaP+f1AL5oy0771os=;
-        b=wuYR0mW0N8eFW83RYFXLDzfWNbju/aX8iWYzbmd9TRmJT6n7DVBMyuxGh7oerH1e7i
-         vBQ71u3LQ+d7OXXPCKki+6tq/LLfnt3bMxhGqi8824k3HDHNeUZCsHhNdQzaCzaYRY88
-         U7/DgTS2b0rkRJTEvVO29Vly3iGi2fO/Sa5kNHh36LLRN0ZGvwvcWGq1Ox+J98gs/N+Y
-         VGECyRBTX9UoKcC0BmwvaLKD2Qgc49qPK6e07BWnF7NPgeuyq566vEDQncmT/W5+UX9H
-         6OzbY8w7+bzhDV1Hf+DVpwVx6Q42nVYab73Cfh0jwaZkMcFZMmLZrrpie91XYmKqae7m
-         RtyA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=48G+dcTzvJQezWxTggyi6qtUfUfRkYPM7E/x7/W4Kjc=;
+        b=MPvZLT/7B2FoEqXHhPxWVGziMvSu4KWjQDy0XW2la8Q9bFZR12/xcPlMZPeHfkUtuH
+         7AAgucXYnFwp6yPYIHt058/4s+U9mTZ7SG7oEkIRveubsjmQRavsmhxFedrZcnKgWoC4
+         QxnuSD9LutgNt9zIlijqEpLWpbeM/521qTGnQrfGqo2HlJjvsQa44gcBJO32724kACao
+         ZMn6kbpo8GdhmF1+r4y2VUuzdqfRwAoqiD+TWrcd/mMMwHoqgXjhSKbQZuTjCNKU98d8
+         W01Wuc4kUdvtQ1zpZ4ofRLuSeEyM4kba04TDlOWo4yARIvrloJjtJwxt5tCDEFH1ucqP
+         Tp7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BEeiq0r5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@fb.com header.s=facebook header.b=TZpIy358;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v28si972620vsk.218.2021.08.27.11.41.51
+        by mx.google.com with ESMTPS id h14si4379135vsf.261.2021.08.27.15.37.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Aug 2021 11:41:51 -0700 (PDT)
+        Fri, 27 Aug 2021 15:37:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BEeiq0r5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36432 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=TZpIy358;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:39292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJgnW-0007L0-Pe
-	for alex.bennee@linaro.org; Fri, 27 Aug 2021 14:41:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35078)
+	id 1mJkTj-0005Us-49
+	for alex.bennee@linaro.org; Fri, 27 Aug 2021 18:37:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mJgbw-0003dv-1K; Fri, 27 Aug 2021 14:29:53 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:34448)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mJgbu-0005G5-HV; Fri, 27 Aug 2021 14:29:51 -0400
-Received: by mail-wr1-x431.google.com with SMTP id h13so11837627wrp.1;
- Fri, 27 Aug 2021 11:29:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tUKEmAIVWGAUDdNwaPnLSPyB8egaP+f1AL5oy0771os=;
- b=BEeiq0r5BSFbdOKHZDuefAOF1xfjsWQU6kGPgz5XXmQCyxGx/YXfJtieBF9oXwTG3Z
- 17MuaWpYSeMgZIyXPob4d74NwVvM4oniS76KyHPvh9YwHGrs+NvJw6vqwX6VqKZdVbyZ
- XC2F6HcV1bdcOWe2ht59kBM89H/5AFFqWeNZocicKwfxBWFWhVpzPLVIwxnMd8V807Uq
- bJ5PdG9DGRvibbPdcMAMU4PSN5ftyDFWKXd4J0m6HgIfYyuR3NDpXD0ma+h8aY19SMWu
- lLLXnh6YiYytkgrZqUGOKOCJPmL/kaHbeP5cNLG/akDHE0sXzYVVJVUvI85NeLyQH97Q
- GqMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=tUKEmAIVWGAUDdNwaPnLSPyB8egaP+f1AL5oy0771os=;
- b=tyoc3h7dffPyWegUxdt/seXFZnjW5vxa0NgeIv4l+MRkEQJ4uI9WRNi8hl3UunTXQ+
- QOVatkauk9ofeBd8ElZ5jZ/iDeFq+i1NHyNO5jwKzOTNlhAKTQ2B+YCEQeW0K1bh6li/
- MknzYOnx/NWPlFnzYgbrzziV/z8EnVYs/4/rWFY5PSzTzvVr9CU8ccQZDVUxAVxD1x53
- wATgLzfT/fDibRlRTgV5Qz1lH54DTjG4yr7kKiWOgl8zzNm8szybSpGj7E2LpVN0RSG2
- vZrQDU3z/eaA5o7EAnKNXprMjgozCRc778brixf1l7c4PQDTQeDp7B/oli77uCsDHNZI
- ahWw==
-X-Gm-Message-State: AOAM5309/aFHTPnC79a4/XeaHchKROGNs1LJHa6JYsvUnFpK/6Qrzpz9
- AfDJ/kjl6dmHzrXFOsoyUx7dpaC/npI=
-X-Received: by 2002:adf:9e4d:: with SMTP id v13mr69286wre.26.1630088988950;
- Fri, 27 Aug 2021 11:29:48 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id d124sm6044061wmd.2.2021.08.27.11.29.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Aug 2021 11:29:48 -0700 (PDT)
-Subject: Re: [PATCH v2 0/2] hw/arm/raspi: Remove deprecated raspi2/raspi3
- aliases
-To: Willian Rampazzo <wrampazz@redhat.com>
-References: <20210708145514.1751773-1-f4bug@amsat.org>
- <CAFEAcA_ukc+t_BYddOSv7EF6O1qoVHGGj6sA5uumUgt0VMS_pA@mail.gmail.com>
- <CAFEAcA8PLvMUEzyu=sN4bn4mU30w1aajU+T+i__5jnB0QMZnqg@mail.gmail.com>
- <7cbaaf94-e255-a91b-8d71-ca720943bfcc@amsat.org>
- <CAKJDGDbxBYQ5O3Cim5evkNfFcLZ_FwFEe7GhQgE=WWHS7jODOg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <88820040-ca86-1442-5dd3-68ecbf878c87@amsat.org>
-Date: Fri, 27 Aug 2021 20:29:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <prvs=78736a82b9=pdel@fb.com>)
+ id 1mJj3R-0006WJ-Co
+ for qemu-arm@nongnu.org; Fri, 27 Aug 2021 17:06:26 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:35416
+ helo=mx0a-00082601.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=78736a82b9=pdel@fb.com>)
+ id 1mJj3O-00038O-Cu
+ for qemu-arm@nongnu.org; Fri, 27 Aug 2021 17:06:25 -0400
+Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
+ by m0001303.ppops.net (8.16.0.43/8.16.0.43) with SMTP id 17RL2vgm023210
+ for <qemu-arm@nongnu.org>; Fri, 27 Aug 2021 14:06:12 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : cc : subject
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=facebook; bh=48G+dcTzvJQezWxTggyi6qtUfUfRkYPM7E/x7/W4Kjc=;
+ b=TZpIy358Vroq/P54TChMGSV6GaZ7qT8VTZQkwQTTFT7hgvNSBotu6r9E/8PMYD/YX/cL
+ ARJ3cIhY/y6lsDJdHejuyQ0uVqcoZRiwgIID/Mlq6B4gUZJ8NRmsB2viRue3X+ZLBUP3
+ Nzszvj9Pr43LtCvyWvTTP+fEuDQbrxaDM2k= 
+Received: from mail.thefacebook.com ([163.114.132.120])
+ by m0001303.ppops.net with ESMTP id 3apmvtphuf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 27 Aug 2021 14:06:12 -0700
+Received: from intmgw001.27.prn2.facebook.com (2620:10d:c085:108::4) by
+ mail.thefacebook.com (2620:10d:c085:21d::6) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Fri, 27 Aug 2021 14:06:11 -0700
+Received: by devvm660.prn0.facebook.com (Postfix, from userid 385188)
+ id 0AC51E74BFD; Fri, 27 Aug 2021 14:06:07 -0700 (PDT)
+From: <pdel@fb.com>
+To: 
+CC: <clg@kaod.org>, <joel@jms.id.au>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, Peter Delevoryas <pdel@fb.com>
+Subject: [PATCH 0/5] hw/arm/aspeed: Add fuji machine type
+Date: Fri, 27 Aug 2021 14:04:12 -0700
+Message-ID: <20210827210417.4022054-1-pdel@fb.com>
+X-Mailer: git-send-email 2.30.2
+X-FB-Internal: Safe
+Content-Type: text/plain
+X-FB-Source: Intern
+X-Proofpoint-ORIG-GUID: yiuQqBVibpo8VhnjkY16MFHJSDLyTzW1
+X-Proofpoint-GUID: yiuQqBVibpo8VhnjkY16MFHJSDLyTzW1
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-In-Reply-To: <CAKJDGDbxBYQ5O3Cim5evkNfFcLZ_FwFEe7GhQgE=WWHS7jODOg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.437,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
+ definitions=2021-08-27_06:2021-08-27,
+ 2021-08-27 signatures=0
+X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
+ adultscore=0 phishscore=0
+ clxscore=1011 mlxlogscore=999 malwarescore=0 spamscore=0 bulkscore=0
+ impostorscore=0 lowpriorityscore=0 mlxscore=0 priorityscore=1501
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2107140000 definitions=main-2108270124
+X-FB-Internal: deliver
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=78736a82b9=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.743,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 27 Aug 2021 18:37:28 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,47 +122,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 11VXD07RGPsK
+X-TUID: tWFA+irfNcKT
 
-On 8/27/21 8:01 PM, Willian Rampazzo wrote:
-> Hi, Phil,
-> 
-> On Thu, Aug 26, 2021 at 1:49 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> Hi Peter,
->>
->> On 7/9/21 6:00 PM, Peter Maydell wrote:
->>> On Fri, 9 Jul 2021 at 16:33, Peter Maydell <peter.maydell@linaro.org> wrote:
->>>>
->>>> On Thu, 8 Jul 2021 at 15:55, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>>>
->>>>> Since v1:
->>>>> - renamed tests (Peter)
->>>>>
->>>>> Philippe Mathieu-Daudé (2):
->>>>>   tests: Remove uses of deprecated raspi2/raspi3 machine names
->>>>>   hw/arm/raspi: Remove deprecated raspi2/raspi3 aliases
->>>>
->>>>
->>>>
->>>> Applied to target-arm.next, thanks.
->>>
->>> I found that this seems to break 'make check':
->>>
->>>  (09/52) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_initrd:
->>> ERROR: Could not perform graceful shutdown (40.38 s)
->>
->> I can not reproduce. Maybe something got changed in Python/Avocado
->> since... I'm going to simply respin (updating 6.1 -> 6.2).
-> 
-> I also could not reproduce. I checked and nothing changed on the
-> Avocado side. The version is still the same on the QEMU side.
+From: Peter Delevoryas <pdel@fb.com>
 
-Thanks for double-checking!
+Hello!
+
+This patch series creates an Aspeed machine type for Facebook's OpenBMC
+platform "fuji".
+
+The first 2 commits do some refactoring, to allow Aspeed machines to
+configure the first serial device. Most board configurations use UART5
+for the console, but fuji uses UART1. Neither of these should change the
+behavior for any machine types.
+
+The third commit adds the fuji machine type definition, utilizing the
+"serial_dev" option from the previous two commits to configure the
+console device as UART1 instead of UART5.
+
+After the third commit, you can test booting a fuji image as follows:
+
+    # Build a fuji image from Facebook's OpenBMC repository.
+    git clone https://github.com/facebook/openbmc
+    cd openbmc
+    ./sync_yocto.sh
+    source openbmc-init-build-env fuji build-fuji
+    bitbake fuji-image
+
+    dd if=3D/dev/zero of=3D/tmp/fuji-image.mtd bs=3D1M count=3D128
+    dd if=3D./tmp/deploy/images/fuji/flash-fuji of=3D/tmp/fuji-image.mtd \
+        bs=3D1k conv=3Dnotrunc
+
+    git clone https://github.com/peterdelevoryas/qemu
+    cd qemu
+    ./configure --target-list=3Darm-softmmu
+    make -j $(nproc)
+=20=20=20=20
+    # Attempt to boot the fuji image: you should not see any console
+    # output.
+    ./build/arm-softmmu/qemu-system-arm -machine fuji \
+        -drive file=3D/tmp/fuji-image.mtd,format=3Draw,if=3Dmtd -serial std=
+io
+
+You shouldn't see any serial console output, because U-Boot hangs in
+clock rate initialization due to a divide-by-zero. The last 2 commits
+fixup the clock registers to avoid the divide-by-zero, and fuji boots
+successfully after that.
+
+I organized the patch series with the clock rate fixes last because it
+was more natural to test the behavior before and after the fix, but I
+can understand if you'd like those patches to come first, or to even be
+added completely independently from the fuji patch series.
+
+This is my first contribution to QEMU, and I tried to follow the
+wiki/etc as best as possible, but I'm sure I probably made some
+mistakes, so let me know how best to submit this.
+
+Peter Delevoryas (5):
+  hw/arm/aspeed: Add get_irq to AspeedSoCClass
+  hw/arm/aspeed: Select console UART from machine
+  hw/arm/aspeed: Add fuji machine type
+  hw/arm/aspeed: Fix AST2600_CLK_SEL3 address
+  hw/arm/aspeed: Initialize AST2600 clock selection registers
+
+ hw/arm/aspeed.c             | 20 ++++++++++++++++++++
+ hw/arm/aspeed_ast2600.c     |  6 +-----
+ hw/arm/aspeed_soc.c         |  6 +-----
+ hw/misc/aspeed_scu.c        | 15 +++++++++++++--
+ include/hw/arm/aspeed.h     |  1 +
+ include/hw/arm/aspeed_soc.h |  1 +
+ 6 files changed, 37 insertions(+), 12 deletions(-)
+
+--=20
+2.30.2
+

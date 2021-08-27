@@ -1,223 +1,127 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp627511lfb;
-        Thu, 26 Aug 2021 06:46:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJycXdGsO/OLv7nttFFYCnkJndcblTdYgTokwb91ruVgKuxEDBLzAErFwxcvzLyf3o/twf1i
-X-Received: by 2002:aa7:d3c7:: with SMTP id o7mr4258483edr.288.1629985581469;
-        Thu, 26 Aug 2021 06:46:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1629985581; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1654851lfb;
+        Fri, 27 Aug 2021 07:49:51 -0700 (PDT)
+X-Received: by 2002:a17:90a:db42:: with SMTP id u2mr11245583pjx.39.1630075791694;
+        Fri, 27 Aug 2021 07:49:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630075791; cv=none;
         d=google.com; s=arc-20160816;
-        b=DrmDVuM/daYI9UG4IwZOt/eCleQFpkE7zePSsOMFSKDOlrZKTuiP+lr5TMMXuLpUHL
-         XgYE6W9wn0g9E6rpYsDPP28s77ACsSChwulXfLXbTM3TkIQ0mZv1I7vEJ5OcSug25XEj
-         TCK9BLkj9PRl6tcMsG0GNqjEqqHeYC+Ed7dJdVLhp15efb6Z2EZkpfhCxE3n6NfQK7Ge
-         RsfgvmQvPitsB3yMPI4auziAAS9yxFORnYI7I8qnoL1P/KfRrCLrzRDE6ITE69mPk0K2
-         TAH/EQ6CNryULcqHgXP91BMXyrw/wi4uyoxI99YIU+sh4RM7KD2UWzvjtQbrSAzWaU8S
-         4DVg==
+        b=EUAJ6CkDrSLc2PHqd1IspwaudlIUhtTcjTPOQOV9Gn7Kp1ACDubWZT9oj26N6Bx9Vk
+         Q5A1Rb9Fjp7NxeKangc66mF7kJxxTYAMf44DlKD1EZ3ngcJRmClp7m6zdx5HRK6v5ciX
+         3eQUou/s4NQ4D7leNg9Od7BYNKmtCsyuyjciUZ9P/GEX5khEhR/+SrkTy0BNmqBfR2h5
+         YTV2CdtOJlswdTVjSUZleSJn6Xvp63G58XJxMoNxGsKyOLCfbWcTklu6dqHL3wF1DR+8
+         0f0pBGMZg6hfQcFqDbVxPlQ0/KTs5U/pF0bfIFM3yUHonYmA7cB1i/JlhNhXuS14b4D6
+         8S2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=KEC4E4LNCJ54uW1RSX/0c6cbVF12aAFz5VvWL801FqI=;
-        b=MqoQEmySq8Tp/9W5cctv/AcWZnrsmh+zIOsLwpVEbV6xcHEzXKH5mn6xuPGOLD6TrB
-         63bpzSqq4h6TL6mdmOk7dLFnaczYTjhni2pqHS5G2g5ui7Emhz0KnPNFhwgrYc9xRvcl
-         2D7bne+SWXMgL/9Bfy6ZdWsw0lqdG5V6bagWfRisMWnPBOCPplQQaJln+z6byUcoNc/B
-         zUaviMgJC+MXobDz+Vm5rC8QsSImme17CQYmuZU1fQRtlLKBBOKxTC+F70bShyp5dj6Z
-         gxzPwWCO/SDbX3N6P62bo+Fv/g4EltPi+2+1/mmCYRd1mbkO3J64+w00UXe2zwj+B1GO
-         p1Hw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=24N70ZjeXbgKAd1zuT2PuFCWvpgHs1+vlOADzxre9+U=;
+        b=TSSScp/D52VfknQKBUkGrdm8IsVRTc7rjx88TClcvOUS/Xe+ngtqlKypSGHaPrFdfm
+         p/j80Jq9J/eHKh50xUA8H8H0PZwHdfYMLCsc1cdsH2LeDz7atDhj5yNF5DTjHlZGZqUu
+         pGctzm3S6HSTZ6mS+IVVYjvsB66fe1dBc0Difr82bfvjY1ca0GQoVA7wUj0Mvr8S66nL
+         G27cnPA9DYcAi3CGytoxD5JNRbaGwMFCN5nQkLHpmgkT5cjzzu8l9Ah3PkkS9pCjMU53
+         PkZlql3NczgsOh/BqYQwqkhwOebyG8q/za8e8LNgTLRYrOuz5ajLGesgFXzMDxjIKPug
+         CXxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E+Shgu9X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12si3433210eja.706.2021.08.26.06.46.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Aug 2021 06:46:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TafBRGC5;
+       spf=pass (google.com: domain of changbin.du@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=changbin.du@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <changbin.du@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id rm11sor3775218pjb.23.2021.08.27.07.49.51
+        (Google Transport Security);
+        Fri, 27 Aug 2021 07:49:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of changbin.du@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E+Shgu9X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41880 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJFi0-0007dR-Fp
-	for alex.bennee@linaro.org; Thu, 26 Aug 2021 09:46:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58226)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mJFhh-0007YN-Em
- for qemu-arm@nongnu.org; Thu, 26 Aug 2021 09:46:01 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:35701)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mJFhf-0008CL-Ko
- for qemu-arm@nongnu.org; Thu, 26 Aug 2021 09:46:00 -0400
-Received: by mail-ej1-x631.google.com with SMTP id i21so6447565ejd.2
- for <qemu-arm@nongnu.org>; Thu, 26 Aug 2021 06:45:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KEC4E4LNCJ54uW1RSX/0c6cbVF12aAFz5VvWL801FqI=;
- b=E+Shgu9X2kC+w/0ls4I3pcxUX0QeXgCFwnPb1Cn/tAY4wvwnToGrme2fQ3c+INcOwP
- PWC9Mw1UJBY6ZzKEEDnGMEtbDb2bwDSfgrrEesmtvhFAVmYq6n8dVdvm41cdLW3G5KHj
- RdWBYAJlQO2oR8EqodjZMUBqlavKBP0tFMfJWcKrbUPdSEdJcS9CwtYnNIOuoddFyul+
- X64m6vtwp53O7/SAoKBSFkM0QuqifBJgv1ueg0koSKzbicP89xHxRQLtOuJPo2PzRwFR
- V2UDwklx7ifujO0A4obNwgAvRU0VfPcFAeXsj5wNHkl07zBi9Z01Drz+4r+N7gTCB7Q0
- 4Mrg==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TafBRGC5;
+       spf=pass (google.com: domain of changbin.du@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=changbin.du@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=24N70ZjeXbgKAd1zuT2PuFCWvpgHs1+vlOADzxre9+U=;
+        b=TafBRGC5NI/z6jWDRRSgCsBEPBCfDQ4UXDkUypkF6ceEHWx3Cw/wowc3PB7nFz8rmW
+         rZKjOOl8BFKPz6dXbPOs8t+B3FF4u9DEuavuThTDxMPMwzdsqFKFHA9UP8DT2c/C56Wv
+         GDV1nlMZ7ldi0wmjnR0wbbZvwny6/aMPiSIZiHc7sclSQBNbJoax+RPtmaOqsgR/gel9
+         SZ7S0iKYm0DNZR8tfOlnleCB2jKPpfsRsycszMtnWF5/j+97aRww3GKx5ypEWjjjfKIW
+         TOrkcQov2wZCOfQCqRtk1oSFJ0DZ2JZ9s4wKCo251PIp1rLRqLWgMdFPpAH74ME6k1nx
+         EzuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KEC4E4LNCJ54uW1RSX/0c6cbVF12aAFz5VvWL801FqI=;
- b=eTSBk1a+DC6LmXWQ6RyVqHMv5j9FaT0U6b1IStwqVz2ViqxmOc+bKalsX84pXo9btD
- vMXz+5cbG/NAJ+qiyVc9S31Vc9Rns7+h7Grx7GZ6an9CZrVPKxa3a5/hHPAfJKTWeN+G
- cCPLD6473FLHFX2ti8uHjUESb8N66IyR2m3NKo0+WjiMiOKxVgP+n9W8wk1gHfRQVOB3
- o7f650vmmMIusiIZrDSF7hkRfVpg6DVcqun/QNSYJ9obhb7vWabHn9DhkE2ma6HiS2Se
- iUbG9GpoB3gci41fv8f3D/jWQ0YBhRtbSeoE3C5rjpPst0GT3gIQVE5r5prXrHFNKP+l
- 5f/g==
-X-Gm-Message-State: AOAM533E7KhV5NElECEMAJSZ5RWHLWrHamrq3MO5mk5D5uUAWjpfye1F
- tQdkd07KfR6Ic6lQulQLHBTuCFTgsLbtQYaC/9Ot+A==
-X-Received: by 2002:a17:907:923:: with SMTP id
- au3mr2192295ejc.482.1629985557446; 
- Thu, 26 Aug 2021 06:45:57 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=24N70ZjeXbgKAd1zuT2PuFCWvpgHs1+vlOADzxre9+U=;
+        b=gox+phNrJj+zKfvCSFKCTOxVdGmSUpNg+WDyNzE5mue7s3wSE4FvKqEb2WbYWX88VC
+         i1JR1o3AuS8dB/mYipkkgxc1iUVkYocVLDKBiz/AoqpEiGiOYIH7K2eifeWw6EhgOL+Y
+         Idl8q7mM3AmCT0XKqb7uJh8BJ2zijkZtJDv8/RssOtr+Gal2t9KHCgrnfEN3YbkXTHDi
+         vynFCUzQlIagTsJuQ6fWFLgaLsPt2WR+q6obye7KHpv1pkRoHtQDa/Gigs7OfnK4m7Sm
+         /vZ/G12O5UnsesEGXlAqMOugCCLHuQYA/BuWSthy6SBZYE4f7g71PWkvzwJKoiA+g+dP
+         NOJg==
+X-Gm-Message-State: AOAM530+uZT/iAnZoFJwkEYd1YDh7C9COWvHVMsfg6EOriqiTDGIIkl7
+	pP6irRWvCiJ2Hh73lAagolfESZC1gRbLWch5
+X-Google-Smtp-Source: ABdhPJzyS2gveH4W+88AdNbbDi9Pi5ymyA9oh0Wq1VsS+GBL6f8tS5WWWoR5tlQC7LZMkoWEUSHC8A==
+X-Received: by 2002:a17:90a:a087:: with SMTP id r7mr23577863pjp.84.1630075790976;
+        Fri, 27 Aug 2021 07:49:50 -0700 (PDT)
+Return-Path: <changbin.du@gmail.com>
+Received: from mail.google.com ([141.164.41.4])
+        by smtp.gmail.com with ESMTPSA id c133sm6780054pfb.39.2021.08.27.07.49.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Aug 2021 07:49:50 -0700 (PDT)
+Date: Fri, 27 Aug 2021 22:49:38 +0800
+From: Changbin Du <changbin.du@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Changbin Du <changbin.du@gmail.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"open list:RISC-V" <qemu-riscv@nongnu.org>
+Subject: Re: [PATCH 0/3] gdbstub: add support for switchable endianness
+Message-ID: <20210827144938.72astzvxxy3igpn4@mail.google.com>
+References: <20210823142004.17935-1-changbin.du@gmail.com>
+ <7523c6ad-52cd-0b20-b09d-01bd537edbb3@redhat.com>
+ <CAFEAcA8WKdZiuzjXgwj_9T7ewDbkLky+_NKaXw6WQ95V8x=0Tw@mail.gmail.com>
+ <20210823230535.js3gymomh2chmznc@mail.google.com>
+ <CAFEAcA8DR4UuZi-QAqMr82tL+S3Y8bEQn7q0W7iCjQCsFRis1Q@mail.gmail.com>
 MIME-Version: 1.0
-References: <20210821195958.41312-1-richard.henderson@linaro.org>
- <20210821195958.41312-6-richard.henderson@linaro.org>
-In-Reply-To: <20210821195958.41312-6-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Aug 2021 14:45:10 +0100
-Message-ID: <CAFEAcA9Eg1gPuNR1DKPB8Yk1VJ=xADTEDim=jrwFN6mhVdV=Nw@mail.gmail.com>
-Subject: Re: [PATCH v2 5/8] target/arm: Take an exception if PC is misaligned
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bYg/wZG1W2yi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8DR4UuZi-QAqMr82tL+S3Y8bEQn7q0W7iCjQCsFRis1Q@mail.gmail.com>
+X-TUID: WgVsfdyBIdJ1
 
-On Sat, 21 Aug 2021 at 21:00, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Tue, Aug 24, 2021 at 10:11:14AM +0100, Peter Maydell wrote:
+> On Tue, 24 Aug 2021 at 00:05, Changbin Du <changbin.du@gmail.com> wrote:
+> >
+> > On Mon, Aug 23, 2021 at 04:30:05PM +0100, Peter Maydell wrote:
+> > > changes to be more capable of handling dynamic target changes
+> > > (this would also help with eg debugging across 32<->64 bit switches);
+> > > as I understand it that gdb work would be pretty significant,
+> > > and at least for aarch64 pretty much nobody cares about
+> > > big-endian, so nobody's got round to doing it yet.
+> > >
+> > Mostly we do not care dynamic target changes because nearly all OS will setup
+> > endianness mode by its first instruction. And dynamic changes for gdb is hard
+> > since the byte order of debugging info in elf is fixed. And currently the GDB
+> > remote protocol does not support querying endianness info from remote.
+> >
+> > So usually we needn't change byte order during a debug session, but we just want
+> > the qemu gdbstub can send data in and handle data it received in right byte order.
+> > This patch does this work with the help of users via the option 'endianness='.
+> 
+> I'm not a huge fan of putting in workarounds that deal with the
+> problem for specific cases and require users to tweak options settings,
+> rather than solving the problem in a more general way that would
+> let it all Just Work for all cases.
 >
-> For A64, any input to an indirect branch can cause this.
->
-> For A32, many indirect branch paths force the branch to be aligned,
-> but BXWritePC does not.  This includes the BX instruction but also
-> other interworking changes to PC.  Prior to v8, this case is UNDEFINED.
-> With v8, this is CONSTRAINED UNPREDICTABLE and may either raise an
-> exception or force align the PC.
->
-> We choose to raise an exception because we have the infrastructure,
-> it makes the generated code for gen_bx simpler, and it has the
-> possibility of catching more guest bugs.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper.h        |  1 +
->  target/arm/syndrome.h      |  5 +++++
->  target/arm/tlb_helper.c    | 24 +++++++++++++++++++++++
->  target/arm/translate-a64.c | 21 ++++++++++++++++++--
->  target/arm/translate.c     | 39 +++++++++++++++++++++++++++++++-------
->  5 files changed, 81 insertions(+), 9 deletions(-)
->
-> diff --git a/target/arm/helper.h b/target/arm/helper.h
-> index 248569b0cd..d629ee6859 100644
-> --- a/target/arm/helper.h
-> +++ b/target/arm/helper.h
-> @@ -47,6 +47,7 @@ DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
->  DEF_HELPER_2(exception_internal, void, env, i32)
->  DEF_HELPER_4(exception_with_syndrome, void, env, i32, i32, i32)
->  DEF_HELPER_2(exception_bkpt_insn, void, env, i32)
-> +DEF_HELPER_2(exception_pc_alignment, noreturn, env, tl)
->  DEF_HELPER_1(setend, void, env)
->  DEF_HELPER_2(wfi, void, env, i32)
->  DEF_HELPER_1(wfe, void, env)
-> diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-> index 54d135897b..e9d97fac6e 100644
-> --- a/target/arm/syndrome.h
-> +++ b/target/arm/syndrome.h
-> @@ -275,4 +275,9 @@ static inline uint32_t syn_illegalstate(void)
->      return (EC_ILLEGALSTATE << ARM_EL_EC_SHIFT) | ARM_EL_IL;
->  }
->
-> +static inline uint32_t syn_pcalignment(void)
-> +{
-> +    return (EC_PCALIGNMENT << ARM_EL_EC_SHIFT) | ARM_EL_IL;
-> +}
-> +
->  #endif /* TARGET_ARM_SYNDROME_H */
-> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-> index 3107f9823e..25c422976e 100644
-> --- a/target/arm/tlb_helper.c
-> +++ b/target/arm/tlb_helper.c
-> @@ -9,6 +9,7 @@
->  #include "cpu.h"
->  #include "internals.h"
->  #include "exec/exec-all.h"
-> +#include "exec/helper-proto.h"
->
->  static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
->                                              unsigned int target_el,
-> @@ -123,6 +124,29 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
->      arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
->  }
->
-> +void helper_exception_pc_alignment(CPUARMState *env, target_ulong pc)
-> +{
-> +    int target_el = exception_target_el(env);
-> +
-> +    if (target_el == 2 || arm_el_is_aa64(env, target_el)) {
-> +        /*
-> +         * To aarch64 and aarch32 el2, pc alignment has a
-> +         * special exception class.
-> +         */
-> +        env->exception.vaddress = pc;
-> +        env->exception.fsr = 0;
-> +        raise_exception(env, EXCP_PREFETCH_ABORT, syn_pcalignment(), target_el);
-> +    } else {
-> +        /*
-> +         * To aarch32 el1, pc alignment is like data alignment
-> +         * except with a prefetch abort.
-> +         */
-> +        ARMMMUFaultInfo fi = { .type = ARMFault_Alignment };
-> +        arm_deliver_fault(env_archcpu(env), pc, MMU_INST_FETCH,
-> +                          cpu_mmu_index(env, true), &fi);
+Probably we can add a new callback 'gdb_get_endianness' for CPUClass, and use
+this callback to determine if bswap is needed every time we read/write cpu
+registers. What's your thought?
 
-I don't think you should need to special case AArch64 vs AArch32 like this;
-you can do
-   env->exception.vaddress = pc;
-   env->exception.fsr = the_fsr;
-   raise_exception(env, EXCP_PREFETCH_ABORT, syn_pcalignment(), target_el);
+> -- PMM
 
-for both. AArch64/AArch32-Hyp exception entry will ignore exception.fsr,
-and AArch32-not-Hyp entry will ignore exception.syndrome.
-
-We could probably do with factoring out the
-"if (something) { fsr = arm_fi_to_lfsc(&fi) }  else { fsr =
-arm_fi_to_sfsc(&fi); }"
-logic which we currently duplicate in arm_deliver_fault() and
-do_ats_write() and arm_debug_exception_fsr() and also want here.
-(NB I haven't checked these really are doing exactly the same
-condition check...)
-
-
--- PMM
+-- 
+Cheers,
+Changbin Du

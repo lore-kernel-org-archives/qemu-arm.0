@@ -1,106 +1,126 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1273198lfb;
-        Thu, 26 Aug 2021 23:08:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTLnlzU1XKkh/Zgfxlr9jJYhiyNraOEPZQlalzA/j9+XU7s6wPP0PCNeqplUG3n8A63DP9
-X-Received: by 2002:a92:d4d1:: with SMTP id o17mr5177396ilm.43.1630044533702;
-        Thu, 26 Aug 2021 23:08:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630044533; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1295440lfb;
+        Thu, 26 Aug 2021 23:46:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwCymJ8kmEQuhyh3xeVYZui+S0MSsp13LM9feG3gkQsNIAAG5pZh76QcYamgNwVVbDQtm0p
+X-Received: by 2002:a5d:9304:: with SMTP id l4mr6335125ion.167.1630046801717;
+        Thu, 26 Aug 2021 23:46:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630046801; cv=none;
         d=google.com; s=arc-20160816;
-        b=RzsOu9L94gu354ASVK7eigYsI9lqn7fWPgpWpr8SkGI42J4fBEljsHyHReABbwTVle
-         WNTYAYNZRIcxEmZLNE4iGxql1soiGfEGvK5D420EAmQjnA+AnM6CNgPb3Qi8CDLQjV9P
-         jVQoI6iwu6oqh4DkdlUA8ITcitJapASVlrZGBfI+SCd7b2pQvDbi86EH5m4r3VOKyNDU
-         Lg1FtRGrCph4oNbnhpce2LjALrcKZL7Ij3wiHoh+xsS1MwHBgrUhe6PEdUIIKgB/MA1v
-         EOog4nUiGyTI6yHFeAKuV16cfQmJA7VPkwrCJajmR/rv43gZ/8IBuhv0QoDMM15eFzwH
-         +qsg==
+        b=sl/QewRJrYi/7HLxtPnR5tNg+xWUtUZoCiOQFdg2q/NlBBpn6gi6Xp3mwOKv7pZ7Wb
+         0Jc0FP8QcSgyu/nWB8q+It9sozxDNYydbfOdrVkoCr4TOzKWMR+Ki8QLwACvO0tuAdGV
+         24EJEBMOu0PCv6o2VV2I0Iqy2US1CoBM+zstr8OpdAtmuV5JMxXnYx3dbluKJqZnpI4/
+         IDRvAYqTFDg/UsamwwdGKpMFgCpGE/6v6/We+FkBkGIoXT6ay2MJegy6FLQ6fhZ9IYDT
+         HXc1EihKjDpoKfKYmV1ra/mwKXzUcQyKDoGubd6YK5NK2R0PSN2PMfBXsDO/ZPoQmW8b
+         0O1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=WSbYTFwwkvbP0T9ubAhocGN3uSanum6AaagZStt6WoY=;
-        b=e/Sym8+y3dAq8FTi/GOvv8r00I35v7sxuyfVwwdvB1ogFEgtjwfPU8+R/XoTr3S4kX
-         AhJF+t3ygsdnkofoN1FwcslML9SZ4IUBiFzqeuWn0XIWCgztfv2XX1PbsTT/02ouy9U8
-         vNV/dogUU2LUBMWaJ9fqRjYYz+SNLWU9ib5xUzPWdUBXVoE25Zvf9hSqGk0+c5/GpFJy
-         nco7p+f4nYBsDlNXQsprHLC6r1+vcl8eGaLtluGGFBIfmeAWGE+dQtDdPTlMxZ+mLqKC
-         InC673km31zg94Q1hAQ/ZGfgR4kVgdDnFOsIh74DGteN5/8Alu3T2cqjh1RWyE7GxdtR
-         1yaw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=qaiNbsTnDiMoelfOI92WglYxDboJmDaviwsHOxSqXOw=;
+        b=BUY9xfgtFv+TTWUsffAetVhtqIQZ+nGKHQV973F2WijseC+DLlFxrLnNHV4//9X5HG
+         qRKgV9+G5mB1CokFHHB9hjr4Wh+AzOT+AXY3JiCEu/8TYpa8nMXNL1mNd0bJUIcH29MI
+         +h8z3ypg5Ldf4YRH4ghQGmXGkqPHeLFdADd6FczaJmO2KwSo7B+cId+rtg+6aDVIuOdl
+         6CGqXUPY089SeU0zAeLFsgjTHsi36J0m5VQeGXF5o7WjE82tKUIhzqakDSLf1ba5tXg9
+         MDcikgWeaZrQhYTQ8gyIldvcaRju4re/5oV9JrTEi0um7axPsxiye9h/JUJl94TbBc4H
+         BKTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pWZOZsnt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YhUTmuU6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si4794326iot.82.2021.08.26.23.08.53
+        by mx.google.com with ESMTPS id a16si4869488ilq.77.2021.08.26.23.46.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Aug 2021 23:08:53 -0700 (PDT)
+        Thu, 26 Aug 2021 23:46:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pWZOZsnt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32794 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YhUTmuU6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJV2r-0003c5-16
-	for alex.bennee@linaro.org; Fri, 27 Aug 2021 02:08:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41490)
+	id 1mJVdR-0002IZ-0u
+	for alex.bennee@linaro.org; Fri, 27 Aug 2021 02:46:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mJV2V-0002zN-G2; Fri, 27 Aug 2021 02:08:31 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:50917)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mJV2T-00053O-IR; Fri, 27 Aug 2021 02:08:31 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id m2so3161398wmm.0;
- Thu, 26 Aug 2021 23:08:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=WSbYTFwwkvbP0T9ubAhocGN3uSanum6AaagZStt6WoY=;
- b=pWZOZsntMbYJshT56ITtIlsUfPvGanc/zYxVxSJtNXP+KLt1LXZuEW5DvKpM584G6L
- VoYAuknmLxcR+OF7uF+HX+PWCYMg1BnyykeUHk5jMNe2EDa/zQ7T01JU1qbSLYgDoMWg
- UL0geNh2izj4726vrZEkkTU8bTEp/nx3M0Sbhxswu5lIqVkbLXa87t8gZAOyn2QEkR4m
- kLlgjqHSJmsoKLdBsYIxy7cMONOE/UixI2ATCXKQAyAYh60MKNbkgbwrW/Bn3RQcCnib
- 4rLYhzg70EC8BC7V5CnzZQZMjMMnul98WAvXGkquGHKCx8ozCNhzGcM/oxzVSLtZ9bqm
- eCgw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mJVdE-000295-7z
+ for qemu-arm@nongnu.org; Fri, 27 Aug 2021 02:46:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52595)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mJVdA-0003nE-Qw
+ for qemu-arm@nongnu.org; Fri, 27 Aug 2021 02:46:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630046782;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qaiNbsTnDiMoelfOI92WglYxDboJmDaviwsHOxSqXOw=;
+ b=YhUTmuU6Hf5w2gesDL57iRSUZjbbmS2I7L8uwimzfzUACGCIebr11/ACTBRkQwNcL2y8s3
+ m7ZMAxqzeA8mbHK17WJEJAj1kci3lqBh+NA2a+D0KC+3Ltr/C/L9pLIBUb+XErlYbtN6uf
+ EOKYolOYSHPXoexdg1eruVSWe5wFEcw=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-451-7Vv1G3i0PTqDEf9_Rx7ogw-1; Fri, 27 Aug 2021 02:46:21 -0400
+X-MC-Unique: 7Vv1G3i0PTqDEf9_Rx7ogw-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ v2-20020a7bcb420000b02902e6b108fcf1so5439408wmj.8
+ for <qemu-arm@nongnu.org>; Thu, 26 Aug 2021 23:46:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=WSbYTFwwkvbP0T9ubAhocGN3uSanum6AaagZStt6WoY=;
- b=OA87uoUZe9zvhu4HyGFUOx4WFnPueKN5IqVfhukeb5XGa6EiXZJ48NE/X/iSp+bD+1
- VQzoCABgyjxkT6Rydmfipu3ooOeoOAtJddSn/tkef2QZKCw99mV76+8SoSGPel5ufosL
- Z73L6SKQcojFbYbe2SSSthdhxuXvuUs/XNCKnak/OkYUa2cMDHpGoVwkBtE8qaYgOUKD
- 7EPoO+c3JMgwr2yeIva3kydzfqM2KnHfJv7ibByTPBLozQOKCU4NEfnulNM6SK2sLsLI
- BbdnBtIN4C/qEBZjR1jpVV4U6GDT1rn1j/WaASm0T1tq+mQt4y16cEOSxFCRKkiG3Z8O
- 2aGA==
-X-Gm-Message-State: AOAM5302AheqKRj1g3TtKE8He0YeAUpoLD9ItCrtLLFwUbrdX+XkUgwr
- xKjZY63jPHFqXhRwnmL6HmGHK4EwsQQ=
-X-Received: by 2002:a1c:4e16:: with SMTP id g22mr7009875wmh.55.1630044507581; 
- Thu, 26 Aug 2021 23:08:27 -0700 (PDT)
-Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id
- t7sm5749610wrq.90.2021.08.26.23.08.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Aug 2021 23:08:27 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 2/2] hw/arm/raspi: Remove deprecated raspi2/raspi3 aliases
-Date: Fri, 27 Aug 2021 08:08:15 +0200
-Message-Id: <20210827060815.2384760-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210827060815.2384760-1-f4bug@amsat.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=qaiNbsTnDiMoelfOI92WglYxDboJmDaviwsHOxSqXOw=;
+ b=AxMJlwFWsaQ98buZSBSVZCqW5OFM1lgCjOCOJol4hUnGi3m1lyN6sPcAJMHGPh2wma
+ KMCqSxvLqaZRrYbLbqpMI1xnX3qN6ya+f+9tebC/LrZt6dR801GrppgXmZ315x7Iw/CP
+ te8OfQHiuCnqhTWEGakU9ACtIMyTtXb/PH0OYHRFwJCIodNZT5+DpkxMopLytkyPpd8P
+ rcOJRUFu+McF+LtM/J1wNdeNlKgVnRIXVR+iSyOjYdYdcWDezRr3zy4O4+iZgH0QU5cR
+ DiSt2y/w7q6x8HUF9Vk6agy6shgPpz/WcxSjSyyVFzZS8jPkopHUKINtVK9sX0YweSYp
+ lk1Q==
+X-Gm-Message-State: AOAM5315N1WTpqlyMTO0u7ZxPjvAjXpY+Gg068JUChr51fFtF3odF6w/
+ 8nTlr8ik4ZSD2PKrQ9CORvqobSte4OYV/ax07uosDsrWHSCwp9eHeXa3hRR0ooMnzOLW4Hucqs/
+ 2ZSnvKECafGdaiAL0iH1VCoOpHPikoP4icMF8OtGwL/JF+KDziM/y5LNjCyXE
+X-Received: by 2002:a7b:c387:: with SMTP id s7mr17489151wmj.26.1630046780359; 
+ Thu, 26 Aug 2021 23:46:20 -0700 (PDT)
+X-Received: by 2002:a7b:c387:: with SMTP id s7mr17489126wmj.26.1630046780091; 
+ Thu, 26 Aug 2021 23:46:20 -0700 (PDT)
+Received: from thuth.remote.csb
+ (dynamic-046-114-148-182.46.114.pool.telefonica.de. [46.114.148.182])
+ by smtp.gmail.com with ESMTPSA id z19sm11920427wma.0.2021.08.26.23.46.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 26 Aug 2021 23:46:19 -0700 (PDT)
+Subject: Re: [PATCH v3 1/2] tests: Remove uses of deprecated raspi2/raspi3
+ machine names
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
 References: <20210827060815.2384760-1-f4bug@amsat.org>
+ <20210827060815.2384760-2-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <b3ed0ad1-f3b1-0178-7145-dfb1dfed01cb@redhat.com>
+Date: Fri, 27 Aug 2021 08:46:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210827060815.2384760-2-f4bug@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -54
+X-Spam_score: -5.5
+X-Spam_bar: -----
+X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,80 +133,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- libvir-list@redhat.com,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org
+Cc: libvir-list@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GzV5U5+WS8i9
+X-TUID: NlisIdHIs9/o
 
-Remove the raspi2/raspi3 machine aliases,
-deprecated since commit 155e1c82ed0.
+On 27/08/2021 08.08, Philippe Mathieu-Daudé wrote:
+> Commit 155e1c82ed0 deprecated the raspi2/raspi3 machine names.
+> Use the recommended new names: raspi2b and raspi3b.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   docs/devel/qgraph.rst                   | 38 ++++++++++++-------------
+>   tests/qtest/libqos/qgraph.h             |  6 ++--
+>   tests/qtest/libqos/qgraph_internal.h    |  2 +-
+>   tests/qtest/boot-serial-test.c          |  2 +-
+>   tests/qtest/libqos/arm-raspi2-machine.c |  8 +++---
+>   tests/unit/test-qgraph.c                |  2 +-
+>   tests/acceptance/boot_linux_console.py  |  6 ++--
+>   7 files changed, 32 insertions(+), 32 deletions(-)
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- docs/about/deprecated.rst       | 7 -------
- docs/about/removed-features.rst | 7 +++++++
- hw/arm/raspi.c                  | 2 --
- 3 files changed, 7 insertions(+), 9 deletions(-)
-
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 8d4fd384a59..1e1a5e96ad4 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -207,13 +207,6 @@ this CPU is also deprecated.
- System emulator machines
- ------------------------
- 
--Raspberry Pi ``raspi2`` and ``raspi3`` machines (since 5.2)
--'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
--
--The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
--to distinguish which model QEMU is implementing, the ``raspi2`` and ``raspi3``
--machines have been renamed ``raspi2b`` and ``raspi3b``.
--
- Aspeed ``swift-bmc`` machine (since 6.1)
- ''''''''''''''''''''''''''''''''''''''''
- 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index 08f9e625ce6..9d0d90c90d9 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -574,6 +574,13 @@ This machine has been renamed ``fuloong2e``.
- These machine types were very old and likely could not be used for live
- migration from old QEMU versions anymore. Use a newer machine type instead.
- 
-+Raspberry Pi ``raspi2`` and ``raspi3`` machines (removed in 6.2)
-+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
-+to distinguish which model QEMU is implementing, the ``raspi2`` and ``raspi3``
-+machines have been renamed ``raspi2b`` and ``raspi3b``.
-+
- 
- linux-user mode CPUs
- --------------------
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 0ada91c05e9..146d35382bf 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -340,7 +340,6 @@ static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
-     MachineClass *mc = MACHINE_CLASS(oc);
-     RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
- 
--    mc->alias = "raspi2";
-     rmc->board_rev = 0xa21041;
-     raspi_machine_class_common_init(mc, rmc->board_rev);
- };
-@@ -360,7 +359,6 @@ static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
-     MachineClass *mc = MACHINE_CLASS(oc);
-     RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
- 
--    mc->alias = "raspi3";
-     rmc->board_rev = 0xa02082;
-     raspi_machine_class_common_init(mc, rmc->board_rev);
- };
--- 
-2.31.1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

@@ -1,153 +1,186 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1707459lfb;
-        Fri, 27 Aug 2021 08:51:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyq2TSACttL1o8nt5joVYnfGnNaD50QZFMECrBjGj3wFPF1hHyl3CVsBbAyVIFxjuRH2FWT
-X-Received: by 2002:ab0:209a:: with SMTP id r26mr7547685uak.14.1630079482145;
-        Fri, 27 Aug 2021 08:51:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630079482; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1821477lfb;
+        Fri, 27 Aug 2021 11:13:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw22AKiMgfqo03U44N1gdLzvYvng66pRC6CAQpGDTIS/HB05QkPbHkhjhtWY8BcEngpOzRW
+X-Received: by 2002:a05:6102:22d5:: with SMTP id a21mr8365377vsh.32.1630087981718;
+        Fri, 27 Aug 2021 11:13:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630087981; cv=none;
         d=google.com; s=arc-20160816;
-        b=VWHgGjYOUsk+nSse1gFha91X62baRCF/VVIMUV0wLLDim9CgkVnhFapFN+lw7CCOm2
-         XgLHVZ7celMGGXTdm3vXXPLvsFpFYzkcsBAf+AFAzrzbeErbWzPeDiYm1UPKHnDXU+Zi
-         uPrNIadAxXElLI/lGmwOhMfNftOOY6wlgOvq/k1xFMckqxGlIjFVeyHSPS1XutyHqKVO
-         ATyRIttcnx/UgBLWCyJhczM2gFmeTe1hR6R1v6q5pjqFwRSDCLsFBzaSweBFNU3KM99K
-         BlGrYml/kEt05tbjg6cb9fBmWzgP3kEC9i+NVvREgtkgP69J6nnTd0cIB37R2nSiWC2S
-         Y9Mg==
+        b=FTiYB06OW+PJNMmM+6c4ZyCkVG/e3tkSrUCkY1l1KL26zL2DScz85o8bbZ8OrqkwaL
+         MQEtLsb8jdnwWscKhGMqV1VGjJY2ZSFhE5GfQOCXPTFGCoMt0Ia/iKUVBg03dydblMNH
+         UtLWbtGYQcUHLU/OdOEMnDtxq12UHpo6YSCWc6bd2fTPwaN059o4PzKtOnTrI6ka68et
+         NhSFHQUbmoEOg5TmtAnxVwI75/Q95Hwwo343I/LZhvUw3GihQaUAw4B+5VmmEnjDSQU7
+         2CicGBkJPIuSfRmD9ow7plaZdrHEDL3VT+DkmC2Fu65NKAwk87S2v/OzO1fV0oih9B04
+         hGlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=AVXPcUpaM7EsaIiaWnM1MAa8KIKcgFARZPli8KEmoEs=;
-        b=ZephLOla8mCK2BbVZxa40OC0Q/Biwe2PS367S7b8IWWv4yGm5cDcbmrmAjcr1Cc4aj
-         6TiTMJSjCNJG5i/9uZqxxNP1wXZzCs6hnXwd19QXhehqA5d2zmHjZOOVC+N6U4/HZ4BN
-         63+nAX7bZqGNMQuTQo+8/IjubvEav9s2hTB0PymOfpVIxqxFIHaK+7h/v/EjVhxkAMEV
-         AxkLcHQSIZCLTWCexhNfu6Uz1IAus0ehdn3IgB+hL1Rk0/7kNhfstbGlZfgRKzqzmhKN
-         KWs6XVuWbuo1iimkysdS5xyWv/UJyL03r69AuqMLIn2nLKzzCRvEmJH+UO54ww3AI2o5
-         zp7g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=LwdW9jKP/lmhyEP84RKfQLyZ/onmgBAMfwQJ4FpVmvo=;
+        b=XdkpBq+0kpmdf3z1ezSyZRR+Mdslxtfsgw1/y381fFrR3JnN5JNWGhXcIDWZkdU+Ar
+         EABMDzkMH/tO260MxIqmr0Y8sIfUDEgb+mPzVZMPjIL5n3UGljdbLhmCfj144q/5h9nH
+         wFe4PSltP6KpiR6zCxHmyx8ZzgDFzR7GnRHzTT51un+BSXdFBdDRZNYFSewnseHYUo/F
+         /bOAsXuO3zHiHdgrcgUF4kOwVoEYY1MMeWnRufUps4/bcDJ83Wlmkw6YmACtypmiMr9g
+         5rp/MH+DVX+MfnEHTq181vcY1cldDmyOkTVVJJzdWSRxiW855jfsyajmQ9i/3LzwMOUa
+         1amg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IMrG0Dax;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GI78bqH4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3si3136776vsp.278.2021.08.27.08.51.21
+        by mx.google.com with ESMTPS id v18si686205vsi.384.2021.08.27.11.13.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Aug 2021 08:51:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 Aug 2021 11:13:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IMrG0Dax;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44762 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GI78bqH4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41810 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJe8X-0007Bn-Ck
-	for alex.bennee@linaro.org; Fri, 27 Aug 2021 11:51:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36382)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mJgLd-0005CA-22
+	for alex.bennee@linaro.org; Fri, 27 Aug 2021 14:13:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58292)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mJe75-0005Ta-A5
- for qemu-arm@nongnu.org; Fri, 27 Aug 2021 11:49:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50594)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1mJgB6-0002Lz-Sf
+ for qemu-devel@nongnu.org; Fri, 27 Aug 2021 14:02:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52390)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mJe71-0007wq-Qx
- for qemu-arm@nongnu.org; Fri, 27 Aug 2021 11:49:51 -0400
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1mJgB4-0003mi-11
+ for qemu-devel@nongnu.org; Fri, 27 Aug 2021 14:02:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630079387;
+ s=mimecast20190719; t=1630087325;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AVXPcUpaM7EsaIiaWnM1MAa8KIKcgFARZPli8KEmoEs=;
- b=IMrG0Dax45bdOUJLCEzxzvBFYc92wwzZvp8+iMeKsGOKuGGerE4TtRwaI8QogAnPq7t59F
- eb2lo/AsB6dpR41/3AKvcqEIXZMJo9/zBvbNedShRbIUuDnJNLXn4PmWznpvaDy1QWvZMr
- o1mRmz7vblxsIG8zA8DZ8XuHi4vKi4M=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-167-M2IDxM7BPwiIQf30T_ycxg-1; Fri, 27 Aug 2021 11:49:43 -0400
-X-MC-Unique: M2IDxM7BPwiIQf30T_ycxg-1
-Received: by mail-wm1-f69.google.com with SMTP id
- a201-20020a1c7fd2000000b002e748bf0544so6060509wmd.2
- for <qemu-arm@nongnu.org>; Fri, 27 Aug 2021 08:49:43 -0700 (PDT)
+ bh=LwdW9jKP/lmhyEP84RKfQLyZ/onmgBAMfwQJ4FpVmvo=;
+ b=GI78bqH4D6Kqc0T0ak0Sje74wXlVBS0QdZhrFBrSSGihxcfDmCM4XUcdNKP35mYGsgkt1r
+ oOGkTaQsP9ZstxMrNpdO1Tu9r/EZf/hTqmKGiN2ODLmrH+wtK9OI0x7PzCjJF99egHhGCx
+ WL1SFfSnNvtBbihXuyucQw05FLaiv6g=
+Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
+ [209.85.215.200]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-483-S8cjpUgNPHm_GlIS2X7rMQ-1; Fri, 27 Aug 2021 14:02:03 -0400
+X-MC-Unique: S8cjpUgNPHm_GlIS2X7rMQ-1
+Received: by mail-pg1-f200.google.com with SMTP id
+ k11-20020a6568cb0000b029023d00ca7bbcso577203pgt.22
+ for <qemu-devel@nongnu.org>; Fri, 27 Aug 2021 11:02:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=AVXPcUpaM7EsaIiaWnM1MAa8KIKcgFARZPli8KEmoEs=;
- b=HmyyZC6SOZZf5IHe+3U9z4qeOmSJRTYP+rce+GzKoCnR7RO6wO6/8keHvWjt1Pj2q5
- MYgz+f2Ck9vpOqARGwIkjzR/ZDO9AjofrMzJK1q0CzfOfy4aGaJ0blm6Hvcp+7Q3pWTZ
- sOVLx/PfgxFMfnWVmB3WHBv04zz1xkUHut85ycq4QtoJ+PLdHSubOMfV23F1YgmcBsnb
- w85298O1NOXIkxts5Jepznf0WHCLHLWWZpUKRF2w1JVR1CmxVBb0sUKnIIcVj/voQOXP
- QZH3H77P0fFKEwx1Nx62nkznxcQVxCrbrZKq7J1pIjYCw7tXivHmBSPFFILfLxtM9ksN
- 2TZQ==
-X-Gm-Message-State: AOAM532QWVEBZe6lh7F/Jnr7aEiolAcAO0alm8mgtrDXuDEp2T9UmzUW
- WhvpB49vshFdgs9lU5qIk0lxSVWWrsi9TO+AosFtNZ75eMVS+obJEhtuZ+di/FQtSMBvuCU/5ct
- 7crq5E+oOooE6
-X-Received: by 2002:a5d:55cd:: with SMTP id i13mr11079328wrw.366.1630079382585; 
- Fri, 27 Aug 2021 08:49:42 -0700 (PDT)
-X-Received: by 2002:a5d:55cd:: with SMTP id i13mr11079309wrw.366.1630079382362; 
- Fri, 27 Aug 2021 08:49:42 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id o34sm11696364wms.10.2021.08.27.08.49.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Aug 2021 08:49:42 -0700 (PDT)
-Subject: Re: [PATCH 4/3] gitlab-ci: Don't try to use the system libfdt in the
- debian job
-To: Thomas Huth <thuth@redhat.com>, David Gibson
- <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
-References: <20210827151718.178988-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a5703232-ed43-3f15-9b47-bd0d7bbcf704@redhat.com>
-Date: Fri, 27 Aug 2021 17:49:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=LwdW9jKP/lmhyEP84RKfQLyZ/onmgBAMfwQJ4FpVmvo=;
+ b=jx83Q7TBf4l6TmbsCxkcIrjqZxalazwXusPIAMjmiZgmsnyQpeTr0OIZDxMOaYK2UQ
+ 2RbLp9J1SRU8aPipGteLeiMNwbrSWlynTTzxktjkS/JBbpV2kcCe5M+bBwCbKIMDaO7u
+ 7sQ83TsOzqTWq1CoZW7MgRhMu7GvInjnB7Em19gh7lZPinow/4pDhK0sUiv+MgGykkl7
+ xWpsBFcZvtPn0NZQVL1CmNqnxYTdwDi/ElAY2/PcFoVThxSmO0Zv9jgLsYhf5c7Ca54v
+ 2lHZ2lgj8QAKfUQBA2gBgmkRdD4P98s43jGWqWyLEfmeXAILRr5RtGkHQZeS3Tx/q/mk
+ +JDQ==
+X-Gm-Message-State: AOAM530nmZDdjFKbJPkNQdn+ndO9cz4rPcb1fxTTjLKrP/rIhgKzC1LM
+ RcHy7qc6yF5jCPNNn8WD9GVdSh1uHjb5aZfoiV1OAfet2oGI4nmkIfO2/t6SgHBpVvRwTr5ZBcn
+ 1Nzri2ftmZidlSEhpGOfRHPNBlSffusk=
+X-Received: by 2002:a17:90a:2ecb:: with SMTP id
+ h11mr12542632pjs.159.1630087322188; 
+ Fri, 27 Aug 2021 11:02:02 -0700 (PDT)
+X-Received: by 2002:a17:90a:2ecb:: with SMTP id
+ h11mr12542598pjs.159.1630087321872; 
+ Fri, 27 Aug 2021 11:02:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210827151718.178988-1-thuth@redhat.com>
+References: <20210708145514.1751773-1-f4bug@amsat.org>
+ <CAFEAcA_ukc+t_BYddOSv7EF6O1qoVHGGj6sA5uumUgt0VMS_pA@mail.gmail.com>
+ <CAFEAcA8PLvMUEzyu=sN4bn4mU30w1aajU+T+i__5jnB0QMZnqg@mail.gmail.com>
+ <7cbaaf94-e255-a91b-8d71-ca720943bfcc@amsat.org>
+In-Reply-To: <7cbaaf94-e255-a91b-8d71-ca720943bfcc@amsat.org>
+From: Willian Rampazzo <wrampazz@redhat.com>
+Date: Fri, 27 Aug 2021 15:01:35 -0300
+Message-ID: <CAKJDGDbxBYQ5O3Cim5evkNfFcLZ_FwFEe7GhQgE=WWHS7jODOg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] hw/arm/raspi: Remove deprecated raspi2/raspi3
+ aliases
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=wrampazz@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) DKIMWL_WL_HIGH=-0.743, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.437,
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.743,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WFkUPY+uXNnz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jxVVV2iMi8cJ
 
-On 8/27/21 5:17 PM, Thomas Huth wrote:
-> libfdt in Debian is too old to be usable for QEMU. So far we were
-> silently falling back to the internal dtc submodule, but since
-> this is wrong, let's remove the --enable-fdt=system switch here now.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  Sorry, I just noticed this after sending out the first three patches already
-> 
->  .gitlab-ci.d/buildtest.yml | 1 -
->  1 file changed, 1 deletion(-)
+Hi, Phil,
 
-Acked-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+On Thu, Aug 26, 2021 at 1:49 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> Hi Peter,
+>
+> On 7/9/21 6:00 PM, Peter Maydell wrote:
+> > On Fri, 9 Jul 2021 at 16:33, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> >>
+> >> On Thu, 8 Jul 2021 at 15:55, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org> wrote:
+> >>>
+> >>> Since v1:
+> >>> - renamed tests (Peter)
+> >>>
+> >>> Philippe Mathieu-Daud=C3=A9 (2):
+> >>>   tests: Remove uses of deprecated raspi2/raspi3 machine names
+> >>>   hw/arm/raspi: Remove deprecated raspi2/raspi3 aliases
+> >>
+> >>
+> >>
+> >> Applied to target-arm.next, thanks.
+> >
+> > I found that this seems to break 'make check':
+> >
+> >  (09/52) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
+rm_raspi2_initrd:
+> > ERROR: Could not perform graceful shutdown (40.38 s)
+>
+> I can not reproduce. Maybe something got changed in Python/Avocado
+> since... I'm going to simply respin (updating 6.1 -> 6.2).
+
+I also could not reproduce. I checked and nothing changed on the
+Avocado side. The version is still the same on the QEMU side.
+
+>
+> >
+> > Dropped from target-arm.next.
+> >
+> > thanks
+> > -- PMM
+> >
+>
 

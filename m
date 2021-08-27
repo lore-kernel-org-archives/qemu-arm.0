@@ -1,101 +1,104 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1091584lfb;
-        Thu, 26 Aug 2021 17:23:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOQZJTOjX1cOoHM9YRWcptN1EjwpKFKFV2S5/GD1j3rYfReQ581IW8xFx8q2F5KuxWrN+L
-X-Received: by 2002:a6b:fb07:: with SMTP id h7mr5134292iog.201.1630023799343;
-        Thu, 26 Aug 2021 17:23:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630023799; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1272993lfb;
+        Thu, 26 Aug 2021 23:08:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRtCfeYq/k+0hwvF6DVFv7VAWmERvW/EPLXWIjp0Bjj2jUa1BR/c1vB7iYWRoqBEfV94Ye
+X-Received: by 2002:a02:cb46:: with SMTP id k6mr6662156jap.15.1630044512826;
+        Thu, 26 Aug 2021 23:08:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630044512; cv=none;
         d=google.com; s=arc-20160816;
-        b=JGlqXxj5iiaN7Bq087hqayKwvuB8P7gS/oheWP/8C15l0L/tyeUxGc+Ndp+p/qzc1/
-         zfVx+lDR4BJans4kY5TswFrT/QWDsqm3bpb0yddSy7AbXOXBVQxPnuWEEbzk/S+aqe+e
-         nZPMJcn7qJghVi9BJ21pSJTGCsIRB8f/sbpbqgE1cHr8MPt1eXARN0sAIjTpQ7nj6nwJ
-         QF650ZB44y7OgQmHvTS9h8dcBD90Hat/2aKRO/LvovdWa/f3Gpe5gaCxMXy4FSc9+b3B
-         wRWDZPnaUgEE+8axmK3J/ZhCBcHbuUVFCryU7ootic2G4VYbbSZ3T9pjxZiWxjdhebBu
-         yS5g==
+        b=lNxeqhYrOoP4H251DpR3WPPKiao6Z1Tcua06EUY46GLz//p7H7XONdMb+beJPNVlhP
+         ME3qQJ+8Hjcmx2RhsAzpxj+WBijSRU3iLbH9Vx7eudtraGw/LtpM9dUVoVbHzSLnlWEU
+         Y36xz6e58ODv6d33PpJDWPqvHJgoC9VNfob8CURwgo9askWjHpkrOS6YMuz6ZWbj1lZ9
+         wgScSODhXGAW58QZoVuNBF531I07TpCS9Tzrv0Gu+npm2ydrAqkuPWy7ygMl3hXboesH
+         ovySJUg2jTXflcc+ueAzW8q1zAncEhIZ/v0MMH7Y2v5KT115c+bVwWL8oA/cAVEjBeGn
+         CaDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature:content-transfer-encoding
-         :content-language;
-        bh=T2bYRujPzoZZo6wuM1ahLGx0S0bYG7eT3R6vXxL/DZ8=;
-        b=dr2OqYSNYmS/z7vXVOS82JADtMtW81Su/b4WtaYQTO3t8ZDtyJMMZZxoVqcVKc+hHW
-         pfNZbf7JZ11IBkk9y9E0BsCUUCUDHiQTbfQt20sCXXiBRLNOA4Uds1LKrOofHalwnXC3
-         uJCvWckr4EfgV6vHezsIFppd4q/i6XuuFe9JqlWDERrTYbtlKMQk2qnfu4zMR/0hPxR6
-         adxJDPgtHy7E1TCVqK6HcbQbX99k+0jRv+BKBx5O9MT+pr4JphinBZPv+NqhQXIsBSsf
-         uKebn1BgFwNXulTwFOlbvyAU0bsZclCyL9qEFM7zfQRbpq1ivNucRVZyXYMfdrOGLK5P
-         zSNA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=n5MWTd/k8xEuf1Dv83EzRuhLKkCGNLEizr7TqZHxSF0=;
+        b=FCglaoH53BZ1cDACSpSF0pno2aeOMAaCYBgey+RwbLRnUXoWFUcXSQQbgqS/HzdGoJ
+         LVKISRUVg0OFwoLs40lxC+C6QbkOMOORktpRlV+ao0444Ps8kHEO74cc6cgwI7VvLc+a
+         TUQWsKCH/fx9w4PeO3nK0v14Ub50SPp2P3ixin/cG+X3zWXlqXDTE2nwNnaCSXnkAoUc
+         WJPrZ7agXK7Xmtmp2KzluBirsAYac7gKibS86cKK2gQXJv/mTuBDAtTUWSpKO3sb+h45
+         J0/7IJBDlmLX/mkQ/DtN/qLT6LL57vpKvBPNkot2pRUngKOUAWDkSZy36tY6c9pYBch1
+         BMYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=BXpHnPSO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AtHd6PHr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q14si3958178ilm.44.2021.08.26.17.23.19
+        by mx.google.com with ESMTPS id j9si5013249ilr.97.2021.08.26.23.08.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Aug 2021 17:23:19 -0700 (PDT)
+        Thu, 26 Aug 2021 23:08:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=BXpHnPSO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:38104 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AtHd6PHr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJPeQ-0004CM-NA
-	for alex.bennee@linaro.org; Thu, 26 Aug 2021 20:23:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53016)
+	id 1mJV2W-0002bU-7J
+	for alex.bennee@linaro.org; Fri, 27 Aug 2021 02:08:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mJPeG-0004By-3B; Thu, 26 Aug 2021 20:23:08 -0400
-Received: from shasxm06.verisilicon.com ([101.89.135.45]:58825
- helo=shasxm03.verisilicon.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
- id 1mJPeD-00067S-Cw; Thu, 26 Aug 2021 20:23:07 -0400
-Content-Language: zh-CN
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1630023777; h=from:subject:to:date:message-id;
- bh=T2bYRujPzoZZo6wuM1ahLGx0S0bYG7eT3R6vXxL/DZ8=;
- b=BXpHnPSOVLgkRoT6o3rpKNQSIA+A5QCPL7UIM1jZ07V1xrwsj2Hg5IL5iRVRpbWxrlHfodDKX1h
- LOfBAkaTJcehcjNVdBm+U4UZEtg8PxAht+POZq194fwJNtpUuGgTGzaa3vUBVmdpWxgeYG4JKH35X
- ZEtwU/ovHRGM9d4sJYM=
-Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
- SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Fri, 27 Aug 2021 08:22:54 +0800
-From: "Li, Chunming" <Chunming.Li@verisilicon.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: RE: [PATCH] hw/arm/smmuv3: Support non-PCI/PCIe devices connection
-Thread-Topic: [PATCH] hw/arm/smmuv3: Support non-PCI/PCIe devices connection
-Thread-Index: AdeVbB3S+4i7nlcHTb+Dg8IlAhdEUv//4wWA//94u7CAAI29AP/5QjJAgBCcG4D//u5WQA==
-Date: Fri, 27 Aug 2021 00:22:53 +0000
-Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B01142FE59B@SHASXM03.verisilicon.com>
-References: <49C79B700B5D8F45B8EF0861B4EF3B3B01142F5748@SHASXM03.verisilicon.com>
- <CAFEAcA-L-9AjGGLCynbDbF=apQe4J_CrWE7RFKddHiD1L1qKHg@mail.gmail.com>
- <49C79B700B5D8F45B8EF0861B4EF3B3B01142F5A05@SHASXM03.verisilicon.com>
- <CAFEAcA_g59GdK+X366xkWj+znz8B_TTufBMvgvND9TS+dnjEdA@mail.gmail.com>
- <49C79B700B5D8F45B8EF0861B4EF3B3B01142FAC4C@SHASXM03.verisilicon.com>
- <CAFEAcA8imTqu1YGfWaOw2-9GUZh_X3rRoUbbFNJXfX4c7H-uaQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8imTqu1YGfWaOw2-9GUZh_X3rRoUbbFNJXfX4c7H-uaQ@mail.gmail.com>
-Accept-Language: zh-CN, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [182.148.13.182]
-x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--19.083300-0.000000-31
-x-tm-as-user-approved-sender: Yes
-x-tm-as-user-blocked-sender: No
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mJV2M-0002Yy-2s; Fri, 27 Aug 2021 02:08:22 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:46062)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mJV2K-0004t3-E7; Fri, 27 Aug 2021 02:08:21 -0400
+Received: by mail-wr1-x430.google.com with SMTP id n5so8583154wro.12;
+ Thu, 26 Aug 2021 23:08:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=n5MWTd/k8xEuf1Dv83EzRuhLKkCGNLEizr7TqZHxSF0=;
+ b=AtHd6PHrmxAUo6mzovs1lwyQUZfNPUF86TsyXnCFrS7fx0KFLxGdOJdW10tVJixOdl
+ KyrZS5sY3sac0hT7voDTSwOQ1VGF7MENQs4p5AgUP71chKaFKAFyxOu9aSNZsq6mWWLy
+ AvtYDuNOqQj8SxKx1cY4julEsv5HifZ9BTFkNazMyMPK8xeiw/3Ri2knk+/Rd4g3q8+G
+ FkUcxx2bUP8kjtYq9SjleGTKVriFF1f2RreDkgyISNnXsDac0EjkdrNk1ug1oQ8o2egp
+ zGjLsWjF50nmiaEb7sgdtg2CesigtvAmr7SLPTPMN5J4mi7Ia2CZYUEbLyokPtAK8Uxt
+ 62nA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=n5MWTd/k8xEuf1Dv83EzRuhLKkCGNLEizr7TqZHxSF0=;
+ b=AhjI7ljPzBSgQbC710L1tY9wc1RIz6DR9Z9kQC9KWZdkRIlsVj/z1PsQ+c9kvE1r/X
+ qxH3daxS9CCuHsAQFu+xsj97j6rJWFeBGRQDuVY7FqfmTjrHSfsDimTCZukNTNaas7mX
+ b48A4Xi56JpDo3GY2tfVLTMffSgkI+dob5K882y/6ZaHH0FInm9p5/z9IBDmSDKyHsxP
+ 668tI37Sh3u/wnkj9zFgc+1G3iwWNFJLqyU+uY8BvmGEW/ffO5wfUt+ja4NgGPFEKJ3F
+ AldgPPGVK6r4t9w1VsvmAaOHu0Fj/a2i38lxBBfOeTKPDFDpKA1k8pHD0jToI/qi9hjg
+ I0NA==
+X-Gm-Message-State: AOAM531Vo4D9U2UrgR52P/hP0kdL77M+mUQYN3i8YQJZOi8rTCw7cz8J
+ McrWgQrsPlVZm79mm4C2gQpzWJFkAzs=
+X-Received: by 2002:adf:8102:: with SMTP id 2mr7900657wrm.89.1630044497698;
+ Thu, 26 Aug 2021 23:08:17 -0700 (PDT)
+Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id
+ l15sm5338103wrv.84.2021.08.26.23.08.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Aug 2021 23:08:17 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 0/2] hw/arm/raspi: Remove deprecated raspi2/raspi3 aliases
+Date: Fri, 27 Aug 2021 08:08:13 +0200
+Message-Id: <20210827060815.2384760-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Received-SPF: pass client-ip=101.89.135.45;
- envelope-from=Chunming.Li@verisilicon.com; helo=shasxm03.verisilicon.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,39 +111,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Liu,
- Renwei" <Renwei.Liu@verisilicon.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Wen,
- Jianxian" <Jianxian.Wen@verisilicon.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ libvir-list@redhat.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hwUyloGCCFJ4
+X-TUID: pAqVqQ4YsPCd
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGV0ZXIgTWF5ZGVsbCBb
-bWFpbHRvOnBldGVyLm1heWRlbGxAbGluYXJvLm9yZ10NCj4gU2VudDogVGh1cnNkYXksIEF1Z3Vz
-dCAyNiwgMjAyMSAxMTo1NyBQTQ0KPiBUbzogTGksIENodW5taW5nDQo+IENjOiBlcmljLmF1Z2Vy
-QHJlZGhhdC5jb207IExpdSwgUmVud2VpOyBxZW11LWFybUBub25nbnUub3JnOyBXZW4sDQo+IEpp
-YW54aWFuOyBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gU3ViamVjdDogUmU6IFtQQVRDSF0gaHcv
-YXJtL3NtbXV2MzogU3VwcG9ydCBub24tUENJL1BDSWUgZGV2aWNlcw0KPiBjb25uZWN0aW9uDQo+
-IA0KPiBPbiBUdWUsIDI0IEF1ZyAyMDIxIGF0IDA5OjIyLCBMaSwgQ2h1bm1pbmcNCj4gPENodW5t
-aW5nLkxpQHZlcmlzaWxpY29uLmNvbT4gd3JvdGU6DQo+ID4gU29ycnkgZm9yIGludGVycnVwdCB5
-b3UuDQo+ID4gQ291bGQgeW91IGhlbHAgdG8gY2hlY2sgd2h5IG15IHNlcmllcyBwYXRjaCBjYW5u
-b3QgYmUgbGlzdGVkIGJ5DQo+IGh0dHBzOi8vcGF0Y2hldy5vcmcvPw0KPiA+IEkgc3BsaXQgdGhl
-IHBhdGNoIGludG8gNCBjb21taXRzIHdpdGggMSBjb3ZlcmxldHRlciBhbmQgc2VuZCB0aGVtIG91
-dA0KPiB3aXRoIHY0IHRhZy4NCj4gPiBJIGNhbiBzZWUgYWxsIDUgZW1haWxzIGluIGh0dHBzOi8v
-d3d3Lm1haWwtYXJjaGl2ZS5jb20vcWVtdS0NCj4gZGV2ZWxAbm9uZ251Lm9yZy8NCj4gPiBCdXQN
-Cj4gaHR0cHM6Ly9wYXRjaGV3Lm9yZy9RRU1VLzQ5Qzc5QjcwMEI1RDhGNDVCOEVGMDg2MUI0RUYz
-QjNCMDExNDJGQUJENkBTSEENCj4gU1hNMDMudmVyaXNpbGljb24uY29tLyMNCj4gPiBzaG93ICIg
-T25seSAwIHBhdGNoZXMgcmVjZWl2ZWQhICIuDQo+ID4gSXQgaXMgZ3JlYXQgaGVscGZ1bCBJZiB5
-b3UgY2FuIGhlbHAgdG8gY2hlY2sgYW5kIHRlbGwgbWUgd2hhdCBtaXN0YWtlDQo+IEkgbWFkZS4N
-Cj4gPiBUaGFua3MgdmVyeSBtdWNoIQ0KPiANCj4gSSBndWVzcyB5b3UgZmlndXJlZCBvdXQgdGhl
-IHByb2JsZW0gYWxyZWFkeSwgYmVjYXVzZSB2NSBoYXMgdGhlbSBhbGw6DQo+IGh0dHBzOi8vcGF0
-Y2hldy5vcmcvUUVNVS8xNjI5ODc4OTIyLTE3MzI3MC0xLWdpdC1zZW5kLWVtYWlsLQ0KPiBjaHVu
-bWluZ19saTEyMzRAMTYzLmNvbS8NCj4gQnV0IHRoZSBwcm9ibGVtIHdhcyB0aGF0IGZvciB2NCB0
-aGUgcGF0Y2ggZW1haWxzIHdlcmUgbm90IHNlbnQgYXMNCj4gdGhyZWFkZWQgZW1haWxzIGZvbGxv
-d2luZyB1cCB0byB0aGUgY292ZXIgbGV0dGVyICh0aGF0IGlzLCB0aGV5IHdlcmUNCj4gbWlzc2lu
-ZyBhcHByb3ByaWF0ZSBSZWZlcmVuY2VzOiBoZWFkZXJzKS4NCj4gDQo+IC0tIFBNTQ0KDQpZZXMs
-IGl0IGlzLiBUaGFua3MgZm9yIHlvdXIgaGVscC4gSSBmb3VuZCB0aGUgcHJvYmxlbSBhbmQgZml4
-ZWQgaXQgaW4gdjUuDQpQbGVhc2UgaGVscCB0byBjaGVjayB0aGUgdjUgcGF0Y2gsIGxvb2tpbmcg
-Zm9yd2FyZCB0byB5b3VyIHJldmlldyBmZWVkYmFjay4NCg0KQ2h1bm1pbmcNCg==
+Since v2:=0D
+- updated "Since 6.1" -> "Since 6.2"=0D
+=0D
+Peter reported CI failure [*] but I can't reproduce:=0D
+https://gitlab.com/philmd/qemu/-/pipelines/360227279=0D
+=0D
+Since v1:=0D
+- renamed tests (Peter)=0D
+=0D
+[*] https://lore.kernel.org/qemu-devel/CAFEAcA8PLvMUEzyu=3DsN4bn4mU30w1aajU=
++T+i__5jnB0QMZnqg@mail.gmail.com/=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (2):=0D
+  tests: Remove uses of deprecated raspi2/raspi3 machine names=0D
+  hw/arm/raspi: Remove deprecated raspi2/raspi3 aliases=0D
+=0D
+ docs/about/deprecated.rst               |  7 -----=0D
+ docs/about/removed-features.rst         |  7 +++++=0D
+ docs/devel/qgraph.rst                   | 38 ++++++++++++-------------=0D
+ tests/qtest/libqos/qgraph.h             |  6 ++--=0D
+ tests/qtest/libqos/qgraph_internal.h    |  2 +-=0D
+ hw/arm/raspi.c                          |  2 --=0D
+ tests/qtest/boot-serial-test.c          |  2 +-=0D
+ tests/qtest/libqos/arm-raspi2-machine.c |  8 +++---=0D
+ tests/unit/test-qgraph.c                |  2 +-=0D
+ tests/acceptance/boot_linux_console.py  |  6 ++--=0D
+ 10 files changed, 39 insertions(+), 41 deletions(-)=0D
+=0D
+-- =0D
+2.31.1=0D
+=0D

@@ -1,145 +1,197 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2306606lfb;
-        Sat, 28 Aug 2021 01:16:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwEPaeX/x+FYVVhFG/HbHMV+VSRwhvHUOVxCQYhFoFYLlgLVeP4yC1txWlFpDLpqxUMdM93
-X-Received: by 2002:a5d:9b8b:: with SMTP id r11mr10693535iom.26.1630138593142;
-        Sat, 28 Aug 2021 01:16:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630138593; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2308983lfb;
+        Sat, 28 Aug 2021 01:21:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzuzzqGRtbfWD9D+WqLCh8l3tZEy+cLmPjD1nBba8wBqMYEm1ljqn6XFvWcEj3Dq2L89rWv
+X-Received: by 2002:a25:bb12:: with SMTP id z18mr9981649ybg.492.1630138883020;
+        Sat, 28 Aug 2021 01:21:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630138883; cv=none;
         d=google.com; s=arc-20160816;
-        b=VdPEOsV4kW8MFgX6j7gEF29XGUI3yAIoMTyi4n4geL2u4/x5++4kiFO2FRYhyLNbrk
-         UVXLQcTgC0VK+ef0aR/p7FDP+XARj5YVy/7odESuNn7tvxrXZ4ZQAllX0DqhsZLN5ym1
-         oFc1D11MCuprVTywu8m9jMGZoMmaJvP5ywnXuPnBOmp6bs8sIZKW3YRUzWI2j6R1v8qC
-         IVHt0W/oUnABhtrBHdbW+AXYeFf7pTFThCFhbp6VYy5RvLdzx/8aQZZF4TNwapmy+HDB
-         faVVHk48ObTcRnb3iHDPZC7oVHrAG+Vw9cSGdihSg1v3GKRgHY251OPvWt205nH+dJ8s
-         3ARg==
+        b=IXPd8TDtfCYaYQy441ztsCEud73+E5gVmRbI2IoAvtTuA834eR1yAYkhzuLv7GJfd0
+         cmdMhIod4G94utLlBUucqgzjpR3PW+v827aUOloDg/h7Su9NPDrHozLwKr5C9L82PPVg
+         KeH+RmLLIb0EWnfpNncuSKx8GDIUNqcjrMeBWvp563dVkeChyWoUeRtj0ZzHXLitOdTV
+         XR9xgTXahypyXJmD/0clhESWckTi8CLgca4VTEE1cxIqK1JUpSllgsGd+c9mCGCTO5ET
+         ic1uTRDeqMWzn2p7DaxUTLMBCN9FUtEBD3xq0f/oHDkQsJPWdrtoJARFSqdvPrkES4S8
+         0ImQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=KnyR8i3uXwY3L3ZlItvo8s4oX0Ie7Klx/ZUQhKPOTwk=;
-        b=pgLZ9kZXHMTfkTi5FaQRo3VXzpblroNT0LclHmwG4ahc7G4zv6RyzbcK/stnT2nlOi
-         8VUDxwHnU5yVjOqT08ROWc2uqOJGH9kDlSQpGilRUJpCvVKzY5xHjcKZUGqvDoMAmAbk
-         oJKYWr6sTMQjLoBrLZMmzdsRatylAfFJAY4kfoMtrxXkJ7q7SRJVS6FGGUt93Yzdnw4k
-         3I156i4+0iv7EostPy77AzoJ20DS1DOe7VYfvf+Q/LGbLZCtf5kVp9ludPzSGa0XMJ3F
-         7mOVLvRk7zV3H1NwhihfQm8hG2oNpyISF8kH/8fEjmSs0k1w8rIYBac4uvOuUSjg/KFH
-         ap+A==
+        bh=EfzQQCqUb3r29vkGR2xsuUS3NIc3fZXiL8iN+/KtVL4=;
+        b=CEzsVE9XPdycW5IckiKI4qEGNm809a79vPhnEy+EBeK5O03sEmToWixizhs3bEepbL
+         moRGJQAJgdi+RsWTvbeBfOoG2G/nZyN5CazVw7Pe0MqYvwknXS0ZqUHnHWjTaU0PfuMf
+         JH2YmfedFil4FcEI+o66ymBL4IA2WtFNtP1/vinSvetWmZqGdfWvX9s8Oftu8cKsaC/t
+         0SMDiGMdSU+sV1SKckrjOdgnmRepcf9LWjLLfaXRrCrVZHY5lL2yjAHH3K9nXA8Bgeur
+         dFSBSM0nu62Ldys6jgT3jrbJMRwGlBywK5Vz/z5LbyGV+NW8AH2uO2CINla/UpDhxTSu
+         zMNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13si9861474jak.109.2021.08.28.01.16.32
+        by mx.google.com with ESMTPS id h195si8460036ybg.100.2021.08.28.01.21.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 28 Aug 2021 01:16:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 28 Aug 2021 01:21:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38766 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mJtVw-0004qr-Hj
-	for alex.bennee@linaro.org; Sat, 28 Aug 2021 04:16:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35938)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mJtac-0008Iv-Em
+	for alex.bennee@linaro.org; Sat, 28 Aug 2021 04:21:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mJtVW-0004qT-5l
- for qemu-arm@nongnu.org; Sat, 28 Aug 2021 04:16:06 -0400
-Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:40309
- helo=smtpout1.3005.mail-out.ovh.net)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mJtZK-0006q8-W1
+ for qemu-devel@nongnu.org; Sat, 28 Aug 2021 04:20:03 -0400
+Received: from 1.mo52.mail-out.ovh.net ([178.32.96.117]:54986)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mJtVT-00076p-Us
- for qemu-arm@nongnu.org; Sat, 28 Aug 2021 04:16:05 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.58])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 8C4C913B1A2;
- Sat, 28 Aug 2021 08:15:52 +0000 (UTC)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mJtZI-0001se-Ta
+ for qemu-devel@nongnu.org; Sat, 28 Aug 2021 04:20:02 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.171])
+ by mo52.mail-out.ovh.net (Postfix) with ESMTPS id A28E52939D7;
+ Sat, 28 Aug 2021 10:19:57 +0200 (CEST)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Sat, 28 Aug
- 2021 10:15:51 +0200
+ 2021 10:19:57 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-104R005d48e4611-9e17-4dae-b075-f65fb2caac4e,
+ (GARM-102R004e0006336-e6ab-4601-8eaf-146fa71e4dd2,
  6CE952B1E590FC391734534FA2C2FCCDA042449D) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 83.199.102.86
-Subject: Re: [PATCH 4/5] hw/arm/aspeed: Fix AST2600_CLK_SEL3 address
+Subject: Re: [PATCH 5/5] hw/arm/aspeed: Initialize AST2600 clock selection
+ registers
 To: <pdel@fb.com>
 References: <20210827210417.4022054-1-pdel@fb.com>
- <20210827210417.4022054-5-pdel@fb.com>
+ <20210827210417.4022054-6-pdel@fb.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <a7740ed2-67ef-d0f8-09e6-c417c3904ade@kaod.org>
-Date: Sat, 28 Aug 2021 10:15:51 +0200
+Message-ID: <5a4f8d61-d740-cae0-9920-e9a4029a6856@kaod.org>
+Date: Sat, 28 Aug 2021 10:19:56 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210827210417.4022054-5-pdel@fb.com>
+In-Reply-To: <20210827210417.4022054-6-pdel@fb.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 24352444-0b68-427d-bdae-64eefd4de45c
-X-Ovh-Tracer-Id: 17345613968006613984
+X-Ovh-Tracer-GUID: 0df01f8d-6fa7-4ab5-9128-a8e5ab944f8a
+X-Ovh-Tracer-Id: 17414575337671592928
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudduhedgtdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefuvfhfhffkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefggeehhfdtkefhteeghfeghefgudfhteevteeltefgffevhfeggeffhfevleelfeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.3005.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudduhedgtddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehuedtheeghfdvhedtueelteegvdefueektdefiefhffffieduuddtudfhgfevtdenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
+ helo=1.mo52.mail-out.ovh.net
 X-Spam_score_int: -22
 X-Spam_score: -2.3
 X-Spam_bar: --
 X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.437,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org, joel@jms.id.au, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LUHQQHbucPAy
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NIPzKHpABGYy
 
 On 8/27/21 11:04 PM, pdel@fb.com wrote:
 > From: Peter Delevoryas <pdel@fb.com>
 > 
-> This register address is not actually used anywhere, and the datasheet
-> specifies that it's zero-initialized by default anyways, but the address
-> is incorrect. This just corrects the address.
+> UART5 is typically used as the default debug UART on the AST2600, but
+> UART1 is also designed to be a debug UART. All the AST2600 UART's have
+> semi-configurable clock rates through registers in the System Control
+> Unit (SCU), but only UART5 works out of the box with zero-initialized
+> values. The rest of the UART's expect a few of the registers to be
+> initialized to non-zero values, or else the clock rate calculation will
+> yield zero or undefined (due to a divide-by-zero).
+>
+> For reference, the U-Boot clock rate driver here shows the calculation:
 > 
-> Fixes: e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support")
+>     https://github.com/facebook/openbmc-uboot/blob/main/drivers/clk/aspeed/clk_ast2600.c#L357)
+> 
+> To summarize, UART5 allows selection from 4 rates: 24 MHz, 192 MHz, 24 /
+> 13 MHz, and 192 / 13 MHz. The other UART's allow selecting either the
+> "low" rate (UARTCLK) or the "high" rate (HUARTCLK). UARTCLK and HUARTCLK
+> are configurable themselves:
+> 
+>     UARTCLK = UXCLK * R / (N * 2)
+>     HUARTCLK = HUXCLK * HR / (HN * 2)
+> 
+> UXCLK and HUXCLK are also configurable, and depend on the APLL and/or
+> HPLL clock rates, which also derive from complicated calculations. Long
+> story short, there's lots of multiplication and division from
+> configurable registers, and most of these registers are zero-initialized
+> in QEMU, which at best is unexpected and at worst causes this clock rate
+> driver to hang from divide-by-zero's. This can also be difficult to
+> diagnose, because it may cause U-Boot to hang before serial console
+> initialization completes, requiring intervention from gdb.
+> 
+> This change just initializes all of these registers with default values
+> from the datasheet.
+> 
 > Signed-off-by: Peter Delevoryas <pdel@fb.com>
+> ---
+>  hw/misc/aspeed_scu.c | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index c373e678f0..d51fe8564d 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -104,11 +104,16 @@
+>  #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+>  #define AST2600_HPLL_PARAM        TO_REG(0x200)
+>  #define AST2600_HPLL_EXT          TO_REG(0x204)
+> +#define AST2600_APLL_PARAM        TO_REG(0x210)
+>  #define AST2600_MPLL_EXT          TO_REG(0x224)
+>  #define AST2600_EPLL_EXT          TO_REG(0x244)
+>  #define AST2600_CLK_SEL           TO_REG(0x300)
+>  #define AST2600_CLK_SEL2          TO_REG(0x304)
+>  #define AST2600_CLK_SEL3          TO_REG(0x308)
+> +#define AST2600_CLK_SEL4          TO_REG(0x310)
+> +#define AST2600_CLK_SEL5          TO_REG(0x314)
+> +#define AST2600_UARTCLK_PARAM     TO_REG(0x338)
+> +#define AST2600_HUARTCLK_PARAM    TO_REG(0x33C)
+>  #define AST2600_HW_STRAP1         TO_REG(0x500)
+>  #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+>  #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+> @@ -658,9 +663,15 @@ static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+>      [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
+>      [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
+>      [AST2600_HPLL_PARAM]        = 0x1000405F,
+> +    [AST2600_APLL_PARAM]        = 0x1000405F,
+>      [AST2600_CHIP_ID0]          = 0x1234ABCD,
+>      [AST2600_CHIP_ID1]          = 0x88884444,
+> -
+> +    [AST2600_CLK_SEL2]          = 0x00700000,
+> +    [AST2600_CLK_SEL3]          = 0x00000000,
+> +    [AST2600_CLK_SEL4]          = 0xF3F40000,
+> +    [AST2600_CLK_SEL5]          = 0x30000000,
+> +    [AST2600_UARTCLK_PARAM]     = 0x00014506,
+> +    [AST2600_HUARTCLK_PARAM]    = 0x000145C0,
+>  };
+>  
+>  static void aspeed_ast2600_scu_reset(DeviceState *dev)
+> 
 
-This is covered by a patch already sent by Joel. 
+Some parts have been already covered by the A3 emulation changes 
+provided by Joel. I will merge the UART registers only.
 
-See https://github.com/legoater/qemu/commits/aspeed-6.2
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
 Thanks,
 
 C.
-
-> ---
->  hw/misc/aspeed_scu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 40a38ebd85..c373e678f0 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -108,7 +108,7 @@
->  #define AST2600_EPLL_EXT          TO_REG(0x244)
->  #define AST2600_CLK_SEL           TO_REG(0x300)
->  #define AST2600_CLK_SEL2          TO_REG(0x304)
-> -#define AST2600_CLK_SEL3          TO_REG(0x310)
-> +#define AST2600_CLK_SEL3          TO_REG(0x308)
->  #define AST2600_HW_STRAP1         TO_REG(0x500)
->  #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
->  #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
-> 
 

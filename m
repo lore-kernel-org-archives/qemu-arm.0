@@ -1,122 +1,201 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3879417lfb;
-        Mon, 30 Aug 2021 01:41:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw1IMjxuWeJ6yO8YjabiyYCY7LZqM4jQBJK6su5nYS68Ym+hwiPVlZA+MatbDTH+kSDNUyD
-X-Received: by 2002:a25:b7d3:: with SMTP id u19mr22158679ybj.158.1630312891058;
-        Mon, 30 Aug 2021 01:41:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630312891; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3890936lfb;
+        Mon, 30 Aug 2021 02:04:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsEkbJyww51WuEkgDEvMt2LY5KUi6R4QtsrJtzij2aZnjMVKMsoCOPTX18G/g6HoJxttzy
+X-Received: by 2002:a6b:f30b:: with SMTP id m11mr16527668ioh.0.1630314266376;
+        Mon, 30 Aug 2021 02:04:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1630314266; cv=pass;
         d=google.com; s=arc-20160816;
-        b=oH8phDiprhQpNkHVtQi2Ei0fbmIeXMvQw/jQVTJBEJWCPwrwK9CS3HQZvrvE+oU19B
-         wRPjFobdcODPMjfsM3dpNrqYLmgN376dM2+qriAn+HSTR0mnkBZsJ+CL4oyvjIecaKp5
-         RqXIQb06XjPWoH1mNrAucZs/lDl2WjFgBHh8Z9ay8ouYXNC+dZ1rHCTsWPl5WUBdMrCx
-         FiC60YCXT/EVLDZ6ZzuIZIFbXBNsFG5G+m9o4jDmgp8vaOl4x01hFguGv0MKvHJb2W8D
-         xyO5ImRCIskZ8bbLmYnN8fsWWfRLStsHrP6eDLQRkyggZExRIWGwU2scFKJNcwrWUMf6
-         9c2w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=QvuxWdQwglhZbRdcUbphebAu2DflRTBWtfpxNiioviz7uSLKJ4OZOXja5qhsm0T36I
+         2r5PoQxW2NKfwYegxdpHLNJGt2vD0oT8LSLlZNY8rE45A1Jy//yUnX2LzDSnxR/NzDTA
+         eCuaj9LdQ8aWFSmJNiekSUArjYBbhUAYTZvRJ8jLYZrU1Jl/t73biA0tC5r4iK52wGBJ
+         7QjIZILla1trtO09bLKwT56ogYZpi6CYjlVqt6luf8WIBUf1IbAlJe+DymH4XDY3rQOW
+         VJSgLZn1GvR83Ntc6OtofqsWTKMFtNDKq/sDhOy8uwnzWxPXjyvYFONWM/H76SSWKf95
+         dzwg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=IbGQ/0E+rwcz2d9e4UMrUxbrBCbSpVycHY+HYpA6hW0=;
-        b=0XMMlTsBiI1jjvsijdWMv7+afUkYoyrPqdhiqlRFBYjjuPQgMuOmqS47ij6+CH0mdS
-         QiPnsHWm1uKMAYbMZjGgjf8pzXN1hITpG9yBLuZPH4IjLF6+yYi2xkaIWOM/5Z32pZgC
-         wedV/mw/jbJ+LMgZ53Gc5lXZrXQaZbTNU7zdOOKBmPxnC3dfV0RlyxipYHIa85UzDS1D
-         tgqgw7WSTy8tWdGRIOYHuWNLa0LxW9pvlY9FPeA8fUOedxffIcs+X5u1LjhG+4n+DTmG
-         ILruNfCDczTISN9sOzv8afI7mzFevexX30hv/zleG48r/X9d+D2cImZst3jMzFXy8IJj
-         2P0A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OodEq96h;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
+        bh=wSY60gMfvNOsQFZJZ2iSa3r0r2pw+M8wAYLx3Xpm86I=;
+        b=goonRsCJ4oEl9/NYNqKHH9VTmQPt37V4MMpeUOdIv4tyhPE9fUSKB7HwVmc/UX4hqF
+         QMHgCajEkc/dQQ33A2/E6F3NxACF9M79+DyHTfSgDJUys0JQOeZKh3iUWEwRAvtaTxBX
+         9LGKmhbjh98wNoCbMgWqL04K0+dFQ2aaOraLTQJoVkC6GDJwaHRlSbhFt/21Ng+/96Vh
+         slZyyOEoVRumeTcANcrXsamOcR4fdZ6et8b7EQp2AY9IteOhVIWHYmhmsHtjh1/12Pet
+         WnPK2vcVsq23ua/kwdhNEg0HMQZ7TzXKPgzNE3e4jb7GsOFAn87MoCIUkj930z3j4SC2
+         5HLw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b="E6UNN+/q";
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=YM7ObWxi;
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2si5039104yba.335.2021.08.30.01.41.30
+        by mx.google.com with ESMTPS id v14si13499350ioh.72.2021.08.30.02.04.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Aug 2021 01:41:31 -0700 (PDT)
+        Mon, 30 Aug 2021 02:04:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OodEq96h;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b="E6UNN+/q";
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=YM7ObWxi;
+       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41664 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Received: from localhost ([::1]:51158 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mKcrC-0007QL-Ez
-	for alex.bennee@linaro.org; Mon, 30 Aug 2021 04:41:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38658)
+	id 1mKdDN-0006Tt-Mk
+	for alex.bennee@linaro.org; Mon, 30 Aug 2021 05:04:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mKcpu-0006DP-No
- for qemu-arm@nongnu.org; Mon, 30 Aug 2021 04:40:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33940)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mKdD5-0006TK-IT; Mon, 30 Aug 2021 05:04:07 -0400
+Received: from esa3.fujitsucc.c3s2.iphmx.com ([68.232.151.212]:40428)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mKcpq-0002BZ-Ew
- for qemu-arm@nongnu.org; Mon, 30 Aug 2021 04:40:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630312805;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=IbGQ/0E+rwcz2d9e4UMrUxbrBCbSpVycHY+HYpA6hW0=;
- b=OodEq96h8gM/9Seg1SAmRWuMO31pE8m13t04CnmI/xpIwqDtRRzhznz/EE0EgF8Cl0TpNs
- MMAwS81J+7pTS0QKzyNkPWorUdeKbxfR/QcxDJtIseABYJ3HptdGJnvLvgXIQ9G+3i4mI/
- d4gn+4g+G+sLozLISzWk2uVpnwFtPQQ=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-531-2ZZvt_zGMdqm3ldKKAfrMA-1; Mon, 30 Aug 2021 04:40:04 -0400
-X-MC-Unique: 2ZZvt_zGMdqm3ldKKAfrMA-1
-Received: by mail-ej1-f71.google.com with SMTP id
- s11-20020a170906060b00b005be824f15daso5337669ejb.2
- for <qemu-arm@nongnu.org>; Mon, 30 Aug 2021 01:40:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=IbGQ/0E+rwcz2d9e4UMrUxbrBCbSpVycHY+HYpA6hW0=;
- b=AjUc5W/cEuiX9gHBORaPoN7qyWeMJu/CrESe5liN4nvx2+CjuGwnXZ0aDQLLMBeC5N
- N5biMgEHsvPAFofdizRlYUTqk4gyiVBGuqH5vY/f3mc5LArmLutDWaFxyaufJ/YdkDt/
- s3gr/mmRUR78gRqi5jOeW+SXihrdSm2bH+imXjDBqrGk3/RGubaoSF63q7lj7jN0/CPw
- Ztrm4aJmDTkdYu2dD1Lp8V+JsXybBPrUzvCmhtgaBKqpLGr6bL/1AuwJ8zzXq2xngVsP
- TChCRauy0Xr/TSa6UFmTst+bMsWJ5MPXLSDRaQC383WU5QcpyvJ6iM77nESqZ7DgYv6u
- AojA==
-X-Gm-Message-State: AOAM532rEmm18dGr5ll1LRrZtvl3/HHjRwkO01LU7uYA1Z5QxG6taBTX
- sXN9ezYR4PV3MwbX5UojO8KLSFfbFkkn1nB0E5WAccNXjWrMMBcb7yeb6UDxXaN0S7fRsKwqkL9
- sdf2giHUXCFzX
-X-Received: by 2002:a17:906:3e1b:: with SMTP id
- k27mr23991387eji.284.1630312803256; 
- Mon, 30 Aug 2021 01:40:03 -0700 (PDT)
-X-Received: by 2002:a17:906:3e1b:: with SMTP id
- k27mr23991370eji.284.1630312803037; 
- Mon, 30 Aug 2021 01:40:03 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id dy7sm2448829edb.38.2021.08.30.01.40.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Aug 2021 01:40:02 -0700 (PDT)
-Date: Mon, 30 Aug 2021 10:40:01 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-Subject: Re: [PATCH v5 2/3] hw/arm/virt: target-arm: Add A64FX processor
- support to virt machine
-Message-ID: <20210830084001.pvsds2ycv6acriit@gator.home>
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mKdD1-0005br-2c; Mon, 30 Aug 2021 05:04:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
+ t=1630314242; x=1661850242;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=0INh78yuOFe3MTKrbc+kct2cJL/lKsH3K0vpiexFSTc=;
+ b=E6UNN+/qhfBhjjDP0NYPdMEe97ErFYGXgM7V4O1HzvczTQoLfOrSm3Jc
+ DaZgiEqqKjAQxL8qxTY8wSL1e6uM1tDLjg0xY9UrOg7Fdd0xIetRHgicg
+ sanjMqPMW77YsGANstmJPvjSj1ppMGYpIf2qQm3Rchs8SNRKqbOIhh3oo
+ 64LV0jKCgN4VDA51WCdUh2h+jmRq8tVbXMwf2Jk4YPFC5ADKqmaNhbZHn
+ St8adrqp7lCioJnMutkH4No2Sbso/FdhcjU87TwpYxweehV0sKdI1x2Kk
+ 2s0lGroBTvJKRXL3S4GvYWqHIr8XAqHQIcZUpusb3dYzxbBRfTqlOj0po A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10091"; a="46097104"
+X-IronPort-AV: E=Sophos;i="5.84,363,1620658800"; d="scan'208";a="46097104"
+Received: from mail-ty1jpn01lp2054.outbound.protection.outlook.com (HELO
+ JPN01-TY1-obe.outbound.protection.outlook.com) ([104.47.93.54])
+ by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Aug 2021 18:03:58 +0900
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=U+eewnv0+XZApfXJ7X2Ph4bc+zDYe2wJyQV6kr9aszkEe/1yglYEdbCcYF1KN0WtM5IzHWWIFpH/1e36Gd7Upajz/FCef2GgXg5WMe15xPN2KntsINNHSwRVBGDzFMBfxshrQqMLPcSnuPDvlQExZUam8FBhMk5aoI8qom+sHHxTx6O+ZwwOofcGuG6eKH3RI1jQzlOADL5MYFCAAeKSUXIiANKGvtNZ+GV1orIW9bLSCrjYshqJdgWEjX/xz/ZSlcWEnrrpP75r6PvcALTnJKrhOa+Shg/scVosEjV3nw0awAwSl5laatmmNe4EvrVzeOJpK9C8au6DRRFWAMs0hw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=wSY60gMfvNOsQFZJZ2iSa3r0r2pw+M8wAYLx3Xpm86I=;
+ b=WoP2/ynSRVeGXq9kC3Bb1buUVasOxz0ef9Cjmd8t4Oxi1g/VH/AkewMC7WerUVH5Phh4czPFCQT492uA/3BbmlONWJRoSuwU8ZXz6+J8kHyvAjldNXTGhUAASyHdAj3smG81ai29qrJdGO2t5Mqjm6KrO/kNZ5q/E2Md+JeRrNtRBiLojBeFsi+/0OHbevkIghojGBYjWoWt/o6/ixLka+sDOyz+qscGnV8zU1PxytThBNseLWZXhZKg6oJlOV+7LbAuCqwesY1ta6zFC1I4iQYkFhuKX81qQY7e9AuEd4UJL/RBlUdU71G6JGur9focBK4pakkOQQg7+fVpJjASRg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
+ dkim=pass header.d=fujitsu.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=wSY60gMfvNOsQFZJZ2iSa3r0r2pw+M8wAYLx3Xpm86I=;
+ b=YM7ObWxiXfD4jkHeHaZOpJ4h1xzFA4lNZZKZf0qW5p3Kre7qWAPtJ4WCmCUKCOaoTfgmhRPgeQuYS6fJHgJJ9uuFz5uQf5yIegfg2A11uS3ZifGfFJabSwudcyvIe9KO6ZMXk83YjsGN07l3/BSrG/30bzNs/xsyLWZW108zDys=
+Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com (2603:1096:400:4f::8)
+ by TYXPR01MB1823.jpnprd01.prod.outlook.com (2603:1096:403:11::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.20; Mon, 30 Aug
+ 2021 09:03:55 +0000
+Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com
+ ([fe80::534:e385:3c19:21c0]) by TYCPR01MB6160.jpnprd01.prod.outlook.com
+ ([fe80::534:e385:3c19:21c0%7]) with mapi id 15.20.4457.024; Mon, 30 Aug 2021
+ 09:03:53 +0000
+From: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+To: 'Andrew Jones' <drjones@redhat.com>
+Subject: RE: [PATCH v5 1/3] target-arm: Add support for Fujitsu A64FX
+Thread-Topic: [PATCH v5 1/3] target-arm: Add support for Fujitsu A64FX
+Thread-Index: AQHXnXkBmkwHse6yhkmDlHA0dHzCp6uLuiiAgAAFUKA=
+Date: Mon, 30 Aug 2021 09:03:53 +0000
+Message-ID: <TYCPR01MB61603DF612001EC80621742AE9CB9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
 References: <20210830082820.2690275-1-ishii.shuuichir@fujitsu.com>
- <20210830082820.2690275-3-ishii.shuuichir@fujitsu.com>
+ <20210830082820.2690275-2-ishii.shuuichir@fujitsu.com>
+ <20210830083931.4fft4c5cv4c4ysni@gator.home>
+In-Reply-To: <20210830083931.4fft4c5cv4c4ysni@gator.home>
+Accept-Language: ja-JP, en-US
+Content-Language: ja-JP
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: =?iso-2022-jp?B?TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZl?=
+ =?iso-2022-jp?B?Y2UwNTBfQWN0aW9uSWQ9MmMyNjYyM2YtZTE1Yi00N2VjLWFkNDItZTY4?=
+ =?iso-2022-jp?B?MWFmNzUxZmY3O01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFi?=
+ =?iso-2022-jp?B?NGQtM2IwZjRmZWNlMDUwX0NvbnRlbnRCaXRzPTA7TVNJUF9MYWJlbF9h?=
+ =?iso-2022-jp?B?NzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfRW5hYmxl?=
+ =?iso-2022-jp?B?ZD10cnVlO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQt?=
+ =?iso-2022-jp?B?M2IwZjRmZWNlMDUwX01ldGhvZD1TdGFuZGFyZDtNU0lQX0xhYmVsX2E3?=
+ =?iso-2022-jp?B?Mjk1Y2MxLWQyNzktNDJhYy1hYjRkLTNiMGY0ZmVjZTA1MF9OYW1lPUZV?=
+ =?iso-2022-jp?B?SklUU1UtUkVTVFJJQ1RFRBskQiJMJT8lUhsoQjtNU0lQX0xhYmVsX2E3?=
+ =?iso-2022-jp?B?Mjk1Y2MxLWQyNzktNDJhYy1hYjRkLTNiMGY0ZmVjZTA1MF9TZXREYXRl?=
+ =?iso-2022-jp?B?PTIwMjEtMDgtMzBUMDg6NTg6MzJaO01TSVBfTGFiZWxfYTcyOTVjYzEt?=
+ =?iso-2022-jp?B?ZDI3OS00MmFjLWFiNGQtM2IwZjRmZWNlMDUwX1NpdGVJZD1hMTlmMTIx?=
+ =?iso-2022-jp?B?ZC04MWUxLTQ4NTgtYTlkOC03MzZlMjY3ZmQ0Yzc7?=
+authentication-results: redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=none action=none header.from=fujitsu.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 05fa4546-3663-45c6-9198-08d96b951785
+x-ms-traffictypediagnostic: TYXPR01MB1823:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <TYXPR01MB1823EDD3B5029575B87275CCE9CB9@TYXPR01MB1823.jpnprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ez/BLykimu2pUBRpdThZENpgHv1DKXg4PQ9TX/Q4l9jsxihDzS0KIhKUtzwLcppxf95ABzrEuZAlLX2sUOnp3V1L90yhioSAxMwo7wLlmKWgpDuRDl3i7diRErdgpYstXQ79d2EZTsbzgJOV4gsTS9J9OVXaVTg9x02pFZ6VPgQJyhY4YtFALkGtFsGzqW6tFVtTvKf7FM4oQ/ionaXpFJentFqtrhzZSHPiUjUHkYjfaef4kr2Kqoudlq1KTe6ritynsL853obM959jTAIWo50cJoxnZoyf4XvCMFLVUyjfPGVlDDUAGn/dqiXZ8Yao8MB/Q84SIZ2eikIuE4j8Mn2OFoOwi22UeEu0zX3Eb/GUrImG4qo/DEJCfc9NhZOIvQjfrUnrWN9Rk7tU6R3tnEsKJGgz+WDLzSdOD4pgOa46gmvf35uyWlsNa9xjUjHCZY6NehPciqXcyfuvDuo/eX9sxDugsOXdvzGHH4oo9EaiYIIoGvTkyarR5RKXhvH8EYWA0RUHBpTts5+F3LdLLH4uyFqAgC5vs9y48DxmulOr0b7vevm1Ubqo22u9w8lqrUkA5nS2RB53Ck4Uk4dWd8vx7zq6fCgtWXyv5e1e4X87BgXHnpzL1gQic7TNC7Vcl5rAmBOJk+V7NzpYvTAyrvJTbB938CVXwB93gEmdC4z36ut4h3qs/br57RbcrbXauXb3T7kBi2tIvXeHiAQCng==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYCPR01MB6160.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(396003)(136003)(366004)(39860400002)(346002)(8676002)(83380400001)(316002)(6916009)(107886003)(54906003)(38070700005)(64756008)(478600001)(71200400001)(66446008)(85182001)(76116006)(66556008)(66476007)(66946007)(186003)(9686003)(5660300002)(26005)(4326008)(33656002)(38100700002)(2906002)(7696005)(53546011)(122000001)(6506007)(55016002)(52536014)(86362001)(8936002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-2022-jp?B?RXpOVk5qOXRtRzNGdHpQU3huQUswdXdtOXdTZHhMaU92azhkdkZsWTg4?=
+ =?iso-2022-jp?B?YnRISkVsZXE2LzhRczhiRmxHb3ZlQmxVL1pjU2Fja2tBR01nUmJUUTRn?=
+ =?iso-2022-jp?B?Y256SVFFYkswaWJ1RVRMY2E5bm9rS3R0b1psOEZtREhXSDEzcEZXMFJu?=
+ =?iso-2022-jp?B?Z01xSUlNRzU2anFzU3ZvNGxRS1NvR3BBYW9hOW9VQlNtc05mVHZFc0Fv?=
+ =?iso-2022-jp?B?RU9pdnZCNzBSTmN6SElXMWFCNHc0bythMmpPNnNxa09GU21scTZMdVhp?=
+ =?iso-2022-jp?B?bFNUUTZRTjV2RktSVU1wVGJRMFdPTERXbk53bXRhUDFxUWNJNHZQMzQw?=
+ =?iso-2022-jp?B?aGp2bHdyN2NvSXdLQUhSbjFnTU80OXlCZC83dVJFbHI2RkRyemtzekpo?=
+ =?iso-2022-jp?B?aGNWT09OaDlpYkpTb2RwaWxwMDZPWWlwcDFLVHZRaVBhS1BvZXVDUE5x?=
+ =?iso-2022-jp?B?NjZIYzNTWnJDc0d0TVlrY2tqUGxRbWh4Vnd1Z0xpWXdMNjh1NUpEUWFs?=
+ =?iso-2022-jp?B?cmJPWDcySHlML1NPL3lwUStIVnk0SnZoaTNURm9LeE5teUIwRkYyUjdC?=
+ =?iso-2022-jp?B?VkRFRm50Tm51bTVKYWhUVCt2RG9uK0R1a1crOUVuV2ZBVUlvbWYxOFpL?=
+ =?iso-2022-jp?B?S2xTZmxpOVozS3VsOHJmQ2c4MGVWM2E0YUc4SEdwS0h3Nk1NTFBUdzYw?=
+ =?iso-2022-jp?B?UlBWZWZLUTdRMG1LVyttT3pHZUg4c1RtTzRvRnc1NE5keDlhMGlSUms0?=
+ =?iso-2022-jp?B?OXNXWWRNN1JUektzWlc4S1F1cjJObzQxQytqWkFaUHNuOGV6SDlRL0VT?=
+ =?iso-2022-jp?B?czZkcmppSnB6dkxqV1JVUmRZMDdJcitDdWZkYkxqTDI5Y005Q05aWEJG?=
+ =?iso-2022-jp?B?SzkzSklaWHdsWmg3ekM1MkZZMmFRZ0tSSmlrSUVyQzhBZmlDNkRWZk9M?=
+ =?iso-2022-jp?B?REJueXBlTC9YQmxnSTI1SnFZbTRxb2M0dkJydjQ0SlZZTDNCSkdkTFBF?=
+ =?iso-2022-jp?B?OFlaRGtyTnBYdi9oZjFtKy9HZGNRbWxvbG9CaEhvclk3WnR5d2wrN1Zm?=
+ =?iso-2022-jp?B?TDIrTWNHTDJkcUVtTitmbXY5c2puemxPQ2N1UFg4bUlybzJ4TTc4RkQ1?=
+ =?iso-2022-jp?B?UGNzekdOajZxR0J2QWNJOFBpQlYvckthR2FtdTFCVXJOTmtLUkJQcjdv?=
+ =?iso-2022-jp?B?dmdoZVp6ZUYvL1RUYUNXUVJPVXl5d283ZzJYR05XU2Urd3VrYVdNeXQy?=
+ =?iso-2022-jp?B?Vm5TUTdRakJRcWwxa2dBRnEwNFloUTNPUGxuOHB1K0hJSVUxcVJZMTBM?=
+ =?iso-2022-jp?B?VmZiWlF5QmhWRTFMNUdqT3NwR0JBOUwzTG1DK0NqTlpYTnpTYkxaOHJF?=
+ =?iso-2022-jp?B?ZXl4MjY3cTk3MEgwRnZ3OEJkTkpsRDNzZUVublFlTTRTdU9YaWhzNVRT?=
+ =?iso-2022-jp?B?UGUyd3oyemxLdVJWMjVhOTNBYU9iSEZNTVZQb0dyN0svU2pJQnlKNVZl?=
+ =?iso-2022-jp?B?amwrTE9IS0taRHI4RW4yckljclBUcWFhbkUzcWVXejR1dFo0dHRrNlNq?=
+ =?iso-2022-jp?B?aXhGY2w5cUZPMlpuK2dFeHhxd2pxdytGZTZRcGFoQUcydEhNMXBxdGNY?=
+ =?iso-2022-jp?B?cVg2QnEvcW5yL2tSd0NqdmtUbW5JZHJEdTdMNHRqYmIvakJvb0lhSGow?=
+ =?iso-2022-jp?B?UEgwTi9KeDlSVzJUSnUvellvSkg5N3FsZnNGNy9vaGlReklQTTIwMU5D?=
+ =?iso-2022-jp?B?OHYvQ2EyRnpmbFZTWTVNamM1dnBzME9USnQvRzFaaWp4R01zenFmUnFM?=
+ =?iso-2022-jp?B?MDl3N1EzUU5HS0xXQ2R3SisybFlRR0RXUStPajdIOUg1M0JlanBFWC9E?=
+ =?iso-2022-jp?B?TGtPeFZVSzBXellZNXRTTVAvaG9HbUFOakM4R2VEYnhrK1BIa2NWUnpE?=
+Content-Type: text/plain; charset="iso-2022-jp"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <20210830082820.2690275-3-ishii.shuuichir@fujitsu.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-OriginatorOrg: fujitsu.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB6160.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 05fa4546-3663-45c6-9198-08d96b951785
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Aug 2021 09:03:53.7688 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IkiglYCU4D1j4oNOC4XE19DNM8T25fzku5wMYHhWwVDcw04oS2XQ1a8qbrC+rQGJmX7czVtKjQTGjMMD+YwrcDgYEGxcoVU1Y4BHnLTVVuY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYXPR01MB1823
+Received-SPF: pass client-ip=68.232.151.212;
+ envelope-from=ishii.shuuichir@fujitsu.com; helo=esa3.fujitsucc.c3s2.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,48 +209,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g+RbnoNlG4P8
+X-TUID: YbB9bcTaKxar
 
-On Mon, Aug 30, 2021 at 05:28:19PM +0900, Shuuichirou Ishii wrote:
-> Add -cpu a64fx to use A64FX processor when -machine virt option is specified.
-> In addition, add a64fx to the Supported guest CPU types in the virt.rst document.
-> 
-> Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-> ---
->  docs/system/arm/virt.rst | 1 +
->  hw/arm/virt.c            | 1 +
->  2 files changed, 2 insertions(+)
-> 
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index 59acf0eeaf..850787495b 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -55,6 +55,7 @@ Supported guest CPU types:
->  - ``cortex-a53`` (64-bit)
->  - ``cortex-a57`` (64-bit)
->  - ``cortex-a72`` (64-bit)
-> +- ``a64fx`` (64-bit)
->  - ``host`` (with KVM only)
->  - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
->  
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 86c8a4ca3d..3fa4295a78 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -200,6 +200,7 @@ static const char *valid_cpus[] = {
->      ARM_CPU_TYPE_NAME("cortex-a53"),
->      ARM_CPU_TYPE_NAME("cortex-a57"),
->      ARM_CPU_TYPE_NAME("cortex-a72"),
-> +    ARM_CPU_TYPE_NAME("a64fx"),
->      ARM_CPU_TYPE_NAME("host"),
->      ARM_CPU_TYPE_NAME("max"),
->  };
-> -- 
-> 2.27.0
->
+Thank you for your quick comments.
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+> Question: For testing, did you dump all the ID registers on this
+> model and compare them with a dump of ID registers from real
+> hardware? If so, that would be good info to put in the commit
+> message or at least the cover letter.
+
+Yes, it has been tested and confirmed.
+We will re-post the v6 patches later, adding the information you mentioned.
+
+Best regards.
+
+> -----Original Message-----
+> From: Andrew Jones <drjones@redhat.com>
+> Sent: Monday, August 30, 2021 5:40 PM
+> To: Ishii, Shuuichirou/=1B$B@P0f=1B(B =1B$B<~0lO:=1B(B <ishii.shuuichir@f=
+ujitsu.com>
+> Cc: peter.maydell@linaro.org; qemu-arm@nongnu.org; qemu-devel@nongnu.org
+> Subject: Re: [PATCH v5 1/3] target-arm: Add support for Fujitsu A64FX
+>=20
+> On Mon, Aug 30, 2021 at 05:28:18PM +0900, Shuuichirou Ishii wrote:
+> > Add a definition for the Fujitsu A64FX processor.
+> >
+> > The A64FX processor does not implement the AArch32 Execution state, so
+> > there are no associated AArch32 Identification registers.
+> >
+> > For SVE, the A64FX processor supports only 128,256 and 512bit vector le=
+ngths.
+> >
+> > Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+> > ---
+> >  target/arm/cpu64.c | 48
+> > ++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 48 insertions(+)
+> >
+> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c index
+> > 2f0cbddab5..15245a60a8 100644
+> > --- a/target/arm/cpu64.c
+> > +++ b/target/arm/cpu64.c
+> > @@ -841,10 +841,58 @@ static void aarch64_max_initfn(Object *obj)
+> >                          cpu_max_set_sve_max_vq, NULL, NULL);  }
+> >
+> > +static void aarch64_a64fx_initfn(Object *obj) {
+> > +    ARMCPU *cpu =3D ARM_CPU(obj);
+> > +
+> > +    cpu->dtb_compatible =3D "arm,a64fx";
+> > +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> > +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> > +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> > +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> > +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> > +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> > +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> > +    cpu->midr =3D 0x461f0010;
+> > +    cpu->revidr =3D 0x00000000;
+> > +    cpu->ctr =3D 0x86668006;
+> > +    cpu->reset_sctlr =3D 0x30000180;
+> > +    cpu->isar.id_aa64pfr0 =3D   0x0000000101111111; /* No RAS Extensio=
+ns
+> */
+> > +    cpu->isar.id_aa64pfr1 =3D 0x0000000000000000;
+> > +    cpu->isar.id_aa64dfr0 =3D 0x0000000010305408;
+> > +    cpu->isar.id_aa64dfr1 =3D 0x0000000000000000;
+> > +    cpu->id_aa64afr0 =3D 0x0000000000000000;
+> > +    cpu->id_aa64afr1 =3D 0x0000000000000000;
+> > +    cpu->isar.id_aa64mmfr0 =3D 0x0000000000001122;
+> > +    cpu->isar.id_aa64mmfr1 =3D 0x0000000011212100;
+> > +    cpu->isar.id_aa64mmfr2 =3D 0x0000000000001011;
+> > +    cpu->isar.id_aa64isar0 =3D 0x0000000010211120;
+> > +    cpu->isar.id_aa64isar1 =3D 0x0000000000010001;
+> > +    cpu->isar.id_aa64zfr0 =3D 0x0000000000000000;
+> > +    cpu->clidr =3D 0x0000000080000023;
+> > +    cpu->ccsidr[0] =3D 0x7007e01c; /* 64KB L1 dcache */
+> > +    cpu->ccsidr[1] =3D 0x2007e01c; /* 64KB L1 icache */
+> > +    cpu->ccsidr[2] =3D 0x70ffe07c; /* 8MB L2 cache */
+> > +    cpu->dcz_blocksize =3D 6; /* 256 bytes */
+> > +    cpu->gic_num_lrs =3D 4;
+> > +    cpu->gic_vpribits =3D 5;
+> > +    cpu->gic_vprebits =3D 5;
+> > +
+> > +    /* Suppport of A64FX's vector length are 128,256 and 512bit only *=
+/
+> > +    aarch64_add_sve_properties(obj);
+> > +    bitmap_zero(cpu->sve_vq_supported, ARM_MAX_VQ);
+> > +    set_bit(0, cpu->sve_vq_supported); /* 128bit */
+> > +    set_bit(1, cpu->sve_vq_supported); /* 256bit */
+> > +    set_bit(3, cpu->sve_vq_supported); /* 512bit */
+> > +
+> > +    /* TODO:  Add A64FX specific HPC extension registers */ }
+> > +
+> >  static const ARMCPUInfo aarch64_cpus[] =3D {
+> >      { .name =3D "cortex-a57",         .initfn =3D aarch64_a57_initfn }=
+,
+> >      { .name =3D "cortex-a53",         .initfn =3D aarch64_a53_initfn }=
+,
+> >      { .name =3D "cortex-a72",         .initfn =3D aarch64_a72_initfn }=
+,
+> > +    { .name =3D "a64fx",              .initfn =3D aarch64_a64fx_initfn=
+ },
+> >      { .name =3D "max",                .initfn =3D aarch64_max_initfn }=
+,
+> >  };
+> >
+> > --
+> > 2.27.0
+> >
+>=20
+> For the SVE stuff,
+>=20
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>=20
+> Question: For testing, did you dump all the ID registers on this
+> model and compare them with a dump of ID registers from real
+> hardware? If so, that would be good info to put in the commit
+> message or at least the cover letter.
+>=20
+> Thanks,
+> drew
 

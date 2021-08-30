@@ -1,128 +1,211 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2387959lfb;
-        Sat, 28 Aug 2021 03:51:28 -0700 (PDT)
-X-Received: by 2002:a17:906:f15:: with SMTP id z21mr14931343eji.177.1630147888040;
-        Sat, 28 Aug 2021 03:51:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630147888; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3899353lfb;
+        Mon, 30 Aug 2021 02:18:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzLo63gjzM29rgkOeHNtOALodCommCQ02kyfCpSQ7cuipP3JyUnOGK1L9U+c2HKWCGJd8Hs
+X-Received: by 2002:a25:2548:: with SMTP id l69mr23507918ybl.371.1630315112186;
+        Mon, 30 Aug 2021 02:18:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630315112; cv=none;
         d=google.com; s=arc-20160816;
-        b=uYW82caEIWWjqV7cxELZ8ghia7euVrjD+7tIvOZkkY8k0wVMhXoa4kKttfKOl1jENg
-         Pp36XwvGtPpUf4uzEMqXH99eN9FJVLZPK9xcEeqCFCdx+qo5QArqujOF/hiMaKPUJLcL
-         8uf966yBeezMmGObleOjI/Ahi4EiRWURkRYBJTvfTTuR0tjhLuCUR4NzawCTNkod2aMs
-         /gIGR6zEI+lLOxiW75SxQExh1sCeTcgdFRNik4o/9gUA0lf0h/ImRVRwWCWPQm2hdi96
-         X0fPVhCci02xnxgkYHS3t5+Nzxlqh8WKs0KeSiXNhHB3QZ94qWtjZoCEIBI0cyRmkaTf
-         aKRA==
+        b=M09p+M1hjZj4Kr5WjSj96DpsxJkT2I0WOrV8w+JdJsiaNjcL9RoJZI04w1nG1olRGv
+         gDZGy+hy1wGVbpkNuXby0p10pa5Ekz4At3aRMHXO6pXgfWI7ghqDLb44uVbiyINbcMgS
+         xBAdRIJwdCdPS6Oy/G06b83SMBGbE8kwM3GQg2VgID77NxmUsfpN9bVu02GLh/ZnQQj+
+         D8EedRqYquLHv1BdNzy6UwbPo/gW9r1TfEokqJE0ui/KHUX8YM/2CSOMpncisTJ90wRq
+         os5WMBciSTTBKlJXCVu15B8u/YaZg9pv18e0c5HZydUF1ugFyIYx5RLHJ3bnsgzt/Slv
+         4cFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=O7aAkV1CGb7+IShcjFyAVU7OvhH5fkDA+TbkiNj4vyQ=;
-        b=0vbYMNQX9NrvOLrxb4TW00HYkvBttroPQoaw42OGfIGcanRCDUq4DyXI9y1ZDwIytO
-         Q9YoYRd1NbbU2rtua7BFN9z5AnYwtamsgvztDNCgAaNTK8lU0HPrj6CIK3YDbcwaVIyN
-         2CZZhd2PdElpqkp25slKturVvyecP5ykK8eUD5JqMijA491sk7pSCsbBZgu34RB3Bawp
-         zQ/c3as2sxfpIRwtsvhdIQASAKzrFHSwmL+Ldj8ItQxn/O16/GUBsYySnr9N4JG0IdYU
-         Jti2XvIY7MyQvqNO4Q4Se1hk++4EYuVVMXkrzZ/t3db0b8qCb7KEBbIQ29L3tkKHHrwf
-         vsmw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nGnWNeqjPZGVSMiwdYMev+aH1orq5xIssQR95XnHGgo=;
+        b=PCVBC0dUllCTtbXHOg+l/tq/yx83oAhmNwCwaxe6yyb0K2e87QuDBwoeNzmuOme113
+         u+wJE+68pe/5Yq1BxKoA87VZCuIltZKSKsOWluneXAYxz2wb9oM283N58tjw2RcCYBCo
+         dO9zYuCbaZZuOL9VCJO3KLbR5zPnGDJJ1ZIsP21GF+nYhU5V9Wu2aQ3LOW4y/xVoV0LY
+         bFHb2jAUPzahonxXkcUwdsmay3WQYSKjkpC504sMiomgNAoh8Vu0bMGzhUkdESH78FX4
+         BE7RSQm73YqQA2jSNk81EmXNyw8VAeefD7T3h/yrafGcld4XAISBgmfgxuj6vdzM5569
+         9Xbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T21fC0tj;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Y/bD0xN0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id hq1sor5874438ejc.53.2021.08.28.03.51.27
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d68si16801006ybi.175.2021.08.30.02.18.31
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 28 Aug 2021 03:51:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 30 Aug 2021 02:18:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T21fC0tj;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Y/bD0xN0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=O7aAkV1CGb7+IShcjFyAVU7OvhH5fkDA+TbkiNj4vyQ=;
-        b=T21fC0tj19k57Ytp8jEoKAA1mzfZduoBl02mXYsKjDNXVSGEaaCmKrh+Qe/gq2JbeW
-         cLV7QjwQ0qD1tMjX8eIITSabNdogVe21mRcbqMEF8zJTVbXJCVr22KC2zjVRw1QTVU0P
-         o9BD1EsrjWge7RASmSEuSIl515n+HKIm2+1Ek6jZ1swED+de+9ZAn5H3XDiA4scp+eMa
-         U8ZMNVSjerMQ4uHby9KtY8345YqwPSX5tNusSfy8+MX2qaKFrzQwCEK2qgh270lLZC33
-         DFK+z1OJ9LqtqAVJ5cFcV/a/HcZYiBEhqOO0KI3tzs/ElVMax3gUwZj8nJ+A5Y6I3KY1
-         ZYmg==
+Received: from localhost ([::1]:36802 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mKdR1-0008HP-FX
+	for alex.bennee@linaro.org; Mon, 30 Aug 2021 05:18:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45514)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mKdQj-0008DT-3m
+ for qemu-arm@nongnu.org; Mon, 30 Aug 2021 05:18:13 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:45783)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mKdQd-0000qc-Nw
+ for qemu-arm@nongnu.org; Mon, 30 Aug 2021 05:18:12 -0400
+Received: by mail-ej1-x632.google.com with SMTP id e21so29602858ejz.12
+ for <qemu-arm@nongnu.org>; Mon, 30 Aug 2021 02:18:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=nGnWNeqjPZGVSMiwdYMev+aH1orq5xIssQR95XnHGgo=;
+ b=Y/bD0xN0F3KQMD/mO2ZoCjWZOAGu0gCzm/guJmKeY7WmJf4DwQVwjGW4tZXY1yqAW0
+ r59QFxvQT8Uyvkx2M7DRfMgtW1g86Pl9RrJzlq0V5rKNqrNwcBPFoesv3AAoT1IzffPU
+ 9rOf0/BiN28pyQfAGKILvFBM53I7zcXyMRYhuQDlY5JzuNC2+EgLN5A9jGUa+qWyD6iC
+ NYFcgNX83oMMcE0OVF3eHVEddGYJs7n8sJCW/kThxy6IykKMXFA8u1YIkIIaJ0UgRcFI
+ OdvQopckA0QT2haEH/Usts7N3FUEKExrp4tSpvkBbyTNOAwt3bl0Kr7dY8o2jaoVk/uz
+ pk4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=O7aAkV1CGb7+IShcjFyAVU7OvhH5fkDA+TbkiNj4vyQ=;
-        b=p6nGwOoLUXpRwfgR4gZMGiZHkKqySviboK4KQk6VoKUUfLniYO/Wdv6Kr24ltK1Ppm
-         RSRdjvpU0muHFvMfDW/kuhMkHYjs2JQ8zBn0bXmIA0A9VurHHXEyWMqjUksdH0U82b3a
-         Q0hgBVrc/UBYdm9qAhoMaEdqxyuwsFQZljD+q+lDm/tAn5/EiqoIhFGbV+4rxyAO2UIH
-         gqbq21RzWu6ZPZSCgH6ihNriWDK9vf+Uc5Jah9H9Ve+6EvcGtUexrnRwXQVyIgdcbIkO
-         Kd5vPUm+76AUnqum1+uVpzvGYOGPJG7xHVy2528AlYfUYJVGvuRC/FrW97oVGf5n+plY
-         LVMA==
-X-Gm-Message-State: AOAM53084SiRBZKYMYC0MjiFUmRum1me+O6GMuWTy5gxc7Xl0AmYdTIb
-	Js/ijXumY/l6dpfEqFXO37jFiyvqyrzR8n6h9zM6MbBy
-X-Google-Smtp-Source: ABdhPJyg51Dcp53SpeLwj2MIm/3eKQa83C1CY4aeFoTUy7eBXZLHlCNKPF2BRmD3jKAUtsCW3kgC2TnAVNDSC0dJFFU=
-X-Received: by 2002:a17:907:923:: with SMTP id au3mr12630803ejc.482.1630147887472;
- Sat, 28 Aug 2021 03:51:27 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=nGnWNeqjPZGVSMiwdYMev+aH1orq5xIssQR95XnHGgo=;
+ b=aCN0U9iNoozgP+/cJzFbwLDn+aKZqewzf37oY4WGNrIA56LuWrHxuMyxaPFEOPaDDJ
+ l4hJ3tZUpjuYHyiI4rutyFBq/1mFlUCKTUEMIwzVLCNVfvWxypejgDdTiX+qgbkLL+9n
+ 3EOu0gX8IINmwAL7mR0hgfrEaAs2cie7Of4kuvFpR2R1O9L7rIIBzWBmkrWG+jQ0FII5
+ zsKL2zC6X3Q06NsO5LMZn56RdOgCca99VlrcWjAZXIf+fMb2Trp35SbKdbi+FcLufAlI
+ yV5uVVLvHqAOS1YLxAukxWC1/AcBnhg3r9v9C73zV6zfPSGQalOVNDWfBG9l7PfBBFs5
+ N5Dw==
+X-Gm-Message-State: AOAM5309soD3Q89axNoTJCwcNltHUMi4mlW9hepylKCU1HLb1XvYemrJ
+ Yj9rXKk0A5MnMoKZiHHqRLSD1BxY+pGYZDm3fkBcoC7lgq0a7Q==
+X-Received: by 2002:a17:906:c085:: with SMTP id
+ f5mr24641414ejz.250.1630315086142; 
+ Mon, 30 Aug 2021 02:18:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210823142004.17935-1-changbin.du@gmail.com> <7523c6ad-52cd-0b20-b09d-01bd537edbb3@redhat.com>
- <CAFEAcA8WKdZiuzjXgwj_9T7ewDbkLky+_NKaXw6WQ95V8x=0Tw@mail.gmail.com>
- <20210823230535.js3gymomh2chmznc@mail.google.com> <CAFEAcA8DR4UuZi-QAqMr82tL+S3Y8bEQn7q0W7iCjQCsFRis1Q@mail.gmail.com>
- <20210827144938.72astzvxxy3igpn4@mail.google.com>
-In-Reply-To: <20210827144938.72astzvxxy3igpn4@mail.google.com>
+References: <20210826131725.22449-1-peter.maydell@linaro.org>
+ <20210826131725.22449-11-peter.maydell@linaro.org>
+In-Reply-To: <20210826131725.22449-11-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 28 Aug 2021 11:51:16 +0100
-Message-ID: <CAFEAcA_78m1jXENFEBRbMcZ4gY+o9BAk01rPHYtXXR1p+rXuFA@mail.gmail.com>
-Subject: Re: [PATCH 0/3] gdbstub: add support for switchable endianness
-To: Changbin Du <changbin.du@gmail.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	"open list:RISC-V" <qemu-riscv@nongnu.org>
+Date: Mon, 30 Aug 2021 10:17:18 +0100
+Message-ID: <CAFEAcA-hCtXa7OpHqhP6CAzvHg5n73j3XB=TuwHOoBV3JeAntA@mail.gmail.com>
+Subject: Re: [PATCH v2 10/18] target/arm: Implement MVE FP max/min across
+ vector
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: wLbFObSCCmcO
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Jd7ISmfWVwzo
 
-On Fri, 27 Aug 2021 at 15:49, Changbin Du <changbin.du@gmail.com> wrote:
+On Thu, 26 Aug 2021 at 14:17, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> On Tue, Aug 24, 2021 at 10:11:14AM +0100, Peter Maydell wrote:
-> > On Tue, 24 Aug 2021 at 00:05, Changbin Du <changbin.du@gmail.com> wrote:
-> > >
-> > > On Mon, Aug 23, 2021 at 04:30:05PM +0100, Peter Maydell wrote:
-> > > > changes to be more capable of handling dynamic target changes
-> > > > (this would also help with eg debugging across 32<->64 bit switches);
-> > > > as I understand it that gdb work would be pretty significant,
-> > > > and at least for aarch64 pretty much nobody cares about
-> > > > big-endian, so nobody's got round to doing it yet.
-> > > >
-> > > Mostly we do not care dynamic target changes because nearly all OS will setup
-> > > endianness mode by its first instruction. And dynamic changes for gdb is hard
-> > > since the byte order of debugging info in elf is fixed. And currently the GDB
-> > > remote protocol does not support querying endianness info from remote.
-> > >
-> > > So usually we needn't change byte order during a debug session, but we just want
-> > > the qemu gdbstub can send data in and handle data it received in right byte order.
-> > > This patch does this work with the help of users via the option 'endianness='.
-> >
-> > I'm not a huge fan of putting in workarounds that deal with the
-> > problem for specific cases and require users to tweak options settings,
-> > rather than solving the problem in a more general way that would
-> > let it all Just Work for all cases.
-> >
-> Probably we can add a new callback 'gdb_get_endianness' for CPUClass, and use
-> this callback to determine if bswap is needed every time we read/write cpu
-> registers. What's your thought?
+> Implement the MVE VMAXNMV, VMINNMV, VMAXNMAV, VMINNMAV insns.  These
+> calculate the maximum or minimum of floating point elements across a
+> vector, starting with a value in a general purpose register and
+> returning the result there.
+>
 
-I think that you need to start by talking to the gdb folks about
-how debugging a dynamic endianness target should work. Fixing
-this probably goes something like:
- * agree on design for how dynamic endianness, 32-64 mode changes,
-   etc, should be handled by gdb
- * make gdb changes
- * document required gdbstub protocol enhancements (ie how the stub
-   tells gdb about endianness changes, whether this changes how we
-   send register information, memory data, etc)
- * implement those changes in QEMU
+> @@ -440,6 +444,10 @@ VMLADAV_S        1110 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
+>  VMLADAV_U        1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
+>
+>  {
+> +  VMAXNMAV       1110 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
+> +  VMINNMAV       1110 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
+> +  VMAXNMV        1110 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
+> +  VMINNMV        1110 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
+>    VMAXV_S        1110 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
+>    VMINV_S        1110 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
+>    VMAXAV         1110 1110 1110  .. 00 ....  1111 0 0 . 0 ... 0 @vmaxv
+> @@ -449,6 +457,10 @@ VMLADAV_U        1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
+>  }
+>
+>  {
+> +  VMAXNMAV       1111 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
+> +  VMINNMAV       1111 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
+> +  VMAXNMV        1111 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
+> +  VMINNMV        1111 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
+>    VMAXV_U        1111 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
+>    VMINV_U        1111 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
+>    VMLADAV_U      1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 0 @vmladav_nosz
 
-You seem to be trying to start with the final step, not the first one :-)
+I just realized that I forgot to do part of Richard's review
+comments on the first version of this patch, about adding some
+extra [] blocks here.
+
+https://patchew.org/QEMU/20210729111512.16541-1-peter.maydell@linaro.org/20210729111512.16541-46-peter.maydell@linaro.org/
+
+Diff to squash in:
+
+index 1a18c3b8eeb..a46372f8c77 100644
+--- a/target/arm/mve.decode
++++ b/target/arm/mve.decode
+@@ -444,25 +444,33 @@ VMLADAV_S        1110 1110 1111  ... 0 ... .
+1111 . 0 . 0 ... 1 @vmladav_nosz
+ VMLADAV_U        1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
+
+ {
+-  VMAXNMAV       1110 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
+-  VMINNMAV       1110 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
+-  VMAXNMV        1110 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
+-  VMINNMV        1110 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
+-  VMAXV_S        1110 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
+-  VMINV_S        1110 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
+-  VMAXAV         1110 1110 1110  .. 00 ....  1111 0 0 . 0 ... 0 @vmaxv
+-  VMINAV         1110 1110 1110  .. 00 ....  1111 1 0 . 0 ... 0 @vmaxv
++  [
++    VMAXNMAV     1110 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
++    VMINNMAV     1110 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
++    VMAXNMV      1110 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
++    VMINNMV      1110 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
++  ]
++  [
++    VMAXV_S      1110 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
++    VMINV_S      1110 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
++    VMAXAV       1110 1110 1110  .. 00 ....  1111 0 0 . 0 ... 0 @vmaxv
++    VMINAV       1110 1110 1110  .. 00 ....  1111 1 0 . 0 ... 0 @vmaxv
++  ]
+   VMLADAV_S      1110 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 0 @vmladav_nosz
+   VRMLALDAVH_S   1110 1110 1 ... ... 0 ... . 1111 . 0 . 0 ... 0 @vmlaldav_nosz
+ }
+
+ {
+-  VMAXNMAV       1111 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
+-  VMINNMAV       1111 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
+-  VMAXNMV        1111 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
+-  VMINNMV        1111 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
+-  VMAXV_U        1111 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
+-  VMINV_U        1111 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
++  [
++    VMAXNMAV     1111 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
++    VMINNMAV     1111 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
++    VMAXNMV      1111 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
++    VMINNMV      1111 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
++  ]
++  [
++    VMAXV_U      1111 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
++    VMINV_U      1111 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
++  ]
+   VMLADAV_U      1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 0 @vmladav_nosz
+   VRMLALDAVH_U   1111 1110 1 ... ... 0 ... . 1111 . 0 . 0 ... 0 @vmlaldav_nosz
+ }
+
 
 -- PMM

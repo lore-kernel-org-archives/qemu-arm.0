@@ -1,263 +1,174 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5492063lfb;
-        Tue, 31 Aug 2021 16:32:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwCBS/nw5AYsut+6gwLGdmusCWFguS8M++gW/nVj1mgxHckW8t+EwhiKGgpn/j0yyOaREzN
-X-Received: by 2002:a05:6602:3c5:: with SMTP id g5mr24449872iov.42.1630452760526;
-        Tue, 31 Aug 2021 16:32:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630452760; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5492941lfb;
+        Tue, 31 Aug 2021 16:34:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwsZ4JmxfOZ+OVdE7Fr8ps5H5fP/u/t2BTxTapvQxRHPAM10mxw+yhIgpt7cJIK/4NfeDfU
+X-Received: by 2002:a92:6803:: with SMTP id d3mr21116122ilc.145.1630452852093;
+        Tue, 31 Aug 2021 16:34:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630452852; cv=none;
         d=google.com; s=arc-20160816;
-        b=j4yjtqH3ytsFN2K5f5vPuTJNqcGesFmJhrvjrPdMcwrdJnS6bOTyLpVwGtUuOnrqSL
-         WwN5KPz3ICbR8zF4LimkzHx2qIfxOHHiabxXGn8WahIz9saSyvHZukX190UylNmJtKyF
-         WAUbpEFSosSPi8vPR6vcXf5STb+SKfIuUKEYDBGFv34xjlz7Cko3+vpAGtJ8XAgD8rYs
-         IupdRZDcs+vVbLTEbmPBPuiNhc1JoKU5X2WEw6tGv3Hvrk45pFY4YJJbJK39qTscPVX2
-         DkAOL3sF30XWWHAC9a7wG2eC/tqazC5AGeyXguPUM9blZ2jMnlahNsEvPm7DIDeCVnax
-         LJtA==
+        b=ieDVKEJGvB9+8DR/3G5/SgQVGdf4+dN+civRlfyp+nBJlVpVRM9bJIRDADh98e6yL1
+         vBS09QnKoOH3ofZDaOsWF4ciUC1TA3uCJs8bwsed+sm33Db1K6o37mzcrRG0KcoPrLDf
+         XwTKRk6J5XmzXWJDOGOYB6Beni7KHnOrLmBZ41AdL58Az3MurB3o1RCpumjmRNuqnDEs
+         uCT18UKGMVYoZ+zB/STWjmPP7MREfBXwu9T+y1cmOINHRY78inF/X2FamLl4xTQS4I9w
+         Gp2O8Edh8vsgGFz2j3pvS22QR4nOAgVrx6ZUvwFNOnsbkQ8CWLKaVhW1Y8mgHwThHEX/
+         Kcrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ArJ7A304NXOfou4bnSsYVp5J3WAA6e1k3Nqw6AE4mTY=;
-        b=SiZXLLMQdT96xwHsrxACfXxgDXiHWBFah5bLI2Q6M805dF/hWsgX/jJhXXHBo6Tl/g
-         6xf9WOoT6xcxK9ivGFffj8j02GQM3dz6LV+syh25Gc5kc+Wy/YUYvLMd/dpKBqc+Vt9G
-         uwA1M7Ijme//DAHZLT1PXywnbeFjujew6zZCsdM/YAWVooEtZWgE0I4NuNwA2cayMDvO
-         4VnoYiwMhqF695SJj8vlKnSw4IM1SUVMBB72NcSlekr5VbjHd1Hs60ZyDS+OSj65DGdr
-         bpcdgNGvmm9qFj1F3zEUXsyXOZ23dx2FnmPfbxhxpMMezzAi/rLAJebyQsHGAKGchawP
-         vAzQ==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=COYQZgUu+2/LsBlUJEGDY6klb+xepGIgFiTm3f0oRdc=;
+        b=dm1N4p9yTYl9f44Lwro8ZEPhYQT6DGOnrMiMMMNbKpWVUgeC4L0ZvfI6ih34zEg6X5
+         BlIFbINZdpsaKmYMuBGgA6heNOWgCJLSEDc0gJelMVYFW62QxVJMuz6L6/KxZbNLjbo+
+         hYVT9R9sxH04EWgIGVKBPaPpPXdCxKJwVjSAtGHHTQhx7ftCB8KqWzF/RDAAY++UY4bA
+         DspfAIHeTsEa9DBiSrCiRZQAI4gxd3B0r7vyuPwcRzupIRQe4MuI9U/gfFqNa1/uADxF
+         RNRkIhSE/eBgTRTg+K7oB3FPGMYi8ROeo50aTfBIvLnDjIRnNjcEjW8puP7w2R/kKPBV
+         kDTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=OGrkrm1t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=cHWz4RYT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h13si18359449ilc.131.2021.08.31.16.32.40
+        by mx.google.com with ESMTPS id a4si21773802ilt.54.2021.08.31.16.34.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 16:32:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Aug 2021 16:34:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=OGrkrm1t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@fb.com header.s=facebook header.b=cHWz4RYT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:51314 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLDF9-0006Da-MP
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 19:32:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57008)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLDGd-0007tg-F9
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 19:34:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57034)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
- id 1mLDEW-0006CD-AP
- for qemu-arm@nongnu.org; Tue, 31 Aug 2021 19:32:00 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:6518)
+ id 1mLDEi-0006Ib-Vi
+ for qemu-devel@nongnu.org; Tue, 31 Aug 2021 19:32:13 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:25268)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
- id 1mLDEU-0003Nn-E1
- for qemu-arm@nongnu.org; Tue, 31 Aug 2021 19:31:59 -0400
-Received: from pps.filterd (m0109331.ppops.net [127.0.0.1])
+ id 1mLDEg-0003VX-Sc
+ for qemu-devel@nongnu.org; Tue, 31 Aug 2021 19:32:12 -0400
+Received: from pps.filterd (m0044010.ppops.net [127.0.0.1])
  by mx0a-00082601.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 17VNUxjO015642
- for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 16:31:56 -0700
+ 17VNW6SH020494
+ for <qemu-devel@nongnu.org>; Tue, 31 Aug 2021 16:32:08 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
  h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=facebook;
- bh=ArJ7A304NXOfou4bnSsYVp5J3WAA6e1k3Nqw6AE4mTY=;
- b=OGrkrm1tHBY2rEx+8g+aNigwH7/OBE6iwVLN0pIPpwXvrWgNPJcMCVpt5fkH3NMZxBld
- jvxvxWWMkjd+gqWOFVDxL5fFkNvW4W1C/uVBTmkZBRS01efbPd/2qVXrQPaxOG4JIKgQ
- aVrcD2U4uNkq8vvXoEOwoicJ08piYdS4OHc= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com with ESMTP id 3asscrtbrk-1
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=facebook; bh=COYQZgUu+2/LsBlUJEGDY6klb+xepGIgFiTm3f0oRdc=;
+ b=cHWz4RYTNsCfE9MidAkrrnJodey2dBcB3Jb7z1BIV2+GRw99dodeyyEsLl/CYChycUyY
+ xN6hd0aVAQoJb/p3iNcWznJnmCPSwD+EVDDZpFLnHbpjJ7kHwWL8KuponqxHqPAXZT1e
+ 8N/5tV/TVFi898XHXoALLiV41D74MqMKv80= 
+Received: from mail.thefacebook.com ([163.114.132.120])
+ by mx0a-00082601.pphosted.com with ESMTP id 3asrgutba0-4
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 16:31:56 -0700
-Received: from intmgw001.46.prn1.facebook.com (2620:10d:c0a8:1b::d) by
- mail.thefacebook.com (2620:10d:c0a8:82::e) with Microsoft SMTP Server
+ for <qemu-devel@nongnu.org>; Tue, 31 Aug 2021 16:32:08 -0700
+Received: from intmgw001.05.prn6.facebook.com (2620:10d:c085:208::11) by
+ mail.thefacebook.com (2620:10d:c085:21d::7) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Tue, 31 Aug 2021 16:31:55 -0700
+ 15.1.2176.2; Tue, 31 Aug 2021 16:31:59 -0700
 Received: by devvm660.prn0.facebook.com (Postfix, from userid 385188)
- id 7D995172C90E; Tue, 31 Aug 2021 16:31:52 -0700 (PDT)
+ id AB442172C90C; Tue, 31 Aug 2021 16:31:51 -0700 (PDT)
 From: <pdel@fb.com>
 To: 
 CC: <clg@kaod.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
  <patrick@stwcx.xyz>, <andrew@aj.id.au>, <f4bug@amsat.org>, Peter Delevoryas
  <pdel@fb.com>
-Subject: [PATCH 1/1] hw/arm/aspeed: Allow machine to set serial_hd(0)
-Date: Tue, 31 Aug 2021 16:31:40 -0700
-Message-ID: <20210831233140.2659116-2-pdel@fb.com>
+Subject: [PATCH 0/1] hw/arm/aspeed: Allow machine to set serial_hd(0)
+Date: Tue, 31 Aug 2021 16:31:39 -0700
+Message-ID: <20210831233140.2659116-1-pdel@fb.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210831233140.2659116-1-pdel@fb.com>
-References: <20210831233140.2659116-1-pdel@fb.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
 X-FB-Internal: Safe
 Content-Type: text/plain
 X-FB-Source: Intern
-X-Proofpoint-GUID: KtK7JnnVFBVV1lfBcZNJoeCL8HDCBhx-
-X-Proofpoint-ORIG-GUID: KtK7JnnVFBVV1lfBcZNJoeCL8HDCBhx-
+X-Proofpoint-GUID: VfZCqqenL6HbovrVGowifNFv1ynwXT3u
+X-Proofpoint-ORIG-GUID: VfZCqqenL6HbovrVGowifNFv1ynwXT3u
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
  definitions=2021-08-31_10:2021-08-31,
  2021-08-31 signatures=0
 X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- priorityscore=1501
- adultscore=0 impostorscore=0 clxscore=1015 malwarescore=0 spamscore=0
- mlxlogscore=999 suspectscore=0 mlxscore=0 phishscore=0 bulkscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2107140000 definitions=main-2108310128
+ impostorscore=0
+ clxscore=1015 priorityscore=1501 suspectscore=0 bulkscore=0
+ mlxlogscore=756 malwarescore=0 spamscore=0 adultscore=0 mlxscore=0
+ phishscore=0 lowpriorityscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2107140000 definitions=main-2108310129
 X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=88771d3da1=pdel@fb.com; helo=mx0b-00082601.pphosted.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.391, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=67.231.145.42;
+ envelope-from=prvs=88771d3da1=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NmtRkbG2lUhn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uoOiUVOKHVaM
 
 From: Peter Delevoryas <pdel@fb.com>
 
-When you run QEMU with an Aspeed machine and a single serial device
-using stdio like this:
+This is a follow-up to a discussion in a previous series I sent:
 
-    qemu -machine ast2600-evb -drive ... -serial stdio
+https://lore.kernel.org/qemu-devel/20210827210417.4022054-1-pdel@fb.com/
 
-The guest OS can read and write to the UART5 registers at 0x1E784000 and
-it will receive from stdin and write to stdout. The Aspeed SoC's have a
-lot more UART's though (AST2500 has 5, AST2600 has 13) and depending on
-the board design, may be using any of them as the serial console. (See
-"stdout-path" in a DTS to check which one is chosen).
+I tried to add a new machine type called Fuji that required the ability
+to specify the UART connected to the first serial device on the command
+line (serial_hd(0)).
 
-Most boards, including all of those currently defined in
-hw/arm/aspeed.c, just use UART5, but some use UART1. This change adds
-some flexibility for different boards without requiring users to change
-their command-line invocation of QEMU.
+After some discussion, we concluded that we could add a serial_dev
+option to the machine class and the SoC to support this:
 
-I tested this doesn't break existing code by booting an AST2500 OpenBMC
-image and an AST2600 OpenBMC image, each using UART5 as the console.
+https://lore.kernel.org/qemu-devel/a802ecb1-aa49-fd4c-5bd2-2bb19af56ac9@kao=
+d.org/
 
-Then I tested switching the default to UART1 and booting an AST2600
-OpenBMC image that uses UART1, and that worked too.
+I didn't follow Cedric's advice _exactly_, so let me know if you have
+suggestions. I used "uint32_t serial_hd0", because I think it more
+clearly indicates that this is the device to connect to the first serial
+device, serial_hd(0).
 
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
+Also, I didn't know how to transfer data from the machine class to the
+device state, so I just added the attribute to the machine class and
+used 'qdev_get_machine' to within aspeed_soc_realize() based on some
+code I found in hw/ppc/spapr_cpu_core.c. I expect that I'm missing
+something, I've just been having some trouble figuring out the QEMU
+object model.
+
+If this patch is accepted, I can follow-up with another patch adding the
+fuji machine type with "serial_hd0 =3D ASPEED_DEV_UART1".
+
+Thanks,
+Peter
+
+Peter Delevoryas (1):
+  hw/arm/aspeed: Allow machine to set serial_hd(0)
+
  hw/arm/aspeed.c         |  1 +
  hw/arm/aspeed_ast2600.c | 11 +++++++----
  hw/arm/aspeed_soc.c     |  9 ++++++---
  include/hw/arm/aspeed.h |  1 +
  4 files changed, 15 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 9d43e26c51..74379907ff 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -804,6 +804,7 @@ static void aspeed_machine_class_init(ObjectClass *oc=
-, void *data)
-     mc->no_parallel =3D 1;
-     mc->default_ram_id =3D "ram";
-     amc->macs_mask =3D ASPEED_MAC0_ON;
-+    amc->serial_hd0 =3D ASPEED_DEV_UART5;
-=20
-     aspeed_machine_class_props_init(oc);
- }
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index e3013128c6..361a456214 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -10,6 +10,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/misc/unimp.h"
-+#include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
- #include "hw/char/serial.h"
- #include "qemu/module.h"
-@@ -231,6 +232,8 @@ static uint64_t aspeed_calc_affinity(int cpu)
- static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
- {
-     int i;
-+    AspeedMachineState *bmc =3D ASPEED_MACHINE(qdev_get_machine());
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(bmc);
-     AspeedSoCState *s =3D ASPEED_SOC(dev);
-     AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
-     Error *err =3D NULL;
-@@ -322,10 +325,10 @@ static void aspeed_soc_ast2600_realize(DeviceState =
-*dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
-     }
-=20
--    /* UART - attach an 8250 to the IO space as our UART5 */
--    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
--                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
--                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    /* Wire up the first serial device, usually either UART5 or UART1 */
-+    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_hd0], 2,
-+                   aspeed_soc_get_irq(s, amc->serial_hd0), 38400,
-+                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
-=20
-     /* I2C */
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr)=
-,
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 3ad6c56fa9..77422bbeb1 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -13,6 +13,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/misc/unimp.h"
-+#include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
- #include "hw/char/serial.h"
- #include "qemu/module.h"
-@@ -221,6 +222,8 @@ static void aspeed_soc_init(Object *obj)
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
- {
-     int i;
-+    AspeedMachineState *bmc =3D ASPEED_MACHINE(qdev_get_machine());
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(bmc);
-     AspeedSoCState *s =3D ASPEED_SOC(dev);
-     AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
-     Error *err =3D NULL;
-@@ -287,9 +290,9 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
-     }
-=20
--    /* UART - attach an 8250 to the IO space as our UART5 */
--    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
--                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
-+    /* Wire up the first serial device, usually either UART5 or UART1 */
-+    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_hd0], 2,
-+                   aspeed_soc_get_irq(s, amc->serial_hd0), 38400,
-                    serial_hd(0), DEVICE_LITTLE_ENDIAN);
-=20
-     /* I2C */
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index c9747b15fc..bc0f27885a 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -38,6 +38,7 @@ struct AspeedMachineClass {
-     uint32_t num_cs;
-     uint32_t macs_mask;
-     void (*i2c_init)(AspeedMachineState *bmc);
-+    uint32_t serial_hd0;
- };
-=20
-=20
 --=20
 2.30.2
 

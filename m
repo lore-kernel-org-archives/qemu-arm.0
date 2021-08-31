@@ -1,202 +1,114 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5201599lfb;
-        Tue, 31 Aug 2021 09:39:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRNioJt5cIELerLu7PGOIz51M5c/Ej7IMgA9B39jPsoPVIm2pkMwM32oCzH45zDKy8SgFv
-X-Received: by 2002:a05:6e02:b48:: with SMTP id f8mr21836635ilu.25.1630427944371;
-        Tue, 31 Aug 2021 09:39:04 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1630427944; cv=pass;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5173762lfb;
+        Tue, 31 Aug 2021 09:05:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy/Ay/46degI3BR5H7dt1AloXx3QdNAEDObelSdnLmf6Na6gxdSusX4FP2Jbvlg0vRAlTYB
+X-Received: by 2002:a1c:9a91:: with SMTP id c139mr5095466wme.106.1630425953060;
+        Tue, 31 Aug 2021 09:05:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630425953; cv=none;
         d=google.com; s=arc-20160816;
-        b=fJwdtT0Zfcsy1OP4RIyweh4VdqraDXFFV/RUN99zR1CG/6ENthozsICzqShjA5tdBw
-         Pm8juteY49l0UgnSWV9mHEOz50UFGgiDT3Dh1uXdRcr4mGE/DBU9sERADepkc9BXMKNL
-         CpKFiwjGAbo+yxSRnSWw7rapW3URcaePZ3iyOnF8hvm5q6p+mLMNm5WOcTg2SWhrt06A
-         pxLi0F0m5cmO0t9Q/yHjjPyvYRCJi01j05M6679ZZDoBPAdJdcUNIStsjFvjVCFn7UPc
-         k/XzG5DGnK3Xlp066T7hknl4//bZEQ901agTaLmcCa6SWZ7Nv0Uj7vkEbHPU1f7jycOv
-         DbwA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=adrSda76QhQo5531aZw0/0/isUspkONf17Uchig3FP4=;
-        b=g/k4Xq8uVMbsVDQDKyENJW2gn2MN0A8iwf+u7keS+BuZUHfrerRu3CmZ+d+cAi9bLL
-         +jmsOKb5G4hWpBIbpKUT6ASFXeaRDb+DqWM4M2ZsRenjeR9jhiO4qB/HAuC0n7I3Y+Kf
-         dnZhu4cDkVFBUgD5YQI1HyaHpSrv821BhQhRw2a7wg85e17vqkW1ClD7ZGTN3C9A2+vW
-         RXywxrqDc9066ON9m4SzAVQAW3QVs2PciA5pRanP5/Ou+T4a4Z9oZF7AaP+TJw54M6+4
-         t2h+Uq2SVh/T7uXaNY/S1qJX2NthltkZ+lQKF1ni+oJe+jApMHUmkXuY7FH6BDSsK5GG
-         GGig==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=hGJcW8hR;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+        b=wbURFBGiU0GU+X1mNwL7z62qi/SoVHPleiov7H3YEcoyofcGYw4PPlQcQE/L1gw+dy
+         Bg3BreZ0zQ8Esgjmd47Om+39XzsHHyudsmygxnBCGXboHNITWSfIjpkxFLM85fm/GRdl
+         CXb7fEyUsN+1Tq+Fwbdd34uBA7BQRVj3IaAJDK/91QbsONHL87u0935rZXAMy5JNr3Xe
+         zRli2PiGH+L3jZ//oSlhdigb+KjiVrOBJEjwmJogBd7YkpsBb06/ZqVE5jS3JNvwqrR0
+         f8QJtCVtfU4lr8h+J7nalLS1/er4vmWnIiVKou1CMkADOogY7WHXnlC7D3Id8FAZkVyM
+         zGgg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=GjDWc7161JU0M8MQqKFpVI4yTllMsLQ9FyNi4oBBezY=;
+        b=v+9Y1l+FrkvrhauUmzEK0+YXq2FfWaLIlVgQzsf0V2QCsHKVRIUG0B+pPgX8UPkCWg
+         2KL6mmKQXDblwNge7bie3X2yIlm/i9MGOlHakdb583P9XZQDf+pwsIr35hNA4I2ATEfR
+         i3Iex1Syur1D7Co9jzGVNNYOMF+05XJiYyVRMK/8W7M+AyvX30nZ4kG0vOAMHTOG4zXN
+         rQYFpLSwYUToWY6BEAe+hLHXSDyCfaQKduJPo2RXtx8nQT1uUz9qc0Kg9hSSyU+5dM0A
+         YrzDD+2kGeLG2Pf2HzuX/wYZhVwBdzXHFiSpvHG8cJAYSpBxGdAZ+pGRC6/zwvUT5qVN
+         tMkA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ok+1R7hP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a16si17050940ilq.77.2021.08.31.09.39.04
+        by mx.google.com with ESMTPS id d6si18450136wrz.140.2021.08.31.09.05.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 09:39:04 -0700 (PDT)
+        Tue, 31 Aug 2021 09:05:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=hGJcW8hR;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:58968 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ok+1R7hP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44822 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL6mt-0001BN-Mi
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 12:39:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45456)
+	id 1mL6Gm-0004us-6B
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 12:05:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
- id 1mL6mi-00018j-Bh; Tue, 31 Aug 2021 12:38:52 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:35518)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
- id 1mL6mf-00042a-PC; Tue, 31 Aug 2021 12:38:51 -0400
-Received: from pps.filterd (m0044010.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 17VGU4fu024933; Tue, 31 Aug 2021 09:38:29 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : references : in-reply-to : content-type : content-id
- : content-transfer-encoding : mime-version; s=facebook;
- bh=adrSda76QhQo5531aZw0/0/isUspkONf17Uchig3FP4=;
- b=hGJcW8hRRCe/UczstHZgjZgy8kcORNVlhZbegjm6o8h0B3g8mZv0mjnsKbtairLOCFO4
- B2KHqVh2sh9avx6Y4jlok2iF1RPbqkp/9R9XoQt2fPTjWaXHFUI4Tcu3fOkyabueb0Cu
- VyxeFzA0QXxR8AzcJCKq2TBxsHgPL7fz1DU= 
-Received: from mail.thefacebook.com ([163.114.132.120])
- by mx0a-00082601.pphosted.com with ESMTP id 3arnw1bjxp-11
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Tue, 31 Aug 2021 09:38:28 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (100.104.98.9) by
- o365-in.thefacebook.com (100.104.94.230) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Tue, 31 Aug 2021 09:38:24 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SxG69l3g/18Y2qdVem0pSd9LeQJSdZfVdHCUbvFF6SbtHiXvXFyjDfY0377kwlBBDjee/6hBczULHLCMYAHGVnkISvnaj+F9jUPWZ+0VgG+rRF1jzg0j8DzdbNrZM/MjJ2s4ZGtK5xa2QBTT5GsW57qnF0iIfsj2rGFinCfwdxVRmh6wiONuBZ8wYRKR4zXwnMEL/J2LVVsJOKjs73/Ic9JXXVg5GMAdbYfqmOfZnVSZDz889IlRl4rJnV9hpLVUtLyCe+yW+SaGQLFi6bxyz3DU53SHf3Oax07cHk4STCFIwSfhFd2gQ6qi+fv1lA6qI/dZs8YQrIcSXnBzrGU0tw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=adrSda76QhQo5531aZw0/0/isUspkONf17Uchig3FP4=;
- b=AG9+fsmCh08dtr4sQSU9yN8j1Ey7Wcbw70VqL6JIq3g9jLtZ2K+E4uISTj0vlHQVvN1kzrk1aSOXusfAskTi9K+DHkd3q6ymDV61WxrgFEj6uPNJSWrYjDrx6jBdlLZ8xDhZTupnugrR/pFfl8vv+ADzABXxlf/RYF4EjkwZtvyzQaFW73oEqHw7FoZ5fph8tD3Gwhgmr0wCu4Q2Q2h0gytP6GZKCSz/XTNH/b2ZKuMXh012ZzhpiyDrS52QsnYT7F9qfCPKpcGLqJKT6g8ciKqIBMZ1/gOD98xjk6KfktJopdGV+R8f6oDKEcjKJ9HbxvC8tOeMnNFL2a01+TTJxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
- by BY5PR15MB4276.namprd15.prod.outlook.com (2603:10b6:a03:1b2::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.23; Tue, 31 Aug
- 2021 16:38:24 +0000
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::39cf:cf4c:885c:9368]) by BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::39cf:cf4c:885c:9368%7]) with mapi id 15.20.4457.024; Tue, 31 Aug 2021
- 16:38:24 +0000
-From: Peter Delevoryas <pdel@fb.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-CC: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, "joel@jms.id.au"
- <joel@jms.id.au>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mL6Bh-0006Bd-6O; Tue, 31 Aug 2021 12:00:39 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:40625)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mL6Bd-00024f-Ok; Tue, 31 Aug 2021 12:00:36 -0400
+Received: by mail-wr1-x434.google.com with SMTP id t15so22347082wrg.7;
+ Tue, 31 Aug 2021 09:00:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=GjDWc7161JU0M8MQqKFpVI4yTllMsLQ9FyNi4oBBezY=;
+ b=ok+1R7hPtyOFpl7a72lMwMqhulbA/a2c2Wc1NImQ0+gDAxfvK00TKoiQHyh7WdIesM
+ JEJ+rZ7T7oklq3hwdXpAiZ/bWJWjMs+elzTCuIyzr8GaxsD9bSpj3tKSlMGo2Gxm31y/
+ y/soI0eIICwh7F+jpb3zIQgRECnOdmZ8zYkJ4RqTEMV19qjo6r7+xlo2hWar+rFMD3kq
+ 1cNksfTVmqMXHBkUsv9EvweiyrXW34+Vl5iQBtZp6l8+kDPJoHd7v/4o+uCZRHDW7Zdg
+ qoARD13OLTVjYC2kzn4lyBnfCzOMap9Gh+Pu1JX4qj0rZz0v6kH1EAsz96KLp0SzIPvL
+ RoxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=GjDWc7161JU0M8MQqKFpVI4yTllMsLQ9FyNi4oBBezY=;
+ b=A4ObEvo9zs3Ig3cyarGuZ4YqskKoBenqqM9iFC+81xScdgngAXLvO8ONOLaONwG0rZ
+ QhSy/q3oT/Aik/ko9Yh/zT1AvtkAYwRavrEjnIi1l0Ej+E+PWewxDdRH/uM+UN848Rc1
+ x87rpq9zcznRvuiauHaWBjVY6bvXO4PUdKu371XXt4WABMYYxnSihoyTlZYbTW7IDTSl
+ xZ/XYOucWbGo7rdc0y9cWXFgI0xBVs+tSYJEr3d/D0HIk0XCuhB/T/KJy/jlONqqnraX
+ BRLyS+UgWkjGAdD62+sACQNLz4i9MXcMOpfZBwkDtrMP9TSzLqQOhdagIvMsQdgcmPYY
+ 4LeA==
+X-Gm-Message-State: AOAM530xFXMcZIQl3TfDj9sAqCkjLDpVyMgWsSplaIUyiXqpqbJb1F2l
+ m7lPqmvBW8De4mog15uEIvbYV2Vuc2Y=
+X-Received: by 2002:adf:cd0f:: with SMTP id w15mr32688559wrm.346.1630425630160; 
+ Tue, 31 Aug 2021 09:00:30 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id o8sm2618404wmp.42.2021.08.31.09.00.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Aug 2021 09:00:29 -0700 (PDT)
 Subject: Re: [PATCH 3/5] hw/arm/aspeed: Add fuji machine type
-Thread-Topic: [PATCH 3/5] hw/arm/aspeed: Add fuji machine type
-Thread-Index: AQHXm4djy02Xdrkh9Eqde0Cl/c+kM6uIll4AgAB97U6ABLdIAIAACpiA
-Date: Tue, 31 Aug 2021 16:38:23 +0000
-Message-ID: <2134A466-2C51-41F8-849C-434AF05EF018@fb.com>
+To: Peter Delevoryas <pdel@fb.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>
 References: <20210827210417.4022054-1-pdel@fb.com>
  <20210827210417.4022054-4-pdel@fb.com>
  <5278af17-e56a-772a-21fe-8594790427d3@kaod.org>
  <BYAPR15MB3032502C1B7CE0F8E8431C73ACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
- <7ebbc78c-2deb-de51-5c7e-301633cead6e@amsat.org>
-In-Reply-To: <7ebbc78c-2deb-de51-5c7e-301633cead6e@amsat.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: amsat.org; dkim=none (message not signed)
- header.d=none;amsat.org; dmarc=none action=none header.from=fb.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1a3f56c5-3367-4e8e-0893-08d96c9dc03a
-x-ms-traffictypediagnostic: BY5PR15MB4276:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BY5PR15MB4276ED9103DFC956FE3B0E60ACCC9@BY5PR15MB4276.namprd15.prod.outlook.com>
-x-fb-source: Internal
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: keSHCYWI7Lj/b5s7NBqHsz74ECSUd6FzwldzeRk8b7UoqS34YyD8ppJ4xzynOtAe2t4chlyF2bWF4eCyn6stdqut/n6p7Xk+OsY1iqB851uwB9d1U6qf8GRjoC+DHIoXj4mCtIyVr5GXr1Lh5NnCgd8dYLKipWLH2XbJsPX5hu6kt5Bbc4KUAZUn2UDr0+9dnZ5vSl4++hDSQqY6E8DtfCH84hAtkpRJMcdjFUptsrI11Y8wsH89UeDtQIK4sZKiWdZRKe+Ht6ACvs1+uGyeVWGJFKOuZpq7BO6stqdh3b3vFjIi94v61a+JguPMncuWvuNeCEEmI65R9cQpEmUDD0+Gm83YZRz9eyAGahkPybRy+Cw89rJYZROokHqWEnh4s9ZdgAwMPYuncIs8id1RWnhWJ0Nj/YQcfkgUtLTBfHrF0I8zZQAOPSmKeacN3o9vLYSqVlCvFRaAythNYUt6XfssiTltJZ3SIo+5lJGnajZuIFOv2xf2PQp8wKsDG4foPY1ALohp0K3On9Abw2I7MjhrvImeDiYkjAewceoOUzxzPPps2xLZKLhjsVta3PFDqgeZ43AtLJ+TgvPVr9vcK8absAFkL88uH0G9j53+Q80gqSVhdWU2nBRAGuEM1My1UXitfGphKgG2r0agFJ9XSsKNNU2Ffg+zjPTTeNjnYQb1Ia4XYc9COKxlXugT/mf5yUDOwGQrxX1ek1L2NOX5bJ5Tcavgq8LsDbPX4+8Gqkmw4T4Cvlpfnn62o9+/opq3QB2fRUmO7mKRZ3Niy09BTSpVPL7cU2ogN7qihfVPzeBPNLxztbbGt/sDPWUZOuAY9A6eMZA+MDTVZR1uZ4UBxw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(346002)(376002)(136003)(366004)(39860400002)(6512007)(8676002)(6916009)(6486002)(5660300002)(2906002)(4326008)(186003)(38100700002)(316002)(54906003)(8936002)(122000001)(6506007)(53546011)(76116006)(38070700005)(66556008)(64756008)(2616005)(66476007)(66446008)(33656002)(66946007)(966005)(86362001)(478600001)(71200400001)(36756003)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZVk1RFhNTG5wMjdiNmVoNVkwK0tCd3RqTWRvSEdRK0F4U21Yd2VkbERZcURK?=
- =?utf-8?B?cXVzTnV0Q3JoNmI0YVV3bFZ2WTcwTG1PNml4TWptcU1SOHkvbmlkbEhpY0ZW?=
- =?utf-8?B?dDVtNGZwTHlteDNXT0RyVS9YcWFYM1VWU1M1dmNvQ0RRZTNCZmVJd0VRWU1i?=
- =?utf-8?B?Sy9VL3NERENPOTlXaEVXTmRGbmw0NStORk8wREhuS09tZGRmTkhpS251TGg5?=
- =?utf-8?B?Ny9PbnE1NjYxREhDOVhlMkVaU1RzQUMwTzEwS09zaWw2OTYvakVQUzlKTXdW?=
- =?utf-8?B?QzBFQ0poeThHUUlkOWI3WW5OSGhZL0hzRDdZdVVkRUk4NEl1M3pUbDNMYVpw?=
- =?utf-8?B?b2RsZzdDVGhQcjQySnJia2JKenVFL2hqYjVYUkoyeVY1Z2thazJRSjloYTBP?=
- =?utf-8?B?dzYvSUhSYnl5SE4wSFhETnFLYWU4UlFIT2IvdzR5c3RDdWcxeFJJd1BJaXlD?=
- =?utf-8?B?S1RyV2F2OEEyak1TSWJoYUZsek5GN2lHUXZMT29sbDVGaG1SVUMwVUdyZTM1?=
- =?utf-8?B?VGZidm10VE43SnJiRmprVWkyK0ErdFJxVUJqcXpkR2pZMk5yUVBXVVJDMDBB?=
- =?utf-8?B?MDNkd0hUZzJEU1AvWk9zUEZsRVI5N04wNHNmSU1XOVNkWXJMbU1ZRGtyQk01?=
- =?utf-8?B?QSs3elo3VWoyRGh4ZVRWY2J2OEFldFl4NkkzNU9oUWZWMmsycHIzL1lnbVlp?=
- =?utf-8?B?bmJpZmQ0ZldyM0xaSWpMMG5PSmYxQ1lUVS94SDdNclUwbmFrOC9MUGRrVUEx?=
- =?utf-8?B?QUpLQjBnckNSREY3U0UyVkZCMzJ4MXZxZTlTdVBXQzhYenM2SDBhUUlXbXgy?=
- =?utf-8?B?bGVtWjVBd0F1OXBrRWRTdnlhU0lIUm96NTFUMHZmVTZPTHJHeVZGd2h0Qll6?=
- =?utf-8?B?R3VyNndLNmpWWFYzQTBXNDQ0SXRXRnRTQjZDa2dIOWpwQXV0WXBBbGxwSmNK?=
- =?utf-8?B?bXpNckIwMFRVdm9LaFRUYzE5ekU0eVl2czROUEFqbWxZK2hCa1FUYVRqb1lZ?=
- =?utf-8?B?RFhNZE1UUE0vQnZJWnhkN1ZFazBwQ3llMENKT3ByeE43Y2EvNUs2VElMSWRh?=
- =?utf-8?B?ajZUZHlEUk1oQnBEZFJoNnJwUTlBRE1EWlBzcTdsUXlueVRWazdUWTRlT3lQ?=
- =?utf-8?B?Wjd5MmtkbVhML0xkTUNBalg0NDlJTXFEem56QTMxNGJWUFN6d3huQVg4K003?=
- =?utf-8?B?bjNYczhlaWR0c1pudUMvUE5lWEw0QWRzQ3VXOVBxaEZHd3h3SVd5akFxWEhG?=
- =?utf-8?B?NjZ1Q3Q5ejZYZkxaNWloUC9SMDRBWENKNzUwczZ1WVVTRlppMzlvemJRZU5r?=
- =?utf-8?B?Z2VpL0VxTWkyR3J4aHNoZG1reDlJeno3M3dHb0ZDaVlMckhuYmJ2ZHprTWUx?=
- =?utf-8?B?VjdDWVlKblFzaWhKcDg3dEVKenZhM1N6Z21oWFVMWnVRdGJtZGI5ZGtlenlI?=
- =?utf-8?B?NVY1OUhHY2FHUDFjSHpjNUkxM0tZMXZlUFRndWFVTmF2YUkvcSt2OEd5OEh0?=
- =?utf-8?B?TnQ4b2FQYUxGVHRRR1c4ZkdSb0dvSk5QZERKSzl0aXpWaHBpRWZqVEdFclhq?=
- =?utf-8?B?ZmRkUnJGTm1pMG1sczBRYnpGd2JYUDZKaTRQL3BQT3pFMXoxS1lGcjl2YVg5?=
- =?utf-8?B?am15OUpNR2oyZjcxZFhYcktrbnZTVWRuUDEzbnV1UWtpTHFxK2FwVmN3VUh3?=
- =?utf-8?B?Y1BHMWlOZDNDZFlIS3pDR0VCRFZ4aVY1VUtNK0JsNXp4V0Rpb0Q3ZS9SZitE?=
- =?utf-8?B?b1NVdTVRcXZiYkZybTNhZ2NRSlQxSG1rV1dNOGtDOFNXZGZscTFFTXlYYTV6?=
- =?utf-8?Q?ccy3Z6crnctXBZVQ304LqM6xc3aqM9UDwGLdI=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <2C02FC0562CED14CBFD2CF5221A3AF54@namprd15.prod.outlook.com>
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1a3f56c5-3367-4e8e-0893-08d96c9dc03a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2021 16:38:23.8660 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: J7FPfRxNKqaIZzMxlKdsb6NCMZtE1ZCXrZqAmS8b6W1aUdascjc1uRwCsKc9y8HY
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR15MB4276
-X-OriginatorOrg: fb.com
-X-Proofpoint-ORIG-GUID: 4xN09ty52_K6A8bQsxGzOK2iBFsqVp3L
-X-Proofpoint-GUID: 4xN09ty52_K6A8bQsxGzOK2iBFsqVp3L
-Content-Transfer-Encoding: base64
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <7ebbc78c-2deb-de51-5c7e-301633cead6e@amsat.org>
+Date: Tue, 31 Aug 2021 18:00:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-08-31_07:2021-08-31,
- 2021-08-31 signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- clxscore=1011
- malwarescore=0 adultscore=0 spamscore=0 priorityscore=1501 impostorscore=0
- phishscore=0 suspectscore=0 mlxscore=0 bulkscore=0 mlxlogscore=999
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2107140000 definitions=main-2108310089
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=88771d3da1=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <BYAPR15MB3032502C1B7CE0F8E8431C73ACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.932,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -209,65 +121,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "joel@jms.id.au" <joel@jms.id.au>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mbj5Pu7IjOiF
+X-TUID: vKteS45AzXdn
 
-DQoNCj4gT24gQXVnIDMxLCAyMDIxLCBhdCA5OjAwIEFNLCBQaGlsaXBwZSBNYXRoaWV1LURhdWTD
-qSA8ZjRidWdAYW1zYXQub3JnPiB3cm90ZToNCj4gDQo+IE9uIDgvMjgvMjEgNjowMCBQTSwgUGV0
-ZXIgRGVsZXZvcnlhcyB3cm90ZToNCj4+IEFjdHVhbGx5IHllcyEgSSBzaG91bGQgaGF2ZSBpbmNs
-dWRlZCBhIGxpbmsgdG8gaXQ6DQo+PiBodHRwczovL2dpdGh1Yi5jb20vZmFjZWJvb2svb3BlbmJt
-Yy11Ym9vdC9ibG9iL29wZW5ibWMvaGVsaXVtL3YyMDE5LjA0L2FyY2gvYXJtL2R0cy9hc3BlZWQt
-Ym1jLWZhY2Vib29rLWZ1amkuZHRzDQo+IA0KPiAoT24gdGVjaG5pY2FsIGxpc3RzLCBpdCdzIGJl
-c3QgdG8gYXZvaWQgdG9wLXBvc3RpbmcsIGFuZCB0bw0KPiBpbnN0ZWFkIHJlcGx5IGlubGluZSB0
-byBtYWtlIHRoZSBjb252ZXJzYXRpb24gZWFzaWVyIHRvIGZvbGxvdykuDQo+IA0KPiBDYW4geW91
-IGFkZCBhIHRlc3QgZm9yIHlvdXIgYm9hcmQgcGxlYXNlPyBTZWUgZXhhbXBsZXMNCj4gaW4gdGVz
-dHMvYWNjZXB0YW5jZS9ib290X2xpbnV4X2NvbnNvbGUucHk6DQo+IC0gdGVzdF9hcm1fYXN0MjUw
-MF9yb211bHVzX29wZW5ibWNfdjJfOV8wDQo+IC0gdGVzdF9hcm1fYXN0MjYwMF9kZWJpYW4NCg0K
-KFNvcnJ5IGFib3V0IHRoYXQsIEnigJlsbCByZXBseSBpbmxpbmUgbm93KQ0KDQpZZWFoIGFic29s
-dXRlbHksIHRoYW5rcyBmb3IgcG9pbnRpbmcgdGhvc2Ugb3V0OiBJIGFjdHVhbGx5IHJlc3VibWl0
-dGVkIFtQQVRDSCA1LzVdDQpzZXBhcmF0ZWx5IGFscmVhZHksIHNob3VsZCBJIGp1c3Qgc3VibWl0
-IGl0IGFnYWluIGFzIFtQQVRDSCB2Ml0gd2l0aCB0aGUgdGVzdHMsDQpvciB3b3VsZCB5b3Ugd2Fu
-dCB0byByZXBseSB0byB0aGF0IHBhdGNoPyBJ4oCZbGwgaW5jbHVkZSBhIGNvdmVyIGxldHRlciB0
-aGF0IGhhcyBhDQpkaWZmLXN0YXQgb2YgdGhlIHRlc3QgY2hhbmdlcyByZWdhcmRsZXNzIEkgc3Vw
-cG9zZSwgc28gaXTigJlzIHByb2JhYmx5IG5vdCBuZWNlc3NhcnkNCnJpZ2h0Pw0KDQpUaGFua3Ms
-DQpQZXRlcg0KDQo+IA0KPj4gKkZyb206ICpDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3Jn
-Pg0KPj4gKkRhdGU6ICpTYXR1cmRheSwgQXVndXN0IDI4LCAyMDIxIGF0IDE6MjggQU0NCj4+ICpU
-bzogKlBldGVyIERlbGV2b3J5YXMgPHBkZWxAZmIuY29tPg0KPj4gKkNjOiAqam9lbEBqbXMuaWQu
-YXUgPGpvZWxAam1zLmlkLmF1PiwgcWVtdS1kZXZlbEBub25nbnUub3JnDQo+PiA8cWVtdS1kZXZl
-bEBub25nbnUub3JnPiwgcWVtdS1hcm1Abm9uZ251Lm9yZyA8cWVtdS1hcm1Abm9uZ251Lm9yZz4N
-Cj4+ICpTdWJqZWN0OiAqUmU6IFtQQVRDSCAzLzVdIGh3L2FybS9hc3BlZWQ6IEFkZCBmdWppIG1h
-Y2hpbmUgdHlwZQ0KPj4gDQo+PiBPbiA4LzI3LzIxIDExOjA0IFBNLCBwZGVsQGZiLmNvbSB3cm90
-ZToNCj4+PiBGcm9tOiBQZXRlciBEZWxldm9yeWFzIDxwZGVsQGZiLmNvbT4NCj4+PiANCj4+PiBG
-dWppIHVzZXMgdGhlIEFTVDI2MDAsIHNvIGl0J3MgdmVyeSBzaW1pbGFyIHRvIGBhc3QyNjAwLWV2
-YmAsIGJ1dCBpdCBoYXMNCj4+PiBhIGZldyBzbGlnaHQgZGlmZmVyZW5jZXMsIHN1Y2ggYXMgdXNp
-bmcgVUFSVDEgZm9yIHRoZSBzZXJpYWwgY29uc29sZS4NCj4+IA0KPj4gRG8gd2UgaGF2ZSBhIHB1
-YmxpYyBEVFMgZm9yIHRoaXMgYm9hcmQgPw0KPj4gDQo+PiBUaGFua3MsDQo+PiANCj4+IEMuDQo+
-PiANCj4+PiANCj4+PiBTaWduZWQtb2ZmLWJ5OiBQZXRlciBEZWxldm9yeWFzIDxwZGVsQGZiLmNv
-bT4NCj4+PiAtLS0NCj4+PiAgIGh3L2FybS9hc3BlZWQuYyB8IDEzICsrKysrKysrKysrKysNCj4+
-PiAgIDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspDQo+Pj4gDQo+Pj4gZGlmZiAtLWdp
-dCBhL2h3L2FybS9hc3BlZWQuYyBiL2h3L2FybS9hc3BlZWQuYw0KPj4+IGluZGV4IGZmNTNkMTIz
-OTUuLmQyZWI1MTZhMWQgMTAwNjQ0DQo+Pj4gLS0tIGEvaHcvYXJtL2FzcGVlZC5jDQo+Pj4gKysr
-IGIvaHcvYXJtL2FzcGVlZC5jDQo+Pj4gQEAgLTEwMjksNiArMTAyOSwxNSBAQCBzdGF0aWMgdm9p
-ZA0KPj4gYXNwZWVkX21hY2hpbmVfcmFpbmllcl9jbGFzc19pbml0KE9iamVjdENsYXNzICpvYywg
-dm9pZCAqZGF0YSkNCj4+PiAgICAgICAgICAgYXNwZWVkX3NvY19udW1fY3B1cyhhbWMtPnNvY19u
-YW1lKTsNCj4+PiAgIH07DQo+Pj4gIA0KPj4+ICtzdGF0aWMgdm9pZCBhc3BlZWRfbWFjaGluZV9m
-dWppX2NsYXNzX2luaXQoT2JqZWN0Q2xhc3MgKm9jLCB2b2lkICpkYXRhKQ0KPj4+ICt7DQo+Pj4g
-KyAgICBNYWNoaW5lQ2xhc3MgKm1jID0gTUFDSElORV9DTEFTUyhvYyk7DQo+Pj4gKyAgICBBc3Bl
-ZWRNYWNoaW5lQ2xhc3MgKmFtYyA9IEFTUEVFRF9NQUNISU5FX0NMQVNTKG9jKTsNCj4+PiArDQo+
-Pj4gKyAgICBtYy0+ZGVzYyA9ICJGYWNlYm9vayBGdWppIEJNQyAoQXNwZWVkIEFTVDI2MDAsIENv
-cnRleC1BNykiOw0KPj4+ICsgICAgYW1jLT5zZXJpYWxfZGV2ID0gQVNQRUVEX0RFVl9VQVJUMTsN
-Cj4+PiArfQ0KPj4+ICsNCj4+PiAgIHN0YXRpYyBjb25zdCBUeXBlSW5mbyBhc3BlZWRfbWFjaGlu
-ZV90eXBlc1tdID0gew0KPj4+ICAgICAgIHsNCj4+PiAgICAgICAgICAgLm5hbWUgICAgICAgICAg
-PSBNQUNISU5FX1RZUEVfTkFNRSgicGFsbWV0dG8tYm1jIiksDQo+Pj4gQEAgLTEwNzgsNiArMTA4
-NywxMCBAQCBzdGF0aWMgY29uc3QgVHlwZUluZm8gYXNwZWVkX21hY2hpbmVfdHlwZXNbXSA9IHsN
-Cj4+PiAgICAgICAgICAgLm5hbWUgICAgICAgICAgPSBNQUNISU5FX1RZUEVfTkFNRSgicmFpbmll
-ci1ibWMiKSwNCj4+PiAgICAgICAgICAgLnBhcmVudCAgICAgICAgPSBUWVBFX0FTUEVFRF9NQUNI
-SU5FLA0KPj4+ICAgICAgICAgICAuY2xhc3NfaW5pdCAgICA9IGFzcGVlZF9tYWNoaW5lX3JhaW5p
-ZXJfY2xhc3NfaW5pdCwNCj4+PiArICAgIH0sIHsNCj4+PiArICAgICAgICAubmFtZSAgICAgICAg
-ICA9IE1BQ0hJTkVfVFlQRV9OQU1FKCJmdWppIiksDQo+Pj4gKyAgICAgICAgLnBhcmVudCAgICAg
-ICAgPSBNQUNISU5FX1RZUEVfTkFNRSgiYXN0MjYwMC1ldmIiKSwNCj4+PiArICAgICAgICAuY2xh
-c3NfaW5pdCAgICA9IGFzcGVlZF9tYWNoaW5lX2Z1amlfY2xhc3NfaW5pdCwNCj4+PiAgICAgICB9
-LCB7DQo+Pj4gICAgICAgICAgIC5uYW1lICAgICAgICAgID0gVFlQRV9BU1BFRURfTUFDSElORSwN
-Cj4+PiAgICAgICAgICAgLnBhcmVudCAgICAgICAgPSBUWVBFX01BQ0hJTkUsDQo+Pj4gDQo+PiAN
-Cj4gDQoNCg==
+On 8/28/21 6:00 PM, Peter Delevoryas wrote:
+> Actually yes! I should have included a link to it:
+> https://github.com/facebook/openbmc-uboot/blob/openbmc/helium/v2019.04/arch/arm/dts/aspeed-bmc-facebook-fuji.dts
+
+(On technical lists, it's best to avoid top-posting, and to
+instead reply inline to make the conversation easier to follow).
+
+Can you add a test for your board please? See examples
+in tests/acceptance/boot_linux_console.py:
+- test_arm_ast2500_romulus_openbmc_v2_9_0
+- test_arm_ast2600_debian
+
+> *From: *Cédric Le Goater <clg@kaod.org>
+> *Date: *Saturday, August 28, 2021 at 1:28 AM
+> *To: *Peter Delevoryas <pdel@fb.com>
+> *Cc: *joel@jms.id.au <joel@jms.id.au>, qemu-devel@nongnu.org
+> <qemu-devel@nongnu.org>, qemu-arm@nongnu.org <qemu-arm@nongnu.org>
+> *Subject: *Re: [PATCH 3/5] hw/arm/aspeed: Add fuji machine type
+> 
+> On 8/27/21 11:04 PM, pdel@fb.com wrote:
+>> From: Peter Delevoryas <pdel@fb.com>
+>>
+>> Fuji uses the AST2600, so it's very similar to `ast2600-evb`, but it has
+>> a few slight differences, such as using UART1 for the serial console.
+> 
+> Do we have a public DTS for this board ?
+> 
+> Thanks,
+> 
+> C.
+> 
+>>
+>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>> ---
+>>  hw/arm/aspeed.c | 13 +++++++++++++
+>>  1 file changed, 13 insertions(+)
+>>
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index ff53d12395..d2eb516a1d 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -1029,6 +1029,15 @@ static void
+> aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+>>          aspeed_soc_num_cpus(amc->soc_name);
+>>  };
+>> 
+>> +static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+>> +{
+>> +    MachineClass *mc = MACHINE_CLASS(oc);
+>> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>> +
+>> +    mc->desc = "Facebook Fuji BMC (Aspeed AST2600, Cortex-A7)";
+>> +    amc->serial_dev = ASPEED_DEV_UART1;
+>> +}
+>> +
+>>  static const TypeInfo aspeed_machine_types[] = {
+>>      {
+>>          .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+>> @@ -1078,6 +1087,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>>          .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+>>          .parent        = TYPE_ASPEED_MACHINE,
+>>          .class_init    = aspeed_machine_rainier_class_init,
+>> +    }, {
+>> +        .name          = MACHINE_TYPE_NAME("fuji"),
+>> +        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
+>> +        .class_init    = aspeed_machine_fuji_class_init,
+>>      }, {
+>>          .name          = TYPE_ASPEED_MACHINE,
+>>          .parent        = TYPE_MACHINE,
+>>
+> 
+

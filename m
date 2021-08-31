@@ -1,201 +1,94 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3890936lfb;
-        Mon, 30 Aug 2021 02:04:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzsEkbJyww51WuEkgDEvMt2LY5KUi6R4QtsrJtzij2aZnjMVKMsoCOPTX18G/g6HoJxttzy
-X-Received: by 2002:a6b:f30b:: with SMTP id m11mr16527668ioh.0.1630314266376;
-        Mon, 30 Aug 2021 02:04:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1630314266; cv=pass;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4902847lfb;
+        Tue, 31 Aug 2021 03:40:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxG71wk8g9Ep5jnjlkQUe5c0BPQQZsu0R5e8Zq0QW8gMPGbLw1NXaJLWIVm/3W5YHxO1oqr
+X-Received: by 2002:a05:6638:271e:: with SMTP id m30mr2191233jav.90.1630406425761;
+        Tue, 31 Aug 2021 03:40:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630406425; cv=none;
         d=google.com; s=arc-20160816;
-        b=QvuxWdQwglhZbRdcUbphebAu2DflRTBWtfpxNiioviz7uSLKJ4OZOXja5qhsm0T36I
-         2r5PoQxW2NKfwYegxdpHLNJGt2vD0oT8LSLlZNY8rE45A1Jy//yUnX2LzDSnxR/NzDTA
-         eCuaj9LdQ8aWFSmJNiekSUArjYBbhUAYTZvRJ8jLYZrU1Jl/t73biA0tC5r4iK52wGBJ
-         7QjIZILla1trtO09bLKwT56ogYZpi6CYjlVqt6luf8WIBUf1IbAlJe+DymH4XDY3rQOW
-         VJSgLZn1GvR83Ntc6OtofqsWTKMFtNDKq/sDhOy8uwnzWxPXjyvYFONWM/H76SSWKf95
-         dzwg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=cIv5qw9TJflbxyyE3d+cgsi86t/WbBEW71w8DcnzfWhmLsrbd1ifwkNClBIrw/0ILZ
+         3IogY0/iszGADkvE+BddzeY2prU7A5ty4pXdLJ58p6LLN0CAeSgU0rjn6dXAibeBcTVh
+         k8hRbPY8IAnnSiWqgX58zwKeuO2zBFdG1Yw4QOjrS2TQxY/Ozq6n4FKYq3AvzMneXAir
+         k1IQDKY5KQ74tXUGA/DtqZiZF+SRDMXNyn4p8zA2WjIBcdz9SKwVZo4YZ8A7f7TGAxUb
+         k0EJaf7K/GuGNpVOOhX8NGCdqnduxRPp1h6te1MdlfRLZ5ytZyulYVdkddp1MPgeEz+f
+         M4RA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
-        bh=wSY60gMfvNOsQFZJZ2iSa3r0r2pw+M8wAYLx3Xpm86I=;
-        b=goonRsCJ4oEl9/NYNqKHH9VTmQPt37V4MMpeUOdIv4tyhPE9fUSKB7HwVmc/UX4hqF
-         QMHgCajEkc/dQQ33A2/E6F3NxACF9M79+DyHTfSgDJUys0JQOeZKh3iUWEwRAvtaTxBX
-         9LGKmhbjh98wNoCbMgWqL04K0+dFQ2aaOraLTQJoVkC6GDJwaHRlSbhFt/21Ng+/96Vh
-         slZyyOEoVRumeTcANcrXsamOcR4fdZ6et8b7EQp2AY9IteOhVIWHYmhmsHtjh1/12Pet
-         WnPK2vcVsq23ua/kwdhNEg0HMQZ7TzXKPgzNE3e4jb7GsOFAn87MoCIUkj930z3j4SC2
-         5HLw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b="E6UNN+/q";
-       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=YM7ObWxi;
-       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=bGlXP8m0j0UKP3ldDC/mXH9Z2u4TEbWPUJWj3hiMXDY=;
+        b=jxIgboZo3o8rZAhL5tf9aoMp+pWbibzmc7cZqkewzK7ld+xFF3i+3gnMw/XU9qSjDB
+         MdFPD2i3dTqJVemfv3Fq3HelhX+g2nNQVZo1dZPAvVhOefTfecrHjs6pKQ57oS4lTnXk
+         lIFwPuQ6hQBuXtO55QwUG9V0ePwAqIeiPypPgCJtoCjUpjv3MwM8UFdvMEqpad5D3ZnW
+         RPjPSS4TfFAereO5Q5RFVOnev9RvXtB91xAIJrpVCq9oeLffbsaYgwskpSvHxkPv07qJ
+         rnDpcOXP2Lx1gqct4m5OtaoMEOJn3NPJCyDZaSzi7pz9NQNm4lwLdwCICZerySE1PXj5
+         daKw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v14si13499350ioh.72.2021.08.30.02.04.26
+        by mx.google.com with ESMTPS id b1si17888308ilj.117.2021.08.31.03.40.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Aug 2021 02:04:26 -0700 (PDT)
+        Tue, 31 Aug 2021 03:40:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b="E6UNN+/q";
-       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=YM7ObWxi;
-       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
-Received: from localhost ([::1]:51158 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mKdDN-0006Tt-Mk
-	for alex.bennee@linaro.org; Mon, 30 Aug 2021 05:04:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42856)
+	id 1mL1Bp-0007bk-2h
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 06:40:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1mKdD5-0006TK-IT; Mon, 30 Aug 2021 05:04:07 -0400
-Received: from esa3.fujitsucc.c3s2.iphmx.com ([68.232.151.212]:40428)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mL1BU-0007bX-Vw; Tue, 31 Aug 2021 06:40:05 -0400
+Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:34565)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1mKdD1-0005br-2c; Mon, 30 Aug 2021 05:04:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
- t=1630314242; x=1661850242;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=0INh78yuOFe3MTKrbc+kct2cJL/lKsH3K0vpiexFSTc=;
- b=E6UNN+/qhfBhjjDP0NYPdMEe97ErFYGXgM7V4O1HzvczTQoLfOrSm3Jc
- DaZgiEqqKjAQxL8qxTY8wSL1e6uM1tDLjg0xY9UrOg7Fdd0xIetRHgicg
- sanjMqPMW77YsGANstmJPvjSj1ppMGYpIf2qQm3Rchs8SNRKqbOIhh3oo
- 64LV0jKCgN4VDA51WCdUh2h+jmRq8tVbXMwf2Jk4YPFC5ADKqmaNhbZHn
- St8adrqp7lCioJnMutkH4No2Sbso/FdhcjU87TwpYxweehV0sKdI1x2Kk
- 2s0lGroBTvJKRXL3S4GvYWqHIr8XAqHQIcZUpusb3dYzxbBRfTqlOj0po A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10091"; a="46097104"
-X-IronPort-AV: E=Sophos;i="5.84,363,1620658800"; d="scan'208";a="46097104"
-Received: from mail-ty1jpn01lp2054.outbound.protection.outlook.com (HELO
- JPN01-TY1-obe.outbound.protection.outlook.com) ([104.47.93.54])
- by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Aug 2021 18:03:58 +0900
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=U+eewnv0+XZApfXJ7X2Ph4bc+zDYe2wJyQV6kr9aszkEe/1yglYEdbCcYF1KN0WtM5IzHWWIFpH/1e36Gd7Upajz/FCef2GgXg5WMe15xPN2KntsINNHSwRVBGDzFMBfxshrQqMLPcSnuPDvlQExZUam8FBhMk5aoI8qom+sHHxTx6O+ZwwOofcGuG6eKH3RI1jQzlOADL5MYFCAAeKSUXIiANKGvtNZ+GV1orIW9bLSCrjYshqJdgWEjX/xz/ZSlcWEnrrpP75r6PvcALTnJKrhOa+Shg/scVosEjV3nw0awAwSl5laatmmNe4EvrVzeOJpK9C8au6DRRFWAMs0hw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wSY60gMfvNOsQFZJZ2iSa3r0r2pw+M8wAYLx3Xpm86I=;
- b=WoP2/ynSRVeGXq9kC3Bb1buUVasOxz0ef9Cjmd8t4Oxi1g/VH/AkewMC7WerUVH5Phh4czPFCQT492uA/3BbmlONWJRoSuwU8ZXz6+J8kHyvAjldNXTGhUAASyHdAj3smG81ai29qrJdGO2t5Mqjm6KrO/kNZ5q/E2Md+JeRrNtRBiLojBeFsi+/0OHbevkIghojGBYjWoWt/o6/ixLka+sDOyz+qscGnV8zU1PxytThBNseLWZXhZKg6oJlOV+7LbAuCqwesY1ta6zFC1I4iQYkFhuKX81qQY7e9AuEd4UJL/RBlUdU71G6JGur9focBK4pakkOQQg7+fVpJjASRg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
- dkim=pass header.d=fujitsu.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wSY60gMfvNOsQFZJZ2iSa3r0r2pw+M8wAYLx3Xpm86I=;
- b=YM7ObWxiXfD4jkHeHaZOpJ4h1xzFA4lNZZKZf0qW5p3Kre7qWAPtJ4WCmCUKCOaoTfgmhRPgeQuYS6fJHgJJ9uuFz5uQf5yIegfg2A11uS3ZifGfFJabSwudcyvIe9KO6ZMXk83YjsGN07l3/BSrG/30bzNs/xsyLWZW108zDys=
-Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com (2603:1096:400:4f::8)
- by TYXPR01MB1823.jpnprd01.prod.outlook.com (2603:1096:403:11::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.20; Mon, 30 Aug
- 2021 09:03:55 +0000
-Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com
- ([fe80::534:e385:3c19:21c0]) by TYCPR01MB6160.jpnprd01.prod.outlook.com
- ([fe80::534:e385:3c19:21c0%7]) with mapi id 15.20.4457.024; Mon, 30 Aug 2021
- 09:03:53 +0000
-From: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
-To: 'Andrew Jones' <drjones@redhat.com>
-Subject: RE: [PATCH v5 1/3] target-arm: Add support for Fujitsu A64FX
-Thread-Topic: [PATCH v5 1/3] target-arm: Add support for Fujitsu A64FX
-Thread-Index: AQHXnXkBmkwHse6yhkmDlHA0dHzCp6uLuiiAgAAFUKA=
-Date: Mon, 30 Aug 2021 09:03:53 +0000
-Message-ID: <TYCPR01MB61603DF612001EC80621742AE9CB9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
-References: <20210830082820.2690275-1-ishii.shuuichir@fujitsu.com>
- <20210830082820.2690275-2-ishii.shuuichir@fujitsu.com>
- <20210830083931.4fft4c5cv4c4ysni@gator.home>
-In-Reply-To: <20210830083931.4fft4c5cv4c4ysni@gator.home>
-Accept-Language: ja-JP, en-US
-Content-Language: ja-JP
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: =?iso-2022-jp?B?TVNJUF9MYWJlbF9hNzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZl?=
- =?iso-2022-jp?B?Y2UwNTBfQWN0aW9uSWQ9MmMyNjYyM2YtZTE1Yi00N2VjLWFkNDItZTY4?=
- =?iso-2022-jp?B?MWFmNzUxZmY3O01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFi?=
- =?iso-2022-jp?B?NGQtM2IwZjRmZWNlMDUwX0NvbnRlbnRCaXRzPTA7TVNJUF9MYWJlbF9h?=
- =?iso-2022-jp?B?NzI5NWNjMS1kMjc5LTQyYWMtYWI0ZC0zYjBmNGZlY2UwNTBfRW5hYmxl?=
- =?iso-2022-jp?B?ZD10cnVlO01TSVBfTGFiZWxfYTcyOTVjYzEtZDI3OS00MmFjLWFiNGQt?=
- =?iso-2022-jp?B?M2IwZjRmZWNlMDUwX01ldGhvZD1TdGFuZGFyZDtNU0lQX0xhYmVsX2E3?=
- =?iso-2022-jp?B?Mjk1Y2MxLWQyNzktNDJhYy1hYjRkLTNiMGY0ZmVjZTA1MF9OYW1lPUZV?=
- =?iso-2022-jp?B?SklUU1UtUkVTVFJJQ1RFRBskQiJMJT8lUhsoQjtNU0lQX0xhYmVsX2E3?=
- =?iso-2022-jp?B?Mjk1Y2MxLWQyNzktNDJhYy1hYjRkLTNiMGY0ZmVjZTA1MF9TZXREYXRl?=
- =?iso-2022-jp?B?PTIwMjEtMDgtMzBUMDg6NTg6MzJaO01TSVBfTGFiZWxfYTcyOTVjYzEt?=
- =?iso-2022-jp?B?ZDI3OS00MmFjLWFiNGQtM2IwZjRmZWNlMDUwX1NpdGVJZD1hMTlmMTIx?=
- =?iso-2022-jp?B?ZC04MWUxLTQ4NTgtYTlkOC03MzZlMjY3ZmQ0Yzc7?=
-authentication-results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=fujitsu.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 05fa4546-3663-45c6-9198-08d96b951785
-x-ms-traffictypediagnostic: TYXPR01MB1823:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <TYXPR01MB1823EDD3B5029575B87275CCE9CB9@TYXPR01MB1823.jpnprd01.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ez/BLykimu2pUBRpdThZENpgHv1DKXg4PQ9TX/Q4l9jsxihDzS0KIhKUtzwLcppxf95ABzrEuZAlLX2sUOnp3V1L90yhioSAxMwo7wLlmKWgpDuRDl3i7diRErdgpYstXQ79d2EZTsbzgJOV4gsTS9J9OVXaVTg9x02pFZ6VPgQJyhY4YtFALkGtFsGzqW6tFVtTvKf7FM4oQ/ionaXpFJentFqtrhzZSHPiUjUHkYjfaef4kr2Kqoudlq1KTe6ritynsL853obM959jTAIWo50cJoxnZoyf4XvCMFLVUyjfPGVlDDUAGn/dqiXZ8Yao8MB/Q84SIZ2eikIuE4j8Mn2OFoOwi22UeEu0zX3Eb/GUrImG4qo/DEJCfc9NhZOIvQjfrUnrWN9Rk7tU6R3tnEsKJGgz+WDLzSdOD4pgOa46gmvf35uyWlsNa9xjUjHCZY6NehPciqXcyfuvDuo/eX9sxDugsOXdvzGHH4oo9EaiYIIoGvTkyarR5RKXhvH8EYWA0RUHBpTts5+F3LdLLH4uyFqAgC5vs9y48DxmulOr0b7vevm1Ubqo22u9w8lqrUkA5nS2RB53Ck4Uk4dWd8vx7zq6fCgtWXyv5e1e4X87BgXHnpzL1gQic7TNC7Vcl5rAmBOJk+V7NzpYvTAyrvJTbB938CVXwB93gEmdC4z36ut4h3qs/br57RbcrbXauXb3T7kBi2tIvXeHiAQCng==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYCPR01MB6160.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(396003)(136003)(366004)(39860400002)(346002)(8676002)(83380400001)(316002)(6916009)(107886003)(54906003)(38070700005)(64756008)(478600001)(71200400001)(66446008)(85182001)(76116006)(66556008)(66476007)(66946007)(186003)(9686003)(5660300002)(26005)(4326008)(33656002)(38100700002)(2906002)(7696005)(53546011)(122000001)(6506007)(55016002)(52536014)(86362001)(8936002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-2022-jp?B?RXpOVk5qOXRtRzNGdHpQU3huQUswdXdtOXdTZHhMaU92azhkdkZsWTg4?=
- =?iso-2022-jp?B?YnRISkVsZXE2LzhRczhiRmxHb3ZlQmxVL1pjU2Fja2tBR01nUmJUUTRn?=
- =?iso-2022-jp?B?Y256SVFFYkswaWJ1RVRMY2E5bm9rS3R0b1psOEZtREhXSDEzcEZXMFJu?=
- =?iso-2022-jp?B?Z01xSUlNRzU2anFzU3ZvNGxRS1NvR3BBYW9hOW9VQlNtc05mVHZFc0Fv?=
- =?iso-2022-jp?B?RU9pdnZCNzBSTmN6SElXMWFCNHc0bythMmpPNnNxa09GU21scTZMdVhp?=
- =?iso-2022-jp?B?bFNUUTZRTjV2RktSVU1wVGJRMFdPTERXbk53bXRhUDFxUWNJNHZQMzQw?=
- =?iso-2022-jp?B?aGp2bHdyN2NvSXdLQUhSbjFnTU80OXlCZC83dVJFbHI2RkRyemtzekpo?=
- =?iso-2022-jp?B?aGNWT09OaDlpYkpTb2RwaWxwMDZPWWlwcDFLVHZRaVBhS1BvZXVDUE5x?=
- =?iso-2022-jp?B?NjZIYzNTWnJDc0d0TVlrY2tqUGxRbWh4Vnd1Z0xpWXdMNjh1NUpEUWFs?=
- =?iso-2022-jp?B?cmJPWDcySHlML1NPL3lwUStIVnk0SnZoaTNURm9LeE5teUIwRkYyUjdC?=
- =?iso-2022-jp?B?VkRFRm50Tm51bTVKYWhUVCt2RG9uK0R1a1crOUVuV2ZBVUlvbWYxOFpL?=
- =?iso-2022-jp?B?S2xTZmxpOVozS3VsOHJmQ2c4MGVWM2E0YUc4SEdwS0h3Nk1NTFBUdzYw?=
- =?iso-2022-jp?B?UlBWZWZLUTdRMG1LVyttT3pHZUg4c1RtTzRvRnc1NE5keDlhMGlSUms0?=
- =?iso-2022-jp?B?OXNXWWRNN1JUektzWlc4S1F1cjJObzQxQytqWkFaUHNuOGV6SDlRL0VT?=
- =?iso-2022-jp?B?czZkcmppSnB6dkxqV1JVUmRZMDdJcitDdWZkYkxqTDI5Y005Q05aWEJG?=
- =?iso-2022-jp?B?SzkzSklaWHdsWmg3ekM1MkZZMmFRZ0tSSmlrSUVyQzhBZmlDNkRWZk9M?=
- =?iso-2022-jp?B?REJueXBlTC9YQmxnSTI1SnFZbTRxb2M0dkJydjQ0SlZZTDNCSkdkTFBF?=
- =?iso-2022-jp?B?OFlaRGtyTnBYdi9oZjFtKy9HZGNRbWxvbG9CaEhvclk3WnR5d2wrN1Zm?=
- =?iso-2022-jp?B?TDIrTWNHTDJkcUVtTitmbXY5c2puemxPQ2N1UFg4bUlybzJ4TTc4RkQ1?=
- =?iso-2022-jp?B?UGNzekdOajZxR0J2QWNJOFBpQlYvckthR2FtdTFCVXJOTmtLUkJQcjdv?=
- =?iso-2022-jp?B?dmdoZVp6ZUYvL1RUYUNXUVJPVXl5d283ZzJYR05XU2Urd3VrYVdNeXQy?=
- =?iso-2022-jp?B?Vm5TUTdRakJRcWwxa2dBRnEwNFloUTNPUGxuOHB1K0hJSVUxcVJZMTBM?=
- =?iso-2022-jp?B?VmZiWlF5QmhWRTFMNUdqT3NwR0JBOUwzTG1DK0NqTlpYTnpTYkxaOHJF?=
- =?iso-2022-jp?B?ZXl4MjY3cTk3MEgwRnZ3OEJkTkpsRDNzZUVublFlTTRTdU9YaWhzNVRT?=
- =?iso-2022-jp?B?UGUyd3oyemxLdVJWMjVhOTNBYU9iSEZNTVZQb0dyN0svU2pJQnlKNVZl?=
- =?iso-2022-jp?B?amwrTE9IS0taRHI4RW4yckljclBUcWFhbkUzcWVXejR1dFo0dHRrNlNq?=
- =?iso-2022-jp?B?aXhGY2w5cUZPMlpuK2dFeHhxd2pxdytGZTZRcGFoQUcydEhNMXBxdGNY?=
- =?iso-2022-jp?B?cVg2QnEvcW5yL2tSd0NqdmtUbW5JZHJEdTdMNHRqYmIvakJvb0lhSGow?=
- =?iso-2022-jp?B?UEgwTi9KeDlSVzJUSnUvellvSkg5N3FsZnNGNy9vaGlReklQTTIwMU5D?=
- =?iso-2022-jp?B?OHYvQ2EyRnpmbFZTWTVNamM1dnBzME9USnQvRzFaaWp4R01zenFmUnFM?=
- =?iso-2022-jp?B?MDl3N1EzUU5HS0xXQ2R3SisybFlRR0RXUStPajdIOUg1M0JlanBFWC9E?=
- =?iso-2022-jp?B?TGtPeFZVSzBXellZNXRTTVAvaG9HbUFOakM4R2VEYnhrK1BIa2NWUnpE?=
-Content-Type: text/plain; charset="iso-2022-jp"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mL1BS-0003JQ-6P; Tue, 31 Aug 2021 06:40:04 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.243])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 300FF13B127;
+ Tue, 31 Aug 2021 10:39:57 +0000 (UTC)
+Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 31 Aug
+ 2021 12:39:57 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-98R0025c238559-eb94-444d-843b-b939751d30ed,
+ 3D02C4E7E229260F021FFF691A6C377EE278DEFF) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
+To: Peter Delevoryas <pdel@fb.com>
+References: <20210827210417.4022054-1-pdel@fb.com>
+ <20210827210417.4022054-3-pdel@fb.com>
+ <7a53d5e9-52c2-a06b-1385-fd71a96d7486@kaod.org>
+ <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <547b5f32-0858-1882-fb8b-c60056cdbfd4@kaod.org>
+Date: Tue, 31 Aug 2021 12:39:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-OriginatorOrg: fujitsu.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB6160.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 05fa4546-3663-45c6-9198-08d96b951785
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Aug 2021 09:03:53.7688 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: IkiglYCU4D1j4oNOC4XE19DNM8T25fzku5wMYHhWwVDcw04oS2XQ1a8qbrC+rQGJmX7czVtKjQTGjMMD+YwrcDgYEGxcoVU1Y4BHnLTVVuY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYXPR01MB1823
-Received-SPF: pass client-ip=68.232.151.212;
- envelope-from=ishii.shuuichir@fujitsu.com; helo=esa3.fujitsucc.c3s2.iphmx.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+In-Reply-To: <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
+Content-Type: text/plain; charset="windows-1252"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.98]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 942e986e-d1e2-4c3d-88a2-5109db00e18a
+X-Ovh-Tracer-Id: 503558733826526115
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvuddgfeduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeehnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnheplefhtdegueeffffghffhhefgleejjedvveetvdfggfefjedvueffvedttdduueffnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout2.3005.mail-out.ovh.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.932,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -209,130 +102,173 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "joel@jms.id.au" <joel@jms.id.au>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YbB9bcTaKxar
+X-TUID: 5JlWCni3xlIj
 
-Thank you for your quick comments.
+On 8/28/21 5:58 PM, Peter Delevoryas wrote:
+> I think I’m a little confused on this part. What I meant by “most machines just use UART5” was that most DTS’s use “stdout-path=&uart5”, but fuji uses “stdout-path=&uart1”. I /do/ see that SCU510 includes a bit related to UART, but it’s for disabling booting from UART1 and UART5. I just care about the console aspect, not booting.
 
-> Question: For testing, did you dump all the ID registers on this
-> model and compare them with a dump of ID registers from real
-> hardware? If so, that would be good info to put in the commit
-> message or at least the cover letter.
+The UART can be switched with SCU70[29] on the AST2500, btw.
 
-Yes, it has been tested and confirmed.
-We will re-post the v6 patches later, adding the information you mentioned.
+>
+> 
+> This is the commit that changed the serial console from UART5 to UART1 in fuji’s DTS: https://github.com/facebook/openbmc-uboot/commit/afeddd6e27b5f094bbc4805dc8c1c22b3b7fb203 <https://github.com/facebook/openbmc-uboot/commit/afeddd6e27b5f094bbc4805dc8c1c22b3b7fb203>
 
-Best regards.
+That's an AST2620-A1. May be we should also introduce a new SoC then. I will try
+to get the datasheet.
+  
+> I don’t know what the platform.S AST_SCU_MFP_CTRL7 changes do (maybe setting some GPIO for UART1?),
 
-> -----Original Message-----
-> From: Andrew Jones <drjones@redhat.com>
-> Sent: Monday, August 30, 2021 5:40 PM
-> To: Ishii, Shuuichirou/=1B$B@P0f=1B(B =1B$B<~0lO:=1B(B <ishii.shuuichir@f=
-ujitsu.com>
-> Cc: peter.maydell@linaro.org; qemu-arm@nongnu.org; qemu-devel@nongnu.org
-> Subject: Re: [PATCH v5 1/3] target-arm: Add support for Fujitsu A64FX
->=20
-> On Mon, Aug 30, 2021 at 05:28:18PM +0900, Shuuichirou Ishii wrote:
-> > Add a definition for the Fujitsu A64FX processor.
-> >
-> > The A64FX processor does not implement the AArch32 Execution state, so
-> > there are no associated AArch32 Identification registers.
-> >
-> > For SVE, the A64FX processor supports only 128,256 and 512bit vector le=
-ngths.
-> >
-> > Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-> > ---
-> >  target/arm/cpu64.c | 48
-> > ++++++++++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 48 insertions(+)
-> >
-> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c index
-> > 2f0cbddab5..15245a60a8 100644
-> > --- a/target/arm/cpu64.c
-> > +++ b/target/arm/cpu64.c
-> > @@ -841,10 +841,58 @@ static void aarch64_max_initfn(Object *obj)
-> >                          cpu_max_set_sve_max_vq, NULL, NULL);  }
-> >
-> > +static void aarch64_a64fx_initfn(Object *obj) {
-> > +    ARMCPU *cpu =3D ARM_CPU(obj);
-> > +
-> > +    cpu->dtb_compatible =3D "arm,a64fx";
-> > +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> > +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> > +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> > +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> > +    set_feature(&cpu->env, ARM_FEATURE_EL2);
-> > +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> > +    set_feature(&cpu->env, ARM_FEATURE_PMU);
-> > +    cpu->midr =3D 0x461f0010;
-> > +    cpu->revidr =3D 0x00000000;
-> > +    cpu->ctr =3D 0x86668006;
-> > +    cpu->reset_sctlr =3D 0x30000180;
-> > +    cpu->isar.id_aa64pfr0 =3D   0x0000000101111111; /* No RAS Extensio=
-ns
-> */
-> > +    cpu->isar.id_aa64pfr1 =3D 0x0000000000000000;
-> > +    cpu->isar.id_aa64dfr0 =3D 0x0000000010305408;
-> > +    cpu->isar.id_aa64dfr1 =3D 0x0000000000000000;
-> > +    cpu->id_aa64afr0 =3D 0x0000000000000000;
-> > +    cpu->id_aa64afr1 =3D 0x0000000000000000;
-> > +    cpu->isar.id_aa64mmfr0 =3D 0x0000000000001122;
-> > +    cpu->isar.id_aa64mmfr1 =3D 0x0000000011212100;
-> > +    cpu->isar.id_aa64mmfr2 =3D 0x0000000000001011;
-> > +    cpu->isar.id_aa64isar0 =3D 0x0000000010211120;
-> > +    cpu->isar.id_aa64isar1 =3D 0x0000000000010001;
-> > +    cpu->isar.id_aa64zfr0 =3D 0x0000000000000000;
-> > +    cpu->clidr =3D 0x0000000080000023;
-> > +    cpu->ccsidr[0] =3D 0x7007e01c; /* 64KB L1 dcache */
-> > +    cpu->ccsidr[1] =3D 0x2007e01c; /* 64KB L1 icache */
-> > +    cpu->ccsidr[2] =3D 0x70ffe07c; /* 8MB L2 cache */
-> > +    cpu->dcz_blocksize =3D 6; /* 256 bytes */
-> > +    cpu->gic_num_lrs =3D 4;
-> > +    cpu->gic_vpribits =3D 5;
-> > +    cpu->gic_vprebits =3D 5;
-> > +
-> > +    /* Suppport of A64FX's vector length are 128,256 and 512bit only *=
-/
-> > +    aarch64_add_sve_properties(obj);
-> > +    bitmap_zero(cpu->sve_vq_supported, ARM_MAX_VQ);
-> > +    set_bit(0, cpu->sve_vq_supported); /* 128bit */
-> > +    set_bit(1, cpu->sve_vq_supported); /* 256bit */
-> > +    set_bit(3, cpu->sve_vq_supported); /* 512bit */
-> > +
-> > +    /* TODO:  Add A64FX specific HPC extension registers */ }
-> > +
-> >  static const ARMCPUInfo aarch64_cpus[] =3D {
-> >      { .name =3D "cortex-a57",         .initfn =3D aarch64_a57_initfn }=
-,
-> >      { .name =3D "cortex-a53",         .initfn =3D aarch64_a53_initfn }=
-,
-> >      { .name =3D "cortex-a72",         .initfn =3D aarch64_a72_initfn }=
-,
-> > +    { .name =3D "a64fx",              .initfn =3D aarch64_a64fx_initfn=
- },
-> >      { .name =3D "max",                .initfn =3D aarch64_max_initfn }=
-,
-> >  };
-> >
-> > --
-> > 2.27.0
-> >
->=20
-> For the SVE stuff,
->=20
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
->=20
-> Question: For testing, did you dump all the ID registers on this
-> model and compare them with a dump of ID registers from real
-> hardware? If so, that would be good info to put in the commit
-> message or at least the cover letter.
->=20
+Yes. The patch above enables the UART1 RX function. 
+
+Is TX always enabled ? Something to check on real HW.
+
+>  but as far as I understand, I don’t think using UART1 should require any extra registers from the datasheet.
+>  
+> 
+> An alternate design I considered was UART5=serial_hd(0) and UART1=serial_hd(1), maybe that would be more appropriate? I don’t think anybody uses both UART’s simultaneously though, so I didn’t pursue that design.
+
+An other simple idea would be activate both UART5 and UART1 on the AST2600 
+SoC if this is how the HW works. Or add a bool "enable-uart1" at the SoC 
+level and set it from the machine. 
+
+In any case, we will need a serial backend for both.
+
+
+Thanks,
+
+C.
+
+>  
+> 
+> Some link references:
+> 
+> Elbert DTS uses “stdout-path=&uart5” https://github.com/facebook/openbmc-uboot/blob/openbmc/helium/v2019.04/arch/arm/dts/aspeed-bmc-facebook-elbert.dts#L17
+> 
+> Fuji DTS uses “stdout-path=&uart1” https://github.com/facebook/openbmc-uboot/blob/openbmc/helium/v2019.04/arch/arm/dts/aspeed-bmc-facebook-fuji.dts#L17
+> 
+>  
+> 
+> *From: *Cédric Le Goater <clg@kaod.org>
+> *Date: *Saturday, August 28, 2021 at 1:26 AM
+> *To: *Peter Delevoryas <pdel@fb.com>
+> *Cc: *joel@jms.id.au <joel@jms.id.au>, qemu-devel@nongnu.org <qemu-devel@nongnu.org>, qemu-arm@nongnu.org <qemu-arm@nongnu.org>
+> *Subject: *Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
+> 
+> On 8/27/21 11:04 PM, pdel@fb.com wrote:
+>> From: Peter Delevoryas <pdel@fb.com>
+>>
+>> This change replaces the UART serial device initialization code with machine
+>> configuration data, making it so that we have a single code path for console
+>> UART initialization, but allowing different machines to use different
+>> UART's. This is relevant because the Aspeed chips have 2 debug UART's, UART5
+>> and UART1, and while most machines just use UART5, some use UART1.
+> 
+> I think this is controlled by SCU510. If so, we should have a different HW
+> strapping for the new machine and check the configuration at the SoC level,
+> in aspeed_ast2600.c, to change the serial initialization.
+> 
+> 
 > Thanks,
-> drew
+> 
+> C.
+>  
+>>
+>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>> ---
+>>  hw/arm/aspeed.c         | 7 +++++++
+>>  hw/arm/aspeed_ast2600.c | 5 -----
+>>  hw/arm/aspeed_soc.c     | 5 -----
+>>  include/hw/arm/aspeed.h | 1 +
+>>  4 files changed, 8 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index 9d43e26c51..ff53d12395 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -14,6 +14,7 @@
+>>  #include "hw/arm/boot.h"
+>>  #include "hw/arm/aspeed.h"
+>>  #include "hw/arm/aspeed_soc.h"
+>> +#include "hw/char/serial.h"
+>>  #include "hw/i2c/i2c_mux_pca954x.h"
+>>  #include "hw/i2c/smbus_eeprom.h"
+>>  #include "hw/misc/pca9552.h"
+>> @@ -21,6 +22,7 @@
+>>  #include "hw/misc/led.h"
+>>  #include "hw/qdev-properties.h"
+>>  #include "sysemu/block-backend.h"
+>> +#include "sysemu/sysemu.h"
+>>  #include "hw/loader.h"
+>>  #include "qemu/error-report.h"
+>>  #include "qemu/units.h"
+>> @@ -352,6 +354,10 @@ static void aspeed_machine_init(MachineState *machine)
+>>      }
+>>      qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+>> 
+>> +    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_dev], 2,
+>> +                   sc->get_irq(&bmc->soc, amc->serial_dev), 38400,
+>> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>> +
+>>      memory_region_add_subregion(get_system_memory(),
+>>                                  sc->memmap[ASPEED_DEV_SDRAM],
+>>                                  &bmc->ram_container);
+>> @@ -804,6 +810,7 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+>>      mc->no_parallel = 1;
+>>      mc->default_ram_id = "ram";
+>>      amc->macs_mask = ASPEED_MAC0_ON;
+>> +    amc->serial_dev = ASPEED_DEV_UART5;
+>> 
+>>      aspeed_machine_class_props_init(oc);
+>>  }
+>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+>> index 56e1adb343..a27b0de482 100644
+>> --- a/hw/arm/aspeed_ast2600.c
+>> +++ b/hw/arm/aspeed_ast2600.c
+>> @@ -322,11 +322,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+>>      }
+>> 
+>> -    /* UART - attach an 8250 to the IO space as our UART5 */
+>> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+>> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
+>> -                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>> -
+>>      /* I2C */
+>>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+>>                               &error_abort);
+>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>> index c373182299..0c09d1e5b4 100644
+>> --- a/hw/arm/aspeed_soc.c
+>> +++ b/hw/arm/aspeed_soc.c
+>> @@ -287,11 +287,6 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+>>      }
+>> 
+>> -    /* UART - attach an 8250 to the IO space as our UART5 */
+>> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+>> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
+>> -                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>> -
+>>      /* I2C */
+>>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+>>                               &error_abort);
+>> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+>> index c9747b15fc..9f5b9f04d6 100644
+>> --- a/include/hw/arm/aspeed.h
+>> +++ b/include/hw/arm/aspeed.h
+>> @@ -38,6 +38,7 @@ struct AspeedMachineClass {
+>>      uint32_t num_cs;
+>>      uint32_t macs_mask;
+>>      void (*i2c_init)(AspeedMachineState *bmc);
+>> +    uint32_t serial_dev;
+>>  };
+>> 
+>> 
+>>
+> 
 

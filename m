@@ -1,130 +1,202 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5065658lfb;
-        Tue, 31 Aug 2021 07:03:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7AtuscxRIjJfQNnDJTSmX21imEGCaX6Y4/kRC3rljgd7R0pXLD7Z0CxRvLS+yXy65w4ZH
-X-Received: by 2002:a2e:5c9:: with SMTP id 192mr25091688ljf.337.1630418615895;
-        Tue, 31 Aug 2021 07:03:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630418615; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5065986lfb;
+        Tue, 31 Aug 2021 07:03:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjbleVMv+uiivEZfQRyO7A27sDU4W6d7JLy+7LXpynbX5TGj0r3rS33/Vu2JfCoPuhzAsG
+X-Received: by 2002:a2e:978c:: with SMTP id y12mr25884090lji.295.1630418631172;
+        Tue, 31 Aug 2021 07:03:51 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1630418631; cv=pass;
         d=google.com; s=arc-20160816;
-        b=yF+CareXJxHUYMZKLa+oaMwS3yab02gutOxWe59I3NkTHZzMzKp/UszmQ1+CxBj058
-         l44VIs3JfWocvHM5y1Jb4vyJYJFVhUzhlLIWNaOdNQ81iU90H1JF9TgXRhkTq9NdhIix
-         4QP4phI2RyK52xdlHCSAZqQ7+8RSM6wO10FtwLTyKy4u0AF+Qb7XewsFQNJKgZUta7N2
-         doDO62LIMnd24YKBpUMxy458WrCbinexw+FNtAJcTAKbcvrreNNtv7lESkFlIIzlfNYr
-         LXlrW8NhMKvbNZUyvnVHnjKY6feuUxVtqdMzzBojSpKH4hYAfwlolf8ACVYcvbG6J4SJ
-         vgJg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=noUBStaK8/M34XqCVj6sM5my/wyghfQ0BFep4Gh9s2g=;
-        b=goaMi48DxND9ZMjC8zAC5oQdn27Apf/iYa0jLuSp9EL3qZkD/mcNstZ1spAHEkHtWU
-         ly2HwKoUKrADC/1c+Qr/zzgKzEpdjpkhiK/rtEqZ7F/mcD1eoKguJhjsyng3ADNPyfuo
-         EfC4iZZJsNbcW3TRTXnZkSMkTueiauXTCm2Slc/1N/i6xM7ctoWT2ao43SbiKE3/p8aJ
-         cQJYCwU6gTrO3BYOULYzKCrRbXGNTj2L+L246ITuUVRVjVw2L/aIOZD/fg303A7HlLYl
-         /B3QvfyDe508yymSC2wdI/lyH4bOdcSMxTWwtxGP+huNVy7VUXWD21yYQ9BHJbEfoxFC
-         5JQg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eFpBhA+5;
+        b=ybZ7/2I/Grz9P9BNFrg7s5MPer+dhlT4NDmv5aIWT038/qahhsCYHcfLg7gjOOtftV
+         fnZmXB2SCVODiGZ+7qhzocboF/daigixxEv5S3x5/AXPLvC89CGwSnyN+N6xIMG9XWQM
+         0eIJp9w0NP9ppfaO+nf5CjlcFb5D6Lj6nUO9KUNKUsCeum5OTbfg1GcwoogTY6k2fsEB
+         c18WN/icNdTAc/4PHBFjzfpRjltwl5JwEbU/HJxqlO1+ueBedQS64ALtDEOkI9fBbJkn
+         r3cax9rL9HNDbYvZdKzYr5Aoiz2j9z0fo3FfD1Fa3u0Ru/p1jUh3qne+gpUhXDka0Mw2
+         KW9A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=8i6zdcy/HSVWxXYgnSlGYUVa1Ccl1EqTxVQQ+j96GDA=;
+        b=z5qGIhzHUKCz2j4osoQRKvD/sYPB+PizwYvdv5NaEtjk1Nf+6RMExHBQZia0UAtJ53
+         eInJblaI89cvLSq0rvGVQHv+TJk99niTipc4yzj2i8fNv5DpDNgY+EK0BjmKZFdQ8MnB
+         a+KEEYYX6e9bi0YQOA/m7xjMZO5ZL6uSLeLB/8tueQuGz++KnvxRyfloM6BvosSV/iDi
+         KRmWpdkXpqPYFSpasyAaDMr2kjZE5tDG+2pLBgwdG5L42ogNW2w9BSxkLpjOyJy63J7g
+         gRoz2d3MOyuoinuzglMXWQibzvdbOfZnLN1xBBj/1UvqR/cFfN+Z+3Rul4/KKK7PZ316
+         UVsw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=L0pj0EXD;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o28si21002228lfc.447.2021.08.31.07.03.35
+        by mx.google.com with ESMTPS id j18si28563334lfg.97.2021.08.31.07.03.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 07:03:35 -0700 (PDT)
+        Tue, 31 Aug 2021 07:03:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eFpBhA+5;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=L0pj0EXD;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51522 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:52530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL4MQ-0006XA-EM
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:03:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59648)
+	id 1mL4Mf-0007Dz-VV
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:03:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mL4Ko-0005H4-Sg
- for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:01:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60367)
+ (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
+ id 1mL4BN-0007xV-HF; Tue, 31 Aug 2021 09:52:09 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:12962)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mL4Kh-0003x2-6E
- for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:01:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630418505;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=noUBStaK8/M34XqCVj6sM5my/wyghfQ0BFep4Gh9s2g=;
- b=eFpBhA+5L+C5yk2x/aJsEYSM0d28OwBTlLcn5NYnhu6MMBQoURDMFovub82tr9c1+PS+S9
- gifatLxvElpq0r3uonyC76ycb/U9xJ1ovtciXkshddSrst6QAGVgH9Kn/a4VRxldQMLYRb
- rsJICHQGvu3GVVXCtk1Szil39Iajrzc=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-553-frW6CcEdNmO82QU2KE-4Bg-1; Tue, 31 Aug 2021 10:01:43 -0400
-X-MC-Unique: frW6CcEdNmO82QU2KE-4Bg-1
-Received: by mail-wm1-f72.google.com with SMTP id
- h1-20020a05600c350100b002e751bf6733so1359215wmq.8
- for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 07:01:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=noUBStaK8/M34XqCVj6sM5my/wyghfQ0BFep4Gh9s2g=;
- b=sndrDGqx0/PR7yfSvaPfqqZDDNJ9+9fLqvXJz9qhFNqV7iCd7Vc+QCoz8+rasO1Qj1
- lsumwQZq499cJUEua5o8t8haiLVXAPWaY9BsX/EB63WnurNJhleq8mt+2VEHAsuYuquG
- cITNe2ljlSJzWlyLFwOgVY9OXcAdI6+yV1MCGnFfukBTtSbfs3sq5TFSOxUtzan8HVpr
- d9K5zX4oX8RdRjH0i+t7qJITAnW7bipcvE4lm7V69OXh9utQv1QvVmMX1AkUwLWKwdh3
- ezgOhLszB6+3RChb1c+6GT8Vh+QmKFe0iPOAUMXHzCzYUAtFQwhJHwCKPBNL7xfBg+Ab
- LjTg==
-X-Gm-Message-State: AOAM531ErklCEWE0NBq8bovN3Kfb/ZwX8MMgomD5YIjmBKESBgqHFMJi
- 477G6vamtxq/Gy5e3c4BAKaOgFZ89O5jFES4lFB87ZzJTtKz8WGQEJdqaDTGcK/WSJmsLyG+H4m
- Zp+7+6FlZM/7l
-X-Received: by 2002:a05:6000:128d:: with SMTP id
- f13mr33566518wrx.244.1630418502349; 
- Tue, 31 Aug 2021 07:01:42 -0700 (PDT)
-X-Received: by 2002:a05:6000:128d:: with SMTP id
- f13mr33566456wrx.244.1630418501959; 
- Tue, 31 Aug 2021 07:01:41 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id p9sm2248741wrg.14.2021.08.31.07.01.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Aug 2021 07:01:41 -0700 (PDT)
-Subject: Re: [PATCH v5 2/4] hw/arm/smmuv3: Update implementation of CFGI
- commands based on device SID
-To: chunming <chunming_li1234@163.com>, peter.maydell@linaro.org
-References: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
- <1629878922-173270-3-git-send-email-chunming_li1234@163.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <7089ce3e-2b15-7cf3-86d9-231c69794138@redhat.com>
-Date: Tue, 31 Aug 2021 16:01:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
-MIME-Version: 1.0
-In-Reply-To: <1629878922-173270-3-git-send-email-chunming_li1234@163.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+ (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
+ id 1mL4BL-0005pf-28; Tue, 31 Aug 2021 09:52:08 -0400
+Received: from pps.filterd (m0109331.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 17VDYWqo028527; Tue, 31 Aug 2021 06:51:55 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : cc : subject
+ : date : message-id : references : in-reply-to : content-type : content-id
+ : content-transfer-encoding : mime-version; s=facebook;
+ bh=8i6zdcy/HSVWxXYgnSlGYUVa1Ccl1EqTxVQQ+j96GDA=;
+ b=L0pj0EXDO4asDLsfocdID40hgpbH5BHxRPhJzSDUuxIJZnDa/FsnfHsMm2Z4i0poNpnb
+ Q5yfPuWBtVbLlFEcKKKSxJk0u4HfxVPWAzaaMwjbmunAskCAcvpz/GrsYnTPvnpR2kXV
+ BxfDYzdeY51EuCiRFKc6zmAP7Fq1hup/lIs= 
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by mx0a-00082601.pphosted.com with ESMTP id 3artue2bvq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Tue, 31 Aug 2021 06:51:55 -0700
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (100.104.31.183)
+ by o365-in.thefacebook.com (100.104.35.172) with Microsoft SMTP
+ Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.14; Tue, 31 Aug 2021 06:51:54 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WvWjbHPFo0/1TlkclBsD8b1CoUYn1+WOSZdbzhBtXPkN8TVXzkdNQtnRPF7Bbxjo22ptb94f1DoKJKBuj8+YdFjWGiNZK2o5tf3+vLtymaQ3JwZBGIXzWu7XWFavL8sIgtKSGL5ekplBsMC9I+wa23LmuhmDcam0iPdX0LalovT5oDL3TihR7uoBDj0oEit5qRlJmuM+3CLosX9/VglzrRM1Gx9f8ele8VO0B0tJszFNNH3AqUAUW7EmovUJYHmJBIg4nJ8IBRHKh/Zwhg1duHfD72CKZU0SDcY3bSXyv29ucuyBlVe4QYlkFuRTqEneZefaLR7zISTSRAH/WvgJbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8i6zdcy/HSVWxXYgnSlGYUVa1Ccl1EqTxVQQ+j96GDA=;
+ b=HtVdhY7QsEhhRuVc9J1yCym8K8/71KVLLAWSzrHW9JNuvgAuOuvLOY07CeW14/SiIUxXYN5fBcYL4JjT7ihofjDZJuR1DyGG42URVjKBXKKYG81HIZgPi0/dmP0cigsaaElYm6QduTnM6VnrEGgABEdLuGJnqY0mtxWVfP4nGqfR3DBaKgoSuyZyBVHSrL4xrWLbg2XAibwpBLh0oGdYVs7t85ZrvZnUfGQrSFHue9e0CNCgBSCjkAg6LBH3Uzy9lYbfJKvnmQd/7r/h4y6B6OKrgkN6zH1ipgPBxXpiJVZTF0AEzxv7y3JOW5tjoQ0+dPPlNZyZeM6VCMqbQItZXg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
+ header.d=fb.com; arc=none
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
+ by BYAPR15MB2631.namprd15.prod.outlook.com (2603:10b6:a03:150::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.18; Tue, 31 Aug
+ 2021 13:51:52 +0000
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::39cf:cf4c:885c:9368]) by BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::39cf:cf4c:885c:9368%7]) with mapi id 15.20.4457.024; Tue, 31 Aug 2021
+ 13:51:52 +0000
+From: Peter Delevoryas <pdel@fb.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
+CC: "joel@jms.id.au" <joel@jms.id.au>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
+Thread-Topic: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
+Thread-Index: AQHXm4dh466/7b8SHEitTznuegJn+auIlZeAgAByzN2ABEE2AIAAXguA
+Date: Tue, 31 Aug 2021 13:51:52 +0000
+Message-ID: <65C83ADA-7546-40AF-9EF5-C990FC09F0B4@fb.com>
+References: <20210827210417.4022054-1-pdel@fb.com>
+ <20210827210417.4022054-3-pdel@fb.com>
+ <7a53d5e9-52c2-a06b-1385-fd71a96d7486@kaod.org>
+ <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
+ <a67c22a2-eb11-87f5-54e7-14c2d771861b@kaod.org>
+In-Reply-To: <a67c22a2-eb11-87f5-54e7-14c2d771861b@kaod.org>
+Accept-Language: en-US
 Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: kaod.org; dkim=none (message not signed)
+ header.d=none;kaod.org; dmarc=none action=none header.from=fb.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 267f2b4c-8330-4f24-5844-08d96c867cbe
+x-ms-traffictypediagnostic: BYAPR15MB2631:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR15MB26319A45D4E451F18D1A9719ACCC9@BYAPR15MB2631.namprd15.prod.outlook.com>
+x-fb-source: Internal
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: e2BjO4PrsxUVQrrJeGkjmOdhG0nFk0Cr+tjkuopZfuLvw6+s64KsCmjlibmQBwtj/P0Cjk97RyxI+7+Y9B4bLyTVxYp27dK2eC3FlI9lrRKTHugw9MEex+F/KeV3jxvdDwvmPuyglvHPIQI38Iu/oxaP8nhAuJQDTUPPc+AqZ8/1esGzjVa5hHNIT71wbCGfvw7qX+ZEqfOZiFIJk9gri0SubhOE+JEStu+L9rHkXSylSjDNQJhV+BXQ0PwfmX7fJRtGhdOH6lnncJ/MOJSgQbk3XlKj+5PQTiIHbIBUh5Dlp/DXaaU6XCHDvxXF5ucTfDhXX9HD5p3eH3YwH1xkJsenKlOYHeJlV5RB2bM5OMHlCusMdWXau0NmXCu2UZh0z7Wc6l0i9dxJjC1AskpMuTFD7hkyGnq0ZYx7MiKAvqLlrr5FymOTBKt1CIp+8UJlSkFPdRKIFgQk8KdH9Yemy6n/FHmyOycUd43NvKcjCKVZj7gEkJI1crBGqXchrQnSKSCx4JHN1hZsuOGAUBVETRsI/dUsNbiC9mHigGqX0BaRy2YcL2VucX0h3zOl4sa8vGpaDSCcXs1+2NICk7NWUelsRODjLrmQMsZBPkOilTxjLSnn39+YOw4yYcYbPd+MVuH9sWCZhbAoKB+aA2vkto660ccbopuXeqpjCfSs8CePEDGxs/tKpctGDihVNE8PIo7zFt3Fz5490UKuKvcLgOucyqN588iPdHKGmLpDXmfiURg9euqxoUY7HqyHui+MYIBkv/7w734dmQ8OGscigMOv8FfRSypUPlsVh60HegymV5Mz28/bR3/PjNKstCinAGWsAc3LW7B0H1LHQKd+JurGqCKhETyLPSPT6mNgNl0=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(136003)(376002)(396003)(346002)(366004)(6506007)(316002)(33656002)(86362001)(36756003)(54906003)(6916009)(66446008)(64756008)(66476007)(966005)(8676002)(2906002)(66574015)(478600001)(4326008)(186003)(4744005)(38070700005)(6512007)(76116006)(5660300002)(38100700002)(122000001)(66946007)(66556008)(53546011)(71200400001)(2616005)(8936002)(6486002)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?U25oaS9RemV4NDJaTjltTEZ2eEV3di9UdzlCdmw3YVVxZ01wY21kQ3VQZ2c0?=
+ =?utf-8?B?R3Y4UFlJb1NQeG8vQ1hIR0JvVTZuSUJrU1NrcUtIK1VpUUdFU0JtUzNjalMw?=
+ =?utf-8?B?TGttOEtGSlBRZHRveWhVMFNyc3pROWlVZnJ6MzU0UjNqVXZ1WnZwbDJJRWZK?=
+ =?utf-8?B?QndhVWxmNE10UlYraE5sdnNJV0E1bXdwZ3FLWEdUa0hMdXZuUFl4VlhsY0kz?=
+ =?utf-8?B?UEFKTnJMbXpQWnYrVkltMnN6em5rNUg5VkE4WmxuWUhyYyswTVJta2M2RmhV?=
+ =?utf-8?B?MWJnTjFVWmxZR3lON3A1VkIzeVJocVdXR2ZQZ21UWTNKZWdVSHc5bHBrMnVv?=
+ =?utf-8?B?T0RXVDFvS0FHU2pSdzRKcHY0Y3V0R2lxbUNNYlRyUFF5ZFhEQ05JR3dueW0w?=
+ =?utf-8?B?cUttMjNEM3Y3TUNLWndKUFFGQ1VibGZOaStlcmk0ZXllNEpld0xIdTUzanJW?=
+ =?utf-8?B?SDBTMWlvakJsTEZibDgzYmg0RnZQbFdzSXl6RWdYLzdZM29wQ3JVZHg3VXNt?=
+ =?utf-8?B?VEZsZm5pNjZSM1lMYzlBQTFqeW9GUEV5TG1Tbmhla3oyN1RXeU1PdmV2dVFR?=
+ =?utf-8?B?RXVCUk9TZDI2dkZhMWlIcFVSTlVuc1QzbzhhbWNYMnZxVXFKT3BqdTFJK0Nu?=
+ =?utf-8?B?d29XMW1SbFpTRkMrYTNzbHZzT211UGFFQ3VkdE5jMEFmelpTUHlmVTNhdVl1?=
+ =?utf-8?B?OVAzVjdaTXlJNUlhMDY0WklCVVdsSDZTTkwvZzhkRkZBNm1tY2NyVE9ySkpD?=
+ =?utf-8?B?S3dHR2phdVFaTTFQbmFTbzNDTWc3WWFBa0hiTHB6UWMzcVJoY0lxSWFDQzZi?=
+ =?utf-8?B?SHZXSFpua3JsVHo0dnZObUxGVWlpNmxEcW5HR0NqSTNSLzVMUko1QWorWUdp?=
+ =?utf-8?B?OWZlOUZoeHZtbGo5RnN1N3lWcmczMUdBUEozbHJIT1puSi9pOVhrenc4eGdO?=
+ =?utf-8?B?TVgrOUNuYnhYRmdYTW05dmhEQTZZQko1YVBBV0xGNDNpZnBBaC9CN3JiSXBT?=
+ =?utf-8?B?bHpEbUIyN3BqNWpWcW5tbzArcjgweFIyV1JhcVBlQlZrSVMwNS8vV1BOZ3JR?=
+ =?utf-8?B?QXZlRzhWcURucEsxQXhseDdZUStza3kyZXhzbDFVc2ZDZ2FNa2JmYUtoNTlD?=
+ =?utf-8?B?blRxYmxKeDBja0s2TlkvNnk3QlVpaE5SZG4zOWROQklPaGw3RWJiYy9XbTEw?=
+ =?utf-8?B?MExEWTQ1V0pNVitGKy8zZkttYm1YVFVLck44Rk9IMW9uOFlHYy94WTFYSlVU?=
+ =?utf-8?B?SkpZTUxVVm1vVmFTZi9DbGtiajhLODUyMmxONEluMG4vemxCWDU3ZTkwOFA5?=
+ =?utf-8?B?anlxTEZCd01BbUluL21YYllMdS93V2xEUjVLSWxvR2JMbmsyL3lQZWFHeSsw?=
+ =?utf-8?B?elFMc0dGZWxXVE1RNWxNMTVkMnBQMjJHYm1NTUpHcm5IakVpdFBQdmV5WENn?=
+ =?utf-8?B?VjZhRjROaG5tcGYvWTZYVGxBa0hDSi8rdTI2OENtRkp3akYvQ0JtbGxFZUJu?=
+ =?utf-8?B?ZVl2UlFSdDFGWW5NSGFCL1hvdGpGSCtUNTJFMDJZODY1Q3AzTVhZUzU2dlRx?=
+ =?utf-8?B?Y0RXY2V4QS9rUEZ2SGhKcHlpRjd5SWx6UjJiOHNTTU83ZW9tOCtZdVBXNlJt?=
+ =?utf-8?B?LzBSVW1rZlkydnRrZWdiSXR4Kzk3azFRTlowUU91eUpWYnZaR3NUckxiamJL?=
+ =?utf-8?B?SVB1V2ZocGE5aFpUazBNOGpKenZzT0lNb2pEL1NiUzBvZnhoREVaYlNHSDJh?=
+ =?utf-8?B?cW9CNU1jMXBPSDlZUEpsY01oVFBVb1dBR2tyYmF6cVhhSk1XNURxallveHdQ?=
+ =?utf-8?Q?xpKBmdiucqI9KktLG5V+w05wE73m/2lalSL8c=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <E3D3BDE518BA5E4DA42DF91877CB9B7E@namprd15.prod.outlook.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 267f2b4c-8330-4f24-5844-08d96c867cbe
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2021 13:51:52.2223 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: i7HPjfy7/pyQzW1hPPhOKRqeF+FtMUaVpzaX0DoBBm/pu9Utdq1n5iYMV91PiBGN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR15MB2631
+X-OriginatorOrg: fb.com
+X-Proofpoint-GUID: aVkuT7BESan9mTVV8foe118eiWTfXnjR
+X-Proofpoint-ORIG-GUID: aVkuT7BESan9mTVV8foe118eiWTfXnjR
+Content-Transfer-Encoding: base64
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
+ definitions=2021-08-31_05:2021-08-31,
+ 2021-08-31 signatures=0
+X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
+ suspectscore=0 mlxscore=0
+ spamscore=0 mlxlogscore=687 adultscore=0 phishscore=0 malwarescore=0
+ clxscore=1015 lowpriorityscore=0 bulkscore=0 impostorscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2107140000 definitions=main-2108310077
+X-FB-Internal: deliver
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=88771d3da1=pdel@fb.com; helo=mx0b-00082601.pphosted.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.932, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -137,133 +209,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: renwei.liu@verisilicon.com, qemu-arm@nongnu.org,
- jianxian.wen@verisilicon.com, qemu-devel@nongnu.org,
- chunming <chunming.li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZYz3wyv/8AJb
+X-TUID: xhjt7Uo3clDA
 
-Hi Chunming
-
-On 8/25/21 10:08 AM, chunming wrote:
-> From: chunming <chunming.li@verisilicon.com>
->
-> Replace "smmuv3_flush_config" with "g_hash_table_foreach_remove".
-this replacement may have a potential negative impact on the performance
-for PCIe support, which is the main use case: a unique
-g_hash_table_remove() is replaced by an iteration over all the config
-hash keys.
-
-I wonder if you couldn't just adapt smmu_iommu_mr() and it case this
-latter returns NULL for the current PCIe search, look up in the platform
-device list:
-
-peri_sdev_list?
-
-Thanks
-
-Eric
-
-
-
-> "smmu_iommu_mr" function can't get MR according to SID for non PCI/PCIe devices.
->
-> Signed-off-by: chunming <chunming.li@verisilicon.com>
-> ---
->  hw/arm/smmuv3.c              | 35 ++++++++++-------------------------
->  include/hw/arm/smmu-common.h |  5 ++++-
->  2 files changed, 14 insertions(+), 26 deletions(-)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 11d7fe8423..9f3f13fb8e 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -613,14 +613,6 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
->      return cfg;
->  }
->  
-> -static void smmuv3_flush_config(SMMUDevice *sdev)
-> -{
-> -    SMMUv3State *s = sdev->smmu;
-> -    SMMUState *bc = &s->smmu_state;
-> -
-> -    trace_smmuv3_config_cache_inv(smmu_get_sid(sdev));
-> -    g_hash_table_remove(bc->configs, sdev);
-> -}
->  
->  static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                                        IOMMUAccessFlags flag, int iommu_idx)
-> @@ -964,22 +956,18 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          case SMMU_CMD_CFGI_STE:
->          {
->              uint32_t sid = CMD_SID(&cmd);
-> -            IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, sid);
-> -            SMMUDevice *sdev;
-> +            SMMUSIDRange sid_range;
->  
->              if (CMD_SSEC(&cmd)) {
->                  cmd_error = SMMU_CERROR_ILL;
->                  break;
->              }
->  
-> -            if (!mr) {
-> -                break;
-> -            }
-> -
-> +            sid_range.start = sid;
-> +            sid_range.end = sid;
->              trace_smmuv3_cmdq_cfgi_ste(sid);
-> -            sdev = container_of(mr, SMMUDevice, iommu);
-> -            smmuv3_flush_config(sdev);
-> -
-> +            g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste,
-> +                                        &sid_range);
->              break;
->          }
->          case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-> @@ -1006,21 +994,18 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          case SMMU_CMD_CFGI_CD_ALL:
->          {
->              uint32_t sid = CMD_SID(&cmd);
-> -            IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, sid);
-> -            SMMUDevice *sdev;
-> +            SMMUSIDRange sid_range;
->  
->              if (CMD_SSEC(&cmd)) {
->                  cmd_error = SMMU_CERROR_ILL;
->                  break;
->              }
->  
-> -            if (!mr) {
-> -                break;
-> -            }
-> -
-> +            sid_range.start = sid;
-> +            sid_range.end = sid;
->              trace_smmuv3_cmdq_cfgi_cd(sid);
-> -            sdev = container_of(mr, SMMUDevice, iommu);
-> -            smmuv3_flush_config(sdev);
-> +            g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste,
-> +                                        &sid_range);
->              break;
->          }
->          case SMMU_CMD_TLBI_NH_ASID:
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 95cd12a4b5..d016455d80 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -159,7 +159,10 @@ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
->   */
->  SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova);
->  
-> -/* Return the iommu mr associated to @sid, or NULL if none */
-> +/**
-> + * Return the iommu mr associated to @sid, or NULL if none
-> + * Only for PCI device, check smmu_find_peri_sdev for non PCI/PCIe device
-> + */
->  IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
->  
->  #define SMMU_IOTLB_MAX_SIZE 256
-
+SeKAmWxsIHJlc2VuZCBQQVRDSCA1LCBhbmQgbGlrZSB5b3XigJlyZSBzdWdnZXN0aW5nLCBJIGNh
+biB1c2UgdGhlIGV4aXN0aW5nIGFzdDI2MDAtZXZiIG1hY2hpbmUgdHlwZSBmb3IgdGVzdGluZy4N
+Cg0KICAgICMgU2V0dXAgc2VyaWFsX2hkKDEpIGFzIFVBUlQxIGluIDI2MDAgU29DIHJlYWxpemUg
+KEkgd29u4oCZdCBpbmNsdWRlIHRoaXMgaW4gdGhlIGRpZmYgdGhvdWdoKQ0KICAgIFVBUlQ1PXNl
+cmlhbF9oZCgwKQ0KICAgIFVBUlQxPXNlcmlhbF9oZCgxKQ0KDQogICAgcWVtdS1zeXN0ZW0tYXJt
+IC1tYWNoaW5lIGFzdDI2MDAtZXZiIC1zZXJpYWwgbnVsbCAtc2VyaWFsIHN0ZGlvDQoNCj4gT24g
+QXVnIDMxLCAyMDIxLCBhdCAxOjE1IEFNLCBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3Jn
+PiB3cm90ZToNCj4gDQo+IEkgd291bGQgcHJlZmVyIHRoYXQuIFRoaXMgcGF0Y2ggaGFzIGJlZW4g
+aW4gbXkgdHJlZSBmb3IgeWVhcnMgOg0KPiANCj4gIGh0dHBzOi8vZ2l0aHViLmNvbS9sZWdvYXRl
+ci9xZW11L2NvbW1pdC8xMzg3MTNlZTFkM2Q4NDY4MmI4NWMxYjAxNTc3YTdlODZhYjNmZWQ0DQo+
+IA0KPiBTZWUNCj4gDQo+ICBodHRwczovL2dpdGh1Yi5jb20vbGVnb2F0ZXIvcWVtdS9jb21taXRz
+L2FzcGVlZC02LjINCj4gDQo+IE1heSBiZSB0aGlzIGlzIHdoYXQgeW91IHNpbXBseSBuZWVkID8g
+WW91IGNhbiB1c2UgdGhlIGFzdDI2MDAtZXZiIG1hY2hpbmUgZm9yIA0KPiB5b3VyIHRlc3RzLiBU
+ZWxsIG1lIGhvdyBpdCBnb2VzLiANCj4gDQo+IEFGQUlDVCwgeW91IHdpbGwgbmVlZCB0byByZXNl
+bmQgUEFUQ0ggNSBvbmx5Lg0KPiANCj4gVGhhbmtzLA0KPiANCj4gQy4NCg0K

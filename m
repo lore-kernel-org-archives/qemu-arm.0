@@ -1,104 +1,88 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3899353lfb;
-        Mon, 30 Aug 2021 02:18:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLo63gjzM29rgkOeHNtOALodCommCQ02kyfCpSQ7cuipP3JyUnOGK1L9U+c2HKWCGJd8Hs
-X-Received: by 2002:a25:2548:: with SMTP id l69mr23507918ybl.371.1630315112186;
-        Mon, 30 Aug 2021 02:18:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630315112; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4565607lfb;
+        Mon, 30 Aug 2021 17:52:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxuocd+Dg8kaTs9zZWKUi/CtZEfK0EE4nBoydl6LJrN4MBdQXIRHj98D1NgqoaURhhYirm
+X-Received: by 2002:a05:6e02:214e:: with SMTP id d14mr18495631ilv.142.1630371142339;
+        Mon, 30 Aug 2021 17:52:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630371142; cv=none;
         d=google.com; s=arc-20160816;
-        b=M09p+M1hjZj4Kr5WjSj96DpsxJkT2I0WOrV8w+JdJsiaNjcL9RoJZI04w1nG1olRGv
-         gDZGy+hy1wGVbpkNuXby0p10pa5Ekz4At3aRMHXO6pXgfWI7ghqDLb44uVbiyINbcMgS
-         xBAdRIJwdCdPS6Oy/G06b83SMBGbE8kwM3GQg2VgID77NxmUsfpN9bVu02GLh/ZnQQj+
-         D8EedRqYquLHv1BdNzy6UwbPo/gW9r1TfEokqJE0ui/KHUX8YM/2CSOMpncisTJ90wRq
-         os5WMBciSTTBKlJXCVu15B8u/YaZg9pv18e0c5HZydUF1ugFyIYx5RLHJ3bnsgzt/Slv
-         4cFQ==
+        b=CtN9zPtb0b06ehYBrc8mQNGrtBpQmlUP5ofVmRXWi5nKG4yphdhTRaAZnhXClQ6S7Z
+         zaU9CHI/H4Cczjtk+Gakf9xD2bX5OI7p4TTPxCF15BNvEB+Aitocywxpay0qOLsKpDKs
+         d1OOFqfpb4u3gv5a9Sbe22JXsGimJFLH2xJxP8mT0tByu8WhI0RQMhVnFAKZa6EXxrhp
+         /y3vTNa7MCL6Ycar0sp+eoXjJNlVnSjmjqocwLxOXeFN4KPqb5xtYEz0WL2d/JoySG9w
+         +1SWA+umor3+I/a7x02W+g6HcOvY59RhXR4b1VGBCNJPcgiFcLwrQrR0O1L+4e0JqTns
+         h2PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=nGnWNeqjPZGVSMiwdYMev+aH1orq5xIssQR95XnHGgo=;
-        b=PCVBC0dUllCTtbXHOg+l/tq/yx83oAhmNwCwaxe6yyb0K2e87QuDBwoeNzmuOme113
-         u+wJE+68pe/5Yq1BxKoA87VZCuIltZKSKsOWluneXAYxz2wb9oM283N58tjw2RcCYBCo
-         dO9zYuCbaZZuOL9VCJO3KLbR5zPnGDJJ1ZIsP21GF+nYhU5V9Wu2aQ3LOW4y/xVoV0LY
-         bFHb2jAUPzahonxXkcUwdsmay3WQYSKjkpC504sMiomgNAoh8Vu0bMGzhUkdESH78FX4
-         BE7RSQm73YqQA2jSNk81EmXNyw8VAeefD7T3h/yrafGcld4XAISBgmfgxuj6vdzM5569
-         9Xbg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=JgJjst53AtZuC7koPWhczIjKsd9hZFao7BUvzqv9P9Q=;
+        b=EJLH+E6gJ682iHIMnMjr8rN0HiKMhiFTnjnZ0Se4OGLuK+9ONnKJ5Dq2GWG2dV/xW5
+         sPbtRLKIvzq7z61RkTakYCX/v7msr1nImiQ35Mzh78yerrK+rsqnzPfibBQAhBZ8+Qya
+         SonzVeV0v9+borDWP8vSNIQkd/gy0cJpxie0MhegnQ+WChqzfxCAGResqn39bicQmp/Z
+         DCHPg+ONaIKrWalp05dRWWcLxgo84XJ62yqerTEpp+UZW85O8B032n1O5OW0AX7YC6zt
+         B6oDylE3hNbaxhZ3rFlU/NIoF5it1cl1FjNEYRAq/KvF4lnzxmIXziuuMQMurjSx5n6h
+         Ocog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Y/bD0xN0";
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b=iSzOJgRP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d68si16801006ybi.175.2021.08.30.02.18.31
+        by mx.google.com with ESMTPS id r8si15735527jar.122.2021.08.30.17.52.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Aug 2021 02:18:32 -0700 (PDT)
+        Mon, 30 Aug 2021 17:52:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Y/bD0xN0";
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b=iSzOJgRP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36802 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:60386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mKdR1-0008HP-FX
-	for alex.bennee@linaro.org; Mon, 30 Aug 2021 05:18:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45514)
+	id 1mKs0j-0006EV-JU
+	for alex.bennee@linaro.org; Mon, 30 Aug 2021 20:52:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59426)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mKdQj-0008DT-3m
- for qemu-arm@nongnu.org; Mon, 30 Aug 2021 05:18:13 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:45783)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mKdQd-0000qc-Nw
- for qemu-arm@nongnu.org; Mon, 30 Aug 2021 05:18:12 -0400
-Received: by mail-ej1-x632.google.com with SMTP id e21so29602858ejz.12
- for <qemu-arm@nongnu.org>; Mon, 30 Aug 2021 02:18:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=nGnWNeqjPZGVSMiwdYMev+aH1orq5xIssQR95XnHGgo=;
- b=Y/bD0xN0F3KQMD/mO2ZoCjWZOAGu0gCzm/guJmKeY7WmJf4DwQVwjGW4tZXY1yqAW0
- r59QFxvQT8Uyvkx2M7DRfMgtW1g86Pl9RrJzlq0V5rKNqrNwcBPFoesv3AAoT1IzffPU
- 9rOf0/BiN28pyQfAGKILvFBM53I7zcXyMRYhuQDlY5JzuNC2+EgLN5A9jGUa+qWyD6iC
- NYFcgNX83oMMcE0OVF3eHVEddGYJs7n8sJCW/kThxy6IykKMXFA8u1YIkIIaJ0UgRcFI
- OdvQopckA0QT2haEH/Usts7N3FUEKExrp4tSpvkBbyTNOAwt3bl0Kr7dY8o2jaoVk/uz
- pk4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=nGnWNeqjPZGVSMiwdYMev+aH1orq5xIssQR95XnHGgo=;
- b=aCN0U9iNoozgP+/cJzFbwLDn+aKZqewzf37oY4WGNrIA56LuWrHxuMyxaPFEOPaDDJ
- l4hJ3tZUpjuYHyiI4rutyFBq/1mFlUCKTUEMIwzVLCNVfvWxypejgDdTiX+qgbkLL+9n
- 3EOu0gX8IINmwAL7mR0hgfrEaAs2cie7Of4kuvFpR2R1O9L7rIIBzWBmkrWG+jQ0FII5
- zsKL2zC6X3Q06NsO5LMZn56RdOgCca99VlrcWjAZXIf+fMb2Trp35SbKdbi+FcLufAlI
- yV5uVVLvHqAOS1YLxAukxWC1/AcBnhg3r9v9C73zV6zfPSGQalOVNDWfBG9l7PfBBFs5
- N5Dw==
-X-Gm-Message-State: AOAM5309soD3Q89axNoTJCwcNltHUMi4mlW9hepylKCU1HLb1XvYemrJ
- Yj9rXKk0A5MnMoKZiHHqRLSD1BxY+pGYZDm3fkBcoC7lgq0a7Q==
-X-Received: by 2002:a17:906:c085:: with SMTP id
- f5mr24641414ejz.250.1630315086142; 
- Mon, 30 Aug 2021 02:18:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <nathan@kernel.org>)
+ id 1mKs0G-0005qv-C7; Mon, 30 Aug 2021 20:51:53 -0400
+Received: from mail.kernel.org ([198.145.29.99]:38246)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nathan@kernel.org>)
+ id 1mKs0E-0000FP-1z; Mon, 30 Aug 2021 20:51:51 -0400
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 51BFE60FE6;
+ Tue, 31 Aug 2021 00:51:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1630371106;
+ bh=5b6KMByTq/cAx5d95U9mOsUwqM/LJsTDakbM6Mc4Zms=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=iSzOJgRPLQSA6KglLfZ15BUNpcQ5UFgobdTPoU3sSgi9MUL0d3hm2b2Wk4WWLFE1j
+ 9MKpl1JHznFvhSDlF06lu0+RANfULrwdKAe/32/DLBrl7p2cfMRO0RA3/OBqtScl/S
+ Ph9AbJizsRKQTs7iwLo1IdHDe/WTRlGhE9iJia/lSELoklWOEqL7Od2JyTf2S48L5V
+ sVliygSqXSoBnzOX6XkRJIfIj5QDzq4YFyJ4omrxsZDZpX07Wg3ZdYmDfMrCXBVPXD
+ /uZyzPUINtHnGuCNFwEOZsXsmTgLWRoiyQRbvKbtwNT6e9IBkmr6aBJeSyass8QRHz
+ gCRuC1+1SVdsQ==
+Date: Mon, 30 Aug 2021 17:51:44 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH v5 17/31] target/arm: Enforce alignment for LDM/STM
+Message-ID: <YS19IBEGrIUnUT2p@Ryzen-9-3900X.localdomain>
+References: <20210419202257.161730-1-richard.henderson@linaro.org>
+ <20210419202257.161730-18-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20210826131725.22449-1-peter.maydell@linaro.org>
- <20210826131725.22449-11-peter.maydell@linaro.org>
-In-Reply-To: <20210826131725.22449-11-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Aug 2021 10:17:18 +0100
-Message-ID: <CAFEAcA-hCtXa7OpHqhP6CAzvHg5n73j3XB=TuwHOoBV3JeAntA@mail.gmail.com>
-Subject: Re: [PATCH v2 10/18] target/arm: Implement MVE FP max/min across
- vector
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210419202257.161730-18-richard.henderson@linaro.org>
+Received-SPF: pass client-ip=198.145.29.99; envelope-from=nathan@kernel.org;
+ helo=mail.kernel.org
+X-Spam_score_int: -74
+X-Spam_score: -7.5
+X-Spam_bar: -------
+X-Spam_report: (-7.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,101 +95,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ llvm@lists.linux.dev, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jd7ISmfWVwzo
+X-TUID: OXLpz1RUzCK8
 
-On Thu, 26 Aug 2021 at 14:17, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Implement the MVE VMAXNMV, VMINNMV, VMAXNMAV, VMINNMAV insns.  These
-> calculate the maximum or minimum of floating point elements across a
-> vector, starting with a value in a general purpose register and
-> returning the result there.
->
+Hi Richard,
 
-> @@ -440,6 +444,10 @@ VMLADAV_S        1110 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
->  VMLADAV_U        1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
->
->  {
-> +  VMAXNMAV       1110 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
-> +  VMINNMAV       1110 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
-> +  VMAXNMV        1110 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
-> +  VMINNMV        1110 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
->    VMAXV_S        1110 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
->    VMINV_S        1110 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
->    VMAXAV         1110 1110 1110  .. 00 ....  1111 0 0 . 0 ... 0 @vmaxv
-> @@ -449,6 +457,10 @@ VMLADAV_U        1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
->  }
->
->  {
-> +  VMAXNMAV       1111 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
-> +  VMINNMAV       1111 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
-> +  VMAXNMV        1111 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
-> +  VMINNMV        1111 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
->    VMAXV_U        1111 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
->    VMINV_U        1111 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
->    VMLADAV_U      1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 0 @vmladav_nosz
+On Mon, Apr 19, 2021 at 01:22:43PM -0700, Richard Henderson wrote:
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/translate.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 29fbbb84b2..f58ac4f018 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -7868,7 +7868,7 @@ static bool op_stm(DisasContext *s, arg_ldst_block *a, int min_n)
+>          } else {
+>              tmp = load_reg(s, i);
+>          }
+> -        gen_aa32_st32(s, tmp, addr, mem_idx);
+> +        gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
+>          tcg_temp_free_i32(tmp);
+>  
+>          /* No need to add after the last transfer.  */
+> @@ -7943,7 +7943,7 @@ static bool do_ldm(DisasContext *s, arg_ldst_block *a, int min_n)
+>          }
+>  
+>          tmp = tcg_temp_new_i32();
+> -        gen_aa32_ld32u(s, tmp, addr, mem_idx);
+> +        gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
+>          if (user) {
+>              tmp2 = tcg_const_i32(i);
+>              gen_helper_set_user_reg(cpu_env, tmp2, tmp);
+> -- 
+> 2.25.1
 
-I just realized that I forgot to do part of Richard's review
-comments on the first version of this patch, about adding some
-extra [] blocks here.
+I just bisected a boot hang with an LLVM-built multi_v7_defconfig +
+CONFIG_THUMB2_KERNEL=y kernel down to this commit. I do not see the same
+hang when the kernel is compiled with GCC 11.2.0 and binutils 2.37 nor
+do I see a hang with multi_v7_defconfig by itself. Is there something
+that LLVM is doing wrong when compiling/assembling/linking the kernel or
+is there something wrong/too aggressive with this commit? I can
+reproduce this with current QEMU HEAD (ad22d05833).
 
-https://patchew.org/QEMU/20210729111512.16541-1-peter.maydell@linaro.org/20210729111512.16541-46-peter.maydell@linaro.org/
+My QEMU invocation is:
 
-Diff to squash in:
+$ qemu-system-arm \
+    -append "console=ttyAMA0 earlycon" \
+    -display none \
+    -initrd rootfs.cpio \
+    -kernel zImage \
+    -M virt \
+    -m 512m \
+    -nodefaults \
+    -no-reboot \
+    -serial mon:stdio
 
-index 1a18c3b8eeb..a46372f8c77 100644
---- a/target/arm/mve.decode
-+++ b/target/arm/mve.decode
-@@ -444,25 +444,33 @@ VMLADAV_S        1110 1110 1111  ... 0 ... .
-1111 . 0 . 0 ... 1 @vmladav_nosz
- VMLADAV_U        1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 1 @vmladav_nosz
+and the rootfs.cpio and zImage files can be found here:
 
- {
--  VMAXNMAV       1110 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
--  VMINNMAV       1110 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
--  VMAXNMV        1110 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
--  VMINNMV        1110 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
--  VMAXV_S        1110 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
--  VMINV_S        1110 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
--  VMAXAV         1110 1110 1110  .. 00 ....  1111 0 0 . 0 ... 0 @vmaxv
--  VMINAV         1110 1110 1110  .. 00 ....  1111 1 0 . 0 ... 0 @vmaxv
-+  [
-+    VMAXNMAV     1110 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
-+    VMINNMAV     1110 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
-+    VMAXNMV      1110 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=2
-+    VMINNMV      1110 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=2
-+  ]
-+  [
-+    VMAXV_S      1110 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
-+    VMINV_S      1110 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
-+    VMAXAV       1110 1110 1110  .. 00 ....  1111 0 0 . 0 ... 0 @vmaxv
-+    VMINAV       1110 1110 1110  .. 00 ....  1111 1 0 . 0 ... 0 @vmaxv
-+  ]
-   VMLADAV_S      1110 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 0 @vmladav_nosz
-   VRMLALDAVH_S   1110 1110 1 ... ... 0 ... . 1111 . 0 . 0 ... 0 @vmlaldav_nosz
- }
+https://github.com/nathanchance/bug-files/tree/15c1fd6e44622a3c27823d2c5c3083dfc7246146/qemu-2e1f39e29bf9a6b28eaee9fc0949aab50dbad94a
 
- {
--  VMAXNMAV       1111 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
--  VMINNMAV       1111 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
--  VMAXNMV        1111 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
--  VMINNMV        1111 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
--  VMAXV_U        1111 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
--  VMINV_U        1111 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
-+  [
-+    VMAXNMAV     1111 1110 1110  11 00 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
-+    VMINNMAV     1111 1110 1110  11 00 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
-+    VMAXNMV      1111 1110 1110  11 10 ....  1111 0 0 . 0 ... 0 @vmaxnmv size=1
-+    VMINNMV      1111 1110 1110  11 10 ....  1111 1 0 . 0 ... 0 @vmaxnmv size=1
-+  ]
-+  [
-+    VMAXV_U      1111 1110 1110  .. 10 ....  1111 0 0 . 0 ... 0 @vmaxv
-+    VMINV_U      1111 1110 1110  .. 10 ....  1111 1 0 . 0 ... 0 @vmaxv
-+  ]
-   VMLADAV_U      1111 1110 1111  ... 0 ... . 1111 . 0 . 0 ... 0 @vmladav_nosz
-   VRMLALDAVH_U   1111 1110 1 ... ... 0 ... . 1111 . 0 . 0 ... 0 @vmlaldav_nosz
- }
-
-
--- PMM
+Cheers,
+Nathan

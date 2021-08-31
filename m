@@ -1,64 +1,65 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4973287lfb;
-        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzkxEKq3YJOSDRWshAW2NqgGXrFM3/3Bo1/UKadkFk2m6m0z/nciqdwhjhiNb8FbF+Ig2Ff
-X-Received: by 2002:a05:6402:40cf:: with SMTP id z15mr19840301edb.70.1630412172674;
-        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630412172; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4973453lfb;
+        Tue, 31 Aug 2021 05:16:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwdiN9ekDFvjLEDuMd8KJy5pZ2LVNCvau8Afasqv3TyAuIoJyc0kWGD4HjeN5qz+JRMY/Si
+X-Received: by 2002:a05:6402:10d9:: with SMTP id p25mr28871647edu.51.1630412185820;
+        Tue, 31 Aug 2021 05:16:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630412185; cv=none;
         d=google.com; s=arc-20160816;
-        b=MyNMaXesunWW4t+Vm3j6kahSzVPNbLlGJwS7gtul1jnFW/xPG3kuU/GEhTdJA3gM1u
-         d3Veaeyec9BcNd6A6GRRnJcYFq8Y1NMi39dIQu9v99Ct4V3Z/rftIOeEJWrtFqjvApc0
-         WQz4yemRZP+gBCH9aDiFeBANKhQ5t4ZbLuESN4YGMHNB9RlQAUdnHzVWE27blkocY4Zh
-         JuKK3HWdfzDhf/+4FOqGeo+nsUmdDXpOyc7FBUX0Oe7ngW6nNxLvTxjS98bJqcFOveV7
-         Ktu8rnVZ50cLlc6YxQqI3vO7DAMeD2BsAXbvvuxB9Kzp6UgsWbwztIjmb8DLoyEVgq0D
-         cwnw==
+        b=mewgJOWD8+zuD3tR3QB35BfAcfyGV+TX0o0Nm8+9uensVzN8aHy1A/AdQPk/S14Pbo
+         ABEBKB8cPNVcngbLaLwOhyRE+ZT+nxpNl2jQRV+/VMD3e/nNnDVQakXPQcRKHqxbVNQt
+         YIru47dc/2E1w4SygufYae7OJvYSr63WoNicgYuEfNiZgwfj2A9EnT6SiUL3fC0vw8T/
+         50ivLsxm7ia5CEaBFZ6RI6GlioIr1wMbiHYl0pgs0RNi7ZVDOy4uuvWR3cnlp4yg18EV
+         RHtM/INkrG5RF7qe2tPPAO8c/ydmGoQUf9fKoYV+l88SYlYoFZ2SdvZkGbV3X2OIZGoK
+         q1Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=lZS4DXMXSOjtCM69VzWdjvjuCGX5Br/qVVvKVZTVxAA=;
-        b=eUZJoq3gSfi3B61OKF/FcjLa4nBeq9z9o8Ye0F6uOR1txzhqcVPb4rZzFUCABp07s1
-         Ugt/U6yQF2I+2G6FYhN9YGqETVh5+n/+KVDMKLtNWGS28XMQ51QnFjTkeYo2Fm3for7l
-         zLy4H93kHHX7ng08/vNhImmdLVT1i1H4oCodiGEGwDPxMrSkJq0ntKp5gkJVsUsSWGRg
-         p8SOBafwIDo8z+wrqYfE2Wp1QpY8zWPzeC3k84gM+6N58ee1fe68RTe+EtZp0L3CYfZI
-         pzCU5tKw1onNenf7PmxvwW6QBFuBDoZisornqhCnykcEgFyy5SOfB89pfw3jxtV0AMxo
-         yytA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Zlsq4UMzdEMYv0Xvm4eAWbgRSDl8tyA0ndz30DB3qMY=;
+        b=MBAoW7ZW/0Tmp+N5OFemCEMW6QDUyrcnk8HB9MymXGTK6T+VDM3P26+rRBT6TPj0+j
+         ryZvlKBClin3RM4JIxmw2oBV8xawjjbQpv4yCXIVy5sssaQe+rrzzjNmXFNdTsKw+9mp
+         rOgLceQKXveMJPRCLcUX8n8n+vxaWRnW+9U60N43AnmWXivZuY9gqL+x7XGjmk/w6wrs
+         fga5S9LzOwaQlQgABrOnaHSSBbVrropz/Mdi+sd4//682Oknj3q+efHCJg98dHdXNk4O
+         N7c9PNaVxWbJ6naZJ1p+O+NLovFV4yKv1xyLHvMW/THYfxYOTL0FzHIzQuNK181hA57d
+         Ug0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJFU+WfD;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JUZTnncl;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id j12si18330124edr.598.2021.08.31.05.16.11
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id qw5si17939365ejc.383.2021.08.31.05.16.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 31 Aug 2021 05:16:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJFU+WfD;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JUZTnncl;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630412170;
+	s=mimecast20190719; t=1630412184;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=lZS4DXMXSOjtCM69VzWdjvjuCGX5Br/qVVvKVZTVxAA=;
-	b=AJFU+WfDYr3S0JGOl2c+kF4lN/gIhSKoL5MqMo8CT8x/Hxdq79giPYKAGD2RTt52f4fCT2
-	3mjnWOUDcqstjTzF4q2XDzYNuzj5o2095DBMxyizVgljkSAmntFzJKw2VAhdLZEZ4RTKXu
-	ke3lK/eyVVoq518MMp0c4Fexb67Nx3o=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Zlsq4UMzdEMYv0Xvm4eAWbgRSDl8tyA0ndz30DB3qMY=;
+	b=JUZTnnclJOok56a1bKgrySzDwCVlpCE6NN6I5Dnsx9uPedHqDTaEKd0cYHJ3JAZIFp5+AG
+	SIRxktNdio/tvmSg58WRfBBiMwkJEOotknV0B9aVnE9r8QPQQmLylCcHFmNn/pa8E9Cl36
+	6sjFOeaXNjqLV4GHqgAWaKXleeWEP2I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-13-NbqoTxYwMOSz1n-Y13nYiw-1; Tue, 31 Aug 2021 08:16:09 -0400
-X-MC-Unique: NbqoTxYwMOSz1n-Y13nYiw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+ us-mta-412-uUgAP4dpMYGGp8VVJqFsvA-1; Tue, 31 Aug 2021 08:16:23 -0400
+X-MC-Unique: uUgAP4dpMYGGp8VVJqFsvA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 52118185302A;
-	Tue, 31 Aug 2021 12:16:04 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E8D580198A;
+	Tue, 31 Aug 2021 12:16:20 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB1BC1001281;
-	Tue, 31 Aug 2021 12:15:46 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4C86818A49;
+	Tue, 31 Aug 2021 12:16:05 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 13FFA1800936; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
+	id 2EF88180093A; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -97,149 +98,97 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 00/29] [RFC] build more i386 tcg code modular.
-Date: Tue, 31 Aug 2021 14:15:16 +0200
-Message-Id: <20210831121545.2874233-1-kraxel@redhat.com>
+Subject: [PATCH 02/29] plugins: register qemu_plugin_opts using opts_init()
+Date: Tue, 31 Aug 2021 14:15:18 +0200
+Message-Id: <20210831121545.2874233-3-kraxel@redhat.com>
+In-Reply-To: <20210831121545.2874233-1-kraxel@redhat.com>
+References: <20210831121545.2874233-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: U5EG0/YGL4kX
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+X-TUID: rmNqv/o0a3lM
 
-This series moves a big pile of code from core qemu to the tcg module.=0D
-=0D
-To allow for more fine-grained patches the first patch disables modular=0D
-tcg and the last patch re-enables it.  Alternatively we could move all=0D
-the build system changes (patches 4-8) to the end of the series and=0D
-squash them into a single patch.  Not sure which is better ...=0D
-=0D
-The fundamental idea of this series is that any call from core qemu into=0D
-tcg gets routed through function pointers.  This is simliar to the way=0D
-we handle the spice module (see ui/spice-module.c).=0D
-=0D
-Initially the function pointers are filled with stubs, when the tcg=0D
-module loads all function pointers are updated to point to the real=0D
-functions instead.  One side effect of this is that compile-time stubs=0D
-will become runtime-stubs.=0D
-=0D
-Series overview:=0D
-   1         - disable modular tcg.=0D
-   2 =3D>  3   - misc small tweaks.=0D
-   4 =3D>  8   - build system changes.=0D
-   9 =3D> 21   - add generic tcg function pointers.=0D
-  22 =3D> 28   - add i386 tcg function pointers.=0D
-  29         - re-enable modular tcg.=0D
-=0D
-take care,=0D
-  Gerd=0D
-=0D
-Gerd Hoffmann (29):=0D
-  build: temporarily disable modular tcg=0D
-  plugins: register qemu_plugin_opts using opts_init()=0D
-  tcg/module: move hmp.c to module=0D
-  tcg/module: move cputlb.c to module=0D
-  tcg/module: move tcg_ss to module [accel/tcg]=0D
-  tcg/module: move tcg_ss to module [tcg]=0D
-  tcg/module: move files to module [target/i386/tcg]=0D
-  move cpu-exec-common.c from tcg module to core qemu [accel/tcg]=0D
-  tcg/module: add tcg-module.[ch] infrastructure=0D
-  tcg_funcs: Add tlb_flush to TCGModuleOps=0D
-  tcg_funcs: Add tlb_flush_page to TCGModuleOps=0D
-  tcg_funcs: Add tlb_reset_dirty to TCGModuleOps=0D
-  tcg_funcs: Add tlb_plugin_lookup to TCGModuleOps=0D
-  tcg_funcs:Add  tcg_exec_{realizefn,unrealizefn} to TCGModuleOps=0D
-  tcg_funcs: Add tb_flush to TCGModuleOps=0D
-  tcg: use tb_page_addr_t for tb_invalidate_phys_range()=0D
-  tcg: drop tb_invalidate_phys_page_range()=0D
-  tcg_funcs: Add tb_invalidate_phys_range to TCGModuleOps=0D
-  tcg_funcs: Add tb_check_watchpoint to TCGModuleOps=0D
-  tcg_funcs: Add cpu_restore_state to TCGModuleOps=0D
-  tcg_funcs: Add curr_cflags to TCGModuleOps=0D
-  tcg_i386_funcs: Add update_fp_status to TCGI386ModuleOps=0D
-  tcg_i386_funcs: Add update_mxcsr_status to TCGI386ModuleOps=0D
-  tcg_i386_funcs: Add update_mxcsr_from_sse_status to TCGI386ModuleOps=0D
-  tcg_i386_funcs: Add x86_register_ferr_irq to TCGI386ModuleOps=0D
-  tcg_i386_funcs: Add cpu_set_ignne to TCGI386ModuleOps=0D
-  tcg_i386_funcs: Add cpu_x86_update_dr7 to TCGI386ModuleOps=0D
-  tcg_i386_funcs: Add cpu_cc_compute_all to TCGI386ModuleOps=0D
-  Revert "build: temporarily disable modular tcg"=0D
-=0D
- include/exec/cpu-all.h              |  2 -=0D
- include/exec/exec-all.h             | 16 ++------=0D
- include/exec/ram_addr.h             |  2 -=0D
- include/exec/translate-all.h        |  2 -=0D
- include/qemu/plugin.h               |  7 ----=0D
- include/tcg/tcg-module-i386.h       | 15 ++++++++=0D
- include/tcg/tcg-module.h            | 24 ++++++++++++=0D
- target/i386/cpu.h                   | 17 ++------=0D
- accel/stubs/tcg-stub.c              |  4 --=0D
- accel/tcg/cpu-exec-common.c         | 10 ++++-=0D
- accel/tcg/cpu-exec.c                | 15 ++++++--=0D
- accel/tcg/cputlb.c                  | 14 ++++++-=0D
- accel/tcg/tcg-module-i386.c         | 33 ++++++++++++++++=0D
- accel/tcg/tcg-module.c              | 60 +++++++++++++++++++++++++++++=0D
- accel/tcg/translate-all.c           | 55 +++++++-------------------=0D
- cpu.c                               | 14 +++----=0D
- gdbstub.c                           |  4 +-=0D
- hw/i386/pc.c                        |  2 +-=0D
- hw/i386/pc_piix.c                   |  2 +-=0D
- hw/i386/pc_q35.c                    |  2 +-=0D
- hw/ppc/spapr_hcall.c                |  2 +-=0D
- linux-user/main.c                   |  2 +-=0D
- linux-user/mmap.c                   |  8 ++--=0D
- linux-user/syscall.c                |  4 +-=0D
- plugins/api.c                       |  4 +-=0D
- plugins/core.c                      |  2 +-=0D
- plugins/loader.c                    | 11 +++++-=0D
- softmmu/physmem.c                   | 22 +++++------=0D
- softmmu/vl.c                        |  1 -=0D
- target/alpha/helper.c               |  2 +-=0D
- target/alpha/mem_helper.c           |  2 +-=0D
- target/alpha/sys_helper.c           |  2 +-=0D
- target/arm/helper.c                 | 26 ++++++-------=0D
- target/arm/op_helper.c              |  2 +-=0D
- target/arm/tlb_helper.c             |  8 ++--=0D
- target/cris/helper.c                |  2 +-=0D
- target/i386/cpu-dump.c              |  2 +-=0D
- target/i386/gdbstub.c               |  2 +-=0D
- target/i386/helper.c                | 10 ++---=0D
- target/i386/machine.c               |  8 ++--=0D
- target/i386/tcg/cc_helper.c         |  9 ++++-=0D
- target/i386/tcg/fpu_helper.c        | 23 +++++++----=0D
- target/i386/tcg/int_helper.c        |  8 ++--=0D
- target/i386/tcg/mem_helper.c        |  8 ++--=0D
- target/i386/tcg/misc_helper.c       |  4 +-=0D
- target/i386/tcg/seg_helper.c        | 10 ++---=0D
- target/i386/tcg/sysemu/bpt_helper.c |  9 ++++-=0D
- target/i386/tcg/sysemu/fpu_helper.c | 12 +++++-=0D
- target/i386/tcg/sysemu/svm_helper.c |  2 +-=0D
- target/i386/tcg/tcg-stub.c          | 25 ------------=0D
- target/m68k/op_helper.c             |  6 +--=0D
- target/microblaze/helper.c          |  2 +-=0D
- target/mips/sysemu/cp0.c            |  2 +-=0D
- target/openrisc/sys_helper.c        |  8 ++--=0D
- target/ppc/excp_helper.c            |  2 +-=0D
- target/riscv/csr.c                  |  2 +-=0D
- target/s390x/gdbstub.c              |  2 +-=0D
- target/s390x/sigp.c                 |  2 +-=0D
- target/s390x/tcg/excp_helper.c      |  2 +-=0D
- target/tricore/op_helper.c          |  2 +-=0D
- target/xtensa/helper.c              |  6 +--=0D
- accel/tcg/meson.build               | 24 ++++++++----=0D
- target/i386/tcg/meson.build         |  7 +++-=0D
- target/i386/tcg/sysemu/meson.build  |  5 ++-=0D
- tcg/meson.build                     |  2 +-=0D
- 65 files changed, 367 insertions(+), 239 deletions(-)=0D
- create mode 100644 include/tcg/tcg-module-i386.h=0D
- create mode 100644 include/tcg/tcg-module.h=0D
- create mode 100644 accel/tcg/tcg-module-i386.c=0D
- create mode 100644 accel/tcg/tcg-module.c=0D
- delete mode 100644 target/i386/tcg/tcg-stub.c=0D
-=0D
---=20=0D
-2.31.1=0D
-=0D
+Removes the need for an explicit qemu_plugin_add_opts() call.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ include/qemu/plugin.h | 7 -------
+ linux-user/main.c     | 2 +-
+ plugins/loader.c      | 9 ++++++++-
+ softmmu/vl.c          | 1 -
+ 4 files changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index 9a8438f6836c..57bdcdecdb42 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -37,13 +37,6 @@ struct qemu_plugin_desc;
+ typedef QTAILQ_HEAD(, qemu_plugin_desc) QemuPluginList;
+ 
+ #ifdef CONFIG_PLUGIN
+-extern QemuOptsList qemu_plugin_opts;
+-
+-static inline void qemu_plugin_add_opts(void)
+-{
+-    qemu_add_opts(&qemu_plugin_opts);
+-}
+-
+ void qemu_plugin_opt_parse(const char *optarg, QemuPluginList *head);
+ int qemu_plugin_load_list(QemuPluginList *head, Error **errp);
+ 
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 37ed50d98e2e..f9d2c6e2de31 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -661,7 +661,7 @@ int main(int argc, char **argv, char **envp)
+     cpu_model = NULL;
+ 
+     qemu_add_opts(&qemu_trace_opts);
+-    qemu_plugin_add_opts();
++    module_call_init(MODULE_INIT_OPTS);
+ 
+     optind = parse_args(argc, argv);
+ 
+diff --git a/plugins/loader.c b/plugins/loader.c
+index 05df40398d62..71b03721dffc 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -53,7 +53,7 @@ struct qemu_plugin_parse_arg {
+     struct qemu_plugin_desc *curr;
+ };
+ 
+-QemuOptsList qemu_plugin_opts = {
++static QemuOptsList qemu_plugin_opts = {
+     .name = "plugin",
+     .implied_opt_name = "file",
+     .head = QTAILQ_HEAD_INITIALIZER(qemu_plugin_opts.head),
+@@ -403,3 +403,10 @@ void plugin_reset_uninstall(qemu_plugin_id_t id,
+         plugin_reset_destroy(data);
+     }
+ }
++
++static void plugin_register_config(void)
++{
++    qemu_add_opts(&qemu_plugin_opts);
++}
++opts_init(plugin_register_config);
++module_opts("plugin");
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index ea05bb39c501..c29a58dee8a0 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -2736,7 +2736,6 @@ void qemu_init(int argc, char **argv, char **envp)
+     qemu_add_opts(&qemu_global_opts);
+     qemu_add_opts(&qemu_mon_opts);
+     qemu_add_opts(&qemu_trace_opts);
+-    qemu_plugin_add_opts();
+     qemu_add_opts(&qemu_option_rom_opts);
+     qemu_add_opts(&qemu_accel_opts);
+     qemu_add_opts(&qemu_mem_opts);
+-- 
+2.31.1

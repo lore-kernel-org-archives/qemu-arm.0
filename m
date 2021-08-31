@@ -1,65 +1,65 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4974181lfb;
-        Tue, 31 Aug 2021 05:17:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyREI/xKJB+ACeynufOL92BmoPu56DwwEfQH0wVyFiVpRGDqXMkEEaRgUan8/tUrD/DJ8j/
-X-Received: by 2002:a17:906:12c6:: with SMTP id l6mr31628202ejb.373.1630412235743;
-        Tue, 31 Aug 2021 05:17:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630412235; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4974380lfb;
+        Tue, 31 Aug 2021 05:17:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxduXDedL0Q57HP9wxR4DNgz4JamBFqCQ7BTepmwjXvND72iTeCn5ABn8/6gh7GHWFqfd4M
+X-Received: by 2002:a17:906:9708:: with SMTP id k8mr30627093ejx.399.1630412249625;
+        Tue, 31 Aug 2021 05:17:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630412249; cv=none;
         d=google.com; s=arc-20160816;
-        b=OtAthxFufakDATqfvKKfe/hMlYuZ49UqDnn9kTR03TAbOUY2SwXHURiK72JaUYlNeo
-         N7HlTCNkPtcUDbii9dpZllsKAbgYaLngAPeG3yL1Y0yY17ADGIC9+/4H4cg575pmOTuD
-         P38TDL/nYKrOIzmx1mjpOktf8Qbf3TBt4i0AqDWlRJ15poVVSnoNShK3YR0xO7oQq6EZ
-         0LOP1pNHezmIKePtsgm9wznf5hiN1S35ISUHDPRpnMqWSjd7wGfja8Sfp5xsXX/5fg3M
-         Zgy6yAkgHCiDiBNThWcgHvA76PtdD3kA8LrwDWylMX3Nugu92/4l1Mop5IVmEscoNitW
-         vHfg==
+        b=QPFFLnXF324XwszIx3f37rjwO4Czg9ysrUWlm6YARlbxGpm+RXjgA22NtB/7WlXIOb
+         GNsBMe9rrtyYlrswDfKPa8Ydaxe+14Poiy5ONU43wqbyP9lMJF3hneo5t4k5bPJ2tHKQ
+         tn0K+YM08cqu5vnr3NMPfaPoTDM+FJIGn5VnN6m1kWYz9W0RzssiNIfjXqBV0RFyw2Yz
+         28NAmaeFzmVs0aekkkCfltuzDUPICQ4knPRALLEKTocUAhp80qFS2Z34O/1LtV9PqK2C
+         17spZ3WthAM1KDz1XaeJelwlKJ+aBSuyiRp8GZrHIcqZbUirvRkVskPpwFyYhLBXTwwt
+         aW/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Kj6LlpYEBQqdR9FwoSkyHmihGdt25q73/5GxAYqyAUU=;
-        b=Ca/v5+pHaUsPrZ8u+6wEOc9J/laf8zznMrXEd6eRN1xi7C3hgTIRawrgfFQ0Ih81nu
-         RJQP3J7OjoCRAMlK3RqtDq5bTtMdwlQlzTkNkfQSdcqpjUy/idhJgZksqPV39Jk2iP3R
-         lNs/iPPMye9SjnWwpJH/Ux2e8g1dpuC72vdSqK0z15feviZwoPc5m8o7xT2SdCTj72S9
-         c8fqLcuPQ8iHCFmzLQvU1x3YVyA64AkX+Ttt+/urgftsh09p81jAaVrOYOIknRmTt69x
-         ptfA+uASUDx3SeYv/KuDk+T34nTfBOehA7JOKARiq4o3XkuS0OpV4EPBT3I6OYmJ9RoP
-         DIbA==
+        bh=u8gQuk7Fsh4A8/jNqxyM7TcDlDRogwWS1f9ob5Kg95g=;
+        b=dEQxasdor352LmtBrxBuLhAvrRDvsNWS2+iHAAfPr+aaCY/I3/QZDQtciBDKoUfu6H
+         vY/NBcIeZtsOOStd/vFwMLV8ye/it/iA5O1M7gdw4kUfqgJbo7nix5wAmdRugIxujH+w
+         X8C+EvDp5KR6XF3iwUH4ir/8gdpaxQgpgQ9pPxx2MiilJIyt07qrmn075ojX0Ez/2XPO
+         TVIxqNmIOi/kMRtdeHwTd5C87bkoi9/ByIwInZ0iP+civx6taLSul3/s5yIUGu5Rmt/Z
+         XxJltEoaIT4aOzvpXAS2dTRetm2G1OELYCMYuRkwzM34RtWzoJVawtJFOaSBEu5/o+Ci
+         8f8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jz2Tid1i;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OX7llnh4;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id b15si236282ejl.715.2021.08.31.05.17.15
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id gs12si6264822ejc.7.2021.08.31.05.17.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Aug 2021 05:17:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 31 Aug 2021 05:17:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jz2Tid1i;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OX7llnh4;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630412234;
+	s=mimecast20190719; t=1630412248;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Kj6LlpYEBQqdR9FwoSkyHmihGdt25q73/5GxAYqyAUU=;
-	b=Jz2Tid1io9jxsgBLIt0zsIWPT8BBcpT38Gn8IgqwkIr3yPBHx97DuAOqak3VgwAEkJThh6
-	B3EIADQRwdwoitu+H359d0u8FZ1kJoEcP2HsrWmSM7YR8+wELZFgmTVXR/SZXaW4RQOFxy
-	SVReCqRs7Ms4rWQXGcgGi+qUaJYIO9E=
+	bh=u8gQuk7Fsh4A8/jNqxyM7TcDlDRogwWS1f9ob5Kg95g=;
+	b=OX7llnh4P5jZj2omtybcH8fde6qsRwPFO3/Ip00ZatKfQ43at1OrAZK0evJtnUmrqAnJna
+	tl/Cm8NUDRqDhQh8Ub2hjkwOboAWxgHYDhlDIFibSJ67djFq03UAkYKegwZmJnCuVkv5x9
+	rG2r6G4FZxet8ElEK5wegc+FbHIXSEg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-13-RISZKiG8O1CaodTctAuQpg-1; Tue, 31 Aug 2021 08:17:13 -0400
-X-MC-Unique: RISZKiG8O1CaodTctAuQpg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+ us-mta-244-DI9j00UwNqaHj1X1ViOXig-1; Tue, 31 Aug 2021 08:17:27 -0400
+X-MC-Unique: DI9j00UwNqaHj1X1ViOXig-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4AD3F92500;
-	Tue, 31 Aug 2021 12:17:10 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 82DEB8799F6;
+	Tue, 31 Aug 2021 12:17:24 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BC23E226E9;
-	Tue, 31 Aug 2021 12:16:53 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7C66B6E0B0;
+	Tue, 31 Aug 2021 12:17:12 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 82B5B1800992; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
+	id BFDB91800996; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -98,74 +98,132 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 09/29] tcg/module: add tcg-module.[ch] infrastructure
-Date: Tue, 31 Aug 2021 14:15:25 +0200
-Message-Id: <20210831121545.2874233-10-kraxel@redhat.com>
+Subject: [PATCH 11/29] tcg_funcs: Add tlb_flush_page to TCGModuleOps
+Date: Tue, 31 Aug 2021 14:15:27 +0200
+Message-Id: <20210831121545.2874233-12-kraxel@redhat.com>
 In-Reply-To: <20210831121545.2874233-1-kraxel@redhat.com>
 References: <20210831121545.2874233-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: 0fxC0JcoO6/W
-
-Add TCGModuleOps struct, empty for now, followup patches will fill it.
-This struct has pointers for tcg functions which are called by core
-qemu.
-
-The struct is initialized (at compile time) with pointers to stub
-functions.  When the tcg module loads it will update the function
-pointers to point to the real functions instead.
+X-TUID: paej8/UOAqJq
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/tcg/tcg-module.h | 8 ++++++++
+ include/exec/exec-all.h  | 3 ---
+ include/tcg/tcg-module.h | 3 +++
+ accel/tcg/cputlb.c       | 1 +
  accel/tcg/tcg-module.c   | 5 +++++
- accel/tcg/meson.build    | 4 ++++
- 3 files changed, 17 insertions(+)
- create mode 100644 include/tcg/tcg-module.h
- create mode 100644 accel/tcg/tcg-module.c
+ softmmu/physmem.c        | 4 ++--
+ target/arm/helper.c      | 4 ++--
+ 6 files changed, 13 insertions(+), 7 deletions(-)
 
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index ddb1ab797978..43d89699e989 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -328,9 +328,6 @@ static inline void tlb_init(CPUState *cpu)
+ static inline void tlb_destroy(CPUState *cpu)
+ {
+ }
+-static inline void tlb_flush_page(CPUState *cpu, target_ulong addr)
+-{
+-}
+ static inline void tlb_flush_page_all_cpus(CPUState *src, target_ulong addr)
+ {
+ }
 diff --git a/include/tcg/tcg-module.h b/include/tcg/tcg-module.h
-new file mode 100644
-index 000000000000..7e87aecb2357
---- /dev/null
+index b94bfdd362ed..a903e3ee62c0 100644
+--- a/include/tcg/tcg-module.h
 +++ b/include/tcg/tcg-module.h
-@@ -0,0 +1,8 @@
-+#ifndef TCG_MODULE_H
-+#define TCG_MODULE_H
+@@ -1,8 +1,11 @@
+ #ifndef TCG_MODULE_H
+ #define TCG_MODULE_H
+ 
++#include "exec/exec-all.h"
 +
-+struct TCGModuleOps {
-+};
-+extern struct TCGModuleOps tcg;
-+
-+#endif /* TCG_MODULE_H */
+ struct TCGModuleOps {
+     void (*tlb_flush)(CPUState *cpu);
++    void (*tlb_flush_page)(CPUState *cpu, target_ulong addr);
+ };
+ extern struct TCGModuleOps tcg;
+ 
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 40c3d1b65ac5..1fcdb71a10a0 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -2771,6 +2771,7 @@ uint64_t cpu_ldq_code(CPUArchState *env, abi_ptr addr)
+ static void tcg_module_ops_tlb(void)
+ {
+     tcg.tlb_flush = tlb_flush;
++    tcg.tlb_flush_page = tlb_flush_page;
+ }
+ 
+ type_init(tcg_module_ops_tlb);
 diff --git a/accel/tcg/tcg-module.c b/accel/tcg/tcg-module.c
-new file mode 100644
-index 000000000000..e864fb20c141
---- /dev/null
+index a1e5728c8c1b..4d62160628bd 100644
+--- a/accel/tcg/tcg-module.c
 +++ b/accel/tcg/tcg-module.c
-@@ -0,0 +1,5 @@
-+#include "qemu/osdep.h"
-+#include "tcg/tcg-module.h"
+@@ -5,6 +5,11 @@ static void update_cpu_stub(CPUState *cpu)
+ {
+ }
+ 
++static void tlb_flush_page_stub(CPUState *cpu, target_ulong addr)
++{
++}
 +
-+struct TCGModuleOps tcg = {
-+};
-diff --git a/accel/tcg/meson.build b/accel/tcg/meson.build
-index ec74e17a8285..93cbbf9f3926 100644
---- a/accel/tcg/meson.build
-+++ b/accel/tcg/meson.build
-@@ -1,3 +1,7 @@
-+specific_ss.add(files(
-+  'tcg-module.c',
-+))
-+
- specific_ss.add(when: 'CONFIG_TCG', if_true: files(
-   'cpu-exec-common.c',
- ))
+ struct TCGModuleOps tcg = {
+     .tlb_flush = update_cpu_stub,
++    .tlb_flush_page = tlb_flush_page_stub,
+ };
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index dd17f80120dc..8fa5376de1c9 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -794,7 +794,7 @@ int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+ 
+     in_page = -(addr | TARGET_PAGE_MASK);
+     if (len <= in_page) {
+-        tlb_flush_page(cpu, addr);
++        tcg.tlb_flush_page(cpu, addr);
+     } else {
+         tcg.tlb_flush(cpu);
+     }
+@@ -825,7 +825,7 @@ void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint)
+ {
+     QTAILQ_REMOVE(&cpu->watchpoints, watchpoint, entry);
+ 
+-    tlb_flush_page(cpu, watchpoint->vaddr);
++    tcg.tlb_flush_page(cpu, watchpoint->vaddr);
+ 
+     g_free(watchpoint);
+ }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0da65edd78cd..6aa38cde15fe 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -772,7 +772,7 @@ static void tlbimva_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     if (tlb_force_broadcast(env)) {
+         tlb_flush_page_all_cpus_synced(cs, value);
+     } else {
+-        tlb_flush_page(cs, value);
++        tcg.tlb_flush_page(cs, value);
+     }
+ }
+ 
+@@ -799,7 +799,7 @@ static void tlbimvaa_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     if (tlb_force_broadcast(env)) {
+         tlb_flush_page_all_cpus_synced(cs, value);
+     } else {
+-        tlb_flush_page(cs, value);
++        tcg.tlb_flush_page(cs, value);
+     }
+ }
+ 
 -- 
 2.31.1

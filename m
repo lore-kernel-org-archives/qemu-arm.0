@@ -1,39 +1,39 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4974875lfb;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4974878lfb;
         Tue, 31 Aug 2021 05:18:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkDJRKrh4Ogg0XJugw7/VpF3CoPGXuKxrn2mZVy3iasTBOLNWrroXSBpCTzYzlk720PLRN
-X-Received: by 2002:a17:906:f11:: with SMTP id z17mr31348839eji.385.1630412286191;
+X-Google-Smtp-Source: ABdhPJxCD/yephFk/MF6z3alQJF5OyDczcDAMoKhQDkBkT/djppT5bqN5KHQ2m+px8UGuJqdlwQV
+X-Received: by 2002:a05:6402:714:: with SMTP id w20mr25700809edx.62.1630412286340;
         Tue, 31 Aug 2021 05:18:06 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1630412286; cv=none;
         d=google.com; s=arc-20160816;
-        b=F1I7uXcKj2VfHEpYjpFiaXb0LOrmujppQS1MV054FIYT084JbG9Oh3rpT+xG2BRUEd
-         1W9Zb9oFpHSd7jLxnPAygN+Wb+u9PJlkw/FUR/6Auc48RuT1fzET22lGfos1YAO2Mq9a
-         3N9KG936q1u+/lkZ6Efpic6exMUhafvHetrxaBJLAOvH449Ydsd1+ULlYJ8moSthJF3x
-         Fsc7gcPNRzlX1gfaZBkKc3nFFliUDHu54ZtjO2BI4nAWBW3GX/DpRnqGNjTUFaCaheUY
-         JM60DzezidDI9CMqjPZpGvnO7DXL1ytWtTtFFpmdxZa9/hJW5AFOhaNohLVI8aut6slD
-         Usiw==
+        b=D3WL0uffxGb1lY06XfR7DRoq6ULm3ZedyY21ULGVX8IBwsRkAgSmIConuORe5VhxU2
+         r+06FQ55Wj6SG1TuBQP9N6PcO4pxsdyJsUFM/a3g0Ij8kU5Cz88dTsrZmIhsG+77kAeg
+         E2TOV3Fh3kLxNTlCYq0Ch3IABvJ3wlJzst+tEQqmWyzOP+J65AuL1cGIaueTuYNs9idT
+         hdZ6ELYo+IUmHBvm+IdZVIEabHbczJAI+RI08xPrUBdy5dpUyBpz+pUMWJNe/sR0lsWI
+         CVshiV76/HSKOllOFkLNxg6wnvBPqFgoU/oBvN8qyy4L2cLwoslvzqP+wqPGs91MNRqM
+         4ddA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Df/cS+Kk2RDhFNkjyLEWK9DtQT8M40JsvdVaLc7r9J8=;
-        b=aJwMBH6Lrrs6nzoD2y1/fzrDpiBoXDmVR9XUPZe1DOSu1IXTlSv3vd1DKwgIbnjguM
-         xO51QwQAA+TQLPO0lx9XUZ+2gY1MYXjpOy8/TmIihVV7POpUFNF6K+bHbEpL/O/JpTs4
-         NFL8xl4SOOxo9vLjMyp3JXLTCdiqyNzAoXgflHG3p67tg9shxnOA5C//PSgq/kWvht5m
-         fBnGRTK7tHbv7m+isgfWmwbUfOgYbZWiF8OChFJKPioD5pUYAqfM6s0/6pnm5TRg1WOF
-         Z1deDQ3CQqILPEMmHEoswbzBZH8grIq91wt9htJpH2QFHBPAzqG08GSyz7Us7j6pwyJk
-         gYFQ==
+        bh=ZUHp1O8zge7EEgmI1RbTuLgi2O/FujTQAqW5ywVE9jo=;
+        b=pBm0d8QWEoknnEe22xlbYfVywQ8MTkSppd3vbz+q78D2QmsHLivKVC6CNLIeykrFK4
+         KnadrJiq7BDj9MGXD93acOODRyY5mi/+gBpMSHgRzuaKO922QgVrSIeJ2DTaksILY+Mw
+         EtMiUOR7X6aKNVPZ5tWC/Lo2AbpFwqj4qU1GuQ/jaQLowUF2RSo6ewXUV9JCVUOmX3nt
+         cWUM6rPApPDIW1c9bkUvRnRGe0RNEqDzBxoTVYfQVM41nvpPkiqyuvEe75Rp3hLTweyg
+         4qj2kDnZGe3eRoeYHrnmjq/UAsX/1eVNm2QjwN6631Mj51WYARpO8t0LeLGV1/JPQDsw
+         Vp/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GChTyPXR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="L9ZV/8lM";
        spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kraxel@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id m4si20751106eja.677.2021.08.31.05.18.05
+        by mx.google.com with ESMTPS id di4si17548285ejc.505.2021.08.31.05.18.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
         Tue, 31 Aug 2021 05:18:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GChTyPXR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="L9ZV/8lM";
        spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
@@ -42,24 +42,24 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Df/cS+Kk2RDhFNkjyLEWK9DtQT8M40JsvdVaLc7r9J8=;
-	b=GChTyPXR8eRh340cc+ET0uFsKeLOaYfIAIoPpU8jlm93aILx5+Dxv9ImqJNasduhHIDYlW
-	wYdkXGkZJtkFGRJojcuAass+x9Hq75vZn9UeC3FhjG0vY1JgJ7YJ74OCOBbvyTKSZqElZq
-	gBnTP3PBnr3C8CuEFVccuZ3e4HhOPP0=
+	bh=ZUHp1O8zge7EEgmI1RbTuLgi2O/FujTQAqW5ywVE9jo=;
+	b=L9ZV/8lMSp6p4SLet3kc7Ned2DBi34BlxFRkxTliv25DVv4stn47eaJrpxrxPI7jRTp2LF
+	QNbIscrrEhIbXDE6sLI78XqK0IW+6SxTM3KKZxsCEh+x05QFTUHU4Io043+A5mZEIFq6LK
+	VbOZ+wiC1EWSExoiJECrlSI2HS164Ik=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-469-cYZepCxIMVyGkTckoaK2fw-1; Tue, 31 Aug 2021 08:18:03 -0400
-X-MC-Unique: cYZepCxIMVyGkTckoaK2fw-1
+ us-mta-429-QBhQlV_lNJKLWdZ5fb88KA-1; Tue, 31 Aug 2021 08:18:04 -0400
+X-MC-Unique: QBhQlV_lNJKLWdZ5fb88KA-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5F1A392509;
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 57011100806C;
 	Tue, 31 Aug 2021 12:18:00 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 08C61104B4C2;
-	Tue, 31 Aug 2021 12:17:53 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 79BA71007611;
+	Tue, 31 Aug 2021 12:17:44 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 4AE3718009D9; Tue, 31 Aug 2021 14:15:46 +0200 (CEST)
+	id 3BCC018009D7; Tue, 31 Aug 2021 14:15:46 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -98,9 +98,9 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 17/29] tcg: drop tb_invalidate_phys_page_range()
-Date: Tue, 31 Aug 2021 14:15:33 +0200
-Message-Id: <20210831121545.2874233-18-kraxel@redhat.com>
+Subject: [PATCH 16/29] tcg: use tb_page_addr_t for tb_invalidate_phys_range()
+Date: Tue, 31 Aug 2021 14:15:32 +0200
+Message-Id: <20210831121545.2874233-17-kraxel@redhat.com>
 In-Reply-To: <20210831121545.2874233-1-kraxel@redhat.com>
 References: <20210831121545.2874233-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -111,86 +111,81 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: B4ThJfOpJkKV
+X-TUID: AV7zklqaPdgz
 
-tb_invalidate_phys_range() can be used instead.
+The tb_page_addr_t type was added to avoid #ifdefs for SOFTMMU (uses
+ram_addr_t) vs. USER_ONLY (uses target_ulong), and
+tb_invalidate_phys_range() never was updated for some reason.
+So do that now.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/exec/translate-all.h |  1 -
- accel/tcg/translate-all.c    | 25 -------------------------
- cpu.c                        |  4 ++--
- 3 files changed, 2 insertions(+), 28 deletions(-)
+ include/exec/exec-all.h   | 4 ++--
+ include/exec/ram_addr.h   | 2 --
+ accel/tcg/translate-all.c | 6 +-----
+ cpu.c                     | 2 +-
+ 4 files changed, 4 insertions(+), 10 deletions(-)
 
-diff --git a/include/exec/translate-all.h b/include/exec/translate-all.h
-index a557b4e2bb9e..f313542cdae1 100644
---- a/include/exec/translate-all.h
-+++ b/include/exec/translate-all.h
-@@ -29,7 +29,6 @@ void page_collection_unlock(struct page_collection *set);
- void tb_invalidate_phys_page_fast(struct page_collection *pages,
-                                   tb_page_addr_t start, int len,
-                                   uintptr_t retaddr);
--void tb_invalidate_phys_page_range(tb_page_addr_t start, tb_page_addr_t end);
- void tb_check_watchpoint(CPUState *cpu, uintptr_t retaddr);
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 7dc6f498a7e4..9cb8337acee1 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -567,11 +567,11 @@ uint32_t curr_cflags(CPUState *cpu);
  
- #ifdef CONFIG_USER_ONLY
+ /* TranslationBlock invalidate API */
+ #if defined(CONFIG_USER_ONLY)
+-void tb_invalidate_phys_addr(target_ulong addr);
+-void tb_invalidate_phys_range(target_ulong start, target_ulong end);
++void tb_invalidate_phys_addr(tb_page_addr_t addr);
+ #else
+ void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs);
+ #endif
++void tb_invalidate_phys_range(tb_page_addr_t start, tb_page_addr_t end);
+ void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr);
+ TranslationBlock *tb_htable_lookup(CPUState *cpu, target_ulong pc,
+                                    target_ulong cs_base, uint32_t flags,
+diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+index 551876bed041..ae34f63b8f7e 100644
+--- a/include/exec/ram_addr.h
++++ b/include/exec/ram_addr.h
+@@ -145,8 +145,6 @@ static inline void qemu_ram_block_writeback(RAMBlock *block)
+ #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
+ #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY_CODE))
+ 
+-void tb_invalidate_phys_range(ram_addr_t start, ram_addr_t end);
+-
+ static inline bool cpu_physical_memory_get_dirty(ram_addr_t start,
+                                                  ram_addr_t length,
+                                                  unsigned client)
 diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 57bb921bd3ba..3a3a60575141 100644
+index 1d258e89fc81..57bb921bd3ba 100644
 --- a/accel/tcg/translate-all.c
 +++ b/accel/tcg/translate-all.c
-@@ -1768,31 +1768,6 @@ tb_invalidate_phys_page_range__locked(struct page_collection *pages,
- #endif
- }
- 
--/*
-- * Invalidate all TBs which intersect with the target physical address range
-- * [start;end[. NOTE: start and end must refer to the *same* physical page.
-- * 'is_cpu_write_access' should be true if called from a real cpu write
-- * access: the virtual CPU will exit the current TB if code is modified inside
-- * this TB.
-- *
-- * Called with mmap_lock held for user-mode emulation
-- */
--void tb_invalidate_phys_page_range(tb_page_addr_t start, tb_page_addr_t end)
--{
--    struct page_collection *pages;
--    PageDesc *p;
--
--    assert_memory_lock();
--
--    p = page_find(start >> TARGET_PAGE_BITS);
--    if (p == NULL) {
--        return;
--    }
--    pages = page_collection_lock(start, end);
--    tb_invalidate_phys_page_range__locked(pages, p, start, end, 0);
--    page_collection_unlock(pages);
--}
--
- /*
-  * Invalidate all TBs which intersect with the target physical address range
-  * [start;end[. NOTE: start and end may refer to *different* physical pages.
+@@ -1802,11 +1802,7 @@ void tb_invalidate_phys_page_range(tb_page_addr_t start, tb_page_addr_t end)
+  *
+  * Called with mmap_lock held for user-mode emulation.
+  */
+-#ifdef CONFIG_SOFTMMU
+-void tb_invalidate_phys_range(ram_addr_t start, ram_addr_t end)
+-#else
+-void tb_invalidate_phys_range(target_ulong start, target_ulong end)
+-#endif
++void tb_invalidate_phys_range(tb_page_addr_t start, tb_page_addr_t end)
+ {
+     struct page_collection *pages;
+     tb_page_addr_t next;
 diff --git a/cpu.c b/cpu.c
-index e8baec294b06..b8ac817cb3fd 100644
+index ce96b3591a9c..e8baec294b06 100644
 --- a/cpu.c
 +++ b/cpu.c
-@@ -222,7 +222,7 @@ const char *parse_cpu_option(const char *cpu_option)
- void tb_invalidate_phys_addr(tb_page_addr_t addr)
+@@ -219,7 +219,7 @@ const char *parse_cpu_option(const char *cpu_option)
+ }
+ 
+ #if defined(CONFIG_USER_ONLY)
+-void tb_invalidate_phys_addr(target_ulong addr)
++void tb_invalidate_phys_addr(tb_page_addr_t addr)
  {
      mmap_lock();
--    tb_invalidate_phys_page_range(addr, addr + 1);
-+    tb_invalidate_phys_range(addr, addr + 1);
-     mmap_unlock();
- }
- #else
-@@ -243,7 +243,7 @@ void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs)
-         return;
-     }
-     ram_addr = memory_region_get_ram_addr(mr) + addr;
--    tb_invalidate_phys_page_range(ram_addr, ram_addr + 1);
-+    tb_invalidate_phys_range(ram_addr, ram_addr + 1);
- }
- #endif
- 
+     tb_invalidate_phys_page_range(addr, addr + 1);
 -- 
 2.31.1

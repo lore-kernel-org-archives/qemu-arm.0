@@ -1,176 +1,245 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4932932lfb;
-        Tue, 31 Aug 2021 04:24:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOTbOWwdwJ80pr5K0LIGjO9paivU+zxks9NTtcsMYO+d25MhBvPR4ZG2vapu0fsuBfR7tc
-X-Received: by 2002:a6b:f702:: with SMTP id k2mr7363917iog.187.1630409047919;
-        Tue, 31 Aug 2021 04:24:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630409047; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4973287lfb;
+        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkxEKq3YJOSDRWshAW2NqgGXrFM3/3Bo1/UKadkFk2m6m0z/nciqdwhjhiNb8FbF+Ig2Ff
+X-Received: by 2002:a05:6402:40cf:: with SMTP id z15mr19840301edb.70.1630412172674;
+        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630412172; cv=none;
         d=google.com; s=arc-20160816;
-        b=pH8tjTWaI/M41wTlFKYiLO8/iEDDkkOZL1wn0/UmCJR00ttObfpO9wmDSk+Wx6uUUT
-         Hsu8L5xfRDqX/zyvKW9vrTzk81womGmsnFbywOq4c37ZApGykhTHioK8nq/oMRNxAGyz
-         McwQwkmmYAxMFlb7jgVtDjC6nyMYbmEEadpwgvMz1MNuVV+9h55tLK/h4wwY1JevOQAF
-         1vs/0XDELNRtGiME4TvplgsedYlYagpLX3XktSSuWkwm5fMXAfcFvSNsh8Uyxys3tZno
-         buIq7wcB3WNGJ5f8FVeha56l5I3Uck1/pLM0I5DmtPz0mBGsFKmRFrcaRJcAuAudrPzI
-         vFjA==
+        b=MyNMaXesunWW4t+Vm3j6kahSzVPNbLlGJwS7gtul1jnFW/xPG3kuU/GEhTdJA3gM1u
+         d3Veaeyec9BcNd6A6GRRnJcYFq8Y1NMi39dIQu9v99Ct4V3Z/rftIOeEJWrtFqjvApc0
+         WQz4yemRZP+gBCH9aDiFeBANKhQ5t4ZbLuESN4YGMHNB9RlQAUdnHzVWE27blkocY4Zh
+         JuKK3HWdfzDhf/+4FOqGeo+nsUmdDXpOyc7FBUX0Oe7ngW6nNxLvTxjS98bJqcFOveV7
+         Ktu8rnVZ50cLlc6YxQqI3vO7DAMeD2BsAXbvvuxB9Kzp6UgsWbwztIjmb8DLoyEVgq0D
+         cwnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=L2Vtm5Z4vGJidVeg/2jOJv5NFZBJrz6FMsbuGAp6lxM=;
-        b=UgxZEiMgxBtbHGt8lgaj3wYiMzBHp3ZPMw//dmruKar1IVlcn2HT1JcF1nK8jU7qid
-         B15xEeAEnIpiufqM/a2jw7KiAzNsWXxgD8qwGFhW0atpf4SaSN/S1NHVQjRibQDMlHKj
-         2RcCuGK2aCpN6vZ0hz/Kp9ZmL/f47391+zdEzUG1/2atagqYzmTqYTgeHekHAAzoLUl0
-         y1PHXpuluK+1kGkUBc2QBkiJKuRBrtVsUZA20hhAP4jmS68ovcUe+RzSbD+4Kp91kkRq
-         D3fcVc4jSD/K50pzrPbp68+Eco9WuEYOw4RMyRATpJ6AjF3tegboyCPaudXw22m+XqEM
-         NXXA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=lZS4DXMXSOjtCM69VzWdjvjuCGX5Br/qVVvKVZTVxAA=;
+        b=eUZJoq3gSfi3B61OKF/FcjLa4nBeq9z9o8Ye0F6uOR1txzhqcVPb4rZzFUCABp07s1
+         Ugt/U6yQF2I+2G6FYhN9YGqETVh5+n/+KVDMKLtNWGS28XMQ51QnFjTkeYo2Fm3for7l
+         zLy4H93kHHX7ng08/vNhImmdLVT1i1H4oCodiGEGwDPxMrSkJq0ntKp5gkJVsUsSWGRg
+         p8SOBafwIDo8z+wrqYfE2Wp1QpY8zWPzeC3k84gM+6N58ee1fe68RTe+EtZp0L3CYfZI
+         pzCU5tKw1onNenf7PmxvwW6QBFuBDoZisornqhCnykcEgFyy5SOfB89pfw3jxtV0AMxo
+         yytA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b="T/7ZEtog";
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=TncLntfJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u6si19582314jao.99.2021.08.31.04.24.07
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJFU+WfD;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kraxel@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id j12si18330124edr.598.2021.08.31.05.16.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 04:24:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b="T/7ZEtog";
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=TncLntfJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34594 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL1s7-0004Zz-9X
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 07:24:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47854)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1mL1rt-0004Xu-85; Tue, 31 Aug 2021 07:23:53 -0400
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:36499)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1mL1rr-0002gF-Bw; Tue, 31 Aug 2021 07:23:53 -0400
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
- by mailout.nyi.internal (Postfix) with ESMTP id C78235C0051;
- Tue, 31 Aug 2021 07:23:48 -0400 (EDT)
-Received: from imap43 ([10.202.2.93])
- by compute2.internal (MEProxy); Tue, 31 Aug 2021 07:23:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm3; bh=L2Vtm
- 5Z4vGJidVeg/2jOJv5NFZBJrz6FMsbuGAp6lxM=; b=T/7ZEtogHDJVj4AoGddW7
- N6zcbL2w6LusdlKyDh7bBkXMDLdF5y6L4A3l/a3EUq66FvNEnwM+O3xQ6oanY+Sr
- xkZxYC7kYEv3fH3nzCot5e3t/h1vhPzKHbEtIuwOXkfaTXwjNU1EOGyWQQwZk7KN
- TKiKRnnm6U6CXyb5QTlTouG7NTI78ZUL18nUcxYykt6QcHPIO/wpm1/ANjmreUo2
- avq5wgt/jzYThwDecy7Lg/f6UD1OdclEe05e6n8QkwxXVVlJgupGytUIzs3bhjYW
- stmtN1vlKTuWdFiNaprekdg9+hyFf1SVWMZYUaeRqsMSVtXtOdbWXeGyRkCQ922y
- w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; bh=L2Vtm5Z4vGJidVeg/2jOJv5NFZBJrz6FMsbuGAp6l
- xM=; b=TncLntfJ3m4kOl8ESf5nhkcn5mn8gpU9DRPMCLtXmW5oEGKhh7lExBJ7u
- My1BAkaVuFXEkTl888fuWItnPM5Itk+Sa3pQqak4KD1aqaiQICFA/k/n8wD9XymX
- 3BKlMW5wxZ/mA9i+812Q7moorT2N5eeTTnQjTs5I0TGM7OV/PTWy14Rm26/QMalP
- g/oexIy1JsRSxKgVOg8ZkwUHdmVKixcuY/JLFyMblXPhduv9SqacJFbfaTBobQGQ
- 1sEYqLNg5wDmKII9UL0E8pnA4g/+z5n7no2eULaTly0urQD4IKkLITEYPOJ2IE1f
- yoIYSC/0vLVl4/4uYPAUQ/qWYDgWQ==
-X-ME-Sender: <xms:QxEuYaRd1HBd4M_etK2GjQJShScLPziLJBStvQnwORbRA45mM4VqCQ>
- <xme:QxEuYfxSs6ltQ7zo4E1LVjueDsV_xKrpO1AxFio0Y12HARLo39NvdEL5jsgjhiG1d
- VxuHAdvjWV6Qh5kmQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddruddvuddgfeelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
- ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
- frrghtthgvrhhnpefhgfekhfdugefhjeduhfdtgfeutdefheejveetffegudduteejieej
- hfehfffgfeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuih
- iivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgifsegrjhdrihgurdgr
- uh
-X-ME-Proxy: <xmx:QxEuYX0VmV3VjgxdVAXusvsrkZwcXpk1ZxGDsnUb3N1RNOIR-a_5yA>
- <xmx:QxEuYWDgm92db1qDpFqN7aXfKq7nPxCDvIKcbkhvMROpUupQ1yznjA>
- <xmx:QxEuYTiNuLvK36WN2tGAYs2tX7Ion2w5cYmwnO5794YYOPnlhTUvDA>
- <xmx:RBEuYWsJY8DPmqIEucwoL7FmTeisnkjhTN0xMiPgCJ14dndnIeA2hw>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id B0E5DAC0362; Tue, 31 Aug 2021 07:23:47 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.5.0-alpha0-1124-g8f1c7cb9de-fm-20210824.001-g8f1c7cb9
-Mime-Version: 1.0
-Message-Id: <d3d43c7a-1f37-4489-a07b-bf561e4e36a1@www.fastmail.com>
-In-Reply-To: <547b5f32-0858-1882-fb8b-c60056cdbfd4@kaod.org>
-References: <20210827210417.4022054-1-pdel@fb.com>
- <20210827210417.4022054-3-pdel@fb.com>
- <7a53d5e9-52c2-a06b-1385-fd71a96d7486@kaod.org>
- <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
- <547b5f32-0858-1882-fb8b-c60056cdbfd4@kaod.org>
-Date: Tue, 31 Aug 2021 20:53:10 +0930
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "Peter Delevoryas" <pdel@fb.com>
-Subject: Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
-Content-Type: text/plain;charset=utf-8
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJFU+WfD;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1630412170;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=lZS4DXMXSOjtCM69VzWdjvjuCGX5Br/qVVvKVZTVxAA=;
+	b=AJFU+WfDYr3S0JGOl2c+kF4lN/gIhSKoL5MqMo8CT8x/Hxdq79giPYKAGD2RTt52f4fCT2
+	3mjnWOUDcqstjTzF4q2XDzYNuzj5o2095DBMxyizVgljkSAmntFzJKw2VAhdLZEZ4RTKXu
+	ke3lK/eyVVoq518MMp0c4Fexb67Nx3o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-13-NbqoTxYwMOSz1n-Y13nYiw-1; Tue, 31 Aug 2021 08:16:09 -0400
+X-MC-Unique: NbqoTxYwMOSz1n-Y13nYiw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 52118185302A;
+	Tue, 31 Aug 2021 12:16:04 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB1BC1001281;
+	Tue, 31 Aug 2021 12:15:46 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 13FFA1800936; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Aurelien Jarno <aurelien@aurel32.net>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Xu <peterx@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	qemu-ppc@nongnu.org,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-riscv@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Greg Kurz <groug@kaod.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	qemu-s390x@nongnu.org,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH 00/29] [RFC] build more i386 tcg code modular.
+Date: Tue, 31 Aug 2021 14:15:16 +0200
+Message-Id: <20210831121545.2874233-1-kraxel@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=66.111.4.28; envelope-from=andrew@aj.id.au;
- helo=out4-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Cameron Esfahani via <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X5KjaTN7pYBT
+X-TUID: U5EG0/YGL4kX
 
-Hi C=C3=A9dric, Peter,
-
-On Tue, 31 Aug 2021, at 20:09, C=C3=A9dric Le Goater wrote:
-> On 8/28/21 5:58 PM, Peter Delevoryas wrote:
-> > I think I=E2=80=99m a little confused on this part. What I meant by =
-=E2=80=9Cmost machines just use UART5=E2=80=9D was that most DTS=E2=80=99=
-s use =E2=80=9Cstdout-path=3D&uart5=E2=80=9D, but fuji uses =E2=80=9Cstd=
-out-path=3D&uart1=E2=80=9D. I /do/ see that SCU510 includes a bit relate=
-d to UART, but it=E2=80=99s for disabling booting from UART1 and UART5. =
-I just care about the console aspect, not booting.
->=20
-> The UART can be switched with SCU70[29] on the AST2500, btw.
-
-If it helps, neither the AST2600's "Boot from UART" feature nor the=20
-AST2[456]00's "Debug UART" feature are related to which UART is used as=20
-the BMC console by u-boot and/or the kernel - the latter is entirely a=20
-software thing.
-
-The "Debug UART" is a hardware backdoor, a UART-to-AHB bridge=20
-implemented by the SoC. It provides a shell environment that allows you=20
-to issue transactions directly on the AHB if you perform a magic knock.=20
-I have a driver for it implemented here:
-
-https://github.com/amboar/cve-2019-6260/blob/master/src/debug.c
-
-SCU70[29] on the AST2500 selects whether this backdoor is exposed on=20
-UART1 or UART5.
-
-The "Boot from UART" feature is implemented in the AST2600 ROM code as=20
-a fallback for loading the SPL if fetching it from SPI-NOR or the eMMC=20
-fails, or the SPL is incorrectly signed for secure-boot.
-
-I think Peter is on the right track with this patch?
-
-Andrew
+This series moves a big pile of code from core qemu to the tcg module.=0D
+=0D
+To allow for more fine-grained patches the first patch disables modular=0D
+tcg and the last patch re-enables it.  Alternatively we could move all=0D
+the build system changes (patches 4-8) to the end of the series and=0D
+squash them into a single patch.  Not sure which is better ...=0D
+=0D
+The fundamental idea of this series is that any call from core qemu into=0D
+tcg gets routed through function pointers.  This is simliar to the way=0D
+we handle the spice module (see ui/spice-module.c).=0D
+=0D
+Initially the function pointers are filled with stubs, when the tcg=0D
+module loads all function pointers are updated to point to the real=0D
+functions instead.  One side effect of this is that compile-time stubs=0D
+will become runtime-stubs.=0D
+=0D
+Series overview:=0D
+   1         - disable modular tcg.=0D
+   2 =3D>  3   - misc small tweaks.=0D
+   4 =3D>  8   - build system changes.=0D
+   9 =3D> 21   - add generic tcg function pointers.=0D
+  22 =3D> 28   - add i386 tcg function pointers.=0D
+  29         - re-enable modular tcg.=0D
+=0D
+take care,=0D
+  Gerd=0D
+=0D
+Gerd Hoffmann (29):=0D
+  build: temporarily disable modular tcg=0D
+  plugins: register qemu_plugin_opts using opts_init()=0D
+  tcg/module: move hmp.c to module=0D
+  tcg/module: move cputlb.c to module=0D
+  tcg/module: move tcg_ss to module [accel/tcg]=0D
+  tcg/module: move tcg_ss to module [tcg]=0D
+  tcg/module: move files to module [target/i386/tcg]=0D
+  move cpu-exec-common.c from tcg module to core qemu [accel/tcg]=0D
+  tcg/module: add tcg-module.[ch] infrastructure=0D
+  tcg_funcs: Add tlb_flush to TCGModuleOps=0D
+  tcg_funcs: Add tlb_flush_page to TCGModuleOps=0D
+  tcg_funcs: Add tlb_reset_dirty to TCGModuleOps=0D
+  tcg_funcs: Add tlb_plugin_lookup to TCGModuleOps=0D
+  tcg_funcs:Add  tcg_exec_{realizefn,unrealizefn} to TCGModuleOps=0D
+  tcg_funcs: Add tb_flush to TCGModuleOps=0D
+  tcg: use tb_page_addr_t for tb_invalidate_phys_range()=0D
+  tcg: drop tb_invalidate_phys_page_range()=0D
+  tcg_funcs: Add tb_invalidate_phys_range to TCGModuleOps=0D
+  tcg_funcs: Add tb_check_watchpoint to TCGModuleOps=0D
+  tcg_funcs: Add cpu_restore_state to TCGModuleOps=0D
+  tcg_funcs: Add curr_cflags to TCGModuleOps=0D
+  tcg_i386_funcs: Add update_fp_status to TCGI386ModuleOps=0D
+  tcg_i386_funcs: Add update_mxcsr_status to TCGI386ModuleOps=0D
+  tcg_i386_funcs: Add update_mxcsr_from_sse_status to TCGI386ModuleOps=0D
+  tcg_i386_funcs: Add x86_register_ferr_irq to TCGI386ModuleOps=0D
+  tcg_i386_funcs: Add cpu_set_ignne to TCGI386ModuleOps=0D
+  tcg_i386_funcs: Add cpu_x86_update_dr7 to TCGI386ModuleOps=0D
+  tcg_i386_funcs: Add cpu_cc_compute_all to TCGI386ModuleOps=0D
+  Revert "build: temporarily disable modular tcg"=0D
+=0D
+ include/exec/cpu-all.h              |  2 -=0D
+ include/exec/exec-all.h             | 16 ++------=0D
+ include/exec/ram_addr.h             |  2 -=0D
+ include/exec/translate-all.h        |  2 -=0D
+ include/qemu/plugin.h               |  7 ----=0D
+ include/tcg/tcg-module-i386.h       | 15 ++++++++=0D
+ include/tcg/tcg-module.h            | 24 ++++++++++++=0D
+ target/i386/cpu.h                   | 17 ++------=0D
+ accel/stubs/tcg-stub.c              |  4 --=0D
+ accel/tcg/cpu-exec-common.c         | 10 ++++-=0D
+ accel/tcg/cpu-exec.c                | 15 ++++++--=0D
+ accel/tcg/cputlb.c                  | 14 ++++++-=0D
+ accel/tcg/tcg-module-i386.c         | 33 ++++++++++++++++=0D
+ accel/tcg/tcg-module.c              | 60 +++++++++++++++++++++++++++++=0D
+ accel/tcg/translate-all.c           | 55 +++++++-------------------=0D
+ cpu.c                               | 14 +++----=0D
+ gdbstub.c                           |  4 +-=0D
+ hw/i386/pc.c                        |  2 +-=0D
+ hw/i386/pc_piix.c                   |  2 +-=0D
+ hw/i386/pc_q35.c                    |  2 +-=0D
+ hw/ppc/spapr_hcall.c                |  2 +-=0D
+ linux-user/main.c                   |  2 +-=0D
+ linux-user/mmap.c                   |  8 ++--=0D
+ linux-user/syscall.c                |  4 +-=0D
+ plugins/api.c                       |  4 +-=0D
+ plugins/core.c                      |  2 +-=0D
+ plugins/loader.c                    | 11 +++++-=0D
+ softmmu/physmem.c                   | 22 +++++------=0D
+ softmmu/vl.c                        |  1 -=0D
+ target/alpha/helper.c               |  2 +-=0D
+ target/alpha/mem_helper.c           |  2 +-=0D
+ target/alpha/sys_helper.c           |  2 +-=0D
+ target/arm/helper.c                 | 26 ++++++-------=0D
+ target/arm/op_helper.c              |  2 +-=0D
+ target/arm/tlb_helper.c             |  8 ++--=0D
+ target/cris/helper.c                |  2 +-=0D
+ target/i386/cpu-dump.c              |  2 +-=0D
+ target/i386/gdbstub.c               |  2 +-=0D
+ target/i386/helper.c                | 10 ++---=0D
+ target/i386/machine.c               |  8 ++--=0D
+ target/i386/tcg/cc_helper.c         |  9 ++++-=0D
+ target/i386/tcg/fpu_helper.c        | 23 +++++++----=0D
+ target/i386/tcg/int_helper.c        |  8 ++--=0D
+ target/i386/tcg/mem_helper.c        |  8 ++--=0D
+ target/i386/tcg/misc_helper.c       |  4 +-=0D
+ target/i386/tcg/seg_helper.c        | 10 ++---=0D
+ target/i386/tcg/sysemu/bpt_helper.c |  9 ++++-=0D
+ target/i386/tcg/sysemu/fpu_helper.c | 12 +++++-=0D
+ target/i386/tcg/sysemu/svm_helper.c |  2 +-=0D
+ target/i386/tcg/tcg-stub.c          | 25 ------------=0D
+ target/m68k/op_helper.c             |  6 +--=0D
+ target/microblaze/helper.c          |  2 +-=0D
+ target/mips/sysemu/cp0.c            |  2 +-=0D
+ target/openrisc/sys_helper.c        |  8 ++--=0D
+ target/ppc/excp_helper.c            |  2 +-=0D
+ target/riscv/csr.c                  |  2 +-=0D
+ target/s390x/gdbstub.c              |  2 +-=0D
+ target/s390x/sigp.c                 |  2 +-=0D
+ target/s390x/tcg/excp_helper.c      |  2 +-=0D
+ target/tricore/op_helper.c          |  2 +-=0D
+ target/xtensa/helper.c              |  6 +--=0D
+ accel/tcg/meson.build               | 24 ++++++++----=0D
+ target/i386/tcg/meson.build         |  7 +++-=0D
+ target/i386/tcg/sysemu/meson.build  |  5 ++-=0D
+ tcg/meson.build                     |  2 +-=0D
+ 65 files changed, 367 insertions(+), 239 deletions(-)=0D
+ create mode 100644 include/tcg/tcg-module-i386.h=0D
+ create mode 100644 include/tcg/tcg-module.h=0D
+ create mode 100644 accel/tcg/tcg-module-i386.c=0D
+ create mode 100644 accel/tcg/tcg-module.c=0D
+ delete mode 100644 target/i386/tcg/tcg-stub.c=0D
+=0D
+--=20=0D
+2.31.1=0D
+=0D

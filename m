@@ -1,95 +1,127 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4902847lfb;
-        Tue, 31 Aug 2021 03:40:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxG71wk8g9Ep5jnjlkQUe5c0BPQQZsu0R5e8Zq0QW8gMPGbLw1NXaJLWIVm/3W5YHxO1oqr
-X-Received: by 2002:a05:6638:271e:: with SMTP id m30mr2191233jav.90.1630406425761;
-        Tue, 31 Aug 2021 03:40:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630406425; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5105300lfb;
+        Tue, 31 Aug 2021 07:47:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwJyf6kjIdrpY8wUdj/E4jkwzw9lvWnocDxvUHSYJPlp1XkNckvkIw/kDRUkRs6h0mOBR5f
+X-Received: by 2002:a1f:2715:: with SMTP id n21mr17754802vkn.17.1630421235488;
+        Tue, 31 Aug 2021 07:47:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630421235; cv=none;
         d=google.com; s=arc-20160816;
-        b=cIv5qw9TJflbxyyE3d+cgsi86t/WbBEW71w8DcnzfWhmLsrbd1ifwkNClBIrw/0ILZ
-         3IogY0/iszGADkvE+BddzeY2prU7A5ty4pXdLJ58p6LLN0CAeSgU0rjn6dXAibeBcTVh
-         k8hRbPY8IAnnSiWqgX58zwKeuO2zBFdG1Yw4QOjrS2TQxY/Ozq6n4FKYq3AvzMneXAir
-         k1IQDKY5KQ74tXUGA/DtqZiZF+SRDMXNyn4p8zA2WjIBcdz9SKwVZo4YZ8A7f7TGAxUb
-         k0EJaf7K/GuGNpVOOhX8NGCdqnduxRPp1h6te1MdlfRLZ5ytZyulYVdkddp1MPgeEz+f
-         M4RA==
+        b=dc2kGLhe6EYMYVORfCLOgPDYFRP5AHkCXLfOILYEjRxYDkvP+CqKHJgQ7W1pE3uY4t
+         qfsF9odz3w5tk6xTS044NsYeQZPuVNbwrfJZJlOQYwOgcPGxoS4a9toNrB2oUuwD2BYs
+         rx+2YAIt8M3k6Mg1BrfcvVUZVTseVCns9lZRPd6PGoPmKdheK/oueBsl0Nayj8+v+7tu
+         MMEsyFMlaRJ/9OZ9YHBM3Gwqlffv6ZUlI6gM1taGTnSq0ZNYIDh0B1wx8cDUhHDLcHbl
+         VFUBY4qgOZo9DNK0VFWRJ8YcEN487B04GPSXuLXEFHbSL7vGPwESvEZ1NxKDRbqIzMTB
+         wQXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=bGlXP8m0j0UKP3ldDC/mXH9Z2u4TEbWPUJWj3hiMXDY=;
-        b=jxIgboZo3o8rZAhL5tf9aoMp+pWbibzmc7cZqkewzK7ld+xFF3i+3gnMw/XU9qSjDB
-         MdFPD2i3dTqJVemfv3Fq3HelhX+g2nNQVZo1dZPAvVhOefTfecrHjs6pKQ57oS4lTnXk
-         lIFwPuQ6hQBuXtO55QwUG9V0ePwAqIeiPypPgCJtoCjUpjv3MwM8UFdvMEqpad5D3ZnW
-         RPjPSS4TfFAereO5Q5RFVOnev9RvXtB91xAIJrpVCq9oeLffbsaYgwskpSvHxkPv07qJ
-         rnDpcOXP2Lx1gqct4m5OtaoMEOJn3NPJCyDZaSzi7pz9NQNm4lwLdwCICZerySE1PXj5
-         daKw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NH+y0otVJ9gmIyVkrddHEbZLJjRgx7PdnT3LMRoKqVs=;
+        b=ySgrrRFEJGYDGE6PGO4ajpok8grapfs9cLtrkV0MmcB75dB1sOoSaY+bNWce0bvbEw
+         11tOI7yICSCcU8UhKLIpGNBN/3b5DhNFR/Xdcqvk4TZ00COtJalXkp0KGZ8dxOOtkpsL
+         qqBu/opBhXHda8kfnu3Wunlw3r8vxwavGLHxYnJrkoRcdgtCtYQMJxTGmyzV3VWF+hpL
+         Aml9gZuNkNs6CupIgjGjv0N8HtNRwmhLaQUDHoc6q7/BLNYVeB++XjUuVsuHXS0cTi9n
+         K4U3rGPIWNbRP+gJ2MOHkCtxu69mF0eqCl4mQ/i6jn6Pb1WKN1nQ826HGRgbXoj/TW43
+         b4oA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b3kZYzZw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1si17888308ilj.117.2021.08.31.03.40.25
+        by mx.google.com with ESMTPS id c19si7248783uas.35.2021.08.31.07.47.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 03:40:25 -0700 (PDT)
+        Tue, 31 Aug 2021 07:47:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50594 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b3kZYzZw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL1Bp-0007bk-2h
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 06:40:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36858)
+	id 1mL52g-0004a8-Os
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:47:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mL1BU-0007bX-Vw; Tue, 31 Aug 2021 06:40:05 -0400
-Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:34565)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mL525-0004YN-PD
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:46:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41181)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mL1BS-0003JQ-6P; Tue, 31 Aug 2021 06:40:04 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.243])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 300FF13B127;
- Tue, 31 Aug 2021 10:39:57 +0000 (UTC)
-Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 31 Aug
- 2021 12:39:57 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R0025c238559-eb94-444d-843b-b939751d30ed,
- 3D02C4E7E229260F021FFF691A6C377EE278DEFF) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
-To: Peter Delevoryas <pdel@fb.com>
-References: <20210827210417.4022054-1-pdel@fb.com>
- <20210827210417.4022054-3-pdel@fb.com>
- <7a53d5e9-52c2-a06b-1385-fd71a96d7486@kaod.org>
- <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <547b5f32-0858-1882-fb8b-c60056cdbfd4@kaod.org>
-Date: Tue, 31 Aug 2021 12:39:57 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mL522-0001fk-Qy
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:46:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630421193;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NH+y0otVJ9gmIyVkrddHEbZLJjRgx7PdnT3LMRoKqVs=;
+ b=b3kZYzZw9CoSlYNGBoohEt/LUvNYc4pS6WRqrYI+/+cVh2yTzBEOJKtFBQBgTZ+R/huKJ+
+ yKrIMpU7gMtWICdpzRzl0SLIi631Z9C0ixOPknsMrtrF4KZPUNcOBTxyAiWzZGYoTVKCGu
+ ugaKtFWWjff571HxkVs0wQ7bqK4toOM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-490-SGknxmikO-iuPa91OKKymA-1; Tue, 31 Aug 2021 10:46:32 -0400
+X-MC-Unique: SGknxmikO-iuPa91OKKymA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ m16-20020a7bca50000000b002ee5287d4bfso1420547wml.7
+ for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 07:46:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:reply-to:subject:to:cc:references:from
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-transfer-encoding:content-language;
+ bh=NH+y0otVJ9gmIyVkrddHEbZLJjRgx7PdnT3LMRoKqVs=;
+ b=XLWp15qkvjPgERUOicOmRiJXniv430A+v6LN29H4l2RkqBGLX8E69YgRdOMBn1MDto
+ nYCdgkxGNq9HDvhuVGKMp63WQe9bUu5toobl3cat2qP29LW3RsxCLVwVvjoAQwn/Aq7H
+ X/1SGi5AOKq1vOMyoojTUK9Phcunsg+2dHzd9XRvGXuBSk8xTctErAWJURHDddSf8RgA
+ PK3xbha1KC+GAv7mczxEsV3sjgTj6NskohwZIzSh6fJttBdqNgkCNpe0BzCEe8uzBASC
+ 4DjN2u+L2vBAiz5yIedJNMiE7YHlJcfDh8t9v9lwUgdB8WgLiiwsO6XN3/ckw872nmFr
+ I5Ww==
+X-Gm-Message-State: AOAM5332P5+cuzBNT8mFkwDraG/uVq7xcrRJMCFEq7BMWjFELORukyNL
+ XNC/Ekkn8OVSShGAgbZk6EJO4jjwU0rbacAUaz3/1I0H7reA9GslO7W1SVvCdGzzkj0wVbpAVKp
+ +XgFJjYhiC5OL
+X-Received: by 2002:adf:9e08:: with SMTP id u8mr14751932wre.383.1630421191156; 
+ Tue, 31 Aug 2021 07:46:31 -0700 (PDT)
+X-Received: by 2002:adf:9e08:: with SMTP id u8mr14751900wre.383.1630421190920; 
+ Tue, 31 Aug 2021 07:46:30 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id z2sm2795356wma.45.2021.08.31.07.46.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Aug 2021 07:46:30 -0700 (PDT)
+Subject: Re: [PATCH v2] hw/arm/smmuv3: Simplify range invalidation
+To: "Liu, Renwei" <Renwei.Liu@verisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <4FA89A717CD8094DBA0FE20FA5F98EAA010E6E9940@SHASXM03.verisilicon.com>
+From: Eric Auger <eric.auger@redhat.com>
+Message-ID: <1805dcb3-6f99-0bf1-2d73-be0537c98512@redhat.com>
+Date: Tue, 31 Aug 2021 16:46:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
-Content-Type: text/plain; charset="windows-1252"
+In-Reply-To: <4FA89A717CD8094DBA0FE20FA5F98EAA010E6E9940@SHASXM03.verisilicon.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 942e986e-d1e2-4c3d-88a2-5109db00e18a
-X-Ovh-Tracer-Id: 503558733826526115
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvuddgfeduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeehnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnheplefhtdegueeffffghffhhefgleejjedvveetvdfggfefjedvueffvedttdduueffnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout2.3005.mail-out.ovh.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.932,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.932, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,173 +134,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "joel@jms.id.au" <joel@jms.id.au>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Reply-To: eric.auger@redhat.com
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
+ Jianxian" <Jianxian.Wen@verisilicon.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Li,
+ Chunming" <Chunming.Li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5JlWCni3xlIj
+X-TUID: Knb6JCe8U4Fn
 
-On 8/28/21 5:58 PM, Peter Delevoryas wrote:
-> I think I’m a little confused on this part. What I meant by “most machines just use UART5” was that most DTS’s use “stdout-path=&uart5”, but fuji uses “stdout-path=&uart1”. I /do/ see that SCU510 includes a bit related to UART, but it’s for disabling booting from UART1 and UART5. I just care about the console aspect, not booting.
+Hi Liu,
 
-The UART can be switched with SCU70[29] on the AST2500, btw.
+On 8/23/21 9:50 AM, Liu, Renwei wrote:
+> Simplify range invalidation which can avoid to iterate over all
+> iotlb entries multi-times. For instance invalidations patterns like
+> "invalidate 32 4kB pages starting from 0xffacd000" need to iterate over
+> all iotlb entries 6 times (num_pages: 1, 2, 16, 8, 4, 1). It only needs
+> to iterate over all iotlb entries once with new implementation.
 
+This wouldn't work. This reverts commit
+6d9cd115b9df ("hw/arm/smmuv3: Enforce invalidation on a power of two range")
+which is mandated for VFIO and virtio to work. IOTLB invalidations must
+be naturally aligned and with a power of 2 range, hence this iteration.
+
+Thanks
+
+Eric
 >
-> 
-> This is the commit that changed the serial console from UART5 to UART1 in fuji’s DTS: https://github.com/facebook/openbmc-uboot/commit/afeddd6e27b5f094bbc4805dc8c1c22b3b7fb203 <https://github.com/facebook/openbmc-uboot/commit/afeddd6e27b5f094bbc4805dc8c1c22b3b7fb203>
-
-That's an AST2620-A1. May be we should also introduce a new SoC then. I will try
-to get the datasheet.
-  
-> I don’t know what the platform.S AST_SCU_MFP_CTRL7 changes do (maybe setting some GPIO for UART1?),
-
-Yes. The patch above enables the UART1 RX function. 
-
-Is TX always enabled ? Something to check on real HW.
-
->  but as far as I understand, I don’t think using UART1 should require any extra registers from the datasheet.
->  
-> 
-> An alternate design I considered was UART5=serial_hd(0) and UART1=serial_hd(1), maybe that would be more appropriate? I don’t think anybody uses both UART’s simultaneously though, so I didn’t pursue that design.
-
-An other simple idea would be activate both UART5 and UART1 on the AST2600 
-SoC if this is how the HW works. Or add a bool "enable-uart1" at the SoC 
-level and set it from the machine. 
-
-In any case, we will need a serial backend for both.
-
-
-Thanks,
-
-C.
-
->  
-> 
-> Some link references:
-> 
-> Elbert DTS uses “stdout-path=&uart5” https://github.com/facebook/openbmc-uboot/blob/openbmc/helium/v2019.04/arch/arm/dts/aspeed-bmc-facebook-elbert.dts#L17
-> 
-> Fuji DTS uses “stdout-path=&uart1” https://github.com/facebook/openbmc-uboot/blob/openbmc/helium/v2019.04/arch/arm/dts/aspeed-bmc-facebook-fuji.dts#L17
-> 
->  
-> 
-> *From: *Cédric Le Goater <clg@kaod.org>
-> *Date: *Saturday, August 28, 2021 at 1:26 AM
-> *To: *Peter Delevoryas <pdel@fb.com>
-> *Cc: *joel@jms.id.au <joel@jms.id.au>, qemu-devel@nongnu.org <qemu-devel@nongnu.org>, qemu-arm@nongnu.org <qemu-arm@nongnu.org>
-> *Subject: *Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
-> 
-> On 8/27/21 11:04 PM, pdel@fb.com wrote:
->> From: Peter Delevoryas <pdel@fb.com>
->>
->> This change replaces the UART serial device initialization code with machine
->> configuration data, making it so that we have a single code path for console
->> UART initialization, but allowing different machines to use different
->> UART's. This is relevant because the Aspeed chips have 2 debug UART's, UART5
->> and UART1, and while most machines just use UART5, some use UART1.
-> 
-> I think this is controlled by SCU510. If so, we should have a different HW
-> strapping for the new machine and check the configuration at the SoC level,
-> in aspeed_ast2600.c, to change the serial initialization.
-> 
-> 
-> Thanks,
-> 
-> C.
->  
->>
->> Signed-off-by: Peter Delevoryas <pdel@fb.com>
->> ---
->>  hw/arm/aspeed.c         | 7 +++++++
->>  hw/arm/aspeed_ast2600.c | 5 -----
->>  hw/arm/aspeed_soc.c     | 5 -----
->>  include/hw/arm/aspeed.h | 1 +
->>  4 files changed, 8 insertions(+), 10 deletions(-)
->>
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index 9d43e26c51..ff53d12395 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -14,6 +14,7 @@
->>  #include "hw/arm/boot.h"
->>  #include "hw/arm/aspeed.h"
->>  #include "hw/arm/aspeed_soc.h"
->> +#include "hw/char/serial.h"
->>  #include "hw/i2c/i2c_mux_pca954x.h"
->>  #include "hw/i2c/smbus_eeprom.h"
->>  #include "hw/misc/pca9552.h"
->> @@ -21,6 +22,7 @@
->>  #include "hw/misc/led.h"
->>  #include "hw/qdev-properties.h"
->>  #include "sysemu/block-backend.h"
->> +#include "sysemu/sysemu.h"
->>  #include "hw/loader.h"
->>  #include "qemu/error-report.h"
->>  #include "qemu/units.h"
->> @@ -352,6 +354,10 @@ static void aspeed_machine_init(MachineState *machine)
->>      }
->>      qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
->> 
->> +    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_dev], 2,
->> +                   sc->get_irq(&bmc->soc, amc->serial_dev), 38400,
->> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
->> +
->>      memory_region_add_subregion(get_system_memory(),
->>                                  sc->memmap[ASPEED_DEV_SDRAM],
->>                                  &bmc->ram_container);
->> @@ -804,6 +810,7 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
->>      mc->no_parallel = 1;
->>      mc->default_ram_id = "ram";
->>      amc->macs_mask = ASPEED_MAC0_ON;
->> +    amc->serial_dev = ASPEED_DEV_UART5;
->> 
->>      aspeed_machine_class_props_init(oc);
->>  }
->> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
->> index 56e1adb343..a27b0de482 100644
->> --- a/hw/arm/aspeed_ast2600.c
->> +++ b/hw/arm/aspeed_ast2600.c
->> @@ -322,11 +322,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
->>      }
->> 
->> -    /* UART - attach an 8250 to the IO space as our UART5 */
->> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
->> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
->> -                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
->> -
->>      /* I2C */
->>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
->>                               &error_abort);
->> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
->> index c373182299..0c09d1e5b4 100644
->> --- a/hw/arm/aspeed_soc.c
->> +++ b/hw/arm/aspeed_soc.c
->> @@ -287,11 +287,6 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
->>      }
->> 
->> -    /* UART - attach an 8250 to the IO space as our UART5 */
->> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
->> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
->> -                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
->> -
->>      /* I2C */
->>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
->>                               &error_abort);
->> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
->> index c9747b15fc..9f5b9f04d6 100644
->> --- a/include/hw/arm/aspeed.h
->> +++ b/include/hw/arm/aspeed.h
->> @@ -38,6 +38,7 @@ struct AspeedMachineClass {
->>      uint32_t num_cs;
->>      uint32_t macs_mask;
->>      void (*i2c_init)(AspeedMachineState *bmc);
->> +    uint32_t serial_dev;
->>  };
->> 
->> 
->>
-> 
+> Signed-off-by: Renwei Liu <renwei.liu@verisilicon.com>
+> ---
+> v2:
+>  - Remove file mode change.
+>
+>  hw/arm/smmu-common.c   |  6 +++---
+>  hw/arm/smmu-internal.h |  2 +-
+>  hw/arm/smmuv3.c        | 22 ++++------------------
+>  3 files changed, 8 insertions(+), 22 deletions(-)
+>
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 0459850a93..ccb085f83c 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -142,8 +142,8 @@ static gboolean smmu_hash_remove_by_asid_iova(gpointer key, gpointer value,
+>      if (info->asid >= 0 && info->asid != SMMU_IOTLB_ASID(iotlb_key)) {
+>          return false;
+>      }
+> -    return ((info->iova & ~entry->addr_mask) == entry->iova) ||
+> -           ((entry->iova & ~info->mask) == info->iova);
+> +    return (entry->iova >= info->iova) &&
+> +           ((entry->iova + entry->addr_mask) < (info->iova + info->range));
+>  }
+>  
+>  inline void
+> @@ -167,7 +167,7 @@ smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
+>  
+>      SMMUIOTLBPageInvInfo info = {
+>          .asid = asid, .iova = iova,
+> -        .mask = (num_pages * 1 << granule) - 1};
+> +        .range = num_pages * 1 << granule};
+>  
+>      g_hash_table_foreach_remove(s->iotlb,
+>                                  smmu_hash_remove_by_asid_iova,
+> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+> index 2d75b31953..f0e3a777af 100644
+> --- a/hw/arm/smmu-internal.h
+> +++ b/hw/arm/smmu-internal.h
+> @@ -101,7 +101,7 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
+>  typedef struct SMMUIOTLBPageInvInfo {
+>      int asid;
+>      uint64_t iova;
+> -    uint64_t mask;
+> +    uint64_t range;
+>  } SMMUIOTLBPageInvInfo;
+>  
+>  typedef struct SMMUSIDRange {
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 01b60bee49..0b009107d1 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -857,7 +857,7 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova,
+>  
+>  static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+>  {
+> -    dma_addr_t end, addr = CMD_ADDR(cmd);
+> +    dma_addr_t addr = CMD_ADDR(cmd);
+>      uint8_t type = CMD_TYPE(cmd);
+>      uint16_t vmid = CMD_VMID(cmd);
+>      uint8_t scale = CMD_SCALE(cmd);
+> @@ -866,7 +866,6 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+>      bool leaf = CMD_LEAF(cmd);
+>      uint8_t tg = CMD_TG(cmd);
+>      uint64_t num_pages;
+> -    uint8_t granule;
+>      int asid = -1;
+>  
+>      if (type == SMMU_CMD_TLBI_NH_VA) {
+> @@ -880,23 +879,10 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+>          return;
+>      }
+>  
+> -    /* RIL in use */
+> -
+>      num_pages = (num + 1) * BIT_ULL(scale);
+> -    granule = tg * 2 + 10;
+> -
+> -    /* Split invalidations into ^2 range invalidations */
+> -    end = addr + (num_pages << granule) - 1;
+> -
+> -    while (addr != end + 1) {
+> -        uint64_t mask = dma_aligned_pow2_mask(addr, end, 64);
+> -
+> -        num_pages = (mask + 1) >> granule;
+> -        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
+> -        smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
+> -        smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
+> -        addr += mask + 1;
+> -    }
+> +    trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
+> +    smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
+> +    smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
+>  }
+>  
+>  static gboolean
 

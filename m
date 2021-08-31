@@ -1,231 +1,254 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5078702lfb;
-        Tue, 31 Aug 2021 07:15:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwEUrhuL9uwPrrShKwnk7P0VhFm1Sb9UPnWxH4FsqfCsjdCIL/C76i2lSl9VkSLetCzUelw
-X-Received: by 2002:a2e:2ac1:: with SMTP id q184mr24424697ljq.373.1630419340663;
-        Tue, 31 Aug 2021 07:15:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630419340; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5087693lfb;
+        Tue, 31 Aug 2021 07:25:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2wO+QuHylRvK4lb9m7B1nth0oS6ON+q8mQrqC5ulwtdvpVfqw9OwsAA2CckVhBT8wmhye
+X-Received: by 2002:a6b:8d15:: with SMTP id p21mr22560520iod.194.1630419957002;
+        Tue, 31 Aug 2021 07:25:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630419956; cv=none;
         d=google.com; s=arc-20160816;
-        b=K+UF4z+xyzsx3qCzAlQh1sRgnFKEvHKq0nDLse3Y4TPLLFgmCLowIVt6dm3mwPBb+E
-         zRGOH7FjRGWq20RR91LfDcBchGBeRBkpq6xA7KORGFH/ZAzMQ4QP/SV4407k3hdR1BKd
-         unDT9ZL2Tz5tE7IVZnNx61iWwQQlCnCOKPT8VJHe+zTayl4MtRUC6yUmYc1hpPn2Ksli
-         0URe8YbTFbGHC6aoHKrSUX4EzTu2mHJpNgDrW676q5npG8NCVkb73YTaqSH3bBLjxSG1
-         Bx7FLhCZ1R5pT4sFfvOypT0oOWjBsP+B6QCD0I8y0g7RYUnOhaD8nMOpyQ3Fb1o/z3Ec
-         OvpQ==
+        b=GZ6bfMNMxEFun6uOjryHpYmV83nMQnpYURakYN6utuOYltsWCbKgl0pbBXSZpRO19V
+         7/MkREqtL9ME6tQxqXi/7jgox9DuecynnYp8+a9DsUkzkQlxeFHKveK/WqdF5/PIFnaR
+         dh+u0sPAkM01DNYWatb5PdbMUZn1uqXNCgPWKeUEhgNtXiP5tNeusbuOJeGYp2RqMeJs
+         JPoevPHgzXMcvh+AJbuUjM1+IA+3g2RAMdK+KahrlfdaVSiqckWHcfXV3DiPArZu5XX8
+         MeDsYcmB677Hn7tpX/747QBHAciXE1IXj6/T1BAlscz/FOaET3dcwucmXu4QzWEC3J97
+         nWqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=+ovW5fHitiMIYH4UUPpgFL9EmaMHc3610w2r7eQLnok=;
-        b=xI6Rt/lqlIYQdhsuDMSBRXqIsyTgCnQVMwMRh/OqgNOyhS7/6Bi2Tx439xXgeC2xhS
-         Xw736A3B2l9hb4QfsvPEGJRqrdCRhVhTBGPipu7QS1WIAcArQ0mf0kgjElyZb1dNS4IH
-         h6EGdH67FCDBs30IhWuLrNaUdQeTztzdv//UpE3zM62rC/LqdtBbDXVGxeAxu06H4Um9
-         zAAqzJKHEikAZOxpoeTdZruPXWSYWjrmd2VV1eulj5b4Gg01DtPTjzPuTYB7G75Ne0SA
-         9BcLVY8pFJ3wzZCaiiBipyJs+JQ48+/b+msA06wjbviK9ggSIAUPbfa/CMVLVHvlQTY1
-         EF3w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=K74HkfEdiW7E2613ANR/xfo27919DSAKajyMhFIvpZI=;
+        b=tF6eM7GmBsLFEzOtbIoG5mTFOzcbmTDO5qmvhPWr8C/StugwL2XHiMJR0ysvFXNT2/
+         7V8r+xKOYONUN1j3lmAbcH6UWFJ/dIpEdJXJkSABbKjwUG4xQ8Q/vP1R64ua98jDkpyI
+         URw1Z7zSboTrkI3qcNeHf0wWKCFWwAOAjQW3lg1ToHNvtakF9woZMZo4Qelyo9fvQAky
+         0Jh/ShB/N3RPpkHntOCEx0nNtSZXhG/oXqslMepmIRazweBjjDLA5WAn4wKusuAZZb5n
+         87xCMJyErXJS174U3iKhoQrDVxUTd9uSLXG8MMvdds+wsNgu31mpByq4xVix79FpmlBS
+         mgAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gLcptXAl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@fb.com header.s=facebook header.b=h6WxCwN7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u30si12032658lfc.548.2021.08.31.07.15.40
+        by mx.google.com with ESMTPS id t10si12163430iof.42.2021.08.31.07.25.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 07:15:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Aug 2021 07:25:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gLcptXAl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55220 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=h6WxCwN7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:49124 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL4Y7-0002xm-F3
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:15:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35168)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mL4i4-0001N2-1S
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:25:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38236)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mL4Vy-00082B-KF
- for qemu-devel@nongnu.org; Tue, 31 Aug 2021 10:13:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50002)
+ (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
+ id 1mL4hV-0001K2-KJ
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:25:21 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:5150)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mL4Vu-0003w7-IT
- for qemu-devel@nongnu.org; Tue, 31 Aug 2021 10:13:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630419200;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+ovW5fHitiMIYH4UUPpgFL9EmaMHc3610w2r7eQLnok=;
- b=gLcptXAlQ48NDErCspuW7n6kqoWGN8BYYlAlgYbmzgHDmPCU6c5pXrKtU2JQ3cL7CFpvW6
- NSdcFmNIcMn+TqAI8anAASPB6hmcVVTQEIUG/1u/JuzUgekJKp8NYtnjuz1g5PEFGEfNeS
- N33bNjyMj/0EmqLy3KroGOUVP4Lb6f4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-604-xDDV-88EMU6ZDZeSawiaRA-1; Tue, 31 Aug 2021 10:13:19 -0400
-X-MC-Unique: xDDV-88EMU6ZDZeSawiaRA-1
-Received: by mail-wm1-f70.google.com with SMTP id
- y188-20020a1c7dc5000000b002e80e0b2f87so1320671wmc.1
- for <qemu-devel@nongnu.org>; Tue, 31 Aug 2021 07:13:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=+ovW5fHitiMIYH4UUPpgFL9EmaMHc3610w2r7eQLnok=;
- b=VD9vcXFt3++oVvtgmQPVi2gPnTWbFpuEk8EFCNIHGaBXaWTbECkfSDTewVTi+E9H0E
- UKiFCMcClsCDMWeeXJFHTxn5xAcpLnS3lIBDkp594qBcpOFHVMdY3ugmnQq22ob9Y0b/
- 1re8U/EGgBDQSb0eTb+XOpLNybE1tILG7QA31S1o2ceIaYPXy5gELP4ouwstctNuHG7o
- qzP9xO4gxO5ym+k5+vuOy2pzTXCEMzTudmTwGzNmRIXHZBp/W747CTDLEZhOIaWoH+HD
- JSUvfAio2vM5GSaGSq5vVp7NXFN4ufriENVG0NrmKRC7uyAPg+OVGiR4W8RYnpFrYio3
- Pg+g==
-X-Gm-Message-State: AOAM531InAOpP8+5BCT0Avn/4K79Z5zHuI0qAqGLaGD/GW8xjh6HkkX/
- OQTcYnfx4GHUvcH5Jfw5tHA3BBChtYiffMmN3icY4yZGoSjkPpNVQiiXzOzCoFt6fkz4nNbaxqU
- MsLKhPHE1NtpP8mQ=
-X-Received: by 2002:a1c:f002:: with SMTP id a2mr4507897wmb.79.1630419198293;
- Tue, 31 Aug 2021 07:13:18 -0700 (PDT)
-X-Received: by 2002:a1c:f002:: with SMTP id a2mr4507865wmb.79.1630419198002;
- Tue, 31 Aug 2021 07:13:18 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id r15sm2896581wmh.27.2021.08.31.07.13.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Aug 2021 07:13:17 -0700 (PDT)
-Subject: Re: [PATCH v5 3/4] hw/arm/virt: Update SMMU v3 creation to support
- non PCI/PCIe device connection
-To: chunming <chunming_li1234@163.com>, peter.maydell@linaro.org
-References: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
- <1629878922-173270-4-git-send-email-chunming_li1234@163.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <c98c4098-1553-51c0-8323-ad20626f9897@redhat.com>
-Date: Tue, 31 Aug 2021 16:13:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
+ id 1mL4hS-0003Il-1K
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:25:21 -0400
+Received: from pps.filterd (m0044010.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 17VEG5UG000327
+ for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 07:25:16 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : cc : subject
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=facebook; bh=K74HkfEdiW7E2613ANR/xfo27919DSAKajyMhFIvpZI=;
+ b=h6WxCwN76wBbkPYrpaqmFoDXaDXk35rBp3ceu0X2YMzF/L3q4i1Ufn7jRuaQiGr4mlbz
+ U8/f5fsp84ZfaNRx94JxMBkh8cN5YjMcHwzdV+BxC3SHREyPRy9nrwRoqYvnJytNHNls
+ 8XXvhWPvvNRJFphWBDjTZryu38ab2gMzTdc= 
+Received: from mail.thefacebook.com ([163.114.132.120])
+ by mx0a-00082601.pphosted.com with ESMTP id 3arnw1akda-2
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 07:25:16 -0700
+Received: from intmgw002.46.prn1.facebook.com (2620:10d:c085:208::11) by
+ mail.thefacebook.com (2620:10d:c085:11d::4) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 31 Aug 2021 07:25:15 -0700
+Received: by devvm660.prn0.facebook.com (Postfix, from userid 385188)
+ id 3F77316E6F45; Tue, 31 Aug 2021 07:25:14 -0700 (PDT)
+From: <pdel@fb.com>
+To: 
+CC: <clg@kaod.org>, <joel@jms.id.au>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, Peter Delevoryas <pdel@fb.com>
+Subject: [PATCH] hw/arm/aspeed: Initialize AST2600 clock selection registers
+Date: Tue, 31 Aug 2021 07:25:02 -0700
+Message-ID: <20210831142502.279485-1-pdel@fb.com>
+X-Mailer: git-send-email 2.30.2
+X-FB-Internal: Safe
+Content-Type: text/plain
+X-FB-Source: Intern
+X-Proofpoint-ORIG-GUID: zUyOtHVcIfTCFbfLdnW8jyxFupdbGuMH
+X-Proofpoint-GUID: zUyOtHVcIfTCFbfLdnW8jyxFupdbGuMH
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-In-Reply-To: <1629878922-173270-4-git-send-email-chunming_li1234@163.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
+ definitions=2021-08-31_07:2021-08-31,
+ 2021-08-31 signatures=0
+X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
+ clxscore=1015
+ malwarescore=0 adultscore=0 spamscore=0 priorityscore=1501 impostorscore=0
+ phishscore=0 suspectscore=0 mlxscore=0 bulkscore=0 mlxlogscore=999
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2107140000 definitions=main-2108310079
+X-FB-Internal: deliver
+Received-SPF: pass client-ip=67.231.145.42;
+ envelope-from=prvs=88771d3da1=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.932, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: renwei.liu@verisilicon.com, qemu-arm@nongnu.org,
- jianxian.wen@verisilicon.com, qemu-devel@nongnu.org,
- chunming <chunming.li@verisilicon.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Df6h7xwPLUe1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: R1G/pu6PxgwP
 
-Hi Chunming,
+From: Peter Delevoryas <pdel@fb.com>
 
-On 8/25/21 10:08 AM, chunming wrote:
-> From: chunming <chunming.li@verisilicon.com>
->
->   . Add "smmuv3_sidmap" to set non PCI/PCIe devices SID value
->   . Pass non PCI/PCIe devices SID value to SMMU v3 model creation
->   . Store SMMU v3 device in virtual machine then non PCI/PCIe can get its memory region later
->
-> Signed-off-by: chunming <chunming.li@verisilicon.com>
-> ---
->  hw/arm/virt.c         | 18 +++++++++++++++++-
->  include/hw/arm/virt.h |  2 ++
->  2 files changed, 19 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 81eda46b0b..c3fd30e071 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -204,6 +204,10 @@ static const char *valid_cpus[] = {
->      ARM_CPU_TYPE_NAME("max"),
->  };
->  
-> +static const uint16_t smmuv3_sidmap[] = {
-> +
-> +};
-> +
->  static bool cpu_type_valid(const char *cpu)
->  {
->      int i;
-> @@ -1223,7 +1227,7 @@ static void create_pcie_irq_map(const MachineState *ms,
->                             0x7           /* PCI irq */);
->  }
->  
-> -static void create_smmu(const VirtMachineState *vms,
-> +static void create_smmu(VirtMachineState *vms,
->                          PCIBus *bus)
->  {
->      char *node;
-> @@ -1244,6 +1248,16 @@ static void create_smmu(const VirtMachineState *vms,
->  
->      object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
->                               &error_abort);
-> +
-> +    vms->smmuv3 = dev;
-> +
-> +    qdev_prop_set_uint32(dev, "len-sid-map", ARRAY_SIZE(smmuv3_sidmap));
-> +
-> +    for (i = 0; i < ARRAY_SIZE(smmuv3_sidmap); i++) {
-> +        g_autofree char *propname = g_strdup_printf("sid-map[%d]", i);
-> +        qdev_prop_set_uint16(dev, propname, smmuv3_sidmap[i]);
-> +    }
-> +
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->      for (i = 0; i < NUM_SMMU_IRQS; i++) {
-> @@ -2762,6 +2776,8 @@ static void virt_instance_init(Object *obj)
->  
->      vms->irqmap = a15irqmap;
->  
-> +    vms->sidmap = smmuv3_sidmap;
-> +
->      virt_flash_create(vms);
->  
->      vms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 9661c46699..d3402a43dd 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -167,6 +167,8 @@ struct VirtMachineState {
->      PCIBus *bus;
->      char *oem_id;
->      char *oem_table_id;
-> +    DeviceState *smmuv3;
-at this stage it is not obvious why you need the smmuv3 DeviceState in
-the VirtMachineState (there is no user). You may squash this change in
-subsequent patch instead
+UART5 is typically used as the default debug UART on the AST2600, but
+UART1 is also designed to be a debug UART. All the AST2600 UART's have
+semi-configurable clock rates through registers in the System Control
+Unit (SCU), but only UART5 works out of the box with zero-initialized
+values. The rest of the UART's expect a few of the registers to be
+initialized to non-zero values, or else the clock rate calculation will
+yield zero or undefined (due to a divide-by-zero).
 
-Thanks
+For reference, the U-Boot clock rate driver here shows the calculation:
 
-Eric
-> +    const uint16_t *sidmap;
->  };
->  
->  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+    https://github.com/facebook/openbmc-uboot/blob/main/drivers/clk/aspeed/=
+clk_ast2600.c#L357)
+
+To summarize, UART5 allows selection from 4 rates: 24 MHz, 192 MHz, 24 /
+13 MHz, and 192 / 13 MHz. The other UART's allow selecting either the
+"low" rate (UARTCLK) or the "high" rate (HUARTCLK). UARTCLK and HUARTCLK
+are configurable themselves:
+
+    UARTCLK =3D UXCLK * R / (N * 2)
+    HUARTCLK =3D HUXCLK * HR / (HN * 2)
+
+UXCLK and HUXCLK are also configurable, and depend on the APLL and/or
+HPLL clock rates, which also derive from complicated calculations. Long
+story short, there's lots of multiplication and division from
+configurable registers, and most of these registers are zero-initialized
+in QEMU, which at best is unexpected and at worst causes this clock rate
+driver to hang from divide-by-zero's. This can also be difficult to
+diagnose, because it may cause U-Boot to hang before serial console
+initialization completes, requiring intervention from gdb.
+
+This change just initializes all of these registers with default values
+from the datasheet.
+
+To test this, I used Facebook's AST2600 OpenBMC image for "fuji", with
+the following diff applied (because fuji uses UART1 for console output,
+not UART5).
+
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index e3013128c6..19da92979d 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -323,8 +323,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev=
+, Error **errp)
+     }
+
+     /* UART - attach an 8250 to the IO space as our UART5 */
+-    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+-                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
++    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART1], 2,
++                   aspeed_soc_get_irq(s, ASPEED_DEV_UART1),
+                    38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+
+     /* I2C */
+
+Without these clock rate registers being initialized, U-Boot hangs in
+the clock rate driver from a divide-by-zero, because the UART1 clock
+rate register reads return zero, and there's no console output. After
+initializing them with default values, fuji boots successfully.
+
+    git clone https://github.com/facebook/openbmc
+    cd openbmc
+    ./sync_yocto.sh
+    source openbmc-init-build-env fuji build-fuji
+    bitbake fuji-image
+    cp ./tmp/deploy/images/fuji/flash-fuji /tmp/
+
+    dd if=3D/dev/zero of=3D/tmp/fixedsize-fuji bs=3D1M count=3D128
+    dd if=3D/tmp/flash-fuji of=3D/tmp/fixedsize-fuji bs=3D1k conv=3Dnotrunc
+
+    git clone --branch init-clock-sel-regs https://github.com/peterdelevory=
+as/qemu
+    cd qemu
+    ./configure --target-list=3Darm-softmmu --disable-vnc
+    make -j $(nproc)
+    ./build/arm-softmmu/qemu-system-arm \
+        -machine ast2600-evb \
+        -drive file=3D/tmp/fixedsize-fuji,format=3Draw,if=3Dmtd \
+        -serial stdio
+
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+---
+ hw/misc/aspeed_scu.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 40a38ebd85..72b5a3afae 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -104,11 +104,16 @@
+ #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+ #define AST2600_HPLL_PARAM        TO_REG(0x200)
+ #define AST2600_HPLL_EXT          TO_REG(0x204)
++#define AST2600_APLL_PARAM        TO_REG(0x210)
+ #define AST2600_MPLL_EXT          TO_REG(0x224)
+ #define AST2600_EPLL_EXT          TO_REG(0x244)
+ #define AST2600_CLK_SEL           TO_REG(0x300)
+ #define AST2600_CLK_SEL2          TO_REG(0x304)
+ #define AST2600_CLK_SEL3          TO_REG(0x310)
++#define AST2600_CLK_SEL4          TO_REG(0x310)
++#define AST2600_CLK_SEL5          TO_REG(0x314)
++#define AST2600_UARTCLK_PARAM     TO_REG(0x338)
++#define AST2600_HUARTCLK_PARAM    TO_REG(0x33C)
+ #define AST2600_HW_STRAP1         TO_REG(0x500)
+ #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+ #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+@@ -658,9 +663,14 @@ static const uint32_t ast2600_a1_resets[ASPEED_AST2600=
+_SCU_NR_REGS] =3D {
+     [AST2600_CLK_STOP_CTRL2]    =3D 0xFFF0FFF0,
+     [AST2600_SDRAM_HANDSHAKE]   =3D 0x00000000,
+     [AST2600_HPLL_PARAM]        =3D 0x1000405F,
++    [AST2600_APLL_PARAM]        =3D 0x1000405F,
+     [AST2600_CHIP_ID0]          =3D 0x1234ABCD,
+     [AST2600_CHIP_ID1]          =3D 0x88884444,
+-
++    [AST2600_CLK_SEL2]          =3D 0x00700000,
++    [AST2600_CLK_SEL4]          =3D 0xF3F40000,
++    [AST2600_CLK_SEL5]          =3D 0x30000000,
++    [AST2600_UARTCLK_PARAM]     =3D 0x00014506,
++    [AST2600_HUARTCLK_PARAM]    =3D 0x000145C0,
+ };
+=20
+ static void aspeed_ast2600_scu_reset(DeviceState *dev)
+--=20
+2.30.2
 

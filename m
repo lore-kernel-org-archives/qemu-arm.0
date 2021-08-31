@@ -1,230 +1,300 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5065986lfb;
-        Tue, 31 Aug 2021 07:03:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjbleVMv+uiivEZfQRyO7A27sDU4W6d7JLy+7LXpynbX5TGj0r3rS33/Vu2JfCoPuhzAsG
-X-Received: by 2002:a2e:978c:: with SMTP id y12mr25884090lji.295.1630418631172;
-        Tue, 31 Aug 2021 07:03:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1630418631; cv=pass;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5069586lfb;
+        Tue, 31 Aug 2021 07:06:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+rpLegA2sq4jbSVNOhaSHGgvWKVxiNSNHb/xIGbvmtzfxfLTGTNI8dpxjMpQWNepI8A2g
+X-Received: by 2002:a2e:2283:: with SMTP id i125mr25556466lji.485.1630418800207;
+        Tue, 31 Aug 2021 07:06:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630418800; cv=none;
         d=google.com; s=arc-20160816;
-        b=ybZ7/2I/Grz9P9BNFrg7s5MPer+dhlT4NDmv5aIWT038/qahhsCYHcfLg7gjOOtftV
-         fnZmXB2SCVODiGZ+7qhzocboF/daigixxEv5S3x5/AXPLvC89CGwSnyN+N6xIMG9XWQM
-         0eIJp9w0NP9ppfaO+nf5CjlcFb5D6Lj6nUO9KUNKUsCeum5OTbfg1GcwoogTY6k2fsEB
-         c18WN/icNdTAc/4PHBFjzfpRjltwl5JwEbU/HJxqlO1+ueBedQS64ALtDEOkI9fBbJkn
-         r3cax9rL9HNDbYvZdKzYr5Aoiz2j9z0fo3FfD1Fa3u0Ru/p1jUh3qne+gpUhXDka0Mw2
-         KW9A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=8i6zdcy/HSVWxXYgnSlGYUVa1Ccl1EqTxVQQ+j96GDA=;
-        b=z5qGIhzHUKCz2j4osoQRKvD/sYPB+PizwYvdv5NaEtjk1Nf+6RMExHBQZia0UAtJ53
-         eInJblaI89cvLSq0rvGVQHv+TJk99niTipc4yzj2i8fNv5DpDNgY+EK0BjmKZFdQ8MnB
-         a+KEEYYX6e9bi0YQOA/m7xjMZO5ZL6uSLeLB/8tueQuGz++KnvxRyfloM6BvosSV/iDi
-         KRmWpdkXpqPYFSpasyAaDMr2kjZE5tDG+2pLBgwdG5L42ogNW2w9BSxkLpjOyJy63J7g
-         gRoz2d3MOyuoinuzglMXWQibzvdbOfZnLN1xBBj/1UvqR/cFfN+Z+3Rul4/KKK7PZ316
-         UVsw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=L0pj0EXD;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+        b=CiHvYbbqUPjSggzH7rZmOfRcYCYiwyELdq4uNCd3FD7VIDOAkiq+7KDIKXdTxez5Zm
+         V4Br6shAELEbL9IVl1NVnYDOOZGygRpqSKP5/J8eSvo+kmN8/ALgod4dl51CHW2Vg5EI
+         TP/0sEmnV5xaknzpdao4Szx0E/O4xFvMQcEfK6NO0Fn4OEV0p65VH/Sp8jOljBVsTpRL
+         GS0zaONunIDL7CjO+rQWvXT+FTVOFb73ZiCddp/zKVd9/sKk/ZASj9M4qTrF0mzVGFcR
+         SB9h9PEIIGOaVCrY/C6HlITl/tKUZgDqONCVV+88Jo19E00bMnfkQxE1JE9Ejv3cr0b4
+         TJOg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ucAjbW8qDmBYB72V5ZPZHbAZ7mL6QNrCkthrO2CDID8=;
+        b=1LPPdt0RngCGyNHG34iN84v2R7yjC5/h6L2GWTiPdInGnMu2obaqawiq/pzw5wHBVz
+         xT/sfLrrfgCKBUNJCgmvlhotf809alOpaU6jpukvcci6sf7Y/mD/GYRnZvtG8depEcMD
+         LhLkbjByaWRYUrTCCZjgj0h6foYx5H7LxrLOqM6P/KZZ9fg1/Ez7DbYX7sBFMh/Dm5Pk
+         e4trN5BxBg4E6L/tOpgGI1FsItAFgQCLTmhV1oQa37rhQS/yC06+lOYckods5Ps1L+p0
+         DX/xrtgpcpIsaZ2luBV96o6xGaCQs4FngSkajavghReJu4v9WA3FUaUtKaATo9FrRcAI
+         PQ/g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="fwi9R/DF";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j18si28563334lfg.97.2021.08.31.07.03.50
+        by mx.google.com with ESMTPS id p1si24405860lfs.36.2021.08.31.07.06.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 07:03:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Aug 2021 07:06:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=L0pj0EXD;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:52530 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="fwi9R/DF";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL4Mf-0007Dz-VV
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:03:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56752)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mL4PP-0001fx-0E
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:06:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59758)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
- id 1mL4BN-0007xV-HF; Tue, 31 Aug 2021 09:52:09 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:12962)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mL4Kx-0005Pn-KY
+ for qemu-devel@nongnu.org; Tue, 31 Aug 2021 10:02:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43070)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=88771d3da1=pdel@fb.com>)
- id 1mL4BL-0005pf-28; Tue, 31 Aug 2021 09:52:08 -0400
-Received: from pps.filterd (m0109331.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 17VDYWqo028527; Tue, 31 Aug 2021 06:51:55 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : references : in-reply-to : content-type : content-id
- : content-transfer-encoding : mime-version; s=facebook;
- bh=8i6zdcy/HSVWxXYgnSlGYUVa1Ccl1EqTxVQQ+j96GDA=;
- b=L0pj0EXDO4asDLsfocdID40hgpbH5BHxRPhJzSDUuxIJZnDa/FsnfHsMm2Z4i0poNpnb
- Q5yfPuWBtVbLlFEcKKKSxJk0u4HfxVPWAzaaMwjbmunAskCAcvpz/GrsYnTPvnpR2kXV
- BxfDYzdeY51EuCiRFKc6zmAP7Fq1hup/lIs= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com with ESMTP id 3artue2bvq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Tue, 31 Aug 2021 06:51:55 -0700
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com (100.104.31.183)
- by o365-in.thefacebook.com (100.104.35.172) with Microsoft SMTP
- Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Tue, 31 Aug 2021 06:51:54 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WvWjbHPFo0/1TlkclBsD8b1CoUYn1+WOSZdbzhBtXPkN8TVXzkdNQtnRPF7Bbxjo22ptb94f1DoKJKBuj8+YdFjWGiNZK2o5tf3+vLtymaQ3JwZBGIXzWu7XWFavL8sIgtKSGL5ekplBsMC9I+wa23LmuhmDcam0iPdX0LalovT5oDL3TihR7uoBDj0oEit5qRlJmuM+3CLosX9/VglzrRM1Gx9f8ele8VO0B0tJszFNNH3AqUAUW7EmovUJYHmJBIg4nJ8IBRHKh/Zwhg1duHfD72CKZU0SDcY3bSXyv29ucuyBlVe4QYlkFuRTqEneZefaLR7zISTSRAH/WvgJbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8i6zdcy/HSVWxXYgnSlGYUVa1Ccl1EqTxVQQ+j96GDA=;
- b=HtVdhY7QsEhhRuVc9J1yCym8K8/71KVLLAWSzrHW9JNuvgAuOuvLOY07CeW14/SiIUxXYN5fBcYL4JjT7ihofjDZJuR1DyGG42URVjKBXKKYG81HIZgPi0/dmP0cigsaaElYm6QduTnM6VnrEGgABEdLuGJnqY0mtxWVfP4nGqfR3DBaKgoSuyZyBVHSrL4xrWLbg2XAibwpBLh0oGdYVs7t85ZrvZnUfGQrSFHue9e0CNCgBSCjkAg6LBH3Uzy9lYbfJKvnmQd/7r/h4y6B6OKrgkN6zH1ipgPBxXpiJVZTF0AEzxv7y3JOW5tjoQ0+dPPlNZyZeM6VCMqbQItZXg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
- by BYAPR15MB2631.namprd15.prod.outlook.com (2603:10b6:a03:150::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.18; Tue, 31 Aug
- 2021 13:51:52 +0000
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::39cf:cf4c:885c:9368]) by BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::39cf:cf4c:885c:9368%7]) with mapi id 15.20.4457.024; Tue, 31 Aug 2021
- 13:51:52 +0000
-From: Peter Delevoryas <pdel@fb.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
-CC: "joel@jms.id.au" <joel@jms.id.au>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
-Thread-Topic: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
-Thread-Index: AQHXm4dh466/7b8SHEitTznuegJn+auIlZeAgAByzN2ABEE2AIAAXguA
-Date: Tue, 31 Aug 2021 13:51:52 +0000
-Message-ID: <65C83ADA-7546-40AF-9EF5-C990FC09F0B4@fb.com>
-References: <20210827210417.4022054-1-pdel@fb.com>
- <20210827210417.4022054-3-pdel@fb.com>
- <7a53d5e9-52c2-a06b-1385-fd71a96d7486@kaod.org>
- <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
- <a67c22a2-eb11-87f5-54e7-14c2d771861b@kaod.org>
-In-Reply-To: <a67c22a2-eb11-87f5-54e7-14c2d771861b@kaod.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: kaod.org; dkim=none (message not signed)
- header.d=none;kaod.org; dmarc=none action=none header.from=fb.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 267f2b4c-8330-4f24-5844-08d96c867cbe
-x-ms-traffictypediagnostic: BYAPR15MB2631:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR15MB26319A45D4E451F18D1A9719ACCC9@BYAPR15MB2631.namprd15.prod.outlook.com>
-x-fb-source: Internal
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: e2BjO4PrsxUVQrrJeGkjmOdhG0nFk0Cr+tjkuopZfuLvw6+s64KsCmjlibmQBwtj/P0Cjk97RyxI+7+Y9B4bLyTVxYp27dK2eC3FlI9lrRKTHugw9MEex+F/KeV3jxvdDwvmPuyglvHPIQI38Iu/oxaP8nhAuJQDTUPPc+AqZ8/1esGzjVa5hHNIT71wbCGfvw7qX+ZEqfOZiFIJk9gri0SubhOE+JEStu+L9rHkXSylSjDNQJhV+BXQ0PwfmX7fJRtGhdOH6lnncJ/MOJSgQbk3XlKj+5PQTiIHbIBUh5Dlp/DXaaU6XCHDvxXF5ucTfDhXX9HD5p3eH3YwH1xkJsenKlOYHeJlV5RB2bM5OMHlCusMdWXau0NmXCu2UZh0z7Wc6l0i9dxJjC1AskpMuTFD7hkyGnq0ZYx7MiKAvqLlrr5FymOTBKt1CIp+8UJlSkFPdRKIFgQk8KdH9Yemy6n/FHmyOycUd43NvKcjCKVZj7gEkJI1crBGqXchrQnSKSCx4JHN1hZsuOGAUBVETRsI/dUsNbiC9mHigGqX0BaRy2YcL2VucX0h3zOl4sa8vGpaDSCcXs1+2NICk7NWUelsRODjLrmQMsZBPkOilTxjLSnn39+YOw4yYcYbPd+MVuH9sWCZhbAoKB+aA2vkto660ccbopuXeqpjCfSs8CePEDGxs/tKpctGDihVNE8PIo7zFt3Fz5490UKuKvcLgOucyqN588iPdHKGmLpDXmfiURg9euqxoUY7HqyHui+MYIBkv/7w734dmQ8OGscigMOv8FfRSypUPlsVh60HegymV5Mz28/bR3/PjNKstCinAGWsAc3LW7B0H1LHQKd+JurGqCKhETyLPSPT6mNgNl0=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(136003)(376002)(396003)(346002)(366004)(6506007)(316002)(33656002)(86362001)(36756003)(54906003)(6916009)(66446008)(64756008)(66476007)(966005)(8676002)(2906002)(66574015)(478600001)(4326008)(186003)(4744005)(38070700005)(6512007)(76116006)(5660300002)(38100700002)(122000001)(66946007)(66556008)(53546011)(71200400001)(2616005)(8936002)(6486002)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?U25oaS9RemV4NDJaTjltTEZ2eEV3di9UdzlCdmw3YVVxZ01wY21kQ3VQZ2c0?=
- =?utf-8?B?R3Y4UFlJb1NQeG8vQ1hIR0JvVTZuSUJrU1NrcUtIK1VpUUdFU0JtUzNjalMw?=
- =?utf-8?B?TGttOEtGSlBRZHRveWhVMFNyc3pROWlVZnJ6MzU0UjNqVXZ1WnZwbDJJRWZK?=
- =?utf-8?B?QndhVWxmNE10UlYraE5sdnNJV0E1bXdwZ3FLWEdUa0hMdXZuUFl4VlhsY0kz?=
- =?utf-8?B?UEFKTnJMbXpQWnYrVkltMnN6em5rNUg5VkE4WmxuWUhyYyswTVJta2M2RmhV?=
- =?utf-8?B?MWJnTjFVWmxZR3lON3A1VkIzeVJocVdXR2ZQZ21UWTNKZWdVSHc5bHBrMnVv?=
- =?utf-8?B?T0RXVDFvS0FHU2pSdzRKcHY0Y3V0R2lxbUNNYlRyUFF5ZFhEQ05JR3dueW0w?=
- =?utf-8?B?cUttMjNEM3Y3TUNLWndKUFFGQ1VibGZOaStlcmk0ZXllNEpld0xIdTUzanJW?=
- =?utf-8?B?SDBTMWlvakJsTEZibDgzYmg0RnZQbFdzSXl6RWdYLzdZM29wQ3JVZHg3VXNt?=
- =?utf-8?B?VEZsZm5pNjZSM1lMYzlBQTFqeW9GUEV5TG1Tbmhla3oyN1RXeU1PdmV2dVFR?=
- =?utf-8?B?RXVCUk9TZDI2dkZhMWlIcFVSTlVuc1QzbzhhbWNYMnZxVXFKT3BqdTFJK0Nu?=
- =?utf-8?B?d29XMW1SbFpTRkMrYTNzbHZzT211UGFFQ3VkdE5jMEFmelpTUHlmVTNhdVl1?=
- =?utf-8?B?OVAzVjdaTXlJNUlhMDY0WklCVVdsSDZTTkwvZzhkRkZBNm1tY2NyVE9ySkpD?=
- =?utf-8?B?S3dHR2phdVFaTTFQbmFTbzNDTWc3WWFBa0hiTHB6UWMzcVJoY0lxSWFDQzZi?=
- =?utf-8?B?SHZXSFpua3JsVHo0dnZObUxGVWlpNmxEcW5HR0NqSTNSLzVMUko1QWorWUdp?=
- =?utf-8?B?OWZlOUZoeHZtbGo5RnN1N3lWcmczMUdBUEozbHJIT1puSi9pOVhrenc4eGdO?=
- =?utf-8?B?TVgrOUNuYnhYRmdYTW05dmhEQTZZQko1YVBBV0xGNDNpZnBBaC9CN3JiSXBT?=
- =?utf-8?B?bHpEbUIyN3BqNWpWcW5tbzArcjgweFIyV1JhcVBlQlZrSVMwNS8vV1BOZ3JR?=
- =?utf-8?B?QXZlRzhWcURucEsxQXhseDdZUStza3kyZXhzbDFVc2ZDZ2FNa2JmYUtoNTlD?=
- =?utf-8?B?blRxYmxKeDBja0s2TlkvNnk3QlVpaE5SZG4zOWROQklPaGw3RWJiYy9XbTEw?=
- =?utf-8?B?MExEWTQ1V0pNVitGKy8zZkttYm1YVFVLck44Rk9IMW9uOFlHYy94WTFYSlVU?=
- =?utf-8?B?SkpZTUxVVm1vVmFTZi9DbGtiajhLODUyMmxONEluMG4vemxCWDU3ZTkwOFA5?=
- =?utf-8?B?anlxTEZCd01BbUluL21YYllMdS93V2xEUjVLSWxvR2JMbmsyL3lQZWFHeSsw?=
- =?utf-8?B?elFMc0dGZWxXVE1RNWxNMTVkMnBQMjJHYm1NTUpHcm5IakVpdFBQdmV5WENn?=
- =?utf-8?B?VjZhRjROaG5tcGYvWTZYVGxBa0hDSi8rdTI2OENtRkp3akYvQ0JtbGxFZUJu?=
- =?utf-8?B?ZVl2UlFSdDFGWW5NSGFCL1hvdGpGSCtUNTJFMDJZODY1Q3AzTVhZUzU2dlRx?=
- =?utf-8?B?Y0RXY2V4QS9rUEZ2SGhKcHlpRjd5SWx6UjJiOHNTTU83ZW9tOCtZdVBXNlJt?=
- =?utf-8?B?LzBSVW1rZlkydnRrZWdiSXR4Kzk3azFRTlowUU91eUpWYnZaR3NUckxiamJL?=
- =?utf-8?B?SVB1V2ZocGE5aFpUazBNOGpKenZzT0lNb2pEL1NiUzBvZnhoREVaYlNHSDJh?=
- =?utf-8?B?cW9CNU1jMXBPSDlZUEpsY01oVFBVb1dBR2tyYmF6cVhhSk1XNURxallveHdQ?=
- =?utf-8?Q?xpKBmdiucqI9KktLG5V+w05wE73m/2lalSL8c=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <E3D3BDE518BA5E4DA42DF91877CB9B7E@namprd15.prod.outlook.com>
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 267f2b4c-8330-4f24-5844-08d96c867cbe
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2021 13:51:52.2223 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: i7HPjfy7/pyQzW1hPPhOKRqeF+FtMUaVpzaX0DoBBm/pu9Utdq1n5iYMV91PiBGN
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR15MB2631
-X-OriginatorOrg: fb.com
-X-Proofpoint-GUID: aVkuT7BESan9mTVV8foe118eiWTfXnjR
-X-Proofpoint-ORIG-GUID: aVkuT7BESan9mTVV8foe118eiWTfXnjR
-Content-Transfer-Encoding: base64
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mL4Kp-00043m-77
+ for qemu-devel@nongnu.org; Tue, 31 Aug 2021 10:02:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630418514;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ucAjbW8qDmBYB72V5ZPZHbAZ7mL6QNrCkthrO2CDID8=;
+ b=fwi9R/DF8emkGzyrQjstf3C2PUQsXZd+blYUC/fGMl5y464K27zH33ucxKx4+HOx26Ar72
+ U8sL9enKmyJTEF3GibgOzqEeZ85wXINfHstaEOZLUTsYTD2LeFSUdpqJC9gDCfvoYx8e2C
+ A3vBEPEbQKDvSnKIE+ohbt6VN/tGT3k=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-520-NRhX8LhJNXWGjINNXICAIQ-1; Tue, 31 Aug 2021 10:01:53 -0400
+X-MC-Unique: NRhX8LhJNXWGjINNXICAIQ-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ u2-20020adfdd42000000b001579f5d6779so2441445wrm.8
+ for <qemu-devel@nongnu.org>; Tue, 31 Aug 2021 07:01:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:reply-to:subject:to:cc:references:from
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-transfer-encoding:content-language;
+ bh=ucAjbW8qDmBYB72V5ZPZHbAZ7mL6QNrCkthrO2CDID8=;
+ b=oAIGyAjWrPZfisABvMQcSBWWWskMUxYBLIlBiGTdhgXluYt9QWTmD3IY+2QfGSMzJ/
+ jKJ+v4DapMchaBlJd98eonCg9icX7F7EGUEQkT4+zx5t7l6vgxArhiTu+OM2zSQclChz
+ yyIpF6KnSkFo/fHz6UEILHcq2LXJZ5gRySBv9u6qgQALVNYi5SYTBb6Aq/016xiWD0EP
+ 6o/L659HUF/kAZS6zytlrPC8WSUnE7J4yxOHZPjzTzgC6QQcPnX5hOo7yIxiVxDxcIII
+ /DMdM1OgBSqbk6WsQtvInIX6cPWS5aFQx/SSchV9nA/62ToMEE2QxXylkve+BHXzqc3s
+ wSKQ==
+X-Gm-Message-State: AOAM533KAhabXB2wfjqNtp92B4qCqQBE2p0i7AHlacDX+Fmh6NvLMi3h
+ 2CkByxTHqtOiMMGvy/OiCbuw34xaPs3XsS5EVQoDF/L8kjVaMGpoh3gg46OdFvf/dfW3qRce6xK
+ hJLdpVFg0OIpTs3E=
+X-Received: by 2002:adf:de8f:: with SMTP id w15mr31637383wrl.277.1630418511678; 
+ Tue, 31 Aug 2021 07:01:51 -0700 (PDT)
+X-Received: by 2002:adf:de8f:: with SMTP id w15mr31637339wrl.277.1630418511362; 
+ Tue, 31 Aug 2021 07:01:51 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id r12sm18883525wrv.96.2021.08.31.07.01.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Aug 2021 07:01:50 -0700 (PDT)
+Subject: Re: [PATCH v5 1/4] hw/arm/smmuv3: Support non PCI/PCIe device connect
+ with SMMU v3
+To: chunming <chunming_li1234@163.com>, peter.maydell@linaro.org
+References: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
+ <1629878922-173270-2-git-send-email-chunming_li1234@163.com>
+From: Eric Auger <eric.auger@redhat.com>
+Message-ID: <3730a403-5144-b743-06f9-90faa45e20a4@redhat.com>
+Date: Tue, 31 Aug 2021 16:01:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-08-31_05:2021-08-31,
- 2021-08-31 signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- suspectscore=0 mlxscore=0
- spamscore=0 mlxlogscore=687 adultscore=0 phishscore=0 malwarescore=0
- clxscore=1015 lowpriorityscore=0 bulkscore=0 impostorscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2107140000 definitions=main-2108310077
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=88771d3da1=pdel@fb.com; helo=mx0b-00082601.pphosted.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <1629878922-173270-2-git-send-email-chunming_li1234@163.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) DKIMWL_WL_HIGH=-0.391, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.932,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xhjt7Uo3clDA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Cc: renwei.liu@verisilicon.com, qemu-arm@nongnu.org,
+ jianxian.wen@verisilicon.com, qemu-devel@nongnu.org,
+ chunming <chunming.li@verisilicon.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xi7eMi8o5P5O
 
-SeKAmWxsIHJlc2VuZCBQQVRDSCA1LCBhbmQgbGlrZSB5b3XigJlyZSBzdWdnZXN0aW5nLCBJIGNh
-biB1c2UgdGhlIGV4aXN0aW5nIGFzdDI2MDAtZXZiIG1hY2hpbmUgdHlwZSBmb3IgdGVzdGluZy4N
-Cg0KICAgICMgU2V0dXAgc2VyaWFsX2hkKDEpIGFzIFVBUlQxIGluIDI2MDAgU29DIHJlYWxpemUg
-KEkgd29u4oCZdCBpbmNsdWRlIHRoaXMgaW4gdGhlIGRpZmYgdGhvdWdoKQ0KICAgIFVBUlQ1PXNl
-cmlhbF9oZCgwKQ0KICAgIFVBUlQxPXNlcmlhbF9oZCgxKQ0KDQogICAgcWVtdS1zeXN0ZW0tYXJt
-IC1tYWNoaW5lIGFzdDI2MDAtZXZiIC1zZXJpYWwgbnVsbCAtc2VyaWFsIHN0ZGlvDQoNCj4gT24g
-QXVnIDMxLCAyMDIxLCBhdCAxOjE1IEFNLCBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3Jn
-PiB3cm90ZToNCj4gDQo+IEkgd291bGQgcHJlZmVyIHRoYXQuIFRoaXMgcGF0Y2ggaGFzIGJlZW4g
-aW4gbXkgdHJlZSBmb3IgeWVhcnMgOg0KPiANCj4gIGh0dHBzOi8vZ2l0aHViLmNvbS9sZWdvYXRl
-ci9xZW11L2NvbW1pdC8xMzg3MTNlZTFkM2Q4NDY4MmI4NWMxYjAxNTc3YTdlODZhYjNmZWQ0DQo+
-IA0KPiBTZWUNCj4gDQo+ICBodHRwczovL2dpdGh1Yi5jb20vbGVnb2F0ZXIvcWVtdS9jb21taXRz
-L2FzcGVlZC02LjINCj4gDQo+IE1heSBiZSB0aGlzIGlzIHdoYXQgeW91IHNpbXBseSBuZWVkID8g
-WW91IGNhbiB1c2UgdGhlIGFzdDI2MDAtZXZiIG1hY2hpbmUgZm9yIA0KPiB5b3VyIHRlc3RzLiBU
-ZWxsIG1lIGhvdyBpdCBnb2VzLiANCj4gDQo+IEFGQUlDVCwgeW91IHdpbGwgbmVlZCB0byByZXNl
-bmQgUEFUQ0ggNSBvbmx5Lg0KPiANCj4gVGhhbmtzLA0KPiANCj4gQy4NCg0K
+Hi Chunming,
+
+On 8/25/21 10:08 AM, chunming wrote:
+> From: chunming <chunming.li@verisilicon.com>
+>
+>   . Add sid-map property to store non PCI/PCIe devices SID
+>   . Create IOMMU memory regions for non PCI/PCIe devices based on their SID
+>   . Update SID getting strategy for PCI/PCIe and non PCI/PCIe devices
+>
+> Signed-off-by: chunming <chunming.li@verisilicon.com>
+> ---
+>  hw/arm/smmuv3.c              | 46 ++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/smmu-common.h |  7 +++++-
+>  include/hw/arm/smmuv3.h      |  2 ++
+>  3 files changed, 54 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 01b60bee49..11d7fe8423 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -32,6 +32,7 @@
+>  #include "hw/arm/smmuv3.h"
+>  #include "smmuv3-internal.h"
+>  #include "smmu-internal.h"
+> +#include "hw/qdev-properties.h"
+>  
+>  /**
+>   * smmuv3_trigger_irq - pulse @irq if enabled and update
+> @@ -1430,6 +1431,19 @@ static void smmu_reset(DeviceState *dev)
+>      smmuv3_init_regs(s);
+>  }
+>  
+> +static SMMUDevice *smmu_find_peri_sdev(SMMUState *s, uint16_t sid)
+> +{
+> +    SMMUDevice *sdev;
+> +
+> +    QLIST_FOREACH(sdev, &s->peri_sdev_list, next) {
+> +        if (smmu_get_sid(sdev) == sid) {
+> +            return sdev;
+> +        }
+> +    }
+> +
+> +    return NULL;
+> +}
+> +
+>  static void smmu_realize(DeviceState *d, Error **errp)
+>  {
+>      SMMUState *sys = ARM_SMMU(d);
+> @@ -1437,6 +1451,9 @@ static void smmu_realize(DeviceState *d, Error **errp)
+>      SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
+>      SysBusDevice *dev = SYS_BUS_DEVICE(d);
+>      Error *local_err = NULL;
+> +    SMMUDevice *sdev;
+> +    char *name = NULL;
+> +    uint16_t sid = 0;
+>  
+>      c->parent_realize(d, &local_err);
+>      if (local_err) {
+> @@ -1454,6 +1471,28 @@ static void smmu_realize(DeviceState *d, Error **errp)
+>      sysbus_init_mmio(dev, &sys->iomem);
+>  
+>      smmu_init_irq(s, dev);
+> +
+> +    /* Create IOMMU memory region for peripheral devices based on their SID */
+s/peripheral devices/platform devices? I would suggest to rename the
+fields contained 'peri' too.
+> +    for (int i = 0; i < s->num_sid; i++) {
+> +        sid = s->sid_map[i];
+> +        sdev = smmu_find_peri_sdev(sys, sid);
+> +        if (sdev) {
+> +            continue;
+> +        }
+> +
+> +        sdev = g_new0(SMMUDevice, 1);
+> +        sdev->smmu = sys;
+> +        sdev->bus = NULL;
+> +        sdev->devfn = sid;
+> +
+> +        name = g_strdup_printf("%s-peri-%d", sys->mrtypename, sid);
+> +        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
+> +                                 sys->mrtypename,
+> +                                 OBJECT(sys), name, 1ULL << SMMU_MAX_VA_BITS);
+> +
+> +        QLIST_INSERT_HEAD(&sys->peri_sdev_list, sdev, next);
+> +        g_free(name);
+> +    }
+>  }
+>  
+>  static const VMStateDescription vmstate_smmuv3_queue = {
+> @@ -1506,6 +1545,12 @@ static void smmuv3_instance_init(Object *obj)
+>      /* Nothing much to do here as of now */
+>  }
+>  
+> +static Property smmuv3_properties[] = {
+> +    DEFINE_PROP_ARRAY("sid-map", SMMUv3State, num_sid, sid_map,
+> +                      qdev_prop_uint16, uint16_t),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void smmuv3_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -1515,6 +1560,7 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+>      device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
+>      c->parent_realize = dc->realize;
+>      dc->realize = smmu_realize;
+> +    device_class_set_props(dc, smmuv3_properties);
+>  }
+>  
+>  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index 706be3c6d0..95cd12a4b5 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -117,6 +117,7 @@ struct SMMUState {
+>      QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
+>      uint8_t bus_num;
+>      PCIBus *primary_bus;
+> +    QLIST_HEAD(, SMMUDevice) peri_sdev_list;
+>  };
+>  
+>  struct SMMUBaseClass {
+> @@ -138,7 +139,11 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num);
+>  /* Return the stream ID of an SMMU device */
+>  static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+>  {
+> -    return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
+> +    if (sdev->bus == NULL) {
+> +        return sdev->devfn;
+> +    } else {
+> +        return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
+> +    }
+>  }
+>  
+>  /**
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index c641e60735..32ba84990d 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -39,6 +39,8 @@ struct SMMUv3State {
+>      uint32_t features;
+>      uint8_t sid_size;
+>      uint8_t sid_split;
+> +    uint32_t num_sid;
+> +    uint16_t *sid_map;
+
+peri_sdev_list is a field of the SMMUState. Why don't you put those fields in the parent class too. If we were to support another other model of SMMU, platform device support would be meaningful there too so I would sugeest to put the fields and peorperty and this level.
+
+>  
+>      uint32_t idr[6];
+>      uint32_t iidr;
+Thanks
+
+Eric
+

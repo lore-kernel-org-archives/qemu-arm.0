@@ -1,300 +1,134 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5069586lfb;
-        Tue, 31 Aug 2021 07:06:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+rpLegA2sq4jbSVNOhaSHGgvWKVxiNSNHb/xIGbvmtzfxfLTGTNI8dpxjMpQWNepI8A2g
-X-Received: by 2002:a2e:2283:: with SMTP id i125mr25556466lji.485.1630418800207;
-        Tue, 31 Aug 2021 07:06:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630418800; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5070357lfb;
+        Tue, 31 Aug 2021 07:07:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxsSI8PTMUgBfg9ZFxZ1mlatFQS267iuJbcRzCn8SdYIcg8vVM+Q33V6TzkpBzRDOcUcui3
+X-Received: by 2002:a5d:456d:: with SMTP id a13mr31881477wrc.364.1630418842392;
+        Tue, 31 Aug 2021 07:07:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630418842; cv=none;
         d=google.com; s=arc-20160816;
-        b=CiHvYbbqUPjSggzH7rZmOfRcYCYiwyELdq4uNCd3FD7VIDOAkiq+7KDIKXdTxez5Zm
-         V4Br6shAELEbL9IVl1NVnYDOOZGygRpqSKP5/J8eSvo+kmN8/ALgod4dl51CHW2Vg5EI
-         TP/0sEmnV5xaknzpdao4Szx0E/O4xFvMQcEfK6NO0Fn4OEV0p65VH/Sp8jOljBVsTpRL
-         GS0zaONunIDL7CjO+rQWvXT+FTVOFb73ZiCddp/zKVd9/sKk/ZASj9M4qTrF0mzVGFcR
-         SB9h9PEIIGOaVCrY/C6HlITl/tKUZgDqONCVV+88Jo19E00bMnfkQxE1JE9Ejv3cr0b4
-         TJOg==
+        b=aBQp7JZOziwiHNg/Mtzb9Ey0EPWB/zAke4gMrm0x0LSjQOWX/FV2Ftl/yIl9E9FgWJ
+         MP2gNnAUHwUB7jvmNenseo5O5OGyvRIGHv4tPwHYUBOgQmmphJJsXFDnEq8ZtRUbP+NL
+         P6ZYGA0TSFwFVBDP2/yFaMINs+VqBuVAWNrLeeBMWjfqylY7ViYR6qwqDx35/e6bvcyv
+         u5APwLNVEEqMO3L/eVyYLUKtx+2emuLgvGbyDxP5dhWqWfQ+USLDVhW907lu1fQdJViX
+         fwV6JX/D65k3IweL9R11SmZj9rBVW3Scqq+iXDl16d+c2y78+Fp0apTgMhaLOKm2iVry
+         J8iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ucAjbW8qDmBYB72V5ZPZHbAZ7mL6QNrCkthrO2CDID8=;
-        b=1LPPdt0RngCGyNHG34iN84v2R7yjC5/h6L2GWTiPdInGnMu2obaqawiq/pzw5wHBVz
-         xT/sfLrrfgCKBUNJCgmvlhotf809alOpaU6jpukvcci6sf7Y/mD/GYRnZvtG8depEcMD
-         LhLkbjByaWRYUrTCCZjgj0h6foYx5H7LxrLOqM6P/KZZ9fg1/Ez7DbYX7sBFMh/Dm5Pk
-         e4trN5BxBg4E6L/tOpgGI1FsItAFgQCLTmhV1oQa37rhQS/yC06+lOYckods5Ps1L+p0
-         DX/xrtgpcpIsaZ2luBV96o6xGaCQs4FngSkajavghReJu4v9WA3FUaUtKaATo9FrRcAI
-         PQ/g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=+AJRWB+eo9/ROiL8xmMW1SiSXwWbZ7hu955VsGxw0Uw=;
+        b=qN2uOrRei8JvkxL8fkmAF5bDF3hCsDHK8kYUL9YSqsuXheontAlLjpA1qYM2vYEST0
+         V4Rim8Lf9zzoK/bP65cILxN1CabK/zULJVaGYPwRd3OPHcoyPTA7CXuO2dqPOkLkROI5
+         kAkTX2vHOzpGt+x3ZynbT5HlA7N1kxzyDQCAs95pev22N/HA32aDXvY6+1zEBGRPvvMB
+         V1DUuC+zet3k++Z56J7l0nz3WQxm3NOQXH116Or6ATiNL2Cg38a4H5ghLW91zdrpTR30
+         SZZjM/Yw626Et2Mf7GsvBUYa3CeQ5goiYsrZfW4v5zddqv82jJhvY+dXzIDCqac41+3F
+         tFRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="fwi9R/DF";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p1si24405860lfs.36.2021.08.31.07.06.40
+        by mx.google.com with ESMTPS id c9si2374172wml.38.2021.08.31.07.07.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 07:06:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Aug 2021 07:07:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="fwi9R/DF";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56812 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL4PP-0001fx-0E
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:06:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59758)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mL4Q4-00051h-PN
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 10:07:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mL4Kx-0005Pn-KY
- for qemu-devel@nongnu.org; Tue, 31 Aug 2021 10:02:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43070)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mL4PP-0003QQ-61
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:06:39 -0400
+Received: from 1.mo548.mail-out.ovh.net ([178.32.121.110]:56885)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mL4Kp-00043m-77
- for qemu-devel@nongnu.org; Tue, 31 Aug 2021 10:02:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630418514;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ucAjbW8qDmBYB72V5ZPZHbAZ7mL6QNrCkthrO2CDID8=;
- b=fwi9R/DF8emkGzyrQjstf3C2PUQsXZd+blYUC/fGMl5y464K27zH33ucxKx4+HOx26Ar72
- U8sL9enKmyJTEF3GibgOzqEeZ85wXINfHstaEOZLUTsYTD2LeFSUdpqJC9gDCfvoYx8e2C
- A3vBEPEbQKDvSnKIE+ohbt6VN/tGT3k=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-520-NRhX8LhJNXWGjINNXICAIQ-1; Tue, 31 Aug 2021 10:01:53 -0400
-X-MC-Unique: NRhX8LhJNXWGjINNXICAIQ-1
-Received: by mail-wr1-f72.google.com with SMTP id
- u2-20020adfdd42000000b001579f5d6779so2441445wrm.8
- for <qemu-devel@nongnu.org>; Tue, 31 Aug 2021 07:01:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=ucAjbW8qDmBYB72V5ZPZHbAZ7mL6QNrCkthrO2CDID8=;
- b=oAIGyAjWrPZfisABvMQcSBWWWskMUxYBLIlBiGTdhgXluYt9QWTmD3IY+2QfGSMzJ/
- jKJ+v4DapMchaBlJd98eonCg9icX7F7EGUEQkT4+zx5t7l6vgxArhiTu+OM2zSQclChz
- yyIpF6KnSkFo/fHz6UEILHcq2LXJZ5gRySBv9u6qgQALVNYi5SYTBb6Aq/016xiWD0EP
- 6o/L659HUF/kAZS6zytlrPC8WSUnE7J4yxOHZPjzTzgC6QQcPnX5hOo7yIxiVxDxcIII
- /DMdM1OgBSqbk6WsQtvInIX6cPWS5aFQx/SSchV9nA/62ToMEE2QxXylkve+BHXzqc3s
- wSKQ==
-X-Gm-Message-State: AOAM533KAhabXB2wfjqNtp92B4qCqQBE2p0i7AHlacDX+Fmh6NvLMi3h
- 2CkByxTHqtOiMMGvy/OiCbuw34xaPs3XsS5EVQoDF/L8kjVaMGpoh3gg46OdFvf/dfW3qRce6xK
- hJLdpVFg0OIpTs3E=
-X-Received: by 2002:adf:de8f:: with SMTP id w15mr31637383wrl.277.1630418511678; 
- Tue, 31 Aug 2021 07:01:51 -0700 (PDT)
-X-Received: by 2002:adf:de8f:: with SMTP id w15mr31637339wrl.277.1630418511362; 
- Tue, 31 Aug 2021 07:01:51 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id r12sm18883525wrv.96.2021.08.31.07.01.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Aug 2021 07:01:50 -0700 (PDT)
-Subject: Re: [PATCH v5 1/4] hw/arm/smmuv3: Support non PCI/PCIe device connect
- with SMMU v3
-To: chunming <chunming_li1234@163.com>, peter.maydell@linaro.org
-References: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
- <1629878922-173270-2-git-send-email-chunming_li1234@163.com>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <3730a403-5144-b743-06f9-90faa45e20a4@redhat.com>
-Date: Tue, 31 Aug 2021 16:01:49 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mL4PM-0007Ga-WA
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 10:06:38 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.132])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id E2FDC210F1;
+ Tue, 31 Aug 2021 14:06:32 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 31 Aug
+ 2021 16:06:32 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G0048c262bfa-db0b-4b11-be95-01163435858f,
+ 3D02C4E7E229260F021FFF691A6C377EE278DEFF) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH 2/5] hw/arm/aspeed: Select console UART from machine
+To: Peter Delevoryas <pdel@fb.com>
+References: <20210827210417.4022054-1-pdel@fb.com>
+ <20210827210417.4022054-3-pdel@fb.com>
+ <7a53d5e9-52c2-a06b-1385-fd71a96d7486@kaod.org>
+ <BYAPR15MB3032BA6C3556797AC2A3461CACC99@BYAPR15MB3032.namprd15.prod.outlook.com>
+ <a67c22a2-eb11-87f5-54e7-14c2d771861b@kaod.org>
+ <65C83ADA-7546-40AF-9EF5-C990FC09F0B4@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <90a52916-d043-4ab7-c27c-5dc62a027f67@kaod.org>
+Date: Tue, 31 Aug 2021 16:06:31 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <1629878922-173270-2-git-send-email-chunming_li1234@163.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <65C83ADA-7546-40AF-9EF5-C990FC09F0B4@fb.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: eae2fda6-f637-4716-8346-4ab83f950d76
+X-Ovh-Tracer-Id: 3992441073260006307
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvuddgjeefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=178.32.121.110; envelope-from=clg@kaod.org;
+ helo=1.mo548.mail-out.ovh.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) DKIMWL_WL_HIGH=-0.391, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.932,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.932,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: renwei.liu@verisilicon.com, qemu-arm@nongnu.org,
- jianxian.wen@verisilicon.com, qemu-devel@nongnu.org,
- chunming <chunming.li@verisilicon.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xi7eMi8o5P5O
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "joel@jms.id.au" <joel@jms.id.au>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: S5wT9rDvL+J+
 
-Hi Chunming,
+On 8/31/21 3:51 PM, Peter Delevoryas wrote:
+> I’ll resend PATCH 5, and like you’re suggesting, I can use the existing ast2600-evb machine type for testing.
+> 
+>     # Setup serial_hd(1) as UART1 in 2600 SoC realize (I won’t include this in the diff though)
+>     UART5=serial_hd(0)
+>     UART1=serial_hd(1)
+> 
+>     qemu-system-arm -machine ast2600-evb -serial null -serial stdio
 
-On 8/25/21 10:08 AM, chunming wrote:
-> From: chunming <chunming.li@verisilicon.com>
->
->   . Add sid-map property to store non PCI/PCIe devices SID
->   . Create IOMMU memory regions for non PCI/PCIe devices based on their SID
->   . Update SID getting strategy for PCI/PCIe and non PCI/PCIe devices
->
-> Signed-off-by: chunming <chunming.li@verisilicon.com>
-> ---
->  hw/arm/smmuv3.c              | 46 ++++++++++++++++++++++++++++++++++++
->  include/hw/arm/smmu-common.h |  7 +++++-
->  include/hw/arm/smmuv3.h      |  2 ++
->  3 files changed, 54 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 01b60bee49..11d7fe8423 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -32,6 +32,7 @@
->  #include "hw/arm/smmuv3.h"
->  #include "smmuv3-internal.h"
->  #include "smmu-internal.h"
-> +#include "hw/qdev-properties.h"
->  
->  /**
->   * smmuv3_trigger_irq - pulse @irq if enabled and update
-> @@ -1430,6 +1431,19 @@ static void smmu_reset(DeviceState *dev)
->      smmuv3_init_regs(s);
->  }
->  
-> +static SMMUDevice *smmu_find_peri_sdev(SMMUState *s, uint16_t sid)
-> +{
-> +    SMMUDevice *sdev;
-> +
-> +    QLIST_FOREACH(sdev, &s->peri_sdev_list, next) {
-> +        if (smmu_get_sid(sdev) == sid) {
-> +            return sdev;
-> +        }
-> +    }
-> +
-> +    return NULL;
-> +}
-> +
->  static void smmu_realize(DeviceState *d, Error **errp)
->  {
->      SMMUState *sys = ARM_SMMU(d);
-> @@ -1437,6 +1451,9 @@ static void smmu_realize(DeviceState *d, Error **errp)
->      SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
->      SysBusDevice *dev = SYS_BUS_DEVICE(d);
->      Error *local_err = NULL;
-> +    SMMUDevice *sdev;
-> +    char *name = NULL;
-> +    uint16_t sid = 0;
->  
->      c->parent_realize(d, &local_err);
->      if (local_err) {
-> @@ -1454,6 +1471,28 @@ static void smmu_realize(DeviceState *d, Error **errp)
->      sysbus_init_mmio(dev, &sys->iomem);
->  
->      smmu_init_irq(s, dev);
-> +
-> +    /* Create IOMMU memory region for peripheral devices based on their SID */
-s/peripheral devices/platform devices? I would suggest to rename the
-fields contained 'peri' too.
-> +    for (int i = 0; i < s->num_sid; i++) {
-> +        sid = s->sid_map[i];
-> +        sdev = smmu_find_peri_sdev(sys, sid);
-> +        if (sdev) {
-> +            continue;
-> +        }
-> +
-> +        sdev = g_new0(SMMUDevice, 1);
-> +        sdev->smmu = sys;
-> +        sdev->bus = NULL;
-> +        sdev->devfn = sid;
-> +
-> +        name = g_strdup_printf("%s-peri-%d", sys->mrtypename, sid);
-> +        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-> +                                 sys->mrtypename,
-> +                                 OBJECT(sys), name, 1ULL << SMMU_MAX_VA_BITS);
-> +
-> +        QLIST_INSERT_HEAD(&sys->peri_sdev_list, sdev, next);
-> +        g_free(name);
-> +    }
->  }
->  
->  static const VMStateDescription vmstate_smmuv3_queue = {
-> @@ -1506,6 +1545,12 @@ static void smmuv3_instance_init(Object *obj)
->      /* Nothing much to do here as of now */
->  }
->  
-> +static Property smmuv3_properties[] = {
-> +    DEFINE_PROP_ARRAY("sid-map", SMMUv3State, num_sid, sid_map,
-> +                      qdev_prop_uint16, uint16_t),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
->  static void smmuv3_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -1515,6 +1560,7 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
->      device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
->      c->parent_realize = dc->realize;
->      dc->realize = smmu_realize;
-> +    device_class_set_props(dc, smmuv3_properties);
->  }
->  
->  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 706be3c6d0..95cd12a4b5 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -117,6 +117,7 @@ struct SMMUState {
->      QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
->      uint8_t bus_num;
->      PCIBus *primary_bus;
-> +    QLIST_HEAD(, SMMUDevice) peri_sdev_list;
->  };
->  
->  struct SMMUBaseClass {
-> @@ -138,7 +139,11 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num);
->  /* Return the stream ID of an SMMU device */
->  static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
->  {
-> -    return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
-> +    if (sdev->bus == NULL) {
-> +        return sdev->devfn;
-> +    } else {
-> +        return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
-> +    }
->  }
->  
->  /**
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index c641e60735..32ba84990d 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -39,6 +39,8 @@ struct SMMUv3State {
->      uint32_t features;
->      uint8_t sid_size;
->      uint8_t sid_split;
-> +    uint32_t num_sid;
-> +    uint16_t *sid_map;
+yes. that's one way to do it. But it's a bit hacky. 
 
-peri_sdev_list is a field of the SMMUState. Why don't you put those fields in the parent class too. If we were to support another other model of SMMU, platform device support would be meaningful there too so I would sugeest to put the fields and peorperty and this level.
+On the other hand, if we were to initialize all 5 UARTs, the user would 
+have to add 4 "-serial null" devices to use UART5 as a console (and none 
+for UART1). Which is not that good for a user API. We added the 'macs_mask' 
+for a similar reason btw.
 
->  
->      uint32_t idr[6];
->      uint32_t iidr;
-Thanks
+I think your proposal plus the extra SoC property is better though. 
 
-Eric
+Thanks for testing.
 
+C.

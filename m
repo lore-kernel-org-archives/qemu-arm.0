@@ -1,65 +1,65 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4975568lfb;
-        Tue, 31 Aug 2021 05:18:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbnP9rpWX6gkMtWVMSYlF4nUXVp0vXWGoaYU8uu+feR+5vpLrTQd4pPVLG0q3xGC6Z6J3H
-X-Received: by 2002:a17:906:c006:: with SMTP id e6mr30701256ejz.510.1630412337724;
-        Tue, 31 Aug 2021 05:18:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630412337; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4975791lfb;
+        Tue, 31 Aug 2021 05:19:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzOYDu+877V69348X9gaQpR+QnGYWBT0JpaLrY0BvZ00uNzyY5ASooMnlzqJb0fR6hRIUkw
+X-Received: by 2002:aa7:cb13:: with SMTP id s19mr30019280edt.87.1630412353323;
+        Tue, 31 Aug 2021 05:19:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630412353; cv=none;
         d=google.com; s=arc-20160816;
-        b=UI3bJa4Rxgxked46W6hmd9bmCyN54FKrxwLc2yzWwUQvqnz4zu9FAgTk2NNFI7/5G2
-         QZ8D8AeQl7ECuQHaeeqDlyckbux3xah6tyNbydJyqa2A1EfooiiXofFd9FomV3spbYla
-         WVEY8oVUTzwOfT9+lirWMqr1ybeaHdUq3DhhXi+BUS6RBFVn0dAZMNCfoXb0X/dYEOXQ
-         vy1Lkr8VtjkptqeDGVI7Xb0xc8UDUonNuTMTAG1gRATSeUcm10cVty/X/886a/yM+7ij
-         vmqBtatD8QRZ0sARj9I78iGRWK+INp4iedgRoxkdLNa1ahulL8icb5WmEmkqrCJ/uD4q
-         szBA==
+        b=pl/PzozfzqE04P8HqIW7biVqQpylT8JWsLbCdrZzkmT2+QapkR1CHJU+45LihL4y4F
+         eI3Ek5eOdjZi7kL155rwVkJ+hscU+zRX2m235GDL9lrKqektOsqUn83J1iH0pkIvtDt+
+         s4KlJn+Dvs/UWVo6PYLbeQ6yCvtGU5LBpUPjdzrX0BF+G2gETwwreTJnCCpdkggFVfc4
+         8tdu2jqKkZ5+nFoGmD5ze7NhWiZ24+dNaGKHpUGWtr6mGJLsyj2SdyR04ePMN/0EHIPi
+         KMLB6F6L3tTxl9XakzaFDkFSDutKr6y3WoZlhrJtMGJkIKYmNwr4i/B8R+Uy0wi0Idgv
+         FUvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=qiRX0Suz4eEcLoNuIeaDXeDr5OG1xIEgcGYjIBCDH+4=;
-        b=XeVM0eGOjY63z667A16T/qS3/nUG5AYR1Fvwgx3QMoCYgZeSvX/cbEO2xLtFrhR6qD
-         5h6r1ueaGez0HMdsFJtTp38ttFJ0zUG2fbd1WWJZOhEFOCTrtNNuVIbpJz9AmQ65BnpZ
-         3U8AW+jb8XW9ZMMy3eyBjAouIwDlm3o3O5CiJ6ERF8noQc9Ob0wBx7dsySssdKr0xmS5
-         HoNktxkw7mOUY3JN1534SzDm1gw48TfLtQQt2iThxvQcsv2zaVYAaNUjInLEwW3+8rQs
-         74f/DnVIPFhS3uKD/7MONEPe1aiDX9xN+3AozzD56eXSL8+dO4cehjOWSatGY41QIsTX
-         1YRw==
+        bh=bAh7jA6EdUo63aN7uq8/4SBOFFdgzWJ9ei5/ZCA+u+k=;
+        b=MHEf53oiVy4les4BCAK7bVasUtV/aEx77m7HACE1cfnqUHaXLtuyzKxa1vUCsd26tu
+         V7m1iOqkJR5toBxunevs+V2HrJdiYoEZR4Hr6TfRqdGaPDBuwuIP/z2eH8kK5Nd2Vvqy
+         lXeImVS2iYU7IhsUXrC8FCdJqTUOYS468EGcJYsMJXlddT0JE/NGs9o4UFz72AARE3Fy
+         hK3gmH0ShE/dJzM6WhjOsovqzpREsIV41J0IysPV8+pQk1VHARaa+rWzrn1C8xmCOdAw
+         IbzsihX38n/7PD7Th4VTvWJCL9spt0COBNAVcxAvM5sl97Zaa76aVdvFH100D9mS/QQJ
+         sWdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BcopqL7s;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ly5Q44HC;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id z19si22177536edq.516.2021.08.31.05.18.57
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id o10si4594310edc.75.2021.08.31.05.19.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Aug 2021 05:18:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Tue, 31 Aug 2021 05:19:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BcopqL7s;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ly5Q44HC;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630412336;
+	s=mimecast20190719; t=1630412352;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=qiRX0Suz4eEcLoNuIeaDXeDr5OG1xIEgcGYjIBCDH+4=;
-	b=BcopqL7sPc8RTWxkXoL24OSRGX8fLALxZ4NLUWctph1/WtpbYT8yK2MtVPF2+KqKk+QGc7
-	4qdLfrKE0JR/uF+YRUDRh4ERm8uZUFpH2H9ycoBwWKmzRMTE8oPgkVVcSaa8BNqGD3TXas
-	WV+WyDHvPxkT+4z98rKgsN4B9loj81I=
+	bh=bAh7jA6EdUo63aN7uq8/4SBOFFdgzWJ9ei5/ZCA+u+k=;
+	b=Ly5Q44HCjB8/MUI88Ee4Wi1c9tD6fET4IMWDwn4i5NQI1faituUSEG0p1NzzBmxB67y2lx
+	9wlSAU7qUmhLqucah/UH3mV+kpO4OEjnWNs2WgIG8Zn6yf9Gr5WOnE+xZDPzkeIrp/MyRb
+	QX/PQGDKuRJPflEtchdlWHBVOYsAloA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-393-2FKuroJ9OJi4TR3ILFhEjw-1; Tue, 31 Aug 2021 08:18:54 -0400
-X-MC-Unique: 2FKuroJ9OJi4TR3ILFhEjw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+ us-mta-86-mJxDlrd5P4CCeJlY2hFhXg-1; Tue, 31 Aug 2021 08:19:11 -0400
+X-MC-Unique: mJxDlrd5P4CCeJlY2hFhXg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 821DD9392B;
-	Tue, 31 Aug 2021 12:18:51 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D5E35100960B;
+	Tue, 31 Aug 2021 12:19:07 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EAECD27CA6;
-	Tue, 31 Aug 2021 12:18:50 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1D6511001281;
+	Tue, 31 Aug 2021 12:18:53 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 0305118009EA; Tue, 31 Aug 2021 14:15:47 +0200 (CEST)
+	id 2C2E518009EE; Tue, 31 Aug 2021 14:15:47 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -98,167 +98,108 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 24/29] tcg_i386_funcs: Add update_mxcsr_from_sse_status to TCGI386ModuleOps
-Date: Tue, 31 Aug 2021 14:15:40 +0200
-Message-Id: <20210831121545.2874233-25-kraxel@redhat.com>
+Subject: [PATCH 26/29] tcg_i386_funcs: Add cpu_set_ignne to TCGI386ModuleOps
+Date: Tue, 31 Aug 2021 14:15:42 +0200
+Message-Id: <20210831121545.2874233-27-kraxel@redhat.com>
 In-Reply-To: <20210831121545.2874233-1-kraxel@redhat.com>
 References: <20210831121545.2874233-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: ZSXh8+1063j9
+X-TUID: blxzPWp4ykBX
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/tcg/tcg-module-i386.h |  2 ++
- target/i386/cpu.h             |  3 ---
- accel/tcg/tcg-module-i386.c   |  1 +
- target/i386/cpu-dump.c        |  2 +-
- target/i386/gdbstub.c         |  2 +-
- target/i386/tcg/fpu_helper.c  |  5 +++--
- target/i386/tcg/tcg-stub.c    | 25 -------------------------
- target/i386/tcg/meson.build   |  2 --
- 8 files changed, 8 insertions(+), 34 deletions(-)
- delete mode 100644 target/i386/tcg/tcg-stub.c
+ include/tcg/tcg-module-i386.h       | 1 +
+ target/i386/cpu.h                   | 1 -
+ accel/tcg/tcg-module-i386.c         | 5 +++++
+ hw/i386/pc.c                        | 2 +-
+ target/i386/tcg/sysemu/fpu_helper.c | 3 ++-
+ 5 files changed, 9 insertions(+), 3 deletions(-)
 
 diff --git a/include/tcg/tcg-module-i386.h b/include/tcg/tcg-module-i386.h
-index 5d8f6434e32d..576e0a63f01f 100644
+index 7b99b9836a20..aa96aca82c4a 100644
 --- a/include/tcg/tcg-module-i386.h
 +++ b/include/tcg/tcg-module-i386.h
-@@ -4,6 +4,8 @@
- struct TCGI386ModuleOps {
-     void (*update_fp_status)(CPUX86State *env);
+@@ -6,6 +6,7 @@ struct TCGI386ModuleOps {
      void (*update_mxcsr_status)(CPUX86State *env);
-+    void (*update_mxcsr_from_sse_status)(CPUX86State *env);
-+
+     void (*update_mxcsr_from_sse_status)(CPUX86State *env);
+     void (*x86_register_ferr_irq)(qemu_irq irq);
++    void (*cpu_set_ignne)(void);
  };
  extern struct TCGI386ModuleOps tcg_i386;
  
 diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index bdfdbdb0d8a8..deba8eb04d1f 100644
+index d1819166ae11..6b9b1fad016f 100644
 --- a/target/i386/cpu.h
 +++ b/target/i386/cpu.h
-@@ -2127,9 +2127,6 @@ static inline bool cpu_vmx_maybe_enabled(CPUX86State *env)
- /* excp_helper.c */
- int get_pg_mode(CPUX86State *env);
+@@ -1836,7 +1836,6 @@ int cpu_x86_support_mca_broadcast(CPUX86State *env);
+ int cpu_get_pic_interrupt(CPUX86State *s);
+ /* MSDOS compatibility mode FPU exception support */
+ void fpu_check_raise_ferr_irq(CPUX86State *s);
+-void cpu_set_ignne(void);
+ void cpu_clear_ignne(void);
  
--/* fpu_helper.c */
--void update_mxcsr_from_sse_status(CPUX86State *env);
--
- static inline void cpu_set_mxcsr(CPUX86State *env, uint32_t mxcsr)
- {
-     env->mxcsr = mxcsr;
+ /* mpx_helper.c */
 diff --git a/accel/tcg/tcg-module-i386.c b/accel/tcg/tcg-module-i386.c
-index fa455a2e02cb..6908fe34cef6 100644
+index f6d367912c17..307238e3bc78 100644
 --- a/accel/tcg/tcg-module-i386.c
 +++ b/accel/tcg/tcg-module-i386.c
-@@ -8,4 +8,5 @@ static void i386_update_cpu_stub(CPUX86State *cpu)
- struct TCGI386ModuleOps tcg_i386 = {
-     .update_fp_status = i386_update_cpu_stub,
+@@ -5,6 +5,10 @@ static void i386_update_cpu_stub(CPUX86State *cpu)
+ {
+ }
+ 
++static void i386_update_stub(void)
++{
++}
++
+ static void x86_register_ferr_irq_stub(qemu_irq irq)
+ {
+ }
+@@ -14,4 +18,5 @@ struct TCGI386ModuleOps tcg_i386 = {
      .update_mxcsr_status = i386_update_cpu_stub,
-+    .update_mxcsr_from_sse_status = i386_update_cpu_stub,
+     .update_mxcsr_from_sse_status = i386_update_cpu_stub,
+     .x86_register_ferr_irq = x86_register_ferr_irq_stub,
++    .cpu_set_ignne = i386_update_stub,
  };
-diff --git a/target/i386/cpu-dump.c b/target/i386/cpu-dump.c
-index 02b635a52cff..cce9110705c7 100644
---- a/target/i386/cpu-dump.c
-+++ b/target/i386/cpu-dump.c
-@@ -487,7 +487,7 @@ void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-         for(i = 0; i < 8; i++) {
-             fptag |= ((!env->fptags[i]) << i);
-         }
--        update_mxcsr_from_sse_status(env);
-+        tcg_i386.update_mxcsr_from_sse_status(env);
-         qemu_fprintf(f, "FCW=%04x FSW=%04x [ST=%d] FTW=%02x MXCSR=%08x\n",
-                      env->fpuc,
-                      (env->fpus & ~0x3800) | (env->fpstt & 0x7) << 11,
-diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
-index 098a2ad15a9c..e73125dbe9e2 100644
---- a/target/i386/gdbstub.c
-+++ b/target/i386/gdbstub.c
-@@ -190,7 +190,7 @@ int x86_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-             return gdb_get_reg32(mem_buf, 0); /* fop */
- 
-         case IDX_MXCSR_REG:
--            update_mxcsr_from_sse_status(env);
-+            tcg_i386.update_mxcsr_from_sse_status(env);
-             return gdb_get_reg32(mem_buf, env->mxcsr);
- 
-         case IDX_CTL_CR0_REG:
-diff --git a/target/i386/tcg/fpu_helper.c b/target/i386/tcg/fpu_helper.c
-index 12dd6c9a65df..9a0d1798985b 100644
---- a/target/i386/tcg/fpu_helper.c
-+++ b/target/i386/tcg/fpu_helper.c
-@@ -2534,7 +2534,7 @@ static void do_xsave_fpu(CPUX86State *env, target_ulong ptr, uintptr_t ra)
- 
- static void do_xsave_mxcsr(CPUX86State *env, target_ulong ptr, uintptr_t ra)
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 102b22394689..4b74776f6d8a 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -389,7 +389,7 @@ static void ioportF0_write(void *opaque, hwaddr addr, uint64_t data,
+                            unsigned size)
  {
--    update_mxcsr_from_sse_status(env);
-+    tcg_i386.update_mxcsr_from_sse_status(env);
-     cpu_stl_data_ra(env, ptr + XO(legacy.mxcsr), env->mxcsr, ra);
-     cpu_stl_data_ra(env, ptr + XO(legacy.mxcsr_mask), 0x0000ffff, ra);
- }
-@@ -2985,7 +2985,7 @@ static void update_mxcsr_status(CPUX86State *env)
-     set_flush_to_zero((mxcsr & SSE_FZ) ? 1 : 0, &env->sse_status);
+     if (tcg_enabled()) {
+-        cpu_set_ignne();
++        tcg_i386.cpu_set_ignne();
+     }
  }
  
--void update_mxcsr_from_sse_status(CPUX86State *env)
-+static void update_mxcsr_from_sse_status(CPUX86State *env)
- {
-     uint8_t flags = get_float_exception_flags(&env->sse_status);
-     /*
-@@ -3044,6 +3044,7 @@ static void tcgi386_module_ops_fpu(void)
- {
-     tcg_i386.update_fp_status = update_fp_status;
-     tcg_i386.update_mxcsr_status = update_mxcsr_status;
-+    tcg_i386.update_mxcsr_from_sse_status = update_mxcsr_from_sse_status;
+diff --git a/target/i386/tcg/sysemu/fpu_helper.c b/target/i386/tcg/sysemu/fpu_helper.c
+index 9caf164a7269..6453760b33c7 100644
+--- a/target/i386/tcg/sysemu/fpu_helper.c
++++ b/target/i386/tcg/sysemu/fpu_helper.c
+@@ -42,7 +42,7 @@ void cpu_clear_ignne(void)
+     env->hflags2 &= ~HF2_IGNNE_MASK;
  }
  
- type_init(tcgi386_module_ops_fpu);
-diff --git a/target/i386/tcg/tcg-stub.c b/target/i386/tcg/tcg-stub.c
-deleted file mode 100644
-index 8d45579ada25..000000000000
---- a/target/i386/tcg/tcg-stub.c
-+++ /dev/null
-@@ -1,25 +0,0 @@
--/*
-- *  x86 FPU, MMX/3DNow!/SSE/SSE2/SSE3/SSSE3/SSE4/PNI helpers
-- *
-- *  Copyright (c) 2003 Fabrice Bellard
-- *
-- * This library is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU Lesser General Public
-- * License as published by the Free Software Foundation; either
-- * version 2.1 of the License, or (at your option) any later version.
-- *
-- * This library is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-- *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-- */
--
--#include "qemu/osdep.h"
--#include "cpu.h"
--
--void update_mxcsr_from_sse_status(CPUX86State *env)
--{
--}
-diff --git a/target/i386/tcg/meson.build b/target/i386/tcg/meson.build
-index 7bbe3d926975..8162511e6dac 100644
---- a/target/i386/tcg/meson.build
-+++ b/target/i386/tcg/meson.build
-@@ -1,5 +1,3 @@
--i386_softmmu_ss.add(when: 'CONFIG_TCG', if_false: files('tcg-stub.c'))
--
- files_ss = ss.source_set()
- files_ss.add(when: 'CONFIG_TCG', if_true: files(
-   'bpt_helper.c',
+-void cpu_set_ignne(void)
++static void cpu_set_ignne(void)
+ {
+     CPUX86State *env = &X86_CPU(first_cpu)->env;
+     env->hflags2 |= HF2_IGNNE_MASK;
+@@ -59,6 +59,7 @@ void cpu_set_ignne(void)
+ static void tcgi386_module_ops_fpu_sys(void)
+ {
+     tcg_i386.x86_register_ferr_irq = x86_register_ferr_irq;
++    tcg_i386.cpu_set_ignne = cpu_set_ignne;
+ }
+ 
+ type_init(tcgi386_module_ops_fpu_sys);
 -- 
 2.31.1

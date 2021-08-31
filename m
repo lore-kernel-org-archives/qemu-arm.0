@@ -1,65 +1,65 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4973700lfb;
-        Tue, 31 Aug 2021 05:16:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz4eNRtFLJvbcnUY01iTeKBntG4jF8Q4n6lOYDr7piTX3bqDEJisXYLEEKvSaIHWHh4VxXU
-X-Received: by 2002:a50:ec0d:: with SMTP id g13mr14668529edr.233.1630412203389;
-        Tue, 31 Aug 2021 05:16:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630412203; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4973731lfb;
+        Tue, 31 Aug 2021 05:16:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyAOf/kl9yc5E2f4Oxv3WNKfBQrwof+qXRXyPk6ZLWwvVxdwUpLI9ODl5vrhM1hGbL8xDZy
+X-Received: by 2002:a17:907:76ee:: with SMTP id kg14mr30744784ejc.90.1630412205082;
+        Tue, 31 Aug 2021 05:16:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630412205; cv=none;
         d=google.com; s=arc-20160816;
-        b=HgzRQdUBuuO3DBVSOLbgzievAn2pU5xKF0wsF9OUfIivz5IB0LdtAl4UvOlMTQ4yj/
-         bZfxJF6f91T1LQ/wgeqcWZQXX8Xs3i+ifUHOJn/0SbJV/IqE9daOMyAsePCwT6sOLTKO
-         txVMY5IBeOdlTtV5Vnsqmry5IPast/ABg3oVCN88bDDPv6RoGq8TAutmycLUy+ZhGGvU
-         eTZoEiWY9JcwxekBtstg/+pHUxUWXn+ZzUEw003VWEXBwrx8Lar1PmRmIzrJkGJKzuhZ
-         U8A9mOgjFGwPApRAeWfHBdm+7Ze9RxAxI7z6C4PNr2l1aP7Fe31y3AxZlQRd4SsK5TY3
-         QQaQ==
+        b=pOUI+a1BnAp2KxjUhBfu+jW04xzizN/Fd3Xre9owW3Yx8YrGeiXkdw4YvoeRAMRAI/
+         yN9GuJ3B6ezhkef76DGyFINOUDO7fCT7PfW7wPsP25pGrwvigI/M/j0opTZ5O0IVgsuE
+         XxBOhnzmrbJeh1SMCEzKul1CPzawT7EcK6zvojp5KbaIAoauZg6PYok8ZE03a5p3V9fk
+         Ucup/LKM1OWUh7US2vnD7WUmTv/s5KRGsVinwfEazAw3xVtYHQKfTnc7cRoizI/Bl6au
+         R7s/fD8d8mzhQFi2QOngw0LCeBddOhChp6u1W5zyey1Mazurao+DFN6nc4Hs8N/tfYoM
+         STNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hbozBWdpIYVrrkXyxTYUX7mJn1/ZDDgcNXOzYDgphu4=;
-        b=oPsp5bC+MQZ6Ab9davwtcanMXSMQUhk8dxNmMWSXNS9PR6K8o0I2MxKxj7rjQwVQ2X
-         OEZ/j2Wvz+GUOd9qR7Hmt66gnwEx//b/BgpuVXHagCNAQiImTGi9gvxK4Zjj8cU7bpeV
-         KmU7KWEurvW5FqdLSEetMgXUfy07sggdwZ5+h3jG2FC1fvO0EAKHxWRB4i6DCBw61xs5
-         jCiR2I/lwcWuxb68dZcLXtvWtiXOppsX/cFiRqgBa6ONWq8YOm8Ne3NbsykQnvmWfcca
-         xpYnHtFe3IjHPA2+WdT3gMQm90WVmSiAurjH7nKOOXU18y+CSsvRPJ8Fl0FpAa+KJ1Sk
-         m09g==
+        bh=jukTgOTUEMS4x77F2TCNXG7jp7vcP0QVcACeKswLeM4=;
+        b=QIZFKHmaU4emDY0lFTH6WM7de1M4Ms4eRm62FkdLmmODC9fVq812zxSDPBvkwR9aSo
+         R/oyEDQ3a3GXPqSZEotb0hydat/p4q7EJTQf01qqUe8KDRc6KzTVusK2ZA+7QiJpfQEm
+         qY3uCFjhC6i4apXKU7dqDGGG25hNpEiLPfc8KugWIdG14S9NsNK3UXipYfGi8ok2rSfL
+         fJHC+PldsEr6A4ng489Q3FJAGl2ZbirBCZGdwHWebHQdZomcYG2VLYLXCHzhTUhLMvZG
+         7V/ToAtRgTS4gjfpfitm+jO2f56Cfu/fTSXW5xsKcSMl7ITsT5OOpymn8b6rMwZ4guiq
+         XvgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jFZX4mFp;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hDl/Cu7S";
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id bc4si18095907edb.161.2021.08.31.05.16.43
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id w17si16688865edr.212.2021.08.31.05.16.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Aug 2021 05:16:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Tue, 31 Aug 2021 05:16:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jFZX4mFp;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hDl/Cu7S";
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630412202;
+	s=mimecast20190719; t=1630412204;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=hbozBWdpIYVrrkXyxTYUX7mJn1/ZDDgcNXOzYDgphu4=;
-	b=jFZX4mFpE6HNrb7IAWYcaQZr+dgrTtYJzywThyI0PjGUnuazfpAN23XZSMMJrZp7zQ9fVn
-	xvTK9tnc9PDVaMiLUV3ljEhZi5JXg6v3P6WxyQexBSX4+rxy7OUpB0El41XOrD/2Cny96C
-	CwLk3rmCUdTd+vV3blkw+ShARXs4/FA=
+	bh=jukTgOTUEMS4x77F2TCNXG7jp7vcP0QVcACeKswLeM4=;
+	b=hDl/Cu7S5c6qzLvm4z/yGGMviNt+UyxqIZFPg5XOaJ1/dB1bZaEliUN9VuEWN39gJ1NBhs
+	7BnRXknBkBMjcwIwy92XA6D0DtIXG1DIpZUBSclvF5LPxLSS0RiENeoDeWOsBVQqLBY9xI
+	A/mcGrN3U2n5bjFQ8UJfid2D2RV2hwo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-537-YMNlV6tiOL2Xs9s8p5GZJA-1; Tue, 31 Aug 2021 08:16:41 -0400
-X-MC-Unique: YMNlV6tiOL2Xs9s8p5GZJA-1
+ us-mta-15-sZ_UXZ4VPdSYTbzg-3WcJQ-1; Tue, 31 Aug 2021 08:16:43 -0400
+X-MC-Unique: sZ_UXZ4VPdSYTbzg-3WcJQ-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 493EA87D544;
-	Tue, 31 Aug 2021 12:16:37 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B3D4760C1;
+	Tue, 31 Aug 2021 12:16:39 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C883A1007611;
-	Tue, 31 Aug 2021 12:16:22 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DD9EF1001281;
+	Tue, 31 Aug 2021 12:16:38 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 50865180093E; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
+	id 5BE60180093F; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -98,9 +98,9 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 05/29] tcg/module: move tcg_ss to module [accel/tcg]
-Date: Tue, 31 Aug 2021 14:15:21 +0200
-Message-Id: <20210831121545.2874233-6-kraxel@redhat.com>
+Subject: [PATCH 06/29] tcg/module: move tcg_ss to module [tcg]
+Date: Tue, 31 Aug 2021 14:15:22 +0200
+Message-Id: <20210831121545.2874233-7-kraxel@redhat.com>
 In-Reply-To: <20210831121545.2874233-1-kraxel@redhat.com>
 References: <20210831121545.2874233-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -111,25 +111,22 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-X-TUID: Enxyn96qsc5C
+X-TUID: i7fAvbzI1n55
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- accel/tcg/meson.build | 2 +-
+ tcg/meson.build | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/accel/tcg/meson.build b/accel/tcg/meson.build
-index 57e4ef12da23..6471fe7832d7 100644
---- a/accel/tcg/meson.build
-+++ b/accel/tcg/meson.build
-@@ -11,7 +11,7 @@ tcg_ss.add(files(
- tcg_ss.add(when: 'CONFIG_USER_ONLY', if_true: files('user-exec.c'))
- tcg_ss.add(when: 'CONFIG_SOFTMMU', if_false: files('user-exec-stub.c'))
- tcg_ss.add(when: 'CONFIG_PLUGIN', if_true: [files('plugin-gen.c'), libdl])
+diff --git a/tcg/meson.build b/tcg/meson.build
+index c4c63b19d4ed..f1d7b898b1cd 100644
+--- a/tcg/meson.build
++++ b/tcg/meson.build
+@@ -17,4 +17,4 @@ if get_option('tcg_interpreter')
+   specific_ss.add(files('tci.c'))
+ endif
+ 
 -specific_ss.add_all(when: 'CONFIG_TCG', if_true: tcg_ss)
 +tcg_module_ss.add_all(when: 'CONFIG_TCG', if_true: tcg_ss)
- 
- tcg_module_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TCG'], if_true: files(
-   'tcg-accel-ops.c',
 -- 
 2.31.1

@@ -1,95 +1,122 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4821972lfb;
-        Tue, 31 Aug 2021 01:32:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwu3M6wRjFFgTuHfbH+RhKOSGO82bxTtOKFjHNRJf0GX1+SS7Gn3FvSIUHPScbP0hiPPGWv
-X-Received: by 2002:a02:cc30:: with SMTP id o16mr1744311jap.101.1630398775200;
-        Tue, 31 Aug 2021 01:32:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630398775; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4889330lfb;
+        Tue, 31 Aug 2021 03:20:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYwJZc3qBPZ4WOo1788597Wes+gGUi+4OigGQHgXwmm9i0Dw13Ky6shxHe2wC8HALN3W/R
+X-Received: by 2002:a92:d24b:: with SMTP id v11mr20139824ilg.218.1630405247185;
+        Tue, 31 Aug 2021 03:20:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630405247; cv=none;
         d=google.com; s=arc-20160816;
-        b=mc1J3VmAxJLmv27R814VUtH27UmhahQ1dVUK7NQLyiVdD7u2rPnE6EDoekxJfpI+YC
-         74ZnGcdbTeImaiNYwAsqF7MJkLeAzto509JWKms11QmYxHFdpSz7UfbJCYC1XK3lKPdV
-         8Ehqn5P8TG2snIxjrysO4RIK1/X8HI9Q9MMyFnPqqRuvDQSpfWHQV3xDzLoogGCWa8PM
-         PIy9x0Jty1Xjv3BBFtaSyWkxu1UNXansfdxVX86EyrhQZriDitCCW7l0ig6Z2j60OH1n
-         FIKbJ9783gopKmBkb5YVq8hJC8s3f0C/dSSGceD357jpCdWpInIDwj/wcKXxq7W94/Pj
-         97Zg==
+        b=HKvBAWstBk6r3fdUrREDZ7RHoenMkWDevdTWxoZGdWMGT0IKmDI6BTzPdM5E+tTq5b
+         eSc9IOFKpcgCZ+8oVrNDbspRmtts11B+eSntaNi1m6wJWcETzwnSPtOrJ/fxbz8lRBWF
+         d0601rKdioQ3jE/edL04lcnrEVXWZqJG8cnUKSH6cHLm2gkTMklh6+eIRBtxJEsEK1ar
+         y9rwW9TSh3HFi58DJ3HVLlU1PAZUhUK14DKZ9J94sgeCkawJvZIaZFMw+iIhFc69gTwR
+         CWkJPQS8Sbzhwv1ikp26G/XJM3ntiyHJalbYmsllyuDdPL4h6gD85wuz8QhRrU6RRz8D
+         0KiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :ironport-sdr;
-        bh=DkZidACu+UWAv4V3W3lK4dQeNltNHOI0g3zJ+fuad0o=;
-        b=rzB2TEPil+T/HQ+sdHCSQu0TkqrcYodbT5L4ImVQ+9Zd0urdTrBXDXbbx2CSqrvlRI
-         Eg8Ai0hoYh7hOT2kQ9tC+nPCBpLaf4NTSf/ilVBbaQDW+Vt3ma15lOAV+lpMQtpGTa3+
-         REqg1XD0rdhiM1xK+nxMMTMU4pYyuyGhep+rHbcjCID/S8vd2xq45vx4CYql8AwekKgr
-         gR04Y2QVn5DLhA0I6flXWJGJR2Z8qbfexQQpSESMsXqmzCriY28AKVvZBTThdrnCHbly
-         ZqaPEw+0VLCmY4utAw3akZ5ckadsR/Ot4ObMQzsqtm9M7880JZUVUelYxRQNor4mPWI4
-         5AgQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=msBAw3ZvKqshq2WICcsx+b/9T2Wi8pHm3imgBJKoj5Q=;
+        b=URKwX5+2IwuxRR1mlTxHmfIgugVoecco9fW4fjSxfkkre7dyKOP/wqKfTNVvhmnqjn
+         nh7nFckfEo2RyqiDLgvNDPjyFZ5O8fWIoIGh6MHENZrKz2y+h4eLzKwtdb67kXtqUUYL
+         kymLObCBIUrADtnooMX+wpDKmiec2SESXrTW4m+MsEO+RZixAJpFMAOHQOHZvOAXxdPa
+         2xVD+I8GzFD8heHvh0pBU7FVGWdaRQllPaQbdo4oJ0vIYkbvW4Po/LSK02u1aM2/8ouU
+         CPVrfWYhuzSqF5c7RlLYM1SQSPEhfXIME8xrBaiO3SKw913HW1ZnYwcJ1Awtry/z0wwR
+         9CIg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D1+YziCe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si22143483iov.41.2021.08.31.01.32.55
+        by mx.google.com with ESMTPS id o14si19342104ilu.101.2021.08.31.03.20.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 01:32:55 -0700 (PDT)
+        Tue, 31 Aug 2021 03:20:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D1+YziCe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
-Received: from localhost ([::1]:60568 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mKzCQ-00030n-J1
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 04:32:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57254)
+	id 1mL0so-0007my-H9
+	for alex.bennee@linaro.org; Tue, 31 Aug 2021 06:20:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1mKz9V-0005tk-TQ; Tue, 31 Aug 2021 04:29:55 -0400
-Received: from esa7.hc1455-7.c3s2.iphmx.com ([139.138.61.252]:60598)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mL0sF-0007KB-93
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 06:20:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40541)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1mKz9P-0007xM-Ra; Tue, 31 Aug 2021 04:29:51 -0400
-IronPort-SDR: OBLYWRqgT2DDPQ1ax6Ika7sto3GDry/BdcXyYTTS9VY7vF+gtA872Cr9PpmtED2FMNWdVAylM+
- PB4pGD+BM+0BfCM9yLfc8ko6APFEoV2m7RiVsdCG7Pje0oj3aNTUfTFyqqFS5WJ+nhRGFOWlC1
- F95Uy+52bmmWpy/pbp6cXWZKzcK3k3uXe1eJkrLPiWKcQdtD7EUP0GYJ463PmQeLh2wMfJizDF
- Ay3rwZ2th8e9ZhQU3K5xfXzOEUH6SXSa3sAslIpJt/IQcemyUPvj+Ku0uXp4Hj6ukNXDAqmhDi
- GA8gDXWOYvYY1kcUr2k87B0r
-X-IronPort-AV: E=McAfee;i="6200,9189,10092"; a="21313590"
-X-IronPort-AV: E=Sophos;i="5.84,365,1620658800"; d="scan'208";a="21313590"
-Received: from unknown (HELO yto-r4.gw.nic.fujitsu.com) ([218.44.52.220])
- by esa7.hc1455-7.c3s2.iphmx.com with ESMTP; 31 Aug 2021 17:29:43 +0900
-Received: from yto-m3.gw.nic.fujitsu.com (yto-nat-yto-m3.gw.nic.fujitsu.com
- [192.168.83.66])
- by yto-r4.gw.nic.fujitsu.com (Postfix) with ESMTP id 4430D6CCAB;
- Tue, 31 Aug 2021 17:29:43 +0900 (JST)
-Received: from oym-om3.fujitsu.com (oym-om3.o.css.fujitsu.com [10.85.58.163])
- by yto-m3.gw.nic.fujitsu.com (Postfix) with ESMTP id 90CBF56F9A;
- Tue, 31 Aug 2021 17:29:42 +0900 (JST)
-Received: from localhost.localdomain (n3235113.np.ts.nmh.cs.fujitsu.co.jp
- [10.123.235.113])
- by oym-om3.fujitsu.com (Postfix) with ESMTP id 6039040198668;
- Tue, 31 Aug 2021 17:29:42 +0900 (JST)
-From: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-To: peter.maydell@linaro.org,
-	drjones@redhat.com,
-	qemu-arm@nongnu.org
-Subject: [PATCH v6 2/3] hw/arm/virt: target-arm: Add A64FX processor support
- to virt machine
-Date: Tue, 31 Aug 2021 17:29:39 +0900
-Message-Id: <20210831082940.2811719-3-ishii.shuuichir@fujitsu.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210831082940.2811719-1-ishii.shuuichir@fujitsu.com>
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mL0sD-00034B-Cv
+ for qemu-arm@nongnu.org; Tue, 31 Aug 2021 06:20:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630405207;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=msBAw3ZvKqshq2WICcsx+b/9T2Wi8pHm3imgBJKoj5Q=;
+ b=D1+YziCevEmgR0r82isOy9qpgWzOKzzC7t/NZtD/7EiVRlPh9ctK1m/V4fuuWlA2WrAoEU
+ 6oZRm8rp/POIsTSmvKHPG6W/iY8Hnv8F8gVyUaLbRJhrxxC6hhq0qEjY1L6r6PIDsU1qT2
+ 2hxF4cov8QJTuksb76AxgkAHbhy3aBg=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-355-Zlq0-MJfPwmaaqxjKlKPqg-1; Tue, 31 Aug 2021 06:20:06 -0400
+X-MC-Unique: Zlq0-MJfPwmaaqxjKlKPqg-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ n18-20020a170906089200b005dc91303dfeso2375500eje.15
+ for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 03:20:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=msBAw3ZvKqshq2WICcsx+b/9T2Wi8pHm3imgBJKoj5Q=;
+ b=DZ/yZap3Ye9TR6cS6zS0jhZ8R4DgEnONEFckWLPyropUXV0IIfxQ/atGmFfNQf1XuM
+ itARdhl716UfySMzNhTIBtTHTXIvQKTq8Ikur4lK3h7qOAtID9CfaahItgzBrV/HzAKa
+ A4njwHDlnT3XJ6+Ap3wrkyHei+5B+kM5RSWywcS9d2BjRfSOLGhUSCkwDkYvzdlpyBZX
+ sR83+2qhpEQDuEXGcdwEqIpFwAy8atgjM3oJl54n9gXcW7KsIIxGS6sZFjQ7etOwBf6o
+ vlg4fs6qXNn2Uxg92ehkBL0yZGQzUpjtpi6+KkNIkd/FmygTxzkEbXZi2grU1Ya6ba70
+ IgWQ==
+X-Gm-Message-State: AOAM532cIvucR/tU1SpHVZdO3ipDrDd6e6hAoWtEJDF4LOzowradGjbF
+ fkTUbR9ue/BRn1Y30zerBk5/0+hmOpQzylOYzzJ1o7wdkPC+JhLnW+4d07VfPHkgfrahGQBjuXJ
+ ArudsgMFYnaQM
+X-Received: by 2002:a17:906:3809:: with SMTP id
+ v9mr30657270ejc.355.1630405205145; 
+ Tue, 31 Aug 2021 03:20:05 -0700 (PDT)
+X-Received: by 2002:a17:906:3809:: with SMTP id
+ v9mr30657245ejc.355.1630405204844; 
+ Tue, 31 Aug 2021 03:20:04 -0700 (PDT)
+Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id cr9sm9118339edb.17.2021.08.31.03.20.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 Aug 2021 03:20:04 -0700 (PDT)
+Date: Tue, 31 Aug 2021 12:20:02 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+Subject: Re: [PATCH v6 1/3] target-arm: Add support for Fujitsu A64FX
+Message-ID: <20210831102002.baj3yipk7ulvi32i@gator.home>
 References: <20210831082940.2811719-1-ishii.shuuichir@fujitsu.com>
+ <20210831082940.2811719-2-ishii.shuuichir@fujitsu.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-Received-SPF: neutral client-ip=139.138.61.252;
- envelope-from=ishii.shuuichir@fujitsu.com; helo=esa7.hc1455-7.c3s2.iphmx.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
+In-Reply-To: <20210831082940.2811719-2-ishii.shuuichir@fujitsu.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_NEUTRAL=0.779 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,45 +129,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, ishii.shuuichir@fujitsu.com
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eZZryoLkTGET
+X-TUID: 9HdsEpe7kgvZ
 
-Add -cpu a64fx to use A64FX processor when -machine virt option is specified.
-In addition, add a64fx to the Supported guest CPU types in the virt.rst document.
+On Tue, Aug 31, 2021 at 05:29:38PM +0900, Shuuichirou Ishii wrote:
+> Add a definition for the Fujitsu A64FX processor.
+> 
+> The A64FX processor does not implement the AArch32 Execution state,
+> so there are no associated AArch32 Identification registers.
+> 
+> For SVE, the A64FX processor supports only 128,256 and 512bit vector lengths.
+> 
+> The Identification registers value are defined based on the FX700,
+> and have been tested and confirmed.
+> 
+> Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+> ---
+>  target/arm/cpu64.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+>
 
-Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+I already gave my r-b on the last posting, but here it is again
+
 Reviewed-by: Andrew Jones <drjones@redhat.com>
----
- docs/system/arm/virt.rst | 1 +
- hw/arm/virt.c            | 1 +
- 2 files changed, 2 insertions(+)
-
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 59acf0eeaf..850787495b 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -55,6 +55,7 @@ Supported guest CPU types:
- - ``cortex-a53`` (64-bit)
- - ``cortex-a57`` (64-bit)
- - ``cortex-a72`` (64-bit)
-+- ``a64fx`` (64-bit)
- - ``host`` (with KVM only)
- - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
- 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 86c8a4ca3d..3fa4295a78 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -200,6 +200,7 @@ static const char *valid_cpus[] = {
-     ARM_CPU_TYPE_NAME("cortex-a53"),
-     ARM_CPU_TYPE_NAME("cortex-a57"),
-     ARM_CPU_TYPE_NAME("cortex-a72"),
-+    ARM_CPU_TYPE_NAME("a64fx"),
-     ARM_CPU_TYPE_NAME("host"),
-     ARM_CPU_TYPE_NAME("max"),
- };
--- 
-2.27.0
 

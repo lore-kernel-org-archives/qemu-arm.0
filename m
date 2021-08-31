@@ -1,157 +1,138 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4889330lfb;
-        Tue, 31 Aug 2021 03:20:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYwJZc3qBPZ4WOo1788597Wes+gGUi+4OigGQHgXwmm9i0Dw13Ky6shxHe2wC8HALN3W/R
-X-Received: by 2002:a92:d24b:: with SMTP id v11mr20139824ilg.218.1630405247185;
-        Tue, 31 Aug 2021 03:20:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630405247; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4973283lfb;
+        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy5U8Cmjzz4JnBbXtsvq0WfEalfJJD7EzSiRslT/Q+kQeCzS4psBFYRD2pmYuh6/2e1k2G5
+X-Received: by 2002:aa7:d645:: with SMTP id v5mr29608506edr.145.1630412172673;
+        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630412172; cv=none;
         d=google.com; s=arc-20160816;
-        b=HKvBAWstBk6r3fdUrREDZ7RHoenMkWDevdTWxoZGdWMGT0IKmDI6BTzPdM5E+tTq5b
-         eSc9IOFKpcgCZ+8oVrNDbspRmtts11B+eSntaNi1m6wJWcETzwnSPtOrJ/fxbz8lRBWF
-         d0601rKdioQ3jE/edL04lcnrEVXWZqJG8cnUKSH6cHLm2gkTMklh6+eIRBtxJEsEK1ar
-         y9rwW9TSh3HFi58DJ3HVLlU1PAZUhUK14DKZ9J94sgeCkawJvZIaZFMw+iIhFc69gTwR
-         CWkJPQS8Sbzhwv1ikp26G/XJM3ntiyHJalbYmsllyuDdPL4h6gD85wuz8QhRrU6RRz8D
-         0KiQ==
+        b=KSpYER0fyLhrRHJfIAZADHHMhhVkO2UzLsuiwBWDbcyFsUPsJsk6nEyRyGAWgu4J7c
+         WPINCFGyV9S5FCvG21dwwPthA2WYUbxsvK5oXlG1BM2ecayyQH9sgHVQSKQOXCl4n2xK
+         3YXJ5XuEi7EJuz3tx5lVYQGDwE2ui/rivNga/dKoELZsyE98cCWH9AJBU/JANfKYEVNu
+         y3oUJgRgJpFV2Tz9GZjplAwnDqo7iW4M4q6Jl51H7Yh1mOFFXSfXxYaL9i2Jct+aLnNw
+         0nnSX3L7LQlNaFbisvme1h8/PJpE11M/DUWEcqcLOpIWAiHaKBENNh6yKF6eBkDV0mn2
+         UcdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=msBAw3ZvKqshq2WICcsx+b/9T2Wi8pHm3imgBJKoj5Q=;
-        b=URKwX5+2IwuxRR1mlTxHmfIgugVoecco9fW4fjSxfkkre7dyKOP/wqKfTNVvhmnqjn
-         nh7nFckfEo2RyqiDLgvNDPjyFZ5O8fWIoIGh6MHENZrKz2y+h4eLzKwtdb67kXtqUUYL
-         kymLObCBIUrADtnooMX+wpDKmiec2SESXrTW4m+MsEO+RZixAJpFMAOHQOHZvOAXxdPa
-         2xVD+I8GzFD8heHvh0pBU7FVGWdaRQllPaQbdo4oJ0vIYkbvW4Po/LSK02u1aM2/8ouU
-         CPVrfWYhuzSqF5c7RlLYM1SQSPEhfXIME8xrBaiO3SKw913HW1ZnYwcJ1Awtry/z0wwR
-         9CIg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=LK4fnylC73dEzKTJly+qoqoxWFfW8wdmNlU+K3NKCGU=;
+        b=JSCwPJmcrLbwQ4Jxy/t1R8uFBKd6PANsxZFK+U3CEUswpM36J5AuOM+H1eOft1Uc0k
+         /TYomP70jo6VhyNOP6MQ0wb/KBz3hd2b2iW3GEr07y/FJHa5cw0/fMGPgYL2RVV4WAel
+         JFY32ikrDP+eQq18YT5jbwe4dvxQIzqEXWGXKfRrxGCceVOPehgV0lYgYWSo5A5eK3mu
+         mY3YrQcMe3XQ1drgb7RBSHOP4P1sb9KgdzfV0ZUcG2FUAdirWI6+3RJV0dfrD334RhCs
+         VmCzmbnx73T54lXsKV/gg33T9ruc3+3vJjNwwdcEcOQl6+H8EIGz+PupiCTVAwVscXBX
+         /aHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D1+YziCe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZdhwEnPq;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o14si19342104ilu.101.2021.08.31.03.20.46
+Return-Path: <kraxel@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d10si18145713edy.383.2021.08.31.05.16.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 03:20:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Aug 2021 05:16:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D1+YziCe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZdhwEnPq;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40086 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mL0so-0007my-H9
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 06:20:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59832)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mL0sF-0007KB-93
- for qemu-arm@nongnu.org; Tue, 31 Aug 2021 06:20:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40541)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mL0sD-00034B-Cv
- for qemu-arm@nongnu.org; Tue, 31 Aug 2021 06:20:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630405207;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=msBAw3ZvKqshq2WICcsx+b/9T2Wi8pHm3imgBJKoj5Q=;
- b=D1+YziCevEmgR0r82isOy9qpgWzOKzzC7t/NZtD/7EiVRlPh9ctK1m/V4fuuWlA2WrAoEU
- 6oZRm8rp/POIsTSmvKHPG6W/iY8Hnv8F8gVyUaLbRJhrxxC6hhq0qEjY1L6r6PIDsU1qT2
- 2hxF4cov8QJTuksb76AxgkAHbhy3aBg=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-355-Zlq0-MJfPwmaaqxjKlKPqg-1; Tue, 31 Aug 2021 06:20:06 -0400
-X-MC-Unique: Zlq0-MJfPwmaaqxjKlKPqg-1
-Received: by mail-ej1-f71.google.com with SMTP id
- n18-20020a170906089200b005dc91303dfeso2375500eje.15
- for <qemu-arm@nongnu.org>; Tue, 31 Aug 2021 03:20:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=msBAw3ZvKqshq2WICcsx+b/9T2Wi8pHm3imgBJKoj5Q=;
- b=DZ/yZap3Ye9TR6cS6zS0jhZ8R4DgEnONEFckWLPyropUXV0IIfxQ/atGmFfNQf1XuM
- itARdhl716UfySMzNhTIBtTHTXIvQKTq8Ikur4lK3h7qOAtID9CfaahItgzBrV/HzAKa
- A4njwHDlnT3XJ6+Ap3wrkyHei+5B+kM5RSWywcS9d2BjRfSOLGhUSCkwDkYvzdlpyBZX
- sR83+2qhpEQDuEXGcdwEqIpFwAy8atgjM3oJl54n9gXcW7KsIIxGS6sZFjQ7etOwBf6o
- vlg4fs6qXNn2Uxg92ehkBL0yZGQzUpjtpi6+KkNIkd/FmygTxzkEbXZi2grU1Ya6ba70
- IgWQ==
-X-Gm-Message-State: AOAM532cIvucR/tU1SpHVZdO3ipDrDd6e6hAoWtEJDF4LOzowradGjbF
- fkTUbR9ue/BRn1Y30zerBk5/0+hmOpQzylOYzzJ1o7wdkPC+JhLnW+4d07VfPHkgfrahGQBjuXJ
- ArudsgMFYnaQM
-X-Received: by 2002:a17:906:3809:: with SMTP id
- v9mr30657270ejc.355.1630405205145; 
- Tue, 31 Aug 2021 03:20:05 -0700 (PDT)
-X-Received: by 2002:a17:906:3809:: with SMTP id
- v9mr30657245ejc.355.1630405204844; 
- Tue, 31 Aug 2021 03:20:04 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id cr9sm9118339edb.17.2021.08.31.03.20.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Aug 2021 03:20:04 -0700 (PDT)
-Date: Tue, 31 Aug 2021 12:20:02 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-Subject: Re: [PATCH v6 1/3] target-arm: Add support for Fujitsu A64FX
-Message-ID: <20210831102002.baj3yipk7ulvi32i@gator.home>
-References: <20210831082940.2811719-1-ishii.shuuichir@fujitsu.com>
- <20210831082940.2811719-2-ishii.shuuichir@fujitsu.com>
+	s=mimecast20190719; t=1630412170;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LK4fnylC73dEzKTJly+qoqoxWFfW8wdmNlU+K3NKCGU=;
+	b=ZdhwEnPqt8iy2L5jQeayonDdAjrUFHAwm4rin8FVr3twuE3M3UjklfTM62GsQ3wnOhbGEZ
+	xJU/b7P0KR+ATg0LHGAI6sUVJe39zq9GeGvGRlV1hpKkBhAx4kyG216oTMhhPZqTQs387m
+	ENNa5gL8quqLoAs5V2An6/U19S4B0Ps=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-470-OzDvGCrbNuqQrndV3ZgBnA-1; Tue, 31 Aug 2021 08:16:06 -0400
+X-MC-Unique: OzDvGCrbNuqQrndV3ZgBnA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 837B9100F766;
+	Tue, 31 Aug 2021 12:16:03 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AD98C60843;
+	Tue, 31 Aug 2021 12:15:46 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 1DB3C1800939; Tue, 31 Aug 2021 14:15:45 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Aurelien Jarno <aurelien@aurel32.net>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Xu <peterx@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	qemu-ppc@nongnu.org,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-riscv@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Greg Kurz <groug@kaod.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	qemu-s390x@nongnu.org,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH 01/29] build: temporarily disable modular tcg
+Date: Tue, 31 Aug 2021 14:15:17 +0200
+Message-Id: <20210831121545.2874233-2-kraxel@redhat.com>
+In-Reply-To: <20210831121545.2874233-1-kraxel@redhat.com>
+References: <20210831121545.2874233-1-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210831082940.2811719-2-ishii.shuuichir@fujitsu.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9HdsEpe7kgvZ
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+X-TUID: vtOprqDknBEN
 
-On Tue, Aug 31, 2021 at 05:29:38PM +0900, Shuuichirou Ishii wrote:
-> Add a definition for the Fujitsu A64FX processor.
-> 
-> The A64FX processor does not implement the AArch32 Execution state,
-> so there are no associated AArch32 Identification registers.
-> 
-> For SVE, the A64FX processor supports only 128,256 and 512bit vector lengths.
-> 
-> The Identification registers value are defined based on the FX700,
-> and have been tested and confirmed.
-> 
-> Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-> ---
->  target/arm/cpu64.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->
+Allows more fine-grained patches
+without breaking bisecting.
 
-I already gave my r-b on the last posting, but here it is again
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
+diff --git a/meson.build b/meson.build
+index bf6378481250..e83aa4f5c3c9 100644
+--- a/meson.build
++++ b/meson.build
+@@ -94,7 +94,7 @@ endif
+ 
+ modular_tcg = []
+ # Darwin does not support references to thread-local variables in modules
+-if targetos != 'darwin'
++if false #targetos != 'darwin'
+   modular_tcg = ['i386-softmmu', 'x86_64-softmmu']
+ endif
+ 
+-- 
+2.31.1

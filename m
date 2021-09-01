@@ -1,110 +1,92 @@
-Received: by 2002:a0c:ec8e:0:0:0:0:0 with SMTP id u14csp1008724qvo;
-        Wed, 1 Sep 2021 09:02:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz4GD8ihUqQ8tQ6qJnGq7xj7n4Mq57vGHc6TWQTBYGAkJKaIBAuFV3wBC+Y9wCKjsL1Op8j
-X-Received: by 2002:a5d:464f:: with SMTP id j15mr25005wrs.325.1630512137019;
-        Wed, 01 Sep 2021 09:02:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630512137; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp650927lfb;
+        Wed, 1 Sep 2021 09:22:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKK7ZWwk0yEaqi5clP6VYiCGKFtndh6HI095W5vMxo9f+kWS18c7n5me1pJOdGwvZxSvi1
+X-Received: by 2002:a7b:c751:: with SMTP id w17mr252149wmk.162.1630513370472;
+        Wed, 01 Sep 2021 09:22:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630513370; cv=none;
         d=google.com; s=arc-20160816;
-        b=uJUwtJAM+hy6eFb0B/gIJnUbRS8aD5m1Xx2+68FGCqoRWUn0FSpxQLtmt6Ip7NKt/W
-         8+//MZgh/q5yv13BWRcJMDHh2VnPal1+Omyi363wuCDlRs2d73V/Lk0YcKAq4x0iSGyV
-         2FYA/r+UwP61TC75khXJILWo4OiM287jKQL+Bvx9pqh2b4QyhDM6Unb+EwhCXLMZsnwm
-         51C70lBeBiuC0EA64pzLqvyCsZ0WVUyO+yJjYUr9VX+0AYA9iEUWk4SP/lyeNtab/YYx
-         trg5WXRGul+TRmxCAFUTBiDEqZ8HFGdo8shc4iBQ0EzgFxdZXMO1zAFPCbiCRem5u7Ay
-         XkkA==
+        b=t7QEUxvbFXtlaiwQ8wZ2kIJCdR0AXT5cnNj7cJ1TjjnY8NErYG2i8zRrvwfKeR2Ogk
+         UitOdZj7NZruU2efPg42L0+o1u9HL2LrP/e0U12gx/x2QtlGWGbm13AU0kD+vvQTe8zI
+         SF4UmyZfU8RX9PzOutdzZUMKkvc5xMEFl0e3DArlaw7y0YdPP5S96G6gaykxdUni3fSo
+         kNZSx0DmwAabhZ2nIGOGhqVD0XnhxOwWWd5eO8xH+CKXKreMtSyALG2vRCDoXTamnnRQ
+         qNU5HSvdDaIEXvUtHxlcqp4dLuAZoXErujFPknyv0GU1XczdrFIeUUloVUtLBcRwxNsF
+         RawA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=u71eHwtIwkd1B8kEl0GMKAMe3JArIXk1x3S+uQk6yhQ=;
-        b=gJ6czvjvF3jN2nEXcU3z0xXUITWYQgBCEUk7/ZR3Fz+piD+nTAeEUx98OgwfV5mX9I
-         0oA9nGCd6mJB0b3Bt/QIeuP4WfNZVyhPmOrydiciHshnKo+7T3toKc6fsLY4Ff+qJY/s
-         bcVyNI1RVCXUeQXq9piABdqFjSBpNvSGYNMkPceSJFWtqbGkWRcLt2U2VnwmEbfeMLjd
-         +KrJeOOjvQaQqdiFu5b8DDp/3iwJcY+gqynDn8ET/Iz12Y6bTZVgTZvKhlNbwu8Xk7qK
-         0lh8HxdGGnmOsWQVBrjSz6QtpHbR0bqpWEbE4Twd2c+nzew4HmHSjTCV3IsIHW08YbWl
-         gQcw==
+         :message-id:from:references:to:subject;
+        bh=dAJrxey6RWMCfCG4Xh0CdpguoC8taZqs01ly1N2ND5k=;
+        b=ISGrs++iPKNjluJkUUblgOa6JDzD5JmlMvgsvOSXan94VUxty03h2DPeENj7IWjwEE
+         VOtNZuYWY6PyZEHabpfoJdXknyPlblumChz2Gkm1MxtW0ZLQXf4mboklROHcfvEw1W9u
+         asDF96s1kLx6j7CiNkULyIPeWTEQm1KapB3obXMgACr9MLLZG4KGzzQ/Y7oZKQlXL5BW
+         djrGXBEd6M3G9mfGQ777OpAukJo1Cgj0ruhWg/w+zG5nmqZKlnWdXv3HbkLMtwILTKv/
+         gYyZBsx3wOwNooT0O2yffsjRDWwtNCtRaC2oEigD13PTVc4beFBKS0PuNi+JWo5c/6xG
+         4SVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qvg1KZiv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6si62663wrq.61.2021.09.01.09.02.16
+        by mx.google.com with ESMTPS id g5si81475wma.48.2021.09.01.09.22.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Sep 2021 09:02:16 -0700 (PDT)
+        Wed, 01 Sep 2021 09:22:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qvg1KZiv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46734 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40688 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLSgp-0003yH-VO
-	for alex.bennee@linaro.org; Wed, 01 Sep 2021 12:02:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57870)
+	id 1mLT0j-0005MD-Bo
+	for alex.bennee@linaro.org; Wed, 01 Sep 2021 12:22:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLScZ-0000lB-8P; Wed, 01 Sep 2021 11:57:51 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:37774)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLScX-0002kA-9s; Wed, 01 Sep 2021 11:57:50 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- c8-20020a7bc008000000b002e6e462e95fso25449wmb.2; 
- Wed, 01 Sep 2021 08:57:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=u71eHwtIwkd1B8kEl0GMKAMe3JArIXk1x3S+uQk6yhQ=;
- b=qvg1KZiv3xQRAsrJ1xvVq2u38sR4J81msk9P9ysqLFyrvsxFboCr3j6OjgVaRFENOm
- GZbbkyAjHxskg/rmZsjed+bIao6kYPIZvq8PoUxLozfR6kjkVG9QD0GpQPF1yxf14WVE
- DDhNgQY8R0+Hjbo/+lvpOpCaHYWTuafT0T76ncDRrm9pW1yRatO5oJQoosxdw+llWw82
- Je6jRYoDImpqi4LZtqH6T+y2QvXtpmKLDm3/Qk8ZNbeIwrOvRjB51UtREU8R62dUCiJc
- ZfuFsnGHOd6RPk6h/qo5Rp71Zlgm79t+OgNDcQq4WbO7NJ1chaWCcwrqEI4Vwgn+pzAp
- 0pvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=u71eHwtIwkd1B8kEl0GMKAMe3JArIXk1x3S+uQk6yhQ=;
- b=EU7lHayYlDejHN6prDHLHUY7buXIKNCcMPfEK0Aq3sWRpf645fGFHV99Rb11KB+3tu
- wQRrpzDFQDOWjVjqPDi6qTvgCvcLL6BywzPAc+uP8Jxm6484dpwMd1uYdpW4AZdspHvK
- lM8bGNymgcv3NiI15tBp1F4X3lji2TkZbGFdtFpVuRmHXXs8HvOR+xs0r7z6vG6yFg43
- JiRdNTeVvSuB7NFhzDZbdnB7PqywEAHicAaX6CiWuypqE8jNB3QG7Wial7FGOJBKKkLs
- AtyneOji/IoXMtcFsE9xA/eQdAATudoOWovdvC0CxNbIWGOx3KiVHX9OlDWONw63nfhr
- Z6Tw==
-X-Gm-Message-State: AOAM531FYBGBId6YQQ8w6p97+NjJacVtbb1Jtsbr7zDIrLvOvwYlXAPz
- tnrNSN9mRX+u67TQ/04fxgY=
-X-Received: by 2002:a1c:4cd:: with SMTP id 196mr145962wme.10.1630511866832;
- Wed, 01 Sep 2021 08:57:46 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id f17sm25098734wrt.63.2021.09.01.08.57.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Sep 2021 08:57:46 -0700 (PDT)
-Subject: Re: [PATCH v2 0/1] hw/arm/aspeed: Allow machine to set UART default
-To: pdel@fb.com
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mLSxz-0002RN-8W; Wed, 01 Sep 2021 12:19:59 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:56901)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mLSxv-0003mJ-Dp; Wed, 01 Sep 2021 12:19:58 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.128])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id F272BBBF04D0;
+ Wed,  1 Sep 2021 18:19:50 +0200 (CEST)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Wed, 1 Sep
+ 2021 18:19:50 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G00222381ebb-9fb0-4881-aac4-995c390bc6ca,
+ 5EBA00A5E723AF1D17FBD8632F6684B6834AEADC) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH v2 1/1] hw/arm/aspeed: Allow machine to set UART default
+To: <pdel@fb.com>
 References: <20210901153615.2746885-1-pdel@fb.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4ad04972-4cea-7d3a-05b0-187e93297da9@amsat.org>
-Date: Wed, 1 Sep 2021 17:57:45 +0200
+ <20210901153615.2746885-2-pdel@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d7c98ab7-1ebd-d18c-8d49-a7429fc7940a@kaod.org>
+Date: Wed, 1 Sep 2021 18:19:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210901153615.2746885-1-pdel@fb.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210901153615.2746885-2-pdel@fb.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: e5bcebe1-9804-4ad1-b872-bc48116734e6
+X-Ovh-Tracer-Id: 12116371847884540780
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvfedgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.029,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.029,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -118,16 +100,155 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
- patrick@stwcx.xyz, qemu-arm@nongnu.org, clg@kaod.org, joel@jms.id.au
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, f4bug@amsat.org,
+ qemu-devel@nongnu.org, patrick@stwcx.xyz, qemu-arm@nongnu.org, joel@jms.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L1XZRxZaq56u
+X-TUID: vj7TusMK2seM
 
 On 9/1/21 5:36 PM, pdel@fb.com wrote:
 > From: Peter Delevoryas <pdel@fb.com>
 > 
-> v1: https://lore.kernel.org/qemu-devel/20210831233140.2659116-1-pdel@fb.com/
+> When you run QEMU with an Aspeed machine and a single serial device
+> using stdio like this:
+> 
+>     qemu -machine ast2600-evb -drive ... -serial stdio
+> 
+> The guest OS can read and write to the UART5 registers at 0x1E784000 and
+> it will receive from stdin and write to stdout. The Aspeed SoC's have a
+> lot more UART's though (AST2500 has 5, AST2600 has 13) and depending on
+> the board design, may be using any of them as the serial console. (See
+> "stdout-path" in a DTS to check which one is chosen).
+> 
+> Most boards, including all of those currently defined in
+> hw/arm/aspeed.c, just use UART5, but some use UART1. This change adds
+> some flexibility for different boards without requiring users to change
+> their command-line invocation of QEMU.
+> 
+> I tested this doesn't break existing code by booting an AST2500 OpenBMC
+> image and an AST2600 OpenBMC image, each using UART5 as the console.
+> 
+> Then I tested switching the default to UART1 and booting an AST2600
+> OpenBMC image that uses UART1, and that worked too.
+> 
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
 
-Hint for patchew:
-Supersedes: <20210831233140.2659116-1-pdel@fb.com>
+One comment, any how 
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+> ---
+>  hw/arm/aspeed.c             | 3 +++
+>  hw/arm/aspeed_ast2600.c     | 8 ++++----
+>  hw/arm/aspeed_soc.c         | 9 ++++++---
+>  include/hw/arm/aspeed.h     | 1 +
+>  include/hw/arm/aspeed_soc.h | 1 +
+>  5 files changed, 15 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 9d43e26c51..a81e90c539 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -350,6 +350,8 @@ static void aspeed_machine_init(MachineState *machine)
+>          object_property_set_int(OBJECT(&bmc->soc), "hw-prot-key",
+>                                  ASPEED_SCU_PROT_KEY, &error_abort);
+>      }
+> +    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
+> +                         amc->uart_default);
+>      qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+>  
+>      memory_region_add_subregion(get_system_memory(),
+> @@ -804,6 +806,7 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+>      mc->no_parallel = 1;
+>      mc->default_ram_id = "ram";
+>      amc->macs_mask = ASPEED_MAC0_ON;
+> +    amc->uart_default = ASPEED_DEV_UART5;
+>  
+>      aspeed_machine_class_props_init(oc);
+>  }
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index e3013128c6..b07fcf10a0 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -322,10 +322,10 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+>      }
+>  
+> -    /* UART - attach an 8250 to the IO space as our UART5 */
+> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
+> -                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+> +    /* UART - attach an 8250 to the IO space as our UART */
+> +    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
+> +                   aspeed_soc_get_irq(s, s->uart_default), 38400,
+> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>  
+>      /* I2C */
+>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 3ad6c56fa9..09c0f83710 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -287,9 +287,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+>      }
+>  
+> -    /* UART - attach an 8250 to the IO space as our UART5 */
+> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
+> +    /* UART - attach an 8250 to the IO space as our UART */
+> +    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
+> +                   aspeed_soc_get_irq(s, s->uart_default), 38400,
+>                     serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>  
+>      /* I2C */
+> @@ -439,6 +439,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>  static Property aspeed_soc_properties[] = {
+>      DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+>                       MemoryRegion *),
+> +    DEFINE_PROP_UINT32("uart-default", AspeedSoCState, uart_default,
+> +                       ASPEED_DEV_UART5),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> @@ -449,6 +451,7 @@ static void aspeed_soc_class_init(ObjectClass *oc, void *data)
+>      dc->realize = aspeed_soc_realize;
+>      /* Reason: Uses serial_hds and nd_table in realize() directly */
+>      dc->user_creatable = false;
+> +
+
+Unneeded change,
+
+Thanks,
+
+C. 
+
+>      device_class_set_props(dc, aspeed_soc_properties);
+>  }
+>  
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index c9747b15fc..cbeacb214c 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -38,6 +38,7 @@ struct AspeedMachineClass {
+>      uint32_t num_cs;
+>      uint32_t macs_mask;
+>      void (*i2c_init)(AspeedMachineState *bmc);
+> +    uint32_t uart_default;
+>  };
+>  
+>  
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index d9161d26d6..87d76c9259 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -65,6 +65,7 @@ struct AspeedSoCState {
+>      AspeedSDHCIState sdhci;
+>      AspeedSDHCIState emmc;
+>      AspeedLPCState lpc;
+> +    uint32_t uart_default;
+>  };
+>  
+>  #define TYPE_ASPEED_SOC "aspeed-soc"
+> 
+

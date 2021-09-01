@@ -1,151 +1,263 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp188821lfb;
-        Tue, 31 Aug 2021 23:34:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzAqTSxORqFUOeV7ksmnE10gbtU46PVsQk/vb4M6yum0xPVeb//XjYrHWtFX5TeKjlOSV98
-X-Received: by 2002:a05:620a:1598:: with SMTP id d24mr6747851qkk.484.1630478047910;
-        Tue, 31 Aug 2021 23:34:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630478047; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp189811lfb;
+        Tue, 31 Aug 2021 23:35:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzgYwVYiBxiigSiM44UONIsACFb6R58MPPIikwe5uJL1AxBk88gEHzlihPyy8VWNdVTDpXU
+X-Received: by 2002:a5e:c905:: with SMTP id z5mr25750143iol.33.1630478148328;
+        Tue, 31 Aug 2021 23:35:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630478148; cv=none;
         d=google.com; s=arc-20160816;
-        b=fgZ7MblMGFd1JtFgjtWDHHI28/fsklzgBfRehSHNi3aDAa24+t2MtfOaxjatkS4nei
-         p9kB3Az1UVe0kcA4hykPyDaHkoJ9IsgUYSRBgvPso4UJ10cL1Kel/AyUZp97ysngmgEd
-         B0Gz8jL8rIfnZlkEp+yJU0v+VX0jTErJ9WQLvn/iV2ZFx9CtJvLaXeWrV1YCsKcI7jCM
-         EP4Xs+IzqBzmWf4BDNuQd1ZvWgTUcUH/iDolSwM0S+3B1vLbyl67DBr1RAXOMjHC0vfA
-         5CdUdl9Is4mhdwFg2w7OvTxl87eSfsmalmEdjO5xx1XeOfElXN128AD8RdCmaCYqaKNf
-         1N+g==
+        b=S+0c77TK8r3zLH/jBbDSolQieHBp6ba74xpvTN+F5RfjfaiH67p5RNU9MayOQS/Xim
+         wX0AtM7LAXhdAm84vrv5ZlM6ucd1yXSeVMjuYgm9RV2AjLrYrb5OQ7R+7Ucmk9Is/9kp
+         1sMcQYRcqGsRszVCqann+7hIwhZiNP35IPtCw29MuJ8KbvIgy3Thq9divYDXKut6p0kA
+         n1Gw4w2fOuUeTBcZnBaU/1QByk5WnWmCC4EXNv2+POyBO1KL5VXuxyw1RHsGT4q9ZYuG
+         4kRFwqwZUD8Oaz3cuv7zB2vAHOwcZ3Z2/GKWwoQB+Kcv/VxBBARQWV81huy2osJaT4te
+         eRow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature:content-transfer-encoding
-         :content-language;
-        bh=nqZm03miValXMGMoFv61M/Sx6/MFCwWD5HNjKo8GdVA=;
-        b=TD5/r5d0FFsIEeMbheoEYXytZycrpQ0T6FsiEokfvOv7oDcfWGt+tjs7rY/vfQEZ5h
-         uI+vj9ShifQUkb3t+tLqsPE2/8XbiJGngXTZNsLccqUJ7Yea/EaxOIJzH7smnCRr38mf
-         eqMtAHnSq1jAhETP+aLUAu3jcgnPvxSYg5cTaZuIc94mUaNAaajESZOqPnkb3J/lyRWe
-         ANoD4N62kSK5GcsJ4EKo540ec68Q1oRmxPfbS6IT+IJVWjrV2DqCqGwRfB/VvtXsRy25
-         dG+JPE/LFEBV7zMy7cbX5rkJ6MScEN0s9KT1202KWqYslvfPzJhD6ay52hxwHr+J14Qg
-         PlEg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=HDxNc/0ps1g6da7tlin6pHs6UX2GO9/8nVQebcMPl/E=;
+        b=xRjFw2FKSq7+UKEt8xuU5klIdnfjHZWiQunYk7WBkBq3U8647QSEnDqg94SfFq6yj8
+         SjdT3yEXNaVnD5g3flRtunX/eNF0ujSaHzEy2mbY4vRHJiyjBuwUM6S3hkUWfwmfn5LN
+         tFRY8GCKXbI1xG6mCX2kFzZ1BLd8qeji080StenDds9mQlEGmLGMQmXgZNxLBMo64U7X
+         2pyAAOzkTplUMdNw08ysgKcmszBMNcN/preh9cGfStqgVROP+oOmGxCpoAEIX1cUqYeD
+         HP5Tz6hf7M22x3OxpeD+SqXPQaHq/U8pMAMaitSEJvI4ruhotvQbq/0GBMOxtIAvG3vZ
+         +C4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=ft88IJdI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i66si13643102qkd.277.2021.08.31.23.34.07
+        by mx.google.com with ESMTPS id s20si18874182ioa.93.2021.08.31.23.35.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 23:34:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Aug 2021 23:35:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@Verisilicon.com header.s=default header.b=ft88IJdI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
-Received: from localhost ([::1]:39768 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLJp1-0005zQ-8M
-	for alex.bennee@linaro.org; Wed, 01 Sep 2021 02:34:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53180)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLJqd-0000Je-Ln
+	for alex.bennee@linaro.org; Wed, 01 Sep 2021 02:35:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Renwei.Liu@verisilicon.com>)
- id 1mLJod-0005Xr-QC; Wed, 01 Sep 2021 02:33:43 -0400
-Received: from shasxm06.verisilicon.com ([101.89.135.45]:31114
- helo=shasxm03.verisilicon.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <Renwei.Liu@verisilicon.com>)
- id 1mLJoa-0008Rx-DU; Wed, 01 Sep 2021 02:33:42 -0400
-Content-Language: zh-CN
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
- c=simple/simple; t=1630478007; h=from:subject:to:date:message-id;
- bh=nqZm03miValXMGMoFv61M/Sx6/MFCwWD5HNjKo8GdVA=;
- b=ft88IJdISbSj9LkRhqIQKJsCFLSeIK3U3yu6wgzmrwU+8dD8Kxil6UAypiADgUdUUaHr0LE3h/U
- 2sSM0UNbUlvyJEZZyKuoKv88dpjL7ApzPFYrcsjsBgRE8BVSPkoXTGkUq6iuTOkxgFu5Jec13u9o6
- X/AEWK3QEQXeNgyb8qk=
-Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
- SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
- 14.03.0408.000; Wed, 1 Sep 2021 14:33:26 +0800
-From: "Liu, Renwei" <Renwei.Liu@verisilicon.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>
-Subject: RE: [PATCH v2] hw/arm/smmuv3: Simplify range invalidation
-Thread-Topic: [PATCH v2] hw/arm/smmuv3: Simplify range invalidation
-Thread-Index: AdeX84o6Zl+vD6dIRwucF0VY/o+mnwGQGLuAACkW3AA=
-Date: Wed, 1 Sep 2021 06:33:25 +0000
-Message-ID: <4FA89A717CD8094DBA0FE20FA5F98EAA010E6EA1E0@SHASXM03.verisilicon.com>
-References: <4FA89A717CD8094DBA0FE20FA5F98EAA010E6E9940@SHASXM03.verisilicon.com>
- <1805dcb3-6f99-0bf1-2d73-be0537c98512@redhat.com>
-In-Reply-To: <1805dcb3-6f99-0bf1-2d73-be0537c98512@redhat.com>
-Accept-Language: zh-CN, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.10.46.48]
-x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
-x-tm-as-result: No--14.244800-0.000000-31
-x-tm-as-user-approved-sender: Yes
-x-tm-as-user-blocked-sender: No
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mLJpd-0007Lo-CH; Wed, 01 Sep 2021 02:34:45 -0400
+Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:40073
+ helo=smtpout1.3005.mail-out.ovh.net)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mLJpb-00012Y-57; Wed, 01 Sep 2021 02:34:45 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.12])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id C641313EF2D;
+ Wed,  1 Sep 2021 06:34:38 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Wed, 1 Sep
+ 2021 08:34:37 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R005e5c9e7d6-7b12-47b8-a6a3-8460bcc5368a,
+ 5EBA00A5E723AF1D17FBD8632F6684B6834AEADC) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH 1/1] hw/arm/aspeed: Allow machine to set serial_hd(0)
+To: <pdel@fb.com>
+References: <20210831233140.2659116-1-pdel@fb.com>
+ <20210831233140.2659116-2-pdel@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <3ffd8327-6b62-a39f-49db-100bb1475309@kaod.org>
+Date: Wed, 1 Sep 2021 08:34:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Received-SPF: pass client-ip=101.89.135.45;
- envelope-from=Renwei.Liu@verisilicon.com; helo=shasxm03.verisilicon.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20210831233140.2659116-2-pdel@fb.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 0cfc63ba-ddd3-4625-ac96-53bea7814186
+X-Ovh-Tracer-Id: 2233222466928806764
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvvddguddtlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeegvdeijeefvdfhudfhffeuveehledufffhvdekheelgedttddthfeigeevgefhffenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphguvghlsehfsgdrtghomh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.3005.mail-out.ovh.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.932,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
- Jianxian" <Jianxian.Wen@verisilicon.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Li,
- Chunming" <Chunming.Li@verisilicon.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X0eY2+Jcmc32
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, andrew@aj.id.au,
+ qemu-devel@nongnu.org, f4bug@amsat.org, patrick@stwcx.xyz, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2uSn4tYGCOWZ
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1Z2VyIFttYWlsdG86
-ZXJpYy5hdWdlckByZWRoYXQuY29tXQ0KPiBTZW50OiBUdWVzZGF5LCBBdWd1c3QgMzEsIDIwMjEg
-MTA6NDYgUE0NCj4gVG86IExpdSwgUmVud2VpOyBQZXRlciBNYXlkZWxsDQo+IENjOiBxZW11LWFy
-bUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmc7IExpLCBDaHVubWluZzsgV2VuLA0K
-PiBKaWFueGlhbg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYyXSBody9hcm0vc21tdXYzOiBTaW1w
-bGlmeSByYW5nZSBpbnZhbGlkYXRpb24NCj4gDQo+IEhpIExpdSwNCj4gDQo+IE9uIDgvMjMvMjEg
-OTo1MCBBTSwgTGl1LCBSZW53ZWkgd3JvdGU6DQo+ID4gU2ltcGxpZnkgcmFuZ2UgaW52YWxpZGF0
-aW9uIHdoaWNoIGNhbiBhdm9pZCB0byBpdGVyYXRlIG92ZXIgYWxsDQo+ID4gaW90bGIgZW50cmll
-cyBtdWx0aS10aW1lcy4gRm9yIGluc3RhbmNlIGludmFsaWRhdGlvbnMgcGF0dGVybnMgbGlrZQ0K
-PiA+ICJpbnZhbGlkYXRlIDMyIDRrQiBwYWdlcyBzdGFydGluZyBmcm9tIDB4ZmZhY2QwMDAiIG5l
-ZWQgdG8gaXRlcmF0ZQ0KPiBvdmVyDQo+ID4gYWxsIGlvdGxiIGVudHJpZXMgNiB0aW1lcyAobnVt
-X3BhZ2VzOiAxLCAyLCAxNiwgOCwgNCwgMSkuIEl0IG9ubHkNCj4gbmVlZHMNCj4gPiB0byBpdGVy
-YXRlIG92ZXIgYWxsIGlvdGxiIGVudHJpZXMgb25jZSB3aXRoIG5ldyBpbXBsZW1lbnRhdGlvbi4N
-Cj4gDQo+IFRoaXMgd291bGRuJ3Qgd29yay4gVGhpcyByZXZlcnRzIGNvbW1pdA0KPiA2ZDljZDEx
-NWI5ZGYgKCJody9hcm0vc21tdXYzOiBFbmZvcmNlIGludmFsaWRhdGlvbiBvbiBhIHBvd2VyIG9m
-IHR3bw0KPiByYW5nZSIpDQo+IHdoaWNoIGlzIG1hbmRhdGVkIGZvciBWRklPIGFuZCB2aXJ0aW8g
-dG8gd29yay4gSU9UTEIgaW52YWxpZGF0aW9ucyBtdXN0DQo+IGJlIG5hdHVyYWxseSBhbGlnbmVk
-IGFuZCB3aXRoIGEgcG93ZXIgb2YgMiByYW5nZSwgaGVuY2UgdGhpcyBpdGVyYXRpb24uDQo+IA0K
-PiBUaGFua3MNCj4NCj4gRXJpYw0KSGkgRXJpYywNCg0KQ291bGQgeW91IHRyeSB0aGUgcGF0Y2gg
-Zmlyc3RseT8gSSB3YW50IHRvIGtub3cgd2hldGhlciBpdCdzIGZhaWxlZA0KaW4geW91ciBhcHBs
-aWNhdGlvbiBzY2VuYXJpbyB3aXRoIHRoaXMgaW1wbGVtZW50YXRpb24uDQpJIGFncmVlIHdpdGgg
-eW91IHRoYXQgSU9UTEIgZW50cnkgbXVzdCBiZSBuYXR1cmFsbHkgYWxpZ25lZCBhbmQNCndpdGgg
-YSBwb3dlciBvZiAyIHJhbmdlLiBCdXQgd2UgY2FuIGludmFsaWRhdGUgbXVsdGkgSU9UTEIgZW50
-cmllcw0KaW4gb25lIGl0ZXJhdGlvbi4gV2UgY2hlY2sgdGhlIG92ZXJsYXAgYmV0d2VlbiBpbnZh
-bGlkYXRpb24gcmFuZ2UNCmFuZCBJT1RMQiByYW5nZSwgbm90IGNoZWNrIG1hc2suIFRoZSBmaW5h
-bCByZXN1bHQgaXMgc2FtZSB3aXRoDQp5b3VyIGltcGxlbWVudGF0aW9uIChzcGxpdCB0byBtdWx0
-aSB0aW1lcyB3aXRoIGEgcG93ZXIgb2YgMiByYW5nZSkuDQpJIHdvbmRlciB3aHkgd2UgY2FuJ3Qg
-aW1wbGVtZW50IGl0IGRpcmVjdGx5IHdoZW4gdGhlIGFwcGxpY2F0aW9uIGNhbg0Kc2VuZCBhbiBp
-bnZhbGlkYXRpb24gY29tbWFuZCB3aXRoIGEgbm9uIHBvd2VyIG9mIDIgcmFuZ2UuDQpXZSBoYXZl
-IHRlc3RlZCBpdCBpbiBvdXIgYXBwbGljYXRpb24gc2NlbmFyaW8gYW5kIG5vdCBmaW5kIGFueSBm
-YWlsLg0KDQpJbiBhZGRpdGlvbiwgZnJvbSB0aGUgY29kZSBpbXBsZW1lbnRhdGlvbiwgc21tdV9p
-b3RsYl9pbnZfaW92YSgpDQpzaG91bGQgYmUgT0suIEluIGFub3RoZXIgY2FsbCBzbW11djNfaW52
-X25vdGlmaWVyc19pb3ZhKCkgLT4NCnNtbXV2M19ub3RpZnlfaW92YSgpIC0+IG1lbW9yeV9yZWdp
-b25fbm90aWZ5X2lvbW11X29uZSgpLA0KaXQgYWxzbyBjaGVja3MgcmFuZ2Ugb3ZlcmxhcC4gU28g
-aXQgc2hvdWxkIGJlIE9LIGlmIHRoZSByYW5nZQ0KaXMgbm90IGEgcG93ZXIgb2YgMi4NCg0KQ291
-bGQgeW91IHRha2UgYSBsb29rIGF0IGl0IGFnYWluPw0KDQpUaGFua3MNClJlbndlaSBMaXUNCg==
+Adding Peter Maydell and Joel.
+
+On 9/1/21 1:31 AM, pdel@fb.com wrote:
+> From: Peter Delevoryas <pdel@fb.com>
+> 
+> When you run QEMU with an Aspeed machine and a single serial device
+> using stdio like this:
+> 
+>     qemu -machine ast2600-evb -drive ... -serial stdio
+> 
+> The guest OS can read and write to the UART5 registers at 0x1E784000 and
+> it will receive from stdin and write to stdout. The Aspeed SoC's have a
+> lot more UART's though (AST2500 has 5, AST2600 has 13) and depending on
+> the board design, may be using any of them as the serial console. (See
+> "stdout-path" in a DTS to check which one is chosen).
+> 
+> Most boards, including all of those currently defined in
+> hw/arm/aspeed.c, just use UART5, but some use UART1. This change adds
+> some flexibility for different boards without requiring users to change
+> their command-line invocation of QEMU.
+> 
+> I tested this doesn't break existing code by booting an AST2500 OpenBMC
+> image and an AST2600 OpenBMC image, each using UART5 as the console.
+> 
+> Then I tested switching the default to UART1 and booting an AST2600
+> OpenBMC image that uses UART1, and that worked too.
+> 
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+
+Some comments below, 
+
+> ---
+>  hw/arm/aspeed.c         |  1 +
+>  hw/arm/aspeed_ast2600.c | 11 +++++++----
+>  hw/arm/aspeed_soc.c     |  9 ++++++---
+>  include/hw/arm/aspeed.h |  1 +
+>  4 files changed, 15 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 9d43e26c51..74379907ff 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -804,6 +804,7 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+>      mc->no_parallel = 1;
+>      mc->default_ram_id = "ram";
+>      amc->macs_mask = ASPEED_MAC0_ON;
+> +    amc->serial_hd0 = ASPEED_DEV_UART5;
+>  
+>      aspeed_machine_class_props_init(oc);
+>  }
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index e3013128c6..361a456214 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -10,6 +10,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/arm/aspeed.h"
+>  #include "hw/arm/aspeed_soc.h"
+>  #include "hw/char/serial.h"
+>  #include "qemu/module.h"
+> @@ -231,6 +232,8 @@ static uint64_t aspeed_calc_affinity(int cpu)
+>  static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>  {
+>      int i;
+> +    AspeedMachineState *bmc = ASPEED_MACHINE(qdev_get_machine());
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
+
+This is reaching into the machine from the SoC which is not good
+practice.
+
+What you should do is add an attribute in AspeedSoCState and a 
+property in aspeed_soc_properties[]. This property would be set 
+in aspeed_machine_init() before realizing the soc object. Look 
+at "dram" for an example.
+
+Then, in the aspeed_soc_*_realize routines, you would use the 
+attribute to initialize the default serial device.
+
+I don't really know what to call this attribute and property.
+How about uart_default and "uart-default" ? 
+
+Thanks,
+
+C.
+
+>      AspeedSoCState *s = ASPEED_SOC(dev);
+>      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+>      Error *err = NULL;
+> @@ -322,10 +325,10 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+>      }
+>  
+> -    /* UART - attach an 8250 to the IO space as our UART5 */
+> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
+> -                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+> +    /* Wire up the first serial device, usually either UART5 or UART1 */
+> +    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_hd0], 2,
+> +                   aspeed_soc_get_irq(s, amc->serial_hd0), 38400,
+> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>  
+>      /* I2C */
+>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 3ad6c56fa9..77422bbeb1 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -13,6 +13,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/arm/aspeed.h"
+>  #include "hw/arm/aspeed_soc.h"
+>  #include "hw/char/serial.h"
+>  #include "qemu/module.h"
+> @@ -221,6 +222,8 @@ static void aspeed_soc_init(Object *obj)
+>  static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>  {
+>      int i;
+> +    AspeedMachineState *bmc = ASPEED_MACHINE(qdev_get_machine());
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
+>      AspeedSoCState *s = ASPEED_SOC(dev);
+>      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+>      Error *err = NULL;
+> @@ -287,9 +290,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+>      }
+>  
+> -    /* UART - attach an 8250 to the IO space as our UART5 */
+> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
+> +    /* Wire up the first serial device, usually either UART5 or UART1 */
+> +    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_hd0], 2,
+> +                   aspeed_soc_get_irq(s, amc->serial_hd0), 38400,
+>                     serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>  
+>      /* I2C */
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index c9747b15fc..bc0f27885a 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -38,6 +38,7 @@ struct AspeedMachineClass {
+>      uint32_t num_cs;
+>      uint32_t macs_mask;
+>      void (*i2c_init)(AspeedMachineState *bmc);
+> +    uint32_t serial_hd0;
+>  };
+>  
+>  
+> 
+

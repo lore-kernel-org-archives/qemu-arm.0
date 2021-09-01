@@ -1,106 +1,105 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp454206lfb;
-        Wed, 1 Sep 2021 05:51:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzWWgESVaN2gIbKm5uGS0CJ0u23MPqEqW5+PbNJ5SBj/R13UPQkRdEro53gG0HTfgItbdjK
-X-Received: by 2002:a67:ed0d:: with SMTP id l13mr23115332vsp.48.1630500662293;
-        Wed, 01 Sep 2021 05:51:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630500662; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp454480lfb;
+        Wed, 1 Sep 2021 05:51:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxPSbUZAzezLoOPxhwQz62mt8DcnugMIm6/GrbiCMgPAbQwjzYzA2E7q/vw+SW7L42WITGH
+X-Received: by 2002:a67:cd96:: with SMTP id r22mr23206741vsl.1.1630500679841;
+        Wed, 01 Sep 2021 05:51:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630500679; cv=none;
         d=google.com; s=arc-20160816;
-        b=ct2GksePZ4k15MmNWLBUgU2yiacl9ZYYdaftFwiZBpSEBGBTu3Kr66nfkvYFCwl0+1
-         693NH6bqeejHmTxdZrw6jRceZrOjWEsDOxJ7zVyB36U9AbV3OR+GrS0FO72dLvINE/Mk
-         Ahd8Y+Nx5DiQoBZSYOL8iJ9iczjnVw2mu27DiIQvqBj9wl4HOQS6u7991D7FgVrvyzxd
-         eKqvpMr4UDYTYjB76hPB8/fY/sY8Yf3EMuAUALHu9KN9DY+bdZL9N3+R+p/Ycj7vu8GF
-         rXJ47HID67slVONLcdFyzelnLPibhpOrkPXNsr+jZy1FubCrkMuIfStLxE9fBYcYdU81
-         egyQ==
+        b=aLv04rj4Pk9Mnk4C2YxhqjPUIOJ9AA8Dk4Ra4/68AN8u/AY1j/47DMGXzfdlMl+qCR
+         DNZ80LlGjF5F5OpdZLKr0mzD1gglVRhhY7Irasx6aLNOLq3+LA9Wc1qSD5VrfS8v0rAs
+         eJ53Vy8mak66vsMnmT6i3ZvLzBjH89bg4JrhWAJZzUsThdVdGkEgCtAjDM3aG/JxkdxS
+         Pkw1X0c8731QGHbLP3LFkCGqrqjOCARR+GQTxvvexhP3hcuKvgogvEjDNl6+EEJYx9Pr
+         aNTk1iXDD73+oJuju6a7SdFcAvWKS/ZY8R6TTGNHFXRdz2AGvRtUH7w8qQrl27IKE/Xj
+         x5Ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=5t8z8W2/Z4HnNDfJxkUtulZXcpKeSL8+hbjbGr7gaxg=;
-        b=fvdKspLJGm46ZA0km44ye2jYLCidIoZJEA+1cHtzMqXY5e5wKqS4A50Iz9jcKyNs8X
-         CfERNBcB0/d9JRV93WIHJkyQ3SjJI9ubuhkls3/P9jx+/Y5j9e6eexRO4mCLVHO8yI7r
-         Wd7PwA0xal1IGvRbDkjyaHHsALPbouryDEzzBks3bK+p+koLbkhtKUOJ74LlmHanKrs1
-         fdda6n0bcP0rppbuD7+68Yv3kGmIgOGM86fZIZ+03dFpFi39BN+4Np7DcMcPeE0vOLJC
-         kBA2W8BTXVnPANMi5Jnl7LjP0Qqhp0MeQDm5Bzv2Nbh3mbLhhU7th/YZ8rHQWZTJtD9f
-         RWAQ==
+        bh=Ev+aq0JxPAo6o7UOcP7jbXTgregVlkRbo8hoXTI7T1k=;
+        b=0UB1xVg1gBEmIkEyBUuqIBLYVMdVyCPAxc1Gymdr2Vh7NbDMnbICd2nFqhFMrRq7kL
+         +rGwlNwYfdN2YHz5hfnect11CBfPQQbHfAnr5eU+/0tRk5+/sSRGMd3NF5DSZDYDXvI9
+         0GHrBvgVAlsbd1ksl3kS/JOmPcU4PUL5VrzW8/cc5RAlFmX3GhiyAtQ59F09GcUhibc0
+         3swRM8aLKn3RAGczao85F++GIkeX8OGJIbSJZuM7DAHhMMn9/HKQryIdHnI/UDjFkiwK
+         wF4qEksHEqASprsceTxbvvJaznJbV173PI/C5qtnSvXXwNpcPPdTilEaZgmf+e2xmCsi
+         Cbrw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WwfViySb;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=baOT5eME;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u9si9193517vsh.128.2021.09.01.05.51.02
+        by mx.google.com with ESMTPS id a26si7825069uao.70.2021.09.01.05.51.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Sep 2021 05:51:02 -0700 (PDT)
+        Wed, 01 Sep 2021 05:51:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WwfViySb;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=baOT5eME;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47462 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49210 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLPhl-0003dz-CH
-	for alex.bennee@linaro.org; Wed, 01 Sep 2021 08:51:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39614)
+	id 1mLPi3-0004os-4H
+	for alex.bennee@linaro.org; Wed, 01 Sep 2021 08:51:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mLPcW-0003A8-8W; Wed, 01 Sep 2021 08:45:37 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:46856)
+ id 1mLPca-0003KB-PL; Wed, 01 Sep 2021 08:45:40 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:39701)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mLPcU-0003Xz-9v; Wed, 01 Sep 2021 08:45:36 -0400
-Received: by mail-pf1-x431.google.com with SMTP id y17so1918856pfl.13;
- Wed, 01 Sep 2021 05:45:33 -0700 (PDT)
+ id 1mLPcZ-0003aU-6d; Wed, 01 Sep 2021 08:45:40 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id e16so1952963pfc.6;
+ Wed, 01 Sep 2021 05:45:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5t8z8W2/Z4HnNDfJxkUtulZXcpKeSL8+hbjbGr7gaxg=;
- b=WwfViySbJ2IQ1mlgtvxlqChgoPMo2TxSK1Hgfl2YeY2n+EMc66LZ6z1AJIlHFmlIdZ
- mZo1ecfGYvxhtg6tg3+UNE803JXMBQ2Q2ih5nZHl+nluSb3EaWNeDrQGFHonGxmF6lHk
- trdeQ1rtJKtJMnMDZ6HHDrkCnGnQJsdyQN2eSyahTaIEvoc27rDQDRU1fdZIuXNkaBu5
- OYYddKv1NkHzOglW6dbDPb4jBar0v4nQewM0aZ++txvLZ6LAwJJkQSa7Qw7nlyKTEkWu
- TwbTUPTPSk81f9YETvbVdo8iCEt8iZ1E/A07l2B99DIK98js7Qp9CnKameRGGA21ELiM
- gxRw==
+ bh=Ev+aq0JxPAo6o7UOcP7jbXTgregVlkRbo8hoXTI7T1k=;
+ b=baOT5eMEWdfO8bzuyV5Cu8ZmkQoATFMAV9NQU7vHMifn/T8HYLmyOcNsoy0jUsrCjT
+ oa1meNceuZrW8mK4j7BszhLFiNWGVHDpoH5bx1Od5QiOJKxH3iW000isFBz63qOLolro
+ Nwf/LatDNra7uPs2s5JgOzaxD4q9NU+0d2NJofAcDf/tvWC9ObAeSExwoG6JLS5niVRd
+ rdszH87qjkAl+Cg2V7LDR7O1qGk52pKpieA+vwuuq8GhcW3gN7GEL0M/kdqE1XY5Zijj
+ GUCyDLgZNMUujo7k4jHtbM/3PlFxWzQPebSbWy6TZhMCWGbjqykJHlsqA9jivw8zZ3tg
+ WigA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5t8z8W2/Z4HnNDfJxkUtulZXcpKeSL8+hbjbGr7gaxg=;
- b=rJl2bhFEtV3tMrqb05nTY571dpCBesJHP3E89D7qINBrsD35Bt1xEpXAgwD0OkooYK
- qVOOSMHzgKJKVi0V/TEQ3zuIvvCxNGKDg79YYrZvcQfM6lCea/jFHc0+SLwDztU16gz3
- E1LEjuiPPzZyP9UPaRAfTijQhT//CMLQLyFYZzAsupXv5wZNHR8N+MzYDR+N3t9HcdmK
- h1oQBB9hP5OLQihjckkXiGRUMYyzXGgg+sdFsOccVrONnjt01OD/DL+NXf7s6oE9JKca
- 6BORi4KipQw04Ylnwhmv9xkD58x2F2fi7vGhS4QOhmTs+R8klepJte12pDUX20CMh1N0
- dRrA==
-X-Gm-Message-State: AOAM530zSK+Lz/GVTr/ujA5qQTvAY2sSbSxUvczSmSo3pzmasenjG4sI
- wrg8yqQtBaoELAEFjwZnVzM=
-X-Received: by 2002:a62:a513:0:b0:3f1:e19c:a23 with SMTP id
- v19-20020a62a513000000b003f1e19c0a23mr23555442pfm.43.1630500332170; 
- Wed, 01 Sep 2021 05:45:32 -0700 (PDT)
+ bh=Ev+aq0JxPAo6o7UOcP7jbXTgregVlkRbo8hoXTI7T1k=;
+ b=i0Uqe8QzCk6xsqW5pn4m4nwOdcTSbQ/HJ1uK8Z0b1ui6sjhmd1Bk+9G9lQfpshvjDm
+ g7Lzckbf5uMbGlUVETvtDDO2LhZae49+9ntE5DjwCBjj9zNSIvOLBC1jE5RFVvvsZ+A+
+ VTgBP11Fy4QSZRMseraBYz5f73KB+JpfICW3Ps3Bzxj3MQLBn28NjwEKq3xfyWISuX3g
+ qyyj3IF6vk4aSf6E++bSB0GtLimjb7/YwS/5smlSzceCSR4sZF7lsGLsgP2nwrgQWySa
+ NEc4uFFxQKN9H3Hk9bnHDvY0ZTWBm3/a+3XkOi8XiBE6Pynd8KUgnfNtpwDO92DFurj1
+ /vsQ==
+X-Gm-Message-State: AOAM53287boCqZTMbt603HchuwJd9EjO6coCKISrW6Xc2uGLuXVcVR5i
+ d1S9ly2fcMJbzejZ41AHYpQurQntq4zUaQ==
+X-Received: by 2002:a63:fd12:: with SMTP id d18mr32166158pgh.129.1630500337499; 
+ Wed, 01 Sep 2021 05:45:37 -0700 (PDT)
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
  [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id d22sm20917134pfq.158.2021.09.01.05.45.29
+ by smtp.gmail.com with ESMTPSA id d22sm20917134pfq.158.2021.09.01.05.45.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Sep 2021 05:45:31 -0700 (PDT)
+ Wed, 01 Sep 2021 05:45:37 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Damien Hedde <damien.hedde@greensocs.com>,
  "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 1/6] hw/misc: zynq_slcr: Correctly compute output clocks in
- the reset exit phase
-Date: Wed,  1 Sep 2021 20:45:16 +0800
-Message-Id: <20210901124521.30599-2-bmeng.cn@gmail.com>
+Subject: [PATCH v3 3/6] hw/char: cadence_uart: Move clock/reset check to
+ uart_can_receive()
+Date: Wed,  1 Sep 2021 20:45:18 +0800
+Message-Id: <20210901124521.30599-4-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210901124521.30599-1-bmeng.cn@gmail.com>
 References: <20210901124521.30599-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pf1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,100 +122,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 14No6WQwJQZQ
+X-TUID: +m/bqlqJG4tT
 
-As of today, when booting upstream U-Boot for Xilinx Zynq, the UART
-does not receive anything. Debugging shows that the UART input clock
-frequency is zero which prevents the UART from receiving anything as
-per the logic in uart_receive().
+Currently the clock/reset check is done in uart_receive(), but we
+can move the check to uart_can_receive() which is earlier.
 
-From zynq_slcr_reset_exit() comment, it intends to compute output
-clocks according to ps_clk and registers. zynq_slcr_compute_clocks()
-is called to accomplish the task, inside which device_is_in_reset()
-is called to actually make the attempt in vain.
-
-Rework reset_hold() and reset_exit() so that in the reset exit phase,
-the logic can really compute output clocks in reset_exit().
-
-With this change, upstream U-Boot boots properly again with:
-
-$ qemu-system-arm -M xilinx-zynq-a9 -m 1G -display none -serial null -serial stdio \
-    -device loader,file=u-boot-dtb.bin,addr=0x4000000,cpu-num=0
-
-Fixes: 38867cb7ec90 ("hw/misc/zynq_slcr: add clock generation for uarts")
 Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
 ---
 
-(no changes since v1)
+(no changes since v2)
 
- hw/misc/zynq_slcr.c | 31 ++++++++++++++++++-------------
- 1 file changed, 18 insertions(+), 13 deletions(-)
+Changes in v2:
+- avoid declaring variables mid-scope
 
-diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-index 5086e6b7ed..8b70285961 100644
---- a/hw/misc/zynq_slcr.c
-+++ b/hw/misc/zynq_slcr.c
-@@ -269,6 +269,21 @@ static uint64_t zynq_slcr_compute_clock(const uint64_t periods[],
-     zynq_slcr_compute_clock((plls), (state)->regs[reg], \
-                             reg ## _ ## enable_field ## _SHIFT)
+ hw/char/cadence_uart.c | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+index 154be34992..fff8be3619 100644
+--- a/hw/char/cadence_uart.c
++++ b/hw/char/cadence_uart.c
+@@ -235,8 +235,16 @@ static void uart_parameters_setup(CadenceUARTState *s)
+ static int uart_can_receive(void *opaque)
+ {
+     CadenceUARTState *s = opaque;
+-    int ret = MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE);
+-    uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
++    int ret;
++    uint32_t ch_mode;
++
++    /* ignore characters when unclocked or in reset */
++    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
++        return 0;
++    }
++
++    ret = MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE);
++    ch_mode = s->r[R_MR] & UART_MR_CHMODE;
  
-+static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk)
-+{
-+    uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
-+    uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
-+    uint64_t ddr_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_DDR_PLL_CTRL]);
-+
-+    uint64_t uart_mux[4] = {io_pll, io_pll, arm_pll, ddr_pll};
-+
-+    /* compute uartX reference clocks */
-+    clock_set(s->uart0_ref_clk,
-+              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0));
-+    clock_set(s->uart1_ref_clk,
-+              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1));
-+}
-+
- /**
-  * Compute and set the ouputs clocks periods.
-  * But do not propagate them further. Connected clocks
-@@ -283,17 +298,7 @@ static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
-         ps_clk = 0;
+     if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
+         ret = MIN(ret, CADENCE_UART_RX_FIFO_SIZE - s->rx_count);
+@@ -358,11 +366,6 @@ static void uart_receive(void *opaque, const uint8_t *buf, int size)
+     CadenceUARTState *s = opaque;
+     uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
+ 
+-    /* ignore characters when unclocked or in reset */
+-    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
+-        return;
+-    }
+-
+     if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
+         uart_write_rx_fifo(opaque, buf, size);
      }
- 
--    uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
--    uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
--    uint64_t ddr_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_DDR_PLL_CTRL]);
--
--    uint64_t uart_mux[4] = {io_pll, io_pll, arm_pll, ddr_pll};
--
--    /* compute uartX reference clocks */
--    clock_set(s->uart0_ref_clk,
--              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0));
--    clock_set(s->uart1_ref_clk,
--              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1));
-+    zynq_slcr_compute_clocks_internal(s, ps_clk);
- }
- 
- /**
-@@ -416,7 +421,7 @@ static void zynq_slcr_reset_hold(Object *obj)
-     ZynqSLCRState *s = ZYNQ_SLCR(obj);
- 
-     /* will disable all output clocks */
--    zynq_slcr_compute_clocks(s);
-+    zynq_slcr_compute_clocks_internal(s, 0);
-     zynq_slcr_propagate_clocks(s);
- }
- 
-@@ -425,7 +430,7 @@ static void zynq_slcr_reset_exit(Object *obj)
-     ZynqSLCRState *s = ZYNQ_SLCR(obj);
- 
-     /* will compute output clocks according to ps_clk and registers */
--    zynq_slcr_compute_clocks(s);
-+    zynq_slcr_compute_clocks_internal(s, clock_get(s->ps_clk));
-     zynq_slcr_propagate_clocks(s);
- }
- 
 -- 
 2.25.1
 

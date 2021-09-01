@@ -1,157 +1,154 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp79734lfb;
-        Tue, 31 Aug 2021 20:31:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjNN/zoaoapTOQ73Bhg0by4+DTtgUB6Bwh2d6JAZcnOJeUSgDs0VNUJfpKVCLamncTp0Qy
-X-Received: by 2002:a37:2711:: with SMTP id n17mr6577222qkn.217.1630467110981;
-        Tue, 31 Aug 2021 20:31:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630467110; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp108522lfb;
+        Tue, 31 Aug 2021 21:19:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJybDVtSxFLIoUSkuPBKzS0XI835PgjUCcxo6VSzU5uqF7ARsYz0AJfZIW9AMJaCtkAr06Jj
+X-Received: by 2002:a6b:e917:: with SMTP id u23mr25923147iof.19.1630469989648;
+        Tue, 31 Aug 2021 21:19:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630469989; cv=none;
         d=google.com; s=arc-20160816;
-        b=ztWmNvyGVL/xQfJbGqfwVPBGVv8vh6EqqfnoZ+qL3wrxLbP5MW5gy9MfP2P6nTPNkR
-         jciXNc+O2ZWxzbz2gbtUL3YnKPl21rx+u5Oc2NmuNSzdPiMq791CxzzlBe2mrP4J+pK9
-         tsBqo7UxkP04tZdwIiHjrI0MnVVlSi8hprU35zapCg0ccdUG7+XCCRVZj6AT5vSllSOv
-         GCkWYVV5+xdfiH8kLAf/uxjiq1bGDi6LqjjUaCOnaJTlBkeZbXUsdw6sA+LpjVHcjzhd
-         n4jjCeUxpLxGBjS1eicZmYlZSuiDswxODmiWScLZP55b8EqQXoZsEAcsZ1BVZ9PzLsvQ
-         gHIg==
+        b=fOpV2N6l2Q7n4Yklcw9CgbMN9X0QgDtamfgaOj2xVFlqF9thT6t8uK7NQbnDJaILs5
+         9Q+pL9SeBAOkwGEH1j2KaK2hkBSvlDFYJcaARkAfOb+KKKGtE3vEG/Tagby03Zj5Q0Ff
+         TVp0/O//RewOYwom0l71uT0CopfwevOfi4SHxerJVo78AxPCNsLA09gm7rslMwH7+8lX
+         1e8aMprmAkFZf/mcaS5GT9Tv1xwfLtBcUwguVrFWykKMBhmPoH7wblK9/xUHmJFpeb2I
+         KmlR8srJkzIUJ8lrv+Vh2vsh+zE371+tYruhRiyoNiRZICxsyhaZM7y7YeOA5P1QNu8u
+         +qHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=DnvfBbmV9W5QaBw9cjpxj3O1smfoTH7OnL+gTgkQoPM=;
-        b=gEbzSn+NTHtsSVoqcVVnJM+WYOa2hwhGhW63NBgNpjOUKbsVIhkLJK/jdCTXix75uV
-         mEOYRV3nCb7tA6z4rPoxiTs9PesXWpIQJdPrcEBv6qr9+VjZ/VAu/8Pr61NE2i1dc3Uc
-         EXXscYUPouAkN7hkDjtLEC3/gWWaqYbofsS1yvnlsc+hs9hWCMwN2onC6RccWgGZvt6F
-         nYUlndNTwXlU6MwR2b0EhV7UKpqNzIostuFqX3hxbgGGFN9Kub/tb7x+sZMTdxd2j+Lw
-         PWAmqvzt3FBbUxb4YniOkIfgZ3IKxIBVDF+/Aatt5gW9XxbOJ9hBnIg4im3om1sIUnYS
-         cTRQ==
+        bh=mLOPf1xCTlqQ/t3W8GytumapqhP0eAFYbQZYI52nSSs=;
+        b=hRu1vjIGL4BaKB/qRgs59xW+ol16oTyePkvKVbr9N3keQhV/Or9JnhBXkLlJ7+brpy
+         xrYjEo01tmCt/jUF/W+aFGOfP02qEvJki7p6sAXgLoomVB8xwUqhcM+lHksQpOT3DG2K
+         Uvdc5SQZur9mnz3PMj+djHMQ4J3K/ZZJZr2tpmU2F91Qv95vM39sgcr3hjqhEoe+ETDH
+         UXAi1T8UiMNYAFgnALuFFLYhP9CwjWFxCU8U46w5CmHTawDvwN2VwRV1dVeMf4/Rpnyk
+         Bk86bT/gfcRWZkxmptC+0yIuxCvkleCaz1NV1Nl2m2y/7tohd6soTbA2/23od1LtFpth
+         OnPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ExY3FnHZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XVauzL4U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m5si7131542qkp.284.2021.08.31.20.31.50
+        by mx.google.com with ESMTPS id 1si503198jav.1.2021.08.31.21.19.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 20:31:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Aug 2021 21:19:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ExY3FnHZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39982 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XVauzL4U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLGyc-0002cx-BE
-	for alex.bennee@linaro.org; Tue, 31 Aug 2021 23:31:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57620)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLHj2-0005zf-Ur
+	for alex.bennee@linaro.org; Wed, 01 Sep 2021 00:19:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mLGur-0003BD-S1; Tue, 31 Aug 2021 23:27:57 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:36757)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mLGua-0007Ln-VW; Tue, 31 Aug 2021 23:27:57 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id m26so968461pff.3;
- Tue, 31 Aug 2021 20:27:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=DnvfBbmV9W5QaBw9cjpxj3O1smfoTH7OnL+gTgkQoPM=;
- b=ExY3FnHZhAO1HlfjWHvbyrQlEXCi4N4NiX169sAGQ5e9TY0hXuMvLxgMvnQ8Bc2mEf
- kHvXY96klRE6cyUj9B+jkGzPLWoSaPw2PmYz5OZFh7lah9W5r24JKfX4pcFbkGrdYwGE
- aIKCUvnyKGR/QA2Bknb7oH+U9cVRlXOQOMZRe2igIcAHF1lLeC1OITnOzpg9a8yGwKY8
- txAamI7YuyNnUIuoX33m4zJMyO1ihhw2suq6LN3jKMCi4jnU+qX9rGkIepDG2pCJg7q1
- gDX9j1zqHYkvtX9kUNy6mwXa5+VWgUeMafi+3+sQ5GJ8Nb403878fLyTN06KcJFv1u0y
- 2Qyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=DnvfBbmV9W5QaBw9cjpxj3O1smfoTH7OnL+gTgkQoPM=;
- b=XdUEfgCu0ijg2HLcVGc8GM3ePUvh71gnCg9q7HBux+ZCqqATzTjx0sqfwrMOZXBipT
- +rFhuvPQfOzGqjnYsHttx/aRfY21H1aQU31fiXipN5NszJ60UA+lTEcyeiLra9MpqNpv
- wEeFVd5WCL5IyY63CdI/f5ofuMaK7Rfz50bL2Qe7yBsg+dIh+sYlEEyBpnXZP7zSZLd2
- vS2Om/glVFEBLJmU6oybSkeGhLQYvuCM5MpfQAEphxHr7CW/b2yAZJe1ZiAwdoxEGSnK
- 7ZV68h1/ekTaVn0py1Luia9CbEOx6l+7UELNKi2aqfcbCYWmKSlL/neJOkpkGYefOOnM
- 9zww==
-X-Gm-Message-State: AOAM53210W2/KkFSWa0pFpEDTSDX0YiscHP7owxX9JwmiCHG2D/85OIx
- wxRvzeJicSsU31plQjdQD24=
-X-Received: by 2002:a63:3c5d:: with SMTP id i29mr29623631pgn.147.1630466858033; 
- Tue, 31 Aug 2021 20:27:38 -0700 (PDT)
-Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
- [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id g2sm7174467pfo.154.2021.08.31.20.27.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Aug 2021 20:27:37 -0700 (PDT)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Damien Hedde <damien.hedde@greensocs.com>,
- "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 2/5] hw/char: cadence_uart: Disable transmit when input
- clock is disabled
-Date: Wed,  1 Sep 2021 11:27:21 +0800
-Message-Id: <20210901032724.23256-3-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210901032724.23256-1-bmeng.cn@gmail.com>
-References: <20210901032724.23256-1-bmeng.cn@gmail.com>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1mLHim-0005y5-BR
+ for qemu-arm@nongnu.org; Wed, 01 Sep 2021 00:19:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30976)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1mLHie-0001Pn-8y
+ for qemu-arm@nongnu.org; Wed, 01 Sep 2021 00:19:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630469963;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mLOPf1xCTlqQ/t3W8GytumapqhP0eAFYbQZYI52nSSs=;
+ b=XVauzL4UiGq037z9jjT1mCCHP3OrvI4oTK18cfIm0BefXXrpYa4Qc5Kfkzdu6cdFRBdVLW
+ biBii7nnD8dS9lmr18kXNQo/K6INR393GxQ2maH5BXXeb8SOjIdCX8MBq+iN1C+/G4jLgK
+ c3vqkJi/1HNssgUlZtznl5tKQWP36rA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-389-WHm6skOHMrOSdW-dLHrk8Q-1; Wed, 01 Sep 2021 00:19:21 -0400
+X-MC-Unique: WHm6skOHMrOSdW-dLHrk8Q-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6AE14189C446;
+ Wed,  1 Sep 2021 04:19:20 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.91])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7CDAA60BD8;
+ Wed,  1 Sep 2021 04:19:05 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 367C01800799; Wed,  1 Sep 2021 06:19:03 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 1/6] virtio-gpu: no point of checking res->iov
+Date: Wed,  1 Sep 2021 06:18:58 +0200
+Message-Id: <20210901041903.3111086-2-kraxel@redhat.com>
+In-Reply-To: <20210901041903.3111086-1-kraxel@redhat.com>
+References: <20210901041903.3111086-1-kraxel@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pf1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qZZi99A6NkYz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Dongwon Kim <dongwon.kim@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Alexander Bulekov <alxndr@bu.edu>,
+ Bandan Das <bsd@redhat.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xQyjPg/2Ags3
 
-At present when input clock is disabled, any character transmitted
-to tx fifo can still show on the serial line, which is wrong.
+From: Dongwon Kim <dongwon.kim@intel.com>
 
-Fixes: b636db306e06 ("hw/char/cadence_uart: add clock support")
-Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+The code should check the opposite condition of res->iov because it will be null
+if virtio_gpu_create_mapping_iov fails and actually this checking is not even
+required because checking on ret covers all failing cases.
+
+Signed-off-by: Dongwon Kim <dongwon.kim@intel.com>
+Message-Id: <20210830175033.29233-1-dongwon.kim@intel.com>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
+ hw/display/virtio-gpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-(no changes since v1)
-
- hw/char/cadence_uart.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index b4b5e8a3ee..154be34992 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -327,6 +327,11 @@ static gboolean cadence_uart_xmit(void *do_not_use, GIOCondition cond,
- static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf,
-                                int size)
- {
-+    /* ignore characters when unclocked or in reset */
-+    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-+        return;
-+    }
-+
-     if ((s->r[R_CR] & UART_CR_TX_DIS) || !(s->r[R_CR] & UART_CR_TX_EN)) {
+diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+index 990e71fd4062..72da5bf5002c 100644
+--- a/hw/display/virtio-gpu.c
++++ b/hw/display/virtio-gpu.c
+@@ -362,7 +362,7 @@ static void virtio_gpu_resource_create_blob(VirtIOGPU *g,
+     ret = virtio_gpu_create_mapping_iov(g, cblob.nr_entries, sizeof(cblob),
+                                         cmd, &res->addrs, &res->iov,
+                                         &res->iov_cnt);
+-    if (ret != 0 || res->iov) {
++    if (ret != 0) {
+         cmd->error = VIRTIO_GPU_RESP_ERR_UNSPEC;
+         g_free(res);
          return;
-     }
 -- 
-2.25.1
+2.31.1
 

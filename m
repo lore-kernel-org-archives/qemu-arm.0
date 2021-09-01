@@ -1,263 +1,229 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp189811lfb;
-        Tue, 31 Aug 2021 23:35:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgYwVYiBxiigSiM44UONIsACFb6R58MPPIikwe5uJL1AxBk88gEHzlihPyy8VWNdVTDpXU
-X-Received: by 2002:a5e:c905:: with SMTP id z5mr25750143iol.33.1630478148328;
-        Tue, 31 Aug 2021 23:35:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630478148; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp200327lfb;
+        Tue, 31 Aug 2021 23:51:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzI9fW5tAbA3JRHZosXSrFd82/MMi8pMiAM/VBZ4CoOrikjedYb/6uXnvTEHYgAJh8beMdw
+X-Received: by 2002:a92:c5ac:: with SMTP id r12mr23594055ilt.279.1630479113253;
+        Tue, 31 Aug 2021 23:51:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630479113; cv=none;
         d=google.com; s=arc-20160816;
-        b=S+0c77TK8r3zLH/jBbDSolQieHBp6ba74xpvTN+F5RfjfaiH67p5RNU9MayOQS/Xim
-         wX0AtM7LAXhdAm84vrv5ZlM6ucd1yXSeVMjuYgm9RV2AjLrYrb5OQ7R+7Ucmk9Is/9kp
-         1sMcQYRcqGsRszVCqann+7hIwhZiNP35IPtCw29MuJ8KbvIgy3Thq9divYDXKut6p0kA
-         n1Gw4w2fOuUeTBcZnBaU/1QByk5WnWmCC4EXNv2+POyBO1KL5VXuxyw1RHsGT4q9ZYuG
-         4kRFwqwZUD8Oaz3cuv7zB2vAHOwcZ3Z2/GKWwoQB+Kcv/VxBBARQWV81huy2osJaT4te
-         eRow==
+        b=GCc1uy39yX+6p2AlWPp4cjdp/b5C/FWS+bpPMoBXRKacqC2ey1a3ijWtSmunLFlsqB
+         bDTy4kAn1H5zZMNL7/ImoIGMu8EqlE2xyub1JTyPH1ekiXnHT1V3N/JpJJTuE6gIeu0A
+         ESqwTcM07xByhEsYWKDxqw0KFY0HtdgFoUCKSs4xQtd6BwsqWsN+H7OX6CzsO0hWDDFo
+         VM899ZigoN6yQrwkHK1psObSttRSAaPyp4x0ghJKmyU32jfqpCMp6sl49eXRKpenXaUy
+         Q1I0DEMdiw8m5C/ECMkfi4I7ewQchZPDzqe15uHZNSif8wlcHPO976MMRVia8OwesTHQ
+         B2wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=HDxNc/0ps1g6da7tlin6pHs6UX2GO9/8nVQebcMPl/E=;
-        b=xRjFw2FKSq7+UKEt8xuU5klIdnfjHZWiQunYk7WBkBq3U8647QSEnDqg94SfFq6yj8
-         SjdT3yEXNaVnD5g3flRtunX/eNF0ujSaHzEy2mbY4vRHJiyjBuwUM6S3hkUWfwmfn5LN
-         tFRY8GCKXbI1xG6mCX2kFzZ1BLd8qeji080StenDds9mQlEGmLGMQmXgZNxLBMo64U7X
-         2pyAAOzkTplUMdNw08ysgKcmszBMNcN/preh9cGfStqgVROP+oOmGxCpoAEIX1cUqYeD
-         HP5Tz6hf7M22x3OxpeD+SqXPQaHq/U8pMAMaitSEJvI4ruhotvQbq/0GBMOxtIAvG3vZ
-         +C4g==
+         :list-unsubscribe:list-id:precedence:mime-version:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature:content-transfer-encoding
+         :content-language;
+        bh=wqV2RxxdVnu89K6LxBJxOZxGYYonF9qd+o6oC0fPPvQ=;
+        b=YV+7H/nf4OGkmRUmnm/wmjJvgII7xXmwNoAJLeDYkniPpRczrnTbmN0RqxPl+IDdxt
+         EG5KZry+yC9PIM2+L6LPC16jnIrpDLVKNzSexWGduS2KW0/m8g+/NuIICOLJyFr7L9hf
+         HuxzJjxuzwTpWXeVbiNnGtA7/d9zM02exlfU6p+L4lOAneNo5HjeHIUyFwLFv1HkGmjn
+         Hd2CbvrBGrhyUf2JZalCeQWaj12FLLZbWmaaCs3sJRjczcxmUPpR7DpcUgXcRBddbMVq
+         0rC+Uvk+j6ZgxWI6Pi4orqEgq/f9SU7r+27ZKYnHs/lI1ikRYoekKyp+lrchiUU6+jMa
+         C9xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=aQYJSBb3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s20si18874182ioa.93.2021.08.31.23.35.48
+        by mx.google.com with ESMTPS id u4si21102992jak.106.2021.08.31.23.51.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Aug 2021 23:35:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Aug 2021 23:51:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43912 helo=lists1p.gnu.org)
+       dkim=fail header.i=@Verisilicon.com header.s=default header.b=aQYJSBb3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=verisilicon.com
+Received: from localhost ([::1]:53038 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLJqd-0000Je-Ln
-	for alex.bennee@linaro.org; Wed, 01 Sep 2021 02:35:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53394)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLK6C-00071x-Gy
+	for alex.bennee@linaro.org; Wed, 01 Sep 2021 02:51:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mLJpd-0007Lo-CH; Wed, 01 Sep 2021 02:34:45 -0400
-Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:40073
- helo=smtpout1.3005.mail-out.ovh.net)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mLJpb-00012Y-57; Wed, 01 Sep 2021 02:34:45 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.12])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id C641313EF2D;
- Wed,  1 Sep 2021 06:34:38 +0000 (UTC)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Wed, 1 Sep
- 2021 08:34:37 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R005e5c9e7d6-7b12-47b8-a6a3-8460bcc5368a,
- 5EBA00A5E723AF1D17FBD8632F6684B6834AEADC) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH 1/1] hw/arm/aspeed: Allow machine to set serial_hd(0)
-To: <pdel@fb.com>
-References: <20210831233140.2659116-1-pdel@fb.com>
- <20210831233140.2659116-2-pdel@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <3ffd8327-6b62-a39f-49db-100bb1475309@kaod.org>
-Date: Wed, 1 Sep 2021 08:34:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <20210831233140.2659116-2-pdel@fb.com>
+ (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
+ id 1mLK5q-00071c-IB; Wed, 01 Sep 2021 02:51:30 -0400
+Received: from shasxm06.verisilicon.com ([101.89.135.45]:56961
+ helo=shasxm03.verisilicon.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <Chunming.Li@verisilicon.com>)
+ id 1mLK5l-0006Xh-Gf; Wed, 01 Sep 2021 02:51:30 -0400
+Content-Language: zh-CN
 Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 0cfc63ba-ddd3-4625-ac96-53bea7814186
-X-Ovh-Tracer-Id: 2233222466928806764
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvvddguddtlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeegvdeijeefvdfhudfhffeuveehledufffhvdekheelgedttddthfeigeevgefhffenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphguvghlsehfsgdrtghomh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.3005.mail-out.ovh.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: base64
+DKIM-Signature: v=1; a=rsa-sha256; d=Verisilicon.com; s=default;
+ c=simple/simple; t=1630479071; h=from:subject:to:date:message-id;
+ bh=wqV2RxxdVnu89K6LxBJxOZxGYYonF9qd+o6oC0fPPvQ=;
+ b=aQYJSBb3eY7D/sI8QDxlVXYvwak4ru4CcmUzm+hjVV9mvTwPboPcW5EdCZ0qsc289XJslrl/i/x
+ upnyaBwVhlbSQAA43JfouI2Gh0LoKnGkP+P31aUfl1XL8qOjNUYc8DTTpiBxUnoqoHqE+f/zANvKa
+ iOoUAIY/GN6Q1Ba5Rtk=
+Received: from SHASXM03.verisilicon.com ([fe80::938:4dda:a2f9:38aa]) by
+ SHASXM06.verisilicon.com ([fe80::59a8:ce34:dc14:ddda%16]) with mapi id
+ 14.03.0408.000; Wed, 1 Sep 2021 14:51:11 +0800
+From: "Li, Chunming" <Chunming.Li@verisilicon.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, chunming
+ <chunming_li1234@163.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>
+Subject: RE: [PATCH v5 1/4] hw/arm/smmuv3: Support non PCI/PCIe device
+ connect with SMMU v3
+Thread-Topic: [PATCH v5 1/4] hw/arm/smmuv3: Support non PCI/PCIe device
+ connect with SMMU v3
+Thread-Index: AQHXmYiKAv0WlrT3nUGzSw6tLzjnwKuNKE6AgAGd/bA=
+Date: Wed, 1 Sep 2021 06:51:09 +0000
+Message-ID: <49C79B700B5D8F45B8EF0861B4EF3B3B0114302B85@SHASXM03.verisilicon.com>
+References: <1629878922-173270-1-git-send-email-chunming_li1234@163.com>
+ <1629878922-173270-2-git-send-email-chunming_li1234@163.com>
+ <3730a403-5144-b743-06f9-90faa45e20a4@redhat.com>
+In-Reply-To: <3730a403-5144-b743-06f9-90faa45e20a4@redhat.com>
+Accept-Language: zh-CN, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.10.44.37]
+x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-25628.004
+x-tm-as-result: No--24.854700-0.000000-31
+x-tm-as-user-approved-sender: Yes
+x-tm-as-user-blocked-sender: No
+MIME-Version: 1.0
+Received-SPF: pass client-ip=101.89.135.45;
+ envelope-from=Chunming.Li@verisilicon.com; helo=shasxm03.verisilicon.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.932,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, andrew@aj.id.au,
- qemu-devel@nongnu.org, f4bug@amsat.org, patrick@stwcx.xyz, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2uSn4tYGCOWZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Liu, Renwei" <Renwei.Liu@verisilicon.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wen,
+ Jianxian" <Jianxian.Wen@verisilicon.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nAT60eQhviMi
 
-Adding Peter Maydell and Joel.
-
-On 9/1/21 1:31 AM, pdel@fb.com wrote:
-> From: Peter Delevoryas <pdel@fb.com>
-> 
-> When you run QEMU with an Aspeed machine and a single serial device
-> using stdio like this:
-> 
->     qemu -machine ast2600-evb -drive ... -serial stdio
-> 
-> The guest OS can read and write to the UART5 registers at 0x1E784000 and
-> it will receive from stdin and write to stdout. The Aspeed SoC's have a
-> lot more UART's though (AST2500 has 5, AST2600 has 13) and depending on
-> the board design, may be using any of them as the serial console. (See
-> "stdout-path" in a DTS to check which one is chosen).
-> 
-> Most boards, including all of those currently defined in
-> hw/arm/aspeed.c, just use UART5, but some use UART1. This change adds
-> some flexibility for different boards without requiring users to change
-> their command-line invocation of QEMU.
-> 
-> I tested this doesn't break existing code by booting an AST2500 OpenBMC
-> image and an AST2600 OpenBMC image, each using UART5 as the console.
-> 
-> Then I tested switching the default to UART1 and booting an AST2600
-> OpenBMC image that uses UART1, and that worked too.
-> 
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
-
-Some comments below, 
-
-> ---
->  hw/arm/aspeed.c         |  1 +
->  hw/arm/aspeed_ast2600.c | 11 +++++++----
->  hw/arm/aspeed_soc.c     |  9 ++++++---
->  include/hw/arm/aspeed.h |  1 +
->  4 files changed, 15 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 9d43e26c51..74379907ff 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -804,6 +804,7 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
->      mc->no_parallel = 1;
->      mc->default_ram_id = "ram";
->      amc->macs_mask = ASPEED_MAC0_ON;
-> +    amc->serial_hd0 = ASPEED_DEV_UART5;
->  
->      aspeed_machine_class_props_init(oc);
->  }
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index e3013128c6..361a456214 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -10,6 +10,7 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "hw/misc/unimp.h"
-> +#include "hw/arm/aspeed.h"
->  #include "hw/arm/aspeed_soc.h"
->  #include "hw/char/serial.h"
->  #include "qemu/module.h"
-> @@ -231,6 +232,8 @@ static uint64_t aspeed_calc_affinity(int cpu)
->  static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->  {
->      int i;
-> +    AspeedMachineState *bmc = ASPEED_MACHINE(qdev_get_machine());
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
-
-This is reaching into the machine from the SoC which is not good
-practice.
-
-What you should do is add an attribute in AspeedSoCState and a 
-property in aspeed_soc_properties[]. This property would be set 
-in aspeed_machine_init() before realizing the soc object. Look 
-at "dram" for an example.
-
-Then, in the aspeed_soc_*_realize routines, you would use the 
-attribute to initialize the default serial device.
-
-I don't really know what to call this attribute and property.
-How about uart_default and "uart-default" ? 
-
-Thanks,
-
-C.
-
->      AspeedSoCState *s = ASPEED_SOC(dev);
->      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->      Error *err = NULL;
-> @@ -322,10 +325,10 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
->      }
->  
-> -    /* UART - attach an 8250 to the IO space as our UART5 */
-> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
-> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
-> -                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-> +    /* Wire up the first serial device, usually either UART5 or UART1 */
-> +    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_hd0], 2,
-> +                   aspeed_soc_get_irq(s, amc->serial_hd0), 38400,
-> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
->  
->      /* I2C */
->      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 3ad6c56fa9..77422bbeb1 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -13,6 +13,7 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "hw/misc/unimp.h"
-> +#include "hw/arm/aspeed.h"
->  #include "hw/arm/aspeed_soc.h"
->  #include "hw/char/serial.h"
->  #include "qemu/module.h"
-> @@ -221,6 +222,8 @@ static void aspeed_soc_init(Object *obj)
->  static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->  {
->      int i;
-> +    AspeedMachineState *bmc = ASPEED_MACHINE(qdev_get_machine());
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
->      AspeedSoCState *s = ASPEED_SOC(dev);
->      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->      Error *err = NULL;
-> @@ -287,9 +290,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
->      }
->  
-> -    /* UART - attach an 8250 to the IO space as our UART5 */
-> -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
-> -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
-> +    /* Wire up the first serial device, usually either UART5 or UART1 */
-> +    serial_mm_init(get_system_memory(), sc->memmap[amc->serial_hd0], 2,
-> +                   aspeed_soc_get_irq(s, amc->serial_hd0), 38400,
->                     serial_hd(0), DEVICE_LITTLE_ENDIAN);
->  
->      /* I2C */
-> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-> index c9747b15fc..bc0f27885a 100644
-> --- a/include/hw/arm/aspeed.h
-> +++ b/include/hw/arm/aspeed.h
-> @@ -38,6 +38,7 @@ struct AspeedMachineClass {
->      uint32_t num_cs;
->      uint32_t macs_mask;
->      void (*i2c_init)(AspeedMachineState *bmc);
-> +    uint32_t serial_hd0;
->  };
->  
->  
-> 
-
+DQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IEVyaWMgQXVnZXIgW21haWx0
+bzplcmljLmF1Z2VyQHJlZGhhdC5jb21dDQo+IFNlbnQ6IFR1ZXNkYXksIEF1Z3VzdCAzMSwgMjAy
+MSAxMDowMiBQTQ0KPiBUbzogY2h1bm1pbmc7IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZw0KPiBD
+YzogcWVtdS1hcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBXZW4sIEppYW54
+aWFuOyBMaXUsDQo+IFJlbndlaTsgTGksIENodW5taW5nDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0gg
+djUgMS80XSBody9hcm0vc21tdXYzOiBTdXBwb3J0IG5vbiBQQ0kvUENJZSBkZXZpY2UNCj4gY29u
+bmVjdCB3aXRoIFNNTVUgdjMNCj4gDQo+IEhpIENodW5taW5nLA0KPiANCj4gT24gOC8yNS8yMSAx
+MDowOCBBTSwgY2h1bm1pbmcgd3JvdGU6DQo+ID4gRnJvbTogY2h1bm1pbmcgPGNodW5taW5nLmxp
+QHZlcmlzaWxpY29uLmNvbT4NCj4gPg0KPiA+ICAgLiBBZGQgc2lkLW1hcCBwcm9wZXJ0eSB0byBz
+dG9yZSBub24gUENJL1BDSWUgZGV2aWNlcyBTSUQNCj4gPiAgIC4gQ3JlYXRlIElPTU1VIG1lbW9y
+eSByZWdpb25zIGZvciBub24gUENJL1BDSWUgZGV2aWNlcyBiYXNlZCBvbg0KPiB0aGVpciBTSUQN
+Cj4gPiAgIC4gVXBkYXRlIFNJRCBnZXR0aW5nIHN0cmF0ZWd5IGZvciBQQ0kvUENJZSBhbmQgbm9u
+IFBDSS9QQ0llIGRldmljZXMNCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IGNodW5taW5nIDxjaHVu
+bWluZy5saUB2ZXJpc2lsaWNvbi5jb20+DQo+ID4gLS0tDQo+ID4gIGh3L2FybS9zbW11djMuYyAg
+ICAgICAgICAgICAgfCA0Ng0KPiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysN
+Cj4gPiAgaW5jbHVkZS9ody9hcm0vc21tdS1jb21tb24uaCB8ICA3ICsrKysrLQ0KPiA+ICBpbmNs
+dWRlL2h3L2FybS9zbW11djMuaCAgICAgIHwgIDIgKysNCj4gPiAgMyBmaWxlcyBjaGFuZ2VkLCA1
+NCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcv
+YXJtL3NtbXV2My5jIGIvaHcvYXJtL3NtbXV2My5jDQo+ID4gaW5kZXggMDFiNjBiZWU0OS4uMTFk
+N2ZlODQyMyAxMDA2NDQNCj4gPiAtLS0gYS9ody9hcm0vc21tdXYzLmMNCj4gPiArKysgYi9ody9h
+cm0vc21tdXYzLmMNCj4gPiBAQCAtMzIsNiArMzIsNyBAQA0KPiA+ICAjaW5jbHVkZSAiaHcvYXJt
+L3NtbXV2My5oIg0KPiA+ICAjaW5jbHVkZSAic21tdXYzLWludGVybmFsLmgiDQo+ID4gICNpbmNs
+dWRlICJzbW11LWludGVybmFsLmgiDQo+ID4gKyNpbmNsdWRlICJody9xZGV2LXByb3BlcnRpZXMu
+aCINCj4gPg0KPiA+ICAvKioNCj4gPiAgICogc21tdXYzX3RyaWdnZXJfaXJxIC0gcHVsc2UgQGly
+cSBpZiBlbmFibGVkIGFuZCB1cGRhdGUNCj4gPiBAQCAtMTQzMCw2ICsxNDMxLDE5IEBAIHN0YXRp
+YyB2b2lkIHNtbXVfcmVzZXQoRGV2aWNlU3RhdGUgKmRldikNCj4gPiAgICAgIHNtbXV2M19pbml0
+X3JlZ3Mocyk7DQo+ID4gIH0NCj4gPg0KPiA+ICtzdGF0aWMgU01NVURldmljZSAqc21tdV9maW5k
+X3Blcmlfc2RldihTTU1VU3RhdGUgKnMsIHVpbnQxNl90IHNpZCkNCj4gPiArew0KPiA+ICsgICAg
+U01NVURldmljZSAqc2RldjsNCj4gPiArDQo+ID4gKyAgICBRTElTVF9GT1JFQUNIKHNkZXYsICZz
+LT5wZXJpX3NkZXZfbGlzdCwgbmV4dCkgew0KPiA+ICsgICAgICAgIGlmIChzbW11X2dldF9zaWQo
+c2RldikgPT0gc2lkKSB7DQo+ID4gKyAgICAgICAgICAgIHJldHVybiBzZGV2Ow0KPiA+ICsgICAg
+ICAgIH0NCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAgICByZXR1cm4gTlVMTDsNCj4gPiArfQ0K
+PiA+ICsNCj4gPiAgc3RhdGljIHZvaWQgc21tdV9yZWFsaXplKERldmljZVN0YXRlICpkLCBFcnJv
+ciAqKmVycnApDQo+ID4gIHsNCj4gPiAgICAgIFNNTVVTdGF0ZSAqc3lzID0gQVJNX1NNTVUoZCk7
+DQo+ID4gQEAgLTE0MzcsNiArMTQ1MSw5IEBAIHN0YXRpYyB2b2lkIHNtbXVfcmVhbGl6ZShEZXZp
+Y2VTdGF0ZSAqZCwgRXJyb3INCj4gKiplcnJwKQ0KPiA+ICAgICAgU01NVXYzQ2xhc3MgKmMgPSBB
+Uk1fU01NVVYzX0dFVF9DTEFTUyhzKTsNCj4gPiAgICAgIFN5c0J1c0RldmljZSAqZGV2ID0gU1lT
+X0JVU19ERVZJQ0UoZCk7DQo+ID4gICAgICBFcnJvciAqbG9jYWxfZXJyID0gTlVMTDsNCj4gPiAr
+ICAgIFNNTVVEZXZpY2UgKnNkZXY7DQo+ID4gKyAgICBjaGFyICpuYW1lID0gTlVMTDsNCj4gPiAr
+ICAgIHVpbnQxNl90IHNpZCA9IDA7DQo+ID4NCj4gPiAgICAgIGMtPnBhcmVudF9yZWFsaXplKGQs
+ICZsb2NhbF9lcnIpOw0KPiA+ICAgICAgaWYgKGxvY2FsX2Vycikgew0KPiA+IEBAIC0xNDU0LDYg
+KzE0NzEsMjggQEAgc3RhdGljIHZvaWQgc21tdV9yZWFsaXplKERldmljZVN0YXRlICpkLCBFcnJv
+cg0KPiAqKmVycnApDQo+ID4gICAgICBzeXNidXNfaW5pdF9tbWlvKGRldiwgJnN5cy0+aW9tZW0p
+Ow0KPiA+DQo+ID4gICAgICBzbW11X2luaXRfaXJxKHMsIGRldik7DQo+ID4gKw0KPiA+ICsgICAg
+LyogQ3JlYXRlIElPTU1VIG1lbW9yeSByZWdpb24gZm9yIHBlcmlwaGVyYWwgZGV2aWNlcyBiYXNl
+ZCBvbg0KPiB0aGVpciBTSUQgKi8NCj4gcy9wZXJpcGhlcmFsIGRldmljZXMvcGxhdGZvcm0gZGV2
+aWNlcz8gSSB3b3VsZCBzdWdnZXN0IHRvIHJlbmFtZSB0aGUNCj4gZmllbGRzIGNvbnRhaW5lZCAn
+cGVyaScgdG9vLg0KDQpHb3QgaXQuIFdpbGwgcmVuYW1lIHNpZF9tYXAgLT4gcGVyaV9zaWRfbWFw
+LCBudW1fc2lkIC0+IHBlcmlfbnVtX3NpZCBpbiBuZXh0IHZlcnNpb24uDQoNCj4gPiArICAgIGZv
+ciAoaW50IGkgPSAwOyBpIDwgcy0+bnVtX3NpZDsgaSsrKSB7DQo+ID4gKyAgICAgICAgc2lkID0g
+cy0+c2lkX21hcFtpXTsNCj4gPiArICAgICAgICBzZGV2ID0gc21tdV9maW5kX3Blcmlfc2Rldihz
+eXMsIHNpZCk7DQo+ID4gKyAgICAgICAgaWYgKHNkZXYpIHsNCj4gPiArICAgICAgICAgICAgY29u
+dGludWU7DQo+ID4gKyAgICAgICAgfQ0KPiA+ICsNCj4gPiArICAgICAgICBzZGV2ID0gZ19uZXcw
+KFNNTVVEZXZpY2UsIDEpOw0KPiA+ICsgICAgICAgIHNkZXYtPnNtbXUgPSBzeXM7DQo+ID4gKyAg
+ICAgICAgc2Rldi0+YnVzID0gTlVMTDsNCj4gPiArICAgICAgICBzZGV2LT5kZXZmbiA9IHNpZDsN
+Cj4gPiArDQo+ID4gKyAgICAgICAgbmFtZSA9IGdfc3RyZHVwX3ByaW50ZigiJXMtcGVyaS0lZCIs
+IHN5cy0+bXJ0eXBlbmFtZSwgc2lkKTsNCj4gPiArICAgICAgICBtZW1vcnlfcmVnaW9uX2luaXRf
+aW9tbXUoJnNkZXYtPmlvbW11LCBzaXplb2Yoc2Rldi0+aW9tbXUpLA0KPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBzeXMtPm1ydHlwZW5hbWUsDQo+ID4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIE9CSkVDVChzeXMpLCBuYW1lLCAxVUxMIDw8DQo+IFNNTVVf
+TUFYX1ZBX0JJVFMpOw0KPiA+ICsNCj4gPiArICAgICAgICBRTElTVF9JTlNFUlRfSEVBRCgmc3lz
+LT5wZXJpX3NkZXZfbGlzdCwgc2RldiwgbmV4dCk7DQo+ID4gKyAgICAgICAgZ19mcmVlKG5hbWUp
+Ow0KPiA+ICsgICAgfQ0KPiA+ICB9DQo+ID4NCj4gPiAgc3RhdGljIGNvbnN0IFZNU3RhdGVEZXNj
+cmlwdGlvbiB2bXN0YXRlX3NtbXV2M19xdWV1ZSA9IHsNCj4gPiBAQCAtMTUwNiw2ICsxNTQ1LDEy
+IEBAIHN0YXRpYyB2b2lkIHNtbXV2M19pbnN0YW5jZV9pbml0KE9iamVjdCAqb2JqKQ0KPiA+ICAg
+ICAgLyogTm90aGluZyBtdWNoIHRvIGRvIGhlcmUgYXMgb2Ygbm93ICovDQo+ID4gIH0NCj4gPg0K
+PiA+ICtzdGF0aWMgUHJvcGVydHkgc21tdXYzX3Byb3BlcnRpZXNbXSA9IHsNCj4gPiArICAgIERF
+RklORV9QUk9QX0FSUkFZKCJzaWQtbWFwIiwgU01NVXYzU3RhdGUsIG51bV9zaWQsIHNpZF9tYXAs
+DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICBxZGV2X3Byb3BfdWludDE2LCB1aW50MTZfdCks
+DQo+ID4gKyAgICBERUZJTkVfUFJPUF9FTkRfT0ZfTElTVCgpLA0KPiA+ICt9Ow0KPiA+ICsNCj4g
+PiAgc3RhdGljIHZvaWQgc21tdXYzX2NsYXNzX2luaXQoT2JqZWN0Q2xhc3MgKmtsYXNzLCB2b2lk
+ICpkYXRhKQ0KPiA+ICB7DQo+ID4gICAgICBEZXZpY2VDbGFzcyAqZGMgPSBERVZJQ0VfQ0xBU1Mo
+a2xhc3MpOw0KPiA+IEBAIC0xNTE1LDYgKzE1NjAsNyBAQCBzdGF0aWMgdm9pZCBzbW11djNfY2xh
+c3NfaW5pdChPYmplY3RDbGFzcw0KPiAqa2xhc3MsIHZvaWQgKmRhdGEpDQo+ID4gICAgICBkZXZp
+Y2VfY2xhc3Nfc2V0X3BhcmVudF9yZXNldChkYywgc21tdV9yZXNldCwgJmMtPnBhcmVudF9yZXNl
+dCk7DQo+ID4gICAgICBjLT5wYXJlbnRfcmVhbGl6ZSA9IGRjLT5yZWFsaXplOw0KPiA+ICAgICAg
+ZGMtPnJlYWxpemUgPSBzbW11X3JlYWxpemU7DQo+ID4gKyAgICBkZXZpY2VfY2xhc3Nfc2V0X3By
+b3BzKGRjLCBzbW11djNfcHJvcGVydGllcyk7DQo+ID4gIH0NCj4gPg0KPiA+ICBzdGF0aWMgaW50
+IHNtbXV2M19ub3RpZnlfZmxhZ19jaGFuZ2VkKElPTU1VTWVtb3J5UmVnaW9uICppb21tdSwNCj4g
+PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9ody9hcm0vc21tdS1jb21tb24uaCBiL2luY2x1ZGUvaHcv
+YXJtL3NtbXUtDQo+IGNvbW1vbi5oDQo+ID4gaW5kZXggNzA2YmUzYzZkMC4uOTVjZDEyYTRiNSAx
+MDA2NDQNCj4gPiAtLS0gYS9pbmNsdWRlL2h3L2FybS9zbW11LWNvbW1vbi5oDQo+ID4gKysrIGIv
+aW5jbHVkZS9ody9hcm0vc21tdS1jb21tb24uaA0KPiA+IEBAIC0xMTcsNiArMTE3LDcgQEAgc3Ry
+dWN0IFNNTVVTdGF0ZSB7DQo+ID4gICAgICBRTElTVF9IRUFEKCwgU01NVURldmljZSkgZGV2aWNl
+c193aXRoX25vdGlmaWVyczsNCj4gPiAgICAgIHVpbnQ4X3QgYnVzX251bTsNCj4gPiAgICAgIFBD
+SUJ1cyAqcHJpbWFyeV9idXM7DQo+ID4gKyAgICBRTElTVF9IRUFEKCwgU01NVURldmljZSkgcGVy
+aV9zZGV2X2xpc3Q7DQo+ID4gIH07DQo+ID4NCj4gPiAgc3RydWN0IFNNTVVCYXNlQ2xhc3Mgew0K
+PiA+IEBAIC0xMzgsNyArMTM5LDExIEBAIFNNTVVQY2lCdXMgKnNtbXVfZmluZF9zbW11X3BjaWJ1
+cyhTTU1VU3RhdGUgKnMsDQo+IHVpbnQ4X3QgYnVzX251bSk7DQo+ID4gIC8qIFJldHVybiB0aGUg
+c3RyZWFtIElEIG9mIGFuIFNNTVUgZGV2aWNlICovDQo+ID4gIHN0YXRpYyBpbmxpbmUgdWludDE2
+X3Qgc21tdV9nZXRfc2lkKFNNTVVEZXZpY2UgKnNkZXYpDQo+ID4gIHsNCj4gPiAtICAgIHJldHVy
+biBQQ0lfQlVJTERfQkRGKHBjaV9idXNfbnVtKHNkZXYtPmJ1cyksIHNkZXYtPmRldmZuKTsNCj4g
+PiArICAgIGlmIChzZGV2LT5idXMgPT0gTlVMTCkgew0KPiA+ICsgICAgICAgIHJldHVybiBzZGV2
+LT5kZXZmbjsNCj4gPiArICAgIH0gZWxzZSB7DQo+ID4gKyAgICAgICAgcmV0dXJuIFBDSV9CVUlM
+RF9CREYocGNpX2J1c19udW0oc2Rldi0+YnVzKSwgc2Rldi0+ZGV2Zm4pOw0KPiA+ICsgICAgfQ0K
+PiA+ICB9DQo+ID4NCj4gPiAgLyoqDQo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvaHcvYXJtL3Nt
+bXV2My5oIGIvaW5jbHVkZS9ody9hcm0vc21tdXYzLmgNCj4gPiBpbmRleCBjNjQxZTYwNzM1Li4z
+MmJhODQ5OTBkIDEwMDY0NA0KPiA+IC0tLSBhL2luY2x1ZGUvaHcvYXJtL3NtbXV2My5oDQo+ID4g
+KysrIGIvaW5jbHVkZS9ody9hcm0vc21tdXYzLmgNCj4gPiBAQCAtMzksNiArMzksOCBAQCBzdHJ1
+Y3QgU01NVXYzU3RhdGUgew0KPiA+ICAgICAgdWludDMyX3QgZmVhdHVyZXM7DQo+ID4gICAgICB1
+aW50OF90IHNpZF9zaXplOw0KPiA+ICAgICAgdWludDhfdCBzaWRfc3BsaXQ7DQo+ID4gKyAgICB1
+aW50MzJfdCBudW1fc2lkOw0KPiA+ICsgICAgdWludDE2X3QgKnNpZF9tYXA7DQo+IA0KPiBwZXJp
+X3NkZXZfbGlzdCBpcyBhIGZpZWxkIG9mIHRoZSBTTU1VU3RhdGUuIFdoeSBkb24ndCB5b3UgcHV0
+IHRob3NlDQo+IGZpZWxkcyBpbiB0aGUgcGFyZW50IGNsYXNzIHRvby4gSWYgd2Ugd2VyZSB0byBz
+dXBwb3J0IGFub3RoZXIgb3RoZXINCj4gbW9kZWwgb2YgU01NVSwgcGxhdGZvcm0gZGV2aWNlIHN1
+cHBvcnQgd291bGQgYmUgbWVhbmluZ2Z1bCB0aGVyZSB0b28gc28NCj4gSSB3b3VsZCBzdWdlZXN0
+IHRvIHB1dCB0aGUgZmllbGRzIGFuZCBwZW9ycGVydHkgYW5kIHRoaXMgbGV2ZWwuDQoNCkdvdCBp
+dC4gV2lsbCBtb3ZlIHRoZSBmaWVsZHMgYW5kIHByb3BlcnR5IGludG8gU01NVVN0YXRlIGluIG5l
+eHQgdmVyc2lvbi4NCg0KPiANCj4gPg0KPiA+ICAgICAgdWludDMyX3QgaWRyWzZdOw0KPiA+ICAg
+ICAgdWludDMyX3QgaWlkcjsNCj4gVGhhbmtzDQo+IA0KPiBFcmljDQoNCg==

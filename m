@@ -1,99 +1,99 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp628663lfb;
-        Thu, 2 Sep 2021 13:33:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVegrOxMjhRsLOR3TpJfqGOy9V5vJUPvO4oZcvftR1oTOHtXDjb2GsOm5g143OOV/9EvIN
-X-Received: by 2002:a05:6e02:483:: with SMTP id b3mr17824ils.129.1630614786295;
-        Thu, 02 Sep 2021 13:33:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630614786; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp630117lfb;
+        Thu, 2 Sep 2021 13:35:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzBpIfzUP+kHxHeUOQ2zqcOagSEPcoa4GrYJatBg2Dn2tpI0HFmAa4iJjC7I+KZ5+/N2Q78
+X-Received: by 2002:a05:6e02:1c2b:: with SMTP id m11mr36775ilh.242.1630614905012;
+        Thu, 02 Sep 2021 13:35:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630614905; cv=none;
         d=google.com; s=arc-20160816;
-        b=A9oYxhnvzLn2to/lm0jiQU14TdB5jCzdHPw8hx5BgtDniwF+335ewEM6q+fxTr12MO
-         uHAvoFVwRMlqZIg731WCdubqGUCqu6JsAIEmYtAar5pYXbZaEkY9BH2j7zum4GDYfeEM
-         5BlYSGQtDwRkFHxTVc4Lo+wzypN/zRPHZmloSgdSQik0WavXttoisFy/Z/u6TdOkUYZN
-         KTl/6Z3V0wnJzIjQQf1htXfflilgZy0fruOtPyOigxXQ8NRj/Pi8d4eD/sPFcwUzdeLf
-         nCPlDczDHo8AoJlKQYCP+/R64Qu6ufB3Rf7OVxcRuok7yd5B2jumLqnzMqGXb5lx3E5N
-         JyEA==
+        b=aCp84EzWWeqjLjh8AwcFRY5A9g4OY/KBLsCeFmoHrV4W+OxsHU4R0j4RJYOfmnE6xe
+         LhMkugVzC/5WCrNUGBAwpp1nAVqTdeZbBqpHcm9cNfdt9rnJaB4hsXUUwuviwSNl43qv
+         qQJp6wRlFyGjghtqvZFcO5ApPwxS49ClFp+7NQ7A1dFF/j7XBNKhpdEiw+irN8i0VdXh
+         cIS+U4+3A5Omwp4lbRyFA9ptmGkNvGoRZajOAEeMDRGfQYSgcIramqNfo9wQgY7VeeUZ
+         1BwsyqMLcp6wW0BjKqEk9I6HiKwtbq1ax6f9u57CzZpq8Y2/d13eeQiEUDemrH5zFd/0
+         4tpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=751TEEkaP5uNR4ViwAskIKR6oYmccFDD9SSpFku46JY=;
-        b=xxyW8v25jPsfGlxBCtHMnaIF+cjkH1rXE0VOde+PLiuN3ou4QzWvmHpEFzpondexst
-         DNpt6P3tBDUEKaJl8Sq59fkzlLk8QFxLeIRI+bPiJLEhEE5gEJAGj6yJk3yTe8JDA4xk
-         Na3gFFDIqfJoaUE/jlW7ruvSUORuTlwCY6FYpI9+mE8oAntivIo4GcUkMVex1Z0Vwe6d
-         2fwv5eCxvaBkIqMKV3MGDJZpRraNxZZPXxNd+g3gpuoE7qt5382tMjoBMCRq/2JN1CkD
-         qIuy+ZxhugXePVtjtxFvG38aALR+bmE7XokRp6QBMP2l2jtOD5bogbT5E2O12ReP9e36
-         arhA==
+        bh=cATzV+cgXA9fNf6+6osb5t9LIw0lqjY+rzeij2NRDf0=;
+        b=JSHVlXTQHf/tlkknuFi1k21QUNqMm/y6ckLLMsHWoijpWJ+LFjgKRP5k7l6zIMaiDP
+         odn4lZTHpCDmZ1jxo6AcTNc+CTZLvXXDRCuSKsa7sC/GSzLJ1xaamx4QABrRfIJ+W6fh
+         APKYv7Tc07AiXCsRAd00D/n9MH71c/C85S3kLT33EGox5eD9JWz+KqqdMLRtcLBFHMbE
+         nADOm/YYDZ4vra5/jTHYOuMU2VUrKFkcStyUU72CzS/8keCCirFgpmf/LVseMcmmoz9h
+         B/ZQsh08KWQS5xaFwlwSghU5wG4VUnUXnAtEzmz8nIKJv07jdjLCeUxYV/q8EqcYfTtP
+         aiyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="LL/xHBPp";
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=DRVhSzZs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l19si2811167ilc.102.2021.09.02.13.33.06
+        by mx.google.com with ESMTPS id b4si2845716iln.32.2021.09.02.13.35.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:33:06 -0700 (PDT)
+        Thu, 02 Sep 2021 13:35:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="LL/xHBPp";
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=DRVhSzZs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40450 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44728 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtOT-0001K6-It
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:33:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42264)
+	id 1mLtQO-0004Q0-9z
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:35:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42318)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtI2-0005yk-Hg
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:26:26 -0400
-Received: from mail-vk1-xa32.google.com ([2607:f8b0:4864:20::a32]:39894)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtIG-0006Wj-Sg
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:26:41 -0400
+Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e]:38884)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtHx-0006jT-Pz
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:26:26 -0400
-Received: by mail-vk1-xa32.google.com with SMTP id d7so1061876vko.6
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:26:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtID-000701-VH
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:26:40 -0400
+Received: by mail-vs1-xe2e.google.com with SMTP id a25so2629001vso.5
+ for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:26:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=751TEEkaP5uNR4ViwAskIKR6oYmccFDD9SSpFku46JY=;
- b=LL/xHBPpOMYAlslk/XJHzZPbFrTpYJmk5+3oYZaSKmJ/axYdcouvMsB7jBo8wPntwX
- wCp4xZrXXjziaYJDTyZqp8efSJd9LeXmyPxMigTmG8NA+swNiCMFq07LpkD21cubyb0S
- xxR4gMNhsa8vdmLag9u4ZA9caD4jIrFPkhS93nZFkEZXWVykttfvsE0nNHx7PjItmwCy
- UJm0bXM+lf0KSmbL7KqlqbHtsQF34yqk0orEGvd28TaDl7kr85lytuYGHM216dEXgFeI
- HmoD6qC4z++Wtw7J8hCzq/ZAoL8yDGopimRaQr3SF7UxQGhVV4KLIl6TROMj5JmJfiqE
- ImsQ==
+ :cc; bh=cATzV+cgXA9fNf6+6osb5t9LIw0lqjY+rzeij2NRDf0=;
+ b=DRVhSzZsPNOUVAwAQdU3ZfJkRqxYT5ooUQ0xzAZbyEd5BK+RK8v4wCu1oazuQetzeR
+ xCsnZ3/Tn/Q1qs6Y6RjEN2j+Inu7kXf5lvv3ecHK3eluC3dclp8eTrdoWZUD1ZZ5HY3q
+ mgLX0DoKZIp6IaFpDB2MuNMeVpUBIYPQseC7MZpACC/GQO7xt/SyPOAkBlcD5Y1dkfDS
+ sMLRJes9UD7G88UbrMPPUp+h2GNHDHARzwGxHboygmkVk34LRMsZhM33VWYmiKT9rJgB
+ Fe0R3FCb71AJcJZyu90zwFG+cCNzsRKj9/dMNgORreiL6Ske6HZOfYtqG/K0kFnvkzq/
+ bp/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=751TEEkaP5uNR4ViwAskIKR6oYmccFDD9SSpFku46JY=;
- b=gCQLWcztrQZ2psvlk5Z6dJr+Hslb0CC0YVmTlGi0m7SOUo7p20yaFVwvBhc2KL+Qe8
- uVaXrqgIGZ1VFuYTehp5CzleQL8ar+j7feusQs23JrNF7rC1FcpaMFo1CA1Stql8G5wz
- 1SKoBL+ruvww1n19/tUm8xghHCDQPX4AT2fMBgkX/oDHAn6PO3uRXu11aSyjZu+H/o9z
- cPyn7qz25r0/S7Dho39B1x2F31ZbbWUfaFgmLg6lmGeKUfTkZa2WcFhJhN6yDZzPVAcJ
- H4tTzv9pUHLQ3MxB677k5ivdRaDFUrc3XpwatN4R9a1EK6MkhrbuBVr/kTxsBh8fRXFB
- 5ECA==
-X-Gm-Message-State: AOAM5315A6FXAFsFTrkPHBbxN6O7yvgCIz+hq0mTzS6TJxjPOkYepLYB
- /wxKpAfbDqLvctZdf2WU1YNcGAUtypy/hAhSQHgFNg==
-X-Received: by 2002:a1f:46c4:: with SMTP id t187mr4410vka.10.1630614380291;
- Thu, 02 Sep 2021 13:26:20 -0700 (PDT)
+ bh=cATzV+cgXA9fNf6+6osb5t9LIw0lqjY+rzeij2NRDf0=;
+ b=ZpekGeI/ryQIgSuOHveoV14QXLH1ACpkrlH+lf5gzDnFu+wzwhlvrbn+17Y5TxPF/A
+ YnQFfZ7aWxwC9nHyTe3RKz+Aa94yLVAraPQNqTFeOW+ZXCo6DtfkvqVLRocEBlVTIV6n
+ eeVtAHiSgNIAvJOXlMEGp9aX+HyrEwC2P2LRrjGPrSiwiVtZUnSkVbsfPYkKzfpN67sb
+ zjhsLRap+3IpRy3mBE9HkcjMbZK32O7WO9cGQu52hURAhjXHT6RkKkwJPU6Bl88o/zoH
+ 9jVJ5OoOCAOTsiocJTk6uvwLUpvrwqPqHldPpjIjVXzx7N107AnLF1N53s0Tat+pRmNN
+ Cpfg==
+X-Gm-Message-State: AOAM530/+RCdrqotYHIbKCiHO/2CPGllIqB4ZzNiDlgy/5wfn5tEoKP2
+ eOBhVSj2tNYmkAtaM/Gyz2SIaK68zSQPA/PJbf074Qtm49i5yij9
+X-Received: by 2002:a67:2dc6:: with SMTP id t189mr3914121vst.49.1630614396994; 
+ Thu, 02 Sep 2021 13:26:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-21-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-21-f4bug@amsat.org>
+ <20210902151715.383678-22-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-22-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:26:09 -0600
-Message-ID: <CANCZdfpVhT2XmrRiqe+UJN7CG1R-6tt=r-wu4PFtkojgLEZWbQ@mail.gmail.com>
-Subject: Re: [PATCH 20/24] target/sparc: Restrict cpu_exec_interrupt() handler
- to sysemu
+Date: Thu, 2 Sep 2021 14:26:26 -0600
+Message-ID: <CANCZdfqpxrTgYz5Ff5TshQ9ro6486XX4M0EL=RSHrUQyHpGd1A@mail.gmail.com>
+Subject: Re: [PATCH 21/24] target/rx: Restrict cpu_exec_interrupt() handler to
+ sysemu
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000e73e7f05cb08fe46"
-Received-SPF: none client-ip=2607:f8b0:4864:20::a32;
- envelope-from=wlosh@bsdimp.com; helo=mail-vk1-xa32.google.com
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/alternative; boundary="000000000000e61b4605cb08ff52"
+Received-SPF: none client-ip=2607:f8b0:4864:20::e2e;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe2e.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,9 +123,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xfvNsGbliy03
+X-TUID: ibHNhjlL/DgT
 
---000000000000e73e7f05cb08fe46
+--000000000000e61b4605cb08ff52
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -137,55 +137,78 @@ wrote:
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  target/sparc/cpu.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  target/rx/cpu.h    | 2 ++
+>  target/rx/cpu.c    | 2 +-
+>  target/rx/helper.c | 4 ++++
+>  3 files changed, 7 insertions(+), 1 deletion(-)
 >
-> Reviewed-by: Warner Losh <imp@bsdimp.com>
+
+Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
 
-> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-> index da6b30ec747..5a8a4ce7506 100644
-> --- a/target/sparc/cpu.c
-> +++ b/target/sparc/cpu.c
-> @@ -77,6 +77,7 @@ static void sparc_cpu_reset(DeviceState *dev)
->      env->cache_control =3D 0;
+> diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+> index 0b4b998c7be..faa3606f52f 100644
+> --- a/target/rx/cpu.h
+> +++ b/target/rx/cpu.h
+> @@ -124,8 +124,10 @@ typedef RXCPU ArchCPU;
+>  #define CPU_RESOLVING_TYPE TYPE_RX_CPU
+>
+>  const char *rx_crname(uint8_t cr);
+> +#ifndef CONFIG_USER_ONLY
+>  void rx_cpu_do_interrupt(CPUState *cpu);
+>  bool rx_cpu_exec_interrupt(CPUState *cpu, int int_req);
+> +#endif /* !CONFIG_USER_ONLY */
+>  void rx_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>  int rx_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+>  int rx_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+> diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+> index 96cc96e514f..25a4aa2976d 100644
+> --- a/target/rx/cpu.c
+> +++ b/target/rx/cpu.c
+> @@ -186,10 +186,10 @@ static const struct SysemuCPUOps rx_sysemu_ops =3D =
+{
+>  static const struct TCGCPUOps rx_tcg_ops =3D {
+>      .initialize =3D rx_translate_init,
+>      .synchronize_from_tb =3D rx_cpu_synchronize_from_tb,
+> -    .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,
+>      .tlb_fill =3D rx_cpu_tlb_fill,
+>
+>  #ifndef CONFIG_USER_ONLY
+> +    .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,
+>      .do_interrupt =3D rx_cpu_do_interrupt,
+>  #endif /* !CONFIG_USER_ONLY */
+>  };
+> diff --git a/target/rx/helper.c b/target/rx/helper.c
+> index db6b07e3890..f34945e7e2c 100644
+> --- a/target/rx/helper.c
+> +++ b/target/rx/helper.c
+> @@ -40,6 +40,8 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw,
+> int rte)
+>      env->psw_c =3D FIELD_EX32(psw, PSW, C);
 >  }
 >
 > +#ifndef CONFIG_USER_ONLY
->  static bool sparc_cpu_exec_interrupt(CPUState *cs, int interrupt_request=
-)
+> +
+>  #define INT_FLAGS (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR)
+>  void rx_cpu_do_interrupt(CPUState *cs)
 >  {
->      if (interrupt_request & CPU_INTERRUPT_HARD) {
-> @@ -96,6 +97,7 @@ static bool sparc_cpu_exec_interrupt(CPUState *cs, int
+> @@ -142,6 +144,8 @@ bool rx_cpu_exec_interrupt(CPUState *cs, int
 > interrupt_request)
->      }
 >      return false;
 >  }
+>
 > +#endif /* !CONFIG_USER_ONLY */
->
->  static void cpu_sparc_disas_set_info(CPUState *cpu, disassemble_info
-> *info)
+> +
+>  hwaddr rx_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
 >  {
-> @@ -863,10 +865,10 @@ static const struct SysemuCPUOps sparc_sysemu_ops =
-=3D {
->  static const struct TCGCPUOps sparc_tcg_ops =3D {
->      .initialize =3D sparc_tcg_init,
->      .synchronize_from_tb =3D sparc_cpu_synchronize_from_tb,
-> -    .cpu_exec_interrupt =3D sparc_cpu_exec_interrupt,
->      .tlb_fill =3D sparc_cpu_tlb_fill,
->
->  #ifndef CONFIG_USER_ONLY
-> +    .cpu_exec_interrupt =3D sparc_cpu_exec_interrupt,
->      .do_interrupt =3D sparc_cpu_do_interrupt,
->      .do_transaction_failed =3D sparc_cpu_do_transaction_failed,
->      .do_unaligned_access =3D sparc_cpu_do_unaligned_access,
+>      return addr;
 > --
 > 2.31.1
 >
 >
 
---000000000000e73e7f05cb08fe46
+--000000000000e61b4605cb08ff52
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -199,56 +222,78 @@ g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/sparc/cpu.c | 4 +++-<br>
-=C2=A01 file changed, 3 insertions(+), 1 deletion(-)<br>
-<br></blockquote><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bs=
-dimp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail=
--yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:=
-2px 0px 0px"><br class=3D"gmail-Apple-interchange-newline"></div><div>=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c<br>
-index da6b30ec747..5a8a4ce7506 100644<br>
---- a/target/sparc/cpu.c<br>
-+++ b/target/sparc/cpu.c<br>
-@@ -77,6 +77,7 @@ static void sparc_cpu_reset(DeviceState *dev)<br>
-=C2=A0 =C2=A0 =C2=A0env-&gt;cache_control =3D 0;<br>
+=C2=A0target/rx/cpu.h=C2=A0 =C2=A0 | 2 ++<br>
+=C2=A0target/rx/cpu.c=C2=A0 =C2=A0 | 2 +-<br>
+=C2=A0target/rx/helper.c | 4 ++++<br>
+=C2=A03 files changed, 7 insertions(+), 1 deletion(-)<br></blockquote><div>=
+<br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.co=
+m" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-yj6qo =
+gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2px 0px=
+ 0px"><br class=3D"gmail-Apple-interchange-newline"></div><div>=C2=A0</div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h<br>
+index 0b4b998c7be..faa3606f52f 100644<br>
+--- a/target/rx/cpu.h<br>
++++ b/target/rx/cpu.h<br>
+@@ -124,8 +124,10 @@ typedef RXCPU ArchCPU;<br>
+=C2=A0#define CPU_RESOLVING_TYPE TYPE_RX_CPU<br>
+<br>
+=C2=A0const char *rx_crname(uint8_t cr);<br>
++#ifndef CONFIG_USER_ONLY<br>
+=C2=A0void rx_cpu_do_interrupt(CPUState *cpu);<br>
+=C2=A0bool rx_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
++#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0void rx_cpu_dump_state(CPUState *cpu, FILE *f, int flags);<br>
+=C2=A0int rx_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)=
+;<br>
+=C2=A0int rx_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);<=
+br>
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c<br>
+index 96cc96e514f..25a4aa2976d 100644<br>
+--- a/target/rx/cpu.c<br>
++++ b/target/rx/cpu.c<br>
+@@ -186,10 +186,10 @@ static const struct SysemuCPUOps rx_sysemu_ops =3D {<=
+br>
+=C2=A0static const struct TCGCPUOps rx_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.initialize =3D rx_translate_init,<br>
+=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D rx_cpu_synchronize_from_tb,<br=
+>
+-=C2=A0 =C2=A0 .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D rx_cpu_tlb_fill,<br>
+<br>
+=C2=A0#ifndef CONFIG_USER_ONLY<br>
++=C2=A0 =C2=A0 .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D rx_cpu_do_interrupt,<br>
+=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0};<br>
+diff --git a/target/rx/helper.c b/target/rx/helper.c<br>
+index db6b07e3890..f34945e7e2c 100644<br>
+--- a/target/rx/helper.c<br>
++++ b/target/rx/helper.c<br>
+@@ -40,6 +40,8 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw, int=
+ rte)<br>
+=C2=A0 =C2=A0 =C2=A0env-&gt;psw_c =3D FIELD_EX32(psw, PSW, C);<br>
 =C2=A0}<br>
 <br>
 +#ifndef CONFIG_USER_ONLY<br>
-=C2=A0static bool sparc_cpu_exec_interrupt(CPUState *cs, int interrupt_requ=
-est)<br>
++<br>
+=C2=A0#define INT_FLAGS (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR)<br>
+=C2=A0void rx_cpu_do_interrupt(CPUState *cs)<br>
 =C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0if (interrupt_request &amp; CPU_INTERRUPT_HARD) {<br>
-@@ -96,6 +97,7 @@ static bool sparc_cpu_exec_interrupt(CPUState *cs, int in=
-terrupt_request)<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -142,6 +144,8 @@ bool rx_cpu_exec_interrupt(CPUState *cs, int interrupt_=
+request)<br>
 =C2=A0 =C2=A0 =C2=A0return false;<br>
 =C2=A0}<br>
+<br>
 +#endif /* !CONFIG_USER_ONLY */<br>
-<br>
-=C2=A0static void cpu_sparc_disas_set_info(CPUState *cpu, disassemble_info =
-*info)<br>
++<br>
+=C2=A0hwaddr rx_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)<br>
 =C2=A0{<br>
-@@ -863,10 +865,10 @@ static const struct SysemuCPUOps sparc_sysemu_ops =3D=
- {<br>
-=C2=A0static const struct TCGCPUOps sparc_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D sparc_tcg_init,<br>
-=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D sparc_cpu_synchronize_from_tb,=
-<br>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D sparc_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D sparc_cpu_tlb_fill,<br>
-<br>
-=C2=A0#ifndef CONFIG_USER_ONLY<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D sparc_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D sparc_cpu_do_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D sparc_cpu_do_transaction_fai=
-led,<br>
-=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D sparc_cpu_do_unaligned_access,=
-<br>
+=C2=A0 =C2=A0 =C2=A0return addr;<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---000000000000e73e7f05cb08fe46--
+--000000000000e61b4605cb08ff52--

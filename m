@@ -1,127 +1,93 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp83463lfb;
-        Thu, 2 Sep 2021 02:38:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxlC5CkmCJcX3R/x5GGCjJj9aZwTkPV5dee+PmyPKQQjW8FKAramJHYTH7aVDfm8EXpBmV0
-X-Received: by 2002:a92:c04e:: with SMTP id o14mr1576238ilf.289.1630575493786;
-        Thu, 02 Sep 2021 02:38:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630575493; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp29498lfb;
+        Thu, 2 Sep 2021 01:15:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxc2lMHoWIxhOctKVdG0zFL4oIEDLQ7ug2ZxwwayuMEkU91ik1XXfhzyop24WT9m0oaxKBn
+X-Received: by 2002:a05:6e02:214e:: with SMTP id d14mr1464641ilv.142.1630570532207;
+        Thu, 02 Sep 2021 01:15:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630570532; cv=none;
         d=google.com; s=arc-20160816;
-        b=jULinU0fxEI55XvbtKHvavMxqGQVqXymg+gBXhtzuCkKLhWKzLuUo/wuC+xTXgWmjC
-         x7TkFm4N1mG38ATfNiF/aEZQXFSE+uXDy1pYjeaG+aFhE4LXsC0uXwqIwir1e24LVwLB
-         DPsI8kYvvA9UAcKQdSIRqv/8HJe2BEe1+9uEFhlZYllQt97PWfnbYHrok/FIlCIYp0BK
-         m00V4J38LaGiKl21oWSjL65F6bxHDXMv8dd7qx3m6q93l6nYyrA0TicTZZYbaFgdpjAr
-         GHpbR1qxsdUyMMjH43yJqsnyDeuyKWbmia9+gJAQtHzydx0+JJBKeo7bi9syhwk+dj2m
-         +SGA==
+        b=N28OM6aPjELmvU/0dRFgalkX/yh7FLjEwoRbbyJHF3gxBY6FC3cN/Z16lWXPwBvP5p
+         GN41HkO+ggNS0XDbjxYk7wLeQyEJZgXTHp1hFxAbzaK4osXSfw72GZFfa4ANvxUE+SVZ
+         PYoX43S7m+08/uWTR6OyfE+An5fFInJbZ7J2q6gjh1s6Cn5b7wlZqp57AiFo3ROqqGEZ
+         CCira7WxGL9SxzxpB1VZBc21dgyfp+AeLjevOo7GQD/iYPnCwwl7JeykEzU6xyOT0jun
+         7xCrfsEfqFXyRJRIhaAuaZ8K0SM1Oy0RTPan55WoONCgIDQj3wtFaNGf6mvrmLs3yMEl
+         bEdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=h5E4aoy6GDYyHU2HoBN+ICe1KrCcbGlyC3yCmM84624=;
-        b=rXgN8wPOnQlHUTOGAMBJuOOK9I/K6wsisvI9Mxe1c44kiy9XhefK7W1PW+/+qeqUc1
-         Ans789lkBXZE8PD50GEVnuW8qnU4TjCWl2db7u/ioyq77kP/mCvCp6dUECu9llNG7cTc
-         iYfSsdlzRztVLfXD3bi6vVKwDjvp9nTkNl/sopjJITitXV/ve3NcXwOahrndXAw90IIX
-         XSNvQaSju6V0UaiUdbPFCUKJUwyNeI+0dugvFqa4pH/N1tyOqqDoU/gD4aMMVcPvnJMy
-         x6X1yO8tpprXvhV/GaJnykKpPLckN+VXEGdPhuxQwHpr0igprktsj6GB4qUWW64qwxjU
-         qy4A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=sxT4fNg/5jw852mPUItD0wtKQXXXp9s6gNNw/pABRQs=;
+        b=xu8LL2pnsLliUaty26DyZ/2RNFbj+H1HT1CXnd1J26EGEIfI3RJhXH/o+WD1gwlQXZ
+         3wrwrkChYyzUsTdlMMplfi2SuPJuBleo+48Ta6KU84CF67IwL0ti6OmAQOYLREU8u79d
+         uiyHX+GqKCUt87ChC6VBaIlDON701ht7GdHjs0WOW/VKl6AFaZGBwuKXhjMwAXRdl6lX
+         ecRr9ySPPIUr2csK8HC2oAtBAKEzYik/NB3idGN1RU7XLTVNEWlqmNpri1DS1NL9zwil
+         mZJsJyLfuPWrGVvnGXP6cV64x8SAkyR3C1bIhODSkxKEYcEW7h18lYikusPbBYhnsKEh
+         ThQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eNsFdB1K;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=hNqshChi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13si1685606ilu.26.2021.09.02.02.38.13
+        by mx.google.com with ESMTPS id v5si1410010ilg.86.2021.09.02.01.15.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 02:38:13 -0700 (PDT)
+        Thu, 02 Sep 2021 01:15:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eNsFdB1K;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=hNqshChi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42920 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Received: from localhost ([::1]:36850 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLjAj-000599-4K
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 05:38:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54360)
+	id 1mLhsh-0001mw-IU
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 04:15:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mLj9F-0002bS-MT
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 05:36:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50008)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mLj9E-0005Ca-3v
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 05:36:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630575399;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=h5E4aoy6GDYyHU2HoBN+ICe1KrCcbGlyC3yCmM84624=;
- b=eNsFdB1KU2n4i/1OT7cYKu3JiqxniWaT7m6SGcgrBR4ZAcYAYnlmVE7vM/Hwtqmjh9yjh1
- pD0NiDAH0+dBRCz0Gf5fIroISMMe/Uq3sqhCi4Biu/Fogb2A7Q+se4O9IT6adVWlXSuu9E
- 8Jkp56d0zGYh1K93AxaZQAwAKxqJWLM=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-85-qLzB20J5Or-HOkmlFpRlaw-1; Thu, 02 Sep 2021 05:36:38 -0400
-X-MC-Unique: qLzB20J5Or-HOkmlFpRlaw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- q14-20020a5d574e000000b00157b0978ddeso343891wrw.5
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 02:36:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=h5E4aoy6GDYyHU2HoBN+ICe1KrCcbGlyC3yCmM84624=;
- b=X239C2lOypNcHw6CNlGRhHzdHNQiUKcWiDL5Jk1Bw000moS5F1WoeXIuQBXMTV8d85
- A/20dkodxnExpnQe7cZOHenrVnmmJT24G9Qt6PZZHfrsfMDXd7cCGHM91xhoiSKnaQcv
- qK5I9TQS/otXPTz4QWjBPng1sWjpuRUEReQPgXklshde1RZ5+XzJsNTt2oXpk1MtcAqo
- Q8Zn9/GlXRI6r0bsKmpagE3gZyQg58jjNCOoZajdvh/RSRNqh5XsDJvGbFK9b/cMgjUP
- UiBL9XrR8kuhXSNwD9dUOmPwLg7uwihVEIBS5/ITSpe8iyRtuD8Rg9oIF5KeLMsAlAYZ
- Dxbw==
-X-Gm-Message-State: AOAM532kpDNCzcmWlGC3UtRB66DXYAXKexCA4iif/HH9WoZJyszAG/96
- Bz2SEdn+t8Kz72XsLH04mt5u4So6P9Gf/efdqyCTovdetAxwuDndL/IdgoR4GeCUjC1ZJ6omgKR
- ZXyDqSHI4mN/FltUbw/Aqvp/jjWk1qDsUrH/j87rYZqAn7zLVfH47wrpNi+dmABM9L30=
-X-Received: by 2002:a5d:6352:: with SMTP id b18mr2528904wrw.116.1630575396728; 
- Thu, 02 Sep 2021 02:36:36 -0700 (PDT)
-X-Received: by 2002:a5d:6352:: with SMTP id b18mr2528865wrw.116.1630575396305; 
- Thu, 02 Sep 2021 02:36:36 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id x21sm1132426wmi.15.2021.09.02.02.36.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Sep 2021 02:36:35 -0700 (PDT)
-Subject: Re: [PATCH 6/6] pc: Allow instantiating a virtio-iommu device
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20210810084505.2257983-1-jean-philippe@linaro.org>
- <20210810084505.2257983-7-jean-philippe@linaro.org>
- <41720de5-ce29-dd79-2911-d974408af544@redhat.com> <YSjoCW5z1xbYL4Gp@larix>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <a6d02a90-4991-4577-909b-3cc38c49f71e@redhat.com>
-Date: Thu, 2 Sep 2021 11:36:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <chunming_li1234@163.com>)
+ id 1mLhsJ-0001jR-MZ; Thu, 02 Sep 2021 04:15:09 -0400
+Received: from m12-16.163.com ([220.181.12.16]:52783)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <chunming_li1234@163.com>)
+ id 1mLhsD-0002jL-Rs; Thu, 02 Sep 2021 04:15:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=sxT4f
+ Ng/5jw852mPUItD0wtKQXXXp9s6gNNw/pABRQs=; b=hNqshChi3TlTe2w4/TBU1
+ 552gLiqRaMQBGlLzpuWzbukh8rhlF+Flo2Yh6ttkhuxJWnnSpsIWoVYFARXgBI5q
+ kM4CSlqEsxzcwlywZx8q0LgyvJrr6hcCgoQ3eKOojH+//wuyiFZM0o6GW9E45gjL
+ JdXC+DYoJ54aOYvE8DYjXE=
+Received: from lcm-VirtualBox.verisilicon.com (unknown [182.148.13.201])
+ by smtp12 (Coremail) with SMTP id EMCowABXMRDmhzBhan7BAQ--.86S6;
+ Thu, 02 Sep 2021 16:14:44 +0800 (CST)
+From: chunming <chunming_li1234@163.com>
+To: eric.auger@redhat.com,
+	peter.maydell@linaro.org
+Subject: [PATCH v6 2/4] hw/arm/smmuv3: Update CFGI commands to support non
+ PCI/PCIe devices
+Date: Thu,  2 Sep 2021 16:14:27 +0800
+Message-Id: <20210902081429.140293-3-chunming_li1234@163.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210902081429.140293-1-chunming_li1234@163.com>
+References: <20210902081429.140293-1-chunming_li1234@163.com>
 MIME-Version: 1.0
-In-Reply-To: <YSjoCW5z1xbYL4Gp@larix>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.029, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+X-CM-TRANSID: EMCowABXMRDmhzBhan7BAQ--.86S6
+X-Coremail-Antispam: 1Uf129KBjvJXoW7KrW3Aw1kJFyxZr4kKrWktFb_yoW8KrW3pr
+ 42kFn0gr18Gw1SkrsIyr4I9FZxJ3ZY9F1jgr1UWa93C3WDAryrXryDKw1fJr9rWFW0vr47
+ uayrWF45Xr12v3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07bFEfOUUUUU=
+X-Originating-IP: [182.148.13.201]
+X-CM-SenderInfo: xfkx0zplqjszjlrsjki6rwjhhfrp/1tbivxUCdlWBveQstQAAsK
+Received-SPF: pass client-ip=220.181.12.16;
+ envelope-from=chunming_li1234@163.com; helo=m12-16.163.com
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) BAYES_40=-0.001, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -135,59 +101,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
- imammedo@redhat.com
+Cc: renwei.liu@verisilicon.com, qemu-arm@nongnu.org,
+ jianxian.wen@verisilicon.com, qemu-devel@nongnu.org,
+ chunming <chunming.li@verisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O0vjCWDN8DPm
+X-TUID: EiAGDdPtXRfc
 
-Hi Jean,
+From: chunming <chunming.li@verisilicon.com>
 
-On 8/27/21 3:26 PM, Jean-Philippe Brucker wrote:
-> On Tue, Aug 17, 2021 at 04:11:49PM +0200, Eric Auger wrote:
->> Hi Jean,
->>
->> On 8/10/21 10:45 AM, Jean-Philippe Brucker wrote:
->>> From: Eric Auger <eric.auger@redhat.com>
->>>
->>> Add a hotplug handler for virtio-iommu on x86 and set the necessary
->>> reserved region property. On x86, the [0xfee00000, 0xfeefffff] DMA
->>> region is reserved for MSIs. DMA transactions to this range either
->>> trigger IRQ remapping in the IOMMU or bypasses IOMMU translation.
->>>
->>> Although virtio-iommu does not support IRQ remapping it must be informed
->>> of the reserved region so that it can forward DMA transactions targeting
->>> this region.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
->> I think we need to handle the case where the end-user gets lost with
->> iommu options and use an invalid combination such as
->>
->> -M q35,iommu=on,int_remap=on,kernel_irqchip=off -device -device virtio-iommu-pci
-> I guess that would be
-> "-M q35,kernel_irqchip=off -device intel-iommu,intremap=on -device virtio-iommu-pci"
->
-> I'll add the checks, similar to the one in x86_iommu_set_default().
-yes that what I meant sorry.
->
->> We may also document somewhere that the virtio-iommu-pci
->> does not support irq remapping as this may be an important limitation on x86.
-> I'll mention it in the commit message, unless you had another place in
-> mind?
+  "smmu_iommu_mr" function can't get MR according to SID for non PCI/PCIe devices.
+  Look up in the platform device list: peri_sdev_list for non PCI/PCIe devices.
 
-you may add an entry in qemu-options.hx too as Peter did for the intel
-iommu in
-7395b3e3e7  docs: Add '-device intel-iommu' entry (7 weeks ago) <Peter Xu>
+Signed-off-by: chunming <chunming.li@verisilicon.com>
+---
+ hw/arm/smmuv3.c              | 29 ++++++++++++++++++-----------
+ include/hw/arm/smmu-common.h |  5 ++++-
+ 2 files changed, 22 insertions(+), 12 deletions(-)
 
-Thanks
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 557d24ec6..615a6c904 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -985,14 +985,17 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+                 break;
+             }
+ 
+-            if (!mr) {
+-                break;
++            if (mr) {
++                trace_smmuv3_cmdq_cfgi_ste(sid);
++                sdev = container_of(mr, SMMUDevice, iommu);
++                smmuv3_flush_config(sdev);
+             }
+ 
+-            trace_smmuv3_cmdq_cfgi_ste(sid);
+-            sdev = container_of(mr, SMMUDevice, iommu);
+-            smmuv3_flush_config(sdev);
+-
++            sdev = smmu_find_peri_sdev(bs, sid);
++            if (sdev) {
++                trace_smmuv3_cmdq_cfgi_ste(sid);
++                smmuv3_flush_config(sdev);
++            }
+             break;
+         }
+         case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
+@@ -1027,13 +1030,17 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+                 break;
+             }
+ 
+-            if (!mr) {
+-                break;
++            if (mr) {
++                trace_smmuv3_cmdq_cfgi_cd(sid);
++                sdev = container_of(mr, SMMUDevice, iommu);
++                smmuv3_flush_config(sdev);
+             }
+ 
+-            trace_smmuv3_cmdq_cfgi_cd(sid);
+-            sdev = container_of(mr, SMMUDevice, iommu);
+-            smmuv3_flush_config(sdev);
++            sdev = smmu_find_peri_sdev(bs, sid);
++            if (sdev) {
++                trace_smmuv3_cmdq_cfgi_cd(sid);
++                smmuv3_flush_config(sdev);
++            }
+             break;
+         }
+         case SMMU_CMD_TLBI_NH_ASID:
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 2902eb13c..be12b93c5 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -161,7 +161,10 @@ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+  */
+ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova);
+ 
+-/* Return the iommu mr associated to @sid, or NULL if none */
++/**
++ * Return the iommu mr associated to @sid, or NULL if none
++ * Only for PCI device, check smmu_find_peri_sdev for peripheral device
++ */
+ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
+ 
+ #define SMMU_IOTLB_MAX_SIZE 256
+-- 
+2.30.2
 
-Eric
->
-> Thanks,
-> Jean
->
 

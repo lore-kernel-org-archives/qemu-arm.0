@@ -1,99 +1,98 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp613121lfb;
-        Thu, 2 Sep 2021 13:10:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzR5YCmluzbraig6YHjV9kB2axZcXrpI1OC73OOEkCzRklPoeTPoXJJgg9dtOAiCDctKZrz
-X-Received: by 2002:a17:906:1484:: with SMTP id x4mr5831374ejc.72.1630613435174;
-        Thu, 02 Sep 2021 13:10:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630613435; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp613718lfb;
+        Thu, 2 Sep 2021 13:11:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxJqzPXz3et9agFE1K0KbkS89hqOobq6L/XGwFMbt0NfFmnQus2po3RClkcFm898dGbenWQ
+X-Received: by 2002:a67:b005:: with SMTP id z5mr3265378vse.13.1630613490511;
+        Thu, 02 Sep 2021 13:11:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630613490; cv=none;
         d=google.com; s=arc-20160816;
-        b=cm51r8v/k7RHZSAo8TbkDWj3YB3KUxODChLWVlW2CQxCFC0s+09XQekekGv751R19d
-         FvYRQ6KOvWPfkUpIYqtVtM5a2mPAEeunsj9MNQ/vrZUXSNylSf5/4wvnbZOFEe2+8wsd
-         TyMW2pgZ5JdgHIg3dOTVQ+cFX4qKIxeMdNaGPWncddzfeyZZtvnKr9fmufO7fx61B2mj
-         crrUM1CZwVUEiGRW4ievThQC6t999YP69Z8kTj+yv7YlJC1gauHOB/+naNs/TaQJXb2u
-         894k2Ck9VAtccFnffyXh8Zm8unpa3fvkrB+Ccbx7OLJ6vhfGkrH561Z3Fx7e2DuSJpAg
-         8alA==
+        b=no1vJc2+IrC1P+GuPtfIwoYTxQadY0pICEce8WAXRWOIt156oFaG7xJiBTfrq8ohT8
+         f1JqCtCWvMGhNe9sWGaQjt31M4t6E21HbAVVprq3kwVHzjI/oKSactCOw1LjnK7Yb9OR
+         lxhtIqjzqTiqJuTWn7yT31Xn6x5YB+5au24DKLXR/oPTikG7H4Plpxr4RvtwMNGxSXvy
+         iAq7qw0heNSdlUO0deS8aFQjXjBWidVzBCP3baGWxqbfR1Z0ZKvZVyTZ4M2Z7yjfafEH
+         JL+3p2waQbujEFHpIhzVKz8sK/2oHCpdaR5T+Z5TMLq5k0npeznYVKMPHUW9Dw8wvmNU
+         2ofg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=yy/dcYFGhKpu0ptaayrsqN44d0c/Beh6cldZRRjkueo=;
-        b=FOuVCB8shyW1X8Ph/pHC4aEm+fFBHS2VcIvm2IyFIQ71Fjb0hHbXQ3515XR9t0JIUw
-         B+6Yg4Rf4EXKtJ1WgB1sGFAenrqIFm423r//uWQxgv296zALxM3Spq6cmmwLtpeP/Zu3
-         PKlyqXUDcmBknBynzDOTjIemD79CKPNKjSg9AKBUzuiAQtW+HjWMcaavU07WhpUOdn4Y
-         w1GU8/niWbi+eJEbQt74Um2A2qmQsX/RYP7xMeeM5kbFahSZaKmoTMMoeZMDINdh9jnV
-         xUKfGPKsX+tB8/oJEot8/WcsrYnuD/n4decIAKjtgRJZO6iCwPlkljw424xKSWobJSop
-         zC2w==
+        bh=fsnnJngU8FJKGJiteH3LQIa76mAdiGjGjhj3YdkLcB0=;
+        b=WcEahqnlmB0YkovzDTLNtnO3m8oLJ0/tn6SNBPNyMqEqRtGgRacOOlANm3OuHHg3e+
+         D6gVg/Sw3pkz41BrUDuHEQ3om2UrqiwpHtkroh8XVF4dv0Z1TmK8yzW/ufXU97KRRqcJ
+         s+4e6eIsXrxsPbjnjHJSVHU/PylYFYCqdnsl4QsWsyWt4hlFjGj8iAKsKCyDpJi1YVoG
+         GHcLF0+KXIJtcyCIroDDnLbsm0WORYXv9m5WTxofUvqeWxM3rRN9svYjNnKHq+ijCRl7
+         x9Vc5Ig4vrJ55q6PTkLnK5P7IfLFzF1Em+JQEI3VXnb71oqpgglJUCEi9FLZwML4Y/9v
+         buDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=LAWjq4Vj;
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=tMLGYsHR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hk14si2873223ejb.220.2021.09.02.13.10.33
+        by mx.google.com with ESMTPS id u22si1327907uap.160.2021.09.02.13.11.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:10:35 -0700 (PDT)
+        Thu, 02 Sep 2021 13:11:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=LAWjq4Vj;
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=tMLGYsHR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38132 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLt2e-00036Y-NM
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:10:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38558)
+	id 1mLt3Z-00059n-ON
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:11:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt25-00035z-7l
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:09:57 -0400
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932]:39797)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt3D-0004aI-7j
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:11:07 -0400
+Received: from mail-vk1-xa2c.google.com ([2607:f8b0:4864:20::a2c]:42962)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt23-0000xQ-5N
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:09:57 -0400
-Received: by mail-ua1-x932.google.com with SMTP id x21so1566233uan.6
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:09:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt3A-0001z3-7W
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:11:06 -0400
+Received: by mail-vk1-xa2c.google.com with SMTP id bb10so1038813vkb.9
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:11:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yy/dcYFGhKpu0ptaayrsqN44d0c/Beh6cldZRRjkueo=;
- b=LAWjq4VjLaMEZLOYnO/2vAI5sTFiOgEwDOOMTHHjQ+i3iFx5K3nBw4Xj1zaSbq80Ka
- hZOq595bqGDGMLAfW+/TREThUJs/cOJhxnuctnCQ1wZfIjIPIawR3tijX5SiPmbO247g
- kkCXFxG49IBOa9HDRksTrqPK8rDI3xkLjbzrRO3cqgXdcqsLd2GFapRJ6ABb49atdxeZ
- CKM6JX1ObcTOuY0B9yscIQW0p13uVlRqzY/FfGV8XtexDzWEGHqTinmH2Q63M9M9SKhw
- 9VaSZvtO4tdYN0HEa2Nci2y/2n3PcIaRlCsHjlukt6FPai9xWH6odrwTPe4BaWu0pwWt
- nY+g==
+ :cc; bh=fsnnJngU8FJKGJiteH3LQIa76mAdiGjGjhj3YdkLcB0=;
+ b=tMLGYsHRCqlvyuZ9xdquTci31FXqNIL406Qq5pyI23fQN6YS89FgGbIV/6QW0vPpB9
+ kkXVmYD0su2o7/LbC7cLNCqa/Zl2ojZjd0v0PcpUmrVN961W40KU5IQGVEdFpU3+/k0b
+ qPtXXadbHY6dN6GaqYKuLGURJj9a6dj0SZTW8qErTr2xlyfLDdwhSpkBXYVvhaK++Z75
+ Wn1gzZUjoqhc3jmFNNB3Q+WVCWcOzbTgmvqgU+oa9oSEQBdxEVzBU2f4jlgUP5YHC0w4
+ GhnBVTMELgDmlVKs4FQHA1b1F0t01SunCn2vkCnuGBuULQsuycT+pQwLUJtI4soqv7BE
+ tuOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yy/dcYFGhKpu0ptaayrsqN44d0c/Beh6cldZRRjkueo=;
- b=UtaADmn7jClfJ2neZZ9B6k8xX7CR/d9z5WbvS5lGKs3wxcsqn0jm+kaFrzvxkwRt5C
- MY9eXawjNMGpb2b6O/Wrf621cAePPGMJpll/ZeFWsm9+JLuIJz1bGPAAYw4x+i4epIA7
- EsZXS+YBRhR7qYGWicGO1a/3xH/sxmyalgqJmzo1skjRCV6D9soIWfaoPO68rcryC0W5
- Mc2Fcd3O/lCmRwjpAIBZrJ1Y31pdDckL/QvcSZmZjvl1PV5OJqklm3Cx1QrobMI4NqkS
- JldN5sSSGh0hoi/QEUxLVy1am/AS+3D1T3YtkQ7BWyfbbmL2kHMn9N2KJlP1Iyo2Bo3V
- zy6w==
-X-Gm-Message-State: AOAM530wxMCcHVbojEm4mekZjghnwIbkZ2r+h/CUT4gVU11Kn6gdFLAT
- x9aW+ZnqQYHKuR3dLhG0WmMuNgWpsPoNfWKSC5Udbg==
-X-Received: by 2002:ab0:3413:: with SMTP id z19mr24593uap.39.1630613393374;
- Thu, 02 Sep 2021 13:09:53 -0700 (PDT)
+ bh=fsnnJngU8FJKGJiteH3LQIa76mAdiGjGjhj3YdkLcB0=;
+ b=pcEPNKBVLZq8wzvUdCp7vdGyXK+26J65CQJnVGoKBn8k9tOuxszQK0yqXaCE2GJA45
+ BfQOtQ2BhySCVa7WDA1GiFT0yM/xFUHFf2chTf6BiKlxTVPKwI8EUhfgPTnh6gI/sY97
+ LHsvMUT1O6848AOC6sJZ/Pn2hecLbnejBnBetHVkYLoGXKUQO51pChBw7OyVMudgc/jf
+ o0R4oksIQKbO02Tr69iO03i2m6kP+lmXOdvOzlWnbc+/CEnOOkSRyqX223Q1QsIzy3qk
+ /6ycffFq0u8wXe42T6RWureErUElKUaVSN19sFLv/GbydnFz9Wsnr5oc3w7sJAzdnvVT
+ Zh+Q==
+X-Gm-Message-State: AOAM533ManohV6anLu5r/gfXzj3E6uhevpWLgVGKtsUgjzgR4DuYRQ+4
+ oRGhFj/4IjAGcEwNXe2wkJ4YDyx/FVak6GWjFLWxmQ==
+X-Received: by 2002:a1f:294:: with SMTP id 142mr67784vkc.6.1630613462724; Thu,
+ 02 Sep 2021 13:11:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-2-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-2-f4bug@amsat.org>
+ <20210902151715.383678-4-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-4-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:09:42 -0600
-Message-ID: <CANCZdfrHrQQkiXmBc62X0b36n726iDCwvLfYXQrker7knhhD0g@mail.gmail.com>
-Subject: Re: [PATCH 01/24] target/xtensa: Restrict do_transaction_failed() to
- sysemu
+Date: Thu, 2 Sep 2021 14:10:51 -0600
+Message-ID: <CANCZdfqmsEyj7S-b2P1jdVWjZg2mPS2mKGeBQ21=VFm2Ux=c2Q@mail.gmail.com>
+Subject: Re: [PATCH 03/24] target/i386: Simplify TARGET_X86_64 #ifdef'ry
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000140ed505cb08c417"
-Received-SPF: none client-ip=2607:f8b0:4864:20::932;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x932.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/alternative; boundary="00000000000036482205cb08c819"
+Received-SPF: none client-ip=2607:f8b0:4864:20::a2c;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vk1-xa2c.google.com
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,9 +121,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YkjS4TJ4jd2C
+X-TUID: JnYYyrAxSubc
 
---000000000000140ed505cb08c417
+--00000000000036482205cb08c819
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -132,46 +131,49 @@ On Thu, Sep 2, 2021 at 9:17 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 >
 wrote:
 
-> The do_transaction_failed() is restricted to system emulation since
-> commit cbc183d2d9f ("cpu: move cc->transaction_failed to tcg_ops").
+> Merge two TARGET_X86_64 consecutive blocks.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  target/i386/tcg/seg_helper.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 >
 
 Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
-> ---
->  target/xtensa/cpu.h | 2 ++
->  1 file changed, 2 insertions(+)
+
 >
-> diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-> index 2345cb59c79..1e0cb1535ca 100644
-> --- a/target/xtensa/cpu.h
-> +++ b/target/xtensa/cpu.h
-> @@ -568,10 +568,12 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr
-> address, int size,
->                           bool probe, uintptr_t retaddr);
->  void xtensa_cpu_do_interrupt(CPUState *cpu);
->  bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);
-> +#ifndef CONFIG_USER_ONLY
->  void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-> vaddr addr,
->                                        unsigned size, MMUAccessType
-> access_type,
->                                        int mmu_idx, MemTxAttrs attrs,
->                                        MemTxResult response, uintptr_t
-> retaddr);
-> +#endif /* !CONFIG_USER_ONLY */
->  void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
->  hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  void xtensa_count_regs(const XtensaConfig *config,
+> diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c
+> index 3ed20ca31d7..dee7bef68c6 100644
+> --- a/target/i386/tcg/seg_helper.c
+> +++ b/target/i386/tcg/seg_helper.c
+> @@ -929,9 +929,7 @@ static void do_interrupt64(CPUX86State *env, int
+> intno, int is_int,
+>                     e2);
+>      env->eip =3D offset;
+>  }
+> -#endif
+>
+> -#ifdef TARGET_X86_64
+>  void helper_sysret(CPUX86State *env, int dflag)
+>  {
+>      int cpl, selector;
+> @@ -984,7 +982,7 @@ void helper_sysret(CPUX86State *env, int dflag)
+>                                 DESC_W_MASK | DESC_A_MASK);
+>      }
+>  }
+> -#endif
+> +#endif /* TARGET_X86_64 */
+>
+>  /* real mode interrupt */
+>  static void do_interrupt_real(CPUX86State *env, int intno, int is_int,
 > --
 > 2.31.1
 >
 >
 
---000000000000140ed505cb08c417
+--00000000000036482205cb08c819
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -180,50 +182,51 @@ Content-Transfer-Encoding: quoted-printable
 pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
 g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 :0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->The do_transaction_failed() is restricted to system emulation since<br>
-commit cbc183d2d9f (&quot;cpu: move cc-&gt;transaction_failed to tcg_ops&qu=
-ot;).<br>
+>Merge two TARGET_X86_64 consecutive blocks.<br>
 <br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br></blockquote><div><br><=
-/div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com">im=
-p@bsdimp.com</a>&gt;</div><div>=C2=A0</div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/xtensa/cpu.h | 2 ++<br>
-=C2=A01 file changed, 2 insertions(+)<br>
+=C2=A0target/i386/tcg/seg_helper.c | 4 +---<br>
+=C2=A01 file changed, 1 insertion(+), 3 deletions(-)<br></blockquote><div><=
+br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com=
+" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-yj6qo g=
+mail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2px 0px =
+0px"><br class=3D"gmail-Apple-interchange-newline"></div><div>=C2=A0</div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex">
 <br>
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h<br>
-index 2345cb59c79..1e0cb1535ca 100644<br>
---- a/target/xtensa/cpu.h<br>
-+++ b/target/xtensa/cpu.h<br>
-@@ -568,10 +568,12 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address,=
- int size,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 bool probe, uintptr_t retaddr);<br>
-=C2=A0void xtensa_cpu_do_interrupt(CPUState *cpu);<br>
-=C2=A0bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);=
+diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c<br=
+>
+index 3ed20ca31d7..dee7bef68c6 100644<br>
+--- a/target/i386/tcg/seg_helper.c<br>
++++ b/target/i386/tcg/seg_helper.c<br>
+@@ -929,9 +929,7 @@ static void do_interrupt64(CPUX86State *env, int intno,=
+ int is_int,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 e2);<=
+br>
+=C2=A0 =C2=A0 =C2=A0env-&gt;eip =3D offset;<br>
+=C2=A0}<br>
+-#endif<br>
 <br>
-+#ifndef CONFIG_USER_ONLY<br>
-=C2=A0void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, =
-vaddr addr,<br>
+-#ifdef TARGET_X86_64<br>
+=C2=A0void helper_sysret(CPUX86State *env, int dflag)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0int cpl, selector;<br>
+@@ -984,7 +982,7 @@ void helper_sysret(CPUX86State *env, int dflag)<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned =
-size, MMUAccessType access_type,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int mmu_i=
-dx, MemTxAttrs attrs,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0MemTxResu=
-lt response, uintptr_t retaddr);<br>
-+#endif /* !CONFIG_USER_ONLY */<br>
-=C2=A0void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);<br>
-=C2=A0hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);<br>
-=C2=A0void xtensa_count_regs(const XtensaConfig *config,<br>
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 DESC_W_MASK | DESC_A_MASK);<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0}<br>
+-#endif<br>
++#endif /* TARGET_X86_64 */<br>
+<br>
+=C2=A0/* real mode interrupt */<br>
+=C2=A0static void do_interrupt_real(CPUX86State *env, int intno, int is_int=
+,<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---000000000000140ed505cb08c417--
+--00000000000036482205cb08c819--

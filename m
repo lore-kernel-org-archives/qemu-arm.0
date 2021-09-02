@@ -1,101 +1,100 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp373203lfb;
-        Thu, 2 Sep 2021 08:26:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxB56mUNphUbLKj+3sPhj8JEGxMxjqRr43f4UysK9X5Z/EebjFrOtj39pW/iWOi0iuwqfD2
-X-Received: by 2002:a05:600c:a0b:: with SMTP id z11mr3750384wmp.147.1630596396379;
-        Thu, 02 Sep 2021 08:26:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630596396; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp374617lfb;
+        Thu, 2 Sep 2021 08:28:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzo1g1vOIakn1e0TQlZfOBQFUr4AOtIzS1dzwzXb9jsYpfSE89K8gG8CTNQ8GP3RM35ozwl
+X-Received: by 2002:ae9:e012:: with SMTP id m18mr3679253qkk.396.1630596491149;
+        Thu, 02 Sep 2021 08:28:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630596491; cv=none;
         d=google.com; s=arc-20160816;
-        b=tMXOWGEHF2pYwZcS+/LOKHqyH3n/O3nlMGr8CHBDD5dn5RMMe6FxRRcT/muVIMea+N
-         3drRX59WOur9j1MKj8eBK5T+aMWoF517y5gHQQkolqZWSwX4vd7eldxGc79a6KDPlNa+
-         RSGWkSigCYOfP5gEHKTnBCHpN2xbTG8oH0js2V1sos/tPDdFQTGWYTcDOwYWNFDqaWE0
-         oRo1vG2jfrXT+JWNElnyHcva3j3KxzqAcVFU3m3gOK5SZAjCNRwxPgBkjVB6hOhUo4vW
-         QiPOqYtPsX8bCMG2yD/ph3Fi+doY4aI2U6CtqR1QAnPBXR8WOnBkyLqSJMqIVQLkG7MC
-         CXnA==
+        b=vJUUPBwfo55E2tHAgHDRy9Fg60LpzDn5Fcj1l7KZG4PZktyp+Hkt1B3X1h782K7/td
+         lWhpxRZ4/pPUlRlEhGfI7g9ZSkQIX6rvzjotXrADjs6owTXB3LYuvkREwqJJxGvzyutw
+         j7tfMkZ4nQ21Y15uYfKTARPGV9B5lBZD3fIObaVjQunPsvp50OIEvkRrcvS5/L5YnM2r
+         WTqyG/0sYpa0rQpRH9Zr86PQLYqhzA7Ukb6apZGq27AXxsvEi/Z2BwWAEHauhuNWNUx9
+         7/nY0Lh8OGNkLoCjb77rcnzmsOsfOsASGw+znHxnSgqe5+Icg+H7UTa7rE9etPe6dXr0
+         PUZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fcD3NEKxqm51zeSb+lOjnaiMKTAZvQ5t+y/MQ7dqNn4=;
-        b=g0KCKjbFxY8Ux2lj88rLgpw6baIgpWNC5bI6BJapsk6JDcZCGZmxyqt/NZeLgnTyhH
-         JNIxJn/DLvIBa2pp4VmVXRvE9y3b5pN+UIs2T3cjEYHVPV9iOaPJiuHCDWOmAkEWdNY5
-         0zwKwURHZ7uJQlweekPP4RGK7H1sjQ2OK2PVQ9KhDN81eg7UqN20Gqn12kGfPXLA0G2s
-         TT1rp46agjhv7raGfRa6K40wdb0vxyOEp6o7YdmhtUk9yyNPCU1S4/0GLfo3oHxaRtkE
-         NPfW+WoUN5ALGt+hmJy7FzjptXf8S3g/F87fparjQcLKm5k/tRO1fG3BBt12lJUbzAIl
-         ha+w==
+        bh=MA+BCTYyqK+9sz78Mv1qFMH8ilkc86l5KGXO2NGreho=;
+        b=z0Mhfub5k5zRjFGpSfgXwmK+gzMfAR36F5ZX2z0oODMeCBEsc9UUBdAJnYruL7K1fb
+         F7aKjm+Miw1e17Lp8s797WKv9C2Z4XuqkUrhNqkWGNpitCjnHKGSuj3Q2BuTvaM2CJS7
+         NsNtxwUXRm6X0VvrONzkeVJDaiUFFMR3vFRlq38sdfhlXfM5BgQ2nxcve8q76iI6OwpZ
+         WCOzffQGQ/OOE8MWgpiC6xXJr9a6w3jEv2dx457x3t8bNTnaHch/AAHiAkvR/kBTVsx1
+         MpKkvjvbXqX/qdLm7J+qLN8k+LSVf83Spec1vNFYr2Xv1r0qWbEAm2MiFvXBZRERJBeD
+         Yy1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="SoWG2/wQ";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=oUqcDGPV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 199si2183400wma.192.2021.09.02.08.26.36
+        by mx.google.com with ESMTPS id r18si906480vso.431.2021.09.02.08.28.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:26:36 -0700 (PDT)
+        Thu, 02 Sep 2021 08:28:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="SoWG2/wQ";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=oUqcDGPV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47132 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLobr-0000y6-DZ
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:26:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47342)
+	id 1mLodO-000425-Ax
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:28:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoTu-0004ON-Jq; Thu, 02 Sep 2021 11:18:22 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:33542)
+ id 1mLoTU-0003wd-UO; Thu, 02 Sep 2021 11:17:58 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:42699)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoTs-0002UP-Ry; Thu, 02 Sep 2021 11:18:22 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 192-20020a1c04c9000000b002f7a4ab0a49so1347978wme.0; 
- Thu, 02 Sep 2021 08:18:18 -0700 (PDT)
+ id 1mLoTS-00023r-AQ; Thu, 02 Sep 2021 11:17:56 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id q11so3515786wrr.9;
+ Thu, 02 Sep 2021 08:17:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fcD3NEKxqm51zeSb+lOjnaiMKTAZvQ5t+y/MQ7dqNn4=;
- b=SoWG2/wQj0ymZnxrkfnJDZKSuaHnBEMFz8bj97s4TV8NBQ32xc7+kcPUd2yLDhsC5w
- CegLWLfFZOULB2qsUNRjw+d2r+k3oF5emn6c+qVl/cYK5dAaqAfGfOr63WsjWUXmblZe
- 8lAXQg76gUsp7/QeheJxgFIDlfA3lzhHP8vaadbZZy65HaXI0jSTTilO+xsyM0ObpCaI
- 1WZYFfdRQSUI+DQiDYLuB3JRb6b+9HRuSpiCvCksshLQ9/SAHDt+4b2ts7wdAmx7LI/b
- aXd8JGK6rh9NXMW4PAkUxBdyjcCdcZFrQRWxuxxsnQZyyVx1N6Bq3sj1VDFaA8/6sewn
- fSIA==
+ bh=MA+BCTYyqK+9sz78Mv1qFMH8ilkc86l5KGXO2NGreho=;
+ b=oUqcDGPVDflUwrHDbwUIXXAcNnAsyHW5IGmxT8VBf8GeYwqDwEZJmwmt/LiwcY9uUV
+ dMpJSytBhhiumPbM1RkZ/zq4GHNkVhmfMrzfqmaihIZMv3YVipxRoIYqxZba4BugUueh
+ uOs9e1IizyzQ4AXJmXrYcyHMAwFHsOficfyw6L+qsb3mZ1sAAEjEcPiuBD6BqADBOZYK
+ vvqtLY/DxhDn0rlD6LhdUrsoeJtHiWw91XTU9o4go5UVd+HL7RhsI40C9PrXos8uzTWq
+ G6HYkxiwrsopB4UGOcWIEQxOdiRYabP0w7jMH4w7ITZ7wWXP5ZP3HBUbHcOhByu3AMvP
+ iDEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=fcD3NEKxqm51zeSb+lOjnaiMKTAZvQ5t+y/MQ7dqNn4=;
- b=PR/kcATL37xceFaYpeWdMX0bV06UjWoivuby1eNCoyA+OzT184o0JUwfkol3dmChRO
- mESxFykGuywU6GgJa9lCOrYCI1XpHOaTmOvkgunpUcBCVkxtQUi6ZDA1avBNdLGs/Dk5
- Jyg4B12WO+0F5cg3r0XxgWAZN0Z/h8EIkArdHUtDSQrUv5jUwFewbG++B+2n+7ENX4lr
- K1UebJmW9+WvMbeBKRSVRXNhpE+fCvABHKkbaxfmqkgSTEV6EDHRGFSJ0APi/bEBJh6r
- 3tURrafYHqlG2xoqcPido8HoMxH+yfpcpqlsR0rRoKBK6iSC507lQ9fNSI6pxeLOGkCr
- VUDw==
-X-Gm-Message-State: AOAM533JGkor3kRJeIfIsnyyl7fb9KPkwk1w0Hid0QyRYz44Qwt30ri1
- icmsgsN1sy/KgMR5Nj7tBHlliOHiIcc=
-X-Received: by 2002:a7b:c94c:: with SMTP id i12mr3769142wml.111.1630595897048; 
- Thu, 02 Sep 2021 08:18:17 -0700 (PDT)
+ bh=MA+BCTYyqK+9sz78Mv1qFMH8ilkc86l5KGXO2NGreho=;
+ b=WuIdZmCdcwM0UR5BnO/iM6GT75uSYta7xzyNWg0O3HYDNgCX/OV8XUXO5Sgmc0S+rR
+ 5/mPxEvmR3aECaLJazOGvcWCpsVJkmKM8/lIN6nAYiXm4r+ssa1PZhoVlVaQFNDQe8sM
+ KLBLngbIJyJdXtxj+8OA8QTIZKN9Q/i7Pewlo1GGPjP/dZhOsT1jSjgdWhquUEAQVfvi
+ As5PJUbFRotWsNKDuxcfxdR3n48+MtX5iLMdv6mKQUtO9+hK8JWbHFGFWTTwPrC5IrYp
+ CURIim1JKU8lfsC1gu6IAtBqUq2evRK2ao53YGq7bPqlKM6wXyvfbkpZLQBjYjL5OWEu
+ jwrg==
+X-Gm-Message-State: AOAM531ofhHtuTjTMDwE/jdJWInxmjOfruh4E3tZ2jtF6Mc8HyujhEcg
+ 6o/pvNoJYZMo6iPjrPY5S5Yt23y5zfY=
+X-Received: by 2002:adf:9e43:: with SMTP id v3mr4345919wre.274.1630595870054; 
+ Thu, 02 Sep 2021 08:17:50 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
  by smtp.gmail.com with ESMTPSA id
- i68sm2187724wri.26.2021.09.02.08.18.15
+ n4sm1200851wra.37.2021.09.02.08.17.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:18:16 -0700 (PDT)
+ Thu, 02 Sep 2021 08:17:49 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 11/24] target/i386: Restrict cpu_exec_interrupt() handler to
+Subject: [PATCH 06/24] target/alpha: Restrict cpu_exec_interrupt() handler to
  sysemu
-Date: Thu,  2 Sep 2021 17:17:02 +0200
-Message-Id: <20210902151715.383678-12-f4bug@amsat.org>
+Date: Thu,  2 Sep 2021 17:16:57 +0200
+Message-Id: <20210902151715.383678-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
 References: <20210902151715.383678-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -133,107 +132,86 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8D2aZEO5x4Tg
+X-TUID: nD3w3h1KG4i5
 
 Restrict cpu_exec_interrupt() and its callees to sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/i386/tcg/helper-tcg.h |  2 ++
- target/i386/tcg/seg_helper.c | 10 ++--------
- target/i386/tcg/tcg-cpu.c    |  2 +-
- 3 files changed, 5 insertions(+), 9 deletions(-)
+ target/alpha/cpu.h    | 2 +-
+ target/alpha/cpu.c    | 2 +-
+ target/alpha/helper.c | 5 ++---
+ 3 files changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/target/i386/tcg/helper-tcg.h b/target/i386/tcg/helper-tcg.h
-index 2510cc244e9..60ca09e95eb 100644
---- a/target/i386/tcg/helper-tcg.h
-+++ b/target/i386/tcg/helper-tcg.h
-@@ -38,7 +38,9 @@ QEMU_BUILD_BUG_ON(TCG_PHYS_ADDR_BITS > TARGET_PHYS_ADDR_SPACE_BITS);
-  * @cpu: vCPU the interrupt is to be handled by.
-  */
- void x86_cpu_do_interrupt(CPUState *cpu);
-+#ifndef CONFIG_USER_ONLY
- bool x86_cpu_exec_interrupt(CPUState *cpu, int int_req);
-+#endif
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index 82df108967b..4e993bd15bd 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -274,10 +274,10 @@ struct AlphaCPU {
  
- /* helper.c */
- bool x86_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c
-index dee7bef68c6..13c6e6ee62e 100644
---- a/target/i386/tcg/seg_helper.c
-+++ b/target/i386/tcg/seg_helper.c
-@@ -1110,6 +1110,7 @@ void do_interrupt_x86_hardirq(CPUX86State *env, int intno, int is_hw)
-     do_interrupt_all(env_archcpu(env), intno, 0, 0, 0, is_hw);
- }
- 
-+#ifndef CONFIG_USER_ONLY
- bool x86_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
-     X86CPU *cpu = X86_CPU(cs);
-@@ -1125,23 +1126,17 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-      * This is required to make icount-driven execution deterministic.
-      */
-     switch (interrupt_request) {
--#if !defined(CONFIG_USER_ONLY)
-     case CPU_INTERRUPT_POLL:
-         cs->interrupt_request &= ~CPU_INTERRUPT_POLL;
-         apic_poll_irq(cpu->apic_state);
-         break;
+ #ifndef CONFIG_USER_ONLY
+ extern const VMStateDescription vmstate_alpha_cpu;
 -#endif
-     case CPU_INTERRUPT_SIPI:
-         do_cpu_sipi(cpu);
-         break;
-     case CPU_INTERRUPT_SMI:
-         cpu_svm_check_intercept_param(env, SVM_EXIT_SMI, 0, 0);
-         cs->interrupt_request &= ~CPU_INTERRUPT_SMI;
--#ifdef CONFIG_USER_ONLY
--        cpu_abort(CPU(cpu), "SMI interrupt: cannot enter SMM in user-mode");
--#else
-         do_smm_enter(cpu);
--#endif /* CONFIG_USER_ONLY */
-         break;
-     case CPU_INTERRUPT_NMI:
-         cpu_svm_check_intercept_param(env, SVM_EXIT_NMI, 0, 0);
-@@ -1162,7 +1157,6 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-                       "Servicing hardware INT=0x%02x\n", intno);
-         do_interrupt_x86_hardirq(env, intno, 1);
-         break;
--#if !defined(CONFIG_USER_ONLY)
-     case CPU_INTERRUPT_VIRQ:
-         /* FIXME: this should respect TPR */
-         cpu_svm_check_intercept_param(env, SVM_EXIT_VINTR, 0, 0);
-@@ -1173,12 +1167,12 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-         do_interrupt_x86_hardirq(env, intno, 1);
-         cs->interrupt_request &= ~CPU_INTERRUPT_VIRQ;
-         break;
--#endif
-     }
  
-     /* Ensure that no TB jump will be modified as the program flow was changed.  */
+ void alpha_cpu_do_interrupt(CPUState *cpu);
+ bool alpha_cpu_exec_interrupt(CPUState *cpu, int int_req);
++#endif /* !CONFIG_USER_ONLY */
+ void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);
+ hwaddr alpha_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ int alpha_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+index 4871ad0c0a6..93e16a2ffb4 100644
+--- a/target/alpha/cpu.c
++++ b/target/alpha/cpu.c
+@@ -218,10 +218,10 @@ static const struct SysemuCPUOps alpha_sysemu_ops = {
+ 
+ static const struct TCGCPUOps alpha_tcg_ops = {
+     .initialize = alpha_translate_init,
+-    .cpu_exec_interrupt = alpha_cpu_exec_interrupt,
+     .tlb_fill = alpha_cpu_tlb_fill,
+ 
+ #ifndef CONFIG_USER_ONLY
++    .cpu_exec_interrupt = alpha_cpu_exec_interrupt,
+     .do_interrupt = alpha_cpu_do_interrupt,
+     .do_transaction_failed = alpha_cpu_do_transaction_failed,
+     .do_unaligned_access = alpha_cpu_do_unaligned_access,
+diff --git a/target/alpha/helper.c b/target/alpha/helper.c
+index 4f56fe4d231..81550d9e2ff 100644
+--- a/target/alpha/helper.c
++++ b/target/alpha/helper.c
+@@ -293,7 +293,6 @@ bool alpha_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
+                  prot, mmu_idx, TARGET_PAGE_SIZE);
      return true;
  }
-+#endif /* CONFIG_USER_ONLY */
+-#endif /* USER_ONLY */
  
- void helper_lldt(CPUX86State *env, int selector)
+ void alpha_cpu_do_interrupt(CPUState *cs)
  {
-diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
-index dce800a8953..fd86daf93d2 100644
---- a/target/i386/tcg/tcg-cpu.c
-+++ b/target/i386/tcg/tcg-cpu.c
-@@ -72,12 +72,12 @@ static const struct TCGCPUOps x86_tcg_ops = {
-     .synchronize_from_tb = x86_cpu_synchronize_from_tb,
-     .cpu_exec_enter = x86_cpu_exec_enter,
-     .cpu_exec_exit = x86_cpu_exec_exit,
--    .cpu_exec_interrupt = x86_cpu_exec_interrupt,
-     .tlb_fill = x86_cpu_tlb_fill,
- #ifdef CONFIG_USER_ONLY
-     .fake_user_exception = x86_cpu_do_interrupt,
- #else
-     .do_interrupt = x86_cpu_do_interrupt,
-+    .cpu_exec_interrupt = x86_cpu_exec_interrupt,
-     .debug_excp_handler = breakpoint_handler,
-     .debug_check_breakpoint = x86_debug_check_breakpoint,
- #endif /* !CONFIG_USER_ONLY */
+@@ -348,7 +347,6 @@ void alpha_cpu_do_interrupt(CPUState *cs)
+ 
+     cs->exception_index = -1;
+ 
+-#if !defined(CONFIG_USER_ONLY)
+     switch (i) {
+     case EXCP_RESET:
+         i = 0x0000;
+@@ -404,7 +402,6 @@ void alpha_cpu_do_interrupt(CPUState *cs)
+ 
+     /* Switch to PALmode.  */
+     env->flags |= ENV_FLAG_PAL_MODE;
+-#endif /* !USER_ONLY */
+ }
+ 
+ bool alpha_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+@@ -451,6 +448,8 @@ bool alpha_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+     return false;
+ }
+ 
++#endif /* !CONFIG_USER_ONLY */
++
+ void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+ {
+     static const char linux_reg_names[31][4] = {
 -- 
 2.31.1
 

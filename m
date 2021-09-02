@@ -1,106 +1,99 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp623907lfb;
-        Thu, 2 Sep 2021 13:25:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzYWLoVx0omQvFHMLhtlCH8bIB/qfO9AtZY4KgZjSsmO0VxLXSJCZKZprBpcJAX6DVqiPD8
-X-Received: by 2002:a92:c081:: with SMTP id h1mr3440208ile.193.1630614344836;
-        Thu, 02 Sep 2021 13:25:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630614344; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp624956lfb;
+        Thu, 2 Sep 2021 13:27:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwh/pOTB2YgRZNZRVsRj6GjobIyTmczU4TXgM6BBkscfpoof6c6bl3byHvJkv+5to0gC1sM
+X-Received: by 2002:a05:6638:408a:: with SMTP id m10mr76805jam.13.1630614441694;
+        Thu, 02 Sep 2021 13:27:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630614441; cv=none;
         d=google.com; s=arc-20160816;
-        b=hFPnHUE/G6g6dae8yV5eI1QECjGzpwrPDtP69IAv6HaBB2FwbgMj2cW+pwYdb6IfrK
-         6Dc96es1FtRZRX0iPqV4BJB2/9FfPp+v4x2/pvmJ6NMVVgrJ2xiaKeb9vLNT81oguO12
-         KP9LGvW6/COwX+nG3ia5enGOCS/BSyLmrYWBkQPhcbzzvE0PdBYVcYysWsrJhwcCRAly
-         ptsNaZKAJdsH+6FQ3/RXf1cb+Kc5xtMIENBXOw0/2NtpCzO87yeqKpaLlyPg5BitdZl8
-         pLHfoY2PeWdwfqyk/dA7wrMdDN+DQrmFd9PqzaWsSPECfmZFvkkGwRx1pVEErBeVfpwB
-         lJeQ==
+        b=Zm8QFUorX5SCNP8U5dJYgGAixX1arzcxkduCtKXO9G80Or4EEv3BatNehI9uiiiIae
+         A1ok2YnG9T0pyivw+8dzREOOcEMtj6mz8IMifiuYYAe5peoEXCy3hW2c8b3xwQbzEw+f
+         p5h4QA7BUP1DFifCWR1zUC5z+yLwioSQVIf1oYtNnJTFcwxGX5TnqHH9WP3sMGbEksc5
+         Cbofb6Im0x+7f/UsERtgTFF8yAm4tjxgxaSqydvZiZ8C8801rxOoG2DMf3OAUr1F/f5H
+         qXgGwHUGWeO9N413NWaoru/X6TBSTsixTvC36AAGRlVFzw9MGCx9tLcLHjEShOuRT42R
+         bNjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Jf+vSnNSG8wRRg/XiOKT6LAgXtHyEiy/oi1zTo/WSN8=;
-        b=nfgbGRBkfaxezqEuLwvMZmyGAXirbmZ/mAMrR9wKw5pF4O6EephNVBuAxq/ka6iquN
-         oDm8InkulGX0T3f80IaXuVkgHAfLXUSf5kL1OcKKw+hWZhNcxNJLU+CYos8QLCUaxUZY
-         9+YItbmbz0LnsALQZfgMq6v4rmLMs/KFiJxGoHNLuKpTPNdWqlf3xducl5c1mtkbvvpW
-         2kmNr89DB5c7DtDC8oj4t0kEZ6C15b0DtlLSBxA714auDOvdm4Nc5ikeTfj9qS4JAtsE
-         x14D1ilyVYLsF/5bru0NX16TFwDPi7XGDm+HelShuYSAtzTuE7MHxE0FwKoe/NcNyGZT
-         Xofw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=O8Au4c7FKoaiiMWcGWVkJQlwfGHl1ua4n/AY/z3jDxg=;
+        b=j8jWebUHCKjFRF3epRoeeAdXOU9T0FbBSAwnN4ywmDjJYtXjN9xv0d4ruOKLOGDnuf
+         gupalBaL7rUjsVxzpQfoKNuIV1zDdi5St9AaCo7sSjeEibnFVHtUHLStvgtdQj2ZVAaX
+         g5FwkSTTf3ysNXFbBcXASbof1kV7K8DdnhDBM0KKj0YU50k+IIeceFS356J4yVfxS0Hl
+         xVYKHeItFZNhKp0nNXMYxdFJ/7gy5ebfG/+WyAxbvhzo6y4Zxl+mkoDdjqOho0NUInTl
+         OgQ8kHmJE845BTFIxGEeMl3F5DmUp8d2Zn3nZ45CyC+SlSOmL6N196JB9MAx4yArE8Rr
+         897g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=pQ8uCbud;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=ygYzn8w7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b129si2973352jab.33.2021.09.02.13.25.44
+        by mx.google.com with ESMTPS id 20si2702588ioz.25.2021.09.02.13.27.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:25:44 -0700 (PDT)
+        Thu, 02 Sep 2021 13:27:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=pQ8uCbud;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47638 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=ygYzn8w7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51584 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtHM-0003YR-3w
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:25:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41060)
+	id 1mLtIv-0006MT-1U
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:27:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41678)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1mLtD1-0004V9-1B
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:21:15 -0400
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b]:41858)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtGE-0003RD-OW
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:24:34 -0400
+Received: from mail-vs1-xe29.google.com ([2607:f8b0:4864:20::e29]:35628)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1mLtCx-0002Gp-Nf
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:21:14 -0400
-Received: by mail-ua1-x92b.google.com with SMTP id 75so1579780uav.8
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:21:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtGC-000584-PP
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:24:34 -0400
+Received: by mail-vs1-xe29.google.com with SMTP id p14so2642505vsm.2
+ for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:24:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Jf+vSnNSG8wRRg/XiOKT6LAgXtHyEiy/oi1zTo/WSN8=;
- b=pQ8uCbudFmSM3utsdgAArdjWg5SgXVR9a5uebFwoVz4a/5N+3dzi0epZO6F8cdC+MC
- hPnUtS2umGoeJP2mZkR4zQAqmcbPjDW0aOL0N8Rsax9ir84Gc7xc/Lfnu98ISeJSwJ8E
- GrQI1m/8d0YyNehyPK8FdgtOnbsWISLlets2rBl2CtowLDg5Z2Z6lMFGwELkQoCHonBO
- qwnawJzAlztcP5zRAscyt1ekzxRNpzFPiPNjhqNWkfoCCencQ92nRnP5Vgzzv8YtpPWm
- qQMzT8g+ANqT/9iRE8VrG4TtdsAiLHDtsHjxADqrDNE73KLS0lj4ccJWBpRMUrNZZbIT
- kTWA==
+ :cc; bh=O8Au4c7FKoaiiMWcGWVkJQlwfGHl1ua4n/AY/z3jDxg=;
+ b=ygYzn8w7lHQ77vwd95mDffZz0nx3ggUnPStoVqrE68fm29Hz19TQ3h+t5Uglu+rZev
+ RvohAJbyVuJO6hyqF5QwtAdpjyvO+zdT8otwVjp1nO69oxGK5Bz64X2usN2PRlESu+Ua
+ 0kePoXWMcH0sPn3cL1QsyhL2efzEMdxe9ivKIO/4boUAWlCI2hlkakKsVNkQhlEx9Wk1
+ KLRsMG7bU430gSgF/QCDJ72sBpEzFFJfR3YSctbjiyCSaWASkZvXJINNidn+GsJoTXOV
+ x2O1E43DJzVJo5Kmwl7LACoWwMyp5jgAWCSnNg5cSTijsZgVUUnZOxb6mLll/Cc2IwFS
+ QrLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Jf+vSnNSG8wRRg/XiOKT6LAgXtHyEiy/oi1zTo/WSN8=;
- b=DKXSJiAdZpwrjPPHHuDmY3cxe++e7rNPkRYML8+RmgifrJT1OTdtPqbOZzZ4pi4/Gf
- 5Hv3Y8IFT3E1d1GRvz5koc/H/q9iluR23iX/oq2D8NBDG5oXZZ4Oaf7tTJrHn9gmQXzf
- NyeDm//S6R7ciQy5/LDLHNyvt0Q0DyIu0s9qqyZFRpi5XaviWQ5JUlgYT8h5Y62ciGTn
- ZHN9qIqqS99Hj/kHvF6G+c5nMTig0XjzMWnxDLBljGKgW6a41WqEJPO3Ogk6upI0MUtn
- gkwVBbpdIVelSHI1i7P5WulqJRT0YvuhgRMt9Edh6dygwSqnXXmWxwvSuESFjknrJ/jh
- +C1g==
-X-Gm-Message-State: AOAM5311kKyjKpbH7AeZCVho+3vhbz22/SaJgWAEtzN46X2pbQdraVM9
- 6qaVd1+yDRvZyyu1XFDFc+hDsRiPRDJv9d0jaQAhVMY6ANQ=
-X-Received: by 2002:a9f:25c1:: with SMTP id 59mr80969uaf.15.1630614069773;
- Thu, 02 Sep 2021 13:21:09 -0700 (PDT)
+ bh=O8Au4c7FKoaiiMWcGWVkJQlwfGHl1ua4n/AY/z3jDxg=;
+ b=GP5yZ/GAGfuzS3b3gcDRNgPE+wroT/SoJ+JsVo5Z7H+g1K6YNyRqPyjvophk7spSWa
+ A3JqZl0VJdEhIdQ31xdA3/rjttkQDAei6GSGGrHndT8n9C2SNiigj/Mb5B9A/Qk+KUUS
+ iLxGIfhanw7vrj8vWMYsB91Gg8VgYF95LSrrFQjom38msZ2llLJb+SkjKXsxQtymMVpI
+ +/03RJzNWYgM+bSiYqpdjzUFIMxfCydHqbLwpmemZht2q32/M4a6GtzUhCfAqwUsVfm/
+ TCRwmEu8hrcv906quwPTBUN+VJ6p4EwjWnJGZmIle4zCTtPh8oXrlWvEJYb+NBB5y1lW
+ ZirQ==
+X-Gm-Message-State: AOAM531ZB1ufCI14I1otTIIZVcnHi+2dlgE3j7wMMICdp0oen3v/hI0Z
+ KGcN6f8jKJnxkQ0UuGDqMCdrcPKeU/1WvVbUcr9N8w==
+X-Received: by 2002:a67:c789:: with SMTP id t9mr4350240vsk.60.1630614270890;
+ Thu, 02 Sep 2021 13:24:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210902181642.315792-1-crauer@google.com>
-In-Reply-To: <20210902181642.315792-1-crauer@google.com>
-From: Patrick Venture <venture@google.com>
-Date: Thu, 2 Sep 2021 13:20:58 -0700
-Message-ID: <CAO=notxshTtgy6NESywBrQ18W30gvXR3cEVK0Twp_VaoVaG-aw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: Add support for kudo-bmc board.
-To: Chris Rauer <crauer@google.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- Havard Skinnemoen <hskinnemoen@google.com>, 
- CS20 KFTing <kfting@nuvoton.com>
-Content-Type: multipart/alternative; boundary="00000000000065777505cb08ec33"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92b;
- envelope-from=venture@google.com; helo=mail-ua1-x92b.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+References: <20210902151715.383678-1-f4bug@amsat.org>
+ <20210902151715.383678-17-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-17-f4bug@amsat.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 2 Sep 2021 14:24:20 -0600
+Message-ID: <CANCZdfrMm7dHn+g7V08xrk+JuWKBTVp8Q=8PaBGdSWx7z5ZrBw@mail.gmail.com>
+Subject: Re: [PATCH 16/24] target/openrisc: Restrict cpu_exec_interrupt()
+ handler to sysemu
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="00000000000061e41f05cb08f8ff"
+Received-SPF: none client-ip=2607:f8b0:4864:20::e29;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe29.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,244 +106,259 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pRa1HAW8RS89
+X-TUID: HizQzBR8GoAc
 
---00000000000065777505cb08ec33
+--00000000000061e41f05cb08f8ff
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 2, 2021 at 12:01 PM Chris Rauer <crauer@google.com> wrote:
-
-> kudo-bmc is a board supported by OpenBMC.
-> https://github.com/openbmc/openbmc/tree/master/meta-fii/meta-kudo
+On Thu, Sep 2, 2021 at 9:18 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 >
-> Tested: Booted kudo firmware.
-> Signed-off-by: Chris Rauer <crauer@google.com>
->
-Reviewed-by: Patrick Venture <venture@google.com>
+wrote:
 
+> Restrict cpu_exec_interrupt() and its callees to sysemu.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  docs/system/arm/nuvoton.rst |  1 +
->  hw/arm/npcm7xx_boards.c     | 34 ++++++++++++++++++++++++++++++++++
->  2 files changed, 35 insertions(+)
+>  target/openrisc/cpu.h       | 5 +++--
+>  target/openrisc/cpu.c       | 2 +-
+>  target/openrisc/interrupt.c | 2 --
+>  target/openrisc/meson.build | 6 ++++--
+>  4 files changed, 8 insertions(+), 7 deletions(-)
 >
-> diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-> index 69f57c2886..adf497e679 100644
-> --- a/docs/system/arm/nuvoton.rst
-> +++ b/docs/system/arm/nuvoton.rst
-> @@ -20,6 +20,7 @@ Hyperscale applications. The following machines are
-> based on this chip :
+
+I'm not 100% sure about the build changes because my meson fu is weak, but
+they seem right given the rest.
+
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+
+
+> diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+> index 82cbaeb4f84..be6df81a810 100644
+> --- a/target/openrisc/cpu.h
+> +++ b/target/openrisc/cpu.h
+> @@ -312,8 +312,6 @@ struct OpenRISCCPU {
 >
->  - ``quanta-gbs-bmc``    Quanta GBS server BMC
->  - ``quanta-gsj``        Quanta GSJ server BMC
-> +- ``kudo-bmc``          Fii USA Kudo server BMC
 >
->  There are also two more SoCs, NPCM710 and NPCM705, which are single-core
->  variants of NPCM750 and NPCM730, respectively. These are currently not
-> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> index e5a3243995..c80f442adb 100644
-> --- a/hw/arm/npcm7xx_boards.c
-> +++ b/hw/arm/npcm7xx_boards.c
-> @@ -31,6 +31,7 @@
->  #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
->  #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
->  #define QUANTA_GBS_POWER_ON_STRAPS 0x000017ff
-> +#define KUDO_BMC_POWER_ON_STRAPS 0x00001fff
+>  void cpu_openrisc_list(void);
+> -void openrisc_cpu_do_interrupt(CPUState *cpu);
+> -bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);
+>  void openrisc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>  hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>  int openrisc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int
+> reg);
+> @@ -331,6 +329,9 @@ int print_insn_or1k(bfd_vma addr, disassemble_info
+> *info);
+>  #ifndef CONFIG_USER_ONLY
+>  extern const VMStateDescription vmstate_openrisc_cpu;
 >
->  static const char npcm7xx_default_bootrom[] = "npcm7xx_bootrom.bin";
+> +void openrisc_cpu_do_interrupt(CPUState *cpu);
+> +bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);
+> +
+>  /* hw/openrisc_pic.c */
+>  void cpu_openrisc_pic_init(OpenRISCCPU *cpu);
 >
-> @@ -357,6 +358,23 @@ static void quanta_gbs_init(MachineState *machine)
->      npcm7xx_load_kernel(machine, soc);
->  }
+> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+> index bd34e429ecb..27cb04152f9 100644
+> --- a/target/openrisc/cpu.c
+> +++ b/target/openrisc/cpu.c
+> @@ -186,10 +186,10 @@ static const struct SysemuCPUOps openrisc_sysemu_op=
+s
+> =3D {
 >
-> +static void kudo_bmc_init(MachineState *machine)
-> +{
-> +    NPCM7xxState *soc;
-> +
-> +    soc = npcm7xx_create_soc(machine, KUDO_BMC_POWER_ON_STRAPS);
-> +    npcm7xx_connect_dram(soc, machine->ram);
-> +    qdev_realize(DEVICE(soc), NULL, &error_fatal);
-> +
-> +    npcm7xx_load_bootrom(machine, soc);
-> +    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
-> +                          drive_get(IF_MTD, 0, 0));
-> +    npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
-> +                          drive_get(IF_MTD, 3, 0));
-> +
-> +    npcm7xx_load_kernel(machine, soc);
-> +}
-> +
->  static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char
-> *type)
->  {
->      NPCM7xxClass *sc = NPCM7XX_CLASS(object_class_by_name(type));
-> @@ -417,6 +435,18 @@ static void gbs_bmc_machine_class_init(ObjectClass
-> *oc, void *data)
->      mc->default_ram_size = 1 * GiB;
->  }
+>  static const struct TCGCPUOps openrisc_tcg_ops =3D {
+>      .initialize =3D openrisc_translate_init,
+> -    .cpu_exec_interrupt =3D openrisc_cpu_exec_interrupt,
+>      .tlb_fill =3D openrisc_cpu_tlb_fill,
 >
-> +static void kudo_bmc_machine_class_init(ObjectClass *oc, void *data)
-> +{
-> +    NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_CLASS(oc);
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +
-> +    npcm7xx_set_soc_type(nmc, TYPE_NPCM730);
-> +
-> +    mc->desc = "Kudo BMC (Cortex A9)";
-> +    mc->init = kudo_bmc_init;
-> +    mc->default_ram_size = 1 * GiB;
-> +};
-> +
->  static const TypeInfo npcm7xx_machine_types[] = {
->      {
->          .name           = TYPE_NPCM7XX_MACHINE,
-> @@ -437,6 +467,10 @@ static const TypeInfo npcm7xx_machine_types[] = {
->          .name           = MACHINE_TYPE_NAME("quanta-gbs-bmc"),
->          .parent         = TYPE_NPCM7XX_MACHINE,
->          .class_init     = gbs_bmc_machine_class_init,
-> +    }, {
-> +        .name           = MACHINE_TYPE_NAME("kudo-bmc"),
-> +        .parent         = TYPE_NPCM7XX_MACHINE,
-> +        .class_init     = kudo_bmc_machine_class_init,
->      },
+>  #ifndef CONFIG_USER_ONLY
+> +    .cpu_exec_interrupt =3D openrisc_cpu_exec_interrupt,
+>      .do_interrupt =3D openrisc_cpu_do_interrupt,
+>  #endif /* !CONFIG_USER_ONLY */
 >  };
+> diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
+> index 3eab771dcda..19223e3f25b 100644
+> --- a/target/openrisc/interrupt.c
+> +++ b/target/openrisc/interrupt.c
+> @@ -28,7 +28,6 @@
 >
+>  void openrisc_cpu_do_interrupt(CPUState *cs)
+>  {
+> -#ifndef CONFIG_USER_ONLY
+>      OpenRISCCPU *cpu =3D OPENRISC_CPU(cs);
+>      CPUOpenRISCState *env =3D &cpu->env;
+>      int exception =3D cs->exception_index;
+> @@ -96,7 +95,6 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
+>      } else {
+>          cpu_abort(cs, "Unhandled exception 0x%x\n", exception);
+>      }
+> -#endif
+>
+>      cs->exception_index =3D -1;
+>  }
+> diff --git a/target/openrisc/meson.build b/target/openrisc/meson.build
+> index 9774a583065..e445dec4a00 100644
+> --- a/target/openrisc/meson.build
+> +++ b/target/openrisc/meson.build
+> @@ -9,7 +9,6 @@
+>    'exception_helper.c',
+>    'fpu_helper.c',
+>    'gdbstub.c',
+> -  'interrupt.c',
+>    'interrupt_helper.c',
+>    'mmu.c',
+>    'sys_helper.c',
+> @@ -17,7 +16,10 @@
+>  ))
+>
+>  openrisc_softmmu_ss =3D ss.source_set()
+> -openrisc_softmmu_ss.add(files('machine.c'))
+> +openrisc_softmmu_ss.add(files(
+> +  'interrupt.c',
+> +  'machine.c',
+> +))
+>
+>  target_arch +=3D {'openrisc': openrisc_ss}
+>  target_softmmu_arch +=3D {'openrisc': openrisc_softmmu_ss}
 > --
-> 2.33.0.153.gba50c8fa24-goog
->
+> 2.31.1
 >
 >
 
---00000000000065777505cb08ec33
+--00000000000061e41f05cb08f8ff
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 12:01 PM Chris=
- Rauer &lt;<a href=3D"mailto:crauer@google.com">crauer@google.com</a>&gt; w=
-rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">kudo-bmc i=
-s a board supported by OpenBMC.<br>
-<a href=3D"https://github.com/openbmc/openbmc/tree/master/meta-fii/meta-kud=
-o" rel=3D"noreferrer" target=3D"_blank">https://github.com/openbmc/openbmc/=
-tree/master/meta-fii/meta-kudo</a><br>
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 9:18 AM Philip=
+pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
+g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+>Restrict cpu_exec_interrupt() and its callees to sysemu.<br>
 <br>
-Tested: Booted kudo firmware.<br>
-Signed-off-by: Chris Rauer &lt;<a href=3D"mailto:crauer@google.com" target=
-=3D"_blank">crauer@google.com</a>&gt;<br></blockquote><div>Reviewed-by: Pat=
-rick Venture &lt;<a href=3D"mailto:venture@google.com">venture@google.com</=
-a>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
- 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0docs/system/arm/nuvoton.rst |=C2=A0 1 +<br>
-=C2=A0hw/arm/npcm7xx_boards.c=C2=A0 =C2=A0 =C2=A0| 34 +++++++++++++++++++++=
-+++++++++++++<br>
-=C2=A02 files changed, 35 insertions(+)<br>
+=C2=A0target/openrisc/cpu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0| 5 +++--<br>
+=C2=A0target/openrisc/cpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0target/openrisc/interrupt.c | 2 --<br>
+=C2=A0target/openrisc/meson.build | 6 ++++--<br>
+=C2=A04 files changed, 8 insertions(+), 7 deletions(-)<br></blockquote><div=
+><br></div><div>I&#39;m not 100% sure about the build changes because my me=
+son fu is weak, but they seem right given the rest.=C2=A0</div><div><br></d=
+iv><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com" targ=
+et=3D"_blank">imp@bsdimp.com</a>&gt;</div><div>=C2=A0</div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex">
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h<br>
+index 82cbaeb4f84..be6df81a810 100644<br>
+--- a/target/openrisc/cpu.h<br>
++++ b/target/openrisc/cpu.h<br>
+@@ -312,8 +312,6 @@ struct OpenRISCCPU {<br>
 <br>
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst<br>
-index 69f57c2886..adf497e679 100644<br>
---- a/docs/system/arm/nuvoton.rst<br>
-+++ b/docs/system/arm/nuvoton.rst<br>
-@@ -20,6 +20,7 @@ Hyperscale applications. The following machines are based=
- on this chip :<br>
 <br>
-=C2=A0- ``quanta-gbs-bmc``=C2=A0 =C2=A0 Quanta GBS server BMC<br>
-=C2=A0- ``quanta-gsj``=C2=A0 =C2=A0 =C2=A0 =C2=A0 Quanta GSJ server BMC<br>
-+- ``kudo-bmc``=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Fii USA Kudo server BMC<b=
+=C2=A0void cpu_openrisc_list(void);<br>
+-void openrisc_cpu_do_interrupt(CPUState *cpu);<br>
+-bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
+=C2=A0void openrisc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);<br>
+=C2=A0hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);<b=
 r>
+=C2=A0int openrisc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, in=
+t reg);<br>
+@@ -331,6 +329,9 @@ int print_insn_or1k(bfd_vma addr, disassemble_info *inf=
+o);<br>
+=C2=A0#ifndef CONFIG_USER_ONLY<br>
+=C2=A0extern const VMStateDescription vmstate_openrisc_cpu;<br>
 <br>
-=C2=A0There are also two more SoCs, NPCM710 and NPCM705, which are single-c=
-ore<br>
-=C2=A0variants of NPCM750 and NPCM730, respectively. These are currently no=
-t<br>
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c<br>
-index e5a3243995..c80f442adb 100644<br>
---- a/hw/arm/npcm7xx_boards.c<br>
-+++ b/hw/arm/npcm7xx_boards.c<br>
-@@ -31,6 +31,7 @@<br>
-=C2=A0#define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7<br>
-=C2=A0#define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff<br>
-=C2=A0#define QUANTA_GBS_POWER_ON_STRAPS 0x000017ff<br>
-+#define KUDO_BMC_POWER_ON_STRAPS 0x00001fff<br>
++void openrisc_cpu_do_interrupt(CPUState *cpu);<br>
++bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
++<br>
+=C2=A0/* hw/openrisc_pic.c */<br>
+=C2=A0void cpu_openrisc_pic_init(OpenRISCCPU *cpu);<br>
 <br>
-=C2=A0static const char npcm7xx_default_bootrom[] =3D &quot;npcm7xx_bootrom=
-.bin&quot;;<br>
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c<br>
+index bd34e429ecb..27cb04152f9 100644<br>
+--- a/target/openrisc/cpu.c<br>
++++ b/target/openrisc/cpu.c<br>
+@@ -186,10 +186,10 @@ static const struct SysemuCPUOps openrisc_sysemu_ops =
+=3D {<br>
 <br>
-@@ -357,6 +358,23 @@ static void quanta_gbs_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0npcm7xx_load_kernel(machine, soc);<br>
-=C2=A0}<br>
+=C2=A0static const struct TCGCPUOps openrisc_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.initialize =3D openrisc_translate_init,<br>
+-=C2=A0 =C2=A0 .cpu_exec_interrupt =3D openrisc_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D openrisc_cpu_tlb_fill,<br>
 <br>
-+static void kudo_bmc_init(MachineState *machine)<br>
-+{<br>
-+=C2=A0 =C2=A0 NPCM7xxState *soc;<br>
-+<br>
-+=C2=A0 =C2=A0 soc =3D npcm7xx_create_soc(machine, KUDO_BMC_POWER_ON_STRAPS=
-);<br>
-+=C2=A0 =C2=A0 npcm7xx_connect_dram(soc, machine-&gt;ram);<br>
-+=C2=A0 =C2=A0 qdev_realize(DEVICE(soc), NULL, &amp;error_fatal);<br>
-+<br>
-+=C2=A0 =C2=A0 npcm7xx_load_bootrom(machine, soc);<br>
-+=C2=A0 =C2=A0 npcm7xx_connect_flash(&amp;soc-&gt;fiu[0], 0, &quot;mx66u512=
-35f&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 drive_get(IF_MTD, 0, 0));<br>
-+=C2=A0 =C2=A0 npcm7xx_connect_flash(&amp;soc-&gt;fiu[1], 0, &quot;mx66u512=
-35f&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 drive_get(IF_MTD, 3, 0));<br>
-+<br>
-+=C2=A0 =C2=A0 npcm7xx_load_kernel(machine, soc);<br>
-+}<br>
-+<br>
-=C2=A0static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char=
- *type)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0NPCM7xxClass *sc =3D NPCM7XX_CLASS(object_class_by_name=
-(type));<br>
-@@ -417,6 +435,18 @@ static void gbs_bmc_machine_class_init(ObjectClass *oc=
-, void *data)<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;default_ram_size =3D 1 * GiB;<br>
-=C2=A0}<br>
-<br>
-+static void kudo_bmc_machine_class_init(ObjectClass *oc, void *data)<br>
-+{<br>
-+=C2=A0 =C2=A0 NPCM7xxMachineClass *nmc =3D NPCM7XX_MACHINE_CLASS(oc);<br>
-+=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
-+<br>
-+=C2=A0 =C2=A0 npcm7xx_set_soc_type(nmc, TYPE_NPCM730);<br>
-+<br>
-+=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;Kudo BMC (Cortex A9)&quot;;<br>
-+=C2=A0 =C2=A0 mc-&gt;init =3D kudo_bmc_init;<br>
-+=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1 * GiB;<br>
-+};<br>
-+<br>
-=C2=A0static const TypeInfo npcm7xx_machine_types[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0=3D TYPE_NPCM7XX_MACHINE,<br>
-@@ -437,6 +467,10 @@ static const TypeInfo npcm7xx_machine_types[] =3D {<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0=3D MACHINE_TYPE_NAME(&quot;quanta-gbs-bmc&quot;),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-=3D TYPE_NPCM7XX_MACHINE,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =C2=A0=3D gbs_bm=
-c_machine_class_init,<br>
-+=C2=A0 =C2=A0 }, {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-=3D MACHINE_TYPE_NAME(&quot;kudo-bmc&quot;),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=3D T=
-YPE_NPCM7XX_MACHINE,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =C2=A0=3D kudo_bmc_ma=
-chine_class_init,<br>
-=C2=A0 =C2=A0 =C2=A0},<br>
+=C2=A0#ifndef CONFIG_USER_ONLY<br>
++=C2=A0 =C2=A0 .cpu_exec_interrupt =3D openrisc_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D openrisc_cpu_do_interrupt,<br>
+=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
 =C2=A0};<br>
+diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c<br>
+index 3eab771dcda..19223e3f25b 100644<br>
+--- a/target/openrisc/interrupt.c<br>
++++ b/target/openrisc/interrupt.c<br>
+@@ -28,7 +28,6 @@<br>
 <br>
+=C2=A0void openrisc_cpu_do_interrupt(CPUState *cs)<br>
+=C2=A0{<br>
+-#ifndef CONFIG_USER_ONLY<br>
+=C2=A0 =C2=A0 =C2=A0OpenRISCCPU *cpu =3D OPENRISC_CPU(cs);<br>
+=C2=A0 =C2=A0 =C2=A0CPUOpenRISCState *env =3D &amp;cpu-&gt;env;<br>
+=C2=A0 =C2=A0 =C2=A0int exception =3D cs-&gt;exception_index;<br>
+@@ -96,7 +95,6 @@ void openrisc_cpu_do_interrupt(CPUState *cs)<br>
+=C2=A0 =C2=A0 =C2=A0} else {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cpu_abort(cs, &quot;Unhandled exception 0=
+x%x\n&quot;, exception);<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+-#endif<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0cs-&gt;exception_index =3D -1;<br>
+=C2=A0}<br>
+diff --git a/target/openrisc/meson.build b/target/openrisc/meson.build<br>
+index 9774a583065..e445dec4a00 100644<br>
+--- a/target/openrisc/meson.build<br>
++++ b/target/openrisc/meson.build<br>
+@@ -9,7 +9,6 @@<br>
+=C2=A0 =C2=A0&#39;exception_helper.c&#39;,<br>
+=C2=A0 =C2=A0&#39;fpu_helper.c&#39;,<br>
+=C2=A0 =C2=A0&#39;gdbstub.c&#39;,<br>
+-=C2=A0 &#39;interrupt.c&#39;,<br>
+=C2=A0 =C2=A0&#39;interrupt_helper.c&#39;,<br>
+=C2=A0 =C2=A0&#39;mmu.c&#39;,<br>
+=C2=A0 =C2=A0&#39;sys_helper.c&#39;,<br>
+@@ -17,7 +16,10 @@<br>
+=C2=A0))<br>
+<br>
+=C2=A0openrisc_softmmu_ss =3D ss.source_set()<br>
+-openrisc_softmmu_ss.add(files(&#39;machine.c&#39;))<br>
++openrisc_softmmu_ss.add(files(<br>
++=C2=A0 &#39;interrupt.c&#39;,<br>
++=C2=A0 &#39;machine.c&#39;,<br>
++))<br>
+<br>
+=C2=A0target_arch +=3D {&#39;openrisc&#39;: openrisc_ss}<br>
+=C2=A0target_softmmu_arch +=3D {&#39;openrisc&#39;: openrisc_softmmu_ss}<br=
+>
 -- <br>
-2.33.0.153.gba50c8fa24-goog<br>
-<br>
+2.31.1<br>
 <br>
 </blockquote></div></div>
 
---00000000000065777505cb08ec33--
+--00000000000061e41f05cb08f8ff--

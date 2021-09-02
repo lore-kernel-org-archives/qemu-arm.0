@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp419879lfb;
-        Thu, 2 Sep 2021 09:17:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwEOROZaDekksYRAizim2uaiyTUQvPkXAE7FRJ+rmPL6JroBHLccT2/1RmkSHkfmhx9ztr
-X-Received: by 2002:a50:9511:: with SMTP id u17mr4236513eda.100.1630599445614;
-        Thu, 02 Sep 2021 09:17:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630599445; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp419990lfb;
+        Thu, 2 Sep 2021 09:17:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8gRtU/2Y22biHMFKLvFqgm4Xkhf69dsBwoJ4BwBthLkqhAJEY/Ksmw9Zny5rQ/oUsz0/K
+X-Received: by 2002:a17:906:1bb1:: with SMTP id r17mr4590074ejg.533.1630599452006;
+        Thu, 02 Sep 2021 09:17:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630599452; cv=none;
         d=google.com; s=arc-20160816;
-        b=JAzyrMulSs0uRESBknz2g5xP8+QCDetfjeCs4EDm7jRvzQWpnVcSEOi7CkZDZeDZz1
-         mzRS3L6msbnU4CX9SbFVJ/eJ/zaTreOM6iluMkJ4NwP7U0Q3h6JboUCNDHH9B+idkOa5
-         +zOXkyjdoUisuZ6CjCvFG13JRix0EuJE92GorWEdTPH5DgYoz5ze4iPh7hbi+0ZEFg48
-         vpPb+0VisS9rzdojxRbDx/O+7ZWt9PsT50uoshOKLKXUlgP7yfJ4JHfXl3tsfDMbYUbe
-         1hDWga5RVBlF354h6ZfZGJm1/K3hwKl6Zq57CHWEEO4JNb7t+JAauru0IiCtt+xOPOO0
-         PKgA==
+        b=lKKgRP2/VQRaFXwGPseBg0tvSjkCZjwzcaZ6jbUiaST5e6bRYJfEdahjopEAb7zG10
+         kykNMqou3nAx30CLQamdVixSuMegrt+1YhLYp2ctSCM7tXPqFubINs13RZoVVjOBi2or
+         od5bwJ5lSbLd/xlVgzQzHSMhHSr5rkasANyAbnpflz+wW1Ofgp05x6h7TIGB7YrQmNe1
+         0ycKlLAPw3kiGvcSbMXQgxUtDZmyaDAjQWZQRNtekc1mpdBCQWVMDa7MCOSKAgv+hVQT
+         Cz99BBcn1uvlbEbtdGEHU7rhzWsjLrBpYruqgDRG7hwbOdegose68MYFgS81JaoYFHws
+         22eA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from:sender
          :dkim-signature;
-        bh=yI9HNtTgyr1D6LnyMBdjwFDJD3B27ntrVyNfg6pObmA=;
-        b=GHplUd9gvsR6eVZo274lMrpTVabPbCUD0n52rWXaRlsKrTvQwHrj44D0o8CdAx74PI
-         dCUAKdz7UlDvErtuyJ5LM82fTgjqJWebySj3NStvfvKHeKD3VcQtz5NUi7rbff5hYiU+
-         fdANpq9v9uGZ/oyHXokVnxwR818A7Y175re7092xZfiqGv6+6quTa6rT7/io6KPwmveq
-         l6aRmsbPfF77lSEyWkoXYCG4FLlHnTqTAjjVhmBq7xUGs77I40m763YYq7xho+QIK6Ah
-         Vvn8xVn+Za0k1RAVbrrFhyJ5mBvWECB/vJPtnz418wZT/u+119mvAJrLwBJqq2/qPNro
-         1kqA==
+        bh=DdBo63POokH5fIMDIDGd3vZfaCJQwybOZKNS3BGh4nM=;
+        b=ABYhkc2dPHaVow6VN4EHSwk36CUa4G+BXyRcXqCTL6OA6n9wxtJ19ZjHWGme9zrhu/
+         UqI8UHK1zZtcYn7P6NR6UkMIxGJeO+Z2s0i4VbDxFhTAqaHs0UgocsezHU+pAksNvS8B
+         dbyGKrTCwQzBg+/AfuSZi/TGxBV5bEC+ic3UG004Qkeh3Rh3cJd6JhTm25HM5y/O+3nD
+         NbPUmHrVbumWXGRhZL8R/5wzL0cnCZLKcaCI9LEHx3uImSI/jSaM9+uw4S9wN8s4tPiw
+         7WvX+29UWM9EDvo08mnz7GsLn5Nrmikro+ZpAGkxC0NWQ+zn+3mMD4SlRpN1B8gwI2SP
+         aAMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=U2uwqAQN;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=SdUILgJd;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.17.25;
-        Thu, 02 Sep 2021 09:17:25 -0700 (PDT)
+        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.17.31;
+        Thu, 02 Sep 2021 09:17:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=U2uwqAQN;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=SdUILgJd;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1346261AbhIBQSW (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Sep 2021 12:18:22 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45138 "EHLO
+        id S1346276AbhIBQS3 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 12:18:29 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45166 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1346108AbhIBQSV (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Sep 2021 12:18:21 -0400
-Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com [IPv6:2a00:1450:4864:20::32f])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 7F3B5C061575
-        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:17:22 -0700 (PDT)
-Received: by mail-wm1-x32f.google.com with SMTP id m2so1693694wmm.0
-        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:17:22 -0700 (PDT)
+        with ESMTP id S1346108AbhIBQS1 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 12:18:27 -0400
+Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com [IPv6:2a00:1450:4864:20::335])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 0D1A6C061575
+        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:17:29 -0700 (PDT)
+Received: by mail-wm1-x335.google.com with SMTP id l7-20020a1c2507000000b002e6be5d86b3so1746315wml.3
+        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:17:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=yI9HNtTgyr1D6LnyMBdjwFDJD3B27ntrVyNfg6pObmA=;
-        b=U2uwqAQNdpnlzp+ESr25gYYFRQFiKkwGfbYBdEJEhK8WvNyB3W6SW/d8vS39ShykYt
-         KjW8bmI0A51yksjJsztk3PnbWgrojrKVVqZEuWCXsll7maIHDOE+TUvhByg6eVxV2YO4
-         Kck+INFoCYRSpbSsv9Whw88dorhpd2Vg3v9+eB5JpbKAbAeW/R5bh44TF5Lf3uEy+zLL
-         RGSPDOO8yKxtK+VZKvOfcEExgvyvZTiR2XR3sSyBG6KljCmSQBYEj0d3C/Q4ABoW/H1Q
-         /jDgwuiymH/q6Oj2C76+I+aEeA3QCh3LaEPc/5XOWBjjrnq8mhBxG0fKOPLpG6nd3yVW
-         dFLA==
+        bh=DdBo63POokH5fIMDIDGd3vZfaCJQwybOZKNS3BGh4nM=;
+        b=SdUILgJd3l3KkosL5d+GJCCbjxa1kuvIi2eQH+QhbRZsxGZZeyT8B45EfAvb4vDqID
+         Hvz12f+uLhG2sxeYjZh1eHobRoGFGmx8Vwc0IlXnnkf2IX5bx+BVhSr1cY3Ej8rlB7KC
+         YO8ak4ncoqL6BecyY/e6YiTBs4ooYjlzwmmJGuU0TYXlpRik+gmohfcoQGfINeBVNh7H
+         gfydQO5CesTCgYv9jzBSAmfhKaEn9YTmVKuXA9R7D2QLLI+i2p5DKESCrSigkULnbdYP
+         q+rTwC0UOLH6fDszBS6ixFPljdENz9/dOQt5v2rlttm82OpvBLF+yYDt5s7Pj/jtLcYS
+         Xgng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=yI9HNtTgyr1D6LnyMBdjwFDJD3B27ntrVyNfg6pObmA=;
-        b=FtKgrvVl2S2OYy6OfmHaEMDPKxZ1CuhPe3iIeNM7aAZC6muSD3+08sOrLYiF/1IzBK
-         8JXFul0cGORcUreOsgaEtok6Ai0AM3qDjtgShD739YYWhcSwd9IToqkppf6wlnc+9EB/
-         CtciWnQznUkqi0zyWvnTv4jTTcJUOgFns1DQQXao3dveZ5b4seXUPo9s8k1isfSxi9iv
-         deir9Mrg6elgHKmRkMyKS4/dDvrVKrFXpuU56Bw23OPQIL6aUissYpR5RxzebLG1eXNr
-         M0kSnO52o3cO6rUlKqQfDjVwtGDHTdNwjk4K5dApQCc1BXN/Fc1C4QawP4Okcks8US3G
-         HzKA==
-X-Gm-Message-State: AOAM533028Zbh3ae6dwEMmP9KU5ex4SiKJ4jtbmecf3SWeEFp1q7Nn6o
-        j5ksueDnRD/NW92PbrOQcoQ=
-X-Received: by 2002:a05:600c:3397:: with SMTP id o23mr3987673wmp.38.1630599441102;
-        Thu, 02 Sep 2021 09:17:21 -0700 (PDT)
+        bh=DdBo63POokH5fIMDIDGd3vZfaCJQwybOZKNS3BGh4nM=;
+        b=py3ndFcdVP14i1ivUNctM4rNXGdmYlRSDJvZsJCSFBXMNSUvHLrVXr7EFAlPQradlr
+         uWQEZOlfd1dKRBIQdNoVtEcxwPmQG2J9gLPZhaQQYRxEUGZCUWCRsopFx4EH/N7WfaVn
+         gg5t4bb3LwmL0UfhEdRgjit2IdhfLPcSNrKU7xj2DmvbU+AemelGYf5n3UJ/DGH6rX2E
+         DEuq41zZbJ63aZrMntWKNFMqoBksLd+ZmV3tsFKktsQzomOXTFnZC69liXM/d06dY3mb
+         KcJNJQfKbqXJDUSRkGc0WdFfI4ToIaNCMfzcOP3dgN/c0NuXSmRacgImx1XkLSEIbgvb
+         zxtg==
+X-Gm-Message-State: AOAM532cB1ZfDiw0TQ6mio5pFQ55kLZ166aheLHexG7exkQnIupC+Yu7
+        4MqugmUJltxM2rmK/dO16O4=
+X-Received: by 2002:a1c:a50c:: with SMTP id o12mr4082621wme.4.1630599447661;
+        Thu, 02 Sep 2021 09:17:27 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id u26sm2444655wrd.32.2021.09.02.09.17.18
+        by smtp.gmail.com with ESMTPSA id f18sm2080257wmc.6.2021.09.02.09.17.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Sep 2021 09:17:20 -0700 (PDT)
+        Thu, 02 Sep 2021 09:17:26 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -120,9 +120,9 @@ Cc:     Bin Meng <bin.meng@windriver.com>,
         Palmer Dabbelt <palmer@dabbelt.com>,
         Stafford Horne <shorne@gmail.com>,
         Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-Subject: [PATCH v3 15/30] target/m68k: Restrict has_work() handler to sysemu and TCG
-Date:   Thu,  2 Sep 2021 18:15:28 +0200
-Message-Id: <20210902161543.417092-16-f4bug@amsat.org>
+Subject: [PATCH v3 16/30] target/microblaze: Restrict has_work() handler to sysemu and TCG
+Date:   Thu,  2 Sep 2021 18:15:29 +0200
+Message-Id: <20210902161543.417092-17-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902161543.417092-1-f4bug@amsat.org>
 References: <20210902161543.417092-1-f4bug@amsat.org>
@@ -132,47 +132,61 @@ Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ZJnGjioEEBwa
+X-TUID: pg99c0kZ2VUK
 
 Restrict has_work() to TCG sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/m68k/cpu.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ target/microblaze/cpu.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-index 66d22d11895..94b35cb4a50 100644
---- a/target/m68k/cpu.c
-+++ b/target/m68k/cpu.c
-@@ -31,10 +31,12 @@ static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
-     cpu->env.pc = value;
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index 15db277925f..74fbb5d201a 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -92,12 +92,15 @@ static void mb_cpu_synchronize_from_tb(CPUState *cs,
+     cpu->env.iflags = tb->flags & IFLAGS_TB_MASK;
  }
  
-+#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
- static bool m68k_cpu_has_work(CPUState *cs)
++#ifndef CONFIG_USER_ONLY
++
++#ifdef CONFIG_TCG
+ static bool mb_cpu_has_work(CPUState *cs)
  {
-     return cs->interrupt_request & CPU_INTERRUPT_HARD;
+     return cs->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_NMI);
  }
-+#endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
++#endif /* CONFIG_TCG */
  
- static void m68k_set_feature(CPUM68KState *env, int feature)
+-#ifndef CONFIG_USER_ONLY
+ static void mb_cpu_ns_axi_dp(void *opaque, int irq, int level)
  {
-@@ -518,6 +520,7 @@ static const struct TCGCPUOps m68k_tcg_ops = {
-     .tlb_fill = m68k_cpu_tlb_fill,
+     MicroBlazeCPU *cpu = opaque;
+@@ -142,7 +145,7 @@ static void microblaze_cpu_set_irq(void *opaque, int irq, int level)
+         cpu_reset_interrupt(cs, type);
+     }
+ }
+-#endif
++#endif /* !CONFIG_USER_ONLY */
+ 
+ static void mb_cpu_reset(DeviceState *dev)
+ {
+@@ -368,6 +371,7 @@ static const struct TCGCPUOps mb_tcg_ops = {
+     .tlb_fill = mb_cpu_tlb_fill,
  
  #ifndef CONFIG_USER_ONLY
-+    .has_work = m68k_cpu_has_work,
-     .cpu_exec_interrupt = m68k_cpu_exec_interrupt,
-     .do_interrupt = m68k_cpu_do_interrupt,
-     .do_transaction_failed = m68k_cpu_transaction_failed,
-@@ -535,7 +538,6 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
-     device_class_set_parent_reset(dc, m68k_cpu_reset, &mcc->parent_reset);
++    .has_work = mb_cpu_has_work,
+     .cpu_exec_interrupt = mb_cpu_exec_interrupt,
+     .do_interrupt = mb_cpu_do_interrupt,
+     .do_transaction_failed = mb_cpu_transaction_failed,
+@@ -386,8 +390,6 @@ static void mb_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_reset(dc, mb_cpu_reset, &mcc->parent_reset);
  
-     cc->class_by_name = m68k_cpu_class_by_name;
--    cc->has_work = m68k_cpu_has_work;
-     cc->dump_state = m68k_cpu_dump_state;
-     cc->set_pc = m68k_cpu_set_pc;
-     cc->gdb_read_register = m68k_cpu_gdb_read_register;
+     cc->class_by_name = mb_cpu_class_by_name;
+-    cc->has_work = mb_cpu_has_work;
+-
+     cc->dump_state = mb_cpu_dump_state;
+     cc->set_pc = mb_cpu_set_pc;
+     cc->gdb_read_register = mb_cpu_gdb_read_register;
 -- 
 2.31.1

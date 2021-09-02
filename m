@@ -1,389 +1,133 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp359792lfb;
-        Thu, 2 Sep 2021 08:12:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzN9kIWvG1pobhnum8Bugp6bk5jz6v1bF9Df+cyH7i6nLDTLdpfsMEXNUWfcAVSK7VMg1y5
-X-Received: by 2002:adf:f552:: with SMTP id j18mr4238305wrp.273.1630595534941;
-        Thu, 02 Sep 2021 08:12:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630595534; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp243630lfb;
+        Thu, 2 Sep 2021 06:09:23 -0700 (PDT)
+X-Received: by 2002:a1c:ed0a:: with SMTP id l10mr3046642wmh.140.1630588163062;
+        Thu, 02 Sep 2021 06:09:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630588163; cv=none;
         d=google.com; s=arc-20160816;
-        b=ezh0aoVIYyhRUhnk+7kafd3Dc4tUuHspQkX7RytIkkM7Q0GdLHZcAfwzjPI67chQfM
-         JSAl5UV2VJ2NKXl9RPc/dfNGfexq87zeFAOjP64/id4cWqycdEYuNHGIr5cZboERRyHX
-         igEAZBwB6RWMOGaCtRfH1t4cbEIJToS2pM/PxcN6uWhdG1juIeqtBEpvklZd+HUhcHRU
-         T1QPsWkoEtV6/4UbjoAjEJwaQP01HUSdviWmtsoinR0ztJedyvzNt//FlQfyes3orlbp
-         FhBqERgKAtGpDOgjXwbK4zybQ9WayPK2FvAAgOTjZ+tUru+3nW3b5KmvnO6XHUSA5+ax
-         MYeQ==
+        b=YahnjWfunUvNIZwapF6nKFwJ7y0KZ5saexQFNe8QHCXebrDVdluqF3qLFYQwUbFhvU
+         qjULMZKthizhTW7hyavwF4po3k/x7zRZW0UQNX4TrudmsfWXFe2Is9WjNJXc9A6LLzM+
+         tzXqXnSFU/6Zer3BwFVB1WO3qS67fqYySpLzceUqWM8Bro3WviZIUVdWMdBoHhEl0kPS
+         WGHDl/NUUCx7hSpP29qzXJjCKr709ZV/95lCXnZfShpZNmKQN5St+7ra3HMlMS3urm7D
+         1ESnz8nKw3kJYDlB29fIh/KN1CU/nRks/pTZRgYzmLO6kAT9LkxlxbQWXXPbMF+JmG5z
+         WYDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=1GDIll3Av4qQx8oCwKBUtu2UrHTCpi3Blkr0Kr5nmJg=;
-        b=a/dZEbIp9r0ftd+8vRnO0e/xzu5zrCeAxhCqlX7c4QczAPPEq+HRLtlkjcqoRKMIhw
-         SM/3+Gazcc9FWItBsF8LfNRbp0UGZRnVrfVolnQ8ymvxI3VmbyQARYwP2EWoNmKaJS72
-         A0DPX5Sq49TJX03qfvHbTcMSN1wG8UlDyJcGV5pqW0utf5QIznzxWBaKveT6mTUNMeTT
-         3kFOnq+ju2WRg4Nv2+yRVdzTvWPoan2zEee2xwqI6L3lWKapWPs2uYPGc28FkfHaZFyR
-         NB3MalpkNCrNgQdusFYOcstNVCUz1Y+nigmC9+D+qPffRSYndgYUaQGI/RzZjjaTlhth
-         UVBQ==
+        bh=BumYjg4HruxpBMDsswz5KhY/vuqWINMWr2ZsWHfVXuI=;
+        b=JCtxjmYCoYNe2Q8QJYQTSduPCm3ETrk0tPlE7lTkx3r2gp5BbLHDmOhD10ieo2Vj8Q
+         /LWnmXvl5vqDVcSo7e8yPbNEvKwpfri4HpqEkSIegcsJIxnH7ASLgan/Sn9GdYr+zxpd
+         z2dmY2diXB/r/ywzsP8xxB9mMASsCuqDaGITicx/dV9zTQqBpntE34RNFZr2jbNtpz8j
+         suM9URu+XOJKZzt00OEYPBVoz1mIukMj9dhb/PEcbAYOgmLCdrFEuSmWs3Za4F0R/5dE
+         gPUqd3SoPOv8hkkVt4i1EGGwgVaJPD52B55PYTd/kaZ+XW1lRmjP87xzY/9oBEMFn/Vo
+         c6FA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=asQzEQcv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=XNzeVVZg;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3si2119254wrf.64.2021.09.02.08.12.14
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n5sor1120461wrf.60.2021.09.02.06.09.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:12:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 02 Sep 2021 06:09:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=asQzEQcv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=XNzeVVZg;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45698 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLoNx-0005U5-SG
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:12:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44790)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mLoL7-0000R4-AU
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 11:09:17 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:54898)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mLoL4-0003Of-Sz
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 11:09:17 -0400
-Received: by mail-wm1-x330.google.com with SMTP id g138so1512672wmg.4
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 08:09:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=1GDIll3Av4qQx8oCwKBUtu2UrHTCpi3Blkr0Kr5nmJg=;
- b=asQzEQcvty1KByuCZjXGLEW2Ezsw8VDK/HEzIonZkHcN+fzZZ/yGoQDEP/GlihlEt6
- P7eYYqA3+ur9ejxvSgD9zGLxVmvQEz8gxAQdGz26dzLSC9hXbWxK6UczIVmnAO1NHRpe
- y3upnhOO4R8wv30cBfWFZDQWz7Wo8CObEjchfHqG1OJnUhl8/vKxK8v+wP9ylq5tUEY3
- u51OIhvENneRNNn43HMk/8i3KBAmOKrTD1uxGV28KFs4voJGbVjh8QDal0pgG35kE31e
- +Nzv+ID9BEDkYO07XoI+5rDks9CkX2gGGxE+IxXy1XJhC1TK2GSdnyOjlRRn+Knhh9z1
- utvQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=BumYjg4HruxpBMDsswz5KhY/vuqWINMWr2ZsWHfVXuI=;
+        b=XNzeVVZgMTwvaMW+hf4ZU151vXY/tds9syru115vJWY2H9xi7NvkSLiKaf12IA2hmz
+         4Twf+2KjSav4TdlFitm4lyz20GrQtiikbfLSNIYfE+tALQeeymUgusxfeSVth6gQ3uX6
+         S2/mAgq97r9x3T58N0MON1+gBwMJ95T3hJLwKW0v9kfgeYMkiDyBVBkCNZgt3ZDrL10V
+         x+AQO8dZOJW4KNpgWEWmAkAmEqFTZQfRASG2II4Hc0vabX+EuGis/weTAS7UEXw6WjAn
+         mjtM3K3OONcQPvFv6bO++KaTMt80vA00Zxrg9JxLRI505QmzbauyaXOT/enXybhA2Yea
+         fEbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=1GDIll3Av4qQx8oCwKBUtu2UrHTCpi3Blkr0Kr5nmJg=;
- b=FsRmYKd7tFaPPkELdbxDcK/AWE/F4Y6vR9tjVp5/65c0P91M2Smdx0gBoZO+/pI8FT
- YBajzX2i9bbIs8wz7ILTIt8TwKxpS173aNnkI83lSR4+lQP2IBdxPy7rodLRJ50Mw2H3
- ZycSVmsUfhMumTWy60VIwMzW6vlb9YdwCzd+9RZUVgZKToRTse6s10jcCLsw39vc6bSj
- 2ioBQeSWSnE45pYYNun7bXzULk4sYJ3XbIQ5PCPHlEumWx6F6oYIJzgVvk6fWk41xKlm
- yB7+zV4+yiNoWYhZnhp8z5xnYybbMaICX/tjsJ0i/q0gVMOo6VIeZNxaEv0Mz6o4n7jj
- psow==
-X-Gm-Message-State: AOAM530wvY6ShJv1iVAWjnsZr+YnAbEiw+6rVZ/UP/MRTxrgNLvuo6jd
- 95RdFLu+DXHfSO4szAwrSaooWw==
-X-Received: by 2002:a7b:cb01:: with SMTP id u1mr3624272wmj.152.1630595353529; 
- Thu, 02 Sep 2021 08:09:13 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id c24sm2107842wrb.57.2021.09.02.08.09.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:09:12 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 1/4] target/arm: Add TB flag for "MVE insns not predicated"
-Date: Thu,  2 Sep 2021 16:09:07 +0100
-Message-Id: <20210902150910.15748-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210902150910.15748-1-peter.maydell@linaro.org>
-References: <20210902150910.15748-1-peter.maydell@linaro.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=BumYjg4HruxpBMDsswz5KhY/vuqWINMWr2ZsWHfVXuI=;
+        b=ZfRbCTqzt7QUnWD6OKx0ib6BUkrEbOuuDaI8fk7MBHibmVMXkNvKeMz1ixYpHepOjn
+         d1I4k8cJUk56wsLui4pVLoh/iz8KV4s0tJmIpLA0h9wLtj+qfnheim2+uCVVd6Zgu8Qp
+         4FpFZDCxq7aGUwMvYcRpzjNajWAlyEctO6UjmKN1B/ecsSCnfARsKjJyDWV58YX34OPJ
+         2jBx2wLRW3FRGDPup//fgJYiZEjxEfeF7arionhZiEsnorZVx4DO9+dSpTHMDFw68JNS
+         f1pKk2HkPtSoy+PSafbfrtM5zTItfa6DoEUDuWiXTA7EipyIMO8otYT2Gi8uoy9jOwz4
+         +qeA==
+X-Gm-Message-State: AOAM531S8ja82iF5WZdNy8goErvc8srVPvWMVByiHo9bgsSfksfYT3hS
+	fd2ikWOe58gATrSWobZCg+iuNpV9
+X-Google-Smtp-Source: ABdhPJw2kJqBm+YJ0W8PQQ91PAyB8vki1xITesAqGqbwujN1Yeq9boGiJSOCtAjS1XUUOw3zXsCIQg==
+X-Received: by 2002:adf:8027:: with SMTP id 36mr3675503wrk.109.1630588162694;
+        Thu, 02 Sep 2021 06:09:22 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.8.107] (61.red-176-80-253.dynamicip.rima-tde.net. [176.80.253.61])
+        by smtp.gmail.com with ESMTPSA id f17sm1669167wmf.4.2021.09.02.06.09.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Sep 2021 06:09:22 -0700 (PDT)
+Subject: Re: [PATCH 10/29] tcg_funcs: Add tlb_flush to TCGModuleOps
+To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
+Cc: Aurelien Jarno <aurelien@aurel32.net>, Laurent Vivier
+ <laurent@vivier.eu>, Peter Xu <peterx@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-riscv@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Stafford Horne <shorne@gmail.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Bin Meng <bin.meng@windriver.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ Greg Kurz <groug@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+References: <20210831121545.2874233-1-kraxel@redhat.com>
+ <20210831121545.2874233-11-kraxel@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <fdfd7f35-fbec-84f7-ebbd-7790df20b1bd@linaro.org>
+Date: Thu, 2 Sep 2021 15:09:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JZ310KdE25/U
+In-Reply-To: <20210831121545.2874233-11-kraxel@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: SU0/P//hz6ET
 
-Our current codegen for MVE always calls out to helper functions,
-because some byte lanes might be predicated. The common case is
-that in fact there is no predication active and all lanes should
-be updated together, so we can produce better code by detecting
-that and using the TCG generic vector infrastructure.
+On 8/31/21 2:15 PM, Gerd Hoffmann wrote:
+> diff --git a/target/i386/helper.c b/target/i386/helper.c
+> index 533b29cb91b6..100add713c5d 100644
+> --- a/target/i386/helper.c
+> +++ b/target/i386/helper.c
+> @@ -103,7 +103,7 @@ void x86_cpu_set_a20(X86CPU *cpu, int a20_state)
+>   
+>           /* when a20 is changed, all the MMU mappings are invalid, so
+>              we must flush everything */
+> -        tlb_flush(cs);
+> +        tcg.tlb_flush(cs);
 
-Add a TB flag that is set when we can guarantee that there
-is no active MVE predication, and a bool in the DisasContext.
-Subsequent patches will use this flag to generate improved
-code for some instructions.
+I think this is a mistake.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Another of those awkward-to-review patches where the interesting
-question is "did I miss anywhere where we set v7m.vpr to non-0
-or v7m.ltpsize to non-4 while in the middle of a TB ?" ...
+(1) If tcg module is not enabled, we should be able to make a direct call.
 
-I've left the TB flag as non-cached because there seemed to
-be an irritatingly large set of places where we'd have to do
-an hflags recomputation.
----
- target/arm/cpu.h              |  4 +++-
- target/arm/translate.h        |  2 ++
- target/arm/helper.c           | 23 +++++++++++++++++++++++
- target/arm/translate-m-nocp.c |  8 ++++++++
- target/arm/translate-mve.c    |  9 ++++++++-
- target/arm/translate-vfp.c    |  3 +++
- target/arm/translate.c        |  4 ++++
- 7 files changed, 51 insertions(+), 2 deletions(-)
+(2) A *proper* modularization would load the target/ stuff as a module as well, at which 
+point this should be a call through the PLT, not an indirect call after a couple of 
+indirect pointer loads.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 6a987f65e41..460d611e65e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3440,7 +3440,7 @@ typedef ARMCPU ArchCPU;
-  * | TBFLAG_AM32 |          +-----+----------+
-  * |             |                |TBFLAG_M32|
-  * +-------------+----------------+----------+
-- *  31         23                5 4        0
-+ *  31         23                6 5        0
-  *
-  * Unless otherwise noted, these bits are cached in env->hflags.
-  */
-@@ -3497,6 +3497,8 @@ FIELD(TBFLAG_M32, LSPACT, 2, 1)                 /* Not cached. */
- FIELD(TBFLAG_M32, NEW_FP_CTXT_NEEDED, 3, 1)     /* Not cached. */
- /* Set if FPCCR.S does not match current security state */
- FIELD(TBFLAG_M32, FPCCR_S_WRONG, 4, 1)          /* Not cached. */
-+/* Set if MVE insns are definitely not predicated */
-+FIELD(TBFLAG_M32, MVE_NO_PRED, 5, 1)            /* Not cached. */
- 
- /*
-  * Bit usage when in AArch64 state
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 8636c20c3b4..908b8ded8ee 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -98,6 +98,8 @@ typedef struct DisasContext {
-     bool hstr_active;
-     /* True if memory operations require alignment */
-     bool align_mem;
-+    /* True if MVE insns are definitely not predicated for any reason */
-+    bool mve_no_pred;
-     /*
-      * >= 0, a copy of PSTATE.BTYPE, which will be 0 without v8.5-BTI.
-      *  < 0, set by the current instruction.
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a7ae78146d4..cf41b746b64 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -13673,6 +13673,25 @@ static inline void assert_hflags_rebuild_correctly(CPUARMState *env)
- #endif
- }
- 
-+static bool mve_no_predication(CPUARMState *env)
-+{
-+    /*
-+     * Return true if there is definitely no predication of MVE
-+     * instructions for any reason. (Returning false even if there
-+     * isn't any predication is OK; generated code will just be
-+     * a little worse.)
-+     * We do not account here for partial insn execution due to
-+     * ECI bits as those are already in the TB flags elsewhere.
-+     */
-+    if (env->v7m.vpr) {
-+        return false;
-+    }
-+    if (env->v7m.ltpsize < 4) {
-+        return false;
-+    }
-+    return true;
-+}
-+
- void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-                           target_ulong *cs_base, uint32_t *pflags)
- {
-@@ -13712,6 +13731,10 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-             if (env->v7m.fpccr[is_secure] & R_V7M_FPCCR_LSPACT_MASK) {
-                 DP_TBFLAG_M32(flags, LSPACT, 1);
-             }
-+
-+            if (mve_no_predication(env)) {
-+                DP_TBFLAG_M32(flags, MVE_NO_PRED, 1);
-+            }
-         } else {
-             /*
-              * Note that XSCALE_CPAR shares bits with VECSTRIDE.
-diff --git a/target/arm/translate-m-nocp.c b/target/arm/translate-m-nocp.c
-index 5eab04832cd..79613fc150a 100644
---- a/target/arm/translate-m-nocp.c
-+++ b/target/arm/translate-m-nocp.c
-@@ -92,6 +92,8 @@ static bool trans_VLLDM_VLSTM(DisasContext *s, arg_VLLDM_VLSTM *a)
-         gen_helper_v7m_vlstm(cpu_env, fptr);
-     }
-     tcg_temp_free_i32(fptr);
-+    /* VLLDM or VLSTM helpers might have updated vpr or ltpsize */
-+    s->mve_no_pred = false;
- 
-     clear_eci_state(s);
- 
-@@ -326,6 +328,7 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
-     case ARM_VFP_FPSCR:
-         tmp = loadfn(s, opaque, true);
-         gen_helper_vfp_set_fpscr(cpu_env, tmp);
-+        s->mve_no_pred = false;
-         tcg_temp_free_i32(tmp);
-         gen_lookup_tb(s);
-         break;
-@@ -397,6 +400,7 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
-         store_cpu_field(control, v7m.control[M_REG_S]);
-         tcg_gen_andi_i32(tmp, tmp, ~FPCR_NZCV_MASK);
-         gen_helper_vfp_set_fpscr(cpu_env, tmp);
-+        s->mve_no_pred = false;
-         tcg_temp_free_i32(tmp);
-         tcg_temp_free_i32(sfpa);
-         break;
-@@ -409,6 +413,7 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
-         }
-         tmp = loadfn(s, opaque, true);
-         store_cpu_field(tmp, v7m.vpr);
-+        s->mve_no_pred = false;
-         break;
-     case ARM_VFP_P0:
-     {
-@@ -418,6 +423,7 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
-         tcg_gen_deposit_i32(vpr, vpr, tmp,
-                             R_V7M_VPR_P0_SHIFT, R_V7M_VPR_P0_LENGTH);
-         store_cpu_field(vpr, v7m.vpr);
-+        s->mve_no_pred = false;
-         tcg_temp_free_i32(tmp);
-         break;
-     }
-@@ -500,6 +506,7 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
-         store_cpu_field(control, v7m.control[M_REG_S]);
-         fpscr = load_cpu_field(v7m.fpdscr[M_REG_NS]);
-         gen_helper_vfp_set_fpscr(cpu_env, fpscr);
-+        s->mve_no_pred = false;
-         tcg_temp_free_i32(fpscr);
-         lookup_tb = true;
-         break;
-@@ -549,6 +556,7 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
-         zero = tcg_const_i32(0);
-         tcg_gen_movcond_i32(TCG_COND_EQ, fpscr, sfpa, zero, fpdscr, fpscr);
-         gen_helper_vfp_set_fpscr(cpu_env, fpscr);
-+        s->mve_no_pred = false;
-         tcg_temp_free_i32(zero);
-         tcg_temp_free_i32(sfpa);
-         tcg_temp_free_i32(fpdscr);
-diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 2ed91577ec8..d95807541b1 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/translate-mve.c
-@@ -810,7 +810,11 @@ DO_LOGIC(VORR, gen_helper_mve_vorr)
- DO_LOGIC(VORN, gen_helper_mve_vorn)
- DO_LOGIC(VEOR, gen_helper_mve_veor)
- 
--DO_LOGIC(VPSEL, gen_helper_mve_vpsel)
-+static bool trans_VPSEL(DisasContext *s, arg_2op *a)
-+{
-+    s->mve_no_pred = false;
-+    return do_2op(s, a, gen_helper_mve_vpsel);
-+}
- 
- #define DO_2OP(INSN, FN) \
-     static bool trans_##INSN(DisasContext *s, arg_2op *a)       \
-@@ -1366,6 +1370,7 @@ static bool trans_VPNOT(DisasContext *s, arg_VPNOT *a)
-     }
- 
-     gen_helper_mve_vpnot(cpu_env);
-+    s->mve_no_pred = false;
-     mve_update_eci(s);
-     return true;
- }
-@@ -1852,6 +1857,7 @@ static bool do_vcmp(DisasContext *s, arg_vcmp *a, MVEGenCmpFn *fn)
-         /* VPT */
-         gen_vpst(s, a->mask);
-     }
-+    s->mve_no_pred = false;
-     mve_update_eci(s);
-     return true;
- }
-@@ -1883,6 +1889,7 @@ static bool do_vcmp_scalar(DisasContext *s, arg_vcmp_scalar *a,
-         /* VPT */
-         gen_vpst(s, a->mask);
-     }
-+    s->mve_no_pred = false;
-     mve_update_eci(s);
-     return true;
- }
-diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
-index e2eb797c829..155ca69075b 100644
---- a/target/arm/translate-vfp.c
-+++ b/target/arm/translate-vfp.c
-@@ -128,6 +128,8 @@ static void gen_preserve_fp_state(DisasContext *s)
-          * any further FP insns in this TB.
-          */
-         s->v7m_lspact = false;
-+        /* Helper might have updated vpr or ltpsize */
-+        s->mve_no_pred = false;
-     }
- }
- 
-@@ -164,6 +166,7 @@ static void gen_update_fp_context(DisasContext *s)
- 
-         fpscr = load_cpu_field(v7m.fpdscr[s->v8m_secure]);
-         gen_helper_vfp_set_fpscr(cpu_env, fpscr);
-+        s->mve_no_pred = false;
-         tcg_temp_free_i32(fpscr);
-         if (dc_isar_feature(aa32_mve, s)) {
-             TCGv_i32 z32 = tcg_const_i32(0);
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 24b7f49d767..54c31ad6dec 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -8464,6 +8464,7 @@ static bool trans_DLS(DisasContext *s, arg_DLS *a)
-         /* DLSTP: set FPSCR.LTPSIZE */
-         tmp = tcg_const_i32(a->size);
-         store_cpu_field(tmp, v7m.ltpsize);
-+        s->mve_no_pred = false;
-     }
-     return true;
- }
-@@ -8529,6 +8530,7 @@ static bool trans_WLS(DisasContext *s, arg_WLS *a)
-         assert(ok);
-         tmp = tcg_const_i32(a->size);
-         store_cpu_field(tmp, v7m.ltpsize);
-+        s->mve_no_pred = false;
-     }
-     gen_jmp_tb(s, s->base.pc_next, 1);
- 
-@@ -8711,6 +8713,7 @@ static bool trans_VCTP(DisasContext *s, arg_VCTP *a)
-     gen_helper_mve_vctp(cpu_env, masklen);
-     tcg_temp_free_i32(masklen);
-     tcg_temp_free_i32(rn_shifted);
-+    s->mve_no_pred = false;
-     mve_update_eci(s);
-     return true;
- }
-@@ -9370,6 +9373,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-         dc->v7m_new_fp_ctxt_needed =
-             EX_TBFLAG_M32(tb_flags, NEW_FP_CTXT_NEEDED);
-         dc->v7m_lspact = EX_TBFLAG_M32(tb_flags, LSPACT);
-+        dc->mve_no_pred = EX_TBFLAG_M32(tb_flags, MVE_NO_PRED) && dc->eci == 0;
-     } else {
-         dc->debug_target_el = EX_TBFLAG_ANY(tb_flags, DEBUG_TARGET_EL);
-         dc->sctlr_b = EX_TBFLAG_A32(tb_flags, SCTLR__B);
--- 
-2.20.1
+So IMO we want to retain the direct function call syntax in all the uses.  I think you 
+want to put wrapper functions doing the indirection somewhere -- possibly tcg-module.c.
 
+
+r~

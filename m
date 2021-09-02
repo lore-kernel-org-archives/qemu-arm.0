@@ -1,101 +1,100 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp380508lfb;
-        Thu, 2 Sep 2021 08:34:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxfsyYgkZECiwqHaARQDEh9RmvrC5XYVHlvntnpFpaqncVUEdYalHzkmtDqEQ2A3IlDrsfa
-X-Received: by 2002:a05:600c:1457:: with SMTP id h23mr3780680wmi.143.1630596866271;
-        Thu, 02 Sep 2021 08:34:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630596866; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp380632lfb;
+        Thu, 2 Sep 2021 08:34:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy64AuwjU1DhfQkU3tEp5iMvitDOQMXQSk1pGvwVVIklBrwZuM37Mava4qP2vgqJcVcGdnm
+X-Received: by 2002:a5d:5452:: with SMTP id w18mr4451207wrv.221.1630596875448;
+        Thu, 02 Sep 2021 08:34:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630596875; cv=none;
         d=google.com; s=arc-20160816;
-        b=gBtNehoATLA07u0s5XQl2hV0RwTl+lRgnOTHN4QN2d+VmcJZNkvD4ZpZw7wMEnMf8M
-         Rfbi7IsPL8EGS3qQHsIgthADEJNxpI0TccPKpWoCAe/4+2Vs2FJau3dFhg/Yk+fKO+hh
-         bnAI0SDPnPPc6ABBcCGb6XDFdl/0jV7/hCb2bRSWPZ0F02H1N5JFeBk1DQjW51x8cHzM
-         jann034siG8vSMALn3Y/DIzJYCX58QdRxrufh6vKa56Vm1xOT3WV1bDDpdO0ZNcTqFu0
-         aU1IdgebpVILNlzm1mUay3z2W+W+SKuP+JudEO8Jbs2L6FQgvYAtQ8wbSy6ja/ABlwFw
-         NIJA==
+        b=Wc7wNupbK1s5UNl/WluAiTbSr2fkI4H/gLLxmDWCxH/zDnB14pKpXMI+B5wPxpAT3x
+         tuWhTlTBBqVURJJxTa8cShwCmonIvP5DJ4KbVCbhEmTX98nAhzWQ1N85gjVrU9+qkvhH
+         6xvXlJ5ZdVS8Uv3Dxjj5khdvU1vcsCnJocxA36Gco2zJP9uELsPZSot6zkWb3LxeLslN
+         9H76zDC2qInoZCVuPFpVkCv4Ncl6IBSnCPFmHO+tj8lRBpVlT/77Nqpb3juMYMc5/0On
+         DQPNvq411X/ET0lAm2SjNcVmvP60Sg+1JtxeOCE5W6FXa2weyawGgU+VGtvYrm8Hyg1Y
+         KtoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ztcTTnkmE3Sy1SDB/uPjtWzU/LrMfSjAGUpWvTwvo3w=;
-        b=TKjvazuN6xb6yxEbHmsZ+bKBNS90awm9tq8dp5vlXaumxdsppXSCHciu6pgkeTVkyV
-         BjRW/HXgFYXa09idIhjqnaARc1u9TfT7N0WUTvBvewaDdix91hag1t3gcmzig1ZAamNu
-         HG6njiM/WwIyCGV18sZRXk9TCbSQhB+Pu0xTeZRSj/Q7tkDTlk4WMZqeWd6wJLZuz3sE
-         an8xOykkq6Ax3ToJjonTyzxBA/BW8NniSPkYJc7sTsESSNj59MjW0unbEoled9GmqbXA
-         KtX2H4UpiKkHyu6BChc+o/tK+28TSvMb+ZjNoz7OP+ZkRzub8Op5WhEbyz/LS/zGN2hl
-         kW/A==
+        bh=sS3i2uWlhC6Th2tekPb4X1SgXpgkBQycKSoBAZ7tQRs=;
+        b=ZlhcnCiSJaDL9FChYcLZXpD2yVhE3zn4XZvj4ac87xyTF93YWQMPntrtYJ2Gcyod7D
+         Y2ar6Za/86BTTRW1h2HafrJEMg+Yw2EoQwTTVn9/tZSv3TmJxIa1KBTzMqhr7LApdRR7
+         ra4xx0UyyKCD8+yTVSH7futr0sAO2c34s6WStUVsJG8TQXbcPAhk4oOLg9eYuuQCoLSb
+         eEeVvRj8p00UW/KOdAGs8yPBbezpuS9UL4Z0gYPz+3RhWKY5ArSU2FsDuuyvggADDvAA
+         5A2tSWaMAFnxTYws5KL3Ii1QEbx6evpF8jmwdMQpRKxsCwmNG3OiYLprAQOKh+0RpxqX
+         bIIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BUqC7PaF;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=I0cbESj9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c17si2385995wmk.88.2021.09.02.08.34.26
+        by mx.google.com with ESMTPS id d11si2330288wmb.180.2021.09.02.08.34.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:34:26 -0700 (PDT)
+        Thu, 02 Sep 2021 08:34:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=BUqC7PaF;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=I0cbESj9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37972 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLojR-0005jN-5c
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:34:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47396)
+	id 1mLoja-0006Fc-Dy
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:34:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47254)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoU3-0004o2-UA; Thu, 02 Sep 2021 11:18:31 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:46898)
+ id 1mLoTj-000439-3s; Thu, 02 Sep 2021 11:18:12 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:45728)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoU2-0002dE-Bb; Thu, 02 Sep 2021 11:18:31 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- m25-20020a7bcb99000000b002e751bcb5dbso1605726wmi.5; 
- Thu, 02 Sep 2021 08:18:28 -0700 (PDT)
+ id 1mLoTg-0002KW-OF; Thu, 02 Sep 2021 11:18:10 -0400
+Received: by mail-wr1-x435.google.com with SMTP id n5so3500403wro.12;
+ Thu, 02 Sep 2021 08:18:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ztcTTnkmE3Sy1SDB/uPjtWzU/LrMfSjAGUpWvTwvo3w=;
- b=BUqC7PaF7PzoMYvp5taCbjdhSwKs5a3L3G6rE6UCOzDEFmY+e7iZ/tPOdsuPZ7RPLK
- XRGdfIMRn69UAeSJ//SsTfOz6FKq0wbS451YbfELFBQeVp5ajbEsjewt5EoLI1KnhGmK
- ey6vfKSr1f5lCq1YVjRlenq+Ik+N9xh4qkVdNJnRNSbv6zv8InbxtOmRKZrcU5y1jdl1
- /rvp7qbhqsKhL4azgAIssVrG3DOUN3gkN9CVztK8/p0Y6FbmodAp/0SZ7WLhu/edxKoy
- jZ7Fc+NzXCUF31Nq0q4KkzhW0FfGahTZOqxVWuWXoBNIcfVhDH8ea54WrA8T2UcSxlyt
- Hi3Q==
+ bh=sS3i2uWlhC6Th2tekPb4X1SgXpgkBQycKSoBAZ7tQRs=;
+ b=I0cbESj9MYfyAom2FvW1CF5AEhM1SW84X3lw3qtfipSZ5fPsIZv+smVyU9GoN5CLH/
+ KFHhUhGgNcosASgg2d0J4AdV8UXNCvxTNWjk8PeGuYtMiNyN6AJrrsZLXmABwG5dZ6lB
+ 8bRALf1eTZfjstnXdJCKwssHXy6wXTM76v608XnZk9x6BIwOtk3PO6obcKrJH0ufiTcc
+ W2x056SigVvWsY9uBzEPVdONxKCIoYgTNGOJNBUyoPX4Xva2AAAuMoQc267eb1xsMKYI
+ MOjHbNVBLRFk1LA7ArYb3vM/2HQtFULqEESZGgc/xgjtrsvqz1SnRFmOnCq/FvVIT+Mv
+ FfSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ztcTTnkmE3Sy1SDB/uPjtWzU/LrMfSjAGUpWvTwvo3w=;
- b=FNpAxQoyvq62mmGRI+0boytuZrMqrRNGtHA2X3n63Bvuv96tFefqpKz/net5oWUYP+
- 3g94+11uyJYP7+SxExB84Bw1Ou+8fVM07ydN8J9lj/TJ69KE8fYBMAtQFoFyv33pgfC+
- JSAT52LxBuddAufDh6FwOb3Vel7md14ne7Z2GpUg46VmPahshuV8TDmKBfIXIZTlZ224
- YKmdwCA2C7KEJVBxdqxc44TWtSu3i9N01gYuQzlHcDhs3JuB6BY5uFNitxsi1DcLBAFy
- 7qFbRkUsG6vBdNeaIdTUkOhSHCVYIJYr9M3CG46rM24ZjO0eR1qP6yb/KMYCkGcvl5Al
- TXHQ==
-X-Gm-Message-State: AOAM530NwlEailflDJ9weCMztUt1mFiSllRyzuay6OqSVpqcixWeAerk
- TdV1JMQEsMCj0OYNvilbg/5nJCDNnEw=
-X-Received: by 2002:a7b:c7c3:: with SMTP id z3mr3687535wmk.96.1630595907666;
- Thu, 02 Sep 2021 08:18:27 -0700 (PDT)
+ bh=sS3i2uWlhC6Th2tekPb4X1SgXpgkBQycKSoBAZ7tQRs=;
+ b=gN+VhsZsSo4e50T5JXiicNt63U+cy6T9vC2UD97sf97K3thtmDg75M3S7kmMpNOl9b
+ B+GrsEKqx+wwi9lQCLrvf+6S1zmTUnxPQTxQxZ5IGPzVhiqiqSCJ2IZ73saCdhpIFWxC
+ +pQ2tnYXQX+0pys25M2UratU28InbaPxY6cxhGZwnZ5IzWt/YTL+FNn4yh1C5thrAxde
+ dRdfOTlCPGjTEaoQCADByRav9rUmibJKmP23DkJUWxqdsBUayFAEG/LPbbCRslJNziu0
+ fWfQaBhnb4AzEcSCm2Nj37xi2Q/mPlFwwGcIf0wWT+LsUs6MzlG3vRjA8SFdJPc2fH1g
+ 9jHA==
+X-Gm-Message-State: AOAM530A71ob/LB/0fOCQgXPwg8cKdyUQhgRWghoxeLqt9odDvn/Irmq
+ HtMlwTYcllPHigxSpC8qTQRCUCkqPZk=
+X-Received: by 2002:a5d:554e:: with SMTP id g14mr4407181wrw.48.1630595886267; 
+ Thu, 02 Sep 2021 08:18:06 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
  by smtp.gmail.com with ESMTPSA id
- x11sm2016661wro.83.2021.09.02.08.18.26
+ n5sm1870776wmd.29.2021.09.02.08.18.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:18:27 -0700 (PDT)
+ Thu, 02 Sep 2021 08:18:05 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 13/24] target/microblaze: Restrict cpu_exec_interrupt()
- handler to sysemu
-Date: Thu,  2 Sep 2021 17:17:04 +0200
-Message-Id: <20210902151715.383678-14-f4bug@amsat.org>
+Subject: [PATCH 09/24] target/cris: Restrict cpu_exec_interrupt() handler to
+ sysemu
+Date: Thu,  2 Sep 2021 17:17:00 +0200
+Message-Id: <20210902151715.383678-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
 References: <20210902151715.383678-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -133,86 +132,100 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oxFLhJD9lEua
+X-TUID: hYu5sxCmb6t3
 
 Restrict cpu_exec_interrupt() and its callees to sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/microblaze/cpu.h    |  2 ++
- target/microblaze/cpu.c    |  2 +-
- target/microblaze/helper.c | 13 ++-----------
- 3 files changed, 5 insertions(+), 12 deletions(-)
+ target/cris/cpu.h    |  2 +-
+ target/cris/cpu.c    |  4 ++--
+ target/cris/helper.c | 17 ++---------------
+ 3 files changed, 5 insertions(+), 18 deletions(-)
 
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index e4bba8a7551..40401c33b72 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -355,8 +355,10 @@ struct MicroBlazeCPU {
- };
- 
- 
-+#ifndef CONFIG_USER_ONLY
- void mb_cpu_do_interrupt(CPUState *cs);
- bool mb_cpu_exec_interrupt(CPUState *cs, int int_req);
-+#endif /* !CONFIG_USER_ONLY */
- void mb_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-                                 MMUAccessType access_type,
-                                 int mmu_idx, uintptr_t retaddr);
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index 72d8f2a0daa..15db277925f 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -365,10 +365,10 @@ static const struct SysemuCPUOps mb_sysemu_ops = {
- static const struct TCGCPUOps mb_tcg_ops = {
-     .initialize = mb_tcg_init,
-     .synchronize_from_tb = mb_cpu_synchronize_from_tb,
--    .cpu_exec_interrupt = mb_cpu_exec_interrupt,
-     .tlb_fill = mb_cpu_tlb_fill,
+diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+index d3b64929096..be021899ae8 100644
+--- a/target/cris/cpu.h
++++ b/target/cris/cpu.h
+@@ -185,11 +185,11 @@ struct CRISCPU {
  
  #ifndef CONFIG_USER_ONLY
-+    .cpu_exec_interrupt = mb_cpu_exec_interrupt,
-     .do_interrupt = mb_cpu_do_interrupt,
-     .do_transaction_failed = mb_cpu_transaction_failed,
-     .do_unaligned_access = mb_cpu_do_unaligned_access,
-diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
-index 20dbd673136..dd2aecd1d58 100644
---- a/target/microblaze/helper.c
-+++ b/target/microblaze/helper.c
-@@ -26,16 +26,6 @@
+ extern const VMStateDescription vmstate_cris_cpu;
+-#endif
+ 
+ void cris_cpu_do_interrupt(CPUState *cpu);
+ void crisv10_cpu_do_interrupt(CPUState *cpu);
+ bool cris_cpu_exec_interrupt(CPUState *cpu, int int_req);
++#endif
+ 
+ void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags);
+ 
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index 70932b1f8c7..c2e7483f5bd 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -205,20 +205,20 @@ static const struct SysemuCPUOps cris_sysemu_ops = {
+ 
+ static const struct TCGCPUOps crisv10_tcg_ops = {
+     .initialize = cris_initialize_crisv10_tcg,
+-    .cpu_exec_interrupt = cris_cpu_exec_interrupt,
+     .tlb_fill = cris_cpu_tlb_fill,
+ 
+ #ifndef CONFIG_USER_ONLY
++    .cpu_exec_interrupt = cris_cpu_exec_interrupt,
+     .do_interrupt = crisv10_cpu_do_interrupt,
+ #endif /* !CONFIG_USER_ONLY */
+ };
+ 
+ static const struct TCGCPUOps crisv32_tcg_ops = {
+     .initialize = cris_initialize_tcg,
+-    .cpu_exec_interrupt = cris_cpu_exec_interrupt,
+     .tlb_fill = cris_cpu_tlb_fill,
+ 
+ #ifndef CONFIG_USER_ONLY
++    .cpu_exec_interrupt = cris_cpu_exec_interrupt,
+     .do_interrupt = cris_cpu_do_interrupt,
+ #endif /* !CONFIG_USER_ONLY */
+ };
+diff --git a/target/cris/helper.c b/target/cris/helper.c
+index 911867f3b48..36926faf323 100644
+--- a/target/cris/helper.c
++++ b/target/cris/helper.c
+@@ -41,20 +41,6 @@
  
  #if defined(CONFIG_USER_ONLY)
  
--void mb_cpu_do_interrupt(CPUState *cs)
+-void cris_cpu_do_interrupt(CPUState *cs)
 -{
--    MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
--    CPUMBState *env = &cpu->env;
+-    CRISCPU *cpu = CRIS_CPU(cs);
+-    CPUCRISState *env = &cpu->env;
 -
 -    cs->exception_index = -1;
--    env->res_addr = RES_ADDR_NONE;
--    env->regs[14] = env->pc;
+-    env->pregs[PR_ERP] = env->pc;
 -}
 -
- bool mb_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                      MMUAccessType access_type, int mmu_idx,
-                      bool probe, uintptr_t retaddr)
-@@ -271,7 +261,6 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
- 
-     return paddr;
+-void crisv10_cpu_do_interrupt(CPUState *cs)
+-{
+-    cris_cpu_do_interrupt(cs);
+-}
+-
+ bool cris_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool probe, uintptr_t retaddr)
+@@ -287,7 +273,6 @@ hwaddr cris_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+     D(fprintf(stderr, "%s %x -> %x\n", __func__, addr, phy));
+     return phy;
  }
 -#endif
  
- bool mb_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ bool cris_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
  {
-@@ -289,6 +278,8 @@ bool mb_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-     return false;
- }
+@@ -319,3 +304,5 @@ bool cris_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
  
-+#endif /* !CONFIG_USER_ONLY */
+     return ret;
+ }
 +
- void mb_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-                                 MMUAccessType access_type,
-                                 int mmu_idx, uintptr_t retaddr)
++#endif /* !CONFIG_USER_ONLY */
 -- 
 2.31.1
 

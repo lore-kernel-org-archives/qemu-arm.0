@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp418915lfb;
-        Thu, 2 Sep 2021 09:16:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRkLIGq8bd1sKvGsiVo9FiFh2jcduWnqd4PvwFsgVB7x0m5BtmpIq5FpqwqFre1ZFW+97Y
-X-Received: by 2002:a17:906:1d41:: with SMTP id o1mr4800668ejh.232.1630599385365;
-        Thu, 02 Sep 2021 09:16:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630599385; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp419032lfb;
+        Thu, 2 Sep 2021 09:16:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXbtwgnBbMANe6tGu97WC/kKbHyzfH4mecllQAEz0Hzs3MN7S78IXZRkHRI3f9jtnb+o7n
+X-Received: by 2002:a05:6402:3188:: with SMTP id di8mr4323058edb.300.1630599392533;
+        Thu, 02 Sep 2021 09:16:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630599392; cv=none;
         d=google.com; s=arc-20160816;
-        b=XXGYtbgHmHSmUZmu+oldh/MAQgeUSujCxE5s6fhRVzKafZmQXwbZCe3/rgODz1RN1H
-         0DDNayU4y6tm6qA3LY70VbpQh7Gnme7pnQeBZpVbQfF0PgMldvok9X7HDia4nz9PsdB6
-         +pYES1Kgpoti6z98PGfLoYbB1z9wz5/teE7tJAD286voyL8K7hzH8hqQ4l8ieznKUTa2
-         3065NKXmHiukmASd3EPCetBRrtMm2pv8HLeTCtJpGbK37pMTC+SzLhQYqdtZBzBaKZ8y
-         7YteV9xzb4JBbzgvgn6ycWWEzNy6KN/jVveSjkN/ohWG12LCfDjg1v3eGvCV2/ekgMBG
-         cqjA==
+        b=TWmFRUHwPm0Q9yf7k7Lk5Hp1genmrgNGRXQK/9UdrfbtE45XkPH3iiF9AwbnAX9Pvz
+         FwM2Y5fzrYz0fXWUHZBniFqn2wZg094T0nl7zDsSagy9z8eZJVOFkjIV+lYEqM/Vrn97
+         iJ0o6bJn5y5gBCbdH3nLfVxEftIxje6FAViVFOsq0MWj4arZkh7KN87P/Ruh0E1aILXn
+         E2WNTiPBT9M3SaQcauWYMddZuu2+XDT6pMhzcgQvH1KhQcF/xFKjBC7GuJMxsQ/joa+A
+         LUxt+5azj7YBwIaurnMNxUIwiZgxBV7vwLABL28Dt7qqxnbGP48VXxLVJYUfKtfGO/+m
+         ZxRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from:sender
          :dkim-signature;
-        bh=RYRVLsfl9Ob+8zW8ulpQWg/n0bsy9p4rFkeC3sRFgzg=;
-        b=offatY294FwCveD42BFxErW/K+jBuC0Yyj6Jv4yE+WF6EvqkkyR0w6u6SPceqDHpQD
-         g+jln6/ZbFe+vYy5P+6hNXN8WmVglat46q+U/8kg+vJrKWM6xf9zGj45aB5bWJ2JvgEp
-         87BQ1/lZl3+Giumf+Csm/mToPOQrQphQ4x6cZVzNR99OA03r7Kb1GoeIe6XfJxVZghLY
-         i4MV0YIamYnOfhRb2egrXkKRwXJFV+PUVP9xhU57wIcX5fjMF7RQvgeahFz+ZYdgu45n
-         aWSmohqNW0XeLB6/xg36y55A54yGbqv2sIOLEs4HgBWAV+6iEbqtI8os/9s7B1h6V923
-         owNw==
+        bh=TscxpaThIFwXh/P1Ycdn5GNQgbZxc3kDvlQfbrdl29A=;
+        b=cwKakvg4c4lcnf0e95NKm4lNGLoRaqNXd7GQWcehG4D2pofRPryQ5CxV1xfsI3WPft
+         +kvVwjQ75eX95kfsNvgsTAxzT94bIdLbnZXPCcS1zwVCpQm+Xgulk3TkGzVvQLkAfZUS
+         ivfDqAmNX4RPWaiYVazRaQitbPZcPzIoR5M75rtz1szKKU1dPYZ3Y11uOc+HB3M4B1Jh
+         Y5+VLLuMjzedIk8xgMuER3KLM5MxFV7GY5qA1IDTkbBkFGNocDxNJG3adghVZDi8DAWc
+         ANMds0MmZa6WObgddaWGpRMYa9aXD0HKHZ4UX18eopIuWBPYgm0cH5AC4Yo2ge5QdVaE
+         AbeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cWSYDAq5;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=qoOL8i+0;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.16.25;
-        Thu, 02 Sep 2021 09:16:25 -0700 (PDT)
+        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.16.32;
+        Thu, 02 Sep 2021 09:16:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cWSYDAq5;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=qoOL8i+0;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1346223AbhIBQRW (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Sep 2021 12:17:22 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44794 "EHLO
+        id S1346240AbhIBQR1 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 12:17:27 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44866 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1346248AbhIBQRR (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Sep 2021 12:17:17 -0400
-Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com [IPv6:2a00:1450:4864:20::32a])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5CDD6C061764
-        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:16:18 -0700 (PDT)
-Received: by mail-wm1-x32a.google.com with SMTP id x2-20020a1c7c02000000b002e6f1f69a1eso1857570wmc.5
-        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:16:18 -0700 (PDT)
+        with ESMTP id S1346143AbhIBQRW (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 12:17:22 -0400
+Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com [IPv6:2a00:1450:4864:20::432])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4A6E7C061575
+        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:16:24 -0700 (PDT)
+Received: by mail-wr1-x432.google.com with SMTP id g18so3815791wrc.11
+        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:16:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=RYRVLsfl9Ob+8zW8ulpQWg/n0bsy9p4rFkeC3sRFgzg=;
-        b=cWSYDAq5Jp0McvzKfoJCBhOUKIrlk33QHDkz+m47acNIlb9JOx3tfp5kB+KXf5dDO/
-         w4+OyKHGR2RiqPyFa7V7bzZyYSy6kLYW49zVrZ6Hy8QBCbCerYOKfrGjd0qNffHf9SpP
-         r/Kq+8mSo19dNZRUfW1WN64ERD6JetVYvf41b1e1tWlJwcOL4P63Z/Mm9sSwkJyaYePZ
-         Jroc0woaa+Fir71b0dp9xMglTvA3smVf5tzo/uq315Y7Ji+qHpf638YaJjs7F9y6JQ5A
-         whXUesQqAhIyuS/27l3cznkFQWzDOa9H8TavWnRll7U6TXlgZEUv2l8XPpV83TA8h9zC
-         OFCw==
+        bh=TscxpaThIFwXh/P1Ycdn5GNQgbZxc3kDvlQfbrdl29A=;
+        b=qoOL8i+0Y9KqXMdm9wOQ3u/uPCdX/SQlDbKgluqhkScnDC2t1qHTT+2MTI//DWFAUT
+         NEejCit7VB+NanpfXq6Qc1DSyRxFphKWmmaSUCPbUNDcmTFSjm/7IHDyWLstRl23/liL
+         PZvnmlnErsZ1z8G7bMly2o0U/t5YGH3JGm4ZynAQjU//ks9rQoD8imqPSgj5ddgnhNdE
+         jy4fS/nmBse8JHRRQZwgmcXXvfWbpfY46jYzcfi3LWel1xENjZOe87hdj9MZ//4GUVRq
+         cQn36iCUZBXsphDCe0vsC3FLk68GDc7pyonHjq+49CjqDRjeD5GGI1ltJX+qXIdflDGH
+         EuIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=RYRVLsfl9Ob+8zW8ulpQWg/n0bsy9p4rFkeC3sRFgzg=;
-        b=b2rLs3IDpCuQuaDyZno0PtTmhfhlnIT1E/xXebnZiXotpxY8ejryWLeINjC3x8T5cT
-         Kt4f8SmWbDSaA5BCe1FLvj1h16kdmGlWwzRSYVB77gLnQXD0gBPV7zLymd25pkKziqt9
-         QjWz10h86gsXpWqkHexQCELrwtKZeK7R/sCsjxdHYF2pQLu+vDkAeyvaPIw5p3H7dusX
-         Ly6b6Q6UCkaX9rFGPoV4LBAvxlEvn+I9usqLH+Db31bLbVtlYz8jEflMrEx6d2Hk3hmf
-         87a2TPl6DQT1jLWBX+Nt7iVj1yWYzD+0ERWcAx+xLR4akchtNRsUim6NQzTV25PG8YEA
-         KZwA==
-X-Gm-Message-State: AOAM531y+7UMOHPyvDxdsj97nFjfVltyAHFB+UvkCJBWqbcR0hOOfPdU
-        n1cWAtAGfwQ/GXJDlnCaF7U=
-X-Received: by 2002:a7b:c0c6:: with SMTP id s6mr3953111wmh.161.1630599376931;
-        Thu, 02 Sep 2021 09:16:16 -0700 (PDT)
+        bh=TscxpaThIFwXh/P1Ycdn5GNQgbZxc3kDvlQfbrdl29A=;
+        b=hbTPtfWthrOd16pdz+3bvNkXK5R+FfybbXsvwMmXZsIbfLHBu1gh2kpe+WXAwV5bKg
+         xFgEQd3JP699cqMuNrWWGAF53aw2fsWXdjFzHmNBrueqzizf23Q/d75RNBjdY+rSTYQl
+         y6ceTtMHfr4LOp/AXI61r2C8Z0Xpqqxacmgyp8cKZLL899U1g2P5Jv/9+J58jbNtyndd
+         rps38H+19sGAEpTi4g4Y9nXU0+v53e1xas3QL3NX6vZK1ADGI1o5WTzEamM5NDaVV6lH
+         bGe3RZVkPx7lozOUrK4ergTGDULoaakgEt4WpdnZf10o5ebZsuxe4r2G8+pvjhN3F59v
+         yd+A==
+X-Gm-Message-State: AOAM532Ck+rcOQRx5TDnCIe3jTApMltDG4/SUzAklvZG6Oq8wGan1akm
+        GtDOqZ4F5CuVvJHeS3LoJFE=
+X-Received: by 2002:adf:b741:: with SMTP id n1mr4708081wre.354.1630599382926;
+        Thu, 02 Sep 2021 09:16:22 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id n3sm2097857wmi.0.2021.09.02.09.16.14
+        by smtp.gmail.com with ESMTPSA id k37sm1787439wms.18.2021.09.02.09.16.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Sep 2021 09:16:16 -0700 (PDT)
+        Thu, 02 Sep 2021 09:16:22 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -120,9 +120,9 @@ Cc:     Bin Meng <bin.meng@windriver.com>,
         Palmer Dabbelt <palmer@dabbelt.com>,
         Stafford Horne <shorne@gmail.com>,
         Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-Subject: [PATCH v3 05/30] accel/kvm: Implement AccelOpsClass::has_work()
-Date:   Thu,  2 Sep 2021 18:15:18 +0200
-Message-Id: <20210902161543.417092-6-f4bug@amsat.org>
+Subject: [PATCH v3 06/30] accel/whpx: Implement AccelOpsClass::has_work()
+Date:   Thu,  2 Sep 2021 18:15:19 +0200
+Message-Id: <20210902161543.417092-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902161543.417092-1-f4bug@amsat.org>
 References: <20210902161543.417092-1-f4bug@amsat.org>
@@ -132,54 +132,63 @@ Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: J9JC6U+MZ/UX
+X-TUID: IRUApWNI92y0
 
-Implement KVM has_work() handler in AccelOpsClass and
+Implement WHPX has_work() handler in AccelOpsClass and
 remove it from cpu_thread_is_idle() since cpu_has_work()
 is already called.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- accel/kvm/kvm-accel-ops.c | 6 ++++++
- softmmu/cpus.c            | 2 +-
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ softmmu/cpus.c                    | 4 +---
+ target/i386/whpx/whpx-accel-ops.c | 6 ++++++
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c
-index 7516c67a3f5..6f4d5df3a0d 100644
---- a/accel/kvm/kvm-accel-ops.c
-+++ b/accel/kvm/kvm-accel-ops.c
-@@ -74,6 +74,11 @@ static void kvm_start_vcpu_thread(CPUState *cpu)
-                        cpu, QEMU_THREAD_JOINABLE);
- }
- 
-+static bool kvm_cpu_has_work(CPUState *cpu)
-+{
-+    return kvm_halt_in_kernel();
-+}
-+
- static void kvm_accel_ops_class_init(ObjectClass *oc, void *data)
- {
-     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
-@@ -83,6 +88,7 @@ static void kvm_accel_ops_class_init(ObjectClass *oc, void *data)
-     ops->synchronize_post_init = kvm_cpu_synchronize_post_init;
-     ops->synchronize_state = kvm_cpu_synchronize_state;
-     ops->synchronize_pre_loadvm = kvm_cpu_synchronize_pre_loadvm;
-+    ops->has_work = kvm_cpu_has_work;
- }
- 
- static const TypeInfo kvm_accel_ops_type = {
 diff --git a/softmmu/cpus.c b/softmmu/cpus.c
-index 2a61dfd6287..3db7bd4eb4d 100644
+index 3db7bd4eb4d..6bce52ce561 100644
 --- a/softmmu/cpus.c
 +++ b/softmmu/cpus.c
-@@ -90,7 +90,7 @@ bool cpu_thread_is_idle(CPUState *cpu)
+@@ -41,7 +41,6 @@
+ #include "sysemu/replay.h"
+ #include "sysemu/runstate.h"
+ #include "sysemu/cpu-timers.h"
+-#include "sysemu/whpx.h"
+ #include "hw/boards.h"
+ #include "hw/hw.h"
+ #include "trace.h"
+@@ -89,8 +88,7 @@ bool cpu_thread_is_idle(CPUState *cpu)
+     if (cpu_is_stopped(cpu)) {
          return true;
      }
-     if (!cpu->halted || cpu_has_work(cpu) ||
--        kvm_halt_in_kernel() || whpx_apic_in_platform()) {
-+        whpx_apic_in_platform()) {
+-    if (!cpu->halted || cpu_has_work(cpu) ||
+-        whpx_apic_in_platform()) {
++    if (!cpu->halted || cpu_has_work(cpu)) {
          return false;
      }
      return true;
+diff --git a/target/i386/whpx/whpx-accel-ops.c b/target/i386/whpx/whpx-accel-ops.c
+index 6bc47c53098..1f9c6d52c27 100644
+--- a/target/i386/whpx/whpx-accel-ops.c
++++ b/target/i386/whpx/whpx-accel-ops.c
+@@ -83,6 +83,11 @@ static void whpx_kick_vcpu_thread(CPUState *cpu)
+     }
+ }
+ 
++static bool whpx_cpu_has_work(CPUState *cpu)
++{
++    return whpx_apic_in_platform();
++}
++
+ static void whpx_accel_ops_class_init(ObjectClass *oc, void *data)
+ {
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+@@ -94,6 +99,7 @@ static void whpx_accel_ops_class_init(ObjectClass *oc, void *data)
+     ops->synchronize_post_init = whpx_cpu_synchronize_post_init;
+     ops->synchronize_state = whpx_cpu_synchronize_state;
+     ops->synchronize_pre_loadvm = whpx_cpu_synchronize_pre_loadvm;
++    ops->has_work = whpx_cpu_has_work;
+ }
+ 
+ static const TypeInfo whpx_accel_ops_type = {
 -- 
 2.31.1

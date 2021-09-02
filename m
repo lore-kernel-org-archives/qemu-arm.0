@@ -1,133 +1,168 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp243630lfb;
-        Thu, 2 Sep 2021 06:09:23 -0700 (PDT)
-X-Received: by 2002:a1c:ed0a:: with SMTP id l10mr3046642wmh.140.1630588163062;
-        Thu, 02 Sep 2021 06:09:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630588163; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp249307lfb;
+        Thu, 2 Sep 2021 06:15:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2ft1i6tiazlfhqvDjW3luYo4qtNEeZZaP7RFbdNnMBJSv6DHepyC99pGz096vhlKfMYkH
+X-Received: by 2002:adf:ce8d:: with SMTP id r13mr3804113wrn.18.1630588521124;
+        Thu, 02 Sep 2021 06:15:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630588521; cv=none;
         d=google.com; s=arc-20160816;
-        b=YahnjWfunUvNIZwapF6nKFwJ7y0KZ5saexQFNe8QHCXebrDVdluqF3qLFYQwUbFhvU
-         qjULMZKthizhTW7hyavwF4po3k/x7zRZW0UQNX4TrudmsfWXFe2Is9WjNJXc9A6LLzM+
-         tzXqXnSFU/6Zer3BwFVB1WO3qS67fqYySpLzceUqWM8Bro3WviZIUVdWMdBoHhEl0kPS
-         WGHDl/NUUCx7hSpP29qzXJjCKr709ZV/95lCXnZfShpZNmKQN5St+7ra3HMlMS3urm7D
-         1ESnz8nKw3kJYDlB29fIh/KN1CU/nRks/pTZRgYzmLO6kAT9LkxlxbQWXXPbMF+JmG5z
-         WYDg==
+        b=yTwbmgkPI6KZvluhqRiq3rC5r9JrJxKPWBsHQgIyGXFpmyEKtUsrLTg4bpITqpvInz
+         azsuF4ZxuLfbnfZ0aIU/cy2y8p1TCQ1Adghn0cCPC/Jnkw8aru/tROLXf0HMcoOY0sSm
+         dA1UQKKzImQ4PTARvO6TrkOEt3ZpY2k+9TDZL+YIBK+rh93dWsqQlxgcxPCQ2oBd8+nB
+         x22wilzcWvbOzForGowkORHINVsSHHXb1Yb9uKslj8eroSvChyhJknLhqc1SmchBBRzP
+         jX5yODOPCSKxp63q3CAH0ZAsqGZj3kLq/RJqm4Zn1ZjjciGRfv1aAW1r7tp+/CzNsJWX
+         awnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=BumYjg4HruxpBMDsswz5KhY/vuqWINMWr2ZsWHfVXuI=;
-        b=JCtxjmYCoYNe2Q8QJYQTSduPCm3ETrk0tPlE7lTkx3r2gp5BbLHDmOhD10ieo2Vj8Q
-         /LWnmXvl5vqDVcSo7e8yPbNEvKwpfri4HpqEkSIegcsJIxnH7ASLgan/Sn9GdYr+zxpd
-         z2dmY2diXB/r/ywzsP8xxB9mMASsCuqDaGITicx/dV9zTQqBpntE34RNFZr2jbNtpz8j
-         suM9URu+XOJKZzt00OEYPBVoz1mIukMj9dhb/PEcbAYOgmLCdrFEuSmWs3Za4F0R/5dE
-         gPUqd3SoPOv8hkkVt4i1EGGwgVaJPD52B55PYTd/kaZ+XW1lRmjP87xzY/9oBEMFn/Vo
-         c6FA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=lYNmEGkIuFx6TjJSX+P6lLIIW6Ug3xJdcY/Vmj7fk5Q=;
+        b=AZif42+naqNZkIHpYCK3uVxCHoClGbkl3SGgPjq87DQ5iIA+VJJmNbzqb3ybVRef2r
+         O0dFFN2FAfpDO8Y0Qxarj2gIlGaLXjw/qbDdcaM6E1or/o5EdiaZtQlY1u9KtGB+KrE1
+         ZJlE/v4zpXzbF9HTZXR2q25yZhMVnTxmodPS6yG4v7Z1BQ938syQSc5yAsrw1CtjaRm1
+         +L9ZjDWhapex0ErNq3In8mtfUxYyiKM9gkeRBnm6wpkyd09Iepw99xfSOvvoO5a5WnFV
+         iDyaVrn9sOuEWa/XSsHqlhuGiBm5FPC4X25xZdb9acb4QLuaZSZjqE4H95UnJfofxwBT
+         MYuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XNzeVVZg;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n5sor1120461wrf.60.2021.09.02.06.09.22
+       dkim=fail header.i=@linaro.org header.s=google header.b="j9/+L7kt";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q16si1739759wrn.229.2021.09.02.06.15.21
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 02 Sep 2021 06:09:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Sep 2021 06:15:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XNzeVVZg;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=BumYjg4HruxpBMDsswz5KhY/vuqWINMWr2ZsWHfVXuI=;
-        b=XNzeVVZgMTwvaMW+hf4ZU151vXY/tds9syru115vJWY2H9xi7NvkSLiKaf12IA2hmz
-         4Twf+2KjSav4TdlFitm4lyz20GrQtiikbfLSNIYfE+tALQeeymUgusxfeSVth6gQ3uX6
-         S2/mAgq97r9x3T58N0MON1+gBwMJ95T3hJLwKW0v9kfgeYMkiDyBVBkCNZgt3ZDrL10V
-         x+AQO8dZOJW4KNpgWEWmAkAmEqFTZQfRASG2II4Hc0vabX+EuGis/weTAS7UEXw6WjAn
-         mjtM3K3OONcQPvFv6bO++KaTMt80vA00Zxrg9JxLRI505QmzbauyaXOT/enXybhA2Yea
-         fEbQ==
+       dkim=fail header.i=@linaro.org header.s=google header.b="j9/+L7kt";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36820 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLmYq-0005rV-7X
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 09:15:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38504)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mLmCY-0002oB-MC
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 08:52:18 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:42871)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mLmCW-0007df-Ub
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 08:52:18 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id q11so2743243wrr.9
+ for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 05:52:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lYNmEGkIuFx6TjJSX+P6lLIIW6Ug3xJdcY/Vmj7fk5Q=;
+ b=j9/+L7kt/r5BwbJCJUxsrFb2ll/Cf83FDNDq06t4CJbw1tNKuhIpQepoEaqxF81L9P
+ /mLf7bdKXvN3cBIhswvZsFSRr9ZjrQ2g9xBXdxYfTdDAQFWvTbJ0/CbuoJbT4P9C2wAW
+ GQzaLI0TA3mTCqnwrKSTq4JYP4EF/btJmcJgWP61jN1NMROheD3xOLFhglDUOc1FhREh
+ T4bX2WtChc1/c8n/kHQC5T/ek4wFR7P3H7UCamkZwcRnJZb8WVVBP1OGLj6t73xt4lt+
+ /6nuMlQzCJtyb76lxcn0Qdw3B7hhrqmmG14jBalE5mrvby78eiMxFg5Fo7j+j7/s6PTl
+ 3tAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=BumYjg4HruxpBMDsswz5KhY/vuqWINMWr2ZsWHfVXuI=;
-        b=ZfRbCTqzt7QUnWD6OKx0ib6BUkrEbOuuDaI8fk7MBHibmVMXkNvKeMz1ixYpHepOjn
-         d1I4k8cJUk56wsLui4pVLoh/iz8KV4s0tJmIpLA0h9wLtj+qfnheim2+uCVVd6Zgu8Qp
-         4FpFZDCxq7aGUwMvYcRpzjNajWAlyEctO6UjmKN1B/ecsSCnfARsKjJyDWV58YX34OPJ
-         2jBx2wLRW3FRGDPup//fgJYiZEjxEfeF7arionhZiEsnorZVx4DO9+dSpTHMDFw68JNS
-         f1pKk2HkPtSoy+PSafbfrtM5zTItfa6DoEUDuWiXTA7EipyIMO8otYT2Gi8uoy9jOwz4
-         +qeA==
-X-Gm-Message-State: AOAM531S8ja82iF5WZdNy8goErvc8srVPvWMVByiHo9bgsSfksfYT3hS
-	fd2ikWOe58gATrSWobZCg+iuNpV9
-X-Google-Smtp-Source: ABdhPJw2kJqBm+YJ0W8PQQ91PAyB8vki1xITesAqGqbwujN1Yeq9boGiJSOCtAjS1XUUOw3zXsCIQg==
-X-Received: by 2002:adf:8027:: with SMTP id 36mr3675503wrk.109.1630588162694;
-        Thu, 02 Sep 2021 06:09:22 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.8.107] (61.red-176-80-253.dynamicip.rima-tde.net. [176.80.253.61])
-        by smtp.gmail.com with ESMTPSA id f17sm1669167wmf.4.2021.09.02.06.09.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Sep 2021 06:09:22 -0700 (PDT)
-Subject: Re: [PATCH 10/29] tcg_funcs: Add tlb_flush to TCGModuleOps
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-Cc: Aurelien Jarno <aurelien@aurel32.net>, Laurent Vivier
- <laurent@vivier.eu>, Peter Xu <peterx@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-riscv@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Stafford Horne <shorne@gmail.com>, Huacai Chen <chenhuacai@kernel.org>,
- Halil Pasic <pasic@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Bin Meng <bin.meng@windriver.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Greg Kurz <groug@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-References: <20210831121545.2874233-1-kraxel@redhat.com>
- <20210831121545.2874233-11-kraxel@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fdfd7f35-fbec-84f7-ebbd-7790df20b1bd@linaro.org>
-Date: Thu, 2 Sep 2021 15:09:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lYNmEGkIuFx6TjJSX+P6lLIIW6Ug3xJdcY/Vmj7fk5Q=;
+ b=LVgsCBbREB/VqxIyvvzw9UIt/XPSXdJBegRBPU0pjiXZZZF2J69mKYgu+JAo8BfUcC
+ klcuVJt/RXiyIRlBWFSI6rcOyogw9PEtOAc2SpArXPiwig/STJ+nOg1pCR24rAoYaQUE
+ GP9G+0Q/rGJ/6/kQsBzWvnbuDvlFhrB1HZbBcqG671OiI7FxQx7+gBnhHHeLglvcuWNC
+ 4TkFD9VZ/k8xyr6K1Yvk5EcZwc2oYRdYVDQk8aSnlgYhAV33xxlj/FNEf0gT+TBcGHun
+ KSNSv+wmSDtKwBL0xLdTRfybMg33HCbys4Ng74Q4w/RXS7vgcKrWnh8gsDnqz8+qR+XA
+ NuZg==
+X-Gm-Message-State: AOAM533pD1xPLNwzG/sn0bb0R0VD3agS+sLyVDZZsf8Kn4EkBu/N2yNY
+ 2jWBqqzuNOtghqmsXuO24bwtHr+OqSPxm8marP8tZg==
+X-Received: by 2002:adf:ba0f:: with SMTP id o15mr3539200wrg.386.1630587134332; 
+ Thu, 02 Sep 2021 05:52:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210831121545.2874233-11-kraxel@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: SU0/P//hz6ET
+References: <20210812165341.40784-1-shashi.mallela@linaro.org>
+ <20210812165341.40784-8-shashi.mallela@linaro.org>
+ <CAFEAcA9WVu+kjfCWwfGQV00yKgmdFDCSUpxNOu1BEBM3AZCWXg@mail.gmail.com>
+ <20210902124258.mqjhx7lqqvkczf6a@leviathan>
+In-Reply-To: <20210902124258.mqjhx7lqqvkczf6a@leviathan>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Sep 2021 13:51:26 +0100
+Message-ID: <CAFEAcA-HC1=arh_4ysPv2L1JyT6sA9n_1aqJv__1Z7+09kYxiA@mail.gmail.com>
+Subject: Re: [PATCH v8 07/10] hw/arm/sbsa-ref: add ITS support in SBSA GIC
+To: Leif Lindholm <leif@nuviainc.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Shashi Mallela <shashi.mallela@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ narmstrong@baylibre.com, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wpTmUO5rX0o4
 
-On 8/31/21 2:15 PM, Gerd Hoffmann wrote:
-> diff --git a/target/i386/helper.c b/target/i386/helper.c
-> index 533b29cb91b6..100add713c5d 100644
-> --- a/target/i386/helper.c
-> +++ b/target/i386/helper.c
-> @@ -103,7 +103,7 @@ void x86_cpu_set_a20(X86CPU *cpu, int a20_state)
->   
->           /* when a20 is changed, all the MMU mappings are invalid, so
->              we must flush everything */
-> -        tlb_flush(cs);
-> +        tcg.tlb_flush(cs);
+On Thu, 2 Sept 2021 at 13:43, Leif Lindholm <leif@nuviainc.com> wrote:
+> On Thu, Aug 19, 2021 at 14:27:19 +0100, Peter Maydell wrote:
+> > If you want a command line switch to let the user say whether the
+> > ITS should be present or not, you should use the same thing the
+> > virt board does, which is a bool property "its".
+> >
+> > If you want the sbsa-ref board to become a proper "versioned machine
+> > type" such that users can say "-M sbsa-ref-6.1" and get the SBSA
+> > board exactly as QEMU 6.1 supplied it, that looks completely different
+> > (and is a heavy back-compatibility burden, so needs discussion about
+> > whether now is the right time to do it), and probably is better not
+> > tangled up with this patchseries.
+>
+> Hmm. I mean, you're absolutely right about the complexity and need for
+> discussion. My concern is that we cannot insert the ITS block in the
+> memory map where it would be in an ARM GIC implementation without
+> changing the memory map (pushing the redistributor further down).
+>
+> It is also true that simply versioning sbsa-ref does not mean we end
+> up with a properly aligned with ARM IP register frame layout. Some
+> additional logic is required for that.
+>
+> If we assume that we don't want to further complicate this set by
+> adding the additional logic *now*, I see three options:
+> - Implement memory map versioning for sbsa-ref for this set, placing
+>   the ITS (if enabled) directly after the DIST for sbsa-ref-6.2.
+> - In this set, place the ITS frames in a different location relative
+>   to the REDIST frames than it will end up once the further logic is
+>   implemented.
+> - Drop the sbsa-ref ITS support from this set, and bring it in with
+>   the set implementing the additional logic.
 
-I think this is a mistake.
+I don't think implementing versioned machine types helps you much
+anyway, because your users are all going to be currently using
+-M sbsa-ref, so they will by default see the change in device layout.
 
-(1) If tcg module is not enabled, we should be able to make a direct call.
+I do think that we should get the "with an ITS" device layout right
+from the start, so that we're only dealing with 2 possibilities
+(what we have today, and the final intended layout), not 3 (today,
+final layout, some intermediate thing).
 
-(2) A *proper* modularization would load the target/ stuff as a module as well, at which 
-point this should be a call through the PLT, not an indirect call after a couple of 
-indirect pointer loads.
+How does guest software on this board figure out the memory
+layout ? Is there a mechanism for telling it "this is version 2
+of this board" ?
 
-So IMO we want to retain the direct function call syntax in all the uses.  I think you 
-want to put wrapper functions doing the indirection somewhere -- possibly tcg-module.c.
-
-
-r~
+-- PMM

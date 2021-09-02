@@ -1,98 +1,99 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp614267lfb;
-        Thu, 2 Sep 2021 13:12:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMmj1i4H1uXNKF1B2cxVw6fyDavwSQ4QbuGxXvAzMw8h7OmgmgouY9r3tmR6iVSeWkEMuu
-X-Received: by 2002:a05:6638:399:: with SMTP id y25mr25965jap.23.1630613538001;
-        Thu, 02 Sep 2021 13:12:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630613537; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp616606lfb;
+        Thu, 2 Sep 2021 13:15:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwk+W+fabbXlEK52sTaZgeEw1E6/fOPBmcFTpjmO24/gRzrhRHP/5XI+RArJMD9txtrERVy
+X-Received: by 2002:a67:ee19:: with SMTP id f25mr4228224vsp.30.1630613725222;
+        Thu, 02 Sep 2021 13:15:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630613725; cv=none;
         d=google.com; s=arc-20160816;
-        b=0wAI3lg+DpLAfgWEXVbfklMcParN5PMoWcxy589z4vVtD1h4N8SXE5lDiVUY3nBjcD
-         pxgILCepct5BJr//KcWhzk5ZnNTUdIH4E/5A8iCqSK66mJwBQuNXmtKk8Pr8nr8I3C+K
-         EZZaZPDasHwz1bW/t3RRxxsHNFiDPSI0lYE3VysTLmqpI00FSiKft6avtqhmmj6Ki0ld
-         stVdkNLJ/4UsZqrIhVeeP/gpTAEhBdtV9CNTbHidNm8GipDe42llbT5YABFd4brm1Xe5
-         UJlKaovqnsDrcDaA9h0i5hZYDVopt4GTnIpAp7G2ayyU0cVL8q9TAXE+YrOReEWtykD1
-         +qNw==
+        b=Mrf5qzt8Z4/w1Hpk75DawCfu9BxbtSxqCglXQkW1fAoRutldDYyA6M9cOmXP81WpDG
+         vO+1ltuIQU3faANTz9YR+tdK2f3OCGcZ5IXHBIygpuaYDmdRyO7wPBTbz9nZZ1bprZ2C
+         yQdrwJPghal6FrjEwiU+Zu5tGS3CK6LWmRznc2WZRYKBHXhQtjOMm2DW5RLyh+2FD/4e
+         a64noGFUnFS0mFj28BUsCSQrcoDRmAQd7O26k2UV/BCvn4uHCvrgT4f17emi/NjlGhMQ
+         ACJC8uZiSRzTIsqR1+QIx0fWPnj0YG6RHHd7iTnaU+rrfWuSqXI6f1gGK+JU0dsYqcHs
+         1Cdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=AHe4522IvlU++xhQ5FRHNL4wmzwCPCJqUo4g+BE8kYM=;
-        b=iOqCNKZ/1uxGroSHhNlWlzcGGdbzE1z3g86HgDDIdOp7/6vVQnA6H4To/AuyyRy9F1
-         Zp4NiVtJjygjcXwM7l/JDutneknT5HwvF27kxzdSnCZXgnU1cupZLYDszMZOACRlP7qC
-         IwywXOtDrl65coOtUwYDkzIJZxlUJrm0Pu8qlZ2h/HTQXkm/3QRraTTbNnb9XbEFPoWl
-         5zkKOOllipO9HuOXx0mJDferdoFV6GtfLckjJgNCttNKHUxfeMrPlPOfdEN/2f4woqxO
-         IzvTl3mOdM86dpxVcIl8V9wLoVGoTSmsxj6jcoJYq2M6Y7al0ZyXYHxivSpk7ritvEki
-         of5w==
+        bh=BRrg+j6QaFlPIv+nFHKyzv4EuLGFfWoBrJtJQBerUOA=;
+        b=BIAoIW6IEjrqyyvfLgRX38zGeeXR7kY5Lr4WyOTYx8awjePSuyp6Nu1vs1+I1lV0RU
+         tc2KzpIuX5Clda9dU8vHPDOz+xiSAUyl9SAUHY8zEG7cDJg3hFn34KoD2ckNcH/FHUFJ
+         Qj6SxL43xZB0dLIEFtorFKtfD5guUJumaUWcXBp30AOF3rWgc13Obd/QgMK2dnUKbQ/H
+         VISSbf23m3llW3qgwTPIZ/wl7MyCSZReI8XPX/i42620QT28JOwQhJTkhxbylYg8sK/s
+         LGKL5iy8XOc20Uc8etEYLPyZ3kIvtiB7IV5FTgJL1zojcJMXLBsWTL+wDmetlRMfFfDe
+         2XcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=PctWUBQ6;
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=AQ62zMGI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j14si2903833iok.53.2021.09.02.13.12.17
+        by mx.google.com with ESMTPS id s75si1649579vss.129.2021.09.02.13.15.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:12:17 -0700 (PDT)
+        Thu, 02 Sep 2021 13:15:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=PctWUBQ6;
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=AQ62zMGI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41878 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLt4L-0005iM-9a
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:12:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38694)
+	id 1mLt7M-0001Mm-GE
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:15:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt2n-0003ek-T4
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:10:41 -0400
-Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e]:44880)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt6Q-0000VE-P6
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:14:26 -0400
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33]:40758)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt2m-0001ed-8D
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:10:41 -0400
-Received: by mail-vk1-xa2e.google.com with SMTP id g34so1042637vkd.11
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:10:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt6O-00056l-C5
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:14:26 -0400
+Received: by mail-vs1-xe33.google.com with SMTP id d6so2604947vsr.7
+ for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:14:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AHe4522IvlU++xhQ5FRHNL4wmzwCPCJqUo4g+BE8kYM=;
- b=PctWUBQ6ROSfiTyCHxx7AlVuS7hUma2vnT8YhXpUin1ypn8+EdHlDs9I3yyLmZ3Ue4
- TkHqfW2EoRFxzrqubLGI7B8MoIMg6QokfMVGQZ3m6lAgSoGeWpnaiwYmbiHDNhjBaXax
- 85z2X/XId9IkNczs7r81outUKqtO/tzByO+rX7bkCRLwuqR72lmqq9LpozOL3ghLfXg4
- DRh3hSjsVlfm7fPesVW7EdqKCaWPkdOBirbYBWs6cjh4wMnd/ttQ4/A2xnxpaLVNNhI3
- CBQXsyqJs9eujaseNe+wfc/8gW677mab1r05KZNJuGfCl/6JvRYO13ITt5kYnzuPfTfT
- 8oVw==
+ :cc; bh=BRrg+j6QaFlPIv+nFHKyzv4EuLGFfWoBrJtJQBerUOA=;
+ b=AQ62zMGIe0eE2x9iMkuvuKHFOefq6RmwWI8gw6Rit0WZdZH8vaR8nRpso9sONHN1I7
+ 0QfL7Pm66TsAEVldPgg7gKqPFLVJujYS8mMQUgI93n2/hhQKbaMfHO0Qv4DC58bMPR0L
+ vHMaa4HC1v3TBtpMIFGT3vwja3jjFlb6MQPn6toNqTxfJz5QT5z2hSaGC9Y981JCy0Ey
+ NX/R/9jW2mz9df4sYY/sntqKpkQK8nS/X8U1Ng2zue4s6hcs4VQ4hrGaoOoP1gVfnoJb
+ 4jnYteac2ABpAfR8VEEgzCCNoYtpjSYsAPjYc6olmuUOr7HX9v66wuIYp5BZvgaueOnc
+ d8qA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=AHe4522IvlU++xhQ5FRHNL4wmzwCPCJqUo4g+BE8kYM=;
- b=TONnVxbfEW5Fn/ro0F99xU9w1PRfD/1qXjiTMUSCF8TiYGDrq/fWr/7zUyZz/9LjTd
- IP2DekIj+NdFzmbPS6Tw6q6Ndg8pfnAqs56lBjOp2t4QguxqdVSt4kVSaK/yGCkliyOM
- d5G9RLqUexVhEw8O3LaPd4/ap6XDtWAtOhr1rYsHj4urEYhi17/f0fHbUNE6G83Ug3hq
- +aML36/+G6H4reR33SE2j1pbSzGbvkfV+TzINth4YEcpEAMOOzu2TmVFhx4HJCop+tSO
- yJ/Vd3vUcPsPkCtiP2/da4pqNpYLVG4bL2i1IdjoVswFsyLR1X/l15Z4CkNMTQJkJ6bn
- qevg==
-X-Gm-Message-State: AOAM530fdjLDwBeKGXZLKTC/k5o6Li6/gwl7yqDxluugYua7Qbvedr2o
- vFycNBduhaPYeSJ678Vf+9iG/rxdSZ6gIZcL9lKNDA==
-X-Received: by 2002:a1f:1bcf:: with SMTP id b198mr3511241vkb.25.1630613438332; 
- Thu, 02 Sep 2021 13:10:38 -0700 (PDT)
+ bh=BRrg+j6QaFlPIv+nFHKyzv4EuLGFfWoBrJtJQBerUOA=;
+ b=t0M6Qm9jOURs7UHgsmBTFY3ldpFzoyqAv3M9c+Q8egUhPk/zKf6AeciqZBAAMjPOmW
+ CBEv3Bk1AK6XdiLAglxRvr0B/F3vG04Is99NFLARtx0o9yDA89pjw39I9IKdVefaNrk0
+ p/QrQEFIBXMfrUZ6dzW3Sx1sgcr6gw3AjCEVnYrpOgEdcGGaB1p389D1wK/ciZr+tgs/
+ EQUO7GaolV8JRH3xMkx+urohjMBrU5VzSuu+TYjeT+BaBBSk0eMb5PrFmM8KJqD8FoE2
+ UgOxXUTA8NMEEXmSmDlv1eTkf4v5gyQLU7I6/d4xv1tF2OBFe5HWyydmO7mVPy+y1CIz
+ X1+w==
+X-Gm-Message-State: AOAM53109JYKBsFEMLNp7VnR6/rU7SA6SvVrt9ncRG9wi3LOCsNd5MKU
+ 6Uwewcx2M5AaXL0yN55H+x1X/i6CXMFTwd+bMrbvLg==
+X-Received: by 2002:a67:2dc6:: with SMTP id t189mr3875399vst.49.1630613663130; 
+ Thu, 02 Sep 2021 13:14:23 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-3-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-3-f4bug@amsat.org>
+ <20210902151715.383678-5-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-5-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:10:27 -0600
-Message-ID: <CANCZdfo=ULeEvZ9vPGuhRb7vgH8TZ+OavcaR9h1ZiNyNh1+nHA@mail.gmail.com>
-Subject: Re: [PATCH 02/24] target/i386: Restrict sysemu-only fpu_helper helpers
+Date: Thu, 2 Sep 2021 14:14:12 -0600
+Message-ID: <CANCZdfqatDMjqzy86AmvZSd9WEqDuXuiapcj1kJxWgfifKo-SQ@mail.gmail.com>
+Subject: Re: [RFC PATCH 04/24] accel/tcg: Rename user-mode do_interrupt hack
+ as fake_user_exception
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000c214d605cb08c6bf"
-Received-SPF: none client-ip=2607:f8b0:4864:20::a2e;
- envelope-from=wlosh@bsdimp.com; helo=mail-vk1-xa2e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/alternative; boundary="0000000000002839f105cb08d4b4"
+Received-SPF: none client-ip=2607:f8b0:4864:20::e33;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe33.google.com
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,9 +123,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oyr9984n8i1I
+X-TUID: SVRxIwQd96mw
 
---000000000000c214d605cb08c6bf
+--0000000000002839f105cb08d4b4
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -132,44 +133,119 @@ On Thu, Sep 2, 2021 at 9:17 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 >
 wrote:
 
-> Restrict some sysemu-only fpu_helper helpers (see commit
-> 83a3d9c7402: "i386: separate fpu_helper sysemu-only parts").
+> do_interrupt() is sysemu specific. However due to some X86
+> specific hack, it is also used in user-mode emulation, which
+> is why it couldn't be restricted to CONFIG_SOFTMMU (see the
+> comment around added in commit 78271684719: "cpu: tcg_ops:
+> move to tcg-cpu-ops.h, keep a pointer in CPUClass").
+> Keep the hack but rename the handler as fake_user_exception()
+> and restrict do_interrupt() to sysemu.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> RFC: Any better name / idea here?
 >
+
+Maybe user_mode_exception()? but I'm not sure that's better...
+
+
+> ---
+>  include/hw/core/tcg-cpu-ops.h | 22 ++++++++++++++--------
+>  accel/tcg/cpu-exec.c          |  4 ++--
+>  target/i386/tcg/tcg-cpu.c     |  6 ++++--
+>  3 files changed, 20 insertions(+), 12 deletions(-)
+>
+
 
 Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
-> ---
->  target/i386/cpu.h | 3 +++
->  1 file changed, 3 insertions(+)
+
+> diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-ops.=
+h
+> index eab27d0c030..600f0349659 100644
+> --- a/include/hw/core/tcg-cpu-ops.h
+> +++ b/include/hw/core/tcg-cpu-ops.h
+> @@ -37,14 +37,6 @@ struct TCGCPUOps {
+>      void (*cpu_exec_exit)(CPUState *cpu);
+>      /** @cpu_exec_interrupt: Callback for processing interrupts in
+> cpu_exec */
+>      bool (*cpu_exec_interrupt)(CPUState *cpu, int interrupt_request);
+> -    /**
+> -     * @do_interrupt: Callback for interrupt handling.
+> -     *
+> -     * note that this is in general SOFTMMU only, but it actually isn't
+> -     * because of an x86 hack (accel/tcg/cpu-exec.c), so we cannot put i=
+t
+> -     * in the SOFTMMU section in general.
+> -     */
+> -    void (*do_interrupt)(CPUState *cpu);
+>      /**
+>       * @tlb_fill: Handle a softmmu tlb miss or user-only address fault
+>       *
+> @@ -61,6 +53,20 @@ struct TCGCPUOps {
+>      void (*debug_excp_handler)(CPUState *cpu);
 >
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index 6c50d3ab4f1..c241bc183d2 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -1833,11 +1833,14 @@ void x86_cpu_list(void);
->  int cpu_x86_support_mca_broadcast(CPUX86State *env);
->
->  int cpu_get_pic_interrupt(CPUX86State *s);
-> +
-> +#ifndef CONFIG_USER_ONLY
->  /* MSDOS compatibility mode FPU exception support */
->  void x86_register_ferr_irq(qemu_irq irq);
->  void fpu_check_raise_ferr_irq(CPUX86State *s);
->  void cpu_set_ignne(void);
->  void cpu_clear_ignne(void);
-> +#endif
->
->  /* mpx_helper.c */
->  void cpu_sync_bndcs_hflags(CPUX86State *env);
+>  #ifdef NEED_CPU_H
+> +#if defined(CONFIG_USER_ONLY) && defined(TARGET_I386)
+> +    /**
+> +     * @fake_user_exception: Callback for 'fake exception' handling.
+> +     *
+> +     * Simulate 'fake exception' which will be handled outside the
+> +     * cpu execution loop (hack for x86 user mode).
+> +     */
+> +    void (*fake_user_exception)(CPUState *cpu);
+> +#else
+> +    /**
+> +     * @do_interrupt: Callback for interrupt handling.
+> +     */
+> +    void (*do_interrupt)(CPUState *cpu);
+> +#endif /* !CONFIG_USER_ONLY || !TARGET_I386 */
+>  #ifdef CONFIG_SOFTMMU
+>      /**
+>       * @do_transaction_failed: Callback for handling failed memory
+> transactions
+> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+> index e5c0ccd1a2a..3e387c944c5 100644
+> --- a/accel/tcg/cpu-exec.c
+> +++ b/accel/tcg/cpu-exec.c
+> @@ -651,8 +651,8 @@ static inline bool cpu_handle_exception(CPUState *cpu=
+,
+> int *ret)
+>             loop */
+>  #if defined(TARGET_I386)
+>          CPUClass *cc =3D CPU_GET_CLASS(cpu);
+> -        cc->tcg_ops->do_interrupt(cpu);
+> -#endif
+> +        cc->tcg_ops->fake_user_exception(cpu);
+> +#endif /* TARGET_I386 */
+>          *ret =3D cpu->exception_index;
+>          cpu->exception_index =3D -1;
+>          return true;
+> diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
+> index 93a79a57415..dce800a8953 100644
+> --- a/target/i386/tcg/tcg-cpu.c
+> +++ b/target/i386/tcg/tcg-cpu.c
+> @@ -73,9 +73,11 @@ static const struct TCGCPUOps x86_tcg_ops =3D {
+>      .cpu_exec_enter =3D x86_cpu_exec_enter,
+>      .cpu_exec_exit =3D x86_cpu_exec_exit,
+>      .cpu_exec_interrupt =3D x86_cpu_exec_interrupt,
+> -    .do_interrupt =3D x86_cpu_do_interrupt,
+>      .tlb_fill =3D x86_cpu_tlb_fill,
+> -#ifndef CONFIG_USER_ONLY
+> +#ifdef CONFIG_USER_ONLY
+> +    .fake_user_exception =3D x86_cpu_do_interrupt,
+> +#else
+> +    .do_interrupt =3D x86_cpu_do_interrupt,
+>      .debug_excp_handler =3D breakpoint_handler,
+>      .debug_check_breakpoint =3D x86_debug_check_breakpoint,
+>  #endif /* !CONFIG_USER_ONLY */
 > --
 > 2.31.1
 >
 >
 
---000000000000c214d605cb08c6bf
+--0000000000002839f105cb08d4b4
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -178,41 +254,122 @@ Content-Transfer-Encoding: quoted-printable
 pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
 g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 :0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->Restrict some sysemu-only fpu_helper helpers (see commit<br>
-83a3d9c7402: &quot;i386: separate fpu_helper sysemu-only parts&quot;).<br>
+>do_interrupt() is sysemu specific. However due to some X86<br>
+specific hack, it is also used in user-mode emulation, which<br>
+is why it couldn&#39;t be restricted to CONFIG_SOFTMMU (see the<br>
+comment around added in commit 78271684719: &quot;cpu: tcg_ops:<br>
+move to tcg-cpu-ops.h, keep a pointer in CPUClass&quot;).<br>
+Keep the hack but rename the handler as fake_user_exception()<br>
+and restrict do_interrupt() to sysemu.<br>
 <br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br></blockquote><div><br><=
-/div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com">im=
-p@bsdimp.com</a>&gt;</div><div>=C2=A0</div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/i386/cpu.h | 3 +++<br>
-=C2=A01 file changed, 3 insertions(+)<br>
+RFC: Any better name / idea here?<br></blockquote><div><br></div><div>Maybe=
+ user_mode_exception()? but I&#39;m not sure that&#39;s better...</div><div=
+>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0include/hw/core/tcg-cpu-ops.h | 22 ++++++++++++++--------<br>
+=C2=A0accel/tcg/cpu-exec.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 4 ++--=
 <br>
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h<br>
-index 6c50d3ab4f1..c241bc183d2 100644<br>
---- a/target/i386/cpu.h<br>
-+++ b/target/i386/cpu.h<br>
-@@ -1833,11 +1833,14 @@ void x86_cpu_list(void);<br>
-=C2=A0int cpu_x86_support_mca_broadcast(CPUX86State *env);<br>
+=C2=A0target/i386/tcg/tcg-cpu.c=C2=A0 =C2=A0 =C2=A0|=C2=A0 6 ++++--<br>
+=C2=A03 files changed, 20 insertions(+), 12 deletions(-)<br></blockquote><d=
+iv><br></div><div><br></div><div><div>Reviewed-by: Warner Losh &lt;<a href=
+=3D"mailto:imp@bsdimp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><d=
+iv class=3D"gmail-yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;w=
+idth:22px;margin:2px 0px 0px"><br class=3D"gmail-Apple-interchange-newline"=
+></div></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">
+diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-ops.h<=
+br>
+index eab27d0c030..600f0349659 100644<br>
+--- a/include/hw/core/tcg-cpu-ops.h<br>
++++ b/include/hw/core/tcg-cpu-ops.h<br>
+@@ -37,14 +37,6 @@ struct TCGCPUOps {<br>
+=C2=A0 =C2=A0 =C2=A0void (*cpu_exec_exit)(CPUState *cpu);<br>
+=C2=A0 =C2=A0 =C2=A0/** @cpu_exec_interrupt: Callback for processing interr=
+upts in cpu_exec */<br>
+=C2=A0 =C2=A0 =C2=A0bool (*cpu_exec_interrupt)(CPUState *cpu, int interrupt=
+_request);<br>
+-=C2=A0 =C2=A0 /**<br>
+-=C2=A0 =C2=A0 =C2=A0* @do_interrupt: Callback for interrupt handling.<br>
+-=C2=A0 =C2=A0 =C2=A0*<br>
+-=C2=A0 =C2=A0 =C2=A0* note that this is in general SOFTMMU only, but it ac=
+tually isn&#39;t<br>
+-=C2=A0 =C2=A0 =C2=A0* because of an x86 hack (accel/tcg/cpu-exec.c), so we=
+ cannot put it<br>
+-=C2=A0 =C2=A0 =C2=A0* in the SOFTMMU section in general.<br>
+-=C2=A0 =C2=A0 =C2=A0*/<br>
+-=C2=A0 =C2=A0 void (*do_interrupt)(CPUState *cpu);<br>
+=C2=A0 =C2=A0 =C2=A0/**<br>
+=C2=A0 =C2=A0 =C2=A0 * @tlb_fill: Handle a softmmu tlb miss or user-only ad=
+dress fault<br>
+=C2=A0 =C2=A0 =C2=A0 *<br>
+@@ -61,6 +53,20 @@ struct TCGCPUOps {<br>
+=C2=A0 =C2=A0 =C2=A0void (*debug_excp_handler)(CPUState *cpu);<br>
 <br>
-=C2=A0int cpu_get_pic_interrupt(CPUX86State *s);<br>
-+<br>
-+#ifndef CONFIG_USER_ONLY<br>
-=C2=A0/* MSDOS compatibility mode FPU exception support */<br>
-=C2=A0void x86_register_ferr_irq(qemu_irq irq);<br>
-=C2=A0void fpu_check_raise_ferr_irq(CPUX86State *s);<br>
-=C2=A0void cpu_set_ignne(void);<br>
-=C2=A0void cpu_clear_ignne(void);<br>
-+#endif<br>
+=C2=A0#ifdef NEED_CPU_H<br>
++#if defined(CONFIG_USER_ONLY) &amp;&amp; defined(TARGET_I386)<br>
++=C2=A0 =C2=A0 /**<br>
++=C2=A0 =C2=A0 =C2=A0* @fake_user_exception: Callback for &#39;fake excepti=
+on&#39; handling.<br>
++=C2=A0 =C2=A0 =C2=A0*<br>
++=C2=A0 =C2=A0 =C2=A0* Simulate &#39;fake exception&#39; which will be hand=
+led outside the<br>
++=C2=A0 =C2=A0 =C2=A0* cpu execution loop (hack for x86 user mode).<br>
++=C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 void (*fake_user_exception)(CPUState *cpu);<br>
++#else<br>
++=C2=A0 =C2=A0 /**<br>
++=C2=A0 =C2=A0 =C2=A0* @do_interrupt: Callback for interrupt handling.<br>
++=C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 void (*do_interrupt)(CPUState *cpu);<br>
++#endif /* !CONFIG_USER_ONLY || !TARGET_I386 */<br>
+=C2=A0#ifdef CONFIG_SOFTMMU<br>
+=C2=A0 =C2=A0 =C2=A0/**<br>
+=C2=A0 =C2=A0 =C2=A0 * @do_transaction_failed: Callback for handling failed=
+ memory transactions<br>
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c<br>
+index e5c0ccd1a2a..3e387c944c5 100644<br>
+--- a/accel/tcg/cpu-exec.c<br>
++++ b/accel/tcg/cpu-exec.c<br>
+@@ -651,8 +651,8 @@ static inline bool cpu_handle_exception(CPUState *cpu, =
+int *ret)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 loop */<br>
+=C2=A0#if defined(TARGET_I386)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CPUClass *cc =3D CPU_GET_CLASS(cpu);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 cc-&gt;tcg_ops-&gt;do_interrupt(cpu);<br>
+-#endif<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 cc-&gt;tcg_ops-&gt;fake_user_exception(cpu);<b=
+r>
++#endif /* TARGET_I386 */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*ret =3D cpu-&gt;exception_index;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cpu-&gt;exception_index =3D -1;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return true;<br>
+diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c<br>
+index 93a79a57415..dce800a8953 100644<br>
+--- a/target/i386/tcg/tcg-cpu.c<br>
++++ b/target/i386/tcg/tcg-cpu.c<br>
+@@ -73,9 +73,11 @@ static const struct TCGCPUOps x86_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.cpu_exec_enter =3D x86_cpu_exec_enter,<br>
+=C2=A0 =C2=A0 =C2=A0.cpu_exec_exit =3D x86_cpu_exec_exit,<br>
+=C2=A0 =C2=A0 =C2=A0.cpu_exec_interrupt =3D x86_cpu_exec_interrupt,<br>
+-=C2=A0 =C2=A0 .do_interrupt =3D x86_cpu_do_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D x86_cpu_tlb_fill,<br>
+-#ifndef CONFIG_USER_ONLY<br>
++#ifdef CONFIG_USER_ONLY<br>
++=C2=A0 =C2=A0 .fake_user_exception =3D x86_cpu_do_interrupt,<br>
++#else<br>
++=C2=A0 =C2=A0 .do_interrupt =3D x86_cpu_do_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.debug_excp_handler =3D breakpoint_handler,<br>
+=C2=A0 =C2=A0 =C2=A0.debug_check_breakpoint =3D x86_debug_check_breakpoint,=
 <br>
-=C2=A0/* mpx_helper.c */<br>
-=C2=A0void cpu_sync_bndcs_hflags(CPUX86State *env);<br>
+=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---000000000000c214d605cb08c6bf--
+--0000000000002839f105cb08d4b4--

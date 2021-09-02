@@ -1,176 +1,200 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp395408lfb;
-        Thu, 2 Sep 2021 08:52:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxgxLVMxpGji9TnKEYc6B6HiFcNGDN46czRobTuHWPFmA+8Zpt7Kp1EJAtQPY79wc9PiQBu
-X-Received: by 2002:a9f:2661:: with SMTP id 88mr2498282uag.62.1630597938750;
-        Thu, 02 Sep 2021 08:52:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630597938; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp395538lfb;
+        Thu, 2 Sep 2021 08:52:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/pUq83yCDNpJ1MVX0FMQmx99OUzOzMKnUgAYV2lddpByk3UYCM0oxvXjLKb39YlRsDRvv
+X-Received: by 2002:ab0:8c:: with SMTP id 12mr2353666uaj.112.1630597949163;
+        Thu, 02 Sep 2021 08:52:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630597949; cv=none;
         d=google.com; s=arc-20160816;
-        b=MjSiTWUFLpIfAKFgiq/qBIVyVlylG58Njaq3LY24sVDX3Fzy+6wc5j0i0Gtb/40vvH
-         ziSM+4xhcINnHVKE3v43WaNQSt9GsldUC2lII/mmG2L8pl7o+h5TVVVmI+G9z03d753g
-         8VilmBv663XblEP3lyhRNmgO7xfEAIXkQX8v9o8qKKDUcEY/8GBIlSxG5ng2QdZkyTES
-         Hz5/qBKaz/DZuOOydHk5VOjvbN1scEv0n/lNq1uMss8U+fV6eAkYcJxzbePkQYznqIYm
-         o4LMJWBNWTKmyheR6wsFvempdrEW5OiKI0zjPblY6oTdwlF9xj3Phhl8DXZI2wjeZb2r
-         OlWA==
+        b=TVZPjZaMlId09LS8Rl96LSxitq3sp6DgzYmjr5nX9C7i7Jctb1N1W3l4KUtQm162BC
+         DtII/fDEZTWJe0vpAaV9bI1QU39CMY0ZMnjT5Gclct81yaxLsGiPVLkuGQMiT7l0d7TL
+         2Nqob3ukj3Xsq+fomMZLw63jlfM3kkz/emfvYh5rIPF9KZh0z98mp8RKQBhZrnnd8Dp6
+         BzIXmW5TsFrt8Naych9Xi3qpjLDaiYkLtEJbQI5Z0t6CwrSA37gCe3Pp/lYX/7n+Ls9n
+         gaFu/wUzbHmtE4nU0ezm3v4+a8JcetA8hkbJla970McNGCA4eDm+ZTV9K2/FfkPUkmYq
+         mkzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=zzmyjxl2fURor1msLQ2OsJ9gkwOPAMYczafXgfPcr+E=;
-        b=x/+4tXLRmTQe6YlkSNaEnvkf0HV5WTKVDsig3bve38wFmSSSOUhNNR2c1diCO0yG7L
-         qe6XCecYNjyoFSCkyEjmfolCUKbt2LwCHSZmc4BeRTTe4CgseT7enwVTB0+clFTbuLoV
-         KqUTM3WyGdN8lOqIYkUMCg8VPSrQF3w7fT40Vuy8Oelg643sDR+RgjFNORaebBqBAOAa
-         qZpjMQf67bgzFi+AsvOJ97b6EsC5teCCWbkACbAL2ivg9P36lWaFPEowx5JoNtrofvvT
-         L/k5PsntjzCJvMVmqK2i+U/H4JxzX+GpNIaiqwwcMxB8fr2wKLogYH9I+pll587acTIb
-         5DAw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=vwS6/PSiFfORBC8iBDJIdxzHLNrE+ZV4b02jLjMiM6Q=;
+        b=e+dNbqk4TGre6bLvFKKyMmu0TDd73042x8uMOV8VQqRShkIZFHQFF/H9Aa4nO2MBgR
+         tpM8uxBzNybu2ODrvRAlXyN6AiyRLAFw4QqiOpq8lcwZWxKzUono0WZY12NqAiMdkwM8
+         9Z8jaiMjNKLZixFUVrU6i2FhimdE/t+f+x7K2o8Yg+S01AEGnziroSgp6KRmN+vzN8vj
+         qxUYAEOEZFiD6OyyAFcdDLOzOZtlGq3a6SPh8wMwQxfr8rNdKNu/v83GXRzNz5cKcUMi
+         aziwjMwA2Sm4tgg3K98gpuqp97l587+Y1lA64y3ewkpyxnDiq21YA13mhozUniaNZzQO
+         +ETg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pm8DcQ4G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qWE4fzBg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h140si920322vkh.21.2021.09.02.08.52.18
+        by mx.google.com with ESMTPS id n8si881347vkn.58.2021.09.02.08.52.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:52:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 08:52:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pm8DcQ4G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56376 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=qWE4fzBg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLp0j-0004Lb-WF
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:52:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55816)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLp0s-0003ts-Qs
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:52:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLp0D-0004JN-6D
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:51:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:32306)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLp0B-00050J-MS
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:51:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630597903;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zzmyjxl2fURor1msLQ2OsJ9gkwOPAMYczafXgfPcr+E=;
- b=Pm8DcQ4GycCvI5VQLmaGZYB+BGuy+Dr5L9svY5mmiHxTKEBil10L9SafmsesXlog/YgLsD
- Uz+/mifNIqHeXXKaABANk7sE7n9FZVqWQxuVxDCZzMQenZZAH8Pkg4BL2xlr2zDFTrXZCc
- 5aUI+dPz46Vee9zYejnMplpVOImRVxQ=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-601-3QmpLbulNYK1aTZ8bDR_NQ-1; Thu, 02 Sep 2021 11:51:42 -0400
-X-MC-Unique: 3QmpLbulNYK1aTZ8bDR_NQ-1
-Received: by mail-wr1-f69.google.com with SMTP id
- t15-20020a5d42cf000000b001565f9c9ee8so699483wrr.2
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 08:51:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mLoVG-0006A3-Gj; Thu, 02 Sep 2021 11:19:46 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:43593)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mLoV1-0003Tr-Lc; Thu, 02 Sep 2021 11:19:46 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ o39-20020a05600c512700b002e74638b567so1631503wms.2; 
+ Thu, 02 Sep 2021 08:19:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=vwS6/PSiFfORBC8iBDJIdxzHLNrE+ZV4b02jLjMiM6Q=;
+ b=qWE4fzBgWDNeyBRMwXb2DFthONkFk5E98iEerGQs32XoE/SqlksBPajM5cV7HOgMxK
+ /NJCUFuN5ALKhHyRuHL8lpCNVVSvS3H9YyrX2yuGMR0DfbVjw0LqZpIUv1dp3hO1LrIF
+ Z5G+E5Pk7bMWNGICP03wAO9geV0KChMLUM3cDgRUcREcnvPQdK+loUhQlw16a9Eo9TkN
+ /PtMIxiU41A6GWGKR2Isz1nfV2i6+XcXLrv7JZ+PCyjVoCQrYWr/nKjfHzDpGq+hwzRa
+ tiZk0rD8lQwu+cIYJTtB50sdK6m3IKWxrqxE0s8zkqBN6Q1CPR4nJawxAa5awG7ENeu6
+ ZJ+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zzmyjxl2fURor1msLQ2OsJ9gkwOPAMYczafXgfPcr+E=;
- b=uJzwREWHQz+jTeRZBTYYPERZeTu9wEU5Fq7Vvdxib1D3/fsQN42t7mUDqod5nL/9gk
- kMyv2zi4haNGSeZiugyUR15MxHWJarKXLFV47/NK75SQeTVMD5IkyMopWLbaRZFngq6G
- vmsvqeIRqKgxliq6YmaYN64aPmWmoWQiTbA6s76hSdQAB9s5pbtnunjpgmrofNyM3Rbo
- z6m/uGAufvTnla5z7pQ9MjmNyJihceezGlHdd/SZ8Tmk1snL+sPUOJ75VL5QL3n0/SMv
- 2af2kiJLmIDMMjw6spZ1V81pkNzPUBY3nQ3KOvy/1ks/0RLvyO+jAo401lVZdxvSyNcg
- F3rw==
-X-Gm-Message-State: AOAM533zDeTBtR2AsqEKPoQxi+TL7P4ajgqdLflencXYOOw6jOs7q5FA
- QXPouCvvEnjKyjAjtkiTqJc+VjWI0oF7yZfLpc5WN+uVfwUPqjc+Mh0vOS4eW6wzct7+FV1Rfte
- UXmAX3EvpjfEl
-X-Received: by 2002:adf:d4ce:: with SMTP id w14mr4583287wrk.407.1630597901107; 
- Thu, 02 Sep 2021 08:51:41 -0700 (PDT)
-X-Received: by 2002:adf:d4ce:: with SMTP id w14mr4583265wrk.407.1630597900913; 
- Thu, 02 Sep 2021 08:51:40 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id e2sm2068791wra.40.2021.09.02.08.51.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Sep 2021 08:51:40 -0700 (PDT)
-Subject: Re: [PATCH v2 30/35] acpi: arm/virt: build_spcr: fix invalid cast
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <20210708154617.1538485-1-imammedo@redhat.com>
- <20210708154617.1538485-31-imammedo@redhat.com>
-From: Eric Auger <eauger@redhat.com>
-Message-ID: <bc3aedd6-854a-41fc-1072-7c87dc0084f7@redhat.com>
-Date: Thu, 2 Sep 2021 17:51:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=vwS6/PSiFfORBC8iBDJIdxzHLNrE+ZV4b02jLjMiM6Q=;
+ b=TyJGthrkllFC13xx4HrMLLzzueEC3hJWeZBgF/zFgQ2Geb6LMycqRWQRyQd9VSqzuN
+ i+1IKFyHqVTZ/8JPGymHExA4n1wtXaHLorv0c8d/3ThZacezaoP6i3yyR1MaRLW4eQWo
+ US2/vR/lZtRWHKSEFdV5nPd/pdMwPebnmIJnhSCpbGFh62rqK+xEmJX6bFHMl6XxfFGA
+ 611oEy5vsHV+zOoGSxK9OlVgc6of8UxAs5aC7Qy2wIEsjtYzrMFooqTlhTHciyd7lC93
+ s+yxOyCVaLDR9T0QQz2jbm/aBDcebAYgBb+Pw2zWpqxPVSaVFPVjMy/YbvsWSY5RqG+W
+ 7xcg==
+X-Gm-Message-State: AOAM532d91U0xJO6u1NVY3pLyV6l5QeivfwFys8xsrRK+C3OdvAo1F0k
+ Cazz6zs8U3nGd54Ku+MrUESp40Ami4Q=
+X-Received: by 2002:a05:600c:3795:: with SMTP id
+ o21mr3720284wmr.130.1630595967457; 
+ Thu, 02 Sep 2021 08:19:27 -0700 (PDT)
+Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id
+ o18sm2589844wrg.23.2021.09.02.08.19.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Sep 2021 08:19:26 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 24/24] user: Remove cpu_get_pic_interrupt() stubs
+Date: Thu,  2 Sep 2021 17:17:15 +0200
+Message-Id: <20210902151715.383678-25-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
+References: <20210902151715.383678-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210708154617.1538485-31-imammedo@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.39,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.225, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
- mst@redhat.com, shannon.zhaosl@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9nm6Py+Dm7LL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Warner Losh <imp@bsdimp.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r/Y8ZSRXdBtb
 
+cpu_get_pic_interrupt() is now unreachable from user-mode,
+delete the unnecessary stubs.
 
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/i386/cpu.h | 2 +-
+ bsd-user/main.c   | 7 -------
+ linux-user/main.c | 7 -------
+ 3 files changed, 1 insertion(+), 15 deletions(-)
 
-On 7/8/21 5:46 PM, Igor Mammedov wrote:
-> implicit cast to structure uint8_t member didn't raise error when
-> assigning value from incorrect enum, but when using build_append_gas()
-> (next patch) it will error out with (clang):
->   implicit conversion from enumeration type 'AmlRegionSpace'
->   to different enumeration type 'AmlAddressSpace'
-> fix cast error by using correct AML_AS_SYSTEM_MEMORY enum
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-> ---
-> CC: drjones@redhat.com
-> CC: peter.maydell@linaro.org
-> CC: shannon.zhaosl@gmail.com
-> CC: qemu-arm@nongnu.org
-> ---
->  hw/arm/virt-acpi-build.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index b88ea4b70a..a07540affb 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -361,7 +361,7 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  
->      spcr->interface_type = 0x3;    /* ARM PL011 UART */
->  
-> -    spcr->base_address.space_id = AML_SYSTEM_MEMORY;
-> +    spcr->base_address.space_id = AML_AS_SYSTEM_MEMORY;
->      spcr->base_address.bit_width = 8;
->      spcr->base_address.bit_offset = 0;
->      spcr->base_address.access_width = 1;
-> 
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index c241bc183d2..c7cc65e92d5 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -1832,9 +1832,9 @@ int x86_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ void x86_cpu_list(void);
+ int cpu_x86_support_mca_broadcast(CPUX86State *env);
+ 
++#ifndef CONFIG_USER_ONLY
+ int cpu_get_pic_interrupt(CPUX86State *s);
+ 
+-#ifndef CONFIG_USER_ONLY
+ /* MSDOS compatibility mode FPU exception support */
+ void x86_register_ferr_irq(qemu_irq irq);
+ void fpu_check_raise_ferr_irq(CPUX86State *s);
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index fe66204b6b7..e358c38c353 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -66,13 +66,6 @@ void gemu_log(const char *fmt, ...)
+     va_end(ap);
+ }
+ 
+-#if defined(TARGET_I386)
+-int cpu_get_pic_interrupt(CPUX86State *env)
+-{
+-    return -1;
+-}
+-#endif
+-
+ void fork_start(void)
+ {
+ }
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 37ed50d98e2..f5c0a82427b 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -120,13 +120,6 @@ const char *qemu_uname_release;
+    by remapping the process stack directly at the right place */
+ unsigned long guest_stack_size = 8 * 1024 * 1024UL;
+ 
+-#if defined(TARGET_I386)
+-int cpu_get_pic_interrupt(CPUX86State *env)
+-{
+-    return -1;
+-}
+-#endif
+-
+ /***********************************************************/
+ /* Helper routines for implementing atomic operations.  */
+ 
+-- 
+2.31.1
 

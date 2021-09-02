@@ -1,237 +1,176 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp392123lfb;
-        Thu, 2 Sep 2021 08:48:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzAKbYQKpEhjyElIoK+NcPTQe1VSJxQ4ef2LmOixGjVzhmFNC+V3eK2DLcx5m5+Sd8Gchrl
-X-Received: by 2002:a05:6102:11e3:: with SMTP id e3mr2846928vsg.49.1630597705801;
-        Thu, 02 Sep 2021 08:48:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630597705; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp395408lfb;
+        Thu, 2 Sep 2021 08:52:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxgxLVMxpGji9TnKEYc6B6HiFcNGDN46czRobTuHWPFmA+8Zpt7Kp1EJAtQPY79wc9PiQBu
+X-Received: by 2002:a9f:2661:: with SMTP id 88mr2498282uag.62.1630597938750;
+        Thu, 02 Sep 2021 08:52:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630597938; cv=none;
         d=google.com; s=arc-20160816;
-        b=JCnufM4CBB0hcy5h5C29/uOO+HE56wkgaHdCSj6dlWNcb57Xj2ZfYFkoQTCfcQb93d
-         v+tvFskxVfy4zFh4JNFBDJiMyoMMHdIuBOI9MM+8B5zRCpminWGrHvucxhlAsA+S8PYy
-         YtcFEYdXvxALTC6oxkLqKzgT2ovUKAvYnTtAoQkntEkfzc0hUAcUQbmvm3wX25qeMNK0
-         mrYJdiHBtanjbh6zNEQcY2yhBT3qF5vaNFqKbw4/MIaS2bFpz0wK3HMUGUEkXQMXV6iz
-         LnN0V6jC46aLRue3jFb3AoRYwEn3mlpDvUdtFSIjdOG+bToa7ti7jBO2mIkq0hG5h3r0
-         LFgQ==
+        b=MjSiTWUFLpIfAKFgiq/qBIVyVlylG58Njaq3LY24sVDX3Fzy+6wc5j0i0Gtb/40vvH
+         ziSM+4xhcINnHVKE3v43WaNQSt9GsldUC2lII/mmG2L8pl7o+h5TVVVmI+G9z03d753g
+         8VilmBv663XblEP3lyhRNmgO7xfEAIXkQX8v9o8qKKDUcEY/8GBIlSxG5ng2QdZkyTES
+         Hz5/qBKaz/DZuOOydHk5VOjvbN1scEv0n/lNq1uMss8U+fV6eAkYcJxzbePkQYznqIYm
+         o4LMJWBNWTKmyheR6wsFvempdrEW5OiKI0zjPblY6oTdwlF9xj3Phhl8DXZI2wjeZb2r
+         OlWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature:dkim-signature;
-        bh=gmI7uD1T5cln+C3tDRgJCFvkKa7ccLDZSlf0cbMI3qE=;
-        b=G6cXZDXFe6wA9j2OJtej0YGl/8vgWqlveFte0uS6FQh3A0duaTU4rjc/eA+/fEUuX3
-         yviJVl1B5LLPFkqvqSrkR7QNDaBOtR2ecdI8ssn0vGHelweaT7dWUpAdUF1h9smRABIG
-         7HGeHRaI/d3pvxYRThx0sjj7vULgp0iGVeNmMtt3a6hfovfRHY5izh1/W/J5NZ01Y4uM
-         EmUkLShMVhXno1gQgfYoCyoFXLkoWfYWTMYERrZSMux5cpp2GRBCcGLr+eo+HjK9cdSu
-         3aitcKzHPkZe6c+gfIe7tP61X5EW4ZeAApO3Tp5zgnTXxhx+ynV4+0/QZkC/rngSM5+p
-         uNXw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=zzmyjxl2fURor1msLQ2OsJ9gkwOPAMYczafXgfPcr+E=;
+        b=x/+4tXLRmTQe6YlkSNaEnvkf0HV5WTKVDsig3bve38wFmSSSOUhNNR2c1diCO0yG7L
+         qe6XCecYNjyoFSCkyEjmfolCUKbt2LwCHSZmc4BeRTTe4CgseT7enwVTB0+clFTbuLoV
+         KqUTM3WyGdN8lOqIYkUMCg8VPSrQF3w7fT40Vuy8Oelg643sDR+RgjFNORaebBqBAOAa
+         qZpjMQf67bgzFi+AsvOJ97b6EsC5teCCWbkACbAL2ivg9P36lWaFPEowx5JoNtrofvvT
+         L/k5PsntjzCJvMVmqK2i+U/H4JxzX+GpNIaiqwwcMxB8fr2wKLogYH9I+pll587acTIb
+         5DAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm2 header.b=TmfakpHb;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=fMBgwdpU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pm8DcQ4G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c129si795156vsc.354.2021.09.02.08.48.25
+        by mx.google.com with ESMTPS id h140si920322vkh.21.2021.09.02.08.52.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:48:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 08:52:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm2 header.b=TmfakpHb;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=fMBgwdpU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46638 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pm8DcQ4G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLowz-0006Ca-1n
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:48:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54450)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLp0j-0004Lb-WF
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:52:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1mLova-00043P-1k; Thu, 02 Sep 2021 11:46:58 -0400
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:55425)
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLp0D-0004JN-6D
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:51:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:32306)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1mLovV-0000iL-3X; Thu, 02 Sep 2021 11:46:57 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.west.internal (Postfix) with ESMTP id 2144D320090E;
- Thu,  2 Sep 2021 11:46:49 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Thu, 02 Sep 2021 11:46:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=gmI7uD1T5cln+C3tDRgJCFvkKa7
- ccLDZSlf0cbMI3qE=; b=TmfakpHbtIn5UlczoIj7A7J+Mje3VfMjVEzE1AkAx6P
- Ucn4+NZ/Qd74yNWbQ2ghpEQOiGjAb3jvfXRgZOwhqFecWFI357fFY+k1i+/giaqg
- zGkNY/3EOjkLH9a9naeluPmFENlKOL/Y1ePhs6ilO/edDYhkuA1E6w6vQbo7hUPV
- 2Ae66gXsPos2r99skMkretU4nX79tDiiDUYRMJty0+lfrPzEwkJCh3zQPdZXKo/7
- RcJu8OXSJhbR7DA9ia9omvjCFTT5+AFGf/d/ddN4V7LlVI69M8GSCyC5VAwzJQ0g
- YRTZQ12caMDn7tKdusIYLFe4YvAIIDM/kCaGSZT5C2A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=gmI7uD
- 1T5cln+C3tDRgJCFvkKa7ccLDZSlf0cbMI3qE=; b=fMBgwdpUcwxzmgVKz2WFUS
- JiKihVQ57cONTB30pPwLzLQe1VjtP9Hvo34EYeqqmUxmMf6ap4zhQ3Zrj0MvBtqz
- 2LYp/n5ImfnRHkTbXgZOmzHf5Ty7Fv4WzDx7iowx3dvU4WquUYl23hlh4dGIobIh
- LY+49eDm4J6VCpLNCL6TneOkmhn1EDpnCByvqPLoVBqkJqFASEJF5i/oWYrVqqqD
- kSwS8kjfZfcj6SN7RPCKJXU8ORjNVNG0sHOj5K9xFxlPlrxC6W39BWmL3SwGQxX4
- RZn5dcTgPziGCfxfDjSX9u/HPU3OgjVEcx5RYCJLgpI5/yVjAzgTZECumpY4+Hkw
- ==
-X-ME-Sender: <xms:5_EwYZCoC2VGTAt8TMgAkzKdGqxMoIZau-vI6Ij0_ogT6zq7ophmRw>
- <xme:5_EwYXhBHgwEKecC8zDkIh3_EhnWEiJuPDgihtJGj4IKNnh_i3gEJQTxvnbL3RH0G
- 1mvLRp8Ee7Kfd4KRr8>
-X-ME-Received: <xmr:5_EwYUkItLk_PZbW5diOZQebb2a3ItUDs4APeBw1keEgwhjmPTzW8eXOCrop-LGP2wIIbRSRy6-WDWwnxIkwBUIpNJ-7iC1Zki4>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddruddvhedgleefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- gfrhhlucfvnfffucdlvdefmdenucfjughrpeffhffvuffkfhggtggujgesghdtreertddt
- jeenucfhrhhomheprfgrthhrihgtkhcuhghilhhlihgrmhhsuceophgrthhrihgtkhessh
- htfigtgidrgiihiieqnecuggftrfgrthhtvghrnhepkedvheduveekhfeuvdettefhfeel
- hfdvheeigfdugedvgffgteffveektedugedunecuffhomhgrihhnpehgihhthhhusgdrtg
- homhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehp
- rghtrhhitghksehsthiftgigrdighiii
-X-ME-Proxy: <xmx:5_EwYTyJSAdZUFE25l0GbL47xUyUIJGufyhDb93Alafa2UXVU0SYvg>
- <xmx:5_EwYeQawgy2H3t3x7hgkY9YTHuHTxFAs5vF_NrhWOxM4Cxgc2syhQ>
- <xmx:5_EwYWbn5NXZsVDKYL7NfRDwi7jxH3BjA3wYeWpKLrsWMraw7O7Fmg>
- <xmx:6PEwYdFR9MuUCvjD9WcetMpI-6zLGP_Jo9H7UrxAHsRkXUsD_NwThg>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 2 Sep 2021 11:46:47 -0400 (EDT)
-Date: Thu, 2 Sep 2021 10:46:45 -0500
-From: Patrick Williams <patrick@stwcx.xyz>
-To: Peter Delevoryas <pdel@fb.com>
-Subject: Re: [PATCH 0/1] hw/arm/aspeed: Add Fuji machine type
-Message-ID: <YTDx5fyuHmylObg8@heinlein>
-References: <20210901225946.500125-1-pdel@fb.com>
- <60994ebb-d345-cc40-020e-2c14ed438097@kaod.org>
- <0B35613A-4001-4E31-A522-ECF827CF1F8E@fb.com>
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLp0B-00050J-MS
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:51:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630597903;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zzmyjxl2fURor1msLQ2OsJ9gkwOPAMYczafXgfPcr+E=;
+ b=Pm8DcQ4GycCvI5VQLmaGZYB+BGuy+Dr5L9svY5mmiHxTKEBil10L9SafmsesXlog/YgLsD
+ Uz+/mifNIqHeXXKaABANk7sE7n9FZVqWQxuVxDCZzMQenZZAH8Pkg4BL2xlr2zDFTrXZCc
+ 5aUI+dPz46Vee9zYejnMplpVOImRVxQ=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-601-3QmpLbulNYK1aTZ8bDR_NQ-1; Thu, 02 Sep 2021 11:51:42 -0400
+X-MC-Unique: 3QmpLbulNYK1aTZ8bDR_NQ-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ t15-20020a5d42cf000000b001565f9c9ee8so699483wrr.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 08:51:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zzmyjxl2fURor1msLQ2OsJ9gkwOPAMYczafXgfPcr+E=;
+ b=uJzwREWHQz+jTeRZBTYYPERZeTu9wEU5Fq7Vvdxib1D3/fsQN42t7mUDqod5nL/9gk
+ kMyv2zi4haNGSeZiugyUR15MxHWJarKXLFV47/NK75SQeTVMD5IkyMopWLbaRZFngq6G
+ vmsvqeIRqKgxliq6YmaYN64aPmWmoWQiTbA6s76hSdQAB9s5pbtnunjpgmrofNyM3Rbo
+ z6m/uGAufvTnla5z7pQ9MjmNyJihceezGlHdd/SZ8Tmk1snL+sPUOJ75VL5QL3n0/SMv
+ 2af2kiJLmIDMMjw6spZ1V81pkNzPUBY3nQ3KOvy/1ks/0RLvyO+jAo401lVZdxvSyNcg
+ F3rw==
+X-Gm-Message-State: AOAM533zDeTBtR2AsqEKPoQxi+TL7P4ajgqdLflencXYOOw6jOs7q5FA
+ QXPouCvvEnjKyjAjtkiTqJc+VjWI0oF7yZfLpc5WN+uVfwUPqjc+Mh0vOS4eW6wzct7+FV1Rfte
+ UXmAX3EvpjfEl
+X-Received: by 2002:adf:d4ce:: with SMTP id w14mr4583287wrk.407.1630597901107; 
+ Thu, 02 Sep 2021 08:51:41 -0700 (PDT)
+X-Received: by 2002:adf:d4ce:: with SMTP id w14mr4583265wrk.407.1630597900913; 
+ Thu, 02 Sep 2021 08:51:40 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id e2sm2068791wra.40.2021.09.02.08.51.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Sep 2021 08:51:40 -0700 (PDT)
+Subject: Re: [PATCH v2 30/35] acpi: arm/virt: build_spcr: fix invalid cast
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <20210708154617.1538485-1-imammedo@redhat.com>
+ <20210708154617.1538485-31-imammedo@redhat.com>
+From: Eric Auger <eauger@redhat.com>
+Message-ID: <bc3aedd6-854a-41fc-1072-7c87dc0084f7@redhat.com>
+Date: Thu, 2 Sep 2021 17:51:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="UKoYqOT1BrAKQ9oq"
-Content-Disposition: inline
-In-Reply-To: <0B35613A-4001-4E31-A522-ECF827CF1F8E@fb.com>
-Received-SPF: pass client-ip=64.147.123.24; envelope-from=patrick@stwcx.xyz;
- helo=wout1-smtp.messagingengine.com
-X-Spam_score_int: -2
-X-Spam_score: -0.3
-X-Spam_bar: /
-X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_SUSPICIOUS_NTLD=0.499, PDS_OTHER_BAD_TLD=2, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210708154617.1538485-31-imammedo@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.39,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.225, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "andrew@aj.id.au" <andrew@aj.id.au>,
- Cameron Esfahani via <qemu-devel@nongnu.org>,
- "f4bug@amsat.org" <f4bug@amsat.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yhVMYYxHelKk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
+ mst@redhat.com, shannon.zhaosl@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9nm6Py+Dm7LL
 
 
---UKoYqOT1BrAKQ9oq
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 02, 2021 at 03:12:12PM +0000, Peter Delevoryas wrote:
->=20
-> > On Sep 2, 2021, at 1:12 AM, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On 7/8/21 5:46 PM, Igor Mammedov wrote:
+> implicit cast to structure uint8_t member didn't raise error when
+> assigning value from incorrect enum, but when using build_append_gas()
+> (next patch) it will error out with (clang):
+>   implicit conversion from enumeration type 'AmlRegionSpace'
+>   to different enumeration type 'AmlAddressSpace'
+> fix cast error by using correct AML_AS_SYSTEM_MEMORY enum
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-> > Are we sure the flash models fit what the machine expects ?
->=20
-> Oh, I see, I=E2=80=99m not exactly sure which device is being used
-> but it should be one using the m25p80 command set, and after
-> switching to one of those devices (e.g. mx66l1g45g) it works:
->=20
-> [   54.867027] Creating 6 MTD partitions on "spi0.0":
-> [   54.867506] 0x000000000000-0x0000000e0000 : "u-boot"
-> [   54.873929] 0x0000000e0000-0x0000000f0000 : "env"
-> [   54.876546] 0x0000000f0000-0x000000100000 : "meta"
-> [   54.878948] 0x000000100000-0x000007800000 : "fit"
-> [   54.881290] 0x000007800000-0x000008000000 : "data0"
-> [   54.883965] 0x000000000000-0x000008000000 : "flash0"
+> ---
+> CC: drjones@redhat.com
+> CC: peter.maydell@linaro.org
+> CC: shannon.zhaosl@gmail.com
+> CC: qemu-arm@nongnu.org
+> ---
+>  hw/arm/virt-acpi-build.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index b88ea4b70a..a07540affb 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -361,7 +361,7 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  
+>      spcr->interface_type = 0x3;    /* ARM PL011 UART */
+>  
+> -    spcr->base_address.space_id = AML_SYSTEM_MEMORY;
+> +    spcr->base_address.space_id = AML_AS_SYSTEM_MEMORY;
+>      spcr->base_address.bit_width = 8;
+>      spcr->base_address.bit_offset = 0;
+>      spcr->base_address.access_width = 1;
+> 
 
-It appears that machine uses the 128MB flash layout dtsi file:
-    https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/faceboo=
-k-bmc-flash-layout-128.dtsi
-
-I think that means it would be safe to use the same mx66l1g45g that Sonorap=
-ass
-is using in the Fuji config.  Likely we're either using that exact chip or
-something 100% compatible with it.
-
-> >=20
-> >  [   41.314338] 6 fixed-partitions partitions found on MTD device spi0.0
-> >  [   41.314600] Creating 6 MTD partitions on "spi0.0":
-> >  [   41.314957] 0x000000000000-0x0000000e0000 : "u-boot"
-> >  [   41.318355] 0x0000000e0000-0x0000000f0000 : "env"
-> >  [   41.319747] 0x0000000f0000-0x000000100000 : "meta"
-> >  [   41.321064] 0x000000100000-0x000007800000 : "fit"
-> >  [   41.321247] mtd: partition "fit" extends beyond the end of device "=
-spi0.0" -- size truncated to 0x3f00000
-> >  [   41.322684] 0x000007800000-0x000008000000 : "data0"
-> >  [   41.322827] mtd: partition "data0" is out of reach -- disabled
-> >  [   41.324110] 0x000000000000-0x000008000000 : "flash0"
-> >  [   41.324253] mtd: partition "flash0" extends beyond the end of devic=
-e "spi0.0" -- size truncated to 0x4000000
-> >=20
-> > More info in the log below.
-> >=20
-> >=20
-> > Could we also define the list of expected I2C devices of the machine ?=
-=20
->=20
-> Yeah sure! I=E2=80=99ll follow up with that.
->=20
-
-The fuji DTS is available upstream:
-    https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/aspeed-=
-bmc-facebook-fuji.dts
-
-I found that when I did Sonora Pass there were a number of unsupported i2c
-devices (ie. devices without QEMU models) but most of them were behind muxe=
-s,
-which are similarly non-supported.  You'll see a pretty large fan-out in th=
-e i2c
-busses of that DTS.  I don't see anything obvious in the DTS that is direct=
-ly
-connected except for the muxes.
-
---=20
-Patrick Williams
-
---UKoYqOT1BrAKQ9oq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEBGD9ii4LE9cNbqJBqwNHzC0AwRkFAmEw8eMACgkQqwNHzC0A
-wRl/KA/+JREIsgImsxxpk3SFGIqb+8bYrGjrUvfvFXhA7u7lbjy/6dN6L3ZxgVzh
-ogC6GZzAiVlsNX+Ogg1knlHBBP3v7gKoH1R3sOldIKtJ3VvX1o4nswMCe/y0YVss
-OVbajSS4UfivguiKl/Zey9Yhgqr9vHr34BgevHavjuhjGcIXR77pbCUTIvjG+du+
-+rxNa3xFFAZ7aKIKHRAcIdRXv+j9oifAVKR+zU98FiDSQ95wibH0EfgI21GkBiW0
-06RValgiHL2WWBIdOF7LI5q77gTeDT9bcCJgUmH2GhEjx/Qcid5t2ygGeyvxZTDx
-IBBI0Pfsz2HCmVFYm9X4xBMevepcfmG8I/4/6OR4DDtbroeWHq9Edtr7A7oqb/dj
-nB3V+xT3p2z4075uUziBtqVQPWOpYzbGFX/dwUu0hYqnIi0xnFhaFJH6X7BZN/CW
-hy9fCWmSc8ybj0z2ZKjSsJm3NzwmhPIrHiV6Njys88hNfAg6byT344ukyEw+ohSv
-OqLVkjj1mg7RG2xZVyIMPjVkNUi9XWeRrP0UmxVSYJx2ZVDN4ty8grsP/QfpszeI
-RGybZ6M34SdFdNcrGsqhRVWi0C1G0eOzk1YedOfyahpOL5S3Mawg0EUtgT91dO7O
-iI3/gIFhndxvFLnLro8QID26G+pWAGLuLUH0yvuWsIfy6p9bYdc=
-=OOAy
------END PGP SIGNATURE-----
-
---UKoYqOT1BrAKQ9oq--

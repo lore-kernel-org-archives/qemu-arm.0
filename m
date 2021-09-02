@@ -1,119 +1,103 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp948770lfb;
-        Wed, 1 Sep 2021 16:00:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzso5EocwxyUb6IWyicotdOTYj5KLpOfnu8bkroE+JoNl70DYqo1WPlID25fFNwg7TwQKp2
-X-Received: by 2002:a92:c60b:: with SMTP id p11mr84520ilm.65.1630537230209;
-        Wed, 01 Sep 2021 16:00:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630537230; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1082525lfb;
+        Wed, 1 Sep 2021 19:31:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz822jdIlvbxIha7Bdmm22nlfoqdztFMtQQu8LJS2pTE3jyip3jNr84KwSye36sA4hRxSpU
+X-Received: by 2002:a05:622a:1:: with SMTP id x1mr918416qtw.198.1630549900112;
+        Wed, 01 Sep 2021 19:31:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630549900; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mv2kla8NyW7EPEnNjMTM2zX2i9NLJD5lJ9DPxWpVRUkJ/qD0Jsa4w9VSF03WF6Ch9w
-         PtibGwfsUSI/g4x1RYsEIeqJWupKh6lkqy+3BZ3ZauW7VUcmp8IJTFVcS9mQjG961+EG
-         plsckW2cxLru+YtTgoFCIHMqYT4PPWdWuYkCm41cl8MwWNjgUWMAO0/RWTOs8nhMhu0T
-         Ebgil8vgLLiBtw8YNLy3IIbNokkM8JNl2pV5/E9kcHYsI7YYOtpCKGwOO0P4qX4DDcht
-         Byd63OE9fKEM2sdPcqHfTqi1ZeihynrNde43ZwH8CtbYYSaV5pPEoI5pIlU2BVlSCBri
-         QZxA==
+        b=vC7pCxo9NFmZOHKZyb3nld9Uz5n4yv3nvDRLfjAdEj9/CmCK0cQau6QTBmzVBjNS+V
+         eRrITSiGJVPbmrht7k+engsEKgDn4a3Zq2Qs4eeiUzmtvwZpHGeWi7eG9hqSJyLbdZ+c
+         fjlHX55BcPmiveAC/ts/gt/TIVbphOj8H7lfkEqsGp7TwkMBPu/RfC3ya3bJ7hxGjAXa
+         EPj98jL8pQtGjeEJIxi8mKXa1t5HpVZimXV9MnCG9jEkK5FHT+lrYQ3y88ZOfjg5d9m3
+         7CznxDoOOmSZpNfTsiZulxWPFD4A1ls0KEOYAxgf+ZY5xtw7GOCAqVNkNveMO3/vvd1q
+         K93Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=Sa4UTLik+NUh5h39EqGmEIW8tWssV/sxVE0NuYicMaQ=;
-        b=jkKPk5lFgtQwmFZjH7bAlU20XYuO7Jhu/IXwh9l0BWyMcsN3fyCqe2YHvNtcQ8ON6w
-         DebLkMUlzmO1jtzZvj5uAkLA3pptW2ABeTQxwTQBR6ZxzKEPRDDxrgIzQxAN583f2i1N
-         pYX6KdHM2rIy0IHuXu8fZPsH2WeqGpKQ2C7z17W6f9aXMkSx7n99CxGTQEgxBr1ZSyjP
-         lNJbQ9kPlY4N0kKfEkqTI6EtEClkoJRARV4R2McT1Eptn/Jysfut4P/4em4LpMG05uqk
-         /CUQbhOMWwxqhXGd1kcy0dm/zrgJ7Mu9sLZ0qfOdndqtNqMGJibNMo3i6fUS65jWLpKh
-         j3YQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=77asedd9W4bQbuo6UI9NfQGmGN3z8h5UpeipA8zxmys=;
+        b=ClytimvkLmHwxns4w2vvkzBcAx7trNh3TK9yLQYtBTFS9tEpW3MD+ea3c4340fmp7M
+         8+YuiZ54EzKP7++Mw+CgUsQtMXKK1x6R4S1qx7nbrzj+m1dj/dbltWbqGzTb4t5Dn7ac
+         di4byk+llw/es7i92lr5miZ9s+30bFxleJ1wqLIrBO9wuAo/4WhuEzp98Yic3zLraWAh
+         0q7VOylbdtXD/npPvkfrjh3tEUwLqW7mtAywQFo6/aiIUVbLP0KerixH5il5ygvn3lzR
+         Jb+gn7AQxzJ+PoSSKe76KvyQzV/WStyjxj2yqOuWxN1IRylw82UqXDOiRgORvqIM2J92
+         d0ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=jSRB2bbO;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=hSmSLrZS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 20si31667ioz.25.2021.09.01.16.00.30
+        by mx.google.com with ESMTPS id y16si287841qko.365.2021.09.01.19.31.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Sep 2021 16:00:30 -0700 (PDT)
+        Wed, 01 Sep 2021 19:31:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=jSRB2bbO;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=hSmSLrZS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:58560 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLZDV-0007MT-Nl
-	for alex.bennee@linaro.org; Wed, 01 Sep 2021 19:00:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55502)
+	id 1mLcVv-0007p1-Ee
+	for alex.bennee@linaro.org; Wed, 01 Sep 2021 22:31:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=8878769573=pdel@fb.com>)
- id 1mLZD3-0007KS-HC
- for qemu-arm@nongnu.org; Wed, 01 Sep 2021 18:59:57 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:9366
- helo=mx0a-00082601.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=8878769573=pdel@fb.com>)
- id 1mLZD0-0001jT-CH
- for qemu-arm@nongnu.org; Wed, 01 Sep 2021 18:59:57 -0400
-Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
- by m0001303.ppops.net (8.16.0.43/8.16.0.43) with SMTP id 181Mw536003151
- for <qemu-arm@nongnu.org>; Wed, 1 Sep 2021 15:59:53 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=facebook;
- bh=Sa4UTLik+NUh5h39EqGmEIW8tWssV/sxVE0NuYicMaQ=;
- b=jSRB2bbOun5MuXXAFEZqyDGtjKGLYL4jh8R9B4xbx5YfJmJefdWdtjAkadvXqwyrJhvs
- CpY0iO0LK97XYQfnofuur/W64G0d3SrenuI6v2oTEnj/FFv3DyC72mDdiDJ+ctURJzhs
- 0tlvXS6oYjjI1hNQ+2+N4hhq7jhMMODLq4A= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by m0001303.ppops.net with ESMTP id 3atdyh4nb7-2
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 01 Sep 2021 15:59:52 -0700
-Received: from intmgw002.46.prn1.facebook.com (2620:10d:c0a8:1b::d) by
- mail.thefacebook.com (2620:10d:c0a8:82::c) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Wed, 1 Sep 2021 15:59:51 -0700
-Received: by devvm660.prn0.facebook.com (Postfix, from userid 385188)
- id 776D317DA288; Wed,  1 Sep 2021 15:59:47 -0700 (PDT)
-From: <pdel@fb.com>
-To: 
-CC: <clg@kaod.org>, <joel@jms.id.au>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <patrick@stwcx.xyz>, <f4bug@amsat.org>,
- <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- Peter Delevoryas <pdel@fb.com>
-Subject: [PATCH 1/1] hw/arm/aspeed: Add Fuji machine type
-Date: Wed, 1 Sep 2021 15:59:46 -0700
-Message-ID: <20210901225946.500125-2-pdel@fb.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210901225946.500125-1-pdel@fb.com>
-References: <20210901225946.500125-1-pdel@fb.com>
-X-FB-Internal: Safe
-Content-Type: text/plain
-X-FB-Source: Intern
-X-Proofpoint-GUID: sHSrxVS3It3Z3C1XIr2TVyblSUquc6cI
-X-Proofpoint-ORIG-GUID: sHSrxVS3It3Z3C1XIr2TVyblSUquc6cI
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mLcVZ-0007oY-Vn; Wed, 01 Sep 2021 22:31:18 -0400
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:41678)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mLcVX-0007vi-MG; Wed, 01 Sep 2021 22:31:17 -0400
+Received: by mail-io1-xd2b.google.com with SMTP id j18so576211ioj.8;
+ Wed, 01 Sep 2021 19:31:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=77asedd9W4bQbuo6UI9NfQGmGN3z8h5UpeipA8zxmys=;
+ b=hSmSLrZSQczWsIRnC99snYBV5SmYzEutCsPVCg2+q/fhWxPMuMpbqN24QhdK2pBmQX
+ K85SPFye5Of2aX65vU6IUJTSroFMCGFYYB1FZ4LYmZLN/IvIosj6fIwBK6/OUdE0QYts
+ hqO8OYYSZfTSfz0LoZV5VBTpKDDkPQEjbfQRiwDQVm6HZL75MRqtt6yNy+SHt4NNNfGE
+ h7Yu8sHLiVm0nYgofUtEsRS+C7fLumL5hFd1ZtXbz1qp7lCYCAewqv4EDbU8IgdiYNM7
+ Sl/Rdv4BtBFs5nfnkSLbxHi5QMx67zmeDDOrLlh4qZqbtqzeNa1MyRTNOvyPH6ANxtOE
+ J9jA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=77asedd9W4bQbuo6UI9NfQGmGN3z8h5UpeipA8zxmys=;
+ b=qX43RW3nqFbXo/auMnuiMp4YbUvUGEa6OZ82u7D5OtBB8d3yMdVbIT5xr1FtJvWhdJ
+ /0ZQIsiL73BbXl2olR1bhiLSVvXzRND8lyT+xQVrZPVgcB7IkB804+Oulc2bpjoyRA4p
+ wxPO6AJA6P+vhYmgOAKoKlcjm7utNPot5Wx4MqGqeKy4ICsZb2bFgj5rNe1Ty7buIRk0
+ KGdjHUYAsngaiaaZoN2EUK3MZQYnT5aCoLQ1F5Ho4T6p8pa1ZZQo2LdbeezGjDAh95hC
+ CToQ/184CdQ/ANdxPSrAYjfEmUgx/FtPsEsPUTiFtVS2FOz3u6U9IUpWucVaQESsrJYE
+ 1Y6w==
+X-Gm-Message-State: AOAM531RKyg3snorCEBvbC7cnhdMdz5giWdGzfUzsW2steLHPrCsUrie
+ gh6NPwrgSjLRt6t+5Qi0rEtSQ4fei/yI4vAlFOQ=
+X-Received: by 2002:a05:6638:2182:: with SMTP id
+ s2mr863455jaj.26.1630549873758; 
+ Wed, 01 Sep 2021 19:31:13 -0700 (PDT)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-09-01_05:2021-09-01,
- 2021-09-01 signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- mlxscore=0 malwarescore=0
- phishscore=0 mlxlogscore=999 clxscore=1015 suspectscore=0 adultscore=0
- priorityscore=1501 impostorscore=0 bulkscore=0 spamscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2108310000 definitions=main-2109010135
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=8878769573=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210901032724.23256-1-bmeng.cn@gmail.com>
+ <20210901032724.23256-4-bmeng.cn@gmail.com>
+In-Reply-To: <20210901032724.23256-4-bmeng.cn@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 2 Sep 2021 12:30:47 +1000
+Message-ID: <CAKmqyKO+WvEFHOcifOOZNs57Ym7Zg4PACm=c0bDjsg32WQDgBw@mail.gmail.com>
+Subject: Re: [PATCH v2 3/5] hw/char: cadence_uart: Move clock/reset check to
+ uart_can_receive()
+To: Bin Meng <bmeng.cn@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd2b.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,151 +110,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7TuQNzKI19FL
+X-TUID: P1/3NLDjpEEw
 
-From: Peter Delevoryas <pdel@fb.com>
+On Wed, Sep 1, 2021 at 1:28 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+>
+> Currently the clock/reset check is done in uart_receive(), but we
+> can move the check to uart_can_receive() which is earlier.
+>
+> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
 
-This adds a new machine type "fuji-bmc" that's equivalent to
-"ast2600-evb" except that it uses MAC3 and UART1. It might be
-appropriate to change other aspects of this machine type in the future,
-but so far this is all the specificity necessary to get a Fuji OpenBMC
-image booting and networking within QEMU.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Here's a link to the device tree:
+Alistair
 
-https://github.com/facebook/openbmc-uboot/blob/openbmc/helium/v2019.04/arch=
-/arm/dts/aspeed-bmc-facebook-fuji.dts
-
-I tested this by building a Fuji image from Facebook's OpenBMC repo,
-booting it, and ssh'ing into it.
-
-git clone https://github.com/facebook/openbmc
-cd openbmc
-./sync_yocto.sh
-source openbmc-init-build-env fuji build-fuji
-bitbake fuji-image
-dd if=3D/dev/zero of=3D/tmp/fuji.mtd bs=3D1M count=3D128
-dd if=3D./tmp/deploy/images/fuji/flash-fuji of=3D/tmp/fuji.mtd \
-    bs=3D1k conv=3Dnotrunc
-
-git clone --branch aspeed-next https://github.com/peterdelevoryas/qemu
-cd qemu
-./configure --target-list=3Darm-softmmu --disable-vnc
-make -j $(nproc)
-./build/arm-softmmu/qemu-system-arm \
-    -machine fuji-bmc \
-    -drive file=3D/tmp/fuji.mtd,format=3Draw,if=3Dmtd \
-    -serial stdio \
-    -nic user,hostfwd=3D::2222-:22
-
-U-Boot 2019.04 fuji-b9c651226b (Aug 25 2021 - 17:27:02 +0000)
-
-SOC: AST2600-A3
-eSPI Mode: SIO:Enable : SuperIO-2e
-Eth: MAC0: RGMII, MAC1: RGMII, MAC2: RGMII, MAC3: RGMII
-Model: Aspeed BMC
-DRAM:  896 MiB (capacity:1024 MiB, VGA:64 MiB, ECC:on, ECC size:896 MiB)
-MMC:   emmc_slot0@100: 0
-...
-
-sshpass -p 0penBmc ssh root@localhost -p 2222
-
-Warning: Permanently added '[localhost]:2222' (ECDSA) to the list of known
-Last login: Fri Mar  9 04:36:31 2018
-root@bmc-oob:~# exit
-logout
-Connection to localhost closed.
-
-I also created a Github release with the Fuji mtd image and added an
-acceptance test utilizing it.
-
-https://github.com/peterdelevoryas/openbmc/releases/tag/fuji-v0.1-alpha
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- hw/arm/aspeed.c                        | 14 ++++++++++++++
- tests/acceptance/boot_linux_console.py | 25 +++++++++++++++++++++++++
- 2 files changed, 39 insertions(+)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 7a9459340c..3b8b660a34 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1070,6 +1070,16 @@ static void aspeed_machine_rainier_class_init(Object=
-Class *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
-=20
-+static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc =3D "Facebook Fuji BMC (Cortex-A7)";
-+    amc->macs_mask =3D ASPEED_MAC3_ON;
-+    amc->uart_default =3D ASPEED_DEV_UART1;
-+};
-+
- static const TypeInfo aspeed_machine_types[] =3D {
-     {
-         .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -1119,6 +1129,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
-         .name          =3D MACHINE_TYPE_NAME("rainier-bmc"),
-         .parent        =3D TYPE_ASPEED_MACHINE,
-         .class_init    =3D aspeed_machine_rainier_class_init,
-+    }, {
-+        .name          =3D MACHINE_TYPE_NAME("fuji-bmc"),
-+        .parent        =3D MACHINE_TYPE_NAME("ast2600-evb"),
-+        .class_init    =3D aspeed_machine_fuji_class_init,
-     }, {
-         .name          =3D TYPE_ASPEED_MACHINE,
-         .parent        =3D TYPE_MACHINE,
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
-_linux_console.py
-index 5248c8097d..63d32f6743 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -1143,6 +1143,31 @@ def test_arm_ast2600_debian(self):
-         self.wait_for_console_pattern("SMP: Total of 2 processors activate=
-d")
-         self.wait_for_console_pattern("No filesystem could mount root")
-=20
-+    def test_arm_ast2600_fuji_openbmc(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:fuji-bmc
-+        """
-+
-+        image_url =3D ('https://github.com/peterdelevoryas/openbmc/release=
-s/download/'
-+                     'fuji-v0.1-alpha/fuji.mtd')
-+        image_hash =3D '36dd945a2ee34694684b5f3e7351517598bb39d8b6899c71bb=
-d23791b42e082e'
-+        image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_hash,
-+                                      algorithm=3D'sha256')
-+
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=3D' + image_path + ',if=3Dmtd,for=
-mat=3Draw',
-+                         '-net', 'nic')
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern("U-Boot 2019.04")
-+        self.wait_for_console_pattern("## Loading kernel from FIT Image at=
- 20100000")
-+        self.wait_for_console_pattern("Starting kernel ...")
-+        self.wait_for_console_pattern("Booting Linux on physical CPU 0xf00=
-")
-+        self.wait_for_console_pattern(
-+                "aspeed-smc 1e620000.spi: read control register: 203b0041")
-+        self.wait_for_console_pattern("ftgmac100 1e690000.ftgmac eth0: irq=
- ")
-+
-     def test_m68k_mcf5208evb(self):
-         """
-         :avocado: tags=3Darch:m68k
---=20
-2.30.2
-
+>
+> ---
+>
+> Changes in v2:
+> - avoid declaring variables mid-scope
+>
+>  hw/char/cadence_uart.c | 17 ++++++++++-------
+>  1 file changed, 10 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> index 154be34992..fff8be3619 100644
+> --- a/hw/char/cadence_uart.c
+> +++ b/hw/char/cadence_uart.c
+> @@ -235,8 +235,16 @@ static void uart_parameters_setup(CadenceUARTState *s)
+>  static int uart_can_receive(void *opaque)
+>  {
+>      CadenceUARTState *s = opaque;
+> -    int ret = MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE);
+> -    uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
+> +    int ret;
+> +    uint32_t ch_mode;
+> +
+> +    /* ignore characters when unclocked or in reset */
+> +    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
+> +        return 0;
+> +    }
+> +
+> +    ret = MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE);
+> +    ch_mode = s->r[R_MR] & UART_MR_CHMODE;
+>
+>      if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
+>          ret = MIN(ret, CADENCE_UART_RX_FIFO_SIZE - s->rx_count);
+> @@ -358,11 +366,6 @@ static void uart_receive(void *opaque, const uint8_t *buf, int size)
+>      CadenceUARTState *s = opaque;
+>      uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
+>
+> -    /* ignore characters when unclocked or in reset */
+> -    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
+> -        return;
+> -    }
+> -
+>      if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
+>          uart_write_rx_fifo(opaque, buf, size);
+>      }
+> --
+> 2.25.1
+>
+>

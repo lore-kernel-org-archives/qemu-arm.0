@@ -1,94 +1,95 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1091948lfb;
-        Wed, 1 Sep 2021 19:51:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzvABYiAm0YR2vXpVMwAnAlMjGmMStQfLqOEb1TdZuOc/+Xhaw8Y0M8ZHvfzxoHmkeCcnYK
-X-Received: by 2002:a25:74ca:: with SMTP id p193mr1441116ybc.28.1630551097964;
-        Wed, 01 Sep 2021 19:51:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630551097; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1083368lfb;
+        Wed, 1 Sep 2021 19:33:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5HwOBK4Ys18+f8mZkjFVoCnPj8i6pcaWuZf8LLJiud2gsrlsMcq3UboR3tcHewvL1C9Gy
+X-Received: by 2002:a5d:9409:: with SMTP id v9mr845672ion.170.1630549996686;
+        Wed, 01 Sep 2021 19:33:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630549996; cv=none;
         d=google.com; s=arc-20160816;
-        b=x8bN1GfSWtuAzle3icAzgyj4JBODfk5LnH1582JpjLQUw1xAAsxTdEM4Nuj3PJEXqx
-         B7THdExC+dkIQBGHb5akx894mMGYLkDG8jdz73xyVLLrh+mtBd/cHXBmrFapgfE9hutX
-         bFp3lJKizpraHOck3VWCmn51qKZ1IUIM/6ZI2fOrpL5WS8nsZIqUNirFWTn6hSpUSa+/
-         BGlV0/BE/COHiCjkkKYjhiF5zot9jHpkr5xod557H9mnlqBOtjhlUH+2r+n0NwkH77TC
-         lsjfZCdAfPGVIdOCCVMEImxnqE+wBAw4fExsGi4W0x7QLJgmsge8+wfoKxN95zBFyngR
-         uJBQ==
+        b=0OJde+M5j/JwFB3c5Yl0XU9qZxBHMbKsKERutHEv7EfcR+hmpjCIw4tbCHTvx/Nin5
+         ccu6VhKMTxcCR3UqgvEEtDlGlW/sGc1ulOmyEAestdvSfTzr9+FO6Jy3rYi4kwTe4bhZ
+         HF+zfY2fWxa5hjUoKpGx+8pwcMz6VXESDX8K8KJUSAUpRm0S+v2pH4O36C44L610+MBI
+         sA/ROOhtldOiJJHt3U3hDgZVYwiSQn83Fhv3NPozYI9TAAn7x7bkMsvbtnDds4nec6oc
+         DLSWJYAOH/F2J6jRbktapNzvM0SDWhgknSlpNnNzWBGH42ogWNIEk68iy0nAnDUAKb2g
+         p8HA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=qmg8Wz97vw+J4eGYexburl1dF0+BJrjJC3ZmvdxH8qo=;
-        b=W3CaFuSguZ1majmUz+LA3M2k+OioV4sZImuq6FAMgFWW3KDK2lAkLNlpe4MREpbJVt
-         wMSmpX0oD8IJkMn8amHHU+r/09ynHIP7zHWlouK0DdUGXc+N04EZTS9xrvFvBcUYUv7g
-         fiSvUApZBxOKH0PQwePwNF0WGNc1iiYU3mRbMbDrxMK8yqc02bSgCs2Sx1MLXTOiQ9pE
-         tIaDtOim3rhZwYxUDACe6Wzl3antC5pV99sf/EEcZQF7BqkbfxE2/Ew+Ypx3jrU0IzPB
-         G3GZW3Sh7x0Jw83vu1giu169iKhsYOYc/SbxOPO1pKRjAeWLXNS4BdoWN8MkNwUusLwi
-         nAEw==
+        bh=YjuKy3HbY3EHtLLd6vGP28y0Qj6j8DN92zTt9E/Wjyc=;
+        b=e+4ogaL7vdV1ooM2Jaj0HQcRQ+qtX4UvYiFp0Jfz+vl/6oRGldNkhlCTqCkTQ3mLnp
+         gUXeYIIBVdck/G7ku3dPtQ16zq/XuQW2YV7RfzFsgUqr3491xzEA2Ib3GEGr2iJui1Xv
+         vgcW6kF0S5L/Iz6QLThRtliamnebuQWeGt6LU/GokJ/9UmPdyL6Jhg/77qrVQGcQOp7P
+         NBp9nszxV81SfkJ+9HesxpJv/CPR0ef9RsTFUv61qCJvBLzx58e9THKsr7haVNNreNk2
+         4JBighDtQz+0145JPQE/+B99qpeY+5TcBB6hAfMkHPHk4CHbQDYY22xf7qQ7bXD8z5w+
+         EYWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dDE2gytU;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lE6K2GNn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d88si755610ybi.490.2021.09.01.19.51.37
+        by mx.google.com with ESMTPS id r17si473746iov.104.2021.09.01.19.33.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Sep 2021 19:51:37 -0700 (PDT)
+        Wed, 01 Sep 2021 19:33:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dDE2gytU;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lE6K2GNn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33870 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLcpE-0000N7-7B
-	for alex.bennee@linaro.org; Wed, 01 Sep 2021 22:51:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46000)
+	id 1mLcXT-0000To-WD
+	for alex.bennee@linaro.org; Wed, 01 Sep 2021 22:33:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mLcp1-0000Ir-95; Wed, 01 Sep 2021 22:51:23 -0400
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a]:43742)
+ id 1mLcX0-0000SX-99; Wed, 01 Sep 2021 22:32:46 -0400
+Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:36578)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mLcoy-0006FX-7X; Wed, 01 Sep 2021 22:51:23 -0400
-Received: by mail-il1-x12a.google.com with SMTP id v16so306474ilo.10;
- Wed, 01 Sep 2021 19:51:19 -0700 (PDT)
+ id 1mLcWy-0000RD-R0; Wed, 01 Sep 2021 22:32:46 -0400
+Received: by mail-il1-x131.google.com with SMTP id x5so294772ill.3;
+ Wed, 01 Sep 2021 19:32:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qmg8Wz97vw+J4eGYexburl1dF0+BJrjJC3ZmvdxH8qo=;
- b=dDE2gytUJZCAoGhxinXs2WmEq1LKQq0JCWJDMCmZ5ciCDuI8SfAQYrnCnQ7hUioLYG
- LiF9WRpsbGrlsh4B21yl5dck+R29DOZwFXsKxUw/bAak1Tx/B+/NJvnwFORY+F2swWr0
- Nai9ehjm6bP1Z8gYrjclGBSuh6Qem2BvJ1nQIkPPQRSfT7hOI66irgID4JYWg/gDweMD
- mxt5yT70Y+9aZfB8GMoua1wXpsPyK4nuwGbXW084D2drEuEB1qV+TNc8HwL7VgBcXKEP
- BghPms89nJmpBuWqzVFQPITyWbbAPQisQfwviu62CvjaY+VFKg9ygCIuofQ8R88DWRyb
- wIzA==
+ :cc; bh=YjuKy3HbY3EHtLLd6vGP28y0Qj6j8DN92zTt9E/Wjyc=;
+ b=lE6K2GNnjIrHy7V8AaNuuzgl0WKxMBT8Tkf74niVi3Ua3rYVR0Pc0okMk4PG95w2jR
+ IZsSr5Eaq6C4MZj4TuV7d10ZMXEFAUQxTf2piK/D05Mteb20eGNrkDuivfZNOnFpIwao
+ 6erDbDeFdCK4LvH+EDfGIfCj1Jm848rjeYNDsKqshP3wkdHMe07H9kaPoio+aG2AwFe+
+ iPBoYoVnxqBEiTR4U0QasvC4lRiC+4zh43+wCTfm1AH4fkRT5klwu2KGsiu434r3AlgU
+ LFhwWU/OyknIO41Y3+XGCM2oY9ZL9fAouLLerBvXuSHcQwlGVtwF8yZYMWgfihvslUmx
+ lGJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=qmg8Wz97vw+J4eGYexburl1dF0+BJrjJC3ZmvdxH8qo=;
- b=UysFYfAbWnv5c5MEAWcj01fHkLsJwDXV5xXXJKbCdsYWRhCCc2zY9Jfpx4F9w51fbZ
- JDvX37qT7UZMf7W6eh9B2BzaNPuVwABAwUTm3po7OLJa21Af9bo7DGUsQeXufGDrLgmz
- sBjUO7OUTG96GKaRSD7brJPwhI1ks3PGc06dXxWFddpctFO2rTYW8rH8Z4L0G95SzlHr
- +g9L5DSBrcLqkAmm7jbBHmYgyJBTgDg6m+aTZK1F2ORprpv+9qTqeATELgYP4iTb7wtq
- bsToue+DbptljGwRE1QqkOEyBdMorzYYFTY/L8mmlrJWyySDqlAJeEXWP6w4v4TySe37
- Kzzw==
-X-Gm-Message-State: AOAM530Qnd9WUj0E8YeqYHtLhtsZ8KH3A4V36Aj5W8tqj3+Bfy5QvBKi
- UTVzSMWqYxdWvktTFOYhqT4AmfpHWVPVnb2bsuo=
-X-Received: by 2002:a92:ce03:: with SMTP id b3mr641799ilo.267.1630551078694;
- Wed, 01 Sep 2021 19:51:18 -0700 (PDT)
+ bh=YjuKy3HbY3EHtLLd6vGP28y0Qj6j8DN92zTt9E/Wjyc=;
+ b=fvlBXEFggl+1DrExo8YcLaPEvT4cu0Mx+aRNHMXTJcM+HgRUbMk+86sEAWAntdSkK7
+ OYmdTyqCt9g/lYtwfVYlb03qvJIer5dXxT+VXadjDIThgVKp7FRLpORFxcayOvyJYNKx
+ 7EOpu1YEVye6s0GlZMZsGo21RP2B/hZ79sj9mtHP3cdFhN3d9UoFQmkz+9dZs9fLAu4r
+ MgM9WRXGQ0/Bs1xzbXZiUM+h3r8gHjDkcrnxPxHp11ILP9MiOpva9U9twTdAMsS1UQcg
+ iaBorFS3tOH3Tok+O+LvPE5RPiSTMI6hcVuZBuEya8oPbcNuptkaC3HDuQ0xYE9+PiJe
+ v36A==
+X-Gm-Message-State: AOAM533M5GGZNahM+Vr8OLzfUX+5Ga+Q6WtPM+UPE+aOojUMYn5OU0d0
+ vfYOK82ciVnR99wZHDmoYuHEgPBaVqT/uwV0IJ4=
+X-Received: by 2002:a05:6e02:1044:: with SMTP id
+ p4mr582453ilj.227.1630549963152; 
+ Wed, 01 Sep 2021 19:32:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210901124521.30599-1-bmeng.cn@gmail.com>
- <20210901124521.30599-5-bmeng.cn@gmail.com>
-In-Reply-To: <20210901124521.30599-5-bmeng.cn@gmail.com>
+References: <20210901032724.23256-1-bmeng.cn@gmail.com>
+ <20210901032724.23256-5-bmeng.cn@gmail.com>
+In-Reply-To: <20210901032724.23256-5-bmeng.cn@gmail.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 Sep 2021 12:50:52 +1000
-Message-ID: <CAKmqyKM==22e-xvVi3fwm6c1wCCR5s5kmz=4BOao3QqaV2XwbQ@mail.gmail.com>
-Subject: Re: [PATCH v3 4/6] hw/char: cadence_uart: Convert to
+Date: Thu, 2 Sep 2021 12:32:17 +1000
+Message-ID: <CAKmqyKON_E3Pgds3B8UV6_E-ZvVRNE=UYCdkEmX2Rw1a=zc-3A@mail.gmail.com>
+Subject: Re: [PATCH v2 4/5] hw/char: cadence_uart: Convert to
  memop_with_attrs() ops
 To: Bin Meng <bmeng.cn@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12a;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x12a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::131;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x131.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -117,9 +118,9 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CbpgMttGiLf6
+X-TUID: sx4EjzxB8jeZ
 
-On Wed, Sep 1, 2021 at 10:46 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+On Wed, Sep 1, 2021 at 1:30 PM Bin Meng <bmeng.cn@gmail.com> wrote:
 >
 > This converts uart_read() and uart_write() to memop_with_attrs() ops.
 >
@@ -131,8 +132,6 @@ Alistair
 
 >
 > ---
->
-> (no changes since v2)
 >
 > Changes in v2:
 > - new patch: hw/char: cadence_uart: Convert to memop_with_attrs() ops

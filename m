@@ -1,94 +1,93 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp622388lfb;
-        Thu, 2 Sep 2021 13:23:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw89IZ51lKt3zSY76UqIBo1KtHnuKw0Ywdrp2Gj/GtFoYL8oVqYk2iml6UEa2eagDA1636q
-X-Received: by 2002:a92:6a0d:: with SMTP id f13mr8163ilc.212.1630614208534;
-        Thu, 02 Sep 2021 13:23:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630614208; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp623179lfb;
+        Thu, 2 Sep 2021 13:24:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2GlOHcZ4KvtTUOfcdbKaXZ/aQm7zww2Imkv0slKiKIb3YnX4dBxEalEqqMgxvXDhwTBZL
+X-Received: by 2002:a05:6e02:1906:: with SMTP id w6mr3862560ilu.295.1630614279448;
+        Thu, 02 Sep 2021 13:24:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630614279; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZV21PUkN8BCmfCodUf+mnik8aSpkxPMBFbZ601R0szbE4d6QcJ6iziXTysLlULGIAp
-         dUKZDtzwM0NR4y3V5cWL1NehKbkmOjpslA9Oyr6NuDGFaFiTdPmbmL+BZjwk/RcznPgd
-         TkTbvDwbZipJaVXp1cqtg4pGUSo7IdpTHGJewfXqHZ+Wa8i1NGKYXKVzkfTR8vTdVMC4
-         vfZz2LcZ80rK/dGS/9tbDk2TPDRsmksHeiWdE9pm+4zrjwiDnJEIEfgE3+C/qvBi0/Ea
-         1ugYnJYrA6vjmBMR4wz9F03Xw1zS3B4QDboTxY5CmDqdNxOTp29TsXfWeY+kFMcgJHh/
-         NNGw==
+        b=xh0N0s8xh6/9GF3JN28oPMpytVkxnnGZ2bp+KYAH72yQEeFCI9SEBUT+dsOkhJLNRI
+         7Pu30JoPI/dnuV2Zi+FeMwszuzDPZPtluEtimcE7dKQLDqfy3PqfrgSWv8FhU+y+aYnZ
+         F/1cecQooVJK2fesM90gSSONr/ZwFTmIbgV40gPWCllmDRfWBkjuVbtxZiwFF1SZ1Eui
+         Ub6HJ/yTHBwCeq7rDdZeI79JjRlgTWWfottuKkuAYnYqV5+hYBikV5NMarCwoqaFBMWw
+         QflQeZE32HPU4SfZtgqAZhzZWySfp7LpE9HNgIrkbBOZWsAxlgVTSE1fF5AkZPMONtuX
+         JCEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=1CW5CoF1GCVAN6grWsJbuTIx9X7F4dCckizxepLv9c0=;
-        b=pi+0rsf4Ba37jTUyYAuA2QImYoup700zZQFRtEK58F9f9CO+0+9yeJYWc82c70E7Sd
-         8iQ7WzvI//Yy9HltGW+p0aErlzB2c0o+S0AGZRLAHwSnJkynnpCp+rm4MZ9jns2g+54U
-         MU7CgyUP1qn9cXMie0IoPW686RhyLYK+SJFe9ieTf4xPlJgtPLvm7+lB2W+9uOBG3ygd
-         TjteYMV1OlJV8BRhXdfUu6Z8mnhjFWyoZu1gNyUF2qR6lP5PCkNP4KHzCB9poSha+rfB
-         bgZ/J6EPoLBh3PbvFDeipTquen3iHUkDRFg6Lh2drm2eShNZ54JocKkBqzUjIniHykXz
-         sNSQ==
+        bh=xgcf6EoLNCllzQwVHSXeXQuNAqjcojElSkTiwngEz2k=;
+        b=rhoFcTeoKxAGOsGQMkzVpOXrmDnvHtyzc60vXm7fn8WIw1LYIL1lAeWwAEiMBJMn02
+         7rFGauqzIBnUPvPGzZjHx8FiT5rlsG9S4bHGSzZN3fW7cSnNHNMsMgVxOkb5FabqAKTc
+         xoYs0whGeZ8VvFGAmjcUnaYSjIr5RGxChvHZF89wcTdpl2QlTuhsDtPGPSTDkZLLEQRm
+         yutBHu5p4DC5czFTJiNQ5HCH0tt3j5DZ50jP7dkqaW5Yy5aK8O0YU8paJfywuCdNVWXp
+         gYIAjyE7w7bYbfVUwEKMkewVCmyzPRpnBh5lplXKbQHx+8mmzXIR+OOXWrCu4oK46ut6
+         W9yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="T8aEmDr/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=l1Tw93qK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l30si2593806jaf.107.2021.09.02.13.23.28
+        by mx.google.com with ESMTPS id r17si3084712iln.147.2021.09.02.13.24.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:23:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 13:24:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="T8aEmDr/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41194 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=l1Tw93qK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47032 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtF9-0007fo-Q1
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:23:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40576)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLtGI-00038x-LM
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:24:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtAg-0000eI-Q3
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:18:50 -0400
-Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36]:36561)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtCl-0003tW-Fz
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:20:59 -0400
+Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a]:38849)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtAc-0000Je-FM
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:18:50 -0400
-Received: by mail-vs1-xe36.google.com with SMTP id f6so2611735vsr.3
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:18:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtCi-0001xZ-Fm
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:20:58 -0400
+Received: by mail-vs1-xe2a.google.com with SMTP id a25so2616804vso.5
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:20:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1CW5CoF1GCVAN6grWsJbuTIx9X7F4dCckizxepLv9c0=;
- b=T8aEmDr/n743PTU9io6Me1pW+KwoMG/w0eurV90C8ngmmayHhJVUNv3kXigIvcmAp2
- xJsnW6k9gx2isIUuDkMId2o2EJtUYXJCjwK1HEcL+cBHSrYxUD/FX3Zp/zLs1YHDlfXz
- P8puRwDCn3oo753wuyiB7WTu0OOvD/Cy9PEcXdYd/LgkFyvmZ6jgngo0sNp5N1y8DIP2
- vuHi80S/3V+bCI8+4LGzjRF3b6DFJy98CMCP4jpVOGERt0G6uPeCbwooogDvhsSV4frL
- 8ShpWoWd+y8yBMo2NJD05+pUxkPbawhdhOxWghq08M/xxpSgLsSg7IX5nTALPFxreGlK
- wgQQ==
+ :cc; bh=xgcf6EoLNCllzQwVHSXeXQuNAqjcojElSkTiwngEz2k=;
+ b=l1Tw93qK764wBB+Ug6JSI7N6mH63E+IKBgW2qDK3daaM12bMYFoL6heRZDpYQV+6+d
+ naScfbKvM48hp9+S+TEZW4FserN3zwD2U2uHDInJyOl9UX0rXGms8NdpwfaI7ZmhXiKg
+ qsv1uvfTUL4nEqW9FnAoyl26M+mQpBI1A/cUWXBhvpIOEc/6NWgXeZPbXGLf+vZGhx7F
+ O3ZU9/QX5zsk3A+pGb7aTNtAAdd/HGgmfbwtyRa8p2/qW7EpxMdvFS35CTSpXIr4OtvC
+ fkNhU6k2mNITX+KppkR5x7v3ukclM5s0AKGWJSWNu96SW44Ll/7CFDIcBC72M47VERSn
+ XBlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=1CW5CoF1GCVAN6grWsJbuTIx9X7F4dCckizxepLv9c0=;
- b=G/sqtM6hNNc8IhSt05BoxLRnpTF45KotD6cj0d1Kw16KRdfDq1u7PsvYruVtaWUXGD
- ykeXVRvrmBzRO0XwYMKgB6lgzvtQFqLmrVu51CLtVJ5FVilKH6/DEFlRjeWv3sMPcJs8
- FG9PWnJfD9NOZSa3VF3fF0SS4bec6VoOvIqjfvKUuXjG9RywOrZnx2FH5LBVzMrmgIx6
- fpz5SIaDzbV5qumO2Np+H0i8OMcb8Z4R8S7LqtBtLp3jc6EDKpUyTCS+Iq2tdRCBDCuC
- d8Fv/Vj8sRqu1hnUCQk4OnyqGkV1tOIxfmckkpmkGU+UJWQCZXp9J9KqzT4oPHGU7D/b
- 8ZCQ==
-X-Gm-Message-State: AOAM531hVWVqp+72ypy8z6Qm+MzjUJnmHAgHAcpuAB9Vt8M46WF5fHwY
- 5TM9Uk2bhb6hWRITYJQ42fIgANp7ULb3MwkeC3Hmfg==
-X-Received: by 2002:a05:6102:482:: with SMTP id
- n2mr4008484vsa.53.1630613925491; 
- Thu, 02 Sep 2021 13:18:45 -0700 (PDT)
+ bh=xgcf6EoLNCllzQwVHSXeXQuNAqjcojElSkTiwngEz2k=;
+ b=AgEyyUZT9R+zLmz3mzH4bxzpJlB6X+y+AUMzafcCZNUjcetHxclzGAqmr1XvRDAzbi
+ T+WKBL5P6mbiQGGturrECB1n5Gtqj18KquwmxPkVLKO18LExpbTdM4eIvU3/CNkmZkwP
+ E/cx6ExkyCFgQqe/0XegwAyrdbo51lZgOechzL5QH38D4X5puForRT5M8txtYnYrbYVN
+ YU2hZuIyxiGlpkAfXe9Wq3BCm+NZ3J2yuzjMnhbaQXH4qCjzMjt91MzBEoqFUot3InZQ
+ mmncuWMPpp6HFUIK/GcTTXk5Qtl6GRJSr28fHZJjht4iHrN7c/SZq07VRIuvUjpnLnjP
+ zwEQ==
+X-Gm-Message-State: AOAM5330yGwIa0Of5ws0W3I+E4oC4omvN/K6nZZKMLGZBzykrEdbiSqt
+ QNGlYpm4fgF4n3b++FcKjTnMONaLCaBxnJQZShYyNw==
+X-Received: by 2002:a67:c789:: with SMTP id t9mr4342239vsk.60.1630614051676;
+ Thu, 02 Sep 2021 13:20:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-12-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-12-f4bug@amsat.org>
+ <20210902151715.383678-14-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-14-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:18:34 -0600
-Message-ID: <CANCZdfoM82TXdpRzqZ46coTuy441MQ2n7xJoBNk4gZF-6HObuQ@mail.gmail.com>
-Subject: Re: [PATCH 11/24] target/i386: Restrict cpu_exec_interrupt() handler
- to sysemu
+Date: Thu, 2 Sep 2021 14:20:40 -0600
+Message-ID: <CANCZdfqyFmNCKBhPtJc_QHwz9VRVWpY0_n-DKobQBFoSti4m=g@mail.gmail.com>
+Subject: Re: [PATCH 13/24] target/microblaze: Restrict cpu_exec_interrupt()
+ handler to sysemu
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000cb87a205cb08e3c6"
-Received-SPF: none client-ip=2607:f8b0:4864:20::e36;
- envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe36.google.com
+Content-Type: multipart/alternative; boundary="00000000000050f55105cb08eb91"
+Received-SPF: none client-ip=2607:f8b0:4864:20::e2a;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe2a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -96,24 +95,23 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc <qemu-ppc@nongnu.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
@@ -122,11 +120,11 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g5wqC0pAb+1I
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Mdy8dvMi/TSs
 
---000000000000cb87a205cb08e3c6
+--00000000000050f55105cb08eb91
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -138,119 +136,94 @@ wrote:
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  target/i386/tcg/helper-tcg.h |  2 ++
->  target/i386/tcg/seg_helper.c | 10 ++--------
->  target/i386/tcg/tcg-cpu.c    |  2 +-
->  3 files changed, 5 insertions(+), 9 deletions(-)
+>  target/microblaze/cpu.h    |  2 ++
+>  target/microblaze/cpu.c    |  2 +-
+>  target/microblaze/helper.c | 13 ++-----------
+>  3 files changed, 5 insertions(+), 12 deletions(-)
 >
-
+>
 Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
 
-> diff --git a/target/i386/tcg/helper-tcg.h b/target/i386/tcg/helper-tcg.h
-> index 2510cc244e9..60ca09e95eb 100644
-> --- a/target/i386/tcg/helper-tcg.h
-> +++ b/target/i386/tcg/helper-tcg.h
-> @@ -38,7 +38,9 @@ QEMU_BUILD_BUG_ON(TCG_PHYS_ADDR_BITS >
-> TARGET_PHYS_ADDR_SPACE_BITS);
->   * @cpu: vCPU the interrupt is to be handled by.
->   */
->  void x86_cpu_do_interrupt(CPUState *cpu);
-> +#ifndef CONFIG_USER_ONLY
->  bool x86_cpu_exec_interrupt(CPUState *cpu, int int_req);
-> +#endif
+> diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+> index e4bba8a7551..40401c33b72 100644
+> --- a/target/microblaze/cpu.h
+> +++ b/target/microblaze/cpu.h
+> @@ -355,8 +355,10 @@ struct MicroBlazeCPU {
+>  };
 >
->  /* helper.c */
->  bool x86_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-> diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c
-> index dee7bef68c6..13c6e6ee62e 100644
-> --- a/target/i386/tcg/seg_helper.c
-> +++ b/target/i386/tcg/seg_helper.c
-> @@ -1110,6 +1110,7 @@ void do_interrupt_x86_hardirq(CPUX86State *env, int
-> intno, int is_hw)
->      do_interrupt_all(env_archcpu(env), intno, 0, 0, 0, is_hw);
->  }
 >
 > +#ifndef CONFIG_USER_ONLY
->  bool x86_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->  {
->      X86CPU *cpu =3D X86_CPU(cs);
-> @@ -1125,23 +1126,17 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int
-> interrupt_request)
->       * This is required to make icount-driven execution deterministic.
->       */
->      switch (interrupt_request) {
-> -#if !defined(CONFIG_USER_ONLY)
->      case CPU_INTERRUPT_POLL:
->          cs->interrupt_request &=3D ~CPU_INTERRUPT_POLL;
->          apic_poll_irq(cpu->apic_state);
->          break;
-> -#endif
->      case CPU_INTERRUPT_SIPI:
->          do_cpu_sipi(cpu);
->          break;
->      case CPU_INTERRUPT_SMI:
->          cpu_svm_check_intercept_param(env, SVM_EXIT_SMI, 0, 0);
->          cs->interrupt_request &=3D ~CPU_INTERRUPT_SMI;
-> -#ifdef CONFIG_USER_ONLY
-> -        cpu_abort(CPU(cpu), "SMI interrupt: cannot enter SMM in
-> user-mode");
-> -#else
->          do_smm_enter(cpu);
-> -#endif /* CONFIG_USER_ONLY */
->          break;
->      case CPU_INTERRUPT_NMI:
->          cpu_svm_check_intercept_param(env, SVM_EXIT_NMI, 0, 0);
-> @@ -1162,7 +1157,6 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int
-> interrupt_request)
->                        "Servicing hardware INT=3D0x%02x\n", intno);
->          do_interrupt_x86_hardirq(env, intno, 1);
->          break;
-> -#if !defined(CONFIG_USER_ONLY)
->      case CPU_INTERRUPT_VIRQ:
->          /* FIXME: this should respect TPR */
->          cpu_svm_check_intercept_param(env, SVM_EXIT_VINTR, 0, 0);
-> @@ -1173,12 +1167,12 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int
-> interrupt_request)
->          do_interrupt_x86_hardirq(env, intno, 1);
->          cs->interrupt_request &=3D ~CPU_INTERRUPT_VIRQ;
->          break;
-> -#endif
->      }
+>  void mb_cpu_do_interrupt(CPUState *cs);
+>  bool mb_cpu_exec_interrupt(CPUState *cs, int int_req);
+> +#endif /* !CONFIG_USER_ONLY */
+>  void mb_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+>                                  MMUAccessType access_type,
+>                                  int mmu_idx, uintptr_t retaddr);
+> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+> index 72d8f2a0daa..15db277925f 100644
+> --- a/target/microblaze/cpu.c
+> +++ b/target/microblaze/cpu.c
+> @@ -365,10 +365,10 @@ static const struct SysemuCPUOps mb_sysemu_ops =3D =
+{
+>  static const struct TCGCPUOps mb_tcg_ops =3D {
+>      .initialize =3D mb_tcg_init,
+>      .synchronize_from_tb =3D mb_cpu_synchronize_from_tb,
+> -    .cpu_exec_interrupt =3D mb_cpu_exec_interrupt,
+>      .tlb_fill =3D mb_cpu_tlb_fill,
 >
->      /* Ensure that no TB jump will be modified as the program flow was
-> changed.  */
->      return true;
+>  #ifndef CONFIG_USER_ONLY
+> +    .cpu_exec_interrupt =3D mb_cpu_exec_interrupt,
+>      .do_interrupt =3D mb_cpu_do_interrupt,
+>      .do_transaction_failed =3D mb_cpu_transaction_failed,
+>      .do_unaligned_access =3D mb_cpu_do_unaligned_access,
+> diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
+> index 20dbd673136..dd2aecd1d58 100644
+> --- a/target/microblaze/helper.c
+> +++ b/target/microblaze/helper.c
+> @@ -26,16 +26,6 @@
+>
+>  #if defined(CONFIG_USER_ONLY)
+>
+> -void mb_cpu_do_interrupt(CPUState *cs)
+> -{
+> -    MicroBlazeCPU *cpu =3D MICROBLAZE_CPU(cs);
+> -    CPUMBState *env =3D &cpu->env;
+> -
+> -    cs->exception_index =3D -1;
+> -    env->res_addr =3D RES_ADDR_NONE;
+> -    env->regs[14] =3D env->pc;
+> -}
+> -
+>  bool mb_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>                       MMUAccessType access_type, int mmu_idx,
+>                       bool probe, uintptr_t retaddr)
+> @@ -271,7 +261,6 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs,
+> vaddr addr,
+>
+>      return paddr;
 >  }
-> +#endif /* CONFIG_USER_ONLY */
+> -#endif
 >
->  void helper_lldt(CPUX86State *env, int selector)
+>  bool mb_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
 >  {
-> diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
-> index dce800a8953..fd86daf93d2 100644
-> --- a/target/i386/tcg/tcg-cpu.c
-> +++ b/target/i386/tcg/tcg-cpu.c
-> @@ -72,12 +72,12 @@ static const struct TCGCPUOps x86_tcg_ops =3D {
->      .synchronize_from_tb =3D x86_cpu_synchronize_from_tb,
->      .cpu_exec_enter =3D x86_cpu_exec_enter,
->      .cpu_exec_exit =3D x86_cpu_exec_exit,
-> -    .cpu_exec_interrupt =3D x86_cpu_exec_interrupt,
->      .tlb_fill =3D x86_cpu_tlb_fill,
->  #ifdef CONFIG_USER_ONLY
->      .fake_user_exception =3D x86_cpu_do_interrupt,
->  #else
->      .do_interrupt =3D x86_cpu_do_interrupt,
-> +    .cpu_exec_interrupt =3D x86_cpu_exec_interrupt,
->      .debug_excp_handler =3D breakpoint_handler,
->      .debug_check_breakpoint =3D x86_debug_check_breakpoint,
->  #endif /* !CONFIG_USER_ONLY */
+> @@ -289,6 +278,8 @@ bool mb_cpu_exec_interrupt(CPUState *cs, int
+> interrupt_request)
+>      return false;
+>  }
+>
+> +#endif /* !CONFIG_USER_ONLY */
+> +
+>  void mb_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
+>                                  MMUAccessType access_type,
+>                                  int mmu_idx, uintptr_t retaddr)
 > --
 > 2.31.1
 >
 >
 
---000000000000cb87a205cb08e3c6
+--00000000000050f55105cb08eb91
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -264,131 +237,102 @@ g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/i386/tcg/helper-tcg.h |=C2=A0 2 ++<br>
-=C2=A0target/i386/tcg/seg_helper.c | 10 ++--------<br>
-=C2=A0target/i386/tcg/tcg-cpu.c=C2=A0 =C2=A0 |=C2=A0 2 +-<br>
-=C2=A03 files changed, 5 insertions(+), 9 deletions(-)<br></blockquote><div=
-><br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.c=
-om" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-yj6qo=
- gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2px 0p=
-x 0px"><br class=3D"gmail-Apple-interchange-newline"></div><div>=C2=A0</div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">
-diff --git a/target/i386/tcg/helper-tcg.h b/target/i386/tcg/helper-tcg.h<br=
->
-index 2510cc244e9..60ca09e95eb 100644<br>
---- a/target/i386/tcg/helper-tcg.h<br>
-+++ b/target/i386/tcg/helper-tcg.h<br>
-@@ -38,7 +38,9 @@ QEMU_BUILD_BUG_ON(TCG_PHYS_ADDR_BITS &gt; TARGET_PHYS_ADD=
-R_SPACE_BITS);<br>
-=C2=A0 * @cpu: vCPU the interrupt is to be handled by.<br>
-=C2=A0 */<br>
-=C2=A0void x86_cpu_do_interrupt(CPUState *cpu);<br>
-+#ifndef CONFIG_USER_ONLY<br>
-=C2=A0bool x86_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-+#endif<br>
+=C2=A0target/microblaze/cpu.h=C2=A0 =C2=A0 |=C2=A0 2 ++<br>
+=C2=A0target/microblaze/cpu.c=C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A0target/microblaze/helper.c | 13 ++-----------<br>
+=C2=A03 files changed, 5 insertions(+), 12 deletions(-)<br>
+<br></blockquote><div><br></div><div>Reviewed-by: Warner Losh &lt;<a href=
+=3D"mailto:imp@bsdimp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><d=
+iv class=3D"gmail-yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;w=
+idth:22px;margin:2px 0px 0px"><br class=3D"gmail-Apple-interchange-newline"=
+></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h<br>
+index e4bba8a7551..40401c33b72 100644<br>
+--- a/target/microblaze/cpu.h<br>
++++ b/target/microblaze/cpu.h<br>
+@@ -355,8 +355,10 @@ struct MicroBlazeCPU {<br>
+=C2=A0};<br>
 <br>
-=C2=A0/* helper.c */<br>
-=C2=A0bool x86_cpu_tlb_fill(CPUState *cs, vaddr address, int size,<br>
-diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c<br=
->
-index dee7bef68c6..13c6e6ee62e 100644<br>
---- a/target/i386/tcg/seg_helper.c<br>
-+++ b/target/i386/tcg/seg_helper.c<br>
-@@ -1110,6 +1110,7 @@ void do_interrupt_x86_hardirq(CPUX86State *env, int i=
-ntno, int is_hw)<br>
-=C2=A0 =C2=A0 =C2=A0do_interrupt_all(env_archcpu(env), intno, 0, 0, 0, is_h=
-w);<br>
-=C2=A0}<br>
 <br>
 +#ifndef CONFIG_USER_ONLY<br>
-=C2=A0bool x86_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0X86CPU *cpu =3D X86_CPU(cs);<br>
-@@ -1125,23 +1126,17 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int inter=
-rupt_request)<br>
-=C2=A0 =C2=A0 =C2=A0 * This is required to make icount-driven execution det=
-erministic.<br>
-=C2=A0 =C2=A0 =C2=A0 */<br>
-=C2=A0 =C2=A0 =C2=A0switch (interrupt_request) {<br>
--#if !defined(CONFIG_USER_ONLY)<br>
-=C2=A0 =C2=A0 =C2=A0case CPU_INTERRUPT_POLL:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cs-&gt;interrupt_request &amp;=3D ~CPU_IN=
-TERRUPT_POLL;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0apic_poll_irq(cpu-&gt;apic_state);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
--#endif<br>
-=C2=A0 =C2=A0 =C2=A0case CPU_INTERRUPT_SIPI:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0do_cpu_sipi(cpu);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-=C2=A0 =C2=A0 =C2=A0case CPU_INTERRUPT_SMI:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cpu_svm_check_intercept_param(env, SVM_EX=
-IT_SMI, 0, 0);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cs-&gt;interrupt_request &amp;=3D ~CPU_IN=
-TERRUPT_SMI;<br>
--#ifdef CONFIG_USER_ONLY<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_abort(CPU(cpu), &quot;SMI interrupt: canno=
-t enter SMM in user-mode&quot;);<br>
--#else<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0do_smm_enter(cpu);<br>
--#endif /* CONFIG_USER_ONLY */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-=C2=A0 =C2=A0 =C2=A0case CPU_INTERRUPT_NMI:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cpu_svm_check_intercept_param(env, SVM_EX=
-IT_NMI, 0, 0);<br>
-@@ -1162,7 +1157,6 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int interru=
-pt_request)<br>
+=C2=A0void mb_cpu_do_interrupt(CPUState *cs);<br>
+=C2=A0bool mb_cpu_exec_interrupt(CPUState *cs, int int_req);<br>
++#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0void mb_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0&quot;Servicing hardware INT=3D0x%02x\n&quot;, intno);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0do_interrupt_x86_hardirq(env, intno, 1);<=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0MMUAccessType access_type,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int mmu_idx, uintptr_t retaddr=
+);<br>
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c<br>
+index 72d8f2a0daa..15db277925f 100644<br>
+--- a/target/microblaze/cpu.c<br>
++++ b/target/microblaze/cpu.c<br>
+@@ -365,10 +365,10 @@ static const struct SysemuCPUOps mb_sysemu_ops =3D {<=
 br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
--#if !defined(CONFIG_USER_ONLY)<br>
-=C2=A0 =C2=A0 =C2=A0case CPU_INTERRUPT_VIRQ:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* FIXME: this should respect TPR */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cpu_svm_check_intercept_param(env, SVM_EX=
-IT_VINTR, 0, 0);<br>
-@@ -1173,12 +1167,12 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int inter=
-rupt_request)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0do_interrupt_x86_hardirq(env, intno, 1);<=
-br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cs-&gt;interrupt_request &amp;=3D ~CPU_IN=
-TERRUPT_VIRQ;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
--#endif<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0static const struct TCGCPUOps mb_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.initialize =3D mb_tcg_init,<br>
+=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D mb_cpu_synchronize_from_tb,<br=
+>
+-=C2=A0 =C2=A0 .cpu_exec_interrupt =3D mb_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D mb_cpu_tlb_fill,<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0/* Ensure that no TB jump will be modified as the progr=
-am flow was changed.=C2=A0 */<br>
-=C2=A0 =C2=A0 =C2=A0return true;<br>
-=C2=A0}<br>
-+#endif /* CONFIG_USER_ONLY */<br>
-<br>
-=C2=A0void helper_lldt(CPUX86State *env, int selector)<br>
-=C2=A0{<br>
-diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c<br>
-index dce800a8953..fd86daf93d2 100644<br>
---- a/target/i386/tcg/tcg-cpu.c<br>
-+++ b/target/i386/tcg/tcg-cpu.c<br>
-@@ -72,12 +72,12 @@ static const struct TCGCPUOps x86_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D x86_cpu_synchronize_from_tb,<b=
+=C2=A0#ifndef CONFIG_USER_ONLY<br>
++=C2=A0 =C2=A0 .cpu_exec_interrupt =3D mb_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D mb_cpu_do_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D mb_cpu_transaction_failed,<b=
 r>
-=C2=A0 =C2=A0 =C2=A0.cpu_exec_enter =3D x86_cpu_exec_enter,<br>
-=C2=A0 =C2=A0 =C2=A0.cpu_exec_exit =3D x86_cpu_exec_exit,<br>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D x86_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D x86_cpu_tlb_fill,<br>
-=C2=A0#ifdef CONFIG_USER_ONLY<br>
-=C2=A0 =C2=A0 =C2=A0.fake_user_exception =3D x86_cpu_do_interrupt,<br>
-=C2=A0#else<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D x86_cpu_do_interrupt,<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D x86_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.debug_excp_handler =3D breakpoint_handler,<br>
-=C2=A0 =C2=A0 =C2=A0.debug_check_breakpoint =3D x86_debug_check_breakpoint,=
+=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D mb_cpu_do_unaligned_access,<br=
+>
+diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c<br>
+index 20dbd673136..dd2aecd1d58 100644<br>
+--- a/target/microblaze/helper.c<br>
++++ b/target/microblaze/helper.c<br>
+@@ -26,16 +26,6 @@<br>
 <br>
-=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0#if defined(CONFIG_USER_ONLY)<br>
+<br>
+-void mb_cpu_do_interrupt(CPUState *cs)<br>
+-{<br>
+-=C2=A0 =C2=A0 MicroBlazeCPU *cpu =3D MICROBLAZE_CPU(cs);<br>
+-=C2=A0 =C2=A0 CPUMBState *env =3D &amp;cpu-&gt;env;<br>
+-<br>
+-=C2=A0 =C2=A0 cs-&gt;exception_index =3D -1;<br>
+-=C2=A0 =C2=A0 env-&gt;res_addr =3D RES_ADDR_NONE;<br>
+-=C2=A0 =C2=A0 env-&gt;regs[14] =3D env-&gt;pc;<br>
+-}<br>
+-<br>
+=C2=A0bool mb_cpu_tlb_fill(CPUState *cs, vaddr address, int size,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 MMUAccessType access_type, int mmu_idx,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 bool probe, uintptr_t retaddr)<br>
+@@ -271,7 +261,6 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs, v=
+addr addr,<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0return paddr;<br>
+=C2=A0}<br>
+-#endif<br>
+<br>
+=C2=A0bool mb_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
+=C2=A0{<br>
+@@ -289,6 +278,8 @@ bool mb_cpu_exec_interrupt(CPUState *cs, int interrupt_=
+request)<br>
+=C2=A0 =C2=A0 =C2=A0return false;<br>
+=C2=A0}<br>
+<br>
++#endif /* !CONFIG_USER_ONLY */<br>
++<br>
+=C2=A0void mb_cpu_do_unaligned_access(CPUState *cs, vaddr addr,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0MMUAccessType access_type,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int mmu_idx, uintptr_t retaddr=
+)<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---000000000000cb87a205cb08e3c6--
+--00000000000050f55105cb08eb91--

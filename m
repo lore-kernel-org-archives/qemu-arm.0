@@ -1,118 +1,117 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp618463lfb;
-        Thu, 2 Sep 2021 13:17:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBZZYoWDvMwWYpXE2UxAfkhgrwE5kPnF9E9/2+837TMwfQ1SHBXlaJPjS/8EzchT7KNMAr
-X-Received: by 2002:a05:6602:1346:: with SMTP id i6mr128085iov.128.1630613860787;
-        Thu, 02 Sep 2021 13:17:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630613860; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp618595lfb;
+        Thu, 2 Sep 2021 13:17:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzIuh8phPzkSruA+a6RdRJXUEEfuj9hbvrNr71Kk3rui6cjPAVf47QqxX3+fFnWp5tibkFM
+X-Received: by 2002:a92:de46:: with SMTP id e6mr3747504ilr.273.1630613872316;
+        Thu, 02 Sep 2021 13:17:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630613872; cv=none;
         d=google.com; s=arc-20160816;
-        b=lmPbzTa+z6va1h8n7sw/4Z8KiOpOlB8uhmx1h9xqHiyqUmCb+K0WP0fYa8ink7yCMi
-         klRpGPMjCaGuz1V1PyLHw0uvawWG4Vt1Ume2btXGQNB9BCLXn44J6vAxbfn57qZx8xJx
-         dc3iDkT0JhR9SqLl91mDpVcB5rcCj2g43NUZU76YA7ZkZTF1pzbq2rq26v9WaqH9RnG9
-         2w1SaMLcMbtZvMJM3QSt8zTUdVzZmaJp1WZ4pZqabfv4CLA+DgfDrMG8YbaKrwbR1FxV
-         lDB5NGXjzb1/1tgo4YVGlvGkG97Z/3ALN5eTtMym62fozwdr0pgHlRwoUC+pFuwkTJ4b
-         fK6g==
+        b=SmWalYzTZZg4qTZx0x3AxZeVT5Jsan32BzOOp2ZGH8eoB9ma6NbEq4R1UK+r8dxYgN
+         8AYU7Kao2PmUHKAesj4eTd7LOmrVZm5G0CclsPqTYlEks6VdvckVB6cwYQmSAXPKmSiV
+         LxKJY28cVAIhl4TM0Aumn4K+lANJ8gfkSyWpNlZVIZoE+29jFUNaOr4zSaUbJV37DPdJ
+         bzsawY5u6kCcxNasZ3yXKMMftyn7VEO6jR7FqnpKOU3oSf9ugMtDPvn40Mm0myT01lm/
+         kBFLMqSo3OxLD3gt4WDRCZ7UbZrFL2HqY4URsZinuuCyT1eIDm8i/5D96jiFQ24NqoqX
+         Tqlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=HUTdYryH4g0QwdfTQrQx8E5mk3Ak5PJvxWL0FfqOQE8=;
-        b=SSnU2pWgdiDunGj3Wt7nSmA2Imykq/09WpB8MpF8Vk113gaEQ3oU9aE4LCOnxVuIi5
-         SN2UioJWND98O8Fv/dK5ksDfXjpFVrwSVNKV01qFnFfIfgCj/l6ZgmZCISwIKtkSsv0n
-         QgIZbga4g/aKxmAjiJDxQfWpiFq92Lxzjy7Ska4BY3Gh7tZ2dmspYWwoMqkqfZZedSMD
-         UjDivi8C94dFWaIBvVDf4IjLKnF7ViMcT5TJ4K+FW7x1/7GmardaOiNUxSck+3Olh1bU
-         DEtv8lXOPvcA4MniT1Xshjy18VDcK22dpbcfUvkskcsxRm4ekw8v9YKZAj7wznXLH81r
-         I5Jw==
+        bh=0kZY4/on1W113cAqIpbz7/EvRBMjEx9P7xoTiic8ahg=;
+        b=fTqxhRw3n/xvuwrOyIXDhh6zC1DTeDnVF+PmlBDuCDj9xtO5s9i/9OpzcHoZthv4E8
+         3Wfo//X6j9Xtcbpq2FHfbI4h97/fgzHGVqqlUrxaMSNSwdA9OJVopGpQskg6v5s/BNPA
+         I5LSbuRrrLTR87xo5p1LryL8cgC6ZUxD1d8+EwZbgbzt60jxDSe5q++fDz/EakE1Daj0
+         Me2TuTGNParHqjbKAVmsKYHm4xxuCa+4zXt3iqs7W+UbBLabkujcudxSSnkfAidXG/pQ
+         QEWRdWTPhReeySsyPbajYkl4ZjYB3jvwMAQph9jOGudxcNeG13/806O0KNMe/dtq9+L8
+         Nebw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=gT3m451E;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=o+pBS4nP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n45si2535626jac.76.2021.09.02.13.17.40
+        by mx.google.com with ESMTPS id b7si3016617ilr.75.2021.09.02.13.17.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:17:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 13:17:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=gT3m451E;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52008 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=o+pBS4nP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLt9Y-0004GE-0D
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:17:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39788)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLt9j-0005RR-J9
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:17:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt7e-0001uo-UI
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:15:42 -0400
-Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929]:44711)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt9Y-0005Ma-CW
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:17:40 -0400
+Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a]:33596)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt7b-00068z-2y
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:15:41 -0400
-Received: by mail-ua1-x929.google.com with SMTP id x6so1562504uai.11
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:15:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt9W-0007tS-2N
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:17:40 -0400
+Received: by mail-vs1-xe2a.google.com with SMTP id bf15so2632407vsb.0
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:17:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HUTdYryH4g0QwdfTQrQx8E5mk3Ak5PJvxWL0FfqOQE8=;
- b=gT3m451EfStt/xnRBMF3RTRho0JYutgQYFADKXh1SYDddMdaTyEY6NkjLBf+06Hrix
- Fl7nQIEgd+791t/TITB7kE+M7L5y7+keLXwlC75d9+D2uDtCbkkABi/zPwKrblp4hm2W
- b/dEN2xjpuBXrPEOm5JuyvRKq6BpZC9zbNxqCzoU+iXmAol24OCwiy7Tym62pWdwx0Fa
- Bbzz33j2sX1s4PiL6adUK9a4BOCJoYji/WqYNrdkDUHDOZwlw5dARHPv6Ig0RmydN/Tm
- 0PmYLoOLihR6Z2+gt0zWoA+RBYt1eVpGC6ebLYJN36RIIOlMOnvDCkQKP5hyhzw4H2w8
- qGbg==
+ :cc; bh=0kZY4/on1W113cAqIpbz7/EvRBMjEx9P7xoTiic8ahg=;
+ b=o+pBS4nP03FRDT+8PmZdwxcsdoCmS6b0lbH/SzleoC4uYpANEf+7xkzgW123g+/C+L
+ vsFmghrywAZ/W/kVLHkLh7dsPzvgLQdKU3Jysgx4lundQinYdti06802cEYlk44l2MVG
+ JcCdc+Hq1qTP4PtszqzqnzQ+IMdL2cWwZ/O4egvjoFRVwdUBOZU0tiCDDaez3ztuoAPu
+ ZyBjPikWZB4x023a2/sqbhhS7xyqfO2Y2dA8eA5ois/Q53ksSl2bRtAeYcyu7kctB9vW
+ WK5DjvcuqRfaq+OIAZsmN1/kY4+IjLtn1nXzGw+5I1Vsn8Uluwn+UFp6JeD3/0p3LDjt
+ U9yA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=HUTdYryH4g0QwdfTQrQx8E5mk3Ak5PJvxWL0FfqOQE8=;
- b=I270X3hxivCpPpflGxp7gh8fyA0Rq0hqI36+eB674numDUeTgYOZxgDPwLRpxNcNdw
- Y0Qm8r7APqQcKSws864KCtI4miboCVPntl2GENchcZzUbZWBDi/n9Xn6YpuIREhn2dwD
- CuPGQjcZG33lVZ+mkHFuAUV0+Fc8S6LTJ40dlj671xBzrP8NaqNP+XQzNy4vDXfznq9M
- 2GByP6meBa5gjqXnGTaxoMZ1GHLJGcGMqTw+rlVk3r2tIYe3gIkuhx8UAZkWk21DjFYo
- eo0kGBpNlaOjQEDC0ltAGiDrMJ+OYn+LBFJvuqx5y4RRmKeGWY8kRaomUdGIQ6ALAd1f
- aP9A==
-X-Gm-Message-State: AOAM531XZJcvRzUNuuCCb7/IDfaMVfrNZCdnAT7ExSZikskTBO3bfIK5
- 2wwrbtLqntYXKMdWtfqT6xmuqI0RgOM9ts32GLqyfA==
-X-Received: by 2002:a9f:31c8:: with SMTP id w8mr41290uad.77.1630613737842;
- Thu, 02 Sep 2021 13:15:37 -0700 (PDT)
+ bh=0kZY4/on1W113cAqIpbz7/EvRBMjEx9P7xoTiic8ahg=;
+ b=rHbV8B/xY/a+EgcqnhpcfdkB7GAhtYcpDF5LvdzjmLyIPuoJHQvmp42IIuMsTqOYZ5
+ j09voRdd0WS+qKXiiM0PXocbKU7jKwIM5lbc+w0FbQYsQuJDfQlyhnGaPpaPj9wq+DHG
+ XETfahCKlsLW0tkZTtvIUdVdOqboeX2pJvx0FzOFMf7Hn1gbXQMtdf7ERjzGSbbBgFuc
+ xaPwr6csWRcRxAikq3Iu3ZYXcbTb8vI5dPtqlIDQt3a7Am2/Knw5snDcAWLhIPsXQckw
+ e5MNbkGcQOyfVPC/acyrMQScKPsI/CaHualGyrNrE7dnvqFHYCVLSKZn+5ZCmScaw6f3
+ 7l0A==
+X-Gm-Message-State: AOAM530wQysEVXNC6oEl/TLylWU93AHNUu6PcvEk1qTznuLr2FJhM6sA
+ Zy+CnfrX57zo7tGW3h+nJTzslZ397hPNU/0u/rguew==
+X-Received: by 2002:a67:2dc6:: with SMTP id t189mr3892333vst.49.1630613856925; 
+ Thu, 02 Sep 2021 13:17:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-7-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-7-f4bug@amsat.org>
+ <20210902151715.383678-10-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-10-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:15:27 -0600
-Message-ID: <CANCZdfqxmiLnND0srRphqg7yU=C_cCLo1S9=kqTCjvych96ufQ@mail.gmail.com>
-Subject: Re: [PATCH 06/24] target/alpha: Restrict cpu_exec_interrupt() handler
+Date: Thu, 2 Sep 2021 14:17:26 -0600
+Message-ID: <CANCZdfq1tWapUj9DNrQ4T0VYf3xR=4te64+W3Bnppa=PHJhcEQ@mail.gmail.com>
+Subject: Re: [PATCH 09/24] target/cris: Restrict cpu_exec_interrupt() handler
  to sysemu
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000009c418505cb08d8b0"
-Received-SPF: none client-ip=2607:f8b0:4864:20::929;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x929.google.com
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/alternative; boundary="000000000000b54e9c05cb08df4b"
+Received-SPF: none client-ip=2607:f8b0:4864:20::e2a;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe2a.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc <qemu-ppc@nongnu.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
@@ -121,15 +120,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RNqbZWBmBG5H
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LTiodo5ZIwH4
 
---0000000000009c418505cb08d8b0
+--000000000000b54e9c05cb08df4b
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 2, 2021 at 9:17 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Thu, Sep 2, 2021 at 9:18 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 >
 wrote:
 
@@ -137,99 +136,112 @@ wrote:
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  target/alpha/cpu.h    | 2 +-
->  target/alpha/cpu.c    | 2 +-
->  target/alpha/helper.c | 5 ++---
->  3 files changed, 4 insertions(+), 5 deletions(-)
+>  target/cris/cpu.h    |  2 +-
+>  target/cris/cpu.c    |  4 ++--
+>  target/cris/helper.c | 17 ++---------------
+>  3 files changed, 5 insertions(+), 18 deletions(-)
 >
 
 Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
-> diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-> index 82df108967b..4e993bd15bd 100644
-> --- a/target/alpha/cpu.h
-> +++ b/target/alpha/cpu.h
-> @@ -274,10 +274,10 @@ struct AlphaCPU {
+> diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+> index d3b64929096..be021899ae8 100644
+> --- a/target/cris/cpu.h
+> +++ b/target/cris/cpu.h
+> @@ -185,11 +185,11 @@ struct CRISCPU {
 >
 >  #ifndef CONFIG_USER_ONLY
->  extern const VMStateDescription vmstate_alpha_cpu;
+>  extern const VMStateDescription vmstate_cris_cpu;
 > -#endif
 >
->  void alpha_cpu_do_interrupt(CPUState *cpu);
->  bool alpha_cpu_exec_interrupt(CPUState *cpu, int int_req);
-> +#endif /* !CONFIG_USER_ONLY */
->  void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);
->  hwaddr alpha_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int alpha_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)=
-;
-> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-> index 4871ad0c0a6..93e16a2ffb4 100644
-> --- a/target/alpha/cpu.c
-> +++ b/target/alpha/cpu.c
-> @@ -218,10 +218,10 @@ static const struct SysemuCPUOps alpha_sysemu_ops =
+>  void cris_cpu_do_interrupt(CPUState *cpu);
+>  void crisv10_cpu_do_interrupt(CPUState *cpu);
+>  bool cris_cpu_exec_interrupt(CPUState *cpu, int int_req);
+> +#endif
+>
+>  void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags);
+>
+> diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+> index 70932b1f8c7..c2e7483f5bd 100644
+> --- a/target/cris/cpu.c
+> +++ b/target/cris/cpu.c
+> @@ -205,20 +205,20 @@ static const struct SysemuCPUOps cris_sysemu_ops =
 =3D {
 >
->  static const struct TCGCPUOps alpha_tcg_ops =3D {
->      .initialize =3D alpha_translate_init,
-> -    .cpu_exec_interrupt =3D alpha_cpu_exec_interrupt,
->      .tlb_fill =3D alpha_cpu_tlb_fill,
+>  static const struct TCGCPUOps crisv10_tcg_ops =3D {
+>      .initialize =3D cris_initialize_crisv10_tcg,
+> -    .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,
+>      .tlb_fill =3D cris_cpu_tlb_fill,
 >
 >  #ifndef CONFIG_USER_ONLY
-> +    .cpu_exec_interrupt =3D alpha_cpu_exec_interrupt,
->      .do_interrupt =3D alpha_cpu_do_interrupt,
->      .do_transaction_failed =3D alpha_cpu_do_transaction_failed,
->      .do_unaligned_access =3D alpha_cpu_do_unaligned_access,
-> diff --git a/target/alpha/helper.c b/target/alpha/helper.c
-> index 4f56fe4d231..81550d9e2ff 100644
-> --- a/target/alpha/helper.c
-> +++ b/target/alpha/helper.c
-> @@ -293,7 +293,6 @@ bool alpha_cpu_tlb_fill(CPUState *cs, vaddr addr, int
-> size,
->                   prot, mmu_idx, TARGET_PAGE_SIZE);
->      return true;
->  }
-> -#endif /* USER_ONLY */
+> +    .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,
+>      .do_interrupt =3D crisv10_cpu_do_interrupt,
+>  #endif /* !CONFIG_USER_ONLY */
+>  };
 >
->  void alpha_cpu_do_interrupt(CPUState *cs)
+>  static const struct TCGCPUOps crisv32_tcg_ops =3D {
+>      .initialize =3D cris_initialize_tcg,
+> -    .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,
+>      .tlb_fill =3D cris_cpu_tlb_fill,
+>
+>  #ifndef CONFIG_USER_ONLY
+> +    .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,
+>      .do_interrupt =3D cris_cpu_do_interrupt,
+>  #endif /* !CONFIG_USER_ONLY */
+>  };
+> diff --git a/target/cris/helper.c b/target/cris/helper.c
+> index 911867f3b48..36926faf323 100644
+> --- a/target/cris/helper.c
+> +++ b/target/cris/helper.c
+> @@ -41,20 +41,6 @@
+>
+>  #if defined(CONFIG_USER_ONLY)
+>
+> -void cris_cpu_do_interrupt(CPUState *cs)
+> -{
+> -    CRISCPU *cpu =3D CRIS_CPU(cs);
+> -    CPUCRISState *env =3D &cpu->env;
+> -
+> -    cs->exception_index =3D -1;
+> -    env->pregs[PR_ERP] =3D env->pc;
+> -}
+> -
+> -void crisv10_cpu_do_interrupt(CPUState *cs)
+> -{
+> -    cris_cpu_do_interrupt(cs);
+> -}
+> -
+>  bool cris_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>                         MMUAccessType access_type, int mmu_idx,
+>                         bool probe, uintptr_t retaddr)
+> @@ -287,7 +273,6 @@ hwaddr cris_cpu_get_phys_page_debug(CPUState *cs,
+> vaddr addr)
+>      D(fprintf(stderr, "%s %x -> %x\n", __func__, addr, phy));
+>      return phy;
+>  }
+> -#endif
+>
+>  bool cris_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
 >  {
-> @@ -348,7 +347,6 @@ void alpha_cpu_do_interrupt(CPUState *cs)
->
->      cs->exception_index =3D -1;
->
-> -#if !defined(CONFIG_USER_ONLY)
->      switch (i) {
->      case EXCP_RESET:
->          i =3D 0x0000;
-> @@ -404,7 +402,6 @@ void alpha_cpu_do_interrupt(CPUState *cs)
->
->      /* Switch to PALmode.  */
->      env->flags |=3D ENV_FLAG_PAL_MODE;
-> -#endif /* !USER_ONLY */
->  }
->
->  bool alpha_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-> @@ -451,6 +448,8 @@ bool alpha_cpu_exec_interrupt(CPUState *cs, int
+> @@ -319,3 +304,5 @@ bool cris_cpu_exec_interrupt(CPUState *cs, int
 > interrupt_request)
->      return false;
->  }
 >
-> +#endif /* !CONFIG_USER_ONLY */
+>      return ret;
+>  }
 > +
->  void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags)
->  {
->      static const char linux_reg_names[31][4] =3D {
+> +#endif /* !CONFIG_USER_ONLY */
 > --
 > 2.31.1
 >
 >
 
---0000000000009c418505cb08d8b0
+--000000000000b54e9c05cb08df4b
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 9:17 AM Philip=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 9:18 AM Philip=
 pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
 g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 :0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
@@ -238,96 +250,106 @@ g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/alpha/cpu.h=C2=A0 =C2=A0 | 2 +-<br>
-=C2=A0target/alpha/cpu.c=C2=A0 =C2=A0 | 2 +-<br>
-=C2=A0target/alpha/helper.c | 5 ++---<br>
-=C2=A03 files changed, 4 insertions(+), 5 deletions(-)<br></blockquote><div=
-><br></div><div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsd=
-imp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-=
-yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2=
-px 0px 0px">=C2=A0<br></div></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h<br>
-index 82df108967b..4e993bd15bd 100644<br>
---- a/target/alpha/cpu.h<br>
-+++ b/target/alpha/cpu.h<br>
-@@ -274,10 +274,10 @@ struct AlphaCPU {<br>
+=C2=A0target/cris/cpu.h=C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A0target/cris/cpu.c=C2=A0 =C2=A0 |=C2=A0 4 ++--<br>
+=C2=A0target/cris/helper.c | 17 ++---------------<br>
+=C2=A03 files changed, 5 insertions(+), 18 deletions(-)<br></blockquote><di=
+v><div><br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bs=
+dimp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div></div><div>=C2=A0</=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/target/cris/cpu.h b/target/cris/cpu.h<br>
+index d3b64929096..be021899ae8 100644<br>
+--- a/target/cris/cpu.h<br>
++++ b/target/cris/cpu.h<br>
+@@ -185,11 +185,11 @@ struct CRISCPU {<br>
 <br>
 =C2=A0#ifndef CONFIG_USER_ONLY<br>
-=C2=A0extern const VMStateDescription vmstate_alpha_cpu;<br>
+=C2=A0extern const VMStateDescription vmstate_cris_cpu;<br>
 -#endif<br>
 <br>
-=C2=A0void alpha_cpu_do_interrupt(CPUState *cpu);<br>
-=C2=A0bool alpha_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-+#endif /* !CONFIG_USER_ONLY */<br>
-=C2=A0void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);<br>
-=C2=A0hwaddr alpha_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);<br>
-=C2=A0int alpha_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int r=
-eg);<br>
-diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c<br>
-index 4871ad0c0a6..93e16a2ffb4 100644<br>
---- a/target/alpha/cpu.c<br>
-+++ b/target/alpha/cpu.c<br>
-@@ -218,10 +218,10 @@ static const struct SysemuCPUOps alpha_sysemu_ops =3D=
- {<br>
+=C2=A0void cris_cpu_do_interrupt(CPUState *cpu);<br>
+=C2=A0void crisv10_cpu_do_interrupt(CPUState *cpu);<br>
+=C2=A0bool cris_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
++#endif<br>
 <br>
-=C2=A0static const struct TCGCPUOps alpha_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D alpha_translate_init,<br>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D alpha_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D alpha_cpu_tlb_fill,<br>
+=C2=A0void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags);<br>
+<br>
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c<br>
+index 70932b1f8c7..c2e7483f5bd 100644<br>
+--- a/target/cris/cpu.c<br>
++++ b/target/cris/cpu.c<br>
+@@ -205,20 +205,20 @@ static const struct SysemuCPUOps cris_sysemu_ops =3D =
+{<br>
+<br>
+=C2=A0static const struct TCGCPUOps crisv10_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.initialize =3D cris_initialize_crisv10_tcg,<br>
+-=C2=A0 =C2=A0 .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D cris_cpu_tlb_fill,<br>
 <br>
 =C2=A0#ifndef CONFIG_USER_ONLY<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D alpha_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D alpha_cpu_do_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D alpha_cpu_do_transaction_fai=
-led,<br>
-=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D alpha_cpu_do_unaligned_access,=
++=C2=A0 =C2=A0 .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D crisv10_cpu_do_interrupt,<br>
+=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0};<br>
 <br>
-diff --git a/target/alpha/helper.c b/target/alpha/helper.c<br>
-index 4f56fe4d231..81550d9e2ff 100644<br>
---- a/target/alpha/helper.c<br>
-+++ b/target/alpha/helper.c<br>
-@@ -293,7 +293,6 @@ bool alpha_cpu_tlb_fill(CPUState *cs, vaddr addr, int s=
-ize,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 prot, mmu_id=
-x, TARGET_PAGE_SIZE);<br>
-=C2=A0 =C2=A0 =C2=A0return true;<br>
+=C2=A0static const struct TCGCPUOps crisv32_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.initialize =3D cris_initialize_tcg,<br>
+-=C2=A0 =C2=A0 .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D cris_cpu_tlb_fill,<br>
+<br>
+=C2=A0#ifndef CONFIG_USER_ONLY<br>
++=C2=A0 =C2=A0 .cpu_exec_interrupt =3D cris_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D cris_cpu_do_interrupt,<br>
+=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0};<br>
+diff --git a/target/cris/helper.c b/target/cris/helper.c<br>
+index 911867f3b48..36926faf323 100644<br>
+--- a/target/cris/helper.c<br>
++++ b/target/cris/helper.c<br>
+@@ -41,20 +41,6 @@<br>
+<br>
+=C2=A0#if defined(CONFIG_USER_ONLY)<br>
+<br>
+-void cris_cpu_do_interrupt(CPUState *cs)<br>
+-{<br>
+-=C2=A0 =C2=A0 CRISCPU *cpu =3D CRIS_CPU(cs);<br>
+-=C2=A0 =C2=A0 CPUCRISState *env =3D &amp;cpu-&gt;env;<br>
+-<br>
+-=C2=A0 =C2=A0 cs-&gt;exception_index =3D -1;<br>
+-=C2=A0 =C2=A0 env-&gt;pregs[PR_ERP] =3D env-&gt;pc;<br>
+-}<br>
+-<br>
+-void crisv10_cpu_do_interrupt(CPUState *cs)<br>
+-{<br>
+-=C2=A0 =C2=A0 cris_cpu_do_interrupt(cs);<br>
+-}<br>
+-<br>
+=C2=A0bool cris_cpu_tlb_fill(CPUState *cs, vaddr address, int size,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 MMUAccessType access_type, int mmu_idx,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 bool probe, uintptr_t retaddr)<br>
+@@ -287,7 +273,6 @@ hwaddr cris_cpu_get_phys_page_debug(CPUState *cs, vaddr=
+ addr)<br>
+=C2=A0 =C2=A0 =C2=A0D(fprintf(stderr, &quot;%s %x -&gt; %x\n&quot;, __func_=
+_, addr, phy));<br>
+=C2=A0 =C2=A0 =C2=A0return phy;<br>
 =C2=A0}<br>
--#endif /* USER_ONLY */<br>
+-#endif<br>
 <br>
-=C2=A0void alpha_cpu_do_interrupt(CPUState *cs)<br>
+=C2=A0bool cris_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
 =C2=A0{<br>
-@@ -348,7 +347,6 @@ void alpha_cpu_do_interrupt(CPUState *cs)<br>
+@@ -319,3 +304,5 @@ bool cris_cpu_exec_interrupt(CPUState *cs, int interrup=
+t_request)<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0cs-&gt;exception_index =3D -1;<br>
-<br>
--#if !defined(CONFIG_USER_ONLY)<br>
-=C2=A0 =C2=A0 =C2=A0switch (i) {<br>
-=C2=A0 =C2=A0 =C2=A0case EXCP_RESET:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0i =3D 0x0000;<br>
-@@ -404,7 +402,6 @@ void alpha_cpu_do_interrupt(CPUState *cs)<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0/* Switch to PALmode.=C2=A0 */<br>
-=C2=A0 =C2=A0 =C2=A0env-&gt;flags |=3D ENV_FLAG_PAL_MODE;<br>
--#endif /* !USER_ONLY */<br>
+=C2=A0 =C2=A0 =C2=A0return ret;<br>
 =C2=A0}<br>
-<br>
-=C2=A0bool alpha_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br=
->
-@@ -451,6 +448,8 @@ bool alpha_cpu_exec_interrupt(CPUState *cs, int interru=
-pt_request)<br>
-=C2=A0 =C2=A0 =C2=A0return false;<br>
-=C2=A0}<br>
-<br>
-+#endif /* !CONFIG_USER_ONLY */<br>
 +<br>
-=C2=A0void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0static const char linux_reg_names[31][4] =3D {<br>
++#endif /* !CONFIG_USER_ONLY */<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---0000000000009c418505cb08d8b0--
+--000000000000b54e9c05cb08df4b--

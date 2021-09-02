@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp419418lfb;
-        Thu, 2 Sep 2021 09:16:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyDLHOynHYG4XuJlu3SZVu+yYQRsJ/d4d+WxtwqUK7BxP6aA/BGGbVFKPNqZ1g+MH1WMSa4
-X-Received: by 2002:a05:6512:15a1:: with SMTP id bp33mr3144479lfb.122.1630599415742;
-        Thu, 02 Sep 2021 09:16:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630599415; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp419484lfb;
+        Thu, 2 Sep 2021 09:16:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwtl+o8cEUT4gOu3xHgqHd7vZGJjCoj6Jb39pF8R1j9vASx2oB7QyPGEIfQPvkgPA6DuPy6
+X-Received: by 2002:ac2:5c41:: with SMTP id s1mr3472229lfp.187.1630599419512;
+        Thu, 02 Sep 2021 09:16:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630599419; cv=none;
         d=google.com; s=arc-20160816;
-        b=nlQIipLa6Pnw3VKXccbGnieLEekYi+WxITF0J8dPjFgYTFIATHfiwXffskQ/SoupQE
-         iTRv7KP8vn2Bjk52FLWWcF5zGfpFCmIpmTDVY8jlwCoyPJlrao9LWiXjHlubNOmnFFR5
-         ylnum1m2ZVtTalznrHyOcMepZ2duPukzLA3p92fhj0KIh+i0iRI+eMKmDdTo/0bfak0z
-         Xz5Q1nq8XEUE9zjeMjQXIoZ5wlR+ILJpHx5huhFKs9c/PocEK6t9ky/NASbstPvCIvej
-         c52/CBLnTSejpVHYj8Tjy+ssEcOXnOOmE9QA8bM5JOf/AYPnOvHDMNajU8xHInInlfLf
-         G78Q==
+        b=R09DJPmkH43C2TsBmHKrDFeDH9W2+pkvM04cG5IvgIrWGAk18yffsYAnexvtS4gNB1
+         ptqrxL1cCLvEeSwLH5nzeePReE7luI3fFWPLkck2Cl6NMjNH2QHGtv6Bzz4HwuMelEKB
+         8RC5HAN7TEi2xB3zhDbBl7LcJ/PVq/G8o+W+IH3SpTsmhv2Nc4WytwoECyLFvqCqvo69
+         91cA2rDz7kYDuDYSTMFhFUf/dLAl81uRI3E/bY1RLx1t6sw6MK6F/3vuet6OL2M+QdQQ
+         KkZ4pxzIUHYC5QUKlPXvYKZWxaU2WmvnzLow9ZbYrfdVWaifBFqs5S/bVoyrLFlT41jw
+         ziMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from:sender
          :dkim-signature;
-        bh=1uiIX4B4XnBDTSuiPfQ6TXqVM80IFaG7yss59sugPek=;
-        b=Q8ltW7WVTuSgJbLJoHRwTLzOXpyMy++swjnj1mkWiTRmNcLmtMEYDQodYlHLIQWMyY
-         BiXpcSQWKDhlG3swFl9R0SzMIm0hejYscuoEYK2zDZtxjx6rKU0MjzYZvy1nPeKH/Yzb
-         UQUle7YChG57mwuT6ME4eGGmpYUuRBFXs7SDowuwqXTUideakpBO/QL2IB+VnsySt2qY
-         kEqI9bYF2SS0+LiNlvoEHVXy83UKTR7MyNBGR77vGpW7zhJk1SLYUu9KXP5Igmz7xE9t
-         KaJJDlY7XcvDs5X5rX7d2yEhWpHtGp2RQa4WoIdDBsC9cItZKZtKL7XP4uGyD/I9a66k
-         jDuQ==
+        bh=ealGhID5/ZwlyOxoKUyhT8abP5eBfK+uMSNnBQgE1TY=;
+        b=JhYs5vUdb6WeDRrhC+OqBf7iw1Vmx7N97iN7y5XmEvzEPS/EXIG8n2JPBV18r3kqWQ
+         wELWweZOsziqCh4v2ewgUgi6mgvQ7lSW5pJtdA4rBRBWrm1xIR0PHybNgjYhOrFgnZQc
+         Mv4lW9jKx+OjenJyN55zTKpumaUbM6WZa4fi7K+hDn99bF+KsRlMJe5erFik047txWRI
+         io7F2ZfToJEf9HwfDMk58nCDsuSqUgA5S7paCrFThW1O8xZ2Gcbjbrv38V3EaOZ4Zeyc
+         xA+/ItpNSyX/G6+M+9EiGx+dLHX3jA/GenMkebMSSNKETkHxn5ZbGhy6mzqJjrTjX8WR
+         xJ9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KqzWIKJ7;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=W7wWIRu8;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.16.55;
-        Thu, 02 Sep 2021 09:16:55 -0700 (PDT)
+        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.16.59;
+        Thu, 02 Sep 2021 09:16:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KqzWIKJ7;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=W7wWIRu8;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1346266AbhIBQRv (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Sep 2021 12:17:51 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44970 "EHLO
+        id S1346221AbhIBQR4 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 12:17:56 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45004 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1346060AbhIBQRr (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Sep 2021 12:17:47 -0400
-Received: from mail-wm1-x32d.google.com (mail-wm1-x32d.google.com [IPv6:2a00:1450:4864:20::32d])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id A9E7BC061575
-        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:16:48 -0700 (PDT)
-Received: by mail-wm1-x32d.google.com with SMTP id u26-20020a05600c441a00b002f66b2d8603so1868475wmn.4
-        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:16:48 -0700 (PDT)
+        with ESMTP id S1345983AbhIBQRx (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 12:17:53 -0400
+Received: from mail-wr1-x434.google.com (mail-wr1-x434.google.com [IPv6:2a00:1450:4864:20::434])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id C90BDC061757
+        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:16:54 -0700 (PDT)
+Received: by mail-wr1-x434.google.com with SMTP id v10so3835567wrd.4
+        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:16:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=1uiIX4B4XnBDTSuiPfQ6TXqVM80IFaG7yss59sugPek=;
-        b=KqzWIKJ7D2fRmpGndmFmFNuwslKTxikjGxDMGA2xsPlBUegPAHynuzDusdrr5XjA+x
-         UCJbwBQeZPJQtXG0Xtu7RxwzPdlThK6RVv2DMQ/DDE16jxbu2MLTQ+EKf6s/CZXPXeN6
-         nzJIGn8UESvClj1N6xIA9j+rSpvqLJiMXVoYewPiMa355LZW9o2GW/afajWJc0/NEar0
-         Q8DpjYGYUJuF0UC+706nFPlDCV62j7IN2KHM9wzg02+ZUE7+nf9cE7ogevav/S8CwMh4
-         Jx4C3Bwaygo71B9Uga55OA34fqh3F6hfjdQCFZRtq0AWQ50+fnYTHxBfr074WpLdgF+1
-         YThQ==
+        bh=ealGhID5/ZwlyOxoKUyhT8abP5eBfK+uMSNnBQgE1TY=;
+        b=W7wWIRu899u62PiYNAofijA+z0Fl13DLdrj//JnOtB9nuav7HgFA25Nkb7zPP9qx0q
+         V+T6UyuHV8lfYhIsfl6T3reP8G73iXnJAJA0ZI5pdqQK3b2QENsciaKQFL/VhPrWDk3o
+         V9xTH3D7YAWgG+OE8yKD9gO/syxb0LKTwtCgItyeMl0A+kX7M5ZtD+Rg6R+o7Cnq1P8l
+         69E8lhjYEQcYXk+iNCzjjt0R2+v6w/ULq5UCkJupima5EWr+YrbDz2jjvylypCOx3Xrd
+         ioW7y8oVW/o1/Fd4QRhzX/tp9G+m2C+2tAs7vFR9FJH4g8+0Rq+iX11ED1zseb/+uUtD
+         FA2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=1uiIX4B4XnBDTSuiPfQ6TXqVM80IFaG7yss59sugPek=;
-        b=se1re+QoA8I3F63VPIZ796+qcHh38SL2nPgQxootbrRJo6b5XPZWUFUa29Fd23UC6q
-         j15dyah3Fw0VfYRn+jdubky09gvJQbRjzCwcZUgMOxyTCp7f9iEafBSj9ES8Qxc5lvKP
-         Ww8AJDV884cTrxzWOM8eWeBpWq8aZPMEwskjGApExl+KKqc0ZqTr6edRgHEvjQmjAj6L
-         4F3xHAI1LlhUUXJ9TXn2aIEj7XjPPq2/vA+odUxhmsGlJiKo60EmGtubwvulcCCEJg8r
-         7J9WZdEfKlpjM0SkI4vyM5Ii9TIk1kmPfgccV9npxMgxvlZy4SABAfm2XhavU2sNehol
-         c4UA==
-X-Gm-Message-State: AOAM530jVRmUxN7487lnCYZGCAgpwTUWFPs4T73HbohdO4WB58ZD3Wjx
-        jreM/6gs6j4qWt97qG4ry8k=
-X-Received: by 2002:a1c:44c5:: with SMTP id r188mr4089427wma.9.1630599407288;
-        Thu, 02 Sep 2021 09:16:47 -0700 (PDT)
+        bh=ealGhID5/ZwlyOxoKUyhT8abP5eBfK+uMSNnBQgE1TY=;
+        b=tiZeZRnR0iMM0TZy8T9f0FgdHhDSxQg+HN1rQgXMMnvawHUrCp+NarPv68BFTCVdRD
+         CvQmzCXNcLukhAk0Msf+LtuYTswGQ35RLnU8Z+4hPmQCtsoU59nhqsXWJtuqt4BWEx2o
+         xOBzc/Tc8k7XPxTegBrJJ59X86jxy2g+qYoYCnKHvjmqfJcS6/QN0TPsg5rRd60xgSJC
+         4RTFOFXAgNST2YEbnoVe8gmoO+mxa5ev/mL9x0O4wJskQlcruXNwgIbi2IoSniB0novR
+         wVaAVRUjuWbh8H8sDXyaUaruYbtoU7eroLhI/wQsnkg/Fk5Zy5bswl0EG3XNOVUraIis
+         AMkg==
+X-Gm-Message-State: AOAM532FUfazoSC1AvT2F8xzCt4vAX8k2g0wWSgS/86alTT9fVkOHP+F
+        MXi88Xa87xsAPYSFsqHXVhA=
+X-Received: by 2002:adf:916f:: with SMTP id j102mr4715417wrj.422.1630599413462;
+        Thu, 02 Sep 2021 09:16:53 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id y24sm2479386wma.9.2021.09.02.09.16.44
+        by smtp.gmail.com with ESMTPSA id l35sm1840348wms.40.2021.09.02.09.16.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Sep 2021 09:16:46 -0700 (PDT)
+        Thu, 02 Sep 2021 09:16:52 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -120,9 +120,9 @@ Cc:     Bin Meng <bin.meng@windriver.com>,
         Palmer Dabbelt <palmer@dabbelt.com>,
         Stafford Horne <shorne@gmail.com>,
         Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-Subject: [PATCH v3 10/30] target/avr: Restrict has_work() handler to sysemu and TCG
-Date:   Thu,  2 Sep 2021 18:15:23 +0200
-Message-Id: <20210902161543.417092-11-f4bug@amsat.org>
+Subject: [PATCH v3 11/30] target/cris: Restrict has_work() handler to sysemu and TCG
+Date:   Thu,  2 Sep 2021 18:15:24 +0200
+Message-Id: <20210902161543.417092-12-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902161543.417092-1-f4bug@amsat.org>
 References: <20210902161543.417092-1-f4bug@amsat.org>
@@ -132,50 +132,47 @@ Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: n1/xh4UG9HV2
+X-TUID: zPSgN8gByqX7
 
 Restrict has_work() to TCG sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/avr/cpu.c | 4 +++-
+ target/cris/cpu.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/avr/cpu.c b/target/avr/cpu.c
-index e9fa54c9777..6267cc6d530 100644
---- a/target/avr/cpu.c
-+++ b/target/avr/cpu.c
-@@ -32,6 +32,7 @@ static void avr_cpu_set_pc(CPUState *cs, vaddr value)
-     cpu->env.pc_w = value / 2; /* internally PC points to words */
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index c2e7483f5bd..d6e486746be 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -35,10 +35,12 @@ static void cris_cpu_set_pc(CPUState *cs, vaddr value)
+     cpu->env.pc = value;
  }
  
 +#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
- static bool avr_cpu_has_work(CPUState *cs)
+ static bool cris_cpu_has_work(CPUState *cs)
  {
-     AVRCPU *cpu = AVR_CPU(cs);
-@@ -40,6 +41,7 @@ static bool avr_cpu_has_work(CPUState *cs)
-     return (cs->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_RESET))
-             && cpu_interrupts_enabled(env);
+     return cs->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_NMI);
  }
 +#endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
  
- static void avr_cpu_synchronize_from_tb(CPUState *cs,
-                                         const TranslationBlock *tb)
-@@ -198,6 +200,7 @@ static const struct TCGCPUOps avr_tcg_ops = {
-     .tlb_fill = avr_cpu_tlb_fill,
+ static void cris_cpu_reset(DeviceState *dev)
+ {
+@@ -208,6 +210,7 @@ static const struct TCGCPUOps crisv10_tcg_ops = {
+     .tlb_fill = cris_cpu_tlb_fill,
  
  #ifndef CONFIG_USER_ONLY
-+    .has_work = avr_cpu_has_work,
-     .cpu_exec_interrupt = avr_cpu_exec_interrupt,
-     .do_interrupt = avr_cpu_do_interrupt,
++    .has_work = cris_cpu_has_work,
+     .cpu_exec_interrupt = cris_cpu_exec_interrupt,
+     .do_interrupt = crisv10_cpu_do_interrupt,
  #endif /* !CONFIG_USER_ONLY */
-@@ -214,7 +217,6 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
+@@ -294,7 +297,6 @@ static void cris_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_reset(dc, cris_cpu_reset, &ccc->parent_reset);
  
-     cc->class_by_name = avr_cpu_class_by_name;
- 
--    cc->has_work = avr_cpu_has_work;
-     cc->dump_state = avr_cpu_dump_state;
-     cc->set_pc = avr_cpu_set_pc;
-     cc->memory_rw_debug = avr_cpu_memory_rw_debug;
+     cc->class_by_name = cris_cpu_class_by_name;
+-    cc->has_work = cris_cpu_has_work;
+     cc->dump_state = cris_cpu_dump_state;
+     cc->set_pc = cris_cpu_set_pc;
+     cc->gdb_read_register = cris_cpu_gdb_read_register;
 -- 
 2.31.1

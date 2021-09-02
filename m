@@ -1,93 +1,93 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp621038lfb;
-        Thu, 2 Sep 2021 13:21:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzMzYlWpMWDOC4dQN4puWuSu7LigCvI5PksViXvttbc6fzSovAHDg4RshBz8hYV/95LhFlA
-X-Received: by 2002:ac8:1099:: with SMTP id a25mr153788qtj.155.1630614083409;
-        Thu, 02 Sep 2021 13:21:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630614083; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp622042lfb;
+        Thu, 2 Sep 2021 13:23:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzqHveRcs3Or0/Njl0VsK1idewyW8dCvgABqWOcXNYY/Ar3LvyJqu/GKlxl/q3sm586de8q
+X-Received: by 2002:a05:6e02:1d1a:: with SMTP id i26mr14547ila.96.1630614182472;
+        Thu, 02 Sep 2021 13:23:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630614182; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yb6K2Hhw+49TBvBMvftbeqdd5DX4qbK25IAbwF2LitwZ+YfreyVlROTPtaSLAfhYfy
-         JTbei5YoBanMWDsGYaIv9bjH+pkLJ2Rz4LFlrC7vI+38+WFMDIs7rzCBlvXdoafvyEYO
-         /gu8gXpW3Ff02jovEiZe3kobALbBy2NtTzyK+8wajeSj4/UPj+E6oBvQZ+xSfB4p0ANd
-         izWXDf0Awr20bPBk63JAVTyA/QAkwBc5oGEu/10ASiW//7UpCPNW4I6XLbdjxIPsg0s4
-         CpbLthbGGKPoBpX3DsBReBd4FFXKYpAfbF36xnluGLBMR/XjTWMzO4XyEOFwZTJdEAfo
-         0AaA==
+        b=rFkHq4lsvA4da4R+jRliq7hWl1NkRZ4uct/v5rTfg0Mff+uK6YxnkDOMWJLw7RWQMw
+         g49c42UZc1JjRTblM8niTR9cXFqUMy9hv0/39z9UcOBblAxqcSS1FTORIHEeroKcF+AW
+         4fq404U1/YqJKDLHxo3eRVZG6Mq7SOm9fwtrVzSIqNH00rG/FNfBXOADbhlaPNjXwP+/
+         xMaACnEpvSiGVpLijhbKQM0W/PdrRwOUoz1N3UHT7u73HNHOWaxCDhkqGC1yCUvqM+fy
+         5n7qJ3Tg06Jzyb+5p/2zTIYEjl5Nqc2PSRUsga20RlTP4b3ouDJ3Qi7WdAP5SovtRA57
+         lD7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=vTK0MmD+/MHkLwWYphLIayzbOAO+je6/yf1mMIn0yWU=;
-        b=SXtXzK8ThOBpKFvKCjdipZ+QVoHwquhu/HftbgE7my5TIZbt8xtWURMVZwbDKbZl5X
-         9K3jyJkFhFjQhvFLkdLc6nAX7mNoBpJh8gnHe3eHKgI5OXa+vaw5E//c7VLr+Tff6CIb
-         UYc3pxuV5VwgiOggY7WrVjDaAFYSfgaTlfKVNLWMwxnSvMHFZD7khwdlJaQPovsDZszJ
-         W4LOyyzRUYdChbSzrmc+LAypW47h1zSTCja9diRx9aulEttjSI2iwGLr+PdlQHuNZP1U
-         tFHDNVboxUvwVy5ZcqyiXtRQ3zsNovWMfXU2uzNw/fw18H/I7Ab5VIBgWWA6pOG5EdzF
-         UnHA==
+        bh=cCBveFy44EvN8Y+suw+PSl0yG/3v9JpIzr+j/jfrU2M=;
+        b=RS5IXAK4xTWHgDXIGr2SVejpsoPjyB7V+ZgNvCwOTtDJ57nZjtj1OCt5hbJscNFOYg
+         wRXGvtYw5R8bzm5hj24HURn+T4AM1kT6AfxMl1NIltG+yghPjbLkXf1SRtvlCaNp3blj
+         MrD55HZeRjxNmPUTV/J3gBXb0jo/cYRbYoC9d0IH8KU0liUaRgrA0stTCvDSe0gfQdo0
+         NOV8FV+9fNn400Md3GIRdKVBVkvQeN70yd2Qo+eVWRWsJbd0IEhdL7lHF3Xw5gOH9/NU
+         EkX1izHVbiBEcDhuGJxcP/MmG4slnmKUMTIM7FrWrYXxDeCQmiCmIzn6L5SbtJ9vNr8Z
+         iTXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=sS7edowe;
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=arvYgetv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si1734810qkd.171.2021.09.02.13.21.23
+        by mx.google.com with ESMTPS id i12si3617701ilu.9.2021.09.02.13.23.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:21:23 -0700 (PDT)
+        Thu, 02 Sep 2021 13:23:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=sS7edowe;
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=arvYgetv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35916 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtD8-0004Ak-LJ
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:21:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40814)
+	id 1mLtEj-0007ik-NR
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:23:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41316)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtBo-0002be-9N
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:20:00 -0400
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932]:41860)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtEO-0007fS-BY
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:22:40 -0400
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f]:44745)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtBl-0001FM-6V
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:19:59 -0400
-Received: by mail-ua1-x932.google.com with SMTP id 75so1578221uav.8
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:19:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtEM-0003ah-Dm
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:22:39 -0400
+Received: by mail-ua1-x92f.google.com with SMTP id x6so1571622uai.11
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:22:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vTK0MmD+/MHkLwWYphLIayzbOAO+je6/yf1mMIn0yWU=;
- b=sS7edowe5e36nnmyYEvvEnTcK/u80gHu4wKxap9O7yF8HXiNHhz1B8o0gV3MnTjF9F
- knVndn/383Kf88r2JUTJNYGrHrMmN4eXH0cVxVxhTh1ceT1hHseUrVPdiUgaj2vSQ8S7
- 00yjmOEx8vRzEoi92uFBx9PRRb83+oGvMLk5v8iFTp/LRSIO+ySodG3BY8mSb3GsHl5e
- Ndy191FlRRisBqTJmh7WHkNKDt6LzlhgsMCD68Gfesqt/wvWMKrZ2q0zZtDHBA5DgkSb
- dSUHYJmKTm77BAbNy5/zVH/HNkQYmGEOrUIpKk/kHk0gHtqq8HL9sbNu1AcjVXTS8Jg7
- OZow==
+ :cc; bh=cCBveFy44EvN8Y+suw+PSl0yG/3v9JpIzr+j/jfrU2M=;
+ b=arvYgetv+GMbeeP+zczZjyDFEJU9iDLbMV+apowXv1huVUkgC5nOjCyvwmy8xIDP2k
+ wwd/BPlBGYhn7j/ppiVy6hQ9jyKWuB1H2SwoDN4n1X0ticpGnMFi8HHYrjtYkMz7tu8C
+ hSs7L3Bb4kj12/sXLD/+DC6aJFxo/UtvJg3PARsyUchRQQYNnWIcga7RNgAjJO+DLDgo
+ 0jW/IMR2EdEsjlKMCW50LB5NzmRNGqnJeHU3X0scHf02oM7o0Lold269hpEvImqMGUVC
+ UX1aMjWY6Q3MAbjR05nqkR7glyTtRvVvJ6Ig3z3FliImRqfun1L8VqIbzGVX9LGmWQ6f
+ /iZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=vTK0MmD+/MHkLwWYphLIayzbOAO+je6/yf1mMIn0yWU=;
- b=UbG7ry9KgxFg+auQKleK5Dx3LWUSZ0z2YrzGcOqCdxn2/JDvpUHPh6v3H3SjZweV1s
- gYDs1oDrMwMKxdsTUn5qmwFFsIovpOULG/YhIGOXwZ0WNSkdzOT/T9KWHF2Ga/4fYYR0
- Pyz8r4p4TbvqDrhQpXU1s0gbMznLVrjr8eTeMQ1RWub2MsptRH5EFx2mdSKBJPz12Q/C
- 16a867qrNHtk6yYDiC2y2udhKkEZFN82yCwQhzEuReqNxR1o8RmcWOW2MCnmfCurtwBx
- hNsJ60TKnzR7FulKDlAGXO7wh/NnxnPBq9Y5s5xy9a5EwJ/q01PQS1BAEDzc54jzDpAz
- WHVw==
-X-Gm-Message-State: AOAM532i6w6p1nX+K1PUvtj5E0HjMlr1XyTDqFQEOKo84uTiCkdHieIB
- Y5ilgngxRSG4iIteM1wY1mKLCWWJmraGiMPKEX7wnA==
-X-Received: by 2002:a9f:31c8:: with SMTP id w8mr57561uad.77.1630613996246;
- Thu, 02 Sep 2021 13:19:56 -0700 (PDT)
+ bh=cCBveFy44EvN8Y+suw+PSl0yG/3v9JpIzr+j/jfrU2M=;
+ b=gVJ+b7Vw6Unjg8W7q400QJ10JxJ8a8cWh+c3YMQXMbxo9y6LAPFYWL+KTcJ71hiNJZ
+ kLDzGqm8l5tFjEvnhn4wKM5geWuRkALy3PPquLcbHNNc9WhQaZijKhx0m+vIKlHzgg4Z
+ VZD2kPOkfJVGHzIv1Cc7kN02t3DMqr9GFpjoD6cAMUNYF3KxWa0XunnCRxbB5ZAy7gfx
+ 05tf+6xdytuA0bXxaMd1SDxN5/u9Jsm59V87YyPT9cHHqqmVvdbKY/UysowV5LDuQouC
+ 3JqS2EhqgNa8AOVT1q8/Slb/9MvF5dDB+SvJGtyk1tGGjZnVkTDo/yjNkEBN7WCRPcyK
+ sapw==
+X-Gm-Message-State: AOAM531ul3Bfhj6C18+ARfHOQDt194z6TKz4CJbkMZ2IyFfdCrDEYjcX
+ oiqvzJEF8Vmdjvo5irG/ZieXHTJFB1pIcgjgfAKEfw==
+X-Received: by 2002:a9f:23d0:: with SMTP id 74mr64957uao.69.1630614155186;
+ Thu, 02 Sep 2021 13:22:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-13-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-13-f4bug@amsat.org>
+ <20210902151715.383678-16-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-16-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:19:45 -0600
-Message-ID: <CANCZdfoJbramtU4tc-KpPKGHp3yer0Y_D=9zzzwDraRVP8Ka6Q@mail.gmail.com>
-Subject: Re: [PATCH 12/24] target/m68k: Restrict cpu_exec_interrupt() handler
+Date: Thu, 2 Sep 2021 14:22:24 -0600
+Message-ID: <CANCZdfq0LLoC3Tr66bmjXOgB381hrHC751AbwKAZG2vUN3YeQw@mail.gmail.com>
+Subject: Re: [PATCH 15/24] target/nios2: Restrict cpu_exec_interrupt() handler
  to sysemu
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000000330a405cb08e8a7"
-Received-SPF: none client-ip=2607:f8b0:4864:20::932;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x932.google.com
+Content-Type: multipart/alternative; boundary="0000000000007c672e05cb08f1b4"
+Received-SPF: none client-ip=2607:f8b0:4864:20::92f;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92f.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -122,9 +122,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bNIhlUO9MYUV
+X-TUID: BC2/7QZy/KHs
 
---0000000000000330a405cb08e8a7
+--0000000000007c672e05cb08f1b4
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -136,98 +136,59 @@ wrote:
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  target/m68k/cpu.h       |  2 ++
->  target/m68k/cpu.c       |  2 +-
->  target/m68k/op_helper.c | 16 +++-------------
->  3 files changed, 6 insertions(+), 14 deletions(-)
+>  target/nios2/cpu.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 >
 
 Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
 
-> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-> index 997d588911c..550eb028b6e 100644
-> --- a/target/m68k/cpu.h
-> +++ b/target/m68k/cpu.h
-> @@ -166,8 +166,10 @@ struct M68kCPU {
->  };
->
+> diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+> index 5e37defef80..947bb09bc1e 100644
+> --- a/target/nios2/cpu.c
+> +++ b/target/nios2/cpu.c
+> @@ -127,6 +127,7 @@ static void nios2_cpu_realizefn(DeviceState *dev,
+> Error **errp)
+>      ncc->parent_realize(dev, errp);
+>  }
 >
 > +#ifndef CONFIG_USER_ONLY
->  void m68k_cpu_do_interrupt(CPUState *cpu);
->  bool m68k_cpu_exec_interrupt(CPUState *cpu, int int_req);
-> +#endif /* !CONFIG_USER_ONLY */
->  void m68k_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
->  hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int m68k_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-> index 72de6e97262..66d22d11895 100644
-> --- a/target/m68k/cpu.c
-> +++ b/target/m68k/cpu.c
-> @@ -515,10 +515,10 @@ static const struct SysemuCPUOps m68k_sysemu_ops =
-=3D {
->
->  static const struct TCGCPUOps m68k_tcg_ops =3D {
->      .initialize =3D m68k_tcg_init,
-> -    .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,
->      .tlb_fill =3D m68k_cpu_tlb_fill,
->
->  #ifndef CONFIG_USER_ONLY
-> +    .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,
->      .do_interrupt =3D m68k_cpu_do_interrupt,
->      .do_transaction_failed =3D m68k_cpu_transaction_failed,
->  #endif /* !CONFIG_USER_ONLY */
-> diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-> index d006d1cb3ea..5d624838ae6 100644
-> --- a/target/m68k/op_helper.c
-> +++ b/target/m68k/op_helper.c
-> @@ -24,18 +24,7 @@
->  #include "semihosting/semihost.h"
->  #include "tcg/tcg.h"
->
-> -#if defined(CONFIG_USER_ONLY)
-> -
-> -void m68k_cpu_do_interrupt(CPUState *cs)
-> -{
-> -    cs->exception_index =3D -1;
-> -}
-> -
-> -static inline void do_interrupt_m68k_hardirq(CPUM68KState *env)
-> -{
-> -}
-> -
-> -#else
-> +#if !defined(CONFIG_USER_ONLY)
->
->  static void cf_rte(CPUM68KState *env)
+>  static bool nios2_cpu_exec_interrupt(CPUState *cs, int interrupt_request=
+)
 >  {
-> @@ -516,7 +505,6 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr
-> physaddr, vaddr addr,
->          cpu_loop_exit(cs);
->      }
->  }
-> -#endif
->
->  bool m68k_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->  {
-> @@ -538,6 +526,8 @@ bool m68k_cpu_exec_interrupt(CPUState *cs, int
+>      Nios2CPU *cpu =3D NIOS2_CPU(cs);
+> @@ -140,7 +141,7 @@ static bool nios2_cpu_exec_interrupt(CPUState *cs, in=
+t
 > interrupt_request)
+>      }
 >      return false;
 >  }
->
+> -
 > +#endif /* !CONFIG_USER_ONLY */
-> +
->  static void raise_exception_ra(CPUM68KState *env, int tt, uintptr_t radd=
-r)
+>
+>  static void nios2_cpu_disas_set_info(CPUState *cpu, disassemble_info
+> *info)
 >  {
->      CPUState *cs =3D env_cpu(env);
+> @@ -219,10 +220,10 @@ static const struct SysemuCPUOps nios2_sysemu_ops =
+=3D {
+>
+>  static const struct TCGCPUOps nios2_tcg_ops =3D {
+>      .initialize =3D nios2_tcg_init,
+> -    .cpu_exec_interrupt =3D nios2_cpu_exec_interrupt,
+>      .tlb_fill =3D nios2_cpu_tlb_fill,
+>
+>  #ifndef CONFIG_USER_ONLY
+> +    .cpu_exec_interrupt =3D nios2_cpu_exec_interrupt,
+>      .do_interrupt =3D nios2_cpu_do_interrupt,
+>      .do_unaligned_access =3D nios2_cpu_do_unaligned_access,
+>  #endif /* !CONFIG_USER_ONLY */
 > --
 > 2.31.1
 >
 >
 
---0000000000000330a405cb08e8a7
+--0000000000007c672e05cb08f1b4
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -241,97 +202,56 @@ g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/m68k/cpu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 ++<br>
-=C2=A0target/m68k/cpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 +-<br>
-=C2=A0target/m68k/op_helper.c | 16 +++-------------<br>
-=C2=A03 files changed, 6 insertions(+), 14 deletions(-)<br></blockquote><di=
-v><br></div><div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bs=
-dimp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail=
--yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:=
-2px 0px 0px"><br class=3D"gmail-Apple-interchange-newline"></div></div><div=
->=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
-0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h<br>
-index 997d588911c..550eb028b6e 100644<br>
---- a/target/m68k/cpu.h<br>
-+++ b/target/m68k/cpu.h<br>
-@@ -166,8 +166,10 @@ struct M68kCPU {<br>
-=C2=A0};<br>
-<br>
+=C2=A0target/nios2/cpu.c | 5 +++--<br>
+=C2=A01 file changed, 3 insertions(+), 2 deletions(-)<br></blockquote><div>=
+<br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.co=
+m" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-yj6qo =
+gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2px 0px=
+ 0px"><br class=3D"gmail-Apple-interchange-newline"></div><div>=C2=A0</div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c<br>
+index 5e37defef80..947bb09bc1e 100644<br>
+--- a/target/nios2/cpu.c<br>
++++ b/target/nios2/cpu.c<br>
+@@ -127,6 +127,7 @@ static void nios2_cpu_realizefn(DeviceState *dev, Error=
+ **errp)<br>
+=C2=A0 =C2=A0 =C2=A0ncc-&gt;parent_realize(dev, errp);<br>
+=C2=A0}<br>
 <br>
 +#ifndef CONFIG_USER_ONLY<br>
-=C2=A0void m68k_cpu_do_interrupt(CPUState *cpu);<br>
-=C2=A0bool m68k_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-+#endif /* !CONFIG_USER_ONLY */<br>
-=C2=A0void m68k_cpu_dump_state(CPUState *cpu, FILE *f, int flags);<br>
-=C2=A0hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);<br>
-=C2=A0int m68k_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int re=
-g);<br>
-diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c<br>
-index 72de6e97262..66d22d11895 100644<br>
---- a/target/m68k/cpu.c<br>
-+++ b/target/m68k/cpu.c<br>
-@@ -515,10 +515,10 @@ static const struct SysemuCPUOps m68k_sysemu_ops =3D =
-{<br>
-<br>
-=C2=A0static const struct TCGCPUOps m68k_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D m68k_tcg_init,<br>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D m68k_cpu_tlb_fill,<br>
-<br>
-=C2=A0#ifndef CONFIG_USER_ONLY<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D m68k_cpu_do_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D m68k_cpu_transaction_failed,=
-<br>
-=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
-diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c<br>
-index d006d1cb3ea..5d624838ae6 100644<br>
---- a/target/m68k/op_helper.c<br>
-+++ b/target/m68k/op_helper.c<br>
-@@ -24,18 +24,7 @@<br>
-=C2=A0#include &quot;semihosting/semihost.h&quot;<br>
-=C2=A0#include &quot;tcg/tcg.h&quot;<br>
-<br>
--#if defined(CONFIG_USER_ONLY)<br>
--<br>
--void m68k_cpu_do_interrupt(CPUState *cs)<br>
--{<br>
--=C2=A0 =C2=A0 cs-&gt;exception_index =3D -1;<br>
--}<br>
--<br>
--static inline void do_interrupt_m68k_hardirq(CPUM68KState *env)<br>
--{<br>
--}<br>
--<br>
--#else<br>
-+#if !defined(CONFIG_USER_ONLY)<br>
-<br>
-=C2=A0static void cf_rte(CPUM68KState *env)<br>
+=C2=A0static bool nios2_cpu_exec_interrupt(CPUState *cs, int interrupt_requ=
+est)<br>
 =C2=A0{<br>
-@@ -516,7 +505,6 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr p=
-hysaddr, vaddr addr,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cpu_loop_exit(cs);<br>
+=C2=A0 =C2=A0 =C2=A0Nios2CPU *cpu =3D NIOS2_CPU(cs);<br>
+@@ -140,7 +141,7 @@ static bool nios2_cpu_exec_interrupt(CPUState *cs, int =
+interrupt_request)<br>
 =C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
--#endif<br>
-<br>
-=C2=A0bool m68k_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
-=C2=A0{<br>
-@@ -538,6 +526,8 @@ bool m68k_cpu_exec_interrupt(CPUState *cs, int interrup=
-t_request)<br>
 =C2=A0 =C2=A0 =C2=A0return false;<br>
 =C2=A0}<br>
-<br>
+-<br>
 +#endif /* !CONFIG_USER_ONLY */<br>
-+<br>
-=C2=A0static void raise_exception_ra(CPUM68KState *env, int tt, uintptr_t r=
-addr)<br>
+<br>
+=C2=A0static void nios2_cpu_disas_set_info(CPUState *cpu, disassemble_info =
+*info)<br>
 =C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0CPUState *cs =3D env_cpu(env);<br>
+@@ -219,10 +220,10 @@ static const struct SysemuCPUOps nios2_sysemu_ops =3D=
+ {<br>
+<br>
+=C2=A0static const struct TCGCPUOps nios2_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.initialize =3D nios2_tcg_init,<br>
+-=C2=A0 =C2=A0 .cpu_exec_interrupt =3D nios2_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D nios2_cpu_tlb_fill,<br>
+<br>
+=C2=A0#ifndef CONFIG_USER_ONLY<br>
++=C2=A0 =C2=A0 .cpu_exec_interrupt =3D nios2_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D nios2_cpu_do_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D nios2_cpu_do_unaligned_access,=
+<br>
+=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---0000000000000330a405cb08e8a7--
+--0000000000007c672e05cb08f1b4--

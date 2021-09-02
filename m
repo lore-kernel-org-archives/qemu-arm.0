@@ -1,97 +1,100 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp249307lfb;
-        Thu, 2 Sep 2021 06:15:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2ft1i6tiazlfhqvDjW3luYo4qtNEeZZaP7RFbdNnMBJSv6DHepyC99pGz096vhlKfMYkH
-X-Received: by 2002:adf:ce8d:: with SMTP id r13mr3804113wrn.18.1630588521124;
-        Thu, 02 Sep 2021 06:15:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630588521; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp356921lfb;
+        Thu, 2 Sep 2021 08:09:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZLkuCmHHx+ctaaTwasqNs7vWftEbVQ2x4P0NlRz8MUzQyL3Jjez99yMLWEWmJL3gNGK5S
+X-Received: by 2002:a17:907:20d1:: with SMTP id qq17mr4367797ejb.439.1630595370147;
+        Thu, 02 Sep 2021 08:09:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630595370; cv=none;
         d=google.com; s=arc-20160816;
-        b=yTwbmgkPI6KZvluhqRiq3rC5r9JrJxKPWBsHQgIyGXFpmyEKtUsrLTg4bpITqpvInz
-         azsuF4ZxuLfbnfZ0aIU/cy2y8p1TCQ1Adghn0cCPC/Jnkw8aru/tROLXf0HMcoOY0sSm
-         dA1UQKKzImQ4PTARvO6TrkOEt3ZpY2k+9TDZL+YIBK+rh93dWsqQlxgcxPCQ2oBd8+nB
-         x22wilzcWvbOzForGowkORHINVsSHHXb1Yb9uKslj8eroSvChyhJknLhqc1SmchBBRzP
-         jX5yODOPCSKxp63q3CAH0ZAsqGZj3kLq/RJqm4Zn1ZjjciGRfv1aAW1r7tp+/CzNsJWX
-         awnw==
+        b=OMgO/hWlqLGpez+1HPgwm0VYtBen39kWzMEK56Iv6Edt8Oc8zFMwqGWgHaauFaZyMe
+         m8U5rrptTe60i6F90MwzLAymzzYKgnhy66ncluEMnAGu5SaX41CTK0Ct8yvT+It7tiIm
+         PQ2O+07JF54gBln+6nHOCMtd3ySEg28lusAN2+Ugast49GbtFZ7OVG0uKWy/vEpTUhHi
+         eNH7xycEFU6l6TKbbgiCdblbLgxpos7BkxORw2Yn9VsmID+IxQ6+7O4upLOliPkOJCIX
+         ui1oWinMx83vkWlcJOHMp8UHsqnPUXIucNfbAF8YgfXgAMpczvQ9T3H7lsyrnD12I23K
+         CEDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=lYNmEGkIuFx6TjJSX+P6lLIIW6Ug3xJdcY/Vmj7fk5Q=;
-        b=AZif42+naqNZkIHpYCK3uVxCHoClGbkl3SGgPjq87DQ5iIA+VJJmNbzqb3ybVRef2r
-         O0dFFN2FAfpDO8Y0Qxarj2gIlGaLXjw/qbDdcaM6E1or/o5EdiaZtQlY1u9KtGB+KrE1
-         ZJlE/v4zpXzbF9HTZXR2q25yZhMVnTxmodPS6yG4v7Z1BQ938syQSc5yAsrw1CtjaRm1
-         +L9ZjDWhapex0ErNq3In8mtfUxYyiKM9gkeRBnm6wpkyd09Iepw99xfSOvvoO5a5WnFV
-         iDyaVrn9sOuEWa/XSsHqlhuGiBm5FPC4X25xZdb9acb4QLuaZSZjqE4H95UnJfofxwBT
-         MYuw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=+ZrYWryMji2cS8E64N0cPJbqxFDojNEZjXg9qTOb2Ak=;
+        b=oJxrOZsdBatwsZFDzztuQTr3nGZF4Urxo6GxAhF2RfuA1lb6LpBRLObFbVulxBmTN7
+         qmjDfyUY9LUajoyHQ1Zsp1Yg2dgwlB18UAUAnZ7cWDQuzUjQtVfT6cTvZ4NbTOiU3c9n
+         X63zzqCZH+rghA469qrfPQWqmqrzz5c7LQRDJXP7KBOLUHCLmePZBo7AppSiD4KKCApO
+         tBpATO40xWWf6Z6oDBfv5idgXRVRd8xohTRgUfPGpQ8KeWeeJweyzygJs2XDvYcGaTeJ
+         MZXvxvJVutVKIZLqFvHLuyXl0fZTsAnSJq6l41c0TseVbLEPS+ru16dfH3TNOnYNMGsU
+         8D9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="j9/+L7kt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=nXFqTXM9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q16si1739759wrn.229.2021.09.02.06.15.21
+        by mx.google.com with ESMTPS id a22si2370154eda.42.2021.09.02.08.09.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 06:15:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 08:09:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="j9/+L7kt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36820 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=nXFqTXM9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLmYq-0005rV-7X
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 09:15:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38504)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLoLJ-0000SS-4z
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:09:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44768)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mLmCY-0002oB-MC
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 08:52:18 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:42871)
+ id 1mLoL6-0000QA-O9
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:09:16 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:42778)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mLmCW-0007df-Ub
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 08:52:18 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id q11so2743243wrr.9
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 05:52:16 -0700 (PDT)
+ id 1mLoL4-0003Nu-53
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:09:16 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ k20-20020a05600c0b5400b002e87ad6956eso1603974wmr.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 08:09:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lYNmEGkIuFx6TjJSX+P6lLIIW6Ug3xJdcY/Vmj7fk5Q=;
- b=j9/+L7kt/r5BwbJCJUxsrFb2ll/Cf83FDNDq06t4CJbw1tNKuhIpQepoEaqxF81L9P
- /mLf7bdKXvN3cBIhswvZsFSRr9ZjrQ2g9xBXdxYfTdDAQFWvTbJ0/CbuoJbT4P9C2wAW
- GQzaLI0TA3mTCqnwrKSTq4JYP4EF/btJmcJgWP61jN1NMROheD3xOLFhglDUOc1FhREh
- T4bX2WtChc1/c8n/kHQC5T/ek4wFR7P3H7UCamkZwcRnJZb8WVVBP1OGLj6t73xt4lt+
- /6nuMlQzCJtyb76lxcn0Qdw3B7hhrqmmG14jBalE5mrvby78eiMxFg5Fo7j+j7/s6PTl
- 3tAA==
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+ZrYWryMji2cS8E64N0cPJbqxFDojNEZjXg9qTOb2Ak=;
+ b=nXFqTXM9ihSZBu0zD65VODxbub3LqUOwkYTd2cNBnWfZ8Y/pm+ervd/YsAcuV14oK6
+ bnumdarpLBRJQFzvVjYIz3AdQbqt1T8lRSev4qS0dS+Db5mu05zXWKDWpuM2F9Wqy2/M
+ W5oX1v6KBpHXyPWWYpU+MLLF7e3UMxj9rfhwmNzAUO1cnt9eQlIGZTKrqzRwqBbYGx+/
+ LCfSjPCScMQ74euT8NfvH8v53/FAtkh+UzR2/xHYN4r+InSNr31QN6IQAaxrerV5JEC8
+ 9JG5PM5iMftNWmnuvkK68Y15at4q1oIL4h8FzTSXBba5njvNDqbqVmF5eIcKqEzxBKu6
+ FZWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lYNmEGkIuFx6TjJSX+P6lLIIW6Ug3xJdcY/Vmj7fk5Q=;
- b=LVgsCBbREB/VqxIyvvzw9UIt/XPSXdJBegRBPU0pjiXZZZF2J69mKYgu+JAo8BfUcC
- klcuVJt/RXiyIRlBWFSI6rcOyogw9PEtOAc2SpArXPiwig/STJ+nOg1pCR24rAoYaQUE
- GP9G+0Q/rGJ/6/kQsBzWvnbuDvlFhrB1HZbBcqG671OiI7FxQx7+gBnhHHeLglvcuWNC
- 4TkFD9VZ/k8xyr6K1Yvk5EcZwc2oYRdYVDQk8aSnlgYhAV33xxlj/FNEf0gT+TBcGHun
- KSNSv+wmSDtKwBL0xLdTRfybMg33HCbys4Ng74Q4w/RXS7vgcKrWnh8gsDnqz8+qR+XA
- NuZg==
-X-Gm-Message-State: AOAM533pD1xPLNwzG/sn0bb0R0VD3agS+sLyVDZZsf8Kn4EkBu/N2yNY
- 2jWBqqzuNOtghqmsXuO24bwtHr+OqSPxm8marP8tZg==
-X-Received: by 2002:adf:ba0f:: with SMTP id o15mr3539200wrg.386.1630587134332; 
- Thu, 02 Sep 2021 05:52:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210812165341.40784-1-shashi.mallela@linaro.org>
- <20210812165341.40784-8-shashi.mallela@linaro.org>
- <CAFEAcA9WVu+kjfCWwfGQV00yKgmdFDCSUpxNOu1BEBM3AZCWXg@mail.gmail.com>
- <20210902124258.mqjhx7lqqvkczf6a@leviathan>
-In-Reply-To: <20210902124258.mqjhx7lqqvkczf6a@leviathan>
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+ZrYWryMji2cS8E64N0cPJbqxFDojNEZjXg9qTOb2Ak=;
+ b=SYT/jmLgEvdYNrMCugVEehU/xIQ7Q4CsMZbzk5wLqjWwhHTjpc9P9ETP/X85qKp2iB
+ BFzZYAYb+B0nF5dhR7I+V7/3J2WGV1cVgVBODH9DL2Urn5+15q5pvBCWgb76N1O0oylR
+ YBe1xv28I5S5+Fg+d9d37ZBJuCtMtZVANWUJOCPMuTw22nhF5eGsGAH1dEoncshcQObs
+ 3MkBWSPz89jmuHjURzL3llemYJTcij6dWthtzQvN+xP6Eky0v66lSPkqJQruVa0af8hS
+ gj5XevAsSfSbDdiqTwBwbmJb6VXZMVfdAq5po9dwkb2RNTH6ZeH+jv1KTVO3Xz0H/zTw
+ 87Lw==
+X-Gm-Message-State: AOAM530jQyeODqUTcc7Do2Chj6N4sQ3jygjReEF5hzWf1PW6s1d3ECNz
+ dTPCP61P8JjDuzuKg1RJW8nMGe1gjv4aAQ==
+X-Received: by 2002:a7b:c408:: with SMTP id k8mr3704357wmi.184.1630595352061; 
+ Thu, 02 Sep 2021 08:09:12 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id c24sm2107842wrb.57.2021.09.02.08.09.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Sep 2021 08:09:11 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Sep 2021 13:51:26 +0100
-Message-ID: <CAFEAcA-HC1=arh_4ysPv2L1JyT6sA9n_1aqJv__1Z7+09kYxiA@mail.gmail.com>
-Subject: Re: [PATCH v8 07/10] hw/arm/sbsa-ref: add ITS support in SBSA GIC
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/4] target/arm: Use TCG vector ops for MVE
+Date: Thu,  2 Sep 2021 16:09:06 +0100
+Message-Id: <20210902150910.15748-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,69 +103,60 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Shashi Mallela <shashi.mallela@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
- narmstrong@baylibre.com, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wpTmUO5rX0o4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1tLQOwVvK9mZ
 
-On Thu, 2 Sept 2021 at 13:43, Leif Lindholm <leif@nuviainc.com> wrote:
-> On Thu, Aug 19, 2021 at 14:27:19 +0100, Peter Maydell wrote:
-> > If you want a command line switch to let the user say whether the
-> > ITS should be present or not, you should use the same thing the
-> > virt board does, which is a bool property "its".
-> >
-> > If you want the sbsa-ref board to become a proper "versioned machine
-> > type" such that users can say "-M sbsa-ref-6.1" and get the SBSA
-> > board exactly as QEMU 6.1 supplied it, that looks completely different
-> > (and is a heavy back-compatibility burden, so needs discussion about
-> > whether now is the right time to do it), and probably is better not
-> > tangled up with this patchseries.
->
-> Hmm. I mean, you're absolutely right about the complexity and need for
-> discussion. My concern is that we cannot insert the ITS block in the
-> memory map where it would be in an ARM GIC implementation without
-> changing the memory map (pushing the redistributor further down).
->
-> It is also true that simply versioning sbsa-ref does not mean we end
-> up with a properly aligned with ARM IP register frame layout. Some
-> additional logic is required for that.
->
-> If we assume that we don't want to further complicate this set by
-> adding the additional logic *now*, I see three options:
-> - Implement memory map versioning for sbsa-ref for this set, placing
->   the ITS (if enabled) directly after the DIST for sbsa-ref-6.2.
-> - In this set, place the ITS frames in a different location relative
->   to the REDIST frames than it will end up once the further logic is
->   implemented.
-> - Drop the sbsa-ref ITS support from this set, and bring it in with
->   the set implementing the additional logic.
+This patchset uses the TCG vector ops for some MVE
+instructions. We can only do this when we know that none
+of the MVE lanes are predicated, ie when neither tail
+predication nor VPT predication nor ECI partial insn
+execution are happening.
 
-I don't think implementing versioned machine types helps you much
-anyway, because your users are all going to be currently using
--M sbsa-ref, so they will by default see the change in device layout.
+Patch 1 adds a TB flag so we can track whether we can
+safely assume that the insn operates on the entire vector,
+and patches 2, 3, 4 use that to vectorize some simple
+cases (bitwise logic ops, integer add, sub, mul, min, max,
+abs and neg).
 
-I do think that we should get the "with an ITS" device layout right
-from the start, so that we're only dealing with 2 possibilities
-(what we have today, and the final intended layout), not 3 (today,
-final layout, some intermediate thing).
+This small initial patchset is intended as a check that
+the general structure for handling this makes sense;
+there are almost certainly other places we could improve
+the codegen for the non-predicated case.
 
-How does guest software on this board figure out the memory
-layout ? Is there a mechanism for telling it "this is version 2
-of this board" ?
+Richard: if you have time to scan through the MVE insns
+and suggest which ones would benefit from a vectorized
+version that would be very helpful...
 
+thanks
 -- PMM
+
+Peter Maydell (4):
+  target/arm: Add TB flag for "MVE insns not predicated"
+  target/arm: Optimize MVE logic ops
+  target/arm: Optimize MVE arithmetic ops
+  target/arm: Optimize MVE VNEG, VABS
+
+ target/arm/cpu.h              |   4 +-
+ target/arm/translate.h        |   2 +
+ target/arm/helper.c           |  23 ++++++++
+ target/arm/translate-m-nocp.c |   8 +++
+ target/arm/translate-mve.c    | 102 ++++++++++++++++++++++------------
+ target/arm/translate-vfp.c    |   3 +
+ target/arm/translate.c        |   4 ++
+ 7 files changed, 110 insertions(+), 36 deletions(-)
+
+-- 
+2.20.1
+

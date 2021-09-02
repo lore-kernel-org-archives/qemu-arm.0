@@ -1,72 +1,71 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp149835lfb;
-        Thu, 2 Sep 2021 04:09:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJymWhc1HzmWRk4GNt1bkbSGnbYTD3y44i8pOjvpOAxe7NiiVb+VIsyLeNlirGwCR6nrV2fx
-X-Received: by 2002:a67:ea4f:: with SMTP id r15mr1396137vso.26.1630580958866;
-        Thu, 02 Sep 2021 04:09:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630580958; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp152340lfb;
+        Thu, 2 Sep 2021 04:12:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxIWJfvFmYsr4FUzP2h5dnlf+WL9AVANon1FH7zLXR8itI9s04aE7DOsGJ3Hcl1DgSI9Sho
+X-Received: by 2002:a67:f98d:: with SMTP id b13mr1445685vsq.58.1630581156222;
+        Thu, 02 Sep 2021 04:12:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630581156; cv=none;
         d=google.com; s=arc-20160816;
-        b=IjlGKnDTGxtYumqtrPsqhyjQI8fbzoAZJI9q7/O6hG7OU4vyl8OpzLQrTUai6AiT+a
-         VtORNMEEhTdvm2rOZ/oMEZpop/cY4oku52yiCFsdk6BlWwb/NUb35rjfCS2PQaxCT7tB
-         NPzUrte4eCnKdK5RlQ9bAL2t2obCk6QsxTlkrdkirolEejAdPTO05OML4EpTegLg0Zzo
-         AkPPhKHhqqSRk0LGOCogrNlmDxvAGXkn7Dy0u4BFZjXzClPFWx7azgOVu6zy+3JNQ1NQ
-         OJcpkvKGC4TEF7l0c+gnUpGbODd795SSj2HO2I8KvBBSIuyCICRESaOxfaXkqUwVY6HM
-         j+lg==
+        b=bElOvGLgBR9mBvFLIYVWJicAH2ztf1E5pW+irV7WuWbKKUrftSMVickHh6RDQ35vbT
+         O6M/LvH0wXO6UcJNoxaB2+9JzMMcaBTuOQo++RmJjDMeAopvscPkPPUmUI1bEzrp+Gf8
+         imgSdhhFf7uf+NFna2CojOxq3gcnffDqokZbgs9bpY3jBjhhOV4MRHT+Pd1xYH6eCqtn
+         1gERWOiMnoi97qdcAUE+X5cx/en/7f7//D9YspczL5+Kk5aUP2fwRGV1gMyf61rGZCen
+         AgXbcye56nbV/VI+mVLMDx1LE/+MHIdvFo8BXHJZup48kd8zM5nHI0REZ5+/HkjRSGvP
+         KL9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=U5sy2zOq1/+qfafzmb4raFMTgh24+6h0uEJhxyCCkSI=;
-        b=u+Zns4VSZsNu14BVUmOIlN0DDjC1yd4UtbFHa754jBNu37x2KIh162D2QiSwwmbuqu
-         Kkq8cPm6BmI0tl/mdtC3xSdOGPjkBV06rXGsf+ENkOyyhtMst2ttW6yxtiBcnjrEjLeH
-         /8kCTZ1ku0RiT1fZoXxpWs1GMkGrES/9ocSGNsdhiyx8UUe1uomvtYsxCIoefMtPxYfI
-         HlbeqX5l/oqO96iCbIK7s2p2/8AWfrwgIU3qp17HaiN1M/bcZbHxGRtMICWOLlBjLRqH
-         N0YRAiYlkTnWeIyob1XNMpi/F8jmq7kCiuuYrldT1ecp8npcUrUKlGPDdIducW0vS6TT
-         A9tA==
+        bh=OEN35ln02mPxE//8DwJIGxLTmXnijD13nYkkeuRwOeU=;
+        b=zzfxLG2FuEMeS1yBZ08JX4ErHvJERquz+ehEUrpkYAwFiYiIsc2GvaZwqsahHfdZqv
+         3JvXgDgQhUeJMpX/MiOsOBzjEd7brQtdeMB9EMBrPtRrhf0WuGclYQM3Fr/PmrfkdGQm
+         43LlpNE22ZokfvjHsVqwXBI/9fhdCeAYNe5emchCbB1KdiiMz/XOzPoBlywmCUCpj+65
+         mFt84oZNDAz3Koxb4PEXNjO9wxzXNSTZlLVLshS4VINE8bGu4s/CAxnPC7gYa4f/Lzyl
+         epx6+jXgqOoc7IlA5odbrW12hLxn9pCojQgQvtfRkBTnfP3eKv6iornrnrYbIGX2pPPF
+         dbmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t25si473893vsk.18.2021.09.02.04.09.18
+        by mx.google.com with ESMTPS id l14si418327vsj.433.2021.09.02.04.12.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 04:09:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 04:12:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:35212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLkas-0007xu-7l
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 07:09:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43624)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLke3-0003gq-Hn
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 07:12:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mLkVa-0006zA-G1; Thu, 02 Sep 2021 07:03:50 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3127)
+ id 1mLkVc-00073M-3h; Thu, 02 Sep 2021 07:03:52 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2229)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mLkVV-0003e1-Pb; Thu, 02 Sep 2021 07:03:50 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.54])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4H0dGk6GHsz8xfN;
- Thu,  2 Sep 2021 18:59:26 +0800 (CST)
+ id 1mLkVZ-0003hH-BW; Thu, 02 Sep 2021 07:03:51 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4H0dMG3QQmz8DTS;
+ Thu,  2 Sep 2021 19:03:22 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
  dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Thu, 2 Sep 2021 19:03:41 +0800
+ 15.1.2176.2; Thu, 2 Sep 2021 19:03:45 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Thu, 2 Sep 2021 19:03:40 +0800
+ 15.1.2308.8; Thu, 2 Sep 2021 19:03:44 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Eduardo Habkost <ehabkost@redhat.com>, Marcel Apfelbaum
  <marcel.apfelbaum@gmail.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, 
  <qemu-ppc@nongnu.org>, <qemu-s390x@nongnu.org>
-Subject: [PATCH v8 07/14] machine: Use ms instead of global current_machine in
- sanity-check
-Date: Thu, 2 Sep 2021 19:03:23 +0800
-Message-ID: <20210902110330.18036-8-wangyanan55@huawei.com>
+Subject: [PATCH v8 10/14] machine: Remove smp_parse callback from MachineClass
+Date: Thu, 2 Sep 2021 19:03:26 +0800
+Message-ID: <20210902110330.18036-11-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210902110330.18036-1-wangyanan55@huawei.com>
 References: <20210902110330.18036-1-wangyanan55@huawei.com>
@@ -76,8 +75,8 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -85,17 +84,17 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter
  Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  Cornelia Huck <cohuck@redhat.com>,
@@ -105,36 +104,65 @@ Cc: Peter
  Yanan Wang <wangyanan55@huawei.com>, wanghaibin.wang@huawei.com,
  Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tlq32czAl0Z0
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: U0hlJAhOSDht
 
-In the sanity-check of smp_cpus and max_cpus against mc in function
-machine_set_smp(), we are now using ms->smp.max_cpus for the check
-but using current_machine->smp.max_cpus in the error message.
-Tweak this by uniformly using the local ms.
+Now we have a generic smp parser for all arches, and there will
+not be any other arch specific ones, so let's remove the callback
+from MachineClass and call the parser directly.
 
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Pankaj Gupta <pankaj.gupta@ionos.com>
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 ---
- hw/core/machine.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/core/machine.c   | 3 +--
+ include/hw/boards.h | 5 -----
+ 2 files changed, 1 insertion(+), 7 deletions(-)
 
 diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 0df597f99c..1ad5dac3e8 100644
+index 4b5c943f8e..ca7ca68ae3 100644
 --- a/hw/core/machine.c
 +++ b/hw/core/machine.c
-@@ -881,7 +881,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-     } else if (ms->smp.max_cpus > mc->max_cpus) {
-         error_setg(errp, "Invalid SMP CPUs %d. The max CPUs "
-                    "supported by machine '%s' is %d",
--                   current_machine->smp.max_cpus,
-+                   ms->smp.max_cpus,
-                    mc->name, mc->max_cpus);
+@@ -937,7 +937,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
+                     "CPU topology parameters must be greater than zero");
      }
  
+-    mc->smp_parse(ms, config, errp);
++    smp_parse(ms, config, errp);
+     if (*errp) {
+         goto out_free;
+     }
+@@ -966,7 +966,6 @@ static void machine_class_init(ObjectClass *oc, void *data)
+     /* Default 128 MB as guest ram size */
+     mc->default_ram_size = 128 * MiB;
+     mc->rom_file_has_mr = true;
+-    mc->smp_parse = smp_parse;
+ 
+     /* numa node memory size aligned on 8MB by default.
+      * On Linux, each node's border has to be 8MB aligned
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 72a23e4e0f..fa284e01e9 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -177,10 +177,6 @@ typedef struct {
+  *    kvm-type may be NULL if it is not needed.
+  * @numa_mem_supported:
+  *    true if '--numa node.mem' option is supported and false otherwise
+- * @smp_parse:
+- *    The function pointer to hook different machine specific functions for
+- *    parsing "smp-opts" from QemuOpts to MachineState::CpuTopology and more
+- *    machine specific topology fields, such as smp_dies for PCMachine.
+  * @hotplug_allowed:
+  *    If the hook is provided, then it'll be called for each device
+  *    hotplug to check whether the device hotplug is allowed.  Return
+@@ -217,7 +213,6 @@ struct MachineClass {
+     void (*reset)(MachineState *state);
+     void (*wakeup)(MachineState *state);
+     int (*kvm_type)(MachineState *machine, const char *arg);
+-    void (*smp_parse)(MachineState *ms, SMPConfiguration *config, Error **errp);
+ 
+     BlockInterfaceType block_default_type;
+     int units_per_default_bus;
 -- 
 2.19.1
 

@@ -1,99 +1,128 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp617723lfb;
-        Thu, 2 Sep 2021 13:16:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzFO3FnMLyaKlKJzzj/4osiaUq39WTmw0/c+Qrn8OeRHjy6kNJyL/22+nlqcnqxluIsimJ4
-X-Received: by 2002:ab0:3757:: with SMTP id i23mr94212uat.72.1630613800772;
-        Thu, 02 Sep 2021 13:16:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630613800; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp83463lfb;
+        Thu, 2 Sep 2021 02:38:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxlC5CkmCJcX3R/x5GGCjJj9aZwTkPV5dee+PmyPKQQjW8FKAramJHYTH7aVDfm8EXpBmV0
+X-Received: by 2002:a92:c04e:: with SMTP id o14mr1576238ilf.289.1630575493786;
+        Thu, 02 Sep 2021 02:38:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630575493; cv=none;
         d=google.com; s=arc-20160816;
-        b=XUhnSdoJNhoGvrFleSKnhtcXY/+oybEMiGDL0rjzy9VSZuYzM6hDNMRwxdIPvV6aBb
-         mzd0ZX+rZbBeR4ZyM6FhR7TjrgfuBnzbbofprCHZzd7Lfg/teGcp0hunxkxXMNN8S8nP
-         QIBYDdOGq7p4pVtzQnVNECtg+Lb2ElE4CzNVgoiXNRodm20JarNXmyO0CnFJozHel5e5
-         NWL3HvGoK+rarRqo6z05ZsO9OJAs3UAR0aClq9kiM9k2RtM7yuwSptpgROMXuSdrq6PB
-         G9tBZMmXaR8QiS+QWefmXBBFKFOUXHw6FSd3GsTAUP9BMBK1x/iG505DWvsp/BhDX+yh
-         /98g==
+        b=jULinU0fxEI55XvbtKHvavMxqGQVqXymg+gBXhtzuCkKLhWKzLuUo/wuC+xTXgWmjC
+         x7TkFm4N1mG38ATfNiF/aEZQXFSE+uXDy1pYjeaG+aFhE4LXsC0uXwqIwir1e24LVwLB
+         DPsI8kYvvA9UAcKQdSIRqv/8HJe2BEe1+9uEFhlZYllQt97PWfnbYHrok/FIlCIYp0BK
+         m00V4J38LaGiKl21oWSjL65F6bxHDXMv8dd7qx3m6q93l6nYyrA0TicTZZYbaFgdpjAr
+         GHpbR1qxsdUyMMjH43yJqsnyDeuyKWbmia9+gJAQtHzydx0+JJBKeo7bi9syhwk+dj2m
+         +SGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=zT2c+1E62cjQEi2kiCLiim1kp9aQQG9tokwDG6Y3pNg=;
-        b=sxss73R9m3KS6jI/cQUWYcZb3C9PqyA0waeF2L6OcjKzl+ndp3/Xsc2VIhLnnbSM8k
-         QlocXrxaaw2H48VqM3eUL38BSM6lm686TA8ovI2c09rIg73bdDGgexqwMiRWDI+VMnI5
-         yK7pGFTrS4XTQ5TmlBYKefSFWrWCdHWmHjsP2ALbLfpFq4jWUlS+3UDccY3h3IT6leiT
-         3JKN3qhYsZ+cA8rjggZr09wfr3gM0g0/F4d6t1Y1MFdHrqD3G5wUKLjlK9C2hTCVG+dg
-         9b9S5YowZnmbF/qMnaJmkyb7CiO5tuA2NCjIltu5aJfjB/fxUJcaygb7hnc+TeRwhF01
-         hnkQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=h5E4aoy6GDYyHU2HoBN+ICe1KrCcbGlyC3yCmM84624=;
+        b=rXgN8wPOnQlHUTOGAMBJuOOK9I/K6wsisvI9Mxe1c44kiy9XhefK7W1PW+/+qeqUc1
+         Ans789lkBXZE8PD50GEVnuW8qnU4TjCWl2db7u/ioyq77kP/mCvCp6dUECu9llNG7cTc
+         iYfSsdlzRztVLfXD3bi6vVKwDjvp9nTkNl/sopjJITitXV/ve3NcXwOahrndXAw90IIX
+         XSNvQaSju6V0UaiUdbPFCUKJUwyNeI+0dugvFqa4pH/N1tyOqqDoU/gD4aMMVcPvnJMy
+         x6X1yO8tpprXvhV/GaJnykKpPLckN+VXEGdPhuxQwHpr0igprktsj6GB4qUWW64qwxjU
+         qy4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=Xgj2sBXu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eNsFdB1K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w66si1494294vsw.109.2021.09.02.13.16.40
+        by mx.google.com with ESMTPS id w13si1685606ilu.26.2021.09.02.02.38.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:16:40 -0700 (PDT)
+        Thu, 02 Sep 2021 02:38:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=Xgj2sBXu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50066 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eNsFdB1K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLt8a-0002uv-0n
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:16:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39886)
+	id 1mLjAj-000599-4K
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 05:38:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54360)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt8E-0002sf-4d
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:16:19 -0400
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e]:46927)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt8C-0006gs-6t
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:16:17 -0400
-Received: by mail-vs1-xe2e.google.com with SMTP id s15so2592831vst.13
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:16:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zT2c+1E62cjQEi2kiCLiim1kp9aQQG9tokwDG6Y3pNg=;
- b=Xgj2sBXu3i6bStX7urBDIHPF46qb2zi4OiBCj6DT686why3aWwbs8k6u90kvWcPu0s
- 3A2vOuexaFQi2EevSzukNpRqNWyz/lPxza+Lj3R05dOrkeKQxcPnBJNz58yx0YSQDlVk
- 4rxg2dI9xIWG/5rWZF9DccZHU/qEZJKiLKGazR3zyRsN/cD+HQigOd9GcKPM90aTsLx0
- s3SAcjNhQKKk+UAxlen+fW1RPYCYCAxsIFF77EJSe9nr0o3NtE4HnUY21zk9yLIVIw5r
- +Xul6lPpFSMHV+fhJJhp0J9xHfTGpo31few11iKKjDNVdQPM4b56OcgOmKHSLBQyhPzc
- WwTQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mLj9F-0002bS-MT
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 05:36:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50008)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mLj9E-0005Ca-3v
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 05:36:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630575399;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=h5E4aoy6GDYyHU2HoBN+ICe1KrCcbGlyC3yCmM84624=;
+ b=eNsFdB1KU2n4i/1OT7cYKu3JiqxniWaT7m6SGcgrBR4ZAcYAYnlmVE7vM/Hwtqmjh9yjh1
+ pD0NiDAH0+dBRCz0Gf5fIroISMMe/Uq3sqhCi4Biu/Fogb2A7Q+se4O9IT6adVWlXSuu9E
+ 8Jkp56d0zGYh1K93AxaZQAwAKxqJWLM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-85-qLzB20J5Or-HOkmlFpRlaw-1; Thu, 02 Sep 2021 05:36:38 -0400
+X-MC-Unique: qLzB20J5Or-HOkmlFpRlaw-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ q14-20020a5d574e000000b00157b0978ddeso343891wrw.5
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 02:36:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zT2c+1E62cjQEi2kiCLiim1kp9aQQG9tokwDG6Y3pNg=;
- b=fgAnFztoGU0yadYTxBqB7qljo3pTD4pqT8YhK5pEH+6QpCHR9yULyQF+RTLqCUWpYQ
- mjLQegM8WIhOaqU7OXynnFWWPaucJlM3maEr2bs3Lr2FEItiNurM4+/vee+7v5+iRCmw
- YbrfEX+GHAPCuullu9KDkipMdmRoaLaIIFHvLytVr106aZf3IYvDTzDJkN5mvyqT654s
- kypnCDrGmucDporbg8jlFHFRN+GmpvIJKIVBqssirOI6RRUZpyW7tV9QLtuD6NncOJZu
- 0cDRg7G9lmQv+r1VzPInetWjNMfIBQlUFfvuaaqhbG4WwY5PbR1WuX3YPkouPFplkivT
- daaQ==
-X-Gm-Message-State: AOAM532WfoQ1mMddPr4oqiHGeu1whz256/tQBAD9YSx0UkywbkEilToq
- J2TbMr0rxDuXso/cB3NOtTKrgWR7iqQJ1k6iFRuh2g==
-X-Received: by 2002:a67:c789:: with SMTP id t9mr4324246vsk.60.1630613775240;
- Thu, 02 Sep 2021 13:16:15 -0700 (PDT)
+ h=x-gm-message-state:reply-to:subject:to:cc:references:from
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-transfer-encoding:content-language;
+ bh=h5E4aoy6GDYyHU2HoBN+ICe1KrCcbGlyC3yCmM84624=;
+ b=X239C2lOypNcHw6CNlGRhHzdHNQiUKcWiDL5Jk1Bw000moS5F1WoeXIuQBXMTV8d85
+ A/20dkodxnExpnQe7cZOHenrVnmmJT24G9Qt6PZZHfrsfMDXd7cCGHM91xhoiSKnaQcv
+ qK5I9TQS/otXPTz4QWjBPng1sWjpuRUEReQPgXklshde1RZ5+XzJsNTt2oXpk1MtcAqo
+ Q8Zn9/GlXRI6r0bsKmpagE3gZyQg58jjNCOoZajdvh/RSRNqh5XsDJvGbFK9b/cMgjUP
+ UiBL9XrR8kuhXSNwD9dUOmPwLg7uwihVEIBS5/ITSpe8iyRtuD8Rg9oIF5KeLMsAlAYZ
+ Dxbw==
+X-Gm-Message-State: AOAM532kpDNCzcmWlGC3UtRB66DXYAXKexCA4iif/HH9WoZJyszAG/96
+ Bz2SEdn+t8Kz72XsLH04mt5u4So6P9Gf/efdqyCTovdetAxwuDndL/IdgoR4GeCUjC1ZJ6omgKR
+ ZXyDqSHI4mN/FltUbw/Aqvp/jjWk1qDsUrH/j87rYZqAn7zLVfH47wrpNi+dmABM9L30=
+X-Received: by 2002:a5d:6352:: with SMTP id b18mr2528904wrw.116.1630575396728; 
+ Thu, 02 Sep 2021 02:36:36 -0700 (PDT)
+X-Received: by 2002:a5d:6352:: with SMTP id b18mr2528865wrw.116.1630575396305; 
+ Thu, 02 Sep 2021 02:36:36 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id x21sm1132426wmi.15.2021.09.02.02.36.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Sep 2021 02:36:35 -0700 (PDT)
+Subject: Re: [PATCH 6/6] pc: Allow instantiating a virtio-iommu device
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20210810084505.2257983-1-jean-philippe@linaro.org>
+ <20210810084505.2257983-7-jean-philippe@linaro.org>
+ <41720de5-ce29-dd79-2911-d974408af544@redhat.com> <YSjoCW5z1xbYL4Gp@larix>
+From: Eric Auger <eric.auger@redhat.com>
+Message-ID: <a6d02a90-4991-4577-909b-3cc38c49f71e@redhat.com>
+Date: Thu, 2 Sep 2021 11:36:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-8-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-8-f4bug@amsat.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:16:04 -0600
-Message-ID: <CANCZdfpdN6O6QyM_nQewz1+ugjjHOL38QD01B2dDZnw=zcTQOw@mail.gmail.com>
-Subject: Re: [PATCH 07/24] target/arm: Restrict cpu_exec_interrupt() handler
- to sysemu
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000d6e2f405cb08dab2"
-Received-SPF: none client-ip=2607:f8b0:4864:20::e2e;
- envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe2e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <YSjoCW5z1xbYL4Gp@larix>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.029, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,296 +135,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Reply-To: eric.auger@redhat.com
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NYDOqgWMD9VM
+X-TUID: O0vjCWDN8DPm
 
---000000000000d6e2f405cb08dab2
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Jean,
 
-On Thu, Sep 2, 2021 at 9:17 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On 8/27/21 3:26 PM, Jean-Philippe Brucker wrote:
+> On Tue, Aug 17, 2021 at 04:11:49PM +0200, Eric Auger wrote:
+>> Hi Jean,
+>>
+>> On 8/10/21 10:45 AM, Jean-Philippe Brucker wrote:
+>>> From: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> Add a hotplug handler for virtio-iommu on x86 and set the necessary
+>>> reserved region property. On x86, the [0xfee00000, 0xfeefffff] DMA
+>>> region is reserved for MSIs. DMA transactions to this range either
+>>> trigger IRQ remapping in the IOMMU or bypasses IOMMU translation.
+>>>
+>>> Although virtio-iommu does not support IRQ remapping it must be informed
+>>> of the reserved region so that it can forward DMA transactions targeting
+>>> this region.
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>> I think we need to handle the case where the end-user gets lost with
+>> iommu options and use an invalid combination such as
+>>
+>> -M q35,iommu=on,int_remap=on,kernel_irqchip=off -device -device virtio-iommu-pci
+> I guess that would be
+> "-M q35,kernel_irqchip=off -device intel-iommu,intremap=on -device virtio-iommu-pci"
 >
-wrote:
+> I'll add the checks, similar to the one in x86_iommu_set_default().
+yes that what I meant sorry.
+>
+>> We may also document somewhere that the virtio-iommu-pci
+>> does not support irq remapping as this may be an important limitation on x86.
+> I'll mention it in the commit message, unless you had another place in
+> mind?
 
-> Restrict cpu_exec_interrupt() and its callees to sysemu.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  target/arm/cpu.h     | 3 +--
->  target/arm/cpu.c     | 7 +++++--
->  target/arm/cpu_tcg.c | 6 +++---
->  3 files changed, 9 insertions(+), 7 deletions(-)
->
+you may add an entry in qemu-options.hx too as Peter did for the intel
+iommu in
+7395b3e3e7  docs: Add '-device intel-iommu' entry (7 weeks ago) <Peter Xu>
 
-Reviewed-by: Warner Losh <imp@bsdimp.com>
+Thanks
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 6a987f65e41..cfd755cff99 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1040,11 +1040,10 @@ uint64_t arm_cpu_mp_affinity(int idx, uint8_t
-> clustersz);
+Eric
 >
->  #ifndef CONFIG_USER_ONLY
->  extern const VMStateDescription vmstate_arm_cpu;
-> -#endif
->
->  void arm_cpu_do_interrupt(CPUState *cpu);
->  void arm_v7m_cpu_do_interrupt(CPUState *cpu);
-> -bool arm_cpu_exec_interrupt(CPUState *cpu, int int_req);
-> +#endif /* !CONFIG_USER_ONLY */
->
->  hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
->                                           MemTxAttrs *attrs);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index d631c4683c4..ba0741b20e4 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -440,6 +440,8 @@ static void arm_cpu_reset(DeviceState *dev)
->      arm_rebuild_hflags(env);
->  }
->
-> +#ifndef CONFIG_USER_ONLY
-> +
->  static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx=
-,
->                                       unsigned int target_el,
->                                       unsigned int cur_el, bool secure,
-> @@ -556,7 +558,7 @@ static inline bool arm_excp_unmasked(CPUState *cs,
-> unsigned int excp_idx,
->      return unmasked || pstate_unmasked;
->  }
->
-> -bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-> +static bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->  {
->      CPUClass *cc =3D CPU_GET_CLASS(cs);
->      CPUARMState *env =3D cs->env_ptr;
-> @@ -608,6 +610,7 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int
-> interrupt_request)
->      cc->tcg_ops->do_interrupt(cs);
->      return true;
->  }
-> +#endif /* !CONFIG_USER_ONLY */
->
->  void arm_cpu_update_virq(ARMCPU *cpu)
->  {
-> @@ -2010,11 +2013,11 @@ static const struct SysemuCPUOps arm_sysemu_ops =
-=3D {
->  static const struct TCGCPUOps arm_tcg_ops =3D {
->      .initialize =3D arm_translate_init,
->      .synchronize_from_tb =3D arm_cpu_synchronize_from_tb,
-> -    .cpu_exec_interrupt =3D arm_cpu_exec_interrupt,
->      .tlb_fill =3D arm_cpu_tlb_fill,
->      .debug_excp_handler =3D arm_debug_excp_handler,
->
->  #if !defined(CONFIG_USER_ONLY)
-> +    .cpu_exec_interrupt =3D arm_cpu_exec_interrupt,
->      .do_interrupt =3D arm_cpu_do_interrupt,
->      .do_transaction_failed =3D arm_cpu_do_transaction_failed,
->      .do_unaligned_access =3D arm_cpu_do_unaligned_access,
-> diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-> index 33cc75af57d..0d5adccf1a7 100644
-> --- a/target/arm/cpu_tcg.c
-> +++ b/target/arm/cpu_tcg.c
-> @@ -22,7 +22,7 @@
->  /* CPU models. These are not needed for the AArch64 linux-user build. */
->  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
->
-> -#ifdef CONFIG_TCG
-> +#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
->  static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int
-> interrupt_request)
->  {
->      CPUClass *cc =3D CPU_GET_CLASS(cs);
-> @@ -46,7 +46,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, in=
-t
-> interrupt_request)
->      }
->      return ret;
->  }
-> -#endif /* CONFIG_TCG */
-> +#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
->
->  static void arm926_initfn(Object *obj)
->  {
-> @@ -898,11 +898,11 @@ static void pxa270c5_initfn(Object *obj)
->  static const struct TCGCPUOps arm_v7m_tcg_ops =3D {
->      .initialize =3D arm_translate_init,
->      .synchronize_from_tb =3D arm_cpu_synchronize_from_tb,
-> -    .cpu_exec_interrupt =3D arm_v7m_cpu_exec_interrupt,
->      .tlb_fill =3D arm_cpu_tlb_fill,
->      .debug_excp_handler =3D arm_debug_excp_handler,
->
->  #if !defined(CONFIG_USER_ONLY)
-> +    .cpu_exec_interrupt =3D arm_v7m_cpu_exec_interrupt,
->      .do_interrupt =3D arm_v7m_cpu_do_interrupt,
->      .do_transaction_failed =3D arm_cpu_do_transaction_failed,
->      .do_unaligned_access =3D arm_cpu_do_unaligned_access,
-> --
-> 2.31.1
->
+> Thanks,
+> Jean
 >
 
---000000000000d6e2f405cb08dab2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 9:17 AM Philip=
-pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
-g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->Restrict cpu_exec_interrupt() and its callees to sysemu.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
----<br>
-=C2=A0target/arm/cpu.h=C2=A0 =C2=A0 =C2=A0| 3 +--<br>
-=C2=A0target/arm/cpu.c=C2=A0 =C2=A0 =C2=A0| 7 +++++--<br>
-=C2=A0target/arm/cpu_tcg.c | 6 +++---<br>
-=C2=A03 files changed, 9 insertions(+), 7 deletions(-)<br></blockquote><div=
-><br></div><div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsd=
-imp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-=
-yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2=
-px 0px 0px"><br></div></div><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
-x">
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h<br>
-index 6a987f65e41..cfd755cff99 100644<br>
---- a/target/arm/cpu.h<br>
-+++ b/target/arm/cpu.h<br>
-@@ -1040,11 +1040,10 @@ uint64_t arm_cpu_mp_affinity(int idx, uint8_t clust=
-ersz);<br>
-<br>
-=C2=A0#ifndef CONFIG_USER_ONLY<br>
-=C2=A0extern const VMStateDescription vmstate_arm_cpu;<br>
--#endif<br>
-<br>
-=C2=A0void arm_cpu_do_interrupt(CPUState *cpu);<br>
-=C2=A0void arm_v7m_cpu_do_interrupt(CPUState *cpu);<br>
--bool arm_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-+#endif /* !CONFIG_USER_ONLY */<br>
-<br>
-=C2=A0hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,<b=
-r>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 M=
-emTxAttrs *attrs);<br>
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c<br>
-index d631c4683c4..ba0741b20e4 100644<br>
---- a/target/arm/cpu.c<br>
-+++ b/target/arm/cpu.c<br>
-@@ -440,6 +440,8 @@ static void arm_cpu_reset(DeviceState *dev)<br>
-=C2=A0 =C2=A0 =C2=A0arm_rebuild_hflags(env);<br>
-=C2=A0}<br>
-<br>
-+#ifndef CONFIG_USER_ONLY<br>
-+<br>
-=C2=A0static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_=
-idx,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 unsigned int ta=
-rget_el,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 unsigned int cu=
-r_el, bool secure,<br>
-@@ -556,7 +558,7 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsi=
-gned int excp_idx,<br>
-=C2=A0 =C2=A0 =C2=A0return unmasked || pstate_unmasked;<br>
-=C2=A0}<br>
-<br>
--bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
-+static bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br=
->
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0CPUClass *cc =3D CPU_GET_CLASS(cs);<br>
-=C2=A0 =C2=A0 =C2=A0CPUARMState *env =3D cs-&gt;env_ptr;<br>
-@@ -608,6 +610,7 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt=
-_request)<br>
-=C2=A0 =C2=A0 =C2=A0cc-&gt;tcg_ops-&gt;do_interrupt(cs);<br>
-=C2=A0 =C2=A0 =C2=A0return true;<br>
-=C2=A0}<br>
-+#endif /* !CONFIG_USER_ONLY */<br>
-<br>
-=C2=A0void arm_cpu_update_virq(ARMCPU *cpu)<br>
-=C2=A0{<br>
-@@ -2010,11 +2013,11 @@ static const struct SysemuCPUOps arm_sysemu_ops =3D=
- {<br>
-=C2=A0static const struct TCGCPUOps arm_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D arm_translate_init,<br>
-=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D arm_cpu_synchronize_from_tb,<b=
-r>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D arm_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D arm_cpu_tlb_fill,<br>
-=C2=A0 =C2=A0 =C2=A0.debug_excp_handler =3D arm_debug_excp_handler,<br>
-<br>
-=C2=A0#if !defined(CONFIG_USER_ONLY)<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D arm_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D arm_cpu_do_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D arm_cpu_do_transaction_faile=
-d,<br>
-=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D arm_cpu_do_unaligned_access,<b=
-r>
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c<br>
-index 33cc75af57d..0d5adccf1a7 100644<br>
---- a/target/arm/cpu_tcg.c<br>
-+++ b/target/arm/cpu_tcg.c<br>
-@@ -22,7 +22,7 @@<br>
-=C2=A0/* CPU models. These are not needed for the AArch64 linux-user build.=
- */<br>
-=C2=A0#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)<br>
-<br>
--#ifdef CONFIG_TCG<br>
-+#if !defined(CONFIG_USER_ONLY) &amp;&amp; defined(CONFIG_TCG)<br>
-=C2=A0static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_re=
-quest)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0CPUClass *cc =3D CPU_GET_CLASS(cs);<br>
-@@ -46,7 +46,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int =
-interrupt_request)<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0 =C2=A0 =C2=A0return ret;<br>
-=C2=A0}<br>
--#endif /* CONFIG_TCG */<br>
-+#endif /* !CONFIG_USER_ONLY &amp;&amp; CONFIG_TCG */<br>
-<br>
-=C2=A0static void arm926_initfn(Object *obj)<br>
-=C2=A0{<br>
-@@ -898,11 +898,11 @@ static void pxa270c5_initfn(Object *obj)<br>
-=C2=A0static const struct TCGCPUOps arm_v7m_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D arm_translate_init,<br>
-=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D arm_cpu_synchronize_from_tb,<b=
-r>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D arm_v7m_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D arm_cpu_tlb_fill,<br>
-=C2=A0 =C2=A0 =C2=A0.debug_excp_handler =3D arm_debug_excp_handler,<br>
-<br>
-=C2=A0#if !defined(CONFIG_USER_ONLY)<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D arm_v7m_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D arm_v7m_cpu_do_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D arm_cpu_do_transaction_faile=
-d,<br>
-=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D arm_cpu_do_unaligned_access,<b=
-r>
--- <br>
-2.31.1<br>
-<br>
-</blockquote></div></div>
-
---000000000000d6e2f405cb08dab2--

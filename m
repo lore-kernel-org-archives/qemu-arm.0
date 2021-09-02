@@ -1,29 +1,29 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp420759lfb;
-        Thu, 2 Sep 2021 09:18:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqV7kTAvWkzSdc95KJs9h3a0Tz9wrI32F0nMdF1LVNHXVdawQkBv7EJhyi8pQ4KztQr/5Y
-X-Received: by 2002:a05:6402:3188:: with SMTP id di8mr4331483edb.300.1630599504410;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp420770lfb;
+        Thu, 2 Sep 2021 09:18:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz+9RxjWLu9+8l4bLr3sih6cj88HAI+v653C3Dg0rVKGpgsZfh2o4tOAjliQx+gyx6oLpKP
+X-Received: by 2002:aa7:c14b:: with SMTP id r11mr4137416edp.108.1630599504938;
         Thu, 02 Sep 2021 09:18:24 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1630599504; cv=none;
         d=google.com; s=arc-20160816;
-        b=i5gva2S13JW4FxTJqiBDpL2LEmJaoxLjwBLvwHqmejiI1xypsa1AnZxqSun0FsoCH5
-         EhZEoZdUC5F5CQZP4SEthRg+Zw7vHYxJ7433TzpCX+QuBTm9jWh55MzF7yNed9rZX4ts
-         YpxA9eTpYs8/9eUlxq/ER9ppVPNCCf9/IuJq/+DdVlJdgb6c1rtiRazrpSAk+ZKYiSPa
-         uewtdlcr6Q04SyIbfdv2dQ/WbTmNLtjXiCextbDzuPZxziH3Mtc9vAr93EGY6z4uAfYr
-         5Nmsa7rWm4tqxH3RbcetsEe45E5BUBTdsRPz18BecbquEiIAlK90F/Sjivjab/O9tg+k
-         Dtcw==
+        b=EGJoMK7Ju6XC2/zkN3h4vfLgjh48F4Oi6xmrm5KvFtDfBHM1tJyYcEF2vdcpMlOU2U
+         KtxdK3CU/7nwJKz5dzsSR9vkS63Fj+gG3sDh4P379erV9Jg2qvvDtg2utoA8SgLGhOQa
+         lL7whJzGB7vmYpBjcW7Q0M5MN31NPqPL4ZZxaLv1jqNbwgQc1zu3SweT/yuhErn7nnO0
+         8LVdMfaBsmTVkhE1g7Hz/nZSvZ/61ol94c8IfKtgi5TweKNj563jP++Hyhj07UOchBM6
+         PCFj1yEs5riuuRcPo5zOnam3+grBOKkibToiiYsOwp8CnM5M+JUeXKYdGQ7DgeNtsqMQ
+         6l5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from:sender
          :dkim-signature;
-        bh=NcTQcOUeeehYkPycaMHvSzYk1/JpDe+W3tlOioHt6ec=;
-        b=dOqTk/V38b67Anj0eSsvSf4APNi0JY8BcKnFLBduKTsG2V2roYoR0lp9y9wlRzX4Nw
-         yCaAgTipB+783izJzRfNTgGUmvQoEY3DisQY1UhgiRymTVskhNqkaDP24dbEPplFMwQ2
-         iryKpXiinpW73NghzTmt2A1iv0niKTDOEU2wkCoYfr98KVz9u+HGP9xsCxtwN8fV6XGf
-         Ry7EBL5FXYbW0ilaPin4eVAmfRIOncENfNXBs0mDIZv5gln4l6SAPeXS+Kje1gMO2uhd
-         R1NtbWd973Hotej8iW3UJwOoW2h4mHU8y56ScUFvRNkfQDnwr0hjiW6727y9zAzv0nzh
-         keYg==
+        bh=iBR7XZaVDWa3VEAQfJT4KESDdYv2ZsQvbER1+LPZ/aI=;
+        b=mgnUYP7LxKqlCFGrhGt50MmhRWp1xjaL5N23SIMLfHcnNI64iYjWmGkUuIqFKZ9i/J
+         16JhmWBP72rRg7CoC2IYZA7qxTcdtX0lsW+C5Kth1evXkBsysdA8ReiGfclBRcxbR0Wi
+         T5UoJnWN0POiy1+V6tDORJTKkfuolS0Fw3CkJ6PuPb3HXre+m21iN5+1QVZFuCNiuFGC
+         kBTXYNPJrMLfXvE3/yIaBhY9aJHQ6ergSB4TcKmsbT+Qyg/UFfo/MflJqEi0TLRMGQIJ
+         0GZQ0hJ36i72Udreh/n44VMJcfF1OH3s1GT/szFhLQg475UN5Sm4y7RneusL4JodjQox
+         D4KQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qo3n3nT5;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b3oM2a7k;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
@@ -31,50 +31,50 @@ Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
         Thu, 02 Sep 2021 09:18:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qo3n3nT5;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=b3oM2a7k;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1346291AbhIBQTV (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Sep 2021 12:19:21 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45408 "EHLO
+        id S1346297AbhIBQTW (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 12:19:22 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45458 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1346315AbhIBQTM (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Sep 2021 12:19:12 -0400
-Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com [IPv6:2a00:1450:4864:20::436])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5545FC061575
-        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:18:14 -0700 (PDT)
-Received: by mail-wr1-x436.google.com with SMTP id q11so3832592wrr.9
-        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:18:14 -0700 (PDT)
+        with ESMTP id S1346363AbhIBQTT (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 12:19:19 -0400
+Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com [IPv6:2a00:1450:4864:20::331])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 74528C0613C1
+        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:18:20 -0700 (PDT)
+Received: by mail-wm1-x331.google.com with SMTP id z9-20020a7bc149000000b002e8861aff59so1892621wmi.0
+        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:18:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=NcTQcOUeeehYkPycaMHvSzYk1/JpDe+W3tlOioHt6ec=;
-        b=Qo3n3nT5T2uCxZDbpwI/2fMsolvJt4Y1gOrYSxa05AyniYxnVrYAyAl58E/mePDB+Q
-         mp74y9slo+JHNdNbb124nVsmTrRmSYtRFeXvQ45hmAzQLS7SZdoREJlqjngb5ERIDHOz
-         8fG18ynHtTwJKTgzScUP5EYAEGDfAkaAdwzs1bs8Mwbkci0fjxZIrzyNblhH2fEmvKn0
-         14gWvYc8/SbUfS0Y8MjZjc8PX2H+MElpBG7G8YmI1yDXyIqgKhSWIpr7bVwK4JmVtxvW
-         D4kk4tzADto1QBEDwX3w/FLijcMe32GJWkC5PPc+o9liJR70fQ003gNi58OOJ6evLU1W
-         Khjw==
+        bh=iBR7XZaVDWa3VEAQfJT4KESDdYv2ZsQvbER1+LPZ/aI=;
+        b=b3oM2a7kfu59T16h1BQOivDnrY/oITcLEbYMDbyYiQhSRpMPPbkow/DjE+1Ih4EQL/
+         DUMVJOdg0XVJbEcJ79XxMVenCZKrXPuNo4lfReSnNPQpSjZ4YOofjjl3erNURKNYsHtL
+         HEHPXeiHX0YfdcBowdh8WFKOQbcQAU/wfMDvbfu4iq/jPgfcZfFUIVDjHXKT3CRk6R6M
+         vj3MnraM9QYlz2Bf2AIl43yWvEv2b8GLOTUYPYAin5G610qJf8lQsTsudFi4GarHEOkf
+         I84tHwdyec/ClmJMz9FqfnRo+aZy5mZWv4eOOqkltbqaFUUFGtiu6tZ9fx/UuTf496te
+         WjkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=NcTQcOUeeehYkPycaMHvSzYk1/JpDe+W3tlOioHt6ec=;
-        b=AUDV3MMh21yGxuqh5C9y7ILEx7lAVBQJm8aiPNA9pvGb6mM5QtrAMudpZRey7Ma7KW
-         hViWwPh218BWnO3roGHqqcwMwYudpCavZeZzwJK9BVRUeRieHj4O6Ajbp2d/nn/SIWKO
-         9O/KYrHl+MGwLZqFXkG4gI98Xe0MwLK3I1R9JyH5dNC24AgPuQH6joYurLyVS/WwIGze
-         nRmtiMrOsLt+9mEMcTbuOWMRqMBpYkYH9lSCbQ3zi8Q+ztRKIy+qTKHgSwEe3WMsrX9i
-         zGi/J2RGZf9hpuihTa4v3uXguB+A7Q+znes0EVVsJnP9INSV+MOquRgMRECVSxFZHQyt
-         DqWg==
-X-Gm-Message-State: AOAM531WIrK6sR5cj6dc0ylczERBNA8Wy+emGXM7jcq7IefnOUtEZi9y
-        /r+oeVoNoDs/xoOKmv1VlmE=
-X-Received: by 2002:adf:c390:: with SMTP id p16mr4949292wrf.105.1630599492959;
-        Thu, 02 Sep 2021 09:18:12 -0700 (PDT)
+        bh=iBR7XZaVDWa3VEAQfJT4KESDdYv2ZsQvbER1+LPZ/aI=;
+        b=ebNGxYezn7aOxt82LbmK9Xgk0H5MCPIri4OybL+BcCtqL7EGHyxT3pEkHD0Ycs5WZH
+         bXz3ME8ZpZPzoYatFCpbQEFEs4USE4Sv4TT3yi3hBTCeKZGRCT1HkN+sZSZqn/Jn1/R3
+         ipaCEVdCQyzqyb1RVEVrWSfxzm6jPSYyYcpb8CBXHSQR4pCdXvuLoMPtcqPBkfFHVOBz
+         i9DY7VN2V7e8U2je3bb9Zc8vY5U1BLTghE8uABZoGDNLjpqOac+m3e74MWOvTxRVeZh+
+         NxFcLZRTk0ef12LC4NanBtO7XtpZFVVVW9wC1dFrWSxV3axH1lnunWYe7kV8YZRxX4sD
+         fDcg==
+X-Gm-Message-State: AOAM532NIjcS4NYIOCWkguJWlRM3IwTrx4PTKtyhYTIA6W29QycKWbFq
+        FJY9KXLF6sm/dIEt3znSbOI=
+X-Received: by 2002:a1c:4682:: with SMTP id t124mr4067940wma.168.1630599499125;
+        Thu, 02 Sep 2021 09:18:19 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id g1sm2930192wrb.27.2021.09.02.09.18.10
+        by smtp.gmail.com with ESMTPSA id l35sm1842816wms.40.2021.09.02.09.18.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Sep 2021 09:18:12 -0700 (PDT)
+        Thu, 02 Sep 2021 09:18:18 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -120,9 +120,9 @@ Cc:     Bin Meng <bin.meng@windriver.com>,
         Palmer Dabbelt <palmer@dabbelt.com>,
         Stafford Horne <shorne@gmail.com>,
         Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-Subject: [PATCH v3 23/30] target/riscv: Restrict has_work() handler to sysemu and TCG
-Date:   Thu,  2 Sep 2021 18:15:36 +0200
-Message-Id: <20210902161543.417092-24-f4bug@amsat.org>
+Subject: [PATCH v3 24/30] target/rx: Restrict has_work() handler to sysemu and TCG
+Date:   Thu,  2 Sep 2021 18:15:37 +0200
+Message-Id: <20210902161543.417092-25-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902161543.417092-1-f4bug@amsat.org>
 References: <20210902161543.417092-1-f4bug@amsat.org>
@@ -132,57 +132,48 @@ Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: HDjuVEa84q12
+X-TUID: W+jU1+L/Nyma
 
 Restrict has_work() to TCG sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/riscv/cpu.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ target/rx/cpu.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 13575c14085..abb555a8bdb 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -335,9 +335,9 @@ static void riscv_cpu_synchronize_from_tb(CPUState *cs,
-     env->pc = tb->pc;
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index 25a4aa2976d..0d0cf6f9028 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -41,11 +41,13 @@ static void rx_cpu_synchronize_from_tb(CPUState *cs,
+     cpu->env.pc = tb->pc;
  }
  
 +#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
- static bool riscv_cpu_has_work(CPUState *cs)
+ static bool rx_cpu_has_work(CPUState *cs)
  {
--#ifndef CONFIG_USER_ONLY
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     /*
-@@ -345,10 +345,8 @@ static bool riscv_cpu_has_work(CPUState *cs)
-      * mode and delegation registers, but respect individual enables
-      */
-     return (env->mip & env->mie) != 0;
--#else
--    return true;
--#endif
+     return cs->interrupt_request &
+         (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR);
  }
 +#endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
  
- void restore_state_to_opc(CPURISCVState *env, TranslationBlock *tb,
-                           target_ulong *data)
-@@ -647,6 +645,7 @@ static const struct TCGCPUOps riscv_tcg_ops = {
-     .tlb_fill = riscv_cpu_tlb_fill,
+ static void rx_cpu_reset(DeviceState *dev)
+ {
+@@ -189,6 +191,7 @@ static const struct TCGCPUOps rx_tcg_ops = {
+     .tlb_fill = rx_cpu_tlb_fill,
  
  #ifndef CONFIG_USER_ONLY
-+    .has_work = riscv_cpu_has_work,
-     .cpu_exec_interrupt = riscv_cpu_exec_interrupt,
-     .do_interrupt = riscv_cpu_do_interrupt,
-     .do_transaction_failed = riscv_cpu_do_transaction_failed,
-@@ -666,7 +665,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     device_class_set_parent_reset(dc, riscv_cpu_reset, &mcc->parent_reset);
++    .has_work = rx_cpu_has_work,
+     .cpu_exec_interrupt = rx_cpu_exec_interrupt,
+     .do_interrupt = rx_cpu_do_interrupt,
+ #endif /* !CONFIG_USER_ONLY */
+@@ -206,7 +209,6 @@ static void rx_cpu_class_init(ObjectClass *klass, void *data)
+                                   &rcc->parent_reset);
  
-     cc->class_by_name = riscv_cpu_class_by_name;
--    cc->has_work = riscv_cpu_has_work;
-     cc->dump_state = riscv_cpu_dump_state;
-     cc->set_pc = riscv_cpu_set_pc;
-     cc->gdb_read_register = riscv_cpu_gdb_read_register;
+     cc->class_by_name = rx_cpu_class_by_name;
+-    cc->has_work = rx_cpu_has_work;
+     cc->dump_state = rx_cpu_dump_state;
+     cc->set_pc = rx_cpu_set_pc;
+ 
 -- 
 2.31.1

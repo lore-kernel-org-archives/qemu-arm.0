@@ -1,99 +1,101 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp369133lfb;
-        Thu, 2 Sep 2021 08:21:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxBFRl7ndvCFzgPYW9kzLX2G7LnETvekO1Wyhq8I7a3AclmF+II5Otk6DOulWL09PUOs2fl
-X-Received: by 2002:adf:d1ab:: with SMTP id w11mr4464971wrc.372.1630596118659;
-        Thu, 02 Sep 2021 08:21:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630596118; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp369211lfb;
+        Thu, 2 Sep 2021 08:22:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdsVmVtZPPB9UjqGPvfXAwJUbdK99jZSxp4wjkSqjf4UgFxz8g8gyrxqrAR7GKtJlabuL5
+X-Received: by 2002:a7b:c097:: with SMTP id r23mr3786012wmh.114.1630596123195;
+        Thu, 02 Sep 2021 08:22:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630596123; cv=none;
         d=google.com; s=arc-20160816;
-        b=oI9B5+uu5cInWNCabrKaeUxHLAMtxhJcB+hYikLUAZZrjrOhEChuiTLSYkYJaub63w
-         1zn3YuI+AfpCdz4/liSTXe1p/rqkK0a35LxJJxaAbs68WUsE8CVZZlCvCu1gGIerIxgq
-         o0DgLiTA9A9Uo2qJcTrcQWq/I8+r/Y9rvnQ51XZ7/9QiVLabGbrZ78s1lURJioSFOrng
-         PfwEEspHvIaH5SsFA7BdcUimJ3Nlp9BVNbkqOzQmDVedWR5UL1fLXcfxVsYiqHa5f2Zs
-         3UCjeWPIxKG5l2XHuwUm8g5NicMs4ARUn5nxqiRIx1d7H9d2LswI8mOLZQNtxUxZTAtV
-         Im6A==
+        b=orvHf2GtfhPni5KeuDm0gNGu+VdCx/ylqZswYKcGctAoYYz7JkowZp9RT/FUSBTqdT
+         Y7Zsb1H5nkYuiDKJGydZaWlHegTUr5xieYi8N4mIDwX1Ov/9X/wnhwrqgSsSkvjoHHbX
+         qyb2xdusHKagnpvzzllWinf8TyzhbOPqKIBdkCLgH/Cigsmxm8BBwh/t+QYpjf03HBAK
+         NGYc2eplhFE0sSEm3/TokTtce6cjt2hyYmPe4EZcjP88OYfpX7EzAChYS9FLngn69WBl
+         ZGce8qd1CF86NVnyG3p7aN+6FhdRUwDtMMsO8rJYWqZPhZ4frkz4Z0QjHnAY1LQvJOxa
+         IF9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=XTFlYRzsNmSx1w84TAaQNKIszVXBPzQdffXX/N6ByQc=;
-        b=zHCOQSkcHm1mObkKrK4NIbR/SLz9KmcUfOiCxEofaBxkPi05FWghlRlzEkdGIzm12u
-         sqeMxPpH+FZXZEBK3a5VOsD1yFs0MXWPXoWYqsBei6Hcc9vPYNc3uoMMj0sEn81VZOwJ
-         JVhPib/mQFp+8M3UmgjtWdDAHRe6e+EW6MAjLf8i7uM4DK1+Z3+Uxa5RtSUlJzVq1nQT
-         Hg2zN4MoSggECC8LAzjyZnDqxlK8GSTWEqjMT5gFbKkCnHJM5iazZB+w41RZaunAuoAN
-         2LGoCVCK8TmuG+yc6D9B30y7xzkScEPogIQaEPbgSqWiu96LfngUZPct547J12b8rWFV
-         Zq7w==
+        bh=BRVRoXmNXmCs6STtexNfP5aqtjz1BCQVthgUFpmXOsU=;
+        b=W35oVRVLvFitLyR2ngEB4dfJSBZXt/cpWctO4/r+1l4+XD1GEc4UTCs9WzIpVWXJDn
+         q04fFnSjwsolLklCoGXLThw18VJPSBKLPdyFkRR5nuLPt/pmmesupuu3MUfSBF0RYevf
+         Q7salHTs3DGHoSMJA8nsIfkmhdpk0G77b+NAge41ajdMcE5SkwiWz9T5gAIHV6BMeIa2
+         JMzsXaO/MtcNpwWSQwsvfPVqx6YCez43in9OPyNKyZ98aFVPtDm7PlqagxemVq+4dg0Q
+         QUElEvt6RKcJLaqtE2xOaRth4Uk94njgzZhSW6+wjWEqGBZDs/jonZtnxJ7mxHS8U701
+         8NDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="binZUo7/";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EBlgQ7na;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l23si2116419wmh.158.2021.09.02.08.21.58
+        by mx.google.com with ESMTPS id j2si2072858wru.291.2021.09.02.08.22.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:21:58 -0700 (PDT)
+        Thu, 02 Sep 2021 08:22:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="binZUo7/";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EBlgQ7na;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLoXN-0000VU-Nw
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:21:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46982)
+	id 1mLoXS-0000lW-7a
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:22:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoT7-0003j3-11; Thu, 02 Sep 2021 11:17:34 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:45718)
+ id 1mLoTP-0003o1-R7; Thu, 02 Sep 2021 11:17:51 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:42824)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoT5-0001pp-Cb; Thu, 02 Sep 2021 11:17:32 -0400
-Received: by mail-wr1-x432.google.com with SMTP id n5so3496594wro.12;
- Thu, 02 Sep 2021 08:17:29 -0700 (PDT)
+ id 1mLoTN-00021b-Si; Thu, 02 Sep 2021 11:17:51 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ k20-20020a05600c0b5400b002e87ad6956eso1623304wmr.1; 
+ Thu, 02 Sep 2021 08:17:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=XTFlYRzsNmSx1w84TAaQNKIszVXBPzQdffXX/N6ByQc=;
- b=binZUo7/bHMGSoxpON5VJ8GEdo3Al7bMt62SwTTxKOxX5oq0oIhUfcLCaFB4Cyuzd1
- LiZmr45oEQbFEm76NnaC0xaAd591rmcBV0A+9j1mRolMSW+PRlryz/xmFYySSfjLUlAD
- hekSncN+3jw2QUQqC3EWxpyhwJHohVwmIG32WpTWLjYf3c9AqpDRnImfTX6c727mGHMC
- u6mWY4WkK5T8Uceh/4z2YugTz7GH4gpqQpYeJnusOW6Xoa5e7h9+w/nbMYwlAER1ZjPQ
- aGTdhNAyvfDz91ZJ+1PKRR8TBqj+toLBAmtmev1hIfWSDL9PmtDS8DilXzu+ShD1jnc4
- SrzA==
+ bh=BRVRoXmNXmCs6STtexNfP5aqtjz1BCQVthgUFpmXOsU=;
+ b=EBlgQ7na5GU7TfCjhJOxtvlaJv/6+2seEqh1hD9lUOY8rAGpCNyI/X8q3C/kC6iNu7
+ y05gARaHBO7gR/CxagKwyxheW9EPWEU2KWmMPgTppkLRs3omrcg++9Q0C/lJ57q/T8qs
+ 1PjJ7XdyMwImmeTQttV2Pysl/x1R+rsC665j7YdyvYPsNdGxOGAaIISz3pXw1gupS7Ec
+ KLvbgUpCM5yWv9Ozrd3P+WxMVUtVWNkLZlPZZh4fLBCxbwz+4rkV1NSoGidtYyokPmen
+ KcbF0cdAsBi6qiiG2uorvXkt8CmCZSSzTHFhZpDWChTTyq5PY+pDkMiGorFGuIxsflfJ
+ J5JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=XTFlYRzsNmSx1w84TAaQNKIszVXBPzQdffXX/N6ByQc=;
- b=Wsziq57B0M7JGqxp9XQhgDvfX9LcVbnpwemnYMYAirQYWeke4VABdSRWFNXl3kzJMh
- VrRE3VKcicju0yuScaRihSGSKtdvYma4yKkj0mOdXjcPJraBHrMz+M5HzlCqVIJnBy4W
- fwscEI2XPKbEFh96bFdLIxOQG5sNBj7yFYm+OjuRN9b3KyMcrfHnIbXuoL8OVwhvb9Nx
- ezh0dCychgEQ9xhhjgXH5MA/JTa87kg1E5fh4E7BJn1Cp0tePkGUYiJEuUgts+UrCuHk
- GY+oXS8SrOazQ+UZtXLLSuqZl4ZMLvdvuLeftMU8iCL55ucpyBQw7NdHqEoRLq2q1qPW
- v7ZQ==
-X-Gm-Message-State: AOAM533oSoft31QGe0LDeN8HoMd9wfxO0BdQIlJhkVCrfRSUiuO47hdp
- gl83mm4GhCjb1iWrHchnb5vvuB7FqEg=
-X-Received: by 2002:adf:9e49:: with SMTP id v9mr4319908wre.39.1630595848631;
- Thu, 02 Sep 2021 08:17:28 -0700 (PDT)
+ bh=BRVRoXmNXmCs6STtexNfP5aqtjz1BCQVthgUFpmXOsU=;
+ b=YZvOmV1gkThb4f2kHoJ+Iu5DhhCjq5dkZWt8tPk4mPECvZNrrIjYwRJwgvLqMFZLZD
+ OPDd730HnPE/RuOGtgEtH2a9Y/ZE3Eoo/A3vkNRIiilFrglArORgxQXBFu5FoKtiJGa8
+ 2L9uniKLd5o6T1ndKSWI4Dwefk/AnQRitqM52bLaLWaBACqlyKvqYdH1yGnkpYWMIoHi
+ V9ESEGkBQpAISE7FafF/ps0CnouDaWXsHS/0dIXN6WIoCWx2wjP6JZlGzrXYzB1L8NWa
+ Uew95b7hsfsgC/TRMxqKTwavbPiqBKfU8zO4kUHI0l1hDqEfxMEMqr7n0Hl7WhaulGO2
+ Rp3g==
+X-Gm-Message-State: AOAM533dUXq08BDuuwpMqtBQivqi7/pliDvgEHQ0d7g33OM0xHhQ39Ft
+ xZZxAJ+h8nqn2LQExJLJ+lujDyRa45s=
+X-Received: by 2002:a7b:cbc9:: with SMTP id n9mr3704527wmi.50.1630595864791;
+ Thu, 02 Sep 2021 08:17:44 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
  by smtp.gmail.com with ESMTPSA id
- f23sm1773453wmc.3.2021.09.02.08.17.27
+ v5sm2036419wrw.44.2021.09.02.08.17.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:17:28 -0700 (PDT)
+ Thu, 02 Sep 2021 08:17:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 02/24] target/i386: Restrict sysemu-only fpu_helper helpers
-Date: Thu,  2 Sep 2021 17:16:53 +0200
-Message-Id: <20210902151715.383678-3-f4bug@amsat.org>
+Subject: [PATCH 05/24] accel/tcg: Assert most of cpu_handle_interrupt() is
+ sysemu-specific
+Date: Thu,  2 Sep 2021 17:16:56 +0200
+Message-Id: <20210902151715.383678-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
 References: <20210902151715.383678-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -131,35 +133,31 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eUIF8E0UbTFm
+X-TUID: Z8Nc2BKNnufg
 
-Restrict some sysemu-only fpu_helper helpers (see commit
-83a3d9c7402: "i386: separate fpu_helper sysemu-only parts").
+To prove TCGCPUOps::cpu_exec_interrupt() is limited to system
+emulation, start by asserting it is not called under user emulation.
 
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/i386/cpu.h | 3 +++
+ accel/tcg/cpu-exec.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 6c50d3ab4f1..c241bc183d2 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -1833,11 +1833,14 @@ void x86_cpu_list(void);
- int cpu_x86_support_mca_broadcast(CPUX86State *env);
- 
- int cpu_get_pic_interrupt(CPUX86State *s);
-+
-+#ifndef CONFIG_USER_ONLY
- /* MSDOS compatibility mode FPU exception support */
- void x86_register_ferr_irq(qemu_irq irq);
- void fpu_check_raise_ferr_irq(CPUX86State *s);
- void cpu_set_ignne(void);
- void cpu_clear_ignne(void);
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 3e387c944c5..5f4836946c1 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -725,6 +725,9 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
+             qemu_mutex_unlock_iothread();
+             return true;
+         }
++#if defined(CONFIG_USER_ONLY)
++        g_assert_not_reached();
 +#endif
- 
- /* mpx_helper.c */
- void cpu_sync_bndcs_hflags(CPUX86State *env);
+         if (replay_mode == REPLAY_MODE_PLAY && !replay_has_interrupt()) {
+             /* Do nothing */
+         } else if (interrupt_request & CPU_INTERRUPT_HALT) {
 -- 
 2.31.1
 

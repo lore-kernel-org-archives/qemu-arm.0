@@ -1,118 +1,116 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp630117lfb;
-        Thu, 2 Sep 2021 13:35:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzBpIfzUP+kHxHeUOQ2zqcOagSEPcoa4GrYJatBg2Dn2tpI0HFmAa4iJjC7I+KZ5+/N2Q78
-X-Received: by 2002:a05:6e02:1c2b:: with SMTP id m11mr36775ilh.242.1630614905012;
-        Thu, 02 Sep 2021 13:35:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630614905; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp631708lfb;
+        Thu, 2 Sep 2021 13:37:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwMvUldxNL8zaw0rkMSld3DpSclgdZwToe31ugXCRUI1+JIkKpk2dWTPXnlbk88CJR9CGMr
+X-Received: by 2002:a25:bb8b:: with SMTP id y11mr288042ybg.384.1630615060303;
+        Thu, 02 Sep 2021 13:37:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630615060; cv=none;
         d=google.com; s=arc-20160816;
-        b=aCp84EzWWeqjLjh8AwcFRY5A9g4OY/KBLsCeFmoHrV4W+OxsHU4R0j4RJYOfmnE6xe
-         LhMkugVzC/5WCrNUGBAwpp1nAVqTdeZbBqpHcm9cNfdt9rnJaB4hsXUUwuviwSNl43qv
-         qQJp6wRlFyGjghtqvZFcO5ApPwxS49ClFp+7NQ7A1dFF/j7XBNKhpdEiw+irN8i0VdXh
-         cIS+U4+3A5Omwp4lbRyFA9ptmGkNvGoRZajOAEeMDRGfQYSgcIramqNfo9wQgY7VeeUZ
-         1BwsyqMLcp6wW0BjKqEk9I6HiKwtbq1ax6f9u57CzZpq8Y2/d13eeQiEUDemrH5zFd/0
-         4tpg==
+        b=jNIaI0dbO9Cw1YmEz+4WyGWVdcehKQBs/Qo+VFlbsfP/bYRcmoCD6C7TZj2g7wTMT/
+         0gVLSW25ZqychWpAkRPdxBCIWuHrozBMAbPmz04w3PKBQbmuABgc1+q4BUj9ksQNhj/T
+         5WZ61q5yjlkA3NfATbCkiGnDZemakqbNu6J599vMR88iQ7nWlCT6e2VFwNOrog6kmfML
+         AGCAcx+7T2SEuj67rCblNIBBpJAwBfodTnvQNklQZ29n+8q69Hami8toq7jJ3NfhRLa7
+         qiuxHRPDxZgibniufgsQgYXBrxNkykANy+GcrHJfHE0qXyEInGJielYN6Acyh6bMy1nx
+         C/9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=cATzV+cgXA9fNf6+6osb5t9LIw0lqjY+rzeij2NRDf0=;
-        b=JSHVlXTQHf/tlkknuFi1k21QUNqMm/y6ckLLMsHWoijpWJ+LFjgKRP5k7l6zIMaiDP
-         odn4lZTHpCDmZ1jxo6AcTNc+CTZLvXXDRCuSKsa7sC/GSzLJ1xaamx4QABrRfIJ+W6fh
-         APKYv7Tc07AiXCsRAd00D/n9MH71c/C85S3kLT33EGox5eD9JWz+KqqdMLRtcLBFHMbE
-         nADOm/YYDZ4vra5/jTHYOuMU2VUrKFkcStyUU72CzS/8keCCirFgpmf/LVseMcmmoz9h
-         B/ZQsh08KWQS5xaFwlwSghU5wG4VUnUXnAtEzmz8nIKJv07jdjLCeUxYV/q8EqcYfTtP
-         aiyQ==
+        bh=IXs4nJs4COlMewLGKj8MReIetgZVSeTYTHEcqZse/qQ=;
+        b=CSfK6xHTZ+MV05jrarci6KeNUFwfaMkRV07ELh5Ue7Bvat7wrWsVSthxlikBIF+BTQ
+         itDFvEjECL45dEvOnxELhXBNths5Q93hP7UTnHzwgWzvl38FTc3jE7SIi4G17R2AI1cH
+         0eVjrEBcjiM0JJZb771Qzzi1lxk3NBaRxQpkS9nVMroDLELen9OdDiud1hYjeyrjb6ux
+         8cdH/1EpKvwa0nHpDBG5WcFFt15jpyGsh8YC16fF+tvLhoPIUQwF1RpjxobLPzDXaPvh
+         0J5qyjdXumzTlwTMtyUjQgkNMeedd2kzV5puoRfHxWl3ZogsoARbd/zQ9O86ZVoPO8Ym
+         CMzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=DRVhSzZs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=XHeayma8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b4si2845716iln.32.2021.09.02.13.35.04
+        by mx.google.com with ESMTPS id t20si2605660ybt.93.2021.09.02.13.37.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:35:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 13:37:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=DRVhSzZs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44728 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=XHeayma8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtQO-0004Q0-9z
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:35:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42318)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLtSt-0001wW-KR
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:37:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtIG-0006Wj-Sg
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:26:41 -0400
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e]:38884)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtJj-0002Ig-CE
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:28:11 -0400
+Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931]:42794)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtID-000701-VH
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:26:40 -0400
-Received: by mail-vs1-xe2e.google.com with SMTP id a25so2629001vso.5
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:26:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtJh-000891-IB
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:28:11 -0400
+Received: by mail-ua1-x931.google.com with SMTP id m39so1584530uad.9
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:28:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cATzV+cgXA9fNf6+6osb5t9LIw0lqjY+rzeij2NRDf0=;
- b=DRVhSzZsPNOUVAwAQdU3ZfJkRqxYT5ooUQ0xzAZbyEd5BK+RK8v4wCu1oazuQetzeR
- xCsnZ3/Tn/Q1qs6Y6RjEN2j+Inu7kXf5lvv3ecHK3eluC3dclp8eTrdoWZUD1ZZ5HY3q
- mgLX0DoKZIp6IaFpDB2MuNMeVpUBIYPQseC7MZpACC/GQO7xt/SyPOAkBlcD5Y1dkfDS
- sMLRJes9UD7G88UbrMPPUp+h2GNHDHARzwGxHboygmkVk34LRMsZhM33VWYmiKT9rJgB
- Fe0R3FCb71AJcJZyu90zwFG+cCNzsRKj9/dMNgORreiL6Ske6HZOfYtqG/K0kFnvkzq/
- bp/Q==
+ :cc; bh=IXs4nJs4COlMewLGKj8MReIetgZVSeTYTHEcqZse/qQ=;
+ b=XHeayma8ok14I3d4JnNJOfDsI490aC4PaNrShe7GKHdZuFwssrOQf3hjRFGgUJL93L
+ yUwk+eZoeU0geczbPsOYLCdJmo1NKVJbrmav7DnQEKNr0QCQu3pbckAiRHXVNf9NNERd
+ ZLOwxm+FxUQPJNLdJR09PzEIMAtysE/DMBK25fvW3T6YiS53X14H8NNEQZr3nfEHs7nM
+ jydS6yr3a6yUFS4YhF5aVeca80NF30RtsfHiTshdIE31cRpcxRyd8Lm3xm8UehqRqVSA
+ z51r3Kv1c+lgW8ofeDN/zOXi2ueAEfOrb2elu/6DEim4+ZOOwTFe5DrXx2WYaHDQtKTQ
+ fsug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=cATzV+cgXA9fNf6+6osb5t9LIw0lqjY+rzeij2NRDf0=;
- b=ZpekGeI/ryQIgSuOHveoV14QXLH1ACpkrlH+lf5gzDnFu+wzwhlvrbn+17Y5TxPF/A
- YnQFfZ7aWxwC9nHyTe3RKz+Aa94yLVAraPQNqTFeOW+ZXCo6DtfkvqVLRocEBlVTIV6n
- eeVtAHiSgNIAvJOXlMEGp9aX+HyrEwC2P2LRrjGPrSiwiVtZUnSkVbsfPYkKzfpN67sb
- zjhsLRap+3IpRy3mBE9HkcjMbZK32O7WO9cGQu52hURAhjXHT6RkKkwJPU6Bl88o/zoH
- 9jVJ5OoOCAOTsiocJTk6uvwLUpvrwqPqHldPpjIjVXzx7N107AnLF1N53s0Tat+pRmNN
- Cpfg==
-X-Gm-Message-State: AOAM530/+RCdrqotYHIbKCiHO/2CPGllIqB4ZzNiDlgy/5wfn5tEoKP2
- eOBhVSj2tNYmkAtaM/Gyz2SIaK68zSQPA/PJbf074Qtm49i5yij9
-X-Received: by 2002:a67:2dc6:: with SMTP id t189mr3914121vst.49.1630614396994; 
- Thu, 02 Sep 2021 13:26:36 -0700 (PDT)
+ bh=IXs4nJs4COlMewLGKj8MReIetgZVSeTYTHEcqZse/qQ=;
+ b=dPp0t650Om/weSCQ7d5Ns2XXnpFgaNfu8J3F7UWxYg0Y1YbgfInt8e/N8uj3LgFefk
+ wvd2yTWAyankG9jXm27zRvCbdCX9TmmRKJVJMRhiNqgjiUrpnxdtPV5l8GZFuN3nT+Kw
+ WfWNebVO1s/EesH+GuOJmpRbuC6A+zfr3izgrUz6PQD6dFubDt2wBcKnIqBeBkq1VawF
+ VdcLi3gVCmoIdk7pe6Mt/pU61kFi9BNcBE2ETzGb9K7zhHRXHRtPpu40AY4AVVKNC3st
+ WTMYiM1se/h/mK+fjVPFSC4G3iH23mTfDQjiFeTF1cpAK5R9PpZ2WafaEwY2bLygiEBT
+ hAhw==
+X-Gm-Message-State: AOAM531dGkT7gy3jasyIO9Mln28TSY6cDXn5kRr7c4xSQVRHkcHvKc+q
+ gxMB/5/9TDBl5kahQuDrEXlUdE6sOXF6WFczWSCpfA==
+X-Received: by 2002:a9f:2a87:: with SMTP id z7mr95147uai.11.1630614488604;
+ Thu, 02 Sep 2021 13:28:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-22-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-22-f4bug@amsat.org>
+ <20210902151715.383678-25-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-25-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:26:26 -0600
-Message-ID: <CANCZdfqpxrTgYz5Ff5TshQ9ro6486XX4M0EL=RSHrUQyHpGd1A@mail.gmail.com>
-Subject: Re: [PATCH 21/24] target/rx: Restrict cpu_exec_interrupt() handler to
- sysemu
+Date: Thu, 2 Sep 2021 14:27:57 -0600
+Message-ID: <CANCZdfrF3j+J2L_3KfbRNMF3r9+Fz3BUGYnbuRuvLyjF1HEJbw@mail.gmail.com>
+Subject: Re: [PATCH 24/24] user: Remove cpu_get_pic_interrupt() stubs
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000e61b4605cb08ff52"
-Received-SPF: none client-ip=2607:f8b0:4864:20::e2e;
- envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe2e.google.com
+Content-Type: multipart/alternative; boundary="0000000000005bf1b905cb0905f7"
+Received-SPF: none client-ip=2607:f8b0:4864:20::931;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x931.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc <qemu-ppc@nongnu.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
@@ -121,11 +119,11 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ibHNhjlL/DgT
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ihKt7g7cYE94
 
---000000000000e61b4605cb08ff52
+--0000000000005bf1b905cb0905f7
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -133,82 +131,85 @@ On Thu, Sep 2, 2021 at 9:19 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 >
 wrote:
 
-> Restrict cpu_exec_interrupt() and its callees to sysemu.
+> cpu_get_pic_interrupt() is now unreachable from user-mode,
+> delete the unnecessary stubs.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  target/rx/cpu.h    | 2 ++
->  target/rx/cpu.c    | 2 +-
->  target/rx/helper.c | 4 ++++
->  3 files changed, 7 insertions(+), 1 deletion(-)
+>  target/i386/cpu.h | 2 +-
+>  bsd-user/main.c   | 7 -------
+>  linux-user/main.c | 7 -------
+>  3 files changed, 1 insertion(+), 15 deletions(-)
 >
 
 Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index c241bc183d2..c7cc65e92d5 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -1832,9 +1832,9 @@ int x86_cpu_gdb_write_register(CPUState *cpu,
+> uint8_t *buf, int reg);
+>  void x86_cpu_list(void);
+>  int cpu_x86_support_mca_broadcast(CPUX86State *env);
+>
+> +#ifndef CONFIG_USER_ONLY
+>  int cpu_get_pic_interrupt(CPUX86State *s);
+>
+> -#ifndef CONFIG_USER_ONLY
+>  /* MSDOS compatibility mode FPU exception support */
+>  void x86_register_ferr_irq(qemu_irq irq);
+>  void fpu_check_raise_ferr_irq(CPUX86State *s);
+> diff --git a/bsd-user/main.c b/bsd-user/main.c
+> index fe66204b6b7..e358c38c353 100644
+> --- a/bsd-user/main.c
+> +++ b/bsd-user/main.c
+> @@ -66,13 +66,6 @@ void gemu_log(const char *fmt, ...)
+>      va_end(ap);
+>  }
+>
+> -#if defined(TARGET_I386)
+> -int cpu_get_pic_interrupt(CPUX86State *env)
+> -{
+> -    return -1;
+> -}
+> -#endif
+> -
+>  void fork_start(void)
+>  {
+>  }
+>
 
-> diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-> index 0b4b998c7be..faa3606f52f 100644
-> --- a/target/rx/cpu.h
-> +++ b/target/rx/cpu.h
-> @@ -124,8 +124,10 @@ typedef RXCPU ArchCPU;
->  #define CPU_RESOLVING_TYPE TYPE_RX_CPU
+Love it, but either you or I will have to rebase based on which of us lands
+in the tree first :).
+For me, the rebase will be easy though.
+
+
+> diff --git a/linux-user/main.c b/linux-user/main.c
+> index 37ed50d98e2..f5c0a82427b 100644
+> --- a/linux-user/main.c
+> +++ b/linux-user/main.c
+> @@ -120,13 +120,6 @@ const char *qemu_uname_release;
+>     by remapping the process stack directly at the right place */
+>  unsigned long guest_stack_size =3D 8 * 1024 * 1024UL;
 >
->  const char *rx_crname(uint8_t cr);
-> +#ifndef CONFIG_USER_ONLY
->  void rx_cpu_do_interrupt(CPUState *cpu);
->  bool rx_cpu_exec_interrupt(CPUState *cpu, int int_req);
-> +#endif /* !CONFIG_USER_ONLY */
->  void rx_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
->  int rx_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int rx_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-> index 96cc96e514f..25a4aa2976d 100644
-> --- a/target/rx/cpu.c
-> +++ b/target/rx/cpu.c
-> @@ -186,10 +186,10 @@ static const struct SysemuCPUOps rx_sysemu_ops =3D =
-{
->  static const struct TCGCPUOps rx_tcg_ops =3D {
->      .initialize =3D rx_translate_init,
->      .synchronize_from_tb =3D rx_cpu_synchronize_from_tb,
-> -    .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,
->      .tlb_fill =3D rx_cpu_tlb_fill,
+> -#if defined(TARGET_I386)
+> -int cpu_get_pic_interrupt(CPUX86State *env)
+> -{
+> -    return -1;
+> -}
+> -#endif
+> -
+>  /***********************************************************/
+>  /* Helper routines for implementing atomic operations.  */
 >
->  #ifndef CONFIG_USER_ONLY
-> +    .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,
->      .do_interrupt =3D rx_cpu_do_interrupt,
->  #endif /* !CONFIG_USER_ONLY */
->  };
-> diff --git a/target/rx/helper.c b/target/rx/helper.c
-> index db6b07e3890..f34945e7e2c 100644
-> --- a/target/rx/helper.c
-> +++ b/target/rx/helper.c
-> @@ -40,6 +40,8 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw,
-> int rte)
->      env->psw_c =3D FIELD_EX32(psw, PSW, C);
->  }
->
-> +#ifndef CONFIG_USER_ONLY
-> +
->  #define INT_FLAGS (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR)
->  void rx_cpu_do_interrupt(CPUState *cs)
->  {
-> @@ -142,6 +144,8 @@ bool rx_cpu_exec_interrupt(CPUState *cs, int
-> interrupt_request)
->      return false;
->  }
->
-> +#endif /* !CONFIG_USER_ONLY */
-> +
->  hwaddr rx_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
->  {
->      return addr;
 > --
 > 2.31.1
 >
 >
 
---000000000000e61b4605cb08ff52
+--0000000000005bf1b905cb0905f7
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -217,83 +218,80 @@ Content-Transfer-Encoding: quoted-printable
 pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
 g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 :0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->Restrict cpu_exec_interrupt() and its callees to sysemu.<br>
+>cpu_get_pic_interrupt() is now unreachable from user-mode,<br>
+delete the unnecessary stubs.<br>
 <br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/rx/cpu.h=C2=A0 =C2=A0 | 2 ++<br>
-=C2=A0target/rx/cpu.c=C2=A0 =C2=A0 | 2 +-<br>
-=C2=A0target/rx/helper.c | 4 ++++<br>
-=C2=A03 files changed, 7 insertions(+), 1 deletion(-)<br></blockquote><div>=
-<br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.co=
-m" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-yj6qo =
-gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2px 0px=
- 0px"><br class=3D"gmail-Apple-interchange-newline"></div><div>=C2=A0</div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h<br>
-index 0b4b998c7be..faa3606f52f 100644<br>
---- a/target/rx/cpu.h<br>
-+++ b/target/rx/cpu.h<br>
-@@ -124,8 +124,10 @@ typedef RXCPU ArchCPU;<br>
-=C2=A0#define CPU_RESOLVING_TYPE TYPE_RX_CPU<br>
-<br>
-=C2=A0const char *rx_crname(uint8_t cr);<br>
-+#ifndef CONFIG_USER_ONLY<br>
-=C2=A0void rx_cpu_do_interrupt(CPUState *cpu);<br>
-=C2=A0bool rx_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-+#endif /* !CONFIG_USER_ONLY */<br>
-=C2=A0void rx_cpu_dump_state(CPUState *cpu, FILE *f, int flags);<br>
-=C2=A0int rx_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)=
-;<br>
-=C2=A0int rx_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);<=
-br>
-diff --git a/target/rx/cpu.c b/target/rx/cpu.c<br>
-index 96cc96e514f..25a4aa2976d 100644<br>
---- a/target/rx/cpu.c<br>
-+++ b/target/rx/cpu.c<br>
-@@ -186,10 +186,10 @@ static const struct SysemuCPUOps rx_sysemu_ops =3D {<=
-br>
-=C2=A0static const struct TCGCPUOps rx_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D rx_translate_init,<br>
-=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D rx_cpu_synchronize_from_tb,<br=
->
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D rx_cpu_tlb_fill,<br>
-<br>
-=C2=A0#ifndef CONFIG_USER_ONLY<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D rx_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D rx_cpu_do_interrupt,<br>
-=C2=A0#endif /* !CONFIG_USER_ONLY */<br>
-=C2=A0};<br>
-diff --git a/target/rx/helper.c b/target/rx/helper.c<br>
-index db6b07e3890..f34945e7e2c 100644<br>
---- a/target/rx/helper.c<br>
-+++ b/target/rx/helper.c<br>
-@@ -40,6 +40,8 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw, int=
- rte)<br>
-=C2=A0 =C2=A0 =C2=A0env-&gt;psw_c =3D FIELD_EX32(psw, PSW, C);<br>
-=C2=A0}<br>
+=C2=A0target/i386/cpu.h | 2 +-<br>
+=C2=A0bsd-user/main.c=C2=A0 =C2=A0| 7 -------<br>
+=C2=A0linux-user/main.c | 7 -------<br>
+=C2=A03 files changed, 1 insertion(+), 15 deletions(-)<br></blockquote><div=
+><div><br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsd=
+imp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div></div><div>=C2=A0</d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h<br>
+index c241bc183d2..c7cc65e92d5 100644<br>
+--- a/target/i386/cpu.h<br>
++++ b/target/i386/cpu.h<br>
+@@ -1832,9 +1832,9 @@ int x86_cpu_gdb_write_register(CPUState *cpu, uint8_t=
+ *buf, int reg);<br>
+=C2=A0void x86_cpu_list(void);<br>
+=C2=A0int cpu_x86_support_mca_broadcast(CPUX86State *env);<br>
 <br>
 +#ifndef CONFIG_USER_ONLY<br>
-+<br>
-=C2=A0#define INT_FLAGS (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR)<br>
-=C2=A0void rx_cpu_do_interrupt(CPUState *cs)<br>
-=C2=A0{<br>
-@@ -142,6 +144,8 @@ bool rx_cpu_exec_interrupt(CPUState *cs, int interrupt_=
-request)<br>
-=C2=A0 =C2=A0 =C2=A0return false;<br>
+=C2=A0int cpu_get_pic_interrupt(CPUX86State *s);<br>
+<br>
+-#ifndef CONFIG_USER_ONLY<br>
+=C2=A0/* MSDOS compatibility mode FPU exception support */<br>
+=C2=A0void x86_register_ferr_irq(qemu_irq irq);<br>
+=C2=A0void fpu_check_raise_ferr_irq(CPUX86State *s);<br>
+diff --git a/bsd-user/main.c b/bsd-user/main.c<br>
+index fe66204b6b7..e358c38c353 100644<br>
+--- a/bsd-user/main.c<br>
++++ b/bsd-user/main.c<br>
+@@ -66,13 +66,6 @@ void gemu_log(const char *fmt, ...)<br>
+=C2=A0 =C2=A0 =C2=A0va_end(ap);<br>
 =C2=A0}<br>
 <br>
-+#endif /* !CONFIG_USER_ONLY */<br>
-+<br>
-=C2=A0hwaddr rx_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)<br>
+-#if defined(TARGET_I386)<br>
+-int cpu_get_pic_interrupt(CPUX86State *env)<br>
+-{<br>
+-=C2=A0 =C2=A0 return -1;<br>
+-}<br>
+-#endif<br>
+-<br>
+=C2=A0void fork_start(void)<br>
 =C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0return addr;<br>
+=C2=A0}<br></blockquote><div><br></div><div>Love it, but either you or I wi=
+ll have to rebase based on which of us lands in the tree first :).</div><di=
+v>For me, the rebase will be easy though.</div><div>=C2=A0</div><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
+lid rgb(204,204,204);padding-left:1ex">
+diff --git a/linux-user/main.c b/linux-user/main.c<br>
+index 37ed50d98e2..f5c0a82427b 100644<br>
+--- a/linux-user/main.c<br>
++++ b/linux-user/main.c<br>
+@@ -120,13 +120,6 @@ const char *qemu_uname_release;<br>
+=C2=A0 =C2=A0 by remapping the process stack directly at the right place */=
+<br>
+=C2=A0unsigned long guest_stack_size =3D 8 * 1024 * 1024UL;<br>
+<br>
+-#if defined(TARGET_I386)<br>
+-int cpu_get_pic_interrupt(CPUX86State *env)<br>
+-{<br>
+-=C2=A0 =C2=A0 return -1;<br>
+-}<br>
+-#endif<br>
+-<br>
+=C2=A0/***********************************************************/<br>
+=C2=A0/* Helper routines for implementing atomic operations.=C2=A0 */<br>
+<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---000000000000e61b4605cb08ff52--
+--0000000000005bf1b905cb0905f7--

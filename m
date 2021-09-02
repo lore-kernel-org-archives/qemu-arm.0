@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp418722lfb;
-        Thu, 2 Sep 2021 09:16:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw0U07STUEzpTdIi9XV8dlqlvb/hDz1fKv8HOGwY2OV72fvhvHrX848728cK/2FHZvljfyt
-X-Received: by 2002:a17:906:1d41:: with SMTP id o1mr4799445ejh.232.1630599370765;
-        Thu, 02 Sep 2021 09:16:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630599370; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp418794lfb;
+        Thu, 2 Sep 2021 09:16:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxY3omaOYdXhnLxSydJlRa3BET5nkJ25Xo2l2VS3N9xDR7Pud4eoLlxI7Y5xgbO2fICAcw
+X-Received: by 2002:a05:6512:400b:: with SMTP id br11mr3118011lfb.512.1630599375929;
+        Thu, 02 Sep 2021 09:16:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630599375; cv=none;
         d=google.com; s=arc-20160816;
-        b=n4qPUfDDhn+wR8B9HEkw35J+TazvzScIK8Sqjq+GeNdUDIFPXnsNvVEuUEtQGA6Lrq
-         SiqgXWHwCI/3iUEFU+M4Jn3wEZrwym7z4TKL3fjVXaIn8kG8tfCxVJcn2Cx1NYku/kci
-         Apwyk3ID4Xjge92nLDuS8ly1jFRFO5cgocj4OE0EEjiWn7L1UukzRTxxueWW3kmRrA5l
-         iTYOl9QqaH325SlZM+D9TVXmRZidxgIvpK35tUK6IxWFBz9TFL+yfcFk3AoyGrczngiH
-         WNAuRvpqJHrW+rDGqMy5N/AKcihdUcuoHK15Uegfu+fup6z6HQNcFBo/TwCwY2C623im
-         ccTw==
+        b=XSFn0JzRQ3CdAALzyoshZh/cyZ4VUlgKCzIDVaCqWiJKMoH4zyEFIds6ZsMkXp85q1
+         0A4uWtRozs6AOGg0HT73ZF6EMiNxzOReHpZPiehb1DRA9qpmaWW/a9Eqp88wcWBZE6OM
+         ksRDvHC4sIN16nnZ8NvLOBtU4hrj50xAtuqGCz8b2YF/P9BqBsN/Xw8EgN7b0a4JpVj1
+         VyiOVd2ZnC3BU0MTsRLJOmyf4+jLg2ApAtGDIazXt9YkoBuDCUW2OG7PCc2oQ4KzjQSs
+         qRbmx7yweLULKJ+c+OrzJiSqM11zWRTLhQQMZ2FuckYx+ifQX0hsEuH9GYzgLZeplyY9
+         JHZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from:sender
          :dkim-signature;
-        bh=IALuJS79v15vDPvWp0gEXOFVB8QcuCBujL3iQm4WVXc=;
-        b=mkvni5BOCU9Z2V5ErBA7ICorcDQHp+u5NiyynpVZNX+ivoieRALpojvPVv0YipAOVq
-         aAh/eg93JK+E0ijvLMWrgb3rt8O2UiG+fEM0WPhpmfLfo9EYpynqM1ymkPJznUqRLq1u
-         zhmGZ+NE7eC2fQoMDx92MgF4SNzNcxRy0sBGwS9kzc1VS3IcQVEscthC9l3RmhXfC8TF
-         dUlLuOIN2qpUJ7ujHe/TEyOew2Z+m4uC3wiifBNgUsBUmSZhQm/cmmvQ0VTQ1uJk9SkM
-         g34CcXgsnnPtweRfNc//WjXlwWlsZVkOK8A7ItaYPJgnwEq5CRjtMwUxExvPefXJ/gr+
-         Qj5Q==
+        bh=wV14RcZMLIQqRNfbc2l4krY7RhS99j63lxSZtHhlqHE=;
+        b=tfGJsPuAUDIHxvLAMcIl7jVpEzEuow56i4CSzJiZw5v1O8iARnGoCV/EYuQhmcHiMM
+         S3KH6dp+Hq5WpliiIFfgZijIfLRvLbMdsLFCUkLv1FX1BdhF5iTxaKzEYZYV0iKKBA7X
+         1/gasVTLXiWwNjjn9z0x8iXRKPGeNoZDv89stbl/oiN5JEDDJ5UHWpNKj2ZFiWpvSLtg
+         4y6OJBJmhtl+oem+TH0rsYwUSJbYfZIC63kwBxP5QcDYjm90Vne3RUYvR2HqFh2Qazbs
+         qVlGtFfz2i49brHm1b8OqlfNabdlRiBwstCbfxMqgncznSAH4OjwLOYfCOq1CFq+Dc3M
+         yoeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lyX2iDyZ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EKqirEKn;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.16.10;
-        Thu, 02 Sep 2021 09:16:10 -0700 (PDT)
+        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.16.15;
+        Thu, 02 Sep 2021 09:16:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lyX2iDyZ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EKqirEKn;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1346245AbhIBQRG (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Sep 2021 12:17:06 -0400
+        id S1346259AbhIBQRN (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 12:17:13 -0400
 Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44752 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1346235AbhIBQQ7 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Sep 2021 12:16:59 -0400
-Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com [IPv6:2a00:1450:4864:20::42b])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 42946C061764
-        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:16:00 -0700 (PDT)
-Received: by mail-wr1-x42b.google.com with SMTP id t15so3833294wrg.7
-        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:16:00 -0700 (PDT)
+        with ESMTP id S1346230AbhIBQRE (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 12:17:04 -0400
+Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com [IPv6:2a00:1450:4864:20::330])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 1B377C061575
+        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:16:06 -0700 (PDT)
+Received: by mail-wm1-x330.google.com with SMTP id c8-20020a7bc008000000b002e6e462e95fso1878262wmb.2
+        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:16:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=IALuJS79v15vDPvWp0gEXOFVB8QcuCBujL3iQm4WVXc=;
-        b=lyX2iDyZ4fZxIDfBFZ3tyjvTVxQHi5/DKPStvMf8XLdWBZf2Z4YEuBxLZ6HKfP2S0S
-         9fzfqOWFn0kWTui3s6TURapTU3z+GQ8v8hJn1LfoSFOHPkdm35vCxTfT+cYkW1nrugty
-         mCqdxM8mrNR5MLebQDolGLEo/7Lkgdj2gwYMGjuH7g4aAADt1Bq23c52IZGz+2AB+NL8
-         GZ3E3+ftKA9QL43iXqO6Ak9f9Icd3LYBSFwdaV1YhiiVZy5M0xyjWQ/L7Ym3RUz2AJov
-         QL67c+ediBlqlyYZ/UNrRKxOjNTuB98lMijtK7yEZi/9rGhzXp+Rvgvey6qwTDyAgy4I
-         6qHA==
+        bh=wV14RcZMLIQqRNfbc2l4krY7RhS99j63lxSZtHhlqHE=;
+        b=EKqirEKnM17VK0zDlsK2zMeCBYwgcIwGau/nM2ojAXQ1rvdOXkyoVbGuyEtcnzeBcf
+         xImFuE98afvxno05q0YdC27nz6NANS7cu771VPDYoClXWYNKBPbXOfx9/ySz5LCrUECJ
+         Q4xIJxN/kF3No93cpZwlCIAaJ6XH09BodtAvBDBdkeBdwCBDaphPwkcvpVDIxHiZ6ysU
+         O+OUGJNK0KyuMps/0T4ys/RLGMV8UZ8emOYDNmBvg+JTSjUog7qhAQcBWa/t3lzLUf2T
+         odXtoH2/j2F/4nd8pGQvQwtB64/pnwk36AxB7fddw33eEJVy5u1yikEgzNZHCoqMgJ3i
+         wCuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=IALuJS79v15vDPvWp0gEXOFVB8QcuCBujL3iQm4WVXc=;
-        b=YDkii+Rcq8Il4DCzKE7R+2yC19NRieqfxLdKsSHfTHbbExCCAxoVe9MAYJ1VjgJmRs
-         W2OB/NFCLN2OyPXLwyTfbTjxZLMRmUBF/RTpxr/mQ/56vBk1FkFEkZsghf+AKcdINse7
-         R2KM9CcdoyBxUqpTRwKS2arRLxg7ovnGd7o61dQe68zuHZNJo0r/XCbOp4RJrsVb+56z
-         qYo2eix+JsKdErW06ZFWVLNoTotAFL+Ap9A+La/tWqYtknrUxPs4c6l03inTsmpV1IcF
-         NmUIz0cr0u56ZTDqtKm9yq/409eIBsIXxmqr5Mwu7pos/UsgS0CNX8QXiOMUG1xPq9Ep
-         xKIA==
-X-Gm-Message-State: AOAM5301+OFo1lXUbyWu4LyLipOBFVBAC4qxZS09/nUNTvFJu1JqSh2t
-        hJmuJQYtNVZUvmu4uTGrLuk=
-X-Received: by 2002:adf:dbd0:: with SMTP id e16mr4727843wrj.402.1630599358916;
-        Thu, 02 Sep 2021 09:15:58 -0700 (PDT)
+        bh=wV14RcZMLIQqRNfbc2l4krY7RhS99j63lxSZtHhlqHE=;
+        b=Fhh82chIie6iXqSSsFtXeHvtZcZ2327axVQPeMzu0glUxGotgO0tucsq5tMn6eujAI
+         ZK6AoyloTPvVPXq6PzbYHQnXft8Cqbrj5rtO7Kl+5I0H8NWNLmWvBmVhAALbWnHrf+yg
+         rKqmDlSM7NBp7JO08r7mPVAxDMDSX9saEAhWkvWXlRjwGGgs1otseorGZYlGaomXcXAL
+         8PeR7d4M1JQJnJutY6DhRrtjCkoXJT22/htSdyGcYm17lmcwu9nuSoQc7e5rRErXYv/3
+         YkD3ppZG1/20u0lfZ31nhpRhVvZa+cgDQIEO2sSWByeCAu+uiVEXU/iLLK5W2tI4Fu2l
+         Xk2Q==
+X-Gm-Message-State: AOAM532PzL9epzhqUmfTijwLwmdqacoyJxjNIdbkSDTPRB7zJ9J3Eqti
+        TRhOBDTnrExD0ot0Gef5bME=
+X-Received: by 2002:a05:600c:2101:: with SMTP id u1mr4147345wml.45.1630599364755;
+        Thu, 02 Sep 2021 09:16:04 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id x9sm1939663wmi.30.2021.09.02.09.15.56
+        by smtp.gmail.com with ESMTPSA id p5sm2438468wrd.25.2021.09.02.09.16.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Sep 2021 09:15:58 -0700 (PDT)
+        Thu, 02 Sep 2021 09:16:04 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -120,9 +120,9 @@ Cc:     Bin Meng <bin.meng@windriver.com>,
         Palmer Dabbelt <palmer@dabbelt.com>,
         Stafford Horne <shorne@gmail.com>,
         Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-Subject: [PATCH v3 02/30] hw/core: Restrict cpu_has_work() to sysemu
-Date:   Thu,  2 Sep 2021 18:15:15 +0200
-Message-Id: <20210902161543.417092-3-f4bug@amsat.org>
+Subject: [PATCH v3 03/30] hw/core: Un-inline cpu_has_work()
+Date:   Thu,  2 Sep 2021 18:15:16 +0200
+Message-Id: <20210902161543.417092-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902161543.417092-1-f4bug@amsat.org>
 References: <20210902161543.417092-1-f4bug@amsat.org>
@@ -132,54 +132,25 @@ Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: wcwpST6JH4yh
+X-TUID: vlhHi20YqHOb
 
-cpu_has_work() is only called from system emulation code.
+We want to make cpu_has_work() per-accelerator. Only declare its
+prototype and move its definition to softmmu/cpus.c.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h | 32 ++++++++++++++++----------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+ include/hw/core/cpu.h | 8 +-------
+ softmmu/cpus.c        | 8 ++++++++
+ 2 files changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index bc864564cee..2bd563e221f 100644
+index 2bd563e221f..e2dd171a13f 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -538,6 +538,22 @@ enum CPUDumpFlags {
- void cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- 
- #ifndef CONFIG_USER_ONLY
-+/**
-+ * cpu_has_work:
-+ * @cpu: The vCPU to check.
-+ *
-+ * Checks whether the CPU has work to do.
-+ *
-+ * Returns: %true if the CPU has work, %false otherwise.
-+ */
-+static inline bool cpu_has_work(CPUState *cpu)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    g_assert(cc->has_work);
-+    return cc->has_work(cpu);
-+}
-+
- /**
-  * cpu_get_phys_page_attrs_debug:
-  * @cpu: The CPU to obtain the physical page address for.
-@@ -636,22 +652,6 @@ CPUState *cpu_create(const char *typename);
+@@ -546,13 +546,7 @@ void cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+  *
+  * Returns: %true if the CPU has work, %false otherwise.
   */
- const char *parse_cpu_option(const char *cpu_option);
- 
--/**
-- * cpu_has_work:
-- * @cpu: The vCPU to check.
-- *
-- * Checks whether the CPU has work to do.
-- *
-- * Returns: %true if the CPU has work, %false otherwise.
-- */
 -static inline bool cpu_has_work(CPUState *cpu)
 -{
 -    CPUClass *cc = CPU_GET_CLASS(cpu);
@@ -187,9 +158,28 @@ index bc864564cee..2bd563e221f 100644
 -    g_assert(cc->has_work);
 -    return cc->has_work(cpu);
 -}
--
++bool cpu_has_work(CPUState *cpu);
+ 
  /**
-  * qemu_cpu_is_self:
-  * @cpu: The vCPU to check against.
+  * cpu_get_phys_page_attrs_debug:
+diff --git a/softmmu/cpus.c b/softmmu/cpus.c
+index 071085f840b..7e2cb2c571b 100644
+--- a/softmmu/cpus.c
++++ b/softmmu/cpus.c
+@@ -251,6 +251,14 @@ void cpu_interrupt(CPUState *cpu, int mask)
+     }
+ }
+ 
++bool cpu_has_work(CPUState *cpu)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    g_assert(cc->has_work);
++    return cc->has_work(cpu);
++}
++
+ static int do_vm_stop(RunState state, bool send_stop)
+ {
+     int ret = 0;
 -- 
 2.31.1

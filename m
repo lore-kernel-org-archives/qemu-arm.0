@@ -1,125 +1,113 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp410901lfb;
-        Thu, 2 Sep 2021 09:08:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8Rl7csY3NTJJCEziZ/MZjnsqXfCd+rDnjGxJu1JrkTE+/iEFfdHL9aRwrPFnKei/dXvp6
-X-Received: by 2002:a5d:6085:: with SMTP id w5mr4781928wrt.104.1630598908546;
-        Thu, 02 Sep 2021 09:08:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630598908; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp412629lfb;
+        Thu, 2 Sep 2021 09:09:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxTskH+pRtO3togXf8ZXaqn542su2FOw4vSyujVghme4wr6QgZ7uyD7eYxv6j0+ur6oZZyf
+X-Received: by 2002:a5d:69c8:: with SMTP id s8mr4528627wrw.324.1630598994992;
+        Thu, 02 Sep 2021 09:09:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630598994; cv=none;
         d=google.com; s=arc-20160816;
-        b=AK8Hpdxok4Hr5KejojGRUtEgYsN7+H50B8bZ9CcOnZjenq0Er/qk4zbquJs39FOrvw
-         U3CFlLv8Y7SIMSb9bXjzqTCYsx0Q3211I+2iGIqiMh6VvCreG3k2ahXTB/i/BSOw9jD7
-         tO3LwCHEcFx//GGG7ggm9s2Yns7ZIT3rNhZ1TfYF2Vs83wP4akzjqGTj2xx0sM/hs9l+
-         qNtk6/IUmz8WO2UFp7osK+wQNETqSKcLoUpUZhaVfQvCEvULzuFiz5Wma25Spj8c75uP
-         9YEH8EqXUwk8gOKrVU7CsWT/3QtXxA2EBlmRGxjCE+CQd9lamOIG0z2epbPmz3BymNT+
-         hKmQ==
+        b=x2T6C1VEMwmUBzvhDK2QT52NqL1Tbv/cvCbz21tMvUepM8KdMIvZeZhkYhBD0hVKru
+         HvCRlQ7IBny6CFtcGS418L4NUBc1HvSLpxMZouQYJB+uHCK4Y269owFVumzmTayAbeJd
+         kabpRaMRIW0Qp4mdLHLH6mJYNHYqkCz+dzpsvq2spPlMclxjVd/07TImxLs3TsHoAJ5h
+         39/l7BJKPj83Y+4cwhcHshA1mzoXgEGeaAKOZZGU1GzwH7HvC5+rJpqGIhAMso0zes1s
+         DyU1WqUvNJ2+1Z0V84U8o2CBcjNCJlUy03AAYsSKPnhsMV1O2SndQXPUbioZq+LQ6E+a
+         OKmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=a/RtGwwh3G9nvrE3auS/tDy7EVbBpvAbChB7o8ajWms=;
-        b=msbIsb8aooPJeZ6qopWjooF2s5iHwReXtO0WPmM6U3dK2KiTF9uQjt+vtdrhFqTRpe
-         uQOwIZGTf9BtqyF04eyKLod2i62VB7E0R5Meb40y9rZ9nQzOt26n5nMKP32QpvpZDfqS
-         NKuKC4OyLv9IKsarN4pJzEPXUsJo7/Oa/zco7LCUFfNE5klX4twyCSS+aeCz1zin6ASG
-         WVFYzQIJaPkB0f5ZT40uQqBATnKTuxgMsgQxJWRDM6ozQG/IaxqvqbW2GxQwA82eu1jT
-         4Z9Zo0dTVX5mMxOAeQe2P1bvSHzKPdsUEt9pdTHEyWj4nG0csHKw1HIV4v/1P+c31eiG
-         13Yw==
+        bh=VL+3LJFKjgxTJRGBbjVAI41TWq2pj4MCAtAdzBuX17U=;
+        b=RrBdGGDq5HfiNAPmZ0QlS8FyumUede+QPNjIPK6IYBNtq7HgEhtVtHL3HpCljvPr4l
+         gPPN6y6TEDtvLmGW0aOVosUQ2MNPOEZD8pAlKqdoTwZRIyt/LD1u3pAPcJRgQxlu4Aez
+         2uC32V3xmXq5kfnXcHyJmSX3QcQzG1OwiaIo7qdU331rwcA/c2vAX27ya01IQ6mNw/A5
+         rs1XEQvYlMWL1cV95tc3ih+MxYjcPASqTYlR9hyQ97iHEKCq2wOGfJ0MIASGu4Uy9I/3
+         37mpRpmtV2pBLNHtAoRVrtaXLUXRSZtOWWzYNh2WmneD/UMYALd4WcHwSckhYVS5leRH
+         LXoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ILrrGKP0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Qv0A0zDz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g1si2432895wrc.225.2021.09.02.09.08.28
+        by mx.google.com with ESMTPS id i10si2223592wrx.199.2021.09.02.09.09.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 09:08:28 -0700 (PDT)
+        Thu, 02 Sep 2021 09:09:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ILrrGKP0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38588 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Qv0A0zDz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLpGN-00062q-FV
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 12:08:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33222)
+	id 1mLpHl-0008Dx-WF
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 12:09:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLpG4-0005wr-7O
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 12:08:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23468)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLpFz-000206-Ns
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 12:08:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630598882;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=a/RtGwwh3G9nvrE3auS/tDy7EVbBpvAbChB7o8ajWms=;
- b=ILrrGKP0Fhs2qxVrbEJ7IB4Qt+NXEYfcGHWXbIXTvLIEPWf3k0F+LAHjZbG8DXYvP9oedl
- KweElLtjd78Q91lgUhtSgKRXjTHND6YeEWz5eAc+PrVGdxv7ELY0hn3sqhRQECsw+LMYIz
- e8f527ZL6Ol3/5xa35qG8ZLlWDDrdK8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-241-KxzmpqirMUu96jjOYKeqFQ-1; Thu, 02 Sep 2021 12:08:01 -0400
-X-MC-Unique: KxzmpqirMUu96jjOYKeqFQ-1
-Received: by mail-wr1-f71.google.com with SMTP id
- q14-20020a5d574e000000b00157b0978ddeso716948wrw.5
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 09:08:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mLpHF-000886-6q; Thu, 02 Sep 2021 12:09:21 -0400
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e]:35734)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mLpHC-00033V-H7; Thu, 02 Sep 2021 12:09:20 -0400
+Received: by mail-ot1-x32e.google.com with SMTP id
+ q11-20020a9d4b0b000000b0051acbdb2869so3171709otf.2; 
+ Thu, 02 Sep 2021 09:09:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=VL+3LJFKjgxTJRGBbjVAI41TWq2pj4MCAtAdzBuX17U=;
+ b=Qv0A0zDzRGZ/6KV5+fM93iFaRl7wgDn120ywb2lGAOH/X9byUqOfrzQML815xRB6Jb
+ H60Odcr6gsrPsjhR26+gZw+qQd5D724IR3OpQUgaqJILevOzrTMzb2IION9tRsdhuGYN
+ RI4Hr1uNzKxk9Y71Z5TzeFfpchyORV/kgzNz4Yl9KPvDwzqafmrenvCzmrLEnHnXpgDB
+ z7wJiXwTQeTsVyavRC/nhmnMSyxMHa6EYWIJj0fbhz5eNUGZMnt9QS1FaqRPYMCaECmg
+ O2/+zlkducFYKSHcPAr+pI4D1Rk8dVDcJZZfRKQxwNIDO2Mt5Z2+Xj5oy9mJ4YdPqpII
+ Cjwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=a/RtGwwh3G9nvrE3auS/tDy7EVbBpvAbChB7o8ajWms=;
- b=gouOaQK5nSGZXf1AapGkHxreoR3bm8OqgqrT2HEA/wvdNM1ioWD+J79dup4oXGSiYS
- iJxAs5g40b4sPQEqtfUYTUfqn8j56w855FkmX4+fHveb5nxkiV5vfE4hZftDNgOdqb1o
- Ggs9SmcRrfY7ls2f6zY5PmWa2JI+Xf60ty9mHlBJmheUTJ5m7BK1kaSUIfx1oWookSW/
- 67aICEHsAOLWwP0ev5YWo0GB824VlcH/KT0f0K+qu25YA/VBjtz5UHa0epXlk0V/Xfv3
- 24/UQ2tfx06/zRY28i0XDTUco+crDIBoBDxqcI8z9yI1ioMLnKW9FctlmeumkJYzd6jf
- ldBg==
-X-Gm-Message-State: AOAM532J2rXmTCOAIhdmjwamMQCK3kQKVKjValfPv3YOp5VGwdKaN76X
- i9QhAp1FxxPOgJv2tJOUDjiZ7LV+2ZtO6ilSk9GySHRy9afg+f//esQSSpM3GuR3d8xbH3JR2/K
- zoaVNLsc8G+Ct
-X-Received: by 2002:adf:c449:: with SMTP id a9mr4604970wrg.256.1630598878798; 
- Thu, 02 Sep 2021 09:07:58 -0700 (PDT)
-X-Received: by 2002:adf:c449:: with SMTP id a9mr4604938wrg.256.1630598878599; 
- Thu, 02 Sep 2021 09:07:58 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id m11sm2287120wrz.28.2021.09.02.09.07.57
+ bh=VL+3LJFKjgxTJRGBbjVAI41TWq2pj4MCAtAdzBuX17U=;
+ b=WO/Ph5OMeZVqCU4htrqyslInNhLRIFLM7NzBgK5SRUDsbKqagy2+NHGzKfl54C0mWE
+ BSZoiNEkDO+IEXS+HJtPqDCJLXsQUZ5MR2ucR2pP6wM8R6tqMD/pp+6Bcy2myJZ3jjeA
+ 5Hh9JgWFQzMDz535InebjWqp0ay+fUdZTGnabKzWUQGMhDZZz93BwxMTObiVQLCQ1hTB
+ oZiMZjC2Lr0hdFbLQCQrH+sFPJ1l44DfzlxG6332EwjsztuyhvtQHaRN99SZSIvGqEZa
+ j59jHamXP+hrTB8PzZ9zfTi2/Z80QzI9XM1c60DcAHrm2R41oTGStHJqahdeUTOqdv3D
+ Orgw==
+X-Gm-Message-State: AOAM532XHy3hE5/HRE9PrGltLyDnB9SFpsBdzc/afcXGKFOSKsDME4Oc
+ Fvh0wpEagd9s3/urG3W/4BhYRtRGfOQ=
+X-Received: by 2002:a9d:d35:: with SMTP id 50mr3225495oti.22.1630598955631;
+ Thu, 02 Sep 2021 09:09:15 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ b24sm448637oic.33.2021.09.02.09.09.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Sep 2021 09:07:57 -0700 (PDT)
-Subject: Re: [PATCH v2 32/35] acpi: arm/virt: build_gtdt: use
- acpi_init_table()/acpi_table_composed() instead of build_header()
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <20210708154617.1538485-1-imammedo@redhat.com>
- <20210708154617.1538485-33-imammedo@redhat.com>
-From: Eric Auger <eauger@redhat.com>
-Message-ID: <3a7029be-78c5-91b0-5eaa-42aee6064929@redhat.com>
-Date: Thu, 2 Sep 2021 18:07:56 +0200
+ Thu, 02 Sep 2021 09:09:14 -0700 (PDT)
+Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210808013406.223506-1-linux@roeck-us.net>
+ <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <a34c10d4-fc90-0186-3214-c3c5e77b4eea@roeck-us.net>
+Date: Thu, 2 Sep 2021 09:09:13 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210708154617.1538485-33-imammedo@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.39,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.225, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32e;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x32e.google.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.225,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -132,162 +120,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
- mst@redhat.com, shannon.zhaosl@gmail.com
+Cc: Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z/laNHo617ht
+X-TUID: nDxZTSG7+BLF
 
+On 9/2/21 8:58 AM, Peter Maydell wrote:
+> On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> wrote:
+>>
+>> The control register does not really have a means to deselect
+>> all chip selects directly. As result, CS is effectively never
+>> deselected, and connected flash chips fail to perform read
+>> operations since they don't get the expected chip select signals
+>> to reset their state machine.
+>>
+>> Normally and per controller documentation one would assume that
+>> chip select should be set whenever a transfer starts (XCH is
+>> set or the tx fifo is written into), and that it should be disabled
+>> whenever a transfer is complete. However, that does not work in
+>> practice: attempts to implement this approach resulted in failures,
+>> presumably because a single transaction can be split into multiple
+>> transfers.
+>>
+>> At the same time, there is no explicit signal from the host indicating
+>> if chip select should be active or not. In the absence of such a direct
+>> signal, use the burst length written into the control register to
+>> determine if an access is ongoing or not. Disable all chip selects
+>> if the burst length field in the configuration register is set to 0,
+>> and (re-)enable chip select if a transfer is started. This is possible
+>> because the Linux driver clears the burst length field whenever it
+>> prepares the controller for the next transfer.
+>> This solution  is less than perfect since it effectively only disables
+>> chip select when initiating the next transfer, but it does work with
+>> Linux and should otherwise do no harm.
+>>
+>> Stop complaining if the burst length field is set to a value of 0,
+>> since that is done by Linux for every transfer.
+>>
+>> With this patch, a command line parameter such as "-drive
+>> file=flash.sabre,format=raw,if=mtd" can be used to instantiate the
+>> flash chip in the sabrelite emulation. Without this patch, the
+>> flash instantiates, but it only reads zeroes.
+>>
+>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>> ---
+>> I am not entirely happy with this solution, but it is the best I was
+>> able to come up with. If anyone has a better idea, I'll be happy
+>> to give it a try.
+>>
+>>   hw/ssi/imx_spi.c | 17 +++++++----------
+>>   1 file changed, 7 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+>> index 189423bb3a..7a093156bd 100644
+>> --- a/hw/ssi/imx_spi.c
+>> +++ b/hw/ssi/imx_spi.c
+>> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+>>       DPRINTF("Begin: TX Fifo Size = %d, RX Fifo Size = %d\n",
+>>               fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s->rx_fifo));
+>>
+>> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
+>> +
+>>       while (!fifo32_is_empty(&s->tx_fifo)) {
+>>           int tx_burst = 0;
+>>
+>> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
+>>       case ECSPI_CONREG:
+>>           s->regs[ECSPI_CONREG] = value;
+>>
+>> -        burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
+>> -        if (burst % 8) {
+>> -            qemu_log_mask(LOG_UNIMP,
+>> -                          "[%s]%s: burst length %d not supported: rounding up to next multiple of 8\n",
+>> -                          TYPE_IMX_SPI, __func__, burst);
+>> -        }
+> 
+> Why has this log message been removed ?
 
+What I wanted to do is:
 
-On 7/8/21 5:46 PM, Igor Mammedov wrote:
-> it replaces error-prone pointer arithmetic for build_header() API,
-> with 2 calls to start and finish table creation,
-> which hides offsets magic from API user.
-> 
-> while at it, replace packed structure with endian agnostic
-> build_append_FOO() API.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> CC: drjones@redhat.com
-> CC: peter.maydell@linaro.org
-> CC: shannon.zhaosl@gmail.com
-> CC: qemu-arm@nongnu.org
-> ---
->  include/hw/acpi/acpi-defs.h | 25 -------------
->  hw/arm/virt-acpi-build.c    | 75 ++++++++++++++++++++++++-------------
->  2 files changed, 48 insertions(+), 52 deletions(-)
-> 
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index 012c4ffb3a..0b375e7589 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -131,29 +131,4 @@ struct AcpiFacsDescriptorRev1 {
->  } QEMU_PACKED;
->  typedef struct AcpiFacsDescriptorRev1 AcpiFacsDescriptorRev1;
->  
-> -/*
-> - * Generic Timer Description Table (GTDT)
-> - */
-> -#define ACPI_GTDT_INTERRUPT_MODE_LEVEL    (0 << 0)
-> -#define ACPI_GTDT_INTERRUPT_MODE_EDGE     (1 << 0)
-> -#define ACPI_GTDT_CAP_ALWAYS_ON           (1 << 2)
-> -
-> -struct AcpiGenericTimerTable {
-> -    ACPI_TABLE_HEADER_DEF
-> -    uint64_t counter_block_addresss;
-> -    uint32_t reserved;
-> -    uint32_t secure_el1_interrupt;
-> -    uint32_t secure_el1_flags;
-> -    uint32_t non_secure_el1_interrupt;
-> -    uint32_t non_secure_el1_flags;
-> -    uint32_t virtual_timer_interrupt;
-> -    uint32_t virtual_timer_flags;
-> -    uint32_t non_secure_el2_interrupt;
-> -    uint32_t non_secure_el2_flags;
-> -    uint64_t counter_read_block_address;
-> -    uint32_t platform_timer_count;
-> -    uint32_t platform_timer_offset;
-> -} QEMU_PACKED;
-> -typedef struct AcpiGenericTimerTable AcpiGenericTimerTable;
-> -
->  #endif
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index e8553dcae5..8f28e82760 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -455,40 +455,61 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      acpi_table_composed(linker, &table);
->  }
->  
-> -/* GTDT */
-> +/*
-> + * ACPI spec, Revision 5.1
-> + * 5.2.24 Generic Timer Description Table (GTDT)
-> + */
->  static void
->  build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
->      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> -    int gtdt_start = table_data->len;
-> -    AcpiGenericTimerTable *gtdt;
-> -    uint32_t irqflags;
-> -
-> -    if (vmc->claim_edge_triggered_timers) {
-> -        irqflags = ACPI_GTDT_INTERRUPT_MODE_EDGE;
-> -    } else {
-> -        irqflags = ACPI_GTDT_INTERRUPT_MODE_LEVEL;
-> -    }
-> -
-> -    gtdt = acpi_data_push(table_data, sizeof *gtdt);
-> -    /* The interrupt values are the same with the device tree when adding 16 */
-> -    gtdt->secure_el1_interrupt = cpu_to_le32(ARCH_TIMER_S_EL1_IRQ + 16);
-> -    gtdt->secure_el1_flags = cpu_to_le32(irqflags);
-> -
-> -    gtdt->non_secure_el1_interrupt = cpu_to_le32(ARCH_TIMER_NS_EL1_IRQ + 16);
-> -    gtdt->non_secure_el1_flags = cpu_to_le32(irqflags |
-> -                                             ACPI_GTDT_CAP_ALWAYS_ON);
-> +    /*
-> +     * Table 5-117 Flag Definitions
-> +     * set only "Timer interrupt Mode" and assume "Timer Interrupt
-> +     * polarity" bit as '0: Interrupt is Active high'
-> +     */
-> +    uint32_t irqflags = vmc->claim_edge_triggered_timers ?
-> +        1 : /* Interrupt is Edge triggered */
-> +        0;  /* Interrupt is Level triggered  */
-> +    AcpiTable table = { .sig = "GTDT", .rev = 2, .oem_id = vms->oem_id,
-> +                        .oem_table_id = vms->oem_table_id };
->  
-> -    gtdt->virtual_timer_interrupt = cpu_to_le32(ARCH_TIMER_VIRT_IRQ + 16);
-> -    gtdt->virtual_timer_flags = cpu_to_le32(irqflags);
-> +    acpi_init_table(&table, table_data);
->  
-> -    gtdt->non_secure_el2_interrupt = cpu_to_le32(ARCH_TIMER_NS_EL2_IRQ + 16);
-> -    gtdt->non_secure_el2_flags = cpu_to_le32(irqflags);
-> +    /* CntControlBase Physical Address */
-> +    /* FIXME: invalid value, should be 0xFFFFFFFFFFFFFFFF if not impl. ? */
-> +    build_append_int_noprefix(table_data, 0, 8);
-> +    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
-> +    /*
-> +     * FIXME: clarify comment:
-> +     * The interrupt values are the same with the device tree when adding 16
-> +     */
-> +    /* Secure EL1 timer GSIV */
-> +    build_append_int_noprefix(table_data, ARCH_TIMER_S_EL1_IRQ + 16, 4);
-> +    /* Secure EL1 timer Flags */
-> +    build_append_int_noprefix(table_data, irqflags, 4);
-> +    /* Non-Secure EL1 timer GSIV */
-> +    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL1_IRQ + 16, 4);
-> +    /* Non-Secure EL1 timer Flags */
-> +    build_append_int_noprefix(table_data, irqflags |
-> +                              1UL << 2, /* Always-on Capability */
-> +                              4);
-> +    /* Virtual timer GSIV */
-> +    build_append_int_noprefix(table_data, ARCH_TIMER_VIRT_IRQ + 16, 4);
-> +    /* Virtual Timer Flags */
-> +    build_append_int_noprefix(table_data, irqflags, 4);
-> +    /* Non-Secure EL2 timer GSIV */
-> +    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_IRQ + 16, 4);
-> +    /* Non-Secure EL2 timer Flags */
-> +    build_append_int_noprefix(table_data, irqflags, 4);
-> +    /* CntReadBase Physical address */
-> +    build_append_int_noprefix(table_data, 0, 8);
-> +    /* Platform Timer Count */
-> +    build_append_int_noprefix(table_data, 0, 4);
-> +    /* Platform Timer Offset */
-> +    build_append_int_noprefix(table_data, 0, 4);
->  
-> -    build_header(linker, table_data,
-> -                 (void *)(table_data->data + gtdt_start), "GTDT",
-> -                 table_data->len - gtdt_start, 2, vms->oem_id,
-> -                 vms->oem_table_id);
-> +    acpi_table_composed(linker, &table);
->  }
->  
->  /*
-> 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+"Stop complaining if the burst length field is set to a value of 0,
+  since that is done by Linux for every transfer."
 
-Eric
+What I did instead is to remove the message entirely.
+
+How about the rest of the patch ? Is it worth a resend with the message
+restored (except for burst size == 0), or is it not acceptable anyway ?
+
+Thanks,
+Guenter
+
+> 
+>>           if (!imx_spi_is_enabled(s)) {
+>>               /* device is disabled, so this is a soft reset */
+>>               imx_spi_soft_reset(s);
+> 
+> thanks
+> -- PMM
+> 
 

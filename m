@@ -1,107 +1,127 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp385726lfb;
-        Thu, 2 Sep 2021 08:40:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJygcdeMKOdY96qvY4/XM++ebAXassJruXlxQ/7f40mQ522+hsXzLGVjGSJllqc4vuOx1F7O
-X-Received: by 2002:a5d:4142:: with SMTP id c2mr4636298wrq.340.1630597234924;
-        Thu, 02 Sep 2021 08:40:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630597234; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp389350lfb;
+        Thu, 2 Sep 2021 08:44:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/hbHAAcnG0ZYOJlvOcxfRxdBw7orLJ5Y5Pq9tG1Vt7XvCQQmFtx8RB3T0OldqyDUY5BwE
+X-Received: by 2002:a05:6102:3181:: with SMTP id c1mr2791898vsh.45.1630597491280;
+        Thu, 02 Sep 2021 08:44:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630597491; cv=none;
         d=google.com; s=arc-20160816;
-        b=bg1CG0906mLCdK2Na5kfFR20940yy9TZNeRaSJCW2q/rDU1dpP6APAT2L2MMPK+9F6
-         +8Ju57RiYOguR5/LCgWCfxm/O+T+yTYB6dUsqeZZm9Py4pLvyIlKp7F7rvrLh9jnKYKy
-         hamEEiUynImZZUGXWvGemuhJoZs4rNWgnOAqMu5vgCnSfIFftw0SZCNN60N+HY0dMZig
-         Rc8Cudt6FJ9KAEsCLO4ySXfBKhKeXAhUdEOGx9CG0oOpIM+vk66FmdTHodx75+m0I6j5
-         8JtFez0CByvxV/oX43cpbAXyzlvZ188ppYKx+jxHgw+5u+i7zRsXZMI9LzkeckiJvLuj
-         fLMg==
+        b=X0t2trhb60PBqPLbbwcBdTH8aELCl8qiOmqPPsC25Q0Ix4yt9TgKM/FaUk/JbFA0Yh
+         UtFXFKHK0YIdL1C8OWiKG3ZoWiiNaZddhyYx1x/9VcYb9AMokgFv2Pm2c2eZ4EI3x609
+         LROG+am5/ooO2HqXgbwLvV9+ILwqky3Vg98w2FCq6MuChOiaqQ9hnzsPLC96UJ9sxipv
+         c6Ldpcto5aTpJ6HeBBgOwArSOmSqX71/NBGf78Ogo8dergZQ9IwOiNzPCJ9AkcUW5dvg
+         Y2tzULbdkvuPTO+F6iN+zvBX40gITaoHJYbBLtKvkbLgzqthMeJ/BfXZa7Fj97TxWt5k
+         t9tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=oW3Bx/jZHjrRjkjqV/XQakbdfMLoBTULf12/vibH6+0=;
-        b=UUkFl+DocKUgmtQxXLYfaEWRg/lEDJmNcq2Y0OrtD7Oxii5aYMXV/nHVTSnwL04b0P
-         Q0DsxpuyHhPWesHASJMU13tixj32cY/p6Kq11UjZ/uBJIugVcoOB+9UCbh+DdOB7ny0I
-         XjYdvGh19hQSy+i1czYatmaikwLwA0NwitA15m8i014lK9AmzoKdStPAFiNQF8tYqqPM
-         TmPoFKoTD12ei5IN0OthlkpKOlBVn01oWiiKyrnewO8yGi2Galxn/65lJ22UyyMU+nrB
-         gYt8UsT0pcC/ZCE88FkUyN0509T5iZxtH7f3R0MCIDa0ARUH4ogvS30YPjsVeN0H/AFn
-         /New==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Q1eNU8zXLKI6/pg/slkuT4W1g0WFI5LLKLzTRYh/Kcw=;
+        b=E0oBuPwaZwbNjArKxG1I16JoM1IxDfxEzwfemaZPh593Ndbs1MM8TY6tJ8EvyrUlag
+         Zmiy9A/BM9BTP1r73t8m3aJRT9qp3/T0YSGApgKKHpmpmKplHkGdv9aynF2AVX3SETTv
+         4spHltC9S9tC1itSyY2o926Qwnsag0XjHKk9NejWrYeOkU8h5phoMJU3zuIiV92Lvtru
+         comOB2pAZyVrMzSqE1ctULPXA+Lv5CTsoLt3byv2F62TpGJwgKNIYVSQVGPBjgRbQqkI
+         HxRbJMkzEyQ6NQaf130PN7xZWz0qW/6bjIk9gbJU1PATngpIOuVAVoO9lErSX7SpfKo8
+         ZoZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="QU5qFe/i";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CY1fqCw6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f6si737128wry.364.2021.09.02.08.40.34
+        by mx.google.com with ESMTPS id p7si1080319vsc.286.2021.09.02.08.44.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:40:34 -0700 (PDT)
+        Thu, 02 Sep 2021 08:44:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="QU5qFe/i";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56480 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CY1fqCw6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37326 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLopN-0001iW-UO
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:40:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47540)
+	id 1mLotW-0008M8-Hs
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:44:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoUS-0005M9-Qx; Thu, 02 Sep 2021 11:19:01 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:46843)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoUI-0002ql-Fy; Thu, 02 Sep 2021 11:18:53 -0400
-Received: by mail-wr1-x434.google.com with SMTP id x6so3503385wrv.13;
- Thu, 02 Sep 2021 08:18:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=oW3Bx/jZHjrRjkjqV/XQakbdfMLoBTULf12/vibH6+0=;
- b=QU5qFe/i6VEoDMLVb8219jT/WtLTbQVyXNjZ+cedE0IXhZ/2ceBCu/K+3FWm9DzyYV
- mFVagGw+zjYAohDrlOvqkLyylUda6Gn1cFWe2AU7qKZu4EdyAwuMGf4d45zI2fgJz7+0
- 3zeOWtZUHZtpsfctIKwBu/u87R3XYppWiJWnm/bF1ar5pXunuK1Vfqa5UtGTHcqTmtKE
- t7rqj9NemiYOGJmryDvnJB5Ept1r85a/ZOhLPZ92+bvoGY7937uSjNTjzZ6If1wVOaTE
- +EfT4l7awhYYa5xRVbUdlZwAPsT66W/er1r/OEiWgH9nKTOqOaT67l2nQy/xtJL4RSzs
- YljA==
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLojo-0008JK-9n
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:34:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55599)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mLojj-0007WL-DK
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 11:34:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630596881;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Q1eNU8zXLKI6/pg/slkuT4W1g0WFI5LLKLzTRYh/Kcw=;
+ b=CY1fqCw6CWwvEE4tbcJdNBfd55VGCicHLePYq2GVJo8NQEbsbkQKBQYv5vFL78g09tOI2O
+ 1hCPdDlZSiw+JtgkmjNjEuV2IG5mcw3zZPjfAXzIhhrRLSbfyuSeUw51MgELb10Zjj3bvp
+ rwrFYxV9aN3t5fXdFB59Ef7btuWijQQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-510-7pkkfNmjOk2hyGl09zMscg-1; Thu, 02 Sep 2021 11:34:41 -0400
+X-MC-Unique: 7pkkfNmjOk2hyGl09zMscg-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5-20020a1c00050000b02902e67111d9f0so858745wma.4
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 08:34:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=oW3Bx/jZHjrRjkjqV/XQakbdfMLoBTULf12/vibH6+0=;
- b=YuqHiBIyTXS3tqYxGNxhIu6ItdyXNcaGFn3xH5i+w84mB777/WgBcNBeieZgV/VTDB
- RdNoLs8o6uf7+yZg3/sQycWv9wO8/JU3MiVKJL3Y2syUgDTkL8ix+ZjhjmZTQHvtZcFM
- 6Agw4XAEjLicIIEoWJW60rrtX5Cslr4NeuXdNMx8Lw06+Qdxu/tDNyB1inmQlxIb8lHD
- 9wy6lWBBeIaX+zZ6lbe2GKt9E0Gc8S1TeWcCDi9Pw53he5BRJKCNAfigvwVHPVcDL7OJ
- fRYmiKh8RBSKM856dpD9SynXD8lc/BiUg/zeY5cgiMWvhbZtMIKZvcbsenDMIfM4vCXd
- WkCw==
-X-Gm-Message-State: AOAM5335mf9obfJWycFK52vcNsvPy2LeYPN5k1qb5zvezfzPo4A0eV3r
- 7vaJSMUyX3bz04k7OBiCzgY/E2ISDHE=
-X-Received: by 2002:adf:d4c2:: with SMTP id w2mr4509687wrk.235.1630595923879; 
- Thu, 02 Sep 2021 08:18:43 -0700 (PDT)
-Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id
- y1sm2000763wmq.43.2021.09.02.08.18.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:18:43 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 16/24] target/openrisc: Restrict cpu_exec_interrupt() handler
- to sysemu
-Date: Thu,  2 Sep 2021 17:17:07 +0200
-Message-Id: <20210902151715.383678-17-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
-References: <20210902151715.383678-1-f4bug@amsat.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Q1eNU8zXLKI6/pg/slkuT4W1g0WFI5LLKLzTRYh/Kcw=;
+ b=V4jF4wmdPUBYYE5UCJSsjU3b8Yv57ZtLOlTV5ssTYl8CtOEKWrI4yBmk2v02xSC6mI
+ TALsXMq3I2V603vze/Vf06r6uMH/hnmRIjwHbx4FTVuAgWxlSFBa5t7EnIvbtP3/fbI1
+ lbjEabAPb1RZx7KtX13ScyXy5oG0EP668pYfgDaS8ECEdnnRA2Zhi+E80p4Hl57vlamH
+ qJyylSXGMVVzOf7oQzxLsCnfn/th23T20nHZbNTqbulN1OFCtg5nDfNJvfc4Q4jDQmtD
+ pvzCm0UIUqI4m8RemBXZToSXi0oUZuMz7JwFLY6z4ZRcDbKIpsF2KKrRJMSMQcQQWMf1
+ C0Ug==
+X-Gm-Message-State: AOAM530yQ6XGYlQFIKwXPU2N/vBMoZJpPZ7BVX9bHK+AvTLy7We970H8
+ zDcjunK02wh0nagzcSTjp+A7sYf/dgFt/Bg7Epv6S4N6RQrlIF5UJ6OzofJhoxtzzOr9pG6iP7N
+ 0BXEwpcfIB2v6
+X-Received: by 2002:a05:600c:19d1:: with SMTP id
+ u17mr3772501wmq.21.1630596879729; 
+ Thu, 02 Sep 2021 08:34:39 -0700 (PDT)
+X-Received: by 2002:a05:600c:19d1:: with SMTP id
+ u17mr3772487wmq.21.1630596879537; 
+ Thu, 02 Sep 2021 08:34:39 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id p4sm1892952wmc.11.2021.09.02.08.34.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Sep 2021 08:34:38 -0700 (PDT)
+Subject: Re: [PATCH v2 27/35] acpi: arm: virt: build_dsdt: use
+ acpi_init_table()/acpi_table_composed() instead of build_header()
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <20210708154617.1538485-1-imammedo@redhat.com>
+ <20210708154617.1538485-28-imammedo@redhat.com>
+From: Eric Auger <eauger@redhat.com>
+Message-ID: <76437dba-52cb-11a6-be80-96afdd9194dc@redhat.com>
+Date: Thu, 2 Sep 2021 17:34:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210708154617.1538485-28-imammedo@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.39,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.225, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,119 +134,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Warner Losh <imp@bsdimp.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
+ mst@redhat.com, shannon.zhaosl@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qdjBGBBSPqWM
+X-TUID: tR4LMGFKOGRp
 
-Restrict cpu_exec_interrupt() and its callees to sysemu.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/openrisc/cpu.h       | 5 +++--
- target/openrisc/cpu.c       | 2 +-
- target/openrisc/interrupt.c | 2 --
- target/openrisc/meson.build | 6 ++++--
- 4 files changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index 82cbaeb4f84..be6df81a810 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -312,8 +312,6 @@ struct OpenRISCCPU {
- 
- 
- void cpu_openrisc_list(void);
--void openrisc_cpu_do_interrupt(CPUState *cpu);
--bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);
- void openrisc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int openrisc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-@@ -331,6 +329,9 @@ int print_insn_or1k(bfd_vma addr, disassemble_info *info);
- #ifndef CONFIG_USER_ONLY
- extern const VMStateDescription vmstate_openrisc_cpu;
- 
-+void openrisc_cpu_do_interrupt(CPUState *cpu);
-+bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);
-+
- /* hw/openrisc_pic.c */
- void cpu_openrisc_pic_init(OpenRISCCPU *cpu);
- 
-diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
-index bd34e429ecb..27cb04152f9 100644
---- a/target/openrisc/cpu.c
-+++ b/target/openrisc/cpu.c
-@@ -186,10 +186,10 @@ static const struct SysemuCPUOps openrisc_sysemu_ops = {
- 
- static const struct TCGCPUOps openrisc_tcg_ops = {
-     .initialize = openrisc_translate_init,
--    .cpu_exec_interrupt = openrisc_cpu_exec_interrupt,
-     .tlb_fill = openrisc_cpu_tlb_fill,
- 
- #ifndef CONFIG_USER_ONLY
-+    .cpu_exec_interrupt = openrisc_cpu_exec_interrupt,
-     .do_interrupt = openrisc_cpu_do_interrupt,
- #endif /* !CONFIG_USER_ONLY */
- };
-diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
-index 3eab771dcda..19223e3f25b 100644
---- a/target/openrisc/interrupt.c
-+++ b/target/openrisc/interrupt.c
-@@ -28,7 +28,6 @@
- 
- void openrisc_cpu_do_interrupt(CPUState *cs)
- {
--#ifndef CONFIG_USER_ONLY
-     OpenRISCCPU *cpu = OPENRISC_CPU(cs);
-     CPUOpenRISCState *env = &cpu->env;
-     int exception = cs->exception_index;
-@@ -96,7 +95,6 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
-     } else {
-         cpu_abort(cs, "Unhandled exception 0x%x\n", exception);
-     }
--#endif
- 
-     cs->exception_index = -1;
- }
-diff --git a/target/openrisc/meson.build b/target/openrisc/meson.build
-index 9774a583065..e445dec4a00 100644
---- a/target/openrisc/meson.build
-+++ b/target/openrisc/meson.build
-@@ -9,7 +9,6 @@
-   'exception_helper.c',
-   'fpu_helper.c',
-   'gdbstub.c',
--  'interrupt.c',
-   'interrupt_helper.c',
-   'mmu.c',
-   'sys_helper.c',
-@@ -17,7 +16,10 @@
- ))
- 
- openrisc_softmmu_ss = ss.source_set()
--openrisc_softmmu_ss.add(files('machine.c'))
-+openrisc_softmmu_ss.add(files(
-+  'interrupt.c',
-+  'machine.c',
-+))
- 
- target_arch += {'openrisc': openrisc_ss}
- target_softmmu_arch += {'openrisc': openrisc_softmmu_ss}
--- 
-2.31.1
+On 7/8/21 5:46 PM, Igor Mammedov wrote:
+> it replaces error-prone pointer arithmetic for build_header() API,
+> with 2 calls to start and finish table creation,
+> which hides offsets magic from API user.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
+> ---
+> CC: peter.maydell@linaro.org
+> CC: shannon.zhaosl@gmail.com
+> CC: qemu-arm@nongnu.org
+> CC: drjones@redhat.com
+> ---
+>  hw/arm/virt-acpi-build.c | 13 ++++++-------
+>  1 file changed, 6 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index dd8011a670..d15e67a39b 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -636,10 +636,11 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      MachineState *ms = MACHINE(vms);
+>      const MemMapEntry *memmap = vms->memmap;
+>      const int *irqmap = vms->irqmap;
+> +    AcpiTable table = { .sig = "DSDT", .rev = 2, .oem_id = vms->oem_id,
+> +                        .oem_table_id = vms->oem_table_id };
+>  
+> +    acpi_init_table(&table, table_data);
+>      dsdt = init_aml_allocator();
+> -    /* Reserve space for header */
+> -    acpi_data_push(dsdt->buf, sizeof(AcpiTableHeader));
+>  
+>      /* When booting the VM with UEFI, UEFI takes ownership of the RTC hardware.
+>       * While UEFI can use libfdt to disable the RTC device node in the DTB that
+> @@ -686,12 +687,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  
+>      aml_append(dsdt, scope);
+>  
+> -    /* copy AML table into ACPI tables blob and patch header there */
+> +    /* copy AML table into ACPI tables blob */
+>      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+> -    build_header(linker, table_data,
+> -        (void *)(table_data->data + table_data->len - dsdt->buf->len),
+> -                 "DSDT", dsdt->buf->len, 2, vms->oem_id,
+> -                 vms->oem_table_id);
+> +
+> +    acpi_table_composed(linker, &table);
+>      free_aml_allocator();
+>  }
+>  
+> 
 

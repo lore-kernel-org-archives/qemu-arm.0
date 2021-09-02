@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp420087lfb;
-        Thu, 2 Sep 2021 09:17:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPofuyBeSQw/0w6A9J0KZJmJTNXoZALII8p/3WW3CS0jyNSPFe/dw0eX3xpcTufyR9tjNG
-X-Received: by 2002:a17:906:39d8:: with SMTP id i24mr4830828eje.49.1630599460033;
-        Thu, 02 Sep 2021 09:17:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630599460; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp420179lfb;
+        Thu, 2 Sep 2021 09:17:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxjnNFcgqPIRLWjIYZHphTeYc5ZBOmIs6iVLGPVX3DVpChznUSJhJvC58IaIG5T9YinnCN8
+X-Received: by 2002:aa7:c685:: with SMTP id n5mr4237847edq.27.1630599467325;
+        Thu, 02 Sep 2021 09:17:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630599467; cv=none;
         d=google.com; s=arc-20160816;
-        b=NoMB9ODsv/O15S8mpFMOZJeaqlPpgtVKFdwJAjsKGPA9G4r5p2G8KjgruUX2KWQPSg
-         O0ET5RN5DaAFwVnINCphUP7wBnfvEA1x2Kv0jNd6FoKr4p5/mP4gmGBDiCi2kDhGGwZH
-         dfIdeAaW+cXotTLVssqqxLqJMiClTmbNEMp0GiKvkvNaCvgSTOoOsPqNwEIC4k0/8wsv
-         /vPvVTz0aKh+X8hrbPaxL3rLy8pJ+KbGrC3KOj6eYEA3K03MUAVIaxi/C5blmSOlHmbq
-         GoW5fnRJYX95Q7iB7wT7goudLM/xvR5u03tvhzTR/IPnprH4ZV9PKg4FxrAadtIjjECf
-         0kKQ==
+        b=az5VqVln4MFWOLBvixKNdmJeKhWJ/q4c2tCdnsICrMZijpJwec08bjWXWoTlpKdMTX
+         GD5rwR6US5w1d9nDeAcennMimcrT4D+5jICNo7QpTrFNydcDPI5pSRl3ZXi/WIf92s7Y
+         FGu3nAR2WgmIwTmc+v/ff7N1FEmU9iD4U/6ai8se4hL4PEOBT+HyEh6TSk63c96GCHSV
+         7XVc+CYaJ+WJu8oM2EXaZko8LtQGcSXPJnY8r7gQNjXkVsb5qhx7kMXt19zM/aceQSiB
+         oyZdx44hn2q81cF7o3QB5QQ97bGgenRlG8pLbUKXFLHTiO5qcYCKmvWSZ1trkyC1RGDW
+         92Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from:sender
          :dkim-signature;
-        bh=oNTRH1yoq5af/chfn9I/5bXkTQKwubTn8iozem9IGSY=;
-        b=IOdVBmpSYnuOLDhun58bMoMxFT9GvS9CZ/Q0c8L8CpzcRvDKLMM/CxvnkoBG/ynhjB
-         j6ArZZn5THo2cZR3ra6gpJlYO7ZRb+LwSbu5A2RuHdrabzw7fcraHbkENC/auxGz4NWo
-         E6b3Z4JxtHzfHThfcRZSATU4tEYhzsXzJM5OrpQFwjSHQCoGOLQJ2anupQHpO2+nnAT3
-         tdQWV9MPyBZTAJJl88d7GRAxUMMFebhqPr9ZTuJE3QjtzorVRgMKujUgl0aRXwthWJho
-         v6+tmBuzi0Rub467NN2DbOOLihxc79rXp/TX96QKa4uxrjxkJ43/bdJ1V6KQeRkKy9ue
-         JtbQ==
+        bh=zZDEgfpsGMQvs/Uf9L14U8iNfhU1RYAtDHEnPo7PYYM=;
+        b=IbW8O/Fl2cmbmsGSB1yEAITll95yUOBVE82MEk0YL1X+g9MXprTFp/sHcNeH/ZNKNE
+         Fhifz3Hi4ZFlSOKaewIxYuh/vDSbyPfHdYOeaY5EJlPXA7bBTZ/wS72qHYIeU2dp9mSA
+         NknqdXZjLXul73Pi6hmfHdVItiOrcOqRo7GeLI3AV0UPJ6qVUuEPyBTSwvBnl5aYbnCf
+         VVQ/a01QVHs55ku5iQGlgWQ/ZvrOl2kPwHJ9PJI7tzA49k9TbX79sqE/7yzixL1jEf14
+         VX1fi2/yckBcVtzMCt6BLAxiAZRP1zwkufRHBZRGaMDCUubpjbQhO5X9KAUXqyPGwyhY
+         pP7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PGBnfVPT;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GULtcfLv;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.17.39;
-        Thu, 02 Sep 2021 09:17:40 -0700 (PDT)
+        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.17.47;
+        Thu, 02 Sep 2021 09:17:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PGBnfVPT;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GULtcfLv;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1346280AbhIBQSh (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Sep 2021 12:18:37 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45216 "EHLO
+        id S1346283AbhIBQSn (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 12:18:43 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45248 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1346291AbhIBQSg (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Sep 2021 12:18:36 -0400
+        with ESMTP id S1346248AbhIBQSn (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 12:18:43 -0400
 Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com [IPv6:2a00:1450:4864:20::32b])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4A566C061764
-        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:17:37 -0700 (PDT)
-Received: by mail-wm1-x32b.google.com with SMTP id u26-20020a05600c441a00b002f66b2d8603so1870552wmn.4
-        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:17:37 -0700 (PDT)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 59D00C061757
+        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:17:43 -0700 (PDT)
+Received: by mail-wm1-x32b.google.com with SMTP id g135so1662900wme.5
+        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:17:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=oNTRH1yoq5af/chfn9I/5bXkTQKwubTn8iozem9IGSY=;
-        b=PGBnfVPTt2uYSxX6RQU1qsSKDWiS62QWAFvPTZETHVyL2OfFEKZZM3g5e9WJ1/HCKp
-         vwU/HD/XAeJVS5v2+My/H3taQ/5KpM2mCEqjy9lZxh2Z/pp5+KxKPIJb09S1d7E1zVbI
-         3ZIcYz0tlufyP3eqE0RuxgxTothAxpq4vYSqZmx2K/VGuOwYk4ulhhYY34CvxwPWhOkc
-         X6DZRjwitqLAQZOFu87Nxe9lRc1tqhLGZ8hROluYOSSfODd35hNP9l0+ra9n37CT0CeZ
-         tWoQvZtrbSLJKAVJXRMVVda3fXJ9XRtlNf90jVOb68ZvlGwL1VX/T67Jlue0hgDZL0Fm
-         SNZw==
+        bh=zZDEgfpsGMQvs/Uf9L14U8iNfhU1RYAtDHEnPo7PYYM=;
+        b=GULtcfLvxCYjpD88B1lNFiQq0+Fx5WhxaqykU8SQ2CHcFSQ46Oe+PaWfXkceFQ4mZo
+         9SVUhNZ9o3T9wPipJYMj4yipSNtMQdK9k6FheUrkcj3bklOdIm+96woKK1z756yLjsg/
+         MhcJnDjB6bDPTEVYbHN4OuhakMfbQHLPwIuQo7fhJI4LnxL+hhUixbbozhsjDk51Ju96
+         gEVW+K7GtzvK1ZSbUGOUZzNQwoBSJHeiBUhu/bkunqvaYTW0krBKCnLFihT41xPY7/te
+         UIojuKoYb6sy0krnR6uivIpg05XXUq83++TFLX9QNOJMrVv7jBEaRQx/6ic9TCOEtLyT
+         HNGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=oNTRH1yoq5af/chfn9I/5bXkTQKwubTn8iozem9IGSY=;
-        b=eWZD28EjkQU2xOgaW3fD9jPOn1ypCnP3cNSSxu9K4pyFiey2jlDHivFuAS6Q1PkwKN
-         Pnf3M6nFElulCL24Ts7/AxlpPP1Xop4XKSYasVnjFOFOc35K0gWE/Iu6gYRM6opeq8E+
-         D5hjS7sLz2nZc1UPhXdg9G9g45S5xbJt+hA/VlJVoIs0ioK/hbvkjHUTrUtWxHjHYvTR
-         njqZo6HflnD+PrNXddy/CgYaaE6znqe4Dq54XSz9Sv3d5XLHpeQ2YfflVJxqxqfbon3l
-         tI8ZYO085pm4AQ0IqMAMOQtZ3e36mtjMB1e2GEc+Txq8AYAkyZ7GXbGwjIcyGHWKd4nL
-         TkeQ==
-X-Gm-Message-State: AOAM533eMjnsPVTY2nH9PN6aVu9uZwju+TCKq73T9/cW92pGLCE1PzBK
-        y2/QlAewRJnFTYId9wD1ILY=
-X-Received: by 2002:a05:600c:19ca:: with SMTP id u10mr3821810wmq.178.1630599453691;
-        Thu, 02 Sep 2021 09:17:33 -0700 (PDT)
+        bh=zZDEgfpsGMQvs/Uf9L14U8iNfhU1RYAtDHEnPo7PYYM=;
+        b=G6KiRlqIj65Eu6fphpt/KWA6WGebKeDeFy6UdOCk/jznzbk4eCTMpkjZs8lm4iEGdH
+         +uunGj1LA7q7aag+sL5Mx8MpHMhwouoXBliVI5+FH36lmce7phP93TNjhDMjl2sQyyUe
+         JA6DQZy9a+uKOA1Dqqbv0JaAFFRz3SQw4TvV+4qLwm/hV0QHiQdtkpseW/UJfX0n/xeT
+         aofVm/lRxy42qG087Mtxp4NGaT1/BIblL9Kzi7YlizriIHe1bSXVdlQJevqtqtykz0Xh
+         Sv7o0xz6pqMg1sMs6drzwX3XdIDyNFDG5qmsKEscxNj1zwgQ7jkGVBRgY2mvjiqUx4Eo
+         5N/w==
+X-Gm-Message-State: AOAM530LgYjIMBwf7MjHOd8Y417s5LSFnVocaSFU6rFTEfiKCKPN2EkQ
+        HnoR4OmLxPEeNhv/XeL6K98=
+X-Received: by 2002:a05:600c:3641:: with SMTP id y1mr3991806wmq.181.1630599461974;
+        Thu, 02 Sep 2021 09:17:41 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id z17sm2350022wrh.66.2021.09.02.09.17.31
+        by smtp.gmail.com with ESMTPSA id b10sm2396452wrt.43.2021.09.02.09.17.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Sep 2021 09:17:33 -0700 (PDT)
+        Thu, 02 Sep 2021 09:17:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -120,9 +120,9 @@ Cc:     Bin Meng <bin.meng@windriver.com>,
         Palmer Dabbelt <palmer@dabbelt.com>,
         Stafford Horne <shorne@gmail.com>,
         Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-Subject: [PATCH v3 17/30] target/mips: Restrict has_work() handler to sysemu and TCG
-Date:   Thu,  2 Sep 2021 18:15:30 +0200
-Message-Id: <20210902161543.417092-18-f4bug@amsat.org>
+Subject: [PATCH v3 18/30] target/nios2: Restrict has_work() handler to sysemu and TCG
+Date:   Thu,  2 Sep 2021 18:15:31 +0200
+Message-Id: <20210902161543.417092-19-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902161543.417092-1-f4bug@amsat.org>
 References: <20210902161543.417092-1-f4bug@amsat.org>
@@ -132,50 +132,47 @@ Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: eHlkXJyQbpIl
+X-TUID: r4vejdpIgCY8
 
 Restrict has_work() to TCG sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/mips/cpu.c | 4 +++-
+ target/nios2/cpu.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-index 00e0c55d0e4..3639c03f8ea 100644
---- a/target/mips/cpu.c
-+++ b/target/mips/cpu.c
-@@ -128,6 +128,7 @@ static void mips_cpu_set_pc(CPUState *cs, vaddr value)
-     mips_env_set_pc(&cpu->env, value);
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index 947bb09bc1e..f1f976bdad7 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -34,10 +34,12 @@ static void nios2_cpu_set_pc(CPUState *cs, vaddr value)
+     env->regs[R_PC] = value;
  }
  
 +#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
- static bool mips_cpu_has_work(CPUState *cs)
+ static bool nios2_cpu_has_work(CPUState *cs)
  {
-     MIPSCPU *cpu = MIPS_CPU(cs);
-@@ -172,6 +173,7 @@ static bool mips_cpu_has_work(CPUState *cs)
-     }
-     return has_work;
+     return cs->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_NMI);
  }
 +#endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
  
- #include "cpu-defs.c.inc"
+ static void nios2_cpu_reset(DeviceState *dev)
+ {
+@@ -223,6 +225,7 @@ static const struct TCGCPUOps nios2_tcg_ops = {
+     .tlb_fill = nios2_cpu_tlb_fill,
  
-@@ -542,6 +544,7 @@ static const struct TCGCPUOps mips_tcg_ops = {
-     .tlb_fill = mips_cpu_tlb_fill,
+ #ifndef CONFIG_USER_ONLY
++    .has_work = nios2_cpu_has_work,
+     .cpu_exec_interrupt = nios2_cpu_exec_interrupt,
+     .do_interrupt = nios2_cpu_do_interrupt,
+     .do_unaligned_access = nios2_cpu_do_unaligned_access,
+@@ -241,7 +244,6 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_reset(dc, nios2_cpu_reset, &ncc->parent_reset);
  
- #if !defined(CONFIG_USER_ONLY)
-+    .has_work = mips_cpu_has_work,
-     .cpu_exec_interrupt = mips_cpu_exec_interrupt,
-     .do_interrupt = mips_cpu_do_interrupt,
-     .do_transaction_failed = mips_cpu_do_transaction_failed,
-@@ -563,7 +566,6 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
-     device_class_set_props(dc, mips_cpu_properties);
- 
-     cc->class_by_name = mips_cpu_class_by_name;
--    cc->has_work = mips_cpu_has_work;
-     cc->dump_state = mips_cpu_dump_state;
-     cc->set_pc = mips_cpu_set_pc;
-     cc->gdb_read_register = mips_cpu_gdb_read_register;
+     cc->class_by_name = nios2_cpu_class_by_name;
+-    cc->has_work = nios2_cpu_has_work;
+     cc->dump_state = nios2_cpu_dump_state;
+     cc->set_pc = nios2_cpu_set_pc;
+     cc->disas_set_info = nios2_cpu_disas_set_info;
 -- 
 2.31.1

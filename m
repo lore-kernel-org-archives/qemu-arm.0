@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp419824lfb;
-        Thu, 2 Sep 2021 09:17:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnrV6GSj9bX1c8jqy6dZZE7va1Uey0jJmmiGHRmPL0bO4vNtoZoPle/qXj9Ju8CFXi3z53
-X-Received: by 2002:aa7:c408:: with SMTP id j8mr4171829edq.280.1630599441406;
-        Thu, 02 Sep 2021 09:17:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630599441; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp419879lfb;
+        Thu, 2 Sep 2021 09:17:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwEOROZaDekksYRAizim2uaiyTUQvPkXAE7FRJ+rmPL6JroBHLccT2/1RmkSHkfmhx9ztr
+X-Received: by 2002:a50:9511:: with SMTP id u17mr4236513eda.100.1630599445614;
+        Thu, 02 Sep 2021 09:17:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630599445; cv=none;
         d=google.com; s=arc-20160816;
-        b=mALNZzuieW6/MoAk5Y/D9vfdPPVk7lPeUpTwJM9y7aepMpU/hm89E25zAyTDM6xJOi
-         tdoHmXmSflyZ/s9t99/ju2J//QyyDCkh0FGVP0DmWuOTYTqV2ChDx7CG0kXhNYwoqDO9
-         cfMtiZIElZlJ9ubiQnYEucsyTSRGOG3jLiDZfxiIFqgU5Gwc8jOygFGUxl93cqFPBZUc
-         o5PoHffU32Kx1USg4YMXzFdpcyn9HVTVzHf1l311usZcVN04/3qbgkbjI5BewFH5/+Bh
-         xgbNKEYX5zGXyQ5I+O20JJ64xqmyCjGCgjbcVdXjqox8jW3BZ6mXKB/0VaS0zcyV7LDD
-         xUeQ==
+        b=JAzyrMulSs0uRESBknz2g5xP8+QCDetfjeCs4EDm7jRvzQWpnVcSEOi7CkZDZeDZz1
+         mzRS3L6msbnU4CX9SbFVJ/eJ/zaTreOM6iluMkJ4NwP7U0Q3h6JboUCNDHH9B+idkOa5
+         +zOXkyjdoUisuZ6CjCvFG13JRix0EuJE92GorWEdTPH5DgYoz5ze4iPh7hbi+0ZEFg48
+         vpPb+0VisS9rzdojxRbDx/O+7ZWt9PsT50uoshOKLKXUlgP7yfJ4JHfXl3tsfDMbYUbe
+         1hDWga5RVBlF354h6ZfZGJm1/K3hwKl6Zq57CHWEEO4JNb7t+JAauru0IiCtt+xOPOO0
+         PKgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from:sender
          :dkim-signature;
-        bh=k2G3IfvTSVM9dAo9x5r9x/QXUgni24b97nAmsANOOiA=;
-        b=U9QdWx2PPYWmIQoVQX/xDak3i4M82p258bPng8zAA7LFuIvrDEt9GvcT3m1agmux0Y
-         LwaXAyPz9+Yz+kk/7OV7Uh7NnDdgseVXXVwFE4i1iU8+R+/Xh0mbz0FP2kQikRk5FgEg
-         YROY2AdrKVpJK24fycUc8avJauyx8bqKoZW4UXQObO2C9vh82pbYqa7/nW81Pi/uRNAT
-         p8HgnE86UdnuY26dlhni+fSGteJKhr/IUbq5ZzXpRNtLvDK17QLIGyWhNnq+xCCgWefM
-         b3F5gHOFG61PTNumyUxd0oU06Xelj5+xtsRqj0oV39P+OwT7Cz+hKlwVEc3pgjqi0r5i
-         OwQQ==
+        bh=yI9HNtTgyr1D6LnyMBdjwFDJD3B27ntrVyNfg6pObmA=;
+        b=GHplUd9gvsR6eVZo274lMrpTVabPbCUD0n52rWXaRlsKrTvQwHrj44D0o8CdAx74PI
+         dCUAKdz7UlDvErtuyJ5LM82fTgjqJWebySj3NStvfvKHeKD3VcQtz5NUi7rbff5hYiU+
+         fdANpq9v9uGZ/oyHXokVnxwR818A7Y175re7092xZfiqGv6+6quTa6rT7/io6KPwmveq
+         l6aRmsbPfF77lSEyWkoXYCG4FLlHnTqTAjjVhmBq7xUGs77I40m763YYq7xho+QIK6Ah
+         Vvn8xVn+Za0k1RAVbrrFhyJ5mBvWECB/vJPtnz418wZT/u+119mvAJrLwBJqq2/qPNro
+         1kqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="M+D+zo4/";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=U2uwqAQN;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.17.21;
-        Thu, 02 Sep 2021 09:17:21 -0700 (PDT)
+        by mx.google.com with ESMTP id 8si2243468ejl.416.2021.09.02.09.17.25;
+        Thu, 02 Sep 2021 09:17:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="M+D+zo4/";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=U2uwqAQN;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1346235AbhIBQSS (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Sep 2021 12:18:18 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45112 "EHLO
+        id S1346261AbhIBQSW (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 12:18:22 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45138 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1346242AbhIBQSP (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Sep 2021 12:18:15 -0400
+        with ESMTP id S1346108AbhIBQSV (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 12:18:21 -0400
 Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com [IPv6:2a00:1450:4864:20::32f])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id CC599C061760
-        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:17:16 -0700 (PDT)
-Received: by mail-wm1-x32f.google.com with SMTP id 79-20020a1c0452000000b002e6cf79e572so1878630wme.1
-        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:17:16 -0700 (PDT)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 7F3B5C061575
+        for <kvm@vger.kernel.org>; Thu,  2 Sep 2021 09:17:22 -0700 (PDT)
+Received: by mail-wm1-x32f.google.com with SMTP id m2so1693694wmm.0
+        for <kvm@vger.kernel.org>; Thu, 02 Sep 2021 09:17:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=k2G3IfvTSVM9dAo9x5r9x/QXUgni24b97nAmsANOOiA=;
-        b=M+D+zo4/zdtMjYh01av69Zx4I3VwXPivjqKNQQ+G3Cy3iOhT3mTPvnPzXtpAFBC7IC
-         bwDY97okiaHzzYZk/Nr+HJhmQWDbqsmtfcbNHfDxcB+wW5LVOcMLHk2ke6LUzT0b2vAG
-         YqHMZm6pCnZF4sDmb5j0t8leoEPE4luIBbr+2Y/AHejZSaAIPRgw6F1l+RvTfdeQZQ/w
-         KmEHFk+ys6eIeCl+10CsGxJv2WVk1ePshB2QpZEYQ9Rs3vY5QE1eYEOqT+aIoXIw8PR9
-         WNsdSSeclnt9XXMY/k06ObG6uMJqiNqm40/pEaPsmniXZMMe5CRy4fWye4vqLWV5kU8p
-         n7eA==
+        bh=yI9HNtTgyr1D6LnyMBdjwFDJD3B27ntrVyNfg6pObmA=;
+        b=U2uwqAQNdpnlzp+ESr25gYYFRQFiKkwGfbYBdEJEhK8WvNyB3W6SW/d8vS39ShykYt
+         KjW8bmI0A51yksjJsztk3PnbWgrojrKVVqZEuWCXsll7maIHDOE+TUvhByg6eVxV2YO4
+         Kck+INFoCYRSpbSsv9Whw88dorhpd2Vg3v9+eB5JpbKAbAeW/R5bh44TF5Lf3uEy+zLL
+         RGSPDOO8yKxtK+VZKvOfcEExgvyvZTiR2XR3sSyBG6KljCmSQBYEj0d3C/Q4ABoW/H1Q
+         /jDgwuiymH/q6Oj2C76+I+aEeA3QCh3LaEPc/5XOWBjjrnq8mhBxG0fKOPLpG6nd3yVW
+         dFLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=k2G3IfvTSVM9dAo9x5r9x/QXUgni24b97nAmsANOOiA=;
-        b=cL1ISwfy3LoMlqJ+0tAYVtGtlZY2Bd4yICCLcsj9qdr669nJ/Lg6ccEYsev90PnuX6
-         IdSnYWXNnr8GsQQjGo+JfLAdpfc5uC3SX9DTcJysTRayRvkq5UskPOlvhpoveQKdvIUT
-         DCqAm9cIi1c8M8Ssa6qGq8qMnhqhGk7se/xcPuWcFsXs4FPqBCMGLXFLZWSsbniFOV+s
-         bIolgzB2KoP5KMdhejRWY5mc2vwDTedZ23/bR5AsdE7xkR3SvIvvVbXHQ20wXaDoF8rO
-         HO76OExWyVQI0/2a8b+kZwOPSiPuuAUNZ7+/Gc8uf83mdHtyrWhGDEAPs8OQmZDihIZt
-         EOCg==
-X-Gm-Message-State: AOAM533XkK5JBf3gW20LKHm+mHpaJ3CftINHPv8DGt/GT64WZgm/z3oZ
-        Q6axo9p2vutrPLcCehUTgeQ=
-X-Received: by 2002:a05:600c:1d27:: with SMTP id l39mr3986130wms.146.1630599431932;
-        Thu, 02 Sep 2021 09:17:11 -0700 (PDT)
+        bh=yI9HNtTgyr1D6LnyMBdjwFDJD3B27ntrVyNfg6pObmA=;
+        b=FtKgrvVl2S2OYy6OfmHaEMDPKxZ1CuhPe3iIeNM7aAZC6muSD3+08sOrLYiF/1IzBK
+         8JXFul0cGORcUreOsgaEtok6Ai0AM3qDjtgShD739YYWhcSwd9IToqkppf6wlnc+9EB/
+         CtciWnQznUkqi0zyWvnTv4jTTcJUOgFns1DQQXao3dveZ5b4seXUPo9s8k1isfSxi9iv
+         deir9Mrg6elgHKmRkMyKS4/dDvrVKrFXpuU56Bw23OPQIL6aUissYpR5RxzebLG1eXNr
+         M0kSnO52o3cO6rUlKqQfDjVwtGDHTdNwjk4K5dApQCc1BXN/Fc1C4QawP4Okcks8US3G
+         HzKA==
+X-Gm-Message-State: AOAM533028Zbh3ae6dwEMmP9KU5ex4SiKJ4jtbmecf3SWeEFp1q7Nn6o
+        j5ksueDnRD/NW92PbrOQcoQ=
+X-Received: by 2002:a05:600c:3397:: with SMTP id o23mr3987673wmp.38.1630599441102;
+        Thu, 02 Sep 2021 09:17:21 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id c3sm2410025wrd.34.2021.09.02.09.17.09
+        by smtp.gmail.com with ESMTPSA id u26sm2444655wrd.32.2021.09.02.09.17.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Sep 2021 09:17:11 -0700 (PDT)
+        Thu, 02 Sep 2021 09:17:20 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -120,9 +120,9 @@ Cc:     Bin Meng <bin.meng@windriver.com>,
         Palmer Dabbelt <palmer@dabbelt.com>,
         Stafford Horne <shorne@gmail.com>,
         Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-Subject: [PATCH v3 14/30] target/i386: Restrict has_work() handler to sysemu and TCG
-Date:   Thu,  2 Sep 2021 18:15:27 +0200
-Message-Id: <20210902161543.417092-15-f4bug@amsat.org>
+Subject: [PATCH v3 15/30] target/m68k: Restrict has_work() handler to sysemu and TCG
+Date:   Thu,  2 Sep 2021 18:15:28 +0200
+Message-Id: <20210902161543.417092-16-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902161543.417092-1-f4bug@amsat.org>
 References: <20210902161543.417092-1-f4bug@amsat.org>
@@ -132,72 +132,47 @@ Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: DAJ0m6cr4Yp+
+X-TUID: ZJnGjioEEBwa
 
 Restrict has_work() to TCG sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/i386/cpu.c         | 6 ------
- target/i386/tcg/tcg-cpu.c | 8 +++++++-
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ target/m68k/cpu.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 04f59043804..b7417d29f44 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -6548,11 +6548,6 @@ int x86_cpu_pending_interrupt(CPUState *cs, int interrupt_request)
-     return 0;
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index 66d22d11895..94b35cb4a50 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -31,10 +31,12 @@ static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
+     cpu->env.pc = value;
  }
  
--static bool x86_cpu_has_work(CPUState *cs)
--{
--    return x86_cpu_pending_interrupt(cs, cs->interrupt_request) != 0;
--}
--
- static void x86_disas_set_info(CPUState *cs, disassemble_info *info)
++#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
+ static bool m68k_cpu_has_work(CPUState *cs)
  {
-     X86CPU *cpu = X86_CPU(cs);
-@@ -6757,7 +6752,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
- 
-     cc->class_by_name = x86_cpu_class_by_name;
-     cc->parse_features = x86_cpu_parse_featurestr;
--    cc->has_work = x86_cpu_has_work;
-     cc->dump_state = x86_cpu_dump_state;
-     cc->set_pc = x86_cpu_set_pc;
-     cc->gdb_read_register = x86_cpu_gdb_read_register;
-diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
-index fd86daf93d2..6cde53603ba 100644
---- a/target/i386/tcg/tcg-cpu.c
-+++ b/target/i386/tcg/tcg-cpu.c
-@@ -55,6 +55,11 @@ static void x86_cpu_synchronize_from_tb(CPUState *cs,
+     return cs->interrupt_request & CPU_INTERRUPT_HARD;
  }
++#endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
+ 
+ static void m68k_set_feature(CPUM68KState *env, int feature)
+ {
+@@ -518,6 +520,7 @@ static const struct TCGCPUOps m68k_tcg_ops = {
+     .tlb_fill = m68k_cpu_tlb_fill,
  
  #ifndef CONFIG_USER_ONLY
-+static bool x86_cpu_has_work(CPUState *cs)
-+{
-+    return x86_cpu_pending_interrupt(cs, cs->interrupt_request) != 0;
-+}
-+
- static bool x86_debug_check_breakpoint(CPUState *cs)
- {
-     X86CPU *cpu = X86_CPU(cs);
-@@ -63,7 +68,7 @@ static bool x86_debug_check_breakpoint(CPUState *cs)
-     /* RF disables all architectural breakpoints. */
-     return !(env->eflags & RF_MASK);
- }
--#endif
-+#endif /* CONFIG_USER_ONLY */
++    .has_work = m68k_cpu_has_work,
+     .cpu_exec_interrupt = m68k_cpu_exec_interrupt,
+     .do_interrupt = m68k_cpu_do_interrupt,
+     .do_transaction_failed = m68k_cpu_transaction_failed,
+@@ -535,7 +538,6 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
+     device_class_set_parent_reset(dc, m68k_cpu_reset, &mcc->parent_reset);
  
- #include "hw/core/tcg-cpu-ops.h"
- 
-@@ -76,6 +81,7 @@ static const struct TCGCPUOps x86_tcg_ops = {
- #ifdef CONFIG_USER_ONLY
-     .fake_user_exception = x86_cpu_do_interrupt,
- #else
-+    .has_work = x86_cpu_has_work,
-     .do_interrupt = x86_cpu_do_interrupt,
-     .cpu_exec_interrupt = x86_cpu_exec_interrupt,
-     .debug_excp_handler = breakpoint_handler,
+     cc->class_by_name = m68k_cpu_class_by_name;
+-    cc->has_work = m68k_cpu_has_work;
+     cc->dump_state = m68k_cpu_dump_state;
+     cc->set_pc = m68k_cpu_set_pc;
+     cc->gdb_read_register = m68k_cpu_gdb_read_register;
 -- 
 2.31.1

@@ -1,442 +1,356 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp623823lfb;
-        Thu, 2 Sep 2021 13:25:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxklDbPsLTCh1xM6WyXTr4NTXN6oVgv7TX61Rn2EmmMqajfOMSmrHz6QT/FNSzR66qnqmV4
-X-Received: by 2002:a05:6e02:148c:: with SMTP id n12mr27810ilk.36.1630614335356;
-        Thu, 02 Sep 2021 13:25:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630614335; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp623907lfb;
+        Thu, 2 Sep 2021 13:25:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYWLoVx0omQvFHMLhtlCH8bIB/qfO9AtZY4KgZjSsmO0VxLXSJCZKZprBpcJAX6DVqiPD8
+X-Received: by 2002:a92:c081:: with SMTP id h1mr3440208ile.193.1630614344836;
+        Thu, 02 Sep 2021 13:25:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630614344; cv=none;
         d=google.com; s=arc-20160816;
-        b=iY7NjexUBzwqIt+adn2E32WUF78viyz0la1eYLztwy7VH4oNIS0DjEs4rDXS7l1652
-         xJ4sh6r4HCiYb4WSNjyclmN0y2bXH1HkdOI/3K04KU2sMs1VDJJnyypCwBoqApQsoILQ
-         wh+3/6v+u8DY4wCskmgsBcIHvM3IeeIYpoFN8IMvLXbq06yVIlfaqoha9yqLL+BFuUSV
-         AJmddjuGuQl8yV+w8LOJfl4Dj6BFwhAQvRAHVqfDNy7RtRP/nAhnWkNgx1p95MvmR6wd
-         LBOF1oREiEqdV4nL/p6q71Cu7DYjsKfDuWKbMFweSbHDtou12udsx80uRz0acMBC4N0G
-         NKcg==
+        b=hFPnHUE/G6g6dae8yV5eI1QECjGzpwrPDtP69IAv6HaBB2FwbgMj2cW+pwYdb6IfrK
+         6Dc96es1FtRZRX0iPqV4BJB2/9FfPp+v4x2/pvmJ6NMVVgrJ2xiaKeb9vLNT81oguO12
+         KP9LGvW6/COwX+nG3ia5enGOCS/BSyLmrYWBkQPhcbzzvE0PdBYVcYysWsrJhwcCRAly
+         ptsNaZKAJdsH+6FQ3/RXf1cb+Kc5xtMIENBXOw0/2NtpCzO87yeqKpaLlyPg5BitdZl8
+         pLHfoY2PeWdwfqyk/dA7wrMdDN+DQrmFd9PqzaWsSPECfmZFvkkGwRx1pVEErBeVfpwB
+         lJeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GvLlNSJNAm2e5y1mGaVxHQf2vDe+JRh2+vxn7dLS6Q8=;
-        b=0ACrTzGvZUgwYKY00GTj3WipofNU74yKzuYTDNftRZ3QXl5+ZMGJQ9ekY8w0BGFtTd
-         ggFRowHEWFVSI4CquZSDYiY6TQ2/BhmkgGnNxzi46NOfTRIo+uSuFNZ9HU52IBe8atm4
-         gRXMyXEUl4vGMwkiyfGFPknsGz23zRxrAGKCZesdzcoSCsVSstiAsYDfb7BH0puFsWQs
-         TO/B21bdA6fwlniX7dYZsNLLiwLg2wYoSgOMKs4QuTn7pN+H6cz5FwcrnGIThnCwtrNp
-         w6U69HwB+953zIDdOQ2wkfoGjqoObvpgtD5DUzLBOWUSRM2F6z6pzN7G9dx+w1BYgdMU
-         UJVg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Jf+vSnNSG8wRRg/XiOKT6LAgXtHyEiy/oi1zTo/WSN8=;
+        b=nfgbGRBkfaxezqEuLwvMZmyGAXirbmZ/mAMrR9wKw5pF4O6EephNVBuAxq/ka6iquN
+         oDm8InkulGX0T3f80IaXuVkgHAfLXUSf5kL1OcKKw+hWZhNcxNJLU+CYos8QLCUaxUZY
+         9+YItbmbz0LnsALQZfgMq6v4rmLMs/KFiJxGoHNLuKpTPNdWqlf3xducl5c1mtkbvvpW
+         2kmNr89DB5c7DtDC8oj4t0kEZ6C15b0DtlLSBxA714auDOvdm4Nc5ikeTfj9qS4JAtsE
+         x14D1ilyVYLsF/5bru0NX16TFwDPi7XGDm+HelShuYSAtzTuE7MHxE0FwKoe/NcNyGZT
+         Xofw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="KAI/+L5+";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=pQ8uCbud;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b8si3188307ios.12.2021.09.02.13.25.35
+        by mx.google.com with ESMTPS id b129si2973352jab.33.2021.09.02.13.25.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:25:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 13:25:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="KAI/+L5+";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48498 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=pQ8uCbud;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:47638 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtHC-00047b-Kb
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:25:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41220)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLtHM-0003YR-3w
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:25:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41060)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtDo-0006Sj-4s
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:22:06 -0400
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e]:40791)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1mLtD1-0004V9-1B
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:21:15 -0400
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b]:41858)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtDk-00031e-D2
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:22:03 -0400
-Received: by mail-vs1-xe2e.google.com with SMTP id d6so2622589vsr.7
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:21:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1mLtCx-0002Gp-Nf
+ for qemu-devel@nongnu.org; Thu, 02 Sep 2021 16:21:14 -0400
+Received: by mail-ua1-x92b.google.com with SMTP id 75so1579780uav.8
+ for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 13:21:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GvLlNSJNAm2e5y1mGaVxHQf2vDe+JRh2+vxn7dLS6Q8=;
- b=KAI/+L5+S0kJ/VSh7jQq/ZhSQOo/Y911GmvRNUU0fxJLWxJ85cojCKbjQ/burj/sJs
- 8jP0Mo+OkcAvfbZzxpxBfDoRQC3QMiy/GlaErHVylvIFEh3cpJlZbzjH5m2PRAwwerXV
- OXAqL887scrUTKwuoqrxNRgf2qIFBo/2ffPsPUduOYRERtdSJym34juUVwc8TR3bRDvY
- klN5CfYjeiyg7f9cTI+cwpM37PtvTiERyyOqqxVE7mKRrDnVhqo/WeCbBy6mNObuFRnt
- VKxSJzfthNnRH4iiNWFG4xr7tyicASA2ptsRcd14hkGkZKYOO8DEyDSEYCjGq7TGeECS
- BVdg==
+ :cc; bh=Jf+vSnNSG8wRRg/XiOKT6LAgXtHyEiy/oi1zTo/WSN8=;
+ b=pQ8uCbudFmSM3utsdgAArdjWg5SgXVR9a5uebFwoVz4a/5N+3dzi0epZO6F8cdC+MC
+ hPnUtS2umGoeJP2mZkR4zQAqmcbPjDW0aOL0N8Rsax9ir84Gc7xc/Lfnu98ISeJSwJ8E
+ GrQI1m/8d0YyNehyPK8FdgtOnbsWISLlets2rBl2CtowLDg5Z2Z6lMFGwELkQoCHonBO
+ qwnawJzAlztcP5zRAscyt1ekzxRNpzFPiPNjhqNWkfoCCencQ92nRnP5Vgzzv8YtpPWm
+ qQMzT8g+ANqT/9iRE8VrG4TtdsAiLHDtsHjxADqrDNE73KLS0lj4ccJWBpRMUrNZZbIT
+ kTWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GvLlNSJNAm2e5y1mGaVxHQf2vDe+JRh2+vxn7dLS6Q8=;
- b=ZV2mQ5HZ5GeKzJa0IgjAN8X9tV8mtSObI2Y5FVPp2u1tgX666W2gaaLA89F7tEt5RT
- BmgtJiK7qlaeZPscs03Ja+rcifN/zRxpvDog9xere1qKlH3Evh0zsrwF4C2mOXMUz7tX
- HEsn7MeJG3qU6o+5KOUfDWEl8r8q+Zgshgux163Ok2G9vc1BWkHY8clZ9ZMpWxLKSorY
- wBpzKeq9OfT1xnoF57ZcV1jhUU6+A6Qy1sdh74Etmcm1uDjw2rAoTfNE0okf47BPMY+U
- 8FVgBBlJeZsvTbuJWNAf5nMupJBPhRWdt9ItBH2ICs5aEu+Vd0TJoj5YEOkwyjEY2BnH
- jwJw==
-X-Gm-Message-State: AOAM532zRf/TcBEnGCQUGI51nS8GMA9Nb2aJtNDnoBbogumyNgdp6kSm
- GC0DAl/JdxcXuIO4f1M344Hl6u4k6+vzPp13Ag4bVA==
-X-Received: by 2002:a05:6102:5a:: with SMTP id
- k26mr4339725vsp.26.1630614119364; 
- Thu, 02 Sep 2021 13:21:59 -0700 (PDT)
+ bh=Jf+vSnNSG8wRRg/XiOKT6LAgXtHyEiy/oi1zTo/WSN8=;
+ b=DKXSJiAdZpwrjPPHHuDmY3cxe++e7rNPkRYML8+RmgifrJT1OTdtPqbOZzZ4pi4/Gf
+ 5Hv3Y8IFT3E1d1GRvz5koc/H/q9iluR23iX/oq2D8NBDG5oXZZ4Oaf7tTJrHn9gmQXzf
+ NyeDm//S6R7ciQy5/LDLHNyvt0Q0DyIu0s9qqyZFRpi5XaviWQ5JUlgYT8h5Y62ciGTn
+ ZHN9qIqqS99Hj/kHvF6G+c5nMTig0XjzMWnxDLBljGKgW6a41WqEJPO3Ogk6upI0MUtn
+ gkwVBbpdIVelSHI1i7P5WulqJRT0YvuhgRMt9Edh6dygwSqnXXmWxwvSuESFjknrJ/jh
+ +C1g==
+X-Gm-Message-State: AOAM5311kKyjKpbH7AeZCVho+3vhbz22/SaJgWAEtzN46X2pbQdraVM9
+ 6qaVd1+yDRvZyyu1XFDFc+hDsRiPRDJv9d0jaQAhVMY6ANQ=
+X-Received: by 2002:a9f:25c1:: with SMTP id 59mr80969uaf.15.1630614069773;
+ Thu, 02 Sep 2021 13:21:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-15-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-15-f4bug@amsat.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:21:48 -0600
-Message-ID: <CANCZdfoD3zvOSRUMxEyGM_7PDEHfS_j2eDSU9drAvdtDmuOxdA@mail.gmail.com>
-Subject: Re: [PATCH 14/24] target/mips: Restrict cpu_exec_interrupt() handler
- to sysemu
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="00000000000059d41505cb08ef67"
-Received-SPF: none client-ip=2607:f8b0:4864:20::e2e;
- envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe2e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+References: <20210902181642.315792-1-crauer@google.com>
+In-Reply-To: <20210902181642.315792-1-crauer@google.com>
+From: Patrick Venture <venture@google.com>
+Date: Thu, 2 Sep 2021 13:20:58 -0700
+Message-ID: <CAO=notxshTtgy6NESywBrQ18W30gvXR3cEVK0Twp_VaoVaG-aw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Add support for kudo-bmc board.
+To: Chris Rauer <crauer@google.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>, 
+ CS20 KFTing <kfting@nuvoton.com>
+Content-Type: multipart/alternative; boundary="00000000000065777505cb08ec33"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92b;
+ envelope-from=venture@google.com; helo=mail-ua1-x92b.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cMZ4zpqCl3sa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pRa1HAW8RS89
 
---00000000000059d41505cb08ef67
+--00000000000065777505cb08ec33
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 2, 2021 at 9:18 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
->
-wrote:
+On Thu, Sep 2, 2021 at 12:01 PM Chris Rauer <crauer@google.com> wrote:
 
-> Restrict cpu_exec_interrupt() and its callees to sysemu.
+> kudo-bmc is a board supported by OpenBMC.
+> https://github.com/openbmc/openbmc/tree/master/meta-fii/meta-kudo
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Tested: Booted kudo firmware.
+> Signed-off-by: Chris Rauer <crauer@google.com>
+>
+Reviewed-by: Patrick Venture <venture@google.com>
+
 > ---
->  target/mips/tcg/tcg-internal.h      |  5 +++--
->  target/mips/cpu.c                   |  2 +-
->  target/mips/tcg/exception.c         | 18 ------------------
->  target/mips/tcg/sysemu/tlb_helper.c | 18 ++++++++++++++++++
->  target/mips/tcg/user/tlb_helper.c   |  5 -----
->  5 files changed, 22 insertions(+), 26 deletions(-)
+>  docs/system/arm/nuvoton.rst |  1 +
+>  hw/arm/npcm7xx_boards.c     | 34 ++++++++++++++++++++++++++++++++++
+>  2 files changed, 35 insertions(+)
 >
-> Reviewed-by: Warner Losh <imp@bsdimp.com>
-
-
-> diff --git a/target/mips/tcg/tcg-internal.h
-> b/target/mips/tcg/tcg-internal.h
-> index 81b14eb219e..c7a77ddccdd 100644
-> --- a/target/mips/tcg/tcg-internal.h
-> +++ b/target/mips/tcg/tcg-internal.h
-> @@ -18,8 +18,6 @@
->  void mips_tcg_init(void);
+> diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+> index 69f57c2886..adf497e679 100644
+> --- a/docs/system/arm/nuvoton.rst
+> +++ b/docs/system/arm/nuvoton.rst
+> @@ -20,6 +20,7 @@ Hyperscale applications. The following machines are
+> based on this chip :
 >
->  void mips_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock
-> *tb);
-> -void mips_cpu_do_interrupt(CPUState *cpu);
-> -bool mips_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  bool mips_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->                         MMUAccessType access_type, int mmu_idx,
->                         bool probe, uintptr_t retaddr);
-> @@ -41,6 +39,9 @@ static inline void QEMU_NORETURN
-> do_raise_exception(CPUMIPSState *env,
+>  - ``quanta-gbs-bmc``    Quanta GBS server BMC
+>  - ``quanta-gsj``        Quanta GSJ server BMC
+> +- ``kudo-bmc``          Fii USA Kudo server BMC
 >
->  #if !defined(CONFIG_USER_ONLY)
+>  There are also two more SoCs, NPCM710 and NPCM705, which are single-core
+>  variants of NPCM750 and NPCM730, respectively. These are currently not
+> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+> index e5a3243995..c80f442adb 100644
+> --- a/hw/arm/npcm7xx_boards.c
+> +++ b/hw/arm/npcm7xx_boards.c
+> @@ -31,6 +31,7 @@
+>  #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
+>  #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
+>  #define QUANTA_GBS_POWER_ON_STRAPS 0x000017ff
+> +#define KUDO_BMC_POWER_ON_STRAPS 0x00001fff
 >
-> +void mips_cpu_do_interrupt(CPUState *cpu);
-> +bool mips_cpu_exec_interrupt(CPUState *cpu, int int_req);
-> +
->  void mmu_init(CPUMIPSState *env, const mips_def_t *def);
+>  static const char npcm7xx_default_bootrom[] = "npcm7xx_bootrom.bin";
 >
->  void update_pagemask(CPUMIPSState *env, target_ulong arg1, int32_t
-> *pagemask);
-> diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-> index d426918291a..00e0c55d0e4 100644
-> --- a/target/mips/cpu.c
-> +++ b/target/mips/cpu.c
-> @@ -539,10 +539,10 @@ static const struct SysemuCPUOps mips_sysemu_ops =
-=3D {
->  static const struct TCGCPUOps mips_tcg_ops =3D {
->      .initialize =3D mips_tcg_init,
->      .synchronize_from_tb =3D mips_cpu_synchronize_from_tb,
-> -    .cpu_exec_interrupt =3D mips_cpu_exec_interrupt,
->      .tlb_fill =3D mips_cpu_tlb_fill,
->
->  #if !defined(CONFIG_USER_ONLY)
-> +    .cpu_exec_interrupt =3D mips_cpu_exec_interrupt,
->      .do_interrupt =3D mips_cpu_do_interrupt,
->      .do_transaction_failed =3D mips_cpu_do_transaction_failed,
->      .do_unaligned_access =3D mips_cpu_do_unaligned_access,
-> diff --git a/target/mips/tcg/exception.c b/target/mips/tcg/exception.c
-> index 4fb8b00711d..7b3026b105b 100644
-> --- a/target/mips/tcg/exception.c
-> +++ b/target/mips/tcg/exception.c
-> @@ -86,24 +86,6 @@ void mips_cpu_synchronize_from_tb(CPUState *cs, const
-> TranslationBlock *tb)
->      env->hflags |=3D tb->flags & MIPS_HFLAG_BMASK;
+> @@ -357,6 +358,23 @@ static void quanta_gbs_init(MachineState *machine)
+>      npcm7xx_load_kernel(machine, soc);
 >  }
 >
-> -bool mips_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-> -{
-> -    if (interrupt_request & CPU_INTERRUPT_HARD) {
-> -        MIPSCPU *cpu =3D MIPS_CPU(cs);
-> -        CPUMIPSState *env =3D &cpu->env;
-> -
-> -        if (cpu_mips_hw_interrupts_enabled(env) &&
-> -            cpu_mips_hw_interrupts_pending(env)) {
-> -            /* Raise it */
-> -            cs->exception_index =3D EXCP_EXT_INTERRUPT;
-> -            env->error_code =3D 0;
-> -            mips_cpu_do_interrupt(cs);
-> -            return true;
-> -        }
-> -    }
-> -    return false;
-> -}
-> -
->  static const char * const excp_names[EXCP_LAST + 1] =3D {
->      [EXCP_RESET] =3D "reset",
->      [EXCP_SRESET] =3D "soft reset",
-> diff --git a/target/mips/tcg/sysemu/tlb_helper.c
-> b/target/mips/tcg/sysemu/tlb_helper.c
-> index a150a014ec1..73254d19298 100644
-> --- a/target/mips/tcg/sysemu/tlb_helper.c
-> +++ b/target/mips/tcg/sysemu/tlb_helper.c
-> @@ -1339,6 +1339,24 @@ void mips_cpu_do_interrupt(CPUState *cs)
->      cs->exception_index =3D EXCP_NONE;
->  }
->
-> +bool mips_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+> +static void kudo_bmc_init(MachineState *machine)
 > +{
-> +    if (interrupt_request & CPU_INTERRUPT_HARD) {
-> +        MIPSCPU *cpu =3D MIPS_CPU(cs);
-> +        CPUMIPSState *env =3D &cpu->env;
+> +    NPCM7xxState *soc;
 > +
-> +        if (cpu_mips_hw_interrupts_enabled(env) &&
-> +            cpu_mips_hw_interrupts_pending(env)) {
-> +            /* Raise it */
-> +            cs->exception_index =3D EXCP_EXT_INTERRUPT;
-> +            env->error_code =3D 0;
-> +            mips_cpu_do_interrupt(cs);
-> +            return true;
-> +        }
-> +    }
-> +    return false;
+> +    soc = npcm7xx_create_soc(machine, KUDO_BMC_POWER_ON_STRAPS);
+> +    npcm7xx_connect_dram(soc, machine->ram);
+> +    qdev_realize(DEVICE(soc), NULL, &error_fatal);
+> +
+> +    npcm7xx_load_bootrom(machine, soc);
+> +    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
+> +                          drive_get(IF_MTD, 0, 0));
+> +    npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
+> +                          drive_get(IF_MTD, 3, 0));
+> +
+> +    npcm7xx_load_kernel(machine, soc);
 > +}
 > +
->  void r4k_invalidate_tlb(CPUMIPSState *env, int idx, int use_extra)
+>  static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char
+> *type)
 >  {
->      CPUState *cs =3D env_cpu(env);
-> diff --git a/target/mips/tcg/user/tlb_helper.c
-> b/target/mips/tcg/user/tlb_helper.c
-> index b835144b820..210c6d529ef 100644
-> --- a/target/mips/tcg/user/tlb_helper.c
-> +++ b/target/mips/tcg/user/tlb_helper.c
-> @@ -57,8 +57,3 @@ bool mips_cpu_tlb_fill(CPUState *cs, vaddr address, int
-> size,
->      raise_mmu_exception(env, address, access_type);
->      do_raise_exception_err(env, cs->exception_index, env->error_code,
-> retaddr);
+>      NPCM7xxClass *sc = NPCM7XX_CLASS(object_class_by_name(type));
+> @@ -417,6 +435,18 @@ static void gbs_bmc_machine_class_init(ObjectClass
+> *oc, void *data)
+>      mc->default_ram_size = 1 * GiB;
 >  }
-> -
-> -void mips_cpu_do_interrupt(CPUState *cs)
-> -{
-> -    cs->exception_index =3D EXCP_NONE;
-> -}
+>
+> +static void kudo_bmc_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_CLASS(oc);
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +
+> +    npcm7xx_set_soc_type(nmc, TYPE_NPCM730);
+> +
+> +    mc->desc = "Kudo BMC (Cortex A9)";
+> +    mc->init = kudo_bmc_init;
+> +    mc->default_ram_size = 1 * GiB;
+> +};
+> +
+>  static const TypeInfo npcm7xx_machine_types[] = {
+>      {
+>          .name           = TYPE_NPCM7XX_MACHINE,
+> @@ -437,6 +467,10 @@ static const TypeInfo npcm7xx_machine_types[] = {
+>          .name           = MACHINE_TYPE_NAME("quanta-gbs-bmc"),
+>          .parent         = TYPE_NPCM7XX_MACHINE,
+>          .class_init     = gbs_bmc_machine_class_init,
+> +    }, {
+> +        .name           = MACHINE_TYPE_NAME("kudo-bmc"),
+> +        .parent         = TYPE_NPCM7XX_MACHINE,
+> +        .class_init     = kudo_bmc_machine_class_init,
+>      },
+>  };
+>
 > --
-> 2.31.1
+> 2.33.0.153.gba50c8fa24-goog
+>
 >
 >
 
---00000000000059d41505cb08ef67
+--00000000000065777505cb08ec33
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 9:18 AM Philip=
-pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
-g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->Restrict cpu_exec_interrupt() and its callees to sysemu.<br>
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 12:01 PM Chris=
+ Rauer &lt;<a href=3D"mailto:crauer@google.com">crauer@google.com</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">kudo-bmc i=
+s a board supported by OpenBMC.<br>
+<a href=3D"https://github.com/openbmc/openbmc/tree/master/meta-fii/meta-kud=
+o" rel=3D"noreferrer" target=3D"_blank">https://github.com/openbmc/openbmc/=
+tree/master/meta-fii/meta-kudo</a><br>
 <br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+Tested: Booted kudo firmware.<br>
+Signed-off-by: Chris Rauer &lt;<a href=3D"mailto:crauer@google.com" target=
+=3D"_blank">crauer@google.com</a>&gt;<br></blockquote><div>Reviewed-by: Pat=
+rick Venture &lt;<a href=3D"mailto:venture@google.com">venture@google.com</=
+a>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
+ 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
 ---<br>
-=C2=A0target/mips/tcg/tcg-internal.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 5 +++--<br=
->
-=C2=A0target/mips/cpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0|=C2=A0 2 +-<br>
-=C2=A0target/mips/tcg/exception.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 18 ---=
----------------<br>
-=C2=A0target/mips/tcg/sysemu/tlb_helper.c | 18 ++++++++++++++++++<br>
-=C2=A0target/mips/tcg/user/tlb_helper.c=C2=A0 =C2=A0|=C2=A0 5 -----<br>
-=C2=A05 files changed, 22 insertions(+), 26 deletions(-)<br>
-<br></blockquote><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bs=
-dimp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail=
--yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:=
-2px 0px 0px">=C2=A0<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex">
-diff --git a/target/mips/tcg/tcg-internal.h b/target/mips/tcg/tcg-internal.=
-h<br>
-index 81b14eb219e..c7a77ddccdd 100644<br>
---- a/target/mips/tcg/tcg-internal.h<br>
-+++ b/target/mips/tcg/tcg-internal.h<br>
-@@ -18,8 +18,6 @@<br>
-=C2=A0void mips_tcg_init(void);<br>
+=C2=A0docs/system/arm/nuvoton.rst |=C2=A0 1 +<br>
+=C2=A0hw/arm/npcm7xx_boards.c=C2=A0 =C2=A0 =C2=A0| 34 +++++++++++++++++++++=
++++++++++++++<br>
+=C2=A02 files changed, 35 insertions(+)<br>
 <br>
-=C2=A0void mips_cpu_synchronize_from_tb(CPUState *cs, const TranslationBloc=
-k *tb);<br>
--void mips_cpu_do_interrupt(CPUState *cpu);<br>
--bool mips_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-=C2=A0bool mips_cpu_tlb_fill(CPUState *cs, vaddr address, int size,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 MMUAccessType access_type, int mmu_idx,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 bool probe, uintptr_t retaddr);<br>
-@@ -41,6 +39,9 @@ static inline void QEMU_NORETURN do_raise_exception(CPUMI=
-PSState *env,<br>
+diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst<br>
+index 69f57c2886..adf497e679 100644<br>
+--- a/docs/system/arm/nuvoton.rst<br>
++++ b/docs/system/arm/nuvoton.rst<br>
+@@ -20,6 +20,7 @@ Hyperscale applications. The following machines are based=
+ on this chip :<br>
 <br>
-=C2=A0#if !defined(CONFIG_USER_ONLY)<br>
+=C2=A0- ``quanta-gbs-bmc``=C2=A0 =C2=A0 Quanta GBS server BMC<br>
+=C2=A0- ``quanta-gsj``=C2=A0 =C2=A0 =C2=A0 =C2=A0 Quanta GSJ server BMC<br>
++- ``kudo-bmc``=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Fii USA Kudo server BMC<b=
+r>
 <br>
-+void mips_cpu_do_interrupt(CPUState *cpu);<br>
-+bool mips_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-+<br>
-=C2=A0void mmu_init(CPUMIPSState *env, const mips_def_t *def);<br>
+=C2=A0There are also two more SoCs, NPCM710 and NPCM705, which are single-c=
+ore<br>
+=C2=A0variants of NPCM750 and NPCM730, respectively. These are currently no=
+t<br>
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c<br>
+index e5a3243995..c80f442adb 100644<br>
+--- a/hw/arm/npcm7xx_boards.c<br>
++++ b/hw/arm/npcm7xx_boards.c<br>
+@@ -31,6 +31,7 @@<br>
+=C2=A0#define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7<br>
+=C2=A0#define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff<br>
+=C2=A0#define QUANTA_GBS_POWER_ON_STRAPS 0x000017ff<br>
++#define KUDO_BMC_POWER_ON_STRAPS 0x00001fff<br>
 <br>
-=C2=A0void update_pagemask(CPUMIPSState *env, target_ulong arg1, int32_t *p=
-agemask);<br>
-diff --git a/target/mips/cpu.c b/target/mips/cpu.c<br>
-index d426918291a..00e0c55d0e4 100644<br>
---- a/target/mips/cpu.c<br>
-+++ b/target/mips/cpu.c<br>
-@@ -539,10 +539,10 @@ static const struct SysemuCPUOps mips_sysemu_ops =3D =
-{<br>
-=C2=A0static const struct TCGCPUOps mips_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D mips_tcg_init,<br>
-=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D mips_cpu_synchronize_from_tb,<=
-br>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D mips_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D mips_cpu_tlb_fill,<br>
+=C2=A0static const char npcm7xx_default_bootrom[] =3D &quot;npcm7xx_bootrom=
+.bin&quot;;<br>
 <br>
-=C2=A0#if !defined(CONFIG_USER_ONLY)<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D mips_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D mips_cpu_do_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D mips_cpu_do_transaction_fail=
-ed,<br>
-=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D mips_cpu_do_unaligned_access,<=
-br>
-diff --git a/target/mips/tcg/exception.c b/target/mips/tcg/exception.c<br>
-index 4fb8b00711d..7b3026b105b 100644<br>
---- a/target/mips/tcg/exception.c<br>
-+++ b/target/mips/tcg/exception.c<br>
-@@ -86,24 +86,6 @@ void mips_cpu_synchronize_from_tb(CPUState *cs, const Tr=
-anslationBlock *tb)<br>
-=C2=A0 =C2=A0 =C2=A0env-&gt;hflags |=3D tb-&gt;flags &amp; MIPS_HFLAG_BMASK=
-;<br>
+@@ -357,6 +358,23 @@ static void quanta_gbs_init(MachineState *machine)<br>
+=C2=A0 =C2=A0 =C2=A0npcm7xx_load_kernel(machine, soc);<br>
 =C2=A0}<br>
 <br>
--bool mips_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
--{<br>
--=C2=A0 =C2=A0 if (interrupt_request &amp; CPU_INTERRUPT_HARD) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 MIPSCPU *cpu =3D MIPS_CPU(cs);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 CPUMIPSState *env =3D &amp;cpu-&gt;env;<br>
--<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (cpu_mips_hw_interrupts_enabled(env) &amp;&=
-amp;<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_mips_hw_interrupts_pending(e=
-nv)) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Raise it */<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cs-&gt;exception_index =3D EXCP_=
-EXT_INTERRUPT;<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 env-&gt;error_code =3D 0;<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mips_cpu_do_interrupt(cs);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return true;<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
--=C2=A0 =C2=A0 }<br>
--=C2=A0 =C2=A0 return false;<br>
--}<br>
--<br>
-=C2=A0static const char * const excp_names[EXCP_LAST + 1] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0[EXCP_RESET] =3D &quot;reset&quot;,<br>
-=C2=A0 =C2=A0 =C2=A0[EXCP_SRESET] =3D &quot;soft reset&quot;,<br>
-diff --git a/target/mips/tcg/sysemu/tlb_helper.c b/target/mips/tcg/sysemu/t=
-lb_helper.c<br>
-index a150a014ec1..73254d19298 100644<br>
---- a/target/mips/tcg/sysemu/tlb_helper.c<br>
-+++ b/target/mips/tcg/sysemu/tlb_helper.c<br>
-@@ -1339,6 +1339,24 @@ void mips_cpu_do_interrupt(CPUState *cs)<br>
-=C2=A0 =C2=A0 =C2=A0cs-&gt;exception_index =3D EXCP_NONE;<br>
-=C2=A0}<br>
-<br>
-+bool mips_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
++static void kudo_bmc_init(MachineState *machine)<br>
 +{<br>
-+=C2=A0 =C2=A0 if (interrupt_request &amp; CPU_INTERRUPT_HARD) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 MIPSCPU *cpu =3D MIPS_CPU(cs);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 CPUMIPSState *env =3D &amp;cpu-&gt;env;<br>
++=C2=A0 =C2=A0 NPCM7xxState *soc;<br>
 +<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (cpu_mips_hw_interrupts_enabled(env) &amp;&=
-amp;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_mips_hw_interrupts_pending(e=
-nv)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Raise it */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cs-&gt;exception_index =3D EXCP_=
-EXT_INTERRUPT;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 env-&gt;error_code =3D 0;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mips_cpu_do_interrupt(cs);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return true;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 return false;<br>
++=C2=A0 =C2=A0 soc =3D npcm7xx_create_soc(machine, KUDO_BMC_POWER_ON_STRAPS=
+);<br>
++=C2=A0 =C2=A0 npcm7xx_connect_dram(soc, machine-&gt;ram);<br>
++=C2=A0 =C2=A0 qdev_realize(DEVICE(soc), NULL, &amp;error_fatal);<br>
++<br>
++=C2=A0 =C2=A0 npcm7xx_load_bootrom(machine, soc);<br>
++=C2=A0 =C2=A0 npcm7xx_connect_flash(&amp;soc-&gt;fiu[0], 0, &quot;mx66u512=
+35f&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 drive_get(IF_MTD, 0, 0));<br>
++=C2=A0 =C2=A0 npcm7xx_connect_flash(&amp;soc-&gt;fiu[1], 0, &quot;mx66u512=
+35f&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 drive_get(IF_MTD, 3, 0));<br>
++<br>
++=C2=A0 =C2=A0 npcm7xx_load_kernel(machine, soc);<br>
 +}<br>
 +<br>
-=C2=A0void r4k_invalidate_tlb(CPUMIPSState *env, int idx, int use_extra)<br=
->
+=C2=A0static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char=
+ *type)<br>
 =C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0CPUState *cs =3D env_cpu(env);<br>
-diff --git a/target/mips/tcg/user/tlb_helper.c b/target/mips/tcg/user/tlb_h=
-elper.c<br>
-index b835144b820..210c6d529ef 100644<br>
---- a/target/mips/tcg/user/tlb_helper.c<br>
-+++ b/target/mips/tcg/user/tlb_helper.c<br>
-@@ -57,8 +57,3 @@ bool mips_cpu_tlb_fill(CPUState *cs, vaddr address, int s=
-ize,<br>
-=C2=A0 =C2=A0 =C2=A0raise_mmu_exception(env, address, access_type);<br>
-=C2=A0 =C2=A0 =C2=A0do_raise_exception_err(env, cs-&gt;exception_index, env=
--&gt;error_code, retaddr);<br>
+=C2=A0 =C2=A0 =C2=A0NPCM7xxClass *sc =3D NPCM7XX_CLASS(object_class_by_name=
+(type));<br>
+@@ -417,6 +435,18 @@ static void gbs_bmc_machine_class_init(ObjectClass *oc=
+, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;default_ram_size =3D 1 * GiB;<br>
 =C2=A0}<br>
--<br>
--void mips_cpu_do_interrupt(CPUState *cs)<br>
--{<br>
--=C2=A0 =C2=A0 cs-&gt;exception_index =3D EXCP_NONE;<br>
--}<br>
+<br>
++static void kudo_bmc_machine_class_init(ObjectClass *oc, void *data)<br>
++{<br>
++=C2=A0 =C2=A0 NPCM7xxMachineClass *nmc =3D NPCM7XX_MACHINE_CLASS(oc);<br>
++=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
++<br>
++=C2=A0 =C2=A0 npcm7xx_set_soc_type(nmc, TYPE_NPCM730);<br>
++<br>
++=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;Kudo BMC (Cortex A9)&quot;;<br>
++=C2=A0 =C2=A0 mc-&gt;init =3D kudo_bmc_init;<br>
++=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1 * GiB;<br>
++};<br>
++<br>
+=C2=A0static const TypeInfo npcm7xx_machine_types[] =3D {<br>
+=C2=A0 =C2=A0 =C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0=3D TYPE_NPCM7XX_MACHINE,<br>
+@@ -437,6 +467,10 @@ static const TypeInfo npcm7xx_machine_types[] =3D {<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0=3D MACHINE_TYPE_NAME(&quot;quanta-gbs-bmc&quot;),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+=3D TYPE_NPCM7XX_MACHINE,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =C2=A0=3D gbs_bm=
+c_machine_class_init,<br>
++=C2=A0 =C2=A0 }, {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+=3D MACHINE_TYPE_NAME(&quot;kudo-bmc&quot;),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=3D T=
+YPE_NPCM7XX_MACHINE,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =C2=A0=3D kudo_bmc_ma=
+chine_class_init,<br>
+=C2=A0 =C2=A0 =C2=A0},<br>
+=C2=A0};<br>
+<br>
 -- <br>
-2.31.1<br>
+2.33.0.153.gba50c8fa24-goog<br>
+<br>
 <br>
 </blockquote></div></div>
 
---00000000000059d41505cb08ef67--
+--00000000000065777505cb08ec33--

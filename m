@@ -1,103 +1,99 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp582770lfb;
-        Thu, 2 Sep 2021 12:31:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyp+6R6LnE0Y8GLZRmlBWXxcQHurnCKIjUARUd78xhbka+H7b5iXNU/HMn1CCJPotVDMmzn
-X-Received: by 2002:a1f:1157:: with SMTP id 84mr3443569vkr.13.1630611062244;
-        Thu, 02 Sep 2021 12:31:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630611062; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp613121lfb;
+        Thu, 2 Sep 2021 13:10:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzR5YCmluzbraig6YHjV9kB2axZcXrpI1OC73OOEkCzRklPoeTPoXJJgg9dtOAiCDctKZrz
+X-Received: by 2002:a17:906:1484:: with SMTP id x4mr5831374ejc.72.1630613435174;
+        Thu, 02 Sep 2021 13:10:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630613435; cv=none;
         d=google.com; s=arc-20160816;
-        b=UvbpARKgOBT8bv2ZeQyapHAX7Cdv2d2cxujrC43b9R/AQu2xHSaxfK2HRvB4vHHkU2
-         FB/lexc+h6zTV6yNcyGbbmhn9PMXx4myNOXtBj45vd6X2vOqcstypcQkYn0NWGGGjEfW
-         +uLjXCWWjHrg5FSVdd/drQ1HJ9Z4wWwHUAgmTxSofALTAePwoVrAiZ5zpsiHe9biLWjz
-         yEC79ce45h5F8J6NL7jDQ8VzKLOLebcup3B1+tlbrcuZiX3XaRoFx836W4uHpsJ914FO
-         1HCrekkQaP7fXkj003d7niiEqFDiaUd79+eWKxdzpe/ClBjUagRxb+PQ9pzH8LTVwH1P
-         Ktpg==
+        b=cm51r8v/k7RHZSAo8TbkDWj3YB3KUxODChLWVlW2CQxCFC0s+09XQekekGv751R19d
+         FvYRQ6KOvWPfkUpIYqtVtM5a2mPAEeunsj9MNQ/vrZUXSNylSf5/4wvnbZOFEe2+8wsd
+         TyMW2pgZ5JdgHIg3dOTVQ+cFX4qKIxeMdNaGPWncddzfeyZZtvnKr9fmufO7fx61B2mj
+         crrUM1CZwVUEiGRW4ievThQC6t999YP69Z8kTj+yv7YlJC1gauHOB/+naNs/TaQJXb2u
+         894k2Ck9VAtccFnffyXh8Zm8unpa3fvkrB+Ccbx7OLJ6vhfGkrH561Z3Fx7e2DuSJpAg
+         8alA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=LDgYTaZPd7fIgaqSd2LJvUg0u8gA8KQxliFRygtGFJM=;
-        b=bGLqgGVaElTmXOs5Znek7PBlJlCURJgEG3YC3QSriFZPD7nOk40vcytfL5HLZPlU4x
-         3E3aNEN3ofe+4iw8Q2U1bSwO485hvxh1Ml/HqNPcYvY0pzzVCzwr4Sd0ghhJ89lTGSc0
-         82RyGrjFkZ8+1LOjvWbsk94hsKX1FWXUJT+OES8jys+J33HQbgAd9cJW1Mton/c4XjIN
-         WNvUJQHsMQ2Uo3ikXhzhP+UnxZfO9fRxkM8xvIXF2Rz8swurYDN5Vmu7DqOOuWCDtWk4
-         XAOBb3O6GYKQrDXWj8aCvDFeY/ca+EYL/GBqVoPNwkAaEL6yl3VnSkaiU8d2KJAIj87f
-         s+rQ==
+        bh=yy/dcYFGhKpu0ptaayrsqN44d0c/Beh6cldZRRjkueo=;
+        b=FOuVCB8shyW1X8Ph/pHC4aEm+fFBHS2VcIvm2IyFIQ71Fjb0hHbXQ3515XR9t0JIUw
+         B+6Yg4Rf4EXKtJ1WgB1sGFAenrqIFm423r//uWQxgv296zALxM3Spq6cmmwLtpeP/Zu3
+         PKlyqXUDcmBknBynzDOTjIemD79CKPNKjSg9AKBUzuiAQtW+HjWMcaavU07WhpUOdn4Y
+         w1GU8/niWbi+eJEbQt74Um2A2qmQsX/RYP7xMeeM5kbFahSZaKmoTMMoeZMDINdh9jnV
+         xUKfGPKsX+tB8/oJEot8/WcsrYnuD/n4decIAKjtgRJZO6iCwPlkljw424xKSWobJSop
+         zC2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=u4183SyG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=LAWjq4Vj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o207si1362529vke.19.2021.09.02.12.31.01
+        by mx.google.com with ESMTPS id hk14si2873223ejb.220.2021.09.02.13.10.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 12:31:02 -0700 (PDT)
+        Thu, 02 Sep 2021 13:10:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=u4183SyG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46688 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=LAWjq4Vj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLsQP-0004Q8-Ee
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 15:31:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55994)
+	id 1mLt2e-00036Y-NM
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:10:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38558)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mLsQA-0004N7-MS
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 15:30:46 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:41933)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt25-00035z-7l
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:09:57 -0400
+Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932]:39797)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mLsQ8-0002VI-RE
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 15:30:46 -0400
-Received: by mail-wr1-x434.google.com with SMTP id u9so4681628wrg.8
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 12:30:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt23-0000xQ-5N
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:09:57 -0400
+Received: by mail-ua1-x932.google.com with SMTP id x21so1566233uan.6
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:09:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LDgYTaZPd7fIgaqSd2LJvUg0u8gA8KQxliFRygtGFJM=;
- b=u4183SyGPMqn86XxNfKuH4///StAm8zYgLSkagvy3+3NQqzs0Hq5HvxQ/9p1oJsRlI
- yHHOxUvIIYxPA28/w0W0k38GBAYEQs4SGN86V34p+AxgB+d/b0p85AFdoYrzrIVxNcZv
- Hr7vgVgBlBo/OUX0uBsum6+wSSD6FCNRtLNGj73/qRV70qc6KD0nguSn0i+Ix+XGZIfv
- U7XreJiBWcctM5BYAL28J8kJKtf445JbSZckDmliqwcckBI0JKMtUE5t1U70JhoD85EM
- 5VPcod/1YBtuxKcIMqyW9cPRkglMRKus7ZhdI/5tRfGi+ORwtD1zHxz9RlOuCYSHH7+W
- dt4g==
+ :cc; bh=yy/dcYFGhKpu0ptaayrsqN44d0c/Beh6cldZRRjkueo=;
+ b=LAWjq4VjLaMEZLOYnO/2vAI5sTFiOgEwDOOMTHHjQ+i3iFx5K3nBw4Xj1zaSbq80Ka
+ hZOq595bqGDGMLAfW+/TREThUJs/cOJhxnuctnCQ1wZfIjIPIawR3tijX5SiPmbO247g
+ kkCXFxG49IBOa9HDRksTrqPK8rDI3xkLjbzrRO3cqgXdcqsLd2GFapRJ6ABb49atdxeZ
+ CKM6JX1ObcTOuY0B9yscIQW0p13uVlRqzY/FfGV8XtexDzWEGHqTinmH2Q63M9M9SKhw
+ 9VaSZvtO4tdYN0HEa2Nci2y/2n3PcIaRlCsHjlukt6FPai9xWH6odrwTPe4BaWu0pwWt
+ nY+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=LDgYTaZPd7fIgaqSd2LJvUg0u8gA8KQxliFRygtGFJM=;
- b=Poq3i6xN2K94LK+bsJGnuOFjs65hNGoZ7nQ9Ll/Tcw3LlVQ60Yp8rTdMv30Y+KMe/1
- fsQwvKzVe87IUR0w+ejB6sJSflBhxXUlQGozuePa/0pfd8PVbUJK17CGTMnWZlWUIqlQ
- ZMN20digd93os0sAhJYtqqdEp737bHBV6TKuaN7ApcxB6uBSUPfyHODjs9P3uel/rSsB
- 05omshhrnSM/8iGHfDU+MuBt8IxtUcgki6pHcV+iIh+hEQMPvRm0AQ1GijcaT95Hda+f
- 5HovYXmQpJLlaVYc7fqc3W1OkbTX3iCLMAEeJZEzhpty/1GgkGhHxrupLC2yAC82AdeK
- dBgA==
-X-Gm-Message-State: AOAM531RWXGtaTmI01E4l3eSQAbgoYVvEQ/HCDJlJ3NkbF1tI5FgamB/
- 2s7JDX7zFAi9wUYGI4Lj9QOMRbh4NfkuR0+hPuWaZw==
-X-Received: by 2002:adf:b748:: with SMTP id n8mr5614986wre.133.1630611041455; 
- Thu, 02 Sep 2021 12:30:41 -0700 (PDT)
+ bh=yy/dcYFGhKpu0ptaayrsqN44d0c/Beh6cldZRRjkueo=;
+ b=UtaADmn7jClfJ2neZZ9B6k8xX7CR/d9z5WbvS5lGKs3wxcsqn0jm+kaFrzvxkwRt5C
+ MY9eXawjNMGpb2b6O/Wrf621cAePPGMJpll/ZeFWsm9+JLuIJz1bGPAAYw4x+i4epIA7
+ EsZXS+YBRhR7qYGWicGO1a/3xH/sxmyalgqJmzo1skjRCV6D9soIWfaoPO68rcryC0W5
+ Mc2Fcd3O/lCmRwjpAIBZrJ1Y31pdDckL/QvcSZmZjvl1PV5OJqklm3Cx1QrobMI4NqkS
+ JldN5sSSGh0hoi/QEUxLVy1am/AS+3D1T3YtkQ7BWyfbbmL2kHMn9N2KJlP1Iyo2Bo3V
+ zy6w==
+X-Gm-Message-State: AOAM530wxMCcHVbojEm4mekZjghnwIbkZ2r+h/CUT4gVU11Kn6gdFLAT
+ x9aW+ZnqQYHKuR3dLhG0WmMuNgWpsPoNfWKSC5Udbg==
+X-Received: by 2002:ab0:3413:: with SMTP id z19mr24593uap.39.1630613393374;
+ Thu, 02 Sep 2021 13:09:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210808013406.223506-1-linux@roeck-us.net>
- <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
- <a34c10d4-fc90-0186-3214-c3c5e77b4eea@roeck-us.net>
-In-Reply-To: <a34c10d4-fc90-0186-3214-c3c5e77b4eea@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Sep 2021 20:29:52 +0100
-Message-ID: <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210902151715.383678-1-f4bug@amsat.org>
+ <20210902151715.383678-2-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-2-f4bug@amsat.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 2 Sep 2021 14:09:42 -0600
+Message-ID: <CANCZdfrHrQQkiXmBc62X0b36n726iDCwvLfYXQrker7knhhD0g@mail.gmail.com>
+Subject: Re: [PATCH 01/24] target/xtensa: Restrict do_transaction_failed() to
+ sysemu
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="000000000000140ed505cb08c417"
+Received-SPF: none client-ip=2607:f8b0:4864:20::932;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x932.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,100 +106,124 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0F8/FnaO3woK
+X-TUID: YkjS4TJ4jd2C
 
-On Thu, 2 Sept 2021 at 17:09, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> On 9/2/21 8:58 AM, Peter Maydell wrote:
-> > On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> wrote:
-> >>
-> >> The control register does not really have a means to deselect
-> >> all chip selects directly. As result, CS is effectively never
-> >> deselected, and connected flash chips fail to perform read
-> >> operations since they don't get the expected chip select signals
-> >> to reset their state machine.
-> >>
-> >> Normally and per controller documentation one would assume that
-> >> chip select should be set whenever a transfer starts (XCH is
-> >> set or the tx fifo is written into), and that it should be disabled
-> >> whenever a transfer is complete. However, that does not work in
-> >> practice: attempts to implement this approach resulted in failures,
-> >> presumably because a single transaction can be split into multiple
-> >> transfers.
-> >>
-> >> At the same time, there is no explicit signal from the host indicating
-> >> if chip select should be active or not. In the absence of such a direct
-> >> signal, use the burst length written into the control register to
-> >> determine if an access is ongoing or not. Disable all chip selects
-> >> if the burst length field in the configuration register is set to 0,
-> >> and (re-)enable chip select if a transfer is started. This is possible
-> >> because the Linux driver clears the burst length field whenever it
-> >> prepares the controller for the next transfer.
-> >> This solution  is less than perfect since it effectively only disables
-> >> chip select when initiating the next transfer, but it does work with
-> >> Linux and should otherwise do no harm.
-> >>
-> >> Stop complaining if the burst length field is set to a value of 0,
-> >> since that is done by Linux for every transfer.
-> >>
-> >> With this patch, a command line parameter such as "-drive
-> >> file=flash.sabre,format=raw,if=mtd" can be used to instantiate the
-> >> flash chip in the sabrelite emulation. Without this patch, the
-> >> flash instantiates, but it only reads zeroes.
-> >>
-> >> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> >> ---
-> >> I am not entirely happy with this solution, but it is the best I was
-> >> able to come up with. If anyone has a better idea, I'll be happy
-> >> to give it a try.
-> >>
-> >>   hw/ssi/imx_spi.c | 17 +++++++----------
-> >>   1 file changed, 7 insertions(+), 10 deletions(-)
-> >>
-> >> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> >> index 189423bb3a..7a093156bd 100644
-> >> --- a/hw/ssi/imx_spi.c
-> >> +++ b/hw/ssi/imx_spi.c
-> >> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-> >>       DPRINTF("Begin: TX Fifo Size = %d, RX Fifo Size = %d\n",
-> >>               fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s->rx_fifo));
-> >>
-> >> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
-> >> +
-> >>       while (!fifo32_is_empty(&s->tx_fifo)) {
-> >>           int tx_burst = 0;
-> >>
-> >> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
-> >>       case ECSPI_CONREG:
-> >>           s->regs[ECSPI_CONREG] = value;
-> >>
-> >> -        burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-> >> -        if (burst % 8) {
-> >> -            qemu_log_mask(LOG_UNIMP,
-> >> -                          "[%s]%s: burst length %d not supported: rounding up to next multiple of 8\n",
-> >> -                          TYPE_IMX_SPI, __func__, burst);
-> >> -        }
-> >
-> > Why has this log message been removed ?
->
-> What I wanted to do is:
->
-> "Stop complaining if the burst length field is set to a value of 0,
->   since that is done by Linux for every transfer."
->
-> What I did instead is to remove the message entirely.
->
-> How about the rest of the patch ? Is it worth a resend with the message
-> restored (except for burst size == 0), or is it not acceptable anyway ?
+--000000000000140ed505cb08c417
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I did the easy bit of the code review because answering this
-question is probably a multiple-hour job...this is still on my
-todo list, but I'm hoping somebody who understands the MIX
-SPI device gets to it first.
+On Thu, Sep 2, 2021 at 9:17 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+>
+wrote:
 
--- PMM
+> The do_transaction_failed() is restricted to system emulation since
+> commit cbc183d2d9f ("cpu: move cc->transaction_failed to tcg_ops").
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>
+
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+
+
+> ---
+>  target/xtensa/cpu.h | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+> index 2345cb59c79..1e0cb1535ca 100644
+> --- a/target/xtensa/cpu.h
+> +++ b/target/xtensa/cpu.h
+> @@ -568,10 +568,12 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr
+> address, int size,
+>                           bool probe, uintptr_t retaddr);
+>  void xtensa_cpu_do_interrupt(CPUState *cpu);
+>  bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);
+> +#ifndef CONFIG_USER_ONLY
+>  void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+> vaddr addr,
+>                                        unsigned size, MMUAccessType
+> access_type,
+>                                        int mmu_idx, MemTxAttrs attrs,
+>                                        MemTxResult response, uintptr_t
+> retaddr);
+> +#endif /* !CONFIG_USER_ONLY */
+>  void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>  hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>  void xtensa_count_regs(const XtensaConfig *config,
+> --
+> 2.31.1
+>
+>
+
+--000000000000140ed505cb08c417
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 9:17 AM Philip=
+pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
+g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+>The do_transaction_failed() is restricted to system emulation since<br>
+commit cbc183d2d9f (&quot;cpu: move cc-&gt;transaction_failed to tcg_ops&qu=
+ot;).<br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br></blockquote><div><br><=
+/div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com">im=
+p@bsdimp.com</a>&gt;</div><div>=C2=A0</div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">
+---<br>
+=C2=A0target/xtensa/cpu.h | 2 ++<br>
+=C2=A01 file changed, 2 insertions(+)<br>
+<br>
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h<br>
+index 2345cb59c79..1e0cb1535ca 100644<br>
+--- a/target/xtensa/cpu.h<br>
++++ b/target/xtensa/cpu.h<br>
+@@ -568,10 +568,12 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address,=
+ int size,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 bool probe, uintptr_t retaddr);<br>
+=C2=A0void xtensa_cpu_do_interrupt(CPUState *cpu);<br>
+=C2=A0bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);=
+<br>
++#ifndef CONFIG_USER_ONLY<br>
+=C2=A0void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, =
+vaddr addr,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned =
+size, MMUAccessType access_type,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int mmu_i=
+dx, MemTxAttrs attrs,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0MemTxResu=
+lt response, uintptr_t retaddr);<br>
++#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);<br>
+=C2=A0hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);<br>
+=C2=A0void xtensa_count_regs(const XtensaConfig *config,<br>
+-- <br>
+2.31.1<br>
+<br>
+</blockquote></div></div>
+
+--000000000000140ed505cb08c417--

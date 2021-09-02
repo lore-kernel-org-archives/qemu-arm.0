@@ -1,107 +1,122 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp391358lfb;
-        Thu, 2 Sep 2021 08:47:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBiDMMuo2TOsQ023lkAlWz2nzwT47KPQxF7/uh7K4zS5RrEHHPcQdOaHfbvC726iBIQLCq
-X-Received: by 2002:ab0:2e8a:: with SMTP id f10mr2423965uaa.19.1630597646539;
-        Thu, 02 Sep 2021 08:47:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630597646; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp392123lfb;
+        Thu, 2 Sep 2021 08:48:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAKbYQKpEhjyElIoK+NcPTQe1VSJxQ4ef2LmOixGjVzhmFNC+V3eK2DLcx5m5+Sd8Gchrl
+X-Received: by 2002:a05:6102:11e3:: with SMTP id e3mr2846928vsg.49.1630597705801;
+        Thu, 02 Sep 2021 08:48:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630597705; cv=none;
         d=google.com; s=arc-20160816;
-        b=mUvTuQssP1EQ4AftiqrvB6ow1RC0mM/M/rPB+I+OcebH8O1qlj5Fiyv256cnbbGvBV
-         QfoVQgqkP0dNjqheeQ9Q1VqRn9bWRi+AiWjhtJ3HfvtqBYqLs+K/vczsR9qfLgBz7U9g
-         a0ED7oNwXsxpV+M5n9oHhy1HFHPGRfMqgHA+dZHB2TDG3MFIe/D8N55LNud658MSc5rE
-         jqRAjc3HRkhcNwuqPW09flBi4KMBun/Bi9I7ZupkwoH6RXVlMmp3VbC/dpDR2yVMaSho
-         HpYMgHi/4G+cDHqAQoHlpwKLuhThbXtRzJWaGfBZxNKWWhT2yqcIVLiphJvjK8RN+hCx
-         nhxQ==
+        b=JCnufM4CBB0hcy5h5C29/uOO+HE56wkgaHdCSj6dlWNcb57Xj2ZfYFkoQTCfcQb93d
+         v+tvFskxVfy4zFh4JNFBDJiMyoMMHdIuBOI9MM+8B5zRCpminWGrHvucxhlAsA+S8PYy
+         YtcFEYdXvxALTC6oxkLqKzgT2ovUKAvYnTtAoQkntEkfzc0hUAcUQbmvm3wX25qeMNK0
+         mrYJdiHBtanjbh6zNEQcY2yhBT3qF5vaNFqKbw4/MIaS2bFpz0wK3HMUGUEkXQMXV6iz
+         LnN0V6jC46aLRue3jFb3AoRYwEn3mlpDvUdtFSIjdOG+bToa7ti7jBO2mIkq0hG5h3r0
+         LFgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=uKEDIK9jjR5E1iUtYoJzOCExU95HIVXUcHhHZVdYNmo=;
-        b=bphZz1x9WPnmwNPh9cH4D7Cugd9ZCht20cZACFC6m52NPwsin4CMo6W0cO4doQvLAU
-         +TohQY+5IFCRXCQuVgn+OlmHBAB7V2Rt+k0AzdduOC9SmowP2CK9KRz2z1km5STA0KIo
-         hElmU6RYaGlx6SuhuqmIPkkFuKUs3UEJrNaHljL/ErbVeFyRRcr8dkT7FwU2y75xdXqi
-         voGOAkZnamJkcwj1LNfwOwB0oQ1FZIdd/tUI+TYKTJ/FyAMpirItfdVcd+SnnU+jeRvC
-         zFVxgzRrEyNijCeMmHUuwWCjJ3PVIhXI+TFcVMzb9xjAPNXCdw7xAYBK/yx92ocEQ7ix
-         D/Ug==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=gmI7uD1T5cln+C3tDRgJCFvkKa7ccLDZSlf0cbMI3qE=;
+        b=G6cXZDXFe6wA9j2OJtej0YGl/8vgWqlveFte0uS6FQh3A0duaTU4rjc/eA+/fEUuX3
+         yviJVl1B5LLPFkqvqSrkR7QNDaBOtR2ecdI8ssn0vGHelweaT7dWUpAdUF1h9smRABIG
+         7HGeHRaI/d3pvxYRThx0sjj7vULgp0iGVeNmMtt3a6hfovfRHY5izh1/W/J5NZ01Y4uM
+         EmUkLShMVhXno1gQgfYoCyoFXLkoWfYWTMYERrZSMux5cpp2GRBCcGLr+eo+HjK9cdSu
+         3aitcKzHPkZe6c+gfIe7tP61X5EW4ZeAApO3Tp5zgnTXxhx+ynV4+0/QZkC/rngSM5+p
+         uNXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="kVRbVDJ/";
+       dkim=fail header.i=@stwcx.xyz header.s=fm2 header.b=TmfakpHb;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=fMBgwdpU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n6si1040205vse.37.2021.09.02.08.47.26
+        by mx.google.com with ESMTPS id c129si795156vsc.354.2021.09.02.08.48.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:47:26 -0700 (PDT)
+        Thu, 02 Sep 2021 08:48:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="kVRbVDJ/";
+       dkim=fail header.i=@stwcx.xyz header.s=fm2 header.b=TmfakpHb;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=fMBgwdpU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42910 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46638 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLow1-0003lA-RN
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:47:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47666)
+	id 1mLowz-0006Ca-1n
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:48:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoUl-0005U4-IW; Thu, 02 Sep 2021 11:19:15 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:43611)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoUk-0003GM-5V; Thu, 02 Sep 2021 11:19:15 -0400
-Received: by mail-wr1-x433.google.com with SMTP id b6so3531720wrh.10;
- Thu, 02 Sep 2021 08:19:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=uKEDIK9jjR5E1iUtYoJzOCExU95HIVXUcHhHZVdYNmo=;
- b=kVRbVDJ/iHkK+UJWM+aQI8SwF+fWKOVW0tAIGFSdzQQZn1dh1nEJFZgjFNpvOd540L
- tjHGWjmkWcPC/WzY7vKE86GqtdgxBIADD+MX2Wj+QaEyq2u1tf35R62+C4RvmuYz5EpL
- 9J4aVDsd4kSVEA1O+pQ6bb/7jYKpRxiY39bmtBUo/tzSXFJzBkooTN0gElSi5SJf43Hp
- sak74nA+KfkaW1UOBN/w4Jwlcf8ePZELB2k4UyHBBAf05zd7B97po+vMK8XKO4fb0ng+
- jz2GCgWAienCT/Da8DfnWrzO7j7ryR84wwhtdP84Y42jOeTA0xsov6vq4+tTNHmgLSkS
- MKRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=uKEDIK9jjR5E1iUtYoJzOCExU95HIVXUcHhHZVdYNmo=;
- b=l+NTFNbQMvH/BpCEe0BWTdr+A9Vbkyrpp9tFZXcnEulzc5GxJD1eYu2jY2WnSznr73
- C0VQoNupQP5MHu40ZzbvsuxBeba6mdAz/lYFQTUpPFna9uP4+6G1e25owqGUnqwxlafw
- N+RpTnjGbJRWMwHRJckQnjyiPq/YQgfkZ50280q1P1VzIjNQRYUt9qgFZ/yGNn0Rhc9t
- /6LM4cacJvAmGJZ0qMROJyz+w5jMXeolOJ7c5i9/RqypXtF7gFDWuYmDlf/HcVkMnR3a
- IajOEDCJrpuM6D8KpUU2eBPFWLSmsvKaw7mp6+/ceQY4N0I3DQ8XPlpDPXUgLppXXhwU
- eFug==
-X-Gm-Message-State: AOAM533RJGwFjCi2VHN5ZYqo+c7VKTtBPvfM5UWpPJyVNmU2gQAtZfUD
- tZoTwAGXMhvOVcxOZ0tqNe4bLLAyDR8=
-X-Received: by 2002:adf:c10b:: with SMTP id r11mr4502786wre.336.1630595950995; 
- Thu, 02 Sep 2021 08:19:10 -0700 (PDT)
-Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id
- 129sm1894649wmz.26.2021.09.02.08.19.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:19:10 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 21/24] target/rx: Restrict cpu_exec_interrupt() handler to
- sysemu
-Date: Thu,  2 Sep 2021 17:17:12 +0200
-Message-Id: <20210902151715.383678-22-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
-References: <20210902151715.383678-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1mLova-00043P-1k; Thu, 02 Sep 2021 11:46:58 -0400
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:55425)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1mLovV-0000iL-3X; Thu, 02 Sep 2021 11:46:57 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id 2144D320090E;
+ Thu,  2 Sep 2021 11:46:49 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Thu, 02 Sep 2021 11:46:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm2; bh=gmI7uD1T5cln+C3tDRgJCFvkKa7
+ ccLDZSlf0cbMI3qE=; b=TmfakpHbtIn5UlczoIj7A7J+Mje3VfMjVEzE1AkAx6P
+ Ucn4+NZ/Qd74yNWbQ2ghpEQOiGjAb3jvfXRgZOwhqFecWFI357fFY+k1i+/giaqg
+ zGkNY/3EOjkLH9a9naeluPmFENlKOL/Y1ePhs6ilO/edDYhkuA1E6w6vQbo7hUPV
+ 2Ae66gXsPos2r99skMkretU4nX79tDiiDUYRMJty0+lfrPzEwkJCh3zQPdZXKo/7
+ RcJu8OXSJhbR7DA9ia9omvjCFTT5+AFGf/d/ddN4V7LlVI69M8GSCyC5VAwzJQ0g
+ YRTZQ12caMDn7tKdusIYLFe4YvAIIDM/kCaGSZT5C2A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=gmI7uD
+ 1T5cln+C3tDRgJCFvkKa7ccLDZSlf0cbMI3qE=; b=fMBgwdpUcwxzmgVKz2WFUS
+ JiKihVQ57cONTB30pPwLzLQe1VjtP9Hvo34EYeqqmUxmMf6ap4zhQ3Zrj0MvBtqz
+ 2LYp/n5ImfnRHkTbXgZOmzHf5Ty7Fv4WzDx7iowx3dvU4WquUYl23hlh4dGIobIh
+ LY+49eDm4J6VCpLNCL6TneOkmhn1EDpnCByvqPLoVBqkJqFASEJF5i/oWYrVqqqD
+ kSwS8kjfZfcj6SN7RPCKJXU8ORjNVNG0sHOj5K9xFxlPlrxC6W39BWmL3SwGQxX4
+ RZn5dcTgPziGCfxfDjSX9u/HPU3OgjVEcx5RYCJLgpI5/yVjAzgTZECumpY4+Hkw
+ ==
+X-ME-Sender: <xms:5_EwYZCoC2VGTAt8TMgAkzKdGqxMoIZau-vI6Ij0_ogT6zq7ophmRw>
+ <xme:5_EwYXhBHgwEKecC8zDkIh3_EhnWEiJuPDgihtJGj4IKNnh_i3gEJQTxvnbL3RH0G
+ 1mvLRp8Ee7Kfd4KRr8>
+X-ME-Received: <xmr:5_EwYUkItLk_PZbW5diOZQebb2a3ItUDs4APeBw1keEgwhjmPTzW8eXOCrop-LGP2wIIbRSRy6-WDWwnxIkwBUIpNJ-7iC1Zki4>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddruddvhedgleefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ gfrhhlucfvnfffucdlvdefmdenucfjughrpeffhffvuffkfhggtggujgesghdtreertddt
+ jeenucfhrhhomheprfgrthhrihgtkhcuhghilhhlihgrmhhsuceophgrthhrihgtkhessh
+ htfigtgidrgiihiieqnecuggftrfgrthhtvghrnhepkedvheduveekhfeuvdettefhfeel
+ hfdvheeigfdugedvgffgteffveektedugedunecuffhomhgrihhnpehgihhthhhusgdrtg
+ homhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehp
+ rghtrhhitghksehsthiftgigrdighiii
+X-ME-Proxy: <xmx:5_EwYTyJSAdZUFE25l0GbL47xUyUIJGufyhDb93Alafa2UXVU0SYvg>
+ <xmx:5_EwYeQawgy2H3t3x7hgkY9YTHuHTxFAs5vF_NrhWOxM4Cxgc2syhQ>
+ <xmx:5_EwYWbn5NXZsVDKYL7NfRDwi7jxH3BjA3wYeWpKLrsWMraw7O7Fmg>
+ <xmx:6PEwYdFR9MuUCvjD9WcetMpI-6zLGP_Jo9H7UrxAHsRkXUsD_NwThg>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 2 Sep 2021 11:46:47 -0400 (EDT)
+Date: Thu, 2 Sep 2021 10:46:45 -0500
+From: Patrick Williams <patrick@stwcx.xyz>
+To: Peter Delevoryas <pdel@fb.com>
+Subject: Re: [PATCH 0/1] hw/arm/aspeed: Add Fuji machine type
+Message-ID: <YTDx5fyuHmylObg8@heinlein>
+References: <20210901225946.500125-1-pdel@fb.com>
+ <60994ebb-d345-cc40-020e-2c14ed438097@kaod.org>
+ <0B35613A-4001-4E31-A522-ECF827CF1F8E@fb.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="UKoYqOT1BrAKQ9oq"
+Content-Disposition: inline
+In-Reply-To: <0B35613A-4001-4E31-A522-ECF827CF1F8E@fb.com>
+Received-SPF: pass client-ip=64.147.123.24; envelope-from=patrick@stwcx.xyz;
+ helo=wout1-smtp.messagingengine.com
+X-Spam_score_int: -2
+X-Spam_score: -0.3
+X-Spam_bar: /
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FROM_SUSPICIOUS_NTLD=0.499, PDS_OTHER_BAD_TLD=2, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -115,87 +130,108 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Warner Losh <imp@bsdimp.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "andrew@aj.id.au" <andrew@aj.id.au>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ "f4bug@amsat.org" <f4bug@amsat.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FsVggiKRyiPq
+X-TUID: yhVMYYxHelKk
 
-Restrict cpu_exec_interrupt() and its callees to sysemu.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/rx/cpu.h    | 2 ++
- target/rx/cpu.c    | 2 +-
- target/rx/helper.c | 4 ++++
- 3 files changed, 7 insertions(+), 1 deletion(-)
+--UKoYqOT1BrAKQ9oq
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index 0b4b998c7be..faa3606f52f 100644
---- a/target/rx/cpu.h
-+++ b/target/rx/cpu.h
-@@ -124,8 +124,10 @@ typedef RXCPU ArchCPU;
- #define CPU_RESOLVING_TYPE TYPE_RX_CPU
- 
- const char *rx_crname(uint8_t cr);
-+#ifndef CONFIG_USER_ONLY
- void rx_cpu_do_interrupt(CPUState *cpu);
- bool rx_cpu_exec_interrupt(CPUState *cpu, int int_req);
-+#endif /* !CONFIG_USER_ONLY */
- void rx_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- int rx_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int rx_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-index 96cc96e514f..25a4aa2976d 100644
---- a/target/rx/cpu.c
-+++ b/target/rx/cpu.c
-@@ -186,10 +186,10 @@ static const struct SysemuCPUOps rx_sysemu_ops = {
- static const struct TCGCPUOps rx_tcg_ops = {
-     .initialize = rx_translate_init,
-     .synchronize_from_tb = rx_cpu_synchronize_from_tb,
--    .cpu_exec_interrupt = rx_cpu_exec_interrupt,
-     .tlb_fill = rx_cpu_tlb_fill,
- 
- #ifndef CONFIG_USER_ONLY
-+    .cpu_exec_interrupt = rx_cpu_exec_interrupt,
-     .do_interrupt = rx_cpu_do_interrupt,
- #endif /* !CONFIG_USER_ONLY */
- };
-diff --git a/target/rx/helper.c b/target/rx/helper.c
-index db6b07e3890..f34945e7e2c 100644
---- a/target/rx/helper.c
-+++ b/target/rx/helper.c
-@@ -40,6 +40,8 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw, int rte)
-     env->psw_c = FIELD_EX32(psw, PSW, C);
- }
- 
-+#ifndef CONFIG_USER_ONLY
-+
- #define INT_FLAGS (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR)
- void rx_cpu_do_interrupt(CPUState *cs)
- {
-@@ -142,6 +144,8 @@ bool rx_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-     return false;
- }
- 
-+#endif /* !CONFIG_USER_ONLY */
-+
- hwaddr rx_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
- {
-     return addr;
--- 
-2.31.1
+On Thu, Sep 02, 2021 at 03:12:12PM +0000, Peter Delevoryas wrote:
+>=20
+> > On Sep 2, 2021, at 1:12 AM, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 
+> > Are we sure the flash models fit what the machine expects ?
+>=20
+> Oh, I see, I=E2=80=99m not exactly sure which device is being used
+> but it should be one using the m25p80 command set, and after
+> switching to one of those devices (e.g. mx66l1g45g) it works:
+>=20
+> [   54.867027] Creating 6 MTD partitions on "spi0.0":
+> [   54.867506] 0x000000000000-0x0000000e0000 : "u-boot"
+> [   54.873929] 0x0000000e0000-0x0000000f0000 : "env"
+> [   54.876546] 0x0000000f0000-0x000000100000 : "meta"
+> [   54.878948] 0x000000100000-0x000007800000 : "fit"
+> [   54.881290] 0x000007800000-0x000008000000 : "data0"
+> [   54.883965] 0x000000000000-0x000008000000 : "flash0"
+
+It appears that machine uses the 128MB flash layout dtsi file:
+    https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/faceboo=
+k-bmc-flash-layout-128.dtsi
+
+I think that means it would be safe to use the same mx66l1g45g that Sonorap=
+ass
+is using in the Fuji config.  Likely we're either using that exact chip or
+something 100% compatible with it.
+
+> >=20
+> >  [   41.314338] 6 fixed-partitions partitions found on MTD device spi0.0
+> >  [   41.314600] Creating 6 MTD partitions on "spi0.0":
+> >  [   41.314957] 0x000000000000-0x0000000e0000 : "u-boot"
+> >  [   41.318355] 0x0000000e0000-0x0000000f0000 : "env"
+> >  [   41.319747] 0x0000000f0000-0x000000100000 : "meta"
+> >  [   41.321064] 0x000000100000-0x000007800000 : "fit"
+> >  [   41.321247] mtd: partition "fit" extends beyond the end of device "=
+spi0.0" -- size truncated to 0x3f00000
+> >  [   41.322684] 0x000007800000-0x000008000000 : "data0"
+> >  [   41.322827] mtd: partition "data0" is out of reach -- disabled
+> >  [   41.324110] 0x000000000000-0x000008000000 : "flash0"
+> >  [   41.324253] mtd: partition "flash0" extends beyond the end of devic=
+e "spi0.0" -- size truncated to 0x4000000
+> >=20
+> > More info in the log below.
+> >=20
+> >=20
+> > Could we also define the list of expected I2C devices of the machine ?=
+=20
+>=20
+> Yeah sure! I=E2=80=99ll follow up with that.
+>=20
+
+The fuji DTS is available upstream:
+    https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/aspeed-=
+bmc-facebook-fuji.dts
+
+I found that when I did Sonora Pass there were a number of unsupported i2c
+devices (ie. devices without QEMU models) but most of them were behind muxe=
+s,
+which are similarly non-supported.  You'll see a pretty large fan-out in th=
+e i2c
+busses of that DTS.  I don't see anything obvious in the DTS that is direct=
+ly
+connected except for the muxes.
+
+--=20
+Patrick Williams
+
+--UKoYqOT1BrAKQ9oq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEBGD9ii4LE9cNbqJBqwNHzC0AwRkFAmEw8eMACgkQqwNHzC0A
+wRl/KA/+JREIsgImsxxpk3SFGIqb+8bYrGjrUvfvFXhA7u7lbjy/6dN6L3ZxgVzh
+ogC6GZzAiVlsNX+Ogg1knlHBBP3v7gKoH1R3sOldIKtJ3VvX1o4nswMCe/y0YVss
+OVbajSS4UfivguiKl/Zey9Yhgqr9vHr34BgevHavjuhjGcIXR77pbCUTIvjG+du+
++rxNa3xFFAZ7aKIKHRAcIdRXv+j9oifAVKR+zU98FiDSQ95wibH0EfgI21GkBiW0
+06RValgiHL2WWBIdOF7LI5q77gTeDT9bcCJgUmH2GhEjx/Qcid5t2ygGeyvxZTDx
+IBBI0Pfsz2HCmVFYm9X4xBMevepcfmG8I/4/6OR4DDtbroeWHq9Edtr7A7oqb/dj
+nB3V+xT3p2z4075uUziBtqVQPWOpYzbGFX/dwUu0hYqnIi0xnFhaFJH6X7BZN/CW
+hy9fCWmSc8ybj0z2ZKjSsJm3NzwmhPIrHiV6Njys88hNfAg6byT344ukyEw+ohSv
+OqLVkjj1mg7RG2xZVyIMPjVkNUi9XWeRrP0UmxVSYJx2ZVDN4ty8grsP/QfpszeI
+RGybZ6M34SdFdNcrGsqhRVWi0C1G0eOzk1YedOfyahpOL5S3Mawg0EUtgT91dO7O
+iI3/gIFhndxvFLnLro8QID26G+pWAGLuLUH0yvuWsIfy6p9bYdc=
+=OOAy
+-----END PGP SIGNATURE-----
+
+--UKoYqOT1BrAKQ9oq--

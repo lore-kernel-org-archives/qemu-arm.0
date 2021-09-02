@@ -1,100 +1,100 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp369439lfb;
-        Thu, 2 Sep 2021 08:22:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwn0TBiS62nh41REHv4aBvw5x4kqbDJ3k3RmyNtUKzeLsTFChr9NAum68yS+1zncMJ36ZtC
-X-Received: by 2002:adf:ebcd:: with SMTP id v13mr4447633wrn.400.1630596139435;
-        Thu, 02 Sep 2021 08:22:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630596139; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp370492lfb;
+        Thu, 2 Sep 2021 08:23:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykGSNFuPTd6aPYvVkUmCbypKlyEkvFJBremHizh8DyZ+DE2JIQmanxXHtwVd00ls3a1tVf
+X-Received: by 2002:adf:8144:: with SMTP id 62mr4452530wrm.144.1630596207257;
+        Thu, 02 Sep 2021 08:23:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630596207; cv=none;
         d=google.com; s=arc-20160816;
-        b=lkHL2AfJS9ChXz8iydcKCQxSfY9jklD5aneWUnEUG7PA8lPUgqI92MswZXvtxYoHl+
-         uECz3mUOZhFIZi6px6sR/3iEzRxgzDIZivvMlY2K0tr61t/I5ETOVhBP4x9gnb6oSTrT
-         gCsGvvXkTexSEWAtaEBxIAss0jsEdXGKhWDvJ8oGtMybB3jCVpspcPHbuLx7lqBwGPEa
-         etBndUJMSmKvEOokdSN0iYiOg+4uPV+zHMH5Udt7t/a7UDO8cimzSAi4br8rDw0vtwvm
-         Yt3Lv5J6vgDVOiNYLMDy1zBXnjaqXuAlB1aMoHeh3aF8AvEJQV2Uf64xZGjiC72X0lJN
-         oQLA==
+        b=wOjOPUs3GHeVSxiE/Rh8hdZ5koBo5iZ87hJCtjRKn0B5fTjKotHQJKRU+DXImrh5h4
+         LXbf8eoK7AO+A4rWRUbxouiPVS+4cCMqnoS/fXsxIEzIlCn7BVWo/AFcwO3vwtAxOypF
+         yvmJenua/KHloO6wVvWMCSbQ1kvF7JKWn2uzrLufSH3oQZG1n7vfzM86PAR6VNlUAfsd
+         bk4MptOZMbQMXOXpswuUeytC/UyB6RdqwBL3QpgUvgBWal85MPIgNBDlnL/p5Jb5nVsy
+         gu/6K/Oe+trHMvwSTF/oqkhckjjIJi6dMyTYCvGCIgK6GgnswMTMnaPWXPJNJk3WAT2c
+         yMaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bzANSLmsGdJwadQ2kXgbZKI1Q8VNrscDKhhidFGsH+0=;
-        b=LTfSnRl2drTOHSu2FgEvxWcTkhHAavq3y5aBp6iPQDn5IKgFCNqa/bDBAcy426f7Ae
-         Vh0Hd5a96NYWRCT80ZFLLeSbjDE6DXc2/Y3xbUt4L0ut4+JvpHrYJ1efIpJuuoD+1w/h
-         JVHTuSOls3oNK1TOCXRKbgItoKuqC+tmofuwK7imgEpYq8X57QFTkDICGr1PMUzAqiKk
-         YRp8MrHAhjxq1UlHMYus48AvIUesA6dNskNFTonAXcsY6i30fZYNIa+i+UoaX5PQEbWU
-         2uYRDE6etizCtJo5MDU34NxLV/FubbKRIeabFoE22JGfcdHF6zPZtMprkE+ogQv+4lkx
-         Brqg==
+        bh=rCmT1/gj4ujp3EJ6HnKnll+PX2FEvZCPZXd6eJGewIs=;
+        b=P3OQkMo0cjWvPmTVrXxzQs5T+ttndygOsCEiOds1H+vRTG+SHPL9QgnMTfpvinzW/Z
+         VIZtzcIS7EXvT+vwegpDBvFCyRiVd8j7TY+8s3/YQDICnkeg7xXFcliKTm5WHGO5A8f2
+         ErppoWol8klqUlqlNWxugDZO42r3MrEKu0N1Z9fHxTetvkQdFrOgoTCJ6vjU8NufT1e9
+         4uvRHB/DoQGJMv5OSTkJpAcPr7E13DHA+Fdm9F1D/NRFVMto1c4Wf7UNRD6PJrCzp45G
+         op5n1YgGN9iAAsm423opXXvj20jjdoows92uSi1Ckx31FgZeDNmzdq+3SebYJtWkGybL
+         fZIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Z9k4vsPo;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=K5H1sTW1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r5si2563632wrl.389.2021.09.02.08.22.19
+        by mx.google.com with ESMTPS id g7si2534835wrd.46.2021.09.02.08.23.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:22:19 -0700 (PDT)
+        Thu, 02 Sep 2021 08:23:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Z9k4vsPo;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=K5H1sTW1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35998 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLoXi-0001x1-HX
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:22:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46946)
+	id 1mLoYo-0004XL-33
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:23:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoT3-0003hG-CZ; Thu, 02 Sep 2021 11:17:30 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:52965)
+ id 1mLoTQ-0003nq-F0; Thu, 02 Sep 2021 11:17:52 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:44691)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoT0-0001kX-0W; Thu, 02 Sep 2021 11:17:27 -0400
-Received: by mail-wm1-x333.google.com with SMTP id e26so1539804wmk.2;
- Thu, 02 Sep 2021 08:17:24 -0700 (PDT)
+ id 1mLoTH-00020D-5W; Thu, 02 Sep 2021 11:17:51 -0400
+Received: by mail-wr1-x436.google.com with SMTP id g18so3507292wrc.11;
+ Thu, 02 Sep 2021 08:17:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bzANSLmsGdJwadQ2kXgbZKI1Q8VNrscDKhhidFGsH+0=;
- b=Z9k4vsPonRy5FhjiFYfve2//ax9zYfyyVD5a9Cugem8J8WsROLTUdxZhjQFB3fG7QL
- sF8pK/9U253NoTliZREGwIL5xU/HTdrvfwZATynAdrFDf1Oe+v6ovXnPzIwYG9U1myxB
- T+xcHCUrk19Oie+upTR4GwXVKPit/JG8EJu2v4/Vjp2yguR6XjnRYwoEyparRbJndYQ/
- p43ara3grrooC7fr3CTKdaFEjlBBtgKk2Opczzode5eea7w5PrHD85pJa6PPKyOGYEF0
- 1e/3eV34c+knvvn3gFyAglCLRJ4MKFqF3/QWNxmPX0LfhiJa0kv8uleIl7riSopsOR7F
- f6ow==
+ bh=rCmT1/gj4ujp3EJ6HnKnll+PX2FEvZCPZXd6eJGewIs=;
+ b=K5H1sTW1GKDrNxhnd1MRkJo2wQvX36QUw+Qh2zrY+4rmjtrOffaaaFEGdTTR6dil62
+ giCofM4EMWwoBGwla1naHVMHmrzDda0EkSP1HRrBOQLXCxaNc5xS12fhONL25RtfotJx
+ 0lO16Vse+JjY3aT7O2bsw7IX7hGJxJSiWWv1NXAJXDO0u8E7CMROU13qf2nLt9eyK8AQ
+ kDG7UG5yLnv0raH/qzsLTW4RMiX30ZxIGWpczh9j8bIRtTxw8weEtZYGsvuGBGwqAaSD
+ huS0O/w0xB3XKyCV+IR+nv6KCXA8qS72499wpJggFbN8xnthpbkf6D3rKvmc8muhdOso
+ f/wA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=bzANSLmsGdJwadQ2kXgbZKI1Q8VNrscDKhhidFGsH+0=;
- b=n4rIgcHV69D5bY8Zo8Kue2aNN8n22EfC6b5YxQ5TkVRNE8T6qMB/ZxKnMZ5Dt3nylG
- 7/jUVjy4Pjd4NsqDOAVNiFOKg5pVsc/My9MoLLnIUsaFPvMZWfZMFxJUaselgYiGdEYn
- wuuPyGcb8qZm1g572759AMgpEr4cNxbOnU6iQ6AyJIV84fdKr47+8mDjR2GhxcWgzU1Q
- BDAxssr/AEArCElUr8bZnoRq0ch1gTzGhbYCP4qkAs6+krxW2QsY+e3U2rBJoikHN2TT
- 0i8a57vqh2WbRoKECwcZG6RrKH1HgYZbSJHicURZmRmuXH0+z/cv/pTZ0rVmnhV8VhUn
- 55Mw==
-X-Gm-Message-State: AOAM533l3FAa7JN8lvuN5n+DtA9PJQPRRiic7TLrMkL8oeWhMS2nBJog
- F4HBsDLO+PUyRz3Yvo1xbL9yFyH8e+A=
-X-Received: by 2002:a7b:c097:: with SMTP id r23mr3761544wmh.114.1630595843307; 
- Thu, 02 Sep 2021 08:17:23 -0700 (PDT)
+ bh=rCmT1/gj4ujp3EJ6HnKnll+PX2FEvZCPZXd6eJGewIs=;
+ b=k0rAQ074AnjwXfsIc2Zw+8bQUCOuD3s95vz5iNgb5IiOWnXelhC6Utf37JRBQG3b0y
+ Vf3qS5Izx8uv0tvFWuGI7thG6vq2qBeIIykaGbFAvkp4KJpvYkKgWbMDo7rJbX/etsz1
+ dB4CnZGQG6h1KY8jmfUiea5cIwqJlhxTTpfTLsKvU+wAZZ5dBVsluYecoCJLM0p75FlV
+ rFyXxyIifuvoLVUMJpmdObcKGRDeJW7UwSrZUKSkQcio98vjcUEkEhlZb4l6pRgvYibW
+ LmyRcJyrzItQ3VHPMQ2tPvogdsiOpuuO48NBPXvrs0F6syz1Mhixwe8LW/xZuaHoxKxD
+ JVCw==
+X-Gm-Message-State: AOAM533hxpvtI/gSw2h6Z2biA6GzJ3CZSkQ+FZWE16K7zX8CNqVFNBYT
+ FYn+Mhyp5GRllw8/cKhYQ/gMN0jPS30=
+X-Received: by 2002:adf:ab0e:: with SMTP id q14mr4446562wrc.171.1630595859587; 
+ Thu, 02 Sep 2021 08:17:39 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
  by smtp.gmail.com with ESMTPSA id
- u9sm2193592wrm.70.2021.09.02.08.17.21
+ d9sm2033778wrm.21.2021.09.02.08.17.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:17:22 -0700 (PDT)
+ Thu, 02 Sep 2021 08:17:39 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 01/24] target/xtensa: Restrict do_transaction_failed() to
- sysemu
-Date: Thu,  2 Sep 2021 17:16:52 +0200
-Message-Id: <20210902151715.383678-2-f4bug@amsat.org>
+Subject: [RFC PATCH 04/24] accel/tcg: Rename user-mode do_interrupt hack as
+ fake_user_exception
+Date: Thu,  2 Sep 2021 17:16:55 +0200
+Message-Id: <20210902151715.383678-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
 References: <20210902151715.383678-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -133,33 +133,98 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ajkKpkCrdAHL
+X-TUID: prn9ecEgKqgB
 
-The do_transaction_failed() is restricted to system emulation since
-commit cbc183d2d9f ("cpu: move cc->transaction_failed to tcg_ops").
+do_interrupt() is sysemu specific. However due to some X86
+specific hack, it is also used in user-mode emulation, which
+is why it couldn't be restricted to CONFIG_SOFTMMU (see the
+comment around added in commit 78271684719: "cpu: tcg_ops:
+move to tcg-cpu-ops.h, keep a pointer in CPUClass").
+Keep the hack but rename the handler as fake_user_exception()
+and restrict do_interrupt() to sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/xtensa/cpu.h | 2 ++
- 1 file changed, 2 insertions(+)
+RFC: Any better name / idea here?
+---
+ include/hw/core/tcg-cpu-ops.h | 22 ++++++++++++++--------
+ accel/tcg/cpu-exec.c          |  4 ++--
+ target/i386/tcg/tcg-cpu.c     |  6 ++++--
+ 3 files changed, 20 insertions(+), 12 deletions(-)
 
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 2345cb59c79..1e0cb1535ca 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -568,10 +568,12 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                          bool probe, uintptr_t retaddr);
- void xtensa_cpu_do_interrupt(CPUState *cpu);
- bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);
-+#ifndef CONFIG_USER_ONLY
- void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
-                                       unsigned size, MMUAccessType access_type,
-                                       int mmu_idx, MemTxAttrs attrs,
-                                       MemTxResult response, uintptr_t retaddr);
-+#endif /* !CONFIG_USER_ONLY */
- void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void xtensa_count_regs(const XtensaConfig *config,
+diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-ops.h
+index eab27d0c030..600f0349659 100644
+--- a/include/hw/core/tcg-cpu-ops.h
++++ b/include/hw/core/tcg-cpu-ops.h
+@@ -37,14 +37,6 @@ struct TCGCPUOps {
+     void (*cpu_exec_exit)(CPUState *cpu);
+     /** @cpu_exec_interrupt: Callback for processing interrupts in cpu_exec */
+     bool (*cpu_exec_interrupt)(CPUState *cpu, int interrupt_request);
+-    /**
+-     * @do_interrupt: Callback for interrupt handling.
+-     *
+-     * note that this is in general SOFTMMU only, but it actually isn't
+-     * because of an x86 hack (accel/tcg/cpu-exec.c), so we cannot put it
+-     * in the SOFTMMU section in general.
+-     */
+-    void (*do_interrupt)(CPUState *cpu);
+     /**
+      * @tlb_fill: Handle a softmmu tlb miss or user-only address fault
+      *
+@@ -61,6 +53,20 @@ struct TCGCPUOps {
+     void (*debug_excp_handler)(CPUState *cpu);
+ 
+ #ifdef NEED_CPU_H
++#if defined(CONFIG_USER_ONLY) && defined(TARGET_I386)
++    /**
++     * @fake_user_exception: Callback for 'fake exception' handling.
++     *
++     * Simulate 'fake exception' which will be handled outside the
++     * cpu execution loop (hack for x86 user mode).
++     */
++    void (*fake_user_exception)(CPUState *cpu);
++#else
++    /**
++     * @do_interrupt: Callback for interrupt handling.
++     */
++    void (*do_interrupt)(CPUState *cpu);
++#endif /* !CONFIG_USER_ONLY || !TARGET_I386 */
+ #ifdef CONFIG_SOFTMMU
+     /**
+      * @do_transaction_failed: Callback for handling failed memory transactions
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index e5c0ccd1a2a..3e387c944c5 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -651,8 +651,8 @@ static inline bool cpu_handle_exception(CPUState *cpu, int *ret)
+            loop */
+ #if defined(TARGET_I386)
+         CPUClass *cc = CPU_GET_CLASS(cpu);
+-        cc->tcg_ops->do_interrupt(cpu);
+-#endif
++        cc->tcg_ops->fake_user_exception(cpu);
++#endif /* TARGET_I386 */
+         *ret = cpu->exception_index;
+         cpu->exception_index = -1;
+         return true;
+diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
+index 93a79a57415..dce800a8953 100644
+--- a/target/i386/tcg/tcg-cpu.c
++++ b/target/i386/tcg/tcg-cpu.c
+@@ -73,9 +73,11 @@ static const struct TCGCPUOps x86_tcg_ops = {
+     .cpu_exec_enter = x86_cpu_exec_enter,
+     .cpu_exec_exit = x86_cpu_exec_exit,
+     .cpu_exec_interrupt = x86_cpu_exec_interrupt,
+-    .do_interrupt = x86_cpu_do_interrupt,
+     .tlb_fill = x86_cpu_tlb_fill,
+-#ifndef CONFIG_USER_ONLY
++#ifdef CONFIG_USER_ONLY
++    .fake_user_exception = x86_cpu_do_interrupt,
++#else
++    .do_interrupt = x86_cpu_do_interrupt,
+     .debug_excp_handler = breakpoint_handler,
+     .debug_check_breakpoint = x86_debug_check_breakpoint,
+ #endif /* !CONFIG_USER_ONLY */
 -- 
 2.31.1
 

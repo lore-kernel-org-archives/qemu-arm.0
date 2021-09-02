@@ -1,223 +1,153 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp232435lfb;
-        Thu, 2 Sep 2021 05:58:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbnPNiOuNP85tEFG5xlc98vHMWNPT3yGzOjN840KzNGYHKaVlDNNeFhx/BJ6sz3J6HMsqo
-X-Received: by 2002:a67:3289:: with SMTP id y131mr1632759vsy.37.1630587512372;
-        Thu, 02 Sep 2021 05:58:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630587512; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp189077lfb;
+        Thu, 2 Sep 2021 05:03:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxuC4TfxNDAIZVumR6TU0KLeII45AKSnXQtW8se4Q84XyQ/qZW6cm56ZNFRKkQErSlsVnlt
+X-Received: by 2002:a05:6512:224b:: with SMTP id i11mr2196907lfu.605.1630584181748;
+        Thu, 02 Sep 2021 05:03:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630584181; cv=none;
         d=google.com; s=arc-20160816;
-        b=MBDl705R0MyFAEmNtT+kxvJNRgdApIkCIcj99n3eBWL0DZRSzpo9dVDdURaNSi1xfX
-         IYkkJnSCqx03Tj/GH9+vXhfHA2eoDk5vCHPkJGGwZADc9a4Zk91UV57q5dQ32v5J1STy
-         qT8uhrWmEzXf6xi4bxb6ImKwno9h9y++HYQQMaBD/w9gvLlaz5+r7dB9NqDxS5McCGcO
-         EThYXTAXvkDA6eoFE66b3Uz5nrQke6pKsDj/Nk6wBgdLtFbgAl8VGdCGJBdlz1/FFW6v
-         zoArCVLW2OylkJHvoCdHi+4t7UnYpk+ArfMtlMi6aejQ5QxpoqhMOfD2H/OiXfEa/2rH
-         LpfQ==
+        b=gP1c2m8ZWkYTAOXyNA6jrI5cdp/JHF8pwdCJUQZwEB2fiiSsl+byQQNTR0BToSp7P5
+         JrP6sAGZnGbcL8UjWXexkdrpWgtauGopEszgo/bJkyYnkUOf6iutIVbWTju0vDPnRUNQ
+         6GAsDEvcsqub+Lz8+aHf7/uvm+U1u70lpHSK2JwmUCPkN/4ofRlgjqVd50v36+miLDeo
+         PjH8kI+9JOdIV1zrY9ZTTtLqAOqOhLvymtb4Ho7O5czz/HzKaOnVxsGF4DkUXtR8K0z8
+         UT5Xq67kwpXpGD5PvLSCoDGL+uB/gl/iX67e/cuZXLr4l6wAW12Wihlnyj7+GJz5D+pp
+         yFBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LYkd/eN2r8RwFHh7TAqjUQEYryOrVA9FequQ9kQs3P0=;
-        b=BIL79xyujf9aAJktFePV1cdk0J9NH3bfW8/kM4aRnoVrtQDQTYeO4VAg0GhTdZURot
-         x6OtZgrF7ebmnSTXzOw+xjlBUhnUfhV5BucfX/6ZqN2EKo3PWlYGBmyrT4WwzWMknFOB
-         LlVt7ZOwa2MM9cr6MYEFEt2s/bTq+Kx9xIEFdjJscz15Lfpu2wda/1EEndoq+0TqU0ju
-         ps4xk2pLCU5sxk4tzT2DB+IVTtBAcHxKGtwfrBT+fbK7az9FcswOOwybyOagzuOZNDuF
-         g5RHkAmQNeNiKJwxdwR7g4hGamXbBEVk58RCWBdvWO+20z9YnmSTUR0nY+wfgAEXkpCi
-         Hupw==
+        bh=RfkxOYdWc9Q6lR5t4xQoPQNESuZqhwOWJime+pQAPsw=;
+        b=JZyV6dSTIoNo3bQzjlxplEtHSJ/F3LH9TOQanT6Reyw87Zc7Ln2KHf/la0DYAYyCTr
+         0Uem9kPQbqJz7enBGBrnrgeG6AntZ8cILjrOJFRveUbK1fD+FDLjxRCj+7Qy9ECd445N
+         60ayk8DSD0E++zX1yYEFb6chXt1ZXfzF7NQZ2m0J65v0VhkIx4keLnNfSRwyuIxZHqGe
+         x8Mv7LknmlU0uh9R6x6AXgriT5Ocoimrgw+6rd1XRG4SeVGcKxd5dLAr6oeT+OQtXJ4b
+         zEAbx+Y0UcI1gi4M2Q4sq1KsIhrC5ijrSd0388PvpLqpXo+lyajROrsFgzMW2x4Ue6IW
+         5yJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=xSOEAMtz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XQnXn435;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f26si606860vsj.29.2021.09.02.05.58.32
+        by mx.google.com with ESMTPS id w13si2471796ede.473.2021.09.02.05.03.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 05:58:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 05:03:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=xSOEAMtz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47084 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XQnXn435;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37058 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLmIZ-0006ZY-Iv
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 08:58:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36058)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLlQq-0005lq-5W
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 08:03:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1mLm3f-0008CG-Ku
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 08:43:08 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:35583)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1mLm3d-0006FL-OI
- for qemu-devel@nongnu.org; Thu, 02 Sep 2021 08:43:07 -0400
-Received: by mail-wr1-x436.google.com with SMTP id i6so2714040wrv.2
- for <qemu-devel@nongnu.org>; Thu, 02 Sep 2021 05:43:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=LYkd/eN2r8RwFHh7TAqjUQEYryOrVA9FequQ9kQs3P0=;
- b=xSOEAMtzUTN6aQOhIfizwt1hzwo5SOTpqeTrhJQmYLWnUvd/zOq7uLtiLeGB4oMLbE
- PGaKQ1DzyU9bLs4k5h4lb0Ks/JjOJwL0/J4v+UD3LrOqEtu3zTBIbjEjACP7dZjnWoPh
- uVpGqKkNN0oBEocs286UKTd4+9FhlK9vcPbJqIML47deHEcdMK+ejqCiUiaqbA9XdO/T
- VY3+az95PxsCCgNkLiERy9SV2y+DL7mOcymQ55PoSQmH+EKBblpI/3M2xfiW5Mdvgydl
- /75UxiqudWVEqYs4G7HKQrlyo7d6M75bq0cei2cDA+i1lcVx1XkCxcpJHLSWDpHm1/8l
- HIpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=LYkd/eN2r8RwFHh7TAqjUQEYryOrVA9FequQ9kQs3P0=;
- b=f4K37MraKipMhL0fOFP6h1jpwWxbUZyfsckLhUo/5c3MrfD1wYmDEMJUdlsdHNhMWA
- IhrFAw4OEiOOAVuffMYT2/IMHUDbpbeK+JXTTqLoF7h2XFbWtapVSbaHPFDxA5XIBftV
- rp5ys+gxP0TN8DNNJWRsfJo50D+3C7DGe3kD5FMqmKHWfiI+JWBoodJhoWgJTAKWPARF
- kzZdPV140hzRCDhfnFDP6tHmJhxTXExRgntkrgZOr9R93cseNItJkInvYU7EO8OwHhE5
- WTTuQxrsUyqpgiLhbJUpfDn3EQCgqEWQBow5zngKRJ0NGLxBZAe7xQc96FbFgpVhYakF
- jvlA==
-X-Gm-Message-State: AOAM533rFbdaPkaU6+6IfQGx8GiqdeidMRKrbzXaUysB72U96/cuC2gX
- HmtJJMx3S1HX10HGps43OWfZpA==
-X-Received: by 2002:a5d:6cc9:: with SMTP id c9mr3498496wrc.158.1630586581641; 
- Thu, 02 Sep 2021 05:43:01 -0700 (PDT)
-Received: from leviathan (cpc92314-cmbg19-2-0-cust559.5-4.cable.virginm.net.
- [82.11.186.48])
- by smtp.gmail.com with ESMTPSA id o8sm1440424wmp.42.2021.09.02.05.43.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 05:43:01 -0700 (PDT)
-Date: Thu, 2 Sep 2021 13:42:58 +0100
-From: Leif Lindholm <leif@nuviainc.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v8 07/10] hw/arm/sbsa-ref: add ITS support in SBSA GIC
-Message-ID: <20210902124258.mqjhx7lqqvkczf6a@leviathan>
-References: <20210812165341.40784-1-shashi.mallela@linaro.org>
- <20210812165341.40784-8-shashi.mallela@linaro.org>
- <CAFEAcA9WVu+kjfCWwfGQV00yKgmdFDCSUpxNOu1BEBM3AZCWXg@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mLl0t-0000df-73
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 07:36:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:24737)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mLl0r-00050w-Hd
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 07:36:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630582568;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RfkxOYdWc9Q6lR5t4xQoPQNESuZqhwOWJime+pQAPsw=;
+ b=XQnXn435sz8z8+peSbCquk/p4KIlz1buObOERm8xXtyzZ8TMkSlM7eYhOdC+iqq+owYRK3
+ 5vrfZKWJmPzRtjVkC+6eiUaPWfTB92DCnpMsY79gkmuos8S18mBFWbTjSya+jnlPqrmSqS
+ AMSQzzwAwK0KH/AmzS04ms1vqvB+LkQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-288-qzDSi3I8PeutEY1SajeIuQ-1; Thu, 02 Sep 2021 07:36:07 -0400
+X-MC-Unique: qzDSi3I8PeutEY1SajeIuQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 107BB84A5E0;
+ Thu,  2 Sep 2021 11:36:07 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+ (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A05EF6A8F8;
+ Thu,  2 Sep 2021 11:36:05 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 12/15] tests: acpi: arm/virt: drop redundant
+ test_acpi_one() in test_acpi_virt_tcg()
+Date: Thu,  2 Sep 2021 07:35:48 -0400
+Message-Id: <20210902113551.461632-13-imammedo@redhat.com>
+In-Reply-To: <20210902113551.461632-1-imammedo@redhat.com>
+References: <20210902113551.461632-1-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9WVu+kjfCWwfGQV00yKgmdFDCSUpxNOu1BEBM3AZCWXg@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=leif@nuviainc.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.39,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Shashi Mallela <shashi.mallela@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
- narmstrong@baylibre.com, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vhg30Krc0wJw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: lvivier@redhat.com, drjones@redhat.com, mst@redhat.com, thuth@redhat.com,
+ eric.auger@redhat.com, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Csk/872EgNTR
 
-Hi Peter,
+follow up call with smbios options generates the same ACPI tables,
+so there is no need to run smbios-less variant at all.
 
-On Thu, Aug 19, 2021 at 14:27:19 +0100, Peter Maydell wrote:
-> On Thu, 12 Aug 2021 at 17:53, Shashi Mallela <shashi.mallela@linaro.org> wrote:
-> >
-> > Included creation of ITS as part of SBSA platform GIC
-> > initialization.
-> >
-> > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-> > ---
-> >  hw/arm/sbsa-ref.c | 79 ++++++++++++++++++++++++++++++++++++++++++++---
-> >  1 file changed, 75 insertions(+), 4 deletions(-)
-> >
-> 
-> > +static char *sbsa_get_version(Object *obj, Error **errp)
-> > +{
-> > +    SBSAMachineState *sms = SBSA_MACHINE(obj);
-> > +
-> > +    switch (sms->version) {
-> > +    case SBSA_DEFAULT:
-> > +        return g_strdup("default");
-> > +    case SBSA_ITS:
-> > +        return g_strdup("sbsaits");
-> > +    default:
-> > +        g_assert_not_reached();
-> > +    }
-> > +}
-> > +
-> > +static void sbsa_set_version(Object *obj, const char *value, Error **errp)
-> > +{
-> > +    SBSAMachineState *sms = SBSA_MACHINE(obj);
-> > +
-> > +    if (!strcmp(value, "sbsaits")) {
-> > +        sms->version = SBSA_ITS;
-> > +    } else if (!strcmp(value, "default")) {
-> > +        sms->version = SBSA_DEFAULT;
-> > +    } else {
-> > +        error_setg(errp, "Invalid version value");
-> > +        error_append_hint(errp, "Valid values are default, sbsaits.\n");
-> > +    }
-> > +}
-> >
-> >  static void sbsa_ref_instance_init(Object *obj)
-> >  {
-> >      SBSAMachineState *sms = SBSA_MACHINE(obj);
-> >
-> > +    sms->version = SBSA_ITS;
-> >      sbsa_flash_create(sms);
-> >  }
-> >
-> > @@ -850,6 +915,12 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-> >      mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
-> >      mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
-> >      mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
-> > +
-> > +    object_class_property_add_str(oc, "version", sbsa_get_version,
-> > +                                  sbsa_set_version);
-> > +    object_class_property_set_description(oc, "version",
-> > +                                          "Set the Version type. "
-> > +                                          "Valid values are default & sbsaits");
-> 
-> This doesn't look right; where has it come from ?
-> 
-> If you want a command line switch to let the user say whether the
-> ITS should be present or not, you should use the same thing the
-> virt board does, which is a bool property "its".
-> 
-> If you want the sbsa-ref board to become a proper "versioned machine
-> type" such that users can say "-M sbsa-ref-6.1" and get the SBSA
-> board exactly as QEMU 6.1 supplied it, that looks completely different
-> (and is a heavy back-compatibility burden, so needs discussion about
-> whether now is the right time to do it), and probably is better not
-> tangled up with this patchseries.
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+CC: eric.auger@redhat.com
+CC: drjones@redhat.com
+CC: qemu-arm@nongnu.org
+CC: thuth@redhat.com
+CC: lvivier@redhat.com
+---
+ tests/qtest/bios-tables-test.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Hmm. I mean, you're absolutely right about the complexity and need for
-discussion. My concern is that we cannot insert the ITS block in the
-memory map where it would be in an ARM GIC implementation without
-changing the memory map (pushing the redistributor further down).
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index f9c8363e91..068fcfd623 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1427,9 +1427,6 @@ static void test_acpi_virt_tcg(void)
+         .scan_len = 128ULL * 1024 * 1024,
+     };
+ 
+-    test_acpi_one("-cpu cortex-a57", &data);
+-    free_test_data(&data);
+-
+     data.smbios_cpu_max_speed = 2900;
+     data.smbios_cpu_curr_speed = 2700;
+     test_acpi_one("-cpu cortex-a57 "
+-- 
+2.27.0
 
-It is also true that simply versioning sbsa-ref does not mean we end
-up with a properly aligned with ARM IP register frame layout. Some
-additional logic is required for that.
-
-If we assume that we don't want to further complicate this set by
-adding the additional logic *now*, I see three options:
-- Implement memory map versioning for sbsa-ref for this set, placing
-  the ITS (if enabled) directly after the DIST for sbsa-ref-6.2.
-- In this set, place the ITS frames in a different location relative
-  to the REDIST frames than it will end up once the further logic is
-  implemented.
-- Drop the sbsa-ref ITS support from this set, and bring it in with
-  the set implementing the additional logic.
-
-Typing that, I'm getting the feeling that if I was the maintainer,
-the third option would be my preference...
-
-/
-    Leif

@@ -1,100 +1,101 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp375491lfb;
-        Thu, 2 Sep 2021 08:29:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyzOE3saeJfkqeZPR9NFbmtlQNJ5MiU1ntkpEwWD0taSlgTphjhTgO42mjG/n8tLy2MdiOF
-X-Received: by 2002:ab0:4d50:: with SMTP id k16mr2347555uag.49.1630596557214;
-        Thu, 02 Sep 2021 08:29:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630596557; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp378083lfb;
+        Thu, 2 Sep 2021 08:31:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzOFc7068NVVPdLWDh0oko40cgGLlpVsN2lBZU98uXG9wcZ4nSdftcV2iE/hJubYZirvl0O
+X-Received: by 2002:a17:906:265a:: with SMTP id i26mr4526258ejc.522.1630596706452;
+        Thu, 02 Sep 2021 08:31:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630596706; cv=none;
         d=google.com; s=arc-20160816;
-        b=RC8CMldwyJEhxTFC0W4SDQlbIQd412DggkWOQQ0OQN+YCMfMJ6QAVwzBRECT1670EU
-         58aoh6tim6BlHvCiLx4Qr4m3LiRsGR6QY+DC0xFmOjhWMGXWABmBAGqKzOxMfZx1ap0H
-         pQUiy8lrhc4pgzihwzbjyvIvlvjGEW6KqZytbOxWP5ZZs0ixUj//kd0M8WFuZLraBZ62
-         O1Pjifhvs8Fg05pcAjOO/fsChnaNiJDCb7URX1lsTOh0tjtEs8B9+PuQBJoIM8ikvn33
-         2fiJFkSZ7tMW0F7TcA3s+EQtZ+EPqnm7/L0ZzOORlgTN8CsxJVsWFYLWGaxBVf6W4naw
-         Ez4A==
+        b=bBYS/fm4ptMcHfAMc4BtfcWmJBvJTU913utg9yoghuVpemMuOOdEk2EHXuZZkjVFde
+         mVsOubAmNO/mz7qEs8E+/+wtYHXXgfg5AzHv1CemJrRuuupsLNL9Crxo/FhSRcCUgGW1
+         EJmHx5QV8hmBkev69PWYCg5R0AWWI2KmY0knFepdMtn9bmUT3HQTDH4zIM9LTFlJFbN4
+         /mMT8/qEuGkjOO0IHuJYjM5H53ZT/vgH1qq+1A2GMKvSnhe2oXQk07wduVFluY7GyweK
+         uTWUot/9ybPumFkdbHypSnKqLokQs2pJLdxFHmBH5Oby7W0H+P7BepSoIBgw6QK0bnoM
+         MFEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=yWzwMmzgtknOn/zDVw9ZMjlZX8g7FMUFvR1QvfAhY8E=;
-        b=ASex199EKzNOebiAiWAqKyTDmkKpGfqFqhxgy4zwbB0aWykpwI/DqgxAVR//q1GSxu
-         MairH6SPUmv3xZIFNnLWAZUHkJZOa+AWoFEBOeyOvuU4mxK3iAKt1wKUfIfPTiV2lDPE
-         4T0mxXivH5CnMDzPjuKN4zNtmUtczbk+69IbVYR4LNPuAFz/zE4znXmFcX+YC84cWq9v
-         H9npVuB6l6jSMGiteStk+mFoUjxiaDuf2oL8mmQYoaDqlkauDO6N4L32XWmhOTdOBsjH
-         Qj8+GkVF2G/stgxG9D7jDAlaI8A5xOZq8ZjRh4vkKnxupxTnwI2zaHPilGJW0pYlZnmb
-         XQKQ==
+        bh=qUI/GEcrThYL7vzCuO0R9Lw6aoERtFPxgcZzSbFzqgM=;
+        b=wjqPkH+qQ+qJnuKVOG7jennT0aGU4UCrDjz1lqoj9YhyxCSSzPxAtM9xXvzp+EJcoc
+         XlQ4jCMxvzly0hgCRWAXeHmd+Ipx8EQubARyMgXGdRUpD2SKGyjU4eYS0h6RVSyllX+M
+         90PMZskpdACF1rymWvTpjQzyVpLX4gT0+niqhhxTsACs0BY5A/9WmJ3hUPQmjrDcs7Ia
+         H6YM7pQ1dBaNTQibxneKUFHDY0FL0kReTJPgYiyFa32nmOYsEyhVnNn6OwwHN/Bdhh5m
+         WvlfjfVds9WmBTZ2Ew1ixp0Y+/HprUqBuq0iBE4xXZxEghq1EZlzW0NtowDZOP60QjR5
+         jqMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=XL6aED2l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=iVe+9QqL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10si772101uam.211.2021.09.02.08.29.16
+        by mx.google.com with ESMTPS id du11si2313098ejc.389.2021.09.02.08.31.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 08:29:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Sep 2021 08:31:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=XL6aED2l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58360 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=iVe+9QqL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLoeS-0008PQ-FP
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:29:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47640)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mLogq-0002AK-Rm
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 11:31:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47188)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoUf-0005QU-1H; Thu, 02 Sep 2021 11:19:11 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:45740)
+ id 1mLoTd-00040N-8l; Thu, 02 Sep 2021 11:18:06 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:41727)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mLoUb-00034p-8i; Thu, 02 Sep 2021 11:19:07 -0400
-Received: by mail-wr1-x436.google.com with SMTP id n5so3505312wro.12;
- Thu, 02 Sep 2021 08:19:00 -0700 (PDT)
+ id 1mLoTb-0002Dt-II; Thu, 02 Sep 2021 11:18:05 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ u15-20020a05600c19cf00b002f6445b8f55so1639984wmq.0; 
+ Thu, 02 Sep 2021 08:18:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yWzwMmzgtknOn/zDVw9ZMjlZX8g7FMUFvR1QvfAhY8E=;
- b=XL6aED2lZnZF+iSRz2h+W+d5lk31scEEQIu7ZFZr7a4DAwfbFp9vFKKYKaMRLBTYe0
- ozL+tRJbDl1PolsI21/eEKKM4L5Vm0QHXDY7fh742PqmfupsDm/e+6iYztFcpcuD3CUN
- eAxKQHzjkBw9jLLFM6woIBXxmr+spcq+bc2HhwugzWlkRK+aPrq0Kv2diuGeJUKFJ54y
- PnZi+XP7vbbb+yEeDc27xhClbS8UHJOFBNhR7IhAWiV44Fr57TarL486Z+xDsIx8HJTT
- CnPIuGsYkn3xr3j0fUpYG08ZOqxB75xU844oepVvpNhVtTkkokXtOFZB3T3hIBvwvXwC
- 2OQA==
+ bh=qUI/GEcrThYL7vzCuO0R9Lw6aoERtFPxgcZzSbFzqgM=;
+ b=iVe+9QqLylnt44FCv/N/bfyTajQ514saaLhXAzK5EeFT9xMeKMd1jEbb+vjCPqN5qN
+ Hj6EIuaGURXyjORJmhtVPYv94Uen8vqsnqGTFcyOfRVX05r5frtEsMm5Pwi1nqEmK4/O
+ X6p+NfV0JuQBExet9c7uVyJWb7XjxUfREWMA3BDlKCVF4Y4ZWpSP1QOErtpS28if2IQT
+ h7KNQi0PSAFp1Pi6U1g93GYTTxirckdTDakyIKakBGWTT+g0v08azAwFuQHSj5+KPw0y
+ O2ZbvWidpUAZ11OdgEd2kG5sJ4RF9TdP5/KngToSbEA5Uq1sG5Lt9nQdav43sDGf53yJ
+ IrhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=yWzwMmzgtknOn/zDVw9ZMjlZX8g7FMUFvR1QvfAhY8E=;
- b=bYWwcu1BxQ8Qu9a7Sli9npwsO1coRiYlxsshgqloWq+BmQV79wPCyN9vfJPtmRFod7
- 0SX+/fmPWFqc6/+db8MZsu+HNlxWTH67OdcKQ+qvwr7/3TpuLgDu3tcE3vNNLKFt95a6
- iDP+iYNwLO0V5gqZ+uizVF29lLf33h2D59Hb2p+gl8IAkeUsPaOeTe4Ooj6ArUVvxWK8
- TWLvuAG9Tuk1ZTTARvhOlqbiXEprONmUU1Sm6o2FT6bsjwOolCNsMrCozx328JTOWgNd
- Wzsoog9Jf19qtkntQSGmGiHTSHUH1XVAakvS7mZP99eiMTCQj//d8M1qtK2/ADV1Gohx
- c6LQ==
-X-Gm-Message-State: AOAM530480VnR5VU49MMwl6XfUbSmKcIh0U9hplvdnr7b+dlB+TxuEd8
- Tvyl26iKt1IFF5ejRSpQuXhAyGNT+EI=
-X-Received: by 2002:a5d:4e51:: with SMTP id r17mr4596219wrt.308.1630595939779; 
- Thu, 02 Sep 2021 08:18:59 -0700 (PDT)
+ bh=qUI/GEcrThYL7vzCuO0R9Lw6aoERtFPxgcZzSbFzqgM=;
+ b=EAA8sjjIo/kkn5NDT/5402tQdLT9w1EJXuNSo1HsDl7RYnQE2avIb0+9IS7t6DrfpM
+ B+4VvLcCdm+vH5zW3AtLyYaHDkGEgcmLtBF/R+NyjkG0CQ5ZIDQmAxl51kvZRbcA36CD
+ +HuUCX1sY+jx8YphvqpBIIFsrfKWfYy9BIjDw8LkY+/p2Eb85CZUfaTe/mhy04ct41rL
+ BYavp8OpjAV2UwBKqIf9j5I53UthRyelWnBlOAjLmdr7A2j3BfLdzRNCXkl51Ej0pf7C
+ y0zjQ9OK9BQjGxYl2MnsQCP6aMj2GmwbStCQCBma9V71fv+kWBHX2Uy09hgKE7/RX4KB
+ O/bw==
+X-Gm-Message-State: AOAM530ZJ7VFPoSP+wuZFyeBylIHZDDIO80mRSFSYFZYWLSClMGH3Cna
+ KWVPkWYkf6sEEV34FMVToLzchInV1iU=
+X-Received: by 2002:a1c:4686:: with SMTP id t128mr3601905wma.183.1630595880991; 
+ Thu, 02 Sep 2021 08:18:00 -0700 (PDT)
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
  by smtp.gmail.com with ESMTPSA id
- s7sm2137638wra.75.2021.09.02.08.18.58
+ c13sm2120248wru.73.2021.09.02.08.17.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 08:18:59 -0700 (PDT)
+ Thu, 02 Sep 2021 08:18:00 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 19/24] target/sh4: Restrict cpu_exec_interrupt() handler to
+Subject: [PATCH 08/24] target/avr: Restrict cpu_exec_interrupt() handler to
  sysemu
-Date: Thu,  2 Sep 2021 17:17:10 +0200
-Message-Id: <20210902151715.383678-20-f4bug@amsat.org>
+Date: Thu,  2 Sep 2021 17:16:59 +0200
+Message-Id: <20210902151715.383678-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210902151715.383678-1-f4bug@amsat.org>
 References: <20210902151715.383678-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -104,25 +105,24 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Warner Losh <imp@bsdimp.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Warner Losh <imp@bsdimp.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
@@ -131,91 +131,70 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ArLwkX21c/JC
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hQKI7H9Oth8K
 
 Restrict cpu_exec_interrupt() and its callees to sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/sh4/cpu.h    | 4 ++--
- target/sh4/cpu.c    | 2 +-
- target/sh4/helper.c | 9 ++-------
- 3 files changed, 5 insertions(+), 10 deletions(-)
+ target/avr/cpu.h    | 2 ++
+ target/avr/cpu.c    | 2 +-
+ target/avr/helper.c | 2 ++
+ 3 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index 01c43440822..017a7702140 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -204,8 +204,6 @@ struct SuperHCPU {
- };
+diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+index 93e3faa0a98..6f8c0ffd770 100644
+--- a/target/avr/cpu.h
++++ b/target/avr/cpu.h
+@@ -156,8 +156,10 @@ typedef struct AVRCPU {
  
+ extern const struct VMStateDescription vms_avr_cpu;
  
--void superh_cpu_do_interrupt(CPUState *cpu);
--bool superh_cpu_exec_interrupt(CPUState *cpu, int int_req);
- void superh_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- hwaddr superh_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int superh_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-@@ -223,6 +221,8 @@ bool superh_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
- 
- void sh4_cpu_list(void);
- #if !defined(CONFIG_USER_ONLY)
-+void superh_cpu_do_interrupt(CPUState *cpu);
-+bool superh_cpu_exec_interrupt(CPUState *cpu, int int_req);
- void cpu_sh4_invalidate_tlb(CPUSH4State *s);
- uint32_t cpu_sh4_read_mmaped_itlb_addr(CPUSH4State *s,
-                                        hwaddr addr);
-diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
-index 83269229421..2047742d03c 100644
---- a/target/sh4/cpu.c
-+++ b/target/sh4/cpu.c
-@@ -236,10 +236,10 @@ static const struct SysemuCPUOps sh4_sysemu_ops = {
- static const struct TCGCPUOps superh_tcg_ops = {
-     .initialize = sh4_translate_init,
-     .synchronize_from_tb = superh_cpu_synchronize_from_tb,
--    .cpu_exec_interrupt = superh_cpu_exec_interrupt,
-     .tlb_fill = superh_cpu_tlb_fill,
++#ifndef CONFIG_USER_ONLY
+ void avr_cpu_do_interrupt(CPUState *cpu);
+ bool avr_cpu_exec_interrupt(CPUState *cpu, int int_req);
++#endif /* !CONFIG_USER_ONLY */
+ hwaddr avr_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ int avr_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int avr_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index ea14175ca55..e9fa54c9777 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -195,10 +195,10 @@ static const struct SysemuCPUOps avr_sysemu_ops = {
+ static const struct TCGCPUOps avr_tcg_ops = {
+     .initialize = avr_cpu_tcg_init,
+     .synchronize_from_tb = avr_cpu_synchronize_from_tb,
+-    .cpu_exec_interrupt = avr_cpu_exec_interrupt,
+     .tlb_fill = avr_cpu_tlb_fill,
  
  #ifndef CONFIG_USER_ONLY
-+    .cpu_exec_interrupt = superh_cpu_exec_interrupt,
-     .do_interrupt = superh_cpu_do_interrupt,
-     .do_unaligned_access = superh_cpu_do_unaligned_access,
-     .io_recompile_replay_branch = superh_io_recompile_replay_branch,
-diff --git a/target/sh4/helper.c b/target/sh4/helper.c
-index 2d622081e85..53cb9c3b631 100644
---- a/target/sh4/helper.c
-+++ b/target/sh4/helper.c
-@@ -45,11 +45,6 @@
++    .cpu_exec_interrupt = avr_cpu_exec_interrupt,
+     .do_interrupt = avr_cpu_do_interrupt,
+ #endif /* !CONFIG_USER_ONLY */
+ };
+diff --git a/target/avr/helper.c b/target/avr/helper.c
+index 981c29da453..84e366d94a3 100644
+--- a/target/avr/helper.c
++++ b/target/avr/helper.c
+@@ -25,6 +25,7 @@
+ #include "exec/address-spaces.h"
+ #include "exec/helper-proto.h"
  
- #if defined(CONFIG_USER_ONLY)
- 
--void superh_cpu_do_interrupt(CPUState *cs)
--{
--    cs->exception_index = -1;
--}
--
- int cpu_sh4_is_cached(CPUSH4State *env, target_ulong addr)
++#ifndef CONFIG_USER_ONLY
+ bool avr_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
  {
-     /* For user mode, only U0 area is cacheable. */
-@@ -784,8 +779,6 @@ int cpu_sh4_is_cached(CPUSH4State * env, target_ulong addr)
-     return 0;
- }
+     bool ret = false;
+@@ -91,6 +92,7 @@ void avr_cpu_do_interrupt(CPUState *cs)
  
--#endif
--
- bool superh_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
-     if (interrupt_request & CPU_INTERRUPT_HARD) {
-@@ -803,6 +796,8 @@ bool superh_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-     return false;
+     cs->exception_index = -1;
  }
- 
 +#endif /* !CONFIG_USER_ONLY */
-+
- bool superh_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                          MMUAccessType access_type, int mmu_idx,
-                          bool probe, uintptr_t retaddr)
+ 
+ int avr_cpu_memory_rw_debug(CPUState *cs, vaddr addr, uint8_t *buf,
+                             int len, bool is_write)
 -- 
 2.31.1
 

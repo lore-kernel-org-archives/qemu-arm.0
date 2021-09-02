@@ -1,94 +1,93 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp620743lfb;
-        Thu, 2 Sep 2021 13:20:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+mmnzgznEpH6w70Aq830INDz19ptYz0leMKgKY5RxRSkU09C7Oapdt/jjjXvrbkNCV17A
-X-Received: by 2002:ad4:5bea:: with SMTP id k10mr4927337qvc.23.1630614057558;
-        Thu, 02 Sep 2021 13:20:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630614057; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp621038lfb;
+        Thu, 2 Sep 2021 13:21:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMzYlWpMWDOC4dQN4puWuSu7LigCvI5PksViXvttbc6fzSovAHDg4RshBz8hYV/95LhFlA
+X-Received: by 2002:ac8:1099:: with SMTP id a25mr153788qtj.155.1630614083409;
+        Thu, 02 Sep 2021 13:21:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630614083; cv=none;
         d=google.com; s=arc-20160816;
-        b=yTv3+f8mUYEKduRekmuUKXdOtwHgwLR6yqqZnQVZSbCNyoWsmw2tg0qvOTaszJfISC
-         YboDsHdH2WG3Hn113Q+GcsHBxPD+cMsPLqGqxcWrBjGC3qFrqY3wL6bqp739OoN957fB
-         +4vmeW4BZc/Mi3zX04Wzjhx3z7w9uHSOffDGBb5uKr/yURG0oq33Bn9u5kV54xeg6iUF
-         RZ780TMjxmDB0qJvpR+GFZUbuIuL2m5v+jDjbIqlozR2bh/C2V3A8MquW36kXr12JiEb
-         H7gQzE5fvCSeny8PC8UpX/LJ+mgtA1HLAkAnXcgy86uEiWdutJalPgfW8GCAD+qK0uKC
-         nDkA==
+        b=Yb6K2Hhw+49TBvBMvftbeqdd5DX4qbK25IAbwF2LitwZ+YfreyVlROTPtaSLAfhYfy
+         JTbei5YoBanMWDsGYaIv9bjH+pkLJ2Rz4LFlrC7vI+38+WFMDIs7rzCBlvXdoafvyEYO
+         /gu8gXpW3Ff02jovEiZe3kobALbBy2NtTzyK+8wajeSj4/UPj+E6oBvQZ+xSfB4p0ANd
+         izWXDf0Awr20bPBk63JAVTyA/QAkwBc5oGEu/10ASiW//7UpCPNW4I6XLbdjxIPsg0s4
+         CpbLthbGGKPoBpX3DsBReBd4FFXKYpAfbF36xnluGLBMR/XjTWMzO4XyEOFwZTJdEAfo
+         0AaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=fiqJpbTsxG4Wv0hD7u/eqtoU/AiPtbJu927f5MoVdkM=;
-        b=nkAmVidZlXuinbgbNzA4A5epSrjayb+xDSDgEKtc1sTT3ttMPvzpJgWZYkLbvU4uAS
-         G6BbqRv+xQv7NJRuC/Ihkd9iDeV1R/PvztS0r1baNermI2wzLNu+s22b4KKDpMSRFmmq
-         DIvoxySZgYDg6cd20BAvVZtUjfcfjY4u/LjTSSIpo3oY/Hvq2TN7C/mKUqmFW/xnle7k
-         wb/D7RpfMnDC4+jepJiqXQ080iysBtEPr6B3Wij4lzUXz37zo1Zpcl++BHVi3L3rD2Dr
-         gcJH/VDPRx83gjjLDamQDsfyziHEPRJ7GPlE6YWrlL8gmQnj9SAQmA/hJfWGOm0VlsfB
-         G0dA==
+        bh=vTK0MmD+/MHkLwWYphLIayzbOAO+je6/yf1mMIn0yWU=;
+        b=SXtXzK8ThOBpKFvKCjdipZ+QVoHwquhu/HftbgE7my5TIZbt8xtWURMVZwbDKbZl5X
+         9K3jyJkFhFjQhvFLkdLc6nAX7mNoBpJh8gnHe3eHKgI5OXa+vaw5E//c7VLr+Tff6CIb
+         UYc3pxuV5VwgiOggY7WrVjDaAFYSfgaTlfKVNLWMwxnSvMHFZD7khwdlJaQPovsDZszJ
+         W4LOyyzRUYdChbSzrmc+LAypW47h1zSTCja9diRx9aulEttjSI2iwGLr+PdlQHuNZP1U
+         tFHDNVboxUvwVy5ZcqyiXtRQ3zsNovWMfXU2uzNw/fw18H/I7Ab5VIBgWWA6pOG5EdzF
+         UnHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="GVofx8Z/";
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=sS7edowe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a6si1496772qtj.223.2021.09.02.13.20.57
+        by mx.google.com with ESMTPS id t4si1734810qkd.171.2021.09.02.13.21.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:20:57 -0700 (PDT)
+        Thu, 02 Sep 2021 13:21:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="GVofx8Z/";
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=sS7edowe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34464 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35916 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtCi-0003CL-QY
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:20:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40408)
+	id 1mLtD8-0004Ak-LJ
+	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:21:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtA3-00074w-27
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:18:11 -0400
-Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a]:45943)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtBo-0002be-9N
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:20:00 -0400
+Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932]:41860)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLt9z-0008GM-VC
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:18:09 -0400
-Received: by mail-vs1-xe2a.google.com with SMTP id a21so2605414vsp.12
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:18:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtBl-0001FM-6V
+ for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:19:59 -0400
+Received: by mail-ua1-x932.google.com with SMTP id 75so1578221uav.8
+ for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:19:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fiqJpbTsxG4Wv0hD7u/eqtoU/AiPtbJu927f5MoVdkM=;
- b=GVofx8Z/LaXt6hpwAaaZmFv3SFrayfb8OxcwDDHUYbD7JI4JjoV7/Yq0ApJcuoOTLs
- iQq+x0ruJbOat2QjrxfxADL56cAS4wtyOazaUbWYJ3bUNrZUbONM0mMoQ0zG3lBp9PSo
- 5bmW0p2EVOspHgoSPu7GNEvPipuL/HgIIgIRS+lYfxdmUrUCW7GLhmNWUdmi+F7CpCMd
- X3ClP8QW4j7j1D4Qgw0wlFASXli31x4MycOwBf2oEF4j2hzfE5SjieRcWiuw4KwoB3cq
- utjE1OwwG9dCyXzLczLQMXoK4ngeluvLcSdNHD/XgIpO36YmkLbSIE7fnfRhGDFDPByc
- 0Pcg==
+ :cc; bh=vTK0MmD+/MHkLwWYphLIayzbOAO+je6/yf1mMIn0yWU=;
+ b=sS7edowe5e36nnmyYEvvEnTcK/u80gHu4wKxap9O7yF8HXiNHhz1B8o0gV3MnTjF9F
+ knVndn/383Kf88r2JUTJNYGrHrMmN4eXH0cVxVxhTh1ceT1hHseUrVPdiUgaj2vSQ8S7
+ 00yjmOEx8vRzEoi92uFBx9PRRb83+oGvMLk5v8iFTp/LRSIO+ySodG3BY8mSb3GsHl5e
+ Ndy191FlRRisBqTJmh7WHkNKDt6LzlhgsMCD68Gfesqt/wvWMKrZ2q0zZtDHBA5DgkSb
+ dSUHYJmKTm77BAbNy5/zVH/HNkQYmGEOrUIpKk/kHk0gHtqq8HL9sbNu1AcjVXTS8Jg7
+ OZow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=fiqJpbTsxG4Wv0hD7u/eqtoU/AiPtbJu927f5MoVdkM=;
- b=LeeRHgNmRoMxwrVbtch4H3Tinfw+sbvPFqSZS0Laz/vniu+my/V/ModxVRcgy/fofb
- GN202qG37ibrupo345TPEY0XXorroU1b/blcT8sg9BZCehIEEuTUjl2Qm3PFgzBxEO3U
- 2lQ/Sy7eb0f+tk2hBwDhd2XaRMFfFwHY5jL+9bn74vyaipkIwdu/qM6vUWibbJwnQLRo
- iRRY8iCo6ZSmQVUuaGbhHAQyNKbV30vY6ExFWUGawhsdTxCX0LlmmDAwYDnrE/GcBiWA
- BPh4y+cml4B9MdKja9BmAD2wzY/4sZNOUG73Egs48vnKAgQ9g+CQ7DdljD8QZYhgGJO+
- fGXw==
-X-Gm-Message-State: AOAM533Jvfv8g7BR2Punv1FjA7uOe/38wjfmq9HjG5eG+RMDsjkl5E/4
- R5Gemlwbvm1yfzQXI26KoCiuN89/uSPSD3Hx7NUr+g==
-X-Received: by 2002:a05:6102:5a:: with SMTP id
- k26mr4329246vsp.26.1630613887057; 
- Thu, 02 Sep 2021 13:18:07 -0700 (PDT)
+ bh=vTK0MmD+/MHkLwWYphLIayzbOAO+je6/yf1mMIn0yWU=;
+ b=UbG7ry9KgxFg+auQKleK5Dx3LWUSZ0z2YrzGcOqCdxn2/JDvpUHPh6v3H3SjZweV1s
+ gYDs1oDrMwMKxdsTUn5qmwFFsIovpOULG/YhIGOXwZ0WNSkdzOT/T9KWHF2Ga/4fYYR0
+ Pyz8r4p4TbvqDrhQpXU1s0gbMznLVrjr8eTeMQ1RWub2MsptRH5EFx2mdSKBJPz12Q/C
+ 16a867qrNHtk6yYDiC2y2udhKkEZFN82yCwQhzEuReqNxR1o8RmcWOW2MCnmfCurtwBx
+ hNsJ60TKnzR7FulKDlAGXO7wh/NnxnPBq9Y5s5xy9a5EwJ/q01PQS1BAEDzc54jzDpAz
+ WHVw==
+X-Gm-Message-State: AOAM532i6w6p1nX+K1PUvtj5E0HjMlr1XyTDqFQEOKo84uTiCkdHieIB
+ Y5ilgngxRSG4iIteM1wY1mKLCWWJmraGiMPKEX7wnA==
+X-Received: by 2002:a9f:31c8:: with SMTP id w8mr57561uad.77.1630613996246;
+ Thu, 02 Sep 2021 13:19:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-11-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-11-f4bug@amsat.org>
+ <20210902151715.383678-13-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-13-f4bug@amsat.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:17:56 -0600
-Message-ID: <CANCZdfqgD2yaoweZq=DOTxpxiCUN+hfuLntht01BNwez02_nvQ@mail.gmail.com>
-Subject: Re: [PATCH 10/24] target/hppa: Restrict cpu_exec_interrupt() handler
+Date: Thu, 2 Sep 2021 14:19:45 -0600
+Message-ID: <CANCZdfoJbramtU4tc-KpPKGHp3yer0Y_D=9zzzwDraRVP8Ka6Q@mail.gmail.com>
+Subject: Re: [PATCH 12/24] target/m68k: Restrict cpu_exec_interrupt() handler
  to sysemu
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000008114d405cb08e167"
-Received-SPF: none client-ip=2607:f8b0:4864:20::e2a;
- envelope-from=wlosh@bsdimp.com; helo=mail-vs1-xe2a.google.com
+Content-Type: multipart/alternative; boundary="0000000000000330a405cb08e8a7"
+Received-SPF: none client-ip=2607:f8b0:4864:20::932;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x932.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -123,9 +122,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V4Ua8onj5hEj
+X-TUID: bNIhlUO9MYUV
 
---0000000000008114d405cb08e167
+--0000000000000330a405cb08e8a7
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -137,107 +136,98 @@ wrote:
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  target/hppa/cpu.h        | 4 ++--
->  target/hppa/cpu.c        | 2 +-
->  target/hppa/int_helper.c | 7 ++-----
->  3 files changed, 5 insertions(+), 8 deletions(-)
+>  target/m68k/cpu.h       |  2 ++
+>  target/m68k/cpu.c       |  2 +-
+>  target/m68k/op_helper.c | 16 +++-------------
+>  3 files changed, 6 insertions(+), 14 deletions(-)
 >
 
 Reviewed-by: Warner Losh <imp@bsdimp.com>
 
 
-> diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-> index 748270bfa31..7854675b903 100644
-> --- a/target/hppa/cpu.h
-> +++ b/target/hppa/cpu.h
-> @@ -325,13 +325,13 @@ int cpu_hppa_signal_handler(int host_signum, void
-> *pinfo, void *puc);
->  hwaddr hppa_cpu_get_phys_page_debug(CPUState *cs, vaddr addr);
->  int hppa_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int hppa_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> -void hppa_cpu_do_interrupt(CPUState *cpu);
-> -bool hppa_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void hppa_cpu_dump_state(CPUState *cs, FILE *f, int);
->  bool hppa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->                         MMUAccessType access_type, int mmu_idx,
->                         bool probe, uintptr_t retaddr);
->  #ifndef CONFIG_USER_ONLY
-> +void hppa_cpu_do_interrupt(CPUState *cpu);
-> +bool hppa_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_idx=
-,
->                                int type, hwaddr *pphys, int *pprot);
->  extern const MemoryRegionOps hppa_io_eir_ops;
-> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-> index 2eace4ee124..e8edd189bfc 100644
-> --- a/target/hppa/cpu.c
-> +++ b/target/hppa/cpu.c
-> @@ -144,10 +144,10 @@ static const struct SysemuCPUOps hppa_sysemu_ops =
+
+> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+> index 997d588911c..550eb028b6e 100644
+> --- a/target/m68k/cpu.h
+> +++ b/target/m68k/cpu.h
+> @@ -166,8 +166,10 @@ struct M68kCPU {
+>  };
+>
+>
+> +#ifndef CONFIG_USER_ONLY
+>  void m68k_cpu_do_interrupt(CPUState *cpu);
+>  bool m68k_cpu_exec_interrupt(CPUState *cpu, int int_req);
+> +#endif /* !CONFIG_USER_ONLY */
+>  void m68k_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>  hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>  int m68k_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+> index 72de6e97262..66d22d11895 100644
+> --- a/target/m68k/cpu.c
+> +++ b/target/m68k/cpu.c
+> @@ -515,10 +515,10 @@ static const struct SysemuCPUOps m68k_sysemu_ops =
 =3D {
->  static const struct TCGCPUOps hppa_tcg_ops =3D {
->      .initialize =3D hppa_translate_init,
->      .synchronize_from_tb =3D hppa_cpu_synchronize_from_tb,
-> -    .cpu_exec_interrupt =3D hppa_cpu_exec_interrupt,
->      .tlb_fill =3D hppa_cpu_tlb_fill,
+>
+>  static const struct TCGCPUOps m68k_tcg_ops =3D {
+>      .initialize =3D m68k_tcg_init,
+> -    .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,
+>      .tlb_fill =3D m68k_cpu_tlb_fill,
 >
 >  #ifndef CONFIG_USER_ONLY
-> +    .cpu_exec_interrupt =3D hppa_cpu_exec_interrupt,
->      .do_interrupt =3D hppa_cpu_do_interrupt,
->      .do_unaligned_access =3D hppa_cpu_do_unaligned_access,
+> +    .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,
+>      .do_interrupt =3D m68k_cpu_do_interrupt,
+>      .do_transaction_failed =3D m68k_cpu_transaction_failed,
 >  #endif /* !CONFIG_USER_ONLY */
-> diff --git a/target/hppa/int_helper.c b/target/hppa/int_helper.c
-> index 349495d3610..13073ae2bda 100644
-> --- a/target/hppa/int_helper.c
-> +++ b/target/hppa/int_helper.c
-> @@ -88,7 +88,6 @@ void HELPER(write_eiem)(CPUHPPAState *env, target_ureg
-> val)
->      eval_interrupt(env_archcpu(env));
->      qemu_mutex_unlock_iothread();
->  }
-> -#endif /* !CONFIG_USER_ONLY */
+> diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
+> index d006d1cb3ea..5d624838ae6 100644
+> --- a/target/m68k/op_helper.c
+> +++ b/target/m68k/op_helper.c
+> @@ -24,18 +24,7 @@
+>  #include "semihosting/semihost.h"
+>  #include "tcg/tcg.h"
 >
->  void hppa_cpu_do_interrupt(CPUState *cs)
+> -#if defined(CONFIG_USER_ONLY)
+> -
+> -void m68k_cpu_do_interrupt(CPUState *cs)
+> -{
+> -    cs->exception_index =3D -1;
+> -}
+> -
+> -static inline void do_interrupt_m68k_hardirq(CPUM68KState *env)
+> -{
+> -}
+> -
+> -#else
+> +#if !defined(CONFIG_USER_ONLY)
+>
+>  static void cf_rte(CPUM68KState *env)
 >  {
-> @@ -100,7 +99,6 @@ void hppa_cpu_do_interrupt(CPUState *cs)
->      uint64_t iasq_f =3D env->iasq_f;
->      uint64_t iasq_b =3D env->iasq_b;
->
-> -#ifndef CONFIG_USER_ONLY
->      target_ureg old_psw;
->
->      /* As documented in pa2.0 -- interruption handling.  */
-> @@ -187,7 +185,6 @@ void hppa_cpu_do_interrupt(CPUState *cs)
->      env->iaoq_b =3D env->iaoq_f + 4;
->      env->iasq_f =3D 0;
->      env->iasq_b =3D 0;
-> -#endif
->
->      if (qemu_loglevel_mask(CPU_LOG_INT)) {
->          static const char * const names[] =3D {
-> @@ -248,7 +245,6 @@ void hppa_cpu_do_interrupt(CPUState *cs)
->
->  bool hppa_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->  {
-> -#ifndef CONFIG_USER_ONLY
->      HPPACPU *cpu =3D HPPA_CPU(cs);
->      CPUHPPAState *env =3D &cpu->env;
->
-> @@ -258,6 +254,7 @@ bool hppa_cpu_exec_interrupt(CPUState *cs, int
-> interrupt_request)
->          hppa_cpu_do_interrupt(cs);
->          return true;
+> @@ -516,7 +505,6 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr
+> physaddr, vaddr addr,
+>          cpu_loop_exit(cs);
 >      }
+>  }
 > -#endif
+>
+>  bool m68k_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+>  {
+> @@ -538,6 +526,8 @@ bool m68k_cpu_exec_interrupt(CPUState *cs, int
+> interrupt_request)
 >      return false;
 >  }
-> +
+>
 > +#endif /* !CONFIG_USER_ONLY */
+> +
+>  static void raise_exception_ra(CPUM68KState *env, int tt, uintptr_t radd=
+r)
+>  {
+>      CPUState *cs =3D env_cpu(env);
 > --
 > 2.31.1
 >
 >
 
---0000000000008114d405cb08e167
+--0000000000000330a405cb08e8a7
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -251,115 +241,97 @@ g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0target/hppa/cpu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 4 ++--<br>
-=C2=A0target/hppa/cpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 2 +-<br>
-=C2=A0target/hppa/int_helper.c | 7 ++-----<br>
-=C2=A03 files changed, 5 insertions(+), 8 deletions(-)<br></blockquote><div=
-><br></div><div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsd=
-imp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail-=
-yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2=
-px 0px 0px">=C2=A0<br></div></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h<br>
-index 748270bfa31..7854675b903 100644<br>
---- a/target/hppa/cpu.h<br>
-+++ b/target/hppa/cpu.h<br>
-@@ -325,13 +325,13 @@ int cpu_hppa_signal_handler(int host_signum, void *pi=
-nfo, void *puc);<br>
-=C2=A0hwaddr hppa_cpu_get_phys_page_debug(CPUState *cs, vaddr addr);<br>
-=C2=A0int hppa_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int re=
+=C2=A0target/m68k/cpu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 ++<br>
+=C2=A0target/m68k/cpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 +-<br>
+=C2=A0target/m68k/op_helper.c | 16 +++-------------<br>
+=C2=A03 files changed, 6 insertions(+), 14 deletions(-)<br></blockquote><di=
+v><br></div><div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bs=
+dimp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div><div class=3D"gmail=
+-yj6qo gmail-ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:=
+2px 0px 0px"><br class=3D"gmail-Apple-interchange-newline"></div></div><div=
+>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h<br>
+index 997d588911c..550eb028b6e 100644<br>
+--- a/target/m68k/cpu.h<br>
++++ b/target/m68k/cpu.h<br>
+@@ -166,8 +166,10 @@ struct M68kCPU {<br>
+=C2=A0};<br>
+<br>
+<br>
++#ifndef CONFIG_USER_ONLY<br>
+=C2=A0void m68k_cpu_do_interrupt(CPUState *cpu);<br>
+=C2=A0bool m68k_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
++#endif /* !CONFIG_USER_ONLY */<br>
+=C2=A0void m68k_cpu_dump_state(CPUState *cpu, FILE *f, int flags);<br>
+=C2=A0hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);<br>
+=C2=A0int m68k_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int re=
 g);<br>
-=C2=A0int hppa_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg)=
-;<br>
--void hppa_cpu_do_interrupt(CPUState *cpu);<br>
--bool hppa_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-=C2=A0void hppa_cpu_dump_state(CPUState *cs, FILE *f, int);<br>
-=C2=A0bool hppa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 MMUAccessType access_type, int mmu_idx,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 bool probe, uintptr_t retaddr);<br>
-=C2=A0#ifndef CONFIG_USER_ONLY<br>
-+void hppa_cpu_do_interrupt(CPUState *cpu);<br>
-+bool hppa_cpu_exec_interrupt(CPUState *cpu, int int_req);<br>
-=C2=A0int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_=
-idx,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int type, hwaddr *pphys, int *pprot);=
-<br>
-=C2=A0extern const MemoryRegionOps hppa_io_eir_ops;<br>
-diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c<br>
-index 2eace4ee124..e8edd189bfc 100644<br>
---- a/target/hppa/cpu.c<br>
-+++ b/target/hppa/cpu.c<br>
-@@ -144,10 +144,10 @@ static const struct SysemuCPUOps hppa_sysemu_ops =3D =
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c<br>
+index 72de6e97262..66d22d11895 100644<br>
+--- a/target/m68k/cpu.c<br>
++++ b/target/m68k/cpu.c<br>
+@@ -515,10 +515,10 @@ static const struct SysemuCPUOps m68k_sysemu_ops =3D =
 {<br>
-=C2=A0static const struct TCGCPUOps hppa_tcg_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.initialize =3D hppa_translate_init,<br>
-=C2=A0 =C2=A0 =C2=A0.synchronize_from_tb =3D hppa_cpu_synchronize_from_tb,<=
-br>
--=C2=A0 =C2=A0 .cpu_exec_interrupt =3D hppa_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D hppa_cpu_tlb_fill,<br>
+<br>
+=C2=A0static const struct TCGCPUOps m68k_tcg_ops =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.initialize =3D m68k_tcg_init,<br>
+-=C2=A0 =C2=A0 .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.tlb_fill =3D m68k_cpu_tlb_fill,<br>
 <br>
 =C2=A0#ifndef CONFIG_USER_ONLY<br>
-+=C2=A0 =C2=A0 .cpu_exec_interrupt =3D hppa_cpu_exec_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D hppa_cpu_do_interrupt,<br>
-=C2=A0 =C2=A0 =C2=A0.do_unaligned_access =3D hppa_cpu_do_unaligned_access,<=
-br>
++=C2=A0 =C2=A0 .cpu_exec_interrupt =3D m68k_cpu_exec_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_interrupt =3D m68k_cpu_do_interrupt,<br>
+=C2=A0 =C2=A0 =C2=A0.do_transaction_failed =3D m68k_cpu_transaction_failed,=
+<br>
 =C2=A0#endif /* !CONFIG_USER_ONLY */<br>
-diff --git a/target/hppa/int_helper.c b/target/hppa/int_helper.c<br>
-index 349495d3610..13073ae2bda 100644<br>
---- a/target/hppa/int_helper.c<br>
-+++ b/target/hppa/int_helper.c<br>
-@@ -88,7 +88,6 @@ void HELPER(write_eiem)(CPUHPPAState *env, target_ureg va=
-l)<br>
-=C2=A0 =C2=A0 =C2=A0eval_interrupt(env_archcpu(env));<br>
-=C2=A0 =C2=A0 =C2=A0qemu_mutex_unlock_iothread();<br>
-=C2=A0}<br>
--#endif /* !CONFIG_USER_ONLY */<br>
+diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c<br>
+index d006d1cb3ea..5d624838ae6 100644<br>
+--- a/target/m68k/op_helper.c<br>
++++ b/target/m68k/op_helper.c<br>
+@@ -24,18 +24,7 @@<br>
+=C2=A0#include &quot;semihosting/semihost.h&quot;<br>
+=C2=A0#include &quot;tcg/tcg.h&quot;<br>
 <br>
-=C2=A0void hppa_cpu_do_interrupt(CPUState *cs)<br>
+-#if defined(CONFIG_USER_ONLY)<br>
+-<br>
+-void m68k_cpu_do_interrupt(CPUState *cs)<br>
+-{<br>
+-=C2=A0 =C2=A0 cs-&gt;exception_index =3D -1;<br>
+-}<br>
+-<br>
+-static inline void do_interrupt_m68k_hardirq(CPUM68KState *env)<br>
+-{<br>
+-}<br>
+-<br>
+-#else<br>
++#if !defined(CONFIG_USER_ONLY)<br>
+<br>
+=C2=A0static void cf_rte(CPUM68KState *env)<br>
 =C2=A0{<br>
-@@ -100,7 +99,6 @@ void hppa_cpu_do_interrupt(CPUState *cs)<br>
-=C2=A0 =C2=A0 =C2=A0uint64_t iasq_f =3D env-&gt;iasq_f;<br>
-=C2=A0 =C2=A0 =C2=A0uint64_t iasq_b =3D env-&gt;iasq_b;<br>
-<br>
--#ifndef CONFIG_USER_ONLY<br>
-=C2=A0 =C2=A0 =C2=A0target_ureg old_psw;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0/* As documented in pa2.0 -- interruption handling.=C2=
-=A0 */<br>
-@@ -187,7 +185,6 @@ void hppa_cpu_do_interrupt(CPUState *cs)<br>
-=C2=A0 =C2=A0 =C2=A0env-&gt;iaoq_b =3D env-&gt;iaoq_f + 4;<br>
-=C2=A0 =C2=A0 =C2=A0env-&gt;iasq_f =3D 0;<br>
-=C2=A0 =C2=A0 =C2=A0env-&gt;iasq_b =3D 0;<br>
--#endif<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0if (qemu_loglevel_mask(CPU_LOG_INT)) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0static const char * const names[] =3D {<b=
-r>
-@@ -248,7 +245,6 @@ void hppa_cpu_do_interrupt(CPUState *cs)<br>
-<br>
-=C2=A0bool hppa_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
-=C2=A0{<br>
--#ifndef CONFIG_USER_ONLY<br>
-=C2=A0 =C2=A0 =C2=A0HPPACPU *cpu =3D HPPA_CPU(cs);<br>
-=C2=A0 =C2=A0 =C2=A0CPUHPPAState *env =3D &amp;cpu-&gt;env;<br>
-<br>
-@@ -258,6 +254,7 @@ bool hppa_cpu_exec_interrupt(CPUState *cs, int interrup=
-t_request)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hppa_cpu_do_interrupt(cs);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return true;<br>
+@@ -516,7 +505,6 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr p=
+hysaddr, vaddr addr,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cpu_loop_exit(cs);<br>
 =C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0}<br>
 -#endif<br>
+<br>
+=C2=A0bool m68k_cpu_exec_interrupt(CPUState *cs, int interrupt_request)<br>
+=C2=A0{<br>
+@@ -538,6 +526,8 @@ bool m68k_cpu_exec_interrupt(CPUState *cs, int interrup=
+t_request)<br>
 =C2=A0 =C2=A0 =C2=A0return false;<br>
 =C2=A0}<br>
-+<br>
+<br>
 +#endif /* !CONFIG_USER_ONLY */<br>
++<br>
+=C2=A0static void raise_exception_ra(CPUM68KState *env, int tt, uintptr_t r=
+addr)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0CPUState *cs =3D env_cpu(env);<br>
 -- <br>
 2.31.1<br>
 <br>
 </blockquote></div></div>
 
---0000000000008114d405cb08e167--
+--0000000000000330a405cb08e8a7--

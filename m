@@ -1,80 +1,79 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1511625lfb;
-        Fri, 3 Sep 2021 10:40:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz5c+42B53s+WtVhua3dUqk3wPhbNP3URRoeHMvt6wvcNm1AlTpsGoHwGHR4H/0U8DSOZ0K
-X-Received: by 2002:a05:6402:d6b:: with SMTP id ec43mr127736edb.107.1630690826159;
-        Fri, 03 Sep 2021 10:40:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630690826; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1511695lfb;
+        Fri, 3 Sep 2021 10:40:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4U5RDr2aeUGv7IUY7XDGmWaYGInzLEbaVo0tEV0jr2183JpW7Y1HYz9UTpTEO3o4Gu8/r
+X-Received: by 2002:a17:907:76ee:: with SMTP id kg14mr52461ejc.90.1630690815300;
+        Fri, 03 Sep 2021 10:40:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630690815; cv=none;
         d=google.com; s=arc-20160816;
-        b=eXINODL0XDA0HsR+XNfz0x/71t70z8DGzWoWzN3kRKQCzrVePFTW+YWPJcPAkpl2MV
-         2Ju765bcFRIbKFXLZepK0xuR1vRz79MTj6WxdshSAGs2797Y7trO+SqIMpgSzkAVGGhq
-         usDG5WZ1E4a5ZAck600CxS85v+IOb0K4yZ2tNe5u9NwH1l72pTavmzh0xTk3CPUm8Mx8
-         R71xBeW1T8dvVK7hXecNS2Oj77BYlZv9mxfeLwFPMdlUUUBM8dmRD3RIjNd3F02K+uAL
-         XPwzzpBNtd71qz3H+owHfqGEf8WA8OJXDx90HFjbYzbyR6DRYQdCp5ZUvAHVV6Pnbvyz
-         0LQA==
+        b=E84azQwyPHIfweEdk7oc2FAsoOURbXNeea03jlNhrSG2s3JjWNAjA4JERf1nTeaLIH
+         lUrYbUHFILohezx3FO5u2W2eMGkeh+luXvJ2HOOOZo9VKpma7T0Hehb7KLcqcn8ZEuKv
+         yBM0Ofk8A4LR44mybylV34PKHStbFjfCW0w6Ba+dTCdM7u8zXxO2cqIqjmmCcSG89jlf
+         lTLW4p7+Abuc+hHq9V3HHRGuJLpSbDw335dXbU/Khj42EUmUIk0QuPfOrwLD8KIwjLrS
+         bOj/qiClVxtOA9q73a1OhGPuCVBAZJKOF1i5/C2G65KCZsZsJSgT5E550DfLATjbQ4wo
+         N1ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=XaUg9euKBEDlRFT/nnz+Q21gALG1vnBlLHaDL6QJTcQ=;
-        b=tBK/3dMqQoUiqvKaXc7cDNUs8oMDTI99npnHV/qYs0neGvpUvmEJycKHE4qjcT4GE/
-         9vCX0dH9cZvSJlSVwn+2IRgWovMrUGZUypU0+RZAps45GDTvkWLbdZmj2Z2qvw7hQ/YP
-         JzGwNXiMd5FDoWdb73X8CnIt8qTsXvE6oDq9Q1z2NQZjYvI5IKEDX4qplE2urbAmexT8
-         h5gsL+3Yfm8anmyzu8J9qvzrb8/hoqhIYrjYEajpz6YkI2UkPYM8051uN8OrKY12fvjQ
-         dm9c5Co/0QpPeFYNLfn5p4AduOwe18Z51r/W7VRVdLjZvdwwUqxqJRv9Bfm005OGE5In
-         j+FA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=4NNCT/6mJQHBezCMyj/1zWFUy+TBscSgBk0G568aq7s=;
+        b=cGl26bsYjSLc52ByIDVa4Hc/rDFfIQqmIRCCRLjQJTDCr5orGg5aFclFNlhpwj/Iac
+         9hRFj0VvGZVB2nHMkJY0riZRLkhAxq+sKNEF4mbFjptImf7K9+gOyVR6ib+KP3xxrS0V
+         WZTajBXlxXm9kYwrsgxnqmfvGR4tzXRSE1Q7C4ZVKF6ZodqjRq60/v80crxqWmJNGxzn
+         05pX6ILBUXMLY+vi7SuTqDiQKfQspLNkcZgOjVzcqC5J0hdQfzjXaXdWlBG0IHwvgr/M
+         E2RTK0q9raUnE1vdpyUHhgo0rqSDNvaRYIX/8KaOPDS21RDd1drfy3U5FTRgQgSYbh4A
+         lwjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gq3R2ytB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jVPGTG22;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id nb38si6269973ejc.86.2021.09.03.10.40.25
+        by mx.google.com with ESMTPS id m5si175744edc.1.2021.09.03.10.40.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 10:40:26 -0700 (PDT)
+        Fri, 03 Sep 2021 10:40:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gq3R2ytB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jVPGTG22;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630690825;
+	s=mimecast20190719; t=1630690814;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=XaUg9euKBEDlRFT/nnz+Q21gALG1vnBlLHaDL6QJTcQ=;
-	b=Gq3R2ytBV6PzZKC0shJq5MRfbV6SKgbhHZippGXeTtTJWciR0OyBtL8mEhom+wNQOoBmto
-	PUisijrMwAk20hfAgntBAfT195OZDS0mx3Z9kaivBP3CZj49jOn4kBEWsZjFyU65shZqYE
-	6DHkz4bWQGB0Yn5EdBQGh1fNvZtmT68=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-292-NsF5J5NeM9O-TIScBX1KMQ-1; Fri, 03 Sep 2021 13:40:22 -0400
-X-MC-Unique: NsF5J5NeM9O-TIScBX1KMQ-1
-Received: by mail-wr1-f72.google.com with SMTP id p10-20020adfce0a000000b001572d05c970so1813140wrn.21
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:40:21 -0700 (PDT)
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=4NNCT/6mJQHBezCMyj/1zWFUy+TBscSgBk0G568aq7s=;
+	b=jVPGTG22ltEPDlZtTA5s7Voy7DRCncrbgf0g0FkRvvi72LdThvyncQZWdUEtpctLbL+WtI
+	sSrtJloQrGNrVsNaxCAQZE3F9rqIWfYq91ri5R8fK0jQ6T48J30vb7t7SvtwG29V0ekRsg
+	WePVeqD4r293HfWrc+ZDo04y/ETg9JM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-552-wxx4fR0xMJu2TfqIqFtg1A-1; Fri, 03 Sep 2021 13:40:11 -0400
+X-MC-Unique: wxx4fR0xMJu2TfqIqFtg1A-1
+Received: by mail-wr1-f70.google.com with SMTP id p10-20020adfce0a000000b001572d05c970so1813059wrn.21
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:40:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=XaUg9euKBEDlRFT/nnz+Q21gALG1vnBlLHaDL6QJTcQ=;
-        b=j8MRAmQ/RscoDGjVcOS+rBmhFY5LS3flR3PDLY5bUroQCtjknmfsWf5UcBcaTfVNpO
-         4C1dnZXAwmgZg/BSZ9xzwIifU9g639SMihT41i0fLi/e5wHfT5Up0gp0ke4YCjpS5B3K
-         fefHAhTFpZrWtFPiA9A/TzqgfgUOi5yKp5IqKyFGFeUw50wEQ1OXxO/NQLWnKxzWa+KX
-         vq35GVclKTNM+YYoFa0N+kTYpVOYonXKxaAvwVNdIbSg0j/UIm1O3n00cvXfRuUbdsmz
-         9jUHGjWfZx5zW+/Je+hPGQsQfkK27+qdAB5W5nGAzDMGeVMJ5qz4dP9ePuj4pJqpnSgg
-         h1Xw==
-X-Gm-Message-State: AOAM532MmVR5bTSrqATiUkPGX4lI4McC1gnK4cIjLAuMT5v3YSHBURo5
-	CBKtWBR7VhTPgg6dQqY4wiyjk3R/o39wc1fY5kw0Zc+RrLCXtMrqNaH8T9d3a5XecMlruNLwWEK
-	PfscwouCgkDd2Y0c0
-X-Received: by 2002:a1c:7304:: with SMTP id d4mr1556609wmb.119.1630690820856;
-        Fri, 03 Sep 2021 10:40:20 -0700 (PDT)
-X-Received: by 2002:a1c:7304:: with SMTP id d4mr1556600wmb.119.1630690820684;
-        Fri, 03 Sep 2021 10:40:20 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=/YkcMeWujQMsGibHR8EV4yAq+i22iiMCz7mye6vm8XE=;
+        b=NGySqED+L6QdZUCrh3V3scYePsiw9EULVDKGjZuEOEqJL6k9YoiyR4/4r9eAhoIorE
+         YQjeZpahiQtfnx4CqT4KPgrH8r12OoXlAYxf7nKadOTzn0HT7kKvPgkveFlXo2WS8mrY
+         ritqE7jbZQQQmihxBK40C9lQAQ0pgBi2RYThRqDDjlpIcRUad0jU3gn403iceOKLyZwi
+         1rqqXImQVFokfxQgQYsK4WVmK4o55IdNp8b1Aq9PNVUXLXgfoAnXYinfJKKYd8Rsezru
+         sGX7VUuUWe1Bzj3zJU1aOfONmuywHUuWot3Up7KnkWqY+FuROExlBon9qcW5vzPYSQbh
+         umvw==
+X-Gm-Message-State: AOAM5322j1WrpeGTSIAIsrq7E4PTzNnnhfMQRerLYDlUY3D8zal+Mt8Q
+	dbWiKpvDzrMzEpTTVcRDZcMYYH2cVFenVNpIz4qW2QsPQHwFH3rn/Hebju/FjtReDN4OZLLpEDG
+	fdkae/isV5Viuq7MH
+X-Received: by 2002:a7b:c0c7:: with SMTP id s7mr32489wmh.66.1630690810434;
+        Fri, 03 Sep 2021 10:40:10 -0700 (PDT)
+X-Received: by 2002:a7b:c0c7:: with SMTP id s7mr32465wmh.66.1630690810240;
+        Fri, 03 Sep 2021 10:40:10 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id s12sm5394375wru.41.2021.09.03.10.40.19
+        by smtp.gmail.com with ESMTPSA id u5sm5225206wrr.94.2021.09.03.10.40.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 10:40:20 -0700 (PDT)
+        Fri, 03 Sep 2021 10:40:09 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
@@ -104,93 +103,122 @@ Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
 	Eric Blake <eblake@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v2 02/30] glib-compat: Introduce g_memdup2() wrapper
-Date: Fri,  3 Sep 2021 19:39:40 +0200
-Message-Id: <20210903174008.749126-3-philmd@redhat.com>
+Subject: [PATCH v2 00/30] glib: Replace g_memdup() by g_memdup2()
+Date: Fri,  3 Sep 2021 19:39:38 +0200
+Message-Id: <20210903174008.749126-1-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210903174008.749126-1-philmd@redhat.com>
-References: <20210903174008.749126-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: b9PYv62AjPTW
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 3JR3/doaXFov
 
-When experimenting raising GLIB_VERSION_MIN_REQUIRED to 2.68
-(Fedora 34 provides GLib 2.68.1) we get:
-
-  hw/virtio/virtio-crypto.c:245:24: error: 'g_memdup' is deprecated: Use 'g_memdup2' instead [-Werror,-Wdeprecated-declarations]
-  ...
-
-g_memdup() has been updated by g_memdup2() to fix eventual security
-issues (size argument is 32-bit and could be truncated / wrapping).
-GLib recommends to copy their static inline version of g_memdup2():
-https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
-
-Our glib-compat.h provides a comment explaining how to deal with
-these deprecated declarations (see commit e71e8cc0355
-"glib: enforce the minimum required version and warn about old APIs").
-
-Following this comment suggestion, implement the g_memdup2_qemu()
-wrapper to g_memdup2(), and use the safer equivalent inlined when
-we are using pre-2.68 GLib.
-
-Reported-by: Eric Blake <eblake@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- include/glib-compat.h | 37 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
-
-diff --git a/include/glib-compat.h b/include/glib-compat.h
-index 9e95c888f54..915d0156da0 100644
---- a/include/glib-compat.h
-+++ b/include/glib-compat.h
-@@ -68,6 +68,43 @@
-  * without generating warnings.
-  */
- 
-+/*
-+ * g_memdup2_qemu:
-+ * @mem: (nullable): the memory to copy.
-+ * @byte_size: the number of bytes to copy.
-+ *
-+ * Allocates @byte_size bytes of memory, and copies @byte_size bytes into it
-+ * from @mem. If @mem is %NULL it returns %NULL.
-+ *
-+ * This replaces g_memdup(), which was prone to integer overflows when
-+ * converting the argument from a #gsize to a #guint.
-+ *
-+ * This static inline version is a backport of the new public API from
-+ * GLib 2.68, kept internal to GLib for backport to older stable releases.
-+ * See https://gitlab.gnome.org/GNOME/glib/-/issues/2319.
-+ *
-+ * Returns: (nullable): a pointer to the newly-allocated copy of the memory,
-+ *          or %NULL if @mem is %NULL.
-+ */
-+static inline gpointer g_memdup2_qemu(gconstpointer mem, gsize byte_size)
-+{
-+#if GLIB_CHECK_VERSION(2, 68, 0)
-+    return g_memdup2(mem, byte_size);
-+#else
-+    gpointer new_mem;
-+
-+    if (mem && byte_size != 0) {
-+        new_mem = g_malloc(byte_size);
-+        memcpy(new_mem, mem, byte_size);
-+    } else {
-+        new_mem = NULL;
-+    }
-+
-+    return new_mem;
-+#endif
-+}
-+#define g_memdup2(a) g_memdup2_qemu(a)
-+
- #if defined(G_OS_UNIX)
- /*
-  * Note: The fallback implementation is not MT-safe, and it returns a copy of
--- 
-2.31.1
+Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdu=
+p2-now/5538=0D
+=0D
+  The old API took the size of the memory to duplicate as a guint,=0D
+  whereas most memory functions take memory sizes as a gsize. This=0D
+  made it easy to accidentally pass a gsize to g_memdup(). For large=0D
+  values, that would lead to a silent truncation of the size from 64=0D
+  to 32 bits, and result in a heap area being returned which is=0D
+  significantly smaller than what the caller expects. This can likely=0D
+  be exploited in various modules to cause a heap buffer overflow.=0D
+=0D
+g_memdup() as been deprecated in GLib 2.68. Since QEMU defines=0D
+GLIB_VERSION_MAX_ALLOWED to GLIB_VERSION_2_56, the deprecation=0D
+is not displayed (on GLib >=3D 2.68 such available on Fedora 34).=0D
+However the function is still unsafe, so it is better to avoid=0D
+its use.=0D
+=0D
+This series provides the safely equivalent g_memdup2() wrapper,=0D
+and replace all g_memdup() calls by it.=0D
+=0D
+The previous link recommend to audit the call sites. Most of the=0D
+calls use byte_size=3Dsizeof(STRUCT), and no STRUCT appears to be=0D
+> 4GiB.  Few calls use unsigned/size_t/uint16_t. Where code is=0D
+doing multiplication, patches are sent as RFC. In particular:=0D
+    hw/net/virtio-net.c=0D
+    hw/virtio/virtio-crypto.c=0D
+=0D
+Since v1:=0D
+- Added missing g_memdup2 -> g_memdup2_qemu compat definition (danpb)=0D
+- Do not call g_memdup2_qemu() but directly g_memdup2() (danpb)=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (30):=0D
+  hw/hyperv/vmbus: Remove unused vmbus_load/save_req()=0D
+  glib-compat: Introduce g_memdup2() wrapper=0D
+  qapi: Replace g_memdup() by g_memdup2()=0D
+  accel/tcg: Replace g_memdup() by g_memdup2()=0D
+  block/qcow2-bitmap: Replace g_memdup() by g_memdup2()=0D
+  softmmu: Replace g_memdup() by g_memdup2()=0D
+  hw/9pfs: Replace g_memdup() by g_memdup2()=0D
+  hw/acpi: Avoid truncating acpi_data_len() to 32-bit=0D
+  hw/acpi: Replace g_memdup() by g_memdup2()=0D
+  hw/core/machine: Replace g_memdup() by g_memdup2()=0D
+  hw/hppa/machine: Replace g_memdup() by g_memdup2()=0D
+  hw/i386/multiboot: Replace g_memdup() by g_memdup2()=0D
+  hw/net/eepro100: Replace g_memdup() by g_memdup2()=0D
+  hw/nvram/fw_cfg: Replace g_memdup() by g_memdup2()=0D
+  hw/scsi/mptsas: Replace g_memdup() by g_memdup2()=0D
+  hw/ppc/spapr_pci: Replace g_memdup() by g_memdup2()=0D
+  hw/rdma: Replace g_memdup() by g_memdup2()=0D
+  hw/vfio/pci: Replace g_memdup() by g_memdup2()=0D
+  RFC hw/virtio: Replace g_memdup() by g_memdup2()=0D
+  net/colo: Replace g_memdup() by g_memdup2()=0D
+  RFC ui/clipboard: Replace g_memdup() by g_memdup2()=0D
+  RFC linux-user: Replace g_memdup() by g_memdup2()=0D
+  tests/unit: Replace g_memdup() by g_memdup2()=0D
+  tests/qtest: Replace g_memdup() by g_memdup2()=0D
+  target/arm: Replace g_memdup() by g_memdup2()=0D
+  target/ppc: Replace g_memdup() by g_memdup2()=0D
+  contrib: Replace g_memdup() by g_memdup2()=0D
+  checkpatch: Do not allow deprecated g_memdup()=0D
+  f=0D
+  test=0D
+=0D
+ include/glib-compat.h       | 41 ++++++++++++++++++++++++--=0D
+ include/hw/hyperv/vmbus.h   |  3 --=0D
+ accel/tcg/cputlb.c          |  8 ++---=0D
+ block/qcow2-bitmap.c        |  2 +-=0D
+ contrib/plugins/lockstep.c  |  2 +-=0D
+ contrib/rdmacm-mux/main.c   | 10 +++----=0D
+ hw/9pfs/9p-synth.c          |  2 +-=0D
+ hw/9pfs/9p.c                |  2 +-=0D
+ hw/acpi/core.c              |  3 +-=0D
+ hw/arm/virt-acpi-build.c    |  2 +-=0D
+ hw/core/machine.c           |  4 +--=0D
+ hw/hppa/machine.c           |  8 ++---=0D
+ hw/hyperv/vmbus.c           | 59 -------------------------------------=0D
+ hw/i386/acpi-build.c        |  6 ++--=0D
+ hw/i386/multiboot.c         |  2 +-=0D
+ hw/net/eepro100.c           |  2 +-=0D
+ hw/net/virtio-net.c         |  3 +-=0D
+ hw/nvram/fw_cfg.c           |  9 +++---=0D
+ hw/ppc/spapr_pci.c          |  7 ++---=0D
+ hw/rdma/rdma_utils.c        |  2 +-=0D
+ hw/scsi/mptsas.c            |  5 ++--=0D
+ hw/vfio/pci.c               |  2 +-=0D
+ hw/virtio/virtio-crypto.c   |  6 ++--=0D
+ linux-user/syscall.c        |  2 +-=0D
+ linux-user/uaccess.c        |  2 +-=0D
+ net/colo.c                  |  4 +--=0D
+ qapi/qapi-clone-visitor.c   | 16 +++++-----=0D
+ qapi/qapi-visit-core.c      |  6 ++--=0D
+ softmmu/memory.c            |  2 +-=0D
+ softmmu/vl.c                |  2 +-=0D
+ target/arm/helper.c         |  6 ++--=0D
+ target/ppc/mmu-hash64.c     |  2 +-=0D
+ tests/qtest/libqos/ahci.c   |  6 ++--=0D
+ tests/qtest/libqos/qgraph.c |  2 +-=0D
+ tests/unit/ptimer-test.c    | 22 +++++++-------=0D
+ tests/unit/test-iov.c       | 26 ++++++++--------=0D
+ ui/clipboard.c              |  2 +-=0D
+ scripts/checkpatch.pl       |  5 ++++=0D
+ 38 files changed, 140 insertions(+), 155 deletions(-)=0D
+=0D
+--=20=0D
+2.31.1=0D
+=0D

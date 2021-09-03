@@ -1,303 +1,235 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1128986lfb;
-        Fri, 3 Sep 2021 03:05:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwF2Hr6Nac9xRpvqiFpLOpX320j2oDJDMtdBWGtdzuXr7QcZulTS2gfNNJy1VZfrNcxYBfZ
-X-Received: by 2002:a5d:61c1:: with SMTP id q1mr3096345wrv.87.1630663540076;
-        Fri, 03 Sep 2021 03:05:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630663540; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1173384lfb;
+        Fri, 3 Sep 2021 04:07:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNiwDaURahe+uXEcu0rSdJhsumrWNqgANyJHtTRnsrkdk9ZrfTbVXYkVvq6Lc4razm9zld
+X-Received: by 2002:a17:906:d0cd:: with SMTP id bq13mr3635202ejb.66.1630667231658;
+        Fri, 03 Sep 2021 04:07:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630667231; cv=none;
         d=google.com; s=arc-20160816;
-        b=MC6PTvd6ktvJ5uV9GDgP5bZv0PuFCtlThQCL1IY0tRQ6d9Nb/ziCGHf5Aq/vkayYBg
-         n2EdEtsQWTAFJcbipzBHGxMCau9cnquTKpOmnjh8VHbdgB/HtnTihKEyKDZtUTVzy7X/
-         wd3VVzQCo9Opq3xn3xrGdNTYfbK/pOTsIun8Pm/tLRNcXKQ0YUlSyfMjogi+Cym/SGmk
-         1KoYEk/7s6c29aiw+u4a5v9IDrmwhDREo8gdLUT3//nRtJeF7aPT6MXsJdWcdB4CQjbW
-         TuU+MXB9tLEG6MKnoklQvBQhS/ExQrXxfQmE+su+FwZfx1fd9QRBbQAaYjwt8PDQaJKd
-         jCNw==
+        b=jkN87bN2LTdjtfKCj64Vl2uixGSC7n4f2OeQrgDHQkHDJDSKrq+1usqDtHWmgZ381b
+         hxS8F3jLaRN1WDt09TSJRXCufXHun17KWxdrawEbRhJ5k2QpWz8BCoSmKBhqmZBQLPx8
+         ykj65jDZL8y4Ouh3V5OheYB+CieQMcxchxVc3xvtulVnZJmr+cE+0viXniO3mJQWNSeF
+         V08nGOAj9jRCP27RNOrlH3wrJABtSzDsXMJUwo7sXMwGC1JlRQ4u7ZIOkKptKMR4nd0Z
+         y9iAnxvPgCp4dT6aR5gQf5eSMHG3fPx6MrNIxhU2ujsjxdWeA6rSFLYl/pFY+KLM/GX5
+         LBUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=ebKoD3HRzBM0nTwaHMQYfmuqWb+iY7ztmDRaJ+JG37w=;
-        b=STp0Trf+L0+lqKXt78Cugxp9i/+J4+ssLHFjyhw1ulSbnxFVcWM1KCr+xX8DcadpS4
-         sD9pwJTmTcuYc06dzAuKkFtqdEeMZ39E5S93rzl6ScUIxgFdSh66r24ciBtPKC9ZUAmi
-         l3i5HKsavOfwf5A4qGlNZc6XfSHu/i+RNbwC0mO7EOm5hvseyoITArvP3ZCR6UsCylF7
-         Xv01l1Y0yZhIBzChYpXMdTCh7986ZEiBuTPTxGpPoWe74mCDRNhtCJTLxxY9Oo+H2JkS
-         3nmb8mhz3sVWJRREzWSMG64QI3VKtzMTQmZpV/6cgzJO8G7NHI43R4Jf+dQ15vVugWDF
-         snFw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=PF/xnGXQTIoJHa57WKQQPyvoyaxxjuKOqyDKhhHUMA0=;
+        b=c+hIr+WJeuxBvzZmz7T8htoi46Tjvu7opSYza4YIkkdwJkSQDsG3W9LC2FXCh8rBKg
+         3jwcnzZbh3PmtvSX9wih6dATcH4bz7i/jBGiZ0bIKjP36Yym6PRx41a7A+WInWtL9/KU
+         Fahfo1kJhLgXe0ACZYMnv/DVDXOBg9uxFPOkfJcaPtEuaoJHLBjzskYWRR87p/4Unu/2
+         JfJU+uiuqXMcZJjaa/ysBtj7HIoyRKqoPnCj+1/FbmYZRtl3EvZqt51joWqq68jSyJ1U
+         8UkQ1aAmmvZANX+849ULLLEiiKZsSiPI6eM6eI0aGP4fti28rsKYABwGuTt8EC3mASsi
+         RAEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5si29094wrr.591.2021.09.03.03.05.39
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FpW/ijNI";
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id j9si4808924ejo.629.2021.09.03.04.07.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 03:05:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 03 Sep 2021 04:07:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44568 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mM64p-0007ff-4k
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 06:05:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55536)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mM64c-0007eq-V2; Fri, 03 Sep 2021 06:05:27 -0400
-Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:51957
- helo=smtpout1.3005.mail-out.ovh.net)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mM64Y-0006v9-UI; Fri, 03 Sep 2021 06:05:26 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.12])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 3B81F13B14A;
- Fri,  3 Sep 2021 10:05:19 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 12:05:18 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006b11aba30-37c1-4464-9246-a4cf447f7d89,
- 15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH v2 1/1] hw/arm/aspeed: Add Fuji machine type
-To: <pdel@fb.com>
-References: <20210903082027.704397-1-pdel@fb.com>
- <20210903082027.704397-2-pdel@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <a1a6e3e2-c9d1-07f4-32b2-b0be58037b9d@kaod.org>
-Date: Fri, 3 Sep 2021 12:05:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FpW/ijNI";
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1630667230;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=PF/xnGXQTIoJHa57WKQQPyvoyaxxjuKOqyDKhhHUMA0=;
+	b=FpW/ijNI6tUldckr87ErXE4L5qqIZJERKh+EIaZGxkJNjWUvDGiGi+lOAxbj49zdO9KfCy
+	j7XJ2DJND1beIG+Dn71R/EEhbpRbMLOmgO3MPu0jpnUbmhvdWMOEaxrth5ewHDHDzskqa3
+	pmakn75fFxtoTm5xn79l3DA2iQ4cQEo=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-203-OHzAAA2mP6as9bv1_KADRg-1; Fri, 03 Sep 2021 07:07:07 -0400
+X-MC-Unique: OHzAAA2mP6as9bv1_KADRg-1
+Received: by mail-wm1-f71.google.com with SMTP id m16-20020a7bca50000000b002ee5287d4bfso1832106wml.7
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:07:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=hT4rpMU7gMMiB6PN8r96+Od1up6S2/wmxgTRnbJrmUA=;
+        b=kS6FNW9imh/6LAaJl+b3Nm5lKI/IC/gidrhXk4Ew9d79s8qlpaexWpH3gyxWoaHmXK
+         G79fjXX/u2p8jX3D9b9yVNxGCgfd4pldB1z8t92y3yKX8git9+m9XG6vFVvMwyQelTdY
+         m1u4HfXOtpZyWrds/vz8qmCMBlSpul27ZQVFP7XkYar5njrGFRf6mkgt4ZMjGWaHdb7+
+         Aot+cHu/AjL1096tZ/AczKsuoMcu0O5NYp7ET+a5jKMoT1OlBRYybLDX0t0FQ3ZaR632
+         aN8DMTPszYTYxBdgjdiVBxPM20P/meQ/RXnoND0nYcRJn9jaE6+vfMyo+VK+XJ1oLiy8
+         j6fA==
+X-Gm-Message-State: AOAM531OrGm0ZWcX5nRKCYaq3h5W5rESPOIZlUuN8dU7oxunwHsTaKr9
+	Kenk8N64QyzV8Cx0pgJLp4JsSS9eT6YmFYKmmxOH/TEpbDY8BbPUxdJ914hq9YhXDJNqewiAurU
+	Jk7MPIWItCIz3qPhI
+X-Received: by 2002:a05:600c:5102:: with SMTP id o2mr2726510wms.104.1630667226536;
+        Fri, 03 Sep 2021 04:07:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:5102:: with SMTP id o2mr2726472wms.104.1630667226343;
+        Fri, 03 Sep 2021 04:07:06 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
+        by smtp.gmail.com with ESMTPSA id r10sm4631717wrc.85.2021.09.03.04.07.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Sep 2021 04:07:05 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Hanna Reitz <hreitz@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Michael Roth <michael.roth@amd.com>,
+	Zhang Chen <chen.zhang@intel.com>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	John Snow <jsnow@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Li Zhijian <lizhijian@cn.fujitsu.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	qemu-block@nongnu.org,
+	Helge Deller <deller@gmx.de>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Peter Xu <peterx@redhat.com>,
+	"Gonglei (Arei)" <arei.gonglei@huawei.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Fam Zheng <fam@euphon.net>,
+	Jason Wang <jasowang@redhat.com>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+	Christian Schoenebeck <qemu_oss@crudebyte.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Yuval Shaia <yuval.shaia.ml@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	Thomas Huth <thuth@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Greg Kurz <groug@kaod.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	qemu-ppc@nongnu.org,
+	David Hildenbrand <david@redhat.com>
+Subject: [PATCH 00/28] glib: Replace g_memdup() by g_memdup2_qemu()
+Date: Fri,  3 Sep 2021 13:06:34 +0200
+Message-Id: <20210903110702.588291-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <20210903082027.704397-2-pdel@fb.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: c599e954-9b10-4959-ae84-41d69ec978ac
-X-Ovh-Tracer-Id: 17536735475283954537
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgvdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdehgefhvdehtdeuleetgedvfeeukedtfeeihfffffeiuddutdduhffgvedtnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphguvghlsehfsgdrtghomh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.3005.mail-out.ovh.net
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.225,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, patrick@stwcx.xyz, qemu-arm@nongnu.org, joel@jms.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6hK0RhTCP2lA
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 8S2QqdeFjYvU
 
-On 9/3/21 10:20 AM, pdel@fb.com wrote:
-> From: Peter Delevoryas <pdel@fb.com>
-> 
-> This adds a new machine type "fuji-bmc" based on the following device tree:
-> 
-> https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
-> 
-> Most of the i2c devices are not there, they're added here:
-> 
-> https://github.com/facebook/openbmc/blob/helium/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
-> 
-> I tested this by building a Fuji image from Facebook's OpenBMC repo,
-> booting, and ssh'ing from host-to-guest.
-> 
-> git clone https://github.com/facebook/openbmc
-> cd openbmc
-> ./sync_yocto.sh
-> source openbmc-init-build-env fuji build-fuji
-> bitbake fuji-image
-> dd if=/dev/zero of=/tmp/fuji.mtd bs=1M count=128
-> dd if=./tmp/deploy/images/fuji/flash-fuji of=/tmp/fuji.mtd \
->     bs=1k conv=notrunc
-> 
-> git clone --branch aspeed-next https://github.com/peterdelevoryas/qemu
-> cd qemu
-> ./configure --target-list=arm-softmmu --disable-vnc
-> make -j $(nproc)
-> ./build/arm-softmmu/qemu-system-arm \
->     -machine fuji-bmc \
->     -drive file=/tmp/fuji.mtd,format=raw,if=mtd \
->     -serial stdio \
->     -nic user,hostfwd=::2222-:22
-> sshpass -p 0penBmc ssh root@localhost -p 2222
-> 
-> Signed-off-by: Peter Delevoryas <pdel@fb.com>
-
-Looks good.
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-> ---
->  hw/arm/aspeed.c | 112 ++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 112 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 7a9459340c..cc2d721ac7 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -159,6 +159,10 @@ struct AspeedMachineState {
->  #define RAINIER_BMC_HW_STRAP1 0x00000000
->  #define RAINIER_BMC_HW_STRAP2 0x00000000
->  
-> +/* Fuji hardware value */
-> +#define FUJI_BMC_HW_STRAP1    0x00000000
-> +#define FUJI_BMC_HW_STRAP2    0x00000000
-> +
->  /*
->   * The max ram region is for firmwares that scan the address space
->   * with load/store to guess how much RAM the SoC has.
-> @@ -772,6 +776,90 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->      aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
->  }
->  
-> +static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr, I2CBus **channels) {
-> +    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
-> +    for (int i = 0; i < 8; i++) {
-> +        channels[i] = pca954x_i2c_get_bus(mux, i);
-> +    }
-> +}
-> +
-> +#define TYPE_LM75 TYPE_TMP105
-> +#define TYPE_TMP75 TYPE_TMP105
-> +#define TYPE_TMP422 "tmp422"
-> +
-> +static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc = &bmc->soc;
-> +    I2CBus *i2c[144] = {};
-> +
-> +    for (int i = 0; i < 16; i++) {
-> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-> +    }
-> +    I2CBus *i2c180 = i2c[2];
-> +    I2CBus *i2c480 = i2c[8];
-> +    I2CBus *i2c600 = i2c[11];
-> +
-> +    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
-> +    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
-> +    // NOTE: The device tree skips [32, 40) in the alias numbering, so we do
-> +    // the same here.
-> +    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
-> +    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
-> +    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
-> +    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
-> +    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
-> +    for (int i = 0; i < 8; i++) {
-> +        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
-> +    }
-> +
-> +    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
-> +    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
-> +
-> +    aspeed_eeprom_init(i2c[19], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[20], 0x50, 2 * KiB);
-> +    aspeed_eeprom_init(i2c[22], 0x52, 2 * KiB);
-> +
-> +    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
-> +    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
-> +    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
-> +    i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
-> +
-> +    aspeed_eeprom_init(i2c[8], 0x51, 64 * KiB);
-> +    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
-> +
-> +    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
-> +    aspeed_eeprom_init(i2c[50], 0x52, 64 * KiB);
-> +    i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
-> +    i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
-> +
-> +    i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
-> +    i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
-> +
-> +    aspeed_eeprom_init(i2c[65], 0x53, 64 * KiB);
-> +    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
-> +    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
-> +    aspeed_eeprom_init(i2c[68], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[69], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[70], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[71], 0x52, 64 * KiB);
-> +
-> +    aspeed_eeprom_init(i2c[73], 0x53, 64 * KiB);
-> +    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
-> +    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
-> +    aspeed_eeprom_init(i2c[76], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[77], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[78], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[79], 0x52, 64 * KiB);
-> +    aspeed_eeprom_init(i2c[28], 0x50, 2 * KiB);
-> +
-> +    for (int i = 0; i < 8; i++) {
-> +        aspeed_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
-> +        i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
-> +        i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
-> +        i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
-> +    }
-> +}
-> +
->  static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
->  {
->      return ASPEED_MACHINE(obj)->mmio_exec;
-> @@ -1070,6 +1158,26 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
->          aspeed_soc_num_cpus(amc->soc_name);
->  };
->  
-> +static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc = "Facebook Fuji BMC (Cortex-A7)";
-> +    amc->soc_name = "ast2600-a3";
-> +    amc->hw_strap1 = FUJI_BMC_HW_STRAP1;
-> +    amc->hw_strap2 = FUJI_BMC_HW_STRAP2;
-> +    amc->fmc_model = "mx66l1g45g";
-> +    amc->spi_model = "mx66l1g45g";
-> +    amc->num_cs = 2;
-> +    amc->macs_mask = ASPEED_MAC3_ON;
-> +    amc->i2c_init = fuji_bmc_i2c_init;
-> +    amc->uart_default = ASPEED_DEV_UART1;
-> +    mc->default_ram_size = 2 * GiB;
-> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-> +        aspeed_soc_num_cpus(amc->soc_name);
-> +};
-> +
->  static const TypeInfo aspeed_machine_types[] = {
->      {
->          .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-> @@ -1119,6 +1227,10 @@ static const TypeInfo aspeed_machine_types[] = {
->          .name          = MACHINE_TYPE_NAME("rainier-bmc"),
->          .parent        = TYPE_ASPEED_MACHINE,
->          .class_init    = aspeed_machine_rainier_class_init,
-> +    }, {
-> +        .name          = MACHINE_TYPE_NAME("fuji-bmc"),
-> +        .parent        = TYPE_ASPEED_MACHINE,
-> +        .class_init    = aspeed_machine_fuji_class_init,
->      }, {
->          .name          = TYPE_ASPEED_MACHINE,
->          .parent        = TYPE_MACHINE,
-> 
-
+Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdu=
+p2-now/5538=0D
+=0D
+  The old API took the size of the memory to duplicate as a guint,=0D
+  whereas most memory functions take memory sizes as a gsize. This=0D
+  made it easy to accidentally pass a gsize to g_memdup(). For large=0D
+  values, that would lead to a silent truncation of the size from 64=0D
+  to 32 bits, and result in a heap area being returned which is=0D
+  significantly smaller than what the caller expects. This can likely=0D
+  be exploited in various modules to cause a heap buffer overflow.=0D
+=0D
+g_memdup() as been deprecated in GLib 2.68. Since QEMU defines=0D
+GLIB_VERSION_MAX_ALLOWED to GLIB_VERSION_2_56, the deprecation=0D
+is not displayed (on GLib >=3D 2.68 such available on Fedora 34).=0D
+However the function is still unsafe, so it is better to avoid=0D
+its use.=0D
+=0D
+This series provides the safely equivalent g_memdup2_qemu()=0D
+wrapper, and replace all g_memdup() calls by it.=0D
+=0D
+The previous link recommend to audit the call sites. Most of the=0D
+calls use byte_size=3Dsizeof(STRUCT), and no STRUCT appears to be=0D
+> 4GiB.  Few calls use unsigned/size_t/uint16_t. Where code is=0D
+doing multiplication, patches are sent as RFC. In particular:=0D
+    hw/net/virtio-net.c=0D
+    hw/virtio/virtio-crypto.c=0D
+=0D
+Please review,=0D
+=0D
+Phil.=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (28):=0D
+  hw/hyperv/vmbus: Remove unused vmbus_load/save_req()=0D
+  glib-compat: Introduce g_memdup2() wrapper=0D
+  qapi: Replace g_memdup() by g_memdup2_qemu()=0D
+  accel/tcg: Replace g_memdup() by g_memdup2_qemu()=0D
+  block/qcow2-bitmap: Replace g_memdup() by g_memdup2_qemu()=0D
+  softmmu: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/9pfs: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/acpi: Avoid truncating acpi_data_len() to 32-bit=0D
+  hw/acpi: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/core/machine: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/hppa/machine: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/i386/multiboot: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/net/eepro100: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/nvram/fw_cfg: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/scsi/mptsas: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/ppc/spapr_pci: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/rdma: Replace g_memdup() by g_memdup2_qemu()=0D
+  hw/vfio/pci: Replace g_memdup() by g_memdup2_qemu()=0D
+  RFC hw/virtio: Replace g_memdup() by g_memdup2_qemu()=0D
+  net/colo: Replace g_memdup() by g_memdup2_qemu()=0D
+  RFC ui/clipboard: Replace g_memdup() by g_memdup2_qemu()=0D
+  RFC linux-user: Replace g_memdup() by g_memdup2_qemu()=0D
+  tests/unit: Replace g_memdup() by g_memdup2_qemu()=0D
+  tests/qtest: Replace g_memdup() by g_memdup2_qemu()=0D
+  target/arm: Replace g_memdup() by g_memdup2_qemu()=0D
+  target/ppc: Replace g_memdup() by g_memdup2_qemu()=0D
+  contrib: Replace g_memdup() by g_memdup2_qemu()=0D
+  checkpatch: Do not allow deprecated g_memdup()=0D
+=0D
+ include/glib-compat.h       | 36 ++++++++++++++++++++++=0D
+ include/hw/hyperv/vmbus.h   |  3 --=0D
+ accel/tcg/cputlb.c          |  8 ++---=0D
+ block/qcow2-bitmap.c        |  2 +-=0D
+ contrib/plugins/lockstep.c  |  2 +-=0D
+ contrib/rdmacm-mux/main.c   | 10 +++----=0D
+ hw/9pfs/9p-synth.c          |  2 +-=0D
+ hw/9pfs/9p.c                |  2 +-=0D
+ hw/acpi/core.c              |  3 +-=0D
+ hw/arm/virt-acpi-build.c    |  2 +-=0D
+ hw/core/machine.c           |  4 +--=0D
+ hw/hppa/machine.c           |  8 ++---=0D
+ hw/hyperv/vmbus.c           | 59 -------------------------------------=0D
+ hw/i386/acpi-build.c        |  6 ++--=0D
+ hw/i386/multiboot.c         |  2 +-=0D
+ hw/net/eepro100.c           |  2 +-=0D
+ hw/net/virtio-net.c         |  3 +-=0D
+ hw/nvram/fw_cfg.c           |  9 +++---=0D
+ hw/ppc/spapr_pci.c          |  8 ++---=0D
+ hw/rdma/rdma_utils.c        |  2 +-=0D
+ hw/scsi/mptsas.c            |  5 ++--=0D
+ hw/vfio/pci.c               |  2 +-=0D
+ hw/virtio/virtio-crypto.c   |  7 +++--=0D
+ linux-user/syscall.c        |  2 +-=0D
+ linux-user/uaccess.c        |  2 +-=0D
+ net/colo.c                  |  4 +--=0D
+ qapi/qapi-clone-visitor.c   | 16 +++++-----=0D
+ qapi/qapi-visit-core.c      |  6 ++--=0D
+ softmmu/memory.c            |  2 +-=0D
+ softmmu/vl.c                |  2 +-=0D
+ target/arm/helper.c         |  7 +++--=0D
+ target/ppc/mmu-hash64.c     |  3 +-=0D
+ tests/qtest/libqos/ahci.c   |  6 ++--=0D
+ tests/qtest/libqos/qgraph.c |  2 +-=0D
+ tests/unit/ptimer-test.c    | 22 +++++++-------=0D
+ tests/unit/test-iov.c       | 26 ++++++++--------=0D
+ ui/clipboard.c              |  2 +-=0D
+ scripts/checkpatch.pl       |  5 ++++=0D
+ 38 files changed, 141 insertions(+), 153 deletions(-)=0D
+=0D
+--=20=0D
+2.31.1=0D
+=0D

@@ -1,108 +1,102 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1357927lfb;
-        Fri, 3 Sep 2021 07:40:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzdMjsuXyY+14kIROuzGoNsr+zpzh54qfkIAFrqKsiqAqtGAasusiZBpUOhNMCvsIxmg+Ak
-X-Received: by 2002:a6b:f714:: with SMTP id k20mr3324301iog.148.1630680002791;
-        Fri, 03 Sep 2021 07:40:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630680002; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1367610lfb;
+        Fri, 3 Sep 2021 07:52:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxTWB1yKtSNZ5usbNyvarhdQzjaUBqghpvd+a1o3E8waF3X9QUYiKiSinT+RjDfYS5my2yM
+X-Received: by 2002:a92:cb52:: with SMTP id f18mr2965201ilq.120.1630680735658;
+        Fri, 03 Sep 2021 07:52:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630680735; cv=none;
         d=google.com; s=arc-20160816;
-        b=JCdrHIqkJ6/UW46kWHZ8BQGuQvsBtYzDF8IIJ+LFlUefujzHR9A3eUcQDzTurkbdul
-         v/VfqtnKB7ctTNJ6FgpyPTkDki2IWelBg8M+uVmWikNJOLld6IEvPTpHCuQ2bwemLqpQ
-         3+zFSRcGVivYeTOsvRR7kAiggIcQgvVqVxEoihcod9pkvs0Jp8RxnS1MNH229n9cvai1
-         hpCBJPRFthqGIwl/80WcycKZd4japBGVsiD1c6/gQVzSkNQBYKxOviKsUs8iKYvVz5TB
-         QU94hqgJ4cmPJRNpnVrgkqgJ8YMfqdzhmCdioNqAbE5yODI7RNPDobnZBYfu+IaeNYwU
-         TzUA==
+        b=WUoa4RJkmcac5ixxOLFdPJG7BbIEyBpTKPGe8Vx70xtlm5erkQKHQQ2fe1TNqoAMDC
+         rvCUvjDem+qSXW7mi6WMa9wtASQyCPrRDAwB87fZPKU0R7hGM+nYhrWo8b/GEktMArkq
+         1KE8PAC/s9luPTZqp1PurmC3GRPADfLDAnNJOPMl4+dgjx48/piSB86PXRv6KWHlbcT7
+         nD5qtYApiOX67eLVTXnT9Drti9WWqnRA4FpqoULYeyd6zBIgzY0SjKZiViHWo9fL+e2a
+         WwGoTyilEtlVx0cIHhSeAHZL63K1b6df6fmf0ojKAsubkROEy4JzBXEFuSAsog/2ASAi
+         ds4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=ML4iX6CFCZNHlVUqfCS6XVSF7GyOD2bEAeWn+nVwWZ4=;
-        b=NPnwXRXQywkcG5oR8ZZElOjDpK9GjNTQOfb3vCFBd9PSs7GsDqu7AbVHuMuwXkFRXZ
-         AIJNg+XphrY//jwXk4eRbOZKoNV7jufIwKHX5Mz/myJTKpDU54mjt4LtgG7S0NLGtMIE
-         HlOy0DTswmVMlVRvh6sDTd/RAM0/eL5LHZU2fOJKAtm9sB47P/VZcMVfyEn0EgEp37Tw
-         Umew8lZ0uYw+Dx6ITUW5OzBuGICm0qLals7lFLV1X8CWevbhdOqL+BNFpIn9a7deTqFu
-         Fcb/bHayZ7B0F3TKq+obFnENefCldV+x6tvqn4D2i9teSb2T7XfwYbAQFIsGvAkqFMua
-         xdsg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=5roshyboZ+kdsi0TGTdaUsmAx+q/9fSdGUMKEh7BkIM=;
+        b=k+gUlBUtfOMDfRtHIhv9iZ05UXbWHd153S4WlIkhTEK6YtTsJhV2lrvPFO87MdpD+6
+         3B0Ik91WHAsY8lwUgf3wd90XQDJJpf67oPqa+Areveh2j1zSswblAR7ch8pza1WFF+PS
+         2+MS/lHdbwaoEDHXntngdO/wv2vl0jvhDqNflpYC4U5xmCZsVHd26sN0kn2sCb/tJwRM
+         CMO1YpSvp0jw9sbXT1xmCVapsoIALo2CuwFAZqiEUujtiyVe4c3jdLQNFCZQpYMDw4DL
+         qlruhCZEdDD9q0NL2mzfkaEvOHrLO0U8FBv4YMjI4DYtAnE4xpUVw4TllNdEup9hBJ3j
+         arnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Jp3N57nQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JHhKAcmY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e35si4938467jaa.106.2021.09.03.07.40.02
+        by mx.google.com with ESMTPS id a5si5721215ioo.37.2021.09.03.07.52.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 07:40:02 -0700 (PDT)
+        Fri, 03 Sep 2021 07:52:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Jp3N57nQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JHhKAcmY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44940 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50226 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMAMM-0001EF-0L
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 10:40:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36908)
+	id 1mMAYB-0005X0-1N
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 10:52:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mMAFK-0004Mb-5f
- for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:32:48 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:46727)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mMAY2-0005Wl-RL
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:52:06 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:38583)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mMAFI-0005gq-5b
- for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:32:45 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id x6so8497196wrv.13
- for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 07:32:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mMAY0-0004qV-7D
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:52:06 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ k5-20020a05600c1c8500b002f76c42214bso3962088wms.3
+ for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 07:52:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ML4iX6CFCZNHlVUqfCS6XVSF7GyOD2bEAeWn+nVwWZ4=;
- b=Jp3N57nQeWK9FnE2qNloGy3jMZaRiAsKcWsu94VHm7GdypSuZhachsocQkSmJiKnH8
- jvHEE7iCIQQK5/SK6HSl8Fc5gSvSbOwnAHuAhJtFicQc4y2UNwrEaxpee0WDB4IudajO
- HE++DjngBdOfnjNQPP5ge2lTPef8MsK8UZYDIHghybqH9to5/Y1qptHua9pyVcJ96iyG
- jWU1ADgEZsuSsXs26YmHC47dMDpYkxbqLEbNdamxIyied9me3JNoES+FlavI6BnxTBeN
- Lc7i4K7u7opnKTBFrSkc+c5/jKgPW9Kw9Wfdyj1QOE1wmnMi8a8+aU2FJRoKi+NQpulE
- Gelw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5roshyboZ+kdsi0TGTdaUsmAx+q/9fSdGUMKEh7BkIM=;
+ b=JHhKAcmYF47Y4Zonh+3Ic2E52jmIY7yQ7YS/5pVoOCN0SCGL5IaVl+WYbF52f753fi
+ 7RdBNREcUOgEgyTi/khjpHQ98p9Ohzcmz7vGl9Ub6ruDkTgNIoivEoARo30Q2EIDHayt
+ TV2lLzrhg59cCRcvO7oqToI/7jodNZS3PfET86Pn9Hrwq/zDvk4aSlVDeSW0sHL2+LOu
+ /w5EB7sonBQw5xbRbxHNJroAAvifsRWC79WZvn1DQFyMnTQluRPvxr/0DemcHHAFDqcy
+ E/jn74kSM+epierYJYgUU2YP/zItaC+Pzdp+82NJC6aJRPlloWb6IDlyiYgVnAb5+3cU
+ c+xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ML4iX6CFCZNHlVUqfCS6XVSF7GyOD2bEAeWn+nVwWZ4=;
- b=afPodoQbIdMvrFJzXpp+SOt3GlnJzPc7IUBjf9a9vv088cujwwjKjy+FyzhYbD3OIP
- enDvBhTMzkPE8AC7sSi6fotJqn0IyNcV6PZrtv1ermDrXxfFFEouCo2jNtT+Xy9Li8Lf
- afi7GTAUbw9OjK7n2UALxFcAIretY58Vv4bQEIhqPO8gWGRaNJd0rYlxvSCEvnnynXfU
- K6Cg2KY6gbMydtoNt6ws1SSeC0vPHQLcP9Y/2s8/kUlfpYpqmuPLtPRTJmfgVH9ExGX6
- PbepaJwDVXENKc26IQopihxGuOqx93EiitzFTDylrHUGhQkUuQ90ffwKJTD6k8v4ImKl
- DoFQ==
-X-Gm-Message-State: AOAM532iBrddBdHyCHs9I7RGcO0OdvtkMwE8EqHU01qWxNTjqnuyMzxz
- JV1FoyRRc9DAK4eFFdzJHFK65A==
-X-Received: by 2002:adf:b781:: with SMTP id s1mr4533749wre.165.1630679562704; 
- Fri, 03 Sep 2021 07:32:42 -0700 (PDT)
-Received: from localhost.localdomain (19.11.114.78.rev.sfr.net. [78.114.11.19])
- by smtp.gmail.com with ESMTPSA id z2sm4314843wma.45.2021.09.03.07.32.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Sep 2021 07:32:42 -0700 (PDT)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: eric.auger@redhat.com
-Subject: [PATCH v2 6/8] pc: Add VIOT table for virtio-iommu
-Date: Fri,  3 Sep 2021 16:32:07 +0200
-Message-Id: <20210903143208.2434284-7-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20210903143208.2434284-1-jean-philippe@linaro.org>
-References: <20210903143208.2434284-1-jean-philippe@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5roshyboZ+kdsi0TGTdaUsmAx+q/9fSdGUMKEh7BkIM=;
+ b=sKJgb7wQFSFQxvODRZKSfeKVMNNLUcm0gPJ/louNBwA7up+OVciHQGOSNGJJZPAFMF
+ H71Ak4+yhPalbbJcSlg7xjT78OmlZYAuJtozQhmlib82nwbnCC+DFt/IXtDoh/UaP7fp
+ RKKBuv2DUsgGnx8+M8obCde0YO7Eiy7EWLn0sB6RDWPbPzu7S5qtYGK0lYe834xShJoN
+ jkTpmokUsvOlzV7lVZAWzFTl/O0PPGHSrHPqseX3oW6/j9W4pwoExOS6C0TxqCcnKtXP
+ Ul15iv7UYVLsH8pCXP/bdyO7NEKExf41dsd/Bmi6xxAJfN31yvojV4ytgrEziQaKHODZ
+ mDeQ==
+X-Gm-Message-State: AOAM533HG3/2TQlyMk3swblgVv8TOrH8FTEASi2IJMvBoapbWpykgWxA
+ INHVvR3KPLSQrWpgKDAvrHINs7TKjdnndED20kxrvg==
+X-Received: by 2002:a7b:c246:: with SMTP id b6mr8696159wmj.37.1630680722660;
+ Fri, 03 Sep 2021 07:52:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20210902181642.315792-1-crauer@google.com>
+In-Reply-To: <20210902181642.315792-1-crauer@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Sep 2021 15:51:14 +0100
+Message-ID: <CAFEAcA-wG4FW_ddfpj+CH22OwGbaqjmYoi2FQdBUHdrDnfSvjA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Add support for kudo-bmc board.
+To: Chris Rauer <crauer@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,99 +109,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
- marcel.apfelbaum@gmail.com, pbonzini@redhat.com, imammedo@redhat.com
+Cc: CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 52fBDuuj5QRh
+X-TUID: kKC0a7wCu0UQ
 
-The ACPI Virtual I/O Translation table (VIOT) describes the relation
-between a virtio-iommu and the endpoints it manages. When a virtio-iommu
-device is instantiated, add a VIOT table.
+On Thu, 2 Sept 2021 at 19:17, Chris Rauer <crauer@google.com> wrote:
+>
+> kudo-bmc is a board supported by OpenBMC.
+> https://github.com/openbmc/openbmc/tree/master/meta-fii/meta-kudo
+>
+> Tested: Booted kudo firmware.
+> Signed-off-by: Chris Rauer <crauer@google.com>
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
- hw/i386/Kconfig      | 1 +
- include/hw/i386/pc.h | 2 ++
- hw/i386/acpi-build.c | 5 +++++
- hw/i386/pc.c         | 7 +++++++
- 4 files changed, 15 insertions(+)
+> +static void kudo_bmc_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_CLASS(oc);
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +
+> +    npcm7xx_set_soc_type(nmc, TYPE_NPCM730);
+> +
+> +    mc->desc = "Kudo BMC (Cortex A9)";
 
-diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-index ddedcef0b2..13db05d557 100644
---- a/hw/i386/Kconfig
-+++ b/hw/i386/Kconfig
-@@ -54,6 +54,7 @@ config PC_ACPI
-     select ACPI_X86
-     select ACPI_CPU_HOTPLUG
-     select ACPI_MEMORY_HOTPLUG
-+    select ACPI_VIOT
-     select SMBUS_EEPROM
-     select PFLASH_CFI01
-     depends on ACPI_SMBUS
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 88dffe7517..979b8d0b7c 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -45,6 +45,8 @@ typedef struct PCMachineState {
-     bool pit_enabled;
-     bool hpet_enabled;
-     bool default_bus_bypass_iommu;
-+    bool virtio_iommu;
-+    uint16_t virtio_iommu_bdf;
-     uint64_t max_fw_size;
- 
-     /* NUMA information: */
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index a33ac8b91e..078b7f5c6f 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -71,6 +71,7 @@
- 
- #include "hw/acpi/ipmi.h"
- #include "hw/acpi/hmat.h"
-+#include "hw/acpi/viot.h"
- 
- /* These are used to size the ACPI tables for -M pc-i440fx-1.7 and
-  * -M pc-i440fx-2.0.  Even if the actual amount of AML generated grows
-@@ -2559,6 +2560,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-             build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
-                            x86ms->oem_table_id);
-         }
-+    } else if (pcms->virtio_iommu) {
-+        acpi_add_table(table_offsets, tables_blob);
-+        build_viot(tables_blob, tables->linker, pcms->virtio_iommu_bdf,
-+                   x86ms->oem_id, x86ms->oem_table_id);
-     }
-     if (machine->nvdimms_state->is_enabled) {
-         nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index c2b9d62a35..694fc9ce07 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -84,6 +84,7 @@
- #include "hw/i386/intel_iommu.h"
- #include "hw/net/ne2000-isa.h"
- #include "standard-headers/asm-x86/bootparam.h"
-+#include "hw/virtio/virtio-iommu.h"
- #include "hw/virtio/virtio-pmem-pci.h"
- #include "hw/virtio/virtio-mem-pci.h"
- #include "hw/mem/memory-device.h"
-@@ -1388,6 +1389,12 @@ static void pc_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
-                object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
-         pc_virtio_md_pci_plug(hotplug_dev, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-+        PCMachineState *pcms = PC_MACHINE(hotplug_dev);
-+        PCIDevice *pdev = PCI_DEVICE(dev);
-+
-+        pcms->virtio_iommu = true;
-+        pcms->virtio_iommu_bdf = pci_get_bdf(pdev);
-     }
- }
- 
--- 
-2.33.0
+"Cortex-A9" should be hyphenated; see commit f548f20176c.
 
+> +    mc->init = kudo_bmc_init;
+> +    mc->default_ram_size = 1 * GiB;
+> +};
+
+-- PMM

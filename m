@@ -1,48 +1,48 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1880427lfb;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1880434lfb;
         Fri, 3 Sep 2021 20:22:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtyQXt86v1Wfs3xhSGUF/PeQOtYCh7h9gCwu9b+GXAvfFg60ilUcSXbbeKlovSXBl4OahY
-X-Received: by 2002:a65:5a81:: with SMTP id c1mr1879180pgt.74.1630725770041;
+X-Google-Smtp-Source: ABdhPJx8D6BoIIla9S6urRQOR1zhgqZCWJbz3jni99w4OMOg5YxT8qG7I0FIqUxaMrTRrzOetkPl
+X-Received: by 2002:aa7:9805:0:b0:40b:2040:adef with SMTP id e5-20020aa79805000000b0040b2040adefmr1822960pfl.11.1630725770554;
         Fri, 03 Sep 2021 20:22:50 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1630725770; cv=none;
         d=google.com; s=arc-20160816;
-        b=w0xdwXPmyEl6KjkXVu0Uun53ERsd+y5qT3Y0dJr5B0E9rQ7U3lww+oLm15YGfGKAap
-         aWc7LE8Y8kCpvUnywJJWbZRkzvtMp+PcVU01OjGXoUNtIzfg9n/bQbRsp+yp6ZMR/NZS
-         zhK62fXMtJlYiZodvQT5SFqjL7tEoocJ4WJn6qI28bVvWxOvPMeH2TH5GRnJDdHXSzGb
-         YNyxWpiFMnKNo2OQ2nRx5t8Uo5De0Kb37RLeMSpDMPPAIpChxXKw6z8vtRjOV84M9XC2
-         g2i3A+MwIFo2anKi6voOPQbsyNp8U8KQ1PGd+GqEpYBrMckzVSAFsKGSHCgAM/89dod9
-         yVdA==
+        b=Ptwgtcg0fPfc0CBlNpr3CJ1GNEzRHtiyUdn4KlNo6DKkb6sAH1CmOP8W5pKJN09Zcb
+         YgvryXeWLMF57Z3Duj4vhkBYSoKNN7MQm4t/FLfuPoVC5alGja0QL2yxjmDTaxfjuMy5
+         myfUxK3OeHvSWlzoeflFB7Y6fn5HVJHqHRfp4SnfgdmJwpIco9LKufWQ0HyDhR3ivJxc
+         yVAwxY/k2qobqH9LVHSVpw15hfLLUn330u9xw5epf37s6YxO/2Rkv6tz02BSPQaMpGLy
+         Gfl5T0E30YJOy5wVgO/gSdJJHsaqzIqQkqv5Ig//epiHg1VSpPLMRiPDTRkiuZcDNCJC
+         bfJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=4H3eQ3QsA05/VW7kGkCpNxug8epEW37imp3Hj13ukA0=;
-        b=ei/3TYYN9dt+RuSO8mVL3oexucFuHyqoO2/qd5nhOOD01qC+EoRw+8FN5qmOTb+YvU
-         2vxB4h314vVg89kuzPXVLUPI/Wp+Mzl1/kMEtb0U+H59GEC8434sb3Ljl+mtHGj6qjyQ
-         deTOJbz8qEjyzsxLGvn3NCAnnf4YWepu37+BGN3nNxJ+P0dc0jRr+BKRLZB6M2kBHOQu
-         +PL63vT9u+yRBRFLB70TbWjXnuP2Vit20JGejI3LmWgHl8WZHH2YGdXrSSSJGNgNrtso
-         v3nUVN+JLg2pi53f2gmnYmKzRIcvjUuAz3hTkTIbfTGN1a7HuMFZK0ZI/mb1DY7V1Bs0
-         csQA==
+        bh=M1wfW3POZ1s4K8pZn0Wbl43gs5jAIri4ihV3ywtcK/4=;
+        b=dln+2jcYvegTWjz1QFuHCvgCZdL11JDc7qDJBrIwSwMlu+bxq0+iYFKCHpF4DNOV/d
+         xp85z0aV/jooL5LizmYMFV4JBLpL3opWBDItxYUTEMa/24yZGsLabsUI6kuHQcTWKiNx
+         cA2eVlM/kJ0klvOZ9uE0tCAhuEJk4Iqzbja6KxFzhHS1d4J0BsXeExx52SHEaBKRxHza
+         v7Lks2iZAOEVbnZqBdxD/f/icgP6DuqN50wxl0gHOss1vjBWvHd9Lxo76HhZl0Ce7XQQ
+         Wz9sS5cEIbDKLMcoW+vHj3atU09RPPwteh/I2ZZzrlYPm6Wqhu4vHTFvLQsBLY87P5Fj
+         R3sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=FhKBtH09;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=I81nk0Ui;
        spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
 Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (bilbo.ozlabs.org. [2401:3900:2:1::2])
-        by mx.google.com with ESMTPS id v135si1033281pgb.632.2021.09.03.20.22.49
+Received: from ozlabs.org (ozlabs.org. [2401:3900:2:1::2])
+        by mx.google.com with ESMTPS id ch14si19103pjb.98.2021.09.03.20.22.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 03 Sep 2021 20:22:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=FhKBtH09;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=I81nk0Ui;
        spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=gibson.dropbear.id.au; s=201602; t=1630725765;
-	bh=4H3eQ3QsA05/VW7kGkCpNxug8epEW37imp3Hj13ukA0=;
+	bh=M1wfW3POZ1s4K8pZn0Wbl43gs5jAIri4ihV3ywtcK/4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FhKBtH09mz70UpeBBQN1+nw0AkeP2Z7ZfguDZhFy+fXhUB93xK0BBaLDHnG+tah+Z
-	 oY61PGYG7PqAiiZjPDD1zSCBoefNvzdGgGHNE8EbWB2Pwhq3DGTECIbY9rzGEtOeX2
-	 8xjKK2rV7xNBW5LiVqh5EADK6/XaYMdqvUNmbe5E=
+	b=I81nk0UiOzZIgU2SjaSKgSlsM/e7rGjfFGy9tQivEdWSh5TqZ5uLiLYB8JzYByKjv
+	 MxbPgdKnoQf9dxM+y8XW1XAk/MjIQeU07GJpsnkjIbdoRZQup6VWytJ4Ofj0YM+QFw
+	 e+wh8CdBLjJ1GjJWQinrN0AL6oy9lWw2IDEYlLlg=
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 4H1g2s4S8bz9sVq; Sat,  4 Sep 2021 13:22:45 +1000 (AEST)
-Date: Fri, 3 Sep 2021 21:45:05 +1000
+	id 4H1g2s5LWjz9sRN; Sat,  4 Sep 2021 13:22:45 +1000 (AEST)
+Date: Fri, 3 Sep 2021 21:45:35 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Cc: qemu-devel@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
@@ -76,25 +76,24 @@ Cc: qemu-devel@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
 	Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
 	Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org,
 	David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH 16/28] hw/ppc/spapr_pci: Replace g_memdup() by
- g_memdup2_qemu()
-Message-ID: <YTIKwQAIfb35upnI@yekko>
+Subject: Re: [PATCH 26/28] target/ppc: Replace g_memdup() by g_memdup2_qemu()
+Message-ID: <YTIK35r5tWqs8US/@yekko>
 References: <20210903110702.588291-1-philmd@redhat.com>
- <20210903110702.588291-17-philmd@redhat.com>
+ <20210903110702.588291-27-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="467AKG5kT2VkpE+f"
+	protocol="application/pgp-signature"; boundary="YrBYwP/4GpI03OJ0"
 Content-Disposition: inline
-In-Reply-To: <20210903110702.588291-17-philmd@redhat.com>
-X-TUID: BHuLMI8Fu1h8
+In-Reply-To: <20210903110702.588291-27-philmd@redhat.com>
+X-TUID: mtq/ZgXVUYD/
 
 
---467AKG5kT2VkpE+f
+--YrBYwP/4GpI03OJ0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Sep 03, 2021 at 01:06:50PM +0200, Philippe Mathieu-Daud=E9 wrote:
+On Fri, Sep 03, 2021 at 01:07:00PM +0200, Philippe Mathieu-Daud=E9 wrote:
 > Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-mem=
 dup2-now/5538
 >=20
@@ -110,33 +109,27 @@ dup2-now/5538
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
-
 Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/ppc/spapr_pci.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  target/ppc/mmu-hash64.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-> index 7430bd63142..79c0e8d4f98 100644
-> --- a/hw/ppc/spapr_pci.c
-> +++ b/hw/ppc/spapr_pci.c
-> @@ -2201,10 +2201,10 @@ static int spapr_pci_post_load(void *opaque, int =
-version_id)
->      int i;
-> =20
->      for (i =3D 0; i < sphb->msi_devs_num; ++i) {
-> -        key =3D g_memdup(&sphb->msi_devs[i].key,
-> -                       sizeof(sphb->msi_devs[i].key));
-> -        value =3D g_memdup(&sphb->msi_devs[i].value,
-> -                         sizeof(sphb->msi_devs[i].value));
-> +        key =3D g_memdup2_qemu(&sphb->msi_devs[i].key,
-> +                             sizeof(sphb->msi_devs[i].key));
-> +        value =3D g_memdup2_qemu(&sphb->msi_devs[i].value,
-> +                               sizeof(sphb->msi_devs[i].value));
->          g_hash_table_insert(sphb->msi, key, value);
+> diff --git a/target/ppc/mmu-hash64.c b/target/ppc/mmu-hash64.c
+> index 19832c4b46f..2ee6025a406 100644
+> --- a/target/ppc/mmu-hash64.c
+> +++ b/target/ppc/mmu-hash64.c
+> @@ -1122,7 +1122,8 @@ void ppc_hash64_init(PowerPCCPU *cpu)
+>          return;
 >      }
->      g_free(sphb->msi_devs);
+> =20
+> -    cpu->hash64_opts =3D g_memdup(pcc->hash64_opts, sizeof(*cpu->hash64_=
+opts));
+> +    cpu->hash64_opts =3D g_memdup2_qemu(pcc->hash64_opts,
+> +                                      sizeof(*cpu->hash64_opts));
+>  }
+> =20
+>  void ppc_hash64_finalize(PowerPCCPU *cpu)
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -144,24 +137,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---467AKG5kT2VkpE+f
+--YrBYwP/4GpI03OJ0
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmEyCr4ACgkQbDjKyiDZ
-s5JQMw/9EgSrnPgRxc/R/Ui5DGXjZmF6ieBr0Sb+CICEvlJ0c0wOsuBLwkRfg2kN
-OLr/Mj6S4Klz91l4pGDCJBkqsivYnCLg8rMoCISZu/o30Y6bH4r1jx6qfySVadzn
-GpgRhEMqBTMBnhBqXslGjecD886ICIGxmZhYTN0RQjD2RPTfwlk7fesfUQKuh4O/
-wjpfLY94qUnO6nqo2lsR8N3k082bsUO1EniGpZ1xAk4i06NlLSaukLJ3AR+4YrJ0
-c7d58BZA3i2RZFDnFYuQU7vYoS5Amop9wVgCOTcLGwwo7NChLY73G/RZnUNTbdz/
-tVz8gEiRCkiotfF4r4dRwycDKzjm07h0uXvCFYSwzDGhKt7AitioLXi0HKp/e/OV
-Jci9uYLHgjCRRPYzzb5ly9YW9Laa0HECAYCc5WHoOCigEquEKXvWKQJdQd1PQ/Xx
-OUaLzfGnCB+WEzJho3BnLaD7KkEMlg6hk6zKF0l+WcS/Tl/pUQKM2k96dU6QlWtV
-kpMVMDJfoQDb7Og9QZZ0yxd28sYNObIfzUkfsIV4klpEToEtyUZC+JL+CQN3XDbK
-94bDR4KvU2ziw8LeDsxoi0UxcvZjOqtRbNLnI3wS4oOAdif6iDVnWzfbU902AWI0
-ojeJ7aZC98t3T0hVtyyC3B5aB6ADWKaIkizvmFtqz+hjCa/l/Lw=
-=3mpO
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmEyCt8ACgkQbDjKyiDZ
+s5KSdA/7B6R7ERH3RvRVfbpr2R9syLywVbWMy7eBD1S+XTfEIT4JcelfN11AykK5
+6cqSsyTGZkPmjgguDPnzmCJDy1Xri0aJWp/oOTpwUrH5q7DT2MK3vniaZ/UEdT0k
+ny/Ab9+tm5rUPHyeTskB6rWIjuLLok+d/933K/wTmTQcCUTXcKcz8tP/kG4Ni80Q
+X/U+h1QM8ilyYHLpWtTzjgX7pBCh0o+mSdm0sLq7rS1y5JBPc+BKVaZIZ5RxR6LW
+8Tq0/g8QhHWiiwDT8CWRttc4jAJQzDXbnnmJ2D/WWWV6q37XPZiOyTlMhMOp++Un
+BJMTCnD9H0YmE76A8MDF47bfcf0GvbkHldzF9FooqGcweem2YZHgJKcRPNx2oqtD
+uHlPjp5vwylH1z36twVF+MgEjXPWSLySNcSEaFmbZFTqWquRroI9JdYrp3mTEeWf
+GzdAUrRczUVxEMomi5hroG6moNDcJnh13nYNh13uLazXI03YIrUjS9v9fxR42cTC
+wqWtq/vVm6Lg44CNTztodnastS6RfuaNMowE2HIC66xFKWUZQmmz4IrfC4U1iiaD
+U92ltytwL2ZqFZKQ5mK+YrzcL2rrP1QV6X30g7eP9HXXRta0CBKIrmX4Uy+aCaG6
+ORMDyDKq9wDKJXv6nnj5aIFSevIMgEN2bpmW6EIOoxkpUT5sBMI=
+=86Pt
 -----END PGP SIGNATURE-----
 
---467AKG5kT2VkpE+f--
+--YrBYwP/4GpI03OJ0--

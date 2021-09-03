@@ -1,67 +1,67 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1608745lfb;
-        Fri, 3 Sep 2021 12:49:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzV+n95DUEABp5ukuSubb1F+y0yGL7qj1151ulMqvnb1g62rgOM426qzd440mabag5xdRqL
-X-Received: by 2002:a05:6638:619:: with SMTP id g25mr626230jar.38.1630698557346;
-        Fri, 03 Sep 2021 12:49:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630698557; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1609004lfb;
+        Fri, 3 Sep 2021 12:49:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxI3APFITlhE9epLJKWt+qgB2bFPLk+vhnUDzbeNrdxhpJJCRdaUczwKzUZ+nrHExc+9l8K
+X-Received: by 2002:a05:6e02:1a4f:: with SMTP id u15mr407491ilv.251.1630698582639;
+        Fri, 03 Sep 2021 12:49:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630698582; cv=none;
         d=google.com; s=arc-20160816;
-        b=GWcnrqwmMmnUlqRhmecfXKpaH6NkF5VoKY33Q+UN1UKCAkFcHq1Pz4kpcw8d87jlwV
-         h6aEc5SFMUZl9Pl4ms9iXearX+ZeIRklXQTTdsylonTirP14wbLqkzXFT7+xTcfui2oU
-         Avc1zfspKnbFsnXVCLfdqkKca5Mrsv3NIFk8gi10/ojj6Vun8Y7ehtynLmQVau2OHqaT
-         cNq18Lujhvih3PFN/wOeaP5gr9bRL8T7XYYnXoMJv9Y98Fc4aqsSdPUcYMxlIefgr5dL
-         XomHejXfALSXAzsctR8SwFPw1ySWhGSpi5IMbTjNgq+GuU7v67nLqRSZbwMcugyRTffY
-         s7rQ==
+        b=iPkRKsfCc3Ly39ue9mUSO3G4f13msd6EwYYwz3bQKl8/Y4tPZh4AuSafRxMSnaTXCt
+         qieIEFShdc7ZC4r3DBrnpfvcKa31KsBoMbfEig7BW2YPas06ygLIWutysKDZI1l/PIxz
+         MOY2vpBNdRT4qN6b7HPW6JjJ1biMhGjnslra90wC2hY4iCD7K1B9r+eBtpxT/HGtCK6x
+         H3J4kzFJEhsz2d+eyrf3+NDaqeJN4OtJVVZtmCv9m1jtDqjPj/PpVhw45f4+299DkdEM
+         FKsA7yOKvXVtPbuNiyFIvR68+hSGIQh1LeH5Toumso5csgnnBfmihjGxBs2E5ozzPEWU
+         J33w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=bTzMnQnAzGQwR0xamNaZY19Jsah65lLBnMI+EuV+DgI=;
-        b=z1LscQd2S6bnWd8lvvQRNxwCayAKNY1xyPcQFPDdXy8rPgjpzDMUliIlYTjYSDqlh/
-         hUqU3W0RZ4B4sk18JiM2OnknSrqlvWIgcohzMFs85KGb0bsgPzv8QlFERr9eMQ94En9F
-         i2O8NSOFKfGIHdFqpoJeuWhgNUqpd7OqrGnYuasE4s6lNwBAZVPiQHOZzXerPnPDJ0vh
-         Q8QJPt0ynwXsG4vrLJ8BThYzGT2IHLQTB73WnYqfsf9+tiHH2bQKHjGBfYAdaOXqUv05
-         PNYelVIbvASi6Mxt1wpdDZ9QX1k6SGe01WbmVVqK9hmPePytf/YgvPMBhLmINy96i4el
-         gyxg==
+        bh=/xNNjU3RE0o9b7+OgtfaVK1JWeKJGAEcNkVhclIpM6w=;
+        b=ygfyDcdKDivt6oRLpOedlxzgoztXBI5aiDUbZ6Bhj5kB61T0DAaVn1he0v/eDdc3H3
+         179NgL3sD/2b5nTKD6MgTrJN/qIRwgeNOj/NGErE8CFwkmwBgmzhzcR1vQAVkVpLZo2E
+         oT4QmCVZmWZZhTHLWFesaoeaKXrZ3B8bwxM0vZY+ct6+x5Dgjv39J3rt7ui+OUHcw7On
+         nTEC+SXbcwkEVImrCHbvK4ZXGYdX0gfryCwAxp4CMBlC8zh/C9qxSgr4eVnxdFulTBKr
+         c7TLKpNubMHJ0UDTI439AE5t7bii4NlxWH9dBYGp5v/3KBK53NEekJIbApb1ZVH4T4Lj
+         JmAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v66si337918iof.105.2021.09.03.12.49.17
+        by mx.google.com with ESMTPS id i13si191628ilk.122.2021.09.03.12.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 12:49:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Sep 2021 12:49:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55100 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56128 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMFBc-0003FZ-Kn
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:49:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44204)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMFC1-0003wF-UR
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:49:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF45-0004Dq-Me; Fri, 03 Sep 2021 15:41:29 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:41803)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF3z-0003uM-Sf
+ for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:23 -0400
+Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:59103)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF3z-0002Hc-HH; Fri, 03 Sep 2021 15:41:29 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.7])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id EB1A8BC4DEF1;
- Fri,  3 Sep 2021 21:41:12 +0200 (CEST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF3v-0002N5-AX
+ for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:22 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.6])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 1CCC313FB0D;
+ Fri,  3 Sep 2021 19:41:17 +0000 (UTC)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 21:41:12 +0200
+ 2021 21:41:16 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005917bad50-78af-415b-b70b-7c29cfd75f35,
+ (GARM-103G0054e6b8c49-3119-4b73-ab6b-551d30e99916,
  15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 05/14] hw: aspeed_gpio: Simplify 1.8V defines
-Date: Fri, 3 Sep 2021 21:40:59 +0200
-Message-ID: <20210903194108.131403-6-clg@kaod.org>
+Subject: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
+Date: Fri, 3 Sep 2021 21:41:08 +0200
+Message-ID: <20210903194108.131403-15-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903194108.131403-1-clg@kaod.org>
 References: <20210903194108.131403-1-clg@kaod.org>
@@ -71,143 +71,227 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: cb1f82cc-85b6-44ff-87d5-c4cdefbe6834
-X-Ovh-Tracer-Id: 8815796270817643372
+X-Ovh-Tracer-GUID: 846f1de3-6d19-495b-b79a-bc9052a7c5b5
+X-Ovh-Tracer-Id: 8816922171038665577
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigfdvvdffffevleefgefhheegtedutdfgueevfeffleegledvuefhteetueekjeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout3.3005.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Rashmica Gupta <rashmica.g@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ccP+05vDA3p
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rScqJCwtEcHz
 
-From: Joel Stanley <joel@jms.id.au>
+From: Peter Delevoryas <pdel@fb.com>
 
-There's no need to define the registers relative to the 0x800 offset
-where the controller is mapped, as the device is instantiated as it's
-own model at the correct memory address.
+This adds a new machine type "fuji-bmc" based on the following device tree:
 
-Simplify the defines and remove the offset to save future confusion.
+https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Rashmica Gupta <rashmica.g@gmail.com>
+Most of the i2c devices are not there, they're added here:
+
+https://github.com/facebook/openbmc/blob/helium/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
+
+I tested this by building a Fuji image from Facebook's OpenBMC repo,
+booting, and ssh'ing from host-to-guest.
+
+git clone https://github.com/facebook/openbmc
+cd openbmc
+./sync_yocto.sh
+source openbmc-init-build-env fuji build-fuji
+bitbake fuji-image
+dd if=/dev/zero of=/tmp/fuji.mtd bs=1M count=128
+dd if=./tmp/deploy/images/fuji/flash-fuji of=/tmp/fuji.mtd \
+    bs=1k conv=notrunc
+
+git clone --branch aspeed-next https://github.com/peterdelevoryas/qemu
+cd qemu
+./configure --target-list=arm-softmmu --disable-vnc
+make -j $(nproc)
+./build/arm-softmmu/qemu-system-arm \
+    -machine fuji-bmc \
+    -drive file=/tmp/fuji.mtd,format=raw,if=mtd \
+    -serial stdio \
+    -nic user,hostfwd=::2222-:22
+sshpass -p 0penBmc ssh root@localhost -p 2222
+
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20210713065854.134634-3-joel@jms.id.au>
+[ clg: checkpatch fixes ]
+Message-Id: <20210903082027.704397-2-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/gpio/aspeed_gpio.c | 73 +++++++++++++++++++++----------------------
- 1 file changed, 36 insertions(+), 37 deletions(-)
+ hw/arm/aspeed.c | 116 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 116 insertions(+)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index b3dec4448009..dc721aec5da7 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -169,44 +169,43 @@
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 7a9459340cf4..23e1a811ca08 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -159,6 +159,10 @@ struct AspeedMachineState {
+ #define RAINIER_BMC_HW_STRAP1 0x00000000
+ #define RAINIER_BMC_HW_STRAP2 0x00000000
  
- /* AST2600 only - 1.8V gpios */
++/* Fuji hardware value */
++#define FUJI_BMC_HW_STRAP1    0x00000000
++#define FUJI_BMC_HW_STRAP2    0x00000000
++
  /*
-- * The AST2600 has same 3.6V gpios as the AST2400 (memory offsets 0x0-0x198)
-- * and additional 1.8V gpios (memory offsets 0x800-0x9D4).
-+ * The AST2600 two copies of the GPIO controller: the same 3.6V gpios as the
-+ * AST2400 (memory offsets 0x0-0x198) and a second controller with 1.8V gpios
-+ * (memory offsets 0x800-0x9D4).
-  */
--#define GPIO_1_8V_REG_OFFSET          0x800
--#define GPIO_1_8V_ABCD_DATA_VALUE     ((0x800 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_DIRECTION      ((0x804 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_INT_ENABLE     ((0x808 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_INT_SENS_0     ((0x80C - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_INT_SENS_1     ((0x810 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_INT_SENS_2     ((0x814 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_INT_STATUS     ((0x818 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_RESET_TOLERANT ((0x81C - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_DATA_VALUE        ((0x820 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_DIRECTION         ((0x824 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_INT_ENABLE        ((0x828 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_INT_SENS_0        ((0x82C - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_INT_SENS_1        ((0x830 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_INT_SENS_2        ((0x834 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_INT_STATUS        ((0x838 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_RESET_TOLERANT    ((0x83C - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_DEBOUNCE_1     ((0x840 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_DEBOUNCE_2     ((0x844 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_DEBOUNCE_1        ((0x848 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_DEBOUNCE_2        ((0x84C - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_DEBOUNCE_TIME_1     ((0x850 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_DEBOUNCE_TIME_2     ((0x854 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_DEBOUNCE_TIME_3     ((0x858 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_COMMAND_SRC_0  ((0x860 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_COMMAND_SRC_1  ((0x864 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_COMMAND_SRC_0     ((0x868 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_COMMAND_SRC_1     ((0x86C - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_DATA_READ      ((0x8C0 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_DATA_READ         ((0x8C4 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_ABCD_INPUT_MASK     ((0x9D0 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_E_INPUT_MASK        ((0x9D4 - GPIO_1_8V_REG_OFFSET) >> 2)
--#define GPIO_1_8V_MEM_SIZE            0x9D8
--#define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
--                                      GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_DATA_VALUE     (0x000 >> 2)
-+#define GPIO_1_8V_ABCD_DIRECTION      (0x004 >> 2)
-+#define GPIO_1_8V_ABCD_INT_ENABLE     (0x008 >> 2)
-+#define GPIO_1_8V_ABCD_INT_SENS_0     (0x00C >> 2)
-+#define GPIO_1_8V_ABCD_INT_SENS_1     (0x010 >> 2)
-+#define GPIO_1_8V_ABCD_INT_SENS_2     (0x014 >> 2)
-+#define GPIO_1_8V_ABCD_INT_STATUS     (0x018 >> 2)
-+#define GPIO_1_8V_ABCD_RESET_TOLERANT (0x01C >> 2)
-+#define GPIO_1_8V_E_DATA_VALUE        (0x020 >> 2)
-+#define GPIO_1_8V_E_DIRECTION         (0x024 >> 2)
-+#define GPIO_1_8V_E_INT_ENABLE        (0x028 >> 2)
-+#define GPIO_1_8V_E_INT_SENS_0        (0x02C >> 2)
-+#define GPIO_1_8V_E_INT_SENS_1        (0x030 >> 2)
-+#define GPIO_1_8V_E_INT_SENS_2        (0x034 >> 2)
-+#define GPIO_1_8V_E_INT_STATUS        (0x038 >> 2)
-+#define GPIO_1_8V_E_RESET_TOLERANT    (0x03C >> 2)
-+#define GPIO_1_8V_ABCD_DEBOUNCE_1     (0x040 >> 2)
-+#define GPIO_1_8V_ABCD_DEBOUNCE_2     (0x044 >> 2)
-+#define GPIO_1_8V_E_DEBOUNCE_1        (0x048 >> 2)
-+#define GPIO_1_8V_E_DEBOUNCE_2        (0x04C >> 2)
-+#define GPIO_1_8V_DEBOUNCE_TIME_1     (0x050 >> 2)
-+#define GPIO_1_8V_DEBOUNCE_TIME_2     (0x054 >> 2)
-+#define GPIO_1_8V_DEBOUNCE_TIME_3     (0x058 >> 2)
-+#define GPIO_1_8V_ABCD_COMMAND_SRC_0  (0x060 >> 2)
-+#define GPIO_1_8V_ABCD_COMMAND_SRC_1  (0x064 >> 2)
-+#define GPIO_1_8V_E_COMMAND_SRC_0     (0x068 >> 2)
-+#define GPIO_1_8V_E_COMMAND_SRC_1     (0x06C >> 2)
-+#define GPIO_1_8V_ABCD_DATA_READ      (0x0C0 >> 2)
-+#define GPIO_1_8V_E_DATA_READ         (0x0C4 >> 2)
-+#define GPIO_1_8V_ABCD_INPUT_MASK     (0x1D0 >> 2)
-+#define GPIO_1_8V_E_INPUT_MASK        (0x1D4 >> 2)
-+#define GPIO_1_8V_MEM_SIZE            0x1D8
-+#define GPIO_1_8V_REG_ARRAY_SIZE      (GPIO_1_8V_MEM_SIZE >> 2)
+  * The max ram region is for firmwares that scan the address space
+  * with load/store to guess how much RAM the SoC has.
+@@ -772,6 +776,94 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
+ }
  
- static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
++static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
++                                 I2CBus **channels)
++{
++    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
++    for (int i = 0; i < 8; i++) {
++        channels[i] = pca954x_i2c_get_bus(mux, i);
++    }
++}
++
++#define TYPE_LM75 TYPE_TMP105
++#define TYPE_TMP75 TYPE_TMP105
++#define TYPE_TMP422 "tmp422"
++
++static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = &bmc->soc;
++    I2CBus *i2c[144] = {};
++
++    for (int i = 0; i < 16; i++) {
++        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++    I2CBus *i2c180 = i2c[2];
++    I2CBus *i2c480 = i2c[8];
++    I2CBus *i2c600 = i2c[11];
++
++    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
++    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
++    /*
++     * NOTE: The device tree skips [32, 40) in the alias numbering, so we do
++     * the same here.
++     */
++    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
++    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
++    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
++    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
++    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
++    for (int i = 0; i < 8; i++) {
++        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
++    }
++
++    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
++    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
++
++    aspeed_eeprom_init(i2c[19], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[20], 0x50, 2 * KiB);
++    aspeed_eeprom_init(i2c[22], 0x52, 2 * KiB);
++
++    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
++    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
++    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
++    i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
++
++    aspeed_eeprom_init(i2c[8], 0x51, 64 * KiB);
++    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
++
++    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
++    aspeed_eeprom_init(i2c[50], 0x52, 64 * KiB);
++    i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
++    i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
++
++    i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
++    i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
++
++    aspeed_eeprom_init(i2c[65], 0x53, 64 * KiB);
++    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
++    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
++    aspeed_eeprom_init(i2c[68], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[69], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[70], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[71], 0x52, 64 * KiB);
++
++    aspeed_eeprom_init(i2c[73], 0x53, 64 * KiB);
++    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
++    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
++    aspeed_eeprom_init(i2c[76], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[77], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[78], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[79], 0x52, 64 * KiB);
++    aspeed_eeprom_init(i2c[28], 0x50, 2 * KiB);
++
++    for (int i = 0; i < 8; i++) {
++        aspeed_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
++        i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
++        i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
++        i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
++    }
++}
++
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
  {
+     return ASPEED_MACHINE(obj)->mmio_exec;
+@@ -1070,6 +1162,26 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc = "Facebook Fuji BMC (Cortex-A7)";
++    amc->soc_name = "ast2600-a3";
++    amc->hw_strap1 = FUJI_BMC_HW_STRAP1;
++    amc->hw_strap2 = FUJI_BMC_HW_STRAP2;
++    amc->fmc_model = "mx66l1g45g";
++    amc->spi_model = "mx66l1g45g";
++    amc->num_cs = 2;
++    amc->macs_mask = ASPEED_MAC3_ON;
++    amc->i2c_init = fuji_bmc_i2c_init;
++    amc->uart_default = ASPEED_DEV_UART1;
++    mc->default_ram_size = 2 * GiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+@@ -1119,6 +1231,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_rainier_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("fuji-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_fuji_class_init,
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
 -- 
 2.31.1
 

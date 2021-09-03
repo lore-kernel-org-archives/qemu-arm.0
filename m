@@ -1,68 +1,67 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1606778lfb;
-        Fri, 3 Sep 2021 12:46:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFZHQl+maUJWjUoZDZabN0mdnlNq7GorDtR79hHJi0zIG+/f/c60neG2g8XIlcPIBPAVUU
-X-Received: by 2002:a92:6e05:: with SMTP id j5mr407083ilc.252.1630698381792;
-        Fri, 03 Sep 2021 12:46:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630698381; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1608745lfb;
+        Fri, 3 Sep 2021 12:49:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzV+n95DUEABp5ukuSubb1F+y0yGL7qj1151ulMqvnb1g62rgOM426qzd440mabag5xdRqL
+X-Received: by 2002:a05:6638:619:: with SMTP id g25mr626230jar.38.1630698557346;
+        Fri, 03 Sep 2021 12:49:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630698557; cv=none;
         d=google.com; s=arc-20160816;
-        b=VF4fwSDlhqWY7QKM7c+HZe4E/Oc1YW5RhiMmm6M3SSW6nwVocm04UEbRkkBziriGK0
-         W08w1ewT8HqtO7XvJXg3yxt03B8qiqi/Dt7QXqJdmzfYC2IwI7gJpY6tnqmgoCDFh87C
-         C2gfLV6jbR0w5TAhcof68F5W1Sn0G4miiL+sXDSYq7EZHk2jKVttpgdtCFBysA6rvb84
-         IU0QObffe808vcXq86PIcvpaoqu68TIZRHNTgW9bA2JnOyxKUc7YK19xvjSRG2EizBFf
-         ZqnYL5PGU3k8zOtfx7eBsEFjZXt/SB2PXkG7wJIkq4YCwpuV7k0eZkdCkt+2idmEjQer
-         rPLQ==
+        b=GWcnrqwmMmnUlqRhmecfXKpaH6NkF5VoKY33Q+UN1UKCAkFcHq1Pz4kpcw8d87jlwV
+         h6aEc5SFMUZl9Pl4ms9iXearX+ZeIRklXQTTdsylonTirP14wbLqkzXFT7+xTcfui2oU
+         Avc1zfspKnbFsnXVCLfdqkKca5Mrsv3NIFk8gi10/ojj6Vun8Y7ehtynLmQVau2OHqaT
+         cNq18Lujhvih3PFN/wOeaP5gr9bRL8T7XYYnXoMJv9Y98Fc4aqsSdPUcYMxlIefgr5dL
+         XomHejXfALSXAzsctR8SwFPw1ySWhGSpi5IMbTjNgq+GuU7v67nLqRSZbwMcugyRTffY
+         s7rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=KJYhx3yR6N+6UcyM2orOwL517tjZhPkcxc4FU0m7ddA=;
-        b=YLlkPNZDjRn8zaMld9NTSlbb5wnkEvH41wk4yWBcY09nsWfiW2470Tog1RjCWrUi2H
-         fsCRgwD6Ig8bdAiwMF19hCcujiK8V2MNXVbwAWAHBTszJsLnksqm+hs4N5VRcGR1uu9C
-         ssV7olPPriNjlMU7LHhkO6Okw0zEXVB+RffB6n6R74G87xAVlxY2emOJ5pI9YcqccGaL
-         ww97fowqx6h5QCDpIv2YctYUUozoJKQ8s1+yRuMsmF6FqlcnnvMsEj0sbs5fhJZvbY+t
-         RY302O1UuCgHJJ4006rnU92yjwFlXdpzK0b+iJlmv5rfR3pZK/evmr0KoFn1hhLDhvVS
-         ctfA==
+        bh=bTzMnQnAzGQwR0xamNaZY19Jsah65lLBnMI+EuV+DgI=;
+        b=z1LscQd2S6bnWd8lvvQRNxwCayAKNY1xyPcQFPDdXy8rPgjpzDMUliIlYTjYSDqlh/
+         hUqU3W0RZ4B4sk18JiM2OnknSrqlvWIgcohzMFs85KGb0bsgPzv8QlFERr9eMQ94En9F
+         i2O8NSOFKfGIHdFqpoJeuWhgNUqpd7OqrGnYuasE4s6lNwBAZVPiQHOZzXerPnPDJ0vh
+         Q8QJPt0ynwXsG4vrLJ8BThYzGT2IHLQTB73WnYqfsf9+tiHH2bQKHjGBfYAdaOXqUv05
+         PNYelVIbvASi6Mxt1wpdDZ9QX1k6SGe01WbmVVqK9hmPePytf/YgvPMBhLmINy96i4el
+         gyxg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z4si301358jap.100.2021.09.03.12.46.21
+        by mx.google.com with ESMTPS id v66si337918iof.105.2021.09.03.12.49.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 12:46:21 -0700 (PDT)
+        Fri, 03 Sep 2021 12:49:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45734 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMF8j-0005PX-Sh
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:46:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44126)
+	id 1mMFBc-0003FZ-Kn
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:49:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44204)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF42-00044J-QO; Fri, 03 Sep 2021 15:41:26 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:33791)
+ id 1mMF45-0004Dq-Me; Fri, 03 Sep 2021 15:41:29 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:41803)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF3v-0002LN-JM; Fri, 03 Sep 2021 15:41:26 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.148])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id C7012BC4DEF9;
- Fri,  3 Sep 2021 21:41:15 +0200 (CEST)
+ id 1mMF3z-0002Hc-HH; Fri, 03 Sep 2021 15:41:29 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.7])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id EB1A8BC4DEF1;
+ Fri,  3 Sep 2021 21:41:12 +0200 (CEST)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 21:41:15 +0200
+ 2021 21:41:12 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005f97fb7df-1e66-4ea8-8cb3-825e3699f9ec,
+ (GARM-103G005917bad50-78af-415b-b70b-7c29cfd75f35,
  15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 12/14] hw/arm/aspeed: Initialize AST2600 UART clock selection
- registers
-Date: Fri, 3 Sep 2021 21:41:06 +0200
-Message-ID: <20210903194108.131403-13-clg@kaod.org>
+Subject: [PULL 05/14] hw: aspeed_gpio: Simplify 1.8V defines
+Date: Fri, 3 Sep 2021 21:40:59 +0200
+Message-ID: <20210903194108.131403-6-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903194108.131403-1-clg@kaod.org>
 References: <20210903194108.131403-1-clg@kaod.org>
@@ -72,11 +71,11 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: ee3225b2-0cf4-4fd4-a54b-0d5390e5c778
-X-Ovh-Tracer-Id: 8816640697611815785
+X-Ovh-Tracer-GUID: cb1f82cc-85b6-44ff-87d5-c4cdefbe6834
+X-Ovh-Tracer-Id: 8815796270817643372
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigfdvvdffffevleefgefhheegtedutdfgueevfeffleegledvuefhteetueekjeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
 Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
  helo=smtpout1.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
@@ -84,7 +83,7 @@ X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -98,118 +97,117 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Rashmica Gupta <rashmica.g@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bsc33Z0cRjl2
+X-TUID: 3ccP+05vDA3p
 
-From: Peter Delevoryas <pdel@fb.com>
+From: Joel Stanley <joel@jms.id.au>
 
-UART5 is typically used as the default debug UART on the AST2600, but
-UART1 is also designed to be a debug UART. All the AST2600 UART's have
-semi-configurable clock rates through registers in the System Control
-Unit (SCU), but only UART5 works out of the box with zero-initialized
-values. The rest of the UART's expect a few of the registers to be
-initialized to non-zero values, or else the clock rate calculation will
-yield zero or undefined (due to a divide-by-zero).
+There's no need to define the registers relative to the 0x800 offset
+where the controller is mapped, as the device is instantiated as it's
+own model at the correct memory address.
 
-For reference, the U-Boot clock rate driver here shows the calculation:
+Simplify the defines and remove the offset to save future confusion.
 
-    https://github.com/facebook/openbmc-uboot/blob/main/drivers/clk/aspeed/clk_ast2600.c#L357)
-
-To summarize, UART5 allows selection from 4 rates: 24 MHz, 192 MHz, 24 /
-13 MHz, and 192 / 13 MHz. The other UART's allow selecting either the
-"low" rate (UARTCLK) or the "high" rate (HUARTCLK). UARTCLK and HUARTCLK
-are configurable themselves:
-
-    UARTCLK = UXCLK * R / (N * 2)
-    HUARTCLK = HUXCLK * HR / (HN * 2)
-
-UXCLK and HUXCLK are also configurable, and depend on the APLL and/or
-HPLL clock rates, which also derive from complicated calculations. Long
-story short, there's lots of multiplication and division from
-configurable registers, and most of these registers are zero-initialized
-in QEMU, which at best is unexpected and at worst causes this clock rate
-driver to hang from divide-by-zero's. This can also be difficult to
-diagnose, because it may cause U-Boot to hang before serial console
-initialization completes, requiring intervention from gdb.
-
-This change just initializes all of these registers with default values
-from the datasheet.
-
-To test this, I used Facebook's AST2600 OpenBMC image for "fuji", with
-the following diff applied (because fuji uses UART1 for console output,
-not UART5).
-
-  @@ -323,8 +323,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-       }
-
-      /* UART - attach an 8250 to the IO space as our UART5 */
-  -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
-  -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
-  +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART1], 2,
-  +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART1),
-                    38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-
-       /* I2C */
-
-Without these clock rate registers being initialized, U-Boot hangs in
-the clock rate driver from a divide-by-zero, because the UART1 clock
-rate register reads return zero, and there's no console output. After
-initializing them with default values, fuji boots successfully.
-
-    git clone https://github.com/facebook/openbmc
-    cd openbmc
-    ./sync_yocto.sh
-    source openbmc-init-build-env fuji build-fuji
-    bitbake fuji-image
-    cp ./tmp/deploy/images/fuji/flash-fuji /tmp/
-
-    dd if=/dev/zero of=/tmp/fixedsize-fuji bs=1M count=128
-    dd if=/tmp/flash-fuji of=/tmp/fixedsize-fuji bs=1k conv=notrunc
-
-    git clone --branch init-clock-sel-regs https://github.com/peterdelevoryas/qemu
-    cd qemu
-    ./configure --target-list=arm-softmmu --disable-vnc
-    make -j $(nproc)
-    ./build/arm-softmmu/qemu-system-arm \
-        -machine ast2600-evb \
-        -drive file=/tmp/fixedsize-fuji,format=raw,if=mtd \
-        -serial stdio
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
-[ clg: - reworked diff in commit log
-       - dropped CLK_SEL* changes which were already merged
-       - Subject update ]
-Message-Id: <20210831142502.279485-1-pdel@fb.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Rashmica Gupta <rashmica.g@gmail.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210713065854.134634-3-joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/aspeed_scu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/gpio/aspeed_gpio.c | 73 +++++++++++++++++++++----------------------
+ 1 file changed, 36 insertions(+), 37 deletions(-)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 05edebedeb46..a95dca65f2f1 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -119,6 +119,8 @@
- #define AST2600_CLK_SEL3          TO_REG(0x308)
- #define AST2600_CLK_SEL4          TO_REG(0x310)
- #define AST2600_CLK_SEL5          TO_REG(0x314)
-+#define AST2600_UARTCLK_PARAM     TO_REG(0x338)
-+#define AST2600_HUARTCLK_PARAM    TO_REG(0x33C)
- #define AST2600_HW_STRAP1         TO_REG(0x500)
- #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
- #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
-@@ -681,6 +683,8 @@ static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-     [AST2600_CLK_SEL3]          = 0x00000000,
-     [AST2600_CLK_SEL4]          = 0xF3F40000,
-     [AST2600_CLK_SEL5]          = 0x30000000,
-+    [AST2600_UARTCLK_PARAM]     = 0x00014506,
-+    [AST2600_HUARTCLK_PARAM]    = 0x000145C0,
-     [AST2600_CHIP_ID0]          = 0x1234ABCD,
-     [AST2600_CHIP_ID1]          = 0x88884444,
- };
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index b3dec4448009..dc721aec5da7 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -169,44 +169,43 @@
+ 
+ /* AST2600 only - 1.8V gpios */
+ /*
+- * The AST2600 has same 3.6V gpios as the AST2400 (memory offsets 0x0-0x198)
+- * and additional 1.8V gpios (memory offsets 0x800-0x9D4).
++ * The AST2600 two copies of the GPIO controller: the same 3.6V gpios as the
++ * AST2400 (memory offsets 0x0-0x198) and a second controller with 1.8V gpios
++ * (memory offsets 0x800-0x9D4).
+  */
+-#define GPIO_1_8V_REG_OFFSET          0x800
+-#define GPIO_1_8V_ABCD_DATA_VALUE     ((0x800 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DIRECTION      ((0x804 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_ENABLE     ((0x808 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_SENS_0     ((0x80C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_SENS_1     ((0x810 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_SENS_2     ((0x814 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_STATUS     ((0x818 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_RESET_TOLERANT ((0x81C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DATA_VALUE        ((0x820 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DIRECTION         ((0x824 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_ENABLE        ((0x828 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_SENS_0        ((0x82C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_SENS_1        ((0x830 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_SENS_2        ((0x834 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_STATUS        ((0x838 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_RESET_TOLERANT    ((0x83C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DEBOUNCE_1     ((0x840 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DEBOUNCE_2     ((0x844 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DEBOUNCE_1        ((0x848 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DEBOUNCE_2        ((0x84C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_DEBOUNCE_TIME_1     ((0x850 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_DEBOUNCE_TIME_2     ((0x854 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_DEBOUNCE_TIME_3     ((0x858 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_COMMAND_SRC_0  ((0x860 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_COMMAND_SRC_1  ((0x864 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_COMMAND_SRC_0     ((0x868 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_COMMAND_SRC_1     ((0x86C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DATA_READ      ((0x8C0 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DATA_READ         ((0x8C4 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INPUT_MASK     ((0x9D0 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INPUT_MASK        ((0x9D4 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_MEM_SIZE            0x9D8
+-#define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
+-                                      GPIO_1_8V_REG_OFFSET) >> 2)
++#define GPIO_1_8V_ABCD_DATA_VALUE     (0x000 >> 2)
++#define GPIO_1_8V_ABCD_DIRECTION      (0x004 >> 2)
++#define GPIO_1_8V_ABCD_INT_ENABLE     (0x008 >> 2)
++#define GPIO_1_8V_ABCD_INT_SENS_0     (0x00C >> 2)
++#define GPIO_1_8V_ABCD_INT_SENS_1     (0x010 >> 2)
++#define GPIO_1_8V_ABCD_INT_SENS_2     (0x014 >> 2)
++#define GPIO_1_8V_ABCD_INT_STATUS     (0x018 >> 2)
++#define GPIO_1_8V_ABCD_RESET_TOLERANT (0x01C >> 2)
++#define GPIO_1_8V_E_DATA_VALUE        (0x020 >> 2)
++#define GPIO_1_8V_E_DIRECTION         (0x024 >> 2)
++#define GPIO_1_8V_E_INT_ENABLE        (0x028 >> 2)
++#define GPIO_1_8V_E_INT_SENS_0        (0x02C >> 2)
++#define GPIO_1_8V_E_INT_SENS_1        (0x030 >> 2)
++#define GPIO_1_8V_E_INT_SENS_2        (0x034 >> 2)
++#define GPIO_1_8V_E_INT_STATUS        (0x038 >> 2)
++#define GPIO_1_8V_E_RESET_TOLERANT    (0x03C >> 2)
++#define GPIO_1_8V_ABCD_DEBOUNCE_1     (0x040 >> 2)
++#define GPIO_1_8V_ABCD_DEBOUNCE_2     (0x044 >> 2)
++#define GPIO_1_8V_E_DEBOUNCE_1        (0x048 >> 2)
++#define GPIO_1_8V_E_DEBOUNCE_2        (0x04C >> 2)
++#define GPIO_1_8V_DEBOUNCE_TIME_1     (0x050 >> 2)
++#define GPIO_1_8V_DEBOUNCE_TIME_2     (0x054 >> 2)
++#define GPIO_1_8V_DEBOUNCE_TIME_3     (0x058 >> 2)
++#define GPIO_1_8V_ABCD_COMMAND_SRC_0  (0x060 >> 2)
++#define GPIO_1_8V_ABCD_COMMAND_SRC_1  (0x064 >> 2)
++#define GPIO_1_8V_E_COMMAND_SRC_0     (0x068 >> 2)
++#define GPIO_1_8V_E_COMMAND_SRC_1     (0x06C >> 2)
++#define GPIO_1_8V_ABCD_DATA_READ      (0x0C0 >> 2)
++#define GPIO_1_8V_E_DATA_READ         (0x0C4 >> 2)
++#define GPIO_1_8V_ABCD_INPUT_MASK     (0x1D0 >> 2)
++#define GPIO_1_8V_E_INPUT_MASK        (0x1D4 >> 2)
++#define GPIO_1_8V_MEM_SIZE            0x1D8
++#define GPIO_1_8V_REG_ARRAY_SIZE      (GPIO_1_8V_MEM_SIZE >> 2)
+ 
+ static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
+ {
 -- 
 2.31.1
 

@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1174405lfb;
-        Fri, 3 Sep 2021 04:08:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPYUGOpKeixac21pMZ76EBzQyKyjQLYu3chiTk0zlfFqEZLEqjkFVSwu2nj5Nx4BNM1b2R
-X-Received: by 2002:a17:906:165a:: with SMTP id n26mr3619229ejd.236.1630667298715;
-        Fri, 03 Sep 2021 04:08:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630667298; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1174497lfb;
+        Fri, 3 Sep 2021 04:08:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2ajjewcRh9aC9SNBsIFiDGobTEZGgcYCPsqc32826vj6IxlEzYdtXB4z7l1B/tDyNoN7m
+X-Received: by 2002:aa7:c64d:: with SMTP id z13mr3347643edr.349.1630667304797;
+        Fri, 03 Sep 2021 04:08:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630667304; cv=none;
         d=google.com; s=arc-20160816;
-        b=EQFVYiCI3vYHGU2IES+EmVdILNHxbIrEoP+aDvJe44yLVi2QeSjw/dk/SAs1YnE+r/
-         llWGoJTSspzBvEgb31P/A8Fe59ntsmu+l0nOYn/KUoZoxZJOhccUqh5fvpk4TFscxMVH
-         QODlkOZJk4qpwfvR5rWxADs1NzH79mtyBtIn78rJQNetFYDJRfR5QJ+5ZSSrUPoZ/xvE
-         v2y5anjMdZ8QeMdG/2AIA2wj6YuD8sCzsDo7rbsEy45WSfuosq7fq4cQ65KK2uzdn6Nr
-         hcsUbkAsPvVDXbp9adgXMrtUWmnBjYkxP1g62OOAGeOdMZnh+tkr5NvYVpbE4aNBH69k
-         sfow==
+        b=itVbV8iEuX7Jk45HVnNXtPjGB1/f1zUhdZKsC0O39s86HvT7W4hpLXzA8AA/jrKi1k
+         kiL6dyP3xpYvtD6ga0v5V7bVyAAma0l/0diky4VQgZVBn2bMWXHiQu41JMb2fW3fqTBr
+         Hg9Rocx6kutHzxzL7xVlGr4T6eFZTmnipMQ+TO/wIGC/1stNv4Z0y8fdyEDRs+Kyfrud
+         OKGM4QuSU/fiCSHI8WOAJoqTsDYkHtxiRBxal+WWezyFcAbDdki8r04xQhQDum+8afKX
+         AaQJVCR7nkAZTolNoxQhoYnOfSLsQl7luwpK76U0XzAfGzs4e4LrtI3aowuYpdPeRmzH
+         dy+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DAHpDs712oI1Di1eaFqrdG2Typ24HrNYG4qVZsBh0cw=;
-        b=CDu0TC1t27DnzVOctlF6bLCIeukJwaHitE0GHj7gXusu0ElLSjf8w9BYYxJLaA9T6d
-         0xfF7IqlBpDXmGTfoPFAynTgNAwySXz1ji+Ft+5DS6qTNTuKqWLOxUMz7JsHsfmjy/Fd
-         4MfJNF2pgio1wqZJzyTky2QqA8P+UG6WOoWnGwiiF00eMHvnAGZT4YS0SUYl5+AGOypP
-         T7L3TWCb3ZKeoQtx4GLvCFz5+wNFm3vGo10DdcdcnJH0J/q8DQ1f9+I73FZaeB3Y9uIS
-         m48hA5gk+OINNwAO6EIaiCfIibrP8yMwyiGE8+9LOKFCkd5mPUuzqllv4fCKJsKf+vyy
-         4NPA==
+        bh=9Eu7asELFex4yFplfKK/zMZmk6Z93QlAJxAwuUJzsvI=;
+        b=K4S82Swh6CvxsSixcln8giJbIILiTPM7CIKaYxM6qoSfmsQuFcmUuKqbnU/fg9S+LP
+         CKM+M1Alsw5ls0nghTwA8N8u5MpVbjW3cookA7d6yxt+t3l2AngalYnlQVOi4/i+W2Ee
+         iiJf92omhCpr5DmEYLF81AA3tLdEKefq9XheiapQMyDGKlrEOvX6fEpOquj5vQOiTIuq
+         kISomisK3dDmsl/Yu7PxZz0oXi+8na7+QJGcOKEKFaIPn9X7JSVQoKvt1SAHW71o6eBD
+         dlcWHf9ElueIxStsaL6ZrJ5XJBegqC+sGAVnaWeJre8uH0cXS1fjSO7ut+FczcF5/vA1
+         6SUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OTAWoo+/";
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hD+/KMZR";
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id g6si5823031edb.162.2021.09.03.04.08.18
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id go17si3887295ejc.354.2021.09.03.04.08.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 04:08:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 03 Sep 2021 04:08:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OTAWoo+/";
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hD+/KMZR";
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630667297;
+	s=mimecast20190719; t=1630667303;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=DAHpDs712oI1Di1eaFqrdG2Typ24HrNYG4qVZsBh0cw=;
-	b=OTAWoo+/Lv1PaK9hp39LKj+kMmwwqL/xm1cRRo7o69GgIpqIMNYFcJZU6k1VWu+91g6g2e
-	P7nPvPHNuDn+OZr6h7lQMYNhr2mK3lRXzZxv8QzMxTCtnkVlrluB2vOcjmZN0SXgceX4+k
-	ARYaZ9D3bpFt0Rgt68nbjbQD2DCUv9U=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-600-kM1z4s5QO9WvFVjrCpx_NA-1; Fri, 03 Sep 2021 07:08:14 -0400
-X-MC-Unique: kM1z4s5QO9WvFVjrCpx_NA-1
-Received: by mail-wm1-f72.google.com with SMTP id r125-20020a1c2b830000b0290197a4be97b7so1831183wmr.9
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:08:14 -0700 (PDT)
+	bh=9Eu7asELFex4yFplfKK/zMZmk6Z93QlAJxAwuUJzsvI=;
+	b=hD+/KMZRivgT+04kbbBRVUqucBhAqRsA4f+iMSIuiUDSierdGG3Q/mbBfpwlTsJyQEftym
+	DSR0yRAW7Pou1JxB6CIs/jRn4ieDYh0+mI/V9gLifyENUzAne57CT2oUC6+eR8XNOaEVR7
+	DA14VmeG+Op0qGPMLiFm1GOAKBTAQn8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-205-6yspAjcYNWSWBygXpSjspg-1; Fri, 03 Sep 2021 07:08:20 -0400
+X-MC-Unique: 6yspAjcYNWSWBygXpSjspg-1
+Received: by mail-wm1-f71.google.com with SMTP id n16-20020a1c7210000000b002ea2ed60dc6so1719549wmc.0
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:08:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=DAHpDs712oI1Di1eaFqrdG2Typ24HrNYG4qVZsBh0cw=;
-        b=ugPKJsh0ayKqzY2yqZC/UHG96UPGoCc3SloXEa0xKcuSJE4IulrCEXjPWEYUTCeMlk
-         CpALeUP32kGrywldMOf+j2xnUnZCEC5hjUSkXf/QoOo5vWrOczuD4TSbKHWUYCfFYK+s
-         XoaUI3WbPaWtcts/Fd5n9FsNkD5E5zESequHUC8BidLUV7Q3xV6Alh3Fn3dAuYENjwgL
-         /9I+18k+4Xr359lhgkP3BHI6KLrd/cBaNo/ojXuO030SN3kGm3jCMVUIImVib5BeOStW
-         fzyJns6vw9xQU2g5YVMpqzXQEun7xTvfwyxO5cw4eun5CkaDsAxqe5Bflz1smbT8RMjU
-         dzqA==
-X-Gm-Message-State: AOAM532nJTSCH2tWF7/4qbNlG7zvK3e940U1vUXnBeZ0Qa+/Zc7im1IW
-	tJqfGKy/jlG+J2kCjNR4odTmkDvZPBBBp5hHUkc5homvhJpq6yVETXT63qNsph7c54kfeQrYI4R
-	neBvduNdchE9Blyb1
-X-Received: by 2002:adf:db83:: with SMTP id u3mr3485677wri.363.1630667293636;
-        Fri, 03 Sep 2021 04:08:13 -0700 (PDT)
-X-Received: by 2002:adf:db83:: with SMTP id u3mr3485647wri.363.1630667293467;
-        Fri, 03 Sep 2021 04:08:13 -0700 (PDT)
+        bh=9Eu7asELFex4yFplfKK/zMZmk6Z93QlAJxAwuUJzsvI=;
+        b=lLJaO3WxCzJhVwGn/jkzyY9f4Ripo2TtJy9ErU1tzTGbu20oZsZutyo/dkyokvaqyf
+         Psch6jxD1K9XwBx2R/M4MMIA2jvJKFiSDRALtpTmtZks2rz9HUnwM4xBrSFe1GvoYxWD
+         Diy+dcclIYcahlY+cNK7psLvlBiiaLHJ4JGRpxX5GyBoVBAQW5TIHN0rzM8/U99ahCTt
+         Vg78rUphIwiM8zoY8MI9HYP8R8/TOw0nOb0yI0SIzz260rEcxRUJuREtaugM7G7Wj2t2
+         LcWvDjUNstJpt7NHp3cwhOKQ7EepjpcC2VAT1ul/RelhJ35SAi1wboWqM8330yv7hXuJ
+         X7lw==
+X-Gm-Message-State: AOAM531XTIgTNBQ+DisIC65XnMfHokBtdFQxcXHqQprg9DZXsRBQyqZC
+	SW/Gv37XfTxJGHw+pRo1PwUXi75FcgSyw8CH+zTa/6uW/qsVw84IbmJTOW9rz3tJOogFQhoVXcU
+	iF4o6yzsXmS6FDS8O
+X-Received: by 2002:a1c:3102:: with SMTP id x2mr7947454wmx.122.1630667299684;
+        Fri, 03 Sep 2021 04:08:19 -0700 (PDT)
+X-Received: by 2002:a1c:3102:: with SMTP id x2mr7947440wmx.122.1630667299523;
+        Fri, 03 Sep 2021 04:08:19 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id y21sm4191900wmc.11.2021.09.03.04.08.11
+        by smtp.gmail.com with ESMTPSA id d7sm4401782wrs.39.2021.09.03.04.08.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 04:08:13 -0700 (PDT)
+        Fri, 03 Sep 2021 04:08:19 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Hanna Reitz <hreitz@redhat.com>,
@@ -117,9 +117,9 @@ Cc: Hanna Reitz <hreitz@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	qemu-ppc@nongnu.org,
 	David Hildenbrand <david@redhat.com>
-Subject: [PATCH 12/28] hw/i386/multiboot: Replace g_memdup() by g_memdup2_qemu()
-Date: Fri,  3 Sep 2021 13:06:46 +0200
-Message-Id: <20210903110702.588291-13-philmd@redhat.com>
+Subject: [PATCH 13/28] hw/net/eepro100: Replace g_memdup() by g_memdup2_qemu()
+Date: Fri,  3 Sep 2021 13:06:47 +0200
+Message-Id: <20210903110702.588291-14-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903110702.588291-1-philmd@redhat.com>
 References: <20210903110702.588291-1-philmd@redhat.com>
@@ -130,7 +130,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hGvDtrXNP4JZ
+X-TUID: uPr/IhTr8NsK
 
 Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
 
@@ -146,21 +146,21 @@ Replace g_memdup() by the safer g_memdup2_qemu() wrapper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/i386/multiboot.c | 2 +-
+ hw/net/eepro100.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i386/multiboot.c b/hw/i386/multiboot.c
-index 9e7d69d4705..f536e3c8c96 100644
---- a/hw/i386/multiboot.c
-+++ b/hw/i386/multiboot.c
-@@ -387,7 +387,7 @@ int load_multiboot(FWCfgState *fw_cfg,
-     mb_debug("           mb_mods_count = %d", mbs.mb_mods_count);
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index 16e95ef9cc9..ed2bc54c052 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1872,7 +1872,7 @@ static void e100_nic_realize(PCIDevice *pci_dev, Error **errp)
  
-     /* save bootinfo off the stack */
--    mb_bootinfo_data = g_memdup(bootinfo, sizeof(bootinfo));
-+    mb_bootinfo_data = g_memdup2_qemu(bootinfo, sizeof(bootinfo));
+     qemu_register_reset(nic_reset, s);
  
-     /* Pass variables to option rom */
-     fw_cfg_add_i32(fw_cfg, FW_CFG_KERNEL_ENTRY, mh_entry_addr);
+-    s->vmstate = g_memdup(&vmstate_eepro100, sizeof(vmstate_eepro100));
++    s->vmstate = g_memdup2_qemu(&vmstate_eepro100, sizeof(vmstate_eepro100));
+     s->vmstate->name = qemu_get_queue(s->nic)->model;
+     vmstate_register(VMSTATE_IF(&pci_dev->qdev), VMSTATE_INSTANCE_ID_ANY,
+                      s->vmstate, s);
 -- 
 2.31.1

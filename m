@@ -1,148 +1,131 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1516676lfb;
-        Fri, 3 Sep 2021 10:47:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHzXGMLLk/8Dvdf6hXhK4yoEKDcxWiHJj6GHVF7M4Oj4qzWR6eiAMzQLB0JME2qMYg7q5v
-X-Received: by 2002:aa7:ca14:: with SMTP id y20mr211229eds.2.1630691266224;
-        Fri, 03 Sep 2021 10:47:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630691266; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1646856lfb;
+        Fri, 3 Sep 2021 13:37:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHATeXS9gL2dp3CLCcJCvjbfqta/kP2qSlIP/8JlwfPshqwC46o24frG3okL5CCa6kELff
+X-Received: by 2002:a17:906:1f81:: with SMTP id t1mr755139ejr.510.1630701462332;
+        Fri, 03 Sep 2021 13:37:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630701462; cv=none;
         d=google.com; s=arc-20160816;
-        b=ekrIEcs8Co1dcrv10AUvU1Y2qY2ISwaoiJ3oxnVwv9gnpNLeK57VCijBIXPUX9P3n1
-         XBNNOSFpHB7RkI5IRASGggIzOq3pOJ9rKbI9TiwF4hsZgwv9Lje6476ltddMMmkKpHuv
-         or+9R19ndjWL+gY8ACvgSVrDnZKmsbZtZhyHPn3m0eOF9d52XioBzgKrXdAfHXJa6R3/
-         5KytB1SV58sOVKJYwi6KTDkiGCuQWcBl8g5wab4NIbQIG66ZuARl3HHioKPKwnsJa8vu
-         7BsthoyseeHK9eP7CLJFuTtrmqZJOFzzZnSv0LDD2nTQCWZZFRT1XmCO08vg+jj/uzW3
-         Ot1A==
+        b=U9ecxWv75vdvMNpwQfJOS4SO/0xmnX6wmlqCA1SUnK+NGc105Z9d/jxjbX8CMmovv9
+         3s43+/QvL9W9/HPz2dyqmMtEGatPcr19ONfqXerBKcOAsVchXAQ1uPXlg31b52uxTSz1
+         rbdcbYsgLyybeu7p+/sIKsB0/DJ9n7Jaq3izb7+BSwVMKUqJC97LhHOXj0e3fLZhv/wH
+         k6h0qsZQNjlY/HHA9Z02r0j0RDPuo+ADF63gGGDA60r/j7Wkz61a1i9CyBg4WadlVCSI
+         juLUKEi1hS/BX3dEbhSAVvrbwuL3DLY/8PDZ8vpPCchXbDr0/dmjs04n4vtqeJO9tsh3
+         hPlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dThNb9up0Udv82pZnAoy1KC7krZ7htoDQTtIaOGdW3Q=;
-        b=ffsRf9iikA+7Ue8RpKNV4xIZcZZckrrqm3/8SXtjV9xKE+UcUT7oYZ4NZsF4QYp8bZ
-         c+rUT5U2Bwd072GfoxcmJFYojTRtzfNKR89BGFWNThE/N5IAwfT3bGlemJx32OGHXEVV
-         SeCfkuAHT/DoYbqwuln20dGhodR1XGZ1jClhc29xiwOGwVHfnfg5OIikHQ2gyegGu24E
-         yRXYmivRynmdUdY+IYHg6Cy4A3t/x6gCel3+DdC9VnMIMsISN3A4wMeDrWtQLtXbS3BE
-         84z67lMIPcwcuX1LTQkkVVSDTPGOifVziE7Eu8F52onTEDUijFQj06QrK/WxVEriM6Qz
-         hSPA==
+        h=content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=aw9m4qqc4U8mAFeDmeoRz2rwOvkqdWRlOxWeniWugMk=;
+        b=laSfwBg4+Czcrseul7V2UilJSvOm/68g811QNrNNj816GAk7cmG5WZhrQj9nM7rv/5
+         oTUPgMDuJyuiHeAxD32pNUZ8aOeqtHMjgARRumzRfsS2uoPIuN0fTYJ3KdqObS9Cjc5b
+         kmd/pcN/EaZGbNsziKrvyzCxYdVVLDZXHLbAs8M6b1fKiICTd1sJGjP5jNbh9cD2HOmb
+         hgkOBz//S1apEi6CDUX9GY4PznpUNd8kYzgWZoCKcVLY02Ae6o3/xOSqsW1VIWyn0Fyk
+         wx9XYktAf+zGiY/gUa5ULVxp8UgiY0KapDs4dQPZjyWvVPnLMXvFRPvlRQRQY38Pq5La
+         ri4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PTe955kO;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jS4bG9r6;
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id z12si5754959ejc.42.2021.09.03.10.47.45
+Return-Path: <eblake@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id g16si512607edb.150.2021.09.03.13.37.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 10:47:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Fri, 03 Sep 2021 13:37:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PTe955kO;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jS4bG9r6;
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630691265;
+	s=mimecast20190719; t=1630701461;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dThNb9up0Udv82pZnAoy1KC7krZ7htoDQTtIaOGdW3Q=;
-	b=PTe955kO7yqTd1uUxG/tWBNRwrXUuzrPX/FeJJdANxqvz089PagPlRUAFyY+0gZbrp5onW
-	cyOu35Yhihr3pksdMt+rLSY2jSviSQX9KwPn25RzHkMl9M1SHgldRVtyJNs+Jw0xUoQLhK
-	9UUkjUn9HaHL0kB07zN0S4zuiEZNbxM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-559-Qq1t8hofPai6BgMpJLC5aw-1; Fri, 03 Sep 2021 13:47:42 -0400
-X-MC-Unique: Qq1t8hofPai6BgMpJLC5aw-1
-Received: by mail-wm1-f70.google.com with SMTP id j135-20020a1c238d000000b002e87aa95b5aso52940wmj.4
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:47:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=dThNb9up0Udv82pZnAoy1KC7krZ7htoDQTtIaOGdW3Q=;
-        b=ZiimG5SheQl9WLxPMiy0Q/UQ/s4qiffQMljU1B4uPtmaOvqRkMrFmz92dno/bLlwLx
-         xayeuxmR/A1VsxzpxpOU5hLg6WUFKIP7L5FR7RDb4glxSIDLk8WWmtTrEQjpwQjsPQkG
-         Y6DCbRvJBWcboyXQ0r/DwN56xg4X1hyCoYG7dhp0rfMVZJjRH7CM87Z+QEzDUvq1I3MY
-         ufNGbW2ZeaguGGVGnLaVaYwHJtuEGw7OGRmhoS3Nv1ICC8+BP3rtZ56hqbx+kpxa7/FY
-         xsrV5n/gjP4GHHcq5C7G2JJOgt5qG73ARhzRQ3kTzlxvyAeO5UW2DGc0l7gRFVrXR797
-         UyOA==
-X-Gm-Message-State: AOAM533c97+48MIsO8w3L8+BRo9zTIyevddUinSKiVjfANqztv2r5JsF
-	F4mP1n4jt6Rd5S//Fbi8BLN+0mwuMkQqHF5Gus7wNO/S6vWNbQQJAR5qrRQIUJRXqaSR1N9tHBH
-	A+GSOqc/Cw9wiqkLs
-X-Received: by 2002:a7b:c3d0:: with SMTP id t16mr12120wmj.169.1630691261148;
-        Fri, 03 Sep 2021 10:47:41 -0700 (PDT)
-X-Received: by 2002:a7b:c3d0:: with SMTP id t16mr12089wmj.169.1630691260951;
-        Fri, 03 Sep 2021 10:47:40 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id t11sm38889wmi.23.2021.09.03.10.47.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 10:47:40 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	bh=aw9m4qqc4U8mAFeDmeoRz2rwOvkqdWRlOxWeniWugMk=;
+	b=jS4bG9r63XtMfcSRfYbOlZQwWwJ7UOYcfBG9hc6dFouIfMMSxPF68d1tmTU3dU0UkpIRtJ
+	OQ5vQSHkXqFfk2ftmqu79oMxQzfzafOs5xQD5QyHoqDR0C36D+ufD41CAxdk68Ls3NCqtg
+	AKRa7c7AmN29xMG+SPFqht1NFVyz1J4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-60-PeOdw3ZbOXm9yRFhAFMvAw-1; Fri, 03 Sep 2021 16:37:37 -0400
+X-MC-Unique: PeOdw3ZbOXm9yRFhAFMvAw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4EDBF84A5E1;
+	Fri,  3 Sep 2021 20:37:35 +0000 (UTC)
+Received: from redhat.com (ovpn-113-81.phx2.redhat.com [10.3.113.81])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1380F77F35;
+	Fri,  3 Sep 2021 20:37:21 +0000 (UTC)
+Date: Fri, 3 Sep 2021 15:37:19 -0500
+From: Eric Blake <eblake@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Kevin Wolf <kwolf@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Markus Armbruster <armbru@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
 	Christian Schoenebeck <qemu_oss@crudebyte.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
 	David Hildenbrand <david@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	John Snow <jsnow@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, John Snow <jsnow@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Hanna Reitz <hreitz@redhat.com>,
-	qemu-block@nongnu.org,
-	qemu-ppc@nongnu.org,
-	"Daniel P . Berrange" <berrange@redhat.com>
-Subject: [PATCH v3 28/28] checkpatch: Do not allow deprecated g_memdup()
-Date: Fri,  3 Sep 2021 19:45:10 +0200
-Message-Id: <20210903174510.751630-29-philmd@redhat.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210903174510.751630-1-philmd@redhat.com>
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org,
+	qemu-ppc@nongnu.org, "Daniel P . Berrange" <berrange@redhat.com>
+Subject: Re: [PATCH v3 02/28] glib-compat: Introduce g_memdup2() wrapper
+Message-ID: <20210903203719.gsfqid3levceqjs6@redhat.com>
 References: <20210903174510.751630-1-philmd@redhat.com>
+ <20210903174510.751630-3-philmd@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <20210903174510.751630-3-philmd@redhat.com>
+User-Agent: NeoMutt/20210205-739-420e15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: YRqJsDUyxl6D
+X-TUID: HdhhqtguZ133
 
-g_memdup() is insecure and as been deprecated in GLib 2.68.
-QEMU provides the safely equivalent g_memdup2() wrapper.
+On Fri, Sep 03, 2021 at 07:44:44PM +0200, Philippe Mathieu-Daudé wrote:
+> When experimenting raising GLIB_VERSION_MIN_REQUIRED to 2.68
+> (Fedora 34 provides GLib 2.68.1) we get:
+> 
+>   hw/virtio/virtio-crypto.c:245:24: error: 'g_memdup' is deprecated: Use 'g_memdup2' instead [-Werror,-Wdeprecated-declarations]
+>   ...
+> 
+> g_memdup() has been updated by g_memdup2() to fix eventual security
+> issues (size argument is 32-bit and could be truncated / wrapping).
+> GLib recommends to copy their static inline version of g_memdup2():
+> https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
+> 
+> Our glib-compat.h provides a comment explaining how to deal with
+> these deprecated declarations (see commit e71e8cc0355
+> "glib: enforce the minimum required version and warn about old APIs").
+> 
+> Following this comment suggestion, implement the g_memdup2_qemu()
+> wrapper to g_memdup2(), and use the safer equivalent inlined when
+> we are using pre-2.68 GLib.
+> 
+> Reported-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  include/glib-compat.h | 37 +++++++++++++++++++++++++++++++++++++
+>  1 file changed, 37 insertions(+)
 
-Do not allow more g_memdup() calls in the repository, provide
-a hint to use g_memdup2().
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- scripts/checkpatch.pl | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index cb8eff233e0..5caa739db48 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -2850,6 +2850,11 @@ sub process {
- 			WARN("consider using g_path_get_$1() in preference to g_strdup($1())\n" . $herecurr);
- 		}
- 
-+# enforce g_memdup2() over g_memdup()
-+		if ($line =~ /\bg_memdup\s*\(/) {
-+			ERROR("use g_memdup2() instead of unsafe g_memdup()\n" . $herecurr);
-+		}
-+
- # recommend qemu_strto* over strto* for numeric conversions
- 		if ($line =~ /\b(strto[^kd].*?)\s*\(/) {
- 			ERROR("consider using qemu_$1 in preference to $1\n" . $herecurr);
 -- 
-2.31.1
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org

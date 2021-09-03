@@ -1,67 +1,68 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1609004lfb;
-        Fri, 3 Sep 2021 12:49:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxI3APFITlhE9epLJKWt+qgB2bFPLk+vhnUDzbeNrdxhpJJCRdaUczwKzUZ+nrHExc+9l8K
-X-Received: by 2002:a05:6e02:1a4f:: with SMTP id u15mr407491ilv.251.1630698582639;
-        Fri, 03 Sep 2021 12:49:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630698582; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1609809lfb;
+        Fri, 3 Sep 2021 12:50:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyX7InsR1uHIuxMaMRE52gjjkf0P+uyROCvsFNGVkyaJyA9DugwXkS21lFlTCgGgEyISGD
+X-Received: by 2002:a05:6638:399:: with SMTP id y25mr598157jap.23.1630698643024;
+        Fri, 03 Sep 2021 12:50:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630698643; cv=none;
         d=google.com; s=arc-20160816;
-        b=iPkRKsfCc3Ly39ue9mUSO3G4f13msd6EwYYwz3bQKl8/Y4tPZh4AuSafRxMSnaTXCt
-         qieIEFShdc7ZC4r3DBrnpfvcKa31KsBoMbfEig7BW2YPas06ygLIWutysKDZI1l/PIxz
-         MOY2vpBNdRT4qN6b7HPW6JjJ1biMhGjnslra90wC2hY4iCD7K1B9r+eBtpxT/HGtCK6x
-         H3J4kzFJEhsz2d+eyrf3+NDaqeJN4OtJVVZtmCv9m1jtDqjPj/PpVhw45f4+299DkdEM
-         FKsA7yOKvXVtPbuNiyFIvR68+hSGIQh1LeH5Toumso5csgnnBfmihjGxBs2E5ozzPEWU
-         J33w==
+        b=EI0Yi1sd7/PtBDgylD1/2qqmBIB4Edz2NTicN/9g28lgF5Mh8o0xkSQ0+/V/jDXzJk
+         eutR2LemFUSmXzHEZxY2sK/pjZVXxPS2dIcDqhgcqhWJbW8wUw947agUw9Tg7QdMWXrF
+         IsDL8oFj2wE/qH0ar1mFcWEYxHyTPF6WFkRbUTQhIWviJkKRgikbiK60s1W5vQ3DIv/3
+         5WiXxgd/qAqK21gHyQhlr6vZcPXKDMJTgaDmAm6XshL2f9YR2XeG+UCHggae8atM4N1L
+         tHbb2yllNEilD4bQCDI/ocDpsrerFFTGa4jIa5pOj9yOkhiuDoIq8bE/atQrgkvUqQ3f
+         valg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=/xNNjU3RE0o9b7+OgtfaVK1JWeKJGAEcNkVhclIpM6w=;
-        b=ygfyDcdKDivt6oRLpOedlxzgoztXBI5aiDUbZ6Bhj5kB61T0DAaVn1he0v/eDdc3H3
-         179NgL3sD/2b5nTKD6MgTrJN/qIRwgeNOj/NGErE8CFwkmwBgmzhzcR1vQAVkVpLZo2E
-         oT4QmCVZmWZZhTHLWFesaoeaKXrZ3B8bwxM0vZY+ct6+x5Dgjv39J3rt7ui+OUHcw7On
-         nTEC+SXbcwkEVImrCHbvK4ZXGYdX0gfryCwAxp4CMBlC8zh/C9qxSgr4eVnxdFulTBKr
-         c7TLKpNubMHJ0UDTI439AE5t7bii4NlxWH9dBYGp5v/3KBK53NEekJIbApb1ZVH4T4Lj
-         JmAw==
+        bh=rcsQJX9BXBUjem9bi/u1cOmEbwSfgO8cym7reVUog6w=;
+        b=lisMJa9o2u/jfd7eG6btTsLLlJTwVzMno28zguqxmWIBIfaWRWvUWPSzc80C7kfeyL
+         i9PSuNvtU4XKwmz2AVhMCT23I1XuX1wjVTBlj9amIjoGPjS/1ZbPGfSJq4npA7kODrey
+         IwUgidVuAFyiCnneYEfhL3REcv5V0golXJ62FuqMN3Sd2yaG3JPsKB1EtI2X4UXLLOEW
+         5NFkhx7Nlc1l9rX7oUdcRZUKbV6MY7aN+aXSgDJwQmk4VtisoL4EUPUnTYB8R+Fb2D1J
+         DFlRd7Kb33vnt3mAvQCJkWJDkZhRy6mxeo+Ls0zXuoDyvqH9uUlXYr5gK8B2OK8xz9B8
+         J4DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si191628ilk.122.2021.09.03.12.49.42
+        by mx.google.com with ESMTPS id 70si291008ioc.95.2021.09.03.12.50.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 12:49:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Sep 2021 12:50:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56128 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMFC1-0003wF-UR
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:49:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44046)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMFCy-0006pu-K5
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:50:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44054)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF3z-0003uM-Sf
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:23 -0400
-Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:59103)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF40-0003v7-4A
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 15:41:24 -0400
+Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:58867
+ helo=smtpout1.3005.mail-out.ovh.net)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF3v-0002N5-AX
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF3v-0002N4-Nj
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 15:41:23 -0400
 Received: from mxplan5.mail.ovh.net (unknown [10.108.1.6])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 1CCC313FB0D;
- Fri,  3 Sep 2021 19:41:17 +0000 (UTC)
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 3D2DA13B20F;
+ Fri,  3 Sep 2021 19:41:16 +0000 (UTC)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 21:41:16 +0200
+ 2021 21:41:15 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G0054e6b8c49-3119-4b73-ab6b-551d30e99916,
+ (GARM-103G005d1a95851-92f9-4c81-90ac-579b0736edef,
  15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
-Date: Fri, 3 Sep 2021 21:41:08 +0200
-Message-ID: <20210903194108.131403-15-clg@kaod.org>
+Subject: [PULL 13/14] hw/arm/aspeed: Allow machine to set UART default
+Date: Fri, 3 Sep 2021 21:41:07 +0200
+Message-ID: <20210903194108.131403-14-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903194108.131403-1-clg@kaod.org>
 References: <20210903194108.131403-1-clg@kaod.org>
@@ -71,227 +72,164 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 846f1de3-6d19-495b-b79a-bc9052a7c5b5
-X-Ovh-Tracer-Id: 8816922171038665577
+X-Ovh-Tracer-GUID: fbf0155b-3bdc-4813-9270-b4ba2b1accf6
+X-Ovh-Tracer-Id: 8816922173176515433
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigfdvvdffffevleefgefhheegtedutdfgueevfeffleegledvuefhteetueekjeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout3.3005.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.3005.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rScqJCwtEcHz
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FJvwm3vq19P4
 
 From: Peter Delevoryas <pdel@fb.com>
 
-This adds a new machine type "fuji-bmc" based on the following device tree:
+When you run QEMU with an Aspeed machine and a single serial device
+using stdio like this:
 
-https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
+    qemu -machine ast2600-evb -drive ... -serial stdio
 
-Most of the i2c devices are not there, they're added here:
+The guest OS can read and write to the UART5 registers at 0x1E784000 and
+it will receive from stdin and write to stdout. The Aspeed SoC's have a
+lot more UART's though (AST2500 has 5, AST2600 has 13) and depending on
+the board design, may be using any of them as the serial console. (See
+"stdout-path" in a DTS to check which one is chosen).
 
-https://github.com/facebook/openbmc/blob/helium/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
+Most boards, including all of those currently defined in
+hw/arm/aspeed.c, just use UART5, but some use UART1. This change adds
+some flexibility for different boards without requiring users to change
+their command-line invocation of QEMU.
 
-I tested this by building a Fuji image from Facebook's OpenBMC repo,
-booting, and ssh'ing from host-to-guest.
+I tested this doesn't break existing code by booting an AST2500 OpenBMC
+image and an AST2600 OpenBMC image, each using UART5 as the console.
 
-git clone https://github.com/facebook/openbmc
-cd openbmc
-./sync_yocto.sh
-source openbmc-init-build-env fuji build-fuji
-bitbake fuji-image
-dd if=/dev/zero of=/tmp/fuji.mtd bs=1M count=128
-dd if=./tmp/deploy/images/fuji/flash-fuji of=/tmp/fuji.mtd \
-    bs=1k conv=notrunc
-
-git clone --branch aspeed-next https://github.com/peterdelevoryas/qemu
-cd qemu
-./configure --target-list=arm-softmmu --disable-vnc
-make -j $(nproc)
-./build/arm-softmmu/qemu-system-arm \
-    -machine fuji-bmc \
-    -drive file=/tmp/fuji.mtd,format=raw,if=mtd \
-    -serial stdio \
-    -nic user,hostfwd=::2222-:22
-sshpass -p 0penBmc ssh root@localhost -p 2222
+Then I tested switching the default to UART1 and booting an AST2600
+OpenBMC image that uses UART1, and that worked too.
 
 Signed-off-by: Peter Delevoryas <pdel@fb.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-[ clg: checkpatch fixes ]
-Message-Id: <20210903082027.704397-2-pdel@fb.com>
+Message-Id: <20210901153615.2746885-2-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 116 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 116 insertions(+)
+ include/hw/arm/aspeed.h     | 1 +
+ include/hw/arm/aspeed_soc.h | 1 +
+ hw/arm/aspeed.c             | 3 +++
+ hw/arm/aspeed_ast2600.c     | 8 ++++----
+ hw/arm/aspeed_soc.c         | 8 +++++---
+ 5 files changed, 14 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 7a9459340cf4..23e1a811ca08 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -159,6 +159,10 @@ struct AspeedMachineState {
- #define RAINIER_BMC_HW_STRAP1 0x00000000
- #define RAINIER_BMC_HW_STRAP2 0x00000000
- 
-+/* Fuji hardware value */
-+#define FUJI_BMC_HW_STRAP1    0x00000000
-+#define FUJI_BMC_HW_STRAP2    0x00000000
-+
- /*
-  * The max ram region is for firmwares that scan the address space
-  * with load/store to guess how much RAM the SoC has.
-@@ -772,6 +776,94 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
- }
- 
-+static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
-+                                 I2CBus **channels)
-+{
-+    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
-+    for (int i = 0; i < 8; i++) {
-+        channels[i] = pca954x_i2c_get_bus(mux, i);
-+    }
-+}
-+
-+#define TYPE_LM75 TYPE_TMP105
-+#define TYPE_TMP75 TYPE_TMP105
-+#define TYPE_TMP422 "tmp422"
-+
-+static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    I2CBus *i2c[144] = {};
-+
-+    for (int i = 0; i < 16; i++) {
-+        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-+    }
-+    I2CBus *i2c180 = i2c[2];
-+    I2CBus *i2c480 = i2c[8];
-+    I2CBus *i2c600 = i2c[11];
-+
-+    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
-+    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
-+    /*
-+     * NOTE: The device tree skips [32, 40) in the alias numbering, so we do
-+     * the same here.
-+     */
-+    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
-+    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
-+    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
-+    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
-+    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
-+    for (int i = 0; i < 8; i++) {
-+        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
-+    }
-+
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
-+
-+    aspeed_eeprom_init(i2c[19], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[20], 0x50, 2 * KiB);
-+    aspeed_eeprom_init(i2c[22], 0x52, 2 * KiB);
-+
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
-+    i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
-+
-+    aspeed_eeprom_init(i2c[8], 0x51, 64 * KiB);
-+    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
-+
-+    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
-+    aspeed_eeprom_init(i2c[50], 0x52, 64 * KiB);
-+    i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
-+    i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
-+
-+    i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
-+    i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
-+
-+    aspeed_eeprom_init(i2c[65], 0x53, 64 * KiB);
-+    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
-+    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
-+    aspeed_eeprom_init(i2c[68], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[69], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[70], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[71], 0x52, 64 * KiB);
-+
-+    aspeed_eeprom_init(i2c[73], 0x53, 64 * KiB);
-+    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
-+    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
-+    aspeed_eeprom_init(i2c[76], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[77], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[78], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[79], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[28], 0x50, 2 * KiB);
-+
-+    for (int i = 0; i < 8; i++) {
-+        aspeed_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
-+        i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
-+        i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
-+        i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
-+    }
-+}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
- {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -1070,6 +1162,26 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
+diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+index c9747b15fc5f..cbeacb214ca4 100644
+--- a/include/hw/arm/aspeed.h
++++ b/include/hw/arm/aspeed.h
+@@ -38,6 +38,7 @@ struct AspeedMachineClass {
+     uint32_t num_cs;
+     uint32_t macs_mask;
+     void (*i2c_init)(AspeedMachineState *bmc);
++    uint32_t uart_default;
  };
  
-+static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc = "Facebook Fuji BMC (Cortex-A7)";
-+    amc->soc_name = "ast2600-a3";
-+    amc->hw_strap1 = FUJI_BMC_HW_STRAP1;
-+    amc->hw_strap2 = FUJI_BMC_HW_STRAP2;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->spi_model = "mx66l1g45g";
-+    amc->num_cs = 2;
-+    amc->macs_mask = ASPEED_MAC3_ON;
-+    amc->i2c_init = fuji_bmc_i2c_init;
-+    amc->uart_default = ASPEED_DEV_UART1;
-+    mc->default_ram_size = 2 * GiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static const TypeInfo aspeed_machine_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -1119,6 +1231,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("rainier-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_rainier_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("fuji-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_fuji_class_init,
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
+ 
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index d9161d26d645..87d76c92598b 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -65,6 +65,7 @@ struct AspeedSoCState {
+     AspeedSDHCIState sdhci;
+     AspeedSDHCIState emmc;
+     AspeedLPCState lpc;
++    uint32_t uart_default;
+ };
+ 
+ #define TYPE_ASPEED_SOC "aspeed-soc"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 886e5992cdf3..7a9459340cf4 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -350,6 +350,8 @@ static void aspeed_machine_init(MachineState *machine)
+         object_property_set_int(OBJECT(&bmc->soc), "hw-prot-key",
+                                 ASPEED_SCU_PROT_KEY, &error_abort);
+     }
++    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
++                         amc->uart_default);
+     qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+ 
+     memory_region_add_subregion(get_system_memory(),
+@@ -848,6 +850,7 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+     mc->no_parallel = 1;
+     mc->default_ram_id = "ram";
+     amc->macs_mask = ASPEED_MAC0_ON;
++    amc->uart_default = ASPEED_DEV_UART5;
+ 
+     aspeed_machine_class_props_init(oc);
+ }
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 8e1993790e6f..9d70e8e060c6 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -322,10 +322,10 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+     }
+ 
+-    /* UART - attach an 8250 to the IO space as our UART5 */
+-    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+-                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
+-                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
++    /* UART - attach an 8250 to the IO space as our UART */
++    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
++                   aspeed_soc_get_irq(s, s->uart_default), 38400,
++                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+ 
+     /* I2C */
+     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 3ad6c56fa9a9..ed84502e238a 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -287,9 +287,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+     }
+ 
+-    /* UART - attach an 8250 to the IO space as our UART5 */
+-    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+-                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
++    /* UART - attach an 8250 to the IO space as our UART */
++    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
++                   aspeed_soc_get_irq(s, s->uart_default), 38400,
+                    serial_hd(0), DEVICE_LITTLE_ENDIAN);
+ 
+     /* I2C */
+@@ -439,6 +439,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+ static Property aspeed_soc_properties[] = {
+     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
++    DEFINE_PROP_UINT32("uart-default", AspeedSoCState, uart_default,
++                       ASPEED_DEV_UART5),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
 -- 
 2.31.1
 

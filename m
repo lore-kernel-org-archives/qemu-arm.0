@@ -1,158 +1,172 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1667117lfb;
-        Fri, 3 Sep 2021 14:07:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzcN+57WSvVtxqp0I//tu2HJzlYe53f6uhZXd0M9Qf+Y7bNFXZTIccqGHMPleFFnERqJUPa
-X-Received: by 2002:a1f:1404:: with SMTP id 4mr538588vku.21.1630703270490;
-        Fri, 03 Sep 2021 14:07:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630703270; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1670443lfb;
+        Fri, 3 Sep 2021 14:11:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzGoRNgG17mIO3WhYeDT1PRK5wBvrg6g4RYeDVwEkXH2As8YH7+IyI7/s2iLGR95BtMvC1c
+X-Received: by 2002:a92:4b01:: with SMTP id m1mr685203ilg.50.1630703513103;
+        Fri, 03 Sep 2021 14:11:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630703513; cv=none;
         d=google.com; s=arc-20160816;
-        b=THIp6u8rws2UGPWYvuvQvIxfaqeFFYfiUiY2ejANtWsxs+GjK/2lE9lLYloH/w9Omg
-         xoH/xA3cOS+tXRNuJrBLDtPzwwWZo+QgwMhMH5zj+Pp5uYbOPExVVxR+GaSikF0rBm6M
-         vbjzG5TmpGq/ZkaB5R8RyM5dgrmnaxF6m+ItfDs7d0rUtkq7YxDh5RPHXWLqaBCplDgn
-         k+/J5haDnZ/Gxz/99ZhxAid68CswuNuZpjpqvCUqSZ0hbNXY2JJOIgzMCjwiE59HYIkY
-         I2PlOV0MGIlOtikUTSOQOkvPP59jnbjIUxlgltSnr7k/t1shxA1djRar4AnwtgptRAJG
-         oFGA==
+        b=pA3+kFwXTiPfk7I3z4JWsVl1Q3vY4ta8gZTbh0DmY9xDg1Bi60KM+lame2y6RGfpcI
+         iH8daPpDzoRXcIO0cJTSAKx4tcd7RsT5AFECkxHCYKFpCy0zXBaxNFuOBQr0DWmDGv+V
+         xdTGMDniYocl3v/RVO/vlSdRDRwmXoRlVTTL6MLHx/c3BQvnkdMW+Bc/h5Vlz82N/I23
+         WnRvPxpraDKL92jLRx4hrxcgJVbODzJB0z8A4GS9zawlb4poE6AhtaXQiJGDfKx5QRN2
+         8cl0woPuUi2Z7eH/zCiaDavgyvbK17PEiBJvCJ5ctkE0s6QkAta41xyv+M3IhyCn6SA5
+         Cqtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7Z/eAs8sVAWlLVGUFtlGgI8WaRQ2xmlqcdP/z9+qniE=;
-        b=hYXFYasW8B5ExhSdw8reUm7/fsy+rCwih2mXrBXr/j6AHlwM2defJhEZ5jgnkLeFcM
-         +tHbOlgSmAcfhdCLye6pWzcAo+qXi7mB5KjrkicyQ0bliCXhIjvEq2UmCkizWl0+2EVY
-         T5BKaqV2V8X7wjrfx2NeWk77qDFjvCToJuIDVXsCLSUVFmusQaw+kTVrFHkmenie4FET
-         eooM+BPmKv+kJdGyv1kss371EHRX2qn5aYbi6J+vcevZo7dh/ZZ34+CpO7lvxvJD3dnI
-         2RU9P+is50udTqbjqCykyi4yPBxUqeV/qWiL6Qb/BcasIXmBBIHmWgqOzU1a4Sw3oi5u
-         7xRA==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:sender:dkim-signature;
+        bh=jI43SKJbesP12DNmL3/e0Usr50r2XgSNCcYV6kiyq6k=;
+        b=AZCFsT8VQ3Bft24Wbwycny7lpg4F6ca0cAyIKQrExoa38ys4sZXoSs4b4zixpqEOE6
+         imvABIMDx1EByY+xDQKwohRoQpDg1ErKusfafx98J5wfNwokhrzaJcwebHfvlm/hVBOS
+         5EhIK/CiYjwMvPLJILXtdDOInwweuEjJ7oI7RRajuJ1h8HpKEY7hzSYLMWfrvy2xJkTr
+         byWmo79XgLYxWEhnAzUWF0iTyqJ+ghb+EYYcPIa2pn9AM5tY+UsdJdMifQMayIho3Hw8
+         LJfai64stEpxVVqhCPtaLJkFUEbINtrINuy6YecV70fW6Uvcse+HzQ9HF+m23BYQ7jKQ
+         HZCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=feEecvKX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v23si141936vsk.216.2021.09.03.14.07.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 14:07:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XH5LRShQ;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id h13si419520ilc.131.2021.09.03.14.11.52;
+        Fri, 03 Sep 2021 14:11:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=feEecvKX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43550 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMGPd-0008TQ-Qw
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 17:07:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55180)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMG5u-0008Qg-4D; Fri, 03 Sep 2021 16:47:26 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:42967)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMG5s-0005vT-DI; Fri, 03 Sep 2021 16:47:25 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- k20-20020a05600c0b5400b002e87ad6956eso343693wmr.1; 
- Fri, 03 Sep 2021 13:47:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=7Z/eAs8sVAWlLVGUFtlGgI8WaRQ2xmlqcdP/z9+qniE=;
- b=feEecvKXaGFJJXkRI6qXEHovs73FL8d9gxq/b3ZS5wDin3Yp5ON33DgpFsI9szO0wB
- 8RZ+u4NJXQptwT7PB2JKlaL9IKeUMNw+IXsTLfvwJF5RSDNFSce4zbiFIrgDqNbJKsMj
- 4Jqr4f+249W2GD3HmyyW8StOJeqtqYz9guCeYbCiqSmLLYyLlWBpbtG4eYtKnXnftYBT
- Hv6UeT4M5XXnvRWYfnSiFXagOWGo2K05ccHosGJHz4NeOLvO8L+rmW9KNezE1NFOUgQ2
- XJb8DkPes1HbGPkN5NpK3WBtDzrj32ACjMr42yGprDrc2SQ4fZx0euBlMmvuMQIMY/aV
- 7ZFw==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XH5LRShQ;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S234568AbhICVMw (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 3 Sep 2021 17:12:52 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47330 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S233367AbhICVMv (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 3 Sep 2021 17:12:51 -0400
+Received: from mail-wr1-x42c.google.com (mail-wr1-x42c.google.com [IPv6:2a00:1450:4864:20::42c])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id BAFA7C061575
+        for <kvm@vger.kernel.org>; Fri,  3 Sep 2021 14:11:50 -0700 (PDT)
+Received: by mail-wr1-x42c.google.com with SMTP id b6so457038wrh.10
+        for <kvm@vger.kernel.org>; Fri, 03 Sep 2021 14:11:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=jI43SKJbesP12DNmL3/e0Usr50r2XgSNCcYV6kiyq6k=;
+        b=XH5LRShQJoZBhky3eh03Pmb9SkQ32XBteRsyogRiPstHFr6orcBCJeqTh6+8uA9Ugj
+         hwUHRkbv3Iki29kH6SULZWWaPVeHLm9dOZGMJp/KvL+iV9qeA3IsgO7aPDi6dPOxdM5Q
+         ws2BSkCdqzZ3QGSkRU4XFRPZC9C8RO5eAPwO0xHZyZ51hswyi5ZlgnIK0hazE40GI5Vy
+         pDzx5Z2/NQxO+YOF01K7Wot3MRs8tFcfTdIvEFWt3PL9aHwjDLKgNplb2i8xQwHyzDKi
+         JVFun0OPCzM5tItFSKRVH8Yfw5eizrEfOkYRFD8WnJK9txMG72i4kstdXmKL8/qxt3TH
+         7oMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7Z/eAs8sVAWlLVGUFtlGgI8WaRQ2xmlqcdP/z9+qniE=;
- b=tpYsVxr22sNOWBNn2cTRqmXJgJuEZVNebJ6Du4/l3kmxwSTjeKU3RNaX6v7B1aoqe+
- OpB7iiLJVwn4NBYyae6C2Xi9wwGukc8Y5MHOcwQKw/NpNC0QTJYj7n2jVJQEhLemDimE
- vMyDsgMsdyUQgKdW3EPlO1QLQRfd1MSQjFtBEivdHWMNcRE1KSkhEgESDD0Ol1ULenRW
- cJ35cafwFKYbd+W6PICSIYTkvXgFMiEwXsgRDoWlIzC0F9bn8mP9cdbgnr9s+M56wqPw
- EmBqUjllUotBngITmOhEPl5y2Wo0pyPHJj0JP6fh/FFTqqnvmVATcIxnmh+Sq9PoTMks
- dArg==
-X-Gm-Message-State: AOAM532TWuXuO1UnbLElMbIsKqBAor5hG+AtHe1L3VK21skE4LYKItnO
- Dy6vURvBvGUkga5B3oWjwWo=
-X-Received: by 2002:a1c:4682:: with SMTP id t124mr538600wma.168.1630702041945; 
- Fri, 03 Sep 2021 13:47:21 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id b15sm316840wru.1.2021.09.03.13.47.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Sep 2021 13:47:21 -0700 (PDT)
-Subject: Re: [PATCH 08/24] target/avr: Restrict cpu_exec_interrupt() handler
- to sysemu
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-9-f4bug@amsat.org>
- <b6ccbd42-8286-6a27-7bd9-e0b1ff3e96d9@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a675fd4f-0d8d-b833-1784-c9b77ae5f332@amsat.org>
-Date: Fri, 3 Sep 2021 22:47:19 +0200
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=jI43SKJbesP12DNmL3/e0Usr50r2XgSNCcYV6kiyq6k=;
+        b=l8tIMBqQhjpZgUYf8RpNjKBXrEqH8hptUlTFU96Z8+6hkdY4XH6XrwoNHyds/4TnYH
+         xhup//p4EnoVnt4LVRrIciOs+o/ugAWPaxZWV27Wx2CP134egGXePx/xVTm0/xgfWjJm
+         MTgHYJeqDb1T1CBHQfTaTPPSg5PjuPo1D1WILNNlcBQHqRg2tiXyln2GaKHISjVhbpnN
+         rhCcBtA1dU4w38ra1YfQPzxafXQimHqRNaUvzuqKVwf5iGBf/b7gn2N+CbvsJAJPzZ0A
+         aGPhwfDmR+6SGKyHtwJBWBNknkrh0S6dw9eUia8xskbgF38c4JB1SsSCR1uskb3HSEdp
+         LL1g==
+X-Gm-Message-State: AOAM533b0SCILYpTG03A6sVIokmabhEKj1hAePDoX94a4dot3U8bEa2B
+        06nApbqgDj/Ej//yX0Do6r4=
+X-Received: by 2002:a5d:40d1:: with SMTP id b17mr974069wrq.47.1630703509319;
+        Fri, 03 Sep 2021 14:11:49 -0700 (PDT)
+Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
+        by smtp.gmail.com with ESMTPSA id s205sm411532wme.4.2021.09.03.14.11.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 03 Sep 2021 14:11:48 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
+        <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v3 21/30] target/ppc: Introduce
+ PowerPCCPUClass::has_work()
+To:     Richard Henderson <richard.henderson@linaro.org>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+        Greg Kurz <groug@kaod.org>
+Cc:     Peter Maydell <peter.maydell@linaro.org>,
+        Cornelia Huck <cohuck@redhat.com>, kvm@vger.kernel.org,
+        David Hildenbrand <david@redhat.com>,
+        Bin Meng <bin.meng@windriver.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Laurent Vivier <laurent@vivier.eu>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Taylor Simpson <tsimpson@quicinc.com>, haxm-team@intel.com,
+        Colin Xu <colin.xu@intel.com>,
+        Stafford Horne <shorne@gmail.com>, Marek Vasut <marex@denx.de>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Paul Durrant <paul@xen.org>,
+        Kamil Rytarowski <kamil@netbsd.org>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Claudio Fontana <cfontana@suse.de>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        xen-devel@lists.xenproject.org,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Laurent Vivier <lvivier@redhat.com>,
+        Thomas Huth <thuth@redhat.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Greg Kurz <groug@kaod.org>, Cameron Esfahani <dirty@apple.com>,
+        qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+        Michael Rolnik <mrolnik@gmail.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Chris Wulff <crwulff@gmail.com>,
+        Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org,
+        Wenchao Wang <wenchao.wang@intel.com>,
+        Alistair Francis <alistair.francis@wdc.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Aurelien Jarno <aurelien@aurel32.net>
+References: <20210902161543.417092-1-f4bug@amsat.org>
+ <20210902161543.417092-22-f4bug@amsat.org> <YTFxZb1Vg5pWVW9p@yekko>
+ <fd383a02-fb9f-8641-937f-ebe1d8bb065f@linaro.org>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <fc98e293-f2ba-8ca0-99c8-f07758b79d73@amsat.org>
+Date:   Fri, 3 Sep 2021 23:11:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <b6ccbd42-8286-6a27-7bd9-e0b1ff3e96d9@linaro.org>
+In-Reply-To: <fd383a02-fb9f-8641-937f-ebe1d8bb065f@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.888,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>, Warner Losh <imp@bsdimp.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rP7akumOm5dX
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: qYybDcDZjaEe
 
-On 9/3/21 9:12 PM, Richard Henderson wrote:
-> On 9/2/21 5:16 PM, Philippe Mathieu-Daudé wrote:
->> Restrict cpu_exec_interrupt() and its callees to sysemu.
+On 9/3/21 10:42 PM, Richard Henderson wrote:
+> On 9/3/21 2:50 AM, David Gibson wrote:
+>> On Thu, Sep 02, 2021 at 06:15:34PM +0200, Philippe Mathieu-Daudé wrote:
+>>> Each POWER cpu has its own has_work() implementation. Instead of
+>>> overloading CPUClass on each PowerPCCPUClass init, register the
+>>> generic ppc_cpu_has_work() handler, and have it call the POWER
+>>> specific has_work().
 >>
->> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
->> ---
->>   target/avr/cpu.h    | 2 ++
->>   target/avr/cpu.c    | 2 +-
->>   target/avr/helper.c | 2 ++
->>   3 files changed, 5 insertions(+), 1 deletion(-)
+>> I don't quite see the rationale for introducing a second layer of
+>> indirection here.  What's wrong with switching the base has_work for
+>> each cpu variant?
 > 
-> Well, avr doesn't support user-only. So... probably any instance of
-> CONFIG_USER_ONLY is already a mistake.
+> We're moving the hook from CPUState to TCGCPUOps.
+> Phil was trying to avoid creating N versions of
+> 
+> static const struct TCGCPUOps ppc_tcg_ops = {
+>     ...
+> };
 
-Maybe we can rename the disassemblers[] array in meson.build as
-arch_definitions[], and somehow (?) poison CONFIG_USER_ONLY on
-targets where only sysemu is supported...?
+Ah yes this is the reason! Too many context switching so
+I forgot about it.
+
+> A plausible alternative is to remove the const from this struct and
+> modify it, just as we do for CPUState, on the assumption that we cannot
+> mix and match ppc cpu types in any one machine.
+
+I thought about this case and remembered how it works on the ARM arch,
+i.e. ZynqMP machine uses both Cortex-R5F and Cortex-A53. Even if no
+similar PPC machine exists, IMHO we should try to generally allow to
+possibility to experiment machine with different CPUs. Restricting it
+on PPC goes the other way around. Thoughts?

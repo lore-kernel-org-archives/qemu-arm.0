@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1515691lfb;
-        Fri, 3 Sep 2021 10:46:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzfCQN9skRr3FHha3Zr54Zu7MWUAA/+IBVQPa3kypyyA5JmjYXfsgUlLXtcewgqLsLloz9l
-X-Received: by 2002:a50:ec0d:: with SMTP id g13mr145287edr.233.1630691182259;
-        Fri, 03 Sep 2021 10:46:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630691182; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1515749lfb;
+        Fri, 3 Sep 2021 10:46:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx651F5KN9cpDcnp6LJkvjgirSSdP6sqxQMQ9PW3VJZ0YZaNK1HUNCAcc6VDtMTesr6UHxl
+X-Received: by 2002:a17:907:76e5:: with SMTP id kg5mr47307ejc.474.1630691187138;
+        Fri, 03 Sep 2021 10:46:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630691187; cv=none;
         d=google.com; s=arc-20160816;
-        b=tAg1okWRIdOLLIgJOG3FeBbG0N4v52MQ/jJQuKnutZFttNxsJgF0EqFEUkzpZ/jm2x
-         nKVQpfg562t/cuCqJdl7sMSwrWq4SkrKT++f35TkCTpVDW4NKqWqn/QQKArvomIrnqWu
-         wEct0xKht4jJgMg3lwX29ACWi2dHyLa8pFmth7GZMzykpJ0rMGV+9tmx3g2BUVHGdNxy
-         rplWLLPnG9vWihf+huFp+p3ywzQIfrzw+p5bdgVApwmZAjSapZDKDpJlCTGkkYL91LMg
-         1Xxs146oYmxG+FzeUhEW9sHTTX1w/53/bSGntcKrY8wOyhdYvgRjURUYYdoKeBK3PJX8
-         QxXA==
+        b=MCGSmE5OQkvazREOurX0OQBtGi3vNOFOyOoeqfdRpd0Brg7t2DCa0R+mYdvi0AUlg0
+         NQ1v6KOp6ItpcNTgiYoo+hUUk/20feolHG6deByWJjMqUufFIBgGWMy8rUp5wPbyIBLF
+         5FSGveTjHDyq4jxDs8a0aH5FWV3Qx+L5siONUSEjo6eGTC8eAU5ZlNwH5vf1yWSqHV9D
+         3F2fQkAOthVNwrYAyAmVhqP0McBPxYE2Kj8MJtvq9Tp9P1TU1BmaYxxZ8WPs4H+wQ4jq
+         mKbCsAGcnVixCySrvGVXA8oJjuIuNbigPMX8m34wZ3AtraCK5F3ZSAWUhfXsGJN1ejRG
+         g1Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3Z0QUNuHHLKTpTAzIZmgjtHARc7fEMtqBBgS6AoxAXY=;
-        b=v8RPvSzKugC7X5aBkpDROfskvr/aYOqx0yzHVCuKsMrrF9n0k1dPpuRTRS1aiedN24
-         lAeXnRCQkTTKCYfxQ/k9BOqhZkn0EbbiSJG6fG5kpdkQxwhDoQO+li5Gpo6fpDR2xOV6
-         RkelUYtwL9L7CPO02gCRuhm1X3FeDnFMX7YBzTW+QIeuvxtcL7NBPnIcA8BzGUsiAQiw
-         j5XrWSQzhBxxMrAPo+5BZRo/oI5PiZrgk7DzvARyciAAS767ASyMw3CE/NwM+vaawuQK
-         jkNO+NuK5vpshXPB8hO1Krf0Qhxm096MMdqqAX6ujjvOWKEiLS8c8LwhWrFdlejpQsLk
-         vZsg==
+        bh=2lubK1L7hm9+FJXOL2oDyFlScplW+khcKViFJMmufcU=;
+        b=s1tdYAkoUI5TruEhItazf7qW682Ug8o0s1ptfkfZFIqQhjX3wj9crKPa7BuU+guMI8
+         Eaq9uHdkClIdMANUu3VeF+ny52F0W+u/0ZvUjEgPp+l7IHJ3UNIKs239UNUTYcXi+tsc
+         77DeLyJNrMXSKtbui4iKWbERMgZLaDKYgfH4EVHrHnMytVlJP2yCUmzjlmM7o6Y+N8gR
+         5FDBIpFAAg5mszuN+qzqwwjTstJtXUiUsAMrepkMfs6mAGV2puOcxmYDHwjpsJE0pqv8
+         WSPUlQ3Wou6H5AhePtqtzWTy2PLvasW8aN7PnHAz4vJrKtv2/0Lolx6IsoQ1I+omVwx3
+         vYXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F+UY3hsn;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZL+6px4G;
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id n12si141229edx.124.2021.09.03.10.46.21
+        by mx.google.com with ESMTPS id l17si6095494ejo.585.2021.09.03.10.46.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 10:46:22 -0700 (PDT)
+        Fri, 03 Sep 2021 10:46:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F+UY3hsn;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZL+6px4G;
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630691181;
+	s=mimecast20190719; t=1630691186;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3Z0QUNuHHLKTpTAzIZmgjtHARc7fEMtqBBgS6AoxAXY=;
-	b=F+UY3hsnlItvR10X3NJXVhv01sMswWuJIexawIedTBduyB2Pdyw4D4uFcm7PGmakildki0
-	WB9GffbTw/av6LoJiSsVKcc5IaP/13Kg2C7SI8yOuKpQUxQSeRF7fYtIL9XOEefnZ7tZGI
-	FCCp8WE/djRVqsec2G94+KuQDZ+JoBI=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-537-FnY90CK5MXSGSoKwTQX_aQ-1; Fri, 03 Sep 2021 13:46:18 -0400
-X-MC-Unique: FnY90CK5MXSGSoKwTQX_aQ-1
-Received: by mail-wr1-f69.google.com with SMTP id 102-20020adf82ef000000b001576e345169so1815864wrc.7
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:46:18 -0700 (PDT)
+	bh=2lubK1L7hm9+FJXOL2oDyFlScplW+khcKViFJMmufcU=;
+	b=ZL+6px4G8lKzIc6a54g09cKBpPuNFTp4Ez7FxEeOGPiQMx5kdbXzHUfHT5UcMY4TGTdNEa
+	sOqJogTMbm8OFAVPNxrqYCVx6YoqjEzkDGJHjuyc9Oy8dENrTAAU/RurBqhUlWQ2k7EtEn
+	ubMv9iu34TX6gDZgkifFhAb7WEz6jlk=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-595-2Ikr8j9-M9qqqEDTK8DBQA-1; Fri, 03 Sep 2021 13:46:25 -0400
+X-MC-Unique: 2Ikr8j9-M9qqqEDTK8DBQA-1
+Received: by mail-wm1-f70.google.com with SMTP id r4-20020a1c4404000000b002e728beb9fbso41753wma.9
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:46:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=3Z0QUNuHHLKTpTAzIZmgjtHARc7fEMtqBBgS6AoxAXY=;
-        b=bfD4AZnUF30bFUG04RMZQw8pV//kc5aj9ahJz+RMnM4aBH35ur2X8Q2vNrL8Fhz+pY
-         764SJ+brtJ+ZN28FqII+oUqDKpzxZWKI4yjSVRyvtZRDcKe4ZO7TUiGHGnZahZnjG26H
-         OxOSOVge1nfCAL3rUKX2+hXjXqxrkcxc161fgVO8USdKhqLRu9REUOFB9EdbGj32FwCE
-         nQ1b22kdZTdLIpspixWSaqLCFEWJAX3CUrc2/6TYImY31rkYBUBYhpqsqSPvMmC2+xC3
-         HCrUnDRJ3Z1p/BwtF3UJeogOUCnVmCoVQ4Uh0SQo/xerrXJd/DLA6xX8yJ3t5+mxx8tl
-         eQdA==
-X-Gm-Message-State: AOAM533f0EFKAB4+k+IntjxqF5Qrk8lpRg9NwleLHZ4cv4zR58Jx1P9o
-	E/9DtQT64rDQXfTmchBaSS/vJWV8OVW6AcD33WxHYxBQ7xseVgpfA45OiUcEhb/QYAkLThWvTxM
-	JGBrkT9zUA1QiAbeT
-X-Received: by 2002:a1c:791a:: with SMTP id l26mr42907wme.100.1630691177255;
-        Fri, 03 Sep 2021 10:46:17 -0700 (PDT)
-X-Received: by 2002:a1c:791a:: with SMTP id l26mr42882wme.100.1630691177104;
-        Fri, 03 Sep 2021 10:46:17 -0700 (PDT)
+        bh=2lubK1L7hm9+FJXOL2oDyFlScplW+khcKViFJMmufcU=;
+        b=mBDw6ijFonXh6XeFsH2NtXltG3akkLZkD/mrhVH/Y19SRY/mtbtCD47Q7NznyQ/KJp
+         XE1rGGi6UWtVb/epMDuGdzW2Y7yYfYZpPdV0SEr4iwmJWoTkT0o/89VHioWB1xMiuH1T
+         l1D5GAsetuHeKPZ6qiUn+Zof5oHni6oRzXNnStMiwhY5rroaOLm5ojlejH8MBXM1qVnG
+         bQZa4v0ZpqeCLrVRfMAbJQFBU1yXUNgpu+j/kUEUfmjCsPvwfTH7lQ5ZZYW0kQZeYwut
+         xxs0eA93GSv3YFZwUqRseKN3EtUe/8AHWDLFoDtlttqhQ9BJyazziUj/f0ZqCJbPCeZ9
+         S6Gw==
+X-Gm-Message-State: AOAM532G5zLFJ+A2VOVnlxy1pgn5W5ThHcJofDI+WbzEvOgGSRdX0lvN
+	uq/f/uI63D6vFXE2JJGig4N1Uz5dpZ5SAI/OGI4L3mtryWsnXRx5v+TF2MNaU0NB37AiquvZhNR
+	r+s/eE9lOI+1jsEe6
+X-Received: by 2002:a05:600c:1c91:: with SMTP id k17mr44523wms.84.1630691183808;
+        Fri, 03 Sep 2021 10:46:23 -0700 (PDT)
+X-Received: by 2002:a05:600c:1c91:: with SMTP id k17mr44498wms.84.1630691183579;
+        Fri, 03 Sep 2021 10:46:23 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id c1sm69751wml.33.2021.09.03.10.46.15
+        by smtp.gmail.com with ESMTPSA id v21sm5588100wra.92.2021.09.03.10.46.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 10:46:16 -0700 (PDT)
+        Fri, 03 Sep 2021 10:46:23 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -102,9 +102,9 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	qemu-block@nongnu.org,
 	qemu-ppc@nongnu.org,
 	"Daniel P . Berrange" <berrange@redhat.com>
-Subject: [PATCH v3 12/28] hw/i386/multiboot: Replace g_memdup() by g_memdup2()
-Date: Fri,  3 Sep 2021 19:44:54 +0200
-Message-Id: <20210903174510.751630-13-philmd@redhat.com>
+Subject: [PATCH v3 13/28] hw/net/eepro100: Replace g_memdup() by g_memdup2()
+Date: Fri,  3 Sep 2021 19:44:55 +0200
+Message-Id: <20210903174510.751630-14-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903174510.751630-1-philmd@redhat.com>
 References: <20210903174510.751630-1-philmd@redhat.com>
@@ -115,7 +115,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0XQ0ph9zLi1z
+X-TUID: P8r8eNPOnmFZ
 
 Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
 
@@ -131,21 +131,21 @@ Replace g_memdup() by the safer g_memdup2() wrapper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/i386/multiboot.c | 2 +-
+ hw/net/eepro100.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i386/multiboot.c b/hw/i386/multiboot.c
-index 9e7d69d4705..754415d17f3 100644
---- a/hw/i386/multiboot.c
-+++ b/hw/i386/multiboot.c
-@@ -387,7 +387,7 @@ int load_multiboot(FWCfgState *fw_cfg,
-     mb_debug("           mb_mods_count = %d", mbs.mb_mods_count);
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index 16e95ef9cc9..a4e67f69752 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1872,7 +1872,7 @@ static void e100_nic_realize(PCIDevice *pci_dev, Error **errp)
  
-     /* save bootinfo off the stack */
--    mb_bootinfo_data = g_memdup(bootinfo, sizeof(bootinfo));
-+    mb_bootinfo_data = g_memdup2(bootinfo, sizeof(bootinfo));
+     qemu_register_reset(nic_reset, s);
  
-     /* Pass variables to option rom */
-     fw_cfg_add_i32(fw_cfg, FW_CFG_KERNEL_ENTRY, mh_entry_addr);
+-    s->vmstate = g_memdup(&vmstate_eepro100, sizeof(vmstate_eepro100));
++    s->vmstate = g_memdup2(&vmstate_eepro100, sizeof(vmstate_eepro100));
+     s->vmstate->name = qemu_get_queue(s->nic)->model;
+     vmstate_register(VMSTATE_IF(&pci_dev->qdev), VMSTATE_INSTANCE_ID_ANY,
+                      s->vmstate, s);
 -- 
 2.31.1

@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1515029lfb;
-        Fri, 3 Sep 2021 10:45:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylpNV+3cGBS7D5aJbrr/io6/T2EXoYSKw72KYAvrA3L9r6KEQyxqN6r1qPJWi21WHIRRl+
-X-Received: by 2002:a17:906:6cc:: with SMTP id v12mr20021ejb.153.1630691128644;
-        Fri, 03 Sep 2021 10:45:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630691128; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1515088lfb;
+        Fri, 3 Sep 2021 10:45:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxoYWgTFu8Vcjk1f1qtS6O85ve9YEOE0eSYKYa/jyzxdj8HgGkyVuzIWvZbd/PR0Hu7yp1x
+X-Received: by 2002:aa7:d351:: with SMTP id m17mr197272edr.72.1630691132058;
+        Fri, 03 Sep 2021 10:45:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630691132; cv=none;
         d=google.com; s=arc-20160816;
-        b=omTnFyhP7pff75FAF7c2hGQeFdCR8wQPHpCj7JkZ6WhJ22EtXH7ymZ3o0ZFC7OZp30
-         a3Y5HCwFOdZrKGdcdlrwcDsNJ41/tDFBt64/mIj1MHcjDhDsU24weEdCMENiSz7uDP8E
-         SJcTyBlvpYQTbERUL9LXm7rjx8K6aM3NgQYt1U4CC+lejKo5e8dvVGO60Clv2qHEYT2e
-         vdPIPKMFcW5pThUb1K7S4RkyxAd6r4vwmf5vxZGkgjWD/BWSahiZ1gDPnU4utZxsdDKm
-         dHaOklrtzCnsDsIwd1vKIxRW9vZ5rbxw05ObFQDHKGdf8spqllH8hd0ya6Qn78LLU31u
-         SQLA==
+        b=voBLaIsJ3mj6uite8l9H9apyLaCNAHYLatK1Crth+Snsy9pi4y/SWTF8uUVNWidJqt
+         bEgHbRnRgB4ompZdcO/EcNphFCeSuBh+Fx4p2jfLLANg4goh4Y7Am3c6GCUnrvPto/9e
+         yPIaHRSNn+nlHPgVSuahVHBDdBsooFJnVxa9bb8whH7WIJgitwDwRGgDmNW/pX7fU+55
+         o99lrmXzV6/PsIS3bfRfiwwnMeDca4qPAvOjOz8n9LXWLlnVgIbhAJoYU6sWjGBHKKnV
+         4iJ9J/N6yO6haVpZdtFnSPPiln1Tu0Hhmnld6MA/0mQ49Y7qtkKQ8FR93OkdGRDXhOXW
+         gtLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=z+3KRRg2uaRwQMu7zo1tfHiyUXSW+kC4va1y4Yzkd4M=;
-        b=eK55CEzUwltb6Z9F4LQGGImAcgoMU2FsB+te3/vIZ0j+gqLCwLrOpZGcGE95ou5XQe
-         8pioB8wbIMppy42e6KwXXajWOQeK0wex4Y5jZTClZixLzeROGMPH9oPinVD/xqYtlJNK
-         G3/aQ0T2PXhCWq+uoJqVHCCvr7ooYG2o3+pRgLyXO4qk8yIKZ+u92U6DyfVlZcHEpPR1
-         BVNpCDXtKT7C+8gRR0VtZ8RI6NqEVPRzlE1Cxv75DpS5wpF+Dt534JBOtdxxBlKQBk2l
-         H2lhCk6ZQbn0G3NMszSJl49UuEwdc8DwYDoWSkobo20W8mOZOwX+bt1eZEyypGJnjZzW
-         Atew==
+        bh=6axIh+16/DTX2QUR6MOtSJVf4S/aGvlneoKk63wKfEE=;
+        b=R1E17jqlaWYlxWYEFucbHh+gRaKmZEGBZFKXEW0q3AqgaoWSmqsF/vZSGFPQkkD5Ro
+         FJWHsNumJtEKwQzrV63LGdAiy6GI5HdSw6WuT0w18U/fVTaGMpaEMB0jmcvhmhlgjkRC
+         EqTEFaHpPTusS9SwVvY+0SNvKMlb8RXjV3bn/7TrKksehfh+lnt5MbJM77vGWUZWmRYj
+         kH9Qsrk/k0+HKzX1RkMHWUSC7aWuEJhKCGqJ8AoK0SxfP5aD9gFxA87pupOZrzBfOpkf
+         TOT/pzY/8gCsosenu1PkHEf4qxAfamjyOcV2oAmsvlKJB9nEWmJRs/Uxrk2jGEOkGdBv
+         ImXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bI8wawA9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgbEut2w;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id s4si6267387ejm.735.2021.09.03.10.45.28
+        by mx.google.com with ESMTPS id l12si5961657ejo.331.2021.09.03.10.45.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 10:45:28 -0700 (PDT)
+        Fri, 03 Sep 2021 10:45:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bI8wawA9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgbEut2w;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630691127;
+	s=mimecast20190719; t=1630691131;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=z+3KRRg2uaRwQMu7zo1tfHiyUXSW+kC4va1y4Yzkd4M=;
-	b=bI8wawA9NEXWftj7CD6GH7gznT3d1ULAvmnojJqdQNy5chrHmG3/JsGPnYE3K5AGd91kXC
-	dNx4xHfCnkhFZHS2PKr3qyTemlN7bzL7uL3cax895A0ORNqKGR0AsPnCweGVlq8L5rToP1
-	M3ojWsKw+r4YTIvlVWtMmQffxglCaRo=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-184-ZNbG34prOBaWeVRF0czgLA-1; Fri, 03 Sep 2021 13:45:24 -0400
-X-MC-Unique: ZNbG34prOBaWeVRF0czgLA-1
-Received: by mail-wr1-f71.google.com with SMTP id h15-20020adff18f000000b001574654fbc2so1817210wro.10
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:45:24 -0700 (PDT)
+	bh=6axIh+16/DTX2QUR6MOtSJVf4S/aGvlneoKk63wKfEE=;
+	b=FgbEut2wMqtxgHKoW/P00o3g/+3BL3HUBsTz2xhK2AKJX3IHLMKH82wTtN7zPPRiBe10pr
+	CM3VmyL8Kgamh6tVQgcKvJVXzOgsd1CSa29ig/WjyVA0nmTlloCPSyVh128zMX1U/9LBFr
+	kmuuaP4uXROSAMHmv+Rxg2ChxbM+pe8=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-512-zEmLGJaSO-6SFQxmMM_7Qg-1; Fri, 03 Sep 2021 13:45:30 -0400
+X-MC-Unique: zEmLGJaSO-6SFQxmMM_7Qg-1
+Received: by mail-wm1-f69.google.com with SMTP id j135-20020a1c238d000000b002e87aa95b5aso49274wmj.4
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:45:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=z+3KRRg2uaRwQMu7zo1tfHiyUXSW+kC4va1y4Yzkd4M=;
-        b=ky1VgiTlAcTySJ/GRErWzVCk+hSCOs+H7txUi3K6YEDjqZ9nnbYKpoYFaAvWfCE+by
-         Vf9GajZFaptWmVEkpm18IEkh3uwvN6U9hl7JyPCP1T2lYG8ttKaTah1sS5McYmYr1Jwq
-         IpCh+zTDO9A3VatJVLP1hnV0+xFLoSZXEvvQgN3IielC+A4uL4pxliv5kJdLB+g4bTxU
-         TXu+xbYWzKILwB65f0/CI5whcvK7Og6IlT428NB1VNeg3vKU5+XYNR0kel6utEFFnbV6
-         RNaUFJVSz2CCJlZh5wM+0hPv9EmrmMl+fqlNYxRGdRZsXW3UvPKrzoP3HgYDzarzf8dx
-         266w==
-X-Gm-Message-State: AOAM532/d8UzJebx/5vmZpbyS/cYOyNM1WJ3/8m7lhg26KBeRvOZGQ/d
-	lPciFpV42OuuRIRp2LMlOFQBsiIKevw1yn9XiklThxa8R6GvqddG75PSOEYQlVYyN/jpUEZ9vQe
-	ZIVLPMtnqlQQaNzja
-X-Received: by 2002:a05:6000:1248:: with SMTP id j8mr259702wrx.97.1630691123466;
-        Fri, 03 Sep 2021 10:45:23 -0700 (PDT)
-X-Received: by 2002:a05:6000:1248:: with SMTP id j8mr259679wrx.97.1630691123294;
-        Fri, 03 Sep 2021 10:45:23 -0700 (PDT)
+        bh=6axIh+16/DTX2QUR6MOtSJVf4S/aGvlneoKk63wKfEE=;
+        b=F/+HfEJnY4SPq10IgTwbLPVe8uolkW9Ra3lg8vvnq4bPktNKxUV6rTN4BMpPF+mha+
+         kih3ryOtwtlWkRaXnZKnlNqotKl7h2G07Ue7xKU4rNhNZCKYngRPvibJp1yeU39kNh/E
+         VjXpI8n2A8eIbhulscSN7MsRCLsQfEqJt5gZeE79K9gKspozd7jS7H8twuIzUuyLduZi
+         yE6Sd03dBPQ31XzZQLUFkg//drLq+o2txlFH8NM50AhWSffI156KjQW3YD8WX5j/Abwc
+         5elC3ZkH8xWPGTenVoJVzC7XnkJJ1xBNjEy7aCuQMEcVgQ6UheLG12WryApq9hfM/MOp
+         pUbw==
+X-Gm-Message-State: AOAM531tzutZr57/rrzl+2ZMiN3m6tByrnaZpVx+rhdZMxV5pGZ1unH1
+	C7b3zZ9SPn6EqqI/v5c1UUMM0VSYSvb50rcDdWPPoKEy65un6Dv17hd/ev+tbGhSgk61n7tZB0r
+	KnKmwi9XCzccvCQDU
+X-Received: by 2002:a05:600c:2d45:: with SMTP id a5mr10814wmg.125.1630691128628;
+        Fri, 03 Sep 2021 10:45:28 -0700 (PDT)
+X-Received: by 2002:a05:600c:2d45:: with SMTP id a5mr10802wmg.125.1630691128471;
+        Fri, 03 Sep 2021 10:45:28 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id p5sm5783883wrd.25.2021.09.03.10.45.21
+        by smtp.gmail.com with ESMTPSA id s13sm56649wmc.47.2021.09.03.10.45.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 10:45:22 -0700 (PDT)
+        Fri, 03 Sep 2021 10:45:28 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -102,9 +102,9 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	qemu-block@nongnu.org,
 	qemu-ppc@nongnu.org,
 	"Daniel P . Berrange" <berrange@redhat.com>
-Subject: [PATCH v3 02/28] glib-compat: Introduce g_memdup2() wrapper
-Date: Fri,  3 Sep 2021 19:44:44 +0200
-Message-Id: <20210903174510.751630-3-philmd@redhat.com>
+Subject: [PATCH v3 03/28] qapi: Replace g_memdup() by g_memdup2()
+Date: Fri,  3 Sep 2021 19:44:45 +0200
+Message-Id: <20210903174510.751630-4-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903174510.751630-1-philmd@redhat.com>
 References: <20210903174510.751630-1-philmd@redhat.com>
@@ -115,80 +115,111 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BYvHzkG/0MMq
+X-TUID: g9ZT14oABQCQ
 
-When experimenting raising GLIB_VERSION_MIN_REQUIRED to 2.68
-(Fedora 34 provides GLib 2.68.1) we get:
+Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
 
-  hw/virtio/virtio-crypto.c:245:24: error: 'g_memdup' is deprecated: Use 'g_memdup2' instead [-Werror,-Wdeprecated-declarations]
-  ...
+  The old API took the size of the memory to duplicate as a guint,
+  whereas most memory functions take memory sizes as a gsize. This
+  made it easy to accidentally pass a gsize to g_memdup(). For large
+  values, that would lead to a silent truncation of the size from 64
+  to 32 bits, and result in a heap area being returned which is
+  significantly smaller than what the caller expects. This can likely
+  be exploited in various modules to cause a heap buffer overflow.
 
-g_memdup() has been updated by g_memdup2() to fix eventual security
-issues (size argument is 32-bit and could be truncated / wrapping).
-GLib recommends to copy their static inline version of g_memdup2():
-https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
+Replace g_memdup() by the safer g_memdup2() wrapper.
 
-Our glib-compat.h provides a comment explaining how to deal with
-these deprecated declarations (see commit e71e8cc0355
-"glib: enforce the minimum required version and warn about old APIs").
-
-Following this comment suggestion, implement the g_memdup2_qemu()
-wrapper to g_memdup2(), and use the safer equivalent inlined when
-we are using pre-2.68 GLib.
-
-Reported-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/glib-compat.h | 37 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ qapi/qapi-clone-visitor.c | 16 ++++++++--------
+ qapi/qapi-visit-core.c    |  6 ++++--
+ 2 files changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/include/glib-compat.h b/include/glib-compat.h
-index 9e95c888f54..8d01a8c01fb 100644
---- a/include/glib-compat.h
-+++ b/include/glib-compat.h
-@@ -68,6 +68,43 @@
-  * without generating warnings.
-  */
+diff --git a/qapi/qapi-clone-visitor.c b/qapi/qapi-clone-visitor.c
+index c45c5caa3b8..b014119d368 100644
+--- a/qapi/qapi-clone-visitor.c
++++ b/qapi/qapi-clone-visitor.c
+@@ -37,7 +37,7 @@ static bool qapi_clone_start_struct(Visitor *v, const char *name, void **obj,
+         return true;
+     }
  
-+/*
-+ * g_memdup2_qemu:
-+ * @mem: (nullable): the memory to copy.
-+ * @byte_size: the number of bytes to copy.
-+ *
-+ * Allocates @byte_size bytes of memory, and copies @byte_size bytes into it
-+ * from @mem. If @mem is %NULL it returns %NULL.
-+ *
-+ * This replaces g_memdup(), which was prone to integer overflows when
-+ * converting the argument from a #gsize to a #guint.
-+ *
-+ * This static inline version is a backport of the new public API from
-+ * GLib 2.68, kept internal to GLib for backport to older stable releases.
-+ * See https://gitlab.gnome.org/GNOME/glib/-/issues/2319.
-+ *
-+ * Returns: (nullable): a pointer to the newly-allocated copy of the memory,
-+ *          or %NULL if @mem is %NULL.
-+ */
-+static inline gpointer g_memdup2_qemu(gconstpointer mem, gsize byte_size)
-+{
-+#if GLIB_CHECK_VERSION(2, 68, 0)
-+    return g_memdup2(mem, byte_size);
-+#else
-+    gpointer new_mem;
-+
-+    if (mem && byte_size != 0) {
-+        new_mem = g_malloc(byte_size);
-+        memcpy(new_mem, mem, byte_size);
-+    } else {
-+        new_mem = NULL;
-+    }
-+
-+    return new_mem;
-+#endif
-+}
-+#define g_memdup2(m, s) g_memdup2_qemu(m, s)
-+
- #if defined(G_OS_UNIX)
- /*
-  * Note: The fallback implementation is not MT-safe, and it returns a copy of
+-    *obj = g_memdup(*obj, size);
++    *obj = g_memdup2(*obj, size);
+     qcv->depth++;
+     return true;
+ }
+@@ -65,8 +65,8 @@ static GenericList *qapi_clone_next_list(Visitor *v, GenericList *tail,
+     QapiCloneVisitor *qcv = to_qcv(v);
+ 
+     assert(qcv->depth);
+-    /* Unshare the tail of the list cloned by g_memdup() */
+-    tail->next = g_memdup(tail->next, size);
++    /* Unshare the tail of the list cloned by g_memdup2() */
++    tail->next = g_memdup2(tail->next, size);
+     return tail->next;
+ }
+ 
+@@ -83,7 +83,7 @@ static bool qapi_clone_type_int64(Visitor *v, const char *name, int64_t *obj,
+     QapiCloneVisitor *qcv = to_qcv(v);
+ 
+     assert(qcv->depth);
+-    /* Value was already cloned by g_memdup() */
++    /* Value was already cloned by g_memdup2() */
+     return true;
+ }
+ 
+@@ -93,7 +93,7 @@ static bool qapi_clone_type_uint64(Visitor *v, const char *name,
+     QapiCloneVisitor *qcv = to_qcv(v);
+ 
+     assert(qcv->depth);
+-    /* Value was already cloned by g_memdup() */
++    /* Value was already cloned by g_memdup2() */
+     return true;
+ }
+ 
+@@ -103,7 +103,7 @@ static bool qapi_clone_type_bool(Visitor *v, const char *name, bool *obj,
+     QapiCloneVisitor *qcv = to_qcv(v);
+ 
+     assert(qcv->depth);
+-    /* Value was already cloned by g_memdup() */
++    /* Value was already cloned by g_memdup2() */
+     return true;
+ }
+ 
+@@ -114,7 +114,7 @@ static bool qapi_clone_type_str(Visitor *v, const char *name, char **obj,
+ 
+     assert(qcv->depth);
+     /*
+-     * Pointer was already cloned by g_memdup; create fresh copy.
++     * Pointer was already cloned by g_memdup2; create fresh copy.
+      * Note that as long as qobject-output-visitor accepts NULL instead of
+      * "", then we must do likewise. However, we want to obey the
+      * input visitor semantics of never producing NULL when the empty
+@@ -130,7 +130,7 @@ static bool qapi_clone_type_number(Visitor *v, const char *name, double *obj,
+     QapiCloneVisitor *qcv = to_qcv(v);
+ 
+     assert(qcv->depth);
+-    /* Value was already cloned by g_memdup() */
++    /* Value was already cloned by g_memdup2() */
+     return true;
+ }
+ 
+diff --git a/qapi/qapi-visit-core.c b/qapi/qapi-visit-core.c
+index a641adec51e..ebabe63b6ea 100644
+--- a/qapi/qapi-visit-core.c
++++ b/qapi/qapi-visit-core.c
+@@ -413,8 +413,10 @@ bool visit_type_enum(Visitor *v, const char *name, int *obj,
+     case VISITOR_OUTPUT:
+         return output_type_enum(v, name, obj, lookup, errp);
+     case VISITOR_CLONE:
+-        /* nothing further to do, scalar value was already copied by
+-         * g_memdup() during visit_start_*() */
++        /*
++         * nothing further to do, scalar value was already copied by
++         * g_memdup2() during visit_start_*()
++         */
+         return true;
+     case VISITOR_DEALLOC:
+         /* nothing to deallocate for a scalar */
 -- 
 2.31.1

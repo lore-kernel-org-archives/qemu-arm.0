@@ -1,273 +1,137 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1206837lfb;
-        Fri, 3 Sep 2021 04:51:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJze3GeYYY0G5n+LtYKxvZX6Rd4VuXdGlSUmGbbyzcLUY6Bf5/d/afLstnWSut0TgDHGTbxI
-X-Received: by 2002:aa7:c64c:: with SMTP id z12mr3585212edr.228.1630669886460;
-        Fri, 03 Sep 2021 04:51:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1630669886; cv=pass;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1182884lfb;
+        Fri, 3 Sep 2021 04:18:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytKlIKBQ0HrCxtTRb9kPg5tBO+XjPp0eSfAOhhkqEO7+lgpuZXLQTDODBCDBVs3Ge01jKB
+X-Received: by 2002:a17:906:4e11:: with SMTP id z17mr3571132eju.483.1630667934222;
+        Fri, 03 Sep 2021 04:18:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630667934; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xx+8epOkBGDpTTA2TRHlCzWUx5fLqJMJgIhY+R62DKV4end5Q4jNZPVOcZ95G3RGF6
-         o7db2y52s33WNTC675Gnd3XF0K4B8a4d2oCpNR4k/zFm05ml1acc7MTNluShOScpgdN+
-         FURJOIozUmiaO0l9FVnKHga4nDUauH60PQ6oyXeuXTqZpmAm5/UhaVSfN/4W2IclCSX5
-         QZqzZTNYVXC+pOCHqARx0vZLHR9kTmdSoiSq6XSE5LDDaKB+sKOcZNHuJLqDlqsmD79h
-         XmtXlkupcp+L30GmZw0auluSp2fsiL6C4JcyJFsnb1htYK2kLvS+cGOS3UrKUwmEOz6T
-         RYgQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language:in-reply-to
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=AfmSqVwpNHKFWeVYOvLeUDajqAKI6sjTztAdEjQN+Nk=;
-        b=LTJWFRJNFHgzBpbQuRil8GPfPZYZ/oVByN5ff+Q0WE9Doba7WQsYNPWvkqu+/a/75h
-         mu0zeDOZtcG2JO8prfucTk1cQmdYfSB0BiZARaep05toXw1LSgJQveUJ/FEh3v3DBTMV
-         uYmY0fHFOVhDk7GgBPeyujzEeodCYI32T+GqeWzWTphDjM8tx+qmPIxZifl4pLJ/XNBK
-         L7qTrLFtoaPe4E84R9DUDQL/79iACD5mqASaveySqP9CqTQxtQjk++aqmD39j7MKEDxF
-         8ZMKhycbW8172Pu1CXA3c8qVHYNtMjOtDSSQxfPo3aW7EOJBC9Mn1m3SSUlJTXrsqv20
-         u+6w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=qtPjBzLK;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of vsementsov@virtuozzo.com designates 40.107.7.90 as permitted sender) smtp.mailfrom=vsementsov@virtuozzo.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
-Return-Path: <vsementsov@virtuozzo.com>
-Received: from EUR04-HE1-obe.outbound.protection.outlook.com (mail-eopbgr70090.outbound.protection.outlook.com. [40.107.7.90])
-        by mx.google.com with ESMTPS id l11si5293102ejo.259.2021.09.03.04.51.26
+        b=pJG7WAlghqkJaR992AOSrUL/raQnT1tc7FxE9MkpExWOl+jePSmhNPXvbHKrqSCQ9V
+         sDcn3+2xGfCMSeeu+rmCiIWFVOeKiZ6Cmn+6AldeIeeqf7ABmisBcnFAhipVNMadAF76
+         eaq7KrZeJhoK3JoV1U/GMaBmy7qFCdodNROvR6cpvn4wUZFv2YHLQZX+zefScKiSYgac
+         jzjdMEBcQkeaIwv419L5kl2MU7FUZdFfijqSu2HdX50LGzrd1jePFtHfB8v+h5I6fzvj
+         I/y5xDaJuFh814ad6Nd0wLjUuoW7jP1jaZYuxSX2phuaJRFJ4mKGSt4v+ZYYhBGwkWlI
+         VFDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=d9H6Y/x3aFTcQdkDCU9IR24Ruj76cNc11pNOs8U9ZeE=;
+        b=pLW+zpBFgoIbogsiZ+31wHlDghXhJRmOGa9iAqCfP06NY3m+rtxXgEaKSRI2bz7p9k
+         bTYIVgvsJhxG6ux1tkXQtBmcbjE+nBJANHh4HI7pE6KJnk/eL6JupwdzZRHIRAsYSILX
+         84MzsxASftAqCqEtdxOpvGzRUj0OXp4Z4X/KDOTpvg0ATBWbtnuTyL4TLIJcxxheNf4t
+         y256gtGdNAsarOmE9KCBAQcJ48NieAI0X9VGEpHiztCwFlabJFTzlcDbSJLh/DYWuh3+
+         xWO5xOWsPncW5EQ0kbnZMo/kjMhqhVrSaE+bH1tj6x4YuTsKF1McPbXVFUIEA/LdX/kD
+         /GBw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Za/QDRAP";
+       spf=pass (google.com: domain of berrange@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id p15si4962651ejy.519.2021.09.03.04.18.53
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 04:51:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vsementsov@virtuozzo.com designates 40.107.7.90 as permitted sender) client-ip=40.107.7.90;
+        Fri, 03 Sep 2021 04:18:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=qtPjBzLK;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of vsementsov@virtuozzo.com designates 40.107.7.90 as permitted sender) smtp.mailfrom=vsementsov@virtuozzo.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eXnJssqwu4AMFBOqVy3Ixu9K+k3vNzOye6iyWX5I6U6Jm1sM3KUMiQcgpdf9IS3M9wZCisBQwEKaWl1wDmjV5U/Tom+set5+1h3+Nk1P6QvoM78ADiEq2hLZkONTBo6B0ea/vFP65HtdyfEPqZo2Hk4hiIuj3VzsarISck4Fc9iiYB5SoWsgkF8KYpCcmSROd2w7L0z8mgZIzAzvGePMIwY5yshAdzjY+wSWEz8rTzhDNhCckSm7CMSzonwXy1qWf93A/8YIR0DO0AIA9F9JbNo2ZAp18+Aq/YmsmLREguAyOsL6wt0+sUTmGGKjlrwIQkRJCRdWy8V2QKOcmVLu+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
- bh=AfmSqVwpNHKFWeVYOvLeUDajqAKI6sjTztAdEjQN+Nk=;
- b=aTcl1W+MiAfT5MYp8yB/IPxNM6fuAaLRHB9GmSnm+jkCQZb/6MC7Cfl6X2U92ZAkJg5W2keXrveXbVZLKuEUsa8DImTtsZYmMld/nZWfGTmlvDO9+0SUOcIi62vcjhdBLcgg2PrKFGRtihrAUv8QHUgMeh8J/3b9p9D6CJ6ALduy6yazM2V9lwgEo7ATOYRH2ah4o8QJQjc/8aDt7fAKfcwuO7SZQ1b34bvMEuBhg1LJIvQhMeJNViC1hIzL4eKMCqd+aqlWcpBbS5UwkKNhFgGh9jbyNhxqlmB1yVFfmnSaPmc1SGwpMPS+hnW1MZgI5fsem8CtzL58yWou1LVwnQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AfmSqVwpNHKFWeVYOvLeUDajqAKI6sjTztAdEjQN+Nk=;
- b=qtPjBzLKfX5xNhART+rtN7qxgkxwUgPva/7rMwq7FV7YA1NwAZJHN48eUl0HayAjJGxBZxLQfcEaeflYTBwdOLcKt3BXerOV+Eef7kn+w7jOLk5sVwKLnqQH2uaX7uZbvkBMejI977XWP7W+slX+e1PaARqGaji9y2BZSlsQsJs=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=virtuozzo.com;
-Received: from AM7PR08MB5494.eurprd08.prod.outlook.com (2603:10a6:20b:dc::15)
- by AS8PR08MB6805.eurprd08.prod.outlook.com (2603:10a6:20b:396::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.17; Fri, 3 Sep
- 2021 11:51:24 +0000
-Received: from AM7PR08MB5494.eurprd08.prod.outlook.com
- ([fe80::2817:53b3:f8b4:fe22]) by AM7PR08MB5494.eurprd08.prod.outlook.com
- ([fe80::2817:53b3:f8b4:fe22%8]) with mapi id 15.20.4478.022; Fri, 3 Sep 2021
- 11:51:24 +0000
-Subject: Re: [PATCH 02/28] glib-compat: Introduce g_memdup2() wrapper
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Za/QDRAP";
+       spf=pass (google.com: domain of berrange@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1630667933;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=d9H6Y/x3aFTcQdkDCU9IR24Ruj76cNc11pNOs8U9ZeE=;
+	b=Za/QDRAPbwAsBoMAwOS/DwwdTJv5UUi7gTufGGV6+TfsOF7pZcecfKw2BRq/jor9NzNeC6
+	xaRMbCeT+ldjjivmk9pqbdG21z0HfxPTgrxKzax+2lUB+/7qQ4PYFg2aHcnpHUQ4euYN28
+	c/ZgdnZHJWOcPBbeSP4666pbmE4B5e8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-391-H8poPZlMOuixug7-bAsqBw-1; Fri, 03 Sep 2021 07:18:51 -0400
+X-MC-Unique: H8poPZlMOuixug7-bAsqBw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B0970501E1;
+	Fri,  3 Sep 2021 11:18:48 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.193.241])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5F03210016F4;
+	Fri,  3 Sep 2021 11:18:19 +0000 (UTC)
+Date: Fri, 3 Sep 2021 12:18:16 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Li Zhijian <lizhijian@cn.fujitsu.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org,
- Zhang Chen <chen.zhang@intel.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Helge Deller <deller@gmx.de>,
- David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, Stefan Weil <sw@weilnetz.de>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz
- <groug@kaod.org>, Alex Williamson <alex.williamson@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
- qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>
+	Peter Maydell <peter.maydell@linaro.org>,
+	Li Zhijian <lizhijian@cn.fujitsu.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Christian Schoenebeck <qemu_oss@crudebyte.com>,
+	Yuval Shaia <yuval.shaia.ml@gmail.com>,
+	Peter Xu <peterx@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>, Eric Blake <eblake@redhat.com>,
+	qemu-block@nongnu.org, Zhang Chen <chen.zhang@intel.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Helge Deller <deller@gmx.de>, David Hildenbrand <david@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	"Gonglei (Arei)" <arei.gonglei@huawei.com>,
+	Stefan Weil <sw@weilnetz.de>, Laurent Vivier <lvivier@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Greg Kurz <groug@kaod.org>,
+	Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Hanna Reitz <hreitz@redhat.com>, qemu-ppc@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>
+Subject: Re: [PATCH 03/28] qapi: Replace g_memdup() by g_memdup2_qemu()
+Message-ID: <YTIEeO5udKWuqE6H@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20210903110702.588291-1-philmd@redhat.com>
- <20210903110702.588291-3-philmd@redhat.com> <YTIEDKAgWGRt/I6y@redhat.com>
-From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Message-ID: <04ba0442-08ca-bf88-3f04-0be00c11bd1b@virtuozzo.com>
-Date: Fri, 3 Sep 2021 14:51:21 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-In-Reply-To: <YTIEDKAgWGRt/I6y@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: AM3PR05CA0113.eurprd05.prod.outlook.com
- (2603:10a6:207:2::15) To AM7PR08MB5494.eurprd08.prod.outlook.com
- (2603:10a6:20b:dc::15)
-Return-Path: vsementsov@virtuozzo.com
+ <20210903110702.588291-4-philmd@redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [192.168.100.5] (185.215.60.196) by AM3PR05CA0113.eurprd05.prod.outlook.com (2603:10a6:207:2::15) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.19 via Frontend Transport; Fri, 3 Sep 2021 11:51:22 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: a2f5e555-6391-4db6-8eb5-08d96ed127c2
-X-MS-TrafficTypeDiagnostic: AS8PR08MB6805:
-X-Microsoft-Antispam-PRVS:
-	<AS8PR08MB68058376A303D4813E541943C1CF9@AS8PR08MB6805.eurprd08.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4125;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	5Lqk370E5EAQHs7bMa8AUeMmNX4I2Tx6D5TvbGBKi+P5Blu/oq8QUvnH0dpUvhlst/OOxyFzuhQpYNFWmuL2J5DBzn9dPiSa9Xv3lXZlT9i+zJRPmMVC0F2Bc279IiJfI9Vkq2gvhSjpYJgW4cdVz4H+6ZgI1MdVGvE8mZ4N3+QArn1NTbgzdwxGFAn3Dn5iWWd3RNyzattXc7F90C7tIe8LAo/2KzIvbVloj4k02pX5E9951OpbKbychpfMjblCfvSF34QZf7lIKYs38A5Yo7zIl8stkOaiTwTd8c2FpsDGyBp84Snb8PGk6RbReVib/3yl23lt4LDSqCKtQDT9JZd68DZ8m971lIPjoed3BDCcOZlgs1hJxwdnf7aYBvoG9L42R9YTT9QCzllOODjfRCt5QNTUz/uPYIXtjqHlk99SH6EBLJkCGcIZtbdrKDYHPbiDbzYsacfuOcF++BQyjofIpj5h2zNOqV0DzMMEn1Xif766MPzXFGNcr7KZSBYutFdgSnudttuzxrJV7Jc1Qxg8Z0vL7o/HQuIEf+W7ES7OoYQk8IxTPdmy5RCEmowwP7NTq+4zTlQHfiSY4qRVwqEbyIfJILZGNCqoNNVvwU027r9o4B6psqWnD98FMffaY11OOq0fmlTYkTWuZVvAEMY0Mbdj+5SuqJHk9iuuxsj3pFo1RagOmADxoHd/r5yiCsSD32yuA8WOBmQW88mr1uUByb+c3DnzBfkHO4cSlho0SKVy/tMrjzGPnFR1Iw2CNFrQgbAN657bPoHezbiRWjjjelTxdKshOXlaQBOPRPetwJLxTjyvFUNFF2OCye9Key2QlZzhBDXJZDsZp5bFBu78iP9Rxgtz6IfT/+10V8w=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM7PR08MB5494.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(4636009)(376002)(136003)(39840400004)(346002)(396003)(366004)(36756003)(26005)(8676002)(966005)(8936002)(38350700002)(38100700002)(110136005)(478600001)(83380400001)(54906003)(186003)(66946007)(16576012)(52116002)(66556008)(2616005)(66476007)(2906002)(956004)(6486002)(5660300002)(316002)(31686004)(86362001)(7406005)(4326008)(31696002)(7416002)(43740500002)(45980500001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?QkdveU1wbEx1eWkyWG9aQ1pob25tVlUzVURRQmFRNnJQdVJLS21aR0NTdjQ5?=
- =?utf-8?B?RmJXQ1FNVWFkL3IyOUZSdWM2b2FRTmx2VXhndTBHSUtvVEluOFdtejVWSEJ3?=
- =?utf-8?B?VnNJT0x6NVBVck15bmpmL3kvTXhrRXFUbldJQmJMckFQOXUrSEFaaElXZHN6?=
- =?utf-8?B?VkoxN29lOUFRa0hRM2NIdldYc1Ayd3QyTFlSKytaenNhMFNwMEx2WWlRVTE4?=
- =?utf-8?B?VkE1MVd5WmRiVDZkWUtiY2YyRE1QcU13U2pLZHNWclZEcEh6dXNJUXpwdEJr?=
- =?utf-8?B?bEU2akNwc3hhSm51RFVDZHZrMkhoZXRnT2NMcGc2RHhtWTBVTStnY2w4S05L?=
- =?utf-8?B?cTlkVEhoWGxIOFRzQVQ3eS84UCtBRmVGZlZNRThCSGJXcU9iYTNvcHA5bGxx?=
- =?utf-8?B?TlAzNnNldW1EK2ZSYmFQb0FnMUh5eXo4U3htS3d1SldUL0Y3cEwxZ3pwREho?=
- =?utf-8?B?clVSK3RMYzlBVzNvUWxscmJZQ0pnT0FEdzUrVFdrNENQWUtacElpTDFXSVcx?=
- =?utf-8?B?Nm1rQU0xMXhiblRUVXpJRGMwNVkxaTcwRk5nWGtVaG5Hby9qSlBQL3FyVDIz?=
- =?utf-8?B?ZVJ2UC9wUTZtcHJ1eUNHMnJ2U0xEZHpveTVkaDdNeFoydFdyWCtxUGc1a3pC?=
- =?utf-8?B?NDM5d1h6K1ZzSnpyNkxQemdsRE43Z3UvUGFwcE1DUWFtUkNDTUlMc09OZnNs?=
- =?utf-8?B?LzhIdFMwZzRNYmhSdVNQSWRRUlV1UUZXZGw0TU9IR2FtM0tMdldzaDk3K2hy?=
- =?utf-8?B?TDM0OUFHRzJnM05QUkV5QVEwMjF5OWdnYnBvSmphM0lvRGJmcnBzc2dMQ2xS?=
- =?utf-8?B?R1FZWFFxbVRxbFRCaFFYWEZ3T0ttY1J1WW9jbHFjTjNvWkxCQy9KRFJTT2gz?=
- =?utf-8?B?WXNLRUQ4V0tiUGVIUXN2TFVRTWxFYWk3WFlZZ3dJbU5VZ2l4dHk1NFBxVFRO?=
- =?utf-8?B?aUV6M1lFRnI3TUMyZ2hTZkhOTUFNSjRYbWRRSDdENDBqcmNobmI1aHF5MXQ3?=
- =?utf-8?B?Q0ErUWVkSHNKaGJ0Q2JrRkJqa2YzMzJLYmJxdGloRWZSYi93V2JBdkRuakVL?=
- =?utf-8?B?OEJ2MXV2UTY4TU51WU0wT3pHMTM0QWdWUkdLdHQraWtqenF6aGVUUTlJSWhp?=
- =?utf-8?B?Nm9XVUZpd2pWTTJETlFyQWZwRWlBVFRCRHE4Z2Nwd2N4dFdzZjJjemIrU1Qr?=
- =?utf-8?B?djQ0ME5Sb0VkSFJsdzhpaG1EU2prdjEyVkhZREg3VFljcm5hME9HMFc2YzZv?=
- =?utf-8?B?Wk1QQVM3N2s2bWNrWTlnNWNLYXNmaGRQRjQvNHE2WStLbHBEV1k3VlgvcllN?=
- =?utf-8?B?YlZzTmFDUHpyRlptWFY1SGEyV2ZPcW9taWFwclIweFpOTGN0akFESjRmNXcv?=
- =?utf-8?B?UUNrenhDNndUb2hSdFQ4KzhVdktEVGUvV1o0TlV6a3Q4Ynl6RGFuOEg2d0JU?=
- =?utf-8?B?MXY2ejdhZW5OeVZGcnpEbnk0V1VyVGVQbkVUUkhQL2VLbk8wMUdzWUwvVkhw?=
- =?utf-8?B?YlMyR2p3akpuOW1DZzNKelpIcFp0RXVPeElVWGNJZENIdllhcEVzWEE2SE1n?=
- =?utf-8?B?UGgwTVNTQUxPTE1GeGNRRmhka1FVZDU3a1lST3p5VU54dUIwRVdJQkdHQlh2?=
- =?utf-8?B?cUdLMmFJY1E1L0ZHTTZVLzVmdGREaWZUVWZ2VS9DMGJVS2VKSHJKRnRDbFRQ?=
- =?utf-8?B?eGZiZkFxSC9LZlZyN2pTZkVtc0pGUXlGd0ZBTTVFcndtYlZDWENhUzVlU0RF?=
- =?utf-8?Q?WJAunphVmdmJXZ+lZqhoIndyRPXu5Sbn2zDgOFU?=
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a2f5e555-6391-4db6-8eb5-08d96ed127c2
-X-MS-Exchange-CrossTenant-AuthSource: AM7PR08MB5494.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2021 11:51:24.5471
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: m8dv0TBbmSJbHiEyHbaANIAGOoZfs2GVXl0NGYMKXYsH77zGEfl/8bTfUSbCbIdzuE/Y9dQ4fpEMIhbAMfTbjBDuSDMNfcFpkCtJTUhMu6g=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB6805
-X-TUID: IU4h1lckDD8y
+In-Reply-To: <20210903110702.588291-4-philmd@redhat.com>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-TUID: V3nGLvXtreK7
 
-03.09.2021 14:16, Daniel P. Berrangé wrote:
-> On Fri, Sep 03, 2021 at 01:06:36PM +0200, Philippe Mathieu-Daudé wrote:
->> When experimenting raising GLIB_VERSION_MIN_REQUIRED to 2.68
->> (Fedora 34 provides GLib 2.68.1) we get:
->>
->>    hw/virtio/virtio-crypto.c:245:24: error: 'g_memdup' is deprecated: Use 'g_memdup2' instead [-Werror,-Wdeprecated-declarations]
->>    ...
->>
->> g_memdup() has been updated by g_memdup2() to fix eventual security
->> issues (size argument is 32-bit and could be truncated / wrapping).
->> GLib recommends to copy their static inline version of g_memdup2():
->> https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
->>
->> Our glib-compat.h provides a comment explaining how to deal with
->> these deprecated declarations (see commit e71e8cc0355
->> "glib: enforce the minimum required version and warn about old APIs").
->>
->> Following this comment suggestion, implement the g_memdup2_qemu()
->> wrapper to g_memdup2(), and use the safer equivalent inlined when
->> we are using pre-2.68 GLib.
->>
->> Reported-by: Eric Blake <eblake@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>   include/glib-compat.h | 36 ++++++++++++++++++++++++++++++++++++
->>   1 file changed, 36 insertions(+)
->>
->> diff --git a/include/glib-compat.h b/include/glib-compat.h
->> index 9e95c888f54..6577d9ab393 100644
->> --- a/include/glib-compat.h
->> +++ b/include/glib-compat.h
->> @@ -68,6 +68,42 @@
->>    * without generating warnings.
->>    */
->>   
->> +/*
->> + * g_memdup2_qemu:
->> + * @mem: (nullable): the memory to copy.
->> + * @byte_size: the number of bytes to copy.
->> + *
->> + * Allocates @byte_size bytes of memory, and copies @byte_size bytes into it
->> + * from @mem. If @mem is %NULL it returns %NULL.
->> + *
->> + * This replaces g_memdup(), which was prone to integer overflows when
->> + * converting the argument from a #gsize to a #guint.
->> + *
->> + * This static inline version is a backport of the new public API from
->> + * GLib 2.68, kept internal to GLib for backport to older stable releases.
->> + * See https://gitlab.gnome.org/GNOME/glib/-/issues/2319.
->> + *
->> + * Returns: (nullable): a pointer to the newly-allocated copy of the memory,
->> + *          or %NULL if @mem is %NULL.
->> + */
->> +static inline gpointer g_memdup2_qemu(gconstpointer mem, gsize byte_size)
->> +{
->> +#if GLIB_CHECK_VERSION(2, 68, 0)
->> +    return g_memdup2(mem, byte_size);
->> +#else
->> +    gpointer new_mem;
->> +
->> +    if (mem && byte_size != 0) {
->> +        new_mem = g_malloc(byte_size);
->> +        memcpy(new_mem, mem, byte_size);
->> +    } else {
->> +        new_mem = NULL;
->> +    }
->> +
->> +    return new_mem;
->> +#endif
->> +}
+On Fri, Sep 03, 2021 at 01:06:37PM +0200, Philippe Mathieu-Daudé wrote:
+> Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
 > 
-> Close, but you missed the final piece of the puzzle
+>   The old API took the size of the memory to duplicate as a guint,
+>   whereas most memory functions take memory sizes as a gsize. This
+>   made it easy to accidentally pass a gsize to g_memdup(). For large
+>   values, that would lead to a silent truncation of the size from 64
+>   to 32 bits, and result in a heap area being returned which is
+>   significantly smaller than what the caller expects. This can likely
+>   be exploited in various modules to cause a heap buffer overflow.
 > 
->     #define g_memdup2(a) g_memdup2_qemu(a)
-> 
-> 
-> Such that in all following patches you can use the normal "g_memdup2"
-> API. This means when we later update min glib, we just delete the
-> compat code here, and the callers don't need updates.
-> 
+> Replace g_memdup() by the safer g_memdup2_qemu() wrapper.
 
-That was most probably already discussed, so sorry my question:
-
-Why we can't just do
-
-#if ! GLIB_CHECK_VERSION(2, 68, 0)
-static inline gpointer g_memdup2(gconstpointer mem, gsize byte_size)
-{
-     gpointer new_mem;
-
-     if (mem && byte_size != 0) {
-         new_mem = g_malloc(byte_size);
-         memcpy(new_mem, mem, byte_size);
-     } else {
-         new_mem = NULL;
-     }
-
-     return new_mem;
-}
-#endif
-
-?
+This and all following patches should directly use "g_memdup2"
+rather than the wrapper which is supposed to remain "secret"
+in the glib-compat.h header.
 
 
+Regards,
+Daniel
 -- 
-Best regards,
-Vladimir
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

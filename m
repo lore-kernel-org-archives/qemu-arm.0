@@ -1,137 +1,132 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1659357lfb;
-        Fri, 3 Sep 2021 13:58:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzNASRB/nHS2rixIX8EDKtnEtc9j3M7f6CeJpWpR6N5KuV2O/sFvl3LNDSgecqzcvvFYx34
-X-Received: by 2002:a25:b845:: with SMTP id b5mr1244202ybm.343.1630702683842;
-        Fri, 03 Sep 2021 13:58:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630702683; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1667117lfb;
+        Fri, 3 Sep 2021 14:07:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzcN+57WSvVtxqp0I//tu2HJzlYe53f6uhZXd0M9Qf+Y7bNFXZTIccqGHMPleFFnERqJUPa
+X-Received: by 2002:a1f:1404:: with SMTP id 4mr538588vku.21.1630703270490;
+        Fri, 03 Sep 2021 14:07:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630703270; cv=none;
         d=google.com; s=arc-20160816;
-        b=YNHjf4RXbTKhc6ASaqUUAnLbCbbXTrHe+M5RwRiJWPwrYlX0xbWCkOPFfK7/GRVYY1
-         8lZ4HD4+iJEHy+BN3o+UJkX5Rl/ZYGzZtThXD6AYjIZaGRWi0FklyQduisek9LwhTMeS
-         jo8zfAK5je1h6IL7aFuYMzChWRys/en3vbKREr8G1/Ws6MWn2k3hpTb/Mjez45nJz0Ec
-         hBBCQ/10e6/0UvFNruM/k5P96d30BAOjDOHn4YqAj/99JPeLcD9hVthkZtZ7wNRS/Aim
-         tAUQlx0Jh9zpDOEtqIEE0OB7LZ3oYcfoA+BbkGNKWjuwA6jWYRv5PAVhn1XEY6SDkTxb
-         b0RA==
+        b=THIp6u8rws2UGPWYvuvQvIxfaqeFFYfiUiY2ejANtWsxs+GjK/2lE9lLYloH/w9Omg
+         xoH/xA3cOS+tXRNuJrBLDtPzwwWZo+QgwMhMH5zj+Pp5uYbOPExVVxR+GaSikF0rBm6M
+         vbjzG5TmpGq/ZkaB5R8RyM5dgrmnaxF6m+ItfDs7d0rUtkq7YxDh5RPHXWLqaBCplDgn
+         k+/J5haDnZ/Gxz/99ZhxAid68CswuNuZpjpqvCUqSZ0hbNXY2JJOIgzMCjwiE59HYIkY
+         I2PlOV0MGIlOtikUTSOQOkvPP59jnbjIUxlgltSnr7k/t1shxA1djRar4AnwtgptRAJG
+         oFGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=yepslUEHvjRRjLKdVvdi3rkpY9efahI4a2fz/vTn6zo=;
-        b=JM6caUuewn8jRPLEMvq/dIhH9S6u4VXiaHAxAi6EnWOlnBEuToCT06g22E/HJH/Tf5
-         Yws9rA8stH2Uyd19Z0eUfEJ+gpCJ26j8cIPgVZ3Hr5CfpJbmEIYUm2DKrRG4XVD1qYhT
-         jYlF7vrnv3g6DJ76yzq9sUWbjSNx/9LiDDrgetXhq7S83iDE43HutEBr32E2u2FmQROo
-         SmQfEjdYUPnSGyVhJiFA7wbY6xi035no1zpmBaT7ReZEee/SVFuwQDGAH1huw1SWrVVb
-         ZCdUzNVB4CSd5nJEEe/PX/VxfODrAdZ6O+Tg0BUmD5nNp6XH761jsM/0qz+qJMrjYMHd
-         eY7Q==
+        bh=7Z/eAs8sVAWlLVGUFtlGgI8WaRQ2xmlqcdP/z9+qniE=;
+        b=hYXFYasW8B5ExhSdw8reUm7/fsy+rCwih2mXrBXr/j6AHlwM2defJhEZ5jgnkLeFcM
+         +tHbOlgSmAcfhdCLye6pWzcAo+qXi7mB5KjrkicyQ0bliCXhIjvEq2UmCkizWl0+2EVY
+         T5BKaqV2V8X7wjrfx2NeWk77qDFjvCToJuIDVXsCLSUVFmusQaw+kTVrFHkmenie4FET
+         eooM+BPmKv+kJdGyv1kss371EHRX2qn5aYbi6J+vcevZo7dh/ZZ34+CpO7lvxvJD3dnI
+         2RU9P+is50udTqbjqCykyi4yPBxUqeV/qWiL6Qb/BcasIXmBBIHmWgqOzU1a4Sw3oi5u
+         7xRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Euo9+It8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=feEecvKX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g67si301113ybi.338.2021.09.03.13.58.03
+        by mx.google.com with ESMTPS id v23si141936vsk.216.2021.09.03.14.07.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 13:58:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Sep 2021 14:07:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Euo9+It8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40484 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=feEecvKX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMGGB-0004Re-7w
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 16:58:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55644)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMGPd-0008TQ-Qw
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 17:07:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mMG9F-0007wB-9L
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 16:50:55 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:44566)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mMG5u-0008Qg-4D; Fri, 03 Sep 2021 16:47:26 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:42967)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mMG9A-0000IN-Ue
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 16:50:51 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- l7-20020a1c2507000000b002e6be5d86b3so332102wml.3
- for <qemu-devel@nongnu.org>; Fri, 03 Sep 2021 13:50:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mMG5s-0005vT-DI; Fri, 03 Sep 2021 16:47:25 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ k20-20020a05600c0b5400b002e87ad6956eso343693wmr.1; 
+ Fri, 03 Sep 2021 13:47:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=yepslUEHvjRRjLKdVvdi3rkpY9efahI4a2fz/vTn6zo=;
- b=Euo9+It8JqFOxFty8/PcgMF4vbgKDEBzjI2LOrYoIo1CoPGfa9a2XW/KXN8NqvsAHA
- xqWAiiLxgyG0IZgUKTdzVkguHhVEMcQyUaNWs+ptkc0AsareiOvNg7D5INFRIKWbvlfZ
- tnYHddqsaN8wN8NpVOdBg266nkRzRMG45OjXdKHrQPeW8+AWpuQ3VO5w6qu5DGWiR1Qt
- eukwl6p6WyeIQ1nEkt9Ne+q5S5MZ8G9vHTf6Jfs5SpFE8ngbYQbO09IXBc3nLsWeMDwt
- AM8g62JZLX3Ozrsgiukn3E1pRg64H4TPhK3aW81r+LCVHgWlL9vAhdksUm5k2iomh/HA
- 8fcg==
+ bh=7Z/eAs8sVAWlLVGUFtlGgI8WaRQ2xmlqcdP/z9+qniE=;
+ b=feEecvKXaGFJJXkRI6qXEHovs73FL8d9gxq/b3ZS5wDin3Yp5ON33DgpFsI9szO0wB
+ 8RZ+u4NJXQptwT7PB2JKlaL9IKeUMNw+IXsTLfvwJF5RSDNFSce4zbiFIrgDqNbJKsMj
+ 4Jqr4f+249W2GD3HmyyW8StOJeqtqYz9guCeYbCiqSmLLYyLlWBpbtG4eYtKnXnftYBT
+ Hv6UeT4M5XXnvRWYfnSiFXagOWGo2K05ccHosGJHz4NeOLvO8L+rmW9KNezE1NFOUgQ2
+ XJb8DkPes1HbGPkN5NpK3WBtDzrj32ACjMr42yGprDrc2SQ4fZx0euBlMmvuMQIMY/aV
+ 7ZFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=yepslUEHvjRRjLKdVvdi3rkpY9efahI4a2fz/vTn6zo=;
- b=rFuE37sjcyRkevlskPq+8uZgDyn4uICFFhUjbiMRUa4k0f8X4wbOh3xyZlID296PNR
- cvjYVuk9X+QAz0aW3NYfacZfMZOUf+AhHwJVvCOvSbVwvCdglosl3vl85mE2SMysFe0u
- YUl7mh6SydDGpR0mfpPKyxUIJapDUZnUVszpwYTfqf2oepWKzlhhFOdHsPvcaIUNjp2i
- JrZanTlGAtTdjRbs86bzMU0qQYNxBshV7+g6OHwHWnTNCe3X9McwsgB/uuVfk91brVzr
- 1AgG5o+adYx7RaTZVcsr7k6NlYDUPdjIK8rnjp4M3rLVtRdD9b2ncza4740hMoFuWKTP
- 6DCQ==
-X-Gm-Message-State: AOAM532DH5M3ZC8Cp+bvk2VDDB08oCLF4WNTWbzEAWcIuTu4Y6b8WI/o
- LQNZeJqkNggWbLKGfoNpmVA88w==
-X-Received: by 2002:a1c:3542:: with SMTP id c63mr516907wma.68.1630702247474;
- Fri, 03 Sep 2021 13:50:47 -0700 (PDT)
-Received: from [192.168.8.107] (190.red-2-142-216.dynamicip.rima-tde.net.
- [2.142.216.190])
- by smtp.gmail.com with ESMTPSA id o7sm319872wmc.46.2021.09.03.13.50.44
+ bh=7Z/eAs8sVAWlLVGUFtlGgI8WaRQ2xmlqcdP/z9+qniE=;
+ b=tpYsVxr22sNOWBNn2cTRqmXJgJuEZVNebJ6Du4/l3kmxwSTjeKU3RNaX6v7B1aoqe+
+ OpB7iiLJVwn4NBYyae6C2Xi9wwGukc8Y5MHOcwQKw/NpNC0QTJYj7n2jVJQEhLemDimE
+ vMyDsgMsdyUQgKdW3EPlO1QLQRfd1MSQjFtBEivdHWMNcRE1KSkhEgESDD0Ol1ULenRW
+ cJ35cafwFKYbd+W6PICSIYTkvXgFMiEwXsgRDoWlIzC0F9bn8mP9cdbgnr9s+M56wqPw
+ EmBqUjllUotBngITmOhEPl5y2Wo0pyPHJj0JP6fh/FFTqqnvmVATcIxnmh+Sq9PoTMks
+ dArg==
+X-Gm-Message-State: AOAM532TWuXuO1UnbLElMbIsKqBAor5hG+AtHe1L3VK21skE4LYKItnO
+ Dy6vURvBvGUkga5B3oWjwWo=
+X-Received: by 2002:a1c:4682:: with SMTP id t124mr538600wma.168.1630702041945; 
+ Fri, 03 Sep 2021 13:47:21 -0700 (PDT)
+Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.21])
+ by smtp.gmail.com with ESMTPSA id b15sm316840wru.1.2021.09.03.13.47.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Sep 2021 13:50:47 -0700 (PDT)
+ Fri, 03 Sep 2021 13:47:21 -0700 (PDT)
 Subject: Re: [PATCH 08/24] target/avr: Restrict cpu_exec_interrupt() handler
  to sysemu
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20210902151715.383678-1-f4bug@amsat.org>
  <20210902151715.383678-9-f4bug@amsat.org>
  <b6ccbd42-8286-6a27-7bd9-e0b1ff3e96d9@linaro.org>
- <a675fd4f-0d8d-b833-1784-c9b77ae5f332@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e329d2a3-7960-9b2d-320c-ea1304972da7@linaro.org>
-Date: Fri, 3 Sep 2021 22:50:42 +0200
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a675fd4f-0d8d-b833-1784-c9b77ae5f332@amsat.org>
+Date: Fri, 3 Sep 2021 22:47:19 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <a675fd4f-0d8d-b833-1784-c9b77ae5f332@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <b6ccbd42-8286-6a27-7bd9-e0b1ff3e96d9@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.888,
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.888,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Warner Losh <imp@bsdimp.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Warner Losh <imp@bsdimp.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
@@ -140,31 +135,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
  Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
  qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QNPkSujG5WQ6
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rP7akumOm5dX
 
-On 9/3/21 10:47 PM, Philippe Mathieu-Daudé wrote:
-> On 9/3/21 9:12 PM, Richard Henderson wrote:
->> On 9/2/21 5:16 PM, Philippe Mathieu-Daudé wrote:
->>> Restrict cpu_exec_interrupt() and its callees to sysemu.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
->>> ---
->>>    target/avr/cpu.h    | 2 ++
->>>    target/avr/cpu.c    | 2 +-
->>>    target/avr/helper.c | 2 ++
->>>    3 files changed, 5 insertions(+), 1 deletion(-)
+On 9/3/21 9:12 PM, Richard Henderson wrote:
+> On 9/2/21 5:16 PM, Philippe Mathieu-Daudé wrote:
+>> Restrict cpu_exec_interrupt() and its callees to sysemu.
 >>
->> Well, avr doesn't support user-only. So... probably any instance of
->> CONFIG_USER_ONLY is already a mistake.
+>> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
+>> ---
+>>   target/avr/cpu.h    | 2 ++
+>>   target/avr/cpu.c    | 2 +-
+>>   target/avr/helper.c | 2 ++
+>>   3 files changed, 5 insertions(+), 1 deletion(-)
 > 
-> Maybe we can rename the disassemblers[] array in meson.build as
-> arch_definitions[], and somehow (?) poison CONFIG_USER_ONLY on
-> targets where only sysemu is supported...?
+> Well, avr doesn't support user-only. So... probably any instance of
+> CONFIG_USER_ONLY is already a mistake.
 
-Seems like too much work for too little gain -- there aren't that many targets that only 
-support sysemu.
-
-
-r~
+Maybe we can rename the disassemblers[] array in meson.build as
+arch_definitions[], and somehow (?) poison CONFIG_USER_ONLY on
+targets where only sysemu is supported...?

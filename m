@@ -1,297 +1,190 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp631708lfb;
-        Thu, 2 Sep 2021 13:37:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMvUldxNL8zaw0rkMSld3DpSclgdZwToe31ugXCRUI1+JIkKpk2dWTPXnlbk88CJR9CGMr
-X-Received: by 2002:a25:bb8b:: with SMTP id y11mr288042ybg.384.1630615060303;
-        Thu, 02 Sep 2021 13:37:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630615060; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp807199lfb;
+        Thu, 2 Sep 2021 17:56:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxvuWzozjtz5X7RPkskutDSVVZN/Z55u/ih4jpctOPTnTktvG+XhENEFXd47kwdU7/pDeEX
+X-Received: by 2002:a05:6402:1395:: with SMTP id b21mr1101749edv.119.1630630601590;
+        Thu, 02 Sep 2021 17:56:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630630601; cv=none;
         d=google.com; s=arc-20160816;
-        b=jNIaI0dbO9Cw1YmEz+4WyGWVdcehKQBs/Qo+VFlbsfP/bYRcmoCD6C7TZj2g7wTMT/
-         0gVLSW25ZqychWpAkRPdxBCIWuHrozBMAbPmz04w3PKBQbmuABgc1+q4BUj9ksQNhj/T
-         5WZ61q5yjlkA3NfATbCkiGnDZemakqbNu6J599vMR88iQ7nWlCT6e2VFwNOrog6kmfML
-         AGCAcx+7T2SEuj67rCblNIBBpJAwBfodTnvQNklQZ29n+8q69Hami8toq7jJ3NfhRLa7
-         qiuxHRPDxZgibniufgsQgYXBrxNkykANy+GcrHJfHE0qXyEInGJielYN6Acyh6bMy1nx
-         C/9w==
+        b=IrtdVvaZwPbxYTGtDcNG4lHvdBOcKxfEwvrz7aKZSrzolo+S9FfhsS0imNYzAiIsx0
+         +TTOAGcJV/yyp0HPIy46YGlvUYcO5AQc352dITlpeywNAIH+D/3Ac2Zz8aX002XvFmT1
+         QdR5XYrzDIPITDN+1YumrvE4ZDL1O7xBC5zAak4kUhwagCh9HHucfS+JNftY74OLfsuZ
+         v8stH7D4kHVj2umkWEryJgxuNy2hBUOq4XHzQq6yfoLA2/R4IoJP4cM10ClmPjk0OpAo
+         MHOaizMxDWoEBUd5QVJbWzkqFPr8ehgF0nSJToqAx0cdmlOjUa7JIc+5yhsZhJPu6Ae8
+         LY6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=IXs4nJs4COlMewLGKj8MReIetgZVSeTYTHEcqZse/qQ=;
-        b=CSfK6xHTZ+MV05jrarci6KeNUFwfaMkRV07ELh5Ue7Bvat7wrWsVSthxlikBIF+BTQ
-         itDFvEjECL45dEvOnxELhXBNths5Q93hP7UTnHzwgWzvl38FTc3jE7SIi4G17R2AI1cH
-         0eVjrEBcjiM0JJZb771Qzzi1lxk3NBaRxQpkS9nVMroDLELen9OdDiud1hYjeyrjb6ux
-         8cdH/1EpKvwa0nHpDBG5WcFFt15jpyGsh8YC16fF+tvLhoPIUQwF1RpjxobLPzDXaPvh
-         0J5qyjdXumzTlwTMtyUjQgkNMeedd2kzV5puoRfHxWl3ZogsoARbd/zQ9O86ZVoPO8Ym
-         CMzA==
+        h=list-id:precedence:in-reply-to:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=XXRA9E9bkfiMuArjbNTfx+r3Un7G6QIyGWXT2AEimqw=;
+        b=JzgVcHCKdNy5+GoFOrp9q8ZLlSFOGhaMYee1DRqFpH2PaUrSrwfm8MzKD71ZXka4OI
+         YBxTfUI2CiZbFFK26MQarm6Uayd3YZloPX1AagMdEs7S3KKBO6TK7Slwb/Doq2pxBQIG
+         onWIQqqDu9T9ufidIlHehxvdzPJxX6KVl8qX79oO2KKDu4d7OXrny1+7jKZH7MRBni2r
+         USb6bxABXMRdbHXfRoAxi7JGFsj3OxIvXCAJgznE8xs89LQBDB8DeqKsGLVk7wsBMCrK
+         N2sYWIplGKeqyU95R62M8rZ3nV42gr606NpNBqg4IqN2Lto/14AZz/QnFAws8S58HVej
+         P2/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=XHeayma8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t20si2605660ybt.93.2021.09.02.13.37.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 13:37:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b="S/oOJX4w";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id i22si4129526ejw.286.2021.09.02.17.56.41;
+        Thu, 02 Sep 2021 17:56:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=XHeayma8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53228 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLtSt-0001wW-KR
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 16:37:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42612)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtJj-0002Ig-CE
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:28:11 -0400
-Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931]:42794)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mLtJh-000891-IB
- for qemu-arm@nongnu.org; Thu, 02 Sep 2021 16:28:11 -0400
-Received: by mail-ua1-x931.google.com with SMTP id m39so1584530uad.9
- for <qemu-arm@nongnu.org>; Thu, 02 Sep 2021 13:28:09 -0700 (PDT)
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b="S/oOJX4w";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S239561AbhICA5j (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Sep 2021 20:57:39 -0400
+Received: from ozlabs.org ([203.11.71.1]:51527 "EHLO ozlabs.org"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S231161AbhICA5i (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Sep 2021 20:57:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IXs4nJs4COlMewLGKj8MReIetgZVSeTYTHEcqZse/qQ=;
- b=XHeayma8ok14I3d4JnNJOfDsI490aC4PaNrShe7GKHdZuFwssrOQf3hjRFGgUJL93L
- yUwk+eZoeU0geczbPsOYLCdJmo1NKVJbrmav7DnQEKNr0QCQu3pbckAiRHXVNf9NNERd
- ZLOwxm+FxUQPJNLdJR09PzEIMAtysE/DMBK25fvW3T6YiS53X14H8NNEQZr3nfEHs7nM
- jydS6yr3a6yUFS4YhF5aVeca80NF30RtsfHiTshdIE31cRpcxRyd8Lm3xm8UehqRqVSA
- z51r3Kv1c+lgW8ofeDN/zOXi2ueAEfOrb2elu/6DEim4+ZOOwTFe5DrXx2WYaHDQtKTQ
- fsug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=IXs4nJs4COlMewLGKj8MReIetgZVSeTYTHEcqZse/qQ=;
- b=dPp0t650Om/weSCQ7d5Ns2XXnpFgaNfu8J3F7UWxYg0Y1YbgfInt8e/N8uj3LgFefk
- wvd2yTWAyankG9jXm27zRvCbdCX9TmmRKJVJMRhiNqgjiUrpnxdtPV5l8GZFuN3nT+Kw
- WfWNebVO1s/EesH+GuOJmpRbuC6A+zfr3izgrUz6PQD6dFubDt2wBcKnIqBeBkq1VawF
- VdcLi3gVCmoIdk7pe6Mt/pU61kFi9BNcBE2ETzGb9K7zhHRXHRtPpu40AY4AVVKNC3st
- WTMYiM1se/h/mK+fjVPFSC4G3iH23mTfDQjiFeTF1cpAK5R9PpZ2WafaEwY2bLygiEBT
- hAhw==
-X-Gm-Message-State: AOAM531dGkT7gy3jasyIO9Mln28TSY6cDXn5kRr7c4xSQVRHkcHvKc+q
- gxMB/5/9TDBl5kahQuDrEXlUdE6sOXF6WFczWSCpfA==
-X-Received: by 2002:a9f:2a87:: with SMTP id z7mr95147uai.11.1630614488604;
- Thu, 02 Sep 2021 13:28:08 -0700 (PDT)
+        d=gibson.dropbear.id.au; s=201602; t=1630630598;
+        bh=XXRA9E9bkfiMuArjbNTfx+r3Un7G6QIyGWXT2AEimqw=;
+        h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+        b=S/oOJX4wVez+0NVv34NrPleBWRl5YwYrRYxkIYCYr2DBSXFoQW3ujaLS8VYNkCkdh
+         k+y3JMpbgn9tPsrOUDPXq+7t9kf9MvRy3873T3nWL9uuJ/xjlikC8YswJYUk9vfu76
+         vduXzNxO6Vij/+kbOiSMh1QGiktvH/h6gdwa0iwg=
+Received: by ozlabs.org (Postfix, from userid 1007)
+        id 4H0zrk2QpHz9sCD; Fri,  3 Sep 2021 10:56:38 +1000 (AEST)
+Date:   Fri, 3 Sep 2021 10:49:20 +1000
+From:   David Gibson <david@gibson.dropbear.id.au>
+To:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc:     qemu-devel@nongnu.org, Bin Meng <bin.meng@windriver.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Greg Kurz <groug@kaod.org>, haxm-team@intel.com,
+        Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Michael Rolnik <mrolnik@gmail.com>, qemu-riscv@nongnu.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Thomas Huth <thuth@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Chris Wulff <crwulff@gmail.com>,
+        Laurent Vivier <lvivier@redhat.com>,
+        Cameron Esfahani <dirty@apple.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Taylor Simpson <tsimpson@quicinc.com>, qemu-s390x@nongnu.org,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Paul Durrant <paul@xen.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Alistair Francis <alistair.francis@wdc.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Roman Bolshakov <r.bolshakov@yadro.com>,
+        Laurent Vivier <laurent@vivier.eu>,
+        Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
+        Wenchao Wang <wenchao.wang@intel.com>,
+        xen-devel@lists.xenproject.org, Marek Vasut <marex@denx.de>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Colin Xu <colin.xu@intel.com>,
+        Claudio Fontana <cfontana@suse.de>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Stafford Horne <shorne@gmail.com>,
+        Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
+Subject: Re: [PATCH v3 20/30] target/ppc: Restrict has_work() handler to
+ sysemu and TCG
+Message-ID: <YTFxEPkY6Eq1+Xe/@yekko>
+References: <20210902161543.417092-1-f4bug@amsat.org>
+ <20210902161543.417092-21-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-25-f4bug@amsat.org>
-In-Reply-To: <20210902151715.383678-25-f4bug@amsat.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 2 Sep 2021 14:27:57 -0600
-Message-ID: <CANCZdfrF3j+J2L_3KfbRNMF3r9+Fz3BUGYnbuRuvLyjF1HEJbw@mail.gmail.com>
-Subject: Re: [PATCH 24/24] user: Remove cpu_get_pic_interrupt() stubs
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000005bf1b905cb0905f7"
-Received-SPF: none client-ip=2607:f8b0:4864:20::931;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x931.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ihKt7g7cYE94
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="6Kw+8nBbrWcu5Nha"
+Content-Disposition: inline
+In-Reply-To: <20210902161543.417092-21-f4bug@amsat.org>
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: OHzieAjqvPMC
 
---0000000000005bf1b905cb0905f7
-Content-Type: text/plain; charset="UTF-8"
+
+--6Kw+8nBbrWcu5Nha
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 2, 2021 at 9:19 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
->
-wrote:
+On Thu, Sep 02, 2021 at 06:15:33PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Restrict has_work() to TCG sysemu.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-> cpu_get_pic_interrupt() is now unreachable from user-mode,
-> delete the unnecessary stubs.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  target/i386/cpu.h | 2 +-
->  bsd-user/main.c   | 7 -------
->  linux-user/main.c | 7 -------
->  3 files changed, 1 insertion(+), 15 deletions(-)
->
-
-Reviewed-by: Warner Losh <imp@bsdimp.com>
-
-
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index c241bc183d2..c7cc65e92d5 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -1832,9 +1832,9 @@ int x86_cpu_gdb_write_register(CPUState *cpu,
-> uint8_t *buf, int reg);
->  void x86_cpu_list(void);
->  int cpu_x86_support_mca_broadcast(CPUX86State *env);
->
-> +#ifndef CONFIG_USER_ONLY
->  int cpu_get_pic_interrupt(CPUX86State *s);
->
-> -#ifndef CONFIG_USER_ONLY
->  /* MSDOS compatibility mode FPU exception support */
->  void x86_register_ferr_irq(qemu_irq irq);
->  void fpu_check_raise_ferr_irq(CPUX86State *s);
-> diff --git a/bsd-user/main.c b/bsd-user/main.c
-> index fe66204b6b7..e358c38c353 100644
-> --- a/bsd-user/main.c
-> +++ b/bsd-user/main.c
-> @@ -66,13 +66,6 @@ void gemu_log(const char *fmt, ...)
->      va_end(ap);
+>  target/ppc/cpu_init.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+> index 6aad01d1d3a..e2e721c2b81 100644
+> --- a/target/ppc/cpu_init.c
+> +++ b/target/ppc/cpu_init.c
+> @@ -8790,6 +8790,7 @@ static void ppc_cpu_set_pc(CPUState *cs, vaddr valu=
+e)
+>      cpu->env.nip =3D value;
 >  }
->
-> -#if defined(TARGET_I386)
-> -int cpu_get_pic_interrupt(CPUX86State *env)
-> -{
-> -    return -1;
-> -}
-> -#endif
-> -
->  void fork_start(void)
+> =20
+> +#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
+>  static bool ppc_cpu_has_work(CPUState *cs)
 >  {
+>      PowerPCCPU *cpu =3D POWERPC_CPU(cs);
+> @@ -8797,6 +8798,7 @@ static bool ppc_cpu_has_work(CPUState *cs)
+> =20
+>      return msr_ee && (cs->interrupt_request & CPU_INTERRUPT_HARD);
 >  }
->
+> +#endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
+> =20
+>  static void ppc_cpu_reset(DeviceState *dev)
+>  {
+> @@ -9017,6 +9019,7 @@ static const struct TCGCPUOps ppc_tcg_ops =3D {
+>    .tlb_fill =3D ppc_cpu_tlb_fill,
+> =20
+>  #ifndef CONFIG_USER_ONLY
+> +  .has_work =3D ppc_cpu_has_work,
+>    .cpu_exec_interrupt =3D ppc_cpu_exec_interrupt,
+>    .do_interrupt =3D ppc_cpu_do_interrupt,
+>    .cpu_exec_enter =3D ppc_cpu_exec_enter,
+> @@ -9042,7 +9045,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, voi=
+d *data)
+>      device_class_set_parent_reset(dc, ppc_cpu_reset, &pcc->parent_reset);
+> =20
+>      cc->class_by_name =3D ppc_cpu_class_by_name;
+> -    cc->has_work =3D ppc_cpu_has_work;
+>      cc->dump_state =3D ppc_cpu_dump_state;
+>      cc->set_pc =3D ppc_cpu_set_pc;
+>      cc->gdb_read_register =3D ppc_cpu_gdb_read_register;
 
-Love it, but either you or I will have to rebase based on which of us lands
-in the tree first :).
-For me, the rebase will be easy though.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
+--6Kw+8nBbrWcu5Nha
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index 37ed50d98e2..f5c0a82427b 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -120,13 +120,6 @@ const char *qemu_uname_release;
->     by remapping the process stack directly at the right place */
->  unsigned long guest_stack_size =3D 8 * 1024 * 1024UL;
->
-> -#if defined(TARGET_I386)
-> -int cpu_get_pic_interrupt(CPUX86State *env)
-> -{
-> -    return -1;
-> -}
-> -#endif
-> -
->  /***********************************************************/
->  /* Helper routines for implementing atomic operations.  */
->
-> --
-> 2.31.1
->
->
+-----BEGIN PGP SIGNATURE-----
 
---0000000000005bf1b905cb0905f7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmExcRAACgkQbDjKyiDZ
+s5IeEBAAv3cpcInuLFJXsDvzVly7wSr5p5Tp9oNaBy8UvvGyoBX2eesw8Om/A3+P
+S/tu8jqAI/GRfxWwBaE+wNg+Fmpdl3CK+ThR/6t9NA5BhoBwy5rwsM4V32BYkawN
+NS5jP+L14XMC5MMa9o1IbnrNIPcpSA7kLTxq6sZxP1UaSvLecauVW2a14q630sUN
+0mQEVEq0V/dO9bB01U775VN8Nzwxc6khrC8oufvhvSL22oYCjQTvOTslr7LEN5Ro
+Bb/6zxAXhGR1A8aBLekm7RSlqY767gZjEtIdn1zjx6g/owGyARjDez0rzwhiBL8C
+WqVsrRndk6jLRe1SJSRpZvgCx0EybrQyITVbeyMM4A/lXZYmDD2HKvOuXpUtnNZg
+frxhAADG1KW6Y1Ufvklqyz9YGnFpztZL6XevPw1xfXXFvC3jyZpBNYP5XrilV44G
+Sl7xomR8sRiJqzvJ2fWj475h07KiQ5NjXVvX5NvWy4okv9IphyXh8JoxyQsrA2b5
+zIuqvUOy4GNPsunnxcNha90XiMsN6i5ds/ibiTyMwKbllU/hgUI3GEKVICncvbGt
+LmIo3UFw/vTG7+lqCUxRZUtGBBgDZlsyxpkAGXfiBf+aISLrhsCHQeXxbD18AGBO
+tECHtorVH7MbCNLHks/1Ey6DsZyaJnMdBoNjA+d4GpSUzASXzxI=
+=o8a9
+-----END PGP SIGNATURE-----
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 2, 2021 at 9:19 AM Philip=
-pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.or=
-g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->cpu_get_pic_interrupt() is now unreachable from user-mode,<br>
-delete the unnecessary stubs.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
----<br>
-=C2=A0target/i386/cpu.h | 2 +-<br>
-=C2=A0bsd-user/main.c=C2=A0 =C2=A0| 7 -------<br>
-=C2=A0linux-user/main.c | 7 -------<br>
-=C2=A03 files changed, 1 insertion(+), 15 deletions(-)<br></blockquote><div=
-><div><br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsd=
-imp.com" target=3D"_blank">imp@bsdimp.com</a>&gt;</div></div><div>=C2=A0</d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
-er-left:1px solid rgb(204,204,204);padding-left:1ex">
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h<br>
-index c241bc183d2..c7cc65e92d5 100644<br>
---- a/target/i386/cpu.h<br>
-+++ b/target/i386/cpu.h<br>
-@@ -1832,9 +1832,9 @@ int x86_cpu_gdb_write_register(CPUState *cpu, uint8_t=
- *buf, int reg);<br>
-=C2=A0void x86_cpu_list(void);<br>
-=C2=A0int cpu_x86_support_mca_broadcast(CPUX86State *env);<br>
-<br>
-+#ifndef CONFIG_USER_ONLY<br>
-=C2=A0int cpu_get_pic_interrupt(CPUX86State *s);<br>
-<br>
--#ifndef CONFIG_USER_ONLY<br>
-=C2=A0/* MSDOS compatibility mode FPU exception support */<br>
-=C2=A0void x86_register_ferr_irq(qemu_irq irq);<br>
-=C2=A0void fpu_check_raise_ferr_irq(CPUX86State *s);<br>
-diff --git a/bsd-user/main.c b/bsd-user/main.c<br>
-index fe66204b6b7..e358c38c353 100644<br>
---- a/bsd-user/main.c<br>
-+++ b/bsd-user/main.c<br>
-@@ -66,13 +66,6 @@ void gemu_log(const char *fmt, ...)<br>
-=C2=A0 =C2=A0 =C2=A0va_end(ap);<br>
-=C2=A0}<br>
-<br>
--#if defined(TARGET_I386)<br>
--int cpu_get_pic_interrupt(CPUX86State *env)<br>
--{<br>
--=C2=A0 =C2=A0 return -1;<br>
--}<br>
--#endif<br>
--<br>
-=C2=A0void fork_start(void)<br>
-=C2=A0{<br>
-=C2=A0}<br></blockquote><div><br></div><div>Love it, but either you or I wi=
-ll have to rebase based on which of us lands in the tree first :).</div><di=
-v>For me, the rebase will be easy though.</div><div>=C2=A0</div><blockquote=
- class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
-lid rgb(204,204,204);padding-left:1ex">
-diff --git a/linux-user/main.c b/linux-user/main.c<br>
-index 37ed50d98e2..f5c0a82427b 100644<br>
---- a/linux-user/main.c<br>
-+++ b/linux-user/main.c<br>
-@@ -120,13 +120,6 @@ const char *qemu_uname_release;<br>
-=C2=A0 =C2=A0 by remapping the process stack directly at the right place */=
-<br>
-=C2=A0unsigned long guest_stack_size =3D 8 * 1024 * 1024UL;<br>
-<br>
--#if defined(TARGET_I386)<br>
--int cpu_get_pic_interrupt(CPUX86State *env)<br>
--{<br>
--=C2=A0 =C2=A0 return -1;<br>
--}<br>
--#endif<br>
--<br>
-=C2=A0/***********************************************************/<br>
-=C2=A0/* Helper routines for implementing atomic operations.=C2=A0 */<br>
-<br>
--- <br>
-2.31.1<br>
-<br>
-</blockquote></div></div>
-
---0000000000005bf1b905cb0905f7--
+--6Kw+8nBbrWcu5Nha--

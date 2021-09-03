@@ -1,96 +1,98 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1647208lfb;
-        Fri, 3 Sep 2021 13:38:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOf/rch2VbsS9FjVNVLGAQXoYE3MFB1fYqg5A2SP6gLcDp2Y4793VAWj0Qvd5t1HnBRuAC
-X-Received: by 2002:a17:906:c416:: with SMTP id u22mr693656ejz.543.1630701498797;
-        Fri, 03 Sep 2021 13:38:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630701498; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1647549lfb;
+        Fri, 3 Sep 2021 13:38:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyA5hGZ+dgrBRmtiy/3bmHykXE+VFpG6pUKEiXb1VQWrI90xNhKMjL6Uk1jlHXPR4sn9ztq
+X-Received: by 2002:a17:907:766e:: with SMTP id kk14mr698295ejc.339.1630701534772;
+        Fri, 03 Sep 2021 13:38:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630701534; cv=none;
         d=google.com; s=arc-20160816;
-        b=b90r5O3TRfvK/k+97FF7oZyFmc+MrBlTKY2ekPMIeYBZ4+yQ/+///kUrwPvNZy+nIO
-         Cr1owei3wtZ2VqeeCujW/7qy8/PAh2S7l4eARKtOm4e2ad1Pb2Q/CtV2HeTE53zCp7uH
-         1zk4DSEZ/zV8DwtUX6TsB8fGDCqKJcCTVvw52jRyJerRJbt2fTMKMKiSau3q1B+pg/AH
-         k3FBrVqXLAFnhPu8lwYRVqkEfBZDHbD76RdVCpmpfQT2TGgSIc9cimcYQYtwGwVRMrZu
-         qT5vSw6GPH3rZokyqMXTDxENR8DxAoHtu7Skce6I40TeAFkkwR+jbqWgoQHz6xzrlMx8
-         7QfQ==
+        b=hz6W2O6WAhPiupkEFJPL9gdtvlTsXhBkZNHUIKXbityxPsJxNHaM7OujM1fTVQ2Xcj
+         9WK/61utdqz+wTVioVbT7lLt1POfL7l1k/wWjXrdjzc5aufqHRM/YVQXW4arXE1gbuFE
+         ErdXjHDAPR2kghHsdU0Dc+60A5Q6ZgK4dlGu15LJGc5pLvujkvY3TIX0MnIABwX5hqy/
+         slAXUD9SVpJL47YcJfmvB8nJwE7MvwwtHJSj2UXs5NT6J9cBrI0aXO70+wblFOC5tjBB
+         x/c35mabspzDvT7xn7araNoS2IZ5qPUeYayrIdxkJkUKFZ6ZKTaIjKcxyfZSMnN2WpSG
+         Scug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:content-language
          :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:sender:dkim-signature;
-        bh=fNIhsoAMPvZrQEmEvDEa/ofLQCAFlDFx6OPwYJbakLA=;
-        b=RRJOcTRO61ylvfvc0Y1brxfuwa/dwt4swzadz78U6c5yODoDEDdxZ/B1TgV/nxE3sc
-         sjGz+/OkmNfhr1InrJjEBjosjUQC6OZhQ3SqYI9fXbkaNcC1/MJsmvfuzx7yNIkwTKme
-         jncLMxn0/rl0IjxYsLQi2BC46xfwwNamXPxd9GD1YwjoJPWdFLzq+VTm7FFa3T3tikEJ
-         0U1n0WhwZwS9/b2GQY/Ok9UIoe5TXzp0mEM0qgrGzJkrOXDH5OU7QsETc8yFaREzEPxP
-         AzKiuTg7KUNlylW7W6dlso75EGAzolD8Fvcxg72WQhW8rw7JIRViJ050A4jyPC0eSwD6
-         dIxw==
+         :cc:to:subject:dkim-signature;
+        bh=GL9M66YPePviEeJIanaWkTBsfl1Vxvfhn+ruVwm7BCY=;
+        b=G7EtYwQYHTnKhvYTKPjsazzjLplnoMjPZMkcr5np+RENTTWrICKuqqZnoR5+fWAGCa
+         JL04rWRdAeBLqnA5eReyBvfBzoWFaNl7JwBukLN7y5cLN/Z3GZ5SAR8ctJuTsYx2w02S
+         WWjpL8dQHUAI1XB89jXvkAl5/rIMGf05iLsDxoOtIa+ouZn3yv0db16smjhJqgixOzbV
+         8yEoXoNrjSMwKIH8bH6LDF3eFw9jhVJb9vrSEKtHBhxuTPMd0jMjF3LvSpLpL8Pp70/V
+         J7fVSANASNb15Tg7Td+XWH468u126iJrQjHdeT09WgEKfH8IpUJBWU48HOSt3C++zNIY
+         Serw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=OL7bcNkn;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b="M/vaAbEm";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id a22si473264edu.602.2021.09.03.13.38.18;
-        Fri, 03 Sep 2021 13:38:18 -0700 (PDT)
+        by mx.google.com with ESMTP id c21si511880edy.64.2021.09.03.13.38.54;
+        Fri, 03 Sep 2021 13:38:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=OL7bcNkn;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b="M/vaAbEm";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S236849AbhICUjN (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 3 Sep 2021 16:39:13 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39492 "EHLO
+        id S1350523AbhICUjw (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 3 Sep 2021 16:39:52 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39674 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S231956AbhICUjJ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 3 Sep 2021 16:39:09 -0400
-Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com [IPv6:2a00:1450:4864:20::42e])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 45688C061575
-        for <kvm@vger.kernel.org>; Fri,  3 Sep 2021 13:38:08 -0700 (PDT)
-Received: by mail-wr1-x42e.google.com with SMTP id n5so348933wro.12
-        for <kvm@vger.kernel.org>; Fri, 03 Sep 2021 13:38:08 -0700 (PDT)
+        with ESMTP id S1350538AbhICUju (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 3 Sep 2021 16:39:50 -0400
+Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com [IPv6:2a00:1450:4864:20::32f])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 13151C061757
+        for <kvm@vger.kernel.org>; Fri,  3 Sep 2021 13:38:49 -0700 (PDT)
+Received: by mail-wm1-x32f.google.com with SMTP id g135so96665wme.5
+        for <kvm@vger.kernel.org>; Fri, 03 Sep 2021 13:38:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=fNIhsoAMPvZrQEmEvDEa/ofLQCAFlDFx6OPwYJbakLA=;
-        b=OL7bcNknLzAqSVlHwkuNrFgmHEdJJTT0ywZpM33E+WzKRYLTjn/SmGnREPXGBif/IU
-         PqPcK3SjLG5eogScB3jtfBXh29opHuqZSJGeNZd9Ke+t/AT5Cr5VwhVWY6Gtra5FS44y
-         zIqcsHP71yoBrqPd/tqJ/b53dF7tqywgJ6KeJPrt2jdTFotMdIWIPMYLMJAvvMhlNjSQ
-         H2ILUDze/pO7mpdvET5jz2pXK4k5IhHgCgzK6c3TFxwQ/zgNvWS7KYfj6KO8XO/AjwPO
-         FYIYxhtgYZeXyzLZ3F3EqMh3ogFwJ5iW7yzCb/zV+nhXKNxtMozTPxiBRByP9xmArzZh
-         7eKA==
+        bh=GL9M66YPePviEeJIanaWkTBsfl1Vxvfhn+ruVwm7BCY=;
+        b=M/vaAbEmKAIlbeJ47KCqDEuoW1fU8OLbdaCXy0Pvl+0fPEdToeVM22GDpxEzsjWt9v
+         WbAqalwQ/WT+6kAtmN1B0nIOitKaIhJ157SyDHY79vxDGA3ucdaq3AJgPv1Ovs1Fv/aB
+         1lSLTga+m6SS4hdqpDGzD3Th0/yrB0aZiBPiOV1Y9NoKc6DtcGD50FEYbqTQdUvsRoIH
+         T4tRlzq2k7HSirKjelg2CrSPUYVuJ22AUaoX7n0jXoOTIEfbt+eiTX7puG0QvsvjemoW
+         Tfwd8Zr/L/8FyDF1XuV7Wb/Ws8ZaMEPMWJ3/JlWVrBtMcJoHyoGb+mo3WTtGcH+kKg2w
+         oQuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=fNIhsoAMPvZrQEmEvDEa/ofLQCAFlDFx6OPwYJbakLA=;
-        b=V7xMmmqHi1UBPCBeOLRAxwynioAdoiRTl5gc44nJ5KvvOgfJ9+/Q7zgPKNPPmsz5es
-         JgtVrehp5gkaxH97b8EeaaVB/LBv2+KVEaNQXmHIrkpdecgQQX/cya0fZzRN1eLvGk65
-         ahFdBnpeYVgtla2zXsqt7er2E+QTkS0eSPqRex3Eqe7jm8W3DAtnz+2+1d0pmAh4K1eQ
-         /m7HBSYQzroaErS+JJcdktPGhyvbe28DkPLSTbZWfRZGiGDGGxYfKmmgOTQlOpXsfwG4
-         7qPALjC2CB85OaZCDizmZxlqFonjBIHvKaIRSUA+LaMgz8rV9tF7u+d0vCIHnHyaKIGl
-         yyEg==
-X-Gm-Message-State: AOAM530kPe7KrtiLAbIHsahP0hDLkVkZeDU9XReLy9iQACD9vwErOeCz
-        n3GpYHQ9bdXaF9AggGQF1Nk=
-X-Received: by 2002:adf:80e5:: with SMTP id 92mr881885wrl.300.1630701486851;
-        Fri, 03 Sep 2021 13:38:06 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id d8sm283071wrv.20.2021.09.03.13.38.04
+        bh=GL9M66YPePviEeJIanaWkTBsfl1Vxvfhn+ruVwm7BCY=;
+        b=WWq6P/z6PSZFvq7WQazn/g24k8qs1qsbAMaT/YTL6ZzhxMlRF4vnmOzgitigov+M2s
+         r1dQ5vOCyMFtwSuhWS3WcesI284UX2loec2jlq62VBkOkweeRLigPlSbP7315+kdq/ro
+         5cvNMTIFPw7Y9mWTY/SHs3dCwBZtpqOIWxX7E/HZfHV6d7nELG8DQ0S0UIr5ED2wZP27
+         aGArP/u7h4eoXrihdw9R1b32ZrGs9Iep3Y1r0TvYihhUqLycpr8oSwrhr6W/jwOVq7BQ
+         R3RbAp38NnEvkRp2uTqN9tPsGSlA8souUheCJeAyEr07DgrVgPVQCjoEAS5RzM0DOgsM
+         xoEQ==
+X-Gm-Message-State: AOAM532P0Lrw9koGYCY8rGi7wzE8a7wl2+d11kWuAV8baL6bxL/Xxf8q
+        pugTx3DarMYydfkWGLFU0d3vcw==
+X-Received: by 2002:a1c:2547:: with SMTP id l68mr468593wml.23.1630701527658;
+        Fri, 03 Sep 2021 13:38:47 -0700 (PDT)
+Received: from [192.168.8.107] (190.red-2-142-216.dynamicip.rima-tde.net. [2.142.216.190])
+        by smtp.gmail.com with ESMTPSA id w9sm286608wrs.7.2021.09.03.13.38.43
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Sep 2021 13:38:06 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
-        <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v3 21/30] target/ppc: Introduce
- PowerPCCPUClass::has_work()
-To:     David Gibson <david@gibson.dropbear.id.au>
+        Fri, 03 Sep 2021 13:38:47 -0700 (PDT)
+Subject: Re: [PATCH v3 08/30] target/alpha: Restrict has_work() handler to
+ sysemu and TCG
+To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+        qemu-devel@nongnu.org
 Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Cornelia Huck <cohuck@redhat.com>, kvm@vger.kernel.org,
         David Hildenbrand <david@redhat.com>,
         Bin Meng <bin.meng@windriver.com>,
         Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
         Laurent Vivier <laurent@vivier.eu>,
         Max Filippov <jcmvbkbc@gmail.com>,
         Taylor Simpson <tsimpson@quicinc.com>, haxm-team@intel.com,
         Colin Xu <colin.xu@intel.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Stafford Horne <shorne@gmail.com>, Marek Vasut <marex@denx.de>,
         Stefano Stabellini <sstabellini@kernel.org>,
         Yoshinori Sato <ysato@users.sourceforge.jp>,
@@ -98,78 +100,55 @@ Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Kamil Rytarowski <kamil@netbsd.org>,
         Reinoud Zandijk <reinoud@netbsd.org>,
         Claudio Fontana <cfontana@suse.de>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
         Anthony Perard <anthony.perard@citrix.com>,
         xen-devel@lists.xenproject.org,
         Artyom Tarasenko <atar4qemu@gmail.com>,
         Laurent Vivier <lvivier@redhat.com>,
         Thomas Huth <thuth@redhat.com>,
         Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
         Greg Kurz <groug@kaod.org>, Cameron Esfahani <dirty@apple.com>,
         qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
         Michael Rolnik <mrolnik@gmail.com>,
         Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        qemu-riscv@nongnu.org,
         Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
         Chris Wulff <crwulff@gmail.com>,
         Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org,
         Wenchao Wang <wenchao.wang@intel.com>,
         Alistair Francis <alistair.francis@wdc.com>,
         Paolo Bonzini <pbonzini@redhat.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
         Aurelien Jarno <aurelien@aurel32.net>
 References: <20210902161543.417092-1-f4bug@amsat.org>
- <20210902161543.417092-22-f4bug@amsat.org> <YTFxZb1Vg5pWVW9p@yekko>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1d8ea9ea-dda0-bf0e-a2c8-13d36c891d9c@amsat.org>
-Date:   Fri, 3 Sep 2021 22:38:04 +0200
+ <20210902161543.417092-9-f4bug@amsat.org>
+ <3cd48aba-a1a1-cde3-3175-e9c462fcb220@linaro.org>
+ <740a2e5c-3dad-fc7d-b54a-0c405faa605e@amsat.org>
+From:   Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <8c70c273-cb11-c6da-a456-c906df86326b@linaro.org>
+Date:   Fri, 3 Sep 2021 22:38:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <YTFxZb1Vg5pWVW9p@yekko>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <740a2e5c-3dad-fc7d-b54a-0c405faa605e@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: MAC3PwfK1qXU
+X-TUID: aOy53xtPLTV5
 
-On 9/3/21 2:50 AM, David Gibson wrote:
-> On Thu, Sep 02, 2021 at 06:15:34PM +0200, Philippe Mathieu-Daudé wrote:
->> Each POWER cpu has its own has_work() implementation. Instead of
->> overloading CPUClass on each PowerPCCPUClass init, register the
->> generic ppc_cpu_has_work() handler, and have it call the POWER
->> specific has_work().
+On 9/3/21 10:34 PM, Philippe Mathieu-DaudÃ© wrote:
+>> Drop CONFIG_TCG for alpha; it's always true.
 > 
-> I don't quite see the rationale for introducing a second layer of
-> indirection here.  What's wrong with switching the base has_work for
-> each cpu variant?
-> 
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  target/ppc/cpu-qom.h  |  3 +++
->>  target/ppc/cpu_init.c | 26 ++++++++++++++++++--------
->>  2 files changed, 21 insertions(+), 8 deletions(-)
+> What is the rational? "Old" architectures (with no active /
+> official hw development) are unlikely to add hardware
+> acceleration, so TCG is the single one possible? Thus no
+> need to clutter the code with obvious #ifdef'ry?
 
->> @@ -8796,6 +8800,12 @@ static bool ppc_cpu_has_work(CPUState *cs)
->>      PowerPCCPU *cpu = POWERPC_CPU(cs);
->>      CPUPPCState *env = &cpu->env;
->>  
->> +    if (cs->halted) {
->> +        PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
+Correct.  Broadly, if git grep CONFIG_TCG is empty in a subdirectory, don't add the first 
+instance.
 
-Maybe I should have kept the 'if (cs->halted)' for the next patch,
-simply dispatch here, then in the next patch the code simplification
-is more apparent. I thought this approach would involve less #ifdef'ry
-but haven't checked the other way around. Will do now.
 
->> +        return pcc->has_work(cs);
->> +    }
->> +
->>      return msr_ee && (cs->interrupt_request & CPU_INTERRUPT_HARD);
->>  }
->>  #endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
-> 
+r~

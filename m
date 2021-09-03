@@ -1,107 +1,114 @@
-Received: by 2002:a0c:ec8e:0:0:0:0:0 with SMTP id u14csp747921qvo;
-        Fri, 3 Sep 2021 08:18:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzguEOu/wCl9PVU6YVJmxxCSB4r19fIMuQ3PYNOWbr+p2kYhpXD8zd5EaC3ePUNMfyuKwBj
-X-Received: by 2002:adf:e60c:: with SMTP id p12mr4765469wrm.261.1630682316098;
-        Fri, 03 Sep 2021 08:18:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630682316; cv=none;
+Received: by 2002:a0c:ec8e:0:0:0:0:0 with SMTP id u14csp748592qvo;
+        Fri, 3 Sep 2021 08:19:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxBCuffbpsOx5sUdh3m5lDviJRHBXXpuqhYWdIT5hWJSH2cdBlf4bUBiU99VTEgkzFrejAp
+X-Received: by 2002:a05:6102:ac6:: with SMTP id m6mr3086039vsh.55.1630682361115;
+        Fri, 03 Sep 2021 08:19:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630682361; cv=none;
         d=google.com; s=arc-20160816;
-        b=b93kehGHbmHgIYeNEb0KKayDpD5MhNEGCNl9kQaHs+nxm8RsiLMKYkYgqbUqOvlrGl
-         1vSmyf8FT3IQU9C1znLqtUyRntI/qm0oDLTdpMCgdhKv5JHNsdGWxqRSAeApexTuJz8u
-         bOZr1zLvbkwWzF3E56w7i/8aW6clZa+NqWMYRXLsmghwplMAGGtKNXkdItNWu3+zuHqC
-         FfZEbumc1T21MKq6ZbD7ON+YExsxSbJA+xCWjIau161AuuZlaMPObiIiZEIJA4tCX9Zy
-         arl3/tuN745ZBW55sPqMapwuHxdbq7w7eTOHObiyhuOitiG5CZJYgJZCt/TzH9sq7djb
-         i0bg==
+        b=etN6k7xIdnB5YYaq8aph6n7gBy682Lhy5AT6fARSNCX+QDYb+BCnR1AbiU+lPkktem
+         5nS07kKNb2askgRs+NG33R1OtekhWpwtupkQGHR3nk9Sl8hp4gYNpBFV55/FPURK0hsI
+         DMVeaezIwtbMa1BFc22sHDVih0Ik8+yjb3qnUp05A4/aWP+HDcCaiUkCdxCe5U4bO/42
+         1m+isjp+1de/9QUEN7lUMzvDSJO0Z1t94KzHdZYisr19sHj2E5q8qhU2vMQfZIMQG5Qa
+         vnQtP/W5HVnj15J98ywm8a9Ja7EvisuFZlsgzUjd08Qg/aCad1T9YbdJgGYp+Ki+qv1a
+         tccA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=12HaYXUuKoS6T5PuKGowDR0/v6+2hx1VPdfHK6j3uyM=;
-        b=t+yacaukc1parN7yZpKS37hv6eFkV5hEsHVR7RI86b44bisW+oUQwYCkuTk27BD7g2
-         z6Zef4wch25yiBljvyTYpg1eDRRYJQuw+20/WAEobnm/FyI0Uh9f3pvzwS9ulViTwh5g
-         NkckJACfeldp8tW4tr8IXvLHVSTAxCy3D0NbcwdN6/82yApK/7xU5qM7MKqnqgH6e/kN
-         mb4VPszd8p+p+l5gBO4/j+N65LuuC+8rcOyl0KanKhbHaU1wxZuMbHlXVied0L3R0DTn
-         GuYFCzKRDSBcPcwGysbGl7dzWSCIuFy+eEf/tg+YMhWE+TpwXDDFxn/h08DO41i5fhTo
-         ABZw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=HAxg8r9lLgPDGj5LAMgAQU9YS3InbbswD60+0+aY/Fo=;
+        b=SmSPqYdQ/Dm3rTQVnmcbpG7oe6PktwryYe4PFXOIt/PP4BIakdcw7B4NMTmzIm+QYb
+         +ANisvzi/mjKhiTeAD9JSlZhDRylTXZ2q41hsvVNi8czR8pP1O2bggm9kIFql40iLik8
+         x9OyNljbpMXj3ivOnQlMns3n2HP0a2w6cY2Jv2yAHE6H7w3NhVnykkXyeE2VbCHzEKXL
+         lUZCsYbmFz9jt1ZJNoGNJeQiSF2empNIbNUJ+tCuun8HqB6H0FSHQUtauF0KLg1th1qn
+         Nol5v0PIQU4dwVuUGwvJ1Sw0sp7dz0CjM9dRIMI+Uh7N6Q0XGbK5XA3oOa/6Ci+RblZK
+         IewA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gLo448uV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PkwQi4uc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si6002966wrd.177.2021.09.03.08.18.35
+        by mx.google.com with ESMTPS id j191si2799465vkc.34.2021.09.03.08.19.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 08:18:36 -0700 (PDT)
+        Fri, 03 Sep 2021 08:19:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gLo448uV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PkwQi4uc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52526 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMAxe-000216-UZ
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 11:18:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46754)
+	id 1mMAyO-0004D6-Dr
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 11:19:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mMAtx-0004d0-2x
- for qemu-arm@nongnu.org; Fri, 03 Sep 2021 11:14:45 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:34503)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mMAuE-0005Zd-Fo
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 11:15:02 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:42946)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mMAtv-0007Pf-5m
- for qemu-arm@nongnu.org; Fri, 03 Sep 2021 11:14:44 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id m9so8734952wrb.1
- for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 08:14:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mMAuC-0007fm-QP
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 11:15:02 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ k20-20020a05600c0b5400b002e87ad6956eso3811543wmr.1
+ for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 08:15:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=12HaYXUuKoS6T5PuKGowDR0/v6+2hx1VPdfHK6j3uyM=;
- b=gLo448uVa127kt9ci4nDcabjel7q1SrgbziE/oxAZlGYy3DproYUQF+hrFuQAlPfNq
- smRqyzX7asHgMrPCOzXCF3UaD4s7yUsJ3oduFRt30tmLzQ4ivFQQoWglsZHF9nP+jwYm
- t5E4zh4nChELj0DgRJEN31xqbJDgNPO3iQpG9/JnntidqC/aFBxrNCtzArdd+LMZn09+
- Xl5eOQShrjPW0wvBC4KHKc3YUfO2+lFAfMXpRWbOGNpBAiWXCLLrqfmzopS0AknekwFF
- tKiyfcWxfT8y9Ux1smDLDS1cqBTfZdc0vgXAIga2QmkjKM/18Tg0pOMyeTfAPUM5o/0X
- 8uZw==
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=HAxg8r9lLgPDGj5LAMgAQU9YS3InbbswD60+0+aY/Fo=;
+ b=PkwQi4uch0nS6r2jmWvHF7dsb9B9pkAGYUDlJ0kk73u6pgTAD8EWx7GA6KJ9FkvPuq
+ BMZddtaTD4eMBGVqzgUnVkXhhn0kpp7SXLYL/FDBsRVdmCLFpxmUPj5YrG/Tr/1HUtd3
+ B46Mn75hxPGKBs7nQLjf482INoPDccnOEY3xKBPn0VobJbhKqdD0SnXh+QUswRRBsTMB
+ ILQDL0Z+arb7i9+rnlxJBXZwqTzu9ozdGX1JFU1FWZd5ht35EHoGeZRM/436cLI5tSo2
+ fD86ASMR1J2Y7INpihJArJCuQTNSS2UeNAYes9Oxf3/VaF/uAcfRwJij46b1zviUFQoP
+ /dyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=12HaYXUuKoS6T5PuKGowDR0/v6+2hx1VPdfHK6j3uyM=;
- b=McxM+U8kA9vrvZDKtLTP0dHwi59vybhHe4Q06QCrTYc8DjA08fO2ShLwNsQ3uiGgsV
- h8gbG0zVUnuIb3Fogaq5OkR/ZE5Tn5b+NrD03PMeCXBu64U3yrH1KgGOG7F8llZgQDxN
- 4oTjuS9ETkZ3iHKssSukgTZZHZasm57np4WPbSYhyejqKE99cSg9RDvucBqSD984qaFU
- DkD7PrjL4AO2Ab1q/oq9J+xpIDo0zDoMxTHMBrx7Cd/REM3wmEEQQYw4T6frrjK/L0nQ
- +wMhT5SpKVN8aBE1vZMkaGbMDGjE62DCsQYyrAVN2tf3WtIHKPWHOO1B3RBns5R5EBlg
- ujeQ==
-X-Gm-Message-State: AOAM5339S8uNYrc6oI7HUwwvVgx96i7sMO2/nJf4F+AOQ5+LkBznlWZj
- U2RG754UGSn5xiLi3pMoXR3WYpoqyhseIg==
-X-Received: by 2002:adf:f9cb:: with SMTP id w11mr4857297wrr.382.1630682081522; 
- Fri, 03 Sep 2021 08:14:41 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y21sm4737780wmc.11.2021.09.03.08.14.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Sep 2021 08:14:40 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 3/4] hw/arm/mps2-tz.c: Mark internal-only I2C buses as 'full'
-Date: Fri,  3 Sep 2021 16:14:34 +0100
-Message-Id: <20210903151435.22379-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210903151435.22379-1-peter.maydell@linaro.org>
-References: <20210903151435.22379-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=HAxg8r9lLgPDGj5LAMgAQU9YS3InbbswD60+0+aY/Fo=;
+ b=oFpppiLTOwxtBL7Ag9aSfcq2UJw/OZn8yId2kJwB7xuNKSoS80VPCz+QATdATB7ckF
+ h0Q7YUFxRIjFuBb6D09OQP+Fytskb2BvQ2emkW30NqZU2LZLYNQm4wyLavX7SDagINNK
+ 6ejsuXY2Zkaud9laL/lEGV5lRv/ZZkFJvpn2ZACmD+Ust0OsJjWaMZ+2mxB0Q/FhPuUC
+ FH1kYJWwRtr/Db4AJM9HgJVfXMZdLhU3SoXhz2O/NnakJPBMe+vQT/UO4rDLN6UWObp3
+ U8dqwfZqEjr1tesFZBxlRRAtvyYHjv5RK01sYFMIaIaOyz5MXBUutUPmqvQc4qGWJMtW
+ qaDQ==
+X-Gm-Message-State: AOAM533zrCOFQuMFxkK5/Py5pJLS0nV/jx/kURoOb5agz9Rnd4q9YhTa
+ y9c7lUfrZLg7g2yIDwFmGB2JYA==
+X-Received: by 2002:a05:600c:b4e:: with SMTP id
+ k14mr8868900wmr.139.1630682099362; 
+ Fri, 03 Sep 2021 08:14:59 -0700 (PDT)
+Received: from [192.168.8.107] (190.red-2-142-216.dynamicip.rima-tde.net.
+ [2.142.216.190])
+ by smtp.gmail.com with ESMTPSA id f5sm4545465wmb.47.2021.09.03.08.14.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Sep 2021 08:14:58 -0700 (PDT)
+Subject: Re: [PATCH 0/4] target/arm: Use TCG vector ops for MVE
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210902150910.15748-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <3209af2a-7611-b385-aa7c-6203f442d05b@linaro.org>
+Date: Fri, 3 Sep 2021 17:14:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20210902150910.15748-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.888,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -116,129 +123,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yk/HSeBqPTmB
+X-TUID: CLGkx2D4b8tF
 
-The various MPS2 boards have multiple I2C buses: typically a bus
-dedicated to the audio configuration, one for the LCD touchscreen
-controller, one for a DDR4 EEPROM, and two which are connected to the
-external Shield expansion connector.  Mark the buses which are used
-only for board-internal devices as 'full' so that if the user creates
-i2c devices on the commandline without specifying a bus name then
-they will be connected to the I2C controller used for the Shield
-connector, where guest software will expect them.
+On 9/2/21 5:09 PM, Peter Maydell wrote:
+> Richard: if you have time to scan through the MVE insns
+> and suggest which ones would benefit from a vectorized
+> version that would be very helpful...
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/mps2-tz.c | 57 ++++++++++++++++++++++++++++++++++++------------
- 1 file changed, 43 insertions(+), 14 deletions(-)
+VDUP
+VMOVL (into shifts or and)
+VMVN (which seems to have gotten separated from the rest of the do_1op)
+VSHL
+VSHR
+VSLI
+VSRI
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 746ba3cc59e..f40e854dec7 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -375,6 +375,7 @@ static qemu_irq get_sse_irq_in(MPS2TZMachineState *mms, int irqno)
- 
- /* Union describing the device-specific extra data we pass to the devfn. */
- typedef union PPCExtraData {
-+    bool i2c_internal;
- } PPCExtraData;
- 
- /* Most of the devices in the AN505 FPGA image sit behind
-@@ -711,6 +712,20 @@ static MemoryRegion *make_i2c(MPS2TZMachineState *mms, void *opaque,
-     object_initialize_child(OBJECT(mms), name, i2c, TYPE_ARM_SBCON_I2C);
-     s = SYS_BUS_DEVICE(i2c);
-     sysbus_realize(s, &error_fatal);
-+
-+    /*
-+     * If this is an internal-use-only i2c bus, mark it full
-+     * so that user-created i2c devices are not plugged into it.
-+     * If we implement models of any on-board i2c devices that
-+     * plug in to one of the internal-use-only buses, then we will
-+     * need to create and plugging those in here before we mark the
-+     * bus as full.
-+     */
-+    if (extradata->i2c_internal) {
-+        BusState *qbus = qdev_get_child_bus(DEVICE(i2c), "i2c");
-+        qbus_mark_full(qbus);
-+    }
-+
-     return sysbus_mmio_get_region(s, 0);
- }
- 
-@@ -921,10 +936,14 @@ static void mps2tz_common_init(MachineState *machine)
-                 { "uart2", make_uart, &mms->uart[2], 0x40202000, 0x1000, { 36, 37, 44 } },
-                 { "uart3", make_uart, &mms->uart[3], 0x40203000, 0x1000, { 38, 39, 45 } },
-                 { "uart4", make_uart, &mms->uart[4], 0x40204000, 0x1000, { 40, 41, 46 } },
--                { "i2c0", make_i2c, &mms->i2c[0], 0x40207000, 0x1000 },
--                { "i2c1", make_i2c, &mms->i2c[1], 0x40208000, 0x1000 },
--                { "i2c2", make_i2c, &mms->i2c[2], 0x4020c000, 0x1000 },
--                { "i2c3", make_i2c, &mms->i2c[3], 0x4020d000, 0x1000 },
-+                { "i2c0", make_i2c, &mms->i2c[0], 0x40207000, 0x1000, {},
-+                  { .i2c_internal = true /* touchscreen */ } },
-+                { "i2c1", make_i2c, &mms->i2c[1], 0x40208000, 0x1000, {},
-+                  { .i2c_internal = true /* audio conf */ } },
-+                { "i2c2", make_i2c, &mms->i2c[2], 0x4020c000, 0x1000, {},
-+                  { .i2c_internal = false /* shield 0 */ } },
-+                { "i2c3", make_i2c, &mms->i2c[3], 0x4020d000, 0x1000, {},
-+                  { .i2c_internal = false /* shield 1 */ } },
-             },
-         }, {
-             .name = "apb_ppcexp2",
-@@ -965,15 +984,20 @@ static void mps2tz_common_init(MachineState *machine)
-         }, {
-             .name = "apb_ppcexp1",
-             .ports = {
--                { "i2c0", make_i2c, &mms->i2c[0], 0x41200000, 0x1000 },
--                { "i2c1", make_i2c, &mms->i2c[1], 0x41201000, 0x1000 },
-+                { "i2c0", make_i2c, &mms->i2c[0], 0x41200000, 0x1000, {},
-+                  { .i2c_internal = true /* touchscreen */ } },
-+                { "i2c1", make_i2c, &mms->i2c[1], 0x41201000, 0x1000, {},
-+                  { .i2c_internal = true /* audio conf */ } },
-                 { "spi0", make_spi, &mms->spi[0], 0x41202000, 0x1000, { 52 } },
-                 { "spi1", make_spi, &mms->spi[1], 0x41203000, 0x1000, { 53 } },
-                 { "spi2", make_spi, &mms->spi[2], 0x41204000, 0x1000, { 54 } },
--                { "i2c2", make_i2c, &mms->i2c[2], 0x41205000, 0x1000 },
--                { "i2c3", make_i2c, &mms->i2c[3], 0x41206000, 0x1000 },
-+                { "i2c2", make_i2c, &mms->i2c[2], 0x41205000, 0x1000, {},
-+                  { .i2c_internal = false /* shield 0 */ } },
-+                { "i2c3", make_i2c, &mms->i2c[3], 0x41206000, 0x1000, {},
-+                  { .i2c_internal = false /* shield 1 */ } },
-                 { /* port 7 reserved */ },
--                { "i2c4", make_i2c, &mms->i2c[4], 0x41208000, 0x1000 },
-+                { "i2c4", make_i2c, &mms->i2c[4], 0x41208000, 0x1000, {},
-+                  { .i2c_internal = true /* DDR4 EEPROM */ } },
-             },
-         }, {
-             .name = "apb_ppcexp2",
-@@ -1015,15 +1039,20 @@ static void mps2tz_common_init(MachineState *machine)
-         }, {
-             .name = "apb_ppcexp1",
-             .ports = {
--                { "i2c0", make_i2c, &mms->i2c[0], 0x49200000, 0x1000 },
--                { "i2c1", make_i2c, &mms->i2c[1], 0x49201000, 0x1000 },
-+                { "i2c0", make_i2c, &mms->i2c[0], 0x49200000, 0x1000, {},
-+                  { .i2c_internal = true /* touchscreen */ } },
-+                { "i2c1", make_i2c, &mms->i2c[1], 0x49201000, 0x1000, {},
-+                  { .i2c_internal = true /* audio conf */ } },
-                 { "spi0", make_spi, &mms->spi[0], 0x49202000, 0x1000, { 53 } },
-                 { "spi1", make_spi, &mms->spi[1], 0x49203000, 0x1000, { 54 } },
-                 { "spi2", make_spi, &mms->spi[2], 0x49204000, 0x1000, { 55 } },
--                { "i2c2", make_i2c, &mms->i2c[2], 0x49205000, 0x1000 },
--                { "i2c3", make_i2c, &mms->i2c[3], 0x49206000, 0x1000 },
-+                { "i2c2", make_i2c, &mms->i2c[2], 0x49205000, 0x1000, {},
-+                  { .i2c_internal = false /* shield 0 */ } },
-+                { "i2c3", make_i2c, &mms->i2c[3], 0x49206000, 0x1000, {},
-+                  { .i2c_internal = false /* shield 1 */ } },
-                 { /* port 7 reserved */ },
--                { "i2c4", make_i2c, &mms->i2c[4], 0x49208000, 0x1000 },
-+                { "i2c4", make_i2c, &mms->i2c[4], 0x49208000, 0x1000, {},
-+                  { .i2c_internal = true /* DDR4 EEPROM */ } },
-             },
-         }, {
-             .name = "apb_ppcexp2",
--- 
-2.20.1
+I think that's about all.
 
+
+r~

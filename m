@@ -1,214 +1,125 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1215982lfb;
-        Fri, 3 Sep 2021 05:03:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXC1N+mTaScQKZ8/CyKuFrxB/X/bTTj3E2JufEt6bhHbB0go01Ei/dClNrFXBwMknSeGHw
-X-Received: by 2002:a17:906:988a:: with SMTP id zc10mr3877134ejb.256.1630670618131;
-        Fri, 03 Sep 2021 05:03:38 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1630670618; cv=pass;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1222287lfb;
+        Fri, 3 Sep 2021 05:09:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwP9mKgtZ8fjkKlHX0JDKV8OB88HvsH3l2se8v9bLrZlJdIlHzPAMKVSS1KA7oPglaXEdZ
+X-Received: by 2002:adf:eb8d:: with SMTP id t13mr3784183wrn.4.1630670999334;
+        Fri, 03 Sep 2021 05:09:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630670999; cv=none;
         d=google.com; s=arc-20160816;
-        b=I5rHto4XkMPDozoKgQM9fHnOdG/V/OAhpdw7XsO2woqoh78e7h/Zf/gGNLm2mHtkgP
-         tXHOgQYV4QuzAjjLaEOs1GfNE+1mZPNNLmq8KzzVSA1PTVDQ0knKZvUUG4cpzuGjSGyu
-         f7qNuoH50c1qwRqNViqvJrXgKcl3qCyS0+osp/mtTIbErTNbaxImopkoT+9rtrWYqylN
-         6k6bszfl9kEL/pVpYIomjlCqdkRGabSzYI9r9r/F+sLuPySIK02Dp+n3GmwKqIS6tuJx
-         YjKC7GRRqR2oG6fbnrvkl1QyKB/VyoZgCfI4BI7MJ/TJtWGC7rYjxOU6SUmLlKa4728y
-         djDA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language:in-reply-to
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=zz9xI0L9/Xj/OgalLlKlVprKCj955/O8qMKUiQ/gCZY=;
-        b=manoevmk1bxrzGWHQqoQ1hodgDEQ8lr5EN7d3rVW7/bDbrsWrRiSNBSFz7RWqM3+Jo
-         W7gqBnjb3XoZwTb8DWkWHWI/aeyWxrt31miGDDjF9LlBtQY893i34Cz9I9+tJzIPxy4b
-         Q6lndO5vUUMDhkYvOUs89DUK3vxCA/5uhAUQW8DqV/aDYk41eZeWcm1Lfb3I22fqvxPC
-         HGb5JEHl76HEoE4yy1QEe0AA6xSjUBJtza5wjgDQkwGEt2U9GsFlRn7Ga4eaF9ev4bQN
-         ZA2o0mPBjYyV6nG/YXAPzNJqi9+/wkey3nLKKd3EY0R+3uQRaxEqCnXGm09Enl7aRUhT
-         Y4xg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=vXI9O2Cu;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of vsementsov@virtuozzo.com designates 40.107.20.104 as permitted sender) smtp.mailfrom=vsementsov@virtuozzo.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
-Return-Path: <vsementsov@virtuozzo.com>
-Received: from EUR05-DB8-obe.outbound.protection.outlook.com (mail-db8eur05on2104.outbound.protection.outlook.com. [40.107.20.104])
-        by mx.google.com with ESMTPS id a6si5248861edy.88.2021.09.03.05.03.37
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 05:03:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vsementsov@virtuozzo.com designates 40.107.20.104 as permitted sender) client-ip=40.107.20.104;
+        b=ahw62FL2fo2XzdosY9uSGyp87dTeZGo7UhU7iADCO9ERpQEdej48GYY2aNYnlPzfH6
+         iYYndLnYAJtCIeHTnFVjLngek3ShBponx+v5QzJbmnNJcCSHXtiGcpqC9aGlsaR0CkCU
+         UMf/YAqDOjVrB/CIUGKpYRmsybDvnza6pXhTBgn7kY+3MT7XnlaVUj9dg2YkeJc3hurz
+         H2pWK+43ZvLLRVP1C9VbWR5PgWoLIb3rYNyIWjLpRpbcSr1oakFj1yy1e8h0jy9Z4FNM
+         esUx2PPqyvE+Ad/QDdJ7lhilT489zxrAvDNBhNOY1Q08ygw8U1W07FBBqDQ9ewqdOVzv
+         d85Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject;
+        bh=RbSca/4M5xaqVo7oyGZGmMSLqbOe04hXnJBTNswwCV0=;
+        b=b6NH2PbK5z/GgrGUkdniFy+iVYznJJfgLmbYiLLK4eoTLgx3pHVIXt95OHm39l7QRD
+         TBUv3Q040boHrE1XwQ7d1VETKo3wdbNPJlQFR0C5fyXmoo8YFczAd8qT38vzQkqOHOAX
+         Hs7YpyWMZCcUTWL85kXYCaCTA2PoVZ910CBVT7KGyHE9/PxqG/3rVVy55pm5b/meK5KP
+         Ye4OCTVyKRXCzqmuFjQzkG6HXPv5wofelj7GIbwTv9tY3MK7pSt/bCKDNkdhGchoDVwa
+         EEJTtc8mBElwcCvqj8Cm1qSQjRVFd5CASVfEiQzhz4WFXPfbpJr3lKnVOfQYKcWk/Ii8
+         9bQw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z7si5993689wma.29.2021.09.03.05.09.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 03 Sep 2021 05:09:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=vXI9O2Cu;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of vsementsov@virtuozzo.com designates 40.107.20.104 as permitted sender) smtp.mailfrom=vsementsov@virtuozzo.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TPfLFw2ej7buaI8j+RcG0CjZjt+SO30LmzUYyc6ABSH5AFKkp+E3VKX6isoKOGHFDmPEn3ttzdeALpXk+yFLfX3Kg4+GmmV9PZjWEBrTK53U8CSvvnZaDq2Ff5n04I1mcNSKFvDbh6Ib8Jen1g8/sTWvzcMJqwtbmgabRX4eazFhsY7duX0TTcrqeFVE3mnzKfcVQyZdOONALd58H6aIefew8/u02xsakcOHs+/8lLHQ86BkmMEVtsOI8CX8gN6QB22OH4NeNLrEvJBX1w+1pWjUmaN2hYsgDtUYXJBoU0iPTQKwiV7uXMWbIMsG+OqUN0UjQh2AIJaTAp4DIi1GIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
- bh=zz9xI0L9/Xj/OgalLlKlVprKCj955/O8qMKUiQ/gCZY=;
- b=AySDBHxKWJeiSzNunAqGOp9iG07LpEdtMdaLUoJ6LKLGXSTvaYf2QoWtX6J/aC3KE0BSroB1the21tCeeohAF6s35i47lgIPeAAluXqknZ8hLZTKImpf3tbxw2B5uN3D4d6Y5wCuE0k3bN/Xm9mtbEdKW1xC80W+rIv7uZFMbbSBGaVW4Nx6vw9Jm5ySHMUQm0hnKWXJ4ek6FWSkWmvyAMR0p+3hYN/WeWcfTiRwhZnvAP3tbVt0IBGjCVk0cFCxeS/1aGxCMZLmM9y23MFQa+AJ//7nq1iC7R2TX4aDqZWuPFQQHS69uJ0IploKEE2lGsx3k3OfxwrlsRe1a0LxBw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zz9xI0L9/Xj/OgalLlKlVprKCj955/O8qMKUiQ/gCZY=;
- b=vXI9O2CupVCljuxmn9uIlty2BYmSHFo4zV+K0iOzHYUQvUReVs7rZBDJu5hNG237ZhwncG3BMrTRTB4G7YEzMmVCoDflDAYB61lQX9sYx+WpyKpt60KOQQXaSdOh7IkcFnlbIAk7bXfKghpUsdv7q1MsA0G+y7iqep370+7qhgI=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=virtuozzo.com;
-Received: from AM7PR08MB5494.eurprd08.prod.outlook.com (2603:10a6:20b:dc::15)
- by AS8PR08MB6568.eurprd08.prod.outlook.com (2603:10a6:20b:338::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.21; Fri, 3 Sep
- 2021 12:03:36 +0000
-Received: from AM7PR08MB5494.eurprd08.prod.outlook.com
- ([fe80::2817:53b3:f8b4:fe22]) by AM7PR08MB5494.eurprd08.prod.outlook.com
- ([fe80::2817:53b3:f8b4:fe22%8]) with mapi id 15.20.4478.022; Fri, 3 Sep 2021
- 12:03:36 +0000
-Subject: Re: [PATCH 02/28] glib-compat: Introduce g_memdup2() wrapper
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Li Zhijian <lizhijian@cn.fujitsu.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org,
- Zhang Chen <chen.zhang@intel.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Helge Deller <deller@gmx.de>,
- David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, Stefan Weil <sw@weilnetz.de>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz
- <groug@kaod.org>, Alex Williamson <alex.williamson@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
- qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>
-References: <20210903110702.588291-1-philmd@redhat.com>
- <20210903110702.588291-3-philmd@redhat.com> <YTIEDKAgWGRt/I6y@redhat.com>
- <04ba0442-08ca-bf88-3f04-0be00c11bd1b@virtuozzo.com>
- <YTINZmrWJLOnp193@redhat.com>
-From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Message-ID: <3de7d220-4a54-79f4-86e0-71645eea8f98@virtuozzo.com>
-Date: Fri, 3 Sep 2021 15:03:33 +0300
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40086 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mM818-0006GX-At
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 08:09:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59068)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mM80u-0006AL-Kz; Fri, 03 Sep 2021 08:09:44 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:47603)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mM80f-0008LZ-Nk; Fri, 03 Sep 2021 08:09:44 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.171])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 29906BC3AC12;
+ Fri,  3 Sep 2021 14:09:25 +0200 (CEST)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
+ 2021 14:09:24 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R0067530df98-ca36-4ee1-94f9-442b572c1736,
+ 15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 129.41.46.1
+Subject: Re: [PATCH v2 0/1] hw/arm/aspeed: Add Fuji machine type
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+To: <pdel@fb.com>
+References: <20210903082027.704397-1-pdel@fb.com>
+ <f380c5b5-a472-d41e-7821-4155113bdbc0@kaod.org>
+Message-ID: <c7d6e268-19a8-5b75-1310-6c943050a1ac@kaod.org>
+Date: Fri, 3 Sep 2021 14:09:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-In-Reply-To: <YTINZmrWJLOnp193@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: AM9P193CA0029.EURP193.PROD.OUTLOOK.COM
- (2603:10a6:20b:21e::34) To AM7PR08MB5494.eurprd08.prod.outlook.com
- (2603:10a6:20b:dc::15)
-Return-Path: vsementsov@virtuozzo.com
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [192.168.100.5] (185.215.60.196) by AM9P193CA0029.EURP193.PROD.OUTLOOK.COM (2603:10a6:20b:21e::34) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.20 via Frontend Transport; Fri, 3 Sep 2021 12:03:34 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7d9505e0-d68c-420b-f083-08d96ed2dc2a
-X-MS-TrafficTypeDiagnostic: AS8PR08MB6568:
-X-Microsoft-Antispam-PRVS:
-	<AS8PR08MB656872A56DF0B0BB18EEC5DDC1CF9@AS8PR08MB6568.eurprd08.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	dHinGg58iaJnDspYikEjWPTMxR6rs3zBjxwUVHOVsW4xKNpIA71NcK5/D/vX3HeWrOtnJ+CSSsSiugNvL2sGFEXAWtA5OuX45Z58W92R07M06J/IDNMalsJKnreI6ntsfp4SK+GVY7Arfzd/jZVI6Vu8SZRhfUihGQLKc6nNozvl0ciPzfn2iyCcENBViwer/Y9GNROz/uSaBi632oyDtRYE76mDi7V0hXwFLGiuY5CL9e1DwD5ElMPs5bxwN9SdTcwvYbFYO+19GCp06QBy+S8XexeqY/LWpsDPt5ek7JLFuZsxfFdZvFfqwj5AAOs5EJ0ijHTTa2XABADCKn/t1+1OxWWQE8e1pQD04PqXi3ko4lHb77dxxUh9x0F0pgSGEFLWfLk5V3JQ2hO9zOHtz8t5fcMBJCirkE4elxykRU9YhtbclLNxPbAj7fTdPAydG1mmuneOoVVuXVH6k//YZGW68yaM7OZOQuGI23albfMmWoH2bKvf407JYQnJVGAIXkTxJu1F19eWpImFD2/ROhXDjyt3QC7iXkob7jZugeY6pnwbhcKUrgUbeSGQ74QJwZjqijLRiTo5PH9wjFT/7EJdCNF/5IgWiLNG3VfmWAUlZbnAYt+cBIOuLxirJqZw1h7ZXpG9zUGTjKidDkHl/ssTlrOLBxghm4txThQjrAWPNJpF4G64RycB/+skWAd0WpXl1qd7ERPe/2hxagPcMbrUNrbYQvpCZejQRdYqPbpUPG28GzrQwoGKl9Owg1dHvVNZ/0ySEHdiSGCBwyNHUw==
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM7PR08MB5494.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(4636009)(366004)(186003)(31696002)(36756003)(54906003)(508600001)(66476007)(16576012)(7406005)(8676002)(66946007)(52116002)(5660300002)(4326008)(7416002)(8936002)(2616005)(6486002)(956004)(2906002)(66556008)(316002)(6916009)(26005)(38350700002)(38100700002)(86362001)(83380400001)(31686004)(45980500001)(43740500002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?WDl3ZlVKbWMveFhkcFk1ZlpLaVR1cEdIMjMvQUhjTEI0ejBESkVRM3pyeXhX?=
- =?utf-8?B?d2dmckE1TTlhOTk2MGwwRUEyNWZYOWprdWVJQ2dzUTR5N1o4L0ZIbzFYR2tm?=
- =?utf-8?B?RFZaaUZXVkNWcG0rMExMM2l6K0VLMWhWbEdHRERyZHM4dlBjUkozeHRGLzZr?=
- =?utf-8?B?SkYyWUdLVWJ6V0EzYmpUVEd1cFNJQjg3RVN3L0ZYNkg3aFFDVGZpVlprdTNI?=
- =?utf-8?B?OWFXYytmMGljRkV3MFR1bkdLdldSNDNadnE0TWhJZmxqTVRDeWdEUHo1UUQ5?=
- =?utf-8?B?ZVd4S0JHZzFPR2V6azd2a29zdlZuL0I0SHhkcG4rNkY4cFpDUlkzNnJEajVB?=
- =?utf-8?B?TnFmMUgwWlJvdVRxS1hLWmVqYldxWSthaXVJTDZ0Uk5KYW0zZ2M0T3FMT3Mz?=
- =?utf-8?B?TStsWjcxd0hFQVQyVWFRTk9XNmlXamhlYjNBODhsNHp3S1FKOTFmSk1Mb0hB?=
- =?utf-8?B?c0Rtc2d0WHUwbHJQZzh0bnhqSU1ySGlxSHowQk82RmtZYk94aXhaVlRZbnZy?=
- =?utf-8?B?TG5WQkQrd3Z3bzFMY0JjZWdZQ1E1RUlONGdadnBrc3k0N0RsK3hPVHF3NHFj?=
- =?utf-8?B?aVphajhhMWpGOXd5cDZjWWFrVVdZY3RUZHdDd1RMZWdkT3MveVdoOU1MRm5r?=
- =?utf-8?B?OElncDR0cnZlOHZGT1RvL1BiU2dsaHkrUEZJK1lwNGN5Rm03QU01S0tOalgz?=
- =?utf-8?B?eSswZXRYV011UjN6OFprNnEwSVhoc2xsdUV4L3JOVzY5cjR1eFloSTFBaW14?=
- =?utf-8?B?VkR2SG9tODRXN29PTkRaaUN6MlpNa1V4OHpkVUFwZW9RbEpGMFUwd3NOM05m?=
- =?utf-8?B?SVM5Y3pMYTJMVi92cGczaE55T3B6TWNIYXhNZHJrT3B4dERGRDI4L3Q4TTZr?=
- =?utf-8?B?VEpmOHVUUmxBQ2U4a2prVmxQWFRPNXRlNU1XbFExc0tXZ0ZwNnN1bSs2dEZU?=
- =?utf-8?B?bk0zZkhoZFJVODhoSGl3RVRwejhkc3ludWZRM0pBQ2M0VHF5ekY2c1ZRRFMv?=
- =?utf-8?B?YWNxazVnbU9lUDZGTFA5N0hLMEZKSHhlSXlzNzJGR2RPVGVFbTZuSUEyaVp1?=
- =?utf-8?B?WGY1VXNMbFpNY1dKdTQ2MVB6cnRvbU9wRUI3dWlZZDFjRVA5UDNUbmkvWEFw?=
- =?utf-8?B?aDJxazJqUndWQUhhT3hTUVcycG85LzJpSHFXL0pBMGRyQXlPcGt5azI5MVVi?=
- =?utf-8?B?TDNCK0syc05UUnpLVExBNlh1YnBHamRoWkJXMTlTRlZwdS9ac0x5VXJWUklu?=
- =?utf-8?B?eHdIVU1iZFhyTnoxUEN6ZmxuZWVHZGc2OUMxS3RZcEdaRDh6NEdYcDArMXZ5?=
- =?utf-8?B?QkZHNUZEU3RaMXM0UzJCQXcvb3pCWExKRVRWS0g3a0YxNktXbFpMZGxtQ2V3?=
- =?utf-8?B?YVJHT3ZVam8zaU5XUkc5VDlHVFNERXowNU5sZW50NU9venhvcFN1WWtMOU11?=
- =?utf-8?B?WXBta082aXNXRmNJUXBUWFEwaGMxVEpaRm9GN0g1U1FlWmZnam9IVE9zUzJx?=
- =?utf-8?B?ZTlUanA2Z0NzYTlFZ0QzTThxdzRKZTQxR1dZU01WOTByQTdKWG9vZk1zTU5n?=
- =?utf-8?B?OFJqek9Pa3EwV3ZBZ2VlVWFOSlVHUnNDZnpHVGhqSU03eWhFR0poS3kxUFJS?=
- =?utf-8?B?RFJhNGZsQ0ZNUWxVMDRlMU5oQ043eWpNdVByVUNGdG1uaURhN0UyZjhoRjZV?=
- =?utf-8?B?cHQ0N281SmFBTHVQN2J1cXN6d2hZOUNzRVFGTklqT0ZJMUdsZDIvVjY2YjQw?=
- =?utf-8?Q?vWzmqxhc6LyXDheqwVDRXTmCj5iBcGy0Ywwvy0i?=
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7d9505e0-d68c-420b-f083-08d96ed2dc2a
-X-MS-Exchange-CrossTenant-AuthSource: AM7PR08MB5494.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2021 12:03:36.6859
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +IypOfwEwAM9XthOGKSMlP2Q/CCLo3RsVkm8Sf4qwKtw9azCcneY0N9skUAjk0Th/Cyrvie7cRY6ffbNwJh+pKFdtgIaBcUBRzU86K9NRkY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB6568
-X-TUID: gyB3UOrz8HEa
+In-Reply-To: <f380c5b5-a472-d41e-7821-4155113bdbc0@kaod.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: a1a9d4db-3d0b-4649-bcd1-61585ee1a10b
+X-Ovh-Tracer-Id: 1185854079196171171
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedggeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefuhffvfhfkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeiveehgedvfeejgfdvudevkefgjeevtdehueeiffduieeuudeufffgteetkeekgeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphguvghlsehfsgdrtghomh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.888,
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patrick@stwcx.xyz, qemu-arm@nongnu.org, joel@jms.id.au,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qkdrJR6c+g4J
 
-03.09.2021 14:56, Daniel P. Berrangé wrote:
-> On Fri, Sep 03, 2021 at 02:51:21PM +0300, Vladimir Sementsov-Ogievskiy wrote:
->> That was most probably already discussed, so sorry my question:
+>>>> Is the Fuji using the Aspeed RTC ?
+>>>>
+>>>> hwclock: ioctl(RTC_RD_TIME) to /dev/rtc0 to read the time failed: Invalid argument
 >>
->> Why we can't just do
->>
->> #if ! GLIB_CHECK_VERSION(2, 68, 0)
->> static inline gpointer g_memdup2(gconstpointer mem, gsize byte_size)
->> {
->>      gpointer new_mem;
->>
->>      if (mem && byte_size != 0) {
->>          new_mem = g_malloc(byte_size);
->>          memcpy(new_mem, mem, byte_size);
->>      } else {
->>          new_mem = NULL;
->>      }
->>
->>      return new_mem;
->> }
->> #endif
->>
->> ?
+>> I don't understand exactly what's going on here, but running "hwclock --get"
+>> and "hwclock --set --date 2021-01-01" both seem to work fine after booting,
+>> so I think the Aspeed RTC is setup correctly and working. As far as I know
+>> Fuji uses it, but I'm not really sure.
 > 
-> This doesn't play with GLIB_VERSION_MAX_ALLOWED - any use of
-> g_memdup2 will trigger compile warnings since we're using an
-> API that only exists in a glib version newer than our declared
-> baseline.
-> 
-> The inline wrapper  + macro is a trick that lets us backport
-> new features, while avoiding the compile warnings.
+> QEMU doesn't model the SoC RTC. Something to add on the TODO list.
 
-Ah right, with macro, compiler doesn't see g_memdup2() invocations in code. Thanks!
+Joel made me notice that we had a model for it :) The time is 
+not initialized at reset and that might be the issue we are 
+seeing in Linux.
 
-> 
-> This is documented in the include/glib-compat.h file that Philippe
-> is modifying.
-> 
-> Regards,
-> Daniel
-> 
+Thanks,
 
-
--- 
-Best regards,
-Vladimir
+C.

@@ -1,85 +1,103 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp807776lfb;
-        Thu, 2 Sep 2021 17:57:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx8Ux86qUzfJnceCcv8yrNxbnP6CTWovPSt9fy4LEiu6+cB3Br/CJuPU537Wi9edbVjjmRC
-X-Received: by 2002:ac8:24e:: with SMTP id o14mr1302482qtg.42.1630630652153;
-        Thu, 02 Sep 2021 17:57:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630630652; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1026961lfb;
+        Fri, 3 Sep 2021 00:26:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0CObLtR+VAHG17+oQLfVPY5PT1uMuGSj1wGLQ5j2mTGBj55+/2Gr5ggcP26a2WhkFPstU
+X-Received: by 2002:a05:6e02:d43:: with SMTP id h3mr1655061ilj.112.1630653988885;
+        Fri, 03 Sep 2021 00:26:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630653988; cv=none;
         d=google.com; s=arc-20160816;
-        b=n6nRMwxWOll/4qpvkabpxPy0IAYIPciIaRaLhj7ENuFiaIYmqhOe2XFOW4jGSJ8JWh
-         NKrV32K0IrObL2uUBNfZ/dlwxikfTUOCqrg2IxAqzIlACqMJ2GW4vif+GU8hGgMSUide
-         OziDs9IjcGYegtsnPikDX2hfSTK2AKJpK/kzLIC26Lpht+SiaBjRsmMhFtfBbDdqH5O7
-         wANcXE+zw4k8cE5LhYnUQUWmhrK8zINriP0/PrBTyH9v20vrQ8pQr7K50hELCWwzSeyf
-         YidAh1dLkCbQlgN2LPRdpsgYYo6buetB+4P1+0O0K0D2bihyXFY9o10xeuyPzjTDUfYF
-         ZgSQ==
+        b=Eb6Qv0++knaoroZMjyXXGyRANXO3X09SQgTBGYjGHD0feA/zMiihqyexXEURCOAG5i
+         oFmbuoJPVOFIZ9+yEPtkNEUzfjp+wRzhAK0jJmmi1qA+aZqWkPFJ5xsmLA3Im6NUs/Ok
+         h8DJ+jsBMMG/s7hmqOm1g2KhXEBfqhDgp6AdhPrcG2+V/aCRivfj9mvsvhYFa3Mt0jsY
+         nszcUUlY1sjXdFgQVJGlf/pkyc6rFdi2+D9r9ZhtxN2u9gJ19POYY7Nm8PSIvcM5kOCz
+         dEypPtWl/s6gkoYQ59keeCcawLm6Cz2SI8Vkx8eLAUgpDuHg/YhOOSTZmq31T/9hOF6Z
+         2BZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=ktRvddubVxWE7Dtd+XIUP0p+p2jdsvgjW3fipkF03VY=;
-        b=RXyog4STSzNA4CmvaoM6FACfPFkFwGF3k0qfmnZnNK+6CM6Wyf94f+mzSYc0EI3SG2
-         LXZa3OiEzRCJt26bOnxjFBerp08HbHevGGRp7iGHKrrgRbNRjrEu0beJPf/uG1UOMDpa
-         qcL5aFQSqucamKEr5shATqy5ryp9UQsRsM9OcbUrbkxn8NG+IMLzkGXj0bBd8MlbrwDP
-         6hVpI0Gh3oSF774FB1sTOw63HKPSHckMSS+LVTN+t3ZN/TY9zP6DpWWofTcLxPnHxvWJ
-         6agM3tcPdOvjUhrlUO1iL9IJzXhr2lX3JoeWtcP3fbGOIKon6B8D0YJTnedH1FOWj2P2
-         FgVA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+02VQQ0alDHjiHVIOWBVvOPIvILJXREZBa9dwDD6RI0=;
+        b=HD1fNphVBOr+6HqFc+qv/qYzBD5rikbFSYDCp6htuWgqk9JDvLmXIme1DubFNnbQSY
+         +3qxW9JyY9b5dgXKEKB44vf9JavL29hqc0TZIvScHBpdtnlbFXWwqEvblNVQ9Iq7QRQu
+         Qfnt0TddZ3M+tRzS7PN7tng0sqiGVa20DY/fhkjkbW2opgII98BVrsyd1Oc855SAahLu
+         0FRAi8KAZ/PDwLWTUaafLXZkf0wTzO6AwminU8akMgpqGuHDAP5mijisyGprLAixKCNr
+         QbeOQPXbNsBTRAMdh5y1JjVE4pFX9UdinKQ4RAfmLsWMAZj758H+Pvbfj3eZIH3bmGyX
+         LlGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=DQHw0CXo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=KOhdQT9u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a145si2305592qkc.19.2021.09.02.17.57.31
+        by mx.google.com with ESMTPS id l19si4549166ilc.102.2021.09.03.00.26.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Sep 2021 17:57:32 -0700 (PDT)
+        Fri, 03 Sep 2021 00:26:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=DQHw0CXo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33008 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=KOhdQT9u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mLxWN-0005Mt-FO
-	for alex.bennee@linaro.org; Thu, 02 Sep 2021 20:57:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42202)
+	id 1mM3am-0001Gr-9A
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 03:26:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1mLxVf-0005H5-CS; Thu, 02 Sep 2021 20:56:47 -0400
-Received: from bilbo.ozlabs.org ([203.11.71.1]:53681 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1mLxVc-0006Dl-M8; Thu, 02 Sep 2021 20:56:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gibson.dropbear.id.au; s=201602; t=1630630598;
- bh=ktRvddubVxWE7Dtd+XIUP0p+p2jdsvgjW3fipkF03VY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=DQHw0CXoCLeVjZftr0jVswNtwM8GbP1gxHV/MxkWL8djz+hj+3hQfAlEy8h3PYDdu
- 2Mn3eqjxn1zuKdk9+LgYODNkLO3Jn/i28NWOgPNg2DR6VOD/F/UqxHWfOhcfJrJzrC
- jy0T+Ur0ZWdBF11z+KawHepj0mHoqbtiyIOS1p8s=
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4H0zrk1qlJz9sW4; Fri,  3 Sep 2021 10:56:38 +1000 (AEST)
-Date: Fri, 3 Sep 2021 10:48:30 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 17/24] target/ppc: Restrict cpu_exec_interrupt() handler
- to sysemu
-Message-ID: <YTFw3nhlRdYKQAed@yekko>
-References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-18-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mM3aa-0001Df-Uz
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 03:26:16 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:37608)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mM3aZ-0006Pl-Be
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 03:26:16 -0400
+Received: by mail-wr1-x436.google.com with SMTP id v10so6810090wrd.4
+ for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 00:26:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+02VQQ0alDHjiHVIOWBVvOPIvILJXREZBa9dwDD6RI0=;
+ b=KOhdQT9uSsUdmqICh5xI2RZQ3a4iN1zLBdUUQRtXC/42PjpP/j82/e4YzMyABVj4/f
+ 6aMNa2s5Bb7h1NzsvGhKivdqhVu3wPhUkrdq6XSKDsodP0yKps9ywpEqYhGk4xjV7K3N
+ XLE6WHJO1CSdB+ivBRNVEY1Egs5PKgZp9L04yJH4HeqHrTcf6Ulf1n+p9/7grkoDQ5c+
+ f9ua17uxy2GU9QdZIMx0MZoPeuw67yv3Wc8C0TDqTcpAtlItxTEWhNX20jnwonUPGDga
+ 77Ujs9adzT/bBiz+xdC+nuExWDLHHdNKoWN4+WWy2YfGKuVXnY7y6TnSSC3U1O1w+xiF
+ 0Kug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+02VQQ0alDHjiHVIOWBVvOPIvILJXREZBa9dwDD6RI0=;
+ b=RFVWcMoLhU7dhEO0w7eH7R9FRyL8Zq+bR/hXHg+OPErjCJXcSPndCldR7NzrXnVD9b
+ 1CRNhQyif8Qog70WV09X1XmjLfIX3q2K+FTyY8O69o1QF4HV4j3/QpBVSNKWj3MjsUUE
+ CamYrZ3n0AYoxx3RH9/GoazKBoSmj6SCKFq6bBID1VIyQA6askVs5yLhMiE4sYArbbYA
+ pIFAf1ZyqCSL8NS8s5RiKFJswqideqQRows6GK2wBiYsD/sE1IuA2MOf8rv85f26PGQy
+ qpb2sifLP277eLHdXt2Hd09m1cu91Z1JRzeUWBSU1mum200rhzxdFz2+t95Y0R1W7ya7
+ QENg==
+X-Gm-Message-State: AOAM530h7zVtUSYQnOQdgmTfioKkycjTp25D/nmzOaXFZKsvWhJ6UK0l
+ Z1kmQHyRM/IWptJwJB/SiWtlyA/EBsy2Q50qlXjkuw==
+X-Received: by 2002:adf:b748:: with SMTP id n8mr2311230wre.133.1630653972914; 
+ Fri, 03 Sep 2021 00:26:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="kyvLM4mpgyEHrF3n"
-Content-Disposition: inline
-In-Reply-To: <20210902151715.383678-18-f4bug@amsat.org>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20210824122016.144364-1-wangyanan55@huawei.com>
+ <CAFEAcA99urPQ4ZnmZrOG4JvL-sO-=kTGXF5Fuz-FoVHV6+J=pg@mail.gmail.com>
+ <77ee3e41-e985-74f8-8510-1c47903689a8@huawei.com>
+In-Reply-To: <77ee3e41-e985-74f8-8510-1c47903689a8@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Sep 2021 08:25:24 +0100
+Message-ID: <CAFEAcA9n10wZY5vO1ZpwO-P3u=dV2G4J8j3xtSjzfA5YX0oouQ@mail.gmail.com>
+Subject: Re: [PATCH v6 0/5] hw/arm/virt: Introduce cpu topology support
+To: "wangyanan (Y)" <wangyanan55@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,159 +110,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>, Warner Losh <imp@bsdimp.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, qemu-riscv@nongnu.org,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: Andrew Jones <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>, wanghaibin.wang@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>, Salil Mehta <salil.mehta@huawei.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5L77NLUadatA
+X-TUID: 771crx7w12Z3
 
+On Fri, 3 Sept 2021 at 08:05, wangyanan (Y) <wangyanan55@huawei.com> wrote:
+>
+>
+> On 2021/9/2 23:56, Peter Maydell wrote:
+> > On Tue, 24 Aug 2021 at 13:20, Yanan Wang <wangyanan55@huawei.com> wrote:
+> >> This new version is based on patch series [1] which introduces some
+> >> fix and improvement for smp parsing.
+> >>
+> >> Description:
+> >> Once the view of an accurate virtual cpu topology is provided to guest,
+> >> with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
+> >> e.g., the scheduling performance improvement. See Dario Faggioli's
+> >> research and the related performance tests in [2] for reference.
+> >>
+> >> This patch series introduces cpu topology support for ARM platform.
+> >> Both cpu-map in DT and ACPI PPTT table are introduced to store the
+> >> topology information. And we only describe the topology information
+> >> to 6.2 and newer virt machines, considering compatibility.
+> >>
+> >> patches not yet reviewed: #1 and #3.
+> >>
+> >> [1] https://lore.kernel.org/qemu-devel/20210823122804.7692-1-wangyanan55@huawei.com/
+> >> [2] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines
+> >> -friend-or-foe-dario-faggioli-suse
+> >
+> > Hi; this series doesn't apply to current head-of-git. Is it
+> > intended to be based on some other series ?
+> >
+> Yes, it was based on the -smp parsing changes in [1] which hasn't been
+> picked yet. Given that [1] somehow affects the topology parsing results
+> which we will describe to guest, I think it may be better that [1] can be
+> merged first and then this series follows.
 
---kyvLM4mpgyEHrF3n
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+OK. I'll ignore this for now; please resend once that other series
+has been accepted.
 
-On Thu, Sep 02, 2021 at 05:17:08PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Restrict cpu_exec_interrupt() and its callees to sysemu.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  target/ppc/cpu.h         |  4 ++--
->  target/ppc/cpu_init.c    |  2 +-
->  target/ppc/excp_helper.c | 21 +++------------------
->  3 files changed, 6 insertions(+), 21 deletions(-)
->=20
-> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-> index 500205229c0..362e7c4c5c7 100644
-> --- a/target/ppc/cpu.h
-> +++ b/target/ppc/cpu.h
-> @@ -1254,8 +1254,6 @@ DECLARE_OBJ_CHECKERS(PPCVirtualHypervisor, PPCVirtu=
-alHypervisorClass,
->                       PPC_VIRTUAL_HYPERVISOR, TYPE_PPC_VIRTUAL_HYPERVISOR)
->  #endif /* CONFIG_USER_ONLY */
-> =20
-> -void ppc_cpu_do_interrupt(CPUState *cpu);
-> -bool ppc_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void ppc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
->  hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int ppc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-> @@ -1271,6 +1269,8 @@ int ppc64_cpu_write_elf64_note(WriteCoreDumpFunctio=
-n f, CPUState *cs,
->  int ppc32_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
->                                 int cpuid, void *opaque);
->  #ifndef CONFIG_USER_ONLY
-> +void ppc_cpu_do_interrupt(CPUState *cpu);
-> +bool ppc_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void ppc_cpu_do_system_reset(CPUState *cs);
->  void ppc_cpu_do_fwnmi_machine_check(CPUState *cs, target_ulong vector);
->  extern const VMStateDescription vmstate_ppc_cpu;
-> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-> index ad7abc6041a..6aad01d1d3a 100644
-> --- a/target/ppc/cpu_init.c
-> +++ b/target/ppc/cpu_init.c
-> @@ -9014,10 +9014,10 @@ static const struct SysemuCPUOps ppc_sysemu_ops =
-=3D {
-> =20
->  static const struct TCGCPUOps ppc_tcg_ops =3D {
->    .initialize =3D ppc_translate_init,
-> -  .cpu_exec_interrupt =3D ppc_cpu_exec_interrupt,
->    .tlb_fill =3D ppc_cpu_tlb_fill,
-> =20
->  #ifndef CONFIG_USER_ONLY
-> +  .cpu_exec_interrupt =3D ppc_cpu_exec_interrupt,
->    .do_interrupt =3D ppc_cpu_do_interrupt,
->    .cpu_exec_enter =3D ppc_cpu_exec_enter,
->    .cpu_exec_exit =3D ppc_cpu_exec_exit,
-> diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-> index 7b6ac16eef7..d7e32ee107e 100644
-> --- a/target/ppc/excp_helper.c
-> +++ b/target/ppc/excp_helper.c
-> @@ -40,24 +40,8 @@
-> =20
->  /***********************************************************************=
-******/
->  /* Exception processing */
-> -#if defined(CONFIG_USER_ONLY)
-> -void ppc_cpu_do_interrupt(CPUState *cs)
-> -{
-> -    PowerPCCPU *cpu =3D POWERPC_CPU(cs);
-> -    CPUPPCState *env =3D &cpu->env;
-> +#if !defined(CONFIG_USER_ONLY)
-> =20
-> -    cs->exception_index =3D POWERPC_EXCP_NONE;
-> -    env->error_code =3D 0;
-> -}
-> -
-> -static void ppc_hw_interrupt(CPUPPCState *env)
-> -{
-> -    CPUState *cs =3D env_cpu(env);
-> -
-> -    cs->exception_index =3D POWERPC_EXCP_NONE;
-> -    env->error_code =3D 0;
-> -}
-> -#else /* defined(CONFIG_USER_ONLY) */
->  static inline void dump_syscall(CPUPPCState *env)
->  {
->      qemu_log_mask(CPU_LOG_INT, "syscall r0=3D%016" PRIx64
-> @@ -1113,7 +1097,6 @@ void ppc_cpu_do_fwnmi_machine_check(CPUState *cs, t=
-arget_ulong vector)
-> =20
->      powerpc_set_excp_state(cpu, vector, msr);
->  }
-> -#endif /* !CONFIG_USER_ONLY */
-> =20
->  bool ppc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->  {
-> @@ -1130,6 +1113,8 @@ bool ppc_cpu_exec_interrupt(CPUState *cs, int inter=
-rupt_request)
->      return false;
->  }
-> =20
-> +#endif /* !CONFIG_USER_ONLY */
-> +
->  #if defined(DEBUG_OP)
->  static void cpu_dump_rfi(target_ulong RA, target_ulong msr)
->  {
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---kyvLM4mpgyEHrF3n
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmExcNwACgkQbDjKyiDZ
-s5Ls7A/8DImqkiBUg/Y3dsB8HfU6M5B9BoXPaw1cxXmJSNEBHIrTUPEFCXKeW3SP
-6mzEpcKD5cjgsjKZaZLm9VGs83BLmAHXBydiNc9jOH4l3PZi4b3ih0SlYcpBiY2Q
-Q3BSvE7/kQqlobNIOWQxVjR2aWZ9AVjm5sAeTs9L363IgfiedABKAZQbsTs2zDwq
-KcMAdBdOKGHkbhpNbCh31put9VH8FqF6GGEBZzXtzOHNfra6lBidSZ6H/0V1Yog7
-BISkM0Sr8H615DV0gYzSCHGUtHOcHEQa36SAhrE251f5o6MmqPyyICg4taAM30xI
-kNXgBBYqwFMglD5VIpqrvSK+bZQqSCim5qlMGqkXuc0xgKP1oBNT3h/y5b+k8T7O
-MADDKZH09A+W+Z1THu9InmS9py7tBsZJRjzeek1GlXlkpLoKOqQmLydi7VEBbXed
-PFU0TH98novvaS8s+9OYc0o4un+YHC48jFTHAZhrVmqKC/E6bJ2av0fCfRxMdX87
-VjMes8xZ5Oyy7DY1yEoOL+4jzEougv0v6h2GlmH+WfsxL/zoEKt+/VvP5OAjstVT
-o81KHIN2jLoOmnrlIlcs7QgVfVcdgdDc+/vOf5Pp1pkYw5p9NT9z5OTDiZ8ihGJv
-nJ7IY+wgD7IP6gljbmE+RN+XiRtQ58THrob2L2Guw87acY64cec=
-=AgQv
------END PGP SIGNATURE-----
-
---kyvLM4mpgyEHrF3n--
+thanks
+-- PMM

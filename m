@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1174700lfb;
-        Fri, 3 Sep 2021 04:08:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzcFEMA59h3CIBUpmF0kFqoLcDo32re7sTSulrPJnYu65wPD7VPoe9EsKxxXeR7mzeStd4/
-X-Received: by 2002:a17:907:75d9:: with SMTP id jl25mr3600195ejc.4.1630667319632;
-        Fri, 03 Sep 2021 04:08:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630667319; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1173430lfb;
+        Fri, 3 Sep 2021 04:07:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJylJp1h8QLZqbP6VcjCaa6smt3cT8JQdfyi6drpzAKuVf3nqE/Li/1Q/U6xpUh245zk4oHc
+X-Received: by 2002:aa7:d859:: with SMTP id f25mr3367524eds.247.1630667235501;
+        Fri, 03 Sep 2021 04:07:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630667235; cv=none;
         d=google.com; s=arc-20160816;
-        b=LEK5g4udjOtbnlEM5nmkqTJhjOg6XKdRgfcbkgDtJ+RXor7Me7Zr0oDr/Gl5f0DR+Y
-         NkF57EqdHpFFysEFHIk14GUIeKFUSTcH74PExuZY9y45TVfdWNVL5HwlXaxOjT5h6igf
-         7tq8/u5bjJApej1wXCZCmG3JBbL+Nig/xPoB7TFcdnj2uojOGE93AGo6DX6uiMe1bSB2
-         /1NNREqyCao8OSEo5lB3fT448U+zVNNZC8BdwGjmz9ZpsNwdEgFEH8mS4QK3yud6tRwd
-         WISL7Rv7rpy8Vp1wFylec9ESicG+A6zpzYCWxPITkjn2HV0OZq3jBOfmsOoVR1O4TM4j
-         BqYQ==
+        b=u1ayBoRTE/hyrnBS6HxsWnQuv3mBNDmt04dVKRREPhnGPOHNwuMQbU7WO+gdtObQbm
+         rbPeE6AyfKXXKbzYkhmhqPacUqFoMDDbBBpxwpxouZLM+JSMZKPfqEkir57m7uUGQ3oM
+         BcYoKiPtxUS8He/G2ktF+AsAqkEIoasvMpFeukZzLsIAs+kuNc892kCNoyWpfFsSPHrE
+         A53FtmMElGaec/p//XQMcVF8hKjBEhbndmpDkBkrg7hgZqIrhayan4l/uz/ujW4wMAeI
+         VlKloxR0QKGFzlOFdXps1kWaU65ZGPAOhK4RPCpITiSEFm08hb02s+oSWWJBDHEONw59
+         Ddaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=EzShw/2xTdEPPWeNVs4kSs4t7kGgMmp/B6AgbgiX3Ec=;
-        b=QCUa3EMZ/YQXA0E9uldSLrWJuuVmQph9J/SD7a8ScHWJ6JXNseaG8J44IgNPe5B/oy
-         4Syqffie9NMzC6TBCufe3f4Oyngyw9uz4Wv7GOZSXI3Pg8wjsrcJ86CO9fOb2UnwlSJS
-         jPCZ68We8iYax73ng+nfncwqDbZmcNchZy5t7mfKWZ5sHVbOtQ/XUn6q6EGO1+8bk7yL
-         QLPJX9bwJEzhlnSjaPdB3e7ulBQYPJicJbaY/d4ztWIGIvNeK5guV1W06rHGstQNuPLm
-         QAm/eHErU3plgqrqoQmR0lJyfZN2gzEbQw7OOSElXHOwBHgBdcfN0g635QjVwNoM1n7Q
-         I9qQ==
+        bh=K59TWFNfhgS3efbWdzQjx6xmDgV9ebFReZvuleU1Sck=;
+        b=XZ6x697e6HALTGh+ekHdRTp9Zqu57+t410tGzwMTiUIhPANfoNFOu+qpXTBbIqzwLd
+         ikPKJU7AyBBrYfuQHeiIjXifVmljocOm7aI6HthQbPM0w9beIPfeAu29PGrdEggnOHCh
+         yFmbKRxYYQvfs7rxPOa5L60y5ytzD015aHtg6qfzLyGuoMZ+5HgLvYZs8Pc33EQHY/xH
+         Sie7GnsR9OCLTuW90nXN9n9a9ClQgX8d1Uxnkw0QHpxpvXqrGcQL+v6elH5xYFICzXcM
+         jkb+c3aXDnL49mYxO7On8JyijOuabzYberjTD9Nbv1pvZNLL3/NoWwsPLAZcjHlKDStg
+         k3FQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jEfAYhgD;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VI1FlFkQ;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id kv8si5683765ejc.306.2021.09.03.04.08.39
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id c25si5268723edy.95.2021.09.03.04.07.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 04:08:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Fri, 03 Sep 2021 04:07:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jEfAYhgD;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VI1FlFkQ;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630667318;
+	s=mimecast20190719; t=1630667234;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=EzShw/2xTdEPPWeNVs4kSs4t7kGgMmp/B6AgbgiX3Ec=;
-	b=jEfAYhgDvqjHnyQH1ge2icy6Ap1XH5HgSIVGQeidbmEu7+IYiQJ0ujB/8C+Wm7GLW41CKT
-	kkRE2HSRjz3Ast5s+5f929NAv1CiXpxMBjP86glLKBV91Iznxfy3JOeOH5v+3eRXHw3Qbb
-	1pa99PFhSQUYHyklNg4FkUZJwrap5e0=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-79-Ln9gsX76O5CftTZsCEwMdw-1; Fri, 03 Sep 2021 07:08:37 -0400
-X-MC-Unique: Ln9gsX76O5CftTZsCEwMdw-1
-Received: by mail-wm1-f72.google.com with SMTP id c4-20020a1c9a04000000b002e864b7edd1so1766892wme.6
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:08:37 -0700 (PDT)
+	bh=K59TWFNfhgS3efbWdzQjx6xmDgV9ebFReZvuleU1Sck=;
+	b=VI1FlFkQ40Pp4Hhjgab4vXQWuxpOBXuoLGuzYlLwXcnCEL0c2btDLpBmhaKkxlilSQFL6I
+	dc7Si49tFDYV8GsH8GBrMMYWCvRSEe9L0il+kjZb/UId7z5Fn0yWp8jbC9rXHtjWtUNmUo
+	LxxhUgChahHe1a8nWcsE8Epgq0Eqswg=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-402-CApoFwFrNwyjK22SvVnZfw-1; Fri, 03 Sep 2021 07:07:13 -0400
+X-MC-Unique: CApoFwFrNwyjK22SvVnZfw-1
+Received: by mail-wr1-f72.google.com with SMTP id b8-20020a5d5508000000b001574e8e9237so1456630wrv.16
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:07:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=EzShw/2xTdEPPWeNVs4kSs4t7kGgMmp/B6AgbgiX3Ec=;
-        b=IxfdC2Sd75SAQIKOcAYAl5v/hDkvKc3xEywI8XhcfXaXjlp5L+KihyZXAgxlyZoe6E
-         /n+FjiNOC159I/DzmI998ohor+PrrkZ/aFSHhl4ne4n+UPH2FbSswpraHQXHOyTOD15J
-         nmF9J2cdvlYf3Z3Ew37RSA585vvVJmVg6jK+8t5Dg2x3ei8p0fmEdKV3oYdacwnln+1P
-         c/w92e9Advd6+oli8cv+uoSJ0LF6GJytnxC/gDbzz++bIcLUANSDSRkD1Ylfw95XkFjs
-         ElYsleDVWDoJ9KF2+LN0B6DGFgeQDWfRSBcwPTr0L4Dw/not9AfRK4mUJOK2Cymf32Hy
-         p39A==
-X-Gm-Message-State: AOAM533Oy+ijcMPBJWuRkmaSCYmnrmQHeRyFpkLsHfN/P+0UxfBX8Orj
-	f5AfG5sHx2Acq68rh+u3aUKVoSDMbzciunxvRB91AqAU+IBjxX4ly2p/87epqgT4TdHkFlFUBCF
-	1xNx1Zr8DCFGUxGKQ
-X-Received: by 2002:a5d:4fc7:: with SMTP id h7mr3395746wrw.333.1630667316303;
-        Fri, 03 Sep 2021 04:08:36 -0700 (PDT)
-X-Received: by 2002:a5d:4fc7:: with SMTP id h7mr3395724wrw.333.1630667316143;
-        Fri, 03 Sep 2021 04:08:36 -0700 (PDT)
+        bh=K59TWFNfhgS3efbWdzQjx6xmDgV9ebFReZvuleU1Sck=;
+        b=i97L5LSL1jcvYhACmNy3Myo+OVkJMGViTMzTZ+nROui1/qjqE5Kr0kMkBVTAl9+Y2F
+         XR5pjsmAYD10iocTSbrWHvyZxHH69/onnVbvesrzPNrn8rQxn26TevTJcxeCDDmBUOUC
+         W/JyZSHFp6MOL5Doxp79wJkziwpPxhNcYrx8TkV+9ZckEDNZwDP4by+CHK9jUMk6hWQa
+         RqszTr4YAJX8NhZcAy+93HUce6U8rrEDG+yHX21wYbgOeFElYIM88Pxmks1XR1Sfpfw3
+         rkvv3X0S1u1qH48cmJjr+s5ayQyeQ7i7DWZPqMUv5RmTzptWMI38VIq1vQ42ByZnF1YU
+         5mZw==
+X-Gm-Message-State: AOAM532mTQbY1Ix3s7jAZJQGB8uD53ECKhegNxBWI7temPGH7djdAhFx
+	uDPzGzaNhRetz6/yMwFFXaAGJi9u98NvtGBgdljDv3elINR2tdEsavmcfoZp08eouvdo0jKByZR
+	aStKjvse5ZTdZ/UZu
+X-Received: by 2002:adf:d0c3:: with SMTP id z3mr3510213wrh.108.1630667232030;
+        Fri, 03 Sep 2021 04:07:12 -0700 (PDT)
+X-Received: by 2002:adf:d0c3:: with SMTP id z3mr3510188wrh.108.1630667231886;
+        Fri, 03 Sep 2021 04:07:11 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id s1sm4548992wrs.53.2021.09.03.04.08.34
+        by smtp.gmail.com with ESMTPSA id j207sm4380948wmj.40.2021.09.03.04.07.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 04:08:35 -0700 (PDT)
+        Fri, 03 Sep 2021 04:07:11 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Hanna Reitz <hreitz@redhat.com>,
@@ -117,9 +117,9 @@ Cc: Hanna Reitz <hreitz@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	qemu-ppc@nongnu.org,
 	David Hildenbrand <david@redhat.com>
-Subject: [PATCH 16/28] hw/ppc/spapr_pci: Replace g_memdup() by g_memdup2_qemu()
-Date: Fri,  3 Sep 2021 13:06:50 +0200
-Message-Id: <20210903110702.588291-17-philmd@redhat.com>
+Subject: [PATCH 01/28] hw/hyperv/vmbus: Remove unused vmbus_load/save_req()
+Date: Fri,  3 Sep 2021 13:06:35 +0200
+Message-Id: <20210903110702.588291-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903110702.588291-1-philmd@redhat.com>
 References: <20210903110702.588291-1-philmd@redhat.com>
@@ -130,43 +130,98 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RTsWUjQnOTqU
+X-TUID: AAMtUoCouPcO
 
-Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
-
-  The old API took the size of the memory to duplicate as a guint,
-  whereas most memory functions take memory sizes as a gsize. This
-  made it easy to accidentally pass a gsize to g_memdup(). For large
-  values, that would lead to a silent truncation of the size from 64
-  to 32 bits, and result in a heap area being returned which is
-  significantly smaller than what the caller expects. This can likely
-  be exploited in various modules to cause a heap buffer overflow.
-
-Replace g_memdup() by the safer g_memdup2_qemu() wrapper.
+vmbus_save_req() and vmbus_load_req() are not used.
+Remove them to avoid maintaining dead code.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/ppc/spapr_pci.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/hyperv/vmbus.h |  3 --
+ hw/hyperv/vmbus.c         | 59 ---------------------------------------
+ 2 files changed, 62 deletions(-)
 
-diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-index 7430bd63142..79c0e8d4f98 100644
---- a/hw/ppc/spapr_pci.c
-+++ b/hw/ppc/spapr_pci.c
-@@ -2201,10 +2201,10 @@ static int spapr_pci_post_load(void *opaque, int version_id)
-     int i;
+diff --git a/include/hw/hyperv/vmbus.h b/include/hw/hyperv/vmbus.h
+index f98bea3888d..8ea660dd8e6 100644
+--- a/include/hw/hyperv/vmbus.h
++++ b/include/hw/hyperv/vmbus.h
+@@ -223,7 +223,4 @@ int vmbus_map_sgl(VMBusChanReq *req, DMADirection dir, struct iovec *iov,
+ void vmbus_unmap_sgl(VMBusChanReq *req, DMADirection dir, struct iovec *iov,
+                      unsigned iov_cnt, size_t accessed);
  
-     for (i = 0; i < sphb->msi_devs_num; ++i) {
--        key = g_memdup(&sphb->msi_devs[i].key,
--                       sizeof(sphb->msi_devs[i].key));
--        value = g_memdup(&sphb->msi_devs[i].value,
--                         sizeof(sphb->msi_devs[i].value));
-+        key = g_memdup2_qemu(&sphb->msi_devs[i].key,
-+                             sizeof(sphb->msi_devs[i].key));
-+        value = g_memdup2_qemu(&sphb->msi_devs[i].value,
-+                               sizeof(sphb->msi_devs[i].value));
-         g_hash_table_insert(sphb->msi, key, value);
+-void vmbus_save_req(QEMUFile *f, VMBusChanReq *req);
+-void *vmbus_load_req(QEMUFile *f, VMBusDevice *dev, uint32_t size);
+-
+ #endif
+diff --git a/hw/hyperv/vmbus.c b/hw/hyperv/vmbus.c
+index c9887d5a7bc..18d3c3b9240 100644
+--- a/hw/hyperv/vmbus.c
++++ b/hw/hyperv/vmbus.c
+@@ -1311,65 +1311,6 @@ static const VMStateDescription vmstate_vmbus_chan_req = {
      }
-     g_free(sphb->msi_devs);
+ };
+ 
+-void vmbus_save_req(QEMUFile *f, VMBusChanReq *req)
+-{
+-    VMBusChanReqSave req_save;
+-
+-    req_save.chan_idx = req->chan->subchan_idx;
+-    req_save.pkt_type = req->pkt_type;
+-    req_save.msglen = req->msglen;
+-    req_save.msg = req->msg;
+-    req_save.transaction_id = req->transaction_id;
+-    req_save.need_comp = req->need_comp;
+-    req_save.num = req->sgl.nsg;
+-    req_save.sgl = g_memdup(req->sgl.sg,
+-                            req_save.num * sizeof(ScatterGatherEntry));
+-
+-    vmstate_save_state(f, &vmstate_vmbus_chan_req, &req_save, NULL);
+-
+-    g_free(req_save.sgl);
+-}
+-
+-void *vmbus_load_req(QEMUFile *f, VMBusDevice *dev, uint32_t size)
+-{
+-    VMBusChanReqSave req_save;
+-    VMBusChanReq *req = NULL;
+-    VMBusChannel *chan = NULL;
+-    uint32_t i;
+-
+-    vmstate_load_state(f, &vmstate_vmbus_chan_req, &req_save, 0);
+-
+-    if (req_save.chan_idx >= dev->num_channels) {
+-        error_report("%s: %u(chan_idx) > %u(num_channels)", __func__,
+-                     req_save.chan_idx, dev->num_channels);
+-        goto out;
+-    }
+-    chan = &dev->channels[req_save.chan_idx];
+-
+-    if (vmbus_channel_reserve(chan, 0, req_save.msglen)) {
+-        goto out;
+-    }
+-
+-    req = vmbus_alloc_req(chan, size, req_save.pkt_type, req_save.msglen,
+-                          req_save.transaction_id, req_save.need_comp);
+-    if (req_save.msglen) {
+-        memcpy(req->msg, req_save.msg, req_save.msglen);
+-    }
+-
+-    for (i = 0; i < req_save.num; i++) {
+-        qemu_sglist_add(&req->sgl, req_save.sgl[i].base, req_save.sgl[i].len);
+-    }
+-
+-out:
+-    if (req_save.msglen) {
+-        g_free(req_save.msg);
+-    }
+-    if (req_save.num) {
+-        g_free(req_save.sgl);
+-    }
+-    return req;
+-}
+-
+ static void channel_event_cb(EventNotifier *e)
+ {
+     VMBusChannel *chan = container_of(e, VMBusChannel, notifier);
 -- 
 2.31.1

@@ -1,171 +1,156 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1595730lfb;
-        Fri, 3 Sep 2021 12:31:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw+MZfX2NL1Uz5b98Ga0jiuCQNg34be4thVg715VoiXRDwi9bkKk3/WIyOUxw3lP3ugAaBv
-X-Received: by 2002:aa7:c60e:: with SMTP id h14mr569813edq.43.1630697472306;
-        Fri, 03 Sep 2021 12:31:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630697472; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1596569lfb;
+        Fri, 3 Sep 2021 12:32:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdkXdcu3qoAtRvVFqZ+gmP2w2pEjZ3B2I6lV0PVZeRitpvBchEKAbyasExqNDMFoNvm5Jp
+X-Received: by 2002:a05:6638:1504:: with SMTP id b4mr554904jat.144.1630697532903;
+        Fri, 03 Sep 2021 12:32:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630697532; cv=none;
         d=google.com; s=arc-20160816;
-        b=VsY+zLhZNdpLwQIgrHUzofNzwj16io+CxSApwu5uOaoaHrFeSjX1xjwLb5nI5KaLHw
-         NTw+KmTnP5/wBCoTkqKq1pbCLCtOWt+xWwMJMsnJAH2AmshOH73uzvgX3Hvf0bDzIX/t
-         P9o+/CQTQEvJ60HCOfwGslkA7QsaHHZay3D8MwPF8QaMvDSKKsyUtCmTKNCVjNFKXR6x
-         2oA4vlsDt78pFZnrkBxtI5HAzc1gvA+/2plm0KUqubAAOtUusPQXuckVWU1oQdU7DrGL
-         CfBqVEarX0Ezu4Rviaktqs9hEhZWdw1dsbEsJVZN2hagcMKiBWJ0v0hA/nqo8SOnf8gs
-         Mjkg==
+        b=qAQFh8DMz3V2HYXzT/tEbFeFQvKFVVFmkbU8FDK+6t24SQ7sB7R8vlzvn8yQjp+KGK
+         iVHw5kpH9pPMo/P60dNt0Uzsb+4L/6S2W2rMQICODvCIRtiq0BgbR9OPC82DrNMN8xp2
+         EapL6X2VhM0tJpGqOG5Lf0R6biphWWTCDcGN0YofFyx1l6JRYJ1NYAs5+zwdKA4vlRsK
+         iqFjYk7FS72mwHJ+oKrlLhwL1R77ugsKGAymMAhPCLYCbrq420nrkdhJJOqoYdK8ASvk
+         b9KKhglY5GO+bhW2n79pj2nkWEoUpJxCKG3K3ruDvcyMqNFOQukMhnH2FVPkq37ZyJBZ
+         XLaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=5AI83WewnZnYkPXwZnd2Q/eU9eygrBsbivngRE4BXiQ=;
-        b=Ii1d1ttOsubsR7+mTAuh7Uyj01z3X82f4GE3JwJdjt7+HJF2rOL/S/+9W1YXt1i1UC
-         czci5eQyPmbV7umd8M1siGu4dcb21DSCqFx8d3jBz5q4Kwdckkz2yGqUXvYFsOkbtEro
-         dicUnn/RkHB6a9Ipnx3jCyiZRYjd+6oLI29Q21lJ4HGJKYv7XFXZd0xlbNSQ2qhsX2Kn
-         0hli/+J1P1PjZ3S6n8kwlzjTqh/Dg20UEPDkQm2zccpkbo+S5dy+40q62rxulj9UEhCf
-         AcroRr3CNCgLluMlwfWDUJKoRLLrk+VKCymOTEyolskGk2zO0Gbl34z0ZmwJ9HhS1UgD
-         wUlw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ldBvNt8Gk/8FMytYbcH/BX1QrHuLB0k2DNw7Jz0vniQ=;
+        b=NTCMbBodexFYQZN6Glwl/i27Axewh806Y6Ct7h7IrGpQFB/V++2E21UTOw/zC3ciPA
+         glYBsHLhbvgPfjLiidEMW6+lq6JRL1qRQr5wv6b//ihNAOn/Xw54MYQlKtBcMZEev+OL
+         hdKdVUPmPQeoPLyovZ4gu8Dx0ulTjZANA8japWBrdc1e18lYnWKGfAQkbLIIHuQiM3Vi
+         eogDdqak2FawgwkA4KhL1kqlBW+E8XHg/bpQcnaP051TE9Hjl01PPcCN9zQswgFfsXjH
+         udMf8ZRqQC3wxdSVSa+vzPJ8T8gXgUxRDUrfGlFFjRtTvUN6ePUaVdxRk6KccelQb93V
+         clyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P4ISVXfv;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id f9si108556ejl.743.2021.09.03.12.31.12;
-        Fri, 03 Sep 2021 12:31:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@linaro.org header.s=google header.b=e26LbhwA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d7si219744ilg.5.2021.09.03.12.32.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 03 Sep 2021 12:32:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P4ISVXfv;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1347144AbhICTcL (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 3 Sep 2021 15:32:11 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:52368 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S239073AbhICTcK (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 3 Sep 2021 15:32:10 -0400
-Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com [IPv6:2a00:1450:4864:20::333])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id DB421C061575
-        for <kvm@vger.kernel.org>; Fri,  3 Sep 2021 12:31:09 -0700 (PDT)
-Received: by mail-wm1-x333.google.com with SMTP id c8-20020a7bc008000000b002e6e462e95fso252473wmb.2
-        for <kvm@vger.kernel.org>; Fri, 03 Sep 2021 12:31:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=5AI83WewnZnYkPXwZnd2Q/eU9eygrBsbivngRE4BXiQ=;
-        b=P4ISVXfvobqG12Z6RoTOI5UGIr/4McKEzBRjkpnJVeCZevklJ/WV/0lQBT+voH2SUY
-         t0dVslctqlM5DOtyjeqjkUvPjGWjj1dhiEdyZQeWioK8rQRoWy5A5NcKlSGuzKW3aWqj
-         t2bT7b9xG9bD7XISjXwWDKsCHqd+100iir2zh/3XRm8EAkGO06KgFLng+vuhbRGyvSoR
-         AObhwaMSw7osyojtzotiYTY7cxvr3JYasdODvCk6KW0vBIVPJ0cpLiVEP0EFP/cmNIcL
-         vTd4VlnM3ebyqP3INvEw9GWo/Z410XL/Oo2itgtLLE/TkG/P7c4oBYv9h2IqwiQYnS7X
-         J5sg==
+       dkim=fail header.i=@linaro.org header.s=google header.b=e26LbhwA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36234 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMEv5-0003gs-T1
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:32:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40994)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mMEmk-00077b-B5
+ for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:23:34 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:36784)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mMEmh-0004zr-EE
+ for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:23:34 -0400
+Received: by mail-wr1-x433.google.com with SMTP id q14so159863wrp.3
+ for <qemu-devel@nongnu.org>; Fri, 03 Sep 2021 12:23:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ldBvNt8Gk/8FMytYbcH/BX1QrHuLB0k2DNw7Jz0vniQ=;
+ b=e26LbhwA8iscP6BWFZ9FFnpq1zmSGFg0wJFZ2NidkSRm0CDTWjxHJtDX6vQbCMl/2r
+ qMb5gwsTNFWTrMQwcPuTvZQgldAceh6MNB21h1O8xU/IrTORcb86tBgMgS2QQOGKFf+t
+ IVBukE9Ii/SABkBGbVSrGt+J2vg9k9liA5ReDsrSSFsibzdL47wIjY5XJMXufJzuj6uQ
+ YeQnA8o3R6O66Af2Z/wTY5Xb89RbXDXuD9ZtVlLfYuNleM3stM7RONTyzvqu0rqIyinP
+ thQN/e7Zp0dIOuOsOrVa0BXWS+Uc30k/v2dMfBZt2WIabvQ5KNnfSuVum81y8XAzDIy8
+ 5Smg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=5AI83WewnZnYkPXwZnd2Q/eU9eygrBsbivngRE4BXiQ=;
-        b=AvkjSO4OYRa5QcJVCjEuXZUA5UyuFnIyzn1vPyoRAzJcvwKKKQ/Dr1mEywm6u2eBee
-         3j6+aG5tnglhZFS9DMlu9uKQfCJlR2Xpyh6dCwAOROhyxSLkV8kv8GqxaQeG7luJD17V
-         9pToCbpLUr2kPGdeqMNeExVXjqK/KWDTPzMPC6azJ9QAgFm/wwQCNn4AGNguEbnCj0Bu
-         a0qlNm+zAY6NqXpeCXNLY+v4wfvM4Nlr5iVG5w1e9ywQv2MnDZSTPVk18yYCwstaQdOK
-         hF4XJS6J5guU1++XO3pR/YGH+OkK1lflMVCq9QqRLtFpKThnY4BIxZQ2Eq10X9TpFXPx
-         /iyw==
-X-Gm-Message-State: AOAM5300FXjUURdavCK99+BSoG8G/6yvbOUIV35DoU92D/ZFdHBw1e95
-        uzZdfU9qvTqttbWMwkNPE4iypJ8eW0K/s4BUaBo=
-X-Received: by 2002:a1c:1c2:: with SMTP id 185mr289419wmb.11.1630697468395;
-        Fri, 03 Sep 2021 12:31:08 -0700 (PDT)
-Received: from [192.168.8.107] (190.red-2-142-216.dynamicip.rima-tde.net. [2.142.216.190])
-        by smtp.gmail.com with ESMTPSA id f17sm286460wmf.4.2021.09.03.12.31.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Sep 2021 12:31:08 -0700 (PDT)
-Subject: Re: [PATCH v3 01/30] accel/tcg: Restrict cpu_handle_halt() to sysemu
-To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-        qemu-devel@nongnu.org
-Cc:     Bin Meng <bin.meng@windriver.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Greg Kurz <groug@kaod.org>, haxm-team@intel.com,
-        Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
-        Anthony Perard <anthony.perard@citrix.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Michael Rolnik <mrolnik@gmail.com>, qemu-riscv@nongnu.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        Thomas Huth <thuth@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        Chris Wulff <crwulff@gmail.com>,
-        Laurent Vivier <lvivier@redhat.com>,
-        Cameron Esfahani <dirty@apple.com>,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Taylor Simpson <tsimpson@quicinc.com>, qemu-s390x@nongnu.org,
-        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-        Yoshinori Sato <ysato@users.sourceforge.jp>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Paul Durrant <paul@xen.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Roman Bolshakov <r.bolshakov@yadro.com>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
-        Wenchao Wang <wenchao.wang@intel.com>,
-        xen-devel@lists.xenproject.org, Marek Vasut <marex@denx.de>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Colin Xu <colin.xu@intel.com>,
-        Claudio Fontana <cfontana@suse.de>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        Stafford Horne <shorne@gmail.com>,
-        Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
-References: <20210902161543.417092-1-f4bug@amsat.org>
- <20210902161543.417092-2-f4bug@amsat.org>
-From:   Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <cdbffa64-98a4-859d-d8f1-50d959197542@linaro.org>
-Date:   Fri, 3 Sep 2021 21:31:02 +0200
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ldBvNt8Gk/8FMytYbcH/BX1QrHuLB0k2DNw7Jz0vniQ=;
+ b=gHvnWx2i1De7dJMvuivM1y2LiibQORJg5T1Y+UG6R9kqZuz+oAtHPDByJTwwi4GiGP
+ PeemJ4zkhugctF+MtrsbAXnNrS8X9Jxy1XsbM/Nrqa20YIFM4jOrNmZ9Ake2gJzb9AFY
+ tLeW6lYGfep56njQE3XRt36FyYf47mEr+EXNAoE9VR1JBSkU6DYvrs7FsWJ3D9dsLM3g
+ L1CZeHTZfwGszmn2Fi7uc0bfnaTd09td7CCFZtCyu3TmOXNqfbqjU8Lp9OkiyeQ2g9sA
+ HFMCHPeAei2Zz89ycYY8qf3A6395Up2+lRIcsDRGEV3CQqm314Czrnbhup373eWdPaaG
+ a8bA==
+X-Gm-Message-State: AOAM531iCvrO4/Li5+0zaIlyNrLIyy7LcaFG8H8SfzKsBzckiBBUHlDY
+ lt6X7h+w5rIdSi5ny6sIfU+4sQ==
+X-Received: by 2002:a05:6000:10:: with SMTP id h16mr687491wrx.24.1630697010062; 
+ Fri, 03 Sep 2021 12:23:30 -0700 (PDT)
+Received: from [192.168.8.107] (190.red-2-142-216.dynamicip.rima-tde.net.
+ [2.142.216.190])
+ by smtp.gmail.com with ESMTPSA id u8sm241594wmq.45.2021.09.03.12.23.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Sep 2021 12:23:29 -0700 (PDT)
+Subject: Re: [PATCH 21/24] target/rx: Restrict cpu_exec_interrupt() handler to
+ sysemu
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20210902151715.383678-1-f4bug@amsat.org>
+ <20210902151715.383678-22-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <eb5dc779-b21a-acf0-9be3-3003331ae330@linaro.org>
+Date: Fri, 3 Sep 2021 21:23:25 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210902161543.417092-2-f4bug@amsat.org>
+In-Reply-To: <20210902151715.383678-22-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 8DpOnMT7aZ55
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.888,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Warner Losh <imp@bsdimp.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
+ Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+ Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lhPep64OM6nn
 
-On 9/2/21 6:15 PM, Philippe Mathieu-Daudé wrote:
-> +#ifndef CONFIG_USER_ONLY
->   static inline bool cpu_handle_halt(CPUState *cpu)
->   {
+On 9/2/21 5:17 PM, Philippe Mathieu-Daudé wrote:
+> Restrict cpu_exec_interrupt() and its callees to sysemu.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
+> ---
+>   target/rx/cpu.h    | 2 ++
+>   target/rx/cpu.c    | 2 +-
+>   target/rx/helper.c | 4 ++++
+>   3 files changed, 7 insertions(+), 1 deletion(-)
 
-Hmm, slightly better to move the ifdef just inside here,
-
-> @@ -607,6 +608,7 @@ static inline bool cpu_handle_halt(CPUState *cpu)
->   
-
-and here,
-
->       return false;
->   }
-> +#endif /* !CONFIG_USER_ONLY */
->   
->   static inline void cpu_handle_debug_exception(CPUState *cpu)
->   {
-> @@ -865,9 +867,11 @@ int cpu_exec(CPUState *cpu)
->       /* replay_interrupt may need current_cpu */
->       current_cpu = cpu;
->   
-> +#ifndef CONFIG_USER_ONLY
->       if (cpu_handle_halt(cpu)) {
->           return EXCP_HALTED;
->       }
-> +#endif
-
-which would eliminate this one.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~

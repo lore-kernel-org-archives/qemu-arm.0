@@ -1,102 +1,102 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1353921lfb;
-        Fri, 3 Sep 2021 07:35:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxm6p2ddlG92dS38cMMySKTyLQywFltfBEoVuX7NRa+TrRffrbCm6rNPFM0iYpbcy7srZyk
-X-Received: by 2002:a67:844:: with SMTP id 65mr3015828vsi.20.1630679715237;
-        Fri, 03 Sep 2021 07:35:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630679715; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1354299lfb;
+        Fri, 3 Sep 2021 07:35:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+t7+8EGOWfm9fA7auYinH2k5k4Zj7wjDPqznLAFjZ7vJc4RhWP/lcGhACE3DruiwLvATB
+X-Received: by 2002:a05:6000:1244:: with SMTP id j4mr4553922wrx.335.1630679741846;
+        Fri, 03 Sep 2021 07:35:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630679741; cv=none;
         d=google.com; s=arc-20160816;
-        b=lLBDdIBd0o4k8G3UIDp1uObcnGfePLqJefHqMQ8T50dMgPp6DsqNL96y4miLxxRq2F
-         tAxtKpFbgUGJZIK8IpmcKNnv27Cjhthd29fc3m8PBtmtk6uk9J0CWdQsug00B9Nac78H
-         AeycLaFsZxj5eQgk8EsIycboRvIMWFUTUJBJUZW8KdGN2PG2XIuV+UFLMhDtL+Vv4qzP
-         fKGnh4tBGpyp5TWWbb3o36l3OIe73tEP8qIj4YTZnzAkeMzGW1bWsjB+xrmYillwE23v
-         d1GP/oD3h9cxPZtFl3+Gs1eGKVhkOc4QjkPP2Ld9qRPTeZEXEzMDqrQmziaP3zlafzrh
-         0mYQ==
+        b=edyrosN8CNXRNTlr2hJ4Oh7Ue9d/wjvETZHR63XFBY8r0Q/F3CjUOBQk5OnJn771Kq
+         RpUoM8Tq/mrw6eY3eH4YssOJXWLEFchaKb5Pd4ZAPnRNRd7XY343KuMjNkQBmeXVg5DE
+         8NfGuuZ9TwypiagVzci7vKuNavopOXwbM3lUHcZ1vnZrPFPyJWMyNIkdH6g960mhOaJe
+         /RA+ErLjWxievJL7UcQQf3I6iyFrAKg8RRscROzM+y8vfQ9cpoF2Dr6ddTVibbDIKQlI
+         N0k3pJACI1u8mPtWAEmJz3Db6IayVpOabqwGYwDvC5TKdRxE3DLmVVSjoMWKdxZhwJJe
+         VfrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=r/iDZlUIiWksCDGamgB0/fI2nOB2PJMcezNLmt9rDEI=;
-        b=TgODumGbnDwF5AIeXkUT0pElPezfbUfeLagXkcXPTZEjkd2MKEGUkbudvWxqly9avl
-         WjVQOWHklrHE6OaG2uGxxFu8s9vSHxO78Mr5eevBKNd1bchQqxxSmH2ULj/fBcu7DlQs
-         UHh/VV6/6l3kg3+249nSvmEqyYORQZOuz7WrV3vuaTxV07wsOL6DJm8SnlDK6RCTJ0PY
-         qycBrhcg+VEh+ShLhBuKbLct7NXQlwMauA5gYqJuviioOu6eMAkRZBEOoOB9hNWLi8bM
-         nxwzT58II/1hT5P7E4qj8UwvKttsSkikDubSUtX+BpQGA4N7bXf+okrjWr19h/BaaHZX
-         UWXg==
+        bh=eo54h4KkqnKKCP3+eSELsEpD4Rb9+IjUu6cLRetgdhQ=;
+        b=r6AJeTWJdLyNJKCuQdFAy02IrAPzTWHJd+C0X5FlZJHqCOI10+tKpTZo9Gb60Nz3a7
+         j2KMFjOpcBkiqs/Zd44zsQ42+yUP9e408/RIOuIaOa14cuXsOZuTfyHNgZSVU39sWy9V
+         Zzqbc6ZhBDA8CZ0TX+Tp+cMCmZVrebDtcLeAED98BzW0JH/RxUih/m1SVP9wUvoSGLRM
+         uoMMvu9mSdAH/Fg0ia76A9zVZIlW2j1KWwavQ3bBWRg2XL+1WTA3jWZF+aI05A+kv64P
+         IM2sFb+rra9N5reSuJz+kflmFLStDKB+mRQrEgfKJ5Q0CIQcnLIaSNNt7xDAgMBxsEHb
+         j9pQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=lVKWnYEl;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ScgXm3RE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v27si2637073uaa.253.2021.09.03.07.35.14
+        by mx.google.com with ESMTPS id f133si5302131wmf.197.2021.09.03.07.35.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 07:35:15 -0700 (PDT)
+        Fri, 03 Sep 2021 07:35:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=lVKWnYEl;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ScgXm3RE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33174 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMAHi-0001gW-EH
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 10:35:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36790)
+	id 1mMAI8-0002L7-TG
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 10:35:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36844)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mMAFG-0004Et-QW
- for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:32:42 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:36643)
+ id 1mMAFI-0004IP-8G
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:32:44 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:33536)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mMAFE-0005cW-Dj
- for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:32:42 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 79-20020a1c0452000000b002e6cf79e572so3932018wme.1
- for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 07:32:40 -0700 (PDT)
+ id 1mMAFF-0005ds-Pz
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 10:32:43 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id b10so8575987wru.0
+ for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 07:32:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=r/iDZlUIiWksCDGamgB0/fI2nOB2PJMcezNLmt9rDEI=;
- b=lVKWnYElYrSuBWv0TUfIYfmzM/s8V1xj5XgKHpsWvs6TqIz7taY6Zf0cirPp8/CKzw
- fxI21FKcDXOpgj9Q4897KWRnjuLwdyIkek7pDIOcFWT/qyDpfpgWENbZaECe7FHm+JgU
- N/inlyZIhkmQsl+lw2xyf9Dv/lGUAsbItGgiHWWulQqO/SxXrNkS03MQw/7yNZZY6qTm
- 27SkXiG5sBsLecD0/dHvCZm1LILm9DUoZ3wFy93HTSqshrAPHSRcPw+DgQ7Zt+ET6unX
- gduTqymw0BXWFxIy9qgB7RFK7o2dVzJ1Y36WvD+tJiqdnO1CPjJxuxn1ilJ4mRiy3dJY
- G0iQ==
+ bh=eo54h4KkqnKKCP3+eSELsEpD4Rb9+IjUu6cLRetgdhQ=;
+ b=ScgXm3RESccpMpDfCMkTfu/IHJwp9dlW070uJ8iLHVbRvSdXp4cryVAFll4jU8a6R3
+ DLOIW0gJQKjE4TShxEQUPHPX9ZBto9wW8XZZdWZb8HIZmnPasOoqaPZ7ZwrxpNY1F1r8
+ rQSW9HKjic7Y41mSRv5Pm+o6nN6dy/4t1dsRHe5JKQo5zDt/eyCTRscOVRYhTKJE59/2
+ Ep31GDVp6nczQnA8R5UFPCqFqR/clb92b5+bL3Bffr+KjJp4SAX83JyClJVh3dHCkLe1
+ gZIJl2I7ICUAbNtyTcN40Linjxy91fOjOi5g+MJ5oCym4KckefZ7PYznusguQlOoSL8x
+ hYAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=r/iDZlUIiWksCDGamgB0/fI2nOB2PJMcezNLmt9rDEI=;
- b=CQ9wmirTQY79ZqeO7k6Dlt5TkuXe4KzUaJ4a07scFPZ+jNlzkCs5Lua6DULVc4E6PO
- ZnaWU/loPZgI5Y9Ae5CF4vl8c5Tk+62rO5+clvwMcLyhIyX8La4rZRjMbheqP54LkQi1
- eXBApUuAmSTlu3IaH8V93c1N+GVYBlQt+GYZUvAb33UVCYSRyQZl8g0FHMhpbQPSuyY5
- BqTxVtmaEL4dgeAzi6myNFTudp8ceVzSt7s8yKP9esIJxYWwYdo+0qUcbwk5TXd5Ko09
- SXBrp/NVSu81tkiU1GfAOFbjEobjcDX36T2tg6UnbINxnbolnrhrb742tYUBjpDnL3GX
- DQow==
-X-Gm-Message-State: AOAM532lGEjV5zxO0L0pl9M4/lkP3io2HN2eE3fFBlqSWz00QU0JO1f2
- zOo67QPZLYcSPE++3FMi+sGhqg==
-X-Received: by 2002:a7b:c92b:: with SMTP id h11mr733449wml.62.1630679559088;
- Fri, 03 Sep 2021 07:32:39 -0700 (PDT)
+ bh=eo54h4KkqnKKCP3+eSELsEpD4Rb9+IjUu6cLRetgdhQ=;
+ b=udc3pfavJONhexr9iM9CjZSNTKdrQCv5/s/cOga50WtLLGLAjXjGREChL0ZolLdUav
+ 0d+KKu6z8SrS8feCawsx7o+prNzMzhNaNwX5BgTE4uAw7I4y5c4Wb+wPkb4pBmTe5h7K
+ 32rXGsISfbt7r0AKCRzjxCtc+vlYfP7vqAXiuTrO6ms8krNtr2uyxCq5Ut+C52ocGZ23
+ fLFCCubjsTzRftRIQWeMqh6BBtk2+tHO8iw/Ran7zcEIS6t2qxWBvLSKo7KdaLNNyKT2
+ V7ryqVKa+4srmFZG/Tjk2ZY75MSQoU71DvKGQ2PglLcBXThQbMa0DKPD2bLaLQYMYAJz
+ Kocw==
+X-Gm-Message-State: AOAM530guu3H792Wl0aCsmR9PniOVKCkJDcKXP1uRnhpgVj2IWnDxDyr
+ O3EQRUSp3cxVR3eSg4nZeqa8ow==
+X-Received: by 2002:adf:e449:: with SMTP id t9mr4429438wrm.135.1630679560389; 
+ Fri, 03 Sep 2021 07:32:40 -0700 (PDT)
 Received: from localhost.localdomain (19.11.114.78.rev.sfr.net. [78.114.11.19])
- by smtp.gmail.com with ESMTPSA id z2sm4314843wma.45.2021.09.03.07.32.38
+ by smtp.gmail.com with ESMTPSA id z2sm4314843wma.45.2021.09.03.07.32.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Sep 2021 07:32:38 -0700 (PDT)
+ Fri, 03 Sep 2021 07:32:39 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: eric.auger@redhat.com
-Subject: [PATCH v2 3/8] hw/arm/virt-acpi-build: Add VIOT table for virtio-iommu
-Date: Fri,  3 Sep 2021 16:32:04 +0200
-Message-Id: <20210903143208.2434284-4-jean-philippe@linaro.org>
+Subject: [PATCH v2 4/8] hw/arm/virt: Remove device tree restriction for
+ virtio-iommu
+Date: Fri,  3 Sep 2021 16:32:05 +0200
+Message-Id: <20210903143208.2434284-5-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20210903143208.2434284-1-jean-philippe@linaro.org>
 References: <20210903143208.2434284-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -5
 X-Spam_score: -0.6
 X-Spam_bar: /
@@ -122,54 +122,62 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
  marcel.apfelbaum@gmail.com, pbonzini@redhat.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ilmAnsJi8kpn
+X-TUID: JICP1LI8MmIW
 
-When a virtio-iommu is instantiated, describe it using the ACPI VIOT
-table.
+virtio-iommu is now supported with ACPI VIOT as well as device tree.
+Remove the restriction that prevents from instantiating a virtio-iommu
+device under ACPI.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- hw/arm/Kconfig           | 1 +
- hw/arm/virt-acpi-build.c | 7 +++++++
- 2 files changed, 8 insertions(+)
+ hw/arm/virt.c                | 10 ++--------
+ hw/virtio/virtio-iommu-pci.c |  7 -------
+ 2 files changed, 2 insertions(+), 15 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4ba0aca067..7da0422446 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -29,6 +29,7 @@ config ARM_VIRT
-     select ACPI_HW_REDUCED
-     select ACPI_NVDIMM
-     select ACPI_APEI
-+    select ACPI_VIOT
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 81eda46b0b..b4598d3fe6 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2551,16 +2551,10 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
  
- config CHEETAH
-     bool
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 037cc1fd82..e2fa677d80 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -55,6 +55,7 @@
- #include "kvm_arm.h"
- #include "migration/vmstate.h"
- #include "hw/acpi/ghes.h"
-+#include "hw/acpi/viot.h"
- 
- #define ARM_SPI_BASE 32
- 
-@@ -849,6 +850,12 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     if (device_is_dynamic_sysbus(mc, dev) ||
+-       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
++        object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
++        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+         return HOTPLUG_HANDLER(machine);
      }
- #endif
+-    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+-        VirtMachineState *vms = VIRT_MACHINE(machine);
+-
+-        if (!vms->bootinfo.firmware_loaded || !virt_is_acpi_enabled(vms)) {
+-            return HOTPLUG_HANDLER(machine);
+-        }
+-    }
+     return NULL;
+ }
  
-+    if (vms->iommu == VIRT_IOMMU_VIRTIO) {
-+        acpi_add_table(table_offsets, tables_blob);
-+        build_viot(tables_blob, tables->linker, vms->virtio_iommu_bdf,
-+                   vms->oem_id, vms->oem_table_id);
-+    }
-+
-     /* XSDT is pointed to by RSDP */
-     xsdt = tables_blob->len;
-     build_xsdt(tables_blob, tables->linker, table_offsets, vms->oem_id,
+diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
+index 770c286be7..f30eb16cbf 100644
+--- a/hw/virtio/virtio-iommu-pci.c
++++ b/hw/virtio/virtio-iommu-pci.c
+@@ -48,16 +48,9 @@ static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
+     VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
+ 
+     if (!qdev_get_machine_hotplug_handler(DEVICE(vpci_dev))) {
+-        MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
+-
+-        error_setg(errp,
+-                   "%s machine fails to create iommu-map device tree bindings",
+-                   mc->name);
+         error_append_hint(errp,
+                           "Check your machine implements a hotplug handler "
+                           "for the virtio-iommu-pci device\n");
+-        error_append_hint(errp, "Check the guest is booted without FW or with "
+-                          "-no-acpi\n");
+         return;
+     }
+     for (int i = 0; i < s->nb_reserved_regions; i++) {
 -- 
 2.33.0
 

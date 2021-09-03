@@ -1,92 +1,109 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1222287lfb;
-        Fri, 3 Sep 2021 05:09:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwP9mKgtZ8fjkKlHX0JDKV8OB88HvsH3l2se8v9bLrZlJdIlHzPAMKVSS1KA7oPglaXEdZ
-X-Received: by 2002:adf:eb8d:: with SMTP id t13mr3784183wrn.4.1630670999334;
-        Fri, 03 Sep 2021 05:09:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630670999; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1222436lfb;
+        Fri, 3 Sep 2021 05:10:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJww7a7T0hW3jxv5ou7z0YipsvwJhsoQjB1XXzlkm04MaNsdIcnQXXTpael9//WmRDUnKtv9
+X-Received: by 2002:adf:ea0c:: with SMTP id q12mr3738897wrm.392.1630671006717;
+        Fri, 03 Sep 2021 05:10:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630671006; cv=none;
         d=google.com; s=arc-20160816;
-        b=ahw62FL2fo2XzdosY9uSGyp87dTeZGo7UhU7iADCO9ERpQEdej48GYY2aNYnlPzfH6
-         iYYndLnYAJtCIeHTnFVjLngek3ShBponx+v5QzJbmnNJcCSHXtiGcpqC9aGlsaR0CkCU
-         UMf/YAqDOjVrB/CIUGKpYRmsybDvnza6pXhTBgn7kY+3MT7XnlaVUj9dg2YkeJc3hurz
-         H2pWK+43ZvLLRVP1C9VbWR5PgWoLIb3rYNyIWjLpRpbcSr1oakFj1yy1e8h0jy9Z4FNM
-         esUx2PPqyvE+Ad/QDdJ7lhilT489zxrAvDNBhNOY1Q08ygw8U1W07FBBqDQ9ewqdOVzv
-         d85Q==
+        b=S93uwIAYN6+DYR6ytyMjfylPdEmbMsrvrNFg/vbPrGtmg/zthIW9pYC0dBApPN5siR
+         RF2R1ZXrLfFBeEXqZJeLuFAvyve2Un0QngJMuHGfiSSw6QTKPno6I4biNxFmhzt1pa/z
+         WPvtQ3WoVwfAZrok1vTxfKzPWbvXvQgz6Uj5JVSUxcd6kuQMs3Yd7X4G1DqKlOrWOjGF
+         NjwarmW98WvPIuWVJR7CroK8FtmZqTEthRmzdeQwUfEbEDqxp9/ifrYtED1v3XwhA+ni
+         6rReQLJR38quXyP+2Wi48p8qtq41wUTHaKJzVx3mzayA4KRldcgfnjIgFAGmC4kNo9w5
+         ewYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject;
-        bh=RbSca/4M5xaqVo7oyGZGmMSLqbOe04hXnJBTNswwCV0=;
-        b=b6NH2PbK5z/GgrGUkdniFy+iVYznJJfgLmbYiLLK4eoTLgx3pHVIXt95OHm39l7QRD
-         TBUv3Q040boHrE1XwQ7d1VETKo3wdbNPJlQFR0C5fyXmoo8YFczAd8qT38vzQkqOHOAX
-         Hs7YpyWMZCcUTWL85kXYCaCTA2PoVZ910CBVT7KGyHE9/PxqG/3rVVy55pm5b/meK5KP
-         Ye4OCTVyKRXCzqmuFjQzkG6HXPv5wofelj7GIbwTv9tY3MK7pSt/bCKDNkdhGchoDVwa
-         EEJTtc8mBElwcCvqj8Cm1qSQjRVFd5CASVfEiQzhz4WFXPfbpJr3lKnVOfQYKcWk/Ii8
-         9bQw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=KLPYg3nOSYyFmv3AvUVzr80sNKqlmQnOURTungtyFI4=;
+        b=EKg9x5gnr8hr8F/6ByGBklScOTaCIZUTdsOmICQjXgTZlCTHT31nwkMhkJpywmOYcs
+         +MknciuIm9PF3j/Vh9aHmSGXQ1/6JesuoyXb9xcQt35d32Bmnkzlh7bE2T2/YEegqXot
+         nnSCPf9F3tqb4jDPHzilhjAacT7oKEqq3Hgmx0yFd5eotiYCsTwn17uQhmEUxju5ZsZS
+         co9g6RF/2XlizbPiFo97OMqxviZ7KujFdmxh/eYlkh67mh45lTAG8HFahI8xeM40V2EM
+         l5pIr6SpzZNKcdaEkx+cc9o/6q6rWtgGmvxTf33+Bh62wZobdc/s1LHPbc1416DIKD/u
+         Uiow==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=0KQusaN8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si5993689wma.29.2021.09.03.05.09.59
+        by mx.google.com with ESMTPS id i20si5316610wml.81.2021.09.03.05.10.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 05:09:59 -0700 (PDT)
+        Fri, 03 Sep 2021 05:10:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=0KQusaN8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40086 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40342 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mM818-0006GX-At
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 08:09:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59068)
+	id 1mM81F-0006Sj-OD
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 08:10:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56150)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mM80u-0006AL-Kz; Fri, 03 Sep 2021 08:09:44 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:47603)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mM80f-0008LZ-Nk; Fri, 03 Sep 2021 08:09:44 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.171])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 29906BC3AC12;
- Fri,  3 Sep 2021 14:09:25 +0200 (CEST)
-Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 14:09:24 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0067530df98-ca36-4ee1-94f9-442b572c1736,
- 15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 129.41.46.1
-Subject: Re: [PATCH v2 0/1] hw/arm/aspeed: Add Fuji machine type
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-To: <pdel@fb.com>
-References: <20210903082027.704397-1-pdel@fb.com>
- <f380c5b5-a472-d41e-7821-4155113bdbc0@kaod.org>
-Message-ID: <c7d6e268-19a8-5b75-1310-6c943050a1ac@kaod.org>
-Date: Fri, 3 Sep 2021 14:09:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1mM7t3-0000nj-2W
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 08:01:37 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:40744)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1mM7sw-0004E6-2g
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 08:01:36 -0400
+Received: by mail-wr1-x429.google.com with SMTP id t15so7892492wrg.7
+ for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 05:01:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=KLPYg3nOSYyFmv3AvUVzr80sNKqlmQnOURTungtyFI4=;
+ b=0KQusaN8rq5KbChWENXwufOWGe65jmAugDns3VCXiplnbor9yfLfAzeamvKPsfN3q2
+ 0NHtS4peweTyJ6bAkWcgGESVvKYWN5LxR+K6PbFVSW2RHNTCxldO+5ElO8ReeZT0HWxz
+ kX9QqlweeJhCTlG6i6iXFjMdZn+lCVkUC4oVfE/AByFiahj4th96xawwE1wNBOA+r+/u
+ TZPHMqq5gS2psYzSByxHQjc4e1KgQ9XVajSEJctLV8sobtmClLt0JOZLADTinrMqHQ8Z
+ vwCOl3grgpzf7+FgOXRX8a89tDWu4d4LKQYvq8W5QC6pRNTVOvR55Um4KwzdoJkcqcru
+ 2JAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=KLPYg3nOSYyFmv3AvUVzr80sNKqlmQnOURTungtyFI4=;
+ b=ZyTps3vypspRVGfTUHw93/5+6meW5HNACpsjGlV2sDJvSKioWzRRyi5VQFihoxLDj8
+ 69kc4an+hpD4+GG3mqSf0LO3DGTv83Q88rmUxmxY/hpl/I0vEyprdm5GIgKJ9OB7IRyn
+ ZcMBX2XLuFk89cAFP5jLfZVy2F/wi2JYxmzrzI46RLCxxIW+XPeKGxOVei7/MNUPTk9x
+ Jh1Xqxb+rfvbN5rQmahhQZ/GKyUwtra5I2w4scjWM+jz24kzstN0bclWf9Kqn3NI3JAv
+ GaFqFl0JD+D5DhjtGwAppTILmyyogP3AISap1j6TyOHU0kaf+Q/nXhGmKNMTLM4oPUJ0
+ aZGw==
+X-Gm-Message-State: AOAM5310WufUdpsnUJfDXVJtBj0VRECtuBwW7vvK0qOPDbjC5uvTouK0
+ TNifvWceKSYSx+d1kANdWP0gbw==
+X-Received: by 2002:adf:9d4c:: with SMTP id o12mr3650960wre.187.1630670488143; 
+ Fri, 03 Sep 2021 05:01:28 -0700 (PDT)
+Received: from leviathan (cpc92314-cmbg19-2-0-cust559.5-4.cable.virginm.net.
+ [82.11.186.48])
+ by smtp.gmail.com with ESMTPSA id d9sm5566022wrb.36.2021.09.03.05.01.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Sep 2021 05:01:27 -0700 (PDT)
+Date: Fri, 3 Sep 2021 13:01:25 +0100
+From: Leif Lindholm <leif@nuviainc.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v8 07/10] hw/arm/sbsa-ref: add ITS support in SBSA GIC
+Message-ID: <20210903120125.meyyevqxphhumubp@leviathan>
+References: <20210812165341.40784-1-shashi.mallela@linaro.org>
+ <20210812165341.40784-8-shashi.mallela@linaro.org>
+ <CAFEAcA9WVu+kjfCWwfGQV00yKgmdFDCSUpxNOu1BEBM3AZCWXg@mail.gmail.com>
+ <20210902124258.mqjhx7lqqvkczf6a@leviathan>
+ <CAFEAcA-HC1=arh_4ysPv2L1JyT6sA9n_1aqJv__1Z7+09kYxiA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <f380c5b5-a472-d41e-7821-4155113bdbc0@kaod.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: a1a9d4db-3d0b-4649-bcd1-61585ee1a10b
-X-Ovh-Tracer-Id: 1185854079196171171
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedggeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpefuhffvfhfkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeiveehgedvfeejgfdvudevkefgjeevtdehueeiffduieeuudeufffgteetkeekgeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphguvghlsehfsgdrtghomh
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.888,
- SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-HC1=arh_4ysPv2L1JyT6sA9n_1aqJv__1Z7+09kYxiA@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,27 +116,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patrick@stwcx.xyz, qemu-arm@nongnu.org, joel@jms.id.au,
- qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Shashi Mallela <shashi.mallela@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ narmstrong@baylibre.com, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qkdrJR6c+g4J
+X-TUID: omKxfzGatBzN
 
->>>> Is the Fuji using the Aspeed RTC ?
->>>>
->>>> hwclock: ioctl(RTC_RD_TIME) to /dev/rtc0 to read the time failed: Invalid argument
->>
->> I don't understand exactly what's going on here, but running "hwclock --get"
->> and "hwclock --set --date 2021-01-01" both seem to work fine after booting,
->> so I think the Aspeed RTC is setup correctly and working. As far as I know
->> Fuji uses it, but I'm not really sure.
+On Thu, Sep 02, 2021 at 13:51:26 +0100, Peter Maydell wrote:
+> On Thu, 2 Sept 2021 at 13:43, Leif Lindholm <leif@nuviainc.com> wrote:
+> > On Thu, Aug 19, 2021 at 14:27:19 +0100, Peter Maydell wrote:
+> > > If you want a command line switch to let the user say whether the
+> > > ITS should be present or not, you should use the same thing the
+> > > virt board does, which is a bool property "its".
+> > >
+> > > If you want the sbsa-ref board to become a proper "versioned machine
+> > > type" such that users can say "-M sbsa-ref-6.1" and get the SBSA
+> > > board exactly as QEMU 6.1 supplied it, that looks completely different
+> > > (and is a heavy back-compatibility burden, so needs discussion about
+> > > whether now is the right time to do it), and probably is better not
+> > > tangled up with this patchseries.
+> >
+> > Hmm. I mean, you're absolutely right about the complexity and need for
+> > discussion. My concern is that we cannot insert the ITS block in the
+> > memory map where it would be in an ARM GIC implementation without
+> > changing the memory map (pushing the redistributor further down).
+> >
+> > It is also true that simply versioning sbsa-ref does not mean we end
+> > up with a properly aligned with ARM IP register frame layout. Some
+> > additional logic is required for that.
+> >
+> > If we assume that we don't want to further complicate this set by
+> > adding the additional logic *now*, I see three options:
+> > - Implement memory map versioning for sbsa-ref for this set, placing
+> >   the ITS (if enabled) directly after the DIST for sbsa-ref-6.2.
+> > - In this set, place the ITS frames in a different location relative
+> >   to the REDIST frames than it will end up once the further logic is
+> >   implemented.
+> > - Drop the sbsa-ref ITS support from this set, and bring it in with
+> >   the set implementing the additional logic.
 > 
-> QEMU doesn't model the SoC RTC. Something to add on the TODO list.
+> I don't think implementing versioned machine types helps you much
+> anyway, because your users are all going to be currently using
+> -M sbsa-ref, so they will by default see the change in device layout.
+> 
+> I do think that we should get the "with an ITS" device layout right
+> from the start, so that we're only dealing with 2 possibilities
+> (what we have today, and the final intended layout), not 3 (today,
+> final layout, some intermediate thing).
+> 
+> How does guest software on this board figure out the memory
+> layout ? Is there a mechanism for telling it "this is version 2
+> of this board" ?
 
-Joel made me notice that we had a model for it :) The time is 
-not initialized at reset and that might be the issue we are 
-seeing in Linux.
+Not currently. Aiming to look like most SBSA platforms, it is
+hard-wired, and firmware passes that information to the os.
 
-Thanks,
+This is the kind of thing I eventually want to do using a PV-model
+SCP. As a stop-gap, we could push it through the DT, like we do for
+cpus and memory?
 
-C.
+/
+    Leif

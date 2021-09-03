@@ -1,138 +1,150 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1625110lfb;
-        Fri, 3 Sep 2021 13:06:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzFxn2eT3JDaEv3DeqGtP8qUoxIsf0c8eccstP0arZTsNyjTaSRewsQCNnSbG5gDL1mMeFu
-X-Received: by 2002:a67:b247:: with SMTP id s7mr641915vsh.34.1630699595587;
-        Fri, 03 Sep 2021 13:06:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630699595; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1629213lfb;
+        Fri, 3 Sep 2021 13:11:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwuIZfGPKZCnDZ8PMHVOMahmQHe7B+sKelYJB9qE+6oJgeyBt74/s/WVuKXmcbrDfpxDY3O
+X-Received: by 2002:a17:906:d057:: with SMTP id bo23mr678821ejb.208.1630699891463;
+        Fri, 03 Sep 2021 13:11:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630699891; cv=none;
         d=google.com; s=arc-20160816;
-        b=cpVHwem5yAZElDWlfiUiflXh5xU9aQnLajqpr27grCN1xA7fSLMvUM0ILk88Ux3FPS
-         sVDuNcH+MGVpOv3VbDrRs2CWsI6sqbXp2kJPGE2dfD966lJrlld7ZKwIt3IuutZtCYBV
-         07PMhYdbwaenEg0Ukpas2rQmoIN/VjwNysLA4RcLv6d4MVUUFUKi4iKfrXCqkwVFchQv
-         B00D1Vm6/gWwYp1+reN5gTYlOcr+hyCYFw4IMpygyFexw+WJ7lEuPn9RBdwe8D5iEXwf
-         FyeNS7mcHRvaKt87nCVFHJXpKBfbhiNnd+7PKVBhue/XJ43uIUylsr/iGhnCyLGQ7Sp9
-         nVTw==
+        b=Jkhjxyl6+92/e5oGiYMUeS83WeKe4Vnbug0OrE1g+w+N0Hf87qc8DzMe8Z3NljfrPi
+         j92FyHVFD4ORMH9INaMZY+hX9RdgriWk7oznd/j+4n/grEpMbk0FZsYocIUmax1SZ2UL
+         9QKp9h6o0bRgsXzLoeWLnu38SqCx8qpmBTKnC6rhhMjZBYOZxunMtz9nr4M+P9SGSYiT
+         70hkMXNRWMPY6jbxE/V0xwhPdX1EB9/Iq+yslbryeTlTKZYXJeAcLLE8vt2WWGVJVOMN
+         eRkRY+x22WPhD8uGgLg/LgRIdVSlCKwj7unI6QkEjRjTmNuSjKDdua7az/F/7Ws7CL5b
+         tGCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=QMobFSiH0idTN0KuGdPHQqtiZi4a8ulVjW2IudMGXAo=;
-        b=US4vrSU6HSzOCYCGbcYcyNgDbG1KKYHZk3XM3vxBHnljG3nRSf3AEGAACgyJ1E8k+7
-         Tee2jwxg/+BwZH6+8JtSlQAW0kevFHTl8YQWfpiugTWgJpCxqwl/sTgVW2egvRfuBKyE
-         gUlrBjiUBF08t4iCGfyB1dftJOtCTM2v5o3EG6/3I2OTJrFVyZyUTXYfFjAKiRnYxkLK
-         8umuhELQDjX9r51lcuQDHIQjsr4u+4oJmm/fPt/L6Me/FokAMDlQMA2okXv1Kws7hsrG
-         x09Y/FXFu0/048sWOFEponWhMmjEQS2yB9mTk5OLMG+j3dZ+Y8d7saNn+eq4vfUJ5aHv
-         QoCg==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=EaCWOOldFpTJW/62GNcO8hnd0wqc8elIcEfaX69jVvw=;
+        b=STAndPsk/3Jv/Np/w6bmxq/DAc8b0WDrhVBHvnzVf0yhhS0piqFbA5id8R/x8IdLwb
+         jp51A3RIqDI+0hN39rk00GrvuS3Gn54iTzfd3UQRMmj1k++2SZ5qt9Ma83ZPpGYDhqNF
+         J/FPQQ5SwIpT99Hr/e6hJccML8l6tX1O8t39nZiZ3o8e5RRhc3n4ZexbyThZqbA55c2E
+         xHe1EqpMin5Gkm14kLzGm5FC5UfXjTOvfQg4QSfN64Gqa9vulap8D0l3J3cpjgPL8wxv
+         XQbX+w/gYshjvX8anSxBPOIGgBrOI0fYiMrhQPl8bv5z+nPIv0bpWGFAj5UdqZw9AsXV
+         DNPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i26si119757vsp.436.2021.09.03.13.06.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 13:06:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YyrzMqwR;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id kq12si159173ejb.759.2021.09.03.13.11.31;
+        Fri, 03 Sep 2021 13:11:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46268 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMFSM-0001kX-Tk
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 16:06:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44078)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF40-0003xp-QS
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:24 -0400
-Received: from 1.mo548.mail-out.ovh.net ([178.32.121.110]:45491)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF3x-0002FB-FQ
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:24 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.35])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C168720677;
- Fri,  3 Sep 2021 19:41:11 +0000 (UTC)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 21:41:10 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005193b56a8-d7c9-4872-9f51-30169704e017,
- 15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 01/14] hw: arm: aspeed: Enable eth0 interface for
- aspeed-ast2600-evb
-Date: Fri, 3 Sep 2021 21:40:55 +0200
-Message-ID: <20210903194108.131403-2-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210903194108.131403-1-clg@kaod.org>
-References: <20210903194108.131403-1-clg@kaod.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=YyrzMqwR;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1350130AbhICUMa (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 3 Sep 2021 16:12:30 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:33262 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S234379AbhICUM3 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 3 Sep 2021 16:12:29 -0400
+Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com [IPv6:2a00:1450:4864:20::429])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 52827C061575
+        for <kvm@vger.kernel.org>; Fri,  3 Sep 2021 13:11:29 -0700 (PDT)
+Received: by mail-wr1-x429.google.com with SMTP id b10so351299wru.0
+        for <kvm@vger.kernel.org>; Fri, 03 Sep 2021 13:11:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=EaCWOOldFpTJW/62GNcO8hnd0wqc8elIcEfaX69jVvw=;
+        b=YyrzMqwR7pTY4UVwmQkF/b6/6vs1u7pbVcrnFbJ2IcW6P4fipRJVT8PmaEsbbFpg5m
+         Ymv96X1royzInIGobPF2j09Z1yc16HGEdliJIXhC7BdkL4CkDrSv4ViHU6bzRWnn7dZV
+         qZBXE7dHM+4+DbAAXk77dXGymyVlTIpYSq7C1i3JEZlTfiNoWgj2wqws++sPnSgcptat
+         mA18BowRdXGHFl+/0fRO7ZQ0GtRH00yJ/XcRK/OYqcLDp/RR8ktqw1Cg+Aoha/XNDyBg
+         8cWnsyWPtksyXCOTBNPJZ0SnF8sr/Z1rLMwoCoGs5MDwwc19FX55U9jh0cE3apvw4e/O
+         +6oQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=EaCWOOldFpTJW/62GNcO8hnd0wqc8elIcEfaX69jVvw=;
+        b=bQdCZU32oR2oJ1+57bRRj3ut1/nO5tmmUv6iHjKNGizfyzy6gJrrjPrI/4Vk2rIfFG
+         P51n99+KqoqG7MQwVQkJL54ozq9sFLBoQttmjgv8nIjy/9y7xc1uk8vVBTFTe+atpnVK
+         HuT27OxsHQI74cElIkGQJiYK5+dedDMxpkzxHdaMC5p36c6ItQoX2QUSI9udKJbqIYzp
+         FrM8LG+4sIxwk5RzDcY6e9uzD7haXKKBIJtkx9G7wXn8eMwj9b5UICpHl9b5i/Ha/rws
+         9DqWNIkNNH8omvXUJeUWlFQVEEDNx0ZO+lBt9zZh8qzmbfDXbTiF59Y6ppHKGItZAI2/
+         Lz0Q==
+X-Gm-Message-State: AOAM533ee56yG0PugEFB0BDU6ouYM1ZwlYGWLLrJ1yQYPxT3oTXm8JCa
+        OliWbJ31/HYV8yC4fKu5ajzzHsiApwIt4XDw1dE=
+X-Received: by 2002:a5d:5712:: with SMTP id a18mr758059wrv.367.1630699887867;
+        Fri, 03 Sep 2021 13:11:27 -0700 (PDT)
+Received: from [192.168.8.107] (190.red-2-142-216.dynamicip.rima-tde.net. [2.142.216.190])
+        by smtp.gmail.com with ESMTPSA id o26sm331500wmc.17.2021.09.03.13.11.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 03 Sep 2021 13:11:27 -0700 (PDT)
+Subject: Re: [PATCH v3 02/30] hw/core: Restrict cpu_has_work() to sysemu
+To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+        qemu-devel@nongnu.org
+Cc:     Bin Meng <bin.meng@windriver.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Greg Kurz <groug@kaod.org>, haxm-team@intel.com,
+        Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Michael Rolnik <mrolnik@gmail.com>, qemu-riscv@nongnu.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Thomas Huth <thuth@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Chris Wulff <crwulff@gmail.com>,
+        Laurent Vivier <lvivier@redhat.com>,
+        Cameron Esfahani <dirty@apple.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Taylor Simpson <tsimpson@quicinc.com>, qemu-s390x@nongnu.org,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Paul Durrant <paul@xen.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Alistair Francis <alistair.francis@wdc.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Roman Bolshakov <r.bolshakov@yadro.com>,
+        Laurent Vivier <laurent@vivier.eu>,
+        Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
+        Wenchao Wang <wenchao.wang@intel.com>,
+        xen-devel@lists.xenproject.org, Marek Vasut <marex@denx.de>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Colin Xu <colin.xu@intel.com>,
+        Claudio Fontana <cfontana@suse.de>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Stafford Horne <shorne@gmail.com>,
+        Reinoud Zandijk <reinoud@netbsd.org>, kvm@vger.kernel.org
+References: <20210902161543.417092-1-f4bug@amsat.org>
+ <20210902161543.417092-3-f4bug@amsat.org>
+From:   Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ee2f2d27-cc3d-c398-74a0-c0ca439d84ef@linaro.org>
+Date:   Fri, 3 Sep 2021 22:11:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20210902161543.417092-3-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 1ed09249-5588-44cf-9593-8ab3135f5b4b
-X-Ovh-Tracer-Id: 8815514799184186217
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=178.32.121.110; envelope-from=clg@kaod.org;
- helo=1.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Guenter Roeck <linux@roeck-us.net>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hmUq/lo2dAEF
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: X7uV9ltSLEFb
 
-From: Guenter Roeck <linux@roeck-us.net>
+On 9/2/21 6:15 PM, Philippe Mathieu-Daudé wrote:
+> cpu_has_work() is only called from system emulation code.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
+> ---
+>   include/hw/core/cpu.h | 32 ++++++++++++++++----------------
+>   1 file changed, 16 insertions(+), 16 deletions(-)
 
-Commit 7582591ae7 ("aspeed: Support AST2600A1 silicon revision") switched
-the silicon revision for AST2600 to revision A1. On revision A1, the first
-Ethernet interface is operational. Enable it.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210808200457.889955-1-linux@roeck-us.net>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 9d43e26c51bb..ecf0c9cfacb8 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -959,7 +959,8 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     amc->fmc_model = "w25q512jv";
-     amc->spi_model = "mx66u51235f";
-     amc->num_cs    = 1;
--    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-+    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
-+                     ASPEED_MAC3_ON;
-     amc->i2c_init  = ast2600_evb_i2c_init;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
--- 
-2.31.1
-
+r~

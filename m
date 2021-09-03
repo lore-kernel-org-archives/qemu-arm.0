@@ -1,98 +1,96 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1644812lfb;
-        Fri, 3 Sep 2021 13:34:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwS+ExcFwOCe6eWJFgxicmowdLOomzL/69E2ypXgZFyfEXEglLfqTUEnL3g7Ps9Mq/VDJwU
-X-Received: by 2002:a17:906:1ec9:: with SMTP id m9mr696541ejj.115.1630701276725;
-        Fri, 03 Sep 2021 13:34:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630701276; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1647208lfb;
+        Fri, 3 Sep 2021 13:38:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOf/rch2VbsS9FjVNVLGAQXoYE3MFB1fYqg5A2SP6gLcDp2Y4793VAWj0Qvd5t1HnBRuAC
+X-Received: by 2002:a17:906:c416:: with SMTP id u22mr693656ejz.543.1630701498797;
+        Fri, 03 Sep 2021 13:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630701498; cv=none;
         d=google.com; s=arc-20160816;
-        b=QYhsJOSWy7VbpnNxxWo94fwW8tqaivxHg03J2340PUlEVAGLASPR/YtyAVUwk0Su4m
-         Z20mDGM9HE6S2Ups/5bd3RUkVBIII4fNCT+AgBDDnof69DKjToXqgCJis3StBbr0ygzG
-         mt9edW1aVZpUAZKwQR7om8u+RcrwLvMD4L+0T9FxCEDwJlCw6qxFbHrUyevcFzhCQPcq
-         zr7nMATbzMgRuq/JJ+E/pMy4svfa/gZLzSGLmZv3EvLeRRYKilzPngN/62KI3aUJKfZQ
-         1MuEWAFAq9CFKtEgnwXVh+uV6LhTUnVbpcY65FsbibB6Srig6HciwIIH+J5EGM2cP/tj
-         Fl2g==
+        b=b90r5O3TRfvK/k+97FF7oZyFmc+MrBlTKY2ekPMIeYBZ4+yQ/+///kUrwPvNZy+nIO
+         Cr1owei3wtZ2VqeeCujW/7qy8/PAh2S7l4eARKtOm4e2ad1Pb2Q/CtV2HeTE53zCp7uH
+         1zk4DSEZ/zV8DwtUX6TsB8fGDCqKJcCTVvw52jRyJerRJbt2fTMKMKiSau3q1B+pg/AH
+         k3FBrVqXLAFnhPu8lwYRVqkEfBZDHbD76RdVCpmpfQT2TGgSIc9cimcYQYtwGwVRMrZu
+         qT5vSw6GPH3rZokyqMXTDxENR8DxAoHtu7Skce6I40TeAFkkwR+jbqWgoQHz6xzrlMx8
+         7QfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:content-language
          :in-reply-to:mime-version:user-agent:date:message-id:from:references
          :cc:to:subject:sender:dkim-signature;
-        bh=LFeEcrxPmiQ0y9mkjFms4J4GrCvxgbbAZyrEPk3foT8=;
-        b=WQKYqJZiam/lhWGDsJev2JbNN6pDLwH2A1Xvlv+6g38vIADqaldq+0NvzW0elt0a0Z
-         Gm14EzSxcKPuFDrYEcoEmjkVtoFroZNtTO0NFfANcoQ66gUJ8JElUdolCK65jqfHN1nA
-         CHYyoLPPVMxKlme+tx0xpHqBgwXGqxrqJ4LwA8kWtDt3j0VyTFfqidbukpFz1pTe/7RF
-         l6ux0lp1IGh/di+PjO4RCweVjoYaAOHtz1w6SXApIhO5wr469i8HHLM1/xxxdI551oBD
-         3h7+og3MBWhjrGU57Bb6zYqRSzZW+uowy0dQZmVhYn7wCPGsjElioKYxIySOPmTOOAFc
-         LKqQ==
+        bh=fNIhsoAMPvZrQEmEvDEa/ofLQCAFlDFx6OPwYJbakLA=;
+        b=RRJOcTRO61ylvfvc0Y1brxfuwa/dwt4swzadz78U6c5yODoDEDdxZ/B1TgV/nxE3sc
+         sjGz+/OkmNfhr1InrJjEBjosjUQC6OZhQ3SqYI9fXbkaNcC1/MJsmvfuzx7yNIkwTKme
+         jncLMxn0/rl0IjxYsLQi2BC46xfwwNamXPxd9GD1YwjoJPWdFLzq+VTm7FFa3T3tikEJ
+         0U1n0WhwZwS9/b2GQY/Ok9UIoe5TXzp0mEM0qgrGzJkrOXDH5OU7QsETc8yFaREzEPxP
+         AzKiuTg7KUNlylW7W6dlso75EGAzolD8Fvcxg72WQhW8rw7JIRViJ050A4jyPC0eSwD6
+         dIxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=blhwVscS;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=OL7bcNkn;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id a22si473264edu.602.2021.09.03.13.34.36;
-        Fri, 03 Sep 2021 13:34:36 -0700 (PDT)
+        by mx.google.com with ESMTP id a22si473264edu.602.2021.09.03.13.38.18;
+        Fri, 03 Sep 2021 13:38:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=blhwVscS;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=OL7bcNkn;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S236900AbhICUff (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 3 Sep 2021 16:35:35 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38702 "EHLO
+        id S236849AbhICUjN (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 3 Sep 2021 16:39:13 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39492 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S236839AbhICUff (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 3 Sep 2021 16:35:35 -0400
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com [IPv6:2a00:1450:4864:20::432])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 86DCDC061575
-        for <kvm@vger.kernel.org>; Fri,  3 Sep 2021 13:34:34 -0700 (PDT)
-Received: by mail-wr1-x432.google.com with SMTP id i6so382570wrv.2
-        for <kvm@vger.kernel.org>; Fri, 03 Sep 2021 13:34:34 -0700 (PDT)
+        with ESMTP id S231956AbhICUjJ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 3 Sep 2021 16:39:09 -0400
+Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com [IPv6:2a00:1450:4864:20::42e])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 45688C061575
+        for <kvm@vger.kernel.org>; Fri,  3 Sep 2021 13:38:08 -0700 (PDT)
+Received: by mail-wr1-x42e.google.com with SMTP id n5so348933wro.12
+        for <kvm@vger.kernel.org>; Fri, 03 Sep 2021 13:38:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=sender:subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=LFeEcrxPmiQ0y9mkjFms4J4GrCvxgbbAZyrEPk3foT8=;
-        b=blhwVscSGxsnvMX9mpwF1WKnN0xyca3wo+jPJrvx7iJfDyuaVBJ0KE2ZZYoLwyB4Qb
-         4ovLs/5Mxxmi9wMRp2vY8kz61AoNMdOvCCJQ1ezWt/9nx9cQ0hjn+MeBnxsE8IfF+HWm
-         MRXjSCyRODB4tHb2j9tg9SRHAw9DJhbv0/cKEArMyfVM1qOCRF3s4YzT2Dln7MMoqaZq
-         y6iKsF7H+hxlB36Mu4fKWpUJ5EAdcOvfMVCI3XguqcRlT/JRvp5sK6I5Rgfg+ycwLNfj
-         b/WnJWkRX3vTttRdmBA7xpv8BARViFg/xzi1CERUqrSWq87BIGBc2CT5TLVm4/NdQPul
-         vUWw==
+        bh=fNIhsoAMPvZrQEmEvDEa/ofLQCAFlDFx6OPwYJbakLA=;
+        b=OL7bcNknLzAqSVlHwkuNrFgmHEdJJTT0ywZpM33E+WzKRYLTjn/SmGnREPXGBif/IU
+         PqPcK3SjLG5eogScB3jtfBXh29opHuqZSJGeNZd9Ke+t/AT5Cr5VwhVWY6Gtra5FS44y
+         zIqcsHP71yoBrqPd/tqJ/b53dF7tqywgJ6KeJPrt2jdTFotMdIWIPMYLMJAvvMhlNjSQ
+         H2ILUDze/pO7mpdvET5jz2pXK4k5IhHgCgzK6c3TFxwQ/zgNvWS7KYfj6KO8XO/AjwPO
+         FYIYxhtgYZeXyzLZ3F3EqMh3ogFwJ5iW7yzCb/zV+nhXKNxtMozTPxiBRByP9xmArzZh
+         7eKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=LFeEcrxPmiQ0y9mkjFms4J4GrCvxgbbAZyrEPk3foT8=;
-        b=SSg0Vu6+EGwJooA6fCWMouQr9B0nK7uafPxhDWsLUcexcOwef7Y66R/Z53E68NEKec
-         nWG8PKkHiNU8c6vNOxm7u5gZpvPoxJ0j5hNbCOnhgOqBvQG6nKSuB4zoUAmnEpKm6XQI
-         B90ifGWJD7GNmDcTJG+U5a3ev4XVZ8RPAtThY9kbJgXfN8KRd1M8JcapmhTDHoWUMhdo
-         DvlvKRCnmHBvbTrU+Pkl8mUtBGEzHJ8P6SysuXjIpkNbsKm5fzVDRDXNjilRj3i0VWPi
-         nWNSSWtS69b/N1k1g+S0g6kTXwiW2hrBVQ0yGZy/v/26XKBxCuChTGIpfCBSzm9k2FHM
-         CeTA==
-X-Gm-Message-State: AOAM5335D0xPQ4X1kqmg7EA1hOQ1qyBahYnj8pHF9gKi0aI55LWF9PHx
-        YX9ftzi6+HuPN33lgl2MwO0=
-X-Received: by 2002:adf:804a:: with SMTP id 68mr886849wrk.236.1630701273190;
-        Fri, 03 Sep 2021 13:34:33 -0700 (PDT)
+        bh=fNIhsoAMPvZrQEmEvDEa/ofLQCAFlDFx6OPwYJbakLA=;
+        b=V7xMmmqHi1UBPCBeOLRAxwynioAdoiRTl5gc44nJ5KvvOgfJ9+/Q7zgPKNPPmsz5es
+         JgtVrehp5gkaxH97b8EeaaVB/LBv2+KVEaNQXmHIrkpdecgQQX/cya0fZzRN1eLvGk65
+         ahFdBnpeYVgtla2zXsqt7er2E+QTkS0eSPqRex3Eqe7jm8W3DAtnz+2+1d0pmAh4K1eQ
+         /m7HBSYQzroaErS+JJcdktPGhyvbe28DkPLSTbZWfRZGiGDGGxYfKmmgOTQlOpXsfwG4
+         7qPALjC2CB85OaZCDizmZxlqFonjBIHvKaIRSUA+LaMgz8rV9tF7u+d0vCIHnHyaKIGl
+         yyEg==
+X-Gm-Message-State: AOAM530kPe7KrtiLAbIHsahP0hDLkVkZeDU9XReLy9iQACD9vwErOeCz
+        n3GpYHQ9bdXaF9AggGQF1Nk=
+X-Received: by 2002:adf:80e5:: with SMTP id 92mr881885wrl.300.1630701486851;
+        Fri, 03 Sep 2021 13:38:06 -0700 (PDT)
 Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id d7sm258631wrs.39.2021.09.03.13.34.30
+        by smtp.gmail.com with ESMTPSA id d8sm283071wrv.20.2021.09.03.13.38.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Sep 2021 13:34:32 -0700 (PDT)
+        Fri, 03 Sep 2021 13:38:06 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= 
         <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v3 08/30] target/alpha: Restrict has_work() handler to
- sysemu and TCG
-To:     Richard Henderson <richard.henderson@linaro.org>,
-        qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 21/30] target/ppc: Introduce
+ PowerPCCPUClass::has_work()
+To:     David Gibson <david@gibson.dropbear.id.au>
 Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Cornelia Huck <cohuck@redhat.com>, kvm@vger.kernel.org,
         David Hildenbrand <david@redhat.com>,
         Bin Meng <bin.meng@windriver.com>,
         Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
         Laurent Vivier <laurent@vivier.eu>,
         Max Filippov <jcmvbkbc@gmail.com>,
         Taylor Simpson <tsimpson@quicinc.com>, haxm-team@intel.com,
         Colin Xu <colin.xu@intel.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Stafford Horne <shorne@gmail.com>, Marek Vasut <marex@denx.de>,
         Stefano Stabellini <sstabellini@kernel.org>,
         Yoshinori Sato <ysato@users.sourceforge.jp>,
@@ -100,72 +98,78 @@ Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Kamil Rytarowski <kamil@netbsd.org>,
         Reinoud Zandijk <reinoud@netbsd.org>,
         Claudio Fontana <cfontana@suse.de>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
         Anthony Perard <anthony.perard@citrix.com>,
         xen-devel@lists.xenproject.org,
         Artyom Tarasenko <atar4qemu@gmail.com>,
         Laurent Vivier <lvivier@redhat.com>,
         Thomas Huth <thuth@redhat.com>,
         Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
         Greg Kurz <groug@kaod.org>, Cameron Esfahani <dirty@apple.com>,
         qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
         Michael Rolnik <mrolnik@gmail.com>,
         Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        qemu-riscv@nongnu.org,
+        Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
         Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
         Chris Wulff <crwulff@gmail.com>,
         Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org,
         Wenchao Wang <wenchao.wang@intel.com>,
         Alistair Francis <alistair.francis@wdc.com>,
         Paolo Bonzini <pbonzini@redhat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
         Aurelien Jarno <aurelien@aurel32.net>
 References: <20210902161543.417092-1-f4bug@amsat.org>
- <20210902161543.417092-9-f4bug@amsat.org>
- <3cd48aba-a1a1-cde3-3175-e9c462fcb220@linaro.org>
+ <20210902161543.417092-22-f4bug@amsat.org> <YTFxZb1Vg5pWVW9p@yekko>
 From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <740a2e5c-3dad-fc7d-b54a-0c405faa605e@amsat.org>
-Date:   Fri, 3 Sep 2021 22:34:30 +0200
+Message-ID: <1d8ea9ea-dda0-bf0e-a2c8-13d36c891d9c@amsat.org>
+Date:   Fri, 3 Sep 2021 22:38:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <3cd48aba-a1a1-cde3-3175-e9c462fcb220@linaro.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <YTFxZb1Vg5pWVW9p@yekko>
+Content-Type: text/plain; charset=windows-1252
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: P3WLi33RlCIF
+X-TUID: MAC3PwfK1qXU
 
-On 9/3/21 10:18 PM, Richard Henderson wrote:
-> On 9/2/21 6:15 PM, Philippe Mathieu-Daudé wrote:
->> Restrict has_work() to TCG sysemu.
+On 9/3/21 2:50 AM, David Gibson wrote:
+> On Thu, Sep 02, 2021 at 06:15:34PM +0200, Philippe Mathieu-Daud� wrote:
+>> Each POWER cpu has its own has_work() implementation. Instead of
+>> overloading CPUClass on each PowerPCCPUClass init, register the
+>> generic ppc_cpu_has_work() handler, and have it call the POWER
+>> specific has_work().
+> 
+> I don't quite see the rationale for introducing a second layer of
+> indirection here.  What's wrong with switching the base has_work for
+> each cpu variant?
+> 
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Signed-off-by: Philippe Mathieu-Daud� <f4bug@amsat.org>
 >> ---
->>   target/alpha/cpu.c | 4 +++-
->>   1 file changed, 3 insertions(+), 1 deletion(-)
->>
->> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
->> index 93e16a2ffb4..32cf5a2ea9f 100644
->> --- a/target/alpha/cpu.c
->> +++ b/target/alpha/cpu.c
->> @@ -33,6 +33,7 @@ static void alpha_cpu_set_pc(CPUState *cs, vaddr value)
->>       cpu->env.pc = value;
->>   }
->>   +#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
->>   static bool alpha_cpu_has_work(CPUState *cs)
-> 
-> Drop CONFIG_TCG for alpha; it's always true.
+>>  target/ppc/cpu-qom.h  |  3 +++
+>>  target/ppc/cpu_init.c | 26 ++++++++++++++++++--------
+>>  2 files changed, 21 insertions(+), 8 deletions(-)
 
-What is the rational? "Old" architectures (with no active /
-official hw development) are unlikely to add hardware
-acceleration, so TCG is the single one possible? Thus no
-need to clutter the code with obvious #ifdef'ry?
+>> @@ -8796,6 +8800,12 @@ static bool ppc_cpu_has_work(CPUState *cs)
+>>      PowerPCCPU *cpu = POWERPC_CPU(cs);
+>>      CPUPPCState *env = &cpu->env;
+>>  
+>> +    if (cs->halted) {
+>> +        PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
 
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> r~
+Maybe I should have kept the 'if (cs->halted)' for the next patch,
+simply dispatch here, then in the next patch the code simplification
+is more apparent. I thought this approach would involve less #ifdef'ry
+but haven't checked the other way around. Will do now.
+
+>> +        return pcc->has_work(cs);
+>> +    }
+>> +
+>>      return msr_ee && (cs->interrupt_request & CPU_INTERRUPT_HARD);
+>>  }
+>>  #endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
 > 

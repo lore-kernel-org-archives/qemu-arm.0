@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1175223lfb;
-        Fri, 3 Sep 2021 04:09:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxI+L3EjmIpgEWgl6zgOqclCk917J9OawJYdS+JS/7BTjXueMzQY/IQuAQtsbkM/sKEhm9S
-X-Received: by 2002:a17:906:7208:: with SMTP id m8mr3684245ejk.82.1630667353898;
-        Fri, 03 Sep 2021 04:09:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630667353; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1175290lfb;
+        Fri, 3 Sep 2021 04:09:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwLNcCyhecOcrA8qbF9vfG+eMAek2bYLszX+q1hRk8JPglpSkyKcY34hQQP4BHh2akNNeqf
+X-Received: by 2002:a05:6402:2210:: with SMTP id cq16mr3401031edb.348.1630667359469;
+        Fri, 03 Sep 2021 04:09:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630667359; cv=none;
         d=google.com; s=arc-20160816;
-        b=y4Ka5BMeXPsbFxupAZFJ/lGYm7MPiNkYNkuI8/sHlxEWCZMdwUKz5coqYsyzukzSMi
-         5AjaWmg2gdSO+oe34y+kH6dtZRnIsueq5gIvaPZ4GT1NEByJiaCFaxRhqs+ULFe+P3qp
-         HvyQWbnk5s3hLIo3WsagBsnCXQcMtIX/kqStUkASg+viRrt49Ve65pv91K//exduYCh1
-         uZm+6K6KbotyYu4Y7CeuHim7CrnC1KOoJwyfywKiG2ZJ7Ou2KkmVDr5n9convRQv1suU
-         zJk/Vn31esegvXj/FCo45GqD2d8u8+6OzBJnMierhqk6pX8RPiX2+JRgfVIvwr41gMPF
-         YEDQ==
+        b=z6r7RjD8esiuiAAo5SNMDMy5KhHGoRALu4bxaUGHSMSIgaKExX5aZyAIEESz7aChGK
+         2O5qVxmW4CvkBnh0T0HtHn6Hwf2QypQiyPSzUi697rAhDG/jaxRiF/oGTTJGB2gj92OC
+         YaPwD47L03RLEndv8R8cJhsERFn2H6Jn+8EHgijLmX3GwMrDJFUgAQubWjq45RmKIuQ2
+         t5bBFNQ4hKeQaKWW1AJNYK8GPDd2k05kHX2eLz/qpvaLL8IJsNTtpsnVQ0X41fxl9CIZ
+         mB8gH1RUkVAyTw0yTVyNvuLrBvFk1sKql67ZdEu/JM1JqCozvV6c+DWi+Yup8J5/8sgr
+         tJwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=oWlYVXKgef7rt8tFGoGOU02/9c4fFsb6XOBLj2EPez0=;
-        b=rAOIdWS/tX1W6vDnzoMPmjCxZl9KZYpkRjf1b6hK4Fh4rPG1pA4X7mnLNdmO6Pxyul
-         R4l4Zlq/MnvgGltlFAvnC3t93l8PlD9NJUS53VOY2+1r+66QLcNqEVahkPtAh3XVvycL
-         4bmx6w9eqvOFxEbqvTdDpihekubfCTQYAJbBibbJ1sjyUe13LBNQrniFzsrBGZNAs00T
-         CqS2JZFBPTlwMsTRhcIk9tHCWVQ7CNMKBN6uqIEte5qdkAud4C1JcQ0iL83IWFPSXyot
-         Rn+bgw9kzF/4KAkS+SsBjASRBuAPZYpBaMxhInSD2qPHoxNmFNInBNPZsHguMPgcGx99
-         IWeQ==
+        bh=PNmQn7pp74t94Lr73ldUSMDFHfSQgs8qkh8r7R4cWBA=;
+        b=f/RoNx6rGWFDjBMITgJbuQqWJu+aWKIyaP/NIJ0nSBO9hyVJ4TWDI8mRGqfoSgjmIB
+         kC29i5Vsb+tZmjU5zuEl0E7mZs7MgRcq7eGLLWoWGmTKEjeb/7RSHiwgUjFUNNYW2t2+
+         so1xmW9AAYSBmTsn/7IQ46vX7Qy1DZ/6jsPVOprh0Qwo7cON7+4y2HWD1RrvO7VyAUsD
+         o+HVVKmH8GnM2To0vy5U5TXrEy8z1iEC9S/HAWv4IXH7O3p+zA3qw2wzTUJUxDf+xSOD
+         U/wA6KD62WsrAuR65W/7r/hInJ9pNxdgf4QbJXpRrgVXmB3hICV18CzmEK3eGz97lJ2/
+         RkBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S9iy7IFm;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OPFGc6av;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id v20si5105944ejv.515.2021.09.03.04.09.13
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id 6si5199725ejm.251.2021.09.03.04.09.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 04:09:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 03 Sep 2021 04:09:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S9iy7IFm;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OPFGc6av;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630667352;
+	s=mimecast20190719; t=1630667358;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=oWlYVXKgef7rt8tFGoGOU02/9c4fFsb6XOBLj2EPez0=;
-	b=S9iy7IFmkrDOr2aQH+yXD8EUGJo7AkU78rqyKiliCq2Un5E7rxrZFd7AHhLFsIeTCT1O68
-	KuCXPthuyD4p9pCcs4Kzvn+GHkeDi3T7JXwfyCwyCy7GyWPMF3w2ePnG1Ut0TgapNxsefq
-	/t2QlVWxL9ygl+uDbStZGtPONw5e5EA=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-518-swmjJmSbMu2KysiRDHsHSw-1; Fri, 03 Sep 2021 07:09:11 -0400
-X-MC-Unique: swmjJmSbMu2KysiRDHsHSw-1
-Received: by mail-wr1-f72.google.com with SMTP id h15-20020adff18f000000b001574654fbc2so1460822wro.10
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:09:11 -0700 (PDT)
+	bh=PNmQn7pp74t94Lr73ldUSMDFHfSQgs8qkh8r7R4cWBA=;
+	b=OPFGc6avkdVAKor4APa+KJ8kHQfLCiqr5f/wf1rMVF9HTCUz/ZLI9YlV9hXkm+47rPDPeZ
+	SQ9JZ2qxwPztqC14SvaVnAc9LCIcnj77IprH7cHVJNdNUgiONowj1AwoXFVEOKXy98Ueji
+	LZBZrYNn53p5zlHvvQ7hazbQIDMMZEI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-535-t6PIE9ZxPL-VQKl7mDo-mw-1; Fri, 03 Sep 2021 07:09:17 -0400
+X-MC-Unique: t6PIE9ZxPL-VQKl7mDo-mw-1
+Received: by mail-wm1-f70.google.com with SMTP id s197-20020a1ca9ce000000b002e72ba822dcso2518292wme.6
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:09:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=oWlYVXKgef7rt8tFGoGOU02/9c4fFsb6XOBLj2EPez0=;
-        b=DIxR8v5BnpdKwW34ovpsE7TuuRdZ9aqiqBKC85YeXq+HR7hq5qc9Myl210R1w+FYis
-         Q80I+k36pa4iwiLhWC1U4yqsZ74Vulp9KmzRIt7kWYAJ1hA/aUlDQsfGgsxFZGzce3CN
-         jN6PfQ9BQ+8gh+2JaVRaLXHmpjRNQehUs4GvPc06MwRidx9QkXkhi/iN68i2f2T0Jz4k
-         IiK0HrrpVW8p6L6Eb8RedjjLMF29k7kGyAkdZwyEWXa2oGmEEet/qRlA4wxbvzqYN/Dd
-         opRkb0O1Hnfc5PwMp4qVCZg5RXapBefsE9fz8lGfgLsocMuuNcSmWAR9Cz4POHnJ5XmG
-         vZnQ==
-X-Gm-Message-State: AOAM5322zayp192KfPWqDPlFl5aJPBNmF82mZiZ8pIoQ2xAekcL9OjNe
-	7MKKKlGyY9ZOWk86bnsj5oeYu8+B91PJ+EzH0ocxpZETtL2r62WLEz+UEUFiYAgzGc1dBuSrsf0
-	cAuJKR1vQGvLgHyQ2
-X-Received: by 2002:adf:fb44:: with SMTP id c4mr3357018wrs.179.1630667350186;
-        Fri, 03 Sep 2021 04:09:10 -0700 (PDT)
-X-Received: by 2002:adf:fb44:: with SMTP id c4mr3356996wrs.179.1630667349988;
-        Fri, 03 Sep 2021 04:09:09 -0700 (PDT)
+        bh=PNmQn7pp74t94Lr73ldUSMDFHfSQgs8qkh8r7R4cWBA=;
+        b=t9AUt4AFKOVp9KGSRAcpJASShro3YpltL27rLmhFmJWloSyRx5uWW4pN2vIyxtDZOL
+         Gy6sP1oJ/BDOpzh5kscHTDzHgQw9qlvsAbHDMvrlAB6ADu/dtNaHnAxfWyNYf6TOscAU
+         nhGhUBxVSe1mOSyPEZrMpWzcZuHENvBwreUZmUTgrzHkZz+nWvj+QzNiBzdaQOFJnXYk
+         71MBg39pUFwaTmJEIsL4JG1cilD64bvPTHrjUtThi9gCpaqRP2Roxx1/mz2qNJTUzf8B
+         eVA+pCz/P67didOBdVCxzBSv6PwSB7BA/Bvq84FLxq58Ii7Ek0wYMn/+gI73YiT0Tc86
+         43+A==
+X-Gm-Message-State: AOAM5305VXEteZkJGp6bwpPBJdPqkY8Fwise1Tw/hQBAMYKH1c0qah0N
+	rgx90r5BYEagBmnkVYL1nTklzKyx0aOF1hoLfa9c6Td2dyg5kyJDE9osifTIPxRrk4d0PvE4lY2
+	8yvJj/riQVuYrM+DG
+X-Received: by 2002:a5d:6cb0:: with SMTP id a16mr3413351wra.245.1630667355844;
+        Fri, 03 Sep 2021 04:09:15 -0700 (PDT)
+X-Received: by 2002:a5d:6cb0:: with SMTP id a16mr3413326wra.245.1630667355660;
+        Fri, 03 Sep 2021 04:09:15 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id o21sm4479970wms.32.2021.09.03.04.09.08
+        by smtp.gmail.com with ESMTPSA id k25sm4751451wrd.42.2021.09.03.04.09.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 04:09:09 -0700 (PDT)
+        Fri, 03 Sep 2021 04:09:15 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Hanna Reitz <hreitz@redhat.com>,
@@ -117,9 +117,9 @@ Cc: Hanna Reitz <hreitz@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	qemu-ppc@nongnu.org,
 	David Hildenbrand <david@redhat.com>
-Subject: [RFC PATCH 22/28] linux-user: Replace g_memdup() by g_memdup2_qemu()
-Date: Fri,  3 Sep 2021 13:06:56 +0200
-Message-Id: <20210903110702.588291-23-philmd@redhat.com>
+Subject: [PATCH 23/28] tests/unit: Replace g_memdup() by g_memdup2_qemu()
+Date: Fri,  3 Sep 2021 13:06:57 +0200
+Message-Id: <20210903110702.588291-24-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903110702.588291-1-philmd@redhat.com>
 References: <20210903110702.588291-1-philmd@redhat.com>
@@ -130,7 +130,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TvCJHC07xocM
+X-TUID: dOfXm8DwV5yg
 
 Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
 
@@ -146,39 +146,210 @@ Replace g_memdup() by the safer g_memdup2_qemu() wrapper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
-do_open_by_handle_at() doesn't check:
+ tests/unit/ptimer-test.c | 22 +++++++++++-----------
+ tests/unit/test-iov.c    | 26 +++++++++++++-------------
+ 2 files changed, 24 insertions(+), 24 deletions(-)
 
-    size + sizeof(struct file_handle) < 4GiB
----
- linux-user/syscall.c | 2 +-
- linux-user/uaccess.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index ccd3892b2df..e127927f0b9 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -7665,7 +7665,7 @@ static abi_long do_open_by_handle_at(abi_long mount_fd, abi_long handle,
-         return -TARGET_EFAULT;
-     }
+diff --git a/tests/unit/ptimer-test.c b/tests/unit/ptimer-test.c
+index 9176b96c1ce..23efeb04a57 100644
+--- a/tests/unit/ptimer-test.c
++++ b/tests/unit/ptimer-test.c
+@@ -798,64 +798,64 @@ static void add_ptimer_tests(uint8_t policy)
  
--    fh = g_memdup(target_fh, total_size);
-+    fh = g_memdup2_qemu(target_fh, total_size);
-     fh->handle_bytes = size;
-     fh->handle_type = tswap32(target_fh->handle_type);
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/set_count policy=%s", policy_name),
+-        g_memdup(&policy, 1), check_set_count, g_free);
++        g_memdup2_qemu(&policy, 1), check_set_count, g_free);
+     g_free(tmp);
  
-diff --git a/linux-user/uaccess.c b/linux-user/uaccess.c
-index 6a5b029607c..80992e2e233 100644
---- a/linux-user/uaccess.c
-+++ b/linux-user/uaccess.c
-@@ -15,7 +15,7 @@ void *lock_user(int type, abi_ulong guest_addr, ssize_t len, bool copy)
-     host_addr = g2h_untagged(guest_addr);
- #ifdef DEBUG_REMAP
-     if (copy) {
--        host_addr = g_memdup(host_addr, len);
-+        host_addr = g_memdup2_qemu(host_addr, len);
-     } else {
-         host_addr = g_malloc0(len);
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/set_limit policy=%s", policy_name),
+-        g_memdup(&policy, 1), check_set_limit, g_free);
++        g_memdup2_qemu(&policy, 1), check_set_limit, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/oneshot policy=%s", policy_name),
+-        g_memdup(&policy, 1), check_oneshot, g_free);
++        g_memdup2_qemu(&policy, 1), check_oneshot, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/periodic policy=%s", policy_name),
+-        g_memdup(&policy, 1), check_periodic, g_free);
++        g_memdup2_qemu(&policy, 1), check_periodic, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/on_the_fly_mode_change policy=%s",
+                               policy_name),
+-        g_memdup(&policy, 1), check_on_the_fly_mode_change, g_free);
++        g_memdup2_qemu(&policy, 1), check_on_the_fly_mode_change, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/on_the_fly_period_change policy=%s",
+                               policy_name),
+-        g_memdup(&policy, 1), check_on_the_fly_period_change, g_free);
++        g_memdup2_qemu(&policy, 1), check_on_the_fly_period_change, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/on_the_fly_freq_change policy=%s",
+                               policy_name),
+-        g_memdup(&policy, 1), check_on_the_fly_freq_change, g_free);
++        g_memdup2_qemu(&policy, 1), check_on_the_fly_freq_change, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/run_with_period_0 policy=%s",
+                               policy_name),
+-        g_memdup(&policy, 1), check_run_with_period_0, g_free);
++        g_memdup2_qemu(&policy, 1), check_run_with_period_0, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/run_with_delta_0 policy=%s",
+                               policy_name),
+-        g_memdup(&policy, 1), check_run_with_delta_0, g_free);
++        g_memdup2_qemu(&policy, 1), check_run_with_delta_0, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/periodic_with_load_0 policy=%s",
+                               policy_name),
+-        g_memdup(&policy, 1), check_periodic_with_load_0, g_free);
++        g_memdup2_qemu(&policy, 1), check_periodic_with_load_0, g_free);
+     g_free(tmp);
+ 
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/oneshot_with_load_0 policy=%s",
+                               policy_name),
+-        g_memdup(&policy, 1), check_oneshot_with_load_0, g_free);
++        g_memdup2_qemu(&policy, 1), check_oneshot_with_load_0, g_free);
+     g_free(tmp);
+ }
+ 
+diff --git a/tests/unit/test-iov.c b/tests/unit/test-iov.c
+index 5371066fb6a..19ae24adb70 100644
+--- a/tests/unit/test-iov.c
++++ b/tests/unit/test-iov.c
+@@ -173,7 +173,7 @@ static void test_io(void)
      }
+     iov_from_buf(iov, niov, 0, buf, sz);
+ 
+-    siov = g_memdup(iov, sizeof(*iov) * niov);
++    siov = g_memdup2_qemu(iov, sizeof(*iov) * niov);
+ 
+     if (socketpair(PF_UNIX, SOCK_STREAM, 0, sv) < 0) {
+        perror("socketpair");
+@@ -350,7 +350,7 @@ static void test_discard_front_undo(void)
+ 
+     /* Discard zero bytes */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_tmp = iov;
+     iov_cnt_tmp = iov_cnt;
+     iov_discard_front_undoable(&iov_tmp, &iov_cnt_tmp, 0, &undo);
+@@ -361,7 +361,7 @@ static void test_discard_front_undo(void)
+ 
+     /* Discard more bytes than vector size */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_tmp = iov;
+     iov_cnt_tmp = iov_cnt;
+     size = iov_size(iov, iov_cnt);
+@@ -373,7 +373,7 @@ static void test_discard_front_undo(void)
+ 
+     /* Discard entire vector */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_tmp = iov;
+     iov_cnt_tmp = iov_cnt;
+     size = iov_size(iov, iov_cnt);
+@@ -385,7 +385,7 @@ static void test_discard_front_undo(void)
+ 
+     /* Discard within first element */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_tmp = iov;
+     iov_cnt_tmp = iov_cnt;
+     size = g_test_rand_int_range(1, iov->iov_len);
+@@ -397,7 +397,7 @@ static void test_discard_front_undo(void)
+ 
+     /* Discard entire first element */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_tmp = iov;
+     iov_cnt_tmp = iov_cnt;
+     iov_discard_front_undoable(&iov_tmp, &iov_cnt_tmp, iov->iov_len, &undo);
+@@ -408,7 +408,7 @@ static void test_discard_front_undo(void)
+ 
+     /* Discard within second element */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_tmp = iov;
+     iov_cnt_tmp = iov_cnt;
+     size = iov->iov_len + g_test_rand_int_range(1, iov[1].iov_len);
+@@ -499,7 +499,7 @@ static void test_discard_back_undo(void)
+ 
+     /* Discard zero bytes */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_cnt_tmp = iov_cnt;
+     iov_discard_back_undoable(iov, &iov_cnt_tmp, 0, &undo);
+     iov_discard_undo(&undo);
+@@ -509,7 +509,7 @@ static void test_discard_back_undo(void)
+ 
+     /* Discard more bytes than vector size */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_cnt_tmp = iov_cnt;
+     size = iov_size(iov, iov_cnt);
+     iov_discard_back_undoable(iov, &iov_cnt_tmp, size + 1, &undo);
+@@ -520,7 +520,7 @@ static void test_discard_back_undo(void)
+ 
+     /* Discard entire vector */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_cnt_tmp = iov_cnt;
+     size = iov_size(iov, iov_cnt);
+     iov_discard_back_undoable(iov, &iov_cnt_tmp, size, &undo);
+@@ -531,7 +531,7 @@ static void test_discard_back_undo(void)
+ 
+     /* Discard within last element */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_cnt_tmp = iov_cnt;
+     size = g_test_rand_int_range(1, iov[iov_cnt - 1].iov_len);
+     iov_discard_back_undoable(iov, &iov_cnt_tmp, size, &undo);
+@@ -542,7 +542,7 @@ static void test_discard_back_undo(void)
+ 
+     /* Discard entire last element */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_cnt_tmp = iov_cnt;
+     size = iov[iov_cnt - 1].iov_len;
+     iov_discard_back_undoable(iov, &iov_cnt_tmp, size, &undo);
+@@ -553,7 +553,7 @@ static void test_discard_back_undo(void)
+ 
+     /* Discard within second-to-last element */
+     iov_random(&iov, &iov_cnt);
+-    iov_orig = g_memdup(iov, sizeof(iov[0]) * iov_cnt);
++    iov_orig = g_memdup2_qemu(iov, sizeof(iov[0]) * iov_cnt);
+     iov_cnt_tmp = iov_cnt;
+     size = iov[iov_cnt - 1].iov_len +
+            g_test_rand_int_range(1, iov[iov_cnt - 2].iov_len);
 -- 
 2.31.1

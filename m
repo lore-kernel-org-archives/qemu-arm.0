@@ -1,67 +1,68 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1615052lfb;
-        Fri, 3 Sep 2021 12:55:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtJXIE196ewnPyzASwUyyD2QUQPsDp9OLZ2FnvQkuUPj6uiVthS2x5Z84jfFlvUG8LKrPJ
-X-Received: by 2002:a92:da87:: with SMTP id u7mr394786iln.297.1630698918679;
-        Fri, 03 Sep 2021 12:55:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630698918; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1625110lfb;
+        Fri, 3 Sep 2021 13:06:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFxn2eT3JDaEv3DeqGtP8qUoxIsf0c8eccstP0arZTsNyjTaSRewsQCNnSbG5gDL1mMeFu
+X-Received: by 2002:a67:b247:: with SMTP id s7mr641915vsh.34.1630699595587;
+        Fri, 03 Sep 2021 13:06:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630699595; cv=none;
         d=google.com; s=arc-20160816;
-        b=Icat2NQGvTQpeADGjhP9EFbxdq/tc0E7i5La/74vD27h8VKpptXt/ssXbRka3kAiv/
-         7KxsnomqR6BNCG0HV3fgW9+Rdcd/XKrSnpovHCvvQpXxghFxX0z6CGOz+fFgPed7CA+B
-         dKj5x8SSWD7v1xZ10Fk8/KCi84BiXLrtkdpUAgGcUZRAsflHC++ye9eQ2NeahFmJLQho
-         LVYYSvuQfZNf7v3E5DnEUE+m9Ibv6whB/1Cm7VSfdgDLTJ1HSLnDCFpJzTB83WvSpFEJ
-         XU4vdfYzgy5pdL1e16fI3+6wbddDDxMTviFgjKj5TSfxyJ6f8glCAqvS326IJZnnJg98
-         sR1A==
+        b=cpVHwem5yAZElDWlfiUiflXh5xU9aQnLajqpr27grCN1xA7fSLMvUM0ILk88Ux3FPS
+         sVDuNcH+MGVpOv3VbDrRs2CWsI6sqbXp2kJPGE2dfD966lJrlld7ZKwIt3IuutZtCYBV
+         07PMhYdbwaenEg0Ukpas2rQmoIN/VjwNysLA4RcLv6d4MVUUFUKi4iKfrXCqkwVFchQv
+         B00D1Vm6/gWwYp1+reN5gTYlOcr+hyCYFw4IMpygyFexw+WJ7lEuPn9RBdwe8D5iEXwf
+         FyeNS7mcHRvaKt87nCVFHJXpKBfbhiNnd+7PKVBhue/XJ43uIUylsr/iGhnCyLGQ7Sp9
+         nVTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=/UCp5PUmb2abZhX9xuFmDmTqWtnJfBaPCYY3c9STJng=;
-        b=WfWcYOktTJ8ks23EWS99nBfWpjwBWHMd4fkk+/aYEAVe6dA5o3ztAZsQEWpZhEm15d
-         CBf44dWxq0rcmAi9jLWTsM4FAPMcUeqbVurFyw3bbdRDjFR0JTfqOu2P/ubpZlLOyolY
-         2x75xwrYG9iABAHzWRKYUpFFCMy9jHjXW8s5ru1TzTmhASS6+HYkv7vvmDTcrqM5Sc++
-         OSBcR3LJI0waO4gDV19H+fq5VKXxt8LjUcGBzj3ysXlliQDlqJRVysArmAtxXy0Sw9kB
-         FSae6P8qFVHZvH0tHSsCgDFkWRh3Ebmi2G5Csl++7GNaieBr6B4aB1ZzBNZDTMdtlmyD
-         cDtQ==
+        bh=QMobFSiH0idTN0KuGdPHQqtiZi4a8ulVjW2IudMGXAo=;
+        b=US4vrSU6HSzOCYCGbcYcyNgDbG1KKYHZk3XM3vxBHnljG3nRSf3AEGAACgyJ1E8k+7
+         Tee2jwxg/+BwZH6+8JtSlQAW0kevFHTl8YQWfpiugTWgJpCxqwl/sTgVW2egvRfuBKyE
+         gUlrBjiUBF08t4iCGfyB1dftJOtCTM2v5o3EG6/3I2OTJrFVyZyUTXYfFjAKiRnYxkLK
+         8umuhELQDjX9r51lcuQDHIQjsr4u+4oJmm/fPt/L6Me/FokAMDlQMA2okXv1Kws7hsrG
+         x09Y/FXFu0/048sWOFEponWhMmjEQS2yB9mTk5OLMG+j3dZ+Y8d7saNn+eq4vfUJ5aHv
+         QoCg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7si294297ilu.111.2021.09.03.12.55.18
+        by mx.google.com with ESMTPS id i26si119757vsp.436.2021.09.03.13.06.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 12:55:18 -0700 (PDT)
+        Fri, 03 Sep 2021 13:06:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45066 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMFHR-0006xY-VL
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:55:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44266)
+	id 1mMFSM-0001kX-Tk
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 16:06:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF4A-0004Kb-Dj; Fri, 03 Sep 2021 15:41:34 -0400
-Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192]:42845)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF40-0003xp-QS
+ for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:24 -0400
+Received: from 1.mo548.mail-out.ovh.net ([178.32.121.110]:45491)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF41-0002Jq-Pr; Fri, 03 Sep 2021 15:41:34 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.84])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 637F42024D;
- Fri,  3 Sep 2021 19:41:15 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMF3x-0002FB-FQ
+ for qemu-devel@nongnu.org; Fri, 03 Sep 2021 15:41:24 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.35])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C168720677;
+ Fri,  3 Sep 2021 19:41:11 +0000 (UTC)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 21:41:14 +0200
+ 2021 21:41:10 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005de9747bd-40b5-468f-8cbb-07a98e34a2dd,
+ (GARM-103G005193b56a8-d7c9-4872-9f51-30169704e017,
  15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 11/14] arm/aspeed: Add DPS310 to Witherspoon and Rainier
-Date: Fri, 3 Sep 2021 21:41:05 +0200
-Message-ID: <20210903194108.131403-12-clg@kaod.org>
+Subject: [PULL 01/14] hw: arm: aspeed: Enable eth0 interface for
+ aspeed-ast2600-evb
+Date: Fri, 3 Sep 2021 21:40:55 +0200
+Message-ID: <20210903194108.131403-2-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903194108.131403-1-clg@kaod.org>
 References: <20210903194108.131403-1-clg@kaod.org>
@@ -71,18 +72,19 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: ff6685cc-8814-403b-8cc2-9b21dfa816f7
-X-Ovh-Tracer-Id: 8816640698963299110
+X-Ovh-Tracer-GUID: 1ed09249-5588-44cf-9593-8ab3135f5b4b
+X-Ovh-Tracer-Id: 8815514799184186217
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpeefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
- helo=3.mo552.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=178.32.121.110; envelope-from=clg@kaod.org;
+ helo=1.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,57 +97,42 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Guenter Roeck <linux@roeck-us.net>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hOOv+xAF0Uo5
+X-TUID: hmUq/lo2dAEF
 
-From: Joel Stanley <joel@jms.id.au>
+From: Guenter Roeck <linux@roeck-us.net>
 
-Witherspoon uses the DPS310 as a temperature sensor. Rainier uses it as
-a temperature and humidity sensor.
+Commit 7582591ae7 ("aspeed: Support AST2600A1 silicon revision") switched
+the silicon revision for AST2600 to revision A1. On revision A1, the first
+Ethernet interface is operational. Enable it.
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210629142336.750058-5-clg@kaod.org>
+Message-Id: <20210808200457.889955-1-linux@roeck-us.net>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/aspeed.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 97964c7e0c53..886e5992cdf3 100644
+index 9d43e26c51bb..ecf0c9cfacb8 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -602,7 +602,6 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
- 
-     /* Bus 3: TODO bmp280@77 */
-     /* Bus 3: TODO max31785@52 */
--    /* Bus 3: TODO dps310@76 */
-     dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
-     qdev_prop_set_string(dev, "description", "pca1");
-     i2c_slave_realize_and_unref(I2C_SLAVE(dev),
-@@ -617,6 +616,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
-         qdev_connect_gpio_out(dev, pca1_leds[i].gpio_id,
-                               qdev_get_gpio_in(DEVICE(led), 0));
-     }
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
- 
-@@ -725,9 +725,9 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
-     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
- 
--    /* Bus 7: TODO dps310@76 */
-     /* Bus 7: TODO max31785@52 */
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552", 0x61);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", 0x76);
-     /* Bus 7: TODO si7021-a20@20 */
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
-                      0x48);
+@@ -959,7 +959,8 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
+     amc->fmc_model = "w25q512jv";
+     amc->spi_model = "mx66u51235f";
+     amc->num_cs    = 1;
+-    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
++                     ASPEED_MAC3_ON;
+     amc->i2c_init  = ast2600_evb_i2c_init;
+     mc->default_ram_size = 1 * GiB;
+     mc->default_cpus = mc->min_cpus = mc->max_cpus =
 -- 
 2.31.1
 

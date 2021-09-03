@@ -1,103 +1,102 @@
-Received: by 2002:a0c:ec8e:0:0:0:0:0 with SMTP id u14csp746975qvo;
-        Fri, 3 Sep 2021 08:17:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFgvUhkHNYQEqMPxJfkIC47TOI72exsNX2nGPeN9qAvWfdlAcHeV0Mng4m8GIzcgEOiZsh
-X-Received: by 2002:a0c:fd91:: with SMTP id p17mr4320748qvr.45.1630682247542;
-        Fri, 03 Sep 2021 08:17:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630682247; cv=none;
+Received: by 2002:a0c:ec8e:0:0:0:0:0 with SMTP id u14csp747778qvo;
+        Fri, 3 Sep 2021 08:18:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxd2nO+f4ayzv9h8Y33vTUEawZHCZRsdeyaqy1oB096dWSZuVcw0cwDyxzxnsczja1AAiiY
+X-Received: by 2002:a5d:4a08:: with SMTP id m8mr4755948wrq.263.1630682305501;
+        Fri, 03 Sep 2021 08:18:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630682305; cv=none;
         d=google.com; s=arc-20160816;
-        b=cQEnpYLR6VOf0XnJ0idgkhh93S/M7FXQKoiPTQ3irjpMk132bQ0qRqa1o2fPdgadSu
-         f+PPpq/xTPJrYoR9XAGD/weiVhjSwgNrmdHwejvfWOAm2KzsM7hqf5RSJ/FaDHdOAjaE
-         kLB7No/m3m6CCgg7ck9BQFEzTN/hHErnhe0EFTOdWeoEEp0Al4iF8EdAu69L1qDl3tax
-         x6SCEuVLbT+lNmrad7+SOflJm20u6gmyogEAeN1ZA7nnOv1sa67GNiSuOFCcTMQzyjqI
-         DUCnwRPmaEIErbB80LRzdvjYE1m1XR17+RHU1v2fAePbh6FHhf9ISuhuMpw624E6HYak
-         742A==
+        b=sfRMuY3XLaHoi0hRx27/8G6dXxgXDviccDDqyeGlK2YHtLIV18FSCH0ENOGWpCzngD
+         EU4OXJbjK0u+aDSdVOUukc5Hx4Z7HjSd6c0cIVunBLz9KIB8x7uBpzdU+8l4/52grvK1
+         tGVsPHowTGRZCUTxL00aKJ5625zTE/A8CouIv5VTWxMAZl2h4BIENInhtguR3hVAfXdz
+         VLt5mcuxtKlPgnU9ppZjNZMEjoPYbBm4hyJxbMulgDvsAyyXMs+HPHFlp5GGbQpSPO6Y
+         ROUS/7F5gPedl3lj/PGLQEZ676Iy2ZXdS8C5v3wrGoGcblZTBs4PkhcGu16qr6p2+Rce
+         57CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sE2ls29dfSsN30EdvESz1JIj1pUVIWRUf+dXCYAoZ+w=;
-        b=gFnLpfQNMzMZnFGGnMwZ59maAHr7cxDRa3KTMH71akmQcLESM339l4N78D4iF/S3D4
-         sk8S3fdQUHYyS8s7bxY9l3XfxwL3YtM+8dUtEX1wadUuTu0PK9MIoOMuSekqplR+WyAC
-         eUJ0d1okTLPkNh46KbbT+7RYNHCEby+PUaxrhQNoJCaBTJVhiNrzoQoujAplGZjvkCln
-         Ezw8d49oTMAawefo7dow7lqUfZi34cMweIXyacK7cVoVAnVhIyMfq+KmG/uwy0HrzB/D
-         ngpc/+jZd1+xTfVVrVLPx0HX6LDGoZKWQ1O6BvjiC8VNrHik7lsN1yk28xpZ8Ytyxtjv
-         l1/A==
+        bh=Mxdg4WBcVbUdsRcZMoLQ96Hj5pGJaTJATreG10LOYTE=;
+        b=cHlACd9c8GKq+yIMv7lWAyos3r/+wT8XUXtkMzJUqrmZGK8MEw9hXchTiJNf6hlwQF
+         /6gwVYvcQXa38KDHWnjN7ZfcmGHySes1L8fb3ymJRS+DgjOejhLnX0RqdjMA6eXxJrYI
+         PYH6LN3zt9uosUla6siu+JbZLNSYFumw+hSWcixHjacRd4te/QHE6ktoUamUJjWjRUlc
+         6TDEOmHrvYiTHMLyO3yIuMEa5W0YymxAfoaCQDQJgH8HNuN8gNOKl3Twzms0IJIRJ2zO
+         JAlY3kWNdUz99ocUj6x0tut3uFJNnVFpsGRlMwtGzRzz2DOyGLs6k9MIW/Lv8lgooWC9
+         ipPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P1UAWB2P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HWaGAy+O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a6si2333104vsn.223.2021.09.03.08.17.27
+        by mx.google.com with ESMTPS id n6si5348158wmk.204.2021.09.03.08.18.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 08:17:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Sep 2021 08:18:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P1UAWB2P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HWaGAy+O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMAwY-0007Xa-RH
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 11:17:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46742)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMAxU-0001T3-FR
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 11:18:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46768)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mMAtw-0004bk-Mk
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 11:14:44 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:38712)
+ id 1mMAty-0004g0-2v
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 11:14:46 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:38522)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mMAtu-0007O1-85
- for qemu-devel@nongnu.org; Fri, 03 Sep 2021 11:14:44 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- k5-20020a05600c1c8500b002f76c42214bso4011668wms.3
- for <qemu-devel@nongnu.org>; Fri, 03 Sep 2021 08:14:41 -0700 (PDT)
+ id 1mMAtv-0007Rd-N4
+ for qemu-arm@nongnu.org; Fri, 03 Sep 2021 11:14:45 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id u16so8702423wrn.5
+ for <qemu-arm@nongnu.org>; Fri, 03 Sep 2021 08:14:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=sE2ls29dfSsN30EdvESz1JIj1pUVIWRUf+dXCYAoZ+w=;
- b=P1UAWB2PZcnkZWO3PUTJ+XYo/vvtBJHl0ITqJrtK6OmgZt/+dlOLaYF+HsyEYs4rHC
- umSh2+BJyLqpLPEUF4kGYDAVMDk9hQ/Jm2684x78oO6N7ZS1qEjhdQ4XIjFspJewncUK
- oOqhcz7F1AYHpmjRlAsFQ+GSFkRJm8cPTyMVwxWtqRdmce5KeqGcqGV+MXVC/bR8zM8P
- wqY4hJReejmUKZPw8BFiJkuJb2jxAs5sZ/MrhgFwcsNxlkza3eO8BPIgrfJnQHy4E9LD
- xRQlO0fDlUA/fh0OPKMJKq9l9aVBMmBupo/9C/Teg6FRlcstDtfZH7y6iX7mEpllkbpo
- WDCw==
+ bh=Mxdg4WBcVbUdsRcZMoLQ96Hj5pGJaTJATreG10LOYTE=;
+ b=HWaGAy+ODu+VetBKHsWRZ8RzjD91FDOkTsBg2bYVP/KIDBIUG2e05pHCyaE2tyxFzV
+ OIBjmt4TxquIeRdWDw+dSthE0O+iGynN2XD+6AVFdXCWb2FB7Ngx8SscIOr94bVQCFiP
+ iyOLwUapHA86iCe989KP53u+eE3AYPxGcSFKbMqii1HnAf7ae2rP+KiE53d32mx+xA/D
+ Grbtza//f5WV39WfpVgZ+aU0KQj1ZBpJLvc4tWwVk7pZ9Um32g7osSPOHc3TuX5kn2SB
+ KEZmdTIqTvL8t7aOZMH6GJ+b4rfhMcx75tnuVUKTXJ8Ns2cd20hv0q9S7VSocuahqLLW
+ oLmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=sE2ls29dfSsN30EdvESz1JIj1pUVIWRUf+dXCYAoZ+w=;
- b=lBsNYQcRQw//SdIWHO3J8WvObadxhpOHVO3A5UEDTmGjZZcq8sZnGBnMoQfQcXokju
- kA0bxh1SBDitA7f4T/tpzxj7/AI+D1+LhyQKl94J9TePm22PHo9fdSq0Alj3P2VahKkJ
- pCaHgU4buXKn4OuoKhrU4qiDP+hbSDKbva7J/Feo+c7JNCD3x1WdSV7Ph04nl1tixtIe
- lOgAyMCB2wEZs3gkjekyiNLaoIchEgADbFgzqWugLi2/CJVQziE2yYUsx5xbsj9Ojboy
- mj3QmfypS2+BOeYFxBcGbybmHQ/GKPBjhyVTmmm/Vry09erlvFwDzaNrLosz02Wbujk7
- XMWA==
-X-Gm-Message-State: AOAM5335HyXgzAzm/Dxi6XnYqsiz8niVQ6IEawp8N8OUfeXykZ5Lngy+
- rPMsQdWB/pLC85c4sL+DdUcNlg==
-X-Received: by 2002:a1c:a747:: with SMTP id q68mr8929730wme.149.1630682080442; 
- Fri, 03 Sep 2021 08:14:40 -0700 (PDT)
+ bh=Mxdg4WBcVbUdsRcZMoLQ96Hj5pGJaTJATreG10LOYTE=;
+ b=r8baaWIyCCXNaK2E30t0H4c5/yK+27SLfkacfuZOGsEopxclFkYNjUtvjq+vKWLnD8
+ q4fQYepQDNF82GQ7opvji9RnXFJ2tyQaBDYFdRCvVWE6IGgcK0ex0pLO8XuQmelyJ9sx
+ O+f/P9lo7Y7F3enI3WB+J4pe8wphRW0RKk2JdnsfEfNgVaPOmOerMn3RTiLfv/yuTsou
+ lwVufiIghmbgCDq3JE4zYU9ODkcpGXct30Up0WRBTHn9TC/hOJ4u+BnvwaqHcJzuuWpl
+ xS7aYzuCbEXoZ9Rr4UoHFXmhBiRKIMMk+g+3c0J04x/9Fe9fFufn24RxIJAmclrjGEdU
+ xQFg==
+X-Gm-Message-State: AOAM5331EehF21mLRZr9mKGcp+g9Dl0iEsptVJTy8X+fbEMImLbiP/c0
+ AjUFqdP3D2ky6IGp2sVGyK7UdhmTHmB7vg==
+X-Received: by 2002:a5d:4285:: with SMTP id k5mr4829659wrq.131.1630682082344; 
+ Fri, 03 Sep 2021 08:14:42 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y21sm4737780wmc.11.2021.09.03.08.14.39
+ by smtp.gmail.com with ESMTPSA id y21sm4737780wmc.11.2021.09.03.08.14.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Sep 2021 08:14:39 -0700 (PDT)
+ Fri, 03 Sep 2021 08:14:42 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/4] hw/arm/mps2-tz.c: Add extra data parameter to MakeDevFn
-Date: Fri,  3 Sep 2021 16:14:33 +0100
-Message-Id: <20210903151435.22379-3-peter.maydell@linaro.org>
+Subject: [PATCH 4/4] hw/arm/mps2.c: Mark internal-only I2C buses as 'full'
+Date: Fri,  3 Sep 2021 16:14:35 +0100
+Message-Id: <20210903151435.22379-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210903151435.22379-1-peter.maydell@linaro.org>
 References: <20210903151435.22379-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,190 +105,59 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lPIs+HvaRnm0
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +fLddK9tr+HN
 
-The mps2-tz boards use a data-driven structure to create the devices
-that sit behind peripheral protection controllers.  Currently the
-functions which create these devices are passed an 'opaque' pointer
-which is always the address within the machine struct of the device
-to create, and some "all devices need this" information like irqs and
-addresses.
-
-If a specific device needs more information than this, it is
-currently not possible to pass that through from the PPCInfo
-data structure. Add support for passing an extra data parameter,
-so that we can more flexibly handle the needs of specific
-device types. To provide some type-safety we make this extra
-parameter a pointer to a union (which initially has no members).
-
-In particular, we would like to be able to indicate which of the
-i2c controllers are for on-board devices only and which are
-connected to the external 'shield' expansion port; a subsequent
-patch will use this mechanism for that purpose.
+The various MPS2 boards implemented in mps2.c have multiple I2C
+buses: a bus dedicated to the audio configuration, one for the LCD
+touchscreen controller, and two which are connected to the external
+Shield expansion connector.  Mark the buses which are used only for
+board-internal devices as 'full' so that if the user creates i2c
+devices on the commandline without specifying a bus name then they
+will be connected to the I2C controller used for the Shield
+connector, where guest software will expect them.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps2-tz.c | 35 ++++++++++++++++++++++-------------
- 1 file changed, 22 insertions(+), 13 deletions(-)
+ hw/arm/mps2.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index e23830f4b7d..746ba3cc59e 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -373,6 +373,10 @@ static qemu_irq get_sse_irq_in(MPS2TZMachineState *mms, int irqno)
-     }
- }
- 
-+/* Union describing the device-specific extra data we pass to the devfn. */
-+typedef union PPCExtraData {
-+} PPCExtraData;
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index 4634aa1a1ca..bb76fa68890 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -428,7 +428,17 @@ static void mps2_common_init(MachineState *machine)
+                                          0x40023000,    /* Audio */
+                                          0x40029000,    /* Shield0 */
+                                          0x4002a000};   /* Shield1 */
+-        sysbus_create_simple(TYPE_ARM_SBCON_I2C, i2cbase[i], NULL);
++        DeviceState *dev;
 +
- /* Most of the devices in the AN505 FPGA image sit behind
-  * Peripheral Protection Controllers. These data structures
-  * define the layout of which devices sit behind which PPCs.
-@@ -382,7 +386,8 @@ static qemu_irq get_sse_irq_in(MPS2TZMachineState *mms, int irqno)
-  */
- typedef MemoryRegion *MakeDevFn(MPS2TZMachineState *mms, void *opaque,
-                                 const char *name, hwaddr size,
--                                const int *irqs);
-+                                const int *irqs,
-+                                const PPCExtraData *extradata);
++        dev = sysbus_create_simple(TYPE_ARM_SBCON_I2C, i2cbase[i], NULL);
++        if (i < 2) {
++            /*
++             * internal-only bus: mark it full to avoid user-created
++             * i2c devices being plugged into it.
++             */
++            BusState *qbus = qdev_get_child_bus(dev, "i2c");
++            qbus_mark_full(qbus);
++        }
+     }
+     create_unimplemented_device("i2s", 0x40024000, 0x400);
  
- typedef struct PPCPortInfo {
-     const char *name;
-@@ -391,6 +396,7 @@ typedef struct PPCPortInfo {
-     hwaddr addr;
-     hwaddr size;
-     int irqs[3]; /* currently no device needs more IRQ lines than this */
-+    PPCExtraData extradata; /* to pass device-specific info to the devfn */
- } PPCPortInfo;
- 
- typedef struct PPCInfo {
-@@ -401,7 +407,8 @@ typedef struct PPCInfo {
- static MemoryRegion *make_unimp_dev(MPS2TZMachineState *mms,
-                                     void *opaque,
-                                     const char *name, hwaddr size,
--                                    const int *irqs)
-+                                    const int *irqs,
-+                                    const PPCExtraData *extradata)
- {
-     /* Initialize, configure and realize a TYPE_UNIMPLEMENTED_DEVICE,
-      * and return a pointer to its MemoryRegion.
-@@ -417,7 +424,7 @@ static MemoryRegion *make_unimp_dev(MPS2TZMachineState *mms,
- 
- static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
-                                const char *name, hwaddr size,
--                               const int *irqs)
-+                               const int *irqs, const PPCExtraData *extradata)
- {
-     /* The irq[] array is tx, rx, combined, in that order */
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-@@ -441,7 +448,7 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_scc(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
--                              const int *irqs)
-+                              const int *irqs, const PPCExtraData *extradata)
- {
-     MPS2SCC *scc = opaque;
-     DeviceState *sccdev;
-@@ -465,7 +472,7 @@ static MemoryRegion *make_scc(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
-                                  const char *name, hwaddr size,
--                                 const int *irqs)
-+                                 const int *irqs, const PPCExtraData *extradata)
- {
-     MPS2FPGAIO *fpgaio = opaque;
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-@@ -480,7 +487,8 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
-                                   const char *name, hwaddr size,
--                                  const int *irqs)
-+                                  const int *irqs,
-+                                  const PPCExtraData *extradata)
- {
-     SysBusDevice *s;
-     NICInfo *nd = &nd_table[0];
-@@ -500,7 +508,8 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_eth_usb(MPS2TZMachineState *mms, void *opaque,
-                                   const char *name, hwaddr size,
--                                  const int *irqs)
-+                                  const int *irqs,
-+                                  const PPCExtraData *extradata)
- {
-     /*
-      * The AN524 makes the ethernet and USB share a PPC port.
-@@ -543,7 +552,7 @@ static MemoryRegion *make_eth_usb(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_mpc(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
--                              const int *irqs)
-+                              const int *irqs, const PPCExtraData *extradata)
- {
-     TZMPC *mpc = opaque;
-     int i = mpc - &mms->mpc[0];
-@@ -615,7 +624,7 @@ static void remap_irq_fn(void *opaque, int n, int level)
- 
- static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
--                              const int *irqs)
-+                              const int *irqs, const PPCExtraData *extradata)
- {
-     /* The irq[] array is DMACINTR, DMACINTERR, DMACINTTC, in that order */
-     PL080State *dma = opaque;
-@@ -672,7 +681,7 @@ static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_spi(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
--                              const int *irqs)
-+                              const int *irqs, const PPCExtraData *extradata)
- {
-     /*
-      * The AN505 has five PL022 SPI controllers.
-@@ -694,7 +703,7 @@ static MemoryRegion *make_spi(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_i2c(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
--                              const int *irqs)
-+                              const int *irqs, const PPCExtraData *extradata)
- {
-     ArmSbconI2CState *i2c = opaque;
-     SysBusDevice *s;
-@@ -707,7 +716,7 @@ static MemoryRegion *make_i2c(MPS2TZMachineState *mms, void *opaque,
- 
- static MemoryRegion *make_rtc(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
--                              const int *irqs)
-+                              const int *irqs, const PPCExtraData *extradata)
- {
-     PL031State *pl031 = opaque;
-     SysBusDevice *s;
-@@ -1084,7 +1093,7 @@ static void mps2tz_common_init(MachineState *machine)
-             }
- 
-             mr = pinfo->devfn(mms, pinfo->opaque, pinfo->name, pinfo->size,
--                              pinfo->irqs);
-+                              pinfo->irqs, &pinfo->extradata);
-             portname = g_strdup_printf("port[%d]", port);
-             object_property_set_link(OBJECT(ppc), portname, OBJECT(mr),
-                                      &error_fatal);
 -- 
 2.20.1
 

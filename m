@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1173590lfb;
-        Fri, 3 Sep 2021 04:07:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzs+BXj16PW3QC6S3zHJcbL1gk96eGKwNWZFp7yR3Ef/kew6UnhjNb8RyR+6eEZYazxJjpM
-X-Received: by 2002:a05:6402:1cbb:: with SMTP id cz27mr3308787edb.334.1630667246593;
-        Fri, 03 Sep 2021 04:07:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630667246; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1173702lfb;
+        Fri, 3 Sep 2021 04:07:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwwmuRBtJc8tArOyXjVXILnJvy2ZwyzwT+Lxqq3mJJ5TYl053kqZPHez5Flwg+tNo24NaGz
+X-Received: by 2002:a05:600c:2f08:: with SMTP id r8mr7794014wmn.86.1630667253993;
+        Fri, 03 Sep 2021 04:07:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630667253; cv=none;
         d=google.com; s=arc-20160816;
-        b=dOWBTxMiMQ28kwBdrIToFs+BgXyDus4Cs//1BIfUaymAy5+tTAzUzX8Q8hNAjI+Msh
-         4E1s1m4y0yiTIcjZCXkW1d5NGAs3oTr7ofrI77Tz1nbObbLc4M8VGMzem5EcfAseJMEQ
-         1Uyew/LQ0a/hHD78L6EpShWwoFegLxsp3Qdh+mIria/QAzIKy5wNnJW+bq/UOpHvNrTV
-         4VxENMEuzwO6dBECCvbDM3DNFcebdhNdYwwkgiXpQKJXqJX+8hyYmzWFYvQaLU8I8FMm
-         nleMgcYgAT5lOZKUYgCyqqA/iHqtlztEMFf6xPqSlhT2fN5YLRXeuN8VoHwRAMkaMjfk
-         6lrg==
+        b=B/apN2EoaTUkRmCM6MUbs16LxH60HfTvOfiRiyjtdGAqXhbjdU2b2xb00V78I8h6yh
+         gZSKo0DnCX5Qr7gCUfWQyPXECtO3NYkusTUKC+tPV70krHL97S6w0KMZwXOqbtu9oj/J
+         +62/KhWs1HjNw2RucTEGVoxEKItQLdFYFL/UzGKrc2z5+t+vlPlu+wNTFy+apu3bEcC4
+         6cFUIw7gwRh4Jx/s4QR5Oz+LxgYYVPSF5ZYUdFrSZozkarc59yEhwzkXyS0tDpnyJKLC
+         VbbwfMbRPERImkF+lNvzWrVVupsyROfNXWdERDe+TD5RpO95MkFhdN7RQsqIzNu6Jl9q
+         BaTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=IJcPcmBTlXv680lRxXxIAa1x+QW8hhus++pQyqguqCw=;
-        b=n7+pe44bRzj7v90rjl+2PsGI+LMqCTSGotHhsivA43FOgxX+5Edl4hZvkBlSFnP8MT
-         5nDyHckYpN3izkEJo9PTASTD/IhCM17DeqH8GIFmvg56C46TdYtK8cadSof7s7zMzPQG
-         VQt30cB9feqCTU3ZUcesP2Xqx4KjPc3sVhob+hWLrAsEFlvGpVvw3/lgCvL4AEmoBf94
-         TTB89YiJE0YjA4xdtjXEa4KtauDQmHkU3t933nc8XUDR40aFG/cuJSvr1QjW/T8wto3E
-         wN8lyKOwK7HGGvChmEeSCdS6Ko2JeOzlY0C9xBeF/I1bQXDVFO5gibbYRUoimPwyodFf
-         3obA==
+        bh=YRPx8k5aASvYP1xf6/9soHjF4TaI9K/GxMLKkwWKabI=;
+        b=UJJd5Ra7ApjHUiibRC6+/OKB4a0MHH11Z0qXnpVZznqVssSduUedzyGmXzQhwMlDZR
+         eNaHEh4aGWYCEA+MBWF51p3gJgopC6O3t0Kl00sN3WmvAqjW25UJlUY7vgyrzq6lawpy
+         5tYTM4xDjyQBi7ZXdaGjOnSGtSTqEPQfAxQbZ/CbkC3HzucNLIiMzSlxrt6IDtyiIQsv
+         PjhVA8nFjv0UGAUcFZ0/VYxan+8svpDa7JoKlbMJ61Va7lsmRvUoP1056Ywz2CwdfHyg
+         KzCbHAi1odSSOf3n2v9mUcx691NccZQIh2f7m2/Mpefd7vZFvMgzfo2WDHoX3yWSJvAZ
+         hmOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CfnwAl5U;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="V4Rhcr/4";
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id j13si3515709edw.440.2021.09.03.04.07.26
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id y7si6225063edm.197.2021.09.03.04.07.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 04:07:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 03 Sep 2021 04:07:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CfnwAl5U;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="V4Rhcr/4";
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630667245;
+	s=mimecast20190719; t=1630667252;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=IJcPcmBTlXv680lRxXxIAa1x+QW8hhus++pQyqguqCw=;
-	b=CfnwAl5Uy73PnPFbWIOSuCTs+/fY8KX/IeK2VPvD0jxp1XDiZAyfmgonbEBiECCmevPFM7
-	HzZI8zY6inLxkWdzKwzvGkkayfXCCulh46J1G4rUStLQzxoS/kyCE90XaNdhs2y0oQdgaV
-	14YHUCDuDo+eAFm7DB7c8hywb3BqGkE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-524-x2eJ4FGyPlKceCM04wP4vQ-1; Fri, 03 Sep 2021 07:07:24 -0400
-X-MC-Unique: x2eJ4FGyPlKceCM04wP4vQ-1
-Received: by mail-wr1-f70.google.com with SMTP id m16-20020a056000181000b0015964e4ae48so416219wrh.14
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:07:24 -0700 (PDT)
+	bh=YRPx8k5aASvYP1xf6/9soHjF4TaI9K/GxMLKkwWKabI=;
+	b=V4Rhcr/4SsJ/FFbJ/vIbye3amfK7eyvH2Yr0SX3vVMSwKpZ/gnKDFEtQ6YwpsAQ5jMFimc
+	Q4dTs3ZcRRTgbwbkXrmZ6MpHgMMMgLSFZGqq+IH66ro7EFcrjVOsQf+JLNz4fJWj7apbzD
+	Yi7AsQ1Yo021ka6Bf6dA4Hg7N1+v6UM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-383-SfcXP4sHOza4ruEZNnI0wg-1; Fri, 03 Sep 2021 07:07:29 -0400
+X-MC-Unique: SfcXP4sHOza4ruEZNnI0wg-1
+Received: by mail-wm1-f71.google.com with SMTP id f17-20020a05600c155100b002f05f30ff03so2524983wmg.3
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:07:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=IJcPcmBTlXv680lRxXxIAa1x+QW8hhus++pQyqguqCw=;
-        b=nAfLpjZgdnyZDM0PMG3ognPl7IEaF0/5K9kT8PJ9biVMVKpByzSz5eySn6vM/a1MBs
-         IZT7N3327VyTTbGqAbEW6d/JPF+lw0JCpgzBkvTvDZlu1mNcS/l1X1RJZY1ELEYZolUq
-         hLGpfLmHW/+5QmbHFiJ/zUZ4eHIjjLVcVrneoDTyCt9IksPKH6rn8+SoDdAYnjvKy6Tr
-         jbZk4jQJDExPj+YFFAgUuluGOoQKH+6IXlBJl39eHbVmdvYNfbQJhsq8EIx9FY6dyok+
-         p5xH8JuAXmT1pxBDBmCQoMSGT68n1QQ9oCOe83FnYkv+SvlwS9Iv0VTs/W1qX2SZRwTg
-         nTGA==
-X-Gm-Message-State: AOAM533tfMD9+OsXGYTKgchudVyKj9CjsXr/epPaDqcSkv+cvcRAT3e3
-	PIBPjpmds/1rHQkFj1/l6XStUf+7SvhsR16SuQdjgIJW+eZ4kGJzGSoyVSXa9ifcpLJmqxx2y3N
-	Kt0WEsA/cIBpqhuzY
-X-Received: by 2002:a7b:c014:: with SMTP id c20mr2767804wmb.81.1630667243359;
-        Fri, 03 Sep 2021 04:07:23 -0700 (PDT)
-X-Received: by 2002:a7b:c014:: with SMTP id c20mr2767781wmb.81.1630667243141;
-        Fri, 03 Sep 2021 04:07:23 -0700 (PDT)
+        bh=YRPx8k5aASvYP1xf6/9soHjF4TaI9K/GxMLKkwWKabI=;
+        b=EDlKqAzl/uwDp1DxutcE1/QGhUNRDcktSCD5HHBhmCDAaPEHQUZndwaeAb5hESxqQ4
+         HM0pKmbm/DZIIn2f+NVdiZtn24ZOz4k+r5LjYAM21U/p1bC4sINh98i24u4iLfeYoEXK
+         q18eDhVMTH9IOtB0hp+k2Hmb4i9TePVabx6yFcomChbTjI69VzV619vFV40HbnoFg7oZ
+         MCJQDbbCJXnfZVIDyeLtNVUtZLqk9SdYWgP+QpB2hQsvtnJEn0qJ9D9JQ8TTMachFHsX
+         i6s3VuHKIFZreSkQXqiljqIQ61kUABFB1pXOyOOr2d8Fi6KkEUnIIZV1901SL8Fv9enD
+         iZTQ==
+X-Gm-Message-State: AOAM532lOg4AaGjFRNAVlT23tK7TaZZE5mIwHcZS1kuAEwvHhcVC9Q8g
+	mFoGGWiGTsfIZvwM55xxwtxVuH/lyE9ukOHWR3pa+9t/Ldsv5MT51V6M7KVUMLR3O5WoD3KNS0A
+	jrTcMTzD5NDzRw58R
+X-Received: by 2002:a05:6000:92:: with SMTP id m18mr3355266wrx.293.1630667248769;
+        Fri, 03 Sep 2021 04:07:28 -0700 (PDT)
+X-Received: by 2002:a05:6000:92:: with SMTP id m18mr3355251wrx.293.1630667248603;
+        Fri, 03 Sep 2021 04:07:28 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id k25sm4747138wrd.42.2021.09.03.04.07.21
+        by smtp.gmail.com with ESMTPSA id f5sm4032824wmb.47.2021.09.03.04.07.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 04:07:22 -0700 (PDT)
+        Fri, 03 Sep 2021 04:07:28 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Hanna Reitz <hreitz@redhat.com>,
@@ -117,9 +117,9 @@ Cc: Hanna Reitz <hreitz@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	qemu-ppc@nongnu.org,
 	David Hildenbrand <david@redhat.com>
-Subject: [PATCH 03/28] qapi: Replace g_memdup() by g_memdup2_qemu()
-Date: Fri,  3 Sep 2021 13:06:37 +0200
-Message-Id: <20210903110702.588291-4-philmd@redhat.com>
+Subject: [PATCH 04/28] accel/tcg: Replace g_memdup() by g_memdup2_qemu()
+Date: Fri,  3 Sep 2021 13:06:38 +0200
+Message-Id: <20210903110702.588291-5-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903110702.588291-1-philmd@redhat.com>
 References: <20210903110702.588291-1-philmd@redhat.com>
@@ -130,7 +130,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8VasIUd9GSIO
+X-TUID: A5uXkYOKQmOT
 
 Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
 
@@ -146,95 +146,46 @@ Replace g_memdup() by the safer g_memdup2_qemu() wrapper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- qapi/qapi-clone-visitor.c | 16 ++++++++--------
- qapi/qapi-visit-core.c    |  6 ++++--
- 2 files changed, 12 insertions(+), 10 deletions(-)
+ accel/tcg/cputlb.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/qapi/qapi-clone-visitor.c b/qapi/qapi-clone-visitor.c
-index c45c5caa3b8..fb38505d982 100644
---- a/qapi/qapi-clone-visitor.c
-+++ b/qapi/qapi-clone-visitor.c
-@@ -37,7 +37,7 @@ static bool qapi_clone_start_struct(Visitor *v, const char *name, void **obj,
-         return true;
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index b1e5471f949..1d5069a30d1 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -826,7 +826,7 @@ void tlb_flush_range_by_mmuidx(CPUState *cpu, target_ulong addr,
+         tlb_flush_range_by_mmuidx_async_0(cpu, d);
+     } else {
+         /* Otherwise allocate a structure, freed by the worker.  */
+-        TLBFlushRangeData *p = g_memdup(&d, sizeof(d));
++        TLBFlushRangeData *p = g_memdup2_qemu(&d, sizeof(d));
+         async_run_on_cpu(cpu, tlb_flush_range_by_mmuidx_async_1,
+                          RUN_ON_CPU_HOST_PTR(p));
+     }
+@@ -868,7 +868,7 @@ void tlb_flush_range_by_mmuidx_all_cpus(CPUState *src_cpu,
+     /* Allocate a separate data block for each destination cpu.  */
+     CPU_FOREACH(dst_cpu) {
+         if (dst_cpu != src_cpu) {
+-            TLBFlushRangeData *p = g_memdup(&d, sizeof(d));
++            TLBFlushRangeData *p = g_memdup2_qemu(&d, sizeof(d));
+             async_run_on_cpu(dst_cpu,
+                              tlb_flush_range_by_mmuidx_async_1,
+                              RUN_ON_CPU_HOST_PTR(p));
+@@ -918,13 +918,13 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
+     /* Allocate a separate data block for each destination cpu.  */
+     CPU_FOREACH(dst_cpu) {
+         if (dst_cpu != src_cpu) {
+-            p = g_memdup(&d, sizeof(d));
++            p = g_memdup2_qemu(&d, sizeof(d));
+             async_run_on_cpu(dst_cpu, tlb_flush_range_by_mmuidx_async_1,
+                              RUN_ON_CPU_HOST_PTR(p));
+         }
      }
  
--    *obj = g_memdup(*obj, size);
-+    *obj = g_memdup2_qemu(*obj, size);
-     qcv->depth++;
-     return true;
+-    p = g_memdup(&d, sizeof(d));
++    p = g_memdup2_qemu(&d, sizeof(d));
+     async_safe_run_on_cpu(src_cpu, tlb_flush_range_by_mmuidx_async_1,
+                           RUN_ON_CPU_HOST_PTR(p));
  }
-@@ -65,8 +65,8 @@ static GenericList *qapi_clone_next_list(Visitor *v, GenericList *tail,
-     QapiCloneVisitor *qcv = to_qcv(v);
- 
-     assert(qcv->depth);
--    /* Unshare the tail of the list cloned by g_memdup() */
--    tail->next = g_memdup(tail->next, size);
-+    /* Unshare the tail of the list cloned by g_memdup2() */
-+    tail->next = g_memdup2_qemu(tail->next, size);
-     return tail->next;
- }
- 
-@@ -83,7 +83,7 @@ static bool qapi_clone_type_int64(Visitor *v, const char *name, int64_t *obj,
-     QapiCloneVisitor *qcv = to_qcv(v);
- 
-     assert(qcv->depth);
--    /* Value was already cloned by g_memdup() */
-+    /* Value was already cloned by g_memdup2() */
-     return true;
- }
- 
-@@ -93,7 +93,7 @@ static bool qapi_clone_type_uint64(Visitor *v, const char *name,
-     QapiCloneVisitor *qcv = to_qcv(v);
- 
-     assert(qcv->depth);
--    /* Value was already cloned by g_memdup() */
-+    /* Value was already cloned by g_memdup2() */
-     return true;
- }
- 
-@@ -103,7 +103,7 @@ static bool qapi_clone_type_bool(Visitor *v, const char *name, bool *obj,
-     QapiCloneVisitor *qcv = to_qcv(v);
- 
-     assert(qcv->depth);
--    /* Value was already cloned by g_memdup() */
-+    /* Value was already cloned by g_memdup2() */
-     return true;
- }
- 
-@@ -114,7 +114,7 @@ static bool qapi_clone_type_str(Visitor *v, const char *name, char **obj,
- 
-     assert(qcv->depth);
-     /*
--     * Pointer was already cloned by g_memdup; create fresh copy.
-+     * Pointer was already cloned by g_memdup2; create fresh copy.
-      * Note that as long as qobject-output-visitor accepts NULL instead of
-      * "", then we must do likewise. However, we want to obey the
-      * input visitor semantics of never producing NULL when the empty
-@@ -130,7 +130,7 @@ static bool qapi_clone_type_number(Visitor *v, const char *name, double *obj,
-     QapiCloneVisitor *qcv = to_qcv(v);
- 
-     assert(qcv->depth);
--    /* Value was already cloned by g_memdup() */
-+    /* Value was already cloned by g_memdup2() */
-     return true;
- }
- 
-diff --git a/qapi/qapi-visit-core.c b/qapi/qapi-visit-core.c
-index a641adec51e..ebabe63b6ea 100644
---- a/qapi/qapi-visit-core.c
-+++ b/qapi/qapi-visit-core.c
-@@ -413,8 +413,10 @@ bool visit_type_enum(Visitor *v, const char *name, int *obj,
-     case VISITOR_OUTPUT:
-         return output_type_enum(v, name, obj, lookup, errp);
-     case VISITOR_CLONE:
--        /* nothing further to do, scalar value was already copied by
--         * g_memdup() during visit_start_*() */
-+        /*
-+         * nothing further to do, scalar value was already copied by
-+         * g_memdup2() during visit_start_*()
-+         */
-         return true;
-     case VISITOR_DEALLOC:
-         /* nothing to deallocate for a scalar */
 -- 
 2.31.1

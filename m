@@ -1,67 +1,67 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1612121lfb;
-        Fri, 3 Sep 2021 12:53:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwPpOik6Gnz/c+gib02FJErxmejshWj6bcuG8P/FOdeUhdLljIn4nkTyorxxEw3OBjvYWf
-X-Received: by 2002:a25:ba0f:: with SMTP id t15mr952535ybg.15.1630698780547;
-        Fri, 03 Sep 2021 12:53:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630698780; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1612208lfb;
+        Fri, 3 Sep 2021 12:53:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxGgWDX9senXMaogoUctFhnLtDxESg7T9hccpgYc3S4+rgW/L9jD8mFIWhGHkDcfdSnFAtU
+X-Received: by 2002:a25:a527:: with SMTP id h36mr977820ybi.326.1630698783457;
+        Fri, 03 Sep 2021 12:53:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630698783; cv=none;
         d=google.com; s=arc-20160816;
-        b=zQ0whd7ihdAP+MCLlcOzzkbl9cjEuq/GYSLQNeK9sain2jF2wnYYZj8A0wSS7n+j1b
-         BVbuj325ZmLF6SE0DdQkeovsEFiBVbUHnkzpR1JKsAvjhlkrCuslOyXq0QiIa0PYaw0g
-         6oV8BF94AA868Xg8yUSjdoNU/VpBJ1Czj5URG98qoL9/Zijyj6qe8SUnNKVLdKYeXnYZ
-         G3F2o0klgip2vPZMRT3xQTSYTjWUusWnq97Oqw0SNXP53XRO3iOZ2IdXniIobYGZNk1V
-         zUTDcTheqADcPdvSQ6jKPv7+M2EiOmW4zYR/f5ZME0arje2K1xrgMIi8iZI8JdpdW24N
-         ipnw==
+        b=MBvD/AXAce6Yp3PYw0v8XPuc5NKUH2LXSXCxbsxDxU+83akWm2TjI0Q2rk9Dd6vMq5
+         CpdqxFPNdEFcerxYTpxWoHEJfN7TRJhRC1g0KXekhOni3nXpaqyW76ZfLM5X/H64/gus
+         gitvs5I38QZQIsutW+24gIhDYLX+qYNJ9UYf8zEi04YTROUPfW8cuhW1yjvSxaDHhij+
+         gwYfC8XAwjB6nYKj/04n2NivF3FG52Iy/1iCOPKXiymXskfFDqCr0+hQT5pJ80RZz2JU
+         FB/zMnIhwuy5xYEclFJTyFJvL/jM7lVqw81xAxxNY051I4cBjBB/0O4vIf/BvfH7+6AM
+         6AuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=3d4gR1wBln2H8pcXFN1TcAuGpIkQ95GXrC8Q+NYnopI=;
-        b=nMt9vRpcdyx5Cnwx49bzsSX9j7NwU7TMLTqeHfbYmF8i12Gz5XIKkx0gLMEFJrDC6H
-         8KUGyGknKa6af38wSJyJE9uFqej1WuBWQKvbWw7Mw3y8tQroIy2fFR/UhVVx/64VZC5+
-         EVPuxRbVs5OBzhViWXyQppnrp0ihDUXa73EJKQ5f9VACQrGVj218n1ca12OqbSJTr6Al
-         t2pO3c8s2Tfnbu3HcYSFmzO4ll9rPKBqaIJxDlBm5LZ15XwBapmj+OIzKlEW5XEkVheB
-         zlzwUppD1Mc6OnrSj342vR6k8soiwtUkTN/Yz85obOSytQ8b5ShDhD10kQ1paHqRGqWs
-         NfFg==
+        bh=3cDjnX4ByC1VOLKM3XpP6b/Cnf92wxso3EpvqWgHje8=;
+        b=di/+VioOqbE8p/IXmEE2T4GPxHaA385jnWwjI6QYXHrT38FD99wLJsEuq8snZodS9J
+         h8pv3+cNL4isiSfaeVT7uSI4t4DOR0XgdlTnnRVGx/jY2a5dNlKPgDbqte0T2J6XR0hp
+         Oig5DRr2JomaxqQ9p3WDmAnXstJeTphdy5Cju2smzZ/QPAKCt6rMdqdqW3lXiaTyTUwF
+         QnJJ0ihYhMcEiZpdZ9Vg/n+KscMd5SyXtjnfDgZQyDlnZMgajRB1wLJ6wCBOirO5e9bd
+         jHmKWqtx1/tc3p5UNY9I8tGMU9dsULLnr5+AcgWgPJxKg1J/LiuOqNZG5uxhEnu2x9e5
+         v92A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m16si191480ybp.436.2021.09.03.12.53.00
+        by mx.google.com with ESMTPS id l203si206346ybc.359.2021.09.03.12.53.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 12:53:00 -0700 (PDT)
+        Fri, 03 Sep 2021 12:53:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37664 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37906 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMFFD-00022s-Pe
-	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:52:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44224)
+	id 1mMFFG-0002D0-NE
+	for alex.bennee@linaro.org; Fri, 03 Sep 2021 15:53:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF46-0004HS-RX; Fri, 03 Sep 2021 15:41:33 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:35349)
+ id 1mMF45-0004Ef-VE; Fri, 03 Sep 2021 15:41:29 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:52697)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMF40-0002Hd-3v; Fri, 03 Sep 2021 15:41:30 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.7])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id BE615BC4DEF3;
- Fri,  3 Sep 2021 21:41:13 +0200 (CEST)
+ id 1mMF3z-0002I4-MF; Fri, 03 Sep 2021 15:41:29 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.36])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 2FFE1BC4DEF6;
+ Fri,  3 Sep 2021 21:41:14 +0200 (CEST)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 3 Sep
- 2021 21:41:12 +0200
+ 2021 21:41:13 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G00504116475-065d-4e33-91eb-723412cfc0a0,
+ (GARM-103G005c309d292-6b58-46a8-a61d-d317df9a7662,
  15E2C03324B5D6AD2543493448FEC157D625CB40) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 06/14] hw: aspeed_gpio: Clarify GPIO controller name
-Date: Fri, 3 Sep 2021 21:41:00 +0200
-Message-ID: <20210903194108.131403-7-clg@kaod.org>
+Subject: [PULL 08/14] arm/aspeed: rainier: Add i2c eeproms and muxes
+Date: Fri, 3 Sep 2021 21:41:02 +0200
+Message-ID: <20210903194108.131403-9-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903194108.131403-1-clg@kaod.org>
 References: <20210903194108.131403-1-clg@kaod.org>
@@ -71,8 +71,8 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: f9e9d424-7c97-4f81-997a-2b20531365b3
-X-Ovh-Tracer-Id: 8816077746738662249
+X-Ovh-Tracer-GUID: 1dbb964a-8cb6-4a8a-9efa-9d4d217deb9e
+X-Ovh-Tracer-Id: 8816359223823534886
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvjedgudefkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
@@ -96,119 +96,142 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Rashmica Gupta <rashmica.g@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: idRNaedESA+r
+X-TUID: euGAaEN0S77a
 
 From: Joel Stanley <joel@jms.id.au>
 
-There are two GPIO controllers in the ast2600; one is 3.3V and the other
-is 1.8V.
+These are the devices documented by the Rainier device tree. With this
+we can see the guest discovering the multiplexers and probing the eeprom
+devices:
+
+ i2c i2c-2: Added multiplexed i2c bus 16
+ i2c i2c-2: Added multiplexed i2c bus 17
+ i2c i2c-2: Added multiplexed i2c bus 18
+ i2c i2c-2: Added multiplexed i2c bus 19
+ i2c-mux-gpio i2cmux: 4 port mux on 1e78a180.i2c-bus adapter
+ at24 20-0050: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+ i2c i2c-4: Added multiplexed i2c bus 20
+ at24 21-0051: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+ i2c i2c-4: Added multiplexed i2c bus 21
+ at24 22-0052: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Rashmica Gupta <rashmica.g@gmail.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210713065854.134634-4-joel@jms.id.au>
+[ clg: Introduced aspeed_eeprom_init ]
+Message-Id: <20210629142336.750058-2-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/gpio/aspeed_gpio.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ hw/arm/aspeed.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index dc721aec5da7..dfa6d6cb40a9 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -164,12 +164,12 @@
- #define GPIO_YZAAAB_DIRECTION      (0x1E4 >> 2)
- #define GPIO_AC_DATA_VALUE         (0x1E8 >> 2)
- #define GPIO_AC_DIRECTION          (0x1EC >> 2)
--#define GPIO_3_6V_MEM_SIZE         0x1F0
--#define GPIO_3_6V_REG_ARRAY_SIZE   (GPIO_3_6V_MEM_SIZE >> 2)
-+#define GPIO_3_3V_MEM_SIZE         0x1F0
-+#define GPIO_3_3V_REG_ARRAY_SIZE   (GPIO_3_3V_MEM_SIZE >> 2)
- 
- /* AST2600 only - 1.8V gpios */
- /*
-- * The AST2600 two copies of the GPIO controller: the same 3.6V gpios as the
-+ * The AST2600 two copies of the GPIO controller: the same 3.3V gpios as the
-  * AST2400 (memory offsets 0x0-0x198) and a second controller with 1.8V gpios
-  * (memory offsets 0x800-0x9D4).
-  */
-@@ -380,7 +380,7 @@ static uint32_t update_value_control_source(GPIOSets *regs, uint32_t old_value,
-     return new_value;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 20e3a7716006..952fb2012a53 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -674,9 +674,21 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+                           eeprom_buf);
  }
  
--static const AspeedGPIOReg aspeed_3_6v_gpios[GPIO_3_6V_REG_ARRAY_SIZE] = {
-+static const AspeedGPIOReg aspeed_3_3v_gpios[GPIO_3_3V_REG_ARRAY_SIZE] = {
-     /* Set ABCD */
-     [GPIO_ABCD_DATA_VALUE] =     { 0, gpio_reg_data_value },
-     [GPIO_ABCD_DIRECTION] =      { 0, gpio_reg_direction },
-@@ -800,7 +800,7 @@ static const GPIOSetProperties ast2500_set_props[] = {
-     [7] = {0x000000ff,  0x000000ff,  {"AC"} },
- };
- 
--static GPIOSetProperties ast2600_3_6v_set_props[] = {
-+static GPIOSetProperties ast2600_3_3v_set_props[] = {
-     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -927,7 +927,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 216;
-     agc->nr_gpio_sets = 7;
-     agc->gap = 196;
--    agc->reg_table = aspeed_3_6v_gpios;
-+    agc->reg_table = aspeed_3_3v_gpios;
- }
- 
- static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-@@ -938,17 +938,17 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 228;
-     agc->nr_gpio_sets = 8;
-     agc->gap = 220;
--    agc->reg_table = aspeed_3_6v_gpios;
-+    agc->reg_table = aspeed_3_3v_gpios;
- }
- 
--static void aspeed_gpio_ast2600_3_6v_class_init(ObjectClass *klass, void *data)
-+static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
++static void aspeed_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
++{
++    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
++    DeviceState *dev = DEVICE(i2c_dev);
++
++    qdev_prop_set_uint32(dev, "rom-size", rsize);
++    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
++}
++
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
  {
-     AspeedGPIOClass *agc = ASPEED_GPIO_CLASS(klass);
+     AspeedSoCState *soc = &bmc->soc;
++    I2CSlave *i2c_mux;
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB);
  
--    agc->props = ast2600_3_6v_set_props;
-+    agc->props = ast2600_3_3v_set_props;
-     agc->nr_gpio_pins = 208;
-     agc->nr_gpio_sets = 7;
--    agc->reg_table = aspeed_3_6v_gpios;
-+    agc->reg_table = aspeed_3_3v_gpios;
+     /* The rainier expects a TMP275 but a TMP105 is compatible */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+@@ -685,11 +697,20 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+                      0x49);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+                      0x4a);
++    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
+                      0x49);
++    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
+                      0x48);
+@@ -697,6 +718,12 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+                      0x4a);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
+                      0x4b);
++    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6),
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
+ 
+     /* Bus 7: TODO dps310@76 */
+     /* Bus 7: TODO max31785@52 */
+@@ -704,11 +731,15 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     /* Bus 7: TODO si7021-a20@20 */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
+                      0x48);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+                      0x4a);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x61);
+     /* Bus 8: ucd90320@11 */
+     /* Bus 8: ucd90320@b */
+@@ -716,14 +747,27 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
+                      0x49);
++    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB);
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB);
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
  }
  
- static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-@@ -984,10 +984,10 @@ static const TypeInfo aspeed_gpio_ast2500_info = {
-     .instance_init  = aspeed_gpio_init,
- };
- 
--static const TypeInfo aspeed_gpio_ast2600_3_6v_info = {
-+static const TypeInfo aspeed_gpio_ast2600_3_3v_info = {
-     .name           = TYPE_ASPEED_GPIO "-ast2600",
-     .parent         = TYPE_ASPEED_GPIO,
--    .class_init     = aspeed_gpio_ast2600_3_6v_class_init,
-+    .class_init     = aspeed_gpio_ast2600_3_3v_class_init,
-     .instance_init  = aspeed_gpio_init,
- };
- 
-@@ -1003,7 +1003,7 @@ static void aspeed_gpio_register_types(void)
-     type_register_static(&aspeed_gpio_info);
-     type_register_static(&aspeed_gpio_ast2400_info);
-     type_register_static(&aspeed_gpio_ast2500_info);
--    type_register_static(&aspeed_gpio_ast2600_3_6v_info);
-+    type_register_static(&aspeed_gpio_ast2600_3_3v_info);
-     type_register_static(&aspeed_gpio_ast2600_1_8v_info);
- }
- 
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
 -- 
 2.31.1
 

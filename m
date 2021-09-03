@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1516064lfb;
-        Fri, 3 Sep 2021 10:46:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzt9bNDp4eTPBKEDBc+UVLt6e8Bw+iqrY66Y8W24AGq4xDCRVnff6axa/Q2uUn55ID3DNJ0
-X-Received: by 2002:a17:906:11cc:: with SMTP id o12mr16480eja.277.1630691213004;
-        Fri, 03 Sep 2021 10:46:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630691213; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1516126lfb;
+        Fri, 3 Sep 2021 10:46:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPVPkRbD8Eri5dzwOtUqDGQbuoWhNIrtzdwFytg21Hf5zvvB8KLuMygL/YJHjimILQyKL9
+X-Received: by 2002:aa7:c1ca:: with SMTP id d10mr183010edp.294.1630691218335;
+        Fri, 03 Sep 2021 10:46:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630691218; cv=none;
         d=google.com; s=arc-20160816;
-        b=GREGxSYyfLIZzOIjjBVTeoiEMN8d0zF7QBlQNu1CI0kOX4pisVJQSjNJVFqkjoL3x1
-         yjnRCukFCDEH4OLRurI+foqQt4BqlushU7rWH5l5yjoK83jcBFdEm6Iro+h4FF3oy1no
-         B3l7dZg3ZaHUFzru7vBPxRqNh4ilnbA44Bi/jGnyW6m2slLHNjLixGldHX3P4ngqm6K7
-         4HQeGtALGQPZVx7KGKVxsy2hXpJwZRmxnoI4yjl1HnBwEld4QzN1QbIzADKuUEmXsFq7
-         D//Ew91hQFLP3p7MuB2WjGY07NP8iC0MGyNwGc5z/Oaljzf2/4KyETivoRcbLlx20z/3
-         pmHg==
+        b=FKErdqIxAlVtV25a1uoKQXl05hd/hJpndGf2k2udokgR/TceUHyByZ9NpgCW2Rccev
+         w6aDk73I0cvFSx5+Ux82yxOpvu8T+ElnCRx5WV4tXZ9XnmweergeGAhjtAWclj0qi425
+         /itUk/G8MUg4QUBl1SYrL7Zqx7Y9CG2F5Gagj34ihFxdxe3fZdCRgFWy9fdHnmInugoR
+         DGri1UMDxl0NNTGZkvrXDFXeYVnaozitnnAduOTHY/Wn+LXsF/B67ZNC/+RMw1iTdW2k
+         Jrx8JgCMTD2eBtHjkfrMw1Lma3mmBKIaJZzC+djVfFUoznOPuDWWr+SMCdPtQDIbMJ3X
+         qIcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=rzFMsSs1nd+aiUV96h1dpanaGme0JuJTgHaVGdLrH2M=;
-        b=HpnZhR8j+cX43s0ntYrvdPSu2RdlGdA+XeQSMCZY1WHgGEmUCxAnM28LoeRdWp4+rB
-         vbEEI0VwZt8u2IH8KFt65xDQNBPrKXAu6SrQUhD4vTRcnPdBjGWexUyH9QzP5FULSmmE
-         kJZmvSjPHFYeU2EdkBU3ivc+gC+8ZKfU+RQZO7TPadp2sFuN3pm4DXIW3taVFkVwOy3d
-         vTUfxj3Ra2fbgbazNvMqI4lFXdDOlFD0ggKlAQKlYLyvOmeyY+afwtjKu+hb0BKNJDVc
-         ldJZ+ucUc4UZcSw0vye9QUgV3R7r056bN5fQmLn6SLewH1VydgeWi26BQgsa9Ua0qULM
-         FITg==
+        bh=o2TJ5bgBbqJh6moqyxGQ53K360Y/vHE7RhxA+Q/Y7Gk=;
+        b=lIAJW8ATVlC41Y4C3f2MlOzzYA50Ud2FCVIy1RBnX0jyD8CzZiNtoFWOtYvslgm7Bl
+         Wrk3LlN7v5xtBKSb+KX9iCQ02oN5o1RdTlnY9gNosLqgScJ68nfl1oSY6X70MYkV9kc8
+         JS91wk1apAKczzfKGiKTzYEVos8hSiF+3+yrZmgtVEMhGqnXmRZmQxWIcF+s13plRTqI
+         lgs29O4915AH/1SFJhAXhtsgrDrokJQStVeWp8SFFwo0p0N2vBXawBxQdNfcMMS/3zg3
+         Ti6+QTmn2r5yBvhiQCcRl17s4AqqygIdA84Y4uhiUhmW/h8WBJpuGvnze55ScdoCWDxy
+         DfJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EWaxzTNb;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OdLizQln;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id au25si7017226ejc.642.2021.09.03.10.46.52
+        by mx.google.com with ESMTPS id dp16si1230142ejc.760.2021.09.03.10.46.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 10:46:52 -0700 (PDT)
+        Fri, 03 Sep 2021 10:46:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EWaxzTNb;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OdLizQln;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630691212;
+	s=mimecast20190719; t=1630691217;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=rzFMsSs1nd+aiUV96h1dpanaGme0JuJTgHaVGdLrH2M=;
-	b=EWaxzTNbATESbdFqP75y4riFOexBMt7MlUBiac+n5dFsJjzeVc75RSmM2u3slZ2DjDT4Fj
-	KwARGyvxtSrFVHP1m29t99XpxGDdkRZeg7D5M1aTyPCk8b+I3SLjzuKizj5qXcg0o0Mc/9
-	I0878V59DeSEDbyyHP/NrYoHyI57rLs=
+	bh=o2TJ5bgBbqJh6moqyxGQ53K360Y/vHE7RhxA+Q/Y7Gk=;
+	b=OdLizQlnKCZvb1BHzj0lHC7wZqQ2cKPrwciy4IBWfFDhuzW4+lyy+Va8MRSq/BvF/yBsyG
+	1BD9q5m2N3o10TdUN4l0xlpYI4yh5zqhGlOjrUfXgTIJFBwEEGegct5R7UHCXEVDNWlchs
+	73Oc1jTTC92k/Cu9N16tOFsJh3DaLQ8=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-404-niz8oK9fOdeR8nBvyvWDxw-1; Fri, 03 Sep 2021 13:46:50 -0400
-X-MC-Unique: niz8oK9fOdeR8nBvyvWDxw-1
-Received: by mail-wm1-f71.google.com with SMTP id m16-20020a7bca50000000b002ee5287d4bfso39192wml.7
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:46:50 -0700 (PDT)
+ us-mta-426-CD15mYz0M32zrsEKLNpWHA-1; Fri, 03 Sep 2021 13:46:56 -0400
+X-MC-Unique: CD15mYz0M32zrsEKLNpWHA-1
+Received: by mail-wm1-f71.google.com with SMTP id x125-20020a1c3183000000b002e73f079eefso74372wmx.0
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:46:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=rzFMsSs1nd+aiUV96h1dpanaGme0JuJTgHaVGdLrH2M=;
-        b=X7UJjYHh8xhK06v+k75VUfPQPxP3Rcc1xdgmfouprUI32v4ayVZWKVAZBZg6aR5mId
-         sjHm7kCla9dHgc9bJwm08Ldbe8Z7vuV9b3iyIkwpCSRQhKhaAf9HaSJcSktyHOGfJODx
-         xDRow8AXPsd7/WHPHhwNZ3yeZBJyq0cjQNNtLeGMxpFQUWIS4SbUu72Krsoj2JKbYkzA
-         Tm8I3CrPgNbB0MwP2zhO7PlHm25fN1e3YjZiyG7icWqUupicelRhzR+oGWwGzYzAMmae
-         x+OPdBC4uQRO4C33DkK30Be4htCSMoD6hpHMDq3sDt7wvXvc/tHv81mYNFrRenpHKJcN
-         V30Q==
-X-Gm-Message-State: AOAM532+xzZcVqQAaLevQHnVQa90ObalbvRCBduymvn8yLOTszZQZOmc
-	YPgdJDCGDr01mbRmeJ5aPAn010UxvaZHI5rk1YL64FdqTGwcJMhP/OO+RiJz4nii42bp3QwvxaG
-	P76ALfSV3yaExrAK+
-X-Received: by 2002:adf:fd0a:: with SMTP id e10mr315720wrr.2.1630691209780;
-        Fri, 03 Sep 2021 10:46:49 -0700 (PDT)
-X-Received: by 2002:adf:fd0a:: with SMTP id e10mr315703wrr.2.1630691209642;
-        Fri, 03 Sep 2021 10:46:49 -0700 (PDT)
+        bh=o2TJ5bgBbqJh6moqyxGQ53K360Y/vHE7RhxA+Q/Y7Gk=;
+        b=ECkYUIfozBBOluT91lY0RJ/UhxG0McwNe8fqMD5imbFbi+E5xDLvoRx35o3mGrBrPy
+         I0AhHVmAE52itZtY7Y2efQ68xQAckipnXdUMnoeaOOSgtFkV3NXQ7hPXaerq9LUzXr92
+         9jsriU4BM07d0YjWqraaM6isT0MqlUp1jjT8tNOcDVBHsd6AjxbhZHxhq3Uu+bqwsqD5
+         APYPyMFB/Rn6dCOLs0ys1BiqxHrDowewgOXzo1pSsa9dSPUyRW0ItA+CeuwKxOxBNgQW
+         2bwvmN9YSRYwozOGEjsyFG2DFhGaGYxpHq5JM3jy+BgPbiROCjnLZRWv/c/E+FDIayH5
+         QmQw==
+X-Gm-Message-State: AOAM530EwsBnTkOgOaESq7YVIVAOIc0/QJU2AXCMCeOwbJkAMkrl2r+l
+	iPFjBj9QK87jwRCuP/SvfRAXwaqo+nZ+HKXY++KwQFmY0TIKw7SdbQRXNRRAu5mnQTn/i9b6eXt
+	imtt3CoR5qrAsoiFS
+X-Received: by 2002:a05:600c:3b0e:: with SMTP id m14mr43400wms.118.1630691215088;
+        Fri, 03 Sep 2021 10:46:55 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b0e:: with SMTP id m14mr43368wms.118.1630691214854;
+        Fri, 03 Sep 2021 10:46:54 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id f20sm23207wml.38.2021.09.03.10.46.48
+        by smtp.gmail.com with ESMTPSA id y15sm94518wmi.18.2021.09.03.10.46.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 10:46:49 -0700 (PDT)
+        Fri, 03 Sep 2021 10:46:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -102,9 +102,9 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	qemu-block@nongnu.org,
 	qemu-ppc@nongnu.org,
 	"Daniel P . Berrange" <berrange@redhat.com>
-Subject: [PATCH v3 18/28] hw/vfio/pci: Replace g_memdup() by g_memdup2()
-Date: Fri,  3 Sep 2021 19:45:00 +0200
-Message-Id: <20210903174510.751630-19-philmd@redhat.com>
+Subject: [RFC PATCH v3 19/28] hw/virtio: Replace g_memdup() by g_memdup2()
+Date: Fri,  3 Sep 2021 19:45:01 +0200
+Message-Id: <20210903174510.751630-20-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903174510.751630-1-philmd@redhat.com>
 References: <20210903174510.751630-1-philmd@redhat.com>
@@ -115,7 +115,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: gSib/m7Wi7fG
+X-TUID: A19c8XZjsE2+
 
 Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
 
@@ -131,21 +131,52 @@ Replace g_memdup() by the safer g_memdup2() wrapper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/vfio/pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Should we check in_num/out_num in range?
+---
+ hw/net/virtio-net.c       | 3 ++-
+ hw/virtio/virtio-crypto.c | 6 +++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index e1ea1d8a23b..f7d0ef8cc61 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -2040,7 +2040,7 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
-      * physical device, we cache the config space to avoid overwriting
-      * the original config space when we parse the extended capabilities.
-      */
--    config = g_memdup(pdev->config, vdev->config_size);
-+    config = g_memdup2(pdev->config, vdev->config_size);
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index 16d20cdee52..338fbeb8c57 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -1449,7 +1449,8 @@ static void virtio_net_handle_ctrl(VirtIODevice *vdev, VirtQueue *vq)
+         }
  
-     /*
-      * Extended capabilities are chained with each pointing to the next, so we
+         iov_cnt = elem->out_num;
+-        iov2 = iov = g_memdup(elem->out_sg, sizeof(struct iovec) * elem->out_num);
++        iov2 = iov = g_memdup2(elem->out_sg,
++                               sizeof(struct iovec) * elem->out_num);
+         s = iov_to_buf(iov, iov_cnt, 0, &ctrl, sizeof(ctrl));
+         iov_discard_front(&iov, &iov_cnt, sizeof(ctrl));
+         if (s != sizeof(ctrl)) {
+diff --git a/hw/virtio/virtio-crypto.c b/hw/virtio/virtio-crypto.c
+index 54f9bbb789c..59886c1790d 100644
+--- a/hw/virtio/virtio-crypto.c
++++ b/hw/virtio/virtio-crypto.c
+@@ -242,7 +242,7 @@ static void virtio_crypto_handle_ctrl(VirtIODevice *vdev, VirtQueue *vq)
+         }
+ 
+         out_num = elem->out_num;
+-        out_iov_copy = g_memdup(elem->out_sg, sizeof(out_iov[0]) * out_num);
++        out_iov_copy = g_memdup2(elem->out_sg, sizeof(out_iov[0]) * out_num);
+         out_iov = out_iov_copy;
+ 
+         in_num = elem->in_num;
+@@ -605,11 +605,11 @@ virtio_crypto_handle_request(VirtIOCryptoReq *request)
+     }
+ 
+     out_num = elem->out_num;
+-    out_iov_copy = g_memdup(elem->out_sg, sizeof(out_iov[0]) * out_num);
++    out_iov_copy = g_memdup2(elem->out_sg, sizeof(out_iov[0]) * out_num);
+     out_iov = out_iov_copy;
+ 
+     in_num = elem->in_num;
+-    in_iov_copy = g_memdup(elem->in_sg, sizeof(in_iov[0]) * in_num);
++    in_iov_copy = g_memdup2(elem->in_sg, sizeof(in_iov[0]) * in_num);
+     in_iov = in_iov_copy;
+ 
+     if (unlikely(iov_to_buf(out_iov, out_num, 0, &req, sizeof(req))
 -- 
 2.31.1

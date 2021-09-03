@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1173978lfb;
-        Fri, 3 Sep 2021 04:07:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzwfizlcfI4n5+aBTIm3evfBwJ4lUkjnW01lrYZGieUyC5VFSCjhfa12n6gawzBzFaF+ffZ
-X-Received: by 2002:a17:907:7785:: with SMTP id ky5mr3589086ejc.247.1630667268811;
-        Fri, 03 Sep 2021 04:07:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630667268; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1174072lfb;
+        Fri, 3 Sep 2021 04:07:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzx1kx2mPFqo71XObBScrlEcpdEffPKFI+Y8fSwqq2+4RjjS2CW9FPOmoZ6V+YCtwRqrq5
+X-Received: by 2002:a17:906:4c89:: with SMTP id q9mr3616826eju.118.1630667276497;
+        Fri, 03 Sep 2021 04:07:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630667276; cv=none;
         d=google.com; s=arc-20160816;
-        b=J0nD1v7L2ZyDEVJJ1SF+ILsyrISfRehZiwq/JmJbK47T3nzaDAuLRwTdMGHK0dB0j8
-         oImbgB9qjrlME5akazvsMLZbYgm31AZSVnoo2QgZyGS/1d46SJFSNhKw52bCG/2y3JsP
-         RX8KlLxtVrkIQz5PtzwLhWKqNFvyx6Qnl5TJlNPvHObtIuz6EKS5oLv1uivnveZ2NA2M
-         rStZonANhkfMxqSGGGAPHnOFz0+bWY1EAr/V92/DPJa81tMLVJQME7K49SmfzLnTqfbu
-         a0F2UtGC3W4Op+bSkANz9sWnQDl5vR47+uPvhxNvwdEbkNfvLpr7KzMNjku6C//rzbRi
-         8C3A==
+        b=zyK3AbEVjh1sw+RvpXCGVPm6F19VhpTBiYucnqCu3qR+AimOAsXvzkpdzhTOKPLcT7
+         X0JhmURY5YVE0c5VXQmbhHocSnNsEuVr0bN5xoL3WepIp8nwsRQ/BZ/gkRX1OXMYbEgI
+         RgMbRualBNuiJT58334SMSEdENxEvuh4VMBcFrR8+6MaYiof0FaCoge5gj8uy0KBiUhh
+         g8CrxDXLP0xebZyJhGMvk88/WXinoGAtflkGrn084xsHmSoTSnxsfKtYEPzY6aCRQi+u
+         4tHVMr96a6TP4zFq4ruYmP1wGidify36a154o2lJjqHBH48G6y0RqCR7uX3cdMnox8vy
+         p70g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=E9PypJHZFiMU1wwHSEPf1Pz6upK9EcgUKxTQXXjwTWw=;
-        b=BDt0ZRgZQ0bkxfXf6PmLcaOWYoZ/zGwDgWWivb6JCg+7TiPvdFCyHbGggdsIGODauX
-         2WBkrvxEyDbZWh/ItIr02v3c0oIHFHf3CAW2nzFo5Lyf6IPy1bwFDvG6DOBX6rDHKwq5
-         puVFX8bmQVTHOwEVT8Q2RZp6kYb94FkiHgjVdAy8Dp2yjh637O4IzRd77Y2J3w9orCPe
-         3/ANLhlissBe712lrysUdt1KqHKVFgIonY4KGU+vC7gdoCymG96JIeKOJSdqEBuJleOv
-         I9N0lqdpc/0IasyVyNhVrvwseFnxTq49uH8emSx15YeTaFMEGmD6V3Z1jhsl2c2EbeMT
-         2/pQ==
+        bh=6osDXRphDo8TIq2I2JrJLj4Iq8ymwMld3GU8FS2XmwE=;
+        b=S4OdIXR2DXD/PS+FN4ee+KTjjqp+RY+u16RnzVZS4gpGxAjmoJ8yZ5NV0RJm+FMvCu
+         Qu3waZNxgHlEa1QngZ6MmLyvq5mye0X4gPy8JSnXji2nxA69vwhKoVJNBrHq4tLMc36O
+         Z96WJ4x3sb+eYYTygNlU//gc5eadDNSI5ANBUrBWcTPe98tsnwQQOV48U1d/7iDe/tOu
+         h91nCQEpDLaeN35TpVvLsyW87ZcQSEkx1/gXWAMZbaiqC/xfSQSr+7R+eCFqQEaMrG5V
+         jMU9WKZeVky8CxXmNzzhiTwz1rwuQKaxPNwe2mpoRspgt6iIin+NL7jE4X9pR9SSd7Lx
+         bz6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSRKkGqv;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/RsAjjm";
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id t14si4773828edw.213.2021.09.03.04.07.48
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id h15si5150568ede.550.2021.09.03.04.07.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 04:07:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Fri, 03 Sep 2021 04:07:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSRKkGqv;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/RsAjjm";
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630667267;
+	s=mimecast20190719; t=1630667275;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=E9PypJHZFiMU1wwHSEPf1Pz6upK9EcgUKxTQXXjwTWw=;
-	b=GSRKkGqvlIogjHFds+ZsksoNN2PBmHOpXGybVcc/N8xVWfkQ91KCnAsj7+P20BVb2psImS
-	lCNOWk1XKpJWc3Jj7ogqGhf+MiQonaheIW1unLC8fByzWk1lAlC7kTOppt8rELWuN4XXTv
-	ZV2jqY6KsXajDITwVRrTy6UQy9aB4+g=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-431-EdOqh2q9NjWpP4JZUTe7bQ-1; Fri, 03 Sep 2021 07:07:46 -0400
-X-MC-Unique: EdOqh2q9NjWpP4JZUTe7bQ-1
-Received: by mail-wm1-f71.google.com with SMTP id c2-20020a7bc8420000b0290238db573ab7so2518030wml.5
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:07:46 -0700 (PDT)
+	bh=6osDXRphDo8TIq2I2JrJLj4Iq8ymwMld3GU8FS2XmwE=;
+	b=K/RsAjjmcwmdhv/Pljpc4h1QiW26qVIPBPaNE/pw0ByKbLGpCTQ2QNeglA9Pob+TmYtSSY
+	6XKRcXQ/XSbxJv6qWuWyWUcRbM3p0VBDvRB0w79+KmvDgB+vo8g0yoYE7P9n8zUeErjmhN
+	tvhTwyFmPenlQDC/tIHmnOCcFhcxnxI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-154-zj74yHxEM_GXx85p0K2--g-1; Fri, 03 Sep 2021 07:07:52 -0400
+X-MC-Unique: zj74yHxEM_GXx85p0K2--g-1
+Received: by mail-wm1-f70.google.com with SMTP id v2-20020a7bcb420000b02902e6b108fcf1so2511736wmj.8
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 04:07:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=E9PypJHZFiMU1wwHSEPf1Pz6upK9EcgUKxTQXXjwTWw=;
-        b=Vx9jzXNkmQfuByvj+BFmlPy0n7YrTlLAPfWTMSoqNywhlvsA34cFbwFn1s7Vnio+e1
-         GWTYsAY5XKJveeLE1Pf/m99YKVPRMiasL5bAqHAQFxQbLSO7LP4xcMF0TJsvNuWq2Zo2
-         iiH/2YCmZa6B7GdxHyDtcXEZZspTrnADAxpoAD4woIqX9IzkaZf7ZPlQ91EAgsHnnWxi
-         I+VCO5CxJwZLwCaICzhBxIW3YtHsJ37h77KR2zZytCA+0sGeuqIEekO9vcc/Plrw4AFN
-         G/7BFE/7aOJFjNih6iDR26wp5oorpinfoJ5H2JBCOJqxFiWQ1oa5pKBSRi99EI1IMp0a
-         hWoQ==
-X-Gm-Message-State: AOAM530+vuzPiK8+RXIGmAl5LCEieZtNMmL3F2+Id77XsDlNdvUaWSDF
-	LaYnIzORAWq0Oo+J7kfmlVaBY5T/dOZZK4YUzOA9SM0Xupk/N6PQVc3uram59ZNudSjv2LXLaz9
-	j1CdglIv3N6YowHOj
-X-Received: by 2002:adf:e887:: with SMTP id d7mr3332684wrm.79.1630667265699;
-        Fri, 03 Sep 2021 04:07:45 -0700 (PDT)
-X-Received: by 2002:adf:e887:: with SMTP id d7mr3332646wrm.79.1630667265554;
-        Fri, 03 Sep 2021 04:07:45 -0700 (PDT)
+        bh=6osDXRphDo8TIq2I2JrJLj4Iq8ymwMld3GU8FS2XmwE=;
+        b=lArvgDVVvtqJWuJJl/g9lMljheTeQ50fXgcMlBhKOuylNshLG7+ES7gy7UH5PZGltZ
+         3LBV8lLJ2Twbyj4ONQvF+2keLt8C7Bsbw8YJrcKRAied8CziZ0zfjC9S5fL0syoAEsii
+         b5N3+GPI5l8kXla3xUvp07WZbI4Bhs8EGlu16OeEXX+Wr1h74JlHY9bohtZzoijpVA6t
+         mgVQHqRS12dA5c2wED+l1kLJAqs/NeIdv1elh8SbxRGMxEhh0rjXyY0nNrsqQugPGhcd
+         zzlkgrw7g1fFpgqvXQqF17+muYuEX/IPTsLtJ8dWWC38aUGgfuogc6B79sPzqEQH0eHx
+         f8vA==
+X-Gm-Message-State: AOAM531DVJXo+JhnTi1DnxOqWqFKSR759LaIK+MO+6LaNz8c8lILSQ4Y
+	MvqM62YhD+7B3q+DtH55PyxVCrbiXN79avn7oCeWWKqSPx6tEr20fv5Kw0oQaCbyoTC5bSPXS35
+	gcNOA7tEXpQBmldyH
+X-Received: by 2002:a5d:526a:: with SMTP id l10mr3307829wrc.279.1630667271416;
+        Fri, 03 Sep 2021 04:07:51 -0700 (PDT)
+X-Received: by 2002:a5d:526a:: with SMTP id l10mr3307771wrc.279.1630667271215;
+        Fri, 03 Sep 2021 04:07:51 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (163.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.163])
-        by smtp.gmail.com with ESMTPSA id o5sm4341463wrw.17.2021.09.03.04.07.43
+        by smtp.gmail.com with ESMTPSA id b12sm5141598wrx.72.2021.09.03.04.07.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 04:07:45 -0700 (PDT)
+        Fri, 03 Sep 2021 04:07:50 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Hanna Reitz <hreitz@redhat.com>,
@@ -117,9 +117,9 @@ Cc: Hanna Reitz <hreitz@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	qemu-ppc@nongnu.org,
 	David Hildenbrand <david@redhat.com>
-Subject: [PATCH 07/28] hw/9pfs: Replace g_memdup() by g_memdup2_qemu()
-Date: Fri,  3 Sep 2021 13:06:41 +0200
-Message-Id: <20210903110702.588291-8-philmd@redhat.com>
+Subject: [PATCH 08/28] hw/acpi: Avoid truncating acpi_data_len() to 32-bit
+Date: Fri,  3 Sep 2021 13:06:42 +0200
+Message-Id: <20210903110702.588291-9-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903110702.588291-1-philmd@redhat.com>
 References: <20210903110702.588291-1-philmd@redhat.com>
@@ -130,51 +130,53 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: AZGL1Mz0AXHT
+X-TUID: +mJLWsl6KPpn
 
-Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
-
-  The old API took the size of the memory to duplicate as a guint,
-  whereas most memory functions take memory sizes as a gsize. This
-  made it easy to accidentally pass a gsize to g_memdup(). For large
-  values, that would lead to a silent truncation of the size from 64
-  to 32 bits, and result in a heap area being returned which is
-  significantly smaller than what the caller expects. This can likely
-  be exploited in various modules to cause a heap buffer overflow.
-
-Replace g_memdup() by the safer g_memdup2_qemu() wrapper.
+acpi_data_len() returns an unsigned type, which might be bigger
+than 32-bit (although it is unlikely such value is returned).
+Hold the returned value in an 'unsigned' type to avoid unlikely
+size truncation.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/9pfs/9p-synth.c | 2 +-
- hw/9pfs/9p.c       | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/virt-acpi-build.c | 2 +-
+ hw/i386/acpi-build.c     | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/9pfs/9p-synth.c b/hw/9pfs/9p-synth.c
-index b38088e0664..7d983574af5 100644
---- a/hw/9pfs/9p-synth.c
-+++ b/hw/9pfs/9p-synth.c
-@@ -497,7 +497,7 @@ static int synth_name_to_path(FsContext *ctx, V9fsPath *dir_path,
- out:
-     /* Copy the node pointer to fid */
-     g_free(target->data);
--    target->data = g_memdup(&node, sizeof(void *));
-+    target->data = g_memdup2_qemu(&node, sizeof(void *));
-     target->size = sizeof(void *);
-     return 0;
- }
-diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-index 2815257f425..5bf1bd7229f 100644
---- a/hw/9pfs/9p.c
-+++ b/hw/9pfs/9p.c
-@@ -202,7 +202,7 @@ void v9fs_path_copy(V9fsPath *dst, const V9fsPath *src)
- {
-     v9fs_path_free(dst);
-     dst->size = src->size;
--    dst->data = g_memdup(src->data, src->size);
-+    dst->data = g_memdup2_qemu(src->data, src->size);
- }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 037cc1fd82c..95543d43e2a 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -885,7 +885,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
  
- int v9fs_name_to_path(V9fsState *s, V9fsPath *dirpath,
+ static void acpi_ram_update(MemoryRegion *mr, GArray *data)
+ {
+-    uint32_t size = acpi_data_len(data);
++    unsigned size = acpi_data_len(data);
+ 
+     /* Make sure RAM size is correct - in case it got changed
+      * e.g. by migration */
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index a33ac8b91e1..aa269914b49 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2660,7 +2660,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+ 
+ static void acpi_ram_update(MemoryRegion *mr, GArray *data)
+ {
+-    uint32_t size = acpi_data_len(data);
++    unsigned size = acpi_data_len(data);
+ 
+     /* Make sure RAM size is correct - in case it got changed e.g. by migration */
+     memory_region_ram_resize(mr, size, &error_abort);
+@@ -2783,7 +2783,7 @@ void acpi_setup(void)
+          * Though RSDP is small, its contents isn't immutable, so
+          * we'll update it along with the rest of tables on guest access.
+          */
+-        uint32_t rsdp_size = acpi_data_len(tables.rsdp);
++        unsigned rsdp_size = acpi_data_len(tables.rsdp);
+ 
+         build_state->rsdp = g_memdup(tables.rsdp->data, rsdp_size);
+         fw_cfg_add_file_callback(x86ms->fw_cfg, ACPI_BUILD_RSDP_FILE,
 -- 
 2.31.1

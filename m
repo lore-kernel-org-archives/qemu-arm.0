@@ -1,80 +1,80 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1516613lfb;
-        Fri, 3 Sep 2021 10:47:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxaP9Qw4dz3U4mXb4x4Dc/EEPaD3LIwVwTFM+8bpi7/9p3an/I3elS9dNX4jqfSE3xlEKJq
-X-Received: by 2002:a17:907:384:: with SMTP id ss4mr53049ejb.478.1630691259491;
-        Fri, 03 Sep 2021 10:47:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630691259; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1516676lfb;
+        Fri, 3 Sep 2021 10:47:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHzXGMLLk/8Dvdf6hXhK4yoEKDcxWiHJj6GHVF7M4Oj4qzWR6eiAMzQLB0JME2qMYg7q5v
+X-Received: by 2002:aa7:ca14:: with SMTP id y20mr211229eds.2.1630691266224;
+        Fri, 03 Sep 2021 10:47:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630691266; cv=none;
         d=google.com; s=arc-20160816;
-        b=zepeHiu1GL/3g3XTuCBqfYHGIZCXSTcVNWTAWoMj4LoWGPRbNNob/rWOV7AcII877l
-         oJPBjlsgMzbpJ9amxHwRSS2sHoEPBIpv5pRBGIdxwxHlm7GzUgHCpb9CMdnHWAfBxsWv
-         +mAL2b09AhOxbJMMjIzL7PFMJA3OaKl2PyYRLR7S0IaxuqF3wrW5z7ysnil9W5Zg88zZ
-         KsgjnUay0tBRIzP5kJgt9qMThizPeSRE5U2OyMMhQks+sEuRJ1OeuKO4EWbgO7ZoRkLD
-         TOj4IAs+M701iAeZcQfX1O3e9c/zUAzERhSy3iBmO/h71IwCK1zjFuzZ7BlX9Dxy4JbH
-         dKBA==
+        b=ekrIEcs8Co1dcrv10AUvU1Y2qY2ISwaoiJ3oxnVwv9gnpNLeK57VCijBIXPUX9P3n1
+         XBNNOSFpHB7RkI5IRASGggIzOq3pOJ9rKbI9TiwF4hsZgwv9Lje6476ltddMMmkKpHuv
+         or+9R19ndjWL+gY8ACvgSVrDnZKmsbZtZhyHPn3m0eOF9d52XioBzgKrXdAfHXJa6R3/
+         5KytB1SV58sOVKJYwi6KTDkiGCuQWcBl8g5wab4NIbQIG66ZuARl3HHioKPKwnsJa8vu
+         7BsthoyseeHK9eP7CLJFuTtrmqZJOFzzZnSv0LDD2nTQCWZZFRT1XmCO08vg+jj/uzW3
+         Ot1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=75WD5cgGLGf6CXabmurrx2v8dkC4eCS9lx1cW5KQ36E=;
-        b=l/H5OmCMtjNqYTmPlzJssh1sh9I2QX744vn+QAH+e8iDGTXugb/reglrcWmbvawI42
-         Axu1F9IoHM84JvQwiSWEBgssfP3xQrM5brAmFtXpdLBSQAR8Xo1aWawgq1Y3sVmh7wuo
-         2NqDtANAVaYMsXYomfYJdcVAzS8fg9xQWtO+znphN51qljpy+6tnRGUU9DGqrgT0T6pz
-         +UpHsYpBHouFDoaWh77HyvntqR79RXPXI7r8OPUUtSFES+JlHbL7CDLvLycxi4YH7Djw
-         bBU38VAE/a7QzOq+ZYveTwrYO2KXoUSAGVauV6fi/KJYiwL1V4k8S7MAP4kczq4YjL1U
-         xmew==
+        bh=dThNb9up0Udv82pZnAoy1KC7krZ7htoDQTtIaOGdW3Q=;
+        b=ffsRf9iikA+7Ue8RpKNV4xIZcZZckrrqm3/8SXtjV9xKE+UcUT7oYZ4NZsF4QYp8bZ
+         c+rUT5U2Bwd072GfoxcmJFYojTRtzfNKR89BGFWNThE/N5IAwfT3bGlemJx32OGHXEVV
+         SeCfkuAHT/DoYbqwuln20dGhodR1XGZ1jClhc29xiwOGwVHfnfg5OIikHQ2gyegGu24E
+         yRXYmivRynmdUdY+IYHg6Cy4A3t/x6gCel3+DdC9VnMIMsISN3A4wMeDrWtQLtXbS3BE
+         84z67lMIPcwcuX1LTQkkVVSDTPGOifVziE7Eu8F52onTEDUijFQj06QrK/WxVEriM6Qz
+         hSPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zl2wSn9j;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PTe955kO;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id m8si6530496ejl.556.2021.09.03.10.47.39
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id z12si5754959ejc.42.2021.09.03.10.47.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Sep 2021 10:47:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 03 Sep 2021 10:47:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zl2wSn9j;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PTe955kO;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1630691258;
+	s=mimecast20190719; t=1630691265;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=75WD5cgGLGf6CXabmurrx2v8dkC4eCS9lx1cW5KQ36E=;
-	b=Zl2wSn9j8mQSBAMT9yBLefxSJffSvnCxk2sRd1+Wk1nu8Gf/1gpK/GMjXukClzVwGqMbDX
-	H5vHnu2r8gI9m1XncczNlodzag7Ld7sVW/BlhuxSYYbcuIjRfhzsJuxuRVzj9drkX5xHF9
-	ZjaSADaqMkl/ihKrRUlgZryC15rNXC4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-510-hln97WgNMnm4j1v_6H8AIw-1; Fri, 03 Sep 2021 13:47:37 -0400
-X-MC-Unique: hln97WgNMnm4j1v_6H8AIw-1
-Received: by mail-wr1-f72.google.com with SMTP id j1-20020adff541000000b001593715d384so1823091wrp.1
-        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:47:36 -0700 (PDT)
+	bh=dThNb9up0Udv82pZnAoy1KC7krZ7htoDQTtIaOGdW3Q=;
+	b=PTe955kO7yqTd1uUxG/tWBNRwrXUuzrPX/FeJJdANxqvz089PagPlRUAFyY+0gZbrp5onW
+	cyOu35Yhihr3pksdMt+rLSY2jSviSQX9KwPn25RzHkMl9M1SHgldRVtyJNs+Jw0xUoQLhK
+	9UUkjUn9HaHL0kB07zN0S4zuiEZNbxM=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-559-Qq1t8hofPai6BgMpJLC5aw-1; Fri, 03 Sep 2021 13:47:42 -0400
+X-MC-Unique: Qq1t8hofPai6BgMpJLC5aw-1
+Received: by mail-wm1-f70.google.com with SMTP id j135-20020a1c238d000000b002e87aa95b5aso52940wmj.4
+        for <alex.bennee@linaro.org>; Fri, 03 Sep 2021 10:47:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=75WD5cgGLGf6CXabmurrx2v8dkC4eCS9lx1cW5KQ36E=;
-        b=Sgt5Y6WDCpp0hdaC3R5+grz4v0opnyEmYqOe88zH1vGEh0DCoh7Om48bjnGk9XemIT
-         XDRpGbcKp0+cgefbdWPiajorODCjIeBn106d52wIYkWczDzTddcySA94Nrw5NuLUVz46
-         WrE0IFbmMvIrHG6UIF3IQ6CFxDtBBZENfY9OZ/jD9WlF1YLTPgneru4I6MdSysAgUUBz
-         EW8yKTgSBsSJjM/mxaYGJJtafaxNK3rNlKGhcCweOtVFCsgfI+eEcbRtQir86kjxhMNT
-         BSKULwgXoJ13Q9HpX5CAcJnB4jz6bcl9rfpj7HThgFc4PYrl8Px89TRb3m0WjKzW+w8u
-         aQaQ==
-X-Gm-Message-State: AOAM533yXMlic9WnddTWj7LyZ1lgUbQF7VTYD0T9ZAXDo/qnaI7iOhL8
-	kNy/kkucTSZFhy1ntwd9nEznOy9mWIQg+Q/QWBRR7ri0tXxPBupPzO7dxLN1IVGof1bZhMyQvb/
-	0/5Zr4pHtvb6Oy62C
-X-Received: by 2002:adf:dd11:: with SMTP id a17mr300002wrm.132.1630691255953;
-        Fri, 03 Sep 2021 10:47:35 -0700 (PDT)
-X-Received: by 2002:adf:dd11:: with SMTP id a17mr299969wrm.132.1630691255750;
-        Fri, 03 Sep 2021 10:47:35 -0700 (PDT)
+        bh=dThNb9up0Udv82pZnAoy1KC7krZ7htoDQTtIaOGdW3Q=;
+        b=ZiimG5SheQl9WLxPMiy0Q/UQ/s4qiffQMljU1B4uPtmaOvqRkMrFmz92dno/bLlwLx
+         xayeuxmR/A1VsxzpxpOU5hLg6WUFKIP7L5FR7RDb4glxSIDLk8WWmtTrEQjpwQjsPQkG
+         Y6DCbRvJBWcboyXQ0r/DwN56xg4X1hyCoYG7dhp0rfMVZJjRH7CM87Z+QEzDUvq1I3MY
+         ufNGbW2ZeaguGGVGnLaVaYwHJtuEGw7OGRmhoS3Nv1ICC8+BP3rtZ56hqbx+kpxa7/FY
+         xsrV5n/gjP4GHHcq5C7G2JJOgt5qG73ARhzRQ3kTzlxvyAeO5UW2DGc0l7gRFVrXR797
+         UyOA==
+X-Gm-Message-State: AOAM533c97+48MIsO8w3L8+BRo9zTIyevddUinSKiVjfANqztv2r5JsF
+	F4mP1n4jt6Rd5S//Fbi8BLN+0mwuMkQqHF5Gus7wNO/S6vWNbQQJAR5qrRQIUJRXqaSR1N9tHBH
+	A+GSOqc/Cw9wiqkLs
+X-Received: by 2002:a7b:c3d0:: with SMTP id t16mr12120wmj.169.1630691261148;
+        Fri, 03 Sep 2021 10:47:41 -0700 (PDT)
+X-Received: by 2002:a7b:c3d0:: with SMTP id t16mr12089wmj.169.1630691260951;
+        Fri, 03 Sep 2021 10:47:40 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id l124sm85542wml.8.2021.09.03.10.47.34
+        by smtp.gmail.com with ESMTPSA id t11sm38889wmi.23.2021.09.03.10.47.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Sep 2021 10:47:35 -0700 (PDT)
+        Fri, 03 Sep 2021 10:47:40 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -102,9 +102,9 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	qemu-block@nongnu.org,
 	qemu-ppc@nongnu.org,
 	"Daniel P . Berrange" <berrange@redhat.com>
-Subject: [PATCH v3 27/28] contrib: Replace g_memdup() by g_memdup2()
-Date: Fri,  3 Sep 2021 19:45:09 +0200
-Message-Id: <20210903174510.751630-28-philmd@redhat.com>
+Subject: [PATCH v3 28/28] checkpatch: Do not allow deprecated g_memdup()
+Date: Fri,  3 Sep 2021 19:45:10 +0200
+Message-Id: <20210903174510.751630-29-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210903174510.751630-1-philmd@redhat.com>
 References: <20210903174510.751630-1-philmd@redhat.com>
@@ -115,73 +115,34 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: QKjpJ9F09pha
+X-TUID: YRqJsDUyxl6D
 
-Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
+g_memdup() is insecure and as been deprecated in GLib 2.68.
+QEMU provides the safely equivalent g_memdup2() wrapper.
 
-  The old API took the size of the memory to duplicate as a guint,
-  whereas most memory functions take memory sizes as a gsize. This
-  made it easy to accidentally pass a gsize to g_memdup(). For large
-  values, that would lead to a silent truncation of the size from 64
-  to 32 bits, and result in a heap area being returned which is
-  significantly smaller than what the caller expects. This can likely
-  be exploited in various modules to cause a heap buffer overflow.
-
-Replace g_memdup() by the safer g_memdup2() wrapper.
+Do not allow more g_memdup() calls in the repository, provide
+a hint to use g_memdup2().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- contrib/plugins/lockstep.c |  2 +-
- contrib/rdmacm-mux/main.c  | 10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ scripts/checkpatch.pl | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 7fd35eb6692..1c6a9f7a044 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -130,7 +130,7 @@ static void report_divergance(ExecState *us, ExecState *them)
-         }
-     }
-     divergence_log = g_slist_prepend(divergence_log,
--                                     g_memdup(&divrec, sizeof(divrec)));
-+                                     g_memdup2(&divrec, sizeof(divrec)));
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index cb8eff233e0..5caa739db48 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -2850,6 +2850,11 @@ sub process {
+ 			WARN("consider using g_path_get_$1() in preference to g_strdup($1())\n" . $herecurr);
+ 		}
  
-     /* Output short log entry of going out of sync... */
-     if (verbose || divrec.distance == 1 || diverged) {
-diff --git a/contrib/rdmacm-mux/main.c b/contrib/rdmacm-mux/main.c
-index 771ca01e03f..0899dca2885 100644
---- a/contrib/rdmacm-mux/main.c
-+++ b/contrib/rdmacm-mux/main.c
-@@ -227,8 +227,8 @@ static RdmaCmMuxErrCode add_fd_ifid_pair(int fd, __be64 gid_ifid)
-                            RDMACM_MUX_ERR_CODE_EACCES;
-     }
- 
--    g_hash_table_insert(server.umad_agent.gid2fd, g_memdup(&gid_ifid,
--                        sizeof(gid_ifid)), g_memdup(&fd, sizeof(fd)));
-+    g_hash_table_insert(server.umad_agent.gid2fd, g_memdup2(&gid_ifid,
-+                        sizeof(gid_ifid)), g_memdup2(&fd, sizeof(fd)));
- 
-     pthread_rwlock_unlock(&server.lock);
- 
-@@ -250,7 +250,7 @@ static RdmaCmMuxErrCode delete_fd_ifid_pair(int fd, __be64 gid_ifid)
-         return RDMACM_MUX_ERR_CODE_ENOTFOUND;
-     }
- 
--    g_hash_table_remove(server.umad_agent.gid2fd, g_memdup(&gid_ifid,
-+    g_hash_table_remove(server.umad_agent.gid2fd, g_memdup2(&gid_ifid,
-                         sizeof(gid_ifid)));
-     pthread_rwlock_unlock(&server.lock);
- 
-@@ -267,8 +267,8 @@ static void hash_tbl_save_fd_comm_id_pair(int fd, uint32_t comm_id,
- 
-     pthread_rwlock_wrlock(&server.lock);
-     g_hash_table_insert(server.umad_agent.commid2fd,
--                        g_memdup(&comm_id, sizeof(comm_id)),
--                        g_memdup(&fde, sizeof(fde)));
-+                        g_memdup2(&comm_id, sizeof(comm_id)),
-+                        g_memdup2(&fde, sizeof(fde)));
-     pthread_rwlock_unlock(&server.lock);
- }
- 
++# enforce g_memdup2() over g_memdup()
++		if ($line =~ /\bg_memdup\s*\(/) {
++			ERROR("use g_memdup2() instead of unsafe g_memdup()\n" . $herecurr);
++		}
++
+ # recommend qemu_strto* over strto* for numeric conversions
+ 		if ($line =~ /\b(strto[^kd].*?)\s*\(/) {
+ 			ERROR("consider using qemu_$1 in preference to $1\n" . $herecurr);
 -- 
 2.31.1

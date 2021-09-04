@@ -1,109 +1,110 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2042285lfb;
-        Sat, 4 Sep 2021 01:53:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxam5q8cKY4csc3kOrugKXUfRICTZieI+bX25fCXeM7JYSvp6xqjOxmX5n5Es2FtuiLLHry
-X-Received: by 2002:a25:2652:: with SMTP id m79mr4198270ybm.444.1630745614546;
-        Sat, 04 Sep 2021 01:53:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630745614; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2042407lfb;
+        Sat, 4 Sep 2021 01:53:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzo9R266vJdIZ2cfWlQ7I/T06d6HgHc970SPM0oQSy1ZTZoXHavcgTJjaHo9CfZWguLt2ve
+X-Received: by 2002:a25:6117:: with SMTP id v23mr3893983ybb.103.1630745629703;
+        Sat, 04 Sep 2021 01:53:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630745629; cv=none;
         d=google.com; s=arc-20160816;
-        b=X4av3ImUstK+vTU8KSnZfhAHS9FBx1DwMjSsKgUtQzjRl1Xr2oC0P7JOOKtAcyR87c
-         pnVpGvfxGZ0/URyrUKGQQcoi8jnrkvUQ7SQ5T1OsLyZaUOw4fQ/AOqcZgdCkgGxpeEHN
-         veJdN7pArrzyGgqlRPDEOhhqDHPkgKodyQ5X0AeazBaex/v2wSwOD6U1v5HIbX/YUURh
-         3g1S57oBH7N7y/gCBxIFqTbb3A6yR1sXdsbdoYYrCQG2lkg/fW8Cd88wmZT4y19843p7
-         FNOiA4KZMggAyHs0AoQMzUCIV5FHJ7qVAmClw82k24E1cFv2QasRg2jUeIUey9sP71OH
-         GvCw==
+        b=yje8+a5NzWQAJRApqIb0/s6cu965XCmsW3/UD58z+xaNlOe81847HMh5hz4Gh73kXD
+         8j2nWuvWXWPNcyddqtMiYq3donSMYpNUeE43Jab4LJkQuikisFvR+5RIi1oHtBDbF9ks
+         MTMDeNr+eopOE2XpK/9PLwqFLlPYvK5CmTiGD9wNeSZaD13urVaOOo7sfYwRDXAFgAes
+         cVhfuRzIIcrkqq5COmMqQal9FUU7tVRn9RwzMGUq3Xvt+1iEVfKo/IrOePmCi4X8jkXy
+         BTlJh8WM3m2JTgAaChwJ9N6nT3r9zl7o3SmUc80/oTbA7+Fx/Et67zs34k6TGF96m9ZJ
+         vVvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Y0uVp1L3jQ7n6OJNPxEBwdSFbEqnx8h8snS6dEp9aog=;
-        b=lNE05ZeaINwAF1+MZ96gssYmsQrkK6zofvqUkL6xV31PPLUW5rLbKgN9VXkq1K2VUP
-         hbAk+Z1j6zyYR4Z//HtWSfkA+B+mzCZclgfZeJN8lv67W0XGQWzB1tzPe6KHyAWqAvGl
-         lqvuAjV52IDMdNHfG5j14xQnyHQV78/rsFoXwPIfmJX4kkNdF9C77ses4agjzN6rGOeH
-         O6MbCbSHZwwHsmsI1EGOz3wKq7ls64Wc8uHJqpy0sRSkrz7KK5VwARKjhWCc2djzqjoi
-         3tCvNYJ8jfu0lnvJeU6BdmsOpkMgjVEg1zYiMGOGqzDNiRb2Tv505GoceqzBJJCUUDkR
-         oi/Q==
+        bh=r3wM/V/mwPg4VAc1o8IgpGbuuAEFKB1mV+yYS1SJS5o=;
+        b=zKZiZZzKm5oQ+on+uqkK3cJSvRunQOpii0OOPGgjwBegfZbLUqSI3kyhkne5VBPavh
+         jrgAWkKYi/+LRFvgQzADzFlmpyjgYUmalJ7fpUQ82pN0Ih1DhrnzFrfK4jma3D4iO8bY
+         v4FMmpmm8UBUedWgEBeNJZvk2OMqWdRcXCzhunmibUBNBUBLYdMI6dRreFiM1YMn6LhG
+         e0Mh6D+GsZZj9p+BZCPdIrY9r70L447LetyQFSmBx+Re2BLQ0TvSO7iHnK+r40k8rBBu
+         4XwcBS3Uci34WjJExISGUKCYXKhlyOb0INHHPWFQXdMoM0Z9ldqcgx1r/qIJVwVg8o01
+         zmvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UlT4raqM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UbpeWH7i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k16si1836019ybm.275.2021.09.04.01.53.34
+        by mx.google.com with ESMTPS id t3si1874621ybb.421.2021.09.04.01.53.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Sep 2021 01:53:34 -0700 (PDT)
+        Sat, 04 Sep 2021 01:53:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UlT4raqM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UbpeWH7i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42636 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMRQb-0007zN-U9
-	for alex.bennee@linaro.org; Sat, 04 Sep 2021 04:53:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44724)
+	id 1mMRQr-00005X-44
+	for alex.bennee@linaro.org; Sat, 04 Sep 2021 04:53:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mMRQA-0007xQ-3e
- for qemu-arm@nongnu.org; Sat, 04 Sep 2021 04:53:06 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:34382)
+ id 1mMRQg-0008Vi-Cr
+ for qemu-arm@nongnu.org; Sat, 04 Sep 2021 04:53:38 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:44882)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mMRQ7-0008Qu-LM
- for qemu-arm@nongnu.org; Sat, 04 Sep 2021 04:53:05 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id m9so1975950wrb.1
- for <qemu-arm@nongnu.org>; Sat, 04 Sep 2021 01:53:02 -0700 (PDT)
+ id 1mMRQe-0000Q9-O0
+ for qemu-arm@nongnu.org; Sat, 04 Sep 2021 04:53:38 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ l7-20020a1c2507000000b002e6be5d86b3so1001337wml.3
+ for <qemu-arm@nongnu.org>; Sat, 04 Sep 2021 01:53:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Y0uVp1L3jQ7n6OJNPxEBwdSFbEqnx8h8snS6dEp9aog=;
- b=UlT4raqMQlpxFaOK1Pgwe+0oC+zKMt8PFEPE6kOFooa5QNz2dlCQWRwpzZr/3b3Wsj
- mNyRgOj3pqQzOZXZQ+R/13RE5MmvXsP4eu8WdInpl7QBK+GJBqV3KnhqtXiN3rq+ux8M
- FfNJdQghCjvB+fNN3hXC9+BDy7bGFkY3AOt6TgufaZdKIJxlK3etBWkxg6MoxCptUFNJ
- PcRxk5DYvQzPSKmjlKUqm1Ubs+Q+mwt3SP9foZuC9ZRP0Le0iekjZalDE/+i3o5voduR
- ca2uuP0C03ojvXrFKUYiCA65ncXqE0ch4VI4stwLl5RkHMcq2PzEozZAyF0/iVuf6eqC
- 6jXg==
+ bh=r3wM/V/mwPg4VAc1o8IgpGbuuAEFKB1mV+yYS1SJS5o=;
+ b=UbpeWH7iEE+KOT2WZTmPQ5CXkQf+mYJRY7H3ao5IB9vxXndB+gWZNrQ4Dl1g8LXsmU
+ WEDTdNSrHUyqhe/Oiy2kKwPf+8JWfbiSaIcDwoEPeg9GxpcWDc/Rqv0eChW2edSWi91w
+ 521X2CtvVl1DZd7H3pWMRhVRAzNzXmywwVTh9pg6lOlKw7Rlby0vHxO3W8JIF0w88Pf4
+ 4yS8Vtm2ZK9Wv1FvwHKVHyZYdePLH49Z4cP2P7HhFwCx4GNr7OUq590d3VFdSaPB0+xC
+ nFaNAqTbXhrkaXMOE/fv6omMpexg+XZ2fCPyyIxLaWf7Zc7FAZ8F2v9RWvcNeUHwteDG
+ uQ2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Y0uVp1L3jQ7n6OJNPxEBwdSFbEqnx8h8snS6dEp9aog=;
- b=YfXmwtPYgGDE9JtlGzLuQcvOTbVEUXCn67llWU8/f3HcyBvcXd3rvAyd/CJtuF+TxJ
- jTPEfqeQ6rr+KDAlPZL4k29u9dJWCbPKdNHHlxGPETthDBnrB1uTBwAtHrcrZqzBZiWx
- 5+jNXfiZEJgLgkr0yzIO31FEtpiub3ZMSArxWcoo6Z5zHMK/OidxF/sx0T1FICwsPcMS
- uSpM7hxrtGcePGRNEE5fSYQI38r7ucCHpLo7MDS4p1AZP6ka6UsGIycKi6XUo/Knk38u
- 4USj/fraTGSt0liWHNqEwXBPr8nMO+c1CWH6LZwY9ilj8UJNBO/AfiaQTTQ0AR6pT2MO
- 5HuA==
-X-Gm-Message-State: AOAM530gs8OY2923K5E2g3fsv9W+pIqtS1DaJnOEjy57M5KgtZM+qANt
- oUbO79PWsxcx5PZIqA8XMa3dnA==
-X-Received: by 2002:adf:80e5:: with SMTP id 92mr3052537wrl.300.1630745581885; 
- Sat, 04 Sep 2021 01:53:01 -0700 (PDT)
+ bh=r3wM/V/mwPg4VAc1o8IgpGbuuAEFKB1mV+yYS1SJS5o=;
+ b=tG34JmeKFRZHhnm7xE3CQ/y+QTLGRTUgafn0uhogxFKkL7wPCvfjBm4145zms3WN3w
+ AipnVm9JWaAlegvJwkBuxD8M7zN+cW2PPf4uXQD9rIwFkdeN9HAUlDyoKtQcgRiRRWGV
+ 9xqffxDF8ATrhT42mX7RGVSrHsd7g0YZLbepteyEr/5YXVYtEV9qU4hfIqp3jegiQAHs
+ ZC4X93L/NK8i7J//CAFsr+sB24klb/l8GYsGK/hqSet79uuh2lU4AeTMZFgKE7RuGtEC
+ 4mTVW1VH0XenBqqaMgpYp4Xp3LUzzTZjbVzaiUyiqyup7ClDRr9KYgozw/qWngW0lQmr
+ yxeQ==
+X-Gm-Message-State: AOAM531ag4wZsu/L3kP9PvPmKRdffM7djwzaAeoN1kPQjrE9nTAiP0t8
+ APZ/6HK/M5Kbroulj5NyEH3FQA==
+X-Received: by 2002:a7b:c38a:: with SMTP id s10mr2354135wmj.109.1630745615340; 
+ Sat, 04 Sep 2021 01:53:35 -0700 (PDT)
 Received: from [192.168.8.107] (246.red-2-142-218.dynamicip.rima-tde.net.
  [2.142.218.246])
- by smtp.gmail.com with ESMTPSA id s13sm1543638wmc.47.2021.09.04.01.53.00
+ by smtp.gmail.com with ESMTPSA id y1sm1539453wmq.43.2021.09.04.01.53.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 04 Sep 2021 01:53:01 -0700 (PDT)
-Subject: Re: [PATCH 2/4] hw/arm/mps2-tz.c: Add extra data parameter to
- MakeDevFn
+ Sat, 04 Sep 2021 01:53:35 -0700 (PDT)
+Subject: Re: [PATCH 3/4] hw/arm/mps2-tz.c: Mark internal-only I2C buses as
+ 'full'
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210903151435.22379-1-peter.maydell@linaro.org>
- <20210903151435.22379-3-peter.maydell@linaro.org>
+ <20210903151435.22379-4-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <2d19b6d1-b6ca-191c-0c9c-a5b1cf95c75b@linaro.org>
-Date: Sat, 4 Sep 2021 10:52:56 +0200
+Message-ID: <84432ca3-aeed-b8fc-5cda-fac311ae23d3@linaro.org>
+Date: Sat, 4 Sep 2021 10:53:31 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210903151435.22379-3-peter.maydell@linaro.org>
+In-Reply-To: <20210903151435.22379-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
@@ -126,32 +127,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6TDGivtv9rtw
+X-TUID: +qMPA9n3DcW7
 
 On 9/3/21 5:14 PM, Peter Maydell wrote:
-> The mps2-tz boards use a data-driven structure to create the devices
-> that sit behind peripheral protection controllers.  Currently the
-> functions which create these devices are passed an 'opaque' pointer
-> which is always the address within the machine struct of the device
-> to create, and some "all devices need this" information like irqs and
-> addresses.
-> 
-> If a specific device needs more information than this, it is
-> currently not possible to pass that through from the PPCInfo
-> data structure. Add support for passing an extra data parameter,
-> so that we can more flexibly handle the needs of specific
-> device types. To provide some type-safety we make this extra
-> parameter a pointer to a union (which initially has no members).
-> 
-> In particular, we would like to be able to indicate which of the
-> i2c controllers are for on-board devices only and which are
-> connected to the external 'shield' expansion port; a subsequent
-> patch will use this mechanism for that purpose.
+> The various MPS2 boards have multiple I2C buses: typically a bus
+> dedicated to the audio configuration, one for the LCD touchscreen
+> controller, one for a DDR4 EEPROM, and two which are connected to the
+> external Shield expansion connector.  Mark the buses which are used
+> only for board-internal devices as 'full' so that if the user creates
+> i2c devices on the commandline without specifying a bus name then
+> they will be connected to the I2C controller used for the Shield
+> connector, where guest software will expect them.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   hw/arm/mps2-tz.c | 35 ++++++++++++++++++++++-------------
->   1 file changed, 22 insertions(+), 13 deletions(-)
+>   hw/arm/mps2-tz.c | 57 ++++++++++++++++++++++++++++++++++++------------
+>   1 file changed, 43 insertions(+), 14 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

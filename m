@@ -1,94 +1,116 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1942859lfb;
-        Fri, 3 Sep 2021 22:33:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyFbwwYQI5ueTDTVGlTl944TPcfhJiPwJwkh3cOeKvSHbo8W7RI5a7sRi5ME8LHXPNJ/XGu
-X-Received: by 2002:a25:6e05:: with SMTP id j5mr3508600ybc.86.1630733618795;
-        Fri, 03 Sep 2021 22:33:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630733618; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2040019lfb;
+        Sat, 4 Sep 2021 01:48:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJygjwQXJIWfWH3vLUd4+U9lg6MrfDTie4TFHqfyMjzFdKaPzBFYAU1N8qyKKQkfZS631gfi
+X-Received: by 2002:a5b:7c4:: with SMTP id t4mr3992825ybq.368.1630745315160;
+        Sat, 04 Sep 2021 01:48:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630745315; cv=none;
         d=google.com; s=arc-20160816;
-        b=BJHmMd/JEOBecbcNJlckphem506heemqo2HCm49LQkB+n6YHY1gk9PJtKXcB068GYb
-         FqMzZajC2Ui149IVToadYUzFan1Uc3e0AiTo/LFJUf4T6htLq8PU9hDc97RueQbxstxJ
-         P0pB+94lxLLjTY0fvYrIxDA0Ritry2PC0GbTEMZwmdEGhJ8B/R/3FS9DybBpNdDRWptN
-         3ZtE4xXscdyISDJ4/SrrhluolUN6qRvN++7F+7WLFWA0423i45ITns2aHOr0weWxbxYq
-         Rt81rXU1v7kqfnOjLSk8aVUjBkPUj/gGHB67Bip6BbVbkfUOtxc3hmTyyKqkI11BFfRC
-         i7fw==
+        b=sWUm5DaqCL8ikXNRaI3hiTzK7m/cnC4FMS7vByV34512n6QLvtmuBk86aDRq0mVSWt
+         v5GZT4Qr0xyEPpelN/8kEKlgJ1IUy8c77gll2YpaaPht9ndhFJMWW2QhhDMAMPCC8if7
+         wKR08OkZIAqB5KiEBTDugwRpm++OiphD/yoANxkpeC4iBIRt1NAS7Zl8oIzmLgyvGjSn
+         OMvqNujXWfBnQHTM98biT8eFofEv54Sg0aX3a8ai7lFlj2rnKzF2LYAbVhQ3fxskNwKI
+         g8kkHE/EdKYnOVVDBm/l8D6BEwVWGasxzpzvmMdQxeAdW4l8C85q6HV8L9PlLm52GgPp
+         YPIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=i+I5HBdoYKlGCb+nbr197Sx2rt2/czYYfQ2QmsUxOqw=;
-        b=kZWtmcPJU03zCIvc1ioi7x4Ft5jdYw2SYhVe0WSJrmgXmFZBjfspgPP1WVjkfM0uJ5
-         UKnfI6HXRdXO5pNRwxjBIi6IbWa+6CvftX4R503q5ADbIUhb+PynthSsjvQs7F1ZCqKy
-         cahIdGMHEFja4e8q+agaC8/YBktYx7PZFpXfoJFRoD3pgQZ1HEvkaIIMVpa7659heIXt
-         np/9e1/ycERzrjEVsm8L2/7hwZfNMpeBpj+QUOZLs/mmVjUJGDfKfwRX8s478w5PlU+i
-         OyyBDM4ZBFfTIv4nRxQKtdakS5V5xFecb2VO3RGerTM1xrr3im64h0gL9W66YedN1rpn
-         IRuA==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=RwpaIr0VaGOmrO7H/BpqEfJujkfEODrddNk1vEw2cJc=;
+        b=yIPtgbnqY9WPrCVCT9zgcBGelaz3ThbjaZf7d8jUcCCYJUR8PWclZwReaHq66gG2DE
+         +a2a14ZFymK/zrOaYwkS4mraLW6etO4eibNs/tKkhgQJ01RJeBxhUoN+CN0BjqJ4PA7B
+         4WNk2IvxneHYcKrPyx9EI/scjCr78AomfU0ZJw2R+vzfiCuNI6e6LQzpfuae1TMfsOZu
+         xI9dCx0X0nh9vOA2jD+vI6rjvnVfO2VojmikFjeTNM6No978XrgRBTm9adT+kdDZvRxL
+         LDXtdjhVFORV/bURgF9P/CqckllZ4GTGij/j2VuDjd/fIr8Mg379SlJqpZPs9bCvisIv
+         t2OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=SPupqHPw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b17si1516618ybm.414.2021.09.03.22.33.38
+        by mx.google.com with ESMTPS id b185si1900311ybb.118.2021.09.04.01.48.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Sep 2021 22:33:38 -0700 (PDT)
+        Sat, 04 Sep 2021 01:48:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40226 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=SPupqHPw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMOJ8-0004fy-7j
-	for alex.bennee@linaro.org; Sat, 04 Sep 2021 01:33:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49336)
+	id 1mMRLm-0005yM-Ei
+	for alex.bennee@linaro.org; Sat, 04 Sep 2021 04:48:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMOIu-0004fm-ER; Sat, 04 Sep 2021 01:33:24 -0400
-Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213]:56035)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mMOIs-0006DH-Go; Sat, 04 Sep 2021 01:33:24 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.227])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 3617C20315;
- Sat,  4 Sep 2021 05:33:18 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Sat, 4 Sep
- 2021 07:33:17 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004d44cfab8-69ed-4264-bd9c-342457a1ca47,
- 12F33BBF2EAE4A57CD4144620F2B5145EB8D9997) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PULL 00/14] aspeed queue
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
- <peter.maydell@linaro.org>
-References: <20210903194108.131403-1-clg@kaod.org>
- <beab1f50-d8f5-b3d3-5612-15e5f74eb961@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9ef56813-94f9-a1cb-aba5-9d2e2a081d23@kaod.org>
-Date: Sat, 4 Sep 2021 07:33:17 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mMRLO-0005ve-N3
+ for qemu-arm@nongnu.org; Sat, 04 Sep 2021 04:48:10 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:42761)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mMRLN-00048w-8b
+ for qemu-arm@nongnu.org; Sat, 04 Sep 2021 04:48:10 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ k20-20020a05600c0b5400b002e87ad6956eso1015190wmr.1
+ for <qemu-arm@nongnu.org>; Sat, 04 Sep 2021 01:48:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=RwpaIr0VaGOmrO7H/BpqEfJujkfEODrddNk1vEw2cJc=;
+ b=SPupqHPwn8oCDxbOXhppz3oml+ijAp5grfFUT42aBB4k8L3tDucgUi85oMzWNa0TkT
+ XPKOWB/QekkSsl18a84GyV1kEHIaZiq0766ZPtjQLv5Jbxmw2upMkMRmx0Iw/cixBEE+
+ nRTgBbqkEEqNuNwGRMIg3TyT4qIFT/00xhuPDDJb1EHv4OyhFlc3CooQTxWnc5pxmYRC
+ oDyUzKtpv4gLpYsT/MgH+fuuMDZvqpNh/p5YX/RbxLEUPII7FIHgShkmRxOccBG8hMFB
+ nLZGxLDdOMjz3emYZiQaHiTBHPgO+T7kgfyC7sXOKD9d+5fFtd812te6xQ5xNu+D/0r6
+ DiFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=RwpaIr0VaGOmrO7H/BpqEfJujkfEODrddNk1vEw2cJc=;
+ b=P58sPL4vtvR0H/cBzGJutai01rOmVGofZ6wgsILVO2iUECQ/6k/HVM6NPdHefqOBk9
+ JFGOo5FaQsr9z5o7k3WAR5dXscPxreOUilFuxadOoHrxVlRV5fj5DQmE0q9sudWaWApw
+ iQirH3PEJD7cmI/J1tS//JvRRq3n5NHL9tl/Bty8DXKS21hU1kCGdnq6ceUlWuuw5t30
+ Q6MOwDjrPzZRtH4UjjJ04CnyJqiMpV5ga0ulNCo/v2gsDUAuWmfWsWfVQODxDdYxuSuD
+ BrquhYhDIxQY4MUAZBZJCeggR1vAkR6GxfNeVqs5wPXpuOkTkcwFxg+fATNAn3l8UVWP
+ R41g==
+X-Gm-Message-State: AOAM530rLN9GJegjkCUpdyIvmOFyPxltIQfPfCysdA1oaf097nti7qQe
+ cHcvY3jmsTHhxdTN4N7QgLatsg==
+X-Received: by 2002:a1c:a903:: with SMTP id s3mr2271244wme.171.1630745287012; 
+ Sat, 04 Sep 2021 01:48:07 -0700 (PDT)
+Received: from [192.168.8.107] (246.red-2-142-218.dynamicip.rima-tde.net.
+ [2.142.218.246])
+ by smtp.gmail.com with ESMTPSA id k1sm1582893wrz.61.2021.09.04.01.48.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 04 Sep 2021 01:48:06 -0700 (PDT)
+Subject: Re: [PATCH 1/4] qdev: Support marking individual buses as 'full'
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210903151435.22379-1-peter.maydell@linaro.org>
+ <20210903151435.22379-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <b6ef1f44-294a-ed87-97e9-b94592a1cf06@linaro.org>
+Date: Sat, 4 Sep 2021 10:48:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <beab1f50-d8f5-b3d3-5612-15e5f74eb961@amsat.org>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20210903151435.22379-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: d5175dd3-171f-432e-ae07-a768ff8ec92f
-X-Ovh-Tracer-Id: 368732219768408937
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddruddvkedgleegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdehgefhvdehtdeuleetgedvfeeukedtfeeihfffffeiuddutdduhffgvedtnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
-Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
- helo=5.mo548.mail-out.ovh.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.888,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.888,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,76 +123,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Peter Delevoryas <pdel@fb.com>,
- qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WZ2PJBRpDhVJ
+X-TUID: 73VYYCDR1/zx
 
-On 9/3/21 10:41 PM, Philippe Mathieu-Daudé wrote:
-> Hi Peter,
+On 9/3/21 5:14 PM, Peter Maydell wrote:
+> By default, QEMU will allow devices to be plugged into a bus up to
+> the bus class's device count limit.  If the user creates a device on
+> the command line or via the monitor and doesn't explicitly specify
+> the bus to plug it in, QEMU will plug it into the first non-full bus
+> that it finds.
 > 
-> On 9/3/21 9:40 PM, Cédric Le Goater wrote:
->> The following changes since commit 8880cc4362fde4ecdac0b2092318893118206fcf:
->>
->>   Merge remote-tracking branch 'remotes/cschoenebeck/tags/pull-9p-20210902' into staging (2021-09-03 08:27:38 +0100)
->>
->> are available in the Git repository at:
->>
->>   https://github.com/legoater/qemu/ tags/pull-aspeed-20210903
->>
->> for you to fetch changes up to 907796622b2a6b945c87641d94e254ac898b96ae:
->>
->>   hw/arm/aspeed: Add Fuji machine type (2021-09-03 18:43:16 +0200)
->>
->> ----------------------------------------------------------------
->> Aspeed patches :
->>
->> * MAC enablement fixes (Guenter)
->> * Watchdog  and pca9552 fixes (Andrew)
->> * GPIO fixes (Joel)
->> * AST2600A3 SoC and DPS310 models (Joel)
->> * New Fuji BMC machine (Peter)
->>
->> ----------------------------------------------------------------
+> This is fine in most cases, but some machines have multiple buses of
+> a given type, some of which are dedicated to on-board devices and
+> some of which have an externally exposed connector for user-pluggable
+> devices. One example is I2C buses.
 > 
->> Peter Delevoryas (3):
->>       hw/arm/aspeed: Initialize AST2600 UART clock selection registers
->>       hw/arm/aspeed: Allow machine to set UART default
->>       hw/arm/aspeed: Add Fuji machine type
+> Provide a new function qbus_mark_full() so that a machine model can
+> mark this kind of "internal only" bus as 'full' after it has created
+> all the devices that should be plugged into that bus. The "find a
+> non-full bus" algorithm will then skip the internal-only bus when
+> looking for a place to plug in user-created devices.
 > 
-> I have a pending question with the last patch, do you mind holding
-> this PR until it is resolved with Cédric and the patch author please?
-> 
-> Thanks,
-> 
-> Phil.
-> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   include/hw/qdev-core.h | 24 ++++++++++++++++++++++++
+>   softmmu/qdev-monitor.c |  7 ++++++-
+>   2 files changed, 30 insertions(+), 1 deletion(-)
 
-I guess we can drop the following from the commit log : 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-	git clone https://github.com/facebook/openbmc
-	cd openbmc
-	./sync_yocto.sh
-	source openbmc-init-build-env fuji build-fuji
-	bitbake fuji-image
-	dd if=/dev/zero of=/tmp/fuji.mtd bs=1M count=128
-	dd if=./tmp/deploy/images/fuji/flash-fuji of=/tmp/fuji.mtd \
-	    bs=1k conv=notrunc
-	
-	git clone --branch aspeed-next https://github.com/peterdelevoryas/qemu
-	cd qemu
-	./configure --target-list=arm-softmmu --disable-vnc
-	make -j $(nproc)
-	./build/arm-softmmu/qemu-system-arm \
-	    -machine fuji-bmc \
-	    -drive file=/tmp/fuji.mtd,format=raw,if=mtd \
-	    -serial stdio \
-	    -nic user,hostfwd=::2222-:22
-	sshpass -p 0penBmc ssh root@localhost -p 2222
-
-
-Thanks,
-
-C.
+r~

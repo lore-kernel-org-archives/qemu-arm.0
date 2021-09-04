@@ -1,105 +1,107 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2565120lfb;
-        Sat, 4 Sep 2021 16:27:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKGmpfROQAJExpd8gKCovpxUsqy5s9yZLmLcYHKi55BS6y2pfAL3N3ENZCKybhyz7AUPOh
-X-Received: by 2002:a5d:8f91:: with SMTP id l17mr4309256iol.121.1630798053276;
-        Sat, 04 Sep 2021 16:27:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630798053; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2572680lfb;
+        Sat, 4 Sep 2021 16:41:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6ztdWpR4T+7xcEKvsAwh3D+d96LQEzJBnB/UMrix4BXU/3jPITINrQuRkH9Xnv2Mpuhjn
+X-Received: by 2002:a05:6638:d43:: with SMTP id d3mr4814003jak.138.1630798893651;
+        Sat, 04 Sep 2021 16:41:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630798893; cv=none;
         d=google.com; s=arc-20160816;
-        b=nIoGZ/+JgAyDp59Wk3DLLgHuJs9II8QdB3DwhxzDt5asLTKlMD3A0pbUIZzSqXpsdL
-         d2FXQV0VcmOVUcxd5bIICMSNhpHCnoWkolmjeNBHo1anlBP3CLZQJpFusPJwfpBYokXZ
-         Hjbkhr/pSLUUTBXUkdy03FxeCfvHhgzx/jp0mu1ZJXjjclWWAPkjql5FFahAntgZ3juL
-         E6n/LAUia1FDuKwsMdt7KDNMze5aAjGaFcSJdrv5lHP5ZV8T7fDYZQhO7/7TmKbBExej
-         0qbKqSDSAsEcmN0q6JUsV1v1p+IyzoGIxIND80jbiyI7JpX6D88J/Tp0mfb4kJ9whVor
-         KIgA==
+        b=hkuOxto6OM537wLOfS8Kc6zkz1HkhORwbCbahwvjmCAN5/jW29r3mVSpn5DaHR0fil
+         4AIHC5bymTzUnVRSi05zEdpyfGTJHvfmOkW/i4IGDgD+7AmKhqtOZiOmbOQdn/+wcTO2
+         kXJkmqNkOKJZ47MEoCVKIWe+OFH/hr35QUlfqhhygEJ4vrNAsUHxBuLaC06L9pyzka02
+         /nnqOcdOWPuF/d7HWJx2fTWK2TeUxAlcV30AYA6DPA+1sliA5YHKmFXbCCT0ClQ5iHP2
+         2EWRWRZhi1wJhhNLstVcbNABdPDNbnuNdqmAeeqMPdguirnm1J8P9mEvC9kXuh8fKWYE
+         cn0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=D7kizWc2z0WcIB/d06SPHJ60XtO1gjqH1zrp9t9Gx+Q=;
-        b=TR1x5DaikBqOxYsN3t/ZuQztEmVh+3yvsUREOSGYerQD02MY+y4e+p08gXhyLdnSh2
-         SlVfBAF52X6FyzCL5zbX6h5z/CzmUj4toDB8hpq4mfb3LGsiAf6ygufEP4gbPesL+ijy
-         R/xNhnCT5ZnUKsQ4TWT3LeDJ9BvRndJLNN9hfwjIHW9dk1rI4PEGLTs+6M8BIv70z9xI
-         Y7iG5Dnz9myy93KJj6Xnp/s0eSgkDnmoafsNXPcyt5IlrVEINVqWnvUMqNBn8/rmEeuP
-         j7h0hxSx7JsM9f1n0IC5A/HrY9mSUBZ+muHenVq/XOhqQ0LvXM/TXUlirkcBs61+X+A8
-         rQ8A==
+        bh=7B1Tb7+LoNWIC6SLhDrpAAfzztMayZmtlKwX9VY86h4=;
+        b=yLSpKArDQEZ85w+2j0mAJmjLg6FPyxNrlaLRwJfdmc4wrj12aXRPLdn4hIWePJWs9a
+         X1l503mGE7sUq4+vpNxgyAsjuZoInFsAYCZ9GxfKNOKTKceMC2liV0+7C7ajLo02mLQ5
+         EbT64XtbsAyctbDDAtxDhv/MT4TRf5nREUvOfH5T3zeZRpVz5xLP3M25KTokdF2WwyOz
+         A0dMakY8p3bE653eQwAIP71HBzLI7BxAldsc04A5blXn3LbLTCOkf9zF1OYm1xnORokK
+         qKbYPxgroPZfHWnIqFv3wdQRMWRjuo/Y5g2lg40bI5etbjTtfd/8oQjy7K3ZFJfst24T
+         Lf9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=P0cZnL64;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SZt6L1IQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u15si3839720iot.89.2021.09.04.16.27.32
+        by mx.google.com with ESMTPS id m12si3986306ioj.96.2021.09.04.16.41.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Sep 2021 16:27:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 04 Sep 2021 16:41:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=P0cZnL64;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35518 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SZt6L1IQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMf4O-0004T6-AK
-	for alex.bennee@linaro.org; Sat, 04 Sep 2021 19:27:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44808)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMfHw-000861-QH
+	for alex.bennee@linaro.org; Sat, 04 Sep 2021 19:41:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45922)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMf38-0002hR-KE; Sat, 04 Sep 2021 19:26:14 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:36743)
+ id 1mMfHG-0007qq-Ef; Sat, 04 Sep 2021 19:40:50 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:42763)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMf36-0004Hr-Uh; Sat, 04 Sep 2021 19:26:14 -0400
-Received: by mail-wr1-x430.google.com with SMTP id q14so4014670wrp.3;
- Sat, 04 Sep 2021 16:26:11 -0700 (PDT)
+ id 1mMfHE-0005ZC-Nr; Sat, 04 Sep 2021 19:40:50 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ k20-20020a05600c0b5400b002e87ad6956eso2120294wmr.1; 
+ Sat, 04 Sep 2021 16:40:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=D7kizWc2z0WcIB/d06SPHJ60XtO1gjqH1zrp9t9Gx+Q=;
- b=P0cZnL64Wa9HoAEcMMyjCEzOsK8k9nipDnHnVcXfN91sleHi64dU0U9uJCDqkTUHr/
- FHHJCDHYppHWjZF+hIPUut7IcUEZkmlPj+FqqsndUOs3UliC/TDAIj7E++mw4LrV+bAe
- RCYpc4B/6y3CTzgZkt7O3l7z+dJ/G0TMlDFQhty6sfeSXZQsPgsthboEtlQ8/kjyK1XI
- MUNAg5r7eu9zp2BlrLqTRfRXavw7gZYdVFixxBUjF2td0My/Ow50RY5zRDEdRW+qOn4p
- rESaHzLXk/ZZvvEN24+FJm7AP9+yI6IyVotGJM2twLPCt9pgb+XnPydn8Tu8ZcfFdXqq
- GH5A==
+ bh=7B1Tb7+LoNWIC6SLhDrpAAfzztMayZmtlKwX9VY86h4=;
+ b=SZt6L1IQa4I2vUjhoDepUCUfey1oy5Pp0yK6+6HpFVagJ3vGh8eo7jj9UQPPDlj9qR
+ 4eFeYXCDp9Z7rCjdQviBJx0z6rJFUEfRowGmf+PjdZqF/mI952vGHNWEudUmX4v635Lz
+ itC+wNbuNIPOXy+13uB9aB0BOu6TFQGyUV7Q+f6vPZMWfCIaGuCC5sZ6Lo+pyjNxgpM3
+ 5o2Dszj3OUzNXcgqyFxDRML4vfrg2eBCrZFz/q7YVZNLDSQ/yGKZeK1I/CYjkPleNH0d
+ IiSTuOlmcxNS1qvPd2ZbcqXLQqm2DB+J5oVDfX11CC9s8DV2p/gvZ4qiIgYSbxP5+J1V
+ 7f4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=D7kizWc2z0WcIB/d06SPHJ60XtO1gjqH1zrp9t9Gx+Q=;
- b=lY0PQWVTFs2ZQNdZexTzBRso6nm+i5qnm25Ovhe99LcJIg5BV8XsteQ4+XyGSN3AW0
- GxmRVfEBsQCaDrVhopzfSl8rSXCv+L4LkCGJUQt67kTg87wzb/AljZLAfHBMICj4GISE
- uYoQSBeuy4uqL2HyNpHAQA1ZhbYJAKe8E3AYyQDTbHXfRiDRoqAHN2C+Dis5k5xXck22
- fzHFS2ZM9PmtsCrSBa6x4juT0z8mqo5nYMfFhmvwHeC2w87XB+Xo6VRQb5FNPDei9lfT
- MF0NiMmpRDWFE3vNvvTXBuaxsrh0BGMHTbdjlNN7wwUlhf4S6x0CUQtPMGPQH3LiQgrU
- SzaQ==
-X-Gm-Message-State: AOAM533kcsupbqHE5E0R2ZtgE80xghvUYB1/7ukV7wnq9fWDPK1dqfDP
- u/4Y8wbpy3/M8iR/9ztJAhg=
-X-Received: by 2002:adf:8b03:: with SMTP id n3mr5631365wra.439.1630797970685; 
- Sat, 04 Sep 2021 16:26:10 -0700 (PDT)
+ bh=7B1Tb7+LoNWIC6SLhDrpAAfzztMayZmtlKwX9VY86h4=;
+ b=hJMqPwZQ3m0gkpsJyrzJMfzWaceO3xr8GXDsv4hmK2bNS8BzTCP3mrrwJ2A5xOmQS4
+ qtvdWTJVnpRnRqZhedzuYXO15YIB4Gxs1cbnqYNX5J7DdHXWs0ReB+tpJYscLPHJfJg3
+ xo9sPb/+0HAMuDDinJ4ZIOYm3bRbl8CcqA427LU/QnJbP0OskY69VovZ/WcZZqQPT0iJ
+ xrq5eS87sWfKAmE4TnOr9yOMvsXDchwmHaUbzy74CAGLgIUFlxPLBm2RHYtZH1ReFHM2
+ gSEUQkEcY4bQdTGXZhz03+8NE2AdqqWx7lqPdOIe6T5mF33h0BT/2YNgSabF49gNvobr
+ DgKQ==
+X-Gm-Message-State: AOAM533ODLoNn5womD0yZvan5oRwg1HJSKxwZE38oNfo15gavhSB8NQ8
+ cTGMgHx13fPNoWSp76AxarI=
+X-Received: by 2002:a05:600c:4ed1:: with SMTP id
+ g17mr678056wmq.193.1630798845652; 
+ Sat, 04 Sep 2021 16:40:45 -0700 (PDT)
 Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
  [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id n4sm3376333wra.37.2021.09.04.16.26.08
+ by smtp.gmail.com with ESMTPSA id g11sm3297600wrx.30.2021.09.04.16.40.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 04 Sep 2021 16:26:10 -0700 (PDT)
-Subject: Re: [RFC PATCH 04/24] accel/tcg: Rename user-mode do_interrupt hack
- as fake_user_exception
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+ Sat, 04 Sep 2021 16:40:44 -0700 (PDT)
+Subject: Re: [PATCH 16/24] target/openrisc: Restrict cpu_exec_interrupt()
+ handler to sysemu
+To: Warner Losh <imp@bsdimp.com>
 References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-5-f4bug@amsat.org>
- <d813a7f0-95d2-e859-a8ad-c097c7654252@linaro.org>
+ <20210902151715.383678-17-f4bug@amsat.org>
+ <CANCZdfrMm7dHn+g7V08xrk+JuWKBTVp8Q=8PaBGdSWx7z5ZrBw@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6d7ef009-2970-c8f2-624f-4d5d720980d5@amsat.org>
-Date: Sun, 5 Sep 2021 01:26:08 +0200
+Message-ID: <f729f68d-3880-3aab-ee23-fdbcb126fc9e@amsat.org>
+Date: Sun, 5 Sep 2021 01:40:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <d813a7f0-95d2-e859-a8ad-c097c7654252@linaro.org>
+In-Reply-To: <CANCZdfrMm7dHn+g7V08xrk+JuWKBTVp8Q=8PaBGdSWx7z5ZrBw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -52
 X-Spam_score: -5.3
 X-Spam_bar: -----
@@ -109,72 +111,103 @@ X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Warner Losh <imp@bsdimp.com>, Marek Vasut <marex@denx.de>,
+ QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Marek Vasut <marex@denx.de>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eHxYsvYP1x2d
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2GsI2o+nsJy0
 
-On 9/3/21 9:07 PM, Richard Henderson wrote:
-> On 9/2/21 5:16 PM, Philippe Mathieu-Daudé wrote:
->> do_interrupt() is sysemu specific. However due to some X86
->> specific hack, it is also used in user-mode emulation, which
->> is why it couldn't be restricted to CONFIG_SOFTMMU (see the
->> comment around added in commit 78271684719: "cpu: tcg_ops:
->> move to tcg-cpu-ops.h, keep a pointer in CPUClass").
->> Keep the hack but rename the handler as fake_user_exception()
->> and restrict do_interrupt() to sysemu.
->>
->> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
->> ---
->> RFC: Any better name / idea here?
+On 9/2/21 10:24 PM, Warner Losh wrote:
 > 
-> I guess I'm ok with fake_user_interrupt.
+> 
+> On Thu, Sep 2, 2021 at 9:18 AM Philippe Mathieu-Daudé <f4bug@amsat.org
+> <mailto:f4bug@amsat.org>> wrote:
+> 
+>     Restrict cpu_exec_interrupt() and its callees to sysemu.
+> 
+>     Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org
+>     <mailto:f4bug@amsat.org>>
+>     ---
+>      target/openrisc/cpu.h       | 5 +++--
+>      target/openrisc/cpu.c       | 2 +-
+>      target/openrisc/interrupt.c | 2 --
+>      target/openrisc/meson.build | 6 ++++--
+>      4 files changed, 8 insertions(+), 7 deletions(-)
+> 
+> 
+> I'm not 100% sure about the build changes because my meson fu is weak,
+> but they seem right given the rest. 
+> 
+> Reviewed-by: Warner Losh <imp@bsdimp.com <mailto:imp@bsdimp.com>>
 
-I can use do_fake_user_interrupt (closer match to do_interrupt
-equivalent). Alternative name is "do_interrupt_user", same as
-the handler:
+>     diff --git a/target/openrisc/meson.build b/target/openrisc/meson.build
+>     index 9774a583065..e445dec4a00 100644
+>     --- a/target/openrisc/meson.build
+>     +++ b/target/openrisc/meson.build
+>     @@ -9,7 +9,6 @@
+>        'exception_helper.c',
+>        'fpu_helper.c',
+>        'gdbstub.c',
+>     -  'interrupt.c',
 
-/*
- * fake user mode interrupt. is_int is TRUE if coming from the int
- * instruction. next_eip is the env->eip value AFTER the interrupt
- * instruction. It is only relevant if is_int is TRUE or if intno
- * is EXCP_SYSCALL.
- */
-static void do_interrupt_user(CPUX86State *env, int intno, int is_int,
-                              int error_code, target_ulong next_eip)
+openrisc_ss is a 'Source Set', it is build each time the openrisc
+target is selected (regardless system/user).
 
-> But I believe that this could all be moved into cpu_loop.c.
+>        'interrupt_helper.c',
+>        'mmu.c',
+>        'sys_helper.c',
+>     @@ -17,7 +16,10 @@
+>      ))
+> 
+>      openrisc_softmmu_ss = ss.source_set()
 
-I tried to give it a try, but seems out of my comfort zone.
-I'll create an issue to do it as a future cleanup on top of
-this series.
+The 'openrisc_softmmu_ss' source set is only build when sysemu
+is selected.
 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>     -openrisc_softmmu_ss.add(files('machine.c'))
+>     +openrisc_softmmu_ss.add(files(
+>     +  'interrupt.c',
 
-Thanks,
+By moving it to the sysemu-specific set, the file won't be built
+for a user-only build.
+
+>     +  'machine.c',
+>     +))
+> 
+>      target_arch += {'openrisc': openrisc_ss}
+>      target_softmmu_arch += {'openrisc': openrisc_softmmu_ss}
+
+BTW the user-equivalent of ARCH_softmmu_ss is ARCH_user_ss, and
+is optional:
+
+$ git grep _user_ss.= target
+target/i386/meson.build:23:i386_user_ss = ss.source_set()
+target/mips/meson.build:1:mips_user_ss = ss.source_set()
+target/s390x/meson.build:34:s390x_user_ss = ss.source_set()
+
+Thanks for your reviews!
 
 Phil.

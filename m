@@ -1,199 +1,157 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2836838lfb;
-        Sun, 5 Sep 2021 01:52:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzAKGEoAAxmpEOfRz8R31/eMXUm1JfK+nDBTzueFLnLVqtmmbc8XwCnlltuaoodHAZBpUMM
-X-Received: by 2002:a25:5645:: with SMTP id k66mr9316000ybb.259.1630831938741;
-        Sun, 05 Sep 2021 01:52:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630831938; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3026760lfb;
+        Sun, 5 Sep 2021 07:31:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMoCcklGXd6UOfVo3WuPUCQKnGGxLUdfoAmt5F19SXnNnv3kionEcE2YBUVcEqjFARXbW5
+X-Received: by 2002:a05:6602:d9:: with SMTP id z25mr6229265ioe.154.1630852309336;
+        Sun, 05 Sep 2021 07:31:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630852309; cv=none;
         d=google.com; s=arc-20160816;
-        b=a21RIJXpuZejbzGkOh9qmww+tXAbL2pX+Qwx+BBlK2DhmQyyMcEkk5uZb166g0PSXZ
-         /IKTDPldZfvZ5LDz0fShzS9AqARJIoheMiJePI0g+zICcJJqiq3JrdhEa2i/Dgc5zGx/
-         xu1/2AtTIf5ibJmB5dLSz2FyPl/oQPefzGF2BULav891ja/D6XPmwA1bIHIfkG1VnGTH
-         sfQ1Fz9uNfp9gHi3hu04Y9WmHvL4xxT8C+Wx8p5LtQyB6Zt+NrjhR496MwAo5FQFviiX
-         9ex9Pmwu2RtA0tYiP1wsy15XkYIeXlmduC5ixiozMeVR7HEtIL/F1N+Y6CCSsGI98B4b
-         fZnQ==
+        b=sT0qVz34tFEP1mKZ0SLkrOobSFgHHgtZLYPh/ApDiJuuvzubhboK/h4ZoZKQnVo5CQ
+         iXscIi4lIam2xNAiR+4pcacury1o3dAZMzlgEBUqONSeNPVErmQE3/wdAQANwrpgup+V
+         wuqc9cnf8REk96iNjVW9Tlx5aPiNjj4XHMWa3w13T63hX0i4Q6q931J+qdmhVQ9diTcZ
+         focoJYJuPwGkMjRp34vUTwWtFTuygP+gM51ov9pjkAB4SydCCan/RSuDhMGylTcdK0ni
+         tM2aLHU1z7JfQElUAqKwvoD9Uw4SR2mHF9Xb7GWFMmNRZAnXp+t54/IXkbL+DiNW2Loo
+         mm/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=kOkTqYPD3i/48eNmPy+U9F46Sp4Wc7hZ8PNduoGVuzM=;
-        b=PYkgGSzwuIubDrwLFSX1wqn627Ob7b4hmd8/LDfn6U7S4MVw9U7/33lMD22vc+lCtN
-         +/nm2bE06Xd7nUkEkgQMitxPucjjvurJbtBUI7TeEJGiFKyOzq4Pf2UQV42Y2RPPj7dv
-         78x8LYl0Y5cUEpwG3HKqgTuxZhJHUpLSodOl6H1Usd72+g5TV4aW4xTDcw+3A3zPqyzn
-         T4bTHCia11on5uLZEWh9lToK7VmcfJu2g+373/kNPSlLXnUTH3EV4UTH9AOFtrFhOOrZ
-         asjW/7MAT2J71HViOBnS/0lI+z1FD6IDbMH383079Wu+ooKTEVO6dRc50fewiUEG3JDm
-         JbgA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=rT3ahWbaqmiKdsa5tc1dyxdcZABw2kJmABOnlLhtHPc=;
+        b=PoDJEBgjoKWYIHffyLTx2+oiXA0JZdMDjHsvJB0UdPJPwLkuxcX8DIxh2XKbD6Duwv
+         8LLbN7e/Ydv3r8aofWcRFEspKTDU1JwNvi/0qI9IbbU4OYGkuAbIWKM5KrFbHPSTBfWO
+         tzUVV50qFtUB8Gdd/JTL5iitGaYECl+ZDaUPei5Qm4uUFMVmqpm139yKh/ZWMXaRiQvz
+         271+76S1cFdTrc+x/8rooJvreiilB3lZ1QeDvYJJgLaU6Oxhl/HT+Qz0HkrSurvks4Cz
+         sAB7tDInvq3sTCfr0MJaxP4XjCZPu5wq6UGYRVWQjOw3gJB7eEDAU28vKu8HU6s6RklV
+         tadQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="WP9jx9G/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l18si5238545ybp.117.2021.09.05.01.52.18
+        by mx.google.com with ESMTPS id c6si5671739iow.84.2021.09.05.07.31.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Sep 2021 01:52:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 Sep 2021 07:31:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34432 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="WP9jx9G/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:40358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMnsw-0006WD-5d
-	for alex.bennee@linaro.org; Sun, 05 Sep 2021 04:52:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35454)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMtBU-0003DB-MJ
+	for alex.bennee@linaro.org; Sun, 05 Sep 2021 10:31:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMns5-0005rO-JH
- for qemu-devel@nongnu.org; Sun, 05 Sep 2021 04:51:25 -0400
-Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:56625)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMns3-0002FY-Dw
- for qemu-devel@nongnu.org; Sun, 05 Sep 2021 04:51:25 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.97])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id EF3BB13B207;
- Sun,  5 Sep 2021 08:51:12 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Sun, 5 Sep
- 2021 10:51:12 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004331eaad8-828d-4545-a9b1-1e56699ed50d,
- 66A9BF958F2B7C6001B822A929017098407F6BEC) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PULL 00/14] aspeed queue
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
- <peter.maydell@linaro.org>
-References: <20210903194108.131403-1-clg@kaod.org>
- <beab1f50-d8f5-b3d3-5612-15e5f74eb961@amsat.org>
- <9ef56813-94f9-a1cb-aba5-9d2e2a081d23@kaod.org>
- <24abcdb3-e666-477b-a3e7-746326640bca@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <cb42b5f4-0484-2192-5c93-fe20bbb39ef1@kaod.org>
-Date: Sun, 5 Sep 2021 10:51:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mMtBM-0003Cz-BW; Sun, 05 Sep 2021 10:31:40 -0400
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b]:45782)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mMtBK-0006nm-I6; Sun, 05 Sep 2021 10:31:39 -0400
+Received: by mail-yb1-xb2b.google.com with SMTP id c206so8170004ybb.12;
+ Sun, 05 Sep 2021 07:31:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=rT3ahWbaqmiKdsa5tc1dyxdcZABw2kJmABOnlLhtHPc=;
+ b=WP9jx9G/h0UtVCte9ftigguLLYcIBDk0mxL4zPEsZhhkwtuptQs59ZtA2Xm76A6FgK
+ HJufGYuXrq5eKazIxXnDNKwuhybfHck/i5F0bAl9nMz3N+IdLb59gg2oka3W6xUCocPp
+ cc/AByGhL9wqEKrJ0QN3i59uHCd508UOdqjXRCwDwTQ7Jtomn54JYMPOeoGK80UJpBMN
+ 9TB+xSSZkV1Yq4bWaNStdE5qsl2z7Ld4YRTKbICKaRDwD26U9ol7Aac/fsCbg4Ly3j/o
+ NCILCLMoXH+80tGhCp3DUKBavXR8GeE+R2OOgoUJ4oso8nhBInIWJszbGUNeTy0Fs9Sa
+ n+Zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=rT3ahWbaqmiKdsa5tc1dyxdcZABw2kJmABOnlLhtHPc=;
+ b=CGTvoCcMWRXUx0EVZSt9MVFRTgXYF1rwjWJwMgW/kmfrlUst6fs0kNoACVy2iYkAN4
+ uL3M1CMz9Ulb4jUNxfdX1hSMWdKGFHFTaOclAwdlrWcOpXGXJ7eNp2Ff5I8kmv5gN0mq
+ pn/3S02tCRWF5R26e5lnsfgIrRshDki+zKkh5NK3XemZFPN71ngtlSkb+E6tcbmqfFP4
+ cRxQRWNhTOgz87PN43MP5t1VWTfPze0H+Zqp4BcuJEr+1IL8FcUuZGwIfCfZh4p99YQv
+ RK/bNHGhdQyUPpMh1vHoJoW3h0Q4CVTu2HtEIRm5o9YsDG8xL4s6UOTjSmvDeY8EgpQI
+ +Mig==
+X-Gm-Message-State: AOAM530nq9FFggn0xLWbFsS2pGz+pGDxjbWvsjoxKs/H8zTX/jN18pzF
+ BpxRrpca+PNvq7yHEhUKk5UlWCH91I7gUClgJoo=
+X-Received: by 2002:a25:ac87:: with SMTP id x7mr10730427ybi.332.1630852296160; 
+ Sun, 05 Sep 2021 07:31:36 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <24abcdb3-e666-477b-a3e7-746326640bca@amsat.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: c9dcaa99-aa07-40a7-af18-1d8f4820acba
-X-Ovh-Tracer-Id: 9583660009386838889
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefuddgtdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdehgefhvdehtdeuleetgedvfeeukedtfeeihfffffeiuddutdduhffgvedtnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout2.3005.mail-out.ovh.net
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.832,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <20210901032724.23256-1-bmeng.cn@gmail.com>
+ <20210901032724.23256-6-bmeng.cn@gmail.com>
+ <869636f3-6e6a-d5d3-e377-1634f8165aa4@amsat.org>
+ <bf3ad08b-f1c8-317d-6378-3e33b5279573@amsat.org>
+In-Reply-To: <bf3ad08b-f1c8-317d-6378-3e33b5279573@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 5 Sep 2021 22:31:25 +0800
+Message-ID: <CAEUhbmW7ecA8YYqQS5Q7BrFd3xzU1UwicFV_wj=kNy5hc+KZ8Q@mail.gmail.com>
+Subject: Re: [PATCH v2 5/5] hw/char: cadence_uart: Ignore access when
+ unclocked or in reset for uart_{read, write}()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Peter Delevoryas <pdel@fb.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o0OZ2U3esB7j
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lvT5kdSPrEIo
 
-On 9/5/21 1:03 AM, Philippe Mathieu-Daudé wrote:
-> On 9/4/21 7:33 AM, Cédric Le Goater wrote:
->> On 9/3/21 10:41 PM, Philippe Mathieu-Daudé wrote:
->>> Hi Peter,
->>>
->>> On 9/3/21 9:40 PM, Cédric Le Goater wrote:
->>>> The following changes since commit 8880cc4362fde4ecdac0b2092318893118206fcf:
->>>>
->>>>   Merge remote-tracking branch 'remotes/cschoenebeck/tags/pull-9p-20210902' into staging (2021-09-03 08:27:38 +0100)
->>>>
->>>> are available in the Git repository at:
->>>>
->>>>   https://github.com/legoater/qemu/ tags/pull-aspeed-20210903
->>>>
->>>> for you to fetch changes up to 907796622b2a6b945c87641d94e254ac898b96ae:
->>>>
->>>>   hw/arm/aspeed: Add Fuji machine type (2021-09-03 18:43:16 +0200)
->>>>
->>>> ----------------------------------------------------------------
->>>> Aspeed patches :
->>>>
->>>> * MAC enablement fixes (Guenter)
->>>> * Watchdog  and pca9552 fixes (Andrew)
->>>> * GPIO fixes (Joel)
->>>> * AST2600A3 SoC and DPS310 models (Joel)
->>>> * New Fuji BMC machine (Peter)
->>>>
->>>> ----------------------------------------------------------------
->>>
->>>> Peter Delevoryas (3):
->>>>       hw/arm/aspeed: Initialize AST2600 UART clock selection registers
->>>>       hw/arm/aspeed: Allow machine to set UART default
->>>>       hw/arm/aspeed: Add Fuji machine type
->>>
->>> I have a pending question with the last patch, do you mind holding
->>> this PR until it is resolved with Cédric and the patch author please?
->>>
->>> Thanks,
->>>
->>> Phil.
->>>
->>
->> I guess we can drop the following from the commit log : 
->>
->> 	git clone https://github.com/facebook/openbmc
->> 	cd openbmc
->> 	./sync_yocto.sh
->> 	source openbmc-init-build-env fuji build-fuji
->> 	bitbake fuji-image
->> 	dd if=/dev/zero of=/tmp/fuji.mtd bs=1M count=128
->> 	dd if=./tmp/deploy/images/fuji/flash-fuji of=/tmp/fuji.mtd \
->> 	    bs=1k conv=notrunc
->> 	
->> 	git clone --branch aspeed-next https://github.com/peterdelevoryas/qemu
->> 	cd qemu
->> 	./configure --target-list=arm-softmmu --disable-vnc
->> 	make -j $(nproc)
->> 	./build/arm-softmmu/qemu-system-arm \
->> 	    -machine fuji-bmc \
->> 	    -drive file=/tmp/fuji.mtd,format=raw,if=mtd \
->> 	    -serial stdio \
->> 	    -nic user,hostfwd=::2222-:22
->> 	sshpass -p 0penBmc ssh root@localhost -p 2222
-> 
-> Sounds good. Eventually document that in docs/system/arm/aspeed.rst
-> in a follow up patch?
-> 
-> Regards,
-> 
-> Phil.
-> 
+On Thu, Sep 2, 2021 at 2:11 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
+>
+> On 9/2/21 8:09 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On 9/1/21 5:27 AM, Bin Meng wrote:
+> >> Read or write to uart registers when unclocked or in reset should be
+> >> ignored. Add the check there, and as a result of this, the check in
+> >> uart_write_tx_fifo() is now unnecessary.
+> >>
+> >> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+> >>
+> >> ---
+> >>
+> >> Changes in v2:
+> >> - new patch: hw/char: cadence_uart: Ignore access when unclocked or in=
+ reset for uart_{read,write}()
+> >>
+> >>  hw/char/cadence_uart.c | 15 ++++++++++-----
+> >>  1 file changed, 10 insertions(+), 5 deletions(-)
+> >
+> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>
+> Just realized it is simpler to implement MemoryRegionOps::accepts().
 
+Is there any guidance on what condition falls into
+MemoryRegionOps::accepts() to check?
 
-Peter D, 
+For example, should we move the register offset check to accepts()?
 
-Could you please resend the "hw/arm/aspeed: Add Fuji machine type"
-patch addressing Phil's comment. I will resend a PR with the 
-update.
+It looks like only a few codes implemented the MemoryRegionOps::accepts().
 
-Thanks,
-
-C. 
-
-
-
-
-
+Regards,
+Bin

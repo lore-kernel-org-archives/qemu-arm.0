@@ -1,262 +1,199 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2646880lfb;
-        Sat, 4 Sep 2021 19:08:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3YJqGyZXVPaEWd3q10xujsvlYRJpzdnfQdPyGqQxx7n8klmuthO7h3Kkx0kYBG4eaUYce
-X-Received: by 2002:a92:dcd1:: with SMTP id b17mr4271744ilr.158.1630807708406;
-        Sat, 04 Sep 2021 19:08:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630807708; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2836838lfb;
+        Sun, 5 Sep 2021 01:52:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAKGEoAAxmpEOfRz8R31/eMXUm1JfK+nDBTzueFLnLVqtmmbc8XwCnlltuaoodHAZBpUMM
+X-Received: by 2002:a25:5645:: with SMTP id k66mr9316000ybb.259.1630831938741;
+        Sun, 05 Sep 2021 01:52:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630831938; cv=none;
         d=google.com; s=arc-20160816;
-        b=fdmQ0FHg7uilvaKnZQbS75Dw8I38Fxmh0lb9RAfeuEi9PQKB+ETvxPEBR6yO+TTbl1
-         Kyc2Ctt5tc19dLSKeX5CRBQV2D4TAbr/XRenTVuOvC1mZJ52qsfHJciBU4FFdNQcGH43
-         LWM4YG8AeSWyziFeHdnaTrw3vp/fyvVkA47zjevwAJS4L3tVu/EEs4xW+ivPqyzsSt04
-         k/dyWR+KrYWcH19++cgp6jjlySlwcc3sO3xMJ90/QYBsH/mEN517BTcrjKU7/XMWmWza
-         v5dUC2hlyRht5kh6SXbHEgPi+KzxLhSvctTDQPza9o3TvEZSyZGj3YonbBnTeIGiNy7m
-         cqDg==
+        b=a21RIJXpuZejbzGkOh9qmww+tXAbL2pX+Qwx+BBlK2DhmQyyMcEkk5uZb166g0PSXZ
+         /IKTDPldZfvZ5LDz0fShzS9AqARJIoheMiJePI0g+zICcJJqiq3JrdhEa2i/Dgc5zGx/
+         xu1/2AtTIf5ibJmB5dLSz2FyPl/oQPefzGF2BULav891ja/D6XPmwA1bIHIfkG1VnGTH
+         sfQ1Fz9uNfp9gHi3hu04Y9WmHvL4xxT8C+Wx8p5LtQyB6Zt+NrjhR496MwAo5FQFviiX
+         9ex9Pmwu2RtA0tYiP1wsy15XkYIeXlmduC5ixiozMeVR7HEtIL/F1N+Y6CCSsGI98B4b
+         fZnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=So1YCLEmOvB5x9/EVSVNUOSaGHzfynrFZe9dXhRrKCc=;
-        b=uWjHyBsT2wRyG6nPV4vqbANQFQmHR8C8P/9PU8x62mJn3BwK3uq2Qq8TJzn5/gg35U
-         49w0pMLMyIq9urG4fp1lyf8HG1IcvAfvAs5wX4jTuySSDW27Aq5KPYQFkVywcV2tQvfU
-         jXfW1fBuie6xqXyk+nPXmkkD3ObE1ykngy8QOAve4wUHMI6ai0BnoWdc3bl0hsTpxwhL
-         1v2+Ru2YDjGrO5Yl69LASlICp6fFeXWnhwltBtkYvOo/r0h4pKGyXXm/y7dI4MP6WsOb
-         3sWsCB0ZCadGhI1vjJP2x9CBh5A4nDyIFWzIGqWwbz/v2SRFnJmZtBrgrsIgSB6rzyyF
-         D7qw==
+         :message-id:from:references:to:subject;
+        bh=kOkTqYPD3i/48eNmPy+U9F46Sp4Wc7hZ8PNduoGVuzM=;
+        b=PYkgGSzwuIubDrwLFSX1wqn627Ob7b4hmd8/LDfn6U7S4MVw9U7/33lMD22vc+lCtN
+         +/nm2bE06Xd7nUkEkgQMitxPucjjvurJbtBUI7TeEJGiFKyOzq4Pf2UQV42Y2RPPj7dv
+         78x8LYl0Y5cUEpwG3HKqgTuxZhJHUpLSodOl6H1Usd72+g5TV4aW4xTDcw+3A3zPqyzn
+         T4bTHCia11on5uLZEWh9lToK7VmcfJu2g+373/kNPSlLXnUTH3EV4UTH9AOFtrFhOOrZ
+         asjW/7MAT2J71HViOBnS/0lI+z1FD6IDbMH383079Wu+ooKTEVO6dRc50fewiUEG3JDm
+         JbgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=XS8bGcG+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si4632874ilu.84.2021.09.04.19.08.28
+        by mx.google.com with ESMTPS id l18si5238545ybp.117.2021.09.05.01.52.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Sep 2021 19:08:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 Sep 2021 01:52:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=XS8bGcG+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44874 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34432 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMha7-0007DZ-OA
-	for alex.bennee@linaro.org; Sat, 04 Sep 2021 22:08:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57774)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMnsw-0006WD-5d
+	for alex.bennee@linaro.org; Sun, 05 Sep 2021 04:52:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35454)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mMhZy-0007D8-DS; Sat, 04 Sep 2021 22:08:18 -0400
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333]:39446)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mMhZw-0008QJ-NV; Sat, 04 Sep 2021 22:08:18 -0400
-Received: by mail-ot1-x333.google.com with SMTP id
- m7-20020a9d4c87000000b0051875f56b95so4096075otf.6; 
- Sat, 04 Sep 2021 19:08:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=So1YCLEmOvB5x9/EVSVNUOSaGHzfynrFZe9dXhRrKCc=;
- b=XS8bGcG+21bGTyTZhJub7DBBCInF2kA5xW/bPfthTpetpSurAxIWQU8XFffe3shqdb
- qPCbFl1fyK6KQ+Ql6jlYPGrP7Ur0PUa1hDQV/CI1vTUP8wItxd1rKzp9QhDRuL1/b/jK
- nqGYdJ8WwggsBP5Ni7BEGYZ1Y7FUnuRR/9wGT1wxdubEpwMh2URzj1SRgj8xhuMhy6Nm
- phAF1vcLJNzl51+OP+29ub9aA8kJa/cT+lNBvF1brDSLBv2rfa5OahP3blmbW6/fKyaa
- TTf35YUxgoE7aq9ox6gxhHvpqF3ne3752KnzzKQt1v6CTqkD3z8kajHm/Z8khksTcIwY
- M6kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=So1YCLEmOvB5x9/EVSVNUOSaGHzfynrFZe9dXhRrKCc=;
- b=GesrhD5P1fe4B0RTFYwZFYsVLxA9MpLZfTubt+CcZ+ZL45Yz5INtGpan7dAOp6diNL
- nYUuwTsL6dPGXve2cGaZvq0OZ16xf10c4igYRlGcLTP7vE4r7ANGjKerBW3ntFwuPBgC
- FT/FX1NLHXknqUD+zF339csah+twcWrOhhqZeyYnOqVbUdbbnUr6w1MwE/WcHRQOdwmQ
- ZV804nRRVt36yDr4A2VhtSAUBQ5TT8jkAZx2uT+AzJLkuiTNk2lcopbSQRiPstCDNu9G
- BYW3WKWgCyIrrPM7S5lZliRcmnvj9eg1PR3IBrSkmp5lLw0urKNG/ZGlmfbAVVr0bbQL
- Mkhw==
-X-Gm-Message-State: AOAM533iCOv7QgqYWZ0Qj6Or1eIURTka5F0EuhPFeKGiVcE5DY7rC7/N
- 38qcrH600yTdgUisuYe9jeAx4buD+8o=
-X-Received: by 2002:a05:6830:1d8c:: with SMTP id
- y12mr5741638oti.362.1630807695150; 
- Sat, 04 Sep 2021 19:08:15 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- q13sm886415ota.17.2021.09.04.19.08.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 04 Sep 2021 19:08:14 -0700 (PDT)
-Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Bin Meng <bmeng.cn@gmail.com>
-References: <20210808013406.223506-1-linux@roeck-us.net>
- <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
- <a34c10d4-fc90-0186-3214-c3c5e77b4eea@roeck-us.net>
- <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
- <b5e43e87-c1bd-3265-298e-346413a22a82@roeck-us.net>
- <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
- <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
-Date: Sat, 4 Sep 2021 19:08:12 -0700
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMns5-0005rO-JH
+ for qemu-devel@nongnu.org; Sun, 05 Sep 2021 04:51:25 -0400
+Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:56625)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMns3-0002FY-Dw
+ for qemu-devel@nongnu.org; Sun, 05 Sep 2021 04:51:25 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.97])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id EF3BB13B207;
+ Sun,  5 Sep 2021 08:51:12 +0000 (UTC)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Sun, 5 Sep
+ 2021 10:51:12 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R004331eaad8-828d-4545-a9b1-1e56699ed50d,
+ 66A9BF958F2B7C6001B822A929017098407F6BEC) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PULL 00/14] aspeed queue
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+References: <20210903194108.131403-1-clg@kaod.org>
+ <beab1f50-d8f5-b3d3-5612-15e5f74eb961@amsat.org>
+ <9ef56813-94f9-a1cb-aba5-9d2e2a081d23@kaod.org>
+ <24abcdb3-e666-477b-a3e7-746326640bca@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <cb42b5f4-0484-2192-5c93-fe20bbb39ef1@kaod.org>
+Date: Sun, 5 Sep 2021 10:51:11 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <24abcdb3-e666-477b-a3e7-746326640bca@amsat.org>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::333;
- envelope-from=groeck7@gmail.com; helo=mail-ot1-x333.google.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: c9dcaa99-aa07-40a7-af18-1d8f4820acba
+X-Ovh-Tracer-Id: 9583660009386838889
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefuddgtdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdehgefhvdehtdeuleetgedvfeeukedtfeeihfffffeiuddutdduhffgvedtnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout2.3005.mail-out.ovh.net
+X-Spam_score_int: -56
+X-Spam_score: -5.7
 X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.832,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.832,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pO+axSeSt/+Z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Peter Delevoryas <pdel@fb.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: o0OZ2U3esB7j
 
-On 9/4/21 4:19 PM, Philippe Mathieu-Daudé wrote:
-> On 9/5/21 1:06 AM, Bin Meng wrote:
->> On Sun, Sep 5, 2021 at 1:13 AM Guenter Roeck <linux@roeck-us.net> wrote:
+On 9/5/21 1:03 AM, Philippe Mathieu-Daudé wrote:
+> On 9/4/21 7:33 AM, Cédric Le Goater wrote:
+>> On 9/3/21 10:41 PM, Philippe Mathieu-Daudé wrote:
+>>> Hi Peter,
 >>>
->>> On 9/2/21 12:29 PM, Peter Maydell wrote:
->>>> On Thu, 2 Sept 2021 at 17:09, Guenter Roeck <linux@roeck-us.net> wrote:
->>>>>
->>>>> On 9/2/21 8:58 AM, Peter Maydell wrote:
->>>>>> On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> wrote:
->>>>>>>
->>>>>>> The control register does not really have a means to deselect
->>>>>>> all chip selects directly. As result, CS is effectively never
->>>>>>> deselected, and connected flash chips fail to perform read
->>>>>>> operations since they don't get the expected chip select signals
->>>>>>> to reset their state machine.
->>>>>>>
->>>>>>> Normally and per controller documentation one would assume that
->>>>>>> chip select should be set whenever a transfer starts (XCH is
->>>>>>> set or the tx fifo is written into), and that it should be disabled
->>>>>>> whenever a transfer is complete. However, that does not work in
->>>>>>> practice: attempts to implement this approach resulted in failures,
->>>>>>> presumably because a single transaction can be split into multiple
->>>>>>> transfers.
->>>>>>>
->>>>>>> At the same time, there is no explicit signal from the host indicating
->>>>>>> if chip select should be active or not. In the absence of such a direct
->>>>>>> signal, use the burst length written into the control register to
->>>>>>> determine if an access is ongoing or not. Disable all chip selects
->>>>>>> if the burst length field in the configuration register is set to 0,
->>>>>>> and (re-)enable chip select if a transfer is started. This is possible
->>>>>>> because the Linux driver clears the burst length field whenever it
->>>>>>> prepares the controller for the next transfer.
->>>>>>> This solution  is less than perfect since it effectively only disables
->>>>>>> chip select when initiating the next transfer, but it does work with
->>>>>>> Linux and should otherwise do no harm.
->>>>>>>
->>>>>>> Stop complaining if the burst length field is set to a value of 0,
->>>>>>> since that is done by Linux for every transfer.
->>>>>>>
->>>>>>> With this patch, a command line parameter such as "-drive
->>>>>>> file=flash.sabre,format=raw,if=mtd" can be used to instantiate the
->>>>>>> flash chip in the sabrelite emulation. Without this patch, the
->>>>>>> flash instantiates, but it only reads zeroes.
->>>>>>>
->>>>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->>>>>>> ---
->>>>>>> I am not entirely happy with this solution, but it is the best I was
->>>>>>> able to come up with. If anyone has a better idea, I'll be happy
->>>>>>> to give it a try.
->>>>>>>
->>>>>>>     hw/ssi/imx_spi.c | 17 +++++++----------
->>>>>>>     1 file changed, 7 insertions(+), 10 deletions(-)
->>>>>>>
->>>>>>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
->>>>>>> index 189423bb3a..7a093156bd 100644
->>>>>>> --- a/hw/ssi/imx_spi.c
->>>>>>> +++ b/hw/ssi/imx_spi.c
->>>>>>> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
->>>>>>>         DPRINTF("Begin: TX Fifo Size = %d, RX Fifo Size = %d\n",
->>>>>>>                 fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s->rx_fifo));
->>>>>>>
->>>>>>> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
->>>>>>> +
->>>>>>>         while (!fifo32_is_empty(&s->tx_fifo)) {
->>>>>>>             int tx_burst = 0;
->>>>>>>
->>>>>>> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
->>>>>>>         case ECSPI_CONREG:
->>>>>>>             s->regs[ECSPI_CONREG] = value;
->>>>>>>
->>>>>>> -        burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
->>>>>>> -        if (burst % 8) {
->>>>>>> -            qemu_log_mask(LOG_UNIMP,
->>>>>>> -                          "[%s]%s: burst length %d not supported: rounding up to next multiple of 8\n",
->>>>>>> -                          TYPE_IMX_SPI, __func__, burst);
->>>>>>> -        }
->>>>>>
->>>>>> Why has this log message been removed ?
->>>>>
->>>>> What I wanted to do is:
->>>>>
->>>>> "Stop complaining if the burst length field is set to a value of 0,
->>>>>     since that is done by Linux for every transfer."
->>>>>
->>>>> What I did instead is to remove the message entirely.
->>>>>
->>>>> How about the rest of the patch ? Is it worth a resend with the message
->>>>> restored (except for burst size == 0), or is it not acceptable anyway ?
+>>> On 9/3/21 9:40 PM, Cédric Le Goater wrote:
+>>>> The following changes since commit 8880cc4362fde4ecdac0b2092318893118206fcf:
 >>>>
->>>> I did the easy bit of the code review because answering this
->>>> question is probably a multiple-hour job...this is still on my
->>>> todo list, but I'm hoping somebody who understands the MIX
->>>> SPI device gets to it first.
+>>>>   Merge remote-tracking branch 'remotes/cschoenebeck/tags/pull-9p-20210902' into staging (2021-09-03 08:27:38 +0100)
 >>>>
+>>>> are available in the Git repository at:
+>>>>
+>>>>   https://github.com/legoater/qemu/ tags/pull-aspeed-20210903
+>>>>
+>>>> for you to fetch changes up to 907796622b2a6b945c87641d94e254ac898b96ae:
+>>>>
+>>>>   hw/arm/aspeed: Add Fuji machine type (2021-09-03 18:43:16 +0200)
+>>>>
+>>>> ----------------------------------------------------------------
+>>>> Aspeed patches :
+>>>>
+>>>> * MAC enablement fixes (Guenter)
+>>>> * Watchdog  and pca9552 fixes (Andrew)
+>>>> * GPIO fixes (Joel)
+>>>> * AST2600A3 SoC and DPS310 models (Joel)
+>>>> * New Fuji BMC machine (Peter)
+>>>>
+>>>> ----------------------------------------------------------------
 >>>
->>> Makes sense. Of course, it would be even better if someone can explain
->>> how this works on real hardware.
+>>>> Peter Delevoryas (3):
+>>>>       hw/arm/aspeed: Initialize AST2600 UART clock selection registers
+>>>>       hw/arm/aspeed: Allow machine to set UART default
+>>>>       hw/arm/aspeed: Add Fuji machine type
+>>>
+>>> I have a pending question with the last patch, do you mind holding
+>>> this PR until it is resolved with Cédric and the patch author please?
+>>>
+>>> Thanks,
+>>>
+>>> Phil.
 >>>
 >>
->> I happened to notice this patch today. Better to cc people who once
->> worked on this part from "git blame" or "git log".
-> 
-> Even better if you add yourself as designated reviewer ;)
-> 
-> $ ./scripts/get_maintainer.pl -f hw/ssi/imx_spi.c
-> Alistair Francis <alistair@alistair23.me> (maintainer:SSI)
-> Peter Maydell <peter.maydell@linaro.org> (odd fixer:i.MX31 (kzm))
-> Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.MX6)
-> 
+>> I guess we can drop the following from the commit log : 
 >>
->>> In this context, it would be useful to know if real SPI flash chips
->>> reset their state to idle under some conditions which are not covered
->>> by the current code in hw/block/m25p80.c. Maybe the real problem is
->>> as simple as that code setting data_read_loop when it should not,
->>> or that it doesn't reset that flag when it should (unless I am missing
->>> something, the flag is currently only reset by disabling chip select).
+>> 	git clone https://github.com/facebook/openbmc
+>> 	cd openbmc
+>> 	./sync_yocto.sh
+>> 	source openbmc-init-build-env fuji build-fuji
+>> 	bitbake fuji-image
+>> 	dd if=/dev/zero of=/tmp/fuji.mtd bs=1M count=128
+>> 	dd if=./tmp/deploy/images/fuji/flash-fuji of=/tmp/fuji.mtd \
+>> 	    bs=1k conv=notrunc
+>> 	
+>> 	git clone --branch aspeed-next https://github.com/peterdelevoryas/qemu
+>> 	cd qemu
+>> 	./configure --target-list=arm-softmmu --disable-vnc
+>> 	make -j $(nproc)
+>> 	./build/arm-softmmu/qemu-system-arm \
+>> 	    -machine fuji-bmc \
+>> 	    -drive file=/tmp/fuji.mtd,format=raw,if=mtd \
+>> 	    -serial stdio \
+>> 	    -nic user,hostfwd=::2222-:22
+>> 	sshpass -p 0penBmc ssh root@localhost -p 2222
 > 
-> Plausible hypothesis.
+> Sounds good. Eventually document that in docs/system/arm/aspeed.rst
+> in a follow up patch?
+> 
+> Regards,
+> 
+> Phil.
 > 
 
-Possibly. Note that I did check the flash chip specification, but I don't
-see a notable difference to the qemu implementation. But then, again,
-I may be missing something.
 
-Guenter
+Peter D, 
+
+Could you please resend the "hw/arm/aspeed: Add Fuji machine type"
+patch addressing Phil's comment. I will resend a PR with the 
+update.
+
+Thanks,
+
+C. 
+
+
+
+
+

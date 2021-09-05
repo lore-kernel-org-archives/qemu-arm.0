@@ -1,300 +1,292 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3179794lfb;
-        Sun, 5 Sep 2021 11:56:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrcfbCwX/3aOgxi0XunoWyKC3x4Hx8gX2DkkHNN9YMna2vmC59FZYMKPM+X08mi4tkTgyb
-X-Received: by 2002:a6b:b842:: with SMTP id i63mr4575469iof.115.1630868191285;
-        Sun, 05 Sep 2021 11:56:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630868191; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3226221lfb;
+        Sun, 5 Sep 2021 13:35:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx+haQog92iv0LWOE1pkfHT3gGDeDF7ztcwdH8LFDi3ov1TfwVDm0Mrt2L2E6CwDkk7Wb/S
+X-Received: by 2002:a6b:8b54:: with SMTP id n81mr7217216iod.5.1630874106384;
+        Sun, 05 Sep 2021 13:35:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630874106; cv=none;
         d=google.com; s=arc-20160816;
-        b=WyVxFQmzpQMFdasuQV0A2Dd2zMU+c4X1Pq9ABzHyeX39kQY7qP14IyXVLslb3I29RF
-         chnyRDGSCDcXXUNbpEbfYa0VjpHkw8nHHAUUGSt4zIrfzv6jS3Q7fgteVbJ4u1RYKmKa
-         jNv7H0jx/6sI/007/qdh/U4hCL5bys4JZ46j12q5XvfKa4XF10wiRCjlLkfP/7k1FXX8
-         WLCTjdumR/uH0NsEt+kwdRfWBZIfhDeZ/ViVUkCb/s2i7fDHLwfGEjVn5zlLw3hc46j8
-         ivXIg4NO8REFD9bHoSXJUph/E9BfQb5kZUjRjvCWt/iXzIG65keMDF0wIOUQYJgdOaew
-         lcTA==
+        b=KZ8M+5Oeq3Api9bugSypKG+xj2IpYg2nbT9zHmWa9XLzGrZCCPswu6VvT18lUazJkC
+         +BCjtP/yckRFmv0cPkxkTdW5anvUWZ+NIvsUKLS2z2Omx/LWB4qr5jFiec91vPo+vd1L
+         jFHzXbe4mRCNCcgByzz3D7YxtwlIMXnz3FDVCXJtnTtn1vOoHieFe2E8g8F46s0PDn9X
+         LSGaIQCVl6coxCVSJZnmhkgTNSbIn1EV4M/DhStsfVqgBSiro/ID07qOMuJ/gGi76weO
+         rSV/+Zx6TvUQ6k2bUwj8Xp8yQ6H4nJ8kEFuA5b5AgBhokuv36AGQHcJpc8/PXhEe2FzV
+         EqEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=sq/zGlbnnplfNlL5wuKEBqsWYrBeXTUS1o+vdcxbRjE=;
-        b=yBZkJdpgOmxqjE493gnfA6y1VQ7UaSshtn3HKWBMIktULQ4TB0ijt+qXHBHJjqMgzr
-         LTO0neDDufvWSsbZ937+mfm2EObfm+7zsgKU82TgfZQO8BeC9R+DC9gXTs6d0svAMhTf
-         uiHDtdbtUAxCxMu3hqCFivVNJyhbDxX/T7kzBP7mMoMWwaiI67DLyM3ci5gyTOyIUYgB
-         1pTnJ+GLSpn2Bn0PSw7f2096FRP9MSWFkaP4VqgTzupaKc+JkJdqnHiXt7WLEo9lg7EG
-         BzpXoUzTFDEEjwiG96SlJo/P8ymCC3FYxCw0yjc/+Uit2DF8q7em8AmCD7k1j8Q3GOiM
-         6JAw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=NZwaEoXprCfqy8u5xjwLrfv4cYS53gv8hXLphAVEdLc=;
+        b=FjL/i4Js5fzxYqzl1ixt7VO903rN380VOYvRHS053VbXPKZPse3mifq2/f1QFK69JK
+         NuUnauCGFAfx6hxMzwCqBNZP/r6URUzi0NeG4Yx5qAFWHs+Xv+aM1+VqogxK3EK5Ptr+
+         TpJ/Jag1cu4ae91KV4Znc4IM5GpSQgYx2TNMp5Up4ZSIpINOAcmfgiN9X3x5dm3tviw+
+         pb9SIXXXLAA1xeDK5xLbwVMh2BnbpI8BR8OgfDnT0ikuebsYcnqBetGix3MqnV2Xd1Zw
+         aO6VQSv8w7txi1pXeixIMTdQ2t5DlMYun4WqewT23R7EwrhjNWYh/cXh7C3HVLniTxCt
+         4YjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=I8keUHPr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b29si6269034jav.112.2021.09.05.11.56.31
+        by mx.google.com with ESMTPS id v17si5430965ilm.40.2021.09.05.13.35.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Sep 2021 11:56:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 Sep 2021 13:35:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=I8keUHPr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:58662 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45710 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMxJe-0006ZS-Ji
-	for alex.bennee@linaro.org; Sun, 05 Sep 2021 14:56:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59966)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mMyr3-0001LN-K2
+	for alex.bennee@linaro.org; Sun, 05 Sep 2021 16:35:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=8882ecb67b=pdel@fb.com>)
- id 1mMxIw-0006Y0-TT
- for qemu-arm@nongnu.org; Sun, 05 Sep 2021 14:55:47 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:35600)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMypy-0008NJ-3v
+ for qemu-devel@nongnu.org; Sun, 05 Sep 2021 16:33:58 -0400
+Received: from 2.mo552.mail-out.ovh.net ([178.33.105.233]:45487)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=8882ecb67b=pdel@fb.com>)
- id 1mMxIu-0008DT-L8
- for qemu-arm@nongnu.org; Sun, 05 Sep 2021 14:55:46 -0400
-Received: from pps.filterd (m0148460.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 185ItgVq008339
- for <qemu-arm@nongnu.org>; Sun, 5 Sep 2021 11:55:42 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : content-type : content-transfer-encoding :
- mime-version; s=facebook; bh=sq/zGlbnnplfNlL5wuKEBqsWYrBeXTUS1o+vdcxbRjE=;
- b=I8keUHPrCzzpK81SGIH93vHmXpbAJE8dAMxmF8/j5cgaPppuIZG55djw0BjhljRzFQCn
- Ch1VsC0rWpV2M7+kZlQph3RqBWMehr1WInpHkgvWOrTpZ2+izvi3a97W9PDnXW4QICoD
- PjpF4Lt5GdBVaVdHmPd5e2hWT6Fdlk1cSbA= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com with ESMTP id 3av6b102sd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Sun, 05 Sep 2021 11:55:42 -0700
-Received: from intmgw001.05.prn6.facebook.com (2620:10d:c0a8:1b::d) by
- mail.thefacebook.com (2620:10d:c0a8:82::c) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Sun, 5 Sep 2021 11:55:41 -0700
-Received: by devvm660.prn0.facebook.com (Postfix, from userid 385188)
- id 560C61A4EEA0; Sun,  5 Sep 2021 11:55:38 -0700 (PDT)
-From: <pdel@fb.com>
-To: 
-CC: <clg@kaod.org>, <joel@jms.id.au>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <patrick@stwcx.xyz>, <f4bug@amsat.org>,
- <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- Peter Delevoryas <pdel@fb.com>
-Subject: [PATCH v3] hw/arm/aspeed: Add Fuji machine type
-Date: Sun, 5 Sep 2021 11:55:35 -0700
-Message-ID: <20210905185535.3108281-1-pdel@fb.com>
-X-Mailer: git-send-email 2.30.2
-X-FB-Internal: Safe
-Content-Type: text/plain
-X-FB-Source: Intern
-X-Proofpoint-ORIG-GUID: g6lC9WVWsJFYsulvbudcVlJAamOYbdDx
-X-Proofpoint-GUID: g6lC9WVWsJFYsulvbudcVlJAamOYbdDx
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mMypv-0005U4-Dk
+ for qemu-devel@nongnu.org; Sun, 05 Sep 2021 16:33:57 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.98])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id A1DB320807;
+ Sun,  5 Sep 2021 20:33:51 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Sun, 5 Sep
+ 2021 22:33:49 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G003a4c59a0a-bcc7-44ea-937a-a1ca2d64d17c,
+ 66A9BF958F2B7C6001B822A929017098407F6BEC) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH v3] hw/arm/aspeed: Add Fuji machine type
+To: <pdel@fb.com>
+References: <20210905185535.3108281-1-pdel@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <2098ae0f-1d79-ecc9-78e0-3d11d36db95b@kaod.org>
+Date: Sun, 5 Sep 2021 22:33:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-09-05_03:2021-09-03,
- 2021-09-05 signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- priorityscore=1501
- suspectscore=0 mlxlogscore=999 spamscore=0 mlxscore=0 malwarescore=0
- phishscore=0 lowpriorityscore=0 bulkscore=0 impostorscore=0 adultscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2108310000 definitions=main-2109050133
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=8882ecb67b=pdel@fb.com; helo=mx0b-00082601.pphosted.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210905185535.3108281-1-pdel@fb.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 257b1204-d55f-40ef-b232-92a36413c41b
+X-Ovh-Tracer-Id: 3003619478739389292
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefuddgudegkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdehgefhvdehtdeuleetgedvfeeukedtfeeihfffffeiuddutdduhffgvedtnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=178.33.105.233; envelope-from=clg@kaod.org;
+ helo=2.mo552.mail-out.ovh.net
+X-Spam_score_int: -56
+X-Spam_score: -5.7
+X-Spam_bar: -----
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.832,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v6uT5RfUNKZL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, f4bug@amsat.org,
+ qemu-devel@nongnu.org, patrick@stwcx.xyz, qemu-arm@nongnu.org, joel@jms.id.au
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6Yn4ShjPcI01
 
-From: Peter Delevoryas <pdel@fb.com>
+On 9/5/21 8:55 PM, pdel@fb.com wrote:
+> From: Peter Delevoryas <pdel@fb.com>
+> 
+> This adds a new machine type "fuji-bmc" based on the following device tree:
+> 
+> https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
+> 
+> Most of the i2c devices are not there, they're added here:
+> 
+> https://github.com/facebook/openbmc/blob/helium/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
+> 
+> I tested this by building a Fuji image from Facebook's OpenBMC repo,
+> booting, and ssh'ing from host-to-guest.
+> 
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
 
-This adds a new machine type "fuji-bmc" based on the following device tree:
+There are a few checkpatch warnings that I fixed directly.
+Anyhow,
 
-https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/aspeed-bmc-=
-facebook-fuji.dts
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Most of the i2c devices are not there, they're added here:
+I will wait a little before resending the PR :)
 
-https://github.com/facebook/openbmc/blob/helium/meta-facebook/meta-fuji/rec=
-ipes-utils/openbmc-utils/files/setup_i2c.sh
+I have pushed on my tree [1] the fuji machine and a few fixes for
+the ADC model. This is still WIP and if you have some ADC tests
+that come to mind, they would be welcomed.
 
-I tested this by building a Fuji image from Facebook's OpenBMC repo,
-booting, and ssh'ing from host-to-guest.
+Thanks,
 
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- hw/arm/aspeed.c | 112 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 112 insertions(+)
+C.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 7a9459340c..cc2d721ac7 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -159,6 +159,10 @@ struct AspeedMachineState {
- #define RAINIER_BMC_HW_STRAP1 0x00000000
- #define RAINIER_BMC_HW_STRAP2 0x00000000
-=20
-+/* Fuji hardware value */
-+#define FUJI_BMC_HW_STRAP1    0x00000000
-+#define FUJI_BMC_HW_STRAP2    0x00000000
-+
- /*
-  * The max ram region is for firmwares that scan the address space
-  * with load/store to guess how much RAM the SoC has.
-@@ -772,6 +776,90 @@ static void rainier_bmc_i2c_init(AspeedMachineState *b=
-mc)
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
- }
-=20
-+static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr, I2CBus **c=
-hannels) {
-+    I2CSlave *mux =3D i2c_slave_create_simple(bus, "pca9548", mux_addr);
-+    for (int i =3D 0; i < 8; i++) {
-+        channels[i] =3D pca954x_i2c_get_bus(mux, i);
-+    }
-+}
-+
-+#define TYPE_LM75 TYPE_TMP105
-+#define TYPE_TMP75 TYPE_TMP105
-+#define TYPE_TMP422 "tmp422"
-+
-+static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc =3D &bmc->soc;
-+    I2CBus *i2c[144] =3D {};
-+
-+    for (int i =3D 0; i < 16; i++) {
-+        i2c[i] =3D aspeed_i2c_get_bus(&soc->i2c, i);
-+    }
-+    I2CBus *i2c180 =3D i2c[2];
-+    I2CBus *i2c480 =3D i2c[8];
-+    I2CBus *i2c600 =3D i2c[11];
-+
-+    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
-+    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
-+    // NOTE: The device tree skips [32, 40) in the alias numbering, so we =
-do
-+    // the same here.
-+    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
-+    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
-+    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
-+    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
-+    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
-+    for (int i =3D 0; i < 8; i++) {
-+        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
-+    }
-+
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
-+
-+    aspeed_eeprom_init(i2c[19], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[20], 0x50, 2 * KiB);
-+    aspeed_eeprom_init(i2c[22], 0x52, 2 * KiB);
-+
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
-+    i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
-+
-+    aspeed_eeprom_init(i2c[8], 0x51, 64 * KiB);
-+    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
-+
-+    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
-+    aspeed_eeprom_init(i2c[50], 0x52, 64 * KiB);
-+    i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
-+    i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
-+
-+    i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
-+    i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
-+
-+    aspeed_eeprom_init(i2c[65], 0x53, 64 * KiB);
-+    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
-+    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
-+    aspeed_eeprom_init(i2c[68], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[69], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[70], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[71], 0x52, 64 * KiB);
-+
-+    aspeed_eeprom_init(i2c[73], 0x53, 64 * KiB);
-+    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
-+    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
-+    aspeed_eeprom_init(i2c[76], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[77], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[78], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[79], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[28], 0x50, 2 * KiB);
-+
-+    for (int i =3D 0; i < 8; i++) {
-+        aspeed_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
-+        i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
-+        i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
-+        i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
-+    }
-+}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
- {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -1070,6 +1158,26 @@ static void aspeed_machine_rainier_class_init(Object=
-Class *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
-=20
-+static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc =3D "Facebook Fuji BMC (Cortex-A7)";
-+    amc->soc_name =3D "ast2600-a3";
-+    amc->hw_strap1 =3D FUJI_BMC_HW_STRAP1;
-+    amc->hw_strap2 =3D FUJI_BMC_HW_STRAP2;
-+    amc->fmc_model =3D "mx66l1g45g";
-+    amc->spi_model =3D "mx66l1g45g";
-+    amc->num_cs =3D 2;
-+    amc->macs_mask =3D ASPEED_MAC3_ON;
-+    amc->i2c_init =3D fuji_bmc_i2c_init;
-+    amc->uart_default =3D ASPEED_DEV_UART1;
-+    mc->default_ram_size =3D 2 * GiB;
-+    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static const TypeInfo aspeed_machine_types[] =3D {
-     {
-         .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -1119,6 +1227,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
-         .name          =3D MACHINE_TYPE_NAME("rainier-bmc"),
-         .parent        =3D TYPE_ASPEED_MACHINE,
-         .class_init    =3D aspeed_machine_rainier_class_init,
-+    }, {
-+        .name          =3D MACHINE_TYPE_NAME("fuji-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_fuji_class_init,
-     }, {
-         .name          =3D TYPE_ASPEED_MACHINE,
-         .parent        =3D TYPE_MACHINE,
---=20
-2.30.2
+[1]  https://github.com/legoater/qemu/commits/aspeed-6.2
+
+
+
+> ---
+>  hw/arm/aspeed.c | 112 ++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 112 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 7a9459340c..cc2d721ac7 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -159,6 +159,10 @@ struct AspeedMachineState {
+>  #define RAINIER_BMC_HW_STRAP1 0x00000000
+>  #define RAINIER_BMC_HW_STRAP2 0x00000000
+>  
+> +/* Fuji hardware value */
+> +#define FUJI_BMC_HW_STRAP1    0x00000000
+> +#define FUJI_BMC_HW_STRAP2    0x00000000
+> +
+>  /*
+>   * The max ram region is for firmwares that scan the address space
+>   * with load/store to guess how much RAM the SoC has.
+> @@ -772,6 +776,90 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+>      aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
+>  }
+>  
+> +static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr, I2CBus **channels) {
+> +    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
+> +    for (int i = 0; i < 8; i++) {
+> +        channels[i] = pca954x_i2c_get_bus(mux, i);
+> +    }
+> +}
+> +
+> +#define TYPE_LM75 TYPE_TMP105
+> +#define TYPE_TMP75 TYPE_TMP105
+> +#define TYPE_TMP422 "tmp422"
+> +
+> +static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    AspeedSoCState *soc = &bmc->soc;
+> +    I2CBus *i2c[144] = {};
+> +
+> +    for (int i = 0; i < 16; i++) {
+> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+> +    }
+> +    I2CBus *i2c180 = i2c[2];
+> +    I2CBus *i2c480 = i2c[8];
+> +    I2CBus *i2c600 = i2c[11];
+> +
+> +    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
+> +    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
+> +    // NOTE: The device tree skips [32, 40) in the alias numbering, so we do
+> +    // the same here.
+> +    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
+> +    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
+> +    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
+> +    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
+> +    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
+> +    for (int i = 0; i < 8; i++) {
+> +        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
+> +    }
+> +
+> +    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+> +    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
+> +
+> +    aspeed_eeprom_init(i2c[19], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[20], 0x50, 2 * KiB);
+> +    aspeed_eeprom_init(i2c[22], 0x52, 2 * KiB);
+> +
+> +    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
+> +    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
+> +    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
+> +    i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
+> +
+> +    aspeed_eeprom_init(i2c[8], 0x51, 64 * KiB);
+> +    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
+> +
+> +    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
+> +    aspeed_eeprom_init(i2c[50], 0x52, 64 * KiB);
+> +    i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
+> +    i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
+> +
+> +    i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
+> +    i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
+> +
+> +    aspeed_eeprom_init(i2c[65], 0x53, 64 * KiB);
+> +    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
+> +    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
+> +    aspeed_eeprom_init(i2c[68], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[69], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[70], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[71], 0x52, 64 * KiB);
+> +
+> +    aspeed_eeprom_init(i2c[73], 0x53, 64 * KiB);
+> +    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
+> +    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
+> +    aspeed_eeprom_init(i2c[76], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[77], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[78], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[79], 0x52, 64 * KiB);
+> +    aspeed_eeprom_init(i2c[28], 0x50, 2 * KiB);
+> +
+> +    for (int i = 0; i < 8; i++) {
+> +        aspeed_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
+> +        i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
+> +        i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
+> +        i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
+> +    }
+> +}
+> +
+>  static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+>  {
+>      return ASPEED_MACHINE(obj)->mmio_exec;
+> @@ -1070,6 +1158,26 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+>          aspeed_soc_num_cpus(amc->soc_name);
+>  };
+>  
+> +static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc = "Facebook Fuji BMC (Cortex-A7)";
+> +    amc->soc_name = "ast2600-a3";
+> +    amc->hw_strap1 = FUJI_BMC_HW_STRAP1;
+> +    amc->hw_strap2 = FUJI_BMC_HW_STRAP2;
+> +    amc->fmc_model = "mx66l1g45g";
+> +    amc->spi_model = "mx66l1g45g";
+> +    amc->num_cs = 2;
+> +    amc->macs_mask = ASPEED_MAC3_ON;
+> +    amc->i2c_init = fuji_bmc_i2c_init;
+> +    amc->uart_default = ASPEED_DEV_UART1;
+> +    mc->default_ram_size = 2 * GiB;
+> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+> +        aspeed_soc_num_cpus(amc->soc_name);
+> +};
+> +
+>  static const TypeInfo aspeed_machine_types[] = {
+>      {
+>          .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+> @@ -1119,6 +1227,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>          .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+>          .parent        = TYPE_ASPEED_MACHINE,
+>          .class_init    = aspeed_machine_rainier_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("fuji-bmc"),
+> +        .parent        = TYPE_ASPEED_MACHINE,
+> +        .class_init    = aspeed_machine_fuji_class_init,
+>      }, {
+>          .name          = TYPE_ASPEED_MACHINE,
+>          .parent        = TYPE_MACHINE,
+> 
 

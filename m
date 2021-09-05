@@ -1,113 +1,115 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2572680lfb;
-        Sat, 4 Sep 2021 16:41:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw6ztdWpR4T+7xcEKvsAwh3D+d96LQEzJBnB/UMrix4BXU/3jPITINrQuRkH9Xnv2Mpuhjn
-X-Received: by 2002:a05:6638:d43:: with SMTP id d3mr4814003jak.138.1630798893651;
-        Sat, 04 Sep 2021 16:41:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630798893; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp2645695lfb;
+        Sat, 4 Sep 2021 19:06:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxOQAo10IzPsfJ8tmdcTUJKEZZl44uKXqk2GZ+lcRyfazNrhJ190YUR0VHOCr7Tisynn1yC
+X-Received: by 2002:a25:5554:: with SMTP id j81mr8109360ybb.133.1630807569618;
+        Sat, 04 Sep 2021 19:06:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630807569; cv=none;
         d=google.com; s=arc-20160816;
-        b=hkuOxto6OM537wLOfS8Kc6zkz1HkhORwbCbahwvjmCAN5/jW29r3mVSpn5DaHR0fil
-         4AIHC5bymTzUnVRSi05zEdpyfGTJHvfmOkW/i4IGDgD+7AmKhqtOZiOmbOQdn/+wcTO2
-         kXJkmqNkOKJZ47MEoCVKIWe+OFH/hr35QUlfqhhygEJ4vrNAsUHxBuLaC06L9pyzka02
-         /nnqOcdOWPuF/d7HWJx2fTWK2TeUxAlcV30AYA6DPA+1sliA5YHKmFXbCCT0ClQ5iHP2
-         2EWRWRZhi1wJhhNLstVcbNABdPDNbnuNdqmAeeqMPdguirnm1J8P9mEvC9kXuh8fKWYE
-         cn0A==
+        b=QMscS8ewtCywwWRriArDDoiEQn4BFQH42SA69pflqtQDjE3zT5WrAXo7pfHOGPjf5A
+         YAGrG0wxM6dhtJryXpMAldYaN9z44gSgyCOx1ZkKkfHWVDRiIzmjUMyegcdlGyRoRI1C
+         qFkQYoCtnDMb3bplGjl67Ps6iI6iWDC1zGw2k3TM0hAQ2Y+vD1v0FAMErHX26Kqt3E/F
+         9qn+v44BTFhnzCrzx5D/Ap/Hd0v3/RO621Uw3IAIvKrBHn/mVb21c6VxCIl6CQ5lSzoP
+         +1Afl4joWcXxUr89tsFOWBbwskd9SArd01/wV/UQugQUJbM1LZ9xP4YCCqDGR58PdU6v
+         ForQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7B1Tb7+LoNWIC6SLhDrpAAfzztMayZmtlKwX9VY86h4=;
-        b=yLSpKArDQEZ85w+2j0mAJmjLg6FPyxNrlaLRwJfdmc4wrj12aXRPLdn4hIWePJWs9a
-         X1l503mGE7sUq4+vpNxgyAsjuZoInFsAYCZ9GxfKNOKTKceMC2liV0+7C7ajLo02mLQ5
-         EbT64XtbsAyctbDDAtxDhv/MT4TRf5nREUvOfH5T3zeZRpVz5xLP3M25KTokdF2WwyOz
-         A0dMakY8p3bE653eQwAIP71HBzLI7BxAldsc04A5blXn3LbLTCOkf9zF1OYm1xnORokK
-         qKbYPxgroPZfHWnIqFv3wdQRMWRjuo/Y5g2lg40bI5etbjTtfd/8oQjy7K3ZFJfst24T
-         Lf9w==
+         :message-id:subject:from:references:to:dkim-signature;
+        bh=xHHKsJV8jUra9RSH39UfLrOjtBcR7nyaZm5o0qPFZ+E=;
+        b=GM2ZS0enOJGM8Ff+cSINii6szBjG59ioY7I5WhbxnhBvVn7TByXBkCoH0SDq23bvxL
+         uqtVZ/eJz8GE6tMnVKR+eXXoFPf4nmqqc2yvdhVaN0ofoYbvc7WbSrfnU1VCHd7mDnRK
+         mxmko2xlxHMh5ZGBVjDon2vVE0tRy1s2uWmsxj4cblK6ZiG0g/mAX/fZpNsuycC+S0YH
+         foNX6+KXQGG10VYOHLrKsksBiqGr3NFviXCS8EhKhu2BDvSDkEtx8tQRyzARgFRJjdAc
+         NQbRwcgnpskPLT57mDb1/Ek1hriHL+da7KkCneB0qQBI83dm7p93tY68FSsWdQEIBgeL
+         sJWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SZt6L1IQ;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Awcl+zUz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m12si3986306ioj.96.2021.09.04.16.41.33
+        by mx.google.com with ESMTPS id u8si3634808ybo.493.2021.09.04.19.06.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Sep 2021 16:41:33 -0700 (PDT)
+        Sat, 04 Sep 2021 19:06:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SZt6L1IQ;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=Awcl+zUz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39750 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mMfHw-000861-QH
-	for alex.bennee@linaro.org; Sat, 04 Sep 2021 19:41:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45922)
+	id 1mMhXt-0005QQ-0Q
+	for alex.bennee@linaro.org; Sat, 04 Sep 2021 22:06:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMfHG-0007qq-Ef; Sat, 04 Sep 2021 19:40:50 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:42763)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mMhXk-0005QB-Ox; Sat, 04 Sep 2021 22:06:00 -0400
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:36440)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMfHE-0005ZC-Nr; Sat, 04 Sep 2021 19:40:50 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- k20-20020a05600c0b5400b002e87ad6956eso2120294wmr.1; 
- Sat, 04 Sep 2021 16:40:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mMhXi-0006w3-Kr; Sat, 04 Sep 2021 22:06:00 -0400
+Received: by mail-oi1-x231.google.com with SMTP id s20so4295872oiw.3;
+ Sat, 04 Sep 2021 19:05:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ h=sender:to:cc:references:from:subject:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=7B1Tb7+LoNWIC6SLhDrpAAfzztMayZmtlKwX9VY86h4=;
- b=SZt6L1IQa4I2vUjhoDepUCUfey1oy5Pp0yK6+6HpFVagJ3vGh8eo7jj9UQPPDlj9qR
- 4eFeYXCDp9Z7rCjdQviBJx0z6rJFUEfRowGmf+PjdZqF/mI952vGHNWEudUmX4v635Lz
- itC+wNbuNIPOXy+13uB9aB0BOu6TFQGyUV7Q+f6vPZMWfCIaGuCC5sZ6Lo+pyjNxgpM3
- 5o2Dszj3OUzNXcgqyFxDRML4vfrg2eBCrZFz/q7YVZNLDSQ/yGKZeK1I/CYjkPleNH0d
- IiSTuOlmcxNS1qvPd2ZbcqXLQqm2DB+J5oVDfX11CC9s8DV2p/gvZ4qiIgYSbxP5+J1V
- 7f4A==
+ bh=xHHKsJV8jUra9RSH39UfLrOjtBcR7nyaZm5o0qPFZ+E=;
+ b=Awcl+zUzr8gZ9i/y0CeIkCo3MGwEheKFIceKm3owF5GkFVsTtpUimuJrP3TafK1dQS
+ E/pGbsUkwyyRf1btUznsHoetEHCMITW4cbl602mKKTCH1PtkkiAWVQqa9LPKEbKdYcWq
+ qiS3I9tF7dSB8PxrH13DWzhyBX0aO0Ho230NjsJxZXEnb59o3hvNzgnwIcoyq40Kp8FV
+ nV5RGvNhuZ85fotrgjZOAwiOLzeidB7g3wgb409f9dyz14kL/O82b2jB/SbcqZMWM2fT
+ V7vWKmO0xE8EZGxDESD1KOqFu/n0tx1rvTMTojUO/cB/egcivTo2sa4KOEfcBRAR0+gb
+ ZdkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ h=x-gm-message-state:sender:to:cc:references:from:subject:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=7B1Tb7+LoNWIC6SLhDrpAAfzztMayZmtlKwX9VY86h4=;
- b=hJMqPwZQ3m0gkpsJyrzJMfzWaceO3xr8GXDsv4hmK2bNS8BzTCP3mrrwJ2A5xOmQS4
- qtvdWTJVnpRnRqZhedzuYXO15YIB4Gxs1cbnqYNX5J7DdHXWs0ReB+tpJYscLPHJfJg3
- xo9sPb/+0HAMuDDinJ4ZIOYm3bRbl8CcqA427LU/QnJbP0OskY69VovZ/WcZZqQPT0iJ
- xrq5eS87sWfKAmE4TnOr9yOMvsXDchwmHaUbzy74CAGLgIUFlxPLBm2RHYtZH1ReFHM2
- gSEUQkEcY4bQdTGXZhz03+8NE2AdqqWx7lqPdOIe6T5mF33h0BT/2YNgSabF49gNvobr
- DgKQ==
-X-Gm-Message-State: AOAM533ODLoNn5womD0yZvan5oRwg1HJSKxwZE38oNfo15gavhSB8NQ8
- cTGMgHx13fPNoWSp76AxarI=
-X-Received: by 2002:a05:600c:4ed1:: with SMTP id
- g17mr678056wmq.193.1630798845652; 
- Sat, 04 Sep 2021 16:40:45 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id g11sm3297600wrx.30.2021.09.04.16.40.43
+ bh=xHHKsJV8jUra9RSH39UfLrOjtBcR7nyaZm5o0qPFZ+E=;
+ b=RIJqZyz17aa/Hynt7xJE4wrGqeA3OPvL4quyL+zkQTGcR62EmuzuKzXBpmVLVnql7k
+ Ve3lGzMQXhs48I3/UwLC+knsdZbhJ5j0xBXrueUEzP9vO/kFgsEumimqxIGKh4OCy/4d
+ kWMyo1G/7m+u7vWFmVBLjjfQfMfLvSY/307dj4So+4HSVPlAQnMl11PMfYq21kwp6oT4
+ 2T1m4hCGcxbTjkY1CfEc6mH8gus0nmUk6sv4X7FN8ylUs9005u1UsRF+Plua9b+oiVva
+ hxlu00qXG5eyR6pW3A5XXZ59Ikrxdl6EdOlevegWwpiPRK3mYLx3Z7Hgrux8T7Jub5Lk
+ YCOw==
+X-Gm-Message-State: AOAM5311Nue86Afofgx2AVtv1SJcPvekPivpbZPT5UWl8T6o+Q4psaqf
+ in+typ6n+EVvub6sfbHWvaA=
+X-Received: by 2002:a05:6808:1787:: with SMTP id
+ bg7mr4347191oib.39.1630807557028; 
+ Sat, 04 Sep 2021 19:05:57 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ x13sm915817otk.42.2021.09.04.19.05.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 04 Sep 2021 16:40:44 -0700 (PDT)
-Subject: Re: [PATCH 16/24] target/openrisc: Restrict cpu_exec_interrupt()
- handler to sysemu
-To: Warner Losh <imp@bsdimp.com>
-References: <20210902151715.383678-1-f4bug@amsat.org>
- <20210902151715.383678-17-f4bug@amsat.org>
- <CANCZdfrMm7dHn+g7V08xrk+JuWKBTVp8Q=8PaBGdSWx7z5ZrBw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f729f68d-3880-3aab-ee23-fdbcb126fc9e@amsat.org>
-Date: Sun, 5 Sep 2021 01:40:42 +0200
+ Sat, 04 Sep 2021 19:05:56 -0700 (PDT)
+To: Bin Meng <bmeng.cn@gmail.com>
+References: <20210808013406.223506-1-linux@roeck-us.net>
+ <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
+ <a34c10d4-fc90-0186-3214-c3c5e77b4eea@roeck-us.net>
+ <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
+ <b5e43e87-c1bd-3265-298e-346413a22a82@roeck-us.net>
+ <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
+Message-ID: <64557547-e243-dc98-8df7-0439fb917ffd@roeck-us.net>
+Date: Sat, 4 Sep 2021 19:05:54 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <CANCZdfrMm7dHn+g7V08xrk+JuWKBTVp8Q=8PaBGdSWx7z5ZrBw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -52
-X-Spam_score: -5.3
+Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
+ envelope-from=groeck7@gmail.com; helo=mail-oi1-x231.google.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
 X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.832,
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.832,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -122,92 +124,136 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2GsI2o+nsJy0
+X-TUID: SIC+NyXZJSU8
 
-On 9/2/21 10:24 PM, Warner Losh wrote:
+On 9/4/21 4:06 PM, Bin Meng wrote:
+> On Sun, Sep 5, 2021 at 1:13 AM Guenter Roeck <linux@roeck-us.net> wrote:
+>>
+>> On 9/2/21 12:29 PM, Peter Maydell wrote:
+>>> On Thu, 2 Sept 2021 at 17:09, Guenter Roeck <linux@roeck-us.net> wrote:
+>>>>
+>>>> On 9/2/21 8:58 AM, Peter Maydell wrote:
+>>>>> On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> wrote:
+>>>>>>
+>>>>>> The control register does not really have a means to deselect
+>>>>>> all chip selects directly. As result, CS is effectively never
+>>>>>> deselected, and connected flash chips fail to perform read
+>>>>>> operations since they don't get the expected chip select signals
+>>>>>> to reset their state machine.
+>>>>>>
+>>>>>> Normally and per controller documentation one would assume that
+>>>>>> chip select should be set whenever a transfer starts (XCH is
+>>>>>> set or the tx fifo is written into), and that it should be disabled
+>>>>>> whenever a transfer is complete. However, that does not work in
+>>>>>> practice: attempts to implement this approach resulted in failures,
+>>>>>> presumably because a single transaction can be split into multiple
+>>>>>> transfers.
+>>>>>>
+>>>>>> At the same time, there is no explicit signal from the host indicating
+>>>>>> if chip select should be active or not. In the absence of such a direct
+>>>>>> signal, use the burst length written into the control register to
+>>>>>> determine if an access is ongoing or not. Disable all chip selects
+>>>>>> if the burst length field in the configuration register is set to 0,
+>>>>>> and (re-)enable chip select if a transfer is started. This is possible
+>>>>>> because the Linux driver clears the burst length field whenever it
+>>>>>> prepares the controller for the next transfer.
+>>>>>> This solution  is less than perfect since it effectively only disables
+>>>>>> chip select when initiating the next transfer, but it does work with
+>>>>>> Linux and should otherwise do no harm.
+>>>>>>
+>>>>>> Stop complaining if the burst length field is set to a value of 0,
+>>>>>> since that is done by Linux for every transfer.
+>>>>>>
+>>>>>> With this patch, a command line parameter such as "-drive
+>>>>>> file=flash.sabre,format=raw,if=mtd" can be used to instantiate the
+>>>>>> flash chip in the sabrelite emulation. Without this patch, the
+>>>>>> flash instantiates, but it only reads zeroes.
+>>>>>>
+>>>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>>>>>> ---
+>>>>>> I am not entirely happy with this solution, but it is the best I was
+>>>>>> able to come up with. If anyone has a better idea, I'll be happy
+>>>>>> to give it a try.
+>>>>>>
+>>>>>>     hw/ssi/imx_spi.c | 17 +++++++----------
+>>>>>>     1 file changed, 7 insertions(+), 10 deletions(-)
+>>>>>>
+>>>>>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+>>>>>> index 189423bb3a..7a093156bd 100644
+>>>>>> --- a/hw/ssi/imx_spi.c
+>>>>>> +++ b/hw/ssi/imx_spi.c
+>>>>>> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+>>>>>>         DPRINTF("Begin: TX Fifo Size = %d, RX Fifo Size = %d\n",
+>>>>>>                 fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s->rx_fifo));
+>>>>>>
+>>>>>> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
+>>>>>> +
+>>>>>>         while (!fifo32_is_empty(&s->tx_fifo)) {
+>>>>>>             int tx_burst = 0;
+>>>>>>
+>>>>>> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
+>>>>>>         case ECSPI_CONREG:
+>>>>>>             s->regs[ECSPI_CONREG] = value;
+>>>>>>
+>>>>>> -        burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
+>>>>>> -        if (burst % 8) {
+>>>>>> -            qemu_log_mask(LOG_UNIMP,
+>>>>>> -                          "[%s]%s: burst length %d not supported: rounding up to next multiple of 8\n",
+>>>>>> -                          TYPE_IMX_SPI, __func__, burst);
+>>>>>> -        }
+>>>>>
+>>>>> Why has this log message been removed ?
+>>>>
+>>>> What I wanted to do is:
+>>>>
+>>>> "Stop complaining if the burst length field is set to a value of 0,
+>>>>     since that is done by Linux for every transfer."
+>>>>
+>>>> What I did instead is to remove the message entirely.
+>>>>
+>>>> How about the rest of the patch ? Is it worth a resend with the message
+>>>> restored (except for burst size == 0), or is it not acceptable anyway ?
+>>>
+>>> I did the easy bit of the code review because answering this
+>>> question is probably a multiple-hour job...this is still on my
+>>> todo list, but I'm hoping somebody who understands the MIX
+>>> SPI device gets to it first.
+>>>
+>>
+>> Makes sense. Of course, it would be even better if someone can explain
+>> how this works on real hardware.
+>>
 > 
+> I happened to notice this patch today. Better to cc people who once
+> worked on this part from "git blame" or "git log".
 > 
-> On Thu, Sep 2, 2021 at 9:18 AM Philippe Mathieu-Daudé <f4bug@amsat.org
-> <mailto:f4bug@amsat.org>> wrote:
+
+I copy people and mailing lists as provided by scripts/get_maintainer.pl.
+I don't think it would be appropriate to copy additional people; anyone
+interested in patches for a specific file should be listed in
+MAINTAINERS. After all, that is what it is for.
+
+>> In this context, it would be useful to know if real SPI flash chips
+>> reset their state to idle under some conditions which are not covered
+>> by the current code in hw/block/m25p80.c. Maybe the real problem is
+>> as simple as that code setting data_read_loop when it should not,
+>> or that it doesn't reset that flag when it should (unless I am missing
+>> something, the flag is currently only reset by disabling chip select).
+>>
 > 
->     Restrict cpu_exec_interrupt() and its callees to sysemu.
+> One quick question, did you test this on the latest QEMU? Is that
+> Linux used for testing? There have been a number of bug fixes in
+> imx_spi recently.
 > 
->     Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org
->     <mailto:f4bug@amsat.org>>
->     ---
->      target/openrisc/cpu.h       | 5 +++--
->      target/openrisc/cpu.c       | 2 +-
->      target/openrisc/interrupt.c | 2 --
->      target/openrisc/meson.build | 6 ++++--
->      4 files changed, 8 insertions(+), 7 deletions(-)
-> 
-> 
-> I'm not 100% sure about the build changes because my meson fu is weak,
-> but they seem right given the rest. 
-> 
-> Reviewed-by: Warner Losh <imp@bsdimp.com <mailto:imp@bsdimp.com>>
 
->     diff --git a/target/openrisc/meson.build b/target/openrisc/meson.build
->     index 9774a583065..e445dec4a00 100644
->     --- a/target/openrisc/meson.build
->     +++ b/target/openrisc/meson.build
->     @@ -9,7 +9,6 @@
->        'exception_helper.c',
->        'fpu_helper.c',
->        'gdbstub.c',
->     -  'interrupt.c',
+I implemented and tested this patch on top if qemu v6.0.0, and since then
+there has been no patch applied to the affected file. The patch still works
+on top of qemu v6.1.0.
 
-openrisc_ss is a 'Source Set', it is build each time the openrisc
-target is selected (regardless system/user).
-
->        'interrupt_helper.c',
->        'mmu.c',
->        'sys_helper.c',
->     @@ -17,7 +16,10 @@
->      ))
-> 
->      openrisc_softmmu_ss = ss.source_set()
-
-The 'openrisc_softmmu_ss' source set is only build when sysemu
-is selected.
-
->     -openrisc_softmmu_ss.add(files('machine.c'))
->     +openrisc_softmmu_ss.add(files(
->     +  'interrupt.c',
-
-By moving it to the sysemu-specific set, the file won't be built
-for a user-only build.
-
->     +  'machine.c',
->     +))
-> 
->      target_arch += {'openrisc': openrisc_ss}
->      target_softmmu_arch += {'openrisc': openrisc_softmmu_ss}
-
-BTW the user-equivalent of ARCH_softmmu_ss is ARCH_user_ss, and
-is optional:
-
-$ git grep _user_ss.= target
-target/i386/meson.build:23:i386_user_ss = ss.source_set()
-target/mips/meson.build:1:mips_user_ss = ss.source_set()
-target/s390x/meson.build:34:s390x_user_ss = ss.source_set()
-
-Thanks for your reviews!
-
-Phil.
+Guenter

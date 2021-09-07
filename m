@@ -1,97 +1,124 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4542382lfb;
-        Tue, 7 Sep 2021 02:41:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2FWy6rU05IIti1PsLEoPoEUlvXrgW8WihQlf1QuwIcTpHQUZWppRzJLEBiqrBL6S5npI7
-X-Received: by 2002:a25:c011:: with SMTP id c17mr1853771ybf.291.1631007669219;
-        Tue, 07 Sep 2021 02:41:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631007669; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4569419lfb;
+        Tue, 7 Sep 2021 03:18:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPCpW3n0BMKE6yDqSaC1QeKd/3UBhAyJjzrph+FrI/DjX34gr/zCk4unISmSlPSCO+Hcqp
+X-Received: by 2002:a6b:e616:: with SMTP id g22mr13252615ioh.67.1631009906779;
+        Tue, 07 Sep 2021 03:18:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631009906; cv=none;
         d=google.com; s=arc-20160816;
-        b=QLNocbaAq2p+sdifHEdtV1S860bpmefcyweoWpvDM+8JGZgtMGpGmkMdhjvLgjq2pp
-         ii5+rheMF3NKFY2sKN0esNNuS2fqMEs1GyMZDN1BizHBvCpuKZ2csZsvD0LDU6deS4nH
-         /AnY4y8Kj5VDCmBPhPr7BVEK+HNKSybJtAxrMq2BIX1F9hAK26bn0PXlV/kW31Epd2On
-         +Dh5DdHQDUMsHIjiC89SIZ+Ljx3vDVLtiT94l9SjKZ13m1WSimKYtpl+AXNGkCPL/oEG
-         D6xFEzK09rQPNp7UOosAGTtHjhtL/HFXSbh8hdl7p5Uvn5hgFEQ1TxLMbSC9HiYPY+69
-         rBJA==
+        b=K4KxxzrHAWcM9y1LbVG3gVwVaMor6Eh6M5tpAfFeqnlQM9tTQZSiVJXl7kfo6yIhx7
+         M9YUJuhXO0BIbZOT2nG9aap3rBk6GPD/auSZ6TV878ZsXbsIkmH1zg+muSZGv2ly0vgI
+         MeiTwBTPQvPy0hNDCv+b3DdceNkrnTJ4SypgGdXDlfskt1GvUtgecZBMBfbWxUEz8Eyq
+         L8xDFY/6Q30UEk1gU91+2we8WAEVkTsrW0UsbKjl0ym9Y1Vd7APreGA+LV6bMHB0oXXW
+         WUGMP1J7OzZmBNqi0WFX1F6glLYeMapKcpeitAccTQrFCQWYe9DxAcIJuQ51krZ2RVyo
+         QpYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=V2lL8KdT9/dbBxILju0NNQBN7URNWUoe0npj2UJqPwM=;
-        b=mUZ7XFHlC1o6GXwn6MFih7TqaABvnahPxLAAYiCGjlWIHVtK0Lub9uZoKLfU50+V29
-         /Pxi8DKF5dE1iZ0cX1We+g2ElQbJrQXgSpJjaSp1ETJOM9VTFsZiTKAZA9bD3wJ0c1Cl
-         JpCfkVpYRngatqAVRbinYjjXBgCd+dPuNcJVTBp8HdkjAKk9AaeW1DjxW9hmPlgJIp1X
-         l1lub7+WzNRK3Iv2XPhHs5mOX2i3EnE6tELvt3E676nLduNIuKXYkHgzwdm0KyHQyGth
-         MSdNFNsLSDABMq3VfO6JzpEuqDXysPB1kWuXg+4BFTHoDKMxDPYjqOZTrNPaQFwftL67
-         AVbA==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=K3C4RPhpFvataIaonCqx/aNNACHlIDgxFBxCSr+5faI=;
+        b=VNl+PCoV+tJIJSTlEUrvEl94d5cqhOBnl1EyTOZHbbYVV2kRpD6hE78QXbDz0hqZGJ
+         31KjoSkp7t+Cr2xlrx3odlnfk2Ihjw4FlUw2YyFZreTRDYvpZmj1RxyqAWXw/Q30Kvl7
+         jZy6+e6PKdBXZfXXM97xSa3r2912GTejDtkfSS3dS1rkkS+9fxBHSXnZmzP0txMh3rlh
+         mAaSYuMqEkTf1ogpDWa9LRa/x4GJXYV1S/RtaMNOY1HDmm1mKCiq3gnZmFJUKJRezCpv
+         oIfL8Hc1qIgkPbEIh9ZyswljYdaYWFd3eB/5BraBHzMxai71MT7Ta/aD7whpFjkbA05A
+         f3tQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g78eumm9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s203si11919752ybs.522.2021.09.07.02.41.09
+        by mx.google.com with ESMTPS id h9si8823664ioh.20.2021.09.07.03.18.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 02:41:09 -0700 (PDT)
+        Tue, 07 Sep 2021 03:18:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33102 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g78eumm9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNXbI-0003ZX-KN
-	for alex.bennee@linaro.org; Tue, 07 Sep 2021 05:41:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33128)
+	id 1mNYBO-0008Ui-3f
+	for alex.bennee@linaro.org; Tue, 07 Sep 2021 06:18:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mNXbA-0003ZF-Et; Tue, 07 Sep 2021 05:41:00 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:48489)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mNYBD-0008QT-79
+ for qemu-arm@nongnu.org; Tue, 07 Sep 2021 06:18:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48013)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mNXb8-0001gS-Jk; Tue, 07 Sep 2021 05:41:00 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.144])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 1B195BCBE9A5;
- Tue,  7 Sep 2021 11:40:54 +0200 (CEST)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 7 Sep
- 2021 11:40:53 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00145df95ec-ea45-4deb-b2d0-07083a893548,
- 984F41D2D9692A95DAA6D5E609006558D983FB00) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH 05/10] aspeed/smc: Remove the 'flash' attribute from
- AspeedSMCFlash
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
- <joel@jms.id.au>
-References: <20210907065822.1152443-1-clg@kaod.org>
- <20210907065822.1152443-6-clg@kaod.org>
- <497a0a23-570c-964d-80cb-e590749d20f9@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <31b33d22-6458-308d-afff-a76657824a52@kaod.org>
-Date: Tue, 7 Sep 2021 11:40:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mNYBA-0007dr-8V
+ for qemu-arm@nongnu.org; Tue, 07 Sep 2021 06:18:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631009891;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=K3C4RPhpFvataIaonCqx/aNNACHlIDgxFBxCSr+5faI=;
+ b=g78eumm9qkqbdqY2ZmepFGjxTjEWUmFPIps413BpPGzim/AQeAgeXDBxMAhg0Tw286IqLD
+ bOLFaXcAzP71g9oBWXsbMmTI9WK5ASPo2xo9n7N69rfI1BCi+ZNdZd0Z3bFZaBaytJeoRc
+ noQQXOwqAgMHkSEEqLjau01uBV6DAgo=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-153-P1M2_9tHM7iRciPBub5Bbw-1; Tue, 07 Sep 2021 06:18:10 -0400
+X-MC-Unique: P1M2_9tHM7iRciPBub5Bbw-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ m30-20020a50999e000000b003cdd7680c8cso40826edb.11
+ for <qemu-arm@nongnu.org>; Tue, 07 Sep 2021 03:18:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=K3C4RPhpFvataIaonCqx/aNNACHlIDgxFBxCSr+5faI=;
+ b=JriEDzH1EXPBuBW6HQt3Zv0F5SGIzCbvwjeXpJ4T2Uds+uhwyydZj9YBYEmyhV359W
+ TZ/wIStg+I6pjGkz4KqJswh9pfSklwInnC4E/a0L8+vYUBn3jL9EoUwkzZ8OoUtha3p/
+ M1tEsuWG8cEQXy9g8FaX+hjqeetj6I4Jl1ZAxQLutN6IniwhXv7CSAc4FGGSwuE3ICfO
+ MZ7Ou28SWULtwMU+XQl/CTDDc6olTANyxpU8f7+DTkNl+NMP2xaJM9FQsjDkYuVOCacl
+ bz/y3KxfAHoL5gmAtSXjdMY2I8OppPR/LO6VQpE8qmCuJ4UrSpiFtXfoMBgz2UfxjfWk
+ O2AQ==
+X-Gm-Message-State: AOAM531HdMx4GxtH93VY5Q4FYdAc4Hasz67rutv+X5DrTebx1qsgpe/A
+ ycJbEAE31U2QPybpM8sI6Y4XVeZSoGh5JZaLYgc858XuL99g3QEQvFY4LU8zZ4i8in7YmzYxFcu
+ JiU4W9OF0kd7E
+X-Received: by 2002:a17:906:9747:: with SMTP id
+ o7mr17795206ejy.486.1631009888939; 
+ Tue, 07 Sep 2021 03:18:08 -0700 (PDT)
+X-Received: by 2002:a17:906:9747:: with SMTP id
+ o7mr17795170ejy.486.1631009888579; 
+ Tue, 07 Sep 2021 03:18:08 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id bm14sm6272484edb.71.2021.09.07.03.18.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Sep 2021 03:18:08 -0700 (PDT)
+Date: Tue, 7 Sep 2021 12:18:06 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v2 3/3] hw/arm/virt_acpi_build: Generate DBG2 table
+Message-ID: <20210907121806.79c74f27@redhat.com>
+In-Reply-To: <20210906123139.93593-4-eric.auger@redhat.com>
+References: <20210906123139.93593-1-eric.auger@redhat.com>
+ <20210906123139.93593-4-eric.auger@redhat.com>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <497a0a23-570c-964d-80cb-e590749d20f9@amsat.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 805f946d-ff71-4e38-81c0-9b57586accba
-X-Ovh-Tracer-Id: 3721380669543320425
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefhedgvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.332,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -104,80 +131,172 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, drjones@redhat.com, gshan@redhat.com,
+ mst@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, philmd@redhat.com, ardb@kernel.org,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cScYiVvt1kNc
+X-TUID: biziGzkPUeNF
 
-On 9/7/21 10:36 AM, Philippe Mathieu-Daudé wrote:
-> On 9/7/21 8:58 AM, Cédric Le Goater wrote:
->> There is no use for it.
+On Mon,  6 Sep 2021 14:31:39 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
+
+> ARM SBBR specification  mandates DBG2 table (Debug Port Table 2).
+                        ^^ revision here, and possibly a pointer [chapter]
+                           to concrete place in spec where it's said.
+
+> this latter allows to describe one or more debug ports.
 > 
-> Hmmm this is not the correct justification.
+> Generate an DBG2 table featuring a single debug port, the PL011.
 > 
-> This devices sits on a bus, so its state will be released when
-> the bus is released. There is no need to release it manually,
-> so we can remove the reference.
+> The DBG2 specification can be found at:
+> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table?redirectedfrom=MSDN
 
-That's what the code is doing AFAIUI.
-
-This is just removing the AspeedSMCFlash attribute because it is 
-not used anywhere else than under aspeed_board_init_flashes().
+links tend to go stale, I'd use a combo of name and optionally link here:
+ "Microsoft Debug Port Table 2 (DBG2)"
+    link
  
-Is there anything else ? I am bit lost by your comment.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Thanks,
-
-C.
+table looks correct,
+so only style related thing to fix to match the common
+ACPI code style.
 
 > 
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>  include/hw/ssi/aspeed_smc.h |  1 -
->>  hw/arm/aspeed.c             | 11 +++++------
->>  2 files changed, 5 insertions(+), 7 deletions(-)
->>
->> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
->> index 0ea536a44c3a..f32f66f9a838 100644
->> --- a/include/hw/ssi/aspeed_smc.h
->> +++ b/include/hw/ssi/aspeed_smc.h
->> @@ -37,7 +37,6 @@ typedef struct AspeedSMCFlash {
->>      uint32_t size;
->>  
->>      MemoryRegion mmio;
->> -    DeviceState *flash;
->>  } AspeedSMCFlash;
->>  
->>  #define TYPE_ASPEED_SMC "aspeed.smc"
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index 95ce4b1670ac..64c3a7fb66db 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -274,18 +274,17 @@ static void aspeed_board_init_flashes(AspeedSMCState *s,
->>      int i ;
->>  
->>      for (i = 0; i < s->num_cs; ++i) {
->> -        AspeedSMCFlash *fl = &s->flashes[i];
->>          DriveInfo *dinfo = drive_get_next(IF_MTD);
->>          qemu_irq cs_line;
->> +        DeviceState *dev;
->>  
->> -        fl->flash = qdev_new(flashtype);
->> +        dev = qdev_new(flashtype);
->>          if (dinfo) {
->> -            qdev_prop_set_drive(fl->flash, "drive",
->> -                                blk_by_legacy_dinfo(dinfo));
->> +            qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
->>          }
->> -        qdev_realize_and_unref(fl->flash, BUS(s->spi), &error_fatal);
->> +        qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
->>  
->> -        cs_line = qdev_get_gpio_in_named(fl->flash, SSI_GPIO_CS, 0);
->> +        cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
->>          sysbus_connect_irq(SYS_BUS_DEVICE(s), i + 1, cs_line);
->>      }
->>  }
->>
+> ---
+> v1 -> v2:
+> - rebased on Igor's refactoring
+> ---
+>  hw/arm/virt-acpi-build.c | 64 +++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 63 insertions(+), 1 deletion(-)
 > 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 488ea04eed7..de604e79779 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -512,6 +512,65 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      acpi_table_composed(linker, &table);
+>  }
+>  
+> +/* Debug Port Table 2 (DBG2) */
+> +static void
+> +build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> +{
+> +    AcpiTable table = { .sig = "DBG2", .rev = 3, .oem_id = vms->oem_id,
+> +                        .oem_table_id = vms->oem_table_id };
+> +    int dbg2devicelength, baseaddroffset = 22, namespace_length;
+> +    char name[] = "COM0";
+const?
+
+Also I'd move here:
+       const int namespace_length = sizeof(name);
+
+> +
+> +    acpi_init_table(&table, table_data);
+> +
+> +    namespace_length = sizeof name;
+> +    dbg2devicelength = baseaddroffset +
+> +                       sizeof(struct AcpiGenericAddress) + 4 + namespace_length;
+                          ^^^^, fragile as it's subject to alignment which depends on target
+
+I suggest following style:
+       
+       dbg2devicelength = 22 /* BaseAddressRegister[] offset, fixed size table header */ +
+                          12 /* BaseAddressRegister[] */ +
+                          4 /* AddressSize[] */
+                          namespace_length /* NamespaceString[] */;
+
+       and drop 'baseaddroffset' and 'sizeof(struct AcpiGenericAddress)'
+       to be more consistent with other ACPI code to annotate where lengths come from
+
+> +    /* offset to the first debug struct */
+         comment should be verbatim field name from spec table, i.e. in this case 
+            /* OffsetDbgDeviceInfo */
+         ditto for the rest of field comments
+
+> +    build_append_int_noprefix(table_data, 44, 4);
+> +    /* number of debug device info struct entries */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +
+> +    /* debug device info structure */
+
+copy from spec, for ease to find it using just copy/past,
+
+ /* Table 2. Debug Device Information structure format */
+
+> +    /* revision */
+> +    build_append_int_noprefix(table_data, 0, 1);
+> +    /* length */
+> +    build_append_int_noprefix(table_data, dbg2devicelength, 2);
+> +    /* register count */
+> +    build_append_int_noprefix(table_data, 1, 1);
+> +    /* name path length */
+> +    build_append_int_noprefix(table_data, namespace_length, 2);
+> +    /* name path offset */
+> +    build_append_int_noprefix(table_data, 38, 2);
+> +    /* oem data length */
+> +    build_append_int_noprefix(table_data, 0, 2);
+> +    /* oem data offset (0 means no OEM data) */
+> +    build_append_int_noprefix(table_data, 0, 2);
+> +    /* port type (serial port) */
+> +    build_append_int_noprefix(table_data, 0x8000, 2);
+values could be annotated like following, using description from spec:
+
+          build_append_int_noprefix(table_data, 0x8000 /* Serial */, 2);
+
+> +    /* port subtype (ARM PL011)*/
+> +    build_append_int_noprefix(table_data, 0x3, 2);
+                                             0x3 /* ARM PL011 UART */
+
+it gives checkpatch warning but all APCI code uses this style,
+so it's fine
+
+> +    /* reserved */
+> +    build_append_int_noprefix(table_data, 0, 2);
+> +    /* base address offset */
+> +    build_append_int_noprefix(table_data, 22, 2);
+> +    /* address size offset */
+> +    build_append_int_noprefix(table_data, 34, 2);
+> +
+> +    /* BaseAddressRegister */
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
+> +                     vms->memmap[VIRT_UART].base);
+> +
+> +    /* AddressSize (PL011 UART length) */
+> +    build_append_int_noprefix(table_data, 0x1000, 4);
+                                             ^^^^
+at least point out where it comes from or use macro to define
+value and use it here and in pl011_init()
+
+
+> +
+> +    /* NamespaceString */
+> +    g_array_append_vals(table_data, name, namespace_length);
+> +
+> +    acpi_table_composed(linker, &table);
+> +};
+> +
+>  /*
+>   * ACPI spec, Revision 5.1 Errata A
+>   * 5.2.12 Multiple APIC Description Table (MADT)
+> @@ -770,7 +829,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      dsdt = tables_blob->len;
+>      build_dsdt(tables_blob, tables->linker, vms);
+>  
+> -    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
+> +    /* FADT MADT GTDT MCFG SPCR DBG2 pointed to by RSDT */
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+>  
+> @@ -793,6 +852,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_spcr(tables_blob, tables->linker, vms);
+>  
+> +    acpi_add_table(table_offsets, tables_blob);
+> +    build_dbg2(tables_blob, tables->linker, vms);
+> +
+>      if (vms->ras) {
+>          build_ghes_error_table(tables->hardware_errors, tables->linker);
+>          acpi_add_table(table_offsets, tables_blob);
 

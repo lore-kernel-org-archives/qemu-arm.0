@@ -1,111 +1,94 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4470455lfb;
-        Tue, 7 Sep 2021 00:40:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypydc05EK6aADWp953JrL4V2uSTfjMqopyriReZiaJcKEXjWjgjgKTK04RVITrDvrimjs3
-X-Received: by 2002:a92:ca89:: with SMTP id t9mr11188242ilo.178.1631000431738;
-        Tue, 07 Sep 2021 00:40:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631000431; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4486489lfb;
+        Tue, 7 Sep 2021 01:08:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxs1yZJIDWtr1LCzFnapHBYLfthXtXXDF9hF0I7j1MTfCzArftGh3W0tHJf2VhOmo8FH4TG
+X-Received: by 2002:a92:6904:: with SMTP id e4mr11353721ilc.311.1631002133315;
+        Tue, 07 Sep 2021 01:08:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631002133; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uphz0EELn/BchrYpuoLj9VLNEm/BNuc/JeXtqAHTpBki09VbN/n2QN2PLi+9Q9MLDo
-         DF8RS59OwK47ePqqDN35BindgbdHD9zM55Bept+KEZOG+mQrpRr26Bez/0FVO9J9x+FQ
-         emVyPkD86BzfqCVj6TgRcF1LMgKOIK1nfJGRv8CgeXndpHpRG8CWwwgaPAxRiyyd49Zz
-         O6/t++g4uM5QfaZPFKfBGQi3HXxX/chxV8HqiWs5smZVUBv/+tUbsDTTLRWg73HzKAS/
-         UPMmhLaA17NCOBezJ9rCgEW63oTRJafT5woZ4b4U5n0JbnaQniX9w8BIRIFkJMcnL9Vu
-         ROpA==
+        b=I9jHuvwdsRma9NCcPcBAIUEWUefcFiS3+rmJfPkh4Mcc4Xu+7M+g40NIxxYsvQOdFB
+         Z6N77wi5j3sB2NoUKQ/jmhXsc9tNVOk6pXVPIbGqcfqHglHNkK95C4FXaXWkL3jXhtCy
+         UaReOXDtdJfSbGi3ML6UBmHya4G6MndZmqajEg1VJlsj21hsO5diSb9hrVKEqQdhPpAq
+         6Yf0Z5l2mDS50afKFWdbozdy96ePa3KGl0OsjupEfe7DIpVsVW8wQr+zm1RImnKYsITN
+         Lmo9qN2grlmmoFfRiDgu1XQq7Oh0XuehGEl+e+urMNzDXKchnwrufGpNLco1aONot04c
+         pr0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=E6QQ3UkRbMqWYtLmsDkeHMbtHaQV2gUUpN4hYEzdVYU=;
-        b=kYAgIu5kt49EOnqimvP3AeacXV58w71TFZn+0jdDtD8qCph0vQ4oAnLmUhbH/Yl/2z
-         JzmX0THggoWJ+K3hdEdphgcWIZoCa6qkNMQA99vjJdeDtGL8QaUcs25zhEW25001Crs8
-         aZSqasL1aCm2bekEoDH6F8GdYxVdfD8ig0aBe/pf6wgLV+FDjHuvRbnC3Va++vCM7TYi
-         6/HcBnsxO63AfzCxIJ5DUjF5M4AByf1X1j+bKluM49v4htVbNmS/EixhhX8R+gs6gVHN
-         dTmea6SlkIEkGT5X41+X42IE+aFLq+jT777IRf2OHQonCpIXwa0TNaBWqvTr4mnXRTUR
-         H5lg==
+         :message-id:from:references:to:subject;
+        bh=/ZoutnZQJthlcX0vYEizcuTBJko+wFBTMjNFv9bYglk=;
+        b=oCLxQ0I/vZuSksotQ2uFX/cTvVgYcMRTGJRpEPplJ+z91873cRvRl/zDTH7YTU6jGm
+         lpczSmCQexlJ+JgJooy1zPlQCXnDleVB3XlK8ePtBk937jzVv5On1Xovr5bX3aSo0A/C
+         0bsgKgf0fYjeHs3flrQfC8arzHqC3qjwtmKj4jcXDVNeAsVbQVMiSkhDvtvXnwnmBBIm
+         8VhNTyFmGoKkpjbiXgV4kzUfQq4Zj8+M54931OJU+WbNeB/Y95j4GISXbiDLYAxEV1yy
+         zqQ3GmGzkEMvNx3NoNJfe5SB8MSK/rtpGEZg4AioEkdS7yxPYXy25Xj4trIli5p2aGUM
+         sk/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="BZfKQ/n0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7si9327528ilg.5.2021.09.07.00.40.31
+        by mx.google.com with ESMTPS id o38si10104385jac.39.2021.09.07.01.08.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 00:40:31 -0700 (PDT)
+        Tue, 07 Sep 2021 01:08:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="BZfKQ/n0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32914 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57484 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNViY-0004Nn-40
-	for alex.bennee@linaro.org; Tue, 07 Sep 2021 03:40:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35862)
+	id 1mNWA0-0005TJ-L1
+	for alex.bennee@linaro.org; Tue, 07 Sep 2021 04:08:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mNViJ-0004MK-4E; Tue, 07 Sep 2021 03:40:15 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:33523)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mNViG-000208-IU; Tue, 07 Sep 2021 03:40:14 -0400
-Received: by mail-wr1-x436.google.com with SMTP id t18so2250154wrb.0;
- Tue, 07 Sep 2021 00:40:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=E6QQ3UkRbMqWYtLmsDkeHMbtHaQV2gUUpN4hYEzdVYU=;
- b=BZfKQ/n0tN3m+abPZmvQ8UmgwDY961HbMTy33IhHXLHxju24uOfFK67dQQa6IDBbzo
- KGeaze/YIEvelllecIleXbdB9CDiQ7l+VIH8D4buRiHi5krFnBBb4FdIaI5QzYJhelmL
- t1yvHVaOeETN4gJaJ2XsHOmf7MgPCCQwbnTOFYxKkh8hF254aizqlR9jV88+CuNakvJt
- o2oHijvHmQ3NzphUxTCQ2rJZI4PsMuxwKb9DILnH77mPdjZz1YOkcr3Mun1EsXlG2lj1
- xBN+kLrESbuXN/rXLb5mIOKMrDAnVpWbAAnQBdo5yopTLABzZHRpuqRJdqNxJDuBgBuI
- ysNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=E6QQ3UkRbMqWYtLmsDkeHMbtHaQV2gUUpN4hYEzdVYU=;
- b=Vfxz1DZFaQ6lJhbkgfn6LT30rKAWjIsOzqcoWtZV8Hi3ew7fEQE+m1FTQ5r+O+3CZl
- TlTJpbS0dph4gKQA/ggo/mKn9k2Ttd4/ci7zOpqOdP3Lwo5Q2rNzPgO8pufBYL7IYVsL
- FoGQa6BPdJP5JlLrZl36S3G4hGK63b+Dmab0o6NO5YqAjRpyHWYRwRpppc8HZZ/JtciD
- pUW9qCO7YFVeWYehu6PT8AB5xySN5GqUmhuW+j/00yFUsoPw3FegEzQK6rL2Tg0yruYG
- ditThgOiu5cHvbThc+MvXWauYzGIqNmcvYYqzE2iOBJAziR7Ob0jeCimheSSZ3AwQDbX
- MtnQ==
-X-Gm-Message-State: AOAM532BO7foiwz+hX77+URS2HhMvnKbVs+RHMfQF7FRfKwsBFtRD7wJ
- meoh9Bcjjb6MInaHB1GmIobw6f1FaS0=
-X-Received: by 2002:adf:c506:: with SMTP id q6mr17460346wrf.78.1631000410170; 
- Tue, 07 Sep 2021 00:40:10 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id s15sm9945324wrb.22.2021.09.07.00.40.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Sep 2021 00:40:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mNW9q-0005Sd-62; Tue, 07 Sep 2021 04:08:42 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:35185)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mNW9o-00013r-4S; Tue, 07 Sep 2021 04:08:41 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.235])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 579A9BCB92BB;
+ Tue,  7 Sep 2021 10:08:36 +0200 (CEST)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 7 Sep
+ 2021 10:08:33 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G00323369cd5-4b4b-4985-b239-152fbc8049c0,
+ 984F41D2D9692A95DAA6D5E609006558D983FB00) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
 Subject: Re: [PATCH] aspeed/i2c: QOMify AspeedI2CBus
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>
 References: <20210907073059.1155224-1-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8f13efb2-2b60-929e-3ed6-a3edcee1ab3d@amsat.org>
-Date: Tue, 7 Sep 2021 09:40:08 +0200
+ <8f13efb2-2b60-929e-3ed6-a3edcee1ab3d@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <433b1e8c-e9a8-a26a-0a4a-0c85f63859c6@kaod.org>
+Date: Tue, 7 Sep 2021 10:08:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210907073059.1155224-1-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <8f13efb2-2b60-929e-3ed6-a3edcee1ab3d@amsat.org>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.332,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 968c58a7-b063-495b-8eb5-c27c90c5c550
+X-Ovh-Tracer-Id: 2162853722266897190
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefhedgtdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.332,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,52 +105,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CQwSA5r0VJol
+X-TUID: 1m4jko9l+d3P
 
-On 9/7/21 9:30 AM, Cédric Le Goater wrote:
-> The AST2600 SoC realize routine needs to be adapted when connecting
-> the I2C bus IRQs because the bus IRQs have moved to the AspeedI2CBus
-> SysBus device, one level below the Aspeed I2C controller SysBus
-> device.
+On 9/7/21 9:40 AM, Philippe Mathieu-Daudé wrote:
+> On 9/7/21 9:30 AM, Cédric Le Goater wrote:
+>> The AST2600 SoC realize routine needs to be adapted when connecting
+>> the I2C bus IRQs because the bus IRQs have moved to the AspeedI2CBus
+>> SysBus device, one level below the Aspeed I2C controller SysBus
+>> device.
+> 
+> When did they move?
 
-When did they move?
+With this patch. I will rephrase.
 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->  include/hw/i2c/aspeed_i2c.h |   8 ++-
->  hw/arm/aspeed_ast2600.c     |   7 +--
->  hw/i2c/aspeed_i2c.c         | 103 +++++++++++++++++++++++++++++-------
->  3 files changed, 93 insertions(+), 25 deletions(-)
+> 
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  include/hw/i2c/aspeed_i2c.h |   8 ++-
+>>  hw/arm/aspeed_ast2600.c     |   7 +--
+>>  hw/i2c/aspeed_i2c.c         | 103 +++++++++++++++++++++++++++++-------
+>>  3 files changed, 93 insertions(+), 25 deletions(-)
+> 
+>> +static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
+>> +    char name[32];
+>> +    AspeedI2CClass *aic;
+>> +
+>> +    if (!s->controller) {
+>> +        error_setg(errp, TYPE_ASPEED_I2C_BUS ": 'controller' link not set");
+>> +        return;
+>> +    }
+>> +
+>> +    aic = ASPEED_I2C_GET_CLASS(s->controller);
+>> +
+>> +    snprintf(name, sizeof(name), TYPE_ASPEED_I2C_BUS ".%d", s->id);
+> 
+> Even if this particular case is safe, it is better to use:
+> 
+>   g_autofree char *name = g_strdup_printf(TYPE_ASPEED_I2C_BUS ".%d",
+>                                           s->id);
+> 
+> So future developer copying your device code will be safe if they
+> modify the format :)
 
-> +static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
-> +{
-> +    AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
-> +    char name[32];
-> +    AspeedI2CClass *aic;
-> +
-> +    if (!s->controller) {
-> +        error_setg(errp, TYPE_ASPEED_I2C_BUS ": 'controller' link not set");
-> +        return;
-> +    }
-> +
-> +    aic = ASPEED_I2C_GET_CLASS(s->controller);
-> +
-> +    snprintf(name, sizeof(name), TYPE_ASPEED_I2C_BUS ".%d", s->id);
 
-Even if this particular case is safe, it is better to use:
+Yeah. I kind of like snprintf but I agree g_strdup_printf() is as good
+with the g_autofree variables. I will change the patches.
 
-  g_autofree char *name = g_strdup_printf(TYPE_ASPEED_I2C_BUS ".%d",
-                                          s->id);
+Thanks,
 
-So future developer copying your device code will be safe if they
-modify the format :)
+C. 
 
-> +
-> +    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-> +
-> +    s->bus = i2c_init_bus(dev, name);
-> +
-> +    memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
-> +                          s, name, aic->reg_size);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
-> +}
+
+>> +
+>> +    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+>> +
+>> +    s->bus = i2c_init_bus(dev, name);
+>> +
+>> +    memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
+>> +                          s, name, aic->reg_size);
+>> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
+>> +}
+

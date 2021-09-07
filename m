@@ -1,68 +1,68 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4448073lfb;
-        Tue, 7 Sep 2021 00:02:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJ4v0dtI3May/HLBoC5ibR0AkZCroVC3DMmM8L/odGqHgfKISkn7lKOfbiHVzzD9qdfIfE
-X-Received: by 2002:a67:f24f:: with SMTP id y15mr8090172vsm.60.1630998158018;
-        Tue, 07 Sep 2021 00:02:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630998158; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4449064lfb;
+        Tue, 7 Sep 2021 00:04:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmZatFNtp67CZyhJZTtQjjh5Qw858liagrSSbdPBisRleS2iMMSixeWFWE1vOjWzl0XuU0
+X-Received: by 2002:a05:6e02:1aa2:: with SMTP id l2mr11077526ilv.168.1630998243554;
+        Tue, 07 Sep 2021 00:04:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630998243; cv=none;
         d=google.com; s=arc-20160816;
-        b=zPId8FEvqr/nxZSDaMPEo2Xlau1MoXRqkiuRemeDpYoRs/WEO3pzTV7YIgLuuPuaZB
-         JM+7xAVNUpm9NufTE/fCQUewr9vHhjgaQuChwpR98coSbD+HEAL27CxniDVx3wmgvI/q
-         37SRRIK9EjgnxQ7bcSFX7Q25iH/GW0+y3S/nxXiNpXcPJoKrdvji4+T/SF/3j3nCRSIx
-         PF/7dOKMZ/IHX1aDWaM4NwkVynIPLxK/hVC9E2Qs4bUgoZC36pAIL2kRT6pyCRPb3wf8
-         /EJsMJ6BV8q/kMroqOrnlocmbXU76RvWPOND/JEi+G8Ojvt2psgkrPwS64NCgLRc8vgt
-         0uQw==
+        b=FK0aEGcsyVENhf/Sd52/LH830VrZlLu+zH/hzgjCNqdDkKbtWVuq6A8YIxln1r+xWg
+         0RC5YTzMG4Q2TWrIKKZGocp46LHD8ahFt7djfX8AvEfpjQ11nJ9WK39+OQi6kntyJSh8
+         uq5EhqRbNVGqRdra76wNQtSFpJyb2wuQk9mGhlsqmodeG9q9VAMiaMYO26p/vVXjnAic
+         fWrmStxH1EvNDbHKeZ8kzen/JBZiiW1JjBftIL/UfcE0mWYtBHCefH2P9NAxB3ul+Cbp
+         fo2Di5WgWKBggvycV8Qvzw90hzj0/stLQUpwnAHsVcjWvEP+aHDAmFEZtQc6xxLP99bl
+         Owzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Xi+4tMxS0JHEv6FmPOs8WeHAfw80QzLNBZ+wUzTqi0Q=;
-        b=baHFIJXU7kKnX1Ublcd/Eis4VhWe951cmw+fWpD7wVEtSVVzF/mVuPkCfhCufPEa3i
-         uqZ74NV3iOqIrHBkFhouWfnqIqafnu4te4Vc4tM9WCiUB1wrZdUaKoFfWlpkO8gYaPnH
-         gxgp+Q/ETGBFz7/j/Xf4Is/pwYcdtlRX52+iYeEP7jTYaK8xuSnJG6N27aScbfX0wDFt
-         RZ8qahNjoUVPBwy79lAOu9OuLiZdvksU02PYRrGTodvg24tPyKhCZuhqvbLChRvTDoP5
-         sjfPAgFhpss7fqCyKUGOCdujuI4DsW43/4St0Lh0N8w5BYhgFcS2/XcmT/Fah5OILGIz
-         R8Jw==
+        bh=SpGoMN3LAp2J0XGGdrbWlhWJj/MD7vaSOAv/3inrwmQ=;
+        b=Za4xBsmi2RtGUEfrHS0hKHLDcgbApSFV2qbIimjEy8sh0kFNoNe2+SzWtRMjpuKY2w
+         nSnXiE+kIMLwuK43sdLbAY2nVT/qfoBBaO207EB5xuI7bD88d293ep3x1wX8SVYcbmRa
+         bBPyOGxeWIs5nKgHKzg5yAXtoSAzNrmttOhwctrTUcIuAl59Qye22Sp5YnYs8uTE5fum
+         N4ZrQHBciS4cALYdYoZ+hkWZZqpVGcJ2e7flqSmqUgHjmKh/hAg4L361Tlk8larP15wV
+         FhTH+FHaNmWt3x9jRFRkOKkthLh0HmfQi+UrynGLSL6T3YX1DGztAIUCsa5ZUB50ddZm
+         RqzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9si2735531vsj.52.2021.09.07.00.02.37
+        by mx.google.com with ESMTPS id s195si9706574ios.106.2021.09.07.00.04.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 00:02:38 -0700 (PDT)
+        Tue, 07 Sep 2021 00:04:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33532 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNV7t-0007LW-6O
-	for alex.bennee@linaro.org; Tue, 07 Sep 2021 03:02:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57954)
+	id 1mNV9F-00016M-7w
+	for alex.bennee@linaro.org; Tue, 07 Sep 2021 03:04:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mNV3x-0001M6-SR
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 02:58:33 -0400
-Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222]:47091)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mNV41-0001Rc-44; Tue, 07 Sep 2021 02:58:37 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:36719)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mNV3u-0001LD-IZ
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 02:58:33 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.35])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 2588B20E94;
- Tue,  7 Sep 2021 06:58:27 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mNV3y-0001Iq-Om; Tue, 07 Sep 2021 02:58:36 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.114])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 60964BCB54E0;
+ Tue,  7 Sep 2021 08:58:25 +0200 (CEST)
 Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 7 Sep
- 2021 08:58:26 +0200
+ 2021 08:58:24 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-97G002fda1d763-2bb2-4648-b6c6-16f97fab407e,
+ (GARM-97G002b076d2f1-fe67-481e-91df-00cce9b53478,
  984F41D2D9692A95DAA6D5E609006558D983FB00) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
  <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
-Subject: [PATCH 07/10] aspeed/smc: Rename AspeedSMCFlash 'id' to 'cs'
-Date: Tue, 7 Sep 2021 08:58:19 +0200
-Message-ID: <20210907065822.1152443-8-clg@kaod.org>
+Subject: [PATCH 02/10] aspeed/smc: Introduce aspeed_smc_error() helper
+Date: Tue, 7 Sep 2021 08:58:14 +0200
+Message-ID: <20210907065822.1152443-3-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210907065822.1152443-1-clg@kaod.org>
 References: <20210907065822.1152443-1-clg@kaod.org>
@@ -72,18 +72,19 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.97]
 X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 39d7ef52-0a4f-44aa-9430-6ac82436b0e9
-X-Ovh-Tracer-Id: 977844070891424617
+X-Ovh-Tracer-GUID: aa32182f-0359-446b-8179-91b90df68028
+X-Ovh-Tracer-Id: 977281122754136937
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefgedgudduudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
- helo=9.mo552.mail-out.ovh.net
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -100,152 +101,280 @@ Cc: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yviJlIv+oxk5
+X-TUID: umhuyLp8vF8k
 
-'cs' is a more appropriate name to index SPI flash devices.
+It unifies the errors reported by the Aspeed SMC model and also
+removes some use of ctrl->name which will help us for the next
+patches.
 
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/ssi/aspeed_smc.h |  2 +-
- hw/ssi/aspeed_smc.c         | 30 +++++++++++++++---------------
- 2 files changed, 16 insertions(+), 16 deletions(-)
+ hw/ssi/aspeed_smc.c | 97 +++++++++++++++++++++------------------------
+ 1 file changed, 45 insertions(+), 52 deletions(-)
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 097bb6aaf5f8..40b6926b3e02 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -33,7 +33,7 @@ struct AspeedSMCState;
- typedef struct AspeedSMCFlash {
-     struct AspeedSMCState *controller;
- 
--    uint8_t id;
-+    uint8_t cs;
- 
-     MemoryRegion mmio;
- } AspeedSMCFlash;
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 6d0984cc1d17..a47719946941 100644
+index c9990f069ea4..b4d92d75a694 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -352,20 +352,20 @@ static inline int aspeed_smc_flash_mode(const AspeedSMCFlash *fl)
- {
-     const AspeedSMCState *s = fl->controller;
- 
--    return s->regs[s->r_ctrl0 + fl->id] & CTRL_CMD_MODE_MASK;
-+    return s->regs[s->r_ctrl0 + fl->cs] & CTRL_CMD_MODE_MASK;
- }
- 
- static inline bool aspeed_smc_is_writable(const AspeedSMCFlash *fl)
- {
-     const AspeedSMCState *s = fl->controller;
- 
--    return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->id));
-+    return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->cs));
- }
- 
- static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
- {
-     const AspeedSMCState *s = fl->controller;
--    int cmd = (s->regs[s->r_ctrl0 + fl->id] >> CTRL_CMD_SHIFT) & CTRL_CMD_MASK;
-+    int cmd = (s->regs[s->r_ctrl0 + fl->cs] >> CTRL_CMD_SHIFT) & CTRL_CMD_MASK;
- 
-     /*
-      * In read mode, the default SPI command is READ (0x3). In other
-@@ -393,7 +393,7 @@ static inline int aspeed_smc_flash_is_4byte(const AspeedSMCFlash *fl)
-     if (asc->segments == aspeed_2400_spi1_segments) {
-         return s->regs[s->r_ctrl0] & CTRL_AST2400_SPI_4BYTE;
-     } else {
--        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl->id));
-+        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl->cs));
+@@ -512,6 +512,9 @@ static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
      }
  }
  
-@@ -401,9 +401,9 @@ static void aspeed_smc_flash_do_select(AspeedSMCFlash *fl, bool unselect)
++#define aspeed_smc_error(fmt, ...)                                      \
++    qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
++
+ static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
+                                      const AspeedSegments *new,
+                                      int cs)
+@@ -528,11 +531,11 @@ static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
+ 
+         if (new->addr + new->size > seg.addr &&
+             new->addr < seg.addr + seg.size) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment CS%d [ 0x%"
+-                          HWADDR_PRIx" - 0x%"HWADDR_PRIx" ] overlaps with "
+-                          "CS%d [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
+-                          s->ctrl->name, cs, new->addr, new->addr + new->size,
+-                          i, seg.addr, seg.addr + seg.size);
++            aspeed_smc_error("new segment CS%d [ 0x%"
++                             HWADDR_PRIx" - 0x%"HWADDR_PRIx" ] overlaps with "
++                             "CS%d [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
++                             cs, new->addr, new->addr + new->size,
++                             i, seg.addr, seg.addr + seg.size);
+             return true;
+         }
+     }
+@@ -567,9 +570,8 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+ 
+     /* The start address of CS0 is read-only */
+     if (cs == 0 && seg.addr != s->ctrl->flash_window_base) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: Tried to change CS0 start address to 0x%"
+-                      HWADDR_PRIx "\n", s->ctrl->name, seg.addr);
++        aspeed_smc_error("Tried to change CS0 start address to 0x%"
++                         HWADDR_PRIx, seg.addr);
+         seg.addr = s->ctrl->flash_window_base;
+         new = s->ctrl->segment_to_reg(s, &seg);
+     }
+@@ -583,9 +585,8 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+         cs == s->ctrl->max_peripherals &&
+         seg.addr + seg.size != s->ctrl->segments[cs].addr +
+         s->ctrl->segments[cs].size) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: Tried to change CS%d end address to 0x%"
+-                      HWADDR_PRIx "\n", s->ctrl->name, cs, seg.addr + seg.size);
++        aspeed_smc_error("Tried to change CS%d end address to 0x%"
++                         HWADDR_PRIx, cs, seg.addr + seg.size);
+         seg.size = s->ctrl->segments[cs].addr + s->ctrl->segments[cs].size -
+             seg.addr;
+         new = s->ctrl->segment_to_reg(s, &seg);
+@@ -595,17 +596,17 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+     if (seg.size &&
+         (seg.addr + seg.size <= s->ctrl->flash_window_base ||
+          seg.addr > s->ctrl->flash_window_base + s->ctrl->flash_window_size)) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is invalid : "
+-                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
+-                      s->ctrl->name, cs, seg.addr, seg.addr + seg.size);
++        aspeed_smc_error("new segment for CS%d is invalid : "
++                         "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
++                         cs, seg.addr, seg.addr + seg.size);
+         return;
+     }
+ 
+     /* Check start address vs. alignment */
+     if (seg.size && !QEMU_IS_ALIGNED(seg.addr, seg.size)) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is not "
+-                      "aligned : [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
+-                      s->ctrl->name, cs, seg.addr, seg.addr + seg.size);
++        aspeed_smc_error("new segment for CS%d is not "
++                         "aligned : [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
++                         cs, seg.addr, seg.addr + seg.size);
+     }
+ 
+     /* And segments should not overlap (in the specs) */
+@@ -618,16 +619,15 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+ static uint64_t aspeed_smc_flash_default_read(void *opaque, hwaddr addr,
+                                               unsigned size)
  {
-     AspeedSMCState *s = fl->controller;
- 
--    trace_aspeed_smc_flash_select(fl->id, unselect ? "un" : "");
-+    trace_aspeed_smc_flash_select(fl->cs, unselect ? "un" : "");
- 
--    qemu_set_irq(s->cs_lines[fl->id], unselect);
-+    qemu_set_irq(s->cs_lines[fl->cs], unselect);
+-    qemu_log_mask(LOG_GUEST_ERROR, "%s: To 0x%" HWADDR_PRIx " of size %u"
+-                  PRIx64 "\n", __func__, addr, size);
++    aspeed_smc_error("To 0x%" HWADDR_PRIx " of size %u" PRIx64, addr, size);
+     return 0;
  }
  
- static void aspeed_smc_flash_select(AspeedSMCFlash *fl)
-@@ -423,11 +423,11 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
-     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-     AspeedSegments seg;
+ static void aspeed_smc_flash_default_write(void *opaque, hwaddr addr,
+                                            uint64_t data, unsigned size)
+ {
+-    qemu_log_mask(LOG_GUEST_ERROR, "%s: To 0x%" HWADDR_PRIx " of size %u: 0x%"
+-                  PRIx64 "\n", __func__, addr, size, data);
++    aspeed_smc_error("To 0x%" HWADDR_PRIx " of size %u: 0x%" PRIx64,
++                     addr, size, data);
+ }
  
--    asc->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->id], &seg);
-+    asc->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->cs], &seg);
+ static const MemoryRegionOps aspeed_smc_flash_default_ops = {
+@@ -670,8 +670,8 @@ static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
+     }
+ 
+     if (!cmd) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: no command defined for mode %d\n",
+-                      __func__, aspeed_smc_flash_mode(fl));
++        aspeed_smc_error("no command defined for mode %d",
++                         aspeed_smc_flash_mode(fl));
+     }
+ 
+     return cmd;
+@@ -715,11 +715,9 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
+ 
+     s->ctrl->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->id], &seg);
      if ((addr % seg.size) != addr) {
-         aspeed_smc_error("invalid address 0x%08x for CS%d segment : "
-                          "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
--                         addr, fl->id, seg.addr, seg.addr + seg.size);
-+                         addr, fl->cs, seg.addr, seg.addr + seg.size);
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: invalid address 0x%08x for CS%d segment : "
+-                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
+-                      s->ctrl->name, addr, fl->id, seg.addr,
+-                      seg.addr + seg.size);
++        aspeed_smc_error("invalid address 0x%08x for CS%d segment : "
++                         "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
++                         addr, fl->id, seg.addr, seg.addr + seg.size);
          addr %= seg.size;
      }
  
-@@ -437,7 +437,7 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
- static int aspeed_smc_flash_dummies(const AspeedSMCFlash *fl)
- {
-     const AspeedSMCState *s = fl->controller;
--    uint32_t r_ctrl0 = s->regs[s->r_ctrl0 + fl->id];
-+    uint32_t r_ctrl0 = s->regs[s->r_ctrl0 + fl->cs];
-     uint32_t dummy_high = (r_ctrl0 >> CTRL_DUMMY_HIGH_SHIFT) & 0x1;
-     uint32_t dummy_low = (r_ctrl0 >> CTRL_DUMMY_LOW_SHIFT) & 0x3;
-     uint32_t dummies = ((dummy_high << 2) | dummy_low) * 8;
-@@ -506,7 +506,7 @@ static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigned size)
-         aspeed_smc_error("invalid flash mode %d", aspeed_smc_flash_mode(fl));
+@@ -795,8 +793,7 @@ static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigned size)
+         aspeed_smc_flash_unselect(fl);
+         break;
+     default:
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
+-                      __func__, aspeed_smc_flash_mode(fl));
++        aspeed_smc_error("invalid flash mode %d", aspeed_smc_flash_mode(fl));
      }
  
--    trace_aspeed_smc_flash_read(fl->id, addr, size, ret,
-+    trace_aspeed_smc_flash_read(fl->cs, addr, size, ret,
-                                 aspeed_smc_flash_mode(fl));
-     return ret;
- }
-@@ -563,7 +563,7 @@ static bool aspeed_smc_do_snoop(AspeedSMCFlash *fl,  uint64_t data,
-     AspeedSMCState *s = fl->controller;
-     uint8_t addr_width = aspeed_smc_flash_is_4byte(fl) ? 4 : 3;
- 
--    trace_aspeed_smc_do_snoop(fl->id, s->snoop_index, s->snoop_dummies,
-+    trace_aspeed_smc_do_snoop(fl->cs, s->snoop_index, s->snoop_dummies,
-                               (uint8_t) data & 0xff);
- 
-     if (s->snoop_index == SNOOP_OFF) {
-@@ -616,7 +616,7 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
-     AspeedSMCState *s = fl->controller;
-     int i;
- 
--    trace_aspeed_smc_flash_write(fl->id, addr, size, data,
-+    trace_aspeed_smc_flash_write(fl->cs, addr, size, data,
+     trace_aspeed_smc_flash_read(fl->id, addr, size, ret,
+@@ -913,8 +910,7 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
                                   aspeed_smc_flash_mode(fl));
  
      if (!aspeed_smc_is_writable(fl)) {
-@@ -668,12 +668,12 @@ static void aspeed_smc_flash_update_ctrl(AspeedSMCFlash *fl, uint32_t value)
-     unselect = (value & CTRL_CMD_MODE_MASK) != CTRL_USERMODE;
- 
-     /* A change of CTRL_CE_STOP_ACTIVE from 0 to 1, unselects the CS */
--    if (!(s->regs[s->r_ctrl0 + fl->id] & CTRL_CE_STOP_ACTIVE) &&
-+    if (!(s->regs[s->r_ctrl0 + fl->cs] & CTRL_CE_STOP_ACTIVE) &&
-         value & CTRL_CE_STOP_ACTIVE) {
-         unselect = true;
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: flash is not writable at 0x%"
+-                      HWADDR_PRIx "\n", __func__, addr);
++        aspeed_smc_error("flash is not writable at 0x%" HWADDR_PRIx, addr);
+         return;
      }
  
--    s->regs[s->r_ctrl0 + fl->id] = value;
-+    s->regs[s->r_ctrl0 + fl->cs] = value;
+@@ -939,8 +935,7 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
+         aspeed_smc_flash_unselect(fl);
+         break;
+     default:
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
+-                      __func__, aspeed_smc_flash_mode(fl));
++        aspeed_smc_error("invalid flash mode %d", aspeed_smc_flash_mode(fl));
+     }
+ }
  
-     s->snoop_index = unselect ? SNOOP_OFF : SNOOP_START;
+@@ -1066,7 +1061,7 @@ static uint8_t aspeed_smc_hclk_divisor(uint8_t hclk_mask)
+         }
+     }
  
-@@ -1184,7 +1184,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+-    qemu_log_mask(LOG_GUEST_ERROR, "invalid HCLK mask %x", hclk_mask);
++    aspeed_smc_error("invalid HCLK mask %x", hclk_mask);
+     return 0;
+ }
  
-         snprintf(name, sizeof(name), TYPE_ASPEED_SMC ".flash.%d", i);
+@@ -1146,8 +1141,7 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+     uint32_t data;
  
--        fl->id = i;
-+        fl->cs = i;
-         fl->controller = s;
-         memory_region_init_io(&fl->mmio, OBJECT(s), &aspeed_smc_flash_ops,
-                               fl, name, asc->segments[i].size);
+     if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: invalid direction for DMA checksum\n",  __func__);
++        aspeed_smc_error("invalid direction for DMA checksum");
+         return;
+     }
+ 
+@@ -1159,8 +1153,8 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+         data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
+                                     MEMTXATTRS_UNSPECIFIED, &result);
+         if (result != MEMTX_OK) {
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%08x\n",
+-                          __func__, s->regs[R_DMA_FLASH_ADDR]);
++            aspeed_smc_error("Flash read failed @%08x",
++                             s->regs[R_DMA_FLASH_ADDR]);
+             return;
+         }
+         trace_aspeed_smc_dma_checksum(s->regs[R_DMA_FLASH_ADDR], data);
+@@ -1195,32 +1189,32 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+             data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
+                                         MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+-                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM read failed @%08x\n",
+-                              __func__, s->regs[R_DMA_DRAM_ADDR]);
++                aspeed_smc_error("DRAM read failed @%08x",
++                                 s->regs[R_DMA_DRAM_ADDR]);
+                 return;
+             }
+ 
+             address_space_stl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
+                                  data, MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+-                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash write failed @%08x\n",
+-                              __func__, s->regs[R_DMA_FLASH_ADDR]);
++                aspeed_smc_error("Flash write failed @%08x",
++                                 s->regs[R_DMA_FLASH_ADDR]);
+                 return;
+             }
+         } else {
+             data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
+                                         MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+-                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%08x\n",
+-                              __func__, s->regs[R_DMA_FLASH_ADDR]);
++                aspeed_smc_error("Flash read failed @%08x",
++                                 s->regs[R_DMA_FLASH_ADDR]);
+                 return;
+             }
+ 
+             address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
+                                  data, MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+-                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM write failed @%08x\n",
+-                              __func__, s->regs[R_DMA_DRAM_ADDR]);
++                aspeed_smc_error("DRAM write failed @%08x",
++                                 s->regs[R_DMA_DRAM_ADDR]);
+                 return;
+             }
+         }
+@@ -1280,7 +1274,7 @@ static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
+     }
+ 
+     if (aspeed_smc_dma_in_progress(s)) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA in progress\n",  __func__);
++        aspeed_smc_error("DMA in progress !");
+         return;
+     }
+ 
+@@ -1302,7 +1296,7 @@ static inline bool aspeed_smc_dma_granted(AspeedSMCState *s)
+     }
+ 
+     if (!(s->regs[R_DMA_CTRL] & DMA_CTRL_GRANT)) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
++        aspeed_smc_error("DMA not granted");
+         return false;
+     }
+ 
+@@ -1327,7 +1321,7 @@ static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
+     }
+ 
+     if (!aspeed_smc_dma_granted(s)) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
++        aspeed_smc_error("DMA not granted");
+         return;
+     }
+ 
+@@ -1433,8 +1427,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+ 
+     /* Enforce some real HW limits */
+     if (s->num_cs > s->ctrl->max_peripherals) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: num_cs cannot exceed: %d\n",
+-                      __func__, s->ctrl->max_peripherals);
++        aspeed_smc_error("num_cs cannot exceed: %d", s->ctrl->max_peripherals);
+         s->num_cs = s->ctrl->max_peripherals;
+     }
+ 
 -- 
 2.31.1
 

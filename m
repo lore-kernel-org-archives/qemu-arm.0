@@ -1,89 +1,121 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4449638lfb;
-        Tue, 7 Sep 2021 00:04:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhXXlLajyy1FIG9wZ06oqfhYrGuytrAiXZGiFiomDVh2gqm+K9p/suWcIfQozfE63CHDI3
-X-Received: by 2002:a5e:d80a:: with SMTP id l10mr12400390iok.36.1630998294855;
-        Tue, 07 Sep 2021 00:04:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630998294; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4450060lfb;
+        Tue, 7 Sep 2021 00:05:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwMju2yFIo9y+tXyHrj1DQbyRScvIIZ7YWAmvGGlSxEbeybqpvtqsujxI//CqgbxPF8Sv7l
+X-Received: by 2002:a02:2a88:: with SMTP id w130mr14348193jaw.60.1630998334871;
+        Tue, 07 Sep 2021 00:05:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630998334; cv=none;
         d=google.com; s=arc-20160816;
-        b=BTNpVCt6AlGBI353poJANmvdtIxbtB8a1SR44EEMMu4HL6okg/Sk9CI8aZiRQVMr2j
-         o215wJ3adpRErcPj9BVIn3CS4ErN6FhZTxmfC86hhoovycuMQ6ffj79UaMEHxBXXLQ79
-         q3zTRYDEfMjfD0O63lc3z0qNgqbU3tyndTVwcTw7I3+RtKMIsaN3l83PMzECz6rcTIVj
-         kK07sWnjbPPsLXcfMOJWouK/LjuxySwO+PDN42hs3/2PZBFDDKvBq5bXbAheZUoujAAP
-         GYO3NSxjhZCqb1e2kzu1Gv1Z9Kmoic/n29kt7VhK+OND7LjEZWCcFHKkW/jRmWhYmm9H
-         If6w==
+        b=FgHD07p7cnzlBGF+u4TAZdJccpEEJSCo+fFXoOo3eTCepS3kas378BmPHoLGvGnUkE
+         mSo7aGms/Ovu3kyo8qKp4zUSrsGiQBeoz2/5haul03O9S+C9rDxxKSKyn6pNZOh2cHlg
+         rS5OPJrdEzMtU2LdjoupKE2blTlEKX2tq/aKCeilELPkJmKG8fze/1aIYtuMA1btjkrZ
+         lepTeqFmLIu52sessefdFquEavqpeFW0mkXL7HmOIxBRcLKnSTxOiHbj/HPZPoDPJ25m
+         QZUwWOlHLL3AK3NMKd6PSgJXn/etGuMdxcTxv/qtjgSSCLhAeviRaYKUlCR4OoidEyEC
+         Mmrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=vrHPcCnIQE5DIzlFG9hU9XcIkXdXpgwVQrF6QUUTj6w=;
-        b=RW3fWMxdeeN5lOgjcJ7oXTKlNwmjCiQKpaB+oVqOkstgk60GNsclnYBF5uPtun1W+I
-         dNWBp5WrGaZR381BFUK+5fi7rGMqrm4vcMLA5HRaewpor9dMragZYwXlcK6Ti8/gr2E+
-         KkXuZAL+ze7y8BrvHDCEqiJaPKSRel/+46uNGu3QCWNbb/z6NU5Hgy8ZVv9In/j/vuf7
-         kY/2mS3YOhU6NbCqFX/mccImqVOpElYWjZTP4Y9KfewQvu0G9Rr6NfsWvZKKEZNXdXYZ
-         1jaWtvRURm/ViW8g5Hxc+YCSvLIWE7aq9CNngOClmPp9BGQaycr2fK5mBhi31wcybHSi
-         gaUg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=F3mhJan8ywxd9Sx7hi45fU6A3A+1Ay23w95AkNMpVN4=;
+        b=HT0oaEhLBhyQ8Cc2EMQsVlUnae1W1CTWunK3cwrx6+0rfmpDF5w5nm+HF1gHhPhuSR
+         uvPeKrcL8nmgwiwAaWi7mEgeaaLkxsgo1kzsCE8HfUXMNEEeisNp5jkgnnGGYrpnfeXk
+         TDlYqYD6zjy9JqCswD9FH3wAv+6Lzdpe6sWXWSVwOn6itr8JStsnhauVn/1Qo89g2CxS
+         Qv/Phkq3DC1yk8KcXX1r2Fo4Qr78PW8qyG1n+hIpqimML6/Euk/vpoBxA0wW2GERndJQ
+         5mPAV49LF9L5ipsE7BDqxCzolxSw0XBruvsiaNAIeuRsTKOa9dYZVypKbZoX2pc4cuBw
+         p8dQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GjsHzbOf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si9478837ilr.109.2021.09.07.00.04.54
+        by mx.google.com with ESMTPS id i6si3976361ilq.174.2021.09.07.00.05.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 00:04:54 -0700 (PDT)
+        Tue, 07 Sep 2021 00:05:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38992 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GjsHzbOf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNVA6-0002ZV-6K
-	for alex.bennee@linaro.org; Tue, 07 Sep 2021 03:04:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58086)
+	id 1mNVAk-0003bx-2U
+	for alex.bennee@linaro.org; Tue, 07 Sep 2021 03:05:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mNV42-0001Uz-CH
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 02:58:38 -0400
-Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:55181)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mNV7r-0007tZ-G1
+ for qemu-arm@nongnu.org; Tue, 07 Sep 2021 03:02:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29056)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mNV3z-0001LG-TK
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 02:58:38 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.35])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4DB9B20EB9;
- Tue,  7 Sep 2021 06:58:27 +0000 (UTC)
-Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 7 Sep
- 2021 08:58:26 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G00236cf0724-fccf-4dcc-8884-7c41520cf448,
- 984F41D2D9692A95DAA6D5E609006558D983FB00) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
-Subject: [PATCH 08/10] aspeed/smc: QOMify AspeedSMCFlash
-Date: Tue, 7 Sep 2021 08:58:20 +0200
-Message-ID: <20210907065822.1152443-9-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210907065822.1152443-1-clg@kaod.org>
-References: <20210907065822.1152443-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mNV7p-0004Y8-63
+ for qemu-arm@nongnu.org; Tue, 07 Sep 2021 03:02:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630998151;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=F3mhJan8ywxd9Sx7hi45fU6A3A+1Ay23w95AkNMpVN4=;
+ b=GjsHzbOf1Y4Ors7C3TDACJwJ61LWBikF/wK1dhZFgRCJ++lAZZye7m0U8kbSdAxv6zlvYV
+ kHhp/16ks6q70LpeZqDln6o9RhSXs/0841qzR9Uj6kzKb9HW5m+1dI+QJieFXhfykNigNb
+ Am+ZEcopZsiUFYlZWmkSNPl3y5nSNes=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-143-kESwkA_tPa2uJisuBz55yQ-1; Tue, 07 Sep 2021 03:02:28 -0400
+X-MC-Unique: kESwkA_tPa2uJisuBz55yQ-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ f23-20020a17090624d700b005d7f8be91eeso3218500ejb.13
+ for <qemu-arm@nongnu.org>; Tue, 07 Sep 2021 00:02:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=F3mhJan8ywxd9Sx7hi45fU6A3A+1Ay23w95AkNMpVN4=;
+ b=MMyEmQT7haRYQJms4vAJYknjo7sW4w5lNU6SaETjutQ+jo9nMO5oDso1ERcSZ63d+Q
+ YbsNBfNXlZhVWMvTW4Sjie06PazOcvmZB+o2tejbQWXci2N5Mv6Rme/XSpNZvFzwj+D/
+ ZjffMiUBchVIz2PPb50I9oTy54aVESFcoCpAwM05z96ty0x90h2f9plfsw7bb/32szcE
+ D333Yx1j3cffhk+x2bIjcGZ2lwoxXwySU/rI5y+TwLmc4Hbdm5OM7K5t54TOymbk8O0R
+ nAPVywXF0yhGOx60tLBiDj3cusvgmsma1+CIBZaHk453X31jXyyrKtN2tLFur5bmofba
+ z8XA==
+X-Gm-Message-State: AOAM531zK96eZB1IaHKfrsbS5jteb7wG0L4RcPKL3LN8EOy8jKqtaYVx
+ AWJR+IKOtT5oNY+S1PFjJNnMMlxLHcGW/O+6+8GQxnkjLPK4RBrw/cWd/RLo33vL1S8Xw+lmBgJ
+ fcQyLCnXLu5ew
+X-Received: by 2002:a50:ff0a:: with SMTP id a10mr17276075edu.273.1630998147392; 
+ Tue, 07 Sep 2021 00:02:27 -0700 (PDT)
+X-Received: by 2002:a50:ff0a:: with SMTP id a10mr17276058edu.273.1630998147207; 
+ Tue, 07 Sep 2021 00:02:27 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id cf11sm5922308edb.65.2021.09.07.00.02.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Sep 2021 00:02:26 -0700 (PDT)
+Date: Tue, 7 Sep 2021 09:02:25 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v2 0/3] hw/arm/virt_acpi_build: Generate DBG2 table
+Message-ID: <20210907090225.3c8d3d96@redhat.com>
+In-Reply-To: <20210906123139.93593-1-eric.auger@redhat.com>
+References: <20210906123139.93593-1-eric.auger@redhat.com>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 37437630-3180-495e-a465-88dbee22518c
-X-Ovh-Tracer-Id: 978125544994212713
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefgedgudduudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
- helo=1.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,193 +128,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, gshan@redhat.com,
+ mst@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, philmd@redhat.com, ardb@kernel.org,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Nzj5oxnddOx9
+X-TUID: ZfU3LvVBNsdQ
 
-AspeedSMCFlash is a little object representing the AHB memory window
-through which the contents of a flash device can be accessed with
-MMIOs.
+On Mon,  6 Sep 2021 14:31:36 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/ssi/aspeed_smc.h | 13 +++++--
- hw/ssi/aspeed_smc.c         | 78 +++++++++++++++++++++++++++++++++----
- 2 files changed, 79 insertions(+), 12 deletions(-)
+> This series generates the ACPI DBG2 table along with machvirt.
+> It applies on top of Igor's
+> [PATCH v2 00/35] acpi: refactor error prone build_header() and
+> packed structures usage in ACPI tables
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 40b6926b3e02..ee943228b96f 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -30,18 +30,23 @@
- #include "qom/object.h"
- 
- struct AspeedSMCState;
--typedef struct AspeedSMCFlash {
--    struct AspeedSMCState *controller;
- 
-+#define TYPE_ASPEED_SMC_FLASH "aspeed.smc.flash"
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedSMCFlash, ASPEED_SMC_FLASH)
-+struct AspeedSMCFlash {
-+    SysBusDevice parent_obj;
-+
-+    struct AspeedSMCState *controller;
-     uint8_t cs;
- 
-     MemoryRegion mmio;
--} AspeedSMCFlash;
-+};
- 
- #define TYPE_ASPEED_SMC "aspeed.smc"
- OBJECT_DECLARE_TYPE(AspeedSMCState, AspeedSMCClass, ASPEED_SMC)
- 
- #define ASPEED_SMC_R_MAX        (0x100 / 4)
-+#define ASPEED_SMC_CS_MAX       5
- 
- struct AspeedSMCState {
-     SysBusDevice parent_obj;
-@@ -72,7 +77,7 @@ struct AspeedSMCState {
-     MemoryRegion *dram_mr;
-     AddressSpace dram_as;
- 
--    AspeedSMCFlash *flashes;
-+    AspeedSMCFlash flashes[ASPEED_SMC_CS_MAX];
- 
-     uint8_t snoop_index;
-     uint8_t snoop_dummies;
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index a47719946941..8e6b326f1fc9 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -1101,6 +1101,18 @@ static const MemoryRegionOps aspeed_smc_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
-+static void aspeed_smc_instance_init(Object *obj)
-+{
-+    AspeedSMCState *s = ASPEED_SMC(obj);
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    int i;
-+
-+    for (i = 0; i < asc->max_peripherals; i++) {
-+        object_initialize_child(obj, "flash[*]", &s->flashes[i],
-+                                TYPE_ASPEED_SMC_FLASH);
-+    }
-+}
-+
- /*
-  * Initialize the custom address spaces for DMAs
-  */
-@@ -1123,7 +1135,6 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-     AspeedSMCState *s = ASPEED_SMC(dev);
-     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-     int i;
--    char name[32];
-     hwaddr offset = 0;
- 
-     /* keep a copy under AspeedSMCState to speed up accesses */
-@@ -1170,8 +1181,6 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-                              &s->mmio_flash, 0, asc->flash_window_size);
-     sysbus_init_mmio(sbd, &s->mmio_flash_alias);
- 
--    s->flashes = g_new0(AspeedSMCFlash, asc->max_peripherals);
--
-     /*
-      * Let's create a sub memory region for each possible peripheral. All
-      * have a configurable memory segment in the overall flash mapping
-@@ -1182,12 +1191,17 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < asc->max_peripherals; ++i) {
-         AspeedSMCFlash *fl = &s->flashes[i];
- 
--        snprintf(name, sizeof(name), TYPE_ASPEED_SMC ".flash.%d", i);
-+        if (!object_property_set_link(OBJECT(fl), "controller", OBJECT(s),
-+                                      errp)) {
-+            return;
-+        }
-+        if (!object_property_set_uint(OBJECT(fl), "cs", i, errp)) {
-+            return;
-+        }
-+        if (!sysbus_realize(SYS_BUS_DEVICE(fl), errp)) {
-+            return;
-+        }
- 
--        fl->cs = i;
--        fl->controller = s;
--        memory_region_init_io(&fl->mmio, OBJECT(s), &aspeed_smc_flash_ops,
--                              fl, name, asc->segments[i].size);
-         memory_region_add_subregion(&s->mmio_flash, offset, &fl->mmio);
-         offset += asc->segments[i].size;
-     }
-@@ -1231,12 +1245,59 @@ static void aspeed_smc_class_init(ObjectClass *klass, void *data)
- static const TypeInfo aspeed_smc_info = {
-     .name           = TYPE_ASPEED_SMC,
-     .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_init  = aspeed_smc_instance_init,
-     .instance_size  = sizeof(AspeedSMCState),
-     .class_size     = sizeof(AspeedSMCClass),
-     .class_init     = aspeed_smc_class_init,
-     .abstract       = true,
- };
- 
-+static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedSMCFlash *s = ASPEED_SMC_FLASH(dev);
-+    AspeedSMCClass *asc;
-+    char name[32];
-+
-+    if (!s->controller) {
-+        error_setg(errp, TYPE_ASPEED_SMC_FLASH ": 'controller' link not set");
-+        return;
-+    }
-+
-+    asc = ASPEED_SMC_GET_CLASS(s->controller);
-+
-+    snprintf(name, sizeof(name), TYPE_ASPEED_SMC_FLASH ".%d", s->cs);
-+
-+    /*
-+     * Use the default segment value to size the memory region. This
-+     * can be changed by FW at runtime.
-+     */
-+    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_flash_ops,
-+                          s, name, asc->segments[s->cs].size);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
-+}
-+
-+static Property aspeed_smc_flash_properties[] = {
-+    DEFINE_PROP_UINT8("cs", AspeedSMCFlash, cs, 0),
-+    DEFINE_PROP_LINK("controller", AspeedSMCFlash, controller, TYPE_ASPEED_SMC,
-+                     AspeedSMCState *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void aspeed_smc_flash_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "Aspeed SMC Flash device region";
-+    dc->realize = aspeed_smc_flash_realize;
-+    device_class_set_props(dc, aspeed_smc_flash_properties);
-+}
-+
-+static const TypeInfo aspeed_smc_flash_info = {
-+    .name           = TYPE_ASPEED_SMC_FLASH,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(AspeedSMCFlash),
-+    .class_init     = aspeed_smc_flash_class_init,
-+};
- 
- /*
-  * The Segment Registers of the AST2400 and AST2500 have a 8MB
-@@ -1624,6 +1685,7 @@ static const TypeInfo aspeed_2600_spi2_info = {
- 
- static void aspeed_smc_register_types(void)
- {
-+    type_register_static(&aspeed_smc_flash_info);
-     type_register_static(&aspeed_smc_info);
-     type_register_static(&aspeed_2400_smc_info);
-     type_register_static(&aspeed_2400_fmc_info);
--- 
-2.31.1
+
+FYI: I'm preparing to post v3 today, with so far received feedback
+addressed. Change that will affect 3/3 is
+ s/acpi_init_table|acpi_table_composed/acpi_table_begin|acpi_table_end/
+
+
+> The DBG2 specification can be found at
+> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table.
+> 
+> DBG2 is mandated by ARM SBBR since its v1.0 release (the rationale
+> behind is Windows requires it on all systems).
+> 
+> The DBG2 is used to describe a debug port, used by the kernel debugger.
+> 
+> This series and its dependency can be found at
+> https://github.com/eauger/qemu.git
+> branch: dbg2-v2-igor-v2-fix
+> 
+> History:
+> v1 -> v2:
+> - rebase on top of Igor's series and use acpi_init_table/acpi_table_composed
+>   and build_append_int_noprefix()
+> 
+> Eric Auger (3):
+>   tests/acpi: Add void table for virt/DBG2 bios-tables-test
+
+>   bios-tables-test: Generate reference table for virt/DBG2
+>   hw/arm/virt_acpi_build: Generate DBG2 table
+
+I'd swap 2/3 and 3/3, so it would be obvious where DBG2 comes from.
+
+> 
+>  hw/arm/virt-acpi-build.c  |  64 +++++++++++++++++++++++++++++++++++++-
+>  tests/data/acpi/virt/DBG2 | Bin 0 -> 87 bytes
+>  2 files changed, 63 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/data/acpi/virt/DBG2
+> 
 

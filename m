@@ -1,122 +1,89 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3932126lfb;
-        Mon, 6 Sep 2021 09:15:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwAQJy5tUoRGUH1wJaNoBsAozCG36BVIUcW6+Lv+qXGmuTy7fsZGcXpoIchbnPkB69oJ/48
-X-Received: by 2002:adf:ff84:: with SMTP id j4mr12634341wrr.88.1630944959459;
-        Mon, 06 Sep 2021 09:15:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630944959; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4445825lfb;
+        Mon, 6 Sep 2021 23:59:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxlASE6HRDHclf9hqNUOVB8QZJNQKSS7ve2Z/kYB7p7GYz+JF9CDW8MRZYCc2yMl6HAzW/
+X-Received: by 2002:a05:6e02:17cf:: with SMTP id z15mr10307773ilu.103.1630997951267;
+        Mon, 06 Sep 2021 23:59:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630997951; cv=none;
         d=google.com; s=arc-20160816;
-        b=vDrmX88Wck3yVEVdhsqfns0bpZuRo10AaCGSYjjxougLHFATMtEyQU6jkk4mxPbMMT
-         fdAiJ41x1MEWYn5mm4GFaBs64+NrMJsuxP6km6+Vek7wnXfr96optRa+nWVczmznQIB+
-         Qj8pFlZSrctKAWQLxuHLpiFg4AZIfqESJ913sHjyzRrcBiJqE7umDPUZsmVCdZKYhNRy
-         cVU8GGoMdhtUkYRamfBwDyjlNAuL2GZVihAlqVDsacvlcc5mS/JRIvCU0P6A+2HTYzt2
-         DoYd2mxe2s0/sZkWUcQSYI2Ic6DbAJ6xVYE6Z0iNJKQW/HWIAsqWGo86D7ESiaTarr1/
-         PX/A==
+        b=UnAniZonhe/Z212AOYpIR7j4iAbz0SiYytRq/voN4RWBG1RjPTavYHiCMJv8auu/s1
+         phyNmBV8+mJFNBONiAJVk5OcMvJUzbo2yLLjWyx6Up/ABNOwM04iH8+3D/imVMfMTsxu
+         lOJxcELJYLpqtFz55GxC9aTOM/+8bQdP9doEhAg5/u2UaKQKYWyoaXJTSVa5yAcLgW7e
+         Gmnp/513KmWJO2R9g3S87r7TPsREddm5EMBU2ialg7WO6MIl2wL5mbLk7wRyoG7Q2Hpr
+         pBQdw+gZG9bYRYYbRaMaqAGHOHvmcCukpS40y9VOBVgV4T97zr1PUNfbQnuS04oYtkxg
+         mvtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=9o//+xgbWBZU75mGw9CeHU5EKtySdAmjKiKyx/wwURE=;
-        b=v5pBRBR7U9TxEkFqsuHuelrEx3RQXArUfD2qd+K10wp40nhBeKM4IBZiZeQv0MtfUq
-         st6RUIDLHND+6jrRpdkyKa7lbfi9mJWwuHQ+Qax9XtwYIN6W7vcqeQu5MxJ/AafwE2Dn
-         GxHmPAxze4cSYio3RLozOCXTLP/41JP9mcFfq2jN53iTqNJs1caRpiwC5XEj48YJTdsP
-         xeVRRgJNVja5aatwX7u8sSbWqde/ke6Lf84tHSVLNuyIInc7lpenX3dUR8t7jHSmzVX+
-         zuYR42+qdZ4W93EZPWYp/h0c3iWFV6rYzqGWeiRf9pZOUbpPA2u8yfjfh5BUDMpb5p4A
-         iQuA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=8WAbIsfPq1XeOSRMf1/dFJIpMKo190kZXMBzErck1EU=;
+        b=fQ2bzLhwa/p3iack8irKFvd8ZTmJYzAvHGR+K1gJWCQWlFAfwtP/pSuAWFegR304+m
+         UQxvF3KuMAhCNzivs0ZVoj5l8PdbN1bXYmNehjDzbEODXNlXnNGXWqDqFWgP1ajgetOL
+         Xmo1Uz75WLpdIv1awyYW0ZmLY4UIO10jclg2jAJl7nLeXB3QevgyBpnF96IrBR7isudm
+         CGH3kBBR/JKwT3uUwmuFPAzer9MJUvddEwYzo5qMiML0XosHDU12KrjkR1gCFuEuUZgl
+         KWe4yEmH3ZSwo+BvRN6XA8zXv5Xk+Pp+DwhN2InJfS55x2q5HDgIwVH2tLcLbEDvbnc0
+         ykeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SKeMKMvA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f15si9060410wry.247.2021.09.06.09.15.59
+        by mx.google.com with ESMTPS id x8si10730155ill.70.2021.09.06.23.59.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Sep 2021 09:15:59 -0700 (PDT)
+        Mon, 06 Sep 2021 23:59:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SKeMKMvA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33894 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNHHq-0001Qf-Df
-	for alex.bennee@linaro.org; Mon, 06 Sep 2021 12:15:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40182)
+	id 1mNV4Y-0002EI-L0
+	for alex.bennee@linaro.org; Tue, 07 Sep 2021 02:59:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mNHHU-0001QK-Ok
- for qemu-arm@nongnu.org; Mon, 06 Sep 2021 12:15:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59238)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mNV40-0001Qa-Ko; Tue, 07 Sep 2021 02:58:36 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:50781)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mNHHQ-0004bn-4v
- for qemu-arm@nongnu.org; Mon, 06 Sep 2021 12:15:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630944930;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=9o//+xgbWBZU75mGw9CeHU5EKtySdAmjKiKyx/wwURE=;
- b=SKeMKMvA1x6PALt0HYzLPhO6lRP7gwNZ1wJiIXHVrv6b6QWWujLzMIKokz9gvr75ea16rY
- 9VTnUCdcb3SC/KWwg+CVX2D9pG1FA52KnGgThA3mB60cuLe0gZzDETd0zTGDj9SYLWbfOg
- F3FcRoSush7H4N6VDfUW4vNDVdStH5s=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-451-cx_p3TghMneeIMb5DdrHKA-1; Mon, 06 Sep 2021 12:15:27 -0400
-X-MC-Unique: cx_p3TghMneeIMb5DdrHKA-1
-Received: by mail-ej1-f72.google.com with SMTP id
- ak17-20020a170906889100b005c5d1e5e707so2486879ejc.16
- for <qemu-arm@nongnu.org>; Mon, 06 Sep 2021 09:15:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=9o//+xgbWBZU75mGw9CeHU5EKtySdAmjKiKyx/wwURE=;
- b=gZpSPmF4qymEEfLNaiO091sMHd4hwAqX8FGm9TR8xFhcvxyIN/zx1vkMwFbaxdtjqB
- 8+wuGbUy8vYvFM9mOOwgnKA9DQBs+Qmp9Fc7ocj61DidaqR5ftpXmcZ9HWyejz7vBqFq
- uxfW2bn+YH9TfnC5y1jU8FgUyKvcaXQMg+CK0+C50jzXRHoAXWCR2G45ucPV9oNMJp94
- WUeL6iKUvMVb3hsd/7Lt2hUpfz2nx9hI0x/KPXYzvSNJ8cE5M8QAW64aau4OkQUX2gkO
- HJnrE7CTkykSrzr0uoj4e1f+/oreRFcpX0T1I+kjuPG21OHCeLlGUjD8AGLU4KIWC0CS
- vxjQ==
-X-Gm-Message-State: AOAM533bDCH6KfM74k4B4Emvr7hP3fikMMVuG9B0OXqV2ePhu3/s4gKQ
- SGLwdz0oQzTfVpKsubbelcQtAsN2PVjZ+aMAnrizI7VBv3Xh7gqDJQzeNPUb0BElcBK+7HLPU66
- L9Em2ooQZlHxH
-X-Received: by 2002:a50:cc4b:: with SMTP id n11mr13946803edi.132.1630944926203; 
- Mon, 06 Sep 2021 09:15:26 -0700 (PDT)
-X-Received: by 2002:a50:cc4b:: with SMTP id n11mr13946777edi.132.1630944926014; 
- Mon, 06 Sep 2021 09:15:26 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id h10sm4989585edf.85.2021.09.06.09.15.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Sep 2021 09:15:25 -0700 (PDT)
-Date: Mon, 6 Sep 2021 18:15:23 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: "wangyanan (Y)" <wangyanan55@huawei.com>
-Subject: Re: [PATCH v6 0/5] hw/arm/virt: Introduce cpu topology support
-Message-ID: <20210906161523.4kc5l3usbw6l2s6r@gator.home>
-References: <20210824122016.144364-1-wangyanan55@huawei.com>
- <CAFEAcA99urPQ4ZnmZrOG4JvL-sO-=kTGXF5Fuz-FoVHV6+J=pg@mail.gmail.com>
- <77ee3e41-e985-74f8-8510-1c47903689a8@huawei.com>
- <CAFEAcA9n10wZY5vO1ZpwO-P3u=dV2G4J8j3xtSjzfA5YX0oouQ@mail.gmail.com>
- <342f66ab-5c03-4aa3-b398-1e02926d86f7@huawei.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mNV3y-0001IZ-O9; Tue, 07 Sep 2021 02:58:36 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.114])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 1D62CBCB54DE;
+ Tue,  7 Sep 2021 08:58:25 +0200 (CEST)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 7 Sep
+ 2021 08:58:23 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G0024fb3560e-cab7-40b7-b693-5b2d3611e35e,
+ 984F41D2D9692A95DAA6D5E609006558D983FB00) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
+ <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
+Subject: [PATCH 01/10] aspeed/smc: Add watchdog Control/Status Registers
+Date: Tue, 7 Sep 2021 08:58:13 +0200
+Message-ID: <20210907065822.1152443-2-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210907065822.1152443-1-clg@kaod.org>
+References: <20210907065822.1152443-1-clg@kaod.org>
 MIME-Version: 1.0
-In-Reply-To: <342f66ab-5c03-4aa3-b398-1e02926d86f7@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: fd5cd65e-4293-4db9-8c97-4ef08f932b16
+X-Ovh-Tracer-Id: 977281119696489324
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefgedgudduudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,67 +97,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Salil Mehta <salil.mehta@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Delevoryas <pdel@fb.com>, Alistair Francis <alistair@alistair23.me>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vi5NJXpFa2D4
+X-TUID: DdeU7mNOzihP
 
-On Fri, Sep 03, 2021 at 03:38:13PM +0800, wangyanan (Y) wrote:
-> 
-> On 2021/9/3 15:25, Peter Maydell wrote:
-> > On Fri, 3 Sept 2021 at 08:05, wangyanan (Y) <wangyanan55@huawei.com> wrote:
-> > > 
-> > > On 2021/9/2 23:56, Peter Maydell wrote:
-> > > > On Tue, 24 Aug 2021 at 13:20, Yanan Wang <wangyanan55@huawei.com> wrote:
-> > > > > This new version is based on patch series [1] which introduces some
-> > > > > fix and improvement for smp parsing.
-> > > > > 
-> > > > > Description:
-> > > > > Once the view of an accurate virtual cpu topology is provided to guest,
-> > > > > with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
-> > > > > e.g., the scheduling performance improvement. See Dario Faggioli's
-> > > > > research and the related performance tests in [2] for reference.
-> > > > > 
-> > > > > This patch series introduces cpu topology support for ARM platform.
-> > > > > Both cpu-map in DT and ACPI PPTT table are introduced to store the
-> > > > > topology information. And we only describe the topology information
-> > > > > to 6.2 and newer virt machines, considering compatibility.
-> > > > > 
-> > > > > patches not yet reviewed: #1 and #3.
-> > > > > 
-> > > > > [1] https://lore.kernel.org/qemu-devel/20210823122804.7692-1-wangyanan55@huawei.com/
-> > > > > [2] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines
-> > > > > -friend-or-foe-dario-faggioli-suse
-> > > > Hi; this series doesn't apply to current head-of-git. Is it
-> > > > intended to be based on some other series ?
-> > > > 
-> > > Yes, it was based on the -smp parsing changes in [1] which hasn't been
-> > > picked yet. Given that [1] somehow affects the topology parsing results
-> > > which we will describe to guest, I think it may be better that [1] can be
-> > > merged first and then this series follows.
-> > OK. I'll ignore this for now; please resend once that other series
-> > has been accepted.
-> Got it.
+The Aspeed SoCs have a dual boot function for firmware fail-over
+recovery. The system auto-reboots from the second flash if the main
+flash does not boot sucessfully within a certain amount of time. This
+function is called alternate boot (ABR) in the FMC controllers.
 
-Also, you'll likely want to rebase on Igor's acpi refactor series[*]
+On AST2400/AST2500, ABR is enabled by hardware strapping in SCU70 to
+enable the 2nd watchdog timer, on AST2600, through register SCU510.
+If the boot on the the main flash succeeds, the firmware should
+disable the 2nd watchdog timer. If not, the BMC is reset and the CE0
+and CE1 mappings are swapped to restart the BMC from the 2nd flash.
 
-[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg822151.html
+On the AST2600, the registers controlling the 2nd watchdog timer were
+moved from the watchdog register to the FMC controller. Add simple
+read/write handlers for these to let the FW disable the 2nd watchdog
+without error.
 
-Thanks,
-drew
+Reported-by: Peter Delevoryas <pdel@fb.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/ssi/aspeed_smc.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-> 
-> Thanks,
-> Yanan
-> > thanks
-> > -- PMM
-> > 
-> > .
-> 
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 331a2c544635..c9990f069ea4 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -124,6 +124,13 @@
+ /* SPI dummy cycle data */
+ #define R_DUMMY_DATA      (0x54 / 4)
+ 
++/* FMC_WDT2 Control/Status Register for Alternate Boot (AST2600) */
++#define R_FMC_WDT2_CTRL   (0x64 / 4)
++#define   FMC_WDT2_CTRL_ALT_BOOT_MODE    BIT(6) /* O: 2 chips 1: 1 chip */
++#define   FMC_WDT2_CTRL_SINGLE_BOOT_MODE BIT(5)
++#define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary 1: alternate */
++#define   FMC_WDT2_CTRL_EN               BIT(0)
++
+ /* DMA Control/Status Register */
+ #define R_DMA_CTRL        (0x80 / 4)
+ #define   DMA_CTRL_REQUEST      (1 << 31)
+@@ -263,12 +270,18 @@ static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t value);
+ 
+ #define ASPEED_SMC_FEATURE_DMA       0x1
+ #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
++#define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
+ 
+ static inline bool aspeed_smc_has_dma(const AspeedSMCState *s)
+ {
+     return !!(s->ctrl->features & ASPEED_SMC_FEATURE_DMA);
+ }
+ 
++static inline bool aspeed_smc_has_wdt_control(const AspeedSMCState *s)
++{
++    return !!(s->ctrl->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
++}
++
+ static const AspeedSMCController controllers[] = {
+     {
+         .name              = "aspeed.smc-ast2400",
+@@ -1019,6 +1032,7 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
+         addr == R_CE_CMD_CTRL ||
+         addr == R_INTR_CTRL ||
+         addr == R_DUMMY_DATA ||
++        (aspeed_smc_has_wdt_control(s) && addr == R_FMC_WDT2_CTRL) ||
+         (aspeed_smc_has_dma(s) && addr == R_DMA_CTRL) ||
+         (aspeed_smc_has_dma(s) && addr == R_DMA_FLASH_ADDR) ||
+         (aspeed_smc_has_dma(s) && addr == R_DMA_DRAM_ADDR) ||
+@@ -1350,6 +1364,8 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+         s->regs[addr] = value & 0xff;
+     } else if (addr == R_DUMMY_DATA) {
+         s->regs[addr] = value & 0xff;
++    } else if (aspeed_smc_has_wdt_control(s) && addr == R_FMC_WDT2_CTRL) {
++        s->regs[addr] = value & 0xb;
+     } else if (addr == R_INTR_CTRL) {
+         s->regs[addr] = value;
+     } else if (aspeed_smc_has_dma(s) && addr == R_DMA_CTRL) {
+-- 
+2.31.1
 

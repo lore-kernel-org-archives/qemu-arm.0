@@ -1,87 +1,96 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4465612lfb;
-        Tue, 7 Sep 2021 00:31:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3cdW1xe6j0UxGOkyoziDnnNfRJ8/GnV3gPx0SFgdeQH/7nzDWEvBjo8PUhU5Hevn2boLi
-X-Received: by 2002:a6b:c80f:: with SMTP id y15mr12683422iof.80.1630999883687;
-        Tue, 07 Sep 2021 00:31:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630999883; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4467502lfb;
+        Tue, 7 Sep 2021 00:34:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwQkPb725jGKsyVQbMYIhNoFo0yTcIPMesuK8NSv9zIIfe6+Hg5r0nZN74Zjlf3Tz8d6xc8
+X-Received: by 2002:a92:c04e:: with SMTP id o14mr10545366ilf.289.1631000089389;
+        Tue, 07 Sep 2021 00:34:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631000089; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dn+TlQDImZF/nmoSkU8hRMrZE4HYmXdLWHqUEkpVFrHed4I/I7KMIWfafbLkU4lEAU
-         CLEyewiA2cL8F9m4SJ73AZgVB0RFogzzht+LVcuzfTgSdBnV/L5mNwVYANP1MaVHFLnJ
-         3IbbL1zcu20VH4hXpev8HmAEYoOIgU1Zy2dT8gWkeMhp1niMbyyxP9h3TUCsN5o/VkmK
-         4DejSsFk0qUL4E0rrgBfUYUZn9P/wv9mQeMOr0ztACCmdvpOyFsUfFWodSfxnbeaSUxr
-         63hixL+GYQ5J1w+1MeWi9kntbpVy9YgkIePn86lMzBQYCJR0Ue/uZubz/pWxawH6sUMK
-         mo9A==
+        b=iL7QVkzih0VqjtXlgHt7ETGSjYWJB8W5Ody3G16RC4kZESTNj8lwUg8x1OUG2Z5caD
+         RU2twy/A/Fc2r3YJHe6+pydsp65uohVPsZ7o7yePpV8m2LCF2hGnNLDJImA+fQyuXNZr
+         BESCUT7qEkpaRakTs21Hjf2sbFTbLgkJVmnK8TOeHsEltipwXcQqlPL/qcYtquL7ub92
+         nxQ9u96qqc9kA7m9G+9gEPPLdQ4p8vqtAsEHsXBO7Cy6oJd+FLdAm4jC/998ldES2dOn
+         KQLNoy5b8TVjvVL+NEDcnm9oEedLCaShpbmAVpa8+tgB2BF0xCC4JQ2B7OulyQW09ZjY
+         0CWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=OM9N08U6N2EM9G/kjr8ts7PKltIZmVWvKPpx4a6bWU4=;
-        b=BkFIXScpNwSTDnFLNpEYT2BS5ALT6UfEbl6z3I5R9Ci8kxiEr5N4u3cplan229TD2L
-         KpsFMnuh67WdC7YHgshJR193q9YNqijnXODz3IY3zJPiZuqcMqrefJfp+P0KbuTvXc3W
-         ja5WNO5s5K0d9xXMUT6aYo/IET/OmZrys4fFkLcjww5+QtswAKiJQmpi0O++2z3ZMyKC
-         uFFvvRuXT5aj8/CNS7Ie3dPE6cPGCnBNAI8fFnJPiOHAtsaSMW2RY/p/2pMtYFy4VH2G
-         /Pn2HK1L1c/g5woh4SB6zi/L/UpG0BSXgaySDAIbFAgOXSRLXMh4zbaYQHOekFuaNR8+
-         M0zQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=Ujm4PwTGiZjo0sKB3NRVrqWdzqqVQy7JjKk+c4hyqpE=;
+        b=U1FT/ly2aXqdlOVjDypf4ntxeZdBsnaHYHcdNRFh0JFsy5EjXFAYRWBi17D2+qlD+8
+         3m/lhBIIWo7CRLOoiflIrBcb647hpb2xaq6gmqSEatVqTMAJtC/xeclZfMh1DN8HUwEf
+         HG7rXeGsDzBpBana2N4O5l2L1IVNgmEXANIBkpCuOW6NlCh40lxmfzZEU4l0UVgxlIwo
+         t0+KvX2x4Vg0nTQBAmnSQjmdVPiQMqe1s1foQ2XPzWBtJdAtR4uIfvgiEbxc1vkAWiVy
+         ce1ta/U7r0wsyhP432WqlWmDQh01erySmWm6UrFYcNo8nbf60w5IWzIkIHCnm8xnlOjE
+         IRHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h199si8929834iof.50.2021.09.07.00.31.23
+        by mx.google.com with ESMTPS id l8si10109233ilt.110.2021.09.07.00.34.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 00:31:23 -0700 (PDT)
+        Tue, 07 Sep 2021 00:34:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52362 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNVZh-0006O1-Vw
-	for alex.bennee@linaro.org; Tue, 07 Sep 2021 03:31:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34854)
+	id 1mNVd2-0000uo-N1
+	for alex.bennee@linaro.org; Tue, 07 Sep 2021 03:34:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mNVZU-0006Nd-5j; Tue, 07 Sep 2021 03:31:08 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:36413)
+ id 1mNVco-0000rW-Cl; Tue, 07 Sep 2021 03:34:35 -0400
+Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:59135)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mNVZS-0002vp-0u; Tue, 07 Sep 2021 03:31:07 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.149])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 3FF5ABCB6FF6;
- Tue,  7 Sep 2021 09:31:01 +0200 (CEST)
-Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ id 1mNVci-0005eo-EH; Tue, 07 Sep 2021 03:34:34 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.210])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 7642313D953;
+ Tue,  7 Sep 2021 07:34:25 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 7 Sep
- 2021 09:31:00 +0200
+ 2021 09:34:24 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-97G002e1c492da-6788-4648-9db5-b3c251ad36b6,
+ (GARM-99G00316fb257b-ba97-41b1-9003-0b9dfce2a703,
  984F41D2D9692A95DAA6D5E609006558D983FB00) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
-Subject: [PATCH] aspeed/i2c: QOMify AspeedI2CBus
-Date: Tue, 7 Sep 2021 09:30:59 +0200
-Message-ID: <20210907073059.1155224-1-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
+Subject: Re: [PATCH 06/10] aspeed/smc: Remove the 'size' attribute from
+ AspeedSMCFlash
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>
+References: <20210907065822.1152443-1-clg@kaod.org>
+ <20210907065822.1152443-7-clg@kaod.org>
+ <e3f5d94c-8d21-3fc4-9839-f2393d188241@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <40859a66-d193-4b3d-62ff-c41c18818fc3@kaod.org>
+Date: Tue, 7 Sep 2021 09:34:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <e3f5d94c-8d21-3fc4-9839-f2393d188241@amsat.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 5c67d43f-a668-4e79-930e-49aaa74810e4
-X-Ovh-Tracer-Id: 1528127649440041766
+X-Ovh-Tracer-GUID: 5850cf5a-43a0-45aa-be38-fede6849a1f3
+X-Ovh-Tracer-Id: 1585548548031417193
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefgedguddujecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefvdeutddvieekkeeuhfekudejjefggffghfetgfelgfevveefgefhvdegtdelveenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefgedguddukecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout3.3005.mail-out.ovh.net
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.332,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -95,216 +104,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e7q1/30YhY5E
+X-TUID: 8a5wRYhrfo4B
 
-The AST2600 SoC realize routine needs to be adapted when connecting
-the I2C bus IRQs because the bus IRQs have moved to the AspeedI2CBus
-SysBus device, one level below the Aspeed I2C controller SysBus
-device.
+On 9/7/21 9:20 AM, Philippe Mathieu-Daudé wrote:
+> On 9/7/21 8:58 AM, Cédric Le Goater wrote:
+>> It's only useful to compute the initial size of the boot_rom region.
+> 
+> "AspeedSMCFlash::size is only used to compute the initial size
+>  of the boot_rom region. Not very useful, so directly call
+>  memory_region_size() instead."?
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/i2c/aspeed_i2c.h |   8 ++-
- hw/arm/aspeed_ast2600.c     |   7 +--
- hw/i2c/aspeed_i2c.c         | 103 +++++++++++++++++++++++++++++-------
- 3 files changed, 93 insertions(+), 25 deletions(-)
+Sure. I will rephrase.
 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 565f83306624..4b9be09274c7 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -36,7 +36,11 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
- 
- struct AspeedI2CState;
- 
--typedef struct AspeedI2CBus {
-+#define TYPE_ASPEED_I2C_BUS "aspeed.i2c.bus"
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedI2CBus, ASPEED_I2C_BUS)
-+struct AspeedI2CBus {
-+    SysBusDevice parent_obj;
-+
-     struct AspeedI2CState *controller;
- 
-     MemoryRegion mr;
-@@ -54,7 +58,7 @@ typedef struct AspeedI2CBus {
-     uint32_t pool_ctrl;
-     uint32_t dma_addr;
-     uint32_t dma_len;
--} AspeedI2CBus;
-+};
- 
- struct AspeedI2CState {
-     SysBusDevice parent_obj;
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index c69f27dff62a..a70e4c48a73c 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -337,11 +337,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < ASPEED_I2C_GET_CLASS(&s->i2c)->num_busses; i++) {
-         qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-                                         sc->irqmap[ASPEED_DEV_I2C] + i);
--        /*
--         * The AST2600 SoC has one IRQ per I2C bus. Skip the common
--         * IRQ (AST2400 and AST2500) and connect all bussses.
--         */
--        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), i + 1, irq);
-+        /* The AST2600 I2C controller has one IRQ per bus. */
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
-     }
- 
-     /* FMC, The number of CS is set at the board level */
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 8d276d9ed391..f1dacdb925ca 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -740,20 +740,20 @@ static const VMStateDescription aspeed_i2c_vmstate = {
- 
- static void aspeed_i2c_reset(DeviceState *dev)
- {
--    int i;
-     AspeedI2CState *s = ASPEED_I2C(dev);
--    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
- 
-     s->intr_status = 0;
-+}
-+
-+static void aspeed_i2c_instance_init(Object *obj)
-+{
-+    AspeedI2CState *s = ASPEED_I2C(obj);
-+    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
-+    int i;
- 
-     for (i = 0; i < aic->num_busses; i++) {
--        s->busses[i].intr_ctrl = 0;
--        s->busses[i].intr_status = 0;
--        s->busses[i].cmd = 0;
--        s->busses[i].buf = 0;
--        s->busses[i].dma_addr = 0;
--        s->busses[i].dma_len = 0;
--        i2c_end_transfer(s->busses[i].bus);
-+        object_initialize_child(obj, "bus[*]", &s->busses[i],
-+                                TYPE_ASPEED_I2C_BUS);
-     }
- }
- 
-@@ -791,17 +791,21 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &s->iomem);
- 
-     for (i = 0; i < aic->num_busses; i++) {
--        char name[32];
-+        Object *bus = OBJECT(&s->busses[i]);
-         int offset = i < aic->gap ? 1 : 5;
- 
--        sysbus_init_irq(sbd, &s->busses[i].irq);
--        snprintf(name, sizeof(name), "aspeed.i2c.%d", i);
--        s->busses[i].controller = s;
--        s->busses[i].id = i;
--        s->busses[i].bus = i2c_init_bus(dev, name);
--        memory_region_init_io(&s->busses[i].mr, OBJECT(dev),
--                              &aspeed_i2c_bus_ops, &s->busses[i], name,
--                              aic->reg_size);
-+        if (!object_property_set_link(bus, "controller", OBJECT(s), errp)) {
-+            return;
-+        }
-+
-+        if (!object_property_set_uint(bus, "bus-id", i, errp)) {
-+            return;
-+        }
-+
-+        if (!sysbus_realize(SYS_BUS_DEVICE(bus), errp)) {
-+            return;
-+        }
-+
-         memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offset),
-                                     &s->busses[i].mr);
-     }
-@@ -841,12 +845,74 @@ static void aspeed_i2c_class_init(ObjectClass *klass, void *data)
- static const TypeInfo aspeed_i2c_info = {
-     .name          = TYPE_ASPEED_I2C,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = aspeed_i2c_instance_init,
-     .instance_size = sizeof(AspeedI2CState),
-     .class_init    = aspeed_i2c_class_init,
-     .class_size = sizeof(AspeedI2CClass),
-     .abstract   = true,
- };
- 
-+static void aspeed_i2c_bus_reset(DeviceState *dev)
-+{
-+    AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
-+
-+    s->intr_ctrl = 0;
-+    s->intr_status = 0;
-+    s->cmd = 0;
-+    s->buf = 0;
-+    s->dma_addr = 0;
-+    s->dma_len = 0;
-+    i2c_end_transfer(s->bus);
-+}
-+
-+static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
-+    char name[32];
-+    AspeedI2CClass *aic;
-+
-+    if (!s->controller) {
-+        error_setg(errp, TYPE_ASPEED_I2C_BUS ": 'controller' link not set");
-+        return;
-+    }
-+
-+    aic = ASPEED_I2C_GET_CLASS(s->controller);
-+
-+    snprintf(name, sizeof(name), TYPE_ASPEED_I2C_BUS ".%d", s->id);
-+
-+    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-+
-+    s->bus = i2c_init_bus(dev, name);
-+
-+    memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
-+                          s, name, aic->reg_size);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
-+}
-+
-+static Property aspeed_i2c_bus_properties[] = {
-+    DEFINE_PROP_UINT8("bus-id", AspeedI2CBus, id, 0),
-+    DEFINE_PROP_LINK("controller", AspeedI2CBus, controller, TYPE_ASPEED_I2C,
-+                     AspeedI2CState *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void aspeed_i2c_bus_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "Aspeed I2C Bus";
-+    dc->realize = aspeed_i2c_bus_realize;
-+    dc->reset = aspeed_i2c_bus_reset;
-+    device_class_set_props(dc, aspeed_i2c_bus_properties);
-+}
-+
-+static const TypeInfo aspeed_i2c_bus_info = {
-+    .name           = TYPE_ASPEED_I2C_BUS,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(AspeedI2CBus),
-+    .class_init     = aspeed_i2c_bus_class_init,
-+};
-+
- static qemu_irq aspeed_2400_i2c_bus_get_irq(AspeedI2CBus *bus)
- {
-     return bus->controller->irq;
-@@ -951,6 +1017,7 @@ static const TypeInfo aspeed_2600_i2c_info = {
- 
- static void aspeed_i2c_register_types(void)
- {
-+    type_register_static(&aspeed_i2c_bus_info);
-     type_register_static(&aspeed_i2c_info);
-     type_register_static(&aspeed_2400_i2c_info);
-     type_register_static(&aspeed_2500_i2c_info);
--- 
-2.31.1
+Thanks,
+
+C. 
+
+
+> 
+>> Use memory_region_size() instead.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  include/hw/ssi/aspeed_smc.h | 1 -
+>>  hw/arm/aspeed.c             | 7 ++++---
+>>  hw/ssi/aspeed_smc.c         | 5 ++---
+>>  3 files changed, 6 insertions(+), 7 deletions(-)
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
 

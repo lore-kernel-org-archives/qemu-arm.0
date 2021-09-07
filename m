@@ -1,88 +1,88 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4816384lfb;
-        Tue, 7 Sep 2021 08:08:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbr+q3c7miKAdNInHd11jzwZ+cfEOSGqQVamiQcVgqro8CpG3e+xz1vs2Sj1WaEW7ZesQE
-X-Received: by 2002:a05:6512:3458:: with SMTP id j24mr13310627lfr.366.1631027304288;
-        Tue, 07 Sep 2021 08:08:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631027304; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp4821426lfb;
+        Tue, 7 Sep 2021 08:12:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSWoODaoiZ7o5dyRzPTaG2bNVaBW3/UglB1MsdsZvAdQggLL2tGrfjuuE3jKyuDPwIEi6M
+X-Received: by 2002:a05:6402:2686:: with SMTP id w6mr16517488edd.231.1631027576649;
+        Tue, 07 Sep 2021 08:12:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631027576; cv=none;
         d=google.com; s=arc-20160816;
-        b=n+ANQwiqbQ9Wi3FHYwQB+Dxc6VEpbBLKJGGSodtwYuNE+R+c0dxF5y/h7VP3fqcOde
-         vRbgwGDEvGjsuAWgbxovt5/g+rxDLEhmsJdleGmwnqlLbIolu/iyIyrXaC5My1OLo05M
-         PfzLI7DaDlaGg0ubeuD7our1C/HTE+s2fEJjGY17gevUtqJW7Njj9PV7k7TAFSUeR8XG
-         QJx4g7LiiK5mEJIwNIDXxp8xEZzBp+bXNhugiPBEpaThIxW53kTBBHz5MyACXouhlZn6
-         wMW/U0Vjq/BYLArCKFNcDr2VJxI8tEMQTl3geOfMn/qlC1ntOcqxYqESrb8w1CRvFsrQ
-         o6tA==
+        b=iX5xJORqT439UMhw2Yfk3bx69v8ACvDPclVdj+FnmeacBbJxk6+K9Si6edDs0PQqkU
+         EVZpzovsmyWgSSkm8b624hJuEKIfAnuMJ8wPG6sNcmWaA2NgOYJDWzb+s9ByifoD2QXO
+         BdIo0/VDVcFWmR3HLM5gniWSWQk9Kw6Yfdpn8HrzrTMPu0oJg2HMwznKV5pG7g+jzVh2
+         irUjUL7H/8n5Oh9tLE/QqjiBsP7P/5wuklgISxgQ3x8HPHNMcOVuLc9oxELWoQn6j3t5
+         vTH7/uBoYdXGtkjXvsi7tXylCJGorJVQA0+2s2/s8gEnTmG4rplGQlAyBTx0idYlJt5/
+         EI7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=E4E/uQ3ximqjYcxuDi/WzuFoXWL53s3VjoQETiq8j70=;
-        b=hSpFTDDi/9DhiyXrr6A/DwLG2E3cVq3QYO8E2aj9PXoBfnWFn0iPR9sdAjYdhKzkOY
-         8N51VWyvxkpc3aqrhfNzBFfR0mCe4p24b3+SkPTeM64n47xkO9C2uyLH+stUIhB3dIi1
-         jqzOQ/0L2Cw5NxD0OABQT9WK0FMuIHSnArNbPXGINyiKb/Ryl3THIS6jggaHNwRgmmEw
-         quKLAvz2VDjjlMvdkkEYTe5Ze/TnONQ+aYRC7nS4FbJF56v1ju7WRtrmgaiXepAaHkcV
-         dClrBBq4BPVZw4uFSoWlehTJI4qVs1fP7IW+qgkWIeZLrKPV5Ogx/tyH9sMV5L1ID8ox
-         oWhg==
+        bh=3DC1E+DBVxgwfGW4+K+YvYrVtDy43RZ3KgqS0k5b3Mc=;
+        b=bJkZQ9cXN+/pEQ+RXIXr4eaEicAsGyCid7YkzexCzVGhanlzwvaUjOelgTnBDUIlu+
+         XvmYuNBgiT3ea571HEKHxdJBQTtAZVURVwar5lXfgMoD7IIOcQg/iIK+wLZ1CHuiQkcH
+         EHUI85HrI+kW1AO9lTtY5oWguzi5hF2BmkMndHP6qm+IkA6DlFnLnZroli42izj50RyF
+         gTEYZdxAf1OVRLP3pLg1bHzmrf/jc8vVHQ7dyK8ek9yv54IGWbT7R10HAzdA1BqiO/y5
+         5pjk9LnELN+j1D7XVSzaPEr9ZeoyEHBrpgOsbWeIS3otxDdJi5MoA4hYdR344217kT6U
+         h04Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KR4wd8GF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RUuICs/8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a18si11045963ejj.147.2021.09.07.08.08.24
+        by mx.google.com with ESMTPS id qw28si2573791ejc.608.2021.09.07.08.12.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 08:08:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Sep 2021 08:12:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KR4wd8GF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RUuICs/8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53792 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNchz-0007EE-8M
-	for alex.bennee@linaro.org; Tue, 07 Sep 2021 11:08:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37368)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mNcmN-0007cU-K4
+	for alex.bennee@linaro.org; Tue, 07 Sep 2021 11:12:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37396)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mNcPz-0001J9-UQ
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 10:49:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:53451)
+ id 1mNcQ2-0001Pv-Ak
+ for qemu-devel@nongnu.org; Tue, 07 Sep 2021 10:49:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58396)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mNcPy-0000hd-52
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 10:49:47 -0400
+ id 1mNcQ0-0000k5-Je
+ for qemu-devel@nongnu.org; Tue, 07 Sep 2021 10:49:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631026185;
+ s=mimecast20190719; t=1631026187;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=E4E/uQ3ximqjYcxuDi/WzuFoXWL53s3VjoQETiq8j70=;
- b=KR4wd8GFN6Lz79PpSIzGJ4BhxIunEqW0DyBjuSPZaTm03XjlRnNJovPHXWLWQKorKH/AZB
- QP1QEoF8zZmuXP/JCVg9E08gDDbJ9hhGNGiiy7vUxzo+3AvQbKLKqZMk5UT0Y+Tm+QWOhv
- unHkhtijgPedKMrwfPQwph2bRCPithk=
+ bh=3DC1E+DBVxgwfGW4+K+YvYrVtDy43RZ3KgqS0k5b3Mc=;
+ b=RUuICs/8QpNF/wuhm8PIdIOVp8TtXbcNJECOBpObLliWzlMRFZyPO1p03kqnOkvsjyo896
+ MPRG3ANPowgb6GoYDDaYPR2Vmza5MYR/Sskz1L2NXb+Dnx+9iYb3PYxYsfNQKW4it0x24l
+ 6w7d44K2le9831pvvkICdvprbR7irCM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-396-r706lS1fMTWanf5eAqG16A-1; Tue, 07 Sep 2021 10:49:44 -0400
-X-MC-Unique: r706lS1fMTWanf5eAqG16A-1
+ us-mta-96-KXEQn1vVOXCFzzzzvHBVkg-1; Tue, 07 Sep 2021 10:49:46 -0400
+X-MC-Unique: KXEQn1vVOXCFzzzzvHBVkg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 85F5384A5E3;
- Tue,  7 Sep 2021 14:49:43 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4E0BC80196C;
+ Tue,  7 Sep 2021 14:49:45 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
  (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2DBA15D9DE;
- Tue,  7 Sep 2021 14:49:39 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BD93E5D9CA;
+ Tue,  7 Sep 2021 14:49:43 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 31/35] acpi: arm/virt: build_spcr: use
+Subject: [PATCH v3 32/35] acpi: arm/virt: build_gtdt: use
  acpi_table_begin()/acpi_table_end() instead of build_header()
-Date: Tue,  7 Sep 2021 10:48:10 -0400
-Message-Id: <20210907144814.741785-32-imammedo@redhat.com>
+Date: Tue,  7 Sep 2021 10:48:11 -0400
+Message-Id: <20210907144814.741785-33-imammedo@redhat.com>
 In-Reply-To: <20210907144814.741785-1-imammedo@redhat.com>
 References: <20210907144814.741785-1-imammedo@redhat.com>
 MIME-Version: 1.0
@@ -103,22 +103,22 @@ X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, shannon.zhaosl@gmail.com,
  mst@redhat.com, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lMQZlDpip6lL
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Emn+AH4vCjke
 
 it replaces error-prone pointer arithmetic for build_header() API,
 with 2 calls to start and finish table creation,
@@ -127,156 +127,143 @@ which hides offsets magic from API user.
 while at it, replace packed structure with endian agnostic
 build_append_FOO() API.
 
-PS:
-Spec is Microsoft hosted, however 1.02 is no where to be found
-(MS lists only the current revision) and the current revision is 1.07,
-so bring comments in line with 1.07 as this is the only available spec.
-There is no content change between originally implemented 1.02
-(using QEMU code as reference) and 1.07. The only change is renaming
-'Reserved2' field to 'Language', with the same 0 value.
-
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
 v3:
   * s/acpi_init_table|acpi_table_composed/acpi_table_begin|acpi_table_end/
 
-PS:
-   perhaps we should cache MS hosted specs in QEMU tree, given they do not
-   maintain old revisions.
-
 CC: drjones@redhat.com
 CC: peter.maydell@linaro.org
 CC: shannon.zhaosl@gmail.com
 CC: qemu-arm@nongnu.org
 ---
- include/hw/acpi/acpi-defs.h | 32 -----------------
- hw/arm/virt-acpi-build.c    | 68 ++++++++++++++++++++++---------------
- 2 files changed, 41 insertions(+), 59 deletions(-)
+ include/hw/acpi/acpi-defs.h | 25 -------------
+ hw/arm/virt-acpi-build.c    | 75 ++++++++++++++++++++++++-------------
+ 2 files changed, 48 insertions(+), 52 deletions(-)
 
 diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index 6f2f08a9de..012c4ffb3a 100644
+index 012c4ffb3a..0b375e7589 100644
 --- a/include/hw/acpi/acpi-defs.h
 +++ b/include/hw/acpi/acpi-defs.h
-@@ -117,38 +117,6 @@ typedef struct AcpiFadtData {
- #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
- #define ACPI_FADT_ARM_PSCI_USE_HVC    (1 << 1)
+@@ -131,29 +131,4 @@ struct AcpiFacsDescriptorRev1 {
+ } QEMU_PACKED;
+ typedef struct AcpiFacsDescriptorRev1 AcpiFacsDescriptorRev1;
  
 -/*
-- * Serial Port Console Redirection Table (SPCR), Rev. 1.02
-- *
-- * For .interface_type see Debug Port Table 2 (DBG2) serial port
-- * subtypes in Table 3, Rev. May 22, 2012
+- * Generic Timer Description Table (GTDT)
 - */
--struct AcpiSerialPortConsoleRedirection {
--    ACPI_TABLE_HEADER_DEF
--    uint8_t  interface_type;
--    uint8_t  reserved1[3];
--    struct AcpiGenericAddress base_address;
--    uint8_t  interrupt_types;
--    uint8_t  irq;
--    uint32_t gsi;
--    uint8_t  baud;
--    uint8_t  parity;
--    uint8_t  stopbits;
--    uint8_t  flowctrl;
--    uint8_t  term_type;
--    uint8_t  reserved2;
--    uint16_t pci_device_id;
--    uint16_t pci_vendor_id;
--    uint8_t  pci_bus;
--    uint8_t  pci_slot;
--    uint8_t  pci_func;
--    uint32_t pci_flags;
--    uint8_t  pci_seg;
--    uint32_t reserved3;
--} QEMU_PACKED;
--typedef struct AcpiSerialPortConsoleRedirection
--               AcpiSerialPortConsoleRedirection;
+-#define ACPI_GTDT_INTERRUPT_MODE_LEVEL    (0 << 0)
+-#define ACPI_GTDT_INTERRUPT_MODE_EDGE     (1 << 0)
+-#define ACPI_GTDT_CAP_ALWAYS_ON           (1 << 2)
 -
- /*
-  * ACPI 1.0 Firmware ACPI Control Structure (FACS)
-  */
+-struct AcpiGenericTimerTable {
+-    ACPI_TABLE_HEADER_DEF
+-    uint64_t counter_block_addresss;
+-    uint32_t reserved;
+-    uint32_t secure_el1_interrupt;
+-    uint32_t secure_el1_flags;
+-    uint32_t non_secure_el1_interrupt;
+-    uint32_t non_secure_el1_flags;
+-    uint32_t virtual_timer_interrupt;
+-    uint32_t virtual_timer_flags;
+-    uint32_t non_secure_el2_interrupt;
+-    uint32_t non_secure_el2_flags;
+-    uint64_t counter_read_block_address;
+-    uint32_t platform_timer_count;
+-    uint32_t platform_timer_offset;
+-} QEMU_PACKED;
+-typedef struct AcpiGenericTimerTable AcpiGenericTimerTable;
+-
+ #endif
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 50ed73b9d0..ea783128a9 100644
+index ea783128a9..ebe9d1726f 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -447,39 +447,53 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     g_array_free(its_idmaps, true);
+@@ -553,40 +553,61 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_table_end(linker, &table);
  }
  
+-/* GTDT */
 +/*
-+ * Serial Port Console Redirection Table (SPCR)
-+ * Rev: 1.07
++ * ACPI spec, Revision 5.1
++ * 5.2.24 Generic Timer Description Table (GTDT)
 + */
  static void
- build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  {
--    AcpiSerialPortConsoleRedirection *spcr;
--    const MemMapEntry *uart_memmap = &vms->memmap[VIRT_UART];
--    int irq = vms->irqmap[VIRT_UART] + ARM_SPI_BASE;
--    int spcr_start = table_data->len;
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+-    int gtdt_start = table_data->len;
+-    AcpiGenericTimerTable *gtdt;
+-    uint32_t irqflags;
 -
--    spcr = acpi_data_push(table_data, sizeof(*spcr));
+-    if (vmc->claim_edge_triggered_timers) {
+-        irqflags = ACPI_GTDT_INTERRUPT_MODE_EDGE;
+-    } else {
+-        irqflags = ACPI_GTDT_INTERRUPT_MODE_LEVEL;
+-    }
 -
--    spcr->interface_type = 0x3;    /* ARM PL011 UART */
+-    gtdt = acpi_data_push(table_data, sizeof *gtdt);
+-    /* The interrupt values are the same with the device tree when adding 16 */
+-    gtdt->secure_el1_interrupt = cpu_to_le32(ARCH_TIMER_S_EL1_IRQ + 16);
+-    gtdt->secure_el1_flags = cpu_to_le32(irqflags);
 -
--    spcr->base_address.space_id = AML_AS_SYSTEM_MEMORY;
--    spcr->base_address.bit_width = 8;
--    spcr->base_address.bit_offset = 0;
--    spcr->base_address.access_width = 1;
--    spcr->base_address.address = cpu_to_le64(uart_memmap->base);
--
--    spcr->interrupt_types = (1 << 3); /* Bit[3] ARMH GIC interrupt */
--    spcr->gsi = cpu_to_le32(irq);  /* Global System Interrupt */
-+    AcpiTable table = { .sig = "SPCR", .rev = 2, .oem_id = vms->oem_id,
+-    gtdt->non_secure_el1_interrupt = cpu_to_le32(ARCH_TIMER_NS_EL1_IRQ + 16);
+-    gtdt->non_secure_el1_flags = cpu_to_le32(irqflags |
+-                                             ACPI_GTDT_CAP_ALWAYS_ON);
++    /*
++     * Table 5-117 Flag Definitions
++     * set only "Timer interrupt Mode" and assume "Timer Interrupt
++     * polarity" bit as '0: Interrupt is Active high'
++     */
++    uint32_t irqflags = vmc->claim_edge_triggered_timers ?
++        1 : /* Interrupt is Edge triggered */
++        0;  /* Interrupt is Level triggered  */
++    AcpiTable table = { .sig = "GTDT", .rev = 2, .oem_id = vms->oem_id,
 +                        .oem_table_id = vms->oem_table_id };
  
--    spcr->baud = 3;                /* Baud Rate: 3 = 9600 */
--    spcr->parity = 0;              /* No Parity */
--    spcr->stopbits = 1;            /* 1 Stop bit */
--    spcr->flowctrl = (1 << 1);     /* Bit[1] = RTS/CTS hardware flow control */
--    spcr->term_type = 0;           /* Terminal Type: 0 = VT100 */
+-    gtdt->virtual_timer_interrupt = cpu_to_le32(ARCH_TIMER_VIRT_IRQ + 16);
+-    gtdt->virtual_timer_flags = cpu_to_le32(irqflags);
 +    acpi_table_begin(&table, table_data);
  
--    spcr->pci_device_id = 0xffff;  /* PCI Device ID: not a PCI device */
--    spcr->pci_vendor_id = 0xffff;  /* PCI Vendor ID: not a PCI device */
-+    /* Interface Type */
-+    build_append_int_noprefix(table_data, 3, 1); /* ARM PL011 UART */
-+    build_append_int_noprefix(table_data, 0, 3); /* Reserved */
-+    /* Base Address */
-+    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
-+                     vms->memmap[VIRT_UART].base);
-+    /* Interrupt Type */
-+    build_append_int_noprefix(table_data,
-+        (1 << 3) /* Bit[3] ARMH GIC interrupt */, 1);
-+    build_append_int_noprefix(table_data, 0, 1); /* IRQ */
-+    /* Global System Interrupt */
-+    build_append_int_noprefix(table_data,
-+                              vms->irqmap[VIRT_UART] + ARM_SPI_BASE, 4);
-+    build_append_int_noprefix(table_data, 3 /* 9600 */, 1); /* Baud Rate */
-+    build_append_int_noprefix(table_data, 0 /* No Parity */, 1); /* Parity */
-+    /* Stop Bits */
-+    build_append_int_noprefix(table_data, 1 /* 1 Stop bit */, 1);
-+    /* Flow Control */
-+    build_append_int_noprefix(table_data,
-+        (1 << 1) /* RTS/CTS hardware flow control */, 1);
-+    /* Terminal Type */
-+    build_append_int_noprefix(table_data, 0 /* VT100 */, 1);
-+    build_append_int_noprefix(table_data, 0, 1); /* Language */
-+    /* PCI Device ID  */
-+    build_append_int_noprefix(table_data, 0xffff /* not a PCI device*/, 2);
-+    /* PCI Vendor ID */
-+    build_append_int_noprefix(table_data, 0xffff /* not a PCI device*/, 2);
-+    build_append_int_noprefix(table_data, 0, 1); /* PCI Bus Number */
-+    build_append_int_noprefix(table_data, 0, 1); /* PCI Device Number */
-+    build_append_int_noprefix(table_data, 0, 1); /* PCI Function Number */
-+    build_append_int_noprefix(table_data, 0, 4); /* PCI Flags */
-+    build_append_int_noprefix(table_data, 0, 1); /* PCI Segment */
+-    gtdt->non_secure_el2_interrupt = cpu_to_le32(ARCH_TIMER_NS_EL2_IRQ + 16);
+-    gtdt->non_secure_el2_flags = cpu_to_le32(irqflags);
++    /* CntControlBase Physical Address */
++    /* FIXME: invalid value, should be 0xFFFFFFFFFFFFFFFF if not impl. ? */
++    build_append_int_noprefix(table_data, 0, 8);
 +    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
++    /*
++     * FIXME: clarify comment:
++     * The interrupt values are the same with the device tree when adding 16
++     */
++    /* Secure EL1 timer GSIV */
++    build_append_int_noprefix(table_data, ARCH_TIMER_S_EL1_IRQ + 16, 4);
++    /* Secure EL1 timer Flags */
++    build_append_int_noprefix(table_data, irqflags, 4);
++    /* Non-Secure EL1 timer GSIV */
++    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL1_IRQ + 16, 4);
++    /* Non-Secure EL1 timer Flags */
++    build_append_int_noprefix(table_data, irqflags |
++                              1UL << 2, /* Always-on Capability */
++                              4);
++    /* Virtual timer GSIV */
++    build_append_int_noprefix(table_data, ARCH_TIMER_VIRT_IRQ + 16, 4);
++    /* Virtual Timer Flags */
++    build_append_int_noprefix(table_data, irqflags, 4);
++    /* Non-Secure EL2 timer GSIV */
++    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_IRQ + 16, 4);
++    /* Non-Secure EL2 timer Flags */
++    build_append_int_noprefix(table_data, irqflags, 4);
++    /* CntReadBase Physical address */
++    build_append_int_noprefix(table_data, 0, 8);
++    /* Platform Timer Count */
++    build_append_int_noprefix(table_data, 0, 4);
++    /* Platform Timer Offset */
++    build_append_int_noprefix(table_data, 0, 4);
  
--    build_header(linker, table_data, (void *)(table_data->data + spcr_start),
--                 "SPCR", table_data->len - spcr_start, 2, vms->oem_id,
+-    build_header(linker, table_data,
+-                 (void *)(table_data->data + gtdt_start), "GTDT",
+-                 table_data->len - gtdt_start, 2, vms->oem_id,
 -                 vms->oem_table_id);
 +    acpi_table_end(linker, &table);
  }

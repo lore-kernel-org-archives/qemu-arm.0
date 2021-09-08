@@ -1,434 +1,288 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp5193604lfb;
-        Tue, 7 Sep 2021 16:29:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtZ+RhAnxFhLq8hS7dmRMcTKJ1FvIRXHRMjq/ejvsCsdI0NgG7aiJtXpBjHkuGczqjUe4i
-X-Received: by 2002:a05:620a:2155:: with SMTP id m21mr715998qkm.499.1631057346455;
-        Tue, 07 Sep 2021 16:29:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631057346; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp152890lfb;
+        Tue, 7 Sep 2021 23:31:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzT8G3BUbbbBdD9pVtcJT9nE1+9wqjq85r4xTLr6R1N8H9d8BVmQuN0h88W7pwKGCGygsiq
+X-Received: by 2002:a6b:fd05:: with SMTP id c5mr2012821ioi.102.1631082719304;
+        Tue, 07 Sep 2021 23:31:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631082719; cv=none;
         d=google.com; s=arc-20160816;
-        b=JTA36W6veeiBp4aN3ODh+79b+w9SsWhWPZMpQsYbYPd+fJkqQKGKhP0+ELrF25/BBI
-         0Upaqs2P26FGZqqg6bY2x3ek2hzmDG2/zNXgo4vIrN/wpLcrafeD76yUSxyfvUWqBG88
-         nZlEH2bfGicoAnadd/f8FzAZO5yg3Av4bJfo1n+czufJa6+EwJtZBFSf64rjU/Dk6FT+
-         esG4HWMgSshKt1DqI3Ss4pkaaOASyrpaKwjK0EvSMpe8cQBMTpFdrZUgx9ZNr8YFExqU
-         5z1RihECOUqWrgd01yWXQa3mtYObI444feX5o1DkrXKbkNAf2Cb0DLGqgozJ2ZPa4GwP
-         boow==
+        b=m0FrX0uwmPIdsUk5ja6XgYRGrno4sOZ5EIc2XivLRmVDTkjDC6PUiLj6L1JUSrzGIm
+         B/XV6vET94AN8Fe5LpXcZLB1DowaX7AEAodaW/kQKMkIb8ZqVDleq6brz0QPBxWJp0ko
+         9appSm9dDRkjD7p3PGMdIIlzc+2znDlvAi33qPYKx1Rrh/Yim9yl6wNrmSk2C/AGBHDM
+         B4/f0INUSgbxKU9Zwx29exciF5+6i0+0a28mlNncadQAdtRz3X7Oscy1z5sapWf91v6l
+         BjUkaPC2XH2XNm9f1hqbT7xuQECpni2tkBvAnjXWucWio1En+1n2kgx6xdfGYmrDtCSg
+         m12A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=REz7MoTH38epZxTahZPoruXDnwdeM0XS1sTeM2Kiju8=;
-        b=0Si7J5BMoG+OFsjMMh4WbXKZLGbVSWSO1Lzn6wcq4jWjYEMADdKZvqVBLD1WZNkhj7
-         HFijAHkgdjkXP5y9nYHAjmv15SZL4XWO2ZL78KE3taPLxtqGXZETH2/gTWbjiAIg30lX
-         PsN6URJ4NW6AWiUdlyzFzOJ//ac6DSH7SMKj9twNlLQbt1rh+4DqPlh3Y4x8eTor3mri
-         eH0sjAbWWDxHMijitLLMX2+eGrWDHYaAXAqVnrb+Ps2Eya7iUee19xN4pR4IIn6TKPo4
-         4i7o23rFiUoZ0JTnfR97zXwa+d74a27kvymh3v86anPrVODi3UhBRsR1/sVxqxYWyCfo
-         DlNw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=WX5JPikt36irdC4NJow8yFV5XtpQhzkCYa60XbduWqE=;
+        b=b0zfZuq/Pj6xmngggaRKDrvOo2fivEK3FXc2qaISU4gHUn0HJ4JxpDJrFsVwsi5UH8
+         S5SLQcsbjq1WDgYUwMqvXOTAzVUSnbjtY6Nrv4uTnmRrG3fXlHWhMFqdMxPnIkVamYpR
+         eJj2FCy/sNLFS0qaWR4bWLc1cmt4Rrzys/PGnNwPw/b3re2eVP5yAMO8QzWz8roOZNQh
+         raOR5mKHPtPZmzl4UJXFBfyFc5QP/v3aaY+jlqW0RPW3r9igNse+g1OayvmZvirK78Mg
+         iG+iMqihQQSPsJx/ZGvAqDiCs1tQ9AJAQslQF6xulNTeoPjonK6XBJnFz8SoqLkSvDOM
+         U3rw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=n6DveWXQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="qDZwn/+k";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o2si260101qtl.390.2021.09.07.16.29.06
+        by mx.google.com with ESMTPS id w31si1130185jal.61.2021.09.07.23.31.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 16:29:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Sep 2021 23:31:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=n6DveWXQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:33144 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="qDZwn/+k";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53036 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNkWX-0005Zu-Qs
-	for alex.bennee@linaro.org; Tue, 07 Sep 2021 19:29:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48706)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mNr7m-00009P-Ko
+	for alex.bennee@linaro.org; Wed, 08 Sep 2021 02:31:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52678)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3KPU3YQgKCAMzxkdrwvkjrrjoh.frpthpx-dupqrqjqx.ruj@flex--wuhaotsh.bounces.google.com>)
- id 1mNkUA-0000QY-PL
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 19:26:38 -0400
-Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449]:55274)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mNr5L-0007O7-5J; Wed, 08 Sep 2021 02:29:27 -0400
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a]:41718)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3KPU3YQgKCAMzxkdrwvkjrrjoh.frpthpx-dupqrqjqx.ruj@flex--wuhaotsh.bounces.google.com>)
- id 1mNkU8-00042c-Hb
- for qemu-arm@nongnu.org; Tue, 07 Sep 2021 19:26:38 -0400
-Received: by mail-pf1-x449.google.com with SMTP id
- j21-20020aa78015000000b00412badd61e2so195790pfi.21
- for <qemu-arm@nongnu.org>; Tue, 07 Sep 2021 16:26:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=REz7MoTH38epZxTahZPoruXDnwdeM0XS1sTeM2Kiju8=;
- b=n6DveWXQba8CuX974pJAEp4z1UG3fV3WMlA2pZ6IA29QuOdEA2MrLGnQYtuHWonJzV
- XiOBAV59vuJQCQH+M5FIWTh//H3CEVV1wPy/t6fvZ+jZnaxjHDIOCOzuaLSxoLiBW2yH
- JC5xgbUpPae7b4GX9o0ZeZipIkIkae2+b+8PscR0dBXjmL8EcESDGA2A42/flknSsv5U
- 2sseCXDW3KYQ7BwwoY7cj5BTA+Nt+G8fdAfheSuZ6rEvsUYtKz9Cfq2GFs+yIbYjCjhG
- poLZQPz6t+CDRtlxEQL95iDj6o9a9/aAD/xuNleFm1kunXOxsihQgElMWOCCKOP8SPAt
- huxA==
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1mNr5J-0007u8-6N; Wed, 08 Sep 2021 02:29:26 -0400
+Received: by mail-yb1-xb2a.google.com with SMTP id z18so2060070ybg.8;
+ Tue, 07 Sep 2021 23:29:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=WX5JPikt36irdC4NJow8yFV5XtpQhzkCYa60XbduWqE=;
+ b=qDZwn/+kc7hb0xriQLJgyLjgzca4Fk/npKFMlMZxgfAbOhPFQYAJrBlb/lOlpxecoQ
+ 7O1PHdxMAxGcEJ591Uwt1A0Qg3cycz1OiFPSk4vhwJJQIOm8zVFzw3T9XyC5sOtrxj6X
+ etNipZ/LQLw3DruLJHsmGDftxJiZqzwtncbgDy3P/zNAuKwjMq7XcrLj91z/Mf6RAB2h
+ cRjchvCSU7taRZBUkXsjgri7mAA3C9DSlURtdf84L0LoQhdscJEqO4IXxyzNqtaP5D7p
+ VnxRueJySAObDpRw1AvvlDYkjjq0n3j/N4oRhyvIUvcFOCBtxCuV/ekuDdjGtXmgOM/4
+ gRzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=REz7MoTH38epZxTahZPoruXDnwdeM0XS1sTeM2Kiju8=;
- b=QYM8it5jSiIxGIEAvHRDP8yY5tf3/y5cFQuc6u5a09Jr0M+PXyYdRkbdZFHl6puZ4u
- 59VE2YRTBmZmc+8Bssoh8yiC8VC1CdiPk1GRxTr3St/m6dMnIt64+gQpDYZFKAVOC4nz
- nUsgxFG46vBu2bpL4NuoVqiezS8TUWKXZw93vxF/JbvOoAO4toTVAdAORT0DJuIK9yuc
- Ro434P1cXwS1fcCyrMLFIAdjsiVN84Q9vHR8PijetfscFA0idZuHcGy7+fBa3RwnxD5+
- 6U9M3dzhlDj0FP/MfMOMxkC0vQ/HElX/B5Prk3VdUzRISj6wHFXxpWMHWTKAy88oWH7C
- HVmw==
-X-Gm-Message-State: AOAM531runJ0eXbrPiWwT47j9MauZZ+ArXi4z3igGPjZGQg1qxlACc+I
- 1sPzbbzc/xLxfIVYH92HjR3Q/iEWQRalIQ==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a05:6a00:c91:b0:3ee:9bed:61be with SMTP
- id a17-20020a056a000c9100b003ee9bed61bemr660424pfv.37.1631057192097; Tue, 07
- Sep 2021 16:26:32 -0700 (PDT)
-Date: Tue,  7 Sep 2021 16:25:53 -0700
-In-Reply-To: <20210907232555.3268967-1-wuhaotsh@google.com>
-Message-Id: <20210907232555.3268967-3-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20210907232555.3268967-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.33.0.153.gba50c8fa24-goog
-Subject: [PATCH 2/4] hw/sd: add nuvoton MMC
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, f4bug@amsat.org, bin.meng@windriver.com, 
- qemu-block@nongnu.org, Shengtan Mao <stmao@google.com>,
- Chris Rauer <crauer@google.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=WX5JPikt36irdC4NJow8yFV5XtpQhzkCYa60XbduWqE=;
+ b=A+Zwz083R3Qijv04S96jgpwPk1AptYxth0aXcWnSXza4TQ/ckqbi1d4TuTfb7J581l
+ NhzKWiZZtxUSDx+N7aU4EZuZfz/NkL0QX8nHMWINvU1pD3gZUvlfW6tQq/UGGF3kokmx
+ FpOd4VV143PySPY3efpcfD0afA3Ln/dNroXNeSi5H8Wlggie+vEuVBb69xACc6tsRaMO
+ b1Q98LzJ2WIxkU592hZKzNim/y4+SUL6ZY3uTfQoPuybHfJnyX1b+5YBXd7DE59BUnVU
+ ZBZbNNRIExAF2XxhKWnmTBGCHXIvHzqH1n5FA7uqN/o4DBHr07psBj8vUI2kOhmmH05L
+ 7IZw==
+X-Gm-Message-State: AOAM532mU4Mdj5R7Qixl/CIs+F2SWntxlVyyc1/T76k3r3o/6IkGFk7Z
+ wztDWtDd6uYtXIu2e0+MGP1ffM4O9l47T8fRVdI=
+X-Received: by 2002:a05:6902:120a:: with SMTP id
+ s10mr2856056ybu.293.1631082563459; 
+ Tue, 07 Sep 2021 23:29:23 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210808013406.223506-1-linux@roeck-us.net>
+ <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
+ <a34c10d4-fc90-0186-3214-c3c5e77b4eea@roeck-us.net>
+ <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
+ <b5e43e87-c1bd-3265-298e-346413a22a82@roeck-us.net>
+ <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
+ <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
+ <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
+In-Reply-To: <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Wed, 8 Sep 2021 14:29:11 +0800
+Message-ID: <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
+Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
+To: Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
- envelope-from=3KPU3YQgKCAMzxkdrwvkjrrjoh.frpthpx-dupqrqjqx.ruj@flex--wuhaotsh.bounces.google.com;
- helo=mail-pf1-x449.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2JsEGVHoxgkr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eNN+U8rHFTCJ
 
-From: Shengtan Mao <stmao@google.com>
+On Sun, Sep 5, 2021 at 10:08 AM Guenter Roeck <linux@roeck-us.net> wrote:
+>
+> On 9/4/21 4:19 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On 9/5/21 1:06 AM, Bin Meng wrote:
+> >> On Sun, Sep 5, 2021 at 1:13 AM Guenter Roeck <linux@roeck-us.net> wrot=
+e:
+> >>>
+> >>> On 9/2/21 12:29 PM, Peter Maydell wrote:
+> >>>> On Thu, 2 Sept 2021 at 17:09, Guenter Roeck <linux@roeck-us.net> wro=
+te:
+> >>>>>
+> >>>>> On 9/2/21 8:58 AM, Peter Maydell wrote:
+> >>>>>> On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> wr=
+ote:
+> >>>>>>>
+> >>>>>>> The control register does not really have a means to deselect
+> >>>>>>> all chip selects directly. As result, CS is effectively never
+> >>>>>>> deselected, and connected flash chips fail to perform read
+> >>>>>>> operations since they don't get the expected chip select signals
+> >>>>>>> to reset their state machine.
+> >>>>>>>
+> >>>>>>> Normally and per controller documentation one would assume that
+> >>>>>>> chip select should be set whenever a transfer starts (XCH is
+> >>>>>>> set or the tx fifo is written into), and that it should be disabl=
+ed
+> >>>>>>> whenever a transfer is complete. However, that does not work in
+> >>>>>>> practice: attempts to implement this approach resulted in failure=
+s,
+> >>>>>>> presumably because a single transaction can be split into multipl=
+e
+> >>>>>>> transfers.
+> >>>>>>>
+> >>>>>>> At the same time, there is no explicit signal from the host indic=
+ating
+> >>>>>>> if chip select should be active or not. In the absence of such a =
+direct
+> >>>>>>> signal, use the burst length written into the control register to
+> >>>>>>> determine if an access is ongoing or not. Disable all chip select=
+s
+> >>>>>>> if the burst length field in the configuration register is set to=
+ 0,
+> >>>>>>> and (re-)enable chip select if a transfer is started. This is pos=
+sible
+> >>>>>>> because the Linux driver clears the burst length field whenever i=
+t
+> >>>>>>> prepares the controller for the next transfer.
+> >>>>>>> This solution  is less than perfect since it effectively only dis=
+ables
+> >>>>>>> chip select when initiating the next transfer, but it does work w=
+ith
+> >>>>>>> Linux and should otherwise do no harm.
+> >>>>>>>
+> >>>>>>> Stop complaining if the burst length field is set to a value of 0=
+,
+> >>>>>>> since that is done by Linux for every transfer.
+> >>>>>>>
+> >>>>>>> With this patch, a command line parameter such as "-drive
+> >>>>>>> file=3Dflash.sabre,format=3Draw,if=3Dmtd" can be used to instanti=
+ate the
+> >>>>>>> flash chip in the sabrelite emulation. Without this patch, the
+> >>>>>>> flash instantiates, but it only reads zeroes.
+> >>>>>>>
+> >>>>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> >>>>>>> ---
+> >>>>>>> I am not entirely happy with this solution, but it is the best I =
+was
+> >>>>>>> able to come up with. If anyone has a better idea, I'll be happy
+> >>>>>>> to give it a try.
+> >>>>>>>
+> >>>>>>>     hw/ssi/imx_spi.c | 17 +++++++----------
+> >>>>>>>     1 file changed, 7 insertions(+), 10 deletions(-)
+> >>>>>>>
+> >>>>>>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> >>>>>>> index 189423bb3a..7a093156bd 100644
+> >>>>>>> --- a/hw/ssi/imx_spi.c
+> >>>>>>> +++ b/hw/ssi/imx_spi.c
+> >>>>>>> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIState =
+*s)
+> >>>>>>>         DPRINTF("Begin: TX Fifo Size =3D %d, RX Fifo Size =3D %d\=
+n",
+> >>>>>>>                 fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s-=
+>rx_fifo));
+> >>>>>>>
+> >>>>>>> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
+> >>>>>>> +
+> >>>>>>>         while (!fifo32_is_empty(&s->tx_fifo)) {
+> >>>>>>>             int tx_burst =3D 0;
+> >>>>>>>
+> >>>>>>> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hwad=
+dr offset, uint64_t value,
+> >>>>>>>         case ECSPI_CONREG:
+> >>>>>>>             s->regs[ECSPI_CONREG] =3D value;
+> >>>>>>>
+> >>>>>>> -        burst =3D EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BU=
+RST_LENGTH) + 1;
+> >>>>>>> -        if (burst % 8) {
+> >>>>>>> -            qemu_log_mask(LOG_UNIMP,
+> >>>>>>> -                          "[%s]%s: burst length %d not supported=
+: rounding up to next multiple of 8\n",
+> >>>>>>> -                          TYPE_IMX_SPI, __func__, burst);
+> >>>>>>> -        }
+> >>>>>>
+> >>>>>> Why has this log message been removed ?
+> >>>>>
+> >>>>> What I wanted to do is:
+> >>>>>
+> >>>>> "Stop complaining if the burst length field is set to a value of 0,
+> >>>>>     since that is done by Linux for every transfer."
+> >>>>>
+> >>>>> What I did instead is to remove the message entirely.
+> >>>>>
+> >>>>> How about the rest of the patch ? Is it worth a resend with the mes=
+sage
+> >>>>> restored (except for burst size =3D=3D 0), or is it not acceptable =
+anyway ?
+> >>>>
+> >>>> I did the easy bit of the code review because answering this
+> >>>> question is probably a multiple-hour job...this is still on my
+> >>>> todo list, but I'm hoping somebody who understands the MIX
+> >>>> SPI device gets to it first.
+> >>>>
+> >>>
+> >>> Makes sense. Of course, it would be even better if someone can explai=
+n
+> >>> how this works on real hardware.
+> >>>
+> >>
+> >> I happened to notice this patch today. Better to cc people who once
+> >> worked on this part from "git blame" or "git log".
+> >
+> > Even better if you add yourself as designated reviewer ;)
+> >
+> > $ ./scripts/get_maintainer.pl -f hw/ssi/imx_spi.c
+> > Alistair Francis <alistair@alistair23.me> (maintainer:SSI)
+> > Peter Maydell <peter.maydell@linaro.org> (odd fixer:i.MX31 (kzm))
+> > Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.MX=
+6)
+> >
+> >>
+> >>> In this context, it would be useful to know if real SPI flash chips
+> >>> reset their state to idle under some conditions which are not covered
+> >>> by the current code in hw/block/m25p80.c. Maybe the real problem is
+> >>> as simple as that code setting data_read_loop when it should not,
+> >>> or that it doesn't reset that flag when it should (unless I am missin=
+g
+> >>> something, the flag is currently only reset by disabling chip select)=
+.
+> >
+> > Plausible hypothesis.
+> >
+>
+> Possibly. Note that I did check the flash chip specification, but I don't
+> see a notable difference to the qemu implementation. But then, again,
+> I may be missing something.
+>
 
-Signed-off-by: Shengtan Mao <stmao@google.com>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Chris Rauer <crauer@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
----
- hw/arm/npcm7xx.c              |  12 +++-
- hw/sd/meson.build             |   1 +
- hw/sd/npcm7xx_sdhci.c         | 131 ++++++++++++++++++++++++++++++++++
- include/hw/arm/npcm7xx.h      |   2 +
- include/hw/sd/npcm7xx_sdhci.h |  65 +++++++++++++++++
- 5 files changed, 210 insertions(+), 1 deletion(-)
- create mode 100644 hw/sd/npcm7xx_sdhci.c
- create mode 100644 include/hw/sd/npcm7xx_sdhci.h
++Xuzhou Cheng who once worked on imx_spi for some comments
 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 2ab0080e0b..878c2208e0 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -63,6 +63,8 @@
- #define NPCM7XX_ROM_BA          (0xffff0000)
- #define NPCM7XX_ROM_SZ          (64 * KiB)
- 
-+/* SDHCI Modules */
-+#define NPCM7XX_MMC_BA          (0xf0842000)
- 
- /* Clock configuration values to be fixed up when bypassing bootloader */
- 
-@@ -83,6 +85,7 @@ enum NPCM7xxInterrupt {
-     NPCM7XX_UART3_IRQ,
-     NPCM7XX_EMC1RX_IRQ          = 15,
-     NPCM7XX_EMC1TX_IRQ,
-+    NPCM7XX_MMC_IRQ             = 26,
-     NPCM7XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
-     NPCM7XX_TIMER1_IRQ,
-     NPCM7XX_TIMER2_IRQ,
-@@ -443,6 +446,8 @@ static void npcm7xx_init(Object *obj)
-     for (i = 0; i < ARRAY_SIZE(s->emc); i++) {
-         object_initialize_child(obj, "emc[*]", &s->emc[i], TYPE_NPCM7XX_EMC);
-     }
-+
-+    object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
- }
- 
- static void npcm7xx_realize(DeviceState *dev, Error **errp)
-@@ -707,6 +712,12 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-                            &error_abort);
-     memory_region_add_subregion(get_system_memory(), NPCM7XX_ROM_BA, &s->irom);
- 
-+    /* SDHCI */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->mmc), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc), 0, NPCM7XX_MMC_BA);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc), 0,
-+            npcm7xx_irq(s, NPCM7XX_MMC_IRQ));
-+
-     create_unimplemented_device("npcm7xx.shm",          0xc0001000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * KiB);
-@@ -736,7 +747,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.usbd[8]",      0xf0838000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.usbd[9]",      0xf0839000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.sd",           0xf0840000,   8 * KiB);
--    create_unimplemented_device("npcm7xx.mmc",          0xf0842000,   8 * KiB);
-     create_unimplemented_device("npcm7xx.pcimbx",       0xf0848000, 512 * KiB);
-     create_unimplemented_device("npcm7xx.aes",          0xf0858000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.des",          0xf0859000,   4 * KiB);
-diff --git a/hw/sd/meson.build b/hw/sd/meson.build
-index f1ce357a3b..807ca07b7c 100644
---- a/hw/sd/meson.build
-+++ b/hw/sd/meson.build
-@@ -9,4 +9,5 @@ softmmu_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_mmci.c'))
- softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_sdhost.c'))
- softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_sdhci.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sdhost.c'))
-+softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_sdhci.c'))
- softmmu_ss.add(when: 'CONFIG_CADENCE_SDHCI', if_true: files('cadence_sdhci.c'))
-diff --git a/hw/sd/npcm7xx_sdhci.c b/hw/sd/npcm7xx_sdhci.c
-new file mode 100644
-index 0000000000..85cccdc485
---- /dev/null
-+++ b/hw/sd/npcm7xx_sdhci.c
-@@ -0,0 +1,131 @@
-+/*
-+ * NPCM7xx SD-3.0 / eMMC-4.51 Host Controller
-+ *
-+ * Copyright (c) 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "hw/sd/npcm7xx_sdhci.h"
-+#include "sdhci-internal.h"
-+
-+static uint64_t npcm7xx_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    NPCM7xxSDHCIState *s = opaque;
-+    uint64_t val = 0;
-+
-+    switch (addr) {
-+    case NPCM7XX_PRSTVALS_0:
-+    case NPCM7XX_PRSTVALS_1:
-+    case NPCM7XX_PRSTVALS_2:
-+    case NPCM7XX_PRSTVALS_3:
-+    case NPCM7XX_PRSTVALS_4:
-+    case NPCM7XX_PRSTVALS_5:
-+        val = (uint64_t)s->regs.prstvals[(addr - NPCM7XX_PRSTVALS_0) / 2];
-+        break;
-+    case NPCM7XX_BOOTTOCTRL:
-+        val = (uint64_t)s->regs.boottoctrl;
-+        break;
-+    default:
-+        val = (uint64_t)s->sdhci.io_ops->read(&s->sdhci, addr, size);
-+    }
-+
-+    return val;
-+}
-+
-+static void npcm7xx_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
-+                                unsigned int size)
-+{
-+    NPCM7xxSDHCIState *s = opaque;
-+
-+    switch (addr) {
-+    case NPCM7XX_BOOTTOCTRL:
-+        s->regs.boottoctrl = (uint32_t)val;
-+        break;
-+    default:
-+        s->sdhci.io_ops->write(&s->sdhci, addr, val, size);
-+    }
-+}
-+
-+static const MemoryRegionOps npcm7xx_sdhci_ops = {
-+    .read = npcm7xx_sdhci_read,
-+    .write = npcm7xx_sdhci_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {.min_access_size = 1, .max_access_size = 4, .unaligned = false},
-+};
-+
-+static void npcm7xx_sdhci_realize(DeviceState *dev, Error **errp)
-+{
-+    NPCM7xxSDHCIState *s = NPCM7XX_SDHCI(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    SysBusDevice *sbd_sdhci = SYS_BUS_DEVICE(&s->sdhci);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &npcm7xx_sdhci_ops, s,
-+                          TYPE_NPCM7XX_SDHCI, 0x1000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_realize(sbd_sdhci, errp);
-+
-+    /* propagate irq and "sd-bus" from generic-sdhci */
-+    sysbus_pass_irq(sbd, sbd_sdhci);
-+    s->bus = qdev_get_child_bus(DEVICE(sbd_sdhci), "sd-bus");
-+}
-+
-+static void npcm7xx_sdhci_reset(DeviceState *dev)
-+{
-+    NPCM7xxSDHCIState *s = NPCM7XX_SDHCI(dev);
-+    device_cold_reset(DEVICE(&s->sdhci));
-+    s->regs.boottoctrl = 0;
-+
-+    s->sdhci.prnsts = NPCM7XX_PRSNTS_RESET;
-+    s->sdhci.blkgap = NPCM7XX_BLKGAP_RESET;
-+    s->sdhci.capareg = NPCM7XX_CAPAB_RESET;
-+    s->sdhci.maxcurr = NPCM7XX_MAXCURR_RESET;
-+    s->sdhci.version = NPCM7XX_HCVER_RESET;
-+
-+    memset(s->regs.prstvals, 0, NPCM7XX_PRSTVALS_SIZE * sizeof(uint16_t));
-+    s->regs.prstvals[0] = NPCM7XX_PRSTVALS_0_RESET;
-+    s->regs.prstvals[1] = NPCM7XX_PRSTVALS_1_RESET;
-+    s->regs.prstvals[3] = NPCM7XX_PRSTVALS_3_RESET;
-+}
-+
-+static void npcm7xx_sdhci_class_init(ObjectClass *classp, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(classp);
-+
-+    dc->desc = "NPCM7xx SD/eMMC Host Controller";
-+    dc->realize = npcm7xx_sdhci_realize;
-+    dc->reset = npcm7xx_sdhci_reset;
-+}
-+
-+static void npcm7xx_sdhci_instance_init(Object *obj)
-+{
-+    NPCM7xxSDHCIState *s = NPCM7XX_SDHCI(obj);
-+
-+    object_initialize_child(OBJECT(s), "generic-sdhci", &s->sdhci,
-+                            TYPE_SYSBUS_SDHCI);
-+}
-+
-+static TypeInfo npcm7xx_sdhci_info = {
-+    .name = TYPE_NPCM7XX_SDHCI,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(NPCM7xxSDHCIState),
-+    .instance_init = npcm7xx_sdhci_instance_init,
-+    .class_init = npcm7xx_sdhci_class_init,
-+};
-+
-+static void npcm7xx_sdhci_register_types(void)
-+{
-+    type_register_static(&npcm7xx_sdhci_info);
-+}
-+
-+type_init(npcm7xx_sdhci_register_types)
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 61ecc57ab9..ce593235d9 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -35,6 +35,7 @@
- #include "hw/usb/hcd-ehci.h"
- #include "hw/usb/hcd-ohci.h"
- #include "target/arm/cpu.h"
-+#include "hw/sd/npcm7xx_sdhci.h"
- 
- #define NPCM7XX_MAX_NUM_CPUS    (2)
- 
-@@ -103,6 +104,7 @@ typedef struct NPCM7xxState {
-     OHCISysBusState     ohci;
-     NPCM7xxFIUState     fiu[2];
-     NPCM7xxEMCState     emc[2];
-+    NPCM7xxSDHCIState   mmc;
- } NPCM7xxState;
- 
- #define TYPE_NPCM7XX    "npcm7xx"
-diff --git a/include/hw/sd/npcm7xx_sdhci.h b/include/hw/sd/npcm7xx_sdhci.h
-new file mode 100644
-index 0000000000..4d132f521b
---- /dev/null
-+++ b/include/hw/sd/npcm7xx_sdhci.h
-@@ -0,0 +1,65 @@
-+/*
-+ * NPCM7xx SD-3.0 / eMMC-4.51 Host Controller
-+ *
-+ * Copyright (c) 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#ifndef NPCM7XX_SDHCI_H
-+#define NPCM7XX_SDHCI_H
-+
-+#include "hw/sd/sdhci.h"
-+#include "qom/object.h"
-+
-+#define TYPE_NPCM7XX_SDHCI "npcm7xx.sdhci"
-+#define NPCM7XX_REG_SIZE 0x100
-+
-+#define NPCM7XX_PRSTVALS_SIZE 6
-+#define NPCM7XX_PRSTVALS 0x60
-+#define NPCM7XX_PRSTVALS_0 0x60
-+#define NPCM7XX_PRSTVALS_1 0x62
-+#define NPCM7XX_PRSTVALS_2 0x64
-+#define NPCM7XX_PRSTVALS_3 0x66
-+#define NPCM7XX_PRSTVALS_4 0x68
-+#define NPCM7XX_PRSTVALS_5 0x6A
-+#define NPCM7XX_BOOTTOCTRL 0x70
-+
-+#define NPCM7XX_PRSNTS_RESET 0x04A00000
-+#define NPCM7XX_BLKGAP_RESET 0x80
-+#define NPCM7XX_CAPAB_RESET 0x0100200161EE0399
-+#define NPCM7XX_MAXCURR_RESET 0x0000000000000005
-+#define NPCM7XX_HCVER_RESET 0x1002
-+
-+#define NPCM7XX_PRSTVALS_0_RESET 0x0040
-+#define NPCM7XX_PRSTVALS_1_RESET 0x0001
-+#define NPCM7XX_PRSTVALS_3_RESET 0x0001
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxSDHCIState, NPCM7XX_SDHCI)
-+
-+typedef struct NPCM7xxRegs {
-+    /* Preset Values Register Field, read-only */
-+    uint16_t prstvals[NPCM7XX_PRSTVALS_SIZE];
-+    /* Boot Timeout Control Register, read-write */
-+    uint32_t boottoctrl;
-+} NPCM7xxRegisters;
-+
-+typedef struct NPCM7xxSDHCIState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion iomem;
-+    BusState *bus;
-+    NPCM7xxRegisters regs;
-+
-+    SDHCIState sdhci;
-+} NPCM7xxSDHCIState;
-+
-+#endif /* NPCM7XX_SDHCI_H */
--- 
-2.33.0.153.gba50c8fa24-goog
-
+Regards,
+Bin

@@ -1,296 +1,173 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp153700lfb;
-        Tue, 7 Sep 2021 23:33:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw5CtBLhEOI9lHMdglzVXZnKWwD9wTRP3D9v2JgJFXLL/ZZg3EEhU7iUSQZcE/wsLu37O9O
-X-Received: by 2002:a05:6638:329d:: with SMTP id f29mr2180396jav.61.1631082801751;
-        Tue, 07 Sep 2021 23:33:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631082801; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp180058lfb;
+        Wed, 8 Sep 2021 00:16:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAmeGmLgifbjuqBpt6ha5eZOzajoZh97Wlu34gsWK64xI63JGqYdKESy8MdnJatW0TwQXW
+X-Received: by 2002:a17:906:fc7:: with SMTP id c7mr2644274ejk.333.1631085363751;
+        Wed, 08 Sep 2021 00:16:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631085363; cv=none;
         d=google.com; s=arc-20160816;
-        b=BSNy95L3guDc0VCtRvAY4xtB/gYn0EfGfhrabcITvMLDRvwXlwPpgVUsI96hnAiyJy
-         L8ANhbEnHVQI/IqS1RokLSkhgS1npouDxs9nE2jQZ/3lS6SZqERmm1Hz6yhIIJ9DItxq
-         Cu8QmqnTO5o1Y/X2XBkYnLQ1tdnOxpn5SM/8bLtj2IbASf2ZzwLJ6nXHiedNCfBLVQAQ
-         3NfUp92qYJwio5nknAhVrFUKb6wi4CtBO21ycknOsccHymxrpHGmks0+NAk+Jd0s7MjH
-         Ft/JmfS1Zch6UtAOi77e1z8CUo1DvgagrAaTs5TRKJaXqok2sDu7S7NWIBH9i9rHX/9b
-         MRuw==
+        b=YIf1iCIEhMuonzCjOL5eZ7BOZwBh14whn9qg78ERAVyHehdBXwigUIDAyyguwYvsg2
+         MNXgTGhFOCu4e8hGv2Ul0ebQTx2HJPEdSxMPX7v+BorErdPg15PkLlK7K5D6aArlLLC0
+         bfjkMwEd6Qq9BimP3QB+sJavmAPSSol9YpACmW5xBnmY2BMlF+f8+zzYL9BWzpiIUOTu
+         AyJxp12hCDqjzqR5rBJeRH9eT0ntNFzcPZ89UXPTGn8vPNXCzfNc1wvsoUvjRy7Ftxzn
+         E2se7SaxDoouUFCJtyg2++14kBTjw+WabVfZH+9M0o7ieo7kvtwgRe4LCS4dXfTj5CSU
+         RfsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=TJG37CSyB5T7BiazqC5vbVMPohxL+gsLERVCYp3Gtwg=;
-        b=J5BQHuwtMzXlwOhoDZh+bTdTaHcYzv1CmNCGsPjinOBSRWqhlK4ISYG4AiGZlTwZtR
-         S4ktVRzg5UYOF8ILWZvQit30aNTJNgzEhxCpilEhyMiAlTO3O9w+GABAdvKrQ83hsD4v
-         OiM3NCuXwrjyiX7p3iCiVuBf/ptkq1lcpO/UVmRrb0zcLaVVvrW0FVaeU4E08UqKRa1X
-         GUgTqGFKD/rjcEwxnhOqbVxsnMg/PHwZLWT0CW4MoAulkpBtNuqY4ulf9g0cqM754pTs
-         1ERL6RhDe24PmTdnfRFUW5Mm2qADe5b+P/GBFzBReu9o1LQG7U+MPwfn4JDcei7L/QsW
-         ie5A==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=rYNJzjFh8jIWFpD2yeR88/tXIIZPuFUG/CAquxgxKVg=;
+        b=godroRmwUZXEyolDbpGK1r7BXwpmyY/o7X9odA2h6z7JpvJnsM1Zen+EAQmJm1oSRp
+         uWTlWXh60uopbbpeGDZQCr3CRI4X2L4gIjAoCoHmdsUWOeTxDxJvv+jTt1i9ydBuf9mL
+         SdOu49tsjkBzLYXGUUnob0fHCljEXvl5nHevZsqeiSFQys4oWsL217LgpUUsQXuLSUn3
+         KGNWMb7MZRmXR0XTn90JaQSAuhZPlqmmY1+E2A1BWSA/1iMkK+sFiJ2yOQstRaX9vn13
+         5PbDZ1H7x20JMZV/gYcs5+bk12MOx3kElJ1i8MTwFywBcPgp1JROHBbDDhlQofQocPaO
+         u7Dg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="fKLb//EB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h199si1139803iof.50.2021.09.07.23.33.21
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HxRO2DXQ;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id js20si1378656ejc.216.2021.09.08.00.16.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 23:33:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 08 Sep 2021 00:16:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="fKLb//EB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56366 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNr97-0002fd-2m
-	for alex.bennee@linaro.org; Wed, 08 Sep 2021 02:33:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52856)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mNr7C-0000Jm-0S; Wed, 08 Sep 2021 02:31:22 -0400
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:38567)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mNr77-00011q-Vo; Wed, 08 Sep 2021 02:31:21 -0400
-Received: by mail-yb1-xb2f.google.com with SMTP id v10so2094343ybm.5;
- Tue, 07 Sep 2021 23:31:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=TJG37CSyB5T7BiazqC5vbVMPohxL+gsLERVCYp3Gtwg=;
- b=fKLb//EBJD+b3mtjiOqy96oRDZaUS1aXNoqrbpegZIC1cWjXRyVe2GIm2WOf27GY3s
- vokqEiHapj9SjsMmwTVPdypGv+AP6JCK17siTn7AGIwyncUcxRs6Ik5CxJ32pYE6I9xf
- crM+DtmZvEETqSciB8sUhtHaETndq4svdK5l7qrzXiWehd2Tyijap7TnTN81JgdrILhT
- 1LeXeIg2+bX1HOAHJo/HpOuQqPzXjSOwLsM6mvzo7tgKo96u2zPdlE2htH2hK3AvvRy9
- QBtF2Te5kYlrvtb+pTjAkK/GH1jlMjQ0XPQJGkAMGBSaQz/UUT2uRVew6USepcrvrIEt
- KuQg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HxRO2DXQ;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1631085362;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=rYNJzjFh8jIWFpD2yeR88/tXIIZPuFUG/CAquxgxKVg=;
+	b=HxRO2DXQTTHIYhRZqdR+ZysgvvETa+gL2FRq8mT86xT7FAOVE2QJctoi6nmVqZda5fv3A1
+	mTzwrBx8dWdyXqCD6mp0FmjGUZTKA+8znzbPSVs7f7COnscbAZmVIkFgnIxiHtOAlADL/b
+	31jmAv261lVx0l0iOxFFFSOj1+Au6TA=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-25-ZM4gXXT_NVKzzzIgZFUsKQ-1; Wed, 08 Sep 2021 03:16:01 -0400
+X-MC-Unique: ZM4gXXT_NVKzzzIgZFUsKQ-1
+Received: by mail-ej1-f69.google.com with SMTP id o14-20020a1709062e8e00b005d37183e041so531770eji.21
+        for <alex.bennee@linaro.org>; Wed, 08 Sep 2021 00:16:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=TJG37CSyB5T7BiazqC5vbVMPohxL+gsLERVCYp3Gtwg=;
- b=cKX6kk2MwcSQZOLLtExPSwuB3uACcE+NykPuvZmUQuLXITPx50H93M657lpoHB7nVM
- cp1bbcJWhjGtXPe2SccX+59I4xaEQVGj4RCsNAlMMLQtxvWfxAwcRiZTlp9OoZfcmWPB
- arxtHk0Kj+jPDUMKnAzP1hVHnNyNfCFC+XdqFKBRpdsPcia/7snmJ/zTpGpJU9ImthZm
- /KAY7uXmCNVBFy9oy2h2P2Y67M2e4KhAVZyLcGC4e9rUGvP5pW++UBhMIN1oxMkPhHWL
- 9r/5hmfrSBWr2IFsqpvu9qCoFEI88pzRxFc79lrYdswoO55rH69JmfdHQhoCpA4zrjia
- KDeQ==
-X-Gm-Message-State: AOAM532KAV71bZ85ykY02W0N95erNPRJrAhckQMsgbYaPWPlP42AMUMs
- QzDEWa6N4fRFKboS2eM2F/zCtT9oUpKR2zIboYk=
-X-Received: by 2002:a25:76c7:: with SMTP id r190mr3059134ybc.467.1631082675328; 
- Tue, 07 Sep 2021 23:31:15 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=+HK4DwjshowkvDWESjpm/l2pWLn+JpLdOS6SO9jRqCE=;
+        b=jTnOKyB+/JG2dDrah89mSR1kB8pqLAKE1bmLwG6JlQqRKd1lRPj3ghJLqo3pJZ/fii
+         gVpI3HmdgnCywN15f9MoIuevYD/iBUzKL1c8YWCPa34p6CZAlCNQgKtOAgnOp1YoCqBm
+         RwFGr3Sn7okyc00JPnnnLytYgZzo7SG3YD4dWRMigoHPmhgz4P/m/hC0THhCwAJ+bd5g
+         EpdceO0ixjWmPPz1sfjyU3SIb7UAiubeQ1Y3+jSIIhGPbtWlxickdwgn0E0MEKTwfXVP
+         ggP2BNA2XqPDJ2/72O5MTO4nturL/qJyLrq8dX3TWfdSAzccjLkiRXUV+1tspHvCHXDM
+         wweA==
+X-Gm-Message-State: AOAM532IzeyKcMkDgbD0fI6wKKyr1r9Rpp6PPf9eGDZ4ztdzZrgoFqPS
+	RkDfK+v5HUiShUBj0wH3dXDvZ0vaCDkeZKOAHAlQQB49y5PosFVKa3Q+GBy2JwN5xeGq0HZyhy2
+	iR1pPsPrHI61F/OQs
+X-Received: by 2002:a17:906:4452:: with SMTP id i18mr2436708ejp.374.1631085360453;
+        Wed, 08 Sep 2021 00:16:00 -0700 (PDT)
+X-Received: by 2002:a17:906:4452:: with SMTP id i18mr2436690ejp.374.1631085360239;
+        Wed, 08 Sep 2021 00:16:00 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id qq16sm506918ejb.120.2021.09.08.00.15.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Sep 2021 00:15:59 -0700 (PDT)
+Date: Wed, 8 Sep 2021 09:15:58 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Hanna Reitz <hreitz@redhat.com>, Laurent Vivier
+ <laurent@vivier.eu>, Alexandre Iooss <erdnaxe@crans.org>, Alex
+ =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Michael Roth
+ <michael.roth@amd.com>, Zhang Chen <chen.zhang@intel.com>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Richard Henderson
+ <richard.henderson@linaro.org>, Alex Williamson
+ <alex.williamson@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, Markus
+ Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, Stefan Weil
+ <sw@weilnetz.de>, John Snow <jsnow@redhat.com>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Li Zhijian <lizhijian@cn.fujitsu.com>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org, Helge Deller
+ <deller@gmx.de>, "Michael S. Tsirkin" <mst@redhat.com>, David Gibson
+ <david@gibson.dropbear.id.au>, Peter Xu <peterx@redhat.com>, "Gonglei
+ (Arei)" <arei.gonglei@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>, Fam
+ Zheng <fam@euphon.net>, Jason Wang <jasowang@redhat.com>, Vladimir
+ Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, Christian Schoenebeck
+ <qemu_oss@crudebyte.com>, Kevin Wolf <kwolf@redhat.com>, Yuval Shaia
+ <yuval.shaia.ml@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Greg Kurz
+ <groug@kaod.org>, qemu-ppc@nongnu.org, David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH 08/28] hw/acpi: Avoid truncating acpi_data_len() to
+ 32-bit
+Message-ID: <20210908091558.0a00cd02@redhat.com>
+In-Reply-To: <20210903110702.588291-9-philmd@redhat.com>
+References: <20210903110702.588291-1-philmd@redhat.com>
+	<20210903110702.588291-9-philmd@redhat.com>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20210808013406.223506-1-linux@roeck-us.net>
- <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
- <a34c10d4-fc90-0186-3214-c3c5e77b4eea@roeck-us.net>
- <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
- <b5e43e87-c1bd-3265-298e-346413a22a82@roeck-us.net>
- <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
- <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
- <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
- <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
-In-Reply-To: <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Wed, 8 Sep 2021 14:31:03 +0800
-Message-ID: <CAEUhbmVfFRdbtu7yWUauO6sd0QNhoH6tuTAFA2PMxZp5P7+awA@mail.gmail.com>
-Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
-To: Guenter Roeck <linux@roeck-us.net>,
- Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Content-Type: text/plain; charset="UTF-8"
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: udjYxWmExEHE
+X-TUID: IoHezPYEEW1c
 
-On Wed, Sep 8, 2021 at 2:29 PM Bin Meng <bmeng.cn@gmail.com> wrote:
->
-> On Sun, Sep 5, 2021 at 10:08 AM Guenter Roeck <linux@roeck-us.net> wrote:
-> >
-> > On 9/4/21 4:19 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > > On 9/5/21 1:06 AM, Bin Meng wrote:
-> > >> On Sun, Sep 5, 2021 at 1:13 AM Guenter Roeck <linux@roeck-us.net> wr=
-ote:
-> > >>>
-> > >>> On 9/2/21 12:29 PM, Peter Maydell wrote:
-> > >>>> On Thu, 2 Sept 2021 at 17:09, Guenter Roeck <linux@roeck-us.net> w=
-rote:
-> > >>>>>
-> > >>>>> On 9/2/21 8:58 AM, Peter Maydell wrote:
-> > >>>>>> On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> =
-wrote:
-> > >>>>>>>
-> > >>>>>>> The control register does not really have a means to deselect
-> > >>>>>>> all chip selects directly. As result, CS is effectively never
-> > >>>>>>> deselected, and connected flash chips fail to perform read
-> > >>>>>>> operations since they don't get the expected chip select signal=
-s
-> > >>>>>>> to reset their state machine.
-> > >>>>>>>
-> > >>>>>>> Normally and per controller documentation one would assume that
-> > >>>>>>> chip select should be set whenever a transfer starts (XCH is
-> > >>>>>>> set or the tx fifo is written into), and that it should be disa=
-bled
-> > >>>>>>> whenever a transfer is complete. However, that does not work in
-> > >>>>>>> practice: attempts to implement this approach resulted in failu=
-res,
-> > >>>>>>> presumably because a single transaction can be split into multi=
-ple
-> > >>>>>>> transfers.
-> > >>>>>>>
-> > >>>>>>> At the same time, there is no explicit signal from the host ind=
-icating
-> > >>>>>>> if chip select should be active or not. In the absence of such =
-a direct
-> > >>>>>>> signal, use the burst length written into the control register =
-to
-> > >>>>>>> determine if an access is ongoing or not. Disable all chip sele=
-cts
-> > >>>>>>> if the burst length field in the configuration register is set =
-to 0,
-> > >>>>>>> and (re-)enable chip select if a transfer is started. This is p=
-ossible
-> > >>>>>>> because the Linux driver clears the burst length field whenever=
- it
-> > >>>>>>> prepares the controller for the next transfer.
-> > >>>>>>> This solution  is less than perfect since it effectively only d=
-isables
-> > >>>>>>> chip select when initiating the next transfer, but it does work=
- with
-> > >>>>>>> Linux and should otherwise do no harm.
-> > >>>>>>>
-> > >>>>>>> Stop complaining if the burst length field is set to a value of=
- 0,
-> > >>>>>>> since that is done by Linux for every transfer.
-> > >>>>>>>
-> > >>>>>>> With this patch, a command line parameter such as "-drive
-> > >>>>>>> file=3Dflash.sabre,format=3Draw,if=3Dmtd" can be used to instan=
-tiate the
-> > >>>>>>> flash chip in the sabrelite emulation. Without this patch, the
-> > >>>>>>> flash instantiates, but it only reads zeroes.
-> > >>>>>>>
-> > >>>>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> > >>>>>>> ---
-> > >>>>>>> I am not entirely happy with this solution, but it is the best =
-I was
-> > >>>>>>> able to come up with. If anyone has a better idea, I'll be happ=
-y
-> > >>>>>>> to give it a try.
-> > >>>>>>>
-> > >>>>>>>     hw/ssi/imx_spi.c | 17 +++++++----------
-> > >>>>>>>     1 file changed, 7 insertions(+), 10 deletions(-)
-> > >>>>>>>
-> > >>>>>>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> > >>>>>>> index 189423bb3a..7a093156bd 100644
-> > >>>>>>> --- a/hw/ssi/imx_spi.c
-> > >>>>>>> +++ b/hw/ssi/imx_spi.c
-> > >>>>>>> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIStat=
-e *s)
-> > >>>>>>>         DPRINTF("Begin: TX Fifo Size =3D %d, RX Fifo Size =3D %=
-d\n",
-> > >>>>>>>                 fifo32_num_used(&s->tx_fifo), fifo32_num_used(&=
-s->rx_fifo));
-> > >>>>>>>
-> > >>>>>>> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
-> > >>>>>>> +
-> > >>>>>>>         while (!fifo32_is_empty(&s->tx_fifo)) {
-> > >>>>>>>             int tx_burst =3D 0;
-> > >>>>>>>
-> > >>>>>>> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hw=
-addr offset, uint64_t value,
-> > >>>>>>>         case ECSPI_CONREG:
-> > >>>>>>>             s->regs[ECSPI_CONREG] =3D value;
-> > >>>>>>>
-> > >>>>>>> -        burst =3D EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_=
-BURST_LENGTH) + 1;
-> > >>>>>>> -        if (burst % 8) {
-> > >>>>>>> -            qemu_log_mask(LOG_UNIMP,
-> > >>>>>>> -                          "[%s]%s: burst length %d not support=
-ed: rounding up to next multiple of 8\n",
-> > >>>>>>> -                          TYPE_IMX_SPI, __func__, burst);
-> > >>>>>>> -        }
-> > >>>>>>
-> > >>>>>> Why has this log message been removed ?
-> > >>>>>
-> > >>>>> What I wanted to do is:
-> > >>>>>
-> > >>>>> "Stop complaining if the burst length field is set to a value of =
-0,
-> > >>>>>     since that is done by Linux for every transfer."
-> > >>>>>
-> > >>>>> What I did instead is to remove the message entirely.
-> > >>>>>
-> > >>>>> How about the rest of the patch ? Is it worth a resend with the m=
-essage
-> > >>>>> restored (except for burst size =3D=3D 0), or is it not acceptabl=
-e anyway ?
-> > >>>>
-> > >>>> I did the easy bit of the code review because answering this
-> > >>>> question is probably a multiple-hour job...this is still on my
-> > >>>> todo list, but I'm hoping somebody who understands the MIX
-> > >>>> SPI device gets to it first.
-> > >>>>
-> > >>>
-> > >>> Makes sense. Of course, it would be even better if someone can expl=
-ain
-> > >>> how this works on real hardware.
-> > >>>
-> > >>
-> > >> I happened to notice this patch today. Better to cc people who once
-> > >> worked on this part from "git blame" or "git log".
-> > >
-> > > Even better if you add yourself as designated reviewer ;)
-> > >
-> > > $ ./scripts/get_maintainer.pl -f hw/ssi/imx_spi.c
-> > > Alistair Francis <alistair@alistair23.me> (maintainer:SSI)
-> > > Peter Maydell <peter.maydell@linaro.org> (odd fixer:i.MX31 (kzm))
-> > > Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.=
-MX6)
-> > >
-> > >>
-> > >>> In this context, it would be useful to know if real SPI flash chips
-> > >>> reset their state to idle under some conditions which are not cover=
-ed
-> > >>> by the current code in hw/block/m25p80.c. Maybe the real problem is
-> > >>> as simple as that code setting data_read_loop when it should not,
-> > >>> or that it doesn't reset that flag when it should (unless I am miss=
-ing
-> > >>> something, the flag is currently only reset by disabling chip selec=
-t).
-> > >
-> > > Plausible hypothesis.
-> > >
-> >
-> > Possibly. Note that I did check the flash chip specification, but I don=
-'t
-> > see a notable difference to the qemu implementation. But then, again,
-> > I may be missing something.
-> >
->
-> +Xuzhou Cheng who once worked on imx_spi for some comments
+On Fri,  3 Sep 2021 13:06:42 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-Actually adding him this time :)
+> acpi_data_len() returns an unsigned type, which might be bigger
+> than 32-bit (although it is unlikely such value is returned).
+> Hold the returned value in an 'unsigned' type to avoid unlikely
+> size truncation.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  hw/arm/virt-acpi-build.c | 2 +-
+>  hw/i386/acpi-build.c     | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 037cc1fd82c..95543d43e2a 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -885,7 +885,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuild=
+Tables *tables)
+> =20
+>  static void acpi_ram_update(MemoryRegion *mr, GArray *data)
+>  {
+> -    uint32_t size =3D acpi_data_len(data);
+> +    unsigned size =3D acpi_data_len(data);
+> =20
+>      /* Make sure RAM size is correct - in case it got changed
+>       * e.g. by migration */
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index a33ac8b91e1..aa269914b49 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2660,7 +2660,7 @@ void acpi_build(AcpiBuildTables *tables, MachineSta=
+te *machine)
+> =20
+>  static void acpi_ram_update(MemoryRegion *mr, GArray *data)
+>  {
+> -    uint32_t size =3D acpi_data_len(data);
+> +    unsigned size =3D acpi_data_len(data);
+> =20
+>      /* Make sure RAM size is correct - in case it got changed e.g. by mi=
+gration */
+>      memory_region_ram_resize(mr, size, &error_abort);
+> @@ -2783,7 +2783,7 @@ void acpi_setup(void)
+>           * Though RSDP is small, its contents isn't immutable, so
+>           * we'll update it along with the rest of tables on guest access=
+.
+>           */
+> -        uint32_t rsdp_size =3D acpi_data_len(tables.rsdp);
+> +        unsigned rsdp_size =3D acpi_data_len(tables.rsdp);
+> =20
+>          build_state->rsdp =3D g_memdup(tables.rsdp->data, rsdp_size);
+>          fw_cfg_add_file_callback(x86ms->fw_cfg, ACPI_BUILD_RSDP_FILE,

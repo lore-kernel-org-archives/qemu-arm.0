@@ -1,81 +1,81 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp180058lfb;
-        Wed, 8 Sep 2021 00:16:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxAmeGmLgifbjuqBpt6ha5eZOzajoZh97Wlu34gsWK64xI63JGqYdKESy8MdnJatW0TwQXW
-X-Received: by 2002:a17:906:fc7:: with SMTP id c7mr2644274ejk.333.1631085363751;
-        Wed, 08 Sep 2021 00:16:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631085363; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp180407lfb;
+        Wed, 8 Sep 2021 00:16:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyRQOt8hlVoTIqOjDyqvgktBlNhe2jUcdLCh2bl34qLZMsdLNurprLDSNPRg2BxSWIK4NA
+X-Received: by 2002:a17:907:7704:: with SMTP id kw4mr2593326ejc.23.1631085395213;
+        Wed, 08 Sep 2021 00:16:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631085395; cv=none;
         d=google.com; s=arc-20160816;
-        b=YIf1iCIEhMuonzCjOL5eZ7BOZwBh14whn9qg78ERAVyHehdBXwigUIDAyyguwYvsg2
-         MNXgTGhFOCu4e8hGv2Ul0ebQTx2HJPEdSxMPX7v+BorErdPg15PkLlK7K5D6aArlLLC0
-         bfjkMwEd6Qq9BimP3QB+sJavmAPSSol9YpACmW5xBnmY2BMlF+f8+zzYL9BWzpiIUOTu
-         AyJxp12hCDqjzqR5rBJeRH9eT0ntNFzcPZ89UXPTGn8vPNXCzfNc1wvsoUvjRy7Ftxzn
-         E2se7SaxDoouUFCJtyg2++14kBTjw+WabVfZH+9M0o7ieo7kvtwgRe4LCS4dXfTj5CSU
-         RfsA==
+        b=XaEJTTZs6IP1Ty6fc1mC/NiHATLfCcl47vQA39ZQG89uzWg8XwgEhTEE7xvnxpaLbS
+         i81rnLxcHZdOx5PzHpnRSG3FuG5zm9lvdPQDfYf4eRL8fgFOTQVIfQtMgLJWhChIaEJV
+         oFpnNLzhPjssywg2dQJKdjYwrD0YXLm+PzargknXv3fYOFAgmZoOIW789rlW74wAhlQ3
+         xNhs10DmoInbUjkPdlZKNDjouRUUcz4ba6Xt59EfKhQvA97f6LwTfdzz3mUHYxX6Q7RF
+         J+1M2p+qWG6x+hFaCt0Qc79Dc2KdAisz0jS0VtwJ/yZ0EDKlaP0lFte6Xv5cMYP61OwG
+         ZZxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=rYNJzjFh8jIWFpD2yeR88/tXIIZPuFUG/CAquxgxKVg=;
-        b=godroRmwUZXEyolDbpGK1r7BXwpmyY/o7X9odA2h6z7JpvJnsM1Zen+EAQmJm1oSRp
-         uWTlWXh60uopbbpeGDZQCr3CRI4X2L4gIjAoCoHmdsUWOeTxDxJvv+jTt1i9ydBuf9mL
-         SdOu49tsjkBzLYXGUUnob0fHCljEXvl5nHevZsqeiSFQys4oWsL217LgpUUsQXuLSUn3
-         KGNWMb7MZRmXR0XTn90JaQSAuhZPlqmmY1+E2A1BWSA/1iMkK+sFiJ2yOQstRaX9vn13
-         5PbDZ1H7x20JMZV/gYcs5+bk12MOx3kElJ1i8MTwFywBcPgp1JROHBbDDhlQofQocPaO
-         u7Dg==
+        bh=6GDyXJ2SB7V/5WdoqQgmGo1qN+H2yQzdy99/HnZTZFI=;
+        b=mqZRA1vc1QL9UT7kveYw3qkFPnONV6ft/sIwR8J+pyJzTUdW51XDgKc1aFr4DwxFgY
+         1BtWeA4Qaw3KPqdUNnRrqjR5Y32SEfLhSvGTa3TC9BifqQSlIN5xTUy1Jx4A1cONCgI3
+         J1xO057bZ920fJBW3hPPFKazhqQdFLL4CZoO2k5O9VuJ5iz2H2869WIjuLnvj3VSs/0G
+         Keby/f+jThSCcIrVnh+klByQqNAZ2E9JFhxAPw2lM25mgxiQMfNffpO0F5hMFJsVpxXA
+         YlrIbdY251anVJSYZQ8+TjkgkepDVQX9Fq0G1qdN8+15ZjAsOmBMGPI/IeeiSOJxIQKN
+         bqDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HxRO2DXQ;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eWprgtWD;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id js20si1378656ejc.216.2021.09.08.00.16.03
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id qw28si1507509ejc.608.2021.09.08.00.16.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Sep 2021 00:16:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Wed, 08 Sep 2021 00:16:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HxRO2DXQ;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eWprgtWD;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1631085362;
+	s=mimecast20190719; t=1631085394;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=rYNJzjFh8jIWFpD2yeR88/tXIIZPuFUG/CAquxgxKVg=;
-	b=HxRO2DXQTTHIYhRZqdR+ZysgvvETa+gL2FRq8mT86xT7FAOVE2QJctoi6nmVqZda5fv3A1
-	mTzwrBx8dWdyXqCD6mp0FmjGUZTKA+8znzbPSVs7f7COnscbAZmVIkFgnIxiHtOAlADL/b
-	31jmAv261lVx0l0iOxFFFSOj1+Au6TA=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-25-ZM4gXXT_NVKzzzIgZFUsKQ-1; Wed, 08 Sep 2021 03:16:01 -0400
-X-MC-Unique: ZM4gXXT_NVKzzzIgZFUsKQ-1
-Received: by mail-ej1-f69.google.com with SMTP id o14-20020a1709062e8e00b005d37183e041so531770eji.21
-        for <alex.bennee@linaro.org>; Wed, 08 Sep 2021 00:16:01 -0700 (PDT)
+	bh=6GDyXJ2SB7V/5WdoqQgmGo1qN+H2yQzdy99/HnZTZFI=;
+	b=eWprgtWD2CQkUj4bBj2dYPqvDmJnNRFVDErykzHUM3Q4PS7NqjmMLtrihYSJejGGzcEVKa
+	KFSqZfVinBn/+kqCyYNOldiwgSK8OuAM6OFsaDpd239A5AqTC+5KHO9BwWSk7ywwa9dPUu
+	HqyT2GBTAv5n2A1A7helmkvvOYuyD28=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-236-hjes5TbWOZ6bQLx8K-oKYQ-1; Wed, 08 Sep 2021 03:16:32 -0400
+X-MC-Unique: hjes5TbWOZ6bQLx8K-oKYQ-1
+Received: by mail-ed1-f70.google.com with SMTP id m30-20020a50999e000000b003cdd7680c8cso605280edb.11
+        for <alex.bennee@linaro.org>; Wed, 08 Sep 2021 00:16:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=+HK4DwjshowkvDWESjpm/l2pWLn+JpLdOS6SO9jRqCE=;
-        b=jTnOKyB+/JG2dDrah89mSR1kB8pqLAKE1bmLwG6JlQqRKd1lRPj3ghJLqo3pJZ/fii
-         gVpI3HmdgnCywN15f9MoIuevYD/iBUzKL1c8YWCPa34p6CZAlCNQgKtOAgnOp1YoCqBm
-         RwFGr3Sn7okyc00JPnnnLytYgZzo7SG3YD4dWRMigoHPmhgz4P/m/hC0THhCwAJ+bd5g
-         EpdceO0ixjWmPPz1sfjyU3SIb7UAiubeQ1Y3+jSIIhGPbtWlxickdwgn0E0MEKTwfXVP
-         ggP2BNA2XqPDJ2/72O5MTO4nturL/qJyLrq8dX3TWfdSAzccjLkiRXUV+1tspHvCHXDM
-         wweA==
-X-Gm-Message-State: AOAM532IzeyKcMkDgbD0fI6wKKyr1r9Rpp6PPf9eGDZ4ztdzZrgoFqPS
-	RkDfK+v5HUiShUBj0wH3dXDvZ0vaCDkeZKOAHAlQQB49y5PosFVKa3Q+GBy2JwN5xeGq0HZyhy2
-	iR1pPsPrHI61F/OQs
-X-Received: by 2002:a17:906:4452:: with SMTP id i18mr2436708ejp.374.1631085360453;
-        Wed, 08 Sep 2021 00:16:00 -0700 (PDT)
-X-Received: by 2002:a17:906:4452:: with SMTP id i18mr2436690ejp.374.1631085360239;
-        Wed, 08 Sep 2021 00:16:00 -0700 (PDT)
+        bh=6GDyXJ2SB7V/5WdoqQgmGo1qN+H2yQzdy99/HnZTZFI=;
+        b=QLTLlZ9TG/OZ96Kd5U989xNNgyckDFXoQIhtqD42XLi1TgAV3jeDXXW9mzsQLmYDdG
+         oFirav8IyCfq63ew72hSurDAjZO+g8fKw+inMUZaOMX1vw0ZG/ZwFtdfb6syuloyEOtz
+         J1w50xe1PssavpsnBhvbch+ZLAdWdEcCW/FcvjXwLgPuLsKKrBmDnNVq5z9noQFBwQaF
+         h9tvwrNTGZS9q8aDgIiyVSzs/G3ptyVft+bVVxfRsNZMvc5YRPARHW9OcVr6o/HJLj2V
+         lcnDFwBTpi/6xxdhVbl6RHCD0NHbORwZD8twOVm8eSrgYqBURChgDKywkgW7frefORZG
+         TOyA==
+X-Gm-Message-State: AOAM531hW+92xjVV++kbBPgZ77dEJCuWd8YNTFKy6amP/Q0l0dCheWPe
+	PfupEF8FFgBuFeUd2NqPh+rgT9cKRGHg+MMMggUZfTcU7VWd8SAGGKuoLn8DqqSHIFIrFeSjXp2
+	dltorPfLkb+cu+C11
+X-Received: by 2002:aa7:d601:: with SMTP id c1mr2346059edr.143.1631085391016;
+        Wed, 08 Sep 2021 00:16:31 -0700 (PDT)
+X-Received: by 2002:aa7:d601:: with SMTP id c1mr2346042edr.143.1631085390807;
+        Wed, 08 Sep 2021 00:16:30 -0700 (PDT)
 Return-Path: <imammedo@redhat.com>
 Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id qq16sm506918ejb.120.2021.09.08.00.15.58
+        by smtp.gmail.com with ESMTPSA id bm26sm514736ejb.16.2021.09.08.00.16.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Sep 2021 00:15:59 -0700 (PDT)
-Date: Wed, 8 Sep 2021 09:15:58 +0200
+        Wed, 08 Sep 2021 00:16:30 -0700 (PDT)
+Date: Wed, 8 Sep 2021 09:16:28 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
 Cc: qemu-devel@nongnu.org, Hanna Reitz <hreitz@redhat.com>, Laurent Vivier
@@ -99,12 +99,11 @@ Cc: qemu-devel@nongnu.org, Hanna Reitz <hreitz@redhat.com>, Laurent Vivier
  Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Thomas Huth
  <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Greg Kurz
  <groug@kaod.org>, qemu-ppc@nongnu.org, David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH 08/28] hw/acpi: Avoid truncating acpi_data_len() to
- 32-bit
-Message-ID: <20210908091558.0a00cd02@redhat.com>
-In-Reply-To: <20210903110702.588291-9-philmd@redhat.com>
+Subject: Re: [PATCH 09/28] hw/acpi: Replace g_memdup() by g_memdup2_qemu()
+Message-ID: <20210908091628.3f08afa3@redhat.com>
+In-Reply-To: <20210903110702.588291-10-philmd@redhat.com>
 References: <20210903110702.588291-1-philmd@redhat.com>
-	<20210903110702.588291-9-philmd@redhat.com>
+	<20210903110702.588291-10-philmd@redhat.com>
 X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -113,61 +112,61 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: IoHezPYEEW1c
+X-TUID: cksxohxasMY4
 
-On Fri,  3 Sep 2021 13:06:42 +0200
+On Fri,  3 Sep 2021 13:06:43 +0200
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-> acpi_data_len() returns an unsigned type, which might be bigger
-> than 32-bit (although it is unlikely such value is returned).
-> Hold the returned value in an 'unsigned' type to avoid unlikely
-> size truncation.
+> Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-mem=
+dup2-now/5538
+>=20
+>   The old API took the size of the memory to duplicate as a guint,
+>   whereas most memory functions take memory sizes as a gsize. This
+>   made it easy to accidentally pass a gsize to g_memdup(). For large
+>   values, that would lead to a silent truncation of the size from 64
+>   to 32 bits, and result in a heap area being returned which is
+>   significantly smaller than what the caller expects. This can likely
+>   be exploited in various modules to cause a heap buffer overflow.
+>=20
+> Replace g_memdup() by the safer g_memdup2_qemu() wrapper.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 Acked-by: Igor Mammedov <imammedo@redhat.com>
 
+
 > ---
->  hw/arm/virt-acpi-build.c | 2 +-
->  hw/i386/acpi-build.c     | 4 ++--
->  2 files changed, 3 insertions(+), 3 deletions(-)
+>  hw/acpi/core.c       | 3 ++-
+>  hw/i386/acpi-build.c | 2 +-
+>  2 files changed, 3 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 037cc1fd82c..95543d43e2a 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -885,7 +885,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuild=
-Tables *tables)
+> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> index 1e004d0078d..9dd2cf09a0b 100644
+> --- a/hw/acpi/core.c
+> +++ b/hw/acpi/core.c
+> @@ -637,7 +637,8 @@ void acpi_pm1_cnt_init(ACPIREGS *ar, MemoryRegion *pa=
+rent,
+>          suspend[3] =3D 1 | ((!disable_s3) << 7);
+>          suspend[4] =3D s4_val | ((!disable_s4) << 7);
 > =20
->  static void acpi_ram_update(MemoryRegion *mr, GArray *data)
->  {
-> -    uint32_t size =3D acpi_data_len(data);
-> +    unsigned size =3D acpi_data_len(data);
+> -        fw_cfg_add_file(fw_cfg, "etc/system-states", g_memdup(suspend, 6=
+), 6);
+> +        fw_cfg_add_file(fw_cfg, "etc/system-states",
+> +                        g_memdup2_qemu(suspend, 6), 6);
+>      }
+>  }
 > =20
->      /* Make sure RAM size is correct - in case it got changed
->       * e.g. by migration */
 > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index a33ac8b91e1..aa269914b49 100644
+> index aa269914b49..54494ca1f65 100644
 > --- a/hw/i386/acpi-build.c
 > +++ b/hw/i386/acpi-build.c
-> @@ -2660,7 +2660,7 @@ void acpi_build(AcpiBuildTables *tables, MachineSta=
-te *machine)
-> =20
->  static void acpi_ram_update(MemoryRegion *mr, GArray *data)
->  {
-> -    uint32_t size =3D acpi_data_len(data);
-> +    unsigned size =3D acpi_data_len(data);
-> =20
->      /* Make sure RAM size is correct - in case it got changed e.g. by mi=
-gration */
->      memory_region_ram_resize(mr, size, &error_abort);
-> @@ -2783,7 +2783,7 @@ void acpi_setup(void)
->           * Though RSDP is small, its contents isn't immutable, so
->           * we'll update it along with the rest of tables on guest access=
-.
+> @@ -2785,7 +2785,7 @@ void acpi_setup(void)
 >           */
-> -        uint32_t rsdp_size =3D acpi_data_len(tables.rsdp);
-> +        unsigned rsdp_size =3D acpi_data_len(tables.rsdp);
+>          unsigned rsdp_size =3D acpi_data_len(tables.rsdp);
 > =20
->          build_state->rsdp =3D g_memdup(tables.rsdp->data, rsdp_size);
+> -        build_state->rsdp =3D g_memdup(tables.rsdp->data, rsdp_size);
+> +        build_state->rsdp =3D g_memdup2_qemu(tables.rsdp->data, rsdp_siz=
+e);
 >          fw_cfg_add_file_callback(x86ms->fw_cfg, ACPI_BUILD_RSDP_FILE,
+>                                   acpi_build_update, NULL, build_state,
+>                                   build_state->rsdp, rsdp_size, true);

@@ -1,84 +1,83 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp152890lfb;
-        Tue, 7 Sep 2021 23:31:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzT8G3BUbbbBdD9pVtcJT9nE1+9wqjq85r4xTLr6R1N8H9d8BVmQuN0h88W7pwKGCGygsiq
-X-Received: by 2002:a6b:fd05:: with SMTP id c5mr2012821ioi.102.1631082719304;
-        Tue, 07 Sep 2021 23:31:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631082719; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp153700lfb;
+        Tue, 7 Sep 2021 23:33:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5CtBLhEOI9lHMdglzVXZnKWwD9wTRP3D9v2JgJFXLL/ZZg3EEhU7iUSQZcE/wsLu37O9O
+X-Received: by 2002:a05:6638:329d:: with SMTP id f29mr2180396jav.61.1631082801751;
+        Tue, 07 Sep 2021 23:33:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631082801; cv=none;
         d=google.com; s=arc-20160816;
-        b=m0FrX0uwmPIdsUk5ja6XgYRGrno4sOZ5EIc2XivLRmVDTkjDC6PUiLj6L1JUSrzGIm
-         B/XV6vET94AN8Fe5LpXcZLB1DowaX7AEAodaW/kQKMkIb8ZqVDleq6brz0QPBxWJp0ko
-         9appSm9dDRkjD7p3PGMdIIlzc+2znDlvAi33qPYKx1Rrh/Yim9yl6wNrmSk2C/AGBHDM
-         B4/f0INUSgbxKU9Zwx29exciF5+6i0+0a28mlNncadQAdtRz3X7Oscy1z5sapWf91v6l
-         BjUkaPC2XH2XNm9f1hqbT7xuQECpni2tkBvAnjXWucWio1En+1n2kgx6xdfGYmrDtCSg
-         m12A==
+        b=BSNy95L3guDc0VCtRvAY4xtB/gYn0EfGfhrabcITvMLDRvwXlwPpgVUsI96hnAiyJy
+         L8ANhbEnHVQI/IqS1RokLSkhgS1npouDxs9nE2jQZ/3lS6SZqERmm1Hz6yhIIJ9DItxq
+         Cu8QmqnTO5o1Y/X2XBkYnLQ1tdnOxpn5SM/8bLtj2IbASf2ZzwLJ6nXHiedNCfBLVQAQ
+         3NfUp92qYJwio5nknAhVrFUKb6wi4CtBO21ycknOsccHymxrpHGmks0+NAk+Jd0s7MjH
+         Ft/JmfS1Zch6UtAOi77e1z8CUo1DvgagrAaTs5TRKJaXqok2sDu7S7NWIBH9i9rHX/9b
+         MRuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=WX5JPikt36irdC4NJow8yFV5XtpQhzkCYa60XbduWqE=;
-        b=b0zfZuq/Pj6xmngggaRKDrvOo2fivEK3FXc2qaISU4gHUn0HJ4JxpDJrFsVwsi5UH8
-         S5SLQcsbjq1WDgYUwMqvXOTAzVUSnbjtY6Nrv4uTnmRrG3fXlHWhMFqdMxPnIkVamYpR
-         eJj2FCy/sNLFS0qaWR4bWLc1cmt4Rrzys/PGnNwPw/b3re2eVP5yAMO8QzWz8roOZNQh
-         raOR5mKHPtPZmzl4UJXFBfyFc5QP/v3aaY+jlqW0RPW3r9igNse+g1OayvmZvirK78Mg
-         iG+iMqihQQSPsJx/ZGvAqDiCs1tQ9AJAQslQF6xulNTeoPjonK6XBJnFz8SoqLkSvDOM
-         U3rw==
+        bh=TJG37CSyB5T7BiazqC5vbVMPohxL+gsLERVCYp3Gtwg=;
+        b=J5BQHuwtMzXlwOhoDZh+bTdTaHcYzv1CmNCGsPjinOBSRWqhlK4ISYG4AiGZlTwZtR
+         S4ktVRzg5UYOF8ILWZvQit30aNTJNgzEhxCpilEhyMiAlTO3O9w+GABAdvKrQ83hsD4v
+         OiM3NCuXwrjyiX7p3iCiVuBf/ptkq1lcpO/UVmRrb0zcLaVVvrW0FVaeU4E08UqKRa1X
+         GUgTqGFKD/rjcEwxnhOqbVxsnMg/PHwZLWT0CW4MoAulkpBtNuqY4ulf9g0cqM754pTs
+         1ERL6RhDe24PmTdnfRFUW5Mm2qADe5b+P/GBFzBReu9o1LQG7U+MPwfn4JDcei7L/QsW
+         ie5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="qDZwn/+k";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="fKLb//EB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w31si1130185jal.61.2021.09.07.23.31.59
+        by mx.google.com with ESMTPS id h199si1139803iof.50.2021.09.07.23.33.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Sep 2021 23:31:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Sep 2021 23:33:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="qDZwn/+k";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="fKLb//EB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53036 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56366 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNr7m-00009P-Ko
-	for alex.bennee@linaro.org; Wed, 08 Sep 2021 02:31:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52678)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mNr97-0002fd-2m
+	for alex.bennee@linaro.org; Wed, 08 Sep 2021 02:33:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mNr5L-0007O7-5J; Wed, 08 Sep 2021 02:29:27 -0400
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a]:41718)
+ id 1mNr7C-0000Jm-0S; Wed, 08 Sep 2021 02:31:22 -0400
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:38567)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mNr5J-0007u8-6N; Wed, 08 Sep 2021 02:29:26 -0400
-Received: by mail-yb1-xb2a.google.com with SMTP id z18so2060070ybg.8;
- Tue, 07 Sep 2021 23:29:24 -0700 (PDT)
+ id 1mNr77-00011q-Vo; Wed, 08 Sep 2021 02:31:21 -0400
+Received: by mail-yb1-xb2f.google.com with SMTP id v10so2094343ybm.5;
+ Tue, 07 Sep 2021 23:31:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=WX5JPikt36irdC4NJow8yFV5XtpQhzkCYa60XbduWqE=;
- b=qDZwn/+kc7hb0xriQLJgyLjgzca4Fk/npKFMlMZxgfAbOhPFQYAJrBlb/lOlpxecoQ
- 7O1PHdxMAxGcEJ591Uwt1A0Qg3cycz1OiFPSk4vhwJJQIOm8zVFzw3T9XyC5sOtrxj6X
- etNipZ/LQLw3DruLJHsmGDftxJiZqzwtncbgDy3P/zNAuKwjMq7XcrLj91z/Mf6RAB2h
- cRjchvCSU7taRZBUkXsjgri7mAA3C9DSlURtdf84L0LoQhdscJEqO4IXxyzNqtaP5D7p
- VnxRueJySAObDpRw1AvvlDYkjjq0n3j/N4oRhyvIUvcFOCBtxCuV/ekuDdjGtXmgOM/4
- gRzA==
+ bh=TJG37CSyB5T7BiazqC5vbVMPohxL+gsLERVCYp3Gtwg=;
+ b=fKLb//EBJD+b3mtjiOqy96oRDZaUS1aXNoqrbpegZIC1cWjXRyVe2GIm2WOf27GY3s
+ vokqEiHapj9SjsMmwTVPdypGv+AP6JCK17siTn7AGIwyncUcxRs6Ik5CxJ32pYE6I9xf
+ crM+DtmZvEETqSciB8sUhtHaETndq4svdK5l7qrzXiWehd2Tyijap7TnTN81JgdrILhT
+ 1LeXeIg2+bX1HOAHJo/HpOuQqPzXjSOwLsM6mvzo7tgKo96u2zPdlE2htH2hK3AvvRy9
+ QBtF2Te5kYlrvtb+pTjAkK/GH1jlMjQ0XPQJGkAMGBSaQz/UUT2uRVew6USepcrvrIEt
+ KuQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=WX5JPikt36irdC4NJow8yFV5XtpQhzkCYa60XbduWqE=;
- b=A+Zwz083R3Qijv04S96jgpwPk1AptYxth0aXcWnSXza4TQ/ckqbi1d4TuTfb7J581l
- NhzKWiZZtxUSDx+N7aU4EZuZfz/NkL0QX8nHMWINvU1pD3gZUvlfW6tQq/UGGF3kokmx
- FpOd4VV143PySPY3efpcfD0afA3Ln/dNroXNeSi5H8Wlggie+vEuVBb69xACc6tsRaMO
- b1Q98LzJ2WIxkU592hZKzNim/y4+SUL6ZY3uTfQoPuybHfJnyX1b+5YBXd7DE59BUnVU
- ZBZbNNRIExAF2XxhKWnmTBGCHXIvHzqH1n5FA7uqN/o4DBHr07psBj8vUI2kOhmmH05L
- 7IZw==
-X-Gm-Message-State: AOAM532mU4Mdj5R7Qixl/CIs+F2SWntxlVyyc1/T76k3r3o/6IkGFk7Z
- wztDWtDd6uYtXIu2e0+MGP1ffM4O9l47T8fRVdI=
-X-Received: by 2002:a05:6902:120a:: with SMTP id
- s10mr2856056ybu.293.1631082563459; 
- Tue, 07 Sep 2021 23:29:23 -0700 (PDT)
+ bh=TJG37CSyB5T7BiazqC5vbVMPohxL+gsLERVCYp3Gtwg=;
+ b=cKX6kk2MwcSQZOLLtExPSwuB3uACcE+NykPuvZmUQuLXITPx50H93M657lpoHB7nVM
+ cp1bbcJWhjGtXPe2SccX+59I4xaEQVGj4RCsNAlMMLQtxvWfxAwcRiZTlp9OoZfcmWPB
+ arxtHk0Kj+jPDUMKnAzP1hVHnNyNfCFC+XdqFKBRpdsPcia/7snmJ/zTpGpJU9ImthZm
+ /KAY7uXmCNVBFy9oy2h2P2Y67M2e4KhAVZyLcGC4e9rUGvP5pW++UBhMIN1oxMkPhHWL
+ 9r/5hmfrSBWr2IFsqpvu9qCoFEI88pzRxFc79lrYdswoO55rH69JmfdHQhoCpA4zrjia
+ KDeQ==
+X-Gm-Message-State: AOAM532KAV71bZ85ykY02W0N95erNPRJrAhckQMsgbYaPWPlP42AMUMs
+ QzDEWa6N4fRFKboS2eM2F/zCtT9oUpKR2zIboYk=
+X-Received: by 2002:a25:76c7:: with SMTP id r190mr3059134ybc.467.1631082675328; 
+ Tue, 07 Sep 2021 23:31:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210808013406.223506-1-linux@roeck-us.net>
  <CAFEAcA8+o69ztRaaMvqh+zNaFs_6reSHX_ijknay6_0VePSE2w@mail.gmail.com>
@@ -88,16 +87,18 @@ References: <20210808013406.223506-1-linux@roeck-us.net>
  <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
  <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
  <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
-In-Reply-To: <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
+ <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
+In-Reply-To: <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Wed, 8 Sep 2021 14:29:11 +0800
-Message-ID: <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
+Date: Wed, 8 Sep 2021 14:31:03 +0800
+Message-ID: <CAEUhbmVfFRdbtu7yWUauO6sd0QNhoH6tuTAFA2PMxZp5P7+awA@mail.gmail.com>
 Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
-To: Guenter Roeck <linux@roeck-us.net>
+To: Guenter Roeck <linux@roeck-us.net>,
+ Xuzhou Cheng <xuzhou.cheng@windriver.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,183 +107,190 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eNN+U8rHFTCJ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: udjYxWmExEHE
 
-On Sun, Sep 5, 2021 at 10:08 AM Guenter Roeck <linux@roeck-us.net> wrote:
+On Wed, Sep 8, 2021 at 2:29 PM Bin Meng <bmeng.cn@gmail.com> wrote:
 >
-> On 9/4/21 4:19 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > On 9/5/21 1:06 AM, Bin Meng wrote:
-> >> On Sun, Sep 5, 2021 at 1:13 AM Guenter Roeck <linux@roeck-us.net> wrot=
-e:
-> >>>
-> >>> On 9/2/21 12:29 PM, Peter Maydell wrote:
-> >>>> On Thu, 2 Sept 2021 at 17:09, Guenter Roeck <linux@roeck-us.net> wro=
-te:
-> >>>>>
-> >>>>> On 9/2/21 8:58 AM, Peter Maydell wrote:
-> >>>>>> On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> wr=
+> On Sun, Sep 5, 2021 at 10:08 AM Guenter Roeck <linux@roeck-us.net> wrote:
+> >
+> > On 9/4/21 4:19 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > > On 9/5/21 1:06 AM, Bin Meng wrote:
+> > >> On Sun, Sep 5, 2021 at 1:13 AM Guenter Roeck <linux@roeck-us.net> wr=
 ote:
-> >>>>>>>
-> >>>>>>> The control register does not really have a means to deselect
-> >>>>>>> all chip selects directly. As result, CS is effectively never
-> >>>>>>> deselected, and connected flash chips fail to perform read
-> >>>>>>> operations since they don't get the expected chip select signals
-> >>>>>>> to reset their state machine.
-> >>>>>>>
-> >>>>>>> Normally and per controller documentation one would assume that
-> >>>>>>> chip select should be set whenever a transfer starts (XCH is
-> >>>>>>> set or the tx fifo is written into), and that it should be disabl=
-ed
-> >>>>>>> whenever a transfer is complete. However, that does not work in
-> >>>>>>> practice: attempts to implement this approach resulted in failure=
-s,
-> >>>>>>> presumably because a single transaction can be split into multipl=
-e
-> >>>>>>> transfers.
-> >>>>>>>
-> >>>>>>> At the same time, there is no explicit signal from the host indic=
-ating
-> >>>>>>> if chip select should be active or not. In the absence of such a =
-direct
-> >>>>>>> signal, use the burst length written into the control register to
-> >>>>>>> determine if an access is ongoing or not. Disable all chip select=
+> > >>>
+> > >>> On 9/2/21 12:29 PM, Peter Maydell wrote:
+> > >>>> On Thu, 2 Sept 2021 at 17:09, Guenter Roeck <linux@roeck-us.net> w=
+rote:
+> > >>>>>
+> > >>>>> On 9/2/21 8:58 AM, Peter Maydell wrote:
+> > >>>>>> On Sun, 8 Aug 2021 at 02:34, Guenter Roeck <linux@roeck-us.net> =
+wrote:
+> > >>>>>>>
+> > >>>>>>> The control register does not really have a means to deselect
+> > >>>>>>> all chip selects directly. As result, CS is effectively never
+> > >>>>>>> deselected, and connected flash chips fail to perform read
+> > >>>>>>> operations since they don't get the expected chip select signal=
 s
-> >>>>>>> if the burst length field in the configuration register is set to=
+> > >>>>>>> to reset their state machine.
+> > >>>>>>>
+> > >>>>>>> Normally and per controller documentation one would assume that
+> > >>>>>>> chip select should be set whenever a transfer starts (XCH is
+> > >>>>>>> set or the tx fifo is written into), and that it should be disa=
+bled
+> > >>>>>>> whenever a transfer is complete. However, that does not work in
+> > >>>>>>> practice: attempts to implement this approach resulted in failu=
+res,
+> > >>>>>>> presumably because a single transaction can be split into multi=
+ple
+> > >>>>>>> transfers.
+> > >>>>>>>
+> > >>>>>>> At the same time, there is no explicit signal from the host ind=
+icating
+> > >>>>>>> if chip select should be active or not. In the absence of such =
+a direct
+> > >>>>>>> signal, use the burst length written into the control register =
+to
+> > >>>>>>> determine if an access is ongoing or not. Disable all chip sele=
+cts
+> > >>>>>>> if the burst length field in the configuration register is set =
+to 0,
+> > >>>>>>> and (re-)enable chip select if a transfer is started. This is p=
+ossible
+> > >>>>>>> because the Linux driver clears the burst length field whenever=
+ it
+> > >>>>>>> prepares the controller for the next transfer.
+> > >>>>>>> This solution  is less than perfect since it effectively only d=
+isables
+> > >>>>>>> chip select when initiating the next transfer, but it does work=
+ with
+> > >>>>>>> Linux and should otherwise do no harm.
+> > >>>>>>>
+> > >>>>>>> Stop complaining if the burst length field is set to a value of=
  0,
-> >>>>>>> and (re-)enable chip select if a transfer is started. This is pos=
-sible
-> >>>>>>> because the Linux driver clears the burst length field whenever i=
-t
-> >>>>>>> prepares the controller for the next transfer.
-> >>>>>>> This solution  is less than perfect since it effectively only dis=
-ables
-> >>>>>>> chip select when initiating the next transfer, but it does work w=
-ith
-> >>>>>>> Linux and should otherwise do no harm.
-> >>>>>>>
-> >>>>>>> Stop complaining if the burst length field is set to a value of 0=
-,
-> >>>>>>> since that is done by Linux for every transfer.
-> >>>>>>>
-> >>>>>>> With this patch, a command line parameter such as "-drive
-> >>>>>>> file=3Dflash.sabre,format=3Draw,if=3Dmtd" can be used to instanti=
-ate the
-> >>>>>>> flash chip in the sabrelite emulation. Without this patch, the
-> >>>>>>> flash instantiates, but it only reads zeroes.
-> >>>>>>>
-> >>>>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> >>>>>>> ---
-> >>>>>>> I am not entirely happy with this solution, but it is the best I =
-was
-> >>>>>>> able to come up with. If anyone has a better idea, I'll be happy
-> >>>>>>> to give it a try.
-> >>>>>>>
-> >>>>>>>     hw/ssi/imx_spi.c | 17 +++++++----------
-> >>>>>>>     1 file changed, 7 insertions(+), 10 deletions(-)
-> >>>>>>>
-> >>>>>>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> >>>>>>> index 189423bb3a..7a093156bd 100644
-> >>>>>>> --- a/hw/ssi/imx_spi.c
-> >>>>>>> +++ b/hw/ssi/imx_spi.c
-> >>>>>>> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIState =
-*s)
-> >>>>>>>         DPRINTF("Begin: TX Fifo Size =3D %d, RX Fifo Size =3D %d\=
-n",
-> >>>>>>>                 fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s-=
->rx_fifo));
-> >>>>>>>
-> >>>>>>> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
-> >>>>>>> +
-> >>>>>>>         while (!fifo32_is_empty(&s->tx_fifo)) {
-> >>>>>>>             int tx_burst =3D 0;
-> >>>>>>>
-> >>>>>>> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hwad=
-dr offset, uint64_t value,
-> >>>>>>>         case ECSPI_CONREG:
-> >>>>>>>             s->regs[ECSPI_CONREG] =3D value;
-> >>>>>>>
-> >>>>>>> -        burst =3D EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BU=
-RST_LENGTH) + 1;
-> >>>>>>> -        if (burst % 8) {
-> >>>>>>> -            qemu_log_mask(LOG_UNIMP,
-> >>>>>>> -                          "[%s]%s: burst length %d not supported=
-: rounding up to next multiple of 8\n",
-> >>>>>>> -                          TYPE_IMX_SPI, __func__, burst);
-> >>>>>>> -        }
-> >>>>>>
-> >>>>>> Why has this log message been removed ?
-> >>>>>
-> >>>>> What I wanted to do is:
-> >>>>>
-> >>>>> "Stop complaining if the burst length field is set to a value of 0,
-> >>>>>     since that is done by Linux for every transfer."
-> >>>>>
-> >>>>> What I did instead is to remove the message entirely.
-> >>>>>
-> >>>>> How about the rest of the patch ? Is it worth a resend with the mes=
-sage
-> >>>>> restored (except for burst size =3D=3D 0), or is it not acceptable =
-anyway ?
-> >>>>
-> >>>> I did the easy bit of the code review because answering this
-> >>>> question is probably a multiple-hour job...this is still on my
-> >>>> todo list, but I'm hoping somebody who understands the MIX
-> >>>> SPI device gets to it first.
-> >>>>
-> >>>
-> >>> Makes sense. Of course, it would be even better if someone can explai=
-n
-> >>> how this works on real hardware.
-> >>>
-> >>
-> >> I happened to notice this patch today. Better to cc people who once
-> >> worked on this part from "git blame" or "git log".
+> > >>>>>>> since that is done by Linux for every transfer.
+> > >>>>>>>
+> > >>>>>>> With this patch, a command line parameter such as "-drive
+> > >>>>>>> file=3Dflash.sabre,format=3Draw,if=3Dmtd" can be used to instan=
+tiate the
+> > >>>>>>> flash chip in the sabrelite emulation. Without this patch, the
+> > >>>>>>> flash instantiates, but it only reads zeroes.
+> > >>>>>>>
+> > >>>>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > >>>>>>> ---
+> > >>>>>>> I am not entirely happy with this solution, but it is the best =
+I was
+> > >>>>>>> able to come up with. If anyone has a better idea, I'll be happ=
+y
+> > >>>>>>> to give it a try.
+> > >>>>>>>
+> > >>>>>>>     hw/ssi/imx_spi.c | 17 +++++++----------
+> > >>>>>>>     1 file changed, 7 insertions(+), 10 deletions(-)
+> > >>>>>>>
+> > >>>>>>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> > >>>>>>> index 189423bb3a..7a093156bd 100644
+> > >>>>>>> --- a/hw/ssi/imx_spi.c
+> > >>>>>>> +++ b/hw/ssi/imx_spi.c
+> > >>>>>>> @@ -167,6 +167,8 @@ static void imx_spi_flush_txfifo(IMXSPIStat=
+e *s)
+> > >>>>>>>         DPRINTF("Begin: TX Fifo Size =3D %d, RX Fifo Size =3D %=
+d\n",
+> > >>>>>>>                 fifo32_num_used(&s->tx_fifo), fifo32_num_used(&=
+s->rx_fifo));
+> > >>>>>>>
+> > >>>>>>> +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
+> > >>>>>>> +
+> > >>>>>>>         while (!fifo32_is_empty(&s->tx_fifo)) {
+> > >>>>>>>             int tx_burst =3D 0;
+> > >>>>>>>
+> > >>>>>>> @@ -385,13 +387,6 @@ static void imx_spi_write(void *opaque, hw=
+addr offset, uint64_t value,
+> > >>>>>>>         case ECSPI_CONREG:
+> > >>>>>>>             s->regs[ECSPI_CONREG] =3D value;
+> > >>>>>>>
+> > >>>>>>> -        burst =3D EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_=
+BURST_LENGTH) + 1;
+> > >>>>>>> -        if (burst % 8) {
+> > >>>>>>> -            qemu_log_mask(LOG_UNIMP,
+> > >>>>>>> -                          "[%s]%s: burst length %d not support=
+ed: rounding up to next multiple of 8\n",
+> > >>>>>>> -                          TYPE_IMX_SPI, __func__, burst);
+> > >>>>>>> -        }
+> > >>>>>>
+> > >>>>>> Why has this log message been removed ?
+> > >>>>>
+> > >>>>> What I wanted to do is:
+> > >>>>>
+> > >>>>> "Stop complaining if the burst length field is set to a value of =
+0,
+> > >>>>>     since that is done by Linux for every transfer."
+> > >>>>>
+> > >>>>> What I did instead is to remove the message entirely.
+> > >>>>>
+> > >>>>> How about the rest of the patch ? Is it worth a resend with the m=
+essage
+> > >>>>> restored (except for burst size =3D=3D 0), or is it not acceptabl=
+e anyway ?
+> > >>>>
+> > >>>> I did the easy bit of the code review because answering this
+> > >>>> question is probably a multiple-hour job...this is still on my
+> > >>>> todo list, but I'm hoping somebody who understands the MIX
+> > >>>> SPI device gets to it first.
+> > >>>>
+> > >>>
+> > >>> Makes sense. Of course, it would be even better if someone can expl=
+ain
+> > >>> how this works on real hardware.
+> > >>>
+> > >>
+> > >> I happened to notice this patch today. Better to cc people who once
+> > >> worked on this part from "git blame" or "git log".
+> > >
+> > > Even better if you add yourself as designated reviewer ;)
+> > >
+> > > $ ./scripts/get_maintainer.pl -f hw/ssi/imx_spi.c
+> > > Alistair Francis <alistair@alistair23.me> (maintainer:SSI)
+> > > Peter Maydell <peter.maydell@linaro.org> (odd fixer:i.MX31 (kzm))
+> > > Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.=
+MX6)
+> > >
+> > >>
+> > >>> In this context, it would be useful to know if real SPI flash chips
+> > >>> reset their state to idle under some conditions which are not cover=
+ed
+> > >>> by the current code in hw/block/m25p80.c. Maybe the real problem is
+> > >>> as simple as that code setting data_read_loop when it should not,
+> > >>> or that it doesn't reset that flag when it should (unless I am miss=
+ing
+> > >>> something, the flag is currently only reset by disabling chip selec=
+t).
+> > >
+> > > Plausible hypothesis.
+> > >
 > >
-> > Even better if you add yourself as designated reviewer ;)
-> >
-> > $ ./scripts/get_maintainer.pl -f hw/ssi/imx_spi.c
-> > Alistair Francis <alistair@alistair23.me> (maintainer:SSI)
-> > Peter Maydell <peter.maydell@linaro.org> (odd fixer:i.MX31 (kzm))
-> > Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.MX=
-6)
-> >
-> >>
-> >>> In this context, it would be useful to know if real SPI flash chips
-> >>> reset their state to idle under some conditions which are not covered
-> >>> by the current code in hw/block/m25p80.c. Maybe the real problem is
-> >>> as simple as that code setting data_read_loop when it should not,
-> >>> or that it doesn't reset that flag when it should (unless I am missin=
-g
-> >>> something, the flag is currently only reset by disabling chip select)=
-.
-> >
-> > Plausible hypothesis.
+> > Possibly. Note that I did check the flash chip specification, but I don=
+'t
+> > see a notable difference to the qemu implementation. But then, again,
+> > I may be missing something.
 > >
 >
-> Possibly. Note that I did check the flash chip specification, but I don't
-> see a notable difference to the qemu implementation. But then, again,
-> I may be missing something.
->
+> +Xuzhou Cheng who once worked on imx_spi for some comments
 
-+Xuzhou Cheng who once worked on imx_spi for some comments
-
-Regards,
-Bin
+Actually adding him this time :)

@@ -1,120 +1,113 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp256716lfb;
-        Wed, 8 Sep 2021 02:16:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCjZNVO6pPlW816urqbvwLN/0YjFaldziBVH/SOP6M5o/d71iQcUiVx2hlewZKfrBkml1H
-X-Received: by 2002:a5d:9c89:: with SMTP id p9mr2429043iop.13.1631092593086;
-        Wed, 08 Sep 2021 02:16:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631092593; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp258816lfb;
+        Wed, 8 Sep 2021 02:19:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwu/CTnPVAYEX9xDeh2VByb3AYfWXmuQX0MaqdQ5+wVuE6uf2RbmbxC3pGuigSnNhlbFAtH
+X-Received: by 2002:a25:bb93:: with SMTP id y19mr3812963ybg.266.1631092785257;
+        Wed, 08 Sep 2021 02:19:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631092785; cv=none;
         d=google.com; s=arc-20160816;
-        b=JVFxSVVOc0U18+lubkNgd+4VWgLPS7FXh9fvZaHHsKTF1jmGcJMYyny53bWwPBexCV
-         XmG+S3BxDqeClwxnvLP41z9LKREn0APQRzjF7pxuX+nTnjVb0j5M1MqH/ng+Fmu0uf4B
-         iwC6FTH8Xvlyyl2RCApW9SmbFBd9U5Dyuoz79CxedyYmJ05GMyayeWYrRxpv/ZgXVe/a
-         SAjtO6nF/pPKxAQMWlljVmBrruTcBKdM7bzAjNzzb8FeveoeNfIHHPdNbxJktVRh0edW
-         Gx60VOTH/U/wCVySIosT4v2/kKPwIQ4oiNK6gqRHqb4VyZPWAuR3CM8bt2SJWlOG7lX4
-         /xRw==
+        b=BPc5KBwI3Oure5U3n93D8J7VyZ//uDmr3uvtYDumQqduV+ndysrn6hA90vIXV9iUXo
+         VFOiUS50Ul2jb8GkNZcUc+efvZrFTo5L1Z/2V+mMP3gHmJQ42Z/ycHBBvVO7ma2n4VZ0
+         ugCpVNrkswEs83M46AWU4K9Olb/SCjGqJDoX7Tm8NLI4tEiDvmkM/nH+HGQW+wVVjrDF
+         lmYfqm0AXp9qSQfWK4Hu2aNWVSnTIRRJDjVL/T/O1R0BDE+Okp89bP+qQ3K+p1RLXKT7
+         aWI9IAMQ1+elv/mS604t6t82NnL3Fxx3JkTqFeB9anTQD6iGlDHDDBc9H/Ql0ImIXr6c
+         5iWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=YAZtghhghlq89lbfSShBZZ/ZsCtccFU+0KD5qQVQlIo=;
-        b=rg8dcxesrCIHZGKXFxCHTWBk0kbR8FEmY6Fz5WzeSMfg+xyyykHVarWP8FjmYG1ArL
-         IGPV4VazwNd46Rloy5oE95gSvqBlnRJscjJ+yRtB7pBtIEUvLIjyvlS5bCdglovnadlU
-         dsPwP0PWIS+uGeft02yH2NoN7KB7nRvetvyeu2oJJx1htLpwwYMU0NiYpP5cb1Pv6a3f
-         CQzVzuX3w9BAhsUiABnHHufasvz0an1abVwIE0AYLUdZem/cDVmR+s5J85m723FjD/xS
-         fcWGidz9uqaZLGKHkWQuDH7Ng4jmtUNj/ynygeL5gBZGda9SApfFSrMmSIdlBgeXrPCO
-         koow==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=zfkAKvckiHUBOnhbwSX7IQ1MbXNPzUdNaVKWFOa6Tu4=;
+        b=P/JwYB+KtEXHEzYv2MWAkMYNfx9LAsY9Mpbp6YvM5mlloFma/BE9Qpiy/PLIONwFz/
+         jNAYMgwS63+XL/TkJ680EW4oU9cmqEVHW+ov10X/Va2c7ER2HGhKh8wzaJn/p3aMI0fc
+         RNuAbMpH4h7cjGhjF0brq+XVMICwDPCN++EnBLe6BojhjWXqoBdI2JangWz8qiqHpsq9
+         oCCjSVS7FfWcuc1KkBt1cDfDXnr1rW1J7X+nz1a6JSnCPqQ3giRzTVIXHnrK/NzB95eK
+         QpgGVp3XfAM7voMqdohDVuubbyAqgUsPcGmzTw0qzKBBP2id5N2mUAFaNku8mGMfeaU4
+         Q8xA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IvrvzJ5c;
+       dkim=fail header.i=@linaro.org header.s=google header.b="TCdr/EAL";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s186si1594270ios.107.2021.09.08.02.16.32
+        by mx.google.com with ESMTPS id k14si1798835ybm.290.2021.09.08.02.19.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Sep 2021 02:16:33 -0700 (PDT)
+        Wed, 08 Sep 2021 02:19:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IvrvzJ5c;
+       dkim=fail header.i=@linaro.org header.s=google header.b="TCdr/EAL";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54214 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60914 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mNth2-0004ez-DI
-	for alex.bennee@linaro.org; Wed, 08 Sep 2021 05:16:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57356)
+	id 1mNtk8-0000il-Kv
+	for alex.bennee@linaro.org; Wed, 08 Sep 2021 05:19:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mNtgl-0004e1-NY
- for qemu-arm@nongnu.org; Wed, 08 Sep 2021 05:16:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26202)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mNtgi-0003y8-B8
- for qemu-arm@nongnu.org; Wed, 08 Sep 2021 05:16:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631092570;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=YAZtghhghlq89lbfSShBZZ/ZsCtccFU+0KD5qQVQlIo=;
- b=IvrvzJ5cQIhGX5cFW63iK6EVheSzhRWAK4ooHSi1un/Q04OFjf9g1eLxt318aI3yLqJj0c
- vLRwNwusa0SQRyc+FrmQiBWCCxyK6sgro1vAWuEDIUFT3fui04Q5ubKNQYP6bO9IsLuUJ9
- 1BOsgk8DrDf3Bmyw1DKEf4pXc59xtmo=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-477-UAc240MKNwaY5uEcj2HY6w-1; Wed, 08 Sep 2021 05:16:07 -0400
-X-MC-Unique: UAc240MKNwaY5uEcj2HY6w-1
-Received: by mail-ej1-f71.google.com with SMTP id
- x21-20020a170906135500b005d8d4900c5eso702396ejb.4
- for <qemu-arm@nongnu.org>; Wed, 08 Sep 2021 02:16:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mNtjj-0000fa-Sv
+ for qemu-arm@nongnu.org; Wed, 08 Sep 2021 05:19:19 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:41755)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mNtjh-0006UD-Ir
+ for qemu-arm@nongnu.org; Wed, 08 Sep 2021 05:19:19 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id u9so2192713wrg.8
+ for <qemu-arm@nongnu.org>; Wed, 08 Sep 2021 02:19:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=zfkAKvckiHUBOnhbwSX7IQ1MbXNPzUdNaVKWFOa6Tu4=;
+ b=TCdr/EALVfiBpf593ys2qhh5aTUx/y3TaGqIuaFKzU+zY1yNEGGx5vxMlSQCw/uYFN
+ 3T56O9oSnPPj9SZG/KqulpNfRdNOIDLESV2xbn1si4w0aU+EK8ppB9efGGgva+1TGMdi
+ nySTNLz43UZzlBWAuWFn4VcolzLHLmB9vjWx6Gdf/wDUqK20ECumh5IFy/jLISFub90Q
+ jmDzHyctXq5Yi9V/O3vMfYAJ0Huha+/VPKTFB0DPHnDWaR+w76kzJh+1F6VLN2SsTZia
+ v9UWsZoYj73zLgMhKicspO4ea5tsZCOkUe+w2gBZ3uKQe9qRmTjXPBUSIyJ7DLIgrOEt
+ bfeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=YAZtghhghlq89lbfSShBZZ/ZsCtccFU+0KD5qQVQlIo=;
- b=QBKkBH6G5EeZZu+TrB4/bbsQKK+V0EJcYXxToCgGO/Vq8Z8WVuxChXqMZH6sQvF3+w
- H7R4+j91hB+AoqitUTLWaAOjPhkwXR3oWTG95ZbSSCx8hdaeJJuIlLNhJRgA6WinxnGM
- CpDwjSlKmanyTxabpRVki/+AuPXlx5wR/YHLwUOBqSwRko9Hom24megLK3VFJDUf6DKZ
- v8cEcl1UB9AEwVFbgGMTR4WLhvlcMLxWNrlBxNiVxyCORcASNWHb5BtSgQv1OJ1tV282
- ohrACSX9Eu4WqfN0YM7bZfyhjEDnkR/meP0r5SEDhCC1FPcsne6ak5rUM5Xcbnmt1q8r
- f8RQ==
-X-Gm-Message-State: AOAM532Zf3gDLd1toY2Ua12UFNr3ycjDjMA5ghcGbt5JTjf3q+PW9qxr
- S+ODJLyx9uKrPY3hQEvcNo0K4onyMD/6vClZdfTuW5nv51wPUVQ7C81DU4LFkSQ1bPyJYpFg1ps
- rC+j6GuNj//+Z
-X-Received: by 2002:a05:6402:cab:: with SMTP id
- cn11mr2816066edb.293.1631092566558; 
- Wed, 08 Sep 2021 02:16:06 -0700 (PDT)
-X-Received: by 2002:a05:6402:cab:: with SMTP id
- cn11mr2816045edb.293.1631092566377; 
- Wed, 08 Sep 2021 02:16:06 -0700 (PDT)
-Received: from gator (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id r6sm672700ejb.119.2021.09.08.02.14.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Sep 2021 02:14:40 -0700 (PDT)
-Date: Wed, 8 Sep 2021 11:14:04 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v2 0/3] hw/arm/virt_acpi_build: Generate DBG2 table
-Message-ID: <20210908091404.ov2ku6t3dl6s2ui3@gator>
-References: <20210906123139.93593-1-eric.auger@redhat.com>
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zfkAKvckiHUBOnhbwSX7IQ1MbXNPzUdNaVKWFOa6Tu4=;
+ b=q/DxWdBtWHEjDhZeFTf77DgcH3Tb4GeGVG6pR9pzi5a8cuiqm/5HoVBFX4bMHYFadc
+ d7fsMao82U8BY3GetFsXSVhP92bOxfiF/TqqJqrIsFqzi4O0ZecTyKmhO3uvMkkOqfCw
+ Nar6s7mTBgkbYmjJufVdQY8W1ToZ6GLKG1zUIIwOOfRDAVBIFTA56JKTiny3rqgy4Ncw
+ xvj94bqonEGflVwLRzPbwecvEld2Ev1ArfWSe71rZ0k5jrDd3GVqhgPw6QXAzRWxQYaw
+ +6tWyHQiJyEaRJVgXbqw8ZIZvHddCoLWLZCSeRjaQlNx4+SlcTZJss1ZRyQGc9mt6IJ3
+ T0nw==
+X-Gm-Message-State: AOAM530WWzU3tG7fQS7RCqW5Z1Qf4jbfO26vTSfV66CY9DpuOQHs8n+U
+ qzW4OUKIhkwXSVA4iAda3XAEwPzRzx3Ho5OfUQg=
+X-Received: by 2002:adf:ea90:: with SMTP id s16mr2830731wrm.235.1631092755991; 
+ Wed, 08 Sep 2021 02:19:15 -0700 (PDT)
+Received: from [192.168.1.165] ([139.47.33.227])
+ by smtp.gmail.com with ESMTPSA id a9sm1048157wru.27.2021.09.08.02.19.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Sep 2021 02:19:15 -0700 (PDT)
+Subject: Re: [PATCH v2 4/8] linux-user/arm: Report SIGBUS and SIGSEGV correctly
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210821195958.41312-1-richard.henderson@linaro.org>
+ <20210821195958.41312-5-richard.henderson@linaro.org>
+ <CAFEAcA82iZptWmCcgonZvLTU4g+5nnEEQDdtHD5y=X7m82N1Yg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <83aac1b9-35a9-bcdb-c424-6852cbb25305@linaro.org>
+Date: Wed, 8 Sep 2021 11:19:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210906123139.93593-1-eric.auger@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <CAFEAcA82iZptWmCcgonZvLTU4g+5nnEEQDdtHD5y=X7m82N1Yg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.332,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,56 +121,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, gshan@redhat.com, mst@redhat.com,
- qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, philmd@redhat.com, ardb@kernel.org,
- eric.auger.pro@gmail.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rwJwUOqN50he
+X-TUID: QW1baOfjFViF
 
-On Mon, Sep 06, 2021 at 02:31:36PM +0200, Eric Auger wrote:
-> This series generates the ACPI DBG2 table along with machvirt.
-> It applies on top of Igor's
-> [PATCH v2 00/35] acpi: refactor error prone build_header() and
-> packed structures usage in ACPI tables
-> 
-> The DBG2 specification can be found at
-> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table.
-> 
-> DBG2 is mandated by ARM SBBR since its v1.0 release (the rationale
-> behind is Windows requires it on all systems).
-> 
-> The DBG2 is used to describe a debug port, used by the kernel debugger.
+On 8/26/21 3:31 PM, Peter Maydell wrote:
+> Side note: for cases like this where we can tell MAPERR from
+> ACCERR based on info the exception handler passes to us, should
+> we prefer that or the "check the page flags" approach that
+> force_sigsegv_for_addr() takes ?  I feel like the former is
+> nicer, because in a multithreaded program some other thread
+> might have changed whether the page is mapped between our taking
+> the fault and getting here. But maybe that's always racy...
 
-Hi Eric,
+Both ways are racy.
 
-Did you test this in some way with a Linux guest?
+After having played with SIGBUS, what I believe should happen is that we clean up the 
+signal handling such that we can pass through the host MAPERR/ACCERR, remapping any fault 
+address, after filtering the write-protect case that we care about.
 
-Thanks,
-drew
+I'm not sure how much effort it would be to do that.  Certainly the test matrix is pretty 
+darn large.  But perhaps it would simplify the huge SIGBUS patch set, and thus make it all 
+worthwhile.
 
-> 
-> This series and its dependency can be found at
-> https://github.com/eauger/qemu.git
-> branch: dbg2-v2-igor-v2-fix
-> 
-> History:
-> v1 -> v2:
-> - rebase on top of Igor's series and use acpi_init_table/acpi_table_composed
->   and build_append_int_noprefix()
-> 
-> Eric Auger (3):
->   tests/acpi: Add void table for virt/DBG2 bios-tables-test
->   bios-tables-test: Generate reference table for virt/DBG2
->   hw/arm/virt_acpi_build: Generate DBG2 table
-> 
->  hw/arm/virt-acpi-build.c  |  64 +++++++++++++++++++++++++++++++++++++-
->  tests/data/acpi/virt/DBG2 | Bin 0 -> 87 bytes
->  2 files changed, 63 insertions(+), 1 deletion(-)
->  create mode 100644 tests/data/acpi/virt/DBG2
-> 
-> -- 
-> 2.26.3
-> 
 
+r~

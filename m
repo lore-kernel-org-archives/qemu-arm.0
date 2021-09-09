@@ -1,327 +1,232 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1276978lfb;
-        Thu, 9 Sep 2021 02:28:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUKHTg5SFbJH0esRDkg5enDDqd/wz1fHsme8oakqNuDVniHUH4SqmeHUXriHHTveRsIAxX
-X-Received: by 2002:a05:6402:524e:: with SMTP id t14mr2145349edd.39.1631179683802;
-        Thu, 09 Sep 2021 02:28:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631179683; cv=none;
+Received: by 2002:a05:6214:32a:0:0:0:0 with SMTP id j10csp1667736qvu;
+        Thu, 9 Sep 2021 03:27:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxithcd0lsfZ+ZkFigxW39oF/CGLlWYyPp+fwi518bNnOhtrr2eAbgA2l3540DAarovEplN
+X-Received: by 2002:a6b:7106:: with SMTP id q6mr2092123iog.174.1631183234551;
+        Thu, 09 Sep 2021 03:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631183234; cv=none;
         d=google.com; s=arc-20160816;
-        b=UWF2OUTDmuKhA08twLTl3kSmjeYZmpX7S8+IO9Gj/C9wpFFmpW9oym8mWQ4upC6CpC
-         5hGoIJum3jgadRC0jgrLLAS1R7e/jsEGChGzmOX1I4tJ/2elt1POO41gLxKEc9ZV34sY
-         z8RV7httz3/xDje80foQWhxh9Y6oYXFNknE9oFKrAiOlN/cbbrRMkc9J/bvNLD89pi3m
-         qGBV9vXQhD0XSQBvtIlghZielJAWje6ffjIkiIYH8DylwUteeFra6Wc5IYUkPaoPr/NL
-         I3CzJLYDVrEgdeRhu+CtqJn0698Zd4iZzcJhyL3AkwojPWDlO+eIBvL5aBcxoMZy6AQA
-         i9vg==
+        b=e/E4emlBpR8IlUmjo1CAAOWP8Xon5AZJWLHo8wShuIyIjk36kUO6wePCHb9NkHVNZ3
+         3fUUsY70+3lLc6SRnCKEAWXo1UOYT2wP6IDKvjvmZQAX9Um0ryJ/VxyFMFEMFh31OO0x
+         BB/rMQCIZmwvL97n2E/CaewZ23+IKjgvPFAkQoKV7laUdEMJ/V6PIpHn+5q0Pw/L2103
+         P4WTQJ7jkaVaQ9fRodhQVnTL+9xC3xCcwmC4byqO67sZ/GOHzBsjxBQBWwFIQdP+LIva
+         VA37EluXDOnfn0a6EpVLIVMU94sz/WbvnOtT60J7gXJRTRqPi7is9uHS7ppu46+4P8xk
+         AfbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=mp/yxKIxo35qlIxjkPpHR2WWZd6Ip78W8vNh9glzSik=;
-        b=0tFJq7CHpubr1O0qyEAUUiyNuUeq/cT5VI9iG5FoORNoRQFVoQi/ovm24CvtlcUEg1
-         ZplKV+hpw4lDADUaoOufTEC4JkyZhqhbhXJFB/jsF9wf23BoRCnTGkOJFcXX3/oQIVrM
-         r+fvifQwGYdsA1y6g3WL5ZVTPt0gR+AgsPuzuIzeq8iu262FgF+whbyXCWFyuMKTnUr3
-         AZGzIXD2Oj31TVNwysqfmaW9F77EMIgvI0MOuSDfACr1+31Z4i94zwUFeyi4bmtucRGk
-         8m55FB2CSaMK7OV1IFw5ZohLgfq7bXbv/s91wWUj+IpULp30nnFxGfXoau2iWKozb66t
-         d0zg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=BKTkn/NhoOYZeu89LbHdbIcwXKPPCSfGcJhfI9gV1eY=;
+        b=dxzTzVyaw/oXthCj132bBdLVwgGcXzyJv9EWi0o7LpyuGdm7em/n9T3ZyxU6w9BosW
+         9nesNI78zPYjLM8QZq8oCKTHbV3eYQVldrR2tCezR2hzXzdmmk3AW7+N1rJrHWrSkDKF
+         b0wIj3ZgxXQPyMA/nxHkn1weGDpbu+qc0tPoWc4hSW1ISIZ4bOtjwFPjBx9s4BP9F+r9
+         M+T9aM8ro2Cp8O6E87c54wbUgc/UDcv74AY0ijiBGP0Wu0Bw9X3MoBTT2L/qhej/IGPN
+         ag2rFNMCcNVjakpJU/1r6zXVqlkYUrX65jxsVkIDwdI8vbUZJtputdtsKjKM5ZnNRRXc
+         JALw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S3m6KLTN;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id gc38si1289952ejc.601.2021.09.09.02.28.03
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f10si1328875ile.158.2021.09.09.03.27.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Sep 2021 02:28:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 09 Sep 2021 03:27:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S3m6KLTN;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1631179682;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mp/yxKIxo35qlIxjkPpHR2WWZd6Ip78W8vNh9glzSik=;
-	b=S3m6KLTNfsE/VRWifdS8hGsWrfeDeud+ACm3c7gtJbhvL03yxkDz25CWhzenYJG0mT2asa
-	/1bBjqJI3ryKDE21ozgHqgCnYPoL+WohqomI1N53mnJuJpunJHDM3Rt6wFQhZvQ2/dsUBe
-	f/QOfKu9XMpXbwBn1Q59qnLevwXaItI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-430-_FXt8cpQMomj6Kv3c-W0lg-1; Thu, 09 Sep 2021 05:28:00 -0400
-X-MC-Unique: _FXt8cpQMomj6Kv3c-W0lg-1
-Received: by mail-wr1-f72.google.com with SMTP id t15-20020a5d42cf000000b001565f9c9ee8so314490wrr.2
-        for <alex.bennee@linaro.org>; Thu, 09 Sep 2021 02:28:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=mp/yxKIxo35qlIxjkPpHR2WWZd6Ip78W8vNh9glzSik=;
-        b=B7T3r7K3XGUNioBg0bvEtiuKa6puaFU1AQ4QU21hlpgNIYEYuFRQH/Fxr5GOs3yyYL
-         J1wiFfHXzEqwvl0NNFrKg81Isj3Cy18baA3v0t5uldXg6vGSPX/UOAFEmALEwps7RKn1
-         gvQpSVvWPWFOZyUTwu3icQcljWQczUajdRu8IvSG4zYBzH0+6sZD33e1cPMqBha4hnxt
-         b0dzNRAwdnk+17IRJdAPBBpGf9ThU3QnxskOMfHdimH/ZEaNlLvyKhaRzzyn6qEOrvx9
-         Fs+Y2xm6fy8Nl++92oQW8QdPdcHyRkdasc5Ip1rB97bNTCDBZ9BvLGIq6ajx5gPskdU6
-         iyew==
-X-Gm-Message-State: AOAM530eEHL18neB7lwQ3y1I2O9wF8xXvMd1Td9IJ9hJrGPOxFmHnmOP
-	t6ANEPc7/QRFDOy5ffP0iZ2jXLHNuoj1siYDLPHMKsw2F9Wp5uoxAicY9ftY4LvIyJIYPXKkCTE
-	mZzI+5zT2a7SOkLFQ
-X-Received: by 2002:a05:600c:364f:: with SMTP id y15mr1883270wmq.193.1631179679255;
-        Thu, 09 Sep 2021 02:27:59 -0700 (PDT)
-X-Received: by 2002:a05:600c:364f:: with SMTP id y15mr1883244wmq.193.1631179678983;
-        Thu, 09 Sep 2021 02:27:58 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
-        by smtp.gmail.com with ESMTPSA id o7sm1096209wmq.36.2021.09.09.02.27.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Sep 2021 02:27:58 -0700 (PDT)
-Subject: Re: [PATCH v4 1/1] hw/pflash_cfi01: Allow backing devices to be
- smaller than memory region
-To: David Edmondson <david.edmondson@oracle.com>, qemu-devel@nongnu.org,
- Tom Lendacky <thomas.lendacky@amd.com>, James Bottomley <jejb@linux.ibm.com>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Max Reitz <mreitz@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?B?aGFpYmluemhhbmco5byg5rW35paMKQ==?= <haibinzhang@tencent.com>,
- John Snow <jsnow@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>,
- qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Xu Yandong <xuyandong2@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Zheng Xiang <zhengxiang9@huawei.com>
-References: <20210810134050.396747-1-david.edmondson@oracle.com>
- <20210810134050.396747-2-david.edmondson@oracle.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <384a5d1d-de25-78d7-d8b0-226ebca44a6d@redhat.com>
-Date: Thu, 9 Sep 2021 11:27:56 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57640 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mOHGq-0005BZ-UE
+	for alex.bennee@linaro.org; Thu, 09 Sep 2021 06:27:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57592)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mOHFI-0004ZN-OZ; Thu, 09 Sep 2021 06:25:29 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:51455)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mOHFF-0003xz-Cz; Thu, 09 Sep 2021 06:25:28 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.36])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 43C94BD19657;
+ Thu,  9 Sep 2021 12:25:13 +0200 (CEST)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Thu, 9 Sep
+ 2021 12:25:12 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002697dc3a4-e7d3-4a0a-bdca-640b2e9c6593,
+ 71690547EA7DDBCF94B8ED6B48C1704BA445499A) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH v2 1/1] hw/arm/aspeed: Initialize AST2600 UART clock
+ selection registers
+To: Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
+References: <20210906134023.3711031-1-pdel@fb.com>
+ <20210906134023.3711031-2-pdel@fb.com>
+ <CACPK8XfyxtB2v8i4hprSgJZj3Tm9P8e7a456UKv=64gHZs-jiQ@mail.gmail.com>
+ <033C6B44-2867-4C4E-B5D4-A482E0E56DC8@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <8e42a790-3ed4-198c-d407-729518e167a8@kaod.org>
+Date: Thu, 9 Sep 2021 12:25:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210810134050.396747-2-david.edmondson@oracle.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <033C6B44-2867-4C4E-B5D4-A482E0E56DC8@fb.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: zw4KjO50Fy0C
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 5f3bb49e-618f-47bb-a952-c22ce4624a50
+X-Ovh-Tracer-Id: 16215491937440795555
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefledgvdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdehgefhvdehtdeuleetgedvfeeukedtfeeihfffffeiuddutdduhffgvedtnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.922,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: t5AqduBw9mou
 
-Hi David,
-
-On 8/10/21 3:40 PM, David Edmondson wrote:
-> Allow the backing device to be smaller than the extent of the flash
-> device by mapping it as a subregion of the flash device region.
+On 9/7/21 3:37 PM, Peter Delevoryas wrote:
 > 
-> Return zeroes for all reads of the flash device beyond the extent of
-> the backing device.
 > 
-> For writes beyond the extent of the underlying device, fail on
-> read-only devices and discard them for writable devices.
+>> On Sep 7, 2021, at 1:24 AM, Joel Stanley <joel@jms.id.au> wrote:
+>>
+>> On Mon, 6 Sept 2021 at 13:40, <pdel@fb.com> wrote:
+>>>
+>>> From: Peter Delevoryas <pdel@fb.com>
+>>>
+>>> UART5 is typically used as the default debug UART on the AST2600, but
+>>> UART1 is also designed to be a debug UART. All the AST2600 UART's have
+>>> semi-configurable clock rates through registers in the System Control
+>>> Unit (SCU), but only UART5 works out of the box with zero-initialized
+>>> values. The rest of the UART's expect a few of the registers to be
+>>> initialized to non-zero values, or else the clock rate calculation will
+>>> yield zero or undefined (due to a divide-by-zero).
+>>>
+>>> For reference, the U-Boot clock rate driver here shows the calculation:
+>>>
+>>>    https://github.com/facebook/openbmc-uboot/blob/15f7e0dc01d8/drivers/clk/aspeed/clk_ast2600.c#L357
+>>>
+>>> To summarize, UART5 allows selection from 4 rates: 24 MHz, 192 MHz, 24 /
+>>> 13 MHz, and 192 / 13 MHz. The other UART's allow selecting either the
+>>> "low" rate (UARTCLK) or the "high" rate (HUARTCLK). UARTCLK and HUARTCLK
+>>> are configurable themselves:
+>>>
+>>>    UARTCLK = UXCLK * R / (N * 2)
+>>>    HUARTCLK = HUXCLK * HR / (HN * 2)
+>>>
+>>> UXCLK and HUXCLK are also configurable, and depend on the APLL and/or
+>>> HPLL clock rates, which also derive from complicated calculations. Long
+>>> story short, there's lots of multiplication and division from
+>>> configurable registers, and most of these registers are zero-initialized
+>>> in QEMU, which at best is unexpected and at worst causes this clock rate
+>>> driver to hang from divide-by-zero's. This can also be difficult to
+>>> diagnose, because it may cause U-Boot to hang before serial console
+>>> initialization completes, requiring intervention from gdb.
+>>>
+>>> This change just initializes all of these registers with default values
+>>> from the datasheet.
+>>>
+>>> To test this, I used Facebook's AST2600 OpenBMC image for "fuji", with
+>>> the following diff applied (because fuji uses UART1 for console output,
+>>> not UART5).
+>>>
+>>>  @@ -323,8 +323,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>>>       }
+>>>
+>>>      /* UART - attach an 8250 to the IO space as our UART5 */
+>>>  -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+>>>  -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
+>>>  +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART1], 2,
+>>>  +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART1),
+>>>                    38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>>>
+>>>       /* I2C */
+>>>
+>>> Without these clock rate registers being initialized, U-Boot hangs in
+>>> the clock rate driver from a divide-by-zero, because the UART1 clock
+>>> rate register reads return zero, and there's no console output. After
+>>> initializing them with default values, fuji boots successfully.
+>>>
+>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>>> ---
+>>> hw/misc/aspeed_scu.c | 4 ++++
+>>> 1 file changed, 4 insertions(+)
+>>>
+>>> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+>>> index 05edebedeb..a95dca65f2 100644
+>>> --- a/hw/misc/aspeed_scu.c
+>>> +++ b/hw/misc/aspeed_scu.c
+>>> @@ -119,6 +119,8 @@
+>>> #define AST2600_CLK_SEL3          TO_REG(0x308)
+>>> #define AST2600_CLK_SEL4          TO_REG(0x310)
+>>> #define AST2600_CLK_SEL5          TO_REG(0x314)
+>>> +#define AST2600_UARTCLK_PARAM     TO_REG(0x338)
+>>> +#define AST2600_HUARTCLK_PARAM    TO_REG(0x33C)
+>>
+>> It would be consistent with the existing naming if we dropped the
+>> _PARAM. Not worth re-spinning just for that though.
 > 
-> Signed-off-by: David Edmondson <david.edmondson@oracle.com>
-> ---
->  hw/block/pflash_cfi01.c | 105 ++++++++++++++++++++++++++++++++--------
->  hw/block/trace-events   |   3 ++
->  2 files changed, 87 insertions(+), 21 deletions(-)
+> Yeah sorry about that, I wasn’t sure what name to use here. The
+> datasheet names “Generate UARTCLK from UXCLK” and “Generate HUARTCLK
+> from HUXCLK” seemed too long and didn’t match anything else. I thought
+> these registers were kind of similar to the HPLL_PARAM register, just
+> for UARTCLK and HUARTCLK. If there are any further revisions I can
+> change it though.
+
+I will fix that.
+
+Thanks,
+
+C. 
+
 > 
-> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index 81f9f971d8..f3289b6a2f 100644
-> --- a/hw/block/pflash_cfi01.c
-> +++ b/hw/block/pflash_cfi01.c
-> @@ -83,6 +83,8 @@ struct PFlashCFI01 {
->      uint64_t counter;
->      unsigned int writeblock_size;
->      MemoryRegion mem;
-> +    MemoryRegion mem_outer;
-> +    char outer_name[64];
->      char *name;
->      void *storage;
->      VMChangeStateEntry *vmstate;
-> @@ -434,7 +436,6 @@ static inline void pflash_data_write(PFlashCFI01 *pfl, hwaddr offset,
->          }
->          break;
->      }
-> -
->  }
->  
->  static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
-> @@ -656,8 +657,44 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
->  }
->  
->  
-> -static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr, uint64_t *value,
-> -                                              unsigned len, MemTxAttrs attrs)
-> +static MemTxResult pflash_outer_read_with_attrs(void *opaque, hwaddr addr,
-> +                                                uint64_t *value, unsigned len,
-> +                                                MemTxAttrs attrs)
-> +{
-> +    PFlashCFI01 *pfl = opaque;
-> +
-> +    trace_pflash_outer_read(pfl->name, addr, len);
-> +    *value = 0;
+>>
+>>> #define AST2600_HW_STRAP1         TO_REG(0x500)
+>>> #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+>>> #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+>>> @@ -681,6 +683,8 @@ static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+>>>     [AST2600_CLK_SEL3]          = 0x00000000,
+>>>     [AST2600_CLK_SEL4]          = 0xF3F40000,
+>>>     [AST2600_CLK_SEL5]          = 0x30000000,
+>>> +    [AST2600_UARTCLK_PARAM]     = 0x00014506,
+>>> +    [AST2600_HUARTCLK_PARAM]    = 0x000145C0,
+>>
+>> These match v9 of the datasheet, so they look good to me.
+>>
+>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> 
+> Thanks!
+> Peter
+> 
+>>
+>>>     [AST2600_CHIP_ID0]          = 0x1234ABCD,
+>>>     [AST2600_CHIP_ID1]          = 0x88884444,
+>>> };
+>>> --
+>>> 2.30.2
+> 
 
-This seems to break the "width" and "old-multiple-chip-handling"
-parameters ("emulating a number of flash devices wired up in parallel").
-
-Also this breaks booting with SEV enabled on X86... See commits
-9617cddb726 ("pc: add parser for OVMF reset block") and b2f73a0784b
-("sev/i386: Allow AP booting under SEV-ES").
-
-> +    return MEMTX_OK;
-> +}
-> +
-> +static MemTxResult pflash_outer_write_with_attrs(void *opaque, hwaddr addr,
-> +                                                 uint64_t value, unsigned len,
-> +                                                 MemTxAttrs attrs)
-> +{
-> +    PFlashCFI01 *pfl = opaque;
-> +
-> +    trace_pflash_outer_write(pfl->name, addr, len);
-> +    if (pfl->ro) {
-> +        return MEMTX_ERROR;
-> +    } else {
-> +        warn_report_once("%s: "
-> +                         "attempt to write outside of the backing block device "
-> +                         "(offset " TARGET_FMT_plx ") ignored",
-> +                         pfl->name, addr);
-
-This doesn't seem acceptable on mainstream, see:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg607292.html
-
-> +        return MEMTX_OK;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps pflash_cfi01_outer_ops = {
-> +    .read_with_attrs = pflash_outer_read_with_attrs,
-> +    .write_with_attrs = pflash_outer_write_with_attrs,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr,
-> +                                              uint64_t *value, unsigned len,
-> +                                              MemTxAttrs attrs)
->  {
->      PFlashCFI01 *pfl = opaque;
->      bool be = !!(pfl->features & (1 << PFLASH_BE));
-> @@ -670,8 +707,9 @@ static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr, uint64_
->      return MEMTX_OK;
->  }
->  
-> -static MemTxResult pflash_mem_write_with_attrs(void *opaque, hwaddr addr, uint64_t value,
-> -                                               unsigned len, MemTxAttrs attrs)
-> +static MemTxResult pflash_mem_write_with_attrs(void *opaque, hwaddr addr,
-> +                                               uint64_t value, unsigned len,
-> +                                               MemTxAttrs attrs)
->  {
->      PFlashCFI01 *pfl = opaque;
->      bool be = !!(pfl->features & (1 << PFLASH_BE));
-> @@ -800,7 +838,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
->  {
->      ERRP_GUARD();
->      PFlashCFI01 *pfl = PFLASH_CFI01(dev);
-> -    uint64_t total_len;
-> +    uint64_t outer_len, inner_len;
->      int ret;
->  
->      if (pfl->sector_len == 0) {
-> @@ -816,35 +854,60 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->  
-> -    total_len = pfl->sector_len * pfl->nb_blocs;
-> -
-> -    memory_region_init_rom_device(
-> -        &pfl->mem, OBJECT(dev),
-> -        &pflash_cfi01_ops,
-> -        pfl,
-> -        pfl->name, total_len, errp);
-> -    if (*errp) {
-> -        return;
-> -    }
-> -
-> -    pfl->storage = memory_region_get_ram_ptr(&pfl->mem);
-> -    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
-> +    outer_len = pfl->sector_len * pfl->nb_blocs;
->  
->      if (pfl->blk) {
->          uint64_t perm;
-> +
->          pfl->ro = !blk_supports_write_perm(pfl->blk);
->          perm = BLK_PERM_CONSISTENT_READ | (pfl->ro ? 0 : BLK_PERM_WRITE);
->          ret = blk_set_perm(pfl->blk, perm, BLK_PERM_ALL, errp);
->          if (ret < 0) {
->              return;
->          }
-> +
-> +        inner_len = blk_getlength(pfl->blk);
-> +
-> +        if (inner_len > outer_len) {
-> +            error_setg(errp, "%s: "
-> +                       "block backend provides %" PRIu64 " bytes, "
-> +                       "device limited to %" PRIu64 " bytes",
-> +                       pfl->name, inner_len, outer_len);
-> +            return;
-> +        }
->      } else {
->          pfl->ro = false;
-> +        inner_len = outer_len;
->      }
->  
-> +    trace_pflash_realize(pfl->name, pfl->ro, inner_len, outer_len);
-> +
-> +    snprintf(pfl->outer_name, sizeof(pfl->outer_name),
-> +             "%s container", pfl->name);
-> +    memory_region_init_io(&pfl->mem_outer, OBJECT(dev),
-> +                          &pflash_cfi01_outer_ops,
-> +                          pfl, pfl->outer_name, outer_len);
-
-Here you create an I/O region but name it "container" ...
-
-> +
-> +    memory_region_init_rom_device(&pfl->mem, OBJECT(dev),
-> +                                  &pflash_cfi01_ops,
-> +                                  pfl, pfl->name, inner_len, errp);
-> +    if (*errp) {
-> +        return;
-> +    }
-> +
-> +    memory_region_add_subregion(&pfl->mem_outer, 0, &pfl->mem);
-
-... then add it inside the previous region, so &pfl->mem is used
-as container (containing &pfl->mem_outer named "container"...).
-This is confusing. Anyhow we shouldn't add subregions to I/O
-regions but use real containers instead, creating the container
-with memory_region_init(), then adding subregions inside.
-
-> +
-> +    pfl->storage = memory_region_get_ram_ptr(&pfl->mem);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem_outer);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
-
-
-Have you audited no code uses:
-
-  mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(pflash), 0);
-
-Because we'd need to change 0 -> 1.
-
-See also the problem with pflash_cfi01_get_memory():
-https://lists.gnu.org/archive/html/qemu-devel/2021-09/msg01988.html
-https://lists.gnu.org/archive/html/qemu-devel/2021-09/msg02026.html
-
->      if (pfl->blk) {
-> -        if (!blk_check_size_and_read_all(pfl->blk, pfl->storage, total_len,
-> -                                         errp)) {
-> +        int ret = blk_pread(pfl->blk, 0, pfl->storage, inner_len);
-> +
-> +        if (ret < 0) {
-> +            error_setg_errno(errp, -ret,
-> +                             "cannot read %" PRIu64 " "
-> +                             "bytes from block backend", inner_len);
->              vmstate_unregister_ram(&pfl->mem, DEVICE(pfl));
->              return;
->          }

@@ -1,309 +1,327 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp722962lfb;
-        Wed, 8 Sep 2021 11:47:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxsJdNcC4GqRL5jJO40Pn1jKMifS9FmLk5zNwDE2JbfkM6NuFFaF/aJ3v9Iiy6ALzgHnb67
-X-Received: by 2002:a05:6638:1491:: with SMTP id j17mr5066052jak.75.1631126845875;
-        Wed, 08 Sep 2021 11:47:25 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1631126845; cv=pass;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1276978lfb;
+        Thu, 9 Sep 2021 02:28:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwUKHTg5SFbJH0esRDkg5enDDqd/wz1fHsme8oakqNuDVniHUH4SqmeHUXriHHTveRsIAxX
+X-Received: by 2002:a05:6402:524e:: with SMTP id t14mr2145349edd.39.1631179683802;
+        Thu, 09 Sep 2021 02:28:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631179683; cv=none;
         d=google.com; s=arc-20160816;
-        b=nhJim+t94o+VsoBPefm0/gk/wcKYqRRQ4sqWSiHRlm+imb3hns6O2R6cMB6tnC/c+x
-         mXu/nIkajIBcCudoQiKoVCHOTDrPOov3GD7kiAkZ0HYPLL5031nxfjJyqAxkYHW4HRT0
-         1Cy8AEyWJa3WsH87gD6Jv32+c21yZp6Eta31FVK0dKcWZmw6DdejqWgDv4Jpq0MhOfvw
-         qi1CYOmNaNwDAS3+fOyJsA7eVgF3qzbyOKrGK95fqDRCW9USI/kC4lfISLnTIEYvhPkZ
-         h2qEqTXHZOmGRlAGv6MbDY1YjpWlkUf+uZYOIyS73H662dDj6IUHSOrYT0ZMp9eWJuft
-         NLNg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=UV5wgr3HOrHsgh7nv1DzcrWeSrE4P3zkSLqzfK3/tk0=;
-        b=OCVy6oYYVBjKDhH1+GfdKP2MXYwWKFn3U0t9QAU3pHbqnC2V+XJ9X5ecpLVu0fKikY
-         1h8NX+pzBR1TaAwWXgmz0hOI9O0HvgLXMLvbuZ5umU4bpv1WWaPRoBlreklmpKG9B3mJ
-         oDbuz5jwOGeykZpSl7YHEdhy6ynW9OofdteYKCJLxwNhQdDEYQHVAtK9Ko+yebnHqtun
-         fId8OLAE3sNC/DMb70JaGAiGXdSQrAZew9yytCMqYqX1xrwdT65Ay8U7SuK8yTZNJ0C0
-         aubkYZ40qASSNnxvi4q0Nl7Kp3Mx8EqMXILuOZ5TbRLVCQHXry+85D60XeMe4FYDcI2l
-         xSPQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=pFzt3O9y;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17si3042663iot.109.2021.09.08.11.47.25
+        b=UWF2OUTDmuKhA08twLTl3kSmjeYZmpX7S8+IO9Gj/C9wpFFmpW9oym8mWQ4upC6CpC
+         5hGoIJum3jgadRC0jgrLLAS1R7e/jsEGChGzmOX1I4tJ/2elt1POO41gLxKEc9ZV34sY
+         z8RV7httz3/xDje80foQWhxh9Y6oYXFNknE9oFKrAiOlN/cbbrRMkc9J/bvNLD89pi3m
+         qGBV9vXQhD0XSQBvtIlghZielJAWje6ffjIkiIYH8DylwUteeFra6Wc5IYUkPaoPr/NL
+         I3CzJLYDVrEgdeRhu+CtqJn0698Zd4iZzcJhyL3AkwojPWDlO+eIBvL5aBcxoMZy6AQA
+         i9vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=mp/yxKIxo35qlIxjkPpHR2WWZd6Ip78W8vNh9glzSik=;
+        b=0tFJq7CHpubr1O0qyEAUUiyNuUeq/cT5VI9iG5FoORNoRQFVoQi/ovm24CvtlcUEg1
+         ZplKV+hpw4lDADUaoOufTEC4JkyZhqhbhXJFB/jsF9wf23BoRCnTGkOJFcXX3/oQIVrM
+         r+fvifQwGYdsA1y6g3WL5ZVTPt0gR+AgsPuzuIzeq8iu262FgF+whbyXCWFyuMKTnUr3
+         AZGzIXD2Oj31TVNwysqfmaW9F77EMIgvI0MOuSDfACr1+31Z4i94zwUFeyi4bmtucRGk
+         8m55FB2CSaMK7OV1IFw5ZohLgfq7bXbv/s91wWUj+IpULp30nnFxGfXoau2iWKozb66t
+         d0zg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S3m6KLTN;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id gc38si1289952ejc.601.2021.09.09.02.28.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Sep 2021 11:47:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Sep 2021 02:28:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=pFzt3O9y;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:38456 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mO2bV-00028Q-4g
-	for alex.bennee@linaro.org; Wed, 08 Sep 2021 14:47:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49134)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=888587b7d3=pdel@fb.com>)
- id 1mO2bG-00027b-0B; Wed, 08 Sep 2021 14:47:11 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:54840)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=888587b7d3=pdel@fb.com>)
- id 1mO2bD-00055x-Db; Wed, 08 Sep 2021 14:47:09 -0400
-Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 188IfHRA001471; Wed, 8 Sep 2021 11:46:47 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : references : in-reply-to : content-type : content-id
- : content-transfer-encoding : mime-version; s=facebook;
- bh=UV5wgr3HOrHsgh7nv1DzcrWeSrE4P3zkSLqzfK3/tk0=;
- b=pFzt3O9ykJoepRM6+STJkQj9lut9ak+u6nFJbiIPFdG8v7vhq56fpQD6UvlcpicmB/Ck
- StkX6NVxsbLh/w95PI0SHKuIAl2EJo321uNmZk4pz22JybtjZy1gbZeEeMb4xZfApBR7
- 64J6irlWs1+Q1OIEd8/iTShZg4TF+08Dldc= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com with ESMTP id 3axcqfftap-6
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Wed, 08 Sep 2021 11:46:47 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (100.104.31.183)
- by o365-in.thefacebook.com (100.104.35.175) with Microsoft SMTP
- Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Wed, 8 Sep 2021 11:46:45 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KtMLMW57uws7CyY+6iM6axgj7bqM6yhkHMfLE676QNNBbOfWveqSywwSFVSQ5VjMxCXBy4idnMIstQA0Gapv6gOh+6blC4PIqx3MzJ7r3IVSa+xgCa3iRZn/cmEuB6AbGCJKSrvCvAiGwHoZvlfF3S9Hl6M3KQFdVzI85CEfaL4S7bQgS3+kisuA0G+myYjXAimH9f2XtV1yN+nLgoTLwlQHQJ47SYcaFPLD+nyE8tKHbVVuN0SeUnTW3jBKkSPKVGZObZnzVpYggX8LYByfaLy7017bViLd9fHxOfZQOo4S4ei6w7g1vDh5ba7H3guNIEj7ewXTlqNdDkxcv6ofOA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=UV5wgr3HOrHsgh7nv1DzcrWeSrE4P3zkSLqzfK3/tk0=;
- b=efcuo+Tu5K62rbjc9pe1md9TuWowRzHzfhBnNklFNKQRYRhar+IvzFcx/As+cLatYT4nxb5cJA/8fPd+zwhdBwrtzgzYzBUOjOgXRRFYwL7TuMBe7KPahXsmj6CU7KqQr/1cTyX+hgeBKDgxGbVJo3c/SD/NpkArNCfBRJlDUDnb09ixG9xc19acHGotDqtz6em4hg5Js1xewBzS2RMhgc5fvCjyg8tPJQtP6h+zxm4OqY+tUatc4GkC7VCcAfZtn1HrLGTmreIQKen/spP2zNjHnIXzT04K2cCKoT232lM8LpAe3YSCDouDql3H05Tv8YHy5HHIBbUjKb5PeS+Qnw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
- by SJ0PR15MB4188.namprd15.prod.outlook.com (2603:10b6:a03:2e1::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.14; Wed, 8 Sep
- 2021 18:46:44 +0000
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::39cf:cf4c:885c:9368]) by BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::39cf:cf4c:885c:9368%7]) with mapi id 15.20.4478.025; Wed, 8 Sep 2021
- 18:46:44 +0000
-From: Peter Delevoryas <pdel@fb.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Alistair Francis
- <alistair@alistair23.me>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Cameron Esfahani via <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 01/10] aspeed/smc: Add watchdog Control/Status Registers
-Thread-Topic: [PATCH 01/10] aspeed/smc: Add watchdog Control/Status Registers
-Thread-Index: AQHXo7XGcmrI2qF28kuhQf2sHH/ATquafFCA
-Date: Wed, 8 Sep 2021 18:46:43 +0000
-Message-ID: <632B8EA3-1A9E-46A9-A930-7ADD2C25F154@fb.com>
-References: <20210907065822.1152443-1-clg@kaod.org>
- <20210907065822.1152443-2-clg@kaod.org>
-In-Reply-To: <20210907065822.1152443-2-clg@kaod.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: kaod.org; dkim=none (message not signed)
- header.d=none;kaod.org; dmarc=none action=none header.from=fb.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a7b8da4c-3e18-4a09-07db-08d972f9012d
-x-ms-traffictypediagnostic: SJ0PR15MB4188:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <SJ0PR15MB4188401BF186C72E02005647ACD49@SJ0PR15MB4188.namprd15.prod.outlook.com>
-x-fb-source: Internal
-x-ms-oob-tlc-oobclassifiers: OLM:6790;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: a5L0ACOxBe4zm78yQmHI3rJzVRCeq8o0ga9iA8I7Dtcg0C8lt05cghRKps+P7vuRSMVSETWtx8oyT47VcJDdksxqryEm6shHxgXV+z/vFa6izfTuy+zSQi9UQXs54faEuaFt94nmpS6XKsAxxdgMpDZ4lqMugAYLo7X9iI8LDpCWBIqYRTKkQASDGtCEs/kLW3zajLwqQvBrTxddFhvH/EjwvQRocqHkyREJZnKZZW8scaovrm1xHetVK90M+wZM971OYm+8DQ8GRsW/22C67LrFM28XRYjAtBkLmc6ToTL+cmVL9KbYYRNce04wLL0KsecNRn4Jf5yC6CLLuwvkanPdYJ6aGI0Qdx2ZMgcR2vDYPgFUfR2FE9ddzo+QbWes+L0fFPNmmFcuooNtaw1fysaCoE844TCrIit6mK6CPK0CQ3HsCyV/i41+yqUmIOzkO//LYhdemAGwI2v2calso67pv3BTeqxzpIJH5zyUXYWXm63b/7Rk/VZq1FmEzAjXlHgnm4utrjMYwFRPVSoI9/7tMRcdwuLFIv0gDA7OJrcf+d7jCs14V37/8RUDSUtm4g3ysSRHKqCCt81wpyag3R23nkiUd30vmD0L7jJC4WbA15eh7X9+TgZsG9gSRVMdbRjxXj9t/Wqbmc1CxhJb2SR4EuNubMxklU3f9AJNs6YVsD6hKsQJLIsxQa4LNpc/oyfuAOZ9W9/oVrr/K6DhpFYJK3tJ1yEfIra4jifWAkk=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(39860400002)(136003)(376002)(346002)(396003)(38070700005)(76116006)(6506007)(53546011)(2906002)(8676002)(38100700002)(66556008)(54906003)(66476007)(6486002)(2616005)(83380400001)(6512007)(122000001)(8936002)(5660300002)(66946007)(4326008)(66446008)(64756008)(6916009)(33656002)(86362001)(186003)(316002)(36756003)(71200400001)(478600001)(66574015)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cDNZbWRsS0JjTzJlVTVvc2NGWWhzYUxVbzZYOCtTUDM2REZUWEZ4MFJITXpv?=
- =?utf-8?B?YWlPbmdod1FSRHkxb2NVNnByUnFBNFRJTHRNQmpoeWRuc3lCMjJUMGxMb2Yv?=
- =?utf-8?B?dThhTGhjZXB5Wmsra1NVS3hrckFnZDEzbHZYODVRUU9neTQ2MnIxUllOSjZQ?=
- =?utf-8?B?a3ZicnZaRVQyOXVHQmJESU13akRTUGtwOXdsdmRtbkgwRTF0RGl4aFIvNUhR?=
- =?utf-8?B?d1R1bEE0MGt4RWhBMG40dkNOUlJIUnNHOGN6RWJ2Ry9yaWd3b2VXV2hwYTlH?=
- =?utf-8?B?bDBzSG5WWlNaK3lJWS85R3ROMldqYXlZS3dORmc1QTlmMitVVUNxcVJrM0tR?=
- =?utf-8?B?UDRpLzNGZC92M296OUxhcVZnS0c0aWRyODhuWlE5K3lQZHpwTDJ1OThTVVN3?=
- =?utf-8?B?dnBuclhqazByZ0FoZU0wczdoNHd2TTJTZDhsWlZQMXd5V1dvNjcxZDY4WklW?=
- =?utf-8?B?RFY4aXNwY0tldXV1ampZK1JuVVBub3ROL0MxQ3d4N3JhcDRKam13bUh3SW1X?=
- =?utf-8?B?TWcwT2krRDN2cmkwWWttK29YZmxNWW9xN2Nqemw4R1p3QzNuWUhxM2RoMk5j?=
- =?utf-8?B?Z2o2L3B4UzgzUTh2Qi9NU3ZFdmtaZjl6aUdaeGxhQ0NPcmdsdTNRcEF0cHBK?=
- =?utf-8?B?RllBQjBqc0dyS1JmWCs0M0hSbnNIb2h6T2x2SXlCT0ZFdkFJSnhIVVQ5Sitq?=
- =?utf-8?B?UTJJVjRSQkF6YUxuVGVOZnRTQ05FemFjYUhlNXBOaE83TDFpSThkeUx6aTF6?=
- =?utf-8?B?aGVNbUx5S3hPMmVYUnBXekdUOXRiYjhITE5lNXV5Sm9YWUhxeVlIZGFYSXZ4?=
- =?utf-8?B?MjVKSHVDblYzS3hkVWo3R0cxN01XNkhwTHhHUjVqRml5S2EzUWNPMzE3WmJR?=
- =?utf-8?B?WFA1anhGN3JvV2xzbFMwcWZUYisrUnJpY1BiWmpJRU9NbXdPWjJRSHlPTGgr?=
- =?utf-8?B?ZFc3aE93NlhqRm5qTXBkcFVnTGhmWUxaakp5VFVOeHhQRWtlN2JtamFidkNt?=
- =?utf-8?B?eG9zVTVvSlBFZXpMTkNwVk1GREdRZStNZ250N2MzMCtJU2NwSDV5M0hQc1NF?=
- =?utf-8?B?TTJEK2FDaHZEdkY1REJzdHo3NE03aXpockdiTW55R1FndjhXbzA3VG41WXND?=
- =?utf-8?B?YTZGR2FCMFk3YXhGU0NaTjlrdEc3dStxWXZlTzRLaytHSjZydGZZYmNGZTVw?=
- =?utf-8?B?Z04vTFNUK01zRVFGUkhTcFZ1SEVDdmZUOVJtQWN3b1ZJM0Q3bVJTdjNtUUZH?=
- =?utf-8?B?dE9KYW11TUhsZUUzREZ1MkViNVgyY1FpRGhUaXdpWkZPTjRNWXRXRDVXK2g5?=
- =?utf-8?B?bmJpN2VlbjZUdFJwQWRSdTJjV20zNDM1NVlyV001Vm1GWnZZbzNVTENqNFZ6?=
- =?utf-8?B?anlNMDNCQjdoTUxWQ0tMNGNEajVpdUx0MlpQZGpJSkZwcU1zVnpwV0pqaXps?=
- =?utf-8?B?T3hBTDRseHFzU0d4V3JNRjZDdkRqWEJGUFZoNVhlR3A3RW9wNzYxVUpFQ0Rj?=
- =?utf-8?B?R1Z4MGZmVjVJK3BGMzFVVml4ekZoOXVrTk1QTE11Mlo4NUNqMWlhYk5WUHo4?=
- =?utf-8?B?MDZDeUhpZktUd2t6MzRJSGhDUC9hS1pSY0NXZEltR0gzeTBSZFZVOGVoYUpZ?=
- =?utf-8?B?ZVVLRTV3V0lkS2poeG1wQkhwMGRJYkNYQVh0N0VIUHRuRFczSi96bi8yS3Fo?=
- =?utf-8?B?a2NaL1NvVG1ERU81NkNxb09nSFhtZGpKWTFuZVNnV3dxS0gzQzlReDZTUUxS?=
- =?utf-8?B?NHBFN1lsK0NzbmNzeUgwMnZWK2hrc1Q0azcweGZYbkxYYmpVV3lmWG4wUVla?=
- =?utf-8?Q?rg4ZtwjhN79L/hxurSs1sr+xSBAWSKJk35tXU=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <246E05A600C8EB49935D6977091E31C3@namprd15.prod.outlook.com>
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S3m6KLTN;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1631179682;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mp/yxKIxo35qlIxjkPpHR2WWZd6Ip78W8vNh9glzSik=;
+	b=S3m6KLTNfsE/VRWifdS8hGsWrfeDeud+ACm3c7gtJbhvL03yxkDz25CWhzenYJG0mT2asa
+	/1bBjqJI3ryKDE21ozgHqgCnYPoL+WohqomI1N53mnJuJpunJHDM3Rt6wFQhZvQ2/dsUBe
+	f/QOfKu9XMpXbwBn1Q59qnLevwXaItI=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-430-_FXt8cpQMomj6Kv3c-W0lg-1; Thu, 09 Sep 2021 05:28:00 -0400
+X-MC-Unique: _FXt8cpQMomj6Kv3c-W0lg-1
+Received: by mail-wr1-f72.google.com with SMTP id t15-20020a5d42cf000000b001565f9c9ee8so314490wrr.2
+        for <alex.bennee@linaro.org>; Thu, 09 Sep 2021 02:28:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=mp/yxKIxo35qlIxjkPpHR2WWZd6Ip78W8vNh9glzSik=;
+        b=B7T3r7K3XGUNioBg0bvEtiuKa6puaFU1AQ4QU21hlpgNIYEYuFRQH/Fxr5GOs3yyYL
+         J1wiFfHXzEqwvl0NNFrKg81Isj3Cy18baA3v0t5uldXg6vGSPX/UOAFEmALEwps7RKn1
+         gvQpSVvWPWFOZyUTwu3icQcljWQczUajdRu8IvSG4zYBzH0+6sZD33e1cPMqBha4hnxt
+         b0dzNRAwdnk+17IRJdAPBBpGf9ThU3QnxskOMfHdimH/ZEaNlLvyKhaRzzyn6qEOrvx9
+         Fs+Y2xm6fy8Nl++92oQW8QdPdcHyRkdasc5Ip1rB97bNTCDBZ9BvLGIq6ajx5gPskdU6
+         iyew==
+X-Gm-Message-State: AOAM530eEHL18neB7lwQ3y1I2O9wF8xXvMd1Td9IJ9hJrGPOxFmHnmOP
+	t6ANEPc7/QRFDOy5ffP0iZ2jXLHNuoj1siYDLPHMKsw2F9Wp5uoxAicY9ftY4LvIyJIYPXKkCTE
+	mZzI+5zT2a7SOkLFQ
+X-Received: by 2002:a05:600c:364f:: with SMTP id y15mr1883270wmq.193.1631179679255;
+        Thu, 09 Sep 2021 02:27:59 -0700 (PDT)
+X-Received: by 2002:a05:600c:364f:: with SMTP id y15mr1883244wmq.193.1631179678983;
+        Thu, 09 Sep 2021 02:27:58 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
+        by smtp.gmail.com with ESMTPSA id o7sm1096209wmq.36.2021.09.09.02.27.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Sep 2021 02:27:58 -0700 (PDT)
+Subject: Re: [PATCH v4 1/1] hw/pflash_cfi01: Allow backing devices to be
+ smaller than memory region
+To: David Edmondson <david.edmondson@oracle.com>, qemu-devel@nongnu.org,
+ Tom Lendacky <thomas.lendacky@amd.com>, James Bottomley <jejb@linux.ibm.com>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Max Reitz <mreitz@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?B?aGFpYmluemhhbmco5byg5rW35paMKQ==?= <haibinzhang@tencent.com>,
+ John Snow <jsnow@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>,
+ qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Xu Yandong <xuyandong2@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Zheng Xiang <zhengxiang9@huawei.com>
+References: <20210810134050.396747-1-david.edmondson@oracle.com>
+ <20210810134050.396747-2-david.edmondson@oracle.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <384a5d1d-de25-78d7-d8b0-226ebca44a6d@redhat.com>
+Date: Thu, 9 Sep 2021 11:27:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7b8da4c-3e18-4a09-07db-08d972f9012d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Sep 2021 18:46:43.9558 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: VnePK7E2B7Ve1nYPyRbHduXyuMDvRarG9+LjIoO56vLcBppGeG2z5pCkMSP+2KXa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR15MB4188
-X-OriginatorOrg: fb.com
-X-Proofpoint-GUID: HUNsV1OCkkk5unWfdbyJgAlLUanvTeZn
-X-Proofpoint-ORIG-GUID: HUNsV1OCkkk5unWfdbyJgAlLUanvTeZn
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-09-08_06:2021-09-07,
- 2021-09-08 signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- impostorscore=0
- lowpriorityscore=0 mlxscore=0 priorityscore=1501 adultscore=0
- suspectscore=0 clxscore=1011 spamscore=0 phishscore=0 bulkscore=0
- malwarescore=0 mlxlogscore=999 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2109030001 definitions=main-2109080117
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=888587b7d3=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8lp8OfH0ESpJ
+In-Reply-To: <20210810134050.396747-2-david.edmondson@oracle.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: zw4KjO50Fy0C
 
-DQoNCj4gT24gU2VwIDYsIDIwMjEsIGF0IDExOjU4IFBNLCBDw6lkcmljIExlIEdvYXRlciA8Y2xn
-QGthb2Qub3JnPiB3cm90ZToNCj4gDQo+IFRoZSBBc3BlZWQgU29DcyBoYXZlIGEgZHVhbCBib290
-IGZ1bmN0aW9uIGZvciBmaXJtd2FyZSBmYWlsLW92ZXINCj4gcmVjb3ZlcnkuIFRoZSBzeXN0ZW0g
-YXV0by1yZWJvb3RzIGZyb20gdGhlIHNlY29uZCBmbGFzaCBpZiB0aGUgbWFpbg0KPiBmbGFzaCBk
-b2VzIG5vdCBib290IHN1Y2Vzc2Z1bGx5IHdpdGhpbiBhIGNlcnRhaW4gYW1vdW50IG9mIHRpbWUu
-IFRoaXMNCj4gZnVuY3Rpb24gaXMgY2FsbGVkIGFsdGVybmF0ZSBib290IChBQlIpIGluIHRoZSBG
-TUMgY29udHJvbGxlcnMuDQo+IA0KPiBPbiBBU1QyNDAwL0FTVDI1MDAsIEFCUiBpcyBlbmFibGVk
-IGJ5IGhhcmR3YXJlIHN0cmFwcGluZyBpbiBTQ1U3MCB0bw0KPiBlbmFibGUgdGhlIDJuZCB3YXRj
-aGRvZyB0aW1lciwgb24gQVNUMjYwMCwgdGhyb3VnaCByZWdpc3RlciBTQ1U1MTAuDQo+IElmIHRo
-ZSBib290IG9uIHRoZSB0aGUgbWFpbiBmbGFzaCBzdWNjZWVkcywgdGhlIGZpcm13YXJlIHNob3Vs
-ZA0KPiBkaXNhYmxlIHRoZSAybmQgd2F0Y2hkb2cgdGltZXIuIElmIG5vdCwgdGhlIEJNQyBpcyBy
-ZXNldCBhbmQgdGhlIENFMA0KPiBhbmQgQ0UxIG1hcHBpbmdzIGFyZSBzd2FwcGVkIHRvIHJlc3Rh
-cnQgdGhlIEJNQyBmcm9tIHRoZSAybmQgZmxhc2guDQo+IA0KPiBPbiB0aGUgQVNUMjYwMCwgdGhl
-IHJlZ2lzdGVycyBjb250cm9sbGluZyB0aGUgMm5kIHdhdGNoZG9nIHRpbWVyIHdlcmUNCj4gbW92
-ZWQgZnJvbSB0aGUgd2F0Y2hkb2cgcmVnaXN0ZXIgdG8gdGhlIEZNQyBjb250cm9sbGVyLiBBZGQg
-c2ltcGxlDQo+IHJlYWQvd3JpdGUgaGFuZGxlcnMgZm9yIHRoZXNlIHRvIGxldCB0aGUgRlcgZGlz
-YWJsZSB0aGUgMm5kIHdhdGNoZG9nDQo+IHdpdGhvdXQgZXJyb3IuDQo+IA0KPiBSZXBvcnRlZC1i
-eTogUGV0ZXIgRGVsZXZvcnlhcyA8cGRlbEBmYi5jb20+DQo+IFNpZ25lZC1vZmYtYnk6IEPDqWRy
-aWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+DQo+IC0tLQ0KPiBody9zc2kvYXNwZWVkX3NtYy5j
-IHwgMTYgKysrKysrKysrKysrKysrKw0KPiAxIGZpbGUgY2hhbmdlZCwgMTYgaW5zZXJ0aW9ucygr
-KQ0KPiANCj4gZGlmZiAtLWdpdCBhL2h3L3NzaS9hc3BlZWRfc21jLmMgYi9ody9zc2kvYXNwZWVk
-X3NtYy5jDQo+IGluZGV4IDMzMWEyYzU0NDYzNS4uYzk5OTBmMDY5ZWE0IDEwMDY0NA0KPiAtLS0g
-YS9ody9zc2kvYXNwZWVkX3NtYy5jDQo+ICsrKyBiL2h3L3NzaS9hc3BlZWRfc21jLmMNCj4gQEAg
-LTEyNCw2ICsxMjQsMTMgQEANCj4gLyogU1BJIGR1bW15IGN5Y2xlIGRhdGEgKi8NCj4gI2RlZmlu
-ZSBSX0RVTU1ZX0RBVEEgICAgICAoMHg1NCAvIDQpDQo+IA0KPiArLyogRk1DX1dEVDIgQ29udHJv
-bC9TdGF0dXMgUmVnaXN0ZXIgZm9yIEFsdGVybmF0ZSBCb290IChBU1QyNjAwKSAqLw0KPiArI2Rl
-ZmluZSBSX0ZNQ19XRFQyX0NUUkwgICAoMHg2NCAvIDQpDQo+ICsjZGVmaW5lICAgRk1DX1dEVDJf
-Q1RSTF9BTFRfQk9PVF9NT0RFICAgIEJJVCg2KSAvKiBPOiAyIGNoaXBzIDE6IDEgY2hpcCAqLw0K
-PiArI2RlZmluZSAgIEZNQ19XRFQyX0NUUkxfU0lOR0xFX0JPT1RfTU9ERSBCSVQoNSkNCj4gKyNk
-ZWZpbmUgICBGTUNfV0RUMl9DVFJMX0JPT1RfU09VUkNFICAgICAgQklUKDQpIC8qIE86IHByaW1h
-cnkgMTogYWx0ZXJuYXRlICovDQo+ICsjZGVmaW5lICAgRk1DX1dEVDJfQ1RSTF9FTiAgICAgICAg
-ICAgICAgIEJJVCgwKQ0KPiArDQo+IC8qIERNQSBDb250cm9sL1N0YXR1cyBSZWdpc3RlciAqLw0K
-PiAjZGVmaW5lIFJfRE1BX0NUUkwgICAgICAgICgweDgwIC8gNCkNCj4gI2RlZmluZSAgIERNQV9D
-VFJMX1JFUVVFU1QgICAgICAoMSA8PCAzMSkNCj4gQEAgLTI2MywxMiArMjcwLDE4IEBAIHN0YXRp
-YyB2b2lkIGFzcGVlZF8yNjAwX3NtY19kbWFfY3RybChBc3BlZWRTTUNTdGF0ZSAqcywgdWludDMy
-X3QgdmFsdWUpOw0KPiANCj4gI2RlZmluZSBBU1BFRURfU01DX0ZFQVRVUkVfRE1BICAgICAgIDB4
-MQ0KPiAjZGVmaW5lIEFTUEVFRF9TTUNfRkVBVFVSRV9ETUFfR1JBTlQgMHgyDQo+ICsjZGVmaW5l
-IEFTUEVFRF9TTUNfRkVBVFVSRV9XRFRfQ09OVFJPTCAweDQNCj4gDQo+IHN0YXRpYyBpbmxpbmUg
-Ym9vbCBhc3BlZWRfc21jX2hhc19kbWEoY29uc3QgQXNwZWVkU01DU3RhdGUgKnMpDQo+IHsNCj4g
-ICAgIHJldHVybiAhIShzLT5jdHJsLT5mZWF0dXJlcyAmIEFTUEVFRF9TTUNfRkVBVFVSRV9ETUEp
-Ow0KPiB9DQo+IA0KPiArc3RhdGljIGlubGluZSBib29sIGFzcGVlZF9zbWNfaGFzX3dkdF9jb250
-cm9sKGNvbnN0IEFzcGVlZFNNQ1N0YXRlICpzKQ0KPiArew0KPiArICAgIHJldHVybiAhIShzLT5j
-dHJsLT5mZWF0dXJlcyAmIEFTUEVFRF9TTUNfRkVBVFVSRV9XRFRfQ09OVFJPTCk7DQo+ICt9DQo+
-ICsNCj4gc3RhdGljIGNvbnN0IEFzcGVlZFNNQ0NvbnRyb2xsZXIgY29udHJvbGxlcnNbXSA9IHsN
-Cj4gICAgIHsNCj4gICAgICAgICAubmFtZSAgICAgICAgICAgICAgPSAiYXNwZWVkLnNtYy1hc3Qy
-NDAwIiwNCj4gQEAgLTEwMTksNiArMTAzMiw3IEBAIHN0YXRpYyB1aW50NjRfdCBhc3BlZWRfc21j
-X3JlYWQodm9pZCAqb3BhcXVlLCBod2FkZHIgYWRkciwgdW5zaWduZWQgaW50IHNpemUpDQo+ICAg
-ICAgICAgYWRkciA9PSBSX0NFX0NNRF9DVFJMIHx8DQo+ICAgICAgICAgYWRkciA9PSBSX0lOVFJf
-Q1RSTCB8fA0KPiAgICAgICAgIGFkZHIgPT0gUl9EVU1NWV9EQVRBIHx8DQo+ICsgICAgICAgIChh
-c3BlZWRfc21jX2hhc193ZHRfY29udHJvbChzKSAmJiBhZGRyID09IFJfRk1DX1dEVDJfQ1RSTCkg
-fHwNCj4gICAgICAgICAoYXNwZWVkX3NtY19oYXNfZG1hKHMpICYmIGFkZHIgPT0gUl9ETUFfQ1RS
-TCkgfHwNCj4gICAgICAgICAoYXNwZWVkX3NtY19oYXNfZG1hKHMpICYmIGFkZHIgPT0gUl9ETUFf
-RkxBU0hfQUREUikgfHwNCj4gICAgICAgICAoYXNwZWVkX3NtY19oYXNfZG1hKHMpICYmIGFkZHIg
-PT0gUl9ETUFfRFJBTV9BRERSKSB8fA0KPiBAQCAtMTM1MCw2ICsxMzY0LDggQEAgc3RhdGljIHZv
-aWQgYXNwZWVkX3NtY193cml0ZSh2b2lkICpvcGFxdWUsIGh3YWRkciBhZGRyLCB1aW50NjRfdCBk
-YXRhLA0KPiAgICAgICAgIHMtPnJlZ3NbYWRkcl0gPSB2YWx1ZSAmIDB4ZmY7DQo+ICAgICB9IGVs
-c2UgaWYgKGFkZHIgPT0gUl9EVU1NWV9EQVRBKSB7DQo+ICAgICAgICAgcy0+cmVnc1thZGRyXSA9
-IHZhbHVlICYgMHhmZjsNCj4gKyAgICB9IGVsc2UgaWYgKGFzcGVlZF9zbWNfaGFzX3dkdF9jb250
-cm9sKHMpICYmIGFkZHIgPT0gUl9GTUNfV0RUMl9DVFJMKSB7DQo+ICsgICAgICAgIHMtPnJlZ3Nb
-YWRkcl0gPSB2YWx1ZSAmIDB4YjsNCj4gICAgIH0gZWxzZSBpZiAoYWRkciA9PSBSX0lOVFJfQ1RS
-TCkgew0KPiAgICAgICAgIHMtPnJlZ3NbYWRkcl0gPSB2YWx1ZTsNCj4gICAgIH0gZWxzZSBpZiAo
-YXNwZWVkX3NtY19oYXNfZG1hKHMpICYmIGFkZHIgPT0gUl9ETUFfQ1RSTCkgew0KPiAtLSANCj4g
-Mi4zMS4xDQo+IA0KDQpMb29rcyBnb29kIHRvIG1lIQ0KDQpSZXZpZXdlZC1ieTogUGV0ZXIgRGVs
-ZXZvcnlhcyA8cGRlbEBmYi5jb20+DQoNCk9uZSB0aGluZzogc2hvdWxkIHdlIGVuYWJsZSB0aGlz
-IGZlYXR1cmUgKEFTUEVFRF9TTUNfRkVBVFVSRV9XRFRfQ09OVFJPTCkNCm9uIGFueSBvZiB0aGUg
-U01DIGNvbnRyb2xsZXIgbW9kZWxzPyBJIHdhbnRlZCB0byB0ZXN0IHRoaXMgd2l0aCB0aGUNCkZ1
-amkgaW1hZ2UgYW5kIG1hY2hpbmUgdHlwZSBJIGFkZGVkLCBhbmQgSSBuZWVkZWQgdGhlIGZvbGxv
-d2luZyBkaWZmDQp0byBlbmFibGUgdGhpczoNCg0KZGlmZiAtLWdpdCBhL2h3L3NzaS9hc3BlZWRf
-c21jLmMgYi9ody9zc2kvYXNwZWVkX3NtYy5jDQppbmRleCAzMzFhMmM1NDQ2Li5iNWQ4MzVkNDg4
-IDEwMDY0NA0KLS0tIGEvaHcvc3NpL2FzcGVlZF9zbWMuYw0KKysrIGIvaHcvc3NpL2FzcGVlZF9z
-bWMuYw0KQEAgLTM4OCw3ICszODgsNyBAQCBzdGF0aWMgY29uc3QgQXNwZWVkU01DQ29udHJvbGxl
-ciBjb250cm9sbGVyc1tdID0gew0KICAgICAgICAgLnNlZ21lbnRzICAgICAgICAgID0gYXNwZWVk
-X3NlZ21lbnRzX2FzdDI2MDBfZm1jLA0KICAgICAgICAgLmZsYXNoX3dpbmRvd19iYXNlID0gQVNQ
-RUVEMjZfU09DX0ZNQ19GTEFTSF9CQVNFLA0KICAgICAgICAgLmZsYXNoX3dpbmRvd19zaXplID0g
-MHgxMDAwMDAwMCwNCi0gICAgICAgIC5mZWF0dXJlcyAgICAgICAgICA9IEFTUEVFRF9TTUNfRkVB
-VFVSRV9ETUEsDQorICAgICAgICAuZmVhdHVyZXMgICAgICAgICAgPSBBU1BFRURfU01DX0ZFQVRV
-UkVfRE1BIHwgQVNQRUVEX1NNQ19GRUFUVVJFX1dEVF9DT05UUk9MLA0KICAgICAgICAgLmRtYV9m
-bGFzaF9tYXNrICAgID0gMHgwRkZGRkZGQywNCiAgICAgICAgIC5kbWFfZHJhbV9tYXNrICAgICA9
-IDB4M0ZGRkZGRkMsDQogICAgICAgICAubnJlZ3MgICAgICAgICAgICAgPSBBU1BFRURfU01DX1Jf
-TUFYLA0KDQpXaXRob3V0IHRoaXMsIEZ1amkgd291bGQgdHJ5IHRvIGNsZWFyIEJJVCgwKSBvZiBS
-X0ZNQ19XRFQyX0NUUkwsDQpidXQgdGhlbiB0aGUgZGVmYXVsdCBhc3BlZWRfc21jX3JlYWQoKSB2
-YWx1ZSB3b3VsZCByZXR1cm4gMHhGRkZGRkZGLg0KDQpFcnJvcjogdW5hYmxlIHRvIGRpc2FibGUg
-dGhlIDJuZCB3YXRjaGRvZzogRk1DX1dEVDI9MHhGRkZGRkZGRg0KDQpBbmQgdGhlbiB3aXRoIHRo
-ZXNlIGNoYW5nZXMgYWRkZWQsIHRoZSB3cml0ZXMgYW5kIHJlYWRzIHdvcmsNCnNvIHRoYXQgQklU
-KDApIGFwcGVhcnMgdG8gaGF2ZSBiZWVuIGNsZWFyZWQ6DQoNCkRpc2FibGVkIHRoZSAybmQgd2F0
-Y2hkb2cgKEZNQ19XRFQyKSBzdWNjZXNzZnVsbHkuDQoNCnJvb3RAYm1jLW9vYjp+IyBkZXZtZW0g
-MHgxZTYyMDA2NA0KMHgwMDAwMDAwMA0Kcm9vdEBibWMtb29iOn4jIGRldm1lbSAweDFlNjIwMDY0
-IDMyIDB4ZmZmZmZmZmYNCnJvb3RAYm1jLW9vYjp+IyBkZXZtZW0gMHgxZTYyMDA2NA0KMHgwMDAw
-MDAwQg0KDQpJIGRvbuKAmXQgdG90YWxseSB1bmRlcnN0YW5kIHdoeSB0aGUgbWFzayBmb3IgdGhl
-IHJlZ2lzdGVyIGlzIDB4YiB0aG91Z2g/DQoNCj4+PiBiaW4oMHhiKQ0K4oCYMGIxMDExJw0KDQpU
-aGlzIGRvZXNu4oCZdCBzZWVtIHRvIG1hdGNoIHRoZSBtYWNybyBCSVQoLi4uKSAjZGVmaW5l4oCZ
-cyBpbmNsdWRlZC4NClRob3NlICNkZWZpbmXigJlzIGFyZSBjb3JyZWN0IChJIGNyb3NzLXJlZmVy
-ZW5jZWQgd2l0aCB0aGUgZGF0YXNoZWV0DQp0byBkb3VibGUgY2hlY2spLCB3b3VsZG7igJl0IGl0
-IGJlIHNvbWV0aGluZyBsaWtlIHRoaXM/ICh6ZXJv4oCZcyBmb3INCnRoZSByZXNlcnZlZCBiaXRz
-PykNCg0KPj4+IGhleCgwYjExMTExMTExMDExMTAwMDEpDQonMHhmZjcxJw0KDQpUaGFua3MsDQpQ
-ZXRlcg0KDQo=
+Hi David,
+
+On 8/10/21 3:40 PM, David Edmondson wrote:
+> Allow the backing device to be smaller than the extent of the flash
+> device by mapping it as a subregion of the flash device region.
+> 
+> Return zeroes for all reads of the flash device beyond the extent of
+> the backing device.
+> 
+> For writes beyond the extent of the underlying device, fail on
+> read-only devices and discard them for writable devices.
+> 
+> Signed-off-by: David Edmondson <david.edmondson@oracle.com>
+> ---
+>  hw/block/pflash_cfi01.c | 105 ++++++++++++++++++++++++++++++++--------
+>  hw/block/trace-events   |   3 ++
+>  2 files changed, 87 insertions(+), 21 deletions(-)
+> 
+> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+> index 81f9f971d8..f3289b6a2f 100644
+> --- a/hw/block/pflash_cfi01.c
+> +++ b/hw/block/pflash_cfi01.c
+> @@ -83,6 +83,8 @@ struct PFlashCFI01 {
+>      uint64_t counter;
+>      unsigned int writeblock_size;
+>      MemoryRegion mem;
+> +    MemoryRegion mem_outer;
+> +    char outer_name[64];
+>      char *name;
+>      void *storage;
+>      VMChangeStateEntry *vmstate;
+> @@ -434,7 +436,6 @@ static inline void pflash_data_write(PFlashCFI01 *pfl, hwaddr offset,
+>          }
+>          break;
+>      }
+> -
+>  }
+>  
+>  static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+> @@ -656,8 +657,44 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+>  }
+>  
+>  
+> -static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr, uint64_t *value,
+> -                                              unsigned len, MemTxAttrs attrs)
+> +static MemTxResult pflash_outer_read_with_attrs(void *opaque, hwaddr addr,
+> +                                                uint64_t *value, unsigned len,
+> +                                                MemTxAttrs attrs)
+> +{
+> +    PFlashCFI01 *pfl = opaque;
+> +
+> +    trace_pflash_outer_read(pfl->name, addr, len);
+> +    *value = 0;
+
+This seems to break the "width" and "old-multiple-chip-handling"
+parameters ("emulating a number of flash devices wired up in parallel").
+
+Also this breaks booting with SEV enabled on X86... See commits
+9617cddb726 ("pc: add parser for OVMF reset block") and b2f73a0784b
+("sev/i386: Allow AP booting under SEV-ES").
+
+> +    return MEMTX_OK;
+> +}
+> +
+> +static MemTxResult pflash_outer_write_with_attrs(void *opaque, hwaddr addr,
+> +                                                 uint64_t value, unsigned len,
+> +                                                 MemTxAttrs attrs)
+> +{
+> +    PFlashCFI01 *pfl = opaque;
+> +
+> +    trace_pflash_outer_write(pfl->name, addr, len);
+> +    if (pfl->ro) {
+> +        return MEMTX_ERROR;
+> +    } else {
+> +        warn_report_once("%s: "
+> +                         "attempt to write outside of the backing block device "
+> +                         "(offset " TARGET_FMT_plx ") ignored",
+> +                         pfl->name, addr);
+
+This doesn't seem acceptable on mainstream, see:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg607292.html
+
+> +        return MEMTX_OK;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps pflash_cfi01_outer_ops = {
+> +    .read_with_attrs = pflash_outer_read_with_attrs,
+> +    .write_with_attrs = pflash_outer_write_with_attrs,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr,
+> +                                              uint64_t *value, unsigned len,
+> +                                              MemTxAttrs attrs)
+>  {
+>      PFlashCFI01 *pfl = opaque;
+>      bool be = !!(pfl->features & (1 << PFLASH_BE));
+> @@ -670,8 +707,9 @@ static MemTxResult pflash_mem_read_with_attrs(void *opaque, hwaddr addr, uint64_
+>      return MEMTX_OK;
+>  }
+>  
+> -static MemTxResult pflash_mem_write_with_attrs(void *opaque, hwaddr addr, uint64_t value,
+> -                                               unsigned len, MemTxAttrs attrs)
+> +static MemTxResult pflash_mem_write_with_attrs(void *opaque, hwaddr addr,
+> +                                               uint64_t value, unsigned len,
+> +                                               MemTxAttrs attrs)
+>  {
+>      PFlashCFI01 *pfl = opaque;
+>      bool be = !!(pfl->features & (1 << PFLASH_BE));
+> @@ -800,7 +838,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+>  {
+>      ERRP_GUARD();
+>      PFlashCFI01 *pfl = PFLASH_CFI01(dev);
+> -    uint64_t total_len;
+> +    uint64_t outer_len, inner_len;
+>      int ret;
+>  
+>      if (pfl->sector_len == 0) {
+> @@ -816,35 +854,60 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>  
+> -    total_len = pfl->sector_len * pfl->nb_blocs;
+> -
+> -    memory_region_init_rom_device(
+> -        &pfl->mem, OBJECT(dev),
+> -        &pflash_cfi01_ops,
+> -        pfl,
+> -        pfl->name, total_len, errp);
+> -    if (*errp) {
+> -        return;
+> -    }
+> -
+> -    pfl->storage = memory_region_get_ram_ptr(&pfl->mem);
+> -    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
+> +    outer_len = pfl->sector_len * pfl->nb_blocs;
+>  
+>      if (pfl->blk) {
+>          uint64_t perm;
+> +
+>          pfl->ro = !blk_supports_write_perm(pfl->blk);
+>          perm = BLK_PERM_CONSISTENT_READ | (pfl->ro ? 0 : BLK_PERM_WRITE);
+>          ret = blk_set_perm(pfl->blk, perm, BLK_PERM_ALL, errp);
+>          if (ret < 0) {
+>              return;
+>          }
+> +
+> +        inner_len = blk_getlength(pfl->blk);
+> +
+> +        if (inner_len > outer_len) {
+> +            error_setg(errp, "%s: "
+> +                       "block backend provides %" PRIu64 " bytes, "
+> +                       "device limited to %" PRIu64 " bytes",
+> +                       pfl->name, inner_len, outer_len);
+> +            return;
+> +        }
+>      } else {
+>          pfl->ro = false;
+> +        inner_len = outer_len;
+>      }
+>  
+> +    trace_pflash_realize(pfl->name, pfl->ro, inner_len, outer_len);
+> +
+> +    snprintf(pfl->outer_name, sizeof(pfl->outer_name),
+> +             "%s container", pfl->name);
+> +    memory_region_init_io(&pfl->mem_outer, OBJECT(dev),
+> +                          &pflash_cfi01_outer_ops,
+> +                          pfl, pfl->outer_name, outer_len);
+
+Here you create an I/O region but name it "container" ...
+
+> +
+> +    memory_region_init_rom_device(&pfl->mem, OBJECT(dev),
+> +                                  &pflash_cfi01_ops,
+> +                                  pfl, pfl->name, inner_len, errp);
+> +    if (*errp) {
+> +        return;
+> +    }
+> +
+> +    memory_region_add_subregion(&pfl->mem_outer, 0, &pfl->mem);
+
+... then add it inside the previous region, so &pfl->mem is used
+as container (containing &pfl->mem_outer named "container"...).
+This is confusing. Anyhow we shouldn't add subregions to I/O
+regions but use real containers instead, creating the container
+with memory_region_init(), then adding subregions inside.
+
+> +
+> +    pfl->storage = memory_region_get_ram_ptr(&pfl->mem);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem_outer);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
+
+
+Have you audited no code uses:
+
+  mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(pflash), 0);
+
+Because we'd need to change 0 -> 1.
+
+See also the problem with pflash_cfi01_get_memory():
+https://lists.gnu.org/archive/html/qemu-devel/2021-09/msg01988.html
+https://lists.gnu.org/archive/html/qemu-devel/2021-09/msg02026.html
+
+>      if (pfl->blk) {
+> -        if (!blk_check_size_and_read_all(pfl->blk, pfl->storage, total_len,
+> -                                         errp)) {
+> +        int ret = blk_pread(pfl->blk, 0, pfl->storage, inner_len);
+> +
+> +        if (ret < 0) {
+> +            error_setg_errno(errp, -ret,
+> +                             "cannot read %" PRIu64 " "
+> +                             "bytes from block backend", inner_len);
+>              vmstate_unregister_ram(&pfl->mem, DEVICE(pfl));
+>              return;
+>          }

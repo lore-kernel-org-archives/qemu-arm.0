@@ -1,161 +1,278 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp789821lfb;
-        Wed, 8 Sep 2021 13:21:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJya9EkrcM94QoyUJTjfHmpei0RCEFxxeGFaDtif1aC9P5+WNSk+gVOHUqHTu+kr2JM1ap3y
-X-Received: by 2002:a92:c8c3:: with SMTP id c3mr35238ilq.165.1631132481255;
-        Wed, 08 Sep 2021 13:21:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631132481; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp95750lfb;
+        Thu, 9 Sep 2021 05:28:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwd+H4cORou3JFlQZ+Bpq2ZNs0nBBsqehu318u0k1i+Ne9Qt7pcCOIlYFB89O3e0lyVnkEl
+X-Received: by 2002:a6b:f904:: with SMTP id j4mr2504552iog.208.1631190492195;
+        Thu, 09 Sep 2021 05:28:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631190492; cv=none;
         d=google.com; s=arc-20160816;
-        b=vcUZvsvgb+JqR2zSCCIu6TvjRgftxMWtgcpLjh5+UUuQxbU7aysW3nxCDKS1uaCDGW
-         6ovWRAU/40VF3myC5vbmaJpoprF7LWQyhzs5ZSRvPFOrWzf6KSYOJpnhcroY6LNW6AuV
-         pl+BiS43O/eQYbSf6cl+7yKAQ1j2Vq/M59gC0iVmbGP+wvtyfKvvl8Bg808Y6RuWABU0
-         XN8moG/j3Qf/Phkj2T5d6zRbk9CUg6zg+NzettleYRNnxLrqx5tJrdmJ29f15+yJkGKH
-         9jmUH6CPcCO0xRbvrKBMB+UUZ3DBq3cRFe8406H7NOABiCaHgWlPvt0OCSD0WI4eYnbd
-         paew==
+        b=a7l8p0+nOqU0zoXpf46WjXnFnL8GZdIs+RvSMaJXYfx/4P5NOfgGKDX1L2dtDpAkoZ
+         GS811AS+9q8D8tee2OqM//DkGHXWdh55wDLBwquhLSxR0fTLSFHBM/S+qLVL8Kd2/pAv
+         WUznqcNwdGfJzlytvMDy6h2VTNjp1pop6ZEVKMm7Y8CBXscM9cvajh4TZcBq/I9+ow0K
+         43bUHW9ticgngDaTsKgjgYeq2vGqK8ItxW/KKoj2f3/B1LMhu4dRAmlFXpUk4v9g6LS0
+         lm/mz1Zal2YUpv/5ZKWFkVav8lPzQhb1ct6EJw4WnctuHx2Sud6Kxa/dWGRV9vL4BLCk
+         bSAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=OvU3u7iar1YsozclIJ2YcFEQUVeJZGT+4JiPZZBDbdU=;
-        b=TJW/B+eT8EvB7kgBrTuF567dQOwX6gCCFcMqQYDQip5FUoD0BmvMLlHR7Cyufvwt2G
-         0oyP3ut48Docz1o+kag0ELJlwCfpJP4kvBWu1ItSviCmuOZwdd6gdEbzuvu5bixn28m5
-         diSTeA9gBSSIWdzLTpiQ+F8T/vSSJhQaakyg7xBBicpbeZFU+UW8cOfXA3kZsRIS0ydp
-         cT5vS4s5pwI/cwn7ZjYwjjq3X7YmTY4Np9D8OXcKlMPf1XMqepmxJ4M8HCREdXz/L9Ma
-         qGJKs52usCToPnWRBRDlIqVYq/mmmgVhRiqsauiwkYH5r+9ZAAlpYKy8vB7AXYGJhZpH
-         S3Bw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=d7G9afcLSqJHPuwOeSlGmfa2uhgVZM6GeGdaZfkrsi8=;
+        b=FxNUaEB1rVaQun8D8Gh/yvQh2K5FJAHM11nvl7NWKRdU/qJpC49w8yEACLhl0G/yU3
+         eW26oW4ROzO7iyFuvmgaIFi3KWV9ewX4m6hlQSkRKYJHi4+ltAehsM0Dl+XJHXEo2R2D
+         oYYixFv6e1KpitBzrci3ySGJJptV4+9DUrkp4U8vQ8NupqI0ewGTHvtXMSW7Fc1lz2Ga
+         sJolTsKU68KKA3ofLFoSmW4JDFwV4pKGkTOCNifNSsz8qfTRSmnZcSwKabsa+NAFunQL
+         5CL4Qp/sFc+lwPaNqafb4WMoK5xck8M4YH3GNuw5cOaIYVSKfpkMYY3fjiWRrEaWvq+c
+         K5ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ZRh5S5MP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ITViDX6V;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b7si10484ilm.138.2021.09.08.13.21.21
+        by mx.google.com with ESMTPS id h9si1693750jar.120.2021.09.09.05.28.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Sep 2021 13:21:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Sep 2021 05:28:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ZRh5S5MP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42964 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ITViDX6V;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mO44O-0005B7-Lv
-	for alex.bennee@linaro.org; Wed, 08 Sep 2021 16:21:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37454)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mOJA3-0000z4-Id
+	for alex.bennee@linaro.org; Thu, 09 Sep 2021 08:28:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mO44C-00059O-MP; Wed, 08 Sep 2021 16:21:08 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:41578)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mO44A-0000vY-NJ; Wed, 08 Sep 2021 16:21:08 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- u15-20020a05600c19cf00b002f6445b8f55so2472821wmq.0; 
- Wed, 08 Sep 2021 13:21:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OvU3u7iar1YsozclIJ2YcFEQUVeJZGT+4JiPZZBDbdU=;
- b=ZRh5S5MPQduPg1EhNRTok7ClmIxSjqqOL6UTmEm5YcIP9AEcYIgU2Dqys0GACNY44X
- ZNy3R44BYw6GpQBHAefH7OOheb/30F8ijsyMLh02F2OWe2TzMotzDxB8kv0FTu9MAdg3
- PBh0mXO8C0Mh/8cmyb9op5LBEebGKJIgiBSp+dEUl8h1vtJPlupwbsJRWkOaMRPhOWcM
- Y9bJUpNNzYmj/QAaeEuoBrupEttJ5dXZgGi0+hqsoh7rRXsqgbGbVXYS+U/8kaQRBqwl
- R9RtKg9LBlb/9odL+vEDGk6c5pWf6Z4/BmnF4jjhQJ1PX3oWDNeprmhUx5xejKdrMkDi
- 67Ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OvU3u7iar1YsozclIJ2YcFEQUVeJZGT+4JiPZZBDbdU=;
- b=iUbkglCTnjkjgcRV5fJ3qH+mKmKYx85dTw8vuQoB+bV/7Uq4hzC25z66b0n0kK2ri5
- 2VLRVzsrpDQR+41IJcVGW3XHtGo85B4jULi9PxMbKMwuER72RxKduZk2lK6gFn45n23C
- bud3DJc7oOb6BXYHt5MBKp19IeUaKs0J0kltlXQsXhTVMW8XQ7tLZieVGL0/S/YCyVRy
- S9XU8LzWzGumtWXM27Rmxb2rTrVcE7xmavrWrgrivMjwzscvlpWHCKCnyPGIbmrROniY
- lkx93VKv3gMBCj7xwVwjbM+/ev3UN81g2IC3ucXV8xkxR+EtuvXvGM5d5kHJosi2v6lf
- hQBA==
-X-Gm-Message-State: AOAM531wJ9gnwXMcZ+jMZtG1mur0adU8MvQSUihdIwPFJDl/aASg9bVJ
- qIiPzru0ByatckcWrXpM1Ok=
-X-Received: by 2002:a1c:3584:: with SMTP id c126mr43406wma.121.1631132464246; 
- Wed, 08 Sep 2021 13:21:04 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id j18sm137462wrd.56.2021.09.08.13.21.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Sep 2021 13:21:03 -0700 (PDT)
-Subject: Re: [PATCH] tcg/arm: Fix tcg_out_vec_op function signature
-To: "Jose R. Ziviani" <jziviani@suse.de>, qemu-devel@nongnu.org,
- Miroslav Rezanina <mrezanin@redhat.com>
-References: <20210908185338.7927-1-jziviani@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <71839203-0d36-1cac-9693-3b195c159b80@amsat.org>
-Date: Wed, 8 Sep 2021 22:21:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mOJ8E-0007nI-DI
+ for qemu-devel@nongnu.org; Thu, 09 Sep 2021 08:26:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29383)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mOJ6H-0004mt-8g
+ for qemu-devel@nongnu.org; Thu, 09 Sep 2021 08:26:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631190255;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=d7G9afcLSqJHPuwOeSlGmfa2uhgVZM6GeGdaZfkrsi8=;
+ b=ITViDX6VqSAuvtZg5BlNkn/1KhHwdXDnMJNz7EkfsEo3iR71Dme9JB2reAXDF6JnU2I3pc
+ mAXSu5F3GZDEXxu04fiSkn8iNEQHXy3T2JovJXr8JrfrO/7Ww5x4/0Uo/22t1TuJXUeiVX
+ KsYAUFRYQsAgUhDRaAHhAAi7l3GTFKM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-283-C1W3HS2oPyqR4D143pdNWQ-1; Thu, 09 Sep 2021 08:24:14 -0400
+X-MC-Unique: C1W3HS2oPyqR4D143pdNWQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4576B5074B;
+ Thu,  9 Sep 2021 12:24:13 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.194.78])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 891685C261;
+ Thu,  9 Sep 2021 12:24:08 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH] hw/rtc/pl031: Send RTC_CHANGE QMP event
+Date: Thu,  9 Sep 2021 14:24:02 +0200
+Message-Id: <20210909122402.127977-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210908185338.7927-1-jziviani@suse.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.922,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n+M55WD76X31
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com, gshan@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hP1e75ERkf5L
 
-On 9/8/21 8:53 PM, Jose R. Ziviani wrote:
-> Commit 5e8892db93 fixed several function signatures but tcg_out_vec_op
-> for arm is missing. It causes a build error on armv6 and armv7:
-> 
-> tcg-target.c.inc:2718:42: error: argument 5 of type 'const TCGArg *'
-> {aka 'const unsigned int *'} declared as a pointer [-Werror=array-parameter=]
->    const TCGArg *args, const int *const_args)
->   ~~~~~~~~~~~~~~^~~~
-> ../tcg/tcg.c:120:41: note: previously declared as an array 'const TCGArg[16]'
-> {aka 'const unsigned int[16]'}
->    const TCGArg args[TCG_MAX_OP_ARGS],
->   ~~~~~~~~~~~~~~^~~~
-> 
-> Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
-> ---
->  tcg/arm/tcg-target.c.inc | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-> index 007ceee68e..e5b4f86841 100644
-> --- a/tcg/arm/tcg-target.c.inc
-> +++ b/tcg/arm/tcg-target.c.inc
-> @@ -2715,7 +2715,8 @@ static const ARMInsn vec_cmp0_insn[16] = {
->  
->  static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
->                             unsigned vecl, unsigned vece,
-> -                           const TCGArg *args, const int *const_args)
-> +                           const TCGArg args[TCG_MAX_OP_ARGS],
-> +                           const int const_args[TCG_MAX_OP_ARGS])
->  {
->      TCGType type = vecl + TCG_TYPE_V64;
->      unsigned q = vecl;
-> 
+The PL031 currently is not able to report guest RTC change to the QMP
+monitor as opposed to mc146818 or spapr RTCs. This patch adds the call
+to qapi_event_send_rtc_change() when the Load Register is written. The
+value that is reported corresponds to the difference between the new
+RTC value and the RTC value elapsed since the base.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+For instance adding 20s to the guest RTC value will report 20:
+{'timestamp': {'seconds': 1631189494, 'microseconds': 16932},
+'event': 'RTC_CHANGE', 'data': {'offset': 20}}
+
+Adding another extra 20s to the guest RTC value will report 40:
+{'timestamp': {'seconds': 1631189498, 'microseconds': 9708},
+'event': 'RTC_CHANGE', 'data': {'offset': 40}}
+
+To compute the offset we need to track the origin tick_offset (the one
+computed at init time). So we need to migrate that field, which is done
+in a dedicated subsection. The migration of this subsection is disabled
+for machine types less or equal than 6.1.
+
+After migration, adding an extra 20s on the destination returns 60:
+{'timestamp': {'seconds': 1631189522, 'microseconds': 13081},
+'event': 'RTC_CHANGE', 'data': {'offset': 60}}
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+---
+
+Tested with the following script run on guest:
+
+  #!/bin/sh
+  old=$(hwclock --show | cut -f1-7 -d' ')
+  oldabs=$(date +%s -d "$old")
+  newabs=$(expr $oldabs + $1)
+  new=$(date -d @"$newabs")
+  echo Old: $oldabs $old
+  echo New: $newabs $new
+  hwclock --set --date "$new"
+
+This was tested with both -rtc base=2010-12-03T01:02:00 and base=utc
+qemu options. As far as I can see the reported value match what
+is observed on x86 (except on x86 the values are not exactly the one
+used on guest, ie. 18 for instance instead of 20).
+
+Without migrating the original tick_offset (ie. original_tick_offset
+taking the destination init tick_offset value), a delta is observed. I
+don't know whether it is a bug. At firt glance I had the
+impression it worked without the migration scheme but this delta
+urged me to migrate the original_offset too.
+---
+ hw/core/machine.c      |  4 +++-
+ hw/rtc/meson.build     |  2 +-
+ hw/rtc/pl031.c         | 25 +++++++++++++++++++++++++
+ include/hw/rtc/pl031.h |  2 ++
+ 4 files changed, 31 insertions(+), 2 deletions(-)
+
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 067f42b528f..e93cc4ab39d 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -37,7 +37,9 @@
+ #include "hw/virtio/virtio.h"
+ #include "hw/virtio/virtio-pci.h"
+ 
+-GlobalProperty hw_compat_6_1[] = {};
++GlobalProperty hw_compat_6_1[] = {
++    { "pl031", "migrate-original-tick-offset", "false" },
++};
+ const size_t hw_compat_6_1_len = G_N_ELEMENTS(hw_compat_6_1);
+ 
+ GlobalProperty hw_compat_6_0[] = {
+diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
+index 7cecdee5ddb..8fd8d8f9a71 100644
+--- a/hw/rtc/meson.build
++++ b/hw/rtc/meson.build
+@@ -2,7 +2,7 @@
+ softmmu_ss.add(when: 'CONFIG_DS1338', if_true: files('ds1338.c'))
+ softmmu_ss.add(when: 'CONFIG_M41T80', if_true: files('m41t80.c'))
+ softmmu_ss.add(when: 'CONFIG_M48T59', if_true: files('m48t59.c'))
+-softmmu_ss.add(when: 'CONFIG_PL031', if_true: files('pl031.c'))
++specific_ss.add(when: 'CONFIG_PL031', if_true: files('pl031.c'))
+ softmmu_ss.add(when: 'CONFIG_TWL92230', if_true: files('twl92230.c'))
+ softmmu_ss.add(when: ['CONFIG_ISA_BUS', 'CONFIG_M48T59'], if_true: files('m48t59-isa.c'))
+ softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP', if_true: files('xlnx-zynqmp-rtc.c'))
+diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
+index 2bbb2062ac8..51dc14559c5 100644
+--- a/hw/rtc/pl031.c
++++ b/hw/rtc/pl031.c
+@@ -24,6 +24,8 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "trace.h"
++#include "qemu/timer.h"
++#include "qapi/qapi-events-misc-target.h"
+ 
+ #define RTC_DR      0x00    /* Data read register */
+ #define RTC_MR      0x04    /* Match register */
+@@ -138,6 +140,7 @@ static void pl031_write(void * opaque, hwaddr offset,
+     switch (offset) {
+     case RTC_LR:
+         s->tick_offset += value - pl031_get_count(s);
++        qapi_event_send_rtc_change(s->tick_offset - s->original_tick_offset);
+         pl031_set_alarm(s);
+         break;
+     case RTC_MR:
+@@ -190,6 +193,7 @@ static void pl031_init(Object *obj)
+     qemu_get_timedate(&tm, 0);
+     s->tick_offset = mktimegm(&tm) -
+         qemu_clock_get_ns(rtc_clock) / NANOSECONDS_PER_SECOND;
++    s->original_tick_offset = s->tick_offset;
+ 
+     s->timer = timer_new_ns(rtc_clock, pl031_interrupt, s);
+ }
+@@ -287,6 +291,24 @@ static const VMStateDescription vmstate_pl031_tick_offset = {
+     }
+ };
+ 
++static bool pl031_original_tick_offset_needed(void *opaque)
++{
++    PL031State *s = opaque;
++
++    return s->migrate_original_tick_offset;
++}
++
++static const VMStateDescription vmstate_pl031_original_tick_offset = {
++    .name = "pl031/original-tick-offset",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = pl031_original_tick_offset_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(original_tick_offset, PL031State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_pl031 = {
+     .name = "pl031",
+     .version_id = 1,
+@@ -305,6 +327,7 @@ static const VMStateDescription vmstate_pl031 = {
+     },
+     .subsections = (const VMStateDescription*[]) {
+         &vmstate_pl031_tick_offset,
++        &vmstate_pl031_original_tick_offset,
+         NULL
+     }
+ };
+@@ -320,6 +343,8 @@ static Property pl031_properties[] = {
+      */
+     DEFINE_PROP_BOOL("migrate-tick-offset",
+                      PL031State, migrate_tick_offset, true),
++    DEFINE_PROP_BOOL("migrate-original-tick-offset",
++                     PL031State, migrate_original_tick_offset, true),
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+diff --git a/include/hw/rtc/pl031.h b/include/hw/rtc/pl031.h
+index 9fd4be1abba..e1a12753d7d 100644
+--- a/include/hw/rtc/pl031.h
++++ b/include/hw/rtc/pl031.h
+@@ -37,6 +37,8 @@ struct PL031State {
+     uint32_t tick_offset;
+     bool tick_offset_migrated;
+     bool migrate_tick_offset;
++    uint32_t original_tick_offset;
++    bool migrate_original_tick_offset;
+ 
+     uint32_t mr;
+     uint32_t lr;
+-- 
+2.26.3
+

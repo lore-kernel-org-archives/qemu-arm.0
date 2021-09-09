@@ -1,94 +1,102 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp100050lfb;
-        Thu, 9 Sep 2021 05:33:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyv02L5ujtMQCX3R7tGnS2Q6as7Jr1i2+t0YFRv8VG6ZcS5Z4H7qBNynfBQBni3kgVIwXes
-X-Received: by 2002:a1f:3490:: with SMTP id b138mr1188836vka.22.1631190800019;
-        Thu, 09 Sep 2021 05:33:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631190800; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp227512lfb;
+        Thu, 9 Sep 2021 07:54:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxEjxFUDV+11uTzK4EgqrXEfCRxvGtaVqi0NCH8vWy3eq439f0AfjI/52Z7uXmGQJ1O8byG
+X-Received: by 2002:a92:db4b:: with SMTP id w11mr2668098ilq.145.1631199278038;
+        Thu, 09 Sep 2021 07:54:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631199278; cv=none;
         d=google.com; s=arc-20160816;
-        b=mfrAD5ioLZESL/OHPlFcBycdP5/FHy+HjVCYwAXwb9hEggeCZTeENP80pf1x7ej3f3
-         Q8eEpUztre6A3V5YFbZu1atpDgD/GyhQUdytfEocP3D+SgCLM+hghxgpNgu9XWHOK+go
-         1rrBnuHw6YgEiasjBumZB64raQOGopUyczEM1VzVi8rVrWoA02vRr6iHWLOAfKi9XMDn
-         miYsq9c667lb5TxSKeE+sE2nLYq90/z2nKC2UzANNw2LNbOt+s/1ZMmdlZgGXcyBScMw
-         wyBHOmPYxIm9iQgwHwDMDBLFFHZBd0y47BHVDybOn8XABPWAxZd/E38iYaz6SBqBu6r1
-         pPYA==
+        b=JP2eyzDAjIWVGvM57LqnET0YU8XNRb3p3YKx4L44v3qcdn/3qP+bjEn1O91mEL9XZK
+         /Pqtf1hUSFrFBNp4BEoKzVNGy7b37IWmn0+ikJMizYB4x1El1DOvQyD1wFDU69btIc6b
+         FrmgClpiyv0F5Y1/HHzop8PtdB7bHKaKkopbIU81cibbLQUyw77tInzZ3pXZk9cfczkk
+         K8Jeckm3BNfgXylpbHywn2Ql3YjwDtdV7sxPUAUC4KUnmHwTT2ioD8zKHc3ZV58/8535
+         JTNZJ+iFA//NIfcDRuyHH+ZfzhQzGgJ2cM4EK5DOjUZNKr3Pbld+8VAj7dQr2GnF+D5t
+         cJZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=KMD25lC+/mEUrP20tWEQjH12CTi2ns4uY4VypM2itcY=;
-        b=dWTOdeGP6tuBlxgYHftansCwi4GZIN47LsM4ev1DaXsQiXhh80HlKEK0+QV1oksOlz
-         W0sUh3bDrmiBxe6Crg3OFFv71Wile37jr8yn61seji+XoewO3OGd5XLDWQRDiempzWl6
-         rXIY3wIfLwjwfmPtlNYW8T0hiy7KFOcR90ReRoDE2E4VygZ6FXArCEdnvq30ZQBmCenF
-         evuzRtx4XpZ9PwCYoF+sEMLq6aWnxiASm+Bv5CylWoBKRVBcsKx889ookBcKn3BKr1Eh
-         Ohmki6vHYmuDwgTqniHPrr1p53FUbAXgwMrQz7zkpBs04sfBfupTg2o1Bn9d5jlkwof3
-         ncDw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=s37qy3pJpQotWQ5W3EedXxPZF2ZNAy2RUSXNbX8p3ks=;
+        b=vCBCJtvsF8KNWmCfadgIeBRcMeuB7ImOKyKOHbyGzNUJW6Ql5swUVDotG4J89H1FhH
+         RQiETMiWH/E7/F6D3oILhU2+UJWBAAq28Or67ADoOHm47+s77vt8YWtNAibUio3Q4G+f
+         7N00+SsZQEzFRtlmTSevR1930E2BSTNo0dJXV0jgnb8T430wl8mGTL10FZQ2m5xkzRRq
+         ZiieTWqPI3h4Ccu4EfJ3c6QXVcFNcGmYY2ESEebcn8zvgC+3rclBAVJ6zchxdgJnyidi
+         rH/h1E3/Y5hxT6BI4F4n5FdN0zYKB8m1jF3PunBdpgy12aE9y5mDT2GWSrG23SsZsl5S
+         oXug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=wnt2bYof;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8si375176ual.236.2021.09.09.05.33.19
+        by mx.google.com with ESMTPS id w10si1810101jaa.124.2021.09.09.07.54.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Sep 2021 05:33:20 -0700 (PDT)
+        Thu, 09 Sep 2021 07:54:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54578 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=wnt2bYof;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mOJF1-0003vX-BN
-	for alex.bennee@linaro.org; Thu, 09 Sep 2021 08:33:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55686)
+	id 1mOLRl-0003Ow-EY
+	for alex.bennee@linaro.org; Thu, 09 Sep 2021 10:54:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mOJEq-0003tm-Hn; Thu, 09 Sep 2021 08:33:08 -0400
-Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:35849
- helo=smtpout1.3005.mail-out.ovh.net)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mOJEo-0007LQ-52; Thu, 09 Sep 2021 08:33:08 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.11])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 121C913EFD1;
- Thu,  9 Sep 2021 12:33:01 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Thu, 9 Sep
- 2021 14:33:01 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-105G00616caeb49-d78e-428f-8d88-7c3b0d3e2a4b,
- 71690547EA7DDBCF94B8ED6B48C1704BA445499A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH 01/10] aspeed/smc: Add watchdog Control/Status Registers
-To: Peter Delevoryas <pdel@fb.com>
-References: <20210907065822.1152443-1-clg@kaod.org>
- <20210907065822.1152443-2-clg@kaod.org>
- <632B8EA3-1A9E-46A9-A930-7ADD2C25F154@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <b51993b2-ad15-b3ee-4c0a-e704a0710c07@kaod.org>
-Date: Thu, 9 Sep 2021 14:33:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mOLRe-0003OV-Ea
+ for qemu-arm@nongnu.org; Thu, 09 Sep 2021 10:54:30 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:43818)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mOLRc-0004AJ-Qz
+ for qemu-arm@nongnu.org; Thu, 09 Sep 2021 10:54:30 -0400
+Received: by mail-wr1-x434.google.com with SMTP id b6so2951976wrh.10
+ for <qemu-arm@nongnu.org>; Thu, 09 Sep 2021 07:54:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=s37qy3pJpQotWQ5W3EedXxPZF2ZNAy2RUSXNbX8p3ks=;
+ b=wnt2bYof7vY3gxi1ot3asNzLf+CiiLZSgmWzrORXlQEyFLQvSb/TFTbqqpRHkWJOxx
+ WdWzsl1AJDe6aP+DnuByGY3fdi2pbYrl3rFfBLoIuLvF8nQ/i6VYU5vFwNr14LSBI95u
+ tI2Gro59FXxsypZ2vzy7+uvyUBsL9eR0pne88f4W7X1oLGh9MBx3Vv1v5JnuTYbmV8lG
+ IweJz2hQHoZmoa+PAEMi450R22hWYHCuvGWfnM0NQtN9+A+7AXduudOZJzprMg5NVrsS
+ pR13+iotPdS9D4TAMKd9J+VSr9XFL+vn6xZBvg/jn2yEn1m++rF+guwp6sZJqV0irmN6
+ uKdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=s37qy3pJpQotWQ5W3EedXxPZF2ZNAy2RUSXNbX8p3ks=;
+ b=MDPNkiY101mHBFxR2ZhXdmvE0T5zPMKaj0pysHfChxN5KqLi6q98molav8AY12mOPG
+ 5O8CgdREGy8ugOQsQGglScU34k7LTqPesLX4cItjCTPIDuqlNjsvsx+Y5vlI3d/rAhIS
+ zwAQ7RxRlU3EBPfix/VMUn4F97Gj4cz2OsZO27tA3HSeFT6mQE5WsP8rdQ/WgWVQ1mCc
+ WDwXBjPJ4B5NxI4CvQQof0VDaKJYFFKQKKWsVMp9RC6+UlCwCeX8T2UEMxIfpXDmk86M
+ sy+AVVyUff86HFPVGWWMShZd9M62zkIjnHPpDthjbl7qJsNkSDsTJNPtBAHRZDLyGMmC
+ 0P8A==
+X-Gm-Message-State: AOAM533jT3ZDsoLteb8y0H1mmHnN8HxrtaGRp7uKLLrmQrWh7ij7xXbn
+ ntpjXJ9wP5uA9tyEzXEDY+AJSUTCwdDofTvjDYsoDQ==
+X-Received: by 2002:a5d:4b4b:: with SMTP id w11mr993152wrs.302.1631199267201; 
+ Thu, 09 Sep 2021 07:54:27 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <632B8EA3-1A9E-46A9-A930-7ADD2C25F154@fb.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: f48a847a-8fba-464f-ab6a-513c7b87d563
-X-Ovh-Tracer-Id: 18373842057316830057
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudefledgheegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.3005.mail-out.ovh.net
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.975,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <20210902150910.15748-1-peter.maydell@linaro.org>
+ <20210902150910.15748-2-peter.maydell@linaro.org>
+ <76cd3594-f864-232c-8687-19a1d44ff07e@linaro.org>
+In-Reply-To: <76cd3594-f864-232c-8687-19a1d44ff07e@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 Sep 2021 15:53:37 +0100
+Message-ID: <CAFEAcA-k-6hLBXn+7S_WH3w2QHwXad5H6L_iSLYK+9dQxHvTxg@mail.gmail.com>
+Subject: Re: [PATCH 1/4] target/arm: Add TB flag for "MVE insns not predicated"
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,166 +110,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- Cameron Esfahani via <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4DMXYz1trUKD
+X-TUID: 8KhAW2jFcxSV
 
-On 9/8/21 8:46 PM, Peter Delevoryas wrote:
-> 
-> 
->> On Sep 6, 2021, at 11:58 PM, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> The Aspeed SoCs have a dual boot function for firmware fail-over
->> recovery. The system auto-reboots from the second flash if the main
->> flash does not boot sucessfully within a certain amount of time. This
->> function is called alternate boot (ABR) in the FMC controllers.
->>
->> On AST2400/AST2500, ABR is enabled by hardware strapping in SCU70 to
->> enable the 2nd watchdog timer, on AST2600, through register SCU510.
->> If the boot on the the main flash succeeds, the firmware should
->> disable the 2nd watchdog timer. If not, the BMC is reset and the CE0
->> and CE1 mappings are swapped to restart the BMC from the 2nd flash.
->>
->> On the AST2600, the registers controlling the 2nd watchdog timer were
->> moved from the watchdog register to the FMC controller. Add simple
->> read/write handlers for these to let the FW disable the 2nd watchdog
->> without error.
->>
->> Reported-by: Peter Delevoryas <pdel@fb.com>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->> hw/ssi/aspeed_smc.c | 16 ++++++++++++++++
->> 1 file changed, 16 insertions(+)
->>
->> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
->> index 331a2c544635..c9990f069ea4 100644
->> --- a/hw/ssi/aspeed_smc.c
->> +++ b/hw/ssi/aspeed_smc.c
->> @@ -124,6 +124,13 @@
->> /* SPI dummy cycle data */
->> #define R_DUMMY_DATA      (0x54 / 4)
->>
->> +/* FMC_WDT2 Control/Status Register for Alternate Boot (AST2600) */
->> +#define R_FMC_WDT2_CTRL   (0x64 / 4)
->> +#define   FMC_WDT2_CTRL_ALT_BOOT_MODE    BIT(6) /* O: 2 chips 1: 1 chip */
->> +#define   FMC_WDT2_CTRL_SINGLE_BOOT_MODE BIT(5)
->> +#define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary 1: alternate */
->> +#define   FMC_WDT2_CTRL_EN               BIT(0)
->> +
->> /* DMA Control/Status Register */
->> #define R_DMA_CTRL        (0x80 / 4)
->> #define   DMA_CTRL_REQUEST      (1 << 31)
->> @@ -263,12 +270,18 @@ static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t value);
->>
->> #define ASPEED_SMC_FEATURE_DMA       0x1
->> #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
->> +#define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
->>
->> static inline bool aspeed_smc_has_dma(const AspeedSMCState *s)
->> {
->>     return !!(s->ctrl->features & ASPEED_SMC_FEATURE_DMA);
->> }
->>
->> +static inline bool aspeed_smc_has_wdt_control(const AspeedSMCState *s)
->> +{
->> +    return !!(s->ctrl->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
->> +}
->> +
->> static const AspeedSMCController controllers[] = {
->>     {
->>         .name              = "aspeed.smc-ast2400",
->> @@ -1019,6 +1032,7 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
->>         addr == R_CE_CMD_CTRL ||
->>         addr == R_INTR_CTRL ||
->>         addr == R_DUMMY_DATA ||
->> +        (aspeed_smc_has_wdt_control(s) && addr == R_FMC_WDT2_CTRL) ||
->>         (aspeed_smc_has_dma(s) && addr == R_DMA_CTRL) ||
->>         (aspeed_smc_has_dma(s) && addr == R_DMA_FLASH_ADDR) ||
->>         (aspeed_smc_has_dma(s) && addr == R_DMA_DRAM_ADDR) ||
->> @@ -1350,6 +1364,8 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
->>         s->regs[addr] = value & 0xff;
->>     } else if (addr == R_DUMMY_DATA) {
->>         s->regs[addr] = value & 0xff;
->> +    } else if (aspeed_smc_has_wdt_control(s) && addr == R_FMC_WDT2_CTRL) {
->> +        s->regs[addr] = value & 0xb;
->>     } else if (addr == R_INTR_CTRL) {
->>         s->regs[addr] = value;
->>     } else if (aspeed_smc_has_dma(s) && addr == R_DMA_CTRL) {
->> -- 
->> 2.31.1
->>
-> 
-> Looks good to me!
-> 
-> Reviewed-by: Peter Delevoryas <pdel@fb.com>
-> 
-> One thing: should we enable this feature (ASPEED_SMC_FEATURE_WDT_CONTROL)
-> on any of the SMC controller models? I wanted to test this with the
-> Fuji image and machine type I added, and I needed the following diff
-> to enable this:
+On Fri, 3 Sept 2021 at 14:58, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 9/2/21 5:09 PM, Peter Maydell wrote:
+> > Our current codegen for MVE always calls out to helper functions,
+> > because some byte lanes might be predicated. The common case is
+> > that in fact there is no predication active and all lanes should
+> > be updated together, so we can produce better code by detecting
+> > that and using the TCG generic vector infrastructure.
+> >
+> > Add a TB flag that is set when we can guarantee that there
+> > is no active MVE predication, and a bool in the DisasContext.
+> > Subsequent patches will use this flag to generate improved
+> > code for some instructions.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > Another of those awkward-to-review patches where the interesting
+> > question is "did I miss anywhere where we set v7m.vpr to non-0
+> > or v7m.ltpsize to non-4 while in the middle of a TB ?" ...
+> >
+> > I've left the TB flag as non-cached because there seemed to
+> > be an irritatingly large set of places where we'd have to do
+> > an hflags recomputation.
+>
+> Indeed, non-cached seems like the right option.
+>
+> > +static bool mve_no_predication(CPUARMState *env)
+> > +{
+> > +    /*
+> > +     * Return true if there is definitely no predication of MVE
+> > +     * instructions for any reason. (Returning false even if there
+> > +     * isn't any predication is OK; generated code will just be
+> > +     * a little worse.)
+> > +     * We do not account here for partial insn execution due to
+> > +     * ECI bits as those are already in the TB flags elsewhere.
+> > +     */
+>
+> I think you should go ahead and include that here, as it makes the test self-contained,
+> and avoids you having to do this:
+>
+> > +        dc->mve_no_pred = EX_TBFLAG_M32(tb_flags, MVE_NO_PRED) && dc->eci == 0;
 
-Ah yes. It fell through the cracks with PATCH 04 "aspeed/smc: Drop 
-AspeedSMCController structure" which moves a lot of code around. I will
-add it back in the next spin.
+I found a reason why these should stay split, and it's related to the
+discussion in this thread about TB flags whose state changes and whether
+that means you need to end the TB. The TB flag state in the CONDEXEC bits
+(ie including the ECI bits) changes for a lot of instructions, but we don't
+need to end the TB because it always changes in the exact same way
+regardless. A TB flag encoding just "MVE predication might happen
+due to LTPSIZE and VPR" changes in only a few places, and we can end
+the TB in those places. A single TB flag that mixes together all of
+LTPSIZE, VPR and ECI can change state in a hard-to-disentangle way,
+because a non-zero ECI can change to zero for just about any MVE insn.
 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 331a2c5446..b5d835d488 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -388,7 +388,7 @@ static const AspeedSMCController controllers[] = {
->          .segments          = aspeed_segments_ast2600_fmc,
->          .flash_window_base = ASPEED26_SOC_FMC_FLASH_BASE,
->          .flash_window_size = 0x10000000,
-> -        .features          = ASPEED_SMC_FEATURE_DMA,
-> +        .features          = ASPEED_SMC_FEATURE_DMA | ASPEED_SMC_FEATURE_WDT_CONTROL,
->          .dma_flash_mask    = 0x0FFFFFFC,
->          .dma_dram_mask     = 0x3FFFFFFC,
->          .nregs             = ASPEED_SMC_R_MAX,
-> 
-> Without this, Fuji would try to clear BIT(0) of R_FMC_WDT2_CTRL,
-> but then the default aspeed_smc_read() value would return 0xFFFFFFF.
-> 
-> Error: unable to disable the 2nd watchdog: FMC_WDT2=0xFFFFFFFF
-> 
-> And then with these changes added, the writes and reads work
-> so that BIT(0) appears to have been cleared:
-> 
-> Disabled the 2nd watchdog (FMC_WDT2) successfully.
-> 
-> root@bmc-oob:~# devmem 0x1e620064
-> 0x00000000
-> root@bmc-oob:~# devmem 0x1e620064 32 0xffffffff
-> root@bmc-oob:~# devmem 0x1e620064
-> 0x0000000B
-> 
-> I don’t totally understand why the mask for the register is 0xb though?
+If we keep MVE_NO_PRED and ECI distinct, then we don't need to consider
+ECI updates when figuring out if we need to end the TB, which works out neater.
 
-It is bogus. I changed it to : 
-
-  s->regs[addr] = value & FMC_WDT2_CTRL_EN;
-
-since we only care about the watchdog enablement status bit. So now : 
-
-  root@bmc-oob:~# devmem 0x1e620064
-  0x00000000
-  root@bmc-oob:~# devmem 0x1e620064 32 0xffffffff
-  root@bmc-oob:~# devmem 0x1e620064
-  0x00000001
-
-
-It would be interesting also to implement the WDT2 reset. We can link 
-the WDT2 register memory region in the AST2600 FMC model to have the 
-controls. We need to boot much faster else WDT2 will fire.
-
-When merged, we can ask Peter for some help on understanding why it 
-is so slow compared to the other AST2600 machines.  
-
-The others FMC_WDT2 bits will need more work.
-
-Thanks for the review and tests,
-
-C.
+thanks
+-- PMM

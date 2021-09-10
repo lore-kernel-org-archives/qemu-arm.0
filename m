@@ -1,116 +1,94 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp880601lfb;
-        Thu, 9 Sep 2021 23:48:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw1OYutK3iMn3D3wtY6EKcADrJ5Sph+KysTDpzLuxfT4Z5kRXYbejNxgmgj/f/nI0ThjMKU
-X-Received: by 2002:a6b:3e84:: with SMTP id l126mr5977590ioa.151.1631256490006;
-        Thu, 09 Sep 2021 23:48:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631256490; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp918279lfb;
+        Fri, 10 Sep 2021 00:49:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0cowL7q9Eb40fWgOgnKBJMdJDAsdkmTGZC/susaEJhDq7rIFfX4grqya/l9YoX6Ylj47D
+X-Received: by 2002:a05:6e02:1b81:: with SMTP id h1mr5258562ili.240.1631260198574;
+        Fri, 10 Sep 2021 00:49:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631260198; cv=none;
         d=google.com; s=arc-20160816;
-        b=W7uR5OxX2Z1uM02iVEZ93lHomWM/6ul+CBM1osJsotxPtT+RXLhUl9RzNwfftY9Ekm
-         W7pLhZm0SgehgO4ZzD5/C6Ggm3VjAbWt6KV15OPocGlOG6YiZsrhLw+3fsDLTH4pnA+g
-         tUwoyo4OM/tgXTlB/QWAfCOxtR2fJmKrWaZq64VA099XrV6wjgGL0SRZvExbYiy1Mcsu
-         W9scR81L0txbSKOzO3eDthQeCzACMGhsTIhFaWf2U6olN0VFEoglNqwK0tcfCse+9zLK
-         yzfcRmRoXdJ0lSJOO8IFCjoPFKNwpewZxn1PTzMlVHLrehjD6c8RFY8cfs7gb9LPJBoy
-         9Czw==
+        b=bU1iiPNTkCAaFh6xGuF/FNmYHofBmzERuoJhEiYm/vFa4jQrCA7Z9Izn4z8kTPBOhd
+         242z+EWwJX6gcukauQlffe7qi5gnOtclWEfFyopw2i/tbHA4qkXiDhnyd2TgUG2/Chup
+         eP5C2eNAdAjMy8uZJCBE/MrXMukcdu1iGZ693xKA53SBDpVRkaxvw7hETE3f8BYKkjLy
+         mG5NQI85KdTcHuWpVnCAjN2/+co7zrYLkO+jH+Gi9KmNtqSOQoI03qj8vCeqzxg10J2G
+         jfOEZaBPIB3OSqWkFtR8wXMWeO0jC4GozY98yqauxK/hlwQSEEFaF8xGczBQJn0oSEFS
+         cpSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=JZwVYff2olTKH4aZVpxOQc2TZr/YmofPRDMpeuN43uQ=;
-        b=uLPvfmTPP4d5NapMt3ksIvM/7qK+0fL7vdkV3QAu/kqsxQ1Hr/0o5K7ITK/9npAn/s
-         pY3k8kTo1H9y1wRz4HMnlmWWhysfYryhMjBAMIiojwVnYK98metT0se4A84pWKblTjzD
-         2QFs0ZMrp5Q3e6tLBoCkT/2JGWMkXXl/Rzh1LdSe0YIlNjfmBGH8PZbGsxADXOqktFwS
-         4sMvpLJqPtmOLv/B0teFTlUecrbQ+lAuB/MuOAr0U9mmhP6728mIYGl6MoaKyqAUBgkg
-         LMpQBcX1sGFk3iCJg663IrFtHEaEcfbDzKuraXQvNK6ccQmXDkNVvOhgipiPHcxetB6Z
-         ngxg==
+         :message-id:from:references:to:subject;
+        bh=nsOgw2Nt10eR6C8uSgpLjVD9a3NFySjaho0Ax2csJpY=;
+        b=0MirJ/1611RYJOt5+WTdPW6TPGMIaFb7O22l4wKRZC2gJsmp++864zdPku9fW/VNB+
+         CiULqGZ2e7TIG9VicQYUpWB0j3CbjqtCxwKxgvQ4NzWOPLwDSdw1rai/O7BtlX75D5Z/
+         a6lYCOJrT0pD1mdMUTVOITgTEPO1uJb9VJVMlFOsWzv7m943X8C9/jY7khmI/IgivHDG
+         hUP2OrX0FXzF2GlX3iZoXuvipflKdUkRZgu/ZVo5J2mntDVUu3exAtlJGW9TcONfFwM4
+         9EWGX0C1CSxPKijOPasq5Klj+2NBcGVBaJo+DMub26m05M3MuR0tcM9AmcNIbfmy8XS6
+         POsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oL9xe0b8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m24si4176368jac.82.2021.09.09.23.48.09
+        by mx.google.com with ESMTPS id s9si4609140jaj.98.2021.09.10.00.49.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Sep 2021 23:48:09 -0700 (PDT)
+        Fri, 10 Sep 2021 00:49:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oL9xe0b8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52096 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:32896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mOaKX-0000GQ-6C
-	for alex.bennee@linaro.org; Fri, 10 Sep 2021 02:48:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53022)
+	id 1mObIL-00062V-FZ
+	for alex.bennee@linaro.org; Fri, 10 Sep 2021 03:49:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mOaJE-0007QY-1U
- for qemu-arm@nongnu.org; Fri, 10 Sep 2021 02:46:48 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:52223)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mOaJB-0003qG-2m
- for qemu-arm@nongnu.org; Fri, 10 Sep 2021 02:46:47 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id y132so447505wmc.1
- for <qemu-arm@nongnu.org>; Thu, 09 Sep 2021 23:46:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=JZwVYff2olTKH4aZVpxOQc2TZr/YmofPRDMpeuN43uQ=;
- b=oL9xe0b8sEeHGs8Ygo4HpTeWlqJ1Z97hRRVOwUPAR6jCLEQi9dU04h4qxcfxYd6g0b
- RCf5Ah7Z4YImJad5zso/uz36uSipMHtNZlULvDh0v+G6MRjozDlYSMmHHVX+NcYio2q9
- CrG5zqn1nBEwO8Ynm5XtS6uq/wVOPaabiZmJr1orgE4UgYUF9RFPfuI1nZaLsmTVYCGR
- CvfGx1M0usQN2s/tgXjMlilqEGtJoG00vHVO2WobmgbLJlBSFbsth458NOTqld8QdtbV
- Gn1ZlPt2EcuG79Hh1Izw3CVbBTVmxs1TpPOXtA32etj1et9SKcuTcENVRC6XKv0y8Jnt
- 9FUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=JZwVYff2olTKH4aZVpxOQc2TZr/YmofPRDMpeuN43uQ=;
- b=WqNcXF4hVMc7RaoJJYLNMvKxwpcjc2L+CVevvQKT+D6r/tyYTMDV6DhI07ZSFm4bUL
- OcK4InzUMloYWYGknRwUdejKghlwqRaYYTjN2K1hbnQEk2Xygz37eYMHDTojqPPXuhQF
- YmRoyi+HqKgRXcRaG21aAlbGqmKSH72FuAbs/NgJVUNt+wBc21GAGsQsh0lDinP6amro
- N5m1iTeZubnQve80UInyt1OeNq2QPhj5keK2ui6n6vfZ1lCLEXppiu1GyrKmfr8iDc70
- wkfhQKgb9ABV8D0ainb2JnUxDo/REwcErfSxLGYeXSlxV3671ah8HM4yyBOWCAW8BEQc
- Nh+A==
-X-Gm-Message-State: AOAM532mcdKuVI1LH+TQGnoPL0COOgkPq3dEHtb811m4FbT9KyTbyR59
- zYGhMkcyBTKtxEVztwBZNkBlQw==
-X-Received: by 2002:a1c:35c1:: with SMTP id c184mr6645132wma.68.1631256402954; 
- Thu, 09 Sep 2021 23:46:42 -0700 (PDT)
-Received: from [192.168.1.147] (149.164.14.37.dynamic.jazztel.es.
- [37.14.164.149])
- by smtp.gmail.com with ESMTPSA id d8sm3994363wrv.20.2021.09.09.23.46.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Sep 2021 23:46:42 -0700 (PDT)
-Subject: Re: [PATCH 1/4] target/arm: Add TB flag for "MVE insns not predicated"
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210902150910.15748-1-peter.maydell@linaro.org>
- <20210902150910.15748-2-peter.maydell@linaro.org>
- <76cd3594-f864-232c-8687-19a1d44ff07e@linaro.org>
- <CAFEAcA_xUSMEoT34fkwiGef8D5Rwfkvre8o03YqgEw-qD86o=Q@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d2263937-aa85-c51c-9a2b-bc50043e10c7@linaro.org>
-Date: Fri, 10 Sep 2021 08:46:39 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mObIA-00060d-UF
+ for qemu-arm@nongnu.org; Fri, 10 Sep 2021 03:49:46 -0400
+Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:56899)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mObI6-0008Tj-Nf
+ for qemu-arm@nongnu.org; Fri, 10 Sep 2021 03:49:46 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.246])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 4537813FA97;
+ Fri, 10 Sep 2021 07:49:38 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 10 Sep
+ 2021 09:49:37 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R005523ff09e-6696-4585-a9c8-be0b29e3c16c,
+ 7E3151BA03BDFE499776E315E3312AC0A00E288C) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH v4] hw/arm/aspeed: Add Fuji machine type
+To: Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
+References: <20210906133124.3674661-1-pdel@fb.com>
+ <CACPK8Xdmc3i8C7gkVxsuBcPuHKzDsTZ1tKcx5R7qVAHYN=uhwQ@mail.gmail.com>
+ <379704F7-86BE-4AF1-A256-58652508BD53@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <51d97636-65a9-8fbe-2a1f-be44992d270a@kaod.org>
+Date: Fri, 10 Sep 2021 09:49:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_xUSMEoT34fkwiGef8D5Rwfkvre8o03YqgEw-qD86o=Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <379704F7-86BE-4AF1-A256-58652508BD53@fb.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.975,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 0e3876a8-9e3b-4cc5-8b76-f2491785e6ff
+X-Ovh-Tracer-Id: 1013872868269001635
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegtddguddvudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehuedtheeghfdvhedtueelteegvdefueektdefiefhffffieduuddtudfhgfevtdenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout2.3005.mail-out.ovh.net
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.975,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,25 +101,172 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DgOXW4OOLPlI
+X-TUID: +Z0GpIY7tf7f
 
-On 9/9/21 3:46 PM, Peter Maydell wrote:
-> On Fri, 3 Sept 2021 at 14:58, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->> I think you need to go ahead and end the TB and resync immediately.
->> Just set dc->base.is_jmp = DISAS_UPDATE_NOCHAIN instead.
+On 9/7/21 4:05 PM, Peter Delevoryas wrote:
 > 
-> Is there a rule for when we should set is_jmp to DISAS_UPDATE_NOCHAIN,
-> when we should set it to DISAS_UPDATE_EXIT, and when we should call
-> gen_lookup_tb() ? We seem to use all three methods at various points
-> for "I changed some CPU state and want to end the TB"...
+> 
+>> On Sep 7, 2021, at 1:59 AM, Joel Stanley <joel@jms.id.au> wrote:
+>>
+>> On Mon, 6 Sept 2021 at 13:31, <pdel@fb.com> wrote:
+>>>
+>>> From: Peter Delevoryas <pdel@fb.com>
+>>>
+>>> This adds a new machine type "fuji-bmc" based on the following device tree:
+>>>
+>>> https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
+>>>
+>>> Most of the i2c devices are not there, they're added here:
+>>>
+>>> https://github.com/facebook/openbmc/blob/fb2ed12002fb/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
+>>>
+>>> I tested this by building a Fuji image from Facebook's OpenBMC repo,
+>>> booting, and ssh'ing from host-to-guest.
+>>>
+>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>>
+>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> 
+> Thanks!
+> 
+>>
+>>> +static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+>>> +{
+>>> +    AspeedSoCState *soc = &bmc->soc;
+>>> +    I2CBus *i2c[144] = {};
+>>> +
+>>> +    for (int i = 0; i < 16; i++) {
+>>> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+>>> +    }
+>>> +    I2CBus *i2c180 = i2c[2];
+>>> +    I2CBus *i2c480 = i2c[8];
+>>> +    I2CBus *i2c600 = i2c[11];
+>>> +
+>>> +    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
+>>
+>> Wow, this is interesting. How did you go about testing it? Are you
+>> sure you didn't overwrite any of the pointers?
+>>
+>> It might be worth coming up with a better way of describing all of the
+>> i2c buses for future machines.
+>>
+>> Cheers,
+>>
+>> Joel
+> 
+> Ah, yes, so, I took the compiled device tree output and printed it out,
+> and it has a complete list of the i2c aliases from all of the component
+> device tree’s, like this:
+> 
+> dtc openbmc/build-fuji/tmp/deploy/images/fuji/aspeed-bmc-facebook-fuji.dtb
+> 
+> aliases {
+>         i2c0 = "/ahb/apb/bus@1e78a000/i2c-bus@80";
+>         i2c1 = "/ahb/apb/bus@1e78a000/i2c-bus@100";
+>         i2c2 = "/ahb/apb/bus@1e78a000/i2c-bus@180";
+>         i2c3 = "/ahb/apb/bus@1e78a000/i2c-bus@200";
+>         i2c4 = "/ahb/apb/bus@1e78a000/i2c-bus@280";
+>         i2c5 = "/ahb/apb/bus@1e78a000/i2c-bus@300";
+>         i2c6 = "/ahb/apb/bus@1e78a000/i2c-bus@380";
+>         i2c7 = "/ahb/apb/bus@1e78a000/i2c-bus@400";
+>         i2c8 = "/ahb/apb/bus@1e78a000/i2c-bus@480";
+>         i2c9 = "/ahb/apb/bus@1e78a000/i2c-bus@500";
+>         i2c10 = "/ahb/apb/bus@1e78a000/i2c-bus@580";
+>         i2c11 = "/ahb/apb/bus@1e78a000/i2c-bus@600";
+>         i2c12 = "/ahb/apb/bus@1e78a000/i2c-bus@680";
+>         i2c13 = "/ahb/apb/bus@1e78a000/i2c-bus@700";
+>         i2c14 = "/ahb/apb/bus@1e78a000/i2c-bus@780";
+>         i2c15 = "/ahb/apb/bus@1e78a000/i2c-bus@800";
+>         ...
+>         i2c16 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@0";
+>         i2c17 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@1";
+>         i2c18 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@2";
+>         i2c19 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@3";
+>         i2c20 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@4";
+>         i2c21 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@5";
+>         i2c22 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@6";
+>         i2c23 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@7";
+>         i2c24 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@0";
+>         i2c25 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@1";
+>         i2c26 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@2";
+>         i2c27 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@3";
+>         i2c28 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@4";
+>         i2c29 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@5";
+>         i2c30 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@6";
+>         i2c31 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@7";
+>         i2c40 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@0";
+>         i2c41 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@1";
+>         i2c42 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@2";
+>         i2c43 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@3";
+>         i2c44 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@4";
+>         i2c46 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@6";
+>         ...
+>         i2c143 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@7/i2c-switch@76/i2c@7";
+> };
+> 
+> And setup_i2c.sh’s first parameter is referencing these aliases:
+> 
+> # # i2c-mux 2, channel 2
+> i2c_device_add 17 0x4c lm75   #SCM temp. sensor
+> i2c_device_add 17 0x4d lm75   #SCM temp. sensor
+> 
+> # # i2c-mux 2, channel 3
+> i2c_device_add 19 0x52 24c64   #EEPROM
+> 
+> # # i2c-mux 2, channel 4
+> i2c_device_add 20 0x50 24c02   #BMC54616S EEPROM
+> 
+> # # i2c-mux 2, channel 6
+> i2c_device_add 22 0x52 24c02   #BMC54616S EEPROM
+> 
+> My first idea was to make some kind of tree definition
+> describing the i2c switches and then do a breadth first
+> search/etc to enumerate all of the buses.
+> 
+> I2CBus *i2c[144] = {}
+> // Initialize base set of i2c buses.
+> i2c[0] = …
+> i2c[1] = …
+> …
+> i2c[15] = …
+> // Initialize switch definitions, includes
+> // some kind of reference to its parent bus.
+> struct { … } switches[] = {…}
+> // Populate i2c buses using switch definitions.
+> for (int i = 0; i < sizeof(switches)/sizeof(switches[0]); i++) {
+>     I2CSlave *switch = find_switch(i2c, switches[i]);
+>                        ^^^^Recursive function or something
+>     for (int j = 0; j < 8; j++) {
+>         // Special case because fuji datasheet skips 32..40
+>         if (n == 32) {
+>             n = 40;
+>         }
+>         i2c[n++] = aspeed_i2c_get_bus(switch, j);
+>     }
+> }
+> 
+> I’m realizing, I probably should have done this, but I also realized
+> there’s not that many switches in the system, so if you just automate
+> the get_channels() part (x8 buses for each switch) then it was
+> not unreasonable to just manually write out the locations for each switch.
+> 
+> As far as testing: I didn’t do a lot, I mostly just eyeball’d it
+> more after writing it out and then I looked at the boot logs, so
+> I’m still not _absolutely_ sure that I got it right. Let me know
+> if you guys think I should refactor this!
 
-UPDATE_EXIT is for when you need to return to the main loop; UPDATE_NOCHAIN merely avoids 
-goto_tb.  Direct use of gen_goto_ptr should be reserved for branches (which I think is 
-already the case).
+It think it's fine. Fixes can come later on if needed.
 
 
-r~
+Phil, 
+
+Are we OK with this ? I would like to include this patch in
+the v2 of the aspeed PR.
+
+Thanks,
+
+C.

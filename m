@@ -1,272 +1,197 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp918279lfb;
-        Fri, 10 Sep 2021 00:49:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0cowL7q9Eb40fWgOgnKBJMdJDAsdkmTGZC/susaEJhDq7rIFfX4grqya/l9YoX6Ylj47D
-X-Received: by 2002:a05:6e02:1b81:: with SMTP id h1mr5258562ili.240.1631260198574;
-        Fri, 10 Sep 2021 00:49:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631260198; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp927528lfb;
+        Fri, 10 Sep 2021 01:04:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJynrfgAhx/Mhjf7JKUMOorTyprb9uh96RCze1h7v3MhGALuBmOB/FHqg3+E4hVk2dS9ckUi
+X-Received: by 2002:a05:6602:2436:: with SMTP id g22mr6107758iob.109.1631261054858;
+        Fri, 10 Sep 2021 01:04:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631261054; cv=none;
         d=google.com; s=arc-20160816;
-        b=bU1iiPNTkCAaFh6xGuF/FNmYHofBmzERuoJhEiYm/vFa4jQrCA7Z9Izn4z8kTPBOhd
-         242z+EWwJX6gcukauQlffe7qi5gnOtclWEfFyopw2i/tbHA4qkXiDhnyd2TgUG2/Chup
-         eP5C2eNAdAjMy8uZJCBE/MrXMukcdu1iGZ693xKA53SBDpVRkaxvw7hETE3f8BYKkjLy
-         mG5NQI85KdTcHuWpVnCAjN2/+co7zrYLkO+jH+Gi9KmNtqSOQoI03qj8vCeqzxg10J2G
-         jfOEZaBPIB3OSqWkFtR8wXMWeO0jC4GozY98yqauxK/hlwQSEEFaF8xGczBQJn0oSEFS
-         cpSg==
+        b=CJNbgeqKgxFxlu1Atda9lFdwM4iY0lUvIK+kxnskEXReF/YBXSzos8SfsLXpKYARRB
+         ItwBcUxfBmqwqLsGcm1KoZlTqUZNjxWJZAIIRAvADDSoSdxHBZFFdgpvZ3S4ZlMNHHzh
+         HxrczPbYUwNW/bYo3oJg+HSJ47iY935ygQgVeYR7Y/r4eesQQSUiI72gBt2SAEWsGft+
+         QFC9x9tOs+8k2g6iQ7Osk1/rBa0v8kqLhOulK+wezqef8ADdgwCj5sdb+u811fZF92Lp
+         /nc8ZEPTnl4w1McjzrGKLHETgHKUNftLRvwsl40ggtTilYrBYi9U5G5BpPmZflWXSnu9
+         XX8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=nsOgw2Nt10eR6C8uSgpLjVD9a3NFySjaho0Ax2csJpY=;
-        b=0MirJ/1611RYJOt5+WTdPW6TPGMIaFb7O22l4wKRZC2gJsmp++864zdPku9fW/VNB+
-         CiULqGZ2e7TIG9VicQYUpWB0j3CbjqtCxwKxgvQ4NzWOPLwDSdw1rai/O7BtlX75D5Z/
-         a6lYCOJrT0pD1mdMUTVOITgTEPO1uJb9VJVMlFOsWzv7m943X8C9/jY7khmI/IgivHDG
-         hUP2OrX0FXzF2GlX3iZoXuvipflKdUkRZgu/ZVo5J2mntDVUu3exAtlJGW9TcONfFwM4
-         9EWGX0C1CSxPKijOPasq5Klj+2NBcGVBaJo+DMub26m05M3MuR0tcM9AmcNIbfmy8XS6
-         POsQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=BfsN8PszjvzudcWJwAGDXzGLOjxwaz6TX4zyt+YQdYw=;
+        b=ETkKczhthdE/1LWWj4/i+ZkN5Gid3dyWTXpydIZm839Lule8fhFyebkbkA5LNHbdVJ
+         PF8vGavemW0SrCJ+h2q/7Qxl2q7xFS/UQSM5crYfqU96TBpCdhOUGcPhAJx4D2mFR6Sy
+         mSwmSF86HBTOmv4v/RPIA3pPE9ERNreG7u73V1ANdgD6Qy24nR5aQhv+63nJvx2Zzo1j
+         gCe4s2vupYT8zqtzoBu7ThdI/jyneC+C/Cz0IoZjKuhB0BK3YQ2iAxp8nKuPvVIzDe6a
+         mshycrSIDJ4jl1T/JR/3QhhmphrARB9HD1wzgMLzIi1azU4kMqecfnJQIN0oN2hqk4F4
+         bBQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LD9Z6AvX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9si4609140jaj.98.2021.09.10.00.49.58
+        by mx.google.com with ESMTPS id x6si4648205ilu.80.2021.09.10.01.04.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Sep 2021 00:49:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 10 Sep 2021 01:04:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32896 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LD9Z6AvX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50964 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mObIL-00062V-FZ
-	for alex.bennee@linaro.org; Fri, 10 Sep 2021 03:49:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37010)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mObWA-0001m1-6O
+	for alex.bennee@linaro.org; Fri, 10 Sep 2021 04:04:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39606)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mObIA-00060d-UF
- for qemu-arm@nongnu.org; Fri, 10 Sep 2021 03:49:46 -0400
-Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:56899)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mObV1-0000tB-8d
+ for qemu-devel@nongnu.org; Fri, 10 Sep 2021 04:03:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49024)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mObI6-0008Tj-Nf
- for qemu-arm@nongnu.org; Fri, 10 Sep 2021 03:49:46 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.246])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 4537813FA97;
- Fri, 10 Sep 2021 07:49:38 +0000 (UTC)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 10 Sep
- 2021 09:49:37 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R005523ff09e-6696-4585-a9c8-be0b29e3c16c,
- 7E3151BA03BDFE499776E315E3312AC0A00E288C) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH v4] hw/arm/aspeed: Add Fuji machine type
-To: Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
-References: <20210906133124.3674661-1-pdel@fb.com>
- <CACPK8Xdmc3i8C7gkVxsuBcPuHKzDsTZ1tKcx5R7qVAHYN=uhwQ@mail.gmail.com>
- <379704F7-86BE-4AF1-A256-58652508BD53@fb.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <51d97636-65a9-8fbe-2a1f-be44992d270a@kaod.org>
-Date: Fri, 10 Sep 2021 09:49:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mObUw-00035V-IV
+ for qemu-devel@nongnu.org; Fri, 10 Sep 2021 04:03:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631260975;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=BfsN8PszjvzudcWJwAGDXzGLOjxwaz6TX4zyt+YQdYw=;
+ b=LD9Z6AvXk8a1MAO5K53f5yXzBUA7zi+OfbOzHB/wBAJZx7za3slNz4H7MedkVdfoB0xuWK
+ HvvPTPA/dzvlAywU1YOVvO7oky+KJ2s9z0dmsktNj8H4hxOkqpHxoQbNmPkHFmXvXZuyhn
+ AQ5X0wmiKTJZHjIJgGQR2OGPLNyfBu0=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-389-4BQ8PaluMSehdMT8_wKjKw-1; Fri, 10 Sep 2021 04:02:52 -0400
+X-MC-Unique: 4BQ8PaluMSehdMT8_wKjKw-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ a27-20020a5d457b000000b0015b11fccc5eso208891wrc.10
+ for <qemu-devel@nongnu.org>; Fri, 10 Sep 2021 01:02:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=BfsN8PszjvzudcWJwAGDXzGLOjxwaz6TX4zyt+YQdYw=;
+ b=14y4EYL1DoS3QAZwC2+2Csni/3GoNiKvXLuiR9uNOpHUc/Eq47V6Zw8qh3/QKXbPrb
+ FhH5p+nfiE+zHlLPGDpIs8lav/6CnZS8un67JQofVjgIFRZi8eEArIA3EF9vKK9SMPUc
+ CX2lBecZCarA5iZb4f58L9G9TGjbBt6lUmZs8GOiAmrrnK4WB6orEFDWwKbjibW1k00H
+ ZBJyzIM/3YuFSd935GmSG+Z+qe0a48b6XN/MV2rnAWCeqlyIMTJohHbJ+5Ju7NYTNaam
+ 0N8Nbw/Hq39bcLSz5DXcbeu37VmF71ArXan9pjiEPVXhC/xhtp1bz9TpK95U79wy4g9H
+ THeA==
+X-Gm-Message-State: AOAM530FZ25iRPBJLP4SQJgBQYh3uwJ3jUp1ja2npUau2KRDnBS+pnsJ
+ tJMsd59ZMviDbxJ/gbBd8Q00Q7cM5NYXa+Ud7eLPP3OAjmUrVh0H22kxNVADiB5t+296c89Jl9Q
+ vroE/rYEyaD2NUio=
+X-Received: by 2002:a05:600c:3b26:: with SMTP id
+ m38mr6877221wms.155.1631260971321; 
+ Fri, 10 Sep 2021 01:02:51 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b26:: with SMTP id
+ m38mr6877183wms.155.1631260970946; 
+ Fri, 10 Sep 2021 01:02:50 -0700 (PDT)
+Received: from gator (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id r2sm4264249wrg.31.2021.09.10.01.02.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Sep 2021 01:02:50 -0700 (PDT)
+Date: Fri, 10 Sep 2021 10:02:43 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Jingyi Wang <wangjingyi11@huawei.com>
+Subject: Re: Questions on setting guest CPU models with ARM kvm enabled
+Message-ID: <20210910080243.p73z46oengdykeae@gator>
+References: <440b72ca-01f2-337a-ad00-fd2d73ae4ea7@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <379704F7-86BE-4AF1-A256-58652508BD53@fb.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 0e3876a8-9e3b-4cc5-8b76-f2491785e6ff
-X-Ovh-Tracer-Id: 1013872868269001635
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegtddguddvudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehuedtheeghfdvhedtueelteegvdefueektdefiefhffffieduuddtudfhgfevtdenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpuggvlhesfhgsrdgtohhm
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout2.3005.mail-out.ovh.net
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.975,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <440b72ca-01f2-337a-ad00-fd2d73ae4ea7@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URI_DOTEDU=1.999 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +Z0GpIY7tf7f
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, maz@kernel.org, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ "wanghaibin.wang@huawei.com" <wanghaibin.wang@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KcdUO1+bm5Vj
 
-On 9/7/21 4:05 PM, Peter Delevoryas wrote:
-> 
-> 
->> On Sep 7, 2021, at 1:59 AM, Joel Stanley <joel@jms.id.au> wrote:
->>
->> On Mon, 6 Sept 2021 at 13:31, <pdel@fb.com> wrote:
->>>
->>> From: Peter Delevoryas <pdel@fb.com>
->>>
->>> This adds a new machine type "fuji-bmc" based on the following device tree:
->>>
->>> https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
->>>
->>> Most of the i2c devices are not there, they're added here:
->>>
->>> https://github.com/facebook/openbmc/blob/fb2ed12002fb/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
->>>
->>> I tested this by building a Fuji image from Facebook's OpenBMC repo,
->>> booting, and ssh'ing from host-to-guest.
->>>
->>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
->>
->> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> 
-> Thanks!
-> 
->>
->>> +static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
->>> +{
->>> +    AspeedSoCState *soc = &bmc->soc;
->>> +    I2CBus *i2c[144] = {};
->>> +
->>> +    for (int i = 0; i < 16; i++) {
->>> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
->>> +    }
->>> +    I2CBus *i2c180 = i2c[2];
->>> +    I2CBus *i2c480 = i2c[8];
->>> +    I2CBus *i2c600 = i2c[11];
->>> +
->>> +    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
->>
->> Wow, this is interesting. How did you go about testing it? Are you
->> sure you didn't overwrite any of the pointers?
->>
->> It might be worth coming up with a better way of describing all of the
->> i2c buses for future machines.
->>
->> Cheers,
->>
->> Joel
-> 
-> Ah, yes, so, I took the compiled device tree output and printed it out,
-> and it has a complete list of the i2c aliases from all of the component
-> device tree’s, like this:
-> 
-> dtc openbmc/build-fuji/tmp/deploy/images/fuji/aspeed-bmc-facebook-fuji.dtb
-> 
-> aliases {
->         i2c0 = "/ahb/apb/bus@1e78a000/i2c-bus@80";
->         i2c1 = "/ahb/apb/bus@1e78a000/i2c-bus@100";
->         i2c2 = "/ahb/apb/bus@1e78a000/i2c-bus@180";
->         i2c3 = "/ahb/apb/bus@1e78a000/i2c-bus@200";
->         i2c4 = "/ahb/apb/bus@1e78a000/i2c-bus@280";
->         i2c5 = "/ahb/apb/bus@1e78a000/i2c-bus@300";
->         i2c6 = "/ahb/apb/bus@1e78a000/i2c-bus@380";
->         i2c7 = "/ahb/apb/bus@1e78a000/i2c-bus@400";
->         i2c8 = "/ahb/apb/bus@1e78a000/i2c-bus@480";
->         i2c9 = "/ahb/apb/bus@1e78a000/i2c-bus@500";
->         i2c10 = "/ahb/apb/bus@1e78a000/i2c-bus@580";
->         i2c11 = "/ahb/apb/bus@1e78a000/i2c-bus@600";
->         i2c12 = "/ahb/apb/bus@1e78a000/i2c-bus@680";
->         i2c13 = "/ahb/apb/bus@1e78a000/i2c-bus@700";
->         i2c14 = "/ahb/apb/bus@1e78a000/i2c-bus@780";
->         i2c15 = "/ahb/apb/bus@1e78a000/i2c-bus@800";
->         ...
->         i2c16 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@0";
->         i2c17 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@1";
->         i2c18 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@2";
->         i2c19 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@3";
->         i2c20 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@4";
->         i2c21 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@5";
->         i2c22 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@6";
->         i2c23 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@7";
->         i2c24 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@0";
->         i2c25 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@1";
->         i2c26 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@2";
->         i2c27 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@3";
->         i2c28 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@4";
->         i2c29 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@5";
->         i2c30 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@6";
->         i2c31 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@7";
->         i2c40 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@0";
->         i2c41 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@1";
->         i2c42 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@2";
->         i2c43 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@3";
->         i2c44 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@4";
->         i2c46 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@6";
->         ...
->         i2c143 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@7/i2c-switch@76/i2c@7";
-> };
-> 
-> And setup_i2c.sh’s first parameter is referencing these aliases:
-> 
-> # # i2c-mux 2, channel 2
-> i2c_device_add 17 0x4c lm75   #SCM temp. sensor
-> i2c_device_add 17 0x4d lm75   #SCM temp. sensor
-> 
-> # # i2c-mux 2, channel 3
-> i2c_device_add 19 0x52 24c64   #EEPROM
-> 
-> # # i2c-mux 2, channel 4
-> i2c_device_add 20 0x50 24c02   #BMC54616S EEPROM
-> 
-> # # i2c-mux 2, channel 6
-> i2c_device_add 22 0x52 24c02   #BMC54616S EEPROM
-> 
-> My first idea was to make some kind of tree definition
-> describing the i2c switches and then do a breadth first
-> search/etc to enumerate all of the buses.
-> 
-> I2CBus *i2c[144] = {}
-> // Initialize base set of i2c buses.
-> i2c[0] = …
-> i2c[1] = …
-> …
-> i2c[15] = …
-> // Initialize switch definitions, includes
-> // some kind of reference to its parent bus.
-> struct { … } switches[] = {…}
-> // Populate i2c buses using switch definitions.
-> for (int i = 0; i < sizeof(switches)/sizeof(switches[0]); i++) {
->     I2CSlave *switch = find_switch(i2c, switches[i]);
->                        ^^^^Recursive function or something
->     for (int j = 0; j < 8; j++) {
->         // Special case because fuji datasheet skips 32..40
->         if (n == 32) {
->             n = 40;
->         }
->         i2c[n++] = aspeed_i2c_get_bus(switch, j);
->     }
-> }
-> 
-> I’m realizing, I probably should have done this, but I also realized
-> there’s not that many switches in the system, so if you just automate
-> the get_channels() part (x8 buses for each switch) then it was
-> not unreasonable to just manually write out the locations for each switch.
-> 
-> As far as testing: I didn’t do a lot, I mostly just eyeball’d it
-> more after writing it out and then I looked at the boot logs, so
-> I’m still not _absolutely_ sure that I got it right. Let me know
-> if you guys think I should refactor this!
+On Fri, Sep 10, 2021 at 10:40:30AM +0800, Jingyi Wang wrote:
+> Hi all,
+>     On ARM hardware, as qemu docs describes, "Named CPU models generally
+> do not work with KVM." May I ask what is the main obstacle to setting a
+> guest CPU model on later host hardware?
 
-It think it's fine. Fixes can come later on if needed.
+Currently KVM does not give the user (QEMU) control over ID registers.
+You cannot migrate a model using KVM to another host because you cannot
+write the model's ID registers to KVM if they do not exactly match the
+destination host's ID registers. Changing that behavior is just a matter
+of coding, but at least one register, MIDR, will still cause problems
+with guests that use it to modify their behavior, e.g. to enable
+workarounds for errata. A general solution to that problem is not
+really possible. See [1] for where I wrote more about that.
 
+> 
+>     For example, if I want to start Cortex-A57 guest on Cortex-A72 host,
+> I noticed that there is not much big difference between these two CPU
+> models(Please correct me if I'm wrong), what work should I do?
 
-Phil, 
+You may be able to find two systems that you deem "close enough" to
+attempt to migrate. [1] has some proposals for attempting to support
+"close enough" migrations.
 
-Are we OK with this ? I would like to include this patch in
-the v2 of the aspeed PR.
+Also, Peng Liang was working on attempting to make ID registers user
+controlled [2],[3]. However, I think the approach was trying to do too
+much too fast. We need to take baby steps towards CPU models. Also,
+I heard somebody from Google might be trying to give users control
+over ID registers, but I haven't seen patches.
+
+IMO, a first baby step towards CPU models would be changing the
+reject list we currently have in KVM for what features we expose
+to the guest (see arch/arm64/kvm/sys_regs.c:read_id_reg) to an allow
+list. The second step would be to give user control to ID registers,
+which would mean each ID register set_user function would need to
+learn how to sanity check its register value, which would probably
+need to be done in a some vcpu finalize function, since there can be
+inter-register dependencies. KVM will also have to give up control
+over registers like MIDR, because the fields are implementation
+defined, so there's no way to sanity check them.
+
+Once KVM has these changes, then we'd need to build models in QEMU,
+advertise the model capabilities to upper layers, etc. in order for
+them to be used. But, we'd still leave a big burden on the users to
+determine what safe migrations are, due to the errata problem I
+mentioned above.
+
+The last sentence of the last paragraph is why we've never really
+considered all the work to be worth it. However, I would welcome
+some baby steps, particularly the KVM reject-list to allow-list
+change, which would ensure safer execution of guests in general,
+not just for migration.
 
 Thanks,
+drew
 
-C.
+[1] https://yhbt.net/lore/all/CABgNM92-PHWg3X41tCVfErmV9-Hnu5GYpz_pa9-iXfbScFUCZg@mail.gmail.com/T/#ma3475a71f6ad34853470c8b38cd4ff43815b79d9
+[2] https://www.mail-archive.com/qemu-devel@nongnu.org/msg756323.html
+[3] https://lists.cs.columbia.edu/pipermail/kvmarm/2020-November/043011.html
+

@@ -1,112 +1,116 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1139388lfb;
-        Fri, 10 Sep 2021 05:51:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyfJLZnj9x5TLiBkrlkscCUR9KLSffFYUmjMfOfVG9ZhxoFR3g3ROYnySzcrydTDhvB/Y/
-X-Received: by 2002:a05:6e02:1d88:: with SMTP id h8mr6114901ila.258.1631278267399;
-        Fri, 10 Sep 2021 05:51:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631278267; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1154623lfb;
+        Fri, 10 Sep 2021 06:08:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPRx2Ny0opkX8uMeYK1LwpbMSNawPsZAkb+VUMmEFGEamCsJyLwY2oFwmNz5NVNvbr7UHm
+X-Received: by 2002:adf:c542:: with SMTP id s2mr9778675wrf.374.1631279335745;
+        Fri, 10 Sep 2021 06:08:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631279335; cv=none;
         d=google.com; s=arc-20160816;
-        b=f+jwAM2g2nt5vouROJ/7ncvhrw4V2ajZgOrTY+MKbTH57sdqHkL1vH8LtBEBCl3mmW
-         TuIxawH9t6eDcbqZaf86Vog4CwEA4N/TgVEDzaBMIWbCPc7atr6IHkvfbrwB+iOpN5rO
-         C1cihT+fSsffjAfJFan2UHPF9IIPTuJQpqV0Yf1L97kqneEZTJYKVcgFubJxQXc9hpV5
-         sozFl3y4LXeMoAaVZ3e+ZI2YCCxMi81YtHguXpDD616ZhPOv7VpWKGm9vCrc5DJRXFf0
-         HDGmuhcsNzhp0Yz9Bm3SDTA0IRhORSftUxnpsqxDeKD5nsTtfZuwld1qiojUTy5X7+6L
-         vnSA==
+        b=Gf5tM1fcRqp5ClXfxLk8dtc+i55ah7SYwaBYgL6nNg5x8zYf1Kf/gzk6/eLRg0vYpX
+         TzeuugUFKV1+V4xfrGlt7yeBA4zO9EbTC2IgicJrdrCe43TsWKVCi9xmD6VX3wUB9c/H
+         vmQb9FDm1RtkjysgYExxXNr0WWvq8PRKuTvUpeJ1yxuxJw1wvRFxCKUsoXE6O8Vu2Cli
+         NgLvWJIvdsLw6hFCT5Fn474wDWZ/nmZoReq117HrlmlYoq9blQPm9AQE9tkRvwWUhv73
+         MlVe2GVIJTR9OJpTEKPBCmGv+oOPygzCewNFiucE++4UHtIbfMtgygu6f33ZfQL632Ex
+         Lfkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=cX5WnvzG1NJlvodjt5tb6IiA3WzVuBCO9SAjW7T6D34=;
-        b=KtPfN8KobdFZTfYgto+0XkdonJFuwBrksnCl48MuuLgb0Ok/5eQwJiv6LdTXyrflsJ
-         pK3BUY06hs+KmxYcQY3GFBPX98y2k1e/uuUR5lFIy05EBTSSjoz7FrxQZfayhaLoRy0y
-         BdgmhHx10IBqQJZCA2XS8n2c2lYt5trBRcx8wdPxqRJNs/q+cVyqBMIhn1PoTyQcL/Iz
-         +WeRlaewuUBj1BB1bvLXGHTWYKsmQ30HUcKEizRbQgYPHp7LzdKeUiOBshiAaISqIyo/
-         k0mzP2ORFMMyErtcuuBj4phlKmx9CuPpzPUOV/ijSWUVQwCiS/ZAuNNJdkb6lqRR1Qa5
-         tg9A==
+        bh=Ez6tqNmwGb57FJn0VjdKTnH+PuZoXuf6PYS5nql9ctc=;
+        b=X1YEY2OGjYk+p1GAE0LeNsFhy+3JcVa65sRHvrTdVm7TPi23sVhrvTuTdm474SioGE
+         OKO6CuuIlz9Eb9mTQzQDKfKHNOsHFKApVcs215+B4/hKsrR85o/PlejpvmA51JhBsb80
+         qvZBeHgTXg/BsdsMy4S8ZioTPXWUVIEnRDWqyG2dS+FLRv+aefFAPLikG+DVnMe0I2Qg
+         hxsL6t48EghXy1AJ7/yTGATeYUfo5VLfod2u3qm1qlivojVj/YMpapgCx19Y3x7wTTDL
+         dy/oJqieR7yTdTzK+VdfiAa1y09UiDCAVTkxOZZdKw1E5CE26FAAWz4T+f5nR5ukBHbQ
+         m1gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EQqJLp8j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=K2SbNsEl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11si4011196ilj.89.2021.09.10.05.51.07
+        by mx.google.com with ESMTPS id l7si2614798wry.134.2021.09.10.06.08.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Sep 2021 05:51:07 -0700 (PDT)
+        Fri, 10 Sep 2021 06:08:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EQqJLp8j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50706 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=K2SbNsEl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mOfzm-0001iz-3J
-	for alex.bennee@linaro.org; Fri, 10 Sep 2021 08:51:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38726)
+	id 1mOgH0-0007rW-Ra
+	for alex.bennee@linaro.org; Fri, 10 Sep 2021 09:08:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mOfzY-0001hV-8B; Fri, 10 Sep 2021 08:50:52 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:33560)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mOgGs-0007rO-Ox
+ for qemu-arm@nongnu.org; Fri, 10 Sep 2021 09:08:46 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:40939)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mOfzW-0000wZ-8b; Fri, 10 Sep 2021 08:50:52 -0400
-Received: by mail-wr1-x436.google.com with SMTP id t18so2526676wrb.0;
- Fri, 10 Sep 2021 05:50:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mOgGq-0006Bx-Um
+ for qemu-arm@nongnu.org; Fri, 10 Sep 2021 09:08:46 -0400
+Received: by mail-wr1-x435.google.com with SMTP id q26so2553210wrc.7
+ for <qemu-arm@nongnu.org>; Fri, 10 Sep 2021 06:08:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=cX5WnvzG1NJlvodjt5tb6IiA3WzVuBCO9SAjW7T6D34=;
- b=EQqJLp8jOjZvImQ59C89dSF9UTIzlfuEo/F1t+Mv8aWFodCRMnfDBWrhXofcd8x1tn
- D/oBGSJzlBFMY94j17EkG63Brv8iNoBL5e0nNAZu/Gh03FBFGBTh/NHWN0TKeq35R9PT
- FYb5wsDgEmNxTFGdVdPQs7IyIPpTnlyqtTP2mpJ7MwO6tfwnzgoTXhC67NYOLAborm6B
- lj8YDFZGHoVpyRcDphxZYL1a76piS6dSD7YoMiK1qpPlAXJz75aLLAFyKQBoJNuaXsnx
- 9sR58uObp8DVG7n2kWpSkF+RZoII8I+TCskljsR+e0QrBWQDpranReUkLjfZIZ3pHtgN
- Sdmw==
+ bh=Ez6tqNmwGb57FJn0VjdKTnH+PuZoXuf6PYS5nql9ctc=;
+ b=K2SbNsElGd1pNZkJ2ScFc2qGIA7iQ8vvchCl+z8B6a3XL6m1w4cekHEhYqnU5tlqwx
+ VveX7nUiEi7PBmzqL5ihXIpDXvWvAPBMIwQAthe/MgrNJNtBolGJJXaFgAQExF414oTJ
+ LTZqHd/63m64QXLt7EeZoQcOeg/q1+o7L7PT/mePITGlQoj3vfbOCVbLuAHalYVJD9/5
+ ph2mi+eXaENVIBBSbBwkRIUd36DZmq53yzhcQhedf7cpwcDJXNbovFwMPg3bwDNil3iq
+ Uyx3NVswk6Q8q9M0LGkXvZOEZ/ng0HT7iBSmY67hjPb3+5QbFzAnVQIlbBf3cSaj+uHd
+ iWkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=cX5WnvzG1NJlvodjt5tb6IiA3WzVuBCO9SAjW7T6D34=;
- b=zzFW59Y7+M5qtWExY/t0zZTVY8DYh9lhIj+Mcnklb3IJx3S4g6Rkgv0DJbj+9ooEpg
- d+u050whdpCEzzLFsIKrINeFZJwRPt6c5zZse6edWRBvK3ZNi50BiZDFp7YIELcrIM3d
- ScVpIPX0jZIVf8pbdQWaXUEtMaYWvJY5VpGiVDpLnHUsayPRucPeJ+f9sVjswrQjI7oT
- vMEw/CtDbBDdWwXUBOydR01Nm1yLcBLnXPlPGNLRryQYrCfYljijMY91c+S4Hy8MRvpe
- SfcAyespPIGQAA+sfHRZmec4INKNsqKktNi5sekQ2IPi2742HKuaNNGCG//oUnftTxKN
- Z/MA==
-X-Gm-Message-State: AOAM532FZqGRJ7fe4amKSUnP7+ejqQ/ON+FMuo1gSvuZe6uDizVdiWFd
- twt16OiJNd+7MEsyCwqiokcoPYxWTBg=
-X-Received: by 2002:adf:db07:: with SMTP id s7mr9887972wri.106.1631278247938; 
- Fri, 10 Sep 2021 05:50:47 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id l7sm4608953wmj.9.2021.09.10.05.50.46
+ bh=Ez6tqNmwGb57FJn0VjdKTnH+PuZoXuf6PYS5nql9ctc=;
+ b=y7rH2TF+T67dkA83ird/xsoKpPH7WOAsgkxoRECpcPHdvUWwflvL2s2fx8AJMh4eKL
+ CA1xp9HhCLef6pHnw/6TC4KgwUDgwK8phEdpnTBRYi1zuns6eU5+24NvvShiWQpCmc3C
+ CExEEFYP2GOOsXjYAB9v3/VJzJvYC7GyzhiJhd/1M+kyRo5awFO4PGtjMa32zIFXEOdp
+ H0Kpp5C6ef91l+azIsCmP82ow/YS/l66u9d8HpompAU4l8H5gmhhhy0MBJnOxajd9MqY
+ DCJeDYiel7Z1lL2WOL+b8EMBhBfs/OAoIfwdsunjL+RsLTQI+ZmnJmZ/nwr1RPkFaACN
+ umuQ==
+X-Gm-Message-State: AOAM53207Rur5F9j5JCnEMPR9IQjTONyNQhr3BxmrJkk6jc3g3MT4MdR
+ YKac66NLl6JHfrPTlx4l0RQRVg==
+X-Received: by 2002:adf:f188:: with SMTP id h8mr9589099wro.269.1631279323289; 
+ Fri, 10 Sep 2021 06:08:43 -0700 (PDT)
+Received: from [192.168.1.147] (149.164.14.37.dynamic.jazztel.es.
+ [37.14.164.149])
+ by smtp.gmail.com with ESMTPSA id f18sm4181333wmc.6.2021.09.10.06.08.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Sep 2021 05:50:47 -0700 (PDT)
-Subject: Re: [PATCH v4] hw/arm/aspeed: Add Fuji machine type
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
-References: <20210906133124.3674661-1-pdel@fb.com>
- <CACPK8Xdmc3i8C7gkVxsuBcPuHKzDsTZ1tKcx5R7qVAHYN=uhwQ@mail.gmail.com>
- <379704F7-86BE-4AF1-A256-58652508BD53@fb.com>
- <51d97636-65a9-8fbe-2a1f-be44992d270a@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c156a42e-e31b-da6e-b5c5-28e4f45074b7@amsat.org>
-Date: Fri, 10 Sep 2021 14:50:45 +0200
+ Fri, 10 Sep 2021 06:08:42 -0700 (PDT)
+Subject: Re: [PATCH 1/4] target/arm: Add TB flag for "MVE insns not predicated"
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210902150910.15748-1-peter.maydell@linaro.org>
+ <20210902150910.15748-2-peter.maydell@linaro.org>
+ <76cd3594-f864-232c-8687-19a1d44ff07e@linaro.org>
+ <CAFEAcA_xUSMEoT34fkwiGef8D5Rwfkvre8o03YqgEw-qD86o=Q@mail.gmail.com>
+ <d2263937-aa85-c51c-9a2b-bc50043e10c7@linaro.org>
+ <CAFEAcA_Swe0LE6m2JocLsyuV1ioDnK3N0y_hJ2QAXW86UxC=dw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <9545f1ae-60e9-14dd-b76f-1dccd10520db@linaro.org>
+Date: Fri, 10 Sep 2021 15:08:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <51d97636-65a9-8fbe-2a1f-be44992d270a@kaod.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CAFEAcA_Swe0LE6m2JocLsyuV1ioDnK3N0y_hJ2QAXW86UxC=dw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.349,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.349,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -124,173 +128,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l5JBmcBUiE24
+X-TUID: kFAyYoejxB+H
 
-On 9/10/21 9:49 AM, Cédric Le Goater wrote:
-> On 9/7/21 4:05 PM, Peter Delevoryas wrote:
->>
->>> On Sep 7, 2021, at 1:59 AM, Joel Stanley <joel@jms.id.au> wrote:
->>>
->>> On Mon, 6 Sept 2021 at 13:31, <pdel@fb.com> wrote:
->>>>
->>>> From: Peter Delevoryas <pdel@fb.com>
->>>>
->>>> This adds a new machine type "fuji-bmc" based on the following device tree:
->>>>
->>>> https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
->>>>
->>>> Most of the i2c devices are not there, they're added here:
->>>>
->>>> https://github.com/facebook/openbmc/blob/fb2ed12002fb/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
->>>>
->>>> I tested this by building a Fuji image from Facebook's OpenBMC repo,
->>>> booting, and ssh'ing from host-to-guest.
->>>>
->>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
->>>
->>> Reviewed-by: Joel Stanley <joel@jms.id.au>
->>
->> Thanks!
->>
->>>
->>>> +static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
->>>> +{
->>>> +    AspeedSoCState *soc = &bmc->soc;
->>>> +    I2CBus *i2c[144] = {};
->>>> +
->>>> +    for (int i = 0; i < 16; i++) {
->>>> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
->>>> +    }
->>>> +    I2CBus *i2c180 = i2c[2];
->>>> +    I2CBus *i2c480 = i2c[8];
->>>> +    I2CBus *i2c600 = i2c[11];
->>>> +
->>>> +    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
->>>
->>> Wow, this is interesting. How did you go about testing it? Are you
->>> sure you didn't overwrite any of the pointers?
->>>
->>> It might be worth coming up with a better way of describing all of the
->>> i2c buses for future machines.
->>>
->>> Cheers,
->>>
->>> Joel
->>
->> Ah, yes, so, I took the compiled device tree output and printed it out,
->> and it has a complete list of the i2c aliases from all of the component
->> device tree’s, like this:
->>
->> dtc openbmc/build-fuji/tmp/deploy/images/fuji/aspeed-bmc-facebook-fuji.dtb
->>
->> aliases {
->>         i2c0 = "/ahb/apb/bus@1e78a000/i2c-bus@80";
->>         i2c1 = "/ahb/apb/bus@1e78a000/i2c-bus@100";
->>         i2c2 = "/ahb/apb/bus@1e78a000/i2c-bus@180";
->>         i2c3 = "/ahb/apb/bus@1e78a000/i2c-bus@200";
->>         i2c4 = "/ahb/apb/bus@1e78a000/i2c-bus@280";
->>         i2c5 = "/ahb/apb/bus@1e78a000/i2c-bus@300";
->>         i2c6 = "/ahb/apb/bus@1e78a000/i2c-bus@380";
->>         i2c7 = "/ahb/apb/bus@1e78a000/i2c-bus@400";
->>         i2c8 = "/ahb/apb/bus@1e78a000/i2c-bus@480";
->>         i2c9 = "/ahb/apb/bus@1e78a000/i2c-bus@500";
->>         i2c10 = "/ahb/apb/bus@1e78a000/i2c-bus@580";
->>         i2c11 = "/ahb/apb/bus@1e78a000/i2c-bus@600";
->>         i2c12 = "/ahb/apb/bus@1e78a000/i2c-bus@680";
->>         i2c13 = "/ahb/apb/bus@1e78a000/i2c-bus@700";
->>         i2c14 = "/ahb/apb/bus@1e78a000/i2c-bus@780";
->>         i2c15 = "/ahb/apb/bus@1e78a000/i2c-bus@800";
->>         ...
->>         i2c16 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@0";
->>         i2c17 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@1";
->>         i2c18 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@2";
->>         i2c19 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@3";
->>         i2c20 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@4";
->>         i2c21 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@5";
->>         i2c22 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@6";
->>         i2c23 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@7";
->>         i2c24 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@0";
->>         i2c25 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@1";
->>         i2c26 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@2";
->>         i2c27 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@3";
->>         i2c28 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@4";
->>         i2c29 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@5";
->>         i2c30 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@6";
->>         i2c31 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@7";
->>         i2c40 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@0";
->>         i2c41 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@1";
->>         i2c42 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@2";
->>         i2c43 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@3";
->>         i2c44 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@4";
->>         i2c46 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@6";
->>         ...
->>         i2c143 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@7/i2c-switch@76/i2c@7";
->> };
->>
->> And setup_i2c.sh’s first parameter is referencing these aliases:
->>
->> # # i2c-mux 2, channel 2
->> i2c_device_add 17 0x4c lm75   #SCM temp. sensor
->> i2c_device_add 17 0x4d lm75   #SCM temp. sensor
->>
->> # # i2c-mux 2, channel 3
->> i2c_device_add 19 0x52 24c64   #EEPROM
->>
->> # # i2c-mux 2, channel 4
->> i2c_device_add 20 0x50 24c02   #BMC54616S EEPROM
->>
->> # # i2c-mux 2, channel 6
->> i2c_device_add 22 0x52 24c02   #BMC54616S EEPROM
->>
->> My first idea was to make some kind of tree definition
->> describing the i2c switches and then do a breadth first
->> search/etc to enumerate all of the buses.
->>
->> I2CBus *i2c[144] = {}
->> // Initialize base set of i2c buses.
->> i2c[0] = …
->> i2c[1] = …
->> …
->> i2c[15] = …
->> // Initialize switch definitions, includes
->> // some kind of reference to its parent bus.
->> struct { … } switches[] = {…}
->> // Populate i2c buses using switch definitions.
->> for (int i = 0; i < sizeof(switches)/sizeof(switches[0]); i++) {
->>     I2CSlave *switch = find_switch(i2c, switches[i]);
->>                        ^^^^Recursive function or something
->>     for (int j = 0; j < 8; j++) {
->>         // Special case because fuji datasheet skips 32..40
->>         if (n == 32) {
->>             n = 40;
->>         }
->>         i2c[n++] = aspeed_i2c_get_bus(switch, j);
->>     }
->> }
->>
->> I’m realizing, I probably should have done this, but I also realized
->> there’s not that many switches in the system, so if you just automate
->> the get_channels() part (x8 buses for each switch) then it was
->> not unreasonable to just manually write out the locations for each switch.
->>
->> As far as testing: I didn’t do a lot, I mostly just eyeball’d it
->> more after writing it out and then I looked at the boot logs, so
->> I’m still not _absolutely_ sure that I got it right. Let me know
->> if you guys think I should refactor this!
-> 
-> It think it's fine. Fixes can come later on if needed.
-> 
-> 
-> Phil, 
-> 
-> Are we OK with this ? I would like to include this patch in
-> the v2 of the aspeed PR.
+On 9/10/21 11:30 AM, Peter Maydell wrote:
+> If gen_lookup_tb() and DISAS_UPDATE_EXIT are the same, maybe we
+> should get rid of gen_lookup_tb() entirely ?
 
-My previous comment was only about having referenced URL valid
-long term. I'm not sure if Joel is asking to include the dtc
-output too. I haven't looked at the patch content but am happier
-with the patch description, thanks both :)
+Yes, I think we should do just that.
 
-Regards,
 
-Phil.
+r~

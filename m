@@ -1,103 +1,112 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp984574lfb;
-        Fri, 10 Sep 2021 02:31:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMfrQsKBSsk5WjJS9pKO2G1+YZpNqUinQXYEnrUz840TFtnJGTAKgPFSWj4pFBsZWRYofj
-X-Received: by 2002:a92:6904:: with SMTP id e4mr5633606ilc.311.1631266314767;
-        Fri, 10 Sep 2021 02:31:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631266314; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp1139388lfb;
+        Fri, 10 Sep 2021 05:51:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyfJLZnj9x5TLiBkrlkscCUR9KLSffFYUmjMfOfVG9ZhxoFR3g3ROYnySzcrydTDhvB/Y/
+X-Received: by 2002:a05:6e02:1d88:: with SMTP id h8mr6114901ila.258.1631278267399;
+        Fri, 10 Sep 2021 05:51:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631278267; cv=none;
         d=google.com; s=arc-20160816;
-        b=b76Ku2XBBK6SeY5A1mvAm3Y7huU1Noxc1yRUQWrd6B1Ms5cApnL4X5jhm0y0Knz70n
-         QJ4UWa1GntMU7kylSVPCGBizuF/29kpdxUbizu4iw8EbE9sVEh6dL9HNx6eOM7moDazk
-         ZO/prLdFugb18tsNY3sUcBx1vADUUhUsi5JihmglBm9oUIVvZt3aMvu2jKU++/T6kgbc
-         pH6K6+KTGCVxm75tEFxYBXNTOHN/EMhB/I3kUhkN0Khk2tlUZcysAnx28RiRjjDyBBc1
-         PDd8P7SzU2gNHL9TZjz7N/YX43sdviQkn9edPb0KvzUXaC4e3Hjwx1UbrF/mH4sfyAVS
-         6QOw==
+        b=f+jwAM2g2nt5vouROJ/7ncvhrw4V2ajZgOrTY+MKbTH57sdqHkL1vH8LtBEBCl3mmW
+         TuIxawH9t6eDcbqZaf86Vog4CwEA4N/TgVEDzaBMIWbCPc7atr6IHkvfbrwB+iOpN5rO
+         C1cihT+fSsffjAfJFan2UHPF9IIPTuJQpqV0Yf1L97kqneEZTJYKVcgFubJxQXc9hpV5
+         sozFl3y4LXeMoAaVZ3e+ZI2YCCxMi81YtHguXpDD616ZhPOv7VpWKGm9vCrc5DJRXFf0
+         HDGmuhcsNzhp0Yz9Bm3SDTA0IRhORSftUxnpsqxDeKD5nsTtfZuwld1qiojUTy5X7+6L
+         vnSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=RpAQ7vNrv0bASmLyuLZvnjH8wlkQv7MQ5QwSC9XkwA4=;
-        b=DsbmaJmif+rJuXuAB6cUrVRoVb24H0W1BFOj23U99bxlZB0+ANQjZCZuzLNbFCJRRd
-         83C05kObXtRxt7aIwaZEhQEeOsxRIRAFt57HeUh9NCj0SHwUARLkoQXPJPMdcsHrUinu
-         1c6zKFffZjb3w0Ny8zgMV/GSFpXUc13Co62+292eDsUbGRW/HlxbOhsQfPQt0e7zb63A
-         8pFfDnJKySEbNuT15k4fqG/vrnCrsKYTrVjRtYDGx4RLsWqpm/LT5EDwVSRGj+TeQSwe
-         Wog3dyALk15Vj5GlRpS3SvZw+ilCkYTGN8Es67RCU9DGyXpoW1kCHKDbk9KsSHzCLVhI
-         KaQg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=cX5WnvzG1NJlvodjt5tb6IiA3WzVuBCO9SAjW7T6D34=;
+        b=KtPfN8KobdFZTfYgto+0XkdonJFuwBrksnCl48MuuLgb0Ok/5eQwJiv6LdTXyrflsJ
+         pK3BUY06hs+KmxYcQY3GFBPX98y2k1e/uuUR5lFIy05EBTSSjoz7FrxQZfayhaLoRy0y
+         BdgmhHx10IBqQJZCA2XS8n2c2lYt5trBRcx8wdPxqRJNs/q+cVyqBMIhn1PoTyQcL/Iz
+         +WeRlaewuUBj1BB1bvLXGHTWYKsmQ30HUcKEizRbQgYPHp7LzdKeUiOBshiAaISqIyo/
+         k0mzP2ORFMMyErtcuuBj4phlKmx9CuPpzPUOV/ijSWUVQwCiS/ZAuNNJdkb6lqRR1Qa5
+         tg9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UOSBZBxM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EQqJLp8j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 131si4117438ioa.3.2021.09.10.02.31.54
+        by mx.google.com with ESMTPS id b11si4011196ilj.89.2021.09.10.05.51.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Sep 2021 02:31:54 -0700 (PDT)
+        Fri, 10 Sep 2021 05:51:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UOSBZBxM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44628 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=EQqJLp8j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mOct0-0005IY-5M
-	for alex.bennee@linaro.org; Fri, 10 Sep 2021 05:31:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54874)
+	id 1mOfzm-0001iz-3J
+	for alex.bennee@linaro.org; Fri, 10 Sep 2021 08:51:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38726)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mOcsY-0005GU-Ga
- for qemu-arm@nongnu.org; Fri, 10 Sep 2021 05:31:28 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:41814)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mOfzY-0001hV-8B; Fri, 10 Sep 2021 08:50:52 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:33560)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mOcsV-0003Wi-2W
- for qemu-arm@nongnu.org; Fri, 10 Sep 2021 05:31:26 -0400
-Received: by mail-wr1-x433.google.com with SMTP id w29so932286wra.8
- for <qemu-arm@nongnu.org>; Fri, 10 Sep 2021 02:31:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=RpAQ7vNrv0bASmLyuLZvnjH8wlkQv7MQ5QwSC9XkwA4=;
- b=UOSBZBxMMQ+p1jJPRw60jIJjumaIQmhqU0H7fMXMP3+qRUxs+NebOb5CurflMCI2n9
- bZPeBK3X5O0DLEkgMwqEVpkKnZmXZf0jPQc6NkmvMFi0FA6oArLTdQqphhMkGQCmuIYM
- jn6v+3dsM+KvQPvDSWDzKhtFb3l/2r7kt2vQZWpnUO7nVDIS5o1S5RUxFYGfNa+g/rtD
- wW2di7IOZkAggjl5JkVyK2NrQTVf2iYI4MulrqVkVTaVeSYIKaQAMNtsQHFMe6JFWjsf
- 8Vo9C0BPsfNWvTBBtbTsgQkKYoW4M3hXti7jkYTwB8unKybadR/zOmVC2vVuD2eRIcLs
- h3HA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mOfzW-0000wZ-8b; Fri, 10 Sep 2021 08:50:52 -0400
+Received: by mail-wr1-x436.google.com with SMTP id t18so2526676wrb.0;
+ Fri, 10 Sep 2021 05:50:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=cX5WnvzG1NJlvodjt5tb6IiA3WzVuBCO9SAjW7T6D34=;
+ b=EQqJLp8jOjZvImQ59C89dSF9UTIzlfuEo/F1t+Mv8aWFodCRMnfDBWrhXofcd8x1tn
+ D/oBGSJzlBFMY94j17EkG63Brv8iNoBL5e0nNAZu/Gh03FBFGBTh/NHWN0TKeq35R9PT
+ FYb5wsDgEmNxTFGdVdPQs7IyIPpTnlyqtTP2mpJ7MwO6tfwnzgoTXhC67NYOLAborm6B
+ lj8YDFZGHoVpyRcDphxZYL1a76piS6dSD7YoMiK1qpPlAXJz75aLLAFyKQBoJNuaXsnx
+ 9sR58uObp8DVG7n2kWpSkF+RZoII8I+TCskljsR+e0QrBWQDpranReUkLjfZIZ3pHtgN
+ Sdmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=RpAQ7vNrv0bASmLyuLZvnjH8wlkQv7MQ5QwSC9XkwA4=;
- b=mRupu+fWq4p5HZkgwfdtYFVajt6gaT0humCV5gw6LddPVdfAKHRkj9Bl9VgtReejmR
- ee+Dlwq2cy6Kq71/FElk5rb9M9kWwYqpwqjpY6ABEsByafG9cMyPDnJ2C52kaQqvwVuZ
- vhJIeR+p4+1DuMy20C2mPydVcdYnq7ur2ZXX2ttHUePzYJtldnMqo6RMCNB1+xPlTcds
- /AT5Eo2SmjRijRkmrXcZY6fg0us68tY+rz5fz1Ikt7lm2hO16URBdqAWOuhHBfziSUGM
- 6KdZDGYLSQl+EVyqmevLGG7OXDZf+qmjhD1Ie6HV1UVTb4cTPZShxLI+RWSiTEr25Ye2
- ORMQ==
-X-Gm-Message-State: AOAM533RHgy6JDERqiNNunNxb8MtVRItSrwOgxZu8xC60y8mEwMWXuF4
- WPxG0KsvKJv1E3EMTyw/4XWtu8F7J7NDIpd5555nsQ==
-X-Received: by 2002:a5d:4a08:: with SMTP id m8mr8470457wrq.263.1631266281438; 
- Fri, 10 Sep 2021 02:31:21 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cX5WnvzG1NJlvodjt5tb6IiA3WzVuBCO9SAjW7T6D34=;
+ b=zzFW59Y7+M5qtWExY/t0zZTVY8DYh9lhIj+Mcnklb3IJx3S4g6Rkgv0DJbj+9ooEpg
+ d+u050whdpCEzzLFsIKrINeFZJwRPt6c5zZse6edWRBvK3ZNi50BiZDFp7YIELcrIM3d
+ ScVpIPX0jZIVf8pbdQWaXUEtMaYWvJY5VpGiVDpLnHUsayPRucPeJ+f9sVjswrQjI7oT
+ vMEw/CtDbBDdWwXUBOydR01Nm1yLcBLnXPlPGNLRryQYrCfYljijMY91c+S4Hy8MRvpe
+ SfcAyespPIGQAA+sfHRZmec4INKNsqKktNi5sekQ2IPi2742HKuaNNGCG//oUnftTxKN
+ Z/MA==
+X-Gm-Message-State: AOAM532FZqGRJ7fe4amKSUnP7+ejqQ/ON+FMuo1gSvuZe6uDizVdiWFd
+ twt16OiJNd+7MEsyCwqiokcoPYxWTBg=
+X-Received: by 2002:adf:db07:: with SMTP id s7mr9887972wri.106.1631278247938; 
+ Fri, 10 Sep 2021 05:50:47 -0700 (PDT)
+Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.21])
+ by smtp.gmail.com with ESMTPSA id l7sm4608953wmj.9.2021.09.10.05.50.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Sep 2021 05:50:47 -0700 (PDT)
+Subject: Re: [PATCH v4] hw/arm/aspeed: Add Fuji machine type
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
+References: <20210906133124.3674661-1-pdel@fb.com>
+ <CACPK8Xdmc3i8C7gkVxsuBcPuHKzDsTZ1tKcx5R7qVAHYN=uhwQ@mail.gmail.com>
+ <379704F7-86BE-4AF1-A256-58652508BD53@fb.com>
+ <51d97636-65a9-8fbe-2a1f-be44992d270a@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c156a42e-e31b-da6e-b5c5-28e4f45074b7@amsat.org>
+Date: Fri, 10 Sep 2021 14:50:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210902150910.15748-1-peter.maydell@linaro.org>
- <20210902150910.15748-2-peter.maydell@linaro.org>
- <76cd3594-f864-232c-8687-19a1d44ff07e@linaro.org>
- <CAFEAcA_xUSMEoT34fkwiGef8D5Rwfkvre8o03YqgEw-qD86o=Q@mail.gmail.com>
- <d2263937-aa85-c51c-9a2b-bc50043e10c7@linaro.org>
-In-Reply-To: <d2263937-aa85-c51c-9a2b-bc50043e10c7@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Sep 2021 10:30:31 +0100
-Message-ID: <CAFEAcA_Swe0LE6m2JocLsyuV1ioDnK3N0y_hJ2QAXW86UxC=dw@mail.gmail.com>
-Subject: Re: [PATCH 1/4] target/arm: Add TB flag for "MVE insns not predicated"
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <51d97636-65a9-8fbe-2a1f-be44992d270a@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.349,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -115,33 +124,173 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YX1LzOUbJwVR
+X-TUID: l5JBmcBUiE24
 
-On Fri, 10 Sept 2021 at 07:46, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 9/9/21 3:46 PM, Peter Maydell wrote:
-> > On Fri, 3 Sept 2021 at 14:58, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >> I think you need to go ahead and end the TB and resync immediately.
-> >> Just set dc->base.is_jmp = DISAS_UPDATE_NOCHAIN instead.
-> >
-> > Is there a rule for when we should set is_jmp to DISAS_UPDATE_NOCHAIN,
-> > when we should set it to DISAS_UPDATE_EXIT, and when we should call
-> > gen_lookup_tb() ? We seem to use all three methods at various points
-> > for "I changed some CPU state and want to end the TB"...
->
-> UPDATE_EXIT is for when you need to return to the main loop; UPDATE_NOCHAIN merely avoids
-> goto_tb.  Direct use of gen_goto_ptr should be reserved for branches (which I think is
-> already the case).
+On 9/10/21 9:49 AM, Cédric Le Goater wrote:
+> On 9/7/21 4:05 PM, Peter Delevoryas wrote:
+>>
+>>> On Sep 7, 2021, at 1:59 AM, Joel Stanley <joel@jms.id.au> wrote:
+>>>
+>>> On Mon, 6 Sept 2021 at 13:31, <pdel@fb.com> wrote:
+>>>>
+>>>> From: Peter Delevoryas <pdel@fb.com>
+>>>>
+>>>> This adds a new machine type "fuji-bmc" based on the following device tree:
+>>>>
+>>>> https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
+>>>>
+>>>> Most of the i2c devices are not there, they're added here:
+>>>>
+>>>> https://github.com/facebook/openbmc/blob/fb2ed12002fb/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
+>>>>
+>>>> I tested this by building a Fuji image from Facebook's OpenBMC repo,
+>>>> booting, and ssh'ing from host-to-guest.
+>>>>
+>>>> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+>>>
+>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>
+>> Thanks!
+>>
+>>>
+>>>> +static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+>>>> +{
+>>>> +    AspeedSoCState *soc = &bmc->soc;
+>>>> +    I2CBus *i2c[144] = {};
+>>>> +
+>>>> +    for (int i = 0; i < 16; i++) {
+>>>> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+>>>> +    }
+>>>> +    I2CBus *i2c180 = i2c[2];
+>>>> +    I2CBus *i2c480 = i2c[8];
+>>>> +    I2CBus *i2c600 = i2c[11];
+>>>> +
+>>>> +    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
+>>>
+>>> Wow, this is interesting. How did you go about testing it? Are you
+>>> sure you didn't overwrite any of the pointers?
+>>>
+>>> It might be worth coming up with a better way of describing all of the
+>>> i2c buses for future machines.
+>>>
+>>> Cheers,
+>>>
+>>> Joel
+>>
+>> Ah, yes, so, I took the compiled device tree output and printed it out,
+>> and it has a complete list of the i2c aliases from all of the component
+>> device tree’s, like this:
+>>
+>> dtc openbmc/build-fuji/tmp/deploy/images/fuji/aspeed-bmc-facebook-fuji.dtb
+>>
+>> aliases {
+>>         i2c0 = "/ahb/apb/bus@1e78a000/i2c-bus@80";
+>>         i2c1 = "/ahb/apb/bus@1e78a000/i2c-bus@100";
+>>         i2c2 = "/ahb/apb/bus@1e78a000/i2c-bus@180";
+>>         i2c3 = "/ahb/apb/bus@1e78a000/i2c-bus@200";
+>>         i2c4 = "/ahb/apb/bus@1e78a000/i2c-bus@280";
+>>         i2c5 = "/ahb/apb/bus@1e78a000/i2c-bus@300";
+>>         i2c6 = "/ahb/apb/bus@1e78a000/i2c-bus@380";
+>>         i2c7 = "/ahb/apb/bus@1e78a000/i2c-bus@400";
+>>         i2c8 = "/ahb/apb/bus@1e78a000/i2c-bus@480";
+>>         i2c9 = "/ahb/apb/bus@1e78a000/i2c-bus@500";
+>>         i2c10 = "/ahb/apb/bus@1e78a000/i2c-bus@580";
+>>         i2c11 = "/ahb/apb/bus@1e78a000/i2c-bus@600";
+>>         i2c12 = "/ahb/apb/bus@1e78a000/i2c-bus@680";
+>>         i2c13 = "/ahb/apb/bus@1e78a000/i2c-bus@700";
+>>         i2c14 = "/ahb/apb/bus@1e78a000/i2c-bus@780";
+>>         i2c15 = "/ahb/apb/bus@1e78a000/i2c-bus@800";
+>>         ...
+>>         i2c16 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@0";
+>>         i2c17 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@1";
+>>         i2c18 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@2";
+>>         i2c19 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@3";
+>>         i2c20 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@4";
+>>         i2c21 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@5";
+>>         i2c22 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@6";
+>>         i2c23 = "/ahb/apb/bus@1e78a000/i2c-bus@180/i2c-switch@70/i2c@7";
+>>         i2c24 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@0";
+>>         i2c25 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@1";
+>>         i2c26 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@2";
+>>         i2c27 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@3";
+>>         i2c28 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@4";
+>>         i2c29 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@5";
+>>         i2c30 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@6";
+>>         i2c31 = "/ahb/apb/bus@1e78a000/i2c-bus@480/i2c-switch@70/i2c@7";
+>>         i2c40 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@0";
+>>         i2c41 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@1";
+>>         i2c42 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@2";
+>>         i2c43 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@3";
+>>         i2c44 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@4";
+>>         i2c46 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@6";
+>>         ...
+>>         i2c143 = "/ahb/apb/bus@1e78a000/i2c-bus@600/i2c-switch@77/i2c@7/i2c-switch@76/i2c@7";
+>> };
+>>
+>> And setup_i2c.sh’s first parameter is referencing these aliases:
+>>
+>> # # i2c-mux 2, channel 2
+>> i2c_device_add 17 0x4c lm75   #SCM temp. sensor
+>> i2c_device_add 17 0x4d lm75   #SCM temp. sensor
+>>
+>> # # i2c-mux 2, channel 3
+>> i2c_device_add 19 0x52 24c64   #EEPROM
+>>
+>> # # i2c-mux 2, channel 4
+>> i2c_device_add 20 0x50 24c02   #BMC54616S EEPROM
+>>
+>> # # i2c-mux 2, channel 6
+>> i2c_device_add 22 0x52 24c02   #BMC54616S EEPROM
+>>
+>> My first idea was to make some kind of tree definition
+>> describing the i2c switches and then do a breadth first
+>> search/etc to enumerate all of the buses.
+>>
+>> I2CBus *i2c[144] = {}
+>> // Initialize base set of i2c buses.
+>> i2c[0] = …
+>> i2c[1] = …
+>> …
+>> i2c[15] = …
+>> // Initialize switch definitions, includes
+>> // some kind of reference to its parent bus.
+>> struct { … } switches[] = {…}
+>> // Populate i2c buses using switch definitions.
+>> for (int i = 0; i < sizeof(switches)/sizeof(switches[0]); i++) {
+>>     I2CSlave *switch = find_switch(i2c, switches[i]);
+>>                        ^^^^Recursive function or something
+>>     for (int j = 0; j < 8; j++) {
+>>         // Special case because fuji datasheet skips 32..40
+>>         if (n == 32) {
+>>             n = 40;
+>>         }
+>>         i2c[n++] = aspeed_i2c_get_bus(switch, j);
+>>     }
+>> }
+>>
+>> I’m realizing, I probably should have done this, but I also realized
+>> there’s not that many switches in the system, so if you just automate
+>> the get_channels() part (x8 buses for each switch) then it was
+>> not unreasonable to just manually write out the locations for each switch.
+>>
+>> As far as testing: I didn’t do a lot, I mostly just eyeball’d it
+>> more after writing it out and then I looked at the boot logs, so
+>> I’m still not _absolutely_ sure that I got it right. Let me know
+>> if you guys think I should refactor this!
+> 
+> It think it's fine. Fixes can come later on if needed.
+> 
+> 
+> Phil, 
+> 
+> Are we OK with this ? I would like to include this patch in
+> the v2 of the aspeed PR.
 
-And what about gen_lookup_tb() ? As far as I can tell the semantics of
-this are the same as setting is_jmp to DISAS_UPDATE_EXIT: the "set PC
-to s->base.pc_next" happens immediately rather than being done later in
-arm_tr_tb_stop(), but I don't think that should make a difference.
-Or is there a case where it matters?
+My previous comment was only about having referenced URL valid
+long term. I'm not sure if Joel is asking to include the dtc
+output too. I haven't looked at the patch content but am happier
+with the patch description, thanks both :)
 
-If gen_lookup_tb() and DISAS_UPDATE_EXIT are the same, maybe we
-should get rid of gen_lookup_tb() entirely ?
+Regards,
 
--- PMM
+Phil.

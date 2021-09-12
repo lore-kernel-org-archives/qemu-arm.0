@@ -1,60 +1,60 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3181492lfb;
-        Sun, 12 Sep 2021 16:08:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxo5xv/wQ0miLZxan1mEztCm2OT9nCRlXPVI/OZJ6ab1ewn/Em4Lqyp0T3wKpAwixgngGI8
-X-Received: by 2002:a5e:c903:: with SMTP id z3mr6667615iol.61.1631488112387;
-        Sun, 12 Sep 2021 16:08:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631488112; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3181497lfb;
+        Sun, 12 Sep 2021 16:08:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiMzirn5k1/tXCADeUVhiTiKEEFVAxQaE1tlIUGnta3Wg/xCGTCo0hAL+wKy2Pqgq/vHE0
+X-Received: by 2002:a5d:8a0e:: with SMTP id w14mr6560268iod.94.1631488113089;
+        Sun, 12 Sep 2021 16:08:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631488113; cv=none;
         d=google.com; s=arc-20160816;
-        b=I26/gaD3kARRqlbFdO7zCgFwXf/JZ1v1pLMaZdopEOPJ55vX9v2uY3+JfgHLBSs4RZ
-         1MaxvzaIy6r+KvXWkI3StWhnEwtOa+3sKsXNT+/oFoFtJ5TdYI8iFUn4suY/Vr254mlr
-         h2u/3Soh2UTySJjSrmbbVwHRX3DBbjfRAu9LFUknTthcOoLTlxbCfzrklFUjrv/JUPOa
-         HVwUKbUQu9Sda66SfDwTS7fo0Jvp12RH/GDKVT5WR5lvncVv1F3Wkhzzz4jIBAj9INRx
-         e7CEcSKTv6E4usX2gE/Lnki06vCumDmHVix45LhVzjGbZb2rLxYA0y8nI01+Q1rrNskf
-         vjOg==
+        b=BDc7Zy/Aa5GLTG+KngSrgG51WqLEKXAMaFEmGJMzde3xDHGCGkcCdlDNrTbhsWcWsV
+         sFWUBlWcnHGs8umRh4kMMuaqNtvckSypWMhX00pZsaG95ij9qVG9eeJvOGZT8zzMifmz
+         iCPbRYmr5+8EXTZwHHqOyKInEB6tvEOg8eJwB3Hwblrd4NpD8aZcGSKl1ES24I1BO9Kg
+         ry141o89lmEJ9HARm7DpJNEHvy+IEYrDfYZDpDTwUp6J0O39nKE23v/SwSsVQgYcd6KC
+         4mn9T62YKduwvUzdDyTkrquw3Cph+w/OdfC59P9UYdlmSGY4tzpFNJkvlDW0cPQFPL7I
+         cGsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=guWH6yxjafvJPsTtGyhuQLRWbSmuBJX7MUU6BcqPIVo=;
-        b=d66dGoR/DNlhGYphjqYc2A3/sNkABFeTv7Nx4WBmJtU5lwxUaXVb/S/PsVXFSU86aR
-         mdABOMTiYrRtHDxQLZU8umSGhH1/Db8ScDVRX8lQMMEepXFqpfUb/eTL4G1rJ4fUJwPE
-         jaxwYVXsA0eB6GosipWeRbHFKfg2HXta7z6s2lBZMtdurriiBXBwYqoNNb099I6eJ4ic
-         z9hiE2G/pfeIoDZ0v4erPF42n6kbQAiMQwGyl3aUaS+61v2UFWuR9lRPVZYahz8vRq5r
-         K4hN6FvzyRceE6ybshw+KB2vjJgSfbuRlp+qazkTaPMetDXZROQmC7gctd/BkxGkTyrE
-         pOcQ==
+        bh=YP7FuNeKFSsC3SEtbUOH35dZ73aJZKJLOyayuxTxJiE=;
+        b=J7Jrczo2XUnk9n679EdHrmO/OPnaNlwUzR8ILd3931udZByG5Vd3cf7M235ncq1PfL
+         Q4HTYkgVIc2EA6HRHE9aFdinYoe3ozQIy6w20kJZa/CUeq16cjOSwaA9qSYh8IyKD6Cx
+         rM0roc/mHy14lXeRnCpDp8kgC9SvaN28cscZ4yrrL18likuKQhBN/rmdiUHc+WjoPLf6
+         hEun8lDZUa2oopToKVEBOvaEdYYRozY0wkfT7gEHZzR1dD1jDwgXMdP/kQZxmBs0xSim
+         3pacMqrjoKPd5Ct4T9jnmHFFPqV1BARwlm4PI9Dfu/4I9HRuud0VnzkXXuzjhaf03IWa
+         GORQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5si6044553jaj.63.2021.09.12.16.08.32
+        by mx.google.com with ESMTPS id q7si6215497ilu.111.2021.09.12.16.08.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Sep 2021 16:08:32 -0700 (PDT)
+        Sun, 12 Sep 2021 16:08:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54072 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54152 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPYaN-00031g-Fw
-	for alex.bennee@linaro.org; Sun, 12 Sep 2021 19:08:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34170)
+	id 1mPYaO-000355-Ec
+	for alex.bennee@linaro.org; Sun, 12 Sep 2021 19:08:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mPYZz-0002Hp-Ox; Sun, 12 Sep 2021 19:08:07 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:43556 helo=zulu616.server4you.de)
+ id 1mPYZy-0002DI-DF; Sun, 12 Sep 2021 19:08:06 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:43512 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1mPYZw-0003Gj-KB; Sun, 12 Sep 2021 19:08:07 -0400
+ id 1mPYZt-0003EZ-Va; Sun, 12 Sep 2021 19:08:06 -0400
 Received: from localhost.localdomain
  (dynamic-095-117-028-179.95.117.pool.telefonica.de [95.117.28.179])
- by csgraf.de (Postfix) with ESMTPSA id 71D2860806B0;
- Mon, 13 Sep 2021 01:08:01 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id 365D960805F9;
+ Mon, 13 Sep 2021 01:08:00 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v9 05/11] arm/hvf: Add a WFI handler
-Date: Mon, 13 Sep 2021 01:07:51 +0200
-Message-Id: <20210912230757.41096-6-agraf@csgraf.de>
+Subject: [PATCH v9 03/11] hvf: Introduce hvf_arch_init() callback
+Date: Mon, 13 Sep 2021 01:07:49 +0200
+Message-Id: <20210912230757.41096-4-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210912230757.41096-1-agraf@csgraf.de>
 References: <20210912230757.41096-1-agraf@csgraf.de>
@@ -89,186 +89,61 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9/O9t5/PsdlW
+X-TUID: 6WNhEJg8+5it
 
-From: Peter Collingbourne <pcc@google.com>
+We will need to install a migration helper for the ARM hvf backend.
+Let's introduce an arch callback for the overall hvf init chain to
+do so.
 
-Sleep on WFI until the VTIMER is due but allow ourselves to be woken
-up on IPI.
-
-In this implementation IPI is blocked on the CPU thread at startup and
-pselect() is used to atomically unblock the signal and begin sleeping.
-The signal is sent unconditionally so there's no need to worry about
-races between actually sleeping and the "we think we're sleeping"
-state. It may lead to an extra wakeup but that's better than missing
-it entirely.
-
-Signed-off-by: Peter Collingbourne <pcc@google.com>
-[agraf: Remove unused 'set' variable, always advance PC on WFX trap,
-        support vm stop / continue operations and cntv offsets]
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
-Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-Reviewed-by: Sergio Lopez <slp@redhat.com>
-
 ---
-
-v6 -> v7:
-
-  - Move WFI into function
-  - Improve comment wording
-
-v8 -> v9:
-
-  - Add support for cntv offsets
-  - Improve code readability
----
- accel/hvf/hvf-accel-ops.c |  5 ++-
- include/sysemu/hvf_int.h  |  1 +
- target/arm/hvf/hvf.c      | 76 +++++++++++++++++++++++++++++++++++++++
- 3 files changed, 79 insertions(+), 3 deletions(-)
+ accel/hvf/hvf-accel-ops.c | 3 ++-
+ include/sysemu/hvf_int.h  | 1 +
+ target/i386/hvf/hvf.c     | 5 +++++
+ 3 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 4f75927a8e..93976f4ece 100644
+index 71cc2fa70f..65d431868f 100644
 --- a/accel/hvf/hvf-accel-ops.c
 +++ b/accel/hvf/hvf-accel-ops.c
-@@ -370,15 +370,14 @@ static int hvf_init_vcpu(CPUState *cpu)
-     cpu->hvf = g_malloc0(sizeof(*cpu->hvf));
+@@ -324,7 +324,8 @@ static int hvf_accel_init(MachineState *ms)
  
-     /* init cpu signals */
--    sigset_t set;
-     struct sigaction sigact;
+     hvf_state = s;
+     memory_listener_register(&hvf_memory_listener, &address_space_memory);
+-    return 0;
++
++    return hvf_arch_init();
+ }
  
-     memset(&sigact, 0, sizeof(sigact));
-     sigact.sa_handler = dummy_signal;
-     sigaction(SIG_IPI, &sigact, NULL);
- 
--    pthread_sigmask(SIG_BLOCK, NULL, &set);
--    sigdelset(&set, SIG_IPI);
-+    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->unblock_ipi_mask);
-+    sigdelset(&cpu->hvf->unblock_ipi_mask, SIG_IPI);
- 
- #ifdef __aarch64__
-     r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t **)&cpu->hvf->exit, NULL);
+ static void hvf_accel_class_init(ObjectClass *oc, void *data)
 diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index 7c245c7b11..6545f7cd61 100644
+index 8b66a4e7d0..0466106d16 100644
 --- a/include/sysemu/hvf_int.h
 +++ b/include/sysemu/hvf_int.h
-@@ -52,6 +52,7 @@ struct hvf_vcpu_state {
-     uint64_t fd;
-     void *exit;
-     bool vtimer_masked;
-+    sigset_t unblock_ipi_mask;
+@@ -48,6 +48,7 @@ struct hvf_vcpu_state {
  };
  
  void assert_hvf_ok(hv_return_t ret);
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f04324b598..e9291f4b9c 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2,6 +2,7 @@
-  * QEMU Hypervisor.framework support for Apple Silicon
- 
-  * Copyright 2020 Alexander Graf <agraf@csgraf.de>
-+ * Copyright 2020 Google LLC
-  *
-  * This work is licensed under the terms of the GNU GPL, version 2 or later.
-  * See the COPYING file in the top-level directory.
-@@ -490,6 +491,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
- 
- void hvf_kick_vcpu_thread(CPUState *cpu)
- {
-+    cpus_kick_thread(cpu);
-     hv_vcpus_exit(&cpu->hvf->fd, 1);
++int hvf_arch_init(void);
+ int hvf_arch_init_vcpu(CPUState *cpu);
+ void hvf_arch_vcpu_destroy(CPUState *cpu);
+ int hvf_vcpu_exec(CPUState *);
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 79ba4ed93a..abef24a9c8 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -206,6 +206,11 @@ static inline bool apic_bus_freq_is_known(CPUX86State *env)
+     return env->apic_bus_freq != 0;
  }
  
-@@ -608,6 +610,77 @@ static uint64_t hvf_vtimer_val_raw(void)
-     return mach_absolute_time() - hvf_state->vtimer_offset;
- }
- 
-+static uint64_t hvf_vtimer_val(void)
++int hvf_arch_init(void)
 +{
-+    if (!runstate_is_running()) {
-+        /* VM is paused, the vtimer value is in vtimer.vtimer_val */
-+        return vtimer.vtimer_val;
-+    }
-+
-+    return hvf_vtimer_val_raw();
++    return 0;
 +}
 +
-+static void hvf_wait_for_ipi(CPUState *cpu, struct timespec *ts)
-+{
-+    /*
-+     * Use pselect to sleep so that other threads can IPI us while we're
-+     * sleeping.
-+     */
-+    qatomic_mb_set(&cpu->thread_kicked, false);
-+    qemu_mutex_unlock_iothread();
-+    pselect(0, 0, 0, 0, ts, &cpu->hvf->unblock_ipi_mask);
-+    qemu_mutex_lock_iothread();
-+}
-+
-+static void hvf_wfi(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    hv_return_t r;
-+    uint64_t ctl;
-+    uint64_t cval;
-+    int64_t ticks_to_sleep;
-+    uint64_t seconds;
-+    uint64_t nanos;
-+
-+    if (cpu->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ)) {
-+        /* Interrupt pending, no need to wait */
-+        return;
-+    }
-+
-+    r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CTL_EL0, &ctl);
-+    assert_hvf_ok(r);
-+
-+    if (!(ctl & 1) || (ctl & 2)) {
-+        /* Timer disabled or masked, just wait for an IPI. */
-+        hvf_wait_for_ipi(cpu, NULL);
-+        return;
-+    }
-+
-+    r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CVAL_EL0, &cval);
-+    assert_hvf_ok(r);
-+
-+    ticks_to_sleep = cval - hvf_vtimer_val();
-+    if (ticks_to_sleep < 0) {
-+        return;
-+    }
-+
-+    nanos = ticks_to_sleep * gt_cntfrq_period_ns(arm_cpu);
-+    seconds = nanos / NANOSECONDS_PER_SECOND;
-+    nanos -= (seconds * NANOSECONDS_PER_SECOND);
-+
-+    /*
-+     * Don't sleep for less than the time a context switch would take,
-+     * so that we can satisfy fast timer requests on the same CPU.
-+     * Measurements on M1 show the sweet spot to be ~2ms.
-+     */
-+    if (!seconds && nanos < (2 * SCALE_MS)) {
-+        return;
-+    }
-+
-+    struct timespec ts = { seconds, nanos };
-+    hvf_wait_for_ipi(cpu, &ts);
-+}
-+
- static void hvf_sync_vtimer(CPUState *cpu)
+ int hvf_arch_init_vcpu(CPUState *cpu)
  {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -728,6 +801,9 @@ int hvf_vcpu_exec(CPUState *cpu)
-     }
-     case EC_WFX_TRAP:
-         advance_pc = true;
-+        if (!(syndrome & WFX_IS_WFE)) {
-+            hvf_wfi(cpu);
-+        }
-         break;
-     case EC_AA64_HVC:
-         cpu_synchronize_state(cpu);
+     X86CPU *x86cpu = X86_CPU(cpu);
 -- 
 2.30.1 (Apple Git-130)
 

@@ -1,124 +1,108 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3476170lfb;
-        Mon, 13 Sep 2021 01:56:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzh2gEWb/fuQDUJRniEyc7vvjb00LfLqWbBIQ/W96YGJ5lQ72KHwoza/CApUvI2JwcTmCOo
-X-Received: by 2002:a25:7108:: with SMTP id m8mr13515235ybc.246.1631523413981;
-        Mon, 13 Sep 2021 01:56:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631523413; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3512666lfb;
+        Mon, 13 Sep 2021 02:57:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwvGfqpAqpgPSN8F/6jSFVS7+Efy7UHhvMOW14ySTPWPH2d8MUuNpRMtRB27FC537RMYwgb
+X-Received: by 2002:a25:5645:: with SMTP id k66mr14048799ybb.259.1631527042159;
+        Mon, 13 Sep 2021 02:57:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631527042; cv=none;
         d=google.com; s=arc-20160816;
-        b=mIxJgBybGxg4G52qVDd/xVtHuvlUH8faqbXPXblfRj7uaL2i5f0f60SclR033qAGEM
-         PYcOPS5KN6YVtQbZ9svniaV9YMIMtfYiRyWIS+hjv83DH5gtG6N6zwMc7crqdteeqFgC
-         zXx8lTycb7AuJy8aQUv4r8RtZU/iHMStatuj3Rl+0rZGiEJK1UJ12lomhUasWw3niZm0
-         WAVF8nRAPoUm3r87VJKmrXhVxCn+lzNK4LurYtnptwK46QQAI1oAbGH4iVQe2JVD8PPT
-         hdClt/kwEiPiEOp1ujuF/OKgGYRzPIZ8bpKyg3zo7BZ5Rx8TMjsUSlR3JcHecvOGQuZ6
-         tEoA==
+        b=psAU3cxBLAP90MV/OVh8h3V+lgeGLu9QHQjCuwinP9BuoMDfeKROrLqsGwtj7ZaWl5
+         dTgr9XZbNXI6K60R/5tkyu/NKegROMJa/zEn8z7NXzBQtmwWJ0OqPY6qlAsFJe0ovvSx
+         OweuIjUUBFwORDpPK1kY60Zej+q9+DMQ2yA6knqb/QgYvS68STjrj693gpzy2LgAKgqs
+         /it8DiFdEtj9XUORbwDWw+KJsBvR0mPDVLnMdYAraWutYEFms7YlD6U/+P9leAW3t5LV
+         72iVwfCI7t+9MKVA3rlLN/a/kEc/qe7c7FmhgjsK8/39qouO7DJaF64dPvK3UtQ0t+kz
+         3j2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=E5hFUVs24VYsA3vfOE9B0IObPKU5ObfXxWNqtDFASms=;
-        b=nUBgLK4L2GaEbdnu4dT2MK3+AKyBT+e+PNZThffLtPkdWjAXfIskU3YfrfWq9KpI7O
-         ndeYsHb0YIInZDgku0PPMrtQ2/fB7Syuu+md7Pw9zFJVQTrqdIRwej6CvwkEyUPZfHLv
-         NbsJorWMqBRMDExUaMMeXvoatib5KRKkmui28aRUwJz1Xok59g5HdKfOrr0hZgEDug+V
-         m++F0hXON7WoT+uGJ4A84XQNkPPKCqwtxfcG054Rfc9b5QfWmUJ+Nkju/HXzXrzmyFDh
-         3QRDeUzQOgdhBeWG7atyWCLPCmeAiQ5Cch1ut2dNy9oi86auxopxU/WcIAB1w9YWmtT8
-         YH+A==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=9jap4PU7/eqioHoMoH2P+o8wmj0ULMYRqc/JtNk4Smg=;
+        b=A61hQOiAybYzTqM9gyf+daZSDZZcnntLya3XsslXyG33R9AdtSVMaAt3k4YbOPckcw
+         Ea7Q5G9ULbngtBLAuSx8jTFT7p5KplesNrNSFeQQk7Spo7N+7A7sIHFQ+PE2phPFUEKu
+         s1AdP4lmOoiBoIvFi+oMO4dJo/IWt7yu28ljGZ1WAerE/ey+F7TW7g3SLEiPEfmgHwwD
+         UYit4uJoyittggmQILiz4oG2X5VrKy0eYIf0RwWpvo4bdcoqAM8qJzTJpOB2IYZVNwE9
+         1kyonk+5sCWqN1p52ijWOvk6k5UnIw9VOtVzPWoySjevcWXqmq0MbnRrMiIMAYPdePqZ
+         rpPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BkwcIzGh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yw1D5GTd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l79si193009ybl.346.2021.09.13.01.56.53
+        by mx.google.com with ESMTPS id a16si7057847ybl.62.2021.09.13.02.57.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 01:56:53 -0700 (PDT)
+        Mon, 13 Sep 2021 02:57:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BkwcIzGh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yw1D5GTd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35132 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPhlj-0001uJ-Lt
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 04:56:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32872)
+	id 1mPiiH-0002eW-GX
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 05:57:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mPhjh-0008KO-Ph
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 04:54:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45963)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mPhjb-0001UV-8c
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 04:54:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631523277;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=E5hFUVs24VYsA3vfOE9B0IObPKU5ObfXxWNqtDFASms=;
- b=BkwcIzGhDBZHOZWM+vlPjbFydQKY9x8Nb/oSDGmk+MGyyKTlDkoIbWNoKYmn1ooB5vsUuE
- 5AAxAWpDE3PUshw1l6gsfy4+D88MX8JcQRuoT9MNq1zc1xHc14hrTZ+40GIi2K60nC46/E
- 4CeH2Yj7e2SCjcQE32DlQeC4cSTFLLE=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-279-lUw--bkDMcG-pAomg3uN6Q-1; Mon, 13 Sep 2021 04:54:36 -0400
-X-MC-Unique: lUw--bkDMcG-pAomg3uN6Q-1
-Received: by mail-wr1-f72.google.com with SMTP id
- z2-20020a5d4c82000000b0015b140e0562so2427152wrs.7
- for <qemu-arm@nongnu.org>; Mon, 13 Sep 2021 01:54:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mPifl-00071c-Sx
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 05:54:45 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:40546)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mPifk-0001pS-44
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 05:54:45 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ b21-20020a1c8015000000b003049690d882so3629577wmd.5
+ for <qemu-arm@nongnu.org>; Mon, 13 Sep 2021 02:54:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9jap4PU7/eqioHoMoH2P+o8wmj0ULMYRqc/JtNk4Smg=;
+ b=yw1D5GTdqk0bsuAFTJN3a64en+nW6MKxbVdrtJWUD5p9NWAeDjFC2FyQ2sQfhe/eFV
+ qnC9bNWZaILJBJAAAp8Rxvu52ZZTPRKOjBxokKwy67m0y1o6vD7zcA+s0ElTpSAGlmbu
+ PxTTtWQeAu57Po7N/Enc/ABXPofDbc0OpDkng374ssrfKPc7SOHCN4b1pq8Kf8zAA7y8
+ y4zq24LpBV4PxGBsltAhPsXhuBamkFqjYEZNUFNyi6TpEjDVp8vaSFrdXEz/rZ+jpwmT
+ iS5SqzDSuFyYw1unzP8qJKWefd+n67f7Z9oL2VTITCp4XfYQyb3K2BBKePtE7UsduZ4k
+ JqEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=E5hFUVs24VYsA3vfOE9B0IObPKU5ObfXxWNqtDFASms=;
- b=fkNOZ9UFTDACGL6jsc/GGToGjPE+aeSYuK+si2zif9fc97pR+kel+fZAZeZOXaCkBg
- J+6jlA1VLZbFmfeK1MvIQdmurHJDjis7Tyl1EKnKGwnMECxhGUswR79c9Mr69c3rMkfJ
- rpWmDiJa5L+LabzVLsRgY2cx70DjCNNz2qoxUGM7fkfAcC4e+VW1LU0Aeg7Jo34ytGMN
- eEHIlfyWiMfVLkLD5UfpDUcTMtR6w1KaTbkcIpUNtJ3+hsz6vgQf0gQKJywx4YWjx+31
- CZqh2nVb6ES+CQOgGEPr4McWhbUSVWaLRLh9il80FyVYHB0SMTmUu7875yffq5tqmtAt
- aeaQ==
-X-Gm-Message-State: AOAM531a4KVs4wnzrA35C3nOUENB4C67w1KZO2owKI7uer2SsrUKgaM1
- 9uenevIaR+6K6fTzBN5m1nWaIaRwRmye09GSzhmnHM2If2HJ2az7dF1m4TK1iUDp/LKuc5RKBpw
- 8nIDvK/bLA6mE
-X-Received: by 2002:a5d:5003:: with SMTP id e3mr11423662wrt.118.1631523275220; 
- Mon, 13 Sep 2021 01:54:35 -0700 (PDT)
-X-Received: by 2002:a5d:5003:: with SMTP id e3mr11423647wrt.118.1631523275029; 
- Mon, 13 Sep 2021 01:54:35 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id d24sm6223556wmb.35.2021.09.13.01.54.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Sep 2021 01:54:34 -0700 (PDT)
-Subject: Re: [PATCH v9 06/11] hvf: arm: Implement -cpu host
-To: Alexander Graf <agraf@csgraf.de>, QEMU Developers <qemu-devel@nongnu.org>
-References: <20210912230757.41096-1-agraf@csgraf.de>
- <20210912230757.41096-7-agraf@csgraf.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <3a43615c-4367-86f0-f226-2be6eafad3cd@redhat.com>
-Date: Mon, 13 Sep 2021 10:54:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ bh=9jap4PU7/eqioHoMoH2P+o8wmj0ULMYRqc/JtNk4Smg=;
+ b=sfpTHifn+38S9TiJg6aEoMV7PM0XuvMZ4cisjcfkvEEAybYcofDRfMURL6RWHZ2QDS
+ Lv23coz392ARDeKFuF2wADSlTpmaXsIbwQw0uyVeSsphd8azC7ksAnHkMJ3CRHzla2FS
+ 1ExFr8XoARo/N5i3CCkDWsj0HFfhFVPKwqoEif0J51PXJdsyxdWW0SjqVjt/Tw6VzWm8
+ Pp6FFAB2yVj6WtBn+v46Ejzq8f9OO/6mnoQaZCrm+MzuRyJyjxkMbrz2kNnM58Qvd760
+ LwjLYCO1L4hj0cxJ3PMP4fbodNS0c48AOHmYHJWe7mX1WTuCswvzJxPjQ8ibSH5tJEBU
+ PIxw==
+X-Gm-Message-State: AOAM5313iAr2M0CImXGtpZm4lUypO47kF96v/eHc6xET2nTlas/fhh+0
+ tjGgIe5upqpHCTWdh/UDY+nlvCgwZHDSlg==
+X-Received: by 2002:a1c:a913:: with SMTP id s19mr10031695wme.26.1631526882641; 
+ Mon, 13 Sep 2021 02:54:42 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id m184sm6475338wmm.3.2021.09.13.02.54.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Sep 2021 02:54:42 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v2 00/12] target/arm: Use TCG vector ops for MVE
+Date: Mon, 13 Sep 2021 10:54:28 +0100
+Message-Id: <20210913095440.13462-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20210912230757.41096-7-agraf@csgraf.de>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -67
-X-Spam_score: -6.8
-X-Spam_bar: ------
-X-Spam_report: (-6.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.584, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -131,57 +115,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LlQLbC/l8kbi
+X-TUID: cbOXja4Nvu0R
 
-On 9/13/21 1:07 AM, Alexander Graf wrote:
-> Now that we have working system register sync, we push more target CPU
-> properties into the virtual machine. That might be useful in some
-> situations, but is not the typical case that users want.
-> 
-> So let's add a -cpu host option that allows them to explicitly pass all
-> CPU capabilities of their host CPU into the guest.
-> 
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-> Reviewed-by: Sergio Lopez <slp@redhat.com>
+This patchset uses the TCG vector ops for some MVE
+instructions. We can only do this when we know that none
+of the MVE lanes are predicated, ie when neither tail
+predication nor VPT predication nor ECI partial insn
+execution are happening.
 
-> ---
->  target/arm/cpu.c     |  9 ++++--
->  target/arm/cpu.h     |  2 ++
->  target/arm/hvf/hvf.c | 76 ++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/hvf_arm.h | 19 +++++++++++
->  target/arm/kvm_arm.h |  2 --
->  5 files changed, 104 insertions(+), 4 deletions(-)
->  create mode 100644 target/arm/hvf_arm.h
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+Changes v1->v2:
 
-> @@ -2058,15 +2059,19 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
->  #endif /* CONFIG_TCG */
->  }
->  
-> -#ifdef CONFIG_KVM
-> +#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
->  static void arm_host_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
->  
-> +#ifdef CONFIG_KVM
->      kvm_arm_set_cpu_features_from_host(cpu);
->      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->          aarch64_add_sve_properties(obj);
->      }
-> +#else
-> +    hvf_arm_set_cpu_features_from_host(cpu);
-> +#endif
+The major change is that instead of just updating the local
+s->mve_no_pred flag when we translate an insn that changes the
+predication state, we end the TB with DISAS_UPDATE_NONCHAIN.
+The exceptions are the code called from vfp_access_check()
+(gen_preserve_fp_state() and gen_update_fp_context()). We
+can definitely determine the new flag value in one of these cases,
+but in the other we can't always.
 
-Could be cleaner as ARMCPUClass::set_cpu_features_from_host()?
+So patch 1 is new, and adds support to gen_jmp_tb() for
+looking at the existing value of is_jmp so it can honour
+a preceding request for an UPDATE_NOCHAIN or UPDATE_EXIT.
+(We already were assuming this because gen_preserve_fp_state()
+can set is_jmp to DISAS_UPDATE_EXIT if icount is in use.)
+
+Patch 2 (new) enforces that FPDSCR.LTPSIZE is 4 on inbound
+migration, because we now rely on this architectural invariant.
+
+Patch 3 is the old patch 1, updated as noted above.
+
+Patches 4-6 have been reviewed (they have been very slightly
+tweaked to use a new mve_no_predication() function that checks
+both s->eci and s->mve_no_pred, rather than v1's direct check
+of mve_no_pred.)
+
+Patches 7-12 are new, and add optimized variants of VDUP, VMVN,
+various shifts, the shift-and-inserts, and the 1-operand-immediate
+insns.
+
+I think this should now be the complete set of optimizations
+it's worth implementing at this point.
+
+thanks
+-- PMM
+
+Peter Maydell (12):
+  target/arm: Avoid goto_tb if we're trying to exit to the main loop
+  target/arm: Enforce that FPDSCR.LTPSIZE is 4 on inbound migration
+  target/arm: Add TB flag for "MVE insns not predicated"
+  target/arm: Optimize MVE logic ops
+  target/arm: Optimize MVE arithmetic ops
+  target/arm: Optimize MVE VNEG, VABS
+  target/arm: Optimize MVE VDUP
+  target/arm: Optimize MVE VMVN
+  target/arm: Optimize MVE VSHL, VSHR immediate forms
+  target/arm: Optimize MVE VSHLL and VMOVL
+  target/arm: Optimize MVE VSLI and VSRI
+  target/arm: Optimize MVE 1op-immediate insns
+
+ target/arm/cpu.h              |   4 +-
+ target/arm/translate.h        |   2 +
+ target/arm/helper.c           |  33 ++++
+ target/arm/machine.c          |  13 ++
+ target/arm/translate-m-nocp.c |   8 +-
+ target/arm/translate-mve.c    | 310 ++++++++++++++++++++++++++--------
+ target/arm/translate-vfp.c    |  33 +++-
+ target/arm/translate.c        |  42 ++++-
+ 8 files changed, 361 insertions(+), 84 deletions(-)
+
+-- 
+2.20.1
 

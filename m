@@ -1,82 +1,79 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3520592lfb;
-        Mon, 13 Sep 2021 03:08:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzMXa5zkWSC9v0MJ7+YHhwrzXHUmPKwM9fTAcRtuG7Cuv7JtY/HiRNMK3opy79OiYW4Mjg2
-X-Received: by 2002:a05:6e02:168d:: with SMTP id f13mr7254952ila.12.1631527725635;
-        Mon, 13 Sep 2021 03:08:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631527725; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3544893lfb;
+        Mon, 13 Sep 2021 03:46:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwjLZZclrRJTfkt/X/BylJe10TCrw/Hc/21/DPnF2sMF5FC5T2y+wOzs4mlxsUBfK2J0RlE
+X-Received: by 2002:a5d:8b43:: with SMTP id c3mr6535678iot.30.1631530008622;
+        Mon, 13 Sep 2021 03:46:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631530008; cv=none;
         d=google.com; s=arc-20160816;
-        b=wa8PMl8270MvWb4AnM7/GHMdr8F8mg1Q0PDSwNH4Y61smCBXCxJU3FId9qcb2S6l1k
-         gDFUKU45xy6zp4s8HiLxGNNdEVYNxiZS0wUGpC4cTUSGTfxTODi1jbN3Qa/BssPvRSeJ
-         97soSmIKRLGfJv/p+5jOcegFs3kT4irC9IRLzv/m8SCw/6O6GmKvb5HvwWCQGVzazKte
-         nsfzTO95YDTPWPAN/4iiT0uPu7b1UCUtgvUm4f/MkC0ddlqx1dxBsCQcT0FNQZMfXjr9
-         DRc5AFGtrsb7+nLh7Xb8R8KYD+4ReL5sinjVAnusXAF/DtKZZTNeOmM1dkb0fCcWB0J7
-         T0Tw==
+        b=CnAk+9QVxZP/4t375y17obUZi7Gw8cGj0DqXLc/ssxYAkAubZilqSawjp7//Ixv9Cp
+         Hq5Rrj0ZVP7Mcbd+RUwaGFHy6Xbz6UxxD86duBmFJWNFYqkTmxKRKCfbDrUnUi82Th3J
+         KNyhJkn+iEIE4h2curiZtowXJxLpVAYLxbn/NILg5i+HwQ2amlxbaqh1/7ytxchPScsi
+         yJle2eVHlUtR4RBncs+OiSMGC3f/vYoP3s2Woc+HNxi9tY6BBuQ5GVUF7iREls/p3rDD
+         6nXtLo33cahnN/LuvJbpFHQNsQ11qcAwkG5z2OG+Xw/4yA5eIwf7EYd/CDZD8No90jlA
+         TmQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=QO70DeNeDHnFT2ZRAbdrAVuSEG+DEjYAVeoi6PhSXu0=;
-        b=bkRcJ5Wq0JZD8DsQbda2aF+PF1GG2qYicmRJw/sv9bTdMojVyRm3iQoyt9LvH1Lr+9
-         ujVIS94NUQaR5QucJU0kxy22fmCLCzZrfyHRrIwLizGrp1cUv5XXpLvt9yfQgVHKqQZD
-         la+HcXaqBDC6h5fBEtN8OFjN6o37RQfkbWbmLs3EqSxT2K7vQzpwfuXhioMF1uW6UhpT
-         wxEpvevAChPddyUNBVLp5SoWdyIvmrIwxoZ9ZUa4ETb0btLNHjFKpqlUx3FeBLvfnAyU
-         gwJ5P4WPfCoKoMv5tGrzbQ1Pn/rZMQcodnTE+WShihJIvUlsB9flow2WfKAGRiTE7bJq
-         1RkQ==
+        bh=WZeXm2q/YFQLiiMzTzqb50ghoG32XTPplygg28XYz/c=;
+        b=mh4mdbsC2nteOPmPtWcwzbQuMT8Oh+DPWqChq46b5gQWXsKLH1cUTkqezVIyUkhQyQ
+         5GjXgbHO7UuazwQxSQJi7rAKZkRZ5FZIqDD1VdkBKcpTx/mNEexM2JOlnCQ5IdBUhRNE
+         16vDJOjrI1XkyNffcFRe0MS5Dns93Z0pZwQ2MJ3lmu+S0ZhVeYbBxtBUFpL//XouIjhR
+         5XeahbjIgr7mRzn9jIpeeJqlTlbD2bAnc7IhzEYEDrqQ+NhfAfNQQVSk3ZbMzfWRz4e3
+         luaoAWRDb0K44Xi+hq/nCme5RUfbL9LUAgMuDpaNfDj/hKLSD/S36ronPNBQK1zgExM+
+         qs1A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q17si6938766ilm.90.2021.09.13.03.08.45
+        by mx.google.com with ESMTPS id c30si6078640jaf.110.2021.09.13.03.46.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 03:08:45 -0700 (PDT)
+        Mon, 13 Sep 2021 03:46:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48246 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPitJ-0001xU-0i
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 06:08:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47832)
+	id 1mPjU8-0003Th-03
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 06:46:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56140)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mPir5-0007mi-PP; Mon, 13 Sep 2021 06:06:32 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:43850 helo=zulu616.server4you.de)
+ id 1mPjTm-0003SA-I4; Mon, 13 Sep 2021 06:46:27 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:43878 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1mPir3-0003EU-Ll; Mon, 13 Sep 2021 06:06:27 -0400
+ id 1mPjTi-00036K-4Q; Mon, 13 Sep 2021 06:46:26 -0400
 Received: from MacBook-Air.alex.local
  (dynamic-095-118-088-150.95.118.pool.telefonica.de [95.118.88.150])
- by csgraf.de (Postfix) with ESMTPSA id E2807608037D;
- Mon, 13 Sep 2021 12:06:22 +0200 (CEST)
-Subject: Re: [PATCH v8 16/19] hvf: arm: Implement PSCI handling
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
+ by csgraf.de (Postfix) with ESMTPSA id 6A0B4608037D;
+ Mon, 13 Sep 2021 12:46:18 +0200 (CEST)
+Subject: Re: [PATCH v8 15/19] hvf: arm: Implement -cpu host
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20210519202253.76782-1-agraf@csgraf.de>
- <20210519202253.76782-17-agraf@csgraf.de>
- <CAFEAcA_VJa_vJtJx6PtQS=WTy2y9ZJg8pcgu4Pkzp=CbuH85qw@mail.gmail.com>
- <a9ac1625-1cb0-bd44-da27-67f9a003ec54@csgraf.de>
- <11281306-a11a-5b8c-6b2b-202be8e2655a@linaro.org>
- <f05467cb-aae6-e943-3d4a-9894d9c72ef8@csgraf.de>
- <8e0879b6-23c0-8f14-fd96-4d72f1d640c1@linaro.org>
+ <20210519202253.76782-16-agraf@csgraf.de>
+ <CAFEAcA9S619pfhfEXUxGQkjBBKahOYm14jpxEam2CQTtC1dRTQ@mail.gmail.com>
+ <45519c63-06b1-1e06-032d-87d2e1338fd8@csgraf.de>
+ <CAFEAcA_vC0beH4NMRP4hHK0drc6PZt073ZVZM=Majnfngkn_xQ@mail.gmail.com>
 From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <6fe284da-6989-f837-adda-1aa722f0d345@csgraf.de>
-Date: Mon, 13 Sep 2021 12:06:20 +0200
+Message-ID: <1c992028-633d-5f5e-f433-59492876eb73@csgraf.de>
+Date: Mon, 13 Sep 2021 12:46:17 +0200
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
  Gecko/20100101 Thunderbird/78.14.0
 MIME-Version: 1.0
-In-Reply-To: <8e0879b6-23c0-8f14-fd96-4d72f1d640c1@linaro.org>
+In-Reply-To: <CAFEAcA_vC0beH4NMRP4hHK0drc6PZt073ZVZM=Majnfngkn_xQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
 Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
  helo=zulu616.server4you.de
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.584,
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.969,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -90,66 +87,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Peter Collingbourne <pcc@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b22NWj8BKY5I
+X-TUID: wFYhLBrfPn9V
 
 
-On 12.09.21 23:40, Richard Henderson wrote:
-> On 9/12/21 2:37 PM, Alexander Graf wrote:
+On 13.09.21 10:28, Peter Maydell wrote:
+> On Sun, 12 Sept 2021 at 21:23, Alexander Graf <agraf@csgraf.de> wrote:
 >>
->> On 12.09.21 23:20, Richard Henderson wrote:
->>> On 9/12/21 1:36 PM, Alexander Graf wrote:
->>>>> I think the callsites would be clearer if you made the function
->>>>> return true for "PSCI call handled", false for "not recognised,
->>>>> give the guest an UNDEF". Code like
->>>>>            if (hvf_handle_psci_call(cpu)) {
->>>>>                stuff;
->>>>>            }
->>>>>
->>>>> looks like the 'stuff' is for the "psci call handled" case,
->>>>> which at the moment it isn't.
+>> On 15.06.21 12:56, Peter Maydell wrote:
+>>> On Wed, 19 May 2021 at 21:23, Alexander Graf <agraf@csgraf.de> wrote:
+>>>> Now that we have working system register sync, we push more target CPU
+>>>> properties into the virtual machine. That might be useful in some
+>>>> situations, but is not the typical case that users want.
 >>>>
+>>>> So let's add a -cpu host option that allows them to explicitly pass all
+>>>> CPU capabilities of their host CPU into the guest.
 >>>>
->>>> This function merely follows standard C semantics along the lines
->>>> of "0
->>>> means success, !0 is error". Isn't that what you would usually expect?
+>>>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>>>> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
+>>>>
+>>>> ---
+>>>>
+>>>> v6 -> v7:
+>>>>
+>>>>   - Move function define to own header
+>>>>   - Do not propagate SVE features for HVF
+>>>>   - Remove stray whitespace change
+>>>>   - Verify that EL0 and EL1 do not allow AArch32 mode
+>>>>   - Only probe host CPU features once
+>>>> +static void hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>>> +{
+>>>> +    ARMISARegisters host_isar;
+>>> Can you zero-initialize this (with "= { }"), please? That way we
+>>> know we have zeroes in the aarch32 ID fields rather than random junk later...
 >>>
->>> No, not really.  I expect stuff that returns error codes to return
->>> negative integers on failure.  I expect stuff that returns a boolean
->>> success/failure to return true on success.
+>>>> +    const struct isar_regs {
+>>>> +        int reg;
+>>>> +        uint64_t *val;
+>>>> +    } regs[] = {
+>>>> +        { HV_SYS_REG_ID_AA64PFR0_EL1, &host_isar.id_aa64pfr0 },
+>>>> +        { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.id_aa64pfr1 },
+>>>> +        { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.id_aa64dfr0 },
+>>>> +        { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
+>>>> +        { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
+>>>> +        { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
+>>>> +        { HV_SYS_REG_ID_AA64MMFR0_EL1, &host_isar.id_aa64mmfr0 },
+>>>> +        { HV_SYS_REG_ID_AA64MMFR1_EL1, &host_isar.id_aa64mmfr1 },
+>>>> +        { HV_SYS_REG_ID_AA64MMFR2_EL1, &host_isar.id_aa64mmfr2 },
+>>>> +    };
+>>>> +    hv_vcpu_t fd;
+>>>> +    hv_vcpu_exit_t *exit;
+>>>> +    int i;
+>>>> +
+>>>> +    ahcf->dtb_compatible = "arm,arm-v8";
+>>>> +    ahcf->features = (1ULL << ARM_FEATURE_V8) |
+>>>> +                     (1ULL << ARM_FEATURE_NEON) |
+>>>> +                     (1ULL << ARM_FEATURE_AARCH64) |
+>>>> +                     (1ULL << ARM_FEATURE_PMU) |
+>>>> +                     (1ULL << ARM_FEATURE_GENERIC_TIMER);
+>>>> +
+>>>> +    /* We set up a small vcpu to extract host registers */
+>>>> +
+>>>> +    assert_hvf_ok(hv_vcpu_create(&fd, &exit, NULL));
+>>>> +    for (i = 0; i < ARRAY_SIZE(regs); i++) {
+>>>> +        assert_hvf_ok(hv_vcpu_get_sys_reg(fd, regs[i].reg, regs[i].val));
+>>>> +    }
+>>>> +    assert_hvf_ok(hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr));
+>>>> +    assert_hvf_ok(hv_vcpu_destroy(fd));
+>>>> +
+>>>> +    ahcf->isar = host_isar;
+>>>> +    ahcf->reset_sctlr = 0x00c50078;
+>>> Why this value in particular? Could we just ask the scratch HVF CPU
+>>> for the value of SCTLR_EL1 rather than hardcoding something?
 >>
->>
->> Fair, I'll change it to return -1 then. Thanks!
+>> The fresh scratch hvf CPU has 0 as SCTLR.
+> Yuck. That's pretty unhelpful of hvf, since it's not an
+> architecturally valid thing for a freshly reset EL1-only
+> CPU to have as its SCTLR (some bits are supposed to be RES1
+> or reset-to-1). In that case we do need to set this to a known
+> value here, I guess -- but we should have a comment explaining
+> why we do it and what bits we're setting.
+
+
+Ok :)
+
+
 >
-> Not quite the point I was making.  If the only two return values are
-> -1/0, then bool false/true is in fact more appropriate.
+>>>> +    /* Make sure we don't advertise AArch32 support for EL0/EL1 */
+>>>> +    g_assert((host_isar.id_aa64pfr0 & 0xff) == 0x11);
+>>> This shouldn't really be an assert, I think. error_report() something
+>>> and return false, and then arm_cpu_realizefn() will fail, which should
+>>> cause us to exit.
+>>
+>> I don't follow. We're filling in the -cpu host CPU template here. There
+>> is no error path anywhere we could take.
+> Look at how the kvm_arm_get_host_cpu_features() error handling works:
+> it returns a bool. The caller (kvm_arm_set_cpu_features_from_host())
+> checks the return value, and if the function failed it sets
+> the cpu->host_cpu_probe_failed flag, which then results in realize
+> failing. (You'll want to update the arm_cpu_realizefn to allow hvf
+> as well as kvm for that error message.)
 
 
-If the whole code base adheres to it, maybe. The big problem with using
-true/false as return values for functions that don't make it very
-explicit (have an is in their name or use gerund for example). QEMU uses
-a lot of 0 == success internally.
+Sure, happy to adjust accordingly :)
 
-If you now add bools to the a code base that already uses int returns a
-lot, you always need to look up what a function actually returns if the
-caller treats it as bool (if, ?, assert, etc), making code review and
-reasoning about code flows extremely hard. I've had one too many
-occasions where I called an innocently looking API and put the assert()
-the wrong way around for example.
 
-I don't think we can solve this problem here, but IMHO the only sensible
-way to get to good readability would be to have functions that return
-success/failure return a libc defined struct that indicates the error.
-Then check for success explicitly on every caller site. Overloading bool
-or int for success/failure return is just bad :).
+>
+>> This is a case that on today's systems can't happen - M1 does not
+>> support AArch32 anywhere. So that assert could only ever hit if you run
+>> macOS on non-Apple hardware (in which case I doubt hvf works as
+>> intended) or if a new Apple CPU starts supporting AArch32 (again, very
+>> unlikely).
+>>
+>> So overall, I think the assert here is not too bad :)
+> Well, probably not, but you need the error handling path
+> anyway for the boring case of "oops, this syscall failed".
 
+
+Why? You only get to this code path if you already selected -accel hvf.
+If even a simple "create scratch vcpu" syscall failed then, pretty
+failure when you define -cpu host is the last thing you care about. Any
+CPU creation would fail.
 
 Alex
+
 

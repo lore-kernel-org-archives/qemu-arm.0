@@ -1,110 +1,108 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3691644lfb;
-        Mon, 13 Sep 2021 06:51:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxbsGPPV+mdkTyVRQeyQd+oaCnxFg0EButvp6qselLxkWyGQJTBMW2++eMtsMnHXwYWo5C
-X-Received: by 2002:a6b:18f:: with SMTP id 137mr9039837iob.214.1631541064840;
-        Mon, 13 Sep 2021 06:51:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631541064; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3693810lfb;
+        Mon, 13 Sep 2021 06:53:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXL30YCuzFksQrQmygRaNzyvxi8946iRL5l2GTVN3mbbrQ659rwHqUpvvNPfI5ASrrPT+N
+X-Received: by 2002:a92:d107:: with SMTP id a7mr8310793ilb.199.1631541228382;
+        Mon, 13 Sep 2021 06:53:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631541228; cv=none;
         d=google.com; s=arc-20160816;
-        b=WBy6BnV5OcZht+F0Kp4/9my5kTDK0pI0J/QQMNDH7KmvK9+8rzp3ArudDTn2Ge4ruU
-         4fKCvn+u4nQLaP/Lby7IUcjmKu54lC7Ouj8XTdS/3Ic5a8pDi8gD9KWCGxyWnNEJAQl/
-         vAA9PxZF4LNtUR23SdhlpcVb9WtxuFSbAhA3e9alb7BzXCMkj4lDMy1pUVb4AHK3ZzNS
-         OMB2CTnPbU/OMFLLGSKb8Tj35pe4qdSyWnmhKXz+1UnnZl0EU4PURfhijnZvkf7HkSwi
-         xNP7O8Ty+Tch5XwpyQpwwPgoDxGLT2/UpE1LHQFQfo46Mdclvk6VpV2U1YZJ8UqBeWr7
-         hIvw==
+        b=CuE/Tc//scVrrZqdN3SMKRhArLNsu9RgPXEtSwd6kSVboKcAqNs2gY2bKjNc5miKPz
+         OieOKli29x1OtkKbBEkwsL+wtkx/hjShPraJfYAdkKpTPvvqaJ0Ht5Djizx9FFOD24/S
+         3cX4esfqRfrcG7vyEiR2Ij3Av+p3PfHVq5ckqqonG33KweT1xGK/N9V5LGpX77rw9Msj
+         6nYm4rfavjQKaFHAfAzuWxcCYNivXWsmOnZgxruYNgI06J2tWaySA9jSm7E2+ClJ5h38
+         vX5/yI2AvWGiZasbsdy7Ua2IohJZp7OEZqjnA8rChnXdgUcj5g4GAhOmbow3XLMzU+Zl
+         hUJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=sECki1mK5KcjvuM4w28nfED3WkStKJ9mnYzHHMB4vXE=;
-        b=VSpzA3Z4WCI1EvBNIkseJKfxcnVH2OfgZr5gHcl3aNjRukwiswrE4kmQXHh7IVOhY6
-         epKMbucVxrYQkbeSlvAai/bVaYPtzRUZ5lvFFbrYns3H6+1ytW3m5VRAuVojZnZ7o5Cc
-         +UDSECna7xYv9RX3pd7sYj0fja8a0AKKgrJk9gbWNjTWKtCUZH3reYE1MUQHOI/OllkV
-         1xI2uErxo3eGlARK5PMPLI2hTwRseo4t6YDoVaaR7S4EoX/gCDOCA8W2n1tSrvB0hwx7
-         3q8LjqPo/9UAmv31leuBE7pLJqT9rZSkl4Z0wyQnw21rxw5KfRKZsIAW14Z8I4471AzL
-         5T5w==
+        bh=BHslPN/KfJNjiZ49+y3A0L2Q7DRo7u5qJTsKLsXmLTw=;
+        b=mXvm5tJkgUH/8BFPR/lgev+7nDIBQGIl3EsodbFPzJTErIbW56ti8Xdtg6THNT2bbI
+         dFdWh9q5hPUlKPfRw4HLiNNyylpzj5MBZsCGOxXS3ZKBa4HfFIXgPY3VWtfHf7JgEXKi
+         T3ml/m3PavhovuZaiX7/fZdiEPN/xBadvJZ77M/JbTe+8RJ26CSNn0yTOV3W+lq1liqk
+         Pj5wbS1IDnjxY3GzjNb+rd9r2ECwRPcOLpC3qn5BasenDGkWiUJr3HKuQPHIeY6sOVEy
+         mYeCqgTF6SuN8CRRxCCqHA0ts+JLTmK814zgf145/yckPP4OcTrbvg70peRLqdscKpm/
+         EGtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ySmvycN9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=urSBxWL8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u2si6951233ioc.87.2021.09.13.06.51.04
+        by mx.google.com with ESMTPS id b11si6913569ilj.89.2021.09.13.06.53.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 06:51:04 -0700 (PDT)
+        Mon, 13 Sep 2021 06:53:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ySmvycN9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=urSBxWL8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34448 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPmMS-0006Uo-65
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 09:51:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39700)
+	id 1mPmP5-0003sU-Kp
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 09:53:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40226)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mPmGH-0006Rb-F0
- for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:44:41 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031]:35497)
+ id 1mPmIN-0001mU-JY
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:46:51 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:37532)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mPmGF-0005YT-Ls
- for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:44:41 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- f3-20020a17090a638300b00199097ddf1aso6621240pjj.0
- for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 06:44:38 -0700 (PDT)
+ id 1mPmIM-00073m-4l
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:46:51 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id f21so3611681plb.4
+ for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 06:46:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=sECki1mK5KcjvuM4w28nfED3WkStKJ9mnYzHHMB4vXE=;
- b=ySmvycN9Ypm6oNVG22wzKLLZVCKDz1cZDPgDHng2P4e7mduyMkUMEJ2/arJ2xJQKnV
- l/NIfPg2chwXlgw3IfuFhtY1vMX4qDzhIQMogY49znakKYXR+VKbc8kW8GjXVsZBZG8c
- dbYe9fCm/Ru6HGPRk+AvVkG5nzgZ8jJv1T6oDFffiQyogqoFnRZvtHnl/yWLs7pef/rF
- w0x9cUmijzqiavNwUkRHtlFZnwukX7flVELIo74biG4/otZKewL8qE/CSG7305MI6tVF
- ZEH4ymWinF1amd6r97GGo68PmuAspNGSzaBgMVZu7tNC/gMrvnFZqxkE5ZTUZAynlEIO
- h39A==
+ bh=BHslPN/KfJNjiZ49+y3A0L2Q7DRo7u5qJTsKLsXmLTw=;
+ b=urSBxWL8m3VBLuEcLwCBXFOJk3rLtcvMEubXTLvSw7t8chcNX1DUSoyWL9yQFEht/q
+ IU7EiMV+IvT8PQrixfbymavPu/YJ9MN9P+2IqtVm2uswGOPnXX4XZNMS+3v8dMGYwKYN
+ 5LuA72o9VMvv4cgRXUiywt7NPwBTI7Ac7rOGpciT2ZM0LeSLOFwiNjaoRVvyvKb9VdwJ
+ GMXaelW2xLWzCPR9Aqup8ffEGa8yg9/zjjiw+HGOyjdn4p0ztppIQTpWdrnR874QNCsd
+ Gndct2/qJb5KMKz9Elz71RFywstM6tozDmGrtJCihZwbxllgb/PllyEpU8WCeD+huXi0
+ azYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=sECki1mK5KcjvuM4w28nfED3WkStKJ9mnYzHHMB4vXE=;
- b=ocNNTfrjKNQelgZd4Z2cOvTSPSrQYO8G8wJv++axCXrZ7ogToeYL03jfsV3Ua/8hCl
- 5E8YL1kjyHW/ZRR8rUAqCmN4HheofEBgeMDXvDOSvIf5R0fKW0UrCkisgZ6gtK00iMKT
- Kcs8d13OIqlgpAV4fBB8BNjhoVHg2FQcnkh/E41Y2aJErsofPjRjhYR/+6UhSitLXhVS
- PgALLdxOojkuR0m6vRn7skUvZl4Dg/XTrd8lNTI98hLbIPfMH0smzwVeU5QOhtRmejY8
- ed/x9DOKaZGRIYGos3bIMdu35Gm1mWZ4JdgrPKygCw+vdbg6d08NpbMNFlsdxMR5H2to
- Au2A==
-X-Gm-Message-State: AOAM531ynPf50MALuTKOHjPo+vwN6zxCCeK0CvvX3f+yaJ8qHr9SLldp
- mA+BaOZED7cwm3qTcXUvRc2b1g==
-X-Received: by 2002:a17:90a:5b0d:: with SMTP id
- o13mr13140928pji.117.1631540677361; 
- Mon, 13 Sep 2021 06:44:37 -0700 (PDT)
+ bh=BHslPN/KfJNjiZ49+y3A0L2Q7DRo7u5qJTsKLsXmLTw=;
+ b=tiShRIt2V2BCmetSwOCEh9r495ZmCP9g58pCAWBqJZhAvAzqEOZTDWj2hqTWmFk4/J
+ u92NU1Mvfi3Dk9ea+0LeYF4D1jZ7QD+7lI9LwuENuJBa2kkm6GeTclppCe+2J+jq7XCl
+ TkRUEwmejJU5hTKSPx+mwt1m8s0kmPmMwUvmyKnuvk+/isO2WpHdJwW+0Ve4KdIbI6KT
+ lKDfDv2QBqIgZXt+MwUd1gmP32Ip5J0c2LKNmjccW+vn9LBXunW2KgM7rkyxucggfCwu
+ WOUoRMDBmrWMI6NGGCi1ae9boobsZ+Z0QCuHgEWOD2QYoUJTRsQ0yA+hdKlqERHFOAN6
+ RaiQ==
+X-Gm-Message-State: AOAM531q+zDTFwlZS9F6Q8RRC6sA7G9I0E5PuBpXEzarLKs47Oqw1dfT
+ JnKdbcqirVkA07hBhmMhJOQp5A==
+X-Received: by 2002:a17:90a:9289:: with SMTP id
+ n9mr13029765pjo.27.1631540808470; 
+ Mon, 13 Sep 2021 06:46:48 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.134.125])
- by smtp.gmail.com with ESMTPSA id m18sm7102809pjq.32.2021.09.13.06.44.36
+ by smtp.gmail.com with ESMTPSA id 21sm7099251pfh.103.2021.09.13.06.46.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Sep 2021 06:44:37 -0700 (PDT)
-Subject: Re: [PATCH v2 03/12] target/arm: Add TB flag for "MVE insns not
- predicated"
+ Mon, 13 Sep 2021 06:46:48 -0700 (PDT)
+Subject: Re: [PATCH v2 07/12] target/arm: Optimize MVE VDUP
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210913095440.13462-1-peter.maydell@linaro.org>
- <20210913095440.13462-4-peter.maydell@linaro.org>
+ <20210913095440.13462-8-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a4943a18-288d-33cc-5f36-1229de73189a@linaro.org>
-Date: Mon, 13 Sep 2021 06:44:35 -0700
+Message-ID: <d957619e-0985-b637-8a3f-ce54bc946fb8@linaro.org>
+Date: Mon, 13 Sep 2021 06:46:46 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210913095440.13462-4-peter.maydell@linaro.org>
+In-Reply-To: <20210913095440.13462-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -40
 X-Spam_score: -4.1
 X-Spam_bar: ----
@@ -127,46 +125,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ccj9eMtzPBWo
+X-TUID: WD9NmgX3UxEX
 
 On 9/13/21 2:54 AM, Peter Maydell wrote:
-> Our current codegen for MVE always calls out to helper functions,
-> because some byte lanes might be predicated.  The common case is that
-> in fact there is no predication active and all lanes should be
-> updated together, so we can produce better code by detecting that and
-> using the TCG generic vector infrastructure.
-> 
-> Add a TB flag that is set when we can guarantee that there is no
-> active MVE predication, and a bool in the DisasContext.  Subsequent
-> patches will use this flag to generate improved code for some
-> instructions.
-> 
-> In most cases when the predication state changes we simply end the TB
-> after that instruction.  For the code called from vfp_access_check()
-> that handles lazy state preservation and creating a new FP context,
-> we can usually avoid having to try to end the TB because luckily the
-> new value of the flag following the register changes in those
-> sequences doesn't depend on any runtime decisions.  We do have to end
-> the TB if the guest has enabled lazy FP state preservation but not
-> automatic state preservation, but this is an odd corner case that is
-> not going to be common in real-world code.
+> Optimize the MVE VDUP insns by using TCG vector ops when possible.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
-> I renamed the mve_no_predication() function to mve_no_pred() because
-> I want to use the former name in patch 2 for the translate-time "no
-> predication of any kind including ECI", and wanted to distinguish it
-> from this function that is just determining the value of the TB flag
-> bit.  Better naming suggestions welcome.
-> ---
->   target/arm/cpu.h              |  4 +++-
->   target/arm/translate.h        |  2 ++
->   target/arm/helper.c           | 33 +++++++++++++++++++++++++++++++++
->   target/arm/translate-m-nocp.c |  8 +++++++-
->   target/arm/translate-mve.c    | 13 ++++++++++++-
->   target/arm/translate-vfp.c    | 33 +++++++++++++++++++++++++++------
->   target/arm/translate.c        |  8 ++++++++
->   7 files changed, 92 insertions(+), 9 deletions(-)
+>   target/arm/translate-mve.c | 12 ++++++++----
+>   1 file changed, 8 insertions(+), 4 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

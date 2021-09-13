@@ -1,68 +1,68 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3827696lfb;
-        Mon, 13 Sep 2021 09:24:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzdWbb2/irCJZgAJUT1TR8Wjfs3lLNzJK+OrGHWqoNMM7VKdBh19yiPAYM30QSsOKiCAC59
-X-Received: by 2002:a5d:564e:: with SMTP id j14mr6553475wrw.345.1631550250946;
-        Mon, 13 Sep 2021 09:24:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631550250; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3830016lfb;
+        Mon, 13 Sep 2021 09:27:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymPoYlZL+qmNA9HwvivyiK9xeLgRTZfhJIdr1w8BzW41FdFVAK9ivbRMJADyXgPLhlXdBL
+X-Received: by 2002:a7b:c4d2:: with SMTP id g18mr12271433wmk.135.1631550429268;
+        Mon, 13 Sep 2021 09:27:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631550429; cv=none;
         d=google.com; s=arc-20160816;
-        b=bKm4uWsCFP9lnHqd73XPs28peQBX/l7pb+fDm74n3conFRQd21jRH8YNxM/UWl8s6U
-         vU9WljhArTb/C70k3Cdg80GlTh8EAwc4F9EuMDA5VYhnooB32asQrxRjDlm4ZPOauu8u
-         0Hb5KumS4DAXAh9fOJa9QlfUpvh3RVCY+yKH37LoYFFxOOBw0aIjoTgf0a+AVI+DDcDO
-         j5jaPOzNimXDrRyYdz4AyPVXGrDtJzvynFpNluTeA2XkSas7nj0fUg7Y9EE4ZRZ4NlGB
-         gwzZH5lQC+sMpb6qfjt8+WKQnR2GXHIUaK+nwbZymaYn8vo+As0bmRupeVRtl7NoxJZa
-         7akg==
+        b=a251tx6oIjmDKgfuE4k9p3coKSdosVtoAd7TMOXjXtmy+sPS1q0jLX+U3MRo7m27mF
+         0JPvQFBjTo1ncMa5hPuX46pAkpdVjpiuh8CdQgLgSBNuZA2uxpjRmpvCwbwpfrDKO+XS
+         f8ZIRd2Mj+s1G9vMQuuxT+Y3YRHTrOYwMbPMAy6SWGPJYAa9QnPVz2vRdjUpISFxLqDD
+         I32HHhr0fJxB+SWjzHOOFSsnkNpGXoAqK40Zq71IRuX/rUZYW98Zz0ZArP78fSOxMpRA
+         ZWmzfkRHS3KQpdoHx8uys6qb37TkCVZT/2gMJVdZdfTfzBP6o49LBpW1RKjW/rUepzAU
+         4Nbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=3cDjnX4ByC1VOLKM3XpP6b/Cnf92wxso3EpvqWgHje8=;
-        b=VBpRN4s1O6+Q1mnRgKYIwHNQHJsMyLn5M24vMt+OLOKvrUZgRQ9SxmpOICmnwJyWpu
-         9fkj6JXEgvpr0muHUTPAllabBL8iY2MiZzE/w3mmgLqacF9CjsaTRY8gWxJb13JJcj9M
-         WcKcigAbNhtl/AvFBGQ3+0T8zne08yrMGdIs9Hr8B0lehEtqbgh4jkaRgsh/sZhmPXt7
-         QwWJJZwpk33waIY99OkHxVujwxlxXphyW9ZnTpavMvF453AD6WR6yzpo/OqXJJHKZLSz
-         l5JZIMBRMUa8+MwSMmxVXXvuOyIoL2Gcv7rta0SuXnt6si5UQd/8xFO+GZdwCxwzVySV
-         KAAQ==
+        bh=SdET4UA8k82clTK6FCR6FMGDOJbFJVuForve8qckx5E=;
+        b=r2QgLijl84MBjLyCZIpqRavgIOvegTeIs54hYB5R7+TPWmJnfcx+YSDoVE2lJ/6FgA
+         LikoapLrXKx3cK2U67S5fQc6LZ/CER0gEPRxTzJEwqAN2fUtjyRcLjdznj22y7RaGo2v
+         pJbRiY8g8Csmpa73vPQ0Yd3Qtlq7064TOgNNsYVkxgYmocNLcwRwUQSZUZaLSFtGdS9g
+         1KKPUlX/aWKWjknvQGkI1q4R4a3FcnSorFnf0QE+Mzwpq1isykBEXxuFX1GXc57uAUrP
+         1JJZiQ6UXti3CdU74X1PgDLE1OQDnDfuMPDGW8zBUHASAP/LFBCmb0fMF4WpZk4J1XCk
+         98Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11si10170968wry.162.2021.09.13.09.24.10
+        by mx.google.com with ESMTPS id r13si8144762wmq.171.2021.09.13.09.27.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 09:24:10 -0700 (PDT)
+        Mon, 13 Sep 2021 09:27:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52344 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPokb-0002FK-UG
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:24:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33302)
+	id 1mPonU-0007lP-BT
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:27:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoa8-0003tV-OT; Mon, 13 Sep 2021 12:13:21 -0400
-Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:37009
- helo=smtpout1.3005.mail-out.ovh.net)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoaB-0003wR-La
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 12:13:23 -0400
+Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235]:51979)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoa5-0000iK-MG; Mon, 13 Sep 2021 12:13:20 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.249])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 6D38813B03B;
- Mon, 13 Sep 2021 16:13:13 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa6-0000kL-8R
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 12:13:23 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.201])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id ACF2B20911;
+ Mon, 13 Sep 2021 16:13:15 +0000 (UTC)
 Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 13 Sep
- 2021 18:13:12 +0200
+ 2021 18:13:14 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00185c106a6-64a8-43aa-b1e2-5aa3c41268e3,
+ (GARM-96R001bfff7c54-cb18-4466-990b-245c83c26d65,
  7CA125ACC991A0BE3D2311CBE60F5A293341D68C) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 08/14] arm/aspeed: rainier: Add i2c eeproms and muxes
-Date: Mon, 13 Sep 2021 18:12:58 +0200
-Message-ID: <20210913161304.3805652-9-clg@kaod.org>
+Subject: [PULL 12/14] hw/arm/aspeed: Initialize AST2600 UART clock selection
+ registers
+Date: Mon, 13 Sep 2021 18:13:02 +0200
+Message-ID: <20210913161304.3805652-13-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210913161304.3805652-1-clg@kaod.org>
 References: <20210913161304.3805652-1-clg@kaod.org>
@@ -72,13 +72,13 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.96]
 X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: a3259c9b-641b-4a35-a75f-a8fa7e2dcd3b
-X-Ovh-Tracer-Id: 8689976958827793190
+X-Ovh-Tracer-GUID: b415d0cc-a6c9-4219-baf4-2d1782cdc57d
+X-Ovh-Tracer-Id: 8690258433915587433
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.3005.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepiefgvddvffffveelfeeghfehgeetuddtgfeuveefffelgeelvdeuhfetteeukeejnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
+ helo=10.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -97,142 +97,99 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nABa7TggvDgv
+X-TUID: 7kzqgR+YwWr4
 
-From: Joel Stanley <joel@jms.id.au>
+From: Peter Delevoryas <pdel@fb.com>
 
-These are the devices documented by the Rainier device tree. With this
-we can see the guest discovering the multiplexers and probing the eeprom
-devices:
+UART5 is typically used as the default debug UART on the AST2600, but
+UART1 is also designed to be a debug UART. All the AST2600 UART's have
+semi-configurable clock rates through registers in the System Control
+Unit (SCU), but only UART5 works out of the box with zero-initialized
+values. The rest of the UART's expect a few of the registers to be
+initialized to non-zero values, or else the clock rate calculation will
+yield zero or undefined (due to a divide-by-zero).
 
- i2c i2c-2: Added multiplexed i2c bus 16
- i2c i2c-2: Added multiplexed i2c bus 17
- i2c i2c-2: Added multiplexed i2c bus 18
- i2c i2c-2: Added multiplexed i2c bus 19
- i2c-mux-gpio i2cmux: 4 port mux on 1e78a180.i2c-bus adapter
- at24 20-0050: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
- i2c i2c-4: Added multiplexed i2c bus 20
- at24 21-0051: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
- i2c i2c-4: Added multiplexed i2c bus 21
- at24 22-0052: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+For reference, the U-Boot clock rate driver here shows the calculation:
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-[ clg: Introduced aspeed_eeprom_init ]
-Message-Id: <20210629142336.750058-2-clg@kaod.org>
+    https://github.com/facebook/openbmc-uboot/blob/15f7e0dc01d8/drivers/clk/aspeed/clk_ast2600.c#L357
+
+To summarize, UART5 allows selection from 4 rates: 24 MHz, 192 MHz, 24 /
+13 MHz, and 192 / 13 MHz. The other UART's allow selecting either the
+"low" rate (UARTCLK) or the "high" rate (HUARTCLK). UARTCLK and HUARTCLK
+are configurable themselves:
+
+    UARTCLK = UXCLK * R / (N * 2)
+    HUARTCLK = HUXCLK * HR / (HN * 2)
+
+UXCLK and HUXCLK are also configurable, and depend on the APLL and/or
+HPLL clock rates, which also derive from complicated calculations. Long
+story short, there's lots of multiplication and division from
+configurable registers, and most of these registers are zero-initialized
+in QEMU, which at best is unexpected and at worst causes this clock rate
+driver to hang from divide-by-zero's. This can also be difficult to
+diagnose, because it may cause U-Boot to hang before serial console
+initialization completes, requiring intervention from gdb.
+
+This change just initializes all of these registers with default values
+from the datasheet.
+
+To test this, I used Facebook's AST2600 OpenBMC image for "fuji", with
+the following diff applied (because fuji uses UART1 for console output,
+not UART5).
+
+  @@ -323,8 +323,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+       }
+
+      /* UART - attach an 8250 to the IO space as our UART5 */
+  -    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+  -                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
+  +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART1], 2,
+  +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART1),
+                    38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+
+       /* I2C */
+
+Without these clock rate registers being initialized, U-Boot hangs in
+the clock rate driver from a divide-by-zero, because the UART1 clock
+rate register reads return zero, and there's no console output. After
+initializing them with default values, fuji boots successfully.
+
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+[ clg: Removed _PARAM suffix ]
+Message-Id: <20210906134023.3711031-2-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ hw/misc/aspeed_scu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 20e3a7716006..952fb2012a53 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -674,9 +674,21 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
-                           eeprom_buf);
- }
- 
-+static void aspeed_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
-+{
-+    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
-+    DeviceState *dev = DEVICE(i2c_dev);
-+
-+    qdev_prop_set_uint32(dev, "rom-size", rsize);
-+    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
-+}
-+
- static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-+    I2CSlave *i2c_mux;
-+
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB);
- 
-     /* The rainier expects a TMP275 but a TMP105 is compatible */
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
-@@ -685,11 +697,20 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-                      0x49);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
-                      0x4a);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
-+                                      "pca9546", 0x70);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
- 
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
-                      0x48);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
-                      0x49);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
-+                                      "pca9546", 0x70);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
- 
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
-                      0x48);
-@@ -697,6 +718,12 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-                      0x4a);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
-                      0x4b);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6),
-+                                      "pca9546", 0x70);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
- 
-     /* Bus 7: TODO dps310@76 */
-     /* Bus 7: TODO max31785@52 */
-@@ -704,11 +731,15 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-     /* Bus 7: TODO si7021-a20@20 */
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
-                      0x48);
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
- 
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
-                      0x48);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
-                      0x4a);
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB);
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x61);
-     /* Bus 8: ucd90320@11 */
-     /* Bus 8: ucd90320@b */
-@@ -716,14 +747,27 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
- 
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB);
- 
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * KiB);
- 
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
-                      0x48);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
-                      0x49);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
-+                                      "pca9546", 0x70);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-+
-+
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB);
-+
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB);
-+
-+    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
- }
- 
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 05edebedeb46..d06e179a6e65 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -119,6 +119,8 @@
+ #define AST2600_CLK_SEL3          TO_REG(0x308)
+ #define AST2600_CLK_SEL4          TO_REG(0x310)
+ #define AST2600_CLK_SEL5          TO_REG(0x314)
++#define AST2600_UARTCLK           TO_REG(0x338)
++#define AST2600_HUARTCLK          TO_REG(0x33C)
+ #define AST2600_HW_STRAP1         TO_REG(0x500)
+ #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+ #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+@@ -681,6 +683,8 @@ static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+     [AST2600_CLK_SEL3]          = 0x00000000,
+     [AST2600_CLK_SEL4]          = 0xF3F40000,
+     [AST2600_CLK_SEL5]          = 0x30000000,
++    [AST2600_UARTCLK]           = 0x00014506,
++    [AST2600_HUARTCLK]          = 0x000145C0,
+     [AST2600_CHIP_ID0]          = 0x1234ABCD,
+     [AST2600_CHIP_ID1]          = 0x88884444,
+ };
 -- 
 2.31.1
 

@@ -1,67 +1,68 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3835932lfb;
-        Mon, 13 Sep 2021 09:34:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnHG3u5JLHmTgpPR9kFUmKUSq+OKlW4GY8ocfPnR4M58u7guvBczF4k5Fq8dxM1CUTBG9R
-X-Received: by 2002:a1c:183:: with SMTP id 125mr1962646wmb.186.1631550855532;
-        Mon, 13 Sep 2021 09:34:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631550855; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3836503lfb;
+        Mon, 13 Sep 2021 09:35:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxdu7Z/RtEkXqJESjmFdxWzdsvNsxH7BHHQc2WsnfKKbpuYLJgEq+8OPYtqshIt3HFNfGAg
+X-Received: by 2002:a7b:c014:: with SMTP id c20mr12055065wmb.81.1631550901264;
+        Mon, 13 Sep 2021 09:35:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631550901; cv=none;
         d=google.com; s=arc-20160816;
-        b=wsd1yQ4A1jI/+EHZ+7j3x+9eEo2k8d8Mw0/ytSc1ODRekM7TFE+WfvfD0a7lD4mBLH
-         jb8IojmYzTgHVWk3rNpfiohMVbb5O9bRr5upxmbCtuPGljQkCS6MxS7T7ciCO5eMwtZZ
-         5NIDWKed7pPHL74ramLqUVkep9lznJCF0fDYnIjzw+1zlKHN90Y9wRKjsyA1c+hhJ31j
-         JW2JZwH60/mY/vyqLKmQCYW0jT2YNT5JutTwRZzXIraUyZ345vbpj9qJ74jL3Rwyfmpl
-         UB/GuNElibOQPFLVlawyRbm8z7YJs3bmJJdAGvK5o8Gn6mIKMj6G+lWfmr4utgwb7Awx
-         ivBg==
+        b=fouFJdgQBnmXgFdipDd3gbU8URES6vUGapfuKbE8YMYqh25rVWP5WACwV6nXiRKQhY
+         X0xdLaBe2jA3NnwfgdPAnBuqVsy5//E00kGBG9SRDP875HsNlgXR8471UV4O9KZtezi2
+         37LZjCkJ9IUN+qMcsXYabQBGQj7yzf4h9YGgJ67c0ceXhHlDCXiWDgdNPOUUOcy0dJ9O
+         9FJoxfxxGcpBiakzYK6qu2qjeo5gq0sQuMVI0lpvbBSSNfYeugKn6TQCundvBoM4WMaN
+         zU+m+chsDJgKIsU2ACZ0df0DrvpsyCP174qiZJHmACuOsVqzfW+QgS2rrHqBjNcU2u0p
+         aRug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=ju+JAxfA1TJlI/tvqbMv0IrXX7a08q6dpeYGVZNaMEk=;
-        b=YM+7r7e4F90IIPIf86bc4BUam8SVDksE+dkuCALH8W63WmX8tLtxEgDtTGek57Oz+7
-         r9MvSZUy6SFOZdmnid/klvCI3c+WjaIRemq+MVlBTnhwMA5SchoiX+9q5lf/c6+zhHA9
-         U2fnroHKKDZ1hg2fUDW1HXmTY896ye4/3iaQsbjL2ap3/RzO3EzBqvd2i8LUQDWY+bs5
-         H1D9UurNRzKLLeKukGWFG0SxM+VdxzuGwKcqixoPS2cR0eQYFUBfVwKVhA4WC6yv8w2O
-         3MsFxajLrx2p7DP5rEn7Xn++ePWLmI6MI/ixHKCVOjJ3QsSv8x7U54NdXjb2INiu/3/u
-         1Axw==
+        bh=pbiTOvx6RsCP92KhzgMBHfxj9Tl0ke/ERVVqRBmQ+es=;
+        b=XlOYw60MUke3oWyqo0M32OLWP1vz1RreP2Mn6yt7JSAvWbX1Dg2+H3n+v8L5GsRmFt
+         LaZBR2MPhvIASG5RNwqak6nSvBlbQC6AXBOOKd+f3Xka0JgVYyGhPQB4DrgJ/Aao11+1
+         Emj8Q/T/ENKGtOVeTT5EjWpeRZ0Wiw1X+AkeWk9xCShJowN7P9ldoR3PYHHo1cOg171H
+         qgOFyWKKt7I4JysElzeIiBQRrafC7DQbYm2T7YrYM9kH3/emqiWH1FXwh7tunHhhgjF2
+         4dSEp8ZxW1jD24pYtiQZPqn3wdrDVdjwbJ1hzaOgG9yIZq5L5JJ7sWKo+XwCQPHblf44
+         YA2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n22si1062863wms.89.2021.09.13.09.34.15
+        by mx.google.com with ESMTPS id l9si7234971wmq.213.2021.09.13.09.35.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 09:34:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Sep 2021 09:35:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49402 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52824 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPouM-0002Q4-Ll
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:34:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33256)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mPov6-0004jU-4S
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:35:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoa7-0003rl-2f; Mon, 13 Sep 2021 12:13:19 -0400
-Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:60813)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa7-0003se-Sv
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:19 -0400
+Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:40803)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoa4-0000hJ-0j; Mon, 13 Sep 2021 12:13:18 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.98])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id E36A813B1E7;
- Mon, 13 Sep 2021 16:13:11 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa5-0000hu-MI
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:19 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.148])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 167C913ECA7;
+ Mon, 13 Sep 2021 16:13:13 +0000 (UTC)
 Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 13 Sep
- 2021 18:13:11 +0200
+ 2021 18:13:12 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0012f806940-8cd5-4669-af0f-d108a8acabe2,
+ (GARM-96R001e4e45957-3e0e-4a5e-b549-e410179d3e05,
  7CA125ACC991A0BE3D2311CBE60F5A293341D68C) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 04/14] watchdog: aspeed: Fix sequential control writes
-Date: Mon, 13 Sep 2021 18:12:54 +0200
-Message-ID: <20210913161304.3805652-5-clg@kaod.org>
+Subject: [PULL 07/14] misc/pca9552: Fix LED status register indexing in
+ pca955x_get_led()
+Date: Mon, 13 Sep 2021 18:12:57 +0200
+Message-ID: <20210913161304.3805652-8-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210913161304.3805652-1-clg@kaod.org>
 References: <20210913161304.3805652-1-clg@kaod.org>
@@ -71,65 +72,67 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.96]
 X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 58221d43-9bd1-42aa-ae0a-cdeaa3714def
-X-Ovh-Tracer-Id: 8689414006677015334
+X-Ovh-Tracer-GUID: 76eb2a59-39a2-4c4e-905e-85842292fbe4
+X-Ovh-Tracer-Id: 8689695484433828646
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout2.3005.mail-out.ovh.net
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout3.3005.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5Xfp5VpX/q+f
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iIxHxROKxpMO
 
 From: Andrew Jeffery <andrew@aj.id.au>
 
-The logic in the handling for the control register required toggling the
-enable state for writes to stick. Rework the condition chain to allow
-sequential writes that do not update the enable state.
+There was a bit of a thinko in the state calculation where every odd pin
+in was reported in e.g. "pwm0" mode rather than "off". This was the
+result of an incorrect bit shift for the 2-bit field representing each
+LED state.
 
-Fixes: 854123bf8d4b ("wdt: Add Aspeed watchdog device model")
+Fixes: a90d8f84674d ("misc/pca9552: Add qom set and get")
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210709053107.1829304-3-andrew@aj.id.au>
+Message-Id: <20210723043624.348158-1-andrew@aj.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/watchdog/wdt_aspeed.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/misc/pca9552.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index faa3d35fdf21..69c37af9a6e9 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -166,6 +166,8 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
-         } else if (!enable && aspeed_wdt_is_enabled(s)) {
-             s->regs[WDT_CTRL] = data;
-             timer_del(s->timer);
-+        } else {
-+            s->regs[WDT_CTRL] = data;
-         }
-         break;
-     case WDT_RESET_WIDTH:
+diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+index b7686e27d7fa..fff19e369a39 100644
+--- a/hw/misc/pca9552.c
++++ b/hw/misc/pca9552.c
+@@ -272,7 +272,7 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
+      * reading the INPUTx reg
+      */
+     reg = PCA9552_LS0 + led / 4;
+-    state = (pca955x_read(s, reg) >> (led % 8)) & 0x3;
++    state = (pca955x_read(s, reg) >> ((led % 4) * 2)) & 0x3;
+     visit_type_str(v, name, (char **)&led_state[state], errp);
+ }
+ 
 -- 
 2.31.1
 

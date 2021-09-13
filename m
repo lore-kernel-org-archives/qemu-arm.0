@@ -1,117 +1,103 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3732413lfb;
-        Mon, 13 Sep 2021 07:33:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyFJzZ+QnjaUO8w8YsH3fGcCh1lOv/qJcJUVhdAEa8rjrAQkRvIX7xqy2Dpj8BlSpN/pDEr
-X-Received: by 2002:adf:fd88:: with SMTP id d8mr13310271wrr.13.1631543624706;
-        Mon, 13 Sep 2021 07:33:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631543624; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3694412lfb;
+        Mon, 13 Sep 2021 06:54:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzNYJM/VnRS2VFAIi17txaJe6NK3MHNpCI7c0o0ID0X85gDwr23nDvuWYj84bDPHUzytg04
+X-Received: by 2002:a67:fbd9:: with SMTP id o25mr4967818vsr.21.1631541274288;
+        Mon, 13 Sep 2021 06:54:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631541274; cv=none;
         d=google.com; s=arc-20160816;
-        b=n1RL78BHgrg9fqfQydpjQHLSEVG765H63c7uXocUJl2VqQHWDFN75yR2JNvGwOpCik
-         YulU85FG554kLB8J0XAEhyAs5wSAdM2H22I+5jMDDJguZZVOFnis/+ibEs/nWKXmqrwv
-         26fw9FZGmOf4TJfP0RdWMtas81nHJ2VY8wNcclcUW9Ogvtn3L5Fq9W7z+ZcJLqKPuANj
-         KNKreN7CpZn2IPVvM3+LqEmmXiXPUuvwYQsE6lcElGTieHnVN+bgkI7ltgCkWfKO4C+W
-         e/dZQ99ohI1miMBxfg/28sRCnJhbJEyQn486Q5AlpcYGjkdq1lyaz+hzq+lucrQOhGiS
-         jNEA==
+        b=MoUiI4fCTwEaPq95lGn9Jub+nizKnbBvtM3Nd1tXHXKoSwFrUr4AjLaIqHeE4xHO0I
+         E0ybl0owEoGYTQSzoEG+W3DdAxe+6v3/5I8m0WW8i0n/EDtQGRitSjHs1SZMnkl7aLhK
+         WdZBz96/hpJP7c68BSAp2E1pNlm6Omqne5evrsq2ztMtszUNqunCsZFovnavZRI09Sl1
+         9NoLxVPZYaQY230QfBACKUKfUUN6kcGv7QhRJhyWDexmmznhpj8IL05RpuWzz6LDHq7n
+         vWppeMzRG6zv3sLLBHQEP8XfC4hD1WvvFNEQPfhYxnavDh6an4ALfHDphjLfB2rZFu8o
+         akXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=M1cFjKHx/TzYQaXC24w6/ALuksE5RIkE0mIiGgfGRdE=;
-        b=uUfwwNu+c/BidgP4MaBv90SRF6gK85Lf6G2BZr9jnMN2F+KSbqoejdbeQNqdn/80Ma
-         HDNRe7GhDsJyL/37O8Me9iM0MDI/vPUtwexvcqh4euKo3BggEZbYxsN9XZ+JoRgAxpdx
-         88/EL8gpES6dyVE9JgLjG6h10faFv8S3gCtk1II5T5IJ/i7ocOQj8RsUBzxKx3nfb5b9
-         Ir4HmjaUcylqWO1sDhrZQvnnzMDJ46WmySJ30SUzmaogRX5j3PGP+SKkIUpfGAoALCH7
-         muhO17KZRzcaq18u3SrwAzh7YmUzbT+/fv8Xs+YPEsV+a2gw7DO0CbFlbReu4jYBf0Al
-         TmxA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=oVzKYmjFkEwD0Pn2M57abfkgTyrth1nlGdEP77UkmcA=;
+        b=jagm1SYO4J+7e958X3BmWI5NOfuYlwB3l4KVqIHB0UMocbSFuOQ0nC+ZuxIbJ4pgps
+         w7YmBn/JpxMEKAoBz+6LLj+aA0cv2uMvgGVmDR1BpMkrooZXEwgvNwGYRZAhgkBhF8mn
+         WqSkoqDg/HN5A1GC9cmQcN0YzKgE0glQz2SGl/wDAbCCXEJVT6xhZLWHGNvp3MiiH0+q
+         YzCBmb5DTUt/5C2UoCEf0hM4GgEPki/ZGliEPqKo6iNWsKmHhyHrXQl4/PqcDEdYjTHJ
+         Wa4ycckmRSVWndnyQgbbb4PZEkkPjKoEPH+8htn9T/1KZvHm9CLn4bo3FgcsUK1R6tV4
+         HEPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="E07hpBZ/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=gT8muPNh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2si8119705wml.200.2021.09.13.07.33.44
+        by mx.google.com with ESMTPS id v15si1659837vso.140.2021.09.13.06.54.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 07:33:44 -0700 (PDT)
+        Mon, 13 Sep 2021 06:54:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="E07hpBZ/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=gT8muPNh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50412 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44886 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPn1j-0007CZ-S4
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 10:33:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43284)
+	id 1mPmPp-00055a-Ca
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 09:54:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mPmRb-0001RK-Dn
- for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:56:23 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:38885)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mPldp-0003EY-48
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:04:57 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:34666)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mPmRY-0004yz-6Y
- for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:56:22 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id
- g13-20020a17090a3c8d00b00196286963b9so6613568pjc.3
- for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 06:56:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mPldm-0000l8-AQ
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 09:04:56 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ v20-20020a1cf714000000b002e71f4d2026so5195852wmh.1
+ for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 06:04:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=M1cFjKHx/TzYQaXC24w6/ALuksE5RIkE0mIiGgfGRdE=;
- b=E07hpBZ/mNsePnObUOxRNGphjdPlndadeHfzFuehsjRrG5UVIIVZRJprQYaW8qZs2K
- h+eotoztF38mhM057UVxlIV7Hu29GROfNFxSZYXylVwdk2Lqk/Ng5IJ2R6dn2LHDmOSO
- PW8YDeW1oef7o1Eht3X6+Jk8UxxJpcCMHyO0V3T4EXp7imECO5+qBe417voHzjLswN3H
- fVEuIf0ZZd+lCna6CMofZTEQH2BW70Lglnl7YgWEd0tHONGI+olUUshZ0c7Y9a1c907W
- mQPmt61s7AMAma3D0vfQnXg+rZy3UPpcRREJx6dS1zUSrTpZNBRV25rqThGjofBCSmLW
- /yvA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=oVzKYmjFkEwD0Pn2M57abfkgTyrth1nlGdEP77UkmcA=;
+ b=gT8muPNh/roitQYVWsxpnCCys9aXRD6ovupXYXIBsgTBwC5KjK5myEPnRDjYYa1B+X
+ nIlCVE8WE9vSe9e9E4EIt4HIQLe5/QwKHUw52Eu40OEG0HoHHsH6KFFUO2IqPm/QRqDQ
+ n+kp13JXqhWmrcprbtt+sK3iqaBjFo9UTTkWJVU6uO/eFeygef0jd02VKqjkTb8CMEqM
+ EKChvyDHseY1VvDry09UPenfA0qJLdxNepuYDzw+4OyBkeec73umW0AEstH9Adhkzw0h
+ zTKEUQwJboPYVTVoWPTAgwM9I1juRAZi/9vmBWm3IcRg3zdm+0YElOk74+kLZNqD54wq
+ bG2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=M1cFjKHx/TzYQaXC24w6/ALuksE5RIkE0mIiGgfGRdE=;
- b=rYeNNoM9Y1P83u9pE0QwqgY1JjL7GWHtQTs2TYGfMgM1uhFplIgd1Sn4sN9T7x2wlL
- VZ/hRxnlWDaSm3hjCFhuxoQc69SRDRd5VKwGF5D9aGen5059uJRyl7I46NrHh4dfFtBz
- M7ZmcTU2MCGnNaXVAyIX/LAUMrdpG9idsKayqhE4g35s0XtwVm1GrcWhgrbh3I6wYKvb
- jBblYedbqVi1d3YGV2vnVcE83nA/iobSoa7o+6QX3UlIqRRhyRxVReK8Tlk3057NQkM2
- VKdAMFh4eTHqu33Cld66b/Jf20ouzmsNTtSrzk92tcXQQjrW9zwfiOxbi6jslTzytPhc
- XE6Q==
-X-Gm-Message-State: AOAM531RtC+XHthc2QoDBM+YLGQs9ARwNEjFdcTyzmJP3Y7LxVFHbxFA
- nq4z3UDgHIan6jRpI+5U1xGuZg==
-X-Received: by 2002:a17:902:654c:b0:13a:505d:6a04 with SMTP id
- d12-20020a170902654c00b0013a505d6a04mr10778191pln.82.1631541378556; 
- Mon, 13 Sep 2021 06:56:18 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.134.125])
- by smtp.gmail.com with ESMTPSA id v190sm7330025pfv.166.2021.09.13.06.56.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Sep 2021 06:56:18 -0700 (PDT)
-Subject: Re: [PATCH v2 09/12] target/arm: Optimize MVE VSHL, VSHR immediate
- forms
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210913095440.13462-1-peter.maydell@linaro.org>
- <20210913095440.13462-10-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <1a0247d3-f472-546d-b838-dcacb640d282@linaro.org>
-Date: Mon, 13 Sep 2021 06:56:16 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=oVzKYmjFkEwD0Pn2M57abfkgTyrth1nlGdEP77UkmcA=;
+ b=T65Pw/5lNastiKbac7I/4LcYfiJox15LLG/7gbfeuh62Bj1GkRV4mFcc05+iisgljE
+ ceLn8ZT4aT1u7CcohGk9kwhCNoqU5iBx0auOp/QaaO0z8ZZ9wg/L89WF4uhn46CcK54y
+ LN8DxraW9nhew787umTC1/AQoDOoYSDc1aXZQV3YysWkYw3AGJJq0axDXfPRPnoajTTS
+ 0UgIfm0zPcvleTglUjT9HIRb9pVNhKa1E7DYY76QEKHbx1mVljWBDgTp3DGwsVOxo4qg
+ 0ps/KaYOmeDRIWige2sOS4ChobiapTdNoIlIQRgBzGGZPcmsvJBi3J2U4NYI0jIjNPli
+ OWRw==
+X-Gm-Message-State: AOAM5328JosafQgv2+gs0HY2ZXItl7crcnLfLBHe1ee0kO6KjFC1Xaxw
+ Y6YTH1MFMuQzhYqoZb4IxlvUnqX0tRcCUc1nSPRfFg==
+X-Received: by 2002:a05:600c:2259:: with SMTP id
+ a25mr4469055wmm.133.1631538292735; 
+ Mon, 13 Sep 2021 06:04:52 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210913095440.13462-10-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.969,
+References: <20210910143951.92242-1-shashi.mallela@linaro.org>
+In-Reply-To: <20210910143951.92242-1-shashi.mallela@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Sep 2021 14:04:02 +0100
+Message-ID: <CAFEAcA-75-_72d__iDFCyqNG5eVV4tO4y60r4G_gJ6zko+SaHg@mail.gmail.com>
+Subject: Re: [PATCH v9 0/9] GICv3 LPI and ITS feature implementation
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,36 +110,49 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ narmstrong@baylibre.com, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
+ Leif Lindholm <leif@nuviainc.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +UVY5ofTwxOl
+X-TUID: pBzg6o26gNTu
 
-On 9/13/21 2:54 AM, Peter Maydell wrote:
-> +static void do_gvec_shri_s(unsigned vece, uint32_t dofs, uint32_t aofs,
-> +                           int64_t shift, uint32_t oprsz, uint32_t maxsz)
-> +{
-> +    /*
-> +     * We get here with a negated shift count, and we must handle
-> +     * shifts by the element size, which tcg_gen_gvec_sari() does not do.
-> +     */
-> +    shift = -shift;
+On Fri, 10 Sept 2021 at 15:39, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+>
+> This patchset implements qemu device model for enabling physical
+> LPI support and ITS functionality in GIC as per GICv3 specification.
+> Both flat table and 2 level tables are implemented.The ITS commands
+> for adding/deleting ITS table entries,trigerring LPI interrupts are
+> implemented.Translated LPI interrupt ids are processed by redistributor
+> to determine priority and set pending state appropriately before
+> forwarding the same to cpu interface.
+> The ITS feature support has been added to virt platform,wherein the
+> emulated functionality co-exists with kvm kernel functionality.
+>
+> Changes in v9:
+>  - removed sbsa-ref patch due to inconclusive ongoing discussion
+>    regarding ITS placement and version in sbsa-ref platform.This will be
+>    taken up as a separate functionality later
+>  - updated its enable code as per latest virt 6.2
+>  - updated its code to replace usage of MEMTX_ with bool
+>  - All kvm_unit_tests PASS
+>  - Verified Linux Boot functionality
+>
+> Shashi Mallela (9):
+>   hw/intc: GICv3 ITS initial framework
+>   hw/intc: GICv3 ITS register definitions added
+>   hw/intc: GICv3 ITS command queue framework
+>   hw/intc: GICv3 ITS Command processing
+>   hw/intc: GICv3 ITS Feature enablement
+>   hw/intc: GICv3 redistributor ITS processing
+>   tests/data/acpi/virt: Add IORT files for ITS
+>   hw/arm/virt: add ITS support in virt GIC
+>   tests/data/acpi/virt: Update IORT files for ITS
 
-You've already performed the negation in do_2shift_vec.
-
-> +    if (shift == (8 << vece)) {
-> +        shift--;
-> +    }
-> +    tcg_gen_gvec_sari(vece, dofs, aofs, shift, oprsz, maxsz);
-...
-> +    if (shift == (8 << vece)) {
-> +        tcg_gen_gvec_dup_imm(vece, dofs, oprsz, maxsz, 0);
-> +    } else {
-> +        tcg_gen_gvec_shri(vece, dofs, aofs, shift, oprsz, maxsz);
-> +    }
 
 
-Perhaps worth placing these functions somewhere we can share code with NEON?  Tactical 
-error, perhaps, open-coding these tests in trans_VSHR_S_2sh and trans_VSHR_U_2sh.
+Applied to target-arm.next, thanks.
 
-r~
+-- PMM

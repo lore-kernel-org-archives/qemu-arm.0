@@ -1,163 +1,152 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3481588lfb;
-        Mon, 13 Sep 2021 02:04:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyFZbtZpFTRE8mF5Zs7UWQDgquL2PSqy6Hz4IPCQAAJIz/EcIti/o8meQRguFAbWUmYrVp
-X-Received: by 2002:a5d:9253:: with SMTP id e19mr8139072iol.35.1631523882490;
-        Mon, 13 Sep 2021 02:04:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631523882; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3592123lfb;
+        Mon, 13 Sep 2021 04:53:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4OEsT+9/o8UgwU45dAA2k667uFZaE8XaQ/UFqa24H8eNs+CONs6dHvH84F6sS+J5SwBKi
+X-Received: by 2002:a25:2b07:: with SMTP id r7mr13862173ybr.296.1631533985669;
+        Mon, 13 Sep 2021 04:53:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631533985; cv=none;
         d=google.com; s=arc-20160816;
-        b=G1c5pfEOPGOhUGXaQKRnLAZSfSDSdIRqWegeTM/2d4YygoVhz+e5y9idwWAFOG0jZz
-         va4jGnIb8px7G/zFi0sI/U/LYdkGc53gft0yJXstPp6V1wa+ZkcKZj6JgusaiFJxzdN/
-         uxQWGeo5KOqQ6UDEAyxeHLj0dEgxxEoTXld7NXa5QyPWFikFzD81kdFGFzMLyJ2CeWNO
-         9cQujgb/jtxNnKzoiM1gg7DagvZcEql/iGvVfnM9g1I4+TH5qPC0G9zG7u/VtqmsvnXT
-         a3RO13GZu0DyefELJhP9dqonfNf92g+6nK4szLjfVmhJdV6E65o7AlsDcsyf6fAkbFze
-         6Kow==
+        b=Ipzv13+JslEjjmX4pfQXFUiJw8BD2E5Nsx4jE1v5N1MLp55HMgX7nkjQlurIJtwVe9
+         nipFphaOFUn6rRSvoV0lIa2czuFQ4KYJ31VvWpjwRHDwDt+UC2fCaCkUSQ+F6nfMeTqM
+         wF+9xjdVB/toPWEVZ0s/E6FbqJwdBGZUmJyZv5BBUK+mc46gMqgaguFga9xe1UQqmvIn
+         CZRsOayLABzlHGZc04UQwyV3WO7d2EoB5ftnHHp5a4LbnINqcvEXImqVXyU2XL0EWNMd
+         tYvjKEMh7MepWpa3m79eZ8LSEge9+LmaphLX8ExSeFRtCAhopWTjVtkhrF0HTQu/HHn1
+         +EPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=v1c2/lceSHhulHQ3IFfXauC+rXyjeaXeZ0GjcuFQNEw=;
-        b=rdovFTMQlmkNL78ESTBZZTilTNhKkFsZLWInLAvAJn+yXOWzYiaAzib+HLJIJbPfck
-         t8JL8IMlgrRRsHDtFpGebFxrd+kZfuanpXq/w4c7s3+BahaqK+F+7jI5Wmnoq7DJaC7I
-         r8XVUNYfdkdh774FFtBxR6m/SLeZ1A/F9FpOoHuu/6aZgX6jj4AVnYAJrwhPICZPQR9X
-         Nc2A+WPObKJh/fzQhgn+RZI1lZdqHsOzkONvLo3QxDUJaXsZ0wJnT1xqHpVayh+Sp/Sh
-         PFNBxhNeqqrq5q8E6hsEOtuinuDmxzQf+mHN7ySsrjOmjEeJm9t/uDEWeDQ6kSlI/6An
-         VBdw==
+        bh=GDHrVdxoq0ovrAkHvH9Qo7YGWd/Zy0Kwy/fWHQ0Jmiw=;
+        b=Kkzmk2AkB1bqCnoPRIIZ8XrCVmCQuwjkiPnqfwffNz8q79QWwFQO2QcZ6qgmZUYGGe
+         u9u2coQxCJnm+tO/ER/hDa4KKG8Wx2i7WqvtmyXo7uIHiNwFwghmBnteMnPAva80A+Wd
+         HtkwPqooiIv7LljetBkaq9MYvgBevWY7r3WmfjVR7ISehgqMJnhOJvhNYkgHdzMqd5hb
+         C4bIEdXBBBIu82+Km4qisCuXrUfatSW2UIw72Hi4iKuRypc/2aA4cc8O8YQoZMY2sq0W
+         2u+5620t/eMVl0E1iYewa1TR6jTJXl8kyGKHai+0funJq5Hz5mg7bPRZmKZ9jFo/uWL8
+         e1aA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="iIu9h/k6";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kvMxcdSy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay23si7016267iob.33.2021.09.13.02.04.42
+        by mx.google.com with ESMTPS id p12si9744321ybu.380.2021.09.13.04.53.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 02:04:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Sep 2021 04:53:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="iIu9h/k6";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kvMxcdSy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46792 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPhtJ-0002C4-R6
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 05:04:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33058)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mPkWH-0003QR-0z
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 07:53:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPhkL-00014V-75
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 04:55:26 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:33690)
+ id 1mPkSq-0000A5-R7
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 07:49:32 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:43617)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPhkH-00027i-51
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 04:55:24 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id t18so13472217wrb.0
- for <qemu-arm@nongnu.org>; Mon, 13 Sep 2021 01:55:19 -0700 (PDT)
+ id 1mPkSp-0008IM-A9
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 07:49:32 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id b6so14198631wrh.10
+ for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 04:49:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=v1c2/lceSHhulHQ3IFfXauC+rXyjeaXeZ0GjcuFQNEw=;
- b=iIu9h/k68X9a715NXjqNQCjfjRU5FRt2ixlAqEz/kOy5YmePyJg9zjEfBjbBG1DJM/
- AzJfoY3d6rwz+Az+4mT1X1My7e4bVqk/iQ0GyRsN4CZ51RXq2iudY0+jlCHa6BByXVsX
- Nihcl0vyC4kPY21qOlE9aAYu6Xlqk318WAgOiQw3Xv0UHzrJM2uVmD5nneDr4wr8LWix
- 4DJWq3pCgsGvEfI4lQxoU8kZgm4ZRtCJ0N2YU/MChizIHQoOjbBCpDkiJ4KNQ5nApB5u
- WZ2cum1c0g3xZdDZUTB3Qq5CQLrkvqWTxO/4j/SOCOlOAq0ldfb9dFzgPnWutJlFWM06
- SmIw==
+ :cc; bh=GDHrVdxoq0ovrAkHvH9Qo7YGWd/Zy0Kwy/fWHQ0Jmiw=;
+ b=kvMxcdSyqj9A1niPKSYIj0eCSZ+X4hCu8CYdBKLILMisKCsLKHwSzVNcon9IXkFtoE
+ GF++hM1hKJJEXx+H/XX8BFNltG0QApkRQxTpV6OPkWBZ1aiSH7Q43OTkJ+p65Kf5xOMn
+ 4bhBTv3gAFofla4x0210wMsOBsAWal+snZPy8uD3QCcdtlnn9gBO5hUhUpBZKot2pMPj
+ zc01oBTIA752Tpoagb+ZxLo9qr0rTP5NjMZXQDLmAlp0GsYT7AesZ4VkdFBiQ5p/IPJF
+ wQTq7BrSQqQfN5VeU21xIX5iSsbcE3NWbgM7km0bqLDHRSHkCR6X4fmtkUTaw4GDoHqA
+ Q2fA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=v1c2/lceSHhulHQ3IFfXauC+rXyjeaXeZ0GjcuFQNEw=;
- b=L3qjaVJbDZmySOanIik40EFyAbnO8ZJKjkZF4J1aWKgHZm5Cq7fSH1vAMEnrltrUNq
- kckuD1fz69PfPYoLqa9FijCF5aJ8CiQri8B/VrNGj9Nqr+XxtLJ/wFVfeZDSb0vLsAww
- SMNfzFgIy4H8hGUYful84fgUlNF1kw5wiiHu36aTV0zVZSbc97F5kRmDW0FD2jJ6+a6Q
- JHIUsyp0tJE6eQePelujDlqzDcmkn2DXDjllInvYyrPMftmLw1WtxatD8N6UyXikQ4J4
- 4HjFL9VZRRvEb11T6s4f6AMNk8TL0MHkvnLlthW2on1yMYbpM29GE7Cazr2GpT3zzFD8
- PU+g==
-X-Gm-Message-State: AOAM530Fdny/IUmGd0ZcdejbRI40TQtcltmlQ/fwl7wM682Cx2wVfI/l
- 9qr+ZfbHZN9OreKqkphPMTwzRZNva07QV/NxDQrNCg==
-X-Received: by 2002:a5d:4a08:: with SMTP id m8mr11012380wrq.263.1631523318882; 
- Mon, 13 Sep 2021 01:55:18 -0700 (PDT)
+ bh=GDHrVdxoq0ovrAkHvH9Qo7YGWd/Zy0Kwy/fWHQ0Jmiw=;
+ b=K7Yy0jvxmP/2Ua64H0QZ7ZcVZ4b8AYbKieFiPE4b52fh/2TSHurT5VDQSk2Z4lY3iU
+ 4kLIp+ZGOY6cqkHqSwz5CugZz7Ry/4XWwc123l1Z8P9sBJlE7i7wPfEh+sfolh12xOkU
+ egbKPVUk9EcpMFw2E9pKdKXCSO1dg38DF/BhbfKGy1L76stiW3D7eWdPrKKLHhvVmCfv
+ mirptQiO3jv93SdMN8bwdblczerQHtl1aSHer+LeFnU9nHkeA3bwGMOlujZRMyLQxNAI
+ xWJSsjSCp+6nFA18AimDVVuzl75+ql/9L+uC7JEFaqpGu3X+DGSEIyAFpjPTjzfMSlKE
+ T4jw==
+X-Gm-Message-State: AOAM532veatmZdxbkvkpBCmd+OAndfuuTsJEwmAL1NFx41jbcVzpoT7X
+ NWq9ztnnwRRZxp92exzAK85WGWFnZRYejBPo78SVBg==
+X-Received: by 2002:adf:fb91:: with SMTP id a17mr11731852wrr.376.1631533769397; 
+ Mon, 13 Sep 2021 04:49:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210912230757.41096-1-agraf@csgraf.de>
- <20210912230757.41096-8-agraf@csgraf.de>
-In-Reply-To: <20210912230757.41096-8-agraf@csgraf.de>
+References: <20210519202253.76782-1-agraf@csgraf.de>
+ <20210519202253.76782-16-agraf@csgraf.de>
+ <CAFEAcA9S619pfhfEXUxGQkjBBKahOYm14jpxEam2CQTtC1dRTQ@mail.gmail.com>
+ <45519c63-06b1-1e06-032d-87d2e1338fd8@csgraf.de>
+ <CAFEAcA_vC0beH4NMRP4hHK0drc6PZt073ZVZM=Majnfngkn_xQ@mail.gmail.com>
+ <1c992028-633d-5f5e-f433-59492876eb73@csgraf.de>
+ <CAFEAcA9b0TLs1mF5LWThE7007WuFb0rXUGqpbCpG5zsHj4UUyw@mail.gmail.com>
+ <ee7b2202-115f-0461-cbb1-d856199b884e@csgraf.de>
+In-Reply-To: <ee7b2202-115f-0461-cbb1-d856199b884e@csgraf.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Sep 2021 09:54:28 +0100
-Message-ID: <CAFEAcA8BybrfxNxkWbEjxji4DvDumr6Otb_RK_f84Dt_TWXfpA@mail.gmail.com>
-Subject: Re: [PATCH v9 07/11] hvf: arm: Implement PSCI handling
+Date: Mon, 13 Sep 2021 12:48:39 +0100
+Message-ID: <CAFEAcA90+XWoH9qAh5nJbtpDAaEXASLy+wLbtw15Uda_Y19DqQ@mail.gmail.com>
+Subject: Re: [PATCH v8 15/19] hvf: arm: Implement -cpu host
 To: Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Peter Collingbourne <pcc@google.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
  Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qgn7103jJnix
+ Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MRM9TLz4VLW2
 
-On Mon, 13 Sept 2021 at 00:08, Alexander Graf <agraf@csgraf.de> wrote:
+On Mon, 13 Sept 2021 at 12:46, Alexander Graf <agraf@csgraf.de> wrote:
 >
-> We need to handle PSCI calls. Most of the TCG code works for us,
-> but we can simplify it to only handle aa64 mode and we need to
-> handle SUSPEND differently.
 >
-> This patch takes the TCG code as template and duplicates it in HVF.
+> On 13.09.21 12:52, Peter Maydell wrote:
+> > On Mon, 13 Sept 2021 at 11:46, Alexander Graf <agraf@csgraf.de> wrote:
+> >> Why? You only get to this code path if you already selected -accel hvf.
+> >> If even a simple "create scratch vcpu" syscall failed then, pretty
+> >> failure when you define -cpu host is the last thing you care about. Any
+> >> CPU creation would fail.
+> > General design principle -- low level functions should report
+> > errors upwards, not barf and exit.
 >
-> To tell the guest that we support PSCI 0.2 now, update the check in
-> arm_cpu_initfn() as well.
 >
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> Reviewed-by: Sergio Lopez <slp@redhat.com>
->
-> ---
->
-> v6 -> v7:
->
->   - This patch integrates "arm: Set PSCI to 0.2 for HVF"
->
-> v7 -> v8:
->
->   - Do not advance for HVC, PC is already updated by hvf
->   - Fix checkpatch error
->
-> v8 -> v9:
->
->   - Use new hvf_raise_exception() prototype
->   - Make cpu_off function void
->   - Add comment about return value, use -1 for "not found"
->   - Remove cpu_synchronize_state() when halted
-> ---
->  target/arm/cpu.c            |   4 +-
->  target/arm/hvf/hvf.c        | 127 ++++++++++++++++++++++++++++++++++--
->  target/arm/hvf/trace-events |   1 +
->  3 files changed, 126 insertions(+), 6 deletions(-)
+> Usually I would agree with you, but here it really does not make sense
+> and would make the code significantly harder to read.
 
-Something in here should be checking whether the insn the guest
-used matches the PSCI conduit configured for the VM, ie
-what arm_is_psci_call() does after your patch 10.
+It's an unnecessary difference from how we've structured the
+KVM code. I don't like those. Every time you put one in to
+the code you write you can be fairly sure I'm going to question
+it during review... I want to be able to look at the hvf code
+and say "ah, yes, this is just the hvf version of the kvm code
+we already have".
 
 -- PMM

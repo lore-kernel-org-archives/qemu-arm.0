@@ -1,60 +1,60 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3643504lfb;
-        Mon, 13 Sep 2021 05:57:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZx4iUhE7mWnM8mc0V3iSic3V5UDhPYxH+2GABcku9ot2XkNlDhwETkDJzZvliNoF2XQG3
-X-Received: by 2002:a05:6e02:20cd:: with SMTP id 13mr8106649ilq.156.1631537841699;
-        Mon, 13 Sep 2021 05:57:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631537841; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3645887lfb;
+        Mon, 13 Sep 2021 06:00:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkFvJUo0dekihKcr/1I3vhE/OxJKPoiVGRPyq/LL4W9iAmGgN4j8S3Opv67MnC2z0X+Cbm
+X-Received: by 2002:a9f:35ca:: with SMTP id u10mr4941943uad.82.1631538049699;
+        Mon, 13 Sep 2021 06:00:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631538049; cv=none;
         d=google.com; s=arc-20160816;
-        b=v1mSYzHqyMXYA87KKgBAYGgNguamVIfsJGUtGR7DSTVRnoqUw6yFUy+dgpWwIEyUrT
-         w10kkuJdJwXeJNasordziPq6rTB4iMk0sKCHkcgmSj4z6DY5+v01ysRVpunegfyReXlX
-         sLA4rN9rgQTy6GpNDaQV8qbJMZ5bfYzOJU3fwKiFAj70HlzvVLzshhHaYC6FQMmlYhGC
-         pxxHPxkf6AGac5P40Wy0fBy5MXxI6h73K+SohhKIEUPXaJAOrHsH32P/+PIePbB6HjpU
-         31uSOP6dlRpZkv+e98TczgAr+BW8H0Nl8cuJBUcKL3doxMhx+KDzRdKdzSsyvowRupPz
-         eKIw==
+        b=Przg+vRDZd7sdTD6Vp+HC2HwCU9a+jTOlTxkh5EVdVgSKfGgfUqWPZa+VB2mQk7L3g
+         P9XxtExyk+25gWr4/tEVnVRw1TsMaBdNfD8jxv82lEhTXScMzgNOo+WnRFFpKE/I625j
+         rczNLk3TxTCK1rkkHK0vf7RSCMfT2J/xvIPOPhXPjVLIPSemhgaZML5kSvGACONXLv84
+         cpLpxLRL6cM3wUiKZvJsrxXAcSRvzed8noF6ORCo6fx8ds6Ip/nLQA5/6CTZ9Al4s/FX
+         +U9MpE5mPVTP/eWaQyER1svIcuzZ9xp7TISCbFzvzAqu3f5hDwK1JgJX6GLKJBe8TgV6
+         5CKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Xd62s4n4tiEIS961iB6f9+vOy43lC5ycfH2sqacS2go=;
-        b=sCRHWuQFQgAkek/vfWaXyJBijdvbEjCCQgRgc3r8Z6VbDVavxqdui+kocTuGs6RT6m
-         /QDDXGui9EAvFanNQ1L8+QJ3i5QWe5V8qENQqemEjnpD2jNu7oiBmzlkJfNaUcvlPe9Y
-         37SjzUCVbtKjVLY9yTMm1sfKKRXaksZuNuVZcHTwzO0Amb6cM46P+FS9cAW6vDYAQPhI
-         nHzT3E+Z4JlKKY8LqHv8HVGtLJEkj7F36uEZPjm8S/TRhDje9uQLnp8Mlrxr/rPBijGQ
-         H4slD/JxGQaEJVKAPIu5YxVKRzyfYkO+fi84uAXPyf8TRbn1RZGoepagFyslhIyetVWF
-         hs3g==
+        bh=k55uPKKggWpSbIkqO6kQ56FRTRjSzzsIwTMrSgrTtAk=;
+        b=vcJTb2SyaTtXMXH20GyB49Kd8AnhQ5HVMJ4pWw3pe3Gs0isG1P6nKz3GqIolIZlmMx
+         RMS8JxIEbqL/+CuBJRo/yfaLA06l2yn6N4lOJTc+NT/YLz/FZUKfOQ5bFWmQpLnE0cam
+         0xopMEs3EuaOTToGgtJWRMJ3qmTRQTIGzKZLJwruvIpsJMJ0vntTsJ8+bqVjkWx4/bYA
+         qVVo75zA6x+cfG5Mkbpy9vVTX1r0UBK5dyh9Mf9inagR7jUsDt69aFkLvdP8liyi9kG8
+         DFfVENb119E69acjddkgUiM/SLgoy2t1lDL+kGw59y7DV+1xj5aIYU4WuMW06lB5Z9xN
+         BYfw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si8271002ilu.41.2021.09.13.05.57.21
+        by mx.google.com with ESMTPS id g145si1423637vke.19.2021.09.13.06.00.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 05:57:21 -0700 (PDT)
+        Mon, 13 Sep 2021 06:00:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33204 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPlWR-0003tj-58
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 08:57:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45508)
+	id 1mPlZo-0007U2-PR
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 09:00:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45592)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mPklZ-0002Rj-7j; Mon, 13 Sep 2021 08:08:54 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:44078 helo=zulu616.server4you.de)
+ id 1mPklt-00031s-MQ; Mon, 13 Sep 2021 08:09:13 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:44112 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1mPklX-0004lM-5J; Mon, 13 Sep 2021 08:08:53 -0400
+ id 1mPklr-0004mY-Te; Mon, 13 Sep 2021 08:09:13 -0400
 Received: from localhost.localdomain
  (dynamic-095-118-088-150.95.118.pool.telefonica.de [95.118.88.150])
- by csgraf.de (Postfix) with ESMTPSA id 2BA4760806A9;
- Mon, 13 Sep 2021 14:08:48 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id 37392608038B;
+ Mon, 13 Sep 2021 14:08:50 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v10 07/10] hvf: arm: Implement PSCI handling
-Date: Mon, 13 Sep 2021 14:08:39 +0200
-Message-Id: <20210913120842.62116-8-agraf@csgraf.de>
+Subject: [PATCH v10 10/10] arm: tcg: Adhere to SMCCC 1.3 section 5.2
+Date: Mon, 13 Sep 2021 14:08:42 +0200
+Message-Id: <20210913120842.62116-11-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210913120842.62116-1-agraf@csgraf.de>
 References: <20210913120842.62116-1-agraf@csgraf.de>
@@ -89,238 +89,101 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rr2SX6hQbbsr
+X-TUID: k+gzAbbm06Jf
 
-We need to handle PSCI calls. Most of the TCG code works for us,
-but we can simplify it to only handle aa64 mode and we need to
-handle SUSPEND differently.
+The SMCCC 1.3 spec section 5.2 says
 
-This patch takes the TCG code as template and duplicates it in HVF.
+  The Unknown SMC Function Identifier is a sign-extended value of (-1)
+  that is returned in the R0, W0 or X0 registers. An implementation must
+  return this error code when it receives:
 
-To tell the guest that we support PSCI 0.2 now, update the check in
-arm_cpu_initfn() as well.
+    * An SMC or HVC call with an unknown Function Identifier
+    * An SMC or HVC call for a removed Function Identifier
+    * An SMC64/HVC64 call from AArch32 state
+
+To comply with these statements, let's always return -1 when we encounter
+an unknown HVC or SMC call.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
-Reviewed-by: Sergio Lopez <slp@redhat.com>
 
 ---
-
-v6 -> v7:
-
-  - This patch integrates "arm: Set PSCI to 0.2 for HVF"
-
-v7 -> v8:
-
-  - Do not advance for HVC, PC is already updated by hvf
-  - Fix checkpatch error
 
 v8 -> v9:
 
-  - Use new hvf_raise_exception() prototype
-  - Make cpu_off function void
-  - Add comment about return value, use -1 for "not found"
-  - Remove cpu_synchronize_state() when halted
+  - Remove Windows specifics and just comply with SMCCC spec
 
 v9 -> v10:
 
-  - Only handle PSCI calls for the current conduit
-  - Return true/false
+  - Fix comment
 ---
- target/arm/cpu.c            |   4 +-
- target/arm/hvf/hvf.c        | 131 ++++++++++++++++++++++++++++++++++--
- target/arm/hvf/trace-events |   1 +
- 3 files changed, 128 insertions(+), 8 deletions(-)
+ target/arm/psci.c | 35 ++++++-----------------------------
+ 1 file changed, 6 insertions(+), 29 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 3b632ef828..e50b67fb5d 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1093,8 +1093,8 @@ static void arm_cpu_initfn(Object *obj)
-     cpu->psci_version = 1; /* By default assume PSCI v0.1 */
-     cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
+diff --git a/target/arm/psci.c b/target/arm/psci.c
+index 6709e28013..b279c0b9a4 100644
+--- a/target/arm/psci.c
++++ b/target/arm/psci.c
+@@ -27,15 +27,13 @@
  
--    if (tcg_enabled()) {
--        cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
-+    if (tcg_enabled() || hvf_enabled()) {
-+        cpu->psci_version = 2; /* TCG and HVF implement PSCI 0.2 */
-     }
- }
- 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 500de2e316..eea725e761 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -25,6 +25,7 @@
- #include "hw/irq.h"
- #include "qemu/main-loop.h"
- #include "sysemu/cpus.h"
-+#include "arm-powerctl.h"
- #include "target/arm/cpu.h"
- #include "target/arm/internals.h"
- #include "trace/trace-target_arm_hvf.h"
-@@ -48,6 +49,8 @@
- #define TMR_CTL_IMASK   (1 << 1)
- #define TMR_CTL_ISTATUS (1 << 2)
- 
-+static void hvf_wfi(CPUState *cpu);
-+
- typedef struct HVFVTimer {
-     /* Vtimer value during migration and paused state */
-     uint64_t vtimer_val;
-@@ -599,6 +602,116 @@ static void hvf_raise_exception(CPUState *cpu, uint32_t excp,
-     arm_cpu_do_interrupt(cpu);
- }
- 
-+static void hvf_psci_cpu_off(ARMCPU *arm_cpu)
-+{
-+    int32_t ret = arm_set_cpu_off(arm_cpu->mp_affinity);
-+    assert(ret == QEMU_ARM_POWERCTL_RET_SUCCESS);
-+}
-+
-+/*
-+ * Handle a PSCI call.
-+ *
-+ * Returns 0 on success
-+ *         -1 when the PSCI call is unknown,
-+ */
-+static bool hvf_handle_psci_call(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    uint64_t param[4] = {
-+        env->xregs[0],
-+        env->xregs[1],
-+        env->xregs[2],
-+        env->xregs[3]
-+    };
-+    uint64_t context_id, mpidr;
-+    bool target_aarch64 = true;
-+    CPUState *target_cpu_state;
-+    ARMCPU *target_cpu;
-+    target_ulong entry;
-+    int target_el = 1;
-+    int32_t ret = 0;
-+
-+    trace_hvf_psci_call(param[0], param[1], param[2], param[3],
-+                        arm_cpu->mp_affinity);
-+
-+    switch (param[0]) {
-+    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
-+        ret = QEMU_PSCI_0_2_RET_VERSION_0_2;
-+        break;
-+    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
-+        ret = QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED; /* No trusted OS */
-+        break;
-+    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
-+    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
-+        mpidr = param[1];
-+
-+        switch (param[2]) {
-+        case 0:
-+            target_cpu_state = arm_get_cpu_by_id(mpidr);
-+            if (!target_cpu_state) {
-+                ret = QEMU_PSCI_RET_INVALID_PARAMS;
-+                break;
-+            }
-+            target_cpu = ARM_CPU(target_cpu_state);
-+
-+            ret = target_cpu->power_state;
-+            break;
-+        default:
-+            /* Everything above affinity level 0 is always on. */
-+            ret = 0;
-+        }
-+        break;
-+    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
-+        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-+        /* QEMU reset and shutdown are async requests, but PSCI
-+         * mandates that we never return from the reset/shutdown
-+         * call, so power the CPU off now so it doesn't execute
-+         * anything further.
-+         */
-+        hvf_psci_cpu_off(arm_cpu);
-+        break;
-+    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
-+        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+        hvf_psci_cpu_off(arm_cpu);
-+        break;
-+    case QEMU_PSCI_0_1_FN_CPU_ON:
-+    case QEMU_PSCI_0_2_FN_CPU_ON:
-+    case QEMU_PSCI_0_2_FN64_CPU_ON:
-+        mpidr = param[1];
-+        entry = param[2];
-+        context_id = param[3];
-+        ret = arm_set_cpu_on(mpidr, entry, context_id,
-+                             target_el, target_aarch64);
-+        break;
-+    case QEMU_PSCI_0_1_FN_CPU_OFF:
-+    case QEMU_PSCI_0_2_FN_CPU_OFF:
-+        hvf_psci_cpu_off(arm_cpu);
-+        break;
-+    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
-+    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
-+    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
-+        /* Affinity levels are not supported in QEMU */
-+        if (param[1] & 0xfffe0000) {
-+            ret = QEMU_PSCI_RET_INVALID_PARAMS;
-+            break;
-+        }
-+        /* Powerdown is not supported, we always go into WFI */
-+        env->xregs[0] = 0;
-+        hvf_wfi(cpu);
-+        break;
-+    case QEMU_PSCI_0_1_FN_MIGRATE:
-+    case QEMU_PSCI_0_2_FN_MIGRATE:
-+        ret = QEMU_PSCI_RET_NOT_SUPPORTED;
-+        break;
-+    default:
-+        return false;
-+    }
-+
-+    env->xregs[0] = ret;
-+    return true;
-+}
-+
- static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
  {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -898,15 +1011,21 @@ int hvf_vcpu_exec(CPUState *cpu)
+-    /* Return true if the r0/x0 value indicates a PSCI call and
+-     * the exception type matches the configured PSCI conduit. This is
+-     * called before the SMC/HVC instruction is executed, to decide whether
+-     * we should treat it as a PSCI call or with the architecturally
++    /*
++     * Return true if the exception type matches the configured PSCI conduit.
++     * This is called before the SMC/HVC instruction is executed, to decide
++     * whether we should treat it as a PSCI call or with the architecturally
+      * defined behaviour for an SMC or HVC (which might be UNDEF or trap
+      * to EL2 or to EL3).
+      */
+-    CPUARMState *env = &cpu->env;
+-    uint64_t param = is_a64(env) ? env->xregs[0] : env->regs[0];
+ 
+     switch (excp_type) {
+     case EXCP_HVC:
+@@ -52,27 +50,7 @@ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+         return false;
+     }
+ 
+-    switch (param) {
+-    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
+-    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
+-    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
+-    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
+-    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
+-    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
+-    case QEMU_PSCI_0_1_FN_CPU_ON:
+-    case QEMU_PSCI_0_2_FN_CPU_ON:
+-    case QEMU_PSCI_0_2_FN64_CPU_ON:
+-    case QEMU_PSCI_0_1_FN_CPU_OFF:
+-    case QEMU_PSCI_0_2_FN_CPU_OFF:
+-    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
+-    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
+-    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
+-    case QEMU_PSCI_0_1_FN_MIGRATE:
+-    case QEMU_PSCI_0_2_FN_MIGRATE:
+-        return true;
+-    default:
+-        return false;
+-    }
++    return true;
+ }
+ 
+ void arm_handle_psci_call(ARMCPU *cpu)
+@@ -194,10 +172,9 @@ void arm_handle_psci_call(ARMCPU *cpu)
          break;
-     case EC_AA64_HVC:
-         cpu_synchronize_state(cpu);
--        trace_hvf_unknown_hvf(env->xregs[0]);
--        /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
--        env->xregs[0] = -1;
-+        if ((arm_cpu->psci_conduit != QEMU_PSCI_CONDUIT_HVC) ||
-+            !hvf_handle_psci_call(cpu)) {
-+            trace_hvf_unknown_hvf(env->xregs[0]);
-+            /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
-+            env->xregs[0] = -1;
-+        }
+     case QEMU_PSCI_0_1_FN_MIGRATE:
+     case QEMU_PSCI_0_2_FN_MIGRATE:
++    default:
+         ret = QEMU_PSCI_RET_NOT_SUPPORTED;
          break;
-     case EC_AA64_SMC:
-         cpu_synchronize_state(cpu);
--        trace_hvf_unknown_smc(env->xregs[0]);
--        /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
--        env->xregs[0] = -1;
-+        if ((arm_cpu->psci_conduit != QEMU_PSCI_CONDUIT_SMC) ||
-+            !hvf_handle_psci_call(cpu)) {
-+            trace_hvf_unknown_smc(env->xregs[0]);
-+            /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
-+            env->xregs[0] = -1;
-+        }
-         advance_pc = true;
-         break;
-     default:
-diff --git a/target/arm/hvf/trace-events b/target/arm/hvf/trace-events
-index e972bdd9ce..cf4fb68f79 100644
---- a/target/arm/hvf/trace-events
-+++ b/target/arm/hvf/trace-events
-@@ -8,3 +8,4 @@ hvf_sysreg_write(uint32_t reg, uint32_t op0, uint32_t op1, uint32_t crn, uint32_
- hvf_unknown_hvf(uint64_t x0) "unknown HVC! 0x%016"PRIx64
- hvf_unknown_smc(uint64_t x0) "unknown SMC! 0x%016"PRIx64
- hvf_exit(uint64_t syndrome, uint32_t ec, uint64_t pc) "exit: 0x%"PRIx64" [ec=0x%x pc=0x%"PRIx64"]"
-+hvf_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpu=0x%x"
+-    default:
+-        g_assert_not_reached();
+     }
+ 
+ err:
 -- 
 2.30.1 (Apple Git-130)
 

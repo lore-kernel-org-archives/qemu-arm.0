@@ -1,67 +1,67 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3837789lfb;
-        Mon, 13 Sep 2021 09:36:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyMU7FCAna3g8DV25wlisahHlyKOnXF4N5vXIyXVAjmsPI5i4YNZKkBtj804kAV/RLQ8/8F
-X-Received: by 2002:a67:d31a:: with SMTP id a26mr5751122vsj.14.1631551004731;
-        Mon, 13 Sep 2021 09:36:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631551004; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3838168lfb;
+        Mon, 13 Sep 2021 09:37:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJztPz3RDK2reYev0Fubf9hBFQlcaUUMAgV93XAiWqLZaKluieDamJApnIKpgmp0f2mG2A1M
+X-Received: by 2002:a67:ea99:: with SMTP id f25mr5841245vso.28.1631551031473;
+        Mon, 13 Sep 2021 09:37:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631551031; cv=none;
         d=google.com; s=arc-20160816;
-        b=el3HMwc6zFa3V5hsSGPQrYMFyWe5OqDhleswHp3a+XVlJcx9LL247CDUjZZPRpgr5Q
-         Je5Kt8xgZ4QSiLno+uXwqPwN1u11L8I7I588FlP02MfyOcLxaSmjPwf2v6bOJbV5LR39
-         AjvDNDUlZRD7DdM+7Ofu8H8SZCnz9Nj8LYhNpWJFSU+KDP0Li3r/XBTjKH8hqQqBdLaN
-         gLxvfvF5AOoY8yW9dG9g1NHI3mlxXuspszXfVLnANhzPhJjgzqNa/qFNjBpN39Sp3bdz
-         rWL/2AF98DCKBgaYCD/kVIXz3WkVKxd7FigpJe+ArivQgauUlQj+KvC1v64Zon/drp/4
-         9kRw==
+        b=I8i/W15wjK1C9OHdBcoI9H/U51ktGm6VJ02F8xMp7b1rjrS5R5vvpcrOjrHOc/sFrx
+         R7zWgTlGj+UwDfVfxSjGR5D4jTXo/10OACS53Q4K7r3OnXjMNuOgs/o2wPbeDpI/MCjK
+         3DBHnHAKbiSlGprXtSSrZLIC59i247BYadwnVNti524L80NdQPUaUrXAXgy71LR1qmpi
+         3vjTs4ks9Lf1RtTak3PIQs4U1UxMu+PQma1pVaZnCkjsbXlVdXwnT6YCmsl+Nt4E4Raj
+         nlrzNVaD696UOMdgK+k7/6u8PMoxIvQnW+q4+rZSCDgBwRHmIkQaAf5x48DmTsmV9taY
+         XVdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=7jRKPo7v+RcPWMgq/EbhtrPRo70OL9FkjkwFLF442nE=;
-        b=lpDkBaAcUGzCsAfoTLgVxN+CmisTnHkPZhfqdbGGd3FIdrTSoc8iU52dfaYa1KyBIz
-         gIzjQjU1vRzRPmoeNL6CB5IJwcRes/xV8sxhp0fPLK0jmbH6tAGv6O9eKEoLLpwycJIr
-         txhSzY4EjEQxfKqJmLC2DWhQZ0cpRdhS/4AjOJUcHlOffa+QqgtzafsrN8Om/AX6tN5N
-         kqH4kpVgwWvGktoCr6o8xjWMbIlCyk7PpwV79vS0W56Ie1TqnbOR/7irJf/4AiIRpB6R
-         y8DmUPSe2d6BdTQWJGiMIbIWQPdwMLnej0k5WCm8Q2jQrZpLYRxcCMGR2geFoAcptMGP
-         dz2Q==
+        bh=t7rZDeXDA+qJ1GkN+R5hkcx31iZqfxyeJDf5+H4u/6w=;
+        b=R9lQ+cGxoj5ssCmiVG2kzKAvKYgBeygOc7fycjCZ0KDlWxo0Ue2l4QaQbtISekyHla
+         AB5WuufpCSSSYuD5dUCqLr+akfwaGr3AKaOp1AyFoO1z2Of5/Xly4mNZKp2J1l7fHTws
+         UJMe7jkp7VZd84payrp7wQgxnFIX8mDOGzFAIlY4OpOYIy1W2k9lmodPNe+d95lrJSxH
+         uVCaah+s7kaIShxyCBCGkQzr16Imab1sMrn7gaQI/G1xRKVtsH3FpZDn6GWVRgCjbWWw
+         J1u/PZWVn4u9dsCalX610dpxEYH4fCN3GKAYIY21jFIPW6pGNIjZ+Q0iL8ZVIfgXl+Mm
+         Kl8g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si2031909uao.81.2021.09.13.09.36.44
+        by mx.google.com with ESMTPS id d17si1761346vsb.462.2021.09.13.09.37.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 09:36:44 -0700 (PDT)
+        Mon, 13 Sep 2021 09:37:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57372 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPowl-0007u4-S8
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:36:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33436)
+	id 1mPoxC-0000Av-O3
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:37:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33444)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoaE-0003zc-3t
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:27 -0400
-Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:41393)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mPoaE-0003zd-Jg; Mon, 13 Sep 2021 12:13:27 -0400
+Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192]:53041)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa6-0000li-UO
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:25 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.201])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id F3B3D2096A;
- Mon, 13 Sep 2021 16:13:15 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1mPoa8-0000gp-Jx; Mon, 13 Sep 2021 12:13:26 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.128])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 8F2E320FA9;
+ Mon, 13 Sep 2021 16:13:11 +0000 (UTC)
 Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 13 Sep
- 2021 18:13:15 +0200
+ 2021 18:13:11 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0016b586aac-f2cf-462f-a9d9-e66ed2069454,
+ (GARM-96R001a1a0b341-88ee-4eaf-8551-fa354616ec30,
  7CA125ACC991A0BE3D2311CBE60F5A293341D68C) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
-Date: Mon, 13 Sep 2021 18:13:04 +0200
-Message-ID: <20210913161304.3805652-15-clg@kaod.org>
+Subject: [PULL 03/14] watchdog: aspeed: Sanitize control register values
+Date: Mon, 13 Sep 2021 18:12:53 +0200
+Message-ID: <20210913161304.3805652-4-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210913161304.3805652-1-clg@kaod.org>
 References: <20210913161304.3805652-1-clg@kaod.org>
@@ -71,19 +71,18 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.96]
 X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 6b937792-2295-4b82-a270-77c1d866f416
-X-Ovh-Tracer-Id: 8690539905978305385
+X-Ovh-Tracer-GUID: 806d33f2-17de-4d95-80bd-194e64bc5ae1
+X-Ovh-Tracer-Id: 8689414009498929958
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepiefgvddvffffveelfeeghfehgeetuddtgfeuveefffelgeelvdeuhfetteeukeejnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
- helo=8.mo548.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
+ helo=3.mo552.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,179 +95,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0TEuHbvBHBHY
+X-TUID: CBf4o1A22YT7
 
-From: Peter Delevoryas <pdel@fb.com>
+From: Andrew Jeffery <andrew@aj.id.au>
 
-This adds a new machine type "fuji-bmc" based on the following device tree:
+While some of the critical fields remain the same, there is variation in
+the definition of the control register across the SoC generations.
+Reserved regions are adjusted, while in other cases the mutability or
+behaviour of fields change.
 
-https://github.com/torvalds/linux/blob/40cb6373b46/arch/arm/boot/dts/aspeed-bmc-facebook-fuji.dts
+Introduce a callback to sanitize the value on writes to ensure model
+behaviour reflects the hardware.
 
-Most of the i2c devices are not there, they're added here:
-
-https://github.com/facebook/openbmc/blob/fb2ed12002fb/meta-facebook/meta-fuji/recipes-utils/openbmc-utils/files/setup_i2c.sh
-
-I tested this by building a Fuji image from Facebook's OpenBMC repo,
-booting, and ssh'ing from host-to-guest.
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20210906133124.3674661-1-pdel@fb.com>
+Fixes: 854123bf8d4b ("wdt: Add Aspeed watchdog device model")
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20210709053107.1829304-2-andrew@aj.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 113 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 113 insertions(+)
+ include/hw/watchdog/wdt_aspeed.h |  1 +
+ hw/watchdog/wdt_aspeed.c         | 24 ++++++++++++++++++++++--
+ 2 files changed, 23 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 7a9459340cf4..95ce4b1670ac 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -159,6 +159,10 @@ struct AspeedMachineState {
- #define RAINIER_BMC_HW_STRAP1 0x00000000
- #define RAINIER_BMC_HW_STRAP2 0x00000000
- 
-+/* Fuji hardware value */
-+#define FUJI_BMC_HW_STRAP1    0x00000000
-+#define FUJI_BMC_HW_STRAP2    0x00000000
-+
- /*
-  * The max ram region is for firmwares that scan the address space
-  * with load/store to guess how much RAM the SoC has.
-@@ -772,6 +776,91 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-     aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
- }
- 
-+static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
-+                                 I2CBus **channels)
-+{
-+    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
-+    for (int i = 0; i < 8; i++) {
-+        channels[i] = pca954x_i2c_get_bus(mux, i);
-+    }
-+}
-+
-+#define TYPE_LM75 TYPE_TMP105
-+#define TYPE_TMP75 TYPE_TMP105
-+#define TYPE_TMP422 "tmp422"
-+
-+static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    I2CBus *i2c[144] = {};
-+
-+    for (int i = 0; i < 16; i++) {
-+        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-+    }
-+    I2CBus *i2c180 = i2c[2];
-+    I2CBus *i2c480 = i2c[8];
-+    I2CBus *i2c600 = i2c[11];
-+
-+    get_pca9548_channels(i2c180, 0x70, &i2c[16]);
-+    get_pca9548_channels(i2c480, 0x70, &i2c[24]);
-+    /* NOTE: The device tree skips [32, 40) in the alias numbering */
-+    get_pca9548_channels(i2c600, 0x77, &i2c[40]);
-+    get_pca9548_channels(i2c[24], 0x71, &i2c[48]);
-+    get_pca9548_channels(i2c[25], 0x72, &i2c[56]);
-+    get_pca9548_channels(i2c[26], 0x76, &i2c[64]);
-+    get_pca9548_channels(i2c[27], 0x76, &i2c[72]);
-+    for (int i = 0; i < 8; i++) {
-+        get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
-+    }
-+
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
-+
-+    aspeed_eeprom_init(i2c[19], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[20], 0x50, 2 * KiB);
-+    aspeed_eeprom_init(i2c[22], 0x52, 2 * KiB);
-+
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
-+    i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
-+
-+    aspeed_eeprom_init(i2c[8], 0x51, 64 * KiB);
-+    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
-+
-+    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
-+    aspeed_eeprom_init(i2c[50], 0x52, 64 * KiB);
-+    i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
-+    i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
-+
-+    i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
-+    i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
-+
-+    aspeed_eeprom_init(i2c[65], 0x53, 64 * KiB);
-+    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
-+    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
-+    aspeed_eeprom_init(i2c[68], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[69], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[70], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[71], 0x52, 64 * KiB);
-+
-+    aspeed_eeprom_init(i2c[73], 0x53, 64 * KiB);
-+    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
-+    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
-+    aspeed_eeprom_init(i2c[76], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[77], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[78], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[79], 0x52, 64 * KiB);
-+    aspeed_eeprom_init(i2c[28], 0x50, 2 * KiB);
-+
-+    for (int i = 0; i < 8; i++) {
-+        aspeed_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
-+        i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
-+        i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
-+        i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
-+    }
-+}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
- {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -1070,6 +1159,26 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index 80b03661e303..f945cd6c5833 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -44,6 +44,7 @@ struct AspeedWDTClass {
+     uint32_t reset_ctrl_reg;
+     void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
+     void (*wdt_reload)(AspeedWDTState *s);
++    uint64_t (*sanitize_ctrl)(uint64_t data);
  };
  
-+static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+ #endif /* WDT_ASPEED_H */
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 6352ba1b0e5b..faa3d35fdf21 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -118,13 +118,27 @@ static void aspeed_wdt_reload_1mhz(AspeedWDTState *s)
+     }
+ }
+ 
++static uint64_t aspeed_2400_sanitize_ctrl(uint64_t data)
 +{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++    return data & 0xffff;
++}
 +
-+    mc->desc = "Facebook Fuji BMC (Cortex-A7)";
-+    amc->soc_name = "ast2600-a3";
-+    amc->hw_strap1 = FUJI_BMC_HW_STRAP1;
-+    amc->hw_strap2 = FUJI_BMC_HW_STRAP2;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->spi_model = "mx66l1g45g";
-+    amc->num_cs = 2;
-+    amc->macs_mask = ASPEED_MAC3_ON;
-+    amc->i2c_init = fuji_bmc_i2c_init;
-+    amc->uart_default = ASPEED_DEV_UART1;
-+    mc->default_ram_size = 2 * GiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
++static uint64_t aspeed_2500_sanitize_ctrl(uint64_t data)
++{
++    return (data & ~(0xfUL << 8)) | WDT_CTRL_1MHZ_CLK;
++}
 +
- static const TypeInfo aspeed_machine_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -1119,6 +1228,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("rainier-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_rainier_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("fuji-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_fuji_class_init,
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
++static uint64_t aspeed_2600_sanitize_ctrl(uint64_t data)
++{
++    return data & ~(0x7UL << 7);
++}
+ 
+ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
+                              unsigned size)
+ {
+     AspeedWDTState *s = ASPEED_WDT(opaque);
+     AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(s);
+-    bool enable = data & WDT_CTRL_ENABLE;
++    bool enable;
+ 
+     offset >>= 2;
+ 
+@@ -144,6 +158,8 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
+         }
+         break;
+     case WDT_CTRL:
++        data = awc->sanitize_ctrl(data);
++        enable = data & WDT_CTRL_ENABLE;
+         if (enable && !aspeed_wdt_is_enabled(s)) {
+             s->regs[WDT_CTRL] = data;
+             awc->wdt_reload(s);
+@@ -207,11 +223,12 @@ static const MemoryRegionOps aspeed_wdt_ops = {
+ static void aspeed_wdt_reset(DeviceState *dev)
+ {
+     AspeedWDTState *s = ASPEED_WDT(dev);
++    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(s);
+ 
+     s->regs[WDT_STATUS] = 0x3EF1480;
+     s->regs[WDT_RELOAD_VALUE] = 0x03EF1480;
+     s->regs[WDT_RESTART] = 0;
+-    s->regs[WDT_CTRL] = 0;
++    s->regs[WDT_CTRL] = awc->sanitize_ctrl(0);
+     s->regs[WDT_RESET_WIDTH] = 0xFF;
+ 
+     timer_del(s->timer);
+@@ -293,6 +310,7 @@ static void aspeed_2400_wdt_class_init(ObjectClass *klass, void *data)
+     awc->ext_pulse_width_mask = 0xff;
+     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+     awc->wdt_reload = aspeed_wdt_reload;
++    awc->sanitize_ctrl = aspeed_2400_sanitize_ctrl;
+ }
+ 
+ static const TypeInfo aspeed_2400_wdt_info = {
+@@ -328,6 +346,7 @@ static void aspeed_2500_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+     awc->wdt_reload = aspeed_wdt_reload_1mhz;
++    awc->sanitize_ctrl = aspeed_2500_sanitize_ctrl;
+ }
+ 
+ static const TypeInfo aspeed_2500_wdt_info = {
+@@ -348,6 +367,7 @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, void *data)
+     awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+     awc->wdt_reload = aspeed_wdt_reload_1mhz;
++    awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
+ }
+ 
+ static const TypeInfo aspeed_2600_wdt_info = {
 -- 
 2.31.1
 

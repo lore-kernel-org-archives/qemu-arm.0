@@ -1,104 +1,103 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3513413lfb;
-        Mon, 13 Sep 2021 02:58:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxx/PHB7d3mjvGAgl5vXoXEXozpY2+WD80/dThELNabsnVB4zEEKUp84AyNWqUJoyfnioVl
-X-Received: by 2002:a02:708f:: with SMTP id f137mr9005600jac.68.1631527113860;
-        Mon, 13 Sep 2021 02:58:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631527113; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3513795lfb;
+        Mon, 13 Sep 2021 02:59:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFZISdfQH+Q+osslnu7bPgawIGUH2htaHoCXPZmKVwr8/8jCwCE8V/Lv5c7odQgpuP9w09
+X-Received: by 2002:a6b:610e:: with SMTP id v14mr8092573iob.70.1631527147893;
+        Mon, 13 Sep 2021 02:59:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631527147; cv=none;
         d=google.com; s=arc-20160816;
-        b=UnYKUAiw4WgptiU/xcuGprGo7PIc6EkVWGLmy4X4Zy5QdpyX4luyTqUuGmzP1m7ysB
-         JHzQ+U7M3e27XzLXuB3t/XdKK6PH7/EBGkxNJSOKqSQNNQm9UYJIF1tyVJ/yGQpOq1Jv
-         M4034Zbk5ch8nWk6C/R/w+bNO8XvDYUZIKb1fbvIQyRoh9rj0UKb5JlVA5HrYOEgOCVH
-         QB3qJ4SJPaNIRu73fl4ba+I2I81tebB1+qRgqpNhHCmnqAX+FCGYMH9nqRLyut5v6H4O
-         HXkUZ181oNBZSeO1pZJFrc+ruxWeGkFUjD8kdHzEeKKSDahlDgGlSqO8Pq1h0VeyAP8y
-         0gOw==
+        b=gdjAuW0Vcy6g/8BotPecaPRpdTYmVbxd4oCQ/DqGfhKnHsNQt/yDQOM2Q9nY/DLJ0i
+         pYgq5mb0wifdFhSgjN86Wxhe9Omg/bFbNDmswdKegmicFHML11+5LH7/xSv83CK65TIQ
+         0t+gAzX+pKZT8mobFxXegxnuFX2bmVeJBBrrP/TyKmX+wA9uLgZVFr+UD54KmhTRxWdl
+         XBJkJf3onZhTGkjRtp8vgTc1u3Vc2MN30zK4j5d/B89bcLV6jG2jLyiNBIpG/RLSlGA2
+         MjWhv8vA9B5BOWOjJ5R78Vn4lOV+P418xLM7Oto5RH6h6CX2i619nZ7TyTefwLzmKz2t
+         95KQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=MPPFBEMAEyXetbowqu2rGA84XzkvyjzYzL/hwkj6xh0=;
-        b=nQuUERv7FuvjMf9g6dKqdO4u4M1wIbJXdQCVR8dbGPex5P2/o8+vp44fh/S3F89rGH
-         s0y1Pap2hjkVgVMtFIy/A3ELDd2t+jOYDjVDmIlIOskfdVNaIosohuNzApPSb8ZdCBdq
-         SLdat+HjB28tfz7XtTJRwVxGBeCVrnk323eOh25cxuVSsgjKr1lFfaCZK7SINKMw5zoi
-         Ptu0hOzdr5RUL1oZ7gYERatJXNueMgVowCyc4X5rHNxdixnFR+cTFWMLxntrEfyhQYgP
-         XO0q0Ab1g5BtRLVJJWwgRnPOtE1kWKZtLKypfiERUUDBJfEY3HNnA+3iZs1jhztcXUsp
-         Cm8g==
+        bh=F+tOIS44awXR5yx0CVgSMzZ11FU347XCqr0ZLojmfiM=;
+        b=conZTZAcxSceRT9s8FrnM/9T5B6aGptL8t/ghmvLrJPoTSnI6zKqcySZWcmzwL87vr
+         pWkPAIxcl6JrSv5V5BZbT1iSqR40CLyn0xwaOsQvLjYalzkqjGtGfk2jNskgarF0GKUM
+         TTEYJ0JNq+uoJFflc1yDg0bb4VLWvrbzbTC0GEfZo4VQArlGRjSLlrFIyXGGGUSOKT4z
+         xbv0YIYasnx3bZFDJv5s71EdfrSa5yhfGpkn5ZmYZaVR+6MBb5oT2X0TmJ3ys+3QvopN
+         TC/Wfh23WzYl/faM1rBh7Msnnbfy8atNysRP2pcTnCNujaUVEqsFSwGmm4A9Ccu/h/MW
+         /gGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="g/yqQ8jt";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JzIG3PDA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v18si7192467ilc.7.2021.09.13.02.58.33
+        by mx.google.com with ESMTPS id l5si6108982ioa.54.2021.09.13.02.59.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 02:58:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Sep 2021 02:59:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="g/yqQ8jt";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JzIG3PDA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56500 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPijR-0005CS-54
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 05:58:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45332)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mPijz-0005lF-7g
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 05:59:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45196)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPifu-0007PD-KB
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 05:54:54 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:37407)
+ id 1mPifp-00079D-IE
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 05:54:49 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:34326)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPifp-0001tm-8S
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 05:54:54 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- c8-20020a7bc008000000b002e6e462e95fso6463075wmb.2
- for <qemu-arm@nongnu.org>; Mon, 13 Sep 2021 02:54:47 -0700 (PDT)
+ id 1mPifk-0001q3-KK
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 05:54:49 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id m9so13710840wrb.1
+ for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 02:54:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MPPFBEMAEyXetbowqu2rGA84XzkvyjzYzL/hwkj6xh0=;
- b=g/yqQ8jt9rUB05QDNocQsHw/tUugWBRveLtysQIdBTlXTm/VAqfZJJgeTjpUvsAJaS
- g6KoJD1puCY+sg3YDdhPvVuXT+Y5/E1/eloQpCPqczaFMBSQAX9DhHZLbl8PI34eqvci
- c/hFU9BfXUkyN7ygplcMwkZASyE05uyB/6ZwpXlriQlyph4732C/UmBZlRID1CX2pgY2
- xE+4Bh7jmEv4ohuJUXzquW5z4LaL/Dwsr7N9zjXtDx9lZkVsw5jBM0ZnW6zJW7V/fc8W
- Fpzp1sL6l73MDpCb4XGjgkZRnqrzCtG+WacBRpERloKD8DNPBcVE25/3scqJUKFAHZFd
- M/JA==
+ bh=F+tOIS44awXR5yx0CVgSMzZ11FU347XCqr0ZLojmfiM=;
+ b=JzIG3PDAodo95EfbQpz3FTxnJoJHthvKIa83sSxdb5aDocx/on3dj4EnF8CPb34CwK
+ ATFN8g/DPNwrDS9TjoP0xnfsmtrR884jrEgQA+bBJ/jHQENgRqyluDfmZiDamP1/iCuV
+ dWFIhJ7lRB/SeXOq0rc6ziQ9h7sVXD64r3WK0UP6C4MdUJ7yOkASPYCC0MGca6WTfs0S
+ HaoHNBVYkV1ky4Bpkfv6KQkbGvxPuxvdVhSMGBn67SfHxgZdqTIYVSAwBj72NKqpRGVb
+ /PiGvihYNwZJL2BTT2NSq4DTZv5n/gud8KNLP5J7M5NY0Ac21fx3MDDcqxWDhpFL/Qn3
+ vXtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=MPPFBEMAEyXetbowqu2rGA84XzkvyjzYzL/hwkj6xh0=;
- b=YRfvG4vZFsspcpttiH2tfDQp6f1d25wd9Ktu1DBSoHthm/CXEQTC4+VY4kfdM0D9yZ
- IPe2xoEBXDg+vDboPAmuxskwzZsIo+Se+AVl6lIMu5pS4GD7ptzfAt9oLlPqLEtU644O
- YBZ7mBJUaaHWBva/EMYjRgCybaUjsATxb4wxfRSknGzOjFyMccImaUNOyufffWLzplkf
- ytSUOj0RvJivUxit9lSiXZYyRcOBortrEamdKx1WMdP3bDL4zejBjsQGAI2vs3aEXMI2
- viDgJfeYzQGYimx/scCUqDh9JEQpHuozbbvDs8nsjrffkYUkGa2k/QFzQUrGSgpxv1Bm
- 1ODA==
-X-Gm-Message-State: AOAM533YcLEvBdiVejtVn2Xtr9V42JO75fd0VmR5CKu2C7fyvsLPbWsA
- EVUMdmYQQHT/lWk1Twj+gTDnlBeYWEo2bw==
-X-Received: by 2002:a1c:1f09:: with SMTP id f9mr10097119wmf.58.1631526886904; 
- Mon, 13 Sep 2021 02:54:46 -0700 (PDT)
+ bh=F+tOIS44awXR5yx0CVgSMzZ11FU347XCqr0ZLojmfiM=;
+ b=AzeWefH0uz5Y90W1IAD5iPtqV9NmbhTUsU3kq4s1H4i1jOClLeqX3nZcaaSJXKa5KW
+ htbdWEOQQ/NCj5HsaYBGCV2EilxK9lEVMubnw9n/P7etYgamZtZ6/CGicylmp6/eJk9y
+ J34DPjK23qnkoBFDSqBMD1ib4Ci51Jznx1Im2SOgB3GvSaZpiRRq21i3B5f+uCZtAwEt
+ TTKsbZJt+P6T1WHWgsU3xwQ6h8A5y3mE9D66+EoYhbcI8gWZQKb5KcN1ACXkpiZVlhDK
+ YGRij1LUMQLnNaWzps6Nr80h57Jbtm6A1zGGfdUV9GQf6DPGUqokVuGknSNeA0NzBxK1
+ HhMw==
+X-Gm-Message-State: AOAM531xIJW2oI3iRrOzloL57qDHQca4TJZXVNlseD4Gwm7rzl6KKKpK
+ qoHRPbj24na4X/KOEWoip9Z9Z3lf6JLRVw==
+X-Received: by 2002:adf:d216:: with SMTP id j22mr11773359wrh.295.1631526883242; 
+ Mon, 13 Sep 2021 02:54:43 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m184sm6475338wmm.3.2021.09.13.02.54.46
+ by smtp.gmail.com with ESMTPSA id m184sm6475338wmm.3.2021.09.13.02.54.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Sep 2021 02:54:46 -0700 (PDT)
+ Mon, 13 Sep 2021 02:54:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 06/12] target/arm: Optimize MVE VNEG, VABS
-Date: Mon, 13 Sep 2021 10:54:34 +0100
-Message-Id: <20210913095440.13462-7-peter.maydell@linaro.org>
+Subject: [PATCH v2 01/12] target/arm: Avoid goto_tb if we're trying to exit to
+ the main loop
+Date: Mon, 13 Sep 2021 10:54:29 +0100
+Message-Id: <20210913095440.13462-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210913095440.13462-1-peter.maydell@linaro.org>
 References: <20210913095440.13462-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,98 +106,89 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eJfb6T20plR1
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oHhirOQZI5IO
 
-Optimize the MVE VNEG and VABS insns by using TCG
-vector ops when possible.
+Currently gen_jmp_tb() assumes that if it is called then the jump it
+is handling is the only reason that we might be trying to end the TB,
+so it will use goto_tb if it can.  This is usually the case: mostly
+"we did something that means we must end the TB" happens on a
+non-branch instruction.  However, there are cases where we decide
+early in handling an instruction that we need to end the TB and
+return to the main loop, and then the insn is a complex one that
+involves gen_jmp_tb().  For instance, for M-profile FP instructions,
+in gen_preserve_fp_state() which is called from vfp_access_check() we
+want to force an exit to the main loop if lazy state preservation is
+active and we are in icount mode.
+
+Make gen_jmp_tb() look at the current value of is_jmp, and only use
+goto_tb if the previous is_jmp was DISAS_NEXT or DISAS_TOO_MANY.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-mve.c | 32 ++++++++++++++++++++++----------
- 1 file changed, 22 insertions(+), 10 deletions(-)
+ target/arm/translate.c | 34 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 33 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 255cb860fec..d30c7e57ea3 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/translate-mve.c
-@@ -510,7 +510,8 @@ static bool trans_VDUP(DisasContext *s, arg_VDUP *a)
-     return true;
- }
- 
--static bool do_1op(DisasContext *s, arg_1op *a, MVEGenOneOpFn fn)
-+static bool do_1op_vec(DisasContext *s, arg_1op *a, MVEGenOneOpFn fn,
-+                       GVecGen2Fn vecfn)
- {
-     TCGv_ptr qd, qm;
- 
-@@ -524,16 +525,25 @@ static bool do_1op(DisasContext *s, arg_1op *a, MVEGenOneOpFn fn)
-         return true;
-     }
- 
--    qd = mve_qreg_ptr(a->qd);
--    qm = mve_qreg_ptr(a->qm);
--    fn(cpu_env, qd, qm);
--    tcg_temp_free_ptr(qd);
--    tcg_temp_free_ptr(qm);
-+    if (vecfn && mve_no_predication(s)) {
-+        vecfn(a->size, mve_qreg_offset(a->qd), mve_qreg_offset(a->qm), 16, 16);
-+    } else {
-+        qd = mve_qreg_ptr(a->qd);
-+        qm = mve_qreg_ptr(a->qm);
-+        fn(cpu_env, qd, qm);
-+        tcg_temp_free_ptr(qd);
-+        tcg_temp_free_ptr(qm);
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 24b7f49d767..3d1ff8ba951 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -2610,8 +2610,40 @@ static inline void gen_jmp_tb(DisasContext *s, uint32_t dest, int tbno)
+         /* An indirect jump so that we still trigger the debug exception.  */
+         gen_set_pc_im(s, dest);
+         s->base.is_jmp = DISAS_JUMP;
+-    } else {
++        return;
 +    }
-     mve_update_eci(s);
-     return true;
++    switch (s->base.is_jmp) {
++    case DISAS_NEXT:
++    case DISAS_TOO_MANY:
++    case DISAS_NORETURN:
++        /*
++         * The normal case: just go to the destination TB.
++         * NB: NORETURN happens if we generate code like
++         *    gen_brcondi(l);
++         *    gen_jmp();
++         *    gen_set_label(l);
++         *    gen_jmp();
++         * on the second call to gen_jmp().
++         */
+         gen_goto_tb(s, tbno, dest);
++        break;
++    case DISAS_UPDATE_NOCHAIN:
++    case DISAS_UPDATE_EXIT:
++        /*
++         * We already decided we're leaving the TB for some other reason.
++         * Avoid using goto_tb so we really do exit back to the main loop
++         * and don't chain to another TB.
++         */
++        gen_set_pc_im(s, dest);
++        gen_goto_ptr();
++        s->base.is_jmp = DISAS_NORETURN;
++        break;
++    default:
++        /*
++         * We shouldn't be emitting code for a jump and also have
++         * is_jmp set to one of the special cases like DISAS_SWI.
++         */
++        g_assert_not_reached();
+     }
  }
  
--#define DO_1OP(INSN, FN)                                        \
-+static bool do_1op(DisasContext *s, arg_1op *a, MVEGenOneOpFn fn)
-+{
-+    return do_1op_vec(s, a, fn, NULL);
-+}
-+
-+#define DO_1OP_VEC(INSN, FN, VECFN)                             \
-     static bool trans_##INSN(DisasContext *s, arg_1op *a)       \
-     {                                                           \
-         static MVEGenOneOpFn * const fns[] = {                  \
-@@ -542,13 +552,15 @@ static bool do_1op(DisasContext *s, arg_1op *a, MVEGenOneOpFn fn)
-             gen_helper_mve_##FN##w,                             \
-             NULL,                                               \
-         };                                                      \
--        return do_1op(s, a, fns[a->size]);                      \
-+        return do_1op_vec(s, a, fns[a->size], VECFN);           \
-     }
- 
-+#define DO_1OP(INSN, FN) DO_1OP_VEC(INSN, FN, NULL)
-+
- DO_1OP(VCLZ, vclz)
- DO_1OP(VCLS, vcls)
--DO_1OP(VABS, vabs)
--DO_1OP(VNEG, vneg)
-+DO_1OP_VEC(VABS, vabs, tcg_gen_gvec_abs)
-+DO_1OP_VEC(VNEG, vneg, tcg_gen_gvec_neg)
- DO_1OP(VQABS, vqabs)
- DO_1OP(VQNEG, vqneg)
- DO_1OP(VMAXA, vmaxa)
 -- 
 2.20.1
 

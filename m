@@ -1,102 +1,102 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3725340lfb;
-        Mon, 13 Sep 2021 07:26:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0ciRPRERrwUjLu8EG3AMbx2Qhhyo3ajOmHRWhk0MBX2GYKQ6HbdF+KtnAwKPj3jjjgeWu
-X-Received: by 2002:a05:600c:3585:: with SMTP id p5mr1782742wmq.110.1631543198981;
-        Mon, 13 Sep 2021 07:26:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631543198; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3725545lfb;
+        Mon, 13 Sep 2021 07:26:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRhWW+NXy5MFfL6L4o7krL1d8EpReTWn+eMqR4JcMXy7tiRKVr9vqW0XYAhzez1whFIRKF
+X-Received: by 2002:a1c:f606:: with SMTP id w6mr11502557wmc.42.1631543210894;
+        Mon, 13 Sep 2021 07:26:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631543210; cv=none;
         d=google.com; s=arc-20160816;
-        b=ISmGgOZ6uRdEFw4JLUcMpGXeF1FSH+GUF2Ql8rPRqX4kWVFQLzKfbnQ5aNLDuCbYWN
-         9mCC0u3TvSHnibwhV+O4NqzAj4xTrHvUDkm2iHwhSiIoO8sixLAMoJVkw4FwtUOuIFGT
-         qGnexmsuauJEVp9UNWih2pgQ1VVcVghKs1ax3wYHGI5vP5ObjOfazQKgm0j1bCHu6A8S
-         84OC9Bhmtt3vzGnikzkmZr8zQ6qqW1HIuFbqAkVL5G1c0nsvtxotyC0WYEJMq1sZ/qNg
-         ZRP3YIWVkEHIF5jMTWsJHi9EBEE2aTSk2Sl71msdc9dgunNmpvyGpQNoyKrZwr2HSuQx
-         0IVw==
+        b=i8vi1IuK4cZXF0LXRPdNDOOy0YGaUz+xN3Z3tsZ1JlaVLAD7CR0q4sK2yxl7suY4kb
+         qtihMy9aIM2bVnB1d880y8+B+R/zAyHSBV2eme7M98b9agNGl6/Wv+UU2ZJXz6f7r8Vz
+         ojTUxyU1nI15JC+agMhlxSNFNKvZjieUVXnGASclUV6AWsVicy6oRD32CbIYCBi5S+zH
+         yGY+adcLiBetpJFtUOw8d7J6n96GyLc71rmB3pOwxQYlUYKjhXum1OQrAafBz+Uz0meO
+         EJo8lm5ovorY9sfy98sndT+KKXvXSkh4hiDzEyWybiG3ruhFzZ2zQr8OwLYfUE3+D5mT
+         pm0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=G/oXdG+K/mn7k+A9gPyTnR0ScqfyVqdSsawxB342AdQ=;
-        b=lO5GDNQlXERdwNxQoeyANR8vsWSmZu6qiP+p0ohCrPVG/vDnOJ3M3sK41QgeW2KJnA
-         AtlP7pz5DdCIu/cqnYEFKe7bfs6z4jYuvpIS65N61bmYhDnajp+dB5lrvHV8+vl6AIzL
-         m4fqLQtBxiDp+hQ+1QRHQW0FPDdXjTofvJbRNzgNGzBglb0cDIGIFN6IS4Pb8SMkWLYa
-         /BUoq4/LDTbt2qJBTtxQ/ZFSY3UUZii3h7rsQTXcWpqFAt6HaT8NK+uGTCSVqs15rhMo
-         KqdbP9HYBcS5wpuljZ4tYnzZNaShqTXebxlhWJ0wP9OC9F8W9UET7IByYSqHlj/nbHpq
-         56PA==
+        bh=wmlaXx6GHxoRhPXE6C7Nep6pRd5XEGRbkmxohQZcfsk=;
+        b=vf2aoxmJVmd4n7kJjD0AW5Ruph+NiFm6Sd5TQwUhbVf7iyZ8NHzf6GPWGAfO01fX3t
+         jtNW2D0oU42C5Qm8GHKBvB2x8zGvBWO0DD2xmRpg/NxFL9eyAdZt6Ggy+CuJvuYhTFDg
+         7D3rgwX+m7vqATRNLk5+FVIjjKwQIhBxKpTwPYriqVF6luqvdmGBoIa224itH33Y8o+P
+         789tegpJwD5+vUbg3XL1Y7mIkHymsk/F47j8JLFfTStvWBJu8IO3GIhy9ylzkDg5JeL9
+         Cg8JIXlohx7Kj948cOWUuKqLOmDprIk2O3mZzW+RgsnlaYkOBBqqFoiGGzqLJiYqR7Tq
+         oVug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aa47cwxo;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BNdFHWTc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j19si7464126wms.96.2021.09.13.07.26.38
+        by mx.google.com with ESMTPS id f2si7488169wrm.264.2021.09.13.07.26.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 07:26:38 -0700 (PDT)
+        Mon, 13 Sep 2021 07:26:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aa47cwxo;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BNdFHWTc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38576 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPmus-0007V1-08
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 10:26:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50758)
+	id 1mPmv3-00084G-Qj
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 10:26:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPmru-0002Vc-9W
- for qemu-devel@nongnu.org; Mon, 13 Sep 2021 10:23:34 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:40876)
+ id 1mPmlw-0003OX-FI
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 10:17:24 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:43930)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPmrs-0006jZ-Or
- for qemu-devel@nongnu.org; Mon, 13 Sep 2021 10:23:33 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id q26so14993330wrc.7
- for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 07:23:32 -0700 (PDT)
+ id 1mPmls-0002V5-7J
+ for qemu-devel@nongnu.org; Mon, 13 Sep 2021 10:17:23 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id b6so14941612wrh.10
+ for <qemu-devel@nongnu.org>; Mon, 13 Sep 2021 07:17:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=G/oXdG+K/mn7k+A9gPyTnR0ScqfyVqdSsawxB342AdQ=;
- b=aa47cwxoqLvgSeQcR6/VLipx63NWLnoUaKUUsR4TY+SEhDePfi1lL0pHheGqBCvOvS
- G9WDDPI+Do/rdlu/8V/pd/IAi1t72HEJVfuIhaJDTD1xqmM1gY6tl2eCE0E/3znv5M9g
- c8h276ZUYd2HngfdlOxSjDCa3xwE62g5/U4bgckwtv9n6QxVq7KVQSzMrHdau5dB6tuM
- AAiZ5zaggrdcfa0nCkytUiuBSVO6YRg8QIaC09hkR/HcsK9mIhuHCFcH2xgs5eQkz/qp
- NlUapo18u2E52sn5oIT+oNzPTvWmbE6v2LRMPqXhFt7wFPt0T/MgHpwYeYnGLKRnGpHh
- wWKA==
+ :cc; bh=wmlaXx6GHxoRhPXE6C7Nep6pRd5XEGRbkmxohQZcfsk=;
+ b=BNdFHWTcEMOAzjhvJbthV+48CS5CceTHRXYy2D5Brb+c1DC7agbziHfoBbBsEzIW6k
+ FwTjDNtonCLhcD72+Wa37gW1NwXi6ddh4YROnd3wWJ65dlImIirzSocHIIR2QhleN9tq
+ n1IJ1iiPVQ1jwRKVcEFXJTnpY4oi/CrsI6+cJBl0oHiLtBN6bKL+0nI31kF+mBqDVohK
+ wflGWIVd24WLZ1ncZEs8CWbI96TkZI77uLwq8Fzqw6VKGpbsJ/Hw1zj9Xi58vBIdm/hP
+ s/QPH95UI8owR51M+83QfpD2GBKnFntDNfUCJzUS5MY9i0u32MIJlmY8lrjUxxbkgnUL
+ SAWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=G/oXdG+K/mn7k+A9gPyTnR0ScqfyVqdSsawxB342AdQ=;
- b=FFu16Oz2QOfbN000w/E2vaZjAHTAcm4VjNWEAyVYNjnIM01Yd0i8jGw534Jmhy0h4R
- ELDbxdHZlv4bjDRX6/O9JjiSvBm8WlLqBaSi53ohxXRj/XYkjzo6iiPwZ0wq8743/JKe
- MF1s95ryUT5pa8yBjO+0Ap4I6J60fFNXdP004pyDhW0lj+h/elB/I0vvssluuCL7kFVa
- bx4NOdtb7b83DtiTKIJLQryvYpveXUY5nS1dIMlyazRx7gTTQf4KkAGyZfyGE+JZM+L8
- U0hE+occtKQcUR9uf+shlxTLMEFHtlf1g+jRBoGH/jeZe0/qgcn3zNL3kI+vobUiWZHv
- KXYA==
-X-Gm-Message-State: AOAM533UK0kMtKOEI3Ij/aAcPXO5820h9eGauPl2IWfIoMRaP1PjWo4Q
- uBYkS4Kn3r8aa+GuCZtQiUEEZfl2Ah0/YWda9tUklA==
-X-Received: by 2002:adf:f185:: with SMTP id h5mr13060833wro.302.1631543011063; 
- Mon, 13 Sep 2021 07:23:31 -0700 (PDT)
+ bh=wmlaXx6GHxoRhPXE6C7Nep6pRd5XEGRbkmxohQZcfsk=;
+ b=Xd5DCmp6qMpDMpqJXk3GizNat7Yna518aOF9tGSZ0TC5QJC8rfGCaWFQMv+XIvLNQH
+ +IRpmi2YETqIb7ACtLOguD9GELQRBJ1BE8lU/ljJmVJMWFVxD2AAe/v/o3QDJ3VWTwO0
+ F1liJMAs8dW1DxkbFlDKLt7OeBWYDq5XdvUhlixDukAZzgNmVwwBmAlrz3iqzOK2cOEn
+ 6XC9xQ6FposMLPV53Jgd+qQjrOZXSIsDxtkiYR0+hhri+ojLGAWR4UWnQ3IU9EQI4la6
+ cdT04fTDEyasyIcb6FO1WggflJiomLxxoUn7jnQZFHeZlXhTMJrCvbWRnk5HhRJz8yn5
+ t2Sw==
+X-Gm-Message-State: AOAM531rjagrV46HlTJBib6AfjNBEkHyz5PEZ+DlTKPTL+ppTuJqvg0X
+ hh0KQX+BO0aznqFuHHplWtqDQEs9ijPkLHmFPcTGZQ==
+X-Received: by 2002:adf:fd12:: with SMTP id e18mr8834847wrr.275.1631542638342; 
+ Mon, 13 Sep 2021 07:17:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210913095440.13462-1-peter.maydell@linaro.org>
- <20210913095440.13462-11-peter.maydell@linaro.org>
- <0bcbd02d-abb6-de1c-efc3-d0ba465cdb9b@linaro.org>
-In-Reply-To: <0bcbd02d-abb6-de1c-efc3-d0ba465cdb9b@linaro.org>
+References: <20210907232555.3268967-1-wuhaotsh@google.com>
+ <20210907232555.3268967-3-wuhaotsh@google.com>
+In-Reply-To: <20210907232555.3268967-3-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Sep 2021 15:22:40 +0100
-Message-ID: <CAFEAcA8q1Uo_79geDF3SGXt04RUSmo90+UumLxjOCAPX4HLb9g@mail.gmail.com>
-Subject: Re: [PATCH v2 10/12] target/arm: Optimize MVE VSHLL and VMOVL
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Mon, 13 Sep 2021 15:16:27 +0100
+Message-ID: <CAFEAcA8R5AkFqpeWymbMfZygzk=TvXFgTGb8GobTaYtR1ozXTg@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/sd: add nuvoton MMC
+To: Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,29 +109,255 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+Cc: Qemu-block <qemu-block@nongnu.org>, Patrick Venture <venture@google.com>,
+ Shengtan Mao <stmao@google.com>, Bin Meng <bin.meng@windriver.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ Chris Rauer <crauer@google.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jl5UbRJaPA6m
+X-TUID: BoG5RS6HoCiW
 
-On Mon, 13 Sept 2021 at 15:04, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 8 Sept 2021 at 00:26, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> On 9/13/21 2:54 AM, Peter Maydell wrote:
-> > Optimize the MVE VSHLL insns by using TCG vector ops when possible.
-> > This includes the VMOVL insn, which we handle in mve.decode as "VSHLL
-> > with zero shift count".
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> > The cases here that I've implemented with ANDI then shift
-> > could also be implemented as shift-then-shift. Is one better
-> > than another?
+> From: Shengtan Mao <stmao@google.com>
 >
-> I would expect and + shift to be preferred over shift + shift.
+> Signed-off-by: Shengtan Mao <stmao@google.com>
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Reviewed-by: Chris Rauer <crauer@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> ---
+>  hw/arm/npcm7xx.c              |  12 +++-
+>  hw/sd/meson.build             |   1 +
+>  hw/sd/npcm7xx_sdhci.c         | 131 ++++++++++++++++++++++++++++++++++
+>  include/hw/arm/npcm7xx.h      |   2 +
+>  include/hw/sd/npcm7xx_sdhci.h |  65 +++++++++++++++++
+>  5 files changed, 210 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/sd/npcm7xx_sdhci.c
+>  create mode 100644 include/hw/sd/npcm7xx_sdhci.h
+>
+> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+> index 2ab0080e0b..878c2208e0 100644
+> --- a/hw/arm/npcm7xx.c
+> +++ b/hw/arm/npcm7xx.c
+> @@ -63,6 +63,8 @@
+>  #define NPCM7XX_ROM_BA          (0xffff0000)
+>  #define NPCM7XX_ROM_SZ          (64 * KiB)
+>
+> +/* SDHCI Modules */
+> +#define NPCM7XX_MMC_BA          (0xf0842000)
+>
+>  /* Clock configuration values to be fixed up when bypassing bootloader */
+>
+> @@ -83,6 +85,7 @@ enum NPCM7xxInterrupt {
+>      NPCM7XX_UART3_IRQ,
+>      NPCM7XX_EMC1RX_IRQ          = 15,
+>      NPCM7XX_EMC1TX_IRQ,
+> +    NPCM7XX_MMC_IRQ             = 26,
+>      NPCM7XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
+>      NPCM7XX_TIMER1_IRQ,
+>      NPCM7XX_TIMER2_IRQ,
+> @@ -443,6 +446,8 @@ static void npcm7xx_init(Object *obj)
+>      for (i = 0; i < ARRAY_SIZE(s->emc); i++) {
+>          object_initialize_child(obj, "emc[*]", &s->emc[i], TYPE_NPCM7XX_EMC);
+>      }
+> +
+> +    object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
+>  }
+>
+>  static void npcm7xx_realize(DeviceState *dev, Error **errp)
+> @@ -707,6 +712,12 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+>                             &error_abort);
+>      memory_region_add_subregion(get_system_memory(), NPCM7XX_ROM_BA, &s->irom);
+>
+> +    /* SDHCI */
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->mmc), &error_abort);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc), 0, NPCM7XX_MMC_BA);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc), 0,
+> +            npcm7xx_irq(s, NPCM7XX_MMC_IRQ));
+> +
+>      create_unimplemented_device("npcm7xx.shm",          0xc0001000,   4 * KiB);
+>      create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * KiB);
+>      create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * KiB);
+> @@ -736,7 +747,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+>      create_unimplemented_device("npcm7xx.usbd[8]",      0xf0838000,   4 * KiB);
+>      create_unimplemented_device("npcm7xx.usbd[9]",      0xf0839000,   4 * KiB);
+>      create_unimplemented_device("npcm7xx.sd",           0xf0840000,   8 * KiB);
+> -    create_unimplemented_device("npcm7xx.mmc",          0xf0842000,   8 * KiB);
+>      create_unimplemented_device("npcm7xx.pcimbx",       0xf0848000, 512 * KiB);
+>      create_unimplemented_device("npcm7xx.aes",          0xf0858000,   4 * KiB);
+>      create_unimplemented_device("npcm7xx.des",          0xf0859000,   4 * KiB);
 
-OK. (I wasn't sure, because and + shift requires another insn
-to assemble the immediate constant, I think.)
+The "add to board" code should be a separate patch from
+"implement this new device".
 
+> diff --git a/hw/sd/meson.build b/hw/sd/meson.build
+> index f1ce357a3b..807ca07b7c 100644
+> --- a/hw/sd/meson.build
+> +++ b/hw/sd/meson.build
+> @@ -9,4 +9,5 @@ softmmu_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_mmci.c'))
+>  softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_sdhost.c'))
+>  softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_sdhci.c'))
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sdhost.c'))
+> +softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_sdhci.c'))
+>  softmmu_ss.add(when: 'CONFIG_CADENCE_SDHCI', if_true: files('cadence_sdhci.c'))
+> diff --git a/hw/sd/npcm7xx_sdhci.c b/hw/sd/npcm7xx_sdhci.c
+> new file mode 100644
+> index 0000000000..85cccdc485
+> --- /dev/null
+> +++ b/hw/sd/npcm7xx_sdhci.c
+> @@ -0,0 +1,131 @@
+> +/*
+> + * NPCM7xx SD-3.0 / eMMC-4.51 Host Controller
+> + *
+> + * Copyright (c) 2021 Google LLC
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms of the GNU General Public License as published by the
+> + * Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful, but WITHOUT
+> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+> + * for more details.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +
+> +#include "hw/sd/npcm7xx_sdhci.h"
+> +#include "sdhci-internal.h"
+> +
+> +static uint64_t npcm7xx_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
+> +{
+> +    NPCM7xxSDHCIState *s = opaque;
+> +    uint64_t val = 0;
+> +
+> +    switch (addr) {
+> +    case NPCM7XX_PRSTVALS_0:
+> +    case NPCM7XX_PRSTVALS_1:
+> +    case NPCM7XX_PRSTVALS_2:
+> +    case NPCM7XX_PRSTVALS_3:
+> +    case NPCM7XX_PRSTVALS_4:
+> +    case NPCM7XX_PRSTVALS_5:
+> +        val = (uint64_t)s->regs.prstvals[(addr - NPCM7XX_PRSTVALS_0) / 2];
+> +        break;
+> +    case NPCM7XX_BOOTTOCTRL:
+> +        val = (uint64_t)s->regs.boottoctrl;
+
+Your MemoryRegionOps says that accesses of between 1 and 4
+bytes are OK, but this code won't handle eg byte reads of the
+high byte of one of these 16-bit registers. What does the
+hardware require in the way of alignment ?
+
+> +        break;
+> +    default:
+> +        val = (uint64_t)s->sdhci.io_ops->read(&s->sdhci, addr, size);
+
+I don't think all these (uint64_t) casts are necessary.
+
+I think it would be nicer to handle the registers that
+are done by the generic-sdhci object the same way that
+hw/sd/cadence-sdhci.c does it -- have a container region
+that the sdhci registers get mapped into at the appropriate
+offset, with a fallback io ops for the ones that aren't
+handled by the generic-sdhci MemoryRegion.
+
+> +    }
+> +
+> +    return val;
+> +}
+> +
+> +static void npcm7xx_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+> +                                unsigned int size)
+> +{
+> +    NPCM7xxSDHCIState *s = opaque;
+> +
+> +    switch (addr) {
+> +    case NPCM7XX_BOOTTOCTRL:
+> +        s->regs.boottoctrl = (uint32_t)val;
+
+This cast isn't needed either.
+
+> +        break;
+> +    default:
+> +        s->sdhci.io_ops->write(&s->sdhci, addr, val, size);
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps npcm7xx_sdhci_ops = {
+> +    .read = npcm7xx_sdhci_read,
+> +    .write = npcm7xx_sdhci_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .valid = {.min_access_size = 1, .max_access_size = 4, .unaligned = false},
+
+This shouldn't be all on one line;
+    .valid = {
+        .min_access_size = 1,
+        .max_access_size = 4,
+        .unaligned = false,
+    },
+
+
+
+> +};
+> +
+> +static void npcm7xx_sdhci_realize(DeviceState *dev, Error **errp)
+> +{
+> +    NPCM7xxSDHCIState *s = NPCM7XX_SDHCI(dev);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    SysBusDevice *sbd_sdhci = SYS_BUS_DEVICE(&s->sdhci);
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &npcm7xx_sdhci_ops, s,
+> +                          TYPE_NPCM7XX_SDHCI, 0x1000);
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +    sysbus_realize(sbd_sdhci, errp);
+> +
+> +    /* propagate irq and "sd-bus" from generic-sdhci */
+> +    sysbus_pass_irq(sbd, sbd_sdhci);
+> +    s->bus = qdev_get_child_bus(DEVICE(sbd_sdhci), "sd-bus");
+> +}
+> +
+> +static void npcm7xx_sdhci_reset(DeviceState *dev)
+> +{
+> +    NPCM7xxSDHCIState *s = NPCM7XX_SDHCI(dev);
+> +    device_cold_reset(DEVICE(&s->sdhci));
+> +    s->regs.boottoctrl = 0;
+> +
+> +    s->sdhci.prnsts = NPCM7XX_PRSNTS_RESET;
+> +    s->sdhci.blkgap = NPCM7XX_BLKGAP_RESET;
+> +    s->sdhci.capareg = NPCM7XX_CAPAB_RESET;
+> +    s->sdhci.maxcurr = NPCM7XX_MAXCURR_RESET;
+> +    s->sdhci.version = NPCM7XX_HCVER_RESET;
+> +
+> +    memset(s->regs.prstvals, 0, NPCM7XX_PRSTVALS_SIZE * sizeof(uint16_t));
+
+Using 'sizeof(s->regs.prstvals)' allows you to avoid having
+to keep the type and member count in sync here.
+
+> +    s->regs.prstvals[0] = NPCM7XX_PRSTVALS_0_RESET;
+> +    s->regs.prstvals[1] = NPCM7XX_PRSTVALS_1_RESET;
+> +    s->regs.prstvals[3] = NPCM7XX_PRSTVALS_3_RESET;
+
+Aren't these read-only? If so, you can set them to their
+correct values in the realize function and need not reinit
+them in reset.
+
+> +}
+> +
+> +static void npcm7xx_sdhci_class_init(ObjectClass *classp, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(classp);
+> +
+> +    dc->desc = "NPCM7xx SD/eMMC Host Controller";
+> +    dc->realize = npcm7xx_sdhci_realize;
+> +    dc->reset = npcm7xx_sdhci_reset;
+
+This device has at least one piece of modifiable internal
+state (the boottoctrl register). So it needs a vmstate
+struct for migration.
+
+thanks
 -- PMM

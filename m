@@ -1,88 +1,90 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3860204lfb;
-        Mon, 13 Sep 2021 10:04:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzm6hF+yLCkZvDb+UmgXiVPlxAYRp4L1DTRQHbUmmBs3mAQHWpHRuK4eKOFfUGFIAHG7NXt
-X-Received: by 2002:a1c:3845:: with SMTP id f66mr12200978wma.63.1631552655500;
-        Mon, 13 Sep 2021 10:04:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631552655; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3711607lfb;
+        Mon, 13 Sep 2021 07:12:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxH+wCwkVpXQFpzqzsLLDpDHKGGB5+ZhD6QFa/pEDhXw5/eRpQ1B2fpKuAPdMGClMXIKIpS
+X-Received: by 2002:a05:600c:35cd:: with SMTP id r13mr11427305wmq.24.1631542359183;
+        Mon, 13 Sep 2021 07:12:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631542359; cv=none;
         d=google.com; s=arc-20160816;
-        b=h+1ivnsOzxn54yIfVx621wNMOkEm6eLXakN80oPcDjUp8XhVTuEJ4peUn5Q5C5jEC6
-         OPHTUK9Sh2nA2Pdo9rUCt130N0KPqROqYv508pfC23Kgy2jmSJrbpjiEEBiFIn02USEF
-         mT3L38XbtCNay0eqn7K/QZM/l4E4RH5JdkmJVwT49Blt7WXQ+Z5xNMtlnbkZzTCMIV/A
-         HvqBq0pQ3EO2YCbJBDSnNq8dDYvHf8SncoYiLvqkUHV736crzHimUHR1MKA+0mOKzj4N
-         UITlW9VglX0p+9F8P+QKbxSIFpyvrTDUbsCbsTBBmsB1okgxKhu0FM/1j7qskyiWlAm7
-         T9dw==
+        b=UMq6FfN0JQ92WM90NIwuOvYm41eXMAic2dpTxY/A7Fe5ujhEuohuGRM33wDlQ1eNyL
+         Tn4Khi1I5RwRmaRPEhGVvKH2SoaWG61N/DM6xvRxlfvgX9JcocdoUspHg1F6ymworI3T
+         LU1LsED/mj6r9Eu9l7xRY4z8wDY+/XC2J3+YUQ/0NsNPwFuHseBSlydvomdg/rVAkA2t
+         Dt07knU/YFweu5zpqdUZ1YIGlKfbPZM6rAYXUqxZ3KKO7Rgqg9GiZdd22dngH+9Tc2BA
+         t8Crtj5smH+AAhjqMs1CDSuwnzRCZenXrQotYbwQsRHkfsedFRmOPEIhM36IIAHf88c+
+         nmpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=tpvZmTtU7279xL1MsuqyQ9cGtqdfRm4Y89gK9mqWB1k=;
-        b=FCAYLujCHfnaJXwAS/v+1TrXzMSDfUp2wkxSCJGA1S96FjC9eAazBMJ3Bzo/c/DpF2
-         aortodg+tCM1Zxj7MkkYY5WkGyZODMZ5RE3ZpA1aCEv37udo10/9TCVny1vb7R+eJ2rf
-         OvyyNk7liQmh+pkftbrlDO3PCfzklq9ZMEaH8+/q9Zuj9YFz+DV/amJSPGW8BF984MIy
-         uqmvkASv3goZuQvmUJ2pmcCtwaUilCosRSxRhdMaKEdbtk23bwE3Lvd9rh/vA+eKGIaj
-         JYyGj8WGrnLKJ8W9boEgislk6GDTK0Hb2wa7HVgqIFswZMguV1NTQtfAKVJtcg9qKwzf
-         HcEA==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:subject
+         :to:from:date;
+        bh=keGVPbTisTZ6eZIpbddxEU9bfnfZKHWvSICYuygxwUk=;
+        b=E5Ee7mvMKwVl0Sg9xUyevZKb6UHyk7TNc770um5aj/6ebBoMbbG7YSflBEYEAcGmVJ
+         vMm7eSqqxJPwCPe9I3FJtuujF5+TQkY8WDIgL9tki8RgZOOLKZ16PIFGT9VdegCBQFsE
+         imqojG02qSa9/4yWHZRg20Wm/S/lwD7As9QGBMlR4ituTf0V1qQORybEy8adyCuL8HCm
+         y7oPsWuNlHFJrU1fsxYqMnJiAsZbKPjDqfx/VDaFm1q/nH+JZMnVmaPLL78TxFcZkZUL
+         K7+hdEGALp+Ue0Nka85b1bBmKcaQC5F7UthVDnN4/FdJtDHKkNzepJo2ztwppnzve1i8
+         ZFpw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q26si2585630wmc.209.2021.09.13.10.04.15
+        by mx.google.com with ESMTPS id r6si8241471wrl.490.2021.09.13.07.12.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 10:04:15 -0700 (PDT)
+        Mon, 13 Sep 2021 07:12:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53312 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34866 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPpNO-0003gR-I9
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 13:04:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33506)
+	id 1mPmhK-0002mi-2a
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 10:12:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoaH-00040l-44
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:29 -0400
-Received: from 4.mo552.mail-out.ovh.net ([178.33.43.201]:54809)
+ (Exim 4.90_1) (envelope-from <l.majewski@majess.pl>)
+ id 1mPhLW-0006U4-Nw; Mon, 13 Sep 2021 04:29:46 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:34193)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa9-0000gi-Pq
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:28 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.128])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 6CE2620F7B;
- Mon, 13 Sep 2021 16:13:10 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <l.majewski@majess.pl>)
+ id 1mPhLU-000582-E0; Mon, 13 Sep 2021 04:29:46 -0400
+Received: from mxplan6.mail.ovh.net (unknown [10.109.138.194])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 80267BDA7DC7;
+ Mon, 13 Sep 2021 10:29:31 +0200 (CEST)
+Received: from majess.pl (37.59.142.102) by DAG9EX1.mxp6.local (172.16.2.81)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 13 Sep
- 2021 18:13:09 +0200
+ 2021 10:29:30 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0016d31dd0a-b22b-4840-b1b4-e2c8fdbe2d8b,
- 7CA125ACC991A0BE3D2311CBE60F5A293341D68C) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 00/14] aspeed queue
-Date: Mon, 13 Sep 2021 18:12:50 +0200
-Message-ID: <20210913161304.3805652-1-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
+ (GARM-102R00483ddef17-2a78-4f99-9796-5498d3444bd5,
+ 70F5B69DB83BC5B6752B92651E346C8869157B2B) smtp.auth=l.majewski@majess.pl
+X-OVh-ClientIp: 85.222.111.42
+Date: Mon, 13 Sep 2021 10:29:17 +0200
+From: Lukasz Majewski <l.majewski@majess.pl>
+To: <qemu-arm@nongnu.org>
+Subject: Problem with init debugging under QEMU ARM
+Message-ID: <20210913102917.0bf933d8@ktm>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 13ad9dbf-961a-4d81-a320-14c1e476f21e
-X-Ovh-Tracer-Id: 8689132531712035622
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ boundary="Sig_/nC_O1q382hnDRRJACgtJLM1";
+ protocol="application/pgp-signature"
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG4EX2.mxp6.local (172.16.2.32) To DAG9EX1.mxp6.local
+ (172.16.2.81)
+X-Ovh-Tracer-GUID: d8c829f6-a30c-4735-981d-a77b5dd1bb7f
+X-Ovh-Tracer-Id: 858780155621262045
 X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepuedtieekkeelgfduvdeijeeujefhheefjedtleegtdehteejteduuddtjeefjeeknecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=178.33.43.201; envelope-from=clg@kaod.org;
- helo=4.mo552.mail-out.ovh.net
-X-Spam_score_int: 0
-X-Spam_score: -0.0
-X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_DNSWL_NONE=-0.0001,
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgtdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucenucfjughrpeffhffvuffkofggtghisehgtderreertdejnecuhfhrohhmpefnuhhkrghsiicuofgrjhgvfihskhhiuceolhdrmhgrjhgvfihskhhisehmrghjvghsshdrphhlqeenucggtffrrghtthgvrhhnpeejvdevkeehleegheeijeekieeuvdeikedvgffggeejvdefhfffheeigeekteffleenucffohhmrghinhepshhouhhrtggvfigrrhgvrdhorhhgnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghniedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehlrdhmrghjvgifshhkihesmhgrjhgvshhsrdhplhdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=l.majewski@majess.pl;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 13 Sep 2021 10:08:44 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,71 +96,141 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-discuss@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A1TRY88fT16i
+X-TUID: 69nDIuFMfs/k
 
-The following changes since commit eae587e8e3694b1aceab23239493fb4c7e1a80f5:
+--Sig_/nC_O1q382hnDRRJACgtJLM1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-  Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2021-09-13' into staging (2021-09-13 11:00:30 +0100)
+Dear QEMU community,
 
-are available in the Git repository at:
+I'm now trying to fix bug in glibc which became apparent on qemu 6.0.0.
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20210913
+The error is caused by glibc commit:
+bca0f5cbc9257c13322b99e55235c4f21ba0bd82
+https://sourceware.org/git/?p=3Dglibc.git;a=3Dblobdiff;f=3Dsysdeps/arm/dl-m=
+achine.h;h=3Deb13cb8b57496a0ec175c54a495f7e78db978fb7;hp=3Dff5e09e207f7986b=
+1506b8895ae6c2aff032a380;hb=3Dbca0f5cbc9257c13322b99e55235c4f21ba0bd82;hpb=
+=3D34b4624b04fc8f038b2c329ca7560197320615b4
 
-for you to fetch changes up to d7add12e20fa8982f5932ff4dca317c5d2dfe7d9:
+(reverting it causes the board to boot again)
 
-  hw/arm/aspeed: Add Fuji machine type (2021-09-13 15:19:20 +0200)
+Other components:
+binutils_2.37
+gcc_11.2
+Yocto poky: SHA1: 1e2e9a84d6dd81d7f6dd69c0d119d0149d10ade1
 
-----------------------------------------------------------------
-Aspeed patches :
+Qemu start line (the problem is visible on 5.2.0 and 6.0.0):
+qemu-system-arm -device
+virtio-net-device,netdev=3Dnet0,mac=3D52:54:00:12:34:02 -netdev
+tap,id=3Dnet0,ifnam e=3Dtap0,script=3Dno,downscript=3Dno -object
+rng-random,filename=3D/dev/urandom,id=3Drng0 -device
+virtio-rng-pci,rng=3Drng0 -drive
+id=3Ddisk0,file=3Dy2038-image-devel-qemuarm.ext4,if=3Dnone,format
+=3Draw -device virtio-blk-device,drive=3Ddisk0 -device qemu-xhci -device
+usb-tablet -device usb-kbd  -machine virt,highmem=3Doff -cpu cortex-a15
+-smp 4 -m 256 -serial mon:stdio -serial null -nographic -device
+VGA,edid=3Don -kernel
+zImage--5.10.62+git0+bce2813b16_machine-r0-qemuarm-20210910095636.bin
+-append 'root=3D/dev/vda rw  mem=3D256M
+ip=3D192.168.7.2::192.168.7.1:255.255.255.0 console=3DttyAMA0 console=3Dhvc0
+vmalloc=3D256
 
-* MAC enablement fixes (Guenter)
-* Watchdog  and pca9552 fixes (Andrew)
-* GPIO fixes (Joel)
-* AST2600A3 SoC and DPS310 models (Joel)
-* New Fuji BMC machine (Peter)
 
-----------------------------------------------------------------
-Andrew Jeffery (3):
-      watchdog: aspeed: Sanitize control register values
-      watchdog: aspeed: Fix sequential control writes
-      misc/pca9552: Fix LED status register indexing in pca955x_get_led()
+It has been tested with Cortex-A9 (Vexpress A9 2 core board) and
+Cortex-A15. I've also tested the v5.1, v5.10 and v5.14 kernels. The
+error is persistent.
 
-Guenter Roeck (2):
-      hw: arm: aspeed: Enable eth0 interface for aspeed-ast2600-evb
-      hw: arm: aspeed: Enable mac0/1 instead of mac1/2 for g220a
+I do add -s and -S when starting qemu-system-arm. I can use gdb to
+debug the kernel without issues. Unfortunately, I'm not able to debug
+/sbin/init after switching contex to user space.
 
-Joel Stanley (6):
-      hw: aspeed_gpio: Simplify 1.8V defines
-      hw: aspeed_gpio: Clarify GPIO controller name
-      arm/aspeed: rainier: Add i2c eeproms and muxes
-      aspeed: Emulate the AST2600A3
-      hw/misc: Add Infineon DPS310 sensor model
-      arm/aspeed: Add DPS310 to Witherspoon and Rainier
+Moreover, gdbserver cannot be used as the error (and kernel OOPs) is
+caused when early code from ld-linux.so.3 (the _dl_start function) is
+executed.
 
-Peter Delevoryas (3):
-      hw/arm/aspeed: Initialize AST2600 UART clock selection registers
-      hw/arm/aspeed: Allow machine to set UART default
-      hw/arm/aspeed: Add Fuji machine type
 
- include/hw/arm/aspeed.h          |   1 +
- include/hw/arm/aspeed_soc.h      |   1 +
- include/hw/misc/aspeed_scu.h     |   2 +
- include/hw/watchdog/wdt_aspeed.h |   1 +
- hw/arm/aspeed.c                  | 175 ++++++++++++++++++++++++++++--
- hw/arm/aspeed_ast2600.c          |  14 +--
- hw/arm/aspeed_soc.c              |   8 +-
- hw/gpio/aspeed_gpio.c            |  97 +++++++++--------
- hw/misc/aspeed_scu.c             |  40 +++++--
- hw/misc/pca9552.c                |   2 +-
- hw/sensor/dps310.c               | 225 +++++++++++++++++++++++++++++++++++++++
- hw/watchdog/wdt_aspeed.c         |  26 ++++-
- hw/arm/Kconfig                   |   1 +
- hw/sensor/Kconfig                |   4 +
- hw/sensor/meson.build            |   1 +
- 15 files changed, 522 insertions(+), 76 deletions(-)
- create mode 100644 hw/sensor/dps310.c
+Any hints on how to debug it?
+
+Inspecting assembler is one (awkward) option (some results presented
+below). I can also inspect the VMA of the code just before starting the
+/sbin/init process.
+
+Unfortunately, when I try to break on user space code it is not very
+helpful (as -S -s are supposed to be used with kernel).
+
+
+Some info with the eligible code (_dl_start function):
+------------------------------------------------------
+
+I think that the problem may be with having the negative value
+calculated.
+
+The relevant snipet:
+
+    116c:       bf00            nop
+    116e:       bf00            nop
+    1170:       bf00            nop
+    1172:       f8df 3508       ldr.w   r3, [pc, #1288] ; 167c
+    <_dl_start+0x520>
+
+    1176:       f8df 1508       ldr.w   r1, [pc, #1288] ; 1680
+    <_dl_start+0x524>
+
+    117a:       447b            add     r3, pc
+    117c:       4479            add     r1, pc
+    117e:       f8c3 1598       str.w   r1, [r3, #1432] ; 0x598
+    1182:       bf00            nop
+    1184:       bf00            nop
+    1186:       bf00            nop
+    1188:       bf00            nop
+    118a:       bf00            nop
+    118c:       bf00            nop
+    118e:       f8df 24f4       ldr.w   r2, [pc, #1268] ; 1684
+    <_dl_start+0x528> 1192:       f8d3 5598       ldr.w   r5, [r3,
+    #1432] ; 0x598 1196:       447a            add     r2, pc
+    1198:       442a            add     r2, r5
+    119a:       1a52            subs    r2, r2, r1
+    119c:       f8c3 25a0       str.w   r2, [r3, #1440] ; 0x5a0
+    11a0:       6813            ldr     r3, [r2, #0]
+
+
+    167c:       0002be92        .word   0x0002be92
+    1680:       ffffee80        .word   0xffffee80
+
+The r1 gets the 0xffffee80 (negative offset) value. It is then added to
+pc and used to calculate r2.
+
+For working code (aforementioned patch reverted) - there are NO such
+large values (like aforementioned 0xffffee80). The arithmetic is done
+on=20
+
+   1690:       00000020        .word   0x00000020
+   1694:       0002be7e        .word   0x0002be7e
+
+which seems to work.
+
+Maybe I'm missing some flag when I do start qemu-system-arm?
+
+Thanks in advance for help and hints.
+
+--=20
+Best regards,
+
+=C5=81ukasz Majewski
+
+--Sig_/nC_O1q382hnDRRJACgtJLM1
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQS3sH/m++pp8gSfJvB/3+EbZjCCMQUCYT8L3QAKCRB/3+EbZjCC
+MTLsAJ9hKlztid/Zj6aeInIZPmaDvga5ggCguELuMQDdGnTd3I2hywFC4cI46ro=
+=csxY
+-----END PGP SIGNATURE-----
+
+--Sig_/nC_O1q382hnDRRJACgtJLM1--

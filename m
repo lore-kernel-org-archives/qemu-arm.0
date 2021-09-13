@@ -1,60 +1,60 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3617840lfb;
-        Mon, 13 Sep 2021 05:23:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCDji1U7mhIz4UG4oUEtS/UwrJK2B5qlkk6k9v9AMlKuihE8oGHyoHAtUt8910z8H5McUQ
-X-Received: by 2002:a05:6e02:ee8:: with SMTP id j8mr57626ilk.170.1631535832872;
-        Mon, 13 Sep 2021 05:23:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631535832; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3621173lfb;
+        Mon, 13 Sep 2021 05:28:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJylb8mbtutMiFSlUhLlC0C3tAgUiERmkJRq3ZUU0T9GXQWP7DhwbIFZaZKKyLsRFd0SnxRZ
+X-Received: by 2002:a92:da85:: with SMTP id u5mr8214336iln.213.1631536091713;
+        Mon, 13 Sep 2021 05:28:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631536091; cv=none;
         d=google.com; s=arc-20160816;
-        b=RjGM1URyDO5yha96Gkukn+QeKtGc4tuhwgch2FIraw/4jEHplhuw6XDj+DZoiBZIbO
-         LYTw0a9JNgOkPcsYYnWdg91LAbV3ckbXrnPXmJ39wCHETTAz21bZhC8w1+ArCqPjJuvm
-         4gYlINTMQHZkMMRUHyxUIwiCKUMc0lfXKoOijLS0MK1NMKwV8ddHzs0REFAUU15v0Bio
-         sKGbjTqM2YuAnzqiGbbOP+hyW8L0aPS6qkPyC7BR3qahzkpnECjY6Xb2QRDgzbF4vqTg
-         y2f08crUaxJ3BRMCZ1kzohITvlmHxPnwDYEG27wSoUQ3a3F4h0QQlUsVlQumfar81PGz
-         pESQ==
+        b=jM4pwExmgDVmbJBsPb3yT0byNFkJ4dzFTBVX/jNm/v4QXOQ5jq0kBkZZjYtBrVET6/
+         ulllkWTWHHnU+8qnHX2CESMDl3FeK3KoxLYH4mg3GKFxiexuUpNepH4bFrkIpn2Q1VQT
+         +7HuuADijqOgNdVLcwUP9HZzjz3PW7HUmis881+cQaOgxxm/ieOzSrVaMYi3sEJYgVwo
+         UF6cryZR83x8AMbt1JUnS5yortV/l4uHCjFcqPGGD9uObLMCPNSzHs7goll3rfvnnh0Q
+         as6tbuDFzzh8cRWI3g/wVFZQA32C2AKUIBCdRP1ZZ4HSMnKgHp/fIupdQ8e9fDNQwHzr
+         4PBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=9HYfe2uOv7LgNFN1mWhaieshFV7vYr1z6XdrVRWrAoo=;
-        b=ypAc7eX+a2QG7tTasyCabXzKa8XJlLTAhiJSnXuguWtwgYXnmASByxRmCJzYFrJ04O
-         DPI4E+CbQhsbHHUUYwhmj7ucbaKv84e8kRNbbM6mxmnpqMhutRe/PwqNxgM1idM2MgMO
-         86tMMHPw52jtRrGH0vr8s5v2lgt+YGVj/dk7cRreygfIQl9gYzhXkYLaPt8Vx/BMPD9y
-         vZpxUx9RvtNSNFmGOYs8jIh2m4/S1aPUQvV9uj98SjmdPvsbaZxJllK5WVqs7Bf+EmeQ
-         YNZYrs2J+RpbXbtwsz07jaZJNXoE/AhFyafzzcAO3WWb7WcGETg43OLii70T4vL+xfNB
-         gilA==
+        bh=pKyJAMWNJyMiXr1mSBYteH/Q8Y3R4HXQ1ym51Uq5PPk=;
+        b=Q3p7xsVHtqUWdNThM0twg9vWMgMkvTNOI+EyiNQx1efDXGHgMAjYAl5NoYpIha2pdL
+         Rf9I5wmH75vW/NevRH6lnjbQVbY9y2LYBH54XM7XXnCQ1HDNlTRDYJvqaibgPzJa2Fkn
+         gXIZPchDN/XGU6rkZAeswcs6g/PWWULspc3rkcFek4IfzPBlvUTM8fF7dBf4XHu2I7AV
+         072tGhucx1U0ncjXNznU0N094GgBE5pv36yA7IjU0wybJNgGq1nG+fX7GfBNXLVubG4J
+         Dp48MgcIb2NJ8lBBZD2zKnmiYdHgQ35q7juKzedTzPRM9DRmmnuPDy6nZwfWQZLzAzas
+         zABQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si7815158jak.6.2021.09.13.05.23.52
+        by mx.google.com with ESMTPS id l7si7613124iow.113.2021.09.13.05.28.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 05:23:52 -0700 (PDT)
+        Mon, 13 Sep 2021 05:28:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55342 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPl04-0005h4-4W
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 08:23:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45504)
+	id 1mPl4F-00027j-16
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 08:28:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mPklY-0002Qb-OC; Mon, 13 Sep 2021 08:08:52 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:44070 helo=zulu616.server4you.de)
+ id 1mPkla-0002S7-Hy; Mon, 13 Sep 2021 08:08:54 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:44104 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1mPklV-0004k8-Rn; Mon, 13 Sep 2021 08:08:52 -0400
+ id 1mPklX-0004lc-HK; Mon, 13 Sep 2021 08:08:54 -0400
 Received: from localhost.localdomain
  (dynamic-095-118-088-150.95.118.pool.telefonica.de [95.118.88.150])
- by csgraf.de (Postfix) with ESMTPSA id 74A1560806A7;
- Mon, 13 Sep 2021 14:08:47 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id 8A67F608037D;
+ Mon, 13 Sep 2021 14:08:49 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v10 06/10] hvf: arm: Implement -cpu host
-Date: Mon, 13 Sep 2021 14:08:38 +0200
-Message-Id: <20210913120842.62116-7-agraf@csgraf.de>
+Subject: [PATCH v10 09/10] hvf: arm: Add rudimentary PMC support
+Date: Mon, 13 Sep 2021 14:08:41 +0200
+Message-Id: <20210913120842.62116-10-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210913120842.62116-1-agraf@csgraf.de>
 References: <20210913120842.62116-1-agraf@csgraf.de>
@@ -89,270 +89,230 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QwCJl/72rYDx
+X-TUID: a7yLA7umoYLP
 
-Now that we have working system register sync, we push more target CPU
-properties into the virtual machine. That might be useful in some
-situations, but is not the typical case that users want.
+We can expose cycle counters on the PMU easily. To be as compatible as
+possible, let's do so, but make sure we don't expose any other architectural
+counters that we can not model yet.
 
-So let's add a -cpu host option that allows them to explicitly pass all
-CPU capabilities of their host CPU into the guest.
+This allows OSs to work that require PMU support.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
-Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-Reviewed-by: Sergio Lopez <slp@redhat.com>
-
 ---
+ target/arm/hvf/hvf.c | 179 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 179 insertions(+)
 
-v6 -> v7:
-
-  - Move function define to own header
-  - Do not propagate SVE features for HVF
-  - Remove stray whitespace change
-  - Verify that EL0 and EL1 do not allow AArch32 mode
-  - Only probe host CPU features once
-
-v8 -> v9:
-
-  - Zero-initialize host_isar
-  - Use M1 SCTLR reset value
-
-v9 -> v10:
-
-  - Fail -cpu host class creation gracefully
-  - Adjust error message on -cpu host realize failure
-  - Extend SCTLR comment that hvf returns 0 as default value
-  - Return true/false
-  - Report errors lazily
----
- target/arm/cpu.c     | 13 +++++--
- target/arm/cpu.h     |  2 +
- target/arm/hvf/hvf.c | 91 ++++++++++++++++++++++++++++++++++++++++++++
- target/arm/hvf_arm.h | 19 +++++++++
- target/arm/kvm_arm.h |  2 -
- 5 files changed, 121 insertions(+), 6 deletions(-)
- create mode 100644 target/arm/hvf_arm.h
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d631c4683c..3b632ef828 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -39,6 +39,7 @@
- #include "sysemu/tcg.h"
- #include "sysemu/hw_accel.h"
- #include "kvm_arm.h"
-+#include "hvf_arm.h"
- #include "disas/capstone.h"
- #include "fpu/softfloat.h"
- 
-@@ -1397,8 +1398,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-      * this is the first point where we can report it.
-      */
-     if (cpu->host_cpu_probe_failed) {
--        if (!kvm_enabled()) {
--            error_setg(errp, "The 'host' CPU type can only be used with KVM");
-+        if (!kvm_enabled() && !hvf_enabled()) {
-+            error_setg(errp, "The 'host' CPU type can only be used with KVM or HVF");
-         } else {
-             error_setg(errp, "Failed to retrieve host CPU features");
-         }
-@@ -2058,15 +2059,19 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- #endif /* CONFIG_TCG */
- }
- 
--#ifdef CONFIG_KVM
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
- static void arm_host_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-+#ifdef CONFIG_KVM
-     kvm_arm_set_cpu_features_from_host(cpu);
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-     }
-+#else
-+    hvf_arm_set_cpu_features_from_host(cpu);
-+#endif
-     arm_cpu_post_init(obj);
- }
- 
-@@ -2126,7 +2131,7 @@ static void arm_cpu_register_types(void)
- {
-     type_register_static(&arm_cpu_type_info);
- 
--#ifdef CONFIG_KVM
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-     type_register_static(&host_arm_cpu_type_info);
- #endif
- }
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 6a987f65e4..0884e564f5 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3016,6 +3016,8 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_ARM_CPU
- 
-+#define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
-+
- #define cpu_signal_handler cpu_arm_signal_handler
- #define cpu_list arm_cpu_list
- 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 3f7c005d35..500de2e316 100644
+index eea725e761..4704b84ad7 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -17,6 +17,7 @@
- #include "sysemu/hvf.h"
- #include "sysemu/hvf_int.h"
- #include "sysemu/hw_accel.h"
-+#include "hvf_arm.h"
+@@ -42,6 +42,18 @@
+ #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
++#define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
++#define SYSREG_PMUSERENR_EL0  SYSREG(3, 3, 9, 14, 0)
++#define SYSREG_PMCNTENSET_EL0 SYSREG(3, 3, 9, 12, 1)
++#define SYSREG_PMCNTENCLR_EL0 SYSREG(3, 3, 9, 12, 2)
++#define SYSREG_PMINTENCLR_EL1 SYSREG(3, 0, 9, 14, 2)
++#define SYSREG_PMOVSCLR_EL0   SYSREG(3, 3, 9, 12, 3)
++#define SYSREG_PMSWINC_EL0    SYSREG(3, 3, 9, 12, 4)
++#define SYSREG_PMSELR_EL0     SYSREG(3, 3, 9, 12, 5)
++#define SYSREG_PMCEID0_EL0    SYSREG(3, 3, 9, 12, 6)
++#define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
++#define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
++#define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
  
- #include <mach/mach_time.h>
+ #define WFX_IS_WFE (1 << 0)
  
-@@ -54,6 +55,16 @@ typedef struct HVFVTimer {
- 
- static HVFVTimer vtimer;
- 
-+typedef struct ARMHostCPUFeatures {
-+    ARMISARegisters isar;
-+    uint64_t features;
-+    uint64_t midr;
-+    uint32_t reset_sctlr;
-+    const char *dtb_compatible;
-+} ARMHostCPUFeatures;
-+
-+static ARMHostCPUFeatures arm_host_cpu_features;
-+
- struct hvf_reg_match {
-     int reg;
-     uint64_t offset;
-@@ -416,6 +427,86 @@ static uint64_t hvf_get_reg(CPUState *cpu, int rt)
-     return val;
+@@ -723,6 +735,40 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+         val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) /
+               gt_cntfrq_period_ns(arm_cpu);
+         break;
++    case SYSREG_PMCR_EL0:
++        val = env->cp15.c9_pmcr;
++        break;
++    case SYSREG_PMCCNTR_EL0:
++        pmu_op_start(env);
++        val = env->cp15.c15_ccnt;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMCNTENCLR_EL0:
++        val = env->cp15.c9_pmcnten;
++        break;
++    case SYSREG_PMOVSCLR_EL0:
++        val = env->cp15.c9_pmovsr;
++        break;
++    case SYSREG_PMSELR_EL0:
++        val = env->cp15.c9_pmselr;
++        break;
++    case SYSREG_PMINTENCLR_EL1:
++        val = env->cp15.c9_pminten;
++        break;
++    case SYSREG_PMCCFILTR_EL0:
++        val = env->cp15.pmccfiltr_el0;
++        break;
++    case SYSREG_PMCNTENSET_EL0:
++        val = env->cp15.c9_pmcnten;
++        break;
++    case SYSREG_PMUSERENR_EL0:
++        val = env->cp15.c9_pmuserenr;
++        break;
++    case SYSREG_PMCEID0_EL0:
++    case SYSREG_PMCEID1_EL0:
++        /* We can't really count anything yet, declare all events invalid */
++        val = 0;
++        break;
+     case SYSREG_OSLSR_EL1:
+         val = env->cp15.oslsr_el1;
+         break;
+@@ -753,6 +799,82 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+     return 0;
  }
  
-+static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
++static void pmu_update_irq(CPUARMState *env)
 +{
-+    ARMISARegisters host_isar = {};
-+    const struct isar_regs {
-+        int reg;
-+        uint64_t *val;
-+    } regs[] = {
-+        { HV_SYS_REG_ID_AA64PFR0_EL1, &host_isar.id_aa64pfr0 },
-+        { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.id_aa64pfr1 },
-+        { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.id_aa64dfr0 },
-+        { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
-+        { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
-+        { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
-+        { HV_SYS_REG_ID_AA64MMFR0_EL1, &host_isar.id_aa64mmfr0 },
-+        { HV_SYS_REG_ID_AA64MMFR1_EL1, &host_isar.id_aa64mmfr1 },
-+        { HV_SYS_REG_ID_AA64MMFR2_EL1, &host_isar.id_aa64mmfr2 },
-+    };
-+    hv_vcpu_t fd;
-+    hv_return_t r = HV_SUCCESS;
-+    hv_vcpu_exit_t *exit;
-+    int i;
-+
-+    ahcf->dtb_compatible = "arm,arm-v8";
-+    ahcf->features = (1ULL << ARM_FEATURE_V8) |
-+                     (1ULL << ARM_FEATURE_NEON) |
-+                     (1ULL << ARM_FEATURE_AARCH64) |
-+                     (1ULL << ARM_FEATURE_PMU) |
-+                     (1ULL << ARM_FEATURE_GENERIC_TIMER);
-+
-+    /* We set up a small vcpu to extract host registers */
-+
-+    if (hv_vcpu_create(&fd, &exit, NULL) != HV_SUCCESS) {
-+        return false;
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(regs); i++) {
-+        r |= hv_vcpu_get_sys_reg(fd, regs[i].reg, regs[i].val);
-+    }
-+    r |= hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr);
-+    r |= hv_vcpu_destroy(fd);
-+
-+    ahcf->isar = host_isar;
-+
-+    /*
-+     * A scratch vCPU returns SCTLR 0, so let's fill our default with the M1
-+     * boot SCTLR from https://github.com/AsahiLinux/m1n1/issues/97
-+     */
-+    ahcf->reset_sctlr = 0x30100180;
-+    /* OVMF chokes on boot if SPAN is not set, so default it to on */
-+    ahcf->reset_sctlr |= 0x00800000;
-+
-+    /* Make sure we don't advertise AArch32 support for EL0/EL1 */
-+    if ((host_isar.id_aa64pfr0 & 0xff) != 0x11) {
-+        return false;
-+    }
-+
-+    return r == HV_SUCCESS;
++    ARMCPU *cpu = env_archcpu(env);
++    qemu_set_irq(cpu->pmu_interrupt, (env->cp15.c9_pmcr & PMCRE) &&
++            (env->cp15.c9_pminten & env->cp15.c9_pmovsr));
 +}
 +
-+void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
++static bool pmu_event_supported(uint16_t number)
 +{
-+    if (!arm_host_cpu_features.dtb_compatible) {
-+        if (!hvf_enabled() ||
-+            !hvf_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-+            /*
-+             * We can't report this error yet, so flag that we need to
-+             * in arm_cpu_realizefn().
-+             */
-+            cpu->host_cpu_probe_failed = true;
-+            return;
++    return false;
++}
++
++/* Returns true if the counter (pass 31 for PMCCNTR) should count events using
++ * the current EL, security state, and register configuration.
++ */
++static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
++{
++    uint64_t filter;
++    bool enabled, filtered = true;
++    int el = arm_current_el(env);
++
++    enabled = (env->cp15.c9_pmcr & PMCRE) &&
++              (env->cp15.c9_pmcnten & (1 << counter));
++
++    if (counter == 31) {
++        filter = env->cp15.pmccfiltr_el0;
++    } else {
++        filter = env->cp15.c14_pmevtyper[counter];
++    }
++
++    if (el == 0) {
++        filtered = filter & PMXEVTYPER_U;
++    } else if (el == 1) {
++        filtered = filter & PMXEVTYPER_P;
++    }
++
++    if (counter != 31) {
++        /*
++         * If not checking PMCCNTR, ensure the counter is setup to an event we
++         * support
++         */
++        uint16_t event = filter & PMXEVTYPER_EVTCOUNT;
++        if (!pmu_event_supported(event)) {
++            return false;
 +        }
 +    }
 +
-+    cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
-+    cpu->isar = arm_host_cpu_features.isar;
-+    cpu->env.features = arm_host_cpu_features.features;
-+    cpu->midr = arm_host_cpu_features.midr;
-+    cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
++    return enabled && !filtered;
 +}
 +
- void hvf_arch_vcpu_destroy(CPUState *cpu)
++static void pmswinc_write(CPUARMState *env, uint64_t value)
++{
++    unsigned int i;
++    for (i = 0; i < pmu_num_counters(env); i++) {
++        /* Increment a counter's count iff: */
++        if ((value & (1 << i)) && /* counter's bit is set */
++                /* counter is enabled and not filtered */
++                pmu_counter_enabled(env, i) &&
++                /* counter is SW_INCR */
++                (env->cp15.c14_pmevtyper[i] & PMXEVTYPER_EVTCOUNT) == 0x0) {
++            /*
++             * Detect if this write causes an overflow since we can't predict
++             * PMSWINC overflows like we can for other events
++             */
++            uint32_t new_pmswinc = env->cp15.c14_pmevcntr[i] + 1;
++
++            if (env->cp15.c14_pmevcntr[i] & ~new_pmswinc & INT32_MIN) {
++                env->cp15.c9_pmovsr |= (1 << i);
++                pmu_update_irq(env);
++            }
++
++            env->cp15.c14_pmevcntr[i] = new_pmswinc;
++        }
++    }
++}
++
+ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
  {
- }
-diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
-new file mode 100644
-index 0000000000..603074a331
---- /dev/null
-+++ b/target/arm/hvf_arm.h
-@@ -0,0 +1,19 @@
-+/*
-+ * QEMU Hypervisor.framework (HVF) support -- ARM specifics
-+ *
-+ * Copyright (c) 2021 Alexander Graf
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#ifndef QEMU_HVF_ARM_H
-+#define QEMU_HVF_ARM_H
-+
-+#include "qemu/accel.h"
-+#include "cpu.h"
-+
-+void hvf_arm_set_cpu_features_from_host(struct ARMCPU *cpu);
-+
-+#endif
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 34f8daa377..828dca4a4a 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -214,8 +214,6 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-  */
- void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+@@ -767,6 +889,63 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+                            val);
  
--#define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
--
- /**
-  * ARMHostCPUFeatures: information about the host CPU (identified
-  * by asking the host kernel)
+     switch (reg) {
++    case SYSREG_PMCCNTR_EL0:
++        pmu_op_start(env);
++        env->cp15.c15_ccnt = val;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMCR_EL0:
++        pmu_op_start(env);
++
++        if (val & PMCRC) {
++            /* The counter has been reset */
++            env->cp15.c15_ccnt = 0;
++        }
++
++        if (val & PMCRP) {
++            unsigned int i;
++            for (i = 0; i < pmu_num_counters(env); i++) {
++                env->cp15.c14_pmevcntr[i] = 0;
++            }
++        }
++
++        env->cp15.c9_pmcr &= ~PMCR_WRITEABLE_MASK;
++        env->cp15.c9_pmcr |= (val & PMCR_WRITEABLE_MASK);
++
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMUSERENR_EL0:
++        env->cp15.c9_pmuserenr = val & 0xf;
++        break;
++    case SYSREG_PMCNTENSET_EL0:
++        env->cp15.c9_pmcnten |= (val & pmu_counter_mask(env));
++        break;
++    case SYSREG_PMCNTENCLR_EL0:
++        env->cp15.c9_pmcnten &= ~(val & pmu_counter_mask(env));
++        break;
++    case SYSREG_PMINTENCLR_EL1:
++        pmu_op_start(env);
++        env->cp15.c9_pminten |= val;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMOVSCLR_EL0:
++        pmu_op_start(env);
++        env->cp15.c9_pmovsr &= ~val;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMSWINC_EL0:
++        pmu_op_start(env);
++        pmswinc_write(env, val);
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMSELR_EL0:
++        env->cp15.c9_pmselr = val & 0x1f;
++        break;
++    case SYSREG_PMCCFILTR_EL0:
++        pmu_op_start(env);
++        env->cp15.pmccfiltr_el0 = val & PMCCFILTR_EL0;
++        pmu_op_finish(env);
++        break;
+     case SYSREG_OSLAR_EL1:
+         env->cp15.oslsr_el1 = val & 1;
+         break;
 -- 
 2.30.1 (Apple Git-130)
 

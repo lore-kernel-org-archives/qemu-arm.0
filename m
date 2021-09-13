@@ -1,68 +1,67 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3836503lfb;
-        Mon, 13 Sep 2021 09:35:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdu7Z/RtEkXqJESjmFdxWzdsvNsxH7BHHQc2WsnfKKbpuYLJgEq+8OPYtqshIt3HFNfGAg
-X-Received: by 2002:a7b:c014:: with SMTP id c20mr12055065wmb.81.1631550901264;
-        Mon, 13 Sep 2021 09:35:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631550901; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3837233lfb;
+        Mon, 13 Sep 2021 09:36:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpzJp59r+MQ9RBe3m0ewjgYll5ic6qGuyhVEWglMLuJ39Onez/bcyIASvZaXQdBl4tpkw/
+X-Received: by 2002:a67:f406:: with SMTP id p6mr5729098vsn.58.1631550965057;
+        Mon, 13 Sep 2021 09:36:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631550965; cv=none;
         d=google.com; s=arc-20160816;
-        b=fouFJdgQBnmXgFdipDd3gbU8URES6vUGapfuKbE8YMYqh25rVWP5WACwV6nXiRKQhY
-         X0xdLaBe2jA3NnwfgdPAnBuqVsy5//E00kGBG9SRDP875HsNlgXR8471UV4O9KZtezi2
-         37LZjCkJ9IUN+qMcsXYabQBGQj7yzf4h9YGgJ67c0ceXhHlDCXiWDgdNPOUUOcy0dJ9O
-         9FJoxfxxGcpBiakzYK6qu2qjeo5gq0sQuMVI0lpvbBSSNfYeugKn6TQCundvBoM4WMaN
-         zU+m+chsDJgKIsU2ACZ0df0DrvpsyCP174qiZJHmACuOsVqzfW+QgS2rrHqBjNcU2u0p
-         aRug==
+        b=C0CDy1Yo3b42rI7TWSieqyEFO584T+oKXYew9qFjlk1+GuysDg451jtc2bquLz4mTj
+         9s+ZmnvVgbdTRu6MJOfRt9uhgcZrWG1CXGtquQYeObJ+td+uswtZNh/FTVHMaDUzKv2c
+         5cF4hGjN9Oa5BosWKnqNohJLDD3CUQH2jEeeghDVAeFIT2xjwpDh/RCGPtNDR3oJ4rZt
+         7lNQSALEffObKG6fGfmttlKEOsKExak5PQM1Aj2gVmH5SA0BLICXfIn6R5CFzQvF9j84
+         P5aUPG60BldJjHsCqOKVWJv9ojHWBJT3Y9hKg87nRk86n2ujVk5kZqvy5vwYQRdObbku
+         W5QQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=pbiTOvx6RsCP92KhzgMBHfxj9Tl0ke/ERVVqRBmQ+es=;
-        b=XlOYw60MUke3oWyqo0M32OLWP1vz1RreP2Mn6yt7JSAvWbX1Dg2+H3n+v8L5GsRmFt
-         LaZBR2MPhvIASG5RNwqak6nSvBlbQC6AXBOOKd+f3Xka0JgVYyGhPQB4DrgJ/Aao11+1
-         Emj8Q/T/ENKGtOVeTT5EjWpeRZ0Wiw1X+AkeWk9xCShJowN7P9ldoR3PYHHo1cOg171H
-         qgOFyWKKt7I4JysElzeIiBQRrafC7DQbYm2T7YrYM9kH3/emqiWH1FXwh7tunHhhgjF2
-         4dSEp8ZxW1jD24pYtiQZPqn3wdrDVdjwbJ1hzaOgG9yIZq5L5JJ7sWKo+XwCQPHblf44
-         YA2Q==
+        bh=/UCp5PUmb2abZhX9xuFmDmTqWtnJfBaPCYY3c9STJng=;
+        b=gDMq8cq2d6cJmVwHs+rKK4HQLJnmYSdTeuATAE9Z4EEwvwfoOXqDYNJnH90y8GeijI
+         j/VSK82Cb4o8bpIrxw0S1WuDByKq6dZBx0umoel7N37PxD1SGJjz6BaYfGAWyBqtqE1I
+         bmoBLPjo4bf8lQjoZ8Dw2N+XRMMQCIcy9ARXK1Evon090RTLXed585mUvQmrX9vpSKTP
+         f/CnxUirITxS3p2d4MhdC1t7PTlxRmh92tu48mrYrbPoCBByySyXiuNhHZTI9JkTKiM0
+         QoSJPdX5NN12EafSvX8NBbRvKvLp+30JIv5oFsau1a8u4CcMdJEXolWhdySgdPjSfG3y
+         LQcg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l9si7234971wmq.213.2021.09.13.09.35.01
+        by mx.google.com with ESMTPS id v11si2099985uaj.208.2021.09.13.09.36.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 09:35:01 -0700 (PDT)
+        Mon, 13 Sep 2021 09:36:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52824 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPov6-0004jU-4S
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:35:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33284)
+	id 1mPow8-00061A-Bk
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:36:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa7-0003se-Sv
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:19 -0400
-Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:40803)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoaA-0003uF-CX
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:23 -0400
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156]:37567)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa5-0000hu-MI
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:19 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.148])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 167C913ECA7;
- Mon, 13 Sep 2021 16:13:13 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoa6-0000lb-AH
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:22 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.201])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 9A6F520497;
+ Mon, 13 Sep 2021 16:13:15 +0000 (UTC)
 Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 13 Sep
- 2021 18:13:12 +0200
+ 2021 18:13:14 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001e4e45957-3e0e-4a5e-b549-e410179d3e05,
+ (GARM-96R0019f1aa2bd-b7f3-483e-8051-5df7b900accd,
  7CA125ACC991A0BE3D2311CBE60F5A293341D68C) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 07/14] misc/pca9552: Fix LED status register indexing in
- pca955x_get_led()
-Date: Mon, 13 Sep 2021 18:12:57 +0200
-Message-ID: <20210913161304.3805652-8-clg@kaod.org>
+Subject: [PULL 11/14] arm/aspeed: Add DPS310 to Witherspoon and Rainier
+Date: Mon, 13 Sep 2021 18:13:01 +0200
+Message-ID: <20210913161304.3805652-12-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210913161304.3805652-1-clg@kaod.org>
 References: <20210913161304.3805652-1-clg@kaod.org>
@@ -72,18 +71,18 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.96]
 X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 76eb2a59-39a2-4c4e-905e-85842292fbe4
-X-Ovh-Tracer-Id: 8689695484433828646
+X-Ovh-Tracer-GUID: c8e469b2-19d7-490e-af9f-043b401093c4
+X-Ovh-Tracer-Id: 8690258433814661926
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout3.3005.mail-out.ovh.net
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,37 +101,52 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iIxHxROKxpMO
+X-TUID: RKUevT2gDVpZ
 
-From: Andrew Jeffery <andrew@aj.id.au>
+From: Joel Stanley <joel@jms.id.au>
 
-There was a bit of a thinko in the state calculation where every odd pin
-in was reported in e.g. "pwm0" mode rather than "off". This was the
-result of an incorrect bit shift for the 2-bit field representing each
-LED state.
+Witherspoon uses the DPS310 as a temperature sensor. Rainier uses it as
+a temperature and humidity sensor.
 
-Fixes: a90d8f84674d ("misc/pca9552: Add qom set and get")
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210723043624.348158-1-andrew@aj.id.au>
+Message-Id: <20210629142336.750058-5-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/pca9552.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/aspeed.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-index b7686e27d7fa..fff19e369a39 100644
---- a/hw/misc/pca9552.c
-+++ b/hw/misc/pca9552.c
-@@ -272,7 +272,7 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
-      * reading the INPUTx reg
-      */
-     reg = PCA9552_LS0 + led / 4;
--    state = (pca955x_read(s, reg) >> (led % 8)) & 0x3;
-+    state = (pca955x_read(s, reg) >> ((led % 4) * 2)) & 0x3;
-     visit_type_str(v, name, (char **)&led_state[state], errp);
- }
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 97964c7e0c53..886e5992cdf3 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -602,7 +602,6 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
  
+     /* Bus 3: TODO bmp280@77 */
+     /* Bus 3: TODO max31785@52 */
+-    /* Bus 3: TODO dps310@76 */
+     dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
+     qdev_prop_set_string(dev, "description", "pca1");
+     i2c_slave_realize_and_unref(I2C_SLAVE(dev),
+@@ -617,6 +616,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+         qdev_connect_gpio_out(dev, pca1_leds[i].gpio_id,
+                               qdev_get_gpio_in(DEVICE(led), 0));
+     }
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
+ 
+@@ -725,9 +725,9 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
+     aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
+ 
+-    /* Bus 7: TODO dps310@76 */
+     /* Bus 7: TODO max31785@52 */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552", 0x61);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", 0x76);
+     /* Bus 7: TODO si7021-a20@20 */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
+                      0x48);
 -- 
 2.31.1
 

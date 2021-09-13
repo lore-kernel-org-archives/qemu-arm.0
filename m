@@ -1,61 +1,63 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3615590lfb;
-        Mon, 13 Sep 2021 05:21:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyW5/4YmTNZPgNaYrULMx0uwJVDOudtgHVFiokDbdU0GXwulnjRcC+40Y8mYJ+kGqze32NQ
-X-Received: by 2002:a1f:1844:: with SMTP id 65mr4046920vky.3.1631535665484;
-        Mon, 13 Sep 2021 05:21:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631535665; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3616352lfb;
+        Mon, 13 Sep 2021 05:22:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzmlMmcwHz84IB3QKo9h3oxOypEigQlW0L/F6D/t6xFObJLNS243lXAddNhWZmCSGsK9mPe
+X-Received: by 2002:a0c:fb4f:: with SMTP id b15mr10202479qvq.20.1631535721199;
+        Mon, 13 Sep 2021 05:22:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631535721; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gaxkdj+CjHNuHzHbAB/IoylDHQxnLeoGVmCbvHh9BxZYWbGVLmQ5ikvhXC95DxuARx
-         O+nHrImih5kypVEOVOg+ASCu4D219y9ySQslnTumkyvDgBuWQ0gxot0A8Jg15DeFln/p
-         uFtcugCWgVOBvaRCwZIF9ULg6pTcibahYBJVS4OfBk+3FDlcCq4Yz5mA4x7N6hwJvFqG
-         1noPDRyF4MXVBvn69HFqH+JlTYcf658xLxIuLwAsUerCPUyX4SQg+8ZvVauYZbFkRL/0
-         ApAmwDXIdNIgK8TRoBOg+6BvThqlVJNj21SZ03pUGaLTzujYSRLLYJK8lfzw7Qw0hhYw
-         rrHA==
+        b=g0u7b+VCEhJfEwDrh1R/OftrsIiFHuWklR1F/OvHn9MzNA+MOb/uDOQpMZn5gPN/Hb
+         T97hJnd8/oGa/PKkuPhATWSBRQeSI2BZxOF+4AIivZhikLcIQRNJ+v6puMJxDdey5WA/
+         W6wCeATon5+dbQ9Dr9syKG6AT7tDwr6a/GWRe/kMQPnON735yCXE/8bbdtKVLnbOPKkg
+         xpcvZEBnM5HGDZNp8STwzwSvzsLXVeBAvSIB/9k8/VYrxEbhEMprFzbmfcp3ihjfut+2
+         ocZPiD5mKsa3at7em5gY1zkqkwbSrJhjfmWA+czAEFxOxqcIZVeP2E4SBqg/L8QQM8mz
+         ABPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=0ks5eIB2e8wkgPWjMHD/Syi/TjeXdTfSUOduyRFl6WI=;
-        b=Hl++msNEWzzaktVNKQcrO+0130K8A2FbXaYvQlHpHoifDcQJxtMV/jE/0StHAYrKr5
-         90otWz/w5mcHthhwNrfktzpL+uxHYGY90yG8+YbVqrEJW2UC78nDA/Ozb7P/xRcNUUn0
-         EYIBaMziiLBdRtgEAgaTHk85UbHei8HO2jcaXyqTRhaBKPCQigUE1JO+EXTe0xWvUtzE
-         4uQ9+7HjCWm0+vKq2wEbcpq3sJvjDdnXfpF4gXLD/u0SUoyAazX++8P8i8s/78xEywV6
-         LDySnJVq6Kf1+bnt69uDHY0poq2BAl6uGweahcDoB8MyLcpdG/L6T79MOott7D7z9ifM
-         099A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=2LoWYVw1BSrANo4EqnnCTCJwtu/zBGlXhjD4v+P91+k=;
+        b=Tij+K7Oa95ifVlan/r2WsNrI1UUvynrlcd9z8LIN32XyHjyORaYtxAcR4Lc237We/2
+         jk2WUPFRoFlsST7ag0H+G5Vc0nv7GEVAyCSZ0ZemJSWL/KU3ivjgAsp68SYK7i9zSbLj
+         2xT/5cG1pevewvi4CkebaL8SQf8JMjRjvH/23fctdjMzUyNbzkrG+fFBkh46Q9UbRuYh
+         DNaLbQZeTELuEGJuLmfMvHiOKLPHSftWiJZHDTWfIfyAjQIR0ya5xo7Hf9UmpBHa8Fvy
+         +50DcuISmALBZ3EG7OQAWfi32j7Sb+YfdUux457fHFev9bW8XTU3Lcbjn8eO43KwjSkp
+         ncuA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c184si1394108vkc.15.2021.09.13.05.21.05
+        by mx.google.com with ESMTPS id 10si2010665qvk.193.2021.09.13.05.22.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 05:21:05 -0700 (PDT)
+        Mon, 13 Sep 2021 05:22:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43848 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPkxM-00020t-PV
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 08:21:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45408)
+	id 1mPkyG-0002YW-F4
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 08:22:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mPklU-0002In-Pb; Mon, 13 Sep 2021 08:08:48 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:44008 helo=zulu616.server4you.de)
+ id 1mPklY-0002PN-6r; Mon, 13 Sep 2021 08:08:52 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:44084 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1mPklR-0004hL-Pt; Mon, 13 Sep 2021 08:08:48 -0400
+ id 1mPklW-0004lS-Gk; Mon, 13 Sep 2021 08:08:51 -0400
 Received: from localhost.localdomain
  (dynamic-095-118-088-150.95.118.pool.telefonica.de [95.118.88.150])
- by csgraf.de (Postfix) with ESMTPSA id 3F330608037D;
- Mon, 13 Sep 2021 14:08:43 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id E17C460806AF;
+ Mon, 13 Sep 2021 14:08:48 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v10 00/10] hvf: Implement Apple Silicon Support
-Date: Mon, 13 Sep 2021 14:08:32 +0200
-Message-Id: <20210913120842.62116-1-agraf@csgraf.de>
+Subject: [PATCH v10 08/10] arm: Add Hypervisor.framework build target
+Date: Mon, 13 Sep 2021 14:08:40 +0200
+Message-Id: <20210913120842.62116-9-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
+In-Reply-To: <20210913120842.62116-1-agraf@csgraf.de>
+References: <20210913120842.62116-1-agraf@csgraf.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
@@ -87,217 +89,77 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +/8xATiWWN4F
+X-TUID: DsbOOdz6F8Cu
 
-Now that Apple Silicon is widely available, people are obviously excited
-to try and run virtualized workloads on them, such as Linux and Windows.
+Now that we have all logic in place that we need to handle Hypervisor.framework
+on Apple Silicon systems, let's add CONFIG_HVF for aarch64 as well so that we
+can build it.
 
-This patch set implements a fully functional version to get the ball
-going on that. With this applied, I can successfully run both Linux and
-Windows as guests. I am not aware of any limitations specific to
-Hypervisor.framework apart from:
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+Tested-by: Roman Bolshakov <r.bolshakov@yadro.com> (x86 only)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Sergio Lopez <slp@redhat.com>
 
-  - gdbstub debugging (breakpoints)
-  - missing GICv3 support
-
-To use hvf support, please make sure to run -M virt,highmem=off to fit
-in M1's physical address space limits and use -cpu host.
-
-
-Enjoy!
-
-Alex
+---
 
 v1 -> v2:
 
-  - New patch: hvf: Actually set SIG_IPI mask
-  - New patch: hvf: Introduce hvf vcpu struct
-  - New patch: hvf: arm: Mark CPU as dirty on reset
-  - Removed patch: hw/arm/virt: Disable highmem when on hypervisor.framework
-  - Removed patch: arm: Synchronize CPU on PSCI on
   - Fix build on 32bit arm
-  - Merge vcpu kick function patch into ARM enablement
-  - Implement WFI handling (allows vCPUs to sleep)
-  - Synchronize system registers (fixes OVMF crashes and reboot)
-  - Don't always call cpu_synchronize_state()
-  - Use more fine grained iothread locking
-  - Populate aa64mmfr0 from hardware
-  - Make safe to ctrl-C entitlement application
-
-v2 -> v3:
-
-  - Removed patch: hvf: Actually set SIG_IPI mask
-  - New patch: hvf: arm: Add support for GICv3
-  - New patch: hvf: arm: Implement -cpu host
-  - Advance PC on SMC
-  - Use cp list interface for sysreg syncs
-  - Do not set current_cpu
-  - Fix sysreg isread mask
-  - Move sysreg handling to functions
-  - Remove WFI logic again
-  - Revert to global iothread locking
 
 v3 -> v4:
 
-  - Removed patch: hvf: arm: Mark CPU as dirty on reset
-  - New patch: hvf: Simplify post reset/init/loadvm hooks
-  - Remove i386-softmmu target (meson.build for hvf target)
-  - Combine both if statements (PSCI)
-  - Use hv.h instead of Hypervisor.h for 10.15 compat
-  - Remove manual inclusion of Hypervisor.h in common .c files
-  - No longer include Hypervisor.h in arm hvf .c files
-  - Remove unused exe_full variable
-  - Reuse exe_name variable
-
-v4 -> v5:
-
-  - Use g_free() on destroy
-
-v5 -> v6:
-
-  - Switch SYSREG() macro order to the same as asm intrinsics
+  - Remove i386-softmmu target
 
 v6 -> v7:
 
-  - Already merged: hvf: Add hypervisor entitlement to output binaries
-  - Already merged: hvf: x86: Remove unused definitions
-  - Patch split: hvf: Move common code out
-    -> hvf: Move assert_hvf_ok() into common directory
-    -> hvf: Move vcpu thread functions into common directory
-    -> hvf: Move cpu functions into common directory
-    -> hvf: Move hvf internal definitions into common header
-    -> hvf: Make hvf_set_phys_mem() static
-    -> hvf: Remove use of hv_uvaddr_t and hv_gpaddr_t
-    -> hvf: Split out common code on vcpu init and destroy
-    -> hvf: Use cpu_synchronize_state()
-    -> hvf: Make synchronize functions static
-    -> hvf: Remove hvf-accel-ops.h
-  - New patch: hvf: arm: Implement PSCI handling
-  - New patch: arm: Enable Windows 10 trusted SMCCC boot call
-  - New patch: hvf: arm: Handle Windows 10 SMC call
-  - Removed patch: "arm: Set PSCI to 0.2 for HVF" (included above)
-  - Removed patch: "hvf: arm: Add support for GICv3" (deferred to later)
-  - Remove osdep.h include from hvf_int.h
-  - Synchronize SIMD registers as well
-  - Prepend 0x for hex values
-  - Convert DPRINTF to trace points
-  - Use main event loop (fixes gdbstub issues)
-  - Remove PSCI support, inject UDEF on HVC/SMC
-  - Change vtimer logic to look at ctl.istatus for vtimer mask sync
-  - Add kick callback again (fixes remote CPU notification)
-  - Move function define to own header
-  - Do not propagate SVE features for HVF
-  - Remove stray whitespace change
-  - Verify that EL0 and EL1 do not allow AArch32 mode
-  - Only probe host CPU features once
-  - Move WFI into function
-  - Improve comment wording
   - Simplify HVF matching logic in meson build file
-
-v7 -> v8:
-
-  - checkpatch fixes
-  - Do not advance for HVC, PC is already updated by hvf
-    (fixes Linux boot)
-
-v8 -> v9:
-
-  - [Merged] hvf: Move assert_hvf_ok() into common directory
-  - [Merged] hvf: Move vcpu thread functions into common directory
-  - [Merged] hvf: Move cpu functions into common directory
-  - [Merged] hvf: Move hvf internal definitions into common header
-  - [Merged] hvf: Make hvf_set_phys_mem() static
-  - [Merged] hvf: Remove use of hv_uvaddr_t and hv_gpaddr_t
-  - [Merged] hvf: Split out common code on vcpu init and destroy
-  - [Merged] hvf: Use cpu_synchronize_state()
-  - [Merged] hvf: Make synchronize functions static
-  - [Merged] hvf: Remove hvf-accel-ops.h
-  - [Merged] hvf: Introduce hvf vcpu struct
-  - [Merged] hvf: Simplify post reset/init/loadvm hooks
-  - [Dropped] arm: Enable Windows 10 trusted SMCCC boot call
-  - [Dropped] hvf: arm: Handle Windows 10 SMC call
-  - [New] arm: Move PMC register definitions to cpu.h
-  - [New] hvf: Add execute to dirty log permission bitmap
-  - [New] hvf: Introduce hvf_arch_init() callback
-  - [New] hvf: arm: Implement PSCI handling
-  - [New] hvf: arm: Add rudimentary PMC support
-  - [New] arm: tcg: Adhere to SMCCC 1.3 section 5.2
-  - [New] hvf: arm: Adhere to SMCCC 1.3 section 5.2
-  - Make kick function non-weak
-  - Use arm_cpu_do_interrupt()
-  - Remove CNTPCT_EL0 write case
-  - Inject UDEF on invalid sysreg access
-  - Add support for OS locking sysregs
-  - Remove PMCCNTR_EL0 handling
-  - Print PC on unhandled sysreg trace
-  - Sync SP (x31) based on SP_EL0/SP_EL1
-  - Fix SPSR_EL1 mapping
-  - Only sync known sysregs, assert when syncing fails
-  - Improve error message on unhandled ec
-  - Move vtimer sync to post-exit (fixes disable corner case from
-    kvm-unit-tests)
-  - Add vtimer offset, migration and pause logic
-  - Flush registers only after EXCP checkers (fixes PSCI on race)
-  - Remove Windows specifics and just comply with SMCCC spec
-  - Zero-initialize host_isar
-  - Use M1 SCTLR reset value
-  - Add support for cntv offsets
-  - Improve code readability
-  - Use new hvf_raise_exception() prototype
-  - Make cpu_off function void
-  - Add comment about return value, use -1 for "not found"
-  - Remove cpu_synchronize_state() when halted
-
-v9 -> v10:
-
-  - [Dropped] hvf: arm: Adhere to SMCCC 1.3 section 5.2
-  - Only handle PSCI calls for the current conduit
-  - Return true/false
-  - Return -1 in x0 on unknown SMC/HVC calls
-  - Move to target/arm/internals.h
-  - Fail -cpu host class creation gracefully
-  - Adjust error message on -cpu host realize failure
-  - Extend SCTLR comment that hvf returns 0 as default value
-  - Return true/false
-  - Report errors lazily
-  - Fix comment
-
-Alexander Graf (9):
-  arm: Move PMC register definitions to cpu.h
-  hvf: Add execute to dirty log permission bitmap
-  hvf: Introduce hvf_arch_init() callback
-  hvf: Add Apple Silicon support
-  hvf: arm: Implement -cpu host
-  hvf: arm: Implement PSCI handling
-  arm: Add Hypervisor.framework build target
-  hvf: arm: Add rudimentary PMC support
-  arm: tcg: Adhere to SMCCC 1.3 section 5.2
-
-Peter Collingbourne (1):
-  arm/hvf: Add a WFI handler
-
- MAINTAINERS                 |    5 +
- accel/hvf/hvf-accel-ops.c   |   21 +-
- include/sysemu/hvf_int.h    |   12 +-
- meson.build                 |    8 +
- target/arm/cpu.c            |   17 +-
- target/arm/cpu.h            |    2 +
- target/arm/helper.c         |   44 --
- target/arm/hvf/hvf.c        | 1261 +++++++++++++++++++++++++++++++++++
- target/arm/hvf/meson.build  |    3 +
- target/arm/hvf/trace-events |   11 +
- target/arm/hvf_arm.h        |   19 +
- target/arm/internals.h      |   44 ++
- target/arm/kvm_arm.h        |    2 -
- target/arm/meson.build      |    2 +
- target/arm/psci.c           |   35 +-
- target/i386/hvf/hvf.c       |   10 +
- 16 files changed, 1408 insertions(+), 88 deletions(-)
- create mode 100644 target/arm/hvf/hvf.c
+---
+ meson.build                | 7 +++++++
+ target/arm/hvf/meson.build | 3 +++
+ target/arm/meson.build     | 2 ++
+ 3 files changed, 12 insertions(+)
  create mode 100644 target/arm/hvf/meson.build
- create mode 100644 target/arm/hvf/trace-events
- create mode 100644 target/arm/hvf_arm.h
 
+diff --git a/meson.build b/meson.build
+index a3e9b95846..cf91256c9a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -77,6 +77,13 @@ else
+ endif
+ 
+ accelerator_targets = { 'CONFIG_KVM': kvm_targets }
++
++if cpu in ['aarch64']
++  accelerator_targets += {
++    'CONFIG_HVF': ['aarch64-softmmu']
++  }
++endif
++
+ if cpu in ['x86', 'x86_64', 'arm', 'aarch64']
+   # i368 emulator provides xenpv machine type for multiple architectures
+   accelerator_targets += {
+diff --git a/target/arm/hvf/meson.build b/target/arm/hvf/meson.build
+new file mode 100644
+index 0000000000..855e6cce5a
+--- /dev/null
++++ b/target/arm/hvf/meson.build
+@@ -0,0 +1,3 @@
++arm_softmmu_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: files(
++  'hvf.c',
++))
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 25a02bf276..50f152214a 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -60,5 +60,7 @@ arm_softmmu_ss.add(files(
+   'psci.c',
+ ))
+ 
++subdir('hvf')
++
+ target_arch += {'arm': arm_ss}
+ target_softmmu_arch += {'arm': arm_softmmu_ss}
 -- 
 2.30.1 (Apple Git-130)
 

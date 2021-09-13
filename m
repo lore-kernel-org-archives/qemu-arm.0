@@ -1,111 +1,82 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp851101lfp;
-        Tue, 14 Sep 2021 09:37:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyLryHxpuv7RgHMPVGEc06ETOInMXLl8SeBu1bphzWCsZRhSxTybB2t9KlqU6PY8RrOx9xV
-X-Received: by 2002:a05:6000:1569:: with SMTP id 9mr23131wrz.343.1631637457085;
-        Tue, 14 Sep 2021 09:37:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631637457; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp72525lfp;
+        Mon, 13 Sep 2021 14:30:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzyfIf2f0sgW122gcPgZmDwwZ+ZltunrUMYh3mvC93SQMHhRNwdcJpwzpWO4LcfR4+pqz52
+X-Received: by 2002:a05:6602:3404:: with SMTP id n4mr10480489ioz.45.1631568613863;
+        Mon, 13 Sep 2021 14:30:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631568613; cv=none;
         d=google.com; s=arc-20160816;
-        b=yUvBVouab54/ApdH1ZqOXBNDdmn62vPbZ1pmZv+atdE2XhI+EZU9FcGUwnQqntDGGq
-         GwcbVpLGO7/rL1LQnTNtIQJr/qKQRuHDFgsHBjsm/ATqt3TmuRvyWQjURP6fFha+E2zK
-         yo59kR9nvkt5r/iK0pU9PgYKplsM3fwaoPZP/r6VGLgfbk0TlaH6lhZ+j4IqNor8NS6N
-         yL0JGApePrC/Ldsiq2on7vpC6t07keDb0TvLUVKaLNnlJTGksCe9L1dbEEdXRCugAd/I
-         bP2g81RvrFYruO1LUqjA9QpSYKH33p6kxMFm2VgkVofAETnzV+1bgwCWa59eERkJuZHN
-         jbNQ==
+        b=o/J7K9orLNWG1J9BtDDpQDKvLoOYuZGOKk8X8r9xjgJYPLP6QznbZyk72ddfe8N7HE
+         5KrUW9NNclMbT/+w4HX808YrQ0DElFAXA4vsKw9ftOfPGiPtds2qflyzqb1lxXYDgopp
+         p9j2G2+lGWfoVYmaTmQtckhizQotE7hJjaH0IrRnDk9c+WKhq1LREV8lr+QDf5ExmBLn
+         H05sqqWbaxaHY91oKfjXpmCmiPCzEeq4QKwKiRAiIqrEobYq8vwtdGvxzqIH+zQj0joq
+         AOKjuHQz6KPqCKCzHyjGwUknxYzcG6kWHXJESNOyH/tX50Jz7GZ7RQFDTxL/3LtDNZeb
+         8naA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=uB/IOM9wvm06euCcwdkC6N9/8Q6PIHGVDPykNlmmfIQ=;
-        b=HKiUmFais5GTBkhKFgd614Cg5Vq2W8PXGkhhrPRhz6osM5Na96qbURDfwrgnn5eEYe
-         UaCwt9XJiwThBghUKxz4Qm1sFqZEKLIY1MIo6oOazzGl4vkzfgSjQHHax1oAKh5b//JM
-         oY+XoxFXi57RRUR3X+nTncNSk8Gro7c4S/YZth0OF9JvaGUaSUK0xIlVQ08uVgKaCNVU
-         VQ44NKRUQebkqQjTH/3O59FBteNqgHgPjz/tsMr9KvPpQtKMan4saWSKjb++XeC5dhqb
-         Jn5DHKZM3DQWv++Mejp8ScVZ6ekJX8irI9lNkglextIfOhYZXYDzDmB4bUXNdFbVcOQm
-         uIng==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=1cPSclm0yNyFZadA3baXMmpptPWGDfVQjG7Gt3V3x88=;
+        b=zz5j1utSwIAHFtd1zhbznMTR3X7X6QuXuiMDQHzinpXZ4KSID8IR8viBkDe+xNA/Vr
+         Vq8XGI0hG9JI092Km7XvpXs4BMVZ/GL+4/CrRc1VdJDGHRW36wm2yLw3eI3uigk7PvPy
+         MfQtigAYIM6BFe20TWmn7oVEoQO/DNRN7DBXnLKzx+uGnZvA5wLueG36GmNpEe7dS13z
+         zcOTmdZ8K/XtSJAPxGGgJaZA/ImZMgSFG5Uxjzfs2TWw06g27unYq+TLbd4DEBm304tg
+         bovYggbLEfpQfWmq0NpyFcb1Kta+bDkM0CoIk9wlpBkmIzeAq5TetEpt71OR5oMPsYDd
+         kiNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx5L3kVD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si4051250wri.569.2021.09.14.09.37.36
+        by mx.google.com with ESMTPS id h11si7612047ior.13.2021.09.13.14.30.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 09:37:37 -0700 (PDT)
+        Mon, 13 Sep 2021 14:30:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx5L3kVD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41980 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38066 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQBRA-0001cm-6s
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 12:37:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59440)
+	id 1mPtWn-0001T5-8t
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 17:30:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQBPF-0008MW-Ix
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 12:35:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31465)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQBPC-0007jV-Vc
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 12:35:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631637333;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uB/IOM9wvm06euCcwdkC6N9/8Q6PIHGVDPykNlmmfIQ=;
- b=Vx5L3kVDEzqs8z7rBdiW/twNsEix6GNuRZBhuPOn4aajT4lP25HHh4OuugRxo2NSJePEu5
- w0NDVuLoH7kXC0cfs5YEnVeeHiPOlRNAzOMUhK593BxHvsW0LibZ1yX/TDgj0GpENwVU+f
- KIfhMZI5piznmiDl9/Ymv54W2RRLdTk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-564-tGaUdgfPPR61IwJzSKKHAQ-1; Tue, 14 Sep 2021 12:35:30 -0400
-X-MC-Unique: tGaUdgfPPR61IwJzSKKHAQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5B5F9104FC26;
- Tue, 14 Sep 2021 16:35:10 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D2205DF2F;
- Tue, 14 Sep 2021 16:34:27 +0000 (UTC)
-Date: Tue, 14 Sep 2021 17:34:24 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 42/53] hw/core: introduce a 'format_tlb' callback
-Message-ID: <YUDPECQJraD3thwi@redhat.com>
-References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-43-berrange@redhat.com>
- <818d439f-337e-a73c-9e22-fbf8a119435f@redhat.com>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1mPtWZ-0001JO-Ma; Mon, 13 Sep 2021 17:30:00 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:49514 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1mPtWX-00019e-JT; Mon, 13 Sep 2021 17:29:59 -0400
+Received: from MacBook-Air.alex.local
+ (dynamic-095-118-088-150.95.118.pool.telefonica.de [95.118.88.150])
+ by csgraf.de (Postfix) with ESMTPSA id 3E11060800D8;
+ Mon, 13 Sep 2021 23:29:49 +0200 (CEST)
+Subject: Re: [PATCH v9 07/11] hvf: arm: Implement PSCI handling
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210912230757.41096-1-agraf@csgraf.de>
+ <20210912230757.41096-8-agraf@csgraf.de>
+ <CAFEAcA8BybrfxNxkWbEjxji4DvDumr6Otb_RK_f84Dt_TWXfpA@mail.gmail.com>
+ <ad707e0d-8d4a-0248-80f4-a02a7226ce0a@csgraf.de>
+ <CAFEAcA_OBK1hbqC1Nc7J+VEwkO54WvqBrNa=bR5T3tZW+nfEkQ@mail.gmail.com>
+ <3132e2f5-41a6-6011-808b-7ea12abec1c0@csgraf.de>
+ <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <b5226bd4-f71d-b1bc-8b27-72a440d18dc9@csgraf.de>
+Date: Mon, 13 Sep 2021 23:29:47 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.14.0
 MIME-Version: 1.0
-In-Reply-To: <818d439f-337e-a73c-9e22-fbf8a119435f@redhat.com>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+Content-Language: en-US
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -38
+X-Spam_score: -3.9
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.969,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,77 +89,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
- David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
- Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ Marc Zyngier <maz@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6UISRA5Vg6Kl
+X-TUID: jZPWl8+tvPQz
 
-On Tue, Sep 14, 2021 at 05:56:09PM +0200, Philippe Mathieu-Daudé wrote:
-> On 9/14/21 4:20 PM, Daniel P. Berrangé wrote:
-> > This will allow us to reduce duplication between the different targets
-> > implementing the 'info tlb' command.
-> > 
-> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > ---
-> >  hw/core/cpu-common.c  |  9 +++++++++
-> >  include/hw/core/cpu.h | 11 +++++++++++
-> >  2 files changed, 20 insertions(+)
-> 
-> > diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> > index 4c47e1df18..64fc57c8d9 100644
-> > --- a/include/hw/core/cpu.h
-> > +++ b/include/hw/core/cpu.h
-> >   * @has_work: Callback for checking if there is work to do.
-> >   * @memory_rw_debug: Callback for GDB memory access.
-> >   * @format_state: Callback for formatting state.
-> > + * @format_tlb: Callback for formatting memory mappings
-> >   * @get_arch_id: Callback for getting architecture-dependent CPU ID.
-> >   * @set_pc: Callback for setting the Program Counter register. This
-> >   *       should have the semantics used by the target architecture when
-> > @@ -136,6 +137,7 @@ struct CPUClass {
-> >      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-> >                             uint8_t *buf, int len, bool is_write);
-> >      void (*format_state)(CPUState *cpu, GString *buf, int flags);
-> > +    void (*format_tlb)(CPUState *cpu, GString *buf);
-> 
-> Doesn't this belong to SysemuCPUOps?
 
-I can't really answer, since my knowledge of this area of QEMU code is
-fairly mimimal. I put it here because it is basically serving the same
-purpose as the "format_state" callback immediately above it, which was
-a rename of the existing "dump_state" callback. I assumed whatever was
-there already was a good practice to follow[1]...
+On 13.09.21 14:30, Peter Maydell wrote:
+> On Mon, 13 Sept 2021 at 13:02, Alexander Graf <agraf@csgraf.de> wrote:
+>>
+>> On 13.09.21 13:44, Peter Maydell wrote:
+>>> On Mon, 13 Sept 2021 at 12:07, Alexander Graf <agraf@csgraf.de> wrote:
+>>>> To keep your train of thought though, what would you do if we encounter
+>>>> a conduit that is different from the chosen one? Today, I am aware of 2
+>>>> different implementations: TCG injects #UD [1] while KVM sets x0 to -1 [2].
+>>> If the SMC or HVC insn isn't being used for PSCI then it should
+>>> have its standard architectural behaviour.
+>> Why?
+> QEMU's assumption here is that there are basically two scenarios
+> for these instructions:
+>  (1) we're providing an emulation of firmware that uses this
+>      instruction (and only this insn, not the other one) to
+>      provide PSCI services
+>  (2) we're not emulating any firmware at all, we're running it
+>      in the guest, and that guest firmware is providing PSCI
+>
+> In case (1) we provide a PSCI ABI on the end of the insn.
+> In case (2) we provide the architectural behaviour for the insn
+> so that the guest firmware can use it.
+>
+> We don't currently have
+>  (3) we're providing an emulation of firmware that does something
+>      other than providing PSCI services on this instruction
+>
+> which is what I think you're asking for. (Alternatively, you might
+> be after "provide PSCI via SMC, not HVC", ie use a different conduit.
+> If hvf documents that SMC is guaranteed to trap that would be
+> possible, I guess.)
 
-Regards,
-Daniel
 
-[1] yes assuming these things is often foolish in QEMU :-)
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Hvf doesn't document anything. The only documentation it has are its C
+headers.
+
+However, M1 does not implement EL3, but traps SMC calls. It's the only
+chip Apple has out for hvf on ARM today. I would be very surprised if
+they started to regress on that functionality.
+
+So, would you be open to changing the default conduit to SMC for
+hvf_enabled()? Is that really a better experience than just modeling
+behavior after KVM?
+
+
+>
+>> Also, why does KVM behave differently?
+> Looks like Marc made KVM set x0 to -1 for SMC calls in kernel commit
+> c0938c72f8070aa; conveniently he's on the cc list here so we can
+> ask him :-)
+>
+>> And why does Windows rely on
+>> SMC availability on boot?
+> Ask Microsoft, but probably either they don't realize that
+> SMC might not exist and be trappable, or they only have a limited
+> set of hosts they care about. CPUs with no EL3 are not that common.
+
+
+I'm pretty sure it's the latter :).
+
+
+>
+>> If you really insist that you don't care about users running Windows
+>> with TCG and EL2=0, so be it. At least you can enable EL2 and it works
+>> then. But I can't on hvf. It's one of the most useful use cases for hvf
+>> on QEMU and I won't break it just because you insist that "SMC behavior
+>> is IMPDEF, so it must be UNDEF". If it's IMPDEF, it may as well be "set
+>> x0 to -1 and add 4 to pc".
+> I am not putting in random hacks for the benefit of specific guest OSes.
+> If there's a good reason why QEMU's behaviour is wrong then we can change
+> it, but "I want Windows to boot" doesn't count.
+
+
+Ok, so today we have 2 implementations for SMC traps in an EL0/1 only VM:
+
+  * TCG injects #UD
+  * KVM sets x0 = -1 and pc += 4.
+
+With v10 of the HVF patch set, I'm following what KVM is doing. Can we
+leave it at that for now and sort out with Marc (and maybe ARM spec
+writers) what we want to do consistently across all implementations as a
+follow-up?
+
+
+Thanks,
+
+Alex
 

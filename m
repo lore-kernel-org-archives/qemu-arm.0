@@ -1,68 +1,67 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3831959lfb;
-        Mon, 13 Sep 2021 09:29:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLXBn1WZgtG8Wn4UrX8AigL0ITsxFhwKzOUdhThc3UgAaOIUqlUq3ciH1DA9byCwRgB7Vb
-X-Received: by 2002:ab0:494a:: with SMTP id a10mr494853uad.90.1631550571013;
-        Mon, 13 Sep 2021 09:29:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631550571; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3832484lfb;
+        Mon, 13 Sep 2021 09:30:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxpZL3TJKgNvBus42ZcWXeFI2/czc/w0EhYwntyaNz7R5w2gVWWlJA3sLqPT8dKMEZCFk4q
+X-Received: by 2002:ab0:2545:: with SMTP id l5mr533428uan.106.1631550608814;
+        Mon, 13 Sep 2021 09:30:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631550608; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tnfqms2MnVm3nOmYbe2KN+AoaKVqwzONJp4OdxtKntrWoTChNoYT7Ewyuds/u96+hm
-         K/rAXq+F+kxBbhTc/pg8H8libdhOM83NPOG9MJpiEMRpyFaWcvoMxjS2yCefTxUlE5eX
-         4puMhVIVBYAP9lyEXfrnfOiv41yaq7UzbW0vP+JFlEOsoJ4bnic0FiA7ubYIKvEwBzN7
-         cVPwGMt8Tm/X+P8WHzkTrCJb3BT79UAOC0YBP0iZFiNBYWy/NvN4CiREOLCbj0bofkSy
-         w+JoI6fjNLhO6mhtPSELANydzlABta6uUZTP3k8PdAZifS1E6+7OeHgTmQRTeZMUbmEw
-         0aTQ==
+        b=OWPc8HuM3YiOr9eNQQ+zXVAT+QXu70zvggHvMKTBo/9YQiZl5fvBl5AudoAByHA5CI
+         pbFs0JAYqyeys/yrVIcdR2E/LffqTLm6BAwB7bvUNcF6G6mNGaPoOedWq2au/nWt+8Lp
+         rfIeVqWY2h88Kus8er5mwhZcPNpNB1WwnWRhtqtm7nCbKZLdUth9V8tzia0CFlf7hg4o
+         d2NvEBWwApZszBXsDx3/GWpgvy4rW41zO4GLXD8ecnIbKZh1jR/W2axaFoV5E/VNROkA
+         SW3L7Tc2DMYh7CuNV5bj02m8bEYaR9loubDV5eXknk0tnpSD57FRonqQTQz8aOu8jvMd
+         nJZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=fv72HIG+GfrqNEdBRfRFaNHSTIzUGgYTewyRzcEe69k=;
-        b=JX124wCqoNurT4s6H5NHwK2+OZgd3yrO9qFyjkrkOWL1tGz7WYhF38FSgUR1o0a4mB
-         PhSaln84HUcZCS7qPOfX45BANMhyG4aUukXQMB392NUqMvVaHTFbl6zhUJOb4gpl4Zo1
-         JloJGfnF7sLukoouslT6zaI3pyaWpYF7FZFuARxQv0CVFJ820+FckgPC8o/dxFw69kts
-         X6NAfouT8YjPvfX7W7K2/goEcmNjgRAqtKpsx2gJlZHe7+qRe4vmBUJXwVGqevdEbyq2
-         SYHLaVXL4AWkwSg26xwqYIfvYbNC74Mjn8Z5ckoggw7C4boEP6bd+FCh7OXKW6Di3dCy
-         vF5Q==
+        bh=bTzMnQnAzGQwR0xamNaZY19Jsah65lLBnMI+EuV+DgI=;
+        b=f7tLzABBUCMxy7+sVB16+R7EitOtd+MMdyk2vM7I/ySF7zyGgxTEX/7SzS3DCwftTP
+         lTveKnEG3e2cWmQHe/ofxBB31ET7Eft7n0WlhG1VvDJeudtCQS5nKWq2wsZsDlxulKDl
+         4I7atLJdwhlxygbAtu8JW4DRSuLUlwhLfZhT0x8RqFjzDgFePajA9LRDVrL8ksuNmMfu
+         isrLlR6j2ky8fdDocilsl3TXJGQukO1Mtvaph/aIK/no5D4pXnv3t223/XuYdup3B5MK
+         lE5cinmYJQS9KZahuTjVyaEm6dwkz72bPRWpRR9RSk1OJy5SwGn6rnZ1n52jBBk5e2lc
+         vA+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f7si887667vsp.412.2021.09.13.09.29.30
+        by mx.google.com with ESMTPS id p9si2024580vse.375.2021.09.13.09.30.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 09:29:31 -0700 (PDT)
+        Mon, 13 Sep 2021 09:30:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39296 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPopm-00043t-9M
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:29:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33508)
+	id 1mPoqN-0004qa-PQ
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:30:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoaH-00040m-A6; Mon, 13 Sep 2021 12:13:29 -0400
-Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:60443)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoaH-00040o-DI
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:29 -0400
+Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:58261)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoaA-0000gn-4L; Mon, 13 Sep 2021 12:13:29 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.128])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 760D420DB9;
- Mon, 13 Sep 2021 16:13:11 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mPoaA-0000hL-Cg
+ for qemu-arm@nongnu.org; Mon, 13 Sep 2021 12:13:29 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.98])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 67E8513ECD1;
+ Mon, 13 Sep 2021 16:13:12 +0000 (UTC)
 Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 13 Sep
- 2021 18:13:10 +0200
+ 2021 18:13:11 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001946bcf45-6d5d-4ed6-81fc-a34fc1bd4c85,
+ (GARM-96R0019a87fcd7-b6ab-4302-b435-18ae5056f957,
  7CA125ACC991A0BE3D2311CBE60F5A293341D68C) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 02/14] hw: arm: aspeed: Enable mac0/1 instead of mac1/2 for
- g220a
-Date: Mon, 13 Sep 2021 18:12:52 +0200
-Message-ID: <20210913161304.3805652-3-clg@kaod.org>
+Subject: [PULL 05/14] hw: aspeed_gpio: Simplify 1.8V defines
+Date: Mon, 13 Sep 2021 18:12:55 +0200
+Message-ID: <20210913161304.3805652-6-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210913161304.3805652-1-clg@kaod.org>
 References: <20210913161304.3805652-1-clg@kaod.org>
@@ -72,18 +71,18 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.96]
 X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 8a8044e4-326b-42a8-b7a6-d95f3acc79b2
-X-Ovh-Tracer-Id: 8689414008411163497
+X-Ovh-Tracer-GUID: c65ce67e-af97-460d-9669-e60ef6ac5de1
+X-Ovh-Tracer-Id: 8689695484695120748
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
- helo=7.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout2.3005.mail-out.ovh.net
+X-Spam_score_int: 0
+X-Spam_score: -0.0
+X-Spam_bar: /
+X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,39 +96,117 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Guenter Roeck <linux@roeck-us.net>, Joel Stanley <joel@jms.id.au>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Rashmica Gupta <rashmica.g@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WZVIZvqbZ09g
+X-TUID: soyTn0EASb3o
 
-From: Guenter Roeck <linux@roeck-us.net>
+From: Joel Stanley <joel@jms.id.au>
 
-According to its dts file in the Linux kernel, we need mac0 and mac1 enabled
-instead of mac1 and mac2. Also, g220a is based on aspeed-g5 (ast2500) which
-doesn't even have the third interface.
+There's no need to define the registers relative to the 0x800 offset
+where the controller is mapped, as the device is instantiated as it's
+own model at the correct memory address.
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Simplify the defines and remove the offset to save future confusion.
+
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Rashmica Gupta <rashmica.g@gmail.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210810035742.550391-1-linux@roeck-us.net>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210713065854.134634-3-joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/gpio/aspeed_gpio.c | 73 +++++++++++++++++++++----------------------
+ 1 file changed, 36 insertions(+), 37 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index ecf0c9cfacb8..20e3a7716006 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -997,7 +997,7 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
-     amc->fmc_model = "n25q512a";
-     amc->spi_model = "mx25l25635e";
-     amc->num_cs    = 2;
--    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON;
-+    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-     amc->i2c_init  = g220a_bmc_i2c_init;
-     mc->default_ram_size = 1024 * MiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index b3dec4448009..dc721aec5da7 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -169,44 +169,43 @@
+ 
+ /* AST2600 only - 1.8V gpios */
+ /*
+- * The AST2600 has same 3.6V gpios as the AST2400 (memory offsets 0x0-0x198)
+- * and additional 1.8V gpios (memory offsets 0x800-0x9D4).
++ * The AST2600 two copies of the GPIO controller: the same 3.6V gpios as the
++ * AST2400 (memory offsets 0x0-0x198) and a second controller with 1.8V gpios
++ * (memory offsets 0x800-0x9D4).
+  */
+-#define GPIO_1_8V_REG_OFFSET          0x800
+-#define GPIO_1_8V_ABCD_DATA_VALUE     ((0x800 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DIRECTION      ((0x804 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_ENABLE     ((0x808 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_SENS_0     ((0x80C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_SENS_1     ((0x810 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_SENS_2     ((0x814 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INT_STATUS     ((0x818 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_RESET_TOLERANT ((0x81C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DATA_VALUE        ((0x820 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DIRECTION         ((0x824 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_ENABLE        ((0x828 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_SENS_0        ((0x82C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_SENS_1        ((0x830 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_SENS_2        ((0x834 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INT_STATUS        ((0x838 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_RESET_TOLERANT    ((0x83C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DEBOUNCE_1     ((0x840 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DEBOUNCE_2     ((0x844 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DEBOUNCE_1        ((0x848 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DEBOUNCE_2        ((0x84C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_DEBOUNCE_TIME_1     ((0x850 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_DEBOUNCE_TIME_2     ((0x854 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_DEBOUNCE_TIME_3     ((0x858 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_COMMAND_SRC_0  ((0x860 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_COMMAND_SRC_1  ((0x864 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_COMMAND_SRC_0     ((0x868 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_COMMAND_SRC_1     ((0x86C - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_DATA_READ      ((0x8C0 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_DATA_READ         ((0x8C4 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_ABCD_INPUT_MASK     ((0x9D0 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_E_INPUT_MASK        ((0x9D4 - GPIO_1_8V_REG_OFFSET) >> 2)
+-#define GPIO_1_8V_MEM_SIZE            0x9D8
+-#define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
+-                                      GPIO_1_8V_REG_OFFSET) >> 2)
++#define GPIO_1_8V_ABCD_DATA_VALUE     (0x000 >> 2)
++#define GPIO_1_8V_ABCD_DIRECTION      (0x004 >> 2)
++#define GPIO_1_8V_ABCD_INT_ENABLE     (0x008 >> 2)
++#define GPIO_1_8V_ABCD_INT_SENS_0     (0x00C >> 2)
++#define GPIO_1_8V_ABCD_INT_SENS_1     (0x010 >> 2)
++#define GPIO_1_8V_ABCD_INT_SENS_2     (0x014 >> 2)
++#define GPIO_1_8V_ABCD_INT_STATUS     (0x018 >> 2)
++#define GPIO_1_8V_ABCD_RESET_TOLERANT (0x01C >> 2)
++#define GPIO_1_8V_E_DATA_VALUE        (0x020 >> 2)
++#define GPIO_1_8V_E_DIRECTION         (0x024 >> 2)
++#define GPIO_1_8V_E_INT_ENABLE        (0x028 >> 2)
++#define GPIO_1_8V_E_INT_SENS_0        (0x02C >> 2)
++#define GPIO_1_8V_E_INT_SENS_1        (0x030 >> 2)
++#define GPIO_1_8V_E_INT_SENS_2        (0x034 >> 2)
++#define GPIO_1_8V_E_INT_STATUS        (0x038 >> 2)
++#define GPIO_1_8V_E_RESET_TOLERANT    (0x03C >> 2)
++#define GPIO_1_8V_ABCD_DEBOUNCE_1     (0x040 >> 2)
++#define GPIO_1_8V_ABCD_DEBOUNCE_2     (0x044 >> 2)
++#define GPIO_1_8V_E_DEBOUNCE_1        (0x048 >> 2)
++#define GPIO_1_8V_E_DEBOUNCE_2        (0x04C >> 2)
++#define GPIO_1_8V_DEBOUNCE_TIME_1     (0x050 >> 2)
++#define GPIO_1_8V_DEBOUNCE_TIME_2     (0x054 >> 2)
++#define GPIO_1_8V_DEBOUNCE_TIME_3     (0x058 >> 2)
++#define GPIO_1_8V_ABCD_COMMAND_SRC_0  (0x060 >> 2)
++#define GPIO_1_8V_ABCD_COMMAND_SRC_1  (0x064 >> 2)
++#define GPIO_1_8V_E_COMMAND_SRC_0     (0x068 >> 2)
++#define GPIO_1_8V_E_COMMAND_SRC_1     (0x06C >> 2)
++#define GPIO_1_8V_ABCD_DATA_READ      (0x0C0 >> 2)
++#define GPIO_1_8V_E_DATA_READ         (0x0C4 >> 2)
++#define GPIO_1_8V_ABCD_INPUT_MASK     (0x1D0 >> 2)
++#define GPIO_1_8V_E_INPUT_MASK        (0x1D4 >> 2)
++#define GPIO_1_8V_MEM_SIZE            0x1D8
++#define GPIO_1_8V_REG_ARRAY_SIZE      (GPIO_1_8V_MEM_SIZE >> 2)
+ 
+ static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
+ {
 -- 
 2.31.1
 

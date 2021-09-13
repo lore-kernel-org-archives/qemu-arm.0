@@ -1,100 +1,72 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3603131lfb;
-        Mon, 13 Sep 2021 05:06:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwtwcdeTBFtE2PaH2IhWxORQVxrbccDEmyhsqyBCuVpyUy9aa+CeTgi2ITqJTIluj30bnX
-X-Received: by 2002:a1c:7201:: with SMTP id n1mr10658264wmc.19.1631534796922;
-        Mon, 13 Sep 2021 05:06:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631534796; cv=none;
+Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3606447lfb;
+        Mon, 13 Sep 2021 05:10:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy568OkFPrJ2xt0aUnhuBH9SwUcOGjNxoynX3b9buFLNPffU7KjSbhrS3KnfwCRzYyzBDAE
+X-Received: by 2002:a05:6000:11d1:: with SMTP id i17mr12350809wrx.424.1631535015097;
+        Mon, 13 Sep 2021 05:10:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631535015; cv=none;
         d=google.com; s=arc-20160816;
-        b=FRURWZVF5wIaYT8I84hl5KkcJanO8SZGqUCLh4XXmkiPEGmgqf3JlecfDLOFLik7S9
-         GfVo2LOEaUipvho6VgHcBV3Vhk9RKWvRB82bN8UtWM14+F3bp3qFaxGPUtU5uCztWHO7
-         1HGXlibeu08sZMbqgfiFnEpLpXl4YVEV5vCZSiZwM7iDtwKWXBQZeqqHUaNrDlqvvUc3
-         srER9wi1vOkTfSd3G9NKshkhca+U9R2G7LVs13vBMxBpaaOeEbXKBdegMfXt+bS4QsLE
-         ngmWzmOcI+IKfBok1/xZoe1zUfPkJTLfg4DWXB7Hf5x9cVzfgW/DujNPULOIHmymaMft
-         LXcg==
+        b=R1OYYI7mqPRSotfWlWOjvPJRZvfA1F0kvEBF1sjgzNoBJrtCGyI3JD2D6n6QYByuKc
+         x0mqJy5ManOVNQ8XnQEJ0KI62ExxLnT67tqRsAq3+P/55GHCH5hQGAFw5cXuElk3axJS
+         AdxeAngUvMs5letbwme/PwzPx0zviJUdCRHoU9ciFCQfO66WXsWfPqSdWOuodm2Y+DzO
+         Pb+9ffu9IQ/nqopAvpnnFk/anZh4Qc/hmRaka67CVPITLzq4JLT//zLSwl5qOoTg5h37
+         1jKBbRRzu90kjeWK+L5xGMolO1bjX6n4nbdNQ29qfToChxvQ7jCh5NjZwi1IvS5kV26s
+         4/6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kv+m7wzDZI30FajW9GsAR4z0YpXe2JN7uOHdZCUJ+oA=;
-        b=MXUhmeZrNCl7VlY2swj2VmbkdqQRXsIiifm6sKzJ1P5w6rr4dSu9DyVDCzh8v464Qv
-         B0t1gPXkDHJzplg9nJWMeu4P7xoLC/A+jKO7KBpWMNLc3A2plfY5eBI914O9buoOn7Rl
-         l5Z4LOCX1MWAw3pPMu9ERmc8ydUsHcdlUmI4Yi5ilDwEfv01+B0qaDmQEa9DheWkgWEz
-         lMNRRTSh/fhRpJ3rO/Ou0KS7UtjtHgNaEWzOfP11hy6RAAxr0RmIGItGPFW8IELmvJVf
-         VIMxq+v6rlowA2le3Wzg/DCliukP8zs4/VKlsFCLY2aiefPMg5GgdgQOJFOD9Tjb+La6
-         Hmmg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=YP7FuNeKFSsC3SEtbUOH35dZ73aJZKJLOyayuxTxJiE=;
+        b=ekaDv8zIhPx7TjonX1m20420Dcu8f7U6zifsJaaurdyTTDHHVpCjTHGElALXHjQ+nF
+         bD032RnZX05dlhX0f40dhwdmvwibTOcOMjkhyPMFBdhwBPOnoB27SvhWs4CTAXbID8vS
+         LltNHG2Q2RxN2UNkzr4pB17YYG9DIeIrYKZ/8OO4PtIEAM5woVZAIB1Mb5iEWlAVI+sJ
+         tQ4vHTc/M0Bw0AhWmVMYAbGf+B3KTBx5LnvbkF5F1UJc4RuaKFb8wc1AVGnQNisUU1aX
+         sdbKU0f5wOdpOkm4mSxkZd8bjivRk4Qh9QGAy/AuqSt+oZK6e0EjagiUzTQGFJQ5oUcv
+         MRvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Qf2TLhvP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v24si9018622wmh.65.2021.09.13.05.06.36
+        by mx.google.com with ESMTPS id j10si7943605wrx.57.2021.09.13.05.10.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 05:06:36 -0700 (PDT)
+        Mon, 13 Sep 2021 05:10:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Qf2TLhvP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43094 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPkjM-0006YH-1T
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 08:06:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43326)
+	id 1mPkms-0004ox-3f
+	for alex.bennee@linaro.org; Mon, 13 Sep 2021 08:10:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPkc1-0004dy-Hu
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 07:59:02 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:38550)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mPkc0-0006cS-2g
- for qemu-arm@nongnu.org; Mon, 13 Sep 2021 07:59:01 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id u16so14271769wrn.5
- for <qemu-arm@nongnu.org>; Mon, 13 Sep 2021 04:58:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kv+m7wzDZI30FajW9GsAR4z0YpXe2JN7uOHdZCUJ+oA=;
- b=Qf2TLhvP83HTLZE6mpDOCd2EHLZG68Zu2Wy+BzV1gs1DFW8VrJ/Mqgk+kTADjI+L2R
- T+XVISKhrYDHhThBfMsBeSgRontINt0iuogAcqis7/Fa/k5y/Xib7p9Eh6jYkkXJ0VNv
- 046XnY7AGwP5srzH1MDeryYJnb3tXeXuu7Fv2Ko6v3SQNu2FbLndom/srWRQWy/mdWlh
- SDywaH2olN68yQH6wn+0H2Yibjqr0+7om4HsYlrtnbb6VsZxiF2r0ov/GVbiMLwI3Je7
- ti/EoFCXfKCgNTjYzZ7HYw+gxvQBWOTRMJwNnEOTNK1fQUaRYJ/cpbBtp12Fxp60wWB/
- PgvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kv+m7wzDZI30FajW9GsAR4z0YpXe2JN7uOHdZCUJ+oA=;
- b=Br52mFoWjWRTN289B0ykuxFVbNZoc39Z/OjrVkf4Fm0xxXwbHELTL8x1Qi+EbN4mQ+
- dtzNix0IsZsRMlrjG+7pQS2702Eocb6WQ9b/Ei54aQt2vW1zCPGz02k2e2hgACHnTnml
- FBS5+akoFCvD1mX7VYDlR6dWNLhdgSQEbOOJ5fhQd69fxNLqDJstdjlM0NDpigNiy5ic
- 61zBMpbD4u1Oyg2snwVX7OmpUbZb19iVZWXUETpkVOGDnE0Uunn7oWsr8MBvH2VzPT38
- 8KsoSiQ5CTMWMKLukPlYpSFPBdCMtsQxxcJ0CJPjmvpHACX+RNKdvcalGXobv/IiCRv2
- hyZw==
-X-Gm-Message-State: AOAM5307cOUWKFXSOz2x5//sK4nDLSHiS81Tl0EseWah4eYRMf2sOa70
- 3+k2gq9NKqusbK+/RlGjOzQpTaWlpOj8UKQWAtcbHpu7I6Y=
-X-Received: by 2002:adf:fb91:: with SMTP id a17mr11770777wrr.376.1631534338318; 
- Mon, 13 Sep 2021 04:58:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1mPklW-0002KX-Dq; Mon, 13 Sep 2021 08:08:50 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:44044 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1mPklT-0004ic-94; Mon, 13 Sep 2021 08:08:48 -0400
+Received: from localhost.localdomain
+ (dynamic-095-118-088-150.95.118.pool.telefonica.de [95.118.88.150])
+ by csgraf.de (Postfix) with ESMTPSA id 36BE960805EC;
+ Mon, 13 Sep 2021 14:08:45 +0200 (CEST)
+From: Alexander Graf <agraf@csgraf.de>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Subject: [PATCH v10 03/10] hvf: Introduce hvf_arch_init() callback
+Date: Mon, 13 Sep 2021 14:08:35 +0200
+Message-Id: <20210913120842.62116-4-agraf@csgraf.de>
+X-Mailer: git-send-email 2.30.1 (Apple Git-130)
+In-Reply-To: <20210913120842.62116-1-agraf@csgraf.de>
+References: <20210913120842.62116-1-agraf@csgraf.de>
 MIME-Version: 1.0
-References: <20210907223234.1165705-1-crauer@google.com>
-In-Reply-To: <20210907223234.1165705-1-crauer@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Sep 2021 12:58:07 +0100
-Message-ID: <CAFEAcA_Mgnf4ENaK0MonaUtw-g07MDSZQ3dcteguUSgLmL3nZg@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm: Add support for kudo-bmc board.
-To: Chris Rauer <crauer@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: 0
+X-Spam_score: 0.0
 X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (0.0 / 5.0 requ) SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,30 +79,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Havard Skinnemoen <hskinnemoen@google.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ Peter Collingbourne <pcc@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wPiN/S5P+rUd
+X-TUID: CBajdN4pgvl7
 
-On Tue, 7 Sept 2021 at 23:32, Chris Rauer <crauer@google.com> wrote:
->
-> kudo-bmc is a board supported by OpenBMC.
-> https://github.com/openbmc/openbmc/tree/master/meta-fii/meta-kudo
->
-> Since v1:
-> - hyphenated Cortex-A9
->
-> Tested: Booted kudo firmware.
-> Signed-off-by: Chris Rauer <crauer@google.com>
-> ---
->  docs/system/arm/nuvoton.rst |  1 +
->  hw/arm/npcm7xx_boards.c     | 34 ++++++++++++++++++++++++++++++++++
->  2 files changed, 35 insertions(+)
+We will need to install a migration helper for the ARM hvf backend.
+Let's introduce an arch callback for the overall hvf init chain to
+do so.
 
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ accel/hvf/hvf-accel-ops.c | 3 ++-
+ include/sysemu/hvf_int.h  | 1 +
+ target/i386/hvf/hvf.c     | 5 +++++
+ 3 files changed, 8 insertions(+), 1 deletion(-)
 
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index 71cc2fa70f..65d431868f 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -324,7 +324,8 @@ static int hvf_accel_init(MachineState *ms)
+ 
+     hvf_state = s;
+     memory_listener_register(&hvf_memory_listener, &address_space_memory);
+-    return 0;
++
++    return hvf_arch_init();
+ }
+ 
+ static void hvf_accel_class_init(ObjectClass *oc, void *data)
+diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+index 8b66a4e7d0..0466106d16 100644
+--- a/include/sysemu/hvf_int.h
++++ b/include/sysemu/hvf_int.h
+@@ -48,6 +48,7 @@ struct hvf_vcpu_state {
+ };
+ 
+ void assert_hvf_ok(hv_return_t ret);
++int hvf_arch_init(void);
+ int hvf_arch_init_vcpu(CPUState *cpu);
+ void hvf_arch_vcpu_destroy(CPUState *cpu);
+ int hvf_vcpu_exec(CPUState *);
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 79ba4ed93a..abef24a9c8 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -206,6 +206,11 @@ static inline bool apic_bus_freq_is_known(CPUX86State *env)
+     return env->apic_bus_freq != 0;
+ }
+ 
++int hvf_arch_init(void)
++{
++    return 0;
++}
++
+ int hvf_arch_init_vcpu(CPUState *cpu)
+ {
+     X86CPU *x86cpu = X86_CPU(cpu);
+-- 
+2.30.1 (Apple Git-130)
 
-Applied to target-arm.next, thanks.
-
--- PMM

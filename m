@@ -1,159 +1,206 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp612209lfp;
-        Tue, 14 Sep 2021 05:07:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJySsVvVHD3SZnWqQ4r93Jkb8ppP9XcRu0TsneC21LWphFKQIEbXHja+Clflyap9wO6TibU9
-X-Received: by 2002:a05:6402:1116:: with SMTP id u22mr19081290edv.262.1631621263643;
-        Tue, 14 Sep 2021 05:07:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631621263; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp615214lfp;
+        Tue, 14 Sep 2021 05:11:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx8uaauDpjmrQ84QcTsUHx2UNR87sAK+VwyvFFv9batenoclnHXjVkDQg5utMwNX5QnR8KY
+X-Received: by 2002:adf:c542:: with SMTP id s2mr18651027wrf.374.1631621467785;
+        Tue, 14 Sep 2021 05:11:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631621467; cv=none;
         d=google.com; s=arc-20160816;
-        b=jZsUwXLysYdYelWHi+/kMmR/1GQVjiQmFN4ovTvvDbcVlsBb6e4X+flgyvpkGif/s7
-         j57qocqDZjCG/rAjcyHadruqFYX7NJLoG9y56zUdM8JL/TtlOdlsF20lK+2qfs8RzdfO
-         xkPhGpEOM8Eau0IRrNnLVlz0TitqgqbKeY0+PsXH6VnG3q5dxulu8pt8KT8g/BKW2Z6W
-         l+7H5F5a8Epf7eBUohTvCPTHTWTaANDi4V/EkO8/1PG08+u52mYkzl03l14HdrzixPuQ
-         RGXkcmDaM3rTxIFalZSVC6xkxF36ZBsarQnwBRQccqKr8FFoe8DhPLv49p4GD3IcWbmw
-         dyxg==
+        b=hRwjCc2byHPV54sn0gODK8ohzktBsSUie3Vc7emyDRXODT7FEFV921NDMSwzss3Ttl
+         vqGtnj9BwJ15y5wvTbPBCiwjgkW0UzsFE+2UWqqsrc68MPMO3whttXNzr39Od0dMUBQZ
+         nioz+K1pJWW5vMZbaIedRxMg/1VWkruLEFPnpmUocDQ41MS9399VgxsgdtFPxxwTu9Xv
+         7bMvNMIsv5f2rCdbo/S6NF5KvD3KEBkwUPSsz7Ap2CBkck0wI6wOZVXGifuIfGWfF/kY
+         kNcLV7oztNdXOKzUVb/Tz92p0CSKJOz+On2SOmn/QrDIYwOQ/JwQaKThpjozPt28PcVJ
+         a6cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=yVzonKb3Z2paD7vGj+uwPJ4SAE1zyLr8B8FFP9nvw3Q=;
-        b=RTlqYF6Cj2xRP5VwmvOmZGEk/KqahavmkVQYjUQNa59FPv0yuBT1vMgxkV1TakNvK3
-         xMG9emxp+XqBcwU9kT43lQEzTnF3G+VBoMwwOI0+orzldB6YS9J2VfP5/d8IyQq3+KGS
-         MZ5I2mBHvBlnVc9d+vhCPd27lh6O2Ibb2D8X0zallPzvTLFaNops4TFlXIv+oSt1S8C1
-         HM16XnB8N2/60ItIHXNB1o95NYaBYUK5wfBGtTUDm9dvmP/Rg+bM1ZpOOxsC78Pogngr
-         TMqHMGOoeA44g4XlVXsZC4ttdTGCBrQYNqKDJ9AUnoSowvJK5WWGkqwbFNUzINZ4bbpz
-         APXQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=/ZjtokmHY6o9GT+MByl1Znj62SUPnzI2WW/LyA2oZFU=;
+        b=h7ia7NIQtrWS/9VX2kP+zDT0aZLGpdr3Zv3qYv7LYwl/Xe7Sl9jVLzNevfRyDvHekx
+         Rq7UkFokwp4bL2MlZVsabaUHLsq+5hk3BwQ7KavRo7QEeykYzlVcI/blQiqtuA47S1AS
+         9dxd7t1487TBqarUBg9VR7S7yTm3XHZE0UYaxQgG7E6J5ZhR56SEFVjG/yUQf8FL7non
+         4GlW7i6hpHzYR39dJFer70Hg5ZGpM0EYM88BcrZaf/x8s51ZRP83i51egRg2hb/H2Tqz
+         wY9KqUJh4afE7+N2nszcDxGyojJOos3DtpxoDdR7a5O+zKBpGLw8eNTn14JxHMzWBvvJ
+         mhAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=koEqc8RL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JjvceNK1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e1si13744858edl.348.2021.09.14.05.07.43
+        by mx.google.com with ESMTPS id d3si11581032wru.387.2021.09.14.05.11.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 05:07:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 05:11:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=koEqc8RL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JjvceNK1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49174 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ7Dy-0000f3-Nu
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 08:07:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50792)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ7HG-0004c6-SF
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 08:11:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQ7Dm-0000cx-Vr
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 08:07:30 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:33549)
+ id 1mQ7Do-0000fj-KC
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 08:07:32 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:46749)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQ7Dl-0001H8-BX
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 08:07:30 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 192-20020a1c04c9000000b002f7a4ab0a49so1854741wme.0
- for <qemu-arm@nongnu.org>; Tue, 14 Sep 2021 05:07:28 -0700 (PDT)
+ id 1mQ7Dm-0001IE-Lz
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 08:07:32 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ d207-20020a1c1dd8000000b00307e2d1ec1aso2334147wmd.5
+ for <qemu-devel@nongnu.org>; Tue, 14 Sep 2021 05:07:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yVzonKb3Z2paD7vGj+uwPJ4SAE1zyLr8B8FFP9nvw3Q=;
- b=koEqc8RLIlw4ibjuiAb4v2tjremAuBp1C35vwY3T35xyS5+/f9r1PJsHb7tum+vQXv
- n+IY4ihrdNMlrOxoqRV1eVC+CfeNVYT0Kf0E5BdxbOX1FHOjMVekoNay+BoaHqbwA8HT
- AtOQ3/jPTX9vP3aq+u4gKuWp8rAXc/ODf6XHHzF9SLYvLKBm0c9lqNCmWFpVZV8Lt+AY
- bPvVniRPifWyd++x+8EUCqiIYDVtwEmZgbLrBhZP4YuXWmQgl2m7p6BgAsKhstpAKemt
- XN/y5ZVcWL4VLhd2xQwg7CJGcZ6p1eWi8PsgNN8A0D6Unh5qgqBZuHyIb5UESQUz4uud
- eKtQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=/ZjtokmHY6o9GT+MByl1Znj62SUPnzI2WW/LyA2oZFU=;
+ b=JjvceNK1WEKHsntIddF7zRL/X46gtby/InJOoOyub7rGuYABJBmBdL5paVtlSOS9Rp
+ 3nSX9GFnEbwYfyzE1e8vxdwgJwp7aMiLjNKy0wQddcBZ+X2pot5eIj8xx0O3Ljj1qlRU
+ C+HfftMwCaH4dPTkexRI3g9LR1HO3v8UVLkh4tEr74Ho/lwVKRnd2c9iomLJyW7jhSV2
+ iG1Zus+h2sc8U1tYEnky5C/r0LLZvtL1f7hhMKaquqXnApyRnsNEBPEgfxtWoChvpd9F
+ WjH8Etg1lGziPezNkysf1dc69fzBplJ5mo3REa5IX663FjLIWVz0TLNgzOqMw6j44ksM
+ qUkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yVzonKb3Z2paD7vGj+uwPJ4SAE1zyLr8B8FFP9nvw3Q=;
- b=ITcbeQbOaBoeu3iOIFSHE0ILgHztym8w45c7qTPaIvHx20+/obEf/dcUNuS9cP/v1Q
- 0c1uObNGl4IKd4N57Us990yYHrrHDrb1iZpV8owVYxdsw3Ck13EfJEm5jQjqtv4FODqX
- df88oVn+hPvtWqhKmsFDXDVkWRp5WXjL6wnnL73Q1v462k1nZaGS5oHrjwlcQQhTCM5F
- Ebash+l4OQp6WX1nqTBxuYgYkS5dg16MNzbYFivOuPFRFPagCRam+oLw3F6BW/A+GFOk
- XLQK86C3W+tsScC5yuejQkfBRyIF6rXS5jrqyRUVDk/AEDjFRMwsMbZ1ud0UgyQuB2XV
- 3UUQ==
-X-Gm-Message-State: AOAM533bw5cA6z/l91PrfwCYHCGDlrsLcVaXOXKJyXSTeT2XWif5bdr3
- xI2A2OpGLQaWAWFvNEEGJpT509EFRs9NxQ==
-X-Received: by 2002:a7b:cb86:: with SMTP id m6mr1822089wmi.4.1631621247620;
- Tue, 14 Sep 2021 05:07:27 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=/ZjtokmHY6o9GT+MByl1Znj62SUPnzI2WW/LyA2oZFU=;
+ b=VXHW4O40rrgf5fXW6ULEdcJkcn/8ZHmr4qpTenj675RPAyHJSjBiq+tYqTLuS66sTP
+ +Et1sY52oDqw7FLU9H294Yb9CLK+PRMgBS/LcBmxLyZJ8+7uhlRUKabGdZfSEg1qmEwk
+ tYHOPedfqazm2sAazPQJPU2Yvlcvo/D3zy1GSB9jJ8607SiV6ln3itnhi23b82H/xDQt
+ Iyr3a/xXn48klKC0HyrKrZ+/yEJR5VsUSewCdmkJaem1Xa1H2beKfBuvcMiBvDrwvGJ6
+ Xu8EhtnT5Fm/zm1XlLBAxkKL75ivd05eOrvbjJaNbuYAXyTHehkmEQqOmlpKgLjDogZl
+ z79Q==
+X-Gm-Message-State: AOAM533s096ZaUE2w28zea1/v+64EVBwnbRZ4bsCd83lF2i5od9Dfqsp
+ vxO3BEuxaZSbL5QzRpaXY3MLh5VCbYHFfw==
+X-Received: by 2002:a1c:1cc:: with SMTP id 195mr1813254wmb.188.1631621248305; 
+ Tue, 14 Sep 2021 05:07:28 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
  by smtp.gmail.com with ESMTPSA id o10sm11472466wrc.16.2021.09.14.05.07.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Sep 2021 05:07:27 -0700 (PDT)
+ Tue, 14 Sep 2021 05:07:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/3] target/arm: Set FPSCR.LTPSIZE for user-mode
-Date: Tue, 14 Sep 2021 13:07:22 +0100
-Message-Id: <20210914120725.24992-1-peter.maydell@linaro.org>
+Subject: [PATCH 1/3] target/arm: Don't skip M-profile reset entirely in user
+ mode
+Date: Tue, 14 Sep 2021 13:07:23 +0100
+Message-Id: <20210914120725.24992-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210914120725.24992-1-peter.maydell@linaro.org>
+References: <20210914120725.24992-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Christophe Lyon <christophe.lyon@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yplpFbNmZcxL
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7jKrUnMqnmY+
 
-This patchset fixes https://gitlab.com/qemu-project/qemu/-/issues/613
-which is a bug where we weren't setting FPSCR.LTPSIZE correctly
-out of reset for the user-mode emulator. The effect is that
-when using an M-profile CPU with the low-overhead-branch or MVE
-extensions (ie the Cortex-M55) with the linux-user QEMU the 'LE'
-instruction would take a UserFault and MVE instructions would
-be incorrectly predicated.
+Currently all of the M-profile specific code in arm_cpu_reset() is
+inside a !defined(CONFIG_USER_ONLY) ifdef block.  This is
+unintentional: it happened because originally the only
+M-profile-specific handling was the setup of the initial SP and PC
+from the vector table, which is system-emulation only.  But then we
+added a lot of other M-profile setup to the same "if (ARM_FEATURE_M)"
+code block without noticing that it was all inside a not-user-mode
+ifdef.  This has generally been harmless, but with the addition of
+v8.1M low-overhead-loop support we ran into a problem: the reset of
+FPSCR.LTPSIZE to 4 was only being done for system emulation mode, so
+if a user-mode guest tried to execute the LE instruction it would
+incorrectly take a UsageFault.
 
-This is the result of some over-exuberant ifdeffery in the
-arm_cpu_reset() function. Patch 1 fixes that so that most of
-the M-profile-specific reset handling is not ifdeffed, and
-when we're in user mode we specifically set the FPU state up
-cleanly. Patches 2 and 3 are just follow-on tidyup.
+Adjust the ifdefs so only the really system-emulation specific parts
+are covered.  Because this means we now run some reset code that sets
+up initial values in the FPCCR and similar FPU related registers,
+explicitly set up the registers controlling FPU context handling in
+user-emulation mode so that the FPU works by design and not by
+chance.
 
-Christophe, if you are in a position to test this series with:
- M55 (has Security, MVE and LOB)
- M33 (has Security extension but not MVE/LOB)
- M7 or M4 (no Security, but does have FPU)
-that would be ideal. I don't really have much in the way of
-test cases for usermode to hand, so it's possible that I
-forgot something in the init of the FPU state that might break
-one of those combinations. (It does fix the test case attached
-to the bug report.)
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/613
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-thanks
--- PMM
-
-Peter Maydell (3):
-  target/arm: Don't skip M-profile reset entirely in user mode
-  target/arm: Always clear exclusive monitor on reset
-  target/arm: Consolidate ifdef blocks in reset
-
- target/arm/cpu.c | 39 ++++++++++++++++++++++++++++-----------
- 1 file changed, 28 insertions(+), 11 deletions(-)
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index d631c4683c4..98eed6c6d31 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -265,12 +265,15 @@ static void arm_cpu_reset(DeviceState *dev)
+         env->uncached_cpsr = ARM_CPU_MODE_SVC;
+     }
+     env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
++#endif
+ 
+     if (arm_feature(env, ARM_FEATURE_M)) {
++#ifndef CONFIG_USER_ONLY
+         uint32_t initial_msp; /* Loaded from 0x0 */
+         uint32_t initial_pc; /* Loaded from 0x4 */
+         uint8_t *rom;
+         uint32_t vecbase;
++#endif
+ 
+         if (cpu_isar_feature(aa32_lob, cpu)) {
+             /*
+@@ -324,6 +327,8 @@ static void arm_cpu_reset(DeviceState *dev)
+             env->v7m.fpccr[M_REG_S] = R_V7M_FPCCR_ASPEN_MASK |
+                 R_V7M_FPCCR_LSPEN_MASK | R_V7M_FPCCR_S_MASK;
+         }
++
++#ifndef CONFIG_USER_ONLY
+         /* Unlike A/R profile, M profile defines the reset LR value */
+         env->regs[14] = 0xffffffff;
+ 
+@@ -352,8 +357,22 @@ static void arm_cpu_reset(DeviceState *dev)
+         env->regs[13] = initial_msp & 0xFFFFFFFC;
+         env->regs[15] = initial_pc & ~1;
+         env->thumb = initial_pc & 1;
++#else
++        /*
++         * For user mode we run non-secure and with access to the FPU.
++         * The FPU context is active (ie does not need further setup)
++         * and is owned by non-secure.
++         */
++        env->v7m.secure = false;
++        env->v7m.nsacr = 0xcff;
++        env->v7m.cpacr[M_REG_NS] = 0xf0ffff;
++        env->v7m.fpccr[M_REG_S] &=
++            ~(R_V7M_FPCCR_LSPEN_MASK | R_V7M_FPCCR_S_MASK);
++        env->v7m.control[M_REG_S] |= R_V7M_CONTROL_FPCA_MASK;
++#endif
+     }
+ 
++#ifndef CONFIG_USER_ONLY
+     /* AArch32 has a hard highvec setting of 0xFFFF0000.  If we are currently
+      * executing as AArch32 then check if highvecs are enabled and
+      * adjust the PC accordingly.
 -- 
 2.20.1
 

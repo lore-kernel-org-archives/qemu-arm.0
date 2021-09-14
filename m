@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp758498lfp;
-        Tue, 14 Sep 2021 07:53:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwYyS8SVUnPD2osXIJQaYjBw2PoL29DgUXx/OYZRxSteccDgqqv608Ghnz6O6+wtWMuNSPW
-X-Received: by 2002:a67:b005:: with SMTP id z5mr9573445vse.13.1631631196824;
-        Tue, 14 Sep 2021 07:53:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631631196; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp759093lfp;
+        Tue, 14 Sep 2021 07:54:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwMIxJWuHFrSjKjXEKhgzrkJ2ySLgt19OjhwWaD8QI6/bmXdFv+Gd03qlWQk2vz8O6JEeQT
+X-Received: by 2002:a9f:35c6:: with SMTP id u6mr4603104uad.21.1631631240385;
+        Tue, 14 Sep 2021 07:54:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631631240; cv=none;
         d=google.com; s=arc-20160816;
-        b=P2VftfRsn2ri6YwC+ebThzqjwrFSkBourgbBJW2RrWETkHQVUgjAVQs6gwpgsNBWlh
-         /Ml1I6DGk3pUhYxoAohLzGAFt37sBBJ7DcYC3CGsZKPfSnT/GGeMxLzrXb3Wc9tme9sT
-         oHbqTS8N/TxV82UUuySo6LJq7qrTbYAPOQWhWNY8lB+U/RptS56qGNPHc7h7fnnIPgS2
-         0dETTyzjLhoypDzFHlWYBv9fPIkdTVHKynnJqKLEIEpUVQiwsfoGrbnHewaqXyyNwtLJ
-         bcecOus7Z9d+hBsB9bF2VKVzXNoWnOXvGEe2I/2sw7Hsyi1TjptkkCQUW/uRZ1b8ifef
-         Zqag==
+        b=FeAWEmkoPFDp1k/qWevJotohTUXzTBZ3fC0UO0X3KdeZWkDBx8jp6ScCRD69M5hQGj
+         UlK99Z+ccT+bsAVnsRuGKcdCR9M4b3ed7WvbnsaNcwRKZo7Oozn9aQTthL3qSmBoBWCc
+         J+d1PjGHyfYaZJ3CXK2gM7QnC/DwyT+lvuNMDi54+NcOoDJ4MH6Gz1NYhQKK8vPPtDnJ
+         2avHyOV7YGsPtnP413sUqK7g7dng/ePpv7D8F2n7s23V3wTSgQrgkMKUfD5pzDUcE/5Q
+         VfNGr3BXudN6qv9WzYlwtIeDcnoUhzdOizCe2hCXordQt99VeZja5rsMcV2Typ4EZTgf
+         HQ/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GzpbfU4A9btQY9RS5Bo61BZfvRRoLXi0U6P5LuLSTCs=;
-        b=JKzektlmH8AhRw3eYgztRD5o+PaRJHn5TvBAUTkEZr9DaFozd2C7WUhTJdKcQdKAbl
-         UjeHjC1zbtCmzH+CfuiWL7TibPNXQcvkTRIGswR6bpx/TD77gYGOfpqFKaUbE89XYs/2
-         rGC7v7z15D6+7heGvYHMmvD/ufuFYXnUfaqhOQiGh1Sgp+m9a+mXrO5q0CXIwH2Mc3TK
-         oXN7xqjNJ1ekSSR22aK/wGE0qmMEF6UT/rtAWKgRpVXglGIu8DOf+WaG5ls2/sWpkD+e
-         SAScYmhSyUvRvU5Rw8N2e7AICdqzy3fAWCrzU2e9xy32ZT7SlI6kqOxNm/iZ+K2rBs3N
-         eS3w==
+        bh=+wDxv/ynJAT6bxB9NSeiHYS4UowdIUh6a7fG4sUwkpU=;
+        b=PNcNOMDc9sYtzkaWzVDZbe6axRfAABx+w9BftCEjFpom81oKMY14Y0G73hTiJ01OBK
+         pab4WQDErNUfSpob+0wPyr7Rpq4DHEYWYhRnVGVLWtHonGdAgzDgSQfanbrH/pKaRsTc
+         12EN7WcHyWO3e+bwR7rsb82dyzsyyciNejF7ScMWnWS2lAIV0vvJYyCKWBbKkSe7F+PV
+         JWFQJ6PmY4bnFiE74inn+fmZdOeIm09Ku40vHYWTq55v6udITvG4OK5zdoNNN7ThgpBX
+         Fn9yCCCWHObi/BLeWqgOYVuIT1W1wDUFy3ycPNOhLsm5Cbg4J31heulrMp+73557oS39
+         JKKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dJe14Dnk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="H/W2ihAB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r12si4106484uah.78.2021.09.14.07.53.16
+        by mx.google.com with ESMTPS id ay30si1663993uab.261.2021.09.14.07.54.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:53:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 07:54:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dJe14Dnk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="H/W2ihAB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36434 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9oC-0006rS-13
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:53:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37646)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ9ot-0001QL-Lp
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:53:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9P6-0000oP-QV
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:27:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49120)
+ id 1mQ9P9-0000oZ-NJ
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:27:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39259)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Ov-0007RQ-CT
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:27:19 -0400
+ id 1mQ9P6-0007X7-Jx
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:27:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629628;
+ s=mimecast20190719; t=1631629639;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GzpbfU4A9btQY9RS5Bo61BZfvRRoLXi0U6P5LuLSTCs=;
- b=dJe14Dnkzfp/wvMo7YNfg/Vpoz9ldXtr1VIs5amJ7XlYkvH8imBs0DtyuBRM9Gr+coi2JE
- dEdLEjmFSOqn8JGjVmz1iUgSDNCnh5QM6TgSJPD8QEiknYeUHqzPEioY8ca6+SlzvO5gZP
- 8Ue0IAELuKV0ELgaG5EcbN2+Cf8nNhA=
+ bh=+wDxv/ynJAT6bxB9NSeiHYS4UowdIUh6a7fG4sUwkpU=;
+ b=H/W2ihAB9RFkqY/xLjWQLYnCeRmPPURRaWGmJ6IYo6L+d4lV8meKjeCWvd4A2New+xCf7/
+ J8sK7/fVc7HtPXfqYa03Mp0JV2ZOWrwiMLqn1uI+1A3Jx9a6T0pSre2VMqHIK6PvkCNvHs
+ us4x60+y8TJkz+4Gee0lfmHd4bCx/zs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-201-4cFRpq3QPRWx92hlR6xsbw-1; Tue, 14 Sep 2021 10:27:07 -0400
-X-MC-Unique: 4cFRpq3QPRWx92hlR6xsbw-1
+ us-mta-476-T2ixmEeIOZmDohW-2iSoeA-1; Tue, 14 Sep 2021 10:27:18 -0400
+X-MC-Unique: T2ixmEeIOZmDohW-2iSoeA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D5F2F36418;
- Tue, 14 Sep 2021 14:27:01 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 120531084681;
+ Tue, 14 Sep 2021 14:27:13 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 314435D9CA;
- Tue, 14 Sep 2021 14:26:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 28BDB5D9CA;
+ Tue, 14 Sep 2021 14:27:02 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 18/53] target/nios2: convert to use format_state instead of
- dump_state
-Date: Tue, 14 Sep 2021 15:20:07 +0100
-Message-Id: <20210914142042.1655100-19-berrange@redhat.com>
+Subject: [PATCH v2 19/53] target/openrisc: convert to use format_state instead
+ of dump_state
+Date: Tue, 14 Sep 2021 15:20:08 +0100
+Message-Id: <20210914142042.1655100-20-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -92,37 +92,39 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+ Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -138,88 +140,68 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vUkKFE68lvw8
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2k96qJJ1P8e0
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/nios2/cpu.c       |  2 +-
- target/nios2/cpu.h       |  2 +-
- target/nios2/translate.c | 20 ++++++++++----------
- 3 files changed, 12 insertions(+), 12 deletions(-)
+ target/openrisc/cpu.c       | 2 +-
+ target/openrisc/cpu.h       | 2 +-
+ target/openrisc/translate.c | 8 ++++----
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
-index 5e37defef8..cbf15fb1c9 100644
---- a/target/nios2/cpu.c
-+++ b/target/nios2/cpu.c
-@@ -241,7 +241,7 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index bd34e429ec..d60d248958 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -206,7 +206,7 @@ static void openrisc_cpu_class_init(ObjectClass *oc, void *data)
  
-     cc->class_by_name = nios2_cpu_class_by_name;
-     cc->has_work = nios2_cpu_has_work;
--    cc->dump_state = nios2_cpu_dump_state;
-+    cc->format_state = nios2_cpu_format_state;
-     cc->set_pc = nios2_cpu_set_pc;
-     cc->disas_set_info = nios2_cpu_disas_set_info;
- #ifndef CONFIG_USER_ONLY
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index 2ab82fdc71..3b16cd1f3c 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -195,7 +195,7 @@ void nios2_tcg_init(void);
- void nios2_cpu_do_interrupt(CPUState *cs);
- int cpu_nios2_signal_handler(int host_signum, void *pinfo, void *puc);
- void dump_mmu(CPUNios2State *env);
--void nios2_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-+void nios2_cpu_format_state(CPUState *cpu, GString *buf, int flags);
- hwaddr nios2_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void nios2_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
-                                    MMUAccessType access_type,
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 08d7ac5398..a5f0f56e1a 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -855,7 +855,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-     translator_loop(&nios2_tr_ops, &dc.base, cs, tb, max_insns);
+     cc->class_by_name = openrisc_cpu_class_by_name;
+     cc->has_work = openrisc_cpu_has_work;
+-    cc->dump_state = openrisc_cpu_dump_state;
++    cc->format_state = openrisc_cpu_format_state;
+     cc->set_pc = openrisc_cpu_set_pc;
+     cc->gdb_read_register = openrisc_cpu_gdb_read_register;
+     cc->gdb_write_register = openrisc_cpu_gdb_write_register;
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+index 82cbaeb4f8..112b845b10 100644
+--- a/target/openrisc/cpu.h
++++ b/target/openrisc/cpu.h
+@@ -314,7 +314,7 @@ struct OpenRISCCPU {
+ void cpu_openrisc_list(void);
+ void openrisc_cpu_do_interrupt(CPUState *cpu);
+ bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);
+-void openrisc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
++void openrisc_cpu_format_state(CPUState *cpu, GString *buf, int flags);
+ hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ int openrisc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int openrisc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index d6ea536744..0155f2b160 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -1723,16 +1723,16 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
+     translator_loop(&openrisc_tr_ops, &ctx.base, cs, tb, max_insns);
  }
  
--void nios2_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+void nios2_cpu_format_state(CPUState *cs, GString *buf, int flags)
+-void openrisc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
++void openrisc_cpu_format_state(CPUState *cs, GString *buf, int flags)
  {
-     Nios2CPU *cpu = NIOS2_CPU(cs);
-     CPUNios2State *env = &cpu->env;
-@@ -865,22 +865,22 @@ void nios2_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-         return;
-     }
+     OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+     CPUOpenRISCState *env = &cpu->env;
+     int i;
  
--    qemu_fprintf(f, "IN: PC=%x %s\n",
--                 env->regs[R_PC], lookup_symbol(env->regs[R_PC]));
-+    g_string_append_printf(buf, "IN: PC=%x %s\n",
-+                           env->regs[R_PC], lookup_symbol(env->regs[R_PC]));
- 
-     for (i = 0; i < NUM_CORE_REGS; i++) {
--        qemu_fprintf(f, "%9s=%8.8x ", regnames[i], env->regs[i]);
-+        g_string_append_printf(buf, "%9s=%8.8x ", regnames[i], env->regs[i]);
-         if ((i + 1) % 4 == 0) {
--            qemu_fprintf(f, "\n");
-+            g_string_append_printf(buf, "\n");
-         }
+-    qemu_fprintf(f, "PC=%08x\n", env->pc);
++    g_string_append_printf(buf, "PC=%08x\n", env->pc);
+     for (i = 0; i < 32; ++i) {
+-        qemu_fprintf(f, "R%02d=%08x%c", i, cpu_get_gpr(env, i),
+-                     (i % 4) == 3 ? '\n' : ' ');
++        g_string_append_printf(buf, "R%02d=%08x%c", i, cpu_get_gpr(env, i),
++                               (i % 4) == 3 ? '\n' : ' ');
      }
- #if !defined(CONFIG_USER_ONLY)
--    qemu_fprintf(f, " mmu write: VPN=%05X PID %02X TLBACC %08X\n",
--                 env->mmu.pteaddr_wr & CR_PTEADDR_VPN_MASK,
--                 (env->mmu.tlbmisc_wr & CR_TLBMISC_PID_MASK) >> 4,
--                 env->mmu.tlbacc_wr);
-+    g_string_append_printf(buf, " mmu write: VPN=%05X PID %02X TLBACC %08X\n",
-+                           env->mmu.pteaddr_wr & CR_PTEADDR_VPN_MASK,
-+                           (env->mmu.tlbmisc_wr & CR_TLBMISC_PID_MASK) >> 4,
-+                           env->mmu.tlbacc_wr);
- #endif
--    qemu_fprintf(f, "\n\n");
-+    g_string_append_printf(buf, "\n\n");
  }
  
- void nios2_tcg_init(void)
 -- 
 2.31.1
 

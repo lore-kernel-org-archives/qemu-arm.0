@@ -1,112 +1,112 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp871178lfp;
-        Tue, 14 Sep 2021 10:02:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzA+zkPaqS+/Z3r5pajinUM3SH91fR3KTLx7A2V3ztJQVVJ3GF/8H361iINwMiwfcVH7yn+
-X-Received: by 2002:a05:6402:27c6:: with SMTP id c6mr20257730ede.111.1631638963810;
-        Tue, 14 Sep 2021 10:02:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631638963; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp887662lfp;
+        Tue, 14 Sep 2021 10:20:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKMXYsN+X9DGX4QkK+ZZZbzkTIPqay+u5JaFG7Mbe0U0i0KWwoz6vDjdWZOzWictsJM9Qq
+X-Received: by 2002:a05:6402:1c95:: with SMTP id cy21mr20413997edb.397.1631640049742;
+        Tue, 14 Sep 2021 10:20:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631640049; cv=none;
         d=google.com; s=arc-20160816;
-        b=gYEYtX6wSV/UwJEP7zojhiYZFfQeiMBMu5oBhRL+gvBSUF6vSZjOU6eLe0fAymf5iH
-         D5eyHa/c9iqCBfEpGQNplk9jxLlJbEeNpNsdQEy6a5edk4Ww1/Rbpw2yhcHfQIocb3/u
-         rKrJFUZHrQbA4aHIv3wSupVmKsf9chO/PfYOjmkFNuWBoSZ8fHbIqKkl80n14Jmzn2m4
-         HTwszQymGdM/U47pp28Ddk/JBiJUMsA2fgU69KtHjo2BQysiAGKxdlH2Q7lzAaoCN0Ze
-         yNiiymWCTsUK/gmOgcQr1RoqmCm5TjAGPDfLnzB0gS4OxRq6VJ7xy+Bs4FZD1SO+uoic
-         2E8A==
+        b=J6IBDJ07S5IXMDiC772vqHOirHPaN45XMlIBodvyXJWn9D2f/EpLpMmfuhYN8MDCfQ
+         eBe8QaFh/wMUiK+hCtrAnC2mm1AclatQuZ9LO/pdrEALkNscdsa5+bwNlb41QIBCkCKM
+         156uYSkdnuIzwHnSEW/zkYTjdsH/LZ2Xp0BTZ3isp1BfUVJBz0GfBrJ5jRh5OVtE310i
+         GMGU1MyjbRXmE5jpWM3eWGzrXV9RYqn4Z5mWrQklPtQ9IWLOQud4YyxECtb/XqCA/2fQ
+         S3sZlGmq1jfjGrp41CIC+osr4RT6XPQM82ppnRyiCGR58m61I/2AsakBYI8DHfcyJDWx
+         W/MA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=kkIDLD9CAOhbVHN5WBQLyfGlMRaq0nuzR36iSZPAuPQ=;
-        b=eVhBTaW/Kvyy6wCfXQ9S0nnGXVxRbKIwOA9wy3EDwxznf62dFKYvepV8ueTOXu3rah
-         81TMSAxkC7w4guPw03kckxRERkctwzaf+vPmemkdH6rOXnSPQ3Zl3iDkDxP/+EDuUf5h
-         it2ukWeqaPA50Jxexo+PVchfexRoq42Sgj2h4tVFH1VTbxvyo5n+0oGBs26+bZrNMvG5
-         uPUhOmf1crn2tC4Dqx1flFdsG0sEyjRxCgpPW6wKFsl1uqA8w9YN5DbQcpaGcjI3PZO9
-         DENW9wT55DdyJAK7kK7asXy/DkiNQU55sP3bovWLHeqECQ+3BMFtVDkYLtH8a8HrRDAA
-         O5xg==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=03+IhxGmmMXDrS25Dg26nDJdPBLM1fFGiWN16fXUPNs=;
+        b=lFGXqFdENEdnO+qOZRnwTbG9dd4C3k2VURTz4m2iTwaB6S4jG9PIa++uqgrkeJWrIt
+         362U7Nv4Rqa+CKLLpwwh7DRqSGz7EqdtcYPQ88h9tsWOU6/GHw/IGYqz60sdhNxcr+2f
+         hH7eUWKEO5hDe1iJBdr58+9Qa3y8n1MqWnXFkvHdjgzhCbJg0kq9SLwDzLx79PPv1/dy
+         38k5R64HsKNy6xEfhGMGtJlB4Los+a8VwKl1OpOlniVpr5aEcH4u+J6CKfr0eDmZF1k1
+         qF3UD/P6T5+iqdEfyKkHvZpLKROw81Rv+mJ1CIklEvyQECPrcwO1KPg1/S0qFXFM1TD+
+         jk+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g4mAySIL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aANjXwI5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h25si10702878ejt.16.2021.09.14.10.02.43
+        by mx.google.com with ESMTPS id f14si11154811ejj.667.2021.09.14.10.20.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 10:02:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 10:20:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g4mAySIL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aANjXwI5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57802 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55606 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQBpS-0005ge-PB
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 13:02:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39696)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQC6y-0007sN-Os
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 13:20:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mQBpF-0005eN-6r
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 13:02:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46309)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mQC4i-0004x7-Qx
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 13:18:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33567)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mQBpD-00060K-0k
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 13:02:28 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mQC4f-0002nG-7a
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 13:18:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631638946;
+ s=mimecast20190719; t=1631639904;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kkIDLD9CAOhbVHN5WBQLyfGlMRaq0nuzR36iSZPAuPQ=;
- b=g4mAySILQ/ZbGTAkWcpYrTtHo7Id8eYtKPjjPlDglZFVIEFC21Df+PCICZbmH1i/1MOILm
- lXKq1c04Lb1C168wo5FI8dIIfQcIr7UXBJLBdNnRj7BytMbey8GRnj1e/pjvl4qn1xJdSh
- VexXEjkkYIMNkPuW83WRT3RmstbZ2jU=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-191-bycjpi1wPpu5uBiB6PUJhg-1; Tue, 14 Sep 2021 13:02:24 -0400
-X-MC-Unique: bycjpi1wPpu5uBiB6PUJhg-1
-Received: by mail-wm1-f70.google.com with SMTP id
- x10-20020a7bc76a000000b002f8cba3fd65so931600wmk.2
- for <qemu-arm@nongnu.org>; Tue, 14 Sep 2021 10:02:24 -0700 (PDT)
+ bh=03+IhxGmmMXDrS25Dg26nDJdPBLM1fFGiWN16fXUPNs=;
+ b=aANjXwI5g2tiGgBEyl3X85Aqobg8nmd3p7D5+bbuKrR8EFP7qozMNf+Mt9ZhEdQBoLZdwZ
+ Krxl5XqZhIr0w+62bt//efh6Dnr7wU2tuU7LaLyOK7tLsUOOlV/MGbWuL93Bc3rWQa88L9
+ gGxq5xuH5GtEC0aNn4+UC6NO1tOXJcs=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-16-p6QzJCYlMCmf3sVCCvI7vQ-1; Tue, 14 Sep 2021 13:18:23 -0400
+X-MC-Unique: p6QzJCYlMCmf3sVCCvI7vQ-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ h1-20020a05600c350100b002e751bf6733so23371wmq.8
+ for <qemu-devel@nongnu.org>; Tue, 14 Sep 2021 10:18:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=kkIDLD9CAOhbVHN5WBQLyfGlMRaq0nuzR36iSZPAuPQ=;
- b=apskcTp+rgyrLNBgtg/v/p0b5ioPiofR3SQOguA+o7CmKbIl2cINZs3gGFv3PXcChm
- smcpgdCT5rbAmEHx7/7gT0ieD73sQiPlHVWWrhNk6C0l/+3XZ+VaXthGE+D0hM06FELr
- OUfdYLz0Wnl6oQ7UFSTFDOTlc7QjryKddDl+JxUSac8/cp/qrWCqk7r6U28yyQgOd4L4
- OcEnBkmi9VZ1M9KF1o+xr8W4DHBThPJC5MHV+jCs0Qz0rqAk/vOnpuULRadIoFTW/mLg
- 0/MdypQkx+V35kCrZZvhTURWQUgtA+b/i0xLI0I3qG/zdy2yusjcAZmpAwE0KlhoL1TS
- Ec2w==
-X-Gm-Message-State: AOAM532pogvNeXflcUWlPfuFoFGZJNnloBEc9WKpyMuLJM/GDTW19U3J
- Iab8FrdXC7u64HYEsXt3mcKUh6c0KfYTpEHka7X13u2JZVS4HfNBx5gNqGFruorVIRM6327YsB/
- Ib6E1qTtc1GU4
-X-Received: by 2002:a1c:7d0f:: with SMTP id y15mr67714wmc.41.1631638943535;
- Tue, 14 Sep 2021 10:02:23 -0700 (PDT)
-X-Received: by 2002:a1c:7d0f:: with SMTP id y15mr67619wmc.41.1631638943057;
- Tue, 14 Sep 2021 10:02:23 -0700 (PDT)
+ bh=03+IhxGmmMXDrS25Dg26nDJdPBLM1fFGiWN16fXUPNs=;
+ b=Je5+rEiGvd0bfuubEOZEGRi04LuUsWHpkpmmjji3g4U5qqXi2D2YXvf3/xP21VryG9
+ LsyC9CHwsdVGThwLjkr3IabC5If2HWDyBhMKpepXLrWypIiNUlMq0bL4eEaTJ8UGcSPN
+ kd3P3iThM8E3kNfyOzpCUSSKqIU59iRRsaWqr4SCoTxvxxVTimIxSJ/+DqcyOjjmgCyI
+ pS1UmE6T1cGX9Djjc3VY5DPktH7Vp/bdYI5+z3hU3XuGydES74NiPJ3x6MtV0VlV6yGc
+ SDobYfydmRam9DCu4/IspmlopcwjIAlHvDvGSIi2v14VtLqcnjr2Xcx9Hm8FGZf6lKTt
+ HIXA==
+X-Gm-Message-State: AOAM532gi2nCtYkpwSciDxu1kh4YhcVDQgS0aC/zKYDkxRjboS0wmalV
+ fc2eSxbJn0CDnkimkWCWAfLqW0/kQo8E3/DAdhHpwzURb+QsOP/Ns67PsMNjdH6h+Ufwhq7Futl
+ Dn/DGIn8JB8aQ/oE=
+X-Received: by 2002:a5d:67c8:: with SMTP id n8mr315273wrw.122.1631639901812;
+ Tue, 14 Sep 2021 10:18:21 -0700 (PDT)
+X-Received: by 2002:a5d:67c8:: with SMTP id n8mr315250wrw.122.1631639901635;
+ Tue, 14 Sep 2021 10:18:21 -0700 (PDT)
 Received: from [192.168.1.36] (14.red-83-35-25.dynamicip.rima-tde.net.
  [83.35.25.14])
- by smtp.gmail.com with ESMTPSA id k1sm10860003wrz.61.2021.09.14.10.02.20
+ by smtp.gmail.com with ESMTPSA id z17sm584333wml.24.2021.09.14.10.18.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Sep 2021 10:02:22 -0700 (PDT)
-Subject: Re: [PATCH v2 42/53] hw/core: introduce a 'format_tlb' callback
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-43-berrange@redhat.com>
- <818d439f-337e-a73c-9e22-fbf8a119435f@redhat.com>
- <YUDPECQJraD3thwi@redhat.com>
+ Tue, 14 Sep 2021 10:18:20 -0700 (PDT)
+Subject: Re: [PATCH v2 29/53] qapi: introduce x-query-registers QMP command
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a127efbf-8953-2ec5-9ba0-badbce949264@redhat.com>
-Date: Tue, 14 Sep 2021 19:02:19 +0200
+To: Eric Blake <eblake@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20210914142042.1655100-1-berrange@redhat.com>
+ <20210914142042.1655100-30-berrange@redhat.com>
+ <20210914160416.tmk5nuhch2yhfb27@redhat.com>
+ <da6637f1-413c-73a3-686d-0e8913c46da9@redhat.com>
+Message-ID: <93be6f97-5dfb-4fab-25c6-363bb9f0e540@redhat.com>
+Date: Tue, 14 Sep 2021 19:18:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <YUDPECQJraD3thwi@redhat.com>
+In-Reply-To: <da6637f1-413c-73a3-686d-0e8913c46da9@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -114,7 +114,7 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -32
 X-Spam_score: -3.3
@@ -122,122 +122,122 @@ X-Spam_bar: ---
 X-Spam_report: (-3.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.969,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Peter Xu <peterx@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-ppc@nongnu.org,
  Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia.ml@gmail.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5A0Q1QphPcoq
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sGEmIqA/XUQL
 
-On 9/14/21 6:34 PM, Daniel P. Berrangé wrote:
-> On Tue, Sep 14, 2021 at 05:56:09PM +0200, Philippe Mathieu-Daudé wrote:
->> On 9/14/21 4:20 PM, Daniel P. Berrangé wrote:
->>> This will allow us to reduce duplication between the different targets
->>> implementing the 'info tlb' command.
+On 9/14/21 7:15 PM, Philippe Mathieu-Daudé wrote:
+> On 9/14/21 6:04 PM, Eric Blake wrote:
+>> On Tue, Sep 14, 2021 at 03:20:18PM +0100, Daniel P. Berrangé wrote:
+>>> This is a counterpart to the HMP "info registers" command. It is being
+>>> added with an "x-" prefix because this QMP command is intended as an
+>>> ad hoc debugging tool and will thus not be modelled in QAPI as fully
+>>> structured data, nor will it have long term guaranteed stability.
+>>> The existing HMP command is rewritten to call the QMP command.
 >>>
 >>> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 >>> ---
->>>  hw/core/cpu-common.c  |  9 +++++++++
->>>  include/hw/core/cpu.h | 11 +++++++++++
->>>  2 files changed, 20 insertions(+)
+> 
+>>> +##
+>>> +# @HumanReadableText:
+>>> +#
+>>> +# @human-readable-text: Formatted output intended for humans.
+>>> +#
+>>> +# Since: 6.2.0
 >>
->>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
->>> index 4c47e1df18..64fc57c8d9 100644
->>> --- a/include/hw/core/cpu.h
->>> +++ b/include/hw/core/cpu.h
->>>   * @has_work: Callback for checking if there is work to do.
->>>   * @memory_rw_debug: Callback for GDB memory access.
->>>   * @format_state: Callback for formatting state.
->>> + * @format_tlb: Callback for formatting memory mappings
-
-"... for formatting translations of virtual to physical memory mappings"
-
->>>   * @get_arch_id: Callback for getting architecture-dependent CPU ID.
->>>   * @set_pc: Callback for setting the Program Counter register. This
->>>   *       should have the semantics used by the target architecture when
->>> @@ -136,6 +137,7 @@ struct CPUClass {
->>>      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
->>>                             uint8_t *buf, int len, bool is_write);
->>>      void (*format_state)(CPUState *cpu, GString *buf, int flags);
->>> +    void (*format_tlb)(CPUState *cpu, GString *buf);
+>> Should be '6.2', not '6.2.0', to match...
 >>
->> Doesn't this belong to SysemuCPUOps?
+>>> +#
+>>> +##
+>>> +{ 'struct': 'HumanReadableText',
+>>> +  'data': { 'human-readable-text': 'str' } }
+>>> diff --git a/qapi/machine.json b/qapi/machine.json
+>>> index 157712f006..8737efa865 100644
+>>> --- a/qapi/machine.json
+>>> +++ b/qapi/machine.json
+>>> @@ -1312,3 +1312,18 @@
+>>>       '*cores': 'int',
+>>>       '*threads': 'int',
+>>>       '*maxcpus': 'int' } }
+>>> +
+>>> +##
+>>> +# @x-query-registers:
+>>> +#
+>>> +# @cpu: the CPU number to query. If omitted, queries all CPUs
+>>> +#
+>>> +# Query information on the CPU registers
+>>> +#
+>>> +# Returns: CPU state in an architecture-specific format
+>>> +#
+>>> +# Since: 6.2
+>>
+>> ...the prevailing style.
+>>
+>> If it were likely that someone might backport just some (but not all)
+>> added x- commands, it may be wise to separate the creation of
+>> HumanReadableText into its own patch to backport that but not
+>> x-query-registers.  But I rather suspect anyone backporting this will
+>> take the series wholesale, so the coupling in this patch is not worth
+>> worrying about.
 > 
-> I can't really answer, since my knowledge of this area of QEMU code is
-> fairly mimimal. I put it here because it is basically serving the same
-> purpose as the "format_state" callback immediately above it, which was
-> a rename of the existing "dump_state" callback. I assumed whatever was
-> there already was a good practice to follow[1]...
+> IIUC the problem is this breaks bisection, as you get a QAPI error:
+> 
+>  qapi/qapi-commands-machine.c:123:13: error:
+> ‘qmp_marshal_output_HumanReadableText’
+> defined but not used [-Werror=unused-function]
+>   123 | static void
+> qmp_marshal_output_HumanReadableText(HumanReadableText *ret_in,
+>       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> cc1: all warnings being treated as errors
+> 
+> See the comment added in commit 1f7b9f3181e
+> ("qapi/commands: add #if conditions to commands").
 
-Since it involves physical memory, I'm pretty sure this is sysemu
-specific. Beside in the following patches you guard the handlers
-with '#ifndef CONFIG_USER_ONLY'.
-
-Good news, there is very few changes needed in your patches, for
-example the next patch:
-
--- >8 --
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index ab86224ee23..9d2bd2e2ef4 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -6732,6 +6732,7 @@ static Property x86_cpu_properties[] = {
- #include "hw/core/sysemu-cpu-ops.h"
-
- static const struct SysemuCPUOps i386_sysemu_ops = {
-+    .format_tlb = x86_cpu_format_tlb,
-     .get_memory_mapping = x86_cpu_get_memory_mapping,
-     .get_paging_enabled = x86_cpu_get_paging_enabled,
-     .get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug,
-@@ -6765,9 +6766,6 @@ static void x86_cpu_common_class_init(ObjectClass
-*oc, void *data)
-     cc->parse_features = x86_cpu_parse_featurestr;
-     cc->has_work = x86_cpu_has_work;
-     cc->format_state = x86_cpu_format_state;
--#ifndef CONFIG_USER_ONLY
--    cc->format_tlb = x86_cpu_format_tlb;
--#endif
-     cc->set_pc = x86_cpu_set_pc;
-     cc->gdb_read_register = x86_cpu_gdb_read_register;
-     cc->gdb_write_register = x86_cpu_gdb_write_register;
----
+Oh we already talked about this together in this thread:
+https://lore.kernel.org/qemu-devel/20210609202952.r4nb2smrptyckvk2@redhat.com/
 
 > 
-> Regards,
-> Daniel
-> 
-> [1] yes assuming these things is often foolish in QEMU :-)
-> 
+>>
+>>> +##
+>>> +{ 'command': 'x-query-registers',
+>>> +  'data': {'*cpu': 'int' },
+>>> +  'returns': 'HumanReadableText' }
+>>> -- 
+>>> 2.31.1
+>>>
+>>
 

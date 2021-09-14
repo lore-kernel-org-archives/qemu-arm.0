@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp760030lfp;
-        Tue, 14 Sep 2021 07:54:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwCqNkZl6wpM2jTUsdQ0QPIJeYJnSbhdOOsZBKCY8JanXCkIHbLY2SVj3+05vJbOGLmeIBr
-X-Received: by 2002:ab0:780a:: with SMTP id x10mr4843543uaq.24.1631631297460;
-        Tue, 14 Sep 2021 07:54:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631631297; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp760071lfp;
+        Tue, 14 Sep 2021 07:55:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkW1fH/TcvDkATl3TqEz13S0/D43YDm393L7bcR9/0NPqsZEticgaSqW9HSris5XtJd3j+
+X-Received: by 2002:a17:906:311b:: with SMTP id 27mr19649495ejx.428.1631631300963;
+        Tue, 14 Sep 2021 07:55:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631631300; cv=none;
         d=google.com; s=arc-20160816;
-        b=UpxF7xdAhbYRnDKLmes6Y5qE7hsV7lD3dZRcdgMnMDiYA+YjAzrvHzkFZbSMYqQokz
-         8jiO+jnWadkIfzVw5WFp2qqw8FDbYffLun2cDZBSVrhGSLAhBETlhDzzDI4KcWY6I3Qy
-         gRKb3MPoMvtMrfV5k0iqk2qsSy+eNKIUJJQtCI7okoho27y2e//WGfLb5msjhAw81nV3
-         xph6Q1CaxslYCNgC24cqPULgsoNo/eKHy8FxZo09aud295wzlurzZJuPbucuEaFGA64u
-         7iZ508XWIzPTcil0bEPsZnNwxA6lftIGSc442BsVz+UVqYfOGgBMYMmIaGlIFEc1tNMk
-         Ee5Q==
+        b=xxyOOxbyfYwzdKgTWIKn6saZroqbKMy0BYRP52TZi2Kk/ZXF/YjNnH3Vo6pHOY/h9Q
+         vSg7kQTXq6TiSMsZDBy/fSX9QUZk0CbQ7mLmiFwRcrZz0sE+a9SCOux9iu/xxiXf4XM3
+         fvkrkOgVJM8jshy/W4Yn5vC6W7XeX8RroOHHGfIvtAbynlf60zKNau4uJebavg31/Unx
+         NnMUddF+S3VnWsJ2mtBleYLUFYnUeCEfjuS3iJ11mx9oKULwQwqHGs7pMTaoja6y+15e
+         f/sU8VnXq1UCBLGr99WIe6VLOmxAgwEWEPSF41PDWgFykNLxQk14DlIIb0El03U2WdNv
+         XbKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6tT/Mro5QGD8I47bCN3lXcYKjcM82mfNp3b6QdQPGv4=;
-        b=s8PNIOEni1s5UmeQuBNeJgZq/fSLD4773aI3ye7XbXqct6VocIr7XmX1cnHh91yoic
-         RiBtDGP0tzTxfL9zhkpdvXAeUkIkaNbOXYIJyD76bkPxmgESZAuE4QfPEKRtxpn0gNQM
-         M9GlBXQ1oF9NcK+HIYl/nUmZeu4l0joo1eh8ZTPo7IA939MHSpZtbKIs/neTjxwuMRAr
-         oXL80xpZRAdUhxXUy1HAkfn4ZWUeVjPYDpHgchhxfl635e5VOIiFO2o4WMuY06FiQd91
-         CCqHt1wH84jFaQhN4Fb9YodogCF4VW58AtIrXRZXRPT0KZ8wN7ZAcrpLDEnMmlHNRPlA
-         0pKA==
+        bh=7KXlBSxjSPGX8vdep8ZUyktA0Aba3nVeAQEL1Cpyva4=;
+        b=LKKZXPzyP/JJlXDcwx6+MobPugYHe2KbIaQ32n2vpsr/a+YwlMVa6hjDPeUB8MjrxW
+         XQtZg8la4RAMb2w+FXx/WJtjtoJdYAiIy1KozA33ntWBFr3KCsQJgEaW2zize92YlZnb
+         71ZqusmU/zWU6sJDhaln/nlTDDbkAWU8s6w8CLcpsnfuAxGtR4YcQcvOUvtx6r4h/bDY
+         y8v6aaEGU5zcy5/UdwQZiYyK4jcbw13zlmeADkRB7kJtY5KoX1R7p7eQqGtbV/kQIqi1
+         vrQOMY93l9JPq0bcWpVHjmTLMiGou1vC/nkgppf6SZiKvSTGPLukLuovNPSngAd94mII
+         SXAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QfAak+L3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SzVSKb+p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a16si3724325uap.25.2021.09.14.07.54.57
+        by mx.google.com with ESMTPS id o18si10874068edv.10.2021.09.14.07.55.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:54:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 07:55:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QfAak+L3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SzVSKb+p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43430 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9po-000362-LK
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:54:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36354)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ9pr-0002Lo-Ue
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:54:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Mq-0006ml-7p
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:25:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39920)
+ id 1mQ9Rw-0006Q0-CD
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:30:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58816)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Mn-0005k4-Iv
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:24:59 -0400
+ id 1mQ9Rs-0001BV-FS
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:30:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629494;
+ s=mimecast20190719; t=1631629811;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6tT/Mro5QGD8I47bCN3lXcYKjcM82mfNp3b6QdQPGv4=;
- b=QfAak+L3wEczMjZyZ3Go7c/VaKhhk15FkxbhcailNl6ENY1WD8Q+/QEHy+WZeDZSCX/WfS
- y+pwWuVIB8g9375NnzJfAMlLc5uKUSKr9Yy4K7kRRL9N58YFEmPwiTH+nMaFn3LdQwnlmB
- 4l4HCefueO8lYK9wKJhtPAAVkJrbunk=
+ bh=7KXlBSxjSPGX8vdep8ZUyktA0Aba3nVeAQEL1Cpyva4=;
+ b=SzVSKb+pRrRb7O5F4dihAupJwj8zfqIH84drrhwoswW57dD5FleF7Byusxk84gBOZMEdx5
+ Ng1/vPOtTrzcqywufN1maLVqWsPQEPA9nDLLI2RqxlkFT/mgEbjaqDNZ2yQ93l1t9prA8Q
+ pQnUdIqurX1cMsnChg1hSk4dBWfmnQY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-254-MrNtF9xJPK-y6cwJVlSduA-1; Tue, 14 Sep 2021 10:24:52 -0400
-X-MC-Unique: MrNtF9xJPK-y6cwJVlSduA-1
+ us-mta-571-S4FmMyaQPYemK64UexRJLA-1; Tue, 14 Sep 2021 10:30:05 -0400
+X-MC-Unique: S4FmMyaQPYemK64UexRJLA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3496618414A0;
- Tue, 14 Sep 2021 14:24:49 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75238800FF4;
+ Tue, 14 Sep 2021 14:29:59 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7B13C5D9DC;
- Tue, 14 Sep 2021 14:24:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4B4F85D9DC;
+ Tue, 14 Sep 2021 14:29:40 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 14/53] target/i386: convert to use format_state instead of
- dump_state
-Date: Tue, 14 Sep 2021 15:20:03 +0100
-Message-Id: <20210914142042.1655100-15-berrange@redhat.com>
+Subject: [PATCH v2 27/53] target/xtensa: convert to use format_state instead
+ of dump_state
+Date: Tue, 14 Sep 2021 15:20:16 +0100
+Message-Id: <20210914142042.1655100-28-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -92,7 +92,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -100,31 +100,29 @@ X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -140,494 +138,141 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /dpv5kx2EdWF
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0Qhc+xkF4534
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/i386/cpu-dump.c | 328 ++++++++++++++++++++++-------------------
- target/i386/cpu.c      |   2 +-
- target/i386/cpu.h      |   2 +-
- 3 files changed, 177 insertions(+), 155 deletions(-)
+ target/xtensa/cpu.c       |  2 +-
+ target/xtensa/cpu.h       |  2 +-
+ target/xtensa/translate.c | 45 ++++++++++++++++++++-------------------
+ 3 files changed, 25 insertions(+), 24 deletions(-)
 
-diff --git a/target/i386/cpu-dump.c b/target/i386/cpu-dump.c
-index 02b635a52c..f30fbcb76e 100644
---- a/target/i386/cpu-dump.c
-+++ b/target/i386/cpu-dump.c
-@@ -94,41 +94,46 @@ static const char *cc_op_str[CC_OP_NB] = {
- };
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 58ec3a0862..a5a416e0b3 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -216,7 +216,7 @@ static void xtensa_cpu_class_init(ObjectClass *oc, void *data)
  
- static void
--cpu_x86_dump_seg_cache(CPUX86State *env, FILE *f,
-+cpu_x86_dump_seg_cache(CPUX86State *env, GString *buf,
-                        const char *name, struct SegmentCache *sc)
+     cc->class_by_name = xtensa_cpu_class_by_name;
+     cc->has_work = xtensa_cpu_has_work;
+-    cc->dump_state = xtensa_cpu_dump_state;
++    cc->format_state = xtensa_cpu_format_state;
+     cc->set_pc = xtensa_cpu_set_pc;
+     cc->gdb_read_register = xtensa_cpu_gdb_read_register;
+     cc->gdb_write_register = xtensa_cpu_gdb_write_register;
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 2345cb59c7..97cd6892df 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -572,7 +572,7 @@ void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
+                                       unsigned size, MMUAccessType access_type,
+                                       int mmu_idx, MemTxAttrs attrs,
+                                       MemTxResult response, uintptr_t retaddr);
+-void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
++void xtensa_cpu_format_state(CPUState *cpu, GString *buf, int flags);
+ hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ void xtensa_count_regs(const XtensaConfig *config,
+                        unsigned *n_regs, unsigned *n_core_regs);
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index 20399d6a04..0f57d2abaf 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -1325,14 +1325,14 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
+     translator_loop(&xtensa_translator_ops, &dc.base, cpu, tb, max_insns);
+ }
+ 
+-void xtensa_cpu_dump_state(CPUState *cs, FILE *f, int flags)
++void xtensa_cpu_format_state(CPUState *cs, GString *buf, int flags)
  {
- #ifdef TARGET_X86_64
-     if (env->hflags & HF_CS64_MASK) {
--        qemu_fprintf(f, "%-3s=%04x %016" PRIx64 " %08x %08x", name,
--                     sc->selector, sc->base, sc->limit,
--                     sc->flags & 0x00ffff00);
-+        g_string_append_printf(buf, "%-3s=%04x %016" PRIx64 " %08x %08x", name,
-+                               sc->selector, sc->base, sc->limit,
-+                               sc->flags & 0x00ffff00);
-     } else
- #endif
-     {
--        qemu_fprintf(f, "%-3s=%04x %08x %08x %08x", name, sc->selector,
--                     (uint32_t)sc->base, sc->limit,
--                     sc->flags & 0x00ffff00);
-+        g_string_append_printf(buf, "%-3s=%04x %08x %08x %08x",
-+                               name, sc->selector,
-+                               (uint32_t)sc->base, sc->limit,
-+                               sc->flags & 0x00ffff00);
-     }
+     XtensaCPU *cpu = XTENSA_CPU(cs);
+     CPUXtensaState *env = &cpu->env;
+     xtensa_isa isa = env->config->isa;
+     int i, j;
  
-     if (!(env->hflags & HF_PE_MASK) || !(sc->flags & DESC_P_MASK))
-         goto done;
+-    qemu_fprintf(f, "PC=%08x\n\n", env->pc);
++    g_string_append_printf(buf, "PC=%08x\n\n", env->pc);
  
--    qemu_fprintf(f, " DPL=%d ",
-+    g_string_append_printf(buf, " DPL=%d ",
-                  (sc->flags & DESC_DPL_MASK) >> DESC_DPL_SHIFT);
-     if (sc->flags & DESC_S_MASK) {
-         if (sc->flags & DESC_CS_MASK) {
--            qemu_fprintf(f, (sc->flags & DESC_L_MASK) ? "CS64" :
--                         ((sc->flags & DESC_B_MASK) ? "CS32" : "CS16"));
--            qemu_fprintf(f, " [%c%c", (sc->flags & DESC_C_MASK) ? 'C' : '-',
--                         (sc->flags & DESC_R_MASK) ? 'R' : '-');
-+            g_string_append_printf(buf, (sc->flags & DESC_L_MASK) ? "CS64" :
-+                                   ((sc->flags & DESC_B_MASK) ?
-+                                    "CS32" : "CS16"));
-+            g_string_append_printf(buf, " [%c%c",
-+                                   (sc->flags & DESC_C_MASK) ? 'C' : '-',
-+                                   (sc->flags & DESC_R_MASK) ? 'R' : '-');
-         } else {
--            qemu_fprintf(f, (sc->flags & DESC_B_MASK
-+            g_string_append_printf(buf, (sc->flags & DESC_B_MASK
-                              || env->hflags & HF_LMA_MASK)
-                          ? "DS  " : "DS16");
--            qemu_fprintf(f, " [%c%c", (sc->flags & DESC_E_MASK) ? 'E' : '-',
--                         (sc->flags & DESC_W_MASK) ? 'W' : '-');
-+            g_string_append_printf(buf, " [%c%c",
-+                                   (sc->flags & DESC_E_MASK) ? 'E' : '-',
-+                                   (sc->flags & DESC_W_MASK) ? 'W' : '-');
+     for (i = j = 0; i < xtensa_isa_num_sysregs(isa); ++i) {
+         const uint32_t *reg =
+@@ -1340,55 +1340,56 @@ void xtensa_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+         int regno = xtensa_sysreg_number(isa, i);
+ 
+         if (regno >= 0) {
+-            qemu_fprintf(f, "%12s=%08x%c",
+-                         xtensa_sysreg_name(isa, i),
+-                         reg[regno],
+-                         (j++ % 4) == 3 ? '\n' : ' ');
++            g_string_append_printf(buf, "%12s=%08x%c",
++                                   xtensa_sysreg_name(isa, i),
++                                   reg[regno],
++                                   (j++ % 4) == 3 ? '\n' : ' ');
          }
--        qemu_fprintf(f, "%c]", (sc->flags & DESC_A_MASK) ? 'A' : '-');
-+        g_string_append_printf(buf, "%c]",
-+                               (sc->flags & DESC_A_MASK) ? 'A' : '-');
-     } else {
-         static const char *sys_type_name[2][16] = {
-             { /* 32 bit mode */
-@@ -144,12 +149,14 @@ cpu_x86_dump_seg_cache(CPUX86State *env, FILE *f,
-                 "Reserved", "IntGate64", "TrapGate64"
-             }
-         };
--        qemu_fprintf(f, "%s",
--                     sys_type_name[(env->hflags & HF_LMA_MASK) ? 1 : 0]
--                     [(sc->flags & DESC_TYPE_MASK) >> DESC_TYPE_SHIFT]);
-+        g_string_append_printf(buf, "%s",
-+                               sys_type_name[(env->hflags & HF_LMA_MASK)
-+                                             ? 1 : 0]
-+                               [(sc->flags & DESC_TYPE_MASK) >>
-+                                DESC_TYPE_SHIFT]);
      }
- done:
+ 
+-    qemu_fprintf(f, (j % 4) == 0 ? "\n" : "\n\n");
++    g_string_append_printf(buf, (j % 4) == 0 ? "\n" : "\n\n");
+ 
+     for (i = 0; i < 16; ++i) {
+-        qemu_fprintf(f, " A%02d=%08x%c",
+-                     i, env->regs[i], (i % 4) == 3 ? '\n' : ' ');
++        g_string_append_printf(buf, " A%02d=%08x%c",
++                               i, env->regs[i], (i % 4) == 3 ? '\n' : ' ');
+     }
+ 
+     xtensa_sync_phys_from_window(env);
 -    qemu_fprintf(f, "\n");
 +    g_string_append_printf(buf, "\n");
- }
  
- #ifndef CONFIG_USER_ONLY
-@@ -344,7 +351,7 @@ void x86_cpu_dump_local_apic_state(CPUState *cs, int flags)
- #define DUMP_CODE_BYTES_TOTAL    50
- #define DUMP_CODE_BYTES_BACKWARD 20
+     for (i = 0; i < env->config->nareg; ++i) {
+-        qemu_fprintf(f, "AR%02d=%08x ", i, env->phys_regs[i]);
++        g_string_append_printf(buf, "AR%02d=%08x ", i, env->phys_regs[i]);
+         if (i % 4 == 3) {
+             bool ws = (env->sregs[WINDOW_START] & (1 << (i / 4))) != 0;
+             bool cw = env->sregs[WINDOW_BASE] == i / 4;
  
--void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+void x86_cpu_format_state(CPUState *cs, GString *buf, int flags)
- {
-     X86CPU *cpu = X86_CPU(cs);
-     CPUX86State *env = &cpu->env;
-@@ -355,107 +362,116 @@ void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     eflags = cpu_compute_eflags(env);
- #ifdef TARGET_X86_64
-     if (env->hflags & HF_CS64_MASK) {
--        qemu_fprintf(f, "RAX=%016" PRIx64 " RBX=%016" PRIx64 " RCX=%016" PRIx64 " RDX=%016" PRIx64 "\n"
--                     "RSI=%016" PRIx64 " RDI=%016" PRIx64 " RBP=%016" PRIx64 " RSP=%016" PRIx64 "\n"
--                     "R8 =%016" PRIx64 " R9 =%016" PRIx64 " R10=%016" PRIx64 " R11=%016" PRIx64 "\n"
--                     "R12=%016" PRIx64 " R13=%016" PRIx64 " R14=%016" PRIx64 " R15=%016" PRIx64 "\n"
--                     "RIP=%016" PRIx64 " RFL=%08x [%c%c%c%c%c%c%c] CPL=%d II=%d A20=%d SMM=%d HLT=%d\n",
--                     env->regs[R_EAX],
--                     env->regs[R_EBX],
--                     env->regs[R_ECX],
--                     env->regs[R_EDX],
--                     env->regs[R_ESI],
--                     env->regs[R_EDI],
--                     env->regs[R_EBP],
--                     env->regs[R_ESP],
--                     env->regs[8],
--                     env->regs[9],
--                     env->regs[10],
--                     env->regs[11],
--                     env->regs[12],
--                     env->regs[13],
--                     env->regs[14],
--                     env->regs[15],
--                     env->eip, eflags,
--                     eflags & DF_MASK ? 'D' : '-',
--                     eflags & CC_O ? 'O' : '-',
--                     eflags & CC_S ? 'S' : '-',
--                     eflags & CC_Z ? 'Z' : '-',
--                     eflags & CC_A ? 'A' : '-',
--                     eflags & CC_P ? 'P' : '-',
--                     eflags & CC_C ? 'C' : '-',
--                     env->hflags & HF_CPL_MASK,
--                     (env->hflags >> HF_INHIBIT_IRQ_SHIFT) & 1,
--                     (env->a20_mask >> 20) & 1,
--                     (env->hflags >> HF_SMM_SHIFT) & 1,
--                     cs->halted);
-+        g_string_append_printf(buf, "RAX=%016" PRIx64 " RBX=%016" PRIx64
-+                               " RCX=%016" PRIx64 " RDX=%016" PRIx64 "\n"
-+                               "RSI=%016" PRIx64 " RDI=%016" PRIx64
-+                               " RBP=%016" PRIx64 " RSP=%016" PRIx64 "\n"
-+                               "R8 =%016" PRIx64 " R9 =%016" PRIx64
-+                               " R10=%016" PRIx64 " R11=%016" PRIx64 "\n"
-+                               "R12=%016" PRIx64 " R13=%016" PRIx64
-+                               " R14=%016" PRIx64 " R15=%016" PRIx64 "\n"
-+                               "RIP=%016" PRIx64 " RFL=%08x [%c%c%c%c%c%c%c] "
-+                               "CPL=%d II=%d A20=%d SMM=%d HLT=%d\n",
-+                               env->regs[R_EAX],
-+                               env->regs[R_EBX],
-+                               env->regs[R_ECX],
-+                               env->regs[R_EDX],
-+                               env->regs[R_ESI],
-+                               env->regs[R_EDI],
-+                               env->regs[R_EBP],
-+                               env->regs[R_ESP],
-+                               env->regs[8],
-+                               env->regs[9],
-+                               env->regs[10],
-+                               env->regs[11],
-+                               env->regs[12],
-+                               env->regs[13],
-+                               env->regs[14],
-+                               env->regs[15],
-+                               env->eip, eflags,
-+                               eflags & DF_MASK ? 'D' : '-',
-+                               eflags & CC_O ? 'O' : '-',
-+                               eflags & CC_S ? 'S' : '-',
-+                               eflags & CC_Z ? 'Z' : '-',
-+                               eflags & CC_A ? 'A' : '-',
-+                               eflags & CC_P ? 'P' : '-',
-+                               eflags & CC_C ? 'C' : '-',
-+                               env->hflags & HF_CPL_MASK,
-+                               (env->hflags >> HF_INHIBIT_IRQ_SHIFT) & 1,
-+                               (env->a20_mask >> 20) & 1,
-+                               (env->hflags >> HF_SMM_SHIFT) & 1,
-+                               cs->halted);
-     } else
- #endif
-     {
--        qemu_fprintf(f, "EAX=%08x EBX=%08x ECX=%08x EDX=%08x\n"
--                     "ESI=%08x EDI=%08x EBP=%08x ESP=%08x\n"
--                     "EIP=%08x EFL=%08x [%c%c%c%c%c%c%c] CPL=%d II=%d A20=%d SMM=%d HLT=%d\n",
--                     (uint32_t)env->regs[R_EAX],
--                     (uint32_t)env->regs[R_EBX],
--                     (uint32_t)env->regs[R_ECX],
--                     (uint32_t)env->regs[R_EDX],
--                     (uint32_t)env->regs[R_ESI],
--                     (uint32_t)env->regs[R_EDI],
--                     (uint32_t)env->regs[R_EBP],
--                     (uint32_t)env->regs[R_ESP],
--                     (uint32_t)env->eip, eflags,
--                     eflags & DF_MASK ? 'D' : '-',
--                     eflags & CC_O ? 'O' : '-',
--                     eflags & CC_S ? 'S' : '-',
--                     eflags & CC_Z ? 'Z' : '-',
--                     eflags & CC_A ? 'A' : '-',
--                     eflags & CC_P ? 'P' : '-',
--                     eflags & CC_C ? 'C' : '-',
--                     env->hflags & HF_CPL_MASK,
--                     (env->hflags >> HF_INHIBIT_IRQ_SHIFT) & 1,
--                     (env->a20_mask >> 20) & 1,
--                     (env->hflags >> HF_SMM_SHIFT) & 1,
--                     cs->halted);
-+        g_string_append_printf(buf, "EAX=%08x EBX=%08x ECX=%08x EDX=%08x\n"
-+                               "ESI=%08x EDI=%08x EBP=%08x ESP=%08x\n"
-+                               "EIP=%08x EFL=%08x [%c%c%c%c%c%c%c] "
-+                               "CPL=%d II=%d A20=%d SMM=%d HLT=%d\n",
-+                               (uint32_t)env->regs[R_EAX],
-+                               (uint32_t)env->regs[R_EBX],
-+                               (uint32_t)env->regs[R_ECX],
-+                               (uint32_t)env->regs[R_EDX],
-+                               (uint32_t)env->regs[R_ESI],
-+                               (uint32_t)env->regs[R_EDI],
-+                               (uint32_t)env->regs[R_EBP],
-+                               (uint32_t)env->regs[R_ESP],
-+                               (uint32_t)env->eip, eflags,
-+                               eflags & DF_MASK ? 'D' : '-',
-+                               eflags & CC_O ? 'O' : '-',
-+                               eflags & CC_S ? 'S' : '-',
-+                               eflags & CC_Z ? 'Z' : '-',
-+                               eflags & CC_A ? 'A' : '-',
-+                               eflags & CC_P ? 'P' : '-',
-+                               eflags & CC_C ? 'C' : '-',
-+                               env->hflags & HF_CPL_MASK,
-+                               (env->hflags >> HF_INHIBIT_IRQ_SHIFT) & 1,
-+                               (env->a20_mask >> 20) & 1,
-+                               (env->hflags >> HF_SMM_SHIFT) & 1,
-+                               cs->halted);
-     }
- 
-     for(i = 0; i < 6; i++) {
--        cpu_x86_dump_seg_cache(env, f, seg_name[i], &env->segs[i]);
-+        cpu_x86_dump_seg_cache(env, buf, seg_name[i], &env->segs[i]);
-     }
--    cpu_x86_dump_seg_cache(env, f, "LDT", &env->ldt);
--    cpu_x86_dump_seg_cache(env, f, "TR", &env->tr);
-+    cpu_x86_dump_seg_cache(env, buf, "LDT", &env->ldt);
-+    cpu_x86_dump_seg_cache(env, buf, "TR", &env->tr);
- 
- #ifdef TARGET_X86_64
-     if (env->hflags & HF_LMA_MASK) {
--        qemu_fprintf(f, "GDT=     %016" PRIx64 " %08x\n",
--                     env->gdt.base, env->gdt.limit);
--        qemu_fprintf(f, "IDT=     %016" PRIx64 " %08x\n",
--                     env->idt.base, env->idt.limit);
--        qemu_fprintf(f, "CR0=%08x CR2=%016" PRIx64 " CR3=%016" PRIx64 " CR4=%08x\n",
--                     (uint32_t)env->cr[0],
--                     env->cr[2],
--                     env->cr[3],
--                     (uint32_t)env->cr[4]);
-+        g_string_append_printf(buf, "GDT=     %016" PRIx64 " %08x\n",
-+                               env->gdt.base, env->gdt.limit);
-+        g_string_append_printf(buf, "IDT=     %016" PRIx64 " %08x\n",
-+                               env->idt.base, env->idt.limit);
-+        g_string_append_printf(buf, "CR0=%08x CR2=%016" PRIx64
-+                               " CR3=%016" PRIx64 " CR4=%08x\n",
-+                               (uint32_t)env->cr[0],
-+                               env->cr[2],
-+                               env->cr[3],
-+                               (uint32_t)env->cr[4]);
-         for(i = 0; i < 4; i++)
--            qemu_fprintf(f, "DR%d=%016" PRIx64 " ", i, env->dr[i]);
--        qemu_fprintf(f, "\nDR6=%016" PRIx64 " DR7=%016" PRIx64 "\n",
--                     env->dr[6], env->dr[7]);
-+            g_string_append_printf(buf, "DR%d=%016" PRIx64 " ", i, env->dr[i]);
-+        g_string_append_printf(buf, "\nDR6=%016" PRIx64 " DR7=%016" PRIx64 "\n",
-+                               env->dr[6], env->dr[7]);
-     } else
- #endif
-     {
--        qemu_fprintf(f, "GDT=     %08x %08x\n",
--                     (uint32_t)env->gdt.base, env->gdt.limit);
--        qemu_fprintf(f, "IDT=     %08x %08x\n",
--                     (uint32_t)env->idt.base, env->idt.limit);
--        qemu_fprintf(f, "CR0=%08x CR2=%08x CR3=%08x CR4=%08x\n",
--                     (uint32_t)env->cr[0],
--                     (uint32_t)env->cr[2],
--                     (uint32_t)env->cr[3],
--                     (uint32_t)env->cr[4]);
-+        g_string_append_printf(buf, "GDT=     %08x %08x\n",
-+                               (uint32_t)env->gdt.base, env->gdt.limit);
-+        g_string_append_printf(buf, "IDT=     %08x %08x\n",
-+                               (uint32_t)env->idt.base, env->idt.limit);
-+        g_string_append_printf(buf, "CR0=%08x CR2=%08x CR3=%08x CR4=%08x\n",
-+                               (uint32_t)env->cr[0],
-+                               (uint32_t)env->cr[2],
-+                               (uint32_t)env->cr[3],
-+                               (uint32_t)env->cr[4]);
-         for(i = 0; i < 4; i++) {
--            qemu_fprintf(f, "DR%d=" TARGET_FMT_lx " ", i, env->dr[i]);
-+            g_string_append_printf(buf, "DR%d=" TARGET_FMT_lx
-+                                   " ", i, env->dr[i]);
-         }
--        qemu_fprintf(f, "\nDR6=" TARGET_FMT_lx " DR7=" TARGET_FMT_lx "\n",
--                     env->dr[6], env->dr[7]);
-+        g_string_append_printf(buf, "\nDR6=" TARGET_FMT_lx
-+                               " DR7=" TARGET_FMT_lx "\n",
-+                               env->dr[6], env->dr[7]);
-     }
-     if (flags & CPU_DUMP_CCOP) {
-         if ((unsigned)env->cc_op < CC_OP_NB)
-@@ -464,18 +480,19 @@ void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-             snprintf(cc_op_name, sizeof(cc_op_name), "[%d]", env->cc_op);
- #ifdef TARGET_X86_64
-         if (env->hflags & HF_CS64_MASK) {
--            qemu_fprintf(f, "CCS=%016" PRIx64 " CCD=%016" PRIx64 " CCO=%-8s\n",
--                         env->cc_src, env->cc_dst,
--                         cc_op_name);
-+            g_string_append_printf(buf, "CCS=%016" PRIx64
-+                                   " CCD=%016" PRIx64 " CCO=%-8s\n",
-+                                   env->cc_src, env->cc_dst,
-+                                   cc_op_name);
-         } else
- #endif
-         {
--            qemu_fprintf(f, "CCS=%08x CCD=%08x CCO=%-8s\n",
--                         (uint32_t)env->cc_src, (uint32_t)env->cc_dst,
--                         cc_op_name);
-+            g_string_append_printf(buf, "CCS=%08x CCD=%08x CCO=%-8s\n",
-+                                   (uint32_t)env->cc_src, (uint32_t)env->cc_dst,
-+                                   cc_op_name);
+-            qemu_fprintf(f, "%c%c\n", ws ? '<' : ' ', cw ? '=' : ' ');
++            g_string_append_printf(buf, "%c%c\n",
++                                   ws ? '<' : ' ', cw ? '=' : ' ');
          }
      }
--    qemu_fprintf(f, "EFER=%016" PRIx64 "\n", env->efer);
-+    g_string_append_printf(buf, "EFER=%016" PRIx64 "\n", env->efer);
-     if (flags & CPU_DUMP_FPU) {
-         int fptag;
-         const uint64_t avx512_mask = XSTATE_OPMASK_MASK | \
-@@ -488,64 +505,68 @@ void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-             fptag |= ((!env->fptags[i]) << i);
-         }
-         update_mxcsr_from_sse_status(env);
--        qemu_fprintf(f, "FCW=%04x FSW=%04x [ST=%d] FTW=%02x MXCSR=%08x\n",
--                     env->fpuc,
--                     (env->fpus & ~0x3800) | (env->fpstt & 0x7) << 11,
--                     env->fpstt,
--                     fptag,
--                     env->mxcsr);
-+        g_string_append_printf(
-+            buf, "FCW=%04x FSW=%04x [ST=%d] FTW=%02x MXCSR=%08x\n",
-+            env->fpuc,
-+            (env->fpus & ~0x3800) | (env->fpstt & 0x7) << 11,
-+            env->fpstt,
-+            fptag,
-+            env->mxcsr);
-         for(i=0;i<8;i++) {
-             CPU_LDoubleU u;
-             u.d = env->fpregs[i].d;
--            qemu_fprintf(f, "FPR%d=%016" PRIx64 " %04x",
--                         i, u.l.lower, u.l.upper);
-+            g_string_append_printf(buf, "FPR%d=%016" PRIx64 " %04x",
-+                                   i, u.l.lower, u.l.upper);
-             if ((i & 1) == 1)
--                qemu_fprintf(f, "\n");
-+                g_string_append_printf(buf, "\n");
-             else
--                qemu_fprintf(f, " ");
-+                g_string_append_printf(buf, " ");
-         }
--
-         if ((env->xcr0 & avx512_mask) == avx512_mask) {
-             /* XSAVE enabled AVX512 */
-             for (i = 0; i < NB_OPMASK_REGS; i++) {
--                qemu_fprintf(f, "Opmask%02d=%016"PRIx64"%s", i,
--                             env->opmask_regs[i], ((i & 3) == 3) ? "\n" : " ");
-+                g_string_append_printf(buf, "Opmask%02d=%016"PRIx64"%s", i,
-+                                       env->opmask_regs[i],
-+                                       ((i & 3) == 3) ? "\n" : " ");
-             }
  
-             nb = (env->hflags & HF_CS64_MASK) ? 32 : 8;
-             for (i = 0; i < nb; i++) {
--                qemu_fprintf(f, "ZMM%02d=%016"PRIx64" %016"PRIx64" %016"PRIx64
--                             " %016"PRIx64" %016"PRIx64" %016"PRIx64
--                             " %016"PRIx64" %016"PRIx64"\n",
--                             i,
--                             env->xmm_regs[i].ZMM_Q(7),
--                             env->xmm_regs[i].ZMM_Q(6),
--                             env->xmm_regs[i].ZMM_Q(5),
--                             env->xmm_regs[i].ZMM_Q(4),
--                             env->xmm_regs[i].ZMM_Q(3),
--                             env->xmm_regs[i].ZMM_Q(2),
--                             env->xmm_regs[i].ZMM_Q(1),
--                             env->xmm_regs[i].ZMM_Q(0));
-+                g_string_append_printf(buf, "ZMM%02d=%016"PRIx64
-+                                       " %016"PRIx64" %016"PRIx64
-+                                       " %016"PRIx64" %016"PRIx64" %016"PRIx64
-+                                       " %016"PRIx64" %016"PRIx64"\n",
-+                                       i,
-+                                       env->xmm_regs[i].ZMM_Q(7),
-+                                       env->xmm_regs[i].ZMM_Q(6),
-+                                       env->xmm_regs[i].ZMM_Q(5),
-+                                       env->xmm_regs[i].ZMM_Q(4),
-+                                       env->xmm_regs[i].ZMM_Q(3),
-+                                       env->xmm_regs[i].ZMM_Q(2),
-+                                       env->xmm_regs[i].ZMM_Q(1),
-+                                       env->xmm_regs[i].ZMM_Q(0));
-             }
-         } else if ((env->xcr0 & avx_mask)  == avx_mask) {
-             /* XSAVE enabled AVX */
-             nb = env->hflags & HF_CS64_MASK ? 16 : 8;
-             for (i = 0; i < nb; i++) {
--                qemu_fprintf(f, "YMM%02d=%016"PRIx64" %016"PRIx64" %016"PRIx64
--                             " %016"PRIx64"\n", i,
--                             env->xmm_regs[i].ZMM_Q(3),
--                             env->xmm_regs[i].ZMM_Q(2),
--                             env->xmm_regs[i].ZMM_Q(1),
--                             env->xmm_regs[i].ZMM_Q(0));
-+                g_string_append_printf(buf, "YMM%02d=%016"PRIx64
-+                                       " %016"PRIx64" %016"PRIx64
-+                                       " %016"PRIx64"\n", i,
-+                                       env->xmm_regs[i].ZMM_Q(3),
-+                                       env->xmm_regs[i].ZMM_Q(2),
-+                                       env->xmm_regs[i].ZMM_Q(1),
-+                                       env->xmm_regs[i].ZMM_Q(0));
-             }
-         } else { /* SSE and below cases */
-             nb = env->hflags & HF_CS64_MASK ? 16 : 8;
-             for (i = 0; i < nb; i++) {
--                qemu_fprintf(f, "XMM%02d=%016"PRIx64" %016"PRIx64"%s",
--                             i,
--                             env->xmm_regs[i].ZMM_Q(1),
--                             env->xmm_regs[i].ZMM_Q(0),
--                             (i & 1) ? "\n" : " ");
-+                g_string_append_printf(buf,
-+                                       "XMM%02d=%016"PRIx64" %016"PRIx64"%s",
-+                                       i,
-+                                       env->xmm_regs[i].ZMM_Q(1),
-+                                       env->xmm_regs[i].ZMM_Q(0),
-+                                       (i & 1) ? "\n" : " ");
-             }
-         }
-     }
-@@ -555,16 +576,17 @@ void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-         uint8_t code;
-         char codestr[3];
- 
--        qemu_fprintf(f, "Code=");
-+        g_string_append_printf(buf, "Code=");
-         for (i = 0; i < DUMP_CODE_BYTES_TOTAL; i++) {
-             if (cpu_memory_rw_debug(cs, base - offs + i, &code, 1, 0) == 0) {
-                 snprintf(codestr, sizeof(codestr), "%02x", code);
-             } else {
-                 snprintf(codestr, sizeof(codestr), "??");
-             }
--            qemu_fprintf(f, "%s%s%s%s", i > 0 ? " " : "",
--                         i == offs ? "<" : "", codestr, i == offs ? ">" : "");
-+            g_string_append_printf(buf, "%s%s%s%s", i > 0 ? " " : "",
-+                                   i == offs ? "<" : "", codestr,
-+                                   i == offs ? ">" : "");
-         }
+     if ((flags & CPU_DUMP_FPU) &&
+         xtensa_option_enabled(env->config, XTENSA_OPTION_FP_COPROCESSOR)) {
 -        qemu_fprintf(f, "\n");
 +        g_string_append_printf(buf, "\n");
+ 
+         for (i = 0; i < 16; ++i) {
+-            qemu_fprintf(f, "F%02d=%08x (%-+15.8e)%c", i,
+-                         float32_val(env->fregs[i].f32[FP_F32_LOW]),
+-                         *(float *)(env->fregs[i].f32 + FP_F32_LOW),
+-                         (i % 2) == 1 ? '\n' : ' ');
++            g_string_append_printf(buf, "F%02d=%08x (%-+15.8e)%c", i,
++                                   float32_val(env->fregs[i].f32[FP_F32_LOW]),
++                                   *(float *)(env->fregs[i].f32 + FP_F32_LOW),
++                                   (i % 2) == 1 ? '\n' : ' ');
+         }
+     }
+ 
+     if ((flags & CPU_DUMP_FPU) &&
+         xtensa_option_enabled(env->config, XTENSA_OPTION_DFP_COPROCESSOR) &&
+         !xtensa_option_enabled(env->config, XTENSA_OPTION_DFPU_SINGLE_ONLY)) {
+-        qemu_fprintf(f, "\n");
++        g_string_append_printf(buf, "\n");
+ 
+         for (i = 0; i < 16; ++i) {
+-            qemu_fprintf(f, "F%02d=%016"PRIx64" (%-+24.16le)%c", i,
+-                         float64_val(env->fregs[i].f64),
+-                         *(double *)(&env->fregs[i].f64),
+-                         (i % 2) == 1 ? '\n' : ' ');
++            g_string_append_printf(buf, "F%02d=%016"PRIx64" (%-+24.16le)%c", i,
++                                   float64_val(env->fregs[i].f64),
++                                   *(double *)(&env->fregs[i].f64),
++                                   (i % 2) == 1 ? '\n' : ' ');
+         }
      }
  }
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 6b029f1bdf..0a5c6a6d19 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -6764,7 +6764,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->class_by_name = x86_cpu_class_by_name;
-     cc->parse_features = x86_cpu_parse_featurestr;
-     cc->has_work = x86_cpu_has_work;
--    cc->dump_state = x86_cpu_dump_state;
-+    cc->format_state = x86_cpu_format_state;
-     cc->set_pc = x86_cpu_set_pc;
-     cc->gdb_read_register = x86_cpu_gdb_read_register;
-     cc->gdb_write_register = x86_cpu_gdb_write_register;
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 71ae3141c3..d87c8808f6 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -1825,7 +1825,7 @@ int x86_cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
- void x86_cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
-                                 Error **errp);
- 
--void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags);
-+void x86_cpu_format_state(CPUState *cs, GString *buf, int flags);
- 
- hwaddr x86_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-                                          MemTxAttrs *attrs);
 -- 
 2.31.1
 

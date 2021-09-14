@@ -1,192 +1,286 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp72525lfp;
-        Mon, 13 Sep 2021 14:30:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzyfIf2f0sgW122gcPgZmDwwZ+ZltunrUMYh3mvC93SQMHhRNwdcJpwzpWO4LcfR4+pqz52
-X-Received: by 2002:a05:6602:3404:: with SMTP id n4mr10480489ioz.45.1631568613863;
-        Mon, 13 Sep 2021 14:30:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631568613; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp767562lfp;
+        Tue, 14 Sep 2021 08:03:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0Iy76zw1hMdkCFi17SL42HGCihtn9c35y4L2zuKmHdN2z8tIZeN6iqEMIBmUvnheOwmR0
+X-Received: by 2002:a5d:49ce:: with SMTP id t14mr19294328wrs.183.1631631800733;
+        Tue, 14 Sep 2021 08:03:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631631800; cv=none;
         d=google.com; s=arc-20160816;
-        b=o/J7K9orLNWG1J9BtDDpQDKvLoOYuZGOKk8X8r9xjgJYPLP6QznbZyk72ddfe8N7HE
-         5KrUW9NNclMbT/+w4HX808YrQ0DElFAXA4vsKw9ftOfPGiPtds2qflyzqb1lxXYDgopp
-         p9j2G2+lGWfoVYmaTmQtckhizQotE7hJjaH0IrRnDk9c+WKhq1LREV8lr+QDf5ExmBLn
-         H05sqqWbaxaHY91oKfjXpmCmiPCzEeq4QKwKiRAiIqrEobYq8vwtdGvxzqIH+zQj0joq
-         AOKjuHQz6KPqCKCzHyjGwUknxYzcG6kWHXJESNOyH/tX50Jz7GZ7RQFDTxL/3LtDNZeb
-         8naA==
+        b=aynz3AkMr38oYdj4gnQodpsQ5cizyIMTTczL5hK8gW8m8nM5IzDozwahnYnlQr7b38
+         H/DJNs7r9fupl0YIQoUdj7T0Gon0MoKEYmQA1uvI9TaGbQOtWKSjRTC0IzC/bl6b2DKd
+         iOLLOW//nSKyyCyfbAp3w+QV/L7GNqwU6c54MUpMx8A1eevSWMmz+JQbQc6qIf+fzRf+
+         tSZoBwemRWM4a+VI30K1qnOilWUA9HNiEJkn4B+4jePsqkNGPOizr5xh2H5BKD9sMwib
+         Y9L9V50gN/ltMH54R6nRKH68fPYPlk2LTQSUg8R77Y7uEnbC5vXE/xwhF/iiXeX9w+rO
+         fUKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=1cPSclm0yNyFZadA3baXMmpptPWGDfVQjG7Gt3V3x88=;
-        b=zz5j1utSwIAHFtd1zhbznMTR3X7X6QuXuiMDQHzinpXZ4KSID8IR8viBkDe+xNA/Vr
-         Vq8XGI0hG9JI092Km7XvpXs4BMVZ/GL+4/CrRc1VdJDGHRW36wm2yLw3eI3uigk7PvPy
-         MfQtigAYIM6BFe20TWmn7oVEoQO/DNRN7DBXnLKzx+uGnZvA5wLueG36GmNpEe7dS13z
-         zcOTmdZ8K/XtSJAPxGGgJaZA/ImZMgSFG5Uxjzfs2TWw06g27unYq+TLbd4DEBm304tg
-         bovYggbLEfpQfWmq0NpyFcb1Kta+bDkM0CoIk9wlpBkmIzeAq5TetEpt71OR5oMPsYDd
-         kiNg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=IbnSHNQ2kA4GdquvgqY/LA7KZ7zRfnEAlFQJqJTL2Zg=;
+        b=GPfEOKqHnlQEXoOpWt9XaX9lARoXQ/sAtBFaIBwUNAkPJKpoymXTXR8cWfwUOJ8gi8
+         gscwISlXv//flUfEvHhprpOhGV0yE2zUY7KxBxPOvnTr3ERAJW0RcQ2YZOk7fM/sgLgA
+         ynUEXxq29oNWhYfqoBuX8yVYG0vmSPQVn8Z0gdWhlNmc15sD4p4Egim6CRYHsI/4bj30
+         HHf5GX+H2oWTbHKXcEy5i+zUEUpd5Yq+sQZKFqbGGbMDX88M4rP/yICz+pU8m0fTRzjY
+         aqN4eeGCV2Irm0Va8jCDEJTj31TypcvZHXJcMXEkVPoFibW3zeOXN2NjkNxyGFwrnvdS
+         M3iA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Wpvtr4zb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11si7612047ior.13.2021.09.13.14.30.13
+        by mx.google.com with ESMTPS id f12si1514516wmf.89.2021.09.14.08.03.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 14:30:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 08:03:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38066 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Wpvtr4zb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35698 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPtWn-0001T5-8t
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 17:30:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54796)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ9xv-0000Ek-OE
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:03:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mPtWZ-0001JO-Ma; Mon, 13 Sep 2021 17:30:00 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:49514 helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1mPtWX-00019e-JT; Mon, 13 Sep 2021 17:29:59 -0400
-Received: from MacBook-Air.alex.local
- (dynamic-095-118-088-150.95.118.pool.telefonica.de [95.118.88.150])
- by csgraf.de (Postfix) with ESMTPSA id 3E11060800D8;
- Mon, 13 Sep 2021 23:29:49 +0200 (CEST)
-Subject: Re: [PATCH v9 07/11] hvf: arm: Implement PSCI handling
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210912230757.41096-1-agraf@csgraf.de>
- <20210912230757.41096-8-agraf@csgraf.de>
- <CAFEAcA8BybrfxNxkWbEjxji4DvDumr6Otb_RK_f84Dt_TWXfpA@mail.gmail.com>
- <ad707e0d-8d4a-0248-80f4-a02a7226ce0a@csgraf.de>
- <CAFEAcA_OBK1hbqC1Nc7J+VEwkO54WvqBrNa=bR5T3tZW+nfEkQ@mail.gmail.com>
- <3132e2f5-41a6-6011-808b-7ea12abec1c0@csgraf.de>
- <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <b5226bd4-f71d-b1bc-8b27-72a440d18dc9@csgraf.de>
-Date: Mon, 13 Sep 2021 23:29:47 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.14.0
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQ9Tt-0000S8-Ki
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:32:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51709)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQ9Tm-0002bh-0x
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:32:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631629929;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IbnSHNQ2kA4GdquvgqY/LA7KZ7zRfnEAlFQJqJTL2Zg=;
+ b=Wpvtr4zbCY6xHLkfk6K+JvKju3jxf85f++t8StPkxtfQI46pXuMPrHeORnGy0YjbeBV7L5
+ PZ8sAOcgDkUUrtdvE/Du+8Pcn/4Fqb6P3XZ4lFU1u9ihdzXQuRGIHYb6WNIjMm484Cud23
+ jGaFvC4vgEBWrAQ8SnQbhoIYjrLAjFU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-239-ctGCrj0kMDOYr0bE3E5bpg-1; Tue, 14 Sep 2021 10:32:07 -0400
+X-MC-Unique: ctGCrj0kMDOYr0bE3E5bpg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 23DAB10144E0;
+ Tue, 14 Sep 2021 14:32:04 +0000 (UTC)
+Received: from localhost.localdomain.com (unknown [10.39.193.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1F1B15D9CA;
+ Tue, 14 Sep 2021 14:31:44 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 36/53] qapi: introduce x-query-skeys QMP command
+Date: Tue, 14 Sep 2021 15:20:25 +0100
+Message-Id: <20210914142042.1655100-37-berrange@redhat.com>
+In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
+References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -38
-X-Spam_score: -3.9
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.969,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jZPWl8+tvPQz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
+ David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Peter Xu <peterx@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YcjkgrL+w0c4
 
+This is a counterpart to the HMP "info skeys" command. It is being
+added with an "x-" prefix because this QMP command is intended as an
+adhoc debugging tool and will thus not be modelled in QAPI as fully
+structured data, nor will it have long term guaranteed stability.
+The existing HMP command is rewritten to call the QMP command.
 
-On 13.09.21 14:30, Peter Maydell wrote:
-> On Mon, 13 Sept 2021 at 13:02, Alexander Graf <agraf@csgraf.de> wrote:
->>
->> On 13.09.21 13:44, Peter Maydell wrote:
->>> On Mon, 13 Sept 2021 at 12:07, Alexander Graf <agraf@csgraf.de> wrote:
->>>> To keep your train of thought though, what would you do if we encounter
->>>> a conduit that is different from the chosen one? Today, I am aware of 2
->>>> different implementations: TCG injects #UD [1] while KVM sets x0 to -1 [2].
->>> If the SMC or HVC insn isn't being used for PSCI then it should
->>> have its standard architectural behaviour.
->> Why?
-> QEMU's assumption here is that there are basically two scenarios
-> for these instructions:
->  (1) we're providing an emulation of firmware that uses this
->      instruction (and only this insn, not the other one) to
->      provide PSCI services
->  (2) we're not emulating any firmware at all, we're running it
->      in the guest, and that guest firmware is providing PSCI
->
-> In case (1) we provide a PSCI ABI on the end of the insn.
-> In case (2) we provide the architectural behaviour for the insn
-> so that the guest firmware can use it.
->
-> We don't currently have
->  (3) we're providing an emulation of firmware that does something
->      other than providing PSCI services on this instruction
->
-> which is what I think you're asking for. (Alternatively, you might
-> be after "provide PSCI via SMC, not HVC", ie use a different conduit.
-> If hvf documents that SMC is guaranteed to trap that would be
-> possible, I guess.)
+This command is unable to use the pre-existing HumanReadableText,
+because if 'common.json' is included into 'machine-target.json'
+the static marshalling method for HumanReadableText will be reported
+as unused by the compiler on all architectures except s390x.
 
+Possible options were
 
-Hvf doesn't document anything. The only documentation it has are its C
-headers.
+ 1 Support 'if' conditionals on 'include' statements in QAPI
+ 2 Add further commands to 'machine-target.json' that use
+   HumanReadableText, such that it has at least one usage
+   on all architecture targets.
+ 3 Duplicate HumanReadableText as TargetHumanReadableText
+   adding conditions
 
-However, M1 does not implement EL3, but traps SMC calls. It's the only
-chip Apple has out for hvf on ARM today. I would be very surprised if
-they started to regress on that functionality.
+This patch takes option (3) in the belief that we will eventually
+get to a point where option (2) happens, and TargetHumanReadableText
+can be removed again.
 
-So, would you be open to changing the default conduit to SMC for
-hvf_enabled()? Is that really a better experience than just modeling
-behavior after KVM?
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ hw/s390x/s390-skeys.c    | 37 +++++++++++++++++++++++++++++--------
+ qapi/machine-target.json | 27 +++++++++++++++++++++++++++
+ 2 files changed, 56 insertions(+), 8 deletions(-)
 
-
->
->> Also, why does KVM behave differently?
-> Looks like Marc made KVM set x0 to -1 for SMC calls in kernel commit
-> c0938c72f8070aa; conveniently he's on the cc list here so we can
-> ask him :-)
->
->> And why does Windows rely on
->> SMC availability on boot?
-> Ask Microsoft, but probably either they don't realize that
-> SMC might not exist and be trappable, or they only have a limited
-> set of hosts they care about. CPUs with no EL3 are not that common.
-
-
-I'm pretty sure it's the latter :).
-
-
->
->> If you really insist that you don't care about users running Windows
->> with TCG and EL2=0, so be it. At least you can enable EL2 and it works
->> then. But I can't on hvf. It's one of the most useful use cases for hvf
->> on QEMU and I won't break it just because you insist that "SMC behavior
->> is IMPDEF, so it must be UNDEF". If it's IMPDEF, it may as well be "set
->> x0 to -1 and add 4 to pc".
-> I am not putting in random hacks for the benefit of specific guest OSes.
-> If there's a good reason why QEMU's behaviour is wrong then we can change
-> it, but "I want Windows to boot" doesn't count.
-
-
-Ok, so today we have 2 implementations for SMC traps in an EL0/1 only VM:
-
-  * TCG injects #UD
-  * KVM sets x0 = -1 and pc += 4.
-
-With v10 of the HVF patch set, I'm following what KVM is doing. Can we
-leave it at that for now and sort out with Marc (and maybe ARM spec
-writers) what we want to do consistently across all implementations as a
-follow-up?
-
-
-Thanks,
-
-Alex
+diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
+index 5024faf411..3a404d0574 100644
+--- a/hw/s390x/s390-skeys.c
++++ b/hw/s390x/s390-skeys.c
+@@ -15,6 +15,7 @@
+ #include "hw/s390x/storage-keys.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-misc-target.h"
++#include "qapi/qapi-commands-machine-target.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/memory_mapping.h"
+@@ -73,34 +74,54 @@ static void write_keys(FILE *f, uint8_t *keys, uint64_t startgfn,
+     }
+ }
+ 
+-void hmp_info_skeys(Monitor *mon, const QDict *qdict)
++TargetHumanReadableText *qmp_x_query_skeys(int64_t addr, Error **errp)
+ {
++    TargetHumanReadableText *ret;
++    g_autoptr(GString) buf = g_string_new("");
+     S390SKeysState *ss = s390_get_skeys_device();
+     S390SKeysClass *skeyclass = S390_SKEYS_GET_CLASS(ss);
+-    uint64_t addr = qdict_get_int(qdict, "addr");
+     uint8_t key;
+     int r;
+ 
+     /* Quick check to see if guest is using storage keys*/
+     if (!skeyclass->skeys_are_enabled(ss)) {
+-        monitor_printf(mon, "Error: This guest is not using storage keys\n");
+-        return;
++        error_setg(errp, "this guest is not using storage keys");
++        return NULL;
+     }
+ 
+     if (!address_space_access_valid(&address_space_memory,
+                                     addr & TARGET_PAGE_MASK, TARGET_PAGE_SIZE,
+                                     false, MEMTXATTRS_UNSPECIFIED)) {
+-        monitor_printf(mon, "Error: The given address is not valid\n");
+-        return;
++        error_setg(errp, "the given address is not valid");
++        return NULL;
+     }
+ 
+     r = skeyclass->get_skeys(ss, addr / TARGET_PAGE_SIZE, 1, &key);
+     if (r < 0) {
+-        monitor_printf(mon, "Error: %s\n", strerror(-r));
++        error_setg_errno(errp, r, "unable to query storage keys");
++        return NULL;
++    }
++
++    g_string_append_printf(buf, "  key: 0x%X\n", key);
++
++    ret = g_new0(TargetHumanReadableText, 1);
++    ret->human_readable_text = g_steal_pointer(&buf->str);
++    return ret;
++}
++
++void hmp_info_skeys(Monitor *mon, const QDict *qdict)
++{
++    Error *err = NULL;
++    g_autoptr(TargetHumanReadableText) info = NULL;
++    uint64_t addr = qdict_get_int(qdict, "addr");
++
++    info = qmp_x_query_skeys(addr, &err);
++    if (err) {
++        error_report_err(err);
+         return;
+     }
+ 
+-    monitor_printf(mon, "  key: 0x%X\n", key);
++    monitor_printf(mon, "%s", info->human_readable_text);
+ }
+ 
+ void hmp_dump_skeys(Monitor *mon, const QDict *qdict)
+diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+index f5ec4bc172..00476bcdd4 100644
+--- a/qapi/machine-target.json
++++ b/qapi/machine-target.json
+@@ -341,3 +341,30 @@
+                    'TARGET_I386',
+                    'TARGET_S390X',
+                    'TARGET_MIPS' ] } }
++
++
++##
++# @TargetHumanReadableText:
++#
++# @human-readable-text: Formatted output intended for humans.
++#
++# Since: 6.2.0
++#
++##
++{ 'struct': 'TargetHumanReadableText',
++  'data': { 'human-readable-text': 'str' },
++  'if': 'TARGET_S390X' }
++
++##
++# @x-query-skeys:
++#
++# Query the value of a storage key
++#
++# Returns: storage key value
++#
++# Since: 6.2
++##
++{ 'command': 'x-query-skeys',
++  'data': { 'addr': 'int' },
++  'returns': 'TargetHumanReadableText',
++  'if': 'TARGET_S390X' }
+-- 
+2.31.1
 

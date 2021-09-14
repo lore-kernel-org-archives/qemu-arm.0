@@ -1,82 +1,82 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp985169lfp;
-        Tue, 14 Sep 2021 12:29:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHO24GysuubNqwgk/1Xx+ohf7a6TzvGucWrf5lv7x13i98GjVZWhYPXffpGfwrHR/n3LxT
-X-Received: by 2002:a6b:5c0c:: with SMTP id z12mr15384483ioh.171.1631647769213;
-        Tue, 14 Sep 2021 12:29:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631647769; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp986985lfp;
+        Tue, 14 Sep 2021 12:32:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy7DRU2B7FzijZ390Icecg6JEEbCgRoWYTt06ET2SrJ+OKuGP6i4UCbk3B1GbOz8BoSO0ON
+X-Received: by 2002:a05:6102:144:: with SMTP id a4mr968899vsr.1.1631647926127;
+        Tue, 14 Sep 2021 12:32:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631647926; cv=none;
         d=google.com; s=arc-20160816;
-        b=KX0PMYOHF99LPYgMGh4RmRdsPEv3dIaOTYzsppCzFyNntCdpfqQpWSGDG4wECgLg45
-         k9IWyMmxvRn84wjMLaUWEtlc1EbtE87lKybDGqBOLmWk+yKzp0PAcZfrgF2U43Vb/Zst
-         /CdOl5WXnnp8RQjCQq3V9nKrwSvxYERGBVR7Q/x1HiYqeT6px/VwMxAmynmozr4jF2wZ
-         3pkQvaaTfXGM2vKBHjPLizPQrjn3ylvJpqIUsCSR+dopsMtOyFb8OFs4S4g+eNXKAEGn
-         50vDLNFqPOfR4xGYldQa98poYaW/9E+q3Qpxa+mw1rk/HGdAs00NAoJkPr2Rbc8M9tOQ
-         AKHA==
+        b=u8VvXWZcbptD3v6hswfbPORXSewox9V2SqZVder3T6lJG1Ppw+4wRPoydrCIyI/18H
+         wIM6RNaG26EerfG/65wDezucLfylFRIro9/1LpdtiWGlodqmcEeralthf1yDt245Xc6R
+         VvbuPyQlPZWelcF7PC0n0UronIoVVIqYgWtxNygWuhtr0YHGSPqx4NxSOd46u4AuhVP0
+         6w4s8fmXTY5ZQON+x3QPYbcXA1F9FmMC7apzR6KeLw4t/0bFXAOVGKrPOwxD+lQKB7kW
+         KYK+cGt5DJEAG0Wik/E3f+5DqH/mW4uBH6EZ4hNkdwaRJ7A503UTImgDU/2TUnE/Or7L
+         8rLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date;
-        bh=hN4vORAL6pk4eOKDGREiQWEOzehMrMx6aFigbm5FxxU=;
-        b=x8xGmpyzZN0puVWM50mfMzE71FmKiLVnapM5VaSNbGiyTvwSRazIojwdVK0MWlF8k2
-         jTDi9jOY8miG6PpcW5n/DS97/Rfycwg2JvZwU/tSf62rHT+gyItunIPYb4TBWJ8LujPe
-         WW0hXCvc2GLUWqqN9/UT2/JzZdk+mNUSckJnm5j27u4W86rW0P59tEvyxBw0nKbQj/7z
-         a1K+fOW0XQawQgjZhZxvVr80up0tVCG+DT3YRJUowlwuJqlD8UzooeXjIzTwkKVUBU+D
-         +SUP/BdszBo97g4UdCd7tAz8Bcv2VG2UVebsLLP9fjaLDguf1XNFn6Mqplep2F7VkWtD
-         gV8w==
+        bh=vTNvvJFiU7t9agh8lVzo/IiX9xLOPViPOZWcLM64+ng=;
+        b=v3XYQXjIctbQuTmvNRWwz0QysHEygMe3fYCUtp6rNO9KQGHX7QBJpa4raTS1aNQ5QG
+         SKPRzjTAMk0ri31K+mw/aws2A5vUR/CJTQBrV8Lulcg386gsNaUh51R8TAnlqy+7aiLE
+         wnFVLgKHYetSrUjhUHxOXD/Zy0hguKKGLmPWKuTVG2Z0J+vut1YWvN/qcsGyX88mCjdT
+         JD7oc+roNokkXwxtc6ZTDq7LQynM22F1UypyMzU49CuEtFgnAXIiwT6PbWiHvID+nI31
+         RCqmzWBui4oenED5J9sMkvt+jiDx2I+isb6N9o1vT9fslPJKP9jOIUbDORFeqQVjch0j
+         9/PA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14si10369828jac.89.2021.09.14.12.29.28
+        by mx.google.com with ESMTPS id k19si3960419vke.41.2021.09.14.12.32.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 12:29:29 -0700 (PDT)
+        Tue, 14 Sep 2021 12:32:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49978 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQE7U-0002Am-E6
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 15:29:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41686)
+	id 1mQEA1-0003tH-Bm
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 15:32:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mQE72-0001Sn-CT
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 15:29:00 -0400
-Received: from us-smtp-delivery-44.mimecast.com ([205.139.111.44]:27743)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mQE99-0003qj-JM
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 15:31:12 -0400
+Received: from us-smtp-delivery-44.mimecast.com ([207.211.30.44]:57057)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mQE6z-0008TU-BT
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 15:28:59 -0400
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mQE97-0001Wx-9O
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 15:31:11 -0400
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-548-1I6aUjcDNc6A8MGHErAHNA-1; Tue, 14 Sep 2021 15:28:53 -0400
-X-MC-Unique: 1I6aUjcDNc6A8MGHErAHNA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-529-y3aolB9gOoC8Kc_Sg0WRhg-1; Tue, 14 Sep 2021 15:31:07 -0400
+X-MC-Unique: y3aolB9gOoC8Kc_Sg0WRhg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 27BFF18A072C;
- Tue, 14 Sep 2021 19:28:49 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4247EA40FD;
+ Tue, 14 Sep 2021 19:31:03 +0000 (UTC)
 Received: from bahia.huguette (unknown [10.39.192.206])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E67B11001281;
- Tue, 14 Sep 2021 19:28:28 +0000 (UTC)
-Date: Tue, 14 Sep 2021 21:28:27 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 37B72838D7;
+ Tue, 14 Sep 2021 19:30:37 +0000 (UTC)
+Date: Tue, 14 Sep 2021 21:30:36 +0200
 From: Greg Kurz <groug@kaod.org>
 To: "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>
-Subject: Re: [PATCH v2 06/53] hw/core: introduce 'format_state' callback to
- replace 'dump_state'
-Message-ID: <20210914212827.65559b21@bahia.huguette>
-In-Reply-To: <20210914142042.1655100-7-berrange@redhat.com>
+Subject: Re: [PATCH v2 20/53] target/ppc: convert to use format_state
+ instead of dump_state
+Message-ID: <20210914213036.3f7a70ba@bahia.huguette>
+In-Reply-To: <20210914142042.1655100-21-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-7-berrange@redhat.com>
+ <20210914142042.1655100-21-berrange@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=groug@kaod.org
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: kaod.org
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: softfail client-ip=205.139.111.44; envelope-from=groug@kaod.org;
+Received-SPF: softfail client-ip=207.211.30.44; envelope-from=groug@kaod.org;
  helo=us-smtp-delivery-44.mimecast.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -123,89 +123,379 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /tKtY4FxWErW
+X-TUID: BdpcAgfQPE6j
 
-On Tue, 14 Sep 2021 15:19:55 +0100
+On Tue, 14 Sep 2021 15:20:09 +0100
 Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
 
-> The 'dump_state' callback assumes it will be outputting to a FILE
-> object. This is fine for HMP, but not so useful for QMP. Introduce
-> a new 'format_state' callback that returns a formatted GString
-> instead.
->=20
 > Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
 > ---
 
-Reviewed-by: Greg Kurz <groug@kaod.org>
+Acked-by: Greg Kurz <groug@kaod.org>
 
->  hw/core/cpu-common.c  | 15 +++++++++++++++
->  include/hw/core/cpu.h | 13 ++++++++++++-
->  2 files changed, 27 insertions(+), 1 deletion(-)
+>  target/ppc/cpu.h      |   2 +-
+>  target/ppc/cpu_init.c | 212 +++++++++++++++++++++++++-----------------
+>  2 files changed, 126 insertions(+), 88 deletions(-)
 >=20
-> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-> index e2f5a64604..c2cd33a817 100644
-> --- a/hw/core/cpu-common.c
-> +++ b/hw/core/cpu-common.c
-> @@ -106,6 +106,21 @@ void cpu_dump_state(CPUState *cpu, FILE *f, int flag=
-s)
->      if (cc->dump_state) {
->          cpu_synchronize_state(cpu);
->          cc->dump_state(cpu, f, flags);
-> +    } else if (cc->format_state) {
-> +        g_autoptr(GString) buf =3D g_string_new("");
-> +        cpu_synchronize_state(cpu);
-> +        cc->format_state(cpu, buf, flags);
-> +        qemu_fprintf(f, "%s", buf->str);
-> +    }
-> +}
-> +
-> +void cpu_format_state(CPUState *cpu, GString *buf, int flags)
-> +{
-> +    CPUClass *cc =3D CPU_GET_CLASS(cpu);
-> +
-> +    if (cc->format_state) {
-> +        cpu_synchronize_state(cpu);
-> +        cc->format_state(cpu, buf, flags);
->      }
+> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+> index 500205229c..c84ae29b98 100644
+> --- a/target/ppc/cpu.h
+> +++ b/target/ppc/cpu.h
+> @@ -1256,7 +1256,7 @@ DECLARE_OBJ_CHECKERS(PPCVirtualHypervisor, PPCVirtu=
+alHypervisorClass,
+> =20
+>  void ppc_cpu_do_interrupt(CPUState *cpu);
+>  bool ppc_cpu_exec_interrupt(CPUState *cpu, int int_req);
+> -void ppc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+> +void ppc_cpu_format_state(CPUState *cpu, GString *buf, int flags);
+>  hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>  int ppc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+>  int ppc_cpu_gdb_read_register_apple(CPUState *cpu, GByteArray *buf, int =
+reg);
+> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+> index ad7abc6041..3456be465c 100644
+> --- a/target/ppc/cpu_init.c
+> +++ b/target/ppc/cpu_init.c
+> @@ -9043,7 +9043,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, voi=
+d *data)
+> =20
+>      cc->class_by_name =3D ppc_cpu_class_by_name;
+>      cc->has_work =3D ppc_cpu_has_work;
+> -    cc->dump_state =3D ppc_cpu_dump_state;
+> +    cc->format_state =3D ppc_cpu_format_state;
+>      cc->set_pc =3D ppc_cpu_set_pc;
+>      cc->gdb_read_register =3D ppc_cpu_gdb_read_register;
+>      cc->gdb_write_register =3D ppc_cpu_gdb_write_register;
+> @@ -9104,7 +9104,7 @@ static void ppc_cpu_register_types(void)
+>  #endif
 >  }
 > =20
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index bc864564ce..1599ef9df3 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -91,7 +91,8 @@ struct SysemuCPUOps;
->   * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
->   * @has_work: Callback for checking if there is work to do.
->   * @memory_rw_debug: Callback for GDB memory access.
-> - * @dump_state: Callback for dumping state.
-> + * @dump_state: Callback for dumping state. Deprecated, use @format_stat=
-e.
-> + * @format_state: Callback for formatting state.
->   * @get_arch_id: Callback for getting architecture-dependent CPU ID.
->   * @set_pc: Callback for setting the Program Counter register. This
->   *       should have the semantics used by the target architecture when
-> @@ -136,6 +137,7 @@ struct CPUClass {
->      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
->                             uint8_t *buf, int len, bool is_write);
->      void (*dump_state)(CPUState *cpu, FILE *, int flags);
-> +    void (*format_state)(CPUState *cpu, GString *buf, int flags);
->      int64_t (*get_arch_id)(CPUState *cpu);
->      void (*set_pc)(CPUState *cpu, vaddr value);
->      int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-> @@ -537,6 +539,15 @@ enum CPUDumpFlags {
->   */
->  void cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+> -void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+> +void ppc_cpu_format_state(CPUState *cs, GString *buf, int flags)
+>  {
+>  #define RGPL  4
+>  #define RFPL  4
+> @@ -9113,39 +9113,41 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, in=
+t flags)
+>      CPUPPCState *env =3D &cpu->env;
+>      int i;
 > =20
-> +/**
-> + * cpu_format_state:
-> + * @cpu: The CPU whose state is to be formatted.
-> + * @buf: buffer to format state into
-> + *
-> + * Formats the CPU state.
-> + */
-> +void cpu_format_state(CPUState *cpu, GString *buf, int flags);
+> -    qemu_fprintf(f, "NIP " TARGET_FMT_lx "   LR " TARGET_FMT_lx " CTR "
+> -                 TARGET_FMT_lx " XER " TARGET_FMT_lx " CPU#%d\n",
+> -                 env->nip, env->lr, env->ctr, cpu_read_xer(env),
+> -                 cs->cpu_index);
+> -    qemu_fprintf(f, "MSR " TARGET_FMT_lx " HID0 " TARGET_FMT_lx "  HF "
+> -                 "%08x iidx %d didx %d\n",
+> -                 env->msr, env->spr[SPR_HID0], env->hflags,
+> -                 cpu_mmu_index(env, true), cpu_mmu_index(env, false));
+> +    g_string_append_printf(buf,
+> +                           "NIP " TARGET_FMT_lx "   LR " TARGET_FMT_lx "=
+ CTR "
+> +                           TARGET_FMT_lx " XER " TARGET_FMT_lx " CPU#%d\=
+n",
+> +                           env->nip, env->lr, env->ctr, cpu_read_xer(env=
+),
+> +                           cs->cpu_index);
+> +    g_string_append_printf(buf,
+> +                           "MSR " TARGET_FMT_lx " HID0 " TARGET_FMT_lx "=
+  HF "
+> +                           "%08x iidx %d didx %d\n",
+> +                           env->msr, env->spr[SPR_HID0], env->hflags,
+> +                           cpu_mmu_index(env, true), cpu_mmu_index(env, =
+false));
+>  #if !defined(NO_TIMER_DUMP)
+> -    qemu_fprintf(f, "TB %08" PRIu32 " %08" PRIu64
+> +    g_string_append_printf(buf, "TB %08" PRIu32 " %08" PRIu64
+>  #if !defined(CONFIG_USER_ONLY)
+> -                 " DECR " TARGET_FMT_lu
+> +                           " DECR " TARGET_FMT_lu
+>  #endif
+> -                 "\n",
+> -                 cpu_ppc_load_tbu(env), cpu_ppc_load_tbl(env)
+> +                           "\n",
+> +                           cpu_ppc_load_tbu(env), cpu_ppc_load_tbl(env)
+>  #if !defined(CONFIG_USER_ONLY)
+> -                 , cpu_ppc_load_decr(env)
+> +                           , cpu_ppc_load_decr(env)
+>  #endif
+>          );
+>  #endif
+>      for (i =3D 0; i < 32; i++) {
+>          if ((i & (RGPL - 1)) =3D=3D 0) {
+> -            qemu_fprintf(f, "GPR%02d", i);
+> +            g_string_append_printf(buf, "GPR%02d", i);
+>          }
+> -        qemu_fprintf(f, " %016" PRIx64, ppc_dump_gpr(env, i));
+> +        g_string_append_printf(buf, " %016" PRIx64, ppc_dump_gpr(env, i)=
+);
+>          if ((i & (RGPL - 1)) =3D=3D (RGPL - 1)) {
+> -            qemu_fprintf(f, "\n");
+> +            g_string_append_printf(buf, "\n");
+>          }
+>      }
+> -    qemu_fprintf(f, "CR ");
+> +    g_string_append_printf(buf, "CR ");
+>      for (i =3D 0; i < 8; i++)
+> -        qemu_fprintf(f, "%01x", env->crf[i]);
+> -    qemu_fprintf(f, "  [");
+> +        g_string_append_printf(buf, "%01x", env->crf[i]);
+> +    g_string_append_printf(buf, "  [");
+>      for (i =3D 0; i < 8; i++) {
+>          char a =3D '-';
+>          if (env->crf[i] & 0x08) {
+> @@ -9155,75 +9157,97 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, in=
+t flags)
+>          } else if (env->crf[i] & 0x02) {
+>              a =3D 'E';
+>          }
+> -        qemu_fprintf(f, " %c%c", a, env->crf[i] & 0x01 ? 'O' : ' ');
+> +        g_string_append_printf(buf, " %c%c", a, env->crf[i] & 0x01 ? 'O'=
+ : ' ');
+>      }
+> -    qemu_fprintf(f, " ]             RES " TARGET_FMT_lx "\n",
+> -                 env->reserve_addr);
+> +    g_string_append_printf(buf, " ]             RES " TARGET_FMT_lx "\n"=
+,
+> +                           env->reserve_addr);
+> =20
+>      if (flags & CPU_DUMP_FPU) {
+>          for (i =3D 0; i < 32; i++) {
+>              if ((i & (RFPL - 1)) =3D=3D 0) {
+> -                qemu_fprintf(f, "FPR%02d", i);
+> +                g_string_append_printf(buf, "FPR%02d", i);
+>              }
+> -            qemu_fprintf(f, " %016" PRIx64, *cpu_fpr_ptr(env, i));
+> +            g_string_append_printf(buf, " %016" PRIx64, *cpu_fpr_ptr(env=
+, i));
+>              if ((i & (RFPL - 1)) =3D=3D (RFPL - 1)) {
+> -                qemu_fprintf(f, "\n");
+> +                g_string_append_printf(buf, "\n");
+>              }
+>          }
+> -        qemu_fprintf(f, "FPSCR " TARGET_FMT_lx "\n", env->fpscr);
+> +        g_string_append_printf(buf, "FPSCR " TARGET_FMT_lx "\n", env->fp=
+scr);
+>      }
+> =20
+>  #if !defined(CONFIG_USER_ONLY)
+> -    qemu_fprintf(f, " SRR0 " TARGET_FMT_lx "  SRR1 " TARGET_FMT_lx
+> -                 "    PVR " TARGET_FMT_lx " VRSAVE " TARGET_FMT_lx "\n",
+> -                 env->spr[SPR_SRR0], env->spr[SPR_SRR1],
+> -                 env->spr[SPR_PVR], env->spr[SPR_VRSAVE]);
+> -
+> -    qemu_fprintf(f, "SPRG0 " TARGET_FMT_lx " SPRG1 " TARGET_FMT_lx
+> -                 "  SPRG2 " TARGET_FMT_lx "  SPRG3 " TARGET_FMT_lx "\n",
+> -                 env->spr[SPR_SPRG0], env->spr[SPR_SPRG1],
+> -                 env->spr[SPR_SPRG2], env->spr[SPR_SPRG3]);
+> -
+> -    qemu_fprintf(f, "SPRG4 " TARGET_FMT_lx " SPRG5 " TARGET_FMT_lx
+> -                 "  SPRG6 " TARGET_FMT_lx "  SPRG7 " TARGET_FMT_lx "\n",
+> -                 env->spr[SPR_SPRG4], env->spr[SPR_SPRG5],
+> -                 env->spr[SPR_SPRG6], env->spr[SPR_SPRG7]);
+> +    g_string_append_printf(buf, " SRR0 " TARGET_FMT_lx "  SRR1 " TARGET_=
+FMT_lx
+> +                           "    PVR " TARGET_FMT_lx " VRSAVE " TARGET_FM=
+T_lx
+> +                           "\n",
+> +                           env->spr[SPR_SRR0], env->spr[SPR_SRR1],
+> +                           env->spr[SPR_PVR], env->spr[SPR_VRSAVE]);
 > +
->  #ifndef CONFIG_USER_ONLY
->  /**
->   * cpu_get_phys_page_attrs_debug:
+> +    g_string_append_printf(buf, "SPRG0 " TARGET_FMT_lx " SPRG1 " TARGET_=
+FMT_lx
+> +                           "  SPRG2 " TARGET_FMT_lx "  SPRG3 " TARGET_FM=
+T_lx
+> +                           "\n",
+> +                           env->spr[SPR_SPRG0], env->spr[SPR_SPRG1],
+> +                           env->spr[SPR_SPRG2], env->spr[SPR_SPRG3]);
+> +
+> +    g_string_append_printf(buf, "SPRG4 " TARGET_FMT_lx " SPRG5 " TARGET_=
+FMT_lx
+> +                           "  SPRG6 " TARGET_FMT_lx "  SPRG7 " TARGET_FM=
+T_lx
+> +                           "\n",
+> +                           env->spr[SPR_SPRG4], env->spr[SPR_SPRG5],
+> +                           env->spr[SPR_SPRG6], env->spr[SPR_SPRG7]);
+> =20
+>  #if defined(TARGET_PPC64)
+>      if (env->excp_model =3D=3D POWERPC_EXCP_POWER7 ||
+>          env->excp_model =3D=3D POWERPC_EXCP_POWER8 ||
+>          env->excp_model =3D=3D POWERPC_EXCP_POWER9 ||
+>          env->excp_model =3D=3D POWERPC_EXCP_POWER10)  {
+> -        qemu_fprintf(f, "HSRR0 " TARGET_FMT_lx " HSRR1 " TARGET_FMT_lx "=
+\n",
+> -                     env->spr[SPR_HSRR0], env->spr[SPR_HSRR1]);
+> +        g_string_append_printf(buf, "HSRR0 " TARGET_FMT_lx
+> +                               " HSRR1 " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_HSRR0], env->spr[SPR_HSRR1])=
+;
+>      }
+>  #endif
+>      if (env->excp_model =3D=3D POWERPC_EXCP_BOOKE) {
+> -        qemu_fprintf(f, "CSRR0 " TARGET_FMT_lx " CSRR1 " TARGET_FMT_lx
+> -                     " MCSRR0 " TARGET_FMT_lx " MCSRR1 " TARGET_FMT_lx "=
+\n",
+> -                     env->spr[SPR_BOOKE_CSRR0], env->spr[SPR_BOOKE_CSRR1=
+],
+> -                     env->spr[SPR_BOOKE_MCSRR0], env->spr[SPR_BOOKE_MCSR=
+R1]);
+> -
+> -        qemu_fprintf(f, "  TCR " TARGET_FMT_lx "   TSR " TARGET_FMT_lx
+> -                     "    ESR " TARGET_FMT_lx "   DEAR " TARGET_FMT_lx "=
+\n",
+> -                     env->spr[SPR_BOOKE_TCR], env->spr[SPR_BOOKE_TSR],
+> -                     env->spr[SPR_BOOKE_ESR], env->spr[SPR_BOOKE_DEAR]);
+> -
+> -        qemu_fprintf(f, "  PIR " TARGET_FMT_lx " DECAR " TARGET_FMT_lx
+> -                     "   IVPR " TARGET_FMT_lx "   EPCR " TARGET_FMT_lx "=
+\n",
+> -                     env->spr[SPR_BOOKE_PIR], env->spr[SPR_BOOKE_DECAR],
+> -                     env->spr[SPR_BOOKE_IVPR], env->spr[SPR_BOOKE_EPCR])=
+;
+> -
+> -        qemu_fprintf(f, " MCSR " TARGET_FMT_lx " SPRG8 " TARGET_FMT_lx
+> -                     "    EPR " TARGET_FMT_lx "\n",
+> -                     env->spr[SPR_BOOKE_MCSR], env->spr[SPR_BOOKE_SPRG8]=
+,
+> -                     env->spr[SPR_BOOKE_EPR]);
+> +        g_string_append_printf(buf, "CSRR0 " TARGET_FMT_lx
+> +                               " CSRR1 " TARGET_FMT_lx
+> +                               " MCSRR0 " TARGET_FMT_lx
+> +                               " MCSRR1 " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_BOOKE_CSRR0],
+> +                               env->spr[SPR_BOOKE_CSRR1],
+> +                               env->spr[SPR_BOOKE_MCSRR0],
+> +                               env->spr[SPR_BOOKE_MCSRR1]);
+> +
+> +        g_string_append_printf(buf, "  TCR " TARGET_FMT_lx
+> +                               "   TSR " TARGET_FMT_lx
+> +                               "    ESR " TARGET_FMT_lx
+> +                               "   DEAR " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_BOOKE_TCR],
+> +                               env->spr[SPR_BOOKE_TSR],
+> +                               env->spr[SPR_BOOKE_ESR],
+> +                               env->spr[SPR_BOOKE_DEAR]);
+> +
+> +        g_string_append_printf(buf, "  PIR " TARGET_FMT_lx
+> +                               " DECAR " TARGET_FMT_lx
+> +                               "   IVPR " TARGET_FMT_lx
+> +                               "   EPCR " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_BOOKE_PIR],
+> +                               env->spr[SPR_BOOKE_DECAR],
+> +                               env->spr[SPR_BOOKE_IVPR],
+> +                               env->spr[SPR_BOOKE_EPCR]);
+> +
+> +        g_string_append_printf(buf, " MCSR " TARGET_FMT_lx
+> +                               " SPRG8 " TARGET_FMT_lx
+> +                               "    EPR " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_BOOKE_MCSR],
+> +                               env->spr[SPR_BOOKE_SPRG8],
+> +                               env->spr[SPR_BOOKE_EPR]);
+> =20
+>          /* FSL-specific */
+> -        qemu_fprintf(f, " MCAR " TARGET_FMT_lx "  PID1 " TARGET_FMT_lx
+> -                     "   PID2 " TARGET_FMT_lx "    SVR " TARGET_FMT_lx "=
+\n",
+> -                     env->spr[SPR_Exxx_MCAR], env->spr[SPR_BOOKE_PID1],
+> -                     env->spr[SPR_BOOKE_PID2], env->spr[SPR_E500_SVR]);
+> +        g_string_append_printf(buf, " MCAR " TARGET_FMT_lx
+> +                               "  PID1 " TARGET_FMT_lx
+> +                               "   PID2 " TARGET_FMT_lx
+> +                               "    SVR " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_Exxx_MCAR],
+> +                               env->spr[SPR_BOOKE_PID1],
+> +                               env->spr[SPR_BOOKE_PID2],
+> +                               env->spr[SPR_E500_SVR]);
+> =20
+>          /*
+>           * IVORs are left out as they are large and do not change often =
+--
+> @@ -9233,12 +9257,13 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, in=
+t flags)
+> =20
+>  #if defined(TARGET_PPC64)
+>      if (env->flags & POWERPC_FLAG_CFAR) {
+> -        qemu_fprintf(f, " CFAR " TARGET_FMT_lx"\n", env->cfar);
+> +        g_string_append_printf(buf, " CFAR " TARGET_FMT_lx"\n", env->cfa=
+r);
+>      }
+>  #endif
+> =20
+>      if (env->spr_cb[SPR_LPCR].name) {
+> -        qemu_fprintf(f, " LPCR " TARGET_FMT_lx "\n", env->spr[SPR_LPCR])=
+;
+> +        g_string_append_printf(buf,
+> +                               " LPCR " TARGET_FMT_lx "\n", env->spr[SPR=
+_LPCR]);
+>      }
+> =20
+>      switch (env->mmu_model) {
+> @@ -9254,29 +9279,42 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, in=
+t flags)
+>      case POWERPC_MMU_3_00:
+>  #endif
+>          if (env->spr_cb[SPR_SDR1].name) { /* SDR1 Exists */
+> -            qemu_fprintf(f, " SDR1 " TARGET_FMT_lx " ", env->spr[SPR_SDR=
+1]);
+> +            g_string_append_printf(buf, " SDR1 " TARGET_FMT_lx " ",
+> +                                   env->spr[SPR_SDR1]);
+>          }
+>          if (env->spr_cb[SPR_PTCR].name) { /* PTCR Exists */
+> -            qemu_fprintf(f, " PTCR " TARGET_FMT_lx " ", env->spr[SPR_PTC=
+R]);
+> +            g_string_append_printf(buf, " PTCR " TARGET_FMT_lx " ",
+> +                                   env->spr[SPR_PTCR]);
+>          }
+> -        qemu_fprintf(f, "  DAR " TARGET_FMT_lx "  DSISR " TARGET_FMT_lx =
+"\n",
+> -                     env->spr[SPR_DAR], env->spr[SPR_DSISR]);
+> +        g_string_append_printf(buf, "  DAR " TARGET_FMT_lx "  DSISR "
+> +                               TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_DAR], env->spr[SPR_DSISR]);
+>          break;
+>      case POWERPC_MMU_BOOKE206:
+> -        qemu_fprintf(f, " MAS0 " TARGET_FMT_lx "  MAS1 " TARGET_FMT_lx
+> -                     "   MAS2 " TARGET_FMT_lx "   MAS3 " TARGET_FMT_lx "=
+\n",
+> -                     env->spr[SPR_BOOKE_MAS0], env->spr[SPR_BOOKE_MAS1],
+> -                     env->spr[SPR_BOOKE_MAS2], env->spr[SPR_BOOKE_MAS3])=
+;
+> -
+> -        qemu_fprintf(f, " MAS4 " TARGET_FMT_lx "  MAS6 " TARGET_FMT_lx
+> -                     "   MAS7 " TARGET_FMT_lx "    PID " TARGET_FMT_lx "=
+\n",
+> -                     env->spr[SPR_BOOKE_MAS4], env->spr[SPR_BOOKE_MAS6],
+> -                     env->spr[SPR_BOOKE_MAS7], env->spr[SPR_BOOKE_PID]);
+> -
+> -        qemu_fprintf(f, "MMUCFG " TARGET_FMT_lx " TLB0CFG " TARGET_FMT_l=
+x
+> -                     " TLB1CFG " TARGET_FMT_lx "\n",
+> -                     env->spr[SPR_MMUCFG], env->spr[SPR_BOOKE_TLB0CFG],
+> -                     env->spr[SPR_BOOKE_TLB1CFG]);
+> +        g_string_append_printf(buf, " MAS0 " TARGET_FMT_lx
+> +                               "  MAS1 " TARGET_FMT_lx
+> +                               "   MAS2 " TARGET_FMT_lx
+> +                               "   MAS3 " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_BOOKE_MAS0],
+> +                               env->spr[SPR_BOOKE_MAS1],
+> +                               env->spr[SPR_BOOKE_MAS2],
+> +                               env->spr[SPR_BOOKE_MAS3]);
+> +
+> +        g_string_append_printf(buf, " MAS4 " TARGET_FMT_lx
+> +                               "  MAS6 " TARGET_FMT_lx
+> +                               "   MAS7 " TARGET_FMT_lx
+> +                               "    PID " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_BOOKE_MAS4],
+> +                               env->spr[SPR_BOOKE_MAS6],
+> +                               env->spr[SPR_BOOKE_MAS7],
+> +                               env->spr[SPR_BOOKE_PID]);
+> +
+> +        g_string_append_printf(buf, "MMUCFG " TARGET_FMT_lx
+> +                               " TLB0CFG " TARGET_FMT_lx
+> +                               " TLB1CFG " TARGET_FMT_lx "\n",
+> +                               env->spr[SPR_MMUCFG],
+> +                               env->spr[SPR_BOOKE_TLB0CFG],
+> +                               env->spr[SPR_BOOKE_TLB1CFG]);
+>          break;
+>      default:
+>          break;
 

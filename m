@@ -1,86 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp785224lfp;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp785223lfp;
         Tue, 14 Sep 2021 08:21:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzb85LnooQ22XKMVdcCMchXR8JZhKl/Ps83GFJVpA9P9HVh7rKwzAGD/Q5xixHsAJE6CTzH
-X-Received: by 2002:a1c:3881:: with SMTP id f123mr2829621wma.185.1631632884943;
+X-Google-Smtp-Source: ABdhPJzTqXDl1kaKH97jUvRjwQcok4fum4n1BfkBTJ/prL+wjs34UkpOiyrnxoJkZH69R+ABRUx/
+X-Received: by 2002:adf:b745:: with SMTP id n5mr19814053wre.338.1631632884916;
         Tue, 14 Sep 2021 08:21:24 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1631632884; cv=none;
         d=google.com; s=arc-20160816;
-        b=CAlwqjtNDy3mclgUfPVUkzBdPvV1qMEBXjZp/Me405K9BYnDBOqWGH8ZZm3ANvVEji
-         QE7TTBhpAgnk+UymCd3Rwg/2vVX3bqJhgU2OojJjXzjdl44X6r5uv3pGTH9kPEG2Xo8B
-         Ndf+xx2y59zQgX2DJWoR7vkuzpOxW79Gri+Ie0GZQpoCY6nVwQeRRU4ZMSB9w2/kCEed
-         Rrv3x+vRwuL+/UD5sMa4L92CO2V+dCvzM9qRfpkOw5uNRbMEMSjzlnv2fp6h/7JBNuv7
-         v4VUPVJ4mlI162QHNTK9V7Lhs0TW7A/2FcZhJeZB0g93y41+8rRQ1+/JU6jS7vpd/GpG
-         tW6A==
+        b=ILmga859B4mxA4l6A/+GBRd/u+9GPjJSS/zlc3hIw0lko2CGCbHOqa0WsbsONBWbNa
+         gYLeqGzyyqX26BcfknJZizXnFdpNNSC5vY7ojWW+VmxBRqzVdLCo0MxvQn530MyLM5y4
+         68rqkgLnQROWJcB1tF3psdt/vyhEAbHz9RL1Cno2s/oxgDJfxr6ObZsMemtA3mq1HyCU
+         ZhepEV9evKK32LwGzX3tAyUMIqWL2kpg8iDO6pj63bg87qhfYULOJnivhn/nUaQkZMDY
+         tT0gv1YevlpwkKqYkl+JZnWEe3K8HCNd2HKOINFAQo3FJXYXPoS6WhBbYO+T0uwDaFi+
+         YpuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WKPtyLPMWCX3yKuA9WhedPW4MlFG6fQaHVMY3/9/jrY=;
-        b=pa7Ym7CeMT4zfPBnlHGBg9D6eUN9EtsQeRGzlZrLAqcY0ezfRgm9F4+nXmovrmxIPa
-         M+eOSIdoHW95jOiJfTMHpt0f22lfLo9SFfEc2PN1du3ZLHbqL8gJQeNZSBToeue7CCrO
-         o4MO0QEqwiknWVsdcQKkftqscu59pVWdO5glKl4QNv1EDDYCcFgVEu7rcXNlF7+4S6N2
-         AHXFWRftKX2SJmbw0ftwLKolDX58/gJ3ALZHS11KK6OVA5qYC5gWjZHOg/mmjaQERm0O
-         4s3xcWIgKC1Mq9wGoMEXz8WLh8uZU04WVmSoxvYrRHiZyMSG9CqfLHTr6mrneLscIvnq
-         bjHA==
+        bh=2AFd+YTtbWmCaBK/9f7YsAzzznYqPy7xWqsdE9totms=;
+        b=GEFF60m73wSXSr+Ew+XMdlvm4ntsfLhIiyjr6COKeBZcJ9QIlxokxo0qHTUAx2FXsU
+         f+RdvT+iagzn5L3U8WHqp55j4xfKWgCVXr9EFIe/JXM2aOtdFk+wKklEahxFC8VtPDn9
+         HWEHekGFLDeSEXkkNM9fXk8ojYia2qyhS5gYeuChg+ImSB49H0NHHEVmTOzLUjXlto80
+         9OyDdMuQz14SqZDUlD3Ofh+YrxSmd++JtpCxoOMMUlzx7Zhl/XW525+QOrgbuFubPVl3
+         Jiy9EOk+SoXUe0TYPpVPU1vqthti1q+7AgmP9y1U/y/UaMZMSgbgEAmo2dHju3e5Q4en
+         63ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=O1fFKwGM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="EhJ/wlFG";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f7si1622754wmg.168.2021.09.14.08.21.24
+        by mx.google.com with ESMTPS id 7si1317959wme.129.2021.09.14.08.21.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 14 Sep 2021 08:21:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=O1fFKwGM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="EhJ/wlFG";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56590 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQAFP-0001Eb-VC
+	id 1mQAFP-0001HM-Qe
 	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:21:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39920)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40210)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9T4-0007ZE-O8
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:47531)
+ id 1mQ9TV-00085Q-QC
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42900)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9T0-00023q-33
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:25 -0400
+ id 1mQ9TT-0002Pq-T7
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629878;
+ s=mimecast20190719; t=1631629910;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WKPtyLPMWCX3yKuA9WhedPW4MlFG6fQaHVMY3/9/jrY=;
- b=O1fFKwGMUfueoW8o6aJpPNKlsUdEy+P/BYjP2HsLco+9uE44q7e0p3MPmwIt9fH4ev4IYV
- waG6AWY59a2C9fr7qjS5j3cmc3LiRytuKKttvBoHUtAW9pOIdwtHKg49XrI90G4CvryyXs
- Mk959YsaWH2YoagoQ5lZ3wMAyhMGmEU=
+ bh=2AFd+YTtbWmCaBK/9f7YsAzzznYqPy7xWqsdE9totms=;
+ b=EhJ/wlFGsvQ1dG5akqUy+oVdHKWR4F0vomTQnm+IeM5jJ0i4j2O31T1byUeHYc2K7uuOiT
+ 4FW9AnDqjzXRsU4D7yCChTeF+k9aIfiJf90OgXMKV5b+fAAkeTDNrpkci+4T/Efq4w4jIS
+ 6BiECoodPcu0+dpwSqTM6F4A5zvZS6M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-170-DzwM4sEqPIKIg6xNgKRU2A-1; Tue, 14 Sep 2021 10:31:16 -0400
-X-MC-Unique: DzwM4sEqPIKIg6xNgKRU2A-1
+ us-mta-495-kMmXL9LeNXGtQ4n1sCumjQ-1; Tue, 14 Sep 2021 10:31:48 -0400
+X-MC-Unique: kMmXL9LeNXGtQ4n1sCumjQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C533FBAF85;
- Tue, 14 Sep 2021 14:31:12 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CB7961922023;
+ Tue, 14 Sep 2021 14:31:44 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D34355D9CA;
- Tue, 14 Sep 2021 14:31:04 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 529D55D9CA;
+ Tue, 14 Sep 2021 14:31:37 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 31/53] qapi: introduce x-query-profile QMP command
-Date: Tue, 14 Sep 2021 15:20:20 +0100
-Message-Id: <20210914142042.1655100-32-berrange@redhat.com>
+Subject: [PATCH v2 35/53] qapi: introduce x-query-ramblock QMP command
+Date: Tue, 14 Sep 2021 15:20:24 +0100
+Message-Id: <20210914142042.1655100-36-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -91,13 +91,13 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -139,9 +139,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bieKi0Wi+fmL
+X-TUID: ypGlnQu9tVXK
 
-This is a counterpart to the HMP "info profile" command. It is being
+This is a counterpart to the HMP "info ramblock" command. It is being
 added with an "x-" prefix because this QMP command is intended as an
 adhoc debugging tool and will thus not be modelled in QAPI as fully
 structured data, nor will it have long term guaranteed stability.
@@ -149,135 +149,143 @@ The existing HMP command is rewritten to call the QMP command.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- monitor/misc.c             | 29 +++++++----------------------
- monitor/qmp-cmds.c         | 34 ++++++++++++++++++++++++++++++++++
- qapi/machine.json          | 12 ++++++++++++
- tests/qtest/qmp-cmd-test.c |  3 +++
- 4 files changed, 56 insertions(+), 22 deletions(-)
+ include/exec/ramlist.h |  2 +-
+ monitor/hmp-cmds.c     | 12 ++++++++++--
+ monitor/qmp-cmds.c     | 11 +++++++++++
+ qapi/machine.json      | 12 ++++++++++++
+ softmmu/physmem.c      | 19 +++++++++++--------
+ 5 files changed, 45 insertions(+), 11 deletions(-)
 
-diff --git a/monitor/misc.c b/monitor/misc.c
-index f25801a1a3..6b07efdddd 100644
---- a/monitor/misc.c
-+++ b/monitor/misc.c
-@@ -936,32 +936,17 @@ static void hmp_info_mtree(Monitor *mon, const QDict *qdict)
-     mtree_info(flatview, dispatch_tree, owner, disabled);
- }
+diff --git a/include/exec/ramlist.h b/include/exec/ramlist.h
+index ece6497ee2..2ad2a81acc 100644
+--- a/include/exec/ramlist.h
++++ b/include/exec/ramlist.h
+@@ -80,6 +80,6 @@ void ram_block_notify_add(void *host, size_t size, size_t max_size);
+ void ram_block_notify_remove(void *host, size_t size, size_t max_size);
+ void ram_block_notify_resize(void *host, size_t old_size, size_t new_size);
  
--#ifdef CONFIG_PROFILER
--
--int64_t dev_time;
--
- static void hmp_info_profile(Monitor *mon, const QDict *qdict)
+-void ram_block_dump(Monitor *mon);
++GString *ram_block_format(void);
+ 
+ #endif /* RAMLIST_H */
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index d24a1683de..77533b2d8a 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -52,7 +52,6 @@
+ #include "ui/console.h"
+ #include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+-#include "exec/ramlist.h"
+ #include "hw/intc/intc.h"
+ #include "migration/snapshot.h"
+ #include "migration/misc.h"
+@@ -2188,7 +2187,16 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const QDict *qdict)
+ 
+ void hmp_info_ramblock(Monitor *mon, const QDict *qdict)
  {
--    static int64_t last_cpu_exec_time;
--    int64_t cpu_exec_time;
--    int64_t delta;
--
--    cpu_exec_time = tcg_cpu_exec_time();
--    delta = cpu_exec_time - last_cpu_exec_time;
+-    ram_block_dump(mon);
 +    Error *err = NULL;
-+    g_autoptr(HumanReadableText) info = qmp_x_query_profile(&err);
- 
--    monitor_printf(mon, "async time  %" PRId64 " (%0.3f)\n",
--                   dev_time, dev_time / (double)NANOSECONDS_PER_SECOND);
--    monitor_printf(mon, "qemu time   %" PRId64 " (%0.3f)\n",
--                   delta, delta / (double)NANOSECONDS_PER_SECOND);
--    last_cpu_exec_time = cpu_exec_time;
--    dev_time = 0;
--}
--#else
--static void hmp_info_profile(Monitor *mon, const QDict *qdict)
--{
--    monitor_printf(mon, "Internal profiler not compiled\n");
++    g_autoptr(HumanReadableText) info = NULL;
++
++    info = qmp_x_query_ramblock(&err);
 +    if (err) {
 +        error_report_err(err);
 +        return;
 +    }
++
 +    monitor_printf(mon, "%s", info->human_readable_text);
  }
--#endif
  
- /* Capture support */
- static QLIST_HEAD (capture_list_head, CaptureState) capture_head;
+ void hmp_info_vm_generation_id(Monitor *mon, const QDict *qdict)
 diff --git a/monitor/qmp-cmds.c b/monitor/qmp-cmds.c
-index 5c0d5e116b..7bae0770a9 100644
+index 9c2c1e4603..b86fff823e 100644
 --- a/monitor/qmp-cmds.c
 +++ b/monitor/qmp-cmds.c
-@@ -350,3 +350,37 @@ void qmp_display_reload(DisplayReloadOptions *arg, Error **errp)
-         abort();
-     }
+@@ -37,6 +37,7 @@
+ #include "qapi/qapi-commands-misc.h"
+ #include "qapi/qapi-commands-ui.h"
+ #include "qapi/qmp/qerror.h"
++#include "exec/ramlist.h"
+ #include "hw/mem/memory-device.h"
+ #include "hw/acpi/acpi_dev_interface.h"
+ #include "hw/rdma/rdma.h"
+@@ -419,3 +420,13 @@ HumanReadableText *qmp_x_query_rdma(Error **errp)
+     ret->human_readable_text = g_steal_pointer(&buf->str);
+     return ret;
  }
 +
-+#ifdef CONFIG_PROFILER
-+
-+int64_t dev_time;
-+
-+HumanReadableText *qmp_x_query_profile(Error **errp)
++HumanReadableText *qmp_x_query_ramblock(Error **errp)
 +{
 +    HumanReadableText *ret;
-+    g_autoptr(GString) buf = g_string_new("");
-+    static int64_t last_cpu_exec_time;
-+    int64_t cpu_exec_time;
-+    int64_t delta;
-+
-+    cpu_exec_time = tcg_cpu_exec_time();
-+    delta = cpu_exec_time - last_cpu_exec_time;
-+
-+    g_string_append_printf(buf, "async time  %" PRId64 " (%0.3f)\n",
-+                           dev_time, dev_time / (double)NANOSECONDS_PER_SECOND);
-+    g_string_append_printf(buf, "qemu time   %" PRId64 " (%0.3f)\n",
-+                           delta, delta / (double)NANOSECONDS_PER_SECOND);
-+    last_cpu_exec_time = cpu_exec_time;
-+    dev_time = 0;
++    g_autoptr(GString) buf = ram_block_format();
 +
 +    ret = g_new0(HumanReadableText, 1);
 +    ret->human_readable_text = g_steal_pointer(&buf->str);
 +    return ret;
 +}
-+#else
-+HumanReadableText *qmp_x_query_profile(Error **errp)
-+{
-+    error_setg(errp, "Internal profiler not compiled");
-+    return NULL;
-+}
-+#endif
 diff --git a/qapi/machine.json b/qapi/machine.json
-index a4a1727589..d74c3f3fef 100644
+index 0fe962d916..3ae7beb7cf 100644
 --- a/qapi/machine.json
 +++ b/qapi/machine.json
-@@ -1313,6 +1313,18 @@
-      '*threads': 'int',
-      '*maxcpus': 'int' } }
+@@ -1337,6 +1337,18 @@
+ { 'command': 'x-query-profile',
+   'returns': 'HumanReadableText' }
  
 +##
-+# @x-query-profile:
++# @x-query-ramblock:
 +#
-+# Query TCG profiling information
++# Query system ramblock information
 +#
-+# Returns: profile information
++# Returns: system ramblock information
 +#
 +# Since: 6.2
 +##
-+{ 'command': 'x-query-profile',
++{ 'command': 'x-query-ramblock',
 +  'returns': 'HumanReadableText' }
 +
  ##
- # @x-query-registers:
+ # @x-query-rdma:
  #
-diff --git a/tests/qtest/qmp-cmd-test.c b/tests/qtest/qmp-cmd-test.c
-index c98b78d033..fbd7ac10fb 100644
---- a/tests/qtest/qmp-cmd-test.c
-+++ b/tests/qtest/qmp-cmd-test.c
-@@ -46,6 +46,9 @@ static int query_error_class(const char *cmd)
-         { "query-balloon", ERROR_CLASS_DEVICE_NOT_ACTIVE },
-         { "query-hotpluggable-cpus", ERROR_CLASS_GENERIC_ERROR },
-         { "query-vm-generation-id", ERROR_CLASS_GENERIC_ERROR },
-+#ifndef CONFIG_PROFILER
-+        { "x-query-profile", ERROR_CLASS_GENERIC_ERROR },
-+#endif
-         { NULL, -1 }
-     };
-     int i;
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index 23e77cb771..bc4a8354d3 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -1298,23 +1298,26 @@ void qemu_mutex_unlock_ramlist(void)
+     qemu_mutex_unlock(&ram_list.mutex);
+ }
+ 
+-void ram_block_dump(Monitor *mon)
++GString *ram_block_format(void)
+ {
+     RAMBlock *block;
+     char *psize;
++    GString *buf = g_string_new("");
+ 
+     RCU_READ_LOCK_GUARD();
+-    monitor_printf(mon, "%24s %8s  %18s %18s %18s\n",
+-                   "Block Name", "PSize", "Offset", "Used", "Total");
++    g_string_append_printf(buf, "%24s %8s  %18s %18s %18s\n",
++                           "Block Name", "PSize", "Offset", "Used", "Total");
+     RAMBLOCK_FOREACH(block) {
+         psize = size_to_str(block->page_size);
+-        monitor_printf(mon, "%24s %8s  0x%016" PRIx64 " 0x%016" PRIx64
+-                       " 0x%016" PRIx64 "\n", block->idstr, psize,
+-                       (uint64_t)block->offset,
+-                       (uint64_t)block->used_length,
+-                       (uint64_t)block->max_length);
++        g_string_append_printf(buf, "%24s %8s  0x%016" PRIx64 " 0x%016" PRIx64
++                               " 0x%016" PRIx64 "\n", block->idstr, psize,
++                               (uint64_t)block->offset,
++                               (uint64_t)block->used_length,
++                               (uint64_t)block->max_length);
+         g_free(psize);
+     }
++
++    return buf;
+ }
+ 
+ #ifdef __linux__
 -- 
 2.31.1
 

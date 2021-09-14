@@ -1,382 +1,244 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp796495lfp;
-        Tue, 14 Sep 2021 08:33:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwHmIoHjPH0aAuDwW1BAifQ3Bn0izi+xCqjAIMm2GdgDo7ArTMDDJrNjdjIWj0+7wtMZ5KA
-X-Received: by 2002:adf:e384:: with SMTP id e4mr19709147wrm.64.1631633634438;
-        Tue, 14 Sep 2021 08:33:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631633634; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp802694lfp;
+        Tue, 14 Sep 2021 08:41:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwONv2qcpV1hMCt9Cw2ZCoELnD7UFdTaTXyq5JeV99c9C3Y3VCQRAPWZNYtHY6RFQGrrYIJ
+X-Received: by 2002:a7b:c009:: with SMTP id c9mr2945340wmb.106.1631634074736;
+        Tue, 14 Sep 2021 08:41:14 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1631634074; cv=pass;
         d=google.com; s=arc-20160816;
-        b=bQ/XNOW2NTy+aTKiA7BSSZnQcgJngXU0w2aD1bqKnWuy1MLV3ZZ6YUihUl+wWTMojP
-         7ovpFX9FfDpZFcexjT5wkEwm7laegavH2MPH7eOrzNzVGZKTScQjYGxUtOLXS/psQpoF
-         00Xrfq1bz4GfiWKjO/48aVC3fuOP3iTifIxKz5hlXbGby9ueEpF8L0CLoiLTXXnh46K3
-         LEZEyMu47zQHxd52oUayFUgchyrw4CS93cx/++0CMEk9AwYMnyJdlxSxxG098VkFy+dp
-         pye3ax0c50ybVgnnmFoNweLaZmUXkCI/heGP5qYCSEdY/uUjUqNTGOGzYB2080bEtUED
-         VsiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=JK+cfNxdUI1GaiNOZ9lq4Zir+QDuyoqg7a1qe+8WapBWtTydwSqM7Pjx6P8e1EasNA
+         Hf6bRiEF9LdtWWdG/XbTFBB4+zQcAHLmiPDAb6LdVuZXuUetr6isn8Q2ccdgaOtiLBuI
+         qzZMUfqPG7KogZlvMzO4kCZ5VoxfgOoqTMADrEOil5WywLKK63DZtGD69Q6Qyk92fJnC
+         OlkCRLBi/YHHZF0nctsH8LtyV9LdKs17J+ZyTbUalUnAnWi+Wm22cphfEky2LgitN/X8
+         yhargaewkpWNIyFrLs4Sf7oBnLmoKKT/vRqTrlXfhsMVTOSEl6tx8xmqgDMG6P5cIvZz
+         t6SA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=iNQqtlu9cXciZ4eC5qFV8TN1URWtj6rpxIYVyS3g23o=;
-        b=qC2bVqcBLbFDmylOWnPgCx37MNfiLa/FYzp8VC8mtxIOmF2COGa3azK6nIwCZ4c1GJ
-         Kvk9K/ZenLnHa9llKnyaDlI9SWliWRxii8V3enOXOWXTVxhDzlL2fgPBnv7Fj7meIhXN
-         oUIhsXSrfC99aLXrzEk1UhmS5Z8X6XKbC+bHoYHVahRI9AJwg0iTr3FP2MldJukZrUCu
-         qsv8sjayeZikUlzcvvK913ELdOwj+xLw4qpveRIBqT/I2QZbVkQCS8DJu7QOy35uf9HS
-         /N/2ZdzvtD1sgwpzPWHvjiA+UWf2QnRRNvUhyxMSwAicklElwlUhx/pm6S0ijCrJQODt
-         enRA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F3P0mg7B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=uuRZb/3Hvg1VMC1GrUdlCvZlZcZtxlqDPCeHsCN4a/c=;
+        b=ApFflE3x08nYdyTUb3GxsvBhEIOseUxlIE/p7qHgTqDl9Fb7JtMTzho4z7PmMmzDqV
+         +5ZQt2wBYd0tp6CjSqUmlZ9Sz4f5NEW0bWvr/xTAL8htGV01fQwJm22Y15ntqGxQdeG7
+         wTqkQEwS20VkHuNNuJMQsvH0s/8DUF83EuETB99dwSeyZIwo4IyrPVfHBpC+TGllFJ3j
+         eBHg7LUBWt1qsiRhULe6SA6z0MoswsrXKWzED+8jeP/k9SdsUI/Lfi9I1t7TZYP9Z7c6
+         LkSm5NeRextRjrokY9454afSxFAMKkIpa0HIb+ETFEhXnUHCz8e9TEZaUDB5TPMQz4+l
+         uU/A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@quicinc.com header.s=qccesdkim1 header.b=KGTdbNZv;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si2696288wrm.482.2021.09.14.08.33.54
+        by mx.google.com with ESMTPS id x9si7024522wrm.257.2021.09.14.08.41.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:33:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 08:41:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F3P0mg7B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36418 helo=lists1p.gnu.org)
+       dkim=fail header.i=@quicinc.com header.s=qccesdkim1 header.b=KGTdbNZv;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:53670 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQARV-0000WU-Dx
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42562)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQAYb-0004Us-Lh
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:41:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9XH-0006MI-3z
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:35:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45733)
+ (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
+ id 1mQ9lh-0000lQ-Mt; Tue, 14 Sep 2021 10:50:41 -0400
+Received: from esa.hc3962-90.iphmx.com ([216.71.142.165]:53288)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9XC-0004zn-MW
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:35:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631630142;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=iNQqtlu9cXciZ4eC5qFV8TN1URWtj6rpxIYVyS3g23o=;
- b=F3P0mg7Bdi16ZH1xZBR8JWptODZUApUQFsE1xRzQHymyZmfUEjCf6jSPMXh7ATW9fycOmu
- X7n8/iosWUE1fdQE3pfAxDRMOiPzoW/9NTyUnlRKgCv/nycLZSipn8vsKaIFvhN+sDf8zQ
- eyClItlPs2gnB/oiPuskttjc4fQsjUA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-177-fIpnYYj7NZ-ipA9555vE7g-1; Tue, 14 Sep 2021 10:35:40 -0400
-X-MC-Unique: fIpnYYj7NZ-ipA9555vE7g-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0EC2B800FF4;
- Tue, 14 Sep 2021 14:35:36 +0000 (UTC)
-Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B6E105D9CA;
- Tue, 14 Sep 2021 14:35:14 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 49/53] target/xtensa: convert to use format_tlb callback
-Date: Tue, 14 Sep 2021 15:20:38 +0100
-Message-Id: <20210914142042.1655100-50-berrange@redhat.com>
-In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
+ id 1mQ9le-0000ZC-Lq; Tue, 14 Sep 2021 10:50:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qccesdkim1;
+ t=1631631038; x=1632235838;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=uuRZb/3Hvg1VMC1GrUdlCvZlZcZtxlqDPCeHsCN4a/c=;
+ b=KGTdbNZvAPvN8DmBceN5u6fddli/3zXuQz8f4tsByAmGn8ugZpD5yf5T
+ c5tqjpaOUeEiY8cA2oMdBF7mXaQt9BuloYW4S38KBN+CylVZEkR9TAJXQ
+ vlOyeudQZcJYljpHhONyVtKc0v54QAdD+B2msbGFqOni40STNA5j6kHGx Y=;
+Received: from mail-dm6nam08lp2048.outbound.protection.outlook.com (HELO
+ NAM04-DM6-obe.outbound.protection.outlook.com) ([104.47.73.48])
+ by ob1.hc3962-90.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2021 14:50:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FAJ3hxLE3dhsUI+NMNzqjwRlu9jfhg4aR0AjaJhHtqjyydxueOxSJ3CdkGqz3ieAysHeFuYQARJ0Scmhup+YdWvelT/dZIuC5V6/V0lo4+fPaWYN2nz0fy0MW3bRjO0j76gMXuNU0xYVEbwbYDbogtFRp5hvF2D2DdpSLxMCponVgnhoYNHC2RdYo/0R2WuLNcvtVboQQzLaDDVKqBceeDVa2IQJeAxnB90DOtUyqI/mPR+/wq0mm7TeJ8Q7YgvCl4BGmXHLTYgap906B1CDxS2rJE64UD+wM20Z/ywddOlo2GSGo5GJvcWPyqg2pp+cVKG3/4hUZNusu8ci6mdzgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=uuRZb/3Hvg1VMC1GrUdlCvZlZcZtxlqDPCeHsCN4a/c=;
+ b=c1C4g/pqkN7NSS1/Y5CssioPSqMgh0shzBHO6syxfn2+6v1lOrYaQp6eO0l3SSkzmK571hqGkkVCrn2MVL2sj9a9UBfZcNfmsEMde/5gD60Sm6pN/A+FC7ZmdG2mU+YFffQCRSDrfQcUdXrvTiW68qYsHa2gb6u1McZ4ASVpoYiuPw8ygLxB+fvier2iwrAWwKtleOTpG8TxQs9tPfFnXfjdiHnZoCFs50N0UFlWcFoxEZGj7BpVLZmgL47HCTVEb72ELtqDZ3AYLY1BxwpQePmif0BrCLoPiuIdzyCyan9ndh9AGOAp1cYl5MmKwR9FX1rnia8hWJNPGEyMANUMJQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
+ dkim=pass header.d=quicinc.com; arc=none
+Received: from BYAPR02MB4886.namprd02.prod.outlook.com (2603:10b6:a03:46::32)
+ by BY5PR02MB6753.namprd02.prod.outlook.com (2603:10b6:a03:209::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4523.14; Tue, 14 Sep
+ 2021 14:50:13 +0000
+Received: from BYAPR02MB4886.namprd02.prod.outlook.com
+ ([fe80::351d:3400:b3d0:b000]) by BYAPR02MB4886.namprd02.prod.outlook.com
+ ([fe80::351d:3400:b3d0:b000%3]) with mapi id 15.20.4500.019; Tue, 14 Sep 2021
+ 14:50:13 +0000
+From: Taylor Simpson <tsimpson@quicinc.com>
+To: =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: RE: [PATCH v2 11/53] target/hexagon: delete unused hexagon_debug()
+ method
+Thread-Topic: [PATCH v2 11/53] target/hexagon: delete unused hexagon_debug()
+ method
+Thread-Index: AQHXqXRX8B6R0lFwyEWQmHfx5t8KqaujnFmA
+Date: Tue, 14 Sep 2021 14:50:12 +0000
+Message-ID: <BYAPR02MB488621BC728F5B9D009B8905DEDA9@BYAPR02MB4886.namprd02.prod.outlook.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
+ <20210914142042.1655100-12-berrange@redhat.com>
+In-Reply-To: <20210914142042.1655100-12-berrange@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=none action=none header.from=quicinc.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: fb3a038d-501a-47d5-5688-08d9778ef52f
+x-ms-traffictypediagnostic: BY5PR02MB6753:
+x-microsoft-antispam-prvs: <BY5PR02MB675307FC05463ECB805D539BDEDA9@BY5PR02MB6753.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2887;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: u7qAlh5AJq4K1zPHr7KseeeFliS3FjTFPGL2GrQC5YlmOs9NKoIS4u20O9FU1y5Vf0h7+WQxDk1eAYkMGCdxO6N92iRig7y37NqG55q65J/ZbH2fMtqGC3eWgEkpxi1lXsQtyqbgWQjpg6IoFkvpi2jxCSieKsij4SoKYC3c81C1ztMS6Qg8lsm+eDvRwxbA5NlxdR94efnOkiydllZ9vIgUFdBBcawQB0VQ+++lzDvVQaBlzLA+wP0K0gS4doqudCiFpE0dJSiIBlddmF3uLblBtds6dyeAuZclIv9OuXazwauiL9NxvcCdVWPBGbtWCzWqIS1bULNNCeci4QSwl+A6cTadV+NPfQU6/cbnYdkXGpqnVTDoxmnnh9Vtn6QWMinfFbjGkvvo2r91J1iVSlsG4fu34vp/OS9WKc1k0pbRITMwVEYE93uiB9XdDRbuO/QtmZa1uQnfAG2ujyxKhCXyuGimJndSaCIODWgErX/xXv7OASBxMhdh7DNL4ioXJE2/hYa/zC88DPEK1y+BkGkbm24ebE+hN3SWjDFsjxfUigiDnw6T09+xAWy8oc+3rmXnUkcaQhRa0K+D/PYbpiMKkVnyHAm/192SWJaWOIf6GB6ZnD+rye4izUqmUCxL60lCN/jgxQ2y4cXlYd7CZsjb7uNP3hwa77pt6n8tl0BK3YV+tAB+sAeyOCN9o27j9n4S04+owUoRenFr9CDCnw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR02MB4886.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(366004)(39860400002)(346002)(396003)(376002)(2906002)(26005)(71200400001)(8936002)(7416002)(76116006)(478600001)(7406005)(316002)(38100700002)(38070700005)(186003)(122000001)(83380400001)(55016002)(110136005)(54906003)(7696005)(4326008)(9686003)(8676002)(33656002)(86362001)(66946007)(6506007)(66476007)(66556008)(64756008)(66446008)(5660300002)(52536014);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SUhscnFWQ2RDSURCK2lUblpscEFtYXNiOC9UVEgySnpXT0pkRVl5cGd0YmtL?=
+ =?utf-8?B?RitaZEZVS2FpZEF4Mm5NeTFvMEtvZ01qd21raXdhNmludTdLV1c3bWVOUFh2?=
+ =?utf-8?B?QTZSTnBOZUREMHVrOXpvU3pMQnU2K3FZUWRCbjlQdHo3cFpTamk3UnViZFZG?=
+ =?utf-8?B?SjRkTWJtbVMyMHRhODgxdU9PSC9XdlFON0l6RUlaUm03RFI2YXorRFpkckUr?=
+ =?utf-8?B?cVZtaCtNSVpqZU10K0VleEx6bytxK1dmRFIzRGhKZEdVSjNwM1l1YmROVlVP?=
+ =?utf-8?B?SXBudWUxZmhUYzBTZ1VMZ3N6YVJPSEU0YzZ4a0JaS1g1dGdpbEZra0VFVklo?=
+ =?utf-8?B?YXNEWC9JcEk4ZzNnNzJ1Y2dMYnZPWW1rcTZXTmJjakIxNkNJcXJBbHk4WjQx?=
+ =?utf-8?B?NEJkOEhPaUZhMjJZZ1BLNXhiM1AwdytlbktIakgwcWU4ZndFaVV6UFcyUGVD?=
+ =?utf-8?B?SVlPUFczSEtJbmZleUE5d01qbDhyUk1mb1RONm1KRTNSMjJxRGJkcmdEb3pK?=
+ =?utf-8?B?UWFUR3BhN1k0aHljSUw2YjlIUjVwUldsckZxYnNtR3dhZHhMdEJjZGIzclVz?=
+ =?utf-8?B?Y2tJUi9KTTVXa1JlQkl3TnNneTM4a3VFM013NlhJeXBpcHFhS3lZYVJ0REth?=
+ =?utf-8?B?dnFpTUdpQUQxNjl2bDNXZFR4MWpua1BBcnVNZ2x6U3VHZUI5OWpHTlRxSVAw?=
+ =?utf-8?B?SjNJZjR3bWVaU2ZHZEF3UzhMK2VNaWtHNmdBWjdSUnMxNENKdElScmIzakJT?=
+ =?utf-8?B?SVRHelFBQUUrNVI5eWZUa1ptY3NSd2Y5RUs3eHdXWkdoUHAxaFlJa0c1b1Qw?=
+ =?utf-8?B?Rk9TYVYvNXlRd1VRZnR2cnJqN1ZBcWMzV0xVNWVUVUpXUFVBZVQ3N0RjL01s?=
+ =?utf-8?B?NkVCczl0Slk3bitxcGtqSURLSEs3R0oyVkV6KzRzQitGNE9ka0lnSUdiQU5p?=
+ =?utf-8?B?dHI3WVRVeXNsbjJyUmIwYVhGWFFXUHhMUUJUMHRGSmRzOURPRlVvSjNza3pF?=
+ =?utf-8?B?Q2EyMm11MlJKeE15L2xvcDQ0dFlxM2I4TXFYZ0tOK0F6TGkweGtPTGgxWlBS?=
+ =?utf-8?B?SXhCQVRRclNLWWlXVEIrOWI3ZHpMbDBVZ3AvWXRzU1NGSUhUM3V5YnRJdjUw?=
+ =?utf-8?B?SzAva2FtYkt0dlh6SzQ0Q1lyU2JLQTV0dEx2SThaOVJ4WDlyQnFoRE9ZZnV2?=
+ =?utf-8?B?cWJEWmZBWkI3UTl3RWo0aHJCd1pzRFZhd0w4UE1MS09MQW1QS0NWRnZ1VlEr?=
+ =?utf-8?B?SEdtaGVVQmhwLzJMZ1dUTGdseUZwZnpkNFBON1h3R0tDL3FVM1lLV2psTFBi?=
+ =?utf-8?B?azEvZmJhQlhlYndCRGQ1MGpVSVFUenc5d3lJOE1jb1NscGZOVGxKbVc1YXVZ?=
+ =?utf-8?B?S3ZhcUhicGNlN05LVXZsUHNXZE11MGNFbmdyZEtKZ1V2VUtTd1hhSmREQjRt?=
+ =?utf-8?B?anQ3Qkdueks4NEtPelNVY1U1UG5GQWdjTTA2QytyUnRSTTlJTW1rRkhQSWlX?=
+ =?utf-8?B?dWZHdWRFNGVJTDc2TkY1TjVTWW5zbEsxT1Z2bjF5RnVKN3BIMXR3TWJ2QmY2?=
+ =?utf-8?B?NzlQTitMUS9LK1BlVytlOURQSmRURWk3UzVPWnNHRCtsTUF4QStVZm5tUlRK?=
+ =?utf-8?B?QjdxTU94U2UxZlJqQ3NlSEZ4OFY4OGdaNGVycUt0Z3A0R0Y4MHlPNG10SDdJ?=
+ =?utf-8?B?L1VXNkM4UEpQTjk5eGFjVk9QOVpWdk8vRmt3eDlZdmxmZzlESTFXOVlWUENL?=
+ =?utf-8?Q?8gYxWAG8hjDEfQO9NygIw1MWwcnWRlfeA0Z1tUK?=
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-OriginatorOrg: quicinc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR02MB4886.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fb3a038d-501a-47d5-5688-08d9778ef52f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Sep 2021 14:50:13.0138 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +Xkph7hZ+LSFDki5HHsmq/Liam6lklwnvXayJEn1gaNx5jqwpd4f4CVlcKJzAi7oqDB5F2sonwXNGWKiY9pFNw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB6753
+Received-SPF: pass client-ip=216.71.142.165; envelope-from=tsimpson@quicinc.com;
+ helo=esa.hc3962-90.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
- Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Peter Xu <peterx@redhat.com>,
  Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3niCqEipJAPD
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fiene7+YeDMj
 
-Change the "info tlb" implementation to use the format_tlb callback.
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- target/xtensa/cpu.h        |   2 +-
- target/xtensa/mmu_helper.c | 126 +++++++++++++++++++++----------------
- target/xtensa/monitor.c    |  10 ++-
- 3 files changed, 79 insertions(+), 59 deletions(-)
-
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 97cd6892df..8c82994826 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -573,6 +573,7 @@ void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
-                                       int mmu_idx, MemTxAttrs attrs,
-                                       MemTxResult response, uintptr_t retaddr);
- void xtensa_cpu_format_state(CPUState *cpu, GString *buf, int flags);
-+void xtensa_cpu_format_tlb(CPUState *cpu, GString *buf);
- hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void xtensa_count_regs(const XtensaConfig *config,
-                        unsigned *n_regs, unsigned *n_core_regs);
-@@ -678,7 +679,6 @@ int xtensa_get_physical_addr(CPUXtensaState *env, bool update_tlb,
-         uint32_t vaddr, int is_write, int mmu_idx,
-         uint32_t *paddr, uint32_t *page_size, unsigned *access);
- void reset_mmu(CPUXtensaState *env);
--void dump_mmu(CPUXtensaState *env);
- 
- static inline MemoryRegion *xtensa_get_er_region(CPUXtensaState *env)
- {
-diff --git a/target/xtensa/mmu_helper.c b/target/xtensa/mmu_helper.c
-index b01ff9399a..d499255984 100644
---- a/target/xtensa/mmu_helper.c
-+++ b/target/xtensa/mmu_helper.c
-@@ -1055,7 +1055,7 @@ int xtensa_get_physical_addr(CPUXtensaState *env, bool update_tlb,
-     }
- }
- 
--static void dump_tlb(CPUXtensaState *env, bool dtlb)
-+static void dump_tlb(CPUXtensaState *env, bool dtlb, GString *buf)
- {
-     unsigned wi, ei;
-     const xtensa_tlb *conf =
-@@ -1094,34 +1094,40 @@ static void dump_tlb(CPUXtensaState *env, bool dtlb)
- 
-                 if (print_header) {
-                     print_header = false;
--                    qemu_printf("Way %u (%d %s)\n", wi, sz, sz_text);
--                    qemu_printf("\tVaddr       Paddr       ASID  Attr RWX Cache\n"
--                                "\t----------  ----------  ----  ---- --- -------\n");
-+                    g_string_append_printf(buf, "Way %u (%d %s)\n",
-+                                           wi, sz, sz_text);
-+                    g_string_append_printf(buf, "\tVaddr       Paddr       "
-+                                           "ASID  Attr RWX Cache\n"
-+                                           "\t----------  ----------  ----  "
-+                                           "---- --- -------\n");
-                 }
--                qemu_printf("\t0x%08x  0x%08x  0x%02x  0x%02x %c%c%c %-7s\n",
--                            entry->vaddr,
--                            entry->paddr,
--                            entry->asid,
--                            entry->attr,
--                            (access & PAGE_READ) ? 'R' : '-',
--                            (access & PAGE_WRITE) ? 'W' : '-',
--                            (access & PAGE_EXEC) ? 'X' : '-',
--                            cache_text[cache_idx] ?
--                            cache_text[cache_idx] : "Invalid");
-+                g_string_append_printf(buf, "\t0x%08x  0x%08x  0x%02x  "
-+                                       "0x%02x %c%c%c %-7s\n",
-+                                       entry->vaddr,
-+                                       entry->paddr,
-+                                       entry->asid,
-+                                       entry->attr,
-+                                       (access & PAGE_READ) ? 'R' : '-',
-+                                       (access & PAGE_WRITE) ? 'W' : '-',
-+                                       (access & PAGE_EXEC) ? 'X' : '-',
-+                                       cache_text[cache_idx] ?
-+                                       cache_text[cache_idx] : "Invalid");
-             }
-         }
-     }
- }
- 
- static void dump_mpu(CPUXtensaState *env,
--                     const xtensa_mpu_entry *entry, unsigned n)
-+                     const xtensa_mpu_entry *entry, unsigned n, GString *buf)
- {
-     unsigned i;
- 
--    qemu_printf("\t%s  Vaddr       Attr        Ring0  Ring1  System Type    CPU cache\n"
--                "\t%s  ----------  ----------  -----  -----  -------------  ---------\n",
--                env ? "En" : "  ",
--                env ? "--" : "  ");
-+    g_string_append_printf(buf, "\t%s  Vaddr       Attr        "
-+                           "Ring0  Ring1  System Type    CPU cache\n"
-+                           "\t%s  ----------  ----------  -----  -----  "
-+                           "-------------  ---------\n",
-+                           env ? "En" : "  ",
-+                           env ? "--" : "  ");
- 
-     for (i = 0; i < n; ++i) {
-         uint32_t attr = entry[i].attr;
-@@ -1130,63 +1136,73 @@ static void dump_mpu(CPUXtensaState *env,
-         unsigned type = mpu_attr_to_type(attr);
-         char cpu_cache = (type & XTENSA_MPU_TYPE_CPU_CACHE) ? '-' : ' ';
- 
--        qemu_printf("\t %c  0x%08x  0x%08x   %c%c%c    %c%c%c   ",
--                    env ?
--                    ((env->sregs[MPUENB] & (1u << i)) ? '+' : '-') : ' ',
--                    entry[i].vaddr, attr,
--                    (access0 & PAGE_READ) ? 'R' : '-',
--                    (access0 & PAGE_WRITE) ? 'W' : '-',
--                    (access0 & PAGE_EXEC) ? 'X' : '-',
--                    (access1 & PAGE_READ) ? 'R' : '-',
--                    (access1 & PAGE_WRITE) ? 'W' : '-',
--                    (access1 & PAGE_EXEC) ? 'X' : '-');
-+        g_string_append_printf(buf, "\t %c  0x%08x  0x%08x   "
-+                               "%c%c%c    %c%c%c   ",
-+                               env ? ((env->sregs[MPUENB] & (1u << i)) ?
-+                                      '+' : '-') : ' ',
-+                               entry[i].vaddr, attr,
-+                               (access0 & PAGE_READ) ? 'R' : '-',
-+                               (access0 & PAGE_WRITE) ? 'W' : '-',
-+                               (access0 & PAGE_EXEC) ? 'X' : '-',
-+                               (access1 & PAGE_READ) ? 'R' : '-',
-+                               (access1 & PAGE_WRITE) ? 'W' : '-',
-+                               (access1 & PAGE_EXEC) ? 'X' : '-');
- 
-         switch (type & XTENSA_MPU_SYSTEM_TYPE_MASK) {
-         case XTENSA_MPU_SYSTEM_TYPE_DEVICE:
--            qemu_printf("Device %cB %3s\n",
--                        (type & XTENSA_MPU_TYPE_B) ? ' ' : 'n',
--                        (type & XTENSA_MPU_TYPE_INT) ? "int" : "");
-+            g_string_append_printf(buf, "Device %cB %3s\n",
-+                                   (type & XTENSA_MPU_TYPE_B) ? ' ' : 'n',
-+                                   (type & XTENSA_MPU_TYPE_INT) ? "int" : "");
-             break;
-         case XTENSA_MPU_SYSTEM_TYPE_NC:
--            qemu_printf("Sys NC %cB      %c%c%c\n",
--                        (type & XTENSA_MPU_TYPE_B) ? ' ' : 'n',
--                        (type & XTENSA_MPU_TYPE_CPU_R) ? 'r' : cpu_cache,
--                        (type & XTENSA_MPU_TYPE_CPU_W) ? 'w' : cpu_cache,
--                        (type & XTENSA_MPU_TYPE_CPU_C) ? 'c' : cpu_cache);
-+            g_string_append_printf(buf, "Sys NC %cB      %c%c%c\n",
-+                                   (type & XTENSA_MPU_TYPE_B) ? ' ' : 'n',
-+                                   (type & XTENSA_MPU_TYPE_CPU_R) ?
-+                                   'r' : cpu_cache,
-+                                   (type & XTENSA_MPU_TYPE_CPU_W) ?
-+                                   'w' : cpu_cache,
-+                                   (type & XTENSA_MPU_TYPE_CPU_C) ?
-+                                   'c' : cpu_cache);
-             break;
-         case XTENSA_MPU_SYSTEM_TYPE_C:
--            qemu_printf("Sys  C %c%c%c     %c%c%c\n",
--                        (type & XTENSA_MPU_TYPE_SYS_R) ? 'R' : '-',
--                        (type & XTENSA_MPU_TYPE_SYS_W) ? 'W' : '-',
--                        (type & XTENSA_MPU_TYPE_SYS_C) ? 'C' : '-',
--                        (type & XTENSA_MPU_TYPE_CPU_R) ? 'r' : cpu_cache,
--                        (type & XTENSA_MPU_TYPE_CPU_W) ? 'w' : cpu_cache,
--                        (type & XTENSA_MPU_TYPE_CPU_C) ? 'c' : cpu_cache);
-+            g_string_append_printf(buf, "Sys  C %c%c%c     %c%c%c\n",
-+                                   (type & XTENSA_MPU_TYPE_SYS_R) ? 'R' : '-',
-+                                   (type & XTENSA_MPU_TYPE_SYS_W) ? 'W' : '-',
-+                                   (type & XTENSA_MPU_TYPE_SYS_C) ? 'C' : '-',
-+                                   (type & XTENSA_MPU_TYPE_CPU_R) ?
-+                                   'r' : cpu_cache,
-+                                   (type & XTENSA_MPU_TYPE_CPU_W) ?
-+                                   'w' : cpu_cache,
-+                                   (type & XTENSA_MPU_TYPE_CPU_C) ?
-+                                   'c' : cpu_cache);
-             break;
-         default:
--            qemu_printf("Unknown\n");
-+            g_string_append_printf(buf, "Unknown\n");
-             break;
-         }
-     }
- }
- 
--void dump_mmu(CPUXtensaState *env)
-+void xtensa_cpu_format_tlb(CPUState *cpu, GString *buf)
- {
-+    CPUXtensaState *env = cpu->env_ptr;
-+
-     if (xtensa_option_bits_enabled(env->config,
-                 XTENSA_OPTION_BIT(XTENSA_OPTION_REGION_PROTECTION) |
-                 XTENSA_OPTION_BIT(XTENSA_OPTION_REGION_TRANSLATION) |
-                 XTENSA_OPTION_BIT(XTENSA_OPTION_MMU))) {
- 
--        qemu_printf("ITLB:\n");
--        dump_tlb(env, false);
--        qemu_printf("\nDTLB:\n");
--        dump_tlb(env, true);
-+        g_string_append_printf(buf, "ITLB:\n");
-+        dump_tlb(env, false, buf);
-+        g_string_append_printf(buf, "\nDTLB:\n");
-+        dump_tlb(env, true, buf);
-     } else if (xtensa_option_enabled(env->config, XTENSA_OPTION_MPU)) {
--        qemu_printf("Foreground map:\n");
--        dump_mpu(env, env->mpu_fg, env->config->n_mpu_fg_segments);
--        qemu_printf("\nBackground map:\n");
--        dump_mpu(NULL, env->config->mpu_bg, env->config->n_mpu_bg_segments);
-+        g_string_append_printf(buf, "Foreground map:\n");
-+        dump_mpu(env, env->mpu_fg, env->config->n_mpu_fg_segments, buf);
-+        g_string_append_printf(buf, "\nBackground map:\n");
-+        dump_mpu(NULL, env->config->mpu_bg,
-+                 env->config->n_mpu_bg_segments, buf);
-     } else {
--        qemu_printf("No TLB for this CPU core\n");
-+        g_string_append_printf(buf, "No TLB for this CPU core\n");
-     }
- }
-diff --git a/target/xtensa/monitor.c b/target/xtensa/monitor.c
-index fbf60d5553..99d35e8ef1 100644
---- a/target/xtensa/monitor.c
-+++ b/target/xtensa/monitor.c
-@@ -29,11 +29,15 @@
- 
- void hmp_info_tlb(Monitor *mon, const QDict *qdict)
- {
--    CPUArchState *env1 = mon_get_cpu_env(mon);
-+    g_autoptr(GString) buf = g_string_new("");
-+    CPUState *cpu = mon_get_cpu(mon);
- 
--    if (!env1) {
-+    if (!cpu) {
-         monitor_printf(mon, "No CPU available\n");
-         return;
-     }
--    dump_mmu(env1);
-+
-+    cpu_format_tlb(cpu, buf);
-+
-+    monitor_printf(mon, "%s", buf->str);
- }
--- 
-2.31.1
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGFuaWVsIFAuIEJlcnJh
+bmfDqSA8YmVycmFuZ2VAcmVkaGF0LmNvbT4NCj4gU3ViamVjdDogW1BBVENIIHYyIDExLzUzXSB0
+YXJnZXQvaGV4YWdvbjogZGVsZXRlIHVudXNlZCBoZXhhZ29uX2RlYnVnKCkNCj4gbWV0aG9kDQo+
+IA0KPiBUaGlzIG1ldGhvZCBpc24ndCB1c2VkIGluIGFueSBjb2RlIGFuZCBpdHMgZnVuY3Rpb25h
+bGl0eSBpcyBhbHJlYWR5IGF2YWlsYWJsZSB2aWENCj4gdGhlICdpbmZvIHJlZ2lzdGVycycgSE1Q
+IGNvbW1hbmQuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgUC4gQmVycmFuZ8OpIDxiZXJy
+YW5nZUByZWRoYXQuY29tPg0KPiAtLS0NCj4gIHRhcmdldC9oZXhhZ29uL2NwdS5jICAgICAgfCA1
+IC0tLS0tDQo+ICB0YXJnZXQvaGV4YWdvbi9pbnRlcm5hbC5oIHwgMSAtDQo+ICAyIGZpbGVzIGNo
+YW5nZWQsIDYgZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvdGFyZ2V0L2hleGFnb24v
+Y3B1LmMgYi90YXJnZXQvaGV4YWdvbi9jcHUuYyBpbmRleA0KPiAzMzM4MzY1YzE2Li4xNGM2Mjhk
+YjdhIDEwMDY0NA0KPiAtLS0gYS90YXJnZXQvaGV4YWdvbi9jcHUuYw0KPiArKysgYi90YXJnZXQv
+aGV4YWdvbi9jcHUuYw0KPiBAQCAtMTY5LDExICsxNjksNiBAQCBzdGF0aWMgdm9pZCBoZXhhZ29u
+X2R1bXBfc3RhdGUoQ1BVU3RhdGUgKmNzLCBGSUxFDQo+ICpmLCBpbnQgZmxhZ3MpDQo+ICAgICAg
+aGV4YWdvbl9kdW1wKGVudiwgZik7DQo+ICB9DQo+IA0KPiAtdm9pZCBoZXhhZ29uX2RlYnVnKENQ
+VUhleGFnb25TdGF0ZSAqZW52KSAtew0KPiAtICAgIGhleGFnb25fZHVtcChlbnYsIHN0ZG91dCk7
+DQo+IC19DQo+IC0NCj4gIHN0YXRpYyB2b2lkIGhleGFnb25fY3B1X3NldF9wYyhDUFVTdGF0ZSAq
+Y3MsIHZhZGRyIHZhbHVlKSAgew0KPiAgICAgIEhleGFnb25DUFUgKmNwdSA9IEhFWEFHT05fQ1BV
+KGNzKTsNCj4gZGlmZiAtLWdpdCBhL3RhcmdldC9oZXhhZ29uL2ludGVybmFsLmggYi90YXJnZXQv
+aGV4YWdvbi9pbnRlcm5hbC5oIGluZGV4DQo+IDZiMjBhZmZkZmEuLjE2N2U5MTAyNmEgMTAwNjQ0
+DQo+IC0tLSBhL3RhcmdldC9oZXhhZ29uL2ludGVybmFsLmgNCj4gKysrIGIvdGFyZ2V0L2hleGFn
+b24vaW50ZXJuYWwuaA0KPiBAQCAtMzEsNyArMzEsNiBAQA0KPiANCj4gIGludCBoZXhhZ29uX2dk
+Yl9yZWFkX3JlZ2lzdGVyKENQVVN0YXRlICpjcHUsIEdCeXRlQXJyYXkgKmJ1ZiwgaW50IHJlZyk7
+DQo+IGludCBoZXhhZ29uX2dkYl93cml0ZV9yZWdpc3RlcihDUFVTdGF0ZSAqY3B1LCB1aW50OF90
+ICpidWYsIGludCByZWcpOw0KPiAtdm9pZCBoZXhhZ29uX2RlYnVnKENQVUhleGFnb25TdGF0ZSAq
+ZW52KTsNCj4gDQo+ICBleHRlcm4gY29uc3QgY2hhciAqIGNvbnN0IGhleGFnb25fcmVnbmFtZXNb
+VE9UQUxfUEVSX1RIUkVBRF9SRUdTXTsNCg0KUmV2aWV3ZWQtYnk6IFRheWxvciBTaW1wc29uIDx0
+c2ltcHNvbkBxdWljaW5jLmNvbT4NCg==

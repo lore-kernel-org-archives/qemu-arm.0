@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp756694lfp;
-        Tue, 14 Sep 2021 07:51:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxH13ANXM1rlILocd413tv20QZSFWMl2pyHAxauidwznn20WFHrE3qsNpjR2J339z+89KGa
-X-Received: by 2002:ad4:4aad:: with SMTP id i13mr5709783qvx.27.1631631076232;
-        Tue, 14 Sep 2021 07:51:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631631076; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp758137lfp;
+        Tue, 14 Sep 2021 07:52:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykJL5P1CSLze9cpkwuo85AOzHHHIl9Byhx5VQ/uihiqY/5+NRq1zKn46fMZ/7dmIvqda6j
+X-Received: by 2002:a05:6102:3670:: with SMTP id bg16mr10249028vsb.24.1631631169999;
+        Tue, 14 Sep 2021 07:52:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631631169; cv=none;
         d=google.com; s=arc-20160816;
-        b=ejoghJodso2IMAKbJIdyUfSyjy7GWzTVG05n/2vxrYa3phAZmI3piGoILxLDS9SV1o
-         CTnch+RQXPWKiuiIcp5RitjkTWhOKPpb2LGLzBemXKEz1xtz74p4cGrg/Ga9lTL5cXir
-         G4GJxeP+kvRqMZ8h0gmjOkD5pnvTP80qwBHhcipj37Oe9aSzmqV3i3wIp4T95WyoXwIp
-         ybElyF1vMOqRlF8GyuZI5A3JX3wsw2lKcJeWhmLJyXl+5RsWaxqaxQPrjvcUXLEMsh/5
-         4C3rg5972WaYnNPC3rdtTBZmYfNI1IaLC08iVjXphxZbJw9iLlHfuK1yHYJQClWnsaJS
-         sptg==
+        b=c+Ip5DHKQrxMvpCZJhLRAueqdV/1c6gJH2sm6o9N3nmAJmjUTddEkLBZnJiLaOgbWX
+         moxMJujCO1BvC743xMF9hJt56/EW2mzR3lXvr6+18Fw5JicPRQfphgqPa7GeifuFU0ia
+         d0d9gh0TFUakVAg72ZXGfuyejwlfKk8YEJw03RrIGiZZNb4o3IuIyzsU/g++RXahfVpC
+         0BvFn6yd2XStTCGFLE6dh3rE5b8pAAxIgUX6KQ9OzTS0QP6gN3FbefTn0mK5imsEPGqu
+         WQES6O99aevrnCUZcAL8CqP0hviwEDKkT3NHhexC3vGohUCbR7fGzZPbShIZZIHrQon6
+         l+mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=PRCBRjWGqeIljdUzcqW2nBCNswQEV4Di7Dt1tu1kl6Q=;
-        b=HQ/h+qUQN4agRwNNd3JRl/n0lrTeD8vQiex6hVaD/j7NgAMLVq9q9DS0gDf+/U2/e2
-         5kELAZ5q5yizJm1GQpO4b3BMKMeEE8aKXugNWMSN3qD64hnS9riaIcT6V2NrvEvkOUjc
-         NHCqumTvYD5WhcowUT6LAdgISjToEtVdlkzz7nuWwQW/yAxjmn5pMkELk0H1An6PyoCd
-         ut+FXH6kq9ggexDaMDK5vpQ4IKavfRIgszRElTzWlzeNawww72FpRKFYfTWQ/iZbkjkL
-         oum55E/dTfmbIMY/XpzQ+HarIvFpXQ/iAeQa7mbGdET9g8o51jOHSyN9jmvD9GJBRn4M
-         deLA==
+        bh=5ox0yxENRArnSajwWt6R0ATTJtvgUIn+1CN57BaiibE=;
+        b=whaaAt+xtcmuqfeK+pYmh/8mXLx/6gdNeHAPbKzkJN2O7n/xujYReyqZ7i3mGaVXb7
+         7gksg8XgTsmeGW3VVYht3dyLlfF9CxDNCIK9m2iDIEdsIIp+4CMtOWd3OWtVwaT38vhP
+         3Q6U0TKfI76zWU0rH1YaOzrwKn1xW2PdyFbcBgr1SKnA785f8z4QS3ReUiKgZU72bo7s
+         iL3fuNutjo6BGVbFvPYVS6q48kxkNvXXJxnINWOAjeKPg6xHk52Sf/CCj52KT+MVc47R
+         R48UJsPnJUxtPV1guNQ/aikFbeFZItBWDAMy+uMmjG16aOp2S7k5jVWhCAougjp8ZqmY
+         lO0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Djdm1OJA;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EbCupnza;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s24si3431944vsa.441.2021.09.14.07.51.16
+        by mx.google.com with ESMTPS id j22si3741615vsg.338.2021.09.14.07.52.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:51:16 -0700 (PDT)
+        Tue, 14 Sep 2021 07:52:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Djdm1OJA;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EbCupnza;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56104 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9mF-0001BN-FX
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:51:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37524)
+	id 1mQ9nl-00054d-8c
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:52:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39050)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Os-0000dl-35
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:27:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29427)
+ id 1mQ9RT-0005CF-Sg
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:29:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37800)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Om-0007Iy-1u
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:27:05 -0400
+ id 1mQ9RS-0000tF-68
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:29:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629618;
+ s=mimecast20190719; t=1631629785;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=PRCBRjWGqeIljdUzcqW2nBCNswQEV4Di7Dt1tu1kl6Q=;
- b=Djdm1OJA5O++pQ9fVQSNA50/g7aKqgervcjG6HpKREbctp9CQmDIwEJtgkMo3UT8OyeeOJ
- QolwD8o8gxckSDhvNkZ5x/vh7/LYRfXwcFCIPB62F8mb9ExEOGgPScnhp751KBkunPX4I3
- XQSNyLWCJI/FE8ZzYVdRUaLWOwrKHy8=
+ bh=5ox0yxENRArnSajwWt6R0ATTJtvgUIn+1CN57BaiibE=;
+ b=EbCupnzaSYKQq/1KG1fGUCCY73KfyINhdqvifPQ8uNz42srM4iA0OD4yOTw05c86J5aiz7
+ jqIH81D57wSz3y0yFNxmTwblErKyVkKHPbU1WadjGBltaq7R/W/RvyFpIiFiPF/yp4KpHL
+ a0hEDIWq5yDUZ04/UYtEgi9jmds1xdY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-KwcF5jD4PpSZf-WEfz9AZg-1; Tue, 14 Sep 2021 10:26:55 -0400
-X-MC-Unique: KwcF5jD4PpSZf-WEfz9AZg-1
+ us-mta-211-_ngq6vkNMNSEfIs-Yi7oXA-1; Tue, 14 Sep 2021 10:29:43 -0400
+X-MC-Unique: _ngq6vkNMNSEfIs-Yi7oXA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D9ADB802E64;
- Tue, 14 Sep 2021 14:26:46 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E74AA10247AB;
+ Tue, 14 Sep 2021 14:29:39 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 464045D9CA;
- Tue, 14 Sep 2021 14:26:22 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 635F35D9CA;
+ Tue, 14 Sep 2021 14:29:28 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 17/53] target/mips: convert to use format_state instead of
- dump_state
-Date: Tue, 14 Sep 2021 15:20:06 +0100
-Message-Id: <20210914142042.1655100-18-berrange@redhat.com>
+Subject: [PATCH v2 26/53] target/tricore: convert to use format_state instead
+ of dump_state
+Date: Tue, 14 Sep 2021 15:20:15 +0100
+Message-Id: <20210914142042.1655100-27-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -140,147 +140,92 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aBZShQDUl0Oo
+X-TUID: gtdZlK8Ks6xe
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/mips/cpu.c | 85 +++++++++++++++++++++++++----------------------
- 1 file changed, 45 insertions(+), 40 deletions(-)
+ target/tricore/cpu.c       |  2 +-
+ target/tricore/cpu.h       |  2 +-
+ target/tricore/translate.c | 24 ++++++++++++------------
+ 3 files changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-index d426918291..9ced90d810 100644
---- a/target/mips/cpu.c
-+++ b/target/mips/cpu.c
-@@ -42,76 +42,81 @@ const char regnames[32][3] = {
-     "t8", "t9", "k0", "k1", "gp", "sp", "s8", "ra",
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index b95682b7f0..11f1a79247 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -174,7 +174,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
+     cc->gdb_num_core_regs = 44;
+     cc->gdb_arch_name = tricore_gdb_arch_name;
+ 
+-    cc->dump_state = tricore_cpu_dump_state;
++    cc->format_state = tricore_cpu_format_state;
+     cc->set_pc = tricore_cpu_set_pc;
+     cc->sysemu_ops = &tricore_sysemu_ops;
+     cc->tcg_ops = &tricore_tcg_ops;
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index 4b61a2c03f..572bda55e7 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -208,7 +208,7 @@ struct TriCoreCPU {
+ 
+ 
+ hwaddr tricore_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+-void tricore_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
++void tricore_cpu_format_state(CPUState *cpu, GString *buf, int flags);
+ 
+ 
+ #define MASK_PCXI_PCPN 0xff000000
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index a0cc0f1cb3..a1e56fba32 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -86,7 +86,7 @@ enum {
+     MODE_UU = 3,
  };
  
--static void fpu_dump_fpr(fpr_t *fpr, FILE *f, bool is_fpu64)
-+static void fpu_dump_fpr(fpr_t *fpr, GString *buf, bool is_fpu64)
+-void tricore_cpu_dump_state(CPUState *cs, FILE *f, int flags)
++void tricore_cpu_format_state(CPUState *cs, GString *buf, int flags)
  {
-     if (is_fpu64) {
--        qemu_fprintf(f, "w:%08x d:%016" PRIx64 " fd:%13g fs:%13g psu: %13g\n",
--                     fpr->w[FP_ENDIAN_IDX], fpr->d,
--                     (double)fpr->fd,
--                     (double)fpr->fs[FP_ENDIAN_IDX],
--                     (double)fpr->fs[!FP_ENDIAN_IDX]);
-+        g_string_append_printf(buf, "w:%08x d:%016" PRIx64
-+                               " fd:%13g fs:%13g psu: %13g\n",
-+                               fpr->w[FP_ENDIAN_IDX], fpr->d,
-+                               (double)fpr->fd,
-+                               (double)fpr->fs[FP_ENDIAN_IDX],
-+                               (double)fpr->fs[!FP_ENDIAN_IDX]);
-     } else {
-         fpr_t tmp;
+     TriCoreCPU *cpu = TRICORE_CPU(cs);
+     CPUTriCoreState *env = &cpu->env;
+@@ -95,26 +95,26 @@ void tricore_cpu_dump_state(CPUState *cs, FILE *f, int flags)
  
-         tmp.w[FP_ENDIAN_IDX] = fpr->w[FP_ENDIAN_IDX];
-         tmp.w[!FP_ENDIAN_IDX] = (fpr + 1)->w[FP_ENDIAN_IDX];
--        qemu_fprintf(f, "w:%08x d:%016" PRIx64 " fd:%13g fs:%13g psu:%13g\n",
--                     tmp.w[FP_ENDIAN_IDX], tmp.d,
--                     (double)tmp.fd,
--                     (double)tmp.fs[FP_ENDIAN_IDX],
--                     (double)tmp.fs[!FP_ENDIAN_IDX]);
-+        g_string_append_printf(buf, "w:%08x d:%016" PRIx64
-+                               " fd:%13g fs:%13g psu:%13g\n",
-+                               tmp.w[FP_ENDIAN_IDX], tmp.d,
-+                               (double)tmp.fd,
-+                               (double)tmp.fs[FP_ENDIAN_IDX],
-+                               (double)tmp.fs[!FP_ENDIAN_IDX]);
-     }
- }
+     psw = psw_read(env);
  
--static void fpu_dump_state(CPUMIPSState *env, FILE *f, int flags)
-+static void fpu_format_state(CPUMIPSState *env, GString *buf, int flags)
- {
-     int i;
-     bool is_fpu64 = !!(env->hflags & MIPS_HFLAG_F64);
+-    qemu_fprintf(f, "PC: " TARGET_FMT_lx, env->PC);
+-    qemu_fprintf(f, " PSW: " TARGET_FMT_lx, psw);
+-    qemu_fprintf(f, " ICR: " TARGET_FMT_lx, env->ICR);
+-    qemu_fprintf(f, "\nPCXI: " TARGET_FMT_lx, env->PCXI);
+-    qemu_fprintf(f, " FCX: " TARGET_FMT_lx, env->FCX);
+-    qemu_fprintf(f, " LCX: " TARGET_FMT_lx, env->LCX);
++    g_string_append_printf(buf, "PC: " TARGET_FMT_lx, env->PC);
++    g_string_append_printf(buf, " PSW: " TARGET_FMT_lx, psw);
++    g_string_append_printf(buf, " ICR: " TARGET_FMT_lx, env->ICR);
++    g_string_append_printf(buf, "\nPCXI: " TARGET_FMT_lx, env->PCXI);
++    g_string_append_printf(buf, " FCX: " TARGET_FMT_lx, env->FCX);
++    g_string_append_printf(buf, " LCX: " TARGET_FMT_lx, env->LCX);
  
--    qemu_fprintf(f,
--                 "CP1 FCR0 0x%08x  FCR31 0x%08x  SR.FR %d  fp_status 0x%02x\n",
--                 env->active_fpu.fcr0, env->active_fpu.fcr31, is_fpu64,
--                 get_float_exception_flags(&env->active_fpu.fp_status));
-+    g_string_append_printf(buf,
-+                           "CP1 FCR0 0x%08x  FCR31 0x%08x  SR.FR %d "
-+                           " fp_status 0x%02x\n",
-+                           env->active_fpu.fcr0, env->active_fpu.fcr31,
-+                           is_fpu64, get_float_exception_flags(
-+                               &env->active_fpu.fp_status));
-     for (i = 0; i < 32; (is_fpu64) ? i++ : (i += 2)) {
--        qemu_fprintf(f, "%3s: ", fregnames[i]);
--        fpu_dump_fpr(&env->active_fpu.fpr[i], f, is_fpu64);
-+        g_string_append_printf(buf, "%3s: ", fregnames[i]);
-+        fpu_dump_fpr(&env->active_fpu.fpr[i], buf, is_fpu64);
-     }
- }
- 
--static void mips_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+static void mips_cpu_format_state(CPUState *cs, GString *buf, int flags)
- {
-     MIPSCPU *cpu = MIPS_CPU(cs);
-     CPUMIPSState *env = &cpu->env;
-     int i;
- 
--    qemu_fprintf(f, "pc=0x" TARGET_FMT_lx " HI=0x" TARGET_FMT_lx
--                 " LO=0x" TARGET_FMT_lx " ds %04x "
--                 TARGET_FMT_lx " " TARGET_FMT_ld "\n",
--                 env->active_tc.PC, env->active_tc.HI[0], env->active_tc.LO[0],
--                 env->hflags, env->btarget, env->bcond);
-+    g_string_append_printf(buf, "pc=0x" TARGET_FMT_lx " HI=0x" TARGET_FMT_lx
-+                           " LO=0x" TARGET_FMT_lx " ds %04x "
-+                           TARGET_FMT_lx " " TARGET_FMT_ld "\n",
-+                           env->active_tc.PC, env->active_tc.HI[0],
-+                           env->active_tc.LO[0],
-+                           env->hflags, env->btarget, env->bcond);
-     for (i = 0; i < 32; i++) {
+     for (i = 0; i < 16; ++i) {
          if ((i & 3) == 0) {
--            qemu_fprintf(f, "GPR%02d:", i);
-+            g_string_append_printf(buf, "GPR%02d:", i);
+-            qemu_fprintf(f, "\nGPR A%02d:", i);
++            g_string_append_printf(buf, "\nGPR A%02d:", i);
          }
--        qemu_fprintf(f, " %s " TARGET_FMT_lx,
--                     regnames[i], env->active_tc.gpr[i]);
-+        g_string_append_printf(buf, " %s " TARGET_FMT_lx,
-+                               regnames[i], env->active_tc.gpr[i]);
-         if ((i & 3) == 3) {
--            qemu_fprintf(f, "\n");
-+            g_string_append_printf(buf, "\n");
+-        qemu_fprintf(f, " " TARGET_FMT_lx, env->gpr_a[i]);
++        g_string_append_printf(buf, " " TARGET_FMT_lx, env->gpr_a[i]);
+     }
+     for (i = 0; i < 16; ++i) {
+         if ((i & 3) == 0) {
+-            qemu_fprintf(f, "\nGPR D%02d:", i);
++            g_string_append_printf(buf, "\nGPR D%02d:", i);
          }
+-        qemu_fprintf(f, " " TARGET_FMT_lx, env->gpr_d[i]);
++        g_string_append_printf(buf, " " TARGET_FMT_lx, env->gpr_d[i]);
      }
- 
--    qemu_fprintf(f, "CP0 Status  0x%08x Cause   0x%08x EPC    0x"
--                 TARGET_FMT_lx "\n",
--                 env->CP0_Status, env->CP0_Cause, env->CP0_EPC);
--    qemu_fprintf(f, "    Config0 0x%08x Config1 0x%08x LLAddr 0x%016"
--                 PRIx64 "\n",
--                 env->CP0_Config0, env->CP0_Config1, env->CP0_LLAddr);
--    qemu_fprintf(f, "    Config2 0x%08x Config3 0x%08x\n",
--                 env->CP0_Config2, env->CP0_Config3);
--    qemu_fprintf(f, "    Config4 0x%08x Config5 0x%08x\n",
--                 env->CP0_Config4, env->CP0_Config5);
-+    g_string_append_printf(buf, "CP0 Status  0x%08x Cause   0x%08x EPC    0x"
-+                           TARGET_FMT_lx "\n",
-+                           env->CP0_Status, env->CP0_Cause, env->CP0_EPC);
-+    g_string_append_printf(buf, "    Config0 0x%08x Config1 0x%08x LLAddr "
-+                           "0x%016" PRIx64 "\n",
-+                           env->CP0_Config0, env->CP0_Config1, env->CP0_LLAddr);
-+    g_string_append_printf(buf, "    Config2 0x%08x Config3 0x%08x\n",
-+                           env->CP0_Config2, env->CP0_Config3);
-+    g_string_append_printf(buf, "    Config4 0x%08x Config5 0x%08x\n",
-+                           env->CP0_Config4, env->CP0_Config5);
-     if ((flags & CPU_DUMP_FPU) && (env->hflags & MIPS_HFLAG_FPU)) {
--        fpu_dump_state(env, f, flags);
-+        fpu_format_state(env, buf, flags);
-     }
+-    qemu_fprintf(f, "\n");
++    g_string_append_printf(buf, "\n");
  }
  
-@@ -564,7 +569,7 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
- 
-     cc->class_by_name = mips_cpu_class_by_name;
-     cc->has_work = mips_cpu_has_work;
--    cc->dump_state = mips_cpu_dump_state;
-+    cc->format_state = mips_cpu_format_state;
-     cc->set_pc = mips_cpu_set_pc;
-     cc->gdb_read_register = mips_cpu_gdb_read_register;
-     cc->gdb_write_register = mips_cpu_gdb_write_register;
+ /*
 -- 
 2.31.1
 

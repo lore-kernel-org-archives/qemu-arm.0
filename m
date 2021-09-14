@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp738016lfp;
-        Tue, 14 Sep 2021 07:29:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxaF4aHEZygHXzt/bHm82Lp3eXm+Ux+cK8sojyfTz7WchfJTDKSUU0XyEmh3rMgjmcqhg63
-X-Received: by 2002:adf:ea90:: with SMTP id s16mr19390547wrm.235.1631629765731;
-        Tue, 14 Sep 2021 07:29:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631629765; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp738045lfp;
+        Tue, 14 Sep 2021 07:29:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx6JyWa7uyqGc5SG/akMbqn8oOfooZkqV8XXEyO9KS3cZYy5c4TvaZHaFiaHdY/6YbWjFFQ
+X-Received: by 2002:a17:906:912:: with SMTP id i18mr17852717ejd.257.1631629770320;
+        Tue, 14 Sep 2021 07:29:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631629770; cv=none;
         d=google.com; s=arc-20160816;
-        b=p0o2sVLFaFjK1aCHZKSS761qMgfc9KGQoiH229q9+yO5VnRXHRfcbf26sc+T+c797d
-         9OTo2/jKxHaoorKsfm31fq7m2pb2W7JlbXbewShyAd1yQvbcFEFMU5sH287Pm9AJgFg0
-         U+uTvDbtEWCOcUkuL1NovRkDHGYg6Mmx+dBHpFLJY1pS83vva4ridA25/wfrI7+2DEmk
-         AliNm2oFMd+djSsNnk8Q+3SPOqtCxEn7xeesAIEX1ScWEinCzwUM5utqVXpnZ4nz58Py
-         VTlIbr13GvK0s2Dn04PsxmCDB/kaGKPdPXnzv++A5h+VV8oHLpqPO7+NSg0CAJ+T9Cf+
-         RU3Q==
+        b=BFGWt077UI3GYXl2bspgo0U9Y3fdSyf0NeweRDnumIatsRes5M5f+nBJ5k/AfWlJzc
+         /5PoiKSQZp6Dc/4eaGSwdLSZubeTWW38eHpSBrwOExHyY1vMrBHiVoDXRGFMo4wJTzC6
+         ZdPqfqkQ1BYw1Fk0yOn9YP4DtlIGvf8xNDu9bN8vtqE78oyR7FzGtMz1GHN9p7ctV7js
+         2nD02YXmjHqbh5wkv0aCVvImjPxHNKXMKIHcFt7UVQV6MZI2AjCqSNLnDuTg4jGdIsBf
+         gYCPMEd9ly7LMrytdYYDfCAUmo051foBqYQvrioua3Mp7YKQbzGMQLLALQ7KHJ8CKGzC
+         Miqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=KGkGVwRmSHO8zOwMvdSsq1teOA4ZO2QBEQn2l0HSxc0=;
-        b=FmtJqHiMGuj9uu6UQaxXf8YR5GGMCVc57KyVFikYUoVE+qNJFhwlmnuyD/zEG9Vuz+
-         0u8+TMqaopsJ6z+RTj7nCJ1lVRSaeeRYe1G0ujN7lEfcVtAdmt9aXUXIG2AEZjAh24H4
-         0fa9wU8PLpor/AqSkKaRA5qEpHv6tI7oj/NUt+q+fGoEZFIgpmKrv8gA0sg9iGBcUi6p
-         tOY3T4Bc+r+g9km/hcSTQgfP5u925dSdF9f3RQod6tspJieNyEH/yX0hknOg830zI/eO
-         V1uBZaiUIFAX2sko/vFTbaAB7yz2yv8nJsfl47JGThSZUyNQ0xUk63WGsXHjcp2Ij/d/
-         LdrQ==
+        bh=/ocCcBzbBdzil9FXe57cZVezF7Lyvm73oMJaNhuDio4=;
+        b=aMSV3qoVqWDitwUcWP37+pZbVe6a4GywJMX+3HRJvHynFGdnEcEB8eeDYMCdOnQhdf
+         W4pf8FLPcGQ6/PKU9CYsOYzIgWizBvfToPMqubreyxMGLLjDEKzdbROOdLJIjx2+C8hL
+         iqwi4sNRr2q/zdh8g9XoNdk/g17pA4VzoOTcLu40aqSGsG3//EwgSfP7BnrLrDxWA/ec
+         3KNd8h5CO4dk0trWlB0J9VoGJXR2YRBL3PqrKMAVtYTkrvyQbmpr+xzmbBoOQRAxmJPa
+         EXmY0zJckAjimysDQY2Nx7POAuFWzQI+deKtZzm5GlrevzXFieu7EobdCrR1pEWzR0xh
+         ON+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Zr06pwlM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="R92HV/U9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11si232476ejo.371.2021.09.14.07.29.25
+        by mx.google.com with ESMTPS id qw29si10477896ejc.320.2021.09.14.07.29.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:29:25 -0700 (PDT)
+        Tue, 14 Sep 2021 07:29:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Zr06pwlM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="R92HV/U9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55978 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56540 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9R6-0003Ab-N8
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:29:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35038)
+	id 1mQ9RB-0003XQ-AK
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:29:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9LW-0003Ca-CH
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:23:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36789)
+ id 1mQ9Lu-0004e6-KZ
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:24:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59652)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9LR-0004m5-4k
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:23:37 -0400
+ id 1mQ9Lr-00054P-2Y
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:24:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629412;
+ s=mimecast20190719; t=1631629438;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KGkGVwRmSHO8zOwMvdSsq1teOA4ZO2QBEQn2l0HSxc0=;
- b=Zr06pwlMxRFC+vbq1H7ZZWZdBJ7gq6CkORquG+Wb2oTi5NV404WncvU6Klp+21tV9LhTBy
- RVCxAStqbH8uTyfb7nc6ckGssa6NBum3Lfg5VSrja1CHFKIsK0U1RREpQdOoE4TbSXUcf2
- ACmzvp0vCOQl8OLpBmb3jl68ouhSN8M=
+ bh=/ocCcBzbBdzil9FXe57cZVezF7Lyvm73oMJaNhuDio4=;
+ b=R92HV/U91UpDUlCNLY3QmzjreDN9362QM9TuGDz2ewkNwgSwfHje7ZUah6rkDUfYGTtsdI
+ Y5XoJlPYts93i93pzp9kPHop2Gi5evmJFPZ2s+TKY0D1/RFRaC/Q+YoVRyIrZCE0y0gvVB
+ trp2/Ve5BZHzHabkZM/k8jdpEfwGi6I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-230-4gJOaScQPj2SUv-rd9PB3Q-1; Tue, 14 Sep 2021 10:23:30 -0400
-X-MC-Unique: 4gJOaScQPj2SUv-rd9PB3Q-1
+ us-mta-339-nOwsKEuIPtGuGn2e9YWnZw-1; Tue, 14 Sep 2021 10:23:57 -0400
+X-MC-Unique: nOwsKEuIPtGuGn2e9YWnZw-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0D70318414A5;
- Tue, 14 Sep 2021 14:23:27 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5172C801E72;
+ Tue, 14 Sep 2021 14:23:53 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 90E945D9CA;
- Tue, 14 Sep 2021 14:23:08 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F20AA5D9CA;
+ Tue, 14 Sep 2021 14:23:34 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 08/53] target/arm: convert to use format_state instead of
+Subject: [PATCH v2 10/53] target/cris: convert to use format_state instead of
  dump_state
-Date: Tue, 14 Sep 2021 15:19:57 +0100
-Message-Id: <20210914142042.1655100-9-berrange@redhat.com>
+Date: Tue, 14 Sep 2021 15:19:59 +0100
+Message-Id: <20210914142042.1655100-11-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -92,13 +92,13 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -142,294 +142,111 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BqrS2dEDf4h6
+X-TUID: 0XAj9NVp7PaM
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/arm/cpu.c | 152 +++++++++++++++++++++++++----------------------
- 1 file changed, 81 insertions(+), 71 deletions(-)
+ target/cris/cpu.c       |  2 +-
+ target/cris/cpu.h       |  2 +-
+ target/cris/translate.c | 33 +++++++++++++++++----------------
+ 3 files changed, 19 insertions(+), 18 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d631c4683c..5999277e67 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -798,7 +798,7 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index 70932b1f8c..5159cf6528 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -295,7 +295,7 @@ static void cris_cpu_class_init(ObjectClass *oc, void *data)
  
- #ifdef TARGET_AARCH64
+     cc->class_by_name = cris_cpu_class_by_name;
+     cc->has_work = cris_cpu_has_work;
+-    cc->dump_state = cris_cpu_dump_state;
++    cc->format_state = cris_cpu_format_state;
+     cc->set_pc = cris_cpu_set_pc;
+     cc->gdb_read_register = cris_cpu_gdb_read_register;
+     cc->gdb_write_register = cris_cpu_gdb_write_register;
+diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+index d3b6492909..908cb051da 100644
+--- a/target/cris/cpu.h
++++ b/target/cris/cpu.h
+@@ -191,7 +191,7 @@ void cris_cpu_do_interrupt(CPUState *cpu);
+ void crisv10_cpu_do_interrupt(CPUState *cpu);
+ bool cris_cpu_exec_interrupt(CPUState *cpu, int int_req);
  
--static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+static void aarch64_cpu_format_state(CPUState *cs, GString *buf, int flags)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-@@ -807,13 +807,14 @@ static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     int el = arm_current_el(env);
-     const char *ns_status;
+-void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags);
++void cris_cpu_format_state(CPUState *cs, GString *buf, int flags);
  
--    qemu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
-+    g_string_append_printf(buf, " PC=%016" PRIx64 " ", env->pc);
-     for (i = 0; i < 32; i++) {
-         if (i == 31) {
--            qemu_fprintf(f, " SP=%016" PRIx64 "\n", env->xregs[i]);
-+            g_string_append_printf(buf, " SP=%016" PRIx64 "\n", env->xregs[i]);
-         } else {
--            qemu_fprintf(f, "X%02d=%016" PRIx64 "%s", i, env->xregs[i],
--                         (i + 2) % 3 ? " " : "\n");
-+            g_string_append_printf(buf, "X%02d=%016" PRIx64 "%s",
-+                                   i, env->xregs[i],
-+                                   (i + 2) % 3 ? " " : "\n");
-         }
-     }
+ hwaddr cris_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
  
-@@ -822,29 +823,29 @@ static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     } else {
-         ns_status = "";
-     }
--    qemu_fprintf(f, "PSTATE=%08x %c%c%c%c %sEL%d%c",
--                 psr,
--                 psr & PSTATE_N ? 'N' : '-',
--                 psr & PSTATE_Z ? 'Z' : '-',
--                 psr & PSTATE_C ? 'C' : '-',
--                 psr & PSTATE_V ? 'V' : '-',
--                 ns_status,
--                 el,
--                 psr & PSTATE_SP ? 'h' : 't');
-+    g_string_append_printf(buf, "PSTATE=%08x %c%c%c%c %sEL%d%c",
-+                           psr,
-+                           psr & PSTATE_N ? 'N' : '-',
-+                           psr & PSTATE_Z ? 'Z' : '-',
-+                           psr & PSTATE_C ? 'C' : '-',
-+                           psr & PSTATE_V ? 'V' : '-',
-+                           ns_status,
-+                           el,
-+                           psr & PSTATE_SP ? 'h' : 't');
- 
-     if (cpu_isar_feature(aa64_bti, cpu)) {
--        qemu_fprintf(f, "  BTYPE=%d", (psr & PSTATE_BTYPE) >> 10);
-+        g_string_append_printf(buf, "  BTYPE=%d", (psr & PSTATE_BTYPE) >> 10);
-     }
-     if (!(flags & CPU_DUMP_FPU)) {
--        qemu_fprintf(f, "\n");
-+        g_string_append_printf(buf, "\n");
-         return;
-     }
-     if (fp_exception_el(env, el) != 0) {
--        qemu_fprintf(f, "    FPU disabled\n");
-+        g_string_append_printf(buf, "    FPU disabled\n");
-         return;
-     }
--    qemu_fprintf(f, "     FPCR=%08x FPSR=%08x\n",
--                 vfp_get_fpcr(env), vfp_get_fpsr(env));
-+    g_string_append_printf(buf, "     FPCR=%08x FPSR=%08x\n",
-+                           vfp_get_fpcr(env), vfp_get_fpsr(env));
- 
-     if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) == 0) {
-         int j, zcr_len = sve_zcr_len_for_el(env, el);
-@@ -852,11 +853,11 @@ static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-         for (i = 0; i <= FFR_PRED_NUM; i++) {
-             bool eol;
-             if (i == FFR_PRED_NUM) {
--                qemu_fprintf(f, "FFR=");
-+                g_string_append_printf(buf, "FFR=");
-                 /* It's last, so end the line.  */
-                 eol = true;
-             } else {
--                qemu_fprintf(f, "P%02d=", i);
-+                g_string_append_printf(buf, "P%02d=", i);
-                 switch (zcr_len) {
-                 case 0:
-                     eol = i % 8 == 7;
-@@ -881,76 +882,84 @@ static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-                 } else {
-                     digits = (zcr_len % 4 + 1) * 4;
-                 }
--                qemu_fprintf(f, "%0*" PRIx64 "%s", digits,
--                             env->vfp.pregs[i].p[j],
--                             j ? ":" : eol ? "\n" : " ");
-+                g_string_append_printf(buf, "%0*" PRIx64 "%s", digits,
-+                                       env->vfp.pregs[i].p[j],
-+                                       j ? ":" : eol ? "\n" : " ");
-             }
-         }
- 
-         for (i = 0; i < 32; i++) {
-             if (zcr_len == 0) {
--                qemu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64 "%s",
--                             i, env->vfp.zregs[i].d[1],
--                             env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
-+                g_string_append_printf(buf, "Z%02d=%016" PRIx64
-+                                       ":%016" PRIx64 "%s",
-+                                       i, env->vfp.zregs[i].d[1],
-+                                       env->vfp.zregs[i].d[0],
-+                                       i & 1 ? "\n" : " ");
-             } else if (zcr_len == 1) {
--                qemu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64
--                             ":%016" PRIx64 ":%016" PRIx64 "\n",
--                             i, env->vfp.zregs[i].d[3], env->vfp.zregs[i].d[2],
--                             env->vfp.zregs[i].d[1], env->vfp.zregs[i].d[0]);
-+                g_string_append_printf(buf, "Z%02d=%016" PRIx64 ":%016" PRIx64
-+                                       ":%016" PRIx64 ":%016" PRIx64 "\n",
-+                                       i, env->vfp.zregs[i].d[3],
-+                                       env->vfp.zregs[i].d[2],
-+                                       env->vfp.zregs[i].d[1],
-+                                       env->vfp.zregs[i].d[0]);
-             } else {
-                 for (j = zcr_len; j >= 0; j--) {
-                     bool odd = (zcr_len - j) % 2 != 0;
-                     if (j == zcr_len) {
--                        qemu_fprintf(f, "Z%02d[%x-%x]=", i, j, j - 1);
-+                        g_string_append_printf(buf, "Z%02d[%x-%x]=",
-+                                               i, j, j - 1);
-                     } else if (!odd) {
-                         if (j > 0) {
--                            qemu_fprintf(f, "   [%x-%x]=", j, j - 1);
-+                            g_string_append_printf(buf, "   [%x-%x]=",
-+                                                   j, j - 1);
-                         } else {
--                            qemu_fprintf(f, "     [%x]=", j);
-+                            g_string_append_printf(buf, "     [%x]=", j);
-                         }
-                     }
--                    qemu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
--                                 env->vfp.zregs[i].d[j * 2 + 1],
--                                 env->vfp.zregs[i].d[j * 2],
--                                 odd || j == 0 ? "\n" : ":");
-+                    g_string_append_printf(buf,
-+                                           "%016" PRIx64 ":%016" PRIx64 "%s",
-+                                           env->vfp.zregs[i].d[j * 2 + 1],
-+                                           env->vfp.zregs[i].d[j * 2],
-+                                           odd || j == 0 ? "\n" : ":");
-                 }
-             }
-         }
-     } else {
-         for (i = 0; i < 32; i++) {
-             uint64_t *q = aa64_vfp_qreg(env, i);
--            qemu_fprintf(f, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
--                         i, q[1], q[0], (i & 1 ? "\n" : " "));
-+            g_string_append_printf(buf, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
-+                                   i, q[1], q[0], (i & 1 ? "\n" : " "));
-         }
-     }
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index a84b753349..6098693186 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -3307,7 +3307,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
+     translator_loop(&cris_tr_ops, &dc.base, cs, tb, max_insns);
  }
  
- #else
- 
--static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+static inline void
-+aarch64_cpu_format_state(CPUState *cs, GString *buf, int flags)
+-void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags)
++void cris_cpu_format_state(CPUState *cs, GString *buf, int flags)
  {
-     g_assert_not_reached();
- }
- 
- #endif
- 
--static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+static void arm_cpu_format_state(CPUState *cs, GString *buf, int flags)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-     int i;
- 
-     if (is_a64(env)) {
--        aarch64_cpu_dump_state(cs, f, flags);
-+        aarch64_cpu_format_state(cs, buf, flags);
-         return;
+     CRISCPU *cpu = CRIS_CPU(cs);
+     CPUCRISState *env = &cpu->env;
+@@ -3326,40 +3326,41 @@ void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+         regnames = regnames_v32;
      }
+ 
+-    qemu_fprintf(f, "PC=%x CCS=%x btaken=%d btarget=%x\n"
+-                 "cc_op=%d cc_src=%d cc_dest=%d cc_result=%x cc_mask=%x\n",
+-                 env->pc, env->pregs[PR_CCS], env->btaken, env->btarget,
+-                 env->cc_op,
+-                 env->cc_src, env->cc_dest, env->cc_result, env->cc_mask);
++    g_string_append_printf(buf, "PC=%x CCS=%x btaken=%d btarget=%x\n"
++                           "cc_op=%d cc_src=%d cc_dest=%d cc_result=%x "
++                           "cc_mask=%x\n",
++                           env->pc, env->pregs[PR_CCS], env->btaken,
++                           env->btarget, env->cc_op, env->cc_src,
++                           env->cc_dest, env->cc_result, env->cc_mask);
+ 
  
      for (i = 0; i < 16; i++) {
--        qemu_fprintf(f, "R%02d=%08x", i, env->regs[i]);
-+        g_string_append_printf(buf, "R%02d=%08x", i, env->regs[i]);
-         if ((i % 4) == 3) {
+-        qemu_fprintf(f, "%s=%8.8x ", regnames[i], env->regs[i]);
++        g_string_append_printf(buf, "%s=%8.8x ", regnames[i], env->regs[i]);
+         if ((i + 1) % 4 == 0) {
 -            qemu_fprintf(f, "\n");
 +            g_string_append_printf(buf, "\n");
-         } else {
--            qemu_fprintf(f, " ");
-+            g_string_append_printf(buf, " ");
          }
      }
- 
-@@ -973,15 +982,15 @@ static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+-    qemu_fprintf(f, "\nspecial regs:\n");
++    g_string_append_printf(buf, "\nspecial regs:\n");
+     for (i = 0; i < 16; i++) {
+-        qemu_fprintf(f, "%s=%8.8x ", pregnames[i], env->pregs[i]);
++        g_string_append_printf(buf, "%s=%8.8x ", pregnames[i], env->pregs[i]);
+         if ((i + 1) % 4 == 0) {
+-            qemu_fprintf(f, "\n");
++            g_string_append_printf(buf, "\n");
+         }
+     }
+     if (env->pregs[PR_VR] >= 32) {
+         uint32_t srs = env->pregs[PR_SRS];
+-        qemu_fprintf(f, "\nsupport function regs bank %x:\n", srs);
++        g_string_append_printf(buf, "\nsupport function regs bank %x:\n", srs);
+         if (srs < ARRAY_SIZE(env->sregs)) {
+             for (i = 0; i < 16; i++) {
+-                qemu_fprintf(f, "s%2.2d=%8.8x ",
+-                             i, env->sregs[srs][i]);
++                g_string_append_printf(buf, "s%2.2d=%8.8x ",
++                                       i, env->sregs[srs][i]);
+                 if ((i + 1) % 4 == 0) {
+-                    qemu_fprintf(f, "\n");
++                    g_string_append_printf(buf, "\n");
+                 }
              }
          }
- 
--        qemu_fprintf(f, "XPSR=%08x %c%c%c%c %c %s%s\n",
--                     xpsr,
--                     xpsr & XPSR_N ? 'N' : '-',
--                     xpsr & XPSR_Z ? 'Z' : '-',
--                     xpsr & XPSR_C ? 'C' : '-',
--                     xpsr & XPSR_V ? 'V' : '-',
--                     xpsr & XPSR_T ? 'T' : 'A',
--                     ns_status,
--                     mode);
-+        g_string_append_printf(buf, "XPSR=%08x %c%c%c%c %c %s%s\n",
-+                               xpsr,
-+                               xpsr & XPSR_N ? 'N' : '-',
-+                               xpsr & XPSR_Z ? 'Z' : '-',
-+                               xpsr & XPSR_C ? 'C' : '-',
-+                               xpsr & XPSR_V ? 'V' : '-',
-+                               xpsr & XPSR_T ? 'T' : 'A',
-+                               ns_status,
-+                               mode);
-     } else {
-         uint32_t psr = cpsr_read(env);
-         const char *ns_status = "";
-@@ -991,15 +1000,15 @@ static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-             ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-         }
- 
--        qemu_fprintf(f, "PSR=%08x %c%c%c%c %c %s%s%d\n",
--                     psr,
--                     psr & CPSR_N ? 'N' : '-',
--                     psr & CPSR_Z ? 'Z' : '-',
--                     psr & CPSR_C ? 'C' : '-',
--                     psr & CPSR_V ? 'V' : '-',
--                     psr & CPSR_T ? 'T' : 'A',
--                     ns_status,
--                     aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
-+        g_string_append_printf(buf, "PSR=%08x %c%c%c%c %c %s%s%d\n",
-+                               psr,
-+                               psr & CPSR_N ? 'N' : '-',
-+                               psr & CPSR_Z ? 'Z' : '-',
-+                               psr & CPSR_C ? 'C' : '-',
-+                               psr & CPSR_V ? 'V' : '-',
-+                               psr & CPSR_T ? 'T' : 'A',
-+                               ns_status,
-+                               aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
      }
+-    qemu_fprintf(f, "\n\n");
++    g_string_append_printf(buf, "\n\n");
  
-     if (flags & CPU_DUMP_FPU) {
-@@ -1011,14 +1020,15 @@ static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-         }
-         for (i = 0; i < numvfpregs; i++) {
-             uint64_t v = *aa32_vfp_dreg(env, i);
--            qemu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
--                         i * 2, (uint32_t)v,
--                         i * 2 + 1, (uint32_t)(v >> 32),
--                         i, v);
-+            g_string_append_printf(buf, "s%02d=%08x s%02d=%08x d%02d=%016"
-+                                   PRIx64 "\n",
-+                                   i * 2, (uint32_t)v,
-+                                   i * 2 + 1, (uint32_t)(v >> 32),
-+                                   i, v);
-         }
--        qemu_fprintf(f, "FPSCR: %08x\n", vfp_get_fpscr(env));
-+        g_string_append_printf(buf, "FPSCR: %08x\n", vfp_get_fpscr(env));
-         if (cpu_isar_feature(aa32_mve, cpu)) {
--            qemu_fprintf(f, "VPR: %08x\n", env->v7m.vpr);
-+            g_string_append_printf(buf, "VPR: %08x\n", env->v7m.vpr);
-         }
-     }
  }
-@@ -2039,7 +2049,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
  
-     cc->class_by_name = arm_cpu_class_by_name;
-     cc->has_work = arm_cpu_has_work;
--    cc->dump_state = arm_cpu_dump_state;
-+    cc->format_state = arm_cpu_format_state;
-     cc->set_pc = arm_cpu_set_pc;
-     cc->gdb_read_register = arm_cpu_gdb_read_register;
-     cc->gdb_write_register = arm_cpu_gdb_write_register;
 -- 
 2.31.1
 

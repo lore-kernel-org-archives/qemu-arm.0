@@ -1,86 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp772666lfp;
-        Tue, 14 Sep 2021 08:08:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwA5TT5jQ6uQnJBVhK//DAtiDYEbSNN5anYoH1Q4GZVixJ6fhgWq1Ub8r2SRpoErbN8MPWd
-X-Received: by 2002:a17:906:abd1:: with SMTP id kq17mr4845402ejb.390.1631632090446;
-        Tue, 14 Sep 2021 08:08:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631632090; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp773389lfp;
+        Tue, 14 Sep 2021 08:08:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2peTP2Cz6waCLoO4SCy/Uov0/wEiErkfr/R2paclFqoJK8S9jvSeiIPNc/DxhWC5znCzh
+X-Received: by 2002:a05:651c:1409:: with SMTP id u9mr15348231lje.429.1631632133507;
+        Tue, 14 Sep 2021 08:08:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631632133; cv=none;
         d=google.com; s=arc-20160816;
-        b=YxUyd1bW9qM+lpnlv/JEGucwe7zDEU1r3M6ZZfAdke6CK7WQ/AjQlEatZrKVeSgQgY
-         OSAuCEgWN5l/VIflOCS88kCg2h6IT2ft3lplNL0t5L2tAfG2/rBSd7o//MS/IpB6gCq0
-         uiR3SD/Xdy2RN3qt82XnQYLRCwJLFJ3AeLX8hCc1JPK+ke17beFTqNxWeYbcYW/b97VN
-         O/7BwGOO7CA3SB3jl4QS1PE8LfjLbKnUl4kOLHg6XwIKbRJ2b6huUE84G69KSrD7NwAZ
-         nC1cMTVOVUxPNN9EWa/PNI47qXmruNca3ZBw4DyPSwC6D79TcvEa+G96EYab2xdrkRHR
-         h55Q==
+        b=BC9LHJR880epPcIEgCWbypAbHsqSax80hLzm5GRZNcEEGLKgxY2ck7Vz6mYVCpBIY/
+         0zMt2Go1+fQpLanvUSmFFTNRHwalVz1Tm9UikpWHEfSfJHCo1sDxt1wyl4ZSoLbOm4ZA
+         stYXh4EFId2DEwN++uszoBctIIAW69rcAeL2e/++stM1R2gShRZsTr8reO+a6UzG/K+A
+         6FjW0esoEGSo++YtAPE62hmXbSzPQvxWtiKbbZC3pTjyaj8D7tkseQ6VRB+m3Cr5JJdU
+         DhddLYwMdCmn6i+E+dHOxDIxoc0iLLsSYxV8K38MKm9sfhSkQLIx2rCVVdokftIH6UMy
+         H19A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=be82tQBLLAMQdwGA50YKu57XeGmPPD0+NHLXGjTgS5Q=;
-        b=aj2997lcmNSaRHOlbC3uyFCh7a9jrtaA4SLRhIsEYanuS09C4nawbrgaavkQU8Ms2f
-         wxv4YUzdmolP9cc/QnYe+B+05UyWEDFTyoQGuJPaa/vhFGJx0UmPBLSvjCzyHVqLXD+E
-         uyogeYOmFCSC6/G+gz+lrt+vDMruoAmPmJ+tjQNfd/l4aXAsa8tk6qhnzaUPs1e1khbb
-         jv6O4dDmPrAVddcsBswcVB9NtyquubGkcfYzkps0ekMjV+y+FIx81CPB2fPABc1Hc5dE
-         eABek7UakSOXofoWtiQLu+2uWOyCpuZAZCSCL8QAgK3v4A5iGoD2gPHC74IFa2ZJD98j
-         KVLw==
+        bh=u/Q+2lydTjqVkGI5GLlhCmIjg5hJJ1z7UABw+pOKrT4=;
+        b=w7eznZ1gb9GV7JWB4zNC/9yQtB2dk4l8u5LwxK1Vxnfq/sDmgTgpxbi33nYzZtEALu
+         SBhoR4hbNR1AgcdA2qaElKHXIecwkv/MQ+ZwBWoHWK0VgEex2cDQwwK9AnplwoipEhdP
+         zEqbJbKCgZuEi//4XGc3snMUs70d9qFtVymVr9UNptcUUNyVWkQ8zVIe2VNtDZM7wYuF
+         jaUj0G6cYlc61MutYj8g5MlYHocs25Ic8OM1EEbTGzOO0wRNQc+2Qkym9Yl0s1gImK8H
+         ZZn4aLRe27m5iE0wuvUMKa0Spvi61BUN67XhJLabHR17JHMPdwNPQkucjI2UP0JGdvSQ
+         BnDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UqqmLbtP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YHAlNcwJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si10140566edq.513.2021.09.14.08.08.10
+        by mx.google.com with ESMTPS id 6si53731eje.339.2021.09.14.08.08.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:08:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 08:08:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UqqmLbtP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YHAlNcwJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53692 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54882 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQA2b-0004FC-Ie
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:08:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39282)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQA3I-00057s-Fv
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:08:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Rx-0006SE-Sg
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:30:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37512)
+ id 1mQ9VN-0002CN-7H
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:33:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38642)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Rw-0001Dc-4T
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:30:17 -0400
+ id 1mQ9VK-0003jZ-WD
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:33:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629815;
+ s=mimecast20190719; t=1631630026;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=be82tQBLLAMQdwGA50YKu57XeGmPPD0+NHLXGjTgS5Q=;
- b=UqqmLbtPmig4vqO+SU6KjnKMm8ZnxDXKqY4yDxNJPro55oeBpKhcbSwzPjzkfg5Ta9/aZL
- g+8rAQRxe3JaDoo+CItHhqJOtDZ4UeqEcZZEAfSyUpc/72GHN39RiJJFt3p2Wne297i1XK
- 7oV6DRa665hRUNLMNgiCLzNOim8mlEQ=
+ bh=u/Q+2lydTjqVkGI5GLlhCmIjg5hJJ1z7UABw+pOKrT4=;
+ b=YHAlNcwJVDVZDgn4VnBffEMWIB3EidlC0T9ZrxpPk3syJgdDI8+E9oIckaHM4e5A4Cj5zA
+ V+Rot/YN6VdjiYHTHMMqV9/Zp+lvj0Gwrlx45wL/oNVkPd5UoMHxxgSD5pQ3YagzFaGhXB
+ nHy5/GVQ2lNBC9UooYBjgjH9yNqUv/o=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-297-FJ_PELA1Nk-yPfAkS6bYFA-1; Tue, 14 Sep 2021 10:30:14 -0400
-X-MC-Unique: FJ_PELA1Nk-yPfAkS6bYFA-1
+ us-mta-398-0fHfBnnePW2Lz4Wnvbn9wg-1; Tue, 14 Sep 2021 10:33:44 -0400
+X-MC-Unique: 0fHfBnnePW2Lz4Wnvbn9wg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8B256835DEE;
- Tue, 14 Sep 2021 14:30:09 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 375C51808304;
+ Tue, 14 Sep 2021 14:33:41 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AB02B5D9DC;
- Tue, 14 Sep 2021 14:29:59 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 41C175D9CA;
+ Tue, 14 Sep 2021 14:33:26 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 28/53] monitor: remove 'info ioapic' HMP command
-Date: Tue, 14 Sep 2021 15:20:17 +0100
-Message-Id: <20210914142042.1655100-29-berrange@redhat.com>
+Subject: [PATCH v2 43/53] target/i386: convert to use format_tlb callback
+Date: Tue, 14 Sep 2021 15:20:32 +0100
+Message-Id: <20210914142042.1655100-44-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -91,7 +91,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -99,31 +99,29 @@ X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -139,79 +137,268 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bBZ5Z2Tx4Z1u
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: M5eqhl+JmcV4
 
-This command was turned into a no-op four years ago in
-
-  commit 0c8465440d50c18a7bb13d0a866748f0593e193a
-  Author: Peter Xu <peterx@redhat.com>
-  Date:   Fri Dec 29 15:31:04 2017 +0800
-
-    hmp: obsolete "info ioapic"
+Change the "info tlb" implementation to use the format_tlb callback.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hmp-commands-info.hx         | 15 ---------------
- include/monitor/hmp-target.h |  1 -
- target/i386/monitor.c        |  6 ------
- 3 files changed, 22 deletions(-)
+ target/i386/cpu.c     |   3 ++
+ target/i386/cpu.h     |   1 +
+ target/i386/monitor.c | 107 +++++++++++++++++++++++-------------------
+ 3 files changed, 63 insertions(+), 48 deletions(-)
 
-diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
-index 27206ac049..f8312342cd 100644
---- a/hmp-commands-info.hx
-+++ b/hmp-commands-info.hx
-@@ -127,21 +127,6 @@ SRST
-     Show local APIC state
- ERST
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 0a5c6a6d19..ab86224ee2 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -6765,6 +6765,9 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+     cc->parse_features = x86_cpu_parse_featurestr;
+     cc->has_work = x86_cpu_has_work;
+     cc->format_state = x86_cpu_format_state;
++#ifndef CONFIG_USER_ONLY
++    cc->format_tlb = x86_cpu_format_tlb;
++#endif
+     cc->set_pc = x86_cpu_set_pc;
+     cc->gdb_read_register = x86_cpu_gdb_read_register;
+     cc->gdb_write_register = x86_cpu_gdb_write_register;
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 2bcb175da8..d61eeef617 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -1826,6 +1826,7 @@ void x86_cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
+                                 Error **errp);
  
--#if defined(TARGET_I386)
--    {
--        .name       = "ioapic",
--        .args_type  = "",
--        .params     = "",
--        .help       = "show io apic state",
--        .cmd        = hmp_info_io_apic,
--    },
--#endif
--
--SRST
--  ``info ioapic``
--    Show io APIC state
--ERST
--
-     {
-         .name       = "cpus",
-         .args_type  = "",
-diff --git a/include/monitor/hmp-target.h b/include/monitor/hmp-target.h
-index 60fc92722a..df79ad3355 100644
---- a/include/monitor/hmp-target.h
-+++ b/include/monitor/hmp-target.h
-@@ -48,6 +48,5 @@ void hmp_info_mem(Monitor *mon, const QDict *qdict);
- void hmp_info_tlb(Monitor *mon, const QDict *qdict);
- void hmp_mce(Monitor *mon, const QDict *qdict);
- void hmp_info_local_apic(Monitor *mon, const QDict *qdict);
--void hmp_info_io_apic(Monitor *mon, const QDict *qdict);
+ void x86_cpu_format_state(CPUState *cs, GString *buf, int flags);
++void x86_cpu_format_tlb(CPUState *cpu, GString *buf);
  
- #endif /* MONITOR_HMP_TARGET_H */
+ hwaddr x86_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+                                          MemTxAttrs *attrs);
 diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-index 119211f0b0..19468c4e85 100644
+index fc09f90059..698fbbc80b 100644
 --- a/target/i386/monitor.c
 +++ b/target/i386/monitor.c
-@@ -669,12 +669,6 @@ void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
-     x86_cpu_dump_local_apic_state(cs, CPU_DUMP_FPU);
+@@ -54,27 +54,27 @@ static hwaddr addr_canonical(CPUArchState *env, hwaddr addr)
+     return addr;
  }
  
--void hmp_info_io_apic(Monitor *mon, const QDict *qdict)
--{
--    monitor_printf(mon, "This command is obsolete and will be "
--                   "removed soon. Please use 'info pic' instead.\n");
--}
--
- SevInfo *qmp_query_sev(Error **errp)
+-static void print_pte(Monitor *mon, CPUArchState *env, hwaddr addr,
+-                      hwaddr pte, hwaddr mask)
++static void format_pte(GString *buf, CPUArchState *env, hwaddr addr,
++                       hwaddr pte, hwaddr mask)
  {
-     SevInfo *info;
+     addr = addr_canonical(env, addr);
+ 
+-    monitor_printf(mon, TARGET_FMT_plx ": " TARGET_FMT_plx
+-                   " %c%c%c%c%c%c%c%c%c\n",
+-                   addr,
+-                   pte & mask,
+-                   pte & PG_NX_MASK ? 'X' : '-',
+-                   pte & PG_GLOBAL_MASK ? 'G' : '-',
+-                   pte & PG_PSE_MASK ? 'P' : '-',
+-                   pte & PG_DIRTY_MASK ? 'D' : '-',
+-                   pte & PG_ACCESSED_MASK ? 'A' : '-',
+-                   pte & PG_PCD_MASK ? 'C' : '-',
+-                   pte & PG_PWT_MASK ? 'T' : '-',
+-                   pte & PG_USER_MASK ? 'U' : '-',
+-                   pte & PG_RW_MASK ? 'W' : '-');
++    g_string_append_printf(buf, TARGET_FMT_plx ": " TARGET_FMT_plx
++                           " %c%c%c%c%c%c%c%c%c\n",
++                           addr,
++                           pte & mask,
++                           pte & PG_NX_MASK ? 'X' : '-',
++                           pte & PG_GLOBAL_MASK ? 'G' : '-',
++                           pte & PG_PSE_MASK ? 'P' : '-',
++                           pte & PG_DIRTY_MASK ? 'D' : '-',
++                           pte & PG_ACCESSED_MASK ? 'A' : '-',
++                           pte & PG_PCD_MASK ? 'C' : '-',
++                           pte & PG_PWT_MASK ? 'T' : '-',
++                           pte & PG_USER_MASK ? 'U' : '-',
++                           pte & PG_RW_MASK ? 'W' : '-');
+ }
+ 
+-static void tlb_info_32(Monitor *mon, CPUArchState *env)
++static void tlb_info_32(GString *buf, CPUArchState *env)
+ {
+     unsigned int l1, l2;
+     uint32_t pgd, pde, pte;
+@@ -86,15 +86,15 @@ static void tlb_info_32(Monitor *mon, CPUArchState *env)
+         if (pde & PG_PRESENT_MASK) {
+             if ((pde & PG_PSE_MASK) && (env->cr[4] & CR4_PSE_MASK)) {
+                 /* 4M pages */
+-                print_pte(mon, env, (l1 << 22), pde, ~((1 << 21) - 1));
++                format_pte(buf, env, (l1 << 22), pde, ~((1 << 21) - 1));
+             } else {
+                 for(l2 = 0; l2 < 1024; l2++) {
+                     cpu_physical_memory_read((pde & ~0xfff) + l2 * 4, &pte, 4);
+                     pte = le32_to_cpu(pte);
+                     if (pte & PG_PRESENT_MASK) {
+-                        print_pte(mon, env, (l1 << 22) + (l2 << 12),
+-                                  pte & ~PG_PSE_MASK,
+-                                  ~0xfff);
++                        format_pte(buf, env, (l1 << 22) + (l2 << 12),
++                                   pte & ~PG_PSE_MASK,
++                                   ~0xfff);
+                     }
+                 }
+             }
+@@ -102,7 +102,7 @@ static void tlb_info_32(Monitor *mon, CPUArchState *env)
+     }
+ }
+ 
+-static void tlb_info_pae32(Monitor *mon, CPUArchState *env)
++static void tlb_info_pae32(GString *buf, CPUArchState *env)
+ {
+     unsigned int l1, l2, l3;
+     uint64_t pdpe, pde, pte;
+@@ -120,18 +120,18 @@ static void tlb_info_pae32(Monitor *mon, CPUArchState *env)
+                 if (pde & PG_PRESENT_MASK) {
+                     if (pde & PG_PSE_MASK) {
+                         /* 2M pages with PAE, CR4.PSE is ignored */
+-                        print_pte(mon, env, (l1 << 30) + (l2 << 21), pde,
+-                                  ~((hwaddr)(1 << 20) - 1));
++                        format_pte(buf, env, (l1 << 30) + (l2 << 21), pde,
++                                   ~((hwaddr)(1 << 20) - 1));
+                     } else {
+                         pt_addr = pde & 0x3fffffffff000ULL;
+                         for (l3 = 0; l3 < 512; l3++) {
+                             cpu_physical_memory_read(pt_addr + l3 * 8, &pte, 8);
+                             pte = le64_to_cpu(pte);
+                             if (pte & PG_PRESENT_MASK) {
+-                                print_pte(mon, env, (l1 << 30) + (l2 << 21)
+-                                          + (l3 << 12),
+-                                          pte & ~PG_PSE_MASK,
+-                                          ~(hwaddr)0xfff);
++                                format_pte(buf, env, (l1 << 30) + (l2 << 21)
++                                           + (l3 << 12),
++                                           pte & ~PG_PSE_MASK,
++                                           ~(hwaddr)0xfff);
+                             }
+                         }
+                     }
+@@ -142,7 +142,7 @@ static void tlb_info_pae32(Monitor *mon, CPUArchState *env)
+ }
+ 
+ #ifdef TARGET_X86_64
+-static void tlb_info_la48(Monitor *mon, CPUArchState *env,
++static void tlb_info_la48(GString *buf, CPUArchState *env,
+         uint64_t l0, uint64_t pml4_addr)
+ {
+     uint64_t l1, l2, l3, l4;
+@@ -166,8 +166,8 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
+ 
+             if (pdpe & PG_PSE_MASK) {
+                 /* 1G pages, CR4.PSE is ignored */
+-                print_pte(mon, env, (l0 << 48) + (l1 << 39) + (l2 << 30),
+-                        pdpe, 0x3ffffc0000000ULL);
++                format_pte(buf, env, (l0 << 48) + (l1 << 39) + (l2 << 30),
++                           pdpe, 0x3ffffc0000000ULL);
+                 continue;
+             }
+ 
+@@ -181,8 +181,8 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
+ 
+                 if (pde & PG_PSE_MASK) {
+                     /* 2M pages, CR4.PSE is ignored */
+-                    print_pte(mon, env, (l0 << 48) + (l1 << 39) + (l2 << 30) +
+-                            (l3 << 21), pde, 0x3ffffffe00000ULL);
++                    format_pte(buf, env, (l0 << 48) + (l1 << 39) + (l2 << 30) +
++                               (l3 << 21), pde, 0x3ffffffe00000ULL);
+                     continue;
+                 }
+ 
+@@ -193,9 +193,9 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
+                             &pte, 8);
+                     pte = le64_to_cpu(pte);
+                     if (pte & PG_PRESENT_MASK) {
+-                        print_pte(mon, env, (l0 << 48) + (l1 << 39) +
+-                                (l2 << 30) + (l3 << 21) + (l4 << 12),
+-                                pte & ~PG_PSE_MASK, 0x3fffffffff000ULL);
++                        format_pte(buf, env, (l0 << 48) + (l1 << 39) +
++                                   (l2 << 30) + (l3 << 21) + (l4 << 12),
++                                   pte & ~PG_PSE_MASK, 0x3fffffffff000ULL);
+                     }
+                 }
+             }
+@@ -203,7 +203,7 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
+     }
+ }
+ 
+-static void tlb_info_la57(Monitor *mon, CPUArchState *env)
++static void tlb_info_la57(GString *buf, CPUArchState *env)
+ {
+     uint64_t l0;
+     uint64_t pml5e;
+@@ -214,44 +214,55 @@ static void tlb_info_la57(Monitor *mon, CPUArchState *env)
+         cpu_physical_memory_read(pml5_addr + l0 * 8, &pml5e, 8);
+         pml5e = le64_to_cpu(pml5e);
+         if (pml5e & PG_PRESENT_MASK) {
+-            tlb_info_la48(mon, env, l0, pml5e & 0x3fffffffff000ULL);
++            tlb_info_la48(buf, env, l0, pml5e & 0x3fffffffff000ULL);
+         }
+     }
+ }
+ #endif /* TARGET_X86_64 */
+ 
+-void hmp_info_tlb(Monitor *mon, const QDict *qdict)
++void x86_cpu_format_tlb(CPUState *cpu, GString *buf)
+ {
+     CPUArchState *env;
+ 
+-    env = mon_get_cpu_env(mon);
+-    if (!env) {
+-        monitor_printf(mon, "No CPU available\n");
+-        return;
+-    }
++    env = cpu->env_ptr;
+ 
+     if (!(env->cr[0] & CR0_PG_MASK)) {
+-        monitor_printf(mon, "PG disabled\n");
++        g_string_append_printf(buf, "PG disabled\n");
+         return;
+     }
+     if (env->cr[4] & CR4_PAE_MASK) {
+ #ifdef TARGET_X86_64
+         if (env->hflags & HF_LMA_MASK) {
+             if (env->cr[4] & CR4_LA57_MASK) {
+-                tlb_info_la57(mon, env);
++                tlb_info_la57(buf, env);
+             } else {
+-                tlb_info_la48(mon, env, 0, env->cr[3] & 0x3fffffffff000ULL);
++                tlb_info_la48(buf, env, 0, env->cr[3] & 0x3fffffffff000ULL);
+             }
+         } else
+ #endif
+         {
+-            tlb_info_pae32(mon, env);
++            tlb_info_pae32(buf, env);
+         }
+     } else {
+-        tlb_info_32(mon, env);
++        tlb_info_32(buf, env);
+     }
+ }
+ 
++void hmp_info_tlb(Monitor *mon, const QDict *qdict)
++{
++    g_autoptr(GString) buf = g_string_new("");
++    CPUState *cpu = mon_get_cpu(mon);
++
++    if (!cpu) {
++        monitor_printf(mon, "No CPU available\n");
++        return;
++    }
++
++    cpu_format_tlb(cpu, buf);
++
++    monitor_printf(mon, "%s", buf->str);
++}
++
+ static void mem_print(Monitor *mon, CPUArchState *env,
+                       hwaddr *pstart, int *plast_prot,
+                       hwaddr end, int prot)
 -- 
 2.31.1
 

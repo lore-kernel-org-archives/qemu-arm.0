@@ -1,285 +1,194 @@
-Received: by 2002:a19:5205:0:0:0:0:0 with SMTP id m5csp3845877lfb;
-        Mon, 13 Sep 2021 09:46:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyizgK5kCEEiE0L0AKh3SO0maITV6VOZqhmHwO0idLnLyXJkX/4Go6OESUwZENMChgVlUj
-X-Received: by 2002:a05:6102:3107:: with SMTP id e7mr6020498vsh.60.1631551587469;
-        Mon, 13 Sep 2021 09:46:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631551587; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp851101lfp;
+        Tue, 14 Sep 2021 09:37:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyLryHxpuv7RgHMPVGEc06ETOInMXLl8SeBu1bphzWCsZRhSxTybB2t9KlqU6PY8RrOx9xV
+X-Received: by 2002:a05:6000:1569:: with SMTP id 9mr23131wrz.343.1631637457085;
+        Tue, 14 Sep 2021 09:37:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631637457; cv=none;
         d=google.com; s=arc-20160816;
-        b=GLe9r5kOn5RmWLrTsYsLQO2HMdID+DUdquWO/mJ6GH081xQiNTh1mk99SukYkNnN88
-         FB11oPmhcNwV335bwGpMjOTzv8VGyH+vHOIwNXAREQrpBnFhomxQl6dwcdN9U4uPMTyK
-         GSGgmnvfnqjhbz4Bi2gAuK5AqqNltwldTPrN0PA6AFvS0fDI49oM2aHeL+UX56AkCmtY
-         186xLkRBv32DCj8ok7G3hj42qkwWTAA6UeEG1e8UdKDLJPK1TcJ2WpjjQsT3rEYHDcrq
-         0vcv8PgFEBpaLGcvmkeDNckBLJOgiMUYwD8FFFp1hx0HDhVrappcDsWkULITbs20csB8
-         flJg==
+        b=yUvBVouab54/ApdH1ZqOXBNDdmn62vPbZ1pmZv+atdE2XhI+EZU9FcGUwnQqntDGGq
+         GwcbVpLGO7/rL1LQnTNtIQJr/qKQRuHDFgsHBjsm/ATqt3TmuRvyWQjURP6fFha+E2zK
+         yo59kR9nvkt5r/iK0pU9PgYKplsM3fwaoPZP/r6VGLgfbk0TlaH6lhZ+j4IqNor8NS6N
+         yL0JGApePrC/Ldsiq2on7vpC6t07keDb0TvLUVKaLNnlJTGksCe9L1dbEEdXRCugAd/I
+         bP2g81RvrFYruO1LUqjA9QpSYKH33p6kxMFm2VgkVofAETnzV+1bgwCWa59eERkJuZHN
+         jbNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=dlioO2qDOTdgXyyxg2qo2UY4WuNHhoc3m+vqMgBeqnc=;
-        b=vLs5DdYCk9Kw4q2cDkAbXZvYz+JMJuBbKoB+0WuhjFxXSdnxKmzO2Nmr9zz+JUuQxR
-         id5601G4D22VA+NvCm9H6FEUnRO+LLmyUbqjotxK69HKIM9rlQ8el+8Qt3L+iUECeAhV
-         bvOgt9eKpd3dtKGy4GpTrr0Vl5KGuS7sqgmhX6AbJKpQvfOEk59btIs/QwMxOXc1c+MZ
-         35EAol0B8sZtBXuUT6J1bowY6WOXizJ/PVLUSeEi9UTFnxfEHV4Tyon5O+X0J9QZMNXy
-         SMHwGok1swlKeaP3hWAZFI3C8t8y9YqR2z0n0zDsixWATj0skMXCNQyjAIABW+XD3Elm
-         6gWw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=uB/IOM9wvm06euCcwdkC6N9/8Q6PIHGVDPykNlmmfIQ=;
+        b=HKiUmFais5GTBkhKFgd614Cg5Vq2W8PXGkhhrPRhz6osM5Na96qbURDfwrgnn5eEYe
+         UaCwt9XJiwThBghUKxz4Qm1sFqZEKLIY1MIo6oOazzGl4vkzfgSjQHHax1oAKh5b//JM
+         oY+XoxFXi57RRUR3X+nTncNSk8Gro7c4S/YZth0OF9JvaGUaSUK0xIlVQ08uVgKaCNVU
+         VQ44NKRUQebkqQjTH/3O59FBteNqgHgPjz/tsMr9KvPpQtKMan4saWSKjb++XeC5dhqb
+         Jn5DHKZM3DQWv++Mejp8ScVZ6ekJX8irI9lNkglextIfOhYZXYDzDmB4bUXNdFbVcOQm
+         uIng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx5L3kVD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11si2127123uaj.208.2021.09.13.09.46.27
+        by mx.google.com with ESMTPS id f4si4051250wri.569.2021.09.14.09.37.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Sep 2021 09:46:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 09:37:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48364 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx5L3kVD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41980 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mPp6A-0004qb-PL
-	for alex.bennee@linaro.org; Mon, 13 Sep 2021 12:46:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33400)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQBRA-0001cm-6s
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 12:37:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoaC-0003yN-4X; Mon, 13 Sep 2021 12:13:25 -0400
-Received: from smtpout2.3005.mail-out.ovh.net ([46.105.54.81]:59581)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQBPF-0008MW-Ix
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 12:35:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31465)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mPoa6-0000jI-CW; Mon, 13 Sep 2021 12:13:23 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.59])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id CF7B113ECDB;
- Mon, 13 Sep 2021 16:13:13 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 13 Sep
- 2021 18:13:13 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00163a325ea-d000-43ea-9b69-9c1890ba8b3b,
- 7CA125ACC991A0BE3D2311CBE60F5A293341D68C) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 09/14] aspeed: Emulate the AST2600A3
-Date: Mon, 13 Sep 2021 18:12:59 +0200
-Message-ID: <20210913161304.3805652-10-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210913161304.3805652-1-clg@kaod.org>
-References: <20210913161304.3805652-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQBPC-0007jV-Vc
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 12:35:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631637333;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uB/IOM9wvm06euCcwdkC6N9/8Q6PIHGVDPykNlmmfIQ=;
+ b=Vx5L3kVDEzqs8z7rBdiW/twNsEix6GNuRZBhuPOn4aajT4lP25HHh4OuugRxo2NSJePEu5
+ w0NDVuLoH7kXC0cfs5YEnVeeHiPOlRNAzOMUhK593BxHvsW0LibZ1yX/TDgj0GpENwVU+f
+ KIfhMZI5piznmiDl9/Ymv54W2RRLdTk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-564-tGaUdgfPPR61IwJzSKKHAQ-1; Tue, 14 Sep 2021 12:35:30 -0400
+X-MC-Unique: tGaUdgfPPR61IwJzSKKHAQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5B5F9104FC26;
+ Tue, 14 Sep 2021 16:35:10 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.193.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D2205DF2F;
+ Tue, 14 Sep 2021 16:34:27 +0000 (UTC)
+Date: Tue, 14 Sep 2021 17:34:24 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 42/53] hw/core: introduce a 'format_tlb' callback
+Message-ID: <YUDPECQJraD3thwi@redhat.com>
+References: <20210914142042.1655100-1-berrange@redhat.com>
+ <20210914142042.1655100-43-berrange@redhat.com>
+ <818d439f-337e-a73c-9e22-fbf8a119435f@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <818d439f-337e-a73c-9e22-fbf8a119435f@redhat.com>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 8127f81f-9b8b-44f0-a8c0-20627082b4a2
-X-Ovh-Tracer-Id: 8689976958309141286
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegjedgleehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout2.3005.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kK+9t+iPwE8c
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Taylor Simpson <tsimpson@quicinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6UISRA5Vg6Kl
 
-From: Joel Stanley <joel@jms.id.au>
+On Tue, Sep 14, 2021 at 05:56:09PM +0200, Philippe Mathieu-Daudé wrote:
+> On 9/14/21 4:20 PM, Daniel P. Berrangé wrote:
+> > This will allow us to reduce duplication between the different targets
+> > implementing the 'info tlb' command.
+> > 
+> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> > ---
+> >  hw/core/cpu-common.c  |  9 +++++++++
+> >  include/hw/core/cpu.h | 11 +++++++++++
+> >  2 files changed, 20 insertions(+)
+> 
+> > diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> > index 4c47e1df18..64fc57c8d9 100644
+> > --- a/include/hw/core/cpu.h
+> > +++ b/include/hw/core/cpu.h
+> >   * @has_work: Callback for checking if there is work to do.
+> >   * @memory_rw_debug: Callback for GDB memory access.
+> >   * @format_state: Callback for formatting state.
+> > + * @format_tlb: Callback for formatting memory mappings
+> >   * @get_arch_id: Callback for getting architecture-dependent CPU ID.
+> >   * @set_pc: Callback for setting the Program Counter register. This
+> >   *       should have the semantics used by the target architecture when
+> > @@ -136,6 +137,7 @@ struct CPUClass {
+> >      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+> >                             uint8_t *buf, int len, bool is_write);
+> >      void (*format_state)(CPUState *cpu, GString *buf, int flags);
+> > +    void (*format_tlb)(CPUState *cpu, GString *buf);
+> 
+> Doesn't this belong to SysemuCPUOps?
 
-This is the latest revision of the ASPEED 2600 SoC. As there is no
-need to model multiple revisions of the same SoC for the moment,
-update the SCU AST2600 to model the A3 revision instead of the A1 and
-adapt the AST2600 SoC and machines.
+I can't really answer, since my knowledge of this area of QEMU code is
+fairly mimimal. I put it here because it is basically serving the same
+purpose as the "format_state" callback immediately above it, which was
+a rename of the existing "dump_state" callback. I assumed whatever was
+there already was a good practice to follow[1]...
 
-Reset values are taken from v8 of the datasheet.
+Regards,
+Daniel
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-[ clg: - Introduced an Aspeed "ast2600-a3" SoC class
-       - Commit log update ]
-Message-Id: <20210629142336.750058-3-clg@kaod.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/misc/aspeed_scu.h |  2 ++
- hw/arm/aspeed.c              |  6 +++---
- hw/arm/aspeed_ast2600.c      |  6 +++---
- hw/misc/aspeed_scu.c         | 36 +++++++++++++++++++++++++++++-------
- 4 files changed, 37 insertions(+), 13 deletions(-)
-
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index d49bfb02fbdb..c14aff2bcbb5 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -43,6 +43,8 @@ struct AspeedSCUState {
- #define AST2500_A1_SILICON_REV   0x04010303U
- #define AST2600_A0_SILICON_REV   0x05000303U
- #define AST2600_A1_SILICON_REV   0x05010303U
-+#define AST2600_A2_SILICON_REV   0x05020303U
-+#define AST2600_A3_SILICON_REV   0x05030303U
- 
- #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
- 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 952fb2012a53..97964c7e0c53 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -997,7 +997,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->desc       = "Aspeed AST2600 EVB (Cortex-A7)";
--    amc->soc_name  = "ast2600-a1";
-+    amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
-     amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
-     amc->fmc_model = "w25q512jv";
-@@ -1017,7 +1017,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->desc       = "OpenPOWER Tacoma BMC (Cortex-A7)";
--    amc->soc_name  = "ast2600-a1";
-+    amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = TACOMA_BMC_HW_STRAP1;
-     amc->hw_strap2 = TACOMA_BMC_HW_STRAP2;
-     amc->fmc_model = "mx66l1g45g";
-@@ -1054,7 +1054,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->desc       = "IBM Rainier BMC (Cortex-A7)";
--    amc->soc_name  = "ast2600-a1";
-+    amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = RAINIER_BMC_HW_STRAP1;
-     amc->hw_strap2 = RAINIER_BMC_HW_STRAP2;
-     amc->fmc_model = "mx66l1g45g";
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index e3013128c670..8e1993790e6f 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -516,9 +516,9 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
- 
-     dc->realize      = aspeed_soc_ast2600_realize;
- 
--    sc->name         = "ast2600-a1";
-+    sc->name         = "ast2600-a3";
-     sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
--    sc->silicon_rev  = AST2600_A1_SILICON_REV;
-+    sc->silicon_rev  = AST2600_A3_SILICON_REV;
-     sc->sram_size    = 0x16400;
-     sc->spis_num     = 2;
-     sc->ehcis_num    = 2;
-@@ -530,7 +530,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
- }
- 
- static const TypeInfo aspeed_soc_ast2600_type_info = {
--    .name           = "ast2600-a1",
-+    .name           = "ast2600-a3",
-     .parent         = TYPE_ASPEED_SOC,
-     .instance_size  = sizeof(AspeedSoCState),
-     .instance_init  = aspeed_soc_ast2600_init,
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 40a38ebd8549..05edebedeb46 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -101,14 +101,24 @@
- #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
- #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
- #define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
-+#define AST2600_DEBUG_CTRL        TO_REG(0xC8)
-+#define AST2600_DEBUG_CTRL2       TO_REG(0xD8)
- #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
- #define AST2600_HPLL_PARAM        TO_REG(0x200)
- #define AST2600_HPLL_EXT          TO_REG(0x204)
-+#define AST2600_APLL_PARAM        TO_REG(0x210)
-+#define AST2600_APLL_EXT          TO_REG(0x214)
-+#define AST2600_MPLL_PARAM        TO_REG(0x220)
- #define AST2600_MPLL_EXT          TO_REG(0x224)
-+#define AST2600_EPLL_PARAM        TO_REG(0x240)
- #define AST2600_EPLL_EXT          TO_REG(0x244)
-+#define AST2600_DPLL_PARAM        TO_REG(0x260)
-+#define AST2600_DPLL_EXT          TO_REG(0x264)
- #define AST2600_CLK_SEL           TO_REG(0x300)
- #define AST2600_CLK_SEL2          TO_REG(0x304)
--#define AST2600_CLK_SEL3          TO_REG(0x310)
-+#define AST2600_CLK_SEL3          TO_REG(0x308)
-+#define AST2600_CLK_SEL4          TO_REG(0x310)
-+#define AST2600_CLK_SEL5          TO_REG(0x314)
- #define AST2600_HW_STRAP1         TO_REG(0x500)
- #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
- #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
-@@ -433,6 +443,8 @@ static uint32_t aspeed_silicon_revs[] = {
-     AST2500_A1_SILICON_REV,
-     AST2600_A0_SILICON_REV,
-     AST2600_A1_SILICON_REV,
-+    AST2600_A2_SILICON_REV,
-+    AST2600_A3_SILICON_REV,
- };
- 
- bool is_supported_silicon_rev(uint32_t silicon_rev)
-@@ -651,16 +663,26 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
-     .valid.unaligned = false,
- };
- 
--static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-+static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-     [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
--    [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
-+    [AST2600_SYS_RST_CTRL2]     = 0x0DFFFFFC,
-     [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
-     [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
-+    [AST2600_DEBUG_CTRL]        = 0x00000FFF,
-+    [AST2600_DEBUG_CTRL2]       = 0x000000FF,
-     [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
--    [AST2600_HPLL_PARAM]        = 0x1000405F,
-+    [AST2600_HPLL_PARAM]        = 0x1000408F,
-+    [AST2600_APLL_PARAM]        = 0x1000405F,
-+    [AST2600_MPLL_PARAM]        = 0x1008405F,
-+    [AST2600_EPLL_PARAM]        = 0x1004077F,
-+    [AST2600_DPLL_PARAM]        = 0x1078405F,
-+    [AST2600_CLK_SEL]           = 0xF3940000,
-+    [AST2600_CLK_SEL2]          = 0x00700000,
-+    [AST2600_CLK_SEL3]          = 0x00000000,
-+    [AST2600_CLK_SEL4]          = 0xF3F40000,
-+    [AST2600_CLK_SEL5]          = 0x30000000,
-     [AST2600_CHIP_ID0]          = 0x1234ABCD,
-     [AST2600_CHIP_ID1]          = 0x88884444,
--
- };
- 
- static void aspeed_ast2600_scu_reset(DeviceState *dev)
-@@ -675,7 +697,7 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev)
-      * of actual revision. QEMU and Linux only support A1 onwards so this is
-      * sufficient.
-      */
--    s->regs[AST2600_SILICON_REV] = AST2600_A1_SILICON_REV;
-+    s->regs[AST2600_SILICON_REV] = AST2600_A3_SILICON_REV;
-     s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
-     s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
-     s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
-@@ -689,7 +711,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
- 
-     dc->desc = "ASPEED 2600 System Control Unit";
-     dc->reset = aspeed_ast2600_scu_reset;
--    asc->resets = ast2600_a1_resets;
-+    asc->resets = ast2600_a3_resets;
-     asc->calc_hpll = aspeed_2500_scu_calc_hpll; /* No change since AST2500 */
-     asc->apb_divider = 4;
-     asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
+[1] yes assuming these things is often foolish in QEMU :-)
 -- 
-2.31.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

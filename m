@@ -1,86 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp735027lfp;
-        Tue, 14 Sep 2021 07:25:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3ynktqWyYApkiaXxNrIB2BGAFpUpnj+oOgJqjykhvg2VjUdCj/Kjq85g/6vZOiHe2WBO+
-X-Received: by 2002:a17:906:c0cd:: with SMTP id bn13mr19059752ejb.251.1631629545628;
-        Tue, 14 Sep 2021 07:25:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631629545; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp735401lfp;
+        Tue, 14 Sep 2021 07:26:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyyTS/sPDvW1Ko428x5XXvXQZoCN8FN0Duw0uYVAglYsKO6I+WjXXqjsjAl2Bu0ImbYhcQE
+X-Received: by 2002:a05:6402:2156:: with SMTP id bq22mr7264054edb.49.1631629574823;
+        Tue, 14 Sep 2021 07:26:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631629574; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMUhOHQpph5S1LMT8vcdXvk3db8aUVGlwKU0F16CWQbywO/1xQ2btq4UReBnyy4sCb
-         l0Mv7iye+szc+Xfv98O1NNHhtW0esikkVmI6EhdOo6xcAkZhvVGcF5cPl2Me8X1NWKi6
-         KHjJ9D0TxbbrYotwZxwZvC5AJnLPoWjQTo7OhHq0hRs4Rv+MI+NDKFOjFKPTTTZ0xtCc
-         aSViV8LXtMAwJOclwxBfL6PxmS/U8aOqZUNW8HPwKu0O/tLGmaqleGkfKpjPdxCLLn64
-         jWGEYZHZIof7bOFSUlrpoyDg+dnqbaoxDIz75BMRcpqhxYDZ5EVOl2IS8Ov4Y3vEGJML
-         1ZOQ==
+        b=i/ZMBJOibcvo2JqoZdbqHMobBOIWF42jPo7IntE/M4UVCQ1OXZ5G+3j34ezVD623Vc
+         Bi0goW9FV0PHOr34Pycc6KDjcgnl6uH8vp60Kcn4f6I8RV6RKJnMCJBCvMcaLX32uQd8
+         DpfCoDHsJ6sDmvbykp2V30HQkDU9LF/WkW5GdhUbPCaWUVlYgzzmhJ8GLgNjxpXyF95Y
+         Fo4BDweUXYjxjl0WV9BAlgqw0fTXDWzhNo5ebnT0B6NyDZNEJFrz9XVBhdgfwGVQ3flG
+         f0o5vdR3BGc7aCqWfbyJLG9XQ/tn4MntFUlCwOO7rvZd93QH8d8EtNcrM8dd0NhFDrjw
+         sTkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=S4mcFixgI8QWYygoX/mbTsK3lsPq8Q1IHo4rS1KMgFE=;
-        b=Y6D3Xhjgi4Dycra92c/zb7grQHMJf3EaZmcY0SFrPd5g94vxrfE3extOLw9nWaQIw2
-         sU5Orne1AQHhPAHe8bKKTyZvhw6c9zbl+RwehSplTkKWG5b/NQ0D4CW8H9+F9gFlLrCS
-         XaV7ws5FfP+KosX/zkAvtHt96p7Unz/vyUvHBP1gYDAXg3FVAUZLnP/tf92595uTKQm9
-         alZTFDY63/3gAS5x/bI5sBVUgJUElaG2I1Ar29wCcgx7KBxyv74DhHaPpzOO6JQGqAQI
-         l4x1qD3p2dshTK3DryqGdQCpD/s2lr5nSQ6WvF8KYZaTt1qPHseAxMmmplT2il7XHjZ2
-         bGOQ==
+        bh=u06VPRO3ZTpziCI9V80Mt31DearKqRpMuaMoaazZMng=;
+        b=KqIDt1VsIsKwP7/w/u2G04/38dDStuFySw9cIwQRtihVltW5yZfz+BoZVT2dPu/abj
+         mwXtvVx668XOcXr7uSZOMwfVWjNyvDe0A6utMiqfk4A4VrTfeqiglQUBvlAHu7PbAUSg
+         GW+kOnxRTj5AQrP8263ya3ekTdJo3eSDthhKQ/TrFwAsxC7O4hy1iynXGe1TshiHwk9n
+         86Bizp3XiDxdDkbQzXgubWUP7FI8/IUXJdwn+uHwRaZ8gBQQ2FblhcNjSvDTI36dWJst
+         +iJMbkXWr4H0WN6L4l7jH6JS0cL6s1PWf4CfTWNl68FG8BspBdsro2QHVVyKz2lLz4Zr
+         VAdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WA8+DuDj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gPRKiAlM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hy4si9828020ejc.105.2021.09.14.07.25.45
+        by mx.google.com with ESMTPS id p14si9856878ejn.419.2021.09.14.07.26.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:25:45 -0700 (PDT)
+        Tue, 14 Sep 2021 07:26:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WA8+DuDj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gPRKiAlM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49878 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50274 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9NY-00077W-OX
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:25:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34182)
+	id 1mQ9O1-0007Pd-Qn
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:26:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9KB-0000qm-8W
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:22:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50501)
+ id 1mQ9KK-0000wh-2h
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:22:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31981)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9K9-0003qZ-K3
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:22:14 -0400
+ id 1mQ9KH-0003vg-4p
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:22:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629333;
+ s=mimecast20190719; t=1631629340;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=S4mcFixgI8QWYygoX/mbTsK3lsPq8Q1IHo4rS1KMgFE=;
- b=WA8+DuDjrl2WwplG/PLUF5oi3JDh9hxliYiGrf0KqWhB4c3CLcY8QnX6RgW8+1SFdqH95s
- ZKAE5KOxC3yuqeFmw1f8naHzCD4EXYYkfb4Fwtl6cGnhdt1jz5DMoQwDEwSTSVIJRcp3x8
- KsdTp3EWaktFeJP4UDg7i9XH/LKZI54=
+ bh=u06VPRO3ZTpziCI9V80Mt31DearKqRpMuaMoaazZMng=;
+ b=gPRKiAlMvO5LmshAFLi31sVbXc1/aet0HsgU5lyAEQceQgp86pR0dMbQDxGbjGwiIBc9L6
+ lX02IMFIeEoGt/ORvC+3AOHlZVQJM4Oe6jThGV4bE0XgsCdro1YWj7s1PO63XbBw7FICMl
+ Ab3jF5PsoHTDzz+UApzd+cOnt2i3hMg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-369-NNEgaP0pPJWT2ZgG2q1f7A-1; Tue, 14 Sep 2021 10:22:11 -0400
-X-MC-Unique: NNEgaP0pPJWT2ZgG2q1f7A-1
+ us-mta-225-RMCR6vBXPDCSX-Pz2hmpwA-1; Tue, 14 Sep 2021 10:22:19 -0400
+X-MC-Unique: RMCR6vBXPDCSX-Pz2hmpwA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19763180831A;
- Tue, 14 Sep 2021 14:22:08 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BBBC4801E72;
+ Tue, 14 Sep 2021 14:22:15 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 728C65D9DC;
- Tue, 14 Sep 2021 14:21:49 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 612D35D9CA;
+ Tue, 14 Sep 2021 14:22:08 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 02/53] docs/devel: tweak headings in monitor command docs
-Date: Tue, 14 Sep 2021 15:19:51 +0100
-Message-Id: <20210914142042.1655100-3-berrange@redhat.com>
+Subject: [PATCH v2 03/53] docs/devel: document expectations for QAPI data
+ modelling for QMP
+Date: Tue, 14 Sep 2021 15:19:52 +0100
+Message-Id: <20210914142042.1655100-4-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -141,42 +142,90 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OCBCUiwWD8xi
+X-TUID: uKJvf0ILXaOg
 
-The new headings reflect the intended structure of the document and will
-better suit additions that follow.
+Traditionally we have required that newly added QMP commands will model
+any returned data using fine grained QAPI types. This is good for
+commands that are intended to be consumed by machines, where clear data
+representation is very important. Commands that don't satisfy this have
+generally been added to HMP only.
+
+In effect the decision of whether to add a new command to QMP vs HMP has
+been used as a proxy for the decision of whether the cost of designing a
+fine grained QAPI type is justified by the potential benefits.
+
+As a result the commands present in QMP and HMP are non-overlapping
+sets, although HMP comamnds can be accessed indirectly via the QMP
+command 'human-monitor-command'.
+
+One of the downsides of 'human-monitor-command' is that the QEMU monitor
+APIs remain tied into various internal parts of the QEMU code. For
+example any exclusively HMP command will need to use 'monitor_printf'
+to get data out. It would be desirable to be able to fully isolate the
+monitor implementation from QEMU internals, however, this is only
+possible if all commands are exclusively based on QAPI with direct
+QMP exposure.
+
+The way to achieve this desired end goal is to finese the requirements
+for QMP command design. For cases where the output of a command is only
+intended for human consumption, it is reasonable to want to simplify
+the implementation by returning a plain string containing formatted
+data instead of designing a fine grained QAPI data type. This can be
+permitted if-and-only-if the command is exposed under the 'x-' name
+prefix. This indicates that the command data format is liable to
+future change and that it is not following QAPI design best practice.
+
+The poster child example for this would be the 'info registers' HMP
+command which returns printf formatted data representing CPU state.
+This information varies enourmously across target architectures and
+changes relatively frequently as new CPU features are implemented.
+It is there as debugging data for human operators, and any machine
+usage would treat it as an opaque blob. It is thus reasonable to
+expose this in QMP as 'x-query-registers' returning a 'str' field.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- docs/devel/writing-monitor-commands.rst | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ docs/devel/writing-monitor-commands.rst | 27 +++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
 diff --git a/docs/devel/writing-monitor-commands.rst b/docs/devel/writing-monitor-commands.rst
-index 497c9ce0d5..cddb36fb74 100644
+index cddb36fb74..d68c552fdd 100644
 --- a/docs/devel/writing-monitor-commands.rst
 +++ b/docs/devel/writing-monitor-commands.rst
-@@ -85,8 +85,8 @@ any data". Now you're ready to enter the QMP example commands as explained in
- the following sections.
+@@ -350,6 +350,33 @@ In this section we will focus on user defined types. Please, check the QAPI
+ documentation for information about the other types.
  
  
--Writing a command that doesn't return data
--------------------------------------------
-+Writing a simple command: hello-world
-+-------------------------------------
++Modelling data in QAPI
++~~~~~~~~~~~~~~~~~~~~~~
++
++For a QMP command that to be considered stable and supported long term,
++there is a requirement returned data should be explicitly modelled
++using fine-grained QAPI types. As a general guide, a caller of the QMP
++command should never need to parse individual returned data fields. If
++a field appears to need parsing, then it should be split into separate
++fields corresponding to each distinct data item. This should be the
++common case for any new QMP command that is intended to be used by
++machines, as opposed to exclusively human operators.
++
++Some QMP commands, however, are only intended as ad hoc debugging aids
++for human operators. While they may return large amounts of formatted
++data, it is not expected that machines will need to parse the result.
++The overhead of defining a fine grained QAPI type for the data may not
++be justified by the potential benefit. In such cases, it is permitted
++to have a command return a simple string that contains formatted data,
++however, it is mandatory for the command to use the 'x-' name prefix.
++This indicates that the command is not guaranteed to be long term
++stable / liable to change in future and is not following QAPI design
++best practices. An example where this approach is taken is the QMP
++command "x-query-registers". This returns a formatted dump of the
++architecture specific CPU state. The way the data is formatted varies
++across QEMU targets, is liable to change over time, and is only
++intended to be consumed as an opaque string by machines.
++
+ User Defined Types
+ ~~~~~~~~~~~~~~~~~~
  
- That's the most simple QMP command that can be written. Usually, this kind of
- command carries some meaningful action in QEMU but here it will just print
-@@ -340,8 +340,8 @@ Please, check the "-monitor" command-line option to know how to open a user
- monitor.
- 
- 
--Writing a command that returns data
-------------------------------------
-+Writing more complex commands
-+-----------------------------
- 
- A QMP command is capable of returning any data the QAPI supports like integers,
- strings, booleans, enumerations and user defined types.
 -- 
 2.31.1
 

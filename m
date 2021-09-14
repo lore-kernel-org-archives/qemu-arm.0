@@ -1,86 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp777272lfp;
-        Tue, 14 Sep 2021 08:12:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKCO6wyBMsVJzbn3B0QWMbFEvF62u/93tKQMCf6ivRTiQwZaOhuILvKGjhJekxxJSv/85K
-X-Received: by 2002:a05:6512:3f1a:: with SMTP id y26mr13785569lfa.388.1631632372537;
-        Tue, 14 Sep 2021 08:12:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631632372; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp778472lfp;
+        Tue, 14 Sep 2021 08:14:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWD6w4nR/W7M9gB4p57mXVUo+4J9JaF0S6aglDJNoDfkMPG8hTYS1z8keT7kpR0sJXyX6U
+X-Received: by 2002:adf:9e0b:: with SMTP id u11mr19665687wre.85.1631632457298;
+        Tue, 14 Sep 2021 08:14:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631632457; cv=none;
         d=google.com; s=arc-20160816;
-        b=yxpayZQivKbddWjwznORCuA9PzxoGeJDaX1t+zsiQw1XJVexEFREjiKA2PA0XbCOxa
-         tNAXwlBHr3zPQRBiXXYJynyp8ZmuBj8mC+Lq7jdr+Zx1RRoCcgZGHIZ7OhxGBLO6VhW2
-         XMLYjaMaU419eK19QZYffU3VDA8PgZZ5SOeHpFyImmMQZ9pKLDKDsGI95NrojgkYtZgV
-         rIizt/PUjan/ItiYNTOpS/73XFiKpiyahd9aRcgItmRMJKxXdIgSuI9S7cMCxcqVK55V
-         DrEqNFcXmGi/tsA015zoCSeoxkkQbmA874fbwYdohAJzdhNFXzVIEfCyH+AkqkmEvz+W
-         c44Q==
+        b=ZW6kMlcbv41Fl5U7qTZEuO5IcC989QbNJtWyH3hwPJwDmgMEMHlnnuDYGGC4nSxsl8
+         mWNm+OlV8rWj9kOuLJ2hnRICEVp/aT91uZoFXZW0ofbQUE2lHVj039j6NbNxQ0u9urRS
+         0+TSlmnJOlVqAp7FuCOQJVLiwSJPDZjjPQ3Ii6Njmm17smS6fucxK8E/8kG2SKNKk8oZ
+         EnZnoOkwV2i4MW0DeHeFg3ATa1KeY/hg3rf/Y2MgnwiaeuU4QktcLv460ss8JCZU/2QF
+         JTJDYtZhsRTe6c7at1KF/rcMxvuZ3QPJdbzVDM8r56UmsStnqEkSjri6+SmQzfKT7eIo
+         6fFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OfuNrJauBgm0uBcnOxhBp2EuyAUbXL9W+QCHdXBJ5JE=;
-        b=mHBNmiS8SJSjnHPAJKF4FUVVvwpUEer0WaufsvKOZLlHck8ZvI67NezUu0xS3gj7+x
-         4M3x9WPxBloYBLAgtGPx/zBEqCtqMlZPFH2DVB4Uuyn9BKyCKqf9R0lAEeIjDg6KhOVE
-         26k0pIvRP0OK2xjZdqcIkn7XBDqJK/TSg15v5P98hM1X3vX/kW8urrlcEVpvsghroEmO
-         n1Mv50nMWXBK+XN2Xcdv02eun2EBYQeZJD1lDmeyPvgGZzoH601cEGalku6uB2M/Xb1Z
-         UnRjknKvoXwScHrrIESpkcEWTLzJ2/g8jDTUzqSMbI2ysupYNapc4vaa4FJAYO0Joe+g
-         xBjg==
+        bh=cNOaNgDzolO+0it+J7fzAXgDUa5QpcR8ph6GT7968cA=;
+        b=sI2N8+yO4V6602Na34yzghy155fOb+jkA4l2ldER35mNjkX+34iGaxk7e8GyTcXEcu
+         2ivVTIW5CwO8Cc8gSbwP1m4qGvgyBeEJs57/EBQEOYwzSUisocLROUmY0LyZZdR64LFk
+         Gvkgo8ucHEuwK6lYpWBPwIZ+9Uno55nlcs/MIqzZOoeyCSH7iteMOUR9fro1hD/W+kZ1
+         43lM1wm1tuurXwGUO+8iozOimU77m4OuBnGK+HQ2Ch/6Vm4cz/EfgBU0nwnV++JLxSOa
+         l49Nr3xVyLRLthC8XFf5QPPGqj16V+0lFX0qdLKWB1ynI7/O8MOULs2VLDbEJwxe9aiN
+         AK3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JMsr0fK4;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FYF4kXne;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f21si10069489edf.336.2021.09.14.08.12.52
+        by mx.google.com with ESMTPS id c13si1373365wml.197.2021.09.14.08.14.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:12:52 -0700 (PDT)
+        Tue, 14 Sep 2021 08:14:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JMsr0fK4;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FYF4kXne;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35940 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40596 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQA79-0003ey-H2
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:12:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41706)
+	id 1mQA8U-0006ww-Sn
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:14:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9WA-0003QB-2T
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:34:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49804)
+ id 1mQ9Ss-0007Xt-Rx
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28509)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Vs-00043s-SC
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:34:37 -0400
+ id 1mQ9So-0001xL-Ta
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631630058;
+ s=mimecast20190719; t=1631629869;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OfuNrJauBgm0uBcnOxhBp2EuyAUbXL9W+QCHdXBJ5JE=;
- b=JMsr0fK4gEbOj/BO9MBxtuDpLIJWGsWitgSz6wEzQl05ZoC74p6+ymYZET/nFgrt43AsUq
- 7Krip6Pdnc9sfVSKVcG4V7iHhYP9/SiyfR6VlHoIipGpVFBE1IvGwkbvwPPukHhubcDlTM
- Et/E/M6L6ICn4jr6cbiM0E5FWF9ZkCU=
+ bh=cNOaNgDzolO+0it+J7fzAXgDUa5QpcR8ph6GT7968cA=;
+ b=FYF4kXneVqcU0o4E2uvvgT1lRM5wwwsyg+R1FybFPBbfK+qbC9GXaJBnD0CJVFd6P4XS/p
+ nFrwn2YtM8dB4k4FydQtbH5rGdwWPBcailpME/knPWYRq7i1gxe8cTxKiYnHQgoSeRENeB
+ qykrHOnxMH0g8A/gHygE38zPhUNYRYw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-87-H1_BhtnRMo6S6GpsQfTXTQ-1; Tue, 14 Sep 2021 10:34:16 -0400
-X-MC-Unique: H1_BhtnRMo6S6GpsQfTXTQ-1
+ us-mta-505-F8zNCVkEPpKPd_8ReUkXYQ-1; Tue, 14 Sep 2021 10:31:08 -0400
+X-MC-Unique: F8zNCVkEPpKPd_8ReUkXYQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9D1461808306;
- Tue, 14 Sep 2021 14:34:12 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5D240BAF81;
+ Tue, 14 Sep 2021 14:31:04 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EFA4B5D9CA;
- Tue, 14 Sep 2021 14:33:52 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 386465D9CA;
+ Tue, 14 Sep 2021 14:30:56 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 45/53] target/nios2: convert to use format_tlb callback
-Date: Tue, 14 Sep 2021 15:20:34 +0100
-Message-Id: <20210914142042.1655100-46-berrange@redhat.com>
+Subject: [PATCH v2 30/53] qapi: introduce x-query-roms QMP command
+Date: Tue, 14 Sep 2021 15:20:19 +0100
+Message-Id: <20210914142042.1655100-31-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -99,7 +99,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -139,121 +139,122 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +pgxmScEWHsw
+X-TUID: 78pV7cHjy5+D
 
-Change the "info tlb" implementation to use the format_tlb callback.
+This is a counterpart to the HMP "info roms" command. It is being
+added with an "x-" prefix because this QMP command is intended as an
+adhoc debugging tool and will thus not be modelled in QAPI as fully
+structured data, nor will it have long term guaranteed stability.
+The existing HMP command is rewritten to call the QMP command.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/nios2/cpu.c     |  3 +++
- target/nios2/cpu.h     |  2 +-
- target/nios2/mmu.c     | 37 +++++++++++++++++++------------------
- target/nios2/monitor.c | 12 ++++++++++--
- 4 files changed, 33 insertions(+), 21 deletions(-)
+ hw/core/loader.c  | 55 ++++++++++++++++++++++++++++++++---------------
+ qapi/machine.json | 12 +++++++++++
+ 2 files changed, 50 insertions(+), 17 deletions(-)
 
-diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
-index cbf15fb1c9..60162ee692 100644
---- a/target/nios2/cpu.c
-+++ b/target/nios2/cpu.c
-@@ -242,6 +242,9 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
-     cc->class_by_name = nios2_cpu_class_by_name;
-     cc->has_work = nios2_cpu_has_work;
-     cc->format_state = nios2_cpu_format_state;
-+#ifndef CONFIG_USER_ONLY
-+    cc->format_tlb = nios2_cpu_format_tlb;
-+#endif
-     cc->set_pc = nios2_cpu_set_pc;
-     cc->disas_set_info = nios2_cpu_disas_set_info;
- #ifndef CONFIG_USER_ONLY
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index 3b16cd1f3c..1167872bd9 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -194,8 +194,8 @@ struct Nios2CPU {
- void nios2_tcg_init(void);
- void nios2_cpu_do_interrupt(CPUState *cs);
- int cpu_nios2_signal_handler(int host_signum, void *pinfo, void *puc);
--void dump_mmu(CPUNios2State *env);
- void nios2_cpu_format_state(CPUState *cpu, GString *buf, int flags);
-+void nios2_cpu_format_tlb(CPUState *cpu, GString *buf);
- hwaddr nios2_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void nios2_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
-                                    MMUAccessType access_type,
-diff --git a/target/nios2/mmu.c b/target/nios2/mmu.c
-index 2545c06761..1c7d3b34c3 100644
---- a/target/nios2/mmu.c
-+++ b/target/nios2/mmu.c
-@@ -252,29 +252,30 @@ void mmu_init(CPUNios2State *env)
-     mmu->tlb = g_new0(Nios2TLBEntry, cpu->tlb_num_entries);
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index c623318b73..014d131847 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -46,6 +46,7 @@
+ #include "qemu-common.h"
+ #include "qemu/datadir.h"
+ #include "qapi/error.h"
++#include "qapi/qapi-commands-machine.h"
+ #include "trace.h"
+ #include "hw/hw.h"
+ #include "disas/disas.h"
+@@ -1472,32 +1473,52 @@ void *rom_ptr_for_as(AddressSpace *as, hwaddr addr, size_t size)
+     return cbdata.rom;
  }
  
--void dump_mmu(CPUNios2State *env)
-+void nios2_cpu_format_tlb(CPUState *cpu, GString *buf)
+-void hmp_info_roms(Monitor *mon, const QDict *qdict)
++HumanReadableText *qmp_x_query_roms(Error **errp)
  {
--    Nios2CPU *cpu = env_archcpu(env);
-+    CPUNios2State *env = cpu->env_ptr;
-+    Nios2CPU *ncpu = env_archcpu(env);
-     int i;
- 
--    qemu_printf("MMU: ways %d, entries %d, pid bits %d\n",
--                cpu->tlb_num_ways, cpu->tlb_num_entries,
--                cpu->pid_num_bits);
-+    g_string_append_printf(buf, "MMU: ways %d, entries %d, pid bits %d\n",
-+                           ncpu->tlb_num_ways, ncpu->tlb_num_entries,
-+                           ncpu->pid_num_bits);
- 
--    for (i = 0; i < cpu->tlb_num_entries; i++) {
-+    for (i = 0; i < ncpu->tlb_num_entries; i++) {
-         Nios2TLBEntry *entry = &env->mmu.tlb[i];
--        qemu_printf("TLB[%d] = %08X %08X %c VPN %05X "
--                    "PID %02X %c PFN %05X %c%c%c%c\n",
--                    i, entry->tag, entry->data,
--                    (entry->tag & (1 << 10)) ? 'V' : '-',
--                    entry->tag >> 12,
--                    entry->tag & ((1 << cpu->pid_num_bits) - 1),
--                    (entry->tag & (1 << 11)) ? 'G' : '-',
--                    entry->data & CR_TLBACC_PFN_MASK,
--                    (entry->data & CR_TLBACC_C) ? 'C' : '-',
--                    (entry->data & CR_TLBACC_R) ? 'R' : '-',
--                    (entry->data & CR_TLBACC_W) ? 'W' : '-',
--                    (entry->data & CR_TLBACC_X) ? 'X' : '-');
-+        g_string_append_printf(buf, "TLB[%d] = %08X %08X %c VPN %05X "
-+                               "PID %02X %c PFN %05X %c%c%c%c\n",
-+                               i, entry->tag, entry->data,
-+                               (entry->tag & (1 << 10)) ? 'V' : '-',
-+                               entry->tag >> 12,
-+                               entry->tag & ((1 << ncpu->pid_num_bits) - 1),
-+                               (entry->tag & (1 << 11)) ? 'G' : '-',
-+                               entry->data & CR_TLBACC_PFN_MASK,
-+                               (entry->data & CR_TLBACC_C) ? 'C' : '-',
-+                               (entry->data & CR_TLBACC_R) ? 'R' : '-',
-+                               (entry->data & CR_TLBACC_W) ? 'W' : '-',
-+                               (entry->data & CR_TLBACC_X) ? 'X' : '-');
-     }
- }
- 
-diff --git a/target/nios2/monitor.c b/target/nios2/monitor.c
-index 0152dec3fa..99d35e8ef1 100644
---- a/target/nios2/monitor.c
-+++ b/target/nios2/monitor.c
-@@ -29,7 +29,15 @@
- 
- void hmp_info_tlb(Monitor *mon, const QDict *qdict)
- {
--    CPUArchState *env1 = mon_get_cpu_env(mon);
+     Rom *rom;
 +    g_autoptr(GString) buf = g_string_new("");
-+    CPUState *cpu = mon_get_cpu(mon);
++    HumanReadableText *ret;
  
--    dump_mmu(env1);
-+    if (!cpu) {
-+        monitor_printf(mon, "No CPU available\n");
+     QTAILQ_FOREACH(rom, &roms, next) {
+         if (rom->mr) {
+-            monitor_printf(mon, "%s"
+-                           " size=0x%06zx name=\"%s\"\n",
+-                           memory_region_name(rom->mr),
+-                           rom->romsize,
+-                           rom->name);
++            g_string_append_printf(buf, "%s"
++                                   " size=0x%06zx name=\"%s\"\n",
++                                   memory_region_name(rom->mr),
++                                   rom->romsize,
++                                   rom->name);
+         } else if (!rom->fw_file) {
+-            monitor_printf(mon, "addr=" TARGET_FMT_plx
+-                           " size=0x%06zx mem=%s name=\"%s\"\n",
+-                           rom->addr, rom->romsize,
+-                           rom->isrom ? "rom" : "ram",
+-                           rom->name);
++            g_string_append_printf(buf, "addr=" TARGET_FMT_plx
++                                   " size=0x%06zx mem=%s name=\"%s\"\n",
++                                   rom->addr, rom->romsize,
++                                   rom->isrom ? "rom" : "ram",
++                                   rom->name);
+         } else {
+-            monitor_printf(mon, "fw=%s/%s"
+-                           " size=0x%06zx name=\"%s\"\n",
+-                           rom->fw_dir,
+-                           rom->fw_file,
+-                           rom->romsize,
+-                           rom->name);
++            g_string_append_printf(buf, "fw=%s/%s"
++                                   " size=0x%06zx name=\"%s\"\n",
++                                   rom->fw_dir,
++                                   rom->fw_file,
++                                   rom->romsize,
++                                   rom->name);
+         }
+     }
++
++    ret = g_new0(HumanReadableText, 1);
++    ret->human_readable_text = g_steal_pointer(&buf->str);
++    return ret;
++}
++
++
++void hmp_info_roms(Monitor *mon, const QDict *qdict)
++{
++    Error *err = NULL;
++    g_autoptr(HumanReadableText) info = qmp_x_query_roms(&err);
++
++    if (err) {
++        error_report_err(err);
 +        return;
 +    }
 +
-+    cpu_format_tlb(cpu, buf);
-+
-+    monitor_printf(mon, "%s", buf->str);
++    monitor_printf(mon, "%s", info->human_readable_text);
  }
+ 
+ typedef enum HexRecord HexRecord;
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 8737efa865..a4a1727589 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -1327,3 +1327,15 @@
+ { 'command': 'x-query-registers',
+   'data': {'*cpu': 'int' },
+   'returns': 'HumanReadableText' }
++
++##
++# @x-query-roms:
++#
++# Query information on the registered ROMS
++#
++# Returns: registered ROMs
++#
++# Since: 6.2
++##
++{ 'command': 'x-query-roms',
++  'returns': 'HumanReadableText' }
 -- 
 2.31.1
 

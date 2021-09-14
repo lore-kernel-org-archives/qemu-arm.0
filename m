@@ -1,86 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp787161lfp;
-        Tue, 14 Sep 2021 08:23:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwTM3NNk0vPsQf5qhc6KSY9Q+8I/cAAv6Kt8Ix4/YTTRCJosLK1+pVGsFxOluDTFI6TbYDD
-X-Received: by 2002:a17:906:e097:: with SMTP id gh23mr13656682ejb.137.1631633019676;
-        Tue, 14 Sep 2021 08:23:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631633019; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp788096lfp;
+        Tue, 14 Sep 2021 08:24:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1ylQs88pTYthfsREvB/1OAnJA9qDpZwC5BJvj3+/RcCOWqVmJxr2GkhqPfndCrDfvFREd
+X-Received: by 2002:adf:db07:: with SMTP id s7mr20223818wri.106.1631633079965;
+        Tue, 14 Sep 2021 08:24:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631633079; cv=none;
         d=google.com; s=arc-20160816;
-        b=LpI4nI+VsTjMwpenKlMSCgYPkj+MKKXPvpG2sFBjLOkvAgD1BERYOipKYawr2OEpsj
-         5q6CjAvO5mkOITzNLW/DoAFqig4SwW+xAXutipgnThHnxSXjHdL4PWkpL9Olcibd2aUE
-         EikrRScqa7oLDYy3AQk8LkjiNCulASKzpN4MBoW1YR46o/LLH0xWM+eXSENiRHrzyfMt
-         4guq36HgMA3oae6XU/hH5a2T2Sp4STD3nMOrl41RJYI0Sx2g3TAgld9K5yLhAHddMD6t
-         1Eh8bD2qtuU76F0EkJeGCZHm3pz9ZvL0JpjNdMPzIsPHPc5DQvWXxverAuspGJcycaxV
-         2OZA==
+        b=HAEL8wNMVIJnjDMby1WpLSKcFURLGYJZLj984Pa5JHUhHsk6CmuT4QnIPM/MTZpdoF
+         7DOA7CXaa4gNyRSvVNOlHbxiSL9bqstXOWKFZbViu3ieH7EwBkBbXBZ3dWVRnGvtKy3V
+         yLoYcxkgxD+BCuIc/MLI1zplVADDd9u9ZJlh3mWDDIjZj6M2TeROhz9v2UvruELj0iFy
+         bTV9uI9LvFRu0Su3nqGxgkj0BDRsO8hIJnJPRO/g4B2a0cevGfg5rb0sWNJYj7NT6nCS
+         CTAAh9lSESi7EBmDU0SRyCL00jpB5QmROEx5Reda40+2CMsUUKuXCNbz8xmtLIvGhFFV
+         fDOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=mWi2LfZwGzdEsZktG7Ab29gP8Q0XFlGCSfLs0XA4+QY=;
-        b=LXCBFU/XSZXDyxI2jJgrf6lsRno+mc9egfQCVVLlOGuQTAbjkplTgAvBRV56eu3uM9
-         kB34TGXk/lLLI78q/jTJXsdxmfMN7YZdfmaF6A34p1Uf1bHkzFj4G7Zio+4i5jNviaNH
-         Wb6NV7ZSbBX3yn5XIB3NJdTsKm25/wUQfNPhBw13arA6vduJJCAxxwOfevh47AFOA0nu
-         kvT5QfaKEwS8AfkK5rMCalhbgDvZ/PPK2UxcigM22w/qRYm8ioO8BjWhxPVSYWqlpxdp
-         ObtEptnOuTl5aTYsh74yKP/oxCD6ws9DL1vXrbXhMv/3FUrdz0yKP990Z4XjjLu0QkqI
-         lsww==
+        bh=/jRtbUcY39Rqu7qghyi/HTcBufJo3NLVVwGNaTJ569Y=;
+        b=mkYwwCYRmkHigbwu3mSuxftfB2siDq93+xhP2UsDmGndkeaoQopzufBV8XJCyQHi9s
+         ZKqJ6YS6wSiEnTQMXbtNaKHIVxfMnR3CN9uwMSvlvL2E6tKQxy7pSWWTl1SCIqhsf7bl
+         IYNZpT+4s8zR1hEx7PCrWoK8Lv2vjJweq2OdF9vPoUR1exdiRXfpjT7JBDlmY6018Y6d
+         gJyl21sw8C8kt/LIcGpwIvoV6V1uGsUVaWjjr0EbthPCZyBYWsms2H049ivUIdDWK0x2
+         V8VS0dw3s9v8HscX7jw0IruNxKlG+LPHJuk6+zaNP5hdGS5Yx3ftcmSkhdeJHbHdG8Yv
+         XIxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Bsm2f/Ff";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tdfg8feH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t22si10858911ejt.594.2021.09.14.08.23.39
+        by mx.google.com with ESMTPS id u6si1296346wmq.227.2021.09.14.08.24.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:23:39 -0700 (PDT)
+        Tue, 14 Sep 2021 08:24:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Bsm2f/Ff";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tdfg8feH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38116 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQAHa-0007pZ-Lk
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:23:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41002)
+	id 1mQAIY-0001Hk-Pi
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:24:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Ug-0001LH-F8
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:33:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42635)
+ id 1mQ9Uc-000181-Qh
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:33:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59489)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Ue-0003Gm-N1
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:33:06 -0400
+ id 1mQ9UX-000375-Ky
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:33:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629984;
+ s=mimecast20190719; t=1631629972;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mWi2LfZwGzdEsZktG7Ab29gP8Q0XFlGCSfLs0XA4+QY=;
- b=Bsm2f/Ff/9amqy4djzotbWABw171stLCEtpZTICWu/VDAOuE3ZiDxc0mxaVjp46rHaYjbE
- fBEYb5t8KdOvFvXw4zSHZWeTFQzlX6tKvlGA5cd5Cb9lRKddOKSnb2MURcYYuUxEYgD2h0
- EglGYxUa6oL+6H3KfRpm6wLa5bEH2no=
+ bh=/jRtbUcY39Rqu7qghyi/HTcBufJo3NLVVwGNaTJ569Y=;
+ b=Tdfg8feHbrF36ZV4DMdRsm1MLbV/I//vwDm80BHoSLWggUGRek1G/AB1Xneca0oJouNhdd
+ ERCZ770fqntN5A0RWykYrMeseKwCu/KgnPSJlWezzJw95/QbGrPo5gifeIVSJ38IYsXIu5
+ nhufeOWdQUKaCAWJvhNMOt4h2WJ/wH8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-397-GMTEub__Oo-90fowxGl2Ew-1; Tue, 14 Sep 2021 10:33:02 -0400
-X-MC-Unique: GMTEub__Oo-90fowxGl2Ew-1
+ us-mta-481-ebDlKE6IOSW5obJSs9l0CQ-1; Tue, 14 Sep 2021 10:32:50 -0400
+X-MC-Unique: ebDlKE6IOSW5obJSs9l0CQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A7CF110144E0;
- Tue, 14 Sep 2021 14:32:58 +0000 (UTC)
-Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 588B95D9DC;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0E9DF800FF4;
  Tue, 14 Sep 2021 14:32:47 +0000 (UTC)
+Received: from localhost.localdomain.com (unknown [10.39.193.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E75B85D9DC;
+ Tue, 14 Sep 2021 14:32:31 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 40/53] hw/core: drop "dump_state" callback from CPU targets
-Date: Tue, 14 Sep 2021 15:20:29 +0100
-Message-Id: <20210914142042.1655100-41-berrange@redhat.com>
+Subject: [PATCH v2 39/53] qapi: introduce x-query-irq QMP command
+Date: Tue, 14 Sep 2021 15:20:28 +0100
+Message-Id: <20210914142042.1655100-40-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -141,61 +141,179 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GuIxGzspQLHR
+X-TUID: Zb2dsFqFtlMk
 
-All targets are now converted to the "format_state" callback.
+This is a counterpart to the HMP "info irq" command. It is being
+added with an "x-" prefix because this QMP command is intended as an
+adhoc debugging tool and will thus not be modelled in QAPI as fully
+structured data, nor will it have long term guaranteed stability.
+The existing HMP command is rewritten to call the QMP command.
+
+This command is unable to use the pre-existing HumanReadableText,
+because if 'common.json' is included into 'machine-target.json'
+the static marshalling method for HumanReadableText will be reported
+as unused by the compiler on all architectures except s390x.
+
+Possible options were
+
+ 1 Support 'if' conditionals on 'include' statements in QAPI
+ 2 Add further commands to 'machine-target.json' that use
+   HumanReadableText, such that it has at least one usage
+   on all architecture targets.
+ 3 Duplicate HumanReadableText as TargetHumanReadableText
+   adding conditions
+
+This patch takes option (3) in the belief that we will eventually
+get to a point where option (2) happens, and TargetHumanReadableText
+can be removed again.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/core/cpu-common.c  | 14 +++-----------
- include/hw/core/cpu.h |  2 --
- 2 files changed, 3 insertions(+), 13 deletions(-)
+ monitor/hmp-cmds.c | 40 ++++++++-------------------------------
+ monitor/qmp-cmds.c | 47 ++++++++++++++++++++++++++++++++++++++++++++++
+ qapi/machine.json  | 12 ++++++++++++
+ 3 files changed, 67 insertions(+), 32 deletions(-)
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index d1ebc77d1b..494f4f41eb 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -108,17 +108,9 @@ static int cpu_common_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg)
- 
- void cpu_dump_state(CPUState *cpu, FILE *f, int flags)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (cc->dump_state) {
--        cpu_synchronize_state(cpu);
--        cc->dump_state(cpu, f, flags);
--    } else if (cc->format_state) {
--        g_autoptr(GString) buf = g_string_new("");
--        cpu_synchronize_state(cpu);
--        cc->format_state(cpu, buf, flags);
--        qemu_fprintf(f, "%s", buf->str);
--    }
-+    g_autoptr(GString) buf = g_string_new("");
-+    cpu_format_state(cpu, buf, flags);
-+    qemu_fprintf(f, "%s", buf->str);
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index 77533b2d8a..eb2202329d 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -784,42 +784,18 @@ static void hmp_info_pci_device(Monitor *mon, const PciDeviceInfo *dev)
+     }
  }
  
- void cpu_format_state(CPUState *cpu, GString *buf, int flags)
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index a0913eedaa..9cfc7d7479 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -91,7 +91,6 @@ struct SysemuCPUOps;
-  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
-  * @has_work: Callback for checking if there is work to do.
-  * @memory_rw_debug: Callback for GDB memory access.
-- * @dump_state: Callback for dumping state. Deprecated, use @format_state.
-  * @format_state: Callback for formatting state.
-  * @get_arch_id: Callback for getting architecture-dependent CPU ID.
-  * @set_pc: Callback for setting the Program Counter register. This
-@@ -136,7 +135,6 @@ struct CPUClass {
-     bool (*has_work)(CPUState *cpu);
-     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-                            uint8_t *buf, int len, bool is_write);
--    void (*dump_state)(CPUState *cpu, FILE *, int flags);
-     void (*format_state)(CPUState *cpu, GString *buf, int flags);
-     int64_t (*get_arch_id)(CPUState *cpu);
-     void (*set_pc)(CPUState *cpu, vaddr value);
+-static int hmp_info_irq_foreach(Object *obj, void *opaque)
++void hmp_info_irq(Monitor *mon, const QDict *qdict)
+ {
+-    InterruptStatsProvider *intc;
+-    InterruptStatsProviderClass *k;
+-    Monitor *mon = opaque;
++    Error *err = NULL;
++    g_autoptr(HumanReadableText) info = NULL;
+ 
+-    if (object_dynamic_cast(obj, TYPE_INTERRUPT_STATS_PROVIDER)) {
+-        intc = INTERRUPT_STATS_PROVIDER(obj);
+-        k = INTERRUPT_STATS_PROVIDER_GET_CLASS(obj);
+-        uint64_t *irq_counts;
+-        unsigned int nb_irqs, i;
+-        if (k->get_statistics &&
+-            k->get_statistics(intc, &irq_counts, &nb_irqs)) {
+-            if (nb_irqs > 0) {
+-                monitor_printf(mon, "IRQ statistics for %s:\n",
+-                               object_get_typename(obj));
+-                for (i = 0; i < nb_irqs; i++) {
+-                    if (irq_counts[i] > 0) {
+-                        monitor_printf(mon, "%2d: %" PRId64 "\n", i,
+-                                       irq_counts[i]);
+-                    }
+-                }
+-            }
+-        } else {
+-            monitor_printf(mon, "IRQ statistics not available for %s.\n",
+-                           object_get_typename(obj));
+-        }
++    info = qmp_x_query_irq(&err);
++    if (err) {
++        error_report_err(err);
++        return;
+     }
+ 
+-    return 0;
+-}
+-
+-void hmp_info_irq(Monitor *mon, const QDict *qdict)
+-{
+-    object_child_foreach_recursive(object_get_root(),
+-                                   hmp_info_irq_foreach, mon);
++    monitor_printf(mon, "%s", info->human_readable_text);
+ }
+ 
+ static int hmp_info_pic_foreach(Object *obj, void *opaque)
+diff --git a/monitor/qmp-cmds.c b/monitor/qmp-cmds.c
+index b86fff823e..cfb98658e4 100644
+--- a/monitor/qmp-cmds.c
++++ b/monitor/qmp-cmds.c
+@@ -40,6 +40,7 @@
+ #include "exec/ramlist.h"
+ #include "hw/mem/memory-device.h"
+ #include "hw/acpi/acpi_dev_interface.h"
++#include "hw/intc/intc.h"
+ #include "hw/rdma/rdma.h"
+ 
+ NameInfo *qmp_query_name(Error **errp)
+@@ -430,3 +431,49 @@ HumanReadableText *qmp_x_query_ramblock(Error **errp)
+     ret->human_readable_text = g_steal_pointer(&buf->str);
+     return ret;
+ }
++
++static int qmp_x_query_irq_foreach(Object *obj, void *opaque)
++{
++    InterruptStatsProvider *intc;
++    InterruptStatsProviderClass *k;
++    GString *buf = opaque;
++
++    if (object_dynamic_cast(obj, TYPE_INTERRUPT_STATS_PROVIDER)) {
++        intc = INTERRUPT_STATS_PROVIDER(obj);
++        k = INTERRUPT_STATS_PROVIDER_GET_CLASS(obj);
++        uint64_t *irq_counts;
++        unsigned int nb_irqs, i;
++        if (k->get_statistics &&
++            k->get_statistics(intc, &irq_counts, &nb_irqs)) {
++            if (nb_irqs > 0) {
++                g_string_append_printf(buf, "IRQ statistics for %s:\n",
++                                       object_get_typename(obj));
++                for (i = 0; i < nb_irqs; i++) {
++                    if (irq_counts[i] > 0) {
++                        g_string_append_printf(buf, "%2d: %" PRId64 "\n", i,
++                                               irq_counts[i]);
++                    }
++                }
++            }
++        } else {
++            g_string_append_printf(buf,
++                                   "IRQ statistics not available for %s.\n",
++                                   object_get_typename(obj));
++        }
++    }
++
++    return 0;
++}
++
++HumanReadableText *qmp_x_query_irq(Error **errp)
++{
++    HumanReadableText *ret;
++    g_autoptr(GString) buf = g_string_new("");
++
++    object_child_foreach_recursive(object_get_root(),
++                                   qmp_x_query_irq_foreach, buf);
++
++    ret = g_new0(HumanReadableText, 1);
++    ret->human_readable_text = g_steal_pointer(&buf->str);
++    return ret;
++}
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 3ae7beb7cf..e72b47ea7d 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -1313,6 +1313,18 @@
+      '*threads': 'int',
+      '*maxcpus': 'int' } }
+ 
++##
++# @x-query-irq:
++#
++# Query interrupt statistics
++#
++# Returns: interrupt statistics
++#
++# Since: 6.2
++##
++{ 'command': 'x-query-irq',
++  'returns': 'HumanReadableText' }
++
+ ##
+ # @x-query-numa:
+ #
 -- 
 2.31.1
 

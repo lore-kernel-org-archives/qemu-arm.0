@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp745903lfp;
-        Tue, 14 Sep 2021 07:38:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzQUtziEdLLC58fZiQZnwBbKXVBGZstKcmy/m0vgHvRQUIz3F1Wf2GdILCtTk6RTUMVjOFc
-X-Received: by 2002:adf:b652:: with SMTP id i18mr13290196wre.117.1631630284464;
-        Tue, 14 Sep 2021 07:38:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631630284; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp747148lfp;
+        Tue, 14 Sep 2021 07:39:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwrfM80Ni+3LeE+LlhizVnHidYePlqgigJyu1XoF56+54KJFhIthfdK4YHedSx0PegY7Tas
+X-Received: by 2002:a1c:149:: with SMTP id 70mr2575596wmb.187.1631630371300;
+        Tue, 14 Sep 2021 07:39:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631630371; cv=none;
         d=google.com; s=arc-20160816;
-        b=LUSXpPx+bi8MjJOJsOz2gd6DdhdvFNpxqOyajijxHrnxdFlJhfNrPRiKuGTFIuIn1p
-         +x6f9LcYUXBS5wXrgDwja7PxumP6NIQgEo3Oi8qIzDDTlJE1Tv6Fiv20f+94FJBv7ZAb
-         H9WAloQNSvEwScNPB1Rbxy49/YNi4URF6nIKkRDq5fWlqFYq3ovC7q+1/1uNBDJ8McoJ
-         I9gvQdEFc9HTdazR1Ibqu2S+RBdNX1vYTStLzYudeq/qXyjzSBbAb3gK8Kiq2OwqHWY1
-         +7N6vglOFT5Pj6T4pn5o3B9pG6unMhbe2xnSAkXT66RoCVyJktVBzTDf1h9JVpSwoj+2
-         UbRg==
+        b=SMNzxDl9jFo9Q2GZmCDnJCVKsm3sKVoexfluPAm6LMjkSbNHy46XoFMtbcTs0mwn22
+         FcyTUj5kVCQNthl38iztQtqcSta+2pZLrGzdiLzlU8cpy/Z+OjYofo8zxun3EzMheb7W
+         iJFy6f2HRKueflk6QNcMn/A99kcxtkvuB2RJ8hI0lMAXyiwAt1ALcvgzeFv9jLpsygZb
+         gaee5csfG5FRTBSYeITCGWrlKRG8xafFOaL9+vXufa3KqEHfkySkBgrL1YaxOEzAzzIh
+         birV7B/O/wYfY70iGjw3asPl8I/maqHRLOm5QeAF4/mOinQzr+XVPAMmI79XZYhOYgWV
+         GztA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=hnAoCdun/m6178yZjeWVfAYiK2xccClT/ddcqgE1vOc=;
-        b=grjT4GhczQw/LYd3Vl0xap/d9uuddhs9VWfrxZMmhGZtgJdS3TDecR7Go1z0NPYqCu
-         ntc9pyaNyn49K8jW0Rl+bhq4aVQzsuF9zw+ja9aBDPzrdUPx1epKCeS06K7RnpYiuJyq
-         5AdLe7Rc6vH2rq8dm2bcATWiDWko8Kh/ww05dsdr8I240UcacP313gJdETXcb+IJqnxv
-         5DJr5kVrhhtd0d2+jbsMse7KmuNlV9UHmHSZ4rLWpgcQeFifKGi3J51oj14HJGZL+6dH
-         Sy6NRlBU3P8xcb3qzQNmxtidpBZ114veV36cIl9DmGPEcUM7UogmdLQui7C7o5Kea5hW
-         NXHg==
+        bh=3YLRVW0oFoZglAlAy4KiGneoC45YXK+pcucpdSfC/k8=;
+        b=mYaN0mSe61Z0MtbRvWlhMTb3MFvL3JMfiw2ccgY4EAfVh26OhPLrKKLhuY/zgI4fP2
+         2CJ2qNLeIxSnVaDovKER+gKf9QmpOQ5k0wQEfL7bQvbsVgv7KGc/tvNrxN4tshFOXN3G
+         b6+lIm4GXMih1+ngUUXJw9Olm8rc0mCClQoVZlwqNXlev+t2cHTGqsevVtEEOq1j5jzQ
+         92y5qR3OKjk5AtQdbfcextu8O1/xpShx976/yUe3F1+J4LSQ/qZpSrpHCHyiK96NGGuW
+         mKPPB4JLZN1WNwF4WTObSJr3gvhXNhXAwY0fWu+4c6fAtsgF9zvrbcT0TpO/tgA0tXxd
+         qGGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FGOP64Fv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PklRqdnc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l8si1833856wrv.514.2021.09.14.07.38.04
+        by mx.google.com with ESMTPS id c13si10718865wrr.237.2021.09.14.07.39.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:38:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 07:39:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FGOP64Fv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PklRqdnc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46342 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52174 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9ZT-0008L7-FC
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:38:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34592)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ9as-0003xK-84
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:39:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36024)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Km-0001wQ-7c
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:22:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:53293)
+ id 1mQ9MV-0006FD-CP
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:24:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31156)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Ki-0004Fu-O3
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:22:52 -0400
+ id 1mQ9ML-0005Qn-9L
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:24:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629367;
+ s=mimecast20190719; t=1631629467;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hnAoCdun/m6178yZjeWVfAYiK2xccClT/ddcqgE1vOc=;
- b=FGOP64Fvs/nl8G9/dB995ESfDBN5MIczfs2NBRZ/CDniTE7JtO0oWD+rjJLJaTLcqm833S
- S/hS1P8akCpkb6SJDdJB/HjkL9XCflEV4VxKV2By4MIz4blsfgtXUnRk7c6ekqrWuAEy3c
- RlNs/sAHIa7+kg+eKwINkxR0DdpRoQc=
+ bh=3YLRVW0oFoZglAlAy4KiGneoC45YXK+pcucpdSfC/k8=;
+ b=PklRqdncCwLD4PMp13tUP1SLtoCG0zzmDQQYWXtAo7T4OGS1tapuGH1/7Cl+STMEAgxFyw
+ LM0b/whF0rhTk+u657RzusUF42biDytTOEy7LTBI7z5A3hF8pSsfcp7OyR3hD5dEXLmG+j
+ 3xYidYy3rjciN2jur/LIUiVbYtjF6+0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-16-CmXhOXUDPVO6dPAWyAYScw-1; Tue, 14 Sep 2021 10:22:45 -0400
-X-MC-Unique: CmXhOXUDPVO6dPAWyAYScw-1
+ us-mta-434-ovBrFADYMLKm8tduxgsr8g-1; Tue, 14 Sep 2021 10:24:26 -0400
+X-MC-Unique: ovBrFADYMLKm8tduxgsr8g-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A83A1006AA5;
- Tue, 14 Sep 2021 14:22:42 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9365D1084684;
+ Tue, 14 Sep 2021 14:24:22 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6A7495D9CA;
- Tue, 14 Sep 2021 14:22:34 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0B4F25D9CA;
+ Tue, 14 Sep 2021 14:24:14 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 05/53] docs/devel: document expectations for HMP commands
- in the future
-Date: Tue, 14 Sep 2021 15:19:54 +0100
-Message-Id: <20210914142042.1655100-6-berrange@redhat.com>
+Subject: [PATCH v2 12/53] target/hexagon: convert to use format_state instead
+ of dump_state
+Date: Tue, 14 Sep 2021 15:20:01 +0100
+Message-Id: <20210914142042.1655100-13-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -94,35 +94,37 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+ Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -138,43 +140,124 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kPHhZDAbjhlN
-
-We no longer wish to have commands implemented in HMP only. All commands
-should start with a QMP implementation and the HMP merely be a shim
-around this. To reduce the burden of implementing QMP commands where
-there is low expectation of machine usage, requirements for QAPI
-modelling are relaxed provided the command is under the "x-" name
-prefix.
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d5Ru0d+iIkN6
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- docs/devel/writing-monitor-commands.rst | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ target/hexagon/cpu.c | 65 ++++++++++++++++++++------------------------
+ 1 file changed, 29 insertions(+), 36 deletions(-)
 
-diff --git a/docs/devel/writing-monitor-commands.rst b/docs/devel/writing-monitor-commands.rst
-index 4cf51ab557..983130a793 100644
---- a/docs/devel/writing-monitor-commands.rst
-+++ b/docs/devel/writing-monitor-commands.rst
-@@ -11,6 +11,16 @@ For an in-depth introduction to the QAPI framework, please refer to
- docs/devel/qapi-code-gen.txt. For documentation about the QMP protocol,
- start with docs/interop/qmp-intro.txt.
+diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+index 14c628db7a..7802186ad7 100644
+--- a/target/hexagon/cpu.c
++++ b/target/hexagon/cpu.c
+@@ -98,7 +98,7 @@ static target_ulong read_p3_0(CPUHexagonState *env)
+     return control_reg;
+ }
  
-+Historically QEMU has permitted new monitor commands to be implemented in HMP
-+only, QMP only, or both, depending on whether they needed to be accessible to
-+human operators, machines, or both. When both QMP and HMP are implemented it
-+is expected the HMP implementation is a shim around the QMP implementation.
-+Going forward, the expectation is that new commands are implemented in QMP
-+only, or both QMP and HMP. No further commands are to be added to HMP only.
-+The long term goal is that all HMP commands will be implemented in terms of
-+their QMP equivalent, enabling internals of QEMU to be fully isolated from
-+the HMP implementation. Refer to the later topic on modelling data in QAPI
-+for further guidance on commands that would have traditionally been HMP only.
+-static void print_reg(FILE *f, CPUHexagonState *env, int regnum)
++static void format_reg(GString *buf, CPUHexagonState *env, int regnum)
+ {
+     target_ulong value;
  
- Overview
- --------
+@@ -109,13 +109,14 @@ static void print_reg(FILE *f, CPUHexagonState *env, int regnum)
+                             : env->gpr[regnum];
+     }
+ 
+-    qemu_fprintf(f, "  %s = 0x" TARGET_FMT_lx "\n",
+-                 hexagon_regnames[regnum], value);
++    g_string_append_printf(buf, "  %s = 0x" TARGET_FMT_lx "\n",
++                           hexagon_regnames[regnum], value);
+ }
+ 
+-static void hexagon_dump(CPUHexagonState *env, FILE *f)
++static void hexagon_format_state(CPUState *cs, GString *buf, int flags)
+ {
+-    HexagonCPU *cpu = env_archcpu(env);
++    HexagonCPU *cpu = HEXAGON_CPU(cs);
++    CPUHexagonState *env = &cpu->env;
+ 
+     if (cpu->lldb_compat) {
+         /*
+@@ -128,45 +129,37 @@ static void hexagon_dump(CPUHexagonState *env, FILE *f)
+         env->last_pc_dumped = env->gpr[HEX_REG_PC];
+     }
+ 
+-    qemu_fprintf(f, "General Purpose Registers = {\n");
++    g_string_append_printf(buf, "General Purpose Registers = {\n");
+     for (int i = 0; i < 32; i++) {
+-        print_reg(f, env, i);
++        format_reg(buf, env, i);
+     }
+-    print_reg(f, env, HEX_REG_SA0);
+-    print_reg(f, env, HEX_REG_LC0);
+-    print_reg(f, env, HEX_REG_SA1);
+-    print_reg(f, env, HEX_REG_LC1);
+-    print_reg(f, env, HEX_REG_M0);
+-    print_reg(f, env, HEX_REG_M1);
+-    print_reg(f, env, HEX_REG_USR);
+-    print_reg(f, env, HEX_REG_P3_0);
+-    print_reg(f, env, HEX_REG_GP);
+-    print_reg(f, env, HEX_REG_UGP);
+-    print_reg(f, env, HEX_REG_PC);
++    format_reg(buf, env, HEX_REG_SA0);
++    format_reg(buf, env, HEX_REG_LC0);
++    format_reg(buf, env, HEX_REG_SA1);
++    format_reg(buf, env, HEX_REG_LC1);
++    format_reg(buf, env, HEX_REG_M0);
++    format_reg(buf, env, HEX_REG_M1);
++    format_reg(buf, env, HEX_REG_USR);
++    format_reg(buf, env, HEX_REG_P3_0);
++    format_reg(buf, env, HEX_REG_GP);
++    format_reg(buf, env, HEX_REG_UGP);
++    format_reg(buf, env, HEX_REG_PC);
+ #ifdef CONFIG_USER_ONLY
+     /*
+      * Not modelled in user mode, print junk to minimize the diff's
+      * with LLDB output
+      */
+-    qemu_fprintf(f, "  cause = 0x000000db\n");
+-    qemu_fprintf(f, "  badva = 0x00000000\n");
+-    qemu_fprintf(f, "  cs0 = 0x00000000\n");
+-    qemu_fprintf(f, "  cs1 = 0x00000000\n");
++    g_string_append_printf(buf, "  cause = 0x000000db\n");
++    g_string_append_printf(buf, "  badva = 0x00000000\n");
++    g_string_append_printf(buf, "  cs0 = 0x00000000\n");
++    g_string_append_printf(buf, "  cs1 = 0x00000000\n");
+ #else
+-    print_reg(f, env, HEX_REG_CAUSE);
+-    print_reg(f, env, HEX_REG_BADVA);
+-    print_reg(f, env, HEX_REG_CS0);
+-    print_reg(f, env, HEX_REG_CS1);
++    format_reg(buf, env, HEX_REG_CAUSE);
++    format_reg(buf, env, HEX_REG_BADVA);
++    format_reg(buf, env, HEX_REG_CS0);
++    format_reg(buf, env, HEX_REG_CS1);
+ #endif
+-    qemu_fprintf(f, "}\n");
+-}
+-
+-static void hexagon_dump_state(CPUState *cs, FILE *f, int flags)
+-{
+-    HexagonCPU *cpu = HEXAGON_CPU(cs);
+-    CPUHexagonState *env = &cpu->env;
+-
+-    hexagon_dump(env, f);
++    g_string_append_printf(buf, "}\n");
+ }
+ 
+ static void hexagon_cpu_set_pc(CPUState *cs, vaddr value)
+@@ -283,7 +276,7 @@ static void hexagon_cpu_class_init(ObjectClass *c, void *data)
+ 
+     cc->class_by_name = hexagon_cpu_class_by_name;
+     cc->has_work = hexagon_cpu_has_work;
+-    cc->dump_state = hexagon_dump_state;
++    cc->format_state = hexagon_format_state;
+     cc->set_pc = hexagon_cpu_set_pc;
+     cc->gdb_read_register = hexagon_gdb_read_register;
+     cc->gdb_write_register = hexagon_gdb_write_register;
 -- 
 2.31.1
 

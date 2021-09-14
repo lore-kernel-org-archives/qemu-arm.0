@@ -1,87 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp762350lfp;
-        Tue, 14 Sep 2021 07:57:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwvgDck3tTg2BjzltJowkB0I3Xxjx1tG9pvWOe6vaC0gdWITKwUy61kJpP7I23okJxqqV7+
-X-Received: by 2002:a25:c5c5:: with SMTP id v188mr24187422ybe.121.1631631465128;
-        Tue, 14 Sep 2021 07:57:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631631465; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp762801lfp;
+        Tue, 14 Sep 2021 07:58:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9sB74THjIQvmkFD30lzAsy4LAUks86XhHeaK7SV5jRJIbeXZp0hOefWLijBG8Hsq8VYnu
+X-Received: by 2002:a5b:44c:: with SMTP id s12mr21044842ybp.505.1631631502967;
+        Tue, 14 Sep 2021 07:58:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631631502; cv=none;
         d=google.com; s=arc-20160816;
-        b=O0VwR/HUCJKkoMvL5FVHxWMsWlaPJBzWVBhjBlXdOqjbnBLCKIe4CJ1h2hP9cCiNND
-         QxLp74hodFwdoGqMvDx18+buqez3+Ji3i1lELqy/z1v/048JQnR/q4cdfAdqJlAWyGcb
-         wzFH9n1665MnSUSUZy8uf5OUKUj1WLUNpJ6bSQAnKaufptq98iui9or5latPG9z/haef
-         tfPQSDbeb3QE9RNZwDA/UsBIa/TllmmTi+1icFVV1SjcmD5ZEwN68J4x1rPLfVAAsS0J
-         +0BMAYp5Vk+QvWD4YoWCeqxCTPbyLjoQuKtW00ygZ3DYCJzeNvaGCHQWpq0exfJmX1fp
-         8FDA==
+        b=vEAyoAKoFD51rgCCN0z/vmMyymApcnHzbMMMzR6/v/AEEXaUTOwVo/nnE19ezog2FU
+         Jr5vRvxCErVXYouq4Ngz8uINtKNX9/Jxh5fTP3ZUbrJnqmMYzEM5gYP56S5rl6ac6IHI
+         xcPVPk+xY/I3YZEwhfO6LVaPxnzobypboUtGPGrEIh2/XTWGPnZ893ViJ9OjD6hNNMRr
+         sqTdBXGO0hZfH0znooUYKTKSbJ6nvCxqGlY7Uwx1yhwT5pjdSArTjWWIHj/0dlieeqWy
+         BujcTvROtpF28ZhG0YQMCC+/TxRT+0mFvbGIsPxewC0fLLbl3XPYWCpx8bp+8CQ4L9hG
+         xKOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=TVhUD4M4QIyfpdQHCllc9n629wx0pJ553X4xNf1WDo8=;
-        b=Ii2dALSU1GMMFL6s7Hb63gjDqGBBGRxY0nKiqwi+JCqTGKY+kNTLxSDNtGYFbFDTwf
-         wN9PzPMeGe/gaZcelUyFURtTtBSZTWghAdyKu0p+BbCTPVvkRIV/6Zhd1NFJhIAVlSB+
-         h7IP/lPqmhmDo1mVp97E3YUUc08S+yYujs1rzRwklC2b/Mx7BEJGtsMmAQjgsxraTakF
-         ghplyoX3lZK9XKmCI/TVZdwV5h5h2yQsRrOJhFP5zU9IpAmHgYQ7elT/xFtqDc0/p55Y
-         R9KFwwywW+VCbWcuSY5SIkVQnFZt3NWgTHzInviX/xDz9aTlTWhCR5WZOZSTljtLKaWZ
-         i0Lw==
+        bh=u7eETvjxivMzE+Swy97bYqjXMqPqicbmd8tpwdrb6q8=;
+        b=s/lrxUsJW8gJsgOHmuDQDNPHlPeJcNwgDYdlqUKs9KJPm8TkzItCzAEDj1KgHdRTo2
+         vDLQePmnHfIiEV8lKdj20kjprS2qvOKTlIef3x+Vs8YhX/tSBOrlnn2uVQVcJU2cJHOP
+         8Kg9n7P6Q6wl3ljeOpeyD4bsf8AutJp8Wa2QUOW/ioKQBXIC0rQH3PSWD0T/gtcN0Mjj
+         hXvdEKTzL+H6EUA2NYANN5Sa6R/P1HHibaI9sJxeObqNSXyMrv/68day6QwHlaKqH8Zt
+         LP5JIUEzB17UM1dIHXJ8hWiLCEDFgOoXZrQtQXXz1qkeaEAkhqCdr2hlCzFip0x+RGUy
+         H2vQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YoAhOjpx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ayDky5/4";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o15si12287992ybm.454.2021.09.14.07.57.44
+        by mx.google.com with ESMTPS id b10si11513094ybk.190.2021.09.14.07.58.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:57:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 07:58:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YoAhOjpx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ayDky5/4";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51480 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9sV-00005g-BV
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:57:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38034)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ9t8-0001U8-8o
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:58:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9PX-00013g-Mc
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:27:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38183)
+ id 1mQ9TZ-0008GO-GV
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22191)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9PO-0007r8-J6
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:27:45 -0400
+ id 1mQ9TU-0002Q8-CO
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:31:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629657;
+ s=mimecast20190719; t=1631629911;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TVhUD4M4QIyfpdQHCllc9n629wx0pJ553X4xNf1WDo8=;
- b=YoAhOjpxzRXOwNGx35dauYg/XBRe6R6OOVPwYz9aOf7Q5vT9AsbnPM4wWChh5NXWtG97CT
- WYAdf74Dh0kVU49vG35YUr6h9j4hI3wkmYX5XgJ2M+3Bavuy0aYkaols96ObHwJVajYmiw
- fvEQf4AkuYQZVmRecRm5WEkKLrHBtJM=
+ bh=u7eETvjxivMzE+Swy97bYqjXMqPqicbmd8tpwdrb6q8=;
+ b=ayDky5/4cQUjZMV6YQE7RgvTUAXJQ3iTYPXe7I4CyAFpyhiMdmwZlHtAGW2I0WzKBqL54N
+ I28GvlaH+hn1dZvmzjCfmFnOWTVIFfKrAG9xhymIM09rM6wLfzAVyZhsVCoWdfwH9pWm8n
+ UEevQrgd4rpN+br59KF3wzUEZm7C1pQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-551-7pcFh4DxMim4vOfG1WuzTA-1; Tue, 14 Sep 2021 10:27:36 -0400
-X-MC-Unique: 7pcFh4DxMim4vOfG1WuzTA-1
+ us-mta-576-EOyYhwVLP9q-Q4clTf899Q-1; Tue, 14 Sep 2021 10:31:41 -0400
+X-MC-Unique: EOyYhwVLP9q-Q4clTf899Q-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF0E8800FF4;
- Tue, 14 Sep 2021 14:27:32 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A7F91922023;
+ Tue, 14 Sep 2021 14:31:37 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5F46A5D9CA;
- Tue, 14 Sep 2021 14:27:13 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4119F5D9CA;
+ Tue, 14 Sep 2021 14:31:29 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 20/53] target/ppc: convert to use format_state instead of
- dump_state
-Date: Tue, 14 Sep 2021 15:20:09 +0100
-Message-Id: <20210914142042.1655100-21-berrange@redhat.com>
+Subject: [PATCH v2 34/53] qapi: introduce x-query-rdma QMP command
+Date: Tue, 14 Sep 2021 15:20:23 +0100
+Message-Id: <20210914142042.1655100-35-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -92,7 +91,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -102,29 +101,27 @@ X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -140,333 +137,344 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6wqgeu8m0oAl
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qsyOsiNynxtW
+
+This is a counterpart to the HMP "info rdma" command. It is being
+added with an "x-" prefix because this QMP command is intended as an
+adhoc debugging tool and will thus not be modelled in QAPI as fully
+structured data, nor will it have long term guaranteed stability.
+The existing HMP command is rewritten to call the QMP command.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/ppc/cpu.h      |   2 +-
- target/ppc/cpu_init.c | 212 +++++++++++++++++++++++++-----------------
- 2 files changed, 126 insertions(+), 88 deletions(-)
+ hw/rdma/rdma_rm.c         | 104 +++++++++++++++++++-------------------
+ hw/rdma/rdma_rm.h         |   2 +-
+ hw/rdma/vmw/pvrdma_main.c |  31 ++++++------
+ include/hw/rdma/rdma.h    |   2 +-
+ monitor/hmp-cmds.c        |  29 +++--------
+ monitor/qmp-cmds.c        |  35 +++++++++++++
+ qapi/machine.json         |  12 +++++
+ 7 files changed, 125 insertions(+), 90 deletions(-)
 
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 500205229c..c84ae29b98 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1256,7 +1256,7 @@ DECLARE_OBJ_CHECKERS(PPCVirtualHypervisor, PPCVirtualHypervisorClass,
+diff --git a/hw/rdma/rdma_rm.c b/hw/rdma/rdma_rm.c
+index 49141d4074..cfd85de3e6 100644
+--- a/hw/rdma/rdma_rm.c
++++ b/hw/rdma/rdma_rm.c
+@@ -27,58 +27,58 @@
+ #define PG_DIR_SZ { TARGET_PAGE_SIZE / sizeof(__u64) }
+ #define PG_TBL_SZ { TARGET_PAGE_SIZE / sizeof(__u64) }
  
- void ppc_cpu_do_interrupt(CPUState *cpu);
- bool ppc_cpu_exec_interrupt(CPUState *cpu, int int_req);
--void ppc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-+void ppc_cpu_format_state(CPUState *cpu, GString *buf, int flags);
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int ppc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int ppc_cpu_gdb_read_register_apple(CPUState *cpu, GByteArray *buf, int reg);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index ad7abc6041..3456be465c 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -9043,7 +9043,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- 
-     cc->class_by_name = ppc_cpu_class_by_name;
-     cc->has_work = ppc_cpu_has_work;
--    cc->dump_state = ppc_cpu_dump_state;
-+    cc->format_state = ppc_cpu_format_state;
-     cc->set_pc = ppc_cpu_set_pc;
-     cc->gdb_read_register = ppc_cpu_gdb_read_register;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register;
-@@ -9104,7 +9104,7 @@ static void ppc_cpu_register_types(void)
- #endif
+-void rdma_dump_device_counters(Monitor *mon, RdmaDeviceResources *dev_res)
+-{
+-    monitor_printf(mon, "\ttx               : %" PRId64 "\n",
+-                   dev_res->stats.tx);
+-    monitor_printf(mon, "\ttx_len           : %" PRId64 "\n",
+-                   dev_res->stats.tx_len);
+-    monitor_printf(mon, "\ttx_err           : %" PRId64 "\n",
+-                   dev_res->stats.tx_err);
+-    monitor_printf(mon, "\trx_bufs          : %" PRId64 "\n",
+-                   dev_res->stats.rx_bufs);
+-    monitor_printf(mon, "\trx_srq           : %" PRId64 "\n",
+-                   dev_res->stats.rx_srq);
+-    monitor_printf(mon, "\trx_bufs_len      : %" PRId64 "\n",
+-                   dev_res->stats.rx_bufs_len);
+-    monitor_printf(mon, "\trx_bufs_err      : %" PRId64 "\n",
+-                   dev_res->stats.rx_bufs_err);
+-    monitor_printf(mon, "\tcomps            : %" PRId64 "\n",
+-                   dev_res->stats.completions);
+-    monitor_printf(mon, "\tmissing_comps    : %" PRId32 "\n",
+-                   dev_res->stats.missing_cqe);
+-    monitor_printf(mon, "\tpoll_cq (bk)     : %" PRId64 "\n",
+-                   dev_res->stats.poll_cq_from_bk);
+-    monitor_printf(mon, "\tpoll_cq_ppoll_to : %" PRId64 "\n",
+-                   dev_res->stats.poll_cq_ppoll_to);
+-    monitor_printf(mon, "\tpoll_cq (fe)     : %" PRId64 "\n",
+-                   dev_res->stats.poll_cq_from_guest);
+-    monitor_printf(mon, "\tpoll_cq_empty    : %" PRId64 "\n",
+-                   dev_res->stats.poll_cq_from_guest_empty);
+-    monitor_printf(mon, "\tmad_tx           : %" PRId64 "\n",
+-                   dev_res->stats.mad_tx);
+-    monitor_printf(mon, "\tmad_tx_err       : %" PRId64 "\n",
+-                   dev_res->stats.mad_tx_err);
+-    monitor_printf(mon, "\tmad_rx           : %" PRId64 "\n",
+-                   dev_res->stats.mad_rx);
+-    monitor_printf(mon, "\tmad_rx_err       : %" PRId64 "\n",
+-                   dev_res->stats.mad_rx_err);
+-    monitor_printf(mon, "\tmad_rx_bufs      : %" PRId64 "\n",
+-                   dev_res->stats.mad_rx_bufs);
+-    monitor_printf(mon, "\tmad_rx_bufs_err  : %" PRId64 "\n",
+-                   dev_res->stats.mad_rx_bufs_err);
+-    monitor_printf(mon, "\tPDs              : %" PRId32 "\n",
+-                   dev_res->pd_tbl.used);
+-    monitor_printf(mon, "\tMRs              : %" PRId32 "\n",
+-                   dev_res->mr_tbl.used);
+-    monitor_printf(mon, "\tUCs              : %" PRId32 "\n",
+-                   dev_res->uc_tbl.used);
+-    monitor_printf(mon, "\tQPs              : %" PRId32 "\n",
+-                   dev_res->qp_tbl.used);
+-    monitor_printf(mon, "\tCQs              : %" PRId32 "\n",
+-                   dev_res->cq_tbl.used);
+-    monitor_printf(mon, "\tCEQ_CTXs         : %" PRId32 "\n",
+-                   dev_res->cqe_ctx_tbl.used);
++void rdma_format_device_counters(RdmaDeviceResources *dev_res, GString *buf)
++{
++    g_string_append_printf(buf, "\ttx               : %" PRId64 "\n",
++                           dev_res->stats.tx);
++    g_string_append_printf(buf, "\ttx_len           : %" PRId64 "\n",
++                           dev_res->stats.tx_len);
++    g_string_append_printf(buf, "\ttx_err           : %" PRId64 "\n",
++                           dev_res->stats.tx_err);
++    g_string_append_printf(buf, "\trx_bufs          : %" PRId64 "\n",
++                           dev_res->stats.rx_bufs);
++    g_string_append_printf(buf, "\trx_srq           : %" PRId64 "\n",
++                           dev_res->stats.rx_srq);
++    g_string_append_printf(buf, "\trx_bufs_len      : %" PRId64 "\n",
++                           dev_res->stats.rx_bufs_len);
++    g_string_append_printf(buf, "\trx_bufs_err      : %" PRId64 "\n",
++                           dev_res->stats.rx_bufs_err);
++    g_string_append_printf(buf, "\tcomps            : %" PRId64 "\n",
++                           dev_res->stats.completions);
++    g_string_append_printf(buf, "\tmissing_comps    : %" PRId32 "\n",
++                           dev_res->stats.missing_cqe);
++    g_string_append_printf(buf, "\tpoll_cq (bk)     : %" PRId64 "\n",
++                           dev_res->stats.poll_cq_from_bk);
++    g_string_append_printf(buf, "\tpoll_cq_ppoll_to : %" PRId64 "\n",
++                           dev_res->stats.poll_cq_ppoll_to);
++    g_string_append_printf(buf, "\tpoll_cq (fe)     : %" PRId64 "\n",
++                           dev_res->stats.poll_cq_from_guest);
++    g_string_append_printf(buf, "\tpoll_cq_empty    : %" PRId64 "\n",
++                           dev_res->stats.poll_cq_from_guest_empty);
++    g_string_append_printf(buf, "\tmad_tx           : %" PRId64 "\n",
++                           dev_res->stats.mad_tx);
++    g_string_append_printf(buf, "\tmad_tx_err       : %" PRId64 "\n",
++                           dev_res->stats.mad_tx_err);
++    g_string_append_printf(buf, "\tmad_rx           : %" PRId64 "\n",
++                           dev_res->stats.mad_rx);
++    g_string_append_printf(buf, "\tmad_rx_err       : %" PRId64 "\n",
++                           dev_res->stats.mad_rx_err);
++    g_string_append_printf(buf, "\tmad_rx_bufs      : %" PRId64 "\n",
++                           dev_res->stats.mad_rx_bufs);
++    g_string_append_printf(buf, "\tmad_rx_bufs_err  : %" PRId64 "\n",
++                           dev_res->stats.mad_rx_bufs_err);
++    g_string_append_printf(buf, "\tPDs              : %" PRId32 "\n",
++                           dev_res->pd_tbl.used);
++    g_string_append_printf(buf, "\tMRs              : %" PRId32 "\n",
++                           dev_res->mr_tbl.used);
++    g_string_append_printf(buf, "\tUCs              : %" PRId32 "\n",
++                           dev_res->uc_tbl.used);
++    g_string_append_printf(buf, "\tQPs              : %" PRId32 "\n",
++                           dev_res->qp_tbl.used);
++    g_string_append_printf(buf, "\tCQs              : %" PRId32 "\n",
++                           dev_res->cq_tbl.used);
++    g_string_append_printf(buf, "\tCEQ_CTXs         : %" PRId32 "\n",
++                           dev_res->cqe_ctx_tbl.used);
  }
  
--void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+void ppc_cpu_format_state(CPUState *cs, GString *buf, int flags)
+ static inline void res_tbl_init(const char *name, RdmaRmResTbl *tbl,
+diff --git a/hw/rdma/rdma_rm.h b/hw/rdma/rdma_rm.h
+index e8639909cd..d69a917795 100644
+--- a/hw/rdma/rdma_rm.h
++++ b/hw/rdma/rdma_rm.h
+@@ -92,6 +92,6 @@ static inline union ibv_gid *rdma_rm_get_gid(RdmaDeviceResources *dev_res,
  {
- #define RGPL  4
- #define RFPL  4
-@@ -9113,39 +9113,41 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     CPUPPCState *env = &cpu->env;
-     int i;
+     return &dev_res->port.gid_tbl[sgid_idx].gid;
+ }
+-void rdma_dump_device_counters(Monitor *mon, RdmaDeviceResources *dev_res);
++void rdma_format_device_counters(RdmaDeviceResources *dev_res, GString *buf);
  
--    qemu_fprintf(f, "NIP " TARGET_FMT_lx "   LR " TARGET_FMT_lx " CTR "
--                 TARGET_FMT_lx " XER " TARGET_FMT_lx " CPU#%d\n",
--                 env->nip, env->lr, env->ctr, cpu_read_xer(env),
--                 cs->cpu_index);
--    qemu_fprintf(f, "MSR " TARGET_FMT_lx " HID0 " TARGET_FMT_lx "  HF "
--                 "%08x iidx %d didx %d\n",
--                 env->msr, env->spr[SPR_HID0], env->hflags,
--                 cpu_mmu_index(env, true), cpu_mmu_index(env, false));
-+    g_string_append_printf(buf,
-+                           "NIP " TARGET_FMT_lx "   LR " TARGET_FMT_lx " CTR "
-+                           TARGET_FMT_lx " XER " TARGET_FMT_lx " CPU#%d\n",
-+                           env->nip, env->lr, env->ctr, cpu_read_xer(env),
-+                           cs->cpu_index);
-+    g_string_append_printf(buf,
-+                           "MSR " TARGET_FMT_lx " HID0 " TARGET_FMT_lx "  HF "
-+                           "%08x iidx %d didx %d\n",
-+                           env->msr, env->spr[SPR_HID0], env->hflags,
-+                           cpu_mmu_index(env, true), cpu_mmu_index(env, false));
- #if !defined(NO_TIMER_DUMP)
--    qemu_fprintf(f, "TB %08" PRIu32 " %08" PRIu64
-+    g_string_append_printf(buf, "TB %08" PRIu32 " %08" PRIu64
- #if !defined(CONFIG_USER_ONLY)
--                 " DECR " TARGET_FMT_lu
-+                           " DECR " TARGET_FMT_lu
  #endif
--                 "\n",
--                 cpu_ppc_load_tbu(env), cpu_ppc_load_tbl(env)
-+                           "\n",
-+                           cpu_ppc_load_tbu(env), cpu_ppc_load_tbl(env)
- #if !defined(CONFIG_USER_ONLY)
--                 , cpu_ppc_load_decr(env)
-+                           , cpu_ppc_load_decr(env)
+diff --git a/hw/rdma/vmw/pvrdma_main.c b/hw/rdma/vmw/pvrdma_main.c
+index 7c0c3551a8..91206dbb8e 100644
+--- a/hw/rdma/vmw/pvrdma_main.c
++++ b/hw/rdma/vmw/pvrdma_main.c
+@@ -58,24 +58,25 @@ static Property pvrdma_dev_properties[] = {
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+-static void pvrdma_print_statistics(Monitor *mon, RdmaProvider *obj)
++static void pvrdma_format_statistics(RdmaProvider *obj, GString *buf)
+ {
+     PVRDMADev *dev = PVRDMA_DEV(obj);
+     PCIDevice *pdev = PCI_DEVICE(dev);
+ 
+-    monitor_printf(mon, "%s, %x.%x\n", pdev->name, PCI_SLOT(pdev->devfn),
+-                   PCI_FUNC(pdev->devfn));
+-    monitor_printf(mon, "\tcommands         : %" PRId64 "\n",
+-                   dev->stats.commands);
+-    monitor_printf(mon, "\tregs_reads       : %" PRId64 "\n",
+-                   dev->stats.regs_reads);
+-    monitor_printf(mon, "\tregs_writes      : %" PRId64 "\n",
+-                   dev->stats.regs_writes);
+-    monitor_printf(mon, "\tuar_writes       : %" PRId64 "\n",
+-                   dev->stats.uar_writes);
+-    monitor_printf(mon, "\tinterrupts       : %" PRId64 "\n",
+-                   dev->stats.interrupts);
+-    rdma_dump_device_counters(mon, &dev->rdma_dev_res);
++    g_string_append_printf(buf, "%s, %x.%x\n",
++                           pdev->name, PCI_SLOT(pdev->devfn),
++                           PCI_FUNC(pdev->devfn));
++    g_string_append_printf(buf, "\tcommands         : %" PRId64 "\n",
++                           dev->stats.commands);
++    g_string_append_printf(buf, "\tregs_reads       : %" PRId64 "\n",
++                           dev->stats.regs_reads);
++    g_string_append_printf(buf, "\tregs_writes      : %" PRId64 "\n",
++                           dev->stats.regs_writes);
++    g_string_append_printf(buf, "\tuar_writes       : %" PRId64 "\n",
++                           dev->stats.uar_writes);
++    g_string_append_printf(buf, "\tinterrupts       : %" PRId64 "\n",
++                           dev->stats.interrupts);
++    rdma_format_device_counters(&dev->rdma_dev_res, buf);
+ }
+ 
+ static void free_dev_ring(PCIDevice *pci_dev, PvrdmaRing *ring,
+@@ -699,7 +700,7 @@ static void pvrdma_class_init(ObjectClass *klass, void *data)
+     device_class_set_props(dc, pvrdma_dev_properties);
+     set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
+ 
+-    ir->print_statistics = pvrdma_print_statistics;
++    ir->format_statistics = pvrdma_format_statistics;
+ }
+ 
+ static const TypeInfo pvrdma_info = {
+diff --git a/include/hw/rdma/rdma.h b/include/hw/rdma/rdma.h
+index e77e43a170..80b2e531c4 100644
+--- a/include/hw/rdma/rdma.h
++++ b/include/hw/rdma/rdma.h
+@@ -31,7 +31,7 @@ typedef struct RdmaProvider RdmaProvider;
+ struct RdmaProviderClass {
+     InterfaceClass parent;
+ 
+-    void (*print_statistics)(Monitor *mon, RdmaProvider *obj);
++    void (*format_statistics)(RdmaProvider *obj, GString *buf);
+ };
+ 
  #endif
-         );
- #endif
-     for (i = 0; i < 32; i++) {
-         if ((i & (RGPL - 1)) == 0) {
--            qemu_fprintf(f, "GPR%02d", i);
-+            g_string_append_printf(buf, "GPR%02d", i);
-         }
--        qemu_fprintf(f, " %016" PRIx64, ppc_dump_gpr(env, i));
-+        g_string_append_printf(buf, " %016" PRIx64, ppc_dump_gpr(env, i));
-         if ((i & (RGPL - 1)) == (RGPL - 1)) {
--            qemu_fprintf(f, "\n");
-+            g_string_append_printf(buf, "\n");
-         }
-     }
--    qemu_fprintf(f, "CR ");
-+    g_string_append_printf(buf, "CR ");
-     for (i = 0; i < 8; i++)
--        qemu_fprintf(f, "%01x", env->crf[i]);
--    qemu_fprintf(f, "  [");
-+        g_string_append_printf(buf, "%01x", env->crf[i]);
-+    g_string_append_printf(buf, "  [");
-     for (i = 0; i < 8; i++) {
-         char a = '-';
-         if (env->crf[i] & 0x08) {
-@@ -9155,75 +9157,97 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-         } else if (env->crf[i] & 0x02) {
-             a = 'E';
-         }
--        qemu_fprintf(f, " %c%c", a, env->crf[i] & 0x01 ? 'O' : ' ');
-+        g_string_append_printf(buf, " %c%c", a, env->crf[i] & 0x01 ? 'O' : ' ');
-     }
--    qemu_fprintf(f, " ]             RES " TARGET_FMT_lx "\n",
--                 env->reserve_addr);
-+    g_string_append_printf(buf, " ]             RES " TARGET_FMT_lx "\n",
-+                           env->reserve_addr);
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index e00255f7ee..d24a1683de 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -54,7 +54,6 @@
+ #include "qemu/error-report.h"
+ #include "exec/ramlist.h"
+ #include "hw/intc/intc.h"
+-#include "hw/rdma/rdma.h"
+ #include "migration/snapshot.h"
+ #include "migration/misc.h"
  
-     if (flags & CPU_DUMP_FPU) {
-         for (i = 0; i < 32; i++) {
-             if ((i & (RFPL - 1)) == 0) {
--                qemu_fprintf(f, "FPR%02d", i);
-+                g_string_append_printf(buf, "FPR%02d", i);
-             }
--            qemu_fprintf(f, " %016" PRIx64, *cpu_fpr_ptr(env, i));
-+            g_string_append_printf(buf, " %016" PRIx64, *cpu_fpr_ptr(env, i));
-             if ((i & (RFPL - 1)) == (RFPL - 1)) {
--                qemu_fprintf(f, "\n");
-+                g_string_append_printf(buf, "\n");
-             }
-         }
--        qemu_fprintf(f, "FPSCR " TARGET_FMT_lx "\n", env->fpscr);
-+        g_string_append_printf(buf, "FPSCR " TARGET_FMT_lx "\n", env->fpscr);
-     }
+@@ -850,30 +849,18 @@ void hmp_info_pic(Monitor *mon, const QDict *qdict)
+                                    hmp_info_pic_foreach, mon);
+ }
  
- #if !defined(CONFIG_USER_ONLY)
--    qemu_fprintf(f, " SRR0 " TARGET_FMT_lx "  SRR1 " TARGET_FMT_lx
--                 "    PVR " TARGET_FMT_lx " VRSAVE " TARGET_FMT_lx "\n",
--                 env->spr[SPR_SRR0], env->spr[SPR_SRR1],
--                 env->spr[SPR_PVR], env->spr[SPR_VRSAVE]);
--
--    qemu_fprintf(f, "SPRG0 " TARGET_FMT_lx " SPRG1 " TARGET_FMT_lx
--                 "  SPRG2 " TARGET_FMT_lx "  SPRG3 " TARGET_FMT_lx "\n",
--                 env->spr[SPR_SPRG0], env->spr[SPR_SPRG1],
--                 env->spr[SPR_SPRG2], env->spr[SPR_SPRG3]);
--
--    qemu_fprintf(f, "SPRG4 " TARGET_FMT_lx " SPRG5 " TARGET_FMT_lx
--                 "  SPRG6 " TARGET_FMT_lx "  SPRG7 " TARGET_FMT_lx "\n",
--                 env->spr[SPR_SPRG4], env->spr[SPR_SPRG5],
--                 env->spr[SPR_SPRG6], env->spr[SPR_SPRG7]);
-+    g_string_append_printf(buf, " SRR0 " TARGET_FMT_lx "  SRR1 " TARGET_FMT_lx
-+                           "    PVR " TARGET_FMT_lx " VRSAVE " TARGET_FMT_lx
-+                           "\n",
-+                           env->spr[SPR_SRR0], env->spr[SPR_SRR1],
-+                           env->spr[SPR_PVR], env->spr[SPR_VRSAVE]);
-+
-+    g_string_append_printf(buf, "SPRG0 " TARGET_FMT_lx " SPRG1 " TARGET_FMT_lx
-+                           "  SPRG2 " TARGET_FMT_lx "  SPRG3 " TARGET_FMT_lx
-+                           "\n",
-+                           env->spr[SPR_SPRG0], env->spr[SPR_SPRG1],
-+                           env->spr[SPR_SPRG2], env->spr[SPR_SPRG3]);
-+
-+    g_string_append_printf(buf, "SPRG4 " TARGET_FMT_lx " SPRG5 " TARGET_FMT_lx
-+                           "  SPRG6 " TARGET_FMT_lx "  SPRG7 " TARGET_FMT_lx
-+                           "\n",
-+                           env->spr[SPR_SPRG4], env->spr[SPR_SPRG5],
-+                           env->spr[SPR_SPRG6], env->spr[SPR_SPRG7]);
+-static int hmp_info_rdma_foreach(Object *obj, void *opaque)
++void hmp_info_rdma(Monitor *mon, const QDict *qdict)
+ {
+-    RdmaProvider *rdma;
+-    RdmaProviderClass *k;
+-    Monitor *mon = opaque;
++    Error *err = NULL;
++    g_autoptr(HumanReadableText) info = NULL;
  
- #if defined(TARGET_PPC64)
-     if (env->excp_model == POWERPC_EXCP_POWER7 ||
-         env->excp_model == POWERPC_EXCP_POWER8 ||
-         env->excp_model == POWERPC_EXCP_POWER9 ||
-         env->excp_model == POWERPC_EXCP_POWER10)  {
--        qemu_fprintf(f, "HSRR0 " TARGET_FMT_lx " HSRR1 " TARGET_FMT_lx "\n",
--                     env->spr[SPR_HSRR0], env->spr[SPR_HSRR1]);
-+        g_string_append_printf(buf, "HSRR0 " TARGET_FMT_lx
-+                               " HSRR1 " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_HSRR0], env->spr[SPR_HSRR1]);
-     }
- #endif
-     if (env->excp_model == POWERPC_EXCP_BOOKE) {
--        qemu_fprintf(f, "CSRR0 " TARGET_FMT_lx " CSRR1 " TARGET_FMT_lx
--                     " MCSRR0 " TARGET_FMT_lx " MCSRR1 " TARGET_FMT_lx "\n",
--                     env->spr[SPR_BOOKE_CSRR0], env->spr[SPR_BOOKE_CSRR1],
--                     env->spr[SPR_BOOKE_MCSRR0], env->spr[SPR_BOOKE_MCSRR1]);
--
--        qemu_fprintf(f, "  TCR " TARGET_FMT_lx "   TSR " TARGET_FMT_lx
--                     "    ESR " TARGET_FMT_lx "   DEAR " TARGET_FMT_lx "\n",
--                     env->spr[SPR_BOOKE_TCR], env->spr[SPR_BOOKE_TSR],
--                     env->spr[SPR_BOOKE_ESR], env->spr[SPR_BOOKE_DEAR]);
--
--        qemu_fprintf(f, "  PIR " TARGET_FMT_lx " DECAR " TARGET_FMT_lx
--                     "   IVPR " TARGET_FMT_lx "   EPCR " TARGET_FMT_lx "\n",
--                     env->spr[SPR_BOOKE_PIR], env->spr[SPR_BOOKE_DECAR],
--                     env->spr[SPR_BOOKE_IVPR], env->spr[SPR_BOOKE_EPCR]);
--
--        qemu_fprintf(f, " MCSR " TARGET_FMT_lx " SPRG8 " TARGET_FMT_lx
--                     "    EPR " TARGET_FMT_lx "\n",
--                     env->spr[SPR_BOOKE_MCSR], env->spr[SPR_BOOKE_SPRG8],
--                     env->spr[SPR_BOOKE_EPR]);
-+        g_string_append_printf(buf, "CSRR0 " TARGET_FMT_lx
-+                               " CSRR1 " TARGET_FMT_lx
-+                               " MCSRR0 " TARGET_FMT_lx
-+                               " MCSRR1 " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_BOOKE_CSRR0],
-+                               env->spr[SPR_BOOKE_CSRR1],
-+                               env->spr[SPR_BOOKE_MCSRR0],
-+                               env->spr[SPR_BOOKE_MCSRR1]);
-+
-+        g_string_append_printf(buf, "  TCR " TARGET_FMT_lx
-+                               "   TSR " TARGET_FMT_lx
-+                               "    ESR " TARGET_FMT_lx
-+                               "   DEAR " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_BOOKE_TCR],
-+                               env->spr[SPR_BOOKE_TSR],
-+                               env->spr[SPR_BOOKE_ESR],
-+                               env->spr[SPR_BOOKE_DEAR]);
-+
-+        g_string_append_printf(buf, "  PIR " TARGET_FMT_lx
-+                               " DECAR " TARGET_FMT_lx
-+                               "   IVPR " TARGET_FMT_lx
-+                               "   EPCR " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_BOOKE_PIR],
-+                               env->spr[SPR_BOOKE_DECAR],
-+                               env->spr[SPR_BOOKE_IVPR],
-+                               env->spr[SPR_BOOKE_EPCR]);
-+
-+        g_string_append_printf(buf, " MCSR " TARGET_FMT_lx
-+                               " SPRG8 " TARGET_FMT_lx
-+                               "    EPR " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_BOOKE_MCSR],
-+                               env->spr[SPR_BOOKE_SPRG8],
-+                               env->spr[SPR_BOOKE_EPR]);
- 
-         /* FSL-specific */
--        qemu_fprintf(f, " MCAR " TARGET_FMT_lx "  PID1 " TARGET_FMT_lx
--                     "   PID2 " TARGET_FMT_lx "    SVR " TARGET_FMT_lx "\n",
--                     env->spr[SPR_Exxx_MCAR], env->spr[SPR_BOOKE_PID1],
--                     env->spr[SPR_BOOKE_PID2], env->spr[SPR_E500_SVR]);
-+        g_string_append_printf(buf, " MCAR " TARGET_FMT_lx
-+                               "  PID1 " TARGET_FMT_lx
-+                               "   PID2 " TARGET_FMT_lx
-+                               "    SVR " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_Exxx_MCAR],
-+                               env->spr[SPR_BOOKE_PID1],
-+                               env->spr[SPR_BOOKE_PID2],
-+                               env->spr[SPR_E500_SVR]);
- 
-         /*
-          * IVORs are left out as they are large and do not change often --
-@@ -9233,12 +9257,13 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- 
- #if defined(TARGET_PPC64)
-     if (env->flags & POWERPC_FLAG_CFAR) {
--        qemu_fprintf(f, " CFAR " TARGET_FMT_lx"\n", env->cfar);
-+        g_string_append_printf(buf, " CFAR " TARGET_FMT_lx"\n", env->cfar);
-     }
- #endif
- 
-     if (env->spr_cb[SPR_LPCR].name) {
--        qemu_fprintf(f, " LPCR " TARGET_FMT_lx "\n", env->spr[SPR_LPCR]);
-+        g_string_append_printf(buf,
-+                               " LPCR " TARGET_FMT_lx "\n", env->spr[SPR_LPCR]);
+-    if (object_dynamic_cast(obj, INTERFACE_RDMA_PROVIDER)) {
+-        rdma = RDMA_PROVIDER(obj);
+-        k = RDMA_PROVIDER_GET_CLASS(obj);
+-        if (k->print_statistics) {
+-            k->print_statistics(mon, rdma);
+-        } else {
+-            monitor_printf(mon, "RDMA statistics not available for %s.\n",
+-                           object_get_typename(obj));
+-        }
++    info = qmp_x_query_rdma(&err);
++    if (err) {
++        error_report_err(err);
++        return;
      }
  
-     switch (env->mmu_model) {
-@@ -9254,29 +9279,42 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     case POWERPC_MMU_3_00:
+-    return 0;
+-}
+-
+-void hmp_info_rdma(Monitor *mon, const QDict *qdict)
+-{
+-    object_child_foreach_recursive(object_get_root(),
+-                                   hmp_info_rdma_foreach, mon);
++    monitor_printf(mon, "%s", info->human_readable_text);
+ }
+ 
+ void hmp_info_pci(Monitor *mon, const QDict *qdict)
+diff --git a/monitor/qmp-cmds.c b/monitor/qmp-cmds.c
+index 7bae0770a9..9c2c1e4603 100644
+--- a/monitor/qmp-cmds.c
++++ b/monitor/qmp-cmds.c
+@@ -39,6 +39,7 @@
+ #include "qapi/qmp/qerror.h"
+ #include "hw/mem/memory-device.h"
+ #include "hw/acpi/acpi_dev_interface.h"
++#include "hw/rdma/rdma.h"
+ 
+ NameInfo *qmp_query_name(Error **errp)
+ {
+@@ -384,3 +385,37 @@ HumanReadableText *qmp_x_query_profile(Error **errp)
+     return NULL;
+ }
  #endif
-         if (env->spr_cb[SPR_SDR1].name) { /* SDR1 Exists */
--            qemu_fprintf(f, " SDR1 " TARGET_FMT_lx " ", env->spr[SPR_SDR1]);
-+            g_string_append_printf(buf, " SDR1 " TARGET_FMT_lx " ",
-+                                   env->spr[SPR_SDR1]);
-         }
-         if (env->spr_cb[SPR_PTCR].name) { /* PTCR Exists */
--            qemu_fprintf(f, " PTCR " TARGET_FMT_lx " ", env->spr[SPR_PTCR]);
-+            g_string_append_printf(buf, " PTCR " TARGET_FMT_lx " ",
-+                                   env->spr[SPR_PTCR]);
-         }
--        qemu_fprintf(f, "  DAR " TARGET_FMT_lx "  DSISR " TARGET_FMT_lx "\n",
--                     env->spr[SPR_DAR], env->spr[SPR_DSISR]);
-+        g_string_append_printf(buf, "  DAR " TARGET_FMT_lx "  DSISR "
-+                               TARGET_FMT_lx "\n",
-+                               env->spr[SPR_DAR], env->spr[SPR_DSISR]);
-         break;
-     case POWERPC_MMU_BOOKE206:
--        qemu_fprintf(f, " MAS0 " TARGET_FMT_lx "  MAS1 " TARGET_FMT_lx
--                     "   MAS2 " TARGET_FMT_lx "   MAS3 " TARGET_FMT_lx "\n",
--                     env->spr[SPR_BOOKE_MAS0], env->spr[SPR_BOOKE_MAS1],
--                     env->spr[SPR_BOOKE_MAS2], env->spr[SPR_BOOKE_MAS3]);
--
--        qemu_fprintf(f, " MAS4 " TARGET_FMT_lx "  MAS6 " TARGET_FMT_lx
--                     "   MAS7 " TARGET_FMT_lx "    PID " TARGET_FMT_lx "\n",
--                     env->spr[SPR_BOOKE_MAS4], env->spr[SPR_BOOKE_MAS6],
--                     env->spr[SPR_BOOKE_MAS7], env->spr[SPR_BOOKE_PID]);
--
--        qemu_fprintf(f, "MMUCFG " TARGET_FMT_lx " TLB0CFG " TARGET_FMT_lx
--                     " TLB1CFG " TARGET_FMT_lx "\n",
--                     env->spr[SPR_MMUCFG], env->spr[SPR_BOOKE_TLB0CFG],
--                     env->spr[SPR_BOOKE_TLB1CFG]);
-+        g_string_append_printf(buf, " MAS0 " TARGET_FMT_lx
-+                               "  MAS1 " TARGET_FMT_lx
-+                               "   MAS2 " TARGET_FMT_lx
-+                               "   MAS3 " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_BOOKE_MAS0],
-+                               env->spr[SPR_BOOKE_MAS1],
-+                               env->spr[SPR_BOOKE_MAS2],
-+                               env->spr[SPR_BOOKE_MAS3]);
 +
-+        g_string_append_printf(buf, " MAS4 " TARGET_FMT_lx
-+                               "  MAS6 " TARGET_FMT_lx
-+                               "   MAS7 " TARGET_FMT_lx
-+                               "    PID " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_BOOKE_MAS4],
-+                               env->spr[SPR_BOOKE_MAS6],
-+                               env->spr[SPR_BOOKE_MAS7],
-+                               env->spr[SPR_BOOKE_PID]);
++static int qmp_x_query_rdma_foreach(Object *obj, void *opaque)
++{
++    RdmaProvider *rdma;
++    RdmaProviderClass *k;
++    GString *buf = opaque;
 +
-+        g_string_append_printf(buf, "MMUCFG " TARGET_FMT_lx
-+                               " TLB0CFG " TARGET_FMT_lx
-+                               " TLB1CFG " TARGET_FMT_lx "\n",
-+                               env->spr[SPR_MMUCFG],
-+                               env->spr[SPR_BOOKE_TLB0CFG],
-+                               env->spr[SPR_BOOKE_TLB1CFG]);
-         break;
-     default:
-         break;
++    if (object_dynamic_cast(obj, INTERFACE_RDMA_PROVIDER)) {
++        rdma = RDMA_PROVIDER(obj);
++        k = RDMA_PROVIDER_GET_CLASS(obj);
++        if (k->format_statistics) {
++            k->format_statistics(rdma, buf);
++        } else {
++            g_string_append_printf(buf,
++                                   "RDMA statistics not available for %s.\n",
++                                   object_get_typename(obj));
++        }
++    }
++
++    return 0;
++}
++
++HumanReadableText *qmp_x_query_rdma(Error **errp)
++{
++    HumanReadableText *ret;
++    g_autoptr(GString) buf = g_string_new("");
++
++    object_child_foreach_recursive(object_get_root(),
++                                   qmp_x_query_rdma_foreach, buf);
++
++    ret = g_new0(HumanReadableText, 1);
++    ret->human_readable_text = g_steal_pointer(&buf->str);
++    return ret;
++}
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 39d800c2c1..0fe962d916 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -1337,6 +1337,18 @@
+ { 'command': 'x-query-profile',
+   'returns': 'HumanReadableText' }
+ 
++##
++# @x-query-rdma:
++#
++# Query RDMA state
++#
++# Returns: RDMA state
++#
++# Since: 6.2
++##
++{ 'command': 'x-query-rdma',
++  'returns': 'HumanReadableText' }
++
+ ##
+ # @x-query-registers:
+ #
 -- 
 2.31.1
 

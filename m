@@ -1,87 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp769984lfp;
-        Tue, 14 Sep 2021 08:05:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyCN8OwWe5J3Jw2SD3JnzP3h7+uM9Wif34y/ZMGSPamrkm9NXm6nBevKL5XvEY2IarG5bA
-X-Received: by 2002:aa7:d51a:: with SMTP id y26mr19959231edq.163.1631631936184;
-        Tue, 14 Sep 2021 08:05:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631631936; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp770461lfp;
+        Tue, 14 Sep 2021 08:06:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwraMZ9lKY9PgCQXC+UNeQNvpB0kIMiUBS+e8rG1aKerfUlKnRdUmthmkLeW49b8bLW39k6
+X-Received: by 2002:a17:906:7217:: with SMTP id m23mr19295986ejk.466.1631631963849;
+        Tue, 14 Sep 2021 08:06:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631631963; cv=none;
         d=google.com; s=arc-20160816;
-        b=WGJimSAuKFCjgkOIs7yDYyU5/5ZNCXZmcODKtU1jsFRNiZHXVz7waCI59gHoKMESI3
-         PYy8Y/B6bOYYiJ+XbJqLiaKB/s5Gq+s44T1NJKEzdrbazDSVaeWbFAEmPkebQkfXjM7D
-         qH2ECpOMyxfXrkqq/0wkjYDai/UOlYRtj/eOCo+FfZxllVA30N64qgoo6or6fhutGdMx
-         y5f4ZC6RPTdhtgcsTTcwp9OWjvSKknfyvrEeCo/qsBKNJkBdW1F4CBQFyAgafr9dzjm0
-         DiUIsMwqVjUeM90CDnv4hRv3Z1GZN1Of4qth29DWBzwEt0KuraGw8bLR0Yi1xIGKMfVQ
-         q95g==
+        b=YVX+JBehN713nd+DtRJ+xfoXACremQkZRR1ADV8h3cZskCIP7CS70gVRlNvW++Y9R5
+         JiBCOPK3RURmVUZS8aGBnRGTmhpn19ZYuVNfqAXz/Vsj8HffT5eI5jjSN20wQiHOs9jS
+         8w2G56UjM6Y0qr9zuFMw+5RF6bJX6u2Ewh0or9iXTc6e2cfAwaCRoD8QS+Q6ATZX5sfQ
+         zAPsyKtemdJp5KPqIZRK9f3E6dTxCZa95tq4IEXfVhpzIQHJC8VJ0YrInPDwKGfohhtr
+         Ueb4ca+UzW6RoObhcdEmwOHTjeKAbBvytq2ysTby1qJwjdajfZpJj8RqxJc4fLHiUO3H
+         dBJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=x065cSLMcIxjIsC6dZCKtLmVC91lemlf3ABAXb8msuA=;
-        b=rMV85BRByAj49VTfVlvnPPKowNCb4dSSxBm1bIZnzB5fJn4j5ykxvR0p58K3G8vqYe
-         5tW5dByF9hL82t4QA4ovjMds/If2B/YE4zDL/lPSmyD7k/CkMaUK9XuEojT0V3UOTnHc
-         DHC3g5DAeW/0vBviv6Q7E/r8z+u3jDb4QGv4Hj+exe55ahsdEbB6tEWpy2x0tN4DGTdR
-         TK4llMzftdQ9Cha9OZHsSkNntks9eCpEz+N2eykLiAwhhFS91Ez2npUzazCK3OkjNvZF
-         GJKWW4oNnV6aB6HZSjcnWykNRqCPTOIGFGFC7ipwGkSWr/2F4lQtBplpNvmGETLOtCQm
-         ADuQ==
+        bh=cLy6EwxITacEuC/jBCLIRMB/Ak0L1zfodmwGOnq/cfw=;
+        b=ardlfUgDq+1vkE6giQOgHq8CUw02tt7bKmCxkyOstWuiKQ4by06ynC9gbktWmjspZT
+         SNnAAi65hF3f3O2LkDBLSeWMy8R/vu6G/Ldss+7kL/ku8xYS4ia0v1j7ljzOR82/ods+
+         kgHIAZJvVmyu18YFVW7DDxnN7q1axRv20UPNMHOzjjteLb4kZnJVdP4486ZI51x8yxBe
+         441q8hkPqObGtSj/oGFeZjJjoKrPEFSO+4RK8HsKTQYuV15PXS2Ut1DZ/+f+4UeT/g2h
+         3TK4MD/wf0Ebz9Mw4T89uqaAgUSFgy0AyIC6Mdtb8tcRPr7yftTHdK4kb1nX3GgFYbFh
+         MUgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pyb60yDb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ncu/16YL";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j23si13115174eje.21.2021.09.14.08.05.36
+        by mx.google.com with ESMTPS id x16si14022082edd.25.2021.09.14.08.06.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:05:36 -0700 (PDT)
+        Tue, 14 Sep 2021 08:06:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pyb60yDb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ncu/16YL";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43352 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQA05-0005Hc-Dj
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:05:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38814)
+	id 1mQA0Y-0006BD-Py
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:06:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40784)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9R3-0003gY-11
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:29:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42626)
+ id 1mQ9UM-0000mN-Om
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:32:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:59465)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Qo-0000RL-Rm
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:29:20 -0400
+ id 1mQ9UE-0002wL-SN
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:32:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629746;
+ s=mimecast20190719; t=1631629958;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=x065cSLMcIxjIsC6dZCKtLmVC91lemlf3ABAXb8msuA=;
- b=Pyb60yDb1+EfUKPxl3x+0xHcdN3cgzuovieB/A1D8kRaXloXHuIrjrHyUkde5EiN/ouOt1
- 62G0C10WmXa3p0pVy3Nlg0feo8lnVbMyLhyRxHYRN7r77KgXT8DDMWW81tUF0aRNCE5BSP
- lyd63Po4EPUPqny+fYY6tl0BhZwo5YA=
+ bh=cLy6EwxITacEuC/jBCLIRMB/Ak0L1zfodmwGOnq/cfw=;
+ b=Ncu/16YL2SVHNXjSrQqWQGjsvu3xJ0wmgpDHjUeTgLUEvia3vygfMDO7ghqRRRh7NgJPCJ
+ GOLTCZ5+gf6rVEMmKKNCyyIuPwFuZ7rJgTLHjSwlQzQe/Ehn8ouEa7ez8EB6kQBWi4LQmW
+ NGA6E8hjpVGT0n++TEbg/cC4A22rvcs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-459-I2ieP_RGMkWjPpCx5-6cVg-1; Tue, 14 Sep 2021 10:29:04 -0400
-X-MC-Unique: I2ieP_RGMkWjPpCx5-6cVg-1
+ us-mta-2-ss83hsYsPamdDB3infvU8A-1; Tue, 14 Sep 2021 10:32:36 -0400
+X-MC-Unique: ss83hsYsPamdDB3infvU8A-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 348FD19200C1;
- Tue, 14 Sep 2021 14:29:01 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9FE801054FA5;
+ Tue, 14 Sep 2021 14:32:31 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E11ED5D9CA;
- Tue, 14 Sep 2021 14:28:45 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 45B6A5D9DC;
+ Tue, 14 Sep 2021 14:32:16 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 23/53] target/s390x: convert to use format_state instead of
- dump_state
-Date: Tue, 14 Sep 2021 15:20:12 +0100
-Message-Id: <20210914142042.1655100-24-berrange@redhat.com>
+Subject: [PATCH v2 38/53] qapi: introduce x-query-lapic QMP command
+Date: Tue, 14 Sep 2021 15:20:27 +0100
+Message-Id: <20210914142042.1655100-39-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -92,15 +91,15 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -140,134 +139,449 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ye+2YTQO8iUB
+X-TUID: WGH61JJ0ArsI
+
+This is a counterpart to the HMP "info lapic" command. It is being
+added with an "x-" prefix because this QMP command is intended as an
+adhoc debugging tool and will thus not be modelled in QAPI as fully
+structured data, nor will it have long term guaranteed stability.
+The existing HMP command is rewritten to call the QMP command.
+
+This command is unable to use the pre-existing HumanReadableText,
+because if 'common.json' is included into 'machine-target.json'
+the static marshalling method for HumanReadableText will be reported
+as unused by the compiler on all architectures except s390x.
+
+Possible options were
+
+ 1 Support 'if' conditionals on 'include' statements in QAPI
+ 2 Add further commands to 'machine-target.json' that use
+   HumanReadableText, such that it has at least one usage
+   on all architecture targets.
+ 3 Duplicate HumanReadableText as TargetHumanReadableText
+   adding conditions
+
+This patch takes option (3) in the belief that we will eventually
+get to a point where option (2) happens, and TargetHumanReadableText
+can be removed again.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/s390x/cpu-dump.c       | 43 ++++++++++++++++++-----------------
- target/s390x/cpu.c            |  2 +-
- target/s390x/s390x-internal.h |  2 +-
- 3 files changed, 24 insertions(+), 23 deletions(-)
+ hw/core/cpu-common.c     |   7 ++
+ include/hw/core/cpu.h    |  10 +++
+ qapi/machine-target.json |  19 ++++-
+ target/i386/cpu-dump.c   | 161 ++++++++++++++++++++-------------------
+ target/i386/cpu.h        |   4 +-
+ target/i386/monitor.c    |  46 +++++++++--
+ 6 files changed, 160 insertions(+), 87 deletions(-)
 
-diff --git a/target/s390x/cpu-dump.c b/target/s390x/cpu-dump.c
-index 0f5c062994..9c6eaa9938 100644
---- a/target/s390x/cpu-dump.c
-+++ b/target/s390x/cpu-dump.c
-@@ -25,66 +25,67 @@
- #include "qemu/qemu-print.h"
- #include "sysemu/tcg.h"
- 
--void s390_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+void s390_cpu_format_state(CPUState *cs, GString *buf, int flags)
- {
-     S390CPU *cpu = S390_CPU(cs);
-     CPUS390XState *env = &cpu->env;
-     int i;
- 
--    qemu_fprintf(f, "PSW=mask %016" PRIx64 " addr %016" PRIx64,
--                 s390_cpu_get_psw_mask(env), env->psw.addr);
-+    g_string_append_printf(buf, "PSW=mask %016" PRIx64 " addr %016" PRIx64,
-+                           s390_cpu_get_psw_mask(env), env->psw.addr);
-     if (!tcg_enabled()) {
--        qemu_fprintf(f, "\n");
-+        g_string_append_printf(buf, "\n");
-     } else if (env->cc_op > 3) {
--        qemu_fprintf(f, " cc %15s\n", cc_name(env->cc_op));
-+        g_string_append_printf(buf, " cc %15s\n", cc_name(env->cc_op));
-     } else {
--        qemu_fprintf(f, " cc %02x\n", env->cc_op);
-+        g_string_append_printf(buf, " cc %02x\n", env->cc_op);
-     }
- 
-     for (i = 0; i < 16; i++) {
--        qemu_fprintf(f, "R%02d=%016" PRIx64, i, env->regs[i]);
-+        g_string_append_printf(buf, "R%02d=%016" PRIx64, i, env->regs[i]);
-         if ((i % 4) == 3) {
--            qemu_fprintf(f, "\n");
-+            g_string_append_printf(buf, "\n");
-         } else {
--            qemu_fprintf(f, " ");
-+            g_string_append_printf(buf, " ");
-         }
-     }
- 
-     if (flags & CPU_DUMP_FPU) {
-         if (s390_has_feat(S390_FEAT_VECTOR)) {
-             for (i = 0; i < 32; i++) {
--                qemu_fprintf(f, "V%02d=%016" PRIx64 "%016" PRIx64 "%c",
--                             i, env->vregs[i][0], env->vregs[i][1],
--                             i % 2 ? '\n' : ' ');
-+                g_string_append_printf(buf,
-+                                       "V%02d=%016" PRIx64 "%016" PRIx64 "%c",
-+                                       i, env->vregs[i][0], env->vregs[i][1],
-+                                       i % 2 ? '\n' : ' ');
-             }
-         } else {
-             for (i = 0; i < 16; i++) {
--                qemu_fprintf(f, "F%02d=%016" PRIx64 "%c",
--                             i, *get_freg(env, i),
--                             (i % 4) == 3 ? '\n' : ' ');
-+                g_string_append_printf(buf, "F%02d=%016" PRIx64 "%c",
-+                                       i, *get_freg(env, i),
-+                                       (i % 4) == 3 ? '\n' : ' ');
-             }
-         }
-     }
- 
- #ifndef CONFIG_USER_ONLY
-     for (i = 0; i < 16; i++) {
--        qemu_fprintf(f, "C%02d=%016" PRIx64, i, env->cregs[i]);
-+        g_string_append_printf(buf, "C%02d=%016" PRIx64, i, env->cregs[i]);
-         if ((i % 4) == 3) {
--            qemu_fprintf(f, "\n");
-+            g_string_append_printf(buf, "\n");
-         } else {
--            qemu_fprintf(f, " ");
-+            g_string_append_printf(buf, " ");
-         }
-     }
- #endif
- 
- #ifdef DEBUG_INLINE_BRANCHES
-     for (i = 0; i < CC_OP_MAX; i++) {
--        qemu_fprintf(f, "  %15s = %10ld\t%10ld\n", cc_name(i),
--                     inline_branch_miss[i], inline_branch_hit[i]);
-+        g_string_append_printf(buf, "  %15s = %10ld\t%10ld\n", cc_name(i),
-+                               inline_branch_miss[i], inline_branch_hit[i]);
-     }
- #endif
- 
--    qemu_fprintf(f, "\n");
-+    g_string_append_printf(buf, "\n");
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index c2cd33a817..d1ebc77d1b 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -49,6 +49,13 @@ CPUState *cpu_by_arch_id(int64_t id)
+     return NULL;
  }
  
- const char *cc_name(enum cc_op cc_op)
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 7b7b05f1d3..b6bf628074 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -293,7 +293,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
-     scc->reset = s390_cpu_reset;
-     cc->class_by_name = s390_cpu_class_by_name,
-     cc->has_work = s390_cpu_has_work;
--    cc->dump_state = s390_cpu_dump_state;
-+    cc->format_state = s390_cpu_format_state;
-     cc->set_pc = s390_cpu_set_pc;
-     cc->gdb_read_register = s390_cpu_gdb_read_register;
-     cc->gdb_write_register = s390_cpu_gdb_write_register;
-diff --git a/target/s390x/s390x-internal.h b/target/s390x/s390x-internal.h
-index 7a6aa4dacc..0ee99b8b1e 100644
---- a/target/s390x/s390x-internal.h
-+++ b/target/s390x/s390x-internal.h
-@@ -313,7 +313,7 @@ void s390_cpu_gdb_init(CPUState *cs);
++int64_t cpu_get_arch_id(CPUState *cpu)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    return cc->get_arch_id(cpu);
++}
++
+ bool cpu_exists(int64_t id)
+ {
+     return !!cpu_by_arch_id(id);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 1599ef9df3..a0913eedaa 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -780,6 +780,16 @@ bool cpu_exists(int64_t id);
+  */
+ CPUState *cpu_by_arch_id(int64_t id);
  
++/**
++ * cpu_get_arch_id:
++ * @cpu: the CPU to query
++ *
++ * Get the guest exposed CPU ID for @cpu
++ *
++ * Returns: The guest exposed CPU ID
++ */
++int64_t cpu_get_arch_id(CPUState *cpu);
++
+ /**
+  * cpu_interrupt:
+  * @cpu: The CPU to set an interrupt on.
+diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+index 9040aff863..62220d1f08 100644
+--- a/qapi/machine-target.json
++++ b/qapi/machine-target.json
+@@ -353,7 +353,8 @@
+ ##
+ { 'struct': 'TargetHumanReadableText',
+   'data': { 'human-readable-text': 'str' },
+-  'if': 'TARGET_S390X' }
++  'if': { 'any': ['TARGET_S390X',
++                  'TARGET_I386' ] } }
  
- /* helper.c */
--void s390_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-+void s390_cpu_format_state(CPUState *cpu, GString *buf, int flags);
- void do_restart_interrupt(CPUS390XState *env);
+ ##
+ # @x-query-cmma:
+@@ -369,6 +370,22 @@
+   'returns': 'TargetHumanReadableText',
+   'if': 'TARGET_S390X' }
+ 
++##
++# @x-query-lapic:
++#
++# @apic-id: the local APIC ID to report
++#
++# Query local APIC state.
++#
++# Returns: local APIC state
++#
++# Since: 6.2
++##
++{ 'command': 'x-query-lapic',
++  'data': { 'apic-id': 'int' },
++  'returns': 'TargetHumanReadableText',
++  'if': 'TARGET_I386' }
++
+ ##
+ # @x-query-skeys:
+ #
+diff --git a/target/i386/cpu-dump.c b/target/i386/cpu-dump.c
+index f30fbcb76e..41a1f64138 100644
+--- a/target/i386/cpu-dump.c
++++ b/target/i386/cpu-dump.c
+@@ -20,6 +20,7 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "qemu/qemu-print.h"
++#include "qapi/error.h"
  #ifndef CONFIG_USER_ONLY
- void s390_cpu_recompute_watchpoints(CPUState *cs);
+ #include "hw/i386/apic_internal.h"
+ #endif
+@@ -179,24 +180,26 @@ static inline const char *dm2str(uint32_t dm)
+     return str[dm];
+ }
+ 
+-static void dump_apic_lvt(const char *name, uint32_t lvt, bool is_timer)
++static void format_apic_lvt(const char *name, uint32_t lvt, bool is_timer,
++                            GString *buf)
+ {
+     uint32_t dm = (lvt & APIC_LVT_DELIV_MOD) >> APIC_LVT_DELIV_MOD_SHIFT;
+-    qemu_printf("%s\t 0x%08x %s %-5s %-6s %-7s %-12s %-6s",
+-                name, lvt,
+-                lvt & APIC_LVT_INT_POLARITY ? "active-lo" : "active-hi",
+-                lvt & APIC_LVT_LEVEL_TRIGGER ? "level" : "edge",
+-                lvt & APIC_LVT_MASKED ? "masked" : "",
+-                lvt & APIC_LVT_DELIV_STS ? "pending" : "",
+-                !is_timer ?
+-                    "" : lvt & APIC_LVT_TIMER_PERIODIC ?
+-                            "periodic" : lvt & APIC_LVT_TIMER_TSCDEADLINE ?
+-                                            "tsc-deadline" : "one-shot",
++    g_string_append_printf(buf, "%s\t 0x%08x %s %-5s %-6s %-7s %-12s %-6s",
++                           name, lvt,
++                           lvt & APIC_LVT_INT_POLARITY ?
++                           "active-lo" : "active-hi",
++                           lvt & APIC_LVT_LEVEL_TRIGGER ? "level" : "edge",
++                           lvt & APIC_LVT_MASKED ? "masked" : "",
++                           lvt & APIC_LVT_DELIV_STS ? "pending" : "",
++                           !is_timer ?
++                           "" : lvt & APIC_LVT_TIMER_PERIODIC ?
++                           "periodic" : lvt & APIC_LVT_TIMER_TSCDEADLINE ?
++                           "tsc-deadline" : "one-shot",
+                 dm2str(dm));
+     if (dm != APIC_DM_NMI) {
+-        qemu_printf(" (vec %u)\n", lvt & APIC_VECTOR_MASK);
++        g_string_append_printf(buf, " (vec %u)\n", lvt & APIC_VECTOR_MASK);
+     } else {
+-        qemu_printf("\n");
++        g_string_append_printf(buf, "\n");
+     }
+ }
+ 
+@@ -228,7 +231,7 @@ static inline void mask2str(char *str, uint32_t val, uint8_t size)
+ 
+ #define MAX_LOGICAL_APIC_ID_MASK_SIZE 16
+ 
+-static void dump_apic_icr(APICCommonState *s, CPUX86State *env)
++static void format_apic_icr(APICCommonState *s, CPUX86State *env, GString *buf)
+ {
+     uint32_t icr = s->icr[0], icr2 = s->icr[1];
+     uint8_t dest_shorthand = \
+@@ -238,16 +241,16 @@ static void dump_apic_icr(APICCommonState *s, CPUX86State *env)
+     uint32_t dest_field;
+     bool x2apic;
+ 
+-    qemu_printf("ICR\t 0x%08x %s %s %s %s\n",
+-                icr,
+-                logical_mod ? "logical" : "physical",
+-                icr & APIC_ICR_TRIGGER_MOD ? "level" : "edge",
+-                icr & APIC_ICR_LEVEL ? "assert" : "de-assert",
+-                shorthand2str(dest_shorthand));
++    g_string_append_printf(buf, "ICR\t 0x%08x %s %s %s %s\n",
++                           icr,
++                           logical_mod ? "logical" : "physical",
++                           icr & APIC_ICR_TRIGGER_MOD ? "level" : "edge",
++                           icr & APIC_ICR_LEVEL ? "assert" : "de-assert",
++                           shorthand2str(dest_shorthand));
+ 
+-    qemu_printf("ICR2\t 0x%08x", icr2);
++    g_string_append_printf(buf, "ICR2\t 0x%08x", icr2);
+     if (dest_shorthand != 0) {
+-        qemu_printf("\n");
++        g_string_append_printf(buf, "\n");
+         return;
+     }
+     x2apic = env->features[FEAT_1_ECX] & CPUID_EXT_X2APIC;
+@@ -255,96 +258,100 @@ static void dump_apic_icr(APICCommonState *s, CPUX86State *env)
+ 
+     if (!logical_mod) {
+         if (x2apic) {
+-            qemu_printf(" cpu %u (X2APIC ID)\n", dest_field);
++            g_string_append_printf(buf, " cpu %u (X2APIC ID)\n", dest_field);
+         } else {
+-            qemu_printf(" cpu %u (APIC ID)\n",
+-                        dest_field & APIC_LOGDEST_XAPIC_ID);
++            g_string_append_printf(buf, " cpu %u (APIC ID)\n",
++                                   dest_field & APIC_LOGDEST_XAPIC_ID);
+         }
+         return;
+     }
+ 
+     if (s->dest_mode == 0xf) { /* flat mode */
+         mask2str(apic_id_str, icr2 >> APIC_ICR_DEST_SHIFT, 8);
+-        qemu_printf(" mask %s (APIC ID)\n", apic_id_str);
++        g_string_append_printf(buf, " mask %s (APIC ID)\n", apic_id_str);
+     } else if (s->dest_mode == 0) { /* cluster mode */
+         if (x2apic) {
+             mask2str(apic_id_str, dest_field & APIC_LOGDEST_X2APIC_ID, 16);
+-            qemu_printf(" cluster %u mask %s (X2APIC ID)\n",
+-                        dest_field >> APIC_LOGDEST_X2APIC_SHIFT, apic_id_str);
++            g_string_append_printf(buf, " cluster %u mask %s (X2APIC ID)\n",
++                                   dest_field >> APIC_LOGDEST_X2APIC_SHIFT,
++                                   apic_id_str);
+         } else {
+             mask2str(apic_id_str, dest_field & APIC_LOGDEST_XAPIC_ID, 4);
+-            qemu_printf(" cluster %u mask %s (APIC ID)\n",
+-                        dest_field >> APIC_LOGDEST_XAPIC_SHIFT, apic_id_str);
++            g_string_append_printf(buf, " cluster %u mask %s (APIC ID)\n",
++                                   dest_field >> APIC_LOGDEST_XAPIC_SHIFT,
++                                   apic_id_str);
+         }
+     }
+ }
+ 
+-static void dump_apic_interrupt(const char *name, uint32_t *ireg_tab,
+-                                uint32_t *tmr_tab)
++static void format_apic_interrupt(const char *name, uint32_t *ireg_tab,
++                                  uint32_t *tmr_tab, GString *buf)
+ {
+     int i, empty = true;
+ 
+-    qemu_printf("%s\t ", name);
++    g_string_append_printf(buf, "%s\t ", name);
+     for (i = 0; i < 256; i++) {
+         if (apic_get_bit(ireg_tab, i)) {
+-            qemu_printf("%u%s ", i,
+-                        apic_get_bit(tmr_tab, i) ? "(level)" : "");
++            g_string_append_printf(buf, "%u%s ", i,
++                                   apic_get_bit(tmr_tab, i) ? "(level)" : "");
+             empty = false;
+         }
+     }
+-    qemu_printf("%s\n", empty ? "(none)" : "");
++    g_string_append_printf(buf, "%s\n", empty ? "(none)" : "");
+ }
+ 
+-void x86_cpu_dump_local_apic_state(CPUState *cs, int flags)
++GString *x86_cpu_format_local_apic_state(CPUState *cs, int flags, Error **errp)
+ {
++    g_autoptr(GString) buf = g_string_new("");
+     X86CPU *cpu = X86_CPU(cs);
+     APICCommonState *s = APIC_COMMON(cpu->apic_state);
+     if (!s) {
+-        qemu_printf("local apic state not available\n");
+-        return;
++        error_setg(errp, "local apic state not available");
++        return NULL;
+     }
+     uint32_t *lvt = s->lvt;
+ 
+-    qemu_printf("dumping local APIC state for CPU %-2u\n\n",
+-                CPU(cpu)->cpu_index);
+-    dump_apic_lvt("LVT0", lvt[APIC_LVT_LINT0], false);
+-    dump_apic_lvt("LVT1", lvt[APIC_LVT_LINT1], false);
+-    dump_apic_lvt("LVTPC", lvt[APIC_LVT_PERFORM], false);
+-    dump_apic_lvt("LVTERR", lvt[APIC_LVT_ERROR], false);
+-    dump_apic_lvt("LVTTHMR", lvt[APIC_LVT_THERMAL], false);
+-    dump_apic_lvt("LVTT", lvt[APIC_LVT_TIMER], true);
+-
+-    qemu_printf("Timer\t DCR=0x%x (divide by %u) initial_count = %u"
+-                " current_count = %u\n",
+-                s->divide_conf & APIC_DCR_MASK,
+-                divider_conf(s->divide_conf),
+-                s->initial_count, apic_get_current_count(s));
+-
+-    qemu_printf("SPIV\t 0x%08x APIC %s, focus=%s, spurious vec %u\n",
+-                s->spurious_vec,
+-                s->spurious_vec & APIC_SPURIO_ENABLED ? "enabled" : "disabled",
+-                s->spurious_vec & APIC_SPURIO_FOCUS ? "on" : "off",
+-                s->spurious_vec & APIC_VECTOR_MASK);
+-
+-    dump_apic_icr(s, &cpu->env);
+-
+-    qemu_printf("ESR\t 0x%08x\n", s->esr);
+-
+-    dump_apic_interrupt("ISR", s->isr, s->tmr);
+-    dump_apic_interrupt("IRR", s->irr, s->tmr);
+-
+-    qemu_printf("\nAPR 0x%02x TPR 0x%02x DFR 0x%02x LDR 0x%02x",
+-                s->arb_id, s->tpr, s->dest_mode, s->log_dest);
++    g_string_append_printf(buf, "dumping local APIC state for CPU %-2u\n\n",
++                           CPU(cpu)->cpu_index);
++    format_apic_lvt("LVT0", lvt[APIC_LVT_LINT0], false, buf);
++    format_apic_lvt("LVT1", lvt[APIC_LVT_LINT1], false, buf);
++    format_apic_lvt("LVTPC", lvt[APIC_LVT_PERFORM], false, buf);
++    format_apic_lvt("LVTERR", lvt[APIC_LVT_ERROR], false, buf);
++    format_apic_lvt("LVTTHMR", lvt[APIC_LVT_THERMAL], false, buf);
++    format_apic_lvt("LVTT", lvt[APIC_LVT_TIMER], true, buf);
++
++    g_string_append_printf(buf,
++                           "Timer\t DCR=0x%x (divide by %u) initial_count = %u"
++                           " current_count = %u\n",
++                           s->divide_conf & APIC_DCR_MASK,
++                           divider_conf(s->divide_conf),
++                           s->initial_count, apic_get_current_count(s));
++
++    g_string_append_printf(buf,
++                           "SPIV\t 0x%08x APIC %s, focus=%s, spurious vec %u\n",
++                           s->spurious_vec,
++                           s->spurious_vec & APIC_SPURIO_ENABLED ?
++                           "enabled" : "disabled",
++                           s->spurious_vec & APIC_SPURIO_FOCUS ? "on" : "off",
++                           s->spurious_vec & APIC_VECTOR_MASK);
++
++    format_apic_icr(s, &cpu->env, buf);
++
++    g_string_append_printf(buf, "ESR\t 0x%08x\n", s->esr);
++
++    format_apic_interrupt("ISR", s->isr, s->tmr, buf);
++    format_apic_interrupt("IRR", s->irr, s->tmr, buf);
++
++    g_string_append_printf(buf, "\nAPR 0x%02x TPR 0x%02x DFR 0x%02x LDR 0x%02x",
++                           s->arb_id, s->tpr, s->dest_mode, s->log_dest);
+     if (s->dest_mode == 0) {
+-        qemu_printf("(cluster %u: id %u)",
+-                    s->log_dest >> APIC_LOGDEST_XAPIC_SHIFT,
+-                    s->log_dest & APIC_LOGDEST_XAPIC_ID);
++        g_string_append_printf(buf, "(cluster %u: id %u)",
++                               s->log_dest >> APIC_LOGDEST_XAPIC_SHIFT,
++                               s->log_dest & APIC_LOGDEST_XAPIC_ID);
+     }
+-    qemu_printf(" PPR 0x%02x\n", apic_get_ppr(s));
+-}
+-#else
+-void x86_cpu_dump_local_apic_state(CPUState *cs, int flags)
+-{
++    g_string_append_printf(buf, " PPR 0x%02x\n", apic_get_ppr(s));
++
++    return g_steal_pointer(&buf);
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index d87c8808f6..2bcb175da8 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2201,8 +2201,10 @@ void x86_cpu_set_default_version(X86CPUVersion version);
+ #define APIC_DEFAULT_ADDRESS 0xfee00000
+ #define APIC_SPACE_SIZE      0x100000
+ 
++#ifndef CONFIG_USER_ONLY
+ /* cpu-dump.c */
+-void x86_cpu_dump_local_apic_state(CPUState *cs, int flags);
++GString *x86_cpu_format_local_apic_state(CPUState *cs, int flags, Error **errp);
++#endif /* !CONFIG_USER_ONLY */
+ 
+ /* cpu.c */
+ bool cpu_is_bsp(X86CPU *cpu);
+diff --git a/target/i386/monitor.c b/target/i386/monitor.c
+index 19468c4e85..fc09f90059 100644
+--- a/target/i386/monitor.c
++++ b/target/i386/monitor.c
+@@ -33,6 +33,7 @@
+ #include "qapi/error.h"
+ #include "sev_i386.h"
+ #include "qapi/qapi-commands-misc-target.h"
++#include "qapi/qapi-commands-machine-target.h"
+ #include "qapi/qapi-commands-misc.h"
+ #include "hw/i386/pc.h"
+ 
+@@ -650,23 +651,52 @@ const MonitorDef *target_monitor_defs(void)
+     return monitor_defs;
+ }
+ 
++TargetHumanReadableText *qmp_x_query_lapic(int64_t apicid,
++                                           Error **errp)
++{
++    TargetHumanReadableText *ret;
++    g_autoptr(GString) buf = NULL;
++    CPUState *cs = cpu_by_arch_id(apicid);
++
++    if (!cs) {
++        error_setg(errp, "No CPU with APIC ID %" PRId64 " available", apicid);
++        return NULL;
++    }
++
++    buf = x86_cpu_format_local_apic_state(cs, CPU_DUMP_FPU, errp);
++    if (!buf) {
++        return NULL;
++    }
++
++    ret = g_new0(TargetHumanReadableText, 1);
++    ret->human_readable_text = g_steal_pointer(&buf->str);
++    return ret;
++}
++
+ void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
+ {
+-    CPUState *cs;
++    Error *err = NULL;
++    g_autoptr(TargetHumanReadableText) info = NULL;
++    int64_t apicid;
+ 
+     if (qdict_haskey(qdict, "apic-id")) {
+-        int id = qdict_get_try_int(qdict, "apic-id", 0);
+-        cs = cpu_by_arch_id(id);
++        apicid = qdict_get_try_int(qdict, "apic-id", 0);
+     } else {
+-        cs = mon_get_cpu(mon);
++        CPUState *cs = mon_get_cpu(mon);
++        if (!cs) {
++            monitor_printf(mon, "No CPU available\n");
++            return;
++        }
++        apicid = cpu_get_arch_id(cs);
+     }
+ 
+-
+-    if (!cs) {
+-        monitor_printf(mon, "No CPU available\n");
++    info = qmp_x_query_lapic(apicid, &err);
++    if (err) {
++        error_report_err(err);
+         return;
+     }
+-    x86_cpu_dump_local_apic_state(cs, CPU_DUMP_FPU);
++
++    monitor_printf(mon, "%s", info->human_readable_text);
+ }
+ 
+ SevInfo *qmp_query_sev(Error **errp)
 -- 
 2.31.1
 

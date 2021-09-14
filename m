@@ -1,86 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp732504lfp;
-        Tue, 14 Sep 2021 07:22:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4+eZftZ0f0BbzawRU7xHCViP2Fibo2yvWt7kYQ7OYAMMg7yYixK+r3ne/ouL6s1+0+iCO
-X-Received: by 2002:adf:902b:: with SMTP id h40mr18734421wrh.342.1631629361291;
-        Tue, 14 Sep 2021 07:22:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631629361; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp734924lfp;
+        Tue, 14 Sep 2021 07:25:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwVA8VB99a0CvbfCe8tWfts3co+8Ms3oFDaFZHHgPQs9Mn6QvWBmqrrCjzQgAwtJAcei3fV
+X-Received: by 2002:a17:906:b104:: with SMTP id u4mr19462948ejy.201.1631629538838;
+        Tue, 14 Sep 2021 07:25:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631629538; cv=none;
         d=google.com; s=arc-20160816;
-        b=v7OvWL7ZB4MjhlSbkEcJWvl8KHBkBKC0lUnryf9exickXw/LNWqmoqfRmCTEzm3utV
-         eDNGslNAYTzYvvfkxHKU7xE9HT4I5Z8iG8IhqzDK7pEs2I/njT7rEaYXSiBDYTG4kOEW
-         jJgt+lwWIUqnzADAupdXKXGZnGBQT6P6unnhbPj7Na0QYmfcIIzVdtMgsW37OWriXSZ6
-         uqvfRq9cPHNvgMgveZa+4iK8Mv190+cvRt7KrmStqVWpM8kIf83W3HFJbY5eIc5a3Ccv
-         fbY2FjZVuVQgwC+hXHEjGvkbETNlQeCRyUsWyEX0+Q7UrjgvjF7kkcmTfA625PCs89pO
-         /xxA==
+        b=zDAatELaiXfg48QdWR/zBph/t6y5OQD9P/Rfk1U8O5TmzOscMmH2wYcvDg2YRB7MCX
+         sjf/TqptbWfF4L8NbU4Y45nryAPtLCPQbqz39uc1oWMfCrGjuodwzNV7KSk270Ndyq9Q
+         oWNY0T2u62FzHg0JtdZQr5UhRSNsqxZuQ/N4mVYkUuxcQ45f1IV5+mN+cl4jgSsIk8lc
+         f4ea+dPMHZtEiQg+bdmUmqWN6urlTH0s8HlZwH8G/zCmz6RXgxz4J7Hzkpy+VPho6FaQ
+         9EL/EMNFR2kAnkiRXoSja0jhs6Z9N1yKvzISEjBbVJciqKD1r+60L5SawKr7sCtfgj13
+         wv/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jqg+KbdjEyUa8qwGSIprn8VTfs1RlVUX+DOblupWdX8=;
-        b=oTZsuOzULC/hjJ5FttMK/lRIeQi248JNHpCClC2FftHl+hec21fTYxd5eY74I4So3r
-         iwq3fglqvu5PZABYDe8DgkIt8shtPWnJiXDxQVWguBkzPCzrN84HJmrd4+3fjHntcs3b
-         GJX0cg5CenNXI2BmkviCxHi7NhsrF+mlUnCmKzEARYDIHk3T5yRoxBIYln8KDprF+4EV
-         VmwXJz4d3GziJvVNdytcIy6AAsatn8WXSSaFP+IRhEjNThTPXlrMLqS9Csxi6X00fMcz
-         PwAbmw54CKIaH9iG1VIQV78t1hiK/srIajNvk88vZaB/Ki0JhIbSrI3MhABbS2IM+NcT
-         dflA==
+        bh=rKnaBwFCCJX9ZX6cv7A4ifx+XIL+7QBX+qDEATc0WKY=;
+        b=nSVQ81IemzTVJVfVTkGHP+pCwcGIFS605K+c5ZC0SnMgm1Yyu8pwdwSXEbivtSgwu7
+         atZfb5VMfmqvbhnW9mG5SZA+eZVgXuJv+mfTyKsYchnF4Ri2SsqyTBQCr/H8PLD8r8c0
+         Emdft4AG/gMpAUqYAIWfINOw68ZnVK/aEdwDe2cXsvuOMj9x28e5qkZAc6pWZ6VNyCuU
+         cVxFetHf8MSgWIPm1wxlc0+rSMKkt1bQWww7bB9mXqJr1UbOZsNXMbYNoltRsq9iWVhB
+         hNJw3kQnyH7UbIAExazOaE8iV2ibgB8htMkdbn8pz4ue5XbAGwmbGz6oKZkmFkipNvBK
+         bdDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="W8/6Fo1X";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FvwScpkw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17si10633736wru.246.2021.09.14.07.22.41
+        by mx.google.com with ESMTPS id dm10si11039462ejc.402.2021.09.14.07.25.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:22:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 07:25:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="W8/6Fo1X";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FvwScpkw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41070 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9Ka-0000uP-BG
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:22:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34074)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ9NR-0005XV-RW
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:25:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Ju-0000fD-M5
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:21:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41413)
+ id 1mQ9L3-0002DZ-O6
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:23:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60283)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Js-0003eh-3B
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:21:58 -0400
+ id 1mQ9L1-0004T2-1C
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:23:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629315;
+ s=mimecast20190719; t=1631629385;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jqg+KbdjEyUa8qwGSIprn8VTfs1RlVUX+DOblupWdX8=;
- b=W8/6Fo1XBSR9oEHYrGMIwhjnhcfyVtYx6yv4BZARIfodwkNmiPupOUkwSo8Tb4QJjvE8DE
- fwGlji4eXX6R0PbiH/3UtaE32YQlCu48UKdDaBI+7jJS2Vrw3Gd/gHGLcNBnw5Y1VkADZy
- 3jDUM64mhMFt3SF48kzVfa6soM2djT4=
+ bh=rKnaBwFCCJX9ZX6cv7A4ifx+XIL+7QBX+qDEATc0WKY=;
+ b=FvwScpkw/c6lo782uppwpfvt1NIaou0TFbcQy/Pz0tLvq1nJDIYTXO7iVULMr2tcj/yD5X
+ RV4BnH1utCBW4+Ex8rIKZtI9NLsbTmYFNDKlX7SzGUwQt+iBdju4AR5dvLhQJbJSVrjO0A
+ nfyAsasS/WqQJAahFLzjV5Z6DohObmQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-465-0ANmDWgANhWaZU5mbBWQ9w-1; Tue, 14 Sep 2021 10:21:53 -0400
-X-MC-Unique: 0ANmDWgANhWaZU5mbBWQ9w-1
+ us-mta-265-XoKLPxexNHmDkTmH1a4ktg-1; Tue, 14 Sep 2021 10:23:04 -0400
+X-MC-Unique: XoKLPxexNHmDkTmH1a4ktg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 17498835DE0;
- Tue, 14 Sep 2021 14:21:49 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BB3DF1084683;
+ Tue, 14 Sep 2021 14:23:00 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A48F35D9CA;
- Tue, 14 Sep 2021 14:21:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 588BE5D9CA;
+ Tue, 14 Sep 2021 14:22:42 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 01/53] docs/devel: rename file for writing monitor commands
-Date: Tue, 14 Sep 2021 15:19:50 +0100
-Message-Id: <20210914142042.1655100-2-berrange@redhat.com>
+Subject: [PATCH v2 06/53] hw/core: introduce 'format_state' callback to
+ replace 'dump_state'
+Date: Tue, 14 Sep 2021 15:19:55 +0100
+Message-Id: <20210914142042.1655100-7-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -93,37 +94,35 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -139,49 +138,85 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9mdCNzXgIKCE
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vfltT1Rqlg2M
 
-The file already covers writing new style HMP commands, in addition to
-the QMP commands, so it deserves a more general name.
+The 'dump_state' callback assumes it will be outputting to a FILE
+object. This is fine for HMP, but not so useful for QMP. Introduce
+a new 'format_state' callback that returns a formatted GString
+instead.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- docs/devel/index.rst                                        | 2 +-
- ...riting-qmp-commands.rst => writing-monitor-commands.rst} | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
- rename docs/devel/{writing-qmp-commands.rst => writing-monitor-commands.rst} (99%)
+ hw/core/cpu-common.c  | 15 +++++++++++++++
+ include/hw/core/cpu.h | 13 ++++++++++++-
+ 2 files changed, 27 insertions(+), 1 deletion(-)
 
-diff --git a/docs/devel/index.rst b/docs/devel/index.rst
-index f95df10b3e..7c25177c5d 100644
---- a/docs/devel/index.rst
-+++ b/docs/devel/index.rst
-@@ -44,4 +44,4 @@ modifying QEMU's source code.
-    ebpf_rss
-    vfio-migration
-    qapi-code-gen
--   writing-qmp-commands
-+   writing-monitor-commands
-diff --git a/docs/devel/writing-qmp-commands.rst b/docs/devel/writing-monitor-commands.rst
-similarity index 99%
-rename from docs/devel/writing-qmp-commands.rst
-rename to docs/devel/writing-monitor-commands.rst
-index 6a10a06c48..497c9ce0d5 100644
---- a/docs/devel/writing-qmp-commands.rst
-+++ b/docs/devel/writing-monitor-commands.rst
-@@ -1,8 +1,8 @@
--How to write QMP commands using the QAPI framework
--==================================================
-+How to write monitor commands
-+=============================
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index e2f5a64604..c2cd33a817 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -106,6 +106,21 @@ void cpu_dump_state(CPUState *cpu, FILE *f, int flags)
+     if (cc->dump_state) {
+         cpu_synchronize_state(cpu);
+         cc->dump_state(cpu, f, flags);
++    } else if (cc->format_state) {
++        g_autoptr(GString) buf = g_string_new("");
++        cpu_synchronize_state(cpu);
++        cc->format_state(cpu, buf, flags);
++        qemu_fprintf(f, "%s", buf->str);
++    }
++}
++
++void cpu_format_state(CPUState *cpu, GString *buf, int flags)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    if (cc->format_state) {
++        cpu_synchronize_state(cpu);
++        cc->format_state(cpu, buf, flags);
+     }
+ }
  
- This document is a step-by-step guide on how to write new QMP commands using
--the QAPI framework. It also shows how to implement new style HMP commands.
-+the QAPI framework and new style HMP commands.
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index bc864564ce..1599ef9df3 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -91,7 +91,8 @@ struct SysemuCPUOps;
+  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
+  * @has_work: Callback for checking if there is work to do.
+  * @memory_rw_debug: Callback for GDB memory access.
+- * @dump_state: Callback for dumping state.
++ * @dump_state: Callback for dumping state. Deprecated, use @format_state.
++ * @format_state: Callback for formatting state.
+  * @get_arch_id: Callback for getting architecture-dependent CPU ID.
+  * @set_pc: Callback for setting the Program Counter register. This
+  *       should have the semantics used by the target architecture when
+@@ -136,6 +137,7 @@ struct CPUClass {
+     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+                            uint8_t *buf, int len, bool is_write);
+     void (*dump_state)(CPUState *cpu, FILE *, int flags);
++    void (*format_state)(CPUState *cpu, GString *buf, int flags);
+     int64_t (*get_arch_id)(CPUState *cpu);
+     void (*set_pc)(CPUState *cpu, vaddr value);
+     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
+@@ -537,6 +539,15 @@ enum CPUDumpFlags {
+  */
+ void cpu_dump_state(CPUState *cpu, FILE *f, int flags);
  
- This document doesn't discuss QMP protocol level details, nor does it dive
- into the QAPI framework implementation.
++/**
++ * cpu_format_state:
++ * @cpu: The CPU whose state is to be formatted.
++ * @buf: buffer to format state into
++ *
++ * Formats the CPU state.
++ */
++void cpu_format_state(CPUState *cpu, GString *buf, int flags);
++
+ #ifndef CONFIG_USER_ONLY
+ /**
+  * cpu_get_phys_page_attrs_debug:
 -- 
 2.31.1
 

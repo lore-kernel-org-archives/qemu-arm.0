@@ -1,107 +1,117 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp753898lfp;
-        Tue, 14 Sep 2021 07:47:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwlWWLfviLnwEgC9sL5lUOnhrusmOgRRHhnqpx+6G4RHTLNE+p4eQ1D5Y9ZyUrSngKK63WU
-X-Received: by 2002:a17:906:49d5:: with SMTP id w21mr19895719ejv.30.1631630871418;
-        Tue, 14 Sep 2021 07:47:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631630871; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp813224lfp;
+        Tue, 14 Sep 2021 08:55:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0VbTCekvgBdn52K9mVmrwWd6WvCcqBDc0Atr1PsL4411c70nGt0ookMPpZZxGt07dpL6U
+X-Received: by 2002:a5b:381:: with SMTP id k1mr24148425ybp.271.1631634902213;
+        Tue, 14 Sep 2021 08:55:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631634902; cv=none;
         d=google.com; s=arc-20160816;
-        b=OlWO2owYRhoPaaBJx8A/MawWwYUy+XQT3TRR9FYSLEhiRlwbUDmWA8p/GUXsr8RM87
-         J3SarsCU+2RbExF1dVjr3EOoatTGCZAZB3G2DcID1G12qxQ4pEtIUHjzH1YYec1ztXIi
-         WWrjqr5WDNT/6Uto84JAFCqx8ECBSs5ItQxQQ+mN+VLAA75vTW8xHuZebju8TBGQfYnJ
-         YyyY5oQiL8AaT1xHBBWyDUF4i24MwcBEUmVL9ZySZnoDu2Pac+vxrvn6uRWfBldf9L1M
-         sCR45NYRQxG0G4RA/gJY8DSVmNrxBkz/TwHYZKwn1iEYPuqpJT3Wdam9HdDZ6lwZtodR
-         oRhg==
+        b=spv+SW5UPjBeWhi+a6L3xjFtj5dOEjCKLfaegnii00GrOxTtm2FrsNdTlptb3DHYHx
+         ByHqBQtno3Boiakuo4iuzcNcOecvnl4b0jM6P9S7/1jswenaRDJX8E8mpgDorb9C6Ra5
+         LgjK2RnI7HjrnkbAz7nsQoP0C2oDUGGYA2MgCClZQyetF48+EpE+o+ZkHaDntJ4QVKcL
+         SCaSY98tYzkpZ+lZgeSs8/xAOCzw4osyv4dT4ZhTsFUK3gV8ZVJKV1YCQiZ+kwb5yM/A
+         nQTU7HIYT5XWOAC5rTWR2xK/3mPfQrXrcOHe5g27gzz2sijZtbTI0vhvVOOE0nFA/rBu
+         +w/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=LXRO/fMo8Qw/FWNF0Yyw4kfLM8T681YtQWZQBpSYMfI=;
-        b=pymh21TNuCNrFf6SCE96m7kyF+TgLoAI0ZZFktQHM7aqemRAlek67TXTL+qMB2LLHt
-         pBrA+PI4GVgs1iaYW810mbJwmh/Jsjeu05HjZM6tv9Vipck88v52h9xK9lAtMNSqwh+S
-         PptIm2SNOcEzmh7DcsQVDRkqQVHXySdKxVnKQKXUU/XRmyBUg05ruShglG97sUs3epbW
-         RvRfgcB+SHXiyP2qbdSSUhXqKuOLbJYieNi3FI8uO5FDfMSanT6uoTWQcYGzpihnp6cj
-         5j1dAoyzcxLbZ2igu8nFpeLYDFnXDMjy4pzBfntQZl2nVq23hqlvl53fFoK5P0De6asz
-         0OjQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=pkgjLpitsHJMhDXArCswox8AfpKZOBwtH5nrcktpw6M=;
+        b=arZCSn4IEvL5YtzL7HoAev9D9DAiJDoY91m30sNFvkCtLJ163Y/45DXT/5qa9JkiMp
+         5tJuWLbJljQdEjJldTMGznbc4yvGnRSOGeU9s8jlHGiP8TWEhs+W1MSqHHKAH7oPDtsW
+         ek2yUl0mcrDwrzIcjCRYc0VX4iY928KS+6nBUiKNp2Q+64pFXibUpxBqNPIVqKgbcOJs
+         REi4a0mbVr5/KFEX3IE98g8hqhtfynKGLsyLxWXF/tGQUmbJsoBI4svq7TupkfjOuNvL
+         MmTxtTGDE2QR2Nfl97uXAAxJtIdEoBaibJ59p9lFqtoGNYlkHm9kVcXXilk154NaJX3H
+         YBcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FcrIK37u;
+       dkim=fail header.i=@linaro.org header.s=google header.b="qx/iztLH";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p4si9526981edj.100.2021.09.14.07.47.51
+        by mx.google.com with ESMTPS id q65si11960774ybc.375.2021.09.14.08.55.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 07:47:51 -0700 (PDT)
+        Tue, 14 Sep 2021 08:55:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FcrIK37u;
+       dkim=fail header.i=@linaro.org header.s=google header.b="qx/iztLH";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48714 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60284 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ9iw-0004Hw-Hi
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 10:47:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36064)
+	id 1mQAlx-0003PY-JS
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:55:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mQ9MW-0006Fd-Ms
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:24:45 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:34351)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mQAH0-0006YV-9E
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 11:23:02 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:39843)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mQ9MP-0005Sf-Bi
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:24:40 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id m9so20580157wrb.1
- for <qemu-devel@nongnu.org>; Tue, 14 Sep 2021 07:24:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mQAGx-00038g-Gg
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 11:23:01 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ c13-20020a17090a558d00b00198e6497a4fso2414916pji.4
+ for <qemu-devel@nongnu.org>; Tue, 14 Sep 2021 08:22:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=LXRO/fMo8Qw/FWNF0Yyw4kfLM8T681YtQWZQBpSYMfI=;
- b=FcrIK37uUm4KIYpc7QpeNcnzXcdOujY9YJ1V0t1q30dpOZBRN+VKE4HlRcoto0Pz26
- K5TBk81lWT6CzthL6Yan4kOnr2O7AAsyiwQHzKBDQ+0SkL5s997QUJOEViYOiIhbp/LQ
- zYMORnsm227uXGa1dC6UQv2Ro2EQ8Sva6DqBlfs/r9y6nnwt1d1FzNUXr5+BVOftERDd
- +zN0ZF0rQBcv3bqixHoGmqmOK5vircvKSLYsn932Fj3DLBI39SRGW9L9njxTZPFioQRY
- S9U172Jt8Rc+6ujqRyCjCKct9Nayavmx4YSF5h1p19QcSNPhuhWPPwIfeR9zajIkgUGT
- F12g==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=pkgjLpitsHJMhDXArCswox8AfpKZOBwtH5nrcktpw6M=;
+ b=qx/iztLHMvW9e5Y9fsukYzn5C1B1MhPA1Ru0PaPQULOXhEvi3MCGWo4suLtwss9HO0
+ Elt3c5W8VCn0K71hZrvijlaU8QUIiehws6V8ibAqUnBsqwQBQRGaPWLkJKZCwwyHPw3f
+ TjSJffDcPvEVLFJ9VcjhvlwFbRelnC7om8TY9d5CeQhB0eCJeIJgoFA6cc+EdHszjYDL
+ KScT/tJmn83Np8dG9spSDjzmQI39fJibpuP4j6LSQ+t1rRIK+5c1o1v9vDaiwFW0p7t9
+ 0ac6EWNqjDOyopHxC3BqOq2No+SLXY8XyLYATnmNsCenSDEm25MRPVZLgjW9sdw9vpfe
+ W9zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LXRO/fMo8Qw/FWNF0Yyw4kfLM8T681YtQWZQBpSYMfI=;
- b=EAXILB+cCGfzcDe/RKltcTQhuSrGcPsWYReVQRCstWkb9xbvZ/QF7DNax/zjM+wZ3Q
- B51HNrypsnvL2OOGvcSJCya9fB5IZP5V9X+GSn25I5NkID8ySd1q4hyueIsZj3M7Jju/
- 9BfAlmKn2PQ/eytN7pmL4q9v8286HjK1bZAYR1pNpznPF63bWY4eJ+6F0julqdbyvm/5
- n1cfSHpqS0HWswp3alapsxjLG8ytrhXUOU29+w0Tr0o2bI3dvTUcgF6Mj1JckP3gym36
- ZE9NJ1vZRre3z8fJfiyvZ8XrP8+05Ib2NAzqoasvdzfSWvbTzS1vJzFdoPBF/VMtaIdm
- OoFg==
-X-Gm-Message-State: AOAM533cgSeT3NFVGWzII1vBp86CUhIgODA5/+LQNxoTEQEHbqc+TtzM
- fIdQ23PJKd5WD0JuttIXTJ+xiw==
-X-Received: by 2002:a5d:54cf:: with SMTP id x15mr19760414wrv.27.1631629469533; 
- Tue, 14 Sep 2021 07:24:29 -0700 (PDT)
-Received: from localhost.localdomain
- (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id k6sm184252wmo.37.2021.09.14.07.24.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Sep 2021 07:24:29 -0700 (PDT)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: eric.auger@redhat.com
-Subject: [PATCH v3 08/10] tests/acpi: add expected VIOT blob for virt machine
-Date: Tue, 14 Sep 2021 15:20:03 +0100
-Message-Id: <20210914142004.2433568-9-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20210914142004.2433568-1-jean-philippe@linaro.org>
-References: <20210914142004.2433568-1-jean-philippe@linaro.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=pkgjLpitsHJMhDXArCswox8AfpKZOBwtH5nrcktpw6M=;
+ b=lehHcj4mwqzt7QGAptiHM+N7N6WCYZHovInoslnOtNxi7nKY09rjZd2350yfoMN20M
+ I3nw54eF5MmonCs57QEwTwatwe1qovXfwguEKOwtSiD2kV+1jvNWfc+caAWIMbHzKM/I
+ 00ly2O64puwuZGkMwtnyIcM453fGlNP0mbMVUvhwTabznGCCymgedmaBJ4WFKXDcjgOL
+ Vdb+hguQL3y1vYV+wccTWHItjM7VMrRyXyE4Yw3Ay5+6fkR0wjzum6qDX48RvLZkcUNE
+ GYfK8wgddfkoMBgg/npxEoJhnlja7gLXfNQ+0s5W1mXcBDy8aOnqS2nv00f81VN2Vu4f
+ wwNw==
+X-Gm-Message-State: AOAM532+/re8k4BpdeJPhV3mPF0MwIw6j7QcbwzLzkSR8iuLu0PNIiue
+ JHXY3N7tkkuwAdOhYDFRJyK24g==
+X-Received: by 2002:a17:902:6e02:b0:137:b47e:d779 with SMTP id
+ u2-20020a1709026e0200b00137b47ed779mr15447944plk.50.1631632977764; 
+ Tue, 14 Sep 2021 08:22:57 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.134.125])
+ by smtp.gmail.com with ESMTPSA id f6sm2090403pjo.0.2021.09.14.08.22.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 14 Sep 2021 08:22:57 -0700 (PDT)
+Subject: Re: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
+To: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
+References: <20210913161304.3805652-1-clg@kaod.org>
+ <20210913161304.3805652-15-clg@kaod.org>
+ <88c26520-6b87-e7a2-ac78-c1c92477c814@kaod.org>
+ <BBC4A4E0-651C-41DB-81DE-1F6D86AABAB1@fb.com>
+ <CACPK8Xdey9_x-ZN1JbgFyTrW59EapH4xcqYbyNQxyQ5t0uWPvw@mail.gmail.com>
+ <CAFEAcA8ntPE3GkTNU8bSBhCWzk_jdH4QR1kDgwo6deQ+T1iOKw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <1949e204-1bce-f15b-553b-1b42b41e3e08@linaro.org>
+Date: Tue, 14 Sep 2021 08:22:55 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <CAFEAcA8ntPE3GkTNU8bSBhCWzk_jdH4QR1kDgwo6deQ+T1iOKw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.969,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -116,75 +126,33 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
- pbonzini@redhat.com, ani@anisinha.ca, imammedo@redhat.com
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Peter Delevoryas <pdel@fb.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goate?= =?UTF-8?Q?r?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j4oRSNXR9KS5
+X-TUID: /7IuFxdUvrqL
 
-The VIOT blob contains the following:
+On 9/14/21 5:26 AM, Peter Maydell wrote:
+> (2) RAM blocks should have a length that fits inside a
+>      signed 32-bit type on 32-bit hosts (at least I assume this
+>      is where the 2047MB limit is coming from; in theory this ought
+>      to be improveable but auditing the code for mishandling of
+>      RAMblock sizes to ensure we weren't accidentally stuffing
+>      their size into a signed 'long' somewhere would be kind
+>      of painful)
 
-[000h 0000   4]                    Signature : "VIOT"    [Virtual I/O Translation Table]
-[004h 0004   4]                 Table Length : 00000058
-[008h 0008   1]                     Revision : 00
-[009h 0009   1]                     Checksum : 66
-[00Ah 0010   6]                       Oem ID : "BOCHS "
-[010h 0016   8]                 Oem Table ID : "BXPC    "
-[018h 0024   4]                 Oem Revision : 00000001
-[01Ch 0028   4]              Asl Compiler ID : "BXPC"
-[020h 0032   4]        Asl Compiler Revision : 00000001
+Recalling that the win64 abi model is p64, i.e. 'long' is still 32-bit while pointers are 
+64-bit, how close do we think we are to this being fixed already?
 
-[024h 0036   2]                   Node count : 0002
-[026h 0038   2]                  Node offset : 0030
-[028h 0040   8]                     Reserved : 0000000000000000
+> Even if we did fix (2) we'd need to compromise on (3)
+> sometimes still -- if a board has 4GB of RAM that's
+> not going to fit in 32 bits regardless. But we would be
+> able to let boards with 2GB have 2GB.
 
-[030h 0048   1]                         Type : 03 [VirtIO-PCI IOMMU]
-[031h 0049   1]                     Reserved : 00
-[032h 0050   2]                       Length : 0010
+I'm not opposed to deprecating 32-bit hosts...  ;-)
 
-[034h 0052   2]                  PCI Segment : 0000
-[036h 0054   2]               PCI BDF number : 0008
-[038h 0056   8]                     Reserved : 0000000000000000
 
-[040h 0064   1]                         Type : 01 [PCI Range]
-[041h 0065   1]                     Reserved : 00
-[042h 0066   2]                       Length : 0018
-
-[044h 0068   4]               Endpoint start : 00000000
-[048h 0072   2]            PCI Segment start : 0000
-[04Ah 0074   2]              PCI Segment end : 0000
-[04Ch 0076   2]                PCI BDF start : 0000
-[04Eh 0078   2]                  PCI BDF end : 00FF
-[050h 0080   2]                  Output node : 0030
-[052h 0082   6]                     Reserved : 000000000000
-
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- tests/data/acpi/virt/VIOT                   | Bin 0 -> 88 bytes
- 2 files changed, 1 deletion(-)
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 29b5b1eabc..fa213e4738 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,4 +1,3 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/virt/VIOT",
- "tests/data/acpi/q35/DSDT.viot",
- "tests/data/acpi/q35/VIOT.viot",
-diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/VIOT
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..921f40d88c28ba2171a4d664e119914335309e7d 100644
-GIT binary patch
-literal 88
-zcmWIZ^bd((0D?3pe`k+i1*eDrX9XZ&1PX!JAexE60Hgv8m>C3sGzXN&z`)2L0cSHX
-I{D-Rq0Q5fy0RR91
-
-literal 0
-HcmV?d00001
-
--- 
-2.33.0
-
+r~

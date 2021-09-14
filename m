@@ -1,244 +1,586 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp802694lfp;
-        Tue, 14 Sep 2021 08:41:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwONv2qcpV1hMCt9Cw2ZCoELnD7UFdTaTXyq5JeV99c9C3Y3VCQRAPWZNYtHY6RFQGrrYIJ
-X-Received: by 2002:a7b:c009:: with SMTP id c9mr2945340wmb.106.1631634074736;
-        Tue, 14 Sep 2021 08:41:14 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1631634074; cv=pass;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp804045lfp;
+        Tue, 14 Sep 2021 08:42:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmG88WGezvL6zOYSzoEPYiAUQaRhbSVWPSKklb3FQwhRbepTlFv9+EziuRgDpRcuM7Hct0
+X-Received: by 2002:ab0:67d1:: with SMTP id w17mr4923496uar.73.1631634178581;
+        Tue, 14 Sep 2021 08:42:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631634178; cv=none;
         d=google.com; s=arc-20160816;
-        b=JK+cfNxdUI1GaiNOZ9lq4Zir+QDuyoqg7a1qe+8WapBWtTydwSqM7Pjx6P8e1EasNA
-         Hf6bRiEF9LdtWWdG/XbTFBB4+zQcAHLmiPDAb6LdVuZXuUetr6isn8Q2ccdgaOtiLBuI
-         qzZMUfqPG7KogZlvMzO4kCZ5VoxfgOoqTMADrEOil5WywLKK63DZtGD69Q6Qyk92fJnC
-         OlkCRLBi/YHHZF0nctsH8LtyV9LdKs17J+ZyTbUalUnAnWi+Wm22cphfEky2LgitN/X8
-         yhargaewkpWNIyFrLs4Sf7oBnLmoKKT/vRqTrlXfhsMVTOSEl6tx8xmqgDMG6P5cIvZz
-         t6SA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=MXZv+ZFoBRGzoVHNeqlqr2bdEajtH1vp3e+upGculQ6za9r0iwIH2VVZWTKtPdassZ
+         UzeSWL6qanMXKjxstMXgyPACcTVtEfv27E4ogsRkaUmZ6VdlPVnklqrQ2CbZtGzbVUx6
+         cqxwaY6IukAfREMRlUBp6975BZiJYD2S4fxFR0Ehj8x9gxn0rb14jzikJ66CRdHdtCcL
+         u6lrDLlq//xtNbG8C7YnKXjPtjbCyxI8urbYdsPCpxYJOkNEvdzb8VD8f1rAlvE2sjTR
+         qPwwqrvnysca/+GN2f0LB3n2ls2w1gSNKStvLV5sawZgl3TmyXYlXploEDsLf1UNPJY+
+         rEug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature;
-        bh=uuRZb/3Hvg1VMC1GrUdlCvZlZcZtxlqDPCeHsCN4a/c=;
-        b=ApFflE3x08nYdyTUb3GxsvBhEIOseUxlIE/p7qHgTqDl9Fb7JtMTzho4z7PmMmzDqV
-         +5ZQt2wBYd0tp6CjSqUmlZ9Sz4f5NEW0bWvr/xTAL8htGV01fQwJm22Y15ntqGxQdeG7
-         wTqkQEwS20VkHuNNuJMQsvH0s/8DUF83EuETB99dwSeyZIwo4IyrPVfHBpC+TGllFJ3j
-         eBHg7LUBWt1qsiRhULe6SA6z0MoswsrXKWzED+8jeP/k9SdsUI/Lfi9I1t7TZYP9Z7c6
-         LkSm5NeRextRjrokY9454afSxFAMKkIpa0HIb+ETFEhXnUHCz8e9TEZaUDB5TPMQz4+l
-         uU/A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qccesdkim1 header.b=KGTdbNZv;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Wy8/gdFSFPTFVlYcj3RIlvpLCGStwBxaoNCHEzByEaY=;
+        b=sNsf/hJZcpuf8UiAcEvfxbgGbYRiXQvOAwQTsK5Oo/dAY1Sr6X9yYAXT/s22ct0+eE
+         qwmQ8cBgBUeKI8ZaGZH+h5ONHyFIEHxD82PGnjAke0OMM7UW7xuIHgSF3734qaDKwRSm
+         WIiiDdXcLgjxpfScgsK2TT3WK0t/3K+dUxHuIu0b6l5Q6kIw5yTQ16IMpp+ztvnoS1o+
+         bNpC/zQm2uFP0498eWciLydqtAg4fqnYcDUTIX/XNsSjo+8aLcs9eHnFI19Evu+tC9y2
+         4mMbhx9BpRkwu/dExz+4HuS180bYfH9HkxKk0XdfDO4GyLalH8/BVZrBWRFfWN/p9/W5
+         Z8Xw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OYIU7dCg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x9si7024522wrm.257.2021.09.14.08.41.14
+        by mx.google.com with ESMTPS id b19si3853819uaf.179.2021.09.14.08.42.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:41:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 08:42:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qccesdkim1 header.b=KGTdbNZv;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:53670 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OYIU7dCg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQAYb-0004Us-Lh
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:41:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47950)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQAaH-0001AS-PC
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:42:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
- id 1mQ9lh-0000lQ-Mt; Tue, 14 Sep 2021 10:50:41 -0400
-Received: from esa.hc3962-90.iphmx.com ([216.71.142.165]:53288)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQ9YF-00080B-S7
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:36:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41795)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
- id 1mQ9le-0000ZC-Lq; Tue, 14 Sep 2021 10:50:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qccesdkim1;
- t=1631631038; x=1632235838;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=uuRZb/3Hvg1VMC1GrUdlCvZlZcZtxlqDPCeHsCN4a/c=;
- b=KGTdbNZvAPvN8DmBceN5u6fddli/3zXuQz8f4tsByAmGn8ugZpD5yf5T
- c5tqjpaOUeEiY8cA2oMdBF7mXaQt9BuloYW4S38KBN+CylVZEkR9TAJXQ
- vlOyeudQZcJYljpHhONyVtKc0v54QAdD+B2msbGFqOni40STNA5j6kHGx Y=;
-Received: from mail-dm6nam08lp2048.outbound.protection.outlook.com (HELO
- NAM04-DM6-obe.outbound.protection.outlook.com) ([104.47.73.48])
- by ob1.hc3962-90.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Sep 2021 14:50:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FAJ3hxLE3dhsUI+NMNzqjwRlu9jfhg4aR0AjaJhHtqjyydxueOxSJ3CdkGqz3ieAysHeFuYQARJ0Scmhup+YdWvelT/dZIuC5V6/V0lo4+fPaWYN2nz0fy0MW3bRjO0j76gMXuNU0xYVEbwbYDbogtFRp5hvF2D2DdpSLxMCponVgnhoYNHC2RdYo/0R2WuLNcvtVboQQzLaDDVKqBceeDVa2IQJeAxnB90DOtUyqI/mPR+/wq0mm7TeJ8Q7YgvCl4BGmXHLTYgap906B1CDxS2rJE64UD+wM20Z/ywddOlo2GSGo5GJvcWPyqg2pp+cVKG3/4hUZNusu8ci6mdzgQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=uuRZb/3Hvg1VMC1GrUdlCvZlZcZtxlqDPCeHsCN4a/c=;
- b=c1C4g/pqkN7NSS1/Y5CssioPSqMgh0shzBHO6syxfn2+6v1lOrYaQp6eO0l3SSkzmK571hqGkkVCrn2MVL2sj9a9UBfZcNfmsEMde/5gD60Sm6pN/A+FC7ZmdG2mU+YFffQCRSDrfQcUdXrvTiW68qYsHa2gb6u1McZ4ASVpoYiuPw8ygLxB+fvier2iwrAWwKtleOTpG8TxQs9tPfFnXfjdiHnZoCFs50N0UFlWcFoxEZGj7BpVLZmgL47HCTVEb72ELtqDZ3AYLY1BxwpQePmif0BrCLoPiuIdzyCyan9ndh9AGOAp1cYl5MmKwR9FX1rnia8hWJNPGEyMANUMJQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-Received: from BYAPR02MB4886.namprd02.prod.outlook.com (2603:10b6:a03:46::32)
- by BY5PR02MB6753.namprd02.prod.outlook.com (2603:10b6:a03:209::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4523.14; Tue, 14 Sep
- 2021 14:50:13 +0000
-Received: from BYAPR02MB4886.namprd02.prod.outlook.com
- ([fe80::351d:3400:b3d0:b000]) by BYAPR02MB4886.namprd02.prod.outlook.com
- ([fe80::351d:3400:b3d0:b000%3]) with mapi id 15.20.4500.019; Tue, 14 Sep 2021
- 14:50:13 +0000
-From: Taylor Simpson <tsimpson@quicinc.com>
-To: =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: RE: [PATCH v2 11/53] target/hexagon: delete unused hexagon_debug()
- method
-Thread-Topic: [PATCH v2 11/53] target/hexagon: delete unused hexagon_debug()
- method
-Thread-Index: AQHXqXRX8B6R0lFwyEWQmHfx5t8KqaujnFmA
-Date: Tue, 14 Sep 2021 14:50:12 +0000
-Message-ID: <BYAPR02MB488621BC728F5B9D009B8905DEDA9@BYAPR02MB4886.namprd02.prod.outlook.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQ9YB-0005rj-FB
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:36:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631630202;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Wy8/gdFSFPTFVlYcj3RIlvpLCGStwBxaoNCHEzByEaY=;
+ b=OYIU7dCgoJA/dv4sm8cgD0BOw0eNusfaujGT1jKrWxQyRQU3kDTBUFSqBVkW89vZmGHVWc
+ Fu8RowHo/3bVkAvoH9spfjaDuk+IflGZYO8BJr94C8vPU4/LvT60apsc0oRJE9GgA0HRn0
+ pXtuapX8kzNrhLIxmJSgKA7vr3QM85o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-145-M1GuuhZyOE-W4SQzAKMs_Q-1; Tue, 14 Sep 2021 10:36:41 -0400
+X-MC-Unique: M1GuuhZyOE-W4SQzAKMs_Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6C89610144E2;
+ Tue, 14 Sep 2021 14:36:37 +0000 (UTC)
+Received: from localhost.localdomain.com (unknown [10.39.193.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 39FD75D9DC;
+ Tue, 14 Sep 2021 14:36:18 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 52/53] qapi: introduce x-query-jit QMP command
+Date: Tue, 14 Sep 2021 15:20:41 +0100
+Message-Id: <20210914142042.1655100-53-berrange@redhat.com>
+In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-12-berrange@redhat.com>
-In-Reply-To: <20210914142042.1655100-12-berrange@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=quicinc.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: fb3a038d-501a-47d5-5688-08d9778ef52f
-x-ms-traffictypediagnostic: BY5PR02MB6753:
-x-microsoft-antispam-prvs: <BY5PR02MB675307FC05463ECB805D539BDEDA9@BY5PR02MB6753.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2887;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: u7qAlh5AJq4K1zPHr7KseeeFliS3FjTFPGL2GrQC5YlmOs9NKoIS4u20O9FU1y5Vf0h7+WQxDk1eAYkMGCdxO6N92iRig7y37NqG55q65J/ZbH2fMtqGC3eWgEkpxi1lXsQtyqbgWQjpg6IoFkvpi2jxCSieKsij4SoKYC3c81C1ztMS6Qg8lsm+eDvRwxbA5NlxdR94efnOkiydllZ9vIgUFdBBcawQB0VQ+++lzDvVQaBlzLA+wP0K0gS4doqudCiFpE0dJSiIBlddmF3uLblBtds6dyeAuZclIv9OuXazwauiL9NxvcCdVWPBGbtWCzWqIS1bULNNCeci4QSwl+A6cTadV+NPfQU6/cbnYdkXGpqnVTDoxmnnh9Vtn6QWMinfFbjGkvvo2r91J1iVSlsG4fu34vp/OS9WKc1k0pbRITMwVEYE93uiB9XdDRbuO/QtmZa1uQnfAG2ujyxKhCXyuGimJndSaCIODWgErX/xXv7OASBxMhdh7DNL4ioXJE2/hYa/zC88DPEK1y+BkGkbm24ebE+hN3SWjDFsjxfUigiDnw6T09+xAWy8oc+3rmXnUkcaQhRa0K+D/PYbpiMKkVnyHAm/192SWJaWOIf6GB6ZnD+rye4izUqmUCxL60lCN/jgxQ2y4cXlYd7CZsjb7uNP3hwa77pt6n8tl0BK3YV+tAB+sAeyOCN9o27j9n4S04+owUoRenFr9CDCnw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR02MB4886.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(136003)(366004)(39860400002)(346002)(396003)(376002)(2906002)(26005)(71200400001)(8936002)(7416002)(76116006)(478600001)(7406005)(316002)(38100700002)(38070700005)(186003)(122000001)(83380400001)(55016002)(110136005)(54906003)(7696005)(4326008)(9686003)(8676002)(33656002)(86362001)(66946007)(6506007)(66476007)(66556008)(64756008)(66446008)(5660300002)(52536014);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SUhscnFWQ2RDSURCK2lUblpscEFtYXNiOC9UVEgySnpXT0pkRVl5cGd0YmtL?=
- =?utf-8?B?RitaZEZVS2FpZEF4Mm5NeTFvMEtvZ01qd21raXdhNmludTdLV1c3bWVOUFh2?=
- =?utf-8?B?QTZSTnBOZUREMHVrOXpvU3pMQnU2K3FZUWRCbjlQdHo3cFpTamk3UnViZFZG?=
- =?utf-8?B?SjRkTWJtbVMyMHRhODgxdU9PSC9XdlFON0l6RUlaUm03RFI2YXorRFpkckUr?=
- =?utf-8?B?cVZtaCtNSVpqZU10K0VleEx6bytxK1dmRFIzRGhKZEdVSjNwM1l1YmROVlVP?=
- =?utf-8?B?SXBudWUxZmhUYzBTZ1VMZ3N6YVJPSEU0YzZ4a0JaS1g1dGdpbEZra0VFVklo?=
- =?utf-8?B?YXNEWC9JcEk4ZzNnNzJ1Y2dMYnZPWW1rcTZXTmJjakIxNkNJcXJBbHk4WjQx?=
- =?utf-8?B?NEJkOEhPaUZhMjJZZ1BLNXhiM1AwdytlbktIakgwcWU4ZndFaVV6UFcyUGVD?=
- =?utf-8?B?SVlPUFczSEtJbmZleUE5d01qbDhyUk1mb1RONm1KRTNSMjJxRGJkcmdEb3pK?=
- =?utf-8?B?UWFUR3BhN1k0aHljSUw2YjlIUjVwUldsckZxYnNtR3dhZHhMdEJjZGIzclVz?=
- =?utf-8?B?Y2tJUi9KTTVXa1JlQkl3TnNneTM4a3VFM013NlhJeXBpcHFhS3lZYVJ0REth?=
- =?utf-8?B?dnFpTUdpQUQxNjl2bDNXZFR4MWpua1BBcnVNZ2x6U3VHZUI5OWpHTlRxSVAw?=
- =?utf-8?B?SjNJZjR3bWVaU2ZHZEF3UzhMK2VNaWtHNmdBWjdSUnMxNENKdElScmIzakJT?=
- =?utf-8?B?SVRHelFBQUUrNVI5eWZUa1ptY3NSd2Y5RUs3eHdXWkdoUHAxaFlJa0c1b1Qw?=
- =?utf-8?B?Rk9TYVYvNXlRd1VRZnR2cnJqN1ZBcWMzV0xVNWVUVUpXUFVBZVQ3N0RjL01s?=
- =?utf-8?B?NkVCczl0Slk3bitxcGtqSURLSEs3R0oyVkV6KzRzQitGNE9ka0lnSUdiQU5p?=
- =?utf-8?B?dHI3WVRVeXNsbjJyUmIwYVhGWFFXUHhMUUJUMHRGSmRzOURPRlVvSjNza3pF?=
- =?utf-8?B?Q2EyMm11MlJKeE15L2xvcDQ0dFlxM2I4TXFYZ0tOK0F6TGkweGtPTGgxWlBS?=
- =?utf-8?B?SXhCQVRRclNLWWlXVEIrOWI3ZHpMbDBVZ3AvWXRzU1NGSUhUM3V5YnRJdjUw?=
- =?utf-8?B?SzAva2FtYkt0dlh6SzQ0Q1lyU2JLQTV0dEx2SThaOVJ4WDlyQnFoRE9ZZnV2?=
- =?utf-8?B?cWJEWmZBWkI3UTl3RWo0aHJCd1pzRFZhd0w4UE1MS09MQW1QS0NWRnZ1VlEr?=
- =?utf-8?B?SEdtaGVVQmhwLzJMZ1dUTGdseUZwZnpkNFBON1h3R0tDL3FVM1lLV2psTFBi?=
- =?utf-8?B?azEvZmJhQlhlYndCRGQ1MGpVSVFUenc5d3lJOE1jb1NscGZOVGxKbVc1YXVZ?=
- =?utf-8?B?S3ZhcUhicGNlN05LVXZsUHNXZE11MGNFbmdyZEtKZ1V2VUtTd1hhSmREQjRt?=
- =?utf-8?B?anQ3Qkdueks4NEtPelNVY1U1UG5GQWdjTTA2QytyUnRSTTlJTW1rRkhQSWlX?=
- =?utf-8?B?dWZHdWRFNGVJTDc2TkY1TjVTWW5zbEsxT1Z2bjF5RnVKN3BIMXR3TWJ2QmY2?=
- =?utf-8?B?NzlQTitMUS9LK1BlVytlOURQSmRURWk3UzVPWnNHRCtsTUF4QStVZm5tUlRK?=
- =?utf-8?B?QjdxTU94U2UxZlJqQ3NlSEZ4OFY4OGdaNGVycUt0Z3A0R0Y4MHlPNG10SDdJ?=
- =?utf-8?B?L1VXNkM4UEpQTjk5eGFjVk9QOVpWdk8vRmt3eDlZdmxmZzlESTFXOVlWUENL?=
- =?utf-8?Q?8gYxWAG8hjDEfQO9NygIw1MWwcnWRlfeA0Z1tUK?=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-OriginatorOrg: quicinc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR02MB4886.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fb3a038d-501a-47d5-5688-08d9778ef52f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Sep 2021 14:50:13.0138 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +Xkph7hZ+LSFDki5HHsmq/Liam6lklwnvXayJEn1gaNx5jqwpd4f4CVlcKJzAi7oqDB5F2sonwXNGWKiY9pFNw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB6753
-Received-SPF: pass client-ip=216.71.142.165; envelope-from=tsimpson@quicinc.com;
- helo=esa.hc3962-90.iphmx.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+ Taylor Simpson <tsimpson@quicinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Michael Rolnik <mrolnik@gmail.com>, Peter Xu <peterx@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Peter Xu <peterx@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Cornelia Huck <cohuck@redhat.com>,
- =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fiene7+YeDMj
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aZTX+2saiAua
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGFuaWVsIFAuIEJlcnJh
-bmfDqSA8YmVycmFuZ2VAcmVkaGF0LmNvbT4NCj4gU3ViamVjdDogW1BBVENIIHYyIDExLzUzXSB0
-YXJnZXQvaGV4YWdvbjogZGVsZXRlIHVudXNlZCBoZXhhZ29uX2RlYnVnKCkNCj4gbWV0aG9kDQo+
-IA0KPiBUaGlzIG1ldGhvZCBpc24ndCB1c2VkIGluIGFueSBjb2RlIGFuZCBpdHMgZnVuY3Rpb25h
-bGl0eSBpcyBhbHJlYWR5IGF2YWlsYWJsZSB2aWENCj4gdGhlICdpbmZvIHJlZ2lzdGVycycgSE1Q
-IGNvbW1hbmQuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgUC4gQmVycmFuZ8OpIDxiZXJy
-YW5nZUByZWRoYXQuY29tPg0KPiAtLS0NCj4gIHRhcmdldC9oZXhhZ29uL2NwdS5jICAgICAgfCA1
-IC0tLS0tDQo+ICB0YXJnZXQvaGV4YWdvbi9pbnRlcm5hbC5oIHwgMSAtDQo+ICAyIGZpbGVzIGNo
-YW5nZWQsIDYgZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvdGFyZ2V0L2hleGFnb24v
-Y3B1LmMgYi90YXJnZXQvaGV4YWdvbi9jcHUuYyBpbmRleA0KPiAzMzM4MzY1YzE2Li4xNGM2Mjhk
-YjdhIDEwMDY0NA0KPiAtLS0gYS90YXJnZXQvaGV4YWdvbi9jcHUuYw0KPiArKysgYi90YXJnZXQv
-aGV4YWdvbi9jcHUuYw0KPiBAQCAtMTY5LDExICsxNjksNiBAQCBzdGF0aWMgdm9pZCBoZXhhZ29u
-X2R1bXBfc3RhdGUoQ1BVU3RhdGUgKmNzLCBGSUxFDQo+ICpmLCBpbnQgZmxhZ3MpDQo+ICAgICAg
-aGV4YWdvbl9kdW1wKGVudiwgZik7DQo+ICB9DQo+IA0KPiAtdm9pZCBoZXhhZ29uX2RlYnVnKENQ
-VUhleGFnb25TdGF0ZSAqZW52KSAtew0KPiAtICAgIGhleGFnb25fZHVtcChlbnYsIHN0ZG91dCk7
-DQo+IC19DQo+IC0NCj4gIHN0YXRpYyB2b2lkIGhleGFnb25fY3B1X3NldF9wYyhDUFVTdGF0ZSAq
-Y3MsIHZhZGRyIHZhbHVlKSAgew0KPiAgICAgIEhleGFnb25DUFUgKmNwdSA9IEhFWEFHT05fQ1BV
-KGNzKTsNCj4gZGlmZiAtLWdpdCBhL3RhcmdldC9oZXhhZ29uL2ludGVybmFsLmggYi90YXJnZXQv
-aGV4YWdvbi9pbnRlcm5hbC5oIGluZGV4DQo+IDZiMjBhZmZkZmEuLjE2N2U5MTAyNmEgMTAwNjQ0
-DQo+IC0tLSBhL3RhcmdldC9oZXhhZ29uL2ludGVybmFsLmgNCj4gKysrIGIvdGFyZ2V0L2hleGFn
-b24vaW50ZXJuYWwuaA0KPiBAQCAtMzEsNyArMzEsNiBAQA0KPiANCj4gIGludCBoZXhhZ29uX2dk
-Yl9yZWFkX3JlZ2lzdGVyKENQVVN0YXRlICpjcHUsIEdCeXRlQXJyYXkgKmJ1ZiwgaW50IHJlZyk7
-DQo+IGludCBoZXhhZ29uX2dkYl93cml0ZV9yZWdpc3RlcihDUFVTdGF0ZSAqY3B1LCB1aW50OF90
-ICpidWYsIGludCByZWcpOw0KPiAtdm9pZCBoZXhhZ29uX2RlYnVnKENQVUhleGFnb25TdGF0ZSAq
-ZW52KTsNCj4gDQo+ICBleHRlcm4gY29uc3QgY2hhciAqIGNvbnN0IGhleGFnb25fcmVnbmFtZXNb
-VE9UQUxfUEVSX1RIUkVBRF9SRUdTXTsNCg0KUmV2aWV3ZWQtYnk6IFRheWxvciBTaW1wc29uIDx0
-c2ltcHNvbkBxdWljaW5jLmNvbT4NCg==
+This is a counterpart to the HMP "info jit" command. It is being
+added with an "x-" prefix because this QMP command is intended as an
+ad hoc debugging tool and will thus not be modelled in QAPI as fully
+structured data, nor will it have long term guaranteed stability.
+The existing HMP command is rewritten to call the QMP command.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ accel/tcg/cpu-exec.c       | 39 +++++++++++++----
+ accel/tcg/hmp.c            | 13 ++++--
+ accel/tcg/translate-all.c  | 80 ++++++++++++++++++----------------
+ include/exec/cpu-all.h     |  4 +-
+ include/tcg/tcg.h          |  2 +-
+ qapi/machine.json          | 13 ++++++
+ tcg/tcg.c                  | 88 ++++++++++++++++++++------------------
+ tests/qtest/qmp-cmd-test.c |  2 +
+ 8 files changed, 148 insertions(+), 93 deletions(-)
+
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index e5c0ccd1a2..6d27fb62f9 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -20,6 +20,8 @@
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+ #include "qemu/qemu-print.h"
++#include "qapi/error.h"
++#include "qapi/qapi-commands-machine.h"
+ #include "hw/core/tcg-cpu-ops.h"
+ #include "trace.h"
+ #include "disas/disas.h"
+@@ -38,6 +40,7 @@
+ #include "exec/cpu-all.h"
+ #include "sysemu/cpu-timers.h"
+ #include "sysemu/replay.h"
++#include "sysemu/tcg.h"
+ #include "exec/helper-proto.h"
+ #include "tb-hash.h"
+ #include "tb-context.h"
+@@ -1011,23 +1014,41 @@ void tcg_exec_unrealizefn(CPUState *cpu)
+ 
+ #ifndef CONFIG_USER_ONLY
+ 
+-void dump_drift_info(void)
++void dump_drift_info(GString *buf)
+ {
+     if (!icount_enabled()) {
+         return;
+     }
+ 
+-    qemu_printf("Host - Guest clock  %"PRIi64" ms\n",
+-                (cpu_get_clock() - icount_get()) / SCALE_MS);
++    g_string_append_printf(buf, "Host - Guest clock  %"PRIi64" ms\n",
++                           (cpu_get_clock() - icount_get()) / SCALE_MS);
+     if (icount_align_option) {
+-        qemu_printf("Max guest delay     %"PRIi64" ms\n",
+-                    -max_delay / SCALE_MS);
+-        qemu_printf("Max guest advance   %"PRIi64" ms\n",
+-                    max_advance / SCALE_MS);
++        g_string_append_printf(buf, "Max guest delay     %"PRIi64" ms\n",
++                               -max_delay / SCALE_MS);
++        g_string_append_printf(buf, "Max guest advance   %"PRIi64" ms\n",
++                               max_advance / SCALE_MS);
+     } else {
+-        qemu_printf("Max guest delay     NA\n");
+-        qemu_printf("Max guest advance   NA\n");
++        g_string_append_printf(buf, "Max guest delay     NA\n");
++        g_string_append_printf(buf, "Max guest advance   NA\n");
+     }
+ }
+ 
++HumanReadableText *qmp_x_query_jit(Error **errp)
++{
++    HumanReadableText *ret;
++    g_autoptr(GString) buf = g_string_new("");
++
++    if (!tcg_enabled()) {
++        error_setg(errp, "JIT information is only available with accel=tcg");
++        return NULL;
++    }
++
++    dump_exec_info(buf);
++    dump_drift_info(buf);
++
++    ret = g_new0(HumanReadableText, 1);
++    ret->human_readable_text = g_steal_pointer(&buf->str);
++    return ret;
++}
++
+ #endif /* !CONFIG_USER_ONLY */
+diff --git a/accel/tcg/hmp.c b/accel/tcg/hmp.c
+index a6e72fdb3e..9d7bcd9185 100644
+--- a/accel/tcg/hmp.c
++++ b/accel/tcg/hmp.c
+@@ -1,18 +1,23 @@
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
++#include "qapi/error.h"
++#include "qapi/qapi-commands-machine.h"
+ #include "exec/exec-all.h"
+ #include "monitor/monitor.h"
+ #include "sysemu/tcg.h"
+ 
+ static void hmp_info_jit(Monitor *mon, const QDict *qdict)
+ {
+-    if (!tcg_enabled()) {
+-        error_report("JIT information is only available with accel=tcg");
++    Error *err = NULL;
++    g_autoptr(HumanReadableText) info = NULL;
++
++    info = qmp_x_query_jit(&err);
++    if (err) {
++        error_report_err(err);
+         return;
+     }
+ 
+-    dump_exec_info();
+-    dump_drift_info();
++    monitor_printf(mon, "%s", info->human_readable_text);
+ }
+ 
+ static void hmp_info_opcount(Monitor *mon, const QDict *qdict)
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index bbfcfb698c..9c3dbe4409 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -2014,7 +2014,7 @@ void cpu_io_recompile(CPUState *cpu, uintptr_t retaddr)
+     cpu_loop_exit_noexc(cpu);
+ }
+ 
+-static void print_qht_statistics(struct qht_stats hst)
++static void print_qht_statistics(struct qht_stats hst, GString *buf)
+ {
+     uint32_t hgram_opts;
+     size_t hgram_bins;
+@@ -2023,9 +2023,11 @@ static void print_qht_statistics(struct qht_stats hst)
+     if (!hst.head_buckets) {
+         return;
+     }
+-    qemu_printf("TB hash buckets     %zu/%zu (%0.2f%% head buckets used)\n",
+-                hst.used_head_buckets, hst.head_buckets,
+-                (double)hst.used_head_buckets / hst.head_buckets * 100);
++    g_string_append_printf(buf, "TB hash buckets     %zu/%zu "
++                           "(%0.2f%% head buckets used)\n",
++                           hst.used_head_buckets, hst.head_buckets,
++                           (double)hst.used_head_buckets /
++                           hst.head_buckets * 100);
+ 
+     hgram_opts =  QDIST_PR_BORDER | QDIST_PR_LABELS;
+     hgram_opts |= QDIST_PR_100X   | QDIST_PR_PERCENT;
+@@ -2033,8 +2035,9 @@ static void print_qht_statistics(struct qht_stats hst)
+         hgram_opts |= QDIST_PR_NODECIMAL;
+     }
+     hgram = qdist_pr(&hst.occupancy, 10, hgram_opts);
+-    qemu_printf("TB hash occupancy   %0.2f%% avg chain occ. Histogram: %s\n",
+-                qdist_avg(&hst.occupancy) * 100, hgram);
++    g_string_append_printf(buf, "TB hash occupancy   %0.2f%% avg chain occ. "
++                           "Histogram: %s\n",
++                           qdist_avg(&hst.occupancy) * 100, hgram);
+     g_free(hgram);
+ 
+     hgram_opts = QDIST_PR_BORDER | QDIST_PR_LABELS;
+@@ -2046,8 +2049,9 @@ static void print_qht_statistics(struct qht_stats hst)
+         hgram_opts |= QDIST_PR_NODECIMAL | QDIST_PR_NOBINRANGE;
+     }
+     hgram = qdist_pr(&hst.chain, hgram_bins, hgram_opts);
+-    qemu_printf("TB hash avg chain   %0.3f buckets. Histogram: %s\n",
+-                qdist_avg(&hst.chain), hgram);
++    g_string_append_printf(buf, "TB hash avg chain   %0.3f buckets. "
++                           "Histogram: %s\n",
++                           qdist_avg(&hst.chain), hgram);
+     g_free(hgram);
+ }
+ 
+@@ -2084,7 +2088,7 @@ static gboolean tb_tree_stats_iter(gpointer key, gpointer value, gpointer data)
+     return false;
+ }
+ 
+-void dump_exec_info(void)
++void dump_exec_info(GString *buf)
+ {
+     struct tb_tree_stats tst = {};
+     struct qht_stats hst;
+@@ -2093,44 +2097,48 @@ void dump_exec_info(void)
+     tcg_tb_foreach(tb_tree_stats_iter, &tst);
+     nb_tbs = tst.nb_tbs;
+     /* XXX: avoid using doubles ? */
+-    qemu_printf("Translation buffer state:\n");
++    g_string_append_printf(buf, "Translation buffer state:\n");
+     /*
+      * Report total code size including the padding and TB structs;
+      * otherwise users might think "-accel tcg,tb-size" is not honoured.
+      * For avg host size we use the precise numbers from tb_tree_stats though.
+      */
+-    qemu_printf("gen code size       %zu/%zu\n",
+-                tcg_code_size(), tcg_code_capacity());
+-    qemu_printf("TB count            %zu\n", nb_tbs);
+-    qemu_printf("TB avg target size  %zu max=%zu bytes\n",
+-                nb_tbs ? tst.target_size / nb_tbs : 0,
+-                tst.max_target_size);
+-    qemu_printf("TB avg host size    %zu bytes (expansion ratio: %0.1f)\n",
+-                nb_tbs ? tst.host_size / nb_tbs : 0,
+-                tst.target_size ? (double)tst.host_size / tst.target_size : 0);
+-    qemu_printf("cross page TB count %zu (%zu%%)\n", tst.cross_page,
+-                nb_tbs ? (tst.cross_page * 100) / nb_tbs : 0);
+-    qemu_printf("direct jump count   %zu (%zu%%) (2 jumps=%zu %zu%%)\n",
+-                tst.direct_jmp_count,
+-                nb_tbs ? (tst.direct_jmp_count * 100) / nb_tbs : 0,
+-                tst.direct_jmp2_count,
+-                nb_tbs ? (tst.direct_jmp2_count * 100) / nb_tbs : 0);
++    g_string_append_printf(buf, "gen code size       %zu/%zu\n",
++                           tcg_code_size(), tcg_code_capacity());
++    g_string_append_printf(buf, "TB count            %zu\n", nb_tbs);
++    g_string_append_printf(buf, "TB avg target size  %zu max=%zu bytes\n",
++                           nb_tbs ? tst.target_size / nb_tbs : 0,
++                           tst.max_target_size);
++    g_string_append_printf(buf, "TB avg host size    %zu bytes "
++                           "(expansion ratio: %0.1f)\n",
++                           nb_tbs ? tst.host_size / nb_tbs : 0,
++                           tst.target_size ?
++                           (double)tst.host_size / tst.target_size : 0);
++    g_string_append_printf(buf, "cross page TB count %zu (%zu%%)\n",
++                           tst.cross_page,
++                           nb_tbs ? (tst.cross_page * 100) / nb_tbs : 0);
++    g_string_append_printf(buf, "direct jump count   %zu (%zu%%) "
++                           "(2 jumps=%zu %zu%%)\n",
++                           tst.direct_jmp_count,
++                           nb_tbs ? (tst.direct_jmp_count * 100) / nb_tbs : 0,
++                           tst.direct_jmp2_count,
++                           nb_tbs ? (tst.direct_jmp2_count * 100) / nb_tbs : 0);
+ 
+     qht_statistics_init(&tb_ctx.htable, &hst);
+-    print_qht_statistics(hst);
++    print_qht_statistics(hst, buf);
+     qht_statistics_destroy(&hst);
+ 
+-    qemu_printf("\nStatistics:\n");
+-    qemu_printf("TB flush count      %u\n",
+-                qatomic_read(&tb_ctx.tb_flush_count));
+-    qemu_printf("TB invalidate count %u\n",
+-                qatomic_read(&tb_ctx.tb_phys_invalidate_count));
++    g_string_append_printf(buf, "\nStatistics:\n");
++    g_string_append_printf(buf, "TB flush count      %u\n",
++                           qatomic_read(&tb_ctx.tb_flush_count));
++    g_string_append_printf(buf, "TB invalidate count %u\n",
++                           qatomic_read(&tb_ctx.tb_phys_invalidate_count));
+ 
+     tlb_flush_counts(&flush_full, &flush_part, &flush_elide);
+-    qemu_printf("TLB full flushes    %zu\n", flush_full);
+-    qemu_printf("TLB partial flushes %zu\n", flush_part);
+-    qemu_printf("TLB elided flushes  %zu\n", flush_elide);
+-    tcg_dump_info();
++    g_string_append_printf(buf, "TLB full flushes    %zu\n", flush_full);
++    g_string_append_printf(buf, "TLB partial flushes %zu\n", flush_part);
++    g_string_append_printf(buf, "TLB elided flushes  %zu\n", flush_elide);
++    tcg_dump_info(buf);
+ }
+ 
+ void dump_opcount_info(void)
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 32cfb634c6..d92f6fa7a9 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -429,9 +429,9 @@ static inline bool tlb_hit(target_ulong tlb_addr, target_ulong addr)
+ 
+ #ifdef CONFIG_TCG
+ /* accel/tcg/cpu-exec.c */
+-void dump_drift_info(void);
++void dump_drift_info(GString *buf);
+ /* accel/tcg/translate-all.c */
+-void dump_exec_info(void);
++void dump_exec_info(GString *buf);
+ void dump_opcount_info(void);
+ #endif /* CONFIG_TCG */
+ 
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 44ccd86f3e..1b56e382b7 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -943,7 +943,7 @@ int tcg_check_temp_count(void);
+ #endif
+ 
+ int64_t tcg_cpu_exec_time(void);
+-void tcg_dump_info(void);
++void tcg_dump_info(GString *buf);
+ void tcg_dump_op_count(void);
+ 
+ #define TCG_CT_CONST  1 /* any constant of register size */
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 0f537a58e0..e88aba1199 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -1325,6 +1325,19 @@
+ { 'command': 'x-query-irq',
+   'returns': 'HumanReadableText' }
+ 
++##
++# @x-query-jit:
++#
++# Query TCG compiler statistics
++#
++# Returns: TCG compiler statistics
++#
++# Since: 6.2
++##
++{ 'command': 'x-query-jit',
++  'returns': 'HumanReadableText',
++  'if': 'CONFIG_TCG' }
++
+ ##
+ # @x-query-numa:
+ #
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 4142d42d77..7fcdfd9c0f 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -4382,7 +4382,7 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb)
+ }
+ 
+ #ifdef CONFIG_PROFILER
+-void tcg_dump_info(void)
++void tcg_dump_info(GString *buf)
+ {
+     TCGProfile prof = {};
+     const TCGProfile *s;
+@@ -4396,53 +4396,59 @@ void tcg_dump_info(void)
+     tb_div_count = tb_count ? tb_count : 1;
+     tot = s->interm_time + s->code_time;
+ 
+-    qemu_printf("JIT cycles          %" PRId64 " (%0.3f s at 2.4 GHz)\n",
+-                tot, tot / 2.4e9);
+-    qemu_printf("translated TBs      %" PRId64 " (aborted=%" PRId64
+-                " %0.1f%%)\n",
+-                tb_count, s->tb_count1 - tb_count,
+-                (double)(s->tb_count1 - s->tb_count)
+-                / (s->tb_count1 ? s->tb_count1 : 1) * 100.0);
+-    qemu_printf("avg ops/TB          %0.1f max=%d\n",
+-                (double)s->op_count / tb_div_count, s->op_count_max);
+-    qemu_printf("deleted ops/TB      %0.2f\n",
+-                (double)s->del_op_count / tb_div_count);
+-    qemu_printf("avg temps/TB        %0.2f max=%d\n",
+-                (double)s->temp_count / tb_div_count, s->temp_count_max);
+-    qemu_printf("avg host code/TB    %0.1f\n",
+-                (double)s->code_out_len / tb_div_count);
+-    qemu_printf("avg search data/TB  %0.1f\n",
+-                (double)s->search_out_len / tb_div_count);
++    g_string_append_printf(buf, "JIT cycles          %" PRId64
++                           " (%0.3f s at 2.4 GHz)\n",
++                           tot, tot / 2.4e9);
++    g_string_append_printf(buf, "translated TBs      %" PRId64
++                           " (aborted=%" PRId64 " %0.1f%%)\n",
++                           tb_count, s->tb_count1 - tb_count,
++                           (double)(s->tb_count1 - s->tb_count)
++                           / (s->tb_count1 ? s->tb_count1 : 1) * 100.0);
++    g_string_append_printf(buf, "avg ops/TB          %0.1f max=%d\n",
++                           (double)s->op_count / tb_div_count, s->op_count_max);
++    g_string_append_printf(buf, "deleted ops/TB      %0.2f\n",
++                           (double)s->del_op_count / tb_div_count);
++    g_string_append_printf(buf, "avg temps/TB        %0.2f max=%d\n",
++                           (double)s->temp_count / tb_div_count,
++                           s->temp_count_max);
++    g_string_append_printf(buf, "avg host code/TB    %0.1f\n",
++                           (double)s->code_out_len / tb_div_count);
++    g_string_append_printf(buf, "avg search data/TB  %0.1f\n",
++                           (double)s->search_out_len / tb_div_count);
+     
+-    qemu_printf("cycles/op           %0.1f\n",
+-                s->op_count ? (double)tot / s->op_count : 0);
+-    qemu_printf("cycles/in byte      %0.1f\n",
+-                s->code_in_len ? (double)tot / s->code_in_len : 0);
+-    qemu_printf("cycles/out byte     %0.1f\n",
+-                s->code_out_len ? (double)tot / s->code_out_len : 0);
+-    qemu_printf("cycles/search byte     %0.1f\n",
+-                s->search_out_len ? (double)tot / s->search_out_len : 0);
++    g_string_append_printf(buf, "cycles/op           %0.1f\n",
++                           s->op_count ? (double)tot / s->op_count : 0);
++    g_string_append_printf(buf, "cycles/in byte      %0.1f\n",
++                           s->code_in_len ? (double)tot / s->code_in_len : 0);
++    g_string_append_printf(buf, "cycles/out byte     %0.1f\n",
++                           s->code_out_len ? (double)tot / s->code_out_len : 0);
++    g_string_append_printf(buf, "cycles/search byte     %0.1f\n",
++                           s->search_out_len ?
++                           (double)tot / s->search_out_len : 0);
+     if (tot == 0) {
+         tot = 1;
+     }
+-    qemu_printf("  gen_interm time   %0.1f%%\n",
+-                (double)s->interm_time / tot * 100.0);
+-    qemu_printf("  gen_code time     %0.1f%%\n",
+-                (double)s->code_time / tot * 100.0);
+-    qemu_printf("optim./code time    %0.1f%%\n",
+-                (double)s->opt_time / (s->code_time ? s->code_time : 1)
+-                * 100.0);
+-    qemu_printf("liveness/code time  %0.1f%%\n",
+-                (double)s->la_time / (s->code_time ? s->code_time : 1) * 100.0);
+-    qemu_printf("cpu_restore count   %" PRId64 "\n",
+-                s->restore_count);
+-    qemu_printf("  avg cycles        %0.1f\n",
+-                s->restore_count ? (double)s->restore_time / s->restore_count : 0);
++    g_string_append_printf(buf, "  gen_interm time   %0.1f%%\n",
++                           (double)s->interm_time / tot * 100.0);
++    g_string_append_printf(buf, "  gen_code time     %0.1f%%\n",
++                           (double)s->code_time / tot * 100.0);
++    g_string_append_printf(buf, "optim./code time    %0.1f%%\n",
++                           (double)s->opt_time / (s->code_time ?
++                                                  s->code_time : 1)
++                           * 100.0);
++    g_string_append_printf(buf, "liveness/code time  %0.1f%%\n",
++                           (double)s->la_time / (s->code_time ?
++                                                 s->code_time : 1) * 100.0);
++    g_string_append_printf(buf, "cpu_restore count   %" PRId64 "\n",
++                           s->restore_count);
++    g_string_append_printf(buf, "  avg cycles        %0.1f\n",
++                           s->restore_count ?
++                           (double)s->restore_time / s->restore_count : 0);
+ }
+ #else
+-void tcg_dump_info(void)
++void tcg_dump_info(GString *buf)
+ {
+-    qemu_printf("[TCG profiler not compiled]\n");
++    g_string_append_printf(buf, "[TCG profiler not compiled]\n");
+ }
+ #endif
+ 
+diff --git a/tests/qtest/qmp-cmd-test.c b/tests/qtest/qmp-cmd-test.c
+index 15875a14c6..6aa628691a 100644
+--- a/tests/qtest/qmp-cmd-test.c
++++ b/tests/qtest/qmp-cmd-test.c
+@@ -51,6 +51,8 @@ static int query_error_class(const char *cmd)
+ #endif
+         /* Only valid with a USB bus added */
+         { "x-query-usb", ERROR_CLASS_GENERIC_ERROR },
++        /* Only valid with accel=tcg */
++        { "x-query-jit", ERROR_CLASS_GENERIC_ERROR },
+         { NULL, -1 }
+     };
+     int i;
+-- 
+2.31.1
+

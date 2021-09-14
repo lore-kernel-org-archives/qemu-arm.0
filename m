@@ -1,169 +1,167 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp619487lfp;
-        Tue, 14 Sep 2021 05:16:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtLW1kQ0DO0wO9V5IwBuJzWwr/sH0+hBGU8eUop+cZQSw55RykZpRZALj9qv5GF0pxAfyq
-X-Received: by 2002:a05:600c:3790:: with SMTP id o16mr1838558wmr.157.1631621773185;
-        Tue, 14 Sep 2021 05:16:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631621773; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp640130lfp;
+        Tue, 14 Sep 2021 05:40:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4wwu0hMSpECDrZreEWNvB8Df804tD6l8e0JxvYd5vm7kQcc83kaoJCQxdJFKAZ/j/epHI
+X-Received: by 2002:a05:6102:21bb:: with SMTP id i27mr9022869vsb.29.1631623253722;
+        Tue, 14 Sep 2021 05:40:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631623253; cv=none;
         d=google.com; s=arc-20160816;
-        b=nQhqv7uoqw1gYgIr8fntNYVy4AGrohyzmF+Ifrgwjqz9jVwyr8sNtX7EF3ouomzu58
-         +wNKZSG/PMUGqmaeMQG/6Uje1G01McUUpDwUjF6C2j6AkxQeb9rGen38hCt5PnpXT3Zr
-         b9cJ+iY3Nn78AMqzobItz7B+4ioVMUZXU/iQh1+xncekBgL7ReCGuxlpOmbQ/lhC4nFG
-         3RHZzpRrcPU0a6JWGKoOt0YK60M0kVY7J0T35g6WIgR0B8yqXYUu4WqeQOCrJ/OEGbA8
-         q5QBxEhgs8flPK93YVFUzO5w/liU8vXFCxByl4xYtrMDFK7EHw5yGoS9uCo75pneVD58
-         fueA==
+        b=bFOeKSU8wKT27MkD3fDNZRxyFiuHofv4dLsvFmbfR60Mggc3arx92lYQ1rmLsz0OIn
+         SOdFPpnnDaTEui46SyYjwK2N/OgjbhpPUFgT2edPFommuThAypkV0NIJt4xw1RiBCSTp
+         4oSt9o4NlrCLr5vvtq800Bd36NpfLyn12fefJdT8HW/uXLXGCy74jeq5EvvTzo4ppVfA
+         Lk9/LGSnkOm15TSw8R59K713fND6kKsa4QqOfGTxjl3kv6mh9B8VZj8e/O7CJ/+VuztU
+         Xqx2Tb4NXk10ov8J5rt3cqcf6BYooVrRhl/m/WCX9taFBNJRTI9uxXdYxLbG1Eswz6iC
+         O7yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=VUsoPB++nDlcmSmWK4ebejso4Pdv5zW7qntAZ8lgTRg=;
-        b=y1XA6U27ErhiIr8sEIv5qzibBo83hydCOBagTe4kAoqmjcOjfk5/+iP7pw1+7wux8P
-         t/OMJXolU143/goMvZHJ5fCXsx8+20TVtxp5qgViiOv07scPgth0oZQtig8AdPFqopGI
-         28ncVMkqEf7s5etLBTpovNBcf1sMnOYU+GPF5kZ22YrCn+5fdZYum6A6LFZkHUKFaEzv
-         cgwpEYe3DLUDE4/bEIJFLpP7JFFiY8k0DqyoDnAP/+LlnABeFUMLtQm+0LYNYxXJJaFm
-         abLtu/wuZ/EmYVuH5nu6TFq/9bWZcb4igB+LbGnp9YSJM2f8fL0fw/ZtT6AReNu3s22g
-         huKA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nOq6/fLOy2/rJ6jV6gp3cbWwu8hJHxUIYvqTONQ2Dkc=;
+        b=nVU0Bs+dZYQN2tnilvc0y+s9r/chdNZj5oqfPc959e6oHRuo/I8T38WEo08B4vwTEE
+         Yvrov2Mpy7ZRuocFeaZsmfs41M2WLp7Cr85RrVf33PMesWCkIVnM3HH897S9K4Zd8R/6
+         BCIXyRseLiLkwefwgTX/UA4ITx3jWh+VB7seu1SpxSusELb9qStJ9ssZZvMlgt7s0b69
+         2j1KBYNdrz6dH8DJHZg+Vik3j30Tl26rA1UVrL5lwMfYNR1RJo8lakv3Sa4hC/O84tgj
+         n6i/DavQM2cUDU/doZ1ZQiUFi9QoJpLLGqhYRDVqAzUzDqNjz1i+JDNWY99QUnJuS6/e
+         77JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=JyLMmBVH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=qXdR6VJ2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a25si13473937wrd.69.2021.09.14.05.16.13
+        by mx.google.com with ESMTPS id r13si3113920uao.214.2021.09.14.05.40.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 05:16:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 05:40:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=JyLMmBVH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57748 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=qXdR6VJ2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ7MB-0002Lf-Fi
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 08:16:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52750)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQ7k5-0006yh-0e
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 08:40:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1mQ7Ko-0001Lp-8W; Tue, 14 Sep 2021 08:14:46 -0400
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30]:40620)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQ7Wo-0003qe-6b
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 08:27:10 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:33634)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1mQ7Kl-0006Gf-Nz; Tue, 14 Sep 2021 08:14:46 -0400
-Received: by mail-qv1-xf30.google.com with SMTP id 93so8238175qva.7;
- Tue, 14 Sep 2021 05:14:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQ7WY-0006wc-Hb
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 08:27:09 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 192-20020a1c04c9000000b002f7a4ab0a49so1888744wme.0
+ for <qemu-devel@nongnu.org>; Tue, 14 Sep 2021 05:26:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=VUsoPB++nDlcmSmWK4ebejso4Pdv5zW7qntAZ8lgTRg=;
- b=JyLMmBVHM7mVmC4W0avEObvkngAWPVpuIYcqlFOFikr/FFynjOoliuqPR0A6JHOjOM
- CEjkloPpNmNP00ZIaElbe2zz+Q9xEfV7tYa19NxzUCVvoHvZhua58uR9XkiBWT2Rn7w4
- Ahga2bN1LN1A/5LsaB2rHZo7H3iaz8lVvmv04=
+ :cc; bh=nOq6/fLOy2/rJ6jV6gp3cbWwu8hJHxUIYvqTONQ2Dkc=;
+ b=qXdR6VJ2ydSiu/GMpszhtPThGs+e9dtCEtBFQM+0bseO8SDx/rCBsyZeQXK1maMwGN
+ //ROJzapghkKeZoQkQJCZmnIZ7gUkhTtrWeSx9h1GOWa4Q/5I48kiR1HMQZjKp+jPFaT
+ sFWIv2bW5xkVR5iqLiLwsVAF8HXcDDL9u21rwWlRlp6IwgGk+A23PC3fR46Pn6RSUq4H
+ GZ36KcG4TujFtqWlAL1Vm3Yld8dfsyVXeCRFERDliXPJT1K/jJ9x+2ACxrpNKmJXigjS
+ Y49kYW4PRuxE2sVeVRJ67PmXjRJ4iV2BMaOwh4vV2QDdQ6n44WcqTkuTcYcXiRKYIvW9
+ FcSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=VUsoPB++nDlcmSmWK4ebejso4Pdv5zW7qntAZ8lgTRg=;
- b=f1NYv2VxFtiZhF4KAsvJo6UpEzbnIzfyuc/svVFgDfBrcExAA8gsBRZY9KfEImnwDk
- pQ6XZ9Ylk7u31LyujvWtO1WnRzLUGwtcvYX7qVkrMQjBcPntgoowX6BxeNt70YLNUBv4
- e3by+9loBaw8Wynlnu0CJZoxwe+ils8F93BqeEVya7Om7IGk6PxygfKHfjygI9EUd7zx
- H5YVbsOKPM5NHy4Bc44f0v6xvRWWGOlfKvZ7hbhc+h/I3lNLitp1T9ij+9MSVGfCd1cV
- hDYsFFwd82Y8oPiZQXTwdC3qvLQgtMUECcKuEiixyEJ18tUCzFd9fwi5T6OxdvXX1wOR
- KqoA==
-X-Gm-Message-State: AOAM533Kses9Y6Jg0Iwkz/RKQ+QQpMa28CoS7DrwXgiHzdaFF9ZAtNsA
- Wj3Z373bi04JgOjFUOOTXM5Qwkz0nTtH1HD4JBA=
-X-Received: by 2002:a05:6214:13ee:: with SMTP id
- ch14mr4885954qvb.43.1631621681152; 
- Tue, 14 Sep 2021 05:14:41 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=nOq6/fLOy2/rJ6jV6gp3cbWwu8hJHxUIYvqTONQ2Dkc=;
+ b=kKMRGBb5lXiXMOsclB3RP1kLa5d0e3iSr+yl4pnE9tr7seIuzVuBYoM+6XkvgY8y+F
+ GcTd6kAhEUmMIuWrGV4qjIj/9I6FwCaHLV0fr+2jA4pWJ+SHzxiAzFI316cy1Lpeo2VK
+ 9/t8TnBMz2tVJr3tyBVp4abdoQVPb2IzNkRAE/U3nFMwVL1RKaDA7Uw91lJubY7khKVC
+ hPC5ZrXNtGBcx+LYpxPYGZaeCd9hH7u6b+t2dXzBgt1fG1XChJuovFGGTQxvLQVhKBo3
+ 5mGGrWWumt/3T7hevDk/B3u2MX45t6LBCQWDKy9j50L7eh/hooRJKdANGkYFLfVqVKuK
+ exJQ==
+X-Gm-Message-State: AOAM533sXw2HQMEECqf7Os8jgd+5i6wwLK0oQ1P6n6K9KFRWlhon+alv
+ 0zGDtk0chftAWWYQQRRZHmUiyIdeLTrzCZZKKetxog==
+X-Received: by 2002:a7b:c0c5:: with SMTP id s5mr1965958wmh.126.1631622412870; 
+ Tue, 14 Sep 2021 05:26:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210913161304.3805652-1-clg@kaod.org>
  <20210913161304.3805652-15-clg@kaod.org>
  <88c26520-6b87-e7a2-ac78-c1c92477c814@kaod.org>
  <BBC4A4E0-651C-41DB-81DE-1F6D86AABAB1@fb.com>
-In-Reply-To: <BBC4A4E0-651C-41DB-81DE-1F6D86AABAB1@fb.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Tue, 14 Sep 2021 12:14:28 +0000
-Message-ID: <CACPK8Xdey9_x-ZN1JbgFyTrW59EapH4xcqYbyNQxyQ5t0uWPvw@mail.gmail.com>
+ <CACPK8Xdey9_x-ZN1JbgFyTrW59EapH4xcqYbyNQxyQ5t0uWPvw@mail.gmail.com>
+In-Reply-To: <CACPK8Xdey9_x-ZN1JbgFyTrW59EapH4xcqYbyNQxyQ5t0uWPvw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 14 Sep 2021 13:26:01 +0100
+Message-ID: <CAFEAcA8ntPE3GkTNU8bSBhCWzk_jdH4QR1kDgwo6deQ+T1iOKw@mail.gmail.com>
 Subject: Re: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
-To: Peter Delevoryas <pdel@fb.com>
+To: Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
- envelope-from=joel.stan@gmail.com; helo=mail-qv1-xf30.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qI/dawo46cGu
+ Peter Delevoryas <pdel@fb.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JAWv47wLo5UC
 
-On Tue, 14 Sept 2021 at 11:59, Peter Delevoryas <pdel@fb.com> wrote:
+On Tue, 14 Sept 2021 at 13:14, Joel Stanley <joel@jms.id.au> wrote:
+> The upstream device tree uses 2G:
 >
+> https://elixir.bootlin.com/linux/v5.15-rc1/source/arch/arm/boot/dts/ast2600-facebook-netbmc-common.dtsi#L20
 >
-> > On Sep 14, 2021, at 3:56 AM, C=C3=A9dric Le Goater <clg@kaod.org> wrote=
-:
-> >
-> > =EF=BB=BF
-> > Hello Peter D,
-> >
-> >> +static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *dat=
-a)
-> >> +{
-> >> +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> >> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-> >> +
-> >> +    mc->desc =3D "Facebook Fuji BMC (Cortex-A7)";
-> >> +    amc->soc_name =3D "ast2600-a3";
-> >> +    amc->hw_strap1 =3D FUJI_BMC_HW_STRAP1;
-> >> +    amc->hw_strap2 =3D FUJI_BMC_HW_STRAP2;
-> >> +    amc->fmc_model =3D "mx66l1g45g";
-> >> +    amc->spi_model =3D "mx66l1g45g";
-> >> +    amc->num_cs =3D 2;
-> >> +    amc->macs_mask =3D ASPEED_MAC3_ON;
-> >> +    amc->i2c_init =3D fuji_bmc_i2c_init;
-> >> +    amc->uart_default =3D ASPEED_DEV_UART1;
-> >> +    mc->default_ram_size =3D 2 * GiB;
-> >
-> > Is that the default of the Fuji board ? This is causing an issue in our=
- tests :
-> >
-> >   qemu-system-aarch64: at most 2047 MB RAM can be simulated
-> >
-> > Could we lower it down to 1G ?
->
-> Yikes, sorry about that. I thought it was 2G, but yeah let=E2=80=99s just=
- lower it to 1G. I might be completely wrong anyways.
+> It's unfortunate we limit the defaults given very few (no one?) is
+> using this model on a machine that is 32 bit.
 
-The upstream device tree uses 2G:
+This runs into a set of desires which are all reasonable
+but unfortunately sometimes in conflict:
 
-https://elixir.bootlin.com/linux/v5.15-rc1/source/arch/arm/boot/dts/ast2600=
--facebook-netbmc-common.dtsi#L20
+(1) boards should behave the same on all hosts (whether those
+    hosts are 64 bit or 32 bit)
+(2) RAM blocks should have a length that fits inside a
+    signed 32-bit type on 32-bit hosts (at least I assume this
+    is where the 2047MB limit is coming from; in theory this ought
+    to be improveable but auditing the code for mishandling of
+    RAMblock sizes to ensure we weren't accidentally stuffing
+    their size into a signed 'long' somewhere would be kind
+    of painful)
+(3) default behaviour of a board should match the real
+    hardware
+(4) every board should start cleanly with no non-default
+    arguments, so we can have a machine-model agnostic test
+    of "does every machine we support at least init cleanly"
 
-It's unfortunate we limit the defaults given very few (no one?) is
-using this model on a machine that is 32 bit.
+So far when we have run into this problem with other machine
+types, the one that we have ended up discarding is (3).
 
-OTOH, modelling 1G of RAM is useful for testing, so it's no great loss.
+There's a good argument to be made that what we should deal
+with is (2) -- this probably involves making ram_addr_t
+be 64-bits always, rather than "64 bits unless we're on
+a 32-bit host and Xen is not compiled in", and a certain
+amount of testing or audit that we don't have any places
+where we stuff ram sizes into 'long' variables. But it's a lot
+more work than compromising on (3) :-)
 
-Cheers,
+Even if we did fix (2) we'd need to compromise on (3)
+sometimes still -- if a board has 4GB of RAM that's
+not going to fit in 32 bits regardless. But we would be
+able to let boards with 2GB have 2GB.
 
-Joel
+thanks
+-- PMM

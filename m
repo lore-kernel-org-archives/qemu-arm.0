@@ -1,86 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp790516lfp;
-        Tue, 14 Sep 2021 08:27:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwju9sEl4tr6EuW5ITEc42o89pfNl1n7HqPKDgnhdW9vMbQ8CNuXva541DUemlgI7ZFrT+g
-X-Received: by 2002:ab0:25ce:: with SMTP id y14mr4703440uan.22.1631633239720;
-        Tue, 14 Sep 2021 08:27:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631633239; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp793056lfp;
+        Tue, 14 Sep 2021 08:30:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCw0THUAAkI/JI5QyXNgTkO8afP3jZHi++TBpLQzUMCgJucAwKTlR+9LQWwlYk0U2c6nvS
+X-Received: by 2002:adf:9d47:: with SMTP id o7mr19757247wre.50.1631633409723;
+        Tue, 14 Sep 2021 08:30:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631633409; cv=none;
         d=google.com; s=arc-20160816;
-        b=fGvGsdoCYhr9yA3M3yo63YKoIevZ+s7p8Ap8Eiwm+urTj85SjfAc+QOXJTdzg7gp+n
-         V0mZSH73OlCYMhYpFhYk7Z2UJ72h3lGDMGF/VVnxowv/DXuUdZIONPX/LeJHeHl2/G0J
-         ezBYoL7DbOvg9t2lBmod9U3aQmt4uEVqHsF7H5rMdpwye+ZwnnX6OfqZ3JgNwPSVBmJE
-         Dcx9YY8ADWlpEvs32BnL+TryXEP+FwIRYxWbfkTYC0UiegB+xXnzWmNopq3xLFtkgVZu
-         vcY2FToWjTell18lhRKLBxYnE5k0rrXiXTMogkXrzXaPG+ixNG/ffSMo8XtK/C487YYF
-         DAHg==
+        b=KlkITwpUlBIgUgWm3aH9nT3zuVi6IqcFZ6TU8tXil9OkWlPMIe0/ph1wMqUVtjt0NQ
+         7FpeRVWcZBrpCad0TqhmJI6ynLp7whaNW5FZ5W/kb9rqoFOV454dEXtaYj+X2xw8vkNC
+         81O+1gkoi9SfQ7h7za4ThBJ8SrpeNzhKbLvr95c4X/0JGM1d7jsLohuMGTrJ6ucRGamU
+         iUMSdeAZcJGJ49rKBA2+cHd3xdCFEOenwvRw/3DlOz4Vk7Lr+0+RhyLyw/NchzzmWcUO
+         HL7UO2NcMgQMGx4kAGLDnUuElEoizeiH9lKzLbaOtb8LEjs6X4o4OMfL74vkMJcwfFHp
+         cMew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dbdQBxcj/2kjvXDfwwDA21f1GavKLlGLEK8BAYkabCY=;
-        b=UR95uYJfJHx9r39BJg5DchfNGg9A7alGC+CUIe9VRLeE+Pez/14HTqsGdwQ8MluazM
-         JPJMNwOHa+QFqcdsPWNrD0BlETRjbfVd6l5+typM7AMukqdw4sd/UY2Yu5seJRsENu29
-         tq4nqSDxk+YkUw3hbHoubFIHP71kFe/xyDmUAZcLuwePuNHbcnSNthQ6d96p3eF8pu7A
-         uWPE4CVUch06FIvbsRc2Izu34Nh2tLm1kS6u1k87ah1RuG49xp/5Lm7ykOxGwOxwhL/V
-         uI7LorkI0s9y9RATRoBti/n8h8laNSCaU2jG/CXIvH6G/PC+gTfjUtENlRg9MjrSAO1Z
-         Qg0A==
+        bh=bh9ijrtRHqw1dGWJj6Rxy56++d9ni6EtfBBE4iZ7xmU=;
+        b=HX7OOzzBBr2cSVG2HMuCiXtfbPE69RbcPgEV6CfFv4vtdkLIAAoBsX2RlUWH/4Psd1
+         SkjHsA7bqY4CU96Uvn2eXJlZtoqQuey6LvcsXjl2j9s7A+ZPEFL6Evnd7ZEcCg4aGlw0
+         PLOsMjsZfQfrlQ2AA+HMrCMIakmsgzmt2q7s0Pcxj76Pj44I3YGoQT7ZwPXQ/6274TwP
+         Ml1rpeGlXTq8V10KiVCSfWVYkfwIshgzNdsvp0a4rFyLOCqwphU5wSUpxNfAdA1WkL7G
+         /p/QRxvYhweJPFc/IYQWcsvp5G9qHlEpoSo6TJxesKFURUvqtNTt07KON0cUvmfez0Vm
+         MRkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="I/CFE4+D";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fFrS4A98;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n13si3827923vsh.58.2021.09.14.08.27.19
+        by mx.google.com with ESMTPS id l15si5572327wrt.238.2021.09.14.08.30.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:27:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Sep 2021 08:30:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="I/CFE4+D";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fFrS4A98;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55982 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQAL9-0006Zn-0B
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:27:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41266)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQANs-00031u-Lu
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:30:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9V8-00022U-Mc
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:33:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:35432)
+ id 1mQ9Vc-0002gt-NB
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:34:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50082)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9V5-0003YG-Nt
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:33:33 -0400
+ id 1mQ9VX-0003rX-VZ
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:34:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631630011;
+ s=mimecast20190719; t=1631630037;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dbdQBxcj/2kjvXDfwwDA21f1GavKLlGLEK8BAYkabCY=;
- b=I/CFE4+D7hfZV3TBIzQf4qdLttpROoR/WKyz4lIrN76O/vuRnlOD+7BsqEO0pt0eVxwbA4
- 4zQITMW5nqhJJuNhMpbP0KSGKIUDzTI4yq9fvCdYic7ao5/j2Rr3GMwGzcQ+38xj+I16D+
- OxTIMFuXHbTuxAQgR++hoyczyAfUmv4=
+ bh=bh9ijrtRHqw1dGWJj6Rxy56++d9ni6EtfBBE4iZ7xmU=;
+ b=fFrS4A98Ex3C5KqRvMJ+iTlXBuupmQaWFnWkXTo6q59knLixjuMelyQhho85Ut4HZ0ztf/
+ CsHB+Zhp3F58rNfCY3R3NgV5OX1HxoGjvI+hcMq9wmE01CC3Sxi/Ior7hfH1CrbEiOw2bS
+ poTxR20A1Et53JmNOQsU8IG/5zke2tM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-244-3-DXuh2MNlq3uRrfn-ga0A-1; Tue, 14 Sep 2021 10:33:29 -0400
-X-MC-Unique: 3-DXuh2MNlq3uRrfn-ga0A-1
+ us-mta-449-qAFyWR9zMeGO5aywzna6tA-1; Tue, 14 Sep 2021 10:33:56 -0400
+X-MC-Unique: qAFyWR9zMeGO5aywzna6tA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EEF251060DB2;
- Tue, 14 Sep 2021 14:33:25 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A7A56BAF80;
+ Tue, 14 Sep 2021 14:33:52 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EE7BC5D9CA;
- Tue, 14 Sep 2021 14:33:14 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 864FC5D9CA;
+ Tue, 14 Sep 2021 14:33:41 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 42/53] hw/core: introduce a 'format_tlb' callback
-Date: Tue, 14 Sep 2021 15:20:31 +0100
-Message-Id: <20210914142042.1655100-43-berrange@redhat.com>
+Subject: [PATCH v2 44/53] target/m68k: convert to use format_tlb callback
+Date: Tue, 14 Sep 2021 15:20:33 +0100
+Message-Id: <20210914142042.1655100-45-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -91,39 +91,37 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -139,75 +137,326 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LanjjHWvxXJz
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IiJfdQIjokis
 
-This will allow us to reduce duplication between the different targets
-implementing the 'info tlb' command.
+Change the "info tlb" implementation to use the format_tlb callback.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/core/cpu-common.c  |  9 +++++++++
- include/hw/core/cpu.h | 11 +++++++++++
- 2 files changed, 20 insertions(+)
+ target/m68k/cpu.c     |   3 +
+ target/m68k/cpu.h     |   3 +-
+ target/m68k/helper.c  | 132 ++++++++++++++++++++++--------------------
+ target/m68k/monitor.c |  11 +++-
+ 4 files changed, 82 insertions(+), 67 deletions(-)
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index ffd9b9e07e..9b11ec3c8d 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -123,6 +123,15 @@ void cpu_format_state(CPUState *cpu, GString *buf, int flags)
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index 4ccf572a68..8f143eb540 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -537,6 +537,9 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
+     cc->class_by_name = m68k_cpu_class_by_name;
+     cc->has_work = m68k_cpu_has_work;
+     cc->format_state = m68k_cpu_format_state;
++#ifndef CONFIG_USER_ONLY
++    cc->format_tlb = m68k_cpu_format_tlb;
++#endif
+     cc->set_pc = m68k_cpu_set_pc;
+     cc->gdb_read_register = m68k_cpu_gdb_read_register;
+     cc->gdb_write_register = m68k_cpu_gdb_write_register;
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index b0641f6d0d..f2d777a1ba 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -169,6 +169,7 @@ struct M68kCPU {
+ void m68k_cpu_do_interrupt(CPUState *cpu);
+ bool m68k_cpu_exec_interrupt(CPUState *cpu, int int_req);
+ void m68k_cpu_format_state(CPUState *cpu, GString *buf, int flags);
++void m68k_cpu_format_tlb(CPUState *cpu, GString *buf);
+ hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ int m68k_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int m68k_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+@@ -612,6 +613,4 @@ static inline void cpu_get_tb_cpu_state(CPUM68KState *env, target_ulong *pc,
      }
  }
  
-+void cpu_format_tlb(CPUState *cpu, GString *buf)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (cc->format_tlb) {
-+        cc->format_tlb(cpu, buf);
-+    }
-+}
-+
- void cpu_reset(CPUState *cpu)
- {
-     device_cold_reset(DEVICE(cpu));
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 4c47e1df18..64fc57c8d9 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -92,6 +92,7 @@ struct SysemuCPUOps;
-  * @has_work: Callback for checking if there is work to do.
-  * @memory_rw_debug: Callback for GDB memory access.
-  * @format_state: Callback for formatting state.
-+ * @format_tlb: Callback for formatting memory mappings
-  * @get_arch_id: Callback for getting architecture-dependent CPU ID.
-  * @set_pc: Callback for setting the Program Counter register. This
-  *       should have the semantics used by the target architecture when
-@@ -136,6 +137,7 @@ struct CPUClass {
-     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-                            uint8_t *buf, int len, bool is_write);
-     void (*format_state)(CPUState *cpu, GString *buf, int flags);
-+    void (*format_tlb)(CPUState *cpu, GString *buf);
-     int64_t (*get_arch_id)(CPUState *cpu);
-     void (*set_pc)(CPUState *cpu, vaddr value);
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-@@ -546,6 +548,15 @@ void cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-  */
- void cpu_format_state(CPUState *cpu, GString *buf, int flags);
+-void dump_mmu(CPUM68KState *env);
+-
+ #endif
+diff --git a/target/m68k/helper.c b/target/m68k/helper.c
+index 137a3e1a3d..050a27d21c 100644
+--- a/target/m68k/helper.c
++++ b/target/m68k/helper.c
+@@ -25,6 +25,7 @@
+ #include "exec/helper-proto.h"
+ #include "fpu/softfloat.h"
+ #include "qemu/qemu-print.h"
++#include "qapi/error.h"
  
-+/**
-+ * cpu_format_tlb:
-+ * @cpu: The CPU whose memory mappings are to be formatted.
-+ * @buf: buffer to format state into
-+ *
-+ * Formats the memory mappings
-+ */
-+void cpu_format_tlb(CPUState *cpu, GString *buf);
+ #define SIGNBIT (1u << 31)
+ 
+@@ -483,27 +484,28 @@ void m68k_switch_sp(CPUM68KState *env)
+ /* MMU: 68040 only */
+ 
+ static void print_address_zone(uint32_t logical, uint32_t physical,
+-                               uint32_t size, int attr)
++                               uint32_t size, int attr, GString *buf)
+ {
+-    qemu_printf("%08x - %08x -> %08x - %08x %c ",
+-                logical, logical + size - 1,
+-                physical, physical + size - 1,
+-                attr & 4 ? 'W' : '-');
++    g_string_append_printf(buf, "%08x - %08x -> %08x - %08x %c ",
++                           logical, logical + size - 1,
++                           physical, physical + size - 1,
++                           attr & 4 ? 'W' : '-');
+     size >>= 10;
+     if (size < 1024) {
+-        qemu_printf("(%d KiB)\n", size);
++        g_string_append_printf(buf, "(%d KiB)\n", size);
+     } else {
+         size >>= 10;
+         if (size < 1024) {
+-            qemu_printf("(%d MiB)\n", size);
++            g_string_append_printf(buf, "(%d MiB)\n", size);
+         } else {
+             size >>= 10;
+-            qemu_printf("(%d GiB)\n", size);
++            g_string_append_printf(buf, "(%d GiB)\n", size);
+         }
+     }
+ }
+ 
+-static void dump_address_map(CPUM68KState *env, uint32_t root_pointer)
++static void dump_address_map(CPUM68KState *env, uint32_t root_pointer,
++                             GString *buf)
+ {
+     int i, j, k;
+     int tic_size, tic_shift;
+@@ -573,7 +575,8 @@ static void dump_address_map(CPUM68KState *env, uint32_t root_pointer)
+                         size = last_logical + (1 << tic_shift) -
+                                first_logical;
+                         print_address_zone(first_logical,
+-                                           first_physical, size, last_attr);
++                                           first_physical, size, last_attr,
++                                           buf);
+                     }
+                     first_logical = logical;
+                     first_physical = physical;
+@@ -583,125 +586,130 @@ static void dump_address_map(CPUM68KState *env, uint32_t root_pointer)
+     }
+     if (first_logical != logical || (attr & 4) != (last_attr & 4)) {
+         size = logical + (1 << tic_shift) - first_logical;
+-        print_address_zone(first_logical, first_physical, size, last_attr);
++        print_address_zone(first_logical, first_physical, size, last_attr, buf);
+     }
+ }
+ 
+ #define DUMP_CACHEFLAGS(a) \
+     switch (a & M68K_DESC_CACHEMODE) { \
+     case M68K_DESC_CM_WRTHRU: /* cachable, write-through */ \
+-        qemu_printf("T"); \
++        g_string_append_printf(buf, "T"); \
+         break; \
+     case M68K_DESC_CM_COPYBK: /* cachable, copyback */ \
+-        qemu_printf("C"); \
++        g_string_append_printf(buf, "C"); \
+         break; \
+     case M68K_DESC_CM_SERIAL: /* noncachable, serialized */ \
+-        qemu_printf("S"); \
++        g_string_append_printf(buf, "S"); \
+         break; \
+     case M68K_DESC_CM_NCACHE: /* noncachable */ \
+-        qemu_printf("N"); \
++        g_string_append_printf(buf, "N"); \
+         break; \
+     }
+ 
+-static void dump_ttr(uint32_t ttr)
++static void dump_ttr(uint32_t ttr, GString *buf)
+ {
+     if ((ttr & M68K_TTR_ENABLED) == 0) {
+-        qemu_printf("disabled\n");
++        g_string_append_printf(buf, "disabled\n");
+         return;
+     }
+-    qemu_printf("Base: 0x%08x Mask: 0x%08x Control: ",
+-                ttr & M68K_TTR_ADDR_BASE,
+-                (ttr & M68K_TTR_ADDR_MASK) << M68K_TTR_ADDR_MASK_SHIFT);
++    g_string_append_printf(buf, "Base: 0x%08x Mask: 0x%08x Control: ",
++                           ttr & M68K_TTR_ADDR_BASE,
++                           (ttr & M68K_TTR_ADDR_MASK) <<
++                           M68K_TTR_ADDR_MASK_SHIFT);
+     switch (ttr & M68K_TTR_SFIELD) {
+     case M68K_TTR_SFIELD_USER:
+-        qemu_printf("U");
++        g_string_append_printf(buf, "U");
+         break;
+     case M68K_TTR_SFIELD_SUPER:
+-        qemu_printf("S");
++        g_string_append_printf(buf, "S");
+         break;
+     default:
+-        qemu_printf("*");
++        g_string_append_printf(buf, "*");
+         break;
+     }
+     DUMP_CACHEFLAGS(ttr);
+     if (ttr & M68K_DESC_WRITEPROT) {
+-        qemu_printf("R");
++        g_string_append_printf(buf, "R");
+     } else {
+-        qemu_printf("W");
++        g_string_append_printf(buf, "W");
+     }
+-    qemu_printf(" U: %d\n", (ttr & M68K_DESC_USERATTR) >>
+-                               M68K_DESC_USERATTR_SHIFT);
++    g_string_append_printf(buf, " U: %d\n", (ttr & M68K_DESC_USERATTR) >>
++                           M68K_DESC_USERATTR_SHIFT);
+ }
+ 
+-void dump_mmu(CPUM68KState *env)
 +
- #ifndef CONFIG_USER_ONLY
- /**
-  * cpu_get_phys_page_attrs_debug:
++void m68k_cpu_format_tlb(CPUState *cpu, GString *buf)
+ {
++    CPUM68KState *env = cpu->env_ptr;
++
+     if ((env->mmu.tcr & M68K_TCR_ENABLED) == 0) {
+-        qemu_printf("Translation disabled\n");
++        g_string_append_printf(buf, "Translation disabled\n");
+         return;
+     }
+-    qemu_printf("Page Size: ");
++    g_string_append_printf(buf, "Page Size: ");
+     if (env->mmu.tcr & M68K_TCR_PAGE_8K) {
+-        qemu_printf("8kB\n");
++        g_string_append_printf(buf, "8kB\n");
+     } else {
+-        qemu_printf("4kB\n");
++        g_string_append_printf(buf, "4kB\n");
+     }
+ 
+-    qemu_printf("MMUSR: ");
++    g_string_append_printf(buf, "MMUSR: ");
+     if (env->mmu.mmusr & M68K_MMU_B_040) {
+-        qemu_printf("BUS ERROR\n");
++        g_string_append_printf(buf, "BUS ERROR\n");
+     } else {
+-        qemu_printf("Phy=%08x Flags: ", env->mmu.mmusr & 0xfffff000);
++        g_string_append_printf(buf, "Phy=%08x Flags: ",
++                               env->mmu.mmusr & 0xfffff000);
+         /* flags found on the page descriptor */
+         if (env->mmu.mmusr & M68K_MMU_G_040) {
+-            qemu_printf("G"); /* Global */
++            g_string_append_printf(buf, "G"); /* Global */
+         } else {
+-            qemu_printf(".");
++            g_string_append_printf(buf, ".");
+         }
+         if (env->mmu.mmusr & M68K_MMU_S_040) {
+-            qemu_printf("S"); /* Supervisor */
++            g_string_append_printf(buf, "S"); /* Supervisor */
+         } else {
+-            qemu_printf(".");
++            g_string_append_printf(buf, ".");
+         }
+         if (env->mmu.mmusr & M68K_MMU_M_040) {
+-            qemu_printf("M"); /* Modified */
++            g_string_append_printf(buf, "M"); /* Modified */
+         } else {
+-            qemu_printf(".");
++            g_string_append_printf(buf, ".");
+         }
+         if (env->mmu.mmusr & M68K_MMU_WP_040) {
+-            qemu_printf("W"); /* Write protect */
++            g_string_append_printf(buf, "W"); /* Write protect */
+         } else {
+-            qemu_printf(".");
++            g_string_append_printf(buf, ".");
+         }
+         if (env->mmu.mmusr & M68K_MMU_T_040) {
+-            qemu_printf("T"); /* Transparent */
++            g_string_append_printf(buf, "T"); /* Transparent */
+         } else {
+-            qemu_printf(".");
++            g_string_append_printf(buf, ".");
+         }
+         if (env->mmu.mmusr & M68K_MMU_R_040) {
+-            qemu_printf("R"); /* Resident */
++            g_string_append_printf(buf, "R"); /* Resident */
+         } else {
+-            qemu_printf(".");
++            g_string_append_printf(buf, ".");
+         }
+-        qemu_printf(" Cache: ");
++        g_string_append_printf(buf, " Cache: ");
+         DUMP_CACHEFLAGS(env->mmu.mmusr);
+-        qemu_printf(" U: %d\n", (env->mmu.mmusr >> 8) & 3);
+-        qemu_printf("\n");
++        g_string_append_printf(buf, " U: %d\n", (env->mmu.mmusr >> 8) & 3);
++        g_string_append_printf(buf, "\n");
+     }
+ 
+-    qemu_printf("ITTR0: ");
+-    dump_ttr(env->mmu.ttr[M68K_ITTR0]);
+-    qemu_printf("ITTR1: ");
+-    dump_ttr(env->mmu.ttr[M68K_ITTR1]);
+-    qemu_printf("DTTR0: ");
+-    dump_ttr(env->mmu.ttr[M68K_DTTR0]);
+-    qemu_printf("DTTR1: ");
+-    dump_ttr(env->mmu.ttr[M68K_DTTR1]);
++    g_string_append_printf(buf, "ITTR0: ");
++    dump_ttr(env->mmu.ttr[M68K_ITTR0], buf);
++    g_string_append_printf(buf, "ITTR1: ");
++    dump_ttr(env->mmu.ttr[M68K_ITTR1], buf);
++    g_string_append_printf(buf, "DTTR0: ");
++    dump_ttr(env->mmu.ttr[M68K_DTTR0], buf);
++    g_string_append_printf(buf, "DTTR1: ");
++    dump_ttr(env->mmu.ttr[M68K_DTTR1], buf);
+ 
+-    qemu_printf("SRP: 0x%08x\n", env->mmu.srp);
+-    dump_address_map(env, env->mmu.srp);
++    g_string_append_printf(buf, "SRP: 0x%08x\n", env->mmu.srp);
++    dump_address_map(env, env->mmu.srp, buf);
+ 
+-    qemu_printf("URP: 0x%08x\n", env->mmu.urp);
+-    dump_address_map(env, env->mmu.urp);
++    g_string_append_printf(buf, "URP: 0x%08x\n", env->mmu.urp);
++    dump_address_map(env, env->mmu.urp, buf);
+ }
+ 
+ static int check_TTR(uint32_t ttr, int *prot, target_ulong addr,
+diff --git a/target/m68k/monitor.c b/target/m68k/monitor.c
+index 2bdf6acae0..003a665246 100644
+--- a/target/m68k/monitor.c
++++ b/target/m68k/monitor.c
+@@ -9,17 +9,22 @@
+ #include "cpu.h"
+ #include "monitor/hmp-target.h"
+ #include "monitor/monitor.h"
++#include "qapi/error.h"
++#include "qapi/qapi-commands-machine-target.h"
+ 
+ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+ {
+-    CPUArchState *env1 = mon_get_cpu_env(mon);
++    g_autoptr(GString) buf = g_string_new("");
++    CPUState *cpu = mon_get_cpu(mon);
+ 
+-    if (!env1) {
++    if (!cpu) {
+         monitor_printf(mon, "No CPU available\n");
+         return;
+     }
+ 
+-    dump_mmu(env1);
++    cpu_format_tlb(cpu, buf);
++
++    monitor_printf(mon, "%s", buf->str);
+ }
+ 
+ static const MonitorDef monitor_defs[] = {
 -- 
 2.31.1
 

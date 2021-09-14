@@ -1,105 +1,125 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp804556lfp;
-        Tue, 14 Sep 2021 08:43:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+PZWFAwnIKa8W2V8dveACPqfTkXxzcy5k33VC+AGWtXPDm4PBtry89pJV0p36JXQZN4CV
-X-Received: by 2002:a05:6102:80a:: with SMTP id g10mr10308400vsb.29.1631634215343;
-        Tue, 14 Sep 2021 08:43:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631634215; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp812000lfp;
+        Tue, 14 Sep 2021 08:53:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyfFXDprNjpJV9aDrzBEs4u6TigYL1CWwxyRa9xvK17ykyga8lCXoA2hHAcmO4xjxxlIJkF
+X-Received: by 2002:a1f:a883:: with SMTP id r125mr9495911vke.23.1631634793661;
+        Tue, 14 Sep 2021 08:53:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631634793; cv=none;
         d=google.com; s=arc-20160816;
-        b=nab1lXNyx5+mxF3bDOwhfuFbwg/5rW9HDx5yCjGJeaPbn0+wiYXqD1DoKKI1vn2W5y
-         e80p+c/AZuHn6Fwnxk2AAaYnmct18D3LQ2eMjPnR5X7cKQ+eLJ+qTddpJQ5nSVA/tAIK
-         U7JQ245cxxTfF66V2oYEM6i9dfrdbVzAwomHBnGRiCAHJaEhSFdp3lhFZYsiiarLAsXI
-         RbkGdq46jHlG/AcWVLPTTP7cNeWUAnQ5KZNaaKhJY5AIftYaLlkpK1VvpgtwUWklw8TY
-         cHhesbMRL0mS6l4Rh+icCtyHMMecqhbL63DsDdDzUzN1UfBZ7taUD9vBd0dOu+2sDIOh
-         kLDA==
+        b=I/Cd8XrNPzidov0vC2FbeBM0D0c28c1q7ZT5EMuSPFItS/L+D2xDG3DpqBS95kXb9B
+         KxpOYg0YvkgMLouqbbG4ZQubF5bFI1m7EP+8o0F8+QXz5TiVP6VNfEB5sjVwQt/jEbYV
+         RyQX7wfLwPSGfnj/h4dgBowvtcQDvOhSPHYmuhYk+NUFa8fGpmdVQT8kj94/I37FYDCX
+         uG47ORGSJKknNgUNzqzletpK3GE9Dt7hWTT1YoeVCdIU3AbWAV2oX5dD/PeLUFzWRJac
+         ayIhup1+hMgKGIbGr+GeluTPpORdNlsdrxhGgl1R+M6wunyQFTTxVL73mxLciHGRhusw
+         wPMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jVKry3AGQ0J47lN7ksTFJCPydgWIThxCI8/FSxTWsjQ=;
-        b=DCwMwM220cWPNc1ObcCDk/xmqTbt03LPSIlEtTYsuiKBNSjvOZ/R6czdY5JQIMYbym
-         6nGhLNrYLFMKT9J2lRQLsxifTmOLr0SohbZy8I9KxVzSZiyw/3h2MVy/PEJYghuw2OR2
-         9fnLjI0ITnI7RKEhr7VZ+3ktVfiUDeCjUVEsLwkrMNjSsgeGS4GqBSXAtl1EbUSRJN0b
-         DXVb3ED+1aT3zWxh2ywjPAYKkKRYZscQ5qiNciEHlgDqdmhM35oEL1luh/l8Y+pvN16Y
-         15HntFB4yFvBcHLUSvnfd7NXXbh6jAERgNYmuBVHWMtRGQ+QdXCyueT0NySO7eesiEIh
-         eDKg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=UbQHstuguLGguwNwEH9yKdw3QROFtfW0lRABjmr0LcA=;
+        b=tGrCwKTYhUEnp0AIyklh9E8DvhquJ1f8S9BBZiLDKmQQtKC5ADJL/MlRTRFIhkyLg4
+         36buXZ7DJvkYAHpvyq6IauFclemvpQjqq4LmU4x5jt+9aUtQ8Nf50EGZIl+s4qbo0c1O
+         UJpTH43yaqDRDQegLXA+tV0hvANh8sETXFVhaxOHKQT1a2RXdauGrvR2PYptfZu//lCS
+         spwRbVlWOyOVDYYML/PtWz83Cb2GdbXdLhHivT+sx/6/zwtR50EyLQkvC8i3UKucmXaL
+         3mWggZxfcoaOV6o2Y7BPzr/NfT/6cAFdK0swaxY0Tvo6XTyK/PzaDg6HJR9+1uTLJ5rA
+         BgiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X9A1V56F;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RDTRGxp1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d124si3300958vke.99.2021.09.14.08.43.35
+        by mx.google.com with ESMTPS id a31si4227978uae.14.2021.09.14.08.53.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:43:35 -0700 (PDT)
+        Tue, 14 Sep 2021 08:53:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X9A1V56F;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RDTRGxp1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQAas-0003FE-Jq
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:43:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43668)
+	id 1mQAkD-0001FJ-0h
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:53:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42114)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Yk-00008v-MS
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:37:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31437)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mQAhh-0006EH-5N
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 11:50:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41673)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9Yc-0006E4-WD
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:37:17 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mQAhb-0001G4-P6
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 11:50:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631630228;
+ s=mimecast20190719; t=1631634630;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jVKry3AGQ0J47lN7ksTFJCPydgWIThxCI8/FSxTWsjQ=;
- b=X9A1V56F6xxmCLKEbTtoO5gArqgAr+pvwoGCPKDyO77LjwhoyPW8KQzfH2M5DlzlxttlTq
- /n4rMTGZ2+ZuX4pF3QR7029kOtgxlL0vVxJCEQWqrBmD/E1olso/ShbrOw4o51u8EUz+U1
- rmqsxHbMszrl+MntWO4Xklk52hChEBg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-594-Nf-CDhdOPX61ObTmtVUhrw-1; Tue, 14 Sep 2021 10:37:05 -0400
-X-MC-Unique: Nf-CDhdOPX61ObTmtVUhrw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DDE91835DE1;
- Tue, 14 Sep 2021 14:36:59 +0000 (UTC)
-Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BADA55D9CA;
- Tue, 14 Sep 2021 14:36:37 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 53/53] qapi: introduce x-query-opcount QMP command
-Date: Tue, 14 Sep 2021 15:20:42 +0100
-Message-Id: <20210914142042.1655100-54-berrange@redhat.com>
-In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
+ bh=UbQHstuguLGguwNwEH9yKdw3QROFtfW0lRABjmr0LcA=;
+ b=RDTRGxp1ZMnATJiZhbY3zUE1c/FA9gQ/dzxvCA+DlDfg4IcwYNlH+f4+YulaDGfRvJsjNk
+ 9o5+5z3Z85OSNstJB3bWMhv2vQy235W4wSOvkZHSpjXILdYCJTvOFb+8X7kxEXDlfuQ+DF
+ KVvGFO/4C6neQ2gwB64vfaB9qI3jbTQ=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-289-ZL8t8LLYND-buqU--qUOGA-1; Tue, 14 Sep 2021 11:50:28 -0400
+X-MC-Unique: ZL8t8LLYND-buqU--qUOGA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ b139-20020a1c8091000000b002fb33c467c8so6647432wmd.5
+ for <qemu-arm@nongnu.org>; Tue, 14 Sep 2021 08:50:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UbQHstuguLGguwNwEH9yKdw3QROFtfW0lRABjmr0LcA=;
+ b=rij5ZLtI36t1xBQFQlpuwLbIHBwPUwr2MbQ+iqyMNg5pw1cODhpviUD/BsBitrAiK/
+ w2+/w8U5xYI0ZVMVI73v5chD1ncuZz0oL9152T02obyuAaoqbLtF8onPPXirrjUxLVxg
+ DVSyxzKoIV4CkNEyK3ybJsCvm9l2WNdeMMupP7p7A+6+Mpa0ytBsBneleNshO0yi4Yba
+ 6RjHMC//ANNY1J+PerOWWHvcXgIcMO5xg+84YiRGNqQLTrMZXa7aKg6GN3rsfZxQd/DF
+ qX+mf2U0beLaDS9t37115fzikVxFqFT9dkVr+gP1aT/M624G2k0IK4Z9xrBJMKx3fYqr
+ DXmQ==
+X-Gm-Message-State: AOAM5316kdUoMhH7ZeP6EVC2etErbXthPLKjF30QD3ljuuONKPBOxaWJ
+ IsN0UyMhx5Hn5GSYjvqrHFaSH023w6L3gVxIuz+cvzV8F8G6urO8byglStR+0Q8l/iYcUSS6wU8
+ RuZHj/pMirVfb
+X-Received: by 2002:a7b:cf02:: with SMTP id l2mr2886715wmg.47.1631634627276;
+ Tue, 14 Sep 2021 08:50:27 -0700 (PDT)
+X-Received: by 2002:a7b:cf02:: with SMTP id l2mr2886670wmg.47.1631634627067;
+ Tue, 14 Sep 2021 08:50:27 -0700 (PDT)
+Received: from [192.168.1.36] (14.red-83-35-25.dynamicip.rima-tde.net.
+ [83.35.25.14])
+ by smtp.gmail.com with ESMTPSA id p6sm1386042wmq.48.2021.09.14.08.50.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 14 Sep 2021 08:50:26 -0700 (PDT)
+Subject: Re: [PATCH v2 28/53] monitor: remove 'info ioapic' HMP command
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20210914142042.1655100-1-berrange@redhat.com>
+ <20210914142042.1655100-29-berrange@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <a8bdd82b-2784-faed-56c2-07071f0d5838@redhat.com>
+Date: Tue, 14 Sep 2021 17:50:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20210914142042.1655100-29-berrange@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-1.969, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,216 +132,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lJ3w8k6HPpBN
+X-TUID: 66xTLCUEDlV9
 
-This is a counterpart to the HMP "info opcount" command. It is being
-added with an "x-" prefix because this QMP command is intended as an
-ad hoc debugging tool and will thus not be modelled in QAPI as fully
-structured data, nor will it have long term guaranteed stability.
-The existing HMP command is rewritten to call the QMP command.
+On 9/14/21 4:20 PM, Daniel P. Berrangé wrote:
+> This command was turned into a no-op four years ago in
+> 
+>   commit 0c8465440d50c18a7bb13d0a866748f0593e193a
+>   Author: Peter Xu <peterx@redhat.com>
+>   Date:   Fri Dec 29 15:31:04 2017 +0800
+> 
+>     hmp: obsolete "info ioapic"
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  hmp-commands-info.hx         | 15 ---------------
+>  include/monitor/hmp-target.h |  1 -
+>  target/i386/monitor.c        |  6 ------
+>  3 files changed, 22 deletions(-)
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- accel/tcg/cpu-exec.c       | 17 +++++++++++++++++
- accel/tcg/hmp.c            | 11 ++++++++++-
- accel/tcg/translate-all.c  |  4 ++--
- include/exec/cpu-all.h     |  2 +-
- include/tcg/tcg.h          |  2 +-
- qapi/machine.json          | 13 +++++++++++++
- tcg/tcg.c                  | 10 +++++-----
- tests/qtest/qmp-cmd-test.c |  1 +
- 8 files changed, 50 insertions(+), 10 deletions(-)
-
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 6d27fb62f9..613f6fa5be 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -1051,4 +1051,21 @@ HumanReadableText *qmp_x_query_jit(Error **errp)
-     return ret;
- }
- 
-+HumanReadableText *qmp_x_query_opcount(Error **errp)
-+{
-+    HumanReadableText *ret;
-+    g_autoptr(GString) buf = g_string_new("");
-+
-+    if (!tcg_enabled()) {
-+        error_setg(errp, "JIT information is only available with accel=tcg");
-+        return NULL;
-+    }
-+
-+    dump_opcount_info(buf);
-+
-+    ret = g_new0(HumanReadableText, 1);
-+    ret->human_readable_text = g_steal_pointer(&buf->str);
-+    return ret;
-+}
-+
- #endif /* !CONFIG_USER_ONLY */
-diff --git a/accel/tcg/hmp.c b/accel/tcg/hmp.c
-index 9d7bcd9185..9b049d1e76 100644
---- a/accel/tcg/hmp.c
-+++ b/accel/tcg/hmp.c
-@@ -22,7 +22,16 @@ static void hmp_info_jit(Monitor *mon, const QDict *qdict)
- 
- static void hmp_info_opcount(Monitor *mon, const QDict *qdict)
- {
--    dump_opcount_info();
-+    Error *err = NULL;
-+    g_autoptr(HumanReadableText) info = NULL;
-+
-+    info = qmp_x_query_opcount(&err);
-+    if (err) {
-+        error_report_err(err);
-+        return;
-+    }
-+
-+    monitor_printf(mon, "%s", info->human_readable_text);
- }
- 
- static void hmp_tcg_register(void)
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 9c3dbe4409..7a8121e70a 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -2141,9 +2141,9 @@ void dump_exec_info(GString *buf)
-     tcg_dump_info(buf);
- }
- 
--void dump_opcount_info(void)
-+void dump_opcount_info(GString *buf)
- {
--    tcg_dump_op_count();
-+    tcg_dump_op_count(buf);
- }
- 
- #else /* CONFIG_USER_ONLY */
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index d92f6fa7a9..3c8e24292b 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -432,7 +432,7 @@ static inline bool tlb_hit(target_ulong tlb_addr, target_ulong addr)
- void dump_drift_info(GString *buf);
- /* accel/tcg/translate-all.c */
- void dump_exec_info(GString *buf);
--void dump_opcount_info(void);
-+void dump_opcount_info(GString *buf);
- #endif /* CONFIG_TCG */
- 
- #endif /* !CONFIG_USER_ONLY */
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index 1b56e382b7..cc7f59070b 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -944,7 +944,7 @@ int tcg_check_temp_count(void);
- 
- int64_t tcg_cpu_exec_time(void);
- void tcg_dump_info(GString *buf);
--void tcg_dump_op_count(void);
-+void tcg_dump_op_count(GString *buf);
- 
- #define TCG_CT_CONST  1 /* any constant of register size */
- 
-diff --git a/qapi/machine.json b/qapi/machine.json
-index e88aba1199..bb24146a40 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -1350,6 +1350,19 @@
- { 'command': 'x-query-numa',
-   'returns': 'HumanReadableText' }
- 
-+##
-+# @x-query-opcount:
-+#
-+# Query TCG opcode counters
-+#
-+# Returns: TCG opcode counters
-+#
-+# Since: 6.2
-+##
-+{ 'command': 'x-query-opcount',
-+  'returns': 'HumanReadableText',
-+  'if': 'CONFIG_TCG' }
-+
- ##
- # @x-query-profile:
- #
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 7fcdfd9c0f..d9653990af 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -4115,15 +4115,15 @@ static void tcg_profile_snapshot_table(TCGProfile *prof)
-     tcg_profile_snapshot(prof, false, true);
- }
- 
--void tcg_dump_op_count(void)
-+void tcg_dump_op_count(GString *buf)
- {
-     TCGProfile prof = {};
-     int i;
- 
-     tcg_profile_snapshot_table(&prof);
-     for (i = 0; i < NB_OPS; i++) {
--        qemu_printf("%s %" PRId64 "\n", tcg_op_defs[i].name,
--                    prof.table_op_count[i]);
-+        g_string_append_printf(buf, "%s %" PRId64 "\n", tcg_op_defs[i].name,
-+                               prof.table_op_count[i]);
-     }
- }
- 
-@@ -4142,9 +4142,9 @@ int64_t tcg_cpu_exec_time(void)
-     return ret;
- }
- #else
--void tcg_dump_op_count(void)
-+void tcg_dump_op_count(GString *buf)
- {
--    qemu_printf("[TCG profiler not compiled]\n");
-+    g_string_append_printf(buf, "[TCG profiler not compiled]\n");
- }
- 
- int64_t tcg_cpu_exec_time(void)
-diff --git a/tests/qtest/qmp-cmd-test.c b/tests/qtest/qmp-cmd-test.c
-index 6aa628691a..251a14ddf7 100644
---- a/tests/qtest/qmp-cmd-test.c
-+++ b/tests/qtest/qmp-cmd-test.c
-@@ -53,6 +53,7 @@ static int query_error_class(const char *cmd)
-         { "x-query-usb", ERROR_CLASS_GENERIC_ERROR },
-         /* Only valid with accel=tcg */
-         { "x-query-jit", ERROR_CLASS_GENERIC_ERROR },
-+        { "x-query-opcount", ERROR_CLASS_GENERIC_ERROR },
-         { NULL, -1 }
-     };
-     int i;
--- 
-2.31.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 

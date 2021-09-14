@@ -1,86 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp773389lfp;
-        Tue, 14 Sep 2021 08:08:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2peTP2Cz6waCLoO4SCy/Uov0/wEiErkfr/R2paclFqoJK8S9jvSeiIPNc/DxhWC5znCzh
-X-Received: by 2002:a05:651c:1409:: with SMTP id u9mr15348231lje.429.1631632133507;
-        Tue, 14 Sep 2021 08:08:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631632133; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp777272lfp;
+        Tue, 14 Sep 2021 08:12:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzKCO6wyBMsVJzbn3B0QWMbFEvF62u/93tKQMCf6ivRTiQwZaOhuILvKGjhJekxxJSv/85K
+X-Received: by 2002:a05:6512:3f1a:: with SMTP id y26mr13785569lfa.388.1631632372537;
+        Tue, 14 Sep 2021 08:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631632372; cv=none;
         d=google.com; s=arc-20160816;
-        b=BC9LHJR880epPcIEgCWbypAbHsqSax80hLzm5GRZNcEEGLKgxY2ck7Vz6mYVCpBIY/
-         0zMt2Go1+fQpLanvUSmFFTNRHwalVz1Tm9UikpWHEfSfJHCo1sDxt1wyl4ZSoLbOm4ZA
-         stYXh4EFId2DEwN++uszoBctIIAW69rcAeL2e/++stM1R2gShRZsTr8reO+a6UzG/K+A
-         6FjW0esoEGSo++YtAPE62hmXbSzPQvxWtiKbbZC3pTjyaj8D7tkseQ6VRB+m3Cr5JJdU
-         DhddLYwMdCmn6i+E+dHOxDIxoc0iLLsSYxV8K38MKm9sfhSkQLIx2rCVVdokftIH6UMy
-         H19A==
+        b=yxpayZQivKbddWjwznORCuA9PzxoGeJDaX1t+zsiQw1XJVexEFREjiKA2PA0XbCOxa
+         tNAXwlBHr3zPQRBiXXYJynyp8ZmuBj8mC+Lq7jdr+Zx1RRoCcgZGHIZ7OhxGBLO6VhW2
+         XMLYjaMaU419eK19QZYffU3VDA8PgZZ5SOeHpFyImmMQZ9pKLDKDsGI95NrojgkYtZgV
+         rIizt/PUjan/ItiYNTOpS/73XFiKpiyahd9aRcgItmRMJKxXdIgSuI9S7cMCxcqVK55V
+         DrEqNFcXmGi/tsA015zoCSeoxkkQbmA874fbwYdohAJzdhNFXzVIEfCyH+AkqkmEvz+W
+         c44Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=u/Q+2lydTjqVkGI5GLlhCmIjg5hJJ1z7UABw+pOKrT4=;
-        b=w7eznZ1gb9GV7JWB4zNC/9yQtB2dk4l8u5LwxK1Vxnfq/sDmgTgpxbi33nYzZtEALu
-         SBhoR4hbNR1AgcdA2qaElKHXIecwkv/MQ+ZwBWoHWK0VgEex2cDQwwK9AnplwoipEhdP
-         zEqbJbKCgZuEi//4XGc3snMUs70d9qFtVymVr9UNptcUUNyVWkQ8zVIe2VNtDZM7wYuF
-         jaUj0G6cYlc61MutYj8g5MlYHocs25Ic8OM1EEbTGzOO0wRNQc+2Qkym9Yl0s1gImK8H
-         ZZn4aLRe27m5iE0wuvUMKa0Spvi61BUN67XhJLabHR17JHMPdwNPQkucjI2UP0JGdvSQ
-         BnDg==
+        bh=OfuNrJauBgm0uBcnOxhBp2EuyAUbXL9W+QCHdXBJ5JE=;
+        b=mHBNmiS8SJSjnHPAJKF4FUVVvwpUEer0WaufsvKOZLlHck8ZvI67NezUu0xS3gj7+x
+         4M3x9WPxBloYBLAgtGPx/zBEqCtqMlZPFH2DVB4Uuyn9BKyCKqf9R0lAEeIjDg6KhOVE
+         26k0pIvRP0OK2xjZdqcIkn7XBDqJK/TSg15v5P98hM1X3vX/kW8urrlcEVpvsghroEmO
+         n1Mv50nMWXBK+XN2Xcdv02eun2EBYQeZJD1lDmeyPvgGZzoH601cEGalku6uB2M/Xb1Z
+         UnRjknKvoXwScHrrIESpkcEWTLzJ2/g8jDTUzqSMbI2ysupYNapc4vaa4FJAYO0Joe+g
+         xBjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YHAlNcwJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JMsr0fK4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6si53731eje.339.2021.09.14.08.08.53
+        by mx.google.com with ESMTPS id f21si10069489edf.336.2021.09.14.08.12.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:08:53 -0700 (PDT)
+        Tue, 14 Sep 2021 08:12:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YHAlNcwJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JMsr0fK4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54882 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35940 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQA3I-00057s-Fv
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:08:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41344)
+	id 1mQA79-0003ey-H2
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:12:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9VN-0002CN-7H
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:33:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38642)
+ id 1mQ9WA-0003QB-2T
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:34:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49804)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9VK-0003jZ-WD
- for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:33:48 -0400
+ id 1mQ9Vs-00043s-SC
+ for qemu-devel@nongnu.org; Tue, 14 Sep 2021 10:34:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631630026;
+ s=mimecast20190719; t=1631630058;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=u/Q+2lydTjqVkGI5GLlhCmIjg5hJJ1z7UABw+pOKrT4=;
- b=YHAlNcwJVDVZDgn4VnBffEMWIB3EidlC0T9ZrxpPk3syJgdDI8+E9oIckaHM4e5A4Cj5zA
- V+Rot/YN6VdjiYHTHMMqV9/Zp+lvj0Gwrlx45wL/oNVkPd5UoMHxxgSD5pQ3YagzFaGhXB
- nHy5/GVQ2lNBC9UooYBjgjH9yNqUv/o=
+ bh=OfuNrJauBgm0uBcnOxhBp2EuyAUbXL9W+QCHdXBJ5JE=;
+ b=JMsr0fK4gEbOj/BO9MBxtuDpLIJWGsWitgSz6wEzQl05ZoC74p6+ymYZET/nFgrt43AsUq
+ 7Krip6Pdnc9sfVSKVcG4V7iHhYP9/SiyfR6VlHoIipGpVFBE1IvGwkbvwPPukHhubcDlTM
+ Et/E/M6L6ICn4jr6cbiM0E5FWF9ZkCU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-398-0fHfBnnePW2Lz4Wnvbn9wg-1; Tue, 14 Sep 2021 10:33:44 -0400
-X-MC-Unique: 0fHfBnnePW2Lz4Wnvbn9wg-1
+ us-mta-87-H1_BhtnRMo6S6GpsQfTXTQ-1; Tue, 14 Sep 2021 10:34:16 -0400
+X-MC-Unique: H1_BhtnRMo6S6GpsQfTXTQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 375C51808304;
- Tue, 14 Sep 2021 14:33:41 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9D1461808306;
+ Tue, 14 Sep 2021 14:34:12 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 41C175D9CA;
- Tue, 14 Sep 2021 14:33:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EFA4B5D9CA;
+ Tue, 14 Sep 2021 14:33:52 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 43/53] target/i386: convert to use format_tlb callback
-Date: Tue, 14 Sep 2021 15:20:32 +0100
-Message-Id: <20210914142042.1655100-44-berrange@redhat.com>
+Subject: [PATCH v2 45/53] target/nios2: convert to use format_tlb callback
+Date: Tue, 14 Sep 2021 15:20:34 +0100
+Message-Id: <20210914142042.1655100-46-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -91,7 +91,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -99,7 +99,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -139,253 +139,112 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M5eqhl+JmcV4
+X-TUID: +pgxmScEWHsw
 
 Change the "info tlb" implementation to use the format_tlb callback.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- target/i386/cpu.c     |   3 ++
- target/i386/cpu.h     |   1 +
- target/i386/monitor.c | 107 +++++++++++++++++++++++-------------------
- 3 files changed, 63 insertions(+), 48 deletions(-)
+ target/nios2/cpu.c     |  3 +++
+ target/nios2/cpu.h     |  2 +-
+ target/nios2/mmu.c     | 37 +++++++++++++++++++------------------
+ target/nios2/monitor.c | 12 ++++++++++--
+ 4 files changed, 33 insertions(+), 21 deletions(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 0a5c6a6d19..ab86224ee2 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -6765,6 +6765,9 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->parse_features = x86_cpu_parse_featurestr;
-     cc->has_work = x86_cpu_has_work;
-     cc->format_state = x86_cpu_format_state;
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index cbf15fb1c9..60162ee692 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -242,6 +242,9 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
+     cc->class_by_name = nios2_cpu_class_by_name;
+     cc->has_work = nios2_cpu_has_work;
+     cc->format_state = nios2_cpu_format_state;
 +#ifndef CONFIG_USER_ONLY
-+    cc->format_tlb = x86_cpu_format_tlb;
++    cc->format_tlb = nios2_cpu_format_tlb;
 +#endif
-     cc->set_pc = x86_cpu_set_pc;
-     cc->gdb_read_register = x86_cpu_gdb_read_register;
-     cc->gdb_write_register = x86_cpu_gdb_write_register;
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 2bcb175da8..d61eeef617 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -1826,6 +1826,7 @@ void x86_cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
-                                 Error **errp);
- 
- void x86_cpu_format_state(CPUState *cs, GString *buf, int flags);
-+void x86_cpu_format_tlb(CPUState *cpu, GString *buf);
- 
- hwaddr x86_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-                                          MemTxAttrs *attrs);
-diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-index fc09f90059..698fbbc80b 100644
---- a/target/i386/monitor.c
-+++ b/target/i386/monitor.c
-@@ -54,27 +54,27 @@ static hwaddr addr_canonical(CPUArchState *env, hwaddr addr)
-     return addr;
+     cc->set_pc = nios2_cpu_set_pc;
+     cc->disas_set_info = nios2_cpu_disas_set_info;
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
+index 3b16cd1f3c..1167872bd9 100644
+--- a/target/nios2/cpu.h
++++ b/target/nios2/cpu.h
+@@ -194,8 +194,8 @@ struct Nios2CPU {
+ void nios2_tcg_init(void);
+ void nios2_cpu_do_interrupt(CPUState *cs);
+ int cpu_nios2_signal_handler(int host_signum, void *pinfo, void *puc);
+-void dump_mmu(CPUNios2State *env);
+ void nios2_cpu_format_state(CPUState *cpu, GString *buf, int flags);
++void nios2_cpu_format_tlb(CPUState *cpu, GString *buf);
+ hwaddr nios2_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ void nios2_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+                                    MMUAccessType access_type,
+diff --git a/target/nios2/mmu.c b/target/nios2/mmu.c
+index 2545c06761..1c7d3b34c3 100644
+--- a/target/nios2/mmu.c
++++ b/target/nios2/mmu.c
+@@ -252,29 +252,30 @@ void mmu_init(CPUNios2State *env)
+     mmu->tlb = g_new0(Nios2TLBEntry, cpu->tlb_num_entries);
  }
  
--static void print_pte(Monitor *mon, CPUArchState *env, hwaddr addr,
--                      hwaddr pte, hwaddr mask)
-+static void format_pte(GString *buf, CPUArchState *env, hwaddr addr,
-+                       hwaddr pte, hwaddr mask)
+-void dump_mmu(CPUNios2State *env)
++void nios2_cpu_format_tlb(CPUState *cpu, GString *buf)
  {
-     addr = addr_canonical(env, addr);
+-    Nios2CPU *cpu = env_archcpu(env);
++    CPUNios2State *env = cpu->env_ptr;
++    Nios2CPU *ncpu = env_archcpu(env);
+     int i;
  
--    monitor_printf(mon, TARGET_FMT_plx ": " TARGET_FMT_plx
--                   " %c%c%c%c%c%c%c%c%c\n",
--                   addr,
--                   pte & mask,
--                   pte & PG_NX_MASK ? 'X' : '-',
--                   pte & PG_GLOBAL_MASK ? 'G' : '-',
--                   pte & PG_PSE_MASK ? 'P' : '-',
--                   pte & PG_DIRTY_MASK ? 'D' : '-',
--                   pte & PG_ACCESSED_MASK ? 'A' : '-',
--                   pte & PG_PCD_MASK ? 'C' : '-',
--                   pte & PG_PWT_MASK ? 'T' : '-',
--                   pte & PG_USER_MASK ? 'U' : '-',
--                   pte & PG_RW_MASK ? 'W' : '-');
-+    g_string_append_printf(buf, TARGET_FMT_plx ": " TARGET_FMT_plx
-+                           " %c%c%c%c%c%c%c%c%c\n",
-+                           addr,
-+                           pte & mask,
-+                           pte & PG_NX_MASK ? 'X' : '-',
-+                           pte & PG_GLOBAL_MASK ? 'G' : '-',
-+                           pte & PG_PSE_MASK ? 'P' : '-',
-+                           pte & PG_DIRTY_MASK ? 'D' : '-',
-+                           pte & PG_ACCESSED_MASK ? 'A' : '-',
-+                           pte & PG_PCD_MASK ? 'C' : '-',
-+                           pte & PG_PWT_MASK ? 'T' : '-',
-+                           pte & PG_USER_MASK ? 'U' : '-',
-+                           pte & PG_RW_MASK ? 'W' : '-');
- }
+-    qemu_printf("MMU: ways %d, entries %d, pid bits %d\n",
+-                cpu->tlb_num_ways, cpu->tlb_num_entries,
+-                cpu->pid_num_bits);
++    g_string_append_printf(buf, "MMU: ways %d, entries %d, pid bits %d\n",
++                           ncpu->tlb_num_ways, ncpu->tlb_num_entries,
++                           ncpu->pid_num_bits);
  
--static void tlb_info_32(Monitor *mon, CPUArchState *env)
-+static void tlb_info_32(GString *buf, CPUArchState *env)
- {
-     unsigned int l1, l2;
-     uint32_t pgd, pde, pte;
-@@ -86,15 +86,15 @@ static void tlb_info_32(Monitor *mon, CPUArchState *env)
-         if (pde & PG_PRESENT_MASK) {
-             if ((pde & PG_PSE_MASK) && (env->cr[4] & CR4_PSE_MASK)) {
-                 /* 4M pages */
--                print_pte(mon, env, (l1 << 22), pde, ~((1 << 21) - 1));
-+                format_pte(buf, env, (l1 << 22), pde, ~((1 << 21) - 1));
-             } else {
-                 for(l2 = 0; l2 < 1024; l2++) {
-                     cpu_physical_memory_read((pde & ~0xfff) + l2 * 4, &pte, 4);
-                     pte = le32_to_cpu(pte);
-                     if (pte & PG_PRESENT_MASK) {
--                        print_pte(mon, env, (l1 << 22) + (l2 << 12),
--                                  pte & ~PG_PSE_MASK,
--                                  ~0xfff);
-+                        format_pte(buf, env, (l1 << 22) + (l2 << 12),
-+                                   pte & ~PG_PSE_MASK,
-+                                   ~0xfff);
-                     }
-                 }
-             }
-@@ -102,7 +102,7 @@ static void tlb_info_32(Monitor *mon, CPUArchState *env)
+-    for (i = 0; i < cpu->tlb_num_entries; i++) {
++    for (i = 0; i < ncpu->tlb_num_entries; i++) {
+         Nios2TLBEntry *entry = &env->mmu.tlb[i];
+-        qemu_printf("TLB[%d] = %08X %08X %c VPN %05X "
+-                    "PID %02X %c PFN %05X %c%c%c%c\n",
+-                    i, entry->tag, entry->data,
+-                    (entry->tag & (1 << 10)) ? 'V' : '-',
+-                    entry->tag >> 12,
+-                    entry->tag & ((1 << cpu->pid_num_bits) - 1),
+-                    (entry->tag & (1 << 11)) ? 'G' : '-',
+-                    entry->data & CR_TLBACC_PFN_MASK,
+-                    (entry->data & CR_TLBACC_C) ? 'C' : '-',
+-                    (entry->data & CR_TLBACC_R) ? 'R' : '-',
+-                    (entry->data & CR_TLBACC_W) ? 'W' : '-',
+-                    (entry->data & CR_TLBACC_X) ? 'X' : '-');
++        g_string_append_printf(buf, "TLB[%d] = %08X %08X %c VPN %05X "
++                               "PID %02X %c PFN %05X %c%c%c%c\n",
++                               i, entry->tag, entry->data,
++                               (entry->tag & (1 << 10)) ? 'V' : '-',
++                               entry->tag >> 12,
++                               entry->tag & ((1 << ncpu->pid_num_bits) - 1),
++                               (entry->tag & (1 << 11)) ? 'G' : '-',
++                               entry->data & CR_TLBACC_PFN_MASK,
++                               (entry->data & CR_TLBACC_C) ? 'C' : '-',
++                               (entry->data & CR_TLBACC_R) ? 'R' : '-',
++                               (entry->data & CR_TLBACC_W) ? 'W' : '-',
++                               (entry->data & CR_TLBACC_X) ? 'X' : '-');
      }
  }
  
--static void tlb_info_pae32(Monitor *mon, CPUArchState *env)
-+static void tlb_info_pae32(GString *buf, CPUArchState *env)
+diff --git a/target/nios2/monitor.c b/target/nios2/monitor.c
+index 0152dec3fa..99d35e8ef1 100644
+--- a/target/nios2/monitor.c
++++ b/target/nios2/monitor.c
+@@ -29,7 +29,15 @@
+ 
+ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
  {
-     unsigned int l1, l2, l3;
-     uint64_t pdpe, pde, pte;
-@@ -120,18 +120,18 @@ static void tlb_info_pae32(Monitor *mon, CPUArchState *env)
-                 if (pde & PG_PRESENT_MASK) {
-                     if (pde & PG_PSE_MASK) {
-                         /* 2M pages with PAE, CR4.PSE is ignored */
--                        print_pte(mon, env, (l1 << 30) + (l2 << 21), pde,
--                                  ~((hwaddr)(1 << 20) - 1));
-+                        format_pte(buf, env, (l1 << 30) + (l2 << 21), pde,
-+                                   ~((hwaddr)(1 << 20) - 1));
-                     } else {
-                         pt_addr = pde & 0x3fffffffff000ULL;
-                         for (l3 = 0; l3 < 512; l3++) {
-                             cpu_physical_memory_read(pt_addr + l3 * 8, &pte, 8);
-                             pte = le64_to_cpu(pte);
-                             if (pte & PG_PRESENT_MASK) {
--                                print_pte(mon, env, (l1 << 30) + (l2 << 21)
--                                          + (l3 << 12),
--                                          pte & ~PG_PSE_MASK,
--                                          ~(hwaddr)0xfff);
-+                                format_pte(buf, env, (l1 << 30) + (l2 << 21)
-+                                           + (l3 << 12),
-+                                           pte & ~PG_PSE_MASK,
-+                                           ~(hwaddr)0xfff);
-                             }
-                         }
-                     }
-@@ -142,7 +142,7 @@ static void tlb_info_pae32(Monitor *mon, CPUArchState *env)
- }
- 
- #ifdef TARGET_X86_64
--static void tlb_info_la48(Monitor *mon, CPUArchState *env,
-+static void tlb_info_la48(GString *buf, CPUArchState *env,
-         uint64_t l0, uint64_t pml4_addr)
- {
-     uint64_t l1, l2, l3, l4;
-@@ -166,8 +166,8 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
- 
-             if (pdpe & PG_PSE_MASK) {
-                 /* 1G pages, CR4.PSE is ignored */
--                print_pte(mon, env, (l0 << 48) + (l1 << 39) + (l2 << 30),
--                        pdpe, 0x3ffffc0000000ULL);
-+                format_pte(buf, env, (l0 << 48) + (l1 << 39) + (l2 << 30),
-+                           pdpe, 0x3ffffc0000000ULL);
-                 continue;
-             }
- 
-@@ -181,8 +181,8 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
- 
-                 if (pde & PG_PSE_MASK) {
-                     /* 2M pages, CR4.PSE is ignored */
--                    print_pte(mon, env, (l0 << 48) + (l1 << 39) + (l2 << 30) +
--                            (l3 << 21), pde, 0x3ffffffe00000ULL);
-+                    format_pte(buf, env, (l0 << 48) + (l1 << 39) + (l2 << 30) +
-+                               (l3 << 21), pde, 0x3ffffffe00000ULL);
-                     continue;
-                 }
- 
-@@ -193,9 +193,9 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
-                             &pte, 8);
-                     pte = le64_to_cpu(pte);
-                     if (pte & PG_PRESENT_MASK) {
--                        print_pte(mon, env, (l0 << 48) + (l1 << 39) +
--                                (l2 << 30) + (l3 << 21) + (l4 << 12),
--                                pte & ~PG_PSE_MASK, 0x3fffffffff000ULL);
-+                        format_pte(buf, env, (l0 << 48) + (l1 << 39) +
-+                                   (l2 << 30) + (l3 << 21) + (l4 << 12),
-+                                   pte & ~PG_PSE_MASK, 0x3fffffffff000ULL);
-                     }
-                 }
-             }
-@@ -203,7 +203,7 @@ static void tlb_info_la48(Monitor *mon, CPUArchState *env,
-     }
- }
- 
--static void tlb_info_la57(Monitor *mon, CPUArchState *env)
-+static void tlb_info_la57(GString *buf, CPUArchState *env)
- {
-     uint64_t l0;
-     uint64_t pml5e;
-@@ -214,44 +214,55 @@ static void tlb_info_la57(Monitor *mon, CPUArchState *env)
-         cpu_physical_memory_read(pml5_addr + l0 * 8, &pml5e, 8);
-         pml5e = le64_to_cpu(pml5e);
-         if (pml5e & PG_PRESENT_MASK) {
--            tlb_info_la48(mon, env, l0, pml5e & 0x3fffffffff000ULL);
-+            tlb_info_la48(buf, env, l0, pml5e & 0x3fffffffff000ULL);
-         }
-     }
- }
- #endif /* TARGET_X86_64 */
- 
--void hmp_info_tlb(Monitor *mon, const QDict *qdict)
-+void x86_cpu_format_tlb(CPUState *cpu, GString *buf)
- {
-     CPUArchState *env;
- 
--    env = mon_get_cpu_env(mon);
--    if (!env) {
--        monitor_printf(mon, "No CPU available\n");
--        return;
--    }
-+    env = cpu->env_ptr;
- 
-     if (!(env->cr[0] & CR0_PG_MASK)) {
--        monitor_printf(mon, "PG disabled\n");
-+        g_string_append_printf(buf, "PG disabled\n");
-         return;
-     }
-     if (env->cr[4] & CR4_PAE_MASK) {
- #ifdef TARGET_X86_64
-         if (env->hflags & HF_LMA_MASK) {
-             if (env->cr[4] & CR4_LA57_MASK) {
--                tlb_info_la57(mon, env);
-+                tlb_info_la57(buf, env);
-             } else {
--                tlb_info_la48(mon, env, 0, env->cr[3] & 0x3fffffffff000ULL);
-+                tlb_info_la48(buf, env, 0, env->cr[3] & 0x3fffffffff000ULL);
-             }
-         } else
- #endif
-         {
--            tlb_info_pae32(mon, env);
-+            tlb_info_pae32(buf, env);
-         }
-     } else {
--        tlb_info_32(mon, env);
-+        tlb_info_32(buf, env);
-     }
- }
- 
-+void hmp_info_tlb(Monitor *mon, const QDict *qdict)
-+{
+-    CPUArchState *env1 = mon_get_cpu_env(mon);
 +    g_autoptr(GString) buf = g_string_new("");
 +    CPUState *cpu = mon_get_cpu(mon);
-+
+ 
+-    dump_mmu(env1);
 +    if (!cpu) {
 +        monitor_printf(mon, "No CPU available\n");
 +        return;
@@ -394,11 +253,7 @@ index fc09f90059..698fbbc80b 100644
 +    cpu_format_tlb(cpu, buf);
 +
 +    monitor_printf(mon, "%s", buf->str);
-+}
-+
- static void mem_print(Monitor *mon, CPUArchState *env,
-                       hwaddr *pstart, int *plast_prot,
-                       hwaddr end, int prot)
+ }
 -- 
 2.31.1
 

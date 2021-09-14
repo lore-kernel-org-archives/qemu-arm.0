@@ -1,86 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp781962lfp;
-        Tue, 14 Sep 2021 08:18:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJziQ9mLGdS2mJpuaKTBMxOnXjULFGuIRq9MmEOJCwnA+uDzyKl9Jgul2NwWKvXIHBCFcTbI
-X-Received: by 2002:a05:6512:3d8e:: with SMTP id k14mr13999722lfv.430.1631632680874;
-        Tue, 14 Sep 2021 08:18:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631632680; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp782695lfp;
+        Tue, 14 Sep 2021 08:18:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2JZS4MInz81NUojJb7D/x7KgO5SsagxUVE1JI0mh7H5q8KXKHer6P0srE2LmOjCrbJgUk
+X-Received: by 2002:a05:600c:4109:: with SMTP id j9mr2862764wmi.88.1631632722619;
+        Tue, 14 Sep 2021 08:18:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631632722; cv=none;
         d=google.com; s=arc-20160816;
-        b=GxmktsC9ZdClb1iuZcHj4d0980oBR2FDQfXWTL/Nk16sLA/PuM+tZvF9myquKdJJGi
-         ZH2NhUa6NLFekZoA1vjqn4uWfAUSTG0dWRNuZgKvuduFq1G2xjoV+n0e8KEzYBm7bIYD
-         rWbvfteOWWRuZs25ot8sB0jGGWFkw708gKcIJAHRMhjjyYAg4Lruq1QBXP1ryospWbpV
-         +/E3CCUJvX7IOPe8vHgbBn/9XvfeKZ0QLHOXSiPVYhAvzncTKUBneelYpG21WdUH9yT/
-         bXpZhyyFeRH5BTcVtNXjTvlwd7vKTZSAL/6kqWBW896DhvBLaLn5P/E2gOHmf67E/Ry0
-         O8XA==
+        b=uaEiQLSEW5eKeUL/BxlVhLZB8prQsfkSsLug4fJZnX4i8AuHEt3/hO29Wnc8WSXefh
+         ry9X0XOVhQM6qHtrxdWHXO+e0wZ29ArdhXJ9QssplOJe2xy5MB7mav7Cwizj6sHReMGZ
+         nEZCJv9U9d1t3P+JYwz1CW6tuoPSkSJGtfaaSFxUt4PnayiC3UEYso5BnnMbFw8mHtt9
+         N5/9lM5H21AFKR8PpS0YXT+mXifJ6FVVAuZj3huqcueSJjGjvOYaGJlj3y9OhvRyhKzD
+         6oYdFbxM8QD2MzEEYpnl847138iNtMen+dGYu1+QPloVz0Au455d2/1oDOyhBDvgipDo
+         Dslw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=L95vl1UuVwpTJtxDmY7MB+2pUWJRC8Yr3yhD63QKkCg=;
-        b=nenBwH1aw49xuLwNxnwHH8z4S9sLwEY9fm81e0lkvU8J0TV467rclz/O31PvORyj4J
-         Q04TBe/rcOmJ+fnmAhKQ8+XqTmiJWMGPubu/eVhGOA6f1HwLWJnhzv2WO8oMVkcBUUVe
-         dHe83vDCh76k60fso9/5nieEpukx5bRHtYuGv/JqqRbFYFlru5kHKZ4vzJxmn47aVDBm
-         apfzmc5mPp1TZcDwN2agLrsrBCUXVW3xmO/weBC1rrtsW33xJ1iUfYZE4uE+VTI1is1R
-         xp0h4BW2u/E2R5NX0qxIsddi2VbKqb1UzDc0eGYwt6BofAU4wvKxg2QPldHKnu35dP52
-         ZkzQ==
+        bh=qjXz354OerT/IdyTAoj8iLAD8TsJq7H30dJHW+kTcBo=;
+        b=0spUAlcSUX2GjC+Zgtbmm8yo83o522L0oViv1frbaKz+yrfs6fdgpNqnb0wKKnbIzy
+         PDmz9m/+LNzuSBpvBQURswCSSLyASmVZvCdhe4+9Cts92YGd48iGKnIDAAPPFGjtuchz
+         e2DPRztDR3ftz98Y+gRvhFo7s/jS1US3gjZS2Oqw5TTNY9AmGqMuVYnWoRzvnb7pvdWu
+         zZb29NUL95U3lEBbUqWOscQ/+Huv+5icA04K3snjSzQLILsuGge1WwJwZ0F6HCYQuyEt
+         5XYermuUrpyXjlDQr4LGhutsbvOIrGydvpOmXw09Du6iMHOWnwEF+xFhB+xnTO/xEMPW
+         mk4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D9tF5eG2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=erE1Wwjl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w22si9981461edc.482.2021.09.14.08.18.00
+        by mx.google.com with ESMTPS id g17si1630556wmq.172.2021.09.14.08.18.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 08:18:00 -0700 (PDT)
+        Tue, 14 Sep 2021 08:18:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D9tF5eG2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=erE1Wwjl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49370 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQAC7-0004q2-NK
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:17:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40104)
+	id 1mQACn-0006GD-It
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 11:18:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9TJ-0007wv-8V
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:31:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:33109)
+ id 1mQ9Xv-0007bb-E9
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:36:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45258)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQ9TD-0002Ed-M3
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:31:38 -0400
+ id 1mQ9Xs-0005Xg-9l
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 10:36:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631629894;
+ s=mimecast20190719; t=1631630183;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=L95vl1UuVwpTJtxDmY7MB+2pUWJRC8Yr3yhD63QKkCg=;
- b=D9tF5eG22qV6CbCtxWe5lYZGtnL+clY5Db1s0D9ftXwKoXVCCBg291H17RhH3jL60j5v/G
- zXMWbDYoCCxpw3JTxS7ISxTlqWgNiKZ0G3xvrO9jwRenN4ebJ6jwPhSnIIWibilK481jyO
- VJXxj4AxOyrT5krP2N3+W6ulTt6i4Tc=
+ bh=qjXz354OerT/IdyTAoj8iLAD8TsJq7H30dJHW+kTcBo=;
+ b=erE1Wwjl1hup4T/3lNXtnI2aXq5KnSVk8u/bHN28YuCIhFPgzuyUMxcPQXfSY4TPgUiCdu
+ c+nbXgQwMED3m/tbC7EDaEqe2Gqlp2OEf0ueeOoPpuh77y2+iYVhY2AIKOdCtJIC70mn0+
+ nrmX0iEr6gjrf3UwA7x/L7YDark3iS0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-45-tjhAf0BdMkOY_rTzK4JcoQ-1; Tue, 14 Sep 2021 10:31:32 -0400
-X-MC-Unique: tjhAf0BdMkOY_rTzK4JcoQ-1
+ us-mta-239-VHsRiiH_O1K_BujAIMDWSA-1; Tue, 14 Sep 2021 10:36:22 -0400
+X-MC-Unique: VHsRiiH_O1K_BujAIMDWSA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EB966BAF85;
- Tue, 14 Sep 2021 14:31:28 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E17C51808304;
+ Tue, 14 Sep 2021 14:36:17 +0000 (UTC)
 Received: from localhost.localdomain.com (unknown [10.39.193.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 680185D9CA;
- Tue, 14 Sep 2021 14:31:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 680F15D9CA;
+ Tue, 14 Sep 2021 14:35:57 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 33/53] qapi: introduce x-query-usb QMP command
-Date: Tue, 14 Sep 2021 15:20:22 +0100
-Message-Id: <20210914142042.1655100-34-berrange@redhat.com>
+Subject: [PATCH v2 51/53] qapi: introduce x-query-tlb QMP command
+Date: Tue, 14 Sep 2021 15:20:40 +0100
+Message-Id: <20210914142042.1655100-52-berrange@redhat.com>
 In-Reply-To: <20210914142042.1655100-1-berrange@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
 MIME-Version: 1.0
@@ -91,14 +91,14 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) DKIMWL_WL_HIGH=-0.398, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -141,152 +141,112 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LSfF+fxQhRJ/
+X-TUID: Wlwbo1xgNOIf
 
-This is a counterpart to the HMP "info usb" command. It is being
+This is a counterpart to the HMP "info tlb" command. It is being
 added with an "x-" prefix because this QMP command is intended as an
-adhoc debugging tool and will thus not be modelled in QAPI as fully
+ad hoc debugging tool and will thus not be modelled in QAPI as fully
 structured data, nor will it have long term guaranteed stability.
 The existing HMP command is rewritten to call the QMP command.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/usb/bus.c               | 38 +++++++++++++++++++++++++++++---------
- qapi/machine.json          | 12 ++++++++++++
- stubs/usb-dev-stub.c       |  8 ++++++++
- tests/qtest/qmp-cmd-test.c |  2 ++
- 4 files changed, 51 insertions(+), 9 deletions(-)
+ hw/core/machine-qmp-cmds.c | 22 ++++++++++++++++++++++
+ monitor/misc.c             | 15 ++++++++++-----
+ qapi/machine.json          | 15 +++++++++++++++
+ 3 files changed, 47 insertions(+), 5 deletions(-)
 
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index 07083349f5..f94d872429 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -2,6 +2,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/usb.h"
- #include "qapi/error.h"
-+#include "qapi/qapi-commands-machine.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "sysemu/sysemu.h"
-@@ -631,15 +632,17 @@ static char *usb_get_fw_dev_path(DeviceState *qdev)
-     return fw_path;
+diff --git a/hw/core/machine-qmp-cmds.c b/hw/core/machine-qmp-cmds.c
+index 4407e967da..c84cef8667 100644
+--- a/hw/core/machine-qmp-cmds.c
++++ b/hw/core/machine-qmp-cmds.c
+@@ -235,6 +235,28 @@ HumanReadableText *qmp_x_query_registers(bool has_cpu, int64_t cpu,
+     return ret;
  }
  
--void hmp_info_usb(Monitor *mon, const QDict *qdict)
-+HumanReadableText *qmp_x_query_usb(Error **errp)
- {
++HumanReadableText *qmp_x_query_tlb(int64_t cpu, Error **errp)
++{
 +    HumanReadableText *ret;
 +    g_autoptr(GString) buf = g_string_new("");
-     USBBus *bus;
-     USBDevice *dev;
-     USBPort *port;
- 
-     if (QTAILQ_EMPTY(&busses)) {
--        monitor_printf(mon, "USB support not enabled\n");
--        return;
-+        error_setg(errp, "USB support not enabled");
++    CPUState *cs = NULL, *tmp;
++
++    CPU_FOREACH(tmp) {
++        if (cpu == tmp->cpu_index) {
++            cs = tmp;
++        }
++    }
++    if (!cs) {
++        error_setg(errp, "CPU %"PRId64" not available", cpu);
 +        return NULL;
-     }
- 
-     QTAILQ_FOREACH(bus, &busses, next) {
-@@ -647,14 +650,31 @@ void hmp_info_usb(Monitor *mon, const QDict *qdict)
-             dev = port->dev;
-             if (!dev)
-                 continue;
--            monitor_printf(mon, "  Device %d.%d, Port %s, Speed %s Mb/s, "
--                           "Product %s%s%s\n",
--                           bus->busnr, dev->addr, port->path,
--                           usb_speed(dev->speed), dev->product_desc,
--                           dev->qdev.id ? ", ID: " : "",
--                           dev->qdev.id ?: "");
-+            g_string_append_printf(buf,
-+                                   "  Device %d.%d, Port %s, Speed %s Mb/s, "
-+                                   "Product %s%s%s\n",
-+                                   bus->busnr, dev->addr, port->path,
-+                                   usb_speed(dev->speed), dev->product_desc,
-+                                   dev->qdev.id ? ", ID: " : "",
-+                                   dev->qdev.id ?: "");
-         }
-     }
++    }
++    cpu_format_tlb(cs, buf);
 +
 +    ret = g_new0(HumanReadableText, 1);
 +    ret->human_readable_text = g_steal_pointer(&buf->str);
 +    return ret;
 +}
 +
-+void hmp_info_usb(Monitor *mon, const QDict *qdict)
-+{
+ HumanReadableText *qmp_x_query_numa(Error **errp)
+ {
+     HumanReadableText *ret;
+diff --git a/monitor/misc.c b/monitor/misc.c
+index c7d138914d..7ca529002d 100644
+--- a/monitor/misc.c
++++ b/monitor/misc.c
+@@ -938,17 +938,22 @@ static void hmp_info_mtree(Monitor *mon, const QDict *qdict)
+ 
+ static void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+ {
+-    g_autoptr(GString) buf = g_string_new("");
+-    CPUState *cpu = mon_get_cpu(mon);
++    CPUState *cs = mon_get_cpu(mon);
 +    Error *err = NULL;
-+    g_autoptr(HumanReadableText) info = qmp_x_query_usb(&err);
-+
++    g_autoptr(HumanReadableText) info = NULL;
+ 
+-    if (!cpu) {
++    if (!cs) {
+         monitor_printf(mon, "No CPU available\n");
+         return;
+     }
+ 
+-    cpu_format_tlb(cpu, buf);
++    info = qmp_x_query_tlb(cs->cpu_index, &err);
 +    if (err) {
 +        error_report_err(err);
 +        return;
 +    }
+ 
+-    monitor_printf(mon, "%s", buf->str);
 +    monitor_printf(mon, "%s", info->human_readable_text);
  }
  
- /* handle legacy -usbdevice cmd line option */
+ static void hmp_info_profile(Monitor *mon, const QDict *qdict)
 diff --git a/qapi/machine.json b/qapi/machine.json
-index 916f855e9b..39d800c2c1 100644
+index e72b47ea7d..0f537a58e0 100644
 --- a/qapi/machine.json
 +++ b/qapi/machine.json
-@@ -1363,3 +1363,15 @@
- ##
+@@ -1400,6 +1400,21 @@
  { 'command': 'x-query-roms',
    'returns': 'HumanReadableText' }
-+
+ 
 +##
-+# @x-query-usb:
++# @x-query-tlb:
 +#
-+# Query information on the USB devices
++# @cpu: the CPU number to query
 +#
-+# Returns: USB device information
++# Return information on the CPU memory mappings
++#
++# Returns: memory mappings in an architecture-specific format
 +#
 +# Since: 6.2
 +##
-+{ 'command': 'x-query-usb',
++{ 'command': 'x-query-tlb',
++  'data': {'cpu': 'int' },
 +  'returns': 'HumanReadableText' }
-diff --git a/stubs/usb-dev-stub.c b/stubs/usb-dev-stub.c
-index b1adeeb454..aa557692b7 100644
---- a/stubs/usb-dev-stub.c
-+++ b/stubs/usb-dev-stub.c
-@@ -8,6 +8,8 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/error-report.h"
-+#include "qapi/error.h"
-+#include "qapi/qapi-commands-machine.h"
- #include "sysemu/sysemu.h"
- #include "monitor/monitor.h"
- #include "hw/usb.h"
-@@ -19,6 +21,12 @@ USBDevice *usbdevice_create(const char *driver)
-     return NULL;
- }
- 
-+HumanReadableText *qmp_x_query_usb(Error **errp)
-+{
-+    error_setg(errp, "Support for USB devices not built-in");
-+    return NULL;
-+}
 +
- void hmp_info_usb(Monitor *mon, const QDict *qdict)
- {
-     monitor_printf(mon, "Support for USB devices not built-in\n");
-diff --git a/tests/qtest/qmp-cmd-test.c b/tests/qtest/qmp-cmd-test.c
-index fbd7ac10fb..15875a14c6 100644
---- a/tests/qtest/qmp-cmd-test.c
-+++ b/tests/qtest/qmp-cmd-test.c
-@@ -49,6 +49,8 @@ static int query_error_class(const char *cmd)
- #ifndef CONFIG_PROFILER
-         { "x-query-profile", ERROR_CLASS_GENERIC_ERROR },
- #endif
-+        /* Only valid with a USB bus added */
-+        { "x-query-usb", ERROR_CLASS_GENERIC_ERROR },
-         { NULL, -1 }
-     };
-     int i;
+ ##
+ # @x-query-usb:
+ #
 -- 
 2.31.1
 

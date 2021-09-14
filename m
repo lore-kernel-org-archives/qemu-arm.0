@@ -1,104 +1,93 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp553604lfp;
-        Tue, 14 Sep 2021 03:52:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJze+ZlACB8VqjfWTp4jNfLdODKzqPJiVNRWlXlbBMkojC6B+HfOgpLyDFQDvpxLIMu1g3Vm
-X-Received: by 2002:a02:7b24:: with SMTP id q36mr13634703jac.130.1631616773260;
-        Tue, 14 Sep 2021 03:52:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631616773; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp556489lfp;
+        Tue, 14 Sep 2021 03:57:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7p8VfbxWXFFfI6GF9T4VHzzdEcpX9UfyRQsQV7PcHBta8VrdeU85eZrLSzxNMvWvTBAf9
+X-Received: by 2002:a5e:df0d:: with SMTP id f13mr13334961ioq.108.1631617026372;
+        Tue, 14 Sep 2021 03:57:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631617026; cv=none;
         d=google.com; s=arc-20160816;
-        b=lAai5X4DaG7mSvxXBmZFmjocT3K9ehZUlreS0G7mYuqs2aq/mPsdmErkyJi6xQMySR
-         nfnWrEfslyxRrCSG8fDpXwdgHoZv7HWqLnATIyYnR7Q9r44qw8SlpEldrc5kky4sldoo
-         HP0ad35Ys6BhNnnqzLmFDBoSF0mlA57NQcF8eKs2qp1RdMZh8eauWbnD/yYCP3A5c54m
-         LtUdUH0D13OoDqTicpxeeKWZVGQxBWs0K4z1U3vXaHzxXrKHlhj3d0lgbEE0wSm64Ji3
-         ShKtDlvg09yO9oeLj6rCy9SctqQi8jc8HNdKuPal+ZBhCXWDaF+/O4IpmpNAlI4r+70x
-         ACsQ==
+        b=FX01eGrwfI/HkWnCX8L/utgAh+uDBnzAk/h+xe7NrtF3wvPaNloEndcVSD9gTW4nha
+         /aV2w+XWOD5jYH68uL2b/2FH2Y5QHF6sSx1VqdzspgsGA8G8YaVgRdcvqw5U2iFSraqZ
+         tF1RHZh+hYPqgkNqXhBfwN+3Axuf/ZzW5XAd6xt1s5nU4MAFXQ9AZ+li8UbWKj0dOW+H
+         OMKCLpnPymn90dXKG9bN/AtolvuX6ehbHNb/iRrDEPCeilHn2DNnsKlhp+GS9ipdSlhq
+         koVLgg/t9zK7Cc9aoGNAfmQw4p0u3neJh+fqh66I7PpfflJHJMdOAqTFdEwsx4Kdo+fZ
+         dINA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=laagcRJAJo+1gquNVmYG6q6KvnEr9cDlR6J0BVYkuNY=;
-        b=oerbA+QMsPtdHelzWtUjUbstB2l/WrAZor7RyVnxw+cSImq/MDXFQVZq9txBg1oQ5F
-         fWLoSbyeuvrY2/TXaVcD2Mszh/sx5EQ458E0xqiWZEhbwvVC1ZWd7yOriRLJY58BkMQ4
-         B/V8MOKdSXLJJgD5HAUj4SadzIoSTWIrhwB+kzkf6r4fuT9vMdvV0EhS37ha2TRQmK8p
-         zXMWm3VTOqgvB7MNf5wevuVxTJRi3t/huhYG2cXQ2M1hVXjq1wfvmZ6146pJJjPtm6Wy
-         XIdJrDZ6SBXyp8SJdk9YvRmYMnok/VnRNlOoF62mv9ScC7mrnQhLnSN19I7+w+irHCSu
-         9hWw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=t+8Hzv4GRDAHGMROVuH37Iq6qO0DQvLkRuDhhWpbHLM=;
+        b=v2vApziKy9rk2Tg9GZ7ryVL0/p0ibGS+dhvzLsScEaLKyxf/i5qoLTQtKNP29fsSBb
+         nDAyQXsP/Y7R+pm3HrnVNByJPoC0I7tdoGazMv4jZXsSwJFT0BWk7WHEimwe3OCGcLPH
+         XGLsLpRYhN0lvoaccgRqelxNco/zk3agRyyXB+rGzbE8QjcH4kEq96fHsDoGw3zNrTRU
+         1PwGUEZLLWB1Vg729/IgcQXIDW86Y4oJrg+a8Eq7h5W+cMpMwZ6qwx25Sw9AqxBTd7Wy
+         M/SVmkpmpxbVvHyz8CySSZGP5oNA2p6gOwnB4/+1Bvrw/brcZtyQmdIWy2Mc0pc0K0xj
+         78Jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gUu6YvoE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o8si7125299ilo.26.2021.09.14.03.52.53
+        by mx.google.com with ESMTPS id x6si10621581ilv.93.2021.09.14.03.57.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 03:52:53 -0700 (PDT)
+        Tue, 14 Sep 2021 03:57:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gUu6YvoE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47182 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQ63Y-0000qz-Jr
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 06:52:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56952)
+	id 1mQ67d-00044h-Op
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 06:57:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQ63O-0000mB-Hj
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 06:52:42 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:41927)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQ63L-0000Yp-LC
- for qemu-arm@nongnu.org; Tue, 14 Sep 2021 06:52:41 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id w29so18685593wra.8
- for <qemu-arm@nongnu.org>; Tue, 14 Sep 2021 03:52:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=laagcRJAJo+1gquNVmYG6q6KvnEr9cDlR6J0BVYkuNY=;
- b=gUu6YvoEkCe1+39amstjHpgG/0UdcHs0loGuPJ7Id+UoFM1xNB+dfWDzclzWeM+Dqr
- 9nqDOFzW73nCg/w1Bnev4X/IUv0wYDRaSKmhwt+SA3KRsW4Nw8cdq/oglsrdKDVdfyBN
- 22fehNpwp1TYb655TAc6nQjSP75Ad8OCvA1yxuOfwBZ+w8TlmJIX8TEV/C/BXf1xnH+h
- RM437l0szEmjK14Cl5TeT9TAqeePArHyGSNJES7gWfT8bCMQm6wtuDEDFqKQ2WPPm90J
- u+tYLROARR4qFvQUmV5dxBjeg3nopDOFgNL+WDQ1V44bGFAxoSTG1lZcfiQ0GIgbQ5L+
- OCOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=laagcRJAJo+1gquNVmYG6q6KvnEr9cDlR6J0BVYkuNY=;
- b=QoDOvTL6QfOZaSjKY43njSKkHI5Ic8K0//hNG7GIgo6oLZcPxRN15clfuSorVAEMO/
- VOppS0rH/sld7VQT93oqT6GcbOZBHingwQPuX3JcWVUs3jC3XKMWScPVw8/K/HoePE3p
- dNZkWorZA3+o+fr9T13spA1SHwjY3se4d4ZpAAZ6x6yAJ/n0AnRCVxrevGtfCq0+wJs6
- cM6vDcV77IsjEohRYlJsIFGXR3ZLrRVjJfKVmU9z2Bn4nPCWHKqvk12B4eTI2BbRfzxj
- XGgc3P0Lm7FkMyqFaYGyUFG/CrriWfo8SabQH5/u+Pdb2JpgsYJXur7QGWDn8PCJW/6P
- 0hQA==
-X-Gm-Message-State: AOAM533TxjRwOH2uRarAbGn9lXsWxYEjR+ctDOTpRDGULONcfjY7j0Ki
- B7KbYVlPb2wGf0vOvoKVxLSbdws3sZrd7oQ8iB0flw==
-X-Received: by 2002:adf:fd12:: with SMTP id e18mr14091092wrr.275.1631616757831; 
- Tue, 14 Sep 2021 03:52:37 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mQ67U-00041S-W7
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 06:56:57 -0400
+Received: from 1.mo548.mail-out.ovh.net ([178.32.121.110]:34773)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mQ67R-0004C2-U0
+ for qemu-arm@nongnu.org; Tue, 14 Sep 2021 06:56:56 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.136])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id EB08020058;
+ Tue, 14 Sep 2021 10:56:49 +0000 (UTC)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 14 Sep
+ 2021 12:56:49 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R0069a609b8a-7d05-4373-bb59-9734b4670c60,
+ 2B4DCE8296B83A4DEFDF4253AFCCF2A4AB0DDD95) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20210913161304.3805652-1-clg@kaod.org>
-In-Reply-To: <20210913161304.3805652-1-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Sep 2021 11:51:47 +0100
-Message-ID: <CAFEAcA9CJekxghvjOpoweVNX6ebKz9yP27tP8OVsiR49T4XSHw@mail.gmail.com>
-Subject: Re: [PULL 00/14] aspeed queue
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <20210913161304.3805652-15-clg@kaod.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <88c26520-6b87-e7a2-ac78-c1c92477c814@kaod.org>
+Date: Tue, 14 Sep 2021 12:56:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <20210913161304.3805652-15-clg@kaod.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 355f6587-0a43-40ab-8c29-4b864fc43796
+X-Ovh-Tracer-Id: 9219149912872094502
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudegledgfeefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgedvieejfedvhfduhfffueevheeludffhfdvkeehleegtddttdfhieegveeghfffnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgh
+Received-SPF: pass client-ip=178.32.121.110; envelope-from=clg@kaod.org;
+ helo=1.mo548.mail-out.ovh.net
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.969,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,44 +100,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Peter Delevoryas <pdel@fb.com>,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cs/q/FZ3pFaX
+X-TUID: +tS/uPtG9e3x
 
-On Mon, 13 Sept 2021 at 17:13, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> The following changes since commit eae587e8e3694b1aceab23239493fb4c7e1a80=
-f5:
->
->   Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2021-09-13'=
- into staging (2021-09-13 11:00:30 +0100)
->
-> are available in the Git repository at:
->
->   https://github.com/legoater/qemu/ tags/pull-aspeed-20210913
->
-> for you to fetch changes up to d7add12e20fa8982f5932ff4dca317c5d2dfe7d9:
->
->   hw/arm/aspeed: Add Fuji machine type (2021-09-13 15:19:20 +0200)
->
-> ----------------------------------------------------------------
-> Aspeed patches :
->
-> * MAC enablement fixes (Guenter)
-> * Watchdog  and pca9552 fixes (Andrew)
-> * GPIO fixes (Joel)
-> * AST2600A3 SoC and DPS310 models (Joel)
-> * New Fuji BMC machine (Peter)
 
-Hi; this fails 'make check' on 32-bit hosts:
+Hello Peter D,
 
-qemu-system-aarch64: at most 2047 MB RAM can be simulated
-Broken pipe
-ERROR qtest-aarch64/qom-test - too few tests run (expected 83, got 31)
+> +static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc = "Facebook Fuji BMC (Cortex-A7)";
+> +    amc->soc_name = "ast2600-a3";
+> +    amc->hw_strap1 = FUJI_BMC_HW_STRAP1;
+> +    amc->hw_strap2 = FUJI_BMC_HW_STRAP2;
+> +    amc->fmc_model = "mx66l1g45g";
+> +    amc->spi_model = "mx66l1g45g";
+> +    amc->num_cs = 2;
+> +    amc->macs_mask = ASPEED_MAC3_ON;
+> +    amc->i2c_init = fuji_bmc_i2c_init;
+> +    amc->uart_default = ASPEED_DEV_UART1;
+> +    mc->default_ram_size = 2 * GiB;
 
-I suspect the new machine type has a default of more than 2GB
-of RAM, which won't work on 32 bit systems.
+Is that the default of the Fuji board ? This is causing an issue in our tests :
 
--- PMM
+   qemu-system-aarch64: at most 2047 MB RAM can be simulated
+
+Could we lower it down to 1G ?
+
+Thanks,
+
+C.
+
+> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+> +        aspeed_soc_num_cpus(amc->soc_name);
+> +};
+> +
+>  static const TypeInfo aspeed_machine_types[] = {
+>      {
+>          .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+> @@ -1119,6 +1228,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>          .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+>          .parent        = TYPE_ASPEED_MACHINE,
+>          .class_init    = aspeed_machine_rainier_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("fuji-bmc"),
+> +        .parent        = TYPE_ASPEED_MACHINE,
+> +        .class_init    = aspeed_machine_fuji_class_init,
+>      }, {
+>          .name          = TYPE_ASPEED_MACHINE,
+>          .parent        = TYPE_MACHINE,
+> 
+

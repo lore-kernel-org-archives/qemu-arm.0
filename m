@@ -1,60 +1,60 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp404837lfp;
-        Wed, 15 Sep 2021 11:32:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzifU5r9QgAzxY+U/stffIc08SBcpaeihK3e3Y1cSJKyYNKgXH0LdWXQTsasalXCninpAE
-X-Received: by 2002:a0c:9046:: with SMTP id o64mr1308029qvo.47.1631730721936;
-        Wed, 15 Sep 2021 11:32:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631730721; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp405200lfp;
+        Wed, 15 Sep 2021 11:32:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/jy/TeXRs8tCNQJZRDqYNdlhx8J4QGqHs+od7NLqUYTrz30ObRsyQmeDzr7ohoIrWh8ak
+X-Received: by 2002:a05:622a:11ca:: with SMTP id n10mr1306189qtk.362.1631730757683;
+        Wed, 15 Sep 2021 11:32:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631730757; cv=none;
         d=google.com; s=arc-20160816;
-        b=tXH7GpEE9LtuClj1qgYe100tNvYjhlajZFTTZR+gNs2yvTVOA3Kr1BFnkiV8BLrmEt
-         u4a0xhkUlz7WmgZ1ELuU0fj6Og40kBCHK5kho0ba4yIVOhPEHa4oyrywX+O15ZtBV7GP
-         5p72X2DU581cvhNVAKP0sCIec3Yc9xZksjeJ2awlsCUjHREcbwIpU27yx7X9imkP+zKA
-         9OaT05ycGn8HbOhl+d2wCB3SR3+zAcIrHB5672U65mXaKWAxPDMs79yIe7WsIAwBldLo
-         ZPReY1/qs8l3V0Y20PugGggtaLvQSP0rTWZ0CJ77Aqww2xphoKFomN9AqRQZTN/aNFZd
-         0yVw==
+        b=O6LA1tryN3rMzxbZJVIkna40wQyG+L5hUjJUHezrnMWLAuXFNIqY+GRQQ24scD85MB
+         ktutFeY/IWQXrXO35+jwjmeW5VuqBaxDGt3wAoga1Ox3jgZWD+Uwx9xxN7Pt5ndg36WM
+         gQ5kFCj0raDmgfmkRUdcpZeVe6G9YmDO3XHcVidHRrJGy2dMxXFIWZK4aei3hKEl12Al
+         ZTF4FV9hiEREsQOykG3qVoAsDyQNhvMT19KW6RWG9L0ObZHe99n3guilNEsS7rJQMPZW
+         b5MTNWDU/9DMrmqApvwZ2+iXlhwdAnYVktyXoWUqav15V2SqceItL8bhq/bSSdkrZeSx
+         gOgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=88Ly4QyXVHL94oviJBHy6knknJ2uS+0/mbSEQjME518=;
-        b=erDyE/UpUeZ1J8njJ8v+Fgj/xDUnaQVpZA+yY/hbnBvRsJw6k+ojChFwy4Zrruc6+f
-         cjExvMB1PU1yrdfJFZdbC1fudWt4e3KI+RJ+8yCO++9d7l3tpJ0jCh169JsfENPpl5s0
-         Ne6JZT9JlwIrZAqggjILY8aAzmlSs57y08iwvB36KxGwZQkswbDJOrEXhLOrwCSfWEJs
-         fDXL0LZS7eR1niSfUcQwqZpppS0Kj9QpslY0MaBYrF7/gQFDv6uhAiiWpm0MeJ/nhI6G
-         YjoNRjamAGxKiEq2wtHbGruTbb3u+AVt6CbaMb/fSPdsxR1JAJNp/MfCTxZrjwc5sIT+
-         w5mA==
+        bh=k55uPKKggWpSbIkqO6kQ56FRTRjSzzsIwTMrSgrTtAk=;
+        b=k0DxqozJPO44qwby8Ec4wFG5fvEjUnz887LZ+25700Ya77auAo7jVcmmJQz/hfBnDt
+         OtD52DRtZ2Y95gpyROYvIMMTtPWNoVmrnrFC51jKzn6oTcVDnBcGd4PK0RXBa13aBW0O
+         BHsF805eiK71YpSe/ck6gxiZhM9eEQRu6rvK0Jp5Q+HtHgtAER/v5OlvL6R0NK2y/fLS
+         76z+jsTDvKtnyGpE6wmoAuRo9JfFcH/1d+tJ03HeOHlBJ/edh8Khdcno//hj2BVU6yF4
+         FPvZMLM0zYCe7Ed+XyqzaBbnFSdB2mx/SJhGmXZeZg3tKR/t67DUS513oie/d+2a6P/k
+         83+w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3si430492qtr.290.2021.09.15.11.32.01
+        by mx.google.com with ESMTPS id w3si401562qkp.406.2021.09.15.11.32.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 11:32:01 -0700 (PDT)
+        Wed, 15 Sep 2021 11:32:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51756 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52510 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQZhR-0001uT-7U
-	for alex.bennee@linaro.org; Wed, 15 Sep 2021 14:32:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56812)
+	id 1mQZi1-0002Pi-4m
+	for alex.bennee@linaro.org; Wed, 15 Sep 2021 14:32:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mQZN8-0006cM-3r; Wed, 15 Sep 2021 14:11:02 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:50718 helo=zulu616.server4you.de)
+ id 1mQZNR-00073n-1i; Wed, 15 Sep 2021 14:11:21 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:50756 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1mQZN3-0003RS-DU; Wed, 15 Sep 2021 14:11:01 -0400
+ id 1mQZNP-0003TU-78; Wed, 15 Sep 2021 14:11:20 -0400
 Received: from localhost.localdomain
  (dynamic-095-117-089-091.95.117.pool.telefonica.de [95.117.89.91])
- by csgraf.de (Postfix) with ESMTPSA id CF2C5608068B;
- Wed, 15 Sep 2021 20:10:54 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id 84B2560801E7;
+ Wed, 15 Sep 2021 20:10:57 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v11 06/10] hvf: arm: Implement -cpu host
-Date: Wed, 15 Sep 2021 20:10:45 +0200
-Message-Id: <20210915181049.27597-7-agraf@csgraf.de>
+Subject: [PATCH v11 10/10] arm: tcg: Adhere to SMCCC 1.3 section 5.2
+Date: Wed, 15 Sep 2021 20:10:49 +0200
+Message-Id: <20210915181049.27597-11-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210915181049.27597-1-agraf@csgraf.de>
 References: <20210915181049.27597-1-agraf@csgraf.de>
@@ -89,270 +89,101 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B4b7tApkHNrd
+X-TUID: Xwf6R0YMqb7R
 
-Now that we have working system register sync, we push more target CPU
-properties into the virtual machine. That might be useful in some
-situations, but is not the typical case that users want.
+The SMCCC 1.3 spec section 5.2 says
 
-So let's add a -cpu host option that allows them to explicitly pass all
-CPU capabilities of their host CPU into the guest.
+  The Unknown SMC Function Identifier is a sign-extended value of (-1)
+  that is returned in the R0, W0 or X0 registers. An implementation must
+  return this error code when it receives:
+
+    * An SMC or HVC call with an unknown Function Identifier
+    * An SMC or HVC call for a removed Function Identifier
+    * An SMC64/HVC64 call from AArch32 state
+
+To comply with these statements, let's always return -1 when we encounter
+an unknown HVC or SMC call.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
-Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-Reviewed-by: Sergio Lopez <slp@redhat.com>
 
 ---
-
-v6 -> v7:
-
-  - Move function define to own header
-  - Do not propagate SVE features for HVF
-  - Remove stray whitespace change
-  - Verify that EL0 and EL1 do not allow AArch32 mode
-  - Only probe host CPU features once
 
 v8 -> v9:
 
-  - Zero-initialize host_isar
-  - Use M1 SCTLR reset value
+  - Remove Windows specifics and just comply with SMCCC spec
 
 v9 -> v10:
 
-  - Fail -cpu host class creation gracefully
-  - Adjust error message on -cpu host realize failure
-  - Extend SCTLR comment that hvf returns 0 as default value
-  - Return true/false
-  - Report errors lazily
+  - Fix comment
 ---
- target/arm/cpu.c     | 13 +++++--
- target/arm/cpu.h     |  2 +
- target/arm/hvf/hvf.c | 91 ++++++++++++++++++++++++++++++++++++++++++++
- target/arm/hvf_arm.h | 19 +++++++++
- target/arm/kvm_arm.h |  2 -
- 5 files changed, 121 insertions(+), 6 deletions(-)
- create mode 100644 target/arm/hvf_arm.h
+ target/arm/psci.c | 35 ++++++-----------------------------
+ 1 file changed, 6 insertions(+), 29 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ba0741b20e..016df2e1e7 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -39,6 +39,7 @@
- #include "sysemu/tcg.h"
- #include "sysemu/hw_accel.h"
- #include "kvm_arm.h"
-+#include "hvf_arm.h"
- #include "disas/capstone.h"
- #include "fpu/softfloat.h"
+diff --git a/target/arm/psci.c b/target/arm/psci.c
+index 6709e28013..b279c0b9a4 100644
+--- a/target/arm/psci.c
++++ b/target/arm/psci.c
+@@ -27,15 +27,13 @@
  
-@@ -1400,8 +1401,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-      * this is the first point where we can report it.
-      */
-     if (cpu->host_cpu_probe_failed) {
--        if (!kvm_enabled()) {
--            error_setg(errp, "The 'host' CPU type can only be used with KVM");
-+        if (!kvm_enabled() && !hvf_enabled()) {
-+            error_setg(errp, "The 'host' CPU type can only be used with KVM or HVF");
-         } else {
-             error_setg(errp, "Failed to retrieve host CPU features");
-         }
-@@ -2061,15 +2062,19 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- #endif /* CONFIG_TCG */
- }
- 
--#ifdef CONFIG_KVM
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
- static void arm_host_initfn(Object *obj)
+ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
  {
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-+#ifdef CONFIG_KVM
-     kvm_arm_set_cpu_features_from_host(cpu);
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-     }
-+#else
-+    hvf_arm_set_cpu_features_from_host(cpu);
-+#endif
-     arm_cpu_post_init(obj);
- }
- 
-@@ -2129,7 +2134,7 @@ static void arm_cpu_register_types(void)
- {
-     type_register_static(&arm_cpu_type_info);
- 
--#ifdef CONFIG_KVM
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-     type_register_static(&host_arm_cpu_type_info);
- #endif
- }
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 09d9027734..3ed03391a8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3015,6 +3015,8 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_ARM_CPU
- 
-+#define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
-+
- #define cpu_signal_handler cpu_arm_signal_handler
- #define cpu_list arm_cpu_list
- 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 49f265cc08..025280f4c9 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -17,6 +17,7 @@
- #include "sysemu/hvf.h"
- #include "sysemu/hvf_int.h"
- #include "sysemu/hw_accel.h"
-+#include "hvf_arm.h"
- 
- #include <mach/mach_time.h>
- 
-@@ -54,6 +55,16 @@ typedef struct HVFVTimer {
- 
- static HVFVTimer vtimer;
- 
-+typedef struct ARMHostCPUFeatures {
-+    ARMISARegisters isar;
-+    uint64_t features;
-+    uint64_t midr;
-+    uint32_t reset_sctlr;
-+    const char *dtb_compatible;
-+} ARMHostCPUFeatures;
-+
-+static ARMHostCPUFeatures arm_host_cpu_features;
-+
- struct hvf_reg_match {
-     int reg;
-     uint64_t offset;
-@@ -416,6 +427,86 @@ static uint64_t hvf_get_reg(CPUState *cpu, int rt)
-     return val;
- }
- 
-+static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-+{
-+    ARMISARegisters host_isar = {};
-+    const struct isar_regs {
-+        int reg;
-+        uint64_t *val;
-+    } regs[] = {
-+        { HV_SYS_REG_ID_AA64PFR0_EL1, &host_isar.id_aa64pfr0 },
-+        { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.id_aa64pfr1 },
-+        { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.id_aa64dfr0 },
-+        { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
-+        { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
-+        { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
-+        { HV_SYS_REG_ID_AA64MMFR0_EL1, &host_isar.id_aa64mmfr0 },
-+        { HV_SYS_REG_ID_AA64MMFR1_EL1, &host_isar.id_aa64mmfr1 },
-+        { HV_SYS_REG_ID_AA64MMFR2_EL1, &host_isar.id_aa64mmfr2 },
-+    };
-+    hv_vcpu_t fd;
-+    hv_return_t r = HV_SUCCESS;
-+    hv_vcpu_exit_t *exit;
-+    int i;
-+
-+    ahcf->dtb_compatible = "arm,arm-v8";
-+    ahcf->features = (1ULL << ARM_FEATURE_V8) |
-+                     (1ULL << ARM_FEATURE_NEON) |
-+                     (1ULL << ARM_FEATURE_AARCH64) |
-+                     (1ULL << ARM_FEATURE_PMU) |
-+                     (1ULL << ARM_FEATURE_GENERIC_TIMER);
-+
-+    /* We set up a small vcpu to extract host registers */
-+
-+    if (hv_vcpu_create(&fd, &exit, NULL) != HV_SUCCESS) {
-+        return false;
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(regs); i++) {
-+        r |= hv_vcpu_get_sys_reg(fd, regs[i].reg, regs[i].val);
-+    }
-+    r |= hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr);
-+    r |= hv_vcpu_destroy(fd);
-+
-+    ahcf->isar = host_isar;
-+
+-    /* Return true if the r0/x0 value indicates a PSCI call and
+-     * the exception type matches the configured PSCI conduit. This is
+-     * called before the SMC/HVC instruction is executed, to decide whether
+-     * we should treat it as a PSCI call or with the architecturally
 +    /*
-+     * A scratch vCPU returns SCTLR 0, so let's fill our default with the M1
-+     * boot SCTLR from https://github.com/AsahiLinux/m1n1/issues/97
-+     */
-+    ahcf->reset_sctlr = 0x30100180;
-+    /* OVMF chokes on boot if SPAN is not set, so default it to on */
-+    ahcf->reset_sctlr |= 0x00800000;
-+
-+    /* Make sure we don't advertise AArch32 support for EL0/EL1 */
-+    if ((host_isar.id_aa64pfr0 & 0xff) != 0x11) {
-+        return false;
-+    }
-+
-+    return r == HV_SUCCESS;
-+}
-+
-+void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
-+{
-+    if (!arm_host_cpu_features.dtb_compatible) {
-+        if (!hvf_enabled() ||
-+            !hvf_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-+            /*
-+             * We can't report this error yet, so flag that we need to
-+             * in arm_cpu_realizefn().
-+             */
-+            cpu->host_cpu_probe_failed = true;
-+            return;
-+        }
-+    }
-+
-+    cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
-+    cpu->isar = arm_host_cpu_features.isar;
-+    cpu->env.features = arm_host_cpu_features.features;
-+    cpu->midr = arm_host_cpu_features.midr;
-+    cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
-+}
-+
- void hvf_arch_vcpu_destroy(CPUState *cpu)
- {
- }
-diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
-new file mode 100644
-index 0000000000..603074a331
---- /dev/null
-+++ b/target/arm/hvf_arm.h
-@@ -0,0 +1,19 @@
-+/*
-+ * QEMU Hypervisor.framework (HVF) support -- ARM specifics
-+ *
-+ * Copyright (c) 2021 Alexander Graf
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#ifndef QEMU_HVF_ARM_H
-+#define QEMU_HVF_ARM_H
-+
-+#include "qemu/accel.h"
-+#include "cpu.h"
-+
-+void hvf_arm_set_cpu_features_from_host(struct ARMCPU *cpu);
-+
-+#endif
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 0613454975..b7f78b5215 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -214,8 +214,6 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-  */
- void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
++     * Return true if the exception type matches the configured PSCI conduit.
++     * This is called before the SMC/HVC instruction is executed, to decide
++     * whether we should treat it as a PSCI call or with the architecturally
+      * defined behaviour for an SMC or HVC (which might be UNDEF or trap
+      * to EL2 or to EL3).
+      */
+-    CPUARMState *env = &cpu->env;
+-    uint64_t param = is_a64(env) ? env->xregs[0] : env->regs[0];
  
--#define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
--
- /**
-  * ARMHostCPUFeatures: information about the host CPU (identified
-  * by asking the host kernel)
+     switch (excp_type) {
+     case EXCP_HVC:
+@@ -52,27 +50,7 @@ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+         return false;
+     }
+ 
+-    switch (param) {
+-    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
+-    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
+-    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
+-    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
+-    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
+-    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
+-    case QEMU_PSCI_0_1_FN_CPU_ON:
+-    case QEMU_PSCI_0_2_FN_CPU_ON:
+-    case QEMU_PSCI_0_2_FN64_CPU_ON:
+-    case QEMU_PSCI_0_1_FN_CPU_OFF:
+-    case QEMU_PSCI_0_2_FN_CPU_OFF:
+-    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
+-    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
+-    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
+-    case QEMU_PSCI_0_1_FN_MIGRATE:
+-    case QEMU_PSCI_0_2_FN_MIGRATE:
+-        return true;
+-    default:
+-        return false;
+-    }
++    return true;
+ }
+ 
+ void arm_handle_psci_call(ARMCPU *cpu)
+@@ -194,10 +172,9 @@ void arm_handle_psci_call(ARMCPU *cpu)
+         break;
+     case QEMU_PSCI_0_1_FN_MIGRATE:
+     case QEMU_PSCI_0_2_FN_MIGRATE:
++    default:
+         ret = QEMU_PSCI_RET_NOT_SUPPORTED;
+         break;
+-    default:
+-        g_assert_not_reached();
+     }
+ 
+ err:
 -- 
 2.30.1 (Apple Git-130)
 

@@ -1,184 +1,172 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1504743lfp;
-        Wed, 15 Sep 2021 02:46:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwpweyXgu7EEXQFo9QxxjFiXzFOx2Sc/Nx0EV3HgITlQwf19c96Q8D2FyJRwWm8qErrNyDa
-X-Received: by 2002:a5b:1d1:: with SMTP id f17mr5181130ybp.256.1631699191697;
-        Wed, 15 Sep 2021 02:46:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631699191; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1435148lfp;
+        Wed, 15 Sep 2021 00:56:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOMTK8ZVeaaRn8AW1BxGmQKLT5gIwUn+kTUz08kORfXeAy/nxvHbJpzHyLY7+/WanzXUvX
+X-Received: by 2002:a25:d9c8:: with SMTP id q191mr4716305ybg.61.1631692574249;
+        Wed, 15 Sep 2021 00:56:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631692574; cv=none;
         d=google.com; s=arc-20160816;
-        b=pPpDWmRAgqxyBaegAGCMtQBwGiBudyEEhh6l4KHwavN+gKK8vQszyytfn3putGN3vY
-         XPjX16QGkJPRAk1sw7o4kMWLmXNraFofbDM1vjRJkmLcTxCIGFtuNKWdy9j7n+MRBRyE
-         KuNs4Ka4sCZwONBPCU3GCInPwB9kyJPJO/LpqhN1DvrwlJx0BTzxW5ECfacfFOJmGyGs
-         Lsl+uB6Kud03kDpp+gWqk/FZ/RJEdOS0jbbDsAkvEhDkIunnwDvfewbiuKBdLQ/f51Q8
-         D23Axk+xu1cbs65K2Tauzqh4mXAc42gVTgczaplIKHsf2ZWZUGVT1wo8yEvsspve4ftY
-         0ZlA==
+        b=QGro4qo6PP7Pud8597VUQ+vMdFbnJ2LLqPt9ZDUTm3c0T4LaPOY2GcpW0Z04Ymy51D
+         VzJrJGzyYcLIvBdQUXHTeecfly5ZNfW0N+hua9mQoDE46adcAC1UZ0W3ANSaLENzgSkv
+         iOxVHQFO5N+Mvc3jacC3sSagH4+1wgy9bmK0JioEVHXPxYDI0KZPkyUGwTYxFP55Yl8L
+         EBv16eNK/opG0+ROr7x61PBvgAD9rqjMFWz1htygPHD/okQk++JRQ5etOVnlTdAtX+I+
+         EuGNG7542EQT2qGF6W9B46l0tODfQMRTshkueQPHyYL5DWJGEC+I69VYwOMvnPa0BmaV
+         zvLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:in-reply-to:subject:to:from:message-id:date;
-        bh=M1gJZkhIPr7aeholSWEGIyskQ3IWv9V6mBxgYTTkjCI=;
-        b=A+lrRC2EWgW2G68MMrnzejp9Jtoi95TxhvAtsJfI+QU25UNWErgzASfvgn3n+QyTWN
-         MpfkoMR5aYQtO9szd7tubjbsaxndLBJHIyXySOuRq9P5SDu9xtVFup+AwwkUE8p5xgCj
-         Z1uB6Y6R7+cFmX2eqWPYa0h/5xg+37UXTGLf/BMXVtehdRKB9Qova18BR3xYbSLG/aBs
-         KrXw/QhwRclx4uXOlhYNZl9zos1ULzrAlcUJ/maWmGg5K53BZKrPApWA5GHO0aANocDU
-         4k3i5rZJVI7HUTZJ3Su4okbOMJYanbs50BBsD/KOl8eXTP10LHg9Q5it7a4s6Ao16wD3
-         UbTg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=E3gAr87EDemAc8yEwCl6/Y8xliZAWl1VYELf/UlFmJo=;
+        b=RyD0Md3/dMpWd5A3KEP3NggpGo+VULXALKFAkZSeB2K+6YAzYYK17ExQvip7rTzYZs
+         CaIPLhi1hicsFAgwNhhbO2EjV7rxm3xX/hjW3a3XeCnSFoeH3dbJAGIddHPgOmIfweBn
+         iRFD19r8RxS5zdo6sGOryQ6ksQg83LKHpXQxlvj4RopxmdAteBYYDaXm3i1sTpLCLrDN
+         n5kihxxn0isbrHbYO8DQ0sKoHRa4nWRStBt6445qk0wSyhy633JsSnFt8ILjZJ+pbktB
+         Cqn3zBnMS5WHp/wz1Qn6jsZpzGe7h130YiAe+K1jnRVQDWosEPK0GruixJUntfGq8/g3
+         mYDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="pTuB/N6Y";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j77si14609867ybj.98.2021.09.15.02.46.31
+        by mx.google.com with ESMTPS id w4si15228374ybp.289.2021.09.15.00.56.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 02:46:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Sep 2021 00:56:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:47380 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="pTuB/N6Y";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQRUt-0001FY-3R
-	for alex.bennee@linaro.org; Wed, 15 Sep 2021 05:46:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58966)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQPm9-00009D-K9
+	for alex.bennee@linaro.org; Wed, 15 Sep 2021 03:56:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1mQRUb-0001EO-Gj; Wed, 15 Sep 2021 05:46:13 -0400
-Received: from mail.kernel.org ([198.145.29.99]:50614)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1mQRUZ-0006yv-4I; Wed, 15 Sep 2021 05:46:12 -0400
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0DB926124E;
- Wed, 15 Sep 2021 09:46:08 +0000 (UTC)
-Received: from [198.52.44.129] (helo=wait-a-minute.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1mQRUU-00AuWh-6x; Wed, 15 Sep 2021 10:46:06 +0100
-Date: Wed, 15 Sep 2021 10:46:02 +0100
-Message-ID: <87wnnib291.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v9 07/11] hvf: arm: Implement PSCI handling
-In-Reply-To: <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
-References: <20210912230757.41096-1-agraf@csgraf.de>
- <20210912230757.41096-8-agraf@csgraf.de>
- <CAFEAcA8BybrfxNxkWbEjxji4DvDumr6Otb_RK_f84Dt_TWXfpA@mail.gmail.com>
- <ad707e0d-8d4a-0248-80f4-a02a7226ce0a@csgraf.de>
- <CAFEAcA_OBK1hbqC1Nc7J+VEwkO54WvqBrNa=bR5T3tZW+nfEkQ@mail.gmail.com>
- <3132e2f5-41a6-6011-808b-7ea12abec1c0@csgraf.de>
- <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 198.52.44.129
-X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, agraf@csgraf.de,
- ehabkost@redhat.com, slp@redhat.com, philmd@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, dirty@apple.com,
- r.bolshakov@yadro.com, qemu-arm@nongnu.org, lfy@google.com,
- pbonzini@redhat.com, pcc@google.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Received-SPF: pass client-ip=198.145.29.99; envelope-from=maz@kernel.org;
- helo=mail.kernel.org
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1mQPkb-0006ux-Sr; Wed, 15 Sep 2021 03:54:37 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629]:41668)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1mQPka-0004SU-Hc; Wed, 15 Sep 2021 03:54:37 -0400
+Received: by mail-pl1-x629.google.com with SMTP id v2so1113709plp.8;
+ Wed, 15 Sep 2021 00:54:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=E3gAr87EDemAc8yEwCl6/Y8xliZAWl1VYELf/UlFmJo=;
+ b=pTuB/N6YJm9LCrs8qN/14kPcAcSRNzMSqJDO7/oM5rP8imKClM5xjzOs1WabCSw4zd
+ hHfF6Ym29I4GSIub1ow1fotXJqYK7W1dLcMAu4l12vAry/0Re8bVqXK6Lhj2Nh90rAHO
+ JIXROfZIwYweBk7r7scwCBCRGQsG4yYlx9a97nEAJ0w+cxCnJu7Phet/JRNtMUJ0aAOc
+ kihyf6mSvsT/Y1IMbIXIDRhFiKwE8cibqB8/15QMA1+ieanh5h2H85nlFe8LdnIY6Bfd
+ pyq0I4MMOTQHkwqAQSpukDrRicA3Uyf5ywkUKMxJaSwB2V39u7+/L4sOY950kOviZDSg
+ jfdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=E3gAr87EDemAc8yEwCl6/Y8xliZAWl1VYELf/UlFmJo=;
+ b=B+c9HLROwYHcrcImHWpoOxN703QqVeyp7T4qKNsVONSk661XDX4KvDd2VmvMLzUeM+
+ Rk0Ewj+VTMol0saYYdhwjGzdq9VQX46oSvg5kCO0vgXtTWFaauylvs3nv2Afh0YB/tyF
+ rXqchOesJWYueOwZph+CFF0nkMgmOIHdh3X5tGLnTU/P1UJ6CyFrcD+WmS+9RW3s+AYT
+ e420tOwU+nts2ozrbEk789Syk9ChY5T5Fc6l84sI7E1ChcPzjBq1fUsYBAJO0rNbqjzT
+ ZlJMhlSpL0RUE8SvGLhW2QZZ0bEuAzAaSu41q8AtrzSI7kY+wuucdHU0j93UfpHKNLYW
+ I70w==
+X-Gm-Message-State: AOAM532uskebz2f3LUT7ODquCajdEPpDzBa4LwMf5127YCg7kIq/2Zq4
+ +H63Wp1bhCxPPFZpFL/GWWdqjikgBZKYYTDD49w=
+X-Received: by 2002:a17:90a:2ecb:: with SMTP id
+ h11mr7086196pjs.196.1631692472568; 
+ Wed, 15 Sep 2021 00:54:32 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210914142042.1655100-1-berrange@redhat.com>
+ <20210914142042.1655100-28-berrange@redhat.com>
+ <1cb38e8f-cc05-461a-c722-efb18519f6fe@amsat.org>
+In-Reply-To: <1cb38e8f-cc05-461a-c722-efb18519f6fe@amsat.org>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Wed, 15 Sep 2021 00:54:21 -0700
+Message-ID: <CAMo8BfL6V6HsYg1RGE8yNWLcOiHjkBxDzk4XSE6_AGpqkcx7rg@mail.gmail.com>
+Subject: Re: [PATCH v2 27/53] target/xtensa: convert to use format_state
+ instead of dump_state
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=jcmvbkbc@gmail.com; helo=mail-pl1-x629.google.com
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.689, HK_RANDOM_FROM=0.999,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Peter Collingbourne <pcc@google.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ qemu-devel <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+ Taylor Simpson <tsimpson@quicinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x <qemu-s390x@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>,
+ qemu-riscv@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gMoLbQlQCyLf
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sRhsOoQMrkGM
 
-On Mon, 13 Sep 2021 13:30:57 +0100,
-Peter Maydell <peter.maydell@linaro.org> wrote:
-> 
-> On Mon, 13 Sept 2021 at 13:02, Alexander Graf <agraf@csgraf.de> wrote:
-> >
-> >
-> > On 13.09.21 13:44, Peter Maydell wrote:
-> > > On Mon, 13 Sept 2021 at 12:07, Alexander Graf <agraf@csgraf.de> wrote:
-> > >> To keep your train of thought though, what would you do if we encounter
-> > >> a conduit that is different from the chosen one? Today, I am aware of 2
-> > >> different implementations: TCG injects #UD [1] while KVM sets x0 to -1 [2].
-> > > If the SMC or HVC insn isn't being used for PSCI then it should
-> > > have its standard architectural behaviour.
-> >
-> > Why?
-> 
-> QEMU's assumption here is that there are basically two scenarios
-> for these instructions:
->  (1) we're providing an emulation of firmware that uses this
->      instruction (and only this insn, not the other one) to
->      provide PSCI services
->  (2) we're not emulating any firmware at all, we're running it
->      in the guest, and that guest firmware is providing PSCI
-> 
-> In case (1) we provide a PSCI ABI on the end of the insn.
-> In case (2) we provide the architectural behaviour for the insn
-> so that the guest firmware can use it.
-> 
-> We don't currently have
->  (3) we're providing an emulation of firmware that does something
->      other than providing PSCI services on this instruction
-> 
-> which is what I think you're asking for. (Alternatively, you might
-> be after "provide PSCI via SMC, not HVC", ie use a different conduit.
-> If hvf documents that SMC is guaranteed to trap that would be
-> possible, I guess.)
-> 
-> > Also, why does KVM behave differently?
-> 
-> Looks like Marc made KVM set x0 to -1 for SMC calls in kernel commit
-> c0938c72f8070aa; conveniently he's on the cc list here so we can
-> ask him :-)
+On Wed, Sep 15, 2021 at 12:32 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> On 9/14/21 4:20 PM, Daniel P. Berrang=C3=A9 wrote:
+> >      if ((flags & CPU_DUMP_FPU) &&
+> >          xtensa_option_enabled(env->config, XTENSA_OPTION_FP_COPROCESSO=
+R)) {
+> > -        qemu_fprintf(f, "\n");
+> > +        g_string_append_printf(buf, "\n");
+>
+> g_string_append_c(); simpler to move it before this if() statement.
 
-If we got a SMC trap into KVM, that's because the HW knows about it,
-so injecting an UNDEF is rather counter productive (we don't hide the
-fact that EL3 actually exists).
+It adds spacing between optional blocks, why does it need to be moved out?
 
-However, we don't implement anything on the back of this instruction,
-so we just return NOT_IMPLEMENTED (-1). With NV, we actually use it as
-a guest hypervisor can use it for PSCI and SMC is guaranteed to trap
-even if EL3 doesn't exist in the HW.
+> >      if ((flags & CPU_DUMP_FPU) &&
+> >          xtensa_option_enabled(env->config, XTENSA_OPTION_DFP_COPROCESS=
+OR) &&
+> >          !xtensa_option_enabled(env->config, XTENSA_OPTION_DFPU_SINGLE_=
+ONLY)) {
+> > -        qemu_fprintf(f, "\n");
+> > +        g_string_append_printf(buf, "\n");
+>
+> Ditto (move out).
 
-For the brain-damaged case where there is no EL3, SMC traps and the
-hypervisor doesn't actually advertises EL3, that's likely a guest
-bug. Tough luck.
+Here as well.
 
-Side note: Not sure where HVF does, but on the M1 running Linux, SMC
-appears to trap to EL2 with EC=0x3f, which is a reserved exception
-class. This of course results in an UNDEF being injected because as
-far as KVM is concerned, this should never happen.
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+--=20
+Thanks.
+-- Max

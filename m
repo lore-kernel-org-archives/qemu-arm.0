@@ -1,100 +1,72 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp230266lfp;
-        Wed, 15 Sep 2021 08:07:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxcbqGWF4iTyJr89HXa1SxonMJvO95vIv3vmO2U5OZbAVR63PsTWTOY6THhkIvNVCMWpIj
-X-Received: by 2002:ad4:554e:: with SMTP id v14mr378908qvy.26.1631718452740;
-        Wed, 15 Sep 2021 08:07:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631718452; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp395048lfp;
+        Wed, 15 Sep 2021 11:18:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJVwHzQvMwOcLN40w9etbV2ZzGxI4S+qH/paxS/AOFjWN4M3m7dYc7i7qIA1oG/+qXS7eB
+X-Received: by 2002:a05:6102:3a0c:: with SMTP id b12mr1246062vsu.4.1631729890796;
+        Wed, 15 Sep 2021 11:18:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631729890; cv=none;
         d=google.com; s=arc-20160816;
-        b=xlp6Sq7adas1pvyFF8EMemNQRf4ATr9jgRhGSjhLXBYb3SQAaQ8sY2V4QyCw09pVZu
-         ea8HZm4GpAJGrTgq+H0RGVswG9PDfqCri30VQluPykLHeZeDdA+bQA5voPsZPVPsnsH5
-         FQJGb7ZNnQF+9MY8qpRANQRXDTbEoXRM2+W3LiSvb9MydY/xn6upH5RX58cqqLc5pnet
-         EEDk6Psj6r7ulKkvowDVVtC97IV6tTCmpwWnfLUcvyzdev6mDZgCgLy8cVOfE0zVKr6s
-         D7K80feTpcc+5PiK43HMr4m6t9vau/Ce3ETbjqxwyruL8kVBBy7AmiY4X626/HlcZ26j
-         wB6g==
+        b=DnJpUOPcwjnzV+BmxWUf3BRaSS+Z6IrprrMdOlQgsJaFu3CuGXnRuFBAzgquPbNyN2
+         x7wrFAym+bU+ngyNXHLBm4pFVucDXsllx+gnQRw6csUnrUquPzpfBEdPFINj0mLjefaK
+         n9ZG56OUXaRS7dcMIW0aNNKU4o5Ge/JI1jOdpPbQN2lXLt0CWjFeiMEi9Oitjstnid9Z
+         BjxNqJK+e8JxJAlIKJexjQdiCvmOdCV+uTSPr02UtF2IOIfwxOWtuownq0tpKzpghLSf
+         24hj0kb63Bs9PtuhKWnoeSl1233QabfGZNQu1MzF2zWTFyQEhVFnKzGok9DdOmjqIQuq
+         68Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:in-reply-to:subject:to:from:message-id:date;
-        bh=Y1CVN6IClJkPA+tK4hroOKRzedoq0TZKtpJzsEb7s4Y=;
-        b=0pfEpSUGWw1VL0MNIhKw9jhJrv3gLVnvIrRQLrQLVTJK3T/932qYJPzw1HyrikoX3s
-         UfS4yTPQJ+PoBiJTRKcdTuAivR/p07HCA8qprgEPU2JZnF/jlqN5d8Z7Xi/vTLBGW6B0
-         Klcmz1WPsEyf+3cb9vdtFUsLUIuIAtyooiRZZd76dplrqc5elNg73vcfziSxdJyJga8f
-         IdDPfjdvLhYhnxxHgmAOocDa4alh39vMlptkN3fHPqmeM5++cBCjkSBm1wrGJ1k8TKm0
-         PYbTJ8hyPYRyOfBRvzX7lgLDS2XUdkVHsdqqFOIR2tFxh2kXVChuTR9LO7vVRy5+XL1C
-         cTyg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=+t1CGjgp3QfVsz3N2zyix9fewEwtrnT7VsaZyCx1kBY=;
+        b=cxPWtUVvbIfZpxyBMibhRmIjhAa+Z53tSFghM6QPf/1qHMinJhtcWJ3Who8iiDLA6Z
+         xQSztexvVkzFFk97kopQNu8LscUHkoy0+GRHEdftCp0zw5yqMxVS725jxodljkkTyKWV
+         qphIVulQu6qfdi+FC9a4/ieFa6WcGOanTDIBfBCrTWgisN7+kyScJY3QCxmPGpAdxDZA
+         d0AYJVlgbQZhMQWU6ZwfErRiq1q+duyOqqHix8QNOzVECaLIMpztrl+dqY2WpXhcun/K
+         fBCdRA2W5hbhgFl1X6hep3Oo60ENpkcQFVqezR6f2DMQcVYZlMJ8gsqGxpubLRrzkDGu
+         pPag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9si122548qvs.61.2021.09.15.08.07.32
+        by mx.google.com with ESMTPS id f8si109847uax.130.2021.09.15.11.18.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 08:07:32 -0700 (PDT)
+        Wed, 15 Sep 2021 11:18:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:34840 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49832 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQWVY-0003nc-4t
-	for alex.bennee@linaro.org; Wed, 15 Sep 2021 11:07:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36838)
+	id 1mQZU2-0006lf-3C
+	for alex.bennee@linaro.org; Wed, 15 Sep 2021 14:18:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1mQWVK-0003ih-DT; Wed, 15 Sep 2021 11:07:18 -0400
-Received: from mail.kernel.org ([198.145.29.99]:40834)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1mQWVG-000862-K1; Wed, 15 Sep 2021 11:07:17 -0400
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E8E0561029;
- Wed, 15 Sep 2021 15:07:11 +0000 (UTC)
-Received: from [198.52.44.129] (helo=wait-a-minute.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1mQWVB-00AxRm-Sx; Wed, 15 Sep 2021 16:07:10 +0100
-Date: Wed, 15 Sep 2021 16:07:07 +0100
-Message-ID: <87v931c1yc.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Alexander Graf <agraf@csgraf.de>
-Subject: Re: [PATCH v9 07/11] hvf: arm: Implement PSCI handling
-In-Reply-To: <4ce23412-7484-f77a-6378-4369b0b2397c@csgraf.de>
-References: <20210912230757.41096-1-agraf@csgraf.de>
- <20210912230757.41096-8-agraf@csgraf.de>
- <CAFEAcA8BybrfxNxkWbEjxji4DvDumr6Otb_RK_f84Dt_TWXfpA@mail.gmail.com>
- <ad707e0d-8d4a-0248-80f4-a02a7226ce0a@csgraf.de>
- <CAFEAcA_OBK1hbqC1Nc7J+VEwkO54WvqBrNa=bR5T3tZW+nfEkQ@mail.gmail.com>
- <3132e2f5-41a6-6011-808b-7ea12abec1c0@csgraf.de>
- <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
- <87wnnib291.wl-maz@kernel.org>
- <4ce23412-7484-f77a-6378-4369b0b2397c@csgraf.de>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 198.52.44.129
-X-SA-Exim-Rcpt-To: agraf@csgraf.de, peter.maydell@linaro.org,
- ehabkost@redhat.com, slp@redhat.com, philmd@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, dirty@apple.com,
- r.bolshakov@yadro.com, qemu-arm@nongnu.org, lfy@google.com,
- pbonzini@redhat.com, pcc@google.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Received-SPF: pass client-ip=198.145.29.99; envelope-from=maz@kernel.org;
- helo=mail.kernel.org
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1mQZN2-0006P8-N7; Wed, 15 Sep 2021 14:10:56 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:50672 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1mQZN1-0003OJ-4q; Wed, 15 Sep 2021 14:10:56 -0400
+Received: from localhost.localdomain
+ (dynamic-095-117-089-091.95.117.pool.telefonica.de [95.117.89.91])
+ by csgraf.de (Postfix) with ESMTPSA id 59DD160805FF;
+ Wed, 15 Sep 2021 20:10:52 +0200 (CEST)
+From: Alexander Graf <agraf@csgraf.de>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Subject: [PATCH v11 02/10] hvf: Add execute to dirty log permission bitmap
+Date: Wed, 15 Sep 2021 20:10:41 +0200
+Message-Id: <20210915181049.27597-3-agraf@csgraf.de>
+X-Mailer: git-send-email 2.30.1 (Apple Git-130)
+In-Reply-To: <20210915181049.27597-1-agraf@csgraf.de>
+References: <20210915181049.27597-1-agraf@csgraf.de>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,105 +83,44 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  Peter Collingbourne <pcc@google.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bWkGCRyWnu1h
+X-TUID: qolh5nZuKi4J
 
-On Wed, 15 Sep 2021 11:58:29 +0100,
-Alexander Graf <agraf@csgraf.de> wrote:
-> 
-> 
-> On 15.09.21 11:46, Marc Zyngier wrote:
-> > On Mon, 13 Sep 2021 13:30:57 +0100,
-> > Peter Maydell <peter.maydell@linaro.org> wrote:
-> >> On Mon, 13 Sept 2021 at 13:02, Alexander Graf <agraf@csgraf.de> wrote:
-> >>>
-> >>> On 13.09.21 13:44, Peter Maydell wrote:
-> >>>> On Mon, 13 Sept 2021 at 12:07, Alexander Graf <agraf@csgraf.de> wrote:
-> >>>>> To keep your train of thought though, what would you do if we encounter
-> >>>>> a conduit that is different from the chosen one? Today, I am aware of 2
-> >>>>> different implementations: TCG injects #UD [1] while KVM sets x0 to -1 [2].
-> >>>> If the SMC or HVC insn isn't being used for PSCI then it should
-> >>>> have its standard architectural behaviour.
-> >>> Why?
-> >> QEMU's assumption here is that there are basically two scenarios
-> >> for these instructions:
-> >>  (1) we're providing an emulation of firmware that uses this
-> >>      instruction (and only this insn, not the other one) to
-> >>      provide PSCI services
-> >>  (2) we're not emulating any firmware at all, we're running it
-> >>      in the guest, and that guest firmware is providing PSCI
-> >>
-> >> In case (1) we provide a PSCI ABI on the end of the insn.
-> >> In case (2) we provide the architectural behaviour for the insn
-> >> so that the guest firmware can use it.
-> >>
-> >> We don't currently have
-> >>  (3) we're providing an emulation of firmware that does something
-> >>      other than providing PSCI services on this instruction
-> >>
-> >> which is what I think you're asking for. (Alternatively, you might
-> >> be after "provide PSCI via SMC, not HVC", ie use a different conduit.
-> >> If hvf documents that SMC is guaranteed to trap that would be
-> >> possible, I guess.)
-> >>
-> >>> Also, why does KVM behave differently?
-> >> Looks like Marc made KVM set x0 to -1 for SMC calls in kernel commit
-> >> c0938c72f8070aa; conveniently he's on the cc list here so we can
-> >> ask him :-)
-> > If we got a SMC trap into KVM, that's because the HW knows about it,
-> > so injecting an UNDEF is rather counter productive (we don't hide the
-> > fact that EL3 actually exists).
-> 
-> 
-> This is the part where you and Peter disagree :). What would you suggest
-> to do to create consistency between KVM and TCG based EL0/1 only VMs?
+Hvf's permission bitmap during and after dirty logging does not include
+the HV_MEMORY_EXEC permission. At least on Apple Silicon, this leads to
+instruction faults once dirty logging was enabled.
 
-I don't think we disagree. We simply have different implementation
-choices. The KVM "firmware" can only be used with HVC, and not
-SMC. SMC is reserved for cases where the guest talks to the actual
-EL3, or an emulation of it in the case of NV.
+Add the bit to make it work properly.
 
-As for consistency between TGC and KVM, I have no plan for that
-whatsoever. Both implementations are valid, and they don't have to be
-identical. Even more, diversity is important, as it weeds out silly
-assumptions that are baked in non-portable SW.
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ accel/hvf/hvf-accel-ops.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Windows doesn't boot? I won't loose any sleep over it.
-
-> 
-> > However, we don't implement anything on the back of this instruction,
-> > so we just return NOT_IMPLEMENTED (-1). With NV, we actually use it as
-> > a guest hypervisor can use it for PSCI and SMC is guaranteed to trap
-> > even if EL3 doesn't exist in the HW.
-> >
-> > For the brain-damaged case where there is no EL3, SMC traps and the
-> > hypervisor doesn't actually advertises EL3, that's likely a guest
-> > bug. Tough luck.
-> >
-> > Side note: Not sure where HVF does, but on the M1 running Linux, SMC
-> > appears to trap to EL2 with EC=0x3f, which is a reserved exception
-> > class. This of course results in an UNDEF being injected because as
-> > far as KVM is concerned, this should never happen.
->
-> Could that be yet another magical implementation specific MSR bit that
-> needs to be set? Hvf returns 0x17 (EC_AA64_SMC) for SMC calls.
-
-That's possible, but that's not something KVM will do. Also, from what
-I understand of HVF, this value is what you get in userspace, and it
-says nothing of what the kernel side does. It could well be
-translating the invalid EC into something else, after having read the
-instruction from the guest for all I know.
-
-It is pretty obvious that this HW is not a valid implementation of the
-architecture and if it decides to screw itself up, I'm happy to
-oblige.
-
-	M.
-
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index d1691be989..71cc2fa70f 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -239,12 +239,12 @@ static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
+     if (on) {
+         slot->flags |= HVF_SLOT_LOG;
+         hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
+-                      HV_MEMORY_READ);
++                      HV_MEMORY_READ | HV_MEMORY_EXEC);
+     /* stop tracking region*/
+     } else {
+         slot->flags &= ~HVF_SLOT_LOG;
+         hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
+-                      HV_MEMORY_READ | HV_MEMORY_WRITE);
++                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
+     }
+ }
+ 
 -- 
-Without deviation from the norm, progress is not possible.
+2.30.1 (Apple Git-130)
+

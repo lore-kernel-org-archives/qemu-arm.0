@@ -1,60 +1,60 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp405200lfp;
-        Wed, 15 Sep 2021 11:32:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz/jy/TeXRs8tCNQJZRDqYNdlhx8J4QGqHs+od7NLqUYTrz30ObRsyQmeDzr7ohoIrWh8ak
-X-Received: by 2002:a05:622a:11ca:: with SMTP id n10mr1306189qtk.362.1631730757683;
-        Wed, 15 Sep 2021 11:32:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631730757; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp410238lfp;
+        Wed, 15 Sep 2021 11:39:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzydipbQcBA3ctEZw7dIwVHfhXIZXaiNn/A9tGYWW5RwBHFPCWEGDszgDkcpx+F+3S6aT6N
+X-Received: by 2002:a37:64cc:: with SMTP id y195mr1392909qkb.291.1631731152781;
+        Wed, 15 Sep 2021 11:39:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631731152; cv=none;
         d=google.com; s=arc-20160816;
-        b=O6LA1tryN3rMzxbZJVIkna40wQyG+L5hUjJUHezrnMWLAuXFNIqY+GRQQ24scD85MB
-         ktutFeY/IWQXrXO35+jwjmeW5VuqBaxDGt3wAoga1Ox3jgZWD+Uwx9xxN7Pt5ndg36WM
-         gQ5kFCj0raDmgfmkRUdcpZeVe6G9YmDO3XHcVidHRrJGy2dMxXFIWZK4aei3hKEl12Al
-         ZTF4FV9hiEREsQOykG3qVoAsDyQNhvMT19KW6RWG9L0ObZHe99n3guilNEsS7rJQMPZW
-         b5MTNWDU/9DMrmqApvwZ2+iXlhwdAnYVktyXoWUqav15V2SqceItL8bhq/bSSdkrZeSx
-         gOgw==
+        b=Z+jqUaOkBVXpVgDOzt2mBmMOqM0b5okUd7ToE9C6XK8AxuwMYDoouVaalx7bH8Y+Wm
+         hb6SFyoOBHSk37qoo3W/+XR39Lnju88fsLzAqwg8gqsaVL0b5xX6ydW1WgaIxxERhPWN
+         F4Kq3i6NtxJPyHAjsX/MCebrWVoW/5MikUFdI0en/TlS4K+e++oRYAvVKnTa9JkLAzSC
+         fqQ/LTXmwOxmV7ia2SAjBZBt/1Unqk4Ca36wJ52Eicui0RKIeU8TuHxyHoJTtxJxVemE
+         wvMAUcdNSZ0uWAFc+KAMXdthU0ANmyPmZW2eMyJsc9o9VeNUksROSw+wNAiudjwnIC1F
+         6Neg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=k55uPKKggWpSbIkqO6kQ56FRTRjSzzsIwTMrSgrTtAk=;
-        b=k0DxqozJPO44qwby8Ec4wFG5fvEjUnz887LZ+25700Ya77auAo7jVcmmJQz/hfBnDt
-         OtD52DRtZ2Y95gpyROYvIMMTtPWNoVmrnrFC51jKzn6oTcVDnBcGd4PK0RXBa13aBW0O
-         BHsF805eiK71YpSe/ck6gxiZhM9eEQRu6rvK0Jp5Q+HtHgtAER/v5OlvL6R0NK2y/fLS
-         76z+jsTDvKtnyGpE6wmoAuRo9JfFcH/1d+tJ03HeOHlBJ/edh8Khdcno//hj2BVU6yF4
-         FPvZMLM0zYCe7Ed+XyqzaBbnFSdB2mx/SJhGmXZeZg3tKR/t67DUS513oie/d+2a6P/k
-         83+w==
+        bh=OFtXai4ibIJHFZHwrdyCZl/5/0QcxqxUB2wDk3xTEG8=;
+        b=TbV/R5yD2q7Hn4c1W/hBeQCv43U9khqSnXoTSgRoGtL4Lw+uBD1A4sMCoVXczvGMDw
+         9EKIMXR76mGAdOxq2Ajodef32uDo+kXsWkiosg9NHvkGh6aR0qVItfuhPkzSsLYk0t9w
+         tWJVO/QeL4QuBxPCQrG/qUZlbIuw4zkULxKsaaEy71i69Xd6Gq2jTkfBLLh9J6vnna5R
+         hiJ/mY23XVNSt6Ap7slWUPcVZr2cbD0XXmAZ7zVq+3mNjEDRlT1myqfpokFsJ6sxxLUC
+         Rstcn8ioNT8W4TDFtmqPbzImO/xTio1XWHSv3+oUJgY9d8xL9lzlPezgHs3yZ24ukv/Z
+         5s4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w3si401562qkp.406.2021.09.15.11.32.37
+        by mx.google.com with ESMTPS id l3si378126qkd.85.2021.09.15.11.39.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 11:32:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Sep 2021 11:39:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52510 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37824 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQZi1-0002Pi-4m
-	for alex.bennee@linaro.org; Wed, 15 Sep 2021 14:32:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56862)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQZoO-00032i-4P
+	for alex.bennee@linaro.org; Wed, 15 Sep 2021 14:39:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mQZNR-00073n-1i; Wed, 15 Sep 2021 14:11:21 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:50756 helo=zulu616.server4you.de)
+ id 1mQZNA-0006eN-7K; Wed, 15 Sep 2021 14:11:05 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:50744 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1mQZNP-0003TU-78; Wed, 15 Sep 2021 14:11:20 -0400
+ id 1mQZN4-0003Sl-LY; Wed, 15 Sep 2021 14:11:02 -0400
 Received: from localhost.localdomain
  (dynamic-095-117-089-091.95.117.pool.telefonica.de [95.117.89.91])
- by csgraf.de (Postfix) with ESMTPSA id 84B2560801E7;
- Wed, 15 Sep 2021 20:10:57 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id B32FA60806EA;
+ Wed, 15 Sep 2021 20:10:56 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v11 10/10] arm: tcg: Adhere to SMCCC 1.3 section 5.2
-Date: Wed, 15 Sep 2021 20:10:49 +0200
-Message-Id: <20210915181049.27597-11-agraf@csgraf.de>
+Subject: [PATCH v11 09/10] hvf: arm: Add rudimentary PMC support
+Date: Wed, 15 Sep 2021 20:10:48 +0200
+Message-Id: <20210915181049.27597-10-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210915181049.27597-1-agraf@csgraf.de>
 References: <20210915181049.27597-1-agraf@csgraf.de>
@@ -68,17 +68,17 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  Peter Collingbourne <pcc@google.com>,
@@ -87,103 +87,232 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xwf6R0YMqb7R
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4Ph83FRQONz4
 
-The SMCCC 1.3 spec section 5.2 says
+We can expose cycle counters on the PMU easily. To be as compatible as
+possible, let's do so, but make sure we don't expose any other architectural
+counters that we can not model yet.
 
-  The Unknown SMC Function Identifier is a sign-extended value of (-1)
-  that is returned in the R0, W0 or X0 registers. An implementation must
-  return this error code when it receives:
-
-    * An SMC or HVC call with an unknown Function Identifier
-    * An SMC or HVC call for a removed Function Identifier
-    * An SMC64/HVC64 call from AArch32 state
-
-To comply with these statements, let's always return -1 when we encounter
-an unknown HVC or SMC call.
+This allows OSs to work that require PMU support.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
-
 ---
+ target/arm/hvf/hvf.c | 179 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 179 insertions(+)
 
-v8 -> v9:
-
-  - Remove Windows specifics and just comply with SMCCC spec
-
-v9 -> v10:
-
-  - Fix comment
----
- target/arm/psci.c | 35 ++++++-----------------------------
- 1 file changed, 6 insertions(+), 29 deletions(-)
-
-diff --git a/target/arm/psci.c b/target/arm/psci.c
-index 6709e28013..b279c0b9a4 100644
---- a/target/arm/psci.c
-+++ b/target/arm/psci.c
-@@ -27,15 +27,13 @@
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 829ff3ff3b..0a4b03c11b 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -42,6 +42,18 @@
+ #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
++#define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
++#define SYSREG_PMUSERENR_EL0  SYSREG(3, 3, 9, 14, 0)
++#define SYSREG_PMCNTENSET_EL0 SYSREG(3, 3, 9, 12, 1)
++#define SYSREG_PMCNTENCLR_EL0 SYSREG(3, 3, 9, 12, 2)
++#define SYSREG_PMINTENCLR_EL1 SYSREG(3, 0, 9, 14, 2)
++#define SYSREG_PMOVSCLR_EL0   SYSREG(3, 3, 9, 12, 3)
++#define SYSREG_PMSWINC_EL0    SYSREG(3, 3, 9, 12, 4)
++#define SYSREG_PMSELR_EL0     SYSREG(3, 3, 9, 12, 5)
++#define SYSREG_PMCEID0_EL0    SYSREG(3, 3, 9, 12, 6)
++#define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
++#define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
++#define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
  
- bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
- {
--    /* Return true if the r0/x0 value indicates a PSCI call and
--     * the exception type matches the configured PSCI conduit. This is
--     * called before the SMC/HVC instruction is executed, to decide whether
--     * we should treat it as a PSCI call or with the architecturally
-+    /*
-+     * Return true if the exception type matches the configured PSCI conduit.
-+     * This is called before the SMC/HVC instruction is executed, to decide
-+     * whether we should treat it as a PSCI call or with the architecturally
-      * defined behaviour for an SMC or HVC (which might be UNDEF or trap
-      * to EL2 or to EL3).
-      */
--    CPUARMState *env = &cpu->env;
--    uint64_t param = is_a64(env) ? env->xregs[0] : env->regs[0];
+ #define WFX_IS_WFE (1 << 0)
  
-     switch (excp_type) {
-     case EXCP_HVC:
-@@ -52,27 +50,7 @@ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
-         return false;
-     }
- 
--    switch (param) {
--    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
--    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
--    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
--    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
--    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
--    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
--    case QEMU_PSCI_0_1_FN_CPU_ON:
--    case QEMU_PSCI_0_2_FN_CPU_ON:
--    case QEMU_PSCI_0_2_FN64_CPU_ON:
--    case QEMU_PSCI_0_1_FN_CPU_OFF:
--    case QEMU_PSCI_0_2_FN_CPU_OFF:
--    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
--    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
--    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
--    case QEMU_PSCI_0_1_FN_MIGRATE:
--    case QEMU_PSCI_0_2_FN_MIGRATE:
--        return true;
--    default:
--        return false;
--    }
-+    return true;
+@@ -723,6 +735,40 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+         val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) /
+               gt_cntfrq_period_ns(arm_cpu);
+         break;
++    case SYSREG_PMCR_EL0:
++        val = env->cp15.c9_pmcr;
++        break;
++    case SYSREG_PMCCNTR_EL0:
++        pmu_op_start(env);
++        val = env->cp15.c15_ccnt;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMCNTENCLR_EL0:
++        val = env->cp15.c9_pmcnten;
++        break;
++    case SYSREG_PMOVSCLR_EL0:
++        val = env->cp15.c9_pmovsr;
++        break;
++    case SYSREG_PMSELR_EL0:
++        val = env->cp15.c9_pmselr;
++        break;
++    case SYSREG_PMINTENCLR_EL1:
++        val = env->cp15.c9_pminten;
++        break;
++    case SYSREG_PMCCFILTR_EL0:
++        val = env->cp15.pmccfiltr_el0;
++        break;
++    case SYSREG_PMCNTENSET_EL0:
++        val = env->cp15.c9_pmcnten;
++        break;
++    case SYSREG_PMUSERENR_EL0:
++        val = env->cp15.c9_pmuserenr;
++        break;
++    case SYSREG_PMCEID0_EL0:
++    case SYSREG_PMCEID1_EL0:
++        /* We can't really count anything yet, declare all events invalid */
++        val = 0;
++        break;
+     case SYSREG_OSLSR_EL1:
+         val = env->cp15.oslsr_el1;
+         break;
+@@ -753,6 +799,82 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+     return 0;
  }
  
- void arm_handle_psci_call(ARMCPU *cpu)
-@@ -194,10 +172,9 @@ void arm_handle_psci_call(ARMCPU *cpu)
-         break;
-     case QEMU_PSCI_0_1_FN_MIGRATE:
-     case QEMU_PSCI_0_2_FN_MIGRATE:
-+    default:
-         ret = QEMU_PSCI_RET_NOT_SUPPORTED;
-         break;
--    default:
--        g_assert_not_reached();
-     }
++static void pmu_update_irq(CPUARMState *env)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    qemu_set_irq(cpu->pmu_interrupt, (env->cp15.c9_pmcr & PMCRE) &&
++            (env->cp15.c9_pminten & env->cp15.c9_pmovsr));
++}
++
++static bool pmu_event_supported(uint16_t number)
++{
++    return false;
++}
++
++/* Returns true if the counter (pass 31 for PMCCNTR) should count events using
++ * the current EL, security state, and register configuration.
++ */
++static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
++{
++    uint64_t filter;
++    bool enabled, filtered = true;
++    int el = arm_current_el(env);
++
++    enabled = (env->cp15.c9_pmcr & PMCRE) &&
++              (env->cp15.c9_pmcnten & (1 << counter));
++
++    if (counter == 31) {
++        filter = env->cp15.pmccfiltr_el0;
++    } else {
++        filter = env->cp15.c14_pmevtyper[counter];
++    }
++
++    if (el == 0) {
++        filtered = filter & PMXEVTYPER_U;
++    } else if (el == 1) {
++        filtered = filter & PMXEVTYPER_P;
++    }
++
++    if (counter != 31) {
++        /*
++         * If not checking PMCCNTR, ensure the counter is setup to an event we
++         * support
++         */
++        uint16_t event = filter & PMXEVTYPER_EVTCOUNT;
++        if (!pmu_event_supported(event)) {
++            return false;
++        }
++    }
++
++    return enabled && !filtered;
++}
++
++static void pmswinc_write(CPUARMState *env, uint64_t value)
++{
++    unsigned int i;
++    for (i = 0; i < pmu_num_counters(env); i++) {
++        /* Increment a counter's count iff: */
++        if ((value & (1 << i)) && /* counter's bit is set */
++                /* counter is enabled and not filtered */
++                pmu_counter_enabled(env, i) &&
++                /* counter is SW_INCR */
++                (env->cp15.c14_pmevtyper[i] & PMXEVTYPER_EVTCOUNT) == 0x0) {
++            /*
++             * Detect if this write causes an overflow since we can't predict
++             * PMSWINC overflows like we can for other events
++             */
++            uint32_t new_pmswinc = env->cp15.c14_pmevcntr[i] + 1;
++
++            if (env->cp15.c14_pmevcntr[i] & ~new_pmswinc & INT32_MIN) {
++                env->cp15.c9_pmovsr |= (1 << i);
++                pmu_update_irq(env);
++            }
++
++            env->cp15.c14_pmevcntr[i] = new_pmswinc;
++        }
++    }
++}
++
+ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+ {
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+@@ -767,6 +889,63 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+                            val);
  
- err:
+     switch (reg) {
++    case SYSREG_PMCCNTR_EL0:
++        pmu_op_start(env);
++        env->cp15.c15_ccnt = val;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMCR_EL0:
++        pmu_op_start(env);
++
++        if (val & PMCRC) {
++            /* The counter has been reset */
++            env->cp15.c15_ccnt = 0;
++        }
++
++        if (val & PMCRP) {
++            unsigned int i;
++            for (i = 0; i < pmu_num_counters(env); i++) {
++                env->cp15.c14_pmevcntr[i] = 0;
++            }
++        }
++
++        env->cp15.c9_pmcr &= ~PMCR_WRITEABLE_MASK;
++        env->cp15.c9_pmcr |= (val & PMCR_WRITEABLE_MASK);
++
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMUSERENR_EL0:
++        env->cp15.c9_pmuserenr = val & 0xf;
++        break;
++    case SYSREG_PMCNTENSET_EL0:
++        env->cp15.c9_pmcnten |= (val & pmu_counter_mask(env));
++        break;
++    case SYSREG_PMCNTENCLR_EL0:
++        env->cp15.c9_pmcnten &= ~(val & pmu_counter_mask(env));
++        break;
++    case SYSREG_PMINTENCLR_EL1:
++        pmu_op_start(env);
++        env->cp15.c9_pminten |= val;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMOVSCLR_EL0:
++        pmu_op_start(env);
++        env->cp15.c9_pmovsr &= ~val;
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMSWINC_EL0:
++        pmu_op_start(env);
++        pmswinc_write(env, val);
++        pmu_op_finish(env);
++        break;
++    case SYSREG_PMSELR_EL0:
++        env->cp15.c9_pmselr = val & 0x1f;
++        break;
++    case SYSREG_PMCCFILTR_EL0:
++        pmu_op_start(env);
++        env->cp15.pmccfiltr_el0 = val & PMCCFILTR_EL0;
++        pmu_op_finish(env);
++        break;
+     case SYSREG_OSLAR_EL1:
+         env->cp15.oslsr_el1 = val & 1;
+         break;
 -- 
 2.30.1 (Apple Git-130)
 

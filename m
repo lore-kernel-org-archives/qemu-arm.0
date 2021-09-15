@@ -1,208 +1,234 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1479456lfp;
-        Wed, 15 Sep 2021 02:06:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxy8dml2SG9FIiqF832gzI5O4zh9VNMQQ1kEmHgzB8kBDqAAXmhsYc7UyyUgSuek3MCQZKV
-X-Received: by 2002:a02:5b83:: with SMTP id g125mr12848780jab.146.1631696786298;
-        Wed, 15 Sep 2021 02:06:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631696786; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1512516lfp;
+        Wed, 15 Sep 2021 02:58:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxhf4q9ovx8eEB5EWT4ZBoLicWsFvYHrQBFOGn/ZBQd556Ts+eD9urdCGM8wW7ch6vsZNrl
+X-Received: by 2002:a25:2b07:: with SMTP id r7mr4506782ybr.296.1631699916747;
+        Wed, 15 Sep 2021 02:58:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631699916; cv=none;
         d=google.com; s=arc-20160816;
-        b=nTHw4vACXMG8h6pRNNzywxkyhu5d918w1FLde6X2qVED8zKjrHznEL20AotwwTr/Ww
-         lV4Qa85BLrrSE1EtfYTOvO4vq8kinWX6+6v/bXHQMOHuinwiHbav/6LwLRfKHJGyUIla
-         qNWIq9AcrEI71/1bprBwh3Z9E91RCxsWHe7FCCr7/w4uSR5ktshbFtMo3BBHn/EagrPp
-         pcCcFHJNpyWMeNUfuYqZyLva/3yQJIaqxAlIdstqcdQvl3er9KuNmf5efVpIpJddsecy
-         2ue3BG2MRndknafkuyJ7Wyj+UiU/UlswstrA8jYr63/gfN3/DkxR6AdTluIv5qJIk7t6
-         Gogw==
+        b=lDbxyOBZ4B1Nj1u65lbG+Y59sxdc5rLCsXHdee2ev5CEJHCroT86PTO77P5o6NEJds
+         Uq3wGVu/yQhZ1RS20GNaIOYOeWcdJzDHAlTo6akHt3ZHJ9+Khg1881A7saUvInORI/Wo
+         kYrU5BMAaecgxpV4RMWAbfkyg6BKwEVcATZ8RO+ECXGLAJFdK3F9pssTpuYwTD5okyBS
+         zyd0iFesvEx8aw7qQKeQHDfwBme8tjoB99TA+5tKTN2yOaVia+wiyw0lIgw9rJzL4dAO
+         SpbB6GcArrH7A3/cqcziB5Z3n9UXGMHyXCpdJo7Z3XHWS+MHzhtIVLu8SOJ9LmPfjugl
+         ++Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=FPqhrRbo5g3BvXLeOdr0SMj6MFLIYdR412ZBL+w1vMk=;
-        b=IPHZkmRdW8jtaK6zAVM1JdGOjIpqzmWJx6PAYmlX+56/kq4x2vP49KqJQM2TLroRBr
-         99QoOFi6yzKTJUF0YdbKx6Wn4V6p8wDFV8CdAxSdPsCfJnuhyywwGr2xLnyz1sbl/Jqu
-         JwSlI3qqznAl65+WFo8qhtV84n+WkmjavfPelZgtXJnI7z7UuLwASVVaetZLn6WpV+b1
-         KG6Xzycn0fayEUyXtyvmNgnKIsa7xQ7QwWhNIuecTA4dBjFN7n5EaShziSAi0DtGmPel
-         gtZw44YyZvMs3PcyRbSssecYbTHIO15wF5gwkY92G6z1MVqu9yw2HIQ4qNwMRh1vw8jr
-         UO7w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=7gqcGDXwA6e97UbMcLuLWlqD9l/Qn0L/bVAx+xa8t5Q=;
+        b=1Jl4HBp79bigTGS85o9P50G1cZV0UN3gKH6DWyo1VdC/oQ/pA70AtlGrbCGguAzJmi
+         4HHS3GC7BV/TspMEjN/eN+0O+Z2Tl78EwKcK/tn4WdDKAlxypCPE6NgqSbslbXinADNt
+         XLLpOCwO9l2vuNnJVlUUeDSouBRJXeEDAnAAry7Mc8h42syT8LoCIIE++DodQHjp44TC
+         OfxQ6USnKyTT6nmZAgt2wd6vtcnE0u11DchlZXzIrD0p144CiLeKzKzZ1i370NihknF+
+         oit+OfM5P8IC/6Xf36VDwaeoI0Y4mptZsln0zz9Y7rAFFH8+Y2aAanvN86U7+77sm0co
+         jW5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ait/TKpB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=mNLTlZbp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b62si1051663jab.61.2021.09.15.02.06.26
+        by mx.google.com with ESMTPS id z128si14654584ybc.413.2021.09.15.02.58.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 02:06:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Sep 2021 02:58:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ait/TKpB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41404 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=mNLTlZbp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQQs5-0001Om-Hp
-	for alex.bennee@linaro.org; Wed, 15 Sep 2021 05:06:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49830)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQRga-00073p-5D
+	for alex.bennee@linaro.org; Wed, 15 Sep 2021 05:58:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQQrK-0001No-T3
- for qemu-arm@nongnu.org; Wed, 15 Sep 2021 05:05:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59611)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mQQrI-0005zv-37
- for qemu-arm@nongnu.org; Wed, 15 Sep 2021 05:05:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631696730;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FPqhrRbo5g3BvXLeOdr0SMj6MFLIYdR412ZBL+w1vMk=;
- b=ait/TKpBBle3pPeU+Z26DnNXrRHqB/BTP30vxUwu+oZFvDxDwaGOydsstPCFXfAfB9OY68
- A8C1KmYM5XhJMJaUncG94frjJt99HreyaUkE9dzy+Ie899Uv9ntXkB/DRFtCpk0LzKopTJ
- jlV1boSOqYh1PcnPuOb5T8Yldj0lLnY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-111-9No6J7jpP4KoNqZKTaAfow-1; Wed, 15 Sep 2021 05:05:26 -0400
-X-MC-Unique: 9No6J7jpP4KoNqZKTaAfow-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75B62802923;
- Wed, 15 Sep 2021 09:05:19 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.233])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3226C196E2;
- Wed, 15 Sep 2021 09:05:14 +0000 (UTC)
-Date: Wed, 15 Sep 2021 10:05:11 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: Deprecate 32-bit hosts? (was: Re: [PULL 14/14] hw/arm/aspeed:
- Add Fuji machine type)
-Message-ID: <YUG3R/TSH7bAJhVg@redhat.com>
-References: <20210913161304.3805652-1-clg@kaod.org>
- <20210913161304.3805652-15-clg@kaod.org>
- <88c26520-6b87-e7a2-ac78-c1c92477c814@kaod.org>
- <BBC4A4E0-651C-41DB-81DE-1F6D86AABAB1@fb.com>
- <CACPK8Xdey9_x-ZN1JbgFyTrW59EapH4xcqYbyNQxyQ5t0uWPvw@mail.gmail.com>
- <CAFEAcA8ntPE3GkTNU8bSBhCWzk_jdH4QR1kDgwo6deQ+T1iOKw@mail.gmail.com>
- <1949e204-1bce-f15b-553b-1b42b41e3e08@linaro.org>
- <ee5d379f-a792-aae1-370a-b5f21582ae58@redhat.com>
- <YUGw1v20jNRxq2zH@redhat.com>
- <a7a8ee29-cfc5-fec4-30fc-761df76107da@amsat.org>
+ (Exim 4.90_1) (envelope-from <christophe.lyon.oss@gmail.com>)
+ id 1mQRfn-0006N6-Ke; Wed, 15 Sep 2021 05:57:47 -0400
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36]:43628)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <christophe.lyon.oss@gmail.com>)
+ id 1mQRfk-0008Pt-KX; Wed, 15 Sep 2021 05:57:47 -0400
+Received: by mail-io1-xd36.google.com with SMTP id n24so2590935ion.10;
+ Wed, 15 Sep 2021 02:57:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7gqcGDXwA6e97UbMcLuLWlqD9l/Qn0L/bVAx+xa8t5Q=;
+ b=mNLTlZbpQM+0GiSVJqpzf0vi35KNG3uOWJGeXwz8p0VtFe3Nk2tYwW/RigH+O3nSJf
+ +unrBsE8Kh1A0WZIgP7HIcCDa0mWUuoKcN+qlKGEQ4UWV52hZx8nc0pzkHAWK42l436L
+ uUyYqLNXnWw6KlxuXeABc7KLvSj5DvPiE0Q7FT25aXBMr0KyPyRLOnE2YCfABMnwkbGn
+ yQ5bB4XOutcXsKVTyKcuS8+tmCBD610YGtThij9BnUxE93h3CoBnbZXUqjCxRNGuY8Up
+ ktqobqIuZ2BN9GLEMOlXJGESF6L8Agwucp5+aeJ9kfALdqRHzzW6h7BOjfGlLczWhpR+
+ Sf+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7gqcGDXwA6e97UbMcLuLWlqD9l/Qn0L/bVAx+xa8t5Q=;
+ b=6g2vTebP83iCwpwjlPNe28vYzQunMWLGFirXTzR/Fe34BJNeV5qIFyUDsIuJuswnOr
+ JDGWnWEC5IKWjYRvJDS+cSLNK3NkCrAyka7MdAfuBerdGFTMjO3Egn4Jfxduqj5oC7l1
+ jCCMLv001BIyMIfcc1GkCVlr8m7I/D1vBkaeRYBNEfJ3TGBKvONYP8F1SbvhNvB9c1AI
+ 2LkujFV0dQemrclvIt4ETUINpm6R1Hd7e2HZgAQdCzE5ThGo6nCBum8yxaQlpqmae5ir
+ +HofMatRSwUb2BFUEuBIVNDRpYXCPWPprJVO+T9auv8zuxsmJQTpo7Vnw7x+SMeRVTEY
+ A+Ww==
+X-Gm-Message-State: AOAM532npnAiDoL55D8UlvaADazcTG/epYxXrApytf7RHOR3LxnguRUQ
+ rwQEptuCI/ZRXHKyJBsa6ZTohetYEp6KOqQ/O9CiYfk5
+X-Received: by 2002:a6b:dc1a:: with SMTP id s26mr13887784ioc.191.1631699862696; 
+ Wed, 15 Sep 2021 02:57:42 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <a7a8ee29-cfc5-fec4-30fc-761df76107da@amsat.org>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <20210914120725.24992-1-peter.maydell@linaro.org>
+In-Reply-To: <20210914120725.24992-1-peter.maydell@linaro.org>
+From: Christophe Lyon <christophe.lyon.oss@gmail.com>
+Date: Wed, 15 Sep 2021 11:57:31 +0200
+Message-ID: <CAKhMtSJ7dsK=fZoj5fP2fHa0-93KuJgf-iSXp0MjkGOSOrQDew@mail.gmail.com>
+Subject: Re: [PATCH 0/3] target/arm: Set FPSCR.LTPSIZE for user-mode
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000b236bc05cc05baf5"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d36;
+ envelope-from=christophe.lyon.oss@gmail.com; helo=mail-io1-xd36.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Andrew Jeffery <andrew@aj.id.au>, Michael Tokarev <mjt@tls.msk.ru>,
- Richard Henderson <richard.henderson@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "Richard W.M. Jones" <rjones@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Peter Delevoryas <pdel@fb.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pigx0GVZqQ5l
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Christophe Lyon <christophe.lyon@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wDeVNkKEEXwY
 
-On Wed, Sep 15, 2021 at 10:51:56AM +0200, Philippe Mathieu-Daudé wrote:
-> On 9/15/21 10:37 AM, Daniel P. Berrangé wrote:
-> > On Wed, Sep 15, 2021 at 09:42:48AM +0200, Thomas Huth wrote:
-> >> On 14/09/2021 17.22, Richard Henderson wrote:
-> >>> On 9/14/21 5:26 AM, Peter Maydell wrote:
-> >>>> (2) RAM blocks should have a length that fits inside a
-> >>>>      signed 32-bit type on 32-bit hosts (at least I assume this
-> >>>>      is where the 2047MB limit is coming from; in theory this ought
-> >>>>      to be improveable but auditing the code for mishandling of
-> >>>>      RAMblock sizes to ensure we weren't accidentally stuffing
-> >>>>      their size into a signed 'long' somewhere would be kind
-> >>>>      of painful)
-> >>>
-> >>> Recalling that the win64 abi model is p64, i.e. 'long' is still 32-bit
-> >>> while pointers are 64-bit, how close do we think we are to this being
-> >>> fixed already?
-> >>>
-> >>>> Even if we did fix (2) we'd need to compromise on (3)
-> >>>> sometimes still -- if a board has 4GB of RAM that's
-> >>>> not going to fit in 32 bits regardless. But we would be
-> >>>> able to let boards with 2GB have 2GB.
-> >>>
-> >>> I'm not opposed to deprecating 32-bit hosts...  ;-)
-> >>
-> >> I think we should consider this again, indeed. Plain 32-bit CPUs are quite
-> >> seldom these days, aren't they? And I think we urgently need to decrease the
-> >> amount of things that we have to test and maintain in our CI and developer
-> >> branches... So is there still a really really compelling reason to keep
-> >> 32-bit host support alive?
-> > 
-> > I think it probably depends on the architecture to some extent.
-> > 
-> > i386 is possibly getting rare enough to consider dropping, though
-> > IIUC, KVM in the kernel still supports it.  Would feel odd to drop
-> > it in QEMU if the kernel still thinks it is popular enough to keep
-> > KVM support.
-> > 
-> > armv7 feels like it is relatively common as 64-bit didn't arrive
-> > in widespread use until relatively recent times compared to x86_64.
-> > KVM dropped armv7, but then hardware for that was never widespread,
-> > so armv7 was always TCG dominated
-> > 
-> > Other 32-bit arches were/are always rare.
-> 
-> While I could understand there are rare uses of system emulation on
-> 32-bit hosts, I still believe user-emulation is used, but would like
-> to be proven to the contrary. With that in mind, I'm not sure removing
-> sysemu on 32-bit hosts is worthful. Maybe we should ask distribution
-> maintainers first, then eventually poll the community? Or start with
-> a deprecation warning?
+--000000000000b236bc05cc05baf5
+Content-Type: text/plain; charset="UTF-8"
 
-Well Debian still supports arm7, i686, mips officially, and several
-more unofficially, so that's an easy answer from that side.
+Hi Peter,
 
-Fedora only has arm7, having dropped i686 a while ago.
+Thanks for the prompt patches!
 
-I don't have insight into usage of QEMU on any platforms breakdown
-though.
+On Tue, Sep 14, 2021 at 2:08 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> This patchset fixes https://gitlab.com/qemu-project/qemu/-/issues/613
+> which is a bug where we weren't setting FPSCR.LTPSIZE correctly
+> out of reset for the user-mode emulator. The effect is that
+> when using an M-profile CPU with the low-overhead-branch or MVE
+> extensions (ie the Cortex-M55) with the linux-user QEMU the 'LE'
+> instruction would take a UserFault and MVE instructions would
+> be incorrectly predicated.
+>
+> This is the result of some over-exuberant ifdeffery in the
+> arm_cpu_reset() function. Patch 1 fixes that so that most of
+> the M-profile-specific reset handling is not ifdeffed, and
+> when we're in user mode we specifically set the FPU state up
+> cleanly. Patches 2 and 3 are just follow-on tidyup.
+>
+> Christophe, if you are in a position to test this series with:
+>  M55 (has Security, MVE and LOB)
+>  M33 (has Security extension but not MVE/LOB)
+>  M7 or M4 (no Security, but does have FPU)
+> that would be ideal. I don't really have much in the way of
+> test cases for usermode to hand, so it's possible that I
+> forgot something in the init of the FPU state that might break
+> one of those combinations. (It does fix the test case attached
+> to the bug report.)
+>
 
+I ran the GCC testsuite with these configurations, and found no regression
+compared to qemu-6.0, thanks.
+
+In the M55 case, this also enabled many more tests, which is great!
+
+Christophe
+
+
+> thanks
+> -- PMM
+>
+> Peter Maydell (3):
+>   target/arm: Don't skip M-profile reset entirely in user mode
+>   target/arm: Always clear exclusive monitor on reset
+>   target/arm: Consolidate ifdef blocks in reset
+>
+>  target/arm/cpu.c | 39 ++++++++++++++++++++++++++++-----------
+>  1 file changed, 28 insertions(+), 11 deletions(-)
+>
+> --
+> 2.20.1
+>
+>
+>
+
+--000000000000b236bc05cc05baf5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Peter,</div><div><br></div><div>Thanks for the pro=
+mpt patches!</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"=
+gmail_attr">On Tue, Sep 14, 2021 at 2:08 PM Peter Maydell &lt;<a href=3D"ma=
+ilto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br><=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left:1px solid rgb(204,204,204);padding-left:1ex">This patchset fixes =
+<a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/613" rel=3D"norefe=
+rrer" target=3D"_blank">https://gitlab.com/qemu-project/qemu/-/issues/613</=
+a><br>
+which is a bug where we weren&#39;t setting FPSCR.LTPSIZE correctly<br>
+out of reset for the user-mode emulator. The effect is that<br>
+when using an M-profile CPU with the low-overhead-branch or MVE<br>
+extensions (ie the Cortex-M55) with the linux-user QEMU the &#39;LE&#39;<br=
+>
+instruction would take a UserFault and MVE instructions would<br>
+be incorrectly predicated.<br>
+<br>
+This is the result of some over-exuberant ifdeffery in the<br>
+arm_cpu_reset() function. Patch 1 fixes that so that most of<br>
+the M-profile-specific reset handling is not ifdeffed, and<br>
+when we&#39;re in user mode we specifically set the FPU state up<br>
+cleanly. Patches 2 and 3 are just follow-on tidyup.<br>
+<br>
+Christophe, if you are in a position to test this series with:<br>
+=C2=A0M55 (has Security, MVE and LOB)<br>
+=C2=A0M33 (has Security extension but not MVE/LOB)<br>
+=C2=A0M7 or M4 (no Security, but does have FPU)<br>
+that would be ideal. I don&#39;t really have much in the way of<br>
+test cases for usermode to hand, so it&#39;s possible that I<br>
+forgot something in the init of the FPU state that might break<br>
+one of those combinations. (It does fix the test case attached<br>
+to the bug report.)<br></blockquote><div><br></div><div>I ran the GCC tests=
+uite with these configurations, and found no regression compared to qemu-6.=
+0, thanks.</div><div>=C2=A0</div><div>In the M55 case, this also enabled ma=
+ny more tests, which is great!</div><div><br></div><div>Christophe</div><di=
+v><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+thanks<br>
+-- PMM<br>
+<br>
+Peter Maydell (3):<br>
+=C2=A0 target/arm: Don&#39;t skip M-profile reset entirely in user mode<br>
+=C2=A0 target/arm: Always clear exclusive monitor on reset<br>
+=C2=A0 target/arm: Consolidate ifdef blocks in reset<br>
+<br>
+=C2=A0target/arm/cpu.c | 39 ++++++++++++++++++++++++++++-----------<br>
+=C2=A01 file changed, 28 insertions(+), 11 deletions(-)<br>
+<br>
+-- <br>
+2.20.1<br>
+<br>
+<br>
+</blockquote></div></div>
+
+--000000000000b236bc05cc05baf5--

@@ -1,220 +1,215 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp393916lfp;
-        Wed, 15 Sep 2021 11:16:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+ZtrvAvvfF2Cnl9aUk3sg+lTS/uiYqvBCH5WtPz1O1mv3jhDu9mdTurkIucLAtSLDWjG6
-X-Received: by 2002:ac8:4c9c:: with SMTP id j28mr1187583qtv.224.1631729801366;
-        Wed, 15 Sep 2021 11:16:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631729801; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp230266lfp;
+        Wed, 15 Sep 2021 08:07:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxcbqGWF4iTyJr89HXa1SxonMJvO95vIv3vmO2U5OZbAVR63PsTWTOY6THhkIvNVCMWpIj
+X-Received: by 2002:ad4:554e:: with SMTP id v14mr378908qvy.26.1631718452740;
+        Wed, 15 Sep 2021 08:07:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631718452; cv=none;
         d=google.com; s=arc-20160816;
-        b=aPsQ7yKA4Aqm0oiH94VZlTW8fGy7e1Jlqpljz781Bu92i4QIC5XUs0/JQT3+hAj26c
-         rYbZxvoL2cwRQkZLc86r5eLiIP3kho1g0krkdgGOeojdln5iJA34DhshMQAAtfb62brq
-         m67uTcTCKpB/TTHPREOBUMxlT0G5pwtQT7jcQrQSLyjYqqlZY4hytwmBUFr4x4ZI8bic
-         ddSFy4wNjbgRa58ibckTtfoB0J2NOWsmul4bS1j9ewh7B8VA0CvhnXHabJSFUt2McQXs
-         4aP7ihfzSb+ZL1moDrReraz3FZwbAnHASvA5V30EWXnzchbn+Oa0/t/84ixHQ8JSAnua
-         EOuA==
+        b=xlp6Sq7adas1pvyFF8EMemNQRf4ATr9jgRhGSjhLXBYb3SQAaQ8sY2V4QyCw09pVZu
+         ea8HZm4GpAJGrTgq+H0RGVswG9PDfqCri30VQluPykLHeZeDdA+bQA5voPsZPVPsnsH5
+         FQJGb7ZNnQF+9MY8qpRANQRXDTbEoXRM2+W3LiSvb9MydY/xn6upH5RX58cqqLc5pnet
+         EEDk6Psj6r7ulKkvowDVVtC97IV6tTCmpwWnfLUcvyzdev6mDZgCgLy8cVOfE0zVKr6s
+         D7K80feTpcc+5PiK43HMr4m6t9vau/Ce3ETbjqxwyruL8kVBBy7AmiY4X626/HlcZ26j
+         wB6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=gNLQF0+QZHBdpEfnqsgT5xNRPml0YytZEFqXZg2/bTU=;
-        b=Gid1xv7V1tNxgFpHM/dVG3eM8RHqyAcrVFYhZgZnpiVzfhqe3LUkROtWvck46pWR2Z
-         QrjbaQaRGPvc5X34b7ECPSExDKRADMV8uFejx2xdr6W0jiRCqfPxVZZF2OKWsdwlW5d6
-         H3kE5WKxInaEXwoGAzQQj5V2p6opHdJ6PoXtMZ3K4DL6XMtNwcsJYGPuGFGcYUQG9hjS
-         5DMt++koOUrXbV7TuZyMNgy/d14xgQEnSzv5w/hvhFPVCRRuz9miiypYoHnMEE6K/TFJ
-         0SQ0t8LAQgZ4COT/s7RqZdTu6UucXkHJFXQXU2/LJS43wf41hSCXxGCSrizS4I37TvSF
-         /ing==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:to:from:message-id:date;
+        bh=Y1CVN6IClJkPA+tK4hroOKRzedoq0TZKtpJzsEb7s4Y=;
+        b=0pfEpSUGWw1VL0MNIhKw9jhJrv3gLVnvIrRQLrQLVTJK3T/932qYJPzw1HyrikoX3s
+         UfS4yTPQJ+PoBiJTRKcdTuAivR/p07HCA8qprgEPU2JZnF/jlqN5d8Z7Xi/vTLBGW6B0
+         Klcmz1WPsEyf+3cb9vdtFUsLUIuIAtyooiRZZd76dplrqc5elNg73vcfziSxdJyJga8f
+         IdDPfjdvLhYhnxxHgmAOocDa4alh39vMlptkN3fHPqmeM5++cBCjkSBm1wrGJ1k8TKm0
+         PYbTJ8hyPYRyOfBRvzX7lgLDS2XUdkVHsdqqFOIR2tFxh2kXVChuTR9LO7vVRy5+XL1C
+         cTyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n12si354528qvi.121.2021.09.15.11.16.41
+        by mx.google.com with ESMTPS id s9si122548qvs.61.2021.09.15.08.07.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 11:16:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Sep 2021 08:07:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45596 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:34840 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQZSZ-0003qh-1S
-	for alex.bennee@linaro.org; Wed, 15 Sep 2021 14:16:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56726)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQWVY-0003nc-4t
+	for alex.bennee@linaro.org; Wed, 15 Sep 2021 11:07:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36838)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mQZN2-0006Nh-Ed; Wed, 15 Sep 2021 14:10:56 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:50660 helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1mQZN0-0003Ny-4b; Wed, 15 Sep 2021 14:10:56 -0400
-Received: from localhost.localdomain
- (dynamic-095-117-089-091.95.117.pool.telefonica.de [95.117.89.91])
- by csgraf.de (Postfix) with ESMTPSA id 9517B60805FE;
- Wed, 15 Sep 2021 20:10:51 +0200 (CEST)
-From: Alexander Graf <agraf@csgraf.de>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v11 01/10] arm: Move PMC register definitions to cpu.h
-Date: Wed, 15 Sep 2021 20:10:40 +0200
-Message-Id: <20210915181049.27597-2-agraf@csgraf.de>
-X-Mailer: git-send-email 2.30.1 (Apple Git-130)
-In-Reply-To: <20210915181049.27597-1-agraf@csgraf.de>
-References: <20210915181049.27597-1-agraf@csgraf.de>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1mQWVK-0003ih-DT; Wed, 15 Sep 2021 11:07:18 -0400
+Received: from mail.kernel.org ([198.145.29.99]:40834)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>)
+ id 1mQWVG-000862-K1; Wed, 15 Sep 2021 11:07:17 -0400
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E8E0561029;
+ Wed, 15 Sep 2021 15:07:11 +0000 (UTC)
+Received: from [198.52.44.129] (helo=wait-a-minute.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1mQWVB-00AxRm-Sx; Wed, 15 Sep 2021 16:07:10 +0100
+Date: Wed, 15 Sep 2021 16:07:07 +0100
+Message-ID: <87v931c1yc.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Alexander Graf <agraf@csgraf.de>
+Subject: Re: [PATCH v9 07/11] hvf: arm: Implement PSCI handling
+In-Reply-To: <4ce23412-7484-f77a-6378-4369b0b2397c@csgraf.de>
+References: <20210912230757.41096-1-agraf@csgraf.de>
+ <20210912230757.41096-8-agraf@csgraf.de>
+ <CAFEAcA8BybrfxNxkWbEjxji4DvDumr6Otb_RK_f84Dt_TWXfpA@mail.gmail.com>
+ <ad707e0d-8d4a-0248-80f4-a02a7226ce0a@csgraf.de>
+ <CAFEAcA_OBK1hbqC1Nc7J+VEwkO54WvqBrNa=bR5T3tZW+nfEkQ@mail.gmail.com>
+ <3132e2f5-41a6-6011-808b-7ea12abec1c0@csgraf.de>
+ <CAFEAcA9k0-przZxAXpdwZKju9GW4gFpTcqAxTD4z_QoueHg=NQ@mail.gmail.com>
+ <87wnnib291.wl-maz@kernel.org>
+ <4ce23412-7484-f77a-6378-4369b0b2397c@csgraf.de>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 198.52.44.129
+X-SA-Exim-Rcpt-To: agraf@csgraf.de, peter.maydell@linaro.org,
+ ehabkost@redhat.com, slp@redhat.com, philmd@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, dirty@apple.com,
+ r.bolshakov@yadro.com, qemu-arm@nongnu.org, lfy@google.com,
+ pbonzini@redhat.com, pcc@google.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=198.145.29.99; envelope-from=maz@kernel.org;
+ helo=mail.kernel.org
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  Peter Collingbourne <pcc@google.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hrwCAvsuE1XU
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bWkGCRyWnu1h
 
-We will need PMC register definitions in accel specific code later.
-Move all constant definitions to common arm headers so we can reuse
-them.
+On Wed, 15 Sep 2021 11:58:29 +0100,
+Alexander Graf <agraf@csgraf.de> wrote:
+> 
+> 
+> On 15.09.21 11:46, Marc Zyngier wrote:
+> > On Mon, 13 Sep 2021 13:30:57 +0100,
+> > Peter Maydell <peter.maydell@linaro.org> wrote:
+> >> On Mon, 13 Sept 2021 at 13:02, Alexander Graf <agraf@csgraf.de> wrote:
+> >>>
+> >>> On 13.09.21 13:44, Peter Maydell wrote:
+> >>>> On Mon, 13 Sept 2021 at 12:07, Alexander Graf <agraf@csgraf.de> wrote:
+> >>>>> To keep your train of thought though, what would you do if we encounter
+> >>>>> a conduit that is different from the chosen one? Today, I am aware of 2
+> >>>>> different implementations: TCG injects #UD [1] while KVM sets x0 to -1 [2].
+> >>>> If the SMC or HVC insn isn't being used for PSCI then it should
+> >>>> have its standard architectural behaviour.
+> >>> Why?
+> >> QEMU's assumption here is that there are basically two scenarios
+> >> for these instructions:
+> >>  (1) we're providing an emulation of firmware that uses this
+> >>      instruction (and only this insn, not the other one) to
+> >>      provide PSCI services
+> >>  (2) we're not emulating any firmware at all, we're running it
+> >>      in the guest, and that guest firmware is providing PSCI
+> >>
+> >> In case (1) we provide a PSCI ABI on the end of the insn.
+> >> In case (2) we provide the architectural behaviour for the insn
+> >> so that the guest firmware can use it.
+> >>
+> >> We don't currently have
+> >>  (3) we're providing an emulation of firmware that does something
+> >>      other than providing PSCI services on this instruction
+> >>
+> >> which is what I think you're asking for. (Alternatively, you might
+> >> be after "provide PSCI via SMC, not HVC", ie use a different conduit.
+> >> If hvf documents that SMC is guaranteed to trap that would be
+> >> possible, I guess.)
+> >>
+> >>> Also, why does KVM behave differently?
+> >> Looks like Marc made KVM set x0 to -1 for SMC calls in kernel commit
+> >> c0938c72f8070aa; conveniently he's on the cc list here so we can
+> >> ask him :-)
+> > If we got a SMC trap into KVM, that's because the HW knows about it,
+> > so injecting an UNDEF is rather counter productive (we don't hide the
+> > fact that EL3 actually exists).
+> 
+> 
+> This is the part where you and Peter disagree :). What would you suggest
+> to do to create consistency between KVM and TCG based EL0/1 only VMs?
 
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
+I don't think we disagree. We simply have different implementation
+choices. The KVM "firmware" can only be used with HVC, and not
+SMC. SMC is reserved for cases where the guest talks to the actual
+EL3, or an emulation of it in the case of NV.
 
----
+As for consistency between TGC and KVM, I have no plan for that
+whatsoever. Both implementations are valid, and they don't have to be
+identical. Even more, diversity is important, as it weeds out silly
+assumptions that are baked in non-portable SW.
 
-v9 -> v10:
+Windows doesn't boot? I won't loose any sleep over it.
 
-  - Move to target/arm/internals.h
----
- target/arm/helper.c    | 44 ------------------------------------------
- target/arm/internals.h | 44 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 44 insertions(+), 44 deletions(-)
+> 
+> > However, we don't implement anything on the back of this instruction,
+> > so we just return NOT_IMPLEMENTED (-1). With NV, we actually use it as
+> > a guest hypervisor can use it for PSCI and SMC is guaranteed to trap
+> > even if EL3 doesn't exist in the HW.
+> >
+> > For the brain-damaged case where there is no EL3, SMC traps and the
+> > hypervisor doesn't actually advertises EL3, that's likely a guest
+> > bug. Tough luck.
+> >
+> > Side note: Not sure where HVF does, but on the M1 running Linux, SMC
+> > appears to trap to EL2 with EC=0x3f, which is a reserved exception
+> > class. This of course results in an UNDEF being injected because as
+> > far as KVM is concerned, this should never happen.
+>
+> Could that be yet another magical implementation specific MSR bit that
+> needs to be set? Hvf returns 0x17 (EC_AA64_SMC) for SMC calls.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b210da2bc2..21ee94ec2e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1114,50 +1114,6 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
-     REGINFO_SENTINEL
- };
- 
--/* Definitions for the PMU registers */
--#define PMCRN_MASK  0xf800
--#define PMCRN_SHIFT 11
--#define PMCRLC  0x40
--#define PMCRDP  0x20
--#define PMCRX   0x10
--#define PMCRD   0x8
--#define PMCRC   0x4
--#define PMCRP   0x2
--#define PMCRE   0x1
--/*
-- * Mask of PMCR bits writeable by guest (not including WO bits like C, P,
-- * which can be written as 1 to trigger behaviour but which stay RAZ).
-- */
--#define PMCR_WRITEABLE_MASK (PMCRLC | PMCRDP | PMCRX | PMCRD | PMCRE)
--
--#define PMXEVTYPER_P          0x80000000
--#define PMXEVTYPER_U          0x40000000
--#define PMXEVTYPER_NSK        0x20000000
--#define PMXEVTYPER_NSU        0x10000000
--#define PMXEVTYPER_NSH        0x08000000
--#define PMXEVTYPER_M          0x04000000
--#define PMXEVTYPER_MT         0x02000000
--#define PMXEVTYPER_EVTCOUNT   0x0000ffff
--#define PMXEVTYPER_MASK       (PMXEVTYPER_P | PMXEVTYPER_U | PMXEVTYPER_NSK | \
--                               PMXEVTYPER_NSU | PMXEVTYPER_NSH | \
--                               PMXEVTYPER_M | PMXEVTYPER_MT | \
--                               PMXEVTYPER_EVTCOUNT)
--
--#define PMCCFILTR             0xf8000000
--#define PMCCFILTR_M           PMXEVTYPER_M
--#define PMCCFILTR_EL0         (PMCCFILTR | PMCCFILTR_M)
--
--static inline uint32_t pmu_num_counters(CPUARMState *env)
--{
--  return (env->cp15.c9_pmcr & PMCRN_MASK) >> PMCRN_SHIFT;
--}
--
--/* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
--static inline uint64_t pmu_counter_mask(CPUARMState *env)
--{
--  return (1 << 31) | ((1 << pmu_num_counters(env)) - 1);
--}
--
- typedef struct pm_event {
-     uint16_t number; /* PMEVTYPER.evtCount is 16 bits wide */
-     /* If the event is supported on this CPU (used to generate PMCEID[01]) */
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index cd2ea8a388..777f968764 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1226,4 +1226,48 @@ enum MVEECIState {
-     /* All other values reserved */
- };
- 
-+/* Definitions for the PMU registers */
-+#define PMCRN_MASK  0xf800
-+#define PMCRN_SHIFT 11
-+#define PMCRLC  0x40
-+#define PMCRDP  0x20
-+#define PMCRX   0x10
-+#define PMCRD   0x8
-+#define PMCRC   0x4
-+#define PMCRP   0x2
-+#define PMCRE   0x1
-+/*
-+ * Mask of PMCR bits writeable by guest (not including WO bits like C, P,
-+ * which can be written as 1 to trigger behaviour but which stay RAZ).
-+ */
-+#define PMCR_WRITEABLE_MASK (PMCRLC | PMCRDP | PMCRX | PMCRD | PMCRE)
-+
-+#define PMXEVTYPER_P          0x80000000
-+#define PMXEVTYPER_U          0x40000000
-+#define PMXEVTYPER_NSK        0x20000000
-+#define PMXEVTYPER_NSU        0x10000000
-+#define PMXEVTYPER_NSH        0x08000000
-+#define PMXEVTYPER_M          0x04000000
-+#define PMXEVTYPER_MT         0x02000000
-+#define PMXEVTYPER_EVTCOUNT   0x0000ffff
-+#define PMXEVTYPER_MASK       (PMXEVTYPER_P | PMXEVTYPER_U | PMXEVTYPER_NSK | \
-+                               PMXEVTYPER_NSU | PMXEVTYPER_NSH | \
-+                               PMXEVTYPER_M | PMXEVTYPER_MT | \
-+                               PMXEVTYPER_EVTCOUNT)
-+
-+#define PMCCFILTR             0xf8000000
-+#define PMCCFILTR_M           PMXEVTYPER_M
-+#define PMCCFILTR_EL0         (PMCCFILTR | PMCCFILTR_M)
-+
-+static inline uint32_t pmu_num_counters(CPUARMState *env)
-+{
-+  return (env->cp15.c9_pmcr & PMCRN_MASK) >> PMCRN_SHIFT;
-+}
-+
-+/* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
-+static inline uint64_t pmu_counter_mask(CPUARMState *env)
-+{
-+  return (1 << 31) | ((1 << pmu_num_counters(env)) - 1);
-+}
-+
- #endif
+That's possible, but that's not something KVM will do. Also, from what
+I understand of HVF, this value is what you get in userspace, and it
+says nothing of what the kernel side does. It could well be
+translating the invalid EC into something else, after having read the
+instruction from the guest for all I know.
+
+It is pretty obvious that this HW is not a valid implementation of the
+architecture and if it decides to screw itself up, I'm happy to
+oblige.
+
+	M.
+
 -- 
-2.30.1 (Apple Git-130)
-
+Without deviation from the norm, progress is not possible.

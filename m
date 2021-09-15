@@ -1,91 +1,89 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1470259lfp;
-        Wed, 15 Sep 2021 01:52:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzUldcVb8CXAey+dukejcZq9HJRvXthiTRlHPXhFeBJKOHrrd76/Q4OjK4yavKP2l1ZOcRJ
-X-Received: by 2002:a05:6902:1504:: with SMTP id q4mr4654167ybu.177.1631695934044;
-        Wed, 15 Sep 2021 01:52:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631695934; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1479456lfp;
+        Wed, 15 Sep 2021 02:06:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxy8dml2SG9FIiqF832gzI5O4zh9VNMQQ1kEmHgzB8kBDqAAXmhsYc7UyyUgSuek3MCQZKV
+X-Received: by 2002:a02:5b83:: with SMTP id g125mr12848780jab.146.1631696786298;
+        Wed, 15 Sep 2021 02:06:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631696786; cv=none;
         d=google.com; s=arc-20160816;
-        b=VXI9DsGPQTdA2e1Z3f+mWqhsieRzGhRAEElp4ENLRDaYpItlYabzK2P22gZfHFTqHS
-         LQ3pDxPctO7mDoArs+BvZSgWQ25JP04/yS1rU5iv395RFFdOEt+V3P8eRJ66ZUXg+d2b
-         8y2c6n8Wi8nkyLmDD8BKSqMzhArjmd9EKni5Dd0+hFL3TGYIQ3EWH4W7W/9nrCQ3pxQ8
-         x3xsccr7asTw2Kq1AejkiiagOnsmHVtKlf9d4M/a04FPI6+XwrswKESgsl+W9zbOKzzU
-         amHJM7wGzcqoClMisaalFVOzhOIRNJvHl+Veb/9YEcvK+5nrSLiDyZO0ZpYuzI7XVMl6
-         mG4A==
+        b=nTHw4vACXMG8h6pRNNzywxkyhu5d918w1FLde6X2qVED8zKjrHznEL20AotwwTr/Ww
+         lV4Qa85BLrrSE1EtfYTOvO4vq8kinWX6+6v/bXHQMOHuinwiHbav/6LwLRfKHJGyUIla
+         qNWIq9AcrEI71/1bprBwh3Z9E91RCxsWHe7FCCr7/w4uSR5ktshbFtMo3BBHn/EagrPp
+         pcCcFHJNpyWMeNUfuYqZyLva/3yQJIaqxAlIdstqcdQvl3er9KuNmf5efVpIpJddsecy
+         2ue3BG2MRndknafkuyJ7Wyj+UiU/UlswstrA8jYr63/gfN3/DkxR6AdTluIv5qJIk7t6
+         Gogw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=RyvysqWVtjp2lByu0gUlF/jmURsLmVfpSoNq9WFejBQ=;
-        b=FAkoGbSKQKmZkSbptSa25PvQi3PlOy7N018WebnDRugD1cuU/C2wcjHvPYmYJVwlUv
-         /t+8qFeCNcESk8c+/BG4pu2TiMZANUKeTc9vewJ1ZdD020QZexsVtoTsIU0Cocq/sucS
-         06RVvhwjV+skkwW4W7W/CogY/HJOxK3Yxv9mMVOTp8L74Mb7YINBhfKHV2MRAtoIEKAB
-         MaB1vEgJo40j21HdAKmeq7ejyiI+NzOsml07BEWFTPe+Hi2u4DHNDODeRQRnIpoL/XCa
-         vi1gr5cLoEkeG4gawxeGG6Do5N41ld+qvC4ck5tEtqVft1Ls663EFdQ7B3PRAGyx8j5+
-         0TKg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=FPqhrRbo5g3BvXLeOdr0SMj6MFLIYdR412ZBL+w1vMk=;
+        b=IPHZkmRdW8jtaK6zAVM1JdGOjIpqzmWJx6PAYmlX+56/kq4x2vP49KqJQM2TLroRBr
+         99QoOFi6yzKTJUF0YdbKx6Wn4V6p8wDFV8CdAxSdPsCfJnuhyywwGr2xLnyz1sbl/Jqu
+         JwSlI3qqznAl65+WFo8qhtV84n+WkmjavfPelZgtXJnI7z7UuLwASVVaetZLn6WpV+b1
+         KG6Xzycn0fayEUyXtyvmNgnKIsa7xQ7QwWhNIuecTA4dBjFN7n5EaShziSAi0DtGmPel
+         gtZw44YyZvMs3PcyRbSssecYbTHIO15wF5gwkY92G6z1MVqu9yw2HIQ4qNwMRh1vw8jr
+         UO7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ZmiqgbbT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ait/TKpB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 81si14124551ybu.304.2021.09.15.01.52.13
+        by mx.google.com with ESMTPS id b62si1051663jab.61.2021.09.15.02.06.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 01:52:14 -0700 (PDT)
+        Wed, 15 Sep 2021 02:06:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ZmiqgbbT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54036 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ait/TKpB";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQQeL-00079S-Ch
-	for alex.bennee@linaro.org; Wed, 15 Sep 2021 04:52:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46208)
+	id 1mQQs5-0001Om-Hp
+	for alex.bennee@linaro.org; Wed, 15 Sep 2021 05:06:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49830)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQQeA-000777-Fl; Wed, 15 Sep 2021 04:52:02 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:53241)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQQe8-0002jy-3U; Wed, 15 Sep 2021 04:52:02 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id e26so1534034wmk.2;
- Wed, 15 Sep 2021 01:51:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=RyvysqWVtjp2lByu0gUlF/jmURsLmVfpSoNq9WFejBQ=;
- b=ZmiqgbbTjpBetsY8Rt6aZ7T1fZdXMlzzGt0e1qxYFyt0oxxMqTznp80XwLys/resV4
- hiIY4Xq3Sf/cBuoVFXxWDwbQkZXVS9RL8kgYh+C2zNWnn3bEg6fkN3gZz76srlCX76Ml
- ECQqOcx3UKYz3lY8gU6up29gtgxABdW3H1CWG7ynuWOL0seHT/D4/z/JE5/jXskAZn5J
- 8lWSn5GCSnf1vez2db8gjRWIhSw8iGgllP204GG620jlE7A3dRmgfGKcPAwtIfMHtGE/
- Zz1rHlDx7vDUvhDhjLH1yoCF4w1X8jvLuFNmrbZeVJPgpnBmeOsuTKDAVnCVIA9Rl213
- oafQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=RyvysqWVtjp2lByu0gUlF/jmURsLmVfpSoNq9WFejBQ=;
- b=Oe7jHFElgHSh6Uf1PSF76GndObdeFovDEULfgN3sAAyHo5Xgt4bQbbuQgIxWaPMrWh
- kOGdT7wTJeHx2SNc6Xaujtjh1m3/NynXNvbpF5/O8kKymxlFsrmlvOlZT0ntkUvZgKiW
- 5E7CnAt2duo7+PgxLAiAwp9pm4U5x8i1gNuRS2X3Yi498lZ3vTMJ6nl5IAtPiCReekQ4
- 7TpeQngB3G6BoaBfffffSW4eVt5fJYR4ROc2pGE8I6tMwrRDXLXPQOxvGmmGkS/lK7rL
- L1Amk9Xa1AIZWgkt4bhuWlUxRKa7aEppvmANUii4VXx0UphmxgcSvpcl5u9+lwzimwXN
- Pocg==
-X-Gm-Message-State: AOAM53175k95M2mSSfWc9jPbOte0UodjXjsB8YOBYXSrc0Giqnl7slkN
- s1MTP2lpZ9AHlJtkud7JJBc=
-X-Received: by 2002:a1c:210a:: with SMTP id h10mr3054972wmh.165.1631695918023; 
- Wed, 15 Sep 2021 01:51:58 -0700 (PDT)
-Received: from [192.168.1.36] (14.red-83-35-25.dynamicip.rima-tde.net.
- [83.35.25.14])
- by smtp.gmail.com with ESMTPSA id c7sm3759781wmq.13.2021.09.15.01.51.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Sep 2021 01:51:57 -0700 (PDT)
-Subject: Re: Deprecate 32-bit hosts? (was: Re: [PULL 14/14] hw/arm/aspeed: Add
- Fuji machine type)
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQQrK-0001No-T3
+ for qemu-arm@nongnu.org; Wed, 15 Sep 2021 05:05:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59611)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mQQrI-0005zv-37
+ for qemu-arm@nongnu.org; Wed, 15 Sep 2021 05:05:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631696730;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FPqhrRbo5g3BvXLeOdr0SMj6MFLIYdR412ZBL+w1vMk=;
+ b=ait/TKpBBle3pPeU+Z26DnNXrRHqB/BTP30vxUwu+oZFvDxDwaGOydsstPCFXfAfB9OY68
+ A8C1KmYM5XhJMJaUncG94frjJt99HreyaUkE9dzy+Ie899Uv9ntXkB/DRFtCpk0LzKopTJ
+ jlV1boSOqYh1PcnPuOb5T8Yldj0lLnY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-111-9No6J7jpP4KoNqZKTaAfow-1; Wed, 15 Sep 2021 05:05:26 -0400
+X-MC-Unique: 9No6J7jpP4KoNqZKTaAfow-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75B62802923;
+ Wed, 15 Sep 2021 09:05:19 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.233])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3226C196E2;
+ Wed, 15 Sep 2021 09:05:14 +0000 (UTC)
+Date: Wed, 15 Sep 2021 10:05:11 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: Deprecate 32-bit hosts? (was: Re: [PULL 14/14] hw/arm/aspeed:
+ Add Fuji machine type)
+Message-ID: <YUG3R/TSH7bAJhVg@redhat.com>
 References: <20210913161304.3805652-1-clg@kaod.org>
  <20210913161304.3805652-15-clg@kaod.org>
  <88c26520-6b87-e7a2-ac78-c1c92477c814@kaod.org>
@@ -95,25 +93,26 @@ References: <20210913161304.3805652-1-clg@kaod.org>
  <1949e204-1bce-f15b-553b-1b42b41e3e08@linaro.org>
  <ee5d379f-a792-aae1-370a-b5f21582ae58@redhat.com>
  <YUGw1v20jNRxq2zH@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a7a8ee29-cfc5-fec4-30fc-761df76107da@amsat.org>
-Date: Wed, 15 Sep 2021 10:51:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ <a7a8ee29-cfc5-fec4-30fc-761df76107da@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <YUGw1v20jNRxq2zH@redhat.com>
+In-Reply-To: <a7a8ee29-cfc5-fec4-30fc-761df76107da@amsat.org>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.969,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.398,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -127,7 +126,8 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Andrew Jeffery <andrew@aj.id.au>, Michael Tokarev <mjt@tls.msk.ru>,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -135,67 +135,74 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Richard W.M. Jones" <rjones@redhat.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
  Peter Delevoryas <pdel@fb.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+ Stefan Weil <sw@weilnetz.de>, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KWPjaSWZ+P/u
+X-TUID: pigx0GVZqQ5l
 
-On 9/15/21 10:37 AM, Daniel P. Berrangé wrote:
-> On Wed, Sep 15, 2021 at 09:42:48AM +0200, Thomas Huth wrote:
->> On 14/09/2021 17.22, Richard Henderson wrote:
->>> On 9/14/21 5:26 AM, Peter Maydell wrote:
->>>> (2) RAM blocks should have a length that fits inside a
->>>>      signed 32-bit type on 32-bit hosts (at least I assume this
->>>>      is where the 2047MB limit is coming from; in theory this ought
->>>>      to be improveable but auditing the code for mishandling of
->>>>      RAMblock sizes to ensure we weren't accidentally stuffing
->>>>      their size into a signed 'long' somewhere would be kind
->>>>      of painful)
->>>
->>> Recalling that the win64 abi model is p64, i.e. 'long' is still 32-bit
->>> while pointers are 64-bit, how close do we think we are to this being
->>> fixed already?
->>>
->>>> Even if we did fix (2) we'd need to compromise on (3)
->>>> sometimes still -- if a board has 4GB of RAM that's
->>>> not going to fit in 32 bits regardless. But we would be
->>>> able to let boards with 2GB have 2GB.
->>>
->>> I'm not opposed to deprecating 32-bit hosts...  ;-)
->>
->> I think we should consider this again, indeed. Plain 32-bit CPUs are quite
->> seldom these days, aren't they? And I think we urgently need to decrease the
->> amount of things that we have to test and maintain in our CI and developer
->> branches... So is there still a really really compelling reason to keep
->> 32-bit host support alive?
+On Wed, Sep 15, 2021 at 10:51:56AM +0200, Philippe Mathieu-Daudé wrote:
+> On 9/15/21 10:37 AM, Daniel P. Berrangé wrote:
+> > On Wed, Sep 15, 2021 at 09:42:48AM +0200, Thomas Huth wrote:
+> >> On 14/09/2021 17.22, Richard Henderson wrote:
+> >>> On 9/14/21 5:26 AM, Peter Maydell wrote:
+> >>>> (2) RAM blocks should have a length that fits inside a
+> >>>>      signed 32-bit type on 32-bit hosts (at least I assume this
+> >>>>      is where the 2047MB limit is coming from; in theory this ought
+> >>>>      to be improveable but auditing the code for mishandling of
+> >>>>      RAMblock sizes to ensure we weren't accidentally stuffing
+> >>>>      their size into a signed 'long' somewhere would be kind
+> >>>>      of painful)
+> >>>
+> >>> Recalling that the win64 abi model is p64, i.e. 'long' is still 32-bit
+> >>> while pointers are 64-bit, how close do we think we are to this being
+> >>> fixed already?
+> >>>
+> >>>> Even if we did fix (2) we'd need to compromise on (3)
+> >>>> sometimes still -- if a board has 4GB of RAM that's
+> >>>> not going to fit in 32 bits regardless. But we would be
+> >>>> able to let boards with 2GB have 2GB.
+> >>>
+> >>> I'm not opposed to deprecating 32-bit hosts...  ;-)
+> >>
+> >> I think we should consider this again, indeed. Plain 32-bit CPUs are quite
+> >> seldom these days, aren't they? And I think we urgently need to decrease the
+> >> amount of things that we have to test and maintain in our CI and developer
+> >> branches... So is there still a really really compelling reason to keep
+> >> 32-bit host support alive?
+> > 
+> > I think it probably depends on the architecture to some extent.
+> > 
+> > i386 is possibly getting rare enough to consider dropping, though
+> > IIUC, KVM in the kernel still supports it.  Would feel odd to drop
+> > it in QEMU if the kernel still thinks it is popular enough to keep
+> > KVM support.
+> > 
+> > armv7 feels like it is relatively common as 64-bit didn't arrive
+> > in widespread use until relatively recent times compared to x86_64.
+> > KVM dropped armv7, but then hardware for that was never widespread,
+> > so armv7 was always TCG dominated
+> > 
+> > Other 32-bit arches were/are always rare.
 > 
-> I think it probably depends on the architecture to some extent.
-> 
-> i386 is possibly getting rare enough to consider dropping, though
-> IIUC, KVM in the kernel still supports it.  Would feel odd to drop
-> it in QEMU if the kernel still thinks it is popular enough to keep
-> KVM support.
-> 
-> armv7 feels like it is relatively common as 64-bit didn't arrive
-> in widespread use until relatively recent times compared to x86_64.
-> KVM dropped armv7, but then hardware for that was never widespread,
-> so armv7 was always TCG dominated
-> 
-> Other 32-bit arches were/are always rare.
+> While I could understand there are rare uses of system emulation on
+> 32-bit hosts, I still believe user-emulation is used, but would like
+> to be proven to the contrary. With that in mind, I'm not sure removing
+> sysemu on 32-bit hosts is worthful. Maybe we should ask distribution
+> maintainers first, then eventually poll the community? Or start with
+> a deprecation warning?
 
-While I could understand there are rare uses of system emulation on
-32-bit hosts, I still believe user-emulation is used, but would like
-to be proven to the contrary. With that in mind, I'm not sure removing
-sysemu on 32-bit hosts is worthful. Maybe we should ask distribution
-maintainers first, then eventually poll the community? Or start with
-a deprecation warning?
+Well Debian still supports arm7, i686, mips officially, and several
+more unofficially, so that's an easy answer from that side.
 
->> Could we maybe also decrease the amount of targets, i.e. merge
->> qemu-system-x86_64 and qemu-system-i386, merge qemu-system-ppc64 and
->> qemu-system-ppc, etc. where it makes sense (i.e. where one of the binaries
->> is a superset of the other)?
-> 
-> Regards,
-> Daniel
-> 
+Fedora only has arm7, having dropped i686 a while ago.
+
+I don't have insight into usage of QEMU on any platforms breakdown
+though.
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

@@ -1,94 +1,83 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1006419lfp;
-        Tue, 14 Sep 2021 13:03:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwYVnc80phxNhip7JkCCbQsGVPIj79B2x0jpm5pkO0s5UaET84oPEEHrji40mjys2xGIfap
-X-Received: by 2002:a17:906:8450:: with SMTP id e16mr20895807ejy.305.1631649818070;
-        Tue, 14 Sep 2021 13:03:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631649818; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1226383lfp;
+        Tue, 14 Sep 2021 18:48:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwl3CHucP22OV+4uGpycmY5io9wE/bNbiVSazd4ToQXX8o5vr0fY+BppkkrF5Ui5I7Gz6Tt
+X-Received: by 2002:a37:506:: with SMTP id 6mr7731731qkf.15.1631670531207;
+        Tue, 14 Sep 2021 18:48:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631670531; cv=none;
         d=google.com; s=arc-20160816;
-        b=KrVVvgR0hcWxoQZW1ElXzT7ySzmHdx1Y8ghGg4w9VGDqN6HJ0zJ+qLmXSqlJKPiOS0
-         2v2/3xJdPbpn9bFtVYuNPQ/0OQo1m9VVF10EXrvjfdD7SdW4xTuzkygtxOy95Hdd5v18
-         2CSikQFP/4FsuE9OPbyGU4XhuWeS0X2Hbh+AzlV3J0Hx+sO7e7hh0GUd1l3ntlywAsgo
-         qWIyIq7JIoPPDTprGfHt45kLJZ4CmkrF5Du/PXWg9Uy0vIOxt7Z0UgtZh/i/+q0Uvsrz
-         KaIoJw+8Q9rxs8gUlo2qCRi9gvjxMIWER9U+FdpoIKLv3Wr4hyMvwIvg3vbwxnKfiuHv
-         B6GQ==
+        b=WhoPJmM9p+tPEZhiUiktDBYg2OZVyANVo9sYnNihW117El6ZM5NHrGuz9Dw4jYCo85
+         3Uh6MTigAXd2ZCVBxO0kKzLI+5fa2+P8kGoRBUHc0AxcywX2NAfAhbdKygJvNvYlzAqe
+         xggezg2oMfC8N1f+q+PJ/1Atxl85Rmfs0aF4hmeVTGFfDFKSQ3kcqT6Pn6gPqgA4BIG+
+         Jo7a/RYVHa1Rw9MuY0cVNK2PTZzhX8uRDw0a4Qk9XVmDbSjuKpHDMuyiC2rf0LsxIzfR
+         t4UnQ33LE/8V07aZ+aMvoHqeAkIlEF/lFN1YeTVqRGb0gh88N7FPaRJRb+sz9+WuhwGG
+         SIyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=jbY3/j2V4xpHlec18Zh+B+UCigYAatMYo5P7vsjCE/g=;
-        b=R9MC2gC0rcNcIo5EN6WqbJYUgP5dCGnFmg1/AUHvQUhfPWPHVdfM7o/A2GNkPm549w
-         GMq7YiGx0cQY1Y0KsFMdAzkADaisLf41tAAYVe5v81I6DNTCRul+o3rS957NtH49HQxX
-         wYWZ0CWrFEx30nL4J8Vsi2U4FhI4aggA/OIh8RWGS8+yxa6UmXsJKwRkePPKoh4sXoj9
-         gE0LQxhtpBJVgbXuelhsMZU64lVU21i2MlGKpxCNv86wdMivROUq2hLDpTJX1eV32c8A
-         C5VLyRWd6Z9g9fdPvjhoI2P1eV+FL9uGiPhv0PKpKN4WBYvdTfnYE0nPvUYSbv3N3hqF
-         +G4g==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=NwndZtTLOjUYyi7djQs5a8xGpidoGLI0MTf/YJl8xX8=;
+        b=hDRq7vsHgMPcAkeogKWkSprgoR1wvq0Zal4d7/1+1daHI6YkhYe/+KdRKnpdA3Ucge
+         Mir3UMul2D14s/DMnc/mlFV1Wk0Re20QYHD3g2GJdxbO32Y9JQIINR2BfJ+f5rwLq5xj
+         BPicOBUMUsXL/hVmEMA7h7MzN5CkS5OjyVTJytYCbdUEYEs5cGDY7eEbFWOaTs521yDN
+         DRNQnYiyk89xeERDmUL7tFkA6BLXb8TLidBV6SBj+2u6HzOj5p4feOvV5Yo5QIlFUZkM
+         ldqnzY+0n89Jh+Tqt2jAlzg4Au4hv4Q2V7qDURgMfC6RhT/8/rr3fDuy5EmpEMQQQQYP
+         CU1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=m7qhXllq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4si8935292edi.396.2021.09.14.13.03.37
+        by mx.google.com with ESMTPS id d15si7946742qtg.300.2021.09.14.18.48.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Sep 2021 13:03:38 -0700 (PDT)
+        Tue, 14 Sep 2021 18:48:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=m7qhXllq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47942 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQEeX-0004yL-1a
-	for alex.bennee@linaro.org; Tue, 14 Sep 2021 16:03:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47714)
+	id 1mQK2c-00024Q-FB
+	for alex.bennee@linaro.org; Tue, 14 Sep 2021 21:48:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40326)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQEbi-0002uu-LR; Tue, 14 Sep 2021 16:00:43 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:54369)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1mQK1k-00022b-E0; Tue, 14 Sep 2021 21:47:56 -0400
+Received: from ozlabs.org ([203.11.71.1]:40587)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQEbg-0004gH-3n; Tue, 14 Sep 2021 16:00:42 -0400
-Received: from [192.168.100.1] ([82.142.27.6]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MUGqT-1mI9ab1vIh-00RFIs; Tue, 14 Sep 2021 21:59:46 +0200
-Subject: Re: [PATCH v2 44/53] target/m68k: convert to use format_tlb callback
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1mQK1h-0000O2-4y; Tue, 14 Sep 2021 21:47:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gibson.dropbear.id.au; s=201602; t=1631670453;
+ bh=NwndZtTLOjUYyi7djQs5a8xGpidoGLI0MTf/YJl8xX8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=m7qhXllqRNNhq4fLcTX7eS5ebYpfq4aZMQ7AVceLwEcCjESISKQ2yHBx40meq9rDK
+ BuSE4PJJuRRNUbuavz2Uw/Ra199mIHehu84BSLY6CNJCYren38Z86jTHsP9Oa/3uPS
+ GWQnbuX+0mBzYOZrnIkEny08+AgDi/3gc9RLoKN4=
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4H8NPx18JXz9sW4; Wed, 15 Sep 2021 11:47:33 +1000 (AEST)
+Date: Wed, 15 Sep 2021 11:41:28 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Subject: Re: [PATCH v2 50/53] monitor: merge duplicate "info tlb" handlers
+Message-ID: <YUFPSJCIsUlp5L4Y@yekko>
 References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-45-berrange@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <dac8be11-2b57-9cf5-2718-c62274ce7328@vivier.eu>
-Date: Tue, 14 Sep 2021 21:59:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ <20210914142042.1655100-51-berrange@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210914142042.1655100-45-berrange@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TutcCnTH9N1i7D06wD7NxBiUN+qabbWHyeNC5b/7POwcV4o1XIo
- n5J1bt8VEVaEDASZW0oSSUtUlAVno7nf3nGY3gulWKMZYwHgWSufyB6O7O3RpdzwO9TZPGC
- x5Pqm7W/16yczAH0kTIvb2zKXgIreafniYDqDOKQpMMb4AO/w4oq862j1GnLb5l7qrpNMyZ
- f1eyvFIKmuPS+MREBrG7w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:F1VSFmHyMw8=:gew1WpHN0+SwPO/HLYC8CV
- zhruFF+o3T8yZjW7IuhEqck7/qeyaSuqTIIQrEC/N6O2BdmTT3ig/49xvp1YXZ3dSZ+VF+8Fu
- aShvxF6xhlRQyngSphcO9BKUvH5KxbwNiWavLJ0Sqjp5xer7+/CpzhgsZVa6outTu1ldnri0u
- rVkcMxU6+n8FD4GthfYJU3xnxfA7VTtVG05gl/DrIaWKfXPX8TIlyPNRaETO2cSVWg/kFvssZ
- sYg10FWnKhRvau3cUYROl1jSCKa+TuTS6EfeBf34acc0utqWvX/Vy96zWdBXXL67gzcaWU5qf
- m6mL2cQmNHyOGPWq48Kv9mZNiJ61rY1C1KYfrUF7E9+urH9YPtm+5j/l1axBoqCi6SRN7n+GC
- HTe/RQoImLwOQdSU5jmI6VyD/tTCVgl8ObihcDQRmYYdhYx0COjxcye6lDtHYVe+mUTN8Y/qt
- l3pL7Md78LtaBi1cApFhbyNVds8skWK5Pq8EqCJVSVn1vX+FO3c8aaQGEsco6cq4YYCYebWLh
- CRxBNvFQ+wX4ViBWw/dz1fkpiNnnDhTj6sUBHljDbJKe5h8LiS7hSuo3xt0TzbD4VpsD3l2UC
- fa7bfrZeBdetXr3zDJv4dXoslIuCVyJR+K+gsIn3vYxggUgBJOY4Oh5bm8Y0OddGMFGPPdGi6
- ZVQx3y2obBS6WYwcZk5l10Y91AAthKu9XhKQNKI2OGwQBAn7DfgFBIU3BpKcHrDpDpXv5C1RB
- RvxlVIhpVxKWxjEJcnZ4cnjmjI4dPPfAPg4TOw==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.969,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="a/JNFcIeN8xVqrhe"
+Content-Disposition: inline
+In-Reply-To: <20210914142042.1655100-51-berrange@redhat.com>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,349 +90,326 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Peter Xu <peterx@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
  Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
  qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sV33AYYm1QRL
+X-TUID: rAuJVbFJhjAy
 
-Le 14/09/2021 à 16:20, Daniel P. Berrangé a écrit :
-> Change the "info tlb" implementation to use the format_tlb callback.
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+--a/JNFcIeN8xVqrhe
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Sep 14, 2021 at 03:20:39PM +0100, Daniel P. Berrang=E9 wrote:
+> Now that all target architectures are converted to use the "format_tlb"
+> callback, we can merge all the duplicate "info tlb" handlers into one
+> and remove the architecture condition on the command.
+>=20
+> Signed-off-by: Daniel P. Berrang=E9 <berrange@redhat.com>
+
+ppc parts
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  target/m68k/cpu.c     |   3 +
->  target/m68k/cpu.h     |   3 +-
->  target/m68k/helper.c  | 132 ++++++++++++++++++++++--------------------
->  target/m68k/monitor.c |  11 +++-
->  4 files changed, 82 insertions(+), 67 deletions(-)
-> 
-> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-> index 4ccf572a68..8f143eb540 100644
-> --- a/target/m68k/cpu.c
-> +++ b/target/m68k/cpu.c
-> @@ -537,6 +537,9 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
->      cc->class_by_name = m68k_cpu_class_by_name;
->      cc->has_work = m68k_cpu_has_work;
->      cc->format_state = m68k_cpu_format_state;
-> +#ifndef CONFIG_USER_ONLY
-> +    cc->format_tlb = m68k_cpu_format_tlb;
-> +#endif
->      cc->set_pc = m68k_cpu_set_pc;
->      cc->gdb_read_register = m68k_cpu_gdb_read_register;
->      cc->gdb_write_register = m68k_cpu_gdb_write_register;
-> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-> index b0641f6d0d..f2d777a1ba 100644
-> --- a/target/m68k/cpu.h
-> +++ b/target/m68k/cpu.h
-> @@ -169,6 +169,7 @@ struct M68kCPU {
->  void m68k_cpu_do_interrupt(CPUState *cpu);
->  bool m68k_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void m68k_cpu_format_state(CPUState *cpu, GString *buf, int flags);
-> +void m68k_cpu_format_tlb(CPUState *cpu, GString *buf);
->  hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int m68k_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int m68k_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> @@ -612,6 +613,4 @@ static inline void cpu_get_tb_cpu_state(CPUM68KState *env, target_ulong *pc,
->      }
+>  hmp-commands-info.hx         |  3 ---
+>  include/monitor/hmp-target.h |  1 -
+>  monitor/misc.c               | 15 +++++++++++++++
+>  target/i386/monitor.c        | 15 ---------------
+>  target/m68k/monitor.c        | 15 ---------------
+>  target/nios2/monitor.c       | 15 ---------------
+>  target/ppc/monitor.c         | 15 ---------------
+>  target/sh4/monitor.c         | 15 ---------------
+>  target/sparc/monitor.c       | 16 ----------------
+>  target/xtensa/monitor.c      | 15 ---------------
+>  10 files changed, 15 insertions(+), 110 deletions(-)
+>=20
+> diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
+> index f8312342cd..7bd1e04d46 100644
+> --- a/hmp-commands-info.hx
+> +++ b/hmp-commands-info.hx
+> @@ -206,8 +206,6 @@ SRST
+>      Show PCI information.
+>  ERST
+> =20
+> -#if defined(TARGET_I386) || defined(TARGET_SH4) || defined(TARGET_SPARC)=
+ || \
+> -    defined(TARGET_PPC) || defined(TARGET_XTENSA) || defined(TARGET_M68K)
+>      {
+>          .name       =3D "tlb",
+>          .args_type  =3D "",
+> @@ -215,7 +213,6 @@ ERST
+>          .help       =3D "show virtual to physical memory mappings",
+>          .cmd        =3D hmp_info_tlb,
+>      },
+> -#endif
+> =20
+>  SRST
+>    ``info tlb``
+> diff --git a/include/monitor/hmp-target.h b/include/monitor/hmp-target.h
+> index df79ad3355..04e02e8895 100644
+> --- a/include/monitor/hmp-target.h
+> +++ b/include/monitor/hmp-target.h
+> @@ -45,7 +45,6 @@ CPUArchState *mon_get_cpu_env(Monitor *mon);
+>  CPUState *mon_get_cpu(Monitor *mon);
+> =20
+>  void hmp_info_mem(Monitor *mon, const QDict *qdict);
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict);
+>  void hmp_mce(Monitor *mon, const QDict *qdict);
+>  void hmp_info_local_apic(Monitor *mon, const QDict *qdict);
+> =20
+> diff --git a/monitor/misc.c b/monitor/misc.c
+> index 6b07efdddd..c7d138914d 100644
+> --- a/monitor/misc.c
+> +++ b/monitor/misc.c
+> @@ -936,6 +936,21 @@ static void hmp_info_mtree(Monitor *mon, const QDict=
+ *qdict)
+>      mtree_info(flatview, dispatch_tree, owner, disabled);
 >  }
->  
-> -void dump_mmu(CPUM68KState *env);
-> -
->  #endif
-> diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-> index 137a3e1a3d..050a27d21c 100644
-> --- a/target/m68k/helper.c
-> +++ b/target/m68k/helper.c
-> @@ -25,6 +25,7 @@
->  #include "exec/helper-proto.h"
->  #include "fpu/softfloat.h"
->  #include "qemu/qemu-print.h"
-> +#include "qapi/error.h"
->  
->  #define SIGNBIT (1u << 31)
->  
-> @@ -483,27 +484,28 @@ void m68k_switch_sp(CPUM68KState *env)
->  /* MMU: 68040 only */
->  
->  static void print_address_zone(uint32_t logical, uint32_t physical,
-> -                               uint32_t size, int attr)
-> +                               uint32_t size, int attr, GString *buf)
->  {
-> -    qemu_printf("%08x - %08x -> %08x - %08x %c ",
-> -                logical, logical + size - 1,
-> -                physical, physical + size - 1,
-> -                attr & 4 ? 'W' : '-');
-> +    g_string_append_printf(buf, "%08x - %08x -> %08x - %08x %c ",
-> +                           logical, logical + size - 1,
-> +                           physical, physical + size - 1,
-> +                           attr & 4 ? 'W' : '-');
->      size >>= 10;
->      if (size < 1024) {
-> -        qemu_printf("(%d KiB)\n", size);
-> +        g_string_append_printf(buf, "(%d KiB)\n", size);
->      } else {
->          size >>= 10;
->          if (size < 1024) {
-> -            qemu_printf("(%d MiB)\n", size);
-> +            g_string_append_printf(buf, "(%d MiB)\n", size);
->          } else {
->              size >>= 10;
-> -            qemu_printf("(%d GiB)\n", size);
-> +            g_string_append_printf(buf, "(%d GiB)\n", size);
->          }
->      }
->  }
->  
-> -static void dump_address_map(CPUM68KState *env, uint32_t root_pointer)
-> +static void dump_address_map(CPUM68KState *env, uint32_t root_pointer,
-> +                             GString *buf)
->  {
->      int i, j, k;
->      int tic_size, tic_shift;
-> @@ -573,7 +575,8 @@ static void dump_address_map(CPUM68KState *env, uint32_t root_pointer)
->                          size = last_logical + (1 << tic_shift) -
->                                 first_logical;
->                          print_address_zone(first_logical,
-> -                                           first_physical, size, last_attr);
-> +                                           first_physical, size, last_attr,
-> +                                           buf);
->                      }
->                      first_logical = logical;
->                      first_physical = physical;
-> @@ -583,125 +586,130 @@ static void dump_address_map(CPUM68KState *env, uint32_t root_pointer)
->      }
->      if (first_logical != logical || (attr & 4) != (last_attr & 4)) {
->          size = logical + (1 << tic_shift) - first_logical;
-> -        print_address_zone(first_logical, first_physical, size, last_attr);
-> +        print_address_zone(first_logical, first_physical, size, last_attr, buf);
->      }
->  }
->  
->  #define DUMP_CACHEFLAGS(a) \
->      switch (a & M68K_DESC_CACHEMODE) { \
->      case M68K_DESC_CM_WRTHRU: /* cachable, write-through */ \
-> -        qemu_printf("T"); \
-> +        g_string_append_printf(buf, "T"); \
->          break; \
->      case M68K_DESC_CM_COPYBK: /* cachable, copyback */ \
-> -        qemu_printf("C"); \
-> +        g_string_append_printf(buf, "C"); \
->          break; \
->      case M68K_DESC_CM_SERIAL: /* noncachable, serialized */ \
-> -        qemu_printf("S"); \
-> +        g_string_append_printf(buf, "S"); \
->          break; \
->      case M68K_DESC_CM_NCACHE: /* noncachable */ \
-> -        qemu_printf("N"); \
-> +        g_string_append_printf(buf, "N"); \
->          break; \
->      }
->  
-> -static void dump_ttr(uint32_t ttr)
-> +static void dump_ttr(uint32_t ttr, GString *buf)
->  {
->      if ((ttr & M68K_TTR_ENABLED) == 0) {
-> -        qemu_printf("disabled\n");
-> +        g_string_append_printf(buf, "disabled\n");
->          return;
->      }
-> -    qemu_printf("Base: 0x%08x Mask: 0x%08x Control: ",
-> -                ttr & M68K_TTR_ADDR_BASE,
-> -                (ttr & M68K_TTR_ADDR_MASK) << M68K_TTR_ADDR_MASK_SHIFT);
-> +    g_string_append_printf(buf, "Base: 0x%08x Mask: 0x%08x Control: ",
-> +                           ttr & M68K_TTR_ADDR_BASE,
-> +                           (ttr & M68K_TTR_ADDR_MASK) <<
-> +                           M68K_TTR_ADDR_MASK_SHIFT);
->      switch (ttr & M68K_TTR_SFIELD) {
->      case M68K_TTR_SFIELD_USER:
-> -        qemu_printf("U");
-> +        g_string_append_printf(buf, "U");
->          break;
->      case M68K_TTR_SFIELD_SUPER:
-> -        qemu_printf("S");
-> +        g_string_append_printf(buf, "S");
->          break;
->      default:
-> -        qemu_printf("*");
-> +        g_string_append_printf(buf, "*");
->          break;
->      }
->      DUMP_CACHEFLAGS(ttr);
->      if (ttr & M68K_DESC_WRITEPROT) {
-> -        qemu_printf("R");
-> +        g_string_append_printf(buf, "R");
->      } else {
-> -        qemu_printf("W");
-> +        g_string_append_printf(buf, "W");
->      }
-> -    qemu_printf(" U: %d\n", (ttr & M68K_DESC_USERATTR) >>
-> -                               M68K_DESC_USERATTR_SHIFT);
-> +    g_string_append_printf(buf, " U: %d\n", (ttr & M68K_DESC_USERATTR) >>
-> +                           M68K_DESC_USERATTR_SHIFT);
->  }
->  
-> -void dump_mmu(CPUM68KState *env)
+> =20
+> +static void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> +{
+> +    g_autoptr(GString) buf =3D g_string_new("");
+> +    CPUState *cpu =3D mon_get_cpu(mon);
 > +
-> +void m68k_cpu_format_tlb(CPUState *cpu, GString *buf)
->  {
-> +    CPUM68KState *env = cpu->env_ptr;
-> +
->      if ((env->mmu.tcr & M68K_TCR_ENABLED) == 0) {
-> -        qemu_printf("Translation disabled\n");
-> +        g_string_append_printf(buf, "Translation disabled\n");
->          return;
->      }
-> -    qemu_printf("Page Size: ");
-> +    g_string_append_printf(buf, "Page Size: ");
->      if (env->mmu.tcr & M68K_TCR_PAGE_8K) {
-> -        qemu_printf("8kB\n");
-> +        g_string_append_printf(buf, "8kB\n");
->      } else {
-> -        qemu_printf("4kB\n");
-> +        g_string_append_printf(buf, "4kB\n");
->      }
->  
-> -    qemu_printf("MMUSR: ");
-> +    g_string_append_printf(buf, "MMUSR: ");
->      if (env->mmu.mmusr & M68K_MMU_B_040) {
-> -        qemu_printf("BUS ERROR\n");
-> +        g_string_append_printf(buf, "BUS ERROR\n");
->      } else {
-> -        qemu_printf("Phy=%08x Flags: ", env->mmu.mmusr & 0xfffff000);
-> +        g_string_append_printf(buf, "Phy=%08x Flags: ",
-> +                               env->mmu.mmusr & 0xfffff000);
->          /* flags found on the page descriptor */
->          if (env->mmu.mmusr & M68K_MMU_G_040) {
-> -            qemu_printf("G"); /* Global */
-> +            g_string_append_printf(buf, "G"); /* Global */
->          } else {
-> -            qemu_printf(".");
-> +            g_string_append_printf(buf, ".");
->          }
->          if (env->mmu.mmusr & M68K_MMU_S_040) {
-> -            qemu_printf("S"); /* Supervisor */
-> +            g_string_append_printf(buf, "S"); /* Supervisor */
->          } else {
-> -            qemu_printf(".");
-> +            g_string_append_printf(buf, ".");
->          }
->          if (env->mmu.mmusr & M68K_MMU_M_040) {
-> -            qemu_printf("M"); /* Modified */
-> +            g_string_append_printf(buf, "M"); /* Modified */
->          } else {
-> -            qemu_printf(".");
-> +            g_string_append_printf(buf, ".");
->          }
->          if (env->mmu.mmusr & M68K_MMU_WP_040) {
-> -            qemu_printf("W"); /* Write protect */
-> +            g_string_append_printf(buf, "W"); /* Write protect */
->          } else {
-> -            qemu_printf(".");
-> +            g_string_append_printf(buf, ".");
->          }
->          if (env->mmu.mmusr & M68K_MMU_T_040) {
-> -            qemu_printf("T"); /* Transparent */
-> +            g_string_append_printf(buf, "T"); /* Transparent */
->          } else {
-> -            qemu_printf(".");
-> +            g_string_append_printf(buf, ".");
->          }
->          if (env->mmu.mmusr & M68K_MMU_R_040) {
-> -            qemu_printf("R"); /* Resident */
-> +            g_string_append_printf(buf, "R"); /* Resident */
->          } else {
-> -            qemu_printf(".");
-> +            g_string_append_printf(buf, ".");
->          }
-> -        qemu_printf(" Cache: ");
-> +        g_string_append_printf(buf, " Cache: ");
->          DUMP_CACHEFLAGS(env->mmu.mmusr);
-> -        qemu_printf(" U: %d\n", (env->mmu.mmusr >> 8) & 3);
-> -        qemu_printf("\n");
-> +        g_string_append_printf(buf, " U: %d\n", (env->mmu.mmusr >> 8) & 3);
-> +        g_string_append_printf(buf, "\n");
->      }
->  
-> -    qemu_printf("ITTR0: ");
-> -    dump_ttr(env->mmu.ttr[M68K_ITTR0]);
-> -    qemu_printf("ITTR1: ");
-> -    dump_ttr(env->mmu.ttr[M68K_ITTR1]);
-> -    qemu_printf("DTTR0: ");
-> -    dump_ttr(env->mmu.ttr[M68K_DTTR0]);
-> -    qemu_printf("DTTR1: ");
-> -    dump_ttr(env->mmu.ttr[M68K_DTTR1]);
-> +    g_string_append_printf(buf, "ITTR0: ");
-> +    dump_ttr(env->mmu.ttr[M68K_ITTR0], buf);
-> +    g_string_append_printf(buf, "ITTR1: ");
-> +    dump_ttr(env->mmu.ttr[M68K_ITTR1], buf);
-> +    g_string_append_printf(buf, "DTTR0: ");
-> +    dump_ttr(env->mmu.ttr[M68K_DTTR0], buf);
-> +    g_string_append_printf(buf, "DTTR1: ");
-> +    dump_ttr(env->mmu.ttr[M68K_DTTR1], buf);
->  
-> -    qemu_printf("SRP: 0x%08x\n", env->mmu.srp);
-> -    dump_address_map(env, env->mmu.srp);
-> +    g_string_append_printf(buf, "SRP: 0x%08x\n", env->mmu.srp);
-> +    dump_address_map(env, env->mmu.srp, buf);
->  
-> -    qemu_printf("URP: 0x%08x\n", env->mmu.urp);
-> -    dump_address_map(env, env->mmu.urp);
-> +    g_string_append_printf(buf, "URP: 0x%08x\n", env->mmu.urp);
-> +    dump_address_map(env, env->mmu.urp, buf);
->  }
->  
->  static int check_TTR(uint32_t ttr, int *prot, target_ulong addr,
-> diff --git a/target/m68k/monitor.c b/target/m68k/monitor.c
-> index 2bdf6acae0..003a665246 100644
-> --- a/target/m68k/monitor.c
-> +++ b/target/m68k/monitor.c
-> @@ -9,17 +9,22 @@
->  #include "cpu.h"
->  #include "monitor/hmp-target.h"
->  #include "monitor/monitor.h"
-> +#include "qapi/error.h"
-> +#include "qapi/qapi-commands-machine-target.h"
->  
->  void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
-> -    CPUArchState *env1 = mon_get_cpu_env(mon);
-> +    g_autoptr(GString) buf = g_string_new("");
-> +    CPUState *cpu = mon_get_cpu(mon);
->  
-> -    if (!env1) {
 > +    if (!cpu) {
->          monitor_printf(mon, "No CPU available\n");
->          return;
->      }
->  
-> -    dump_mmu(env1);
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+> +
 > +    cpu_format_tlb(cpu, buf);
 > +
 > +    monitor_printf(mon, "%s", buf->str);
+> +}
+> +
+>  static void hmp_info_profile(Monitor *mon, const QDict *qdict)
+>  {
+>      Error *err =3D NULL;
+> diff --git a/target/i386/monitor.c b/target/i386/monitor.c
+> index 698fbbc80b..a7eb4205c7 100644
+> --- a/target/i386/monitor.c
+> +++ b/target/i386/monitor.c
+> @@ -248,21 +248,6 @@ void x86_cpu_format_tlb(CPUState *cpu, GString *buf)
+>      }
 >  }
->  
->  static const MonitorDef monitor_defs[] = {
-> 
+> =20
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> -{
+> -    g_autoptr(GString) buf =3D g_string_new("");
+> -    CPUState *cpu =3D mon_get_cpu(mon);
+> -
+> -    if (!cpu) {
+> -        monitor_printf(mon, "No CPU available\n");
+> -        return;
+> -    }
+> -
+> -    cpu_format_tlb(cpu, buf);
+> -
+> -    monitor_printf(mon, "%s", buf->str);
+> -}
+> -
+>  static void mem_print(Monitor *mon, CPUArchState *env,
+>                        hwaddr *pstart, int *plast_prot,
+>                        hwaddr end, int prot)
+> diff --git a/target/m68k/monitor.c b/target/m68k/monitor.c
+> index 003a665246..0dc729692b 100644
+> --- a/target/m68k/monitor.c
+> +++ b/target/m68k/monitor.c
+> @@ -12,21 +12,6 @@
+>  #include "qapi/error.h"
+>  #include "qapi/qapi-commands-machine-target.h"
+> =20
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> -{
+> -    g_autoptr(GString) buf =3D g_string_new("");
+> -    CPUState *cpu =3D mon_get_cpu(mon);
+> -
+> -    if (!cpu) {
+> -        monitor_printf(mon, "No CPU available\n");
+> -        return;
+> -    }
+> -
+> -    cpu_format_tlb(cpu, buf);
+> -
+> -    monitor_printf(mon, "%s", buf->str);
+> -}
+> -
+>  static const MonitorDef monitor_defs[] =3D {
+>      { "d0", offsetof(CPUM68KState, dregs[0]) },
+>      { "d1", offsetof(CPUM68KState, dregs[1]) },
+> diff --git a/target/nios2/monitor.c b/target/nios2/monitor.c
+> index 99d35e8ef1..1180a32f80 100644
+> --- a/target/nios2/monitor.c
+> +++ b/target/nios2/monitor.c
+> @@ -26,18 +26,3 @@
+>  #include "monitor/monitor.h"
+>  #include "monitor/hmp-target.h"
+>  #include "monitor/hmp.h"
+> -
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> -{
+> -    g_autoptr(GString) buf =3D g_string_new("");
+> -    CPUState *cpu =3D mon_get_cpu(mon);
+> -
+> -    if (!cpu) {
+> -        monitor_printf(mon, "No CPU available\n");
+> -        return;
+> -    }
+> -
+> -    cpu_format_tlb(cpu, buf);
+> -
+> -    monitor_printf(mon, "%s", buf->str);
+> -}
+> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
+> index 401a36c2eb..3564fd5f45 100644
+> --- a/target/ppc/monitor.c
+> +++ b/target/ppc/monitor.c
+> @@ -65,21 +65,6 @@ static target_long monitor_get_tbl(Monitor *mon, const=
+ struct MonitorDef *md,
+>      return cpu_ppc_load_tbl(env);
+>  }
+> =20
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> -{
+> -    g_autoptr(GString) buf =3D g_string_new("");
+> -    CPUState *cpu =3D mon_get_cpu(mon);
+> -
+> -    if (!cpu) {
+> -        monitor_printf(mon, "No CPU available\n");
+> -        return;
+> -    }
+> -
+> -    cpu_format_tlb(cpu, buf);
+> -
+> -    monitor_printf(mon, "%s", buf->str);
+> -}
+> -
+>  const MonitorDef monitor_defs[] =3D {
+>      { "fpscr", offsetof(CPUPPCState, fpscr) },
+>      /* Next instruction pointer */
+> diff --git a/target/sh4/monitor.c b/target/sh4/monitor.c
+> index 5ccb95af93..d641d95316 100644
+> --- a/target/sh4/monitor.c
+> +++ b/target/sh4/monitor.c
+> @@ -53,18 +53,3 @@ void superh_cpu_format_tlb(CPUState *cpu, GString *buf)
+>          print_tlb(buf, i, &env->utlb[i]);
+>      }
+>  }
+> -
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> -{
+> -    g_autoptr(GString) buf =3D g_string_new("");
+> -    CPUState *cpu =3D mon_get_cpu(mon);
+> -
+> -    if (!cpu) {
+> -        monitor_printf(mon, "No CPU available\n");
+> -        return;
+> -    }
+> -
+> -    cpu_format_tlb(cpu, buf);
+> -
+> -    monitor_printf(mon, "%s", buf->str);
+> -}
+> diff --git a/target/sparc/monitor.c b/target/sparc/monitor.c
+> index cc7fe74e3e..0c51669c08 100644
+> --- a/target/sparc/monitor.c
+> +++ b/target/sparc/monitor.c
+> @@ -27,22 +27,6 @@
+>  #include "monitor/hmp-target.h"
+>  #include "monitor/hmp.h"
+> =20
+> -
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> -{
+> -    g_autoptr(GString) buf =3D g_string_new("");
+> -    CPUState *cpu =3D mon_get_cpu(mon);
+> -
+> -    if (!cpu) {
+> -        monitor_printf(mon, "No CPU available\n");
+> -        return;
+> -    }
+> -
+> -    cpu_format_tlb(cpu, buf);
+> -
+> -    monitor_printf(mon, "%s", buf->str);
+> -}
+> -
+>  #ifndef TARGET_SPARC64
+>  static target_long monitor_get_psr(Monitor *mon, const struct MonitorDef=
+ *md,
+>                                     int val)
+> diff --git a/target/xtensa/monitor.c b/target/xtensa/monitor.c
+> index 99d35e8ef1..1180a32f80 100644
+> --- a/target/xtensa/monitor.c
+> +++ b/target/xtensa/monitor.c
+> @@ -26,18 +26,3 @@
+>  #include "monitor/monitor.h"
+>  #include "monitor/hmp-target.h"
+>  #include "monitor/hmp.h"
+> -
+> -void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+> -{
+> -    g_autoptr(GString) buf =3D g_string_new("");
+> -    CPUState *cpu =3D mon_get_cpu(mon);
+> -
+> -    if (!cpu) {
+> -        monitor_printf(mon, "No CPU available\n");
+> -        return;
+> -    }
+> -
+> -    cpu_format_tlb(cpu, buf);
+> -
+> -    monitor_printf(mon, "%s", buf->str);
+> -}
 
-Acked-by: Laurent Vivier <laurent@vivier.eu>
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--a/JNFcIeN8xVqrhe
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmFBT0gACgkQbDjKyiDZ
+s5JCkQ//fbqmB3EVRceZI0ugxSzJRNRF+PHrSkMJO2IHOs8NRO2guAHi8Lp1Ish9
+FfwMbkYt5XMlVnmuq17jDc4HFQrISgAQCwkhS6J3P+CZtyLRf8sc8UMQ0VF/jAoS
+muTD/Gm94WAxsEL++e1SlIuZ8t1o9CwL/b8aOTMghTaij7ZB4JHtfo2d6zkVksoc
+RMzJNN5VXfnUqRKeeeMf9qbnydsazyRHWr/jsMktUc3G7HilLJhNT3vvPEfPlgK/
+ODqHO+8DyPrT5oCVUM1i5h0rk7VQCrSEDkNh0DKQePl8NYfW1P+fTgbhUY19fBAR
++V6qZLQNoCOkBN2wN+1Hz3v0fhF605eYO1bPBplRcL5zYyEy41McWTOOJ4YKLIrM
+M0UPfkyljLiDkNn8IlfNUcVW+KfgT64OoUMc9u40LRbm20I4ub3FL5ubRQqMvMHD
+xPVAcMdY/N8P6uIXEXVqYEd5I37seFldw4bTqzfaeD65vXvnOv0CAOwVgOZrkRzQ
+dWnJVFrBEsQsaxlePt2NQY368SxREv9Yqkhw4hBK66eG471LkpEVqzIJvB76tQBn
+JDwr7F4yMFIFRV+uj0PcBjMeiJ8ua7t9xcSqNq6GtW9/DOZ/LufgrE36Od9rffN0
+zT1KKEgM/iedA20p20EdyWfKvaYCI5OaM7QtVb3JPgIr1plPoSs=
+=Ir56
+-----END PGP SIGNATURE-----
+
+--a/JNFcIeN8xVqrhe--

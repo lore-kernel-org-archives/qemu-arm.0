@@ -1,127 +1,106 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1090209lfp;
-        Thu, 16 Sep 2021 05:48:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2CXk33K2d52TDHLZt0Cd4jx9oEWU1gitt+LR1WR86Bje9bycv98jUnaNlf9Ua50wOHb6L
-X-Received: by 2002:a05:6214:492:: with SMTP id ay18mr5217241qvb.4.1631796489315;
-        Thu, 16 Sep 2021 05:48:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631796489; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1091578lfp;
+        Thu, 16 Sep 2021 05:49:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz3W6MnMjPeLjzIL4mH17XLgWjHm1r/ptEMH3hlOI2tkJLF+jzDgtRJDA6w0UZpX/UEukR5
+X-Received: by 2002:a05:6214:6aa:: with SMTP id s10mr4892178qvz.56.1631796591491;
+        Thu, 16 Sep 2021 05:49:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631796591; cv=none;
         d=google.com; s=arc-20160816;
-        b=YhzCEGUsv3nQCbODe3m1cGaVkmSfqeaCPJzdKCetSuR5P3S8KvYxJ9HbKts399Vb71
-         maY8RcS+MI2HksaqKYC+BRddUyrue4zXRnwVPBVRtXxlCI95ymWL7jutEZephWYeQKBE
-         lw9/FUVE3VQSho4BUI9ixcytfeeY0XN5CFsLP0GXMiUPeg9fea0Mfdn0A+XGIJupwXuQ
-         K/3rC0KZhk028X8RiyWQ3D+uw4TkkXMnOV9Xc2NV5nTLh/REwRHpvXPxUy1MefjtKqis
-         mjICMI/J9Jtxdb367YyiayyEHxaKdgwv1VLrnOj5kJDx25CBli51YtTYPo4eWuMmtqS0
-         R3uA==
+        b=nCxEW8XjPxsIvuGdUklOwuXTKtNvFLEy9YshXz6pTjoy/JWRw3d8o+8Jvl4sVpXyU+
+         KjRv1yzqTUZFYhLVQER7MfaPV8zsef06Dv8Pa2ScZWik0R26XaZ/UstJfVUsQZ2qtJaK
+         pCPqpT/T3r+7/veC7RDhp3aIzyHKBzg6Uw1X/13PwelJQ4VvdzXzgBnQg7Zy3/b/t2i9
+         BxDaja7OC82wMJzTAmoEA+++IHHKECVMSfzs4KjPkkv/bF+uAUsIGrWE4srdTnI/LwzD
+         YeVzg43sMYN5l6zh4pV7OU1Xt4pT/usGxl14bqD66axDbR0cRFLcf+sKwSTA5H6BS8yG
+         InPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=sq6xk6J/AuSQdcGdolj1rTCNt1TW1Qp/WazMWosqU8o=;
-        b=Ox4d+LvGqoIgplqxQTWLjk+sVpU5WpoXBITHT0wQKG6c7aBoaEoXkWi7JPQzPFKTL9
-         2f615jziotpS7zM0/kxgrsOM/JgWoMaQkEdc7DicWqvfziaTbvD/+/D+ymJjppmD5rpQ
-         57Z+qOeWIAVb68+xU/1qGiEJtGMKvQZ0YUK+rEp66X/xWZ5TUo4ArzmZwYd2GYwFj4w9
-         XnVqfx62xFqhxHZYVqX7F9shJuvQOtm2NQSSEvHr5ys8CokyXLUOCu45LvGVHN+Glj8F
-         iRUff2VzlE8zLeYizkGZdtf7NL7Ekgk3AVyJq9Fj2TdqF4wDnT7iCXxJsspcORX/7ozF
-         GkPA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=L2Yvd/cgfHZHV5jXl0qKgtBYgx1SM1is6wGI6Lh7oXw=;
+        b=d7TV9DM45ly/QSfvRsG0+oH1nlJdHvgThhuMcjHW0y+ZqzyuZdNZTrNGL6F+dF5yxJ
+         /D5BwmThM1bi2hiU1s04eHEK7n8WkyZQxiIDPLe5TN/FcsnrPIPiGi8lh6/qa2qJJtLJ
+         rhkp6aCqNGxGoHyA7kpj7YqJZDO+giQy8WF7gEipoOy+jEk010sMpBpsJLF0NwW56Pqt
+         CntSzO76/XRK6Kv390kvBvrlPjeiHnMBye8Gn+SvM1XNiQ9dp2iZl0IsPrQhuRjeMsBi
+         2FS1UTLtVKIf/r9CU7Q67pxABJn3h3qMb32R3sYj9X4X0FBzux36ErxSn6KZRkjr5jSb
+         FfyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gzbs2i9L;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GFZH7ar4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r27si1687663qkk.385.2021.09.16.05.48.09
+        by mx.google.com with ESMTPS id w8si1633898qto.206.2021.09.16.05.49.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 05:48:09 -0700 (PDT)
+        Thu, 16 Sep 2021 05:49:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gzbs2i9L;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GFZH7ar4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50440 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53804 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQqoA-0001qR-5x
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 08:48:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50266)
+	id 1mQqpq-000495-U2
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 08:49:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51216)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mQqkm-00076b-HZ
- for qemu-devel@nongnu.org; Thu, 16 Sep 2021 08:44:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51821)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mQqkg-0001Xb-KV
- for qemu-devel@nongnu.org; Thu, 16 Sep 2021 08:44:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631796267;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sq6xk6J/AuSQdcGdolj1rTCNt1TW1Qp/WazMWosqU8o=;
- b=Gzbs2i9L+k37cuAf+GbKYShrXEhsYEVk9ASYeO2/shCS3vEvqPWuTb5zEQ//bub4S5del6
- PhTp9LKhMBE06u6A/iTM8NewnxunNTx1suAq8lSeo0shaGY8QD/jSuktmIfSSDdAe/U7dv
- ksPvTHWaP9M5gh2v8szukzU8r2IS+7w=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-46-S-_36mTMMUSGbzMnVU5I0Q-1; Thu, 16 Sep 2021 08:44:26 -0400
-X-MC-Unique: S-_36mTMMUSGbzMnVU5I0Q-1
-Received: by mail-wm1-f70.google.com with SMTP id
- g18-20020a1c4e12000000b002fa970d2d8dso1222749wmh.0
- for <qemu-devel@nongnu.org>; Thu, 16 Sep 2021 05:44:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQqnu-0002P2-Q4
+ for qemu-devel@nongnu.org; Thu, 16 Sep 2021 08:47:52 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:36825)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQqnq-0003mW-UE
+ for qemu-devel@nongnu.org; Thu, 16 Sep 2021 08:47:49 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ l18-20020a05600c4f1200b002f8cf606262so7280355wmq.1
+ for <qemu-devel@nongnu.org>; Thu, 16 Sep 2021 05:47:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=L2Yvd/cgfHZHV5jXl0qKgtBYgx1SM1is6wGI6Lh7oXw=;
+ b=GFZH7ar4xtW6OrQgCBwABLE+0JEVHVLxPIpux5FWWUF8/3qhkbiYYdQxSiqAQd41Ks
+ BoxQu+cxx28prBeXV+8bWwQqddzuiXpD/j+6rDoh6viEAUm8TfHpi1QdvXDD6dvkjAFg
+ gWC1FkHkHf5CnKFcLX6+k8J5+jCAijxKvO/JeABlXSPCdv3CHBw2+AO/NyMLo+Bt4xHt
+ wJiU94CW3PUxfkjuCRg5wPlafraM8GC/wD8XpXSQEUDNj/YhFehbVvjKzF6b2KxQKAgv
+ o4gVN3woJvF9p/wp5/h9q6IgO3cu8+eW3W2px2V/nDM9MIFFBka9jpL+U725WO/3yPCD
+ zhWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=sq6xk6J/AuSQdcGdolj1rTCNt1TW1Qp/WazMWosqU8o=;
- b=v4GTWSY64xDQtoVhN1BLeLAeTeNdv5lNn4HypZl0BXdQ8WyUNRTa0BuqiyZ6ckvCNU
- 5aZ61A5wJJ/wbzx+UNXKLferaZ9COG4d/CwzJVoj5lKz/BRIC1yUdXJ5lhC13v3q1ynE
- nQ5W0urYk0SRuNnr948VnlE4EsAZQ5qX1M6NoYBXxIHbj6pj2ffBd4kwiIND1Fnd3T4T
- 7qNnJyXkZ8dCKMLPKJRi8IAOu/kL1ne/b6kjKhbe8//rbiGNrnirRfBDpBsNG1CmDa/4
- OCiahieSPOg22bwqyHyPcR+mqwRz70e5Wc1oqoyvIoTUR1RfYjKj7h26fVSt4uhyPA+V
- tC7Q==
-X-Gm-Message-State: AOAM530yO0z5nJWMKv1akIYLYX8K4odY1KLUz6fvj5wdo/HFQ0oJeYvU
- NteDCyknDPhSmlW+Vm5c+tMY3B3IDmioXHOdiPd5IOBH9ulr5BZhqJ5M7vXBWrBRxkMy3VJlzFS
- F//hqfxdhZuJluDw=
-X-Received: by 2002:adf:fd92:: with SMTP id d18mr6005542wrr.28.1631796265157; 
- Thu, 16 Sep 2021 05:44:25 -0700 (PDT)
-X-Received: by 2002:adf:fd92:: with SMTP id d18mr6005434wrr.28.1631796263889; 
- Thu, 16 Sep 2021 05:44:23 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id d9sm4263182wrb.36.2021.09.16.05.44.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Sep 2021 05:44:23 -0700 (PDT)
-Subject: Re: [PATCH v3 01/10] hw/acpi: Add VIOT table
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20210914142004.2433568-1-jean-philippe@linaro.org>
- <20210914142004.2433568-2-jean-philippe@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <088f204a-f6bd-a1ce-5337-815987199daf@redhat.com>
-Date: Thu, 16 Sep 2021 14:44:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=L2Yvd/cgfHZHV5jXl0qKgtBYgx1SM1is6wGI6Lh7oXw=;
+ b=mOehk/fknkwrYi/8yelZ48ezOY3ifiUYLTwh6le6ymv6l01YZlAFvJpApTjRN0zAR+
+ d+4uhaOsygX3Ty4gV5uag6eMRyWr5FeEU0YQhFwOVqWXs0g/ckizOrUPSWWC468Z+7h3
+ LeNmQiPSUcuYKR6MAtxqCC/qd9YJerzJ5fi0zPjG4yBABCnFxWGVp3J0djQ5YkIW23Cx
+ OZjgyiM0wYwR8wRUWSvA6PxbodGqgEstE7R0NWa0Nj3WaeHa0MLXPZSWD1KNhY/4ncLM
+ D9m4jc7YMRoJDieuaHxSg7XY3HZYXu63Uuc3A265KUnpiOEDQ7Xq8+lryjpra2LnekUg
+ 9M6w==
+X-Gm-Message-State: AOAM531qOxOJAejxRSxS0b/9Nfh1Hd+zMuaXLJtQZUxIXXmjJm76O9Ii
+ WLRPIHuF5HI1DCHISLXZRXAlrUJuSA5sIXwLEvSkmQ==
+X-Received: by 2002:a1c:a505:: with SMTP id o5mr4877905wme.32.1631796465207;
+ Thu, 16 Sep 2021 05:47:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210914142004.2433568-2-jean-philippe@linaro.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.488, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210915205809.59068-1-shashi.mallela@linaro.org>
+ <4aba1039-addb-9594-924a-4f8650637df4@amsat.org>
+In-Reply-To: <4aba1039-addb-9594-924a-4f8650637df4@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Sep 2021 13:46:54 +0100
+Message-ID: <CAFEAcA8C3_Yzc7fBvP3Tz=ybZQqnRQ_sOP4EYCJMsNNibH=Zpw@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc: GIC maintenance interrupt not triggered
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -134,215 +113,62 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com, ani@anisinha.ca, imammedo@redhat.com
+Cc: Shashi Mallela <shashi.mallela@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wJdMRtoHKYQc
+X-TUID: i30SUT7/Ht/X
 
-Hi Jean,
-
-On 9/14/21 4:19 PM, Jean-Philippe Brucker wrote:
-> Add a function that generates a Virtual I/O Translation table (VIOT),
-> describing the topology of paravirtual IOMMUs. The table is created when
-> instantiating a virtio-iommu device. It contains a virtio-iommu node and
-> PCI Range nodes for endpoints managed by the IOMMU. By default, a single
-> node describes all PCI devices. When passing the "default_bus_bypass_iommu"
-> machine option and "bypass_iommu" PXB option, only buses that do not
-> bypass the IOMMU are described by PCI Range nodes.
+On Thu, 16 Sept 2021 at 05:36, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
 >
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
-> Sizes and types are hardcoded because it will now be the default style
-> https://lore.kernel.org/qemu-devel/20210708154617.1538485-1-imammedo@redhat.com/
-> ---
->  hw/acpi/viot.h      |  13 +++++
->  hw/acpi/viot.c      | 112 ++++++++++++++++++++++++++++++++++++++++++++
->  hw/acpi/Kconfig     |   4 ++
->  hw/acpi/meson.build |   1 +
->  4 files changed, 130 insertions(+)
->  create mode 100644 hw/acpi/viot.h
->  create mode 100644 hw/acpi/viot.c
+> On 9/15/21 10:58 PM, Shashi Mallela wrote:
+> > During sbsa acs level 3 testing,it is seen that the GIC
+> > maintenance interrupts are not triggered and the related test
+> > cases failed.On debugging the cause,found that the value of
+> > MISR register (from maintenance_interrupt_state()) was being
+> > passed to qemu_set_irq() as level.Updated logic to set level
+> > to 1 if any of the maintenance interrupt attributes are set.
+> > Confirmed that the GIC maintanence interrupts are triggered and
+> > sbsa acs test cases passed with this change.
+> >
 >
-> diff --git a/hw/acpi/viot.h b/hw/acpi/viot.h
-> new file mode 100644
-> index 0000000000..4cef29a640
-> --- /dev/null
-> +++ b/hw/acpi/viot.h
-> @@ -0,0 +1,13 @@
-> +/*
-> + * ACPI Virtual I/O Translation Table implementation
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +#ifndef VIOT_H
-> +#define VIOT_H
-> +
-> +void build_viot(GArray *table_data, BIOSLinker *linker,
-> +                uint16_t virtio_iommu_bdf, const char *oem_id,
-> +                const char *oem_table_id);
-> +
-> +#endif /* VIOT_H */
-> diff --git a/hw/acpi/viot.c b/hw/acpi/viot.c
-> new file mode 100644
-> index 0000000000..e7f7605119
-> --- /dev/null
-> +++ b/hw/acpi/viot.c
-> @@ -0,0 +1,112 @@
-> +/*
-> + * ACPI Virtual I/O Translation table implementation
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +#include "qemu/osdep.h"
-> +#include "hw/acpi/acpi.h"
-> +#include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/viot.h"
-> +#include "hw/pci/pci.h"
-> +#include "hw/pci/pci_host.h"
-> +
-> +struct viot_pci_ranges {
-> +    GArray *blob;
-> +    size_t count;
-> +    uint16_t output_node;
-> +};
-> +
-> +/* Build PCI range for a given PCI host bridge */
-> +static int viot_host_bridges(Object *obj, void *opaque)
-nit: rename the function into something like build_pci_range_node()
-which actually indicates what it does
-> +{
-> +    struct viot_pci_ranges *pci_ranges = opaque;
-> +    GArray *blob = pci_ranges->blob;
-> +
-> +    if (object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
-> +        PCIBus *bus = PCI_HOST_BRIDGE(obj)->bus;
-> +
-> +        if (bus && !pci_bus_bypass_iommu(bus)) {
-> +            int min_bus, max_bus;
-> +
-> +            pci_bus_range(bus, &min_bus, &max_bus);
-> +
-> +            /* Type (PCI range) */
-> +            build_append_int_noprefix(blob, 1, 1);
-> +            /* Reserved */
-> +            build_append_int_noprefix(blob, 0, 1);
-> +            /* Length */
-> +            build_append_int_noprefix(blob, 24, 2);
-> +            /* Endpoint start */
-> +            build_append_int_noprefix(blob, PCI_BUILD_BDF(min_bus, 0), 4);
-> +            /* PCI Segment start */
-> +            build_append_int_noprefix(blob, 0, 2);
-> +            /* PCI Segment end */
-> +            build_append_int_noprefix(blob, 0, 2);
-> +            /* PCI BDF start */
-> +            build_append_int_noprefix(blob, PCI_BUILD_BDF(min_bus, 0), 2);
-> +            /* PCI BDF end */
-> +            build_append_int_noprefix(blob, PCI_BUILD_BDF(max_bus, 0xff), 2);
-> +            /* Output node */
-> +            build_append_int_noprefix(blob, pci_ranges->output_node, 2);
-> +            /* Reserved */
-> +            build_append_int_noprefix(blob, 0, 6);
-> +
-> +            pci_ranges->count++;
-> +        }
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +/*
-> + * Generate a VIOT table with one PCI-based virtio-iommu that manages PCI
-> + * endpoints.
-> + */
-> +void build_viot(GArray *table_data, BIOSLinker *linker,
-> +                uint16_t virtio_iommu_bdf, const char *oem_id,
-> +                const char *oem_table_id)
-> +{
-> +    /* The virtio-iommu node follows the 48-bytes header */
-> +    int viommu_off = 48;
-> +    AcpiTable table = { .sig = "VIOT", .rev = 0,
-> +                        .oem_id = oem_id, .oem_table_id = oem_table_id };
-> +    struct viot_pci_ranges pci_ranges = {
-> +        .output_node = viommu_off,
-> +        .blob = g_array_new(false, true, 1),
-nit add clear comment as in the other places?
+> Fixes: c5fc89b36c0 ("hw/intc/arm_gicv3: Implement
+> gicv3_cpuif_virt_update()")
+>
+> > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> > ---
+> >  hw/intc/arm_gicv3_cpuif.c | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+> > index 462a35f66e..34691d4fe2 100644
+> > --- a/hw/intc/arm_gicv3_cpuif.c
+> > +++ b/hw/intc/arm_gicv3_cpuif.c
+> > @@ -418,7 +418,9 @@ static void gicv3_cpuif_virt_update(GICv3CPUState *=
+cs)
+> >      }
+> >
+> >      if (cs->ich_hcr_el2 & ICH_HCR_EL2_EN) {
+> > -        maintlevel =3D maintenance_interrupt_state(cs);
+> > +        if (maintenance_interrupt_state(cs)) {
+> > +            maintlevel =3D 1;
+> > +        }
+>
+> Or:
+>            maintlevel =3D !!maintenance_interrupt_state(cs);
+>
+> But your style is more explicit.
 
-.blob = g_array_new(false, /* clear */ true, 1),
+Applied to target-arm.next, thanks.
 
-> +    };
-> +
-> +    /* Build the list of PCI ranges that this viommu manages */
-> +    object_child_foreach_recursive(object_get_root(), viot_host_bridges,
-> +                                   &pci_ranges);
-> +
-> +    /* ACPI table header */
-> +    acpi_table_begin(&table, table_data);
-> +    /* Node count */
-> +    build_append_int_noprefix(table_data, pci_ranges.count + 1, 2);
-> +    /* Node offset */
-> +    build_append_int_noprefix(table_data, viommu_off, 2);
-> +    /* Reserved */
-> +    build_append_int_noprefix(table_data, 0, 8);
-> +
-> +    /* Virtio-iommu node */
-> +    /* Type (virtio-pci IOMMU)  */
-> +    build_append_int_noprefix(table_data, 3, 1);
-> +    /* Reserved */
-> +    build_append_int_noprefix(table_data, 0, 1);
-> +    /* Length */
-> +    build_append_int_noprefix(table_data, 16, 2);
-> +    /* PCI Segment */
-> +    build_append_int_noprefix(table_data, 0, 2);
-> +    /* PCI BDF number */
-> +    build_append_int_noprefix(table_data, virtio_iommu_bdf, 2);
-> +    /* Reserved */
-> +    build_append_int_noprefix(table_data, 0, 8);
-> +
-> +    /* PCI ranges found above */
-> +    g_array_append_vals(table_data, pci_ranges.blob->data,
-> +                        pci_ranges.blob->len);
-> +    g_array_free(pci_ranges.blob, true);
-> +
-> +    acpi_table_end(linker, &table);
-> +}
-> +
-> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-> index 3b5e118c54..622b0b50b7 100644
-> --- a/hw/acpi/Kconfig
-> +++ b/hw/acpi/Kconfig
-> @@ -51,6 +51,10 @@ config ACPI_VMGENID
->      default y
->      depends on PC
->  
-> +config ACPI_VIOT
-> +    bool
-> +    depends on ACPI
-> +
->  config ACPI_HW_REDUCED
->      bool
->      select ACPI
-> diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-> index 7d8c0eb43e..adf6347bc4 100644
-> --- a/hw/acpi/meson.build
-> +++ b/hw/acpi/meson.build
-> @@ -20,6 +20,7 @@ acpi_ss.add(when: 'CONFIG_ACPI_APEI', if_true: files('ghes.c'), if_false: files(
->  acpi_ss.add(when: 'CONFIG_ACPI_PIIX4', if_true: files('piix4.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_PCIHP', if_true: files('pcihp.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_PCIHP', if_false: files('acpi-pci-hotplug-stub.c'))
-> +acpi_ss.add(when: 'CONFIG_ACPI_VIOT', if_true: files('viot.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_X86_ICH', if_true: files('ich9.c', 'tco.c'))
->  acpi_ss.add(when: 'CONFIG_IPMI', if_true: files('ipmi.c'), if_false: files('ipmi-stub.c'))
->  acpi_ss.add(when: 'CONFIG_PC', if_false: files('acpi-x86-stub.c'))
-Besides
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+I opted to tweak the code to
 
-Tested with default root bus and pxb-pci. Feel free to add
-Tested-by: Eric Auger <eric.auger@redhat.com>
++    if ((cs->ich_hcr_el2 & ICH_HCR_EL2_EN) &&
++        maintenance_interrupt_state(cs) !=3D 0) {
++        maintlevel =3D 1;
+     }
 
-Thanks
+to avoid the nested if()s.
 
-Eric
-
+-- PMM

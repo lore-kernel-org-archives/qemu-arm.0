@@ -1,99 +1,97 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1285960lfp;
-        Thu, 16 Sep 2021 09:34:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKPcVALK/ytARi5gSnzEtQ4bZyqyHW5AU81H+d38aiegytU3x/nk4riqofiAhXsaZfA/kn
-X-Received: by 2002:a05:6102:398:: with SMTP id m24mr4829827vsq.53.1631810042272;
-        Thu, 16 Sep 2021 09:34:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631810042; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1286579lfp;
+        Thu, 16 Sep 2021 09:34:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjw4l7ANLIL9wuJDBm3ir+Iz7TKPuOYbyMMqlM4jfXpITxMfyu7xNW1CBdUE5gvQQ2G7fc
+X-Received: by 2002:a05:6214:122e:: with SMTP id p14mr6290233qvv.57.1631810079527;
+        Thu, 16 Sep 2021 09:34:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631810079; cv=none;
         d=google.com; s=arc-20160816;
-        b=orPxtIpLlkvHJDtQBbls8qQx/O6YDR8qhwQmy23DI4ppP6PuK9OWknUMqUzDcbfKkn
-         0MqvIS8lse+Whk+VO+qYErQtrSYlOlPO6wfNwjdUx4M6VH1gYOfRBBJjhmVo4SQ4LzSD
-         hOt5HsP6ScDUzQ+P4ZzszyCB0Wb4nOnFktLrhmBex17llOSu9D2A4LrbFQBUzZG9jA0d
-         nBw4TKKtxwAWDU6mwn1QGOwdF7k1kJhD3X07dI81VzFDP17C2EtZXiT1KcWgfh8QSlnQ
-         d73YcKI6zyqYe3zcEMtre1XTizoGS2wSKrqhxy6tEx01Da3sLYGejOlxWcnjsI1xORzS
-         3LHw==
+        b=C3LsM8bYkpB+7YSLXTo0mfD3BRF9O3JFQ9sX33Je0mNuI4pqKAVt+3W8eSV16kLnyI
+         3GY92JeSeOEbYil8aGtQREKn+TrF0M/314Qmeu1SKXBv5szJdPcIvjMXIO4pN+6sYHfi
+         YOo+nfep3ocBOdZ4MUfJKWq9XgNLybTTTf0ICTDujcIxMBYzpDVrawHUqeEuS0O/zM8f
+         N5jpbah5/wJi0NLBPhlW6GznGljt+4Rj6N4RTFueg3txGFjLGk4pcL2wb3CWOWBmoz2L
+         Yc9e4eoYC4UG7aK8Emnt7DLf4KwcuwIAfD/r/xX2UYiwgHE6dWvNrv76qiDdYxzydpM9
+         Ur6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=G9e37GKaNlkYtZtDgiKzMfOUnlcd5GqVlCxKHQkZtLY=;
-        b=KM405nEP5NRtVwrijrgY2VvOE8IwgcCsZ+hXm1JqW76dIVZE/btclq2iRU6M/yjJmO
-         RGdluyPmX+Ny1Go8bW1/6p79Jxi90hrO5FsoH2PB2Tu7ycTi6P113DmbKhhpzyFKjtN5
-         0tLqaE7HQ2TIAfwOeUyK1w3qgfHQ81/d7RPZvblBPDym63Sbm4ZkB2XBaZLG8rM5Dp+0
-         p0YHU8MxIliYppCDFIHaIEyG2VHYNXobZnmy2cOHqJo4PqbAx8YzGesHBcyQy21mJJYX
-         uO4Pvl+nJFKv7WN3Twuy74YOKKs7ivpe8Ev5PqDRCkyCY4kKZj4JBAOnVNEe7T/ZSc+W
-         OyZw==
+        bh=U/NXuPuG7h9Ohs5uPZKjte9gsdg347Wf5yRF8oIx/co=;
+        b=vojkbTSDDcx2D9wCP3C8xDcmWKZh4WrdSwaOqx9Lx6VE18Ka/TLW0DxEpx2IM8WXla
+         qr7d/OYBycWgiDqIY1AGtv0OMYru1SbnAvuQLAV6DOzY5vN3dpWl3DLzusB3rxgK2X0+
+         /+gw/MVpCNjvBZF/ca5okvE9AcnrT2jR/j8NJvEREATfzCLFIewSOzE4d/jjPQBOTMFq
+         VGyWt7HatbGEKToeFXKZm1jX3040EF6h05R1WbWOJdOy4oSwfnOnT0zc/kXwMmw81WqZ
+         lsc1GXUw26W382kUmmMfKMpTMtf+3NUzZ1CZXtnrUJPXMHcalBa1PWqxy555mvHCbk7w
+         A0mA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Gb5MRQJN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=UAy1I8Dy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x136si1644382vkc.39.2021.09.16.09.34.02
+        by mx.google.com with ESMTPS id y3si1906697qtm.262.2021.09.16.09.34.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 09:34:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Sep 2021 09:34:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Gb5MRQJN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=UAy1I8Dy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42496 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQuKn-0003bo-L1
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 12:34:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51358)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQuLO-0003nf-TI
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 12:34:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQu4r-0003cS-W6
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 12:17:34 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:42972)
+ id 1mQtkU-0006sW-8W
+ for qemu-devel@nongnu.org; Thu, 16 Sep 2021 11:56:30 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:43926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQu4q-0007VW-B3
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 12:17:33 -0400
-Received: by mail-wr1-x436.google.com with SMTP id q11so10387961wrr.9
- for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 09:17:31 -0700 (PDT)
+ id 1mQtkR-00074a-Uy
+ for qemu-devel@nongnu.org; Thu, 16 Sep 2021 11:56:29 -0400
+Received: by mail-wr1-x431.google.com with SMTP id w17so2131990wrv.10
+ for <qemu-devel@nongnu.org>; Thu, 16 Sep 2021 08:56:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=G9e37GKaNlkYtZtDgiKzMfOUnlcd5GqVlCxKHQkZtLY=;
- b=Gb5MRQJNm63Lul/+v8EPT/it1pyAhlfnC1gYNeXa+7cAsObXzoeTpXMjG2ZLMsWFD3
- u7sNWIsUPCekfsjNct3GD/MusEIXyfXClYLaKk48UntDlBF070K8JfAsMLh1KRL0sOCr
- 6TJJFfbI5sKNbf1vZY1EfbI4qvkj457ixX3WdUVcOpW2sIwO2MgF681OW9crhTlyYlKU
- Ll/BErTK+bXXeGOicrxxGhtcwHmqVksRhm9Bt0iMfulqsb8eYI02QGobmZj+EEnLMLuW
- zk7/btJuONrZtTeXMPfbYTuk0NSsrcUPgmzHnnNZP1da8OsLLAhWhY+dwsSHRxd4CU3O
- 1z4A==
+ :cc; bh=U/NXuPuG7h9Ohs5uPZKjte9gsdg347Wf5yRF8oIx/co=;
+ b=UAy1I8DyidsoFE6sYocjFKuwMRdVjS9/+kvGARc4OniZao4zuhdKicm7THVLfMHLli
+ rTnMtY4n+0tuQBL8/i7il/LT/XTGunpDcuX8Q/OqOszmV6lUYFdek2eONu0srsPQZ6PX
+ jEoNFjTN/ixD+xUW6vBCG/mM+rxCHQoosHox1Zrv5sO3IAnCEdIFTlz2gJHnm6SPNfp6
+ 0tN4TU3NI6Dzpg36q3pkwpOqNiovYUp3+VQeothjm6WGKfwllTH62rxA2oVo6coRwzBe
+ HW+HWGWX98GGT2dkdQJcBV33jVsZ0OmeyPwsMn6WkE1hONl4NzHxdeDJ1s8MWLE861eU
+ s6pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=G9e37GKaNlkYtZtDgiKzMfOUnlcd5GqVlCxKHQkZtLY=;
- b=Kgc7sc/MCFTmlKie1NIhHQHlu1W97ZBhSLA5XUSZGCw86sCVf2va8TRyydPue/q9hG
- mxnXRq1OCKfyJUdDl4vzqw5qPjPq42AtCrib9Ycej02DumSB5k0e8+y9yFDmtr5MdMt8
- NtMbHDv77oumR9zpjlAKVVeGAsUwzY3xkPcpX8xkbDRiaTgj4syjI12RnMQ2ZieJDXyc
- RDikdQE4ea1OVUGZ3ZlyWwVjy+QYehrdQZcZ18hedX25pf5siI7ID3+to1bbaqmZuod3
- LjCEsL64i79WSzWuu0D/TEN6Oup4++WLYA1ZkbWuZnJnScA9lxCNAPNmIeVyOxKhPnwT
- CBoA==
-X-Gm-Message-State: AOAM532fEoviNfiwKv88FqLPd4J/qG7aFWVm7nMQUkGHerLIHZiHAlrZ
- o5CBlW8Hh8VSEGuS9762GjPuvIxWXl0PS6EnFSk4lg==
-X-Received: by 2002:adf:f185:: with SMTP id h5mr7174234wro.302.1631809049350; 
- Thu, 16 Sep 2021 09:17:29 -0700 (PDT)
+ bh=U/NXuPuG7h9Ohs5uPZKjte9gsdg347Wf5yRF8oIx/co=;
+ b=PS/Km/UipV51dRRSGDDo0YqKnQw4fzPCG9f58gCxGcKBw+Rf5yF0JuCBodWMcRRgvM
+ l/FQJOmU6JxmsqaEy1iSf1QK3SgaUOIkhXhaNrxQZXGXpQyleU5rmHOAz05Zy67OuE9P
+ ldCamYC3iQoZcioU+y+OqVjvrzfI+NRqIwGKHt123GHTwNsgDJEj5OWhHKPj6sWovJHM
+ hpFB7MCQ6GPjExeytPEDJC0QQYMM+jUwz+EIAm9ybw2TY0zSyXtAMBL0V18UAIM1NkZl
+ s2x65CpHwuEe4PaiSXN1xANV6P3egtJNF/34DBzv4FAThnJMmpfM7BSW8wFGL6lXYQ8x
+ gCfQ==
+X-Gm-Message-State: AOAM533EmnKj25VCaaMCWEoI1JNfEKicNOSx5gBlMbBycKDTRny8SX60
+ o/P+D3drisAyY1zH8d5ueNHEESi9VK0alz4voXd/Yg==
+X-Received: by 2002:adf:fb91:: with SMTP id a17mr6780568wrr.376.1631807786077; 
+ Thu, 16 Sep 2021 08:56:26 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210915181049.27597-1-agraf@csgraf.de>
  <20210915181049.27597-7-agraf@csgraf.de>
  <CAFEAcA9JZZ4nb8WAvKVYpwqxb_E5NFOVW9rKF3u7GhFqfNZgOQ@mail.gmail.com>
  <8e219cb0-8b65-faf8-f636-5c1d24471f84@csgraf.de>
- <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
- <CAMj1kXEEN+J4k_Kib8gRHcy8v1vVRwk7c847yT_Kuv+jnLf9ww@mail.gmail.com>
-In-Reply-To: <CAMj1kXEEN+J4k_Kib8gRHcy8v1vVRwk7c847yT_Kuv+jnLf9ww@mail.gmail.com>
+In-Reply-To: <8e219cb0-8b65-faf8-f636-5c1d24471f84@csgraf.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Sep 2021 17:16:38 +0100
-Message-ID: <CAFEAcA8yd6m-S90Uq1G=HTYFAerp6cZdJk9B=CFrHMn5tEMZ5w@mail.gmail.com>
+Date: Thu, 16 Sep 2021 16:55:34 +0100
+Message-ID: <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
 Subject: Re: [PATCH v11 06/10] hvf: arm: Implement -cpu host
-To: Ard Biesheuvel <ardb@kernel.org>
+To: Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,50 +100,79 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 45t/+0msIl4e
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>, Ard Biesheuvel <ardb@kernel.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mFIc/KGKRbMT
 
-On Thu, 16 Sept 2021 at 17:05, Ard Biesheuvel <ardb@kernel.org> wrote:
-> I'd argue that compliance with the architecture means that the
-> software should not clear RES1 bits
+On Thu, 16 Sept 2021 at 16:30, Alexander Graf <agraf@csgraf.de> wrote:
+>
+>
+> On 16.09.21 14:24, Peter Maydell wrote:
+> > On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
+> >> Now that we have working system register sync, we push more target CPU
+> >> properties into the virtual machine. That might be useful in some
+> >> situations, but is not the typical case that users want.
+> >>
+> >> So let's add a -cpu host option that allows them to explicitly pass all
+> >> CPU capabilities of their host CPU into the guest.
+> >>
+> >> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> >> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> >> Reviewed-by: Sergio Lopez <slp@redhat.com>
+> >>
+> >> +    /*
+> >> +     * A scratch vCPU returns SCTLR 0, so let's fill our default with the M1
+> >> +     * boot SCTLR from https://github.com/AsahiLinux/m1n1/issues/97
 
-Architecturally, RES1 means that "software
- * Must not rely on the bit reading as 1.
- * Must use an SBOP policy to write to the bit."
-(SBOP=="should be 1 or preserved", ie you can preserve the existing value,
-as in "read register, change some bits, write back", or you can write a 1.)
+Side note: SCTLR_EL1 is a 64-bit register, do you have anything that
+prints the full 64-bits to confirm that [63:32] are indeed all 0?
 
-> but I don't think we can blame it
-> for not touching bits that were in in invalid state upon entry.
+> >> +     */
+> >> +    ahcf->reset_sctlr = 0x30100180;
+> >> +    /* OVMF chokes on boot if SPAN is not set, so default it to on */
+> >> +    ahcf->reset_sctlr |= 0x00800000;
+> > Isn't that just an OVMF bug ? If you want this then you need to
+> > convince me why this isn't just a workaround for a buggy guest.
+>
+>
+> I couldn't find anything in the ARMv8 spec that explicitly says "If you
+> support PAN, SCTLR.SPAN should be 1 by default". It is RES1 for CPUs
+> that do not implement PAN. Beware that for SPAN, "1" means disabled and
+> "0" means enabled.
 
-SCTLR_EL1.SPAN == 0 is perfectly valid for a CPU that supports the
-PAN feature. It's just not the value OVMF wants, so OVMF should
-be setting it to what it does want. Also, as the first thing to
-run after reset (ie firmware) OVMF absolutely is responsible for
-dealing with system registers which have UNKNOWN values out of
-reset.
+It's UNKNOWN on reset. So unless OVMF is relying on whatever
+is launching it to set SCTLR correctly (ie there is some part of
+the "firmware-to-OVMF" contract it is relying on) then it seems to
+me that it's OVMF's job to initialize it to what it needs. (Lots of
+SCTLR is like that.)
 
-Put another way, if you want to argue that this is an "invalid
-state" you need to point to the specification that defines
-the valid state that OVMF should see when it is handed control.
+Linux does this here:
+ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/kernel/head.S?h=v5.15-rc1#n485
+ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/include/asm/sysreg.h?h=v5.15-rc1#n695
+because the INIT_SCTLR_EL1_MMU_OFF constant includes forcing
+all "this kernel expects these to be RES0/RES1 because that's all
+the architectural features we know about at this time" bits to
+their RESn values.
+
+But we can probably construct an argument for why having it set
+makes sense, yes.
 
 -- PMM

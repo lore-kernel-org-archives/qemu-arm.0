@@ -1,95 +1,95 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp997038lfp;
-        Thu, 16 Sep 2021 03:46:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxuORWyX4ne7nfdbbOE+sGBk9CqlOgbCAv8XUQhn9NIcHFQI6muvnSIBCeK+0AJYI2hJb87
-X-Received: by 2002:a92:dc01:: with SMTP id t1mr3462885iln.267.1631789205020;
-        Thu, 16 Sep 2021 03:46:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631789205; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1051518lfp;
+        Thu, 16 Sep 2021 05:01:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx6eq8tz9mGscdZ+IRUvOGzqxrTn3FJx0bDocHoaHO88T8woB0CIt7DA0oVIGUao495Grw8
+X-Received: by 2002:ab0:81a:: with SMTP id a26mr237617uaf.6.1631793685843;
+        Thu, 16 Sep 2021 05:01:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631793685; cv=none;
         d=google.com; s=arc-20160816;
-        b=PV4urU3OgFKne04OUKdEZo7TkSfhdPkt9kWKn3+BYZmrf4Pc9LhA4DRKdsLARWlE4i
-         gM86b9dBFl71BB9SNnZnPEgKP0Rwq/L2JGZ3MWC6I0AOjU6YOJNRAR2Z4CdfHWdTYsH/
-         QS2aJTWVwIu3XHwAHljok3FLo+1qR+IepXbg/xYYO3Srk8yrzJbSKV2+pFTRuct9/VC2
-         ytn7eOlXnToV5PPKBdqvMjHZBAI/YgA42cnJqlGv3F2gl9jA6XaPd3rRHS512q/a7qPA
-         xqmvN9RVpUtDq5S1+iaez/ieyu1nqYhNiN4agPeCrbH205RW973NdIMGqb1Qkc0suJSY
-         K2CA==
+        b=t7tlYaqBvQV93I588q8J7DSUnmrAT9Fr9akX/e+9m+ZBu6tyE1BC7iBbw12XY0imd1
+         knju9jlT5TJP5sMmOGW06MbCiTDWMcuYLkmdF09CxOfcJ7SRxHb7258aS+vGYLvQJWwJ
+         eZnUanYGLxcQPrTIomUOtZHFZzufZullH/c+a6y4dAvC70NvA8u6Iuf/HFCennO0VXpa
+         v9cX8jo/SumcT0G71lw8UBPihpVt41dGqc8tpX0+S9/Iy8EdTPmRLABNt9pp9vQ3PIYf
+         Txe0+aUBRNNF08lXFuknISuDCdCycuQung8jesPnQrWHtcLP3A1yz8kuMvm0GwmcWDWI
+         S5BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=2q7fvYaIUiVbpbgyORmLtkXjsgAfiFfJ33FclJyfCPE=;
-        b=iP6hwzsHbIWjDEOrWhm2MDSW0/C4PHwWQGSlfnLLIncKEEGZ7rgkbRRaA3rw6H87q4
-         CLuiNk/CsWPNbd88yuUdcJ11oJpr18I6sTEw8atefnanM16ZScunJIGQfbAgyJcGFi8v
-         9HzsAwKZGD5VkXpPGtUtNzZY6kSXjjpdbMQjpxyzo2jOJm1z35Vt54lWAFPsA/xHQHK9
-         Itbeedm780p4/gpuOlxY0nBZKiCxGzQ+GNllyxxpr9kPOlb13HEKlJgvS50St0RBGzFY
-         p9BLbczKTcSZINYjDGE2ETY1SwEas1/LQxhHW6MOy9w5jIObpf91veWS13K0Z+ebBV7Y
-         fqgg==
+        bh=RuuMHracPQA6J4gTHFCFbuTFO31MGbcwnN6iafFSFGM=;
+        b=IdDFvWgp4Ni16zFqA0S9IyNnKww+/DwvVVYF7CAqrPZSOJFeClBUVHu7M7VNE5qD30
+         MOM5meGcNp4Ve8RR3xgE2VuCWq8v/F7mmyYVxJriPicFc2apaVw15qG6CT2dZvJm92hC
+         wHEEejXsvoHEyxBS/h5TJVAd9wQwCux+pb5TalTC/LJ7YRvGwDZEiX3n6Z38LEI0FgXb
+         qjnql3J47sPSiPJiV/LD1bgCQLinIwgCcxiw7S1BrodN0ZCgknK/Q7wJa1e5LDBj1DCa
+         WMC5E8P9b3uqygkY44RW8ZyEdIAyS4NepsHQd7WnJRiWI9hy3vt1+dU1evXtTi84FEQW
+         FtfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OrR4Rncq;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Ob1EVF5P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g2si2587294jat.51.2021.09.16.03.46.44
+        by mx.google.com with ESMTPS id u76si1164590vku.36.2021.09.16.05.01.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 03:46:45 -0700 (PDT)
+        Thu, 16 Sep 2021 05:01:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OrR4Rncq;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Ob1EVF5P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56002 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56712 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQoui-0005dh-BN
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 06:46:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50404)
+	id 1mQq4y-0006Q4-TH
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 08:01:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQou6-0005aK-OT
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 06:46:06 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:41685)
+ id 1mQq3e-0006Pl-Pw
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 08:00:03 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:46846)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQou4-0002WI-8M
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 06:46:06 -0400
-Received: by mail-wr1-x434.google.com with SMTP id w29so8723813wra.8
- for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 03:46:03 -0700 (PDT)
+ id 1mQq3c-00085H-9a
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 08:00:02 -0400
+Received: by mail-wr1-x435.google.com with SMTP id x6so9011348wrv.13
+ for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 04:59:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2q7fvYaIUiVbpbgyORmLtkXjsgAfiFfJ33FclJyfCPE=;
- b=OrR4RncqwJ1r3zqo1yrsbNly9XVgDVFtr/lbJAaLFsRWqhSyaXCVgz/XUxwk3vGvGP
- gff4GZxX8VW5BeAbHEzVdneAaUmvCbvuCFZzbJ07lVBFlPtsmqXBZ7W3iMmUgGs7OTYv
- hI6rvzabq5n9ZGzMFefw22NbP5tezRFxoln8P3bdu0b1nKZgEGDZgiLwgdbBdvvXRdWe
- wk0cAfuDEhJf+vJ3kIIuki2WLYfkyDRjPyt2dXm0b4OBfYdwRJBfZuAN2FYJEQkn3Eoq
- AkJF62lR78XnQNTqMqmRTP171Uwz8tS990l2H9LQUHjM27N+8QtNfPK952DYd8VH+SKu
- l3Vg==
+ :cc; bh=RuuMHracPQA6J4gTHFCFbuTFO31MGbcwnN6iafFSFGM=;
+ b=Ob1EVF5PdhRoMbZe3jegXqRjp1KB76XXxBMRx67Y+JF1YbPGHdvPopfplTpHMQnisN
+ xbiQINlJzgJSpq9uzrgmPBqglaUvPzQT0ym4KspjyWXtt/e0sdqy361NEJ85TMvuG7uN
+ jzuJmzdcxziwoLRxLfh58LfvqeE5+Rwu1UvJeXwjQBA06n8qmWNeL9aDrNjC24JDOucM
+ 5Jx5OZ92tNMD4V9to9Lu8iOQtVSShRA9YTDhNPW2tSjfKwDXtKQ8D4g1lHH8rrgTSb+1
+ SLTTF/4le7qsBcOu9jhJqupGq0cJtljqUs3D8IzkVbZKai6Gc/W/lkhXdPgkoKnsZe0m
+ /ZBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=2q7fvYaIUiVbpbgyORmLtkXjsgAfiFfJ33FclJyfCPE=;
- b=hbgkEAQwjIPpQPxLS9cVdll/+ZPDq8WOfh91R3R9woKjLRM4mt2GoiMpyDzcq05C1i
- Vn2qTKBhrKeyr+3tLmI/e163BcXAdq+vxfOthM/ZV1zh6q+pm3yi0cscE1+5e1rt43Ei
- 9aGcbwZ7XnFWL/NJ4cIDTT6cxj4BPR2s7WcZfdYS5zKW2E1RU7T7iMcq46PaHgO6IVbm
- cbH9LeLoQ77M38QuJ76ldZjonmijkQdMFBaKAM4X6pfjvHY6fxKhFzLeEt+RsilfZlE2
- W7NXRDnbbLY21Sw31X1DJnBTJ/rBZg+V0gUAkxHsJaSYszDsVzc7R+YwXXMna9u4KWSX
- 4zlQ==
-X-Gm-Message-State: AOAM531vWuJn6BTKdHfx5t17Ztd1Sfen2BsA/q20PR3oT52HQW185O0E
- 5lJDD7AvEM3zQbDOeV7k5GceEaN7vnRqsqOkXXyKYg==
-X-Received: by 2002:a5d:59a4:: with SMTP id p4mr5268325wrr.149.1631789162369; 
- Thu, 16 Sep 2021 03:46:02 -0700 (PDT)
+ bh=RuuMHracPQA6J4gTHFCFbuTFO31MGbcwnN6iafFSFGM=;
+ b=wcKY6r2+m+SlGmgmgiO+2Wjj3EFKb8kMTefqNFxR6jrpswIpXgQzkzHJIJ8JWzkZGD
+ QoXktR2taNvNKqFMhmxpD6/2+4ldARLCKHnfBDIeW4xmaWpRhRssRC6fwCLnSfa0KDMZ
+ AmXYvBBSWYa72BEP+ZwG/W6neONce37I93hVYOk22OMQUgX/NlmI5y7SH9bBLsd90LOh
+ eoU2HWr1ZowXGIVgIEt7L5kLtnk2b+sMLNXIUUr5CfeHqfBbgLPeLroe+vvlAZ3eIE8z
+ 2ICO06v/RAocVWdNF/0fFbH4i9aekkypAzy94WjTo0QJjukUnveEE6z4WJaxrT7Y2rj8
+ bP7Q==
+X-Gm-Message-State: AOAM530j+0kDy/nNbxtLbPmqQ72l7/vPSvEMTWMdvMWC2qb40Hw+PF33
+ B12ZDM+1RmH+cfBnN2TaOdCA6Xs+Ekze6TsIfE2V7g==
+X-Received: by 2002:adf:fd12:: with SMTP id e18mr5649945wrr.275.1631793598048; 
+ Thu, 16 Sep 2021 04:59:58 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210915181049.27597-1-agraf@csgraf.de>
- <20210915181049.27597-4-agraf@csgraf.de>
-In-Reply-To: <20210915181049.27597-4-agraf@csgraf.de>
+ <20210915181049.27597-3-agraf@csgraf.de>
+In-Reply-To: <20210915181049.27597-3-agraf@csgraf.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Sep 2021 11:45:11 +0100
-Message-ID: <CAFEAcA8gOtHMOLSPKyhAMCPxtTE-JXTmUvy-HgGw+PxDrbqsdQ@mail.gmail.com>
-Subject: Re: [PATCH v11 03/10] hvf: Introduce hvf_arch_init() callback
+Date: Thu, 16 Sep 2021 12:59:07 +0100
+Message-ID: <CAFEAcA9e+tnF56J11AWcsyKGH+h+3VKKADOFGaM37JhYR_HqDA@mail.gmail.com>
+Subject: Re: [PATCH v11 02/10] hvf: Add execute to dirty log permission bitmap
 To: Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,41 +118,47 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X6rlKDmgReJI
+X-TUID: MeyatkNpMSkH
 
 On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
 >
-> We will need to install a migration helper for the ARM hvf backend.
-> Let's introduce an arch callback for the overall hvf init chain to
-> do so.
+> Hvf's permission bitmap during and after dirty logging does not include
+> the HV_MEMORY_EXEC permission. At least on Apple Silicon, this leads to
+> instruction faults once dirty logging was enabled.
+>
+> Add the bit to make it work properly.
 >
 > Signed-off-by: Alexander Graf <agraf@csgraf.de>
 > ---
->  accel/hvf/hvf-accel-ops.c | 3 ++-
->  include/sysemu/hvf_int.h  | 1 +
->  target/i386/hvf/hvf.c     | 5 +++++
->  3 files changed, 8 insertions(+), 1 deletion(-)
+>  accel/hvf/hvf-accel-ops.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
 > diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-> index 71cc2fa70f..65d431868f 100644
+> index d1691be989..71cc2fa70f 100644
 > --- a/accel/hvf/hvf-accel-ops.c
 > +++ b/accel/hvf/hvf-accel-ops.c
-> @@ -324,7 +324,8 @@ static int hvf_accel_init(MachineState *ms)
->
->      hvf_state = s;
->      memory_listener_register(&hvf_memory_listener, &address_space_memory);
-> -    return 0;
-> +
-> +    return hvf_arch_init();
+> @@ -239,12 +239,12 @@ static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
+>      if (on) {
+>          slot->flags |= HVF_SLOT_LOG;
+>          hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
+> -                      HV_MEMORY_READ);
+> +                      HV_MEMORY_READ | HV_MEMORY_EXEC);
+>      /* stop tracking region*/
+>      } else {
+>          slot->flags &= ~HVF_SLOT_LOG;
+>          hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
+> -                      HV_MEMORY_READ | HV_MEMORY_WRITE);
+> +                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
+>      }
 >  }
 
-If the arch-init fails this will leave various things
-that hvf_accel_init() just set up not cleaned up.
-But kvm's init function doesn't seem to bother to do that
-cleanup either, and if we return failure vl.c is going to
-call exit(), so I guess it's OK.
+Makes sense -- this matches the premissions we set initially
+for memory regions in hvf_set_phys_mem().
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+Should we change also the hv_vm_protect() call in
+target/i386/hvf/hvf.c:ept_emulation_fault(), for consistency ?
 
 thanks
 -- PMM

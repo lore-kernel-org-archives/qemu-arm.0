@@ -1,103 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp992339lfp;
-        Thu, 16 Sep 2021 03:39:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz+2j2vluzxqw4aVoEULZCxgS+GVvfhb4RJk8caU+0pC6ajMLMK7sSfEAYvcL43lrHMnsJn
-X-Received: by 2002:a25:248e:: with SMTP id k136mr5858422ybk.124.1631788772403;
-        Thu, 16 Sep 2021 03:39:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631788772; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1001563lfp;
+        Thu, 16 Sep 2021 03:54:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2omp81Hw0WTiRzak4BDZICUapn6+fTXMOKbkjh+BTpRzaUnRqZOhvGa64BJA5xy7eHYPf
+X-Received: by 2002:a05:6e02:1a67:: with SMTP id w7mr3457964ilv.24.1631789664356;
+        Thu, 16 Sep 2021 03:54:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631789664; cv=none;
         d=google.com; s=arc-20160816;
-        b=XWNgW+bhQxbNbMPUGPr7zZikEJin4wrRQ/Ol0TowXNMIxm0eIDd4EzYFJoN/3C9gj2
-         s46bhPZ4Vh3lxJW+s6OHv9UNZvE7dmrkQwzCVybfTuIwVCJD4GlDM9lhxi2VB7nIc0vr
-         znp1T2pv3BQJ6Vh7VXMbqMgsI+uEtAA9HZI9bsxnCv0Xo62oo7bCPEGAEnbizvXm3zER
-         1w8ZULbTai03IW7X6Gws+ivVzZPyqXVJ4XmKQM2JWnyo32RxBo8thfavc7DINrKppEjQ
-         VrCysaygv5xUGtfdObjvAXS0pu0t1TF2T6HLqLO9L+P/0KP2rd8T5sO0q6If88bTYJd8
-         i9Eg==
+        b=HZc03O7JXoAll4TVQh6yb8KsXJLiecdsgHJGGWa3ekK/MBWS/ol4Qemz+/8GR3lzmK
+         7HsZlJTRidfDkrdI0F7DBJVpdG9B+v2o5cQtfXONWJuG8Lnk2KI5bNHx6jDlt+XRD/Yf
+         h1olTBZkocltUBidMJ2m4blxhz74zPVCPx03Wi7FbZ4l5qDZk1PAfF0gq50DL9QuAyKc
+         wOBD1VJ9Nt2mcDJeRHtMkj719HIeJ/DiHWJrN8F4ZWB5byxN5+aiobkop7F0zwxX0v24
+         Ch02pcjkseH1S+gqn4uAucfN8z5rGUejnl+pBed+be01M2ZdUOWoHTU1153sryf9X93t
+         QgyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=18tov8lxig1W/4IbzowEAKpdg1k4hEvHZZQ8quLi2qg=;
-        b=Jf79zMbLN5aJ1R22IW6uUoOGdQvbzSReCIm/NTQVdVnPVdGN2K3zwzMTm2QibFJPcg
-         y7UeXQLVvIfuWuQGuQLZAy5v8VgCt3/ric5kQZJayG1LohIP24vFwLYqaOPshEXsoX1Q
-         elPJrdG5M2O76fGuYKE6xyAAdHEEY4EZaMXcyB5IJ3eXdN8/hCdgQJ1teDbxppf4zs16
-         90xV9liTt28CdXFLzqr0gka1os4CEBwO49k2v+KV+Dc5g+ZfQtl3SAnTGrqQ9OIZ1hGi
-         wd0wynWLaioiMejcuqrAnZrLQGOgsqO3F/zGVV0CfGNZjxfnORwLyN1f6pNcMLKidJjm
-         z/zQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=mxeA8R0nkRseZq+QnuSC83H4qB20E3KBOARn9AWsp20=;
+        b=du+F/ktRZrm/i4VrZwJ0zFptsrz55ukKTlPbc7JpVSt93wxhnxzYGBcMvRiwm4eAYD
+         xRHgiWP9cQL2C7UkxZjI2kAUdXJ/r540POsV4V/y38wa0IPThHKlsWlkLKrxPo0/Fn8p
+         sePitu/9ULjkwOqtEdYjGs1XPUE43rC1loO71XOAIRlDTHrUQSIay1YMMn/ZVtG5jFGO
+         Ck75qIu2qjUcIjEgHgQauiCQJhONtEXOMv7GK9xg13vDY2BzGDSAq5u+gzGr4xPAJ3pz
+         Hqm3Z/06Rj7ye5Zq9gBv2/SoIm9K8DSObO2Sne8wnTzuiZNdh0jdYytUwE5dbfOexZRf
+         ikxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qn4+7Ac0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v2si3245873ybq.478.2021.09.16.03.39.32
+        by mx.google.com with ESMTPS id n14si2292225ili.128.2021.09.16.03.54.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 03:39:32 -0700 (PDT)
+        Thu, 16 Sep 2021 03:54:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qn4+7Ac0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39584 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42036 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQonj-0002ui-QA
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 06:39:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48572)
+	id 1mQp27-000701-Mq
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 06:54:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQonV-0002r2-Jx
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 06:39:17 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:56317)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQonR-00056o-Rf
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 06:39:16 -0400
-Received: by mail-wm1-x331.google.com with SMTP id 70so1517892wme.5
- for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 03:39:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=18tov8lxig1W/4IbzowEAKpdg1k4hEvHZZQ8quLi2qg=;
- b=qn4+7Ac0PwLF/Q99q0G55mKJemAU02U4Ojl5WuYPJhCvXxAfeqCzwZfXsliYLFr2eV
- 1vnAgAaoctEcJkQGSEW0d/8UbNHa9/RLC2F8ZyVj9O2N1thviTOKZ+jHT/VeFit9AQ42
- kQPZgLCTUwuUTVtHJmJ8Qetb2sNYIie3K8ViYOh7DEeqS6NvcKGPTVw2nccz+kVmYWG1
- 7gyonOFFcPtWeaN+6Igpgtnw2TV6hy5ZHpyQBl1lcDYoV7ZU5g6TL9Z8mIar0hYelpwq
- 8i9VD/J1gOfvDtpUimX4ptN8Q2lrgyMO5+en2FlrY6+mP6C0pVxT2mTGKrOuL4x/74Mo
- 99oQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=18tov8lxig1W/4IbzowEAKpdg1k4hEvHZZQ8quLi2qg=;
- b=0d/XoAuO9dYXTpgG61u50cCkT8KCf4P8Yjh1fSnCl2K7B5bkY7RbtyJlgliIRjeGbA
- 4IKkJAvMS1DL/ZJp338g39XcPciwMJYmiA7mXrmHSIRe/Kv4IKrI1O1t4nyFJJ1eFaEq
- YUzA1jXOdyiuUMkIJfsX+1d3P1Sab/NHCjIYUB9sQm0/R7nQDIwapuMY92H5/Jdrip2j
- 5jl96DqvJdcVCW7J1JwKc/HrlotstyaTlyuSGctBJrmMZPBXS4XH7bsFD8zkBFDn3Cpa
- DATx/ka08tFBn8sWTSiowt3bYAh49/c6T69SRFK0LfGWa9P9VG1j8fKKS5E2deF+ZDYf
- 48TA==
-X-Gm-Message-State: AOAM530RABqDjaaPSLcxJSKpbQr2QT412jRgj8S5gahW+J1mvozNA9Di
- zIwvsKkzf9+1W0GLCDSAanb8wpjanPiPz7/ydkbN+g==
-X-Received: by 2002:a05:600c:4848:: with SMTP id
- j8mr9212102wmo.21.1631788752276; 
- Thu, 16 Sep 2021 03:39:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1mQp1b-0006uh-Ks; Thu, 16 Sep 2021 06:53:51 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:40598
+ helo=mail.default.ilande.bv.iomart.io)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1mQp1Z-0000aA-F1; Thu, 16 Sep 2021 06:53:51 -0400
+Received: from host109-153-76-56.range109-153.btcentralplus.com
+ ([109.153.76.56] helo=[192.168.50.176])
+ by mail.default.ilande.bv.iomart.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1mQp0q-0000IW-06; Thu, 16 Sep 2021 11:53:08 +0100
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20210914142042.1655100-1-berrange@redhat.com>
+ <20210914142042.1655100-26-berrange@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <37dc66e2-16df-dab0-875a-581204ead1d8@ilande.co.uk>
+Date: Thu, 16 Sep 2021 11:53:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-References: <20210915181049.27597-1-agraf@csgraf.de>
- <20210915181049.27597-2-agraf@csgraf.de>
-In-Reply-To: <20210915181049.27597-2-agraf@csgraf.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Sep 2021 11:38:21 +0100
-Message-ID: <CAFEAcA_4N0xp=NVbGpHMSYpOrw9fm2NVZTBk4X+Ly8dc0xBKOA@mail.gmail.com>
-Subject: Re: [PATCH v11 01/10] arm: Move PMC register definitions to cpu.h
-To: Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20210914142042.1655100-26-berrange@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 109.153.76.56
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v2 25/53] target/sparc: convert to use format_state
+ instead of dump_state
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.bv.iomart.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.bv.iomart.io
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.488,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,36 +94,208 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Peter Collingbourne <pcc@google.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
+ David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+ Taylor Simpson <tsimpson@quicinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EAdeCrNIh77L
+X-TUID: vvtf55sCi2U8
 
-On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
->
-> We will need PMC register definitions in accel specific code later.
-> Move all constant definitions to common arm headers so we can reuse
-> them.
->
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+On 14/09/2021 15:20, Daniel P. Berrangé wrote:
 
-Subject should say internals.h.
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>   target/sparc/cpu.c | 85 +++++++++++++++++++++++++---------------------
+>   target/sparc/cpu.h |  2 +-
+>   2 files changed, 47 insertions(+), 40 deletions(-)
+> 
+> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+> index da6b30ec74..9346a79239 100644
+> --- a/target/sparc/cpu.c
+> +++ b/target/sparc/cpu.c
+> @@ -597,11 +597,11 @@ void sparc_cpu_list(void)
+>                   "fpu_version mmu_version nwindows\n");
+>   }
+>   
+> -static void cpu_print_cc(FILE *f, uint32_t cc)
+> +static void cpu_print_cc(GString *buf, uint32_t cc)
+>   {
+> -    qemu_fprintf(f, "%c%c%c%c", cc & PSR_NEG ? 'N' : '-',
+> -                 cc & PSR_ZERO ? 'Z' : '-', cc & PSR_OVF ? 'V' : '-',
+> -                 cc & PSR_CARRY ? 'C' : '-');
+> +    g_string_append_printf(buf, "%c%c%c%c", cc & PSR_NEG ? 'N' : '-',
+> +                           cc & PSR_ZERO ? 'Z' : '-', cc & PSR_OVF ? 'V' : '-',
+> +                           cc & PSR_CARRY ? 'C' : '-');
+>   }
+>   
+>   #ifdef TARGET_SPARC64
+> @@ -610,34 +610,36 @@ static void cpu_print_cc(FILE *f, uint32_t cc)
+>   #define REGS_PER_LINE 8
+>   #endif
+>   
+> -void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+> +void sparc_cpu_format_state(CPUState *cs, GString *buf, int flags)
+>   {
+>       SPARCCPU *cpu = SPARC_CPU(cs);
+>       CPUSPARCState *env = &cpu->env;
+>       int i, x;
+>   
+> -    qemu_fprintf(f, "pc: " TARGET_FMT_lx "  npc: " TARGET_FMT_lx "\n", env->pc,
+> -                 env->npc);
+> +    g_string_append_printf(buf,
+> +                           "pc: " TARGET_FMT_lx "  npc: " TARGET_FMT_lx "\n",
+> +                           env->pc, env->npc);
+>   
+>       for (i = 0; i < 8; i++) {
+>           if (i % REGS_PER_LINE == 0) {
+> -            qemu_fprintf(f, "%%g%d-%d:", i, i + REGS_PER_LINE - 1);
+> +            g_string_append_printf(buf, "%%g%d-%d:", i, i + REGS_PER_LINE - 1);
+>           }
+> -        qemu_fprintf(f, " " TARGET_FMT_lx, env->gregs[i]);
+> +        g_string_append_printf(buf, " " TARGET_FMT_lx, env->gregs[i]);
+>           if (i % REGS_PER_LINE == REGS_PER_LINE - 1) {
+> -            qemu_fprintf(f, "\n");
+> +            g_string_append_printf(buf, "\n");
+>           }
+>       }
+>       for (x = 0; x < 3; x++) {
+>           for (i = 0; i < 8; i++) {
+>               if (i % REGS_PER_LINE == 0) {
+> -                qemu_fprintf(f, "%%%c%d-%d: ",
+> +                g_string_append_printf(buf, "%%%c%d-%d: ",
+>                                x == 0 ? 'o' : (x == 1 ? 'l' : 'i'),
+>                                i, i + REGS_PER_LINE - 1);
+>               }
+> -            qemu_fprintf(f, TARGET_FMT_lx " ", env->regwptr[i + x * 8]);
+> +            g_string_append_printf(buf, TARGET_FMT_lx " ",
+> +                                   env->regwptr[i + x * 8]);
+>               if (i % REGS_PER_LINE == REGS_PER_LINE - 1) {
+> -                qemu_fprintf(f, "\n");
+> +                g_string_append_printf(buf, "\n");
+>               }
+>           }
+>       }
+> @@ -645,42 +647,47 @@ void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+>       if (flags & CPU_DUMP_FPU) {
+>           for (i = 0; i < TARGET_DPREGS; i++) {
+>               if ((i & 3) == 0) {
+> -                qemu_fprintf(f, "%%f%02d: ", i * 2);
+> +                g_string_append_printf(buf, "%%f%02d: ", i * 2);
+>               }
+> -            qemu_fprintf(f, " %016" PRIx64, env->fpr[i].ll);
+> +            g_string_append_printf(buf, " %016" PRIx64, env->fpr[i].ll);
+>               if ((i & 3) == 3) {
+> -                qemu_fprintf(f, "\n");
+> +                g_string_append_printf(buf, "\n");
+>               }
+>           }
+>       }
+>   
+>   #ifdef TARGET_SPARC64
+> -    qemu_fprintf(f, "pstate: %08x ccr: %02x (icc: ", env->pstate,
+> +    g_string_append_printf(buf, "pstate: %08x ccr: %02x (icc: ", env->pstate,
+>                    (unsigned)cpu_get_ccr(env));
+> -    cpu_print_cc(f, cpu_get_ccr(env) << PSR_CARRY_SHIFT);
+> -    qemu_fprintf(f, " xcc: ");
+> -    cpu_print_cc(f, cpu_get_ccr(env) << (PSR_CARRY_SHIFT - 4));
+> -    qemu_fprintf(f, ") asi: %02x tl: %d pil: %x gl: %d\n", env->asi, env->tl,
+> -                 env->psrpil, env->gl);
+> -    qemu_fprintf(f, "tbr: " TARGET_FMT_lx " hpstate: " TARGET_FMT_lx " htba: "
+> -                 TARGET_FMT_lx "\n", env->tbr, env->hpstate, env->htba);
+> -    qemu_fprintf(f, "cansave: %d canrestore: %d otherwin: %d wstate: %d "
+> -                 "cleanwin: %d cwp: %d\n",
+> -                 env->cansave, env->canrestore, env->otherwin, env->wstate,
+> -                 env->cleanwin, env->nwindows - 1 - env->cwp);
+> -    qemu_fprintf(f, "fsr: " TARGET_FMT_lx " y: " TARGET_FMT_lx " fprs: "
+> -                 TARGET_FMT_lx "\n", env->fsr, env->y, env->fprs);
+> +    cpu_print_cc(buf, cpu_get_ccr(env) << PSR_CARRY_SHIFT);
+> +    g_string_append_printf(buf, " xcc: ");
+> +    cpu_print_cc(buf, cpu_get_ccr(env) << (PSR_CARRY_SHIFT - 4));
+> +    g_string_append_printf(buf, ") asi: %02x tl: %d pil: %x gl: %d\n",
+> +                           env->asi, env->tl, env->psrpil, env->gl);
+> +    g_string_append_printf(buf, "tbr: " TARGET_FMT_lx " hpstate: "
+> +                           TARGET_FMT_lx " htba: " TARGET_FMT_lx "\n",
+> +                           env->tbr, env->hpstate, env->htba);
+> +    g_string_append_printf(buf, "cansave: %d canrestore: %d "
+> +                           "otherwin: %d wstate: %d "
+> +                           "cleanwin: %d cwp: %d\n",
+> +                           env->cansave, env->canrestore,
+> +                           env->otherwin, env->wstate,
+> +                           env->cleanwin, env->nwindows - 1 - env->cwp);
+> +    g_string_append_printf(buf, "fsr: " TARGET_FMT_lx " y: "
+> +                           TARGET_FMT_lx " fprs: " TARGET_FMT_lx "\n",
+> +                           env->fsr, env->y, env->fprs);
+>   
+>   #else
+> -    qemu_fprintf(f, "psr: %08x (icc: ", cpu_get_psr(env));
+> -    cpu_print_cc(f, cpu_get_psr(env));
+> -    qemu_fprintf(f, " SPE: %c%c%c) wim: %08x\n", env->psrs ? 'S' : '-',
+> -                 env->psrps ? 'P' : '-', env->psret ? 'E' : '-',
+> -                 env->wim);
+> -    qemu_fprintf(f, "fsr: " TARGET_FMT_lx " y: " TARGET_FMT_lx "\n",
+> -                 env->fsr, env->y);
+> +    g_string_append_printf(buf, "psr: %08x (icc: ", cpu_get_psr(env));
+> +    cpu_print_cc(buf, cpu_get_psr(env));
+> +    g_string_append_printf(buf, " SPE: %c%c%c) wim: %08x\n",
+> +                           env->psrs ? 'S' : '-',
+> +                           env->psrps ? 'P' : '-', env->psret ? 'E' : '-',
+> +                           env->wim);
+> +    g_string_append_printf(buf, "fsr: " TARGET_FMT_lx " y: " TARGET_FMT_lx "\n",
+> +                           env->fsr, env->y);
+>   #endif
+> -    qemu_fprintf(f, "\n");
+> +    g_string_append_printf(buf, "\n");
+>   }
+>   
+>   static void sparc_cpu_set_pc(CPUState *cs, vaddr value)
+> @@ -889,7 +896,7 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->class_by_name = sparc_cpu_class_by_name;
+>       cc->parse_features = sparc_cpu_parse_features;
+>       cc->has_work = sparc_cpu_has_work;
+> -    cc->dump_state = sparc_cpu_dump_state;
+> +    cc->format_state = sparc_cpu_format_state;
+>   #if !defined(TARGET_SPARC64) && !defined(CONFIG_USER_ONLY)
+>       cc->memory_rw_debug = sparc_cpu_memory_rw_debug;
+>   #endif
+> diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+> index ff8ae73002..65a01a7884 100644
+> --- a/target/sparc/cpu.h
+> +++ b/target/sparc/cpu.h
+> @@ -571,7 +571,7 @@ extern const VMStateDescription vmstate_sparc_cpu;
+>   #endif
+>   
+>   void sparc_cpu_do_interrupt(CPUState *cpu);
+> -void sparc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+> +void sparc_cpu_format_state(CPUState *cpu, GString *buf, int flags);
+>   hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>   int sparc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+>   int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-PS: your mail server has been sending me delivery failure
-messages because it seems to be subscribed to a blocklist
-that has blocked one of gmail's outgoing mail servers:
 
-554 5.7.1 Service unavailable; Client host [209.85.128.51] blocked
-using dnsbl.sorbs.net; Currently Sending Spam See:
-http://www.sorbs.net/lookup.shtml?209.85.128.51
+ATB,
 
--- PMM
+Mark.

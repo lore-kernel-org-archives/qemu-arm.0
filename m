@@ -1,95 +1,96 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1051518lfp;
-        Thu, 16 Sep 2021 05:01:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx6eq8tz9mGscdZ+IRUvOGzqxrTn3FJx0bDocHoaHO88T8woB0CIt7DA0oVIGUao495Grw8
-X-Received: by 2002:ab0:81a:: with SMTP id a26mr237617uaf.6.1631793685843;
-        Thu, 16 Sep 2021 05:01:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631793685; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1068501lfp;
+        Thu, 16 Sep 2021 05:19:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzlcEq1gDtXqHwdc7VKMsoQWSuzbDeyNFui2i1gN/C0jCpzrFhInvXrbvEO0IJ+fTeq0QaL
+X-Received: by 2002:ad4:47ad:: with SMTP id a13mr4918227qvz.61.1631794764005;
+        Thu, 16 Sep 2021 05:19:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631794764; cv=none;
         d=google.com; s=arc-20160816;
-        b=t7tlYaqBvQV93I588q8J7DSUnmrAT9Fr9akX/e+9m+ZBu6tyE1BC7iBbw12XY0imd1
-         knju9jlT5TJP5sMmOGW06MbCiTDWMcuYLkmdF09CxOfcJ7SRxHb7258aS+vGYLvQJWwJ
-         eZnUanYGLxcQPrTIomUOtZHFZzufZullH/c+a6y4dAvC70NvA8u6Iuf/HFCennO0VXpa
-         v9cX8jo/SumcT0G71lw8UBPihpVt41dGqc8tpX0+S9/Iy8EdTPmRLABNt9pp9vQ3PIYf
-         Txe0+aUBRNNF08lXFuknISuDCdCycuQung8jesPnQrWHtcLP3A1yz8kuMvm0GwmcWDWI
-         S5BQ==
+        b=GdqQXjeY38tpQVtsGbqxt8D+KJsxo7TM6pjPRwU0+mfRCO/1UgdyoL03kG++QkMBRE
+         5OTv/sm4nhlgOpkUcmoYPE3vprDE1QgaMfuk2mClcMObb86wlb7n6qBiIpQVzqeRgeUh
+         b5usdKMxRhdwof4+dWEL3gokWic5ngKaHs6ZKLSYa4/M4wYCT5x/NObupk7Zk43I7HwU
+         4ehqAXJJOKWYUb9kqLjOyNYD24mHGP2zD08Gxqu7tqS0M/qHjiEHiGOvgrQFgY+Q4Pdw
+         2LoFvH3EA69+gxsez/+QV6s+4tuSc6rRheIab6OOhnUrht7lOqymZG1NdwzGnq0bzFmy
+         /+0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=RuuMHracPQA6J4gTHFCFbuTFO31MGbcwnN6iafFSFGM=;
-        b=IdDFvWgp4Ni16zFqA0S9IyNnKww+/DwvVVYF7CAqrPZSOJFeClBUVHu7M7VNE5qD30
-         MOM5meGcNp4Ve8RR3xgE2VuCWq8v/F7mmyYVxJriPicFc2apaVw15qG6CT2dZvJm92hC
-         wHEEejXsvoHEyxBS/h5TJVAd9wQwCux+pb5TalTC/LJ7YRvGwDZEiX3n6Z38LEI0FgXb
-         qjnql3J47sPSiPJiV/LD1bgCQLinIwgCcxiw7S1BrodN0ZCgknK/Q7wJa1e5LDBj1DCa
-         WMC5E8P9b3uqygkY44RW8ZyEdIAyS4NepsHQd7WnJRiWI9hy3vt1+dU1evXtTi84FEQW
-         FtfQ==
+        bh=oSpHLR6R74Rtm2/C22hOJeM8MXyeV/bagNFJ8H86SME=;
+        b=qtvml462khZJcrWo7Qc7OAbwRF1IL7ujxd5UWhaKb5WeZDzqdAoxYIKr3zS4F32OhO
+         y6v+tPiljF2t0rszWhI1dt4rdpV/4NVeKEwpv3Wo1fuWXQh7NlTQ7HK8S1e7rCA90/Eh
+         TffFk0gIrgTVyel/dWo+jihWqhq7JCi0lW5USO6JPtNi0mWlm/XvhWox6rA8xvAIAW65
+         q/mtWyVFncimva3JI7ko8IK2hr6Nqp72S/x2JH2StNb4J5XXM70iKP6MKYqHJlAb1PFl
+         JKqds2VtAjWdXEROKI6R7lCNbBcpih252TKCtDF7yfU69kWWbaZFKMhGJauvpS1RxQMv
+         TWng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ob1EVF5P;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=aBqVlh84;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u76si1164590vku.36.2021.09.16.05.01.25
+        by mx.google.com with ESMTPS id r7si1878451qvc.3.2021.09.16.05.19.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 05:01:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Sep 2021 05:19:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ob1EVF5P;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=aBqVlh84;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56712 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQq4y-0006Q4-TH
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 08:01:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37068)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQqMN-0007oU-2G
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 08:19:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQq3e-0006Pl-Pw
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 08:00:03 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:46846)
+ id 1mQqKX-00065Y-T9
+ for qemu-devel@nongnu.org; Thu, 16 Sep 2021 08:17:29 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:50967)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQq3c-00085H-9a
- for qemu-arm@nongnu.org; Thu, 16 Sep 2021 08:00:02 -0400
-Received: by mail-wr1-x435.google.com with SMTP id x6so9011348wrv.13
- for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 04:59:59 -0700 (PDT)
+ id 1mQqKW-0005u4-9O
+ for qemu-devel@nongnu.org; Thu, 16 Sep 2021 08:17:29 -0400
+Received: by mail-wm1-x330.google.com with SMTP id 140so4694569wma.0
+ for <qemu-devel@nongnu.org>; Thu, 16 Sep 2021 05:17:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=RuuMHracPQA6J4gTHFCFbuTFO31MGbcwnN6iafFSFGM=;
- b=Ob1EVF5PdhRoMbZe3jegXqRjp1KB76XXxBMRx67Y+JF1YbPGHdvPopfplTpHMQnisN
- xbiQINlJzgJSpq9uzrgmPBqglaUvPzQT0ym4KspjyWXtt/e0sdqy361NEJ85TMvuG7uN
- jzuJmzdcxziwoLRxLfh58LfvqeE5+Rwu1UvJeXwjQBA06n8qmWNeL9aDrNjC24JDOucM
- 5Jx5OZ92tNMD4V9to9Lu8iOQtVSShRA9YTDhNPW2tSjfKwDXtKQ8D4g1lHH8rrgTSb+1
- SLTTF/4le7qsBcOu9jhJqupGq0cJtljqUs3D8IzkVbZKai6Gc/W/lkhXdPgkoKnsZe0m
- /ZBQ==
+ :cc; bh=oSpHLR6R74Rtm2/C22hOJeM8MXyeV/bagNFJ8H86SME=;
+ b=aBqVlh84zSbm9YMNbW55U9/g86cZWrw1jLX0REsfBJVIzAPVkSPzpvZdFVupbd14+2
+ kSIS8nUY9NsPyfPfZMQogzitR6oUgx/udNiKone7wfqslRenjmylRcn4qDkhlh8Yc85b
+ VpglQzQZX+ncgtKGTbWPBnCWL+0qggDe8WKQ0INJP2zzLLcf8t+bqg83lXtfy3kBtiU9
+ 4zbOzUoC1Kjx9XNgL+ixWW22tAgyBZdiBGNdgKkJrKz8ESv85tsyTUcRVBCNlxInSN9i
+ jVKBDij4yz+oaCzgegr+BZ33zehVor96sJ4F62gAlkm1Qzj9Hr1azfThEl4mrxBKQorp
+ N0pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=RuuMHracPQA6J4gTHFCFbuTFO31MGbcwnN6iafFSFGM=;
- b=wcKY6r2+m+SlGmgmgiO+2Wjj3EFKb8kMTefqNFxR6jrpswIpXgQzkzHJIJ8JWzkZGD
- QoXktR2taNvNKqFMhmxpD6/2+4ldARLCKHnfBDIeW4xmaWpRhRssRC6fwCLnSfa0KDMZ
- AmXYvBBSWYa72BEP+ZwG/W6neONce37I93hVYOk22OMQUgX/NlmI5y7SH9bBLsd90LOh
- eoU2HWr1ZowXGIVgIEt7L5kLtnk2b+sMLNXIUUr5CfeHqfBbgLPeLroe+vvlAZ3eIE8z
- 2ICO06v/RAocVWdNF/0fFbH4i9aekkypAzy94WjTo0QJjukUnveEE6z4WJaxrT7Y2rj8
- bP7Q==
-X-Gm-Message-State: AOAM530j+0kDy/nNbxtLbPmqQ72l7/vPSvEMTWMdvMWC2qb40Hw+PF33
- B12ZDM+1RmH+cfBnN2TaOdCA6Xs+Ekze6TsIfE2V7g==
-X-Received: by 2002:adf:fd12:: with SMTP id e18mr5649945wrr.275.1631793598048; 
- Thu, 16 Sep 2021 04:59:58 -0700 (PDT)
+ bh=oSpHLR6R74Rtm2/C22hOJeM8MXyeV/bagNFJ8H86SME=;
+ b=bwvsiCEqRpsFaOBjlyRRoCSe+ebd+DD+/Hp35BTUHW5sHcn7Peyj428V6Lkt78+fnx
+ ALsSvmEbGV8EBqoS4qTKCnXQjF4Tk62HxMcUiHQIwmMpFJ/x9PC0X/8dYV1l0F8Pct4e
+ oYnHhEjv6gAZGh/pt8uAWYnTN4xSIiIJ6dN1jGcV4sNgSvpmqHyjggdxitXlzVM+0mwU
+ G/DDYs+Z/JDoTx/4U/Mdb0pjzWU7jVZ1gCXbU9n6+qbuPBmA5hzjhxr4kPKGFnE8dRGA
+ VHZZ+ItKRgsNwTzrfEU4r4bALnrmQYJyi9kM2bk6EE13oK3vbAvJFrlHtZLr+boGMVyy
+ 4vTw==
+X-Gm-Message-State: AOAM532VPdF2erBA+HqGHJcE1KAIGgtdDt++xtaVgSujJ+RBNRxe8Tsu
+ MBPt1pl3sgP2CCLTZLrqiRa3QHCZ+I2byAsljhqNnA==
+X-Received: by 2002:a05:600c:4848:: with SMTP id
+ j8mr9619485wmo.21.1631794646489; 
+ Thu, 16 Sep 2021 05:17:26 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210915181049.27597-1-agraf@csgraf.de>
- <20210915181049.27597-3-agraf@csgraf.de>
-In-Reply-To: <20210915181049.27597-3-agraf@csgraf.de>
+ <20210915181049.27597-5-agraf@csgraf.de>
+In-Reply-To: <20210915181049.27597-5-agraf@csgraf.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Sep 2021 12:59:07 +0100
-Message-ID: <CAFEAcA9e+tnF56J11AWcsyKGH+h+3VKKADOFGaM37JhYR_HqDA@mail.gmail.com>
-Subject: Re: [PATCH v11 02/10] hvf: Add execute to dirty log permission bitmap
+Date: Thu, 16 Sep 2021 13:16:35 +0100
+Message-ID: <CAFEAcA9omLRSXw23Q0KPEihe+kXs7vDheqnZLSCGegAOrifWsA@mail.gmail.com>
+Subject: Re: [PATCH v11 04/10] hvf: Add Apple Silicon support
 To: Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,17 +99,17 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  Peter Collingbourne <pcc@google.com>,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -116,49 +117,30 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
  Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MeyatkNpMSkH
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1TulgkfM/uqn
 
 On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
 >
-> Hvf's permission bitmap during and after dirty logging does not include
-> the HV_MEMORY_EXEC permission. At least on Apple Silicon, this leads to
-> instruction faults once dirty logging was enabled.
+> With Apple Silicon available to the masses, it's a good time to add support
+> for driving its virtualization extensions from QEMU.
 >
-> Add the bit to make it work properly.
+> This patch adds all necessary architecture specific code to get basic VMs
+> working, including save/restore.
+>
+> Known limitations:
+>
+>   - WFI handling is missing (follows in later patch)
+>   - No watchpoint/breakpoint support
 >
 > Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> ---
->  accel/hvf/hvf-accel-ops.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> Reviewed-by: Sergio Lopez <slp@redhat.com>
 >
-> diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-> index d1691be989..71cc2fa70f 100644
-> --- a/accel/hvf/hvf-accel-ops.c
-> +++ b/accel/hvf/hvf-accel-ops.c
-> @@ -239,12 +239,12 @@ static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
->      if (on) {
->          slot->flags |= HVF_SLOT_LOG;
->          hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
-> -                      HV_MEMORY_READ);
-> +                      HV_MEMORY_READ | HV_MEMORY_EXEC);
->      /* stop tracking region*/
->      } else {
->          slot->flags &= ~HVF_SLOT_LOG;
->          hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
-> -                      HV_MEMORY_READ | HV_MEMORY_WRITE);
-> +                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
->      }
->  }
-
-Makes sense -- this matches the premissions we set initially
-for memory regions in hvf_set_phys_mem().
+> ---
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-Should we change also the hv_vm_protect() call in
-target/i386/hvf/hvf.c:ept_emulation_fault(), for consistency ?
 
 thanks
 -- PMM

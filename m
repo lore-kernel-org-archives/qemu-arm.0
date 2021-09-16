@@ -1,266 +1,165 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1002994lfp;
-        Thu, 16 Sep 2021 03:57:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbdGD9qPqFtLFGv7jJrD6RwyFj5ICn3Xh3U2XMG/QbrHg2tNwd/jhQn23QUavrl6mL2Ods
-X-Received: by 2002:a25:bb49:: with SMTP id b9mr6566693ybk.362.1631789823479;
-        Thu, 16 Sep 2021 03:57:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631789823; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1129581lfp;
+        Thu, 16 Sep 2021 06:34:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMGoQDKCb1y/y/jWuxKq8x6otxcm12wBG/g224VqNMgt0UcgE1yK/F2W/TQUCPQj6VkSri
+X-Received: by 2002:ac8:4892:: with SMTP id i18mr5171987qtq.13.1631799273316;
+        Thu, 16 Sep 2021 06:34:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631799273; cv=none;
         d=google.com; s=arc-20160816;
-        b=A9zivstxG1LKuwQeh/bxe6zpUXJSJKThuqXabX3pRyMEtMEME0O1Pk1Ru3Wxf36TDc
-         NGm4m0dQBPqdhmemyKfSI5ymsdfvVBsZFAiVXOD6SRsCozEV/uUlBoF8oBdV2khbMYPC
-         fiwTQN6qFpnkTqrTj41e+l3/plvO5QUPrtHzX/tRVXlKa1SA1mh4PQbq2HdPF0pphh4d
-         u/9Y0F7OcYGPMfy+ZVKyzYpVcX5SU7ylWG/FkVRtbZtqBim16/gBfKnRSgK9VqrgVp8V
-         +pf/9DhwJx1mpiaae5h/f3jsqemfljnNtFnWU8rRKXx4WWSTFmeHUx2tzX06ESQO7EDU
-         irxg==
+        b=ORxxaXtqAh+SWIoo2F7LqXB8JgbXZPz/z6oxh/8qqHug3FBMahdTkzeXTCjNaDSYQx
+         WVNYErd1AkkzQd4kI8xtZBihXa80vGwFymGco3+M0XdYQoG9XQ4BRgsEeqCSt3FqSQ8d
+         ARbX1sN+DUfldiJi0r8jqiJ1XgoyevHNkvUT/5WlCrNjZwFkDRI1GPEUVNdTH8PiLgJA
+         GwjrI/mQiK2DAvVCQ8m98AUMWT00f0NosfKGN1zLCcqCreaAB8xXeC/kBFXs3PguS+yA
+         5ZHZgM1UVB6hYUl+ehHnDVEVRhgWxANB3AbcAwCXZQD/KQ18jbfamkr5BBLMZF2pggu6
+         J0yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=UDJ7sI+UC3imLKCdeGtobVTV67WPTjfzRv30DRvLscg=;
-        b=MWUhhJS6p1t9HEJy82fWDU5SQiTjcn6wIKHI7AXhwhMrx4erSufZz2m27w6OZRpbUE
-         pg8YVh5AIZOQtRngi7ut1FknVBuX7bT2F5tnk8XDBJxbFqAXyzWyxykBtermCO/TeA9s
-         4IGh6puWnuG7p88QzSd7NzbIGrKmEKU+VeUq2SjLVNC3TDM2SV4pJXLsYBJmjW2NVZZ/
-         xNzhsZXcfrJdtfz3H7+DGbSHeewa+jktUTVkCFZMNpy1rZNyHLniod0pvANQEYcVlJMc
-         xf6HJglOhhX9kp4DIPhxrzC/tan3YXb+REl7OdDDIGP+CMIyg0fgw1u7p0JVnN9vZS75
-         lh8Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=DJXhb+tnEqQWjMjEHbumJndvoYeZdNemytrjthbTjtc=;
+        b=j2FA0TlInjOlIbR1nREe5okn4H3qgwAnFTcPe44RayRsUqRzGkBXrGyTtkBwD6JfBr
+         bXvF+R+L0aEIOWuAzddcE+BFFeHyIbARO7ydFPn+NnxGbhtj8wt3YGl9QHql2NTu52nD
+         J9jfk3u1ds+TSfQMajQylfQ4E2nQwyP001Ww2udDfvg2rki4X0ONwjXD/euOj2H047ay
+         6Xs+/UGKH2DP/elBobgan0ip4fD9favr0pqYBOPuVsmqBogdviGWdlSoaJCj8Ru6Ook8
+         43EAerzjfdnRjU4/Q4xjU013lGTi6MO5BPkrige057Zmwg4QkrsL7mJqE3/qx6tSj7Wg
+         HERw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=oq0G8TRp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e80si3279072ybb.142.2021.09.16.03.57.03
+        by mx.google.com with ESMTPS id 18si1632811qtd.295.2021.09.16.06.34.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 03:57:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Sep 2021 06:34:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46856 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=oq0G8TRp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQp4g-0001vl-Rh
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 06:57:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52364)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQrX6-0002et-NF
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 09:34:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1mQp2b-0008Sl-0u; Thu, 16 Sep 2021 06:54:53 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:40650
- helo=mail.default.ilande.bv.iomart.io)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1mQp2Y-0001MQ-63; Thu, 16 Sep 2021 06:54:52 -0400
-Received: from host109-153-76-56.range109-153.btcentralplus.com
- ([109.153.76.56] helo=[192.168.50.176])
- by mail.default.ilande.bv.iomart.io with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1mQp21-0000KB-N9; Thu, 16 Sep 2021 11:54:21 +0100
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-49-berrange@redhat.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <547a6d41-85f2-7e50-909e-382aa733e367@ilande.co.uk>
-Date: Thu, 16 Sep 2021 11:54:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQrWG-0002ZZ-HN
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 09:33:40 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:53179)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQrWE-0002BE-BW
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 09:33:40 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id e26so4855163wmk.2
+ for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 06:33:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=DJXhb+tnEqQWjMjEHbumJndvoYeZdNemytrjthbTjtc=;
+ b=oq0G8TRpnqwaJFxmGX5HrrtWblObjLUD5glLW7QoZ64MP9E5CgTmiIO7C1mKkaRLvj
+ Le0OJrgq6GRBaZBAAd8JtrI1fEqVblDo4Uaup51MFmMx+OLmHVola0Ce2fNTRc59EZQ2
+ CI6UFBETcLMWSO0WJ588ekb8V8Y+HjToXzUAqNZuZvBNN9UaD9Y3drrLNgwD9AJsYbwA
+ H0TY5LNoFZ8lzFx/+6mtxHzoAkw56V+mIEnwEllow1Q4AyNpgfLQcgWfSwEPR4JgvqIt
+ LebbaOvCbb8F0wgL1iUz4wK8Tbv1/th67ZvTxSYlEIM1ufrCUcZgLI4lRnfVXe59PFV5
+ 6zOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=DJXhb+tnEqQWjMjEHbumJndvoYeZdNemytrjthbTjtc=;
+ b=U5i4Kg+arhfuSgZjTAUsPx8ezBX+ayLATSHPt2lZWQRXYBjQDV1/b8X5BB+7IfduhU
+ 69I4g6gMvJ0LL+KX6dtTzgj7dTbfcS0L5kJpJQdd0ZhQ4x1NZ++2uZUY5IVP+xySVgWU
+ hKxukWB72TXIbzcGzj/mspFFsHinSi8lYGyG6V4bZK/TvwJiABqj+BURBEhTvoaojelA
+ 5q3SuhCL8jJzQA3mFtTwauiXLSorffzWGxmPpBNKn/iD6Jqhz7NT/ryNjkuW5x+Ahwje
+ Ha1b385hlrp1hzOzcyRWJox2LGa+C2jqVC2XLVscXsyvAOLU9pmo4wNoZ1HZ/yzauz+s
+ g5lQ==
+X-Gm-Message-State: AOAM530W6s0ihWk0KEsQMTucf0f9gsfgzcFEhBP0GwOvVESxGtKzSmsL
+ YZgEsykeFKzU2BImf/vhtvgq5rAEEbNwYbZBP307dQ==
+X-Received: by 2002:a05:600c:4848:: with SMTP id
+ j8mr9971595wmo.21.1631799214193; 
+ Thu, 16 Sep 2021 06:33:34 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210914142042.1655100-49-berrange@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 109.153.76.56
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v2 48/53] target/sparc: convert to use format_tlb callback
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.bv.iomart.io)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk;
- helo=mail.default.ilande.bv.iomart.io
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.488,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210909122402.127977-1-eric.auger@redhat.com>
+In-Reply-To: <20210909122402.127977-1-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Sep 2021 14:32:43 +0100
+Message-ID: <CAFEAcA9gs4of2tw77YfYNjYKjoeBAHy0SknkCFNuZprGa-203Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/rtc/pl031: Send RTC_CHANGE QMP event
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
- David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
- Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eric Blake <eblake@redhat.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eXBUfVaA1NqN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Gavin Shan <gshan@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SQHNkWN2IKkI
 
-On 14/09/2021 15:20, Daniel P. Berrangé wrote:
-
-> Change the "info tlb" implementation to use the format_tlb callback.
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->   target/sparc/cpu.c        |  1 +
->   target/sparc/cpu.h        |  1 +
->   target/sparc/mmu_helper.c | 43 ++++++++++++++++++++++++---------------
->   target/sparc/monitor.c    | 10 ++++++---
->   4 files changed, 36 insertions(+), 19 deletions(-)
-> 
-> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-> index 9346a79239..f78ddc72b5 100644
-> --- a/target/sparc/cpu.c
-> +++ b/target/sparc/cpu.c
-> @@ -898,6 +898,7 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
->       cc->has_work = sparc_cpu_has_work;
->       cc->format_state = sparc_cpu_format_state;
->   #if !defined(TARGET_SPARC64) && !defined(CONFIG_USER_ONLY)
-> +    cc->format_tlb = sparc_cpu_format_tlb;
->       cc->memory_rw_debug = sparc_cpu_memory_rw_debug;
->   #endif
->       cc->set_pc = sparc_cpu_set_pc;
-> diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-> index 65a01a7884..233f0b3eb7 100644
-> --- a/target/sparc/cpu.h
-> +++ b/target/sparc/cpu.h
-> @@ -572,6 +572,7 @@ extern const VMStateDescription vmstate_sparc_cpu;
->   
->   void sparc_cpu_do_interrupt(CPUState *cpu);
->   void sparc_cpu_format_state(CPUState *cpu, GString *buf, int flags);
-> +void sparc_cpu_format_tlb(CPUState *cpu, GString *buf);
->   hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->   int sparc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->   int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-> index a44473a1c7..06b16aca6a 100644
-> --- a/target/sparc/mmu_helper.c
-> +++ b/target/sparc/mmu_helper.c
-> @@ -371,37 +371,39 @@ target_ulong mmu_probe(CPUSPARCState *env, target_ulong address, int mmulev)
->       return 0;
->   }
->   
-> -void dump_mmu(CPUSPARCState *env)
-> +void sparc_cpu_format_tlb(CPUState *cpu, GString *buf)
->   {
-> -    CPUState *cs = env_cpu(env);
-> +    CPUSPARCState *env = cpu->env_ptr;
->       target_ulong va, va1, va2;
->       unsigned int n, m, o;
->       hwaddr pa;
->       uint32_t pde;
->   
-> -    qemu_printf("Root ptr: " TARGET_FMT_plx ", ctx: %d\n",
-> -                (hwaddr)env->mmuregs[1] << 4, env->mmuregs[2]);
-> +    g_string_append_printf(buf, "Root ptr: " TARGET_FMT_plx ", ctx: %d\n",
-> +                           (hwaddr)env->mmuregs[1] << 4, env->mmuregs[2]);
->       for (n = 0, va = 0; n < 256; n++, va += 16 * 1024 * 1024) {
->           pde = mmu_probe(env, va, 2);
->           if (pde) {
-> -            pa = cpu_get_phys_page_debug(cs, va);
-> -            qemu_printf("VA: " TARGET_FMT_lx ", PA: " TARGET_FMT_plx
-> -                        " PDE: " TARGET_FMT_lx "\n", va, pa, pde);
-> +            pa = cpu_get_phys_page_debug(cpu, va);
-> +            g_string_append_printf(buf, "VA: " TARGET_FMT_lx
-> +                                   ", PA: " TARGET_FMT_plx
-> +                                   " PDE: " TARGET_FMT_lx "\n", va, pa, pde);
->               for (m = 0, va1 = va; m < 64; m++, va1 += 256 * 1024) {
->                   pde = mmu_probe(env, va1, 1);
->                   if (pde) {
-> -                    pa = cpu_get_phys_page_debug(cs, va1);
-> -                    qemu_printf(" VA: " TARGET_FMT_lx ", PA: "
-> -                                TARGET_FMT_plx " PDE: " TARGET_FMT_lx "\n",
-> -                                va1, pa, pde);
-> +                    pa = cpu_get_phys_page_debug(cpu, va1);
-> +                    g_string_append_printf(buf, " VA: " TARGET_FMT_lx
-> +                                           ", PA: " TARGET_FMT_plx
-> +                                           " PDE: " TARGET_FMT_lx "\n",
-> +                                           va1, pa, pde);
->                       for (o = 0, va2 = va1; o < 64; o++, va2 += 4 * 1024) {
->                           pde = mmu_probe(env, va2, 0);
->                           if (pde) {
-> -                            pa = cpu_get_phys_page_debug(cs, va2);
-> -                            qemu_printf("  VA: " TARGET_FMT_lx ", PA: "
-> -                                        TARGET_FMT_plx " PTE: "
-> -                                        TARGET_FMT_lx "\n",
-> -                                        va2, pa, pde);
-> +                            pa = cpu_get_phys_page_debug(cpu, va2);
-> +                            g_string_append_printf(buf, "  VA: " TARGET_FMT_lx
-> +                                                   ", PA: " TARGET_FMT_plx
-> +                                                   " PTE: " TARGET_FMT_lx "\n",
-> +                                                   va2, pa, pde);
->                           }
->                       }
->                   }
-> @@ -410,6 +412,15 @@ void dump_mmu(CPUSPARCState *env)
->       }
->   }
->   
-> +void dump_mmu(CPUSPARCState *env)
-> +{
-> +    CPUState *cs = env_cpu(env);
-> +    g_autoptr(GString) buf = g_string_new("");
-> +
-> +    sparc_cpu_format_tlb(cs, buf);
-> +    qemu_printf("%s", buf->str);
-> +}
-> +
->   /* Gdb expects all registers windows to be flushed in ram. This function handles
->    * reads (and only reads) in stack frames as if windows were flushed. We assume
->    * that the sparc ABI is followed.
-> diff --git a/target/sparc/monitor.c b/target/sparc/monitor.c
-> index 318413686a..cc7fe74e3e 100644
-> --- a/target/sparc/monitor.c
-> +++ b/target/sparc/monitor.c
-> @@ -30,13 +30,17 @@
->   
->   void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->   {
-> -    CPUArchState *env1 = mon_get_cpu_env(mon);
-> +    g_autoptr(GString) buf = g_string_new("");
-> +    CPUState *cpu = mon_get_cpu(mon);
->   
-> -    if (!env1) {
-> +    if (!cpu) {
->           monitor_printf(mon, "No CPU available\n");
->           return;
->       }
-> -    dump_mmu(env1);
-> +
-> +    cpu_format_tlb(cpu, buf);
-> +
-> +    monitor_printf(mon, "%s", buf->str);
->   }
->   
->   #ifndef TARGET_SPARC64
-
-Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+On Thu, 9 Sept 2021 at 13:24, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> The PL031 currently is not able to report guest RTC change to the QMP
+> monitor as opposed to mc146818 or spapr RTCs. This patch adds the call
+> to qapi_event_send_rtc_change() when the Load Register is written. The
+> value that is reported corresponds to the difference between the new
+> RTC value and the RTC value elapsed since the base.
+>
+> For instance adding 20s to the guest RTC value will report 20:
+> {'timestamp': {'seconds': 1631189494, 'microseconds': 16932},
+> 'event': 'RTC_CHANGE', 'data': {'offset': 20}}
+>
+> Adding another extra 20s to the guest RTC value will report 40:
+> {'timestamp': {'seconds': 1631189498, 'microseconds': 9708},
+> 'event': 'RTC_CHANGE', 'data': {'offset': 40}}
+>
+> To compute the offset we need to track the origin tick_offset (the one
+> computed at init time). So we need to migrate that field, which is done
+> in a dedicated subsection. The migration of this subsection is disabled
+> for machine types less or equal than 6.1.
+>
+> After migration, adding an extra 20s on the destination returns 60:
+> {'timestamp': {'seconds': 1631189522, 'microseconds': 13081},
+> 'event': 'RTC_CHANGE', 'data': {'offset': 60}}
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 
-ATB,
+> @@ -138,6 +140,7 @@ static void pl031_write(void * opaque, hwaddr offset,
+>      switch (offset) {
+>      case RTC_LR:
+>          s->tick_offset += value - pl031_get_count(s);
+> +        qapi_event_send_rtc_change(s->tick_offset - s->original_tick_offset);
+>          pl031_set_alarm(s);
+>          break;
+>      case RTC_MR:
 
-Mark.
+None of the other users of qapi_event_send_rtc_change()
+seem to have to track the baseline time like this. Shouldn't
+this be doing something involving using qemu_ref_timedate()
+as the baseline that it uses to figure out the change value ?
+(The other users do this via qemu_timedate_diff() but since we
+start with a value-in-seconds we might want to expose some other
+API in softmmu/rtc.c.)
+
+thanks
+-- PMM

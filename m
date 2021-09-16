@@ -1,178 +1,136 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1286579lfp;
-        Thu, 16 Sep 2021 09:34:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjw4l7ANLIL9wuJDBm3ir+Iz7TKPuOYbyMMqlM4jfXpITxMfyu7xNW1CBdUE5gvQQ2G7fc
-X-Received: by 2002:a05:6214:122e:: with SMTP id p14mr6290233qvv.57.1631810079527;
-        Thu, 16 Sep 2021 09:34:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631810079; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1348319lfp;
+        Thu, 16 Sep 2021 10:47:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJybFENCAEdz5JRKvPd7CCXRxVnY3zQTI6OoqrA18AS+aU6JSS3ochuWaK83voZS6e3JIT13
+X-Received: by 2002:a67:3296:: with SMTP id y144mr3957616vsy.27.1631814469394;
+        Thu, 16 Sep 2021 10:47:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631814469; cv=none;
         d=google.com; s=arc-20160816;
-        b=C3LsM8bYkpB+7YSLXTo0mfD3BRF9O3JFQ9sX33Je0mNuI4pqKAVt+3W8eSV16kLnyI
-         3GY92JeSeOEbYil8aGtQREKn+TrF0M/314Qmeu1SKXBv5szJdPcIvjMXIO4pN+6sYHfi
-         YOo+nfep3ocBOdZ4MUfJKWq9XgNLybTTTf0ICTDujcIxMBYzpDVrawHUqeEuS0O/zM8f
-         N5jpbah5/wJi0NLBPhlW6GznGljt+4Rj6N4RTFueg3txGFjLGk4pcL2wb3CWOWBmoz2L
-         Yc9e4eoYC4UG7aK8Emnt7DLf4KwcuwIAfD/r/xX2UYiwgHE6dWvNrv76qiDdYxzydpM9
-         Ur6w==
+        b=GMHanMxDI6DW3cWkZSz6q11pFdj7sKnA+UJtjkah9kzWYvhTkq6uThtOac2rXxOXcV
+         ktGGM5D+aLMFZ0GLUoxXjQEvMuav1kX92Bv/SF7wbfzIeMyxN8hADHaTfMRQQn9Nr2NY
+         ocBcDOyLjg5POkfs3wGqXBPR4XQYdQgjp3twG5rpyVHtFoWjOm2zq09ad1g1qkptNwt6
+         P2DHlcSlLNyV2qQxkMueAgLJ2lkYKWuFvQc8VguSFA8Z83uANdWVKtydJLrsBbxi0d+O
+         5t7xCD7I5QjBk53hu6ipzB9kHXUUYWEt7Jmt3DphcoZ+HYasmdcwfA2fHeLDnkRi8wGb
+         jkHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=U/NXuPuG7h9Ohs5uPZKjte9gsdg347Wf5yRF8oIx/co=;
-        b=vojkbTSDDcx2D9wCP3C8xDcmWKZh4WrdSwaOqx9Lx6VE18Ka/TLW0DxEpx2IM8WXla
-         qr7d/OYBycWgiDqIY1AGtv0OMYru1SbnAvuQLAV6DOzY5vN3dpWl3DLzusB3rxgK2X0+
-         /+gw/MVpCNjvBZF/ca5okvE9AcnrT2jR/j8NJvEREATfzCLFIewSOzE4d/jjPQBOTMFq
-         VGyWt7HatbGEKToeFXKZm1jX3040EF6h05R1WbWOJdOy4oSwfnOnT0zc/kXwMmw81WqZ
-         lsc1GXUw26W382kUmmMfKMpTMtf+3NUzZ1CZXtnrUJPXMHcalBa1PWqxy555mvHCbk7w
-         A0mA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=VHQrvRyJmjwEBDT5YfanCBy7ab2WbjnNrdWUje8c360=;
+        b=0xgvrLydSnamZXOQeCCL01Zb41IkXIocXozsRYAucDeFynazH9MXRhENxrNwW27NW6
+         oNsOkrb+MufVieKmoXio33yNtMtL012p6l8xohxAjGmifgcZQx9VUSBZa8M4F2ZYr73D
+         PYr0Kh2xy/BW4/qIxq1rgUAtlblJDKby63rlezRA1DDA3vHycqD+KWpVKYjbK0iWhWkT
+         rMyiyXMkqltFc8xR140n07iXwDj1uw3tCrBICGQ45dt+jM8wnLWO+AbMPlOpcNayUu1G
+         0SjLGqEaVGf9uQss8/vgP/ZJuw5yD3VXC0oCbg/RCcaIUavgAIWhtjrEdHpiT0AcoWu4
+         ohnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UAy1I8Dy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si1906697qtm.262.2021.09.16.09.34.39
+        by mx.google.com with ESMTPS id p2si1679135vsn.414.2021.09.16.10.47.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 09:34:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Sep 2021 10:47:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UAy1I8Dy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42782 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQuLO-0003nf-TI
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 12:34:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47056)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQvUC-0006wd-Qs
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 13:47:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQtkU-0006sW-8W
- for qemu-devel@nongnu.org; Thu, 16 Sep 2021 11:56:30 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:43926)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQtkR-00074a-Uy
- for qemu-devel@nongnu.org; Thu, 16 Sep 2021 11:56:29 -0400
-Received: by mail-wr1-x431.google.com with SMTP id w17so2131990wrv.10
- for <qemu-devel@nongnu.org>; Thu, 16 Sep 2021 08:56:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=U/NXuPuG7h9Ohs5uPZKjte9gsdg347Wf5yRF8oIx/co=;
- b=UAy1I8DyidsoFE6sYocjFKuwMRdVjS9/+kvGARc4OniZao4zuhdKicm7THVLfMHLli
- rTnMtY4n+0tuQBL8/i7il/LT/XTGunpDcuX8Q/OqOszmV6lUYFdek2eONu0srsPQZ6PX
- jEoNFjTN/ixD+xUW6vBCG/mM+rxCHQoosHox1Zrv5sO3IAnCEdIFTlz2gJHnm6SPNfp6
- 0tN4TU3NI6Dzpg36q3pkwpOqNiovYUp3+VQeothjm6WGKfwllTH62rxA2oVo6coRwzBe
- HW+HWGWX98GGT2dkdQJcBV33jVsZ0OmeyPwsMn6WkE1hONl4NzHxdeDJ1s8MWLE861eU
- s6pg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=U/NXuPuG7h9Ohs5uPZKjte9gsdg347Wf5yRF8oIx/co=;
- b=PS/Km/UipV51dRRSGDDo0YqKnQw4fzPCG9f58gCxGcKBw+Rf5yF0JuCBodWMcRRgvM
- l/FQJOmU6JxmsqaEy1iSf1QK3SgaUOIkhXhaNrxQZXGXpQyleU5rmHOAz05Zy67OuE9P
- ldCamYC3iQoZcioU+y+OqVjvrzfI+NRqIwGKHt123GHTwNsgDJEj5OWhHKPj6sWovJHM
- hpFB7MCQ6GPjExeytPEDJC0QQYMM+jUwz+EIAm9ybw2TY0zSyXtAMBL0V18UAIM1NkZl
- s2x65CpHwuEe4PaiSXN1xANV6P3egtJNF/34DBzv4FAThnJMmpfM7BSW8wFGL6lXYQ8x
- gCfQ==
-X-Gm-Message-State: AOAM533EmnKj25VCaaMCWEoI1JNfEKicNOSx5gBlMbBycKDTRny8SX60
- o/P+D3drisAyY1zH8d5ueNHEESi9VK0alz4voXd/Yg==
-X-Received: by 2002:adf:fb91:: with SMTP id a17mr6780568wrr.376.1631807786077; 
- Thu, 16 Sep 2021 08:56:26 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1mQvTo-0006tw-7t; Thu, 16 Sep 2021 13:47:24 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:51466 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1mQvTY-0000kv-3x; Thu, 16 Sep 2021 13:47:22 -0400
+Received: from MacBook-Air.alex.local
+ (dynamic-077-009-016-098.77.9.pool.telefonica.de [77.9.16.98])
+ by csgraf.de (Postfix) with ESMTPSA id 63E5860805C8;
+ Thu, 16 Sep 2021 19:47:04 +0200 (CEST)
+Subject: Re: [PATCH v11 06/10] hvf: arm: Implement -cpu host
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20210915181049.27597-1-agraf@csgraf.de>
  <20210915181049.27597-7-agraf@csgraf.de>
  <CAFEAcA9JZZ4nb8WAvKVYpwqxb_E5NFOVW9rKF3u7GhFqfNZgOQ@mail.gmail.com>
  <8e219cb0-8b65-faf8-f636-5c1d24471f84@csgraf.de>
-In-Reply-To: <8e219cb0-8b65-faf8-f636-5c1d24471f84@csgraf.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Sep 2021 16:55:34 +0100
-Message-ID: <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
-Subject: Re: [PATCH v11 06/10] hvf: arm: Implement -cpu host
-To: Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <bf2bb705-1d54-13f9-6e49-158f672cd32e@csgraf.de>
+Date: Thu, 16 Sep 2021 19:47:03 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.14.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.488,
+ SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Peter Collingbourne <pcc@google.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
  Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>, Ard Biesheuvel <ardb@kernel.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mFIc/KGKRbMT
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Ard Biesheuvel <ardb@kernel.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uxToB2lZ8cvJ
 
-On Thu, 16 Sept 2021 at 16:30, Alexander Graf <agraf@csgraf.de> wrote:
->
->
-> On 16.09.21 14:24, Peter Maydell wrote:
-> > On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
-> >> Now that we have working system register sync, we push more target CPU
-> >> properties into the virtual machine. That might be useful in some
-> >> situations, but is not the typical case that users want.
-> >>
-> >> So let's add a -cpu host option that allows them to explicitly pass all
-> >> CPU capabilities of their host CPU into the guest.
-> >>
-> >> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> >> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-> >> Reviewed-by: Sergio Lopez <slp@redhat.com>
-> >>
-> >> +    /*
-> >> +     * A scratch vCPU returns SCTLR 0, so let's fill our default with the M1
-> >> +     * boot SCTLR from https://github.com/AsahiLinux/m1n1/issues/97
 
-Side note: SCTLR_EL1 is a 64-bit register, do you have anything that
-prints the full 64-bits to confirm that [63:32] are indeed all 0?
+On 16.09.21 17:55, Peter Maydell wrote:
+> On Thu, 16 Sept 2021 at 16:30, Alexander Graf <agraf@csgraf.de> wrote:
+>>
+>> On 16.09.21 14:24, Peter Maydell wrote:
+>>> On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
+>>>> Now that we have working system register sync, we push more target CPU
+>>>> properties into the virtual machine. That might be useful in some
+>>>> situations, but is not the typical case that users want.
+>>>>
+>>>> So let's add a -cpu host option that allows them to explicitly pass all
+>>>> CPU capabilities of their host CPU into the guest.
+>>>>
+>>>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>>>> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
+>>>> Reviewed-by: Sergio Lopez <slp@redhat.com>
+>>>>
+>>>> +    /*
+>>>> +     * A scratch vCPU returns SCTLR 0, so let's fill our default with the M1
+>>>> +     * boot SCTLR from https://github.com/AsahiLinux/m1n1/issues/97
+> Side note: SCTLR_EL1 is a 64-bit register, do you have anything that
+> prints the full 64-bits to confirm that [63:32] are indeed all 0?
 
-> >> +     */
-> >> +    ahcf->reset_sctlr = 0x30100180;
-> >> +    /* OVMF chokes on boot if SPAN is not set, so default it to on */
-> >> +    ahcf->reset_sctlr |= 0x00800000;
-> > Isn't that just an OVMF bug ? If you want this then you need to
-> > convince me why this isn't just a workaround for a buggy guest.
->
->
-> I couldn't find anything in the ARMv8 spec that explicitly says "If you
-> support PAN, SCTLR.SPAN should be 1 by default". It is RES1 for CPUs
-> that do not implement PAN. Beware that for SPAN, "1" means disabled and
-> "0" means enabled.
 
-It's UNKNOWN on reset. So unless OVMF is relying on whatever
-is launching it to set SCTLR correctly (ie there is some part of
-the "firmware-to-OVMF" contract it is relying on) then it seems to
-me that it's OVMF's job to initialize it to what it needs. (Lots of
-SCTLR is like that.)
+Yes, m1n1 prints the full 64bit value:
+https://github.com/AsahiLinux/m1n1/blob/main/src/memory.c#L459
 
-Linux does this here:
- https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/kernel/head.S?h=v5.15-rc1#n485
- https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/include/asm/sysreg.h?h=v5.15-rc1#n695
-because the INIT_SCTLR_EL1_MMU_OFF constant includes forcing
-all "this kernel expects these to be RES0/RES1 because that's all
-the architectural features we know about at this time" bits to
-their RESn values.
+That said, I'm not sure we really have to model the guest's reset SCTLR
+in EL1 to be identical to the host's reset SCTLR in EL2. I think it's a
+great start, but as long as there is no spec that indicates what SCTLR
+should be in EL1, we can make our own rules IMHO.
 
-But we can probably construct an argument for why having it set
-makes sense, yes.
 
--- PMM
+Alex
+

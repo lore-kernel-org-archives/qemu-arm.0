@@ -1,109 +1,102 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1285803lfp;
-        Thu, 16 Sep 2021 09:33:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdFo5yK2LYrjBgogyZ3P9tq6cnSeJsGcfv0btn0HpWjIt+7aJte1tEf5M3u+TYqKY3uBv2
-X-Received: by 2002:a05:6102:9cc:: with SMTP id g12mr4718376vsi.21.1631810031269;
-        Thu, 16 Sep 2021 09:33:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631810031; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1377877lfp;
+        Thu, 16 Sep 2021 11:26:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxj3zUP8PKM27fr6kfbP5/rLiwgsB10taO4fyHLHGbZ7Cbq/ddyshfObWzCOBWfngKpYeNG
+X-Received: by 2002:a37:e409:: with SMTP id y9mr5036692qkf.441.1631816768333;
+        Thu, 16 Sep 2021 11:26:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631816768; cv=none;
         d=google.com; s=arc-20160816;
-        b=gF0TAmq+wl+yFq9/7PCS+J4bI9rB2nJJlB9DPAK35Nf9/btKHLtAoQsf1VXx8RP5A5
-         hl95Xh+X5lGijfJ2pfPoyRDq21BMnnPm9ObeJHR0NhQlAzp+y7IL6qJvp99xcwm3RxGL
-         l7RMvJkg9EIR9d378/RWQzZMCOODCrytUTjAjv3bFbsvAFkN9wKajgm7EDQVAX2lDG8m
-         lxl+VtrblMD4k+bO7Pehg6cs9dGDw+8aiJyALfDvp5KF9i5Xz1IiYfj9l1lvLBFXkSAX
-         nXrhwrairaL6Ru0Ve5YShuENSJEkRZ4eywJOHrzixHIPVWR95eTNYKlQQUBeUF7re08g
-         1dnA==
+        b=KjugdeFw6/BbiNj71fbd9kXP4FfL6RDec6iEkPsklbb0o4oaI++I6RaPy9QJOH7GoS
+         K8iPArAZxV4rF/ynoRvRQxTO9Wkn0bxpR5pvIDO9NNLQPq8T4C8LGJz33yW2rM1btWSZ
+         PrHDKNOvgxsLB2U2UU/Oabv1oW2bG/jfFMt/lfBwD1AWhzpYI0OoGoXi2VOZOAqWnuNl
+         M2CCwQaIkkyDMNFCQei3aZ3hPjR68ytf/1DrWMXOCWYi6KLEfCAK5gzabb0c7Ig0AE0R
+         aHBPBym6CpdakcJbqbyrpdWwEcZWcjUl6qwHcGpA8+C4iQYuvDsKB1pni2OKu8Wr6mY9
+         tT2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wwHDQQV0ftA9eG68f+sUZ/zG3bwXATLPzLgJRp2Owac=;
-        b=O25FHuZfJOBY+FUm3w9sWU5nGa3b/kLZHAWYl3An+EsCjJNX9MW8+9qg++4zzkIm/s
-         Jbm7CZDVweSnG9qJmWCQcqmxIueWl5wR87F4GuwRPd/WvBrzUVgHkB76yahG0tBUaiI1
-         hGEfE9p3gE7hlbWaPhLx56iq9d4QUD9ZpZYJ/+xUHBrZMFyYIccN/cUhHeLf877gvFmD
-         3fxKOHjwthzHWzqdeUfZGgOAS+94XXcGHjXMQzkhDuBgTr0yB/n1bfKL/or/GEch6Pql
-         PDRlWMuA2E43F8mqZZMZ2SuM1nI36A3zXSxwsnXuGnpKZ70w0o+Bc+rfDHzC+Nmskup/
-         aPkA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=jLQWi+VQsqU7rdfktb9GjHxd+38EFiznSEk5gl9g1lY=;
+        b=fky0f6+Gs8cOhxL1Tl4CjirFD9GXYn9VXbi0HTBvVzwkcekje6I5H4y2+HwWeKOAtY
+         jrQd1Jjt4a81kgP2Dfa/rzLPa6UTe1pBfY0lRpoKw5kLW3c8aTgfgvOiFS0Dbxt0e9I6
+         5Npm/jDK/rDqnR8ryhXZwggFnk+IMfksX/JrGopAzCorO4dVo/JdxmEwWP19LrB1B9d7
+         n0hIBAdBp3ziD31VzO337ZHu3c/76bfi1sDtJMMUshMm/BL8B0neS4oUwrXB6LjApj8c
+         +ZblNcIjcLvLsQX/LN/Xd8rwb/f5g+GaSier0n4S2INP9K6l0e7nQYeSmohRgu89D4wn
+         n1Qg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=j13HcfZL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=kwlG+pZb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18si1682485uan.54.2021.09.16.09.33.51
+        by mx.google.com with ESMTPS id z30si2046570qva.4.2021.09.16.11.26.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 09:33:51 -0700 (PDT)
+        Thu, 16 Sep 2021 11:26:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=j13HcfZL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41600 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=kwlG+pZb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60480 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQuKc-0002yz-KY
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 12:33:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49452)
+	id 1mQw5H-0002My-NK
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 14:26:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51236)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQtwS-0000Gc-3e; Thu, 16 Sep 2021 12:08:52 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:42862)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQw4Y-0002Lo-Ep
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 14:25:22 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:41672)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQtwO-0000Jz-Tg; Thu, 16 Sep 2021 12:08:51 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id q11so10342797wrr.9;
- Thu, 16 Sep 2021 09:08:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=wwHDQQV0ftA9eG68f+sUZ/zG3bwXATLPzLgJRp2Owac=;
- b=j13HcfZLh5WzFIXz+kW8TT+SPO7xglrqQk9tmx5+r+Cl8/wt5woKU8Hdlw+Ah8V8sY
- uyRFZVROES4avFgDn3McPPIv5QgSZPP1JaakRuAa8t42rY+dh/sePCP4FEI7WmpCj4PT
- EOq65ePyNKPBS2AW+iTQNSW0nwoUZqxBTEJzxLcSpN1roSIkCkoGijHFiw9yDsUyqv82
- C/+lKoZdbNJihmfZtTpMytbpVXbmYW+5nGZQqU7U26GAIegYdrYpk9fw/mAKCWwODpKn
- UZh+TKyfUGhqfIrGwFOHOHvg2VQi/QUwujeh5YgNUpGcwO3HqMG4lJIKAKqnLsud8ho0
- 64mg==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQw4S-0007Y3-Hp
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 14:25:21 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ g19-20020a1c9d13000000b003075062d4daso5237155wme.0
+ for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 11:25:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jLQWi+VQsqU7rdfktb9GjHxd+38EFiznSEk5gl9g1lY=;
+ b=kwlG+pZbxZdADWQaK6yg9yoE2SlDhOmUtspeO79sqN4iy/nrFHJJjzhlT0JZ3AG3k/
+ dUSSBuYykvDCjiE6f5VALHTLppkaUSvhPJZ/aV724wFE047UtUl1zTwxOPiU440ErwUK
+ KS55gvBHf6PrJLeAOKBtxXABx7k6XXf/zNbbIiS4TF+f78f0yabQuQDeu5lmcGoh/7w9
+ +q92TWFaRD6Ccj9iSDKcbfz7tha/mrphOaHE6ozhjQTxrFh1eMPvw1nqW+hOV0kSBKKT
+ dMhTi1Mfiy02XB/etKBbv2vFSI6w+i1SRDlQM7/ChrfUNA6oTDYsPHeRfQPvGqxgJtRZ
+ 49xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wwHDQQV0ftA9eG68f+sUZ/zG3bwXATLPzLgJRp2Owac=;
- b=verWjY5n8zQgfDB3euWEe/DU3IYVdl+Xpxz3MdsTbQdtB2EBdIvD+rNQpByzmWnFo+
- RyHtB0keZyeM+lKjapYQMgRiFOVNdsUoADr2sTe5qRmD3RMeLiEP78rQ9eKNOqmEwlhC
- CXk3oT8lxn63Jo7qcgatzQ8bOLGYyXcpW71dgfgj1G30X/pi3HSyQLQfSC65YO4xndcd
- iOz5Z2IZ4FxzuZS0zR0kii8wCTMGPpGVRwrk7x/MCVI55Nu6AELf5E8jCZjb8/eFSBFO
- 9a2/Y+tqDaX3w68MeKyHNq9TtH1k/eFnX6zL9d73+Z/fCNJxnfSIBT7L1aujCSgxpeXy
- pEcA==
-X-Gm-Message-State: AOAM533pSRzevMtFNasLfFWxODJQTeP1LoIcd8f/5rVQQJQmCg+T49Sc
- gI6t5OurFOuWv3fuA4SPLsc=
-X-Received: by 2002:adf:cd92:: with SMTP id q18mr6964548wrj.211.1631808526480; 
- Thu, 16 Sep 2021 09:08:46 -0700 (PDT)
-Received: from [192.168.1.36] (14.red-83-35-25.dynamicip.rima-tde.net.
- [83.35.25.14])
- by smtp.gmail.com with ESMTPSA id u8sm8327335wmq.45.2021.09.16.09.08.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Sep 2021 09:08:45 -0700 (PDT)
-Subject: Re: [PATCH v12 06/10] hvf: arm: Implement -cpu host
-To: Alexander Graf <agraf@csgraf.de>, QEMU Developers <qemu-devel@nongnu.org>
-References: <20210916155404.86958-1-agraf@csgraf.de>
- <20210916155404.86958-7-agraf@csgraf.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <7e962ac1-57d3-7329-108e-99b06b46d4a1@amsat.org>
-Date: Thu, 16 Sep 2021 18:08:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jLQWi+VQsqU7rdfktb9GjHxd+38EFiznSEk5gl9g1lY=;
+ b=yIIDoFf2DFyS4FQjHo/5DCbU91mA2oS0e2R3NHpDrTLMM4adNu+P2Qm3LiiCcL1Pq5
+ 30ipedA0ytsvoy9+5cEmyMzkcTY9ei1Ip5gv1wUJFUjaxTmUlHt4hLoQbk5L/GS6aMTi
+ /3aCX2vA5cYsHpD48bcVaKaNEfyQdkrCtNQkDe2WKnpLfhuxqgACvMCmnScXwQsuPVip
+ ulVU/kK1P/x9lp6nKEkwYRbX7/0WTVIVKBgwhS/5hj0R20Ku59sukeokh1u1mUdzfkKh
+ kY36UaG28sX8bQDkmWaVPNGJvldbak8C2+8+qF9LPtaZVZKfJLudO+8eGeexT15REPDC
+ ng0Q==
+X-Gm-Message-State: AOAM530LXingclxSE3boYWkM6c6zGAyRY/hQR48Nz+n74yFv+LwagUDE
+ YS/gVQdHkcAhOAaSjWuiAh/HCDijCLokrZllFQTuxg==
+X-Received: by 2002:a7b:c194:: with SMTP id y20mr2443441wmi.37.1631816714359; 
+ Thu, 16 Sep 2021 11:25:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210916155404.86958-7-agraf@csgraf.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.488,
+References: <20210909122402.127977-1-eric.auger@redhat.com>
+ <CAFEAcA9gs4of2tw77YfYNjYKjoeBAHy0SknkCFNuZprGa-203Q@mail.gmail.com>
+ <f6aa5469-3ef4-bda1-51bd-d0eec5bf9fed@redhat.com>
+In-Reply-To: <f6aa5469-3ef4-bda1-51bd-d0eec5bf9fed@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Sep 2021 19:24:22 +0100
+Message-ID: <CAFEAcA8UQ3t+Zbo_qiM5uEEgJ3D-4OPGp4GXRPyVyWSd5x1+TA@mail.gmail.com>
+Subject: Re: [PATCH] hw/rtc/pl031: Send RTC_CHANGE QMP event
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -118,56 +111,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+Cc: Andrew Jones <drjones@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S58TXMvUlaOz
+X-TUID: HL3+S2+47KYl
 
-On 9/16/21 5:54 PM, Alexander Graf wrote:
-> Now that we have working system register sync, we push more target CPU
-> properties into the virtual machine. That might be useful in some
-> situations, but is not the typical case that users want.
-> 
-> So let's add a -cpu host option that allows them to explicitly pass all
-> CPU capabilities of their host CPU into the guest.
-> 
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-> Reviewed-by: Sergio Lopez <slp@redhat.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> ---
+On Thu, 16 Sept 2021 at 18:19, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Hi Peter,
+> On 9/16/21 3:32 PM, Peter Maydell wrote:
+> > None of the other users of qapi_event_send_rtc_change()
+> > seem to have to track the baseline time like this. Shouldn't
+> > this be doing something involving using qemu_ref_timedate()
+> > as the baseline that it uses to figure out the change value ?
+> > (The other users do this via qemu_timedate_diff() but since we
+> > start with a value-in-seconds we might want to expose some other
+> > API in softmmu/rtc.c.)
+>
+> I struggled understanding the various kinds of clocks modeled in qemu
+> and the PL031 implementation. Both devices calling
+> qapi_event_send_rtc_change() seem to store the base rtc in their state
+> (mc146818rtc.c cmos data or spapr_rtc tas_ld(args, )) and then
+> effectivelly call qemu_timedate_diff() on this base rtc value. I did not
+> figure to do the equivalent with the pl031. I will further investigate
+> how I can mimic their implementation though.
 
-> diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
-> new file mode 100644
-> index 0000000000..603074a331
-> --- /dev/null
-> +++ b/target/arm/hvf_arm.h
-> @@ -0,0 +1,19 @@
-> +/*
-> + * QEMU Hypervisor.framework (HVF) support -- ARM specifics
-> + *
-> + * Copyright (c) 2021 Alexander Graf
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + */
-> +
-> +#ifndef QEMU_HVF_ARM_H
-> +#define QEMU_HVF_ARM_H
-> +
-> +#include "qemu/accel.h"
+mc146818rtc.c calls qapi_event_send_rtc_change() in rtc_set_time().
+It looks to me like that is just "when the guest writes to an
+RTC register such that the guest RTC time has changed, use
+qemu_timedate_diff() to find out the delta between that and what
+the softmmu/rtc.c clock has as its baseline time, and then pass
+that delta in seconds to qapi_event_send_rtc_change()".
+This RTC has a lot of separate day/month/year registers, so the
+implementation's idea of "current guest RTC setting" is a
+complicated thing that it fills in into a struct tm, and which
+qemu_timedate_diff() then parses back out into a "seconds" value.
 
-This include shouldn't be necessary.
+spapr_rtc() is a hypercall implementation, so the guest passes it
+a complete set of year/month/day/etc values all at once to set the time.
 
-> +#include "cpu.h"
-> +
-> +void hvf_arm_set_cpu_features_from_host(struct ARMCPU *cpu);
-> +
-> +#endif
+pl031 is a lot simpler as it is essentially just a count of
+time in seconds, which we set up as "seconds since the Unix epoch".
+But the basic principle is the same: the device contains the state
+that tells you what it thinks the guest RTC value is now, and the
+value we want to pass qapi_event_send_rtc_change() is the
+difference between that and the reference time kept in
+softmmu/rtc.c.
+
+I think what you want is probably:
+
+    struct tm tm;
+
+    qemu_get_timedate(&tm, s->tick_offset);
+    qapi_event_send_rtc_change(qemu_timedate_diff(&tm));
+
+But I'm not 100% sure. I also feel like this is doing a
+roundtrip from seconds to struct tm to seconds again, which
+seems a bit silly (but it might matter if the rtc is configured
+to 'localtime'? At any rate it's not completely clear that
+it's always a no-op roundtrip).
+
+I've cc'd Paolo who might be a bit more familiar with the rtc code
+than I am.
+
+-- PMM

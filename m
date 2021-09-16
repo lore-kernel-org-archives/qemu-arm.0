@@ -1,119 +1,78 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1144447lfp;
-        Thu, 16 Sep 2021 06:54:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/9WrARHG7M5D5KGUjY18TB9wA1IEVbBJePec1exA1pNTL9cJTt8jdqPPhL/MMnKFvrD5I
-X-Received: by 2002:ad4:47a3:: with SMTP id a3mr5234312qvz.31.1631800448202;
-        Thu, 16 Sep 2021 06:54:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631800448; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1154727lfp;
+        Thu, 16 Sep 2021 07:05:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfNECRNPrKRXxA29iubwKqPtC/zKXM80ctqcoPo4XNzKjGiUVDc5XzF7pYq8saZEs3jyOa
+X-Received: by 2002:a05:622a:38f:: with SMTP id j15mr5242476qtx.163.1631801156969;
+        Thu, 16 Sep 2021 07:05:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631801156; cv=none;
         d=google.com; s=arc-20160816;
-        b=YlUJCboOZ2iqBf4yK5p21TXgCSJ3Fhh0MxL3zmIL0c+HB9HLWYBf8xZZ5yxoXZkYdY
-         nwHA/E2lsOTpl2uUsYRk0713vPRU8OQXoUXcNr/VqG5GUz1ieTTYpeWbZYYXavPZYh2s
-         plvlyFXHBQ66CGALHKhOGMlpfl8O8B29eAO6JRs4/9FBXAOh1/Gx8755mN3PbLOFCkdH
-         UzaF+SlkVZ31GuY42ffLvHX8ZJkSdd1Eg+qFhWCqkSuetxjpZnmmddJE5z5K0DnK3qSn
-         Wo0tP/PPFiuQQqXzBv0pvLpZwDtFHDlbHgCjXt8dXs86belzX2t9zewfg2V+IPcEzN+f
-         oUfg==
+        b=MWtduFuV61g/wZLE65nyNzgL0011AqTgyHAfZfMFHS08fMOJctee+pabSgCNPLkuNS
+         y4mTM5pes6yHpxouI5WCJH2wt+bhzv0tdl9UvZsiJ4f6SH9J4gKZhhcg1X0gOWpVR7Mt
+         h3WbgqWGqMa9iskdy7+EvZqckp7ddDIV8tY3dC7rsIZ6cXf/5qw37lTbBujDWiQYGNjD
+         UM3MuvFZGW/48XuZuBzmBnw5ZGaonJmVnRsWJBqd60XlD2WzVNyLspnoQsW7ml6d5Yze
+         gTWueirJnHDHQw+fthM7L2QX2E28pkrQrGgZ4emuKgsVr6vjD6RSOCb8XWs7n85ovnOC
+         L1vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Xs41x05dcFcumFdYZ0blpNEK9yloXwu3R4GFRqVabY4=;
-        b=J2XtT5kGFVcqudZz+mH7rCCRPzAjQO14Ff2oLozpE+AjCC8NdAdeHsrqu+aEWv875o
-         WUYScvFu0fiW2cWbWZPTo6wVU+gu9eVq+gEEPrbsUAaOQ954Fz9D7k5soWPwsU2JHLd1
-         +ZW2cR8YO7CoJK1i8t6TNbTtnbuVM9WqqA/CWQy2/8OYFNqgfdeUVRl2Aw6ttKi2aCGb
-         ucwYTzhcjM2flM01wYq61hSX9Aigoq+guDp5uNcGaxSVBH2BOtKfPWTlmYZIsN8GP+po
-         fyZfng82378KPYJnFHGWN1zEbWR2e0CxSVdRx7Jd0uSltj4Grjelv75oWcyektknGIqn
-         zYXQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=i6kknlXKLcrMU6F3BmDitprwnsD+Bp2iVn8L2/anpzA=;
+        b=giOi+ukWVQALWYWyBXcdWdmFV/y2ZN2sIRampcqUy6jI1XRkd4NcD0nwEwuwrju9sn
+         UHWMZMV+mnbMx1mWW4R5q4T4SZeoGU6dLYeSjVmA93BoxW8zCIBZe9D2XIZgZc6DD8Lq
+         3xK4LqBLOWxpCN7AMBEOUAwReNQ3fnKPjbqJbwQwRsm14XX7rTUtMC1VpeDq8Qw3OpHZ
+         DPQenLDiCFaPNbEyhNPq6/Dsli7G2sqZ0Keynd8SdscGAF19ePV7OezyNagtdPWTIJ8S
+         VnLLzZtnRoIGesxwS3IrSHpTfXNwUZhHDlO5fpv0cmTlZ7ENliGbmYL5EFNGmxDPXaea
+         qOIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=TiJyuy6I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15si1675263qto.402.2021.09.16.06.54.08
+        by mx.google.com with ESMTPS id m3si1979714qtg.64.2021.09.16.07.05.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 06:54:08 -0700 (PDT)
+        Thu, 16 Sep 2021 07:05:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=TiJyuy6I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45588 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQrq3-0000AJ-KR
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 09:54:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38380)
+	id 1mQs1T-0000SE-CI
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 10:05:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45604)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQrpd-0008BG-02; Thu, 16 Sep 2021 09:53:41 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:54795)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQrpZ-0007wc-8P; Thu, 16 Sep 2021 09:53:40 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id s24so4879068wmh.4;
- Thu, 16 Sep 2021 06:53:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Xs41x05dcFcumFdYZ0blpNEK9yloXwu3R4GFRqVabY4=;
- b=TiJyuy6IINYsgd3rMEtD5ePunciL8UMKwvDuq2ccFJ+fRiE47AE1+SkSGZqa/QxetU
- fcIpQFxjCqE4CwTu8+xk1RyGHMg8i19JT3xXvOucw6+AiaYIf6yVvNIrNd3NWVpOi8Hx
- VywRqw656eBmvuGNioJaOervTDxGT47nPfb3rzq/5XcWS2shZLYZ1+hhdptqJckW4z5B
- u+7wa9QUtlhMchiZjKo9Yg2jQQ8yOzCkFYx+7nEX0d2hk8VT1jWNCtWunmCrcpcJKd7q
- kmK7GCp5XNCMpFV4d24YlZ81zNwtfr/iHA15K5nylue+CAOoexwgxm8AvdMI2wUMl3Iw
- iC7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Xs41x05dcFcumFdYZ0blpNEK9yloXwu3R4GFRqVabY4=;
- b=p+Ffr8wuAQ0L4sy1ruW7tw6aZDBRXCBcE8yal2A5tmi0Zte409CEzHKC60I+7wC6qQ
- Lk0oxzYey2bUH65f0e0Z8ouLjkeGF/g2jIrvLM8ttReY9rCXaU9XjlLDWOKYh3neTsvU
- HjtCXY1fnNWWwyF5KWJ8SpUEf7cEZLjaajkhMva6l885G+4fq3o2XVfMSyrnIMCoxQGW
- gkpGHNmRsRdGY3xS9uncOjMz7mXOJ/F7W82+GcpemY0BsG/5nbrr167zdIDGWmuvZyND
- 9t2R59+GsICGxhca/9TvrajqX/laC6JkKxbtD50dyhwh95YCG/ebh4Ow2r1lmNwcINZ6
- ZtNA==
-X-Gm-Message-State: AOAM531Dd4HLkl3WWdKuHL/vBUMtGO1umXCCKNSzUItzaXX810y5uGxy
- x2ZMsk3pOYAj9dskRXeIHoc=
-X-Received: by 2002:a1c:a913:: with SMTP id s19mr5166201wme.26.1631800415450; 
- Thu, 16 Sep 2021 06:53:35 -0700 (PDT)
-Received: from [192.168.1.36] (14.red-83-35-25.dynamicip.rima-tde.net.
- [83.35.25.14])
- by smtp.gmail.com with ESMTPSA id o7sm3885580wro.45.2021.09.16.06.53.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Sep 2021 06:53:34 -0700 (PDT)
-Subject: Re: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
-References: <20210913161304.3805652-1-clg@kaod.org>
- <20210913161304.3805652-15-clg@kaod.org>
- <88c26520-6b87-e7a2-ac78-c1c92477c814@kaod.org>
- <BBC4A4E0-651C-41DB-81DE-1F6D86AABAB1@fb.com>
- <CACPK8Xdey9_x-ZN1JbgFyTrW59EapH4xcqYbyNQxyQ5t0uWPvw@mail.gmail.com>
- <CAFEAcA8ntPE3GkTNU8bSBhCWzk_jdH4QR1kDgwo6deQ+T1iOKw@mail.gmail.com>
- <1949e204-1bce-f15b-553b-1b42b41e3e08@linaro.org>
- <d00d7eeb-a50c-c039-046c-7749fde25af8@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1d6fb312-ab21-ca9c-d7ec-1043ccc65b10@amsat.org>
-Date: Thu, 16 Sep 2021 15:53:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1mQs0i-0000PX-Kt; Thu, 16 Sep 2021 10:05:08 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:51212 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1mQs0Y-0000b7-K9; Thu, 16 Sep 2021 10:05:08 -0400
+Received: from MacBook-Air.alex.local
+ (dynamic-077-009-016-098.77.9.pool.telefonica.de [77.9.16.98])
+ by csgraf.de (Postfix) with ESMTPSA id 183016080098;
+ Thu, 16 Sep 2021 16:04:50 +0200 (CEST)
+Subject: Re: [PATCH v11 02/10] hvf: Add execute to dirty log permission bitmap
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210915181049.27597-1-agraf@csgraf.de>
+ <20210915181049.27597-3-agraf@csgraf.de>
+ <CAFEAcA9e+tnF56J11AWcsyKGH+h+3VKKADOFGaM37JhYR_HqDA@mail.gmail.com>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <2b3f4581-56c3-db0e-f083-fd6d1b7cc2f8@csgraf.de>
+Date: Thu, 16 Sep 2021 16:04:49 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.14.0
 MIME-Version: 1.0
-In-Reply-To: <d00d7eeb-a50c-c039-046c-7749fde25af8@kaod.org>
+In-Reply-To: <CAFEAcA9e+tnF56J11AWcsyKGH+h+3VKKADOFGaM37JhYR_HqDA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -33
+X-Spam_score: -3.4
 X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.488,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.488,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,35 +85,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Peter Delevoryas <pdel@fb.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zFogLlXj/z2F
+X-TUID: C+5IrMGbhdq+
 
-On 9/16/21 2:29 PM, Cédric Le Goater wrote:
-> On 9/14/21 17:22, Richard Henderson wrote:
->> On 9/14/21 5:26 AM, Peter Maydell wrote:
->>> (2) RAM blocks should have a length that fits inside a
->>>      signed 32-bit type on 32-bit hosts (at least I assume this
->>>      is where the 2047MB limit is coming from; in theory this ought
->>>      to be improveable but auditing the code for mishandling of
->>>      RAMblock sizes to ensure we weren't accidentally stuffing
->>>      their size into a signed 'long' somewhere would be kind
->>>      of painful)
 
->>> Even if we did fix (2) we'd need to compromise on (3)
->>> sometimes still -- if a board has 4GB of RAM that's
->>> not going to fit in 32 bits regardless. But we would be
->>> able to let boards with 2GB have 2GB.
+On 16.09.21 13:59, Peter Maydell wrote:
+> On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
+>> Hvf's permission bitmap during and after dirty logging does not include
+>> the HV_MEMORY_EXEC permission. At least on Apple Silicon, this leads to
+>> instruction faults once dirty logging was enabled.
 >>
->> I'm not opposed to deprecating 32-bit hosts...  ;-)
-> 
-> Until then, I am willing to make the following compromise for the fuji  :
-> 
->     mc->default_ram_size = (HOST_LONG_BITS == 32 ? 1 : 2) * GiB;
+>> Add the bit to make it work properly.
+>>
+>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>> ---
+>>  accel/hvf/hvf-accel-ops.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+>> index d1691be989..71cc2fa70f 100644
+>> --- a/accel/hvf/hvf-accel-ops.c
+>> +++ b/accel/hvf/hvf-accel-ops.c
+>> @@ -239,12 +239,12 @@ static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
+>>      if (on) {
+>>          slot->flags |= HVF_SLOT_LOG;
+>>          hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
+>> -                      HV_MEMORY_READ);
+>> +                      HV_MEMORY_READ | HV_MEMORY_EXEC);
+>>      /* stop tracking region*/
+>>      } else {
+>>          slot->flags &= ~HVF_SLOT_LOG;
+>>          hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
+>> -                      HV_MEMORY_READ | HV_MEMORY_WRITE);
+>> +                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
+>>      }
+>>  }
+> Makes sense -- this matches the premissions we set initially
+> for memory regions in hvf_set_phys_mem().
+>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Should we change also the hv_vm_protect() call in
+> target/i386/hvf/hvf.c:ept_emulation_fault(), for consistency ?
 
-While I disagree with this approach, better to document it clearly
-like commit 25ff112a8cc ("hw/arm/mps2-tz: Add new mps3-an524 board").
+
+The x86 hvf code seems to deal just fine with !X mappings, so I'd leave
+it as is as part of the arm enablement series - especially because I
+have limited testing capabilities for x86 hvf.
+
+Roman, Cameron, would you like to pick up the ept_emulation_fault() part?
+
+
+Alex
+

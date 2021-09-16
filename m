@@ -1,158 +1,195 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1157777lfp;
-        Thu, 16 Sep 2021 07:09:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwWRlbYzN3MI3dACHRH3eqVU2PfswRhZytkOPQXu7D1npx9LtGOcx4gucOjPu53qWNOBXMo
-X-Received: by 2002:ad4:47ad:: with SMTP id a13mr5484214qvz.61.1631801354721;
-        Thu, 16 Sep 2021 07:09:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631801354; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1173616lfp;
+        Thu, 16 Sep 2021 07:26:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVl2OJBDd+fGBETq7Obvb6O8TaW4+dVwy+YJjlEs3r8mfno3/ISt6YFxg8iCjYIwyUwEV0
+X-Received: by 2002:a1f:2b14:: with SMTP id r20mr3570365vkr.13.1631802384800;
+        Thu, 16 Sep 2021 07:26:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631802384; cv=none;
         d=google.com; s=arc-20160816;
-        b=pn4u8cuk2XryDfIZBiELOoGXpeooQYXMeifUWw429rRWeVc55MxukO6/2x2RUqpZJ1
-         5gJj35o9Z5svzYQrP18tCQIfs8zUCkFSuJWyHPE9s12DalFgNVmSDm0A60wdUTjbvUl0
-         iSOr6XdTkV037zN/A1Bunoy54WMVnmF1WZiJTIzxlMG63Ymdtq7KWkdOhWPfJuhUmlNl
-         h15ytnV2t3eOs73fjEjkiCISooUVFU+9hO92BZLTOIvWESOhlneRtmgiuCllc6vaRDqi
-         5Y/ECV+ycgoz0FBr1hHmMKyxNNIsuTATIJoCgBMPxv4c5vTRfJfbm8cv4BZI7NlYVWR+
-         YyfQ==
+        b=PdnmbQ5nVWC1Nx9OBSBw5D9fiixuiw84izcg4TSnncq2rYBsGhLEj/BJO92yVccBTA
+         NiAlhaAz2UTyAeenwmFksouiTISh48r1P0RIMBjN5fNIeEJwn+2vq1QVLnS9XW/JxqRY
+         klurIkrQoTlsoZwVyqgkrWjZPRdi+W+AjY7VfhV4hjnjsn7+QJWxYbWrlH/qedHjF/Cd
+         lYrujlVE8M2Kh32NrKEDhfph+hzHO08AtoLbk4Ke5ASimUInowwojShCp6VJWiBAOEw6
+         czNWTfnLSWji9M6kmEaLsCfYIWB+Srv1osxDDeFi3qrk1KtQKskwqnev61dB6EMhv8Ak
+         kpPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=KrPg1Ub3GGFCDihNi+2Xfz3YKmm6fmGAKuqaad/9wDw=;
-        b=SxelTC2ImW/L1jibaiuXm+/w5uo47V1maQpLR4PJx2nzPP5VkvrPNnaZ2ZX3eB2cPW
-         8VIfcZRZbcUAu0sn3hBqkLLv8qdoXAIPygOKYZklGwkQp1V+JXifpjK+cRVEX0dBI31c
-         kzroQAogWu3eyUj3DSJtnmi5vZJncpxmPIzTBg9Owe07AvnyQbvIxKcWBN2t5mNsXPGw
-         CRUNbklftQ8uzINEwM25bnLMMxVDdnmFxCWidr1SnQ7JtBJcYUdmxJDBileNDEssd4Xe
-         M2x8ojafjXUDze3VQi8MA8C4rLPiPo0ltiqOjqOgFyCYIUjt5Vo0HHOPbool8zmZndww
-         wtig==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=g3fH0kitaRvXNz+rFG1iJUIiYAoVOGco0OLNKw0onqw=;
+        b=LY+xIXrvJQF6bkBFDPHmVB/v1oJb3xBy9fvDR8H8sUeThsm/bWHke90dyMv4gcMGaJ
+         3K+rHSIAOuMSDd5EDgGnlBzGOgc9+dhZv09kUF8IeAUuX/pyh1eSkLNIDbB5Ojb6gZYl
+         bLi/hDfg2b/xUWTJCJllEfBz3dS2RXG6hIXXTBgl+Fl1oBncQKBHEBdOA64kBk0Qk+BN
+         aEC1BXGddM4a3FkXzU/nNswa0N0uKcTng20R7gikE2JJfBq6i+e1MppP79hRzzYoR0Xv
+         yDTuJvqCRMfhDEe4hkGt/sc+AnuEvdkTGGgEGbOxmi5uuJLe2LV3X6jJ2W90lPXmnvXT
+         Ikyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=NJhri5f7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w9si1771392qtc.27.2021.09.16.07.09.14
+        by mx.google.com with ESMTPS id c14si1819034uav.63.2021.09.16.07.26.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 07:09:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Sep 2021 07:26:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48704 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=NJhri5f7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:32916 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQs4g-0005U1-6w
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 10:09:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46544)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mQsLI-0007x3-6Z
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 10:26:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54504)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mQs28-0002Cx-Nq
- for qemu-devel@nongnu.org; Thu, 16 Sep 2021 10:06:38 -0400
-Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235]:35453)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mQs25-0002CS-Kq
- for qemu-devel@nongnu.org; Thu, 16 Sep 2021 10:06:36 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 476C41FEE7;
- Thu, 16 Sep 2021 14:06:29 +0000 (UTC)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Thu, 16 Sep
- 2021 16:06:28 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0034cf39797-09a8-4990-8343-34599739d5cc,
- 902CC554B2B666CF336F93082A9AEA4058B2700C) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <7ae560b5-e719-0b6d-1fdc-b231af9d6a81@kaod.org>
-Date: Thu, 16 Sep 2021 16:06:27 +0200
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mQsGp-0000Bx-So; Thu, 16 Sep 2021 10:21:47 -0400
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:43738)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mQsGo-0005Fo-3R; Thu, 16 Sep 2021 10:21:47 -0400
+Received: by mail-oi1-x231.google.com with SMTP id w19so9238303oik.10;
+ Thu, 16 Sep 2021 07:21:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=g3fH0kitaRvXNz+rFG1iJUIiYAoVOGco0OLNKw0onqw=;
+ b=NJhri5f7VkDjs/JtBW9yBxQZjokFbEN2fK1rQJttQBomGW7t50+Wj/Bqds/1vfqZbP
+ FZtgCb3qjW6hRb+YYAHmNlzqg6Y23gKuSsEwecHL/iaTTtI2qDY6zDhSXq0HAzvd/fqf
+ 6pEGrnDVY6ZQkZReBKuLlSeUOao3FcWSBFNF2U17eORJMdWdbU4s1ps1iCh1Qw5RywJG
+ MqrAGP4ZhSH/7X0jP/BMHS+nWBkx6/rKO6kVfPYcl+VEzYN4rDjOGxlnHG9QBJmv3wTF
+ 3Llx0ZiTL2GlObtpql3jMvqcg3Wq5PbvCPg+nUyFaMiXfSJxGlCd47CUQ5OnjEOj23RT
+ r8ng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=g3fH0kitaRvXNz+rFG1iJUIiYAoVOGco0OLNKw0onqw=;
+ b=fH+Yqgo9WYr4VIUQp+LovgFzCBNV2fMYBRGthjpuJOWVDrA/odJVtqTgUnEroESB1/
+ CZMWOdW30hU+ChcZwPKjnhhGVuv3/jHr6ZJoWvsKaf0FArLtsCm9ZafpbnPwjTv3U3vw
+ 3/E5jiA1p027Y0edPF/OYuQmmoAAolFERS3XuLPZYn9ovlZhdoaFBgF275cBTQA0dRBL
+ hsQxufP9TCrtwvbaY67fQrOfoqz0XvYYzU7uYxb81ffqNl8GRJSUmpxABMfEhLtDz/+K
+ MDxv1/CFsLoO24h4sEFwemqQJ1tHuOuC0srzn5X44vzZMBT4tZTUvjKcqeLSo0EyQMag
+ TWBA==
+X-Gm-Message-State: AOAM5310PJVgKFx7yUHTvbtJieduDT3yydAGcLDsHD//WNEX9cer4vjX
+ U3Z3BTWXmTiai1ggk2tGJx0=
+X-Received: by 2002:a05:6808:3099:: with SMTP id
+ bl25mr63983oib.44.1631802103800; 
+ Thu, 16 Sep 2021 07:21:43 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ f17sm794655otl.24.2021.09.16.07.21.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Sep 2021 07:21:42 -0700 (PDT)
+Date: Thu, 16 Sep 2021 07:21:40 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: "Cheng, Xuzhou" <Xuzhou.Cheng@windriver.com>
+Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
+Message-ID: <20210916142140.GA252836@roeck-us.net>
+References: <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
+ <b5e43e87-c1bd-3265-298e-346413a22a82@roeck-us.net>
+ <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
+ <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
+ <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
+ <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
+ <CAEUhbmVfFRdbtu7yWUauO6sd0QNhoH6tuTAFA2PMxZp5P7+awA@mail.gmail.com>
+ <PH0PR11MB5205AE78D6C5DFFFA767183B97D49@PH0PR11MB5205.namprd11.prod.outlook.com>
+ <8b86d434-a2e6-8122-0a88-dc9a15fbfe87@roeck-us.net>
+ <PH0PR11MB5205684F9CDEC890187D09D997DC9@PH0PR11MB5205.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PULL 14/14] hw/arm/aspeed: Add Fuji machine type
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Richard
- Henderson <richard.henderson@linaro.org>, Peter Maydell
- <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
-References: <20210913161304.3805652-1-clg@kaod.org>
- <20210913161304.3805652-15-clg@kaod.org>
- <88c26520-6b87-e7a2-ac78-c1c92477c814@kaod.org>
- <BBC4A4E0-651C-41DB-81DE-1F6D86AABAB1@fb.com>
- <CACPK8Xdey9_x-ZN1JbgFyTrW59EapH4xcqYbyNQxyQ5t0uWPvw@mail.gmail.com>
- <CAFEAcA8ntPE3GkTNU8bSBhCWzk_jdH4QR1kDgwo6deQ+T1iOKw@mail.gmail.com>
- <1949e204-1bce-f15b-553b-1b42b41e3e08@linaro.org>
- <d00d7eeb-a50c-c039-046c-7749fde25af8@kaod.org>
- <1d6fb312-ab21-ca9c-d7ec-1043ccc65b10@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <1d6fb312-ab21-ca9c-d7ec-1043ccc65b10@amsat.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 708cef0f-6b27-45bd-92a7-cd70bd34d47c
-X-Ovh-Tracer-Id: 5720978902582528876
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudehgedgieejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphguvghlsehfsgdrtghomh
-Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
- helo=10.mo548.mail-out.ovh.net
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.488,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <PH0PR11MB5205684F9CDEC890187D09D997DC9@PH0PR11MB5205.namprd11.prod.outlook.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
+ envelope-from=groeck7@gmail.com; helo=mail-oi1-x231.google.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Peter Delevoryas <pdel@fb.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IkvOzbKP2MTN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair@alistair23.me>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Bin Meng <bmeng.cn@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8B4x3yFgF5lz
 
-On 9/16/21 15:53, Philippe Mathieu-Daudé wrote:
-> On 9/16/21 2:29 PM, Cédric Le Goater wrote:
->> On 9/14/21 17:22, Richard Henderson wrote:
->>> On 9/14/21 5:26 AM, Peter Maydell wrote:
->>>> (2) RAM blocks should have a length that fits inside a
->>>>       signed 32-bit type on 32-bit hosts (at least I assume this
->>>>       is where the 2047MB limit is coming from; in theory this ought
->>>>       to be improveable but auditing the code for mishandling of
->>>>       RAMblock sizes to ensure we weren't accidentally stuffing
->>>>       their size into a signed 'long' somewhere would be kind
->>>>       of painful)
+On Thu, Sep 16, 2021 at 10:21:16AM +0000, Cheng, Xuzhou wrote:
+> > diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> > index 189423bb3a..7a093156bd 100644
+> > --- a/hw/ssi/imx_spi.c
+> > +++ b/hw/ssi/imx_spi.c
+> > @@ -167,6 +167,8 @@  static void imx_spi_flush_txfifo(IMXSPIState *s)
+> >      DPRINTF("Begin: TX Fifo Size = %d, RX Fifo Size = %d\n",
+> >              fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s->rx_fifo));
+> >  
+> > +    qemu_set_irq(s->cs_lines[imx_spi_selected_channel(s)], 0);
+> > +
+> >      while (!fifo32_is_empty(&s->tx_fifo)) {
+> >          int tx_burst = 0;
+> >  
+> > @@ -385,13 +387,6 @@  static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
+> >      case ECSPI_CONREG:
+> >          s->regs[ECSPI_CONREG] = value;
+> >  
+> > -        burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
+> > -        if (burst % 8) {
+> > -            qemu_log_mask(LOG_UNIMP,
+> > -                          "[%s]%s: burst length %d not supported: rounding up to next multiple of 8\n",
+> > -                          TYPE_IMX_SPI, __func__, burst);
+> > -        }
+> > -
+> >          if (!imx_spi_is_enabled(s)) {
+> >              /* device is disabled, so this is a soft reset */
+> >              imx_spi_soft_reset(s);
+> > @@ -404,9 +399,11 @@  static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
+> >  
+> >              /* We are in master mode */
+> >  
+> > -            for (i = 0; i < ECSPI_NUM_CS; i++) {
+> > -                qemu_set_irq(s->cs_lines[i],
+> > -                             i == imx_spi_selected_channel(s) ? 0 : 1);
+> > +            burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH);
+> > +            if (burst == 0) {
+> > +                for (i = 0; i < ECSPI_NUM_CS; i++) {
+> > +                    qemu_set_irq(s->cs_lines[i], 1);
+> > +                }
+> >              }
 > 
->>>> Even if we did fix (2) we'd need to compromise on (3)
->>>> sometimes still -- if a board has 4GB of RAM that's
->>>> not going to fit in 32 bits regardless. But we would be
->>>> able to let boards with 2GB have 2GB.
->>>
->>> I'm not opposed to deprecating 32-bit hosts...  ;-)
->>
->> Until then, I am willing to make the following compromise for the fuji  :
->>
->>      mc->default_ram_size = (HOST_LONG_BITS == 32 ? 1 : 2) * GiB;
+> I got some free time in the past days to investigate this issue. Guenter is right, the Linux imx-spi driver does not work on QEMU.
 > 
-> While I disagree with this approach, better to document it clearly
-> like commit 25ff112a8cc ("hw/arm/mps2-tz: Add new mps3-an524 board").
+> The reason is that the state of m25p80 machine loops in STATE_READING_DATA state after receiving RDSR command, the new command is ignored. Before sending a new command, the CS line should be pulled to high, this make the state of m25p80 back to IDLE.
+> 
+> I have same point with Guenter, it's that set CS to 1 when burst is zero. But i don't think it is necessary to set CS to 0 in imx_spi_flush_txfifo(). I will send a new patch to fix this issue.
 > 
 
-OK. The patch I had prepared was a bit more explicit :
+Thanks a lot for looking into this. If you have a better solution than mine, by
+all means, please go for it. As I mentioned in my patch, I didn't really like
+it, but I was unable to find a better solution.
 
-     /* On 32-bit hosts, lower RAM to 1G because of 2047 MB limit */
-     mc->default_ram_size = (HOST_LONG_BITS == 32 ? 1 : 2) * GiB;
+> BTW, the Linux driver uses DMA mode when transfer length is greater than the FIFO size, But QEMU imx-spi model doesn't support DMA now.
 
-I even have a version with a warn_report() since 32-bit hosts are
-not that common these days. But let's adopt the mps3-an524 board
-approach.
+Does it have practical impact ? Obviously my tests were somewhat limited (I was
+happy to get Linux booting from flash), but I don't recall seeing a problem.
 
 Thanks,
-
-C.
+Guenter

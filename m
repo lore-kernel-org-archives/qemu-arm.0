@@ -1,113 +1,106 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp781104lfp;
-        Wed, 15 Sep 2021 21:49:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyBNMsrdIcEmkFRWGzgYmaHUg+ZqvSp1NnyYkviuypEFVQ9Toe/8hlYe1r8a2S+HNODxjA
-X-Received: by 2002:a92:dd88:: with SMTP id g8mr2568529iln.306.1631767779347;
-        Wed, 15 Sep 2021 21:49:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631767779; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp965914lfp;
+        Thu, 16 Sep 2021 03:02:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWFXJ+tcDqwMqqgCI0+iwa5KYM7jNPXUUKA7eMSoaFJ08q00swlgwA4rEUjgz4K39/p0gU
+X-Received: by 2002:a67:fb48:: with SMTP id e8mr3085598vsr.27.1631786556719;
+        Thu, 16 Sep 2021 03:02:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631786556; cv=none;
         d=google.com; s=arc-20160816;
-        b=PtSa/iySINZ1r4rkHydPb6qh8XsYWGsvh2ojwmhU9/1L4ekFi0cIRtWnXVvg3DRphp
-         LJn84ukauUPIsH3zXU9UboN1UncEmS8Xk+Dz82XMscoqxVj0fpZCgMoEqFRYHjdqw6wj
-         MwcpQOu3V11pMQJn59TX6m6Nwu6beK5Z8gqdYzxdXkZ7ZWvO3QexzaysTuQcU9zmx2rX
-         0u8EYnRzmPSVwKTaycMaLOdxPZkLHgaSTFSZX7cnbOSSLt4lAWJRUfx4C4MBe3UKO+O9
-         4FYEBnWynxH0YdDb+ITGfiTb2iqqbErZBOoJYejBqPbB1EbYsUNPXOfwkmaDwYQqH5Ma
-         VL7w==
+        b=ezIj57mPuET8Kd2PhWXpqX0Eqp8//6wXv0RBJhzBJtn/aXAL9fLlICCJuMA5pdv0n3
+         +lxT1urkiAcjEcyIILuzwymQc5qmdx3YMCmQ5lAwiAcTtPYa6lv+SDcPa4Bupg8988C7
+         hX77ANuBSHXDluXRe83+O/lyCQowR3R4js9NQ7joVm32N5ecOcoaRDR42eOobBr7gHqw
+         sBfMvusT47SqV/OSyhCecqUsSRTkDBBltQzKSHcD4VhTGFoqx7bjmSKH5333kS7gvZ9I
+         y1K4ymeJP9aiJIDcrc3e/sUDxWz76hpXFTCx6EC2STaMbNFdG87xlrDZvzItHN+SEEmA
+         EqAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=PGD/6QKFzy2wWzotQJm6wy29TLeAhDW5GmL5b2Xm3Ic=;
-        b=ws7KqM3DQ3FL8XHoqYWk6WE32ESn0BfZRxUE5phcb9UIfS2KF0BlTVPEo4anaDOXpr
-         km8NqMh2AFWaJiCrVj0crwkpxyjY6Jlw9QhnLL8rB4fGVgwFBBYAlMy/JwrmuTIcLYcy
-         ZVaeQFX18zvz8Z7TSFQcDS6H7t+HMQhImLuT2tpiwqchAx9A9jRCbJYXHtk0fGMiE593
-         tkS4UpOb+n+F9n6LerQYvpWsfCvjXm0S8jZlAMETIMp98hIYuJHVDtNxf1VSK2UjT82N
-         /0Y0fzCwzj0MpIF1l0vEmorrkCWkm+f1XaFCR7nOPZpg7SIFaYYiE6a24plXwc1n+y8s
-         Udkg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZPlnvWwDJmBGYDY064GS1S31c3Nx6YEROSxkxDU+k+w=;
+        b=ZJS9/WtggTdRbGxW+9zmlicF1eKBeBmvKW8cwu0U8sdWKbb4NCuBWGH2UrcRM/A/0m
+         e9lbLb6MTPa63x2sWkUUr8TDYMQIDO5ftEehqYCJ6nyFb7De9vorE3osTTcEJaibcDtB
+         d0XxXHeww/ZiSrMfKqIMzOzgD7QxS6CyHeIBaqbLFyTwANZPPgMuJU00dRqwSUrYMgHN
+         926uYGWxvcB3x5kqspWeQDZHh5EbGmrfMtY9PltEmu9B+2jw/OPLAxJL4h3rM7cqyqyN
+         NO1fSLxeEwmN/p76CJ3oFgOXMxZIU0wgiflNUAZTqbYCOcR58PXqOImvqSb1NybBzkfW
+         LNJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dVzQ2Ewr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=A7FQKZHq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g6si1811583jaq.62.2021.09.15.21.49.39
+        by mx.google.com with ESMTPS id c25si1260367vse.132.2021.09.16.03.02.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Sep 2021 21:49:39 -0700 (PDT)
+        Thu, 16 Sep 2021 03:02:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dVzQ2Ewr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42946 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=A7FQKZHq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44498 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQjL8-00064a-L0
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 00:49:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41596)
+	id 1mQoDz-0006tQ-Vi
+	for alex.bennee@linaro.org; Thu, 16 Sep 2021 06:02:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQjKy-00064F-1n; Thu, 16 Sep 2021 00:49:28 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:36462)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQoDa-0006r9-Tv
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 06:02:10 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:35637)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mQjKl-0008U8-MX; Thu, 16 Sep 2021 00:49:27 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- l18-20020a05600c4f1200b002f8cf606262so6405319wmq.1; 
- Wed, 15 Sep 2021 21:49:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PGD/6QKFzy2wWzotQJm6wy29TLeAhDW5GmL5b2Xm3Ic=;
- b=dVzQ2Ewreu98fbXGOF8+DQVaGm5mMSNsnOq4uNa0M50jVxz/nC6cbOXPEfxXbGgmuY
- NPyEQsstfZZWNjUbs+S77G5BNKx7tLubBCOFygeyC++ytC7LiJb88JCsxPIY1lNkW74t
- QqgypMYRFdvbiaxzEQom4rjUCJPHjfQgWEA3QzIuOcrzLxyax50ITAuQltjBlpnN/iwZ
- WUOZ4rBFeisKTgDWKh3iqD0+nssNJXyrJnoNVzMDGNdil6jiZaXlOS+/+cyW50pRXA4P
- ccBfg+GQEnwkYJ3ejC3/2r70NS/y5vz3fhYYP4i3FV/cN+FuX39i4JpnMWwL50zUqsQ2
- tO+g==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQoDV-00075o-Mu
+ for qemu-arm@nongnu.org; Thu, 16 Sep 2021 06:02:10 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id i23so8558182wrb.2
+ for <qemu-arm@nongnu.org>; Thu, 16 Sep 2021 03:02:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZPlnvWwDJmBGYDY064GS1S31c3Nx6YEROSxkxDU+k+w=;
+ b=A7FQKZHqnh4oMyKLMRlS0c27yw+juxxQ09nwuGURUTvPsUeQfIZmGblvYJH2znkXfa
+ TM+GDaGBzzNGLIWB4lJzyljb6fkIKfq1h2FFdiPYpZqwqvfTZ4ZRmGEaBwzpeCeVlhxG
+ AFtCRkDe4EYV+IO0C65sxz1dvqwbikuFYHBmzAQhNuau8w4FSoaV/OvOk7vHQFzhs5iV
+ rduEXNRJVl1EN4hOOHfrH0T4ehIy8RXjADpDrhiE4FVFScKR8V1QtEy0A3N/n5EJCCvr
+ tbgKbZK0RHRt8itMJC/s67i0kV7rjorfBeh2EcLV7wQ2aU+K425S2Rjc+FTZJWIEhV/P
+ 7abQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PGD/6QKFzy2wWzotQJm6wy29TLeAhDW5GmL5b2Xm3Ic=;
- b=326ATqT6FpxUu/oI748l9DIZuwLNfi/KBVWxwLWMEwMmL2U8tlO+f6DzOrch8N2zwR
- NPIj6HNfYVIx/f4v34G0gmNuU/Og05xGOaeQwFMfVyWLixGLOvrR7hzsLK+qOkMnZIbc
- jk621Bl3XbJddEVQ3ikK5CisUNfpsMRJ1H0t9bz2rYuLqGTZopn5qzTaT4xrDgyUGbjY
- j6r+pi/Qh6jn8svFtoT/TFLFMbMR9T+XISI288qbtJ0lJ9iU2AcyglcBwPSjXpn5WtnR
- HCd8M3iMYzgkkIPp/REyfTGRW0iZciHTJLB84gusn8CL50U975L48rGBGZ+/fwfkbA9Y
- IFdw==
-X-Gm-Message-State: AOAM531rDJH+zJgRyxW0XaWJd69Nz6W7uOzrCkTJSepXDQgQZXqTHw9r
- OPr3+QnWTTcCkvuB3E0BSdE=
-X-Received: by 2002:a05:600c:5123:: with SMTP id
- o35mr2921279wms.153.1631767753574; 
- Wed, 15 Sep 2021 21:49:13 -0700 (PDT)
-Received: from [192.168.1.36] (14.red-83-35-25.dynamicip.rima-tde.net.
- [83.35.25.14])
- by smtp.gmail.com with ESMTPSA id q11sm6215140wmc.41.2021.09.15.21.49.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Sep 2021 21:49:12 -0700 (PDT)
-Subject: Re: [PATCH v11 05/10] arm/hvf: Add a WFI handler
-To: Alexander Graf <agraf@csgraf.de>, QEMU Developers
- <qemu-devel@nongnu.org>, Peter Collingbourne <pcc@google.com>
-References: <20210915181049.27597-1-agraf@csgraf.de>
- <20210915181049.27597-6-agraf@csgraf.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8d255a90-7d7c-fcb6-2d9f-8febe182c286@amsat.org>
-Date: Thu, 16 Sep 2021 06:49:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZPlnvWwDJmBGYDY064GS1S31c3Nx6YEROSxkxDU+k+w=;
+ b=npWp5u4ifBC8C0PzApRhfe2HZLyWC8tyKXYLnP2fPKu9DuJ6tcn8WgoIOi9plR/t2G
+ tXdSB+/j3IfdUTGu86CpnpVKy+MZMgn5mbz/iywHkNk+1dJG7irALZLpyRsa4SXhRHAd
+ ulubka32aaWb7uENiRhJfgWv2wHpJL56g3E9M3BSwawRt+o03Tz2Tc3hI55OiYszDYCv
+ MU1ScIrEFQiQuFblgjjrOXXsoGPsJcBwWI5A5zlsBfZmuZ7FXS8zLJUmdrZn/G2bZhjU
+ vDRRfZJxJF5x74MweI8gvbmyGu+/Zy+1zVokUWVJN3Ea1c/wLKm5oR0M14z8XrFQmg/H
+ Z5yw==
+X-Gm-Message-State: AOAM530qRtR3ftV+tq+kL6Yg0N2IDibhhzyLXotWqOp3Mv9fkbs4hlA9
+ jt3aWjzkoya43tWh9K6ax919igrzGXjv4IiCN0i5WA==
+X-Received: by 2002:a5d:59a4:: with SMTP id p4mr5055802wrr.149.1631786523815; 
+ Thu, 16 Sep 2021 03:02:03 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210915181049.27597-6-agraf@csgraf.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.698,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210913095440.13462-1-peter.maydell@linaro.org>
+ <20210913095440.13462-10-peter.maydell@linaro.org>
+ <1a0247d3-f472-546d-b838-dcacb640d282@linaro.org>
+ <CAFEAcA-aDJ+14yNwnTmxZSWH=fgtz51CWa2bEahn4oYaWWrQgQ@mail.gmail.com>
+ <a4344169-c9bf-9f5e-efa0-e29759f985c5@linaro.org>
+In-Reply-To: <a4344169-c9bf-9f5e-efa0-e29759f985c5@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Sep 2021 11:01:12 +0100
+Message-ID: <CAFEAcA_Xtig7iw97JURq2UnhqWdJA_Fok2=yYNBRoqfoX3M=FQ@mail.gmail.com>
+Subject: Re: [PATCH v2 09/12] target/arm: Optimize MVE VSHL,
+ VSHR immediate forms
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,112 +113,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rTYqWiQUfx8O
+X-TUID: kT+k9zmTxFVZ
 
-On 9/15/21 8:10 PM, Alexander Graf wrote:
-> From: Peter Collingbourne <pcc@google.com>
-> 
-> Sleep on WFI until the VTIMER is due but allow ourselves to be woken
-> up on IPI.
-> 
-> In this implementation IPI is blocked on the CPU thread at startup and
-> pselect() is used to atomically unblock the signal and begin sleeping.
-> The signal is sent unconditionally so there's no need to worry about
-> races between actually sleeping and the "we think we're sleeping"
-> state. It may lead to an extra wakeup but that's better than missing
-> it entirely.
-> 
-> Signed-off-by: Peter Collingbourne <pcc@google.com>
-> [agraf: Remove unused 'set' variable, always advance PC on WFX trap,
->         support vm stop / continue operations and cntv offsets]
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-> Reviewed-by: Sergio Lopez <slp@redhat.com>
-> 
-> ---
+On Mon, 13 Sept 2021 at 16:53, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 9/13/21 7:21 AM, Peter Maydell wrote:
+> > On Mon, 13 Sept 2021 at 14:56, Richard Henderson
+> > <richard.henderson@linaro.org> wrote:
+> >>
+> >> On 9/13/21 2:54 AM, Peter Maydell wrote:
+> >>> +static void do_gvec_shri_s(unsigned vece, uint32_t dofs, uint32_t aofs,
+> >>> +                           int64_t shift, uint32_t oprsz, uint32_t maxsz)
+> >>> +{
+> >>> +    /*
+> >>> +     * We get here with a negated shift count, and we must handle
+> >>> +     * shifts by the element size, which tcg_gen_gvec_sari() does not do.
+> >>> +     */
+> >>> +    shift = -shift;
+> >>
+> >> You've already performed the negation in do_2shift_vec.
+> >
+> > Here we are undoing the negation we did there, so as to get a
+> > "positive means shift right" shift count back again, which is what
+> > the instruction encoding has and what tcg_gen_gvic_shri() wants.
+>
+> Ah, I misinterpreted.
+>
+> >> Perhaps worth placing these functions somewhere we can share code with NEON?  Tactical
+> >> error, perhaps, open-coding these tests in trans_VSHR_S_2sh and trans_VSHR_U_2sh.
+> >
+> > I'm not convinced the resemblance is close enough to be worth the
+> > effort...
+>
+> Yeah, not with the negation bit above.
 
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 8fe008dab5..49f265cc08 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -2,6 +2,7 @@
->   * QEMU Hypervisor.framework support for Apple Silicon
->  
->   * Copyright 2020 Alexander Graf <agraf@csgraf.de>
-> + * Copyright 2020 Google LLC
->   *
->   * This work is licensed under the terms of the GNU GPL, version 2 or later.
->   * See the COPYING file in the top-level directory.
-> @@ -490,6 +491,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->  
->  void hvf_kick_vcpu_thread(CPUState *cpu)
->  {
-> +    cpus_kick_thread(cpu);
+Could I get a reviewed-by for this patch, then, please ?
 
-Doesn't this belong to the previous patch?
-
->      hv_vcpus_exit(&cpu->hvf->fd, 1);
->  }
-
-> +static void hvf_wfi(CPUState *cpu)
-> +{
-> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
-> +    hv_return_t r;
-> +    uint64_t ctl;
-> +    uint64_t cval;
-> +    int64_t ticks_to_sleep;
-> +    uint64_t seconds;
-> +    uint64_t nanos;
-> +
-> +    if (cpu->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ)) {
-> +        /* Interrupt pending, no need to wait */
-> +        return;
-> +    }
-> +
-> +    r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CTL_EL0, &ctl);
-> +    assert_hvf_ok(r);
-> +
-> +    if (!(ctl & 1) || (ctl & 2)) {
-> +        /* Timer disabled or masked, just wait for an IPI. */
-> +        hvf_wait_for_ipi(cpu, NULL);
-> +        return;
-> +    }
-> +
-> +    r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CVAL_EL0, &cval);
-> +    assert_hvf_ok(r);
-> +
-> +    ticks_to_sleep = cval - hvf_vtimer_val();
-> +    if (ticks_to_sleep < 0) {
-> +        return;
-> +    }
-> +
-> +    nanos = ticks_to_sleep * gt_cntfrq_period_ns(arm_cpu);
-> +    seconds = nanos / NANOSECONDS_PER_SECOND;
-
-muldiv64()?
-
-> +    nanos -= (seconds * NANOSECONDS_PER_SECOND);
-> +
-> +    /*
-> +     * Don't sleep for less than the time a context switch would take,
-> +     * so that we can satisfy fast timer requests on the same CPU.
-> +     * Measurements on M1 show the sweet spot to be ~2ms.
-> +     */
-> +    if (!seconds && nanos < (2 * SCALE_MS)) {
-> +        return;
-> +    }
-> +
-> +    struct timespec ts = { seconds, nanos };
-
-QEMU style still declares variables at top of function/block.
-
-> +    hvf_wait_for_ipi(cpu, &ts);
-> +}
+thanks
+-- PMM

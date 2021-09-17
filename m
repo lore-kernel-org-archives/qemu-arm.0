@@ -1,66 +1,66 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1767300lfp;
-        Thu, 16 Sep 2021 22:28:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxw6LfhWrxytOnSuAHwLmlofCh0PYinbwzD2l3fbKBfZEaegtrUQELo9DpDKTyaDjGX5uO
-X-Received: by 2002:a25:bb08:: with SMTP id z8mr11998918ybg.167.1631856522733;
-        Thu, 16 Sep 2021 22:28:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1631856522; cv=pass;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1767454lfp;
+        Thu, 16 Sep 2021 22:29:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWzZN57DAXs8WVDXDZtiWqheUOozB02ujSf7rhgbHaTfSbUa2yMDMfRyjQzjfRQjDwzbw8
+X-Received: by 2002:a05:6902:1148:: with SMTP id p8mr10862014ybu.513.1631856545205;
+        Thu, 16 Sep 2021 22:29:05 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1631856545; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ktmAXa42LI9Xz0lbjxmKGpLgAwFdUPOtAJZ5e6Mb/sFLWovN5ld3ta37ZNQtzRTqBV
-         tdePKJV09gq64pem7kFjFxbLsSw6xXualbAOh4HYTvtXtaZ7i0RmGAAaJ/aPDw1IsPo8
-         OC6dHJHm3HN+G0gnmtpDctiuyotfc94qo27Z38CMM1BTAjx5IdGf5p80nK8oxUqj6Zfc
-         0P0meHusXurr9qIvs/mVHx+By5WjVFXt9zmKZG2lr8G7P0QHnt/Vtgxtc2IOmgg5mK1e
-         xXYTzTEMhJ7BVyFmmx+M0V/N01/HT2CxWs9ud9X5Bo9uq8FqEeNrZhAd7X/AW4adtaZd
-         Pt2w==
+        b=pKQ4DKfftn6LG9vA/RvkdQU97u9G/94RoWRojRb+NEnxSAMBxka95VHXlGcPVpQYY2
+         U/Cx8rxtN4UidiVss90m3ueGBLLdDt/NIsSFIp4y8yroU8zHj2EdRgyDIdfMTJexfJbr
+         1tqid7FZQnkD8KBq8+ctbT/3FRLWUSLhS7NvoLWY+/sbmJSa22xaWsROyDinDtKD5af5
+         fJlPsDBZVBik6QfBLkWGRzpYryy9kNV0IbqTJ6CAVFngGrzyApcXIJPBcTYG3PXLMwBc
+         /f2pm9se57UPKv8WqXva+SBNNFsjIU2AucTNJPMKHZRz+KRNRW5xmAM+WY5K8MnB92oR
+         PcQg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=nSjXeQCzo2EkisNx4X5thRA0ydl2xZWy3jPz6wrX0qA=;
-        b=HI9ObVKu/6TSeimvES2BfzwXbPIx4qNtlvXWSU76cyieOOCst3ejK9ZDfnYKkerw1d
-         MN8AUOfkpPw1L8bRgphuhJEtsDh4mq65fxhBvTQXGn/CrNW4bO6LuVl41uTdPE0rwIZh
-         /NIdvVTlJnbHJmxNArHwOBMz9Gm7BywSajT2YaJcgaGUZC3On32n6M9D3stGp67nHCBf
-         faBmlNdFgTMU3gQuW0DrRZFHIaY/KahTWN82jMxjSxOdEURm7Z+8gcUicK4JlwHMhVZF
-         yBbANRjnrzqK9F/eHE/mC2iGQjkz8WjTp0stCYyQa4qw8oyTjOoJdhw3AVLGRsyTXVpc
-         cBXQ==
+        bh=zGwc9UnhB1o5h+zFcAs1b+jEaSzzcTzLNYtWwq595Tw=;
+        b=hW+KPgwgIDWnbxcbfFYFwiX0tUOLpl1jwpPjsQHJ2SJVaO3vnMDNbHrl/ZcYHOWoh5
+         Z/lNUfODcR/1O6v+gCccqDz5XWdnJiFQEw7lwPgzL/2OazB0+m48SFn8BLCXTXL8Olrl
+         woyGtYZjqnwNrii+3vaLjdKCB9OSI1qsjTflkPweyqHExP68pWJS1ZNpGqCzGafqzWYs
+         c17E4g1vvgyrvDOXIxR172oDyhw772gs5j062Ca2gQRIfF5f1aslo9E2qKD9XxCN+b8p
+         TZma2w0OfqND25T+kF2rQgyfBsgVHuyCMgH4vjuHMqis4x72yAWDfM2V0B2U6FptuIyj
+         1GTw==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=QYxTlYQO;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=jywZYFuj;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r5si6804072ybr.13.2021.09.16.22.28.42
+        by mx.google.com with ESMTPS id s8si4933962yba.284.2021.09.16.22.29.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 22:28:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Sep 2021 22:29:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=QYxTlYQO;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=jywZYFuj;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:38000 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mR6QU-0006xO-0l
-	for alex.bennee@linaro.org; Fri, 17 Sep 2021 01:28:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46264)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mR6Qq-0000gR-IE
+	for alex.bennee@linaro.org; Fri, 17 Sep 2021 01:29:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mR6MW-0003Vd-Ry; Fri, 17 Sep 2021 01:24:36 -0400
-Received: from mail-co1nam11on2074.outbound.protection.outlook.com
- ([40.107.220.74]:13537 helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ id 1mR6MI-0002hF-Nd; Fri, 17 Sep 2021 01:24:22 -0400
+Received: from mail-dm6nam11on2078.outbound.protection.outlook.com
+ ([40.107.223.78]:10849 helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mR6MT-0006FA-Du; Fri, 17 Sep 2021 01:24:36 -0400
+ id 1mR6MG-000632-Sl; Fri, 17 Sep 2021 01:24:22 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XoecXDz/yRM/YIS9MPtqeK97FhCYtwfZ7IevIUxUb8WHb6sVXpfK3tDYFSccAwTRBnt/RLRTK/rFFvMVaWonQBh+4tE9LfA+k4SW4NKFfpgtgtpZPNHaunM0olCSIc2RrFGTYyLPCl2ofsdmCmwFrLgA2F5U1xIQvJB/Ytvt2sezS/8jOcxJn075uOrY6m9QBUO7t603fHelgmWEYmjnN1VWrtSoqg+OWBaKiNjXZNXeV5ad8Rk9zYMk3KubNMTURV+bE3qrvKAhZXCgLVwSYxNKu0Tbz5Eg4ueYlLPH8eJapfGllI1wy8UcvNCsPQ/o5SWJf4nJwGAViC8R3/knhQ==
+ b=AFdNxnw3RGvjwB8fRA/ep74xjl3qFX1ARcKgswWIM4uKeB361WUCdu/lAeDAqi5tjZZEyWUjc3OsJMTG2iGqz+h++1Jl/1iqO/73HorFpNrjVQ4uWc4f/+Z0fF5GWMi1WcXiN6Ox3PlRxA3emwz2fPaJ83IfNhjDVN33pzdA2L77i4Qn1vS7iD9B5cI0Hgk4GQZpPjdKO6PUkgkyyPewX1nliqqsAhNSg9P312ucR9cpm9LcdOVgjISlCeV6kzR5z0ok0hzj4dj5tSmdW5qvaiVvYeoEQOMD8+4H4vpSXkOefn/Ts7ZvEu9j4nvJPza541dytntVINRcEzoI3jvz6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=nSjXeQCzo2EkisNx4X5thRA0ydl2xZWy3jPz6wrX0qA=;
- b=oVufXiRfuCdzoR3d/Kae4RIqy50I5dzKfktLIth56TqVg7zEWS+wYwOs6VjNSqvZL40dWlVbANp66nACpc2UjrkHY0JxXkm+RgUcLnpmhAg6FkFYgi2RaM1oU+GMpvcoVz+SMMfLkqeZQyKVIPOva8VK54zw/5EhQLv0musgp0boXFQP9SNC6bRCpjcnFWBVeEFaRl4nQzBmApgRtrqJElw+7d1rHyP4+IIa73uJC9ZfA3EI5DE7qfCpoEoxHJnaYxHKK2mUaJWmTEPGH6pBgsyn/LeNAEwpNckE5mv6m0hXeeMy1CNW/yGSvB6KtR4FXG18oQaNd/dqh0lphkoe7g==
+ bh=zGwc9UnhB1o5h+zFcAs1b+jEaSzzcTzLNYtWwq595Tw=;
+ b=NIDuZKfetkey38lSoSzL+RiP4bSUNkHVDNBNHJLLIHPzLGBi30Q1Cb4ggN4PzXY1xMb8P0kEHwihw+6KBOleOUSqO1KLHvCdrAQTv1nbDbDGDdXDPMQmJ0Wo3U7lgqcNyBNXazyAjgJMchQI1P2IWFKOAaFfIJBH0VqrMj0N7PXdM/YAttVbCGy+MgGj178hyNZ57MHm+J/U1mSTkWAdILE96RSZp54bpol+72KGqfQXYKFLD3R5MoEb9sFN2T67z00OVa1bqYjbIUl9rcyrPHrPcdobeM2jj835t7nQNlKzcVrp9yE1nitlso9bjGXlCYmkr9XdxW2WdqkqoWfa3w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
  dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
@@ -68,44 +68,44 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nSjXeQCzo2EkisNx4X5thRA0ydl2xZWy3jPz6wrX0qA=;
- b=QYxTlYQORuXvhW3HXy6BmwFXZ85aNykBy65BpFfCl6Xvgv3w9wUzvOo9ZvV/pIOQKjRMfQwcf7rwvKiMrc5ZMFljAVvZAu8lTKruoIqtjL7UZPJ4d7cw0pTy+bKdh0N4+xcys9pFN7gS5neRQ8hyF+0nVELVywSFDbO57yW1Zhc=
-Received: from BN9PR03CA0694.namprd03.prod.outlook.com (2603:10b6:408:ef::9)
- by BY5PR02MB6470.namprd02.prod.outlook.com (2603:10b6:a03:1dd::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.16; Fri, 17 Sep
- 2021 05:24:28 +0000
-Received: from BN1NAM02FT049.eop-nam02.prod.protection.outlook.com
- (2603:10b6:408:ef:cafe::cc) by BN9PR03CA0694.outlook.office365.com
- (2603:10b6:408:ef::9) with Microsoft SMTP Server (version=TLS1_2,
+ bh=zGwc9UnhB1o5h+zFcAs1b+jEaSzzcTzLNYtWwq595Tw=;
+ b=jywZYFujWG1OC+oNsnCV5VFLVQtiDx2Ok44pPsCsSpAIf1zX72v08gqNpwtANW6YvnvXi2+2eUiQ3Rnfn0kBBA7ZpvD32qUW1I+NUtye7+w0QQVHi1kRZaytnKh4Fp/WLfzfpMItEu8JqdK6II3WyCINIt7xhS6KXapxf9wrncM=
+Received: from DM3PR12CA0060.namprd12.prod.outlook.com (2603:10b6:0:56::28) by
+ BL0PR02MB4754.namprd02.prod.outlook.com (2603:10b6:208:5d::11) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4523.16; Fri, 17 Sep 2021 05:24:12 +0000
+Received: from DM3NAM02FT037.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:0:56:cafe::cd) by DM3PR12CA0060.outlook.office365.com
+ (2603:10b6:0:56::28) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4523.14 via Frontend
- Transport; Fri, 17 Sep 2021 05:24:28 +0000
+ Transport; Fri, 17 Sep 2021 05:24:12 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
  smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
  header.d=none;nongnu.org; dmarc=pass action=none header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
  149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
-Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
- BN1NAM02FT049.mail.protection.outlook.com (10.13.2.89) with Microsoft SMTP
+ client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
+Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
+ DM3NAM02FT037.mail.protection.outlook.com (10.13.4.166) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4523.14 via Frontend Transport; Fri, 17 Sep 2021 05:24:28 +0000
+ 15.20.4523.14 via Frontend Transport; Fri, 17 Sep 2021 05:24:12 +0000
 Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
+ xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Thu, 16 Sep 2021 22:24:00 -0700
+ 15.1.2176.14; Thu, 16 Sep 2021 22:24:01 -0700
 Received: from smtp.xilinx.com (172.19.127.96) by
  xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
  15.1.2176.14 via Frontend Transport; Thu, 16 Sep 2021 22:24:00 -0700
 Received: from [172.19.2.40] (port=58118 helo=xsjtongh40.xilinx.com)
  by smtp.xilinx.com with esmtp (Exim 4.90)
  (envelope-from <tong.ho@xilinx.com>)
- id 1mR6Lw-0005Y7-TB; Thu, 16 Sep 2021 22:24:00 -0700
+ id 1mR6Lw-0005Y7-US; Thu, 16 Sep 2021 22:24:00 -0700
 From: Tong Ho <tong.ho@xilinx.com>
 To: <qemu-arm@nongnu.org>
-Subject: [PATCH v3 4/9] hw/nvram: Introduce Xilinx battery-backed ram
-Date: Thu, 16 Sep 2021 22:23:55 -0700
-Message-ID: <20210917052400.1249094-5-tong.ho@xilinx.com>
+Subject: [PATCH v3 6/9] hw/arm: xlnx-versal-virt: Add Xilinx eFUSE device
+Date: Thu, 16 Sep 2021 22:23:57 -0700
+Message-ID: <20210917052400.1249094-7-tong.ho@xilinx.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210917052400.1249094-1-tong.ho@xilinx.com>
 References: <20210917052400.1249094-1-tong.ho@xilinx.com>
@@ -114,32 +114,32 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 4874d6b4-8671-44ab-ff59-08d9799b6bb9
-X-MS-TrafficTypeDiagnostic: BY5PR02MB6470:
-X-Microsoft-Antispam-PRVS: <BY5PR02MB647041C1CD458F622A055036CDDD9@BY5PR02MB6470.namprd02.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: 48bbed9c-0bfa-4ecb-8ede-08d9799b6273
+X-MS-TrafficTypeDiagnostic: BL0PR02MB4754:
+X-Microsoft-Antispam-PRVS: <BL0PR02MB4754AED0EDF2572C25BE60B5CDDD9@BL0PR02MB4754.namprd02.prod.outlook.com>
 X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:568;
+X-MS-Oob-TLC-OOBClassifiers: OLM:257;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: yy/DMKEF7nGdGDJ8NaatlF4UDqfvsnPWFDRKtFU/+eomy8bLNKSVw9wa7MuncXHWCp0RWLXpIOvEb2RiwZwTnh8X0Czq5FcprvrIrE5dSpDMEkzkQAmOY+tZyd4Qx84Zlzvd3BG45N2hsY52/QvjgWyQ16xNHdJ6vdt/QoL9WHGQT1hsas6lskQ4tmBuwmRx0OZ2Mcx8QgNYt5oRa5GYw4MX8+PmT+ghDlrHWz/fgFb83iPQB6N7e51bv5ZYqcp6jSq0IHFF1BDpltg7olQDXOYlBjfH8rSP2CtQepbuR6eCgSHxNrqulS7B7Hlo+Ko/XjyYQ1ONCtc9XD6XXOwjWkNHRJWEEWffHyNLjjwe2eOVdm+Q+hkW1cvcHfuajdSIErJXoJcb03fj81jsFIxGkTg4uHO/nn/vKRs78sW/AZAEs208yLZsoNCrSWiIkM3lA2bBh1RKlshfBFEJMfm1G8HdMoBTbSJS4kW145gu1q6b+oZTNOEgjjLhfoASjjjZCH4LvTaqiTrzZ7sNnRzcM0GEbcg2ICF9BSOeW7QdEMZCKOgC/sBjkanhymLfSuc1cadHsf4icfZwHBL79i9O3qXn9/m0Ng3ThVtExi8+BltgNJt6/7TRx3JdQtw20GzNSDWicYtPi32qS4PwiR/C6ZX1A3sZo9D9lxYyOh8XtNbGfdjplOD6bcy+e5YMXb2xTV1RDQKvw9minD4CW64j0zlUPG2gyL8crUmExClFuGcm1D5TfS0H/kWPh6Z+hKvVYrD1W9L9Mig0HVOhwldhV6FYJWjIVNyHgjQs8wH8xDTT6L90BOlkWSgrfGaO3JTc
+X-Microsoft-Antispam-Message-Info: qxSd4mmpNoEoTBJ11wAEiwAC+fKroNmaDsUUK+H0jsmoLIh66wLfvUzFKlCw8jWX5Lu77aJA54MhFsAzFS/O/ls1iu680R1s7GO2bdUYYXo5UyohDXlErvaZ+n6wUGWkHUpstuF/05ttYaQopcLO4aKvJNsQjk8Rlc88nCQogqoC/3CXS31zI4p7q4qLiNoPrMmmufTt/qlWsO2vG2oHMVfxTi9CQOolQreGvNvOXQVkA7bpBV7m8GmHgh2dRF3uqSvb4bvPITeebuYypbM5zfiXOrrXljqpCQUXVbxOAAphwlZenmhvP5OFcGdXYukDzzTLJrfQksYxzKEhO2FAA4sQCUS1AANlZLiOSJHamP/Lt3S3b4COEbC0HemB+UzxeOFCEr6MIKQFTnlnkjNM6pp8zxTV9Ji8H9uP2GGParHstGLQF+PjO8ngTIB3wvlvyLsw/Xw6Dp7M/BqhNBRG8VdxbIEDAFwvWJc9LGBCZw26l4dBw2mDxLGDDUWxLqEO7jkeIUdKCxjgRbbl7E7IB19FZojCec1DXd59+ncR4YEW/o+AT35MR3tKXp4QI3gNLffX7t2sp9HSFDqtP0YVF3gc0dlJdnrg7b+wAVDgiJ5lCQaK3jEWO5pcW7Uig6l6ozuPfqTZbWW9qhEMbLgzRjpt359rYQdnmb27UmFmofjo71quv3r/TBe6p5Ll6LNGgLZ2k0BpPL++cQBF3t5k+CNbxr2lvHkgQ6GOEl7l0SQ=
 X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
  PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(4636009)(46966006)(36840700001)(82310400003)(6666004)(508600001)(54906003)(70206006)(8936002)(7696005)(70586007)(9786002)(6916009)(44832011)(30864003)(107886003)(4326008)(36756003)(5660300002)(26005)(426003)(1076003)(356005)(7636003)(186003)(2616005)(8676002)(2906002)(83380400001)(966005)(36906005)(316002)(36860700001)(336012)(47076005)(102446001);
+ SFS:(4636009)(39860400002)(376002)(346002)(136003)(396003)(46966006)(36840700001)(107886003)(8936002)(1076003)(26005)(8676002)(82310400003)(478600001)(6666004)(2906002)(336012)(4326008)(426003)(70586007)(7696005)(186003)(5660300002)(83380400001)(9786002)(54906003)(44832011)(316002)(36906005)(36860700001)(47076005)(6916009)(356005)(7636003)(36756003)(82740400003)(70206006)(2616005)(102446001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Sep 2021 05:24:28.2399 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4874d6b4-8671-44ab-ff59-08d9799b6bb9
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Sep 2021 05:24:12.7348 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 48bbed9c-0bfa-4ecb-8ede-08d9799b6273
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1NAM02FT049.eop-nam02.prod.protection.outlook.com
+ Helo=[xsj-pvapexch02.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT037.eop-nam02.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB6470
-Received-SPF: pass client-ip=40.107.220.74; envelope-from=tongh@xilinx.com;
- helo=NAM11-CO1-obe.outbound.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR02MB4754
+Received-SPF: pass client-ip=40.107.223.78; envelope-from=tongh@xilinx.com;
+ helo=NAM11-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -147,675 +147,240 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@gmail.com, alistair@alistair23.me, tong.ho@xilinx.com,
- qemu-devel@nongnu.org, peter.maydell@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: APnTcNKLkP44
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: alistair@alistair23.me, tong.ho@xilinx.com, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: D3l028qeJJdM
 
-This device is present in Versal and ZynqMP product
-families to store a 256-bit encryption key.
+Connect the support for Versal eFUSE one-time field-programmable
+bit array.
 
-Co-authored-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Co-authored-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+The command argument:
+  -drive if=pflash,index=1,...
+Can be used to optionally connect the bit array to a
+backend storage, such that field-programmed values
+in one invocation can be made available to next
+invocation.
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+The backend storage must be a seekable binary file, and
+its size must be 3072 bytes or larger. A file with all
+binary 0's is a 'blank'.
+
 Signed-off-by: Tong Ho <tong.ho@xilinx.com>
 ---
- hw/nvram/Kconfig              |   4 +
- hw/nvram/meson.build          |   1 +
- hw/nvram/xlnx-bbram.c         | 545 ++++++++++++++++++++++++++++++++++
- include/hw/nvram/xlnx-bbram.h |  54 ++++
- 4 files changed, 604 insertions(+)
- create mode 100644 hw/nvram/xlnx-bbram.c
- create mode 100644 include/hw/nvram/xlnx-bbram.h
+ hw/arm/Kconfig               |  1 +
+ hw/arm/xlnx-versal-virt.c    | 52 ++++++++++++++++++++++++++++++++++++
+ hw/arm/xlnx-versal.c         | 39 +++++++++++++++++++++++++++
+ include/hw/arm/xlnx-versal.h | 10 +++++++
+ 4 files changed, 102 insertions(+)
 
-diff --git a/hw/nvram/Kconfig b/hw/nvram/Kconfig
-index 3059c5dae0..24cfc18f8b 100644
---- a/hw/nvram/Kconfig
-+++ b/hw/nvram/Kconfig
-@@ -30,3 +30,7 @@ config XLNX_EFUSE_VERSAL
- config XLNX_EFUSE_ZYNQMP
-     bool
-     select XLNX_EFUSE
-+
-+config XLNX_BBRAM
-+    bool
-+    select XLNX_EFUSE_CRC
-diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
-index 6dc54d9873..202a5466e6 100644
---- a/hw/nvram/meson.build
-+++ b/hw/nvram/meson.build
-@@ -16,5 +16,6 @@ softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE_VERSAL', if_true: files(
-                                                    'xlnx-versal-efuse-ctrl.c'))
- softmmu_ss.add(when: 'CONFIG_XLNX_EFUSE_ZYNQMP', if_true: files(
-                                                    'xlnx-zynqmp-efuse.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f92fb9e568..9edc05782d 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -382,6 +382,7 @@ config XLNX_VERSAL
+     select XLNX_ZYNQMP
+     select OR_IRQ
+     select XLNX_BBRAM
++    select XLNX_EFUSE_VERSAL
  
- specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
-diff --git a/hw/nvram/xlnx-bbram.c b/hw/nvram/xlnx-bbram.c
-new file mode 100644
-index 0000000000..b70828e5bf
---- /dev/null
-+++ b/hw/nvram/xlnx-bbram.c
-@@ -0,0 +1,545 @@
-+/*
-+ * QEMU model of the Xilinx BBRAM Battery Backed RAM
-+ *
-+ * Copyright (c) 2014-2021 Xilinx Inc.
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/nvram/xlnx-bbram.h"
-+
-+#include "qemu/error-report.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "sysemu/blockdev.h"
-+#include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-properties-system.h"
-+#include "hw/nvram/xlnx-efuse.h"
-+
-+#ifndef XLNX_BBRAM_ERR_DEBUG
-+#define XLNX_BBRAM_ERR_DEBUG 0
-+#endif
-+
-+REG32(BBRAM_STATUS, 0x0)
-+    FIELD(BBRAM_STATUS, AES_CRC_PASS, 9, 1)
-+    FIELD(BBRAM_STATUS, AES_CRC_DONE, 8, 1)
-+    FIELD(BBRAM_STATUS, BBRAM_ZEROIZED, 4, 1)
-+    FIELD(BBRAM_STATUS, PGM_MODE, 0, 1)
-+REG32(BBRAM_CTRL, 0x4)
-+    FIELD(BBRAM_CTRL, ZEROIZE, 0, 1)
-+REG32(PGM_MODE, 0x8)
-+REG32(BBRAM_AES_CRC, 0xc)
-+REG32(BBRAM_0, 0x10)
-+REG32(BBRAM_1, 0x14)
-+REG32(BBRAM_2, 0x18)
-+REG32(BBRAM_3, 0x1c)
-+REG32(BBRAM_4, 0x20)
-+REG32(BBRAM_5, 0x24)
-+REG32(BBRAM_6, 0x28)
-+REG32(BBRAM_7, 0x2c)
-+REG32(BBRAM_8, 0x30)
-+REG32(BBRAM_SLVERR, 0x34)
-+    FIELD(BBRAM_SLVERR, ENABLE, 0, 1)
-+REG32(BBRAM_ISR, 0x38)
-+    FIELD(BBRAM_ISR, APB_SLVERR, 0, 1)
-+REG32(BBRAM_IMR, 0x3c)
-+    FIELD(BBRAM_IMR, APB_SLVERR, 0, 1)
-+REG32(BBRAM_IER, 0x40)
-+    FIELD(BBRAM_IER, APB_SLVERR, 0, 1)
-+REG32(BBRAM_IDR, 0x44)
-+    FIELD(BBRAM_IDR, APB_SLVERR, 0, 1)
-+REG32(BBRAM_MSW_LOCK, 0x4c)
-+    FIELD(BBRAM_MSW_LOCK, VAL, 0, 1)
-+
-+#define R_MAX (R_BBRAM_MSW_LOCK + 1)
-+
-+#define RAM_MAX (A_BBRAM_8 + 4 - A_BBRAM_0)
-+
-+#define BBRAM_PGM_MAGIC 0x757bdf0d
-+
-+QEMU_BUILD_BUG_ON(R_MAX != ARRAY_SIZE(((XlnxBBRam *)0)->regs));
-+
-+static bool bbram_msw_locked(XlnxBBRam *s)
+ config NPCM7XX
+     bool
+diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+index e1c5ead475..d2f55e29b6 100644
+--- a/hw/arm/xlnx-versal-virt.c
++++ b/hw/arm/xlnx-versal-virt.c
+@@ -376,6 +376,41 @@ static void fdt_add_bbram_node(VersalVirt *s)
+     g_free(name);
+ }
+ 
++static void fdt_add_efuse_ctrl_node(VersalVirt *s)
 +{
-+    return ARRAY_FIELD_EX32(s->regs, BBRAM_MSW_LOCK, VAL) != 0;
++    const char compat[] = TYPE_XLNX_VERSAL_EFUSE_CTRL;
++    const char interrupt_names[] = "pmc_efuse";
++    char *name = g_strdup_printf("/pmc_efuse@%x", MM_PMC_EFUSE_CTRL);
++
++    qemu_fdt_add_subnode(s->fdt, name);
++
++    qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
++                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_EFUSE_IRQ,
++                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
++                     interrupt_names, sizeof(interrupt_names));
++    qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
++                                 2, MM_PMC_EFUSE_CTRL,
++                                 2, MM_PMC_EFUSE_CTRL_SIZE);
++    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
++    g_free(name);
 +}
 +
-+static bool bbram_pgm_enabled(XlnxBBRam *s)
++static void fdt_add_efuse_cache_node(VersalVirt *s)
 +{
-+    return ARRAY_FIELD_EX32(s->regs, BBRAM_STATUS, PGM_MODE) != 0;
++    const char compat[] = TYPE_XLNX_VERSAL_EFUSE_CACHE;
++    char *name = g_strdup_printf("/xlnx_pmc_efuse_cache@%x",
++                                 MM_PMC_EFUSE_CACHE);
++
++    qemu_fdt_add_subnode(s->fdt, name);
++
++    qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
++                                 2, MM_PMC_EFUSE_CACHE,
++                                 2, MM_PMC_EFUSE_CACHE_SIZE);
++    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
++    g_free(name);
 +}
 +
-+static void bbram_bdrv_error(XlnxBBRam *s, int rc, gchar *detail)
+ static void fdt_nop_memory_nodes(void *fdt, Error **errp)
+ {
+     Error *err = NULL;
+@@ -542,6 +577,18 @@ static void bbram_attach_drive(XlnxBBRam *dev)
+     }
+ }
+ 
++static void efuse_attach_drive(XlnxEFuse *dev)
 +{
-+    Error *errp;
-+
-+    error_setg_errno(&errp, -rc, "%s: BBRAM backstore %s failed.",
-+                     blk_name(s->blk), detail);
-+    error_report("%s", error_get_pretty(errp));
-+    error_free(errp);
-+
-+    g_free(detail);
-+}
-+
-+static void bbram_bdrv_read(XlnxBBRam *s, Error **errp)
-+{
-+    uint32_t *ram = &s->regs[R_BBRAM_0];
-+    int nr = RAM_MAX;
-+
-+    if (!s->blk) {
-+        return;
-+    }
-+
-+    s->blk_ro = !blk_supports_write_perm(s->blk);
-+    if (!s->blk_ro) {
-+        int rc;
-+
-+        rc = blk_set_perm(s->blk,
-+                          (BLK_PERM_CONSISTENT_READ | BLK_PERM_WRITE),
-+                          BLK_PERM_ALL, NULL);
-+        if (rc) {
-+            s->blk_ro = true;
-+        }
-+    }
-+    if (s->blk_ro) {
-+        warn_report("%s: Skip saving updates to read-only BBRAM backstore.",
-+                    blk_name(s->blk));
-+    }
-+
-+    if (blk_pread(s->blk, 0, ram, nr) < 0) {
-+        error_setg(errp,
-+                   "%s: Failed to read %u bytes from BBRAM backstore.",
-+                   blk_name(s->blk), nr);
-+        return;
-+    }
-+
-+    /* Convert from little-endian backstore for each 32-bit word */
-+    nr /= 4;
-+    while (nr--) {
-+        ram[nr] = le32_to_cpu(ram[nr]);
-+    }
-+}
-+
-+static void bbram_bdrv_sync(XlnxBBRam *s, uint64_t hwaddr)
-+{
-+    uint32_t le32;
-+    unsigned offset;
-+    int rc;
-+
-+    assert(A_BBRAM_0 <= hwaddr && hwaddr <= A_BBRAM_8);
-+
-+    /* Backstore is always in little-endian */
-+    le32 = cpu_to_le32(s->regs[hwaddr / 4]);
-+
-+    /* Update zeroized flag */
-+    if (le32 && (hwaddr != A_BBRAM_8 || s->bbram8_wo)) {
-+        ARRAY_FIELD_DP32(s->regs, BBRAM_STATUS, BBRAM_ZEROIZED, 0);
-+    }
-+
-+    if (!s->blk || s->blk_ro) {
-+        return;
-+    }
-+
-+    offset = hwaddr - A_BBRAM_0;
-+    rc = blk_pwrite(s->blk, offset, &le32, 4, 0);
-+    if (rc < 0) {
-+        bbram_bdrv_error(s, rc, g_strdup_printf("write to offset %u", offset));
-+    }
-+}
-+
-+static void bbram_bdrv_zero(XlnxBBRam *s)
-+{
-+    int rc;
-+
-+    ARRAY_FIELD_DP32(s->regs, BBRAM_STATUS, BBRAM_ZEROIZED, 1);
-+
-+    if (!s->blk || s->blk_ro) {
-+        return;
-+    }
-+
-+    rc = blk_make_zero(s->blk, 0);
-+    if (rc < 0) {
-+        bbram_bdrv_error(s, rc, g_strdup("zeroizing"));
-+    }
-+
-+    /* Restore bbram8 if it is non-zero */
-+    if (s->regs[R_BBRAM_8]) {
-+        bbram_bdrv_sync(s, A_BBRAM_8);
-+    }
-+}
-+
-+static void bbram_zeroize(XlnxBBRam *s)
-+{
-+    int nr = RAM_MAX - (s->bbram8_wo ? 0 : 4); /* only wo bbram8 is cleared */
-+
-+    memset(&s->regs[R_BBRAM_0], 0, nr);
-+    bbram_bdrv_zero(s);
-+}
-+
-+static void bbram_update_irq(XlnxBBRam *s)
-+{
-+    bool pending = s->regs[R_BBRAM_ISR] & ~s->regs[R_BBRAM_IMR];
-+
-+    qemu_set_irq(s->irq_bbram, pending);
-+}
-+
-+static void bbram_ctrl_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+    uint32_t val = val64;
-+
-+    if (val & R_BBRAM_CTRL_ZEROIZE_MASK) {
-+        bbram_zeroize(s);
-+        /* The bit is self clearing */
-+        s->regs[R_BBRAM_CTRL] &= ~R_BBRAM_CTRL_ZEROIZE_MASK;
-+    }
-+}
-+
-+static void bbram_pgm_mode_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+    uint32_t val = val64;
-+
-+    if (val == BBRAM_PGM_MAGIC) {
-+        bbram_zeroize(s);
-+
-+        /* The status bit is cleared only by POR */
-+        ARRAY_FIELD_DP32(s->regs, BBRAM_STATUS, PGM_MODE, 1);
-+    }
-+}
-+
-+static void bbram_aes_crc_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+    uint32_t calc_crc;
-+
-+    if (!bbram_pgm_enabled(s)) {
-+        /* We are not in programming mode, don't do anything */
-+        return;
-+    }
-+
-+    /* Perform the AES integrity check */
-+    s->regs[R_BBRAM_STATUS] |= R_BBRAM_STATUS_AES_CRC_DONE_MASK;
-+
-+    /*
-+     * Set check status.
-+     *
-+     * ZynqMP BBRAM check has a zero-u32 prepended; see:
-+     *  https://github.com/Xilinx/embeddedsw/blob/release-2019.2/lib/sw_services/xilskey/src/xilskey_bbramps_zynqmp.c#L311
-+     */
-+    calc_crc = xlnx_efuse_calc_crc(&s->regs[R_BBRAM_0],
-+                                   (R_BBRAM_8 - R_BBRAM_0), s->crc_zpads);
-+
-+    ARRAY_FIELD_DP32(s->regs, BBRAM_STATUS, AES_CRC_PASS,
-+                     (s->regs[R_BBRAM_AES_CRC] == calc_crc));
-+}
-+
-+static uint64_t bbram_key_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+    uint32_t original_data = *(uint32_t *) reg->data;
-+
-+    if (bbram_pgm_enabled(s)) {
-+        return val64;
-+    } else {
-+        /* We are not in programming mode, don't do anything */
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "Not in programming mode, dropping the write\n");
-+        return original_data;
-+    }
-+}
-+
-+static void bbram_key_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+
-+    bbram_bdrv_sync(s, reg->access->addr);
-+}
-+
-+static uint64_t bbram_wo_postr(RegisterInfo *reg, uint64_t val)
-+{
-+    return 0;
-+}
-+
-+static uint64_t bbram_r8_postr(RegisterInfo *reg, uint64_t val)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+
-+    return s->bbram8_wo ? bbram_wo_postr(reg, val) : val;
-+}
-+
-+static bool bbram_r8_readonly(XlnxBBRam *s)
-+{
-+    return !bbram_pgm_enabled(s) || bbram_msw_locked(s);
-+}
-+
-+static uint64_t bbram_r8_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+
-+    if (bbram_r8_readonly(s)) {
-+        val64 = *(uint32_t *)reg->data;
-+    }
-+
-+    return val64;
-+}
-+
-+static void bbram_r8_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+
-+    if (!bbram_r8_readonly(s)) {
-+        bbram_bdrv_sync(s, A_BBRAM_8);
-+    }
-+}
-+
-+static uint64_t bbram_msw_lock_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+
-+    /* Never lock if bbram8 is wo; and, only POR can clear the lock */
-+    if (s->bbram8_wo) {
-+        val64 = 0;
-+    } else {
-+        val64 |= s->regs[R_BBRAM_MSW_LOCK];
-+    }
-+
-+    return val64;
-+}
-+
-+static void bbram_isr_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+
-+    bbram_update_irq(s);
-+}
-+
-+static uint64_t bbram_ier_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_BBRAM_IMR] &= ~val;
-+    bbram_update_irq(s);
-+    return 0;
-+}
-+
-+static uint64_t bbram_idr_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_BBRAM_IMR] |= val;
-+    bbram_update_irq(s);
-+    return 0;
-+}
-+
-+static RegisterAccessInfo bbram_ctrl_regs_info[] = {
-+    {   .name = "BBRAM_STATUS",  .addr = A_BBRAM_STATUS,
-+        .rsvd = 0xee,
-+        .ro = 0x3ff,
-+    },{ .name = "BBRAM_CTRL",  .addr = A_BBRAM_CTRL,
-+        .post_write = bbram_ctrl_postw,
-+    },{ .name = "PGM_MODE",  .addr = A_PGM_MODE,
-+        .post_write = bbram_pgm_mode_postw,
-+    },{ .name = "BBRAM_AES_CRC",  .addr = A_BBRAM_AES_CRC,
-+        .post_write = bbram_aes_crc_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_0",  .addr = A_BBRAM_0,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_1",  .addr = A_BBRAM_1,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_2",  .addr = A_BBRAM_2,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_3",  .addr = A_BBRAM_3,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_4",  .addr = A_BBRAM_4,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_5",  .addr = A_BBRAM_5,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_6",  .addr = A_BBRAM_6,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_7",  .addr = A_BBRAM_7,
-+        .pre_write = bbram_key_prew,
-+        .post_write = bbram_key_postw,
-+        .post_read = bbram_wo_postr,
-+    },{ .name = "BBRAM_8",  .addr = A_BBRAM_8,
-+        .pre_write = bbram_r8_prew,
-+        .post_write = bbram_r8_postw,
-+        .post_read = bbram_r8_postr,
-+    },{ .name = "BBRAM_SLVERR",  .addr = A_BBRAM_SLVERR,
-+        .rsvd = ~1,
-+    },{ .name = "BBRAM_ISR",  .addr = A_BBRAM_ISR,
-+        .w1c = 0x1,
-+        .post_write = bbram_isr_postw,
-+    },{ .name = "BBRAM_IMR",  .addr = A_BBRAM_IMR,
-+        .ro = 0x1,
-+    },{ .name = "BBRAM_IER",  .addr = A_BBRAM_IER,
-+        .pre_write = bbram_ier_prew,
-+    },{ .name = "BBRAM_IDR",  .addr = A_BBRAM_IDR,
-+        .pre_write = bbram_idr_prew,
-+    },{ .name = "BBRAM_MSW_LOCK",  .addr = A_BBRAM_MSW_LOCK,
-+        .pre_write = bbram_msw_lock_prew,
-+        .ro = ~R_BBRAM_MSW_LOCK_VAL_MASK,
-+    }
-+};
-+
-+static void bbram_ctrl_reset(DeviceState *dev)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(dev);
-+    unsigned int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-+        if (i < R_BBRAM_0 || i > R_BBRAM_8) {
-+            register_reset(&s->regs_info[i]);
-+        }
-+    }
-+
-+    bbram_update_irq(s);
-+}
-+
-+static const MemoryRegionOps bbram_ctrl_ops = {
-+    .read = register_read_memory,
-+    .write = register_write_memory,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void bbram_ctrl_realize(DeviceState *dev, Error **errp)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(dev);
-+
-+    if (s->crc_zpads) {
-+        s->bbram8_wo = true;
-+    }
-+
-+    bbram_bdrv_read(s, errp);
-+}
-+
-+static void bbram_ctrl_init(Object *obj)
-+{
-+    XlnxBBRam *s = XLNX_BBRAM(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    RegisterInfoArray *reg_array;
-+
-+    reg_array =
-+        register_init_block32(DEVICE(obj), bbram_ctrl_regs_info,
-+                              ARRAY_SIZE(bbram_ctrl_regs_info),
-+                              s->regs_info, s->regs,
-+                              &bbram_ctrl_ops,
-+                              XLNX_BBRAM_ERR_DEBUG,
-+                              R_MAX * 4);
-+
-+    sysbus_init_mmio(sbd, &reg_array->mem);
-+    sysbus_init_irq(sbd, &s->irq_bbram);
-+}
-+
-+static void bbram_prop_set_drive(Object *obj, Visitor *v, const char *name,
-+                                 void *opaque, Error **errp)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+
-+    qdev_prop_drive.set(obj, v, name, opaque, errp);
-+
-+    /* Fill initial data if backend is attached after realized */
-+    if (dev->realized) {
-+        bbram_bdrv_read(XLNX_BBRAM(obj), errp);
-+    }
-+}
-+
-+static void bbram_prop_get_drive(Object *obj, Visitor *v, const char *name,
-+                                 void *opaque, Error **errp)
-+{
-+    qdev_prop_drive.get(obj, v, name, opaque, errp);
-+}
-+
-+static void bbram_prop_release_drive(Object *obj, const char *name,
-+                                     void *opaque)
-+{
-+    qdev_prop_drive.release(obj, name, opaque);
-+}
-+
-+static const PropertyInfo bbram_prop_drive = {
-+    .name  = "str",
-+    .description = "Node name or ID of a block device to use as BBRAM backend",
-+    .realized_set_allowed = true,
-+    .get = bbram_prop_get_drive,
-+    .set = bbram_prop_set_drive,
-+    .release = bbram_prop_release_drive,
-+};
-+
-+static const VMStateDescription vmstate_bbram_ctrl = {
-+    .name = TYPE_XLNX_BBRAM,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, XlnxBBRam, R_MAX),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static Property bbram_ctrl_props[] = {
-+    DEFINE_PROP("drive", XlnxBBRam, blk, bbram_prop_drive, BlockBackend *),
-+    DEFINE_PROP_UINT32("crc-zpads", XlnxBBRam, crc_zpads, 1),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void bbram_ctrl_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = bbram_ctrl_reset;
-+    dc->realize = bbram_ctrl_realize;
-+    dc->vmsd = &vmstate_bbram_ctrl;
-+    device_class_set_props(dc, bbram_ctrl_props);
-+}
-+
-+static const TypeInfo bbram_ctrl_info = {
-+    .name          = TYPE_XLNX_BBRAM,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(XlnxBBRam),
-+    .class_init    = bbram_ctrl_class_init,
-+    .instance_init = bbram_ctrl_init,
-+};
-+
-+static void bbram_ctrl_register_types(void)
-+{
-+    type_register_static(&bbram_ctrl_info);
-+}
-+
-+type_init(bbram_ctrl_register_types)
-diff --git a/include/hw/nvram/xlnx-bbram.h b/include/hw/nvram/xlnx-bbram.h
-new file mode 100644
-index 0000000000..87d59ef3c0
---- /dev/null
-+++ b/include/hw/nvram/xlnx-bbram.h
-@@ -0,0 +1,54 @@
-+/*
-+ * QEMU model of the Xilinx BBRAM Battery Backed RAM
-+ *
-+ * Copyright (c) 2015-2021 Xilinx Inc.
-+ *
-+ * Written by Edgar E. Iglesias <edgari@xilinx.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+#ifndef XLNX_BBRAM_H
-+#define XLNX_BBRAM_H
-+
-+#include "sysemu/block-backend.h"
-+#include "hw/qdev-core.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+
-+#define RMAX_XLNX_BBRAM ((0x4c / 4) + 1)
-+
-+#define TYPE_XLNX_BBRAM "xlnx,bbram-ctrl"
-+OBJECT_DECLARE_SIMPLE_TYPE(XlnxBBRam, XLNX_BBRAM);
-+
-+struct XlnxBBRam {
-+    SysBusDevice parent_obj;
-+    qemu_irq irq_bbram;
-+
++    DriveInfo *dinfo;
 +    BlockBackend *blk;
 +
-+    uint32_t crc_zpads;
-+    bool bbram8_wo;
-+    bool blk_ro;
++    dinfo = drive_get_by_index(IF_PFLASH, 1);
++    blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
++    if (blk) {
++        qdev_prop_set_drive(DEVICE(dev), "drive", blk);
++    }
++}
 +
-+    uint32_t regs[RMAX_XLNX_BBRAM];
-+    RegisterInfo regs_info[RMAX_XLNX_BBRAM];
-+};
+ static void sd_plugin_card(SDHCIState *sd, DriveInfo *di)
+ {
+     BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
+@@ -603,6 +650,8 @@ static void versal_virt_init(MachineState *machine)
+     fdt_add_sd_nodes(s);
+     fdt_add_rtc_node(s);
+     fdt_add_bbram_node(s);
++    fdt_add_efuse_ctrl_node(s);
++    fdt_add_efuse_cache_node(s);
+     fdt_add_cpu_nodes(s, psci_conduit);
+     fdt_add_clk_node(s, "/clk125", 125000000, s->phandle.clk_125Mhz);
+     fdt_add_clk_node(s, "/clk25", 25000000, s->phandle.clk_25Mhz);
+@@ -615,6 +664,9 @@ static void versal_virt_init(MachineState *machine)
+     /* Attach bbram backend, if given */
+     bbram_attach_drive(&s->soc.pmc.bbram);
+ 
++    /* Attach efuse backend, if given */
++    efuse_attach_drive(&s->soc.pmc.efuse);
 +
-+#endif
+     /* Plugin SD cards.  */
+     for (i = 0; i < ARRAY_SIZE(s->soc.pmc.iou.sd); i++) {
+         sd_plugin_card(&s->soc.pmc.iou.sd[i], drive_get_next(IF_SD));
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index 23451ae012..b2705b6925 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -331,6 +331,44 @@ static void versal_create_bbram(Versal *s, qemu_irq *pic)
+     sysbus_connect_irq(sbd, 0, pic[VERSAL_BBRAM_APB_IRQ_0]);
+ }
+ 
++static void versal_realize_efuse_part(Versal *s, Object *dev, hwaddr base)
++{
++    SysBusDevice *part = SYS_BUS_DEVICE(dev);
++
++    object_property_set_link(OBJECT(part), "efuse",
++                             OBJECT(&s->pmc.efuse), &error_abort);
++
++    sysbus_realize(part, &error_abort);
++    memory_region_add_subregion(&s->mr_ps, base,
++                                sysbus_mmio_get_region(part, 0));
++}
++
++static void versal_create_efuse(Versal *s, qemu_irq *pic)
++{
++    Object *bits = OBJECT(&s->pmc.efuse);
++    Object *ctrl = OBJECT(&s->pmc.efuse_ctrl);
++    Object *cache = OBJECT(&s->pmc.efuse_cache);
++
++    object_initialize_child(OBJECT(s), "efuse-ctrl", &s->pmc.efuse_ctrl,
++                            TYPE_XLNX_VERSAL_EFUSE_CTRL);
++
++    object_initialize_child(OBJECT(s), "efuse-cache", &s->pmc.efuse_cache,
++                            TYPE_XLNX_VERSAL_EFUSE_CACHE);
++
++    object_initialize_child_with_props(ctrl, "xlnx-efuse@0", bits,
++                                       sizeof(s->pmc.efuse),
++                                       TYPE_XLNX_EFUSE, &error_abort,
++                                       "efuse-nr", "3",
++                                       "efuse-size", "8192",
++                                       NULL);
++
++    qdev_realize(DEVICE(bits), NULL, &error_abort);
++    versal_realize_efuse_part(s, ctrl, MM_PMC_EFUSE_CTRL);
++    versal_realize_efuse_part(s, cache, MM_PMC_EFUSE_CACHE);
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(ctrl), 0, pic[VERSAL_EFUSE_IRQ]);
++}
++
+ /* This takes the board allocated linear DDR memory and creates aliases
+  * for each split DDR range/aperture on the Versal address map.
+  */
+@@ -420,6 +458,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
+     versal_create_rtc(s, pic);
+     versal_create_xrams(s, pic);
+     versal_create_bbram(s, pic);
++    versal_create_efuse(s, pic);
+     versal_map_ddr(s);
+     versal_unimp(s);
+ 
+diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+index 1cac613338..895ba12c61 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -25,6 +25,7 @@
+ #include "hw/usb/xlnx-usb-subsystem.h"
+ #include "hw/misc/xlnx-versal-xramc.h"
+ #include "hw/nvram/xlnx-bbram.h"
++#include "hw/nvram/xlnx-versal-efuse.h"
+ 
+ #define TYPE_XLNX_VERSAL "xlnx-versal"
+ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
+@@ -81,6 +82,9 @@ struct Versal {
+ 
+         XlnxZynqMPRTC rtc;
+         XlnxBBRam bbram;
++        XlnxEFuse efuse;
++        XlnxVersalEFuseCtrl efuse_ctrl;
++        XlnxVersalEFuseCache efuse_cache;
+     } pmc;
+ 
+     struct {
+@@ -110,6 +114,7 @@ struct Versal {
+ #define VERSAL_BBRAM_APB_IRQ_0     121
+ #define VERSAL_RTC_APB_ERR_IRQ     121
+ #define VERSAL_SD0_IRQ_0           126
++#define VERSAL_EFUSE_IRQ           139
+ #define VERSAL_RTC_ALARM_IRQ       142
+ #define VERSAL_RTC_SECONDS_IRQ     143
+ 
+@@ -177,6 +182,11 @@ struct Versal {
+ #define MM_PMC_SD0_SIZE             0x10000
+ #define MM_PMC_BBRAM_CTRL           0xf11f0000
+ #define MM_PMC_BBRAM_CTRL_SIZE      0x00050
++#define MM_PMC_EFUSE_CTRL           0xf1240000
++#define MM_PMC_EFUSE_CTRL_SIZE      0x00104
++#define MM_PMC_EFUSE_CACHE          0xf1250000
++#define MM_PMC_EFUSE_CACHE_SIZE     0x00C00
++
+ #define MM_PMC_CRP                  0xf1260000U
+ #define MM_PMC_CRP_SIZE             0x10000
+ #define MM_PMC_RTC                  0xf12a0000
 -- 
 2.25.1
 

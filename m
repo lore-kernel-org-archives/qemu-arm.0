@@ -1,116 +1,123 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3626724lfp;
-        Tue, 21 Sep 2021 20:04:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyDMeiKyNZ0AoRdegVkWJ83OWwv+Fpf6HiJlB2XitK7N2mSAojhwlekyDP72885b2Lc6A+E
-X-Received: by 2002:adf:b348:: with SMTP id k8mr38869872wrd.123.1632279890787;
-        Tue, 21 Sep 2021 20:04:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632279890; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp222788lfp;
+        Fri, 17 Sep 2021 21:19:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjO+Divvo2AgwOn8GHLgZvAtlXcNarh4M4cKfLwVh7lNBGhBFyuXnq5IxfROMUgO0Nns3B
+X-Received: by 2002:a25:230e:: with SMTP id j14mr18427395ybj.516.1631938783798;
+        Fri, 17 Sep 2021 21:19:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631938783; cv=none;
         d=google.com; s=arc-20160816;
-        b=RcGSFhUI0DPqrYdhOuN4NnmkbnZt03kHg3kV7aP3wU7tdgvEEWJ+d3Pqs+MnAFaKiP
-         txyDb790eFEuDa44w5cSNRGAmNDv7cSM+qUWQQeYHF0IeczpqxFNEtFNLQDLRb3bR85a
-         rU9cLSVsWdXLJPiJJlFGU6vt22nx+fmeO+2e1Y4f43r2r9+rYFSsiJ6tRxkInMGO1Q2M
-         y1bRmge3jDUAtm9T8yCBj1veKTsgZx40Zriww9HulmHZLf/b8w5xiRNh7c6VQqW2PwV/
-         OYOYDLf/XParb5aXto1Af+LHMOH6s4RSTUmobZsfzNFtmFBal3CYXI3jR0yKs8/tXzE0
-         8o9A==
+        b=oSzyvrFvOEb8oZhXCVIVYCzOuE1hkL5VOA2yPHWXY2JLEN5elJku9uNetSLnhuAE6x
+         eLxSdbwlfRg3a/ZBbwHLx/MbsPLIRTCWAu8znFDA7+1oNo/SyorjctbhswGUgNO8zY9X
+         Kdwh7QmP3VQoSbg7w4aAnX6nETFr1j4zLM4Gwf7d+i5GSHu99SntWrsmwKJswJXfnkWN
+         QnPq8M9Yye6eYqvAT1WOYzvYGYYgqNGi0PYo6REPIYdDeG7QUOiY8BvBdnecwZE9CggW
+         FbADfp5Pw92vKf0VTBnchcBXfawOPBBngKjd7iR0heYuY63U1mBuaXYGkxdi6iwINqNA
+         ZBGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=9RrXmvYVWwjZWWFTWqfAImmx/l9eEEMuwuSGE48QpwI=;
-        b=IZjo2fWw68L/+sfrD1194WxgWuCS4saifTUIF9IXNKeZLHDq0yqvOjuJKSgRqru4um
-         IA6xv0ZAL+F+ug0/6XGHLVLB/Iq7wrzFL9akX3DkffJllhF2fSvVxNaA7jHEdjLtDhBt
-         oKQPiKmI0OL3xA066kgBPGS0GhEADVfodvXNrWT3IA2l41Ml3hSs+7MLSomCWe2wrWv2
-         UgnBPtfvvbopcAOroyyWrVOQSZbC73XYjP7EAj2UkB31fmI8/ROczZRNsKkvu+9061c3
-         fOyXn69ICgQbMHTeiPkjUjjyNe0nZr031vEgZCbXGtIuMwRfvkKsdZlxWIKv5F6DYlok
-         0fuQ==
+        bh=+2tKechx+ZhlpM/E2TOJyj4EGX8JY1a++laKGyyB928=;
+        b=cu+anB5OGJ8C8h7lNtJH3PaArHjs2HGZRDeKaseVYPSoYAE9PBLj3jCW4su8jX9Jvb
+         xxKlEQQczY1sjgPKG8zATVp/nZgs86YrzfLSlB3+YsKXxjnuycobSdmxbjfwURx1uYcF
+         +hXLDv/n/dDwxWmKl1KqMojFynoP/cVutmXpmZKeCtuhqzCYrFwBN5FTOcYe5fp3X4Kb
+         68wwMkHEqBiaOOT53OsrkZR8lRIAJ10CiouESZhn3N0ywRXpxNTwV0vE3GG8nK6AZJwI
+         5JTj7d5j04j/N6qEcapP5fEyIw/py/7Oh1y8FdPWlZer+DUK66JM8AP1KvbrRUfjbt/H
+         64mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xbQDp+R8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="M/SlhcW9";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si1270361wrd.392.2021.09.21.20.04.50
+        by mx.google.com with ESMTPS id u129si7832097yba.233.2021.09.17.21.19.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Sep 2021 20:04:50 -0700 (PDT)
+        Fri, 17 Sep 2021 21:19:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xbQDp+R8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51874 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="M/SlhcW9";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSsYz-0008JC-S6
-	for alex.bennee@linaro.org; Tue, 21 Sep 2021 23:04:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53018)
+	id 1mRRpH-0001li-7a
+	for alex.bennee@linaro.org; Sat, 18 Sep 2021 00:19:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mSsYh-0008J0-55
- for qemu-arm@nongnu.org; Tue, 21 Sep 2021 23:04:31 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:41620)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mRRp8-0001l8-0g; Sat, 18 Sep 2021 00:19:34 -0400
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331]:45823)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mSsYc-0002WC-F2
- for qemu-arm@nongnu.org; Tue, 21 Sep 2021 23:04:30 -0400
-Received: by mail-pf1-x433.google.com with SMTP id k17so1438323pff.8
- for <qemu-arm@nongnu.org>; Tue, 21 Sep 2021 20:04:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mRRp2-0002VO-ME; Sat, 18 Sep 2021 00:19:33 -0400
+Received: by mail-ot1-x331.google.com with SMTP id
+ l7-20020a0568302b0700b0051c0181deebso15592240otv.12; 
+ Fri, 17 Sep 2021 21:19:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9RrXmvYVWwjZWWFTWqfAImmx/l9eEEMuwuSGE48QpwI=;
- b=xbQDp+R8DEkfZAyS2BNeblzscUAeXRqgRM1KEIcLwQoNPSmBQdkuH6nLpHfesIeuGl
- gHdqgyw484gKvonrkE9fitnhYfCjHT0FSasYPQO5l3zHq16D6eguQFN1hW+UuBS6NyIN
- mYcF59+/qmbyycX4JD/olvHUkXxNhMQm5tm5PZKByyW3LNnJ3JUVlBooMII0UMAOxOxM
- aliL62fB/ZPqB6phLeDkjtSNeZWHuLSuRujODDsQUalUlE6bwbXt3/lYFQAhARDKJ+H2
- 3AEC5JzRu8hJy2gNgmo2iUSHvRojcu9PJ8xW5lp/z3Z0GD7BHVbQV1DKqzyfj1G5g4jG
- XzzA==
+ bh=+2tKechx+ZhlpM/E2TOJyj4EGX8JY1a++laKGyyB928=;
+ b=M/SlhcW9v1h0ukggcu96RxQWBj4FmW50VbCb4H63uHjkg7ITk4Ad3FhucRGtRWQwuD
+ rLxt78l9Vp594HQdrbqdN4XFr57USaJ9L+A1DFgchabhwRC12yZ1jWtnueqoW/KSz2F0
+ ulereToJUSnvAzobONLoC0oLrgc7Nq2h3AfpY94s+x/2jjjia5RbqTNnGEXmG0PRJcS5
+ yFuVb8rlhFdWDy8F9HQsVOn853d2zW7w/m/Ml/5huWKKWb/4gGcyw7pUMAhz8sfBqeK1
+ Yu3I6BrK6M1bNC7/eoCQPX6KZ7Es+ZVrdN9eMzEgzadUmOBDf8TJ9bR2kifcWDichkqg
+ trcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=9RrXmvYVWwjZWWFTWqfAImmx/l9eEEMuwuSGE48QpwI=;
- b=KCKRq16kYoxColBcPlxulNboCeE68SWLL51+LXpVHPB7iXR9nh2DCiLuxwvaLCFGVU
- +vxs1IGc+DJgucDTwf3Mcsl8LeveHYYJpMTNWxBE8I1ZUmMw+dW8eBcYw5gJyo6qK1Iz
- EJ4RCdOrJmIFcAptiWt78ig25rJs3uTnpVC9k6AUgonwfaFKfCsoH6Ei1k3ZbLyC01sH
- UeHKGkvtaeZ7XaCtRZfVe2o67vZRUI84F2Y3LwbWUuk9MWbubIRqP6pUWCTqXOpj4vY9
- WljfuWL1v6ZBNBvXFo/kHY6yMMEQjLPSHkneW2ycTSvUbUrif3OL+JANhSVisCcSgCXz
- /8nw==
-X-Gm-Message-State: AOAM533apeGwKZ8kRQ4WGj2SMOvcKCf6p9xnVsOEKHqAiorwAfeiBnn/
- nD6mV2jdOP3Jl7CnFUdvbw00LQ==
-X-Received: by 2002:a62:ce0d:0:b0:438:71f1:4442 with SMTP id
- y13-20020a62ce0d000000b0043871f14442mr34059616pfg.21.1632279863719; 
- Tue, 21 Sep 2021 20:04:23 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.134.125])
- by smtp.gmail.com with ESMTPSA id w8sm471249pfc.93.2021.09.21.20.04.23
+ bh=+2tKechx+ZhlpM/E2TOJyj4EGX8JY1a++laKGyyB928=;
+ b=lgql9dEg16uD4t4g87YquDic3cSuGJTB6zcRHhlFCjfvIuJF9t4e9HlKgrMsyxJGok
+ 0S7sGN+lyz2LK2suwlCQpmQmPdYXKEBKMEcS6bU2uGfF5BmopZwqyIKubPtW/N1QBwAo
+ JkXIyq/chZPj+CSv+ShZgvEPEsjnhQEoGZoL5cST9eprsy3sIVto3uuYSV1Zii0/tZlK
+ 1r1y8h7VMMSZyCMBSUy5jLQ/K+nJlQHF2svUeO3GWdTbjfxFSWKBRkBm98c3YII9qiIu
+ YzxNcY4SBxY8LKV4mFBg/KSQ/gBPDkpj6/mi8dVvuTFeSfGAk8ieGA8lP2dxvTPVeaix
+ RH5w==
+X-Gm-Message-State: AOAM531nxp6MVvW6i5Cue409fbe3tNXxlBev2GKVrMSEnHFGu2dQ4er3
+ xyf5Fkk4ZqHjPpG1/RNcMwk=
+X-Received: by 2002:a9d:7019:: with SMTP id k25mr12654218otj.350.1631938766677; 
+ Fri, 17 Sep 2021 21:19:26 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ g2sm1815211otp.7.2021.09.17.21.19.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Sep 2021 20:04:23 -0700 (PDT)
-Subject: Re: [PATCH 1/5] configs: Don't include 32-bit-only GDB XML in aarch64
- linux configs
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210921162901.17508-1-peter.maydell@linaro.org>
- <20210921162901.17508-2-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a70b4d62-8493-479b-f0db-f39b112096c3@linaro.org>
-Date: Tue, 21 Sep 2021 20:04:21 -0700
+ Fri, 17 Sep 2021 21:19:25 -0700 (PDT)
+Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
+To: "Cheng, Xuzhou" <Xuzhou.Cheng@windriver.com>
+References: <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
+ <b5e43e87-c1bd-3265-298e-346413a22a82@roeck-us.net>
+ <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
+ <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
+ <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
+ <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
+ <CAEUhbmVfFRdbtu7yWUauO6sd0QNhoH6tuTAFA2PMxZp5P7+awA@mail.gmail.com>
+ <PH0PR11MB5205AE78D6C5DFFFA767183B97D49@PH0PR11MB5205.namprd11.prod.outlook.com>
+ <8b86d434-a2e6-8122-0a88-dc9a15fbfe87@roeck-us.net>
+ <PH0PR11MB5205684F9CDEC890187D09D997DC9@PH0PR11MB5205.namprd11.prod.outlook.com>
+ <20210916142140.GA252836@roeck-us.net>
+ <PH0PR11MB52058E0462672E61797758B997DE9@PH0PR11MB5205.namprd11.prod.outlook.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <2cd83a88-952c-6f86-74b2-8c0da3ce4394@roeck-us.net>
+Date: Fri, 17 Sep 2021 21:19:23 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210921162901.17508-2-peter.maydell@linaro.org>
+In-Reply-To: <PH0PR11MB52058E0462672E61797758B997DE9@PH0PR11MB5205.namprd11.prod.outlook.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2607:f8b0:4864:20::331;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x331.google.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.488,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,24 +130,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Luis Machado <luis.machado@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Bin Meng <bmeng.cn@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: feg/eDlYRv3U
+X-TUID: AQWv1zvFT9MM
 
-On 9/21/21 9:28 AM, Peter Maydell wrote:
-> The aarch64-linux QEMU usermode binaries can never run 32-bit
-> code, so they do not need to include the GDB XML for it.
-> (arm_cpu_register_gdb_regs_for_features() will not use these
-> XML files if the CPU has ARM_FEATURE_AARCH64, so we will not
-> advertise to gdb that we have them.)
+On 9/17/21 8:09 PM, Cheng, Xuzhou wrote:
+>>> I got some free time in the past days to investigate this issue. Guenter is right, the Linux imx-spi driver does not work on QEMU.
+>>>
+>>> The reason is that the state of m25p80 machine loops in STATE_READING_DATA state after receiving RDSR command, the new command is ignored. Before sending a new command, the CS line should be pulled to high, this make the state of m25p80 back to IDLE.
+>>>
+>>> I have same point with Guenter, it's that set CS to 1 when burst is zero. But i don't think it is necessary to set CS to 0 in imx_spi_flush_txfifo(). I will send a new patch to fix this issue.
+>>>
+>>
+>> Thanks a lot for looking into this. If you have a better solution than mine, by all means, please go for it. As I mentioned in my patch, I didn't really like it, but I was unable to find a better solution.
+> I am doing some experiment to verify that the new patch is reasonable, so the new patch will be delayed few days.
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   configs/targets/aarch64-linux-user.mak    | 2 +-
->   configs/targets/aarch64_be-linux-user.mak | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+No problem. Note that I'll be traveling for the next 2-3 weeks, and I won't be able
+to test any patches during that time.
 
-r~
+Guenter

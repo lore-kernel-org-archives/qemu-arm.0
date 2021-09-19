@@ -1,80 +1,114 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1348319lfp;
-        Thu, 16 Sep 2021 10:47:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJybFENCAEdz5JRKvPd7CCXRxVnY3zQTI6OoqrA18AS+aU6JSS3ochuWaK83voZS6e3JIT13
-X-Received: by 2002:a67:3296:: with SMTP id y144mr3957616vsy.27.1631814469394;
-        Thu, 16 Sep 2021 10:47:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1631814469; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1571537lfp;
+        Sun, 19 Sep 2021 15:23:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbgKT3BHvw3K/znqoQsjZU6Ms5/g/ZPULuIssPnvXn8ZnWK57h3dTKI85KF85qb8aTEO0f
+X-Received: by 2002:ac8:7f12:: with SMTP id f18mr20639254qtk.258.1632090214577;
+        Sun, 19 Sep 2021 15:23:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632090214; cv=none;
         d=google.com; s=arc-20160816;
-        b=GMHanMxDI6DW3cWkZSz6q11pFdj7sKnA+UJtjkah9kzWYvhTkq6uThtOac2rXxOXcV
-         ktGGM5D+aLMFZ0GLUoxXjQEvMuav1kX92Bv/SF7wbfzIeMyxN8hADHaTfMRQQn9Nr2NY
-         ocBcDOyLjg5POkfs3wGqXBPR4XQYdQgjp3twG5rpyVHtFoWjOm2zq09ad1g1qkptNwt6
-         P2DHlcSlLNyV2qQxkMueAgLJ2lkYKWuFvQc8VguSFA8Z83uANdWVKtydJLrsBbxi0d+O
-         5t7xCD7I5QjBk53hu6ipzB9kHXUUYWEt7Jmt3DphcoZ+HYasmdcwfA2fHeLDnkRi8wGb
-         jkHA==
+        b=KBbDMcb7EzArv4Sf4yNDgDUqcDE9X+SW44vi5vWKJ+125YGT48BgqYo90uzZN4tnWh
+         lbbAdLVWuNybAxTSROA1KO95X+U4FoUtaGiA0tMuwb+1FkL7IPEuzoM6zZ7c86bZ959T
+         3fBYFIiCSvFANZvZvuvS+1R5nBPIzHfE8SadU2f1z6lIQAcwQlUn/mvZkXC6mPD9u4fx
+         mEBUUFbKCeY8U2ssfTtESU1FFmpBdhMyFPd9EP7mfbeadxPIT3IaSSAt+u3nX/9oHP+Z
+         ThxeDLR77Kp3bSbTDaudfSWFS6RLwwzURdhI0HPwa64hKPjbZMTecNGqSwy+AxGDlQED
+         fCRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=VHQrvRyJmjwEBDT5YfanCBy7ab2WbjnNrdWUje8c360=;
-        b=0xgvrLydSnamZXOQeCCL01Zb41IkXIocXozsRYAucDeFynazH9MXRhENxrNwW27NW6
-         oNsOkrb+MufVieKmoXio33yNtMtL012p6l8xohxAjGmifgcZQx9VUSBZa8M4F2ZYr73D
-         PYr0Kh2xy/BW4/qIxq1rgUAtlblJDKby63rlezRA1DDA3vHycqD+KWpVKYjbK0iWhWkT
-         rMyiyXMkqltFc8xR140n07iXwDj1uw3tCrBICGQ45dt+jM8wnLWO+AbMPlOpcNayUu1G
-         0SjLGqEaVGf9uQss8/vgP/ZJuw5yD3VXC0oCbg/RCcaIUavgAIWhtjrEdHpiT0AcoWu4
-         ohnQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=nA4szRw8XawE9C3V6GRhMA0rrZGOp+NAQpOeeyLaO5E=;
+        b=vGsA94Qa6BR3PC8igxdkkIsYo1Usfe3AAxHEDSxm4J2IbaRg8BJmjaOlo+l7Rgsw2+
+         UICSrdeLS3G9WRVAyGgYdDNovXiAzdnE1/aGn59cT3DE5GRvLL9/4mCTmf6KJszo20BW
+         5a9ZCXLD2xq4s0gm/ykgu9Mexed7Yvxk2wB9yju1x0+ROjt240n2zOH6M3cN1XQUoc/g
+         LxY8as0UpScFdmsyfAPCMFCvPg5YJYG7vE4dSTZWS0ozQ/K93KzCN47ndYmlqwdzvKK6
+         CBHUjvmf53w42019mQgaVjQEa5Jrxca+TO9HLdBzlPdLVZOV/9Ws5r0v1HehinFHmk3g
+         R73w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=xUx8YaMC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p2si1679135vsn.414.2021.09.16.10.47.49
+        by mx.google.com with ESMTPS id f5si4925756qkp.176.2021.09.19.15.23.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Sep 2021 10:47:49 -0700 (PDT)
+        Sun, 19 Sep 2021 15:23:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45876 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=xUx8YaMC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mQvUC-0006wd-Qs
-	for alex.bennee@linaro.org; Thu, 16 Sep 2021 13:47:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44284)
+	id 1mS5Di-0002Wo-1N
+	for alex.bennee@linaro.org; Sun, 19 Sep 2021 18:23:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mQvTo-0006tw-7t; Thu, 16 Sep 2021 13:47:24 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:51466 helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1mQvTY-0000kv-3x; Thu, 16 Sep 2021 13:47:22 -0400
-Received: from MacBook-Air.alex.local
- (dynamic-077-009-016-098.77.9.pool.telefonica.de [77.9.16.98])
- by csgraf.de (Postfix) with ESMTPSA id 63E5860805C8;
- Thu, 16 Sep 2021 19:47:04 +0200 (CEST)
-Subject: Re: [PATCH v11 06/10] hvf: arm: Implement -cpu host
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mS5DP-0002Wd-Uu
+ for qemu-arm@nongnu.org; Sun, 19 Sep 2021 18:23:15 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:42595)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mS5DO-0008Mj-Dp
+ for qemu-arm@nongnu.org; Sun, 19 Sep 2021 18:23:15 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id q23so12353785pfs.9
+ for <qemu-arm@nongnu.org>; Sun, 19 Sep 2021 15:23:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=nA4szRw8XawE9C3V6GRhMA0rrZGOp+NAQpOeeyLaO5E=;
+ b=xUx8YaMCTpf8BSwP/bhzu+58UrlRcbp+PodSZLBBx2HQxH/9EP1TQkT4LngOIwy+Hv
+ ckdZordqr0lxpXucszzUfzcCGhRITUdXLrR78qOIR5Tl26CKXRrTkrUPRvyXu3D8SsJg
+ YCRQgj5h7/3cLE1LffJHxIz/bETZXl0PcNBI/HfF1UbOYHIKkfqLKYcYL/jMYsW36iOn
+ 52UDZ8BIbTY/YeoDnGu6Q0/A+IIx1lrUi4lRPvTSlXuRfsFD6qNVHlqItV3fAOpBPph2
+ IOd1MiMuQTzEFoDh9wMMNprCvRM4OgP19MAfXxfe6SOQ7LOQrqbagr1/VckmbVkB4deT
+ Eepw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nA4szRw8XawE9C3V6GRhMA0rrZGOp+NAQpOeeyLaO5E=;
+ b=aplut9hFaM/Zgb2kH+VmN3odObu7PxnMq2Eigwugz1ATgvIO9y0eUAMEbSKb4wDtdn
+ i3ae+OjHMLOjgNC/iBSXW0IZz8oPyrj3oMBMQpjfh2VhzBqraNQWe7YrSmw4Z7riEThn
+ RJxOs3itDzDTxrl/WckrE7fnj7wbRx87mfTlcStGuZDZm6pNmZPfGkgKz6Jlg1BH9DTT
+ X2JkZS23S3xoOON+O8FzmugYoalhDqh9c6ukGmyRknGbEi+NSwP44KysPj0A1PtTotqG
+ uINGDoXHEviGkHvprR0B09SCdX+ObFOkoqyBR8f6RNho92U7FYalto3+5g25x3CqZXa+
+ fpMg==
+X-Gm-Message-State: AOAM532PXQwbPOh8qRvNuJqZWKVJyobk8RZgaJl72CsWqq1RWEbRuYpi
+ kqvyuSA13piYuONYceFq4d2uiVirTS0CLw==
+X-Received: by 2002:a63:741b:: with SMTP id p27mr20859143pgc.140.1632090191861; 
+ Sun, 19 Sep 2021 15:23:11 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.134.125])
+ by smtp.gmail.com with ESMTPSA id t68sm13023463pgc.59.2021.09.19.15.23.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 19 Sep 2021 15:23:11 -0700 (PDT)
+Subject: Re: [PATCH v2 4/8] linux-user/arm: Report SIGBUS and SIGSEGV correctly
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210915181049.27597-1-agraf@csgraf.de>
- <20210915181049.27597-7-agraf@csgraf.de>
- <CAFEAcA9JZZ4nb8WAvKVYpwqxb_E5NFOVW9rKF3u7GhFqfNZgOQ@mail.gmail.com>
- <8e219cb0-8b65-faf8-f636-5c1d24471f84@csgraf.de>
- <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <bf2bb705-1d54-13f9-6e49-158f672cd32e@csgraf.de>
-Date: Thu, 16 Sep 2021 19:47:03 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.14.0
+References: <20210821195958.41312-1-richard.henderson@linaro.org>
+ <20210821195958.41312-5-richard.henderson@linaro.org>
+ <CAFEAcA82iZptWmCcgonZvLTU4g+5nnEEQDdtHD5y=X7m82N1Yg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <4a65af02-ae19-20c5-9ffa-3e3a7d0401d4@linaro.org>
+Date: Sun, 19 Sep 2021 15:23:09 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <CAFEAcA82iZptWmCcgonZvLTU4g+5nnEEQDdtHD5y=X7m82N1Yg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.488,
- SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,50 +121,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Peter Collingbourne <pcc@google.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Ard Biesheuvel <ardb@kernel.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uxToB2lZ8cvJ
+X-TUID: 0VPdpfzYGjUT
+
+On 8/26/21 6:31 AM, Peter Maydell wrote:
+>> +                si_signo = TARGET_SIGSEGV;
+>> +                si_code = TARGET_SEGV_ACCERR;
+>> +                break;
+>> +            case 0x5: /* Translation fault, level 1 */
+>> +            case 0x7: /* Translation fault, level 2 */
+>> +                si_signo = TARGET_SIGSEGV;
+>> +                si_code = TARGET_SEGV_MAPERR;
+>> +                break;
+> 
+> Side note: for cases like this where we can tell MAPERR from
+> ACCERR based on info the exception handler passes to us, should
+> we prefer that or the "check the page flags" approach that
+> force_sigsegv_for_addr() takes ?
+
+FYI, the v3 version of the sigsegv+siginfo patch set makes is vastly easier on the target 
+code.  For the most part the target code goes away entirely.  For the specific case of Arm 
+(both a32 and a64), we retain it because we are supposed to report the ESR and FAR as part 
+of the signal frame.
+
+I'll note that a64 isn't filling in the esr_context and far_context structures.  The 
+latter was invented for MTE, I believe, where the normal si_addr is untagged.  I should 
+have a double-check around those at some point...
 
 
-On 16.09.21 17:55, Peter Maydell wrote:
-> On Thu, 16 Sept 2021 at 16:30, Alexander Graf <agraf@csgraf.de> wrote:
->>
->> On 16.09.21 14:24, Peter Maydell wrote:
->>> On Wed, 15 Sept 2021 at 19:10, Alexander Graf <agraf@csgraf.de> wrote:
->>>> Now that we have working system register sync, we push more target CPU
->>>> properties into the virtual machine. That might be useful in some
->>>> situations, but is not the typical case that users want.
->>>>
->>>> So let's add a -cpu host option that allows them to explicitly pass all
->>>> CPU capabilities of their host CPU into the guest.
->>>>
->>>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
->>>> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
->>>> Reviewed-by: Sergio Lopez <slp@redhat.com>
->>>>
->>>> +    /*
->>>> +     * A scratch vCPU returns SCTLR 0, so let's fill our default with the M1
->>>> +     * boot SCTLR from https://github.com/AsahiLinux/m1n1/issues/97
-> Side note: SCTLR_EL1 is a 64-bit register, do you have anything that
-> prints the full 64-bits to confirm that [63:32] are indeed all 0?
-
-
-Yes, m1n1 prints the full 64bit value:
-https://github.com/AsahiLinux/m1n1/blob/main/src/memory.c#L459
-
-That said, I'm not sure we really have to model the guest's reset SCTLR
-in EL1 to be identical to the host's reset SCTLR in EL2. I think it's a
-great start, but as long as there is no spec that indicates what SCTLR
-should be in EL1, we can make our own rules IMHO.
-
-
-Alex
-
+r~

@@ -1,221 +1,216 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1873437lfp;
-        Mon, 20 Sep 2021 01:39:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRJndLyrPc+Jnuc3G3Kjx1tRcCZMqTWjvd4lViDoba2/ovZy0Em238msZ5Ru9t76PEwzA1
-X-Received: by 2002:a6b:6918:: with SMTP id e24mr17592014ioc.71.1632127194943;
-        Mon, 20 Sep 2021 01:39:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632127194; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2007298lfp;
+        Mon, 20 Sep 2021 05:06:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwGtqiNvUjPl9W13uCWo/KbAXS/BEPaZPgFqtGlOYrQ1b9Aoddxxe8TJUBdx9J2W/bzf56U
+X-Received: by 2002:a5d:5903:: with SMTP id v3mr27729659wrd.232.1632139590444;
+        Mon, 20 Sep 2021 05:06:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632139590; cv=none;
         d=google.com; s=arc-20160816;
-        b=YFkFzWPfsV0cHVRK6/Iw4r1m2cJoMy4Ttdfz+zCx1oA0vGgm1QLPUnVUkLIhy8RfPd
-         7eKjcl187/udBwVLa/5SqnQakQept5CXA34F7ieQtyXoEcadMxnu0WHJTUHjnbhYNG6O
-         2hvgRAyGDJM+NK7W3YpISZ5RH+WC+W048T9aJ0ArBC5zONd1rE57TdOt+lLEahsKmY1C
-         5hS8f2pcIQD/b+48grsFK4PBFNS9cNsgaAXVSnG34sr7Zm8C8QodsAkZwQJ+p9DUuI+J
-         JGAL9k3F6wqEliKC0CfncOmK/4/9PfuFzyzbsdDohMqoc3qkX3XjsPXdtRfpGqG+uhdj
-         7WPA==
+        b=DWze+abTMkbheGCjFSigMbmCGK+8vTBYV5ih0/OY2gTMAGvPjJ6Zpdo34MYG3zg1Wf
+         hXHKhemM9+7lnCQhr8FseHRHESlIcwDDVgtuVkYVPTOyYZv2p+gFWk55/mcwoJ1mL8rB
+         ZKZZG14AeMx03HrNvysLygTUuMJZefZ/jQKU7Is7Es3XifRoP0BSON1PZkAu9+oxMo4A
+         8mlmSxj53ghuPe7sjxrMLMBtcigyyMk5cX0fN8qlEJtWns/3UKg/XpRwknK3VH2ygRI/
+         DyGylEQq+1HhcSP8GZLdcHx+bY984t2u3sO+i/w/GJdo/XlXfQ9TkpZkv4ipn2IjC2Au
+         pDLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=LLW8feb35vQkeFSkgOZH7oZVlvYkZWbF7TR5s1LFyI4=;
-        b=tYE4Wk8HrLiwcsoBDcFehYZio22+PN7qZw2rA+LZx9RrWHga/lOiLbtpmt9XqoMJM8
-         BX67kA2LXLpEhSDW+LErj1R/KnCpmVvToOPaCbGjZN7jPz3xIeUhB6HidbveHcfATB3z
-         qMnzW6Oc6Mn5+uiVt4Cy/X3LkxT/VCY4tL/bqCoX2fBitB5Y09PuB3afTUbvrcVCTnhS
-         ZromjhR6EBV29cJ0pY7GnYY9N9AHfpgCVDQHnnhv32Dgk2VT1f1rn+N924URUpGho/43
-         bKzgOp0N3NASU/hD3cZ2IXfZhfrRe9Mq+fQLtcJh9V4l0YlqS3FtjO+NVRaRPxjXPx/0
-         nLhQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=VGPzl9JjjjTHU8rnsMGGx1iSbsOVjQRNwJpUu+yrb1U=;
+        b=CWReXDxIm4ePQevGGtwYdVn5agc5FsVFhun1RoXUeCRrqJk6CdbZ/0z9xTnhiU++gD
+         jRpkOB6VN4RATrH57tWUu0YwrpEGqz12RWF6YAIapTDX40W7Ud51LXo26ZluCq66FZsj
+         +BGZbMHUgjHd7n2rDu1P/5AKppsG07uo4YqVoLW2e38mIInwHgxgs4AWvjlus5xnU8tH
+         iE/RvXFe7ZP+Mt0KFLhRaX0k90XeeFs6h8FjiPaoW1VJl3C3TicnxaZF0IrXbEqbKoJa
+         bWE1IuDtmqywJ3Yf15urTh2zImXfrbE5eqIWZ73qwFkJst1oPvKcg3vAZ1OYA7Uf8oTg
+         pd9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VuesLYhk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T88RDE9y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si11761875ilv.155.2021.09.20.01.39.54
+        by mx.google.com with ESMTPS id j19si8039878wmp.120.2021.09.20.05.06.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 01:39:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Sep 2021 05:06:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VuesLYhk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T88RDE9y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56694 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60540 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSEqA-0002Rw-8h
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:39:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54750)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mSI45-0001Wo-Dc
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 08:06:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mSEq0-0002Op-7v
- for qemu-arm@nongnu.org; Mon, 20 Sep 2021 04:39:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44092)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mSI0U-0007m6-Kx
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 08:02:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:20565)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mSEpy-0003cz-Cg
- for qemu-arm@nongnu.org; Mon, 20 Sep 2021 04:39:43 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mSI0O-0000J9-8K
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 08:02:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632127181;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1632139359;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LLW8feb35vQkeFSkgOZH7oZVlvYkZWbF7TR5s1LFyI4=;
- b=VuesLYhkavpTHzYf0uGYYd/c/tv4SA+nCYgk7H5NJRm/OYuKdywqqPdmCwI+c0LR5a7id9
- HAWFa86ShS7ZwBHILb8GUe/oWgc49ZLhx7tdYQxpfT6M8sF4Xn+M/hjkvhI2mB1DQUF2rY
- M2jeIsxhv1cIa13mcHFKASnhGMfKU9s=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-476-f8OLExK8N0KsKghaNfG8Xw-1; Mon, 20 Sep 2021 04:39:39 -0400
-X-MC-Unique: f8OLExK8N0KsKghaNfG8Xw-1
-Received: by mail-ed1-f69.google.com with SMTP id
- b7-20020a50e787000000b003d59cb1a923so14042391edn.5
- for <qemu-arm@nongnu.org>; Mon, 20 Sep 2021 01:39:39 -0700 (PDT)
+ bh=VGPzl9JjjjTHU8rnsMGGx1iSbsOVjQRNwJpUu+yrb1U=;
+ b=T88RDE9y/N0Ydq+QJQZy/bcp9f0DFUu3fqXkb3b12EnzIX7SPu5YwokEICe/rNg0rJth1z
+ jZGhDAQqovn7kQs3em0e8u7Qol/Ec9VaL5wajdWXZSZAPuEQ/N/nxxLfscyXCh9FSfX5Xm
+ kPm1vFRwCwVs0t+ejgUh3T+rOmZzV+I=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-312-tUbkC7QSMe-0xABYZHPP7Q-1; Mon, 20 Sep 2021 08:02:38 -0400
+X-MC-Unique: tUbkC7QSMe-0xABYZHPP7Q-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ i4-20020a5d5224000000b0015b14db14deso5864703wra.23
+ for <qemu-devel@nongnu.org>; Mon, 20 Sep 2021 05:02:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LLW8feb35vQkeFSkgOZH7oZVlvYkZWbF7TR5s1LFyI4=;
- b=xc8qwKUc+T+fR8StHX9Y1HugI4Qru2vuQ+VC1L8HXZ88bXefbu6kqgtf8WynVd9FeG
- eb5yMsVrHPIz6hhOly95nZCFD0pAInm+UoiAXk2EgXBQ51Cb83mUYvSqbbcLMzEfP9TR
- PbmtUZ3MNdqm9U5WvyuiZUkyWxyiK2ojHFRQNnK991S7S+HMxXngvZD+XTQ7TSDMZR+z
- FgFwbBdS7kRypzX0o1eE4vTWz+eGBsKhy/Ad4/lZKW7J2MhOUENrGc/dlVDGta8iIB12
- +XCBMt8TTla0fDah1Bd5O3/jinyzTdv7lxkL90fWwLHQrjor5ZkFBBBf8RZB0Krpjk4C
- STSw==
-X-Gm-Message-State: AOAM530gjw0Le4hKNqgXRscuZ1Aj9lhLvoO5xY54eerBg9b4NXWuLmTp
- UNbIOPGQECJLOBxtVk9gdqdU3bow0rNTAaL53JH1EcUnHRlEf6q1KViUhkMQ49oVLdLpNPUFA9N
- uQN+CBsA5UdHJ
-X-Received: by 2002:a17:906:27c9:: with SMTP id
- k9mr27852137ejc.124.1632127178377; 
- Mon, 20 Sep 2021 01:39:38 -0700 (PDT)
-X-Received: by 2002:a17:906:27c9:: with SMTP id
- k9mr27852117ejc.124.1632127178188; 
- Mon, 20 Sep 2021 01:39:38 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id v25sm5791969eja.83.2021.09.20.01.39.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Sep 2021 01:39:37 -0700 (PDT)
-Date: Mon, 20 Sep 2021 10:39:36 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: Re: [PATCH v3 07/10] tests/acpi: add test cases for VIOT
-Message-ID: <20210920103936.2cc94969@redhat.com>
-In-Reply-To: <20210914142004.2433568-8-jean-philippe@linaro.org>
-References: <20210914142004.2433568-1-jean-philippe@linaro.org>
- <20210914142004.2433568-8-jean-philippe@linaro.org>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ h=x-gm-message-state:reply-to:subject:to:cc:references:from
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-transfer-encoding:content-language;
+ bh=VGPzl9JjjjTHU8rnsMGGx1iSbsOVjQRNwJpUu+yrb1U=;
+ b=nqOe9N26fk54aqUWFeuRuF9G1KBuYkLZLcHJJ1MEkf5n5AyATu3ExT22DFC+p3FMLN
+ lSAZGc9wyCo824fUyoaINbc7YYD+iC85s35vQgK6Uuk6ZeCZH+OMG2T/dHmEm9bdAdbs
+ PoetUPDEYXe3JDixT8+odCYfBkheqngKMQj+UYiQffuiMsEPYpRL7cNl/OEPPo0L4pVn
+ C9vDKsg3qXssno2HhgzoX2L5LECgfM9zjM234uIfQ5GAaSxv7THS+Z/6aLjKOYoXM9j1
+ kgoVGF/UYXNTu+erGa8o0PppLUWHS60cJIGq40/cG6jiSGwod5CiA7kjjtXq2FDp7aWn
+ 0tPA==
+X-Gm-Message-State: AOAM531a3nBXrgwui8DeaVn/yWVSz2YAldEuVFwthtVC8YGqxRwKq7D6
+ Y+fcVex90yEigP5BsJpeB4rQrDvwHfRNc0J5h/iEr+aVQZe+KdwgGpTSR3m0MpJ+MSzxvQUaO13
+ UiAXt+8VGz4FQ1aI=
+X-Received: by 2002:a5d:4d02:: with SMTP id z2mr28578496wrt.8.1632139356895;
+ Mon, 20 Sep 2021 05:02:36 -0700 (PDT)
+X-Received: by 2002:a5d:4d02:: with SMTP id z2mr28578455wrt.8.1632139356559;
+ Mon, 20 Sep 2021 05:02:36 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id j27sm13945736wms.6.2021.09.20.05.02.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Sep 2021 05:02:35 -0700 (PDT)
+Subject: Re: [PATCH] hw/rtc/pl031: Send RTC_CHANGE QMP event
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210909122402.127977-1-eric.auger@redhat.com>
+ <CAFEAcA9gs4of2tw77YfYNjYKjoeBAHy0SknkCFNuZprGa-203Q@mail.gmail.com>
+ <f6aa5469-3ef4-bda1-51bd-d0eec5bf9fed@redhat.com>
+ <CAFEAcA8UQ3t+Zbo_qiM5uEEgJ3D-4OPGp4GXRPyVyWSd5x1+TA@mail.gmail.com>
+From: Eric Auger <eric.auger@redhat.com>
+Message-ID: <646c0216-01f2-55e8-ffb0-25b1f25a1f34@redhat.com>
+Date: Mon, 20 Sep 2021 14:02:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8UQ3t+Zbo_qiM5uEEgJ3D-4OPGp4GXRPyVyWSd5x1+TA@mail.gmail.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -42
 X-Spam_score: -4.3
 X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.475,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
- mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- eric.auger@redhat.com, qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com,
- ani@anisinha.ca, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c7pdJk1XmUhT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Cc: Andrew Jones <drjones@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UftcaDGMfrAt
 
-On Tue, 14 Sep 2021 15:20:02 +0100
-Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
+Hi Peter,
 
-> Add two test cases for VIOT, one on the q35 machine and the other on
-> virt. To test complex topologies the q35 test has two PCIe buses that
-> bypass the IOMMU (and are therefore not described by VIOT), and two
-> buses that are translated by virtio-iommu.
-> 
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
->  tests/qtest/bios-tables-test.c | 39 ++++++++++++++++++++++++++++++++++
->  1 file changed, 39 insertions(+)
-> 
-> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-> index 4f11d03055..f8bfe2f247 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -1403,6 +1403,43 @@ static void test_acpi_virt_tcg(void)
->      free_test_data(&data);
->  }
->  
-> +static void test_acpi_q35_viot(void)
-> +{
-> +    test_data data = {
-> +        .machine = MACHINE_Q35,
-> +        .variant = ".viot",
+On 9/16/21 8:24 PM, Peter Maydell wrote:
+> On Thu, 16 Sept 2021 at 18:19, Eric Auger <eric.auger@redhat.com> wrote:
+>> Hi Peter,
+>> On 9/16/21 3:32 PM, Peter Maydell wrote:
+>>> None of the other users of qapi_event_send_rtc_change()
+>>> seem to have to track the baseline time like this. Shouldn't
+>>> this be doing something involving using qemu_ref_timedate()
+>>> as the baseline that it uses to figure out the change value ?
+>>> (The other users do this via qemu_timedate_diff() but since we
+>>> start with a value-in-seconds we might want to expose some other
+>>> API in softmmu/rtc.c.)
+>> I struggled understanding the various kinds of clocks modeled in qemu
+>> and the PL031 implementation. Both devices calling
+>> qapi_event_send_rtc_change() seem to store the base rtc in their state
+>> (mc146818rtc.c cmos data or spapr_rtc tas_ld(args, )) and then
+>> effectivelly call qemu_timedate_diff() on this base rtc value. I did not
+>> figure to do the equivalent with the pl031. I will further investigate
+>> how I can mimic their implementation though.
+> mc146818rtc.c calls qapi_event_send_rtc_change() in rtc_set_time().
+> It looks to me like that is just "when the guest writes to an
+> RTC register such that the guest RTC time has changed, use
+> qemu_timedate_diff() to find out the delta between that and what
+> the softmmu/rtc.c clock has as its baseline time, and then pass
+> that delta in seconds to qapi_event_send_rtc_change()".
+> This RTC has a lot of separate day/month/year registers, so the
+> implementation's idea of "current guest RTC setting" is a
+> complicated thing that it fills in into a struct tm, and which
+> qemu_timedate_diff() then parses back out into a "seconds" value.
+>
+> spapr_rtc() is a hypercall implementation, so the guest passes it
+> a complete set of year/month/day/etc values all at once to set the time.
+>
+> pl031 is a lot simpler as it is essentially just a count of
+> time in seconds, which we set up as "seconds since the Unix epoch".
+> But the basic principle is the same: the device contains the state
+> that tells you what it thinks the guest RTC value is now, and the
+> value we want to pass qapi_event_send_rtc_change() is the
+> difference between that and the reference time kept in
+> softmmu/rtc.c.
+>
+> I think what you want is probably:
+>
+>     struct tm tm;
+>
+>     qemu_get_timedate(&tm, s->tick_offset);
+>     qapi_event_send_rtc_change(qemu_timedate_diff(&tm));
 
-> +        .blkdev = "virtio-blk,bus=pcie.0",
-why is this necessary?
+Thank you for the explanation. It works on my end and indeed looks
+similar to what other rtc do.
 
-> +    };
-> +
-> +    /*
-> +     * To keep things interesting, two buses bypass the IOMMU.
-> +     * VIOT should only describes the other two buses.
-> +     */
-> +    test_acpi_one("-machine default_bus_bypass_iommu=on "
-> +                  "-device virtio-iommu "
-> +                  "-device pxb-pcie,bus_nr=0x10,id=pcie.100,bus=pcie.0 "
-> +                  "-device pxb-pcie,bus_nr=0x20,id=pcie.200,bus=pcie.0,bypass_iommu=on "
-> +                  "-device pxb-pcie,bus_nr=0x30,id=pcie.300,bus=pcie.0",
-> +                  &data);
-> +    free_test_data(&data);
-> +}
-> +
-> +static void test_acpi_virt_viot(void)
-> +{
-> +    test_data data = {
-> +        .machine = "virt",
-> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-> +        .ram_start = 0x40000000ULL,
-> +        .scan_len = 128ULL * 1024 * 1024,
-> +    };
-> +
-> +    test_acpi_one("-cpu cortex-a57 "
-> +                  "-device virtio-iommu", &data);
-> +    free_test_data(&data);
-> +}
-> +
->  static void test_oem_fields(test_data *data)
->  {
->      int i;
-> @@ -1567,12 +1604,14 @@ int main(int argc, char *argv[])
->          if (strcmp(arch, "x86_64") == 0) {
->              qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
->          }
-> +        qtest_add_func("acpi/q35/viot", test_acpi_q35_viot);
->      } else if (strcmp(arch, "aarch64") == 0) {
->          qtest_add_func("acpi/virt", test_acpi_virt_tcg);
->          qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
->          qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
->          qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
->          qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt);
-> +        qtest_add_func("acpi/virt/viot", test_acpi_virt_viot);
->      }
->      ret = g_test_run();
->      boot_sector_cleanup(disk);
+I will respin accordingly adding your Sob.
+
+Thanks
+
+Eric
+>
+> But I'm not 100% sure. I also feel like this is doing a
+> roundtrip from seconds to struct tm to seconds again, which
+> seems a bit silly (but it might matter if the rtc is configured
+> to 'localtime'? At any rate it's not completely clear that
+> it's always a no-op roundtrip).
+>
+> I've cc'd Paolo who might be a bit more familiar with the rtc code
+> than I am.
+>
+> -- PMM
+>
 

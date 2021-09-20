@@ -1,105 +1,86 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1857478lfp;
-        Mon, 20 Sep 2021 01:12:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyus2eVNyrDaEiQiXiCc/ZJt3OwIcWcWIkpLrfgdXI2tcoAb8O/nthyCSWaZT3F+ExClDW4
-X-Received: by 2002:a05:6638:140f:: with SMTP id k15mr18508623jad.113.1632125520262;
-        Mon, 20 Sep 2021 01:12:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632125520; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1857847lfp;
+        Mon, 20 Sep 2021 01:12:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKLcSdeLxksHcFjSWrEfIk6K7CFmO2N58lxRk7taH1Rs432iXc4v7z24NJu09I7RnaAUfm
+X-Received: by 2002:a05:6e02:d05:: with SMTP id g5mr17099710ilj.34.1632125555198;
+        Mon, 20 Sep 2021 01:12:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632125555; cv=none;
         d=google.com; s=arc-20160816;
-        b=dkS+/nfXoArQRyl+95DfwtQZNk/fOPsuDI3J7FlvrdIOcGQI1DzqKU3TAwdZhMl9B+
-         WPuWiWzCqco9OU5uffoWewKdYj91yUwNDhqQo08kQXPVbYbCNwaHucoLN7BeW3k/SecO
-         Cp4AHnitVkEOsS7QvUKPcqfflzosne1BYSqWhegPDOxZUl8botmfrGyaHZsCS0gkl93K
-         qKbQ4zAei9OqW7tmuWjR+7GMYKrHjJjHee4fSnm8nllK4dNEpAJTzU5+BXWxCRyuVh5j
-         fKgFpzVoHET6i/UmYQ/wY9FFYmmhx9m4jI9TsJkiyZC+KItChAB3gYbXwgXb6ix7yx1z
-         BmWA==
+        b=MtACqei5hX0zmhXZv7DXCil42g+SsJyLptTOxzdNIhVw+FVqHPY9xcgspLjbpujZuw
+         flxFym3uZQV4x62k5Rhmtd0M8TS7Dgh76nVW71aRW0pFMHB9L15IYFpLuJ05OLV4jtvi
+         Um+quRkNTm8nkWcJNu4QtQcR3RXn4VmiIy/KRZ/RK33uk1FXBUlyqQVMnb+wOwGfcXzo
+         yM4dhVRwAup5VEBgvuj588kXJHZltYagikB73nSCXsf0syhzuG5gi1A8EiFV2P2Qgsuw
+         +UCjocUY6dGQbLun59toHDWJGO5nHHMWNtm7SKSttSTCAUl6TwVY+eG+DaSIjDDVrg9m
+         d7hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=MwL26vWl3OAaRgZqZOW0R5klQYh5OSn41PozyiW7hrA=;
-        b=GTryO4J0WZ0Yfwoi4A2whjpG7YHNyDeKqh3VSP+C28cJXkGk3151rQfkLGRpQa/fuM
-         KGnc6DDmf7SUIuRDMKuhmkS/k6G2QeipjuEVcEj8gGaCkWIBSTgclDwqdsANjWqPuhjt
-         98isWAAaoKlFuihsx7ZZXyxbTUCALN8PoLjPUAK9Zj3U5qkG7ZNkmfIT26N1+ZdJ75Il
-         1F5jgg/qpHg9iiW87PTC3rQ3NYfatswPaxViKYNdtTaCK3zgHo6lKP3po0Kd/ibsJsEY
-         E33mir31KQcEGjD3psJib9EjwthJyolF0Mk2D0xf4sPWqesW1kDrCRDVpsiQjTEq3yUY
-         ihXQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=niugUUM0eJep4nUu6mYrj11KigxQTDXah8FmivS/iU0=;
+        b=ixgPfUdVIVrF18r6OblrsnnJZheuVHngFKCCdKEqsLDyFbeeWJTIzd6I90J2p5XbiO
+         8MInn1JmYfGdqOvsq56Kv/PM8iv8c+RhJttb9pE4vvdrgQCrvUJmrl3Imu4sqiUUodIC
+         27l4JP0WoHMEMsbtYZwpjJQMKOkUcWyswy/zRXbt5Aj6w2/icb3j25uUwYxmm3uVAf0j
+         zEtX4KteICa8iLwXkVmH3jKscOC1b7xjmpNJmT0usNxRd5EiWBxk5P5sr+3KgbVX3NGx
+         H+husxIgkoS7NyfzncXf7lbi0j0Sx/8K6ZhxsAZu/UD4XElZSTyfl4Ba8eRVsRkIcNFJ
+         8viQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="OAX/+bha";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b8si13677489ios.88.2021.09.20.01.12.00
+        by mx.google.com with ESMTPS id h11si12412735ior.13.2021.09.20.01.12.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 01:12:00 -0700 (PDT)
+        Mon, 20 Sep 2021 01:12:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="OAX/+bha";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45492 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46822 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSEP9-0006wZ-GO
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:11:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48504)
+	id 1mSEPi-0007vG-HN
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:12:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mSEMc-00047Y-3d
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:25 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:41484)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mSEMZ-0003TP-DG
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:21 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- g19-20020a1c9d13000000b003075062d4daso11450962wme.0
- for <qemu-devel@nongnu.org>; Mon, 20 Sep 2021 01:09:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MwL26vWl3OAaRgZqZOW0R5klQYh5OSn41PozyiW7hrA=;
- b=OAX/+bhac12turgPAwm8i2HVbV+pbuzK/t2lwfW9dAAC9jtCEWxci5XlfqnS//2pHp
- lfgioyMuOy8rPLyGcDpiWDOJKjQ5Zhg+UrZPIOD0dRjPR8K9YBX42UCzSAh09ymRjjkk
- Sd+M96BuyLigRCNOypNMuhJQMp9+0WujYiWElTIXihXMwMRe1KadTbaAt5JrOUj14v7c
- +4TOdRzY1kAZYF26AX7EBBDJE0w4w+kmdvACS8pZrXZM03Fpwl924muZuc0dWeVmv5hj
- QB+wOKeAvJlEwiqvnYTdYfglnj9f0Gcug+TDpuTukwDwWlg121oquXSChnhsgn6CR2rM
- xbZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MwL26vWl3OAaRgZqZOW0R5klQYh5OSn41PozyiW7hrA=;
- b=se+af8BnVF/XAYOkLwoYk9kLkLVmxg11LYLTtzoNPp7OKtl8SFjub311p07t6s51ct
- NLmrAbdL4OD87WVrJsJGxGvCQd5aC8IqrYSoex2iRxHJuAILPJ4nIJGSRRHy6j4pYdrH
- l1maL3eUQOMwddbVmsvBkhATuJTH5N1j+m51zLWFfHSm5BCPbeln4y2Eu0eyBQVZF0yj
- koXhPP/JWoUXjFsu6/CBQh0cQ5SVOO7ONGzajkoOjtfDBLtNfnjY3JtPzZg/qc0qzpZN
- 0nsZZSktu5F3RytmcbZO2K8/ejcLUzkgo7db5VVUdVA9IyU2pvwhGW0scxPL1fyRmwHM
- hX8g==
-X-Gm-Message-State: AOAM5302Fs2pyJbjvJ4wz0foxzX3fGQg2CZ3QPtCDuGl/HvrKGJSAsnD
- JDS0bqVnZMKLsghqm6xSEm0Kngttmr9ArkO5Ww356Q==
-X-Received: by 2002:a05:600c:4848:: with SMTP id
- j8mr28007237wmo.21.1632125357689; 
- Mon, 20 Sep 2021 01:09:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMu-0004OH-3d
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:43 -0400
+Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213]:43081)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMp-0003fD-Vg
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:39 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.36])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 78C6E20678;
+ Mon, 20 Sep 2021 08:09:30 +0000 (UTC)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
+ 2021 10:09:29 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005bd7a584e-64d2-4952-b4c9-9b947f140017,
+ C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 00/14] aspeed queue
+Date: Mon, 20 Sep 2021 10:09:14 +0200
+Message-ID: <20210920080928.1055567-1-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <20210821195958.41312-1-richard.henderson@linaro.org>
- <20210821195958.41312-6-richard.henderson@linaro.org>
- <CAFEAcA9Eg1gPuNR1DKPB8Yk1VJ=xADTEDim=jrwFN6mhVdV=Nw@mail.gmail.com>
- <af2e92e3-ef2d-50a8-bec4-6c1191f3ac27@linaro.org>
-In-Reply-To: <af2e92e3-ef2d-50a8-bec4-6c1191f3ac27@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Sep 2021 09:08:25 +0100
-Message-ID: <CAFEAcA8woYVpeKrUrqHBVu2mg25x7e8oh3kh1-1DukfOrLv_PQ@mail.gmail.com>
-Subject: Re: [PATCH v2 5/8] target/arm: Take an exception if PC is misaligned
-To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 50330f64-3485-44dc-af7b-26d75ed4d920
+X-Ovh-Tracer-Id: 4736097961739127590
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeutdeikeeklefguddvieejueejhfehfeejtdelgedtheetjeetuddutdejfeejkeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
+ helo=5.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -113,29 +94,71 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1ZV9jB0OajFU
+X-TUID: wboQTjGdxJFL
 
-On Mon, 20 Sept 2021 at 02:29, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/26/21 6:45 AM, Peter Maydell wrote:
-> > I don't think you should need to special case AArch64 vs AArch32 like this;
-> > you can do
-> >     env->exception.vaddress = pc;
-> >     env->exception.fsr = the_fsr;
-> >     raise_exception(env, EXCP_PREFETCH_ABORT, syn_pcalignment(), target_el);
-> >
-> > for both. AArch64/AArch32-Hyp exception entry will ignore exception.fsr,
-> > and AArch32-not-Hyp entry will ignore exception.syndrome.
->
-> Not true.  The latter case still requires syndrome with EC_INSNABORT, etc.
+The following changes since commit c99e34e537f13a431a80e3e414e5904e9dd0a116:
 
-For AArch32-not-Hyp ? Syndrome doesn't matter at all in that case
-(only Hyp mode and AArch64 have syndrome registers); it just needs
-to take the prefetch abort exception, which you get by using
-EXCP_PREFETCH_ABORT.
+  Merge remote-tracking branch 'remotes/vivier2/tags/linux-user-for-6.2-pull-request' into staging (2021-09-16 21:09:18 +0100)
 
--- PMM
+are available in the Git repository at:
+
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20210920
+
+for you to fetch changes up to febbe308bf9477767ca92e8ed5f265b0001fcef9:
+
+  hw/arm/aspeed: Add Fuji machine type (2021-09-20 08:50:59 +0200)
+
+----------------------------------------------------------------
+Aspeed patches :
+
+* MAC enablement fixes (Guenter)
+* Watchdog  and pca9552 fixes (Andrew)
+* GPIO fixes (Joel)
+* AST2600A3 SoC and DPS310 models (Joel)
+* New Fuji BMC machine (Peter)
+
+----------------------------------------------------------------
+Andrew Jeffery (3):
+      watchdog: aspeed: Sanitize control register values
+      watchdog: aspeed: Fix sequential control writes
+      misc/pca9552: Fix LED status register indexing in pca955x_get_led()
+
+Guenter Roeck (2):
+      hw: arm: aspeed: Enable eth0 interface for aspeed-ast2600-evb
+      hw: arm: aspeed: Enable mac0/1 instead of mac1/2 for g220a
+
+Joel Stanley (6):
+      hw: aspeed_gpio: Simplify 1.8V defines
+      hw: aspeed_gpio: Clarify GPIO controller name
+      arm/aspeed: rainier: Add i2c eeproms and muxes
+      aspeed: Emulate the AST2600A3
+      hw/misc: Add Infineon DPS310 sensor model
+      arm/aspeed: Add DPS310 to Witherspoon and Rainier
+
+Peter Delevoryas (3):
+      hw/arm/aspeed: Initialize AST2600 UART clock selection registers
+      hw/arm/aspeed: Allow machine to set UART default
+      hw/arm/aspeed: Add Fuji machine type
+
+ include/hw/arm/aspeed.h          |   1 +
+ include/hw/arm/aspeed_soc.h      |   1 +
+ include/hw/misc/aspeed_scu.h     |   2 +
+ include/hw/watchdog/wdt_aspeed.h |   1 +
+ hw/arm/aspeed.c                  | 182 +++++++++++++++++++++++++++++--
+ hw/arm/aspeed_ast2600.c          |  14 +--
+ hw/arm/aspeed_soc.c              |   8 +-
+ hw/gpio/aspeed_gpio.c            |  97 +++++++++--------
+ hw/misc/aspeed_scu.c             |  40 +++++--
+ hw/misc/pca9552.c                |   2 +-
+ hw/sensor/dps310.c               | 225 +++++++++++++++++++++++++++++++++++++++
+ hw/watchdog/wdt_aspeed.c         |  26 ++++-
+ hw/arm/Kconfig                   |   1 +
+ hw/sensor/Kconfig                |   4 +
+ hw/sensor/meson.build            |   1 +
+ 15 files changed, 529 insertions(+), 76 deletions(-)
+ create mode 100644 hw/sensor/dps310.c

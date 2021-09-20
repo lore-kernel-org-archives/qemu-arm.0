@@ -1,179 +1,136 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1862024lfp;
-        Mon, 20 Sep 2021 01:19:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwEJjyA2WAkox+taTZJOJKkh7IoTzkOSb6wBcx8twrr+l8oGe/IqujGig/8cMAg69KM1tdF
-X-Received: by 2002:a05:6e02:1562:: with SMTP id k2mr1940946ilu.263.1632125982080;
-        Mon, 20 Sep 2021 01:19:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632125982; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1864490lfp;
+        Mon, 20 Sep 2021 01:23:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyerhLXRlcqrI4kZ5tWiG+zeWFmY5CzVQA1pM3slGmhjYnYUZXqlhnhf+0Kq6s4O0pnLDwW
+X-Received: by 2002:a5b:c84:: with SMTP id i4mr32135564ybq.261.1632126232617;
+        Mon, 20 Sep 2021 01:23:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632126232; cv=none;
         d=google.com; s=arc-20160816;
-        b=XRmJTJRJDesEIvDcLyvZhAwEDrIgTfToue4zgyU5xzT5DVnlZMDisJwcdsAl1nL8Zg
-         Be9wv1EM2qivjCXlN0nskkFNAGITi16jlszDSCgk89elGlDF4Bb+Jjr/DfyLXxYK0g+k
-         V20mpDTOA5VqylIirmwRaSdCsLBZl2K2krbRVi6/2WmxwEbYeea5V+tOjHVcXF/l1OWQ
-         DFDpDyskkNjHWR0ueR/Wsp9CjE24AxE0Yfm2QmEkYC9tRQRO3V9sYNgR19hqnMpMAqRc
-         te/ydsEKPTql6394oiSUO4Zpi2yBEbHhT4QQoa0/hyCedK6158qpTe8j8ppkG50j9PBp
-         UmDg==
+        b=lTYCWLrQcJ9luFx6wY+Lq/yaT/cK7arzqDhb9wM7/nTIs1dMScKSsFA3wn69SV/dx3
+         bvxMXp1Tp/njQA4wEDDcFegTlQBnYK9jjk0jAfsCugixolwSn2z4XjgXBDZ9qlwJDc6z
+         339ZU5lJkh0nBUorKDi23aIzPuzl+a1XPpxR7N7FgjJiXawlmcXN+k93BZePnmATXo0z
+         sL4pO//z9JEHIs/Gjp/23gUpU5Cc7/QRu8T9V9TMIVK+2EZNyeaxBJ3LsRbXc5aRSDrN
+         dfR4rGgwBwVmj+1/xCN2t5CwCxv++BnA367NSU2VWc010JmQYrvlCS+zWfbmCVlfjBSF
+         7jDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=b65bQNSNGQEr40tkBHjYc2yyoVsni+DLvIwzWaEv1ic=;
-        b=T09+K7NIORnT9ZuxYt+n9ZMgiyG41ae+twu/rfpy+K1/cULbZYT2l2HFIrJwVuTje6
-         nbqS5nLUTQWyyxpJEiZ758wsx5cWXmPQ5Tex1yycMw8YyupMSyuK72bPWxp1p3uWmQ76
-         VpiVrqV1s38UJniu3RYGHoAvxjzinoO84S0Qh4Ur5QBNmigGgoJDNYtRc7bflmvcvw2N
-         PWD7zRE29srBc2sk2INIST/L+/2JbjltxCUBnxJ1fp9tUnMUrhwUf+74dR1Br+Jjwaaf
-         4h880dWgpVIeGLPg0ZqxkrQroloR1DB5YhQoLZs+Q01ypgCTzXLwIWKMt8bGbrHjnB1W
-         vcnw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=ju+JAxfA1TJlI/tvqbMv0IrXX7a08q6dpeYGVZNaMEk=;
+        b=TjCLKELVOMk4KglN1U8go6uTFvHKyT2qnXeU7ZPwIH+ssgCqhdamJn0IhsBGFFQXH4
+         PSN0sL4oGwcFmd8MwLudGHqsSVlrtOQ/Jtd/gbmszIM37Dj4H4SoxFoIl1IncTsChGbb
+         Jf1Vb7WezAILHTxyG4ux7f7dEC1CkXFxTPdrgFDDuQ3MxmgsdSTpXFIGLhJeZT7XVdRJ
+         AN+EVfBYfEb5N7tdpNj5U/4E7cauKbC1uCMFdc7jjXpFVk5llolh6LQ/OnLXnYJq362G
+         KBdLappynsNh8zDMbZJvEpGyZfGP1UNr2ba+6HNfjaU8FjPNNY4GioMrobaiDLD6dNSJ
+         7FbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YigdhuhM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o3si911326ilk.81.2021.09.20.01.19.41
+        by mx.google.com with ESMTPS id s3si15300108ybg.227.2021.09.20.01.23.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 01:19:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Sep 2021 01:23:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YigdhuhM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37966 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50262 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSEWb-0004BS-Dr
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:19:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49366)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mSEae-00049W-09
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:23:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48732)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mSEOx-0007ul-1P
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:11:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40166)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEN0-0004Pq-RN
+ for qemu-arm@nongnu.org; Mon, 20 Sep 2021 04:09:47 -0400
+Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:43505)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mSEOt-0005T4-UU
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:11:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632125502;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=b65bQNSNGQEr40tkBHjYc2yyoVsni+DLvIwzWaEv1ic=;
- b=YigdhuhMEXsCn68fFuSOZK7C52BQRDp3WAcndpyCSDuE9na7HXPP4EHz29SgxA/FGyFZwy
- d1zAgCCYKbEtVsTuQ67i8QIMuhfWuT/3hT7pxjbrwBK3Um//vP3kPkjb4JsY6MfDqDNu9w
- IdylOrkIk7zt+SX5IvL/BLPHzjx2Lsk=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-581-0v2Uv37zMIeqW2N7Qv0lKQ-1; Mon, 20 Sep 2021 04:11:42 -0400
-X-MC-Unique: 0v2Uv37zMIeqW2N7Qv0lKQ-1
-Received: by mail-ed1-f69.google.com with SMTP id
- l29-20020a50d6dd000000b003d80214566cso10512524edj.21
- for <qemu-devel@nongnu.org>; Mon, 20 Sep 2021 01:11:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=b65bQNSNGQEr40tkBHjYc2yyoVsni+DLvIwzWaEv1ic=;
- b=C7OMjHQN60HBhVfZsJ5hhrdTjhleY3HKf2oIw2Z9e+UB+QpbBM8vIRVQmFXPJUJDfi
- nbSiWKwCnVTj3jlVOxnaDVFyj3h9DfaSp55dJvfQ2v/JhDuLN3YrXyW5aHj/q7DW+dl5
- jj88eWIakknhLv8ngSmYySfqNav4JucnZgp/Sk/GVgf2dXFW7vamtQtaZkbEBSOLU3Jt
- xBR3iCrixv735QM7aZEl3hUBybvOva2B8x/jsEOeLhUEV9Mf17wazklhIUL8f8yGsjWB
- 90/qkU1vw1YP27n3m7+JSZjNLIXYNz4DEz/uw+URN+hAscUPVO0TUFFkoVAw2gtQPyLE
- TmGQ==
-X-Gm-Message-State: AOAM533ixYAjpxCMufHy3iYc4KosF+9Li+x9ByFj0I3uIF+uADUUHelE
- HEP8645Lg95LLyrCOKv+ZlqUuXdEXWK7zLx4gVG3pMiJ5hUe1C2bVAEOolPcVvYqTcExG21w664
- L/HLYsDTz6hp6I4U=
-X-Received: by 2002:a05:6402:42ca:: with SMTP id
- i10mr27721428edc.258.1632125500718; 
- Mon, 20 Sep 2021 01:11:40 -0700 (PDT)
-X-Received: by 2002:a05:6402:42ca:: with SMTP id
- i10mr27721396edc.258.1632125500497; 
- Mon, 20 Sep 2021 01:11:40 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id m17sm5850853ejn.108.2021.09.20.01.11.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Sep 2021 01:11:40 -0700 (PDT)
-Date: Mon, 20 Sep 2021 10:11:38 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: Re: [PATCH v3 04/10] hw/arm/virt: Reject instantiation of multiple
- IOMMUs
-Message-ID: <20210920101138.5fe6f728@redhat.com>
-In-Reply-To: <20210914142004.2433568-5-jean-philippe@linaro.org>
-References: <20210914142004.2433568-1-jean-philippe@linaro.org>
- <20210914142004.2433568-5-jean-philippe@linaro.org>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMt-0003kP-NY
+ for qemu-arm@nongnu.org; Mon, 20 Sep 2021 04:09:43 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.250])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id BB47F13ECFB;
+ Mon, 20 Sep 2021 08:09:35 +0000 (UTC)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
+ 2021 10:09:31 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G00575fd9106-45b6-4a8e-a3e4-bdc5fc0e6193,
+ C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 04/14] watchdog: aspeed: Fix sequential control writes
+Date: Mon, 20 Sep 2021 10:09:18 +0200
+Message-ID: <20210920080928.1055567-5-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210920080928.1055567-1-clg@kaod.org>
+References: <20210920080928.1055567-1-clg@kaod.org>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 66e4cea1-be68-4fad-adb8-9cc557f93601
+X-Ovh-Tracer-Id: 4737505333397719846
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout3.3005.mail-out.ovh.net
+X-Spam_score_int: 0
+X-Spam_score: -0.0
+X-Spam_bar: /
+X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
- mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- eric.auger@redhat.com, qemu-arm@nongnu.org, ani@anisinha.ca,
- pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w9Mqez8wlNum
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wYQFt6/mXVT2
 
-On Tue, 14 Sep 2021 15:19:59 +0100
-Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
+From: Andrew Jeffery <andrew@aj.id.au>
 
-> We do not support instantiating multiple IOMMUs. Before adding a
-> virtio-iommu, check that no other IOMMU is present. This will detect
-> both "iommu=smmuv3" machine parameter and another virtio-iommu instance.
-> 
-> Fixes: 70e89132c9 ("hw/arm/virt: Add the virtio-iommu device tree mappings")
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
->  hw/arm/virt.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index f238766aa1..26069f943a 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2471,6 +2471,11 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->      if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->          PCIDevice *pdev = PCI_DEVICE(dev);
->  
-> +        if (vms->iommu != VIRT_IOMMU_NONE) {
-> +            error_setg(errp, "virt machine does not support multiple IOMMUs");
-> +            return;
-> +        }
+The logic in the handling for the control register required toggling the
+enable state for writes to stick. Rework the condition chain to allow
+sequential writes that do not update the enable state.
 
-can you move check into 'pre_plug' callback?
+Fixes: 854123bf8d4b ("wdt: Add Aspeed watchdog device model")
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20210709053107.1829304-3-andrew@aj.id.au>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/watchdog/wdt_aspeed.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-(plug should not fail and just finish up whatever was
-verified/set by pre_plug, there are plans to remove errp
-argument from 'plug' callback)
-> +
->          vms->iommu = VIRT_IOMMU_VIRTIO;
->          vms->virtio_iommu_bdf = pci_get_bdf(pdev);
->          create_virtio_iommu_dt_bindings(vms);
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index faa3d35fdf21..69c37af9a6e9 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -166,6 +166,8 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
+         } else if (!enable && aspeed_wdt_is_enabled(s)) {
+             s->regs[WDT_CTRL] = data;
+             timer_del(s->timer);
++        } else {
++            s->regs[WDT_CTRL] = data;
+         }
+         break;
+     case WDT_RESET_WIDTH:
+-- 
+2.31.1
 

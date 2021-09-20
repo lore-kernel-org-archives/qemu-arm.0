@@ -1,68 +1,68 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2233119lfp;
-        Mon, 20 Sep 2021 09:29:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxm12wuUuARn88pPbLHsrkoG37Kbl6f/eTyjS0OdSjsAI4WKBwbU0AaLgCP66T0uttN+1ly
-X-Received: by 2002:a67:d51d:: with SMTP id l29mr16335800vsj.46.1632155376169;
-        Mon, 20 Sep 2021 09:29:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632155376; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2233450lfp;
+        Mon, 20 Sep 2021 09:30:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmi7EhRsEUU2JgJxSq3x6gWha3BzJEFZ142fS3xjnLxW6kYIhGYzmjQi9IGhXJiovd9WzU
+X-Received: by 2002:a05:6102:1350:: with SMTP id j16mr10840935vsl.54.1632155401098;
+        Mon, 20 Sep 2021 09:30:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632155401; cv=none;
         d=google.com; s=arc-20160816;
-        b=iqlhXwGnZvRCS/6sAjPZq9d7nsDOWbEolY21El8mYvtUxDAQjdfODJnVyKRjemVfq4
-         C7mkkEYXsGMmnvFLbZdrLrXmcZSASESJkK6kz6apLszZ0ZR/pMInm5n5RxbW/aFWBkmQ
-         /pYm74w6GmL90atZwQ+abAY0BJ27hS6gVWFLzQ4+Ivjpt1YEKJq6zvo/7yGsinN5i4kW
-         IAI9JaFhSeiDNnZlBQD/ULZxjZG8zjOfys0t6aZd0IfP0V6O7Eqd35jpZGU0s7FM2iAZ
-         gx7UVk6Y5oscqK6RCGOV59wtUaHIZpHJon419WPXiKAjGWwpp9UfLUPK2t88MNhh7qWi
-         02Ow==
+        b=LEK6NUvcQ5r1vCUKFfVYuUoBgLbeOAM3X/VDaREPP+b9RgP3Nx+fjmAZXpeX9FIezh
+         rJPokZe9X8LwMgd+8EiOT9NQ4qzuOhex7vF0q5Sce8RePt2Q5sP8LrVtO8IebUsFQvv6
+         JTwU6BzLWoAlHcOZo+5oONwFx00UHCbUPAfAYYclJMGumo8qI3Ii7kSnbChfSsrnhjy+
+         L9Dv5WgKPlPJdGUZUlWLtIAdAnk1g4yI3C3F2u9cVkJCeFdJkeY567Vz2ZVFQuO6f/7Q
+         8QC0pJx1q8V9dr8ydYtjNo6qKqUB49v498G+03xSuVeEUCvaZa3WGwKDMFh3Chyw1pwS
+         j1Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=EJhp10D7CdEJAFDx4iA+2k3Ho966tZ8BD/+gwnJ9sI4=;
-        b=N69T3g0CUqPw0yY8k1+SyKqIEHK931S8tYvPtHzi10zB5TaoXN/IGxpd2FvW+K7CGL
-         P2Can19n3DbJ5O/eiT1r9a51P1Q0V/G3vWdGDXfbYFxpqov8sBVnIw4JKCyUeoqHbfED
-         sBifjXg/sppV8WiennGPipEQpwdkfbAG1Pe5Tr3JKPO1Ovc2JgGeK4V50Dg8ylO9q9WU
-         sof9GwKznoGQotIs8vGSpR0pPHCNlp2lY4mFLM7GJM+ZlejNSHuyMvHsM9WHaNOljmAg
-         s94tuXPk1F5q8K9CZEP7R5yNG6P+aKIGl1ktcZ8PjUU+6+GDGX4U5MrJbXaRRjnE1F8J
-         SnjA==
+        bh=7R68UIsk3oxOp+ClUMX1wBw8IWP0IitdNhccfmwgqkg=;
+        b=pZA/QW5YluHf0ogkRJ6JpVPyyWLqyBgPuAMOLVTewTpN2nLElTgD3iW2+WvR/eMdaP
+         Up/0VsX5zjP4My5oB20vpsc4yGxGwEcnCWqj8zHhr38kgTxwtTNhgGnz5VVBfbf4ZoEN
+         rd8swqOaqjXH80AKNm7b3ubjip2Y9jEVg0JvEhhzwpC4/hicUnjcYAtxnuPSviq7eL3E
+         BjAetPOR4OVdfxNAfoZJxCbSJbEE36LdPBT3mzAqUWyEXhZOi3M0dYhyZZ11eZjHIXfx
+         XdrUUgO4eqhA9o2sIelYURKEPqY0JUqZ5PUiuexz9gcPlpugmjbf7YZ6tpseZWZcSOMC
+         0ceQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si4212174vsk.443.2021.09.20.09.29.36
+        by mx.google.com with ESMTPS id p17si800208vsr.58.2021.09.20.09.30.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 09:29:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Sep 2021 09:30:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33574 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSMAh-00088p-Hq
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 12:29:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38058)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mSMB6-000143-Bp
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 12:30:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4h-0005rQ-KE
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 12:23:23 -0400
-Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:56647)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4g-0005pH-BJ
+ for qemu-arm@nongnu.org; Mon, 20 Sep 2021 12:23:22 -0400
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156]:59983)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4Z-0004BV-Bi
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 12:23:23 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.249])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id C23C521105;
- Mon, 20 Sep 2021 16:23:13 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4Y-0004B2-PV
+ for qemu-arm@nongnu.org; Mon, 20 Sep 2021 12:23:22 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.59])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 5FD722090D;
+ Mon, 20 Sep 2021 16:23:12 +0000 (UTC)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
- 2021 18:23:13 +0200
+ 2021 18:23:11 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G00590717bd4-180c-44fb-8f52-d5f1a4ed08fa,
+ (GARM-103G00528233694-7470-4f32-b11a-305535cef115,
  C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 06/12] aspeed/smc: Remove the 'size' attribute from
- AspeedSMCFlash
-Date: Mon, 20 Sep 2021 18:23:03 +0200
-Message-ID: <20210920162309.1091711-7-clg@kaod.org>
+Subject: [PATCH v2 03/12] aspeed/smc: Stop using the model name for the memory
+ regions
+Date: Mon, 20 Sep 2021 18:23:00 +0200
+Message-ID: <20210920162309.1091711-4-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210920162309.1091711-1-clg@kaod.org>
 References: <20210920162309.1091711-1-clg@kaod.org>
@@ -72,113 +72,111 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 06b2bcb9-70d4-45cd-a79a-798bb240de83
-X-Ovh-Tracer-Id: 13074231196813462377
+X-Ovh-Tracer-GUID: e8c2023c-d6d4-4809-9084-0729c4bde326
+X-Ovh-Tracer-Id: 13073949721913887526
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivddgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
- helo=7.mo552.mail-out.ovh.net
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rOYiGSXKwpJP
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: t67umcfHNaS2
 
-AspeedSMCFlash::size is only used to compute the initial size of the
-boot_rom region. Not very useful, so directly call memory_region_size()
-instead.
+There is no real reason to use this name. It's simply nice to have in
+the monitor output but it's a burden for the following patch which
+removes the AspeedSMCController structure describing the controller.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/ssi/aspeed_smc.h | 1 -
- hw/arm/aspeed.c             | 7 ++++---
- hw/ssi/aspeed_smc.c         | 5 ++---
- 3 files changed, 6 insertions(+), 7 deletions(-)
+ hw/ssi/aspeed_smc.c | 25 ++++++++++---------------
+ 1 file changed, 10 insertions(+), 15 deletions(-)
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index f32f66f9a838..097bb6aaf5f8 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -34,7 +34,6 @@ typedef struct AspeedSMCFlash {
-     struct AspeedSMCState *controller;
- 
-     uint8_t id;
--    uint32_t size;
- 
-     MemoryRegion mmio;
- } AspeedSMCFlash;
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 854413594d9e..f5916e81262e 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -376,6 +376,7 @@ static void aspeed_machine_init(MachineState *machine)
-     if (drive0) {
-         AspeedSMCFlash *fl = &bmc->soc.fmc.flashes[0];
-         MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
-+        uint64_t size = memory_region_size(&fl->mmio);
- 
-         /*
-          * create a ROM region using the default mapping window size of
-@@ -385,15 +386,15 @@ static void aspeed_machine_init(MachineState *machine)
-          */
-         if (ASPEED_MACHINE(machine)->mmio_exec) {
-             memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
--                                     &fl->mmio, 0, fl->size);
-+                                     &fl->mmio, 0, size);
-             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
-                                         boot_rom);
-         } else {
-             memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
--                                   fl->size, &error_abort);
-+                                   size, &error_abort);
-             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
-                                         boot_rom);
--            write_boot_rom(drive0, FIRMWARE_ADDR, fl->size, &error_abort);
-+            write_boot_rom(drive0, FIRMWARE_ADDR, size, &error_abort);
-         }
-     }
- 
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 5466be631719..3e4221311a6d 100644
+index def1cb4c74c0..612040493cf1 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -1186,11 +1186,10 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+@@ -1392,20 +1392,15 @@ static const MemoryRegionOps aspeed_smc_ops = {
+  */
+ static void aspeed_smc_dma_setup(AspeedSMCState *s, Error **errp)
+ {
+-    char *name;
+-
+     if (!s->dram_mr) {
+         error_setg(errp, TYPE_ASPEED_SMC ": 'dram' link not set");
+         return;
+     }
+ 
+-    name = g_strdup_printf("%s-dma-flash", s->ctrl->name);
+-    address_space_init(&s->flash_as, &s->mmio_flash, name);
+-    g_free(name);
+-
+-    name = g_strdup_printf("%s-dma-dram", s->ctrl->name);
+-    address_space_init(&s->dram_as, s->dram_mr, name);
+-    g_free(name);
++    address_space_init(&s->flash_as, &s->mmio_flash,
++                       TYPE_ASPEED_SMC ".dma-flash");
++    address_space_init(&s->dram_as, s->dram_mr,
++                       TYPE_ASPEED_SMC ".dma-dram");
+ }
+ 
+ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+@@ -1446,7 +1441,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+ 
+     /* The memory region for the controller registers */
+     memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_ops, s,
+-                          s->ctrl->name, s->ctrl->nregs * 4);
++                          TYPE_ASPEED_SMC, s->ctrl->nregs * 4);
+     sysbus_init_mmio(sbd, &s->mmio);
+ 
+     /*
+@@ -1454,12 +1449,12 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+      * window in which the flash modules are mapped. The size and
+      * address depends on the SoC model and controller type.
+      */
+-    snprintf(name, sizeof(name), "%s.flash", s->ctrl->name);
+-
+     memory_region_init_io(&s->mmio_flash, OBJECT(s),
+-                          &aspeed_smc_flash_default_ops, s, name,
++                          &aspeed_smc_flash_default_ops, s,
++                          TYPE_ASPEED_SMC ".flash",
+                           s->ctrl->flash_window_size);
+-    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s), name,
++    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s),
++                             TYPE_ASPEED_SMC ".flash",
+                              &s->mmio_flash, 0, s->ctrl->flash_window_size);
+     sysbus_init_mmio(sbd, &s->mmio_flash_alias);
+ 
+@@ -1475,7 +1470,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < s->ctrl->max_peripherals; ++i) {
+         AspeedSMCFlash *fl = &s->flashes[i];
+ 
+-        snprintf(name, sizeof(name), "%s.%d", s->ctrl->name, i);
++        snprintf(name, sizeof(name), TYPE_ASPEED_SMC ".flash.%d", i);
  
          fl->id = i;
          fl->controller = s;
--        fl->size = asc->segments[i].size;
-         memory_region_init_io(&fl->mmio, OBJECT(s), &aspeed_smc_flash_ops,
--                              fl, name, fl->size);
-+                              fl, name, asc->segments[i].size);
-         memory_region_add_subregion(&s->mmio_flash, offset, &fl->mmio);
--        offset += fl->size;
-+        offset += asc->segments[i].size;
-     }
- 
-     /* DMA support */
 -- 
 2.31.1
 

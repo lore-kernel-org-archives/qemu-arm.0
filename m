@@ -1,202 +1,172 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2024597lfp;
-        Mon, 20 Sep 2021 05:26:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyS9mV5hnximxP8pqCv17KtebEHJvW6N+s1RRN54U1sOaYHbF9cEeDCPLxEYYndLW2gQZu4
-X-Received: by 2002:a02:9621:: with SMTP id c30mr7302403jai.54.1632140799908;
-        Mon, 20 Sep 2021 05:26:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632140799; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2070613lfp;
+        Mon, 20 Sep 2021 06:21:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2NLDilsqmvPRrJzFWPAwfJGFakxfYFHrxZ5iFvOZQqOE9Pt2SEHJFcI0vrrnAKrqj0XAC
+X-Received: by 2002:a37:9d82:: with SMTP id g124mr2652386qke.237.1632144083138;
+        Mon, 20 Sep 2021 06:21:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632144083; cv=none;
         d=google.com; s=arc-20160816;
-        b=sJOqiiGNIApXifCfPOcUr2jT+y94swTal1sNpdSZKJTMlEX2/g+LHAfssyCNQYbzC2
-         UHovW0HFCDcTOR1QYxW7PaXhs+5Dt+py7FKWwQdmjGTCdZIUgsGd5UsKkmuEbEFwJhep
-         pVkZra0ea5HbvFG0TEpeAkcJtzoc3z/6DEI0BZU0zZ2XeA295AFyzoR8ohaq/xvl2/Rg
-         9lAYfcmSDvobZQY0s9AFwigBw7mG97uR/eOiB4bjh+eFsYFKPYnQEEoqWcCaabiYK7T6
-         ffmHhOU3gr7I40YqLwxW3am8b+/i3G4h/YKTaVtyhjOI0GPlwxMztH2liJs8469hqh6t
-         pvOg==
+        b=tenAxlA83qsUA3kp2WV3i0rgLf3ge1xWaSxRj7zXXIoRqZ3G+SOcFw5drf2BTnVsiZ
+         LeE2hF0GxMCSK59RTZxVe7iWzJ+GhOj2eXysxUs2CqXc0sbhCfIKz/2ELOdIK8JGuGT2
+         RedZk1xeYda8pTE3M1slZB9NTV0kBEhS+3xmOTX4UQohVcwUHTssUdTMNvIV8WgmATPe
+         ZuKW/Y6j3J3OnFwjg/Y/ngirHsYCPeadijS4pTQQgZS2fAqb03/MBKLvTIgBmxaHkSsK
+         kzGGsTPBOG6dph2cUU8uQ4r89S9pOY93j99GVN/2TfzG/Q/9aUZxmdxAWJyygNaaCb/U
+         hsdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=pPkyoO4nNHJGaPC8tme6jYcFmt9MYoMhyoF4+cz5dts=;
-        b=rUE8aB7vnvs0WfRRMZElQ0Pssfbi/6/KriYQMTuxoX41eVhpXjkiNdNhT6UVqWtTfP
-         VfqxCVKcwW4h0XICXeGWV4LkaDtHQFcrJJgAiFf30LNXMjrStdwBZiX629KYXzmEgfiD
-         dxYM2KGUtM79q2UwAx3KLPuwLS/DbqlyGRNzQ+aGR6Dro4b1ufQuWIotEs+Bzj9E2OpK
-         gc0hQNSwHQijjlVm7Q4JlHk/umKpS2ltA5L/Z7ufx9cCMzfCOpckIrTS8zGRaDFkOB3z
-         U0Px1bMRlH9JFzFgwXhxGLu4sBrrXc3GX3spQ4ZzogQqOoZIhiMux76aSVqOmMGZYsT/
-         OHHA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZguIa521U18HbwJbV2pzKFToLaIWEAyyTnnLXXFG/4A=;
+        b=Vp6UVJPOoG8UoyGQwifyvTiiJHgo6t6p6zl4dh9yh2KKNJfKHqWTi3Bve2QNtcWruN
+         KtDYiBdsGKs8IsQ5l3H69vHj4/Gg+KaB+OB1ad80CZYA5ZK0RGEMF5fXJECmlMdtGSOG
+         9A6VMqLr7j5ZuXCmCWygEBZyCR3A4gJwyuRBjiQabMDvJ5kM49qzm/zqYpxcrT28zhKv
+         tVHlk/c6KP4bf5XRbWwGz0LjuignOBgQUs3Qe7wavy1l9L51K4JVxKjes5Y0z5thTmRg
+         T9bcd4bp/4DLcocZCF1P/dPb8/VGSuFCVBuZc1SznSfNfImHFH8F4qcSqc0t8JrFf6i2
+         3Hpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="M/zK/zoH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=Oe0CDgMd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o8si13446297iop.81.2021.09.20.05.26.39
+        by mx.google.com with ESMTPS id 16si9011666qka.89.2021.09.20.06.21.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 05:26:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Sep 2021 06:21:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="M/zK/zoH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44196 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Oe0CDgMd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSINb-0003cT-8h
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 08:26:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38784)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mSJEY-00087Z-Fu
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 09:21:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49794)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mSIMl-0003Xk-N1
- for qemu-arm@nongnu.org; Mon, 20 Sep 2021 08:25:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40497)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mSIMi-0004Nn-6v
- for qemu-arm@nongnu.org; Mon, 20 Sep 2021 08:25:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632140742;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=pPkyoO4nNHJGaPC8tme6jYcFmt9MYoMhyoF4+cz5dts=;
- b=M/zK/zoHX/dUxbci1BKhVhxxwW5Numd9Jj/G+Xmiak3FH3PbmVDiybLfUZBiGqTL14XyFF
- I6Bj/pZb0kQdMR1ef65Q8G2kI/SNgV33OjECpvA2NOArtr80XSnOoZh33COCTaOtgmiIiX
- tZhVHh+2xfOBfRZCk97ZdKmeuK+PknU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-224--6p_3oY5OSaz_OKOpaiiXQ-1; Mon, 20 Sep 2021 08:25:41 -0400
-X-MC-Unique: -6p_3oY5OSaz_OKOpaiiXQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C911B1084684;
- Mon, 20 Sep 2021 12:25:40 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.195.12])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E092160C2B;
- Mon, 20 Sep 2021 12:25:38 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
- pbonzini@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v2] hw/rtc/pl031: Send RTC_CHANGE QMP event
-Date: Mon, 20 Sep 2021 14:25:35 +0200
-Message-Id: <20210920122535.269988-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mSJ9n-0003kV-Ld
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 09:16:27 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:46891)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mSJ9j-00080t-LO
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 09:16:27 -0400
+Received: by mail-wr1-x434.google.com with SMTP id x6so29553766wrv.13
+ for <qemu-devel@nongnu.org>; Mon, 20 Sep 2021 06:16:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZguIa521U18HbwJbV2pzKFToLaIWEAyyTnnLXXFG/4A=;
+ b=Oe0CDgMdiwCuQu0k2FmSWfo0zOcJs+uBoRBCgzOABODQu0sGIABWSfC0cPjtdhH67e
+ f4h4XJ+kEKnO0zAdEFiy3i0b5trahHPp4eIrAojgMysOcCRD7FrN5GthKvdlKFgfW4k/
+ cMr9x3Z76jnDoIf/DAbEYrt3RUQQEz6xkFD9TnVZX8xi8Au4pHeKU3krIYclu4/+52Hn
+ Et+GTCwJg9GMDv6brqUXBgwG57LP8QCHcLJRp/uVeQSxoG6Czv4ZrCrAHwX7Fza7Qxxd
+ usQ4VwUmhQJNbdDxS7HakZTSncYOJ/MJ+O2GZmrJUzSGjeXlc+ZBnfZUKukDlsxGEbXl
+ uN/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZguIa521U18HbwJbV2pzKFToLaIWEAyyTnnLXXFG/4A=;
+ b=E1xKyznCMkjeu1FQ51RoRnXqbsza80XvT/hsbtc6vaafPVip4TCiRxmu9krWJWvLX8
+ 2P8gnOXD+I/bqMYahoxHdeD8p9YcJ6fg6Qa+iuBOxkkAtVdYUEqPxJRHEUrAmK/4c/Ml
+ 2mC8z2mbSI97hbnvWlBNB8uh4yFuY39GyUT5xsAmK4DpLZWKwVOd7Rql1KfQB0GP6K15
+ KzUctcB+j0bGrevgqgAqY1qgZ2TpGHt+Y2jO91nCRaxA7W+3Y4ZcJrRI3/20TGkMUEWK
+ 3XGsFH0OEoAaRrqmFf1eIdTSDZRtWz1U3i2XycEWU1dr/ireAYNnvqZLsNeQjn1Mcfci
+ XoIQ==
+X-Gm-Message-State: AOAM533ixRNH7E27UDhl6HqZx2acl9QCDpxMWx+ugf6BIGP4zNvzGkxf
+ z/OLYeKNrlv+mEEkP3CMtDcmITldwtB5vc038d3A/w==
+X-Received: by 2002:a05:600c:4848:: with SMTP id
+ j8mr29398576wmo.21.1632143781287; 
+ Mon, 20 Sep 2021 06:16:21 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.475,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <20210916155404.86958-1-agraf@csgraf.de>
+ <CAFEAcA-LrvO7sg9gY0ZKnvXJyJuFc2Ej1Ve1245FZ7YkH-Oj2A@mail.gmail.com>
+In-Reply-To: <CAFEAcA-LrvO7sg9gY0ZKnvXJyJuFc2Ej1Ve1245FZ7YkH-Oj2A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Sep 2021 14:15:29 +0100
+Message-ID: <CAFEAcA_Hkqg16VbA1qACK4RG22iXHo8b3VZWQoBRZL0HuBazZA@mail.gmail.com>
+Subject: Re: [PATCH v12 00/10] hvf: Implement Apple Silicon Support
+To: Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, gshan@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NRRvukRu1+Xu
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ Peter Collingbourne <pcc@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EM3FgVg6Nf58
 
-The PL031 currently is not able to report guest RTC change to the QMP
-monitor as opposed to mc146818 or spapr RTCs. This patch adds the call
-to qapi_event_send_rtc_change() when the Load Register is written. The
-value which is reported corresponds to the difference between the guest
-reference time and the reference time kept in softmmu/rtc.c.
+On Mon, 20 Sept 2021 at 11:11, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Thu, 16 Sept 2021 at 16:54, Alexander Graf <agraf@csgraf.de> wrote:
+> >
+> > Now that Apple Silicon is widely available, people are obviously excited
+> > to try and run virtualized workloads on them, such as Linux and Windows.
+> >
+> > This patch set implements a fully functional version to get the ball
+> > going on that. With this applied, I can successfully run both Linux and
+> > Windows as guests. I am not aware of any limitations specific to
+> > Hypervisor.framework apart from:
+> >
+> >   - gdbstub debugging (breakpoints)
+> >   - missing GICv3 support
+> >   - Windows will not work due to UDEF SMC implementation
+> >
+> > To use hvf support, please make sure to run -M virt,highmem=off to fit
+> > in M1's physical address space limits and use -cpu host.
+>
+> Applied to target-arm.next, thanks (with the unnecessary #include
+> in patch 6 removed).
 
-For instance adding 20s to the guest RTC value will report 20. Adding
-an extra 20s to the guest RTC value will report 20 + 20 = 40.
+Turns out that the final patch breaks "make check-acceptance".
+All the orangepi boot tests timeout:
 
-The inclusion of qapi/qapi-types-misc-target.h in hw/rtl/pl031.c
-require to compile the PL031 with specific_ss.add() to avoid
-./qapi/qapi-types-misc-target.h:18:13: error: attempt to use poisoned
-"TARGET_<ARCH>".
+ (15/58) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
+INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+Timeout reached\nOriginal status: ERROR\n{'name':
+'15-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi',
+'logdir': '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/...
+(90.24 s)
+ (16/58) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd:
+INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+Timeout reached\nOriginal status: ERROR\n{'name':
+'16-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd',
+'logdir': '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang...
+(90.24 s)
+ (17/58) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd:
+INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+Timeout reached\nOriginal status: ERROR\n{'name':
+'17-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd',
+'logdir': '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tes...
+(90.24 s)
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+So I'm going to drop that one; we need to work out what's
+going wrong with the orangepi-pc machine.
 
----
-
-v1 -> v2:
-- Use Peter's implementation and remove subsection
-
-Tested with the following script run on guest:
-
-  #!/bin/sh
-  old=$(hwclock --show | cut -f1-7 -d' ')
-  oldabs=$(date +%s -d "$old")
-  newabs=$(expr $oldabs + $1)
-  new=$(date -d @"$newabs")
-  echo Old: $oldabs $old
-  echo New: $newabs $new
-  hwclock --set --date "$new"
-
-and compared with x86 behavior.
----
- hw/rtc/meson.build |  2 +-
- hw/rtc/pl031.c     | 10 +++++++++-
- 2 files changed, 10 insertions(+), 2 deletions(-)
-
-diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
-index 7cecdee5ddb..8fd8d8f9a71 100644
---- a/hw/rtc/meson.build
-+++ b/hw/rtc/meson.build
-@@ -2,7 +2,7 @@
- softmmu_ss.add(when: 'CONFIG_DS1338', if_true: files('ds1338.c'))
- softmmu_ss.add(when: 'CONFIG_M41T80', if_true: files('m41t80.c'))
- softmmu_ss.add(when: 'CONFIG_M48T59', if_true: files('m48t59.c'))
--softmmu_ss.add(when: 'CONFIG_PL031', if_true: files('pl031.c'))
-+specific_ss.add(when: 'CONFIG_PL031', if_true: files('pl031.c'))
- softmmu_ss.add(when: 'CONFIG_TWL92230', if_true: files('twl92230.c'))
- softmmu_ss.add(when: ['CONFIG_ISA_BUS', 'CONFIG_M48T59'], if_true: files('m48t59-isa.c'))
- softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP', if_true: files('xlnx-zynqmp-rtc.c'))
-diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
-index 2bbb2062ac8..e7ced90b025 100644
---- a/hw/rtc/pl031.c
-+++ b/hw/rtc/pl031.c
-@@ -24,6 +24,7 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "trace.h"
-+#include "qapi/qapi-events-misc-target.h"
- 
- #define RTC_DR      0x00    /* Data read register */
- #define RTC_MR      0x04    /* Match register */
-@@ -136,10 +137,17 @@ static void pl031_write(void * opaque, hwaddr offset,
-     trace_pl031_write(offset, value);
- 
-     switch (offset) {
--    case RTC_LR:
-+    case RTC_LR: {
-+        struct tm tm;
-+
-         s->tick_offset += value - pl031_get_count(s);
-+
-+        qemu_get_timedate(&tm, s->tick_offset);
-+        qapi_event_send_rtc_change(qemu_timedate_diff(&tm));
-+
-         pl031_set_alarm(s);
-         break;
-+    }
-     case RTC_MR:
-         s->mr = value;
-         pl031_set_alarm(s);
--- 
-2.26.3
-
+thanks
+-- PMM

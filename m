@@ -1,67 +1,68 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1860558lfp;
-        Mon, 20 Sep 2021 01:17:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxGEHMb+TYJmy2cp8iHsKhFz6g88s9StcHS7+i9eDXXqUgGwo0NfyGP2Z4VqAIuYdmAcfN0
-X-Received: by 2002:a5b:cd0:: with SMTP id e16mr2857402ybr.198.1632125841715;
-        Mon, 20 Sep 2021 01:17:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632125841; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1860676lfp;
+        Mon, 20 Sep 2021 01:17:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMvE496PoFE+M8K1SUKDedeIIxkmLk/dzKOE2ajMKgyOePEfoL5AaerA+BbvxrIwSXL0Bs
+X-Received: by 2002:a05:6638:3726:: with SMTP id k38mr18655424jav.105.1632125852593;
+        Mon, 20 Sep 2021 01:17:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632125852; cv=none;
         d=google.com; s=arc-20160816;
-        b=wSLELnePRYZM1GUrKRNManQTeZToFGFC1rFbD4O75XNZaVgo9DecLTSLggaPBNoexA
-         SapHZY8YtoKe1NL+Z4kryjr7PkeIYi6t93wailYgQKhzICHLs4FCB7BhJjtmBI22FxoZ
-         kY3+EzdI/wz72cTsNO/fVZ+WuVtN+gsQqzbowF58QBUP0R53byPxgdiI6QmB/NFaePdL
-         yRX/M9qoEZ0CPykNVPategfAhsAA7cbQMlbQg+bvGPIzu/XCJ4U3yIJafHb9roNAjmgH
-         w5Yq8rqAz4Hx3xLKyHCdiPwZ8IR8X5J8f9KSRUVcduj77y1J+ir+J6DrlS2BO/RQ70h3
-         Er/A==
+        b=dvbgScxxAcB8O0WkPT1+xovdaEyUDikV8c0hwZRXXOlkBaRUfDQETQ+oPJ71+JnEQS
+         teyRsrjw0PIHDEAWEkRyVALCHuTVxEVHhyhwc5oYAULLL4aoBDV7CmdzogaVXjLmzbyF
+         GbakYlJrlVzrd7DRYRKpic+qxoJZ1ovC50ZBzPIywZfLoLCslCpr1CMosiZSueqvrsqW
+         mL/M1jZ/fSo6nq9LoUJpBzi/9cfDbXcTq3gGJ7IvqDkBSZ3dyxwAUQUMMZMxH/yYM6Hy
+         YZOMEulgQRmn+ItiyULW5nnISeAWT2HlgGdCXatbP+DxmUT+SP8BUmDJ/Nf7apsh84is
+         UHyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=rcsQJX9BXBUjem9bi/u1cOmEbwSfgO8cym7reVUog6w=;
-        b=oKXXxLROOHxKf7BTJIJZRLkbnPx/7Zd3qrkA96Wf1xJe3wtSb3LIMEA63atBlV1kDs
-         aydHDZVLtTBikaCvAS2bCC/P13CpjED9xf5iKvBXq1Ina5/LzDHBwqTj9VK0nzjthSd2
-         3zPsU3fw9b1SodZ2pSmd1/ERL91fC8vaCGBh8ih/hoXGqRPjgA6R9Anq0T2x/XFnQn8N
-         hwHP1qdHHhxfBSNNysXps5+imXMEC8/ptmQDgu7r8achxtsQcWMjIFZ8Mlu4Bc/sReUR
-         4CRYbtIMO+ohmDHIwWK4SLmSdONkwRuERWtfbADZ/DWw0ZglpiHrT8ZhyV1KZJbcJ1VO
-         kDPg==
+        bh=dlioO2qDOTdgXyyxg2qo2UY4WuNHhoc3m+vqMgBeqnc=;
+        b=uRePe5DikqLbNr5071SjFeaie/ZicLpEsx8/E/dmn/DtetjNc0CYEnt34GgmG8wtc9
+         vYIx0y1A2PvIHm2IE0FXGJP7oEo3/e0TUBP3CBulh9dRmVGimt3tN37L1VPxf9H2uIBQ
+         WLG/v/LGfHIy0e2bkcT3C1aMXV7U5zH+um7C46ON6VT9P3z1WP8GPlo6GY4MAK1yudI1
+         MbaypAK5sPosOZf1befFKHmBK2nfESXoFu/HxqXNwmZmjm0LZWqvGQTec2jWbwPDYCAY
+         9sLe1oreX3Sz0Zyl9wxI6h+AmaWmZuFIDWJCwE1YMipmBU/OUwyfecbDW2WHD2FMhhWe
+         at+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y11si15393082ybk.450.2021.09.20.01.17.21
+        by mx.google.com with ESMTPS id x17si12433037ilc.170.2021.09.20.01.17.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 01:17:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Sep 2021 01:17:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60876 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60010 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSEUL-0000bz-1B
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:17:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48914)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mSEUV-0008RW-SH
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:17:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSENB-0004bX-It
- for qemu-arm@nongnu.org; Mon, 20 Sep 2021 04:09:57 -0400
-Received: from 2.mo552.mail-out.ovh.net ([178.33.105.233]:58315)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEN2-0004S2-VF
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:49 -0400
+Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:49009
+ helo=smtpout1.3005.mail-out.ovh.net)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMx-0003nN-3l
- for qemu-arm@nongnu.org; Mon, 20 Sep 2021 04:09:54 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.132])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 10450213E6;
- Mon, 20 Sep 2021 08:09:40 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMu-0003kn-GZ
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:48 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.194])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 2944F13ED32;
+ Mon, 20 Sep 2021 08:09:38 +0000 (UTC)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
- 2021 10:09:39 +0200
+ 2021 10:09:37 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005c8fe341e-af88-4fe2-b401-37be9b7af0ba,
+ (GARM-103G005222ad07f-5a88-458f-b753-d45f2ca0ca2b,
  C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 13/14] hw/arm/aspeed: Allow machine to set UART default
-Date: Mon, 20 Sep 2021 10:09:27 +0200
-Message-ID: <20210920080928.1055567-14-clg@kaod.org>
+Subject: [PULL 09/14] aspeed: Emulate the AST2600A3
+Date: Mon, 20 Sep 2021 10:09:23 +0200
+Message-ID: <20210920080928.1055567-10-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210920080928.1055567-1-clg@kaod.org>
 References: <20210920080928.1055567-1-clg@kaod.org>
@@ -71,164 +72,216 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 2f040a50-838b-4981-be80-b2d7606c4234
-X-Ovh-Tracer-Id: 4738631235959229289
+X-Ovh-Tracer-GUID: 93c1598a-7f64-453b-9907-c4794c1ba8e5
+X-Ovh-Tracer-Id: 4738349759285660454
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=178.33.105.233; envelope-from=clg@kaod.org;
- helo=2.mo552.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.3005.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kNoKIpVTyZAo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oLdK5FZRJwTz
 
-From: Peter Delevoryas <pdel@fb.com>
+From: Joel Stanley <joel@jms.id.au>
 
-When you run QEMU with an Aspeed machine and a single serial device
-using stdio like this:
+This is the latest revision of the ASPEED 2600 SoC. As there is no
+need to model multiple revisions of the same SoC for the moment,
+update the SCU AST2600 to model the A3 revision instead of the A1 and
+adapt the AST2600 SoC and machines.
 
-    qemu -machine ast2600-evb -drive ... -serial stdio
+Reset values are taken from v8 of the datasheet.
 
-The guest OS can read and write to the UART5 registers at 0x1E784000 and
-it will receive from stdin and write to stdout. The Aspeed SoC's have a
-lot more UART's though (AST2500 has 5, AST2600 has 13) and depending on
-the board design, may be using any of them as the serial console. (See
-"stdout-path" in a DTS to check which one is chosen).
-
-Most boards, including all of those currently defined in
-hw/arm/aspeed.c, just use UART5, but some use UART1. This change adds
-some flexibility for different boards without requiring users to change
-their command-line invocation of QEMU.
-
-I tested this doesn't break existing code by booting an AST2500 OpenBMC
-image and an AST2600 OpenBMC image, each using UART5 as the console.
-
-Then I tested switching the default to UART1 and booting an AST2600
-OpenBMC image that uses UART1, and that worked too.
-
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210901153615.2746885-2-pdel@fb.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+[ clg: - Introduced an Aspeed "ast2600-a3" SoC class
+       - Commit log update ]
+Message-Id: <20210629142336.750058-3-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/aspeed.h     | 1 +
- include/hw/arm/aspeed_soc.h | 1 +
- hw/arm/aspeed.c             | 3 +++
- hw/arm/aspeed_ast2600.c     | 8 ++++----
- hw/arm/aspeed_soc.c         | 8 +++++---
- 5 files changed, 14 insertions(+), 7 deletions(-)
+ include/hw/misc/aspeed_scu.h |  2 ++
+ hw/arm/aspeed.c              |  6 +++---
+ hw/arm/aspeed_ast2600.c      |  6 +++---
+ hw/misc/aspeed_scu.c         | 36 +++++++++++++++++++++++++++++-------
+ 4 files changed, 37 insertions(+), 13 deletions(-)
 
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index c9747b15fc5f..cbeacb214ca4 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -38,6 +38,7 @@ struct AspeedMachineClass {
-     uint32_t num_cs;
-     uint32_t macs_mask;
-     void (*i2c_init)(AspeedMachineState *bmc);
-+    uint32_t uart_default;
- };
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index d49bfb02fbdb..c14aff2bcbb5 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -43,6 +43,8 @@ struct AspeedSCUState {
+ #define AST2500_A1_SILICON_REV   0x04010303U
+ #define AST2600_A0_SILICON_REV   0x05000303U
+ #define AST2600_A1_SILICON_REV   0x05010303U
++#define AST2600_A2_SILICON_REV   0x05020303U
++#define AST2600_A3_SILICON_REV   0x05030303U
  
+ #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
  
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index d9161d26d645..87d76c92598b 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -65,6 +65,7 @@ struct AspeedSoCState {
-     AspeedSDHCIState sdhci;
-     AspeedSDHCIState emmc;
-     AspeedLPCState lpc;
-+    uint32_t uart_default;
- };
- 
- #define TYPE_ASPEED_SOC "aspeed-soc"
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 886e5992cdf3..7a9459340cf4 100644
+index 952fb2012a53..97964c7e0c53 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -350,6 +350,8 @@ static void aspeed_machine_init(MachineState *machine)
-         object_property_set_int(OBJECT(&bmc->soc), "hw-prot-key",
-                                 ASPEED_SCU_PROT_KEY, &error_abort);
-     }
-+    qdev_prop_set_uint32(DEVICE(&bmc->soc), "uart-default",
-+                         amc->uart_default);
-     qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+@@ -997,7 +997,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
  
-     memory_region_add_subregion(get_system_memory(),
-@@ -848,6 +850,7 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
-     mc->no_parallel = 1;
-     mc->default_ram_id = "ram";
-     amc->macs_mask = ASPEED_MAC0_ON;
-+    amc->uart_default = ASPEED_DEV_UART5;
+     mc->desc       = "Aspeed AST2600 EVB (Cortex-A7)";
+-    amc->soc_name  = "ast2600-a1";
++    amc->soc_name  = "ast2600-a3";
+     amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
+     amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
+     amc->fmc_model = "w25q512jv";
+@@ -1017,7 +1017,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
  
-     aspeed_machine_class_props_init(oc);
- }
+     mc->desc       = "OpenPOWER Tacoma BMC (Cortex-A7)";
+-    amc->soc_name  = "ast2600-a1";
++    amc->soc_name  = "ast2600-a3";
+     amc->hw_strap1 = TACOMA_BMC_HW_STRAP1;
+     amc->hw_strap2 = TACOMA_BMC_HW_STRAP2;
+     amc->fmc_model = "mx66l1g45g";
+@@ -1054,7 +1054,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
+     mc->desc       = "IBM Rainier BMC (Cortex-A7)";
+-    amc->soc_name  = "ast2600-a1";
++    amc->soc_name  = "ast2600-a3";
+     amc->hw_strap1 = RAINIER_BMC_HW_STRAP1;
+     amc->hw_strap2 = RAINIER_BMC_HW_STRAP2;
+     amc->fmc_model = "mx66l1g45g";
 diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 8e1993790e6f..9d70e8e060c6 100644
+index e3013128c670..8e1993790e6f 100644
 --- a/hw/arm/aspeed_ast2600.c
 +++ b/hw/arm/aspeed_ast2600.c
-@@ -322,10 +322,10 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
-     }
+@@ -516,9 +516,9 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
  
--    /* UART - attach an 8250 to the IO space as our UART5 */
--    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
--                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
--                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-+    /* UART - attach an 8250 to the IO space as our UART */
-+    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-+                   aspeed_soc_get_irq(s, s->uart_default), 38400,
-+                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+     dc->realize      = aspeed_soc_ast2600_realize;
  
-     /* I2C */
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 3ad6c56fa9a9..ed84502e238a 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -287,9 +287,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
-     }
+-    sc->name         = "ast2600-a1";
++    sc->name         = "ast2600-a3";
+     sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
+-    sc->silicon_rev  = AST2600_A1_SILICON_REV;
++    sc->silicon_rev  = AST2600_A3_SILICON_REV;
+     sc->sram_size    = 0x16400;
+     sc->spis_num     = 2;
+     sc->ehcis_num    = 2;
+@@ -530,7 +530,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+ }
  
--    /* UART - attach an 8250 to the IO space as our UART5 */
--    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
--                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
-+    /* UART - attach an 8250 to the IO space as our UART */
-+    serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
-+                   aspeed_soc_get_irq(s, s->uart_default), 38400,
-                    serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-     /* I2C */
-@@ -439,6 +439,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
- static Property aspeed_soc_properties[] = {
-     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-+    DEFINE_PROP_UINT32("uart-default", AspeedSoCState, uart_default,
-+                       ASPEED_DEV_UART5),
-     DEFINE_PROP_END_OF_LIST(),
+ static const TypeInfo aspeed_soc_ast2600_type_info = {
+-    .name           = "ast2600-a1",
++    .name           = "ast2600-a3",
+     .parent         = TYPE_ASPEED_SOC,
+     .instance_size  = sizeof(AspeedSoCState),
+     .instance_init  = aspeed_soc_ast2600_init,
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 40a38ebd8549..05edebedeb46 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -101,14 +101,24 @@
+ #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
+ #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
+ #define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
++#define AST2600_DEBUG_CTRL        TO_REG(0xC8)
++#define AST2600_DEBUG_CTRL2       TO_REG(0xD8)
+ #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+ #define AST2600_HPLL_PARAM        TO_REG(0x200)
+ #define AST2600_HPLL_EXT          TO_REG(0x204)
++#define AST2600_APLL_PARAM        TO_REG(0x210)
++#define AST2600_APLL_EXT          TO_REG(0x214)
++#define AST2600_MPLL_PARAM        TO_REG(0x220)
+ #define AST2600_MPLL_EXT          TO_REG(0x224)
++#define AST2600_EPLL_PARAM        TO_REG(0x240)
+ #define AST2600_EPLL_EXT          TO_REG(0x244)
++#define AST2600_DPLL_PARAM        TO_REG(0x260)
++#define AST2600_DPLL_EXT          TO_REG(0x264)
+ #define AST2600_CLK_SEL           TO_REG(0x300)
+ #define AST2600_CLK_SEL2          TO_REG(0x304)
+-#define AST2600_CLK_SEL3          TO_REG(0x310)
++#define AST2600_CLK_SEL3          TO_REG(0x308)
++#define AST2600_CLK_SEL4          TO_REG(0x310)
++#define AST2600_CLK_SEL5          TO_REG(0x314)
+ #define AST2600_HW_STRAP1         TO_REG(0x500)
+ #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+ #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+@@ -433,6 +443,8 @@ static uint32_t aspeed_silicon_revs[] = {
+     AST2500_A1_SILICON_REV,
+     AST2600_A0_SILICON_REV,
+     AST2600_A1_SILICON_REV,
++    AST2600_A2_SILICON_REV,
++    AST2600_A3_SILICON_REV,
  };
  
+ bool is_supported_silicon_rev(uint32_t silicon_rev)
+@@ -651,16 +663,26 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
+     .valid.unaligned = false,
+ };
+ 
+-static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
++static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+     [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
+-    [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
++    [AST2600_SYS_RST_CTRL2]     = 0x0DFFFFFC,
+     [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
+     [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
++    [AST2600_DEBUG_CTRL]        = 0x00000FFF,
++    [AST2600_DEBUG_CTRL2]       = 0x000000FF,
+     [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
+-    [AST2600_HPLL_PARAM]        = 0x1000405F,
++    [AST2600_HPLL_PARAM]        = 0x1000408F,
++    [AST2600_APLL_PARAM]        = 0x1000405F,
++    [AST2600_MPLL_PARAM]        = 0x1008405F,
++    [AST2600_EPLL_PARAM]        = 0x1004077F,
++    [AST2600_DPLL_PARAM]        = 0x1078405F,
++    [AST2600_CLK_SEL]           = 0xF3940000,
++    [AST2600_CLK_SEL2]          = 0x00700000,
++    [AST2600_CLK_SEL3]          = 0x00000000,
++    [AST2600_CLK_SEL4]          = 0xF3F40000,
++    [AST2600_CLK_SEL5]          = 0x30000000,
+     [AST2600_CHIP_ID0]          = 0x1234ABCD,
+     [AST2600_CHIP_ID1]          = 0x88884444,
+-
+ };
+ 
+ static void aspeed_ast2600_scu_reset(DeviceState *dev)
+@@ -675,7 +697,7 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev)
+      * of actual revision. QEMU and Linux only support A1 onwards so this is
+      * sufficient.
+      */
+-    s->regs[AST2600_SILICON_REV] = AST2600_A1_SILICON_REV;
++    s->regs[AST2600_SILICON_REV] = AST2600_A3_SILICON_REV;
+     s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
+     s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
+     s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
+@@ -689,7 +711,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
+ 
+     dc->desc = "ASPEED 2600 System Control Unit";
+     dc->reset = aspeed_ast2600_scu_reset;
+-    asc->resets = ast2600_a1_resets;
++    asc->resets = ast2600_a3_resets;
+     asc->calc_hpll = aspeed_2500_scu_calc_hpll; /* No change since AST2500 */
+     asc->apb_divider = 4;
+     asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
 -- 
 2.31.1
 

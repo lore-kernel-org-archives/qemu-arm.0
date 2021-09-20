@@ -1,115 +1,104 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1576537lfp;
-        Sun, 19 Sep 2021 15:34:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx8FFUyEgTfEwmxP8Y9AJM7N80Lk+62S3AStRh7P3RQUOE9kUcA6B+eSO7RqUrINqREYgdz
-X-Received: by 2002:a37:f605:: with SMTP id y5mr21326261qkj.505.1632090865209;
-        Sun, 19 Sep 2021 15:34:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632090865; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1693129lfp;
+        Sun, 19 Sep 2021 19:45:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz869h9B985ikdYtia+PQDGGva3Aqm1azGHn+A5u5GNJPRDqpAiOYBaEgmZxdStntCo0j7n
+X-Received: by 2002:ad4:54ea:: with SMTP id k10mr23029703qvx.25.1632105946278;
+        Sun, 19 Sep 2021 19:45:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632105946; cv=none;
         d=google.com; s=arc-20160816;
-        b=G5xew5YSMpPjCL4oKhh2SMqaxNzTnIhBKQi+LRy89ZTL5wM5iqjXDZCa05DY9dJOGG
-         Si9v+0o2gluGvMjLjk7X5XLSlnd44h7srIXgUuk9hwzpokL1kCO/H/GFFvwKVhOWdFY5
-         HCJlRpI+RL+IKJqKQnheIUvK2r+TySRNpre6yLLHil8DvMNhR+kYDEkLiG+DK/vb6+GW
-         R34/vL8BsF8Mxy9uTJX+zkaKb30K5Zg/UXMpv0yNUOTCSTofXSI+9iuaUe1BiTWG0CNZ
-         8k3K76/+fvbP7F/S2RH4j3Om1D+LiKFZQOgUCgUBW7JOjfwbjIFDxaAxOLHL4pauNNEw
-         WxTQ==
+        b=r1BfLdIG2t+B0ZawkHT+usIAtoYIXekOE0onYCMyV5ZLOFKYpMHripiW0WKvJHnvkz
+         6826fQZOHR2ojgkZaOLU6Q9R4oCXItAoWVr+1j4yUc0NZi34fiByBYJgWGe6R2aC/RIL
+         X3o5c3yv7uIWl1iiIkrTs3N+ZFVgdYBjTtft6J6vHU44zHG9JKk4F1SlaL33fJtVMuAO
+         1If6tAMjfxa1P4H5H7BCigJWPG6H5cfR+SZNHWO3eo0Hog+sEI3ns9YG8xTeHwI4wHGW
+         lv3zW2BXC0TI6H4Czf3sn8VMt/0nNC2/8uO6z06u7+5onbSYVf/z5wRhIXP5vjwPbmSC
+         eIRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=JjY/JjLJDJC/f2MYyieAToInvQGl9JzrnLCtUa1oBAA=;
-        b=AEic1DDV92ur1K5xQhoD4xCknLST0m0q81pvYSpasi2w/oU/06OV0roApkpjV3kk6q
-         WJpeWR525B/+xs2S8fd5xgF494HFCtru/lpLZrIfS9ixzCXEQe8/qSjHIblmxlpV/1u1
-         Mbz+bBaVRPNmUR4KiN1sTV5oG11IDDV/ylS6aZpFbrkiYc7gvtzM+XUGUluU/vGsvVAl
-         xAU2uRhIAYDArRQYjh1kwsgxGDy7IGXLO6huMpSzcv6WH1iCe8vyfIJLaFrCVS3wL0Op
-         WPCCbTnqinpcf86fsvmtvqFcicX20VzRZkN3VWp/m+bt1rYmtBzVn0aZFrWaW7lMgUo6
-         olCg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Zp6udU6vABHfcwT1lj6jsBUaWhiJFkUto34nvU8EJkI=;
+        b=u8bqdsvs4SX4+6io78tOJUeNefnXzTG83D3WQO+/2SO5Q7erYGb1bJORhR2V+n3YsM
+         CSTpus/0cKCkV7JB06MSo8J6SfBZdWMCYPQWtNDbflCB5MQk4w6HzwR0oM16TlN/QvGW
+         it7B9y5FG5km3xqPg2GUJ/gAMntDOzndTrj33e6kOMMwJ/4agV3/3ZNE+Lmi+eDqzZEc
+         IrRPCM5k3JHqOlkZbdczZTb3ev2fmc0Po4ZKtrfoCR9VLNVdEfn3iZGT8ExzrJ6MMvwX
+         u9PkNvDQsYYU3jm44+PpiZ+oOvrIS9ctKHzYbyNeN6leECZfTTEQolz9ps7+YTTqXYGt
+         wqVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A+yUj8so;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s0SpX4GR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j1si7973101qtl.232.2021.09.19.15.34.25
+        by mx.google.com with ESMTPS id s4si4871392qkp.291.2021.09.19.19.45.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 19 Sep 2021 15:34:25 -0700 (PDT)
+        Sun, 19 Sep 2021 19:45:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A+yUj8so;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s0SpX4GR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40504 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mS5OC-0006Im-Ma
-	for alex.bennee@linaro.org; Sun, 19 Sep 2021 18:34:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34410)
+	id 1mS9JR-0005DI-L6
+	for alex.bennee@linaro.org; Sun, 19 Sep 2021 22:45:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57410)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mS5O1-0006IX-RI
- for qemu-arm@nongnu.org; Sun, 19 Sep 2021 18:34:13 -0400
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:45855)
+ id 1mS9Ir-0005BO-UN
+ for qemu-arm@nongnu.org; Sun, 19 Sep 2021 22:45:10 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:44785)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mS5O0-0007Sm-Eo
- for qemu-arm@nongnu.org; Sun, 19 Sep 2021 18:34:13 -0400
-Received: by mail-pg1-x52a.google.com with SMTP id n18so15446733pgm.12
- for <qemu-arm@nongnu.org>; Sun, 19 Sep 2021 15:34:11 -0700 (PDT)
+ id 1mS9Iq-0008CT-5p
+ for qemu-arm@nongnu.org; Sun, 19 Sep 2021 22:45:09 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id s11so15860971pgr.11
+ for <qemu-arm@nongnu.org>; Sun, 19 Sep 2021 19:45:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=JjY/JjLJDJC/f2MYyieAToInvQGl9JzrnLCtUa1oBAA=;
- b=A+yUj8so78600iuDGrYEclUwDwjBKw8QTA5WkVOn4qiGTZk73bJwkE1RpTt3GU8Gj5
- 8F0bMBitbuW2Fv7/VUN36NU1eAZ8mo4PWAypl7m/AT+OXSAiL80JECE/d5k+VWqU+c4m
- iZuDLI23/rzup8sdfLCHON75zHm4qJh+82YMPrl5v4JhL7H3Okx94ZiRf8MZCUmTtyXV
- GACDNeQerxhCD6oLl3erCaiTMe1XMmNgeyPn17WCDGjsa4C5KFslheSd/p8/p9vK7Iaf
- MCIeewjci7mb1YME36IRWSkVzXumGgwFuX0UFZvgcm3gu1JBkhrLGchZFzZO0ItU3iX4
- 9ZkQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Zp6udU6vABHfcwT1lj6jsBUaWhiJFkUto34nvU8EJkI=;
+ b=s0SpX4GRTo/TlrZ+CXhb3V608xcbIPDzEApbITrgbFP3mE0i2/iEiIBrsfKloIVP/Q
+ S7fNEmAjqH64nJXfWqPf5X+Ivc9CGFHdH5iCn+w4sBBdaPvJRcI9q6jEiTo9YdS3FqCd
+ q3ArKGetbm1JDjuaPY8/Refwh3WMKFMn9RI1Bv4qW0pxH8w11V01uSfLfEAhnprjb5Oz
+ O6fZlJv/H8tCHn+BMicLAY+5mh9vvdnGU1I6Xj+ycfEJgr7ZWJztUN6KcHHbXgjWxlZI
+ XYG9+BJN5+YwfWzCTKmZNWHpwAG/XIFFG5J9Nupm+p7/elkeCxhxgxsUZDeAa18cqYLu
+ m/Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=JjY/JjLJDJC/f2MYyieAToInvQGl9JzrnLCtUa1oBAA=;
- b=xtqWdG2Sz5jDx9Tlacnief+z93BlZtqymyqECLUxRo0GuQTF8qY/BAuR0EEI/B7R5E
- MLSCobUJ0ImVJ3FJnUqZ3GhgHmhOklfsa3lhCG1KjCkgf52VmVpP6FwC77hllCqhGTWc
- U2PL05XMChwHadltcZIyStJeCepoRQd05ZZiC2yDWZjmdMjejcwz7K1dgtdF/0p2Iy86
- E/hbL2w1dC4xjRKp09RtznsIg8Ovy6tzAroQG/z6TeJ06krIGe7W1wcr533Rjm6vl1rH
- L+/DOh7ATSV7qVgc9ZVHcEmDoq1HwN1G+F4cJHGEmHZfdh4dgZLdkAEvi1EqlIuTQKIU
- EnWw==
-X-Gm-Message-State: AOAM532qb9WRjWO0FyO2FFUQWrMmQDGB1AkTr0oESaFbIRyAfDLIMlPP
- CERpUher9fdo80zTTDheGLRArhzOwc8Olg==
-X-Received: by 2002:a63:741b:: with SMTP id p27mr20886130pgc.140.1632090850723; 
- Sun, 19 Sep 2021 15:34:10 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.134.125])
- by smtp.gmail.com with ESMTPSA id l142sm5271094pfd.87.2021.09.19.15.34.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 19 Sep 2021 15:34:10 -0700 (PDT)
-Subject: Re: [PATCH v2 6/8] target/arm: Assert thumb pc is aligned
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210821195958.41312-1-richard.henderson@linaro.org>
- <20210821195958.41312-7-richard.henderson@linaro.org>
- <feb3dea5-99d4-05c6-ca38-5f7dbc31d08e@amsat.org>
+ bh=Zp6udU6vABHfcwT1lj6jsBUaWhiJFkUto34nvU8EJkI=;
+ b=z+ZBLDpobS7d9S2rs7oDNQDMUR6IEGw3k9HBrq9gsnefxLLBwxWhq3Z8p2bA/+5cCY
+ /2Zt2AmBSsH/FSC+G1ezCyrdnDxdd+ssdclHTOljm3ZM0wK4raOqmgq6MMp2vFUa5TaW
+ HNOXM9Xow8G4T7s5VF4p6v5kNHTYNA+tSfOnFgDZX68kyyOzVTIbbfdC0QEK5FUCvdKj
+ RqXOsu3QL5z4nyA6xppfCCAq538cIf75oqheqLRNOM1+VYKSZJKHmiPUaYidFVxYhnsU
+ Z6Db4852cTfkjjpMdxYjunAsljrlur3qQq5Bx3OUL/nI4PQTunMWErGOW6hmvyG9dbip
+ zx4g==
+X-Gm-Message-State: AOAM532n7rOQdiAqJcoMH3PgNSDzh4YLxN41TcbK6Q87i7Hm7vdI+SKX
+ TAwvbZQJuCi5dEVqZHxXXyIiKtZ+gXtK0A==
+X-Received: by 2002:a63:b448:: with SMTP id n8mr21467978pgu.31.1632105906228; 
+ Sun, 19 Sep 2021 19:45:06 -0700 (PDT)
+Received: from localhost.localdomain ([71.212.134.125])
+ by smtp.gmail.com with ESMTPSA id fh3sm16164767pjb.8.2021.09.19.19.45.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 19 Sep 2021 19:45:05 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <84cebf48-f2bc-93e4-468f-2dff88726362@linaro.org>
-Date: Sun, 19 Sep 2021 15:34:08 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 0/6] target/arm: Fix insn exception priorities
+Date: Sun, 19 Sep 2021 19:44:58 -0700
+Message-Id: <20210920024504.625965-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <feb3dea5-99d4-05c6-ca38-5f7dbc31d08e@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
  envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,15 +114,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qxXTCEm+vBcw
+X-TUID: rxqIt0l6Xun7
 
-On 8/21/21 1:46 PM, Philippe Mathieu-Daudé wrote:
->> +    /* Misaligned thumb PC is architecturally impossible. */
->> +    assert((dc->base.pc_next & 1) == 0);
-> 
-> What about using tcg_debug_assert() instead?
+Raise pc alignment faults.
+Fix single-step and pc-align priority over breakpoints.
+Not yet fixing insn abort priority over breakpoints.
 
-I don't think we want to let this one compile out.
+Based-on: 20210919015718.466207-1-richard.henderson@linaro.org
+("linux-user: Clean up siginfo_t handling")
+
+Changes for v3:
+  * Rebase on siginfo_t patch set -- while probably only
+    force_sig_fault is required, I suspect minor conflicts
+    with the other cleanups.
+  * Typo fix.
+
+Changes for v2:
+  * Handle the exceptions in cpu_loop.
+  * Fix how the instruction is raised for aa32 el1.
+  * Add pc alignment test cases.
 
 
 r~
+
+
+Richard Henderson (6):
+  linux-user/aarch64: Handle EC_PCALIGNMENT
+  linux-user/arm: Report SIGBUS and SIGSEGV correctly
+  target/arm: Take an exception if PC is misaligned
+  target/arm: Assert thumb pc is aligned
+  target/arm: Suppress bp for exceptions with more priority
+  tests/tcg: Add arm and aarch64 pc alignment tests
+
+ target/arm/helper.h               |  1 +
+ target/arm/syndrome.h             |  5 ++++
+ linux-user/aarch64/cpu_loop.c     | 44 +++++++++++++++++------------
+ linux-user/arm/cpu_loop.c         | 39 ++++++++++++++++++++++----
+ target/arm/debug_helper.c         | 23 ++++++++++++++++
+ target/arm/gdbstub.c              |  9 ++++--
+ target/arm/machine.c              |  9 ++++++
+ target/arm/tlb_helper.c           | 24 ++++++++++++++++
+ target/arm/translate-a64.c        | 23 ++++++++++++++--
+ target/arm/translate.c            | 42 +++++++++++++++++++++++-----
+ tests/tcg/aarch64/pcalign-a64.c   | 37 +++++++++++++++++++++++++
+ tests/tcg/arm/pcalign-a32.c       | 46 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  4 +--
+ tests/tcg/arm/Makefile.target     |  4 +++
+ 14 files changed, 274 insertions(+), 36 deletions(-)
+ create mode 100644 tests/tcg/aarch64/pcalign-a64.c
+ create mode 100644 tests/tcg/arm/pcalign-a32.c
+
+-- 
+2.25.1
+

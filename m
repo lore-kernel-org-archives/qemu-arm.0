@@ -1,67 +1,68 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2232923lfp;
-        Mon, 20 Sep 2021 09:29:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4VrB6wV7euFwUSjxZOJZgKIjcqyVc3/f3abUVFqIb6uAFD5HY+8jx0GCE9CONkz2rczZc
-X-Received: by 2002:a05:6102:1d5:: with SMTP id s21mr2573276vsq.21.1632155360789;
-        Mon, 20 Sep 2021 09:29:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632155360; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2233119lfp;
+        Mon, 20 Sep 2021 09:29:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxm12wuUuARn88pPbLHsrkoG37Kbl6f/eTyjS0OdSjsAI4WKBwbU0AaLgCP66T0uttN+1ly
+X-Received: by 2002:a67:d51d:: with SMTP id l29mr16335800vsj.46.1632155376169;
+        Mon, 20 Sep 2021 09:29:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632155376; cv=none;
         d=google.com; s=arc-20160816;
-        b=iN+HvZaJNxEXZWq7DuMNUNY+b+dsowzum/Y2mW7AnTcs6BZS40yfQP1KKHHZAuTqZq
-         GrncZJKrwJ1R9CDFmRMizz6JfvSe0wAGhPzWBucyK/HGtE/IJ6Hwscy2+UyFFZszTbg1
-         deSmYvm56oh9v5PwZshQdB90RBxpT+eqx3G6R7/XlipYKmozBq8OrgQ8jSr0sByZcbCr
-         etSU/PrzuHG5uenGKwvbkiw9uy6XxvnCxtwRB1uhrw4SUln0HisvuHh4yOqi8zYwpFg+
-         DgDEs63qzlIj+qq8h6jzUu0uSNJdqZKA0jntin1kLvXj4KoyGekVBgG6CDSijFCScx1N
-         DpTA==
+        b=iqlhXwGnZvRCS/6sAjPZq9d7nsDOWbEolY21El8mYvtUxDAQjdfODJnVyKRjemVfq4
+         C7mkkEYXsGMmnvFLbZdrLrXmcZSASESJkK6kz6apLszZ0ZR/pMInm5n5RxbW/aFWBkmQ
+         /pYm74w6GmL90atZwQ+abAY0BJ27hS6gVWFLzQ4+Ivjpt1YEKJq6zvo/7yGsinN5i4kW
+         IAI9JaFhSeiDNnZlBQD/ULZxjZG8zjOfys0t6aZd0IfP0V6O7Eqd35jpZGU0s7FM2iAZ
+         gx7UVk6Y5oscqK6RCGOV59wtUaHIZpHJon419WPXiKAjGWwpp9UfLUPK2t88MNhh7qWi
+         02Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=bOTQ+t7YYG5UrBoYyq6ChHBh1pltME1BIe8TCrs2xZ0=;
-        b=dutBtsOoDAGrAHCVO4iHXZHcosN4zt24LXCVZB1Vpyz/rPMR8ZjrAkrgTuur5B4rr2
-         m0C8/T+ThPHyInD7Rs74nJNF08BDczz2Ab0nisC7dTDlrnuTaBULqPMde27866885zLo
-         vfJb2ccvSuGhU7o6hAs9fx6ewaoVN3z0CGcOaf3awgI+SAxz/b0vb0I3INmf3RIpjML3
-         H03ljF45YKWMr+ofCUWZkwABwT8Yj3L/8jeyDWLPWQTA4xD5KfY2boS6FI3KQaG6ilo8
-         raKETdGVm++2zqSpwH1gDiYtikbEtOUIyhQ3Vug43mUTz7JPRvpY4jwY1btmKTI4Stgd
-         yTTQ==
+        bh=EJhp10D7CdEJAFDx4iA+2k3Ho966tZ8BD/+gwnJ9sI4=;
+        b=N69T3g0CUqPw0yY8k1+SyKqIEHK931S8tYvPtHzi10zB5TaoXN/IGxpd2FvW+K7CGL
+         P2Can19n3DbJ5O/eiT1r9a51P1Q0V/G3vWdGDXfbYFxpqov8sBVnIw4JKCyUeoqHbfED
+         sBifjXg/sppV8WiennGPipEQpwdkfbAG1Pe5Tr3JKPO1Ovc2JgGeK4V50Dg8ylO9q9WU
+         sof9GwKznoGQotIs8vGSpR0pPHCNlp2lY4mFLM7GJM+ZlejNSHuyMvHsM9WHaNOljmAg
+         s94tuXPk1F5q8K9CZEP7R5yNG6P+aKIGl1ktcZ8PjUU+6+GDGX4U5MrJbXaRRjnE1F8J
+         SnjA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17si798753vsr.58.2021.09.20.09.29.20
+        by mx.google.com with ESMTPS id e11si4212174vsk.443.2021.09.20.09.29.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 09:29:20 -0700 (PDT)
+        Mon, 20 Sep 2021 09:29:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60424 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33574 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSMAS-0007Cm-3e
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 12:29:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38042)
+	id 1mSMAh-00088p-Hq
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 12:29:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38058)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4g-0005pI-OM
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 12:23:22 -0400
-Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:38255)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4h-0005rQ-KE
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 12:23:23 -0400
+Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:56647)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4Y-0004B1-Sa
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 12:23:22 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.59])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 3B7B7207D8;
- Mon, 20 Sep 2021 16:23:12 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSM4Z-0004BV-Bi
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 12:23:23 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.249])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id C23C521105;
+ Mon, 20 Sep 2021 16:23:13 +0000 (UTC)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
- 2021 18:23:11 +0200
+ 2021 18:23:13 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005f75b5eae-513d-4ba4-8081-d9c26ab96ffb,
+ (GARM-103G00590717bd4-180c-44fb-8f52-d5f1a4ed08fa,
  C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 02/12] aspeed/smc: Introduce aspeed_smc_error() helper
-Date: Mon, 20 Sep 2021 18:22:59 +0200
-Message-ID: <20210920162309.1091711-3-clg@kaod.org>
+Subject: [PATCH v2 06/12] aspeed/smc: Remove the 'size' attribute from
+ AspeedSMCFlash
+Date: Mon, 20 Sep 2021 18:23:03 +0200
+Message-ID: <20210920162309.1091711-7-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210920162309.1091711-1-clg@kaod.org>
 References: <20210920162309.1091711-1-clg@kaod.org>
@@ -71,18 +72,18 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 5019d851-d7c8-41f2-9bf6-a2443dd74961
-X-Ovh-Tracer-Id: 13073668243715820326
+X-Ovh-Tracer-GUID: 06b2bcb9-70d4-45cd-a79a-798bb240de83
+X-Ovh-Tracer-Id: 13074231196813462377
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivddgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
- helo=8.mo548.mail-out.ovh.net
+Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
+ helo=7.mo552.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -97,284 +98,87 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dXjMFx6qwxzN
+X-TUID: rOYiGSXKwpJP
 
-It unifies the errors reported by the Aspeed SMC model and also
-removes some use of ctrl->name which will help us for the next
-patches.
+AspeedSMCFlash::size is only used to compute the initial size of the
+boot_rom region. Not very useful, so directly call memory_region_size()
+instead.
 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 97 +++++++++++++++++++++------------------------
- 1 file changed, 45 insertions(+), 52 deletions(-)
+ include/hw/ssi/aspeed_smc.h | 1 -
+ hw/arm/aspeed.c             | 7 ++++---
+ hw/ssi/aspeed_smc.c         | 5 ++---
+ 3 files changed, 6 insertions(+), 7 deletions(-)
 
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index f32f66f9a838..097bb6aaf5f8 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -34,7 +34,6 @@ typedef struct AspeedSMCFlash {
+     struct AspeedSMCState *controller;
+ 
+     uint8_t id;
+-    uint32_t size;
+ 
+     MemoryRegion mmio;
+ } AspeedSMCFlash;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 854413594d9e..f5916e81262e 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -376,6 +376,7 @@ static void aspeed_machine_init(MachineState *machine)
+     if (drive0) {
+         AspeedSMCFlash *fl = &bmc->soc.fmc.flashes[0];
+         MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
++        uint64_t size = memory_region_size(&fl->mmio);
+ 
+         /*
+          * create a ROM region using the default mapping window size of
+@@ -385,15 +386,15 @@ static void aspeed_machine_init(MachineState *machine)
+          */
+         if (ASPEED_MACHINE(machine)->mmio_exec) {
+             memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
+-                                     &fl->mmio, 0, fl->size);
++                                     &fl->mmio, 0, size);
+             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+                                         boot_rom);
+         } else {
+             memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
+-                                   fl->size, &error_abort);
++                                   size, &error_abort);
+             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+                                         boot_rom);
+-            write_boot_rom(drive0, FIRMWARE_ADDR, fl->size, &error_abort);
++            write_boot_rom(drive0, FIRMWARE_ADDR, size, &error_abort);
+         }
+     }
+ 
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 715f85007d5e..def1cb4c74c0 100644
+index 5466be631719..3e4221311a6d 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -513,6 +513,9 @@ static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
-     }
- }
+@@ -1186,11 +1186,10 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
  
-+#define aspeed_smc_error(fmt, ...)                                      \
-+    qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
-+
- static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
-                                      const AspeedSegments *new,
-                                      int cs)
-@@ -529,11 +532,11 @@ static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
- 
-         if (new->addr + new->size > seg.addr &&
-             new->addr < seg.addr + seg.size) {
--            qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment CS%d [ 0x%"
--                          HWADDR_PRIx" - 0x%"HWADDR_PRIx" ] overlaps with "
--                          "CS%d [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
--                          s->ctrl->name, cs, new->addr, new->addr + new->size,
--                          i, seg.addr, seg.addr + seg.size);
-+            aspeed_smc_error("new segment CS%d [ 0x%"
-+                             HWADDR_PRIx" - 0x%"HWADDR_PRIx" ] overlaps with "
-+                             "CS%d [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
-+                             cs, new->addr, new->addr + new->size,
-+                             i, seg.addr, seg.addr + seg.size);
-             return true;
-         }
-     }
-@@ -568,9 +571,8 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
- 
-     /* The start address of CS0 is read-only */
-     if (cs == 0 && seg.addr != s->ctrl->flash_window_base) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: Tried to change CS0 start address to 0x%"
--                      HWADDR_PRIx "\n", s->ctrl->name, seg.addr);
-+        aspeed_smc_error("Tried to change CS0 start address to 0x%"
-+                         HWADDR_PRIx, seg.addr);
-         seg.addr = s->ctrl->flash_window_base;
-         new = s->ctrl->segment_to_reg(s, &seg);
-     }
-@@ -584,9 +586,8 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
-         cs == s->ctrl->max_peripherals &&
-         seg.addr + seg.size != s->ctrl->segments[cs].addr +
-         s->ctrl->segments[cs].size) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: Tried to change CS%d end address to 0x%"
--                      HWADDR_PRIx "\n", s->ctrl->name, cs, seg.addr + seg.size);
-+        aspeed_smc_error("Tried to change CS%d end address to 0x%"
-+                         HWADDR_PRIx, cs, seg.addr + seg.size);
-         seg.size = s->ctrl->segments[cs].addr + s->ctrl->segments[cs].size -
-             seg.addr;
-         new = s->ctrl->segment_to_reg(s, &seg);
-@@ -596,17 +597,17 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
-     if (seg.size &&
-         (seg.addr + seg.size <= s->ctrl->flash_window_base ||
-          seg.addr > s->ctrl->flash_window_base + s->ctrl->flash_window_size)) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is invalid : "
--                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
--                      s->ctrl->name, cs, seg.addr, seg.addr + seg.size);
-+        aspeed_smc_error("new segment for CS%d is invalid : "
-+                         "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
-+                         cs, seg.addr, seg.addr + seg.size);
-         return;
+         fl->id = i;
+         fl->controller = s;
+-        fl->size = asc->segments[i].size;
+         memory_region_init_io(&fl->mmio, OBJECT(s), &aspeed_smc_flash_ops,
+-                              fl, name, fl->size);
++                              fl, name, asc->segments[i].size);
+         memory_region_add_subregion(&s->mmio_flash, offset, &fl->mmio);
+-        offset += fl->size;
++        offset += asc->segments[i].size;
      }
  
-     /* Check start address vs. alignment */
-     if (seg.size && !QEMU_IS_ALIGNED(seg.addr, seg.size)) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is not "
--                      "aligned : [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
--                      s->ctrl->name, cs, seg.addr, seg.addr + seg.size);
-+        aspeed_smc_error("new segment for CS%d is not "
-+                         "aligned : [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
-+                         cs, seg.addr, seg.addr + seg.size);
-     }
- 
-     /* And segments should not overlap (in the specs) */
-@@ -619,16 +620,15 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
- static uint64_t aspeed_smc_flash_default_read(void *opaque, hwaddr addr,
-                                               unsigned size)
- {
--    qemu_log_mask(LOG_GUEST_ERROR, "%s: To 0x%" HWADDR_PRIx " of size %u"
--                  PRIx64 "\n", __func__, addr, size);
-+    aspeed_smc_error("To 0x%" HWADDR_PRIx " of size %u" PRIx64, addr, size);
-     return 0;
- }
- 
- static void aspeed_smc_flash_default_write(void *opaque, hwaddr addr,
-                                            uint64_t data, unsigned size)
- {
--    qemu_log_mask(LOG_GUEST_ERROR, "%s: To 0x%" HWADDR_PRIx " of size %u: 0x%"
--                  PRIx64 "\n", __func__, addr, size, data);
-+    aspeed_smc_error("To 0x%" HWADDR_PRIx " of size %u: 0x%" PRIx64,
-+                     addr, size, data);
- }
- 
- static const MemoryRegionOps aspeed_smc_flash_default_ops = {
-@@ -671,8 +671,8 @@ static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
-     }
- 
-     if (!cmd) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: no command defined for mode %d\n",
--                      __func__, aspeed_smc_flash_mode(fl));
-+        aspeed_smc_error("no command defined for mode %d",
-+                         aspeed_smc_flash_mode(fl));
-     }
- 
-     return cmd;
-@@ -716,11 +716,9 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
- 
-     s->ctrl->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->id], &seg);
-     if ((addr % seg.size) != addr) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid address 0x%08x for CS%d segment : "
--                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
--                      s->ctrl->name, addr, fl->id, seg.addr,
--                      seg.addr + seg.size);
-+        aspeed_smc_error("invalid address 0x%08x for CS%d segment : "
-+                         "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
-+                         addr, fl->id, seg.addr, seg.addr + seg.size);
-         addr %= seg.size;
-     }
- 
-@@ -796,8 +794,7 @@ static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigned size)
-         aspeed_smc_flash_unselect(fl);
-         break;
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
--                      __func__, aspeed_smc_flash_mode(fl));
-+        aspeed_smc_error("invalid flash mode %d", aspeed_smc_flash_mode(fl));
-     }
- 
-     trace_aspeed_smc_flash_read(fl->id, addr, size, ret,
-@@ -914,8 +911,7 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
-                                  aspeed_smc_flash_mode(fl));
- 
-     if (!aspeed_smc_is_writable(fl)) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: flash is not writable at 0x%"
--                      HWADDR_PRIx "\n", __func__, addr);
-+        aspeed_smc_error("flash is not writable at 0x%" HWADDR_PRIx, addr);
-         return;
-     }
- 
-@@ -940,8 +936,7 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
-         aspeed_smc_flash_unselect(fl);
-         break;
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
--                      __func__, aspeed_smc_flash_mode(fl));
-+        aspeed_smc_error("invalid flash mode %d", aspeed_smc_flash_mode(fl));
-     }
- }
- 
-@@ -1067,7 +1062,7 @@ static uint8_t aspeed_smc_hclk_divisor(uint8_t hclk_mask)
-         }
-     }
- 
--    qemu_log_mask(LOG_GUEST_ERROR, "invalid HCLK mask %x", hclk_mask);
-+    aspeed_smc_error("invalid HCLK mask %x", hclk_mask);
-     return 0;
- }
- 
-@@ -1147,8 +1142,7 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
-     uint32_t data;
- 
-     if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: invalid direction for DMA checksum\n",  __func__);
-+        aspeed_smc_error("invalid direction for DMA checksum");
-         return;
-     }
- 
-@@ -1160,8 +1154,8 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
-         data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
-                                     MEMTXATTRS_UNSPECIFIED, &result);
-         if (result != MEMTX_OK) {
--            qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%08x\n",
--                          __func__, s->regs[R_DMA_FLASH_ADDR]);
-+            aspeed_smc_error("Flash read failed @%08x",
-+                             s->regs[R_DMA_FLASH_ADDR]);
-             return;
-         }
-         trace_aspeed_smc_dma_checksum(s->regs[R_DMA_FLASH_ADDR], data);
-@@ -1196,32 +1190,32 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-             data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-                                         MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM read failed @%08x\n",
--                              __func__, s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM read failed @%08x",
-+                                 s->regs[R_DMA_DRAM_ADDR]);
-                 return;
-             }
- 
-             address_space_stl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
-                                  data, MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash write failed @%08x\n",
--                              __func__, s->regs[R_DMA_FLASH_ADDR]);
-+                aspeed_smc_error("Flash write failed @%08x",
-+                                 s->regs[R_DMA_FLASH_ADDR]);
-                 return;
-             }
-         } else {
-             data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
-                                         MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%08x\n",
--                              __func__, s->regs[R_DMA_FLASH_ADDR]);
-+                aspeed_smc_error("Flash read failed @%08x",
-+                                 s->regs[R_DMA_FLASH_ADDR]);
-                 return;
-             }
- 
-             address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-                                  data, MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM write failed @%08x\n",
--                              __func__, s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM write failed @%08x",
-+                                 s->regs[R_DMA_DRAM_ADDR]);
-                 return;
-             }
-         }
-@@ -1281,7 +1275,7 @@ static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
-     }
- 
-     if (aspeed_smc_dma_in_progress(s)) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA in progress\n",  __func__);
-+        aspeed_smc_error("DMA in progress !");
-         return;
-     }
- 
-@@ -1303,7 +1297,7 @@ static inline bool aspeed_smc_dma_granted(AspeedSMCState *s)
-     }
- 
-     if (!(s->regs[R_DMA_CTRL] & DMA_CTRL_GRANT)) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
-+        aspeed_smc_error("DMA not granted");
-         return false;
-     }
- 
-@@ -1328,7 +1322,7 @@ static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
-     }
- 
-     if (!aspeed_smc_dma_granted(s)) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
-+        aspeed_smc_error("DMA not granted");
-         return;
-     }
- 
-@@ -1434,8 +1428,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
- 
-     /* Enforce some real HW limits */
-     if (s->num_cs > s->ctrl->max_peripherals) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: num_cs cannot exceed: %d\n",
--                      __func__, s->ctrl->max_peripherals);
-+        aspeed_smc_error("num_cs cannot exceed: %d", s->ctrl->max_peripherals);
-         s->num_cs = s->ctrl->max_peripherals;
-     }
- 
+     /* DMA support */
 -- 
 2.31.1
 

@@ -1,67 +1,67 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1864598lfp;
-        Mon, 20 Sep 2021 01:24:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw2K42b7w6vrL7Ix04hNuNxhZ3EHPBMrOwwgR3IZrpngI3MSowS+/bo+7v3EEgBH+2mlR+V
-X-Received: by 2002:a25:8881:: with SMTP id d1mr1302105ybl.289.1632126243461;
-        Mon, 20 Sep 2021 01:24:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632126243; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1866095lfp;
+        Mon, 20 Sep 2021 01:26:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrXD5iJ5Z8yAtkPtiCWld3a1s83kmwwueZ7ky/MlahN7WXBCf8ZU0lxGCxP3gGgX0/SQc8
+X-Received: by 2002:a92:cb43:: with SMTP id f3mr17335193ilq.261.1632126395998;
+        Mon, 20 Sep 2021 01:26:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632126395; cv=none;
         d=google.com; s=arc-20160816;
-        b=eGX1vA/z016CarOkCTSj+V6qx3GadhhaF0JCpg8AjkYMOSOTe+4DBjvLRJljgMVszQ
-         dCOuhO2b6DvcdMyoqraU8GBt511r2SCP8n7+q+Xz7tuijr7E9l28WnL3jIZfh64m0VFT
-         UhjGv8fkZHgzXWwJmaL0mc0DgoYjdxLHv/mrzM3mz+BmyzuQfOpErzTzlrFEqg/X+z/q
-         m3MwcocioSOPtTApB0xW+xnbZf5of4YX7AoPunBrkZQEMxrDoeexEimxH+8XNJDo/DvT
-         lvTvePeEx+vzNAOXtK5cJFHeALF9/Hs42eCEnS7oRnx+W35ZoLLDlkNoK7l22cBLVBhr
-         wqPw==
+        b=uY55JUBS6Zfb20vm5FgVQSzZErfO8PS4iCb8TCddtu7+HoHPu2xtShSzeFPXrWxInE
+         cb8akBhkugVSMuMMD0U+LZ2TQ9FlbfwYGveqZgtJ1nhFr/eeEBeJYkC4JC7bqPLkIPRC
+         v6kR9Bnd+l/DS3F4SNwAGNJ3YDyAGXQvvV/Z3vCaWdlojv1JWAx6olD4uo1jSwioerjZ
+         +YO7Ksz5fdIDWo+94OgvTuK8FyOXSsuNRj7BAmIunDnAyuw0+eg6Ttyc+jMBgTVqUUWD
+         Iz90u/aw+9Yd/eztKkJAogs/AjI55t+u8TypRiJgKSlv0GlhAC8YYh4EFXCW++IC2njZ
+         QxnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=3d4gR1wBln2H8pcXFN1TcAuGpIkQ95GXrC8Q+NYnopI=;
-        b=zPPVJ1QA3KPxRVP91suj0eNovgVJVB7CVSu3vm3X1XXXnjcw/3u6eJyBCzpFJ0dpfP
-         FHdo3kJbYU/YnMJuLor9D9nfBf4wLTphb9rOgHZ2Hs177Mxxu8Xlcwu30qNVIADEwnF/
-         ynccqTLW5KVCmYgIedOhlQfiwei9Yi3Szf+oAAj/f/hAaNZbRAYrUBGmyEFmcPVmWVnA
-         SL4EVzAz1C+nrNVdX1WRgWpfsEEGmMueQHoxV3Y3VCo/oIW0LyKlKaZZJWMShcYX/DQn
-         HpQpGcZbwwYFnET+re8VJPPzsCiraEyTeujZ8oDM8/yO1d+NW8U0wiDegxVVpzuTUE6I
-         8vyg==
+        bh=P+JJJI6Uo0xcSiTF9pukvXb6emPW4eZTsVjWSO5AR0Y=;
+        b=mbRV23gXNctCiDL8pH9W52OF0o+SrmgST/IcIajK1Jn9vehU9SAK9GAk+w7kkOaGka
+         Vf4/EYTRZfE1ebIG1lz/IFjBaRPlNBcbJ7Z88z+G3dpoWvH9rB+Pfnws7INZyDefUf0a
+         KNOuA0eSmEig4VwGmYIZk3/+/OEOEFSwos9cxyRDmviY4SBSf6yVQA146k6pRVn92jEs
+         ECZ/dOOtNdOROrx0wFyjAgScWzUi/0mJkVnf3B9Y590T/p2K+2QTrn1RMYIfB89dXIpH
+         yaKvFHlxG9O5CF7wJ0yx72L1RHejzVH0qWDolMtMKZud0X12OETatXnjiB3L1UZ6LjZ/
+         PWRg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si16906684ybp.365.2021.09.20.01.24.03
+        by mx.google.com with ESMTPS id j26si9833545ila.62.2021.09.20.01.26.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 01:24:03 -0700 (PDT)
+        Mon, 20 Sep 2021 01:26:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49898 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56734 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSEao-0003uo-Pd
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:24:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48798)
+	id 1mSEdH-0008T3-AG
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:26:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEN4-0004VO-CW
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:50 -0400
-Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:49765)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEN5-0004Yt-FC
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:51 -0400
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:55687)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMu-0003kT-R0
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:50 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.250])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 279DD13ED31;
- Mon, 20 Sep 2021 08:09:37 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMw-0003n6-Gw
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:51 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.132])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id D30B0213EB;
+ Mon, 20 Sep 2021 08:09:38 +0000 (UTC)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
- 2021 10:09:36 +0200
+ 2021 10:09:38 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G00547bdde27-116f-4ebd-a55d-41fed39391ba,
+ (GARM-103G0057e7e383f-7c6c-4ffe-9ce7-8174610d67a9,
  C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 06/14] hw: aspeed_gpio: Clarify GPIO controller name
-Date: Mon, 20 Sep 2021 10:09:20 +0200
-Message-ID: <20210920080928.1055567-7-clg@kaod.org>
+Subject: [PULL 10/14] hw/misc: Add Infineon DPS310 sensor model
+Date: Mon, 20 Sep 2021 10:09:24 +0200
+Message-ID: <20210920080928.1055567-11-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210920080928.1055567-1-clg@kaod.org>
 References: <20210920080928.1055567-1-clg@kaod.org>
@@ -71,19 +71,19 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: ef4cb61f-2a4e-4d7d-b643-db99e2404752
-X-Ovh-Tracer-Id: 4737786810021874537
+X-Ovh-Tracer-GUID: e1b5babb-280d-4059-8697-fd58a3d3acaf
+X-Ovh-Tracer-Id: 4738349761279855398
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout3.3005.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpedtledttedvgfehkeefuddugeektdelgffhfeekudeiheeigfethfethfekvdevveenucffohhmrghinhepihhnfhhinhgvohhnrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,119 +96,305 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Rashmica Gupta <rashmica.g@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TlDm6SIxJuyk
+X-TUID: 0NNecvGbi/G6
 
 From: Joel Stanley <joel@jms.id.au>
 
-There are two GPIO controllers in the ast2600; one is 3.3V and the other
-is 1.8V.
+This contains some hardcoded register values that were obtained from the
+hardware after reading the temperature.
+
+It does enough to test the Linux kernel driver. The FIFO mode, IRQs and
+operation modes other than the default as used by Linux are not modelled.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Rashmica Gupta <rashmica.g@gmail.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210713065854.134634-4-joel@jms.id.au>
+Message-Id: <20210616073358.750472-2-joel@jms.id.au>
+[ clg: - Fixed sequential reading
+       - Reworked regs_reset_state array
+       - Moved model under hw/sensor/ ]
+Message-Id: <20210629142336.750058-4-clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/gpio/aspeed_gpio.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ hw/sensor/dps310.c    | 225 ++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig        |   1 +
+ hw/sensor/Kconfig     |   4 +
+ hw/sensor/meson.build |   1 +
+ 4 files changed, 231 insertions(+)
+ create mode 100644 hw/sensor/dps310.c
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index dc721aec5da7..dfa6d6cb40a9 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -164,12 +164,12 @@
- #define GPIO_YZAAAB_DIRECTION      (0x1E4 >> 2)
- #define GPIO_AC_DATA_VALUE         (0x1E8 >> 2)
- #define GPIO_AC_DIRECTION          (0x1EC >> 2)
--#define GPIO_3_6V_MEM_SIZE         0x1F0
--#define GPIO_3_6V_REG_ARRAY_SIZE   (GPIO_3_6V_MEM_SIZE >> 2)
-+#define GPIO_3_3V_MEM_SIZE         0x1F0
-+#define GPIO_3_3V_REG_ARRAY_SIZE   (GPIO_3_3V_MEM_SIZE >> 2)
+diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
+new file mode 100644
+index 000000000000..d60a18ac41bb
+--- /dev/null
++++ b/hw/sensor/dps310.c
+@@ -0,0 +1,225 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Copyright 2017-2021 Joel Stanley <joel@jms.id.au>, IBM Corporation
++ *
++ * Infineon DPS310 temperature and humidity sensor
++ *
++ * https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/hw.h"
++#include "hw/i2c/i2c.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "migration/vmstate.h"
++
++#define NUM_REGISTERS   0x33
++
++typedef struct DPS310State {
++    /*< private >*/
++    I2CSlave i2c;
++
++    /*< public >*/
++    uint8_t regs[NUM_REGISTERS];
++
++    uint8_t len;
++    uint8_t pointer;
++
++} DPS310State;
++
++#define TYPE_DPS310 "dps310"
++#define DPS310(obj) OBJECT_CHECK(DPS310State, (obj), TYPE_DPS310)
++
++#define DPS310_PRS_B2           0x00
++#define DPS310_PRS_B1           0x01
++#define DPS310_PRS_B0           0x02
++#define DPS310_TMP_B2           0x03
++#define DPS310_TMP_B1           0x04
++#define DPS310_TMP_B0           0x05
++#define DPS310_PRS_CFG          0x06
++#define DPS310_TMP_CFG          0x07
++#define  DPS310_TMP_RATE_BITS   (0x70)
++#define DPS310_MEAS_CFG         0x08
++#define  DPS310_MEAS_CTRL_BITS  (0x07)
++#define   DPS310_PRESSURE_EN    BIT(0)
++#define   DPS310_TEMP_EN        BIT(1)
++#define   DPS310_BACKGROUND     BIT(2)
++#define  DPS310_PRS_RDY         BIT(4)
++#define  DPS310_TMP_RDY         BIT(5)
++#define  DPS310_SENSOR_RDY      BIT(6)
++#define  DPS310_COEF_RDY        BIT(7)
++#define DPS310_CFG_REG          0x09
++#define DPS310_RESET            0x0c
++#define  DPS310_RESET_MAGIC     (BIT(0) | BIT(3))
++#define DPS310_COEF_BASE        0x10
++#define DPS310_COEF_LAST        0x21
++#define DPS310_COEF_SRC         0x28
++
++static void dps310_reset(DeviceState *dev)
++{
++    DPS310State *s = DPS310(dev);
++
++    static const uint8_t regs_reset_state[sizeof(s->regs)] = {
++        0xfe, 0x2f, 0xee, 0x02, 0x69, 0xa6, 0x00, 0x80, 0xc7, 0x00, 0x00, 0x00,
++        0x00, 0x10, 0x00, 0x00, 0x0e, 0x1e, 0xdd, 0x13, 0xca, 0x5f, 0x21, 0x52,
++        0xf9, 0xc6, 0x04, 0xd1, 0xdb, 0x47, 0x00, 0x5b, 0xfb, 0x3a, 0x00, 0x00,
++        0x20, 0x49, 0x4e, 0xa5, 0x90, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x60, 0x15, 0x02
++    };
++
++    memcpy(s->regs, regs_reset_state, sizeof(s->regs));
++    s->pointer = 0;
++
++    /* TODO: assert these after some timeout ? */
++    s->regs[DPS310_MEAS_CFG] = DPS310_COEF_RDY | DPS310_SENSOR_RDY
++        | DPS310_TMP_RDY | DPS310_PRS_RDY;
++}
++
++static uint8_t dps310_read(DPS310State *s, uint8_t reg)
++{
++    if (reg >= sizeof(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: register 0x%02x out of bounds\n",
++                      __func__, s->pointer);
++        return 0xFF;
++    }
++
++    switch (reg) {
++    case DPS310_PRS_B2:
++    case DPS310_PRS_B1:
++    case DPS310_PRS_B0:
++    case DPS310_TMP_B2:
++    case DPS310_TMP_B1:
++    case DPS310_TMP_B0:
++    case DPS310_PRS_CFG:
++    case DPS310_TMP_CFG:
++    case DPS310_MEAS_CFG:
++    case DPS310_CFG_REG:
++    case DPS310_COEF_BASE...DPS310_COEF_LAST:
++    case DPS310_COEF_SRC:
++    case 0x32: /* Undocumented register to indicate workaround not required */
++        return s->regs[reg];
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: register 0x%02x unimplemented\n",
++                      __func__, reg);
++        return 0xFF;
++    }
++}
++
++static void dps310_write(DPS310State *s, uint8_t reg, uint8_t data)
++{
++    if (reg >= sizeof(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: register %d out of bounds\n",
++                      __func__, s->pointer);
++        return;
++    }
++
++    switch (reg) {
++    case DPS310_RESET:
++        if (data == DPS310_RESET_MAGIC) {
++            device_cold_reset(DEVICE(s));
++        }
++        break;
++    case DPS310_PRS_CFG:
++    case DPS310_TMP_CFG:
++    case DPS310_MEAS_CFG:
++    case DPS310_CFG_REG:
++        s->regs[reg] = data;
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: register 0x%02x unimplemented\n",
++                      __func__, reg);
++        return;
++    }
++}
++
++static uint8_t dps310_rx(I2CSlave *i2c)
++{
++    DPS310State *s = DPS310(i2c);
++
++    if (s->len == 1) {
++        return dps310_read(s, s->pointer++);
++    } else {
++        return 0xFF;
++    }
++}
++
++static int dps310_tx(I2CSlave *i2c, uint8_t data)
++{
++    DPS310State *s = DPS310(i2c);
++
++    if (s->len == 0) {
++        /*
++         * first byte is the register pointer for a read or write
++         * operation
++         */
++        s->pointer = data;
++        s->len++;
++    } else if (s->len == 1) {
++        dps310_write(s, s->pointer++, data);
++    }
++
++    return 0;
++}
++
++static int dps310_event(I2CSlave *i2c, enum i2c_event event)
++{
++    DPS310State *s = DPS310(i2c);
++
++    switch (event) {
++    case I2C_START_SEND:
++        s->pointer = 0xFF;
++        s->len = 0;
++        break;
++    case I2C_START_RECV:
++        if (s->len != 1) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid recv sequence\n",
++                          __func__);
++        }
++        break;
++    default:
++        break;
++    }
++
++    return 0;
++}
++
++static const VMStateDescription vmstate_dps310 = {
++    .name = "DPS310",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8(len, DPS310State),
++        VMSTATE_UINT8_ARRAY(regs, DPS310State, NUM_REGISTERS),
++        VMSTATE_UINT8(pointer, DPS310State),
++        VMSTATE_I2C_SLAVE(i2c, DPS310State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void dps310_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
++
++    k->event = dps310_event;
++    k->recv = dps310_rx;
++    k->send = dps310_tx;
++    dc->reset = dps310_reset;
++    dc->vmsd = &vmstate_dps310;
++}
++
++static const TypeInfo dps310_info = {
++    .name          = TYPE_DPS310,
++    .parent        = TYPE_I2C_SLAVE,
++    .instance_size = sizeof(DPS310State),
++    .class_init    = dps310_class_init,
++};
++
++static void dps310_register_types(void)
++{
++    type_register_static(&dps310_info);
++}
++
++type_init(dps310_register_types)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 78fdd1b93503..18832abf7d13 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -428,6 +428,7 @@ config ASPEED_SOC
+     select DS1338
+     select FTGMAC100
+     select I2C
++    select DPS310
+     select PCA9552
+     select SERIAL
+     select SMBUS_EEPROM
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index a2b55a4fdb2e..9c8a049b0686 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -6,6 +6,10 @@ config TMP421
+     bool
+     depends on I2C
  
- /* AST2600 only - 1.8V gpios */
- /*
-- * The AST2600 two copies of the GPIO controller: the same 3.6V gpios as the
-+ * The AST2600 two copies of the GPIO controller: the same 3.3V gpios as the
-  * AST2400 (memory offsets 0x0-0x198) and a second controller with 1.8V gpios
-  * (memory offsets 0x800-0x9D4).
-  */
-@@ -380,7 +380,7 @@ static uint32_t update_value_control_source(GPIOSets *regs, uint32_t old_value,
-     return new_value;
- }
- 
--static const AspeedGPIOReg aspeed_3_6v_gpios[GPIO_3_6V_REG_ARRAY_SIZE] = {
-+static const AspeedGPIOReg aspeed_3_3v_gpios[GPIO_3_3V_REG_ARRAY_SIZE] = {
-     /* Set ABCD */
-     [GPIO_ABCD_DATA_VALUE] =     { 0, gpio_reg_data_value },
-     [GPIO_ABCD_DIRECTION] =      { 0, gpio_reg_direction },
-@@ -800,7 +800,7 @@ static const GPIOSetProperties ast2500_set_props[] = {
-     [7] = {0x000000ff,  0x000000ff,  {"AC"} },
- };
- 
--static GPIOSetProperties ast2600_3_6v_set_props[] = {
-+static GPIOSetProperties ast2600_3_3v_set_props[] = {
-     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -927,7 +927,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 216;
-     agc->nr_gpio_sets = 7;
-     agc->gap = 196;
--    agc->reg_table = aspeed_3_6v_gpios;
-+    agc->reg_table = aspeed_3_3v_gpios;
- }
- 
- static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-@@ -938,17 +938,17 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_pins = 228;
-     agc->nr_gpio_sets = 8;
-     agc->gap = 220;
--    agc->reg_table = aspeed_3_6v_gpios;
-+    agc->reg_table = aspeed_3_3v_gpios;
- }
- 
--static void aspeed_gpio_ast2600_3_6v_class_init(ObjectClass *klass, void *data)
-+static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
- {
-     AspeedGPIOClass *agc = ASPEED_GPIO_CLASS(klass);
- 
--    agc->props = ast2600_3_6v_set_props;
-+    agc->props = ast2600_3_3v_set_props;
-     agc->nr_gpio_pins = 208;
-     agc->nr_gpio_sets = 7;
--    agc->reg_table = aspeed_3_6v_gpios;
-+    agc->reg_table = aspeed_3_3v_gpios;
- }
- 
- static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-@@ -984,10 +984,10 @@ static const TypeInfo aspeed_gpio_ast2500_info = {
-     .instance_init  = aspeed_gpio_init,
- };
- 
--static const TypeInfo aspeed_gpio_ast2600_3_6v_info = {
-+static const TypeInfo aspeed_gpio_ast2600_3_3v_info = {
-     .name           = TYPE_ASPEED_GPIO "-ast2600",
-     .parent         = TYPE_ASPEED_GPIO,
--    .class_init     = aspeed_gpio_ast2600_3_6v_class_init,
-+    .class_init     = aspeed_gpio_ast2600_3_3v_class_init,
-     .instance_init  = aspeed_gpio_init,
- };
- 
-@@ -1003,7 +1003,7 @@ static void aspeed_gpio_register_types(void)
-     type_register_static(&aspeed_gpio_info);
-     type_register_static(&aspeed_gpio_ast2400_info);
-     type_register_static(&aspeed_gpio_ast2500_info);
--    type_register_static(&aspeed_gpio_ast2600_3_6v_info);
-+    type_register_static(&aspeed_gpio_ast2600_3_3v_info);
-     type_register_static(&aspeed_gpio_ast2600_1_8v_info);
- }
- 
++config DPS310
++    bool
++    depends on I2C
++
+ config EMC141X
+     bool
+     depends on I2C
+diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+index 034e3e0207bc..059c4ca935b7 100644
+--- a/hw/sensor/meson.build
++++ b/hw/sensor/meson.build
+@@ -1,5 +1,6 @@
+ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+ softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
++softmmu_ss.add(when: 'CONFIG_DPS310', if_true: files('dps310.c'))
+ softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
+ softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
+ softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
 -- 
 2.31.1
 

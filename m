@@ -1,89 +1,124 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1860676lfp;
-        Mon, 20 Sep 2021 01:17:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMvE496PoFE+M8K1SUKDedeIIxkmLk/dzKOE2ajMKgyOePEfoL5AaerA+BbvxrIwSXL0Bs
-X-Received: by 2002:a05:6638:3726:: with SMTP id k38mr18655424jav.105.1632125852593;
-        Mon, 20 Sep 2021 01:17:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632125852; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1862024lfp;
+        Mon, 20 Sep 2021 01:19:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEJjyA2WAkox+taTZJOJKkh7IoTzkOSb6wBcx8twrr+l8oGe/IqujGig/8cMAg69KM1tdF
+X-Received: by 2002:a05:6e02:1562:: with SMTP id k2mr1940946ilu.263.1632125982080;
+        Mon, 20 Sep 2021 01:19:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632125982; cv=none;
         d=google.com; s=arc-20160816;
-        b=dvbgScxxAcB8O0WkPT1+xovdaEyUDikV8c0hwZRXXOlkBaRUfDQETQ+oPJ71+JnEQS
-         teyRsrjw0PIHDEAWEkRyVALCHuTVxEVHhyhwc5oYAULLL4aoBDV7CmdzogaVXjLmzbyF
-         GbakYlJrlVzrd7DRYRKpic+qxoJZ1ovC50ZBzPIywZfLoLCslCpr1CMosiZSueqvrsqW
-         mL/M1jZ/fSo6nq9LoUJpBzi/9cfDbXcTq3gGJ7IvqDkBSZ3dyxwAUQUMMZMxH/yYM6Hy
-         YZOMEulgQRmn+ItiyULW5nnISeAWT2HlgGdCXatbP+DxmUT+SP8BUmDJ/Nf7apsh84is
-         UHyQ==
+        b=XRmJTJRJDesEIvDcLyvZhAwEDrIgTfToue4zgyU5xzT5DVnlZMDisJwcdsAl1nL8Zg
+         Be9wv1EM2qivjCXlN0nskkFNAGITi16jlszDSCgk89elGlDF4Bb+Jjr/DfyLXxYK0g+k
+         V20mpDTOA5VqylIirmwRaSdCsLBZl2K2krbRVi6/2WmxwEbYeea5V+tOjHVcXF/l1OWQ
+         DFDpDyskkNjHWR0ueR/Wsp9CjE24AxE0Yfm2QmEkYC9tRQRO3V9sYNgR19hqnMpMAqRc
+         te/ydsEKPTql6394oiSUO4Zpi2yBEbHhT4QQoa0/hyCedK6158qpTe8j8ppkG50j9PBp
+         UmDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=dlioO2qDOTdgXyyxg2qo2UY4WuNHhoc3m+vqMgBeqnc=;
-        b=uRePe5DikqLbNr5071SjFeaie/ZicLpEsx8/E/dmn/DtetjNc0CYEnt34GgmG8wtc9
-         vYIx0y1A2PvIHm2IE0FXGJP7oEo3/e0TUBP3CBulh9dRmVGimt3tN37L1VPxf9H2uIBQ
-         WLG/v/LGfHIy0e2bkcT3C1aMXV7U5zH+um7C46ON6VT9P3z1WP8GPlo6GY4MAK1yudI1
-         MbaypAK5sPosOZf1befFKHmBK2nfESXoFu/HxqXNwmZmjm0LZWqvGQTec2jWbwPDYCAY
-         9sLe1oreX3Sz0Zyl9wxI6h+AmaWmZuFIDWJCwE1YMipmBU/OUwyfecbDW2WHD2FMhhWe
-         at+w==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=b65bQNSNGQEr40tkBHjYc2yyoVsni+DLvIwzWaEv1ic=;
+        b=T09+K7NIORnT9ZuxYt+n9ZMgiyG41ae+twu/rfpy+K1/cULbZYT2l2HFIrJwVuTje6
+         nbqS5nLUTQWyyxpJEiZ758wsx5cWXmPQ5Tex1yycMw8YyupMSyuK72bPWxp1p3uWmQ76
+         VpiVrqV1s38UJniu3RYGHoAvxjzinoO84S0Qh4Ur5QBNmigGgoJDNYtRc7bflmvcvw2N
+         PWD7zRE29srBc2sk2INIST/L+/2JbjltxCUBnxJ1fp9tUnMUrhwUf+74dR1Br+Jjwaaf
+         4h880dWgpVIeGLPg0ZqxkrQroloR1DB5YhQoLZs+Q01ypgCTzXLwIWKMt8bGbrHjnB1W
+         vcnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YigdhuhM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si12433037ilc.170.2021.09.20.01.17.32
+        by mx.google.com with ESMTPS id o3si911326ilk.81.2021.09.20.01.19.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 01:17:32 -0700 (PDT)
+        Mon, 20 Sep 2021 01:19:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60010 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YigdhuhM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37966 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSEUV-0008RW-SH
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:17:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48776)
+	id 1mSEWb-0004BS-Dr
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:19:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEN2-0004S2-VF
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:49 -0400
-Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:49009
- helo=smtpout1.3005.mail-out.ovh.net)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mSEOx-0007ul-1P
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:11:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40166)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMu-0003kn-GZ
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:48 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.194])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 2944F13ED32;
- Mon, 20 Sep 2021 08:09:38 +0000 (UTC)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
- 2021 10:09:37 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005222ad07f-5a88-458f-b753-d45f2ca0ca2b,
- C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 09/14] aspeed: Emulate the AST2600A3
-Date: Mon, 20 Sep 2021 10:09:23 +0200
-Message-ID: <20210920080928.1055567-10-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210920080928.1055567-1-clg@kaod.org>
-References: <20210920080928.1055567-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mSEOt-0005T4-UU
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:11:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1632125502;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=b65bQNSNGQEr40tkBHjYc2yyoVsni+DLvIwzWaEv1ic=;
+ b=YigdhuhMEXsCn68fFuSOZK7C52BQRDp3WAcndpyCSDuE9na7HXPP4EHz29SgxA/FGyFZwy
+ d1zAgCCYKbEtVsTuQ67i8QIMuhfWuT/3hT7pxjbrwBK3Um//vP3kPkjb4JsY6MfDqDNu9w
+ IdylOrkIk7zt+SX5IvL/BLPHzjx2Lsk=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-581-0v2Uv37zMIeqW2N7Qv0lKQ-1; Mon, 20 Sep 2021 04:11:42 -0400
+X-MC-Unique: 0v2Uv37zMIeqW2N7Qv0lKQ-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ l29-20020a50d6dd000000b003d80214566cso10512524edj.21
+ for <qemu-devel@nongnu.org>; Mon, 20 Sep 2021 01:11:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=b65bQNSNGQEr40tkBHjYc2yyoVsni+DLvIwzWaEv1ic=;
+ b=C7OMjHQN60HBhVfZsJ5hhrdTjhleY3HKf2oIw2Z9e+UB+QpbBM8vIRVQmFXPJUJDfi
+ nbSiWKwCnVTj3jlVOxnaDVFyj3h9DfaSp55dJvfQ2v/JhDuLN3YrXyW5aHj/q7DW+dl5
+ jj88eWIakknhLv8ngSmYySfqNav4JucnZgp/Sk/GVgf2dXFW7vamtQtaZkbEBSOLU3Jt
+ xBR3iCrixv735QM7aZEl3hUBybvOva2B8x/jsEOeLhUEV9Mf17wazklhIUL8f8yGsjWB
+ 90/qkU1vw1YP27n3m7+JSZjNLIXYNz4DEz/uw+URN+hAscUPVO0TUFFkoVAw2gtQPyLE
+ TmGQ==
+X-Gm-Message-State: AOAM533ixYAjpxCMufHy3iYc4KosF+9Li+x9ByFj0I3uIF+uADUUHelE
+ HEP8645Lg95LLyrCOKv+ZlqUuXdEXWK7zLx4gVG3pMiJ5hUe1C2bVAEOolPcVvYqTcExG21w664
+ L/HLYsDTz6hp6I4U=
+X-Received: by 2002:a05:6402:42ca:: with SMTP id
+ i10mr27721428edc.258.1632125500718; 
+ Mon, 20 Sep 2021 01:11:40 -0700 (PDT)
+X-Received: by 2002:a05:6402:42ca:: with SMTP id
+ i10mr27721396edc.258.1632125500497; 
+ Mon, 20 Sep 2021 01:11:40 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id m17sm5850853ejn.108.2021.09.20.01.11.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Sep 2021 01:11:40 -0700 (PDT)
+Date: Mon, 20 Sep 2021 10:11:38 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: Re: [PATCH v3 04/10] hw/arm/virt: Reject instantiation of multiple
+ IOMMUs
+Message-ID: <20210920101138.5fe6f728@redhat.com>
+In-Reply-To: <20210914142004.2433568-5-jean-philippe@linaro.org>
+References: <20210914142004.2433568-1-jean-philippe@linaro.org>
+ <20210914142004.2433568-5-jean-philippe@linaro.org>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 93c1598a-7f64-453b-9907-c4794c1ba8e5
-X-Ovh-Tracer-Id: 4738349759285660454
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.3005.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -97,191 +132,48 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
+ mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, ani@anisinha.ca,
+ pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oLdK5FZRJwTz
+X-TUID: w9Mqez8wlNum
 
-From: Joel Stanley <joel@jms.id.au>
+On Tue, 14 Sep 2021 15:19:59 +0100
+Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
 
-This is the latest revision of the ASPEED 2600 SoC. As there is no
-need to model multiple revisions of the same SoC for the moment,
-update the SCU AST2600 to model the A3 revision instead of the A1 and
-adapt the AST2600 SoC and machines.
+> We do not support instantiating multiple IOMMUs. Before adding a
+> virtio-iommu, check that no other IOMMU is present. This will detect
+> both "iommu=smmuv3" machine parameter and another virtio-iommu instance.
+> 
+> Fixes: 70e89132c9 ("hw/arm/virt: Add the virtio-iommu device tree mappings")
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> ---
+>  hw/arm/virt.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index f238766aa1..26069f943a 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2471,6 +2471,11 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+>          PCIDevice *pdev = PCI_DEVICE(dev);
+>  
+> +        if (vms->iommu != VIRT_IOMMU_NONE) {
+> +            error_setg(errp, "virt machine does not support multiple IOMMUs");
+> +            return;
+> +        }
 
-Reset values are taken from v8 of the datasheet.
+can you move check into 'pre_plug' callback?
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-[ clg: - Introduced an Aspeed "ast2600-a3" SoC class
-       - Commit log update ]
-Message-Id: <20210629142336.750058-3-clg@kaod.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/misc/aspeed_scu.h |  2 ++
- hw/arm/aspeed.c              |  6 +++---
- hw/arm/aspeed_ast2600.c      |  6 +++---
- hw/misc/aspeed_scu.c         | 36 +++++++++++++++++++++++++++++-------
- 4 files changed, 37 insertions(+), 13 deletions(-)
-
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index d49bfb02fbdb..c14aff2bcbb5 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -43,6 +43,8 @@ struct AspeedSCUState {
- #define AST2500_A1_SILICON_REV   0x04010303U
- #define AST2600_A0_SILICON_REV   0x05000303U
- #define AST2600_A1_SILICON_REV   0x05010303U
-+#define AST2600_A2_SILICON_REV   0x05020303U
-+#define AST2600_A3_SILICON_REV   0x05030303U
- 
- #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
- 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 952fb2012a53..97964c7e0c53 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -997,7 +997,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->desc       = "Aspeed AST2600 EVB (Cortex-A7)";
--    amc->soc_name  = "ast2600-a1";
-+    amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
-     amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
-     amc->fmc_model = "w25q512jv";
-@@ -1017,7 +1017,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->desc       = "OpenPOWER Tacoma BMC (Cortex-A7)";
--    amc->soc_name  = "ast2600-a1";
-+    amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = TACOMA_BMC_HW_STRAP1;
-     amc->hw_strap2 = TACOMA_BMC_HW_STRAP2;
-     amc->fmc_model = "mx66l1g45g";
-@@ -1054,7 +1054,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->desc       = "IBM Rainier BMC (Cortex-A7)";
--    amc->soc_name  = "ast2600-a1";
-+    amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = RAINIER_BMC_HW_STRAP1;
-     amc->hw_strap2 = RAINIER_BMC_HW_STRAP2;
-     amc->fmc_model = "mx66l1g45g";
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index e3013128c670..8e1993790e6f 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -516,9 +516,9 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
- 
-     dc->realize      = aspeed_soc_ast2600_realize;
- 
--    sc->name         = "ast2600-a1";
-+    sc->name         = "ast2600-a3";
-     sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
--    sc->silicon_rev  = AST2600_A1_SILICON_REV;
-+    sc->silicon_rev  = AST2600_A3_SILICON_REV;
-     sc->sram_size    = 0x16400;
-     sc->spis_num     = 2;
-     sc->ehcis_num    = 2;
-@@ -530,7 +530,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
- }
- 
- static const TypeInfo aspeed_soc_ast2600_type_info = {
--    .name           = "ast2600-a1",
-+    .name           = "ast2600-a3",
-     .parent         = TYPE_ASPEED_SOC,
-     .instance_size  = sizeof(AspeedSoCState),
-     .instance_init  = aspeed_soc_ast2600_init,
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 40a38ebd8549..05edebedeb46 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -101,14 +101,24 @@
- #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
- #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
- #define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
-+#define AST2600_DEBUG_CTRL        TO_REG(0xC8)
-+#define AST2600_DEBUG_CTRL2       TO_REG(0xD8)
- #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
- #define AST2600_HPLL_PARAM        TO_REG(0x200)
- #define AST2600_HPLL_EXT          TO_REG(0x204)
-+#define AST2600_APLL_PARAM        TO_REG(0x210)
-+#define AST2600_APLL_EXT          TO_REG(0x214)
-+#define AST2600_MPLL_PARAM        TO_REG(0x220)
- #define AST2600_MPLL_EXT          TO_REG(0x224)
-+#define AST2600_EPLL_PARAM        TO_REG(0x240)
- #define AST2600_EPLL_EXT          TO_REG(0x244)
-+#define AST2600_DPLL_PARAM        TO_REG(0x260)
-+#define AST2600_DPLL_EXT          TO_REG(0x264)
- #define AST2600_CLK_SEL           TO_REG(0x300)
- #define AST2600_CLK_SEL2          TO_REG(0x304)
--#define AST2600_CLK_SEL3          TO_REG(0x310)
-+#define AST2600_CLK_SEL3          TO_REG(0x308)
-+#define AST2600_CLK_SEL4          TO_REG(0x310)
-+#define AST2600_CLK_SEL5          TO_REG(0x314)
- #define AST2600_HW_STRAP1         TO_REG(0x500)
- #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
- #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
-@@ -433,6 +443,8 @@ static uint32_t aspeed_silicon_revs[] = {
-     AST2500_A1_SILICON_REV,
-     AST2600_A0_SILICON_REV,
-     AST2600_A1_SILICON_REV,
-+    AST2600_A2_SILICON_REV,
-+    AST2600_A3_SILICON_REV,
- };
- 
- bool is_supported_silicon_rev(uint32_t silicon_rev)
-@@ -651,16 +663,26 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
-     .valid.unaligned = false,
- };
- 
--static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-+static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
-     [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
--    [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
-+    [AST2600_SYS_RST_CTRL2]     = 0x0DFFFFFC,
-     [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
-     [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
-+    [AST2600_DEBUG_CTRL]        = 0x00000FFF,
-+    [AST2600_DEBUG_CTRL2]       = 0x000000FF,
-     [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
--    [AST2600_HPLL_PARAM]        = 0x1000405F,
-+    [AST2600_HPLL_PARAM]        = 0x1000408F,
-+    [AST2600_APLL_PARAM]        = 0x1000405F,
-+    [AST2600_MPLL_PARAM]        = 0x1008405F,
-+    [AST2600_EPLL_PARAM]        = 0x1004077F,
-+    [AST2600_DPLL_PARAM]        = 0x1078405F,
-+    [AST2600_CLK_SEL]           = 0xF3940000,
-+    [AST2600_CLK_SEL2]          = 0x00700000,
-+    [AST2600_CLK_SEL3]          = 0x00000000,
-+    [AST2600_CLK_SEL4]          = 0xF3F40000,
-+    [AST2600_CLK_SEL5]          = 0x30000000,
-     [AST2600_CHIP_ID0]          = 0x1234ABCD,
-     [AST2600_CHIP_ID1]          = 0x88884444,
--
- };
- 
- static void aspeed_ast2600_scu_reset(DeviceState *dev)
-@@ -675,7 +697,7 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev)
-      * of actual revision. QEMU and Linux only support A1 onwards so this is
-      * sufficient.
-      */
--    s->regs[AST2600_SILICON_REV] = AST2600_A1_SILICON_REV;
-+    s->regs[AST2600_SILICON_REV] = AST2600_A3_SILICON_REV;
-     s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
-     s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
-     s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
-@@ -689,7 +711,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
- 
-     dc->desc = "ASPEED 2600 System Control Unit";
-     dc->reset = aspeed_ast2600_scu_reset;
--    asc->resets = ast2600_a1_resets;
-+    asc->resets = ast2600_a3_resets;
-     asc->calc_hpll = aspeed_2500_scu_calc_hpll; /* No change since AST2500 */
-     asc->apb_divider = 4;
-     asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
--- 
-2.31.1
+(plug should not fail and just finish up whatever was
+verified/set by pre_plug, there are plans to remove errp
+argument from 'plug' callback)
+> +
+>          vms->iommu = VIRT_IOMMU_VIRTIO;
+>          vms->virtio_iommu_bdf = pci_get_bdf(pdev);
+>          create_virtio_iommu_dt_bindings(vms);
 

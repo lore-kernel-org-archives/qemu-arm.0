@@ -1,88 +1,121 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1866095lfp;
-        Mon, 20 Sep 2021 01:26:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzrXD5iJ5Z8yAtkPtiCWld3a1s83kmwwueZ7ky/MlahN7WXBCf8ZU0lxGCxP3gGgX0/SQc8
-X-Received: by 2002:a92:cb43:: with SMTP id f3mr17335193ilq.261.1632126395998;
-        Mon, 20 Sep 2021 01:26:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632126395; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1868820lfp;
+        Mon, 20 Sep 2021 01:31:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy62N7e21VS6gdVUghA0CVrZcdqLGDwQTmMJd/lmkmY0eDNc+j1DfuWMxMpUpKGRA2D0fVW
+X-Received: by 2002:a25:30c2:: with SMTP id w185mr29897763ybw.321.1632126669560;
+        Mon, 20 Sep 2021 01:31:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632126669; cv=none;
         d=google.com; s=arc-20160816;
-        b=uY55JUBS6Zfb20vm5FgVQSzZErfO8PS4iCb8TCddtu7+HoHPu2xtShSzeFPXrWxInE
-         cb8akBhkugVSMuMMD0U+LZ2TQ9FlbfwYGveqZgtJ1nhFr/eeEBeJYkC4JC7bqPLkIPRC
-         v6kR9Bnd+l/DS3F4SNwAGNJ3YDyAGXQvvV/Z3vCaWdlojv1JWAx6olD4uo1jSwioerjZ
-         +YO7Ksz5fdIDWo+94OgvTuK8FyOXSsuNRj7BAmIunDnAyuw0+eg6Ttyc+jMBgTVqUUWD
-         Iz90u/aw+9Yd/eztKkJAogs/AjI55t+u8TypRiJgKSlv0GlhAC8YYh4EFXCW++IC2njZ
-         QxnA==
+        b=WdxheF8w0k/M9Vz2/0TFMyLxjYeI8NYse0z3pt419wMPzQoVtj80MPRxkfdt1lbX0t
+         Z92kMKevr5MFwBz2B8AEHgwsDVy8eOcxBVR5E7AneK2ydJHpMBve/RCjgI2SMe58eAZM
+         OKy0odrRyWQHw0AnwcxIEXLTOtHa6phwnN+WMvlEEeBhJvmnGnyIb+ApzjT/RmTEe63f
+         KWcYuh8cJbLKFw0bIoSG4PaH+kWktQdAiU+D2VAsEz9hCo52ZIoiP+FrkIyNDKlDzzzW
+         ysvdUVSTWPyqaEO295GI99+JRBzwXBTNHOBb/mnZd8GO3kMkI2/Fbf6Xk6F3NBaU8peJ
+         gt7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=P+JJJI6Uo0xcSiTF9pukvXb6emPW4eZTsVjWSO5AR0Y=;
-        b=mbRV23gXNctCiDL8pH9W52OF0o+SrmgST/IcIajK1Jn9vehU9SAK9GAk+w7kkOaGka
-         Vf4/EYTRZfE1ebIG1lz/IFjBaRPlNBcbJ7Z88z+G3dpoWvH9rB+Pfnws7INZyDefUf0a
-         KNOuA0eSmEig4VwGmYIZk3/+/OEOEFSwos9cxyRDmviY4SBSf6yVQA146k6pRVn92jEs
-         ECZ/dOOtNdOROrx0wFyjAgScWzUi/0mJkVnf3B9Y590T/p2K+2QTrn1RMYIfB89dXIpH
-         yaKvFHlxG9O5CF7wJ0yx72L1RHejzVH0qWDolMtMKZud0X12OETatXnjiB3L1UZ6LjZ/
-         PWRg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=K9x+WD6TS4CFk48rbJLr6XhRkqodjN2Xw504dKrvQVo=;
+        b=m74G5MmZ3ppkm0aHcjUg/gkgo6apZb77Bs9D0HCVVNIb266ivFVmEoAgSEf0F+bdL6
+         XnZxoPccRNfHTPvrn5fX2t9ryov+9pFElXqsyvtbu60UtFH4ZpK1/xdvX2NSbTbhbsfF
+         Zwwdkn9ASqhnt9QYjges/n7ePhjbexNcTOknbzQzqw/+0zGlaMtBgZCOw7cjkYvbEhqS
+         N/pn9Lt5Sez1YDJDE7WgwpHVPJyTmzT0EU7k3jUFhKj3Lcj5Ht/OzSGyvjOqP4YhRUIc
+         kM5vjZ3d6+a0P9pWvquRheNHUObR33RaQ3RxMsEv4zPT3/R/GZh5MUYeQwfHPg5/Z2jE
+         DbOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KKicvi3a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j26si9833545ila.62.2021.09.20.01.26.35
+        by mx.google.com with ESMTPS id t3si15509321ybg.299.2021.09.20.01.31.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Sep 2021 01:26:35 -0700 (PDT)
+        Mon, 20 Sep 2021 01:31:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56734 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KKicvi3a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39120 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSEdH-0008T3-AG
-	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:26:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48826)
+	id 1mSEhg-0007GI-PJ
+	for alex.bennee@linaro.org; Mon, 20 Sep 2021 04:31:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51740)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEN5-0004Yt-FC
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:51 -0400
-Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:55687)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mSEbb-00072b-Jl
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:24:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:47298)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mSEMw-0003n6-Gw
- for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:09:51 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.132])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id D30B0213EB;
- Mon, 20 Sep 2021 08:09:38 +0000 (UTC)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 20 Sep
- 2021 10:09:38 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G0057e7e383f-7c6c-4ffe-9ce7-8174610d67a9,
- C584E5EC745A9DFF7B561FC81DF43D5934FDEC9F) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 10/14] hw/misc: Add Infineon DPS310 sensor model
-Date: Mon, 20 Sep 2021 10:09:24 +0200
-Message-ID: <20210920080928.1055567-11-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210920080928.1055567-1-clg@kaod.org>
-References: <20210920080928.1055567-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mSEbX-0007iZ-Ec
+ for qemu-devel@nongnu.org; Mon, 20 Sep 2021 04:24:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1632126286;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=K9x+WD6TS4CFk48rbJLr6XhRkqodjN2Xw504dKrvQVo=;
+ b=KKicvi3arg/Lgahhnb+WrfV9PYiZ7TkBLK+9Jx/ahjdSbx/gAQD7Wr8IPSJ6fOEJrVXF3H
+ WRaD7H0gAaRq4wTatqMn30LsG5TTP7Nw6InLbbVNCH8CR0fsV72Q8pPeWiCkWGG6SreERH
+ LUtD/HgMK8Eh8xP0cNBTuBaZMEs6o2U=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-324-zBu6J7vCNaGuVn7QJ8euCQ-1; Mon, 20 Sep 2021 04:24:43 -0400
+X-MC-Unique: zBu6J7vCNaGuVn7QJ8euCQ-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ c7-20020a05640227c700b003d27f41f1d4so14874517ede.16
+ for <qemu-devel@nongnu.org>; Mon, 20 Sep 2021 01:24:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=K9x+WD6TS4CFk48rbJLr6XhRkqodjN2Xw504dKrvQVo=;
+ b=2worxV1wrYjgyxSaQ1oyBpky0m9uEUeRYhu30TsFo+Mku4J90LRkv0kxAF8txp9naa
+ aj+KE7hklxmO1xVxwl2dD4UJufKgOyTl5xgds3J6naKEMCuURRmIvWdiyjEb8I9DkWR/
+ miMGX9immRAQNuA4dyvEn/mjjryBYJ/pLR9xt9xOfk+ZafROniLcSg5fheAXw74hQlre
+ UT3O/bvMwHR+DMuCvnnvg+J6GLYKndth2vTSLcy0Ba2JSy8EOqXCTsFjxtdeZna+eq7U
+ 9Lq+nvoxJqw/B6SevQWJFatOrNSZMCNI++H1eqNmJVkPXpxnmQ2ahnF9xMxUJCfbeuqr
+ nxNg==
+X-Gm-Message-State: AOAM531Vqy1OL20cyY37eJrQxgnFtv2aP5m3eyrq0Vy/GC5IXUHxcoSc
+ iyOjOY8ec4t0xi1Ogf2NhVTS7p4IYRkCfs3ONyacjXfvHeykThT/l+DosTc9zIfFzbhZe4V/ADQ
+ NwFiZv9Ps1aui7wE=
+X-Received: by 2002:aa7:dcc2:: with SMTP id w2mr27554649edu.192.1632126282404; 
+ Mon, 20 Sep 2021 01:24:42 -0700 (PDT)
+X-Received: by 2002:aa7:dcc2:: with SMTP id w2mr27554625edu.192.1632126282214; 
+ Mon, 20 Sep 2021 01:24:42 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id o3sm5827077eju.123.2021.09.20.01.24.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Sep 2021 01:24:41 -0700 (PDT)
+Date: Mon, 20 Sep 2021 10:24:40 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: Re: [PATCH v3 05/10] pc: Allow instantiating a virtio-iommu device
+Message-ID: <20210920102440.1eea4f46@redhat.com>
+In-Reply-To: <20210914142004.2433568-6-jean-philippe@linaro.org>
+References: <20210914142004.2433568-1-jean-philippe@linaro.org>
+ <20210914142004.2433568-6-jean-philippe@linaro.org>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: e1b5babb-280d-4059-8697-fd58a3d3acaf
-X-Ovh-Tracer-Id: 4738349761279855398
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeivdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpedtledttedvgfehkeefuddugeektdelgffhfeekudeiheeigfethfethfekvdevveenucffohhmrghinhepihhnfhhinhgvohhnrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
- helo=6.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -96,305 +129,168 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
+ mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, ani@anisinha.ca,
+ pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0NNecvGbi/G6
+X-TUID: iGhjyx2S9mV+
 
-From: Joel Stanley <joel@jms.id.au>
+On Tue, 14 Sep 2021 15:20:00 +0100
+Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
 
-This contains some hardcoded register values that were obtained from the
-hardware after reading the temperature.
+> Allow instantiating a virtio-iommu device by adding an ACPI Virtual I/O
+> Translation table (VIOT), which describes the relation between the
+> virtio-iommu and the endpoints it manages.
+> 
+> Add a hotplug handler for virtio-iommu on x86 and set the necessary
+> reserved region property. On x86, the [0xfee00000, 0xfeefffff] DMA
+> region is reserved for MSIs. DMA transactions to this range either
+> trigger IRQ remapping in the IOMMU or bypasses IOMMU translation.
+> 
+> Although virtio-iommu does not support IRQ remapping it must be informed
+> of the reserved region so that it can forward DMA transactions targeting
+> this region.
+> 
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> ---
+>  include/hw/i386/pc.h |  2 ++
+>  hw/i386/acpi-build.c |  5 +++++
+>  hw/i386/pc.c         | 28 +++++++++++++++++++++++++++-
+>  hw/i386/Kconfig      |  1 +
+>  4 files changed, 35 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 82cf7b7e30..f3ba1ee4c0 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -45,6 +45,8 @@ typedef struct PCMachineState {
+>      bool pit_enabled;
+>      bool hpet_enabled;
+>      bool default_bus_bypass_iommu;
+> +    bool virtio_iommu;
+> +    uint16_t virtio_iommu_bdf;
+>      uint64_t max_fw_size;
+>  
+>      /* ACPI Memory hotplug IO base address */
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 547cd4ed9d..76845026d8 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -71,6 +71,7 @@
+>  
+>  #include "hw/acpi/ipmi.h"
+>  #include "hw/acpi/hmat.h"
+> +#include "hw/acpi/viot.h"
+>  
+>  /* These are used to size the ACPI tables for -M pc-i440fx-1.7 and
+>   * -M pc-i440fx-2.0.  Even if the actual amount of AML generated grows
+> @@ -2593,6 +2594,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>              build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
+>                             x86ms->oem_table_id);
+>          }
+> +    } else if (pcms->virtio_iommu) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_viot(tables_blob, tables->linker, pcms->virtio_iommu_bdf,
+> +                   x86ms->oem_id, x86ms->oem_table_id);
+>      }
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 7e523b913c..a31e950599 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -83,6 +83,7 @@
+>  #include "hw/i386/intel_iommu.h"
+>  #include "hw/net/ne2000-isa.h"
+>  #include "standard-headers/asm-x86/bootparam.h"
+> +#include "hw/virtio/virtio-iommu.h"
+>  #include "hw/virtio/virtio-pmem-pci.h"
+>  #include "hw/virtio/virtio-mem-pci.h"
+>  #include "hw/mem/memory-device.h"
+> @@ -798,6 +799,11 @@ void pc_machine_done(Notifier *notifier, void *data)
+>                       "irqchip support.");
+>          exit(EXIT_FAILURE);
+>      }
+> +
+> +    if (pcms->virtio_iommu && x86_iommu_get_default()) {
+> +        error_report("QEMU does not support multiple vIOMMUs for x86 yet.");
+> +        exit(EXIT_FAILURE);
+> +    }
 
-It does enough to test the Linux kernel driver. The FIFO mode, IRQs and
-operation modes other than the default as used by Linux are not modelled.
+previous patch does similar check, doesn't it?
+So is why it's not implement the same way?
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20210616073358.750472-2-joel@jms.id.au>
-[ clg: - Fixed sequential reading
-       - Reworked regs_reset_state array
-       - Moved model under hw/sensor/ ]
-Message-Id: <20210629142336.750058-4-clg@kaod.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/sensor/dps310.c    | 225 ++++++++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig        |   1 +
- hw/sensor/Kconfig     |   4 +
- hw/sensor/meson.build |   1 +
- 4 files changed, 231 insertions(+)
- create mode 100644 hw/sensor/dps310.c
+>  }
+>  
+>  void pc_guest_info_init(PCMachineState *pcms)
+> @@ -1368,6 +1374,14 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+>                 object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+>          pc_virtio_md_pci_pre_plug(hotplug_dev, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        /* Declare the reserved MSI region */
+> +        char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
+> +                                              VIRTIO_IOMMU_RESV_MEM_T_MSI);
 
-diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
-new file mode 100644
-index 000000000000..d60a18ac41bb
---- /dev/null
-+++ b/hw/sensor/dps310.c
-@@ -0,0 +1,225 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright 2017-2021 Joel Stanley <joel@jms.id.au>, IBM Corporation
-+ *
-+ * Infineon DPS310 temperature and humidity sensor
-+ *
-+ * https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/hw.h"
-+#include "hw/i2c/i2c.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "migration/vmstate.h"
-+
-+#define NUM_REGISTERS   0x33
-+
-+typedef struct DPS310State {
-+    /*< private >*/
-+    I2CSlave i2c;
-+
-+    /*< public >*/
-+    uint8_t regs[NUM_REGISTERS];
-+
-+    uint8_t len;
-+    uint8_t pointer;
-+
-+} DPS310State;
-+
-+#define TYPE_DPS310 "dps310"
-+#define DPS310(obj) OBJECT_CHECK(DPS310State, (obj), TYPE_DPS310)
-+
-+#define DPS310_PRS_B2           0x00
-+#define DPS310_PRS_B1           0x01
-+#define DPS310_PRS_B0           0x02
-+#define DPS310_TMP_B2           0x03
-+#define DPS310_TMP_B1           0x04
-+#define DPS310_TMP_B0           0x05
-+#define DPS310_PRS_CFG          0x06
-+#define DPS310_TMP_CFG          0x07
-+#define  DPS310_TMP_RATE_BITS   (0x70)
-+#define DPS310_MEAS_CFG         0x08
-+#define  DPS310_MEAS_CTRL_BITS  (0x07)
-+#define   DPS310_PRESSURE_EN    BIT(0)
-+#define   DPS310_TEMP_EN        BIT(1)
-+#define   DPS310_BACKGROUND     BIT(2)
-+#define  DPS310_PRS_RDY         BIT(4)
-+#define  DPS310_TMP_RDY         BIT(5)
-+#define  DPS310_SENSOR_RDY      BIT(6)
-+#define  DPS310_COEF_RDY        BIT(7)
-+#define DPS310_CFG_REG          0x09
-+#define DPS310_RESET            0x0c
-+#define  DPS310_RESET_MAGIC     (BIT(0) | BIT(3))
-+#define DPS310_COEF_BASE        0x10
-+#define DPS310_COEF_LAST        0x21
-+#define DPS310_COEF_SRC         0x28
-+
-+static void dps310_reset(DeviceState *dev)
-+{
-+    DPS310State *s = DPS310(dev);
-+
-+    static const uint8_t regs_reset_state[sizeof(s->regs)] = {
-+        0xfe, 0x2f, 0xee, 0x02, 0x69, 0xa6, 0x00, 0x80, 0xc7, 0x00, 0x00, 0x00,
-+        0x00, 0x10, 0x00, 0x00, 0x0e, 0x1e, 0xdd, 0x13, 0xca, 0x5f, 0x21, 0x52,
-+        0xf9, 0xc6, 0x04, 0xd1, 0xdb, 0x47, 0x00, 0x5b, 0xfb, 0x3a, 0x00, 0x00,
-+        0x20, 0x49, 0x4e, 0xa5, 0x90, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+        0x60, 0x15, 0x02
-+    };
-+
-+    memcpy(s->regs, regs_reset_state, sizeof(s->regs));
-+    s->pointer = 0;
-+
-+    /* TODO: assert these after some timeout ? */
-+    s->regs[DPS310_MEAS_CFG] = DPS310_COEF_RDY | DPS310_SENSOR_RDY
-+        | DPS310_TMP_RDY | DPS310_PRS_RDY;
-+}
-+
-+static uint8_t dps310_read(DPS310State *s, uint8_t reg)
-+{
-+    if (reg >= sizeof(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: register 0x%02x out of bounds\n",
-+                      __func__, s->pointer);
-+        return 0xFF;
-+    }
-+
-+    switch (reg) {
-+    case DPS310_PRS_B2:
-+    case DPS310_PRS_B1:
-+    case DPS310_PRS_B0:
-+    case DPS310_TMP_B2:
-+    case DPS310_TMP_B1:
-+    case DPS310_TMP_B0:
-+    case DPS310_PRS_CFG:
-+    case DPS310_TMP_CFG:
-+    case DPS310_MEAS_CFG:
-+    case DPS310_CFG_REG:
-+    case DPS310_COEF_BASE...DPS310_COEF_LAST:
-+    case DPS310_COEF_SRC:
-+    case 0x32: /* Undocumented register to indicate workaround not required */
-+        return s->regs[reg];
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: register 0x%02x unimplemented\n",
-+                      __func__, reg);
-+        return 0xFF;
-+    }
-+}
-+
-+static void dps310_write(DPS310State *s, uint8_t reg, uint8_t data)
-+{
-+    if (reg >= sizeof(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: register %d out of bounds\n",
-+                      __func__, s->pointer);
-+        return;
-+    }
-+
-+    switch (reg) {
-+    case DPS310_RESET:
-+        if (data == DPS310_RESET_MAGIC) {
-+            device_cold_reset(DEVICE(s));
-+        }
-+        break;
-+    case DPS310_PRS_CFG:
-+    case DPS310_TMP_CFG:
-+    case DPS310_MEAS_CFG:
-+    case DPS310_CFG_REG:
-+        s->regs[reg] = data;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: register 0x%02x unimplemented\n",
-+                      __func__, reg);
-+        return;
-+    }
-+}
-+
-+static uint8_t dps310_rx(I2CSlave *i2c)
-+{
-+    DPS310State *s = DPS310(i2c);
-+
-+    if (s->len == 1) {
-+        return dps310_read(s, s->pointer++);
-+    } else {
-+        return 0xFF;
-+    }
-+}
-+
-+static int dps310_tx(I2CSlave *i2c, uint8_t data)
-+{
-+    DPS310State *s = DPS310(i2c);
-+
-+    if (s->len == 0) {
-+        /*
-+         * first byte is the register pointer for a read or write
-+         * operation
-+         */
-+        s->pointer = data;
-+        s->len++;
-+    } else if (s->len == 1) {
-+        dps310_write(s, s->pointer++, data);
-+    }
-+
-+    return 0;
-+}
-+
-+static int dps310_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    DPS310State *s = DPS310(i2c);
-+
-+    switch (event) {
-+    case I2C_START_SEND:
-+        s->pointer = 0xFF;
-+        s->len = 0;
-+        break;
-+    case I2C_START_RECV:
-+        if (s->len != 1) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid recv sequence\n",
-+                          __func__);
-+        }
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_dps310 = {
-+    .name = "DPS310",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8(len, DPS310State),
-+        VMSTATE_UINT8_ARRAY(regs, DPS310State, NUM_REGISTERS),
-+        VMSTATE_UINT8(pointer, DPS310State),
-+        VMSTATE_I2C_SLAVE(i2c, DPS310State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void dps310_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    k->event = dps310_event;
-+    k->recv = dps310_rx;
-+    k->send = dps310_tx;
-+    dc->reset = dps310_reset;
-+    dc->vmsd = &vmstate_dps310;
-+}
-+
-+static const TypeInfo dps310_info = {
-+    .name          = TYPE_DPS310,
-+    .parent        = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(DPS310State),
-+    .class_init    = dps310_class_init,
-+};
-+
-+static void dps310_register_types(void)
-+{
-+    type_register_static(&dps310_info);
-+}
-+
-+type_init(dps310_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 78fdd1b93503..18832abf7d13 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -428,6 +428,7 @@ config ASPEED_SOC
-     select DS1338
-     select FTGMAC100
-     select I2C
-+    select DPS310
-     select PCA9552
-     select SERIAL
-     select SMBUS_EEPROM
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index a2b55a4fdb2e..9c8a049b0686 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -6,6 +6,10 @@ config TMP421
-     bool
-     depends on I2C
- 
-+config DPS310
-+    bool
-+    depends on I2C
-+
- config EMC141X
-     bool
-     depends on I2C
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index 034e3e0207bc..059c4ca935b7 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -1,5 +1,6 @@
- softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
- softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
-+softmmu_ss.add(when: 'CONFIG_DPS310', if_true: files('dps310.c'))
- softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
- softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
- softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
--- 
-2.31.1
+add a comment describing where these values come from, pls.
+
+> +
+> +        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
+> +        qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
+
+why not use qom setters directly
+(they have error argument and can gracefully error out,
+which is expected error handling in pre_plug)
+
+and fix up similar (ab)use of setters in virt_machine_device_pre_plug_cb()
+
+> +        g_free(resv_prop_str);
+>      }
+>  }
+>  
+> @@ -1381,6 +1395,17 @@ static void pc_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+>                 object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+>          pc_virtio_md_pci_plug(hotplug_dev, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        PCMachineState *pcms = PC_MACHINE(hotplug_dev);
+> +        PCIDevice *pdev = PCI_DEVICE(dev);
+> +
+> +        if (pcms->virtio_iommu) {
+> +            error_setg(errp,
+> +                       "QEMU does not support multiple vIOMMUs for x86 yet.");
+> +            return;
+> +        }
+
+move to pre_plug please
+
+> +        pcms->virtio_iommu = true;
+> +        pcms->virtio_iommu_bdf = pci_get_bdf(pdev);
+>      }
+>  }
+>  
+> @@ -1422,7 +1447,8 @@ static HotplugHandler *pc_get_hotplug_handler(MachineState *machine,
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_CPU) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+> -        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI) ||
+> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+>          return HOTPLUG_HANDLER(machine);
+>      }
+>  
+> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+> index ddedcef0b2..13db05d557 100644
+> --- a/hw/i386/Kconfig
+> +++ b/hw/i386/Kconfig
+> @@ -54,6 +54,7 @@ config PC_ACPI
+>      select ACPI_X86
+>      select ACPI_CPU_HOTPLUG
+>      select ACPI_MEMORY_HOTPLUG
+> +    select ACPI_VIOT
+>      select SMBUS_EEPROM
+>      select PFLASH_CFI01
+>      depends on ACPI_SMBUS
 

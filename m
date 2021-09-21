@@ -1,305 +1,121 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3038969lfp;
-        Tue, 21 Sep 2021 06:33:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjyCOWAxuEfUW0WVL2Lkjfx/5iIXbIZLOHqyfSTeQf2zTflBGQWxJy47qdwJ1IenztAj8k
-X-Received: by 2002:a0c:9d82:: with SMTP id s2mr30781976qvd.23.1632231190777;
-        Tue, 21 Sep 2021 06:33:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632231190; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3057820lfp;
+        Tue, 21 Sep 2021 06:56:05 -0700 (PDT)
+X-Received: by 2002:a1c:20c5:: with SMTP id g188mr4744230wmg.182.1632232565148;
+        Tue, 21 Sep 2021 06:56:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632232565; cv=none;
         d=google.com; s=arc-20160816;
-        b=ltgQ0WUQ7qoFes7+LNszLkkvOiG8QnEApn/WFh3p8CHk9CXGEVDAEf9vyxx1vr75u+
-         L5X6Gqy1zrMm2iMVhOPwV7ALC4pCkQkB+KRB3ca7Kl7X5FmAHN/iH8PcepbvIWSpGihD
-         jt71ElEYUMTMKkbwkVGPxga9KF9z8JtXEJfaeF7g4hW4sdil5niq1yb1fdD8KOIXffm/
-         LwAG6TT8b2ValPS5iCMixamU1J1Mn6W24Y3bRfg22PB+4SYMTBQIQuNbahC/VC1EdJZh
-         5LsdobkxHk2nuW6uTrs0UukJmXH//ki/uzOUeVvNVajnkbfumUev+PU+/NIl9sxa2kak
-         q1QA==
+        b=Wm1W55NBJA2DE4uAsCifrlFGv4vW9HBgYctpbJFbWkSVO3aoCdsfT86cEX+V+J315W
+         3kFOAz7v1hbWe2SLT5lDPN/ySeaaR6gkDrXpIIQtDZ94GRLfSKrGI3YT8MXH1hdEcfWL
+         CiswaTXeCLiRqmaSryCEznKwyVfYLWtCeJA68IzMpmU97HwYmCrnJWFzgL4pPsm3xIPB
+         jelJA07lTN+IuWJhakoZjrEIwmW4hpjs0boipJZWHnrV4Pm8A80WUqhSbCvyXzVTfkiM
+         8iaNpQwCkV/bE7DLl5hPNVUiYn+o5gl3KHj/IzjS6EcWS3LZY+YrLbJJ6+L4TqRdidYR
+         mgPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=Bir6rBWw5+3b3dT+YDTpIfVP63QiauFT0Jw5ffL0Nks=;
-        b=DHEV2KrCsQ2mqEX2T2aspIQzmMwTdH4/hQK7o/x2r1KikyQnGlfhROKlPDAa8Gu7A3
-         c5XKZQ23anLa7a5RZ6BfwTzRjd7e0qULN1O0bH0I6xx6Cg4bd/ucZP6Wi+CF0tofcti5
-         zS2OzJW6J9rKoZV8kQPx6NjxnK2oVrJY37vvQgJTHCpzlpw5+Yk6N1pBdoOqLx5Jtbl8
-         R7EqXntSQwHgqmByBlX+25knrv1p9W7NHPpFVSo8qF09wdmL8O9Niylu4Nhq8ZAjTJJi
-         GG+Fev9MuxPG781zNCV6q/1/kuXF1gD1Lkm93HUMYz04stncf6V0dskKxBkbozF2pY7b
-         Wc8g==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=d+YA9aBp3W+m+owbojgCvCPTz2XIifjjqNbMKvcy0nA=;
+        b=qANdwALV59wWnJ0zKFEgIDD3Y7F89xdPFPg1ByihacYyDc7M1OmaFWHqWfgFdQ8Bav
+         2vklRQmW01+2DIf6QdI+tCMITILeaUl+0QSaG8d360dT8xFYtrZKLxi934LvuKTxiaqi
+         l5CAzSm0ejTncyfwEJNfBiu4V1yEbvNv/pKcyKbLKQB2Z8OSobOKSfwxFYM2MW53vU74
+         6ixk5Pk7pAYqmRFhyViFCxh4GtdaCxuEGquwaXbTo1Dv8i9HXB4a6vmyYN3jABu5yhmj
+         esNXc0JQUNVKzxAFrjaYJGQcvII/NKxLFmafRa2c69V5rh+O4yOBaCdieSv3oHjp5via
+         Wd9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10si12100841qvd.112.2021.09.21.06.33.10
+       dkim=pass header.i=@linaro.org header.s=google header.b=prsWWCXg;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l27sor10430650wrz.0.2021.09.21.06.56.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Sep 2021 06:33:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 21 Sep 2021 06:56:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51320 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSftW-00068l-60
-	for alex.bennee@linaro.org; Tue, 21 Sep 2021 09:33:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56932)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1mSfqh-0004MP-KC; Tue, 21 Sep 2021 09:30:15 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:54060 helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1mSfqe-0002ZZ-17; Tue, 21 Sep 2021 09:30:14 -0400
-Received: from MacBook-Air.alex.local
- (dynamic-077-007-123-111.77.7.pool.telefonica.de [77.7.123.111])
- by csgraf.de (Postfix) with ESMTPSA id 59BC36080369;
- Tue, 21 Sep 2021 15:30:07 +0200 (CEST)
-Subject: Re: [PATCH v12 00/10] hvf: Implement Apple Silicon Support
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210916155404.86958-1-agraf@csgraf.de>
- <CAFEAcA-LrvO7sg9gY0ZKnvXJyJuFc2Ej1Ve1245FZ7YkH-Oj2A@mail.gmail.com>
- <CAFEAcA_Hkqg16VbA1qACK4RG22iXHo8b3VZWQoBRZL0HuBazZA@mail.gmail.com>
- <d4859cae-d9c1-2879-0682-080d4b5efe90@amsat.org>
- <27a265d5-2e7c-f234-0d09-f40a731e588d@csgraf.de>
- <bdeef51c-901b-f5a8-0415-03c464255b1f@amsat.org>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <60aac468-973b-daee-49ce-71829c234af8@csgraf.de>
-Date: Tue, 21 Sep 2021 15:30:08 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.14.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=prsWWCXg;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=d+YA9aBp3W+m+owbojgCvCPTz2XIifjjqNbMKvcy0nA=;
+        b=prsWWCXgSSnCW+KKI5KpzJghnZL3o5i2kKnSsqhlN6VDdz65uZbB5zgg98BdGhLP5R
+         DbelfvcyWsQcHDkxvZKLnYdlIRqoGg9VWzJCgN0QoWErkNXW591J404c3tNjfT7MIVWK
+         BPeAoPaQB0x+z3y6K1/CWXo6oMqGzKF4UrxMkMI/LFapEa+VljAAKUU+meOMfKiexmHf
+         37nDUEfif+dm4UqPehJvKLIamyg0vbRqSzMV0n3wL2ToxMg1tppxCgkivmxeEBr5901m
+         4iRY1s2FTsmB8S4qj2HLIPuGkM5DpddemTDnt0x92mD0iQu6OUi3uiX/16ctYm/+ZkGv
+         HJVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=d+YA9aBp3W+m+owbojgCvCPTz2XIifjjqNbMKvcy0nA=;
+        b=wb/6e7a4ZqMN4f/3VZFRJn4YE/gjfopyETOJ95P9oxPype1wCmWX0D5xAWMstAZ9lp
+         GfvhDsscP6rNoHKf34waKErArqk+nsElmIgvf00w4KftOq2jNbhEJ3GxkZxs8xVVbJAy
+         rdMpU7NzKd0IgPASdJlfyG64WPh8/daHeWYJNNHzelSxFWylQPbavMtdKWATpSUBl18F
+         ceobSwb78BZb+RoBRf30yjLIp+0ti9NLb+dpLLKqdH3r25lDsKt2EE7zyCDf5r2V6qEg
+         wNpYmcYgeKeTcxBwdW1Ma99HhLFguHyIq63PLt2mGpcybJzvEdaXUKWWECeot/S5aqVN
+         fJnQ==
+X-Gm-Message-State: AOAM531BzjqisUj4H5VAr+dCNzR4ohAzdLvpwDgtoJAcj3mQNIznKzG9
+	fGEC323SL5VwMVmb1vJ7jnL+aWOyKAFHaezNbxuuFqUheU5sGw==
+X-Google-Smtp-Source: ABdhPJy8QzMbVaLFx8meS6kBiBb65zZxDbo+A9iXdHAzrj3mU0iYiletban2nDlDDSzVO9dztD6OHws+kyWCSMKzMIU=
+X-Received: by 2002:adf:f185:: with SMTP id h5mr35758638wro.302.1632232564840;
+ Tue, 21 Sep 2021 06:56:04 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <bdeef51c-901b-f5a8-0415-03c464255b1f@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yDVRqIp5Qr4I
+References: <20210115130828.23968-1-alex.bennee@linaro.org>
+ <20210115130828.23968-22-alex.bennee@linaro.org> <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de>
+ <874kjdugip.fsf@linaro.org> <8cb88b76-caa3-ba26-b288-4d87b06f56ec@suse.de> <871regvs0w.fsf@linaro.org>
+In-Reply-To: <871regvs0w.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Sep 2021 14:55:12 +0100
+Message-ID: <CAFEAcA9FKA9k3ePEVALXnRcfd4ygybMrmpD=ZjV1A==at+w9Uw@mail.gmail.com>
+Subject: Re: [PULL 21/30] target/arm: use official org.gnu.gdb.aarch64.sve
+ layout for registers
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Claudio Fontana <cfontana@suse.de>, Luis Machado <luis.machado@linaro.org>, 
+	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: q0YwNFZeKBnO
 
-
-On 21.09.21 11:29, Philippe Mathieu-Daudé wrote:
-> On 9/20/21 22:21, Alexander Graf wrote:
->> On 20.09.21 18:17, Philippe Mathieu-Daudé wrote:
->>> On 9/20/21 15:15, Peter Maydell wrote:
->>>> On Mon, 20 Sept 2021 at 11:11, Peter Maydell
->>>> <peter.maydell@linaro.org> wrote:
->>>>> On Thu, 16 Sept 2021 at 16:54, Alexander Graf <agraf@csgraf.de>
->>>>> wrote:
->>>>>> Now that Apple Silicon is widely available, people are obviously
->>>>>> excited
->>>>>> to try and run virtualized workloads on them, such as Linux and
->>>>>> Windows.
->>>>>>
->>>>>> This patch set implements a fully functional version to get the ball
->>>>>> going on that. With this applied, I can successfully run both
->>>>>> Linux and
->>>>>> Windows as guests. I am not aware of any limitations specific to
->>>>>> Hypervisor.framework apart from:
->>>>>>
->>>>>>    - gdbstub debugging (breakpoints)
->>>>>>    - missing GICv3 support
->>>>>>    - Windows will not work due to UDEF SMC implementation
->>>>>>
->>>>>> To use hvf support, please make sure to run -M virt,highmem=off
->>>>>> to fit
->>>>>> in M1's physical address space limits and use -cpu host.
->>>>> Applied to target-arm.next, thanks (with the unnecessary #include
->>>>> in patch 6 removed).
->>>> Turns out that the final patch breaks "make check-acceptance".
->>>> All the orangepi boot tests timeout:
->>>>
->>>>   (15/58)
->>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
->>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
->>>> Timeout reached\nOriginal status: ERROR\n{'name':
->>>> '15-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi',
->>>>
->>>> 'logdir':
->>>> '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/...
->>>> (90.24 s)
->>>>   (16/58)
->>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd:
->>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
->>>> Timeout reached\nOriginal status: ERROR\n{'name':
->>>> '16-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd',
->>>>
->>>> 'logdir':
->>>> '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang...
->>>> (90.24 s)
->>>>   (17/58)
->>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd:
->>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
->>>> Timeout reached\nOriginal status: ERROR\n{'name':
->>>> '17-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd',
->>>>
->>>> 'logdir':
->>>> '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tes...
->>>> (90.24 s)
->>> Works for me on x86_64 Fedora 34 built with
->>> --enable-trace-backends=log --enable-debug:
->>>
->>> $ ./tests/venv/bin/avocado run
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9
->>>
->>> Fetching asset from
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9
->>>
->>> JOB ID     : b19f151f7320def3a432255f3a99c0dde3da95c0
->>> JOB LOG    :
->>> /home/phil/avocado/job-results/job-2021-09-20T18.12-b19f151/job.log
->>>   (1/5)
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
->>>
->>> PASS (6.29 s)
->>>   (2/5)
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd:
->>>
->>> PASS (51.23 s)
->>>   (3/5)
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd:
->>>
->>> PASS (76.53 s)
->>>   (4/5)
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08:
->>>
->>> SKIP: storage limited
->>>   (5/5)
->>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9:
->>>
->>> SKIP: storage limited
->>> RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 2 | WARN 0 | INTERRUPT
->>> 0 |
->>> CANCEL 0
->>> JOB TIME   : 135.18 s
->>>
->>
->> The OrangePi kernel goes into an endless loop here:
->>
->>  
->> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/compressed/head.S?h=v5.10#n637
+On Tue, 19 Jan 2021 at 15:57, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> As you said, this is a Linux specific behavior, ...
-
-
-It's not really Linux specific behavior. Linux just includes preloader
-code that moves it into HYP mode when booted in SVC mode.
-
-
 >
->> The reason is simple: It tries to install its own HYP code using the old
->> "install HYP handler, then invoke it" trick based on SPSR's indication
->> that HYP is available, but fails to do so because HYP calls get handled
->> by QEMU instead because the PSCI conduit is configured to HVC.
->>
->> The patch below seems to fix it for me. Please advise how you want to
->> proceed.
->>
->>
->> Alex
->>
->>
->> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
->> index 27f1070145..f9b7ed1871 100644
->> --- a/hw/arm/allwinner-h3.c
->> +++ b/hw/arm/allwinner-h3.c
->> @@ -237,7 +237,7 @@ static void allwinner_h3_realize(DeviceState *dev,
->> Error **errp)
->>
->>           /* Provide Power State Coordination Interface */
->>           qdev_prop_set_int32(DEVICE(&s->cpus[i]), "psci-conduit",
->> -                            QEMU_PSCI_CONDUIT_HVC);
->> +                            QEMU_PSCI_CONDUIT_SMC);
+> Claudio Fontana <cfontana@suse.de> writes:
 >
-> ... so I'd rather follow the approach taken on the Versal board,
-> see versal_virt_init() in commit 6f16da53ffe ("hw/arm: versal:
-> Add a virtual Xilinx Versal board"):
->
-> 1/ add "psci-conduit" property in TYPE_AW_H3,
->    forward this property to each core in allwinner_h3_realize()
->
-> 2/ set property in orangepi_init():
->
->    object_property_set_int(OBJECT(h3), "psci-conduit",
->                            machine->kernel_filename
->                            ? QEMU_PSCI_CONDUIT_SMC
->                            : QEMU_PSCI_CONDUIT_HVC,
->                            &error_abort);
->
-> That way we don't break non-Linux firmwares.
+> > On 1/19/21 3:50 PM, Alex Benn=C3=A9e wrote:
+> >>
+> >> Claudio Fontana <cfontana@suse.de> writes:
+> >>> qemu-system-aarch64: -gdb unix:path=3D/tmp/tmp9ru5tgk8qemu-gdbstub/gd=
+bstub.socket,server: info: QEMU waiting for connection on: disconnected:uni=
+x:/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server
+> >>> warning: while parsing target description (at line 47): Vector "svevh=
+f" references undefined type "ieee_half"
+> >>> warning: Could not load XML target description; ignoring
+> >>> qemu-system-aarch64: QEMU: Terminated via GDBstub
+> >>>
+> >>> Seems to indicate it is "ieee_half" -related?
 
+> So it looks like TDESC_TYPE_IEEE_HALF was only implemented in GDB 9.1
+> and there is no probing possible during the gdbstub connection. I guess
+> I can either go back to stubbing it out (which would break gdb's SVE
+> understanding) or up our minimum GDB version check for running tests.
+> That would mean less people test GDB (or at least until the distros
+> catch up) but considering it was zero people not too long ago maybe
+> that's acceptable?
 
-This doesn't make sense to me. We need to decide what we want from the
-OrangePi emulation:
+I just ran into this trying to connect qemu-aarch64 to the
+Ubuntu gdb-multiarch. I don't care about SVE at all in this
+case, but the 'max' CPU includes SVE by default, so we report
+it to gdb even if the guest program being run doesn't use SVE at all.
+This effectively means that usecases that used to work no longer do :-(
 
-  1) Guest owns USR, SVC. HYP's PSCI is emulated by QEMU
-  2) Guest owns USR, SVC, HYP. MON's PSCI is emulated by QEMU
-  3) Guest owns USR, SVC, HYP, MON. PSCI is handled 100% inside the guest.
+Luis: do we really have to report to gdb all the possible
+data types that might be in SVE vector registers? Won't
+gdb autogenerate pseudoregisters the way it does with
+Neon d0..d31 ?
 
-We currently advertise to the guest that it can use HYP, but don't allow
-it to run anything in MON (option 2), but then at the same time override
-parts of HYP with QEMU code. That's just plain wrong - we're breaking
-hypervisors running on OrangePi :).
-
-So if the goal of that board is to run OrangePi ATF (does it do ATF?)
-code or any other "full firmware", then we would need to move QEMU
-completely out of the conduit picture, implement option 3 and ship
-pre-HYP firmware with QEMU.
-
-If the goal is to just make HYP and below work, the fix above is the
-best path forward IMHO.
-
-Option 1 would require us to tell the guest that it can not make use of
-HYP. That's possible, but why should we?
-
-I don't really see why we should even consider option 1. 2 and 3 make
-sense. 3 is a lot of work. 2 is a one line fix that makes the board at
-least do what it's supposed to do :).
-
-
-Alex
-
+thanks
+-- PMM

@@ -1,110 +1,108 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3199586lfp;
-        Tue, 21 Sep 2021 09:32:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJySV3/+iSymi/LBRHP3ZKH3UIWNpBoHK3VsIyMUz4wib9uzxE/5AVhyeImdAA5PoeDFcPpk
-X-Received: by 2002:a37:d4f:: with SMTP id 76mr17131215qkn.385.1632241970598;
-        Tue, 21 Sep 2021 09:32:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632241970; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3200424lfp;
+        Tue, 21 Sep 2021 09:33:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8WFuwKRpKPL1b2xlDUmTbkdLwxUsrk7MrYt/b1m6X4QB3pbs8Algv+0xHubmNE8qm/ogD
+X-Received: by 2002:a37:946:: with SMTP id 67mr16307892qkj.473.1632242029994;
+        Tue, 21 Sep 2021 09:33:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632242029; cv=none;
         d=google.com; s=arc-20160816;
-        b=pUfirFXq7Miy14AO4qYiMliD0bkkgRTuxle7zGPkkCn32zh1KfhJplodHUqBwWai3D
-         qDWxGMw0YB8Y5ZysLCbZv9t5iHzbzoC1cesBbLWgC+8aaBzcfYDlZzhZqfTkS3nrgY4P
-         eyguWhc27xlxIU4b2vILE0UViEaQqI51Zwgs0CZN5zV3K4VycRyW86Q1pPPSAW5dkoNs
-         jUUUZDjCsS/MMq9koVQjy538vf/DbxqSHVXVUylMOwQzCJ3d78wUqj+jV4PRcmGre7G9
-         G7WIiNM7NFEP4ZFqwVL6zlzfry7VtmFD/eG5eSBuU7SV3nyKLKZJpbcenhqR30mA2kJ4
-         G++w==
+        b=qPqyUBCnQFsixfTXaBmuRU3nGEIFHiXPZoI5TJksu0er++u/QP0eyjcj6W5j+BGKP5
+         rnl3tGm1XX8+Kj2984hdkTcUO3UTSPn0LURPqxlqEBog5tV+W85/+w1+HlylvY9EcnP9
+         a1f5SDMPG2XZMwKQuO55usiDnOo4/y26AZOVUor2f9vVh+mQHHnHa7DpYsHu7Qe87itj
+         O99kpd3R+mOdcQoRipS2TLbXqJx+dynWxDvK0dAyGnAyxrfZwf7d4ZovaZI62fJ/Ifri
+         /VBcdu5HDO7O+nLh1DnPWXSu198Ey0YyCL3ohdMwK305h4Hnl5zdVf+qu8If14rwy4ws
+         L+eA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=StI9Wbs/qW2+W/kpKxKP65tcisHwg/BCZQKgVwHdxFI=;
-        b=B5PgpIIERedbRtFrKYar52U0MiLTr5S5uRR6zsU8MShbaGYVqaEecxdSIMn3N19E93
-         XdSSOQE3F3rdcdF4QM9GYVWnccwLVjrh5L8elA+SHOdnoqMeAce5iXthf9v91rnIwtwI
-         4xzD/4sYfK+MujsJtLVu18sfe5I1q5FI2YF57kv5NPBnG1km1FN+fcsiWDXASnwQSNwu
-         CVr3UtJ+uS7jrR+P5Y94P13oxmVEp4uWTdxQMniIzZoejyi5SyZ3dlXBWaImDJnCWl0w
-         9Nw860krno0DyxiHSNOe/QRj4emWcDbrChM9/hS+qmcGSox18Q+EjOXSeC/AkVK6+JDI
-         HZeg==
+        bh=661NXzoZSewDkW9mRtuYRVyfw4QA+0j5LFjWByhJsA8=;
+        b=sVWi7+MaYEYSZSb43yNL+BzZ3HfiCRi3sCjxHKLHZ5+w3eMoxM6hvmfWNcBvakpOmj
+         4TPlQGqVpZRztFymv4J2TDqbOJKESfKRazbjQ18Ph5qXnqyCSZKziiIUWNG2pdwjXy1R
+         oUB9f8kOhDlSC/svQh9HVLBiQl1VorPQfDc7GuTYPb2BtHd3ngC6Kr6V3rzKlAUwTqXB
+         5cQEIocqXBJOHdjJ/gqbq6VcfVt8Dt0efsTqlvxXCs5Fqy8fjJ5GZZ9AyhzHEC2oteD4
+         nz7VukWAKqHRiYfDhbs4+kFr5IgJT1z0cu3FpBQIK+rECghfcJoiFAv5xboSOLRtYDCO
+         3aDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=poKbrtZ7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SQd1b89M;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ed12si11695490qvb.209.2021.09.21.09.32.50
+        by mx.google.com with ESMTPS id o65si7001246vsd.30.2021.09.21.09.33.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Sep 2021 09:32:50 -0700 (PDT)
+        Tue, 21 Sep 2021 09:33:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=poKbrtZ7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SQd1b89M;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51674 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mSihO-0002jQ-0b
-	for alex.bennee@linaro.org; Tue, 21 Sep 2021 12:32:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47094)
+	id 1mSiiK-0004LE-9D
+	for alex.bennee@linaro.org; Tue, 21 Sep 2021 12:33:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mSido-0008Lt-GX
- for qemu-devel@nongnu.org; Tue, 21 Sep 2021 12:29:08 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:41603)
+ id 1mSidp-0008Ni-Vk
+ for qemu-devel@nongnu.org; Tue, 21 Sep 2021 12:29:10 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:36824)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mSidl-00029D-Kk
- for qemu-devel@nongnu.org; Tue, 21 Sep 2021 12:29:08 -0400
-Received: by mail-wr1-x431.google.com with SMTP id w29so40987954wra.8
- for <qemu-devel@nongnu.org>; Tue, 21 Sep 2021 09:29:05 -0700 (PDT)
+ id 1mSidn-0002AO-6x
+ for qemu-devel@nongnu.org; Tue, 21 Sep 2021 12:29:09 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id g16so40940001wrb.3
+ for <qemu-devel@nongnu.org>; Tue, 21 Sep 2021 09:29:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=StI9Wbs/qW2+W/kpKxKP65tcisHwg/BCZQKgVwHdxFI=;
- b=poKbrtZ75QCFRPGSZET0Z9lRQYP6MBoc694tkn05MT6x4MeIV4dNxYerGiJ1SPtzaA
- Mv3tNlQVrRdfEX6ojqO/8aISZRZaCAFzNQ5Apptg92VGlmwd5HEftYlZd1xs3n8REwhI
- aVWHOX3F5kSSDhfJupjEOZZ09sUi/Vo6zbls0ylRSP3u93EmrpUAmjI9ZXW72RYL5YKr
- N6+cMQP3eJntug0Y3PPGVvF4oURv4EA3jAySgzTy83cZ/gilNNgJwelK1cCXrmErdq6v
- 1ThnovNqB453l5MxXlgCSMmneXP/5pBCIQex+R5hHyNC7VnWZVc3afY5CRqgd44xXzxN
- LrbQ==
+ bh=661NXzoZSewDkW9mRtuYRVyfw4QA+0j5LFjWByhJsA8=;
+ b=SQd1b89MfhZMhSS037T/7TIJyVd4P0w7X0h+u0JwfAdC6SWEuoA3x8vNMixcAtuyYH
+ PUckEhYE8qVlJ5FX36R7lMXPZBDaSjqDddeyHBEtOmn22oMTw82lK5UrLkonuq+fYFIh
+ JwQmgaKH/HtJtNMHLAqjxiOtNb2YRJyFln4axNEl2orUknKSf9z2L21H1S4kL0iXpxcS
+ dxZcgx5FZ/usjLXKhWo9i4+NEaBwaxc/kXAHLvkTDrJP+tBH7Tpu1binU7mkPxMgIe2G
+ HguPwETN/0K+mytImgoFPxfI9dKNfvb5+Gx0YRKN2YaHRhaeyo46HIyz9fvZ65LSybxO
+ 04mQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=StI9Wbs/qW2+W/kpKxKP65tcisHwg/BCZQKgVwHdxFI=;
- b=LG8R7OYF9US5S+ufwY2/0h8p7uh7lgKiIY8MVrl4uheCGdSbR25eBZJSm0XkFhpQZz
- DWEaPRt8VWcyfvLKLaW6HHz4hCZa3pKHZcVYLZLGuOfbcNzAMOQeZtdp2dwsh5ZcIEiI
- Y84PxWvG3VxcsB129xF9A1JiEr5Plxoa1Wg8vw/bfXyHiPh/16Rat6M5dKaxRR3N3N2y
- 3ThqKYdnIBhu+9+4/dKYcZamyZrmUCyh609scUWsULYwqP4DCEljCtYqQCj2KIm2WZdN
- k+cy1JeKKO6HcT/296kcoaQOE2xWMNX5WcKp76tmqfKFDYJAX+lqG7/U6GI21K4/8OhF
- 8O3w==
-X-Gm-Message-State: AOAM532Sp5enFwhgqwBeznleYIlrIL4D3m6SkZpNyZ0auLmiKv/otzbi
- z8Vv9p+RCsqtDkVVtBRofxN2hw==
-X-Received: by 2002:a1c:403:: with SMTP id 3mr5669011wme.161.1632241744204;
- Tue, 21 Sep 2021 09:29:04 -0700 (PDT)
+ bh=661NXzoZSewDkW9mRtuYRVyfw4QA+0j5LFjWByhJsA8=;
+ b=lG6Pw8PsEph0PwjHegm0T9nkWiF87hhZ7nM5DljQZU07GT7+qs+YCgOh0K/0gDVRPp
+ sTU2nEzjtFxHby6mokuLC2seNqKRtWOfCTLqpI2AWoP47lABlGrKrSBtZhWCvG1BaRDy
+ JQ+h8cNsPkE+wG1BEmA7V1jBnHjdClLj9qxgcpudvxLZv9PBrS0ijRKNXm6bIhUy3+Cf
+ O93hr8RO7/UfKLgRNml23gMr4i65karGCjMvurmI+S80wHjYODWHyBcg1WeCjQnOI19Q
+ vw4Y3TN3WQrapMOJlWlXgVHKSTdhxeRCXTgOoSoCOCSfTWjSGWex/BNKyFUnvA26ltWd
+ Jj2g==
+X-Gm-Message-State: AOAM533Au56i8HUrWcq23xtrnxQypi/9SXiiovmHXhL9tecZZgk4TBaP
+ qTNJrUsUaFt+b7GmZcRmj7L7UA==
+X-Received: by 2002:a5d:630a:: with SMTP id i10mr36806786wru.178.1632241745713; 
+ Tue, 21 Sep 2021 09:29:05 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q7sm19841014wru.56.2021.09.21.09.29.03
+ by smtp.gmail.com with ESMTPSA id q7sm19841014wru.56.2021.09.21.09.29.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Sep 2021 09:29:03 -0700 (PDT)
+ Tue, 21 Sep 2021 09:29:05 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 1/5] configs: Don't include 32-bit-only GDB XML in aarch64
- linux configs
-Date: Tue, 21 Sep 2021 17:28:57 +0100
-Message-Id: <20210921162901.17508-2-peter.maydell@linaro.org>
+Subject: [PATCH 3/5] target/arm: Move gdbstub related code out of helper.c
+Date: Tue, 21 Sep 2021 17:28:59 +0100
+Message-Id: <20210921162901.17508-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210921162901.17508-1-peter.maydell@linaro.org>
 References: <20210921162901.17508-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,43 +118,654 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Luis Machado <luis.machado@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MPWySC3Aw6yg
+X-TUID: U5DfhJ3e6xY0
 
-The aarch64-linux QEMU usermode binaries can never run 32-bit
-code, so they do not need to include the GDB XML for it.
-(arm_cpu_register_gdb_regs_for_features() will not use these
-XML files if the CPU has ARM_FEATURE_AARCH64, so we will not
-advertise to gdb that we have them.)
+Currently helper.c includes some code which is part of the arm
+target's gdbstub support.  This code has a better home: in gdbstub.c
+and gdbstub64.c.  Move it there.
+
+Because aarch64_fpu_gdb_get_reg() and aarch64_fpu_gdb_set_reg() move
+into gdbstub64.c, this means that they're now compiled only for
+TARGET_AARCH64 rather than always.  That is the only case when they
+would ever be used, but it does mean that the ifdef in
+arm_cpu_register_gdb_regs_for_features() needs to be adjusted to
+match.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- configs/targets/aarch64-linux-user.mak    | 2 +-
- configs/targets/aarch64_be-linux-user.mak | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ target/arm/internals.h |   7 ++
+ target/arm/gdbstub.c   | 130 ++++++++++++++++++++
+ target/arm/gdbstub64.c | 140 +++++++++++++++++++++
+ target/arm/helper.c    | 271 -----------------------------------------
+ 4 files changed, 277 insertions(+), 271 deletions(-)
 
-diff --git a/configs/targets/aarch64-linux-user.mak b/configs/targets/aarch64-linux-user.mak
-index 4713253709f..d0c603c54ec 100644
---- a/configs/targets/aarch64-linux-user.mak
-+++ b/configs/targets/aarch64-linux-user.mak
-@@ -1,5 +1,5 @@
- TARGET_ARCH=aarch64
- TARGET_BASE_ARCH=arm
--TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
-+TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml
- TARGET_HAS_BFLT=y
- CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-diff --git a/configs/targets/aarch64_be-linux-user.mak b/configs/targets/aarch64_be-linux-user.mak
-index fae831558da..d3ee10c00f3 100644
---- a/configs/targets/aarch64_be-linux-user.mak
-+++ b/configs/targets/aarch64_be-linux-user.mak
-@@ -1,6 +1,6 @@
- TARGET_ARCH=aarch64
- TARGET_BASE_ARCH=arm
- TARGET_WORDS_BIGENDIAN=y
--TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
-+TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml
- TARGET_HAS_BFLT=y
- CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index cd2ea8a3883..d6f8c0bc927 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1226,4 +1226,11 @@ enum MVEECIState {
+     /* All other values reserved */
+ };
+ 
++#ifdef TARGET_AARCH64
++int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg);
++int arm_gdb_set_svereg(CPUARMState *env, uint8_t *buf, int reg);
++int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg);
++int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg);
++#endif
++
+ #endif
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 826601b3415..cbf156d192f 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -19,6 +19,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "cpu.h"
++#include "internals.h"
+ #include "exec/gdbstub.h"
+ 
+ typedef struct RegisterSysregXmlParam {
+@@ -124,6 +125,98 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+     return 0;
+ }
+ 
++static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    int nregs = cpu_isar_feature(aa32_simd_r32, cpu) ? 32 : 16;
++
++    /* VFP data registers are always little-endian.  */
++    if (reg < nregs) {
++        return gdb_get_reg64(buf, *aa32_vfp_dreg(env, reg));
++    }
++    if (arm_feature(env, ARM_FEATURE_NEON)) {
++        /* Aliases for Q regs.  */
++        nregs += 16;
++        if (reg < nregs) {
++            uint64_t *q = aa32_vfp_qreg(env, reg - 32);
++            return gdb_get_reg128(buf, q[0], q[1]);
++        }
++    }
++    switch (reg - nregs) {
++    case 0:
++        return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPSID]);
++    case 1:
++        return gdb_get_reg32(buf, vfp_get_fpscr(env));
++    case 2:
++        return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPEXC]);
++    }
++    return 0;
++}
++
++static int vfp_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    int nregs = cpu_isar_feature(aa32_simd_r32, cpu) ? 32 : 16;
++
++    if (reg < nregs) {
++        *aa32_vfp_dreg(env, reg) = ldq_le_p(buf);
++        return 8;
++    }
++    if (arm_feature(env, ARM_FEATURE_NEON)) {
++        nregs += 16;
++        if (reg < nregs) {
++            uint64_t *q = aa32_vfp_qreg(env, reg - 32);
++            q[0] = ldq_le_p(buf);
++            q[1] = ldq_le_p(buf + 8);
++            return 16;
++        }
++    }
++    switch (reg - nregs) {
++    case 0:
++        env->vfp.xregs[ARM_VFP_FPSID] = ldl_p(buf);
++        return 4;
++    case 1:
++        vfp_set_fpscr(env, ldl_p(buf));
++        return 4;
++    case 2:
++        env->vfp.xregs[ARM_VFP_FPEXC] = ldl_p(buf) & (1 << 30);
++        return 4;
++    }
++    return 0;
++}
++
++/**
++ * arm_get/set_gdb_*: get/set a gdb register
++ * @env: the CPU state
++ * @buf: a buffer to copy to/from
++ * @reg: register number (offset from start of group)
++ *
++ * We return the number of bytes copied
++ */
++
++static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    const ARMCPRegInfo *ri;
++    uint32_t key;
++
++    key = cpu->dyn_sysreg_xml.data.cpregs.keys[reg];
++    ri = get_arm_cp_reginfo(cpu->cp_regs, key);
++    if (ri) {
++        if (cpreg_field_is_64bit(ri)) {
++            return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
++        } else {
++            return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
++        }
++    }
++    return 0;
++}
++
++static int arm_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
++{
++    return 0;
++}
++
+ static void arm_gen_one_xml_sysreg_tag(GString *s, DynamicGDBXMLInfo *dyn_xml,
+                                        ARMCPRegInfo *ri, uint32_t ri_key,
+                                        int bitsize, int regnum)
+@@ -319,3 +412,40 @@ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+     }
+     return NULL;
+ }
++
++void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
++{
++    CPUState *cs = CPU(cpu);
++    CPUARMState *env = &cpu->env;
++
++    if (arm_feature(env, ARM_FEATURE_AARCH64)) {
++        /*
++         * The lower part of each SVE register aliases to the FPU
++         * registers so we don't need to include both.
++         */
++#ifdef TARGET_AARCH64
++        if (isar_feature_aa64_sve(&cpu->isar)) {
++            gdb_register_coprocessor(cs, arm_gdb_get_svereg, arm_gdb_set_svereg,
++                                     arm_gen_dynamic_svereg_xml(cs, cs->gdb_num_regs),
++                                     "sve-registers.xml", 0);
++        } else {
++            gdb_register_coprocessor(cs, aarch64_fpu_gdb_get_reg,
++                                     aarch64_fpu_gdb_set_reg,
++                                     34, "aarch64-fpu.xml", 0);
++        }
++#endif
++    } else if (arm_feature(env, ARM_FEATURE_NEON)) {
++        gdb_register_coprocessor(cs, vfp_gdb_get_reg, vfp_gdb_set_reg,
++                                 51, "arm-neon.xml", 0);
++    } else if (cpu_isar_feature(aa32_simd_r32, cpu)) {
++        gdb_register_coprocessor(cs, vfp_gdb_get_reg, vfp_gdb_set_reg,
++                                 35, "arm-vfp3.xml", 0);
++    } else if (cpu_isar_feature(aa32_vfp_simd, cpu)) {
++        gdb_register_coprocessor(cs, vfp_gdb_get_reg, vfp_gdb_set_reg,
++                                 19, "arm-vfp.xml", 0);
++    }
++    gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
++                             arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
++                             "system-registers.xml", 0);
++
++}
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 251539ef799..596878666d7 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -17,7 +17,9 @@
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "cpu.h"
++#include "internals.h"
+ #include "exec/gdbstub.h"
+ 
+ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+@@ -69,3 +71,141 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+     /* Unknown register.  */
+     return 0;
+ }
++
++int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
++{
++    switch (reg) {
++    case 0 ... 31:
++    {
++        /* 128 bit FP register - quads are in LE order */
++        uint64_t *q = aa64_vfp_qreg(env, reg);
++        return gdb_get_reg128(buf, q[1], q[0]);
++    }
++    case 32:
++        /* FPSR */
++        return gdb_get_reg32(buf, vfp_get_fpsr(env));
++    case 33:
++        /* FPCR */
++        return gdb_get_reg32(buf, vfp_get_fpcr(env));
++    default:
++        return 0;
++    }
++}
++
++int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
++{
++    switch (reg) {
++    case 0 ... 31:
++        /* 128 bit FP register */
++        {
++            uint64_t *q = aa64_vfp_qreg(env, reg);
++            q[0] = ldq_le_p(buf);
++            q[1] = ldq_le_p(buf + 8);
++            return 16;
++        }
++    case 32:
++        /* FPSR */
++        vfp_set_fpsr(env, ldl_p(buf));
++        return 4;
++    case 33:
++        /* FPCR */
++        vfp_set_fpcr(env, ldl_p(buf));
++        return 4;
++    default:
++        return 0;
++    }
++}
++
++int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
++{
++    ARMCPU *cpu = env_archcpu(env);
++
++    switch (reg) {
++    /* The first 32 registers are the zregs */
++    case 0 ... 31:
++    {
++        int vq, len = 0;
++        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
++            len += gdb_get_reg128(buf,
++                                  env->vfp.zregs[reg].d[vq * 2 + 1],
++                                  env->vfp.zregs[reg].d[vq * 2]);
++        }
++        return len;
++    }
++    case 32:
++        return gdb_get_reg32(buf, vfp_get_fpsr(env));
++    case 33:
++        return gdb_get_reg32(buf, vfp_get_fpcr(env));
++    /* then 16 predicates and the ffr */
++    case 34 ... 50:
++    {
++        int preg = reg - 34;
++        int vq, len = 0;
++        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
++            len += gdb_get_reg64(buf, env->vfp.pregs[preg].p[vq / 4]);
++        }
++        return len;
++    }
++    case 51:
++    {
++        /*
++         * We report in Vector Granules (VG) which is 64bit in a Z reg
++         * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
++         */
++        int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
++        return gdb_get_reg64(buf, vq * 2);
++    }
++    default:
++        /* gdbstub asked for something out our range */
++        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
++        break;
++    }
++
++    return 0;
++}
++
++int arm_gdb_set_svereg(CPUARMState *env, uint8_t *buf, int reg)
++{
++    ARMCPU *cpu = env_archcpu(env);
++
++    /* The first 32 registers are the zregs */
++    switch (reg) {
++    /* The first 32 registers are the zregs */
++    case 0 ... 31:
++    {
++        int vq, len = 0;
++        uint64_t *p = (uint64_t *) buf;
++        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
++            env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
++            env->vfp.zregs[reg].d[vq * 2] = *p++;
++            len += 16;
++        }
++        return len;
++    }
++    case 32:
++        vfp_set_fpsr(env, *(uint32_t *)buf);
++        return 4;
++    case 33:
++        vfp_set_fpcr(env, *(uint32_t *)buf);
++        return 4;
++    case 34 ... 50:
++    {
++        int preg = reg - 34;
++        int vq, len = 0;
++        uint64_t *p = (uint64_t *) buf;
++        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
++            env->vfp.pregs[preg].p[vq / 4] = *p++;
++            len += 8;
++        }
++        return len;
++    }
++    case 51:
++        /* cannot set vg via gdbstub */
++        return 0;
++    default:
++        /* gdbstub asked for something out our range */
++        break;
++    }
++
++    return 0;
++}
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 179038ad3da..deca59a3e61 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -12,7 +12,6 @@
+ #include "trace.h"
+ #include "cpu.h"
+ #include "internals.h"
+-#include "exec/gdbstub.h"
+ #include "exec/helper-proto.h"
+ #include "qemu/host-utils.h"
+ #include "qemu/main-loop.h"
+@@ -54,110 +53,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+ static void switch_mode(CPUARMState *env, int mode);
+ static int aa64_va_parameter_tbi(uint64_t tcr, ARMMMUIdx mmu_idx);
+ 
+-static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    int nregs = cpu_isar_feature(aa32_simd_r32, cpu) ? 32 : 16;
+-
+-    /* VFP data registers are always little-endian.  */
+-    if (reg < nregs) {
+-        return gdb_get_reg64(buf, *aa32_vfp_dreg(env, reg));
+-    }
+-    if (arm_feature(env, ARM_FEATURE_NEON)) {
+-        /* Aliases for Q regs.  */
+-        nregs += 16;
+-        if (reg < nregs) {
+-            uint64_t *q = aa32_vfp_qreg(env, reg - 32);
+-            return gdb_get_reg128(buf, q[0], q[1]);
+-        }
+-    }
+-    switch (reg - nregs) {
+-    case 0:
+-        return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPSID]);
+-    case 1:
+-        return gdb_get_reg32(buf, vfp_get_fpscr(env));
+-    case 2:
+-        return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPEXC]);
+-    }
+-    return 0;
+-}
+-
+-static int vfp_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    int nregs = cpu_isar_feature(aa32_simd_r32, cpu) ? 32 : 16;
+-
+-    if (reg < nregs) {
+-        *aa32_vfp_dreg(env, reg) = ldq_le_p(buf);
+-        return 8;
+-    }
+-    if (arm_feature(env, ARM_FEATURE_NEON)) {
+-        nregs += 16;
+-        if (reg < nregs) {
+-            uint64_t *q = aa32_vfp_qreg(env, reg - 32);
+-            q[0] = ldq_le_p(buf);
+-            q[1] = ldq_le_p(buf + 8);
+-            return 16;
+-        }
+-    }
+-    switch (reg - nregs) {
+-    case 0:
+-        env->vfp.xregs[ARM_VFP_FPSID] = ldl_p(buf);
+-        return 4;
+-    case 1:
+-        vfp_set_fpscr(env, ldl_p(buf));
+-        return 4;
+-    case 2:
+-        env->vfp.xregs[ARM_VFP_FPEXC] = ldl_p(buf) & (1 << 30);
+-        return 4;
+-    }
+-    return 0;
+-}
+-
+-static int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
+-{
+-    switch (reg) {
+-    case 0 ... 31:
+-    {
+-        /* 128 bit FP register - quads are in LE order */
+-        uint64_t *q = aa64_vfp_qreg(env, reg);
+-        return gdb_get_reg128(buf, q[1], q[0]);
+-    }
+-    case 32:
+-        /* FPSR */
+-        return gdb_get_reg32(buf, vfp_get_fpsr(env));
+-    case 33:
+-        /* FPCR */
+-        return gdb_get_reg32(buf, vfp_get_fpcr(env));
+-    default:
+-        return 0;
+-    }
+-}
+-
+-static int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
+-{
+-    switch (reg) {
+-    case 0 ... 31:
+-        /* 128 bit FP register */
+-        {
+-            uint64_t *q = aa64_vfp_qreg(env, reg);
+-            q[0] = ldq_le_p(buf);
+-            q[1] = ldq_le_p(buf + 8);
+-            return 16;
+-        }
+-    case 32:
+-        /* FPSR */
+-        vfp_set_fpsr(env, ldl_p(buf));
+-        return 4;
+-    case 33:
+-        /* FPCR */
+-        vfp_set_fpcr(env, ldl_p(buf));
+-        return 4;
+-    default:
+-        return 0;
+-    }
+-}
+-
+ static uint64_t raw_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     assert(ri->fieldoffset);
+@@ -217,134 +112,6 @@ static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
+ }
+ 
+-/**
+- * arm_get/set_gdb_*: get/set a gdb register
+- * @env: the CPU state
+- * @buf: a buffer to copy to/from
+- * @reg: register number (offset from start of group)
+- *
+- * We return the number of bytes copied
+- */
+-
+-static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    const ARMCPRegInfo *ri;
+-    uint32_t key;
+-
+-    key = cpu->dyn_sysreg_xml.data.cpregs.keys[reg];
+-    ri = get_arm_cp_reginfo(cpu->cp_regs, key);
+-    if (ri) {
+-        if (cpreg_field_is_64bit(ri)) {
+-            return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
+-        } else {
+-            return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
+-        }
+-    }
+-    return 0;
+-}
+-
+-static int arm_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
+-{
+-    return 0;
+-}
+-
+-#ifdef TARGET_AARCH64
+-static int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-
+-    switch (reg) {
+-    /* The first 32 registers are the zregs */
+-    case 0 ... 31:
+-    {
+-        int vq, len = 0;
+-        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
+-            len += gdb_get_reg128(buf,
+-                                  env->vfp.zregs[reg].d[vq * 2 + 1],
+-                                  env->vfp.zregs[reg].d[vq * 2]);
+-        }
+-        return len;
+-    }
+-    case 32:
+-        return gdb_get_reg32(buf, vfp_get_fpsr(env));
+-    case 33:
+-        return gdb_get_reg32(buf, vfp_get_fpcr(env));
+-    /* then 16 predicates and the ffr */
+-    case 34 ... 50:
+-    {
+-        int preg = reg - 34;
+-        int vq, len = 0;
+-        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
+-            len += gdb_get_reg64(buf, env->vfp.pregs[preg].p[vq / 4]);
+-        }
+-        return len;
+-    }
+-    case 51:
+-    {
+-        /*
+-         * We report in Vector Granules (VG) which is 64bit in a Z reg
+-         * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
+-         */
+-        int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
+-        return gdb_get_reg64(buf, vq * 2);
+-    }
+-    default:
+-        /* gdbstub asked for something out our range */
+-        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
+-        break;
+-    }
+-
+-    return 0;
+-}
+-
+-static int arm_gdb_set_svereg(CPUARMState *env, uint8_t *buf, int reg)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-
+-    /* The first 32 registers are the zregs */
+-    switch (reg) {
+-    /* The first 32 registers are the zregs */
+-    case 0 ... 31:
+-    {
+-        int vq, len = 0;
+-        uint64_t *p = (uint64_t *) buf;
+-        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
+-            env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
+-            env->vfp.zregs[reg].d[vq * 2] = *p++;
+-            len += 16;
+-        }
+-        return len;
+-    }
+-    case 32:
+-        vfp_set_fpsr(env, *(uint32_t *)buf);
+-        return 4;
+-    case 33:
+-        vfp_set_fpcr(env, *(uint32_t *)buf);
+-        return 4;
+-    case 34 ... 50:
+-    {
+-        int preg = reg - 34;
+-        int vq, len = 0;
+-        uint64_t *p = (uint64_t *) buf;
+-        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
+-            env->vfp.pregs[preg].p[vq / 4] = *p++;
+-            len += 8;
+-        }
+-        return len;
+-    }
+-    case 51:
+-        /* cannot set vg via gdbstub */
+-        return 0;
+-    default:
+-        /* gdbstub asked for something out our range */
+-        break;
+-    }
+-
+-    return 0;
+-}
+-#endif /* TARGET_AARCH64 */
+-
+ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
+ {
+    /* Return true if the regdef would cause an assertion if you called
+@@ -8711,44 +8478,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+ #endif
+ }
+ 
+-void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+-{
+-    CPUState *cs = CPU(cpu);
+-    CPUARMState *env = &cpu->env;
+-
+-    if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+-        /*
+-         * The lower part of each SVE register aliases to the FPU
+-         * registers so we don't need to include both.
+-         */
+-#ifdef TARGET_AARCH64
+-        if (isar_feature_aa64_sve(&cpu->isar)) {
+-            gdb_register_coprocessor(cs, arm_gdb_get_svereg, arm_gdb_set_svereg,
+-                                     arm_gen_dynamic_svereg_xml(cs, cs->gdb_num_regs),
+-                                     "sve-registers.xml", 0);
+-        } else
+-#endif
+-        {
+-            gdb_register_coprocessor(cs, aarch64_fpu_gdb_get_reg,
+-                                     aarch64_fpu_gdb_set_reg,
+-                                     34, "aarch64-fpu.xml", 0);
+-        }
+-    } else if (arm_feature(env, ARM_FEATURE_NEON)) {
+-        gdb_register_coprocessor(cs, vfp_gdb_get_reg, vfp_gdb_set_reg,
+-                                 51, "arm-neon.xml", 0);
+-    } else if (cpu_isar_feature(aa32_simd_r32, cpu)) {
+-        gdb_register_coprocessor(cs, vfp_gdb_get_reg, vfp_gdb_set_reg,
+-                                 35, "arm-vfp3.xml", 0);
+-    } else if (cpu_isar_feature(aa32_vfp_simd, cpu)) {
+-        gdb_register_coprocessor(cs, vfp_gdb_get_reg, vfp_gdb_set_reg,
+-                                 19, "arm-vfp.xml", 0);
+-    }
+-    gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
+-                             arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
+-                             "system-registers.xml", 0);
+-
+-}
+-
+ /* Sort alphabetically by type name, except for "any". */
+ static gint arm_cpu_list_compare(gconstpointer a, gconstpointer b)
+ {
 -- 
 2.20.1
 

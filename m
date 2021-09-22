@@ -1,105 +1,107 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp130589lfp;
-        Wed, 22 Sep 2021 05:38:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwCjCDmPmZmkA1JpfC445T78daoE7lAOgewMy5RhyzYIg0sNYjnFSFwtS9hrZV0sSlz51CF
-X-Received: by 2002:a9f:3852:: with SMTP id q18mr20264234uad.79.1632314281587;
-        Wed, 22 Sep 2021 05:38:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632314281; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp130866lfp;
+        Wed, 22 Sep 2021 05:38:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjj14CThXcqKrxyU+YClwyCHuNjnNQOlmzF2EPQ7NJQiPcnU4PTkFRP2hZ/1OEqgMUivY6
+X-Received: by 2002:a67:fd07:: with SMTP id f7mr19221781vsr.43.1632314298514;
+        Wed, 22 Sep 2021 05:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632314298; cv=none;
         d=google.com; s=arc-20160816;
-        b=kp+WqD4F5UrDDUyzqwh2yLJgLkEIEIAHhbLAB3iHMLTX/GIbdGvYS+F5KV+apOUGRX
-         goWC5udLzoBHhZiEInQPR2zpm64/KJ4qvcftGYMeQ/uMKD3ac8joEh6fQnp+xn8I1CiY
-         6DBLW1J4Q3uYeKH1tbiDrxBooTI9Ij/cWPXGGXg7X+4QR4zwekDYENXrxx8r6gQnDlBF
-         mjPuBSkK8tes/OKS1UBxauQepS2K5fEXAHOrJg5WS99hFOhBQRxurtUd9UJOp6iAGq62
-         ChroqK1SbEVPZpK7FbtluHKsNSqGrj3v//LRicKOSKc2VI9pQmcrAvzbguUnAfZJjMLQ
-         r3Qw==
+        b=irmEEQLarRtUvGuh1T0akUetJnCViXsS892SzIqwlMZFT8MWD45sBs3fmQGgk1I453
+         r80c+A3O1qFXHcQL71cuoC2OBUK/wfVqNKvHbgqHToTzd2MjUaEsj7dUsoVsAGLo5LES
+         vEJneJkqUf7vG5dDiDlRZ949GZjYU80sSQXPb8z6Gk39meP6iZ7ixuoBVDMCRPOGuFW1
+         g+jOGqJyWaN0qBxi+bVxeUxo8Q4LXRrm7jK7YD4+wRtLJUZSkw5IrGHqYw4Yfw2/6ujX
+         0w9G89u31wJ2WqPAG9kgMYGRAvUXggKlSun27fm6Jp8jKwpluLagYMOzWjiNuPKjQHGc
+         83wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=w7TZwJ41bXhnUpchhGW2z/Sp92vgIQwNdCThqat+ZiM=;
-        b=oncuai8iousF/vAapPmScJR0ruuy4PMjLzB++WDzH/yLnr9VPt1+mszWHiwVIhoBSH
-         UCkHDPeUw2/VaWe4GjiCzPaWdPqGrA5CagOjp+QvHpb0kfvLGWQiXML3ds67+6F6SN5O
-         jGaMT/Nn5eFPb1HCWlsmgdYjVohxGIgzs1I7iWONuDk70MK3Hvb6o6U8nkfjD0VDAvYO
-         X0wSQx7f2fK5d2Wnl6gn/7p2aw2y/jfKUdu+9hNgkqELF2OH8t5FTHkw3FZUEkXgm5+/
-         ApIA78QEGSf3nuuayI9Ea3ToL92g3uMInw7aEBGVX4yEJRty+OLTsy5axW81O30iTvW6
-         w+1Q==
+        bh=eDUbBmXbcV2SYybEkn682nVdXBenHfioDrMxUCVgHTU=;
+        b=M2ZLA1eTV0FuX0go2MPLYUiCxywthISFpS42TTwrpDRmdEZpTtU0ySYxPPTtTt+YMe
+         x7LtMRE4CQpsuqzDStsQ4SulYkInMdjUb4MX1mQRVBpFWwmvRN4aW6/C4dm7h/orTcRF
+         +95N/cHhOKrEF5ne+wTccZvaF3ob7QUWyR8QYGkl26nVrWaQMwihc0pz88pPlrlFQy/d
+         o4nYZ+TThnmqr0rpi62oLY6371POSZgilYHh4/3pgzC+jK7FOQ8Aa0EcHTSA7kA4bznD
+         rzPL1IKoJODgcQxOlW5bD1rHwcFFCSS0IjFNQQ/6oGjI06wuURoJ4q5r0JMa4M7tBeGZ
+         VpTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dNO69/1a";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZID71ZGq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si1366210vsm.76.2021.09.22.05.38.01
+        by mx.google.com with ESMTPS id q18si1601704vkn.96.2021.09.22.05.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Sep 2021 05:38:01 -0700 (PDT)
+        Wed, 22 Sep 2021 05:38:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dNO69/1a";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZID71ZGq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33190 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34030 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mT1Vg-0003Me-Rg
-	for alex.bennee@linaro.org; Wed, 22 Sep 2021 08:38:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41462)
+	id 1mT1Vx-00047y-R3
+	for alex.bennee@linaro.org; Wed, 22 Sep 2021 08:38:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mT1Pg-0005lG-L9
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:31:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38342)
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mT1Qf-0006qS-5V
+ for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:32:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27221)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mT1Pb-00005j-BZ
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:31:48 -0400
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mT1Qb-0000sM-IV
+ for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:32:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632313902;
+ s=mimecast20190719; t=1632313964;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=w7TZwJ41bXhnUpchhGW2z/Sp92vgIQwNdCThqat+ZiM=;
- b=dNO69/1aAHpWWFwStxP5AqL9tYFOornyi8PbGXK/u/Ogqtd7ZmncHHETLV0PUTOSfUvHE4
- mi8YggH7Ag3Me1WnEkTFhiOASDH8dFoPh2eLFtRfRXGHtBERRBSr1tYJH2kBvvgF7ECPoL
- g83e9AsiDOS+H7uD7r5d71Sy/dFrYC4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-110-nCMp1uG3PK2a-Maai8gvmw-1; Wed, 22 Sep 2021 08:31:41 -0400
-X-MC-Unique: nCMp1uG3PK2a-Maai8gvmw-1
-Received: by mail-wr1-f71.google.com with SMTP id
- k2-20020adfc702000000b0016006b2da9bso2037646wrg.1
- for <qemu-arm@nongnu.org>; Wed, 22 Sep 2021 05:31:41 -0700 (PDT)
+ bh=eDUbBmXbcV2SYybEkn682nVdXBenHfioDrMxUCVgHTU=;
+ b=ZID71ZGq/JeRqY26DOgM31/vfYYlIkNqVPveWq87wod8SIAGyXSngsss/wT0ZSGOdHM0/c
+ 66npZzeonGryomjFg5W7WOzs5AFledMfsmTtZNDEumDEdtgDyk9USj5bp7RPFirwAVKRwU
+ hivf9cfC5FnggiFlRT+PCc/D3u52JpE=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-377-YWVg7xXAOqS__SmgVUQRNw-1; Wed, 22 Sep 2021 08:32:43 -0400
+X-MC-Unique: YWVg7xXAOqS__SmgVUQRNw-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ f7-20020a5d50c7000000b0015e288741a4so2028054wrt.9
+ for <qemu-arm@nongnu.org>; Wed, 22 Sep 2021 05:32:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=w7TZwJ41bXhnUpchhGW2z/Sp92vgIQwNdCThqat+ZiM=;
- b=OCd1k+DomMNCJEM3Bc8p/OveN7vHasmz7esFZDbEawQK3oExdU+Hd5mX08phc8l/tG
- z7BaxOcSctaqtMlaR/vc3VwffYgoFhXaaNMRqb6jJvFo53IIAjx9dQ9t/izMEJHHh7QD
- idz0qYUyCVqDt2jHxZ2Q86aX/i0a/cAzEQeUBBxRyUpB/pedH8LQjcCzkGyn+bqTYo44
- uihGCNlJ3rIawnlCbBn3KS+g+Lu4uOBarR9MYr6Cb/G6otCvqvwmDqQTFCiahkNNrBTC
- 4jhSmeIaCvjs6/6R2ira1mmS1ZyGJvTNvs9CH3bWSqepNDEUWSkuG8Ytr5voD1RdVold
- YK8g==
-X-Gm-Message-State: AOAM5319eJYgGpJdkwKqt4XJcxum+TZahCKS0xtkmgJC2hJv3gyEH7at
- c/i7a7FxRfzneriRDgAhKBO3agDQHu0TlBg//Z4eLkEx41Y06IRTIle6FGbAfS42Oy7gGLa1Y5n
- vPKCSWW/xk43bW2oYheIRjCL0NC3up/BJJ9mIm8ex9M2dRz/iqHSuofRqDc5xow==
-X-Received: by 2002:a1c:f21a:: with SMTP id s26mr1145064wmc.117.1632313899141; 
- Wed, 22 Sep 2021 05:31:39 -0700 (PDT)
-X-Received: by 2002:a1c:f21a:: with SMTP id s26mr1145026wmc.117.1632313898899; 
- Wed, 22 Sep 2021 05:31:38 -0700 (PDT)
+ bh=eDUbBmXbcV2SYybEkn682nVdXBenHfioDrMxUCVgHTU=;
+ b=cvs9V+sRR0NIklEIlpKbhXZbG4atsdDTw9h27WBwRPCPtXnv/nhTKUlI0q9z7p3H9m
+ Pwa3gKNGqFLBZCElOIh2778HFE8B2CFRQSAEe7IpGW5OOU/7ML7z6Pc/18CTOaTUO7nj
+ qpEMGq0fnuuVAlWPi+XvR86VLpQyrYpILO3cbh8QbOtJFMLRuWkDu7m3kO3gPmqxg+/z
+ nFBi7Z9RUNk/2o7qagmO5tVuvgRCCYkHcX83Vlrx1RbvAoz8CzWIeMH44FIUHssMh/1U
+ 4Frssk9z7n7y2CsxjCSYNjFn599hRgF2Vn1ItIQH/cgTsFnW/IbznLfhoOriSLTcinQC
+ FRbA==
+X-Gm-Message-State: AOAM530UxWOTs02a+qT/jtJ9TkfKhddmiG6edOj05o8k7m1kZxHqgOFU
+ rf/+E+8fsR4MBWl+cvX1bLkgsQv/W6uJmc6qoBar/MPJEpORNiDzU+LYK3VpHiexjsEsha7gQFs
+ 8CX7v/IOGVaKCons/GM9pKL9382tPs8HtXRmiy11hZz8j49JQA2lwM6l0kUewTQ==
+X-Received: by 2002:a05:600c:4c09:: with SMTP id
+ d9mr10342563wmp.194.1632313962092; 
+ Wed, 22 Sep 2021 05:32:42 -0700 (PDT)
+X-Received: by 2002:a05:600c:4c09:: with SMTP id
+ d9mr10342537wmp.194.1632313961872; 
+ Wed, 22 Sep 2021 05:32:41 -0700 (PDT)
 Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id f8sm2065114wrx.15.2021.09.22.05.31.37
+ by smtp.gmail.com with ESMTPSA id k17sm2063530wrq.7.2021.09.22.05.32.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Sep 2021 05:31:38 -0700 (PDT)
+ Wed, 22 Sep 2021 05:32:41 -0700 (PDT)
 Subject: Re: [PATCH v3 28/35] acpi: arm: virt: build_iort: use
  acpi_table_begin()/acpi_table_end() instead of build_header()
 To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
 References: <20210907144814.741785-1-imammedo@redhat.com>
  <20210907144814.741785-29-imammedo@redhat.com>
 From: Eric Auger <eauger@redhat.com>
-Message-ID: <8185ebb8-7302-bcb3-f36f-9a7ac2388263@redhat.com>
-Date: Wed, 22 Sep 2021 14:31:37 +0200
+Message-ID: <3faf817c-1ea3-559f-2bed-2a04a72b51f2@redhat.com>
+Date: Wed, 22 Sep 2021 14:32:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
@@ -111,7 +113,7 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -42
 X-Spam_score: -4.3
@@ -119,7 +121,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.472,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -136,9 +138,9 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, shannon.zhaosl@gmail.com,
  qemu-arm@nongnu.org, mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6EjJYXjKlgNq
+X-TUID: ayq1fGLE+Iay
 
-
+Hi Igor,
 
 On 9/7/21 4:48 PM, Igor Mammedov wrote:
 > it replaces error-prone pointer arithmetic for build_header() API,
@@ -222,6 +224,10 @@ On 9/7/21 4:48 PM, Igor Mammedov wrote:
 >  
 >      if (vms->iommu == VIRT_IOMMU_SMMUV3) {
 > +
+forgot this minor comment
+nit: spurious change
+
+Eric
 >          AcpiIortIdMapping next_range = {0};
 >  
 >          object_child_foreach_recursive(object_get_root(),
@@ -289,9 +295,4 @@ On 9/7/21 4:48 PM, Igor Mammedov wrote:
 >  
 >  static void
 > 
-
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
 

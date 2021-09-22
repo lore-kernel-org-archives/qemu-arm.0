@@ -1,96 +1,95 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp330857lfp;
-        Wed, 22 Sep 2021 09:16:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzcrDZbQktwH0R5yUeRgzbgCS38T3O2tdYySPhRON5uM2PYA14J1+MeaIAbwoNaI2iFKaO
-X-Received: by 2002:a67:d99c:: with SMTP id u28mr72843vsj.32.1632327411209;
-        Wed, 22 Sep 2021 09:16:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632327411; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp358787lfp;
+        Wed, 22 Sep 2021 09:44:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyCYN3oV90acp4oI30DMjFFg5fpd8ElrOrCaRNpFxPg2IPHarnE95As3qVrquSofUF4YgD5
+X-Received: by 2002:a0c:f010:: with SMTP id z16mr761028qvk.8.1632329077659;
+        Wed, 22 Sep 2021 09:44:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632329077; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mxd59C+gMMZ8EWhcleCksXzz/XKMfBVB/9DAVbDq14wJ+rAJJl0pYzFHbY+VFAzcPW
-         Dz5gd8tCOSZ/VdbXpB0nYasmjSTqudGP0K7nQOzx3sg1u8Kk+wNIsVTV0gRNwybMy4X9
-         o5iGXmoRKtD7WgRXM4StpzjEfYzWeNX9YONrLum6yuOTFM90JrX9QNLQ08hJ8+qgrjKD
-         2O7hwj6Bzhyl4Lplr8r1c+TIE/sGhaJADY9zLiEyQfezKZFAZvg26D63VhRlN8ysJv+W
-         scyptD5Q4HwrMT2pz5+DLCAP/vH9oOxO+DqEjXxRQP/WUwiVMc9YEBCCnU7W8wPHkSxU
-         7uMA==
+        b=fR79Za0f4fm445F8Zpxm/wyVIyZCTe48mlFs603fsEU/q1WORvzPTZh3uI1BGBZQzr
+         kekZwaiWIe0KtJj7IEMx5Ofqo5BS5/ylLgzD0wbnjMIRZYCyTx8+vf+OlMvEGbGY6+sX
+         kj4md+wWtVocXLBCEXukTE4lhnKldwvrDqZ1uXnNfw6C0vqMrRKzadZckmfE+z6VrGEK
+         mmja3hoSyINiWucvHsUldbnKQeZnVkk6wy4s16rUjxYwQyRF41MUaOL3XtvBYY4t6p0G
+         +huY3OYu9ICiLoXwo9XRaLLPMNLGRG2VAfxOrKxETkYISGRZi+ELmVijYMRc/+sLZX4q
+         wiUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-disposition:user-agent
          :in-reply-to:mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=afaPrI2lIsJwwd28N+rf0rsb28GkzigsVp3a5c793L8=;
-        b=0NtI0ePCJ5UDZw9JPOGa/SwlgTv4f2/yuKGzPpPF2glY3qKKiIIvQmH+XztkeT8ZfP
-         xyJMMYpNC0AOk64+UYckAbUPA2wtllFEIrxp3Nt+L5rOarqlR8e/2ciYRdrM1Zef32/j
-         MuO90Y83vMLPOnv5SNPxgLiAFnUh8epCmsw7wcBsOFjDw59SS9PxmsirhJ6hVWpsEurT
-         NCT+Um/UNz1B+7q/SXUTiOqA7ZIZvq2vcrKQHN9r6sLzNbKhOssf0J5Sm8Xy5Uq4eB9t
-         d9DDc77aEcSWuJCvxm2Fngt/uQVdnnDD5LbfjmNuXKlPH8Ujj6TuxRNa1s6G2SuGk6r1
-         6wzw==
+        bh=tGml+z5wri++cNviwkr9uOImZi4qRo1/XZ9h9m3hxa4=;
+        b=ZUI+voFp967dnRiTqFbRP0BehoNxjPMICycbcDhhLLzvBYsNMmGLcMsj8oI0fEmWyk
+         hxZTyDYG6ZceCp8m4xkp043pOEII8Ra7cNOQKUiz4rNW/C4jCVipJlSqGAr8e9ME1taw
+         8EMZz8iXQ6XZFwPfGZCsieoRayct7q+hEh5V+dpq3JuMUBF4rTsg/DH/6MJcwOSrpSRx
+         E5f24evRlH/Ss4mMxVONkWkd15Qmt6j9k81y160jizySX6nUBqmzSeT2ZnrM+ZfiA6WB
+         V4xsGQ7Yjt8hFxD+Np+D8xzd0PTTyOdNtUdtaIghyJLKFWRdLJhl3P3TQSsXhY4ha6Xc
+         qj3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AihNhyV4;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cUl77Kfg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a26si2010009vsn.74.2021.09.22.09.16.51
+        by mx.google.com with ESMTPS id 19si2131769qtw.38.2021.09.22.09.44.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Sep 2021 09:16:51 -0700 (PDT)
+        Wed, 22 Sep 2021 09:44:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AihNhyV4;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cUl77Kfg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46252 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mT4vS-00033T-Iy
-	for alex.bennee@linaro.org; Wed, 22 Sep 2021 12:16:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44444)
+	id 1mT5MK-0007wC-TG
+	for alex.bennee@linaro.org; Wed, 22 Sep 2021 12:44:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mT4u5-0002SO-H4
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:15:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25639)
+ id 1mT5AV-0001Xa-HT
+ for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:32:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36529)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mT4tx-0004tL-Mr
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:15:23 -0400
+ id 1mT5AR-0001r8-AL
+ for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:32:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632327315;
+ s=mimecast20190719; t=1632328335;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=afaPrI2lIsJwwd28N+rf0rsb28GkzigsVp3a5c793L8=;
- b=AihNhyV46i3fX1lHd23FZAR48QAVAmZGpTHZFj2rUvm5eE2qnkTfIJWXQjsC+2JFeWM6fm
- q+DFibX/wEC7Y/UJWJZ1BgM1uMnC6NXI5OqWSTiPSjTeyTFLUv5whPtt5N/pVou64d/dTs
- K7uDtqkco+BBoxCazCsOoLK1mLec69w=
+ bh=tGml+z5wri++cNviwkr9uOImZi4qRo1/XZ9h9m3hxa4=;
+ b=cUl77KfgRCL9fbX9h3g40vvnZ+5ypfq6D/R8HQJFDSUNB9AUNngiYuzVKmBY0MjmhcHE/x
+ HEbQ7yLCFOYw1tYrBGkD7yhUK6o3K3iz/vcDJibPDglAMfrOUJhCyG5twKkwIZ5NuAkVaC
+ HqEzp74bTAZDtWd2DCb6h0TYsgQk7RY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-343-P_JRwo8oOayG3k6XMsPO2A-1; Wed, 22 Sep 2021 12:15:02 -0400
-X-MC-Unique: P_JRwo8oOayG3k6XMsPO2A-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-138-ZN6EHD2bOcehOHZg4VtXTQ-1; Wed, 22 Sep 2021 12:32:00 -0400
+X-MC-Unique: ZN6EHD2bOcehOHZg4VtXTQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5B653A40C1;
- Wed, 22 Sep 2021 16:14:58 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 50C8E1006AA5;
+ Wed, 22 Sep 2021 16:31:56 +0000 (UTC)
 Received: from redhat.com (unknown [10.39.195.69])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4E23160843;
- Wed, 22 Sep 2021 16:14:50 +0000 (UTC)
-Date: Wed, 22 Sep 2021 17:14:47 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 097F119724;
+ Wed, 22 Sep 2021 16:30:47 +0000 (UTC)
+Date: Wed, 22 Sep 2021 17:30:44 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v2 05/53] docs/devel: document expectations for HMP
- commands in the future
-Message-ID: <YUtWd5oNATbtsTxe@redhat.com>
+To: Dongli Zhang <dongli.zhang@oracle.com>
+Subject: Re: [PATCH v2 38/53] qapi: introduce x-query-lapic QMP command
+Message-ID: <YUtaNGQ6kHuZ5FY2@redhat.com>
 References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-6-berrange@redhat.com>
- <87pmt33c38.fsf@dusky.pond.sub.org>
+ <20210914142042.1655100-39-berrange@redhat.com>
+ <68cebe2f-ba56-545f-686a-b9ac2120c5c4@oracle.com>
 MIME-Version: 1.0
-In-Reply-To: <87pmt33c38.fsf@dusky.pond.sub.org>
+In-Reply-To: <68cebe2f-ba56-545f-686a-b9ac2120c5c4@oracle.com>
 User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -98,7 +97,7 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -42
 X-Spam_score: -4.3
@@ -106,7 +105,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.472,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,22 +122,21 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Xu <peterx@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
  Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
  Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Halil Pasic <pasic@linux.ibm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Cornelia Huck <cohuck@redhat.com>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
  Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -146,67 +144,142 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y6RgHGJvscXj
+X-TUID: M7SjV9qD2JZt
 
-On Mon, Sep 20, 2021 at 10:06:35AM +0200, Markus Armbruster wrote:
-> Daniel P. Berrangé <berrange@redhat.com> writes:
+On Mon, Sep 20, 2021 at 10:27:06PM -0700, Dongli Zhang wrote:
+> Hi Daniel,
 > 
-> > We no longer wish to have commands implemented in HMP only. All commands
-> > should start with a QMP implementation and the HMP merely be a shim
-> > around this. To reduce the burden of implementing QMP commands where
-> > there is low expectation of machine usage, requirements for QAPI
-> > modelling are relaxed provided the command is under the "x-" name
-> > prefix.
-> >
+> On 9/14/21 7:20 AM, Daniel P. Berrangé wrote:
+> > This is a counterpart to the HMP "info lapic" command. It is being
+> > added with an "x-" prefix because this QMP command is intended as an
+> > adhoc debugging tool and will thus not be modelled in QAPI as fully
+> > structured data, nor will it have long term guaranteed stability.
+> > The existing HMP command is rewritten to call the QMP command.
+> > 
+> > This command is unable to use the pre-existing HumanReadableText,
+> > because if 'common.json' is included into 'machine-target.json'
+> > the static marshalling method for HumanReadableText will be reported
+> > as unused by the compiler on all architectures except s390x.
+> > 
+> > Possible options were
+> > 
+> >  1 Support 'if' conditionals on 'include' statements in QAPI
+> >  2 Add further commands to 'machine-target.json' that use
+> >    HumanReadableText, such that it has at least one usage
+> >    on all architecture targets.
+> >  3 Duplicate HumanReadableText as TargetHumanReadableText
+> >    adding conditions
+> > 
+> > This patch takes option (3) in the belief that we will eventually
+> > get to a point where option (2) happens, and TargetHumanReadableText
+> > can be removed again.
+> > 
 > > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > > ---
-> >  docs/devel/writing-monitor-commands.rst | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> >
-> > diff --git a/docs/devel/writing-monitor-commands.rst b/docs/devel/writing-monitor-commands.rst
-> > index 4cf51ab557..983130a793 100644
-> > --- a/docs/devel/writing-monitor-commands.rst
-> > +++ b/docs/devel/writing-monitor-commands.rst
-> > @@ -11,6 +11,16 @@ For an in-depth introduction to the QAPI framework, please refer to
-> >  docs/devel/qapi-code-gen.txt. For documentation about the QMP protocol,
-> >  start with docs/interop/qmp-intro.txt.
-> >  
-> > +Historically QEMU has permitted new monitor commands to be implemented in HMP
-> > +only, QMP only, or both, depending on whether they needed to be accessible to
-> > +human operators, machines, or both. When both QMP and HMP are implemented it
-> > +is expected the HMP implementation is a shim around the QMP implementation.
-> > +Going forward, the expectation is that new commands are implemented in QMP
-> > +only, or both QMP and HMP. No further commands are to be added to HMP only.
-> > +The long term goal is that all HMP commands will be implemented in terms of
-> > +their QMP equivalent, enabling internals of QEMU to be fully isolated from
-> 
-> This feels a bit too tight.  Most HMP commands are going to wrap around
-> their equivalent QMP command.  However, high-level HMP commands built
-> from low-level QMP building blocks remain permissble.
-> 
-> > +the HMP implementation. Refer to the later topic on modelling data in QAPI
-> 
-> Suggest to use the exact section name for easy searching, or even
-> better, make it a link.
-> 
-> > +for further guidance on commands that would have traditionally been HMP only.
-> >  
-> >  Overview
-> >  --------
-> 
-> Discussing history is quite valuable in commit messages, but less so in
-> a "how to do stuff" document.  Consider cutting this down some.  What
-> about:
-> 
->     New commands may be implemented in QMP only.  New HMP commands should be
->     implemented on top of QMP.  The typical HMP command wraps around an
->     equivalent QMP command, but HMP convenience commands built from QMP
->     building blocks are also fine.  The long term goal is to make all
->     existing HMP commands conform to this, to fully isolate HMP from the
->     internals of QEMU.
+> >  hw/core/cpu-common.c     |   7 ++
+> >  include/hw/core/cpu.h    |  10 +++
+> >  qapi/machine-target.json |  19 ++++-
+> >  target/i386/cpu-dump.c   | 161 ++++++++++++++++++++-------------------
+> >  target/i386/cpu.h        |   4 +-
+> >  target/i386/monitor.c    |  46 +++++++++--
+> >  6 files changed, 160 insertions(+), 87 deletions(-)
 
-That's good with me. I'll just add the final sentance linking to the
-later illustration for debugging aids.
+
+> > diff --git a/target/i386/monitor.c b/target/i386/monitor.c
+> > index 19468c4e85..fc09f90059 100644
+> > --- a/target/i386/monitor.c
+> > +++ b/target/i386/monitor.c
+> > @@ -33,6 +33,7 @@
+> >  #include "qapi/error.h"
+> >  #include "sev_i386.h"
+> >  #include "qapi/qapi-commands-misc-target.h"
+> > +#include "qapi/qapi-commands-machine-target.h"
+> >  #include "qapi/qapi-commands-misc.h"
+> >  #include "hw/i386/pc.h"
+> >  
+> > @@ -650,23 +651,52 @@ const MonitorDef *target_monitor_defs(void)
+> >      return monitor_defs;
+> >  }
+> >  
+> > +TargetHumanReadableText *qmp_x_query_lapic(int64_t apicid,
+> > +                                           Error **errp)
+> > +{
+> > +    TargetHumanReadableText *ret;
+> > +    g_autoptr(GString) buf = NULL;
+> > +    CPUState *cs = cpu_by_arch_id(apicid);
+> > +
+> > +    if (!cs) {
+> > +        error_setg(errp, "No CPU with APIC ID %" PRId64 " available", apicid);
+> > +        return NULL;
+> > +    }
+> 
+> Suppose the accelerator is KVM, the CPUState (cs) might not be syncrhonized with
+> KVM kernel space (APIC+PIR). As a result, the data is stale.
+> 
+> I sent below patch long time ago but it never got reviewed.
+> 
+> https://lore.kernel.org/qemu-devel/20210908143803.29191-1-dongli.zhang@oracle.com/
+
+I'll include your patch in the next version of this series
+just before this patch, and then update this patch to  take
+it into account.
+
+> 
+> > +
+> > +    buf = x86_cpu_format_local_apic_state(cs, CPU_DUMP_FPU, errp);
+> > +    if (!buf) {
+> > +        return NULL;
+> > +    }
+> > +
+> > +    ret = g_new0(TargetHumanReadableText, 1);
+> > +    ret->human_readable_text = g_steal_pointer(&buf->str);
+> > +    return ret;
+> > +}
+> > +
+> >  void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
+> >  {
+> > -    CPUState *cs;
+> > +    Error *err = NULL;
+> > +    g_autoptr(TargetHumanReadableText) info = NULL;
+> > +    int64_t apicid;
+> >  
+> >      if (qdict_haskey(qdict, "apic-id")) {
+> > -        int id = qdict_get_try_int(qdict, "apic-id", 0);
+> > -        cs = cpu_by_arch_id(id);
+> > +        apicid = qdict_get_try_int(qdict, "apic-id", 0);
+> 
+> Here is where I used to fix with the patch.
+> 
+> Thank you very much!
+> 
+> Dongli Zhang
+> 
+> >      } else {
+> > -        cs = mon_get_cpu(mon);
+> > +        CPUState *cs = mon_get_cpu(mon);
+> > +        if (!cs) {
+> > +            monitor_printf(mon, "No CPU available\n");
+> > +            return;
+> > +        }
+> > +        apicid = cpu_get_arch_id(cs);
+> >      }
+> >  
+> > -
+> > -    if (!cs) {
+> > -        monitor_printf(mon, "No CPU available\n");
+> > +    info = qmp_x_query_lapic(apicid, &err);
+> > +    if (err) {
+> > +        error_report_err(err);
+> >          return;
+> >      }
+> > -    x86_cpu_dump_local_apic_state(cs, CPU_DUMP_FPU);
+> > +
+> > +    monitor_printf(mon, "%s", info->human_readable_text);
+> >  }
+> >  
+> >  SevInfo *qmp_query_sev(Error **errp)
+> > 
+> 
 
 Regards,
 Daniel

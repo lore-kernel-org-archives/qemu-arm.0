@@ -1,112 +1,99 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp320784lfp;
-        Wed, 22 Sep 2021 09:06:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwC2Fr+KM2+Z5fzYy14vVRzHk2pqIlqG392wBHcdW9t3PQToqrm2AYbIqqu4M1+e9hSriAE
-X-Received: by 2002:a67:c81a:: with SMTP id u26mr489565vsk.33.1632326812794;
-        Wed, 22 Sep 2021 09:06:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632326812; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp327992lfp;
+        Wed, 22 Sep 2021 09:13:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyQa3XK3zPbbu2rhUDQ0uR49WJCbcq+oC9NTtio9basZaP+06Pghsqk/2mQsdG+jclonXi4
+X-Received: by 2002:a63:dd46:: with SMTP id g6mr394573pgj.347.1632327235495;
+        Wed, 22 Sep 2021 09:13:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632327235; cv=none;
         d=google.com; s=arc-20160816;
-        b=FnDyIPkgoFW82K1uAOTPUfPwFqjq0n1ZICNkTRcRDJk2VmUihKFeXT7lFZtyWiWLKW
-         wHC26sJZ43XZocIuWrOMSyfwoXkXFYMWx4+qz+oTVk+spACh3KhbRyPKDxo/h155lZwp
-         6CquwW6y0y6UdEn13FzBu/uO34ohfbWmsPqf4kd5UkYsvjSdhtkxBne3KxGz8kK5FEQd
-         imc3OYZ7IdAjazYWDn5rMgVE0el6HEj/oAWGB4BNsYZce7e46A+2qzAPBunBFgef9wFe
-         l/H/a4IgP7u0WAaJ/BnAaQwzjU36WgTrFyhZXsc/Rh9tGo1K1Rw0TD6MKT5/tMH7Nyms
-         ys7A==
+        b=yE/jwql5wgcS0+SNIjeoJytkNrSozAekcOC34aXa1Rn7glkUUldRsrAwQp+zx9IIXM
+         fz0fNBmoAqdmB/hdyuZYV4Vjm7MxFkrj8Oeud2GkSvBQBbQpru1lB4/HF4TVG71tzSsM
+         od2d3QI6TQLg4FxDoaTeSwdwsxTpr2HNjWXhML5M8/IS/DwRDqiN2/IDzttQsxoljijt
+         FggkOaUcHU8JzGK0okmexEaOcahA/DioxK4qkvzeM1EN59RxsRTqopdqz+uR434Wr4xO
+         fXpXbD5QftEF+NRlPaAdlNKmfVqk59Sje+GTpretALj51yvt/qna/2Z4kUFCRHuqv+N2
+         1EyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=QebOB2SYHOmYM3jUpMCe05d9zHZjO5/ZfL4UGrTq+EM=;
-        b=vGKNBuBfEeEkLNtcu4nU4W+rQyrpnZddpeoIoaSOJuNcwFDQgd+r43gGL4WfAHRd6h
-         /6133sHozfwTtrDm48+gvbLryPhMqH/5qtO0wD0w+HcGaug8ponuAYquVsvSonl+4D9S
-         NRmGQLHxNUvBHWZ2NjIs3C5ImBbbr02G3lZt0ndBc/6HFv1P+gL5m+VPZnhU2vr3C4pO
-         XpWV4bCvJC7KJ9czhFrKPHbz4gs8ntcZw+3nMvGsCwmcgHA2DWy9vcOMeqZaNG9cCwfX
-         AzkFbx7r/o1/i9kuiBGtHaNt9poIGa2bykEGiR5Wim9Fg0+pg5acNh0AwDGoLlYurMT4
-         y0TQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=3B/l9DDBKS03ViCozyhUhziL4eDkI9qFbSzc3ohdjKg=;
+        b=TK7/25Z63iAy020jYqQFr1ZP4MrNHE0HDdkNU7KRcNNpukXnesaB7guJChv+FNkP07
+         nK4VoWFh14Np4JALPIxB0H4nZ8Jzrpkbm/sxpPDR2M8DXdT/BIHOIhA2nt2A+O6QX/ew
+         +wP4dZyEOjeCy45Vmlf9fz6jguh20FEwjw+nIOx10vv+KKZ7UlaH3wIzFIITxx0lhs6o
+         v7LihzchZzObNhQTsn1ciPhijrFM4fcnnAsgL7mD30jnMIRkp1jxpZCk3aFub6+hA7xT
+         4yHGmm0WrzGJA8pv/B9lSscVdXOZuaGvRrkqU251zN7Lw9opPFhsF0jDrwOL0Or88reZ
+         9HaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ejX35bdM;
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b="n6/GGS0Y";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h28si1789413vsg.450.2021.09.22.09.06.52
+        by mx.google.com with ESMTPS id z2si2077350qtf.35.2021.09.22.09.13.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Sep 2021 09:06:52 -0700 (PDT)
+        Wed, 22 Sep 2021 09:13:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ejX35bdM;
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b="n6/GGS0Y";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47002 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:58774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mT4lm-0001BS-Su
-	for alex.bennee@linaro.org; Wed, 22 Sep 2021 12:06:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41596)
+	id 1mT4sc-0000z4-M4
+	for alex.bennee@linaro.org; Wed, 22 Sep 2021 12:13:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mT4jc-0000Nz-Kc
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:04:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:25003)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1mT4pi-0006hJ-Rs; Wed, 22 Sep 2021 12:10:56 -0400
+Received: from mail.kernel.org ([198.145.29.99]:57536)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mT4jY-0004PA-87
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:04:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632326670;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QebOB2SYHOmYM3jUpMCe05d9zHZjO5/ZfL4UGrTq+EM=;
- b=ejX35bdMmV60vaxQDfiQ0T6xYXxkY3xe779kUBMkCCOH5wKmsAlfQ3WxWJrKp1i9nTCW7P
- 7P8Xe5ePjVwPmuy6Mk1B2OBjITGoyi5bC5TD0pG7qoueQldhPnXXleEUZCOnOIa9zvGpeB
- +geXWqYpDp7wV8EUjHBvmNnRV4Nw0sI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-18-7eIC7RurO66dIJH9eiFOlg-1; Wed, 22 Sep 2021 12:04:16 -0400
-X-MC-Unique: 7eIC7RurO66dIJH9eiFOlg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C88551923768;
- Wed, 22 Sep 2021 16:04:11 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.195.69])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4BE661865D;
- Wed, 22 Sep 2021 16:02:27 +0000 (UTC)
-Date: Wed, 22 Sep 2021 17:02:24 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v2 01/53] docs/devel: rename file for writing monitor
- commands
-Message-ID: <YUtTkO9SFnA5xs2v@redhat.com>
-References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-2-berrange@redhat.com>
- <87a6k74rsl.fsf@dusky.pond.sub.org>
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1mT4pg-0001GG-9T; Wed, 22 Sep 2021 12:10:54 -0400
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 851B061168;
+ Wed, 22 Sep 2021 16:10:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1632327050;
+ bh=ZQEjt+lvFpI8dA+77HmtCoPQ51l7Q3ZOfcyOEbTaXso=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=n6/GGS0YHV7LTkGgzG5UP1PRO48X/zx2paVTm9KUHn0JqIs2XLnPEX53y7jBogpQN
+ eHQz+VA4g0vj/CymcrO3mXMcBgunvgZWRMuJDRyYNvTi8aI/TLlsq5aSEfzx/On34G
+ +obbUVRj6xUxzIkezvGekIbBWBd5JXMmCp33r/3NhVeDNBYxoQeYtmgi7SUH7UtimD
+ Tnv6G+8zAcyFbTsvxUpPNAFMQfezP9nv7v28YE3cG6I/8IuxdOYq/4b8VL1ZoS2+yA
+ qMmaFTfiooz0+fCFvW4xlcEMBnKbGKD4vvXBBhYMnvT95h8Zx4A0KwVc7fnsOnikMo
+ wWaUuArk0Xvdw==
+Received: by mail-oi1-f182.google.com with SMTP id x124so5140153oix.9;
+ Wed, 22 Sep 2021 09:10:50 -0700 (PDT)
+X-Gm-Message-State: AOAM53135Ksa+pe2S0vU81BDfi8JzruwamasXqGBcXK5u4a+jucO9WMo
+ hvLFWp2SbPfSIesDuQJ+oNvauyeS7K4bm5HLumg=
+X-Received: by 2002:aca:3114:: with SMTP id x20mr28574oix.174.1632327049808;
+ Wed, 22 Sep 2021 09:10:49 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87a6k74rsl.fsf@dusky.pond.sub.org>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) DKIMWL_WL_HIGH=-1.472, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20210915181049.27597-1-agraf@csgraf.de>
+ <20210915181049.27597-7-agraf@csgraf.de>
+ <CAFEAcA9JZZ4nb8WAvKVYpwqxb_E5NFOVW9rKF3u7GhFqfNZgOQ@mail.gmail.com>
+ <8e219cb0-8b65-faf8-f636-5c1d24471f84@csgraf.de>
+ <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
+ <CAMj1kXEEN+J4k_Kib8gRHcy8v1vVRwk7c847yT_Kuv+jnLf9ww@mail.gmail.com>
+ <CAFEAcA8yd6m-S90Uq1G=HTYFAerp6cZdJk9B=CFrHMn5tEMZ5w@mail.gmail.com>
+ <CAMj1kXGXbjrG4XanWr=-H=f5wsUk6YVu-oTA9A_np3F8ELNcxw@mail.gmail.com>
+ <CAFEAcA_fxW0yKwxqBuDi8+ux-jtVKeJxNhDV1=ROb+VamLiZRQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_fxW0yKwxqBuDi8+ux-jtVKeJxNhDV1=ROb+VamLiZRQ@mail.gmail.com>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Wed, 22 Sep 2021 18:10:38 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXG6VDp_rSU+S_TTPdK8rUt2zF=V1E+brGfzsTUa7oF+yw@mail.gmail.com>
+Message-ID: <CAMj1kXG6VDp_rSU+S_TTPdK8rUt2zF=V1E+brGfzsTUa7oF+yw@mail.gmail.com>
+Subject: Re: [PATCH v11 06/10] hvf: arm: Implement -cpu host
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=198.145.29.99; envelope-from=ardb@kernel.org;
+ helo=mail.kernel.org
+X-Spam_score_int: -66
+X-Spam_score: -6.7
+X-Spam_bar: ------
+X-Spam_report: (-6.7 / 5.0 requ) DKIMWL_WL_HIGH=-1.472, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,83 +106,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
- David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
- Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Peter Xu <peterx@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mV+IsTOlWDjC
+X-TUID: rAqHb4tHsD7x
 
-On Mon, Sep 20, 2021 at 09:42:02AM +0200, Markus Armbruster wrote:
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
-> > The file already covers writing new style HMP commands, in addition to
-> > the QMP commands, so it deserves a more general name.
+On Wed, 22 Sept 2021 at 14:45, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Wed, 22 Sept 2021 at 12:41, Ard Biesheuvel <ardb@kernel.org> wrote:
 > >
-> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > ---
-> >  docs/devel/index.rst                                        | 2 +-
-> >  ...riting-qmp-commands.rst => writing-monitor-commands.rst} | 6 +++---
-> >  2 files changed, 4 insertions(+), 4 deletions(-)
-> >  rename docs/devel/{writing-qmp-commands.rst => writing-monitor-commands.rst} (99%)
+> > On Thu, 16 Sept 2021 at 18:17, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > >
+> > > On Thu, 16 Sept 2021 at 17:05, Ard Biesheuvel <ardb@kernel.org> wrote:
+> > > > I'd argue that compliance with the architecture means that the
+> > > > software should not clear RES1 bits
+> > >
+> > > Architecturally, RES1 means that "software
+> > >  * Must not rely on the bit reading as 1.
+> > >  * Must use an SBOP policy to write to the bit."
+> > > (SBOP=="should be 1 or preserved", ie you can preserve the existing value,
+> > > as in "read register, change some bits, write back", or you can write a 1.)
+> > >
 > >
-> > diff --git a/docs/devel/index.rst b/docs/devel/index.rst
-> > index f95df10b3e..7c25177c5d 100644
-> > --- a/docs/devel/index.rst
-> > +++ b/docs/devel/index.rst
-> > @@ -44,4 +44,4 @@ modifying QEMU's source code.
-> >     ebpf_rss
-> >     vfio-migration
-> >     qapi-code-gen
-> > -   writing-qmp-commands
-> > +   writing-monitor-commands
-> > diff --git a/docs/devel/writing-qmp-commands.rst b/docs/devel/writing-monitor-commands.rst
-> > similarity index 99%
-> > rename from docs/devel/writing-qmp-commands.rst
-> > rename to docs/devel/writing-monitor-commands.rst
-> > index 6a10a06c48..497c9ce0d5 100644
-> > --- a/docs/devel/writing-qmp-commands.rst
-> > +++ b/docs/devel/writing-monitor-commands.rst
-> > @@ -1,8 +1,8 @@
-> > -How to write QMP commands using the QAPI framework
-> > -==================================================
-> > +How to write monitor commands
-> > +=============================
-> >  
-> >  This document is a step-by-step guide on how to write new QMP commands using
-> > -the QAPI framework. It also shows how to implement new style HMP commands.
-> > +the QAPI framework and new style HMP commands.
-> 
-> Recommend to drop "new style", here and in the commit message.
+> > OVMF preserves the bit, and does not reason or care about its value.
+> > So in this sense, it is compliant.
+>
+> Hmm. Alex, can you give more details about what fails here ?
+>
 
-Ok, will do.
+It seems that EDK2 ends up setting EL0 r/o or r/w permissions on some
+mappings, even though it never runs anything at EL0. So any execution
+that gets initiated via the timer interrupt causing a EL1->EL1 IRQ
+exception will run with PAN enabled and lose access to those mappings.
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+So it seems like a definite bug that is unrelated to reset state of
+the registers and assumptions related to that.
 
+
+
+> > > > but I don't think we can blame it
+> > > > for not touching bits that were in in invalid state upon entry.
+> > >
+> > > SCTLR_EL1.SPAN == 0 is perfectly valid for a CPU that supports the
+> > > PAN feature. It's just not the value OVMF wants, so OVMF should
+> > > be setting it to what it does want. Also, as the first thing to
+> > > run after reset (ie firmware) OVMF absolutely is responsible for
+> > > dealing with system registers which have UNKNOWN values out of
+> > > reset.
+> > >
+> >
+> > Fair enough. But I'd still suggest fixing this at both ends.
+>
+> Yes, the version of this code that we committed sets SPAN to 1.
+> (This argument is mostly about what the comment justifying that
+> value should say :-))
+>
+
+OK, that makes sense. But I'd like to get EDK2 fixed as well, obviously.

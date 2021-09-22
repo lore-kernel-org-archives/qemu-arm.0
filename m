@@ -1,127 +1,109 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp130866lfp;
-        Wed, 22 Sep 2021 05:38:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjj14CThXcqKrxyU+YClwyCHuNjnNQOlmzF2EPQ7NJQiPcnU4PTkFRP2hZ/1OEqgMUivY6
-X-Received: by 2002:a67:fd07:: with SMTP id f7mr19221781vsr.43.1632314298514;
-        Wed, 22 Sep 2021 05:38:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632314298; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp137001lfp;
+        Wed, 22 Sep 2021 05:46:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/EUnRIZ1lFzZqjyOTh4u+oYl46bUZI+B7fj0bIpD2JyWjuHjbXZZzG8iDGCEbIwn8+j+y
+X-Received: by 2002:ac8:4b41:: with SMTP id e1mr24821418qts.383.1632314764316;
+        Wed, 22 Sep 2021 05:46:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632314764; cv=none;
         d=google.com; s=arc-20160816;
-        b=irmEEQLarRtUvGuh1T0akUetJnCViXsS892SzIqwlMZFT8MWD45sBs3fmQGgk1I453
-         r80c+A3O1qFXHcQL71cuoC2OBUK/wfVqNKvHbgqHToTzd2MjUaEsj7dUsoVsAGLo5LES
-         vEJneJkqUf7vG5dDiDlRZ949GZjYU80sSQXPb8z6Gk39meP6iZ7ixuoBVDMCRPOGuFW1
-         g+jOGqJyWaN0qBxi+bVxeUxo8Q4LXRrm7jK7YD4+wRtLJUZSkw5IrGHqYw4Yfw2/6ujX
-         0w9G89u31wJ2WqPAG9kgMYGRAvUXggKlSun27fm6Jp8jKwpluLagYMOzWjiNuPKjQHGc
-         83wQ==
+        b=fuRU798ARgMfS+RhlAgQkYGIHHVabOT6CQhkUubfXDqPIEPCcdwF7/ZZ6uNvCoESz9
+         P4VrUanSsB49SfbwzTQh+VJ9lgcgEzELpqajFpSBmJex6uJS6PCbKzNbeqRy0MPmPles
+         jTdKUfpVp3DU7DPqkjT9oYpBNOXmi1LQ0/XGXOVe7Rt0ZQRq9FNI+9neDg2GednZEO6O
+         gIHx2VChhGmk/H3OP1jBoa8bNv2/ewYAj3KVNWPzAgELWWvpIuOHdo80J0446z7o6gTo
+         rnFqWCyvW/rWyHyvLLIR18z/CYOmMe42o6lAqqe1yU8WGuZuPW0Slc6IRpyfL/FfhuMp
+         T3uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=eDUbBmXbcV2SYybEkn682nVdXBenHfioDrMxUCVgHTU=;
-        b=M2ZLA1eTV0FuX0go2MPLYUiCxywthISFpS42TTwrpDRmdEZpTtU0ySYxPPTtTt+YMe
-         x7LtMRE4CQpsuqzDStsQ4SulYkInMdjUb4MX1mQRVBpFWwmvRN4aW6/C4dm7h/orTcRF
-         +95N/cHhOKrEF5ne+wTccZvaF3ob7QUWyR8QYGkl26nVrWaQMwihc0pz88pPlrlFQy/d
-         o4nYZ+TThnmqr0rpi62oLY6371POSZgilYHh4/3pgzC+jK7FOQ8Aa0EcHTSA7kA4bznD
-         rzPL1IKoJODgcQxOlW5bD1rHwcFFCSS0IjFNQQ/6oGjI06wuURoJ4q5r0JMa4M7tBeGZ
-         VpTA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MipNfkz7Nf1NrUuqmrUvxfk/BhvFLDdy9e8n769BM4s=;
+        b=w3r2U3eahp9Sn7l6gIc/HrcHZ1WTXcI7VGSqFUnD1S3r7yTAIptCv6yz8fsZ1zeTOy
+         jBWFjcBn04AzzgpElsNHSfMlKJs4TBgauBuT/S7RBnjbdBYwxicEOZGHOSstlbrcSGFY
+         Oj6gwejtOwbs8LrHz7ut+KDiGQEI54iZRFLpGSJCiK8eU/c2pxCiBBZgdB9uS6tcl7dB
+         7v4Tqb8t6WpHnWkrmImuCO4232Ij6/YBs+kDkeT3NwD6P5TNhVl6VnfdhJCRF7dwn/3p
+         tIN+kvsLwPYn4uKuFbEkTihnDJrRWL8cppG/OWxti/9rKFgVGuCGa13qYN6mJCdU13Ut
+         eZ5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZID71ZGq;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jAykGCXO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q18si1601704vkn.96.2021.09.22.05.38.18
+        by mx.google.com with ESMTPS id kj30si975665qvb.239.2021.09.22.05.46.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Sep 2021 05:38:18 -0700 (PDT)
+        Wed, 22 Sep 2021 05:46:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZID71ZGq;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jAykGCXO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34030 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45474 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mT1Vx-00047y-R3
-	for alex.bennee@linaro.org; Wed, 22 Sep 2021 08:38:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41578)
+	id 1mT1dT-0004DF-Fa
+	for alex.bennee@linaro.org; Wed, 22 Sep 2021 08:46:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mT1Qf-0006qS-5V
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:32:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27221)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mT1Qb-0000sM-IV
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:32:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632313964;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eDUbBmXbcV2SYybEkn682nVdXBenHfioDrMxUCVgHTU=;
- b=ZID71ZGq/JeRqY26DOgM31/vfYYlIkNqVPveWq87wod8SIAGyXSngsss/wT0ZSGOdHM0/c
- 66npZzeonGryomjFg5W7WOzs5AFledMfsmTtZNDEumDEdtgDyk9USj5bp7RPFirwAVKRwU
- hivf9cfC5FnggiFlRT+PCc/D3u52JpE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-377-YWVg7xXAOqS__SmgVUQRNw-1; Wed, 22 Sep 2021 08:32:43 -0400
-X-MC-Unique: YWVg7xXAOqS__SmgVUQRNw-1
-Received: by mail-wr1-f69.google.com with SMTP id
- f7-20020a5d50c7000000b0015e288741a4so2028054wrt.9
- for <qemu-arm@nongnu.org>; Wed, 22 Sep 2021 05:32:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mT1cs-0004Cn-O6
+ for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:45:27 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:39919)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mT1cp-0001t8-Gx
+ for qemu-arm@nongnu.org; Wed, 22 Sep 2021 08:45:26 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id u15so6403786wru.6
+ for <qemu-arm@nongnu.org>; Wed, 22 Sep 2021 05:45:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MipNfkz7Nf1NrUuqmrUvxfk/BhvFLDdy9e8n769BM4s=;
+ b=jAykGCXOXSZlzrxIWWA/UYwi8cIvmdZ2tzs5v5nFSQdSuITubhPJnilD2E1flp22Z8
+ q352j2MyOHhnJKAdrLYsXQ+QFLzf/RZi5MbWiOaTBxZN5If97Ko+N9gPEt1Z59x9ycrm
+ s/h5Igt9aCYUQk/leL8mfycAR4C4B9Aedo165DAFoQyZvYOGEejNUkFjMx4q4Ej29zp3
+ n0UFGb0QvhM9Had01SamW/I3tq7TjUZlAWDS1puD/c0BgCUw61eJzclFBGGrsW1Hjm2c
+ 2jfmwwgi/bZv1Vfp5uCuuqeXrd1ALbZPUxLKKub3ty97BEi/gw/mkXSOYDx5RceUWqTH
+ tXVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=eDUbBmXbcV2SYybEkn682nVdXBenHfioDrMxUCVgHTU=;
- b=cvs9V+sRR0NIklEIlpKbhXZbG4atsdDTw9h27WBwRPCPtXnv/nhTKUlI0q9z7p3H9m
- Pwa3gKNGqFLBZCElOIh2778HFE8B2CFRQSAEe7IpGW5OOU/7ML7z6Pc/18CTOaTUO7nj
- qpEMGq0fnuuVAlWPi+XvR86VLpQyrYpILO3cbh8QbOtJFMLRuWkDu7m3kO3gPmqxg+/z
- nFBi7Z9RUNk/2o7qagmO5tVuvgRCCYkHcX83Vlrx1RbvAoz8CzWIeMH44FIUHssMh/1U
- 4Frssk9z7n7y2CsxjCSYNjFn599hRgF2Vn1ItIQH/cgTsFnW/IbznLfhoOriSLTcinQC
- FRbA==
-X-Gm-Message-State: AOAM530UxWOTs02a+qT/jtJ9TkfKhddmiG6edOj05o8k7m1kZxHqgOFU
- rf/+E+8fsR4MBWl+cvX1bLkgsQv/W6uJmc6qoBar/MPJEpORNiDzU+LYK3VpHiexjsEsha7gQFs
- 8CX7v/IOGVaKCons/GM9pKL9382tPs8HtXRmiy11hZz8j49JQA2lwM6l0kUewTQ==
-X-Received: by 2002:a05:600c:4c09:: with SMTP id
- d9mr10342563wmp.194.1632313962092; 
- Wed, 22 Sep 2021 05:32:42 -0700 (PDT)
-X-Received: by 2002:a05:600c:4c09:: with SMTP id
- d9mr10342537wmp.194.1632313961872; 
- Wed, 22 Sep 2021 05:32:41 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id k17sm2063530wrq.7.2021.09.22.05.32.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Sep 2021 05:32:41 -0700 (PDT)
-Subject: Re: [PATCH v3 28/35] acpi: arm: virt: build_iort: use
- acpi_table_begin()/acpi_table_end() instead of build_header()
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <20210907144814.741785-1-imammedo@redhat.com>
- <20210907144814.741785-29-imammedo@redhat.com>
-From: Eric Auger <eauger@redhat.com>
-Message-ID: <3faf817c-1ea3-559f-2bed-2a04a72b51f2@redhat.com>
-Date: Wed, 22 Sep 2021 14:32:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MipNfkz7Nf1NrUuqmrUvxfk/BhvFLDdy9e8n769BM4s=;
+ b=sFkksjcYdebIuB2jIXXS0vnx+PqghMmjDPcJxoMCb+UaM9EAKD+3K2DxRPNR10VqtL
+ yY7K6MOsqZ4xhyVweqBYejG8I0E490N/oUyg9pIj+mPniMybYWOth8kjc9zxTYsLGFty
+ yHiNDBlHVqJbzlu6zx/AGV35coycXU8fmAUy+vDFGEECTv9uU5u1thELcQ2fuvUcr/oX
+ tHZ93Ud0ZzNu06iHVn95ZqvBol/R9mDRuCnWJOPoJAUXnmmiFn1xfBgG7dqqesbCe1Uj
+ jmTe6InhQi37MlF4Qr1F9IGu4cvhMCx1w9pVm41oTUImILV6IMyCE+rFGPA4M8MydT8Z
+ k9qA==
+X-Gm-Message-State: AOAM533JjHFts9BYlH9kkjNfjbXRvSU0RXGIngFmYvRJ5QM5w57NPsru
+ axVwBMp6CJjxcOVRSn8dEByO5Yp75E0q0furZjq4+A==
+X-Received: by 2002:a05:600c:4848:: with SMTP id
+ j8mr10366151wmo.21.1632314719411; 
+ Wed, 22 Sep 2021 05:45:19 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210907144814.741785-29-imammedo@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.472,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210915181049.27597-1-agraf@csgraf.de>
+ <20210915181049.27597-7-agraf@csgraf.de>
+ <CAFEAcA9JZZ4nb8WAvKVYpwqxb_E5NFOVW9rKF3u7GhFqfNZgOQ@mail.gmail.com>
+ <8e219cb0-8b65-faf8-f636-5c1d24471f84@csgraf.de>
+ <CAFEAcA8xs3x5WCqT+FnPYip=nbQx6=UEH90Dkjq48YLboV9qAw@mail.gmail.com>
+ <CAMj1kXEEN+J4k_Kib8gRHcy8v1vVRwk7c847yT_Kuv+jnLf9ww@mail.gmail.com>
+ <CAFEAcA8yd6m-S90Uq1G=HTYFAerp6cZdJk9B=CFrHMn5tEMZ5w@mail.gmail.com>
+ <CAMj1kXGXbjrG4XanWr=-H=f5wsUk6YVu-oTA9A_np3F8ELNcxw@mail.gmail.com>
+In-Reply-To: <CAMj1kXGXbjrG4XanWr=-H=f5wsUk6YVu-oTA9A_np3F8ELNcxw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 22 Sep 2021 13:44:27 +0100
+Message-ID: <CAFEAcA_fxW0yKwxqBuDi8+ux-jtVKeJxNhDV1=ROb+VamLiZRQ@mail.gmail.com>
+Subject: Re: [PATCH v11 06/10] hvf: arm: Implement -cpu host
+To: Ard Biesheuvel <ardb@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -134,165 +116,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, mst@redhat.com
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ayq1fGLE+Iay
+X-TUID: fz07AXKKhrg6
 
-Hi Igor,
+On Wed, 22 Sept 2021 at 12:41, Ard Biesheuvel <ardb@kernel.org> wrote:
+>
+> On Thu, 16 Sept 2021 at 18:17, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Thu, 16 Sept 2021 at 17:05, Ard Biesheuvel <ardb@kernel.org> wrote:
+> > > I'd argue that compliance with the architecture means that the
+> > > software should not clear RES1 bits
+> >
+> > Architecturally, RES1 means that "software
+> >  * Must not rely on the bit reading as 1.
+> >  * Must use an SBOP policy to write to the bit."
+> > (SBOP=="should be 1 or preserved", ie you can preserve the existing value,
+> > as in "read register, change some bits, write back", or you can write a 1.)
+> >
+>
+> OVMF preserves the bit, and does not reason or care about its value.
+> So in this sense, it is compliant.
 
-On 9/7/21 4:48 PM, Igor Mammedov wrote:
-> it replaces error-prone pointer arithmetic for build_header() API,
-> with 2 calls to start and finish table creation,
-> which hides offsets magic from API user.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> v3:
->   * fix conflicts due to
->       42e0f050e3a51 'hw/arm/virt-acpi-build: Add IORT support to bypass SMMUv3'
->   *  * s/acpi_init_table|acpi_table_composed/acpi_table_begin|acpi_table_end/
-> 
-> CC: drjones@redhat.com
-> CC: peter.maydell@linaro.org
-> CC: shannon.zhaosl@gmail.com
-> CC: qemu-arm@nongnu.org
-> CC: eauger@redhat.com
-> ---
->  include/hw/acpi/acpi-defs.h | 14 ------------
->  hw/arm/virt-acpi-build.c    | 45 ++++++++++++++++---------------------
->  2 files changed, 19 insertions(+), 40 deletions(-)
-> 
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index bcada37601..195f90caf6 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -188,20 +188,6 @@ struct AcpiGenericTimerTable {
->  } QEMU_PACKED;
->  typedef struct AcpiGenericTimerTable AcpiGenericTimerTable;
->  
-> -/*
-> - * Input Output Remapping Table (IORT)
-> - * Conforms to "IO Remapping Table System Software on ARM Platforms",
-> - * Document number: ARM DEN 0049B, October 2015
-> - */
-> -
-> -struct AcpiIortTable {
-> -    ACPI_TABLE_HEADER_DEF     /* ACPI common table header */
-> -    uint32_t node_count;
-> -    uint32_t node_offset;
-> -    uint32_t reserved;
-> -} QEMU_PACKED;
-> -typedef struct AcpiIortTable AcpiIortTable;
-> -
->  /*
->   * IORT node types
->   */
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 4b9687439d..bceb1b3b7e 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -273,22 +273,29 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
->      return idmap_a->input_base - idmap_b->input_base;
->  }
->  
-> +/*
-> + * Input Output Remapping Table (IORT)
-> + * Conforms to "IO Remapping Table System Software on ARM Platforms",
-> + * Document number: ARM DEN 0049B, October 2015
-> + */
->  static void
->  build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
-> -    int i, nb_nodes, rc_mapping_count, iort_start = table_data->len;
-> +    int i, nb_nodes, rc_mapping_count;
->      AcpiIortIdMapping *idmap;
->      AcpiIortItsGroup *its;
-> -    AcpiIortTable *iort;
->      AcpiIortSmmu3 *smmu;
-> -    size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
->      AcpiIortRC *rc;
-> +    const uint32_t iort_node_offset = 48;
-> +    size_t node_size, smmu_offset = 0;
->      GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->      GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->  
-> -    iort = acpi_data_push(table_data, sizeof(*iort));
-> +    AcpiTable table = { .sig = "IORT", .rev = 0, .oem_id = vms->oem_id,
-> +                        .oem_table_id = vms->oem_table_id };
->  
->      if (vms->iommu == VIRT_IOMMU_SMMUV3) {
-> +
-forgot this minor comment
-nit: spurious change
+Hmm. Alex, can you give more details about what fails here ?
 
-Eric
->          AcpiIortIdMapping next_range = {0};
->  
->          object_child_foreach_recursive(object_get_root(),
-> @@ -325,18 +332,16 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          rc_mapping_count = 1;
->      }
->  
-> -    iort_length = sizeof(*iort);
-> -    iort->node_count = cpu_to_le32(nb_nodes);
-> -    /*
-> -     * Use a copy in case table_data->data moves during acpi_data_push
-> -     * operations.
-> -     */
-> -    iort_node_offset = sizeof(*iort);
-> -    iort->node_offset = cpu_to_le32(iort_node_offset);
-> +    /* Table 2 The IORT */
-> +    acpi_table_begin(&table, table_data);
-> +    /* Number of IORT Nodes */
-> +    build_append_int_noprefix(table_data, nb_nodes, 4);
-> +    /* Offset to Array of IORT Nodes */
-> +    build_append_int_noprefix(table_data, iort_node_offset, 4);
-> +    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
->  
->      /* ITS group node */
->      node_size =  sizeof(*its) + sizeof(uint32_t);
-> -    iort_length += node_size;
->      its = acpi_data_push(table_data, node_size);
->  
->      its->type = ACPI_IORT_NODE_ITS_GROUP;
-> @@ -350,7 +355,6 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          /* SMMUv3 node */
->          smmu_offset = iort_node_offset + node_size;
->          node_size = sizeof(*smmu) + sizeof(*idmap);
-> -        iort_length += node_size;
->          smmu = acpi_data_push(table_data, node_size);
->  
->          smmu->type = ACPI_IORT_NODE_SMMU_V3;
-> @@ -375,7 +379,6 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  
->      /* Root Complex Node */
->      node_size = sizeof(*rc) + sizeof(*idmap) * rc_mapping_count;
-> -    iort_length += node_size;
->      rc = acpi_data_push(table_data, node_size);
->  
->      rc->type = ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
-> @@ -424,19 +427,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          idmap->output_reference = cpu_to_le32(iort_node_offset);
->      }
->  
-> +    acpi_table_end(linker, &table);
->      g_array_free(smmu_idmaps, true);
->      g_array_free(its_idmaps, true);
-> -
-> -    /*
-> -     * Update the pointer address in case table_data->data moves during above
-> -     * acpi_data_push operations.
-> -     */
-> -    iort = (AcpiIortTable *)(table_data->data + iort_start);
-> -    iort->length = cpu_to_le32(iort_length);
-> -
-> -    build_header(linker, table_data, (void *)(table_data->data + iort_start),
-> -                 "IORT", table_data->len - iort_start, 0, vms->oem_id,
-> -                 vms->oem_table_id);
->  }
->  
->  static void
-> 
+> > > but I don't think we can blame it
+> > > for not touching bits that were in in invalid state upon entry.
+> >
+> > SCTLR_EL1.SPAN == 0 is perfectly valid for a CPU that supports the
+> > PAN feature. It's just not the value OVMF wants, so OVMF should
+> > be setting it to what it does want. Also, as the first thing to
+> > run after reset (ie firmware) OVMF absolutely is responsible for
+> > dealing with system registers which have UNKNOWN values out of
+> > reset.
+> >
+>
+> Fair enough. But I'd still suggest fixing this at both ends.
 
+Yes, the version of this code that we committed sets SPAN to 1.
+(This argument is mostly about what the comment justifying that
+value should say :-))
+
+-- PMM

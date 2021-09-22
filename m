@@ -1,109 +1,99 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1038470lfp;
-        Fri, 24 Sep 2021 02:47:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzEXtRomyR1tWcnb8ewS+FIEJGhJNZmCIO2Cm8kml+p3CgrCAwOJ+WRoftEY4/mu9ouVih8
-X-Received: by 2002:a05:6e02:1c84:: with SMTP id w4mr7558047ill.219.1632476839210;
-        Fri, 24 Sep 2021 02:47:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632476839; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp505576lfp;
+        Wed, 22 Sep 2021 12:43:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy2okxkiz9h/9eHdPfOCu01f6HyeqfWqGqC3u5gGRSzq4KGcRKigvNuE6ntZCXOLx71wqQD
+X-Received: by 2002:a37:2d04:: with SMTP id t4mr1006747qkh.463.1632339803648;
+        Wed, 22 Sep 2021 12:43:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632339803; cv=none;
         d=google.com; s=arc-20160816;
-        b=CevNFhHXHbU60TaXtN9gsgOGvFivtj9tkU8k8OtI2vSuhq3keg9DxRqF9SIStkw1By
-         DJHJOix3zs0RTKtcdudSMUyK+hmKP9SldPfr31vAh+G9v3JFjx4Cu3/8/42F3J37YILI
-         tpuVYGHq1D/SvLz2yxsJ4hHzbs0vKKTW/bteYdfHBMp7ZhDndcAdkl+8KE/DjzzmCSGW
-         /KrqIUZ19ojLxf2sizDk62LPzW72+ULcU9RuDfIWbG5ow9Pz9lvwvssX7cv9LvQyXSp7
-         9jX87mlWjNdpOfJUSIs3Ue0uiIiOqpKTWD52fUPVL2qEhqcG4kLDmb/QQF9Yq4nQqqHG
-         qeNg==
+        b=0y4R31EMALVhBLsLWZirNwWQ9w3Xid1RRKOJwbbiejP/efuXh5Gtz8usLsXaigLqB1
+         LKpTBWX8RpRQkLv+/LvJ1/buHds51/hgkFV9Gic+2e0s96c8QhfKG9X+8ffchUiLgOwP
+         e3+1kAAPeGABAjQf+yJCp+rnUAtOW7JWSdGL8MhubWNfmcgz1VvPwaIdTAhcGo5ZM7wa
+         o5vd0hHTTfuxCIJrGm0Ol7PaCoifBZ6pZ+pggTtJmKHSKM3HoGiQ44mGtOex2hpPdrhO
+         2jevlVQVinWxLI7o3nQ+Hx4CUoovhtNf9Lj/44kU4Wn6YgSDXBfddh5LmGH2/DD+qCw4
+         v6lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=138lKCCsDusDobsjTqkgHXFS+q7YngmR9S6d2RdS3Vk=;
-        b=IFqFjPTuiLk6D0HzIcSf7Oi/lNVk4ifRuPIStGAKO71LYYD3pqEe5iM/Wb2V81IU5C
-         nBGohaeXJFSfB4rUTHo/6jDJSspfCdJqh9nIMJ6hfhr9mDnHr2Rn4r10K6/iyKwfVRlR
-         B94D5tE1z2djQA1axL3vtizC3VsM+MrK1c1xv7VB3aMcXe6R9nFiwcfTPl+aA1IgWPZW
-         P7e52t2yNCs5mx3EXGeiCX49du95IJg3FQrHb1+K4YPGDizyjw2pAdmtu8dy2s6cp5fF
-         BnyAThhn+RNJ69LdKRqWE2+1uLfjAw2qTlFemch24DkC8bQhTCakHNzMm4P55eZ2EQUY
-         1+IA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Wp58RszS4TEKcT4ZHqt95ma/3tIcpS88hgqai/G6jjA=;
+        b=RloKtFeABdxyWzbQRGaRzfLyeAYSyz+SNx36vVqSuIApY5dQkJ2MkBfEhNn/WxeCA4
+         oTT4Evs4Fd3LCf11yU8Q5n/5wSOEhI8BfT0VRDs1M5GVpB+WDBPMYiiE8oeKz3Cih1gH
+         dAzCEVmWs9PvUtOvJvMb5Khz5kX4PwFHPqoQxYJh5E2ptWgb9r4e67pz8I08TKi8RRyR
+         wcrQZISikFdgrU2J3hwRqTumMPvnrkoJMAUA/o3xJ7lZVfcMYsQZvSB0osZUNn2wSXLa
+         //F9UJ+8/PwIYKFEKStEPjolHaQD41t4aEQJynu5ciRt+mvPicBYFZ9Iphk61xo/Xjg4
+         LmrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lypblXQg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SmQ7JVky;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v21si10876950jat.0.2021.09.24.02.47.19
+        by mx.google.com with ESMTPS id o6si1639194qkh.366.2021.09.22.12.43.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Sep 2021 02:47:19 -0700 (PDT)
+        Wed, 22 Sep 2021 12:43:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lypblXQg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39520 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SmQ7JVky;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mThna-0007MN-Ip
-	for alex.bennee@linaro.org; Fri, 24 Sep 2021 05:47:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41438)
+	id 1mT89L-0002L0-04
+	for alex.bennee@linaro.org; Wed, 22 Sep 2021 15:43:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34768)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mThgn-0004zv-Sh; Fri, 24 Sep 2021 05:40:17 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:44023)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1mT87l-0007Sf-Ij; Wed, 22 Sep 2021 15:41:46 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:35763)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mThgm-0006xh-9e; Fri, 24 Sep 2021 05:40:17 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id w17so25396090wrv.10;
- Fri, 24 Sep 2021 02:40:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1mT87h-00084o-RH; Wed, 22 Sep 2021 15:41:45 -0400
+Received: by mail-pg1-x530.google.com with SMTP id e7so3869193pgk.2;
+ Wed, 22 Sep 2021 12:41:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=138lKCCsDusDobsjTqkgHXFS+q7YngmR9S6d2RdS3Vk=;
- b=lypblXQgni2MLkl05r8H44c+0FOKn+nARJAdFkzwDpwtIyvHpqTey9VZZuaOGHb5Wf
- Z7pchjExeKF/vaHiW9+23NWPiIpPcIrWeP9YV8EFz4ujtbg35rog0burb9GK3SuJSPww
- R4IXwvbpZ6eaamT8wQjtzx4x2+GbRz+oaRgfuZOZ4d/hOTut4sMgFZ2LY2q7fe+G8t/f
- OqY9Qkt1S6n6AxrLmAkXjN8DO69azDNb8JB+5aSNRQdDySV52uyepCnk9xEHX16C8CfF
- EbVtowKnr49CuvfvrIJitXWog072b3VL+Xq6Xh+5E//s6+40Ey6P7mMkc2IhhQcycriN
- L2pA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Wp58RszS4TEKcT4ZHqt95ma/3tIcpS88hgqai/G6jjA=;
+ b=SmQ7JVkyNpPQhED31170d1TT8ilKii51IlOL1OauXnKenFmjV+u3zekf9XV953BI76
+ 7XepYwFbDU2HQuF/0mrmcqyXzFZ0TE/vMQfk/M/6VVRWRNtPrHeDD67z0l6OkU8/Vqv8
+ GhsxTubWU4JU5aFgxAezzIQR/AtmuFi5hIaHyq3O+52Z7GAX+jKXgy07vHiG1ntWLagu
+ 7Dd/JnJlMBkUfyurpW5e3rlEPPwzB12s3r3pmQ6BTuHu+lBF8NSXOgtrkP+2zzNeI4kx
+ T1M0p/VPn/+d+xUnVJdo4if1vAeqEM0SnPTlD5f7IUeLA8NOP3AZZnRr8TydKx/qcDkr
+ nuvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=138lKCCsDusDobsjTqkgHXFS+q7YngmR9S6d2RdS3Vk=;
- b=zkLplrE23ZxGyVHKvyFj/G3JwFl3TmANQUB4ac2d6/bazPhzpSUAPApwZwWwXPnt4L
- 28P/BLP5leH2g9dWMCn5jY9dSTOES5xDclQGG8RXFF2BxMk/x8GNFau3WMVteVYBAgM1
- uXAbnJ5ENFHvHjH6xcMY2AoyH44SO+yCoh90MTH0rvc+nDJSSZf6vr29Q9YVU7bT5E8m
- WCO38FuWAbguH8fcMGrppgASyLO9pUpRd/SVxRnRBHAAwTvWMiISgxy3ye4q5ZP55m+B
- YRnbklARmFTwur64DfZKl9ZRqBw4HHon0TVzua5WLl/b8tzri0RYPe7xu4f/tCL63tZX
- UI7g==
-X-Gm-Message-State: AOAM530oHOGvlknShvGJY+Q6THL6X1B4GOErkZFuExwCioSr94L6P/mv
- +mPFN4K34bLiR5WHAkNn/lMmVm0Sci8=
-X-Received: by 2002:a05:600c:3209:: with SMTP id
- r9mr1041690wmp.35.1632476414383; 
- Fri, 24 Sep 2021 02:40:14 -0700 (PDT)
-Received: from x1w.. (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id
- o17sm7541189wrj.96.2021.09.24.02.40.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Sep 2021 02:40:13 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v6 18/40] target/arm: Restrict has_work() handler to sysemu
- and TCG
-Date: Fri, 24 Sep 2021 11:38:25 +0200
-Message-Id: <20210924093847.1014331-19-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210924093847.1014331-1-f4bug@amsat.org>
-References: <20210924093847.1014331-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Wp58RszS4TEKcT4ZHqt95ma/3tIcpS88hgqai/G6jjA=;
+ b=Uv7R/L6NbB8XWF/S3Jm50/ajCyhfo8KvbHcMelNsN7N27/hN6+4b87DIXr0NBXDDRd
+ +q/Eut328EcRF2H8NbyPAdlYwRDEdLaE2qQK3lUr8aavKE88Li+5NOL5dFjuZXl+vuqV
+ sEp2YFKcyjnr/t+wAxU6o4+NZdbs+KG2Xwne81Idart4Tx968gKJTXBC1O7w16iYVimt
+ PDQjjlLYwF0bP4KWvdXKlU+itMPDzTCXem/UyOySNoi3dPzaYCI6VYbEEgNZndJuGrEJ
+ d8t6lo0qvj9jD2NBvZhYKOdueyZOh0Ze61zTpXEqSKnbEaLLANTWWEDPxnMFrDiWD/91
+ YBYg==
+X-Gm-Message-State: AOAM533djzg0zHN6gfTmDvD/HOJzQupOXs3Oqk7R7xieUKF4UDVp1sd6
+ PjxGzDahdGUSgB6nes7NTaJIN1vZ+Sx6/EUYE1I=
+X-Received: by 2002:a65:64c3:: with SMTP id t3mr583363pgv.244.1632339698990;
+ Wed, 22 Sep 2021 12:41:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20210920203931.66527-1-agraf@csgraf.de>
+In-Reply-To: <20210920203931.66527-1-agraf@csgraf.de>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 22 Sep 2021 21:41:27 +0200
+Message-ID: <CAPan3WpYNJgOE9AVpHPegf4Njm=80YXDQYT_jKhKKhUm=r2=hA@mail.gmail.com>
+Subject: Re: [PATCH] allwinner-h3: Switch to SMC as PSCI conduit
+To: Alexander Graf <agraf@csgraf.de>
+Content-Type: multipart/alternative; boundary="000000000000e940e605cc9ab3de"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-pg1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,100 +106,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7k3C/xMYQ/lh
+X-TUID: vaWS3Hk6e1E0
 
-Restrict arm_cpu_has_work() and has_work() handler to TCG sysemu.
+--000000000000e940e605cc9ab3de
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/arm/internals.h | 4 +++-
- target/arm/cpu.c       | 7 +++++--
- target/arm/cpu_tcg.c   | 2 +-
- 3 files changed, 9 insertions(+), 4 deletions(-)
+Hi Alexander,
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 864b5ad4cdf..29bb815100d 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -175,9 +175,11 @@ void arm_translate_init(void);
- 
- #ifdef CONFIG_TCG
- void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
--#endif /* CONFIG_TCG */
- 
-+#if !defined(CONFIG_USER_ONLY)
- bool arm_cpu_has_work(CPUState *cs);
-+#endif /* !CONFIG_USER_ONLY */
-+#endif /* CONFIG_TCG */
- 
- /**
-  * aarch64_sve_zcr_get_valid_len:
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 4b08f717f64..53c478171ac 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -74,8 +74,8 @@ void arm_cpu_synchronize_from_tb(CPUState *cs,
-         env->regs[15] = tb->pc;
-     }
- }
--#endif /* CONFIG_TCG */
- 
-+#ifndef CONFIG_USER_ONLY
- bool arm_cpu_has_work(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -86,6 +86,9 @@ bool arm_cpu_has_work(CPUState *cs)
-          | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ
-          | CPU_INTERRUPT_EXITTB);
- }
-+#endif /* !CONFIG_USER_ONLY */
-+
-+#endif /* CONFIG_TCG */
- 
- void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-                                  void *opaque)
-@@ -2035,6 +2038,7 @@ static const struct TCGCPUOps arm_tcg_ops = {
-     .debug_excp_handler = arm_debug_excp_handler,
- 
- #if !defined(CONFIG_USER_ONLY)
-+    .has_work = arm_cpu_has_work,
-     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
-     .do_interrupt = arm_cpu_do_interrupt,
-     .do_transaction_failed = arm_cpu_do_transaction_failed,
-@@ -2059,7 +2063,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     device_class_set_parent_reset(dc, arm_cpu_reset, &acc->parent_reset);
- 
-     cc->class_by_name = arm_cpu_class_by_name;
--    cc->has_work = arm_cpu_has_work;
-     cc->dump_state = arm_cpu_dump_state;
-     cc->set_pc = arm_cpu_set_pc;
-     cc->gdb_read_register = arm_cpu_gdb_read_register;
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index 9a0927ad5d0..7d0d9fcbc79 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -902,6 +902,7 @@ static const struct TCGCPUOps arm_v7m_tcg_ops = {
-     .debug_excp_handler = arm_debug_excp_handler,
- 
- #if !defined(CONFIG_USER_ONLY)
-+    .has_work = arm_cpu_has_work,
-     .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
-     .do_interrupt = arm_v7m_cpu_do_interrupt,
-     .do_transaction_failed = arm_cpu_do_transaction_failed,
-@@ -920,7 +921,6 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
- 
-     acc->info = data;
- #ifdef CONFIG_TCG
--    cc->has_work = arm_cpu_has_work;
-     cc->tcg_ops = &arm_v7m_tcg_ops;
- #endif /* CONFIG_TCG */
- 
+I've tested your patch on the acceptance tests and they all pass:
+
+ARMBIAN_ARTIFACTS_CACHED=yes AVOCADO_ALLOW_LARGE_STORAGE=yes avocado
+--show=app,console run -t machine:orangepi-pc
+tests/acceptance/boot_linux_console.py
+...
+RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
+CANCEL 0
+JOB TIME   : 116.08 s
+
+Also the latest linux kernel is working OK with all cores booting up fine.
+
+At first I couldn't really figure out why simply changing the conduit there
+works, without also changing the Linux kernel to match.
+But it turns out we just override the provided DTB for this in
+fdt_add_psci_node() in hw/arm/boot.c and the Linux kernel then uses that to
+decide between HVC and SMC.
+
+So looks fine to me:
+  Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+  Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+Regards,
+Niek
+
+On Mon, Sep 20, 2021 at 10:39 PM Alexander Graf <agraf@csgraf.de> wrote:
+
+> The Allwinner H3 SoC uses Cortex-A7 cores which support virtualization.
+> However, today we are configuring QEMU to use HVC as PSCI conduit.
+>
+> That means HVC calls get trapped into QEMU instead of the guest's own
+> emulated CPU and thus break the guest's ability to execute virtualization.
+>
+> Fix this by moving to SMC as conduit, freeing up HYP completely to the VM.
+>
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> Fixes: 740dafc0ba0 ("hw/arm: add Allwinner H3 System-on-Chip")
+> ---
+>  hw/arm/allwinner-h3.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> index 27f1070145..f9b7ed1871 100644
+> --- a/hw/arm/allwinner-h3.c
+> +++ b/hw/arm/allwinner-h3.c
+> @@ -237,7 +237,7 @@ static void allwinner_h3_realize(DeviceState *dev,
+> Error **errp)
+>
+>          /* Provide Power State Coordination Interface */
+>          qdev_prop_set_int32(DEVICE(&s->cpus[i]), "psci-conduit",
+> -                            QEMU_PSCI_CONDUIT_HVC);
+> +                            QEMU_PSCI_CONDUIT_SMC);
+>
+>          /* Disable secondary CPUs */
+>          qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
+> --
+> 2.30.1 (Apple Git-130)
+>
+>
+
 -- 
-2.31.1
+Niek Linnenbank
 
+--000000000000e940e605cc9ab3de
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Alexander,</div><div><br></div><div>I&#39;ve teste=
+d your patch on the acceptance tests and they all pass:</div><div><br></div=
+><div>ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avoc=
+ado --show=3Dapp,console run -t machine:orangepi-pc tests/acceptance/boot_l=
+inux_console.py</div><div>...<br></div><div>RESULTS =C2=A0 =C2=A0: PASS 5 |=
+ ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0<br>JOB TIME =
+=C2=A0 : 116.08 s</div><div><br></div><div>Also the latest linux kernel is =
+working OK with all cores booting up fine.</div><div><br></div><div>At firs=
+t I couldn&#39;t really figure out why simply changing the conduit there wo=
+rks, without also changing the Linux kernel to match.</div><div>But it turn=
+s out we just override the provided DTB for this in fdt_add_psci_node() in =
+hw/arm/boot.c and the Linux kernel then uses that to decide between HVC and=
+ SMC.</div><div><br></div><div>So looks fine to me:</div><div>=C2=A0 Review=
+ed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">niek=
+linnenbank@gmail.com</a>&gt;</div><div>=C2=A0 Tested-by: Niek Linnenbank &l=
+t;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&=
+gt;</div><div><br></div><div>Regards,</div><div>Niek<br></div></div><br><di=
+v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep 2=
+0, 2021 at 10:39 PM Alexander Graf &lt;<a href=3D"mailto:agraf@csgraf.de">a=
+graf@csgraf.de</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex">The Allwinner H3 SoC uses Cortex-A7 cores which support virtu=
+alization.<br>
+However, today we are configuring QEMU to use HVC as PSCI conduit.<br>
+<br>
+That means HVC calls get trapped into QEMU instead of the guest&#39;s own<b=
+r>
+emulated CPU and thus break the guest&#39;s ability to execute virtualizati=
+on.<br>
+<br>
+Fix this by moving to SMC as conduit, freeing up HYP completely to the VM.<=
+br>
+<br>
+Signed-off-by: Alexander Graf &lt;<a href=3D"mailto:agraf@csgraf.de" target=
+=3D"_blank">agraf@csgraf.de</a>&gt;<br>
+Fixes: 740dafc0ba0 (&quot;hw/arm: add Allwinner H3 System-on-Chip&quot;)<br=
+>
+---<br>
+=C2=A0hw/arm/allwinner-h3.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+index 27f1070145..f9b7ed1871 100644<br>
+--- a/hw/arm/allwinner-h3.c<br>
++++ b/hw/arm/allwinner-h3.c<br>
+@@ -237,7 +237,7 @@ static void allwinner_h3_realize(DeviceState *dev, Erro=
+r **errp)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Provide Power State Coordination Inter=
+face */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_prop_set_int32(DEVICE(&amp;s-&gt;cpu=
+s[i]), &quot;psci-conduit&quot;,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 QEMU_PSCI_CONDUIT_HVC);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 QEMU_PSCI_CONDUIT_SMC);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Disable secondary CPUs */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_prop_set_bit(DEVICE(&amp;s-&gt;cpus[=
+i]), &quot;start-powered-off&quot;,<br>
+-- <br>
+2.30.1 (Apple Git-130)<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div>
+
+--000000000000e940e605cc9ab3de--

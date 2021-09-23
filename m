@@ -1,165 +1,148 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp165609lfp;
-        Thu, 23 Sep 2021 06:13:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzep36VsLSiiOxa6Jg88Ld1uN0x/680ZWwGTNxXWlC9MXcGvo7QhcicIbqhF0gxjnnN+6Xu
-X-Received: by 2002:a67:e34c:: with SMTP id s12mr3792600vsm.31.1632402828444;
-        Thu, 23 Sep 2021 06:13:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632402828; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp681743lfp;
+        Thu, 23 Sep 2021 16:49:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpNFLMB14dZvhC1Siggmz8u7mmcZMWwqTMWw8OvxmLiPumvLEQKJ+rce7lOQCmucgo0eDg
+X-Received: by 2002:a92:c5a4:: with SMTP id r4mr5793297ilt.130.1632440990839;
+        Thu, 23 Sep 2021 16:49:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632440990; cv=none;
         d=google.com; s=arc-20160816;
-        b=tTsamrpgSLjYWz1YQawKse8FjpSvf9YUJ/8WElDd2xkEKp/ToQxwBoMW0Q1kKFsRKc
-         J4K/HTTotm4BAOGcPqxKG8sin+8Y0AyC9acDb9hpMPgnRlXUU/Xk6bmTdEORiJtjqfn3
-         y5fpQHgBiQx2LW077019yL1EJh0Z/BooI95J9pbQbNXb5U9XqkF2iP0e4Tl0Cc4r9vts
-         1KpYhK8X9nW2lgE9zkpLx2btdx7z2UYztjLLBt2fFMIB9E/imeQtaF8FDI3oo6sCJmWB
-         gOO1TWecLNU+SOsIaUZ43oPr22d9PLnz/DOAbjcr77ct7ESQ8xF0cjo7WYCtc3RZAkSt
-         Rq7A==
+        b=COCWDoQ3cKiFqHGtZETZlv50/KlipOSUpcdceq50FdXr0YMzR6Z5JeTmApFgIiPV58
+         EgB5WfYD5vZniX5hvsNJ7xuoKGN65tAh+iTNWXziZE9lfbKULZYu1ZZttaLyHd9nk+mD
+         tLZTZljGOvw766+EmbHWVcMh1FyeytKzQ36SCcTbH6uOOb/EbScWd8pzySdNLQ8uvtD7
+         CcjsQzAW8pJmBfX+BRp/hhFUdxSpZ/f/3NMj8l2/b2mQXVBRl9ep4ENb2B5TcWgHMBTm
+         mzZG54d7hs991gIU6LS7ymg9AI4cU3Q7NCoGfDPk3SFKZ9LZ7Ij0DU7HZBiVgDILhSGz
+         4+aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=4aZ8QZyMXpuxb0eA5tio3WL/gfZMLUIcohndXeuWU4Y=;
-        b=NIUc7WrzaP6gCnJ1GpXbu4OYbsLXDliGSXipqAamFmibHxLaFYqzM2BHkAIKkuZZdx
-         06ea/OgI27S3OA6F0YV2OqOyw4KNe1LqYdJ9tn725IC69eSzMb1z/S2Osl8T/yMVxLWx
-         6t7wjPtUOj/lFTzJDOfVEuZCFcin7oWpf8yqrPh3xelbbv6iAjRz4/mPQ18CWQCZg4q2
-         5bDRvfz9ed0KZCOKQq3XMTqLQ1w4Y604St3aDGFigrnTyLtfbFweiXgIzsnxbd8GeWd0
-         tZm5R0amPPiSVQHzAd8OYcSIXOc5pygdriJQXBRL6SBONrhhyun0HXT1ILkGBQwPHY/Q
-         0K5Q==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:mime-version:dkim-signature;
+        bh=SiaPm7VFghtWYEpTBCmszHKT8zGjlYK3NfQjXWsN1yo=;
+        b=jnDUmIgG1aTGJz/110AGtDglyIpFg5pufShZjqdtTVxgk+zCNVARSsTnZsixiLljLW
+         GOCEIUJ2OsxEHraxjRhJkjWVae85fWszay/cUMgR7dlCFF2JZa2kZoS6dAnA31G7yFE7
+         mvIS5Z0C7yblAGfZaPCrUWqmvSPS6mCNxrjDnRFQFTGIX27EW79jOfarTOJEpz8KJoe4
+         1fd0hj3DKfQm2ve05QspeWIJrFjm/su52tm4iQaDfsqLV8CnNXAPk/sxIfAWBCOGkjYs
+         q/p86TVOmdXnXn6ASYxnbZZggn2w6UWKa4Fnbq+TE+JPLcyrOaPbmpLynWtIye9/53dG
+         lJ2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Kxcd9cJH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d126si2388680vke.66.2021.09.23.06.13.48
+        by mx.google.com with ESMTPS id z7si11198983ilu.143.2021.09.23.16.49.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Sep 2021 06:13:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Sep 2021 16:49:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57398 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Kxcd9cJH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:52466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mTOXr-0001sg-S7
-	for alex.bennee@linaro.org; Thu, 23 Sep 2021 09:13:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60424)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mTYTO-0006Hg-7M
+	for alex.bennee@linaro.org; Thu, 23 Sep 2021 19:49:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mTOWM-0008UR-6a; Thu, 23 Sep 2021 09:12:14 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58631)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mTOWJ-0004aR-R3; Thu, 23 Sep 2021 09:12:13 -0400
-Received: from [192.168.100.1] ([82.142.21.142]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MY5wD-1mLpsz35xt-00YSoO; Thu, 23 Sep 2021 15:12:08 +0200
-Subject: Re: [PATCH for-6.2 0/7] linux-user: Clean up siginfo_t handling for
- arm, aarch64
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210813131809.28655-1-peter.maydell@linaro.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <cc70282b-0d50-0a05-29de-198b601a6dfd@vivier.eu>
-Date: Thu, 23 Sep 2021 15:12:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1mTYTD-0006HE-Ui
+ for qemu-arm@nongnu.org; Thu, 23 Sep 2021 19:49:39 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:43896)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1mTYSy-0004YX-S8
+ for qemu-arm@nongnu.org; Thu, 23 Sep 2021 19:49:39 -0400
+Received: by mail-ed1-x531.google.com with SMTP id v10so24567381edj.10
+ for <qemu-arm@nongnu.org>; Thu, 23 Sep 2021 16:49:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=SiaPm7VFghtWYEpTBCmszHKT8zGjlYK3NfQjXWsN1yo=;
+ b=Kxcd9cJH9fMsA8AuFzjFsd1gdums9pIaKDY/Gx7zPnQabOBct18DEvgY2rYm4smvlj
+ kyphQriSWwSyNDp93HaSRcw7WAwVniclImvPJrHP8DxxNlbn6u8/bZPMNnTnQzSViIuj
+ dzoJgjUQpGnKjtjZdZ4r2AuH2X/UYxCGqomAHAimo4gLLCyvaJdRSrM7LuaLNxTZWLTd
+ z1nU4mpT0EUEt+hGWYNJRa88lSCymkcoxQhOAZ7Ly0jc0UiZtv1C5CB3XxBaPrqIIHRG
+ AoyrikoEuRMrTaA1g8/qP4I3zOCpdGkZeZppkdfmAuqqZHV4j6yxftEWcuOAVlcwzKJZ
+ /SUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=SiaPm7VFghtWYEpTBCmszHKT8zGjlYK3NfQjXWsN1yo=;
+ b=cRIpgkzmVjRDEn+ZzIMWMsdmd5s10mhTyGizEPC2NYCqCNmhoPJrSFx2FF8Aua+N8w
+ dBCXs/U1nGE/8BPBnQpq6sERKPG0ic5+tOKUkSl/x6u4nPZ0+EwoFBhRRyOCNE+JVpx7
+ DWo6w3CJHjNb4wsL6sG8gQUGXCwA5S/Vo7RE4RzP61raL/ET/bPYiNPOT/v7uqfjgQTn
+ fW+6XHMRENHTimQSNaxbmgVepPs1QunrpMbC/3nPI1Wu2wJBFTpcLRxP7hldx8BAkpxK
+ ctvTsONvCWCwLMCgyYma5dUloWKXhw8GSSN+4YQsKtYOjRKylSRmI2l1ifGaW9DO46Qc
+ mS0A==
+X-Gm-Message-State: AOAM530sBDusRwgp/d1rH46MhmzHe6uNLksMVNq5jXrua0WGAcAu7lVa
+ xuzOPsVDRmGJuquf/e9zg0e2W4xRaU0UdmrIaub9vA==
+X-Received: by 2002:a50:d98d:: with SMTP id w13mr1849483edj.51.1632440961715; 
+ Thu, 23 Sep 2021 16:49:21 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210813131809.28655-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:409Wz/rV+1kaOPrJsQh9zzIOFTOgjg0jY59x8ZNJh7Zfx/3lO2P
- VxigpHrg3CZDdFHJy7Duo1YCpd+rVlJg53BtPPx351AGheeDyyspyZjvfVBxOPCUWmN+T+a
- mNO8fhbEPYzOwrkftwZFRlVt8AFukpEI/Wwme1K6jzHNnkeYt+V+pbxHsf8MSg1AyXNzn8X
- Akbvba7aaIMdO+Wv+awAw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7nwVqu+hnV4=:SR8bLxU7MNQIE3Dp3FSgN5
- UlktaqMFWNT3Y3DepdRSkcppN6CqyQDlkN6Kph9S2O+/sy8qxL7IRd+hmDq/EKCAhI/JvlYdd
- BFX4RTcOJ1W0Votr8f0QQdm13tuCsxTqwNbfnpDIFcjwgzIWRlNPUOhf5oK2vcRUC/X/6lOKy
- CoXAlvmKMVz6DS+2okiVwJ+MG4EcgWJnbEMfKBVp3FPl/hjTNV8UqwVajgkTn2mdrjkO88NQX
- YoxVWanl3bED2FsqDiZTge0Eql2cIk6tq0Wo5gLgxzM5QypwRsj9JXo7rJwECgtGwtJh7+u58
- uYY3/YTE6bAZLtXriMlm9LzG5m3Q+dv5RgI9luDFKYSKz7qNF342+5JrOREZP4Y034MA3WUmN
- cxtw07LougJ34n5izak1ZeZuQYC7xLraM3QwYw3CIWsCArz90spGV3uyHIG1M4noSWL0GCKMJ
- P+eT5h7B4u41R78pdwHaZvYVR6E369HqBHJFqqKPClK9GmCYK4+bgGOwLbiGKfBCJOoM7tOnC
- 76F7jnQ1io4/SuxWiyb9N/hMfJFNwzRT5c1DPeRtiY7ndehTK7PzgbnvsPvm7CSR/aWzV9pS5
- W8cnGDsPxxJOsNzpARqrs3lWVmj0WlBxY+hhu/HfIaxS6MoKN5jwrS6dlcym75Ry0+S5IGXi/
- /8GgF/PQJ5oSGRp3cVAizg07hyE3KEujCwf0ktIraHKxssVxJdZlvjc3FvIAEcm9bpnBuFbNi
- 19lHecu9NFnYLkSxisYZmFBieP5bsAkpiin1uQ==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+From: Titus Rwantare <titusr@google.com>
+Date: Thu, 23 Sep 2021 16:48:45 -0700
+Message-ID: <CAMvPwGr-FuQWHTQYxppAyT9uPhzCUDcezgz+jV=GwHGoQF4N6A@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc: Add an iBT device model
+To: clg@kaod.org, "andrew@aj.id.au" <andrew@aj.id.au>
+Cc: qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>, 
+ Hao Wu <wuhaotsh@google.com>, Corey Minyard <minyard@acm.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=titusr@google.com; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ODKHUMeMZm0+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 69FiE82iULLc
 
-Le 13/08/2021 à 15:18, Peter Maydell a écrit :
-> Coverity reported that we don't set the _sifields union when queuing
-> the SIGTRAP for EXCP_DEBUG events on aarch64. This series fixes that
-> bug and a few others, and cleans up the way we queue fault signals
-> to be less error-prone.
-> 
-> The underlying cause of the bug is that when queueing a signal
-> the code must set the right field in the _sifields union depending
-> on the si_type that it passes to queue_signal(), and there's nothing
-> guarding against forgetting to do this. The "fill in a whole struct
-> and then call queue_signal()" code is also a bit longwinded. In the
-> real kernel, there is a function force_sig_fault() which does this
-> for the SI_FAULT signal type. The series provides a QEMU implementation
-> of this (which goes alongside the existing force_sig() that does this
-> for SI_KILL signals), and uses it in the arm and aarch64 code.
-> Because force_sig_fault() takes the address as an argument, it's
-> not possible for the caller to forget to fill it in.
-> 
-> Obviously we should also convert the other targets where they are
-> directly calling queue_signal() (there are other places that forget
-> to fill in the sifields union fields; I don't know why Coverity
-> hasn't spotted those). But I thought it better to send this out
-> for review of the new API and approach before spending time on
-> converting other targets. (In particular fixing places where
-> EXCP_DEBUG handling forgets to set the sifields address is a
-> pain, because in the real kernel different architectures might
-> either report the PC or else report a zero address here, so it
-> requires looking into the kernel sources to check which...)
-> Once all the archs are cleaned up we might be able to make
-> queue_signal() static so it's local to signal.c.
-> 
-> PS: there's probably a trivial conflict with my include-file-split
-> patchseries.
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (7):
->   linux-user/aarch64: Set siginfo_t addr field for SIGTRAP signals
->   linux-user/arm: Set siginfo_t addr field for SIGTRAP signals
->   linux-user/arm: Use force_sig() to deliver fpa11 emulation SIGFPE
->   linux-user: Zero out target_siginfo_t in force_sig()
->   linux-user: Provide new force_sig_fault() function
->   linux-user/arm: Use force_sig_fault()
->   linux-user/aarch64: Use force_sig_fault()
-> 
->  linux-user/signal-common.h    |  1 +
->  linux-user/aarch64/cpu_loop.c | 33 +++++-------------
->  linux-user/arm/cpu_loop.c     | 64 +++++++++++------------------------
->  linux-user/signal.c           | 19 ++++++++++-
->  4 files changed, 48 insertions(+), 69 deletions(-)
-> 
+Hello all,
 
-Applied to my linux-user-for-6.2 branch.
+I'd like some clarification on how the following code transfers irqs
+back and forth:
+
+> b/hw/arm/aspeed_soc.c
+>+    /* iBT */
+>+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ibt), errp)) {
+>+        return;
+>+    }
+>+    memory_region_add_subregion(&s->lpc.iomem,
+>+                   sc->memmap[ASPEED_DEV_IBT] - sc->memmap[ASPEED_DEV_LPC],
+>+                   &s->ibt.iomem);
+>+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_ibt,
+>+                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_ibt));
+> }
+
+and
+
+>hw/misc/aspeed_ibt.c
+>+static void aspeed_ibt_realize(DeviceState *dev, Error **errp)
+>+{
+>+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>+    AspeedIBTState *ibt = ASPEED_IBT(dev);
+...
+>+
+>+    sysbus_init_irq(sbd, &ibt->irq);
+
+I ask because the code in aspeed_soc.c seems to connect to the
+lpc->subdevice_irqs[aspeed_lpc_ibt], initialised on
+hw/misc/aspeed_lpc.c:408.
+I noticed that bmc firmware running in qemu was checking the BT_CTRL
+register less frequently than I'd like while editing this patch to use
+the IPMIInterface.
 
 Thanks,
-Laurent
-
+Titus

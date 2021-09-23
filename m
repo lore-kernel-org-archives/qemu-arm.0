@@ -1,121 +1,208 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3057820lfp;
-        Tue, 21 Sep 2021 06:56:05 -0700 (PDT)
-X-Received: by 2002:a1c:20c5:: with SMTP id g188mr4744230wmg.182.1632232565148;
-        Tue, 21 Sep 2021 06:56:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632232565; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp182814lfp;
+        Thu, 23 Sep 2021 06:32:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyIewD1h6LqOS2pNkQfJmUAij7wDqN9yjk6GrFAPCEJyP9QEN6wqwkvVIdDpsJ/b/aYle9Z
+X-Received: by 2002:ad4:498a:: with SMTP id t10mr4349256qvx.65.1632403924564;
+        Thu, 23 Sep 2021 06:32:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632403924; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wm1W55NBJA2DE4uAsCifrlFGv4vW9HBgYctpbJFbWkSVO3aoCdsfT86cEX+V+J315W
-         3kFOAz7v1hbWe2SLT5lDPN/ySeaaR6gkDrXpIIQtDZ94GRLfSKrGI3YT8MXH1hdEcfWL
-         CiswaTXeCLiRqmaSryCEznKwyVfYLWtCeJA68IzMpmU97HwYmCrnJWFzgL4pPsm3xIPB
-         jelJA07lTN+IuWJhakoZjrEIwmW4hpjs0boipJZWHnrV4Pm8A80WUqhSbCvyXzVTfkiM
-         8iaNpQwCkV/bE7DLl5hPNVUiYn+o5gl3KHj/IzjS6EcWS3LZY+YrLbJJ6+L4TqRdidYR
-         mgPQ==
+        b=GIEJ75oci40Le5vmrH4jpH05Zz7BZXSha8cUjhwRyTUqR2G75sXAt/2F7zAEQevIdu
+         R2CibwCehnfgbWxE7W6Jt+KV1HTs4j8V9ivjF6K3+yFbQHPuUYVK58qs4sglUpt3l2iY
+         BqhLUpl1Zc1JtDVTNiGmDW/h+vmOUA/jgYGnkyrmlsrZ6yWJdm5ddQYWTtdkxh6ZguwY
+         c0tsGvIXK5Xvpz+CRJWQ15qj0lvcmQo4WisXlZNW87z/p37ivMZYBWY+ar6P9zlHHO8U
+         VqAW2FPmornXSZBP3/YXGfMKZpyYm4EP0utFtBmwoKvvB0V+cBofxSTjdoOq2DbkmKNx
+         TBoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=d+YA9aBp3W+m+owbojgCvCPTz2XIifjjqNbMKvcy0nA=;
-        b=qANdwALV59wWnJ0zKFEgIDD3Y7F89xdPFPg1ByihacYyDc7M1OmaFWHqWfgFdQ8Bav
-         2vklRQmW01+2DIf6QdI+tCMITILeaUl+0QSaG8d360dT8xFYtrZKLxi934LvuKTxiaqi
-         l5CAzSm0ejTncyfwEJNfBiu4V1yEbvNv/pKcyKbLKQB2Z8OSobOKSfwxFYM2MW53vU74
-         6ixk5Pk7pAYqmRFhyViFCxh4GtdaCxuEGquwaXbTo1Dv8i9HXB4a6vmyYN3jABu5yhmj
-         esNXc0JQUNVKzxAFrjaYJGQcvII/NKxLFmafRa2c69V5rh+O4yOBaCdieSv3oHjp5via
-         Wd9Q==
+        bh=R72pwKKDq67KLf6mWS3a33RQNqgLdbVmda+g++lW8Po=;
+        b=ykld3oqzCQOtsEFsW39FDc3YbssMq74RJA71N0Qw0UuPex3H82T0ypVjnL6QzSmrHz
+         X5cQJC88eY8eDIrjnpwdFapLcdJhwSH/vBAAh5WPwVO+8Ajv1FyW88TnmEi/XCScbpwl
+         8Bds1r3c35oNr43pkGH4I3d8v/1gValwZSqMU3rZbqkXRQfGJt+tBIoiYwy/I6+XVfbz
+         G6uZhGgIjJt68Gc3DyVzKCpbhxDQ7HcdhcsQg4csvSTroHPbEzZlR9jDMw/oEpTQdSrm
+         KzBGAuPlGBjGZu86wgBX3zA0YCqqy5Cz+woc0Ex7CNOBRNgG9nRXPloMc3jn802+QyRV
+         O7Ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=prsWWCXg;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l27sor10430650wrz.0.2021.09.21.06.56.05
+       dkim=fail header.i=@linaro.org header.s=google header.b=vKxFaJqM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 12si2817489qty.273.2021.09.23.06.32.04
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 21 Sep 2021 06:56:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Sep 2021 06:32:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=prsWWCXg;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=d+YA9aBp3W+m+owbojgCvCPTz2XIifjjqNbMKvcy0nA=;
-        b=prsWWCXgSSnCW+KKI5KpzJghnZL3o5i2kKnSsqhlN6VDdz65uZbB5zgg98BdGhLP5R
-         DbelfvcyWsQcHDkxvZKLnYdlIRqoGg9VWzJCgN0QoWErkNXW591J404c3tNjfT7MIVWK
-         BPeAoPaQB0x+z3y6K1/CWXo6oMqGzKF4UrxMkMI/LFapEa+VljAAKUU+meOMfKiexmHf
-         37nDUEfif+dm4UqPehJvKLIamyg0vbRqSzMV0n3wL2ToxMg1tppxCgkivmxeEBr5901m
-         4iRY1s2FTsmB8S4qj2HLIPuGkM5DpddemTDnt0x92mD0iQu6OUi3uiX/16ctYm/+ZkGv
-         HJVw==
+       dkim=fail header.i=@linaro.org header.s=google header.b=vKxFaJqM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40694 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mTOpX-0002MP-R2
+	for alex.bennee@linaro.org; Thu, 23 Sep 2021 09:32:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37234)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mTOoJ-0002LQ-W1
+ for qemu-arm@nongnu.org; Thu, 23 Sep 2021 09:30:48 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:37868)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mTOoG-0006D2-RU
+ for qemu-arm@nongnu.org; Thu, 23 Sep 2021 09:30:47 -0400
+Received: by mail-wr1-x435.google.com with SMTP id t8so17284574wrq.4
+ for <qemu-arm@nongnu.org>; Thu, 23 Sep 2021 06:30:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=R72pwKKDq67KLf6mWS3a33RQNqgLdbVmda+g++lW8Po=;
+ b=vKxFaJqMjcs2u5m/gk+GTFvrWoUztnpvMGhUW0Gs9qpysDPfK/oNba2P7nUDSChtSc
+ gns58B4985wfiS+os8kSvebeLFXfDkRDLhEISZbMhHW4KqqtSp7OROzX77AgYhQQflat
+ 0riwYTJCz0kYyWgYJ86A1vGd7FCrEMNjfbitajkSHlwbwGseBDLsKXajvC/WqHBzYhKk
+ 4eYjW6ErJw5lLKVomgNF6fYJHTMjDqFj2lFvmAbW+Mnuw93Y/40b287bwgd2wSuD4m8J
+ ddccJadCsCvXIJwsILu4NAAvno9xBSmTbu+hnemBBp5HXIRU0ClRSmrhhZiJ2wm5kXnK
+ MQgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=d+YA9aBp3W+m+owbojgCvCPTz2XIifjjqNbMKvcy0nA=;
-        b=wb/6e7a4ZqMN4f/3VZFRJn4YE/gjfopyETOJ95P9oxPype1wCmWX0D5xAWMstAZ9lp
-         GfvhDsscP6rNoHKf34waKErArqk+nsElmIgvf00w4KftOq2jNbhEJ3GxkZxs8xVVbJAy
-         rdMpU7NzKd0IgPASdJlfyG64WPh8/daHeWYJNNHzelSxFWylQPbavMtdKWATpSUBl18F
-         ceobSwb78BZb+RoBRf30yjLIp+0ti9NLb+dpLLKqdH3r25lDsKt2EE7zyCDf5r2V6qEg
-         wNpYmcYgeKeTcxBwdW1Ma99HhLFguHyIq63PLt2mGpcybJzvEdaXUKWWECeot/S5aqVN
-         fJnQ==
-X-Gm-Message-State: AOAM531BzjqisUj4H5VAr+dCNzR4ohAzdLvpwDgtoJAcj3mQNIznKzG9
-	fGEC323SL5VwMVmb1vJ7jnL+aWOyKAFHaezNbxuuFqUheU5sGw==
-X-Google-Smtp-Source: ABdhPJy8QzMbVaLFx8meS6kBiBb65zZxDbo+A9iXdHAzrj3mU0iYiletban2nDlDDSzVO9dztD6OHws+kyWCSMKzMIU=
-X-Received: by 2002:adf:f185:: with SMTP id h5mr35758638wro.302.1632232564840;
- Tue, 21 Sep 2021 06:56:04 -0700 (PDT)
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=R72pwKKDq67KLf6mWS3a33RQNqgLdbVmda+g++lW8Po=;
+ b=1I22VX8zfT15ksfl94AtVcoYyNELALJYSiVGifVOHt7gebBD/m5m4rOvWIP4dQVLRG
+ UxrLQSin500nZ3NdOQQK3NbZXS1mUEVxuECwgVe4wVDaAivla0YMhZmH2aa9q9YxZ7oG
+ 3iLct63TZZOsRlY0FYOjEJ8x0XAMNxGESsesvxHFSGZJLqEbHyZqnCI2zk65z+i2BFnq
+ tLJ7RmljrmUxv9sQl6hG06wcNa450RJIGOisM3cn+UaPCadHhRxcLV+W7BkNxouPstNV
+ c5Te4bMIHfUYh8OuSnqhLWAOmGAOfCvShI5hd/tglZKcjJ09SFfDuSBuTelt9ML90wym
+ icAw==
+X-Gm-Message-State: AOAM531LWKSH+kxwydkQkk2zHs0VWd0gEMIUyBzbsHnrfxh4DSFyJqDB
+ L0zdtxZufaRoUQSllKc9GGf2bL0stfKKXImHqlGZLw==
+X-Received: by 2002:a5d:6b07:: with SMTP id v7mr5026142wrw.376.1632403843302; 
+ Thu, 23 Sep 2021 06:30:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210115130828.23968-1-alex.bennee@linaro.org>
- <20210115130828.23968-22-alex.bennee@linaro.org> <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de>
- <874kjdugip.fsf@linaro.org> <8cb88b76-caa3-ba26-b288-4d87b06f56ec@suse.de> <871regvs0w.fsf@linaro.org>
-In-Reply-To: <871regvs0w.fsf@linaro.org>
+References: <20210920122535.269988-1-eric.auger@redhat.com>
+In-Reply-To: <20210920122535.269988-1-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Sep 2021 14:55:12 +0100
-Message-ID: <CAFEAcA9FKA9k3ePEVALXnRcfd4ygybMrmpD=ZjV1A==at+w9Uw@mail.gmail.com>
-Subject: Re: [PULL 21/30] target/arm: use official org.gnu.gdb.aarch64.sve
- layout for registers
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Claudio Fontana <cfontana@suse.de>, Luis Machado <luis.machado@linaro.org>, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Date: Thu, 23 Sep 2021 14:29:50 +0100
+Message-ID: <CAFEAcA-8497+XS0PU3RAkGsrf7PGVm=oGymuHznE3iuopMHbKg@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/rtc/pl031: Send RTC_CHANGE QMP event
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: q0YwNFZeKBnO
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YIx1YdmWktAG
 
-On Tue, 19 Jan 2021 at 15:57, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+On Mon, 20 Sept 2021 at 13:25, Eric Auger <eric.auger@redhat.com> wrote:
 >
+> The PL031 currently is not able to report guest RTC change to the QMP
+> monitor as opposed to mc146818 or spapr RTCs. This patch adds the call
+> to qapi_event_send_rtc_change() when the Load Register is written. The
+> value which is reported corresponds to the difference between the guest
+> reference time and the reference time kept in softmmu/rtc.c.
 >
-> Claudio Fontana <cfontana@suse.de> writes:
+> For instance adding 20s to the guest RTC value will report 20. Adding
+> an extra 20s to the guest RTC value will report 20 + 20 = 40.
 >
-> > On 1/19/21 3:50 PM, Alex Benn=C3=A9e wrote:
-> >>
-> >> Claudio Fontana <cfontana@suse.de> writes:
-> >>> qemu-system-aarch64: -gdb unix:path=3D/tmp/tmp9ru5tgk8qemu-gdbstub/gd=
-bstub.socket,server: info: QEMU waiting for connection on: disconnected:uni=
-x:/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server
-> >>> warning: while parsing target description (at line 47): Vector "svevh=
-f" references undefined type "ieee_half"
-> >>> warning: Could not load XML target description; ignoring
-> >>> qemu-system-aarch64: QEMU: Terminated via GDBstub
-> >>>
-> >>> Seems to indicate it is "ieee_half" -related?
+> The inclusion of qapi/qapi-types-misc-target.h in hw/rtl/pl031.c
+> require to compile the PL031 with specific_ss.add() to avoid
+> ./qapi/qapi-types-misc-target.h:18:13: error: attempt to use poisoned
+> "TARGET_<ARCH>".
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-> So it looks like TDESC_TYPE_IEEE_HALF was only implemented in GDB 9.1
-> and there is no probing possible during the gdbstub connection. I guess
-> I can either go back to stubbing it out (which would break gdb's SVE
-> understanding) or up our minimum GDB version check for running tests.
-> That would mean less people test GDB (or at least until the distros
-> catch up) but considering it was zero people not too long ago maybe
-> that's acceptable?
+Thanks. This looks plausible to me (well, it would ;-)) but
+I would appreciate review from Paolo or somebody else who
+understands the rtc_change feature and handling.
 
-I just ran into this trying to connect qemu-aarch64 to the
-Ubuntu gdb-multiarch. I don't care about SVE at all in this
-case, but the 'max' CPU includes SVE by default, so we report
-it to gdb even if the guest program being run doesn't use SVE at all.
-This effectively means that usecases that used to work no longer do :-(
+> ---
+>
+> v1 -> v2:
+> - Use Peter's implementation and remove subsection
+>
+> Tested with the following script run on guest:
+>
+>   #!/bin/sh
+>   old=$(hwclock --show | cut -f1-7 -d' ')
+>   oldabs=$(date +%s -d "$old")
+>   newabs=$(expr $oldabs + $1)
+>   new=$(date -d @"$newabs")
+>   echo Old: $oldabs $old
+>   echo New: $newabs $new
+>   hwclock --set --date "$new"
+>
+> and compared with x86 behavior.
+> ---
+>  hw/rtc/meson.build |  2 +-
+>  hw/rtc/pl031.c     | 10 +++++++++-
+>  2 files changed, 10 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
+> index 7cecdee5ddb..8fd8d8f9a71 100644
+> --- a/hw/rtc/meson.build
+> +++ b/hw/rtc/meson.build
+> @@ -2,7 +2,7 @@
+>  softmmu_ss.add(when: 'CONFIG_DS1338', if_true: files('ds1338.c'))
+>  softmmu_ss.add(when: 'CONFIG_M41T80', if_true: files('m41t80.c'))
+>  softmmu_ss.add(when: 'CONFIG_M48T59', if_true: files('m48t59.c'))
+> -softmmu_ss.add(when: 'CONFIG_PL031', if_true: files('pl031.c'))
+> +specific_ss.add(when: 'CONFIG_PL031', if_true: files('pl031.c'))
+>  softmmu_ss.add(when: 'CONFIG_TWL92230', if_true: files('twl92230.c'))
+>  softmmu_ss.add(when: ['CONFIG_ISA_BUS', 'CONFIG_M48T59'], if_true: files('m48t59-isa.c'))
+>  softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP', if_true: files('xlnx-zynqmp-rtc.c'))
+> diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
+> index 2bbb2062ac8..e7ced90b025 100644
+> --- a/hw/rtc/pl031.c
+> +++ b/hw/rtc/pl031.c
+> @@ -24,6 +24,7 @@
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+>  #include "trace.h"
+> +#include "qapi/qapi-events-misc-target.h"
+>
+>  #define RTC_DR      0x00    /* Data read register */
+>  #define RTC_MR      0x04    /* Match register */
+> @@ -136,10 +137,17 @@ static void pl031_write(void * opaque, hwaddr offset,
+>      trace_pl031_write(offset, value);
+>
+>      switch (offset) {
+> -    case RTC_LR:
+> +    case RTC_LR: {
+> +        struct tm tm;
+> +
+>          s->tick_offset += value - pl031_get_count(s);
+> +
+> +        qemu_get_timedate(&tm, s->tick_offset);
+> +        qapi_event_send_rtc_change(qemu_timedate_diff(&tm));
+> +
+>          pl031_set_alarm(s);
+>          break;
+> +    }
+>      case RTC_MR:
+>          s->mr = value;
+>          pl031_set_alarm(s);
 
-Luis: do we really have to report to gdb all the possible
-data types that might be in SVE vector registers? Won't
-gdb autogenerate pseudoregisters the way it does with
-Neon d0..d31 ?
-
-thanks
 -- PMM

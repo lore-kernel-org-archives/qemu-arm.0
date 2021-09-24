@@ -1,188 +1,183 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1043061lfp;
-        Fri, 24 Sep 2021 02:54:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxf/BPoLh1bl2xfAMm4nsD48NBimi3+4/QrwxwG9jJSJejul8eLm2oibdHA2ENyYRYEZcya
-X-Received: by 2002:a05:620a:482:: with SMTP id 2mr9730321qkr.102.1632477267517;
-        Fri, 24 Sep 2021 02:54:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632477267; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1087537lfp;
+        Fri, 24 Sep 2021 03:56:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1Wt0rFNDFh3tgeNZd9V6uIFDB4ysrbwv9b79Q+rmDH1uvgdoRKQV2y8VclJxqYpbdgoXL
+X-Received: by 2002:a6b:6610:: with SMTP id a16mr8445082ioc.120.1632480984457;
+        Fri, 24 Sep 2021 03:56:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632480984; cv=none;
         d=google.com; s=arc-20160816;
-        b=J8OORe+bx/NtAqtQfHthw1vr5wzg9qoPYEeWCxxyIrH2VLhMh0TaFX8Gq60W2QmPgi
-         lh27QYZcPG9rRWXzSlG5fK857SnZOWfJH+D5nM+qHqwL7ZF7Kru4efMpKjjhOniHEgA+
-         eO4bP3ckRta4GataEZGFRhJIT5aNy9Ozcyr3ldj5iCIVLfln6WRYvghhlG1G8pNZLSBf
-         DSVs/OGKjjmCp8zFAbYyvjqEx8zhvncrTDLGpd25BHsr3YzGTlaQT42w2wC+vHKJPQ35
-         2UJGSDv1+woPht/Y6ORyWnTvuR/muu2ar9ODZ0kCVgEF2v1O5aRGX58boDaD4CMJUkjG
-         b+zA==
+        b=gpWLfve3Yz4FIW6zh5vo7zHQdRq6WptaVHKroko0OKox5BIRd8Og6E4yOLtHw4yEUh
+         jC8j4puv+1FWjMyjT0/1x+7Q+iiUTvHRsl/NGoujq9G5ThUzXmIqnUubdXp8DY+5xGNE
+         IMN135hWaVV9RDcZDF27WqPZaqArJmACsh8rJQGm4Dt4MrfMU3GjBKMGj7czyHu1/qAH
+         dWMZXKueuyCDfPxG0MvYQ1+xpF9AjlNy6puOOUGKk0t4BQKC0OhULZI8JiuTlYRtq5j1
+         LCziuYzRnVJdMAYMiCH98kK5kxpYaD/WP4FEk6G52ibk4bZ8YbCHcNWdoOC5ggqe0q27
+         9KmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=3jjDpP5pLPewtdopPT9Bv9deCPUCIA2fG6dBKaHxXEg=;
-        b=n7fPOh0FMYKZhGkBE6jLHGlO3Vgo0YFEQlWSKJaQQ9aQOfVhphN4pTW4z1+9/JLmhT
-         3c9Cr1MsmWwAB5+FMhNh39Kiy15uk79swq49Z2VNB5vazpokIOK542VtbbsQgsUePiyy
-         5wwWc84CoaqhO1/AOnqfq0MRkMQ4mi5RgyBURF+sC+Z7os47Lu26ddQ3HSAHkhURX4UK
-         gJqAsdvRwV9oW6WNzxtAtv4SIXSN5E6tDLqNbdhPGJlUH3PUexJ9ahLvFfZHl+Z3m58l
-         75pW6ayc30hHbGtQfkXXAPbxRhI286rM8xhFbukHzCydRcy93+PjFrfEWiX2QcB+6GCR
-         r5ww==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=yEA99Ig1vk+xWbhNuOzieC78enUrRnfRX9eLch5kuhs=;
+        b=TcfHUvxedk4xbZHy2QD/oDTTZcbjojJT6w/qUMD695n/BSbUhteHD32JKK4x3oqWvk
+         mFvFpSn8rkk+obK3VfIFApsfnV3FA1lnBIc8xiu0UhryEcIAugB8uW0mbl84ynP64zRQ
+         S5dc/S9cv2Qz/ENG/bBKSB6eqG2N9c1A6CRgocu+hi+mtSlEITxRmsScAlNnGUeHb6t2
+         VqohgJ9Gbvih96LVo/T52fxNcW25qmFWTwjEMNizYCCocHVrn47wkVtjBeBYPnB3B8uA
+         Bz8FtMcWnmWHFA/pZnQM14WVFfB2nTTAzVydh2vxCJ6fth3I1Xfmqz4ZlpOOJf7L8lte
+         4EWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WOIjYrXN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n20si5543373qkk.326.2021.09.24.02.54.27
+        by mx.google.com with ESMTPS id t195si13905118iof.69.2021.09.24.03.56.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Sep 2021 02:54:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Sep 2021 03:56:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WOIjYrXN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59414 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mThuU-0003oP-SE
-	for alex.bennee@linaro.org; Fri, 24 Sep 2021 05:54:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41404)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mTisR-0005mg-ES
+	for alex.bennee@linaro.org; Fri, 24 Sep 2021 06:56:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57076)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mThgj-0004nW-2V; Fri, 24 Sep 2021 05:40:13 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:36543)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mThgh-0006u1-Gz; Fri, 24 Sep 2021 05:40:12 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id g16so25530287wrb.3;
- Fri, 24 Sep 2021 02:40:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=3jjDpP5pLPewtdopPT9Bv9deCPUCIA2fG6dBKaHxXEg=;
- b=WOIjYrXNXbdh2jL5gRIhbK4TBGocSjPE/HYr5CjsD476vvB12UEKRlCfGDj/7zhFoJ
- 5OABnVasQCMDkKYYZuvToEsDwXl6IGgxpwjwOnJKCrYrCmXhKLlR7nVtlEEhH/nzLyMx
- H2Ig2SSLbo71t4LmouRRkSBtEDMFlVbT68nhfRml0pri6Hp+vDTqqa4I3DqbNe/tg4m3
- rHsT+9JF6oIYOXSVTjxh6G6opZOrvatb+xlmdwLKResJzYwCZw+hvD7sub/7DfwChsLY
- atBypv4w1jndbo7cHsf4LimPyqCPL5UJx8ukAk0qx6NwDRZUUpRxMmDoHeRntkP5vje2
- VVVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=3jjDpP5pLPewtdopPT9Bv9deCPUCIA2fG6dBKaHxXEg=;
- b=gB5OxKvrkDHh0D0J7BclVnSO2Bm8vsfJjPd5613SLd+OoEHtfWBBqS+5jWyqPw3jl/
- zWdGAkaUbp+6yesd99N+7M/ihN6q9ICMBTtO5+PJLt/rfNQGNfQD8M9MyDa/SnseWTAb
- v1gcocLoqZYPJs4dsd7t5dJJ4oNuBu1E5Hs2jxjYHM7KCXlsl56qLPWNTFIXtETjFZAX
- xx3qEn8hBh+YPc/FW6naja3HIIHI+d4u6cNphlPYJufoS3y/aCV0Eyj+ZaEoWNq52zps
- 2Z652WFXdWgeXbMM9QlpUqcWj8QEYN2XcBSNX8R30OcYJvuE2/EcqEY0InK+f1Rx3Ep8
- dwIg==
-X-Gm-Message-State: AOAM530quCwvFq6JvQYq/tFm2ivnxFBSLAc/0cyGZVili6Ypwzf/JqsQ
- X4i01DQVgZz/sqNAsiDH5WDETp2JGGc=
-X-Received: by 2002:a05:600c:1d05:: with SMTP id
- l5mr1016581wms.119.1632476409645; 
- Fri, 24 Sep 2021 02:40:09 -0700 (PDT)
-Received: from x1w.. (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id
- f1sm7964722wrc.66.2021.09.24.02.40.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Sep 2021 02:40:09 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v6 17/40] target/arm: Explicit v7M cores use arm_cpu_has_work
- as CPUClass:has_work
-Date: Fri, 24 Sep 2021 11:38:24 +0200
-Message-Id: <20210924093847.1014331-18-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210924093847.1014331-1-f4bug@amsat.org>
-References: <20210924093847.1014331-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mTird-0005m3-CN
+ for qemu-arm@nongnu.org; Fri, 24 Sep 2021 06:55:33 -0400
+Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213]:48619)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mTirb-0004WE-DH
+ for qemu-arm@nongnu.org; Fri, 24 Sep 2021 06:55:33 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.68])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 07007202EC;
+ Fri, 24 Sep 2021 10:55:20 +0000 (UTC)
+Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Fri, 24 Sep
+ 2021 12:55:20 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G00613b99b34-d39b-48b8-8a00-6d567e0f459b,
+ EA4874C54EC1FB151381C7D8681494D1EB26EF60) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <942903da-c16f-23dd-155d-61af84962935@kaod.org>
+Date: Fri, 24 Sep 2021 12:55:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH] hw/misc: Add an iBT device model
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Titus Rwantare
+ <titusr@google.com>, "andrew@aj.id.au" <andrew@aj.id.au>
+References: <CAMvPwGr-FuQWHTQYxppAyT9uPhzCUDcezgz+jV=GwHGoQF4N6A@mail.gmail.com>
+ <1a0d6240-6654-0cf7-01ce-ef3ebf497a5c@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <1a0d6240-6654-0cf7-01ce-ef3ebf497a5c@amsat.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 182cee8e-37a2-48f9-a21b-12df24e1e0c9
+X-Ovh-Tracer-Id: 12580805561070881641
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudejuddgfeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehmihhnhigrrhgusegrtghmrdhorhhg
+Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
+ helo=5.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kx4eZ7ZkEkb6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org,
+ QEMU Developers <qemu-devel@nongnu.org>, Corey Minyard <minyard@acm.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SY4HK1cxjNI/
 
-ARM v7M cores inherit TYPE_ARM_CPU, so TYPE_ARM_CPU's class_init runs
-first and sets up most of the class fields, setting in particular the
-has_work handler to the generic arm_cpu_has_work(). Thus M-profile
-and A-profile share the same arm_cpu_has_work() function. Some of the
-checks the code there does are perhaps unnecessary for M-profile, but
-they're harmless.
+Hello Titus,
 
-Since we want to move the has_work handler from CPUClass to TCGCPUOps,
-the next commit will be more explicit if we already register this
-handler in arm_v7m_class_init(). Since arm_cpu_has_work() is static to
-target/arm/cpu.c, we have to declare it in "internals.h" to be able to
-use it in target/arm/cpu_tcg.c.
+On 9/24/21 10:42, Philippe Mathieu-Daudé wrote:
+> On 9/24/21 01:48, Titus Rwantare wrote:
+>> Hello all,
+>>
+>> I'd like some clarification on how the following code transfers irqs
+>> back and forth:
+>>> b/hw/arm/aspeed_soc.c
+>>> +    /* iBT */
+>>> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ibt), errp)) {
+>>> +        return;
+>>> +    }
+>>> +    memory_region_add_subregion(&s->lpc.iomem,
+>>> +                   sc->memmap[ASPEED_DEV_IBT] - sc->memmap[ASPEED_DEV_LPC],
+>>> +                   &s->ibt.iomem);
+>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_ibt,
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/arm/internals.h | 2 ++
- target/arm/cpu.c       | 2 +-
- target/arm/cpu_tcg.c   | 1 +
- 3 files changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 777f9687648..864b5ad4cdf 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -177,6 +177,8 @@ void arm_translate_init(void);
- void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
- #endif /* CONFIG_TCG */
- 
-+bool arm_cpu_has_work(CPUState *cs);
-+
- /**
-  * aarch64_sve_zcr_get_valid_len:
-  * @cpu: cpu context
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 641a8c2d3d3..4b08f717f64 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -76,7 +76,7 @@ void arm_cpu_synchronize_from_tb(CPUState *cs,
- }
- #endif /* CONFIG_TCG */
- 
--static bool arm_cpu_has_work(CPUState *cs)
-+bool arm_cpu_has_work(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
- 
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index 0d5adccf1a7..9a0927ad5d0 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -920,6 +920,7 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
- 
-     acc->info = data;
- #ifdef CONFIG_TCG
-+    cc->has_work = arm_cpu_has_work;
-     cc->tcg_ops = &arm_v7m_tcg_ops;
- #endif /* CONFIG_TCG */
- 
--- 
-2.31.1
+The iBT device IRQ is connected to a subdevice irq of the LPC device.
+See aspeed_lpc_realize(). And triggered in aspeed_lpc_set_irq()
 
+> Code smell indeed, likely:
+> 
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->ibt), 1 + aspeed_lpc_ibt,
+
+why ? See what's done above for the LPC device. Commit c59f781e3bcc
+("hw/misc: Model KCS devices in the Aspeed LPC controller") and comment
+
+
+     /*
+      * On the AST2400 and AST2500 the one LPC IRQ is shared between all of the
+      * subdevices. Connect the LPC subdevice IRQs to the LPC controller IRQ (by
+      * contrast, on the AST2600, the subdevice IRQs are connected straight to
+      * the GIC).
+      *
+      * LPC subdevice IRQ sources are offset from 1 because the shared IRQ output
+      * to the VIC is at offset 0.
+      */
+
+> 
+>>> +                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_ibt));
+>>> }
+>>
+>> and
+>>
+>>> hw/misc/aspeed_ibt.c
+>>> +static void aspeed_ibt_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>>> +    AspeedIBTState *ibt = ASPEED_IBT(dev);
+>> ...
+>>> +
+>>> +    sysbus_init_irq(sbd, &ibt->irq);
+>>
+>> I ask because the code in aspeed_soc.c seems to connect to the
+>> lpc->subdevice_irqs[aspeed_lpc_ibt], initialised on
+>> hw/misc/aspeed_lpc.c:408.
+>> I noticed that bmc firmware running in qemu was checking the BT_CTRL
+>> register less frequently than I'd like while editing this patch to use
+>> the IPMIInterface.
+
+OK.
+
+This might be a problem in aspeed_ibt_update_irq(). This patch is
+an experiment from some few years ago. It still works good enough
+for the witherspoon-bmc and powernv9 machines for simple IPMI
+commands: fru, sdr, lan, power off (to be checked).
+
+Could you share your BMC and host command line ?
+
+Thanks,
+
+C.

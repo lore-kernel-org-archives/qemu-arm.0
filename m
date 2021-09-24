@@ -1,98 +1,112 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp681743lfp;
-        Thu, 23 Sep 2021 16:49:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzpNFLMB14dZvhC1Siggmz8u7mmcZMWwqTMWw8OvxmLiPumvLEQKJ+rce7lOQCmucgo0eDg
-X-Received: by 2002:a92:c5a4:: with SMTP id r4mr5793297ilt.130.1632440990839;
-        Thu, 23 Sep 2021 16:49:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632440990; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp996877lfp;
+        Fri, 24 Sep 2021 01:43:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyADpsQNhM+P+yYY4UNCsJRAYr7Dqw8Mecn0zJ+lLTS7SaDVuAgK2HdONsmjrYkasSFC+XC
+X-Received: by 2002:a05:6e02:16c8:: with SMTP id 8mr7247834ilx.49.1632473004618;
+        Fri, 24 Sep 2021 01:43:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632473004; cv=none;
         d=google.com; s=arc-20160816;
-        b=COCWDoQ3cKiFqHGtZETZlv50/KlipOSUpcdceq50FdXr0YMzR6Z5JeTmApFgIiPV58
-         EgB5WfYD5vZniX5hvsNJ7xuoKGN65tAh+iTNWXziZE9lfbKULZYu1ZZttaLyHd9nk+mD
-         tLZTZljGOvw766+EmbHWVcMh1FyeytKzQ36SCcTbH6uOOb/EbScWd8pzySdNLQ8uvtD7
-         CcjsQzAW8pJmBfX+BRp/hhFUdxSpZ/f/3NMj8l2/b2mQXVBRl9ep4ENb2B5TcWgHMBTm
-         mzZG54d7hs991gIU6LS7ymg9AI4cU3Q7NCoGfDPk3SFKZ9LZ7Ij0DU7HZBiVgDILhSGz
-         4+aQ==
+        b=bk02UIfgvgQQmA/fF8OJwbuo2QE1s8xiBxY4SL+R9z1CszVFlQnBvsEipOe2+St/Eu
+         WyZJIT08Nxf4rEJSkFXydbjs/zYXJB2E7njxjmQjWEsjwqdhyw+bOTNDAWEq2COUi1Q6
+         A3dxY+fpaj/AUd15A3ZY2W983mMqkHoxMyilTEl4wGlBADZA2BNSZ8dVzMuabnzw8PSN
+         2ZJu9g6jY46F51v9pt3C6BWmUIglZ+sBN5Tczh67R60FVpo82QrWcAbmHB2lpoYypoht
+         NH2dE/hdZbxGm7I47rBGnM1517n/c8CBlVMWHALD6dv3JvswGoirItgdYkx8kiPc2j+A
+         ppkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:mime-version:dkim-signature;
-        bh=SiaPm7VFghtWYEpTBCmszHKT8zGjlYK3NfQjXWsN1yo=;
-        b=jnDUmIgG1aTGJz/110AGtDglyIpFg5pufShZjqdtTVxgk+zCNVARSsTnZsixiLljLW
-         GOCEIUJ2OsxEHraxjRhJkjWVae85fWszay/cUMgR7dlCFF2JZa2kZoS6dAnA31G7yFE7
-         mvIS5Z0C7yblAGfZaPCrUWqmvSPS6mCNxrjDnRFQFTGIX27EW79jOfarTOJEpz8KJoe4
-         1fd0hj3DKfQm2ve05QspeWIJrFjm/su52tm4iQaDfsqLV8CnNXAPk/sxIfAWBCOGkjYs
-         q/p86TVOmdXnXn6ASYxnbZZggn2w6UWKa4Fnbq+TE+JPLcyrOaPbmpLynWtIye9/53dG
-         lJ2A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=hNgvGtgIqdvbtXHfdCwXn0B9qOlKwBs1ikr7OYI7/j8=;
+        b=DlRDrRYi4KnZaTzkiOu3vTDYO6VUdtTM5cGSKalAxNsai9J+stfUaqLbb4+ReUwc/K
+         xnc6VrhjKjuN8WnU9G/UD5/WejKHKDdg+bXKshoQR3aQDJOvIiyZ5P1VW5hiOOzrInmL
+         rp4jzX5krBL6gRBL0X/clq7XRMvXpdRtZAT2v8h2LwPlMT5D1yGviK3IE6xrtSZBIJNE
+         cUxZBE68I3vVmYW7ZHG83P53eCxRJDknBcHmGU63cfAu1LzKUEbjgGQyuBbI5jZgGHEm
+         aYwoYiv6LALXrmd2BzaA1tihNdwwF26ATU0mhiZs09zxUfAxAwL2/QrVl9qFT3XeP1Qx
+         yJ5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=Kxcd9cJH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=U4DeSyXs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si11198983ilu.143.2021.09.23.16.49.50
+        by mx.google.com with ESMTPS id g14si11601304jat.122.2021.09.24.01.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Sep 2021 16:49:50 -0700 (PDT)
+        Fri, 24 Sep 2021 01:43:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=Kxcd9cJH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:52466 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=U4DeSyXs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43022 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mTYTO-0006Hg-7M
-	for alex.bennee@linaro.org; Thu, 23 Sep 2021 19:49:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37776)
+	id 1mTgnk-0000FI-0U
+	for alex.bennee@linaro.org; Fri, 24 Sep 2021 04:43:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60224)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1mTYTD-0006HE-Ui
- for qemu-arm@nongnu.org; Thu, 23 Sep 2021 19:49:39 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:43896)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mTgnN-0000F5-Ks; Fri, 24 Sep 2021 04:43:02 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:35481)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1mTYSy-0004YX-S8
- for qemu-arm@nongnu.org; Thu, 23 Sep 2021 19:49:39 -0400
-Received: by mail-ed1-x531.google.com with SMTP id v10so24567381edj.10
- for <qemu-arm@nongnu.org>; Thu, 23 Sep 2021 16:49:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:from:date:message-id:subject:to:cc;
- bh=SiaPm7VFghtWYEpTBCmszHKT8zGjlYK3NfQjXWsN1yo=;
- b=Kxcd9cJH9fMsA8AuFzjFsd1gdums9pIaKDY/Gx7zPnQabOBct18DEvgY2rYm4smvlj
- kyphQriSWwSyNDp93HaSRcw7WAwVniclImvPJrHP8DxxNlbn6u8/bZPMNnTnQzSViIuj
- dzoJgjUQpGnKjtjZdZ4r2AuH2X/UYxCGqomAHAimo4gLLCyvaJdRSrM7LuaLNxTZWLTd
- z1nU4mpT0EUEt+hGWYNJRa88lSCymkcoxQhOAZ7Ly0jc0UiZtv1C5CB3XxBaPrqIIHRG
- AoyrikoEuRMrTaA1g8/qP4I3zOCpdGkZeZppkdfmAuqqZHV4j6yxftEWcuOAVlcwzKJZ
- /SUA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mTgnI-000057-Ug; Fri, 24 Sep 2021 04:43:01 -0400
+Received: by mail-wr1-x433.google.com with SMTP id i23so25086876wrb.2;
+ Fri, 24 Sep 2021 01:42:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=hNgvGtgIqdvbtXHfdCwXn0B9qOlKwBs1ikr7OYI7/j8=;
+ b=U4DeSyXsfU0zsMkVquf2RDS8mpOSJJPuasEZEABKEAogesh3c+9f9UvxWMZw4X6mYy
+ zz4VY4bpqot2V8wyKnt0cbpirvnmWcpGMfQLIOnNv7fZAR+0v7Tf8SWPjOyh3Nvfx3XM
+ mCVt7y7xZubavdj1G3D8ZBLQXRgKADxObqQnVJMua+h4bJNBH6T67MzCXG1okSROtVHf
+ DaG4w2WTXufNvjShUcxfg/kddLOHJogZ4dGOEBM/DRSCsOKVf0inKSiMqPVZhji3Kt6j
+ 8NXjzKODEdqQiveo+YaMGI6dYeZ8q1VBM/x6XOGkyoBka3EnClpyUfxMSplUIqJqd+b3
+ 80PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=SiaPm7VFghtWYEpTBCmszHKT8zGjlYK3NfQjXWsN1yo=;
- b=cRIpgkzmVjRDEn+ZzIMWMsdmd5s10mhTyGizEPC2NYCqCNmhoPJrSFx2FF8Aua+N8w
- dBCXs/U1nGE/8BPBnQpq6sERKPG0ic5+tOKUkSl/x6u4nPZ0+EwoFBhRRyOCNE+JVpx7
- DWo6w3CJHjNb4wsL6sG8gQUGXCwA5S/Vo7RE4RzP61raL/ET/bPYiNPOT/v7uqfjgQTn
- fW+6XHMRENHTimQSNaxbmgVepPs1QunrpMbC/3nPI1Wu2wJBFTpcLRxP7hldx8BAkpxK
- ctvTsONvCWCwLMCgyYma5dUloWKXhw8GSSN+4YQsKtYOjRKylSRmI2l1ifGaW9DO46Qc
- mS0A==
-X-Gm-Message-State: AOAM530sBDusRwgp/d1rH46MhmzHe6uNLksMVNq5jXrua0WGAcAu7lVa
- xuzOPsVDRmGJuquf/e9zg0e2W4xRaU0UdmrIaub9vA==
-X-Received: by 2002:a50:d98d:: with SMTP id w13mr1849483edj.51.1632440961715; 
- Thu, 23 Sep 2021 16:49:21 -0700 (PDT)
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=hNgvGtgIqdvbtXHfdCwXn0B9qOlKwBs1ikr7OYI7/j8=;
+ b=FxPHG1wWHRTZss7ojJzze2WfRd6uGKddWauAlU5kOVxlwPr4FNFfZ/pSCHpfEq6Iyr
+ B6nfjTF0AtI7L7DlHQMfFpPu+2FUTa0ILNGMWL0+x2alNqNrjf104reHEFo6H/0Vydfn
+ /y3AU3OsC/1WwTR+OAj/0Wlx/Q7gKOsCRtNNNHOj4x9TpIBmbtdQu1WX87Ea5pqifI1N
+ 4fre2aEyvzZKfm/+snZkVjgE8gaRzMJmoK8ESm+bD2gD7ALwNMgadWNcC4kIqncvfUwg
+ lOqARx5XW9/qomQ7jDOKQhW1r3WR33wSteGXQ5J4mlCvuJyLWKh8R4IdkLuOgkVFM7CS
+ 1NvQ==
+X-Gm-Message-State: AOAM531BA6JL6OD28k6aF8SOFV2BkaittBhf5s60tYdYEhdnGjqVaAw+
+ nzA0vPq6UzqPFB5Sa2MfciM=
+X-Received: by 2002:adf:f683:: with SMTP id v3mr10211105wrp.423.1632472974963; 
+ Fri, 24 Sep 2021 01:42:54 -0700 (PDT)
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id b204sm11130922wmb.3.2021.09.24.01.42.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Sep 2021 01:42:54 -0700 (PDT)
+Message-ID: <1a0d6240-6654-0cf7-01ce-ef3ebf497a5c@amsat.org>
+Date: Fri, 24 Sep 2021 10:42:52 +0200
 MIME-Version: 1.0
-From: Titus Rwantare <titusr@google.com>
-Date: Thu, 23 Sep 2021 16:48:45 -0700
-Message-ID: <CAMvPwGr-FuQWHTQYxppAyT9uPhzCUDcezgz+jV=GwHGoQF4N6A@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
 Subject: Re: [PATCH] hw/misc: Add an iBT device model
-To: clg@kaod.org, "andrew@aj.id.au" <andrew@aj.id.au>
-Cc: qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>, 
- Hao Wu <wuhaotsh@google.com>, Corey Minyard <minyard@acm.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=titusr@google.com; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Language: en-US
+To: Titus Rwantare <titusr@google.com>, clg@kaod.org,
+ "andrew@aj.id.au" <andrew@aj.id.au>
+References: <CAMvPwGr-FuQWHTQYxppAyT9uPhzCUDcezgz+jV=GwHGoQF4N6A@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <CAMvPwGr-FuQWHTQYxppAyT9uPhzCUDcezgz+jV=GwHGoQF4N6A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -105,44 +119,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org,
+ QEMU Developers <qemu-devel@nongnu.org>, Corey Minyard <minyard@acm.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 69FiE82iULLc
+X-TUID: JtGK6Fcn5RnY
 
-Hello all,
+On 9/24/21 01:48, Titus Rwantare wrote:
+> Hello all,
+> 
+> I'd like some clarification on how the following code transfers irqs
+> back and forth:
+> 
+>> b/hw/arm/aspeed_soc.c
+>> +    /* iBT */
+>> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ibt), errp)) {
+>> +        return;
+>> +    }
+>> +    memory_region_add_subregion(&s->lpc.iomem,
+>> +                   sc->memmap[ASPEED_DEV_IBT] - sc->memmap[ASPEED_DEV_LPC],
+>> +                   &s->ibt.iomem);
+>> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_ibt,
 
-I'd like some clarification on how the following code transfers irqs
-back and forth:
+Code smell indeed, likely:
 
-> b/hw/arm/aspeed_soc.c
->+    /* iBT */
->+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ibt), errp)) {
->+        return;
->+    }
->+    memory_region_add_subregion(&s->lpc.iomem,
->+                   sc->memmap[ASPEED_DEV_IBT] - sc->memmap[ASPEED_DEV_LPC],
->+                   &s->ibt.iomem);
->+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_ibt,
->+                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_ibt));
-> }
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->ibt), 1 + aspeed_lpc_ibt,
 
-and
+>> +                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_ibt));
+>> }
+> 
+> and
+> 
+>> hw/misc/aspeed_ibt.c
+>> +static void aspeed_ibt_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>> +    AspeedIBTState *ibt = ASPEED_IBT(dev);
+> ...
+>> +
+>> +    sysbus_init_irq(sbd, &ibt->irq);
+> 
+> I ask because the code in aspeed_soc.c seems to connect to the
+> lpc->subdevice_irqs[aspeed_lpc_ibt], initialised on
+> hw/misc/aspeed_lpc.c:408.
+> I noticed that bmc firmware running in qemu was checking the BT_CTRL
+> register less frequently than I'd like while editing this patch to use
+> the IPMIInterface.
+> 
+> Thanks,
+> Titus
+> 
 
->hw/misc/aspeed_ibt.c
->+static void aspeed_ibt_realize(DeviceState *dev, Error **errp)
->+{
->+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->+    AspeedIBTState *ibt = ASPEED_IBT(dev);
-...
->+
->+    sysbus_init_irq(sbd, &ibt->irq);
-
-I ask because the code in aspeed_soc.c seems to connect to the
-lpc->subdevice_irqs[aspeed_lpc_ibt], initialised on
-hw/misc/aspeed_lpc.c:408.
-I noticed that bmc firmware running in qemu was checking the BT_CTRL
-register less frequently than I'd like while editing this patch to use
-the IPMIInterface.
-
-Thanks,
-Titus

@@ -1,88 +1,88 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1191844lfp;
-        Fri, 24 Sep 2021 06:02:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1oNhcO1CugqQyTd3EFbDgUacGFuBY59CQb717dLpcplHlAAaDz6JaKqlR3icObLpuR2wb
-X-Received: by 2002:a2e:944d:: with SMTP id o13mr11401706ljh.419.1632488552382;
-        Fri, 24 Sep 2021 06:02:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632488552; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1192019lfp;
+        Fri, 24 Sep 2021 06:02:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzuU/E29b6dixBaYMf3Gyiz296iMTYXPPqaYBBAQY7EeD2Ba2St6+s1jO0pc2ZtOLsHI4Yo
+X-Received: by 2002:a17:906:a24c:: with SMTP id bi12mr10687451ejb.530.1632488561488;
+        Fri, 24 Sep 2021 06:02:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632488561; cv=none;
         d=google.com; s=arc-20160816;
-        b=htkaqtRxTIYmSffUwCiCnvkQZp7ju7HU4gMZ1OKKPs4AARMkgNjvHFx5+rkC6F2pBz
-         NoUUA1TF5qvJJjP6TmRZFJ7allTKfFTz4gWLeoGMLwLZz+SmQZ2vVBL67kJvwtGI1Euz
-         0B6OntnX3v4fc2K9Qx5I5vpU9dp4J2okLdi1SNTr9nfy6oWPUrw3cxo39XjMcMqa/QUS
-         87N/RP79zcVoJmAKW991JHfJ4wEc87tZkA35qet/hr7IMpq1tR1PevbiG+3211GTO/58
-         YcS0zzel7Lmk1f1RZBa+xRJ4cCVDzddMO7IConHksSyuFwRYjt+HADsFA+4nKoMoe+s5
-         vO8w==
+        b=DKqnWrzIRNw5StrpxoZP9yjFpV/j92PhbUln+fIvZEOIMev56h0uf0hSeQSEC4SSCH
+         Y4Mbtx1pQRR3Wr+oxW/80WGDdIp0Jhv04D0VU3IkrmHNakCKAws5c8qoP/J6xY+n8Yuj
+         lZGCRCHxK5Mpt6gCNXsJe9qGYrWd1bo3Z1qy644TF8mQL2lckA4VQMARdV3hRO9ST5il
+         Hx8dl84vjRi+PyJAlsaTTN8xzQ79qWo/reoafJJK0TqI4vzDbrE93jKEpFSG9tbhguZB
+         AK/JOcGMYRETDrCLPhizkH0htVEi1uliP++7IIc8d85b8OcCzfOJfl6l4sq7WIlcAbfD
+         oMCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jodc4GR434T4llzYl4wzFt7ne3HIARqOCFklqHvG4uE=;
-        b=XlJw7V1lx0fodwiOITRbtEFB4e/UuxRelO6CfHOzqBirRxYUEpR9PqW530PMZnMOp7
-         ciFcMHoPOXR2kQSNVh/R52BrUI3r76AwB4cb44WkwU6kUPZCWEQslcqSSmi025Fcwm2Z
-         LOZhRd5DQ81HtCwKmz+9iqGCEMOJl/FIas8Sj+s50FV+xi0ECXdJ8RUP2S+4EX09GN1c
-         8N/BCKa0pGuvQ8X1TxeinDBj0nKEZJ7KEjlPtU3TS42bR9LtfMjd6zCRcWds9odvvzNX
-         CgQgXGyIA0AjbgNZdNAsjqGCk61UkicatBN6FAxDXzrMxKmV48p+SLld6JrWHGEQI/qL
-         Y0sA==
+        bh=V0XjxOxvFMBZsv8sCqGVsyYe72OeLYyXIeFUU8Xi7c8=;
+        b=bxhf4/u+Xsdqth9KwvKRkjWBLKrGX/4sLy5iFCyEh/Ed1JrIW1T2itlr5nft5lqP9L
+         AqODinJ5MolDcoCpp0pfcr7Rm1yadSL+bufHzP6U+YBRAAgThXhcPvS49EnyJgUUv+GW
+         Yi8TWmmoEtq8p74dgszfn8nJmctcUu43Kk+uNQdjTCiz85BVE7H/ELapf/O6rf4M2Fb7
+         zfICUUqNyxIvIo/BrZSNXqgrD2n8isCiCxrVyq6INxsw8hGaKQhdThkV5tBVlqZF5tQT
+         WW9RLJyFD1WfJkUJc5twub6u0FltjUfaZQwuOKQ6BymRswckIeskHpAztT6Y0puFSycf
+         OUKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="QR/m60ao";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aWVNTdj9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u20si9229789edv.439.2021.09.24.06.02.32
+        by mx.google.com with ESMTPS id h22si10517118edr.239.2021.09.24.06.02.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Sep 2021 06:02:32 -0700 (PDT)
+        Fri, 24 Sep 2021 06:02:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="QR/m60ao";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aWVNTdj9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42166 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mTkqV-00055s-Bg
-	for alex.bennee@linaro.org; Fri, 24 Sep 2021 09:02:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47914)
+	id 1mTkqe-0005ad-3F
+	for alex.bennee@linaro.org; Fri, 24 Sep 2021 09:02:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47542)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mTkLy-0007j6-0T
- for qemu-devel@nongnu.org; Fri, 24 Sep 2021 08:31:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36261)
+ id 1mTkKx-0006kh-8P
+ for qemu-devel@nongnu.org; Fri, 24 Sep 2021 08:29:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41790)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mTkLr-0002Ft-RQ
- for qemu-devel@nongnu.org; Fri, 24 Sep 2021 08:30:56 -0400
+ id 1mTkKs-0001au-Rn
+ for qemu-devel@nongnu.org; Fri, 24 Sep 2021 08:29:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632486644;
+ s=mimecast20190719; t=1632486590;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jodc4GR434T4llzYl4wzFt7ne3HIARqOCFklqHvG4uE=;
- b=QR/m60ao3CpABI3+LBkTcgXbkqsOQATJBMut2yHwf0P0j1Vh0sz4oizHE/BL8qYOZyAqyx
- XUdi4oErhE2WDvxMVgJoU3DnUWUVzFrhxM1Y+AgD/DEOUOqu2a3VUgsNB9SbSL1HuHg8rd
- EB6JM+GuXT+61uC7aLxrOYaOyQLheiI=
+ bh=V0XjxOxvFMBZsv8sCqGVsyYe72OeLYyXIeFUU8Xi7c8=;
+ b=aWVNTdj91N9cTrH6QaHbR1IpyldJAlVDrx71bIVGQhsnWjg6sivUmmbgdDj39oN9MV4hMz
+ oTDmGSEaNFRgS5VPj/YM+4NwR1tUHwkcEtxlOUl/w8stNvP/e+Ow4xAv0ry21ud55UL179
+ 3hh5e3/dbgQPrrKL3QPoVG80w3x2Yh4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-522-hjYyp4o_Py6GdM8IkN6cgw-1; Fri, 24 Sep 2021 08:30:43 -0400
-X-MC-Unique: hjYyp4o_Py6GdM8IkN6cgw-1
+ us-mta-225-ORciRrtbPeuSX0RzibPzMA-1; Fri, 24 Sep 2021 08:29:49 -0400
+X-MC-Unique: ORciRrtbPeuSX0RzibPzMA-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15D041084684;
- Fri, 24 Sep 2021 12:30:42 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CE968101F000;
+ Fri, 24 Sep 2021 12:29:47 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
  (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7689562465;
- Fri, 24 Sep 2021 12:30:40 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1752562465;
+ Fri, 24 Sep 2021 12:29:45 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 32/35] acpi: arm/virt: build_gtdt: use
- acpi_table_begin()/acpi_table_end() instead of build_header()
-Date: Fri, 24 Sep 2021 08:27:59 -0400
-Message-Id: <20210924122802.1455362-33-imammedo@redhat.com>
+Subject: [PATCH v4 25/35] acpi: arm/virt: madt: use
+ build_append_int_noprefix() API to compose MADT table
+Date: Fri, 24 Sep 2021 08:27:52 -0400
+Message-Id: <20210924122802.1455362-26-imammedo@redhat.com>
 In-Reply-To: <20210924122802.1455362-1-imammedo@redhat.com>
 References: <20210924122802.1455362-1-imammedo@redhat.com>
 MIME-Version: 1.0
@@ -93,13 +93,13 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) DKIMWL_WL_HIGH=-1.473, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.473,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -116,160 +116,315 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, shannon.zhaosl@gmail.com,
  mst@redhat.com, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- ani@anisinha.ca
+ eauger@redhat.com, ani@anisinha.ca
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E/F96NRQjCiZ
+X-TUID: koWsWvuKinsx
 
-it replaces error-prone pointer arithmetic for build_header() API,
-with 2 calls to start and finish table creation,
-which hides offsets magic from API user.
-
-while at it, replace packed structure with endian agnostic
-build_append_FOO() API.
+Drop usage of packed structures and explicit endian conversions
+when building MADT table for arm/x86 and use endian agnostic
+build_append_int_noprefix() API to build it.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
-v3:
-  * s/acpi_init_table|acpi_table_composed/acpi_table_begin|acpi_table_end/
+v2:
+  * fix invalid ITS length (use v6.0 Errata instead of v60 definition)
 
 CC: drjones@redhat.com
 CC: peter.maydell@linaro.org
 CC: shannon.zhaosl@gmail.com
 CC: qemu-arm@nongnu.org
+CC: eauger@redhat.com
 ---
- include/hw/acpi/acpi-defs.h | 25 -------------
- hw/arm/virt-acpi-build.c    | 75 ++++++++++++++++++++++++-------------
- 2 files changed, 48 insertions(+), 52 deletions(-)
+ include/hw/acpi/acpi-defs.h |  84 --------------------
+ hw/arm/virt-acpi-build.c    | 150 +++++++++++++++++++++---------------
+ 2 files changed, 90 insertions(+), 144 deletions(-)
 
 diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index 012c4ffb3a..0b375e7589 100644
+index 3f174ba208..bcada37601 100644
 --- a/include/hw/acpi/acpi-defs.h
 +++ b/include/hw/acpi/acpi-defs.h
-@@ -131,29 +131,4 @@ struct AcpiFacsDescriptorRev1 {
+@@ -163,90 +163,6 @@ struct AcpiFacsDescriptorRev1 {
  } QEMU_PACKED;
  typedef struct AcpiFacsDescriptorRev1 AcpiFacsDescriptorRev1;
  
+-/* Values for Type in APIC sub-headers */
+-
+-#define ACPI_APIC_GENERIC_CPU_INTERFACE 11
+-#define ACPI_APIC_GENERIC_DISTRIBUTOR   12
+-#define ACPI_APIC_GENERIC_MSI_FRAME     13
+-#define ACPI_APIC_GENERIC_REDISTRIBUTOR 14
+-#define ACPI_APIC_GENERIC_TRANSLATOR    15
+-#define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+-
 -/*
-- * Generic Timer Description Table (GTDT)
+- * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
 - */
--#define ACPI_GTDT_INTERRUPT_MODE_LEVEL    (0 << 0)
--#define ACPI_GTDT_INTERRUPT_MODE_EDGE     (1 << 0)
--#define ACPI_GTDT_CAP_ALWAYS_ON           (1 << 2)
+-#define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
+-    uint8_t  type;                               \
+-    uint8_t  length;
 -
--struct AcpiGenericTimerTable {
--    ACPI_TABLE_HEADER_DEF
--    uint64_t counter_block_addresss;
--    uint32_t reserved;
--    uint32_t secure_el1_interrupt;
--    uint32_t secure_el1_flags;
--    uint32_t non_secure_el1_interrupt;
--    uint32_t non_secure_el1_flags;
--    uint32_t virtual_timer_interrupt;
--    uint32_t virtual_timer_flags;
--    uint32_t non_secure_el2_interrupt;
--    uint32_t non_secure_el2_flags;
--    uint64_t counter_read_block_address;
--    uint32_t platform_timer_count;
--    uint32_t platform_timer_offset;
+-/* Sub-structures for MADT */
+-
+-struct AcpiMadtGenericCpuInterface {
+-    ACPI_SUB_HEADER_DEF
+-    uint16_t reserved;
+-    uint32_t cpu_interface_number;
+-    uint32_t uid;
+-    uint32_t flags;
+-    uint32_t parking_version;
+-    uint32_t performance_interrupt;
+-    uint64_t parked_address;
+-    uint64_t base_address;
+-    uint64_t gicv_base_address;
+-    uint64_t gich_base_address;
+-    uint32_t vgic_interrupt;
+-    uint64_t gicr_base_address;
+-    uint64_t arm_mpidr;
 -} QEMU_PACKED;
--typedef struct AcpiGenericTimerTable AcpiGenericTimerTable;
 -
- #endif
+-typedef struct AcpiMadtGenericCpuInterface AcpiMadtGenericCpuInterface;
+-
+-/* GICC CPU Interface Flags */
+-#define ACPI_MADT_GICC_ENABLED 1
+-
+-struct AcpiMadtGenericDistributor {
+-    ACPI_SUB_HEADER_DEF
+-    uint16_t reserved;
+-    uint32_t gic_id;
+-    uint64_t base_address;
+-    uint32_t global_irq_base;
+-    /* ACPI 5.1 Errata 1228 Present GIC version in MADT table */
+-    uint8_t version;
+-    uint8_t reserved2[3];
+-} QEMU_PACKED;
+-
+-typedef struct AcpiMadtGenericDistributor AcpiMadtGenericDistributor;
+-
+-struct AcpiMadtGenericMsiFrame {
+-    ACPI_SUB_HEADER_DEF
+-    uint16_t reserved;
+-    uint32_t gic_msi_frame_id;
+-    uint64_t base_address;
+-    uint32_t flags;
+-    uint16_t spi_count;
+-    uint16_t spi_base;
+-} QEMU_PACKED;
+-
+-typedef struct AcpiMadtGenericMsiFrame AcpiMadtGenericMsiFrame;
+-
+-struct AcpiMadtGenericRedistributor {
+-    ACPI_SUB_HEADER_DEF
+-    uint16_t reserved;
+-    uint64_t base_address;
+-    uint32_t range_length;
+-} QEMU_PACKED;
+-
+-typedef struct AcpiMadtGenericRedistributor AcpiMadtGenericRedistributor;
+-
+-struct AcpiMadtGenericTranslator {
+-    ACPI_SUB_HEADER_DEF
+-    uint16_t reserved;
+-    uint32_t translation_id;
+-    uint64_t base_address;
+-    uint32_t reserved2;
+-} QEMU_PACKED;
+-
+-typedef struct AcpiMadtGenericTranslator AcpiMadtGenericTranslator;
+-
+ /*
+  * Generic Timer Description Table (GTDT)
+  */
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 7b79fae0ad..6cec97352b 100644
+index e3bdcd44e8..a9a78d904a 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -559,40 +559,61 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     acpi_table_end(linker, &table);
- }
- 
--/* GTDT */
-+/*
-+ * ACPI spec, Revision 5.1
-+ * 5.2.24 Generic Timer Description Table (GTDT)
-+ */
- static void
- build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
--    int gtdt_start = table_data->len;
--    AcpiGenericTimerTable *gtdt;
--    uint32_t irqflags;
--
--    if (vmc->claim_edge_triggered_timers) {
--        irqflags = ACPI_GTDT_INTERRUPT_MODE_EDGE;
--    } else {
--        irqflags = ACPI_GTDT_INTERRUPT_MODE_LEVEL;
--    }
--
--    gtdt = acpi_data_push(table_data, sizeof *gtdt);
--    /* The interrupt values are the same with the device tree when adding 16 */
--    gtdt->secure_el1_interrupt = cpu_to_le32(ARCH_TIMER_S_EL1_IRQ + 16);
--    gtdt->secure_el1_flags = cpu_to_le32(irqflags);
--
--    gtdt->non_secure_el1_interrupt = cpu_to_le32(ARCH_TIMER_NS_EL1_IRQ + 16);
--    gtdt->non_secure_el1_flags = cpu_to_le32(irqflags |
--                                             ACPI_GTDT_CAP_ALWAYS_ON);
-+    /*
-+     * Table 5-117 Flag Definitions
-+     * set only "Timer interrupt Mode" and assume "Timer Interrupt
-+     * polarity" bit as '0: Interrupt is Active high'
-+     */
-+    uint32_t irqflags = vmc->claim_edge_triggered_timers ?
-+        1 : /* Interrupt is Edge triggered */
-+        0;  /* Interrupt is Level triggered  */
-+    AcpiTable table = { .sig = "GTDT", .rev = 2, .oem_id = vms->oem_id,
-+                        .oem_table_id = vms->oem_table_id };
- 
--    gtdt->virtual_timer_interrupt = cpu_to_le32(ARCH_TIMER_VIRT_IRQ + 16);
--    gtdt->virtual_timer_flags = cpu_to_le32(irqflags);
-+    acpi_table_begin(&table, table_data);
- 
--    gtdt->non_secure_el2_interrupt = cpu_to_le32(ARCH_TIMER_NS_EL2_IRQ + 16);
--    gtdt->non_secure_el2_flags = cpu_to_le32(irqflags);
-+    /* CntControlBase Physical Address */
-+    /* FIXME: invalid value, should be 0xFFFFFFFFFFFFFFFF if not impl. ? */
-+    build_append_int_noprefix(table_data, 0, 8);
-+    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
-+    /*
-+     * FIXME: clarify comment:
-+     * The interrupt values are the same with the device tree when adding 16
-+     */
-+    /* Secure EL1 timer GSIV */
-+    build_append_int_noprefix(table_data, ARCH_TIMER_S_EL1_IRQ + 16, 4);
-+    /* Secure EL1 timer Flags */
-+    build_append_int_noprefix(table_data, irqflags, 4);
-+    /* Non-Secure EL1 timer GSIV */
-+    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL1_IRQ + 16, 4);
-+    /* Non-Secure EL1 timer Flags */
-+    build_append_int_noprefix(table_data, irqflags |
-+                              1UL << 2, /* Always-on Capability */
-+                              4);
-+    /* Virtual timer GSIV */
-+    build_append_int_noprefix(table_data, ARCH_TIMER_VIRT_IRQ + 16, 4);
-+    /* Virtual Timer Flags */
-+    build_append_int_noprefix(table_data, irqflags, 4);
-+    /* Non-Secure EL2 timer GSIV */
-+    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_IRQ + 16, 4);
-+    /* Non-Secure EL2 timer Flags */
-+    build_append_int_noprefix(table_data, irqflags, 4);
-+    /* CntReadBase Physical address */
-+    build_append_int_noprefix(table_data, 0, 8);
-+    /* Platform Timer Count */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Platform Timer Offset */
-+    build_append_int_noprefix(table_data, 0, 4);
- 
--    build_header(linker, table_data,
--                 (void *)(table_data->data + gtdt_start), "GTDT",
--                 table_data->len - gtdt_start, 2, vms->oem_id,
--                 vms->oem_table_id);
-+    acpi_table_end(linker, &table);
+@@ -568,94 +568,124 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  }
  
  /*
+- * ACPI spec, Revision 5.0
++ * ACPI spec, Revision 5.1 Errata A
+  * 5.2.12 Multiple APIC Description Table (MADT)
+  */
++static void build_append_gicr(GArray *table_data, uint64_t base, uint32_t size)
++{
++    build_append_int_noprefix(table_data, 0xE, 1);  /* Type */
++    build_append_int_noprefix(table_data, 16, 1);   /* Length */
++    build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
++    /* Discovery Range Base Addres */
++    build_append_int_noprefix(table_data, base, 8);
++    build_append_int_noprefix(table_data, size, 4); /* Discovery Range Length */
++}
++
+ static void
+ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ {
++    int i;
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     const MemMapEntry *memmap = vms->memmap;
+-    const int *irqmap = vms->irqmap;
+-    AcpiMadtGenericDistributor *gicd;
+-    AcpiMadtGenericMsiFrame *gic_msi;
+-    int i;
+     AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
+ 
+     acpi_table_begin(&table, table_data);
+     /* Local Interrupt Controller Address */
+     build_append_int_noprefix(table_data, 0, 4);
+-    build_append_int_noprefix(table_data, 0, 4); /* Flags */
+-
+-    gicd = acpi_data_push(table_data, sizeof *gicd);
+-    gicd->type = ACPI_APIC_GENERIC_DISTRIBUTOR;
+-    gicd->length = sizeof(*gicd);
+-    gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
+-    gicd->version = vms->gic_version;
++    build_append_int_noprefix(table_data, 0, 4);   /* Flags */
++
++    /* 5.2.12.15 GIC Distributor Structure */
++    build_append_int_noprefix(table_data, 0xC, 1); /* Type */
++    build_append_int_noprefix(table_data, 24, 1);  /* Length */
++    build_append_int_noprefix(table_data, 0, 2);   /* Reserved */
++    build_append_int_noprefix(table_data, 0, 4);   /* GIC ID */
++    /* Physical Base Address */
++    build_append_int_noprefix(table_data, memmap[VIRT_GIC_DIST].base, 8);
++    build_append_int_noprefix(table_data, 0, 4);   /* System Vector Base */
++    /* GIC version */
++    build_append_int_noprefix(table_data, vms->gic_version, 1);
++    build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
+ 
+     for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
+-        AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
+-                                                           sizeof(*gicc));
+         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
++        uint64_t physical_base_address = 0, gich = 0, gicv = 0;
++        uint32_t vgic_interrupt = vms->virt ? PPI(ARCH_GIC_MAINT_IRQ) : 0;
++        uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
++                                             PPI(VIRTUAL_PMU_IRQ) : 0;
+ 
+-        gicc->type = ACPI_APIC_GENERIC_CPU_INTERFACE;
+-        gicc->length = sizeof(*gicc);
+         if (vms->gic_version == 2) {
+-            gicc->base_address = cpu_to_le64(memmap[VIRT_GIC_CPU].base);
+-            gicc->gich_base_address = cpu_to_le64(memmap[VIRT_GIC_HYP].base);
+-            gicc->gicv_base_address = cpu_to_le64(memmap[VIRT_GIC_VCPU].base);
++            physical_base_address = memmap[VIRT_GIC_CPU].base;
++            gicv = memmap[VIRT_GIC_VCPU].base;
++            gich = memmap[VIRT_GIC_HYP].base;
+         }
+-        gicc->cpu_interface_number = cpu_to_le32(i);
+-        gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
+-        gicc->uid = cpu_to_le32(i);
+-        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
+ 
+-        if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+-            gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+-        }
+-        if (vms->virt) {
+-            gicc->vgic_interrupt = cpu_to_le32(PPI(ARCH_GIC_MAINT_IRQ));
+-        }
++        /* 5.2.12.14 GIC Structure */
++        build_append_int_noprefix(table_data, 0xB, 1);  /* Type */
++        build_append_int_noprefix(table_data, 76, 1);   /* Length */
++        build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
++        build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
++        build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
++        /* Flags */
++        build_append_int_noprefix(table_data, 1, 4);    /* Enabled */
++        /* Parking Protocol Version */
++        build_append_int_noprefix(table_data, 0, 4);
++        /* Performance Interrupt GSIV */
++        build_append_int_noprefix(table_data, pmu_interrupt, 4);
++        build_append_int_noprefix(table_data, 0, 8); /* Parked Address */
++        /* Physical Base Address */
++        build_append_int_noprefix(table_data, physical_base_address, 8);
++        build_append_int_noprefix(table_data, gicv, 8); /* GICV */
++        build_append_int_noprefix(table_data, gich, 8); /* GICH */
++        /* VGIC Maintenance interrupt */
++        build_append_int_noprefix(table_data, vgic_interrupt, 4);
++        build_append_int_noprefix(table_data, 0, 8);    /* GICR Base Address*/
++        /* MPIDR */
++        build_append_int_noprefix(table_data, armcpu->mp_affinity, 8);
+     }
+ 
+     if (vms->gic_version == 3) {
+-        AcpiMadtGenericTranslator *gic_its;
+-        int nb_redist_regions = virt_gicv3_redist_region_count(vms);
+-        AcpiMadtGenericRedistributor *gicr = acpi_data_push(table_data,
+-                                                         sizeof *gicr);
+-
+-        gicr->type = ACPI_APIC_GENERIC_REDISTRIBUTOR;
+-        gicr->length = sizeof(*gicr);
+-        gicr->base_address = cpu_to_le64(memmap[VIRT_GIC_REDIST].base);
+-        gicr->range_length = cpu_to_le32(memmap[VIRT_GIC_REDIST].size);
+-
+-        if (nb_redist_regions == 2) {
+-            gicr = acpi_data_push(table_data, sizeof(*gicr));
+-            gicr->type = ACPI_APIC_GENERIC_REDISTRIBUTOR;
+-            gicr->length = sizeof(*gicr);
+-            gicr->base_address =
+-                cpu_to_le64(memmap[VIRT_HIGH_GIC_REDIST2].base);
+-            gicr->range_length =
+-                cpu_to_le32(memmap[VIRT_HIGH_GIC_REDIST2].size);
++        build_append_gicr(table_data, memmap[VIRT_GIC_REDIST].base,
++                                      memmap[VIRT_GIC_REDIST].size);
++        if (virt_gicv3_redist_region_count(vms) == 2) {
++            build_append_gicr(table_data, memmap[VIRT_HIGH_GIC_REDIST2].base,
++                                          memmap[VIRT_HIGH_GIC_REDIST2].size);
+         }
+ 
+         if (its_class_name() && !vmc->no_its) {
+-            gic_its = acpi_data_push(table_data, sizeof *gic_its);
+-            gic_its->type = ACPI_APIC_GENERIC_TRANSLATOR;
+-            gic_its->length = sizeof(*gic_its);
+-            gic_its->translation_id = 0;
+-            gic_its->base_address = cpu_to_le64(memmap[VIRT_GIC_ITS].base);
++            /*
++             * FIXME: Structure is from Revision 6.0 where 'GIC Structure'
++             * has additional fields on top of implemented 5.1 Errata A,
++             * to make it consistent with v6.0 we need to bump everything
++             * to v6.0
++             */
++            /*
++             * ACPI spec, Revision 6.0 Errata A
++             * (original 6.0 definition has invalid Length)
++             * 5.2.12.18 GIC ITS Structure
++             */
++            build_append_int_noprefix(table_data, 0xF, 1);  /* Type */
++            build_append_int_noprefix(table_data, 20, 1);   /* Length */
++            build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
++            build_append_int_noprefix(table_data, 0, 4);    /* GIC ITS ID */
++            /* Physical Base Address */
++            build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
++            build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+         }
+     } else {
+-        gic_msi = acpi_data_push(table_data, sizeof *gic_msi);
+-        gic_msi->type = ACPI_APIC_GENERIC_MSI_FRAME;
+-        gic_msi->length = sizeof(*gic_msi);
+-        gic_msi->gic_msi_frame_id = 0;
+-        gic_msi->base_address = cpu_to_le64(memmap[VIRT_GIC_V2M].base);
+-        gic_msi->flags = cpu_to_le32(1);
+-        gic_msi->spi_count = cpu_to_le16(NUM_GICV2M_SPIS);
+-        gic_msi->spi_base = cpu_to_le16(irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE);
++        const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
++
++        /* 5.2.12.16 GIC MSI Frame Structure */
++        build_append_int_noprefix(table_data, 0xD, 1);  /* Type */
++        build_append_int_noprefix(table_data, 24, 1);   /* Length */
++        build_append_int_noprefix(table_data, 0, 2);    /* Reserved */
++        build_append_int_noprefix(table_data, 0, 4);    /* GIC MSI Frame ID */
++        /* Physical Base Address */
++        build_append_int_noprefix(table_data, memmap[VIRT_GIC_V2M].base, 8);
++        build_append_int_noprefix(table_data, 1, 4);    /* Flags */
++        /* SPI Count */
++        build_append_int_noprefix(table_data, NUM_GICV2M_SPIS, 2);
++        build_append_int_noprefix(table_data, spi_base, 2); /* SPI Base */
+     }
+     acpi_table_end(linker, &table);
+ }
 -- 
 2.27.0
 

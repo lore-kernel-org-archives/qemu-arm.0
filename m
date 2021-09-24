@@ -1,111 +1,109 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp358787lfp;
-        Wed, 22 Sep 2021 09:44:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCYN3oV90acp4oI30DMjFFg5fpd8ElrOrCaRNpFxPg2IPHarnE95As3qVrquSofUF4YgD5
-X-Received: by 2002:a0c:f010:: with SMTP id z16mr761028qvk.8.1632329077659;
-        Wed, 22 Sep 2021 09:44:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632329077; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1038470lfp;
+        Fri, 24 Sep 2021 02:47:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzEXtRomyR1tWcnb8ewS+FIEJGhJNZmCIO2Cm8kml+p3CgrCAwOJ+WRoftEY4/mu9ouVih8
+X-Received: by 2002:a05:6e02:1c84:: with SMTP id w4mr7558047ill.219.1632476839210;
+        Fri, 24 Sep 2021 02:47:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632476839; cv=none;
         d=google.com; s=arc-20160816;
-        b=fR79Za0f4fm445F8Zpxm/wyVIyZCTe48mlFs603fsEU/q1WORvzPTZh3uI1BGBZQzr
-         kekZwaiWIe0KtJj7IEMx5Ofqo5BS5/ylLgzD0wbnjMIRZYCyTx8+vf+OlMvEGbGY6+sX
-         kj4md+wWtVocXLBCEXukTE4lhnKldwvrDqZ1uXnNfw6C0vqMrRKzadZckmfE+z6VrGEK
-         mmja3hoSyINiWucvHsUldbnKQeZnVkk6wy4s16rUjxYwQyRF41MUaOL3XtvBYY4t6p0G
-         +huY3OYu9ICiLoXwo9XRaLLPMNLGRG2VAfxOrKxETkYISGRZi+ELmVijYMRc/+sLZX4q
-         wiUw==
+        b=CevNFhHXHbU60TaXtN9gsgOGvFivtj9tkU8k8OtI2vSuhq3keg9DxRqF9SIStkw1By
+         DJHJOix3zs0RTKtcdudSMUyK+hmKP9SldPfr31vAh+G9v3JFjx4Cu3/8/42F3J37YILI
+         tpuVYGHq1D/SvLz2yxsJ4hHzbs0vKKTW/bteYdfHBMp7ZhDndcAdkl+8KE/DjzzmCSGW
+         /KrqIUZ19ojLxf2sizDk62LPzW72+ULcU9RuDfIWbG5ow9Pz9lvwvssX7cv9LvQyXSp7
+         9jX87mlWjNdpOfJUSIs3Ue0uiIiOqpKTWD52fUPVL2qEhqcG4kLDmb/QQF9Yq4nQqqHG
+         qeNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=tGml+z5wri++cNviwkr9uOImZi4qRo1/XZ9h9m3hxa4=;
-        b=ZUI+voFp967dnRiTqFbRP0BehoNxjPMICycbcDhhLLzvBYsNMmGLcMsj8oI0fEmWyk
-         hxZTyDYG6ZceCp8m4xkp043pOEII8Ra7cNOQKUiz4rNW/C4jCVipJlSqGAr8e9ME1taw
-         8EMZz8iXQ6XZFwPfGZCsieoRayct7q+hEh5V+dpq3JuMUBF4rTsg/DH/6MJcwOSrpSRx
-         E5f24evRlH/Ss4mMxVONkWkd15Qmt6j9k81y160jizySX6nUBqmzSeT2ZnrM+ZfiA6WB
-         V4xsGQ7Yjt8hFxD+Np+D8xzd0PTTyOdNtUdtaIghyJLKFWRdLJhl3P3TQSsXhY4ha6Xc
-         qj3Q==
+        bh=138lKCCsDusDobsjTqkgHXFS+q7YngmR9S6d2RdS3Vk=;
+        b=IFqFjPTuiLk6D0HzIcSf7Oi/lNVk4ifRuPIStGAKO71LYYD3pqEe5iM/Wb2V81IU5C
+         nBGohaeXJFSfB4rUTHo/6jDJSspfCdJqh9nIMJ6hfhr9mDnHr2Rn4r10K6/iyKwfVRlR
+         B94D5tE1z2djQA1axL3vtizC3VsM+MrK1c1xv7VB3aMcXe6R9nFiwcfTPl+aA1IgWPZW
+         P7e52t2yNCs5mx3EXGeiCX49du95IJg3FQrHb1+K4YPGDizyjw2pAdmtu8dy2s6cp5fF
+         BnyAThhn+RNJ69LdKRqWE2+1uLfjAw2qTlFemch24DkC8bQhTCakHNzMm4P55eZ2EQUY
+         1+IA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cUl77Kfg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lypblXQg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 19si2131769qtw.38.2021.09.22.09.44.37
+        by mx.google.com with ESMTPS id v21si10876950jat.0.2021.09.24.02.47.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Sep 2021 09:44:37 -0700 (PDT)
+        Fri, 24 Sep 2021 02:47:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cUl77Kfg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46252 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lypblXQg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39520 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mT5MK-0007wC-TG
-	for alex.bennee@linaro.org; Wed, 22 Sep 2021 12:44:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48348)
+	id 1mThna-0007MN-Ip
+	for alex.bennee@linaro.org; Fri, 24 Sep 2021 05:47:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mT5AV-0001Xa-HT
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:32:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36529)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mT5AR-0001r8-AL
- for qemu-arm@nongnu.org; Wed, 22 Sep 2021 12:32:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632328335;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tGml+z5wri++cNviwkr9uOImZi4qRo1/XZ9h9m3hxa4=;
- b=cUl77KfgRCL9fbX9h3g40vvnZ+5ypfq6D/R8HQJFDSUNB9AUNngiYuzVKmBY0MjmhcHE/x
- HEbQ7yLCFOYw1tYrBGkD7yhUK6o3K3iz/vcDJibPDglAMfrOUJhCyG5twKkwIZ5NuAkVaC
- HqEzp74bTAZDtWd2DCb6h0TYsgQk7RY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-138-ZN6EHD2bOcehOHZg4VtXTQ-1; Wed, 22 Sep 2021 12:32:00 -0400
-X-MC-Unique: ZN6EHD2bOcehOHZg4VtXTQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 50C8E1006AA5;
- Wed, 22 Sep 2021 16:31:56 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.195.69])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 097F119724;
- Wed, 22 Sep 2021 16:30:47 +0000 (UTC)
-Date: Wed, 22 Sep 2021 17:30:44 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Subject: Re: [PATCH v2 38/53] qapi: introduce x-query-lapic QMP command
-Message-ID: <YUtaNGQ6kHuZ5FY2@redhat.com>
-References: <20210914142042.1655100-1-berrange@redhat.com>
- <20210914142042.1655100-39-berrange@redhat.com>
- <68cebe2f-ba56-545f-686a-b9ac2120c5c4@oracle.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mThgn-0004zv-Sh; Fri, 24 Sep 2021 05:40:17 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:44023)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mThgm-0006xh-9e; Fri, 24 Sep 2021 05:40:17 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id w17so25396090wrv.10;
+ Fri, 24 Sep 2021 02:40:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=138lKCCsDusDobsjTqkgHXFS+q7YngmR9S6d2RdS3Vk=;
+ b=lypblXQgni2MLkl05r8H44c+0FOKn+nARJAdFkzwDpwtIyvHpqTey9VZZuaOGHb5Wf
+ Z7pchjExeKF/vaHiW9+23NWPiIpPcIrWeP9YV8EFz4ujtbg35rog0burb9GK3SuJSPww
+ R4IXwvbpZ6eaamT8wQjtzx4x2+GbRz+oaRgfuZOZ4d/hOTut4sMgFZ2LY2q7fe+G8t/f
+ OqY9Qkt1S6n6AxrLmAkXjN8DO69azDNb8JB+5aSNRQdDySV52uyepCnk9xEHX16C8CfF
+ EbVtowKnr49CuvfvrIJitXWog072b3VL+Xq6Xh+5E//s6+40Ey6P7mMkc2IhhQcycriN
+ L2pA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=138lKCCsDusDobsjTqkgHXFS+q7YngmR9S6d2RdS3Vk=;
+ b=zkLplrE23ZxGyVHKvyFj/G3JwFl3TmANQUB4ac2d6/bazPhzpSUAPApwZwWwXPnt4L
+ 28P/BLP5leH2g9dWMCn5jY9dSTOES5xDclQGG8RXFF2BxMk/x8GNFau3WMVteVYBAgM1
+ uXAbnJ5ENFHvHjH6xcMY2AoyH44SO+yCoh90MTH0rvc+nDJSSZf6vr29Q9YVU7bT5E8m
+ WCO38FuWAbguH8fcMGrppgASyLO9pUpRd/SVxRnRBHAAwTvWMiISgxy3ye4q5ZP55m+B
+ YRnbklARmFTwur64DfZKl9ZRqBw4HHon0TVzua5WLl/b8tzri0RYPe7xu4f/tCL63tZX
+ UI7g==
+X-Gm-Message-State: AOAM530oHOGvlknShvGJY+Q6THL6X1B4GOErkZFuExwCioSr94L6P/mv
+ +mPFN4K34bLiR5WHAkNn/lMmVm0Sci8=
+X-Received: by 2002:a05:600c:3209:: with SMTP id
+ r9mr1041690wmp.35.1632476414383; 
+ Fri, 24 Sep 2021 02:40:14 -0700 (PDT)
+Received: from x1w.. (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id
+ o17sm7541189wrj.96.2021.09.24.02.40.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Sep 2021 02:40:13 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v6 18/40] target/arm: Restrict has_work() handler to sysemu
+ and TCG
+Date: Fri, 24 Sep 2021 11:38:25 +0200
+Message-Id: <20210924093847.1014331-19-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210924093847.1014331-1-f4bug@amsat.org>
+References: <20210924093847.1014331-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <68cebe2f-ba56-545f-686a-b9ac2120c5c4@oracle.com>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.472,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,173 +116,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
- David Hildenbrand <david@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Peter Xu <peterx@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
- Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eric Blake <eblake@redhat.com>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M7SjV9qD2JZt
+X-TUID: 7k3C/xMYQ/lh
 
-On Mon, Sep 20, 2021 at 10:27:06PM -0700, Dongli Zhang wrote:
-> Hi Daniel,
-> 
-> On 9/14/21 7:20 AM, Daniel P. Berrangé wrote:
-> > This is a counterpart to the HMP "info lapic" command. It is being
-> > added with an "x-" prefix because this QMP command is intended as an
-> > adhoc debugging tool and will thus not be modelled in QAPI as fully
-> > structured data, nor will it have long term guaranteed stability.
-> > The existing HMP command is rewritten to call the QMP command.
-> > 
-> > This command is unable to use the pre-existing HumanReadableText,
-> > because if 'common.json' is included into 'machine-target.json'
-> > the static marshalling method for HumanReadableText will be reported
-> > as unused by the compiler on all architectures except s390x.
-> > 
-> > Possible options were
-> > 
-> >  1 Support 'if' conditionals on 'include' statements in QAPI
-> >  2 Add further commands to 'machine-target.json' that use
-> >    HumanReadableText, such that it has at least one usage
-> >    on all architecture targets.
-> >  3 Duplicate HumanReadableText as TargetHumanReadableText
-> >    adding conditions
-> > 
-> > This patch takes option (3) in the belief that we will eventually
-> > get to a point where option (2) happens, and TargetHumanReadableText
-> > can be removed again.
-> > 
-> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > ---
-> >  hw/core/cpu-common.c     |   7 ++
-> >  include/hw/core/cpu.h    |  10 +++
-> >  qapi/machine-target.json |  19 ++++-
-> >  target/i386/cpu-dump.c   | 161 ++++++++++++++++++++-------------------
-> >  target/i386/cpu.h        |   4 +-
-> >  target/i386/monitor.c    |  46 +++++++++--
-> >  6 files changed, 160 insertions(+), 87 deletions(-)
+Restrict arm_cpu_has_work() and has_work() handler to TCG sysemu.
 
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/arm/internals.h | 4 +++-
+ target/arm/cpu.c       | 7 +++++--
+ target/arm/cpu_tcg.c   | 2 +-
+ 3 files changed, 9 insertions(+), 4 deletions(-)
 
-> > diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-> > index 19468c4e85..fc09f90059 100644
-> > --- a/target/i386/monitor.c
-> > +++ b/target/i386/monitor.c
-> > @@ -33,6 +33,7 @@
-> >  #include "qapi/error.h"
-> >  #include "sev_i386.h"
-> >  #include "qapi/qapi-commands-misc-target.h"
-> > +#include "qapi/qapi-commands-machine-target.h"
-> >  #include "qapi/qapi-commands-misc.h"
-> >  #include "hw/i386/pc.h"
-> >  
-> > @@ -650,23 +651,52 @@ const MonitorDef *target_monitor_defs(void)
-> >      return monitor_defs;
-> >  }
-> >  
-> > +TargetHumanReadableText *qmp_x_query_lapic(int64_t apicid,
-> > +                                           Error **errp)
-> > +{
-> > +    TargetHumanReadableText *ret;
-> > +    g_autoptr(GString) buf = NULL;
-> > +    CPUState *cs = cpu_by_arch_id(apicid);
-> > +
-> > +    if (!cs) {
-> > +        error_setg(errp, "No CPU with APIC ID %" PRId64 " available", apicid);
-> > +        return NULL;
-> > +    }
-> 
-> Suppose the accelerator is KVM, the CPUState (cs) might not be syncrhonized with
-> KVM kernel space (APIC+PIR). As a result, the data is stale.
-> 
-> I sent below patch long time ago but it never got reviewed.
-> 
-> https://lore.kernel.org/qemu-devel/20210908143803.29191-1-dongli.zhang@oracle.com/
-
-I'll include your patch in the next version of this series
-just before this patch, and then update this patch to  take
-it into account.
-
-> 
-> > +
-> > +    buf = x86_cpu_format_local_apic_state(cs, CPU_DUMP_FPU, errp);
-> > +    if (!buf) {
-> > +        return NULL;
-> > +    }
-> > +
-> > +    ret = g_new0(TargetHumanReadableText, 1);
-> > +    ret->human_readable_text = g_steal_pointer(&buf->str);
-> > +    return ret;
-> > +}
-> > +
-> >  void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
-> >  {
-> > -    CPUState *cs;
-> > +    Error *err = NULL;
-> > +    g_autoptr(TargetHumanReadableText) info = NULL;
-> > +    int64_t apicid;
-> >  
-> >      if (qdict_haskey(qdict, "apic-id")) {
-> > -        int id = qdict_get_try_int(qdict, "apic-id", 0);
-> > -        cs = cpu_by_arch_id(id);
-> > +        apicid = qdict_get_try_int(qdict, "apic-id", 0);
-> 
-> Here is where I used to fix with the patch.
-> 
-> Thank you very much!
-> 
-> Dongli Zhang
-> 
-> >      } else {
-> > -        cs = mon_get_cpu(mon);
-> > +        CPUState *cs = mon_get_cpu(mon);
-> > +        if (!cs) {
-> > +            monitor_printf(mon, "No CPU available\n");
-> > +            return;
-> > +        }
-> > +        apicid = cpu_get_arch_id(cs);
-> >      }
-> >  
-> > -
-> > -    if (!cs) {
-> > -        monitor_printf(mon, "No CPU available\n");
-> > +    info = qmp_x_query_lapic(apicid, &err);
-> > +    if (err) {
-> > +        error_report_err(err);
-> >          return;
-> >      }
-> > -    x86_cpu_dump_local_apic_state(cs, CPU_DUMP_FPU);
-> > +
-> > +    monitor_printf(mon, "%s", info->human_readable_text);
-> >  }
-> >  
-> >  SevInfo *qmp_query_sev(Error **errp)
-> > 
-> 
-
-Regards,
-Daniel
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 864b5ad4cdf..29bb815100d 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -175,9 +175,11 @@ void arm_translate_init(void);
+ 
+ #ifdef CONFIG_TCG
+ void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
+-#endif /* CONFIG_TCG */
+ 
++#if !defined(CONFIG_USER_ONLY)
+ bool arm_cpu_has_work(CPUState *cs);
++#endif /* !CONFIG_USER_ONLY */
++#endif /* CONFIG_TCG */
+ 
+ /**
+  * aarch64_sve_zcr_get_valid_len:
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 4b08f717f64..53c478171ac 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -74,8 +74,8 @@ void arm_cpu_synchronize_from_tb(CPUState *cs,
+         env->regs[15] = tb->pc;
+     }
+ }
+-#endif /* CONFIG_TCG */
+ 
++#ifndef CONFIG_USER_ONLY
+ bool arm_cpu_has_work(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -86,6 +86,9 @@ bool arm_cpu_has_work(CPUState *cs)
+          | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ
+          | CPU_INTERRUPT_EXITTB);
+ }
++#endif /* !CONFIG_USER_ONLY */
++
++#endif /* CONFIG_TCG */
+ 
+ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+                                  void *opaque)
+@@ -2035,6 +2038,7 @@ static const struct TCGCPUOps arm_tcg_ops = {
+     .debug_excp_handler = arm_debug_excp_handler,
+ 
+ #if !defined(CONFIG_USER_ONLY)
++    .has_work = arm_cpu_has_work,
+     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
+     .do_interrupt = arm_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
+@@ -2059,7 +2063,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_reset(dc, arm_cpu_reset, &acc->parent_reset);
+ 
+     cc->class_by_name = arm_cpu_class_by_name;
+-    cc->has_work = arm_cpu_has_work;
+     cc->dump_state = arm_cpu_dump_state;
+     cc->set_pc = arm_cpu_set_pc;
+     cc->gdb_read_register = arm_cpu_gdb_read_register;
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index 9a0927ad5d0..7d0d9fcbc79 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -902,6 +902,7 @@ static const struct TCGCPUOps arm_v7m_tcg_ops = {
+     .debug_excp_handler = arm_debug_excp_handler,
+ 
+ #if !defined(CONFIG_USER_ONLY)
++    .has_work = arm_cpu_has_work,
+     .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
+     .do_interrupt = arm_v7m_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
+@@ -920,7 +921,6 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
+ 
+     acc->info = data;
+ #ifdef CONFIG_TCG
+-    cc->has_work = arm_cpu_has_work;
+     cc->tcg_ops = &arm_v7m_tcg_ops;
+ #endif /* CONFIG_TCG */
+ 
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.31.1
 

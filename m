@@ -1,156 +1,357 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1197633lfp;
-        Fri, 24 Sep 2021 06:07:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzY4qEqK8y8a1UkCk7MYexCv3p5tjJoDgwkCMRq7xY1DftNovHnQtwqQy3s8XhXbzv5hOt5
-X-Received: by 2002:a67:7085:: with SMTP id l127mr9055712vsc.7.1632488869020;
-        Fri, 24 Sep 2021 06:07:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632488869; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2318441lfp;
+        Sat, 25 Sep 2021 10:23:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHraY8JBZbo8t0ycER4TlmTMiArI81XeBLr3B2ImIrgCcBVHHSO6hNvz1DqrO1JuKcu2XK
+X-Received: by 2002:ac8:550b:: with SMTP id j11mr10659083qtq.122.1632590637886;
+        Sat, 25 Sep 2021 10:23:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632590637; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xf02UUTrj35/jXIkHJqHMnROVB1hPc/kdVC/cQGfoFXo334xmVcQC1iMg/yswgqOG1
-         ntIxDhmnbR2urskbJrYwWtEdNmNg+H3/ZuveclVVVQUryx3xqN3FFc0ps+s36M851OaO
-         //SiIIu2vc6izsq2rtEs750zCYgJE0Xq9weAbYtnoAEyH6AnJD/XpFoaxQMAgx/9Olja
-         giF1Itz67UpwqelrfFdEFbUZNeJe8RlawgW1Yev8DedvHs3RUlb6v3ZAGotiomAzYua7
-         6P3yp49cFkeHCaytCcpr85z77VzCB8+VYwEoznZsnoP/J4DGVQopD+gGNzWcHaVmUK8r
-         akqw==
+        b=IRgiW1eJjflOMFC6GaWDySN5AXSvK9+BE4T5DpKN8aE3FCdZ3asw9WzZIrLzERQvyl
+         4cKir6YrSkgRtJrquVr2TkkaT+9CkU6LR0vjAm7twDnCUOTfujqkmUWMGUkNtnv20tPz
+         5A5Hqi1OZrVANtGqEV9FeFBz50otEgdRWakMvrRI0TYFORgXWvIUj45oFSssXstcewvY
+         Nw7kTlttajhDyZhjbDwHEMsIs6Qoum0MYFp22nnyJVgDPepUJVkh86g8aDoFpJZpzrdp
+         8xw7mV8Jq/cz18qNoThv0zENDQUFtQ7Y5KosXdeOK4x5nYcNJlkVoz00WxHNYe35DMIw
+         ijZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=1IoI2xAqQS2KGQUxDmdozyAabRfYuJAoCG0mICKDwT8=;
-        b=dt1Cq3HfD8LrNveCCWYTovcZEAW1maLfG0eWk7w7aORLFfl8xIuCIcQ/JYxvBR5GIF
-         kDPkFBfCi1AJIb5cAOSNIqaXW1AzNDQW8OusfeUDrwxINxoyHN5bBDI5gxIarZziodUf
-         Ta/oIeeRUlyveHt5gd8K349RnVdPAdFiQqjhzJlb9SZt9DS55YXZ/I7f1dT02ucjUiES
-         j/7ubWozVFg9+27uzMi+Qw/TdOKYKGuxoJfH869CtRg7n6bK42SHXZM64CLUKa0pmOE0
-         5eZ5L3SFCC8bxYkbOK0Dlhkn4oXdsI8XCgDvZ5ZpN1uF8nUy+s2vnL1wglAQX2d54auz
-         0ByQ==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=vHfchnG8xgonJ61pe35U4E1jppgtAPcEM5I4l2xhA8M=;
+        b=FLTsCX/GX2JivXJ+DxbjxaaG4LQpFpKD0W8p1hidNFLBX0QmkQ43PxABZpkHVkREpc
+         4Kh3vBylsk5ydLPvc5KsBPQuSfxWlRL2rnFbIctR4SXAQIeqLvKEbNj7HfIxAbv2RHFb
+         EZQ/QBu5KP1KSdZ790nEsTq8PkRF9dg+X+UMSRq3FTGRsW3wLKfR03XiqrFrZIJRxGPb
+         eYraOTQA1WqhwiF5+LV6H59ybA25Im9d/BjondafAHGUpLf9YfVoOBNA/6M1Wj0W2VeS
+         VfbjtgYoi6whsc3VP1LQpKY0MSL/GcQ/MyRFxI1HiD1jSGNjsbEF/Z4Y43ngeZpiOlX+
+         r8gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ko66hFoo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=kiKERcWT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m16si6705886uab.124.2021.09.24.06.07.48
+        by mx.google.com with ESMTPS id bi37si7145681qkb.170.2021.09.25.10.23.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Sep 2021 06:07:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 25 Sep 2021 10:23:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ko66hFoo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60546 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=kiKERcWT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mTkvc-0000XO-F7
-	for alex.bennee@linaro.org; Fri, 24 Sep 2021 09:07:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47836)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mUBP3-0005Xu-6J
+	for alex.bennee@linaro.org; Sat, 25 Sep 2021 13:23:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35040)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mTkLo-0007gw-NI
- for qemu-arm@nongnu.org; Fri, 24 Sep 2021 08:30:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43128)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mTkLj-0002FS-76
- for qemu-arm@nongnu.org; Fri, 24 Sep 2021 08:30:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632486642;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1IoI2xAqQS2KGQUxDmdozyAabRfYuJAoCG0mICKDwT8=;
- b=Ko66hFooMCtD1DpYCP3BmTO9Wxf0txDjU87TgFEppmxgQMuoUHGuZTYeOAZq7zV0hFN5RG
- wQOHPMOC1VihiN6olmhecHtVtERKCMdXkTPW5UcD5H4TsKRc+6uP/hDI59lBR9TUr89VYX
- hZCbLKJFZuWo+MSzXN86KEO58KsQQio=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-140-GWDn7lxvMQSpwqX5W3Bn5Q-1; Fri, 24 Sep 2021 08:30:39 -0400
-X-MC-Unique: GWDn7lxvMQSpwqX5W3Bn5Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 468EF802936;
- Fri, 24 Sep 2021 12:30:38 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
- (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A4AFB62465;
- Fri, 24 Sep 2021 12:30:19 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 30/35] acpi: arm/virt: build_spcr: fix invalid cast
-Date: Fri, 24 Sep 2021 08:27:57 -0400
-Message-Id: <20210924122802.1455362-31-imammedo@redhat.com>
-In-Reply-To: <20210924122802.1455362-1-imammedo@redhat.com>
-References: <20210924122802.1455362-1-imammedo@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mUBNI-00044L-9o; Sat, 25 Sep 2021 13:22:11 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:38463)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mUBNF-0005jd-Oh; Sat, 25 Sep 2021 13:22:07 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id u18so37375794wrg.5;
+ Sat, 25 Sep 2021 10:22:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=vHfchnG8xgonJ61pe35U4E1jppgtAPcEM5I4l2xhA8M=;
+ b=kiKERcWTKw9B5IqH/L163zunE0Vfbz7PigU+zErp6IUqXYMJGplvjEVAYIXjw+hv1I
+ y6edaoCsGZUVoO1aEqBz2Ae0K87WdXYfoX9NS/tglTaxnmy2tdgn62lSrsxAfaG/q357
+ m1quFwQJ3hTH7G7qcULO5ImzFuoVdxKaGydiFRN0dJxGZ0FtLlV7RKBcmr0QvJvrf3bh
+ f5ZxBlBNSWZd72w7coOUlrACcCD6jvLL7pNH33FX5wQl3Y9cN5TEuE4FYVInzYJNh/YM
+ cB0daOoFw3zktskC1o3s6NgOxU+scWWTs3ZEkd+X8OV8xsUHedxtZI8q7TZvAY8cuYcN
+ V+pQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=vHfchnG8xgonJ61pe35U4E1jppgtAPcEM5I4l2xhA8M=;
+ b=ZzSeJiHKepP0IlL42/+2+9F97ti0gDMlWU6I6AdWifJbcKUa7qdzFPeUJ6eqdZCrwh
+ RNEj05BFSXsrh0wokgJEf7+fckjD74e27J4yNF1XZO0A9oUC7ouiN6bNc+U3SW08jDZc
+ 3NM7vMYXpXDIKQKqHkcjbLKEJHbBY+mTfNJvIDe6WxypUu8ChU5Un1FLoBqWjaCJTLEA
+ L3A4OMcVz4tDeC7YAupUGOf39jzazTrss44FhHV6S9MRqNEZEQCXtHwyYEfw1DSDn/Ej
+ 3gJrZSEojt8l5GRsFFqrg+1BLHY1lWM5vykf5Kp+bFoBDeHewxpRu7Xuztl/pHaqw8kE
+ iBlA==
+X-Gm-Message-State: AOAM533kHV4x1VDVPfayIlTyi+as8SSE/lMlKEAJ3dswMWn6eL0IEccX
+ gEs9Ktfv96vfCFFHlFTCRnY=
+X-Received: by 2002:a1c:19c6:: with SMTP id 189mr4992123wmz.121.1632590524018; 
+ Sat, 25 Sep 2021 10:22:04 -0700 (PDT)
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id j14sm11440474wrp.21.2021.09.25.10.22.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 25 Sep 2021 10:22:03 -0700 (PDT)
+Message-ID: <2db79dcb-feba-4175-6805-5b365b30d819@amsat.org>
+Date: Sat, 25 Sep 2021 19:22:02 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH v12 00/10] hvf: Implement Apple Silicon Support
+Content-Language: en-US
+To: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>
+References: <20210916155404.86958-1-agraf@csgraf.de>
+ <CAFEAcA-LrvO7sg9gY0ZKnvXJyJuFc2Ej1Ve1245FZ7YkH-Oj2A@mail.gmail.com>
+ <CAFEAcA_Hkqg16VbA1qACK4RG22iXHo8b3VZWQoBRZL0HuBazZA@mail.gmail.com>
+ <d4859cae-d9c1-2879-0682-080d4b5efe90@amsat.org>
+ <27a265d5-2e7c-f234-0d09-f40a731e588d@csgraf.de>
+ <bdeef51c-901b-f5a8-0415-03c464255b1f@amsat.org>
+ <60aac468-973b-daee-49ce-71829c234af8@csgraf.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <60aac468-973b-daee-49ce-71829c234af8@csgraf.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.473,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, shannon.zhaosl@gmail.com,
- mst@redhat.com, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- ani@anisinha.ca
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /6L9NjtcYbjg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +OZ2OJnFF9hb
 
-implicit cast to structure uint8_t member didn't raise error when
-assigning value from incorrect enum, but when using build_append_gas()
-(next patch) it will error out with (clang):
-  implicit conversion from enumeration type 'AmlRegionSpace'
-  to different enumeration type 'AmlAddressSpace'
-fix cast error by using correct AML_AS_SYSTEM_MEMORY enum
+On 9/21/21 15:30, Alexander Graf wrote:
+> On 21.09.21 11:29, Philippe Mathieu-Daudé wrote:
+>> On 9/20/21 22:21, Alexander Graf wrote:
+>>> On 20.09.21 18:17, Philippe Mathieu-Daudé wrote:
+>>>> On 9/20/21 15:15, Peter Maydell wrote:
+>>>>> On Mon, 20 Sept 2021 at 11:11, Peter Maydell
+>>>>> <peter.maydell@linaro.org> wrote:
+>>>>>> On Thu, 16 Sept 2021 at 16:54, Alexander Graf <agraf@csgraf.de>
+>>>>>> wrote:
+>>>>>>> Now that Apple Silicon is widely available, people are obviously
+>>>>>>> excited
+>>>>>>> to try and run virtualized workloads on them, such as Linux and
+>>>>>>> Windows.
+>>>>>>>
+>>>>>>> This patch set implements a fully functional version to get the ball
+>>>>>>> going on that. With this applied, I can successfully run both
+>>>>>>> Linux and
+>>>>>>> Windows as guests. I am not aware of any limitations specific to
+>>>>>>> Hypervisor.framework apart from:
+>>>>>>>
+>>>>>>>     - gdbstub debugging (breakpoints)
+>>>>>>>     - missing GICv3 support
+>>>>>>>     - Windows will not work due to UDEF SMC implementation
+>>>>>>>
+>>>>>>> To use hvf support, please make sure to run -M virt,highmem=off
+>>>>>>> to fit
+>>>>>>> in M1's physical address space limits and use -cpu host.
+>>>>>> Applied to target-arm.next, thanks (with the unnecessary #include
+>>>>>> in patch 6 removed).
+>>>>> Turns out that the final patch breaks "make check-acceptance".
+>>>>> All the orangepi boot tests timeout:
+>>>>>
+>>>>>    (15/58)
+>>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
+>>>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+>>>>> Timeout reached\nOriginal status: ERROR\n{'name':
+>>>>> '15-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi',
+>>>>>
+>>>>> 'logdir':
+>>>>> '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/...
+>>>>> (90.24 s)
+>>>>>    (16/58)
+>>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd:
+>>>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+>>>>> Timeout reached\nOriginal status: ERROR\n{'name':
+>>>>> '16-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd',
+>>>>>
+>>>>> 'logdir':
+>>>>> '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang...
+>>>>> (90.24 s)
+>>>>>    (17/58)
+>>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd:
+>>>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+>>>>> Timeout reached\nOriginal status: ERROR\n{'name':
+>>>>> '17-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd',
+>>>>>
+>>>>> 'logdir':
+>>>>> '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tes...
+>>>>> (90.24 s)
+>>>> Works for me on x86_64 Fedora 34 built with
+>>>> --enable-trace-backends=log --enable-debug:
+>>>>
+>>>> $ ./tests/venv/bin/avocado run
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9
+>>>>
+>>>> Fetching asset from
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9
+>>>>
+>>>> JOB ID     : b19f151f7320def3a432255f3a99c0dde3da95c0
+>>>> JOB LOG    :
+>>>> /home/phil/avocado/job-results/job-2021-09-20T18.12-b19f151/job.log
+>>>>    (1/5)
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
+>>>>
+>>>> PASS (6.29 s)
+>>>>    (2/5)
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_initrd:
+>>>>
+>>>> PASS (51.23 s)
+>>>>    (3/5)
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd:
+>>>>
+>>>> PASS (76.53 s)
+>>>>    (4/5)
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bionic_20_08:
+>>>>
+>>>> SKIP: storage limited
+>>>>    (5/5)
+>>>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboot_netbsd9:
+>>>>
+>>>> SKIP: storage limited
+>>>> RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 2 | WARN 0 | INTERRUPT
+>>>> 0 |
+>>>> CANCEL 0
+>>>> JOB TIME   : 135.18 s
+>>>>
+>>>
+>>> The OrangePi kernel goes into an endless loop here:
+>>>
+>>>   
+>>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/compressed/head.S?h=v5.10#n637
+>>
+>> As you said, this is a Linux specific behavior, ...
+> 
+> 
+> It's not really Linux specific behavior. Linux just includes preloader
+> code that moves it into HYP mode when booted in SVC mode.
+> 
+> 
+>>
+>>> The reason is simple: It tries to install its own HYP code using the old
+>>> "install HYP handler, then invoke it" trick based on SPSR's indication
+>>> that HYP is available, but fails to do so because HYP calls get handled
+>>> by QEMU instead because the PSCI conduit is configured to HVC.
+>>>
+>>> The patch below seems to fix it for me. Please advise how you want to
+>>> proceed.
+>>>
+>>>
+>>> Alex
+>>>
+>>>
+>>> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+>>> index 27f1070145..f9b7ed1871 100644
+>>> --- a/hw/arm/allwinner-h3.c
+>>> +++ b/hw/arm/allwinner-h3.c
+>>> @@ -237,7 +237,7 @@ static void allwinner_h3_realize(DeviceState *dev,
+>>> Error **errp)
+>>>
+>>>            /* Provide Power State Coordination Interface */
+>>>            qdev_prop_set_int32(DEVICE(&s->cpus[i]), "psci-conduit",
+>>> -                            QEMU_PSCI_CONDUIT_HVC);
+>>> +                            QEMU_PSCI_CONDUIT_SMC);
+>>
+>> ... so I'd rather follow the approach taken on the Versal board,
+>> see versal_virt_init() in commit 6f16da53ffe ("hw/arm: versal:
+>> Add a virtual Xilinx Versal board"):
+>>
+>> 1/ add "psci-conduit" property in TYPE_AW_H3,
+>>     forward this property to each core in allwinner_h3_realize()
+>>
+>> 2/ set property in orangepi_init():
+>>
+>>     object_property_set_int(OBJECT(h3), "psci-conduit",
+>>                             machine->kernel_filename
+>>                             ? QEMU_PSCI_CONDUIT_SMC
+>>                             : QEMU_PSCI_CONDUIT_HVC,
+>>                             &error_abort);
+>>
+>> That way we don't break non-Linux firmwares.
+> 
+> 
+> This doesn't make sense to me. We need to decide what we want from the
+> OrangePi emulation:
+> 
+>    1) Guest owns USR, SVC. HYP's PSCI is emulated by QEMU
+>    2) Guest owns USR, SVC, HYP. MON's PSCI is emulated by QEMU
+>    3) Guest owns USR, SVC, HYP, MON. PSCI is handled 100% inside the guest.
+> 
+> We currently advertise to the guest that it can use HYP, but don't allow
+> it to run anything in MON (option 2), but then at the same time override
+> parts of HYP with QEMU code. That's just plain wrong - we're breaking
+> hypervisors running on OrangePi :).
+> 
+> So if the goal of that board is to run OrangePi ATF (does it do ATF?)
+> code or any other "full firmware", then we would need to move QEMU
+> completely out of the conduit picture, implement option 3 and ship
+> pre-HYP firmware with QEMU.
+> 
+> If the goal is to just make HYP and below work, the fix above is the
+> best path forward IMHO.
+> 
+> Option 1 would require us to tell the guest that it can not make use of
+> HYP. That's possible, but why should we?
+> 
+> I don't really see why we should even consider option 1. 2 and 3 make
+> sense. 3 is a lot of work. 2 is a one line fix that makes the board at
+> least do what it's supposed to do :).
+So this part of Xilinx Versal:
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
----
-CC: drjones@redhat.com
-CC: peter.maydell@linaro.org
-CC: shannon.zhaosl@gmail.com
-CC: qemu-arm@nongnu.org
----
- hw/arm/virt-acpi-build.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+     * When loading an OS, we turn on QEMU's PSCI implementation with SMC
+     * as the PSCI conduit. When there's no -kernel, we assume the user
+     * provides EL3 firmware to handle PSCI.
+     */
+    if (machine->kernel_filename) {
+        psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+    }
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 8c382915a9..7b8706b305 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -465,7 +465,7 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
-     spcr->interface_type = 0x3;    /* ARM PL011 UART */
- 
--    spcr->base_address.space_id = AML_SYSTEM_MEMORY;
-+    spcr->base_address.space_id = AML_AS_SYSTEM_MEMORY;
-     spcr->base_address.bit_width = 8;
-     spcr->base_address.bit_offset = 0;
-     spcr->base_address.access_width = 1;
--- 
-2.27.0
+abuses the fact that -kernel command line expect a *Linux* kernel able
+to read the provided dtb which describe SMC. This won't work if we
+manually provide a crafted dtb with another conduit, or if we pass any
+other binary (not Linux, not particularly ELF, since -kernel can load
+many formats).
 
+I guess I understand better now.
+
+Thanks for the detailed explanation,
+
+Phil.

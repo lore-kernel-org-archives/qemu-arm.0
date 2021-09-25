@@ -1,102 +1,106 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3275365lfp;
-        Sun, 26 Sep 2021 15:15:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwB7MgmtIK4OR6G42T0lk9lzrHm9OTORmNmuqSUld6M5y6YQiMMaV86ip1RpemAClDTgSHP
-X-Received: by 2002:a05:6e02:1caf:: with SMTP id x15mr18378633ill.150.1632694555496;
-        Sun, 26 Sep 2021 15:15:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632694555; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2225850lfp;
+        Sat, 25 Sep 2021 08:02:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5Gl5IxVP3r8dnQOXxvKXn//+Mh//mK7lsS+tdKGjvmMAn455gLTociPfEBRRDK9HXQe6e
+X-Received: by 2002:a17:906:6d55:: with SMTP id a21mr17288273ejt.509.1632582164386;
+        Sat, 25 Sep 2021 08:02:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632582164; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZEw+jaxKzA0W2X7Rz8kM1jA9K+p5zLwGUfwJTwGRZVi+J+wA/nEOjt/cq6ByXNa1Hq
-         r0TsP5Crddjws4hdax8ev0caz/yNf5OYpl0rRQpXoUvR+Q6wvh+au7+srC7a0Zh6VPOG
-         syAB8m5z6nAHn0jEzxAEI32Fei8+UTQ7b6MicJN/nJCjbbvDzrRUIHj2Mlyx3aJsZVMH
-         FZ+Ft4hzN78n3VIDP+olepPqwZO880IDA1i+V/BJGWdAWFmRbPsZWvdJ9kCwaJGsA19Y
-         HXOT7X5qZm7CaoRqTXQIEN4AN9WF2RLs2XWrG3lgLMcLO95wXCusgNSxTkKxmNWHDOjY
-         CvXg==
+        b=SGN3FSG6MFN5fF1AGZ8fjR0OXV/3xmRc7IOLyg2bQoBmujQFvQI3nwCxtm0+DwSch5
+         7mXwH6cMBxOYBwXcdvn3FOx1tuLuDcKGNGlg96S8RsHz+TSHH2rmDOKPe4UyJOcd7ZpR
+         qC4eymSDoOcxAuKL2CmM/OQ8/4HVcpNrWXjsoauSYBtxBT77haVzG26TmySmjEvVrBer
+         MxgyCK45DW8ESfzaTk8mDlhyS/vuqC096hu6791Z8P1U8M8UXUyu+Ez9AxtwkqIC/DRh
+         POpx8F1IIJFE6LWdEBBDBA3tRCYzEkTE78FQOldYfB/UaeR0gqn40bwGiPjetFtR6zoc
+         0xpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=w/NNDDWuUjDFbzYRr3FSXhyOtAsFlq63TMrgjItSw3c=;
-        b=ru+YZJG+dxst8wTx6pM7T1jEIHkdo5uvT8uywIV5tXTGCd5k9m245+Yzx4jUc9oKp3
-         sexK2SOiX/tnsS18JK+8pKHYwVdyYpHG2KeM9SB9IrV1kXsL5u/t8FaQy1wQ0rvn9vDg
-         QqIrifVYiWcMjgwevNZZrf/isbNu0Lu34Rp6jIRlUyKMC/hAs2SMkWtIfSc2f3TYJieD
-         L3CDA28r05D5YizJRjG2CrLHEGfAWzAEfgCYFydMOEdZK4iAfb4esfvYmYvcPEoiSW/2
-         hrMV41mUQHNt+qP9LzMsAnWt+qKEpydJ7y/1SmUFvY2POy08OOf+zaQ0nGGu6GTMQR48
-         zKyQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=r6ZxEtcTtXMZRq7+nFZf7Av8uL6lok+sSg0IbMh7PU4=;
+        b=DOfBdKVZ6QwiSIZx93RIOgfKm18vlOjwQPcapDnaJMJQv9cJfko4cRDwgIDVnOEK5y
+         KGN3L5SpON3GmCkgmN8f/9xgnU5mZcXuVA1FdF9AGiPcJl5/jF7G9dIzVfm3/Wzod9jt
+         ivq7+0yGSwWqUovEA4UxwtaWymSgQcxql5OvGiwtcWHqX/RD+cszvUoXuC8qoy9Da7YS
+         JTCgRlrf2VHpnpekBqkwJatau/2CrjIjYtlN3Z4XAqyb5dyomaSsKokPNesxzZae1MkD
+         bWZlpaHzAZlIYgiojJ4xsRcEwHUsrHjoEuZR4tjumeqG7RTCIuuojFkOQunWhpvsPJqu
+         Rf2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="Hj86/1L4";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=eRQPfiwW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15si21093761ilu.118.2021.09.26.15.15.55
+        by mx.google.com with ESMTPS id j9si2874279edq.150.2021.09.25.08.02.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Sep 2021 15:15:55 -0700 (PDT)
+        Sat, 25 Sep 2021 08:02:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="Hj86/1L4";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=eRQPfiwW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40552 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUcR8-0006WZ-Pa
-	for alex.bennee@linaro.org; Sun, 26 Sep 2021 18:15:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58490)
+	id 1mU9CM-0000Ee-OX
+	for alex.bennee@linaro.org; Sat, 25 Sep 2021 11:02:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUcQg-0006V0-4a; Sun, 26 Sep 2021 18:15:27 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:33540)
+ id 1mU92h-00017I-Lx; Sat, 25 Sep 2021 10:52:45 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:41504)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUcQe-0003Wc-By; Sun, 26 Sep 2021 18:15:25 -0400
-Received: by mail-wr1-x432.google.com with SMTP id t18so46481909wrb.0;
- Sun, 26 Sep 2021 15:15:23 -0700 (PDT)
+ id 1mU92g-00061N-5T; Sat, 25 Sep 2021 10:52:43 -0400
+Received: by mail-wr1-x430.google.com with SMTP id w29so36388250wra.8;
+ Sat, 25 Sep 2021 07:52:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=w/NNDDWuUjDFbzYRr3FSXhyOtAsFlq63TMrgjItSw3c=;
- b=Hj86/1L46+5hnnVaqDWbnuincgZs+Yr2Em2bRVpp+rx22MP32Owg46PTh6fit+Mdgb
- NH6QTj4DxDpwH0WHZayaQ7on9nwT5LjrR2VzZTbj7WNGkdzwQhK0ZnNXr8jtMOHl4QsG
- mz61vSbvLiXU2vVKIBfeiO5rn6PAYQUl2PikE3l1QpsazWTMmn3IGYyrr/mxcy5oszaF
- 1TC3eSdtx7aH85AnYxfLBPPOPPGbzk4P/JJCv/J80nDJaPaqVSklj1TN1R8U9m7wjnPT
- ykYnocWIdr3Lk0pZIBi8MDE5FC5pYwLnQ5PwQf4oLhXkIC6ivZmhPs83fxj6mGrB6nUB
- u3lA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=r6ZxEtcTtXMZRq7+nFZf7Av8uL6lok+sSg0IbMh7PU4=;
+ b=eRQPfiwWBh8RHz/e2lyK8HgBHPIhG4W7iyEyn99sxIUf3zjaVHQWh12xeOHwYv36d3
+ RSSBrR2plnhJOJ9Zhzfan4tmSoIB2r5E1GXOEiAmbzGkjKcZILjxPG+lW5Zilns/hUWd
+ W4JuO6KRmNqMqPc7R3zegPEMNXXWuqP0FZNWo9VNJiC8iSRJOMd4sxhLdU7ixcgOBVU6
+ UqZY5igpdYzrFTK727RTisOiisK6bBPKBfy2NGxX/nOIUa92636UY868tnoaXztnJHLa
+ fALFfGs/bTDDgXg3g8k7/BfEA6XXtE2TWTvNHttNBIrs6HnfYV3Yp7HHTh5/XQawtlDf
+ ln/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=w/NNDDWuUjDFbzYRr3FSXhyOtAsFlq63TMrgjItSw3c=;
- b=b6fwWcYY1jB4BxyeNowRhNVgSU8QozV8sz3akMYc7efGFWqhV3s7dZIbuVByH9N9BS
- 92YholIiPr+qYmZ9iJh+BL0DnO1ZGmke3Y4WyRI/HqXfGZLfKjV+/1Bsq3geD6RAzn7Z
- JNDUqKY25f/r6PEm9MEZZCchz/0LrxAeCG0mx2pNI1f+5hIgWUhYIp/9LRMkoKFk1ti0
- KmvUGvEBuqAG/OI3odNVgdZYlwCS2PlECkv27c6N33+I5HlEhl9USLyoaFkR2H3b2Lav
- X4jMgNld1tIY1S2jkgCHvmkpP2EABZjoZjfMCT6hRC2etHy9rH+Ek7KHhvTHGe/5Nh4c
- AuUg==
-X-Gm-Message-State: AOAM530kn52cnyZT5toH4M6ayxYMwJALFdk0I1SWKisKvU3pMVVw8bYM
- fj2qwJkoOjro9waoQzphWLtPVWneLcw=
-X-Received: by 2002:a1c:f310:: with SMTP id q16mr13105294wmq.145.1632694521057; 
- Sun, 26 Sep 2021 15:15:21 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=r6ZxEtcTtXMZRq7+nFZf7Av8uL6lok+sSg0IbMh7PU4=;
+ b=E88TLhuibt+qjbI5Szze/+bdjZHAa0+jnNDLRrHG+1btir8N231xF24UFBX4y5QJJl
+ Muzm6j4woHKaBDOMJ/KnFjhY/ldzjleVy+f515n28jZYnt5HZ8DMxjw7slCWronlDV2T
+ oDvIi2h8FhhSczj9gN5JFJOb6OcC3KfIhUQlMk55ZuaY2us+GLhbxAqVG5HwLzE0hKKF
+ 08PsKKXaWJUU0s1rtzwNGJdu8COk9YWDTSWCF/IknDlywEUPosZBnx/1ZGPrBSqY5LF0
+ x0bhuiQ+P+z2E+6M7bNYvJ/jshMRlP+vfNPs6gBpHaVNyCAFktEXeraAp+z2h6Mh49GU
+ LGIw==
+X-Gm-Message-State: AOAM530yRz1l0uX7sczEX6TE040HBJ9LwCK4y1vXSSEq+amE+XNqQv1F
+ 6kWfw2fxeznqOtmMxUu/N93NdBoCL/0=
+X-Received: by 2002:a7b:c442:: with SMTP id l2mr7593370wmi.131.1632581560483; 
+ Sat, 25 Sep 2021 07:52:40 -0700 (PDT)
 Received: from x1w.. (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
  by smtp.gmail.com with ESMTPSA id
- t6sm18354726wmj.12.2021.09.26.15.15.19
+ n14sm9892246wmc.38.2021.09.25.07.52.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Sep 2021 15:15:20 -0700 (PDT)
+ Sat, 25 Sep 2021 07:52:40 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH] hw: Add a 'Sensor devices' qdev category
-Date: Mon, 27 Sep 2021 00:15:18 +0200
-Message-Id: <20210926221518.1726267-1-f4bug@amsat.org>
+Subject: [PATCH v7 17/40] target/arm: Restrict has_work() handler to sysemu
+ and TCG
+Date: Sat, 25 Sep 2021 16:50:55 +0200
+Message-Id: <20210925145118.1361230-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210925145118.1361230-1-f4bug@amsat.org>
+References: <20210925145118.1361230-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -111,174 +115,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, John Wang <wangzhiqiang.bj@bytedance.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xXEQaaKfFIo9
+X-TUID: nCHoZDUX4W57
 
-Sensors models are listed in the 'Misc devices' category.
-Move them to their own category.
-
-For the devices in the hw/sensor/ directory, the category
-is obvious.
-
-hw/arm/z2.c models the AER915 model which is described
-on [*] as:
-
-  The 14-pin chip marked AER915 just below the expansion
-  port is a 80C51-type microcontroller, similar to Philips
-  P89LPC915. It has an 8-bit A/D which is used to determine
-  which of six buttons are pressed on the resistor-network
-  wired remote.  It communicates with the main cpu via I2C.
-
-It was introduced in commit 3bf11207c06 ("Add support for
-Zipit Z2 machine") with this comment:
-
-  248 static uint8_t aer915_recv(I2CSlave *slave)
-  249 {
-  ...
-  253     switch (s->buf[0]) {
-  254     /* Return hardcoded battery voltage,
-  255      * 0xf0 means ~4.1V
-  256      */
-  257     case 0x02:
-  258         retval = 0xf0;
-  259         break;
-
-For QEMU the AER915 is a very simple sensor model.
-
-[*] https://www.bealecorner.org/best/measure/z2/index.html
+Restrict arm_cpu_has_work() and has_work() handler to TCG sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/qdev-core.h | 1 +
- hw/arm/z2.c            | 1 +
- hw/sensor/adm1272.c    | 1 +
- hw/sensor/dps310.c     | 1 +
- hw/sensor/emc141x.c    | 1 +
- hw/sensor/max34451.c   | 2 ++
- hw/sensor/tmp105.c     | 1 +
- hw/sensor/tmp421.c     | 1 +
- softmmu/qdev-monitor.c | 1 +
- 9 files changed, 10 insertions(+)
+ target/arm/internals.h | 4 +++-
+ target/arm/cpu.c       | 7 +++++--
+ target/arm/cpu_tcg.c   | 2 +-
+ 3 files changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 34c8a7506a1..f6241212247 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -26,6 +26,7 @@ typedef enum DeviceCategory {
-     DEVICE_CATEGORY_SOUND,
-     DEVICE_CATEGORY_MISC,
-     DEVICE_CATEGORY_CPU,
-+    DEVICE_CATEGORY_SENSOR,
-     DEVICE_CATEGORY_MAX
- } DeviceCategory;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f20aeb97fa0..18b3c2bf1ea 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -175,9 +175,11 @@ void arm_translate_init(void);
  
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 9c1e876207b..62db9741106 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -288,6 +288,7 @@ static void aer915_class_init(ObjectClass *klass, void *data)
-     k->recv = aer915_recv;
-     k->send = aer915_send;
-     dc->vmsd = &vmstate_aer915_state;
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+ #ifdef CONFIG_TCG
+ void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
+-#endif /* CONFIG_TCG */
+ 
++#if !defined(CONFIG_USER_ONLY)
+ bool arm_cpu_has_work(CPUState *cs);
++#endif /* !CONFIG_USER_ONLY */
++#endif /* CONFIG_TCG */
+ 
+ /**
+  * aarch64_sve_zcr_get_valid_len:
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 4b08f717f64..53c478171ac 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -74,8 +74,8 @@ void arm_cpu_synchronize_from_tb(CPUState *cs,
+         env->regs[15] = tb->pc;
+     }
  }
+-#endif /* CONFIG_TCG */
  
- static const TypeInfo aer915_info = {
-diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
-index 7310c769be2..2942ac75f90 100644
---- a/hw/sensor/adm1272.c
-+++ b/hw/sensor/adm1272.c
-@@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
- 
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->desc = "Analog Devices ADM1272 Hot Swap controller";
-     dc->vmsd = &vmstate_adm1272;
-     k->write_data = adm1272_write_data;
-diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
-index d60a18ac41b..1e24a499b38 100644
---- a/hw/sensor/dps310.c
-+++ b/hw/sensor/dps310.c
-@@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass, void *data)
-     k->send = dps310_tx;
-     dc->reset = dps310_reset;
-     dc->vmsd = &vmstate_dps310;
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
++#ifndef CONFIG_USER_ONLY
+ bool arm_cpu_has_work(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -86,6 +86,9 @@ bool arm_cpu_has_work(CPUState *cs)
+          | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ
+          | CPU_INTERRUPT_EXITTB);
  }
- 
- static const TypeInfo dps310_info = {
-diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c
-index 7ce8f4e9794..4202d8f185a 100644
---- a/hw/sensor/emc141x.c
-+++ b/hw/sensor/emc141x.c
-@@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->reset = emc141x_reset;
-     k->event = emc141x_event;
-     k->recv = emc141x_rx;
-diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
-index a91d8bd487c..8300bf4ff43 100644
---- a/hw/sensor/max34451.c
-+++ b/hw/sensor/max34451.c
-@@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass, void *data)
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
++#endif /* !CONFIG_USER_ONLY */
 +
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->desc = "Maxim MAX34451 16-Channel V/I monitor";
-     dc->vmsd = &vmstate_max34451;
-     k->write_data = max34451_write_data;
-diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-index 20564494899..43d79b9eeec 100644
---- a/hw/sensor/tmp105.c
-+++ b/hw/sensor/tmp105.c
-@@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
++#endif /* CONFIG_TCG */
  
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->realize = tmp105_realize;
-     k->event = tmp105_event;
-     k->recv = tmp105_rx;
-diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-index a3db57dcb5a..c328978af9c 100644
---- a/hw/sensor/tmp421.c
-+++ b/hw/sensor/tmp421.c
-@@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-     TMP421Class *sc = TMP421_CLASS(klass);
+ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+                                  void *opaque)
+@@ -2035,6 +2038,7 @@ static const struct TCGCPUOps arm_tcg_ops = {
+     .debug_excp_handler = arm_debug_excp_handler,
  
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->realize = tmp421_realize;
-     k->event = tmp421_event;
-     k->recv = tmp421_rx;
-diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-index 0705f008466..db56f328228 100644
---- a/softmmu/qdev-monitor.c
-+++ b/softmmu/qdev-monitor.c
-@@ -162,6 +162,7 @@ static void qdev_print_devinfos(bool show_no_user)
-         [DEVICE_CATEGORY_SOUND]   = "Sound",
-         [DEVICE_CATEGORY_MISC]    = "Misc",
-         [DEVICE_CATEGORY_CPU]     = "CPU",
-+        [DEVICE_CATEGORY_SENSOR]  = "Sensor",
-         [DEVICE_CATEGORY_MAX]     = "Uncategorized",
-     };
-     GSList *list, *elt;
+ #if !defined(CONFIG_USER_ONLY)
++    .has_work = arm_cpu_has_work,
+     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
+     .do_interrupt = arm_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
+@@ -2059,7 +2063,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_reset(dc, arm_cpu_reset, &acc->parent_reset);
+ 
+     cc->class_by_name = arm_cpu_class_by_name;
+-    cc->has_work = arm_cpu_has_work;
+     cc->dump_state = arm_cpu_dump_state;
+     cc->set_pc = arm_cpu_set_pc;
+     cc->gdb_read_register = arm_cpu_gdb_read_register;
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index 9a0927ad5d0..7d0d9fcbc79 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -902,6 +902,7 @@ static const struct TCGCPUOps arm_v7m_tcg_ops = {
+     .debug_excp_handler = arm_debug_excp_handler,
+ 
+ #if !defined(CONFIG_USER_ONLY)
++    .has_work = arm_cpu_has_work,
+     .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
+     .do_interrupt = arm_v7m_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
+@@ -920,7 +921,6 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
+ 
+     acc->info = data;
+ #ifdef CONFIG_TCG
+-    cc->has_work = arm_cpu_has_work;
+     cc->tcg_ops = &arm_v7m_tcg_ops;
+ #endif /* CONFIG_TCG */
+ 
 -- 
 2.31.1
 

@@ -1,222 +1,429 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2797841lfp;
-        Sun, 26 Sep 2021 02:04:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx82NydeMGaWsFtv+ZZwKT8mjvectGK6fWGnHnpauKXzlGVG1emsYqmNgEsj04TUdtjdE4t
-X-Received: by 2002:a9d:725e:: with SMTP id a30mr12160254otk.183.1632647065924;
-        Sun, 26 Sep 2021 02:04:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632647065; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3159437lfp;
+        Sun, 26 Sep 2021 11:35:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwuh/k3XBMrDKO/WkWcvBiKh/Vzu/GWbstDhZFalXwlPEJSK8cZJQhVa0KVDJtzN+QCLE11
+X-Received: by 2002:a92:c546:: with SMTP id a6mr16941739ilj.173.1632681315241;
+        Sun, 26 Sep 2021 11:35:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632681315; cv=none;
         d=google.com; s=arc-20160816;
-        b=CBrwt4EnS5kxRhLHFDReLYJ7ndQRO40GVUccHYwy2lY3YopuqQqvgftTgyDMFrL0U2
-         xJYliRrmyvmtFqAOLckBxQ7hzsMkTV54e9LneZnqeqKL2CFwKsx1z3LMGZcZgC7q1kss
-         7mCROnLOTQ48kZ+ZJaCmNJZYuYSPQYtPa8gvooSk40ZRKkIY23QBnuFOxyWSYdLh8+nH
-         ubP5EJ2Blk5WPBUlnvXZcQk3Wip+zgkoKBH77mnZastQL8suql293qvR9vy+u7s866jn
-         WGvqg/HKO/UE8F0GECONsA+AixRMKAuXxL5HsYqPWmexNeRZ0AwUjtg94ILDKA2ijqVa
-         MA3g==
+        b=B15DnE/kdpO4d50dxa+malxihY2jVFs3OI0tr0dP0YMXx/gzoodavJRriavCfKXWNG
+         ezzFz48xZc+UKr8Bv8Y8gHmR9J6wZVKdwdsJ6PSH/G1697pVA9jp8CdLdZSxNPopEdsu
+         irWFmjZgoIwV7qODahe8d1OPqHvdcqBwcU3tGCBZ+V4t78qtngGGIwoBhAx+OdpAwkmZ
+         GxBAsrT1FSDKpcUQmeWk0EY1gjAxL4idl58CliZDPn5PoPURmxnBt7rMP1rKITXBvFw5
+         W6904ezHi8ruJxzLhNtEkxtXwbRCqjahOUZtNMeXaW68YuORdAac/5Nk82r2gVN/LwNf
+         dQAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=9KeAZmBCxrtzwv2leMoxDuvudEGvwYLWFjhNISJsXGE=;
-        b=AWRNkPUAiBLWYaurPA29XAHmeiJReLaDhA9XkDH/MbZFdo/RwY+5bqfyoHr8lJvasS
-         zeMZqSHs9172eC6SnxeCM2SyqhIEblQBMGAc7BaxNZDmoXhF2eYFs9ZcMFmRTWIoJIsW
-         d7csjMOPuG7D72K2a0rSx6EMWnXOewF30aIjSzmmuthKmA+JPTJFH0CVtscX9b+KQ6kH
-         uyaSdGo41miAaPmSYcfSeLUMwMf+7tV8lXodlPbmGmcP9lf/6Ep8UKcxl1QFfJI+SJB+
-         /8HJFRB7v1XaFdBDJLdEIVL52mox83V1lQJU0mm7HIyiaUjYfjy3lBplyVQZL6QxlnTY
-         2pJA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=9OAFYCrI5+ArcbMdKXxW6jvIYMUAg7MBmVvuHLTFM+s=;
+        b=p0F89nDXID4WqgCeTf0ZFMrd79shyavEWU3jkgdnpotpwEipLRy8QxfLw+FE6DKanV
+         IR3HjQaRZgP0czYxlCbiP7amUauOOYHCPQ0VCYJkUo3uPRaZLsohQRuD3BP1blbdTkHV
+         OHsdUKX6MVIbwARAT8BrlRRx8s9R+FcPodC2aUt2uzBahqdaj5AIrghRIlQNu8gEBGec
+         DhFlp/Qh4YWPGVV9tR73895VQrhk0oyKO9Rra5IAuCC7eSuJo8TTXxNReKsddRo0I08P
+         R4/HL1f8qfs4/J2gG7CKWaRb4Kbkb6jx2aBeld2weuIHwewPj8j1u1h5ntek/GYC3LkL
+         Re8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@chromium.org header.s=google header.b=PCJaPBqi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n126si712022oih.151.2021.09.26.02.04.25
+        by mx.google.com with ESMTPS id f26si17003424iog.53.2021.09.26.11.35.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Sep 2021 02:04:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 26 Sep 2021 11:35:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:44650 helo=lists1p.gnu.org)
+       dkim=fail header.i=@chromium.org header.s=google header.b=PCJaPBqi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: from localhost ([::1]:57396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUQ5B-0007YX-76
-	for alex.bennee@linaro.org; Sun, 26 Sep 2021 05:04:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49358)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mUYza-0000qg-Ic
+	for alex.bennee@linaro.org; Sun, 26 Sep 2021 14:35:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mUPng-0006Fy-3P; Sun, 26 Sep 2021 04:46:20 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2867)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mUPne-0002gO-2b; Sun, 26 Sep 2021 04:46:19 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.54])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4HHK8W1XG6z1DH3Q;
- Sun, 26 Sep 2021 16:44:59 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Sun, 26 Sep 2021 16:46:14 +0800
-Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Sun, 26 Sep 2021 16:46:13 +0800
-From: Yanan Wang <wangyanan55@huawei.com>
-To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v10 14/14] machine: Put all sanity-check in the generic SMP
- parser
-Date: Sun, 26 Sep 2021 16:45:41 +0800
-Message-ID: <20210926084541.17352-15-wangyanan55@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
-In-Reply-To: <20210926084541.17352-1-wangyanan55@huawei.com>
-References: <20210926084541.17352-1-wangyanan55@huawei.com>
+ (Exim 4.90_1) (envelope-from <sjg@chromium.org>) id 1mUYz4-0000pJ-Ac
+ for qemu-arm@nongnu.org; Sun, 26 Sep 2021 14:34:43 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:36715)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sjg@chromium.org>) id 1mUYz2-0005Gn-EH
+ for qemu-arm@nongnu.org; Sun, 26 Sep 2021 14:34:42 -0400
+Received: by mail-ot1-x335.google.com with SMTP id
+ 5-20020a9d0685000000b0054706d7b8e5so21310252otx.3
+ for <qemu-arm@nongnu.org>; Sun, 26 Sep 2021 11:34:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9OAFYCrI5+ArcbMdKXxW6jvIYMUAg7MBmVvuHLTFM+s=;
+ b=PCJaPBqi2E2k+uW/drj++dEy1WRxq+TakFxziq3ujUmYMPUE2Nm2elookQKxQY4voS
+ Bg++xy/CEECh30xsJLPM0IpWYYcciQliygobCT4+sSCjJiV+3CIKgzVQTiva7nZ7GGBa
+ 6inw32bXCXWUTPF86SK8AfHQbw15WHkjXBV+A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9OAFYCrI5+ArcbMdKXxW6jvIYMUAg7MBmVvuHLTFM+s=;
+ b=jtHs9E1ijqxeSTmGBSCkSA4JyXu0DDOP71XmOFvD9rjeooyr1+Ux8XbiesCOUFJcMU
+ wmfVQnvbd0bqWhiXHdWvUpZqDueAIwJXRjFsQu/9iWXG7NbztUl3Sus87BeXburgY+JI
+ YHaquj+Zfcsfbt+JQ7e1bYu3g8jtNxbS8DDjPeg5nAbidPMHZWG4aBEXmLqSTMpAVgH6
+ crbdovQVBseLpErKeQmdHeZq0Cf8fu30E8wh7ZpuQlGI5IG7c70ivZQxxIQ5HK8pDL5e
+ E0jv63LZSwDFwQjNyAwTtcFVczNsBjN0P0dlyTs7AWKYVYtuamIAix+Pc1T6Dp7MVkFM
+ WLaw==
+X-Gm-Message-State: AOAM533skKjuJwI1KFgtloJXqDFZj8CjUwlLPHOfZ5s5KBcCD9/sBRRW
+ lOHZtHmn4fRNBcKi0fLO81AXoQ==
+X-Received: by 2002:a9d:58c9:: with SMTP id s9mr13770888oth.28.1632681276230; 
+ Sun, 26 Sep 2021 11:34:36 -0700 (PDT)
+Received: from kiwi.bld.corp.google.com (c-67-190-101-114.hsd1.co.comcast.net.
+ [67.190.101.114])
+ by smtp.gmail.com with ESMTPSA id r1sm3295295ots.71.2021.09.26.11.34.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 26 Sep 2021 11:34:35 -0700 (PDT)
+From: Simon Glass <sjg@chromium.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/arm/virt: Allow additions to the generated device tree
+Date: Sun, 26 Sep 2021 12:34:10 -0600
+Message-Id: <20210926183410.256484-1-sjg@chromium.org>
+X-Mailer: git-send-email 2.33.0.685.g46640cef36-goog
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=sjg@chromium.org; helo=mail-ot1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter
- Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>, Pierre
- Morel <pmorel@linux.ibm.com>, Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Yanan Wang <wangyanan55@huawei.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, wanghaibin.wang@huawei.com,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pN5u6rKJHYOs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Simon Glass <sjg@chromium.org>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KZAlJmC3eAPW
 
-Put both sanity-check of the input SMP configuration and sanity-check
-of the output SMP configuration uniformly in the generic parser. Then
-machine_set_smp() will become cleaner, also all the invalid scenarios
-can be tested only by calling the parser.
+At present qemu creates a device tree automatically with the 'virt' generic
+virtual platform. This is very convenient in most cases but there is not
+much control over what is generated.
 
-Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Pankaj Gupta <pankaj.gupta@ionos.com>
+Add a way to provide a device tree binary file with additional properties
+to add before booting. This provides flexibility for situations where
+Linux needs some tweak to operate correctly. It also allows configuration
+information to be passed to U-Boot, supporting verified boot, for example.
+
+The term 'merge' is used here to avoid confusion with device tree overlays,
+which are a particular type of format.
+
+Signed-off-by: Simon Glass <sjg@chromium.org>
 ---
- hw/core/machine.c | 63 +++++++++++++++++++++++------------------------
- 1 file changed, 31 insertions(+), 32 deletions(-)
 
+ docs/system/arm/virt.rst |  13 +++-
+ hw/arm/virt.c            | 135 +++++++++++++++++++++++++++++++++++++++
+ hw/core/machine.c        |  20 ++++++
+ include/hw/boards.h      |   1 +
+ qemu-options.hx          |   8 +++
+ softmmu/vl.c             |   3 +
+ util/qemu-config.c       |   5 ++
+ 7 files changed, 183 insertions(+), 2 deletions(-)
+
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 850787495b..3191e6eebf 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -146,8 +146,17 @@ Hardware configuration information for bare-metal programming
+ The ``virt`` board automatically generates a device tree blob ("dtb")
+ which it passes to the guest. This provides information about the
+ addresses, interrupt lines and other configuration of the various devices
+-in the system. Guest code can rely on and hard-code the following
+-addresses:
++in the system.
++
++The optional ``-dtbi`` argument is used to specify a device tree blob to merge
++with this generated device tree, to add any properties required by the guest but
++not included by qemu. Properties are merged after the generated device tree is
++created, so take precedence over generated properties. This can be useful for
++overriding the ``stdout-path`` for Linux, for example, or to add configuration
++information needed by U-Boot. This is intended for simple nodes and properties
++and does not support use of phandles or device tree overlays.
++
++Guest code can rely on and hard-code the following addresses:
+ 
+ - Flash memory starts at address 0x0000_0000
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1d59f0e59f..1d5c9a911a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -43,6 +43,7 @@
+ #include "hw/vfio/vfio-calxeda-xgmac.h"
+ #include "hw/vfio/vfio-amd-xgbe.h"
+ #include "hw/display/ramfb.h"
++#include <libfdt.h>
+ #include "net/net.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/numa.h"
+@@ -292,6 +293,135 @@ static void create_fdt(VirtMachineState *vms)
+     }
+ }
+ 
++
++/*
++ * From U-Boot v2021.07 (under BSD-2-Clause license)
++ *
++ * This does not use the qemu_fdt interface because that requires node names.
++ * Here we are using offsets.
++ *
++ * overlay_apply_node - Merges a node into the base device tree
++ * @fdt: Base Device Tree blob
++ * @target: Node offset in the base device tree to apply the fragment to
++ * @fdto: Device tree overlay blob
++ * @node: Node offset in the overlay holding the changes to merge
++ *
++ * overlay_apply_node() merges a node into a target base device tree
++ * node pointed.
++ *
++ * This is part of the final step in the device tree overlay
++ * application process, when all the phandles have been adjusted and
++ * resolved and you just have to merge overlay into the base device
++ * tree.
++ *
++ * returns:
++ *      0 on success
++ *      Negative error code on failure
++ */
++static int overlay_apply_node(void *fdt, int target, void *fdto, int node)
++{
++    int property;
++    int subnode;
++
++    fdt_for_each_property_offset(property, fdto, node) {
++        const char *name;
++        const void *prop;
++        int prop_len;
++        int ret;
++
++        prop = fdt_getprop_by_offset(fdto, property, &name, &prop_len);
++        if (prop_len == -FDT_ERR_NOTFOUND) {
++            return -FDT_ERR_INTERNAL;
++        }
++        if (prop_len < 0) {
++            return prop_len;
++        }
++
++        ret = fdt_setprop(fdt, target, name, prop, prop_len);
++        if (ret) {
++            return ret;
++        }
++    }
++
++    fdt_for_each_subnode(subnode, fdto, node) {
++        const char *name = fdt_get_name(fdto, subnode, NULL);
++        int nnode;
++        int ret;
++
++        nnode = fdt_add_subnode(fdt, target, name);
++        if (nnode == -FDT_ERR_EXISTS) {
++            nnode = fdt_subnode_offset(fdt, target, name);
++            if (nnode == -FDT_ERR_NOTFOUND) {
++                return -FDT_ERR_INTERNAL;
++            }
++        }
++
++        if (nnode < 0) {
++            return nnode;
++        }
++
++        ret = overlay_apply_node(fdt, nnode, fdto, subnode);
++        if (ret) {
++            return ret;
++        }
++    }
++
++    return 0;
++}
++
++/* Merge nodes and properties into fdt from fdto */
++static int merge_fdt(void *fdt, void *fdto)
++{
++    int err;
++
++    err = overlay_apply_node(fdt, 0, fdto, 0);
++    if (err) {
++        fprintf(stderr, "Device tree error %s\n", fdt_strerror(err));
++        return -1;
++    }
++
++    return 0;
++}
++
++/* Finish creating the device tree, merging in the -dtbi file if needed */
++static int complete_fdt(VirtMachineState *vms)
++{
++    MachineState *ms = MACHINE(vms);
++
++    if (ms->dtbi) {
++        char *filename;
++        void *fdt;
++        int size;
++        int ret;
++
++        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, ms->dtbi);
++        if (!filename) {
++            fprintf(stderr, "Couldn't open dtbi file %s\n", ms->dtbi);
++            goto fail;
++        }
++
++        fdt = load_device_tree(filename, &size);
++        if (!fdt) {
++            fprintf(stderr, "Couldn't open dtbi file %s\n", filename);
++            g_free(filename);
++            goto fail;
++        }
++
++        ret = merge_fdt(ms->fdt, fdt);
++        g_free(fdt);
++        if (ret) {
++            fprintf(stderr, "Failed to merge in dtbi file %s\n", filename);
++            g_free(filename);
++            goto fail;
++        }
++        g_free(filename);
++    }
++    return 0;
++
++fail:
++    return -1;
++}
++
+ static void fdt_add_timer_nodes(const VirtMachineState *vms)
+ {
+     /* On real hardware these interrupts are level-triggered.
+@@ -2102,6 +2232,11 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_platform_bus(vms);
+ 
++    if (complete_fdt(vms)) {
++        error_report("mach-virt: Failed to complete device tree");
++        exit(1);
++    }
++
+     if (machine->nvdimms_state->is_enabled) {
+         const struct AcpiGenericAddress arm_virt_nvdimm_acpi_dsmio = {
+             .space_id = AML_AS_SYSTEM_MEMORY,
 diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 1bdeff32b3..5b62ba7e34 100644
+index 067f42b528..b47732fb24 100644
 --- a/hw/core/machine.c
 +++ b/hw/core/machine.c
-@@ -813,6 +813,20 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
-     unsigned threads = config->has_threads ? config->threads : 0;
-     unsigned maxcpus = config->has_maxcpus ? config->maxcpus : 0;
- 
-+    /*
-+     * Specified CPU topology parameters must be greater than zero,
-+     * explicit configuration like "cpus=0" is not allowed.
-+     */
-+    if ((config->has_cpus && config->cpus == 0) ||
-+        (config->has_sockets && config->sockets == 0) ||
-+        (config->has_dies && config->dies == 0) ||
-+        (config->has_cores && config->cores == 0) ||
-+        (config->has_threads && config->threads == 0) ||
-+        (config->has_maxcpus && config->maxcpus == 0)) {
-+        warn_report("Invalid CPU topology deprecated: "
-+                    "CPU topology parameters must be greater than zero");
-+    }
-+
-     /*
-      * If not supported by the machine, a topology parameter must be
-      * omitted or specified equal to 1.
-@@ -892,6 +906,22 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
-                    topo_msg, maxcpus, cpus);
-         return;
-     }
-+
-+    if (ms->smp.cpus < mc->min_cpus) {
-+        error_setg(errp, "Invalid SMP CPUs %d. The min CPUs "
-+                   "supported by machine '%s' is %d",
-+                   ms->smp.cpus,
-+                   mc->name, mc->min_cpus);
-+        return;
-+    }
-+
-+    if (ms->smp.max_cpus > mc->max_cpus) {
-+        error_setg(errp, "Invalid SMP CPUs %d. The max CPUs "
-+                   "supported by machine '%s' is %d",
-+                   ms->smp.max_cpus,
-+                   mc->name, mc->max_cpus);
-+        return;
-+    }
+@@ -306,6 +306,21 @@ static void machine_set_dtb(Object *obj, const char *value, Error **errp)
+     ms->dtb = g_strdup(value);
  }
  
- static void machine_get_smp(Object *obj, Visitor *v, const char *name,
-@@ -914,7 +944,6 @@ static void machine_get_smp(Object *obj, Visitor *v, const char *name,
- static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp)
++static char *machine_get_dtbi(Object *obj, Error **errp)
++{
++    MachineState *ms = MACHINE(obj);
++
++    return g_strdup(ms->dtbi);
++}
++
++static void machine_set_dtbi(Object *obj, const char *value, Error **errp)
++{
++    MachineState *ms = MACHINE(obj);
++
++    g_free(ms->dtbi);
++    ms->dtbi = g_strdup(value);
++}
++
+ static char *machine_get_dumpdtb(Object *obj, Error **errp)
  {
--    MachineClass *mc = MACHINE_GET_CLASS(obj);
      MachineState *ms = MACHINE(obj);
-     SMPConfiguration *config;
-     ERRP_GUARD();
-@@ -923,40 +952,10 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-         return;
-     }
+@@ -891,6 +906,11 @@ static void machine_class_init(ObjectClass *oc, void *data)
+     object_class_property_set_description(oc, "dtb",
+         "Linux kernel device tree file");
  
--    /*
--     * Specified CPU topology parameters must be greater than zero,
--     * explicit configuration like "cpus=0" is not allowed.
--     */
--    if ((config->has_cpus && config->cpus == 0) ||
--        (config->has_sockets && config->sockets == 0) ||
--        (config->has_dies && config->dies == 0) ||
--        (config->has_cores && config->cores == 0) ||
--        (config->has_threads && config->threads == 0) ||
--        (config->has_maxcpus && config->maxcpus == 0)) {
--        warn_report("Invalid CPU topology deprecated: "
--                    "CPU topology parameters must be greater than zero");
--    }
--
-     smp_parse(ms, config, errp);
-     if (*errp) {
--        goto out_free;
--    }
--
--    /* sanity-check smp_cpus and max_cpus against mc */
--    if (ms->smp.cpus < mc->min_cpus) {
--        error_setg(errp, "Invalid SMP CPUs %d. The min CPUs "
--                   "supported by machine '%s' is %d",
--                   ms->smp.cpus,
--                   mc->name, mc->min_cpus);
--    } else if (ms->smp.max_cpus > mc->max_cpus) {
--        error_setg(errp, "Invalid SMP CPUs %d. The max CPUs "
--                   "supported by machine '%s' is %d",
--                   ms->smp.max_cpus,
--                   mc->name, mc->max_cpus);
-+        qapi_free_SMPConfiguration(config);
-     }
--
--out_free:
--    qapi_free_SMPConfiguration(config);
- }
++    object_class_property_add_str(oc, "dtbi",
++        machine_get_dtbi, machine_set_dtbi);
++    object_class_property_set_description(oc, "dtbi",
++        "Linux kernel device tree file to merge with the generated device tree");
++
+     object_class_property_add_str(oc, "dumpdtb",
+         machine_get_dumpdtb, machine_set_dumpdtb);
+     object_class_property_set_description(oc, "dumpdtb",
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 463a5514f9..1868c4e7b6 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -300,6 +300,7 @@ struct MachineState {
  
- static void machine_class_init(ObjectClass *oc, void *data)
+     void *fdt;
+     char *dtb;
++    char *dtbi;  /* filename of device tree to merge with the generated one */
+     char *dumpdtb;
+     int phandle_start;
+     char *dt_compatible;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 8f603cc7e6..73c0e6c998 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3621,6 +3621,14 @@ SRST
+     kernel on boot.
+ ERST
+ 
++DEF("dtbi", HAS_ARG, QEMU_OPTION_dtbi, \
++    "-dtbi   file    merge 'file' with generated device tree\n", QEMU_ARCH_ARM)
++SRST
++``-dtbi file``
++    Merge a device tree binary (dtb) file into the generated device tree and
++    pass the result to the kernel on boot.
++ERST
++
+ DEFHEADING()
+ 
+ DEFHEADING(Debug/Expert options:)
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 55ab70eb97..9f3ea6c510 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -2921,6 +2921,9 @@ void qemu_init(int argc, char **argv, char **envp)
+             case QEMU_OPTION_dtb:
+                 qdict_put_str(machine_opts_dict, "dtb", optarg);
+                 break;
++            case QEMU_OPTION_dtbi:
++                qdict_put_str(machine_opts_dict, "dtbi", optarg);
++                break;
+             case QEMU_OPTION_cdrom:
+                 drive_add(IF_DEFAULT, 2, optarg, CDROM_OPTS);
+                 break;
+diff --git a/util/qemu-config.c b/util/qemu-config.c
+index 436ab63b16..359cfb6a9a 100644
+--- a/util/qemu-config.c
++++ b/util/qemu-config.c
+@@ -186,6 +186,11 @@ static QemuOptsList machine_opts = {
+             .name = "dtb",
+             .type = QEMU_OPT_STRING,
+             .help = "Linux kernel device tree file",
++        },{
++            .name = "dtbi",
++            .type = QEMU_OPT_STRING,
++            .help = "Linux kernel device tree file to merge with the "
++                    "generated device tree",
+         },{
+             .name = "dumpdtb",
+             .type = QEMU_OPT_STRING,
 -- 
-2.19.1
+2.33.0.685.g46640cef36-goog
 

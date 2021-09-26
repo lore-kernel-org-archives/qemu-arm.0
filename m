@@ -1,110 +1,83 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2347180lfp;
-        Sat, 25 Sep 2021 11:11:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyPTMosLocsuR+p+GVykBoFBPRXeOn4QSvkWl+6f7VeRJ+gXvBmOzhXlLQy/Jr/hwwPzWpY
-X-Received: by 2002:a05:6e02:1e0c:: with SMTP id g12mr5175455ila.155.1632593502466;
-        Sat, 25 Sep 2021 11:11:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632593502; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2789296lfp;
+        Sun, 26 Sep 2021 01:46:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRvUskj7MuEPxs+ub2r/+VyCPQsrGlLN6P/Xwp/NHnfIvT28qpNP0w45g68PGI+Mq5Y0a8
+X-Received: by 2002:a5b:f0c:: with SMTP id x12mr20829746ybr.340.1632645989719;
+        Sun, 26 Sep 2021 01:46:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632645989; cv=none;
         d=google.com; s=arc-20160816;
-        b=blC9pEqWgn1x2UuyWI0fMBrf1zVWJUytobjoe+LLoi9QbsG8N5AWoS3glYPxOm/Zp0
-         mfunduAFX66sIPgn2kXYYh7sZSzPNFzgKVfUhFztcxnBP07yuwB/ofq2Y0U2hAhjY5Xi
-         BnI+HVXpGVClwy3MxJP6lb6ySu/1V8ukUYzokvpvWrkRKzrmhqUjH7QdlOzWHMo5AIPA
-         sqa8+blDyFhhLLtMnZtMZ83AzY8O+82DbWl6n3MwqadXM4z7NJavwxfsTIRaAJZiFOxC
-         RheFH8lr4mVM9NyAiWLykw34gjwTTZnpxxXCQbCyJ9+F0Ff8ZxS6EY7rWiM8P4HuV9sj
-         WPQA==
+        b=gXbvy4cigDGW6xjgbJ65nay7iBaK6ZZookASfvq+yajjBMHGhg5e0IdfZ/2hd4MS1L
+         sD4qRL6DpPPLLHZgo5OV40YS8b82cPC4EUtd7WN8hK9qRgHtMdHeCa7udqB+wQugFgFU
+         73jaDCPkkNEWcsEC3gE8cZ8tImOJmcMDfAkOaEOv/FZM6ZVO7y7CeTWPebKVbMAHalBk
+         63p+BKyDjMYFaAszVnWWJNeQyiU04d0XpoX0Pc/9FDnSPDP8ZsbqvdZ/bPZIGzK9wYET
+         7mYP+bIJKq7jOutpM2NfImHz2JPYdzQ6qjDehgbWsa2e+NA1b60aV+8EiJ+KsOeHPG8H
+         2gbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=KUFZiVYURmlquJb/8hjhnumrTU8nUimqof9Ge4p1/c8=;
-        b=ZbPyHXE3wlQ9hCNVqlU97Bu88Si11xKCofYiiKcq+hlRl15CWofXhZp39xtuyeaHrx
-         aR3M1YPOnI7224Ai/zRDg38vC9rLYqhj20X5s2saaJ1X00XsHKsYi/zOnEGZWA/9XVR3
-         C4a85V4T7td1Q04Dh8EWreJk9aG+SxnC7UIDMSJM7Vs7XU2r6SwHvGN7ny5ECh+gDQmJ
-         TRSVAvZb71OOP9pHlxTHms2Slw9ShJI2ImPRW0ymy8uxmaJjgGfyKhVSRguHSIuBQuow
-         oboUl6a+wlPp0f03g+tbrMZQzwi0LxwU3fFd07Xz0ySHlSP/dRjtQGrgaIe8P3XNwZou
-         yxGA==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=qB5XwGbATyxeu25C7D5pRyIz+SYaagou3idsVLO5WNo=;
+        b=GHzUj0BK9yPS6BpCs+tH7z5P47KFITa/1rl+1WEIHfmWheUZe4edEUDYU1d/B3bePG
+         WUVc59EEOXCWe8OJCX2ArCDqERU+L6u1rR2vlp6diCDsqYmMxuaXG5IUVkZ+h6DOhNlk
+         ZT8N0Jk9YXrmySK5uyr7dqdcMbieRO9eBAJ1B40XPn8m/9/qnJSyzcMB2u2Q4ChgHrjv
+         EO2wzgHNaOltbjKKdJzdGtMr0gr28jI9C+sTKPNYw5RCpJXhjL5OqKZ44tLTt7lPsh4Y
+         87g22kTGyeUoKpkvGFf9eAm1rVHk36VNX/Mb9+AGmGnqerUlEmpoETPD9A9U56/isjLn
+         elKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nNDAsgVQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m12si17112737ioj.101.2021.09.25.11.11.42
+        by mx.google.com with ESMTPS id 186si17831165ybh.261.2021.09.26.01.46.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Sep 2021 11:11:42 -0700 (PDT)
+        Sun, 26 Sep 2021 01:46:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nNDAsgVQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38898 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:34870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUC9F-0002bW-SB
-	for alex.bennee@linaro.org; Sat, 25 Sep 2021 14:11:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41822)
+	id 1mUPnp-0005wX-0f
+	for alex.bennee@linaro.org; Sun, 26 Sep 2021 04:46:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mUC8T-0002Wv-Hc
- for qemu-arm@nongnu.org; Sat, 25 Sep 2021 14:10:53 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:42586)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mUC8R-0004uY-T0
- for qemu-arm@nongnu.org; Sat, 25 Sep 2021 14:10:53 -0400
-Received: by mail-wr1-x435.google.com with SMTP id i24so21632946wrc.9
- for <qemu-arm@nongnu.org>; Sat, 25 Sep 2021 11:10:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=KUFZiVYURmlquJb/8hjhnumrTU8nUimqof9Ge4p1/c8=;
- b=nNDAsgVQkWr96C+IMqGNziUsVJhpousfzAm5sCX99XD4qG1WOU5K+nf/SjHhLuXidH
- 6UGEobp3ciD7ss9/K8MLIMCbwfsAELTIHleCp9+Gs/r8hRIY8cS0d9XzU29tqqwDjh95
- BeJqtcoF0AjMT78Pig+M0q3PAPul01CbSTVfVG3SSkj5CwXBDHpL3/vMzwuVtxw9vKE1
- L1TT4ogEOffi3Jqg3XocYX0g2gTFHf7t0IwHz3qC0IXzoQNgTKvXHHuOFpVOc2D3LOa8
- QSiBsngiAvjRXgPvh+cA0tgRvFw+4JXTDTXTirXLOP0Hi2BfIgLVFSkcSSl8UKPuclUC
- /c/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=KUFZiVYURmlquJb/8hjhnumrTU8nUimqof9Ge4p1/c8=;
- b=Vm481UnuPXo853r6d+7iVT7gSLSDr6IXwLpIm9XpIZt2VifNzZqsGsBUnsO5QieKPH
- ia2cVBBKYW7MEBedueSf+rwgnkYFNPY46lRKgPmu8Gm4b6PJdET4i6d8QUI84U20FSNT
- PTVoauze+XUNTTdwkYyJYMXiLcvAj/YFuJ3bi5mhHEdZd8R3keGOHmuUD9zHAbic4YtL
- 4miJ7Kk65DTatGHtfwzg39CoiPv1/J9IzidTPuwAeJVMLZhRJb/Y6RMEWUSpVhIIzS03
- 1obif5rNi3sD437F5nKh7EVn/VyxBTxZz/as3K6E2nWlvRBKDrKgasIhBwdNPAy7Fsv9
- cgVA==
-X-Gm-Message-State: AOAM532mfqp5cibnk1S+E6cU/iMhrnr1YbGS8PmlSQg+GDr9KCGpNzmX
- breeLS7ahpSPFSOvKAdZCMNfPIJRzQSo8qnw2sHY4w==
-X-Received: by 2002:adf:eac5:: with SMTP id o5mr9472431wrn.275.1632593449147; 
- Sat, 25 Sep 2021 11:10:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mUPnK-0005uI-PE; Sun, 26 Sep 2021 04:45:58 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:3168)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mUPnH-0002DE-Mp; Sun, 26 Sep 2021 04:45:58 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.54])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4HHK8Q72FRz8tQR;
+ Sun, 26 Sep 2021 16:44:54 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Sun, 26 Sep 2021 16:45:43 +0800
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Sun, 26 Sep 2021 16:45:42 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v10 00/14] machine: smp parsing fixes and improvement
+Date: Sun, 26 Sep 2021 16:45:27 +0800
+Message-ID: <20210926084541.17352-1-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-References: <20210916155404.86958-1-agraf@csgraf.de>
- <CAFEAcA-LrvO7sg9gY0ZKnvXJyJuFc2Ej1Ve1245FZ7YkH-Oj2A@mail.gmail.com>
- <CAFEAcA_Hkqg16VbA1qACK4RG22iXHo8b3VZWQoBRZL0HuBazZA@mail.gmail.com>
- <d4859cae-d9c1-2879-0682-080d4b5efe90@amsat.org>
- <27a265d5-2e7c-f234-0d09-f40a731e588d@csgraf.de>
- <bdeef51c-901b-f5a8-0415-03c464255b1f@amsat.org>
- <60aac468-973b-daee-49ce-71829c234af8@csgraf.de>
- <2db79dcb-feba-4175-6805-5b365b30d819@amsat.org>
-In-Reply-To: <2db79dcb-feba-4175-6805-5b365b30d819@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 25 Sep 2021 19:09:56 +0100
-Message-ID: <CAFEAcA-hxM3b-zS2s8FbWG=SogNdp+o=X1K45kYqXK=OhBCUbg@mail.gmail.com>
-Subject: Re: [PATCH v12 00/10] hvf: Implement Apple Silicon Support
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,53 +91,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+Cc: Peter
+ Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>, Pierre
+ Morel <pmorel@linux.ibm.com>, Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, wanghaibin.wang@huawei.com,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OreK7f6DFfnC
+X-TUID: a7RAIgzGISlr
 
-On Sat, 25 Sept 2021 at 18:22, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
-> So this part of Xilinx Versal:
->
->      * When loading an OS, we turn on QEMU's PSCI implementation with SMC
->      * as the PSCI conduit. When there's no -kernel, we assume the user
->      * provides EL3 firmware to handle PSCI.
->      */
->     if (machine->kernel_filename) {
->         psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;
->     }
->
-> abuses the fact that -kernel command line expect a *Linux* kernel able
-> to read the provided dtb which describe SMC. >This won't work if we
-> manually provide a crafted dtb with another conduit
+Hello,
 
-...which is not a supported thing to do (it won't work with the
-'virt' board either)...
+This is a new version v10 rebased on latest upstream commit 11a1199846.
+To make this series more acceptable, drop the last two patches in v9
+about SMP unit test, since the scalability of the test is not optimally
+designed after rethinking of it. So I will resend the test related
+patches separately after refining them with a best way.
 
->, or if we pass any
-> other binary (not Linux, not particularly ELF, since -kernel can load
-> many formats).
+Patches in v10 are all Reviewed. While some ACKs from x86 maintainers
+are still needed until now.
 
--kernel means "assume I am a Linux kernel and boot me accordingly".
-Sometimes it works for other things, but there are no guarantees.
-Among other things it always means "start me at EL2 or EL1, not EL3",
-so PSCI handling via SMC doesn't get in anybody's way even if they're
-not using it. (People who want a pure "load this ELF file" should
-use the generic-loader.)
+Eduardo, Paolo, any thoughts ?
 
-The basic distinction the versal-virt board is making here is
-"we have EL3 firmware to run in the guest" vs "we don't";
-for the same reason that the virt board does, in the former
-case we disable QEMU's internal PSCI implementation, and in
-the latter we enable it. In theory the orangepi board code
-should do the same, because if we're really running guest
-code at EL3 it probably is going to assume it has SMC, and
-QEMU taking control instead is going to confuse it.
+Thanks,
+Yanan
+.
 
--- PMM
+Summary of v10:
+1) Specifying a CPU topology parameter as zero was implicitly allowed
+but undocumented before, while now it's explicitly deprecated.
+
+2) Refactor/fixes of the smp parsers.
+
+3) For consistency, maxcpus is now uniformly used to calculate the
+omitted topology members.
+
+4) Improve the error reporting.
+
+5) It's also suggested that we should start to prefer cores over sockets
+over threads on the newer machine types, which will make the computed
+virtual topology more reflective of the real hardware. Related discussion
+can be found in [1].
+[1] https://lore.kernel.org/qemu-devel/YNIgInK00yNNI4Dy@redhat.com/
+
+6) In order to reduce code duplication and ease the code maintenance,
+smp_parse() is converted into a generic enough parser for all arches,
+so that the arch-specific ones (e.g. pc_smp_parse) can be removed.
+It's also convenient to introduce more topology members to the generic
+parser in the future. Related discussions can be found in [2] and [3].
+[2] https://lore.kernel.org/qemu-devel/20210630115602.txmvmfe2jrzu7o67@gator.home/
+[3] https://lore.kernel.org/qemu-devel/YPFN83pKBt7F97kW@redhat.com/
+
+---
+
+Changelogs:
+
+v9->v10:
+- rebased on latest upstream commit 11a1199846.
+  there is no change of the patches in v10, except minor update
+  in 08/14 to resolve merge conflict with master.
+- To make this series more acceptable, drop the last two patches
+  about SMP unit test, since the scalability of the test is not
+  optimally designed after rethinking of it. So I will resend the
+  test related patches separately after refining them.
+- v9: https://lore.kernel.org/qemu-devel/20210910073025.16480-1-wangyanan55@huawei.com/
+
+---
+
+Yanan Wang (14):
+  machine: Deprecate "parameter=0" SMP configurations
+  machine: Minor refactor/fix for the smp parsers
+  machine: Uniformly use maxcpus to calculate the omitted parameters
+  machine: Set the value of cpus to match maxcpus if it's omitted
+  machine: Improve the error reporting of smp parsing
+  qtest/numa-test: Use detailed -smp CLIs in pc_dynamic_cpu_cfg
+  qtest/numa-test: Use detailed -smp CLIs in test_def_cpu_split
+  machine: Prefer cores over sockets in smp parsing since 6.2
+  machine: Use ms instead of global current_machine in sanity-check
+  machine: Tweak the order of topology members in struct CpuTopology
+  machine: Make smp_parse generic enough for all arches
+  machine: Remove smp_parse callback from MachineClass
+  machine: Move smp_prefer_sockets to struct SMPCompatProps
+  machine: Put all sanity-check in the generic SMP parser
+
+ docs/about/deprecated.rst  |  15 +++
+ hw/arm/virt.c              |   1 +
+ hw/core/machine.c          | 214 +++++++++++++++++++++++++++----------
+ hw/i386/pc.c               |  63 +----------
+ hw/i386/pc_piix.c          |   1 +
+ hw/i386/pc_q35.c           |   1 +
+ hw/ppc/spapr.c             |   1 +
+ hw/s390x/s390-virtio-ccw.c |   1 +
+ include/hw/boards.h        |  23 ++--
+ qapi/machine.json          |   2 +-
+ qemu-options.hx            |  24 +++--
+ tests/qtest/numa-test.c    |   6 +-
+ 12 files changed, 214 insertions(+), 138 deletions(-)
+
+--
+2.19.1
+

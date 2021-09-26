@@ -1,104 +1,94 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2610564lfp;
-        Sat, 25 Sep 2021 19:50:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyMkyzLtopfFCn+Gz2k6NQjYL56ZzVKjeanM0vYIMme9aVftQ50g17aAjmwQ896RA/Gib3x
-X-Received: by 2002:a02:cc22:: with SMTP id o2mr15646121jap.128.1632624631369;
-        Sat, 25 Sep 2021 19:50:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632624631; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2679687lfp;
+        Sat, 25 Sep 2021 22:08:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwZShqD7EPh2j/bfjlI08n5fJ8JyYMbn21fuo2Z41pl4DDyhmI1uC0tISOOUyFP3WrWAetf
+X-Received: by 2002:a9d:4811:: with SMTP id c17mr1486145otf.337.1632632881031;
+        Sat, 25 Sep 2021 22:08:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632632881; cv=none;
         d=google.com; s=arc-20160816;
-        b=XQS9r/aCW3y5jcimL06CMVl+NqaCMmXfaYPpfVRFg7gc+gEiVLtKKpQZkKyPsUY8F2
-         Ah4T14CQchtFmTtUHQsE1S8A/368zwzK6/I6mz2ysD/04SP8y5IV/BcRmgvRUBLDBdyS
-         wqXV6PtFW1Y6GzJlC0gByxuXLsvOj7vnbmmFYT/g9q5iv2mdYbyJw+ykm99AG84wNzo5
-         2Oa+hYkrtjfcmfTW5ERrEe7DNWaU2a3C3vE4jJG1WhMewMlqfRLXKymUwOtTBr3bYNm9
-         tn253z/N4pZuu4sAdYPnMgrvFZJgb5HqCmP5AReVBcLibzPE8s1k8cZ/l6xfzWsBCrnT
-         +W6g==
+        b=etPF24zu6ZYbsqIGbouqLLneHtY0E6Q9YRIFu3ms3yxU0zOB1g3Lj6xhuI2VYKoVMP
+         UC/SveCdnUrqdUMvfh8kBWblI5B1XUbAY9Sl33Y3HsilbhluF64KjmWm3v2c5FgKgmD8
+         Us9q6i89dX04ELq7vFhi/gVTkE7n2n5yxNbAg9nb9dCBZSje1OjTS6LSZh3jcINvbKwt
+         n+1f/SBh6/aIHnv94yfuUIPcuSpV+iVGIwYjzyYfUVDsqS1QCXJftGAOm3ZUcPsLKtn7
+         /0v9EFjKpGYs2vF5OPa7Cs2PPDqS5aghBuvLd27ocz8ngKoA8IyzNtvWZiU2Q9LbJLPy
+         DI+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=gLJzSmcBrxzcvSFv1Wv+eRpGhPdjDxJGqGXgezXLuBw=;
-        b=SQFMb6Vnfd4hq9VclohTB41amTEWZ3zTPUdHAAyuYhVYFCwdshBFTHLmXw0nWOOhi0
-         UfCTrplRjSZ1xSNPt1NirAcnFUF/pTKNrWERmO5u8UaFDTj7hofgBQ1HK/tk7XSZE+j4
-         JVCKP+fV09+TMuW+r0aISRK7EqdVPx6rEDpUDvB3sZIwUnN0/cG4HlebucA3qCSkVZbS
-         yAsJCw4zXYZDPh7cQAjJKNhrse1KiNXtDM7KeZG1lu6nr9wQMwcqpZGsWiML0yD+Ms8g
-         HzKk7ZurFZG9HT1GTMDpFnPvHwywicGNs1gAt3dNAKZ2MHQzMVxUADZEOUG1H7NJ47IY
-         f2RQ==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=jcXLkaoCGGJvhJvppb7F4fzBh1DVGbcEwtOyBmX7mHI=;
+        b=Jl7O14LnMmj0oD2OzGY5oYoU21Vgnf+4501sDdy/+EeREmpar1pHrfpzemY5q38GTz
+         DEFvLgfa1bhwBRL72Z+fpqQCrLr5qce+Mb3T/kWdKqqVDV+J0Ywr9htaZPIv4PZRk1sf
+         /Gyfz35FCoUWVaaGBITaPru6gq782jvUJ7/kDgWKxMIyd36SKHXJ3+ovnSKmWWGchqNr
+         0/dhj5hEvrKfj2srGFzOx9LHlu/SnFGWg+ry0tm6WpjpXjwArAr+z/ITgmucVRKXYaOP
+         mlaW/AwCpQZrPO5uQWvleuzjzw3XoHQEizry40oFqZoqhozcck3CN3LFzedPKU5ZVvJf
+         V7FA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=CuzXqnAP;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UJu8ai6g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p13si11749210ilq.119.2021.09.25.19.50.31
+        by mx.google.com with ESMTPS id y207si14200562oie.73.2021.09.25.22.08.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Sep 2021 19:50:31 -0700 (PDT)
+        Sat, 25 Sep 2021 22:08:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=CuzXqnAP;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UJu8ai6g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42882 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36474 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUKFK-00023g-NQ
-	for alex.bennee@linaro.org; Sat, 25 Sep 2021 22:50:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42276)
+	id 1mUMOO-0000bE-Cw
+	for alex.bennee@linaro.org; Sun, 26 Sep 2021 01:08:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42934)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mUKEy-00022a-FQ; Sat, 25 Sep 2021 22:50:08 -0400
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:38454)
+ (Exim 4.90_1) (envelope-from <xchengl.cn@gmail.com>)
+ id 1mUKN1-0007Wa-KX; Sat, 25 Sep 2021 22:58:27 -0400
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:35723)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1mUKEw-0003yj-Lu; Sat, 25 Sep 2021 22:50:08 -0400
-Received: by mail-yb1-xb34.google.com with SMTP id m70so15154068ybm.5;
- Sat, 25 Sep 2021 19:50:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xchengl.cn@gmail.com>)
+ id 1mUKMz-0002Lv-Vp; Sat, 25 Sep 2021 22:58:27 -0400
+Received: by mail-pj1-x1042.google.com with SMTP id
+ d13-20020a17090ad3cd00b0019e746f7bd4so7367258pjw.0; 
+ Sat, 25 Sep 2021 19:58:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gLJzSmcBrxzcvSFv1Wv+eRpGhPdjDxJGqGXgezXLuBw=;
- b=CuzXqnAPxhzOZlsNv46HaiD2mSaM4Tjw8dPqHOeYZCzAbyQIyHG+niwgoipopri5a2
- RgASbkCUXpRo7Ch8WtT9HVlhfUX0geZxb3JNlkROMRcavBkpg2mBq8ETRye5juE+R7bb
- 4P6bW/PzSupxon6mUcM3MafLvBcr4wtPd8giwW1oQkEHPaWGOPqMvYPGkl4xcQgRaCRV
- 5LICfw9ANBDwK5oHBxjbT2RRCfonEDn4uRWTJqy5Ri8cZuu8DqU9BJBkYOFKuktK8dFt
- iC39bR5g+z4pPUl5bHVDZ4cQ4ISG3vfjAJOsvKty94ZoUZQRy7gAQ3LxivdmnC95XArg
- odtg==
+ h=from:to:cc:subject:date:message-id;
+ bh=jcXLkaoCGGJvhJvppb7F4fzBh1DVGbcEwtOyBmX7mHI=;
+ b=UJu8ai6g9bafMG2XtyYr03yLgROdY0JZ9BfRhR8Yo404EbUIOnGnimD5YksOEaF241
+ wdlPEKepwrIHDkFDdTBDZd4iAU7Z34LCoSQgfvO0KnFv2pGRFeiAnIfcx0wu8dSqRAK6
+ ZNDlww8a+6FDuUS5D9q0Uz5EU4XaVHjHta0IcTVZ2uRKkqLawJbJKfpDjtFpBBOftKHg
+ +B2+Lq4NDZYABP/LpR7hHpBmFfjxKaeaUkPRyZBEZ7Pb5AGxbQgh0NAGxXHbpk5i0dOT
+ hBGLLL+5lEljB3r0uHnfeASO92ezHtINCI5RyOE92kbbPmLWAJhXcHr/WuQYKTF0Poav
+ OWCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gLJzSmcBrxzcvSFv1Wv+eRpGhPdjDxJGqGXgezXLuBw=;
- b=hQx//Ojsgh0we7loVMvFf/uilsCcxWFhl2rRL6u9JXhbTCKhFnQTJzgGKuHzW6Xo86
- o3LdyQYhyiAyrMf0H/sy+aFP2shPMXAdnJG3cRCugA3/AmqmNIdphHWlb6j4N+N6pS08
- PGehDnRI0dBD7Wv8yDnUYfOqfusN02Zyu9J2kKcxxeZVm2xp/oI3pqgesdgdQF0jXvi+
- 800zHSVEvnOMHXPApAhjcFOksrejL2ftsigQck42lRwoKDGsu8mJojwdRVSR6DpGZbqh
- BUhxi9bKTrFfT56ggzoS0Fm4F0p9LXbAQ357ueGm4VX5jLsZUV78LYxn+snpPPOnrxVi
- rkDg==
-X-Gm-Message-State: AOAM530CDYLzR1XkkOpKI45cP63aR3B5JTgCABwBtJaOOaz/VC0FjKBB
- RArzm4c4kuSEhbr0VjKljB5Kj0rCNKb56svCik0RRr8QhzM=
-X-Received: by 2002:a25:ad52:: with SMTP id l18mr20191653ybe.453.1632624604686; 
- Sat, 25 Sep 2021 19:50:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAFEAcA_cAp6kWTE6Lpx6QF1zfTYfQXiOPgdfkztS3iuJkRB0xQ@mail.gmail.com>
- <b5e43e87-c1bd-3265-298e-346413a22a82@roeck-us.net>
- <CAEUhbmWN1=j=hPntg1j6aOv-AZNDm1UrDFB364Qqf0SAccyJew@mail.gmail.com>
- <c49b65a2-fa3e-c180-5fdf-a0a64cb91a32@amsat.org>
- <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
- <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
- <CAEUhbmVfFRdbtu7yWUauO6sd0QNhoH6tuTAFA2PMxZp5P7+awA@mail.gmail.com>
- <PH0PR11MB5205AE78D6C5DFFFA767183B97D49@PH0PR11MB5205.namprd11.prod.outlook.com>
- <8b86d434-a2e6-8122-0a88-dc9a15fbfe87@roeck-us.net>
- <PH0PR11MB5205684F9CDEC890187D09D997DC9@PH0PR11MB5205.namprd11.prod.outlook.com>
- <20210916142140.GA252836@roeck-us.net>
- <PH0PR11MB52058E0462672E61797758B997DE9@PH0PR11MB5205.namprd11.prod.outlook.com>
- <2cd83a88-952c-6f86-74b2-8c0da3ce4394@roeck-us.net>
-In-Reply-To: <2cd83a88-952c-6f86-74b2-8c0da3ce4394@roeck-us.net>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sun, 26 Sep 2021 10:49:53 +0800
-Message-ID: <CAEUhbmVVjXKUxa95+GPPZSU5=isgTs7EMnN7gxgYn9Lkg+a0Xg@mail.gmail.com>
-Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb34.google.com
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=jcXLkaoCGGJvhJvppb7F4fzBh1DVGbcEwtOyBmX7mHI=;
+ b=nqMS44J3R6PcG2ChAymNKxiTDSBDk6j1wIiGGTejf3kmJH13sHEGHAaeV/XhIOmRmL
+ eOke4c7sdyRSxfq5yvcaX9gl0JBbktGDQFMXrbcCQ+0z9/0o0JF7w9E4PCxFD+ArFoR0
+ c1X64DNrnJa/Dz6WWZJR4AKtKFEqGQKHG6NnimNLHh9XtPkpvid6pNgSFkuKWvSKxinO
+ KmOhLVEfUg9avmHocjauwLU68/kVoa7n9vG5tJ8UPMmoDsADjPpBNddAvrbd2VBxOmYv
+ 8b+RwDh7J+yhTzaR0fgNT9fedY7FZLI1Z2UdVqI2PVQ4KXgKu90ILS6RLXlY9AhqioHZ
+ yV7Q==
+X-Gm-Message-State: AOAM533kws4xksBaLufuudR2MlXKdMywweMSyZmoXvy14cC7Pn206Urb
+ QBIUrySbEfG/eBZ03El5c6MFAX7pmA==
+X-Received: by 2002:a17:90a:1d8:: with SMTP id
+ 24mr11340519pjd.69.1632625102697; 
+ Sat, 25 Sep 2021 19:58:22 -0700 (PDT)
+Received: from localhost.localdomain ([120.244.142.81])
+ by smtp.gmail.com with ESMTPSA id v11sm5085566pjs.40.2021.09.25.19.58.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 25 Sep 2021 19:58:22 -0700 (PDT)
+From: Xuzhou Cheng <xchengl.cn@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/arm: sabrelite: Connect SPI flash CS line to GPIO3_19
+Date: Sun, 26 Sep 2021 10:56:51 +0800
+Message-Id: <20210926025651.29456-1-xchengl.cn@gmail.com>
+X-Mailer: git-send-email 2.17.1
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
+ envelope-from=xchengl.cn@gmail.com; helo=mail-pj1-x1042.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,6 +97,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 26 Sep 2021 01:07:50 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,44 +109,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, "Cheng,
- Xuzhou" <Xuzhou.Cheng@windriver.com>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, xuzhou.cheng@windriver.com,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ bmeng.cn@gmail.com, groeck7@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zf5EN9g+8AFq
+X-TUID: j5otawfrRziA
 
-On Sat, Sep 18, 2021 at 12:19 PM Guenter Roeck <linux@roeck-us.net> wrote:
->
-> On 9/17/21 8:09 PM, Cheng, Xuzhou wrote:
-> >>> I got some free time in the past days to investigate this issue. Guenter is right, the Linux imx-spi driver does not work on QEMU.
-> >>>
-> >>> The reason is that the state of m25p80 machine loops in STATE_READING_DATA state after receiving RDSR command, the new command is ignored. Before sending a new command, the CS line should be pulled to high, this make the state of m25p80 back to IDLE.
-> >>>
-> >>> I have same point with Guenter, it's that set CS to 1 when burst is zero. But i don't think it is necessary to set CS to 0 in imx_spi_flush_txfifo(). I will send a new patch to fix this issue.
-> >>>
-> >>
-> >> Thanks a lot for looking into this. If you have a better solution than mine, by all means, please go for it. As I mentioned in my patch, I didn't really like it, but I was unable to find a better solution.
-> > I am doing some experiment to verify that the new patch is reasonable, so the new patch will be delayed few days.
-> >
->
-> No problem. Note that I'll be traveling for the next 2-3 weeks, and I won't be able
-> to test any patches during that time.
->
+From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 
-I have some updates to share, as I have been working with Xuzhou
-internally on this issue for the past days:
+The Linux spi-imx driver does not work on QEMU. The reason is that the
+state of m25p80 loops in STATE_READING_DATA state after receiving
+RDSR command, the new command is ignored. Before sending a new command,
+CS line should be pulled high to make the state of m25p80 back to IDLE.
 
-Current mods using BURST_LEN to determine the timing to pull up the CS
-line in the SPI controller codes is a workaround. Hardware does not do
-this. To understand what real hardware behavior is, Xuzhou used an
-oscilloscope to verify our guess.
+Currently the SPI flash CS line is connected to the SPI controller, but
+on the real board, it's connected to GPIO3_19.
 
-It turns out the root cause is elsewhere, and a proper fix will be
-sent out soon.
+Should connect the SSI_GPIO_CS to GPIO3_19 when adding a spi-nor to
+spi1 on sabrelite machine.
 
-Regards,
-Bin
+Verified this patch on Linux v5.14.
+
+Logs:
+  # echo "01234567899876543210" > test
+  # mtd_debug erase /dev/mtd0 0x0 0x1000
+  Erased 4096 bytes from address 0x00000000 in flash
+  # mtd_debug write /dev/mtdblock0 0x0 20 test
+  Copied 20 bytes from test to address 0x00000000 in flash
+  # mtd_debug read /dev/mtdblock0 0x0 20 test_out
+  Copied 20 bytes from address 0x00000000 in flash to test_out
+  # cat test_out
+  01234567899876543210#
+
+Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+Reported-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Bin Meng <bin.meng@windriver.com>
+---
+ hw/arm/sabrelite.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+index 29fc777b61..553608e583 100644
+--- a/hw/arm/sabrelite.c
++++ b/hw/arm/sabrelite.c
+@@ -87,7 +87,7 @@ static void sabrelite_init(MachineState *machine)
+                 qdev_realize_and_unref(flash_dev, BUS(spi_bus), &error_fatal);
+ 
+                 cs_line = qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS, 0);
+-                sysbus_connect_irq(SYS_BUS_DEVICE(spi_dev), 1, cs_line);
++                qdev_connect_gpio_out(DEVICE(&s->gpio[2]), 19, cs_line);
+             }
+         }
+     }
+-- 
+2.17.1
+

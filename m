@@ -1,90 +1,89 @@
-Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp1644049qvp;
-        Mon, 27 Sep 2021 06:50:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyeA+nFdrevLSe9bkv/ugy2JeYoT18S1vq/w+gL0aYDv4ffuGCFlWF0A+0POjn3vViNCieh
-X-Received: by 2002:a05:600c:206:: with SMTP id 6mr16263248wmi.114.1632750644503;
-        Mon, 27 Sep 2021 06:50:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632750644; cv=none;
+Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp1644549qvp;
+        Mon, 27 Sep 2021 06:51:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCmQlpV4vNw98VvecztsRwyWPPsxnX2FMoQbfBrsiOwmxjNM+uw2menCABZlkQ43EC1SHf
+X-Received: by 2002:a05:600c:3b83:: with SMTP id n3mr68923wms.50.1632750683707;
+        Mon, 27 Sep 2021 06:51:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632750683; cv=none;
         d=google.com; s=arc-20160816;
-        b=u9duGM5P88Vrkf5Kn/vVYM8I468xd68inNXt6Rvwtd8wRIUgMhGyIQQzZLpjc/wEoH
-         1qshHg/s/rZEPLSrJYFOARgdk71b/RS9u7p4AQba9fzRy1XBMcSLkw9utJDob8wm1vas
-         Dt/1SzgeYIlXxQ5gTnQTI0ep9gxHttQoHQKLkwHDhRcIFAd0AaF1rsvCzXq0zEdXH1dl
-         segjqjNndpNdirWPbuxGolwiTeBiDqaUmezDtElsNR67ql4OtYGmLEIzCO5pUy6nGwHA
-         DgftfobbYU6MKtVgX+LrC07cImAz7JN7Z329DTQqy1KchF7exFC4Z1y5ltEMDoSwXJcM
-         o8/A==
+        b=inbwYL39xfS5HZOsUIby6HrzqRKRvwJeBTUB5rzTwqqJ5823yrMakRBr47xidbjKMR
+         n7JRM+wSvueq9GRu44FfWFTIEt7adMUFb8MvdLV17v883iaWv/VfcWSLTf+qmbIJupAT
+         GkVfa2Aiy0nSzjapzQRyJmW9jNsVyVUH9S0wL5cNamkwo206/N+laEwpLRLh3l8gn22X
+         g5jDtihn4wS1rqj4VW+Pfos3dAOrxSx4X//mmBGAEDEpsHUyr78JS/k4fwmdUhKzn0p+
+         E/UEJ1NGIS9XoTziLmI9wkSP6+v2AqE45kLU8qJRA9WAFfBMzvVFNN+Ur7r6h0wmlX8m
+         HJNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=0Fp7e0Pupmf9rRYDGH5MDdhZvQYuVVV9DiU/mxoz2zk=;
-        b=RQXBgztU3ShJkMB3gQ4Gm56YnkP6tE5rzWTHtx/vKd3OJ2LJ5ZBs0YhOaHmFhACrCM
-         Hote0OYVJKm0eCgqV5EMjPdqZjcNGBdNzExCuqijAGAaKAD3SFZIgCCg2hHLF9BgQRbF
-         YCXlqkmmXqCGEzhSTa6i59s0LoCdBdrMYQiLVNeg26ewbz7MCciWcLQAxGVj50PB141A
-         aWsij4RVRefeJlCTKgV8bVG2RYbSh8Vdkp9125cKJ7DKY/7Kje7fL6gWnQBFPF+b6OzD
-         treLb17K310aVwQJEBwQ7BWc8cTg1QqNQZ1oDHGgrCKOkcRBpXJVG0MhlDjpQBvM5lJd
-         b62A==
+        bh=PtEEJxhUKE9iyvBPM1pUE6AiR8kLESvhZixEtvcf0ug=;
+        b=dksptKsw7mSHZYi+iTe/bJA83FqmK9XDJj9PnTc6C8By7jb0WvPE1e7Zb/oREEhSsA
+         Q/Z+ynd+DxBIw67rfcpQOkgrV6ubJmNEzRJfar2DISlLmnIUNZCIVXIdVPPa7iqUISC9
+         wR31y+zaafrbQOu7n4NYqWUY1qq5xPp/eQi8nAxtmZwEYQWWLarJDH0mF/rFjyY/wVRk
+         90xeBs7bF88BoyDd2VSHW7OUVnI87NJiPh9MNQepTisbMzubiJuwAbny/M5euh2c62w+
+         aKx//bGBq/Wi59dw1MhTGjgPEwfA13qD51+2VoIKhISOD3cPM/FwyNjc68hlV7B2bp9d
+         8PWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bEe0JpcG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="L/emXk5E";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r16si24514470wmq.83.2021.09.27.06.50.44
+        by mx.google.com with ESMTPS id v3si16075362wmj.38.2021.09.27.06.51.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 06:50:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Sep 2021 06:51:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bEe0JpcG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="L/emXk5E";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53226 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUr1n-0006va-K3
-	for alex.bennee@linaro.org; Mon, 27 Sep 2021 09:50:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44426)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mUr2P-0007hj-Hc
+	for alex.bennee@linaro.org; Mon, 27 Sep 2021 09:51:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mUqWX-0005de-AS
- for qemu-arm@nongnu.org; Mon, 27 Sep 2021 09:18:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58534)
+ id 1mUqWQ-0005NS-Pm
+ for qemu-devel@nongnu.org; Mon, 27 Sep 2021 09:18:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:39776)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mUqWU-0002jI-NU
- for qemu-arm@nongnu.org; Mon, 27 Sep 2021 09:18:25 -0400
+ id 1mUqWP-0002fO-2G
+ for qemu-devel@nongnu.org; Mon, 27 Sep 2021 09:18:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632748701;
+ s=mimecast20190719; t=1632748696;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0Fp7e0Pupmf9rRYDGH5MDdhZvQYuVVV9DiU/mxoz2zk=;
- b=bEe0JpcGd0kzHHcbr6F9vb+nqNU/RSH6RUEfg2xfwKxIFX8w+1GbGAjg7YQSKxihmxLDDO
- XtzzeQwmACw/pyeppOV1T2h5MUj+/KTeV/JvPBRIj3uxeS+4f/EHZByw7Rq0XF7LonPHcX
- AT+kXkIZjYt2SWLq21dXwCZiaOyPuSk=
+ bh=PtEEJxhUKE9iyvBPM1pUE6AiR8kLESvhZixEtvcf0ug=;
+ b=L/emXk5EASTLjSjdfFZNFrRBkhDFQyh0zmq+7bvd9ZmS61CrJYVNeJBaNKQ+xyvX2Dl6Id
+ ou3Cv/HuGn/UXZIs5NyE8iLH37fXMMyykJh67eIPF4llmAFx4wdizSMinjJukgPF2T6BDz
+ YX9abEbhQfyUXvp7XvWIMD3MDgdTLwE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-205-f_iATHPfOZmgKWUQqG1I0w-1; Mon, 27 Sep 2021 09:18:20 -0400
-X-MC-Unique: f_iATHPfOZmgKWUQqG1I0w-1
+ us-mta-31-tDLEGtboOKO4aB1xp7KiNg-1; Mon, 27 Sep 2021 09:18:15 -0400
+X-MC-Unique: tDLEGtboOKO4aB1xp7KiNg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 76EE019251A4;
- Mon, 27 Sep 2021 13:18:19 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DB42919251A0;
+ Mon, 27 Sep 2021 13:18:13 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.194.179])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3C2611A7E9;
- Mon, 27 Sep 2021 13:18:14 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4A5D019729;
+ Mon, 27 Sep 2021 13:18:06 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, mst@redhat.com,
  imammedo@redhat.com, philmd@redhat.com, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  ardb@kernel.org, drjones@redhat.com
-Subject: [PATCH v3 3/3] bios-tables-test: Generate reference table for
- virt/DBG2
-Date: Mon, 27 Sep 2021 15:17:32 +0200
-Message-Id: <20210927131732.63801-4-eric.auger@redhat.com>
+Subject: [PATCH v3 2/3] hw/arm/virt_acpi_build: Generate DBG2 table
+Date: Mon, 27 Sep 2021 15:17:31 +0200
+Message-Id: <20210927131732.63801-3-eric.auger@redhat.com>
 In-Reply-To: <20210927131732.63801-1-eric.auger@redhat.com>
 References: <20210927131732.63801-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -95,108 +94,144 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: gshan@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s+QsvkO6dpJ/
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ngDB8BOQNjnM
 
-Add the DBG2 table generated with
-tests/data/acpi/rebuild-expected-aml.sh
+ARM SBBR specification mandates DBG2 table (Debug Port Table 2)
+since v1.0 (ARM DEN0044F 8.3.1.7 DBG2).
+
+The DBG2 table allows to describe one or more debug ports.
+
+Generate an DBG2 table featuring a single debug port, the PL011.
+
+The DBG2 specification can be found at
+"Microsoft Debug Port Table 2 (DBG2)"
+https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table?redirectedfrom=MSDN
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-Tested by comparing the content with the table generated
-by EDK2 along with the SBSA-REF machine (code generated by
-DynamicTablesPkg/Library/Acpi/Arm/AcpiDbg2LibArm/Dbg2Generator.c).
+v2 -> v3:
+Took into account all comments from Igor on v2:
+mostly style adjustment, revision references
 
-I reused the Generic Address Structure filled by QEMU in the SPCR, ie.
-bit_width = 8 and byte access. While EDK2 sets bit_width = 32 and
-dword access. Also the name exposed by acpica tools is different:
-'COM0' in my case where '\_SB.COM0' in SBSA-REF case?
-
-Here is the human readable content:
-
-[000h 0000   4]                    Signature : "DBG2"    [Debug Port table type 2]
-[004h 0004   4]                 Table Length : 00000057
-[008h 0008   1]                     Revision : 03
-[009h 0009   1]                     Checksum : C8
-[00Ah 0010   6]                       Oem ID : "BOCHS "
-[010h 0016   8]                 Oem Table ID : "BXPC    "
-[018h 0024   4]                 Oem Revision : 00000001
-[01Ch 0028   4]              Asl Compiler ID : "BXPC"
-[020h 0032   4]        Asl Compiler Revision : 00000001
-
-[024h 0036   4]                  Info Offset : 0000002C
-[028h 0040   4]                   Info Count : 00000001
-
-[02Ch 0044   1]                     Revision : 00
-[02Dh 0045   2]                       Length : 002B
-[02Fh 0047   1]               Register Count : 01
-[030h 0048   2]              Namepath Length : 0005
-[032h 0050   2]              Namepath Offset : 0026
-[034h 0052   2]              OEM Data Length : 0000 [Optional field not present]
-[036h 0054   2]              OEM Data Offset : 0000 [Optional field not present]
-[038h 0056   2]                    Port Type : 8000
-[03Ah 0058   2]                 Port Subtype : 0003
-[03Ch 0060   2]                     Reserved : 0000
-[03Eh 0062   2]          Base Address Offset : 0016
-[040h 0064   2]          Address Size Offset : 0022
-
-[042h 0066  12]        Base Address Register : [Generic Address Structure]
-[042h 0066   1]                     Space ID : 00 [SystemMemory]
-[043h 0067   1]                    Bit Width : 08
-[044h 0068   1]                   Bit Offset : 00
-[045h 0069   1]         Encoded Access Width : 01 [Byte Access:8]
-[046h 0070   8]                      Address : 0000000009000000
-
-[04Eh 0078   4]                 Address Size : 00001000
-
-[052h 0082   5]                     Namepath : "COM0"
+v1 -> v2:
+- rebased on Igor's refactoring
 ---
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- tests/data/acpi/virt/DBG2                   | Bin 0 -> 87 bytes
- 2 files changed, 1 deletion(-)
+ hw/arm/virt-acpi-build.c | 62 +++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 61 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 1910d154c2..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/virt/DBG2",
-diff --git a/tests/data/acpi/virt/DBG2 b/tests/data/acpi/virt/DBG2
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..23cd281683752a3ff628d042d2906169319013ac 100644
-GIT binary patch
-literal 87
-zcmZ>9ayJTRU|?WA<K*w`5v<@85#X!<1dKp25F14605OPW&}Lv{Wl#gL7#JFufrJ=?
-V5(5JVSdtSgD!{<t?C)#9000be2>}2A
-
-literal 0
-HcmV?d00001
-
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6cec97352b..257d0fee17 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -616,6 +616,63 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_table_end(linker, &table);
+ }
+ 
++/* Debug Port Table 2 (DBG2) */
++static void
++build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++{
++    AcpiTable table = { .sig = "DBG2", .rev = 3, .oem_id = vms->oem_id,
++                        .oem_table_id = vms->oem_table_id };
++    int dbg2devicelength;
++    const char name[] = "COM0";
++    const int namespace_length = sizeof(name);
++
++    acpi_table_begin(&table, table_data);
++
++    dbg2devicelength = 22 /* BaseAddressRegister[] offset */ +
++                       12 /* BaseAddressRegister[] */ +
++                       4 /* AddressSize[] */ +
++                       namespace_length /* NamespaceString[] */;
++
++    /* OffsetDbgDeviceInfo */
++    build_append_int_noprefix(table_data, 44, 4);
++    /* NumberDbgDeviceInfo */
++    build_append_int_noprefix(table_data, 1, 4);
++
++    /* Table 2. Debug Device Information structure format */
++    build_append_int_noprefix(table_data, 0, 1); /* Revision */
++    build_append_int_noprefix(table_data, dbg2devicelength, 2); /* Length */
++    /* NumberofGenericAddressRegisters */
++    build_append_int_noprefix(table_data, 1, 1);
++    /* NameSpaceStringLength */
++    build_append_int_noprefix(table_data, namespace_length, 2);
++    build_append_int_noprefix(table_data, 38, 2); /* NameSpaceStringOffset */
++    build_append_int_noprefix(table_data, 0, 2); /* OemDataLength */
++    /* OemDataOffset (0 means no OEM data) */
++    build_append_int_noprefix(table_data, 0, 2);
++
++    /* Port Type */
++    build_append_int_noprefix(table_data, 0x8000 /* Serial */, 2);
++    /* Port Subtype */
++    build_append_int_noprefix(table_data, 0x3 /* ARM PL011 UART */, 2);
++    build_append_int_noprefix(table_data, 0, 2); /* Reserved */
++    /* BaseAddressRegisterOffset */
++    build_append_int_noprefix(table_data, 22, 2);
++    /* AddressSizeOffset */
++    build_append_int_noprefix(table_data, 34, 2);
++
++    /* BaseAddressRegister[] */
++    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
++                     vms->memmap[VIRT_UART].base);
++
++    /* AddressSize[] */
++    build_append_int_noprefix(table_data, 0x1000 /* Register Space */, 4);
++
++    /* NamespaceString[] */
++    g_array_append_vals(table_data, name, namespace_length);
++
++    acpi_table_end(linker, &table);
++};
++
+ /*
+  * ACPI spec, Revision 5.1 Errata A
+  * 5.2.12 Multiple APIC Description Table (MADT)
+@@ -875,7 +932,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     dsdt = tables_blob->len;
+     build_dsdt(tables_blob, tables->linker, vms);
+ 
+-    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
++    /* FADT MADT GTDT MCFG SPCR DBG2 pointed to by RSDT */
+     acpi_add_table(table_offsets, tables_blob);
+     build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+ 
+@@ -898,6 +955,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_spcr(tables_blob, tables->linker, vms);
+ 
++    acpi_add_table(table_offsets, tables_blob);
++    build_dbg2(tables_blob, tables->linker, vms);
++
+     if (vms->ras) {
+         build_ghes_error_table(tables->hardware_errors, tables->linker);
+         acpi_add_table(table_offsets, tables_blob);
 -- 
 2.26.3
 

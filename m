@@ -1,801 +1,601 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4026662lfp;
-        Mon, 27 Sep 2021 09:40:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxffvfeVWKIENT+ZJgJm8YYqZibSi916HKc0D9iglAR6mFEXFqTw54p/eEBJMNrr+S6vose
-X-Received: by 2002:a05:6000:1379:: with SMTP id q25mr954550wrz.280.1632760805892;
-        Mon, 27 Sep 2021 09:40:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632760805; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4136616lfp;
+        Mon, 27 Sep 2021 11:56:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx35HGlqcBUcP1ZGNo60jvzUhp8jk0PXAvO3GYyLmHvK+i+7ozolsoJ1ziS9VFpRAGBJ3Uf
+X-Received: by 2002:a05:6102:a8d:: with SMTP id n13mr1653383vsg.17.1632768963719;
+        Mon, 27 Sep 2021 11:56:03 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1632768963; cv=pass;
         d=google.com; s=arc-20160816;
-        b=CNoBR3x/l+dRFA9zWn1PF0sFJpn01Te2lNlgckoWjktgmSjGGjpzuXRCdthqkeirQJ
-         CLVn5pw73T0Ca6SjatM2XOQodPGCr9vFv5sXO0i3Kx0nPTObMfLWvmWRgmREw43aXoEf
-         nEyqpRPLzhGQAlx8uzCa8HIsvy0Cf0rteMjLpmz/iN2EBrjc+e9PszIGoiCHkR42Ap5h
-         wK4s7D2tdrUbWdwfbuIt8FKgQN1uvU+HR4X/zSlg1zK31uy3PjAFbYxF8ki6S6FG8frm
-         IvEhG1UIyN8tpCz6h3BaTHHc1sT5apG9EzQIAgXC0JrEcfCC9yOFRYLD98gwuCOZ2Ed+
-         aPNQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=cUq4xl4nW+7Tp/ISXBRxs5olh27djrkmsp59yEYwwd4=;
-        b=cUASfm6i0CRA80OLZDM816x14KjHBcpBves4edvN5X6zD1pdfs+gnafTpoXwmxpWW9
-         YB+8Z8oprTvY9M5z5A6AHPc/kajkhklRqCxGt17ZcaUlHoC8aaNDDrjqNHZJgwY/ZQe0
-         A7g12BN1NARiBJzzb0c9lYCJO7l1D3VWZIl3z0WwAWcGr6xoOUyBnvl1Jy8Y2FAyuNJb
-         t4DFKRh+TtyXB2RArmj53xx2QTVpyUFpWmYiTH464zwPyfhpRZ15dno2JS1k1bSiouXv
-         kf8hDsmzwSpoQEdO+qGz/sl65vyC3aaQM2vpK8qYfiG7bSfvNGiXQOIvGN79k5HY2+94
-         2bkA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=KVxbygAl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+        b=l89tAAjXSx/PD1VUH6SJpRY6OJfDnj9TlP3gLXDyJNRrkYvi8ZS2q3wmoBkU0FOtVS
+         5bOtkC8Os6zyXhmwhLoJNM2WoonB6cMYjlZtR9NAhZb4dn+4OC2UXfO8XkCfRLvBoA7k
+         gqJktLaQUH8/G1TSCQO3/oBoV4/GuNkXZea98zqJRi5JM4ot0FeOGKfROgz8XGXGfGsr
+         8g3HyFK6CawPGYBV67waFhYK2Ah/BcJUqQ9lxm7GhclZLYkFWBEsZv+Zs91uYXQqrvFv
+         Hvc9cwpGcWNWsAFTMtLLJ8S7yoUc9HJ0zWlSB/hy72yMXjGTp5OCJLsUP5ao6Pr6UVMI
+         H82A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :stx-hosted-ironport-oubound:suggested_attachment_session_id
+         :msip_labels:content-language:accept-language:in-reply-to:references
+         :message-id:date:thread-index:thread-topic:subject:cc:to:from
+         :dkim-signature:dkim-signature;
+        bh=RPmhyPmqZR0mgSKEtya7br1+j9drYWhH+UuQxp9KkLU=;
+        b=rPCL4VvQIR0hHi2fImIMeP65aDn8kavfIWM2xEjsLdsnl4to8DMjDkqw6cvhazet2h
+         L0zGoLO8sWiHybl5YEbOjKMbDG73Y8UHtN3AvCGDecMPo7JOIQg8pgEoVHbNx86Bw9aj
+         JZVA3LA2GhphtX7jrshKIc1cPpJJTvqCgerqt/Q1+mp2HDSGWJU4nuDknkXmxjnqhdY5
+         c148Pbz5+VMe77/oqLSxDxn6YdzqmeLJVpnx8GckXdzPja0V6CARm2wHoQW6sGrjX6oR
+         ZNitlsp6Zwr5PWcHXUbQqE20dwtVfaHwelTURDVipeCrzv91t93Va8nmJ6O/Vi7SnpZY
+         lcrQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@seagate.com header.s=stxiport header.b=RVrg3LnA;
+       dkim=pass header.i=@seagate.com header.s=selector1 header.b=VLGgtP3V;
+       arc=pass (i=1 spf=pass spfdomain=seagate.com dkim=pass dkdomain=seagate.com dmarc=pass fromdomain=seagate.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=seagate.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d1si9315872wre.4.2021.09.27.09.40.05
+        by mx.google.com with ESMTPS id i15si7409148vsm.91.2021.09.27.11.56.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 09:40:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Sep 2021 11:56:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=KVxbygAl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60526 helo=lists1p.gnu.org)
+       dkim=fail header.i=@seagate.com header.s=stxiport header.b=RVrg3LnA;
+       dkim=pass header.i=@seagate.com header.s=selector1 header.b=VLGgtP3V;
+       arc=pass (i=1 spf=pass spfdomain=seagate.com dkim=pass dkdomain=seagate.com dmarc=pass fromdomain=seagate.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=seagate.com
+Received: from localhost ([::1]:47630 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUtfe-0004HC-AK
-	for alex.bennee@linaro.org; Mon, 27 Sep 2021 12:40:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43270)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mUvnG-0007QH-UM
+	for alex.bennee@linaro.org; Mon, 27 Sep 2021 14:56:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUtXm-0002gP-EQ; Mon, 27 Sep 2021 12:31:54 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:43670)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUtXj-0002mV-Bm; Mon, 27 Sep 2021 12:31:54 -0400
-Received: by mail-wr1-x435.google.com with SMTP id x20so8322009wrg.10;
- Mon, 27 Sep 2021 09:31:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=cUq4xl4nW+7Tp/ISXBRxs5olh27djrkmsp59yEYwwd4=;
- b=KVxbygAlrftAANDaoA7MYCdirbtjmFVb/H32SgOYSDdKGtLUPpzo47LPAWRtWk1Sy+
- hSV+tYTVf5iWc8Ey6VDYk56taRnm0e0f2jYrTV4iVOxEP1qKmk9NDsGYtahK7DP2kRvR
- e2NqvXN8NgL1edHc8gbvMqLiyw+yYRu53wYEV6oi+Lf5brOW/H4+Mp9Lwc6XoUEHYtW8
- +63fhgvaFIzw1QoIRQ3JuuxgzRdatvy/hlqsoBw7pXdP4QV2O3al9OF0TyAL5T+0NNiT
- 8TLU18fPgwSCJJ858KjXsnNsChd08sV/3CT7oLjM43AehRjvIWfNI62dIiYvkO1RVUqu
- AyLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cUq4xl4nW+7Tp/ISXBRxs5olh27djrkmsp59yEYwwd4=;
- b=4nktWX5Ak2asSbnSfSYP+56n9tbYccQ4rpcDUiqYA77uoPKD5IUgrcmAX331mAN7pd
- Mvr+GPxO9NLRSrYw1Wwq2hi8gUaL5a4y1J08sAgkBhpr6Gl/KIw/N02TCdrGzKj8vSZz
- oybwP5BZsOZSC905C7XcZ5rr6Zpefinc7df4BCSyPb0bCRuRUNdSI8gUHcNUY0ti1FwQ
- y3ppFYadl+4MtyavD7nnFmrI6ZuNFGYrHSrg1ruth8Rx/3jSTWRYwR0sSrfHM/BenSBh
- D52aNCujVqK4+xjtubsEP2h7rgtL4dO9xvNvkhoTPy8e9izQX+Fw8e7pDilSRSFH6K8I
- gx2g==
-X-Gm-Message-State: AOAM533OABVx21wckD4vv0G7C/3SP2aMR7fEFCZqXpEw6nbE2huQ1fyR
- Zfd5/b8PIrYrj5oSaSGDziGEBVXaS6k=
-X-Received: by 2002:a05:6000:144d:: with SMTP id
- v13mr845240wrx.303.1632760307527; 
- Mon, 27 Sep 2021 09:31:47 -0700 (PDT)
-Received: from x1w.redhat.com (118.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id n11sm4279wmq.19.2021.09.27.09.31.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Sep 2021 09:31:47 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 6/6] tests/acceptance: Rename avocado_qemu.Test ->
- QemuSystemTest
-Date: Mon, 27 Sep 2021 18:31:16 +0200
-Message-Id: <20210927163116.1998349-7-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210927163116.1998349-1-f4bug@amsat.org>
-References: <20210927163116.1998349-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <shitalkumar.gandhi@seagate.com>)
+ id 1mUvn5-0007LT-CG; Mon, 27 Sep 2021 14:55:51 -0400
+Received: from esa.hc4959-67.iphmx.com ([139.138.35.140]:39742)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shitalkumar.gandhi@seagate.com>)
+ id 1mUvn1-0005Jk-Lo; Mon, 27 Sep 2021 14:55:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=seagate.com; i=@seagate.com; q=dns/txt; s=stxiport;
+ t=1632768947; x=1664304947;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:mime-version;
+ bh=/jv0tm97c40qW5wopIWa0EJjgg7TX4DEakWXF3jsAJQ=;
+ b=RVrg3LnAZV+Stfv1cJCc0b1vLaSI9RtDsIa9ssuFZvEsVY1a3p8t6U3L
+ RV9s44Ecd0FT+nrDBy+WJSkfn8+eSMK4r/htY45FD6PEsMfNE+6m2WwKW
+ NwL/W5KjC5AMpW9y4uHS1JT0psBXR5Prl/FzVa8zXNwfegWY78uxvWxWw E=;
+Received: from mail-mw2nam08lp2176.outbound.protection.outlook.com (HELO
+ NAM04-MW2-obe.outbound.protection.outlook.com) ([104.47.73.176])
+ by ob1.hc4959-67.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Sep 2021 11:55:40 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YwKyetRXtoMQmrQvLK9+jcBf0fHVxhmd8rlEHsmxOGse2zXwS6w2FT1i5XIHYR/OO+RuepHu75XTXzGSz0HFI9MDaNF8DCjk89F1OC15vjvHhdZ+L4j4g7pHb9eH8zfvZliSOxS1aMCnlCPI8JOsc4BaCGX6yC9QfWJQ0Gg96WXjw7isJSzN7mwcqxDyPjv8XLoHXfFmf4QGoThMzpDT0VwUrSYqp6YX9ttKV2jy/j2vD86OUVPZ580oKmzHp0EJB4EpZyNVDIppq76wPdEygB8EVbVW5JcgrQj25CYGJb5iDbFAZnOG4a2rEn75YEJTnr1qQD3NPy6/WRsqhMyXsg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=RPmhyPmqZR0mgSKEtya7br1+j9drYWhH+UuQxp9KkLU=;
+ b=aWYzx6vl40yi/pshd59h9YBIxjoPi6ypUubFGpJHptrpmpagfZW5H1BuqlrL+2xIZYp+Vp0/aVCmEDCnzT5k0yKNg0Xa/FUxs+/8zgHMc5fG4eb9AeOjAEH1Paa6BV6DQX4hoHSA4Km7+rwkKD51f/YbH/vdac2zrv3bEDKEm5WuB/4UAjpIYfdjph3kZxSXtn6bqtE3qP3EQXvdQJp0/641dhL/VXVtH0n4r9qVCDPSX51MR5l68dwQGcohAhYS5RnWAqQPp7dyKVTdtxnWvhCwyGqdrEW6qgeBWJpX7tFKLRUj0gIAvsUBaIOqzJXfan1tfq7qB2qnPNjByDEKgw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=seagate.com; dmarc=pass action=none header.from=seagate.com;
+ dkim=pass header.d=seagate.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=seagate.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RPmhyPmqZR0mgSKEtya7br1+j9drYWhH+UuQxp9KkLU=;
+ b=VLGgtP3VzTsGqWX3pGnsCZVV0uzWEhmz9iPB9Ep9a5WaZLHez/SsuQYX/OqwuyppYAqIG4o1iyjJG1j25inbk9Gj0YDiwqEwy1jy0JSafIzj8HHT8Zm7hqI4nCqoAHrw7Fe9bln1vUJ4QY6bGTL9//uF2ywqduGY6w9soQWKAp8=
+Received: from SJ0PR20MB3643.namprd20.prod.outlook.com (2603:10b6:a03:2e1::14)
+ by BY5PR20MB3233.namprd20.prod.outlook.com (2603:10b6:a03:1b1::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.14; Mon, 27 Sep
+ 2021 18:55:39 +0000
+Received: from SJ0PR20MB3643.namprd20.prod.outlook.com
+ ([fe80::94f7:7038:a27c:5e55]) by SJ0PR20MB3643.namprd20.prod.outlook.com
+ ([fe80::94f7:7038:a27c:5e55%9]) with mapi id 15.20.4544.022; Mon, 27 Sep 2021
+ 18:55:37 +0000
+From: Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, qemu-arm
+ <qemu-arm@nongnu.org>
+CC: Hao Wu <wuhaotsh@google.com>, Patrick Venture <venture@google.com>, Andrew
+ Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
+Subject: Re: Need to merge - QEMU patch for booting eMMC image for AST2600
+ machine
+Thread-Topic: Need to merge - QEMU patch for booting eMMC image for AST2600
+ machine
+Thread-Index: AQHXsi8RpibRV/Qva0WR6yL4MOIGOau19JMAgAH7YgCAAAggc4AARdwq
+Date: Mon, 27 Sep 2021 18:55:37 +0000
+Message-ID: <SJ0PR20MB3643126F9786CFBEA81D5D349DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
+References: <SJ0PR20MB3643750F8FF71E838A750F9B9DA59@SJ0PR20MB3643.namprd20.prod.outlook.com>
+ <38e08d56-00b2-8759-a729-4bb6a26e6cdd@amsat.org>
+ <4b2c7f4f-f2b5-7990-bcdc-5f9fb19418b4@kaod.org>
+ <SJ0PR20MB36433AFB78BA0BAF6DC537649DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
+In-Reply-To: <SJ0PR20MB36433AFB78BA0BAF6DC537649DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_56e366eb-86f1-4645-85a7-f29555b26fee_Enabled=True;
+ MSIP_Label_56e366eb-86f1-4645-85a7-f29555b26fee_SiteId=d466216a-c643-434a-9c2e-057448c17cbe;
+ MSIP_Label_56e366eb-86f1-4645-85a7-f29555b26fee_SetDate=2021-09-27T18:55:37.137Z;
+ MSIP_Label_56e366eb-86f1-4645-85a7-f29555b26fee_Name=Seagate
+ Internal; MSIP_Label_56e366eb-86f1-4645-85a7-f29555b26fee_ContentBits=0;
+ MSIP_Label_56e366eb-86f1-4645-85a7-f29555b26fee_Method=Standard; 
+suggested_attachment_session_id: f0c3263c-27ab-fc02-858d-5c8977e58e3c
+authentication-results: kaod.org; dkim=none (message not signed)
+ header.d=none;kaod.org; dmarc=none action=none header.from=seagate.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: fd5405fb-222f-4555-2882-08d981e86502
+x-ms-traffictypediagnostic: BY5PR20MB3233:
+x-microsoft-antispam-prvs: <BY5PR20MB3233EABC5A426618A27181C79DA79@BY5PR20MB3233.namprd20.prod.outlook.com>
+stx-hosted-ironport-oubound: True
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: FiJNcLUv6whHcwl6wWr7TsITyA7bI1m0HbFXhTLOzBYNLvhYUeiDaxeJ07ZHXK16afFA9daXFmYYpSYO4q4ExPU73FB/Uv0OiE4xohmK1eewq9NxXj//U8+Z57RlTr3GAV1m6zoeKuaMef5vJ/g7fHNe7qYSww5zuBXNEO29RnX93BcbA2xj/J03Yp42q7Nng0MSvnES08Knt+8FBUp6AAlpC32rJaou9qnIcUc2cF7mmaU6icE2NS5RcUR1It+WIUIew1Oe/2nWpm46kb4jHsOnFqyhb9VyzFFgr5JqW4eacVu1Y7Sin7agtO5D2m/LtJZyqikGISQ58uQ5bvBrb3A/RxhqTJq79dj8Nhom9T1BSUvdpY/auCp9mxZANRFqw8Skl1n7ZMzEw618qDOd7jSc+xFb765huqEl++XWFFDUF80DFwYsg1y+vua5w0z7hAc6VsuNwA3ntVH7YNvPIGp31ZFydbuBBM5WrS8N+LXv4oilt9VU2loE7MyUJaSOk7+rn3RiNIq/e9EMM0KMQyF9VAN3CdcDUoAHx5LglwdAZfa16Fq2ZZINmSUZoEVas/c2mWjvXfrJ4JrdNYQ/3BHmUpD7/lB07nCK4PWeLzoHEHD+cGPGqjJQ7kpDntOmCKUZyEO8Yaua/8dlKXIkcw3oY7VQP3QFYItxtH3+zSN4JAxXvUONxr1cC8QVIhEiLoKLEhj1R6eJvC0msa6uWBz8HNHKBHTqP7/utwwYnK8/qWWvmoJaRyJfgr+WqIDtH0viR2qBz3e3Of6/8Tj/RfUycMhzNLC0iVdjtN1CHAI=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR20MB3643.namprd20.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(83380400001)(4326008)(2940100002)(55016002)(7696005)(38100700002)(76116006)(5660300002)(52536014)(966005)(122000001)(8936002)(91956017)(66574015)(71200400001)(44832011)(508600001)(110136005)(54906003)(19627405001)(66946007)(2906002)(86362001)(53546011)(166002)(8676002)(9686003)(66446008)(66476007)(66556008)(316002)(33656002)(186003)(64756008)(26005)(6506007)(38070700005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?NeJIlqwxL4xirgTv9W6aqGX0qW6I/idgJKg8obBnUq7eX4pQD9uhUbiAzI?=
+ =?iso-8859-1?Q?IAQUIQFouGVQQm28aOdjzrv7hs4Nzn+e7lbDv+x7Z19ldWJzI8ZUI79r0P?=
+ =?iso-8859-1?Q?LJriiCtl6ouNNG3Q4mkUtILkPlv0zAB46N0EDPOaq7n1xgFJq2jtuJi/vJ?=
+ =?iso-8859-1?Q?Cjf5Kz0funke4UsJZksHtCftkX61D36vdP6SO6UX64VkXhHqKUqMfmx1kS?=
+ =?iso-8859-1?Q?93maCjQluc4tzpbwMFpHp81va2I1/iBJ7AgfDTzN0DU2VD4nxNFrkNECkj?=
+ =?iso-8859-1?Q?RIsvC6YMHSMIwGXW95Od2oDv+9CtA98Dxc0poz0U4Q2bTchONzpXv4kIyV?=
+ =?iso-8859-1?Q?SiyaXgURPMJGqZFBEF9fy2BTIB7MxMNswb8Fo2+jEbivx7oCdEWhtXP1sr?=
+ =?iso-8859-1?Q?y9iFq43bvIiSzUW53OEczFwGZaJdNYz2OqbpVqLeUgTL1mSrO+9BA1ge52?=
+ =?iso-8859-1?Q?Da7Wkue9A0SSeNIvru0e9+OY0j5MDMm7nUHCimycVQeH8FXkBWQwl1UI9P?=
+ =?iso-8859-1?Q?DrDLU0ZvuwGwnogspNy0WSM6iHKqD7QPVZCV5jXYNevXjVZ92bIHAxN78W?=
+ =?iso-8859-1?Q?Ks3Y+GIZmK9XlEA2c17ui7/D2LM09Lui/4WQQWt8ABo+fazv6zd1LPFAlO?=
+ =?iso-8859-1?Q?x+bMhnThV6BVerUnS0iBHU9cRZB8JVqGFwchahyrkdgXH1L91RM1k/x8O9?=
+ =?iso-8859-1?Q?jwtSXg5sYgMXtU4lmlDK+bl4Lh/vOaLx7r5AAuqcHr+BWqgha6IucXDWH/?=
+ =?iso-8859-1?Q?zqXb9jWVIh9e7utVq0KKD5rcQoqT1IfKPstg3dKlJZUFnN/LtYiX8Auy21?=
+ =?iso-8859-1?Q?+wc4BCq4FcT0hWOYqLWcadkSBiaYXpzH5YNI7PaOPM2sFW7usbWcsfTSFg?=
+ =?iso-8859-1?Q?MY4kdkt5CAV6+NxsT0ofoLfUb1zyT6jUOYw4tcNLm/4ElkEnTFaKLP288a?=
+ =?iso-8859-1?Q?McRLRt49ehH5yDMXhhyWnfHFE44iVivUx/Nx8NPN3zwjYlCfxhkipDIg3w?=
+ =?iso-8859-1?Q?a54uNt887tkHmQlGKDGEFIbmAD2Y4Aeppd+tCwV6ni7v+kHk6iH4dPZFO7?=
+ =?iso-8859-1?Q?PZdu5ANqooLuRhu4IFpzVhEBfuqVFfcVJxmCnPshR+p+xSR5CpEtS9cM3v?=
+ =?iso-8859-1?Q?Rq+fJxnyBqdCq5LXP9y+ok1TwpiOeZtIIntbNWpawc6kGuKPa8IvTfXHtS?=
+ =?iso-8859-1?Q?0Ej3HSD2T19dqcpHb+cPPLhJHfqGqcQ4qM/DSi7uksD/EQ0SkpqVMQVqgQ?=
+ =?iso-8859-1?Q?NdluvUtlFH5q2+CTtwifRAi87toD3wehsQDz1YnPohluP5wMk/ucAXHFzl?=
+ =?iso-8859-1?Q?TTUwiJUIivMYyNNAbLxww0/FFregc7LBl2xCe2f3iDEuNN/2CMysUpguWE?=
+ =?iso-8859-1?Q?yadKoW+HGn?=
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/alternative;
+ boundary="_000_SJ0PR20MB3643126F9786CFBEA81D5D349DA79SJ0PR20MB3643namp_"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-OriginatorOrg: seagate.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR20MB3643.namprd20.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fd5405fb-222f-4555-2882-08d981e86502
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2021 18:55:37.5656 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: d466216a-c643-434a-9c2e-057448c17cbe
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: SJ/fPlNbv/aWErIN+v+vaqhvP5nrP1EFrDnlU1Hcxi+6yjpbzVABILQDqaLy08/AN7TcA+oR2Bsh7Ww//aUHBCvuUe93iGIyhB74UNp7TYg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR20MB3233
+Received-SPF: pass client-ip=139.138.35.140;
+ envelope-from=shitalkumar.gandhi@seagate.com; helo=esa.hc4959-67.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <laurent@vivier.eu>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Willian Rampazzo <willianr@redhat.com>, qemu-arm@nongnu.org,
- Warner Losh <imp@bsdimp.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5AfUfjdHibAB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ESer9XAW3hSD
 
-To run user-mode emulation tests, we introduced the
-avocado_qemu.QemuUserTest which inherits from avocado_qemu.QemuBaseTest.
-System-mode emulation tests are based on the avocado_qemu.Test class,
-which also inherits avocado_qemu.QemuBaseTest. To avoid confusion,
-rename it as avocado_qemu.QemuSystemTest.
+--_000_SJ0PR20MB3643126F9786CFBEA81D5D349DA79SJ0PR20MB3643namp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Suggested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- tests/acceptance/avocado_qemu/__init__.py    | 21 +++++++++-----------
- tests/acceptance/boot_linux_console.py       |  4 ++--
- tests/acceptance/cpu_queries.py              |  4 ++--
- tests/acceptance/empty_cpu_model.py          |  4 ++--
- tests/acceptance/info_usernet.py             |  4 ++--
- tests/acceptance/linux_initrd.py             |  4 ++--
- tests/acceptance/linux_ssh_mips_malta.py     |  5 +++--
- tests/acceptance/machine_arm_canona1100.py   |  4 ++--
- tests/acceptance/machine_arm_integratorcp.py |  4 ++--
- tests/acceptance/machine_arm_n8x0.py         |  4 ++--
- tests/acceptance/machine_avr6.py             |  4 ++--
- tests/acceptance/machine_m68k_nextcube.py    |  4 ++--
- tests/acceptance/machine_microblaze.py       |  4 ++--
- tests/acceptance/machine_mips_fuloong2e.py   |  4 ++--
- tests/acceptance/machine_mips_loongson3v.py  |  4 ++--
- tests/acceptance/machine_mips_malta.py       |  4 ++--
- tests/acceptance/machine_ppc.py              |  4 ++--
- tests/acceptance/machine_rx_gdbsim.py        |  4 ++--
- tests/acceptance/machine_s390_ccw_virtio.py  |  4 ++--
- tests/acceptance/machine_sparc_leon3.py      |  4 ++--
- tests/acceptance/migration.py                |  4 ++--
- tests/acceptance/multiprocess.py             |  4 ++--
- tests/acceptance/pc_cpu_hotplug_props.py     |  4 ++--
- tests/acceptance/ppc_prep_40p.py             |  4 ++--
- tests/acceptance/version.py                  |  4 ++--
- tests/acceptance/virtio-gpu.py               |  4 ++--
- tests/acceptance/virtio_check_params.py      |  4 ++--
- tests/acceptance/virtio_version.py           |  4 ++--
- tests/acceptance/vnc.py                      |  4 ++--
- tests/acceptance/x86_cpu_model_versions.py   |  4 ++--
- 30 files changed, 68 insertions(+), 70 deletions(-)
+Hi All,
 
-diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
-index a497a24f823..1abec2abaca 100644
---- a/tests/acceptance/avocado_qemu/__init__.py
-+++ b/tests/acceptance/avocado_qemu/__init__.py
-@@ -183,7 +183,7 @@ def interrupt_interactive_console_until_pattern(test, success_message,
- 
-     :param test: an Avocado test containing a VM that will have its console
-                  read and probed for a success or failure message
--    :type test: :class:`avocado_qemu.Test`
-+    :type test: :class:`avocado_qemu.QemuSystemTest`
-     :param success_message: if this message appears, test succeeds
-     :param failure_message: if this message appears, test fails
-     :param interrupt_string: a string to send to the console before trying
-@@ -199,7 +199,7 @@ def wait_for_console_pattern(test, success_message, failure_message=None,
- 
-     :param test: an Avocado test containing a VM that will have its console
-                  read and probed for a success or failure message
--    :type test: :class:`avocado_qemu.Test`
-+    :type test: :class:`avocado_qemu.QemuSystemTest`
-     :param success_message: if this message appears, test succeeds
-     :param failure_message: if this message appears, test fails
-     """
-@@ -211,7 +211,7 @@ def exec_command(test, command):
-     the content.
- 
-     :param test: an Avocado test containing a VM.
--    :type test: :class:`avocado_qemu.Test`
-+    :type test: :class:`avocado_qemu.QemuSystemTest`
-     :param command: the command to send
-     :type command: str
-     """
-@@ -226,7 +226,7 @@ def exec_command_and_wait_for_pattern(test, command,
- 
-     :param test: an Avocado test containing a VM that will have its console
-                  read and probed for a success or failure message
--    :type test: :class:`avocado_qemu.Test`
-+    :type test: :class:`avocado_qemu.QemuSystemTest`
-     :param command: the command to send
-     :param success_message: if this message appears, test succeeds
-     :param failure_message: if this message appears, test fails
-@@ -269,16 +269,13 @@ def fetch_asset(self, name,
-                         cancel_on_missing=cancel_on_missing)
- 
- 
--class Test(QemuBaseTest):
--    """Facilitates system emulation tests.
--
--    TODO: Rename this class as `QemuSystemTest`.
--    """
-+class QemuSystemTest(QemuBaseTest):
-+    """Facilitates system emulation tests."""
- 
-     def setUp(self):
-         self._vms = {}
- 
--        super(Test, self).setUp('qemu-system-')
-+        super(QemuSystemTest, self).setUp('qemu-system-')
- 
-         self.machine = self.params.get('machine',
-                                        default=self._get_unique_tag_val('machine'))
-@@ -515,11 +512,11 @@ def default_kernel_params(self):
-         return self._info.get('kernel_params', None)
- 
- 
--class LinuxTest(Test, LinuxSSHMixIn):
-+class LinuxTest(QemuSystemTest, LinuxSSHMixIn):
-     """Facilitates having a cloud-image Linux based available.
- 
-     For tests that indend to interact with guests, this is a better choice
--    to start with than the more vanilla `Test` class.
-+    to start with than the more vanilla `QemuSystemTest` class.
-     """
- 
-     timeout = 900
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 0a49c0e2760..80740452f54 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -15,7 +15,7 @@
- 
- from avocado import skip
- from avocado import skipUnless
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import exec_command
- from avocado_qemu import exec_command_and_wait_for_pattern
- from avocado_qemu import interrupt_interactive_console_until_pattern
-@@ -46,7 +46,7 @@ def image_pow2ceil_expand(path):
-             with open(path, 'ab+') as fd:
-                 fd.truncate(size_aligned)
- 
--class LinuxKernelTest(Test):
-+class LinuxKernelTest(QemuSystemTest):
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
- 
-     def wait_for_console_pattern(self, success_message, vm=None):
-diff --git a/tests/acceptance/cpu_queries.py b/tests/acceptance/cpu_queries.py
-index cc9e380cc7f..cf69f69b116 100644
---- a/tests/acceptance/cpu_queries.py
-+++ b/tests/acceptance/cpu_queries.py
-@@ -8,9 +8,9 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later.  See the COPYING file in the top-level directory.
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
--class QueryCPUModelExpansion(Test):
-+class QueryCPUModelExpansion(QemuSystemTest):
-     """
-     Run query-cpu-model-expansion for each CPU model, and validate results
-     """
-diff --git a/tests/acceptance/empty_cpu_model.py b/tests/acceptance/empty_cpu_model.py
-index a1e59e45e4e..22f504418d2 100644
---- a/tests/acceptance/empty_cpu_model.py
-+++ b/tests/acceptance/empty_cpu_model.py
-@@ -7,9 +7,9 @@
- #
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later.  See the COPYING file in the top-level directory.
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
--class EmptyCPUModel(Test):
-+class EmptyCPUModel(QemuSystemTest):
-     def test(self):
-         self.vm.add_args('-S', '-display', 'none', '-machine', 'none', '-cpu', '')
-         self.vm.set_qmp_monitor(enabled=False)
-diff --git a/tests/acceptance/info_usernet.py b/tests/acceptance/info_usernet.py
-index 9c1fd903a0b..dc01f74150c 100644
---- a/tests/acceptance/info_usernet.py
-+++ b/tests/acceptance/info_usernet.py
-@@ -8,12 +8,12 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later.  See the COPYING file in the top-level directory.
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
- from qemu.utils import get_info_usernet_hostfwd_port
- 
- 
--class InfoUsernet(Test):
-+class InfoUsernet(QemuSystemTest):
- 
-     def test_hostfwd(self):
-         self.vm.add_args('-netdev', 'user,id=vnet,hostfwd=:127.0.0.1:0-:22')
-diff --git a/tests/acceptance/linux_initrd.py b/tests/acceptance/linux_initrd.py
-index a249e2f14a2..25fba6a28a7 100644
---- a/tests/acceptance/linux_initrd.py
-+++ b/tests/acceptance/linux_initrd.py
-@@ -12,11 +12,11 @@
- import logging
- import tempfile
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado import skipIf
- 
- 
--class LinuxInitrd(Test):
-+class LinuxInitrd(QemuSystemTest):
-     """
-     Checks QEMU evaluates correctly the initrd file passed as -initrd option.
- 
-diff --git a/tests/acceptance/linux_ssh_mips_malta.py b/tests/acceptance/linux_ssh_mips_malta.py
-index 4de19474188..c0f0be5adee 100644
---- a/tests/acceptance/linux_ssh_mips_malta.py
-+++ b/tests/acceptance/linux_ssh_mips_malta.py
-@@ -12,7 +12,8 @@
- import time
- 
- from avocado import skipUnless
--from avocado_qemu import Test, LinuxSSHMixIn
-+from avocado_qemu import LinuxSSHMixIn
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import process
- from avocado.utils import archive
-@@ -21,7 +22,7 @@
- 
- @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
- @skipUnless(ssh.SSH_CLIENT_BINARY, 'No SSH client available')
--class LinuxSSH(Test, LinuxSSHMixIn):
-+class LinuxSSH(QemuSystemTest, LinuxSSHMixIn):
- 
-     timeout = 150 # Not for 'configure --enable-debug --enable-debug-tcg'
- 
-diff --git a/tests/acceptance/machine_arm_canona1100.py b/tests/acceptance/machine_arm_canona1100.py
-index 0e5c43dbcf8..182a0b05134 100644
---- a/tests/acceptance/machine_arm_canona1100.py
-+++ b/tests/acceptance/machine_arm_canona1100.py
-@@ -8,11 +8,11 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later.  See the COPYING file in the top-level directory.
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import archive
- 
--class CanonA1100Machine(Test):
-+class CanonA1100Machine(QemuSystemTest):
-     """Boots the barebox firmware and checks that the console is operational"""
- 
-     timeout = 90
-diff --git a/tests/acceptance/machine_arm_integratorcp.py b/tests/acceptance/machine_arm_integratorcp.py
-index 49c8ebff78b..1ffe1073ef8 100644
---- a/tests/acceptance/machine_arm_integratorcp.py
-+++ b/tests/acceptance/machine_arm_integratorcp.py
-@@ -12,7 +12,7 @@
- import logging
- 
- from avocado import skipUnless
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- 
- 
-@@ -29,7 +29,7 @@
-     CV2_AVAILABLE = False
- 
- 
--class IntegratorMachine(Test):
-+class IntegratorMachine(QemuSystemTest):
- 
-     timeout = 90
- 
-diff --git a/tests/acceptance/machine_arm_n8x0.py b/tests/acceptance/machine_arm_n8x0.py
-index e5741f2d8d1..12e9a6803ba 100644
---- a/tests/acceptance/machine_arm_n8x0.py
-+++ b/tests/acceptance/machine_arm_n8x0.py
-@@ -11,10 +11,10 @@
- import os
- 
- from avocado import skipUnless
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- 
--class N8x0Machine(Test):
-+class N8x0Machine(QemuSystemTest):
-     """Boots the Linux kernel and checks that the console is operational"""
- 
-     timeout = 90
-diff --git a/tests/acceptance/machine_avr6.py b/tests/acceptance/machine_avr6.py
-index 6baf4e9c7f3..7536d83356f 100644
---- a/tests/acceptance/machine_avr6.py
-+++ b/tests/acceptance/machine_avr6.py
-@@ -19,9 +19,9 @@
- 
- import time
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
--class AVR6Machine(Test):
-+class AVR6Machine(QemuSystemTest):
-     timeout = 5
- 
-     def test_freertos(self):
-diff --git a/tests/acceptance/machine_m68k_nextcube.py b/tests/acceptance/machine_m68k_nextcube.py
-index 09e2745cc52..6790e7d9cd1 100644
---- a/tests/acceptance/machine_m68k_nextcube.py
-+++ b/tests/acceptance/machine_m68k_nextcube.py
-@@ -8,7 +8,7 @@
- import os
- import time
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado import skipUnless
- 
- from tesseract_utils import tesseract_available, tesseract_ocr
-@@ -20,7 +20,7 @@
-     PIL_AVAILABLE = False
- 
- 
--class NextCubeMachine(Test):
-+class NextCubeMachine(QemuSystemTest):
-     """
-     :avocado: tags=arch:m68k
-     :avocado: tags=machine:next-cube
-diff --git a/tests/acceptance/machine_microblaze.py b/tests/acceptance/machine_microblaze.py
-index 7f6d18495d8..4928920f960 100644
---- a/tests/acceptance/machine_microblaze.py
-+++ b/tests/acceptance/machine_microblaze.py
-@@ -5,11 +5,11 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later. See the COPYING file in the top-level directory.
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import archive
- 
--class MicroblazeMachine(Test):
-+class MicroblazeMachine(QemuSystemTest):
- 
-     timeout = 90
- 
-diff --git a/tests/acceptance/machine_mips_fuloong2e.py b/tests/acceptance/machine_mips_fuloong2e.py
-index 0ac285e2af1..89291f47b24 100644
---- a/tests/acceptance/machine_mips_fuloong2e.py
-+++ b/tests/acceptance/machine_mips_fuloong2e.py
-@@ -10,10 +10,10 @@
- import os
- 
- from avocado import skipUnless
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- 
--class MipsFuloong2e(Test):
-+class MipsFuloong2e(QemuSystemTest):
- 
-     timeout = 60
- 
-diff --git a/tests/acceptance/machine_mips_loongson3v.py b/tests/acceptance/machine_mips_loongson3v.py
-index 85b131a40f0..5194cf18c9c 100644
---- a/tests/acceptance/machine_mips_loongson3v.py
-+++ b/tests/acceptance/machine_mips_loongson3v.py
-@@ -11,10 +11,10 @@
- import time
- 
- from avocado import skipUnless
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- 
--class MipsLoongson3v(Test):
-+class MipsLoongson3v(QemuSystemTest):
-     timeout = 60
- 
-     @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
-diff --git a/tests/acceptance/machine_mips_malta.py b/tests/acceptance/machine_mips_malta.py
-index b67d8cb141c..f1895d59f35 100644
---- a/tests/acceptance/machine_mips_malta.py
-+++ b/tests/acceptance/machine_mips_malta.py
-@@ -12,7 +12,7 @@
- import logging
- 
- from avocado import skipUnless
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import archive
- from avocado import skipIf
-@@ -33,7 +33,7 @@
- 
- @skipUnless(NUMPY_AVAILABLE, 'Python NumPy not installed')
- @skipUnless(CV2_AVAILABLE, 'Python OpenCV not installed')
--class MaltaMachineFramebuffer(Test):
-+class MaltaMachineFramebuffer(QemuSystemTest):
- 
-     timeout = 30
- 
-diff --git a/tests/acceptance/machine_ppc.py b/tests/acceptance/machine_ppc.py
-index a836e2496f1..67e24fa4f7c 100644
---- a/tests/acceptance/machine_ppc.py
-+++ b/tests/acceptance/machine_ppc.py
-@@ -6,10 +6,10 @@
- # later.  See the COPYING file in the top-level directory.
- 
- from avocado.utils import archive
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- 
--class PpcMachine(Test):
-+class PpcMachine(QemuSystemTest):
- 
-     timeout = 90
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-diff --git a/tests/acceptance/machine_rx_gdbsim.py b/tests/acceptance/machine_rx_gdbsim.py
-index 32b737b6d85..6cd8704b016 100644
---- a/tests/acceptance/machine_rx_gdbsim.py
-+++ b/tests/acceptance/machine_rx_gdbsim.py
-@@ -11,13 +11,13 @@
- import os
- 
- from avocado import skipIf
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import exec_command_and_wait_for_pattern
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import archive
- 
- 
--class RxGdbSimMachine(Test):
-+class RxGdbSimMachine(QemuSystemTest):
- 
-     timeout = 30
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-diff --git a/tests/acceptance/machine_s390_ccw_virtio.py b/tests/acceptance/machine_s390_ccw_virtio.py
-index 4028c99afce..bd03d7160b4 100644
---- a/tests/acceptance/machine_s390_ccw_virtio.py
-+++ b/tests/acceptance/machine_s390_ccw_virtio.py
-@@ -13,12 +13,12 @@
- import tempfile
- 
- from avocado import skipIf
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import exec_command_and_wait_for_pattern
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import archive
- 
--class S390CCWVirtioMachine(Test):
-+class S390CCWVirtioMachine(QemuSystemTest):
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
- 
-     timeout = 120
-diff --git a/tests/acceptance/machine_sparc_leon3.py b/tests/acceptance/machine_sparc_leon3.py
-index 2405cd7a0d7..e61b223185a 100644
---- a/tests/acceptance/machine_sparc_leon3.py
-+++ b/tests/acceptance/machine_sparc_leon3.py
-@@ -5,12 +5,12 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later. See the COPYING file in the top-level directory.
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado import skip
- 
- 
--class Leon3Machine(Test):
-+class Leon3Machine(QemuSystemTest):
- 
-     timeout = 60
- 
-diff --git a/tests/acceptance/migration.py b/tests/acceptance/migration.py
-index 792639cb693..584d6ef53f5 100644
---- a/tests/acceptance/migration.py
-+++ b/tests/acceptance/migration.py
-@@ -11,7 +11,7 @@
- 
- 
- import tempfile
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado import skipUnless
- 
- from avocado.utils import network
-@@ -19,7 +19,7 @@
- from avocado.utils.path import find_command
- 
- 
--class Migration(Test):
-+class Migration(QemuSystemTest):
-     """
-     :avocado: tags=migration
-     """
-diff --git a/tests/acceptance/multiprocess.py b/tests/acceptance/multiprocess.py
-index 96627f022a8..80a3b8f442b 100644
---- a/tests/acceptance/multiprocess.py
-+++ b/tests/acceptance/multiprocess.py
-@@ -7,12 +7,12 @@
- import os
- import socket
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado_qemu import exec_command
- from avocado_qemu import exec_command_and_wait_for_pattern
- 
--class Multiprocess(Test):
-+class Multiprocess(QemuSystemTest):
-     """
-     :avocado: tags=multiprocess
-     """
-diff --git a/tests/acceptance/pc_cpu_hotplug_props.py b/tests/acceptance/pc_cpu_hotplug_props.py
-index 2e86d5017a5..52b878188ed 100644
---- a/tests/acceptance/pc_cpu_hotplug_props.py
-+++ b/tests/acceptance/pc_cpu_hotplug_props.py
-@@ -20,9 +20,9 @@
- # License along with this library; if not, see <http://www.gnu.org/licenses/>.
- #
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
--class OmittedCPUProps(Test):
-+class OmittedCPUProps(QemuSystemTest):
-     """
-     :avocado: tags=arch:x86_64
-     :avocado: tags=cpu:qemu64
-diff --git a/tests/acceptance/ppc_prep_40p.py b/tests/acceptance/ppc_prep_40p.py
-index 2993ee3b078..cbcb7d06ad6 100644
---- a/tests/acceptance/ppc_prep_40p.py
-+++ b/tests/acceptance/ppc_prep_40p.py
-@@ -9,11 +9,11 @@
- 
- from avocado import skipIf
- from avocado import skipUnless
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- 
- 
--class IbmPrep40pMachine(Test):
-+class IbmPrep40pMachine(QemuSystemTest):
- 
-     timeout = 60
- 
-diff --git a/tests/acceptance/version.py b/tests/acceptance/version.py
-index 79b923d4fc0..ded7f039c1b 100644
---- a/tests/acceptance/version.py
-+++ b/tests/acceptance/version.py
-@@ -9,10 +9,10 @@
- # later.  See the COPYING file in the top-level directory.
- 
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
- 
--class Version(Test):
-+class Version(QemuSystemTest):
-     """
-     :avocado: tags=quick
-     """
-diff --git a/tests/acceptance/virtio-gpu.py b/tests/acceptance/virtio-gpu.py
-index 4acc1e6d5fd..2a249a3a2c1 100644
---- a/tests/acceptance/virtio-gpu.py
-+++ b/tests/acceptance/virtio-gpu.py
-@@ -4,8 +4,8 @@
- # later.  See the COPYING file in the top-level directory.
- 
- 
--from avocado_qemu import Test
- from avocado_qemu import BUILD_DIR
-+from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado_qemu import exec_command_and_wait_for_pattern
- from avocado_qemu import is_readable_executable_file
-@@ -27,7 +27,7 @@ def pick_default_vug_bin():
-         return bld_dir_path
- 
- 
--class VirtioGPUx86(Test):
-+class VirtioGPUx86(QemuSystemTest):
-     """
-     :avocado: tags=virtio-gpu
-     :avocado: tags=arch:x86_64
-diff --git a/tests/acceptance/virtio_check_params.py b/tests/acceptance/virtio_check_params.py
-index 87e6c839d14..e869690473a 100644
---- a/tests/acceptance/virtio_check_params.py
-+++ b/tests/acceptance/virtio_check_params.py
-@@ -24,7 +24,7 @@
- 
- sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'python'))
- from qemu.machine import QEMUMachine
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- from avocado import skip
- 
- #list of machine types and virtqueue properties to test
-@@ -41,7 +41,7 @@
-                                     'driver=null-co,id=drive0,if=none']}
- 
- 
--class VirtioMaxSegSettingsCheck(Test):
-+class VirtioMaxSegSettingsCheck(QemuSystemTest):
-     @staticmethod
-     def make_pattern(props):
-         pattern_items = ['{0} = \w+'.format(prop) for prop in props]
-diff --git a/tests/acceptance/virtio_version.py b/tests/acceptance/virtio_version.py
-index 33593c29dd0..208910bb844 100644
---- a/tests/acceptance/virtio_version.py
-+++ b/tests/acceptance/virtio_version.py
-@@ -13,7 +13,7 @@
- 
- sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'python'))
- from qemu.machine import QEMUMachine
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
- # Virtio Device IDs:
- VIRTIO_NET = 1
-@@ -55,7 +55,7 @@ def get_pci_interfaces(vm, devtype):
-     interfaces = ('pci-express-device', 'conventional-pci-device')
-     return [i for i in interfaces if devtype_implements(vm, devtype, i)]
- 
--class VirtioVersionCheck(Test):
-+class VirtioVersionCheck(QemuSystemTest):
-     """
-     Check if virtio-version-specific device types result in the
-     same device tree created by `disable-modern` and
-diff --git a/tests/acceptance/vnc.py b/tests/acceptance/vnc.py
-index 22656bbcc2b..e6ebdf5d1ee 100644
---- a/tests/acceptance/vnc.py
-+++ b/tests/acceptance/vnc.py
-@@ -8,10 +8,10 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later.  See the COPYING file in the top-level directory.
- 
--from avocado_qemu import Test
-+from avocado_qemu import QemuSystemTest
- 
- 
--class Vnc(Test):
-+class Vnc(QemuSystemTest):
-     """
-     :avocado: tags=vnc,quick
-     """
-diff --git a/tests/acceptance/x86_cpu_model_versions.py b/tests/acceptance/x86_cpu_model_versions.py
-index 0e9feda62d4..a6edf74c1cc 100644
---- a/tests/acceptance/x86_cpu_model_versions.py
-+++ b/tests/acceptance/x86_cpu_model_versions.py
-@@ -24,7 +24,7 @@
- import avocado_qemu
- import re
- 
--class X86CPUModelAliases(avocado_qemu.Test):
-+class X86CPUModelAliases(avocado_qemu.QemuSystemTest):
-     """
-     Validation of PC CPU model versions and CPU model aliases
- 
-@@ -239,7 +239,7 @@ def test_none_alias(self):
-         self.validate_aliases(cpus)
- 
- 
--class CascadelakeArchCapabilities(avocado_qemu.Test):
-+class CascadelakeArchCapabilities(avocado_qemu.QemuSystemTest):
-     """
-     Validation of Cascadelake arch-capabilities
- 
--- 
-2.31.1
+Please let me know how to get this merged?
 
+Thanks,
+Shitalkumar
+________________________________
+From: Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>
+Sent: Monday, September 27, 2021 7:45 AM
+To: C=E9dric Le Goater <clg@kaod.org>; Philippe Mathieu-Daud=E9 <f4bug@amsa=
+t.org>; qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qemu-arm <qemu-arm@n=
+ongnu.org>
+Cc: Hao Wu <wuhaotsh@google.com>; Patrick Venture <venture@google.com>; And=
+rew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>
+Subject: Re: Need to merge - QEMU patch for booting eMMC image for AST2600 =
+machine
+
+Yes, I have raised this.
+
+  https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJ=
+GRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7=
+oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADE=
+WJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2=
+if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxM=
+C6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94Z=
+C8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc=
+%2Fissues%2F3818
+
+BR,
+Shitalkumar
+________________________________
+From: C=E9dric Le Goater <clg@kaod.org>
+Sent: Monday, September 27, 2021 7:15 AM
+To: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>; Shitalkumar Gandhi <shitalk=
+umar.gandhi@seagate.com>; qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qe=
+mu-arm <qemu-arm@nongnu.org>
+Cc: Hao Wu <wuhaotsh@google.com>; Patrick Venture <venture@google.com>; And=
+rew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>
+Subject: Re: Need to merge - QEMU patch for booting eMMC image for AST2600 =
+machine
+
+
+This message has originated from an External Source. Please use proper judg=
+ment and caution when opening attachments, clicking links, or responding to=
+ this email.
+
+
+Hello,
+
+On 9/26/21 09:59, Philippe Mathieu-Daud=E9 wrote:
+> Hi,
+>
+> On 9/25/21 19:07, Shitalkumar Gandhi via wrote:
+>> Hi,
+>>
+>> I am attaching a patch that will fix eMMC image booting on QEMU for
+>> AST2600 machine, without this patch it will be stuck after SPL saying,
+>> "booting from RAM".
+>>
+>> Please review and merge, thanks.
+>>
+>> Let me know in case of any concern.
+>
+> Thanks for your patch.
+>
+> Please look at how to submit patches here:
+> https://secure-web.cisco.com/1oJkyJ6o1FSjeLofNCk-SJBvHe8F5z4Gz5K8rDouTJuL=
+6pWtzenJ1yE0imiWoNBJUx5BooSaYSkvQfHj1aTBxq2d7eD-xZyztLaT2DS20DjjENjFLA8jfhI=
+XRN_hJPLa8vikrdvz9p60Jy7kojB3AJRD9ZzEL6NwZS2AZfc2ElH7-meAzFGLq-3qKResEOEwqE=
+kMU5ocivYTBkJpgcJLPiR34MZr3ZUdMsFnYCLYImWZ9TxlbUyo742xmCDQdg-CM-GFhJm3h6Vu6=
+t1b8LHALySrJqK4dUdKPfzYgkDmhH11RMEXwPNMW19QNF62MbxEDFcekCoClvnOYuRsoEjgnwJH=
+-rJn9B-D54vVPbAhqsCkjjd8wBCwBCjbWuq2kovWRZC9hl7URdTe2-F3JVb2EItEsQBr52Wxc5D=
+1D_tnuboaCIzn1osTeVB2_nJbwIIKc/https%3A%2F%2Fwiki.qemu.org%2FContribute%2FS=
+ubmitAPatch%23Submitting_your_Patches
+>
+>> This patch has been added to boot eMMC image for AST2600 machine on
+>> QEMU.
+>>
+>> Run quemu as follows:
+>>
+>> ./qemu-system-arm -m 1G -M ast2600-evb -nographic -drive
+>> file=3Dmmc-evb-ast2600.img,format=3Draw,if=3Dsd,index=3D2
+>
+> What is index=3D2?
+>
+> Is this mmc-evb-ast2600.img image publicly available?
+>
+>> Tested: Booted AST2600 eMMC image on QEMU.
+>> Suggested-by:  <venture@google.com>
+>> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+>> Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
+>> Message-Id: <20210416162426.3217033-1-venture@google.com>
+>> Signed-off-by: C=E9dric Le Goater <clg@kaod.org>
+
+I don't remember having reviewed or signed this patch.
+
+>> ---
+>>   hw/arm/aspeed.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index ba5f1dc5af..6a890adb83 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -148,7 +148,7 @@ struct AspeedMachineState {
+>>           SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+>>
+>>   /* AST2600 evb hardware value */
+>> -#define AST2600_EVB_HW_STRAP1 0x000000C0
+>> +#define AST2600_EVB_HW_STRAP1 (0x000000C0 |
+> AST26500_HW_STRAP_BOOT_SRC_EMMC)
+>
+> IIUC you are not implementing any eMMC code, simply faking the
+> controller can support eMMC, but the card is used in SD mode?
+
+I think this is related to this issue :
+
+   https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1y=
+JGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X=
+7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjAD=
+EWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t=
+2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2Zx=
+MC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94=
+ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbm=
+c%2Fissues%2F3818
+
+> I'm surprised your guest is happy and boot that. If so, then
+> what is the point of announcing eMMC is supported if not used?
+It should work on the aspeed branches I maintain which include the
+emmc support but this is not for upstream.
+
+
+Some comments,
+
+I don't think the AST2600 evb boots by default on emmc. I agree
+it's nice to have for tests and there are other ways to modify
+slightly the default behavior.
+
+We could add a machine property to define the 'hw-strap1' register
+but it's a bit difficult to remember the value.
+
+A custom '-boot' value setting the 'hw-strap1' for the AST2600
+machine seems a better alternative. We could merge such a change
+even if emmc is not ready.
+
+Thanks,
+
+C.
+
+
+
+
+
+
+Seagate Internal
+
+--_000_SJ0PR20MB3643126F9786CFBEA81D5D349DA79SJ0PR20MB3643namp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
+: 12pt; color: rgb(0, 0, 0);">
+<span style=3D"color: rgb(23, 78, 134);">Hi All,</span><br>
+<br>
+<span style=3D"color: rgb(23, 78, 134);">Please let me know how to get this=
+ merged?</span><br>
+<br>
+<span style=3D"color: rgb(23, 78, 134);">Thanks,</span><br>
+<span style=3D"color: rgb(23, 78, 134);">Shitalkumar</span></div>
+<div id=3D"appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Shitalkumar Gandhi &l=
+t;shitalkumar.gandhi@seagate.com&gt;<br>
+<b>Sent:</b> Monday, September 27, 2021 7:45 AM<br>
+<b>To:</b> C=E9dric Le Goater &lt;clg@kaod.org&gt;; Philippe Mathieu-Daud=
+=E9 &lt;f4bug@amsat.org&gt;; qemu-devel@nongnu.org &lt;qemu-devel@nongnu.or=
+g&gt;; qemu-arm &lt;qemu-arm@nongnu.org&gt;<br>
+<b>Cc:</b> Hao Wu &lt;wuhaotsh@google.com&gt;; Patrick Venture &lt;venture@=
+google.com&gt;; Andrew Jeffery &lt;andrew@aj.id.au&gt;; Joel Stanley &lt;jo=
+el@jms.id.au&gt;<br>
+<b>Subject:</b> Re: Need to merge - QEMU patch for booting eMMC image for A=
+ST2600 machine</font>
+<div>&nbsp;</div>
+</div>
+<style type=3D"text/css" style=3D"display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
+t; color:rgb(0,0,0)">
+Yes, I have raised this.<br>
+<br>
+<span style=3D"font-size:14.6667px; background-color:rgb(255,255,255); disp=
+lay:inline!important">&nbsp;<span>&nbsp;</span></span><a href=3D"https://se=
+cure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAt=
+sVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5d=
+wIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OU=
+NSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFc=
+YebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0=
+gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPd=
+FanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F=
+3818" target=3D"_blank" rel=3D"noopener noreferrer" style=3D"margin:0px; fo=
+nt-size:14.6667px; background-color:rgb(255,255,255)">https://secure-web.ci=
+sco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls63=
+7SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmT=
+I8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6L=
+GiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS=
+10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJ=
+b2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cg=
+ic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818</a><br=
+>
+<br>
+BR,</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
+t; color:rgb(0,0,0)">
+Shitalkumar</div>
+<div id=3D"x_appendonsend"></div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> C=E9dric Le Goater =
+&lt;clg@kaod.org&gt;<br>
+<b>Sent:</b> Monday, September 27, 2021 7:15 AM<br>
+<b>To:</b> Philippe Mathieu-Daud=E9 &lt;f4bug@amsat.org&gt;; Shitalkumar Ga=
+ndhi &lt;shitalkumar.gandhi@seagate.com&gt;; qemu-devel@nongnu.org &lt;qemu=
+-devel@nongnu.org&gt;; qemu-arm &lt;qemu-arm@nongnu.org&gt;<br>
+<b>Cc:</b> Hao Wu &lt;wuhaotsh@google.com&gt;; Patrick Venture &lt;venture@=
+google.com&gt;; Andrew Jeffery &lt;andrew@aj.id.au&gt;; Joel Stanley &lt;jo=
+el@jms.id.au&gt;<br>
+<b>Subject:</b> Re: Need to merge - QEMU patch for booting eMMC image for A=
+ST2600 machine</font>
+<div>&nbsp;</div>
+</div>
+<div class=3D"x_BodyFragment"><font size=3D"2"><span style=3D"font-size:11p=
+t">
+<div class=3D"x_PlainText"><br>
+This message has originated from an External Source. Please use proper judg=
+ment and caution when opening attachments, clicking links, or responding to=
+ this email.<br>
+<br>
+<br>
+Hello,<br>
+<br>
+On 9/26/21 09:59, Philippe Mathieu-Daud=E9 wrote:<br>
+&gt; Hi,<br>
+&gt;<br>
+&gt; On 9/25/21 19:07, Shitalkumar Gandhi via wrote:<br>
+&gt;&gt; Hi,<br>
+&gt;&gt;<br>
+&gt;&gt; I am attaching a patch that will fix eMMC image booting on QEMU fo=
+r<br>
+&gt;&gt; AST2600 machine, without this patch it will be stuck after SPL say=
+ing,<br>
+&gt;&gt; &quot;booting from RAM&quot;.<br>
+&gt;&gt;<br>
+&gt;&gt; Please review and merge, thanks.<br>
+&gt;&gt;<br>
+&gt;&gt; Let me know in case of any concern.<br>
+&gt;<br>
+&gt; Thanks for your patch.<br>
+&gt;<br>
+&gt; Please look at how to submit patches here:<br>
+&gt; <a href=3D"https://secure-web.cisco.com/1oJkyJ6o1FSjeLofNCk-SJBvHe8F5z=
+4Gz5K8rDouTJuL6pWtzenJ1yE0imiWoNBJUx5BooSaYSkvQfHj1aTBxq2d7eD-xZyztLaT2DS20=
+DjjENjFLA8jfhIXRN_hJPLa8vikrdvz9p60Jy7kojB3AJRD9ZzEL6NwZS2AZfc2ElH7-meAzFGL=
+q-3qKResEOEwqEkMU5ocivYTBkJpgcJLPiR34MZr3ZUdMsFnYCLYImWZ9TxlbUyo742xmCDQdg-=
+CM-GFhJm3h6Vu6t1b8LHALySrJqK4dUdKPfzYgkDmhH11RMEXwPNMW19QNF62MbxEDFcekCoClv=
+nOYuRsoEjgnwJH-rJn9B-D54vVPbAhqsCkjjd8wBCwBCjbWuq2kovWRZC9hl7URdTe2-F3JVb2E=
+ItEsQBr52Wxc5D1D_tnuboaCIzn1osTeVB2_nJbwIIKc/https%3A%2F%2Fwiki.qemu.org%2F=
+Contribute%2FSubmitAPatch%23Submitting_your_Patches">
+https://secure-web.cisco.com/1oJkyJ6o1FSjeLofNCk-SJBvHe8F5z4Gz5K8rDouTJuL6p=
+WtzenJ1yE0imiWoNBJUx5BooSaYSkvQfHj1aTBxq2d7eD-xZyztLaT2DS20DjjENjFLA8jfhIXR=
+N_hJPLa8vikrdvz9p60Jy7kojB3AJRD9ZzEL6NwZS2AZfc2ElH7-meAzFGLq-3qKResEOEwqEkM=
+U5ocivYTBkJpgcJLPiR34MZr3ZUdMsFnYCLYImWZ9TxlbUyo742xmCDQdg-CM-GFhJm3h6Vu6t1=
+b8LHALySrJqK4dUdKPfzYgkDmhH11RMEXwPNMW19QNF62MbxEDFcekCoClvnOYuRsoEjgnwJH-r=
+Jn9B-D54vVPbAhqsCkjjd8wBCwBCjbWuq2kovWRZC9hl7URdTe2-F3JVb2EItEsQBr52Wxc5D1D=
+_tnuboaCIzn1osTeVB2_nJbwIIKc/https%3A%2F%2Fwiki.qemu.org%2FContribute%2FSub=
+mitAPatch%23Submitting_your_Patches</a><br>
+&gt;<br>
+&gt;&gt; This patch has been added to boot eMMC image for AST2600 machine o=
+n<br>
+&gt;&gt; QEMU.<br>
+&gt;&gt;<br>
+&gt;&gt; Run quemu as follows:<br>
+&gt;&gt;<br>
+&gt;&gt; ./qemu-system-arm -m 1G -M ast2600-evb -nographic -drive<br>
+&gt;&gt; file=3Dmmc-evb-ast2600.img,format=3Draw,if=3Dsd,index=3D2<br>
+&gt;<br>
+&gt; What is index=3D2?<br>
+&gt;<br>
+&gt; Is this mmc-evb-ast2600.img image publicly available?<br>
+&gt;<br>
+&gt;&gt; Tested: Booted AST2600 eMMC image on QEMU.<br>
+&gt;&gt; Suggested-by:&nbsp; &lt;venture@google.com&gt;<br>
+&gt;&gt; Reviewed-by: Hao Wu &lt;wuhaotsh@google.com&gt;<br>
+&gt;&gt; Reviewed-by: C=E9dric Le Goater &lt;clg@kaod.org&gt;<br>
+&gt;&gt; Message-Id: &lt;20210416162426.3217033-1-venture@google.com&gt;<br=
+>
+&gt;&gt; Signed-off-by: C=E9dric Le Goater &lt;clg@kaod.org&gt;<br>
+<br>
+I don't remember having reviewed or signed this patch.<br>
+<br>
+&gt;&gt; ---<br>
+&gt;&gt;&nbsp;&nbsp; hw/arm/aspeed.c | 2 +-<br>
+&gt;&gt;&nbsp;&nbsp; 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt;&gt;<br>
+&gt;&gt; diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c<br>
+&gt;&gt; index ba5f1dc5af..6a890adb83 100644<br>
+&gt;&gt; --- a/hw/arm/aspeed.c<br>
+&gt;&gt; +++ b/hw/arm/aspeed.c<br>
+&gt;&gt; @@ -148,7 +148,7 @@ struct AspeedMachineState {<br>
+&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SCU_AS=
+T2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))<br>
+&gt;&gt;<br>
+&gt;&gt;&nbsp;&nbsp; /* AST2600 evb hardware value */<br>
+&gt;&gt; -#define AST2600_EVB_HW_STRAP1 0x000000C0<br>
+&gt;&gt; +#define AST2600_EVB_HW_STRAP1 (0x000000C0 |<br>
+&gt; AST26500_HW_STRAP_BOOT_SRC_EMMC)<br>
+&gt;<br>
+&gt; IIUC you are not implementing any eMMC code, simply faking the<br>
+&gt; controller can support eMMC, but the card is used in SD mode?<br>
+<br>
+I think this is related to this issue :<br>
+<br>
+&nbsp;&nbsp; <a href=3D"https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA=
+8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf=
+1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexy=
+XTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6S=
+YEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_A=
+gH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGq=
+gQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.c=
+om%2Fopenbmc%2Fopenbmc%2Fissues%2F3818">
+https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGR=
+Wy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oy=
+U8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ=
+5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if=
+_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6=
+iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8=
+uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2=
+Fissues%2F3818</a><br>
+<br>
+&gt; I'm surprised your guest is happy and boot that. If so, then<br>
+&gt; what is the point of announcing eMMC is supported if not used?<br>
+It should work on the aspeed branches I maintain which include the<br>
+emmc support but this is not for upstream.<br>
+<br>
+<br>
+Some comments,<br>
+<br>
+I don't think the AST2600 evb boots by default on emmc. I agree<br>
+it's nice to have for tests and there are other ways to modify<br>
+slightly the default behavior.<br>
+<br>
+We could add a machine property to define the 'hw-strap1' register<br>
+but it's a bit difficult to remember the value.<br>
+<br>
+A custom '-boot' value setting the 'hw-strap1' for the AST2600<br>
+machine seems a better alternative. We could merge such a change<br>
+even if emmc is not ready.<br>
+<br>
+Thanks,<br>
+<br>
+C.<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+</span></font></div>
+</div>
+<br>
+<p style=3D"font-family:Calibri;font-size:10pt;color:#008000;margin:5pt;" a=
+lign=3D"Center">
+Seagate Internal<br>
+</p>
+</body>
+</html>
+
+--_000_SJ0PR20MB3643126F9786CFBEA81D5D349DA79SJ0PR20MB3643namp_--

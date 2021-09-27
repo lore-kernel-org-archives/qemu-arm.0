@@ -1,111 +1,110 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3981930lfp;
-        Mon, 27 Sep 2021 08:50:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJywAfJtrINmyoa4WWBKBamGBMZYwecJ5adRySn6dtUt1LhvRgE4bld/EsJ99RcLIN65Ky6Q
-X-Received: by 2002:a67:f1d2:: with SMTP id v18mr565824vsm.3.1632757845524;
-        Mon, 27 Sep 2021 08:50:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632757845; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4020424lfp;
+        Mon, 27 Sep 2021 09:32:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzBKZmm2DGwLBlGLg2B7fQr6Ig3CCTXiQfRzYYYBsmJ+o/ffH1BhFA+tQmpxCfg+Uv0njwe
+X-Received: by 2002:a1c:8088:: with SMTP id b130mr19434wmd.36.1632760361683;
+        Mon, 27 Sep 2021 09:32:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632760361; cv=none;
         d=google.com; s=arc-20160816;
-        b=ydBawYRsBTMH2aFQStOF2r1xyP0Xo+F5tF0IDkxY/Qz17nxZs7gv1Wwcm9NZYDWmmW
-         TBVJ6FbQHM7uxDZM4bAEdN4ETdJnJvSbjeMgM6Soxr+XGCVVo4JewSF5Ta8atutHn+ns
-         DH7RQnFhz/4Bnv/xSRK9KrvMzTo29N+uAVOFjScZTGuvqfhT8lI8hZvOn9oX2e9O1P9L
-         aivwKC7wPgaJwfUPsjFBDYw36OAckmDDml/X6tLBSV971uls0MXNjohqdNhNv6oQx9mB
-         hL54giCPY8vpvFsZnzUZNZVEwZ7cX5oFZJk0FlS3oIWZd0Y6K93tPvu18AV6YoCY5l17
-         6Ugg==
+        b=U98ARlsyDNFDRg9AH1H/tBYMjVtze1Uw4n/91+A7yZ0fuqMvxJ1yS3W+Ba/T7APatG
+         ZPzrT+UdQiVvKaExNaIqaJnjQ7Ux3ILM9Yc5IuEB876WX1OJjivmY3hAPAJYW9xXtMt2
+         suEgkqErcaGGWU63OTGeUZuawyI4WZVZaZvZi8gfmbhJNsF25CqtLB3Dmc8eE8hOYm3N
+         GBdGgULIqipveFGbwl7NAmMVaGZjgZVho7wPLP7gGgoNfHbIZxwCk9pvxH+e9NIKib6L
+         /JPHFbF/oudhasxfjWIijlhBfO0zx0j6ALwS4moyTa+IeF5CwWQzTRtlxUybrZPCpjRs
+         LAqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=HlLFePpZrvSqVF7ByHxYNwJxmPk1nwpKsS/tECoYIHE=;
-        b=aij7gz+jd2EoASB//gL4d5CNWa+NdqO2Cjc0Dz83azwu+ZSVp+AvurPJYnI+AdNMm8
-         9SacfXk35sS/vb+78zxcRleowxvWF5bA0umzNtgEa6scuHYPml26W/mali8t/mxa0m23
-         kM4hvzT+YfAmj15tFNgL+KFWjjsftST2ZWbHFBGbMePXGR65yBz1OUWvgwXnSVBKbXnE
-         xkjP4hwPioo7cr+OOBsskNVDdDauGGOu5dgu40tiRBID300hlWwEtLnW67Fc4XY2oAWF
-         7yVYp/I/bBrGBw6NFAT+nQNSnC0Ic6w6/pSXOYke+L+oSaIIalI8PZxy0tiuWTEO1EKQ
-         +/5w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=T1aPkKUrc80d/vqmLgc+PWq3pe5Uicwcn8ttvXrLTeU=;
+        b=COhnW0ANZMnQk5YABOGvZJ0nV2OYhI8cA/U3iIqcvjlyhxbmuG3PtIPukJkGeBHzXU
+         0RL4ApsXR175hctqRhYHIgKSoe2n95j+2ia5Sy0eR4FGn9oQPSHEmhz37SC+/3T5VGWI
+         Jt8deo/7sHWUWwnQVq+JbmcTFIbEb5NGUzinYOhrHlSvSE2J6b+0DEAqpYHiTIXYcran
+         QvLddRg/ON4N+Q/AJ3aJp+18ZcKH+LlUhZzPE/v0cTqd809JvKcGlnxdUiGqG0+zrU1K
+         EPtB/xuJe3YLgPJSd9LmI2W2F0FZkAjwsTLsWomMXY6HAqCf0b6YyD27QTIAEGdK4pGk
+         j5qA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=C4aoKAow;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=FOnqWgbO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10si6750756vsh.195.2021.09.27.08.50.45
+        by mx.google.com with ESMTPS id j4si28309wms.25.2021.09.27.09.32.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 08:50:45 -0700 (PDT)
+        Mon, 27 Sep 2021 09:32:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=C4aoKAow;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:48354 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=FOnqWgbO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46348 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUstw-0007Em-OX
-	for alex.bennee@linaro.org; Mon, 27 Sep 2021 11:50:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34380)
+	id 1mUtYW-0003Bf-NZ
+	for alex.bennee@linaro.org; Mon, 27 Sep 2021 12:32:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1mUstF-00078Y-I0
- for qemu-arm@nongnu.org; Mon, 27 Sep 2021 11:50:02 -0400
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136]:38567)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mUtXP-0002GI-Tp; Mon, 27 Sep 2021 12:31:32 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:42612)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1mUstC-0001pW-O9
- for qemu-arm@nongnu.org; Mon, 27 Sep 2021 11:50:01 -0400
-Received: by mail-lf1-x136.google.com with SMTP id x27so79584068lfu.5
- for <qemu-arm@nongnu.org>; Mon, 27 Sep 2021 08:49:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HlLFePpZrvSqVF7ByHxYNwJxmPk1nwpKsS/tECoYIHE=;
- b=C4aoKAowty4vKwu2/54rxwXo77nlCvL3sEOdfp6iLzE1v0ILl+lvPVLo7Z7QJngw8Y
- gFDE2RJesfQGvza0LGbtlOW95aKParYWQKFVbk21z0Hj0GLTtzMeIXk2qnKp8JYbIm5d
- UUs4m37IO9gSgXLX7QaPUz9if+Aiz88n/Rrki0ajXd5yTbIPttRiB8M6OPyqmid84lBR
- YCP5hdWla8tjzHplBLcNoZxckhB2DoK8ipDwF9GlIDCLB4H+iSjBLEvpfSnwKKj1IVRi
- 12xK+IOEYlWopPoqfYPrqcVB/0YKQh1E/PS21B948ShSjvOEKVA1/QYQ/eUvqft5Grxn
- voqw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mUtXO-0002Wo-Co; Mon, 27 Sep 2021 12:31:31 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ q127-20020a1ca785000000b0030cb71ea4d1so450250wme.1; 
+ Mon, 27 Sep 2021 09:31:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=T1aPkKUrc80d/vqmLgc+PWq3pe5Uicwcn8ttvXrLTeU=;
+ b=FOnqWgbOkCQhcjkwn4FfWDxoBTEJ5m8sWco68AWUOC1dlk0SpdZ2A72Edkr2cuXkkh
+ MWhliyTacJr28U3b2RCWEMcBhuOSDK770spxZyPUgUDDVn9sWLmubYGGZhC8bQAk//Wc
+ NdUl028xnLXZMSxsIIq5lu/YRjsIkTaF7rjpb0AxCkQeFLSUE2rxd90bgrG041HJjHQf
+ 1i0oJYx5jyZPM4OA/zMf+uNgL8j6tjRfjM3SYGKupGwXp1fZcfBwnNEVzt5ntKcVzOqp
+ 20nSS+caITlgo5AYDiP2yNsLj3XzQ7hn+AA0gaKC92p+SQyyGAzYZGSMCypA2PBzDbQv
+ yj3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HlLFePpZrvSqVF7ByHxYNwJxmPk1nwpKsS/tECoYIHE=;
- b=cp09YUXW8b+JVHzpRN4aVdiVTQFCRQLIdP+Sfvn3BTX4QZphUUjT1lrtESj0vhDCNa
- A7q1AQRrAfmHHSG+FyOrNOsoQRcv12HmfV5XLViUmu4TumBoHi/sEY8vFU4u3rv9X2+F
- cSy75VI12KLYYpVIDjVYJnv92Z3D/0wB9xycLIxDJefS/VRXQxJW3v67VCZMa8NOOa6q
- KQq5TWkpDcnQpS8Qpulyqj7RUcXhT1YJUu6CiO4ohs2YGaenM1fzizGgz9hq83/MvDhE
- Osce+fX4ovZcN5/HibUIvGWxEohxmMDj7OCqTUlWnqTFXOQaJEja7tBJlacMFdiDVtdy
- WIbw==
-X-Gm-Message-State: AOAM533M+6LBiRa7qiqLciY5IGaZRgmDBEuMeebnW33rRTLcKCRn/vVs
- ss5c8x1ShKemc0atbfJYPSEaJd/d5ktHtgHJJZSmwg==
-X-Received: by 2002:a2e:5418:: with SMTP id i24mr533353ljb.115.1632757792982; 
- Mon, 27 Sep 2021 08:49:52 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=T1aPkKUrc80d/vqmLgc+PWq3pe5Uicwcn8ttvXrLTeU=;
+ b=1W229c1z8EcQaoepHDuFW8FuODuePC4OY/yluOTwK7eH02KxQIW9bty6OQgEauMxO9
+ ZnEtQvz+jvqtTZ/d9nbV4cP1Ah+piLHUOyjFZAulVgI51qC+p8TA7uAJmJKyue7izj8b
+ axF3fbYjOw8DfM0olWZKNiMWtgzJy6eZN7ScQm5RqUy2c0TRNRGNrNf6i9u9C/Tj/nS+
+ +voFC0vfjPyQpRS6WcztINweiKNhMOYO5y95osGcUqC+36lDjzm7pxcANUCiLzn+un/j
+ bHMXWxLnbJRdSuw7QUS7IWdDT94i5OZq4FS6c9PVuQ90EhEEeN30fedOZqL6skEBy5Lu
+ VCTA==
+X-Gm-Message-State: AOAM53211UaYLLeaqgyLk7si6eeVOAy1xBIipKpcAoUyjM704HqQplyI
+ hV1Y43bLR3zMjjuDBL5iZYh0C6cR1sg=
+X-Received: by 2002:a05:600c:350a:: with SMTP id
+ h10mr1827114wmq.163.1632760288483; 
+ Mon, 27 Sep 2021 09:31:28 -0700 (PDT)
+Received: from x1w.redhat.com (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id x5sm21242438wmk.32.2021.09.27.09.31.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Sep 2021 09:31:27 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 2/6] tests/acceptance: Make pick_default_qemu_bin() more
+ generic
+Date: Mon, 27 Sep 2021 18:31:12 +0200
+Message-Id: <20210927163116.1998349-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210927163116.1998349-1-f4bug@amsat.org>
+References: <20210927163116.1998349-1-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20210926221518.1726267-1-f4bug@amsat.org>
- <b16f6405-72cf-144b-975e-98cda77604ab@kaod.org>
-In-Reply-To: <b16f6405-72cf-144b-975e-98cda77604ab@kaod.org>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Mon, 27 Sep 2021 08:49:31 -0700
-Message-ID: <CAGcCb11_SZH+eXVHhCWWffon03E1M998wi4gtnRXd8feJahVhQ@mail.gmail.com>
-Subject: Re: [PATCH] hw: Add a 'Sensor devices' qdev category
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- QEMU Developers <qemu-devel@nongnu.org>, Corey Minyard <cminyard@mvista.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>, 
- qemu-arm <qemu-arm@nongnu.org>, Titus Rwantare <titusr@google.com>, 
- John Wang <wangzhiqiang.bj@bytedance.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000041ed8805ccfc0cf5"
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=wuhaotsh@google.com; helo=mail-lf1-x136.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,398 +117,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <laurent@vivier.eu>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Willian Rampazzo <willianr@redhat.com>, qemu-arm@nongnu.org,
+ Warner Losh <imp@bsdimp.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KS45N15ogGPT
+X-TUID: Z3NroJrMfVZg
 
---00000000000041ed8805ccfc0cf5
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Make pick_default_qemu_bin() generic to find qemu-system or
+qemu-user binaries.
 
-On Mon, Sep 27, 2021 at 3:03 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ tests/acceptance/avocado_qemu/__init__.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-> On 9/27/21 00:15, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Sensors models are listed in the 'Misc devices' category.
-> > Move them to their own category.
-> >
-> > For the devices in the hw/sensor/ directory, the category
-> > is obvious.
-> >
-> > hw/arm/z2.c models the AER915 model which is described
-> > on [*] as:
-> >
-> >    The 14-pin chip marked AER915 just below the expansion
-> >    port is a 80C51-type microcontroller, similar to Philips
-> >    P89LPC915. It has an 8-bit A/D which is used to determine
-> >    which of six buttons are pressed on the resistor-network
-> >    wired remote.  It communicates with the main cpu via I2C.
-> >
-> > It was introduced in commit 3bf11207c06 ("Add support for
-> > Zipit Z2 machine") with this comment:
-> >
-> >    248 static uint8_t aer915_recv(I2CSlave *slave)
-> >    249 {
-> >    ...
-> >    253     switch (s->buf[0]) {
-> >    254     /* Return hardcoded battery voltage,
-> >    255      * 0xf0 means ~4.1V
-> >    256      */
-> >    257     case 0x02:
-> >    258         retval =3D 0xf0;
-> >    259         break;
-> >
-> > For QEMU the AER915 is a very simple sensor model.
-> >
-> > [*] https://www.bealecorner.org/best/measure/z2/index.html
-> >
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
->
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
+diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
+index 8fcbed74849..2b9b5dd27fe 100644
+--- a/tests/acceptance/avocado_qemu/__init__.py
++++ b/tests/acceptance/avocado_qemu/__init__.py
+@@ -52,7 +52,7 @@ def is_readable_executable_file(path):
+     return os.path.isfile(path) and os.access(path, os.R_OK | os.X_OK)
+ 
+ 
+-def pick_default_qemu_bin(arch=None):
++def pick_default_qemu_bin(bin_prefix='qemu-system-', arch=None):
+     """
+     Picks the path of a QEMU binary, starting either in the current working
+     directory or in the source tree root directory.
+@@ -71,7 +71,7 @@ def pick_default_qemu_bin(arch=None):
+     # qemu binary path does not match arch for powerpc, handle it
+     if 'ppc64le' in arch:
+         arch = 'ppc64'
+-    qemu_bin_relative_path = "./qemu-system-%s" % arch
++    qemu_bin_relative_path = os.path.join(".", bin_prefix + arch)
+     if is_readable_executable_file(qemu_bin_relative_path):
+         return qemu_bin_relative_path
+ 
+@@ -185,14 +185,14 @@ def _get_unique_tag_val(self, tag_name):
+             return vals.pop()
+         return None
+ 
+-    def setUp(self):
++    def setUp(self, bin_prefix):
+         self.arch = self.params.get('arch',
+                                     default=self._get_unique_tag_val('arch'))
+ 
+         self.cpu = self.params.get('cpu',
+                                    default=self._get_unique_tag_val('cpu'))
+ 
+-        default_qemu_bin = pick_default_qemu_bin(arch=self.arch)
++        default_qemu_bin = pick_default_qemu_bin(bin_prefix, arch=self.arch)
+         self.qemu_bin = self.params.get('qemu_bin',
+                                         default=default_qemu_bin)
+         if self.qemu_bin is None:
+@@ -220,7 +220,7 @@ class Test(QemuBaseTest):
+     def setUp(self):
+         self._vms = {}
+ 
+-        super(Test, self).setUp()
++        super(Test, self).setUp('qemu-system-')
+ 
+         self.machine = self.params.get('machine',
+                                        default=self._get_unique_tag_val('machine'))
+-- 
+2.31.1
 
->
->
-> > ---
-> >   include/hw/qdev-core.h | 1 +
-> >   hw/arm/z2.c            | 1 +
-> >   hw/sensor/adm1272.c    | 1 +
-> >   hw/sensor/dps310.c     | 1 +
-> >   hw/sensor/emc141x.c    | 1 +
-> >   hw/sensor/max34451.c   | 2 ++
-> >   hw/sensor/tmp105.c     | 1 +
-> >   hw/sensor/tmp421.c     | 1 +
-> >   softmmu/qdev-monitor.c | 1 +
-> >   9 files changed, 10 insertions(+)
-> >
-> > diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> > index 34c8a7506a1..f6241212247 100644
-> > --- a/include/hw/qdev-core.h
-> > +++ b/include/hw/qdev-core.h
-> > @@ -26,6 +26,7 @@ typedef enum DeviceCategory {
-> >       DEVICE_CATEGORY_SOUND,
-> >       DEVICE_CATEGORY_MISC,
-> >       DEVICE_CATEGORY_CPU,
-> > +    DEVICE_CATEGORY_SENSOR,
-> >       DEVICE_CATEGORY_MAX
-> >   } DeviceCategory;
-> >
-> > diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-> > index 9c1e876207b..62db9741106 100644
-> > --- a/hw/arm/z2.c
-> > +++ b/hw/arm/z2.c
-> > @@ -288,6 +288,7 @@ static void aer915_class_init(ObjectClass *klass,
-> void *data)
-> >       k->recv =3D aer915_recv;
-> >       k->send =3D aer915_send;
-> >       dc->vmsd =3D &vmstate_aer915_state;
-> > +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-> >   }
-> >
-> >   static const TypeInfo aer915_info =3D {
-> > diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
-> > index 7310c769be2..2942ac75f90 100644
-> > --- a/hw/sensor/adm1272.c
-> > +++ b/hw/sensor/adm1272.c
-> > @@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass,
-> void *data)
-> >       DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >       PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(klass);
-> >
-> > +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-> >       dc->desc =3D "Analog Devices ADM1272 Hot Swap controller";
-> >       dc->vmsd =3D &vmstate_adm1272;
-> >       k->write_data =3D adm1272_write_data;
-> > diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
-> > index d60a18ac41b..1e24a499b38 100644
-> > --- a/hw/sensor/dps310.c
-> > +++ b/hw/sensor/dps310.c
-> > @@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass,
-> void *data)
-> >       k->send =3D dps310_tx;
-> >       dc->reset =3D dps310_reset;
-> >       dc->vmsd =3D &vmstate_dps310;
-> > +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-> >   }
-> >
-> >   static const TypeInfo dps310_info =3D {
-> > diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c
-> > index 7ce8f4e9794..4202d8f185a 100644
-> > --- a/hw/sensor/emc141x.c
-> > +++ b/hw/sensor/emc141x.c
-> > @@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass,
-> void *data)
-> >       DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >       I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-> >
-> > +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-> >       dc->reset =3D emc141x_reset;
-> >       k->event =3D emc141x_event;
-> >       k->recv =3D emc141x_rx;
-> > diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
-> > index a91d8bd487c..8300bf4ff43 100644
-> > --- a/hw/sensor/max34451.c
-> > +++ b/hw/sensor/max34451.c
-> > @@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass,
-> void *data)
-> >       ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> >       DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >       PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(klass);
-> > +
-> > +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-> >       dc->desc =3D "Maxim MAX34451 16-Channel V/I monitor";
-> >       dc->vmsd =3D &vmstate_max34451;
-> >       k->write_data =3D max34451_write_data;
-> > diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-> > index 20564494899..43d79b9eeec 100644
-> > --- a/hw/sensor/tmp105.c
-> > +++ b/hw/sensor/tmp105.c
-> > @@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass,
-> void *data)
-> >       DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >       I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-> >
-> > +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-> >       dc->realize =3D tmp105_realize;
-> >       k->event =3D tmp105_event;
-> >       k->recv =3D tmp105_rx;
-> > diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-> > index a3db57dcb5a..c328978af9c 100644
-> > --- a/hw/sensor/tmp421.c
-> > +++ b/hw/sensor/tmp421.c
-> > @@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass,
-> void *data)
-> >       I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-> >       TMP421Class *sc =3D TMP421_CLASS(klass);
-> >
-> > +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-> >       dc->realize =3D tmp421_realize;
-> >       k->event =3D tmp421_event;
-> >       k->recv =3D tmp421_rx;
-> > diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-> > index 0705f008466..db56f328228 100644
-> > --- a/softmmu/qdev-monitor.c
-> > +++ b/softmmu/qdev-monitor.c
-> > @@ -162,6 +162,7 @@ static void qdev_print_devinfos(bool show_no_user)
-> >           [DEVICE_CATEGORY_SOUND]   =3D "Sound",
-> >           [DEVICE_CATEGORY_MISC]    =3D "Misc",
-> >           [DEVICE_CATEGORY_CPU]     =3D "CPU",
-> > +        [DEVICE_CATEGORY_SENSOR]  =3D "Sensor",
-> >           [DEVICE_CATEGORY_MAX]     =3D "Uncategorized",
-> >       };
-> >       GSList *list, *elt;
-> >
->
->
-
---00000000000041ed8805ccfc0cf5
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep 27, 2021 at 3:03 AM C=C3=
-=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org">clg@kaod.org</a>&gt; =
-wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0=
-px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 9/27/2=
-1 00:15, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-&gt; Sensors models are listed in the &#39;Misc devices&#39; category.<br>
-&gt; Move them to their own category.<br>
-&gt; <br>
-&gt; For the devices in the hw/sensor/ directory, the category<br>
-&gt; is obvious.<br>
-&gt; <br>
-&gt; hw/arm/z2.c models the AER915 model which is described<br>
-&gt; on [*] as:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 The 14-pin chip marked AER915 just below the expansion<br=
->
-&gt;=C2=A0 =C2=A0 port is a 80C51-type microcontroller, similar to Philips<=
-br>
-&gt;=C2=A0 =C2=A0 P89LPC915. It has an 8-bit A/D which is used to determine=
-<br>
-&gt;=C2=A0 =C2=A0 which of six buttons are pressed on the resistor-network<=
-br>
-&gt;=C2=A0 =C2=A0 wired remote.=C2=A0 It communicates with the main cpu via=
- I2C.<br>
-&gt; <br>
-&gt; It was introduced in commit 3bf11207c06 (&quot;Add support for<br>
-&gt; Zipit Z2 machine&quot;) with this comment:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 248 static uint8_t aer915_recv(I2CSlave *slave)<br>
-&gt;=C2=A0 =C2=A0 249 {<br>
-&gt;=C2=A0 =C2=A0 ...<br>
-&gt;=C2=A0 =C2=A0 253=C2=A0 =C2=A0 =C2=A0switch (s-&gt;buf[0]) {<br>
-&gt;=C2=A0 =C2=A0 254=C2=A0 =C2=A0 =C2=A0/* Return hardcoded battery voltag=
-e,<br>
-&gt;=C2=A0 =C2=A0 255=C2=A0 =C2=A0 =C2=A0 * 0xf0 means ~4.1V<br>
-&gt;=C2=A0 =C2=A0 256=C2=A0 =C2=A0 =C2=A0 */<br>
-&gt;=C2=A0 =C2=A0 257=C2=A0 =C2=A0 =C2=A0case 0x02:<br>
-&gt;=C2=A0 =C2=A0 258=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0retval =3D 0xf0;<br>
-&gt;=C2=A0 =C2=A0 259=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-&gt; <br>
-&gt; For QEMU the AER915 is a very simple sensor model.<br>
-&gt; <br>
-&gt; [*] <a href=3D"https://www.bealecorner.org/best/measure/z2/index.html"=
- rel=3D"noreferrer" target=3D"_blank">https://www.bealecorner.org/best/meas=
-ure/z2/index.html</a><br>
-&gt; <br>
-&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug=
-@amsat.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
-<br>
-Reviewed-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org" targ=
-et=3D"_blank">clg@kaod.org</a>&gt;<br></blockquote><div>Reviewed-by: Hao Wu=
- &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google.com</a>&gt;=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0include/hw/qdev-core.h | 1 +<br>
-&gt;=C2=A0 =C2=A0hw/arm/z2.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1 +=
-<br>
-&gt;=C2=A0 =C2=A0hw/sensor/adm1272.c=C2=A0 =C2=A0 | 1 +<br>
-&gt;=C2=A0 =C2=A0hw/sensor/dps310.c=C2=A0 =C2=A0 =C2=A0| 1 +<br>
-&gt;=C2=A0 =C2=A0hw/sensor/emc141x.c=C2=A0 =C2=A0 | 1 +<br>
-&gt;=C2=A0 =C2=A0hw/sensor/max34451.c=C2=A0 =C2=A0| 2 ++<br>
-&gt;=C2=A0 =C2=A0hw/sensor/tmp105.c=C2=A0 =C2=A0 =C2=A0| 1 +<br>
-&gt;=C2=A0 =C2=A0hw/sensor/tmp421.c=C2=A0 =C2=A0 =C2=A0| 1 +<br>
-&gt;=C2=A0 =C2=A0softmmu/qdev-monitor.c | 1 +<br>
-&gt;=C2=A0 =C2=A09 files changed, 10 insertions(+)<br>
-&gt; <br>
-&gt; diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h<br>
-&gt; index 34c8a7506a1..f6241212247 100644<br>
-&gt; --- a/include/hw/qdev-core.h<br>
-&gt; +++ b/include/hw/qdev-core.h<br>
-&gt; @@ -26,6 +26,7 @@ typedef enum DeviceCategory {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DEVICE_CATEGORY_SOUND,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DEVICE_CATEGORY_MISC,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DEVICE_CATEGORY_CPU,<br>
-&gt; +=C2=A0 =C2=A0 DEVICE_CATEGORY_SENSOR,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DEVICE_CATEGORY_MAX<br>
-&gt;=C2=A0 =C2=A0} DeviceCategory;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; diff --git a/hw/arm/z2.c b/hw/arm/z2.c<br>
-&gt; index 9c1e876207b..62db9741106 100644<br>
-&gt; --- a/hw/arm/z2.c<br>
-&gt; +++ b/hw/arm/z2.c<br>
-&gt; @@ -288,6 +288,7 @@ static void aer915_class_init(ObjectClass *klass, =
-void *data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;recv =3D aer915_recv;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;send =3D aer915_send;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_aer915_state;<b=
-r>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_SENSOR, dc-&gt;categories);<br>
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0static const TypeInfo aer915_info =3D {<br>
-&gt; diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c<br>
-&gt; index 7310c769be2..2942ac75f90 100644<br>
-&gt; --- a/hw/sensor/adm1272.c<br>
-&gt; +++ b/hw/sensor/adm1272.c<br>
-&gt; @@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass,=
- void *data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(k=
-lass);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_SENSOR, dc-&gt;categories);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;Analog Devices ADM1272=
- Hot Swap controller&quot;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_adm1272;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;write_data =3D adm1272_write_data;<br>
-&gt; diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c<br>
-&gt; index d60a18ac41b..1e24a499b38 100644<br>
-&gt; --- a/hw/sensor/dps310.c<br>
-&gt; +++ b/hw/sensor/dps310.c<br>
-&gt; @@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass, =
-void *data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;send =3D dps310_tx;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;reset =3D dps310_reset;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_dps310;<br>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_SENSOR, dc-&gt;categories);<br>
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0static const TypeInfo dps310_info =3D {<br>
-&gt; diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c<br>
-&gt; index 7ce8f4e9794..4202d8f185a 100644<br>
-&gt; --- a/hw/sensor/emc141x.c<br>
-&gt; +++ b/hw/sensor/emc141x.c<br>
-&gt; @@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass,=
- void *data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);=
-<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_SENSOR, dc-&gt;categories);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;reset =3D emc141x_reset;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;event =3D emc141x_event;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;recv =3D emc141x_rx;<br>
-&gt; diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c<br>
-&gt; index a91d8bd487c..8300bf4ff43 100644<br>
-&gt; --- a/hw/sensor/max34451.c<br>
-&gt; +++ b/hw/sensor/max34451.c<br>
-&gt; @@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass=
-, void *data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0ResettableClass *rc =3D RESETTABLE_CLASS(kla=
-ss);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(k=
-lass);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_SENSOR, dc-&gt;categories);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;Maxim MAX34451 16-Chan=
-nel V/I monitor&quot;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_max34451;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;write_data =3D max34451_write_data;<br=
->
-&gt; diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c<br>
-&gt; index 20564494899..43d79b9eeec 100644<br>
-&gt; --- a/hw/sensor/tmp105.c<br>
-&gt; +++ b/hw/sensor/tmp105.c<br>
-&gt; @@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass, =
-void *data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);=
-<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_SENSOR, dc-&gt;categories);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;realize =3D tmp105_realize;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;event =3D tmp105_event;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;recv =3D tmp105_rx;<br>
-&gt; diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c<br>
-&gt; index a3db57dcb5a..c328978af9c 100644<br>
-&gt; --- a/hw/sensor/tmp421.c<br>
-&gt; +++ b/hw/sensor/tmp421.c<br>
-&gt; @@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass, =
-void *data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0TMP421Class *sc =3D TMP421_CLASS(klass);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_SENSOR, dc-&gt;categories);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dc-&gt;realize =3D tmp421_realize;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;event =3D tmp421_event;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0k-&gt;recv =3D tmp421_rx;<br>
-&gt; diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c<br>
-&gt; index 0705f008466..db56f328228 100644<br>
-&gt; --- a/softmmu/qdev-monitor.c<br>
-&gt; +++ b/softmmu/qdev-monitor.c<br>
-&gt; @@ -162,6 +162,7 @@ static void qdev_print_devinfos(bool show_no_user)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[DEVICE_CATEGORY_SOUND]=C2=A0 =
-=C2=A0=3D &quot;Sound&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[DEVICE_CATEGORY_MISC]=C2=A0 =
-=C2=A0 =3D &quot;Misc&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[DEVICE_CATEGORY_CPU]=C2=A0 =
-=C2=A0 =C2=A0=3D &quot;CPU&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 [DEVICE_CATEGORY_SENSOR]=C2=A0 =3D &quot;=
-Sensor&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[DEVICE_CATEGORY_MAX]=C2=A0 =
-=C2=A0 =C2=A0=3D &quot;Uncategorized&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0};<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GSList *list, *elt;<br>
-&gt; <br>
-<br>
-</blockquote></div></div>
-
---00000000000041ed8805ccfc0cf5--

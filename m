@@ -1,194 +1,92 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3415190lfp;
-        Sun, 26 Sep 2021 19:26:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzpPXDQKzM36XQSAQ+bGHFn81XpUWy043CxYi2BqAF8egVCUdZzBC5K8ADTT45MM+fXBgcj
-X-Received: by 2002:a02:3213:: with SMTP id j19mr19632492jaa.17.1632709568033;
-        Sun, 26 Sep 2021 19:26:08 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1632709568; cv=pass;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3699325lfp;
+        Mon, 27 Sep 2021 03:13:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKY/QKUtAyQQ6ga+xpxnFlquWF5/uml3VgYMg/zTSDyc238Sp7XDgSZ6B2vKgq+pPJ4Pvm
+X-Received: by 2002:a05:620a:632:: with SMTP id 18mr21709034qkv.457.1632737622177;
+        Mon, 27 Sep 2021 03:13:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632737622; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z/N0jf4rxzpxOpDEB5eOFE81diN3oC5seb4FEKmqgom3pw16OSH09pSdQoNViT+KvU
-         CJacfCOLYLknyzCJrwa62OXqd0yDLyuDgKTnpztX5Q0+cg1dyJJ/9FLL9Bt0qsFF5m3w
-         XWyW0+PSTpiAX6U0yMyz5bOXkdPknYrZcDNVQAy3FHavj3t/GLxz5eLDxTqAXhT7VtEf
-         b86rVWMJHcAvi+6I//I/hEvUU2B/8diXS5Eph1Dy/f2JreL+v6qsQePK4y6XZesB7+rp
-         Chm9hDVL9MpgIz/s9Uue11PR+hw99MZNS26JsYG1jegdYxDVZ+khgj4kKc+MNLsqTkVw
-         cglA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=ROO9iCWLwuYqueQ3YNaAndUGTnTnSro/DCc9jRGlLz1Rw66pxs6Q4M+L1uQZWMQVRw
+         b8+gBe7uPeB8FQqs5PjJMBZ/MUtRmAlMUEbV0u+k7nRT7jTxpda5Qcr+8prfkt7HNVCz
+         TGhJeWjqNq+Ka7ytiKxx5mMdjCoThD3Us0dFSykkBnzSOR6Y5i/MB/+MttQkECX48P4M
+         4fo6+KEsNI4OaixkhxBKmAPIc8UxCo3X1409qnoiwX2UpuZ/d/ZJgkhMO8zNiDJs7SiH
+         VQdNhNTUz/XO+72/zfv0DGi75wICqfWIIHDOuURV1wadZG8aBb+9pMchDytleCCWGGZN
+         4p7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature;
-        bh=mj0hbFukcIwLuYeSu5TD8gOm41HPHqvcKlDzNQzdICs=;
-        b=tiBRaZCuIwmuB/jiPUgpEFO6oUSrg2MTmATZOS5WaODEW/RfTL0vJZk7xIKSQBvNpY
-         cGT3bVJwslKaAMhdiIq6MoiaPbWIVj5jmJZTuj2VM+2lpe8mJQHoFmhn1pBe983yinOj
-         rc/xlwjhI3tkrBjx1bVCAgnPYO8mAL7QsmFP/9peen1b2Zcej1RLCKDxse3LfPPky7Kg
-         phebaao+S3U2wcp4tUs+AJmTzWdkn6qXGmiqbC8yc6SBXuj2rUINd/+Ag6NkDdb/Rkjp
-         aFN9FaeloM0OcIcgbI1ENjzCbBWwqn70qKQ7g1BmzRtxHKtQ136Nd1rXFm8WUrpAa5GB
-         rNSw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@windriver.com header.s=PPS06212021 header.b=HrUt6+rd;
-       arc=pass (i=1 spf=pass spfdomain=windriver.com dkim=pass dkdomain=windriver.com dmarc=pass fromdomain=windriver.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=windriver.com
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=GsgX0banlimWsIWJdxUdayGO5w8KSNMW+adN2gNTLt8=;
+        b=cl02Yo0p4h6c5zsCW392/Re1C5aJ29iJnOiOpV1zDnfH13d3/IA9rwTWDVipT2eVcC
+         jNnI3v6t0sUDKTFnfkAZIDeNcvxNMFaJIihST9L2LWp5jRyLOmVGvo+VGZsCdhkTqAL1
+         KE1Edfpq8pqMPlvbIBNm9buDx4wtbxxg0Cq3wAzK87or71FXYcX0K8RVieqgFUdFLZYT
+         2MJRxls9w4wJaqXMI+2jSNOw3uFAhYuvO327MOXcqCyCh9QekHiDqzSng0IjeDlg+BfR
+         FyaKPkW0n8cpn3w9fi7QHld5pPD5NaWN13PeHiZlTAruiKndmhePlqJRlEjflAAaMmal
+         mIyQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p31si8408365jac.95.2021.09.26.19.26.07
+        by mx.google.com with ESMTPS id p7si12056473qtk.109.2021.09.27.03.13.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Sep 2021 19:26:08 -0700 (PDT)
+        Mon, 27 Sep 2021 03:13:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@windriver.com header.s=PPS06212021 header.b=HrUt6+rd;
-       arc=pass (i=1 spf=pass spfdomain=windriver.com dkim=pass dkdomain=windriver.com dmarc=pass fromdomain=windriver.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=windriver.com
-Received: from localhost ([::1]:41706 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34454 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUgLH-0001Fd-Cc
-	for alex.bennee@linaro.org; Sun, 26 Sep 2021 22:26:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41724)
+	id 1mUndl-0005xD-EX
+	for alex.bennee@linaro.org; Mon, 27 Sep 2021 06:13:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=490467f2f7=xuzhou.cheng@windriver.com>)
- id 1mUgKq-0001DR-TU; Sun, 26 Sep 2021 22:25:40 -0400
-Received: from mx0b-0064b401.pphosted.com ([205.220.178.238]:6340)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mUnTq-0001Ty-AZ
+ for qemu-arm@nongnu.org; Mon, 27 Sep 2021 06:03:26 -0400
+Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19]:58241)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=490467f2f7=xuzhou.cheng@windriver.com>)
- id 1mUgKl-0001cz-0b; Sun, 26 Sep 2021 22:25:38 -0400
-Received: from pps.filterd (m0250812.ppops.net [127.0.0.1])
- by mx0a-0064b401.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 18R2Loe5015454; 
- Mon, 27 Sep 2021 02:25:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=windriver.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=PPS06212021;
- bh=mj0hbFukcIwLuYeSu5TD8gOm41HPHqvcKlDzNQzdICs=;
- b=HrUt6+rdT2liZ311OD/FQlflo+oUAUEL0O/pwrSuazy3DPKEuu+ExFZ/mgr7znOSZa5A
- iZrR3Puu/87GavWktMmhb8VGeeRGQoJt4NijD6uC9YiN2+WT1cOvS2rZ5cKifASoL9DG
- 4qxDf6gvVuoa4mVj7Z9nVsWZFzm26ZPeCc+D7lHd9v/iiP8OfZUgDI+tgdgu3/CAPYdM
- 7wmXeh96FpVljj479U3ufnfoE5+OfibMH3dzHHWYOAx0GmWYYYH4uafPGQFOFj4vDPWp
- G5pPqQ/lRV+07k+2u0ddTBmM/VkVZsHyuMXBFW8NuKS9ZBZpRUt/z16PldfFF9z9Jaxz 1A== 
-Received: from nam02-dm3-obe.outbound.protection.outlook.com
- (mail-dm3nam07lp2040.outbound.protection.outlook.com [104.47.56.40])
- by mx0a-0064b401.pphosted.com with ESMTP id 3bahp4rf5t-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 27 Sep 2021 02:25:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ly82oFU5UcaXOKUF4vmcwFVdwZr4Zva6ghVHz9inRRXkbZ6Tc8GTOHuzG1rl9fK2ErMX28k6ETaTudSEB5q3yQ6nWb2XxEQQBU7clBbkPGIgQ0ZfZ5WuVw2cFosafE1ud+rH3CkWu5vGE+QsEnIvABl9ipyfRdQnSXUD7pWwpBYXbBx0YVgGv82TjbRFC5Y1UNb6rMnRjBBOyqEWngkM1qv4eyMhXspGATHJb1Wtn8bJEZVAaUqI911F61wmlF2fTzu5zIMmlFrk7GKaptW4XzL6HjeHAafRoyMDTBucXQRVYSld3QYXoLGmETEQB10+slkdPIamjnwD6zRK8U5lvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=mj0hbFukcIwLuYeSu5TD8gOm41HPHqvcKlDzNQzdICs=;
- b=VquVyaBigwlzEBeMUn88HRfn0Lp6zgEg6WMKu0R/+lvnmw9Pu4rssppeegYlehGuKQ4g5TLf4OLDbkblIgeC57lBHYx5vRbNg+0wem0x6O+zkpq3Rahgx+VGhOOHuiI6RCCKzhpRloLc61OXM4suP/a6wc+DUOYkpaR58lpWc+HcrOH1w16ErOQYM5DNdJ/y3fwyXMYq0k/lkCwi6wFIx58czrHAr+txefEC+6oE8gsS4D4FeKAi49TyDakpxwtvJy9SgvabcnLz0it2awQeIlJrSkvHlRDYrdMbv2hwE1jnY12DdWhulZ3QjaJUWUclTPjpgBUlasmAtYgHtEHuNg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=windriver.com; dmarc=pass action=none
- header.from=windriver.com; dkim=pass header.d=windriver.com; arc=none
-Received: from PH0PR11MB5205.namprd11.prod.outlook.com (2603:10b6:510:3d::24)
- by PH0PR11MB5079.namprd11.prod.outlook.com (2603:10b6:510:3d::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.13; Mon, 27 Sep
- 2021 02:25:17 +0000
-Received: from PH0PR11MB5205.namprd11.prod.outlook.com
- ([fe80::c062:7238:b631:eb40]) by PH0PR11MB5205.namprd11.prod.outlook.com
- ([fe80::c062:7238:b631:eb40%6]) with mapi id 15.20.4544.021; Mon, 27 Sep 2021
- 02:25:17 +0000
-From: "Cheng, Xuzhou" <Xuzhou.Cheng@windriver.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, Xuzhou
- Cheng <xchengl.cn@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: RE: [PATCH] hw/arm: sabrelite: Connect SPI flash CS line to GPIO3_19
-Thread-Topic: [PATCH] hw/arm: sabrelite: Connect SPI flash CS line to GPIO3_19
-Thread-Index: AQHXsoJiultAoKS3u02Yg3x4QwMK3qu17oEAgAE5RZA=
-Date: Mon, 27 Sep 2021 02:25:17 +0000
-Message-ID: <PH0PR11MB52050A201057E8C27BCC96E397A79@PH0PR11MB5205.namprd11.prod.outlook.com>
-References: <20210926025651.29456-1-xchengl.cn@gmail.com>
- <fa80416b-6382-e865-89a3-9289afdd75c8@amsat.org>
-In-Reply-To: <fa80416b-6382-e865-89a3-9289afdd75c8@amsat.org>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: amsat.org; dkim=none (message not signed)
- header.d=none;amsat.org; dmarc=none action=none header.from=windriver.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: af85db17-e5e8-4ea3-acc6-08d9815e0bcb
-x-ms-traffictypediagnostic: PH0PR11MB5079:
-x-microsoft-antispam-prvs: <PH0PR11MB5079875D093A188398FC02A697A79@PH0PR11MB5079.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2958;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: aJ4/xQjkCWo7t9PZrMTBXhCcKP3sMCJTm0IAqOGFczqdT9aiCKbjjF886EGLUBBdfX2A1DnX+jbPJfAHIkn3GyLS31djXxbPffS41vAzW0v7khezVipaQj+GajmxJ3n9+LHnDa9d5/N4C2qIbbWu+g7P93y1rE0aoQrJrgk2YwLfz7WdHDlAPKRK6oACOukUKIuK5O67mkV8CYEOpvrNBdcTBibRpQM3/wg6rKz4EmT/PJPdWa6HANDAnQYszTYvsgfN83rrw6ifkN6gsvqwvw2aDGAt+zw1PaphqD1xSIZ1dQ/phxZYXQ3C/wBfErB06o53N5LFKgXkxMabkLAwAtXhOPc91VE68+RhSBss4Q77wjMal3v6Ksksp+okysN+3pLhgbUh9RmsbCR5yFGjnd/HTGjdA6Xf9ptAju/Zl8r5q37HeSdxLIB2ZAXXxtFhde6guR8cf+7idBliO5mtsgELowWn8FGLBUGCQo9e/U2Uy4bU4I4aW2jAz0a77bx9IpneabDH+jgk+Mp9z92CTfuk89LWdDIZ+ab/CHkSdQrCM2dEWqQIrRd2/STmJfayI9BbTE8LbFukXVEZwEVtwpoKrzTOjpXUnkjVzHPzgivdTwzW+X3OK/oyCHBdV8RyphFiW7LgL4Otce4rAoBccBCEiUDsxd90j9J+qq0u+GIbk1nrutSii0WLWvhq9K0pAXywSjwXHn1DIjDC01dVwQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5205.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(38070700005)(8676002)(83380400001)(5660300002)(186003)(71200400001)(64756008)(53546011)(2906002)(7696005)(66946007)(66556008)(66476007)(55016002)(9686003)(66446008)(6506007)(26005)(316002)(508600001)(38100700002)(54906003)(52536014)(86362001)(122000001)(76116006)(110136005)(4326008)(33656002)(8936002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VERtMEt0NUpTbWZMV1ptazFIdjdiQWZLcUxWeWdGS1RQMzFpZHNlTlhpSzhD?=
- =?utf-8?B?K3BxVjNWYlk5RmJBRllWbk1hRGl2SHRnMUszOGdkeGZweFJleDU5RHFRM2Vq?=
- =?utf-8?B?clU3RFRWSDF2SC9tSDc2dmFLalJqMHp6OXBUejNxREM5TnBxNk1EVnE4ZFkv?=
- =?utf-8?B?QncwTDNPcmlQR3pDQjB6NEpqeUZaUythKzJqUXZQOVJyOXcxTDRKNUNWQ3dn?=
- =?utf-8?B?K1ZBaDRwTjZ2Mk40QW5WMktkeVRFdEQwOWhYVkd2Q0FiN0RQSGVIOFlISFgx?=
- =?utf-8?B?VG9obEExSHJybEEwTmVCci90OE9qTm9CVWRldlUzd0VTandJNmlIUWs1V05i?=
- =?utf-8?B?M2lCUTUwRHQ5akxsbHcwdHdUWkF4OWhvUDM4YkJlUCszODhEV2xhQ0R5Mytv?=
- =?utf-8?B?RzFLU0c5UVRQTU4rRTFNNnhuNklpeUNFMXBjZG5NSzB0MWZrVUVKK1hvd2Vn?=
- =?utf-8?B?YlNHZlhXWGpJQWlJcXJBcU1ieENqejROWnc0V0xvSGNreTFWd3JlMDRzanRY?=
- =?utf-8?B?SkIxd1RxTHVuTnkrOTlXVGZkWXVRWUh2MHo5SkozSEs2akhJNnV1NGFBaVpl?=
- =?utf-8?B?N0lCdEcwWEN6UDJjNUZ6WFBNdU1PSDA4VndNREJ0dkU3amFVNFc0TnowMndX?=
- =?utf-8?B?MnVJUjZabWNzZVdacVN2dWlVRXRkaWNaanFvY2Q0R3pMV1d0OFFjWnV3NXRC?=
- =?utf-8?B?bzFsRUh6MHR5N3NmRTBQUkZTbVgyK2RqdkI3Q0UwR2hzaEJGTDRWTG1zS1ZR?=
- =?utf-8?B?VzltUDNNQUc3dEcraWNVNSs5OEJveG5YeGlld2h2L2wyUi9yV3UvdFE4MlM3?=
- =?utf-8?B?S3NUUlFqeGZMc1o3WHJ5OWoxVjQxL3dvMTJqS0QvdVpTUkJrNnhmUlJNU0tK?=
- =?utf-8?B?ay9Sdm1vQWZDRWNocGZyTHRLY1liRGVaaTlkNnFBQVpPTXZkQ1p1SkdsK1N2?=
- =?utf-8?B?SnJxSXhCRklLZXRNK3JSVm9lWFJ2VjFQb3M5aDI1K3g5RFdJcDlwOHJSa29l?=
- =?utf-8?B?eFdzTnU4Y1diNXJGTTNpd3lOcUlERExEZ1c0MC9ibmgvWUtYYmw4SlVmTjcw?=
- =?utf-8?B?MFdtaTh2ck9pODdYWUdTdU5vOWFCYm5VWS9adGJTOERiM0pMOFFyN1FYOFpn?=
- =?utf-8?B?NWttY3BMVXNsQTlFbTZEbG9HcXRvVUIybnlVYTZ3SjN4bURtYThaRUQzOEtx?=
- =?utf-8?B?dGN3Ym93TjlDOXpJYmNLYTNLaXdxbzBuY1NRU2FVYUhRNnp5NHVPVzJtOStr?=
- =?utf-8?B?TjRZcDhncUR0OW85Z0NCdzdXU0tPcFNZMENkdHRTUll2WS83djg3V1FUS0xM?=
- =?utf-8?B?bGJHY3JlTmRiU24zOE5DVWxRcFBzTzk4TnhTcEZ4RzJVcFRIMFFXUjVLcys5?=
- =?utf-8?B?Wi81UkczMnhWcUNHQlMwS3JnTHIreCtsSURRUVpkdmc0VFNHSWZjK3k2Y0pJ?=
- =?utf-8?B?aVBCV3hLeGhOQ09TcWdnRHJ3VEZFSWxCY3N1NGdvdU12dVZ6U3djblpxZTQ1?=
- =?utf-8?B?dFVXckZ6UzNIS1BiL3hQMFBpakV5SUI5RDZqT1FMdlU3ZU94WUJRaG9JNndP?=
- =?utf-8?B?a0c3c3oxUUNyejFJcXY1VGtGS0RzcXhqaUx6dEpSMjkzYWVNb2V1NG5lWGZY?=
- =?utf-8?B?MWxpT0lGeFp1dmZTVmd3K2tKalh0M0FCRjhEOFlBUWFHWExqclowekNaSHhl?=
- =?utf-8?B?K2gwK2NFNFFLMEFVZWorMnhuSXNEY0doTUllTldRSUdZZDlkMTdlSGJkalVN?=
- =?utf-8?Q?I9Y9zoIPQV/pVxdqRA=3D?=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mUnTk-000404-Da
+ for qemu-arm@nongnu.org; Mon, 27 Sep 2021 06:03:26 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.33])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id E32E120CE7;
+ Mon, 27 Sep 2021 10:03:07 +0000 (UTC)
+Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 27 Sep
+ 2021 12:03:06 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G0014caccf49-6597-4aa1-a040-fa40e8469cd9,
+ 7A1C2730502A6E1581EB46D208322E62E5328AE4) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <b16f6405-72cf-144b-975e-98cda77604ab@kaod.org>
+Date: Mon, 27 Sep 2021 12:03:01 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: windriver.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5205.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: af85db17-e5e8-4ea3-acc6-08d9815e0bcb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2021 02:25:17.3157 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ddb2873-a1ad-4a18-ae4e-4644631433be
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: nOpa6T92Rhb0OfiTsKP74yXr/TgURG1vEyeCuAyyUvEnT68Hz8qJxfB2MwZoOCwZe0JPjTpv+BKF1cMWIIa8ysyUjUkLHLnwt+W51KQNA5Q=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5079
-X-Proofpoint-GUID: q272wU9AMJvuwzPvyYm8_0MJAW-b7-_T
-X-Proofpoint-ORIG-GUID: q272wU9AMJvuwzPvyYm8_0MJAW-b7-_T
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.391,FMLib:17.0.607.475
- definitions=2021-09-26_09,2021-09-24_02,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 clxscore=1011
- bulkscore=0 suspectscore=0 impostorscore=0 mlxscore=0 phishscore=0
- mlxlogscore=999 priorityscore=1501 malwarescore=0 lowpriorityscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2109230001 definitions=main-2109270013
-Received-SPF: pass client-ip=205.220.178.238;
- envelope-from=prvs=490467f2f7=xuzhou.cheng@windriver.com;
- helo=mx0b-0064b401.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH] hw: Add a 'Sensor devices' qdev category
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+References: <20210926221518.1726267-1-f4bug@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20210926221518.1726267-1-f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 271c2659-ff00-4ab7-a1ae-b2e826a0886a
+X-Ovh-Tracer-Id: 10870282126463110075
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudejkedgvddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepleejtddvueelgfekleefheehvdevuefgkeeggffftdejueduhfekieekieffffevnecuffhomhgrihhnpegsvggrlhgvtghorhhnvghrrdhorhhgnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphgsohhniihinhhisehrvgguhhgrthdrtghomh
+Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
+ helo=2.mo548.mail-out.ovh.net
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.478,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -202,60 +100,176 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "bmeng.cn@gmail.com" <bmeng.cn@gmail.com>,
- "groeck7@gmail.com" <groeck7@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>,
+ Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ Bin Meng <bmeng.cn@gmail.com>, John Wang <wangzhiqiang.bj@bytedance.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cznZgCiErjaP
+X-TUID: fjmZQSSX+Qtw
 
-PiBPbiA5LzI2LzIxIDA0OjU2LCBYdXpob3UgQ2hlbmcgd3JvdGU6DQo+ID4gRnJvbTogWHV6aG91
-IENoZW5nIDx4dXpob3UuY2hlbmdAd2luZHJpdmVyLmNvbT4NCj4gPg0KPiA+IFRoZSBMaW51eCBz
-cGktaW14IGRyaXZlciBkb2VzIG5vdCB3b3JrIG9uIFFFTVUuIFRoZSByZWFzb24gaXMgdGhhdCB0
-aGUgDQo+ID4gc3RhdGUgb2YgbTI1cDgwIGxvb3BzIGluIFNUQVRFX1JFQURJTkdfREFUQSBzdGF0
-ZSBhZnRlciByZWNlaXZpbmcgUkRTUiANCj4gPiBjb21tYW5kLCB0aGUgbmV3IGNvbW1hbmQgaXMg
-aWdub3JlZC4gQmVmb3JlIHNlbmRpbmcgYSBuZXcgY29tbWFuZCwgQ1MgDQo+ID4gbGluZSBzaG91
-bGQgYmUgcHVsbGVkIGhpZ2ggdG8gbWFrZSB0aGUgc3RhdGUgb2YgbTI1cDgwIGJhY2sgdG8gSURM
-RS4NCj4gPg0KPiA+IEN1cnJlbnRseSB0aGUgU1BJIGZsYXNoIENTIGxpbmUgaXMgY29ubmVjdGVk
-IHRvIHRoZSBTUEkgY29udHJvbGxlciwgDQo+ID4gYnV0IG9uIHRoZSByZWFsIGJvYXJkLCBpdCdz
-IGNvbm5lY3RlZCB0byBHUElPM18xOS4NCj4gDQo+IE1heWJlIHdvcnRoIG1lbnRpb25pbmcgdGhp
-cyBtYXRjaGVzIHRoZSBib2FyZCBkdHM6DQo+IA0KPiBhcmNoL2FybS9ib290L2R0cy9pbXg2cWRs
-LXNhYnJlbGl0ZS5kdHNpOg0KPiANCj4gMzEwICZlY3NwaTEgew0KPiAzMTEgICAgIGNzLWdwaW9z
-ID0gPCZncGlvMyAxOSBHUElPX0FDVElWRV9MT1c+Ow0KPiAzMTIgICAgIHBpbmN0cmwtbmFtZXMg
-PSAiZGVmYXVsdCI7DQo+IDMxMyAgICAgcGluY3RybC0wID0gPCZwaW5jdHJsX2Vjc3BpMT47DQo+
-IDMxNCAgICAgc3RhdHVzID0gIm9rYXkiOw0KPiAzMTUNCj4gMzE2ICAgICBmbGFzaDogbTI1cDgw
-QDAgew0KPiAzMTcgICAgICAgICBjb21wYXRpYmxlID0gInNzdCxzc3QyNXZmMDE2YiIsICJqZWRl
-YyxzcGktbm9yIjsNCj4gMzE4ICAgICAgICAgc3BpLW1heC1mcmVxdWVuY3kgPSA8MjAwMDAwMDA+
-Ow0KPiAzMTkgICAgICAgICByZWcgPSA8MD47DQo+IDMyMCAgICAgfTsNCj4gMzIxIH07DQoNClll
-cywgaXQncyB3b3J0aHkuIEknbGwgc2VuZCB2MiB0byB1cGRhdGUgY29tbWl0IG1lc3NhZ2UuDQoN
-Cj4gPiBTaG91bGQgY29ubmVjdCB0aGUgU1NJX0dQSU9fQ1MgdG8gR1BJTzNfMTkgd2hlbiBhZGRp
-bmcgYSBzcGktbm9yIHRvDQo+ID4gc3BpMSBvbiBzYWJyZWxpdGUgbWFjaGluZS4NCj4gPg0KPiA+
-IFZlcmlmaWVkIHRoaXMgcGF0Y2ggb24gTGludXggdjUuMTQuDQo+ID4NCj4gPiBMb2dzOg0KPiA+
-ICAgIyBlY2hvICIwMTIzNDU2Nzg5OTg3NjU0MzIxMCIgPiB0ZXN0DQo+ID4gICAjIG10ZF9kZWJ1
-ZyBlcmFzZSAvZGV2L210ZDAgMHgwIDB4MTAwMA0KPiA+ICAgRXJhc2VkIDQwOTYgYnl0ZXMgZnJv
-bSBhZGRyZXNzIDB4MDAwMDAwMDAgaW4gZmxhc2gNCj4gPiAgICMgbXRkX2RlYnVnIHdyaXRlIC9k
-ZXYvbXRkYmxvY2swIDB4MCAyMCB0ZXN0DQo+ID4gICBDb3BpZWQgMjAgYnl0ZXMgZnJvbSB0ZXN0
-IHRvIGFkZHJlc3MgMHgwMDAwMDAwMCBpbiBmbGFzaA0KPiA+ICAgIyBtdGRfZGVidWcgcmVhZCAv
-ZGV2L210ZGJsb2NrMCAweDAgMjAgdGVzdF9vdXQNCj4gPiAgIENvcGllZCAyMCBieXRlcyBmcm9t
-IGFkZHJlc3MgMHgwMDAwMDAwMCBpbiBmbGFzaCB0byB0ZXN0X291dA0KPiA+ICAgIyBjYXQgdGVz
-dF9vdXQNCj4gPiAgIDAxMjM0NTY3ODk5ODc2NTQzMjEwIw0KPiA+DQo+ID4gU2lnbmVkLW9mZi1i
-eTogWHV6aG91IENoZW5nIDx4dXpob3UuY2hlbmdAd2luZHJpdmVyLmNvbT4NCj4gPiBSZXBvcnRl
-ZC1ieTogR3VlbnRlciBSb2VjayA8bGludXhAcm9lY2stdXMubmV0Pg0KPiA+IFJldmlld2VkLWJ5
-OiBCaW4gTWVuZyA8YmluLm1lbmdAd2luZHJpdmVyLmNvbT4NCj4gPiAtLS0NCj4gPiAgaHcvYXJt
-L3NhYnJlbGl0ZS5jIHwgMiArLQ0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyks
-IDEgZGVsZXRpb24oLSkNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9ody9hcm0vc2FicmVsaXRlLmMg
-Yi9ody9hcm0vc2FicmVsaXRlLmMgaW5kZXggDQo+ID4gMjlmYzc3N2I2MS4uNTUzNjA4ZTU4MyAx
-MDA2NDQNCj4gPiAtLS0gYS9ody9hcm0vc2FicmVsaXRlLmMNCj4gPiArKysgYi9ody9hcm0vc2Fi
-cmVsaXRlLmMNCj4gPiBAQCAtODcsNyArODcsNyBAQCBzdGF0aWMgdm9pZCBzYWJyZWxpdGVfaW5p
-dChNYWNoaW5lU3RhdGUgKm1hY2hpbmUpDQo+ID4gICAgICAgICAgICAgICAgICBxZGV2X3JlYWxp
-emVfYW5kX3VucmVmKGZsYXNoX2RldiwgQlVTKHNwaV9idXMpLCANCj4gPiAmZXJyb3JfZmF0YWwp
-Ow0KPiA+DQo+ID4gICAgICAgICAgICAgICAgICBjc19saW5lID0gcWRldl9nZXRfZ3Bpb19pbl9u
-YW1lZChmbGFzaF9kZXYsIFNTSV9HUElPX0NTLCAwKTsNCj4gPiAtICAgICAgICAgICAgICAgIHN5
-c2J1c19jb25uZWN0X2lycShTWVNfQlVTX0RFVklDRShzcGlfZGV2KSwgMSwgY3NfbGluZSk7DQo+
-ID4gKyAgICAgICAgICAgICAgICBxZGV2X2Nvbm5lY3RfZ3Bpb19vdXQoREVWSUNFKCZzLT5ncGlv
-WzJdKSwgMTksIA0KPiA+ICsgY3NfbGluZSk7DQo+ID4gICAgICAgICAgICAgIH0NCj4gPiAgICAg
-ICAgICB9DQo+ID4gICAgICB9DQo+ID4NCj4gDQo+IFRoYW5rIGZvciB1c2luZyBhbiBvc2NpbGxv
-c2NvcGUgdG8gdmVyaWZ5LCBpdCByZW1pbmRlZCBtZSBzb21lIFNEY2FyZCBkZWJ1Z2dpbmcgNCB5
-ZWFycyBhZ28gPSkNCg0KSXQncyBmdW4gdG8gcGxheSBvc2NpbGxvc2NvcGUuICA6XikNCg==
+On 9/27/21 00:15, Philippe Mathieu-Daudé wrote:
+> Sensors models are listed in the 'Misc devices' category.
+> Move them to their own category.
+> 
+> For the devices in the hw/sensor/ directory, the category
+> is obvious.
+> 
+> hw/arm/z2.c models the AER915 model which is described
+> on [*] as:
+> 
+>    The 14-pin chip marked AER915 just below the expansion
+>    port is a 80C51-type microcontroller, similar to Philips
+>    P89LPC915. It has an 8-bit A/D which is used to determine
+>    which of six buttons are pressed on the resistor-network
+>    wired remote.  It communicates with the main cpu via I2C.
+> 
+> It was introduced in commit 3bf11207c06 ("Add support for
+> Zipit Z2 machine") with this comment:
+> 
+>    248 static uint8_t aer915_recv(I2CSlave *slave)
+>    249 {
+>    ...
+>    253     switch (s->buf[0]) {
+>    254     /* Return hardcoded battery voltage,
+>    255      * 0xf0 means ~4.1V
+>    256      */
+>    257     case 0x02:
+>    258         retval = 0xf0;
+>    259         break;
+> 
+> For QEMU the AER915 is a very simple sensor model.
+> 
+> [*] https://www.bealecorner.org/best/measure/z2/index.html
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+
+> ---
+>   include/hw/qdev-core.h | 1 +
+>   hw/arm/z2.c            | 1 +
+>   hw/sensor/adm1272.c    | 1 +
+>   hw/sensor/dps310.c     | 1 +
+>   hw/sensor/emc141x.c    | 1 +
+>   hw/sensor/max34451.c   | 2 ++
+>   hw/sensor/tmp105.c     | 1 +
+>   hw/sensor/tmp421.c     | 1 +
+>   softmmu/qdev-monitor.c | 1 +
+>   9 files changed, 10 insertions(+)
+> 
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index 34c8a7506a1..f6241212247 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -26,6 +26,7 @@ typedef enum DeviceCategory {
+>       DEVICE_CATEGORY_SOUND,
+>       DEVICE_CATEGORY_MISC,
+>       DEVICE_CATEGORY_CPU,
+> +    DEVICE_CATEGORY_SENSOR,
+>       DEVICE_CATEGORY_MAX
+>   } DeviceCategory;
+>   
+> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+> index 9c1e876207b..62db9741106 100644
+> --- a/hw/arm/z2.c
+> +++ b/hw/arm/z2.c
+> @@ -288,6 +288,7 @@ static void aer915_class_init(ObjectClass *klass, void *data)
+>       k->recv = aer915_recv;
+>       k->send = aer915_send;
+>       dc->vmsd = &vmstate_aer915_state;
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>   }
+>   
+>   static const TypeInfo aer915_info = {
+> diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
+> index 7310c769be2..2942ac75f90 100644
+> --- a/hw/sensor/adm1272.c
+> +++ b/hw/sensor/adm1272.c
+> @@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass, void *data)
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
+>   
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>       dc->desc = "Analog Devices ADM1272 Hot Swap controller";
+>       dc->vmsd = &vmstate_adm1272;
+>       k->write_data = adm1272_write_data;
+> diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
+> index d60a18ac41b..1e24a499b38 100644
+> --- a/hw/sensor/dps310.c
+> +++ b/hw/sensor/dps310.c
+> @@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass, void *data)
+>       k->send = dps310_tx;
+>       dc->reset = dps310_reset;
+>       dc->vmsd = &vmstate_dps310;
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>   }
+>   
+>   static const TypeInfo dps310_info = {
+> diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c
+> index 7ce8f4e9794..4202d8f185a 100644
+> --- a/hw/sensor/emc141x.c
+> +++ b/hw/sensor/emc141x.c
+> @@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass, void *data)
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>   
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>       dc->reset = emc141x_reset;
+>       k->event = emc141x_event;
+>       k->recv = emc141x_rx;
+> diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
+> index a91d8bd487c..8300bf4ff43 100644
+> --- a/hw/sensor/max34451.c
+> +++ b/hw/sensor/max34451.c
+> @@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass, void *data)
+>       ResettableClass *rc = RESETTABLE_CLASS(klass);
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
+> +
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>       dc->desc = "Maxim MAX34451 16-Channel V/I monitor";
+>       dc->vmsd = &vmstate_max34451;
+>       k->write_data = max34451_write_data;
+> diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
+> index 20564494899..43d79b9eeec 100644
+> --- a/hw/sensor/tmp105.c
+> +++ b/hw/sensor/tmp105.c
+> @@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass, void *data)
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>   
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>       dc->realize = tmp105_realize;
+>       k->event = tmp105_event;
+>       k->recv = tmp105_rx;
+> diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
+> index a3db57dcb5a..c328978af9c 100644
+> --- a/hw/sensor/tmp421.c
+> +++ b/hw/sensor/tmp421.c
+> @@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
+>       I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>       TMP421Class *sc = TMP421_CLASS(klass);
+>   
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>       dc->realize = tmp421_realize;
+>       k->event = tmp421_event;
+>       k->recv = tmp421_rx;
+> diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+> index 0705f008466..db56f328228 100644
+> --- a/softmmu/qdev-monitor.c
+> +++ b/softmmu/qdev-monitor.c
+> @@ -162,6 +162,7 @@ static void qdev_print_devinfos(bool show_no_user)
+>           [DEVICE_CATEGORY_SOUND]   = "Sound",
+>           [DEVICE_CATEGORY_MISC]    = "Misc",
+>           [DEVICE_CATEGORY_CPU]     = "CPU",
+> +        [DEVICE_CATEGORY_SENSOR]  = "Sensor",
+>           [DEVICE_CATEGORY_MAX]     = "Uncategorized",
+>       };
+>       GSList *list, *elt;
+> 
+

@@ -1,177 +1,208 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3978780lfp;
-        Mon, 27 Sep 2021 08:47:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTnFlzr4IqlGy23iURHPO4VQRdv+tQBfxU8/jD0iMdX177qR8eTeMTYlHmnTppe/6Hwqok
-X-Received: by 2002:a17:907:7817:: with SMTP id la23mr770205ejc.195.1632757626599;
-        Mon, 27 Sep 2021 08:47:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632757626; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3996492lfp;
+        Mon, 27 Sep 2021 09:07:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPAGJzfLY2dWUs9zb0/e3n8sNw9kcheh9N4/sNheeTOyASNYOB4Hixy/OkZ4lb6AjM53oa
+X-Received: by 2002:a1c:8088:: with SMTP id b130mr2703101wmd.36.1632758850680;
+        Mon, 27 Sep 2021 09:07:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632758850; cv=none;
         d=google.com; s=arc-20160816;
-        b=ea8LkYS8vQhlfz9DGt3jyf89EL4fiO4EADeKihWVw8TwIRxKcMyTVufcV79HcXuuVj
-         H7JEmiscYxZ55HhCv8CsOWUKOjJ7YCmM4FVaCB7Gwg7mI/rfd3uxUBnPKKe/oWY1bR5Y
-         7WpAv743+5U9vLuzZLIq8B6rLC/xDW6CHOVvb7ZZEYHErFm1JOvBSO9ToppWhZrm/AnW
-         2N07gXJtoKj3XuJ23duLgRsxhLogh8UA7kKGIGL8LTIRvAT60KsQh8uV2KW5caAoEfdS
-         u/XgYEIc6JMbRHQ2s59DXDkYh7d+G7w8lJ2zh/dVQ8w03lKvK5ND/cgdHdOIqj1Vsx42
-         3XzQ==
+        b=xdcwOKpG/hc+wSEcB1o/qAl/tzwIeo7ydDQ0oMEX0XQ8HEtJUAziP/ZeUO4zYnxkw8
+         DPcXw5wUbfkblh7LBoUTh8gajksTMHrUYkaWgS2is9DKadZMEMYZUwcfj3mlSKVPc3fC
+         Mn9pxAStuQOjf+AIp+qo4vB4zxmT4fzq+Z2LrlBiF9bTm1SeMGo1bhd/zeZJjsKrtzHa
+         557Ul+VC+ojuTf+I/l5XVG25/BVNoQ3PPff87Ls3N7IbYfeaWVXAFXDFfnaFwqYkRzK7
+         5v4acaQhky8QlIGL/HYqrUyk86A8+zR29FOB/haHeGGTs1lnv4VmGzOM0aaxvnCBLvWj
+         9rTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=nhzsQ4P9M/UVf0EdEr4phK4AOpgIFR5ehRHTQe1IBw4=;
-        b=i5osim8jqksUC++6Dzk9rEc+aLJ0zilvA+crBVH3BrzpBeczC0c/yyU9g1fblWIiuw
-         wA4WFa4lXkCetwBGJqUoCXWGsCsX7rdNo7UdGSOsCmwFKKr8GckpUmVRrOm9c7SUTd7L
-         qLyXPYLPLlCYlcqhzLYg8WvLLaLdaI6lwfBPwlhzilpbwVCeko9PBQV0h6WAx1fKfGXy
-         iD6zRsV95Yijw3RPMy3z2IPPvPtrYsQKDDFZyA+ZRtSIMgddUB3sktJAUjhRZPYx6eLz
-         xBWISFYqudj9eItPZjL5jKQpfnmufI1ewjN0BNEcr40Hp8/u/yLfih2so4fP4x1qjeWD
-         +MrQ==
+        bh=86gAeL3dgvM6du55wK6RIpxb6dmdn7na3uRj0dt5YNY=;
+        b=dGZU0gy7s3rjYIKVj2+NIvvfwlF9oTeKv5Uw+50s+8iauw9GDmkl5XQZ+BwapsCtKR
+         wWBKUhZTDc7PXREAsyw6rXPPk2f5dRL6J7fV0QZ69vHI6F0LsRQfMFg3TCFKKGhpkP6i
+         QKr092xob5lrPxyb9C/3pfi4FCB94P+VcMGrc+ZxZVhO3cZ+ozGxEoFugtCGegoVZ7Xy
+         Np/PKORiqK4rbguOQmD7jtoxAFwDpPpNTTHQQ/rvP+FiEuKIdjmCBh24kbndIcweqqQI
+         DQ0GfAHvnZ1pfSUOWGk8kA9ZrxGPbQquD6OXhoOI/X7gZHvBWopvGbXOXv6QFbiC/eMM
+         EgUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=icRFkUf9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@chromium.org header.s=google header.b=HzClwCdH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ce18si10415153edb.540.2021.09.27.08.47.06
+        by mx.google.com with ESMTPS id l19si19478886wmh.213.2021.09.27.09.07.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 08:47:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Sep 2021 09:07:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=icRFkUf9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38686 helo=lists1p.gnu.org)
+       dkim=fail header.i=@chromium.org header.s=google header.b=HzClwCdH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: from localhost ([::1]:45170 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUsqP-0000gW-Gy
-	for alex.bennee@linaro.org; Mon, 27 Sep 2021 11:47:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33272)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mUtA9-0007qj-Lh
+	for alex.bennee@linaro.org; Mon, 27 Sep 2021 12:07:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mUsqB-0000d9-3h
- for qemu-arm@nongnu.org; Mon, 27 Sep 2021 11:46:51 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:34460)
+ (Exim 4.90_1) (envelope-from <sjg@google.com>) id 1mUt7C-0005Xs-Ih
+ for qemu-devel@nongnu.org; Mon, 27 Sep 2021 12:04:26 -0400
+Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33]:41499)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mUsq9-0007TX-1Z
- for qemu-arm@nongnu.org; Mon, 27 Sep 2021 11:46:50 -0400
-Received: by mail-wr1-x433.google.com with SMTP id t8so52878973wri.1
- for <qemu-arm@nongnu.org>; Mon, 27 Sep 2021 08:46:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <sjg@google.com>) id 1mUt7A-0005Fr-HD
+ for qemu-devel@nongnu.org; Mon, 27 Sep 2021 12:04:26 -0400
+Received: by mail-vk1-xa33.google.com with SMTP id h132so7159382vke.8
+ for <qemu-devel@nongnu.org>; Mon, 27 Sep 2021 09:04:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nhzsQ4P9M/UVf0EdEr4phK4AOpgIFR5ehRHTQe1IBw4=;
- b=icRFkUf9xz+Sv35UzSGJ2PaXmkCWmKCqmCXd/uRKy6bmUd37Y6gsZZcafzqnnBrhb9
- HAcCGhT+owQx5dQYCKuaqXHVknLqV4+yhMaB76zXlOCAZnGMDAxLPzOeACAiDkwhUZ/y
- qmOAoUH4hQdKiOG9/9dWgik276HLQEOiv0eIQEVULEXS2onjvI70d0T0j2Ro6JKYPEap
- qytv4BC9es5TgLfjMGegdeGcUMpKEY+slEY4pZF9lLOhzQaIFz6rXZZoWIjsfNA4qBVK
- Pfq5dt8cMrh3MmZhl46rQ1fWt9d7P7o8B8s2zMpESC7/JnDYkDfibrUEerbY2u3nye/Q
- zq6g==
+ :cc; bh=86gAeL3dgvM6du55wK6RIpxb6dmdn7na3uRj0dt5YNY=;
+ b=HzClwCdHLQ0P/54Lw/LL2jS4sPdwzqZ6o940q2K96pgWG0E7xjixJdKvPMTqoL+gCz
+ H+nBOcaw3zOPr8/iYG5PxBSnjZnlL5xR2rNZc/1uKNvXXVl9ooWTUHMo4N6HjgWzCKld
+ djeRQhVexPlNvsnaGH5j1xaDrLUc4cf63x1sU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nhzsQ4P9M/UVf0EdEr4phK4AOpgIFR5ehRHTQe1IBw4=;
- b=zpkUrtaxxbiww5LJ1kWFXpR7y7bZ/VJ69ka3GjK6Ch6bkUHwQ5VDjj5HBa7BrIXIAm
- Fx5DwHyGzu4AwZc/N8TtBLsT0C/9jHTESDzV2QQ9lR7SgeGU6dCtieGID5botn6vQeqL
- FkMTKdxHUOiSowTDaIT/VNas56xW3BbxpC2GXR6D++4+NnMTcw2ZOkwS+reInYp4TA9B
- faVfIwA0Fegm0ShSx1kardeMJLF2jzyavYosFqQc+RC/HWZGsvXapG3Y4M/nFjJbxWwk
- jXqg5K33sqKuwQ9mFys3TofIJvgLeq95Og5q/KskEV5WtNYuTeFecyPmpTB4sYldAmgw
- PfkA==
-X-Gm-Message-State: AOAM532KV52OW5in2onjWXzOzRWMy68MO+pjPMJb0LJNRgsZNlymOEFB
- oJbyAnGcwM/z7Y6B83umC0w6pKJK+kJm/gR1wAASIQ==
-X-Received: by 2002:adf:ee48:: with SMTP id w8mr590268wro.263.1632757607229;
- Mon, 27 Sep 2021 08:46:47 -0700 (PDT)
+ bh=86gAeL3dgvM6du55wK6RIpxb6dmdn7na3uRj0dt5YNY=;
+ b=D0lYKaiKqn+J9e01Jes8YSdCJNQwWv8Nb8nCFgBcCbPQsR/3A9cR/+e7terxHYqtKU
+ D5OHBuLBHnN1d7Wek43FClP7JpezArxc6s/d2LuN764em10DCht9oSTqspvFmmEQWa2a
+ wALWrthDVRttkWGriiKEzW6JdrD/R3neBuWw7qx3PfHBILXyfip4ZIhGQHNMqZx0gsJ9
+ 40yZPVEoJCL6pNG9i6omkQ/esrVEQu6PtZad9pLVzq9QKIy69/pTLUOeQV64mzbh1iSD
+ uQ9iZG5cSLxoKkoT3r7X6Hs7FalCTyzXjtFM6WZWWA1J9RVNE0lTGa96cS+U6qnb3frk
+ ehmg==
+X-Gm-Message-State: AOAM530mjZW2aScoV8DKjSBEhc974dkCrL6ZniGvMb+U2sdmcMfpCK9w
+ Rt8L/YEoddSWuirIQZSPQmWeBeSz2Qg6+3CvqKTjFA==
+X-Received: by 2002:a05:6122:1681:: with SMTP id 1mr597411vkl.9.1632758661985; 
+ Mon, 27 Sep 2021 09:04:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210926183410.256484-1-sjg@chromium.org>
  <CAFEAcA8S2=7rOKxeqcW+kw0BVPO3PUJGSUH-ioN7=c=U7zQxvg@mail.gmail.com>
  <CAPnjgZ2NCRVxKULWR1JjZU+D9saJ7fbZ=yHmWTSr3ufHxLYg-g@mail.gmail.com>
  <CAFEAcA9n+2JDFv8BezeEMA4e2Zhr0ENAvzLjBS6YXRoW9P-JXQ@mail.gmail.com>
  <CAPnjgZ1AO8575LYbwmuouNR5=dgNam6EFDC1_bai=8xAHdw7-Q@mail.gmail.com>
-In-Reply-To: <CAPnjgZ1AO8575LYbwmuouNR5=dgNam6EFDC1_bai=8xAHdw7-Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Sep 2021 16:45:53 +0100
-Message-ID: <CAFEAcA8FsPcBELEZxiRMuFbKtmKTFgDHABePQ33hdxYRq0C0ig@mail.gmail.com>
+ <CAFEAcA8FsPcBELEZxiRMuFbKtmKTFgDHABePQ33hdxYRq0C0ig@mail.gmail.com>
+In-Reply-To: <CAFEAcA8FsPcBELEZxiRMuFbKtmKTFgDHABePQ33hdxYRq0C0ig@mail.gmail.com>
+From: Simon Glass <sjg@chromium.org>
+Date: Mon, 27 Sep 2021 10:04:10 -0600
+Message-ID: <CAPnjgZ2S7SXxHYd_bkcf+GcmmgEew3vpJkw+DRPqrpb44eLgcA@mail.gmail.com>
 Subject: Re: [PATCH] hw/arm/virt: Allow additions to the generated device tree
-To: Simon Glass <sjg@chromium.org>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a33;
+ envelope-from=sjg@google.com; helo=mail-vk1-xa33.google.com
+X-Spam_score_int: -92
+X-Spam_score: -9.3
+X-Spam_bar: ---------
+X-Spam_report: (-9.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tk3CxCs6z16n
+ QEMU Developers <qemu-devel@nongnu.org>, Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bGrM76FujDYc
 
-On Mon, 27 Sept 2021 at 16:18, Simon Glass <sjg@chromium.org> wrote:
-> On Mon, 27 Sept 2021 at 02:48, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > So what is missing in the QEMU-provided DTB that it needs?
+Hi Peter,
+
+On Mon, 27 Sept 2021 at 09:46, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Quite a lot. Here are some examples:
+> On Mon, 27 Sept 2021 at 16:18, Simon Glass <sjg@chromium.org> wrote:
+> > On Mon, 27 Sept 2021 at 02:48, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > > So what is missing in the QEMU-provided DTB that it needs?
+> >
+> > Quite a lot. Here are some examples:
+> >
+> > U-Boot has limited pre-relocation memory so tries to avoid
+> > binding/probing devices that are not used before relocation:
+> >
+> > https://u-boot.readthedocs.io/en/latest/develop/driver-model/design.html#pre-relocation-support
 >
-> U-Boot has limited pre-relocation memory so tries to avoid
-> binding/probing devices that are not used before relocation:
+> It's up to u-boot to decide what it wants to touch and
+> what it does not. QEMU tells u-boot what all the available
+> devices are; I don't think we should have extra stuff saying
+> "and if you are u-boot, do something odd".
+
+Do you have familiarity with U-Boot and the space constraints of
+embedded systems?
+
 >
-> https://u-boot.readthedocs.io/en/latest/develop/driver-model/design.html#pre-relocation-support
-
-It's up to u-boot to decide what it wants to touch and
-what it does not. QEMU tells u-boot what all the available
-devices are; I don't think we should have extra stuff saying
-"and if you are u-boot, do something odd".
-
-> There is a configuration node (which is likely to change form in
-> future releases, but will still be there)
+> > There is a configuration node (which is likely to change form in
+> > future releases, but will still be there)
+> >
+> > https://github.com/u-boot/u-boot/blob/master/doc/device-tree-bindings/config.txt
 >
-> https://github.com/u-boot/u-boot/blob/master/doc/device-tree-bindings/config.txt
-
-I think u-boot should be storing this kind of thing somewhere
-else (e.g. as part of the binary blob that is u-boot itself,
-or stored in flash or RAM as a separate blob).
-
-> Then there are various features which put things in U-Boot's control
-> dtb, such as verified boot, which adds public keys during signing:
+> I think u-boot should be storing this kind of thing somewhere
+> else (e.g. as part of the binary blob that is u-boot itself,
+> or stored in flash or RAM as a separate blob).
 >
-> https://github.com/u-boot/u-boot/blob/master/doc/uImage.FIT/signature.txt#L135
+> > Then there are various features which put things in U-Boot's control
+> > dtb, such as verified boot, which adds public keys during signing:
+> >
+> > https://github.com/u-boot/u-boot/blob/master/doc/uImage.FIT/signature.txt#L135
+> >
+> > More generally, the U-Boot tree has hundreds of files which add
+> > properties for each board, since we try to keep the U-Boot-specific
+> > things out of the Linux tree:
+> >
+> > $ find . -name *u-boot.dtsi |wc -l
+> > 398
 >
-> More generally, the U-Boot tree has hundreds of files which add
-> properties for each board, since we try to keep the U-Boot-specific
-> things out of the Linux tree:
+> If any of this is actual information about the hardware then you
+> should sort out getting the bindings documented officially
+> (which I think is still in the Linux tree), and then QEMU can
+> provide them.
 >
-> $ find . -name *u-boot.dtsi |wc -l
-> 398
-
-If any of this is actual information about the hardware then you
-should sort out getting the bindings documented officially
-(which I think is still in the Linux tree), and then QEMU can
-provide them.
-
-> Quite a bit of this is to do with SPL and so far it seems that QEMU
-> mostly runs U-Boot proper only, although I see that SPL is starting to
-> creep in too in the U-Boot CI.
+> > Quite a bit of this is to do with SPL and so far it seems that QEMU
+> > mostly runs U-Boot proper only, although I see that SPL is starting to
+> > creep in too in the U-Boot CI.
+> >
+> > So at present QEMU is not able to support U-Boot fully.
 >
-> So at present QEMU is not able to support U-Boot fully.
+> My take is that this is u-boot doing weird custom things with
+> the DTB that aren't "describe the hardware". You should be able
+> to boot u-boot by putting those custom DTB extra things in a
+> separate blob and having u-boot combine that with the
+> actual DTB when it starts.
 
-My take is that this is u-boot doing weird custom things with
-the DTB that aren't "describe the hardware". You should be able
-to boot u-boot by putting those custom DTB extra things in a
-separate blob and having u-boot combine that with the
-actual DTB when it starts.
+Well this is how U-Boot works. Since it doesn't have a user-space
+program to provide configuration / policy, nor a command line to
+provide parameters (except with sandbox[1]), device tree is what it
+uses. All of its driver model and configuration comes from there The
+'describe the hardware' thing has been discussed to death but U-Boot
+needs board- and arch-specific policy information about the hardware
+so it can actually boot successfully on real systems.
 
--- PMM
+It has been like this since U-Boot started using device tree, some 9
+years ago! I can't imagine it changing.
+
+As to a separate blob, isn't that what I am suggesting with this
+patch? QEMU doesn't support passing two separate dtb blobs to U-Boot,
+nor is there an API for that. Even if we did that it would require
+code very early in U-Boot to process, which would make it infeasible
+for anything other than QEMU. Ideally QEMU should work the same way as
+other boards.
+
+As a related point, I am looking at how we pass things between
+firmware components.  If we wanted to pass in some initiate state in
+some sort of blob, is it possible to set that up in memory (along with
+the binary) for when QEMU starts emulating? The code and RAM might be
+quite a long way apart so using a single image would involve a lot of
+zeroes.
+
+Regards,
+Simon
+
+[1] https://u-boot.readthedocs.io/en/latest/arch/sandbox.html

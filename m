@@ -1,111 +1,103 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3818812lfp;
-        Mon, 27 Sep 2021 05:47:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKGgBz19ec3FAhXrHrRzg2q1h0cTZxNdVd6jgGnv/Gwb3KL5R82ilqGDVk1wACmYVh/p6o
-X-Received: by 2002:a05:6102:a8d:: with SMTP id n13mr18518831vsg.17.1632746876387;
-        Mon, 27 Sep 2021 05:47:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632746876; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3910554lfp;
+        Mon, 27 Sep 2021 07:28:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVNpEcnk7ZAwKmljs2KBOYW4umw4IC/PZCVQQBWLS5UMPS+JXbZXeC9ssmwjvdSRzdArzZ
+X-Received: by 2002:a5d:4d91:: with SMTP id b17mr82655wru.321.1632752938957;
+        Mon, 27 Sep 2021 07:28:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632752938; cv=none;
         d=google.com; s=arc-20160816;
-        b=em1mvWDVC6t7oBm1Cjt3T+iKWliCD06hqiW5MQ4PjIMm31rhe7DBOj/cDVUpAWTzC7
-         ePCeOQ8xxm01pGXh3+xrJaQmJnbuiwt+qe+s54cFp7taxuVsAAowJZrnZVC0bAbnKqXB
-         zUWcWLYrL54yjqsFR/6N/bOJ0/hd1cySeEYl13qIrrOJIb6IusTkrb44ejRMDE2l1MsJ
-         DJ195tPIOmQzuNQIolH09lQH5RjFhQudFal2EqieLCRj6NbviJ1TAL65P30xu2OWzEq+
-         tk3qbtqvB6CXe2EMDTlrYb3LAZ8B6Vy+TtGjMHvUroYWYwbm597ie7u4peeY4g+dndzL
-         TVEA==
+        b=io1t/0WvGlg6pRawDmVMGUi9zmWm6zK6uPJgJCC4RsgbgCzGWHJMX2SQGpJtipyR7f
+         1cfyMaNsqfvPMcLSnIWcI3d6j//giHJW9umXQ7/Y0ra2W0KLKShfYnqStDx1TiyAuyFU
+         TFY1Z0tUcIsUf8zFa0opyz1uWJmTBY9ZxSeLqmvc+ihFEQye5KJcOyu83EoBbTSfG+qA
+         fBtCxbVjGctACfFRnc5WfZshkSIGG/tfYb92YszNmSF06k6I3MHQH/zmbweihEENorNv
+         wxLlvdsTwyWUNom8LByEbljjBki3tNKASPdSFcyHCUriXCtN7fZzB8whA9yG0z6RAGvX
+         lm/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=DdQdvNLVHDc2coO8ZFRHEfwkDc1D0a9H2gWyDAoXUeY=;
-        b=DS/QZpWBlpfHAD1dFWWdiH+0wPKZYIlaR47Z/7tx4xe+KTP8rIdBjrP4+D3chlUm/c
-         8ckz1WPyE9T/ba9cryOrBGpnNPffDLCCsNQLaI0tG2JgiKxCOq22Al/eXqMApvj1k+ri
-         qI81IkKuiYQBtBMLV/zB/o+wM+Cc29abSatuYCv5CDya9YAgqhPJWGBinVqVGDlPzQhN
-         STwXCs4C4Af3Flgu6N03KQgvwvky23l3auE7KUFWx/keWniLAfqFyv4W98spHR24hYHu
-         Uioz/HbR9sJbIsVY0THFSQ+nz/GWR4Yb96fHIWFJkEgEPYdCdsw9/8KEyGt1zqwS+J0r
-         ddrw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ypf8Brs7P3HmWJK3Gh0gLB+n1nn83t//L0IUxSI9RAo=;
+        b=q4Yfc24eXXAoZpPWv1T3OE/iaWpsJwXXYpwTaCPW/xItJDxVYtoWgQkk4a+WcsLxTF
+         3ASHZWVgSUbkkzSZ1eKLSIQLa8/yGfFrKAqpNz+WfgmANlGoEqYnHjvGCJbX7mjcRynw
+         TfTlZkPu7KWdOlQ0LipyudzCFffSOml+vjkKhAiLv1V56I/peNURdvv0kxTQoYS+erLr
+         zQF3UG4IQOAo295+Okxrodvu1yFtRyR4A2bEo4+avyGNFikn5T0zshWKhaR41ybFUb8e
+         zqKs91BFRuCduT0L/h+OHv4LrF2Vmk1eQRrR6QfHpStNoW6JJexSxCh6cIfjNiVEh5du
+         l33w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="FQI/XAbi";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ItzwOVHQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m72si11996487vkh.63.2021.09.27.05.47.56
+        by mx.google.com with ESMTPS id x14si18392760wmj.193.2021.09.27.07.28.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 05:47:56 -0700 (PDT)
+        Mon, 27 Sep 2021 07:28:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b="FQI/XAbi";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50770 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=ItzwOVHQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mUq31-0003d9-KQ
-	for alex.bennee@linaro.org; Mon, 27 Sep 2021 08:47:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37314)
+	id 1mUrco-0000bC-2o
+	for alex.bennee@linaro.org; Mon, 27 Sep 2021 10:28:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUq2l-0003aG-0A; Mon, 27 Sep 2021 08:47:39 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:39850)
+ (Exim 4.90_1) (envelope-from <xchengl.cn@gmail.com>)
+ id 1mUrcY-0000am-GL; Mon, 27 Sep 2021 10:28:42 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:38708)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUq2i-00078G-V6; Mon, 27 Sep 2021 08:47:38 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 136-20020a1c048e000000b0030d05169e9bso447922wme.4; 
- Mon, 27 Sep 2021 05:47:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xchengl.cn@gmail.com>)
+ id 1mUrcT-0001vH-CY; Mon, 27 Sep 2021 10:28:42 -0400
+Received: by mail-pl1-x642.google.com with SMTP id x4so4411570pln.5;
+ Mon, 27 Sep 2021 07:28:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=DdQdvNLVHDc2coO8ZFRHEfwkDc1D0a9H2gWyDAoXUeY=;
- b=FQI/XAbi/wzC33TwQBc7T/s/x/BW/DtaFkpi7oVQi93u1DJpEfjaY9UKjLKJg/7Ibl
- QRZJfQQoh4uwRk2DEcsGM39xKcFhmpk76fyoZDMddYGXWjWnnWKiuFERn+Eo7dsWLnCR
- dembhCmxPLsHRgMzyQXe3QTncfhgWD4JW4eDMYgoZfoeN6kTxw4UKP1QTxBdb2+DwfaW
- Aj3nUVqWRNq913zBOLBGr7wr9ezNSALYTTiOqrMrUEAedI2F1Ue9ki0e/WWi6BhayvbQ
- ZvOjLr3ovf56VXwVHR7Fz3LB0dQmVwKxaAGRaWhZs9crB/iWn5X88w8+wilE1SW2OZYX
- swBA==
+ bh=ypf8Brs7P3HmWJK3Gh0gLB+n1nn83t//L0IUxSI9RAo=;
+ b=ItzwOVHQ7GVsvh24gdl1KO0KYPdV1YFuSYpu+6I0lUhTjL3pRonYR0+aA83QYfyiGe
+ l2Il9lYjSc7fNI1BQTHJbuySHUb1ai6yFBeYzTXPpDa/V9sC5FcQWn4WQaPKjC2vlm/i
+ 5p8gTUorTd1foNFJ6w3nAuIOK7i+/ljlO378mjYNU2wKqqmNRxgNjVxVikR/HRbfNxpe
+ bjFeZxT214Oe7TieDWKk2MwMf/HTNSDTg2uqQS0D9m3OaRED+lVG/OWPG0DjGU0H+RQN
+ jFl66gNROLTTb0Kipdl72ovJ720rewY/qGyTCKRSCk3NyDBUv3s9NIlOWFuoY788U2A0
+ Azig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=DdQdvNLVHDc2coO8ZFRHEfwkDc1D0a9H2gWyDAoXUeY=;
- b=QD2tJFEzuh6FSL/531tqUBemmxC/aAdpSLiCmgXEIKov67xM7dTCsG0ONz1guJaE6Q
- o17Y1BMT2IyuQUNtqPC3CmIBv2AvE4BuUMjSrLEIelxfYDut1sIQtto7R4m5ikAqFfp2
- QbbJ8tENWXfDMe+3lcPGqNvlvZaSdI72VpnfXHVio+MuOe33PFZ/36CFA+jYJxJozf4b
- TCgxI3LyihKhceRvhWCWa1uDrGcORu2bDrjXvJyAozotqyi8Tbmf5MqFxWXvrWRGAOOo
- CivQBlNY0krTLgY+2cfyuoIuCWhqSl79s7G1NRg5vS+XymoGOKpshETXhgW5nqmJ8R7y
- iWRQ==
-X-Gm-Message-State: AOAM532ngRjXgqvFdCpLEYGP3gGUxVOWnLT0LxcfAlwrT23MRsm+pTLI
- +SPbghPqg+VsloEq2i/xRyM=
-X-Received: by 2002:a7b:c923:: with SMTP id h3mr15839057wml.28.1632746854550; 
- Mon, 27 Sep 2021 05:47:34 -0700 (PDT)
-Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id g21sm1136181wmk.10.2021.09.27.05.47.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Sep 2021 05:47:34 -0700 (PDT)
-Message-ID: <d25c8d0b-f5d1-0ac1-fc8f-3fad56820f42@amsat.org>
-Date: Mon, 27 Sep 2021 14:47:32 +0200
+ bh=ypf8Brs7P3HmWJK3Gh0gLB+n1nn83t//L0IUxSI9RAo=;
+ b=PoaYUi9fworlofTDlwqxKl2GY7oYS3cWhBWsJEeoUkNgFjViJ4Xkep6i057vNEqln8
+ oLYTFHIaubwaa7G+wIufYsOHim4aqJFgqx/MUVQ9D9qp7Qy9PUR11eB2UOPpWGZB1RTy
+ DH+zc5dWheImeKpluSekC/GbCGVEXmxXBpTruShr3MrFKERmfZdYXbe2UKb5j+0Y6XvY
+ D0MkvxGR8SWE96IjWw/wdrowLSU1+mrzC1tw/lGDscQz38cSh4sKxG9AwhS8ttxsFFzz
+ TUZq2YL621VoosdLFkG1Eu5g6qk/hs701c7GjkILuCn4F606QMMRJE08NhRux3EaYOU5
+ ui6w==
+X-Gm-Message-State: AOAM5339x+6MRXfgomgxfQfa3yQMr8nHJPaBRyuIHS1fjLeGbTeJgojU
+ myJJi6zYBfnM+waxeoPk5o3DGkgILA==
+X-Received: by 2002:a17:902:a406:b029:12b:c50a:4289 with SMTP id
+ p6-20020a170902a406b029012bc50a4289mr129414plq.56.1632752914242; 
+ Mon, 27 Sep 2021 07:28:34 -0700 (PDT)
+Received: from localhost.localdomain ([120.244.142.81])
+ by smtp.gmail.com with ESMTPSA id t6sm19873459pjr.36.2021.09.27.07.28.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Sep 2021 07:28:33 -0700 (PDT)
+From: Xuzhou Cheng <xchengl.cn@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2] hw/arm: sabrelite: Connect SPI flash CS line to GPIO3_19
+Date: Mon, 27 Sep 2021 22:28:25 +0800
+Message-Id: <20210927142825.491-1-xchengl.cn@gmail.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH] hw: Add a 'Sensor devices' qdev category
-Content-Language: en-US
-To: minyard@acm.org, Thomas Huth <thuth@redhat.com>
-References: <20210926221518.1726267-1-f4bug@amsat.org>
- <20210927113349.GH5381@minyard.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20210927113349.GH5381@minyard.net>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.136,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=xchengl.cn@gmail.com; helo=mail-pl1-x642.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -120,81 +112,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <cminyard@mvista.com>,
- Titus Rwantare <titusr@google.com>, qemu-devel@nongnu.org,
- Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, John Wang <wangzhiqiang.bj@bytedance.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, xuzhou.cheng@windriver.com,
+ bin.meng@windriver.com, f4bug@amsat.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ linux@roeck-us.net, bmeng.cn@gmail.com, groeck7@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gGzwSyhjwZ+W
+X-TUID: dD1XFDdT7ulS
 
-On 9/27/21 13:33, Corey Minyard wrote:
-> On Mon, Sep 27, 2021 at 12:15:18AM +0200, Philippe Mathieu-Daudé wrote:
->> Sensors models are listed in the 'Misc devices' category.
->> Move them to their own category.
->>
->> For the devices in the hw/sensor/ directory, the category
->> is obvious.
->>
->> hw/arm/z2.c models the AER915 model which is described
->> on [*] as:
->>
->>   The 14-pin chip marked AER915 just below the expansion
->>   port is a 80C51-type microcontroller, similar to Philips
->>   P89LPC915. It has an 8-bit A/D which is used to determine
->>   which of six buttons are pressed on the resistor-network
->>   wired remote.  It communicates with the main cpu via I2C.
->>
->> It was introduced in commit 3bf11207c06 ("Add support for
->> Zipit Z2 machine") with this comment:
->>
->>   248 static uint8_t aer915_recv(I2CSlave *slave)
->>   249 {
->>   ...
->>   253     switch (s->buf[0]) {
->>   254     /* Return hardcoded battery voltage,
->>   255      * 0xf0 means ~4.1V
->>   256      */
->>   257     case 0x02:
->>   258         retval = 0xf0;
->>   259         break;
->>
->> For QEMU the AER915 is a very simple sensor model.
->>
->> [*] https://www.bealecorner.org/best/measure/z2/index.html
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> 
-> This makes sense to me.  I'd like to hear from others on this.
+From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 
-Devices on a bus (in particular I2C) are usually user-creatable
-by default. The AER915 is more a band aid for the z2 machine,
-but is not really a device. IMO it would be better to hide it
-as non-user-creatable qdev.
+The Linux spi-imx driver does not work on QEMU. The reason is that the
+state of m25p80 loops in STATE_READING_DATA state after receiving
+RDSR command, the new command is ignored. Before sending a new command,
+CS line should be pulled high to make the state of m25p80 back to IDLE.
 
->> ---
->>  include/hw/qdev-core.h | 1 +
->>  hw/arm/z2.c            | 1 +
->>  hw/sensor/adm1272.c    | 1 +
->>  hw/sensor/dps310.c     | 1 +
->>  hw/sensor/emc141x.c    | 1 +
->>  hw/sensor/max34451.c   | 2 ++
->>  hw/sensor/tmp105.c     | 1 +
->>  hw/sensor/tmp421.c     | 1 +
->>  softmmu/qdev-monitor.c | 1 +
->>  9 files changed, 10 insertions(+)
+Currently the SPI flash CS line is connected to the SPI controller, but
+on the real board, it's connected to GPIO3_19. This matches the ecspi1
+device node in the board dts.
 
->> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
->> index 9c1e876207b..62db9741106 100644
->> --- a/hw/arm/z2.c
->> +++ b/hw/arm/z2.c
->> @@ -288,6 +288,7 @@ static void aer915_class_init(ObjectClass *klass, void *data)
->>      k->recv = aer915_recv;
->>      k->send = aer915_send;
->>      dc->vmsd = &vmstate_aer915_state;
->> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
->>  }
+ecspi1 node in imx6qdl-sabrelite.dtsi:
+  &ecspi1 {
+          cs-gpios = <&gpio3 19 GPIO_ACTIVE_LOW>;
+          pinctrl-names = "default";
+          pinctrl-0 = <&pinctrl_ecspi1>;
+          status = "okay";
+
+          flash: m25p80@0 {
+                  compatible = "sst,sst25vf016b", "jedec,spi-nor";
+                  spi-max-frequency = <20000000>;
+                  reg = <0>;
+          };
+  };
+
+Should connect the SSI_GPIO_CS to GPIO3_19 when adding a spi-nor to
+spi1 on sabrelite machine.
+
+Verified this patch on Linux v5.14.
+
+Logs:
+  # echo "01234567899876543210" > test
+  # mtd_debug erase /dev/mtd0 0x0 0x1000
+  Erased 4096 bytes from address 0x00000000 in flash
+  # mtd_debug write /dev/mtdblock0 0x0 20 test
+  Copied 20 bytes from test to address 0x00000000 in flash
+  # mtd_debug read /dev/mtdblock0 0x0 20 test_out
+  Copied 20 bytes from address 0x00000000 in flash to test_out
+  # cat test_out
+  01234567899876543210#
+
+Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+Reported-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+---
+Changes in v2:
+- Mention this matches the board dts.
+---
+ hw/arm/sabrelite.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+index 29fc777b61..553608e583 100644
+--- a/hw/arm/sabrelite.c
++++ b/hw/arm/sabrelite.c
+@@ -87,7 +87,7 @@ static void sabrelite_init(MachineState *machine)
+                 qdev_realize_and_unref(flash_dev, BUS(spi_bus), &error_fatal);
+ 
+                 cs_line = qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS, 0);
+-                sysbus_connect_irq(SYS_BUS_DEVICE(spi_dev), 1, cs_line);
++                qdev_connect_gpio_out(DEVICE(&s->gpio[2]), 19, cs_line);
+             }
+         }
+     }
+-- 
+2.17.1
+

@@ -1,95 +1,95 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4725535lfp;
-        Tue, 28 Sep 2021 03:22:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyzYL4Sb4/tWH7pnZ8trEI1A7R1AeBXM4xObsArgNgbsB0BcNNBjEOIW8yQteKrbQzzXlG0
-X-Received: by 2002:a05:622a:1345:: with SMTP id w5mr165585qtk.259.1632824555161;
-        Tue, 28 Sep 2021 03:22:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632824555; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4726603lfp;
+        Tue, 28 Sep 2021 03:24:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzP0lYu3Oomcdstwm4BK2rJkw7sn1QgiWMQ0G0fRNUz6WgDOGAqqmzj/P84HvKMk702Owr6
+X-Received: by 2002:ac8:51ce:: with SMTP id d14mr4613804qtn.16.1632824642952;
+        Tue, 28 Sep 2021 03:24:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632824642; cv=none;
         d=google.com; s=arc-20160816;
-        b=A8VLT+iK7XLwBT+mleiZTV5jldj2knwq4GiBFp4if5uXxxXjOGZStVjpSkxEQ9anFA
-         vgSW6pOSxhtoKoMoPv/a2iTwJNkUkdW5+tmyoMNnbfqLABxQKRWL4qe+o0BF73iIMcjD
-         TN5pR+YlIXvsYBTJrCufnLdIaZ6+36c3xbxycr8SA7e+jasnTeMm/j/2dCYMMkF3+Y2I
-         Z5dORDcbLKolN4WrQ+nYKlmNdJNxar107uCNQz7P97w3zNyqfQL0XUfl9rqfJPCEf15T
-         ubvxjQ9k2EfrQMzoAX0yFuOVIUmYH/636T5q7x/5c0Fos15tS6cvHMq4z+xAGkgd47rx
-         CmmA==
+        b=jqR6qh2/OYO3QpZKnX8B47KrTk9MptJ0/nPPCncOM+5IMLGTTjaOzAg2F7bJyjbWzl
+         RZ44oGOFzjp77tx3YkEc0C0x++uR3wTx5NkKOiO8mf2qsOqG4XoguOrIkEE3s5OS/5XD
+         FyO7+KUih9if8SXMUmIqyI9p9VvrRO3yaYmQHnbBX7bLERmj2T4Hjc87LL7LGymLZvXR
+         7G0gWdSVEgyQgjhTpXCsLP0TbWuXSsrGK9vddHXlJtFDMqtrFpmoLW8OjbnBjpHMUTFS
+         x29XbdJPZowdDg1B6JWFHyK0EPkgAXh3rIxcec+82jidbVMXOXd4FA+SpX1K/bql7aVK
+         1aQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-disposition:user-agent
          :in-reply-to:mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=zZn4z9hVG+JLfZQmsXlyh+XzabfgsxWS8202pB81dW8=;
-        b=V4OUfQ20Z7IQTuuZYc6T3DU/hU49MTNqU8DIdhvFzl6m8E+aWT1wNdlOnVWrVQ70zU
-         Z9lVBngvzTejtD3dz3uIhgx+KFbR9y6NtbRh9ALmCJOE7KP99/YFQE3+mY5k0XvE1jyw
-         6h+HEs8yZ7K6TmV4h4NED69zMSeLIe+63bnmn2VU0cdvMns1zxUh0U/Wf03GyZbNRufr
-         VTYplq2lzliZq9eYdePVrMYDYsd0mjxCqBl2v7/NTSB0R5CCJEq93zrw11IxBSEQbxtC
-         Z3/khxcw1AGQA6JMVLZ+GxcTmyaAvIjl3idHnnhznWSbvgmYzBSh3iwAJPbta/uEWqsp
-         wckw==
+        bh=CvS8Ces5QDGZ/WzAqKmXdPTF8/ob+VepvixdpeSuTT8=;
+        b=RaxR85JD/YvbPClBMfjqhusojqUKokb/JnmUMCFp2ZKLZjkih/cgLmkYT+5M1v3i2/
+         IimwEgT4471G35INXE5Q6k2mThsvnQNnVdNszkoDwlWdbPP/am7whhhk9nH2euPTFoBX
+         /AfcZUq91NeFWBCcREt52RQhFU93uqT83dj1oP9/J9h4gifOhAkPfkcarkBN3tiVF2OF
+         Zenw7BCWjDO3GYDjGvB9PIunbvRhDi+u9s2dbfZXzOvVOlnkjsPCFjEJcav+zXZ/aouD
+         C5W04OMkYxtOxgQ01ssswI/zSgxe8lzsxD95j3xaD+CnYt0jpUaiq8bSnfGVSgyikPxy
+         +I4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F9TFhutu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RE6sJFTG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11si14260501qtg.213.2021.09.28.03.22.35
+        by mx.google.com with ESMTPS id k22si13067265qkh.328.2021.09.28.03.24.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Sep 2021 03:22:35 -0700 (PDT)
+        Tue, 28 Sep 2021 03:24:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F9TFhutu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RE6sJFTG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41106 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45256 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVAFs-0000pd-Sh
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 06:22:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56812)
+	id 1mVAHK-0003Zo-AX
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 06:24:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mVAEn-0007ej-A0
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:21:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26884)
+ id 1mVAFD-0008WI-Ie
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:21:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42794)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mVAEh-0002Of-0t
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:21:22 -0400
+ id 1mVAFA-0002m8-FE
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:21:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632824477;
+ s=mimecast20190719; t=1632824507;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zZn4z9hVG+JLfZQmsXlyh+XzabfgsxWS8202pB81dW8=;
- b=F9TFhutuOrVVWI3AcJNTsTM2i1rZWyZuVI23DIzirB3SyHrhCzhudDCumhkgEZa5xXiSdk
- EuJ7OBuXn/V9fCRwPfktj2XGo031bKVBcEUu2pU1EE52caP+rjyBaNRtCd3YC9LUfyBM35
- JjUFSmzZ6/nT4Ha10X8VlWiRyWrX5/g=
+ bh=CvS8Ces5QDGZ/WzAqKmXdPTF8/ob+VepvixdpeSuTT8=;
+ b=RE6sJFTGNFAnEqDxcTi3doixM4L1IeP2/CsOnyomcH0V2OF1jUDLzrWRXSosMhFYmdzGTU
+ STiuzqln3FI7L0nIOZFcrI49hry8wF48gOxSmjZN9WUP1jAZbsmRamAmGRxUU5TYvuDHqL
+ fC9mWG+Jgg1hJaOnCuEymh/TKs1kF/g=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-279-lJL1oQaINlCWpaRz8FohjQ-1; Tue, 28 Sep 2021 06:21:15 -0400
-X-MC-Unique: lJL1oQaINlCWpaRz8FohjQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-305-JysKQgZMP-irvc-9mHLpFg-1; Tue, 28 Sep 2021 06:21:45 -0400
+X-MC-Unique: JysKQgZMP-irvc-9mHLpFg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4B49318125EB;
- Tue, 28 Sep 2021 10:21:14 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CFFD802921;
+ Tue, 28 Sep 2021 10:21:44 +0000 (UTC)
 Received: from redhat.com (unknown [10.39.194.52])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E99718A8F;
- Tue, 28 Sep 2021 10:21:05 +0000 (UTC)
-Date: Tue, 28 Sep 2021 11:21:03 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A7D85D9D5;
+ Tue, 28 Sep 2021 10:21:38 +0000 (UTC)
+Date: Tue, 28 Sep 2021 11:21:35 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Yanan Wang <wangyanan55@huawei.com>
-Subject: Re: [PATCH v11 08/14] machine: Prefer cores over sockets in smp
- parsing since 6.2
-Message-ID: <YVLsj7G+vSjXph4c@redhat.com>
+Subject: Re: [PATCH v11 09/14] machine: Use ms instead of global
+ current_machine in sanity-check
+Message-ID: <YVLsrwOE2kQcyegV@redhat.com>
 References: <20210928035755.11684-1-wangyanan55@huawei.com>
- <20210928035755.11684-9-wangyanan55@huawei.com>
+ <20210928035755.11684-10-wangyanan55@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210928035755.11684-9-wangyanan55@huawei.com>
+In-Reply-To: <20210928035755.11684-10-wangyanan55@huawei.com>
 User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -128,41 +128,21 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3MOfhTZS8jEl
+X-TUID: v19tUOk4HfJ8
 
-On Tue, Sep 28, 2021 at 11:57:49AM +0800, Yanan Wang wrote:
-> In the real SMP hardware topology world, it's much more likely that
-> we have high cores-per-socket counts and few sockets totally. While
-> the current preference of sockets over cores in smp parsing results
-> in a virtual cpu topology with low cores-per-sockets counts and a
-> large number of sockets, which is just contrary to the real world.
+On Tue, Sep 28, 2021 at 11:57:50AM +0800, Yanan Wang wrote:
+> In the sanity-check of smp_cpus and max_cpus against mc in function
+> machine_set_smp(), we are now using ms->smp.max_cpus for the check
+> but using current_machine->smp.max_cpus in the error message.
+> Tweak this by uniformly using the local ms.
 > 
-> Given that it is better to make the virtual cpu topology be more
-> reflective of the real world and also for the sake of compatibility,
-> we start to prefer cores over sockets over threads in smp parsing
-> since machine type 6.2 for different arches.
-> 
-> In this patch, a boolean "smp_prefer_sockets" is added, and we only
-> enable the old preference on older machines and enable the new one
-> since type 6.2 for all arches by using the machine compat mechanism.
-> 
-> Suggested-by: Daniel P. Berrange <berrange@redhat.com>
 > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
-> Acked-by: Cornelia Huck <cohuck@redhat.com>
 > Reviewed-by: Andrew Jones <drjones@redhat.com>
 > Reviewed-by: Pankaj Gupta <pankaj.gupta@ionos.com>
+> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 > ---
->  hw/arm/virt.c              |  1 +
->  hw/core/machine.c          | 35 ++++++++++++++++++++++++++---------
->  hw/i386/pc.c               | 35 ++++++++++++++++++++++++++---------
->  hw/i386/pc_piix.c          |  1 +
->  hw/i386/pc_q35.c           |  1 +
->  hw/ppc/spapr.c             |  1 +
->  hw/s390x/s390-virtio-ccw.c |  1 +
->  include/hw/boards.h        |  1 +
->  qemu-options.hx            |  3 ++-
->  9 files changed, 60 insertions(+), 19 deletions(-)
+>  hw/core/machine.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 

@@ -1,99 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4565148lfp;
-        Mon, 27 Sep 2021 23:07:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhzxJ4stG7NT7dYe1s2hJnNh+fti3ufPMsQcS7EMQ+k6a2UFlRx6t4gm099uS43blagggv
-X-Received: by 2002:a05:6820:1018:: with SMTP id v24mr3539900oor.27.1632809241005;
-        Mon, 27 Sep 2021 23:07:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632809241; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4487375lfp;
+        Mon, 27 Sep 2021 20:58:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyMiksHSvtK39vlMFtvVnsC1pCYYFAKeXNyfef7hX//csbY/wd8RMMWAl9+qmbxxcR36I+6
+X-Received: by 2002:a9d:4049:: with SMTP id o9mr3170703oti.161.1632801500603;
+        Mon, 27 Sep 2021 20:58:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632801500; cv=none;
         d=google.com; s=arc-20160816;
-        b=FMNTlXpPEx99tW58N3Qo5Ng4/B9OI/49eAmuDzFdvMfsL0uTsaAwJmnZO9yEfemjOI
-         Oz0AY/9gULx2Dnf5yc1VzWNfQQcWsKgXfvK1I7ChwWKQLiUx9lP0Icda2DjnYkafkqaz
-         lItMhuK0CN5/ovUQQMcmb69a0VIDCAF/WM81gmxYL+tO91pdjFKHWKEUfQDe1oY7HAht
-         1tTSW5/egDS7C4IOgn+gcmCx/9yG7r11EQrxW7e+dYqfGA5ipC59KDjx5gBVIpH8KYBV
-         VlRwaHoyFn7/2B+ysWEumpbK2brKTY4OAoGgEznIo+hQGjI0KbQSSGrVyf/r8gLInwEe
-         WLDg==
+        b=TVyQefw4noL7vavE0eb3TIY/XZoKK/sFCqnZahfYYnjh9l5uqpaywenJhXE1MMt59C
+         g5mSq8udAU3Teq/djYGxWZr1QmO4nNkUwYcuazCAzXZ3Jz1dmGUpxM5MX1H/lXSSNRC+
+         lIj9edoPWunNu/FtZa1FhvMGKsfHuTQi/2jzn2qrUJFdkp0cvVENfp8V/5vCUHGl1nWI
+         SsOGCcOy4YyT5rI88fRu2GCDWzYcNjODr4+YCCX/NNZPuWvOvQOLbk0BYaSCMnpG/GJt
+         0Z+XDu1Ge8W+oPwnd/Gt0j/fK8js5QPgiGiDDaIuC8DDbQLSQDmAyw18BUW7I+xXhKpR
+         7Vrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=k9VvfX4h598NO/RBsMPQx8QpF1Gup5Z08Hf0Kj5f9G4=;
-        b=BLTp4S+GemRaXqUMj4h/xmO+tV9/hIhPTY3LcBG1Y/dNa6YPfNKNQXuhx9VUzRAUjO
-         s6h3NC56l1gDXObrCMs/e4EI4U/e27d6iykT6XYTRkdfQt6+tVAIG8DvaZLx6nbSgWd8
-         LZthqmFcqDANmkIUA8NAewM2QuhzpLDKwT45ftfYoPP9AiV7qZauzP73pH/GekACzDpK
-         n8exSMBH2lJJaYp1nmYIfr8mHcJ2Blewqt3ExEaVygv+u/d6aBm3yTpaA82AamRuJmDr
-         KGUDhlyw3WLecCgzAA4nb6rKrEFvC90mh638sqydGIuZLeh02b7rga1Sxp4g4oIqX//j
-         Ca5g==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=Vn1Fa4q/PUyAJ1V7dwe12Ma111Ms1570DKSphLG9uK8=;
+        b=hcu7+O5U1Xg7BB1TfBPmcX7BTMfnpkirojoYyNVzlOdpwSismKdxHMrKWJgJJwNQ79
+         r+6MWR6xKDSM9IemJ6s2PSpque9Drja7d2k0X8J5XGQLdRgVAtjc0Q3glMdytW9jwSZo
+         GnoMPQmmqpQTN2d6p4UHY71YtO9zGc1tW8uWKR8H7xtnnTWQEN7AtyibBI94ADOWY68S
+         iQ5GEdheN+0MbEUH/TBoyBcSywpS+1F7WWlfehrprw8KOX1miV6j5gLkJU8YYSQhjU5H
+         DpKHjaG1oYWFIGFWo3wiUr7xuoBHavsdC7OezyS90frFjBdwtebP0GxvIfFis8a68Vlj
+         EfXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 51si19846478otc.313.2021.09.27.23.07.20
+        by mx.google.com with ESMTPS id p15si18497759otl.45.2021.09.27.20.58.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 23:07:20 -0700 (PDT)
+        Mon, 27 Sep 2021 20:58:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39210 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:59218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mV6Gu-0002dt-Ad
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 02:07:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34176)
+	id 1mV4G3-0000rA-R5
+	for alex.bennee@linaro.org; Mon, 27 Sep 2021 23:58:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mV6Gg-0002dc-9F
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 02:07:06 -0400
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:46379)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mV4Fq-0000qq-9R; Mon, 27 Sep 2021 23:58:06 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2808)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mV6Gd-0000K1-Ut
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 02:07:06 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.206])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id D9516C0AEE6A;
- Tue, 28 Sep 2021 08:06:59 +0200 (CEST)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 28 Sep
- 2021 08:06:59 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0030eba1f4c-429d-4c09-acf9-5118a7b7d125,
- 8E8CB80F4898FD5B70E1FE60FE919FF623030768) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <1e384ea8-5cb9-4c43-2435-d5194515b48a@kaod.org>
-Date: Tue, 28 Sep 2021 08:06:58 +0200
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mV4Fn-0002A4-6B; Mon, 27 Sep 2021 23:58:05 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HJQbV3FknzRb3V;
+ Tue, 28 Sep 2021 11:53:42 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Tue, 28 Sep 2021 11:57:58 +0800
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Tue, 28 Sep 2021 11:57:57 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
+ <berrange@redhat.com>, Andrew Jones <drjones@redhat.com>
+Subject: [PATCH v11 01/14] machine: Deprecate "parameter=0" SMP configurations
+Date: Tue, 28 Sep 2021 11:57:42 +0800
+Message-ID: <20210928035755.11684-2-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20210928035755.11684-1-wangyanan55@huawei.com>
+References: <20210928035755.11684-1-wangyanan55@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: Need to merge - QEMU patch for booting eMMC image for AST2600
- machine
-Content-Language: en-US
-To: Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, qemu-arm
- <qemu-arm@nongnu.org>
-References: <SJ0PR20MB3643750F8FF71E838A750F9B9DA59@SJ0PR20MB3643.namprd20.prod.outlook.com>
- <38e08d56-00b2-8759-a729-4bb6a26e6cdd@amsat.org>
- <4b2c7f4f-f2b5-7990-bcdc-5f9fb19418b4@kaod.org>
- <SJ0PR20MB36433AFB78BA0BAF6DC537649DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
- <SJ0PR20MB3643126F9786CFBEA81D5D349DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SJ0PR20MB3643126F9786CFBEA81D5D349DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 70eff25b-704e-4441-8bf9-6b056547940d
-X-Ovh-Tracer-Id: 12755038571340598124
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudejledguddttdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeetudfftdehvdduiefhudekudejgfegjedukeehudetieffvdefudfgleevhffftdenucffohhmrghinheptghishgtohdrtghomhdpghhithhhuhgsrdgtohhmpdhqvghmuhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, CTE_8BIT_MISMATCH=0.001,
- NICE_REPLY_A=-3.136, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -107,145 +95,123 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Hao Wu <wuhaotsh@google.com>, Patrick Venture <venture@google.com>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Pierre
+ Morel <pmorel@linux.ibm.com>, Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, "Michael S . Tsirkin" <mst@redhat.com>,
+ wanghaibin.wang@huawei.com, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2MYoune5RtB9
+X-TUID: If9U3bRBW7Xx
 
-Hello Shitalkumar
+In the SMP configuration, we should either provide a topology
+parameter with a reasonable value (greater than zero) or just
+omit it and QEMU will compute the missing value.
 
-On 9/27/21 20:55, Shitalkumar Gandhi wrote:
-> Hi All,
-> 
-> Please let me know how to get this merged?
+The users shouldn't provide a configuration with any parameter
+of it specified as zero (e.g. -smp 8,sockets=0) which could
+possibly cause unexpected results in the -smp parsing. So we
+deprecate this kind of configurations since 6.2 by adding the
+explicit sanity check.
 
-Have you read what is at end of this email ?
+Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+---
+ docs/about/deprecated.rst | 15 +++++++++++++++
+ hw/core/machine.c         | 14 ++++++++++++++
+ qapi/machine.json         |  2 +-
+ qemu-options.hx           | 12 +++++++-----
+ 4 files changed, 37 insertions(+), 6 deletions(-)
 
-Thanks
-
-C.
-
-  
-> Thanks,
-> Shitalkumar
-> ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-> *From:* Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>
-> *Sent:* Monday, September 27, 2021 7:45 AM
-> *To:* Cédric Le Goater <clg@kaod.org>; Philippe Mathieu-Daudé <f4bug@amsat.org>; qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qemu-arm <qemu-arm@nongnu.org>
-> *Cc:* Hao Wu <wuhaotsh@google.com>; Patrick Venture <venture@google.com>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>
-> *Subject:* Re: Need to merge - QEMU patch for booting eMMC image for AST2600 machine
-> Yes, I have raised this.
-> 
-> https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818 
-> <https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818>
-> 
-> BR,
-> Shitalkumar
-> ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-> *From:* Cédric Le Goater <clg@kaod.org>
-> *Sent:* Monday, September 27, 2021 7:15 AM
-> *To:* Philippe Mathieu-Daudé <f4bug@amsat.org>; Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>; qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qemu-arm <qemu-arm@nongnu.org>
-> *Cc:* Hao Wu <wuhaotsh@google.com>; Patrick Venture <venture@google.com>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>
-> *Subject:* Re: Need to merge - QEMU patch for booting eMMC image for AST2600 machine
-> 
-> This message has originated from an External Source. Please use proper judgment and caution when opening attachments, clicking links, or responding to this email.
-> 
-> 
-> Hello,
-> 
-> On 9/26/21 09:59, Philippe Mathieu-Daudé wrote:
->> Hi,
->>
->> On 9/25/21 19:07, Shitalkumar Gandhi via wrote:
->>> Hi,
->>>
->>> I am attaching a patch that will fix eMMC image booting on QEMU for
->>> AST2600 machine, without this patch it will be stuck after SPL saying,
->>> "booting from RAM".
->>>
->>> Please review and merge, thanks.
->>>
->>> Let me know in case of any concern.
->>
->> Thanks for your patch.
->>
->> Please look at how to submit patches here:
->> https://secure-web.cisco.com/1oJkyJ6o1FSjeLofNCk-SJBvHe8F5z4Gz5K8rDouTJuL6pWtzenJ1yE0imiWoNBJUx5BooSaYSkvQfHj1aTBxq2d7eD-xZyztLaT2DS20DjjENjFLA8jfhIXRN_hJPLa8vikrdvz9p60Jy7kojB3AJRD9ZzEL6NwZS2AZfc2ElH7-meAzFGLq-3qKResEOEwqEkMU5ocivYTBkJpgcJLPiR34MZr3ZUdMsFnYCLYImWZ9TxlbUyo742xmCDQdg-CM-GFhJm3h6Vu6t1b8LHALySrJqK4dUdKPfzYgkDmhH11RMEXwPNMW19QNF62MbxEDFcekCoClvnOYuRsoEjgnwJH-rJn9B-D54vVPbAhqsCkjjd8wBCwBCjbWuq2kovWRZC9hl7URdTe2-F3JVb2EItEsQBr52Wxc5D1D_tnuboaCIzn1osTeVB2_nJbwIIKc/https%3A%2F%2Fwiki.qemu.org%2FContribute%2FSubmitAPatch%23Submitting_your_Patches 
-> <https://secure-web.cisco.com/1oJkyJ6o1FSjeLofNCk-SJBvHe8F5z4Gz5K8rDouTJuL6pWtzenJ1yE0imiWoNBJUx5BooSaYSkvQfHj1aTBxq2d7eD-xZyztLaT2DS20DjjENjFLA8jfhIXRN_hJPLa8vikrdvz9p60Jy7kojB3AJRD9ZzEL6NwZS2AZfc2ElH7-meAzFGLq-3qKResEOEwqEkMU5ocivYTBkJpgcJLPiR34MZr3ZUdMsFnYCLYImWZ9TxlbUyo742xmCDQdg-CM-GFhJm3h6Vu6t1b8LHALySrJqK4dUdKPfzYgkDmhH11RMEXwPNMW19QNF62MbxEDFcekCoClvnOYuRsoEjgnwJH-rJn9B-D54vVPbAhqsCkjjd8wBCwBCjbWuq2kovWRZC9hl7URdTe2-F3JVb2EItEsQBr52Wxc5D1D_tnuboaCIzn1osTeVB2_nJbwIIKc/https%3A%2F%2Fwiki.qemu.org%2FContribute%2FSubmitAPatch%23Submitting_your_Patches>
->>
->>> This patch has been added to boot eMMC image for AST2600 machine on
->>> QEMU.
->>>
->>> Run quemu as follows:
->>>
->>> ./qemu-system-arm -m 1G -M ast2600-evb -nographic -drive
->>> file=mmc-evb-ast2600.img,format=raw,if=sd,index=2
->>
->> What is index=2?
->>
->> Is this mmc-evb-ast2600.img image publicly available?
->>
->>> Tested: Booted AST2600 eMMC image on QEMU.
->>> Suggested-by:  <venture@google.com>
->>> Reviewed-by: Hao Wu <wuhaotsh@google.com>
->>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
->>> Message-Id: <20210416162426.3217033-1-venture@google.com>
->>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> 
-> I don't remember having reviewed or signed this patch.
-> 
->>> ---
->>>   hw/arm/aspeed.c | 2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->>> index ba5f1dc5af..6a890adb83 100644
->>> --- a/hw/arm/aspeed.c
->>> +++ b/hw/arm/aspeed.c
->>> @@ -148,7 +148,7 @@ struct AspeedMachineState {
->>>           SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
->>>
->>>   /* AST2600 evb hardware value */
->>> -#define AST2600_EVB_HW_STRAP1 0x000000C0
->>> +#define AST2600_EVB_HW_STRAP1 (0x000000C0 |
->> AST26500_HW_STRAP_BOOT_SRC_EMMC)
->>
->> IIUC you are not implementing any eMMC code, simply faking the
->> controller can support eMMC, but the card is used in SD mode?
-> 
-> I think this is related to this issue :
-> 
-> https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818 
-> <https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818>
-> 
->> I'm surprised your guest is happy and boot that. If so, then
->> what is the point of announcing eMMC is supported if not used?
-> It should work on the aspeed branches I maintain which include the
-> emmc support but this is not for upstream.
-> 
-> 
-> Some comments,
-> 
-> I don't think the AST2600 evb boots by default on emmc. I agree
-> it's nice to have for tests and there are other ways to modify
-> slightly the default behavior.
-> 
-> We could add a machine property to define the 'hw-strap1' register
-> but it's a bit difficult to remember the value.
-> 
-> A custom '-boot' value setting the 'hw-strap1' for the AST2600
-> machine seems a better alternative. We could merge such a change
-> even if emmc is not ready.
-> 
-> Thanks,
-> 
-> C.
-> 
-> 
-> 
-> 
-> 
-> Seagate Internal
-> 
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 3c2be84d80..97415dbecd 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -160,6 +160,21 @@ Use ``-display sdl`` instead.
+ 
+ Use ``-display curses`` instead.
+ 
++``-smp`` ("parameter=0" SMP configurations) (since 6.2)
++'''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++Specified CPU topology parameters must be greater than zero.
++
++In the SMP configuration, users should either provide a CPU topology
++parameter with a reasonable value (greater than zero) or just omit it
++and QEMU will compute the missing value.
++
++However, historically it was implicitly allowed for users to provide
++a parameter with zero value, which is meaningless and could also possibly
++cause unexpected results in the -smp parsing. So support for this kind of
++configurations (e.g. -smp 8,sockets=0) is deprecated since 6.2 and will
++be removed in the near future, users have to ensure that all the topology
++members described with -smp are greater than zero.
+ 
+ Plugin argument passing through ``arg=<string>`` (since 6.1)
+ ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 067f42b528..711e83db54 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -835,6 +835,20 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+ 
++    /*
++     * Specified CPU topology parameters must be greater than zero,
++     * explicit configuration like "cpus=0" is not allowed.
++     */
++    if ((config->has_cpus && config->cpus == 0) ||
++        (config->has_sockets && config->sockets == 0) ||
++        (config->has_dies && config->dies == 0) ||
++        (config->has_cores && config->cores == 0) ||
++        (config->has_threads && config->threads == 0) ||
++        (config->has_maxcpus && config->maxcpus == 0)) {
++        warn_report("Invalid CPU topology deprecated: "
++                    "CPU topology parameters must be greater than zero");
++    }
++
+     mc->smp_parse(ms, config, errp);
+     if (*errp) {
+         goto out_free;
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 32d47f4e35..227e75d8af 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -1331,7 +1331,7 @@
+ #
+ # @dies: number of dies per socket in the CPU topology
+ #
+-# @cores: number of cores per thread in the CPU topology
++# @cores: number of cores per die in the CPU topology
+ #
+ # @threads: number of threads per core in the CPU topology
+ #
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 8f603cc7e6..91d859aa29 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -227,11 +227,13 @@ SRST
+     of computing the CPU maximum count.
+ 
+     Either the initial CPU count, or at least one of the topology parameters
+-    must be specified. Values for any omitted parameters will be computed
+-    from those which are given. Historically preference was given to the
+-    coarsest topology parameters when computing missing values (ie sockets
+-    preferred over cores, which were preferred over threads), however, this
+-    behaviour is considered liable to change.
++    must be specified. The specified parameters must be greater than zero,
++    explicit configuration like "cpus=0" is not allowed. Values for any
++    omitted parameters will be computed from those which are given.
++    Historically preference was given to the coarsest topology parameters
++    when computing missing values (ie sockets preferred over cores, which
++    were preferred over threads), however, this behaviour is considered
++    liable to change.
+ ERST
+ 
+ DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+-- 
+2.19.1
 

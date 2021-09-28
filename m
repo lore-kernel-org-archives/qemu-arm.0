@@ -1,72 +1,72 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4493754lfp;
-        Mon, 27 Sep 2021 21:08:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzYxceg4G2hU4d4N3dtpFKVnHBEUcku/gGNPPSCsiTMrHhJ4OCYOTykvmAnZ5AW0jB5yzx/
-X-Received: by 2002:a4a:3ecd:: with SMTP id t196mr3098098oot.69.1632802092046;
-        Mon, 27 Sep 2021 21:08:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632802092; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4493792lfp;
+        Mon, 27 Sep 2021 21:08:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzhpCTULG01x7rcsVdNHbQRiEyc27lULRxmU2CiRjrz41pQ6E7IFvB47e2jzYU8vyTak1EK
+X-Received: by 2002:a4a:a289:: with SMTP id h9mr3138562ool.86.1632802095749;
+        Mon, 27 Sep 2021 21:08:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632802095; cv=none;
         d=google.com; s=arc-20160816;
-        b=eEOjvxdgt7igr1+uAUh8/K2VVvcNygR/N0S/PDs8S0B64pb/5RaykQvdV50jArOQxB
-         j8DDG4JMTYv80houxksrCo6IUuSoxIiESnOg2a5uGFQ9UCOHO+geFpfIJvxxguw3JO3x
-         yJgRApjqMz1AnaSjZNcmTI0EntsTgqy1yrpmzXqqfzcDUKsE1gjxTCZFEgduB4dkb2O0
-         tR4MfKIyMFMgIS/cIa5CLCjKx/iSPPArdA3EOTYZxsdfxyKDrlRBlHb8DvFMmABexTB7
-         6R1IafPfbo9/9dR8Vv3HZ+mtRvjiU0qw2Y12ee6NNWQ8WygW7+conQvATsNXH4Fmpzff
-         u6EA==
+        b=RRaQsIho5yR0Tmll8biLnbtEUyLdLMdAHcERjmgtWdSIYEzJiM38Cwy28HtlsxJJzF
+         L5+hFQZc/ouhBnwpiJGPzRprK7f/YSHmo+EJ2Rq5zYkmwhWQbyHBpupa/eLQdwVMM187
+         Zx1PePVQ776+e/qNwJXD9qlYUGCHb/ZBB6Ob2NT0QNq1Ycp0ea0anVj227VFRCyKvwel
+         b2np02TZ6ruW+pVG8q2kVtVy+DDUnMlw1cbp26yRHkHZyCgYfk40vrKV0zETBQ96nOHV
+         9Aye9D3gR3y+IQBNqav2meApaq4K7seXwB872HvepS17URPGO5m5BuibVsApkzmcPo3p
+         c/nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=FYN91YV5gdpkuxIpEfs1FzC76M8jesdJAJ6UfnZVj/M=;
-        b=R+3w//I++dM8f9f406BaMHjdmQ15v90ATpRxbbzsGUDpgvAq3Tb1AvBwa6UQeEI1g8
-         i+J4/ZiOrJMd2AwCfClgBtT7VWQG14Awrz6cXY+eTTS84SinYufWO8JjOR99r/XdyqQR
-         3g8ulYDzuoLg9Ab4A8xfTa53W2IJx9jTYFk2zhKmNoQg1vpyUjQb3NaoLKAu9ovSA9sa
-         bUb+7MWby9t7GKY1RCgWNl857gHhtjDIZcW0JgKJgEHeBDhX9E8oSZhk9AA5U/fqPO7T
-         VoLJw0ZZIZCdII9F/yTJCLrMkQ/6Awdf1JvLmSl/Dsyzvdfb9a05Z7GCNa/4KQl1DoRG
-         rS3w==
+        bh=2Draj0DH6TXvxXgLZj3yaQvaKiS80GGrlJoui5qDTaw=;
+        b=b1Xa3+Ooa/7LHIbXJUxuHNHhhYfvdzzDH4atJkI5FenG3daMHUjj5eD5wlRx0fuz8B
+         zw04S21vdInc4lFnndMqjPz/5yn6gmFqzhVF/a4TYP9MUqgW3sJmXXItBs4O/YEQYeCK
+         izJoyN0HZ05H3dTR2+W62m3blgtns7pry+TX2UiK4MCMNyGWbW3vjIge0yZCB26P2t0U
+         J5LTcMJkPjE95BplEJbN0Veub4R14frlXuk4seKhBKzaYCehS3sg82Ukt2dD5TRJcTsi
+         JXcQ/8uAEL9wtplfCAS2P4yD+F0P59wZosLp1iBNqypcIQ2orHFmbrLkbJikkgHdwV5r
+         /7cA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l21si18140440ota.320.2021.09.27.21.08.11
+        by mx.google.com with ESMTPS id c5si21189005oif.178.2021.09.27.21.08.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 21:08:12 -0700 (PDT)
+        Mon, 27 Sep 2021 21:08:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:52674 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52898 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mV4PZ-0007Sx-N6
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 00:08:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43860)
+	id 1mV4Pf-0007bo-2H
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 00:08:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV4G1-0001RN-KU; Mon, 27 Sep 2021 23:58:17 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2870)
+ id 1mV4G6-0001lh-PM; Mon, 27 Sep 2021 23:58:22 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2542)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV4Fw-0002Gv-Bl; Mon, 27 Sep 2021 23:58:17 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.56])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4HJQg42wJbz1DHMj;
- Tue, 28 Sep 2021 11:56:48 +0800 (CST)
+ id 1mV4G1-0002NR-FD; Mon, 27 Sep 2021 23:58:22 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HJQgD0rdPzWBsr;
+ Tue, 28 Sep 2021 11:56:56 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 11:58:04 +0800
+ 15.1.2308.8; Tue, 28 Sep 2021 11:58:13 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 11:58:04 +0800
+ 15.1.2308.8; Tue, 28 Sep 2021 11:58:12 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini
  <pbonzini@redhat.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>, Andrew Jones <drjones@redhat.com>
-Subject: [PATCH v11 06/14] qtest/numa-test: Use detailed -smp CLIs in
- pc_dynamic_cpu_cfg
-Date: Tue, 28 Sep 2021 11:57:47 +0800
-Message-ID: <20210928035755.11684-7-wangyanan55@huawei.com>
+Subject: [PATCH v11 13/14] machine: Move smp_prefer_sockets to struct
+ SMPCompatProps
+Date: Tue, 28 Sep 2021 11:57:54 +0800
+Message-ID: <20210928035755.11684-14-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210928035755.11684-1-wangyanan55@huawei.com>
 References: <20210928035755.11684-1-wangyanan55@huawei.com>
@@ -76,14 +76,14 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,44 +102,132 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Pierre
  Yanan Wang <wangyanan55@huawei.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, "Michael S . Tsirkin" <mst@redhat.com>,
  wanghaibin.wang@huawei.com, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y/dN9BYdHgx7
+X-TUID: XIx55kCP0Ica
 
-Since commit 80d7835749 (qemu-options: rewrite help for -smp options),
-the preference of sockets/cores in -smp parsing is considered liable
-to change, and actually we are going to change it in a coming commit.
-So it'll be more stable to use detailed -smp CLIs in testing if we
-have strong dependency on the parsing results.
+Now we have a common structure SMPCompatProps used to store information
+about SMP compatibility stuff, so we can also move smp_prefer_sockets
+there for cleaner code.
 
-pc_dynamic_cpu_cfg currently assumes/needs that there will be 2 CPU
-sockets with "-smp 2". To avoid breaking the test because of parsing
-logic change, now explicitly use "-smp 2,sockets=2".
+No functional change intended.
 
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
- tests/qtest/numa-test.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/virt.c              | 2 +-
+ hw/core/machine.c          | 2 +-
+ hw/i386/pc_piix.c          | 2 +-
+ hw/i386/pc_q35.c           | 2 +-
+ hw/ppc/spapr.c             | 2 +-
+ hw/s390x/s390-virtio-ccw.c | 2 +-
+ include/hw/boards.h        | 3 ++-
+ 7 files changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
-index c677cd63c4..fd7a2e80a0 100644
---- a/tests/qtest/numa-test.c
-+++ b/tests/qtest/numa-test.c
-@@ -265,7 +265,8 @@ static void pc_dynamic_cpu_cfg(const void *data)
-     QTestState *qs;
-     g_autofree char *cli = NULL;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 8c13deb5db..7170aaacd5 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2815,7 +2815,7 @@ static void virt_machine_6_1_options(MachineClass *mc)
  
--    cli = make_cli(data, "-nodefaults --preconfig -machine smp.cpus=2");
-+    cli = make_cli(data, "-nodefaults --preconfig "
-+                         "-machine smp.cpus=2,smp.sockets=2");
-     qs = qtest_init(cli);
+     virt_machine_6_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_1, hw_compat_6_1_len);
+-    mc->smp_prefer_sockets = true;
++    mc->smp_props.prefer_sockets = true;
  
-     /* create 2 numa nodes */
+     /* qemu ITS was introduced with 6.2 */
+     vmc->no_tcg_its = true;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 23f77201eb..e2a48aa18c 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -817,7 +817,7 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
+     } else {
+         maxcpus = maxcpus > 0 ? maxcpus : cpus;
+ 
+-        if (mc->smp_prefer_sockets) {
++        if (mc->smp_props.prefer_sockets) {
+             /* prefer sockets over cores before 6.2 */
+             if (sockets == 0) {
+                 cores = cores > 0 ? cores : 1;
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 077644ee9c..5efb6f1949 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -431,7 +431,7 @@ static void pc_i440fx_6_1_machine_options(MachineClass *m)
+     m->is_default = false;
+     compat_props_add(m->compat_props, hw_compat_6_1, hw_compat_6_1_len);
+     compat_props_add(m->compat_props, pc_compat_6_1, pc_compat_6_1_len);
+-    m->smp_prefer_sockets = true;
++    m->smp_props.prefer_sockets = true;
+ }
+ 
+ DEFINE_I440FX_MACHINE(v6_1, "pc-i440fx-6.1", NULL,
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 2d97c0ab3e..9eae40e32c 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -371,7 +371,7 @@ static void pc_q35_6_1_machine_options(MachineClass *m)
+     m->alias = NULL;
+     compat_props_add(m->compat_props, hw_compat_6_1, hw_compat_6_1_len);
+     compat_props_add(m->compat_props, pc_compat_6_1, pc_compat_6_1_len);
+-    m->smp_prefer_sockets = true;
++    m->smp_props.prefer_sockets = true;
+ }
+ 
+ DEFINE_Q35_MACHINE(v6_1, "pc-q35-6.1", NULL,
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index a481fade51..efdea43c0d 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4702,7 +4702,7 @@ static void spapr_machine_6_1_class_options(MachineClass *mc)
+ {
+     spapr_machine_6_2_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_1, hw_compat_6_1_len);
+-    mc->smp_prefer_sockets = true;
++    mc->smp_props.prefer_sockets = true;
+ }
+ 
+ DEFINE_SPAPR_MACHINE(6_1, "6.1", false);
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index 5401c985cf..653587ea62 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -814,7 +814,7 @@ static void ccw_machine_6_1_class_options(MachineClass *mc)
+ {
+     ccw_machine_6_2_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_1, hw_compat_6_1_len);
+-    mc->smp_prefer_sockets = true;
++    mc->smp_props.prefer_sockets = true;
+ }
+ DEFINE_CCW_MACHINE(6_1, "6.1", false);
+ 
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index fa284e01e9..5adbcbb99b 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -110,9 +110,11 @@ typedef struct {
+ 
+ /**
+  * SMPCompatProps:
++ * @prefer_sockets - whether sockets are preferred over cores in smp parsing
+  * @dies_supported - whether dies are supported by the machine
+  */
+ typedef struct {
++    bool prefer_sockets;
+     bool dies_supported;
+ } SMPCompatProps;
+ 
+@@ -250,7 +252,6 @@ struct MachineClass {
+     bool nvdimm_supported;
+     bool numa_mem_supported;
+     bool auto_enable_numa;
+-    bool smp_prefer_sockets;
+     SMPCompatProps smp_props;
+     const char *default_ram_id;
+ 
 -- 
 2.19.1
 

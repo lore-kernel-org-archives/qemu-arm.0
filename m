@@ -1,206 +1,209 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5118753lfp;
-        Tue, 28 Sep 2021 10:55:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyagdAH8hyoQLdT3aDKufoW0DS6pCYLHsbonIknuxc9jbgkRXcWC7ZFZ783/FPupQfjJkWG
-X-Received: by 2002:a67:ec59:: with SMTP id z25mr6631866vso.56.1632851730664;
-        Tue, 28 Sep 2021 10:55:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632851730; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5120428lfp;
+        Tue, 28 Sep 2021 10:57:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwo48P3hVqsHW62Jmke7OpyviA1yy4Fy6zEmJfgObNhlDQMObWm7JPXiaQhmoRSoMJoBbkX
+X-Received: by 2002:ab0:31d6:: with SMTP id e22mr6086143uan.99.1632851851463;
+        Tue, 28 Sep 2021 10:57:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632851851; cv=none;
         d=google.com; s=arc-20160816;
-        b=fcJVEFSLApRH1EzFVoq0+MErytr64eCQagj/PK+4vkonxVl/21jMXVW3JUDiEpfjOA
-         OZXtSeqfC6KL1QQ9nZJLPah8P+axcU+CRwowdWT+myktE+XxZnLEK+kwn6k2rQ37XG+5
-         kqWAU0MDupjE18qREjBOpLQ+LGmeoDtULli1oKTZvujWxk9bfofLqJSb0WQh8vRw9qYA
-         IQGTIotr0otX/nQDsgBhSQNdQ9OWWbKUDcYmeC0PT/AlLUVZtELG5PaB/rcDklxNxHiJ
-         OwKbhy4BQw8eI8lnDJDFY3znlYXrAqIljOuUrrfy1j8F0ja9mqdRY/hNLyKchkjCpPHU
-         zoTA==
+        b=yMSj5L2d3aAbq/uGfOuLo4IsLdaF5d2sKBHb+pSd9KBSSCH42HgBB5ao2iW3jy29wo
+         csJ9/SBdx+ZS/vo2IUuz51J3a5xXrW+ClGdz882fBos13a+VxtA5ARnmQsf2z2pQlkwx
+         T9rK6JMJNBq6JW0Hrz33qnU65KmYWTgjERx77CgcLZJDb35UsbmCBFp6BcNXD7uNbBK8
+         dn5S4nxriBkcK1FDo5qxrIL8lVHd++7Z4DY7T7mhAiqP04l2MQx92h8WMDRRmsjV9BG5
+         0RqSwpzWsMpPieEv4sk++aYCSjyQYR53+LlffgPIEfLIzeINQRjTcysv8AhTfkXj1QEE
+         ycBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=QTzKoA8MhW4mTGG+NTR7PYwEvHUvlEnQy9sTQSCKltw=;
-        b=PoVIbkpUbfOPKI20a1+79p9M3MULZDqFCM/wXvxj+optdbbWm8kI9MAn2pP8PEoUx5
-         Da6pCtg3oJQ3xD6HEdVLHhTnik8hqmvmEGrdiHlLLXaFrbrxAGxptsqMA640mGnFQxvM
-         mdgj1oi4HQuKjm3+TowdH1uF1dAwwpOhL+O3hdnG7WmzDsqTIau6eb27Ap6wE690uUeg
-         oXpMx//4+2zsFRAmkVuXZ3z7SuyPT8vh+PF7gwCaweazkVKHBr6AKQZdylzg3fyRUOmt
-         oVVdyVjwXFjxDKEgJHN2yVv5lsrYF96OTsE7KjRmM1+iZTgDEtaT7ly33oSw2STKl3zV
-         cfIg==
+         :content-language:in-reply-to:from:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=6olJ3Up6dvLMGwXFluEBLW+GsUxd5kkmN42dYrE/IGU=;
+        b=o+5FrLZhOqTbifUVYljmbyU1mb7Z8AYPLDeiiaNHBkrFL0A5x83RtvyVxaC3UcDMgn
+         Q1t81yAdbMCApXhzbQksGrjp3d+dAD1GAopR+N19zvHXp2EBGPi/tZgX6FUQ71u54VtR
+         aIe+hS18rUB/k9LzfBpXh8W+gvouUpxMacd1G9QEa6sTV7MSqxUIKcUnfotR5k19TgRK
+         b8luugltGDEjffmeUKiifsTwURUMYMgsNBar9jEX2BrGfN/kYMLykeAALVsrC/p2bLq6
+         r3or77g3OFfwqrH9WVXwwFCWajknNygVssde8q4ibZO4Gs3+l9rTZDPTccfLJ1wzSFuv
+         aA1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hDPf4xKR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u9si12962881uaa.204.2021.09.28.10.55.30
+        by mx.google.com with ESMTPS id 7si2955918vsv.312.2021.09.28.10.57.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Sep 2021 10:55:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Sep 2021 10:57:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36504 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hDPf4xKR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38780 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVHKE-0002Ld-1q
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 13:55:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55032)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mVHMA-0003zn-Pm
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 13:57:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mVHJQ-0001fV-9Q
- for qemu-devel@nongnu.org; Tue, 28 Sep 2021 13:54:40 -0400
-Received: from 10.mo552.mail-out.ovh.net ([87.98.187.244]:36153)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mVHLm-0003wA-OV
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 13:57:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40269)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mVHJO-0004DY-B1
- for qemu-devel@nongnu.org; Tue, 28 Sep 2021 13:54:40 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.214])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id E5E8021313;
- Tue, 28 Sep 2021 17:54:27 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 28 Sep
- 2021 19:54:27 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0014888ec3a-a2e3-4dee-bf12-caa855948d0d,
- 8FD5BF52E92266594195F7AC71BB6A975D27E3EC) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <4da8f6cf-0397-e2dd-2a3d-e81bfcaefd67@kaod.org>
-Date: Tue, 28 Sep 2021 19:54:26 +0200
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mVHLj-0006SU-MX
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 13:57:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1632851821;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6olJ3Up6dvLMGwXFluEBLW+GsUxd5kkmN42dYrE/IGU=;
+ b=hDPf4xKRQ17r31jzSlt8FoGaRdR8iWQNKJ3ucv6Uo81JjqnvwZpL20Bgt8c1rXPX/g/QTJ
+ +n5vSLwIvuv0rTjK3jMO9u1yoR6uoi6xDPtG5G881ZwNmisQV8NYPCkAGS41a4koEftuW2
+ CJB1n7pPhcclgDXCaR9R902jP01UlFI=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-455-g33L-akjMMK1YZ6LJobzdA-1; Tue, 28 Sep 2021 13:57:00 -0400
+X-MC-Unique: g33L-akjMMK1YZ6LJobzdA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ x10-20020a7bc76a000000b002f8cba3fd65so1468451wmk.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Sep 2021 10:57:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=6olJ3Up6dvLMGwXFluEBLW+GsUxd5kkmN42dYrE/IGU=;
+ b=2Rr63m93Y5RcMulXY5CwLLAnvygrT6mlzGsN9OnY1UWx09nI/3h7/Z/CzJh/krmpP7
+ Bg3MXliiitPIHQ7JgCrjM8TXm0oIYdgq90Jytr699k7aaTUgdM63HLuWMIP2sG3zy9uX
+ GVZ4zlAR4Pm6nUXq/JIqI21Lmcsy4O6p+O1rUCqmOMVDzwPDLVmnrSlgVH+cN9X79rpu
+ dwwElWWC53M8QssgG8KV2z0tfIWfpRgFJ6M766hr+rnHNOMgmBFBbW6nJn/2EsWha5aU
+ cnBvW572YOOF4unjNbquo4u3+roIApRkgNQSBuUblknHtYPKATmyMD5z7oePSNtyAu+6
+ /JYQ==
+X-Gm-Message-State: AOAM530/qSqJwpHSXbGyvRvGwBm9/HVSUngEXPELNUtRZAvKSwzzWfKm
+ knO+62CQns905Wo4JHftOAHyQPrAFtoweT1U8KAkBWBmahPQzla13mtCcSiwGavtwMwurWCjCJH
+ SJ+6o0yj4uNhM
+X-Received: by 2002:a7b:c151:: with SMTP id z17mr5931035wmi.178.1632851819332; 
+ Tue, 28 Sep 2021 10:56:59 -0700 (PDT)
+X-Received: by 2002:a7b:c151:: with SMTP id z17mr5931009wmi.178.1632851818997; 
+ Tue, 28 Sep 2021 10:56:58 -0700 (PDT)
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id u5sm21789251wrg.57.2021.09.28.10.56.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 28 Sep 2021 10:56:58 -0700 (PDT)
+Message-ID: <9e20c38f-4d93-0658-c309-499c8976adc9@redhat.com>
+Date: Tue, 28 Sep 2021 19:56:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.1.0
-Subject: Re: [PATCH] hw/misc: Add an iBT device model
+Subject: Re: [PATCH 2/3] hw/arm/virt-acpi-build: IORT upgrade up to revision
+ E.b
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ imammedo@redhat.com, jean-philippe@linaro.org, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ drjones@redhat.com
+References: <20210928172133.79665-1-eric.auger@redhat.com>
+ <20210928172133.79665-3-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <20210928172133.79665-3-eric.auger@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Titus Rwantare <titusr@google.com>
-References: <CAMvPwGr-FuQWHTQYxppAyT9uPhzCUDcezgz+jV=GwHGoQF4N6A@mail.gmail.com>
- <1a0d6240-6654-0cf7-01ce-ef3ebf497a5c@amsat.org>
- <942903da-c16f-23dd-155d-61af84962935@kaod.org>
- <CAMvPwGpWftHwxJBbRUzHmsuguspUPBXgU+ROZqRJ2ypa4z6ETg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAMvPwGpWftHwxJBbRUzHmsuguspUPBXgU+ROZqRJ2ypa4z6ETg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 4fb99902-3422-480d-8640-21b44da7cde2
-X-Ovh-Tracer-Id: 6256344309420493673
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudektddguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigedvffekgeeftedutddttdevudeihfegudffkeeitdekkeetkefhffelveelleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehmihhnhigrrhgusegrtghmrdhorhhg
-Received-SPF: pass client-ip=87.98.187.244; envelope-from=clg@kaod.org;
- helo=10.mo552.mail-out.ovh.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) NICE_REPLY_A=-2.562,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.562, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <minyard@acm.org>, "andrew@aj.id.au" <andrew@aj.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>,
- qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LxR8IwGv19FP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: gshan@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uZhwDX+jv83p
 
-On 9/24/21 20:43, Titus Rwantare wrote:
-> On Fri, 24 Sept 2021 at 03:55, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> Hello Titus,
->>
->> On 9/24/21 10:42, Philippe Mathieu-Daudé wrote:
->>> On 9/24/21 01:48, Titus Rwantare wrote:
->>>> Hello all,
->>>>
->>>> I'd like some clarification on how the following code transfers irqs
->>>> back and forth:
->>>>> b/hw/arm/aspeed_soc.c
->>>>> +    /* iBT */
->>>>> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ibt), errp)) {
->>>>> +        return;
->>>>> +    }
->>>>> +    memory_region_add_subregion(&s->lpc.iomem,
->>>>> +                   sc->memmap[ASPEED_DEV_IBT] - sc->memmap[ASPEED_DEV_LPC],
->>>>> +                   &s->ibt.iomem);
->>>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_ibt,
->>
->>
->> The iBT device IRQ is connected to a subdevice irq of the LPC device.
->> See aspeed_lpc_realize(). And triggered in aspeed_lpc_set_irq()
-> 
-> Yes, that side makes sense. I tried to get at that irq from
-> aspeed_ibt.c as follows:
-> 
-> qemu_irq_lower(ibt->lpc->subdevice_irqs[aspeed_lpc_ibt]); // or raise
-> 
-> static void aspeed_ibt_realize(DeviceState *dev, Error **errp)
-> {
-> AspeedIBTState *ibt = ASPEED_IBT(dev);
-> SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> IPMIInterface *ii = IPMI_INTERFACE(dev);
-> ibt->lpc = ASPEED_LPC(dev);
-> ...
-> 
-> but this doesn't work and maybe I'm misusing the dynamic cast?
-> 
->>>>> +                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_ibt));
->>>>> }
->>>>
->>>> and
->>>>
->>>>> hw/misc/aspeed_ibt.c
->>>>> +static void aspeed_ibt_realize(DeviceState *dev, Error **errp)
->>>>> +{
->>>>> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->>>>> +    AspeedIBTState *ibt = ASPEED_IBT(dev);
->>>> ...
->>>>> +
->>>>> +    sysbus_init_irq(sbd, &ibt->irq);
->>>>
->>>> I ask because the code in aspeed_soc.c seems to connect to the
->>>> lpc->subdevice_irqs[aspeed_lpc_ibt], initialised on
->>>> hw/misc/aspeed_lpc.c:408.
->>>> I noticed that bmc firmware running in qemu was checking the BT_CTRL
->>>> register less frequently than I'd like while editing this patch to use
->>>> the IPMIInterface.
->>
->> OK.
->>
->> This might be a problem in aspeed_ibt_update_irq(). This patch is
->> an experiment from some few years ago. It still works good enough
->> for the witherspoon-bmc and powernv9 machines for simple IPMI
->> commands: fru, sdr, lan, power off (to be checked).
->>
->> Could you share your BMC and host command line ?
->>
-> 
-> Host:
-> -chardev socket,id=ipmichr1,host=localhost,port=9999,reconnect=10 \
-> -device ipmi-bmc-extern,chardev=ipmichr1,id=bmc0 \
-> -device isa-ipmi-bt,bmc=bmc0,irq=10 -nodefaults
-> 
-> BMC:
-> -chardev socket,id=ipmichr1,host=localhost,port=9999,server=on,wait=off \
-> -device ipmi-host-extern,chardev=ipmichr1,responder=/machine/soc/ibt
+Hi Eric,
 
-This looks correct.
+On 9/28/21 19:21, Eric Auger wrote:
+> Upgrade the IORT table from B to E.b specification
+> revision (ARM DEN 0049E.b).
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/arm/virt-acpi-build.c | 47 ++++++++++++++++++++++++----------------
+>  1 file changed, 28 insertions(+), 19 deletions(-)
 
-> But for this to work you need Hao's patch as well: [PATCH 7/8]
-> hw/ipmi: Add an IPMI external host device.
-  
-Is it based on my aspeed branch which contains the iBT model ?
-Could you send the patchset as an RFC maybe ?
+> -    /* 3.1.1.3 ITS group node */
+> +    /* Table 12 ITS Group Format */
+>      build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
+>      node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
+>      build_append_int_noprefix(table_data, node_size, 2); /* Length */
+> -    build_append_int_noprefix(table_data, 0, 1); /* Revision */
+> -    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+> +    build_append_int_noprefix(table_data, 3, 1); /* Revision */
 
+Why 3? Shouldn't it be 1?
 
-Thanks,
+> +    build_append_int_noprefix(table_data, 0, 4); /* Identifier */
+>      build_append_int_noprefix(table_data, 0, 4); /* Number of ID mappings */
+>      build_append_int_noprefix(table_data, 0, 4); /* Reference to ID Array */
+>      build_append_int_noprefix(table_data, 1, 4); /* Number of ITSs */
+> @@ -374,19 +375,19 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
+>  
+>          smmu_offset = table_data->len - table.table_offset;
+> -        /* 3.1.1.2 SMMUv3 */
+> +        /* Table 9 SMMUv3 Format */
+>          build_append_int_noprefix(table_data, 4 /* SMMUv3 */, 1); /* Type */
+>          node_size =  SMMU_V3_ENTRY_SIZE + ID_MAPPING_ENTRY_SIZE;
+>          build_append_int_noprefix(table_data, node_size, 2); /* Length */
+> -        build_append_int_noprefix(table_data, 0, 1); /* Revision */
+> -        build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+> +        build_append_int_noprefix(table_data, 3, 1); /* Revision */
 
-C.
+And here 3 -> 4?
 
+> +        build_append_int_noprefix(table_data, 1, 4); /* Identifier */
+>          build_append_int_noprefix(table_data, 1, 4); /* Number of ID mappings */
+>          /* Reference to ID Array */
+>          build_append_int_noprefix(table_data, SMMU_V3_ENTRY_SIZE, 4);
+>          /* Base address */
+>          build_append_int_noprefix(table_data, vms->memmap[VIRT_SMMU].base, 8);
+>          /* Flags */
+> -        build_append_int_noprefix(table_data, 1 /* COHACC OverrideNote */, 4);
+> +        build_append_int_noprefix(table_data, 1 /* COHACC Override */, 4);
+>          build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+>          build_append_int_noprefix(table_data, 0, 8); /* VATOS address */
+>          /* Model */
+> @@ -395,35 +396,43 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          build_append_int_noprefix(table_data, irq + 1, 4); /* PRI */
+>          build_append_int_noprefix(table_data, irq + 3, 4); /* GERR */
+>          build_append_int_noprefix(table_data, irq + 2, 4); /* Sync */
+> +        build_append_int_noprefix(table_data, 0, 4); /* Proximity domain */
+> +        /* DeviceID mapping index (ignored since interrupts are GSIV based) */
+> +        build_append_int_noprefix(table_data, 0, 4);
+>  
+>          /* output IORT node is the ITS group node (the first node) */
+>          build_iort_id_mapping(table_data, 0, 0xFFFF, IORT_NODE_OFFSET);
+>      }
+
+Also, could the node identifier be a variable we increment?
 

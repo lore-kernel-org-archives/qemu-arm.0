@@ -1,95 +1,95 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4726603lfp;
-        Tue, 28 Sep 2021 03:24:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzP0lYu3Oomcdstwm4BK2rJkw7sn1QgiWMQ0G0fRNUz6WgDOGAqqmzj/P84HvKMk702Owr6
-X-Received: by 2002:ac8:51ce:: with SMTP id d14mr4613804qtn.16.1632824642952;
-        Tue, 28 Sep 2021 03:24:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632824642; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4726634lfp;
+        Tue, 28 Sep 2021 03:24:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy1Cy1GXyHHta714kPZC4eXVsTwZ6FtNwVdcls39/vy9IT3WVXX58OxRHt7py1PJO//kXDo
+X-Received: by 2002:ac8:5392:: with SMTP id x18mr4671996qtp.180.1632824644913;
+        Tue, 28 Sep 2021 03:24:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632824644; cv=none;
         d=google.com; s=arc-20160816;
-        b=jqR6qh2/OYO3QpZKnX8B47KrTk9MptJ0/nPPCncOM+5IMLGTTjaOzAg2F7bJyjbWzl
-         RZ44oGOFzjp77tx3YkEc0C0x++uR3wTx5NkKOiO8mf2qsOqG4XoguOrIkEE3s5OS/5XD
-         FyO7+KUih9if8SXMUmIqyI9p9VvrRO3yaYmQHnbBX7bLERmj2T4Hjc87LL7LGymLZvXR
-         7G0gWdSVEgyQgjhTpXCsLP0TbWuXSsrGK9vddHXlJtFDMqtrFpmoLW8OjbnBjpHMUTFS
-         x29XbdJPZowdDg1B6JWFHyK0EPkgAXh3rIxcec+82jidbVMXOXd4FA+SpX1K/bql7aVK
-         1aQg==
+        b=WKmzQkdTjnmleT75HgyFIVKS3nNXg0sDsSmgh3PeX5KhdYnGBYj2b8wumYiD7xXsDd
+         4j0hYoD3MxJTgK/BgGykdoGzK+kM06glb3574z/kX9B3ZJEd5aLMNYSIm/K0QKVTFfAR
+         7MnorPkMCNa601UC0VLiDNGHJIfvvuh7d8Yf+aAJFMNe8TOn6StbGqmWie3ciR+007Js
+         En/2NPKgv7Vd4Oy4ITbiMCq+EWAv6QQg4b5r+4Qc1QlSDD5pwto4iwh1mwd7/1ZKod55
+         HdxuP80Lhy39BmrVI4bmD7YZSROAMi2EIB8vlaYSLTqXdRMU9qCExrKRg2TpuZVRNHVm
+         nFtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-disposition:user-agent
          :in-reply-to:mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=CvS8Ces5QDGZ/WzAqKmXdPTF8/ob+VepvixdpeSuTT8=;
-        b=RaxR85JD/YvbPClBMfjqhusojqUKokb/JnmUMCFp2ZKLZjkih/cgLmkYT+5M1v3i2/
-         IimwEgT4471G35INXE5Q6k2mThsvnQNnVdNszkoDwlWdbPP/am7whhhk9nH2euPTFoBX
-         /AfcZUq91NeFWBCcREt52RQhFU93uqT83dj1oP9/J9h4gifOhAkPfkcarkBN3tiVF2OF
-         Zenw7BCWjDO3GYDjGvB9PIunbvRhDi+u9s2dbfZXzOvVOlnkjsPCFjEJcav+zXZ/aouD
-         C5W04OMkYxtOxgQ01ssswI/zSgxe8lzsxD95j3xaD+CnYt0jpUaiq8bSnfGVSgyikPxy
-         +I4Q==
+        bh=/iEBfxd/j4yfAySXLaub8F9a0c9TpFAzZl5IuFvEGT8=;
+        b=CO9vtrP0CHZx4GDFRsguLIk5XCbOyXPWZT9N87JItVUaullKPb3mU38wkH9YfQdCMH
+         dVNuGIgpJJtyBGyqR55Qzxp+VMfnw5/MemTilBaWoYBbIEi6q/YZygW1SE+Fv3ygWJ7Z
+         FbpKPtRce41N8EHhNgkZzplpLhlUlexPAN1tzMLXM8klzG4knkuK1MLKpyXDYld1dUnB
+         vxNm5eXtGiwNhsuGmWPwFjvrnSAXinlfxWyA4WAI36C5rr/vaESEHMEcCBJ/FWHhVLKv
+         MF0aZmY3hoFIIV1EgZKKfnNn7bS8GeAP5MyGT5bDGv+ml18UOHGZh9zqVkzEjrNu3b5x
+         W55w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RE6sJFTG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BIqfDquK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k22si13067265qkh.328.2021.09.28.03.24.02
+        by mx.google.com with ESMTPS id y28si4619891qtm.274.2021.09.28.03.24.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Sep 2021 03:24:02 -0700 (PDT)
+        Tue, 28 Sep 2021 03:24:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RE6sJFTG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BIqfDquK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45256 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45316 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVAHK-0003Zo-AX
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 06:24:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56960)
+	id 1mVAHM-0003cF-6z
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 06:24:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57454)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mVAFD-0008WI-Ie
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:21:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42794)
+ id 1mVAH9-0003aA-HJ
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:23:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29885)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mVAFA-0002m8-FE
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:21:51 -0400
+ id 1mVAH7-0004bx-Qy
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 06:23:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632824507;
+ s=mimecast20190719; t=1632824629;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CvS8Ces5QDGZ/WzAqKmXdPTF8/ob+VepvixdpeSuTT8=;
- b=RE6sJFTGNFAnEqDxcTi3doixM4L1IeP2/CsOnyomcH0V2OF1jUDLzrWRXSosMhFYmdzGTU
- STiuzqln3FI7L0nIOZFcrI49hry8wF48gOxSmjZN9WUP1jAZbsmRamAmGRxUU5TYvuDHqL
- fC9mWG+Jgg1hJaOnCuEymh/TKs1kF/g=
+ bh=/iEBfxd/j4yfAySXLaub8F9a0c9TpFAzZl5IuFvEGT8=;
+ b=BIqfDquK1eRxul72epQEsEFtsYgvdLPupqSpM6w0RYqFZksWMNAXCyfkQsoIAJ4ovLyuYo
+ Jg8Lsiu1FOMjtlZvMDn3ComCIipVRRs12yc+wWJF9QbhkYvJteUo/dwRmNYhTwKDq8NdMR
+ v13KgMCQnB4UAM89iebxztC9hTGapA8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-305-JysKQgZMP-irvc-9mHLpFg-1; Tue, 28 Sep 2021 06:21:45 -0400
-X-MC-Unique: JysKQgZMP-irvc-9mHLpFg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-121-pu357fbUO8KzVXAz_iYV6g-1; Tue, 28 Sep 2021 06:23:47 -0400
+X-MC-Unique: pu357fbUO8KzVXAz_iYV6g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CFFD802921;
- Tue, 28 Sep 2021 10:21:44 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7FC2D802947;
+ Tue, 28 Sep 2021 10:23:45 +0000 (UTC)
 Received: from redhat.com (unknown [10.39.194.52])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A7D85D9D5;
- Tue, 28 Sep 2021 10:21:38 +0000 (UTC)
-Date: Tue, 28 Sep 2021 11:21:35 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0CE1B3AC0;
+ Tue, 28 Sep 2021 10:23:36 +0000 (UTC)
+Date: Tue, 28 Sep 2021 11:23:34 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Yanan Wang <wangyanan55@huawei.com>
-Subject: Re: [PATCH v11 09/14] machine: Use ms instead of global
- current_machine in sanity-check
-Message-ID: <YVLsrwOE2kQcyegV@redhat.com>
+Subject: Re: [PATCH v11 10/14] machine: Tweak the order of topology members
+ in struct CpuTopology
+Message-ID: <YVLtJlY2erUtyNUK@redhat.com>
 References: <20210928035755.11684-1-wangyanan55@huawei.com>
- <20210928035755.11684-10-wangyanan55@huawei.com>
+ <20210928035755.11684-11-wangyanan55@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210928035755.11684-10-wangyanan55@huawei.com>
+In-Reply-To: <20210928035755.11684-11-wangyanan55@huawei.com>
 User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -128,21 +128,21 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v19tUOk4HfJ8
+X-TUID: On4un39BsfrI
 
-On Tue, Sep 28, 2021 at 11:57:50AM +0800, Yanan Wang wrote:
-> In the sanity-check of smp_cpus and max_cpus against mc in function
-> machine_set_smp(), we are now using ms->smp.max_cpus for the check
-> but using current_machine->smp.max_cpus in the error message.
-> Tweak this by uniformly using the local ms.
+On Tue, Sep 28, 2021 at 11:57:51AM +0800, Yanan Wang wrote:
+> Now that all the possible topology parameters are integrated in struct
+> CpuTopology, tweak the order of topology members to be "cpus/sockets/
+> dies/cores/threads/maxcpus" for readability and consistency. We also
+> tweak the comment by adding explanation of dies parameter.
 > 
 > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 > Reviewed-by: Andrew Jones <drjones@redhat.com>
 > Reviewed-by: Pankaj Gupta <pankaj.gupta@ionos.com>
-> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 > ---
->  hw/core/machine.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/core/machine.c   | 8 ++++----
+>  include/hw/boards.h | 7 ++++---
+>  2 files changed, 8 insertions(+), 7 deletions(-)
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 

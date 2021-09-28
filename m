@@ -1,92 +1,99 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4398770lfp;
-        Mon, 27 Sep 2021 18:21:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzAWVFcjUsZ4MqTyAYbMvF+GMXqXkcyILRdSmGE+EbL6CYLJ6wXS9C+whRO0TfYzoouoKv8
-X-Received: by 2002:ab0:6847:: with SMTP id a7mr2974617uas.48.1632792112194;
-        Mon, 27 Sep 2021 18:21:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632792112; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4565148lfp;
+        Mon, 27 Sep 2021 23:07:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhzxJ4stG7NT7dYe1s2hJnNh+fti3ufPMsQcS7EMQ+k6a2UFlRx6t4gm099uS43blagggv
+X-Received: by 2002:a05:6820:1018:: with SMTP id v24mr3539900oor.27.1632809241005;
+        Mon, 27 Sep 2021 23:07:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632809241; cv=none;
         d=google.com; s=arc-20160816;
-        b=BeXZuXc2jVu2dWcaM4gOP4+4dKhr/IvRKasL0Cn1tqVJaabwqmIF5XI0F+vfs4LeZh
-         /lIm8hrMrm8LqLre+UArxnTUavnf1VMl6nna9oCD7jlCtQSu6d3Msy3yiX+/m3jZq8Ek
-         YKDCZGyJeeU7OeFMfcmePRADbgEAcBD4+NQUx0MBPTo17auD/KSn+Pe85Z+BAcE3shQF
-         bCNRdY26y2aMLuMZBUrzaBe3w5+dieRadtg4e/nvPXdEUFF9B1nLK88cg4vlm17A9sGJ
-         fNzMEzQTCEJIdJG5ewWTcA2oRWmdqy/qux0bNeJZ5woZKU6p5sN9ClhzbVCOhVraNZM6
-         1NMA==
+        b=FMNTlXpPEx99tW58N3Qo5Ng4/B9OI/49eAmuDzFdvMfsL0uTsaAwJmnZO9yEfemjOI
+         Oz0AY/9gULx2Dnf5yc1VzWNfQQcWsKgXfvK1I7ChwWKQLiUx9lP0Icda2DjnYkafkqaz
+         lItMhuK0CN5/ovUQQMcmb69a0VIDCAF/WM81gmxYL+tO91pdjFKHWKEUfQDe1oY7HAht
+         1tTSW5/egDS7C4IOgn+gcmCx/9yG7r11EQrxW7e+dYqfGA5ipC59KDjx5gBVIpH8KYBV
+         VlRwaHoyFn7/2B+ysWEumpbK2brKTY4OAoGgEznIo+hQGjI0KbQSSGrVyf/r8gLInwEe
+         WLDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=nZTTXo6Hz+LqdQWR4Mdw04MwHBzFkUGwj2e/lrrzddA=;
-        b=UgRnujVBScJPrYPcS7ZRW8pKUZpNiLmKVzwKYGDQRlTeGqamOeV9WP1zW6odXBMwdT
-         o1LIJ+LDQp7L4FtDUmCsQVcea/kfmeNUv3gJfhrEOt3zA96Gj0PMs3pF/xEl+HiMSzd7
-         vbUerYHablX0WyCwldl+VVVJn9hUArdByD6QlOTmpEqRIcfzoKo0kqC0ygkK2bP8+GoT
-         XnkTMS6P8pRsyEbBNZfMxiMPaPelZAcVFAbJvlhyqx/Pr0+bhhsT+5ks3fcJLcGjc1UU
-         qFQRe/nzSw37uBpvnTateBk+gaLuRxDUKufyGEy4OJJUenlvYHx4bPDJu388Pmq0J5i5
-         YnuQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=k9VvfX4h598NO/RBsMPQx8QpF1Gup5Z08Hf0Kj5f9G4=;
+        b=BLTp4S+GemRaXqUMj4h/xmO+tV9/hIhPTY3LcBG1Y/dNa6YPfNKNQXuhx9VUzRAUjO
+         s6h3NC56l1gDXObrCMs/e4EI4U/e27d6iykT6XYTRkdfQt6+tVAIG8DvaZLx6nbSgWd8
+         LZthqmFcqDANmkIUA8NAewM2QuhzpLDKwT45ftfYoPP9AiV7qZauzP73pH/GekACzDpK
+         n8exSMBH2lJJaYp1nmYIfr8mHcJ2Blewqt3ExEaVygv+u/d6aBm3yTpaA82AamRuJmDr
+         KGUDhlyw3WLecCgzAA4nb6rKrEFvC90mh638sqydGIuZLeh02b7rga1Sxp4g4oIqX//j
+         Ca5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q13si13530213vsn.232.2021.09.27.18.21.52
+        by mx.google.com with ESMTPS id 51si19846478otc.313.2021.09.27.23.07.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 18:21:52 -0700 (PDT)
+        Mon, 27 Sep 2021 23:07:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:57076 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39210 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mV1od-0000ba-GY
-	for alex.bennee@linaro.org; Mon, 27 Sep 2021 21:21:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52142)
+	id 1mV6Gu-0002dt-Ad
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 02:07:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34176)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV1oE-0000bF-Kt; Mon, 27 Sep 2021 21:21:26 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2929)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mV6Gg-0002dc-9F
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 02:07:06 -0400
+Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81]:46379)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV1o8-0004VY-MN; Mon, 27 Sep 2021 21:21:23 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.54])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HJM6S60Rnzbmp8;
- Tue, 28 Sep 2021 09:16:48 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 09:21:04 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 09:21:03 +0800
-Subject: Re: [PATCH v10 11/14] machine: Make smp_parse generic enough for all
- arches
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-References: <20210926084541.17352-1-wangyanan55@huawei.com>
- <20210926084541.17352-12-wangyanan55@huawei.com>
- <YVGZE7boLhoD1w2r@redhat.com>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <ffc4e1c6-1d41-fd19-7e78-d70d428d8ab8@huawei.com>
-Date: Tue, 28 Sep 2021 09:21:03 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mV6Gd-0000K1-Ut
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 02:07:06 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.206])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id D9516C0AEE6A;
+ Tue, 28 Sep 2021 08:06:59 +0200 (CEST)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 28 Sep
+ 2021 08:06:59 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G0030eba1f4c-429d-4c09-acf9-5118a7b7d125,
+ 8E8CB80F4898FD5B70E1FE60FE919FF623030768) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <1e384ea8-5cb9-4c43-2435-d5194515b48a@kaod.org>
+Date: Tue, 28 Sep 2021 08:06:58 +0200
 MIME-Version: 1.0
-In-Reply-To: <YVGZE7boLhoD1w2r@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: Need to merge - QEMU patch for booting eMMC image for AST2600
+ machine
 Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme714-chm.china.huawei.com (10.1.199.110) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -72
-X-Spam_score: -7.3
-X-Spam_bar: -------
-X-Spam_report: (-7.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.136,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+To: Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, qemu-arm
+ <qemu-arm@nongnu.org>
+References: <SJ0PR20MB3643750F8FF71E838A750F9B9DA59@SJ0PR20MB3643.namprd20.prod.outlook.com>
+ <38e08d56-00b2-8759-a729-4bb6a26e6cdd@amsat.org>
+ <4b2c7f4f-f2b5-7990-bcdc-5f9fb19418b4@kaod.org>
+ <SJ0PR20MB36433AFB78BA0BAF6DC537649DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
+ <SJ0PR20MB3643126F9786CFBEA81D5D349DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <SJ0PR20MB3643126F9786CFBEA81D5D349DA79@SJ0PR20MB3643.namprd20.prod.outlook.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 70eff25b-704e-4441-8bf9-6b056547940d
+X-Ovh-Tracer-Id: 12755038571340598124
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudejledguddttdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeetudfftdehvdduiefhudekudejgfegjedukeehudetieffvdefudfgleevhffftdenucffohhmrghinheptghishgtohdrtghomhdpghhithhhuhgsrdgtohhmpdhqvghmuhdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo529.mail-out.ovh.net
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, CTE_8BIT_MISMATCH=0.001,
+ NICE_REPLY_A=-3.136, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,95 +107,145 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Pierre
- Morel <pmorel@linux.ibm.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>, qemu-devel@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- wanghaibin.wang@huawei.com, Paolo Bonzini <pbonzini@redhat.com>, David
- Gibson <david@gibson.dropbear.id.au>
+Cc: Hao Wu <wuhaotsh@google.com>, Patrick Venture <venture@google.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9GZMqiM93BwN
+X-TUID: 2MYoune5RtB9
 
+Hello Shitalkumar
 
-On 2021/9/27 18:12, Daniel P. Berrangé wrote:
-> On Sun, Sep 26, 2021 at 04:45:38PM +0800, Yanan Wang wrote:
->> Currently the only difference between smp_parse and pc_smp_parse
->> is the support of dies parameter and the related error reporting.
->> With some arch compat variables like "bool dies_supported", we can
->> make smp_parse generic enough for all arches and the PC specific
->> one can be removed.
->>
->> Making smp_parse() generic enough can reduce code duplication and
->> ease the code maintenance, and also allows extending the topology
->> with more arch specific members (e.g., clusters) in the future.
->>
->> Suggested-by: Andrew Jones <drjones@redhat.com>
->> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
->> Reviewed-by: Andrew Jones <drjones@redhat.com>
->> ---
->>   hw/core/machine.c   | 110 ++++++++++++++++++++++++++++++++++++--------
->>   hw/i386/pc.c        |  84 +--------------------------------
->>   include/hw/boards.h |   9 ++++
->>   3 files changed, 100 insertions(+), 103 deletions(-)
->>
->> diff --git a/hw/core/machine.c b/hw/core/machine.c
->> index a21fcd7700..4b5c943f8e 100644
->> --- a/hw/core/machine.c
->> +++ b/hw/core/machine.c
->> @@ -15,6 +15,7 @@
->>   #include "qapi/qmp/qerror.h"
->>   #include "sysemu/replay.h"
->>   #include "qemu/units.h"
->> +#include "qemu/cutils.h"
->>   #include "hw/boards.h"
->>   #include "hw/loader.h"
->>   #include "qapi/error.h"
->> @@ -746,20 +747,87 @@ void machine_set_cpu_numa_node(MachineState *machine,
->>       }
->>   }
->>   
->> +static char *cpu_topology_hierarchy(MachineState *ms)
->> +{
->> +    MachineClass *mc = MACHINE_GET_CLASS(ms);
->> +    SMPCompatProps *smp_props = &mc->smp_props;
->> +    char topo_msg[256] = "";
->> +
->> +    /*
->> +     * Topology members should be ordered from the largest to the smallest.
->> +     * Concept of sockets/cores/threads is supported by default and will be
->> +     * reported in the hierarchy. Unsupported members will not be reported.
->> +     */
->> +    g_autofree char *sockets_msg = g_strdup_printf(
->> +            " * sockets (%u)", ms->smp.sockets);
->> +    pstrcat(topo_msg, sizeof(topo_msg), sockets_msg);
->> +
->> +    if (smp_props->dies_supported) {
->> +        g_autofree char *dies_msg = g_strdup_printf(
->> +                " * dies (%u)", ms->smp.dies);
->> +        pstrcat(topo_msg, sizeof(topo_msg), dies_msg);
->> +    }
->> +
->> +    g_autofree char *cores_msg = g_strdup_printf(
->> +            " * cores (%u)", ms->smp.cores);
->> +    pstrcat(topo_msg, sizeof(topo_msg), cores_msg);
->> +
->> +    g_autofree char *threads_msg = g_strdup_printf(
->> +            " * threads (%u)", ms->smp.threads);
->> +    pstrcat(topo_msg, sizeof(topo_msg), threads_msg);
->> +
->> +    return g_strdup_printf("%s", topo_msg + 3);
->> +}
-> Mixing g_strdup_printf + pstrcat + fixed buffer is quite
-> unpleasant. This method is begging to use 'GString' APIs
-> for formatting.
->
-Indeed, GString seems to be the ideal choice for this. It's
-my bad not thinking about usage of it at the beginning.
-I will update this patch in v11. Thanks for the suggestion.
+On 9/27/21 20:55, Shitalkumar Gandhi wrote:
+> Hi All,
+> 
+> Please let me know how to get this merged?
 
-Thanks,
-Yanan
+Have you read what is at end of this email ?
+
+Thanks
+
+C.
+
+  
+> Thanks,
+> Shitalkumar
+> ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+> *From:* Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>
+> *Sent:* Monday, September 27, 2021 7:45 AM
+> *To:* Cédric Le Goater <clg@kaod.org>; Philippe Mathieu-Daudé <f4bug@amsat.org>; qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qemu-arm <qemu-arm@nongnu.org>
+> *Cc:* Hao Wu <wuhaotsh@google.com>; Patrick Venture <venture@google.com>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>
+> *Subject:* Re: Need to merge - QEMU patch for booting eMMC image for AST2600 machine
+> Yes, I have raised this.
+> 
+> https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818 
+> <https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818>
+> 
+> BR,
+> Shitalkumar
+> ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+> *From:* Cédric Le Goater <clg@kaod.org>
+> *Sent:* Monday, September 27, 2021 7:15 AM
+> *To:* Philippe Mathieu-Daudé <f4bug@amsat.org>; Shitalkumar Gandhi <shitalkumar.gandhi@seagate.com>; qemu-devel@nongnu.org <qemu-devel@nongnu.org>; qemu-arm <qemu-arm@nongnu.org>
+> *Cc:* Hao Wu <wuhaotsh@google.com>; Patrick Venture <venture@google.com>; Andrew Jeffery <andrew@aj.id.au>; Joel Stanley <joel@jms.id.au>
+> *Subject:* Re: Need to merge - QEMU patch for booting eMMC image for AST2600 machine
+> 
+> This message has originated from an External Source. Please use proper judgment and caution when opening attachments, clicking links, or responding to this email.
+> 
+> 
+> Hello,
+> 
+> On 9/26/21 09:59, Philippe Mathieu-Daudé wrote:
+>> Hi,
+>>
+>> On 9/25/21 19:07, Shitalkumar Gandhi via wrote:
+>>> Hi,
+>>>
+>>> I am attaching a patch that will fix eMMC image booting on QEMU for
+>>> AST2600 machine, without this patch it will be stuck after SPL saying,
+>>> "booting from RAM".
+>>>
+>>> Please review and merge, thanks.
+>>>
+>>> Let me know in case of any concern.
+>>
+>> Thanks for your patch.
+>>
+>> Please look at how to submit patches here:
+>> https://secure-web.cisco.com/1oJkyJ6o1FSjeLofNCk-SJBvHe8F5z4Gz5K8rDouTJuL6pWtzenJ1yE0imiWoNBJUx5BooSaYSkvQfHj1aTBxq2d7eD-xZyztLaT2DS20DjjENjFLA8jfhIXRN_hJPLa8vikrdvz9p60Jy7kojB3AJRD9ZzEL6NwZS2AZfc2ElH7-meAzFGLq-3qKResEOEwqEkMU5ocivYTBkJpgcJLPiR34MZr3ZUdMsFnYCLYImWZ9TxlbUyo742xmCDQdg-CM-GFhJm3h6Vu6t1b8LHALySrJqK4dUdKPfzYgkDmhH11RMEXwPNMW19QNF62MbxEDFcekCoClvnOYuRsoEjgnwJH-rJn9B-D54vVPbAhqsCkjjd8wBCwBCjbWuq2kovWRZC9hl7URdTe2-F3JVb2EItEsQBr52Wxc5D1D_tnuboaCIzn1osTeVB2_nJbwIIKc/https%3A%2F%2Fwiki.qemu.org%2FContribute%2FSubmitAPatch%23Submitting_your_Patches 
+> <https://secure-web.cisco.com/1oJkyJ6o1FSjeLofNCk-SJBvHe8F5z4Gz5K8rDouTJuL6pWtzenJ1yE0imiWoNBJUx5BooSaYSkvQfHj1aTBxq2d7eD-xZyztLaT2DS20DjjENjFLA8jfhIXRN_hJPLa8vikrdvz9p60Jy7kojB3AJRD9ZzEL6NwZS2AZfc2ElH7-meAzFGLq-3qKResEOEwqEkMU5ocivYTBkJpgcJLPiR34MZr3ZUdMsFnYCLYImWZ9TxlbUyo742xmCDQdg-CM-GFhJm3h6Vu6t1b8LHALySrJqK4dUdKPfzYgkDmhH11RMEXwPNMW19QNF62MbxEDFcekCoClvnOYuRsoEjgnwJH-rJn9B-D54vVPbAhqsCkjjd8wBCwBCjbWuq2kovWRZC9hl7URdTe2-F3JVb2EItEsQBr52Wxc5D1D_tnuboaCIzn1osTeVB2_nJbwIIKc/https%3A%2F%2Fwiki.qemu.org%2FContribute%2FSubmitAPatch%23Submitting_your_Patches>
+>>
+>>> This patch has been added to boot eMMC image for AST2600 machine on
+>>> QEMU.
+>>>
+>>> Run quemu as follows:
+>>>
+>>> ./qemu-system-arm -m 1G -M ast2600-evb -nographic -drive
+>>> file=mmc-evb-ast2600.img,format=raw,if=sd,index=2
+>>
+>> What is index=2?
+>>
+>> Is this mmc-evb-ast2600.img image publicly available?
+>>
+>>> Tested: Booted AST2600 eMMC image on QEMU.
+>>> Suggested-by:  <venture@google.com>
+>>> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>> Message-Id: <20210416162426.3217033-1-venture@google.com>
+>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> 
+> I don't remember having reviewed or signed this patch.
+> 
+>>> ---
+>>>   hw/arm/aspeed.c | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>>> index ba5f1dc5af..6a890adb83 100644
+>>> --- a/hw/arm/aspeed.c
+>>> +++ b/hw/arm/aspeed.c
+>>> @@ -148,7 +148,7 @@ struct AspeedMachineState {
+>>>           SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+>>>
+>>>   /* AST2600 evb hardware value */
+>>> -#define AST2600_EVB_HW_STRAP1 0x000000C0
+>>> +#define AST2600_EVB_HW_STRAP1 (0x000000C0 |
+>> AST26500_HW_STRAP_BOOT_SRC_EMMC)
+>>
+>> IIUC you are not implementing any eMMC code, simply faking the
+>> controller can support eMMC, but the card is used in SD mode?
+> 
+> I think this is related to this issue :
+> 
+> https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818 
+> <https://secure-web.cisco.com/13Y5NFuOyUgdDUpPwn5OgA8NY1sIBiajir-UA3dTP1yJGRWy2THA4rAtsVnZgvUls637SkO3gba7qmnDzMaxpGKwioLHRH2wf1xefPAKWL8QzKFY4phI7X7oyU8rhzQaj5dwIgY_y_WgmTI8SDnnzBRgQ8R742s0fb89kXTBSexyXTLqSOW11D3kpi0OSLjADEWJ5u87lD25OUNSiSQIFBC6LGiiYQbD2oxDTFeForuIGaT5fpAiI6SYEfc2lBf2j8mjnP-w8K-t2if_hfV0tPeFcYebcRDXoovS10ww85LEADDvpRReejBwftxZK6b5_AgH2U6beeWJ4r-VOi9-2ZxMC6iHuIZ1RBM0gzCMZpRFxgJb2E44ETONZneg1HJheeiEqDqyoLVGqgQbCu8pOW2e9njyXPvG94ZC8uh4ZodtuPdFanbmvOb6cgic0tZ4Q/https%3A%2F%2Fgithub.com%2Fopenbmc%2Fopenbmc%2Fissues%2F3818>
+> 
+>> I'm surprised your guest is happy and boot that. If so, then
+>> what is the point of announcing eMMC is supported if not used?
+> It should work on the aspeed branches I maintain which include the
+> emmc support but this is not for upstream.
+> 
+> 
+> Some comments,
+> 
+> I don't think the AST2600 evb boots by default on emmc. I agree
+> it's nice to have for tests and there are other ways to modify
+> slightly the default behavior.
+> 
+> We could add a machine property to define the 'hw-strap1' register
+> but it's a bit difficult to remember the value.
+> 
+> A custom '-boot' value setting the 'hw-strap1' for the AST2600
+> machine seems a better alternative. We could merge such a change
+> even if emmc is not ready.
+> 
+> Thanks,
+> 
+> C.
+> 
+> 
+> 
+> 
+> 
+> Seagate Internal
+> 
 

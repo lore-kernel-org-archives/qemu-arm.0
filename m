@@ -1,180 +1,150 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4882814lfp;
-        Tue, 28 Sep 2021 06:33:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxO4QesOG1toRRw89lOdh3fd/slV5Pfwjwa1gOYtRNVKee2RQvxJeh1QT5PCOshUUFqjpQT
-X-Received: by 2002:a50:d98d:: with SMTP id w13mr7697276edj.51.1632835994814;
-        Tue, 28 Sep 2021 06:33:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632835994; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5091098lfp;
+        Tue, 28 Sep 2021 10:22:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDuQUatkkaOTZ2m9N5GTVKIwTAg11pxc8fpxeYKxQdMWFGgdksiuI4kRomungNd5AMihU1
+X-Received: by 2002:a67:3157:: with SMTP id x84mr6241340vsx.51.1632849722152;
+        Tue, 28 Sep 2021 10:22:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632849722; cv=none;
         d=google.com; s=arc-20160816;
-        b=cWHTrHogqSK4/YECocT+cgdprpciBmKA+kk5dRS1m00XXFazuqj1jwk7oia1Jkse/6
-         Ynz++8vxHDSJQLmimrmq+J2DIbmISJyj6Jg8mIWYqXSRVKBKLvdx+wHDCO3SsAvNoo2g
-         5awOHaejMDQfwDdnB39aN7Rca6NANiEIIZnIRcrlzDu4dv7n+gIn35LFJA+HtS6xgdSF
-         czQyE8YAh2oaWWcYEK+84eMV8FB+KdmDBCY3PiFFV/UgyCQ4/RoLzL153qC9tdy55bGt
-         /AEgd8TN7x+JYmHmaUvPQqGdipw4m7AoLxB1oYG4cAOIN+wu5KiN08sEzVdMUi3x/GJa
-         cokw==
+        b=XRoJVSEla7Un5z1+fMn/SmvybzamCDomRc8w/+BN3XCEb5tBsuwH4+ay5vhxgZ0Kn/
+         8ZRscO5NvOYG+Wx1C22uQgTWZrCqF+gFEDA6LyKCfsmN9mL6z9i9OFonLTzYrgirAaH2
+         Ie521mbBl2HwfOaN5t8nppaT4cNQbWegZi5hLSx8pXQHt8EMzNj7VdIhK1ETu+Lkd1mB
+         RDvWsQEyiBwquz1bsCZUXS40VRRazL25Lov6FEP6yonaj2+8+6xnVSaVVUSn71mNQ2Rq
+         KgMS4fuUMNQCHhwYx9hEEbWkPIP4NZe0Rps2yfCX5taAZL/i8DFX1PT93+FuT5hRhgiI
+         OosA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=/bpBk5kzZw1OBr/GZScWqKjuPiAcBKj9D1WMgr/USrw=;
-        b=GoMMDI5n99InmhIcCD92xRwgd439aZxaey7rGJwyL8VG2f45o8TH1LsKT8no4OUiLd
-         UqwEtcCnSumB1SICHi0ujaOMpAEIRPNmPuj7ihkiL0trx9VRQ/M4tZ9LztnYfT07MbrE
-         Bf+HIj7nag1rIRNqi0Musclm4XRy/puPL1AvwXURwPu4HHrPVuHl5fBgn93akTXRn0NV
-         9IWDd22F5Wkc9jpi/Eu198TuIItj0GRcv26k+oParh9tMjxI31bAGseCd67Xq2QSVp7R
-         NEQJLXMidaSELzjCzZiewWsUpn7VWnTnZQs81aYgxfZ3xp3TNqRB9TTfhu9TW4Tl2fIR
-         eSTg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=kmIP1g4WQFFYGPAH0Lp51JKJBAV532ZKLGzeJpfgPh8=;
+        b=N2WSXbb4PABXQcpHmOOaKNdrLIMEUCDUT/QjtZ7Qbrqb2q6SyOInGVhxRQQqNxt3Ju
+         JcqaUwyCama9AhWVoQzfoVzW3Z6hLr4QeaNVMtKyE9H9XmuIkO0u3pXIovIOXlYD4esG
+         MGRkiwY6ujHOv9lEX3DplmJcJNNe4h4421vZ7UAvbddnTLY7Ky319YTArfeY0k5BWuUQ
+         9Yy8Q6ZMMEWqsSq2D7ymO4/hcZ+VvGFfSjc96xoGjSu1PcDMAG0HmeoFbgSjnt1uD9p2
+         xLC7FWvDtVTxDDosLrqtvi9QpDIvbhyStPJmq81/SL/GkQDKSehP3lB5oqQx27ZM4bdH
+         BVWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FyIdMnrT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h18si21157994ejt.663.2021.09.28.06.33.14
+        by mx.google.com with ESMTPS id m20si2849522vsk.214.2021.09.28.10.22.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Sep 2021 06:33:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Sep 2021 10:22:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:34894 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FyIdMnrT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVDEP-0006Qz-TJ
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 09:33:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39112)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mVGnp-0008FH-FF
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 13:22:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mVCcH-0008Ff-4S; Tue, 28 Sep 2021 08:53:52 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2814)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mVGng-0008Ez-H9
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 13:21:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:48991)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mVCcB-0002I7-4j; Tue, 28 Sep 2021 08:53:47 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.55])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HJfTT5K9qzRfGt;
- Tue, 28 Sep 2021 20:49:17 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 20:53:34 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 20:53:33 +0800
-Subject: Re: [PATCH v11 11/14] machine: Make smp_parse generic enough for all
- arches
-To: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-References: <20210928035755.11684-1-wangyanan55@huawei.com>
- <20210928035755.11684-12-wangyanan55@huawei.com>
- <2652509f-97d7-f999-a36f-47fc3b5ca346@redhat.com>
- <875yuk51lg.fsf@dusky.pond.sub.org>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <ee30a7d4-0325-590b-ada8-e8ede9ebced2@huawei.com>
-Date: Tue, 28 Sep 2021 20:53:32 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mVGne-0002Mj-Qa
+ for qemu-arm@nongnu.org; Tue, 28 Sep 2021 13:21:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1632849710;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=kmIP1g4WQFFYGPAH0Lp51JKJBAV532ZKLGzeJpfgPh8=;
+ b=FyIdMnrTsnVp6FxV2RSM5ezbAc7nXi/14T7opgi5j/nVMashkWyy8HrCZk5ItkUHUd3ifq
+ A7vOmGKtR2umet4I0K8zSRE2qO+P8Hf+z37Ks51wWUUPi6lSXMbXlLXOKhDe6tPFgH24A+
+ 3fd2pCSMvbxJ+sXLxk6vPYsSiwwRmQI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-50-zIh_ERtGOx2FqQma0KHW5g-1; Tue, 28 Sep 2021 13:21:46 -0400
+X-MC-Unique: zIh_ERtGOx2FqQma0KHW5g-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 579BD1006AA2;
+ Tue, 28 Sep 2021 17:21:45 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.194.179])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 756025C1C5;
+ Tue, 28 Sep 2021 17:21:40 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, imammedo@redhat.com,
+ jean-philippe@linaro.org, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ drjones@redhat.com
+Subject: [PATCH 0/3] hw/arm/virt_acpi_build: Upgrate the IORT table up to
+ revision E.b
+Date: Tue, 28 Sep 2021 19:21:30 +0200
+Message-Id: <20210928172133.79665-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <875yuk51lg.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme719-chm.china.huawei.com (10.1.199.115) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -67
-X-Spam_score: -6.8
-X-Spam_bar: ------
-X-Spam_report: (-6.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.562,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- =?UTF-8?Q?Daniel_P=2eBerrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Pierre Morel <pmorel@linux.ibm.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, wanghaibin.wang@huawei.com,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o15lYRrldLxq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: philmd@redhat.com, gshan@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: U/IYK2V6TB0H
 
+This series upgrades the ACPI IORT table up to the E.b
+specification revision. One of the goal of this upgrade
+is to allow the addition of RMR nodes along with the SMMUv3.
 
-On 2021/9/28 20:25, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
->
->> On 9/28/21 05:57, Yanan Wang wrote:
->>> Currently the only difference between smp_parse and pc_smp_parse
->>> is the support of dies parameter and the related error reporting.
->>> With some arch compat variables like "bool dies_supported", we can
->>> make smp_parse generic enough for all arches and the PC specific
->>> one can be removed.
->>>
->>> Making smp_parse() generic enough can reduce code duplication and
->>> ease the code maintenance, and also allows extending the topology
->>> with more arch specific members (e.g., clusters) in the future.
->>>
->>> Suggested-by: Andrew Jones <drjones@redhat.com>
->>> Suggested-by: Daniel P. Berrange <berrange@redhat.com>
->>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
->>> ---
->>>   hw/core/machine.c   | 91 +++++++++++++++++++++++++++++++++++----------
->>>   hw/i386/pc.c        | 84 +----------------------------------------
->>>   include/hw/boards.h |  9 +++++
->>>   3 files changed, 81 insertions(+), 103 deletions(-)
->>> +/*
->>> + * smp_parse - Generic function used to parse the given SMP configuration
->>> + *
->>> + * Any missing parameter in "cpus/maxcpus/sockets/cores/threads" will be
->>> + * automatically computed based on the provided ones.
->>> + *
->>> + * In the calculation of omitted sockets/cores/threads: we prefer sockets
->>> + * over cores over threads before 6.2, while preferring cores over sockets
->>> + * over threads since 6.2.
->>> + *
->>> + * In the calculation of cpus/maxcpus: When both maxcpus and cpus are omitted,
->>> + * maxcpus will be computed from the given parameters and cpus will be set
->>> + * equal to maxcpus. When only one of maxcpus and cpus is given then the
->>> + * omitted one will be set to its given counterpart's value. Both maxcpus and
->>> + * cpus may be specified, but maxcpus must be equal to or greater than cpus.
->>> + *
->>> + * For compatibility, apart from the parameters that will be computed, newly
->>> + * introduced topology members which are likely to be target specific should
->>> + * be directly set as 1 if they are omitted (e.g. dies for PC since 4.1).
->>> + */
->>>   static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
->> Can we have it return a boolean instead?
-> Yes, please.  From error.h's big comment:
->
->   * = Rules =
-> [...]
->   * - Whenever practical, also return a value that indicates success /
->   *   failure.  This can make the error checking more concise, and can
->   *   avoid useless error object creation and destruction.  Note that
->   *   we still have many functions returning void.  We recommend
->   *   • bool-valued functions return true on success / false on failure,
->   *   • pointer-valued functions return non-null / null pointer, and
->   *   • integer-valued functions return non-negative / negative.
-Ok. I will add an extra patch to this series to do the change and respin.
-In practice the boolean return value will also make a smp parsing unit
-test more concise. (I'm planning to introduce one test).
+It applies on top of Igor's
+[PATCH v4 00/35] acpi: refactor error prone build_header() and
+packed structures usage in ACPI tables
 
-Thanks,
-Yanan
+The latest IORT specification (ARM DEN 0049E.b) can be found at
+IO Remapping Table - Platform Design Document
+https://developer.arm.com/documentation/den0049/latest/
+
+This series and its dependency can be found at
+https://github.com/eauger/qemu.git
+branch: igor_acpi_refactoring_v4_dbg2_v3_rmr_v1
+
+Eric Auger (3):
+  tests/acpi: Get prepared for IORT E.b revision upgrade
+  hw/arm/virt-acpi-build: IORT upgrade up to revision E.b
+  tests/acpi: Generate reference blob for IORT rev E.b
+
+ hw/arm/virt-acpi-build.c          |  47 ++++++++++++++++++------------
+ tests/data/acpi/virt/IORT         | Bin 124 -> 128 bytes
+ tests/data/acpi/virt/IORT.memhp   | Bin 124 -> 128 bytes
+ tests/data/acpi/virt/IORT.numamem | Bin 124 -> 128 bytes
+ tests/data/acpi/virt/IORT.pxb     | Bin 124 -> 128 bytes
+ 5 files changed, 28 insertions(+), 19 deletions(-)
+
+-- 
+2.26.3
 

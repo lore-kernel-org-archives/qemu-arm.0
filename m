@@ -1,138 +1,208 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4841580lfp;
-        Tue, 28 Sep 2021 05:50:20 -0700 (PDT)
-X-Received: by 2002:a05:622a:1a9f:: with SMTP id s31mr5320963qtc.381.1632833420155;
-        Tue, 28 Sep 2021 05:50:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632833420; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4778115lfp;
+        Tue, 28 Sep 2021 04:32:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuWi/ToZndWg1QRr8GRmOGSm9X3C9TJdV7LCFN8Pu+ySYLzQooOaHFusj5zx34ev8GyjoG
+X-Received: by 2002:a05:6402:2889:: with SMTP id eg9mr7183228edb.384.1632828779617;
+        Tue, 28 Sep 2021 04:32:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632828779; cv=none;
         d=google.com; s=arc-20160816;
-        b=ag3mT+MAc9SMSy7jsBvgRolLLmlZbek1hc3ZzD14Gp+t6HW/1C3BU8Mmea0R87VaEw
-         sMwSLcvteITZAPBUqh+lOGbALMpiU6Ce8ScZXMJ+Zg4EHw8wkJ5Fa1XyuaXJGWOjG+4w
-         6eVPFP0akjvmL7jWa1Ou3DMHSpIlJsAW4iRP1cKMP65S6ebZCm8Rg0Cst9e1KiFUf5ma
-         uubgyd9Esf1emu+FPBd3Uhi+gCNe+qQSifZACO63y3eXjp7l0GXV03zNZJ8EYFmO/TfS
-         jcW4XenKid69z/P18OpC1d5YXINBXbcFv8+CXWNJgYGAedsbuybO3Ens9RN4otsZZrep
-         nLvQ==
+        b=D/w4/cqDLPBjJCxUbOfvgUySQk34XxMwjH87XQ1jcwyAtqbgS0kUcdeP3SYpC5fOps
+         msCmRv1vrqmcxFVZHZAL1t0meCpsNwRZ0HyNlFtDxtGKkKOAakVNLl82NLMN/uTk2WmP
+         aiLo/KgKyACPO8QZr4PI2awtbvwTmBg1zzKm4xx2PuCJ8kn+l53Y+O9yXBjCa9Q9jHWC
+         V9uzdF7YgPQG2K6medYyHCXaHJiwMtlMaK1dfj8EUquVFJOw5j2fCJ9JfdOaYx6TJctJ
+         xhXgj79txl/eUDJE1yBtQJY8Rrg31dQWAImHFCrDeFgl2KxnDKQrSHxo4gtktbW//iM/
+         0OHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Nifb82zOt4L1jbCwPB7F1P15sSowUBIE8D9lmMaSkIc=;
-        b=xkNxDj7Sl9nqhMWdSz5/SHROAQki4y8qH21m+K1MLwiohsMAfyMkKQ6ZdXZa4HcJVQ
-         hepFsql4NNVtVT1xZrmSCkRTlqdsth2zJ/E9SB3I8iMvd+nVsSnzEL4ed3B4OPXg/GkY
-         p19ltxUYdhoLhuU4HORISS/vCAVAJ2IEdU+Q7CFX6Hi0IoknTg7zY4LXD2a+MQXZOWso
-         3VV6iWwyAVBaNZraB5zTzm2hweZJ1il6ENi7RJl7UPQRIyiQl1YTBbpVUvFXfK44si3Z
-         Rt/v6NTkyw/HYBuihVnmu31W0cgRx9DC/99eTGxf1w4goTgCTHjNTLsOzBoEJ5HmW+6o
-         V0Sw==
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=1AaEfA2PK4IIwoHbxwZe/EkKrxav9MdwVe4osXvnKB0=;
+        b=pwQnuIGv1MAnkk1HDYMfAO2mq9uTmGRa8Z08ATVYahxY2AcBbkaoCAfOMK3r5xSanv
+         biYEgEppQQ5iQwbc6w/eOHez2BtVxjUep6uPa5aYAU2fTjkiuLivugFBSxqi1rbhH7wE
+         rB6JupC2zxUtewc1nKlPVoCr9Sn/edUvQBvONGbaHXut9ep7jy6h8i/HRk9YjEb2fPeJ
+         5MyxqqSmSj8mcp3RjZ3rTV/BexnXgcb7POUijQ6tX/wWtO/qYJZ/r0Cpffk1OaFRM99V
+         YZFmH5+Y0TxB4PyxvS112AGMX9FWeuJjKLH4Jl8PyyIpa78HMTGs+koGPu7P4T/aZbk4
+         cg8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QQ9nWeMK;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f10sor6652534qkm.14.2021.09.28.05.50.20
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dzE5xFks;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kraxel@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id p4si21022528ejr.151.2021.09.28.04.32.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 28 Sep 2021 05:50:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Sep 2021 04:32:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QQ9nWeMK;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Nifb82zOt4L1jbCwPB7F1P15sSowUBIE8D9lmMaSkIc=;
-        b=QQ9nWeMK37xStcubx5e+t+SHBrmDrrKwfBTLAsALjR6DY5Ovu9JPPhirBPbfifK8fz
-         NHDuAztWuYHEbVLtW62c2/+6COPAbNLeIIFH7l1YGntdchiD35RnsvDK7QvzqB19/6Ho
-         L/GnECrVa8nyNWWAL6ffkYgS5FlMPrQdMWvgu2/MjfixA168PPKiIiqvKxj+GgY13Wh1
-         DZzKBLmYWPyg03+zV3l9xfTKS7iR+eOq4fyYW1W8OGSotD/lJop0+GgutXAgLBUy+aCJ
-         N8a1OQ475pkuEYpyHmYfIcvOlJcuWaKGaG2Qlek2ioKu9Ur433jNIJ8yRAljI8bBDxJt
-         ywng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Nifb82zOt4L1jbCwPB7F1P15sSowUBIE8D9lmMaSkIc=;
-        b=gDHVMBeDlZcZ1ZGeUWPLNs9WflFQhOlZ14Y0vsmGPj4vwhVFBkUxCWaXukzVGD57HN
-         Qq+MkzaN/NjOwilImg7TwYNSex/zmIYUDqxcHeysdJMq/KeCwAC4aML02zBvoVXyKmoF
-         /nFYTGQqkY4ilX6gMJeQbwQSbeAeHJTHJOc+SYaLoLSWA3tcW1mOmHOda7sJgcSXEC3D
-         cirjESMO9udOWGtD9fByOoLNK8FuPOMCpb9+zTA5Qa3iPPw47lEQRVr6vZMIKE9U8RiU
-         kPZN9XFCArG5ZxcPoc2wvjDAyHiWWeCMvoPlKPnO5xZYARsrf03An9aJuS1lMFKIiYBe
-         /sBQ==
-X-Gm-Message-State: AOAM531953qEQfVxLrSFViiKzHtq1lPstvN4riG13byYYQl/kqUePuRN
-	x0TneULOoWrXDn52kXswrnj4O+jj
-X-Google-Smtp-Source: ABdhPJxwCmNVP4ejlJqyMRRsFa/BQaGuBqPrVm4WaB55TO71/7vz+lXnPtevUz/ZWeoo6QPQ0hWAgw==
-X-Received: by 2002:a37:8085:: with SMTP id b127mr4957268qkd.449.1632833419774;
-        Tue, 28 Sep 2021 05:50:19 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.3.43] (cpe-24-31-215-130.sc.res.rr.com. [24.31.215.130])
-        by smtp.gmail.com with ESMTPSA id y22sm14358443qkp.9.2021.09.28.05.50.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Sep 2021 05:50:19 -0700 (PDT)
-Subject: Re: [PATCH 10/29] tcg_funcs: Add tlb_flush to TCGModuleOps
-To: Gerd Hoffmann <kraxel@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dzE5xFks;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1632828778;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1AaEfA2PK4IIwoHbxwZe/EkKrxav9MdwVe4osXvnKB0=;
+	b=dzE5xFksXTLlMBu0PnVZUsbF7UfQdJhY7Uc3mKBNFqcqdOuG8O/4Z0zs2d/2f2Ufqva68Z
+	SR1sXxpnTCL0g50VkMgonfYsb+CXVbhS9+IjjLZlTO6515NZy5YakoHqcK6JWi7FNav2h8
+	Kww2AzapMoD5g6KW3Ovwqm6/yZIjSjc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-128-n_RCn6BMNs2yokza9hVKFQ-1; Tue, 28 Sep 2021 07:32:54 -0400
+X-MC-Unique: n_RCn6BMNs2yokza9hVKFQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33784192379B;
+	Tue, 28 Sep 2021 11:32:51 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.193.134])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ABAC77621B;
+	Tue, 28 Sep 2021 11:32:06 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 2899018003B6; Tue, 28 Sep 2021 13:32:04 +0200 (CEST)
+Date: Tue, 28 Sep 2021 13:32:04 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Laurent Vivier <laurent@vivier.eu>, Peter Xu <peterx@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-riscv@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Stafford Horne <shorne@gmail.com>, Huacai Chen <chenhuacai@kernel.org>,
- Halil Pasic <pasic@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Bin Meng <bin.meng@windriver.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Greg Kurz <groug@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+	Laurent Vivier <laurent@vivier.eu>, Peter Xu <peterx@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-riscv@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>, Greg Kurz <groug@kaod.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH 10/29] tcg_funcs: Add tlb_flush to TCGModuleOps
+Message-ID: <20210928113204.ic2syx4w2cjsqr7h@sirius.home.kraxel.org>
 References: <20210831121545.2874233-1-kraxel@redhat.com>
  <20210831121545.2874233-11-kraxel@redhat.com>
  <fdfd7f35-fbec-84f7-ebbd-7790df20b1bd@linaro.org>
- <20210928113204.ic2syx4w2cjsqr7h@sirius.home.kraxel.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9d3cceef-f385-5d0b-6b0d-2b7be17ce187@linaro.org>
-Date: Tue, 28 Sep 2021 08:50:14 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210928113204.ic2syx4w2cjsqr7h@sirius.home.kraxel.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: HlrlNaCyz82H
+In-Reply-To: <fdfd7f35-fbec-84f7-ebbd-7790df20b1bd@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-TUID: tPVwuzfvMZTm
 
-On 9/28/21 7:32 AM, Gerd Hoffmann wrote:
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index 608d768a4371..72e4e3b5bb89 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -160,7 +160,9 @@ void tlb_flush_page_all_cpus_synced(CPUState *src, target_ulong addr);
->    * so this is generally safe. If more selective flushing is required
->    * use one of the other functions for efficiency.
->    */
-> +#ifdef TCG_DIRECT_CALL
->   void tlb_flush(CPUState *cpu);
-> +#endif
+On Thu, Sep 02, 2021 at 03:09:15PM +0200, Richard Henderson wrote:
+> On 8/31/21 2:15 PM, Gerd Hoffmann wrote:
+> > diff --git a/target/i386/helper.c b/target/i386/helper.c
+> > index 533b29cb91b6..100add713c5d 100644
+> > --- a/target/i386/helper.c
+> > +++ b/target/i386/helper.c
+> > @@ -103,7 +103,7 @@ void x86_cpu_set_a20(X86CPU *cpu, int a20_state)
+> >           /* when a20 is changed, all the MMU mappings are invalid, so
+> >              we must flush everything */
+> > -        tlb_flush(cs);
+> > +        tcg.tlb_flush(cs);
+> 
+> I think this is a mistake.
+> 
+> (1) If tcg module is not enabled, we should be able to make a direct call.
+> 
+> So IMO we want to retain the direct function call syntax in all the uses.  I
+> think you want to put wrapper functions doing the indirection somewhere --
+> possibly tcg-module.c.
 
-I'm pretty sure you can drop these ifdefs.  Just because there's a regular declaration for 
-a function doesn't mean a subsequent inline definition does not apply.
+Hmm, when we want avoid indirection I guess it makes sense to use inline
+wrappers in tcg-module.h
 
-And even if that didn't work, I'd be willing to trade inline expansion for not adding lots 
-of ifdefs...
+How about the patch below? (proof-of-concept for tlb_flush, on top of
+this series)?
 
-> +static inline void tlb_flush(CPUState *cpu)
-> +{
-> +    tcg.tlb_flush(cpu);
-> +}
+thanks,
+  Gerd
 
-... these could just as well be out-of-line.
+From 22f5a216f410fccb769d0f7496c3c36f4b131833 Mon Sep 17 00:00:00 2001
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Tue, 28 Sep 2021 11:51:12 +0200
+Subject: [PATCH] tlb_flush inline wrapper
 
+---
+ include/exec/exec-all.h  |  2 ++
+ include/tcg/tcg-module.h | 13 +++++++++++++
+ meson.build              |  3 ++-
+ 3 files changed, 17 insertions(+), 1 deletion(-)
 
-r~
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 608d768a4371..72e4e3b5bb89 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -160,7 +160,9 @@ void tlb_flush_page_all_cpus_synced(CPUState *src, target_ulong addr);
+  * so this is generally safe. If more selective flushing is required
+  * use one of the other functions for efficiency.
+  */
++#ifdef TCG_DIRECT_CALL
+ void tlb_flush(CPUState *cpu);
++#endif
+ /**
+  * tlb_flush_all_cpus:
+  * @cpu: src CPU of the flush
+diff --git a/include/tcg/tcg-module.h b/include/tcg/tcg-module.h
+index e9c0615b51d9..b3c0f53ea9f3 100644
+--- a/include/tcg/tcg-module.h
++++ b/include/tcg/tcg-module.h
+@@ -1,6 +1,10 @@
+ #ifndef TCG_MODULE_H
+ #define TCG_MODULE_H
+ 
++#if defined(CONFIG_TCG_BUILTIN) || defined(TCG_MODULE)
++# define TCG_DIRECT_CALL 1
++#endif
++
+ #include "exec/exec-all.h"
+ 
+ struct TCGModuleOps {
+@@ -21,4 +25,13 @@ struct TCGModuleOps {
+ };
+ extern struct TCGModuleOps tcg;
+ 
++#ifndef TCG_DIRECT_CALL
++
++static inline void tlb_flush(CPUState *cpu)
++{
++    tcg.tlb_flush(cpu);
++}
++
++#endif
++
+ #endif /* TCG_MODULE_H */
+diff --git a/meson.build b/meson.build
+index 15ef4d3c4187..afe07e7d59c3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2317,8 +2317,9 @@ subdir('tests/qtest/libqos')
+ subdir('tests/qtest/fuzz')
+ 
+ # accel modules
++tcg_module_cflags = declare_dependency(compile_args: '-DTCG_MODULE=1')
+ tcg_real_module_ss = ss.source_set()
+-tcg_real_module_ss.add_all(when: 'CONFIG_TCG_MODULAR', if_true: tcg_module_ss)
++tcg_real_module_ss.add_all(when: ['CONFIG_TCG_MODULAR', tcg_module_cflags], if_true: tcg_module_ss)
+ specific_ss.add_all(when: 'CONFIG_TCG_BUILTIN', if_true: tcg_module_ss)
+ target_modules += { 'accel' : { 'qtest': qtest_module_ss,
+                                 'tcg': tcg_real_module_ss }}
+-- 
+2.31.1

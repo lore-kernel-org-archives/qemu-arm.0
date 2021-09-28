@@ -1,71 +1,72 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4490545lfp;
-        Mon, 27 Sep 2021 21:02:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwwlkcNXHR8FVQpRJIrNF3nLt2WtH8gD3kEuF/F+1wd1hVVrk9uSMhLTph9RFl7blTO7rW2
-X-Received: by 2002:aed:2791:: with SMTP id a17mr3441241qtd.193.1632801776810;
-        Mon, 27 Sep 2021 21:02:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632801776; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4490912lfp;
+        Mon, 27 Sep 2021 21:03:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzutZHAudihpiCjMsxWWspnpeg8Ebf6NBe3H9z2TlpSBBdgz5IrwifdKzfyVJc34E25xiTq
+X-Received: by 2002:a37:a13:: with SMTP id 19mr3435782qkk.497.1632801813180;
+        Mon, 27 Sep 2021 21:03:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632801813; cv=none;
         d=google.com; s=arc-20160816;
-        b=PM7zI4J+r+0zYvAcgvj3CsHQtqq78qIp5NahkFgUFcrZr5WbxauSVRI2IqTyVblTCg
-         fVpOJ1Jinr/gHgFfuTv/xjjTya8jtyD/XHZv1hjvnwlW67V/PB5pbn6QGFX4CKIiuFHY
-         tRL9wwZWa9Btmz4L8wApvg8oWE0U3YSsXT5rVe0pyZpBsg5x6l2Fck/kRcVaAvcUQl0J
-         ornnBShEV1tmVvKDAGvbNrUic2U7xwtNeYSlIuoOo+yxmXKcndCxkp5Qc3hLlLcUtohP
-         7QLz54/k084ixzinthL4JnuCniN7mkI7/IKeRSkU/n3HVumKDyk5yhS0vohHJmMU1Mht
-         dN+A==
+        b=SyNn9ON2yO8LATpn2PHJupsgZkYoE1wup+BBCnJuvl0GLd4vnFFET/EAtLQ2oJPEXU
+         3jin9kPnqWps8OGh3Y+moV9TUXiLLFU86Yoy/ioe2GigDPNyIUIXdcXET64Fi2mcIEVd
+         jsce+igp0SSSjUhllrJclrM5FISbZikS+nRl0dh31CpgvHywbpsFlgMMg/NvHCQPukif
+         iMhsIJBcQXYfEM0islVFe1XH3U3Oz11m7Xb6Q/zTOY8T4p8F6Y4y/ejOqrtvfC+DZ0k3
+         s6sRzG1YCFmZ3Hrif9OzIQBF0uz8995+BwZljwxc+Vd3Qa3wDIO3vB/cuKEOAKaOxGjD
+         3++g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=jvGuZcrVEl1h8h0MfFBwGcIWoxfmnoe1N4BA+i1JwJg=;
-        b=SYbwvIjVz+MUDtLczr/Li9MC7cMIvZE/9qjuCgZsZOsPGC4gr2xjZI5I5D5RUaW3Jz
-         AHsCU9QPnw/Dc1a/hK3C2Sdx4kjVHs5Uv2YzXv8SjyxjOsMFvbYFKEAdIHR3xbvF1OxP
-         LstD6s/Zt+CXI7qL398fTKj41s3q/DH7/JwqcQtEulYWYVHWN5okknyzREeZIktgnIuV
-         /pJunaY2Kt5kdRQhAgJjUGLxQF9xJcZmnsK34Pu/L477iq8Y15efuxRJ8+08N0CwCPQr
-         4gC6q9Lsfktb7Wa1kdY8XIhuv4avNqW+Miut6OBUzFl1BIEwWd1EI9gE44Y70qDnU+WT
-         egrw==
+        bh=OrN3S1YTvABY8M1m3Yca5AQQpkcIsOresBZN+Jxvti0=;
+        b=qSL+nIXk2jVyt9z9+JdIg/zvLSSXxk6pcFCY5NwAUi9CFKhMDJHAuKb02lFI4bzfq1
+         gpY8GkUlAQ3mTDlOTEC2ELd5qogHeP9Fi0rmVW4wHBgo8Tu1yWw3JG3XVRcrFPOlkSzC
+         s3NKuB//TiYZ/S4GA6vmm1W2vPj5F0yqfoacqO9NxRdj0QDwPMXLwqV0By30X3CZr71i
+         ZpjTg1kRrXR1LkzYa1GrnPPuOU9TzFTlnPHHnNCd4oHDSm0+tZOq7lUsvlVtAnF0qXCl
+         GHXwHAHTBkX32u8aoWngFfTzO4/GAxMuCMy5HRLIHmwCXNfBQ5QOFkGX/To9QU0TUpko
+         D1Ew==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14si15178015qtx.118.2021.09.27.21.02.56
+        by mx.google.com with ESMTPS id bj20si5054906qkb.101.2021.09.27.21.03.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Sep 2021 21:02:56 -0700 (PDT)
+        Mon, 27 Sep 2021 21:03:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:42702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mV4KV-0000aU-W2
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 00:02:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43764)
+	id 1mV4L6-0000wb-HH
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 00:03:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV4Fs-0000sc-Iq; Mon, 27 Sep 2021 23:58:08 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3139)
+ id 1mV4G6-0001k4-8Z; Mon, 27 Sep 2021 23:58:22 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2811)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV4Fp-0002BK-0S; Mon, 27 Sep 2021 23:58:08 -0400
-Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HJQb74xGlz8yqq;
- Tue, 28 Sep 2021 11:53:23 +0800 (CST)
+ id 1mV4G2-0002Og-Bb; Mon, 27 Sep 2021 23:58:22 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HJQbp3sS8zQpZ6;
+ Tue, 28 Sep 2021 11:53:58 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
  dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 11:57:59 +0800
+ 15.1.2308.8; Tue, 28 Sep 2021 11:58:14 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 11:57:59 +0800
+ 15.1.2308.8; Tue, 28 Sep 2021 11:58:14 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini
  <pbonzini@redhat.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>, Andrew Jones <drjones@redhat.com>
-Subject: [PATCH v11 02/14] machine: Minor refactor/fix for the smp parsers
-Date: Tue, 28 Sep 2021 11:57:43 +0800
-Message-ID: <20210928035755.11684-3-wangyanan55@huawei.com>
+Subject: [PATCH v11 14/14] machine: Put all sanity-check in the generic SMP
+ parser
+Date: Tue, 28 Sep 2021 11:57:55 +0800
+Message-ID: <20210928035755.11684-15-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210928035755.11684-1-wangyanan55@huawei.com>
 References: <20210928035755.11684-1-wangyanan55@huawei.com>
@@ -104,149 +105,118 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Pierre
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KXMBUW/GB9mn
+X-TUID: SNpiWvUIyayE
 
-To pave the way for the functional improvement in later patches,
-make some refactor/cleanup for the smp parsers, including using
-local maxcpus instead of ms->smp.max_cpus in the calculation,
-defaulting dies to 0 initially like other members, cleanup the
-sanity check for dies.
-
-We actually also fix a hidden defect by avoiding directly using
-the provided *zero value* in the calculation, which could cause
-a segment fault (e.g. using dies=0 in the calculation).
+Put both sanity-check of the input SMP configuration and sanity-check
+of the output SMP configuration uniformly in the generic parser. Then
+machine_set_smp() will become cleaner, also all the invalid scenarios
+can be tested only by calling the parser.
 
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Pankaj Gupta <pankaj.gupta@ionos.com>
 ---
- hw/core/machine.c | 18 ++++++++++--------
- hw/i386/pc.c      | 23 ++++++++++++++---------
- 2 files changed, 24 insertions(+), 17 deletions(-)
+ hw/core/machine.c | 63 +++++++++++++++++++++++------------------------
+ 1 file changed, 31 insertions(+), 32 deletions(-)
 
 diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 711e83db54..cf9cf53911 100644
+index e2a48aa18c..637acd8d42 100644
 --- a/hw/core/machine.c
 +++ b/hw/core/machine.c
-@@ -752,8 +752,9 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
-     unsigned sockets = config->has_sockets ? config->sockets : 0;
-     unsigned cores   = config->has_cores ? config->cores : 0;
+@@ -798,6 +798,20 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
      unsigned threads = config->has_threads ? config->threads : 0;
-+    unsigned maxcpus = config->has_maxcpus ? config->maxcpus : 0;
+     unsigned maxcpus = config->has_maxcpus ? config->maxcpus : 0;
  
--    if (config->has_dies && config->dies != 0 && config->dies != 1) {
-+    if (config->has_dies && config->dies > 1) {
-         error_setg(errp, "dies not supported by this machine's CPU topology");
++    /*
++     * Specified CPU topology parameters must be greater than zero,
++     * explicit configuration like "cpus=0" is not allowed.
++     */
++    if ((config->has_cpus && config->cpus == 0) ||
++        (config->has_sockets && config->sockets == 0) ||
++        (config->has_dies && config->dies == 0) ||
++        (config->has_cores && config->cores == 0) ||
++        (config->has_threads && config->threads == 0) ||
++        (config->has_maxcpus && config->maxcpus == 0)) {
++        warn_report("Invalid CPU topology deprecated: "
++                    "CPU topology parameters must be greater than zero");
++    }
++
+     /*
+      * If not supported by the machine, a topology parameter must be
+      * omitted or specified equal to 1.
+@@ -873,6 +887,22 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
+                    topo_msg, maxcpus, cpus);
          return;
      }
-@@ -766,8 +767,8 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
-             sockets = sockets > 0 ? sockets : 1;
-             cpus = cores * threads * sockets;
-         } else {
--            ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
--            sockets = ms->smp.max_cpus / (cores * threads);
-+            maxcpus = maxcpus > 0 ? maxcpus : cpus;
-+            sockets = maxcpus / (cores * threads);
-         }
-     } else if (cores == 0) {
-         threads = threads > 0 ? threads : 1;
-@@ -784,26 +785,27 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
-         return;
-     }
- 
--    ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
-+    maxcpus = maxcpus > 0 ? maxcpus : cpus;
- 
--    if (ms->smp.max_cpus < cpus) {
-+    if (maxcpus < cpus) {
-         error_setg(errp, "maxcpus must be equal to or greater than smp");
-         return;
-     }
- 
--    if (sockets * cores * threads != ms->smp.max_cpus) {
-+    if (sockets * cores * threads != maxcpus) {
-         error_setg(errp, "Invalid CPU topology: "
-                    "sockets (%u) * cores (%u) * threads (%u) "
-                    "!= maxcpus (%u)",
-                    sockets, cores, threads,
--                   ms->smp.max_cpus);
-+                   maxcpus);
-         return;
-     }
- 
-     ms->smp.cpus = cpus;
-+    ms->smp.sockets = sockets;
-     ms->smp.cores = cores;
-     ms->smp.threads = threads;
--    ms->smp.sockets = sockets;
-+    ms->smp.max_cpus = maxcpus;
++
++    if (ms->smp.cpus < mc->min_cpus) {
++        error_setg(errp, "Invalid SMP CPUs %d. The min CPUs "
++                   "supported by machine '%s' is %d",
++                   ms->smp.cpus,
++                   mc->name, mc->min_cpus);
++        return;
++    }
++
++    if (ms->smp.max_cpus > mc->max_cpus) {
++        error_setg(errp, "Invalid SMP CPUs %d. The max CPUs "
++                   "supported by machine '%s' is %d",
++                   ms->smp.max_cpus,
++                   mc->name, mc->max_cpus);
++        return;
++    }
  }
  
  static void machine_get_smp(Object *obj, Visitor *v, const char *name,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 557d49c9f8..93dc322a97 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -718,9 +718,13 @@ static void pc_smp_parse(MachineState *ms, SMPConfiguration *config, Error **err
+@@ -895,7 +925,6 @@ static void machine_get_smp(Object *obj, Visitor *v, const char *name,
+ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
+                             void *opaque, Error **errp)
  {
-     unsigned cpus    = config->has_cpus ? config->cpus : 0;
-     unsigned sockets = config->has_sockets ? config->sockets : 0;
--    unsigned dies    = config->has_dies ? config->dies : 1;
-+    unsigned dies    = config->has_dies ? config->dies : 0;
-     unsigned cores   = config->has_cores ? config->cores : 0;
-     unsigned threads = config->has_threads ? config->threads : 0;
-+    unsigned maxcpus = config->has_maxcpus ? config->maxcpus : 0;
-+
-+    /* directly default dies to 1 if it's omitted */
-+    dies = dies > 0 ? dies : 1;
- 
-     /* compute missing values, prefer sockets over cores over threads */
-     if (cpus == 0 || sockets == 0) {
-@@ -730,8 +734,8 @@ static void pc_smp_parse(MachineState *ms, SMPConfiguration *config, Error **err
-             sockets = sockets > 0 ? sockets : 1;
-             cpus = cores * threads * dies * sockets;
-         } else {
--            ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
--            sockets = ms->smp.max_cpus / (cores * threads * dies);
-+            maxcpus = maxcpus > 0 ? maxcpus : cpus;
-+            sockets = maxcpus / (dies * cores * threads);
-         }
-     } else if (cores == 0) {
-         threads = threads > 0 ? threads : 1;
-@@ -748,27 +752,28 @@ static void pc_smp_parse(MachineState *ms, SMPConfiguration *config, Error **err
+-    MachineClass *mc = MACHINE_GET_CLASS(obj);
+     MachineState *ms = MACHINE(obj);
+     SMPConfiguration *config;
+     ERRP_GUARD();
+@@ -904,40 +933,10 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
          return;
      }
  
--    ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
-+    maxcpus = maxcpus > 0 ? maxcpus : cpus;
- 
--    if (ms->smp.max_cpus < cpus) {
-+    if (maxcpus < cpus) {
-         error_setg(errp, "maxcpus must be equal to or greater than smp");
-         return;
+-    /*
+-     * Specified CPU topology parameters must be greater than zero,
+-     * explicit configuration like "cpus=0" is not allowed.
+-     */
+-    if ((config->has_cpus && config->cpus == 0) ||
+-        (config->has_sockets && config->sockets == 0) ||
+-        (config->has_dies && config->dies == 0) ||
+-        (config->has_cores && config->cores == 0) ||
+-        (config->has_threads && config->threads == 0) ||
+-        (config->has_maxcpus && config->maxcpus == 0)) {
+-        warn_report("Invalid CPU topology deprecated: "
+-                    "CPU topology parameters must be greater than zero");
+-    }
+-
+     smp_parse(ms, config, errp);
+     if (*errp) {
+-        goto out_free;
+-    }
+-
+-    /* sanity-check smp_cpus and max_cpus against mc */
+-    if (ms->smp.cpus < mc->min_cpus) {
+-        error_setg(errp, "Invalid SMP CPUs %d. The min CPUs "
+-                   "supported by machine '%s' is %d",
+-                   ms->smp.cpus,
+-                   mc->name, mc->min_cpus);
+-    } else if (ms->smp.max_cpus > mc->max_cpus) {
+-        error_setg(errp, "Invalid SMP CPUs %d. The max CPUs "
+-                   "supported by machine '%s' is %d",
+-                   ms->smp.max_cpus,
+-                   mc->name, mc->max_cpus);
++        qapi_free_SMPConfiguration(config);
      }
- 
--    if (sockets * dies * cores * threads != ms->smp.max_cpus) {
-+    if (sockets * dies * cores * threads != maxcpus) {
-         error_setg(errp, "Invalid CPU topology deprecated: "
-                    "sockets (%u) * dies (%u) * cores (%u) * threads (%u) "
-                    "!= maxcpus (%u)",
-                    sockets, dies, cores, threads,
--                   ms->smp.max_cpus);
-+                   maxcpus);
-         return;
-     }
- 
-     ms->smp.cpus = cpus;
--    ms->smp.cores = cores;
--    ms->smp.threads = threads;
-     ms->smp.sockets = sockets;
-     ms->smp.dies = dies;
-+    ms->smp.cores = cores;
-+    ms->smp.threads = threads;
-+    ms->smp.max_cpus = maxcpus;
+-
+-out_free:
+-    qapi_free_SMPConfiguration(config);
  }
  
- static
+ static void machine_class_init(ObjectClass *oc, void *data)
 -- 
 2.19.1
 

@@ -1,187 +1,138 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4684201lfp;
-        Tue, 28 Sep 2021 02:23:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyGXLQiTdgegi3+zwQWLhr18JADpDE8vq3tI13zqpAu1RnR67F8DocGmRMwo/IAr2pBmsn8
-X-Received: by 2002:a6b:dc05:: with SMTP id s5mr3260960ioc.109.1632820996515;
-        Tue, 28 Sep 2021 02:23:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632820996; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4841580lfp;
+        Tue, 28 Sep 2021 05:50:20 -0700 (PDT)
+X-Received: by 2002:a05:622a:1a9f:: with SMTP id s31mr5320963qtc.381.1632833420155;
+        Tue, 28 Sep 2021 05:50:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632833420; cv=none;
         d=google.com; s=arc-20160816;
-        b=MrTvAhNg7u6/mbyAZ5keJeEdalCXyN5+/Ot+ggu7DL8zwQU53MmipNrq2Hz+sVSMpz
-         zbQ4PK0gNbYtNroglbC2mf3KW1BkFZmCA5RDi0m41H29+5TDXvCw7VkoI05TUy8zygTH
-         jWzsTM08md4mtGpenycxUgwcNbHg5e7i9l3+Fs2gSahXSIjqOemMdskzPJ6X24SkpvnZ
-         WFvSzYkv4Tv4R7wrsTO9WwGhT7JlfhwzuKISuyXBbjSI8NxD7kn2Oz+Zzyq6FhxSMeHd
-         +jmuNUVBLkVdRrRsTh2xHTcgT7EuQHkaPpqDYY9nbIxXPztCl6wP5n1L0cFvM09Cwfj3
-         dLyA==
+        b=ag3mT+MAc9SMSy7jsBvgRolLLmlZbek1hc3ZzD14Gp+t6HW/1C3BU8Mmea0R87VaEw
+         sMwSLcvteITZAPBUqh+lOGbALMpiU6Ce8ScZXMJ+Zg4EHw8wkJ5Fa1XyuaXJGWOjG+4w
+         6eVPFP0akjvmL7jWa1Ou3DMHSpIlJsAW4iRP1cKMP65S6ebZCm8Rg0Cst9e1KiFUf5ma
+         uubgyd9Esf1emu+FPBd3Uhi+gCNe+qQSifZACO63y3eXjp7l0GXV03zNZJ8EYFmO/TfS
+         jcW4XenKid69z/P18OpC1d5YXINBXbcFv8+CXWNJgYGAedsbuybO3Ens9RN4otsZZrep
+         nLvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=r722AGBwSLzBCEUD+xAwVIZfxxIwuunXYPbgI0VJdcM=;
-        b=CD//U1r83gvBa9spHtkjh2t+zFHEKkzl7sKGqQiFTWt7/Zy2UjppP/iE6S9oyvGQmQ
-         +eJPtQ6F6uAAxD0tLHpXuy9OABG7+0IGyqnZhwSUR/l5nxOnszwbp8Q+4WfEYbq5yMdS
-         4nt0D7+ZC2dwI5S9a1d9K731LgdmJfrcIbclApOyhPIB916O5xOZO2eGV4cmOuQMRsZM
-         +7+BvDVspYfWzcuOrgfIKIrLF8MzZHYivMfEhYqmk35UQHoDNTfn+qL8HkpUKeQehtTi
-         z+9QeEEhMz9VVs2d8lpzI/Y3bU9HfilhPGGxgkMGPw7s5XQG5IaZo4JqwXWmIbINBynz
-         ORnA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=Nifb82zOt4L1jbCwPB7F1P15sSowUBIE8D9lmMaSkIc=;
+        b=xkNxDj7Sl9nqhMWdSz5/SHROAQki4y8qH21m+K1MLwiohsMAfyMkKQ6ZdXZa4HcJVQ
+         hepFsql4NNVtVT1xZrmSCkRTlqdsth2zJ/E9SB3I8iMvd+nVsSnzEL4ed3B4OPXg/GkY
+         p19ltxUYdhoLhuU4HORISS/vCAVAJ2IEdU+Q7CFX6Hi0IoknTg7zY4LXD2a+MQXZOWso
+         3VV6iWwyAVBaNZraB5zTzm2hweZJ1il6ENi7RJl7UPQRIyiQl1YTBbpVUvFXfK44si3Z
+         Rt/v6NTkyw/HYBuihVnmu31W0cgRx9DC/99eTGxf1w4goTgCTHjNTLsOzBoEJ5HmW+6o
+         V0Sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PV9Yb2dt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10si23486983ioh.48.2021.09.28.02.23.16
+       dkim=pass header.i=@linaro.org header.s=google header.b=QQ9nWeMK;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f10sor6652534qkm.14.2021.09.28.05.50.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Sep 2021 02:23:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 28 Sep 2021 05:50:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PV9Yb2dt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40294 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mV9KV-0000DL-Rp
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 05:23:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44690)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mV9Ic-0007JM-Sh
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 05:21:18 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:46037)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mV9Ia-0003Hn-3P
- for qemu-arm@nongnu.org; Tue, 28 Sep 2021 05:21:17 -0400
-Received: by mail-wr1-x429.google.com with SMTP id d21so56674370wra.12
- for <qemu-arm@nongnu.org>; Tue, 28 Sep 2021 02:21:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=r722AGBwSLzBCEUD+xAwVIZfxxIwuunXYPbgI0VJdcM=;
- b=PV9Yb2dtNC4DL992O46Q8DvG431JWzyRyky5s2iwxBFGmerwtMv7IsyjAEcDQrQ5jX
- Nu7IfSdCXvlISuLxX7wDgpDNvkqEmr/GoDP888+YrPu4sPfWc82mXTWOn0NmaaYOtGjy
- epDBz3GD8tqhSMgOt3utXj4j71oNliXajsfQM01z/kR7Rb+onHZsZDLrkahlH1tmRw+k
- p4aEveY/05s7E9JUDBKZGLKtwkX/wmaRaJ2LnRXWQQhaGSEaQg8s9VWUMPa3auMFvUOG
- Fe+a0z4j190Y6zrNQQRWg7Q9eOkWCJ7SS8uHosi3sPywUxYb2scluAtb4pBoLDvH8COX
- HMYQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b=QQ9nWeMK;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=Nifb82zOt4L1jbCwPB7F1P15sSowUBIE8D9lmMaSkIc=;
+        b=QQ9nWeMK37xStcubx5e+t+SHBrmDrrKwfBTLAsALjR6DY5Ovu9JPPhirBPbfifK8fz
+         NHDuAztWuYHEbVLtW62c2/+6COPAbNLeIIFH7l1YGntdchiD35RnsvDK7QvzqB19/6Ho
+         L/GnECrVa8nyNWWAL6ffkYgS5FlMPrQdMWvgu2/MjfixA168PPKiIiqvKxj+GgY13Wh1
+         DZzKBLmYWPyg03+zV3l9xfTKS7iR+eOq4fyYW1W8OGSotD/lJop0+GgutXAgLBUy+aCJ
+         N8a1OQ475pkuEYpyHmYfIcvOlJcuWaKGaG2Qlek2ioKu9Ur433jNIJ8yRAljI8bBDxJt
+         ywng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=r722AGBwSLzBCEUD+xAwVIZfxxIwuunXYPbgI0VJdcM=;
- b=YkYCbvoor/0HPRGAWOmkFvxylLidGYmShM7R6/1Dtk9JAGacrGKK0N0bq5Xm3IxQXN
- QDQBUVoCi5fYqKM0j8al4/SCTbnNetpHk+iZUlnitf79b6oCHEky8rb5ybucw1rtPRi/
- eiOITDrU83Nmu1Nm0AMytbXykc9woJkxNxo0KigJkJa6xF3xQkXkcNz/gkrQhaWPc6IC
- uPfIaACEwhUxdkyUhYEFHqpKmrFd/E1A1YkP9AwlLypyWOHizNR8KIWNB5bK90RcGEk3
- tmYBZOfLgRC5IfMJv8jYvUwVgFt0dN38eJGhDmhn3F17eSIJgm5qy4om//pmikPVaiWV
- jAFw==
-X-Gm-Message-State: AOAM530K60VfW27cEjgl2VIgaV8tsP/YALLmRQ+SNJYpetyphpS3FIbF
- 21q6SIuwJjnpuPv/wwuLjJRBAqGqvOsrlWjXYLgy6g==
-X-Received: by 2002:adf:f185:: with SMTP id h5mr5313069wro.302.1632820874429; 
- Tue, 28 Sep 2021 02:21:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210926183410.256484-1-sjg@chromium.org>
- <CAFEAcA8S2=7rOKxeqcW+kw0BVPO3PUJGSUH-ioN7=c=U7zQxvg@mail.gmail.com>
- <CAPnjgZ2NCRVxKULWR1JjZU+D9saJ7fbZ=yHmWTSr3ufHxLYg-g@mail.gmail.com>
- <CAFEAcA9n+2JDFv8BezeEMA4e2Zhr0ENAvzLjBS6YXRoW9P-JXQ@mail.gmail.com>
- <CAPnjgZ1AO8575LYbwmuouNR5=dgNam6EFDC1_bai=8xAHdw7-Q@mail.gmail.com>
- <CAFEAcA8FsPcBELEZxiRMuFbKtmKTFgDHABePQ33hdxYRq0C0ig@mail.gmail.com>
- <CAPnjgZ2S7SXxHYd_bkcf+GcmmgEew3vpJkw+DRPqrpb44eLgcA@mail.gmail.com>
- <CAFEAcA-bk6PF_P3JOxQSCXo7Fh2K5AVygB9WwDUiK2fV9Fx5jw@mail.gmail.com>
- <CAPnjgZ26gQVpzL6fYsGzDf=c+z4aG5SPkBf7yoDC9+ynxQi_9Q@mail.gmail.com>
-In-Reply-To: <CAPnjgZ26gQVpzL6fYsGzDf=c+z4aG5SPkBf7yoDC9+ynxQi_9Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Sep 2021 10:20:20 +0100
-Message-ID: <CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-zyh=N8rqm4vOcGZA@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Allow additions to the generated device tree
-To: Simon Glass <sjg@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=Nifb82zOt4L1jbCwPB7F1P15sSowUBIE8D9lmMaSkIc=;
+        b=gDHVMBeDlZcZ1ZGeUWPLNs9WflFQhOlZ14Y0vsmGPj4vwhVFBkUxCWaXukzVGD57HN
+         Qq+MkzaN/NjOwilImg7TwYNSex/zmIYUDqxcHeysdJMq/KeCwAC4aML02zBvoVXyKmoF
+         /nFYTGQqkY4ilX6gMJeQbwQSbeAeHJTHJOc+SYaLoLSWA3tcW1mOmHOda7sJgcSXEC3D
+         cirjESMO9udOWGtD9fByOoLNK8FuPOMCpb9+zTA5Qa3iPPw47lEQRVr6vZMIKE9U8RiU
+         kPZN9XFCArG5ZxcPoc2wvjDAyHiWWeCMvoPlKPnO5xZYARsrf03An9aJuS1lMFKIiYBe
+         /sBQ==
+X-Gm-Message-State: AOAM531953qEQfVxLrSFViiKzHtq1lPstvN4riG13byYYQl/kqUePuRN
+	x0TneULOoWrXDn52kXswrnj4O+jj
+X-Google-Smtp-Source: ABdhPJxwCmNVP4ejlJqyMRRsFa/BQaGuBqPrVm4WaB55TO71/7vz+lXnPtevUz/ZWeoo6QPQ0hWAgw==
+X-Received: by 2002:a37:8085:: with SMTP id b127mr4957268qkd.449.1632833419774;
+        Tue, 28 Sep 2021 05:50:19 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.3.43] (cpe-24-31-215-130.sc.res.rr.com. [24.31.215.130])
+        by smtp.gmail.com with ESMTPSA id y22sm14358443qkp.9.2021.09.28.05.50.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Sep 2021 05:50:19 -0700 (PDT)
+Subject: Re: [PATCH 10/29] tcg_funcs: Add tlb_flush to TCGModuleOps
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Laurent Vivier <laurent@vivier.eu>, Peter Xu <peterx@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l2JfZGDjcLPJ
+ Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-riscv@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Stafford Horne <shorne@gmail.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Bin Meng <bin.meng@windriver.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ Greg Kurz <groug@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+References: <20210831121545.2874233-1-kraxel@redhat.com>
+ <20210831121545.2874233-11-kraxel@redhat.com>
+ <fdfd7f35-fbec-84f7-ebbd-7790df20b1bd@linaro.org>
+ <20210928113204.ic2syx4w2cjsqr7h@sirius.home.kraxel.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <9d3cceef-f385-5d0b-6b0d-2b7be17ce187@linaro.org>
+Date: Tue, 28 Sep 2021 08:50:14 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
+MIME-Version: 1.0
+In-Reply-To: <20210928113204.ic2syx4w2cjsqr7h@sirius.home.kraxel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: HlrlNaCyz82H
 
-On Mon, 27 Sept 2021 at 21:12, Simon Glass <sjg@chromium.org> wrote:
-> I think you are misunderstanding my patch and that may be the problem here.
->
-> Where QEMU is provided with a dtb (-dtb) it uses that and passes it
-> on. This is absolutely fine and I have tested that this works well
-> with U-Boot. No issues.
->
-> Where QEMU creates its own dtb on the fly the -dtb parameter is
-> actually ignored and there is no way to adjust what QEMU passes on,
-> without recompiling QEMU. It is quite inflexible, actually. Even just
-> creating a new device for development purposes is not possible. That
-> is the problem I am trying to solve.
->
-> There is certainly no intent to combine two bits of dtb with my patch.
-> We could easily do that externally to QEMU.
+On 9/28/21 7:32 AM, Gerd Hoffmann wrote:
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index 608d768a4371..72e4e3b5bb89 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -160,7 +160,9 @@ void tlb_flush_page_all_cpus_synced(CPUState *src, target_ulong addr);
+>    * so this is generally safe. If more selective flushing is required
+>    * use one of the other functions for efficiency.
+>    */
+> +#ifdef TCG_DIRECT_CALL
+>   void tlb_flush(CPUState *cpu);
+> +#endif
 
-So what *is* this patch doing? The subject says "Allow additions to
-the generated device tree", and the patch adds an option to
-"Merge a device tree binary (dtb) file into the generated device tree".
-That sounds exactly like "combine two bits of dtb" -- the one the
-user provides to the -dtbi option and the one QEMU generates
-internally.
+I'm pretty sure you can drop these ifdefs.  Just because there's a regular declaration for 
+a function doesn't mean a subsequent inline definition does not apply.
 
-> The only current working option is to just pass the U-Boot dtb through
-> and not use QEMU's on-the-fly-generated dtb at all. But I am assuming
-> there is a reason why QEMU generates that dtb, so that would not be
-> desirable?
+And even if that didn't work, I'd be willing to trade inline expansion for not adding lots 
+of ifdefs...
 
-QEMU generates the dtb to tell the guest what hardware is
-present and where it is. We don't guarantee that that hardware
-arrangement is necessarily stable between QEMU versions (in
-practice there are generally additions and not deletions or
-moves, but in theory there might be). All the guest is supposed
-to assume is the location of RAM and flash; everything else it
-must look in the dtb to determine.
+> +static inline void tlb_flush(CPUState *cpu)
+> +{
+> +    tcg.tlb_flush(cpu);
+> +}
 
-> One more question...other than dtb, does QEMU typically add support
-> for data structures needed by particular projects or groups of
-> projects? It looks like dtb was supported for ARM Linux originally? I
-> am looking at supporting bloblist as a way of communicating
-> information between firmware (basically a simple way of packaging
-> multiple blobs).
+... these could just as well be out-of-line.
 
-The answer here is essentially "no, as far as possible". We
-ideally would not have special case support for any particular
-guest code. We do have special handling for "directly boot the
-Linux kernel" for a combination of historical reasons (we've
-always supported it) and it being a massive use case. But even
-that is painful to maintain (it starts off seeming easy but
-gradually requires more weird tweaks and handling as CPU
-architectures evolve). I really strongly don't want to add
-additional categories of guests that QEMU has special case
-support for, which is the main driver behind why I'm so negative
-about this patchset.
 
-Guest software running on the "virt" board needs to know it is
-running on the "virt" board and deal with the interface and
-information that QEMU provides. (For instance, Arm Trusted
-Firmware and UEFI both have done this.)
-
--- PMM
+r~

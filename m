@@ -1,74 +1,73 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5492676lfp;
-        Tue, 28 Sep 2021 19:59:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzNfFvdNyuuWbpufILK53LZbL3tJdb6r3sctwXJlM1+JAjs8ftAP4lbYgC1YBvfp1q9oMH8
-X-Received: by 2002:a05:6e02:1b8a:: with SMTP id h10mr5541974ili.91.1632884353010;
-        Tue, 28 Sep 2021 19:59:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632884353; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5494475lfp;
+        Tue, 28 Sep 2021 20:01:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiFbk79k46v9lYjDj8lXX/edcvPEsxGGx3h344ZIuoLYoxeWohTRXwjFO1RBAYPQbnYYOA
+X-Received: by 2002:ab0:2a82:: with SMTP id h2mr8384498uar.117.1632884509105;
+        Tue, 28 Sep 2021 20:01:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632884509; cv=none;
         d=google.com; s=arc-20160816;
-        b=PglaBVIPuw1fFSgMzr+aqI3wxtwpX82ces/bdsFjQcd8PW3R+fKdISWuR03qis0gZW
-         1fks2omWCNfw3Ie42G51CnXuW/KDu954nkM+9ZmVuKKAl81oS7jUjt/BsWolLxMbjLNL
-         rtD7KBm/AuOOBiBRuxFm4Fr3FrBMrn0Ywybg/B3NVHkf9LiAbLoADpbB3zZzVXlrQ9Ly
-         JUI8iZF4TL1Scv9koIU9APpERu0jo9Cm7Rqe6Z+9+SAnuKKHt6st3Ya75PoaAS5XnMTe
-         VEQ0+wjo5qNew+XQefk1qtE4Z5liBpRFysg6ro4GDn4rl4iR2Oegke+3xU9m9jM6aScQ
-         C5aQ==
+        b=LD99eQ10Vu5MAPDwjkdopWiGcbjea4FUKpuKMT/Mf4q1iJDCYs0M+3Q5VoKL97Cui8
+         KGDbDHuaRhq+1o18eA+Mx2DLsM6JmrTJQKia0ZpNtwGSU7EDkxuNDr2RmBZVZbg+hBYr
+         T6UW4Sjm2ImsPPALlYcOPayWG1i7/1RAxHkCtMCgU/Kp4Icjoz3yCK2m+FWSzbrRqxq4
+         7VopwCpDhC2gyH51Uy6mL6R3Ne6R/ajH0JA9uk8uSSf61tatxIbGkH0nhipZI6ANXxCt
+         TsRwgnlCTKSzKQsR7wl9bvZph4jj1JwLSo/MUAmq5mWbuV+6/WYbeRspQwW+nxZ+qBaZ
+         goFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=8QZkgwVbpMgCNCFt553aa0Dnljcfl3uO6ssFP+IDd/8=;
-        b=PWVhxF/5kR+Q9afwky5vo8T5YiLCHYOWnBXYkBjwsgU+9AgSv2Z63+3ONlUZK1Kzs+
-         +ATH9rNqDRQX95NNr5Qw2gSsPLtxEA6SSkqWdc8a4RA0j6czxXjxL1VOlDfeRn8G1mYh
-         C3DNC7UjOsrsDtXFzmnrlk5b09gLGiK6888OsOVC/WCyCC1PmYTdkMC7+ZriCiccDQ3Q
-         1LWiYGb+B5uir4Q648JzJAuR3Tposq20vHMn87vUfDvlQIqNTSw89+PIQk4ADBZTUiEL
-         +jaLJtYFpFu08RSOu0iRPuo+hFxyHibivTwb02EUavwvBHg1Litt7tV6PJFxmWxOFQHE
-         m/og==
+        bh=lKEGY5oDfHycwqzCgfJxI2cximkyLOPCINSa1N9F+Lo=;
+        b=erLPSxxtpnjpCmfi0pkzu90S72ZkgWu5wHIWDdhhulwFDuiiJPUBUDn6Nzf6Y7tDrq
+         icoNLH8IJ15xWBmDUczMlub7ctqM4sOFEwqEC9MivcZoS6yeIdbqzCtsVvAvDBgxEERI
+         yrwJSFmhS7EadZUMndt7W1DANhzjYJOrcIdBDXeD5mNT4+m3u/YGFsL4GyUiDS3xVG+H
+         MoQanDVOk0wDpDpD0VMo8KNn3VsmkMvZ1sFpbCqnmroHAlB3RediULnjg8aBBvUtc/rD
+         /4W2ArQOAg21zl3+v34y91wnRC4z4c4DdeMsRfGu/4x+VwmaXvOkSgAotyz3syIryP6C
+         sFXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l10si899722jaf.96.2021.09.28.19.59.12
+        by mx.google.com with ESMTPS id o133si792326vkc.45.2021.09.28.20.01.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Sep 2021 19:59:12 -0700 (PDT)
+        Tue, 28 Sep 2021 20:01:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:45496 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVPoO-0005vv-Ap
-	for alex.bennee@linaro.org; Tue, 28 Sep 2021 22:59:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60672)
+	id 1mVPqu-0000Tj-9R
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 23:01:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60766)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mVPnw-0004z0-45; Tue, 28 Sep 2021 22:58:44 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:3176)
+ id 1mVPo5-0005SX-50; Tue, 28 Sep 2021 22:58:53 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3145)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mVPns-0005sG-UV; Tue, 28 Sep 2021 22:58:43 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.54])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4HK1JS71zNz8tWW;
- Wed, 29 Sep 2021 10:57:44 +0800 (CST)
+ id 1mVPo1-00061T-G7; Tue, 28 Sep 2021 22:58:52 -0400
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HK1DH6Wnxz8ygY;
+ Wed, 29 Sep 2021 10:54:07 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Wed, 29 Sep 2021 10:58:36 +0800
+ 15.1.2308.8; Wed, 29 Sep 2021 10:58:31 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Wed, 29 Sep 2021 10:58:35 +0800
+ 15.1.2308.8; Wed, 29 Sep 2021 10:58:31 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini
  <pbonzini@redhat.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>, Andrew Jones <drjones@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>, "Markus
  Armbruster" <armbru@redhat.com>
-Subject: [PATCH v12 07/16] qtest/numa-test: Use detailed -smp CLIs in
- pc_dynamic_cpu_cfg
-Date: Wed, 29 Sep 2021 10:58:07 +0800
-Message-ID: <20210929025816.21076-8-wangyanan55@huawei.com>
+Subject: [PATCH v12 03/16] machine: Minor refactor/fix for the smp parsers
+Date: Wed, 29 Sep 2021 10:58:03 +0800
+Message-ID: <20210929025816.21076-4-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210929025816.21076-1-wangyanan55@huawei.com>
 References: <20210929025816.21076-1-wangyanan55@huawei.com>
@@ -79,8 +78,8 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -108,40 +107,150 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Pierre
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AKpaaXUp2d+D
+X-TUID: /tJ+AXqBcucS
 
-Since commit 80d7835749 (qemu-options: rewrite help for -smp options),
-the preference of sockets/cores in -smp parsing is considered liable
-to change, and actually we are going to change it in a coming commit.
-So it'll be more stable to use detailed -smp CLIs in testing if we
-have strong dependency on the parsing results.
+To pave the way for the functional improvement in later patches,
+make some refactor/cleanup for the smp parsers, including using
+local maxcpus instead of ms->smp.max_cpus in the calculation,
+defaulting dies to 0 initially like other members, cleanup the
+sanity check for dies.
 
-pc_dynamic_cpu_cfg currently assumes/needs that there will be 2 CPU
-sockets with "-smp 2". To avoid breaking the test because of parsing
-logic change, now explicitly use "-smp 2,sockets=2".
+We actually also fix a hidden defect by avoiding directly using
+the provided *zero value* in the calculation, which could cause
+a segment fault (e.g. using dies=0 in the calculation).
 
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- tests/qtest/numa-test.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/core/machine.c | 18 ++++++++++--------
+ hw/i386/pc.c      | 23 ++++++++++++++---------
+ 2 files changed, 24 insertions(+), 17 deletions(-)
 
-diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
-index c677cd63c4..fd7a2e80a0 100644
---- a/tests/qtest/numa-test.c
-+++ b/tests/qtest/numa-test.c
-@@ -265,7 +265,8 @@ static void pc_dynamic_cpu_cfg(const void *data)
-     QTestState *qs;
-     g_autofree char *cli = NULL;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 4e409261c9..8e719e2932 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -752,8 +752,9 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
+     unsigned sockets = config->has_sockets ? config->sockets : 0;
+     unsigned cores   = config->has_cores ? config->cores : 0;
+     unsigned threads = config->has_threads ? config->threads : 0;
++    unsigned maxcpus = config->has_maxcpus ? config->maxcpus : 0;
  
--    cli = make_cli(data, "-nodefaults --preconfig -machine smp.cpus=2");
-+    cli = make_cli(data, "-nodefaults --preconfig "
-+                         "-machine smp.cpus=2,smp.sockets=2");
-     qs = qtest_init(cli);
+-    if (config->has_dies && config->dies != 0 && config->dies != 1) {
++    if (config->has_dies && config->dies > 1) {
+         error_setg(errp, "dies not supported by this machine's CPU topology");
+         return;
+     }
+@@ -766,8 +767,8 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
+             sockets = sockets > 0 ? sockets : 1;
+             cpus = cores * threads * sockets;
+         } else {
+-            ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
+-            sockets = ms->smp.max_cpus / (cores * threads);
++            maxcpus = maxcpus > 0 ? maxcpus : cpus;
++            sockets = maxcpus / (cores * threads);
+         }
+     } else if (cores == 0) {
+         threads = threads > 0 ? threads : 1;
+@@ -784,26 +785,27 @@ static void smp_parse(MachineState *ms, SMPConfiguration *config, Error **errp)
+         return;
+     }
  
-     /* create 2 numa nodes */
+-    ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
++    maxcpus = maxcpus > 0 ? maxcpus : cpus;
+ 
+-    if (ms->smp.max_cpus < cpus) {
++    if (maxcpus < cpus) {
+         error_setg(errp, "maxcpus must be equal to or greater than smp");
+         return;
+     }
+ 
+-    if (sockets * cores * threads != ms->smp.max_cpus) {
++    if (sockets * cores * threads != maxcpus) {
+         error_setg(errp, "Invalid CPU topology: "
+                    "sockets (%u) * cores (%u) * threads (%u) "
+                    "!= maxcpus (%u)",
+                    sockets, cores, threads,
+-                   ms->smp.max_cpus);
++                   maxcpus);
+         return;
+     }
+ 
+     ms->smp.cpus = cpus;
++    ms->smp.sockets = sockets;
+     ms->smp.cores = cores;
+     ms->smp.threads = threads;
+-    ms->smp.sockets = sockets;
++    ms->smp.max_cpus = maxcpus;
+ }
+ 
+ static void machine_get_smp(Object *obj, Visitor *v, const char *name,
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 557d49c9f8..93dc322a97 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -718,9 +718,13 @@ static void pc_smp_parse(MachineState *ms, SMPConfiguration *config, Error **err
+ {
+     unsigned cpus    = config->has_cpus ? config->cpus : 0;
+     unsigned sockets = config->has_sockets ? config->sockets : 0;
+-    unsigned dies    = config->has_dies ? config->dies : 1;
++    unsigned dies    = config->has_dies ? config->dies : 0;
+     unsigned cores   = config->has_cores ? config->cores : 0;
+     unsigned threads = config->has_threads ? config->threads : 0;
++    unsigned maxcpus = config->has_maxcpus ? config->maxcpus : 0;
++
++    /* directly default dies to 1 if it's omitted */
++    dies = dies > 0 ? dies : 1;
+ 
+     /* compute missing values, prefer sockets over cores over threads */
+     if (cpus == 0 || sockets == 0) {
+@@ -730,8 +734,8 @@ static void pc_smp_parse(MachineState *ms, SMPConfiguration *config, Error **err
+             sockets = sockets > 0 ? sockets : 1;
+             cpus = cores * threads * dies * sockets;
+         } else {
+-            ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
+-            sockets = ms->smp.max_cpus / (cores * threads * dies);
++            maxcpus = maxcpus > 0 ? maxcpus : cpus;
++            sockets = maxcpus / (dies * cores * threads);
+         }
+     } else if (cores == 0) {
+         threads = threads > 0 ? threads : 1;
+@@ -748,27 +752,28 @@ static void pc_smp_parse(MachineState *ms, SMPConfiguration *config, Error **err
+         return;
+     }
+ 
+-    ms->smp.max_cpus = config->has_maxcpus ? config->maxcpus : cpus;
++    maxcpus = maxcpus > 0 ? maxcpus : cpus;
+ 
+-    if (ms->smp.max_cpus < cpus) {
++    if (maxcpus < cpus) {
+         error_setg(errp, "maxcpus must be equal to or greater than smp");
+         return;
+     }
+ 
+-    if (sockets * dies * cores * threads != ms->smp.max_cpus) {
++    if (sockets * dies * cores * threads != maxcpus) {
+         error_setg(errp, "Invalid CPU topology deprecated: "
+                    "sockets (%u) * dies (%u) * cores (%u) * threads (%u) "
+                    "!= maxcpus (%u)",
+                    sockets, dies, cores, threads,
+-                   ms->smp.max_cpus);
++                   maxcpus);
+         return;
+     }
+ 
+     ms->smp.cpus = cpus;
+-    ms->smp.cores = cores;
+-    ms->smp.threads = threads;
+     ms->smp.sockets = sockets;
+     ms->smp.dies = dies;
++    ms->smp.cores = cores;
++    ms->smp.threads = threads;
++    ms->smp.max_cpus = maxcpus;
+ }
+ 
+ static
 -- 
 2.19.1
 

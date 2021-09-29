@@ -1,208 +1,200 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp4778115lfp;
-        Tue, 28 Sep 2021 04:32:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyuWi/ToZndWg1QRr8GRmOGSm9X3C9TJdV7LCFN8Pu+ySYLzQooOaHFusj5zx34ev8GyjoG
-X-Received: by 2002:a05:6402:2889:: with SMTP id eg9mr7183228edb.384.1632828779617;
-        Tue, 28 Sep 2021 04:32:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632828779; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp183925lfp;
+        Wed, 29 Sep 2021 02:11:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1H+kT+wH19KItvqoBJzSqZHrnpv6fg2Be3t21VWgyh7WY1WsBlwFNgO6nPOFPF1HFKNB+
+X-Received: by 2002:a0c:fe87:: with SMTP id d7mr10393679qvs.51.1632906671423;
+        Wed, 29 Sep 2021 02:11:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632906671; cv=none;
         d=google.com; s=arc-20160816;
-        b=D/w4/cqDLPBjJCxUbOfvgUySQk34XxMwjH87XQ1jcwyAtqbgS0kUcdeP3SYpC5fOps
-         msCmRv1vrqmcxFVZHZAL1t0meCpsNwRZ0HyNlFtDxtGKkKOAakVNLl82NLMN/uTk2WmP
-         aiLo/KgKyACPO8QZr4PI2awtbvwTmBg1zzKm4xx2PuCJ8kn+l53Y+O9yXBjCa9Q9jHWC
-         V9uzdF7YgPQG2K6medYyHCXaHJiwMtlMaK1dfj8EUquVFJOw5j2fCJ9JfdOaYx6TJctJ
-         xhXgj79txl/eUDJE1yBtQJY8Rrg31dQWAImHFCrDeFgl2KxnDKQrSHxo4gtktbW//iM/
-         0OHw==
+        b=EqdLgS1qOrK8GDdYjuRE3puWWSeaOBc3wqJnSg4W3M0HVsVaZoYtvocbJ9/Wq49JiX
+         AGLDY/2uKi9+VGd1jrDEYJ8CGFWSbrpU9QrWlIHKCjgK7GqZdI2jpwrkKFHI1MbAQWYK
+         LII1I2AMy2LGWh2Ap/mbyvozWDQDAQtHNcKxkmRnDzN4FuoLQMRpAfTGT6YO/SEm+Vkz
+         VlolRzrRvfJExPNJbP1HXuOivqLsFjthfVh/SxE2//tEsb81OV48vJNhvsgYd8QptZ8B
+         ClRI2ZuXZbjo9py57W6MQtzheViy8VVnHRkrSRPbMmtDtW9TvUklIUIsghUDPsvIsUaZ
+         mXLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=1AaEfA2PK4IIwoHbxwZe/EkKrxav9MdwVe4osXvnKB0=;
-        b=pwQnuIGv1MAnkk1HDYMfAO2mq9uTmGRa8Z08ATVYahxY2AcBbkaoCAfOMK3r5xSanv
-         biYEgEppQQ5iQwbc6w/eOHez2BtVxjUep6uPa5aYAU2fTjkiuLivugFBSxqi1rbhH7wE
-         rB6JupC2zxUtewc1nKlPVoCr9Sn/edUvQBvONGbaHXut9ep7jy6h8i/HRk9YjEb2fPeJ
-         5MyxqqSmSj8mcp3RjZ3rTV/BexnXgcb7POUijQ6tX/wWtO/qYJZ/r0Cpffk1OaFRM99V
-         YZFmH5+Y0TxB4PyxvS112AGMX9FWeuJjKLH4Jl8PyyIpa78HMTGs+koGPu7P4T/aZbk4
-         cg8g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=sSziG86OyoRTL66noHj0SwAN+2VckCYxnmfYy0a1Hug=;
+        b=wP1NPlJRhqpiqhFTeszr18bftozmAzIiJxRSNdsHvogx8cGEPxfkKilqnoSXyFP8WA
+         B+1LVD2uLlDwoXO7GzVboyy7TnxJpz8h0VfsU+sGy8hJKNRxumFUJd7bG6LKljTkcgFM
+         lafzRbOjKtYhXjlZjkZoxznyvACMfivuaKCSEMJibd5XrMMBbbtBXRXuP9c7Uv/kotD0
+         lz1FlBDU9Tqb2aKjUYHHflzJeINtUPXh/YF0w4NhYQI0/8B+8jqyUMcD+LPOlFM1oKd3
+         fpoIFqEFzkArw0tTezoNP+NWLA1r70AkpfmmW5TohtKc4jzwqPeVVkxU70kEJmoSikb9
+         ZWnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dzE5xFks;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id p4si21022528ejr.151.2021.09.28.04.32.59
+       dkim=fail header.i=@linaro.org header.s=google header.b=LZHtNIuH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h15si1085947qvb.0.2021.09.29.02.11.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Sep 2021 04:32:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 29 Sep 2021 02:11:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dzE5xFks;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1632828778;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1AaEfA2PK4IIwoHbxwZe/EkKrxav9MdwVe4osXvnKB0=;
-	b=dzE5xFksXTLlMBu0PnVZUsbF7UfQdJhY7Uc3mKBNFqcqdOuG8O/4Z0zs2d/2f2Ufqva68Z
-	SR1sXxpnTCL0g50VkMgonfYsb+CXVbhS9+IjjLZlTO6515NZy5YakoHqcK6JWi7FNav2h8
-	Kww2AzapMoD5g6KW3Ovwqm6/yZIjSjc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-128-n_RCn6BMNs2yokza9hVKFQ-1; Tue, 28 Sep 2021 07:32:54 -0400
-X-MC-Unique: n_RCn6BMNs2yokza9hVKFQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33784192379B;
-	Tue, 28 Sep 2021 11:32:51 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.193.134])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id ABAC77621B;
-	Tue, 28 Sep 2021 11:32:06 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 2899018003B6; Tue, 28 Sep 2021 13:32:04 +0200 (CEST)
-Date: Tue, 28 Sep 2021 13:32:04 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
-	Laurent Vivier <laurent@vivier.eu>, Peter Xu <peterx@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-riscv@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Alexandre Iooss <erdnaxe@crans.org>, Greg Kurz <groug@kaod.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH 10/29] tcg_funcs: Add tlb_flush to TCGModuleOps
-Message-ID: <20210928113204.ic2syx4w2cjsqr7h@sirius.home.kraxel.org>
-References: <20210831121545.2874233-1-kraxel@redhat.com>
- <20210831121545.2874233-11-kraxel@redhat.com>
- <fdfd7f35-fbec-84f7-ebbd-7790df20b1bd@linaro.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=LZHtNIuH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50280 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mVVcM-0007PY-AT
+	for alex.bennee@linaro.org; Wed, 29 Sep 2021 05:11:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40650)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mVVbx-0007O6-Et
+ for qemu-arm@nongnu.org; Wed, 29 Sep 2021 05:10:46 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:50868)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mVVbt-0007CH-OB
+ for qemu-arm@nongnu.org; Wed, 29 Sep 2021 05:10:44 -0400
+Received: by mail-wm1-x329.google.com with SMTP id j27so1296962wms.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Sep 2021 02:10:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sSziG86OyoRTL66noHj0SwAN+2VckCYxnmfYy0a1Hug=;
+ b=LZHtNIuH1mm00PvsA0j9z8/HAGnVLIkQHUqptjFSZEc1NTV0bvdHtMX1OCnX1qGWHI
+ WvG1NphyvGDWzTAjyW9uw0V8BcvtJOaaLdfUOamu89KNQBoVHUwZiVMvvhGiznlSbodA
+ m4fzPuoekeYuKWvovBMcz1cRaSDxl2Nvpz9zShqnUJIIVp9nh8sNbevtROXuZR2SlYO8
+ fAbUF+oXFmNmv5zifvqGXqGk1+uAEcrTnC+i4R0qsYSUALrymeeBtAAzxXNvZ3L/CTB7
+ XxqBd5ciBDkhwyEU/27Tpk8nsZP/Aqi9jXFXEor76qvIJ8SGz7HNhe0fJheI70UP/kHM
+ iobQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sSziG86OyoRTL66noHj0SwAN+2VckCYxnmfYy0a1Hug=;
+ b=N0aXhs8GUiYkZOmJpuRgK3ijqgTwpmKIBoXJXjW1XWmEMVdvnJhqgqUjld5Au/tUfj
+ qDNjPfokM5h5DCA47KRAxP1tCwI3rVb24wMdWYKiKsfvoW6Wx7DZB93tMa8Vf0xi4iNW
+ fwfavwjyslJaAyR/3K3pEghK20wiGNkpJB7GW6d7pxJC+tQFrDBlXQ87yZdAHvq9x2/A
+ LW58le9JoK7V7CVlYPIRy8aBHbeqSA/2Y18qJhRO60KKODqhGqUJbwrHCkw991EuEC5o
+ 6eXpmJOp32ETzhEGyYANx5wUaB9o8ucx/XV1ifL1gxu+FE5uV/VAj+nJ8rFjUBr+F2yF
+ 2EhA==
+X-Gm-Message-State: AOAM531lAmt69KiQV/42j0DGs++XQnQuh8MIHozPi9ca9PjDtDqS9nFC
+ 9uRGZ8RXiexuebSvtzhCxLhPYuGrPq+UrTQnkyc+fw==
+X-Received: by 2002:a05:600c:d6:: with SMTP id
+ u22mr9121925wmm.133.1632906639073; 
+ Wed, 29 Sep 2021 02:10:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <fdfd7f35-fbec-84f7-ebbd-7790df20b1bd@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-TUID: tPVwuzfvMZTm
+References: <20210926183410.256484-1-sjg@chromium.org>
+ <CAFEAcA8S2=7rOKxeqcW+kw0BVPO3PUJGSUH-ioN7=c=U7zQxvg@mail.gmail.com>
+ <CAPnjgZ2NCRVxKULWR1JjZU+D9saJ7fbZ=yHmWTSr3ufHxLYg-g@mail.gmail.com>
+ <CAFEAcA9n+2JDFv8BezeEMA4e2Zhr0ENAvzLjBS6YXRoW9P-JXQ@mail.gmail.com>
+ <CAPnjgZ1AO8575LYbwmuouNR5=dgNam6EFDC1_bai=8xAHdw7-Q@mail.gmail.com>
+ <CAFEAcA8FsPcBELEZxiRMuFbKtmKTFgDHABePQ33hdxYRq0C0ig@mail.gmail.com>
+ <CAPnjgZ2S7SXxHYd_bkcf+GcmmgEew3vpJkw+DRPqrpb44eLgcA@mail.gmail.com>
+ <CAFEAcA-bk6PF_P3JOxQSCXo7Fh2K5AVygB9WwDUiK2fV9Fx5jw@mail.gmail.com>
+ <CAPnjgZ26gQVpzL6fYsGzDf=c+z4aG5SPkBf7yoDC9+ynxQi_9Q@mail.gmail.com>
+ <CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-zyh=N8rqm4vOcGZA@mail.gmail.com>
+ <CAPnjgZ0xMH+SSjQWGjynTLDDbg6tO=z+-eDbpDKV1gqo=bhqaQ@mail.gmail.com>
+In-Reply-To: <CAPnjgZ0xMH+SSjQWGjynTLDDbg6tO=z+-eDbpDKV1gqo=bhqaQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 29 Sep 2021 10:09:45 +0100
+Message-ID: <CAFEAcA9y+sBpL-ncYwdqNkMx_oXkQ-pdhNcHOdgTxJmWBArzhA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Allow additions to the generated device tree
+To: Simon Glass <sjg@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HRXsBQ0xrDrz
 
-On Thu, Sep 02, 2021 at 03:09:15PM +0200, Richard Henderson wrote:
-> On 8/31/21 2:15 PM, Gerd Hoffmann wrote:
-> > diff --git a/target/i386/helper.c b/target/i386/helper.c
-> > index 533b29cb91b6..100add713c5d 100644
-> > --- a/target/i386/helper.c
-> > +++ b/target/i386/helper.c
-> > @@ -103,7 +103,7 @@ void x86_cpu_set_a20(X86CPU *cpu, int a20_state)
-> >           /* when a20 is changed, all the MMU mappings are invalid, so
-> >              we must flush everything */
-> > -        tlb_flush(cs);
-> > +        tcg.tlb_flush(cs);
-> 
-> I think this is a mistake.
-> 
-> (1) If tcg module is not enabled, we should be able to make a direct call.
-> 
-> So IMO we want to retain the direct function call syntax in all the uses.  I
-> think you want to put wrapper functions doing the indirection somewhere --
-> possibly tcg-module.c.
+On Wed, 29 Sept 2021 at 04:01, Simon Glass <sjg@chromium.org> wrote:
+> On Tue, 28 Sept 2021 at 03:21, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > So what *is* this patch doing? The subject says "Allow additions to
+> > the generated device tree", and the patch adds an option to
+> > "Merge a device tree binary (dtb) file into the generated device tree".
+> > That sounds exactly like "combine two bits of dtb" -- the one the
+> > user provides to the -dtbi option and the one QEMU generates
+> > internally.
+>
+> Yes that's right, but as you say one of them is generated by QEMU. It
+> is fixing a problem caused by QEMU's generation of the device tree,
+> since it provides no wat to augment the device tree without my patch.
 
-Hmm, when we want avoid indirection I guess it makes sense to use inline
-wrappers in tcg-module.h
+You can augment it in the guest if you need to add guest-specific stuff.
 
-How about the patch below? (proof-of-concept for tlb_flush, on top of
-this series)?
+> > > The only current working option is to just pass the U-Boot dtb through
+> > > and not use QEMU's on-the-fly-generated dtb at all. But I am assuming
+> > > there is a reason why QEMU generates that dtb, so that would not be
+> > > desirable?
+> >
+> > QEMU generates the dtb to tell the guest what hardware is
+> > present and where it is. We don't guarantee that that hardware
+> > arrangement is necessarily stable between QEMU versions (in
+> > practice there are generally additions and not deletions or
+> > moves, but in theory there might be). All the guest is supposed
+> > to assume is the location of RAM and flash; everything else it
+> > must look in the dtb to determine.
+>
+> Yes, so that is going to severely limit the usefulness of the virtio
+> support, for example. But we can just ignore it for CI, I suppose,
+> since we can use fixed parameters to QEMU, if you don't want to allow
+> more control of the device tree.
 
-thanks,
-  Gerd
+virtio-mmio devices should already be correctly indicated in the
+device tree. virtio-pci devices can be found by probing the PCI
+bus in the usual way (and you can find out where the PCI controller
+is by looking in the dtb).
 
-From 22f5a216f410fccb769d0f7496c3c36f4b131833 Mon Sep 17 00:00:00 2001
-From: Gerd Hoffmann <kraxel@redhat.com>
-Date: Tue, 28 Sep 2021 11:51:12 +0200
-Subject: [PATCH] tlb_flush inline wrapper
+> This patch is really just augmenting what QEMU is already doing and
+> solving a problem that it has. I don't see it as creating a new boot
+> mechanism or being a weird tweak. If anything, it puts the tweaking in
+> the hands of the user. It seems like something you would be keen on,
+> from that POV.
 
----
- include/exec/exec-all.h  |  2 ++
- include/tcg/tcg-module.h | 13 +++++++++++++
- meson.build              |  3 ++-
- 3 files changed, 17 insertions(+), 1 deletion(-)
+I absolutely see it as a weird tweak. It's something that
+only u-boot seems to care about, and it's adding an extra
+user-facing command line option that is basically
+"if you need to boot u-boot you need this". The user should
+not need to "control" the dtb, because QEMU should already
+be creating a dtb which describes the hardware it is exposing
+to the guest.
 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 608d768a4371..72e4e3b5bb89 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -160,7 +160,9 @@ void tlb_flush_page_all_cpus_synced(CPUState *src, target_ulong addr);
-  * so this is generally safe. If more selective flushing is required
-  * use one of the other functions for efficiency.
-  */
-+#ifdef TCG_DIRECT_CALL
- void tlb_flush(CPUState *cpu);
-+#endif
- /**
-  * tlb_flush_all_cpus:
-  * @cpu: src CPU of the flush
-diff --git a/include/tcg/tcg-module.h b/include/tcg/tcg-module.h
-index e9c0615b51d9..b3c0f53ea9f3 100644
---- a/include/tcg/tcg-module.h
-+++ b/include/tcg/tcg-module.h
-@@ -1,6 +1,10 @@
- #ifndef TCG_MODULE_H
- #define TCG_MODULE_H
- 
-+#if defined(CONFIG_TCG_BUILTIN) || defined(TCG_MODULE)
-+# define TCG_DIRECT_CALL 1
-+#endif
-+
- #include "exec/exec-all.h"
- 
- struct TCGModuleOps {
-@@ -21,4 +25,13 @@ struct TCGModuleOps {
- };
- extern struct TCGModuleOps tcg;
- 
-+#ifndef TCG_DIRECT_CALL
-+
-+static inline void tlb_flush(CPUState *cpu)
-+{
-+    tcg.tlb_flush(cpu);
-+}
-+
-+#endif
-+
- #endif /* TCG_MODULE_H */
-diff --git a/meson.build b/meson.build
-index 15ef4d3c4187..afe07e7d59c3 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2317,8 +2317,9 @@ subdir('tests/qtest/libqos')
- subdir('tests/qtest/fuzz')
- 
- # accel modules
-+tcg_module_cflags = declare_dependency(compile_args: '-DTCG_MODULE=1')
- tcg_real_module_ss = ss.source_set()
--tcg_real_module_ss.add_all(when: 'CONFIG_TCG_MODULAR', if_true: tcg_module_ss)
-+tcg_real_module_ss.add_all(when: ['CONFIG_TCG_MODULAR', tcg_module_cflags], if_true: tcg_module_ss)
- specific_ss.add_all(when: 'CONFIG_TCG_BUILTIN', if_true: tcg_module_ss)
- target_modules += { 'accel' : { 'qtest': qtest_module_ss,
-                                 'tcg': tcg_real_module_ss }}
--- 
-2.31.1
+> > Guest software running on the "virt" board needs to know it is
+> > running on the "virt" board and deal with the interface and
+> > information that QEMU provides. (For instance, Arm Trusted
+> > Firmware and UEFI both have done this.)
+>
+> Well unfortunately this is in conflict, based on what you have said in
+> this thread. We can either have virtio support (use QEMU-generated
+> device tree) or have U-Boot work correctly (use -dtb). Do you have any
+> other ideas?
+
+I've already suggested what I think you should do: have u-boot
+combine the dtb it gets from QEMU with the dtb-extras stuff
+it wants for its own purposes, with the latter supplied in
+any of a bunch of workable ways (extra file loaded in memory,
+concatenate the dtb blob with the u-boot binary at compile
+time, whatever; rough analogy with however u-boot gets the
+full dtb on hardware platforms where there is none).
+
+-- PMM

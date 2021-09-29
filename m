@@ -1,92 +1,127 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp77072lfp;
-        Tue, 28 Sep 2021 23:24:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwIncTFqo9yhr8dFNznFrPug0Io8jC0Oncr5rY68j+ZM0R3W5qJnWZcUzGEJcV1xgr/qT1h
-X-Received: by 2002:ac8:1386:: with SMTP id h6mr10401841qtj.36.1632896699479;
-        Tue, 28 Sep 2021 23:24:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632896699; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp156362lfp;
+        Wed, 29 Sep 2021 01:27:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxDMhqMxrPnJrWU13n4pl2CTwWW0CxiOo8Mt/xEmNG+hXFRrETH6SZ1wisjpSXDU2rx2ei
+X-Received: by 2002:a5d:9d44:: with SMTP id k4mr7141601iok.112.1632904079407;
+        Wed, 29 Sep 2021 01:27:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632904079; cv=none;
         d=google.com; s=arc-20160816;
-        b=qvOxQLL8oAL+zoE9paJBaGRI6l4rZJkExIBcnBFqUg5kW+3PkKsjqu+VYchiBuhe4b
-         ++50AcqLcEyt5oZ3WgiwxrcKrN7N1zrFT3xFDGZ5sVfXZmNKtqw2ZmFWfSfvGi29s6V6
-         SubDx/4w2i3FHThvBWjwjNIr6xECmUnnUWaDVKiYZe472+bblLeHB0uGqRyRoyS5OlmV
-         qcjIgxYmdki2fXx7T06eBLhpkrW8tLmx4yH+RXoT5IGy6FUlKlkSt5PKflo0/P4f/3hF
-         M6YswRO3ig8DMFk29n+pkq2TeBehwgtEQWsmCSpj43AxIVOfGcOX63SmcyGo2BZXQnSO
-         guwA==
+        b=CLErDlvYMdu6ySYKpeSPugmE4QbRhkXWiVZ98aVP1+Dm9EnJN0U0DpW2EWT1zWqI1b
+         aHsNa4sH7DAdVxN2Hcqc97H1XpE8Q/hUO3vR4O9KPK8ugJje9gzoFWqboCmN3tHG6uME
+         A73WVQEYGcfGsBW+DNK9gKAPaRRPkDwBqOn1y4NmxSG/eIE7VDWWaqUZ3IPFMAvoSxgC
+         2PH1L/2/6S4cAF/alDhIohc3TdLGXFQVkdEI8POcKiM38KbLwatQKNMmT72Ta8Y6WJhq
+         PmFPVfRZp9AwkyMgo1MM1vHbl6ieKmqPVleN0qmfMBglv894wvIFKo47GP7uOjBSuo+g
+         w/RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=Cmt97dZKIeacSTBMdsjJuAbj9idQcjBdOlJj/zK/mmc=;
-        b=pOZS+DOk9M5p0r/5KEz1ToOath2lIcvSEgQ3E/Hwa35f9uzm3TZa/6fK1hpLlqlKgv
-         AS7UpbTXSybUo57kQJS5jLvz207eYSqSmY5Jph6Zi6rn4Vbr5FE3NN7m1YRn/tS9+qY4
-         d/1U1mDIDpVV41oTQGLf6RaWrkjnViszXXLdDxdaxM+AdqB12n5DmQ4iXgy8biN1sEUJ
-         SSMZfSfC79Q34mZ0Dl2PbOoYTMzCyx5PyaLNLW4kDwWmAfqCIm/KAqDc9C3YxSn4Dx+B
-         lNaau3DDOc9h7UJPyH74kW+MAouibj+RnCGf5yWn/VDkC5QHKe6OYRIgnLkNey7/f34q
-         gpng==
+         :content-language:in-reply-to:from:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=JK80QiRkp9DfSYaoajSkIpKcWjbC0I7y2mRBAX2sFwY=;
+        b=QjTpVMu5KY/VU1P2ye4WEmP/EdqRRqJR4/Wv6ySzUysGnYARBqdOEBNgu2e1s3+o4K
+         7HhrhyRIfeeTm7G2Jmx1ojPvNCunHIMNeHZimIjbh79EFBo8kyvsjZn1MFPbm0f5vJXc
+         X0vvi0476nJ0b9Nx2KkfUY7N3fvngRWtRz9wgsQ2CeC50DFbSj0jnXEGBShyBqQyIVxm
+         q6kuntaCxbEygQJt0bOEdWyUOQR0nKIHzsTdUDXgaln9IBvTcsNXIqwDSP30UB5ECniX
+         GNozinDD9k6zxOfYzcOLB7LIjVYTKxp8PhdyIc9fi9ov0YX/9sPKm5s8AzRv7JnDHxkS
+         tqfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Em5/8Eja";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8si1269588qtw.287.2021.09.28.23.24.59
+        by mx.google.com with ESMTPS id f10si1928967jaj.65.2021.09.29.01.27.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Sep 2021 23:24:59 -0700 (PDT)
+        Wed, 29 Sep 2021 01:27:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36824 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Em5/8Eja";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47456 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVT1W-0005VT-Rw
-	for alex.bennee@linaro.org; Wed, 29 Sep 2021 02:24:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33876)
+	id 1mVUwY-0001G3-OB
+	for alex.bennee@linaro.org; Wed, 29 Sep 2021 04:27:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mVT1L-0005T4-83; Wed, 29 Sep 2021 02:24:48 -0400
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:41311)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mVUwF-0001ER-Vj
+ for qemu-arm@nongnu.org; Wed, 29 Sep 2021 04:27:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:29955)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mVT1G-00021V-Rg; Wed, 29 Sep 2021 02:24:44 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.240])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 128C4204CC;
- Wed, 29 Sep 2021 06:24:39 +0000 (UTC)
-Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Wed, 29 Sep
- 2021 08:24:38 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003bb6d52d2-36cc-4483-be76-720774a8a298,
- 44937510F21C5BE293C6940AFAD8BDBE61667EBD) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <85fb7136-c7b3-8144-d79f-19b5e95e83cb@kaod.org>
-Date: Wed, 29 Sep 2021 08:24:37 +0200
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mVUwD-0004WD-0m
+ for qemu-arm@nongnu.org; Wed, 29 Sep 2021 04:27:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1632904055;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JK80QiRkp9DfSYaoajSkIpKcWjbC0I7y2mRBAX2sFwY=;
+ b=Em5/8Eja6pjqlXIGO3TEqdKNoOV2kMkObzX7RWj+Z8t5Gnv/VTuvV7m9ellJ6ZzRjsDH9t
+ TyqCOgZnMbK3eH8Mll455nYmmRHk+SDWHq0Ik3UJmHxFbGfhRON4lALUs7AHR2I9rpbNy6
+ AOrSrYxxaFxuQmw/YPhsFFIVPKXDQfM=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-574-Bd_JLGYLOwmogLiMPG-yLA-1; Wed, 29 Sep 2021 04:27:31 -0400
+X-MC-Unique: Bd_JLGYLOwmogLiMPG-yLA-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ a137-20020a1c7f8f000000b0030cda9c0feeso857470wmd.7
+ for <qemu-arm@nongnu.org>; Wed, 29 Sep 2021 01:27:31 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=JK80QiRkp9DfSYaoajSkIpKcWjbC0I7y2mRBAX2sFwY=;
+ b=G2KFvDKBAVnj6F4tpZFCAuLL2tUhKGtHQ1eprjWybew5bKAXz1WmczgZ8LjH4Sf77D
+ Mi93mTlzBpN4vAnxKi3fqzcD1nielPFCswnjtY+xQyxn7E0bgtKgDhztFts/1B+JOa3G
+ ojTJYs7YkqdapIrMHsO1lFqce27hARluqJvP0H7Jr7rPZQoYd3joeZi5R2lDke9HEEdY
+ TW3VPRjoZCCKiHB98uVclRXc7E5ItdJN8sZfgqsGDOxeVnh1rwJSS5jCpQe008m/uZIh
+ eraOtslscsu6pCA8Tq+2/duoLeHcZ1WR9GaQ7aAHPGZB0EzKEGwGx2jqKJbcmgR6nCfA
+ ljaw==
+X-Gm-Message-State: AOAM530J1QhrRdVz6C3Tbgw4OUnwaPwQ/ibhTIJ2643qF15uihish40h
+ 6W6jjkCTCoXzS5nWI+FtH+V5kRlQ17kQxnd5lEPOP5QcCQvxMFNj7jxvwz8CCwX6NH41W38+WpZ
+ m9+HczrOAaa+M
+X-Received: by 2002:a5d:6506:: with SMTP id x6mr3491249wru.255.1632904050709; 
+ Wed, 29 Sep 2021 01:27:30 -0700 (PDT)
+X-Received: by 2002:a5d:6506:: with SMTP id x6mr3491228wru.255.1632904050567; 
+ Wed, 29 Sep 2021 01:27:30 -0700 (PDT)
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id d16sm826703wmb.2.2021.09.29.01.27.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Sep 2021 01:27:30 -0700 (PDT)
+Message-ID: <c7312892-33e3-6c70-b85c-7893cc1936cc@redhat.com>
+Date: Wed, 29 Sep 2021 10:27:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.1.0
-Subject: Re: [RFC 0/1] hw/ipmi: add an aspeed IPMI iBT device model
+Subject: Re: [PATCH v12 16/16] machine: Make smp_parse return a boolean
+To: Yanan Wang <wangyanan55@huawei.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Andrew Jones <drjones@redhat.com>, Markus Armbruster <armbru@redhat.com>
+References: <20210929025816.21076-1-wangyanan55@huawei.com>
+ <20210929025816.21076-17-wangyanan55@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <20210929025816.21076-17-wangyanan55@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Titus Rwantare <titusr@google.com>
-References: <20210928223942.244860-1-titusr@google.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20210928223942.244860-1-titusr@google.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.100]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: c3fa26d2-c8df-4621-8c56-90f90be30d37
-X-Ovh-Tracer-Id: 479070410788014953
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudekuddguddthecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeevgedtveeitdeuvedtgfefhfefveeiieegjeeujeekvdevueethfdujeekffehvdenucffohhmrghinhepghhithhhuhgsrdgtohhmpdhoiihlrggsshdrohhrghdpkhgvrhhnvghlrdhorhhgnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehmihhnhigrrhgusegrtghmrdhorhhg
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.562,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.562, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,99 +134,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: minyard@acm.org, andrew@aj.id.au, qemu-devel@nongnu.org, f4bug@amsat.org,
- wuhaotsh@google.com, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Pierre Morel <pmorel@linux.ibm.com>,
+ Pankaj Gupta <pankaj.gupta.linux@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K5ZyGtRue7oe
+X-TUID: h05ue1rYhetp
 
-Hello Titus,
-
-On 9/29/21 00:39, Titus Rwantare wrote:
-> This patch follows the Handing IPMI for emulating BMC patch set by Hao Wu.
-> Building on top of the work in [PATCH] hw/misc: Add an iBT device model posted
-> by Cédric Le Goater, this iBT model works as a backend to ipmi-host-extern.
-
-Could you please resend with my patch which is still available here :
-
-  https://github.com/legoater/qemu/commit/c6b679690f32534e8992d96752d90d2c4aa48130
-
-or here :
-
-  http://patchwork.ozlabs.org/project/qemu-devel/patch/20210407171637.777743-20-clg@kaod.org/
-
-and in another patch, the modifications you made on top of mine. That
-will help understand where the problem could be.
-
-You can modify patches but you need to keep the original author name,
-commit log, signed-off-by to certify its origin. Then list the changes
-you have made and add your signed-off-by.
-
-The patch you sent seems to be mostly mine and I don't see any of the
-above.
-
-Here is some more info in the kernel documentation :
-
-   https://www.kernel.org/doc/html/v4.12/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin
-
-I don't think we have the same kind of documentation in QEMU but it's
-the same process.
-
-> Needed to run:
-> - [PATCH 4/8] hw/ipmi: Refactor IPMI interface, Hao Wu
-> - [PATCH 5/8] hw/ipmi: Take out common from ipmi_bmc_extern.c, Hao Wu
-> - [PATCH 6/8] hw/ipmi: Move handle_command to IPMICoreClass, Hao Wu
-> - [PATCH 7/8] hw/ipmi: Add an IPMI external host device, Hao Wu
-
-I have no idea what these patches do and where they are. They seem to
-modify the core IPMI framework and it is important to understand the
-overall changes. Please include them in the patchset first since they
-are initial requirements.
-
-> Host commandline
->      -chardev socket,id=ipmichr1,host=localhost,port=9999,reconnect=10 \
->      -device ipmi-bmc-extern,chardev=ipmichr1,id=bmc0 \
->      -device isa-ipmi-bt,bmc=bmc0,irq=10 -nodefaults
+On 9/29/21 04:58, Yanan Wang wrote:
+> Quoting one of the Rules described in include/qapi/error.h:
+> "
+> Whenever practical, also return a value that indicates success /
+> failure.  This can make the error checking more concise, and can
+> avoid useless error object creation and destruction.  Note that
+> we still have many functions returning void.  We recommend
+> • bool-valued functions return true on success / false on failure,
+> • pointer-valued functions return non-null / null pointer, and
+> • integer-valued functions return non-negative / negative.
+> "
 > 
-> BMC commandline
->      -chardev socket,id=ipmichr1,host=localhost,port=9999,server=on,wait=off \
->      -device "ipmi-host-extern,chardev=ipmichr1,responder=/machine/soc/ibt"
-
-Could we have the full command lines also ?
-
-
-> Currently, IRQs are not functional, but it is able to connect.
-> The following printout is from the host:
+> So make smp_parse() return true on success and false on failure,
+> so that we can more laconically check whether the parsing has
+> succeeded without touching the errp.
 > 
-> [    6.869742] ipmi_si IPI0001:00: IPMI message handler: Found new BMC (man_id:
->   0x002b79, prod_id: 0x0000, dev_id: 0x00)
-> [   12.393281] ipmi_si IPI0001:00: IPMI bt interface initialized
-> 
-> This patch is an RFC because of the missing IRQs and the need for other patches
-> to get merged.
+> Suggested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  hw/core/machine.c | 17 +++++++++--------
+>  1 file changed, 9 insertions(+), 8 deletions(-)
 
-We will need the whole project to start reviewing.
+Thank you!
 
-Thanks,
-
-C.
-
-> 
-> Thank you all.
-> 
-> Titus Rwantare (1):
->    hw/ipmi: add an aspeed ipmi iBT device model
-> 
->   hw/ipmi/ipmi_extern.h        |   1 +
->   include/hw/arm/aspeed_soc.h  |   2 +
->   include/hw/ipmi/aspeed_ibt.h |  77 +++++++++
->   hw/arm/aspeed_ast2600.c      |  12 ++
->   hw/arm/aspeed_soc.c          |  12 ++
->   hw/ipmi/aspeed_ibt.c         | 311 +++++++++++++++++++++++++++++++++++
->   hw/ipmi/meson.build          |   1 +
->   hw/ipmi/trace-events         |   7 +
->   8 files changed, 423 insertions(+)
->   create mode 100644 include/hw/ipmi/aspeed_ibt.h
->   create mode 100644 hw/ipmi/aspeed_ibt.c
-> 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 

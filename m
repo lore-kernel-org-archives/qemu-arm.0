@@ -1,84 +1,78 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp183925lfp;
-        Wed, 29 Sep 2021 02:11:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1H+kT+wH19KItvqoBJzSqZHrnpv6fg2Be3t21VWgyh7WY1WsBlwFNgO6nPOFPF1HFKNB+
-X-Received: by 2002:a0c:fe87:: with SMTP id d7mr10393679qvs.51.1632906671423;
-        Wed, 29 Sep 2021 02:11:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1632906671; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5501490lfp;
+        Tue, 28 Sep 2021 20:13:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpUIGo3vtyaBUfI3yR0wtaiMtD9Wj2zK+yWLYb7jHf7ECYbRJnpB5LU3W7MkZSKQCDEaj6
+X-Received: by 2002:a37:93c5:: with SMTP id v188mr3310972qkd.57.1632885185141;
+        Tue, 28 Sep 2021 20:13:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632885185; cv=none;
         d=google.com; s=arc-20160816;
-        b=EqdLgS1qOrK8GDdYjuRE3puWWSeaOBc3wqJnSg4W3M0HVsVaZoYtvocbJ9/Wq49JiX
-         AGLDY/2uKi9+VGd1jrDEYJ8CGFWSbrpU9QrWlIHKCjgK7GqZdI2jpwrkKFHI1MbAQWYK
-         LII1I2AMy2LGWh2Ap/mbyvozWDQDAQtHNcKxkmRnDzN4FuoLQMRpAfTGT6YO/SEm+Vkz
-         VlolRzrRvfJExPNJbP1HXuOivqLsFjthfVh/SxE2//tEsb81OV48vJNhvsgYd8QptZ8B
-         ClRI2ZuXZbjo9py57W6MQtzheViy8VVnHRkrSRPbMmtDtW9TvUklIUIsghUDPsvIsUaZ
-         mXLg==
+        b=qcBKLIWZbPP/9sRI/Z44czvf23uoZ6QaxM5GhVlSCC+BLZpiVDcJzoRtdJE132Qi5r
+         xTtKSYiac1KyE9/p77Mr0CS7ZpdFXylU5r9mW+7IL/Lt0LNt3PXR4HeligETTnxAUakL
+         h6CgAzMRvgF0jJ9X5w5mbRbu6kwT1UWDaESCgAg4Be3E5GCov4YezShW4aS3OPRjDGyq
+         G8bjajEFhsm2AYwSxxww0OXQ8mpafGKV0vWqGSUgZKzrQnunkGcjOcmzDEyewCzBhl86
+         F6vwsiQbsD5Mgr6nx5/Kr8YJ24f+BzaduCF8WdsD00fzLtm2Q57l1Fb2TGMATgk/n2mB
+         +kPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=sSziG86OyoRTL66noHj0SwAN+2VckCYxnmfYy0a1Hug=;
-        b=wP1NPlJRhqpiqhFTeszr18bftozmAzIiJxRSNdsHvogx8cGEPxfkKilqnoSXyFP8WA
-         B+1LVD2uLlDwoXO7GzVboyy7TnxJpz8h0VfsU+sGy8hJKNRxumFUJd7bG6LKljTkcgFM
-         lafzRbOjKtYhXjlZjkZoxznyvACMfivuaKCSEMJibd5XrMMBbbtBXRXuP9c7Uv/kotD0
-         lz1FlBDU9Tqb2aKjUYHHflzJeINtUPXh/YF0w4NhYQI0/8B+8jqyUMcD+LPOlFM1oKd3
-         fpoIFqEFzkArw0tTezoNP+NWLA1r70AkpfmmW5TohtKc4jzwqPeVVkxU70kEJmoSikb9
-         ZWnA==
+        bh=/I8lKACSpMIYGQb9ziUE8Xs96OLh4I5ighrTPRvHutQ=;
+        b=QxRlKDZ2pGgEN891ZUHzCAalSvCInTKXkPDhlSHRgW1htMINtZjNo3lQjIBKLSLVHG
+         1SHTzR8zd2C6ygM/DhDRXPSdkkmD+qdCtuwKkWTOV/HfsTdf3ZQ8UDFTlk0uQ8hrxXMr
+         /yd4uR+wtrZDzDJVoJbcyhz8wOoYHDVfEe+2GqEbGoBfK+YqOHFobFRxK1W75R6irdKo
+         EjEiOZS3YNt3jsJdPDmdAiXcH7zwgMCXfvG5ZBkaEU4sJ4QSQGB/P7uCHdKrZoygqb1w
+         R2IBM/km36sV+BqP6HnOWDMTFuBe9RhWGhgossWEynELiqczgsCXfT3eXysKSeC+abGe
+         Rq6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LZHtNIuH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@chromium.org header.s=google header.b=oe1T3jjH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h15si1085947qvb.0.2021.09.29.02.11.11
+        by mx.google.com with ESMTPS id a3si686737qvf.132.2021.09.28.20.13.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Sep 2021 02:11:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Sep 2021 20:13:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LZHtNIuH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50280 helo=lists1p.gnu.org)
+       dkim=fail header.i=@chromium.org header.s=google header.b=oe1T3jjH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: from localhost ([::1]:54922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVVcM-0007PY-AT
-	for alex.bennee@linaro.org; Wed, 29 Sep 2021 05:11:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40650)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mVQ1o-00072m-D7
+	for alex.bennee@linaro.org; Tue, 28 Sep 2021 23:13:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32944)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVVbx-0007O6-Et
- for qemu-arm@nongnu.org; Wed, 29 Sep 2021 05:10:46 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:50868)
+ (Exim 4.90_1) (envelope-from <sjg@google.com>) id 1mVPr2-0001UR-Er
+ for qemu-devel@nongnu.org; Tue, 28 Sep 2021 23:01:56 -0400
+Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c]:36732)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVVbt-0007CH-OB
- for qemu-arm@nongnu.org; Wed, 29 Sep 2021 05:10:44 -0400
-Received: by mail-wm1-x329.google.com with SMTP id j27so1296962wms.0
- for <qemu-arm@nongnu.org>; Wed, 29 Sep 2021 02:10:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <sjg@google.com>) id 1mVPr0-0008Us-Ci
+ for qemu-devel@nongnu.org; Tue, 28 Sep 2021 23:01:56 -0400
+Received: by mail-ua1-x92c.google.com with SMTP id u11so525826uaw.3
+ for <qemu-devel@nongnu.org>; Tue, 28 Sep 2021 20:01:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sSziG86OyoRTL66noHj0SwAN+2VckCYxnmfYy0a1Hug=;
- b=LZHtNIuH1mm00PvsA0j9z8/HAGnVLIkQHUqptjFSZEc1NTV0bvdHtMX1OCnX1qGWHI
- WvG1NphyvGDWzTAjyW9uw0V8BcvtJOaaLdfUOamu89KNQBoVHUwZiVMvvhGiznlSbodA
- m4fzPuoekeYuKWvovBMcz1cRaSDxl2Nvpz9zShqnUJIIVp9nh8sNbevtROXuZR2SlYO8
- fAbUF+oXFmNmv5zifvqGXqGk1+uAEcrTnC+i4R0qsYSUALrymeeBtAAzxXNvZ3L/CTB7
- XxqBd5ciBDkhwyEU/27Tpk8nsZP/Aqi9jXFXEor76qvIJ8SGz7HNhe0fJheI70UP/kHM
- iobQ==
+ :cc; bh=/I8lKACSpMIYGQb9ziUE8Xs96OLh4I5ighrTPRvHutQ=;
+ b=oe1T3jjHOENjLYHIf6iv2rCO0lKDn55yh4+lOH/byQkgteGK+VkU3JI5iDRGc/I/u5
+ YsFYIoOeVpDBxLT/H5D1T3FUH04zjS6gMSwiVSlnKjYT0ZNQ18A1JDzdwmauG1yWJJ6C
+ vAIfLVX7Y/16R6SV19gswrWD5wNRNT2ueLurk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=sSziG86OyoRTL66noHj0SwAN+2VckCYxnmfYy0a1Hug=;
- b=N0aXhs8GUiYkZOmJpuRgK3ijqgTwpmKIBoXJXjW1XWmEMVdvnJhqgqUjld5Au/tUfj
- qDNjPfokM5h5DCA47KRAxP1tCwI3rVb24wMdWYKiKsfvoW6Wx7DZB93tMa8Vf0xi4iNW
- fwfavwjyslJaAyR/3K3pEghK20wiGNkpJB7GW6d7pxJC+tQFrDBlXQ87yZdAHvq9x2/A
- LW58le9JoK7V7CVlYPIRy8aBHbeqSA/2Y18qJhRO60KKODqhGqUJbwrHCkw991EuEC5o
- 6eXpmJOp32ETzhEGyYANx5wUaB9o8ucx/XV1ifL1gxu+FE5uV/VAj+nJ8rFjUBr+F2yF
- 2EhA==
-X-Gm-Message-State: AOAM531lAmt69KiQV/42j0DGs++XQnQuh8MIHozPi9ca9PjDtDqS9nFC
- 9uRGZ8RXiexuebSvtzhCxLhPYuGrPq+UrTQnkyc+fw==
-X-Received: by 2002:a05:600c:d6:: with SMTP id
- u22mr9121925wmm.133.1632906639073; 
- Wed, 29 Sep 2021 02:10:39 -0700 (PDT)
+ bh=/I8lKACSpMIYGQb9ziUE8Xs96OLh4I5ighrTPRvHutQ=;
+ b=y9AHmEg/c+7eIF6WaZG7Tc2cER6jVD6Tmf6rzBwLiGYfoCerH3G7TaFgzZjUJWbfAQ
+ o5K+IsThHTx0gSxYLSv9zjZwQpeX6HjTd/GChivO3s5WMpb6IpdI38LeyBlUx3dkSOQT
+ Dg5dozzIRj9Bo2UGv8eXq0ZLWM6Z8XNg8s6YGcFCbjEB1L+/uaxrLNuKPjjMGl778OR3
+ 0MZMfyEswF5kRrxAaAR12rFYgCbAB+0YbkkhDs7WZ4/9nZySNuiU62mMBnk+bo2vMU+M
+ VUrADoy3ecqhWptF8kfpCsHeMO9KZMRsybqBYnmOXA93JPh5Px1vEYiTjCYMu0TxzqJU
+ b+XA==
+X-Gm-Message-State: AOAM532FEGY7o3IdXNckYcYNhPqZLEJH2a9j2KJSIYAQNysd0Y3u6C7p
+ zzEvoOV+xSQn9+agElniWXnjxybDu7lyKtaGm/NIQA==
+X-Received: by 2002:ab0:4a19:: with SMTP id q25mr8419074uae.143.1632884511970; 
+ Tue, 28 Sep 2021 20:01:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210926183410.256484-1-sjg@chromium.org>
  <CAFEAcA8S2=7rOKxeqcW+kw0BVPO3PUJGSUH-ioN7=c=U7zQxvg@mail.gmail.com>
@@ -90,111 +84,127 @@ References: <20210926183410.256484-1-sjg@chromium.org>
  <CAFEAcA-bk6PF_P3JOxQSCXo7Fh2K5AVygB9WwDUiK2fV9Fx5jw@mail.gmail.com>
  <CAPnjgZ26gQVpzL6fYsGzDf=c+z4aG5SPkBf7yoDC9+ynxQi_9Q@mail.gmail.com>
  <CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-zyh=N8rqm4vOcGZA@mail.gmail.com>
- <CAPnjgZ0xMH+SSjQWGjynTLDDbg6tO=z+-eDbpDKV1gqo=bhqaQ@mail.gmail.com>
-In-Reply-To: <CAPnjgZ0xMH+SSjQWGjynTLDDbg6tO=z+-eDbpDKV1gqo=bhqaQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 29 Sep 2021 10:09:45 +0100
-Message-ID: <CAFEAcA9y+sBpL-ncYwdqNkMx_oXkQ-pdhNcHOdgTxJmWBArzhA@mail.gmail.com>
+In-Reply-To: <CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-zyh=N8rqm4vOcGZA@mail.gmail.com>
+From: Simon Glass <sjg@chromium.org>
+Date: Tue, 28 Sep 2021 21:01:40 -0600
+Message-ID: <CAPnjgZ0xMH+SSjQWGjynTLDDbg6tO=z+-eDbpDKV1gqo=bhqaQ@mail.gmail.com>
 Subject: Re: [PATCH] hw/arm/virt: Allow additions to the generated device tree
-To: Simon Glass <sjg@chromium.org>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92c;
+ envelope-from=sjg@google.com; helo=mail-ua1-x92c.google.com
+X-Spam_score_int: -92
+X-Spam_score: -9.3
+X-Spam_bar: ---------
+X-Spam_report: (-9.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HRXsBQ0xrDrz
+ QEMU Developers <qemu-devel@nongnu.org>, Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nTqz1+LD91K2
 
-On Wed, 29 Sept 2021 at 04:01, Simon Glass <sjg@chromium.org> wrote:
-> On Tue, 28 Sept 2021 at 03:21, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > So what *is* this patch doing? The subject says "Allow additions to
-> > the generated device tree", and the patch adds an option to
-> > "Merge a device tree binary (dtb) file into the generated device tree".
-> > That sounds exactly like "combine two bits of dtb" -- the one the
-> > user provides to the -dtbi option and the one QEMU generates
-> > internally.
+Hi Peter,
+
+On Tue, 28 Sept 2021 at 03:21, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Yes that's right, but as you say one of them is generated by QEMU. It
-> is fixing a problem caused by QEMU's generation of the device tree,
-> since it provides no wat to augment the device tree without my patch.
-
-You can augment it in the guest if you need to add guest-specific stuff.
-
-> > > The only current working option is to just pass the U-Boot dtb through
-> > > and not use QEMU's on-the-fly-generated dtb at all. But I am assuming
-> > > there is a reason why QEMU generates that dtb, so that would not be
-> > > desirable?
+> On Mon, 27 Sept 2021 at 21:12, Simon Glass <sjg@chromium.org> wrote:
+> > I think you are misunderstanding my patch and that may be the problem here.
 > >
-> > QEMU generates the dtb to tell the guest what hardware is
-> > present and where it is. We don't guarantee that that hardware
-> > arrangement is necessarily stable between QEMU versions (in
-> > practice there are generally additions and not deletions or
-> > moves, but in theory there might be). All the guest is supposed
-> > to assume is the location of RAM and flash; everything else it
-> > must look in the dtb to determine.
+> > Where QEMU is provided with a dtb (-dtb) it uses that and passes it
+> > on. This is absolutely fine and I have tested that this works well
+> > with U-Boot. No issues.
+> >
+> > Where QEMU creates its own dtb on the fly the -dtb parameter is
+> > actually ignored and there is no way to adjust what QEMU passes on,
+> > without recompiling QEMU. It is quite inflexible, actually. Even just
+> > creating a new device for development purposes is not possible. That
+> > is the problem I am trying to solve.
+> >
+> > There is certainly no intent to combine two bits of dtb with my patch.
+> > We could easily do that externally to QEMU.
 >
-> Yes, so that is going to severely limit the usefulness of the virtio
-> support, for example. But we can just ignore it for CI, I suppose,
-> since we can use fixed parameters to QEMU, if you don't want to allow
-> more control of the device tree.
+> So what *is* this patch doing? The subject says "Allow additions to
+> the generated device tree", and the patch adds an option to
+> "Merge a device tree binary (dtb) file into the generated device tree".
+> That sounds exactly like "combine two bits of dtb" -- the one the
+> user provides to the -dtbi option and the one QEMU generates
+> internally.
 
-virtio-mmio devices should already be correctly indicated in the
-device tree. virtio-pci devices can be found by probing the PCI
-bus in the usual way (and you can find out where the PCI controller
-is by looking in the dtb).
+Yes that's right, but as you say one of them is generated by QEMU. It
+is fixing a problem caused by QEMU's generation of the device tree,
+since it provides no wat to augment the device tree without my patch.
 
-> This patch is really just augmenting what QEMU is already doing and
-> solving a problem that it has. I don't see it as creating a new boot
-> mechanism or being a weird tweak. If anything, it puts the tweaking in
-> the hands of the user. It seems like something you would be keen on,
-> from that POV.
-
-I absolutely see it as a weird tweak. It's something that
-only u-boot seems to care about, and it's adding an extra
-user-facing command line option that is basically
-"if you need to boot u-boot you need this". The user should
-not need to "control" the dtb, because QEMU should already
-be creating a dtb which describes the hardware it is exposing
-to the guest.
-
-> > Guest software running on the "virt" board needs to know it is
-> > running on the "virt" board and deal with the interface and
-> > information that QEMU provides. (For instance, Arm Trusted
-> > Firmware and UEFI both have done this.)
 >
-> Well unfortunately this is in conflict, based on what you have said in
-> this thread. We can either have virtio support (use QEMU-generated
-> device tree) or have U-Boot work correctly (use -dtb). Do you have any
-> other ideas?
+> > The only current working option is to just pass the U-Boot dtb through
+> > and not use QEMU's on-the-fly-generated dtb at all. But I am assuming
+> > there is a reason why QEMU generates that dtb, so that would not be
+> > desirable?
+>
+> QEMU generates the dtb to tell the guest what hardware is
+> present and where it is. We don't guarantee that that hardware
+> arrangement is necessarily stable between QEMU versions (in
+> practice there are generally additions and not deletions or
+> moves, but in theory there might be). All the guest is supposed
+> to assume is the location of RAM and flash; everything else it
+> must look in the dtb to determine.
 
-I've already suggested what I think you should do: have u-boot
-combine the dtb it gets from QEMU with the dtb-extras stuff
-it wants for its own purposes, with the latter supplied in
-any of a bunch of workable ways (extra file loaded in memory,
-concatenate the dtb blob with the u-boot binary at compile
-time, whatever; rough analogy with however u-boot gets the
-full dtb on hardware platforms where there is none).
+Yes, so that is going to severely limit the usefulness of the virtio
+support, for example. But we can just ignore it for CI, I suppose,
+since we can use fixed parameters to QEMU, if you don't want to allow
+more control of the device tree.
 
--- PMM
+>
+> > One more question...other than dtb, does QEMU typically add support
+> > for data structures needed by particular projects or groups of
+> > projects? It looks like dtb was supported for ARM Linux originally? I
+> > am looking at supporting bloblist as a way of communicating
+> > information between firmware (basically a simple way of packaging
+> > multiple blobs).
+>
+> The answer here is essentially "no, as far as possible". We
+> ideally would not have special case support for any particular
+> guest code. We do have special handling for "directly boot the
+> Linux kernel" for a combination of historical reasons (we've
+> always supported it) and it being a massive use case. But even
+> that is painful to maintain (it starts off seeming easy but
+> gradually requires more weird tweaks and handling as CPU
+> architectures evolve). I really strongly don't want to add
+> additional categories of guests that QEMU has special case
+> support for, which is the main driver behind why I'm so negative
+> about this patchset.
+
+This patch is really just augmenting what QEMU is already doing and
+solving a problem that it has. I don't see it as creating a new boot
+mechanism or being a weird tweak. If anything, it puts the tweaking in
+the hands of the user. It seems like something you would be keen on,
+from that POV.
+
+>
+> Guest software running on the "virt" board needs to know it is
+> running on the "virt" board and deal with the interface and
+> information that QEMU provides. (For instance, Arm Trusted
+> Firmware and UEFI both have done this.)
+
+Well unfortunately this is in conflict, based on what you have said in
+this thread. We can either have virtio support (use QEMU-generated
+device tree) or have U-Boot work correctly (use -dtb). Do you have any
+other ideas?
+
+Regards,
+Simon

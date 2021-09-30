@@ -1,101 +1,112 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp227162lfp;
-        Thu, 30 Sep 2021 05:42:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgmQriZ/suYh9FzRWnIYy0lNCoY/DFoMLkpwJl99Y/Ql3aHx2hhcUpLrU6dMy98ixS6rA0
-X-Received: by 2002:a05:6130:40d:: with SMTP id ba13mr5560745uab.124.1633005730754;
-        Thu, 30 Sep 2021 05:42:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633005730; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp679531lfp;
+        Thu, 30 Sep 2021 14:54:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8MMgwCCReSGhPx0S9c0H70Tq0yNlwm7t+YSh7v+VjWatEN78mmu8PnYzzYKxLAXYkc3hl
+X-Received: by 2002:a9d:6347:: with SMTP id y7mr7214533otk.241.1633038875658;
+        Thu, 30 Sep 2021 14:54:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633038875; cv=none;
         d=google.com; s=arc-20160816;
-        b=VHWMcrZUnZCebYRGCouDPI8m3Vnaidf84JDywjBNgoe/2vvXXz3YelMXieE9hpGtgw
-         fmCpbl9NHmlmoNttV73r9S2Vb54EMVHQtQu04oqtXAjDClrpRn8zoOcuRdmN6kycFOGr
-         rowByzPOa4BgjJYGIs2HpHI0UxaymKG05ThR+PBK4gHkgp6v8jv6hORKtp69nrdaCUXo
-         mP3V3RKrSknm5ryAqlgvQ2gkdeix8wy4sXf/XjkCUDMDgj8OLTvdMpXEdYqRWNaxuZni
-         y71k8C/X39uHFQpPxQYjkDezoNve9kaYJWQQPG198e96b7QjkiYnwToMj4ZmaC7uLvj4
-         NyXQ==
+        b=0+wbYujnkicwv0UNtnTJFeciLZZdk6R3LKOElIy6CgGxpZrWLb6VxJL/SE3ZyniXUR
+         bYMd98ehWokYPhRGyaEYsOZetKyH7/397k1Bm2AGHtalOm3BZNW6kyt8T84LN6WQctmA
+         yBiJRO7JtLSs6xilSVJnh0VEm83VVGcrsuswuUwut6cxpQwqP2R9YrUMvbGdP/mCmQY0
+         j9Q7xM0jXVz4UYoi5TOZnEyFVRU+fru+3202GzqjEHloTPob91iDKPMwAmPGwTGWAwnK
+         Z8PHpX7jzKelEBvdzZmm86fOOOLX2xOUWkr7lc/cs0GwJdZmmHQ49yRzm9u+Mv/wAzHG
+         mQ9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=iSyHRHsYs+AnSS0bNHuEGBrbg1RhSpChGg259dP8q4k=;
-        b=u+fjFZqBycgbiwu0bZZE/XUddLMaMXTJ2Xp31V4wmv3R3tL9edEHlR0UIZlLShgv49
-         rGhDZKQDjG9qYNpiaOk9BfXotnicy0pTUmVGz9QDlz8CBFBwOovxqVfjzefuUDDEdL2P
-         M0LlFgETmkdVbxulGBzRK3b/5gRn+isNxSMn4ZXPtUG8FI7yEof3YVxaXAQnLqfpYLGr
-         E0P8QMfhU+FgCtsiUzeaVcwVDvFBlrvQB7wMi7FWARZ6Ou7VwBaDLjXOPj3eKsCI4y8e
-         nWeFRD0d1dBdMkrjkp32/DH3wxjdHdWTMYXDmqHCmnAIdHgz4loneG70YO8NZcMIRBMY
-         s3GA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=6eAD+p36Z5Qycy9bvVaFcVsiLtWL2Umeb+LQeTDqnFU=;
+        b=TXtYOGkL//cxDOm3QSwNpnq7X6JCfOvx8HcoDbnG2ZnUS522P+q4sxmgqnz7ELGTot
+         K+PopmfIMlAq3XgHN01B7f2/O/9iwekMeCC7oWn3789YXiVYdsvjbA+8YTZFSKFlHmBm
+         wljmEUqMmX/J91WZGbKxCRWHs6LvigdRi91E5JMMWEzwH2u0PZ2LfRfC49tog1oiaVJs
+         npma39dtgwehkad1qPCje2scGFX6xa7UDUa4yzXadnQQc7OkzX1R7Z/ssT7OSO6qdWPe
+         K5r8rCMevtVjbumXLfbdWQS1YVxvDeG3ThFWyhjuQib17X4yPnUeVM8CVZsZDd1vrFiX
+         VnnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TQrMPSYZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UesUw91d;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si2178035vsl.51.2021.09.30.05.42.10
+        by mx.google.com with ESMTPS id e11si4365343otq.84.2021.09.30.14.54.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Sep 2021 05:42:10 -0700 (PDT)
+        Thu, 30 Sep 2021 14:54:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TQrMPSYZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60684 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UesUw91d;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVvO6-0001iV-19
-	for alex.bennee@linaro.org; Thu, 30 Sep 2021 08:42:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52416)
+	id 1mW40g-0003MZ-Vf
+	for alex.bennee@linaro.org; Thu, 30 Sep 2021 17:54:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVvNi-0001iK-AU
- for qemu-arm@nongnu.org; Thu, 30 Sep 2021 08:41:47 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:42691)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mW40U-0003M4-Kw; Thu, 30 Sep 2021 17:54:22 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:38477)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVvNg-00041y-K8
- for qemu-arm@nongnu.org; Thu, 30 Sep 2021 08:41:45 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- q127-20020a1ca785000000b0030cb71ea4d1so4254561wme.1
- for <qemu-arm@nongnu.org>; Thu, 30 Sep 2021 05:41:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iSyHRHsYs+AnSS0bNHuEGBrbg1RhSpChGg259dP8q4k=;
- b=TQrMPSYZGfY66Z9fkLf5JiAZZHZQY0uGHhPnMTlihymfGb0aka7xaYLQYUHLlJHTl7
- ylaKCatVJa3X4WzBB/4/GyqxxPubLYEFmVRV9xQ6alKQprtM8fup6DbZ8hSJkWe+nznR
- 9wVNPJvfPI7Ip4XkMM28uOwtPeN0BFEQ4a+M1bHDIoZB7aWvkvO+/pmxgARcwD+z38HT
- G5IDmzDNjsVzv4ZBzklZLiVp5Jm8CVYN+j69tdtQadYbbL2dau9Bt9jFSdOq8qlgg7Wt
- m7RIqqmBvfve1jP1BBvXazoe/oxCw4z/Jozl3cb2u0EQv7TVG72BNXQoE+LsNiPhyG5Z
- g1Pg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mW40S-0005Ff-BH; Thu, 30 Sep 2021 17:54:22 -0400
+Received: by mail-wr1-x436.google.com with SMTP id u18so12355136wrg.5;
+ Thu, 30 Sep 2021 14:54:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=6eAD+p36Z5Qycy9bvVaFcVsiLtWL2Umeb+LQeTDqnFU=;
+ b=UesUw91d8ewxJ1PQK2C0uOWxYXNsfJqJORwS5xsCK1M05iWyy3kH51DKVW1NkITi0t
+ QbVwPV4SNyJmw4BvwKujTT6pTX2GqHXt3sa86zkrRyeLWf/LxXSJDI+Iy2Qhk+xpm436
+ UWrlRMg3XzstdDzNA3EBGvX+Pr9uuekhGfQsAOfc45iq5GTMEUgIj6YtrOpEcJy+qvL7
+ MoG8Ld0r+3ECwAFr0f3FCF+EthV6R8OOou6bYaktrT4OxvizL0EA2QzUzK3Zz0UyO5jP
+ t/W8YCLP/vsEzysJW8yJGrgMeDedTkldEzMIULdylOTQBdVd45U6ULGj6+1P+xWVXKZ7
+ nxfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iSyHRHsYs+AnSS0bNHuEGBrbg1RhSpChGg259dP8q4k=;
- b=oBW0qK3cg0KsVjb98Yzb2quMhdPGxz/dOgu50VA/Ft9l9vU4tX9viVVioMzLm1pZsJ
- A9o8FSISh0yM3ML5zBHnZEaaH/H2IfOYoqsAIHcqxzrD5rR925YOH1qc/788CLbl7VnX
- fUR2nYKJ5O1Vk+yO4bkRFERdYrYSMavjB6Rs8foPkT9dfenD7yCRDbGzG2aAb9hxmU42
- +J69GAPbiCODvVH/bpxtcMWoSy7PYjzTH+xC1bO58NkY7TlzHULP6GiuAKaiNaPP4g8D
- GFvwZWkijDKHImqliPIpNYMbwUQQSKj2G6qKLSERRvI94JwzEyXWu3tj2nbYvXvlA0he
- hngQ==
-X-Gm-Message-State: AOAM530+DeFzBWoHek43iyI6+uUlQXvxJE7QMiWgxwpBGtI7Tew3muJp
- pYjGbhCBScwlvcaC6OO5U2MShmlwYKmtvWmlQbGkcw==
-X-Received: by 2002:a1c:e906:: with SMTP id q6mr16326247wmc.126.1633005703080; 
- Thu, 30 Sep 2021 05:41:43 -0700 (PDT)
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=6eAD+p36Z5Qycy9bvVaFcVsiLtWL2Umeb+LQeTDqnFU=;
+ b=SKk5AVPLX4QcAjBmC01+SFDsLmaFF9kufH6JGRFKiuxlocRbzzkPTtP/EWD24mmDdA
+ mFhZcH7emFwq2X3B9J2FN79H7laz22qaBfmVXph7wBe6+25R0F/WSY7kaipgWrN3l84h
+ mjdWLNZD2at4NA6Q7vmS+7sR7ybUsECBcZKqZM0IKezxnXF2Ps6KYJNteY8MxA+LWuQ+
+ woWueoQnAXLRe+AHO2TXQHr/B5x0KyI8N2/h+NxSQcQLVw6smxrQW8cJFJCgddyczHQg
+ C9MhK+RSlUCpEfrT+1r/bOPD3Y4UgtZmTAhF57pZE4t43fZhwhvy0Ig+XPsvHoGbAYvU
+ aiHQ==
+X-Gm-Message-State: AOAM531xiyW+5PnUCa8VgELSZuIcf2FNyzcRA53JwxfoKfDCfT3o1BGW
+ /x46D2ItMRdpB5imLRGO5UI=
+X-Received: by 2002:adf:a499:: with SMTP id g25mr8136060wrb.239.1633038858362; 
+ Thu, 30 Sep 2021 14:54:18 -0700 (PDT)
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id o1sm4091738wru.91.2021.09.30.14.54.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Sep 2021 14:54:15 -0700 (PDT)
+Message-ID: <907d7432-a81b-b36b-9af5-a5554df3bddf@amsat.org>
+Date: Thu, 30 Sep 2021 23:54:14 +0200
 MIME-Version: 1.0
-References: <20210927142825.491-1-xchengl.cn@gmail.com>
-In-Reply-To: <20210927142825.491-1-xchengl.cn@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Sep 2021 13:40:49 +0100
-Message-ID: <CAFEAcA-LhN+Q20xeQ-dh+9a9_Z2ccfmH7caKjNuicNmS0nC_=Q@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm: sabrelite: Connect SPI flash CS line to
- GPIO3_19
-To: Xuzhou Cheng <xchengl.cn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH 1/3] hw/intc/arm_gicv3: Move checking of
+ redist-region-count to arm_gicv3_common_realize
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210930150842.3810-1-peter.maydell@linaro.org>
+ <20210930150842.3810-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20210930150842.3810-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.127,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -110,29 +121,142 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
- Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
- Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>,
- groeck7@gmail.com, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ph4Roa/aCs8F
+X-TUID: o+eOp9Dmwpb9
 
-On Mon, 27 Sept 2021 at 15:28, Xuzhou Cheng <xchengl.cn@gmail.com> wrote:
->
-> From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
->
-> The Linux spi-imx driver does not work on QEMU. The reason is that the
-> state of m25p80 loops in STATE_READING_DATA state after receiving
-> RDSR command, the new command is ignored. Before sending a new command,
-> CS line should be pulled high to make the state of m25p80 back to IDLE.
->
-> Currently the SPI flash CS line is connected to the SPI controller, but
-> on the real board, it's connected to GPIO3_19. This matches the ecspi1
-> device node in the board dts.
+On 9/30/21 17:08, Peter Maydell wrote:
+> The GICv3 devices have an array property redist-region-count.
+> Currently we check this for errors (bad values) in
+> gicv3_init_irqs_and_mmio(), just before we use it.  Move this error
+> checking to the arm_gicv3_common_realize() function, where we
+> sanity-check all of the other base-class properties. (This will
+> always be before gicv3_init_irqs_and_mmio() is called, because
+> that function is called in the subclass realize methods, after
+> they have called the parent-class realize.)
+> 
+> The motivation for this refactor is:
+>  * we would like to use the redist_region_count[] values in
+>    arm_gicv3_common_realize() in a subsequent patch, so we need
+>    to have already done the sanity-checking first
+>  * this removes the only use of the Error** argument to
+>    gicv3_init_irqs_and_mmio(), so we can remove some error-handling
+>    boilerplate
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/hw/intc/arm_gicv3_common.h |  2 +-
+>  hw/intc/arm_gicv3.c                |  6 +-----
+>  hw/intc/arm_gicv3_common.c         | 26 +++++++++++++-------------
+>  hw/intc/arm_gicv3_kvm.c            |  6 +-----
+>  4 files changed, 16 insertions(+), 24 deletions(-)
+> 
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+> index aa4f0d67703..cb2b0d0ad45 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -306,6 +306,6 @@ struct ARMGICv3CommonClass {
+>  };
+>  
+>  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+> -                              const MemoryRegionOps *ops, Error **errp);
+> +                              const MemoryRegionOps *ops);
+>  
+>  #endif
+> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+> index 3f24707838c..bcf54a5f0a5 100644
+> --- a/hw/intc/arm_gicv3.c
+> +++ b/hw/intc/arm_gicv3.c
+> @@ -393,11 +393,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>  
+> -    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops, &local_err);
+> -    if (local_err) {
+> -        error_propagate(errp, local_err);
+> -        return;
+> -    }
+> +    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops);
+>  
+>      gicv3_init_cpuif(s);
+>  }
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index 223db16feca..8e47809398b 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -250,22 +250,11 @@ static const VMStateDescription vmstate_gicv3 = {
+>  };
+>  
+>  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+> -                              const MemoryRegionOps *ops, Error **errp)
+> +                              const MemoryRegionOps *ops)
+>  {
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(s);
+> -    int rdist_capacity = 0;
+>      int i;
+>  
+> -    for (i = 0; i < s->nb_redist_regions; i++) {
+> -        rdist_capacity += s->redist_region_count[i];
+> -    }
+> -    if (rdist_capacity < s->num_cpu) {
+> -        error_setg(errp, "Capacity of the redist regions(%d) "
+> -                   "is less than number of vcpus(%d)",
+> -                   rdist_capacity, s->num_cpu);
+> -        return;
+> -    }
+> -
+>      /* For the GIC, also expose incoming GPIO lines for PPIs for each CPU.
+>       * GPIO array layout is thus:
+>       *  [0..N-1] spi
+> @@ -308,7 +297,7 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+>  static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+>  {
+>      GICv3State *s = ARM_GICV3_COMMON(dev);
+> -    int i;
+> +    int i, rdist_capacity;
+>  
+>      /* revision property is actually reserved and currently used only in order
+>       * to keep the interface compatible with GICv2 code, avoiding extra
+> @@ -350,6 +339,17 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>  
+> +    rdist_capacity = 0;
+> +    for (i = 0; i < s->nb_redist_regions; i++) {
+> +        rdist_capacity += s->redist_region_count[i];
+> +    }
+> +    if (rdist_capacity < s->num_cpu) {
+> +        error_setg(errp, "Capacity of the redist regions(%d) "
+> +                   "is less than number of vcpus(%d)",
+> +                   rdist_capacity, s->num_cpu);
+> +        return;
+> +    }
+> +
+>      s->cpu = g_new0(GICv3CPUState, s->num_cpu);
+>  
+>      for (i = 0; i < s->num_cpu; i++) {
+> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+> index 5c09f00dec2..ab58c73306d 100644
+> --- a/hw/intc/arm_gicv3_kvm.c
+> +++ b/hw/intc/arm_gicv3_kvm.c
+> @@ -787,11 +787,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>  
+> -    gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL, &local_err);
+> -    if (local_err) {
+> -        error_propagate(errp, local_err);
+> -        return;
+> -    }
+> +    gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
+>  
+>      for (i = 0; i < s->num_cpu; i++) {
+>          ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
+> 
 
-Thanks for the effort you put in to track down the root cause of
-this bug! Applied to target-arm.next.
+The pattern make me think gicv3_init_irqs_and_mmio() should be
+refactored as a ARMGICv3CommonClass::init_irqs_and_mmio handler,
+called in arm_gicv3_common_realize().
 
--- PMM
+Or maybe even have ARMGICv3CommonClass::irq_handler and
+ARMGICv3CommonClass::ops set in each child class_init().

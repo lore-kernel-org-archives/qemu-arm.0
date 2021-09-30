@@ -1,200 +1,335 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp362629lfp;
-        Thu, 30 Sep 2021 08:09:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWUO2NpaYM14Y2u5BT3vAA6VXjza7fvcjo0fDBajpexeoiLRfaTgiZMzVyaVIY12QK/J4O
-X-Received: by 2002:a05:6000:1866:: with SMTP id d6mr6908006wri.141.1633014579258;
-        Thu, 30 Sep 2021 08:09:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633014579; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp364350lfp;
+        Thu, 30 Sep 2021 08:11:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyS7GMGUuXdEv3T/wyoISB60FeJtgMIdRNNer9kVij4aY8aVkE/d1X7B/JzdK3oJURJ7ax
+X-Received: by 2002:a1c:f705:: with SMTP id v5mr5973683wmh.18.1633014675105;
+        Thu, 30 Sep 2021 08:11:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633014675; cv=none;
         d=google.com; s=arc-20160816;
-        b=rhZ7CCECWBymua49wBP8hBr/Xxi+oT7OZqe3KbEX7q131Z9kMqDkjmb8lzS2qp6FUr
-         0Pj4q8tE7L/dxBUsCUOXS0AjLacPZ3qsCnjGi97J6Nmj23jmviFMPv2GWYTbnjf4yggq
-         x/l4zfgRsVEGW8Ur3YNVAi8ypGNgB1bvqK2VR3LcPvbouBnEsxvfNI2GIjY6DRQjJIa+
-         WTgi4tj+iZ7rdZodQoDt3LKWIzL5Wqp/XX6k5DBmMOHpi3Bn4MQKowInnew/k14/uMrl
-         BhyjtHehTehrP24wIRRGKKuevZaHmE4K4RgqDDU6pgtB8b9uZ1utqIO6Mu+vLckPOwiZ
-         Fgtg==
+        b=mLZ7L2PshU7ZTb/yNUIQd2hFiJHVDUT8c6D7IN/2nEmRhYxPlqnxmlDHmqOMdvY0rE
+         nTbs8mF3fcb4cQFKCiz9oEkhSOIhe88SazAMniIWZsd75G9nbsT9Iy0H89dfow7X2cjc
+         6zt+K6gc18Awb89qW/6w5xuhvnaQ4b04oiS20PxFSQ9nn6ebP9jWXyOiTNEOwcn67wCv
+         fxCKXLmW1KGjgzHVhgof9fn0gDsCEJ0T7btSHRDecCrK4ujRHa5z2k5lhf/VKuSv3aW/
+         Sr6lq+wPxHGyXmP1FZasCS7UumwCKniuIj46/YUB10FBiQSqMg3qIS5LVFEwoNZvwsKd
+         gU/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=orCnbOBJk1StIAEbK+6LWEL6RpA/3iXocZo/LKR1xDI=;
-        b=Rh3gQhBt/NirPJ1aTlKxh/DcDelCcnJsdMcEqYLmFqqAcYG+/p929r5rfX9sfX80nJ
-         LcgnsX31rPCQal0p4dzVxAE08X4MOnpfun59djYh0eOhjQqubH9UaU3E1b4H1wT6X0CP
-         oVSOLxdbzs21ClBo66igdlJMgweezpznAYXHfpaffCGfoQkifNiHjM7FUhIyVZQwXkL/
-         wdnEEobu331xz3OJp4mim2N8aeqC/AmJKzQUs/8nJs7cZiaLtdTCbX6GPzJNVjivsY6k
-         MJdAeIys4Bo/K1h0Vija4h6XXHqAWE+bb7NJU7Alk5KSGCYrjX13KcfpEE7VvBIITLJr
-         Xl4A==
+        bh=8L0rcLYer97m5XJ0cEUlqhLq50Ovc127of8s10tTwzA=;
+        b=BcoJVAmZ+6jTER5NpOLPutjh/AsjdASl5nAyVsQFBwKRupdu4a6URIzimwvRJ3C0DU
+         edXw1wS8eJWloQKoTxHqMoP2W5t07j5c7cZ//jkgTrkh8MxLXYcpOrwe+lz5b5FfkqIr
+         qlP0+vcQJ91wAjugxxtyPJ1JQVquBAImzpXn1qRq61DeMIMhS3mz3KW2AOtqtmMyIeUg
+         1ZVic7o577BZr+UUO3w6GlYhkcNFG/WqyTXOE+sS9PhM2xZ/j7eryMrqZ1j4aM2aOZ+D
+         cKAlwX/YmOE5QD4M+l1C5+yvEZjkUsUk5EudZypgT6TR56OrPEHsj2d7zi2crGbifwfD
+         EgHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f6lOmLa1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="zGBH/N6A";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a81si5106718wmd.119.2021.09.30.08.09.39
+        by mx.google.com with ESMTPS id b5si3283349wrv.223.2021.09.30.08.11.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Sep 2021 08:09:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 30 Sep 2021 08:11:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f6lOmLa1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="zGBH/N6A";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46592 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVxgo-0004bv-A5
-	for alex.bennee@linaro.org; Thu, 30 Sep 2021 11:09:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60290)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mVxiM-00066R-1C
+	for alex.bennee@linaro.org; Thu, 30 Sep 2021 11:11:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVxg7-0003y4-Kq
- for qemu-arm@nongnu.org; Thu, 30 Sep 2021 11:08:56 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:37842)
+ id 1mVxg7-0003xv-8G
+ for qemu-devel@nongnu.org; Thu, 30 Sep 2021 11:08:56 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:45630)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVxg4-00019K-E1
- for qemu-arm@nongnu.org; Thu, 30 Sep 2021 11:08:55 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- r83-20020a1c4456000000b0030cfc00ca5fso8741891wma.2
- for <qemu-arm@nongnu.org>; Thu, 30 Sep 2021 08:08:51 -0700 (PDT)
+ id 1mVxg4-00019O-EE
+ for qemu-devel@nongnu.org; Thu, 30 Sep 2021 11:08:54 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ b192-20020a1c1bc9000000b0030cfaf18864so4592037wmb.4
+ for <qemu-devel@nongnu.org>; Thu, 30 Sep 2021 08:08:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=orCnbOBJk1StIAEbK+6LWEL6RpA/3iXocZo/LKR1xDI=;
- b=f6lOmLa1H9JFNOXZ7Q2RNMJV72ulymSzgqvr/AZzaWvy0z0UDh9iXGao+Nni/1B78/
- wJYn96Kt31NDR4T54eeC90U7LhBSHPxF3WsBAn1Gb0lVkrTF7xybTXBdVx1OoDlH3Yee
- BBYeP95c2yx5uBjIS/DeIcEU8Uyq05E/wLWoVoYXxlEuce22Npve0DaBbgqAWgtdO99P
- WaBSRB2Efp1eO+wK4+wEu79qVldbne4Md1Y7EwMdvh7XtekA9a2DjDXSUtwwPDRcjyN9
- wDrHms4+JTESFXiZs1KB2ukq5oOlsgfSJhQ9Q0RpJQCMrRUe1Iv7iPVmcPN4InUAMc5h
- 6bfw==
+ bh=8L0rcLYer97m5XJ0cEUlqhLq50Ovc127of8s10tTwzA=;
+ b=zGBH/N6ArzRb3OFkcJyuQT8GuBySnMNe1+ylz8AzFz9AZTIgu41u2SxVB0GF53nt9x
+ j6s7uEsT065GcjsqEZN/DKW7CNjjqjKs7bdrkQdrSeuLMMIjQXm3n5L6fv1Lt+bC7Bkm
+ rv2QIeKYH1mOUDOvLfUzZEV3U9kL8Ia/7odclWmkuThV/ny2Ell+7vLEZaXxbpoezqie
+ xHqlY6wgBC3q31LUveamuNyn2Z94Cy3mV5INSQT1au56F6FyaPq3qDHt9/HDpFLGFj2Y
+ CMzHgO86U4Vzbotgvrh8a4R1eMoOioM0vYMBX5sooVCFZxcxVC3ClNNt9A8UKa70LO+W
+ T7EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=orCnbOBJk1StIAEbK+6LWEL6RpA/3iXocZo/LKR1xDI=;
- b=UoQsAFphtrxjD0C5IdX7ngl4B5IoyrWZbQ46dQgU/aHlH6Aa/QwjS/fphzz8azzO6c
- Xq7yUEJenljO08ifWmcyKdehVKVplUmxXnKh5ngiXIyqgXaLgivvBS00OiEhmWbkxh+c
- 2GOnh7KG1niWG8pbrV+wDZSE7h70fCAc6RIdjKgP9HRIXX2GUHcrU6eSbF8S2TFUaz0O
- VSkmVjCiGe3+KCRi1lwcgHEHrqR4ldVVT0fTpo9xQn9va5NBhRrlMpqUVTTLhgp5+Hn5
- UlblgqSj1rZME+7OorApBX1rObHC+UAL7qZJxOZR/8eOgYM1GHlcz/HjSOPfocJ7gPk4
- Nq8w==
-X-Gm-Message-State: AOAM530SXloBL46tU65+oEaarfdvMc91gNctNveUjsE13enBXNRKzIE+
- 4kd36N3JcTea3xH/GdF/hWkFli4OfLZsjA==
-X-Received: by 2002:a05:600c:321a:: with SMTP id
- r26mr15261827wmp.43.1633014526080; 
- Thu, 30 Sep 2021 08:08:46 -0700 (PDT)
+ bh=8L0rcLYer97m5XJ0cEUlqhLq50Ovc127of8s10tTwzA=;
+ b=rHSrQIL1g9vHFggXivWqYb4E5ixfaGvT2Uayd2IqBDUy1rNU8u8yDnjmD2p93I+Pxz
+ 3pqCY4IQnC7zcZFvXHQ0V1+WhMh3AmA78KXyUoxj+3rnWCTjLsghfJByddQ8Woc7ni+M
+ ihxsj+BaaS882iljLehXGtN/ArpItDjDRog2MO0bkNLguUEeQKTCSfa5mLv3H0FWwTmP
+ AXFGDF8ksTviiLHpNHQrjVS3mFu10s/iwgabFpKTKbQOh9X5ws436LReWrV3iCvcfqU5
+ SnlHY9K3XoLCkBZECx35aEKb5cZMsDz/aM0WK6j9WDUrjBREn1djCRFVk8nuARV22lBq
+ zw2w==
+X-Gm-Message-State: AOAM531rsZElkJ9qy/5s9LdzKj47mW8euVzmSx+iKMTtmjd7/tIaooLN
+ AHFJEYw8bpbRKWWHoHQSjbSSuQ==
+X-Received: by 2002:a05:600c:2193:: with SMTP id
+ e19mr5986608wme.38.1633014530680; 
+ Thu, 30 Sep 2021 08:08:50 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id o26sm5085942wmc.17.2021.09.30.08.08.45
+ by smtp.gmail.com with ESMTPSA id o26sm5085942wmc.17.2021.09.30.08.08.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Sep 2021 08:08:45 -0700 (PDT)
+ Thu, 30 Sep 2021 08:08:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/3] hw/intc/arm_gicv3: Set GICR_TYPER.Last correctly when
- nb_redist_regions > 1
-Date: Thu, 30 Sep 2021 16:08:41 +0100
-Message-Id: <20210930150842.3810-3-peter.maydell@linaro.org>
+Subject: [PATCH 3/3] hw/intc/arm_gicv3: Support multiple redistributor regions
+Date: Thu, 30 Sep 2021 16:08:42 +0100
+Message-Id: <20210930150842.3810-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210930150842.3810-1-peter.maydell@linaro.org>
 References: <20210930150842.3810-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VL7Qs2D7kHca
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MbIEmoVC/dLt
 
-The 'Last' bit in the GICR_TYPER GICv3 redistributor register is
-supposed to be set to 1 if this is the last redistributor in a series
-of contiguous redistributor pages.  Currently we set Last only for
-the redistributor for CPU (num_cpu - 1).  This only works if there is
-a single redistributor region; if there are multiple redistributor
-regions then we need to set the Last bit for the last redistributor
-in each region.
+Our GICv3 QOM interface includes an array property
+redist-region-count which allows board models to specify that the
+registributor registers are not in a single contiguous range, but
+split into multiple pieces.  We implemented this for KVM, but
+currently the TCG GICv3 model insists that there is only one region.
+You can see the limit being hit with a setup like:
+  qemu-system-aarch64 -machine virt,gic-version=3 -smp 124
 
-This doesn't cause any problems currently because only the KVM GICv3
-supports multiple redistributor regions, and it ignores the value in
-GICv3State::gicr_typer.  But we need to fix this before we can enable
-support for multiple regions in the emulated GICv3.
+Add support for split regions to the TCG GICv3.  To do this we switch
+from allocating a simple array of MemoryRegions to an array of
+GICv3RedistRegion structs so that we can use the GICv3RedistRegion as
+the opaque pointer in the MemoryRegion read/write callbacks.  Each
+GICv3RedistRegion contains the MemoryRegion, a backpointer allowing
+the read/write callback to get hold of the GICv3State, and an index
+which allows us to calculate which CPU's redistributor is being
+accessed.
+
+Note that arm_gicv3_kvm always passes in NULL as the ops argument
+to gicv3_init_irqs_and_mmio(), so the only MemoryRegion read/write
+callbacks we need to update to handle this new scheme are the
+gicv3_redist_read/write functions used by the emulated GICv3.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_common.c | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+ include/hw/intc/arm_gicv3_common.h | 12 ++++++++-
+ hw/intc/arm_gicv3.c                |  6 -----
+ hw/intc/arm_gicv3_common.c         | 15 ++++++++---
+ hw/intc/arm_gicv3_kvm.c            |  4 +--
+ hw/intc/arm_gicv3_redist.c         | 40 ++++++++++++++++--------------
+ 5 files changed, 46 insertions(+), 31 deletions(-)
 
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index cb2b0d0ad45..fc38e4b7dca 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -215,13 +215,23 @@ struct GICv3CPUState {
+     bool seenbetter;
+ };
+ 
++/*
++ * The redistributor pages might be split into more than one region
++ * on some machine types if there are many CPUs.
++ */
++typedef struct GICv3RedistRegion {
++    GICv3State *gic;
++    MemoryRegion iomem;
++    uint32_t cpuidx; /* index of first CPU this region covers */
++} GICv3RedistRegion;
++
+ struct GICv3State {
+     /*< private >*/
+     SysBusDevice parent_obj;
+     /*< public >*/
+ 
+     MemoryRegion iomem_dist; /* Distributor */
+-    MemoryRegion *iomem_redist; /* Redistributor Regions */
++    GICv3RedistRegion *redist_regions; /* Redistributor Regions */
+     uint32_t *redist_region_count; /* redistributor count within each region */
+     uint32_t nb_redist_regions; /* number of redist regions */
+ 
+diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+index bcf54a5f0a5..c6282984b1e 100644
+--- a/hw/intc/arm_gicv3.c
++++ b/hw/intc/arm_gicv3.c
+@@ -387,12 +387,6 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    if (s->nb_redist_regions != 1) {
+-        error_setg(errp, "VGICv3 redist region number(%d) not equal to 1",
+-                   s->nb_redist_regions);
+-        return;
+-    }
+-
+     gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops);
+ 
+     gicv3_init_cpuif(s);
 diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 8e47809398b..8de9205b386 100644
+index 8de9205b386..9884d2e39b9 100644
 --- a/hw/intc/arm_gicv3_common.c
 +++ b/hw/intc/arm_gicv3_common.c
-@@ -297,7 +297,7 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
- static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+@@ -254,6 +254,7 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
  {
-     GICv3State *s = ARM_GICV3_COMMON(dev);
--    int i, rdist_capacity;
-+    int i, rdist_capacity, cpuidx;
+     SysBusDevice *sbd = SYS_BUS_DEVICE(s);
+     int i;
++    int cpuidx;
  
-     /* revision property is actually reserved and currently used only in order
-      * to keep the interface compatible with GICv2 code, avoiding extra
-@@ -355,7 +355,6 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < s->num_cpu; i++) {
-         CPUState *cpu = qemu_get_cpu(i);
-         uint64_t cpu_affid;
--        int last;
+     /* For the GIC, also expose incoming GPIO lines for PPIs for each CPU.
+      * GPIO array layout is thus:
+@@ -282,14 +283,20 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+                           "gicv3_dist", 0x10000);
+     sysbus_init_mmio(sbd, &s->iomem_dist);
  
-         s->cpu[i].cpu = cpu;
-         s->cpu[i].gic = s;
-@@ -375,7 +374,6 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-          *  PLPIS == 0 (physical LPIs not supported)
-          */
-         cpu_affid = object_property_get_uint(OBJECT(cpu), "mp-affinity", NULL);
--        last = (i == s->num_cpu - 1);
- 
-         /* The CPU mp-affinity property is in MPIDR register format; squash
-          * the affinity bytes into 32 bits as the GICR_TYPER has them.
-@@ -384,13 +382,22 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-                      (cpu_affid & 0xFFFFFF);
-         s->cpu[i].gicr_typer = (cpu_affid << 32) |
-             (1 << 24) |
--            (i << 8) |
--            (last << 4);
-+            (i << 8);
- 
-         if (s->lpi_enable) {
-             s->cpu[i].gicr_typer |= GICR_TYPER_PLPIS;
-         }
-     }
-+
-+    /*
-+     * Now go through and set GICR_TYPER.Last for the final
-+     * redistributor in each region.
-+     */
+-    s->iomem_redist = g_new0(MemoryRegion, s->nb_redist_regions);
++    s->redist_regions = g_new0(GICv3RedistRegion, s->nb_redist_regions);
 +    cpuidx = 0;
-+    for (i = 0; i < s->nb_redist_regions; i++) {
-+        cpuidx += s->redist_region_count[i];
-+        s->cpu[cpuidx - 1].gicr_typer |= GICR_TYPER_LAST;
-+    }
- }
+     for (i = 0; i < s->nb_redist_regions; i++) {
+         char *name = g_strdup_printf("gicv3_redist_region[%d]", i);
++        GICv3RedistRegion *region = &s->redist_regions[i];
  
- static void arm_gicv3_finalize(Object *obj)
+-        memory_region_init_io(&s->iomem_redist[i], OBJECT(s),
+-                              ops ? &ops[1] : NULL, s, name,
++        region->gic = s;
++        region->cpuidx = cpuidx;
++        cpuidx += s->redist_region_count[i];
++
++        memory_region_init_io(&region->iomem, OBJECT(s),
++                              ops ? &ops[1] : NULL, region, name,
+                               s->redist_region_count[i] * GICV3_REDIST_SIZE);
+-        sysbus_init_mmio(sbd, &s->iomem_redist[i]);
++        sysbus_init_mmio(sbd, &region->iomem);
+         g_free(name);
+     }
+ }
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index ab58c73306d..2ca7152500c 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -825,7 +825,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+                             KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd, 0);
+ 
+     if (!multiple_redist_region_allowed) {
+-        kvm_arm_register_device(&s->iomem_redist[0], -1,
++        kvm_arm_register_device(&s->redist[0].iomem, -1,
+                                 KVM_DEV_ARM_VGIC_GRP_ADDR,
+                                 KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd, 0);
+     } else {
+@@ -838,7 +838,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+             uint64_t addr_ormask =
+                         i | ((uint64_t)s->redist_region_count[i] << 52);
+ 
+-            kvm_arm_register_device(&s->iomem_redist[i], -1,
++            kvm_arm_register_device(&s->redist[i].iomem, -1,
+                                     KVM_DEV_ARM_VGIC_GRP_ADDR,
+                                     KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION,
+                                     s->dev_fd, addr_ormask);
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 7072bfcbb1d..424e7e28a86 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -425,22 +425,24 @@ static MemTxResult gicr_writell(GICv3CPUState *cs, hwaddr offset,
+ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
+                               unsigned size, MemTxAttrs attrs)
+ {
+-    GICv3State *s = opaque;
++    GICv3RedistRegion *region = opaque;
++    GICv3State *s = region->gic;
+     GICv3CPUState *cs;
+     MemTxResult r;
+     int cpuidx;
+ 
+     assert((offset & (size - 1)) == 0);
+ 
+-    /* This region covers all the redistributor pages; there are
+-     * (for GICv3) two 64K pages per CPU. At the moment they are
+-     * all contiguous (ie in this one region), though we might later
+-     * want to allow splitting of redistributor pages into several
+-     * blocks so we can support more CPUs.
++    /*
++     * There are (for GICv3) two 64K redistributor pages per CPU.
++     * In some cases the redistributor pages for all CPUs are not
++     * contiguous (eg on the virt board they are split into two
++     * parts if there are too many CPUs to all fit in the same place
++     * in the memory map); if so then the GIC has multiple MemoryRegions
++     * for the redistributors.
+      */
+-    cpuidx = offset / 0x20000;
+-    offset %= 0x20000;
+-    assert(cpuidx < s->num_cpu);
++    cpuidx = region->cpuidx + offset / GICV3_REDIST_SIZE;
++    offset %= GICV3_REDIST_SIZE;
+ 
+     cs = &s->cpu[cpuidx];
+ 
+@@ -482,22 +484,24 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
+ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
+                                unsigned size, MemTxAttrs attrs)
+ {
+-    GICv3State *s = opaque;
++    GICv3RedistRegion *region = opaque;
++    GICv3State *s = region->gic;
+     GICv3CPUState *cs;
+     MemTxResult r;
+     int cpuidx;
+ 
+     assert((offset & (size - 1)) == 0);
+ 
+-    /* This region covers all the redistributor pages; there are
+-     * (for GICv3) two 64K pages per CPU. At the moment they are
+-     * all contiguous (ie in this one region), though we might later
+-     * want to allow splitting of redistributor pages into several
+-     * blocks so we can support more CPUs.
++    /*
++     * There are (for GICv3) two 64K redistributor pages per CPU.
++     * In some cases the redistributor pages for all CPUs are not
++     * contiguous (eg on the virt board they are split into two
++     * parts if there are too many CPUs to all fit in the same place
++     * in the memory map); if so then the GIC has multiple MemoryRegions
++     * for the redistributors.
+      */
+-    cpuidx = offset / 0x20000;
+-    offset %= 0x20000;
+-    assert(cpuidx < s->num_cpu);
++    cpuidx = region->cpuidx + offset / GICV3_REDIST_SIZE;
++    offset %= GICV3_REDIST_SIZE;
+ 
+     cs = &s->cpu[cpuidx];
+ 
 -- 
 2.20.1
 

@@ -1,115 +1,121 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp679531lfp;
-        Thu, 30 Sep 2021 14:54:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8MMgwCCReSGhPx0S9c0H70Tq0yNlwm7t+YSh7v+VjWatEN78mmu8PnYzzYKxLAXYkc3hl
-X-Received: by 2002:a9d:6347:: with SMTP id y7mr7214533otk.241.1633038875658;
-        Thu, 30 Sep 2021 14:54:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633038875; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp262354lfp;
+        Thu, 30 Sep 2021 06:20:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcdT80bExu79R3QED0/JZBzjn+QdDHcw8S31pE8XvMPaVfexsTryptYF5xDafV/rkcpaD6
+X-Received: by 2002:adf:cf04:: with SMTP id o4mr5930895wrj.352.1633008031322;
+        Thu, 30 Sep 2021 06:20:31 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1633008031; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0+wbYujnkicwv0UNtnTJFeciLZZdk6R3LKOElIy6CgGxpZrWLb6VxJL/SE3ZyniXUR
-         bYMd98ehWokYPhRGyaEYsOZetKyH7/397k1Bm2AGHtalOm3BZNW6kyt8T84LN6WQctmA
-         yBiJRO7JtLSs6xilSVJnh0VEm83VVGcrsuswuUwut6cxpQwqP2R9YrUMvbGdP/mCmQY0
-         j9Q7xM0jXVz4UYoi5TOZnEyFVRU+fru+3202GzqjEHloTPob91iDKPMwAmPGwTGWAwnK
-         Z8PHpX7jzKelEBvdzZmm86fOOOLX2xOUWkr7lc/cs0GwJdZmmHQ49yRzm9u+Mv/wAzHG
-         mQ9A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=OeduGfk8ODDmASFajLO+7J5yzzfqkNUciKPJOJsF+1JTMCniFW2CjitQUMlMc5qa+J
+         vHgZ7oG6BG10vX/kEVHbjEi/TPRiNpqShTYhgYodxhj6nFR8jqyrfiyliBSpf5l8LZ66
+         ogYWzAe7kf4D+w+hMvsx3vnmMeowrRn9vn+wRQWFRcujEbnRlEy8y1dWJnULL1QZHmkw
+         i+2POUhWyZsFHzpPUaHxsgzb/KH3uICaRh2SYTmLZcB2U4VfcYKAMSipCJB2gBtnqE7r
+         AzIWI4+c7rehZbWPObX//seWR6hzImxfcKFL98U8pLuRLA2C7O3obNTyDrZdBIGhf3tJ
+         r6pg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=6eAD+p36Z5Qycy9bvVaFcVsiLtWL2Umeb+LQeTDqnFU=;
-        b=TXtYOGkL//cxDOm3QSwNpnq7X6JCfOvx8HcoDbnG2ZnUS522P+q4sxmgqnz7ELGTot
-         K+PopmfIMlAq3XgHN01B7f2/O/9iwekMeCC7oWn3789YXiVYdsvjbA+8YTZFSKFlHmBm
-         wljmEUqMmX/J91WZGbKxCRWHs6LvigdRi91E5JMMWEzwH2u0PZ2LfRfC49tog1oiaVJs
-         npma39dtgwehkad1qPCje2scGFX6xa7UDUa4yzXadnQQc7OkzX1R7Z/ssT7OSO6qdWPe
-         K5r8rCMevtVjbumXLfbdWQS1YVxvDeG3ThFWyhjuQib17X4yPnUeVM8CVZsZDd1vrFiX
-         VnnQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UesUw91d;
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:subject
+         :to:from;
+        bh=08BqLj/7ypJxekcMVgs45m1xrdpXph4f6oxKhV0/9jY=;
+        b=ibRpmcCF2rU6G+prLltPGuzN/oYVkMGOJp4fQAVa+M08kOZIzC/W9i7H7gT/xuZdjz
+         nwxYBk+hzX/peaH3EQNz08olgH8VrbswPqfBfYsuNbh555ig+13RQdQaKCyHCbT2SYAD
+         BNFz2sbxUxyHclXiFG1WEPxzXUbMFvpV4kF6Vkeg0JI2k9jjsaMftH8Iaie6Q+dcRG9n
+         eSXvZfdD8W7p8irliTKEGllCPUYOiWX9SrK9TsO0fWX50JL41qN/g/Zr7R/MX5WSnsOM
+         Wm64PO4fXeAsSOO9G6PwbFuwMwiNrmnzHBQYI6EbEDTfFEoEOsJ1w1w61rUgfxhpADtq
+         giug==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si4365343otq.84.2021.09.30.14.54.35
+        by mx.google.com with ESMTPS id z12si5042814wmc.91.2021.09.30.06.20.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Sep 2021 14:54:35 -0700 (PDT)
+        Thu, 30 Sep 2021 06:20:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UesUw91d;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38594 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39338 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mW40g-0003MZ-Vf
-	for alex.bennee@linaro.org; Thu, 30 Sep 2021 17:54:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43468)
+	id 1mVvzC-0003BJ-9M
+	for alex.bennee@linaro.org; Thu, 30 Sep 2021 09:20:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mW40U-0003M4-Kw; Thu, 30 Sep 2021 17:54:22 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:38477)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mW40S-0005Ff-BH; Thu, 30 Sep 2021 17:54:22 -0400
-Received: by mail-wr1-x436.google.com with SMTP id u18so12355136wrg.5;
- Thu, 30 Sep 2021 14:54:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=6eAD+p36Z5Qycy9bvVaFcVsiLtWL2Umeb+LQeTDqnFU=;
- b=UesUw91d8ewxJ1PQK2C0uOWxYXNsfJqJORwS5xsCK1M05iWyy3kH51DKVW1NkITi0t
- QbVwPV4SNyJmw4BvwKujTT6pTX2GqHXt3sa86zkrRyeLWf/LxXSJDI+Iy2Qhk+xpm436
- UWrlRMg3XzstdDzNA3EBGvX+Pr9uuekhGfQsAOfc45iq5GTMEUgIj6YtrOpEcJy+qvL7
- MoG8Ld0r+3ECwAFr0f3FCF+EthV6R8OOou6bYaktrT4OxvizL0EA2QzUzK3Zz0UyO5jP
- t/W8YCLP/vsEzysJW8yJGrgMeDedTkldEzMIULdylOTQBdVd45U6ULGj6+1P+xWVXKZ7
- nxfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=6eAD+p36Z5Qycy9bvVaFcVsiLtWL2Umeb+LQeTDqnFU=;
- b=SKk5AVPLX4QcAjBmC01+SFDsLmaFF9kufH6JGRFKiuxlocRbzzkPTtP/EWD24mmDdA
- mFhZcH7emFwq2X3B9J2FN79H7laz22qaBfmVXph7wBe6+25R0F/WSY7kaipgWrN3l84h
- mjdWLNZD2at4NA6Q7vmS+7sR7ybUsECBcZKqZM0IKezxnXF2Ps6KYJNteY8MxA+LWuQ+
- woWueoQnAXLRe+AHO2TXQHr/B5x0KyI8N2/h+NxSQcQLVw6smxrQW8cJFJCgddyczHQg
- C9MhK+RSlUCpEfrT+1r/bOPD3Y4UgtZmTAhF57pZE4t43fZhwhvy0Ig+XPsvHoGbAYvU
- aiHQ==
-X-Gm-Message-State: AOAM531xiyW+5PnUCa8VgELSZuIcf2FNyzcRA53JwxfoKfDCfT3o1BGW
- /x46D2ItMRdpB5imLRGO5UI=
-X-Received: by 2002:adf:a499:: with SMTP id g25mr8136060wrb.239.1633038858362; 
- Thu, 30 Sep 2021 14:54:18 -0700 (PDT)
-Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id o1sm4091738wru.91.2021.09.30.14.54.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Sep 2021 14:54:15 -0700 (PDT)
-Message-ID: <907d7432-a81b-b36b-9af5-a5554df3bddf@amsat.org>
-Date: Thu, 30 Sep 2021 23:54:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH 1/3] hw/intc/arm_gicv3: Move checking of
- redist-region-count to arm_gicv3_common_realize
+ (Exim 4.90_1) (envelope-from <lentz.benjamin@outlook.de>)
+ id 1mVulp-0001Lz-E0
+ for qemu-arm@nongnu.org; Thu, 30 Sep 2021 08:02:37 -0400
+Received: from mail-vi1eur05olkn2082a.outbound.protection.outlook.com
+ ([2a01:111:f400:7d00::82a]:54912
+ helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lentz.benjamin@outlook.de>)
+ id 1mVulm-0003is-BB
+ for qemu-arm@nongnu.org; Thu, 30 Sep 2021 08:02:37 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aZcBYpx5KMt8wpJNPEbEFX6vsNTng6JB/jvj/0VGZcRZXLMbyn1VzsXhKFrSxnxChwzShFC5zlS/3m5KMKOpR1CTSxcSeAWkwysKD6avg+09fqg9MGeze+fBKTnrA9QrLF87kOPFzHoiKEqyplAJeFNMOTpztOK64mxEmSqjFmFG6W3OS+xnqQoSrZUzLd7oEYQ1C9jfilPhUQRyBF+hzLdNilWXNIAlR78rkgc06mt4ooWMNk8S7wWrX/6jyxZnU9ejP7SjFeU7VA6mZ2WqVocwIpCf2Ot6c1ZRPraVIsM2ZJwcAuKcJxHUbkqfgNbOkb0QZpVYIAG4/mKP3Rktaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=08BqLj/7ypJxekcMVgs45m1xrdpXph4f6oxKhV0/9jY=;
+ b=hLLlRMjUbEbtZ8KgDFDL1ddkZA7A9J1j35kGNOK7qi/GThd7YGLEcaY6uTcTmG6sGFDAt1AZjZ6o+VIU8iU9Bv76gqUiSt6236jPlxFEiQCvMEbPNOncyTMSn+4Y0PUK4ua8FUxhH17auJ4SMOsZckg/z97vopiAL+PI7y+5bC/W/zkZzSiMs2CRjZ/4kp6A/kvHSexkDrw0tBDCINgxHupu76OITM8DBkmy0Gg+I5UHjQMBuylPb6ivCrYlx6gT/Z5yeLlgDigKC4vjAqlShLZtjDlloYSiaW1JS/ghSLlbxCT0pcwxAlU5LRbLV3E3S0agx3Wo2cnQ5Wgzo6DPPQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from AM6PR06MB4598.eurprd06.prod.outlook.com (2603:10a6:20b:3f::26)
+ by AM5PR0602MB2817.eurprd06.prod.outlook.com (2603:10a6:203:9a::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.15; Thu, 30 Sep
+ 2021 11:57:27 +0000
+Received: from AM6PR06MB4598.eurprd06.prod.outlook.com
+ ([fe80::bd76:3a1a:755:7ec7]) by AM6PR06MB4598.eurprd06.prod.outlook.com
+ ([fe80::bd76:3a1a:755:7ec7%5]) with mapi id 15.20.4566.014; Thu, 30 Sep 2021
+ 11:57:27 +0000
+From: Benjamin Lentz <lentz.benjamin@outlook.de>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Windows virtualization
+Thread-Topic: Windows virtualization
+Thread-Index: AQHXtfJWvbwuYqXklUebRWoZyztZHw==
+Date: Thu, 30 Sep 2021 11:57:27 +0000
+Message-ID: <A796F566-D430-4CB3-A689-C63698C63F8E@outlook.de>
+Accept-Language: de-DE, en-US
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210930150842.3810-1-peter.maydell@linaro.org>
- <20210930150842.3810-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20210930150842.3810-2-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.127,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-tmn: [DPPhLlsKdApTSJq4rzcc69AzXK3kxnWA]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: eb1f409b-5fea-4e91-125c-08d984097962
+x-ms-traffictypediagnostic: AM5PR0602MB2817:
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: PaJFeNEK4SLhLBjXsXAqW1cU4w/povrmGqT7ud8BABorGHsOCGL/xXq33kGbHxgrFNyElV+P5IuUPoRjJv/qLlsHkyIdzWQkI6n08JjAoCEU/u23cWiTOPqawUALha2sxr2CF9KLK2z4M8qL0dp6aWeaNVqo967o6MhgpaTdOnZw0T0KB8+rUnoX4HYytyQq/hWwybkrizzTJu0kd1JgXAC8YzQSaRyI3pXgrH19YJy/AzYsVhdv6eLrRpNKYRq17QWpKSjiSGOVwXyVMmztAMC/oXV/3w3WrSdY6PW8bxtwOpcyWniQQUGRRd/nUJU1fHXZ4UDFRklHYtqKlr09ONT4SZxKkYC3E2Ve/Sko7rMUOrLbdGZNIfflNsRtL49AFM7jVaKkSLEp97pire5lsPXsxoVOgCwNXvFPwBDEgGzS975fMm/BNBE/b2wQoQzA
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: ColomMev6prZqCyiSni//+OoEX3YOCWbQR8uskT6/xGyQZheaFVod/QZti9eHLHO7MmZVM9vqYJpUYyiageHkjA567eQzTzKq4dHlJUWkEqZdjgNMDl+vFDsrhMAXaUI9cPUlfVdWBQcWOJh1n8QlA==
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/alternative;
+ boundary="_000_A796F566D4304CB3A689C63698C63F8Eoutlookde_"
+MIME-Version: 1.0
+X-OriginatorOrg: sct-15-20-3174-20-msonline-outlook-eb2c2.templateTenant
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB4598.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: eb1f409b-5fea-4e91-125c-08d984097962
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Sep 2021 11:57:27.4628 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR0602MB2817
+Received-SPF: pass client-ip=2a01:111:f400:7d00::82a;
+ envelope-from=lentz.benjamin@outlook.de;
+ helo=EUR05-VI1-obe.outbound.protection.outlook.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_50=0.8, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 30 Sep 2021 09:19:50 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,140 +129,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o+eOp9Dmwpb9
+X-TUID: ZNN5ijzW00Bj
 
-On 9/30/21 17:08, Peter Maydell wrote:
-> The GICv3 devices have an array property redist-region-count.
-> Currently we check this for errors (bad values) in
-> gicv3_init_irqs_and_mmio(), just before we use it.  Move this error
-> checking to the arm_gicv3_common_realize() function, where we
-> sanity-check all of the other base-class properties. (This will
-> always be before gicv3_init_irqs_and_mmio() is called, because
-> that function is called in the subclass realize methods, after
-> they have called the parent-class realize.)
-> 
-> The motivation for this refactor is:
->  * we would like to use the redist_region_count[] values in
->    arm_gicv3_common_realize() in a subsequent patch, so we need
->    to have already done the sanity-checking first
->  * this removes the only use of the Error** argument to
->    gicv3_init_irqs_and_mmio(), so we can remove some error-handling
->    boilerplate
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/hw/intc/arm_gicv3_common.h |  2 +-
->  hw/intc/arm_gicv3.c                |  6 +-----
->  hw/intc/arm_gicv3_common.c         | 26 +++++++++++++-------------
->  hw/intc/arm_gicv3_kvm.c            |  6 +-----
->  4 files changed, 16 insertions(+), 24 deletions(-)
-> 
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index aa4f0d67703..cb2b0d0ad45 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -306,6 +306,6 @@ struct ARMGICv3CommonClass {
->  };
->  
->  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
-> -                              const MemoryRegionOps *ops, Error **errp);
-> +                              const MemoryRegionOps *ops);
->  
->  #endif
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index 3f24707838c..bcf54a5f0a5 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -393,11 +393,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->  
-> -    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> -        return;
-> -    }
-> +    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops);
->  
->      gicv3_init_cpuif(s);
->  }
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 223db16feca..8e47809398b 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -250,22 +250,11 @@ static const VMStateDescription vmstate_gicv3 = {
->  };
->  
->  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
-> -                              const MemoryRegionOps *ops, Error **errp)
-> +                              const MemoryRegionOps *ops)
->  {
->      SysBusDevice *sbd = SYS_BUS_DEVICE(s);
-> -    int rdist_capacity = 0;
->      int i;
->  
-> -    for (i = 0; i < s->nb_redist_regions; i++) {
-> -        rdist_capacity += s->redist_region_count[i];
-> -    }
-> -    if (rdist_capacity < s->num_cpu) {
-> -        error_setg(errp, "Capacity of the redist regions(%d) "
-> -                   "is less than number of vcpus(%d)",
-> -                   rdist_capacity, s->num_cpu);
-> -        return;
-> -    }
-> -
->      /* For the GIC, also expose incoming GPIO lines for PPIs for each CPU.
->       * GPIO array layout is thus:
->       *  [0..N-1] spi
-> @@ -308,7 +297,7 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
->  static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
->  {
->      GICv3State *s = ARM_GICV3_COMMON(dev);
-> -    int i;
-> +    int i, rdist_capacity;
->  
->      /* revision property is actually reserved and currently used only in order
->       * to keep the interface compatible with GICv2 code, avoiding extra
-> @@ -350,6 +339,17 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->  
-> +    rdist_capacity = 0;
-> +    for (i = 0; i < s->nb_redist_regions; i++) {
-> +        rdist_capacity += s->redist_region_count[i];
-> +    }
-> +    if (rdist_capacity < s->num_cpu) {
-> +        error_setg(errp, "Capacity of the redist regions(%d) "
-> +                   "is less than number of vcpus(%d)",
-> +                   rdist_capacity, s->num_cpu);
-> +        return;
-> +    }
-> +
->      s->cpu = g_new0(GICv3CPUState, s->num_cpu);
->  
->      for (i = 0; i < s->num_cpu; i++) {
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index 5c09f00dec2..ab58c73306d 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -787,11 +787,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->  
-> -    gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> -        return;
-> -    }
-> +    gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
->  
->      for (i = 0; i < s->num_cpu; i++) {
->          ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
-> 
+--_000_A796F566D4304CB3A689C63698C63F8Eoutlookde_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 
-The pattern make me think gicv3_init_irqs_and_mmio() should be
-refactored as a ARMGICv3CommonClass::init_irqs_and_mmio handler,
-called in arm_gicv3_common_realize().
+SGVsbG8sDQoNCkkgd2FudCB0byB2aXJ0dWFsaXplIG15IFBDIG9uIG15IE0xIEFSTS1iYXNlZCBN
+YWNib29rLiBJIG1hZGUgYSBzbmFwc2hvdCBmcm9tIG15IFdpbmRvd3MgMTAgeDY0IFBDIGFuZCBj
+cmVhdGVkIGEgLnZoZHggZmlsZS4NCk15IFF1ZXN0aW9uIGlzOg0KQ2FuIEkgcnVuIHRoaXMgeDY0
+IHZoZHggV2luZG93cyBpbWFnZSBvbiBhIE0xIE1hYyBvciBub3QuDQpJZiB5ZXMg4oCUPiBIb3c/
+Pz8NCg0KQmVzdCB3aXNoZXMsDQpCZW5qYW1pbiBMZW50eg0KDQo=
 
-Or maybe even have ARMGICv3CommonClass::irq_handler and
-ARMGICv3CommonClass::ops set in each child class_init().
+--_000_A796F566D4304CB3A689C63698C63F8Eoutlookde_
+Content-Type: text/html; charset="utf-8"
+Content-ID: <345A1C4D6628284C85B806399F3E1EE9@eurprd06.prod.outlook.com>
+Content-Transfer-Encoding: base64
+
+PGh0bWw+DQo8aGVhZD4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0i
+dGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjwvaGVhZD4NCjxib2R5IHN0eWxlPSJ3b3JkLXdy
+YXA6IGJyZWFrLXdvcmQ7IC13ZWJraXQtbmJzcC1tb2RlOiBzcGFjZTsgbGluZS1icmVhazogYWZ0
+ZXItd2hpdGUtc3BhY2U7IiBjbGFzcz0iIj4NCkhlbGxvLA0KPGRpdiBjbGFzcz0iIj48YnIgY2xh
+c3M9IiI+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9IiI+SSB3YW50IHRvIHZpcnR1YWxpemUgbXkgUEMg
+b24gbXkgTTEgQVJNLWJhc2VkIE1hY2Jvb2suIEkgbWFkZSBhIHNuYXBzaG90IGZyb20gbXkgV2lu
+ZG93cyAxMCB4NjQgUEMgYW5kIGNyZWF0ZWQgYSAudmhkeCBmaWxlLjwvZGl2Pg0KPGRpdiBjbGFz
+cz0iIj5NeSBRdWVzdGlvbiBpczo8L2Rpdj4NCjxkaXYgY2xhc3M9IiI+Q2FuIEkgcnVuIHRoaXMg
+eDY0IHZoZHggV2luZG93cyBpbWFnZSBvbiBhIE0xIE1hYyBvciBub3QuJm5ic3A7PC9kaXY+DQo8
+ZGl2IGNsYXNzPSIiPklmIHllcyDigJQmZ3Q7IEhvdz8/PzwvZGl2Pg0KPGRpdiBjbGFzcz0iIj48
+YnIgY2xhc3M9IiI+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9IiI+DQo8ZGl2IGNsYXNzPSIiPg0KPGRp
+diBzdHlsZT0iY2FyZXQtY29sb3I6IHJnYigwLCAwLCAwKTsgY29sb3I6IHJnYigwLCAwLCAwKTsg
+Zm9udC1mYW1pbHk6IEhlbHZldGljYTsgZm9udC1zaXplOiAxMnB4OyBmb250LXN0eWxlOiBub3Jt
+YWw7IGZvbnQtdmFyaWFudC1jYXBzOiBub3JtYWw7IGZvbnQtd2VpZ2h0OiBub3JtYWw7IGxldHRl
+ci1zcGFjaW5nOiBub3JtYWw7IG9ycGhhbnM6IGF1dG87IHRleHQtYWxpZ246IHN0YXJ0OyB0ZXh0
+LWluZGVudDogMHB4OyB0ZXh0LXRyYW5zZm9ybTogbm9uZTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsg
+d2lkb3dzOiBhdXRvOyB3b3JkLXNwYWNpbmc6IDBweDsgLXdlYmtpdC10ZXh0LXNpemUtYWRqdXN0
+OiBhdXRvOyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IHRleHQtZGVjb3JhdGlvbjog
+bm9uZTsiPg0KQmVzdCB3aXNoZXMsPC9kaXY+DQo8ZGl2IHN0eWxlPSJjYXJldC1jb2xvcjogcmdi
+KDAsIDAsIDApOyBjb2xvcjogcmdiKDAsIDAsIDApOyBmb250LWZhbWlseTogSGVsdmV0aWNhOyBm
+b250LXNpemU6IDEycHg7IGZvbnQtc3R5bGU6IG5vcm1hbDsgZm9udC12YXJpYW50LWNhcHM6IG5v
+cm1hbDsgZm9udC13ZWlnaHQ6IG5vcm1hbDsgbGV0dGVyLXNwYWNpbmc6IG5vcm1hbDsgb3JwaGFu
+czogYXV0bzsgdGV4dC1hbGlnbjogc3RhcnQ7IHRleHQtaW5kZW50OiAwcHg7IHRleHQtdHJhbnNm
+b3JtOiBub25lOyB3aGl0ZS1zcGFjZTogbm9ybWFsOyB3aWRvd3M6IGF1dG87IHdvcmQtc3BhY2lu
+ZzogMHB4OyAtd2Via2l0LXRleHQtc2l6ZS1hZGp1c3Q6IGF1dG87IC13ZWJraXQtdGV4dC1zdHJv
+a2Utd2lkdGg6IDBweDsgdGV4dC1kZWNvcmF0aW9uOiBub25lOyI+DQpCZW5qYW1pbiBMZW50ejwv
+ZGl2Pg0KPC9kaXY+DQo8YnIgY2xhc3M9IiI+DQo8L2Rpdj4NCjwvYm9keT4NCjwvaHRtbD4NCg==
+
+--_000_A796F566D4304CB3A689C63698C63F8Eoutlookde_--

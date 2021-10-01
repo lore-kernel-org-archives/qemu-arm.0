@@ -1,116 +1,111 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1258311lfp;
-        Fri, 1 Oct 2021 06:07:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypLNx6a6iB+n7s6a+Ku0Zik40ZXWtitx8QJVIAiKCp2YnZXCXr/NLYiCproSzFpjbUDIfo
-X-Received: by 2002:a1f:1ed1:: with SMTP id e200mr7492133vke.7.1633093661552;
-        Fri, 01 Oct 2021 06:07:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633093661; cv=none;
+Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp2990523qvp;
+        Fri, 1 Oct 2021 08:32:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy7DERhWpMqMzP2XgonM3c66/6MOPIM46s2qw1L2cgccadCOoltkDU9sWLi5aEpSgHvEJn3
+X-Received: by 2002:ac8:4e8d:: with SMTP id 13mr13411157qtp.2.1633102356420;
+        Fri, 01 Oct 2021 08:32:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633102356; cv=none;
         d=google.com; s=arc-20160816;
-        b=DgkI7ukcwOEv+ldRJshiVM27v8iP2eVmsknUB4tGlR01WYOjxF72ubxbpCjDZY9zMc
-         9n2m6oCvfkiAkeXAihdyHJl53vZ/QxJMbmdJWQd0uydg45IOk9Xyu8Ot34HRSuxUluoT
-         pBkko0XtU7kIX3XbARxWUSok06ddel5xQ0rqNA4WRf2Iqz6E0ImEP7uxrR6hJnX7ktz1
-         aLyn28fyFUxPKBiZ/kxh27NJmfZUTtWOlAe4Hn0IqYYDu+cYVWxLgsbX6xebATcqwdG5
-         l8ZNNBKUBt3tERDiO3a3uOkDuuikWK3zF0wugZ+BizETjShbKJxspK8jZJVuxkoamtvO
-         vMBw==
+        b=qe5DZRUqkoW8LH7MH9Vfh3KU1+NzIvB4bZqmfH2lXRVarR907MEk03x8/Yjjb1Yixk
+         wYOiNqJj0MC3oO1880BjYiwGt+o3CdQu9O8krR5dqS9rZFUm4I0HTGgHWSdUquzQuwmH
+         CSlBf9ayatjelSTcaqfZ10XzG63JTn80Pquu1QdWbQ+klxvkh0f8yRsnH/5R4nxY0OTj
+         DkeYSdESUPiGjAJ7eNHLycNBAqRvsR0UWMdBid5zAbAVggjgJcoHkKBsXC7PjEnwHBzI
+         cEMstrc8JmnrzpegGK9DWrg6aWrm5fRychRVgoS6TiD9iH6dopacil/oeki6hFZlWjFl
+         0AQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=1pEjhzod8KyDXjZmqcJnYQWCNQss8/wgABk2YIvtLRY=;
-        b=eT6zKEqJQjCBKq/iBSvWJm6BSlSfs/MzorWry4R45VcsWayYCo7TOcFu9vCcWz9cPq
-         sTYS80AtGs+QmQcNI9a40tDXYAASheivrUHd+T9Pfn+vxENBJfZXfUB8ssbktONOsdwq
-         dRwL5wvHfm07gp8ylBUs2tiiHGjJtsIQp01euMiKIufIEt5MBG+BA6lkVcplYPetJT+j
-         cWBd51qDWX4brwv5/J4kCTGtikDS6iY/RDkj4dSuOfTLwVDO7/UpICwi69uZzmPV5UZ5
-         5n+AWbH9w71F3VoNhYWp64sb2vOTxFhUTDlyc87WCunix8gH+e0Mz8p9U9tTb8s7fqoR
-         jAAg==
+        bh=3L5gb9aE7S+CfMi+IpBC0FIGTs1KVQSPrK1gpdia9ao=;
+        b=d1R5fO/OdEUYy2gCQHbSxMkX+Ty49z30yAPKjej0DQE0HnWYGrYSFPwlzjHQLmt1sj
+         WePa4pTsRspEA89D3Wh/XUYdf1/b3MwhIt8Cp5fS9YuNqkCnBFwWFKoaXTIvmJjB2V7v
+         IKCvAeGvHtrviuiQNiUtlnyW0DGWyXf07ghnPetIXA/jRIAmH8iy2otiOeuoh5RuO9tD
+         0Vd5A1XIm9tdxJNKiiAHA0KWgEL/JB4ZocJgBAn4LgUDuW/CEKWy9UABgjO4tw/ikSaq
+         bPNZxdKWnbpUKClMZIqypJ0MKCNKtL/AL9BL+egwwmZECaM8Hqjt/pcuYmyGFySViDqM
+         BYUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QCeo3rze;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=cr1USAiU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c7si1017410vsm.53.2021.10.01.06.07.41
+        by mx.google.com with ESMTPS id p12si863768vse.167.2021.10.01.08.32.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Oct 2021 06:07:41 -0700 (PDT)
+        Fri, 01 Oct 2021 08:32:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QCeo3rze;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51852 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=cr1USAiU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWIGK-00039P-U2
-	for alex.bennee@linaro.org; Fri, 01 Oct 2021 09:07:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51664)
+	id 1mWKWZ-0004pg-Sa
+	for alex.bennee@linaro.org; Fri, 01 Oct 2021 11:32:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mWIDG-0000IL-T0; Fri, 01 Oct 2021 09:04:32 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c]:33698)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1mWKVR-0003yP-En
+ for qemu-devel@nongnu.org; Fri, 01 Oct 2021 11:31:25 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:37737)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1mWIDE-0002rv-HD; Fri, 01 Oct 2021 09:04:30 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id
- d12-20020a05683025cc00b0054d8486c6b8so11448890otu.0; 
- Fri, 01 Oct 2021 06:04:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1mWKVP-0005bd-Ku
+ for qemu-devel@nongnu.org; Fri, 01 Oct 2021 11:31:25 -0400
+Received: by mail-wr1-x429.google.com with SMTP id a18so4019018wru.4
+ for <qemu-devel@nongnu.org>; Fri, 01 Oct 2021 08:31:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=1pEjhzod8KyDXjZmqcJnYQWCNQss8/wgABk2YIvtLRY=;
- b=QCeo3rzey7an0e625o5biBzt/Dx4XqWT6VX49TWSMyy+cZ/IRx5hsmi3KwrE3ryexg
- RXl4rD5sb+JD/5d6J1dEhS5hgAgtAia9I7TTwLdxMWmCHk6AJKBChHFMlBfGNLfspT4/
- jUAXzLso+xV9kwKPpAtqoV1w2cyQ+Ke1QQZEIbCmDlAKttBjIyUO1JXtOTcFtDB9adhe
- rdxsN0x9a9Swm45XAHbsDOs/KMhJ9UPE2ZNwkZKpkkT/qYVR1BO2LLRMsAZ9bX6e+R7R
- b21oaaEMXsMOjfb6ogtgSlB0VIluLx/hwaXywRrmtgWp3suew/7wX7G3Tk8mW/GkVWVe
- kgXw==
+ bh=3L5gb9aE7S+CfMi+IpBC0FIGTs1KVQSPrK1gpdia9ao=;
+ b=cr1USAiULL3OiO65R1Fdd/+qqCLjmI/ZSHCq5jDpKtuyPDxXIVD3c7PeVWhnQU3pdD
+ J8jz2xHLvtHzFO2FUAvDjVKgnawV9ew1N76O9FzO9d8u2HehP5Nci54enVC7TBuNqbGv
+ xK/QAZMXGxSGNeJYSHwEnIBRu2MgMc9Ju2kQ4wlaiKHmVM2KTycTALcqYPds68Cf2HNO
+ uMG5WiX7o154GBMvtWHWmvB+NWmOcACvXk6YgJEgekjLZbYCiZEbE8UUQJSdCKLLaS/H
+ lseuk7o3RjKe3VPrk0oh+uZDyNqInW47SUahG2qaLGbFSYVoC0pLJ3HV01Tjd0AiSpno
+ eshw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to;
- bh=1pEjhzod8KyDXjZmqcJnYQWCNQss8/wgABk2YIvtLRY=;
- b=I9rRY/Y9T8xWD/OY/fCbC7gN4erH8fGdUgIYXddb00P8Dx3QklNnc6XLzKLZJlK7Ko
- /QFxWidg21eC+mT2zxRaSAOh1xNHWPT8ppx/J5XOaHbK78OLqqewi9wgn4kTy9tE5CB3
- +8SEJSqDAh4EXt/U8C50TqJHc4PbbDGss/TspRrsjR9xNsQyt4PG4Vn+zTYYcN8nagTN
- flBmZAK92lixBmq4Ac4T8AnPkTCTKIakYM6xzU1JL6zPGe0IDsW/uxwZNb4HVf4zVCK3
- jr/KH1YzU2IDRITCBHlaLPe+mbcn/3Nl1QvXs5A/gg81r1T73eIbVodfJaPIMkGpLxlT
- /ztQ==
-X-Gm-Message-State: AOAM533AvFmz7CKmtGch6Yj+Ge0tKdwGwU78rpiW7GjcccmLCIiFHbsA
- 6YX8a/v3eyc83O8ZkL83xDY=
-X-Received: by 2002:a9d:67cf:: with SMTP id c15mr10286049otn.232.1633093465962; 
- Fri, 01 Oct 2021 06:04:25 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- bf15sm1247344oib.4.2021.10.01.06.04.24
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=3L5gb9aE7S+CfMi+IpBC0FIGTs1KVQSPrK1gpdia9ao=;
+ b=LmCWv8JwwFqb9bLP3AQua7kS8d5XbxYZV1mIFez2qlWW44dc3jzgQOVSJjMVFKIw4W
+ D+tKaGRyO+v7Pju7dlT0kNEXYOh+yvPxL27xoRZVIDbqwRhBgUN+OeFsig/qVYoFKsBo
+ RhZpFn2wcECjE9WCGlITKkMkib0LJkQ8dATSVJGJzvjYJDMt10RwUhrC4uKjEXzKoGQV
+ o8iXunR0TrA7FgunCnxdW+wNpNTE+KM4DJutlnAIYcktGrecD3C3fzCOnYgMrl8Sfgda
+ R22YocFklq1wdvU1CK/ktgdi5fZQNUHWEpxfOe7YocCPUhxnkyP+rmCgVoVswT+a7gIS
+ R9yQ==
+X-Gm-Message-State: AOAM530Vb2uW7I9q9j9WasSp6ODE//k4/yhwown6j4JfxZUoaAntwcpP
+ a5gVxeONuMSExp/tPC2ICmMyKQ==
+X-Received: by 2002:adf:f486:: with SMTP id l6mr12600282wro.375.1633102280980; 
+ Fri, 01 Oct 2021 08:31:20 -0700 (PDT)
+Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
+ [82.27.106.168])
+ by smtp.gmail.com with ESMTPSA id k17sm8236397wmj.0.2021.10.01.08.31.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Oct 2021 06:04:25 -0700 (PDT)
-Date: Fri, 1 Oct 2021 06:04:23 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
-Message-ID: <20211001130423.GA549865@roeck-us.net>
-References: <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
- <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
- <CAEUhbmVfFRdbtu7yWUauO6sd0QNhoH6tuTAFA2PMxZp5P7+awA@mail.gmail.com>
- <PH0PR11MB5205AE78D6C5DFFFA767183B97D49@PH0PR11MB5205.namprd11.prod.outlook.com>
- <8b86d434-a2e6-8122-0a88-dc9a15fbfe87@roeck-us.net>
- <PH0PR11MB5205684F9CDEC890187D09D997DC9@PH0PR11MB5205.namprd11.prod.outlook.com>
- <20210916142140.GA252836@roeck-us.net>
- <PH0PR11MB52058E0462672E61797758B997DE9@PH0PR11MB5205.namprd11.prod.outlook.com>
- <2cd83a88-952c-6f86-74b2-8c0da3ce4394@roeck-us.net>
- <CAEUhbmVVjXKUxa95+GPPZSU5=isgTs7EMnN7gxgYn9Lkg+a0Xg@mail.gmail.com>
+ Fri, 01 Oct 2021 08:31:20 -0700 (PDT)
+Date: Fri, 1 Oct 2021 16:30:58 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: Re: [PATCH v3 01/10] hw/acpi: Add VIOT table
+Message-ID: <YVcpsgmtNIhY22qJ@myrica>
+References: <20210914142004.2433568-1-jean-philippe@linaro.org>
+ <20210914142004.2433568-2-jean-philippe@linaro.org>
+ <20210920100609.301b6be2@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAEUhbmVVjXKUxa95+GPPZSU5=isgTs7EMnN7gxgYn9Lkg+a0Xg@mail.gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=groeck7@gmail.com; helo=mail-ot1-x32c.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210920100609.301b6be2@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,47 +118,38 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, "Cheng,
- Xuzhou" <Xuzhou.Cheng@windriver.com>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
+ mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, ani@anisinha.ca,
+ pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CIqySnVyjFPJ
+X-TUID: 382sA5BZ23gw
 
-On Sun, Sep 26, 2021 at 10:49:53AM +0800, Bin Meng wrote:
-> On Sat, Sep 18, 2021 at 12:19 PM Guenter Roeck <linux@roeck-us.net> wrote:
-> >
-> > On 9/17/21 8:09 PM, Cheng, Xuzhou wrote:
-> > >>> I got some free time in the past days to investigate this issue. Guenter is right, the Linux imx-spi driver does not work on QEMU.
-> > >>>
-> > >>> The reason is that the state of m25p80 machine loops in STATE_READING_DATA state after receiving RDSR command, the new command is ignored. Before sending a new command, the CS line should be pulled to high, this make the state of m25p80 back to IDLE.
-> > >>>
-> > >>> I have same point with Guenter, it's that set CS to 1 when burst is zero. But i don't think it is necessary to set CS to 0 in imx_spi_flush_txfifo(). I will send a new patch to fix this issue.
-> > >>>
-> > >>
-> > >> Thanks a lot for looking into this. If you have a better solution than mine, by all means, please go for it. As I mentioned in my patch, I didn't really like it, but I was unable to find a better solution.
-> > > I am doing some experiment to verify that the new patch is reasonable, so the new patch will be delayed few days.
-> > >
-> >
-> > No problem. Note that I'll be traveling for the next 2-3 weeks, and I won't be able
-> > to test any patches during that time.
-> >
+On Mon, Sep 20, 2021 at 10:06:09AM +0200, Igor Mammedov wrote:
+> > +/*
+> > + * Generate a VIOT table with one PCI-based virtio-iommu that manages PCI
+> > + * endpoints.
 > 
-> I have some updates to share, as I have been working with Xuzhou
-> internally on this issue for the past days:
-> 
-> Current mods using BURST_LEN to determine the timing to pull up the CS
-> line in the SPI controller codes is a workaround. Hardware does not do
-> this. To understand what real hardware behavior is, Xuzhou used an
-> oscilloscope to verify our guess.
-> 
-> It turns out the root cause is elsewhere, and a proper fix will be
-> sent out soon.
-> 
+> We usually put a pointer to spec/revision and chapter in it
+> that describes being implemented table, so reviewer would
+> have a reference to compare code with. Otherwise I have no
+> idea if implementation is correct or not.
 
-Thanks a lot for tracking this down!
+The 6.5 ACPI specification isn't out yet unfortunately, so I can't put any
+reference at the moment. I don't know when it will be published. The draft
+specification is here: https://jpbrucker.net/virtio-iommu/viot/viot-v9.pdf
+But that's only temporary. I can make a note to add the pointers once the
+spec is out.
 
-Guenter
+The acpica implementation could also be used for cross-reference:
+https://github.com/acpica/acpica/commit/fc4e33319c1ee08f20f5c44853dd8426643f6dfd
+
+Thanks,
+Jean
+
+> 
+> ex: build_hmat_mpda
+> 
+> the same applies to viot_host_bridges
+> 

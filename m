@@ -1,104 +1,104 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1509737lfp;
-        Fri, 1 Oct 2021 10:51:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3KxElLNoGm0bDAa//VXU7K4oZ/FxSnX/1KRaxnrhHOUTvpIBT+XdbdUeqYdVtnsrDlni1
-X-Received: by 2002:a1f:9ec3:: with SMTP id h186mr10302768vke.5.1633110702972;
-        Fri, 01 Oct 2021 10:51:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633110702; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1511373lfp;
+        Fri, 1 Oct 2021 10:53:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLwQzwjTG2R28WMJJ8S5zTTiHv6CVkkN7HsUOfLTXfsRHlrlj4LOeHs5BYA2HdpXRpKWWt
+X-Received: by 2002:a9f:23d0:: with SMTP id 74mr11546774uao.69.1633110824162;
+        Fri, 01 Oct 2021 10:53:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633110824; cv=none;
         d=google.com; s=arc-20160816;
-        b=XpovfT98NLUiNE5XdDJF65Intgu3DQEm7wUPkE1bEqrTC8OMGofKwoshq65a3Efjzh
-         Qw2ZmhKjarq79fEvsnPve/17XciMx7j5daOXF+fl7Z+hnFsszB38bwRK9iC+94GWxbNT
-         N37CbW85xp3qKChcr+Zc5rKTv9kby8WyNi8mNbJd+SilWpQij9pJ0ohH7ZCZ/x7TX3En
-         7RPaYs664Ue5u5M97fx+MqPBoL6Nw6uO36Z8ZR/vYZ9TSB3GSjAKj4lY7edF+ajCtOP1
-         QjMsayLt/fjVD4kU9z9+RKWVuRUTtx9EeQ6+g/r9bqfRIa5iaSrKMyovSeBG1XTfbQhO
-         K+7g==
+        b=ccuqG7brq1Vd1NHxk/G3hFijqYsYUPIFko0SRkfj/awgE3TphqeRSN3ZwzSqXj1/i6
+         JD7ojSpOxs/ZKCEmSZtLh/m10O2XLek6uHUNn+iF5l1pUIoBEm0t6L7WyzoaSMDswClr
+         04ofjD9a9itOtbDtY1kfoE3kuAkq3NzxGrGYINJB54wyQXXXH2afDiDKwAsoTgK8v1sR
+         uJZlkJdVqSH8zI6ORFJU2je3czc9mOihpElUIy803/gcejn1PqRNp4OTYG8tLD62A0dt
+         A6r3vtdTPHJ5mu8qc8MiinhowluQB2CAQ73iucrot+XQRy62Sbv4I99AihjOob9SgDRD
+         zwfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LXRO/fMo8Qw/FWNF0Yyw4kfLM8T681YtQWZQBpSYMfI=;
-        b=gjmVtEewi7cwF9c91NZWN3Kxw+vC3G0iXtC/o1O6wCkp/PnL/n4A0Oud4CkVQjdGMn
-         Wgje6ofVruC5ZqF0QvMaYfznlktoJqzxcIBojWPy6YLZP4yc1KxlV3DUXn+oHFNcN9nb
-         z9ag6fWM6MYm6+RCbOfG1QSb7HsVnIFXt4He7IRNJBmEWzs1vgYUBsTT8oHI0ENRcKiq
-         8IS+NFG1La4ajSEyrtCE9QoFuoVAEQldsDVKIqIY/3ffnYYB2qpCPcu2lp7aOscWdHbt
-         /A/eEXST6tHWUgws5Rzjkl6p0EpuezqxhmDirOz3p6SR7wQ+CYU7+nSmskZMw+ZvjyvT
-         4cWw==
+        bh=PXZfK7Oh9ka7EzsTMcy7G7qzk9dy5gzr+jsgpmOW2zQ=;
+        b=k6K9V3gIsbomI8EBOFLxu2MSyhiJmft82ddN+a0mtq1HsIxgrCQN67aJ3YMM7rI9sT
+         JkKYwXQw+YKR0KhPMVE5YLEVBYk38CEO8U1JlP+0nO1hkRO/8HiqvSIxuYlr+k5tNw6Q
+         V0xwNXu3HaM1pZqR3NtZ3UODu3Yg/dmXgA7zJk6S45KbSQcX6bEi/K4TUJGiDXOwzZyN
+         iMdh2igFCcYaNf9waxI7O80kx5+0gBtCnj2TozG1ttJchuW2YfbTy7Cy/2oSs0WNPMZb
+         mVhRLeQ8iiw8ZbMNcY8+wk7o4KiHqKTT+oVIZQCA7Z1aDLCaux1t2iJq3dE4a4w5hYkn
+         Dosg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wnzB3u40;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Z0Gssepq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f18si2899023uaq.29.2021.10.01.10.51.42
+        by mx.google.com with ESMTPS id w9si4865332uar.82.2021.10.01.10.53.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Oct 2021 10:51:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Oct 2021 10:53:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wnzB3u40;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Z0Gssepq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56220 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWMhC-0000YU-A6
-	for alex.bennee@linaro.org; Fri, 01 Oct 2021 13:51:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60854)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mWMj9-00064a-GH
+	for alex.bennee@linaro.org; Fri, 01 Oct 2021 13:53:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mWMUM-0000aa-Rk
- for qemu-devel@nongnu.org; Fri, 01 Oct 2021 13:38:28 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:40867)
+ id 1mWMUC-0000TH-6s
+ for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:38:17 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:54256)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mWMUI-0000nx-H1
- for qemu-devel@nongnu.org; Fri, 01 Oct 2021 13:38:25 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id s21so16616204wra.7
- for <qemu-devel@nongnu.org>; Fri, 01 Oct 2021 10:38:22 -0700 (PDT)
+ id 1mWMU9-0000dz-5W
+ for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:38:15 -0400
+Received: by mail-wm1-x333.google.com with SMTP id z2so7769789wmc.3
+ for <qemu-arm@nongnu.org>; Fri, 01 Oct 2021 10:38:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LXRO/fMo8Qw/FWNF0Yyw4kfLM8T681YtQWZQBpSYMfI=;
- b=wnzB3u40kwE25RRbECRmS+b95hw+bozObqSwAyohmKp4lMi85g1vko8yMEgPOfvJb1
- BLiZOZC8Z7j/1hdsIXFOxvINCBciiWY5Yo20soVs/KpdQfSO5MWdywxc88oESPF3a+52
- swyaG2u2na1J56pQso5jZhrxbmym3O2fkE0EECzyJIc3KyrV+vMpQh07fRZq48EfoFis
- bCYxGqlMbohM9WcuH8Iby2nHIY11T2vrdKu1n1v5SrtXDkko+gqJTExhLSaXXNya7zSF
- VGC9dnAp+RWdNfSqzVUa3k/iCUAEPY3Y2lgiVx8bEk2GITTrurZLTkOPLJqKZ1oUe+UA
- T3Rw==
+ bh=PXZfK7Oh9ka7EzsTMcy7G7qzk9dy5gzr+jsgpmOW2zQ=;
+ b=Z0GssepqB+TcpKw9wrQAcQfElGS+NHmSdLqdSJA24wwWq/jnYCbxj3N6EdY1cmO2n8
+ BehvRFxjGbEdM52Agj7gvzobP5iIJoBA5N5Z7i4hNli30v3LvE5ZjotC2PTFp2p3mXgZ
+ k3/3GQ6uDWkIE6Emj326/JOnQzxFfx5SF1MB9AjPwAHnkcZOLww5egdiNok0fMSTbQJA
+ j7HXLoXI1wQJsPYZoNsKWmtmPDOJGOWjXwK9ZdHh79LYE+pncTJ+jqsqToeFt9a3gPiH
+ X65mFuEZDzrNcJ7nFoqb8MuW3LNayefio2wQcjCVRbqydKbVY1QIeqDTJ4hIr2AHGktX
+ tezw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=LXRO/fMo8Qw/FWNF0Yyw4kfLM8T681YtQWZQBpSYMfI=;
- b=vfDaVLXYAH3Tq69TdGhmyfzIqeOARiUwvET3FlJ/Dm+jv/yoNKIO7dS+mLAq2+Oxny
- bD4YY3oF5+KdSMFLZelQBEUAxHHcDgxCkLcLKGRihdu7qrOWVRpJqPrJwzlj0Mg+VSOP
- Ysutwlz/2xRukhM+6Nm9u6XSrBfuiPCO+Dcg90ONYKzkOu339SowmbZG4b/KB2hVb/nB
- Wnc4qdntYq3HFhE1qW6lVHt7emtgkPatU7EruJ5U+l4/Vd5eK7aytNqhr2uGQn451rhC
- OAVKSEL4npGwRgJc57B8cBVJt6SsHcAWWAfzfHyu8Fu8oR8lzNL+TVFRE0UeOFKzvlb3
- ADBw==
-X-Gm-Message-State: AOAM532As66O1SD1p/dlCAFPLU91iC7oT/purogT0fwmjVippUZwwiPE
- dUW+AXlquxI/IfTq8SSVspeUxA==
-X-Received: by 2002:adf:b311:: with SMTP id j17mr13567604wrd.340.1633109901232; 
- Fri, 01 Oct 2021 10:38:21 -0700 (PDT)
+ bh=PXZfK7Oh9ka7EzsTMcy7G7qzk9dy5gzr+jsgpmOW2zQ=;
+ b=d3SY7VjfuGQSKqmTegxYkxIgMtZq7RYBVX/kBwAI+kDElo/zwuwgwFc6DG8hcCylA5
+ ySOvoI/gUVobFB4oGF7jo10AOwhBx5aOA57WaP0SSQw7dpiygQe1sKiLCYA208GDHOB/
+ 7VeHGSmomeEyCKTSkks4Nbgq8F/bMF//USMyKTwSzlXvHQRBD4CM4HEZLpGUgqowXr1N
+ TeSWA+/iY4ONZbknWqC6TG4cQ9uPRGl33c+Oz5F6dyTcwH7KWyvdL9c0C7etPNa/dY8H
+ 0f/oTQOgDR/fv/yqz66f460mXIGgWyqC5TE+mBKVkctoo6AJcia2b8Rlu/ImSNcI6Ovu
+ 6vFA==
+X-Gm-Message-State: AOAM5326PJ95H39lj9PGQRkjAQ4ZZnEYQ9SdRYVVjwLdHassw2AyECze
+ 63ZpPqVxnXwQN9Wfe28ak/vTLQ==
+X-Received: by 2002:a05:600c:a45:: with SMTP id
+ c5mr5913096wmq.79.1633109891785; 
+ Fri, 01 Oct 2021 10:38:11 -0700 (PDT)
 Received: from localhost.localdomain
  (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id k9sm6186592wrz.22.2021.10.01.10.38.20
+ by smtp.gmail.com with ESMTPSA id k9sm6186592wrz.22.2021.10.01.10.38.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Oct 2021 10:38:20 -0700 (PDT)
+ Fri, 01 Oct 2021 10:38:11 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: eric.auger@redhat.com,
 	imammedo@redhat.com
-Subject: [PATCH v4 10/11] tests/acpi: add expected blob for VIOT test on virt
- machine
-Date: Fri,  1 Oct 2021 18:33:58 +0100
-Message-Id: <20211001173358.863017-11-jean-philippe@linaro.org>
+Subject: [PATCH v4 01/11] hw/acpi: Add VIOT table
+Date: Fri,  1 Oct 2021 18:33:49 +0100
+Message-Id: <20211001173358.863017-2-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211001173358.863017-1-jean-philippe@linaro.org>
 References: <20211001173358.863017-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,86 +107,209 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
  richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
  Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
- ani@anisinha.ca, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 24xYUJEHbVQp
+ marcel.apfelbaum@gmail.com, ani@anisinha.ca, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uvy9BHehAOTX
 
-The VIOT blob contains the following:
+Add a function that generates a Virtual I/O Translation table (VIOT),
+describing the topology of paravirtual IOMMUs. The table is created when
+instantiating a virtio-iommu device. It contains a virtio-iommu node and
+PCI Range nodes for endpoints managed by the IOMMU. By default, a single
+node describes all PCI devices. When passing the "default_bus_bypass_iommu"
+machine option and "bypass_iommu" PXB option, only buses that do not
+bypass the IOMMU are described by PCI Range nodes.
 
-[000h 0000   4]                    Signature : "VIOT"    [Virtual I/O Translation Table]
-[004h 0004   4]                 Table Length : 00000058
-[008h 0008   1]                     Revision : 00
-[009h 0009   1]                     Checksum : 66
-[00Ah 0010   6]                       Oem ID : "BOCHS "
-[010h 0016   8]                 Oem Table ID : "BXPC    "
-[018h 0024   4]                 Oem Revision : 00000001
-[01Ch 0028   4]              Asl Compiler ID : "BXPC"
-[020h 0032   4]        Asl Compiler Revision : 00000001
-
-[024h 0036   2]                   Node count : 0002
-[026h 0038   2]                  Node offset : 0030
-[028h 0040   8]                     Reserved : 0000000000000000
-
-[030h 0048   1]                         Type : 03 [VirtIO-PCI IOMMU]
-[031h 0049   1]                     Reserved : 00
-[032h 0050   2]                       Length : 0010
-
-[034h 0052   2]                  PCI Segment : 0000
-[036h 0054   2]               PCI BDF number : 0008
-[038h 0056   8]                     Reserved : 0000000000000000
-
-[040h 0064   1]                         Type : 01 [PCI Range]
-[041h 0065   1]                     Reserved : 00
-[042h 0066   2]                       Length : 0018
-
-[044h 0068   4]               Endpoint start : 00000000
-[048h 0072   2]            PCI Segment start : 0000
-[04Ah 0074   2]              PCI Segment end : 0000
-[04Ch 0076   2]                PCI BDF start : 0000
-[04Eh 0078   2]                  PCI BDF end : 00FF
-[050h 0080   2]                  Output node : 0030
-[052h 0082   6]                     Reserved : 000000000000
-
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- tests/data/acpi/virt/VIOT                   | Bin 0 -> 88 bytes
- 2 files changed, 1 deletion(-)
+ hw/acpi/viot.h      |  13 +++++
+ hw/acpi/viot.c      | 112 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/acpi/Kconfig     |   4 ++
+ hw/acpi/meson.build |   1 +
+ 4 files changed, 130 insertions(+)
+ create mode 100644 hw/acpi/viot.h
+ create mode 100644 hw/acpi/viot.c
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 29b5b1eabc..fa213e4738 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,4 +1,3 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/virt/VIOT",
- "tests/data/acpi/q35/DSDT.viot",
- "tests/data/acpi/q35/VIOT.viot",
-diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/VIOT
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..921f40d88c28ba2171a4d664e119914335309e7d 100644
-GIT binary patch
-literal 88
-zcmWIZ^bd((0D?3pe`k+i1*eDrX9XZ&1PX!JAexE60Hgv8m>C3sGzXN&z`)2L0cSHX
-I{D-Rq0Q5fy0RR91
-
-literal 0
-HcmV?d00001
-
+diff --git a/hw/acpi/viot.h b/hw/acpi/viot.h
+new file mode 100644
+index 0000000000..9fe565bb87
+--- /dev/null
++++ b/hw/acpi/viot.h
+@@ -0,0 +1,13 @@
++/*
++ * ACPI Virtual I/O Translation Table implementation
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef VIOT_H
++#define VIOT_H
++
++void build_viot(MachineState *ms, GArray *table_data, BIOSLinker *linker,
++                uint16_t virtio_iommu_bdf, const char *oem_id,
++                const char *oem_table_id);
++
++#endif /* VIOT_H */
+diff --git a/hw/acpi/viot.c b/hw/acpi/viot.c
+new file mode 100644
+index 0000000000..e33d468e11
+--- /dev/null
++++ b/hw/acpi/viot.c
+@@ -0,0 +1,112 @@
++/*
++ * ACPI Virtual I/O Translation table implementation
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "hw/acpi/acpi.h"
++#include "hw/acpi/aml-build.h"
++#include "hw/acpi/viot.h"
++#include "hw/pci/pci.h"
++#include "hw/pci/pci_host.h"
++
++struct viot_pci_ranges {
++    GArray *blob;
++    size_t count;
++    uint16_t output_node;
++};
++
++/* Build PCI range for a given PCI host bridge */
++static int build_pci_range_node(Object *obj, void *opaque)
++{
++    struct viot_pci_ranges *pci_ranges = opaque;
++    GArray *blob = pci_ranges->blob;
++
++    if (object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
++        PCIBus *bus = PCI_HOST_BRIDGE(obj)->bus;
++
++        if (bus && !pci_bus_bypass_iommu(bus)) {
++            int min_bus, max_bus;
++
++            pci_bus_range(bus, &min_bus, &max_bus);
++
++            /* Type (PCI range) */
++            build_append_int_noprefix(blob, 1, 1);
++            /* Reserved */
++            build_append_int_noprefix(blob, 0, 1);
++            /* Length */
++            build_append_int_noprefix(blob, 24, 2);
++            /* Endpoint start */
++            build_append_int_noprefix(blob, PCI_BUILD_BDF(min_bus, 0), 4);
++            /* PCI Segment start */
++            build_append_int_noprefix(blob, 0, 2);
++            /* PCI Segment end */
++            build_append_int_noprefix(blob, 0, 2);
++            /* PCI BDF start */
++            build_append_int_noprefix(blob, PCI_BUILD_BDF(min_bus, 0), 2);
++            /* PCI BDF end */
++            build_append_int_noprefix(blob, PCI_BUILD_BDF(max_bus, 0xff), 2);
++            /* Output node */
++            build_append_int_noprefix(blob, pci_ranges->output_node, 2);
++            /* Reserved */
++            build_append_int_noprefix(blob, 0, 6);
++
++            pci_ranges->count++;
++        }
++    }
++
++    return 0;
++}
++
++/*
++ * Generate a VIOT table with one PCI-based virtio-iommu that manages PCI
++ * endpoints.
++ */
++void build_viot(MachineState *ms, GArray *table_data, BIOSLinker *linker,
++                uint16_t virtio_iommu_bdf, const char *oem_id,
++                const char *oem_table_id)
++{
++    /* The virtio-iommu node follows the 48-bytes header */
++    int viommu_off = 48;
++    AcpiTable table = { .sig = "VIOT", .rev = 0,
++                        .oem_id = oem_id, .oem_table_id = oem_table_id };
++    struct viot_pci_ranges pci_ranges = {
++        .output_node = viommu_off,
++        .blob = g_array_new(false, true /* clear */, 1),
++    };
++
++    /* Build the list of PCI ranges that this viommu manages */
++    object_child_foreach_recursive(OBJECT(ms), build_pci_range_node,
++                                   &pci_ranges);
++
++    /* ACPI table header */
++    acpi_table_begin(&table, table_data);
++    /* Node count */
++    build_append_int_noprefix(table_data, pci_ranges.count + 1, 2);
++    /* Node offset */
++    build_append_int_noprefix(table_data, viommu_off, 2);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 8);
++
++    /* Virtio-iommu node */
++    /* Type (virtio-pci IOMMU)  */
++    build_append_int_noprefix(table_data, 3, 1);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 1);
++    /* Length */
++    build_append_int_noprefix(table_data, 16, 2);
++    /* PCI Segment */
++    build_append_int_noprefix(table_data, 0, 2);
++    /* PCI BDF number */
++    build_append_int_noprefix(table_data, virtio_iommu_bdf, 2);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 8);
++
++    /* PCI ranges found above */
++    g_array_append_vals(table_data, pci_ranges.blob->data,
++                        pci_ranges.blob->len);
++    g_array_free(pci_ranges.blob, true);
++
++    acpi_table_end(linker, &table);
++}
++
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index 3b5e118c54..622b0b50b7 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -51,6 +51,10 @@ config ACPI_VMGENID
+     default y
+     depends on PC
+ 
++config ACPI_VIOT
++    bool
++    depends on ACPI
++
+ config ACPI_HW_REDUCED
+     bool
+     select ACPI
+diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
+index 7d8c0eb43e..adf6347bc4 100644
+--- a/hw/acpi/meson.build
++++ b/hw/acpi/meson.build
+@@ -20,6 +20,7 @@ acpi_ss.add(when: 'CONFIG_ACPI_APEI', if_true: files('ghes.c'), if_false: files(
+ acpi_ss.add(when: 'CONFIG_ACPI_PIIX4', if_true: files('piix4.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_PCIHP', if_true: files('pcihp.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_PCIHP', if_false: files('acpi-pci-hotplug-stub.c'))
++acpi_ss.add(when: 'CONFIG_ACPI_VIOT', if_true: files('viot.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_X86_ICH', if_true: files('ich9.c', 'tco.c'))
+ acpi_ss.add(when: 'CONFIG_IPMI', if_true: files('ipmi.c'), if_false: files('ipmi-stub.c'))
+ acpi_ss.add(when: 'CONFIG_PC', if_false: files('acpi-x86-stub.c'))
 -- 
 2.33.0
 

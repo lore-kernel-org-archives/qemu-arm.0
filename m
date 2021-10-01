@@ -1,203 +1,176 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1513897lfp;
-        Fri, 1 Oct 2021 10:57:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxB3pcNmdBiWM1WeToNw8YCutATNMUBHPYE+jebULTQ/sK30VtYVW9PbRxSwAAv6Mh7vlfN
-X-Received: by 2002:a37:e46:: with SMTP id 67mr11411934qko.272.1633111041125;
-        Fri, 01 Oct 2021 10:57:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633111041; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1514985lfp;
+        Fri, 1 Oct 2021 10:58:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwGTSf+yygo3M7Dmf2NR8TjXHXrAafq+044Ez6NLBDbPriWLKyFnuZLDwbhwIDpF8aHvCJ
+X-Received: by 2002:ae9:f70e:: with SMTP id s14mr10998075qkg.38.1633111129245;
+        Fri, 01 Oct 2021 10:58:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633111129; cv=none;
         d=google.com; s=arc-20160816;
-        b=v0P4TiIHGLLOgrgNfgRBor6mdlBKqDYgKRd4htKDa6Aqbvxroj2CYYfHq+KchDZhq7
-         ccIgbWMMA6eutYAVkIjYU6AGOgUJYkAam6F4ftrfkOYxqQp1aNugmdf2x8rAgkrhv49p
-         b8+MKEXAVsh7VMHfwf5e9caPtbZSmabJGTJpkXpSE6ijkHcGskpmb5Nia1xU6MajDrM2
-         fBdVk09MwkbrpYOEZMkDTvTh03VGjIlsM/q+hrZjFj5RieLBKewrCQHhQlqphfKzkYmV
-         5tYyG/ESk7dPXmkWxzwNRn8jbD5f9Bb+KyvBybv8+Si2f7JFZtILHtw8FkJQputm37cT
-         ilAQ==
+        b=huJLpE4XtwBYmJe9VxyJ4Yr+d4ow2FR6TwPnlMjuSpdTjgd97Tn/RtGuMsfA4LMzPf
+         PcoIXrUun3RFFx9AkbqcggQ40Wuf2jhVDznTSq0OkZKnvizX1r8obLOYiBmnyxAErocI
+         Z/HCRJaJN+7yUE0ufzWvL487zwi8TY2pVTdNASCa6rT5ZL9Tjsww4xJFve5eQ/j698tO
+         OyEe+0AL7UbWmbKZaqMhJXhFbN+BcgEAGgFxNmCIxDJ2kWZgKZmu+AI5j4Iz3BzIS0z8
+         tDAwKtc1fqr4hiE+HjN/dsJCz9w5D2dpqsz+bXSGEWLNU/wqIIVOB6LtadPUFvBs38yP
+         U4yQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:domainkey-signature
          :dkim-signature;
-        bh=39Knl8lMnepL6kcVt9jhZefLZXbFTU/t5RlVQ8xkhKg=;
-        b=bjWH4vdV+U+MGL73WUobQahA6LVhNz0AF+UAOXc4PK+JsJ54w+7mlFKpgcAIf+f20S
-         4iiNgmJ2ivXr+aNFI7+0aB0PjkETvAN0ml+KOMCfDbyksdMbNfJFWWi95bgSn/zxkNmy
-         Z5+TQemf/X95DjG0keg1lUjYe6ly8YyGZK90oqOtM4i7lYMkrobcBZ4NCUHlrWmgYegg
-         /O9atQy0zFKenX0vqKrtfPaNmr4oJKGfsDMcTOYr0bMtkBAv707L8LmVdTkCGIZRgdIi
-         0NHwyP0Nu6IgEYeYP1YH9gs41jD4hmXPL42C1fcgK7I1TrMnGyDq9q6SXPbgNPWTR3sN
-         RjCg==
+        bh=owe9EqPyp4Vwt+xhyoD/T8c67QUpgXsCRTsrb8wNEH0=;
+        b=urjB9dXMsnmqo7ANLeW85o2ZOduaQeJfU/rh0rA1OtoU9hdYNPnL6G2Y3CI82vz32c
+         mssD1NMfzlQRp/0BlWNDTvNGT1RLGYbTtrm9ajOriE6MsBd2XztwvxC2nWU7TRP5lYvw
+         Em5r9HXHogeqLmwkuUAJrNgHzDHr26+Lqbsynqyl4anU+M1MlfS7GUkENQ0wv5CKTEub
+         JWHg2dmIMYNKJNy2e6Ymp3BuUYKJny4zHtbcJF50F4QmBqA9gBLkdI0CAUVBMQPJZ7IB
+         S6niox/RV1DjWin05rAC10zEuRjKfDbQYOeGzKjzvpsaJdiREMYasSePJUgrZRL3XStt
+         +Mtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=osDyd0R6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@comstyle.com header.s=default header.b=bfI0ghoc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=comstyle.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n15si4776546qkp.11.2021.10.01.10.57.20
+        by mx.google.com with ESMTPS id t15si4904791qkp.81.2021.10.01.10.58.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Oct 2021 10:57:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Oct 2021 10:58:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=osDyd0R6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48198 helo=lists1p.gnu.org)
+       dkim=pass header.i=@comstyle.com header.s=default header.b=bfI0ghoc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=comstyle.com
+Received: from localhost ([::1]:51954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWMme-0005rM-BY
-	for alex.bennee@linaro.org; Fri, 01 Oct 2021 13:57:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60850)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mWMo4-0008Kv-HF
+	for alex.bennee@linaro.org; Fri, 01 Oct 2021 13:58:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mWMUM-0000aY-RW
- for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:38:28 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:38415)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mWMUI-0000nC-7b
- for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:38:24 -0400
-Received: by mail-wr1-x435.google.com with SMTP id u18so16656487wrg.5
- for <qemu-arm@nongnu.org>; Fri, 01 Oct 2021 10:38:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=39Knl8lMnepL6kcVt9jhZefLZXbFTU/t5RlVQ8xkhKg=;
- b=osDyd0R6KgbdCpelgFoytLwm532Ov3WtmrWBS7gtdFfp+1o+h8w/RExiVQlqlQj34U
- GBjLiBEHt5r0QqprQa3SSLi+sYVALZf4VYVWNRA9mphAaahv9Av4ba3Uk2fivx6P4mFN
- vriMUK+Exp/tYQs64E6JhqHoF5fSRN9PZl3gBfZOe8JSnqSbn9kVlnhRfM8Mmgc4r7uC
- dZjdeeqZP6KS1talvEUWua+QX+8WyAKvXMtDT2phNKMaFCTrbn6AfVA4lzUxvDBVkIuu
- p0FtFxjFrobqK8ZsEAt6W+cj3KV54eyeM0q0ink/cdyPZUwuVhiUwzSn6pWuoV08OgsV
- VQSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=39Knl8lMnepL6kcVt9jhZefLZXbFTU/t5RlVQ8xkhKg=;
- b=Z4l3vChyR5euJHvV43hqoJU6w2Uznpsk1sjWFypC/WqBWpoKBGehuqrojWmKYK5taa
- Ffxn9VSz6VQ3PfR/1xtBjo3hv3E4ggTXrHNpSRnx8riOAVdG0VFXvljLHNENefe8oVFQ
- bAfDJTWeEpgXcJ/+6cQ0IBbaes1YMJuWgdg5qL2AdoHTycl8+FaTxIy3B5aVJEqyL3JN
- GnzwI7Mzlvag4MEifOvQwWQhxKFWBMdWpq02dobDLPzpM2Li8baNFYgAiHP03vunmUgH
- sS+4EglMQssZBX+abntuuxsnTcxB/79wlU/EEfAguzDNsDFl+fw+7S2UlAjbyVc+5g8A
- VGwA==
-X-Gm-Message-State: AOAM5311vvZ6qxX+idKfPAZjFpCYcnnuczB5rrAKdpfrA2O5/8XCdWiS
- /X0f1sV8SOhOYTnx/j34sa4Q+w==
-X-Received: by 2002:a05:6000:228:: with SMTP id
- l8mr13914848wrz.413.1633109900241; 
- Fri, 01 Oct 2021 10:38:20 -0700 (PDT)
-Received: from localhost.localdomain
- (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id k9sm6186592wrz.22.2021.10.01.10.38.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Oct 2021 10:38:19 -0700 (PDT)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: eric.auger@redhat.com,
-	imammedo@redhat.com
-Subject: [PATCH v4 09/11] tests/acpi: add test cases for VIOT
-Date: Fri,  1 Oct 2021 18:33:57 +0100
-Message-Id: <20211001173358.863017-10-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211001173358.863017-1-jean-philippe@linaro.org>
-References: <20211001173358.863017-1-jean-philippe@linaro.org>
+ (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
+ id 1mWMkF-0002IR-9v; Fri, 01 Oct 2021 13:54:51 -0400
+Received: from speedy.comstyle.com ([2607:f938:3000:8::2]:1397
+ helo=mail.comstyle.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_CHACHA20_POLY1305:256)
+ (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
+ id 1mWMkD-0005LC-Kn; Fri, 01 Oct 2021 13:54:51 -0400
+Received: from mail.comstyle.com (localhost [127.0.0.1])
+ by mail.comstyle.com (Postfix) with ESMTP id 4HLd6K757yz8PbN;
+ Fri,  1 Oct 2021 13:54:33 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=comstyle.com; h=message-id
+ :date:mime-version:subject:to:cc:references:from:in-reply-to
+ :content-type:content-transfer-encoding; s=default; bh=14okNHQJS
+ kgEI1aItTF0jMMrhRY=; b=bfI0ghocdOxSGrRijdgtvGxWlqUC8ozAj5g7Ixx0D
+ MgoWyTlIe4IqJzLdQoU7ryzMQqUd3z2vS4RK/aq0BOx1L44VSpGEaW5EMhsFeHiV
+ zYeXRU2ANmrpgM0OCoUNME/OljIKNfAPCMeO8JfJJh9p6IyndX4d3nxf7vtSNMoD
+ KE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=comstyle.com; h=message-id
+ :date:mime-version:subject:to:cc:references:from:in-reply-to
+ :content-type:content-transfer-encoding; q=dns; s=default; b=GqR
+ 4GYX6cl4MvgKe0yL3kISPTyTVCGXNZjb/qWaa6dGZ5DTA1BSkYklwJAF2lpJ135c
+ DgZPBmulWJNO0b2jzMGEQq1nfyHwvg8vCi+QN9g1xu0GGzxssj3ikNKMysv6Zy2q
+ HTBsvVgIqXA7wLckNUs9iGoTOb5VC538tm6hgIBw=
+Received: from [IPV6:2001:470:b0db:100:2180:9c72:cb7b:b0bd] (unknown
+ [IPv6:2001:470:b0db:100:2180:9c72:cb7b:b0bd])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: brad)
+ by mail.comstyle.com (Postfix) with ESMTPSA id 4HLd6K35r9z8PbK;
+ Fri,  1 Oct 2021 13:54:33 -0400 (EDT)
+Message-ID: <9bbfbede-0b93-d9ea-cad9-2e7a32c0ebbf@comstyle.com>
+Date: Fri, 1 Oct 2021 13:54:32 -0400
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101
+ Thunderbird/93.0
+Subject: Re: [PATCH 3/3] dtc: Update to version 1.6.1
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Greg Kurz <groug@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>,
+ John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20210827120901.150276-1-thuth@redhat.com>
+ <20210827120901.150276-4-thuth@redhat.com>
+ <7004c933-5262-3119-80f5-722a8e858046@redhat.com>
+ <YVbQERWD9fY0kxxW@redhat.com>
+ <CAFEAcA8PdNEHU2YMGT56bCwezf9i+BGxijwevLJakrR_N1Yjhw@mail.gmail.com>
+ <YVbYavVeV/OmYON6@redhat.com>
+From: Brad Smith <brad@comstyle.com>
+In-Reply-To: <YVbYavVeV/OmYON6@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f938:3000:8::2;
+ envelope-from=brad@comstyle.com; helo=mail.comstyle.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.127,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
- marcel.apfelbaum@gmail.com, ani@anisinha.ca, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: czyZdwsETfqI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RJuM+45ITEir
 
-Add two test cases for VIOT, one on the q35 machine and the other on
-virt. To test complex topologies the q35 test has two PCIe buses that
-bypass the IOMMU (and are therefore not described by VIOT), and two
-buses that are translated by virtio-iommu.
+On 10/1/2021 5:44 AM, Daniel P. Berrang=C3=A9 wrote:
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
- tests/qtest/bios-tables-test.c | 38 ++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
-
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 4f11d03055..b6cb383bd9 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1403,6 +1403,42 @@ static void test_acpi_virt_tcg(void)
-     free_test_data(&data);
- }
- 
-+static void test_acpi_q35_viot(void)
-+{
-+    test_data data = {
-+        .machine = MACHINE_Q35,
-+        .variant = ".viot",
-+    };
-+
-+    /*
-+     * To keep things interesting, two buses bypass the IOMMU.
-+     * VIOT should only describes the other two buses.
-+     */
-+    test_acpi_one("-machine default_bus_bypass_iommu=on "
-+                  "-device virtio-iommu "
-+                  "-device pxb-pcie,bus_nr=0x10,id=pcie.100,bus=pcie.0 "
-+                  "-device pxb-pcie,bus_nr=0x20,id=pcie.200,bus=pcie.0,bypass_iommu=on "
-+                  "-device pxb-pcie,bus_nr=0x30,id=pcie.300,bus=pcie.0",
-+                  &data);
-+    free_test_data(&data);
-+}
-+
-+static void test_acpi_virt_viot(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 128ULL * 1024 * 1024,
-+    };
-+
-+    test_acpi_one("-cpu cortex-a57 "
-+                  "-device virtio-iommu", &data);
-+    free_test_data(&data);
-+}
-+
- static void test_oem_fields(test_data *data)
- {
-     int i;
-@@ -1567,12 +1603,14 @@ int main(int argc, char *argv[])
-         if (strcmp(arch, "x86_64") == 0) {
-             qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
-         }
-+        qtest_add_func("acpi/q35/viot", test_acpi_q35_viot);
-     } else if (strcmp(arch, "aarch64") == 0) {
-         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
-         qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
-         qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
-         qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
-         qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt);
-+        qtest_add_func("acpi/virt/viot", test_acpi_virt_viot);
-     }
-     ret = g_test_run();
-     boot_sector_cleanup(disk);
--- 
-2.33.0
-
+> On Fri, Oct 01, 2021 at 10:37:51AM +0100, Peter Maydell wrote:
+>> On Fri, 1 Oct 2021 at 10:10, Daniel P. Berrang=C3=A9 <berrange@redhat.=
+com> wrote:
+>>> On Thu, Sep 30, 2021 at 09:10:12AM +0200, Thomas Huth wrote:
+>>>> On 27/08/2021 14.09, Thomas Huth wrote:
+>>>>> The dtc submodule is currently pointing to non-release commit. It's=
+ nicer
+>>>>> if submodules point to release versions instead and since dtc 1.6.1=
+ is
+>>>>> available now, let's update to that version.
+>>> Most of our supported platforms don't have version 1.6.1 available.
+>>>
+>>> As a general goal IMHO we should be seeking to eliminate bundling of
+>>> 3rd party modules that are commonly available in distros. We've
+>>> carried dtc for a hell of a long time, and if we keep updating our
+>>> submodule we'll keep relyin on new features, and never be able to
+>>> drop it because it will always be newer than what's in the distros.
+>>>
+>>> So personally I think we should never again update dtc and capstone
+>>> modules. If we want to take adbantage of new features, then do that
+>>> through conditional compilation, as we do for any of the other 3rd
+>>> party libraries consumed.
+>> I agree in general, but (per the commit message here) our dtc
+>> submodule is currently pointing at some random not-a-release
+>> commit in upstream dtc. We should at least move forward to
+>> whatever the next released dtc after that is, before we say
+>> "no more dtc updates".
+> Yep, if we want to fix it onto an official version tag, that's
+> OK, just not jumping right to very latest version. We might want
+> to move it backwards to better align with what we're targetting
+> in the support
+>
+> Best I can tell the distros currently have these versions:
+>
+>       - Alpine 3.14 - 1.6.1
+>       - CentOS 8 - 1.6.0
+>       - Debian 10 - 1.4.7
+>       - Fedora 33 - 1.6.0
+>       - OpenSUSE Leap 15.3 - 1.5.1
+>       - Ubuntu 18.04 - 1.4.5
+>       - FreeBSD Ports - 1.6.0
+>       - OpenBSD Ports - 1.6.0
+I already updated OpenBSD to 1.6.1.
+>       - macOS HomeBrew - 1.6.1
+>       - Windows MSys2 - 1.6.0
+>
+>
+> Regards,
+> Daniel

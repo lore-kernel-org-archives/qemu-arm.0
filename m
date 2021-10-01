@@ -1,111 +1,107 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp364868lfp;
-        Thu, 30 Sep 2021 08:11:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9irff15VDPz2aeUDNMXmQd3RqnKTbmYD2ue+uNJIeFyP75eAo7n4JrgdLvLBTldn4ok8n
-X-Received: by 2002:a1c:7f11:: with SMTP id a17mr16462444wmd.166.1633014704008;
-        Thu, 30 Sep 2021 08:11:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633014704; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1079981lfp;
+        Fri, 1 Oct 2021 02:10:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyJIa7WAi5Jedg+NYiOyeNmlwdPMS/49JSpAyrqCCaJ6mJeVEILwxXe8VE0g2OpM6IiBbu9
+X-Received: by 2002:a05:6e02:1a84:: with SMTP id k4mr8022840ilv.146.1633079406024;
+        Fri, 01 Oct 2021 02:10:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633079406; cv=none;
         d=google.com; s=arc-20160816;
-        b=WOZVWh0eiHGQnyYCPYfmgUslYPC9Zjv1/wjHEVXAdXHNiqTdBGfK7OtqFFtveHsGVA
-         6hqxaxZTsUJ7RZ7Vr8QlwDCU+blQuyNlbfX95XxMGv+OBGzOmqDpYHDHTz7c/JKGIagp
-         T7JRK6KrgCtmnCGQtukJiAawtV8490Tqou89P7GUI+C2A9LpMnlPENXPYGyXCnpi3ovo
-         syr2xHeAtzT3Q4qHgi25KEB5+T6g3OL8qydJeed3cVClP8oI7rg5KTAooWyMo9DhUQ47
-         JwUweqKveN8Cf5hnRJcgMFhbFm6bzaHM10CsG5u6V9iYXGW0KkfyYxq6BXdQ0BV/wPFK
-         z3Bw==
+        b=qHKoQ6yRr9HQbxJDQ2wgL5pONpioQUHjsfk+Z4TQGNk3yZZJplu34CE1Gz0jYpx8Fm
+         hPrzRI7cGA+HXXOlcHKdaQWfmNjn6AHuRjLTxhzJ93m/XWaXlwFItRALbisjoNKINON6
+         7WXZ6Dq33fusWxd3Uw32NuzcD9NYte1sBSlxdq8KeSLbkl7op+eTBuG62IxyuNtQAldl
+         cRkaUaOGVHGm1MhzeM9+X9BO8eXfEDFM5ZsEGNmwn4dmVf9G+DRHy8/HQB/FKaewzY6d
+         KUgU0xvcgwkBRw+JsIJkp+cU6xyxpQsDnRTKNSy0PFaX0f3RsRnomdu7Geck8c8jfpyH
+         Tk4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=CUxXorZNxQAdKT8A1/Ktghlcu3rez/M4pWH0J3djKc4=;
-        b=Um8jO2j+RVz4QqHpcFGoJi3EvKVK78ydDSd0XvAQWJdoP6vLnRJtWRSpXImN4WUoNG
-         7XmKbPh6/5wemYx5bqT4+quAgVDIC/3tES+IzKX56CY+sLuNTnUh7n/3u2EPkvMqAK1b
-         wRTW9TlZ39kiWXZWP1jI/+hY7zh6mkcca3zTGEwGG+/BINwbsOjdZ1qgKwCrT4cHADFS
-         RXA+Mb4iDLd8QDYHrT9qoKtOqFd33P5f24eqYkNz4vgqxdBpn+E6kONyyxIyEpi5AmY0
-         0gYhk9nJ8KkO982osrQhqtzb/XbqfjiLOimB4vSdGHl9KeC43wZyOyBts/8ybbqPPo04
-         HgGA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-disposition:user-agent:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=PrVZofCcfa67fs4N3t0NNeTpuNnAl3CeaqnGyhcboqc=;
+        b=VRvDFG3vpT7Uv7dWUX9FyDDwwKn2iOPhq2VN1OllL1psZZmtjSl16jzLJq7uTkPewP
+         slerhK+Z5wmS87JGvo2GCHW36+9h+wVs0XcRbtmdk3j9AcW3Dhithi+cJZS9hAMEihoI
+         uuQt20Z7cPjFLOK3a3QLCyw2cZ107yPzqXm14GGFDul/p04RkH45gqpCdbEyT+nXtIo2
+         LVYwSpZ48vAMDHkNDFOEeKHXhYk9YWm7TzVRN5cfzNKwrwAEJrLBpEdr8vLWfq3B8p76
+         FtGHFDWbxzGl5qu5TcImvCYYK0OMdCD63vJcVczdt1a1HC72eDEPcMu+wWrDr6fHPCi6
+         cUgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RVUmwGf0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OJWqDw3Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g4si4753148wri.344.2021.09.30.08.11.43
+        by mx.google.com with ESMTPS id m8si5946294ioa.74.2021.10.01.02.10.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Sep 2021 08:11:43 -0700 (PDT)
+        Fri, 01 Oct 2021 02:10:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RVUmwGf0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OJWqDw3Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50814 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mVxip-0007Zq-0p
-	for alex.bennee@linaro.org; Thu, 30 Sep 2021 11:11:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60218)
+	id 1mWEYP-0006rB-At
+	for alex.bennee@linaro.org; Fri, 01 Oct 2021 05:10:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVxg1-0003vk-Mn
- for qemu-arm@nongnu.org; Thu, 30 Sep 2021 11:08:51 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:40592)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mVxfy-00014O-KA
- for qemu-arm@nongnu.org; Thu, 30 Sep 2021 11:08:49 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- t16-20020a1c7710000000b003049690d882so8698584wmi.5
- for <qemu-arm@nongnu.org>; Thu, 30 Sep 2021 08:08:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=CUxXorZNxQAdKT8A1/Ktghlcu3rez/M4pWH0J3djKc4=;
- b=RVUmwGf0uFpw2U1R324ergOkAxMjXIOqXxnFcVD+6N4DdIM/jP9POWrgdLcxHFwDId
- /iKwpvpukf3UgYNxjU6mAWSdMRl3dtG1o/sq/c37l8n9/rIkINgY/lvqwr0GaAJYK0ut
- oQgonw009paAIcYfmm5dzrDS6ZIy4lzNWAFQQBzfKImj5/STqAH5cJYEi4pF+Wh1QMZI
- kks4kilKSTg0vpvnOFgEH+rYlSHIdaq4a0tcDihM+aZvIhcZTBD3LI2aNHv26EGSKJxx
- GYODdh9EillpzUvebPb9kmXtK7yGy3S/i9Y97Quoohsx/fJTrwR7y4zXYGzLmWbw/TM5
- dWug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CUxXorZNxQAdKT8A1/Ktghlcu3rez/M4pWH0J3djKc4=;
- b=ONwv0/nCNNmZHXuaGcmSvafn/kBzidiPT5siPX0wHMW0SEkQutMcw5Y7B8lA1I4+dW
- UIDHepW2MpP9luQY/E+xpk36DgOk8r7I4tbj5sEpKCF0pdW2XnqFQWc11YOskeM6tEfZ
- /yCgT35NTyjV343TL3HYU5KxqsAO2dobO5TC0S8DLZxFxnf5YfVDxwb37TjCA0eYbCw/
- RAdKRPdCbSvTdx+sKpP0JZQwBxuwlwNVnLl5j2I0m53PSM2l2JcKTTQ6rgwA6Ee5/ASl
- 8jKXI09FM1aeLt5fjEkV66neA1WsjZNZM2mjlNhGud/a19dQ3qwr68t3E6+WYb6DpGC0
- OpUw==
-X-Gm-Message-State: AOAM530YggKI0uMD+fdzYjejrSn88xj67jGKcG0IDbJ1r3UcIry3wUOa
- uPKcPbheFxRF4HRcUHxFbDz6pQtqzzJSfw==
-X-Received: by 2002:a05:600c:358d:: with SMTP id
- p13mr5952591wmq.71.1633014525346; 
- Thu, 30 Sep 2021 08:08:45 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id o26sm5085942wmc.17.2021.09.30.08.08.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Sep 2021 08:08:45 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 1/3] hw/intc/arm_gicv3: Move checking of redist-region-count
- to arm_gicv3_common_realize
-Date: Thu, 30 Sep 2021 16:08:40 +0100
-Message-Id: <20210930150842.3810-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210930150842.3810-1-peter.maydell@linaro.org>
-References: <20210930150842.3810-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mWEX8-0003sc-Hd
+ for qemu-arm@nongnu.org; Fri, 01 Oct 2021 05:08:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45299)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mWEX5-0002kr-Hi
+ for qemu-arm@nongnu.org; Fri, 01 Oct 2021 05:08:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1633079322;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=PrVZofCcfa67fs4N3t0NNeTpuNnAl3CeaqnGyhcboqc=;
+ b=OJWqDw3Yo8EEteEcLbn8NJ8e+TFpCjkI1vAeXaAWdQ/c07jhK5TC6AaC+ecDwhTnu7Ximm
+ 30aqWkDD83anva5ifkYajob8VYomHEDw9lnl1PSbYjBn+Cc4lDZGzh4/sZhkFu0Z5XPvLn
+ n15KDSl5AVrnps76oV/eczqfpt1oIRI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-268-ce18OlleMiWBEZF-9VqLPg-1; Fri, 01 Oct 2021 05:08:39 -0400
+X-MC-Unique: ce18OlleMiWBEZF-9VqLPg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6AB0418414A2;
+ Fri,  1 Oct 2021 09:08:38 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.195.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 74E6560936;
+ Fri,  1 Oct 2021 09:08:36 +0000 (UTC)
+Date: Fri, 1 Oct 2021 10:08:33 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 3/3] dtc: Update to version 1.6.1
+Message-ID: <YVbQERWD9fY0kxxW@redhat.com>
+References: <20210827120901.150276-1-thuth@redhat.com>
+ <20210827120901.150276-4-thuth@redhat.com>
+ <7004c933-5262-3119-80f5-722a8e858046@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <7004c933-5262-3119-80f5-722a8e858046@redhat.com>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,136 +114,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QOOXJ7Ws6rTM
+X-TUID: y6az4iUDdDcu
 
-The GICv3 devices have an array property redist-region-count.
-Currently we check this for errors (bad values) in
-gicv3_init_irqs_and_mmio(), just before we use it.  Move this error
-checking to the arm_gicv3_common_realize() function, where we
-sanity-check all of the other base-class properties. (This will
-always be before gicv3_init_irqs_and_mmio() is called, because
-that function is called in the subclass realize methods, after
-they have called the parent-class realize.)
+On Thu, Sep 30, 2021 at 09:10:12AM +0200, Thomas Huth wrote:
+> On 27/08/2021 14.09, Thomas Huth wrote:
+> > The dtc submodule is currently pointing to non-release commit. It's nicer
+> > if submodules point to release versions instead and since dtc 1.6.1 is
+> > available now, let's update to that version.
+> > 
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > ---
+> >   dtc | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/dtc b/dtc
+> > index 85e5d83984..b6910bec11 160000
+> > --- a/dtc
+> > +++ b/dtc
+> > @@ -1 +1 @@
+> > -Subproject commit 85e5d839847af54efab170f2b1331b2a6421e647
+> > +Subproject commit b6910bec11614980a21e46fbccc35934b671bd81
+> 
+> Ping!
+> 
+> David, could you please pick up this patch if you don't mind it?
 
-The motivation for this refactor is:
- * we would like to use the redist_region_count[] values in
-   arm_gicv3_common_realize() in a subsequent patch, so we need
-   to have already done the sanity-checking first
- * this removes the only use of the Error** argument to
-   gicv3_init_irqs_and_mmio(), so we can remove some error-handling
-   boilerplate
+Most of our supported platforms don't have version 1.6.1 available.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/intc/arm_gicv3_common.h |  2 +-
- hw/intc/arm_gicv3.c                |  6 +-----
- hw/intc/arm_gicv3_common.c         | 26 +++++++++++++-------------
- hw/intc/arm_gicv3_kvm.c            |  6 +-----
- 4 files changed, 16 insertions(+), 24 deletions(-)
+As a general goal IMHO we should be seeking to eliminate bundling of
+3rd party modules that are commonly available in distros. We've
+carried dtc for a hell of a long time, and if we keep updating our
+submodule we'll keep relyin on new features, and never be able to
+drop it because it will always be newer than what's in the distros.
 
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index aa4f0d67703..cb2b0d0ad45 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -306,6 +306,6 @@ struct ARMGICv3CommonClass {
- };
- 
- void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
--                              const MemoryRegionOps *ops, Error **errp);
-+                              const MemoryRegionOps *ops);
- 
- #endif
-diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-index 3f24707838c..bcf54a5f0a5 100644
---- a/hw/intc/arm_gicv3.c
-+++ b/hw/intc/arm_gicv3.c
-@@ -393,11 +393,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops, &local_err);
--    if (local_err) {
--        error_propagate(errp, local_err);
--        return;
--    }
-+    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops);
- 
-     gicv3_init_cpuif(s);
- }
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 223db16feca..8e47809398b 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -250,22 +250,11 @@ static const VMStateDescription vmstate_gicv3 = {
- };
- 
- void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
--                              const MemoryRegionOps *ops, Error **errp)
-+                              const MemoryRegionOps *ops)
- {
-     SysBusDevice *sbd = SYS_BUS_DEVICE(s);
--    int rdist_capacity = 0;
-     int i;
- 
--    for (i = 0; i < s->nb_redist_regions; i++) {
--        rdist_capacity += s->redist_region_count[i];
--    }
--    if (rdist_capacity < s->num_cpu) {
--        error_setg(errp, "Capacity of the redist regions(%d) "
--                   "is less than number of vcpus(%d)",
--                   rdist_capacity, s->num_cpu);
--        return;
--    }
--
-     /* For the GIC, also expose incoming GPIO lines for PPIs for each CPU.
-      * GPIO array layout is thus:
-      *  [0..N-1] spi
-@@ -308,7 +297,7 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
- static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
- {
-     GICv3State *s = ARM_GICV3_COMMON(dev);
--    int i;
-+    int i, rdist_capacity;
- 
-     /* revision property is actually reserved and currently used only in order
-      * to keep the interface compatible with GICv2 code, avoiding extra
-@@ -350,6 +339,17 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    rdist_capacity = 0;
-+    for (i = 0; i < s->nb_redist_regions; i++) {
-+        rdist_capacity += s->redist_region_count[i];
-+    }
-+    if (rdist_capacity < s->num_cpu) {
-+        error_setg(errp, "Capacity of the redist regions(%d) "
-+                   "is less than number of vcpus(%d)",
-+                   rdist_capacity, s->num_cpu);
-+        return;
-+    }
-+
-     s->cpu = g_new0(GICv3CPUState, s->num_cpu);
- 
-     for (i = 0; i < s->num_cpu; i++) {
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 5c09f00dec2..ab58c73306d 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -787,11 +787,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL, &local_err);
--    if (local_err) {
--        error_propagate(errp, local_err);
--        return;
--    }
-+    gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
- 
-     for (i = 0; i < s->num_cpu; i++) {
-         ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
+So personally I think we should never again update dtc and capstone
+modules. If we want to take adbantage of new features, then do that
+through conditional compilation, as we do for any of the other 3rd
+party libraries consumed.
+
+Regards,
+Daniel
 -- 
-2.20.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

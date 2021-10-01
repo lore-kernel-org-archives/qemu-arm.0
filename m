@@ -1,129 +1,107 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1474720lfp;
-        Fri, 1 Oct 2021 10:09:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyPh6uuhmUon9ljP3kdx6pQY54ItLpFLMZ1luoe3/6DUglZhB8o+wFZXIVDVvQVoQJuxvI
-X-Received: by 2002:adf:e906:: with SMTP id f6mr13939351wrm.207.1633108153196;
-        Fri, 01 Oct 2021 10:09:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633108153; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1504594lfp;
+        Fri, 1 Oct 2021 10:45:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzD4XC03hYdeJPDtfZfGYMPT+EvAhFiv42wqtVcW7G0KZ4IBZDY+KJ2uuiR83d2fXGcb0/U
+X-Received: by 2002:a9d:228a:: with SMTP id y10mr11697029ota.164.1633110322131;
+        Fri, 01 Oct 2021 10:45:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633110322; cv=none;
         d=google.com; s=arc-20160816;
-        b=nCsbucnNW2qc4Mo/dPfiurwsstHpZVrFgduKq4QH9MWS5r/oKpmX2QlJQ8MlfaJAUT
-         g+pZjzh4YGVTx8FsTqTtw/s2trhIkUY9GpCYd0E/P2xxMgoAKE3rw5pwOqmOxe339D/k
-         90LWQ/dalPJJZkvLoJgw3U9/YW+8dMKA2qz1B7ay53AEy0v/++hH4OsVcicIa9VZ0TL7
-         OcLh1ktuRzEnDoQhn3+yfb7O4GMhiSn1CPC+7rQr8HMtmXFlS5BFwmFLh8SbaN7dot1L
-         yF5SfE00C/2PLkAFEDip0i6jkKiqtvkuvbgYx1iYqmSvvTostcoC+SVG3tMDodbCC2Az
-         2fqA==
+        b=IXSZC80a8kakDpIsldCJSu+PDKt1FNFEiiYEuGbrWro+GZtA/kwx3uCi4BqW3Ri3gj
+         95Zo6qb4UV1gc0vXGDbAOV+/NbBJFjuiH65RbyWkTaiga+qg1lvoohRT5b3DyLrsZPcz
+         ERVvhe0ViiXGE8X7xLnHrK7HuMnP4zpcciN8K7K4uZoKwyFvrLXtfQxPUZ5nrS/P5YZ7
+         xmLg/bV5WJvJIOyG7uNZu9TCFcDdGXdQj0VUPCrCtXumEbSRCIQaAgN3KYonCz4yO4wF
+         R/B6FMDxuQRVbsseM2w/j/2pp9CtMgAUNDSYx6liicjNgl861iIioYSkZ8YNhaG7TpNk
+         l1qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=LFYj8tMR3LV+DDeWXB2T23z8D1+YVTTqU/iTD59oPMo=;
-        b=SvDqc4xxNyv/JxvZEaF+Epv8I+GnKR7wFqP/Hf8KrRXNz46HZhcr7KMWJaOfptZ5hm
-         lh6LvalXdnDMzOaHhwAAne+SKsEsYoiNpYAd3Erejguz22gfutZ4ba8J5Zvy/WtSUlRW
-         SbH2kxrOWdwUsIMtGTjNfJq7uoKZFAN5BfeTYRNCWOvqdL8vW2brv1N5vKjgQmWbJj0/
-         A58XdYdvIeYkLU6UsCUEmWbuJOgYKFDloRRXr09a1JlvgLZ7eZ21d0uPiN9IJGxaq2Ix
-         vUBn8UMF8lbt/PxInue8woWkoBji4L2brs9pbmtWhw3APMfXmkNuQaqMWoHjTF4jpUSw
-         GeQg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=+GDR8oRq/C83jwYzaHDaSmBQ8xgB6bUk2ya2BldqeZk=;
+        b=DKFDJd+Ryo91fJtGrMpbyGEj7MGeCHtkR67NdB54ZowwFTagseOnlWnl4WGs/LjnPt
+         U5X7yGYeBWxxKWtJ9kzibBdWalenA2HkFQIpu1kJllkF+mdRWCRnRHy/hUEVt1IxWx7d
+         OxtGDItFS8UXQIPXXI/nwR2E0U9YOcPBduzPExFHHEcoZw56fjXoLY86tnzQ1gwXi2hq
+         mvdSqOCORVr691ZRMDQOQ/cRLMtAtcghLE1Corxh4+2l/WhqJaJfht4LmAczMgpIb84t
+         CLc1Oeia1EK+4d90CuryUe4zalFZeiL0EZc3ZWMcYczNaXj8kv40Po6y/CusBI/cDYWS
+         Smww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IXdt6LVf;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Rp+nnGxq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13si10073815wrg.567.2021.10.01.10.09.13
+        by mx.google.com with ESMTPS id m10si10608245ooj.2.2021.10.01.10.45.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Oct 2021 10:09:13 -0700 (PDT)
+        Fri, 01 Oct 2021 10:45:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IXdt6LVf;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Rp+nnGxq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44240 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWM24-0001Iz-Am
-	for alex.bennee@linaro.org; Fri, 01 Oct 2021 13:09:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53656)
+	id 1mWMb3-00087r-A6
+	for alex.bennee@linaro.org; Fri, 01 Oct 2021 13:45:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mWM1t-0001GC-Rb
- for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:09:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44199)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mWM1q-0002J3-93
- for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:09:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633108136;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LFYj8tMR3LV+DDeWXB2T23z8D1+YVTTqU/iTD59oPMo=;
- b=IXdt6LVfuuc4TFqAOiUUJttJpnTND2p95nZVrrF+dR0xxiefxnoeF7fy8BIcK7IC3nKkco
- NMfV9QZJxtz2u6ocanbf1jB57aamJoG98mtWukp5x9eQaX33cL7j2/ElXBkbil7Xt2AZuz
- juh/Aj2OVrH4c0gFckQHgt6cE/yCrII=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-537-q9t3_2BTO1uYVzbyT4hlJA-1; Fri, 01 Oct 2021 13:08:55 -0400
-X-MC-Unique: q9t3_2BTO1uYVzbyT4hlJA-1
-Received: by mail-ed1-f69.google.com with SMTP id
- u17-20020a50d511000000b003daa3828c13so11010291edi.12
- for <qemu-arm@nongnu.org>; Fri, 01 Oct 2021 10:08:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1mWMUB-0000SD-Hr
+ for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:38:15 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:53088)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1mWMU8-0000dt-Iq
+ for qemu-arm@nongnu.org; Fri, 01 Oct 2021 13:38:15 -0400
+Received: by mail-wm1-x335.google.com with SMTP id b192so7771465wmb.2
+ for <qemu-arm@nongnu.org>; Fri, 01 Oct 2021 10:38:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+GDR8oRq/C83jwYzaHDaSmBQ8xgB6bUk2ya2BldqeZk=;
+ b=Rp+nnGxqw0unZ4jNapgGNpTzXWKXLgk0slr3lBzAZIKdC47dwcUK+ZCNUgxScTAYCv
+ s1xuKZ16qZtd28ZwWkKQoKCLRHrg5AQKBLno/XGeY5WK8FRn8X/p4QPFfCe9mqAsvo4I
+ UwhabKlIXd7rzpiF3EMwR2qi/aDybutqA+1ao288Liui7GTYBxcnzg+bxVbpM9Mzpwhk
+ B8z3AWjEp8Jm1P0IrObBeyGhm2VZvkkfTPtdzgD0VYaUyyEMB8LIKh8DTa8vuSrVpFiu
+ Y/ZLb74MUTrQO1BHqm7S8lzsNtUzpAZbMVrZymLb1ncSYlgTy8DFQsZ3Ueur15iNvPmu
+ PyZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=LFYj8tMR3LV+DDeWXB2T23z8D1+YVTTqU/iTD59oPMo=;
- b=pnlQGESQOfIAzzMgu5FUrfdQn+3e0cPuojeYB0niLgGV6fid/vnFSLhi5zSMd4HHog
- 7B6VH3w7O6Luz3VJJOxeXJyr6jRX8LqmYNcR0Lejelzfb0JgsMmUkGY0h6oaVsSMIgYZ
- VqwZPWCpnhQn/5OijjT4GDYTfg3061aVe8OfmvjKDlC//n9AIPpC/tQi6tpePB0YLCSi
- MAqEq1BfdxGwK3sUc5zxnLOfDqE+lD/E0n6Yl6cKfybHDY/+GWAjAMANo6tczYF73f/I
- KHfp6mJV7R6P6FJdwokcHw9lJlmiOPWcBVVxCZIzMhLaQnsCN//lO9sINx/Q+/SAmNE9
- VEAQ==
-X-Gm-Message-State: AOAM532cxrQv/9obnYy9f1+tlxq5C/8g3rhcStKikCvPELxqNjyrU6/k
- HN4z/BOGeEvHtIFIH3aD6lncREsyEdapv7tl6UImR5N3cRxHOKs0lHj94dRCCaWj96fObYaLEaw
- yt58+lLGWQH7S
-X-Received: by 2002:aa7:d99a:: with SMTP id u26mr15539472eds.320.1633108134387; 
- Fri, 01 Oct 2021 10:08:54 -0700 (PDT)
-X-Received: by 2002:aa7:d99a:: with SMTP id u26mr15539425eds.320.1633108134061; 
- Fri, 01 Oct 2021 10:08:54 -0700 (PDT)
-Received: from ?IPV6:2001:b07:6468:f312:5e2c:eb9a:a8b6:fd3e?
- ([2001:b07:6468:f312:5e2c:eb9a:a8b6:fd3e])
- by smtp.gmail.com with ESMTPSA id s15sm3516327edu.91.2021.10.01.10.08.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Oct 2021 10:08:53 -0700 (PDT)
-Message-ID: <0343d17f-bb46-a266-7ba4-20bdf30631d0@redhat.com>
-Date: Fri, 1 Oct 2021 19:08:51 +0200
+ bh=+GDR8oRq/C83jwYzaHDaSmBQ8xgB6bUk2ya2BldqeZk=;
+ b=tmV/9HpaDliRsRggu+7XYHA93rUH+5a2uFj0/BaxUiK5qym9ORh30zqvd6ISTuvVeB
+ wzf2+RFQPyxIV9uaEHiiTKL0gzn4UxBN6H8j/3JbMjkXScyFqIuC7dhd+GyIOnWX9rs5
+ jR4iON2XDr9QYG5npeWbBcmvkwOVVWWwgC6hZmiBLycoZy+L00ccls4F6R4awi7NqgE9
+ IMrXXTh7ggWMwit6GI8/UW1lPYJXfYtFfkACNJdBczs/r1arvDcphcmK3DiH2dEk6Xct
+ 7NwWLAfF4yCznSTMRSA1/tOhSje3P6GKNHBPo/BQSbbQENARTdtj4Twp+/R8xaUs9Ve8
+ 9x3w==
+X-Gm-Message-State: AOAM531Gq06ZvnhTrtax8+6eF0GSkTlv5mvVGyKHkbGGxB8E/v83gXiY
+ jUW9O2EqryMgxetX/zw6PEn1Jw==
+X-Received: by 2002:a05:600c:3b83:: with SMTP id
+ n3mr5878193wms.50.1633109890827; 
+ Fri, 01 Oct 2021 10:38:10 -0700 (PDT)
+Received: from localhost.localdomain
+ (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
+ by smtp.gmail.com with ESMTPSA id k9sm6186592wrz.22.2021.10.01.10.38.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Oct 2021 10:38:10 -0700 (PDT)
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: eric.auger@redhat.com,
+	imammedo@redhat.com
+Subject: [PATCH v4 00/11] virtio-iommu: Add ACPI support
+Date: Fri,  1 Oct 2021 18:33:48 +0100
+Message-Id: <20211001173358.863017-1-jean-philippe@linaro.org>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH v12 16/16] machine: Make smp_parse return a boolean
-To: Yanan Wang <wangyanan55@huawei.com>, Eduardo Habkost
- <ehabkost@redhat.com>, =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Andrew Jones <drjones@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>
-References: <20210929025816.21076-1-wangyanan55@huawei.com>
- <20210929025816.21076-17-wangyanan55@huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20210929025816.21076-17-wangyanan55@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.127,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -137,66 +115,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Pierre Morel <pmorel@linux.ibm.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>, qemu-ppc@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
+ marcel.apfelbaum@gmail.com, ani@anisinha.ca, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fRpmwNVIZkI6
+X-TUID: pHEgFLA+v74h
 
-On 29/09/21 04:58, Yanan Wang wrote:
-> @@ -933,8 +935,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
->           return;
->       }
->   
-> -    smp_parse(ms, config, errp);
-> -    if (*errp) {
-> +    if (!smp_parse(ms, config, errp)) {
->           qapi_free_SMPConfiguration(config);
->       }
->   }
-> 
+Allow instantiating a virtio-iommu device on ACPI systems by adding a
+Virtual I/O Translation table (VIOT). Enable x86 support for VIOT.
 
-This is actually a leak, so I'm replacing this patch with
+Changes since v3 [1]:
+* Cleaned the IOMMU-uniqueness checks. Added patch 6 to have a
+  single check on x86.
+* Added patch 5 that allows to gracefully propagate errors when setting
+  resv_mem properties.
+* Squashed table blobs into patch 11.
+* Addressed all other comments from v3.
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 54f04a5ac6..d49ebc24e2 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -897,7 +897,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-  {
-      MachineClass *mc = MACHINE_GET_CLASS(obj);
-      MachineState *ms = MACHINE(obj);
--    SMPConfiguration *config;
-+    g_autoptr(SMPConfiguration) config = NULL;
-      ERRP_GUARD();
-  
-      if (!visit_type_SMPConfiguration(v, name, &config, errp)) {
-@@ -920,7 +920,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-  
-      smp_parse(ms, config, errp);
-      if (*errp) {
--        goto out_free;
-+        return;
-      }
-  
-      /* sanity-check smp_cpus and max_cpus against mc */
-@@ -935,9 +935,6 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-                     ms->smp.max_cpus,
-                     mc->name, mc->max_cpus);
-      }
--
--out_free:
--    qapi_free_SMPConfiguration(config);
-  }
-  
-  static void machine_class_init(ObjectClass *oc, void *data)
+Caveats:
 
-which removes the need.
+* Series depends on "acpi: refactor error prone build_header() and
+  packed structures usage in ACPI tables" [2]
 
-Paolo
+* Since virtio-iommu doesn't support boot-bypass at the moment, firmware
+  can't access storage behind the IOMMU to load bootloader or kernel.
+  This will be solved by another series currently in flight [3]. In the
+  meantime you can use a storage device that bypasses the IOMMU such as
+  virtio-blk-pci (without iommu_platform property) or a bypass bridge
+  (docs/iommu-bypass.txt).
+
+You can find a description of the VIOT table, which will be included in
+next ACPI version, here: https://jpbrucker.net/virtio-iommu/viot/viot-v9.pdf
+
+[1] https://lore.kernel.org/qemu-devel/20210914142004.2433568-1-jean-philippe@linaro.org/
+[2] https://lore.kernel.org/qemu-devel/20210924122802.1455362-1-imammedo@redhat.com/
+[3] https://lore.kernel.org/qemu-devel/20210930185050.262759-1-jean-philippe@linaro.org/
+
+Jean-Philippe Brucker (11):
+  hw/acpi: Add VIOT table
+  hw/arm/virt-acpi-build: Add VIOT table for virtio-iommu
+  hw/arm/virt: Remove device tree restriction for virtio-iommu
+  hw/arm/virt: Reject instantiation of multiple IOMMUs
+  hw/arm/virt: Use object_property_set instead of qdev_prop_set
+  hw/i386: Move vIOMMU uniqueness check into pc.c
+  pc: Allow instantiating a virtio-iommu device
+  tests/acpi: allow updates of VIOT expected data files
+  tests/acpi: add test cases for VIOT
+  tests/acpi: add expected blob for VIOT test on virt machine
+  tests/acpi: add expected blobs for VIOT test on q35 machine
+
+ hw/acpi/viot.h                 |  13 ++++
+ include/hw/i386/pc.h           |   2 +
+ hw/acpi/viot.c                 | 112 +++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c       |   7 +++
+ hw/arm/virt.c                  |  20 +++---
+ hw/i386/acpi-build.c           |   5 ++
+ hw/i386/pc.c                   |  30 ++++++++-
+ hw/i386/x86-iommu.c            |   6 --
+ hw/virtio/virtio-iommu-pci.c   |   7 ---
+ tests/qtest/bios-tables-test.c |  38 +++++++++++
+ hw/acpi/Kconfig                |   4 ++
+ hw/acpi/meson.build            |   1 +
+ hw/arm/Kconfig                 |   1 +
+ hw/i386/Kconfig                |   1 +
+ tests/data/acpi/q35/DSDT.viot  | Bin 0 -> 9398 bytes
+ tests/data/acpi/q35/VIOT.viot  | Bin 0 -> 112 bytes
+ tests/data/acpi/virt/VIOT      | Bin 0 -> 88 bytes
+ 17 files changed, 223 insertions(+), 24 deletions(-)
+ create mode 100644 hw/acpi/viot.h
+ create mode 100644 hw/acpi/viot.c
+ create mode 100644 tests/data/acpi/q35/DSDT.viot
+ create mode 100644 tests/data/acpi/q35/VIOT.viot
+ create mode 100644 tests/data/acpi/virt/VIOT
+
+-- 
+2.33.0
 

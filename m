@@ -1,221 +1,169 @@
-Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp2789379qvp;
-        Fri, 1 Oct 2021 04:42:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhoYAy/KCtHe5K/l1XdLb9iJu/EIg5a+UEQaqOffVcZsVsE9eDd8GA4tZboAJ1WZ456OSo
-X-Received: by 2002:a4a:c3c2:: with SMTP id e2mr9103342ooq.8.1633088552504;
-        Fri, 01 Oct 2021 04:42:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633088552; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1258311lfp;
+        Fri, 1 Oct 2021 06:07:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypLNx6a6iB+n7s6a+Ku0Zik40ZXWtitx8QJVIAiKCp2YnZXCXr/NLYiCproSzFpjbUDIfo
+X-Received: by 2002:a1f:1ed1:: with SMTP id e200mr7492133vke.7.1633093661552;
+        Fri, 01 Oct 2021 06:07:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633093661; cv=none;
         d=google.com; s=arc-20160816;
-        b=V+nScWBu/SHIZvcNRchvJRxBEF2zMiCI7neTNQaDX4I7xUwzbxBF8HiNhRX0o47kD6
-         NkxFzQfO/j/B7EhuNM9GT2rm5z5/D2bJBopLSMKZ//cY0EoqT4lHbnf9O9Bt9yOltJd/
-         o2fE/Z++gADy9j1x8oAN4+PaDSPdiL1MX0FJ7KamtzuDH9xIpzMbml2COHZO5r5M/AuN
-         aGlY4CNf/QW401B0rvlADeyNAkAFzI79KiPPjf/dQyKPB16XgvMCWbLsbtBQSibQzebq
-         YQvtEpQT0dLWYjzFTDUyA8FwZT70JSPxtl9hd9z4sh3fY1mYnWbGYSg3INgJAhEC6yW6
-         psNA==
+        b=DgkI7ukcwOEv+ldRJshiVM27v8iP2eVmsknUB4tGlR01WYOjxF72ubxbpCjDZY9zMc
+         9n2m6oCvfkiAkeXAihdyHJl53vZ/QxJMbmdJWQd0uydg45IOk9Xyu8Ot34HRSuxUluoT
+         pBkko0XtU7kIX3XbARxWUSok06ddel5xQ0rqNA4WRf2Iqz6E0ImEP7uxrR6hJnX7ktz1
+         aLyn28fyFUxPKBiZ/kxh27NJmfZUTtWOlAe4Hn0IqYYDu+cYVWxLgsbX6xebATcqwdG5
+         l8ZNNBKUBt3tERDiO3a3uOkDuuikWK3zF0wugZ+BizETjShbKJxspK8jZJVuxkoamtvO
+         vMBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:from:references:to:dkim-signature;
-        bh=Xfrex0QI7hpVzPgFFWdo8jVGIG7esty/IttIpU+pckc=;
-        b=ARH/sbBBuo6UeD7v0NqmHo4Ozh9OZ9ZkVjx7YM7d75gns3u4MwSkHWLE84NCe6WGaO
-         AyY0bVkH/isAGMdk+qihW4zAz4AzzmGisqIdnOUhMeBN+zbCF+MRCf2On6zelaZsAn0l
-         wieWhjJjDYq0y6yg6Tmxaqj0/moqg4idbW5vovLzRs1jrfeO94308cL+7GfCcVvzHHHP
-         hgGQU/+GFP3CTt6NYa+JSz6qvJbJ+VhNl5h1v2VPoPLys700RnQgQq0IfGdadRchup9Q
-         fuFbzaPvKzWlxBvSPuV9NVYVSC48ozTtuq7EKY8rRZ8cyeRxy8laaJTWpKHTRFOLb9z0
-         G8ow==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=1pEjhzod8KyDXjZmqcJnYQWCNQss8/wgABk2YIvtLRY=;
+        b=eT6zKEqJQjCBKq/iBSvWJm6BSlSfs/MzorWry4R45VcsWayYCo7TOcFu9vCcWz9cPq
+         sTYS80AtGs+QmQcNI9a40tDXYAASheivrUHd+T9Pfn+vxENBJfZXfUB8ssbktONOsdwq
+         dRwL5wvHfm07gp8ylBUs2tiiHGjJtsIQp01euMiKIufIEt5MBG+BA6lkVcplYPetJT+j
+         cWBd51qDWX4brwv5/J4kCTGtikDS6iY/RDkj4dSuOfTLwVDO7/UpICwi69uZzmPV5UZ5
+         5n+AWbH9w71F3VoNhYWp64sb2vOTxFhUTDlyc87WCunix8gH+e0Mz8p9U9tTb8s7fqoR
+         jAAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JpZHP7Wv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QCeo3rze;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i125si6202249oia.304.2021.10.01.04.42.32
+        by mx.google.com with ESMTPS id c7si1017410vsm.53.2021.10.01.06.07.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Oct 2021 04:42:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Oct 2021 06:07:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JpZHP7Wv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43800 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=QCeo3rze;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWGvv-0002HP-Rk
-	for alex.bennee@linaro.org; Fri, 01 Oct 2021 07:42:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32788)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mWIGK-00039P-U2
+	for alex.bennee@linaro.org; Fri, 01 Oct 2021 09:07:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mWGui-0001nI-NV
- for qemu-arm@nongnu.org; Fri, 01 Oct 2021 07:41:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:48610)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mWGuf-0004h8-6P
- for qemu-arm@nongnu.org; Fri, 01 Oct 2021 07:41:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633088471;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Xfrex0QI7hpVzPgFFWdo8jVGIG7esty/IttIpU+pckc=;
- b=JpZHP7WvLgk+5CYYUXn9jys2s8MaJrOVq6rIVXNieTj2wZczGS0tSEEVCafvsuGJgkjoVI
- u+MaVEdcJYtHQyB9HM3ZzQVEi5e9SH62KYx16UCSOXuNhoJewox8tjhZksWmYWQ8wduT2M
- VrE4mzjMM2MfPG3EaPQmRJroJHdpdwc=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-306-J9SI4ue5NtW4qyVqBuKUEw-1; Fri, 01 Oct 2021 07:41:08 -0400
-X-MC-Unique: J9SI4ue5NtW4qyVqBuKUEw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- t2-20020adf97c2000000b001608326aa2fso1990752wrb.8
- for <qemu-arm@nongnu.org>; Fri, 01 Oct 2021 04:41:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mWIDG-0000IL-T0; Fri, 01 Oct 2021 09:04:32 -0400
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c]:33698)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1mWIDE-0002rv-HD; Fri, 01 Oct 2021 09:04:30 -0400
+Received: by mail-ot1-x32c.google.com with SMTP id
+ d12-20020a05683025cc00b0054d8486c6b8so11448890otu.0; 
+ Fri, 01 Oct 2021 06:04:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=1pEjhzod8KyDXjZmqcJnYQWCNQss8/wgABk2YIvtLRY=;
+ b=QCeo3rzey7an0e625o5biBzt/Dx4XqWT6VX49TWSMyy+cZ/IRx5hsmi3KwrE3ryexg
+ RXl4rD5sb+JD/5d6J1dEhS5hgAgtAia9I7TTwLdxMWmCHk6AJKBChHFMlBfGNLfspT4/
+ jUAXzLso+xV9kwKPpAtqoV1w2cyQ+Ke1QQZEIbCmDlAKttBjIyUO1JXtOTcFtDB9adhe
+ rdxsN0x9a9Swm45XAHbsDOs/KMhJ9UPE2ZNwkZKpkkT/qYVR1BO2LLRMsAZ9bX6e+R7R
+ b21oaaEMXsMOjfb6ogtgSlB0VIluLx/hwaXywRrmtgWp3suew/7wX7G3Tk8mW/GkVWVe
+ kgXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Xfrex0QI7hpVzPgFFWdo8jVGIG7esty/IttIpU+pckc=;
- b=MygAnTFXLIzse57ptZBInezyRBCtF5RbNrL5GftK+Sj5Ge4fD0xefCnOwjtIU2LMEc
- R0iimZGUVCtIYcDHMxQKjxJ7vjUdD9wdhiGXGSu1hb0poCFJc40gcpU+SnsyF27O+2Z/
- S2yZ15lM2NR9eboKnsbjVk7ZfE2k9NIL/qdBmsiBIhks95Jh6ZDq+qzCFbFfnMIqxQC3
- M/TKDdoccb5pQfC5+MIxjwEV7H07Gb+o1HXpReDmDo4KlPcIH/sHCuZRcJpB/Fz1XTDx
- TmJY6bIVPd7fYBIjYPIy66GCqMFcxNV5IfmZml4CvUfptaMsxzA8s4CV2us4+jHZHI2l
- UsHg==
-X-Gm-Message-State: AOAM532KGga3+M2FytPsvrYePJxBn3eIxLzkDRdsQ0abPq/B6fJmrHwl
- 0lTwtfOhBCHWVKde70YM12WcRkjgaWeocByJyFlN8ZhvzALeLJ7jk4bXJFX7NvCxjiqCQYMW47k
- Jnq4S9Bt8crVP
-X-Received: by 2002:adf:dd42:: with SMTP id u2mr11729468wrm.39.1633088467178; 
- Fri, 01 Oct 2021 04:41:07 -0700 (PDT)
-X-Received: by 2002:adf:dd42:: with SMTP id u2mr11729446wrm.39.1633088466953; 
- Fri, 01 Oct 2021 04:41:06 -0700 (PDT)
-Received: from thuth.remote.csb (tmo-097-75.customers.d1-online.com.
- [80.187.97.75])
- by smtp.gmail.com with ESMTPSA id v10sm5795718wrm.71.2021.10.01.04.41.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Oct 2021 04:41:06 -0700 (PDT)
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210827120901.150276-1-thuth@redhat.com>
- <20210827120901.150276-4-thuth@redhat.com>
- <7004c933-5262-3119-80f5-722a8e858046@redhat.com>
- <YVbQERWD9fY0kxxW@redhat.com>
- <CAFEAcA8PdNEHU2YMGT56bCwezf9i+BGxijwevLJakrR_N1Yjhw@mail.gmail.com>
- <YVbYavVeV/OmYON6@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 3/3] dtc: Update to version 1.6.1
-Message-ID: <9e3620ce-4a79-da2c-aaf1-20832622c576@redhat.com>
-Date: Fri, 1 Oct 2021 13:41:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=1pEjhzod8KyDXjZmqcJnYQWCNQss8/wgABk2YIvtLRY=;
+ b=I9rRY/Y9T8xWD/OY/fCbC7gN4erH8fGdUgIYXddb00P8Dx3QklNnc6XLzKLZJlK7Ko
+ /QFxWidg21eC+mT2zxRaSAOh1xNHWPT8ppx/J5XOaHbK78OLqqewi9wgn4kTy9tE5CB3
+ +8SEJSqDAh4EXt/U8C50TqJHc4PbbDGss/TspRrsjR9xNsQyt4PG4Vn+zTYYcN8nagTN
+ flBmZAK92lixBmq4Ac4T8AnPkTCTKIakYM6xzU1JL6zPGe0IDsW/uxwZNb4HVf4zVCK3
+ jr/KH1YzU2IDRITCBHlaLPe+mbcn/3Nl1QvXs5A/gg81r1T73eIbVodfJaPIMkGpLxlT
+ /ztQ==
+X-Gm-Message-State: AOAM533AvFmz7CKmtGch6Yj+Ge0tKdwGwU78rpiW7GjcccmLCIiFHbsA
+ 6YX8a/v3eyc83O8ZkL83xDY=
+X-Received: by 2002:a9d:67cf:: with SMTP id c15mr10286049otn.232.1633093465962; 
+ Fri, 01 Oct 2021 06:04:25 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ bf15sm1247344oib.4.2021.10.01.06.04.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Oct 2021 06:04:25 -0700 (PDT)
+Date: Fri, 1 Oct 2021 06:04:23 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Bin Meng <bmeng.cn@gmail.com>
+Subject: Re: [PATCH] hw/ssi: imx_spi: Improve chip select handling
+Message-ID: <20211001130423.GA549865@roeck-us.net>
+References: <e08467c0-bd69-81d3-93d3-13b8fc812453@roeck-us.net>
+ <CAEUhbmX9JxE+VxSL8BWGd_XKD-WJ0r5d5MKsbdVgPiJkZd5Y3w@mail.gmail.com>
+ <CAEUhbmVfFRdbtu7yWUauO6sd0QNhoH6tuTAFA2PMxZp5P7+awA@mail.gmail.com>
+ <PH0PR11MB5205AE78D6C5DFFFA767183B97D49@PH0PR11MB5205.namprd11.prod.outlook.com>
+ <8b86d434-a2e6-8122-0a88-dc9a15fbfe87@roeck-us.net>
+ <PH0PR11MB5205684F9CDEC890187D09D997DC9@PH0PR11MB5205.namprd11.prod.outlook.com>
+ <20210916142140.GA252836@roeck-us.net>
+ <PH0PR11MB52058E0462672E61797758B997DE9@PH0PR11MB5205.namprd11.prod.outlook.com>
+ <2cd83a88-952c-6f86-74b2-8c0da3ce4394@roeck-us.net>
+ <CAEUhbmVVjXKUxa95+GPPZSU5=isgTs7EMnN7gxgYn9Lkg+a0Xg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <YVbYavVeV/OmYON6@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.127, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAEUhbmVVjXKUxa95+GPPZSU5=isgTs7EMnN7gxgYn9Lkg+a0Xg@mail.gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x32c.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Greg Kurz <groug@kaod.org>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jjq1resqdOq9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, "Cheng,
+ Xuzhou" <Xuzhou.Cheng@windriver.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CIqySnVyjFPJ
 
-On 01/10/2021 11.44, Daniel P. Berrangé wrote:
-> On Fri, Oct 01, 2021 at 10:37:51AM +0100, Peter Maydell wrote:
->> On Fri, 1 Oct 2021 at 10:10, Daniel P. Berrangé <berrange@redhat.com> wrote:
->>>
->>> On Thu, Sep 30, 2021 at 09:10:12AM +0200, Thomas Huth wrote:
->>>> On 27/08/2021 14.09, Thomas Huth wrote:
->>>>> The dtc submodule is currently pointing to non-release commit. It's nicer
->>>>> if submodules point to release versions instead and since dtc 1.6.1 is
->>>>> available now, let's update to that version.
->>
->>> Most of our supported platforms don't have version 1.6.1 available.
->>>
->>> As a general goal IMHO we should be seeking to eliminate bundling of
->>> 3rd party modules that are commonly available in distros. We've
->>> carried dtc for a hell of a long time, and if we keep updating our
->>> submodule we'll keep relyin on new features, and never be able to
->>> drop it because it will always be newer than what's in the distros.
->>>
->>> So personally I think we should never again update dtc and capstone
->>> modules. If we want to take adbantage of new features, then do that
->>> through conditional compilation, as we do for any of the other 3rd
->>> party libraries consumed.
-
-I basically agree, especially for capstone. But for dtc, that also means 
-that we cannot compile certain target boards if its not available ... that's 
-somewhat more ugly than if there is just a missing backend feature ... but I 
-guess it's still ok. Users could always install a recent libfdt first.
-
->> I agree in general, but (per the commit message here) our dtc
->> submodule is currently pointing at some random not-a-release
->> commit in upstream dtc. We should at least move forward to
->> whatever the next released dtc after that is, before we say
->> "no more dtc updates".
+On Sun, Sep 26, 2021 at 10:49:53AM +0800, Bin Meng wrote:
+> On Sat, Sep 18, 2021 at 12:19 PM Guenter Roeck <linux@roeck-us.net> wrote:
+> >
+> > On 9/17/21 8:09 PM, Cheng, Xuzhou wrote:
+> > >>> I got some free time in the past days to investigate this issue. Guenter is right, the Linux imx-spi driver does not work on QEMU.
+> > >>>
+> > >>> The reason is that the state of m25p80 machine loops in STATE_READING_DATA state after receiving RDSR command, the new command is ignored. Before sending a new command, the CS line should be pulled to high, this make the state of m25p80 back to IDLE.
+> > >>>
+> > >>> I have same point with Guenter, it's that set CS to 1 when burst is zero. But i don't think it is necessary to set CS to 0 in imx_spi_flush_txfifo(). I will send a new patch to fix this issue.
+> > >>>
+> > >>
+> > >> Thanks a lot for looking into this. If you have a better solution than mine, by all means, please go for it. As I mentioned in my patch, I didn't really like it, but I was unable to find a better solution.
+> > > I am doing some experiment to verify that the new patch is reasonable, so the new patch will be delayed few days.
+> > >
+> >
+> > No problem. Note that I'll be traveling for the next 2-3 weeks, and I won't be able
+> > to test any patches during that time.
+> >
 > 
-> Yep, if we want to fix it onto an official version tag, that's
-> OK, just not jumping right to very latest version.
-
-That was the intention here. Accidentally, the first release tag after the 
-commit that we are currently using, is version 1.6.1, which also happens to 
-be the latest version, too.
-
-> We might want
-> to move it backwards to better align with what we're targetting
-> in the support
-
-We shouldn't use an older versions as submodule since there was a problem in 
-libfdt on Sparc hosts on older versions. All other hosts should be fine with 
-version 1.5.1 though (which is what we're indirectly checking in meson.build)
-
-> Best I can tell the distros currently have these versions:
+> I have some updates to share, as I have been working with Xuzhou
+> internally on this issue for the past days:
 > 
->       - Alpine 3.14 - 1.6.1
->       - CentOS 8 - 1.6.0
->       - Debian 10 - 1.4.7
->       - Fedora 33 - 1.6.0
->       - OpenSUSE Leap 15.3 - 1.5.1
->       - Ubuntu 18.04 - 1.4.5
->       - FreeBSD Ports - 1.6.0
->       - OpenBSD Ports - 1.6.0
->       - macOS HomeBrew - 1.6.1
->       - Windows MSys2 - 1.6.0
+> Current mods using BURST_LEN to determine the timing to pull up the CS
+> line in the SPI controller codes is a workaround. Hardware does not do
+> this. To understand what real hardware behavior is, Xuzhou used an
+> oscilloscope to verify our guess.
+> 
+> It turns out the root cause is elsewhere, and a proper fix will be
+> sent out soon.
+> 
 
-Thanks! I was just about to collect the same information, too.
+Thanks a lot for tracking this down!
 
-So I'd suggest: Update the submodule to v1.6.1 now, so that it points to a 
-proper release tag.
-
-Then wait until Debian 10 and Ubuntu 18.04 are EOL (sometime in 2022), then 
-we can finally get rid of the dtc submodule an rely on the system fdt 
-instead (assuming that versions that are older than 1.6.1 will be fixed by 
-the distros on Sparc hosts).
-
-  Thomas
-
+Guenter

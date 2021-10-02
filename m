@@ -1,113 +1,103 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2128194lfp;
-        Sat, 2 Oct 2021 04:28:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzaSqAdYE6jQgwm2AFFKiY7XWHZHTse2/eXIoteRJlMr9ieol7U1/ylWRLLLYG9MvDwASpQ
-X-Received: by 2002:a0c:a78a:: with SMTP id v10mr14676781qva.49.1633174087355;
-        Sat, 02 Oct 2021 04:28:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633174087; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2501753lfp;
+        Sat, 2 Oct 2021 14:49:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxNafdXB+Q8R2C0eQSBF7FsxHUyMT+aYdMzq9D1FH0RBXjDPavM66c6qkR7RdXuAflF3IAy
+X-Received: by 2002:a25:ef4e:: with SMTP id w14mr6110523ybm.50.1633211382574;
+        Sat, 02 Oct 2021 14:49:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633211382; cv=none;
         d=google.com; s=arc-20160816;
-        b=CCYvpbUickIcKebvLQT3j5U0BmlyCn/BKA2RgLBd6kIPxCl413abElDG8lKtkIRzan
-         VLaDDG0mw458jmYFAncgyofsst9Ykw+qPth+8WBQ90+SQUlTeXtzZ27YR5EPpkDEJN0w
-         AwazqB8DZtPWgB5k+fllH1wu1230qf7NrnvmHnsj0YM36KT+W3/O8MMM0zkeyPygCqV1
-         3lWU1cAaf9+taJ5roa8N267tTTBkR6edV79ezyrQOotXUg4knSLv/ZxlbTh1QdskQQim
-         5+ofa20/0UNuWVpqMBdwyYdIvwmRRUMRzvEGrlsgskiWVgpvgflBtjkIyD95Pr5jWI9G
-         Pg2A==
+        b=fJoyBFUYtjbANeQpwI6mlqsHMdpoLb8fzMjQPJ0Ti7uxYDzuXW+iU1ewcZsN/Hv74s
+         258zu1BhQbX32pIB5NWQcQdeY+8nxbSMjhmR+YbSeBN5IU7QFtyJruccJJUTZP4P3Hzn
+         D9fyNrE6A25W4Dnkj6w/0+fZB9K7LysNlCcvdv5JhlQE6/K0ipoYipD6zQmx882e76rR
+         uWM28rQaP9wYGdVsXd28VHML0eVPcPEVgRZtHuqs1YDSP0qLzywKFx65/6o6i1q9xB3v
+         LwscXI+H7BWiEmrGQB/vX0dT+cDypGyUZ1LQZbkKSmBMRWMdsSpmBHBZUa/QjZbst0N9
+         dDfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=WRTyvdXzfLsOCQr8WiThSiEElAO5Ylc5Qa3y0rFuJvk=;
-        b=Elt5YX2fRzMyH2PKcri81WctKnZHjSnaPe5VdAp2wn1ZmWcPr6TDoc7gDiUGOFfRrm
-         PNDNzREzQOVo1g2hig6UUnAx9196M8eza6zpTN1YBLLWfgIE8DVzUeGCaKEqtgFkzgdm
-         T+oZbeNDpU8vMce1ZTSiyW6FkmV7fUeve7I5DhQA12kenz7qSy9vsvA2MW+1cMOU9h2N
-         4uc0QMgIoBUe71HiQi9qJq+wKS5ZS9v3M41Pp2mZKi4pItMbR52uOIizHaBlUQbNAouH
-         sGbIxEI71DlMAXKufaDDtxsgScxGiVrHJaFvPxT81Yyma/ZA8qAR9Yj1PNft+3rhW/2q
-         OY3Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=Ex3XhDUg+/maY50mfPmYC9VbnuQumJpSjE5fM9wnAIo=;
+        b=bGqTYdUCDdKKVnxzeDGQvxK3KVIvjugHEfH86X8NBusN66NMejctn6LPM72fwjaHw9
+         smm8ImNb7DPEXKMX3ZdQ08cobO/k8gm2SEhB6gzCclG0qVqavOIWMxgC9M7evLh9eD9g
+         xtSJdNqZdc+wPGG2xDmG/zI194E06Mh6ZpY8jQeVIzbvwPj+sebvF77xIY9FNmAxL724
+         SxUGy6pjBTC1tHhJzwD3h/NPIcZ8rn/ZNr/EfNhLENHQq22Zw+062LekrZW3Ug/jAbN1
+         zuEF42FRnDZoTJeKFSfjA+c02J56OZSD24XYXxCGHQU60TAVSx7j3kCaoRLBhFTMH0QG
+         ADnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/AuC/GU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17si1061577qta.435.2021.10.02.04.28.07
+        by mx.google.com with ESMTPS id c4si2103445ybk.12.2021.10.02.14.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Oct 2021 04:28:07 -0700 (PDT)
+        Sat, 02 Oct 2021 14:49:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/AuC/GU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50246 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWdBW-00037T-Js
-	for alex.bennee@linaro.org; Sat, 02 Oct 2021 07:28:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49472)
+	id 1mWmt3-0003ew-Vf
+	for alex.bennee@linaro.org; Sat, 02 Oct 2021 17:49:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mWdB4-00035R-TP
- for qemu-arm@nongnu.org; Sat, 02 Oct 2021 07:27:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34389)
+ (Exim 4.90_1) (envelope-from <prvs=99090ed790=pdel@fb.com>)
+ id 1mWmnz-0002CL-JN
+ for qemu-arm@nongnu.org; Sat, 02 Oct 2021 17:44:27 -0400
+Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:10052
+ helo=mx0a-00082601.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mWdB1-0007rM-Jc
- for qemu-arm@nongnu.org; Sat, 02 Oct 2021 07:27:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633174053;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WRTyvdXzfLsOCQr8WiThSiEElAO5Ylc5Qa3y0rFuJvk=;
- b=D/AuC/GUpt0fiQdRrapO/bqM+rrWzR/dgTlcWkGFhRm7/QZtHDqaU2wOWSTdVLQK4A3SkQ
- jv74TIapsrFJGUhwwI0xp3jWfrWSOMM4QRaQEGtwQ3yfClwbpM9/VmljrZtA7osc65Nr0n
- HeVA8jXcjuB4IN8uuZUnkDGK1A5/sdU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-394-mw0Ax7uKNGeEBFXRj9cZEQ-1; Sat, 02 Oct 2021 07:27:32 -0400
-X-MC-Unique: mw0Ax7uKNGeEBFXRj9cZEQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45E70108088C;
- Sat,  2 Oct 2021 11:27:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-14.ams2.redhat.com
- [10.36.112.14])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D12C5F4E7;
- Sat,  2 Oct 2021 11:27:20 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D4B6E113865F; Sat,  2 Oct 2021 13:27:18 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v12 16/16] machine: Make smp_parse return a boolean
-References: <20210929025816.21076-1-wangyanan55@huawei.com>
- <20210929025816.21076-17-wangyanan55@huawei.com>
- <0343d17f-bb46-a266-7ba4-20bdf30631d0@redhat.com>
- <YVdCRYvRHIio6MZe@redhat.com>
- <afa63e10-2999-4073-e440-a5d87fd6da49@redhat.com>
-Date: Sat, 02 Oct 2021 13:27:18 +0200
-In-Reply-To: <afa63e10-2999-4073-e440-a5d87fd6da49@redhat.com> (Paolo
- Bonzini's message of "Sat, 2 Oct 2021 08:40:46 +0200")
-Message-ID: <87bl47ll9l.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <prvs=99090ed790=pdel@fb.com>)
+ id 1mWmnx-0006Fb-SH
+ for qemu-arm@nongnu.org; Sat, 02 Oct 2021 17:44:27 -0400
+Received: from pps.filterd (m0089730.ppops.net [127.0.0.1])
+ by m0089730.ppops.net (8.16.1.2/8.16.1.2) with SMTP id 192KKhMF000644
+ for <qemu-arm@nongnu.org>; Sat, 2 Oct 2021 14:44:23 -0700
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by m0089730.ppops.net with ESMTP id 3bexcf08f1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Sat, 02 Oct 2021 14:44:23 -0700
+Received: from intmgw003.48.prn1.facebook.com (2620:10d:c0a8:1b::d) by
+ mail.thefacebook.com (2620:10d:c0a8:83::5) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.14; Sat, 2 Oct 2021 14:44:22 -0700
+Received: by devvm660.prn0.facebook.com (Postfix, from userid 385188)
+ id 6AFE851973DD; Sat,  2 Oct 2021 14:44:15 -0700 (PDT)
+From: <pdel@fbc.om>
+To: 
+Subject: [PATCH 2/2] hw/arm: Integrate ADC model into Aspeed SoC
+Date: Sat, 2 Oct 2021 14:44:14 -0700
+Message-ID: <20211002214414.2858382-3-pdel@fbc.om>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20211002214414.2858382-1-pdel@fbc.om>
+References: <20211002214414.2858382-1-pdel@fbc.om>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-FB-Internal: Safe
+X-FB-Source: Intern
+X-Proofpoint-GUID: vY3gkgq9M4AtiX-_72ivUWugus5Bvg8q
+X-Proofpoint-ORIG-GUID: vY3gkgq9M4AtiX-_72ivUWugus5Bvg8q
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.391,FMLib:17.0.607.475
+ definitions=2021-10-02_07,2021-10-01_02,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
+ impostorscore=0
+ malwarescore=0 clxscore=1034 phishscore=0 adultscore=0 spamscore=0
+ bulkscore=0 mlxlogscore=860 lowpriorityscore=0 mlxscore=0 suspectscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2109230001 definitions=main-2110020158
+X-FB-Internal: deliver
+Received-SPF: pass client-ip=67.231.153.30;
+ envelope-from=prvs=99090ed790=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_ADSP_NXDOMAIN=0.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 02 Oct 2021 17:49:18 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,126 +109,106 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Pierre Morel <pmorel@linux.ibm.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-devel@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- wanghaibin.wang@huawei.com,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, alistair@alistair23.me,
+ qemu-devel@nongnu.org, patrick@stwcx.xyz, qemu-arm@nongnu.org, clg@kaod.org,
+ Peter Delevoryas <pdel@fb.com>, zhdaniel@fb.com, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pa58TKFKWpgl
+X-TUID: yONt4S4rYZVw
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+From: Andrew Jeffery <andrew@aj.id.au>
 
-> On 01/10/21 19:15, Daniel P. Berrang=C3=A9 wrote:
->> On Fri, Oct 01, 2021 at 07:08:51PM +0200, Paolo Bonzini wrote:
->>> On 29/09/21 04:58, Yanan Wang wrote:
->>>> @@ -933,8 +935,7 @@ static void machine_set_smp(Object *obj, Visitor *=
-v, const char *name,
->>>>            return;
->>>>        }
->>>> -    smp_parse(ms, config, errp);
->>>> -    if (*errp) {
->>>> +    if (!smp_parse(ms, config, errp)) {
->>>>            qapi_free_SMPConfiguration(config);
->>>>        }
->>>>    }
->>>>
->>>
->>> This is actually a leak, so I'm replacing this patch with
->>=20
->> This patch isn't adding a leak, as there's no change in
->> control flow / exit paths.  AFAICT, the leak was introduced
->> in patch 15 instead, so the code below shoudl be squashed
->> into that, and this patch left as-is.
->
-> Yes, even better make it a separate patch and fix the conflict in patch
-> 15.  But I'm still not sure of the wisdom of this patch.
->
-> At this point smp_parse has exactly one caller and it doesn't care about
-> the return value.  The "return a boolean" rule adds some complexity (and
-> a possibility for things to be wrong/inconsistent) to the function for
-> the benefit of the callers.
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+---
+ hw/arm/aspeed_ast2600.c     | 11 +++++++++++
+ hw/arm/aspeed_soc.c         | 11 +++++++++++
+ include/hw/arm/aspeed_soc.h |  2 ++
+ 3 files changed, 24 insertions(+)
 
-Yes, but returning something is only a minor burden.  It also makes
-success vs. failure obvious at a glance.
-
-I'm not worrying about inconsistency anymore.  In a way, void functions
-are an exception.  Many non-void functions return a distinct error value
-on failure, like NULL.  The only kind of inconsistency I can remember
-seeing in these functions is forgetting to set an error.  Can be screwed
-up in a void function just as easily.
-
->                              If there is only one caller, as is the case
-> here or for virtual functions, the benefit can well be zero (this case)
-> or negative (virtual functions).
-
-Two small benefits here:
-
-1. No need for ERRP_GUARD().
-
-2. Conforms to the rules.  Rules are not laws, but let's stick to them
-when it's as easy as it is here.
-
-For what it's worth, GLib always advised users of GError to return a
-value.  We chose to deviate for our Error, then spent nine years
-learning how that leads to cumbersome code, leading us to:
-
-commit e3fe3988d7851cac30abffae06d2f555ff7bee62
-Author: Markus Armbruster <armbru@redhat.com>
-Date:   Tue Jul 7 18:05:31 2020 +0200
-
-    error: Document Error API usage rules
-   =20
-    This merely codifies existing practice, with one exception: the rule
-    advising against returning void, where existing practice is mixed.
-   =20
-    When the Error API was created, we adopted the (unwritten) rule to
-    return void when the function returns no useful value on success,
-    unlike GError, which recommends to return true on success and false on
-    error then.
-   =20
-    When a function returns a distinct error value, say false, a checked
-    call that passes the error up looks like
-   =20
-        if (!frobnicate(..., errp)) {
-            handle the error...
-        }
-   =20
-    When it returns void, we need
-   =20
-        Error *err =3D NULL;
-   =20
-        frobnicate(..., &err);
-        if (err) {
-            handle the error...
-            error_propagate(errp, err);
-        }
-   =20
-    Not only is this more verbose, it also creates an Error object even
-    when @errp is null, &error_abort or &error_fatal.
-   =20
-    People got tired of the additional boilerplate, and started to ignore
-    the unwritten rule.  The result is confusion among developers about
-    the preferred usage.
-   =20
-    Make the rule advising against returning void official by putting it
-    in writing.  This will hopefully reduce confusion.
-   =20
-    Update the examples accordingly.
-   =20
-    The remainder of this series will update a substantial amount of code
-    to honor the rule.
-   =20
-    Signed-off-by: Markus Armbruster <armbru@redhat.com>
-    Reviewed-by: Eric Blake <eblake@redhat.com>
-    Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-    Reviewed-by: Greg Kurz <groug@kaod.org>
-    Message-Id: <20200707160613.848843-4-armbru@redhat.com>
-    [Tweak prose as per advice from Eric]
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 9d70e8e060..d553ee2388 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -148,6 +148,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+     object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
+=20
++    snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
++    object_initialize_child(obj, "adc", &s->adc, typename);
++
+     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+     object_initialize_child(obj, "i2c", &s->i2c, typename);
+=20
+@@ -322,6 +325,14 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
+dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+     }
+=20
++    /* ADC */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_AD=
+C]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
++
+     /* UART - attach an 8250 to the IO space as our UART */
+     serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
+                    aspeed_soc_get_irq(s, s->uart_default), 38400,
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index ed84502e23..aaec2bba38 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -162,6 +162,9 @@ static void aspeed_soc_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+     object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
+=20
++    snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
++    object_initialize_child(obj, "adc", &s->adc, typename);
++
+     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+     object_initialize_child(obj, "i2c", &s->i2c, typename);
+=20
+@@ -287,6 +290,14 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+     }
+=20
++    /* ADC */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->adc), 0, sc->memmap[ASPEED_DEV_AD=
+C]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
++
+     /* UART - attach an 8250 to the IO space as our UART */
+     serial_mm_init(get_system_memory(), sc->memmap[s->uart_default], 2,
+                    aspeed_soc_get_irq(s, s->uart_default), 38400,
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 87d76c9259..8139358549 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -15,6 +15,7 @@
+ #include "hw/cpu/a15mpcore.h"
+ #include "hw/intc/aspeed_vic.h"
+ #include "hw/misc/aspeed_scu.h"
++#include "hw/adc/aspeed_adc.h"
+ #include "hw/misc/aspeed_sdmc.h"
+ #include "hw/misc/aspeed_xdma.h"
+ #include "hw/timer/aspeed_timer.h"
+@@ -53,6 +54,7 @@ struct AspeedSoCState {
+     AspeedSCUState scu;
+     AspeedHACEState hace;
+     AspeedXDMAState xdma;
++    AspeedADCState adc;
+     AspeedSMCState fmc;
+     AspeedSMCState spi[ASPEED_SPIS_NUM];
+     EHCISysBusState ehci[ASPEED_EHCIS_NUM];
+--=20
+2.30.2
 

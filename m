@@ -1,231 +1,169 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1976445lfp;
-        Fri, 1 Oct 2021 23:41:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxYYi1D0ZYPef0J5bPPHegWasdJyBRNC05MG+I1n4XwsfJY98dFoIeCpCBBCrtdXhW4HI5A
-X-Received: by 2002:a5d:8844:: with SMTP id t4mr1483849ios.186.1633156911107;
-        Fri, 01 Oct 2021 23:41:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633156911; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2093934lfp;
+        Sat, 2 Oct 2021 03:31:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8e7O4khdAR3Tb8YlQkJIo9nB/K+jS+iNGTPjBm11mlkQcfMKHCnS+l/wP6u6JOxpRT8Le
+X-Received: by 2002:a6b:6114:: with SMTP id v20mr2015006iob.161.1633170707338;
+        Sat, 02 Oct 2021 03:31:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633170707; cv=none;
         d=google.com; s=arc-20160816;
-        b=o/7gE3It7DhXvh2lYm2l7S85hFsF/9WNRZ3gkfPDq39xAOVjZfebiQEeEO54Jw97ce
-         2ejPWjDLHRB+LWbtyicRpj9YJ1i0S8bSixOuM7hwT/A456PxUT5zkUQ+QNmaH7HKG/13
-         zyhxdbqqaN/zj1Y6eRd03VbhGvVgSbbGe6xTB/zAjbxFCdk++8vGTyVzQQoTPT+JhjDH
-         VsS2OwWJBasEQ05QsPxge8yCGJCnLMYrzzdVceABpgw0bta+5KN/nUc4bqv+jRunXth2
-         ijKisRmcIxIQ3AM2Q3ZxK32yvFDyrRBd/aej8KnqzfftgiqqyAexW4gpfHad+TB2IYhU
-         fvZQ==
+        b=pk8kTOfQ2V9uEdMC6mx/PdKElqCCFDJyPQ9IEz5JmHB3xrjvYKDwjj/Fi/lETQ9v5e
+         844hArqhfKvWRmaKWx7+YUAs/61cnx2Qwu8+03Ts6xZT/LR0NebUbdmy3IkhQEvPBitp
+         edbldF8wUos/EmJJ7477A8A2CrOnNa44QGFLTCfTh5If8U5wSKZJGChmy092NWSybbdP
+         lUpHWHlik0jMBtBuJeqSLyLIwjhtUdKq5F/omwCrbn+kfBmjr2jWK1wIxUCp33VGbsAP
+         fBBQhXGp4Vn2mpGTvmQ8J436mxaAu2Y+ClDWwLZSiP2rWDdFLIQE0q5VQpsYM0kD5yPI
+         7PDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=k3YwzyCfrWdbxV2jLlz9OuKZz7WRdWtIr5Uc/2COSU0=;
-        b=KXN5ouMQMSFTCoEc1BbrEUa8VNCrNGidzWbZuYpwCTzPZh4fmNJBDvi0jW+b8t25He
-         RdE6Q6B3wUeZKX2iov4SEtg3BGDPzVH/7O2loN6+chC5K9KX3/fI6TrGZC5QO207tZ4Y
-         5e5JWcRA0dLWf8d6CVP5u9oKjL7uN8cWiq/pppaThG8bKCW8B92ABJz8wov9Z3cdMV8I
-         qMTwHZTM6wKhWgd8XZX9Pt6fkXB08MoGeOCVuuREu2b4uXY0PYLrsp2tyEFqT+ToClfv
-         U0lDPDhGSbhde/oPrrz5oM4G/BtUVfyn5WzJvXAmDdPpudPocTRmB6ZMZRcaDPKVfSSm
-         9+uA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=SFMap3G+EpBtt31KvkYXdQyiSgMTHW+iMzpfTzswHDw=;
+        b=rE4G1MTEJ4PqPw65E+Aghw+yGoaMTZFa8aWvZsgUMv4Ky3coccM7xvxEJWJIHOosN0
+         1A5hIHTdLaenvtvaOhiQ9My1+nugW7tvHwWxra2hGjb7C7hJqM3R57FFT7zSs6jfFMKJ
+         xqFlaBTCiZj73VLulFQjVdt+gsxVnt5rBJ+58d0u/ZAcg9aPmQZBbq9BfqOX9F+IIieZ
+         VbkAfe+rXlFm1RjlH7fSEBDuNkFYUqoviUQRxwOyuZqerX0dcW+dhKlTbenhECo5Vdm7
+         TkzDa+WEmrSzRv3hPrAitnEsU4wkcnJbU6fG757r7E6zAFbGymojrkv+eIdsdI01mBzO
+         gGAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I83KwTrW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=IGT61OtN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y2si7890167ioy.6.2021.10.01.23.41.50
+        by mx.google.com with ESMTPS id d134si5668923iog.33.2021.10.02.03.31.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Oct 2021 23:41:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 02 Oct 2021 03:31:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I83KwTrW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49460 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=IGT61OtN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58490 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWYiU-0004Y7-Ea
-	for alex.bennee@linaro.org; Sat, 02 Oct 2021 02:41:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40324)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mWcJ0-0006mE-Is
+	for alex.bennee@linaro.org; Sat, 02 Oct 2021 06:31:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mWYi3-0004VQ-QX
- for qemu-arm@nongnu.org; Sat, 02 Oct 2021 02:41:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23430)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mWYhy-0003vX-Th
- for qemu-arm@nongnu.org; Sat, 02 Oct 2021 02:41:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633156877;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=k3YwzyCfrWdbxV2jLlz9OuKZz7WRdWtIr5Uc/2COSU0=;
- b=I83KwTrWFxQ+g7uKSXg+aqlar7Uk0EHzC0PGCy3ooV8Bnb/VsnF7mC3ZvYACSYaIm/vvg+
- Zej+Kus1tczxL+uCyq3uO14jQOIaMejSvzeJc2knyrTwoOY4qGMW3+M0QNwTwR1RhPaoWW
- EX80c8GdrNSMBoZzFQgwqzORRMvrv88=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-473-PS17zkKVPcibN8AX2GMcEw-1; Sat, 02 Oct 2021 02:41:15 -0400
-X-MC-Unique: PS17zkKVPcibN8AX2GMcEw-1
-Received: by mail-ed1-f70.google.com with SMTP id
- m20-20020aa7c2d4000000b003d1add00b8aso12514763edp.0
- for <qemu-arm@nongnu.org>; Fri, 01 Oct 2021 23:41:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mWcGh-0005LW-Et
+ for qemu-devel@nongnu.org; Sat, 02 Oct 2021 06:29:23 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:38866)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mWcGf-0004xw-MR
+ for qemu-devel@nongnu.org; Sat, 02 Oct 2021 06:29:23 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ g193-20020a1c20ca000000b0030d55f1d984so2011226wmg.3
+ for <qemu-devel@nongnu.org>; Sat, 02 Oct 2021 03:29:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SFMap3G+EpBtt31KvkYXdQyiSgMTHW+iMzpfTzswHDw=;
+ b=IGT61OtNjNtQAFXabXAvIVueeUeKJCOCB3fU4UhMelbMdqqOUdcAWGL3FpECvPMMC2
+ 8dY1g3CFdoBKONWvNpRhvj0hsSA655CMapIcen9R8p08cuVLGdrHWnfrsH4OXDqPchaU
+ FVNfOXFb0G0f/FfULEXNvDy0gsOGgLYH7SlZGtps0elpaY2kz8GEVqwiogFIkdh2UzXt
+ T19/c8GADcbrr1VvcL9XNbPMNd+jRD2U6flklbjZ1o28f4PqlrfsU7LuenLx1dpffuEz
+ GnrQb1+VV6xcN7CLbr7lMNxUjxBX//TGsa5pevUxm92K5n57j+9lTmPAvclrK/YFTIsB
+ hooQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=k3YwzyCfrWdbxV2jLlz9OuKZz7WRdWtIr5Uc/2COSU0=;
- b=UQjtVhOd3FwSJ4RKpTZP25OW/tupUExdXhKY3urvjWpT9FRUpUEuLaIerq7x/PSaSs
- sibhRH+drvVuiv7lkkdqimPTu7jIDhIvf5oSWtEdWgZ13aaYU5jnGcJ8/U/PhumBrD1N
- v7k8Q8pUjNuEeOjnDUXcF6mUlRxdXxOdpxQhMkTryF9DUA+5NxEYeePCmFfJ4yvw+ZkM
- gZa+dOBXlUOKKDXt5mOq5LQ4JiZZISpUEbRxr5XivJXLzV6DCuraeUMFgpzMVNSR+GtP
- XMwD++8bfENsOhZRsJ6HTqrjfRiOauNhdiW9LGy33h9W92P1FnkZGhxHBgR+NeqFVAHs
- 0pog==
-X-Gm-Message-State: AOAM531OgaMDYHj4gINGsJ00zM6NHDvs7oEHgyaIQ3090wdtzLy0jBwI
- bju2RPR/PVDTFD/2pP8c166vV3Z0r69AVrUUY/kbaFQUqJf4XF+BDYRBO8HED/0O1WaLw719PmY
- oWtqguVeRLFiJ
-X-Received: by 2002:a17:906:aad9:: with SMTP id
- kt25mr2494527ejb.516.1633156874497; 
- Fri, 01 Oct 2021 23:41:14 -0700 (PDT)
-X-Received: by 2002:a17:906:aad9:: with SMTP id
- kt25mr2494512ejb.516.1633156874311; 
- Fri, 01 Oct 2021 23:41:14 -0700 (PDT)
-Received: from ?IPV6:2001:b07:6468:f312:63a7:c72e:ea0e:6045?
- ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
- by smtp.gmail.com with ESMTPSA id k19sm1175977ejg.13.2021.10.01.23.40.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Oct 2021 23:41:13 -0700 (PDT)
-Message-ID: <afa63e10-2999-4073-e440-a5d87fd6da49@redhat.com>
-Date: Sat, 2 Oct 2021 08:40:46 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SFMap3G+EpBtt31KvkYXdQyiSgMTHW+iMzpfTzswHDw=;
+ b=YsSMObeJnz+UVNXNu/nw7+gSvumZi088HpaxGdkJj2GPB4ZD32ZaNqB1Vq4H+LCXL2
+ /GjHzOU9jGZUyeqvtyF4/dL4qlNP3+rI3DVNRBWBgOs93BMcPVc9vAYaFhaW3QAqxvmz
+ m8L71YpyOlhnt03W+grdldbxOWDnVuRlBbXPbLFby+9Rs4EXVmgJolQ+J5MOdkADDRUC
+ gCdNpWV+q4QF0eqMRpHratZXJ6tbHFw5SHHR+RB/sKGpPv0s8/R/lUQLkH+ubewxHYBV
+ lXtFIEIGj9f/YG04GwuO39pa5jsldz4/Do9+JU70DqAuSgvixIZ1YpF7vaCV5NhAUhJZ
+ GZ8w==
+X-Gm-Message-State: AOAM530zcX408GSiKERvKueptngR/jZekHVw6pGpULERIRU6uLzJ2BSj
+ XsR1C1HzN6GFhHxd++ZCH0HD2GCYgezhVcC8r7J/vA==
+X-Received: by 2002:a05:600c:d6:: with SMTP id
+ u22mr8888179wmm.133.1633170559896; 
+ Sat, 02 Oct 2021 03:29:19 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH v12 16/16] machine: Make smp_parse return a boolean
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-References: <20210929025816.21076-1-wangyanan55@huawei.com>
- <20210929025816.21076-17-wangyanan55@huawei.com>
- <0343d17f-bb46-a266-7ba4-20bdf30631d0@redhat.com>
- <YVdCRYvRHIio6MZe@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <YVdCRYvRHIio6MZe@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+References: <20210917052400.1249094-1-tong.ho@xilinx.com>
+In-Reply-To: <20210917052400.1249094-1-tong.ho@xilinx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 2 Oct 2021 11:28:25 +0100
+Message-ID: <CAFEAcA9_nVnW3DnvomvytX8xH53KM24xfn5rCSywa3WWCwEZ4g@mail.gmail.com>
+Subject: Re: [PATCH v3 0/9] hw/nvram: hw/arm: Introduce Xilinx eFUSE and BBRAM
+To: Tong Ho <tong.ho@xilinx.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.127,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Pierre Morel <pmorel@linux.ibm.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- Yanan Wang <wangyanan55@huawei.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, wanghaibin.wang@huawei.com,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4vIyDiaoOlDT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rDaUkGmEEXWl
 
-On 01/10/21 19:15, Daniel P. Berrangé wrote:
-> On Fri, Oct 01, 2021 at 07:08:51PM +0200, Paolo Bonzini wrote:
->> On 29/09/21 04:58, Yanan Wang wrote:
->>> @@ -933,8 +935,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
->>>            return;
->>>        }
->>> -    smp_parse(ms, config, errp);
->>> -    if (*errp) {
->>> +    if (!smp_parse(ms, config, errp)) {
->>>            qapi_free_SMPConfiguration(config);
->>>        }
->>>    }
->>>
->>
->> This is actually a leak, so I'm replacing this patch with
-> 
-> This patch isn't adding a leak, as there's no change in
-> control flow / exit paths.  AFAICT, the leak was introduced
-> in patch 15 instead, so the code below shoudl be squashed
-> into that, and this patch left as-is.
+On Fri, 17 Sept 2021 at 06:24, Tong Ho <tong.ho@xilinx.com> wrote:
+>
+> This series implements the Xilinx eFUSE and BBRAM devices for
+> the Versal and ZynqMP product families.
+>
+> Furthermore, both new devices are connected to the xlnx-versal-virt
+> board and the xlnx-zcu102 board.
+>
+> See changes in docs/system/arm/xlnx-versal-virt.rst for detail.
 
-Yes, even better make it a separate patch and fix the conflict in patch
-15.  But I'm still not sure of the wisdom of this patch.
+Hi -- now this has landed upstream, Coverity points out a
+lot of memory leaks on error or logging paths, where
+the code does things like:
 
-At this point smp_parse has exactly one caller and it doesn't care about
-the return value.  The "return a boolean" rule adds some complexity (and
-a possibility for things to be wrong/inconsistent) to the function for
-the benefit of the callers.  If there is only one caller, as is the case
-here or for virtual functions, the benefit can well be zero (this case)
-or negative (virtual functions).
+*** CID 1464071:  Resource leaks  (RESOURCE_LEAK)
+/qemu/hw/nvram/xlnx-versal-efuse-ctrl.c: 628 in efuse_ctrl_reg_write()
+622         dev = reg_array->mem.owner;
+623         assert(dev);
+624
+625         s = XLNX_VERSAL_EFUSE_CTRL(dev);
+626
+627         if (addr != A_WR_LOCK && s->regs[R_WR_LOCK]) {
+>>>     CID 1464071:  Resource leaks  (RESOURCE_LEAK)
+>>>     Failing to save or free storage allocated by "object_get_canonical_path((Object *)s)" leaks it.
+628             qemu_log_mask(LOG_GUEST_ERROR,
+629                           "%s[reg_0x%02lx]: Attempt to write
+locked register.\n",
+630                           object_get_canonical_path(OBJECT(s)), (long)addr);
+631         } else {
+632             register_write_memory(opaque, addr, data, size);
+633         }
 
-Paolo
+You need to free the memory here. A good pattern is how it's
+done in xlnx-zynqmp-can.c with g_autofree:
 
----------------- 8< ----------------
- From e7f944bb94a375e8ee7469ffa535ea6e11ce59e1 Mon Sep 17 00:00:00 2001
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Fri, 1 Oct 2021 19:04:03 +0200
-Subject: [PATCH] machine: Use g_autoptr in machine_set_smp
+    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
+        g_autofree char *path = object_get_canonical_path(OBJECT(s));
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
-  hw/core/machine.c | 7 ++-----
-  1 file changed, 2 insertions(+), 5 deletions(-)
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
+                      " data while controller is in reset mode.\n",
+                      path);
+        return false;
+    }
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 54f04a5ac6..d49ebc24e2 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -897,7 +897,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-  {
-      MachineClass *mc = MACHINE_GET_CLASS(obj);
-      MachineState *ms = MACHINE(obj);
--    SMPConfiguration *config;
-+    g_autoptr(SMPConfiguration) config = NULL;
-      ERRP_GUARD();
-  
-      if (!visit_type_SMPConfiguration(v, name, &config, errp)) {
-@@ -920,7 +920,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-  
-      smp_parse(ms, config, errp);
-      if (*errp) {
--        goto out_free;
-+        return;
-      }
-  
-      /* sanity-check smp_cpus and max_cpus against mc */
-@@ -935,9 +935,6 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-                     ms->smp.max_cpus,
-                     mc->name, mc->max_cpus);
-      }
--
--out_free:
--    qapi_free_SMPConfiguration(config);
-  }
-  
-  static void machine_class_init(ObjectClass *oc, void *data)
--- 
-2.31.1
+Could somebody send some followup patches that fix all of these,
+please? (There are 10 coverity issues, covering probably all of
+the places where object_get_canonical_path() is used in this series.)
 
+thanks
+-- PMM

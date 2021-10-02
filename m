@@ -1,169 +1,244 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2093934lfp;
-        Sat, 2 Oct 2021 03:31:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8e7O4khdAR3Tb8YlQkJIo9nB/K+jS+iNGTPjBm11mlkQcfMKHCnS+l/wP6u6JOxpRT8Le
-X-Received: by 2002:a6b:6114:: with SMTP id v20mr2015006iob.161.1633170707338;
-        Sat, 02 Oct 2021 03:31:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633170707; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2128194lfp;
+        Sat, 2 Oct 2021 04:28:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaSqAdYE6jQgwm2AFFKiY7XWHZHTse2/eXIoteRJlMr9ieol7U1/ylWRLLLYG9MvDwASpQ
+X-Received: by 2002:a0c:a78a:: with SMTP id v10mr14676781qva.49.1633174087355;
+        Sat, 02 Oct 2021 04:28:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633174087; cv=none;
         d=google.com; s=arc-20160816;
-        b=pk8kTOfQ2V9uEdMC6mx/PdKElqCCFDJyPQ9IEz5JmHB3xrjvYKDwjj/Fi/lETQ9v5e
-         844hArqhfKvWRmaKWx7+YUAs/61cnx2Qwu8+03Ts6xZT/LR0NebUbdmy3IkhQEvPBitp
-         edbldF8wUos/EmJJ7477A8A2CrOnNa44QGFLTCfTh5If8U5wSKZJGChmy092NWSybbdP
-         lUpHWHlik0jMBtBuJeqSLyLIwjhtUdKq5F/omwCrbn+kfBmjr2jWK1wIxUCp33VGbsAP
-         fBBQhXGp4Vn2mpGTvmQ8J436mxaAu2Y+ClDWwLZSiP2rWDdFLIQE0q5VQpsYM0kD5yPI
-         7PDw==
+        b=CCYvpbUickIcKebvLQT3j5U0BmlyCn/BKA2RgLBd6kIPxCl413abElDG8lKtkIRzan
+         VLaDDG0mw458jmYFAncgyofsst9Ykw+qPth+8WBQ90+SQUlTeXtzZ27YR5EPpkDEJN0w
+         AwazqB8DZtPWgB5k+fllH1wu1230qf7NrnvmHnsj0YM36KT+W3/O8MMM0zkeyPygCqV1
+         3lWU1cAaf9+taJ5roa8N267tTTBkR6edV79ezyrQOotXUg4knSLv/ZxlbTh1QdskQQim
+         5+ofa20/0UNuWVpqMBdwyYdIvwmRRUMRzvEGrlsgskiWVgpvgflBtjkIyD95Pr5jWI9G
+         Pg2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SFMap3G+EpBtt31KvkYXdQyiSgMTHW+iMzpfTzswHDw=;
-        b=rE4G1MTEJ4PqPw65E+Aghw+yGoaMTZFa8aWvZsgUMv4Ky3coccM7xvxEJWJIHOosN0
-         1A5hIHTdLaenvtvaOhiQ9My1+nugW7tvHwWxra2hGjb7C7hJqM3R57FFT7zSs6jfFMKJ
-         xqFlaBTCiZj73VLulFQjVdt+gsxVnt5rBJ+58d0u/ZAcg9aPmQZBbq9BfqOX9F+IIieZ
-         VbkAfe+rXlFm1RjlH7fSEBDuNkFYUqoviUQRxwOyuZqerX0dcW+dhKlTbenhECo5Vdm7
-         TkzDa+WEmrSzRv3hPrAitnEsU4wkcnJbU6fG757r7E6zAFbGymojrkv+eIdsdI01mBzO
-         gGAA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=WRTyvdXzfLsOCQr8WiThSiEElAO5Ylc5Qa3y0rFuJvk=;
+        b=Elt5YX2fRzMyH2PKcri81WctKnZHjSnaPe5VdAp2wn1ZmWcPr6TDoc7gDiUGOFfRrm
+         PNDNzREzQOVo1g2hig6UUnAx9196M8eza6zpTN1YBLLWfgIE8DVzUeGCaKEqtgFkzgdm
+         T+oZbeNDpU8vMce1ZTSiyW6FkmV7fUeve7I5DhQA12kenz7qSy9vsvA2MW+1cMOU9h2N
+         4uc0QMgIoBUe71HiQi9qJq+wKS5ZS9v3M41Pp2mZKi4pItMbR52uOIizHaBlUQbNAouH
+         sGbIxEI71DlMAXKufaDDtxsgScxGiVrHJaFvPxT81Yyma/ZA8qAR9Yj1PNft+3rhW/2q
+         OY3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IGT61OtN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/AuC/GU";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d134si5668923iog.33.2021.10.02.03.31.47
+        by mx.google.com with ESMTPS id v17si1061577qta.435.2021.10.02.04.28.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Oct 2021 03:31:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 02 Oct 2021 04:28:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IGT61OtN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58490 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/AuC/GU";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50246 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWcJ0-0006mE-Is
-	for alex.bennee@linaro.org; Sat, 02 Oct 2021 06:31:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39430)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mWdBW-00037T-Js
+	for alex.bennee@linaro.org; Sat, 02 Oct 2021 07:28:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mWcGh-0005LW-Et
- for qemu-devel@nongnu.org; Sat, 02 Oct 2021 06:29:23 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:38866)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mWcGf-0004xw-MR
- for qemu-devel@nongnu.org; Sat, 02 Oct 2021 06:29:23 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- g193-20020a1c20ca000000b0030d55f1d984so2011226wmg.3
- for <qemu-devel@nongnu.org>; Sat, 02 Oct 2021 03:29:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SFMap3G+EpBtt31KvkYXdQyiSgMTHW+iMzpfTzswHDw=;
- b=IGT61OtNjNtQAFXabXAvIVueeUeKJCOCB3fU4UhMelbMdqqOUdcAWGL3FpECvPMMC2
- 8dY1g3CFdoBKONWvNpRhvj0hsSA655CMapIcen9R8p08cuVLGdrHWnfrsH4OXDqPchaU
- FVNfOXFb0G0f/FfULEXNvDy0gsOGgLYH7SlZGtps0elpaY2kz8GEVqwiogFIkdh2UzXt
- T19/c8GADcbrr1VvcL9XNbPMNd+jRD2U6flklbjZ1o28f4PqlrfsU7LuenLx1dpffuEz
- GnrQb1+VV6xcN7CLbr7lMNxUjxBX//TGsa5pevUxm92K5n57j+9lTmPAvclrK/YFTIsB
- hooQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SFMap3G+EpBtt31KvkYXdQyiSgMTHW+iMzpfTzswHDw=;
- b=YsSMObeJnz+UVNXNu/nw7+gSvumZi088HpaxGdkJj2GPB4ZD32ZaNqB1Vq4H+LCXL2
- /GjHzOU9jGZUyeqvtyF4/dL4qlNP3+rI3DVNRBWBgOs93BMcPVc9vAYaFhaW3QAqxvmz
- m8L71YpyOlhnt03W+grdldbxOWDnVuRlBbXPbLFby+9Rs4EXVmgJolQ+J5MOdkADDRUC
- gCdNpWV+q4QF0eqMRpHratZXJ6tbHFw5SHHR+RB/sKGpPv0s8/R/lUQLkH+ubewxHYBV
- lXtFIEIGj9f/YG04GwuO39pa5jsldz4/Do9+JU70DqAuSgvixIZ1YpF7vaCV5NhAUhJZ
- GZ8w==
-X-Gm-Message-State: AOAM530zcX408GSiKERvKueptngR/jZekHVw6pGpULERIRU6uLzJ2BSj
- XsR1C1HzN6GFhHxd++ZCH0HD2GCYgezhVcC8r7J/vA==
-X-Received: by 2002:a05:600c:d6:: with SMTP id
- u22mr8888179wmm.133.1633170559896; 
- Sat, 02 Oct 2021 03:29:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mWdB4-00035R-TP
+ for qemu-arm@nongnu.org; Sat, 02 Oct 2021 07:27:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34389)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mWdB1-0007rM-Jc
+ for qemu-arm@nongnu.org; Sat, 02 Oct 2021 07:27:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1633174053;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WRTyvdXzfLsOCQr8WiThSiEElAO5Ylc5Qa3y0rFuJvk=;
+ b=D/AuC/GUpt0fiQdRrapO/bqM+rrWzR/dgTlcWkGFhRm7/QZtHDqaU2wOWSTdVLQK4A3SkQ
+ jv74TIapsrFJGUhwwI0xp3jWfrWSOMM4QRaQEGtwQ3yfClwbpM9/VmljrZtA7osc65Nr0n
+ HeVA8jXcjuB4IN8uuZUnkDGK1A5/sdU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-394-mw0Ax7uKNGeEBFXRj9cZEQ-1; Sat, 02 Oct 2021 07:27:32 -0400
+X-MC-Unique: mw0Ax7uKNGeEBFXRj9cZEQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45E70108088C;
+ Sat,  2 Oct 2021 11:27:31 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-14.ams2.redhat.com
+ [10.36.112.14])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D12C5F4E7;
+ Sat,  2 Oct 2021 11:27:20 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D4B6E113865F; Sat,  2 Oct 2021 13:27:18 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v12 16/16] machine: Make smp_parse return a boolean
+References: <20210929025816.21076-1-wangyanan55@huawei.com>
+ <20210929025816.21076-17-wangyanan55@huawei.com>
+ <0343d17f-bb46-a266-7ba4-20bdf30631d0@redhat.com>
+ <YVdCRYvRHIio6MZe@redhat.com>
+ <afa63e10-2999-4073-e440-a5d87fd6da49@redhat.com>
+Date: Sat, 02 Oct 2021 13:27:18 +0200
+In-Reply-To: <afa63e10-2999-4073-e440-a5d87fd6da49@redhat.com> (Paolo
+ Bonzini's message of "Sat, 2 Oct 2021 08:40:46 +0200")
+Message-ID: <87bl47ll9l.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20210917052400.1249094-1-tong.ho@xilinx.com>
-In-Reply-To: <20210917052400.1249094-1-tong.ho@xilinx.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 2 Oct 2021 11:28:25 +0100
-Message-ID: <CAFEAcA9_nVnW3DnvomvytX8xH53KM24xfn5rCSywa3WWCwEZ4g@mail.gmail.com>
-Subject: Re: [PATCH v3 0/9] hw/nvram: hw/arm: Introduce Xilinx eFUSE and BBRAM
-To: Tong Ho <tong.ho@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rDaUkGmEEXWl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Pierre Morel <pmorel@linux.ibm.com>,
+ Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-devel@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ wanghaibin.wang@huawei.com,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Pa58TKFKWpgl
 
-On Fri, 17 Sept 2021 at 06:24, Tong Ho <tong.ho@xilinx.com> wrote:
+Paolo Bonzini <pbonzini@redhat.com> writes:
+
+> On 01/10/21 19:15, Daniel P. Berrang=C3=A9 wrote:
+>> On Fri, Oct 01, 2021 at 07:08:51PM +0200, Paolo Bonzini wrote:
+>>> On 29/09/21 04:58, Yanan Wang wrote:
+>>>> @@ -933,8 +935,7 @@ static void machine_set_smp(Object *obj, Visitor *=
+v, const char *name,
+>>>>            return;
+>>>>        }
+>>>> -    smp_parse(ms, config, errp);
+>>>> -    if (*errp) {
+>>>> +    if (!smp_parse(ms, config, errp)) {
+>>>>            qapi_free_SMPConfiguration(config);
+>>>>        }
+>>>>    }
+>>>>
+>>>
+>>> This is actually a leak, so I'm replacing this patch with
+>>=20
+>> This patch isn't adding a leak, as there's no change in
+>> control flow / exit paths.  AFAICT, the leak was introduced
+>> in patch 15 instead, so the code below shoudl be squashed
+>> into that, and this patch left as-is.
 >
-> This series implements the Xilinx eFUSE and BBRAM devices for
-> the Versal and ZynqMP product families.
+> Yes, even better make it a separate patch and fix the conflict in patch
+> 15.  But I'm still not sure of the wisdom of this patch.
 >
-> Furthermore, both new devices are connected to the xlnx-versal-virt
-> board and the xlnx-zcu102 board.
->
-> See changes in docs/system/arm/xlnx-versal-virt.rst for detail.
+> At this point smp_parse has exactly one caller and it doesn't care about
+> the return value.  The "return a boolean" rule adds some complexity (and
+> a possibility for things to be wrong/inconsistent) to the function for
+> the benefit of the callers.
 
-Hi -- now this has landed upstream, Coverity points out a
-lot of memory leaks on error or logging paths, where
-the code does things like:
+Yes, but returning something is only a minor burden.  It also makes
+success vs. failure obvious at a glance.
 
-*** CID 1464071:  Resource leaks  (RESOURCE_LEAK)
-/qemu/hw/nvram/xlnx-versal-efuse-ctrl.c: 628 in efuse_ctrl_reg_write()
-622         dev = reg_array->mem.owner;
-623         assert(dev);
-624
-625         s = XLNX_VERSAL_EFUSE_CTRL(dev);
-626
-627         if (addr != A_WR_LOCK && s->regs[R_WR_LOCK]) {
->>>     CID 1464071:  Resource leaks  (RESOURCE_LEAK)
->>>     Failing to save or free storage allocated by "object_get_canonical_path((Object *)s)" leaks it.
-628             qemu_log_mask(LOG_GUEST_ERROR,
-629                           "%s[reg_0x%02lx]: Attempt to write
-locked register.\n",
-630                           object_get_canonical_path(OBJECT(s)), (long)addr);
-631         } else {
-632             register_write_memory(opaque, addr, data, size);
-633         }
+I'm not worrying about inconsistency anymore.  In a way, void functions
+are an exception.  Many non-void functions return a distinct error value
+on failure, like NULL.  The only kind of inconsistency I can remember
+seeing in these functions is forgetting to set an error.  Can be screwed
+up in a void function just as easily.
 
-You need to free the memory here. A good pattern is how it's
-done in xlnx-zynqmp-can.c with g_autofree:
+>                              If there is only one caller, as is the case
+> here or for virtual functions, the benefit can well be zero (this case)
+> or negative (virtual functions).
 
-    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
-        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+Two small benefits here:
 
-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
-                      " data while controller is in reset mode.\n",
-                      path);
-        return false;
-    }
+1. No need for ERRP_GUARD().
 
-Could somebody send some followup patches that fix all of these,
-please? (There are 10 coverity issues, covering probably all of
-the places where object_get_canonical_path() is used in this series.)
+2. Conforms to the rules.  Rules are not laws, but let's stick to them
+when it's as easy as it is here.
 
-thanks
--- PMM
+For what it's worth, GLib always advised users of GError to return a
+value.  We chose to deviate for our Error, then spent nine years
+learning how that leads to cumbersome code, leading us to:
+
+commit e3fe3988d7851cac30abffae06d2f555ff7bee62
+Author: Markus Armbruster <armbru@redhat.com>
+Date:   Tue Jul 7 18:05:31 2020 +0200
+
+    error: Document Error API usage rules
+   =20
+    This merely codifies existing practice, with one exception: the rule
+    advising against returning void, where existing practice is mixed.
+   =20
+    When the Error API was created, we adopted the (unwritten) rule to
+    return void when the function returns no useful value on success,
+    unlike GError, which recommends to return true on success and false on
+    error then.
+   =20
+    When a function returns a distinct error value, say false, a checked
+    call that passes the error up looks like
+   =20
+        if (!frobnicate(..., errp)) {
+            handle the error...
+        }
+   =20
+    When it returns void, we need
+   =20
+        Error *err =3D NULL;
+   =20
+        frobnicate(..., &err);
+        if (err) {
+            handle the error...
+            error_propagate(errp, err);
+        }
+   =20
+    Not only is this more verbose, it also creates an Error object even
+    when @errp is null, &error_abort or &error_fatal.
+   =20
+    People got tired of the additional boilerplate, and started to ignore
+    the unwritten rule.  The result is confusion among developers about
+    the preferred usage.
+   =20
+    Make the rule advising against returning void official by putting it
+    in writing.  This will hopefully reduce confusion.
+   =20
+    Update the examples accordingly.
+   =20
+    The remainder of this series will update a substantial amount of code
+    to honor the rule.
+   =20
+    Signed-off-by: Markus Armbruster <armbru@redhat.com>
+    Reviewed-by: Eric Blake <eblake@redhat.com>
+    Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+    Reviewed-by: Greg Kurz <groug@kaod.org>
+    Message-Id: <20200707160613.848843-4-armbru@redhat.com>
+    [Tweak prose as per advice from Eric]
+

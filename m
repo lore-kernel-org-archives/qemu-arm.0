@@ -1,179 +1,660 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1534733lfp;
-        Fri, 1 Oct 2021 11:21:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwG26ckUlEocTwEM7zNtEj8S3UJRUSWXM0hVslC95HRMF7Y8zK8qkVIR5i32fAxNjMPHYr0
-X-Received: by 2002:a05:6122:a24:: with SMTP id 36mr9019553vkn.25.1633112463592;
-        Fri, 01 Oct 2021 11:21:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633112463; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2997916lfp;
+        Sun, 3 Oct 2021 06:54:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxtIYsdgCulGozfN7HEuwLJn9riIxwmZDf2nkPYIHEcIBbU0htWU8wHHIGrptjVP5/A7259
+X-Received: by 2002:a02:b394:: with SMTP id p20mr6883729jan.93.1633269247383;
+        Sun, 03 Oct 2021 06:54:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633269247; cv=none;
         d=google.com; s=arc-20160816;
-        b=uYDFSbMSoWW7FrwfFF7I+YtMJN+gUvGQYdMdS1nDLV9ZwiYgt25dhgS7Ai+qNUUDzl
-         bl7R5SVVtdlWZjkis0CGX/ODgaCmjbiyEatIePputuzAVL1Tde07ZSHlGBT0ctSQSpaU
-         5CAhCv9AzXcWHdjIF7JUOwd0Xi1xvVCdLKJCmeE9FuK+MRdgdG8jGeS0BtRDsD85BVCQ
-         Zpaf6B8oexmavesY8MCqMznxRHP1QK2wPLnK3MwFfv88kuPYmdUHawZ1jos9uBAbGcjX
-         1VahO/vyVLrjgsTNYfwyYVWQunE7tdL5bXSt9Vz9sDe8WdD7Aiv/lwwB7ojSFBR8KW4a
-         8/ag==
+        b=GNcEsFdUI9DiL2212WbRRaniMEtvdIMfYagerobqaDiZJrMiOriynYEqLAyaQJ8HG8
+         M5Vj/7AuzNU5uT9oiZ/Uy8BnEeiyPdkhnqSg+iP0TGbLR6loHD4sE7C48GvKBPtjSM5J
+         YNLKRE7I5P21iHN8fBwLqSWQ3gnGxsiIjjW2GMeuqY8BtRU75BknQOV9KUB5y7xwCLpl
+         Nwqj5lxNWNBk6wjmvuvcCxBKYpFdFwHK02je2yM49PzNbFMrvL5+FWoImBXDI0VtIdsB
+         K/Z34ShvrzDeILIoxk1gdAxCjhK9/hfyjXYWJ2jvgIH8oiclv8qvO69DdXcbVvD+CL9E
+         kq2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:domainkey-signature
-         :dkim-signature;
-        bh=CEdImxzKU9M/ESqnoZpHeb5IWnkTgHNtS+VXHkFbWyc=;
-        b=X+Ws7LjxMTOiXaQI0DI7F8zbbhn7TsVHxAxLN5t+Rk+Xl8vDwpRTkGBef2TGAHEvmD
-         wIytK0I9eRaEVMK2tD7jWtZqlqTI1WGWvUWj/hIgYDnSz4qdJ59mI982GPZBoJdBTAJq
-         Knx6YrD7ffekbJwj4mYOc/j5u0wsZ+rNETabGKgi7E/9UnZ83QtDHrn6/WyKf12xX3lp
-         c4Zj3nW0Yq82iCwaFpliLFFo+Lw4CtxAgVq02LWTxEssn8tMVsmJzTywSoAW0FLsljN+
-         XF+l7GzXBktVZhxr10d56H/ofAfNAbzSvkYhJkeYOXFVpjVTXYysRjmfW4pT+Qopu+CU
-         5UTg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=AELgg6PTQLuQQzpIW/RjXMghNj924TBeSQITrhcJOwY=;
+        b=hXbEjjjlO0lY8Iyc/9veFTtLgbOvPfHOZIraNZ3VrXEP+D+F5wknZtjqj8FSHDXi8i
+         HrrVdDKvIcXaluNA4m5uNITB77GQKncgtsHWphSJrRLYLQXvNuhiSy1XvVFM1qoXRK58
+         8raYMnJVImZlngARcdZRCxyi8WqrBeIB5p8wnz4iLJnQnjCxs0tC25+MK1418WRZCf5f
+         grxXGaGa8g0RC6X/0PUBNI9EerCb6u1rogQJHrVp4biz02ePNpbfxaE2Vu8Qg6U/Biqv
+         8OWvSubdjqih3bYXSzvKuC32sLjXFHRkjrjgeC6S6Zl/v+IUitCmV3r0L61owbuq/Ctz
+         i2bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@comstyle.com header.s=default header.b=S76CbgAS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=comstyle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11si2122175uaw.80.2021.10.01.11.21.03
+        by mx.google.com with ESMTPS id e18si12955605jaa.103.2021.10.03.06.54.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Oct 2021 11:21:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Oct 2021 06:54:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@comstyle.com header.s=default header.b=S76CbgAS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=comstyle.com
-Received: from localhost ([::1]:38090 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49946 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mWN9a-00041C-Vd
-	for alex.bennee@linaro.org; Fri, 01 Oct 2021 14:21:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39094)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mX1wM-0007Ec-Kd
+	for alex.bennee@linaro.org; Sun, 03 Oct 2021 09:54:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1mWMxD-0000FV-4x; Fri, 01 Oct 2021 14:08:15 -0400
-Received: from speedy.comstyle.com ([2607:f938:3000:8::2]:25369
- helo=mail.comstyle.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1mWMx7-00086X-Cg; Fri, 01 Oct 2021 14:08:14 -0400
-Received: from mail.comstyle.com (localhost [127.0.0.1])
- by mail.comstyle.com (Postfix) with ESMTP id 4HLdPy2Xv8z8PbN;
- Fri,  1 Oct 2021 14:08:06 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=comstyle.com; h=message-id
- :date:mime-version:subject:from:to:cc:references:in-reply-to
- :content-type:content-transfer-encoding; s=default; bh=AaHUE05Ro
- RXBAWTJY8SLVK9hWuU=; b=S76CbgASUqxsT/42sR9D0vO8J1tpupCyUoQU/UyEm
- xoBbJz0/sW3H0a5ZuQK4mIjDMTn74S6cFeyfvrSlSucMadH7jTsyjHXlKx5W4Vwp
- xXAvlcOg6A6qY+XlBu3fDezo6/YTeUp3Ono1BuBKChXbYdJv4oY9Q0vWtgjJiR9K
- TA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=comstyle.com; h=message-id
- :date:mime-version:subject:from:to:cc:references:in-reply-to
- :content-type:content-transfer-encoding; q=dns; s=default; b=nPV
- RlgXZ+95kSquMDjYOPrDL+Q2jiKmOcTyV6xfEf4PSKY52xXoORxgB8uUMu/tpnoN
- gqo+k58gHrc5TgxPHHWDpQZDKb0yEEzmC2zVqMSbPpuIGQwaMxpGnuR7G9g4UyUx
- LTJiTNNNWf6dT1dgdG9eJEN16/vhTwsRVe8y53jU=
-Received: from [IPV6:2001:470:b0db:100:2180:9c72:cb7b:b0bd] (unknown
- [IPv6:2001:470:b0db:100:2180:9c72:cb7b:b0bd])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: brad)
- by mail.comstyle.com (Postfix) with ESMTPSA id 4HLdPy0f2Tz8PbK;
- Fri,  1 Oct 2021 14:08:06 -0400 (EDT)
-Message-ID: <11479b02-b0f0-7f38-d43c-9443fc60a6cd@comstyle.com>
-Date: Fri, 1 Oct 2021 14:08:05 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mX1vc-0005im-LS
+ for qemu-arm@nongnu.org; Sun, 03 Oct 2021 09:53:20 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:58483)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mX1vZ-0004Dy-C7
+ for qemu-arm@nongnu.org; Sun, 03 Oct 2021 09:53:20 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.7])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 675EFC1E1CA8;
+ Sun,  3 Oct 2021 15:53:06 +0200 (CEST)
+Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Sun, 3 Oct
+ 2021 15:53:05 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-100R003d427022c-5153-4ce2-b9d2-f77aca81e7b2,
+ 56C86F9822E7E9F8B10CEC01D5C891B794C43A82) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.76.222.244
+Message-ID: <168e5568-4cd3-5c4b-35b9-6ba5ced92ece@kaod.org>
+Date: Sun, 3 Oct 2021 15:53:04 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101
- Thunderbird/93.0
-Subject: Re: [PATCH 3/3] dtc: Update to version 1.6.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH 1/2] hw/adc: Add basic Aspeed ADC model
 Content-Language: en-US
-From: Brad Smith <brad@comstyle.com>
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, Greg Kurz <groug@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>,
- John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20210827120901.150276-1-thuth@redhat.com>
- <20210827120901.150276-4-thuth@redhat.com>
- <7004c933-5262-3119-80f5-722a8e858046@redhat.com>
- <YVbQERWD9fY0kxxW@redhat.com>
- <CAFEAcA8PdNEHU2YMGT56bCwezf9i+BGxijwevLJakrR_N1Yjhw@mail.gmail.com>
- <YVbYavVeV/OmYON6@redhat.com>
- <9bbfbede-0b93-d9ea-cad9-2e7a32c0ebbf@comstyle.com>
-In-Reply-To: <9bbfbede-0b93-d9ea-cad9-2e7a32c0ebbf@comstyle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f938:3000:8::2;
- envelope-from=brad@comstyle.com; helo=mail.comstyle.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.127,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+To: <pdel@fb.com>
+References: <20211002214414.2858382-1-pdel@fbc.om>
+ <20211002214414.2858382-2-pdel@fbc.om>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20211002214414.2858382-2-pdel@fbc.om>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.100]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: a53e36d8-9389-4c91-9c4a-0818f69a9578
+X-Ovh-Tracer-Id: 13097030667488299823
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeltddgieekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopeiihhgurghnihgvlhesfhgsrdgtohhm
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PJzH6q0eYjSA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, alistair@alistair23.me,
+ qemu-devel@nongnu.org, patrick@stwcx.xyz, qemu-arm@nongnu.org, joel@jms.id.au,
+ Peter Delevoryas <pdel@fb.com>, zhdaniel@fb.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ebXNSfP6UsuH
 
-On 10/1/2021 1:54 PM, Brad Smith wrote:
+Hello Peter
 
-> On 10/1/2021 5:44 AM, Daniel P. Berrang=C3=A9 wrote:
->
->> On Fri, Oct 01, 2021 at 10:37:51AM +0100, Peter Maydell wrote:
->>> On Fri, 1 Oct 2021 at 10:10, Daniel P. Berrang=C3=A9=20
->>> <berrange@redhat.com> wrote:
->>>> On Thu, Sep 30, 2021 at 09:10:12AM +0200, Thomas Huth wrote:
->>>>> On 27/08/2021 14.09, Thomas Huth wrote:
->>>>>> The dtc submodule is currently pointing to non-release commit.=20
->>>>>> It's nicer
->>>>>> if submodules point to release versions instead and since dtc=20
->>>>>> 1.6.1 is
->>>>>> available now, let's update to that version.
->>>> Most of our supported platforms don't have version 1.6.1 available.
->>>>
->>>> As a general goal IMHO we should be seeking to eliminate bundling of
->>>> 3rd party modules that are commonly available in distros. We've
->>>> carried dtc for a hell of a long time, and if we keep updating our
->>>> submodule we'll keep relyin on new features, and never be able to
->>>> drop it because it will always be newer than what's in the distros.
->>>>
->>>> So personally I think we should never again update dtc and capstone
->>>> modules. If we want to take adbantage of new features, then do that
->>>> through conditional compilation, as we do for any of the other 3rd
->>>> party libraries consumed.
->>> I agree in general, but (per the commit message here) our dtc
->>> submodule is currently pointing at some random not-a-release
->>> commit in upstream dtc. We should at least move forward to
->>> whatever the next released dtc after that is, before we say
->>> "no more dtc updates".
->> Yep, if we want to fix it onto an official version tag, that's
->> OK, just not jumping right to very latest version. We might want
->> to move it backwards to better align with what we're targetting
->> in the support
->>
->> Best I can tell the distros currently have these versions:
->>
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Alpine 3.14 - 1.6.1
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - CentOS 8 - 1.6.0
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Debian 10 - 1.4.7
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Fedora 33 - 1.6.0
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - OpenSUSE Leap 15.3 - 1.5.1
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Ubuntu 18.04 - 1.4.5
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - FreeBSD Ports - 1.6.0
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - OpenBSD Ports - 1.6.0
-> I already updated OpenBSD to 1.6.1.
-and NetBSD is at 1.4.7.
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - macOS HomeBrew - 1.6.1
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Windows MSys2 - 1.6.0
->>
->> Regards,
->> Daniel
+( Please fix the From: pdel@fbc.om :)
+
+On 10/2/21 23:44, pdel@fbc.om wrote:
+> From: Andrew Jeffery <andrew@aj.id.au>
+> 
+> This model implements enough behaviour to do basic functionality tests
+> such as device initialisation and read out of dummy sample values. The
+> sample value generation strategy is similar to the STM ADC already in
+> the tree.
+> 
+> This patch was originally created by Andrew Jeffery, but I (Peter)
+> refactored it to use a regs[] array and added some extra guest-error
+> traces for the AST2600 multi-engine configuration.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> [clg : support for multiple engines (AST2600) ]
+> Signed-off-by: Cédric Le Goater <clg@kaod.
+
+Could you please add a summary of all the changes you did just before
+the s-o-b.
+
+> Signed-off-by: Peter Delevoryas <pdel@fb.com>
+
+Looks good to me. One comment below,
+
+
+> ---
+>   hw/adc/aspeed_adc.c         | 417 ++++++++++++++++++++++++++++++++++++
+>   hw/adc/meson.build          |   1 +
+>   hw/adc/trace-events         |   3 +
+>   include/hw/adc/aspeed_adc.h |  55 +++++
+>   4 files changed, 476 insertions(+)
+>   create mode 100644 hw/adc/aspeed_adc.c
+>   create mode 100644 include/hw/adc/aspeed_adc.h
+> 
+> diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
+> new file mode 100644
+> index 0000000000..8a132ef375
+> --- /dev/null
+> +++ b/hw/adc/aspeed_adc.c
+> @@ -0,0 +1,417 @@
+> +/*
+> + * Aspeed ADC
+> + *
+> + * Copyright 2017-2021 IBM Corp.
+> + *
+> + * Andrew Jeffery <andrew@aj.id.au>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu/log.h"
+> +#include "hw/irq.h"
+> +#include "hw/qdev-properties.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/adc/aspeed_adc.h"
+> +#include "trace.h"
+> +
+> +#define  ASPEED_ADC_ENGINE_CH_EN_MASK           0xffff0000
+> +#define   ASPEED_ADC_ENGINE_CH_EN(x)            ((BIT(x)) << 16)
+> +#define  ASPEED_ADC_ENGINE_INIT                 BIT(8)
+> +#define  ASPEED_ADC_ENGINE_AUTO_COMP            BIT(5)
+> +#define  ASPEED_ADC_ENGINE_COMP                 BIT(4)
+> +#define  ASPEED_ADC_ENGINE_MODE_MASK            0x0000000e
+> +#define   ASPEED_ADC_ENGINE_MODE_OFF            (0b000 << 1)
+> +#define   ASPEED_ADC_ENGINE_MODE_STANDBY        (0b001 << 1)
+> +#define   ASPEED_ADC_ENGINE_MODE_NORMAL         (0b111 << 1)
+> +#define  ASPEED_ADC_ENGINE_EN                   BIT(0)
+> +#define ASPEED_ADC_HYST_EN                      BIT(31)
+> +
+> +#define ASPEED_ADC_L_MASK       ((1 << 10) - 1)
+> +#define ASPEED_ADC_L(x)         ((x) & ASPEED_ADC_L_MASK)
+> +#define ASPEED_ADC_H(x)         (((x) >> 16) & ASPEED_ADC_L_MASK)
+> +#define ASPEED_ADC_LH_MASK      (ASPEED_ADC_L_MASK << 16 | ASPEED_ADC_L_MASK)
+> +#define LOWER_CHANNEL_MASK      ((1 << 10) - 1)
+> +#define LOWER_CHANNEL_DATA(x)   ((x) & LOWER_CHANNEL_MASK)
+> +#define UPPER_CHANNEL_DATA(x)   (((x) >> 16) & LOWER_CHANNEL_MASK)
+> +
+> +#define TO_REG(addr) (addr >> 2)
+> +
+> +#define ENGINE_CONTROL              TO_REG(0x00)
+> +#define INTERRUPT_CONTROL           TO_REG(0x04)
+> +#define VGA_DETECT_CONTROL          TO_REG(0x08)
+> +#define CLOCK_CONTROL               TO_REG(0x0C)
+> +#define DATA_CHANNEL_1_AND_0        TO_REG(0x10)
+> +#define DATA_CHANNEL_7_AND_6        TO_REG(0x1C)
+> +#define DATA_CHANNEL_9_AND_8        TO_REG(0x20)
+> +#define DATA_CHANNEL_15_AND_14      TO_REG(0x2C)
+> +#define BOUNDS_CHANNEL_0            TO_REG(0x30)
+> +#define BOUNDS_CHANNEL_7            TO_REG(0x4C)
+> +#define BOUNDS_CHANNEL_8            TO_REG(0x50)
+> +#define BOUNDS_CHANNEL_15           TO_REG(0x6C)
+> +#define HYSTERESIS_CHANNEL_0        TO_REG(0x70)
+> +#define HYSTERESIS_CHANNEL_7        TO_REG(0x8C)
+> +#define HYSTERESIS_CHANNEL_8        TO_REG(0x90)
+> +#define HYSTERESIS_CHANNEL_15       TO_REG(0xAC)
+> +#define INTERRUPT_SOURCE            TO_REG(0xC0)
+> +#define COMPENSATING_AND_TRIMMING   TO_REG(0xC4)
+> +
+> +static inline uint32_t update_channels(uint32_t current)
+> +{
+> +    return ((((current >> 16) & ASPEED_ADC_L_MASK) + 7) << 16) |
+> +        ((current + 5) & ASPEED_ADC_L_MASK);
+> +}
+> +
+> +static bool breaks_threshold(AspeedADCEngineState *s, int reg)
+> +{
+> +    assert(reg >= DATA_CHANNEL_1_AND_0 &&
+> +           reg < DATA_CHANNEL_1_AND_0 + s->nr_channels / 2);
+> +
+> +    int a_bounds_reg = BOUNDS_CHANNEL_0 + (reg - DATA_CHANNEL_1_AND_0) * 2;
+> +    int b_bounds_reg = a_bounds_reg + 1;
+> +    uint32_t a_and_b = s->regs[reg];
+> +    uint32_t a_bounds = s->regs[a_bounds_reg];
+> +    uint32_t b_bounds = s->regs[b_bounds_reg];
+> +    uint32_t a = ASPEED_ADC_L(a_and_b);
+> +    uint32_t b = ASPEED_ADC_H(a_and_b);
+> +    uint32_t a_lower = ASPEED_ADC_L(a_bounds);
+> +    uint32_t a_upper = ASPEED_ADC_H(a_bounds);
+> +    uint32_t b_lower = ASPEED_ADC_L(b_bounds);
+> +    uint32_t b_upper = ASPEED_ADC_H(b_bounds);
+> +
+> +    return (a < a_lower || a > a_upper) ||
+> +           (b < b_lower || b > b_upper);
+> +}
+> +
+> +static uint32_t read_channel_sample(AspeedADCEngineState *s, int reg)
+> +{
+> +    assert(reg >= DATA_CHANNEL_1_AND_0 &&
+> +           reg < DATA_CHANNEL_1_AND_0 + s->nr_channels / 2);
+> +
+> +    /* Poor man's sampling */
+> +    uint32_t value = s->regs[reg];
+> +    s->regs[reg] = update_channels(s->regs[reg]);
+> +
+> +    if (breaks_threshold(s, reg)) {
+> +        s->regs[INTERRUPT_CONTROL] |= BIT(reg - DATA_CHANNEL_1_AND_0);
+> +        qemu_irq_raise(s->irq);
+> +    }
+> +
+> +    return value;
+> +}
+> +
+> +static uint64_t aspeed_adc_engine_read(void *opaque, hwaddr addr,
+> +                                       unsigned int size)
+> +{
+> +    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(opaque);
+> +    int reg = TO_REG(addr);
+> +    uint32_t value = 0;
+> +
+> +    switch (reg) {
+> +    case BOUNDS_CHANNEL_8 ... BOUNDS_CHANNEL_15:
+> +        if (s->nr_channels <= 8) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+> +                          "bounds register %u invalid, only 0...7 valid\n",
+> +                          __func__, s->engine_id, reg - BOUNDS_CHANNEL_0);
+> +            break;
+> +        }
+> +        /* fallthrough */
+> +    case HYSTERESIS_CHANNEL_8 ... HYSTERESIS_CHANNEL_15:
+> +        if (s->nr_channels <= 8) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+> +                          "hysteresis register %u invalid, only 0...7 valid\n",
+> +                          __func__, s->engine_id, reg - HYSTERESIS_CHANNEL_0);
+> +            break;
+> +        }
+> +        /* fallthrough */
+> +    case BOUNDS_CHANNEL_0 ... BOUNDS_CHANNEL_7:
+> +    case HYSTERESIS_CHANNEL_0 ... HYSTERESIS_CHANNEL_7:
+> +    case ENGINE_CONTROL:
+> +    case INTERRUPT_CONTROL:
+> +    case VGA_DETECT_CONTROL:
+> +    case CLOCK_CONTROL:
+> +    case INTERRUPT_SOURCE:
+> +    case COMPENSATING_AND_TRIMMING:
+> +        value = s->regs[reg];
+> +        break;
+> +    case DATA_CHANNEL_9_AND_8 ... DATA_CHANNEL_15_AND_14:
+> +        if (s->nr_channels <= 8) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+> +                          "data register %u invalid, only 0...3 valid\n",
+> +                          __func__, s->engine_id, reg - DATA_CHANNEL_1_AND_0);
+> +            break;
+> +        }
+> +        /* fallthrough */
+> +    case DATA_CHANNEL_1_AND_0 ... DATA_CHANNEL_7_AND_6:
+> +        value = read_channel_sample(s, reg);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s: engine[%u]: 0x%" HWADDR_PRIx "\n",
+> +                      __func__, s->engine_id, addr);
+> +        break;
+> +    }
+> +
+> +    trace_aspeed_adc_engine_read(s->engine_id, addr, value);
+> +    return value;
+> +}
+> +
+> +static void aspeed_adc_engine_write(void *opaque, hwaddr addr, uint64_t value,
+> +                                    unsigned int size)
+> +{
+> +    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(opaque);
+> +    int reg = TO_REG(addr);
+> +    uint32_t init = 0;
+> +
+> +    trace_aspeed_adc_engine_write(s->engine_id, addr, value);
+> +
+> +    switch (reg) {
+> +    case ENGINE_CONTROL:
+> +        init = !!(value & ASPEED_ADC_ENGINE_EN);
+> +        init *= ASPEED_ADC_ENGINE_INIT;
+> +
+> +        value &= ~ASPEED_ADC_ENGINE_INIT;
+> +        value |= init;
+> +
+> +        value &= ~ASPEED_ADC_ENGINE_AUTO_COMP;
+> +        break;
+> +    case INTERRUPT_CONTROL:
+> +    case VGA_DETECT_CONTROL:
+> +    case CLOCK_CONTROL:
+> +        break;
+> +    case DATA_CHANNEL_9_AND_8 ... DATA_CHANNEL_15_AND_14:
+> +        if (s->nr_channels <= 8) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+> +                          "data register %u invalid, only 0...3 valid\n",
+> +                          __func__, s->engine_id, reg - DATA_CHANNEL_1_AND_0);
+> +            return;
+> +        }
+> +        /* fallthrough */
+> +    case BOUNDS_CHANNEL_8 ... BOUNDS_CHANNEL_15:
+> +        if (s->nr_channels <= 8) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+> +                          "bounds register %u invalid, only 0...7 valid\n",
+> +                          __func__, s->engine_id, reg - BOUNDS_CHANNEL_0);
+> +            return;
+> +        }
+> +        /* fallthrough */
+> +    case DATA_CHANNEL_1_AND_0 ... DATA_CHANNEL_7_AND_6:
+> +    case BOUNDS_CHANNEL_0 ... BOUNDS_CHANNEL_7:
+> +        value &= ASPEED_ADC_LH_MASK;
+> +        break;
+> +    case HYSTERESIS_CHANNEL_8 ... HYSTERESIS_CHANNEL_15:
+> +        if (s->nr_channels <= 8) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+> +                          "hysteresis register %u invalid, only 0...7 valid\n",
+> +                          __func__, s->engine_id, reg - HYSTERESIS_CHANNEL_0);
+> +            return;
+> +        }
+> +        /* fallthrough */
+> +    case HYSTERESIS_CHANNEL_0 ... HYSTERESIS_CHANNEL_7:
+> +        value &= (ASPEED_ADC_HYST_EN | ASPEED_ADC_LH_MASK);
+> +        break;
+> +    case INTERRUPT_SOURCE:
+> +        value &= 0xffff;
+> +        break;
+> +    case COMPENSATING_AND_TRIMMING:
+> +        value &= 0xf;
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s: engine[%u]: "
+> +                      "0x%" HWADDR_PRIx " 0x%" PRIx64 "\n",
+> +                      __func__, s->engine_id, addr, value);
+> +        break;
+> +    }
+> +
+> +    s->regs[reg] = value;
+> +}
+> +
+> +static const MemoryRegionOps aspeed_adc_engine_ops = {
+> +    .read = aspeed_adc_engine_read,
+> +    .write = aspeed_adc_engine_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +        .unaligned = false,
+> +    },
+> +};
+> +
+> +static const uint32_t aspeed_adc_resets[ASPEED_ADC_NR_REGS] = {
+> +    [ENGINE_CONTROL]     = 0x00000000,
+> +    [INTERRUPT_CONTROL]  = 0x00000000,
+> +    [VGA_DETECT_CONTROL] = 0x0000000f,
+> +    [CLOCK_CONTROL]      = 0x0000000f,
+> +};
+> +
+> +static void aspeed_adc_engine_reset(DeviceState *dev)
+> +{
+> +    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(dev);
+> +
+> +    memcpy(s->regs, aspeed_adc_resets, sizeof(aspeed_adc_resets));
+> +}
+> +
+> +static void aspeed_adc_engine_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(dev);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    g_autofree char *name = g_strdup_printf(TYPE_ASPEED_ADC_ENGINE ".%d",
+> +                                            s->engine_id);
+> +
+> +    assert(s->engine_id < 2);
+> +
+> +    sysbus_init_irq(sbd, &s->irq);
+> +
+> +    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_adc_engine_ops, s, name,
+> +                          0x100);
+> +
+> +    sysbus_init_mmio(sbd, &s->mmio);
+> +}
+> +
+> +static const VMStateDescription vmstate_aspeed_adc_engine = {
+> +    .name = TYPE_ASPEED_ADC,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(regs, AspeedADCEngineState, ASPEED_ADC_NR_REGS),
+> +        VMSTATE_END_OF_LIST(),
+> +    }
+> +};
+> +
+> +static Property aspeed_adc_engine_properties[] = {
+> +    DEFINE_PROP_UINT32("engine-id", AspeedADCEngineState, engine_id, 0),
+> +    DEFINE_PROP_UINT32("nr-channels", AspeedADCEngineState, nr_channels, 0),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void aspeed_adc_engine_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = aspeed_adc_engine_realize;
+> +    dc->reset = aspeed_adc_engine_reset;
+> +    device_class_set_props(dc, aspeed_adc_engine_properties);
+> +    dc->desc = "Aspeed Analog-to-Digital Engine";
+> +    dc->vmsd = &vmstate_aspeed_adc_engine;
+> +}
+> +
+> +static const TypeInfo aspeed_adc_engine_info = {
+> +    .name = TYPE_ASPEED_ADC_ENGINE,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(AspeedADCEngineState),
+> +    .class_init = aspeed_adc_engine_class_init,
+> +};
+> +
+> +static void aspeed_adc_instance_init(Object *obj)
+> +{
+> +    AspeedADCState *s = ASPEED_ADC(obj);
+> +    AspeedADCClass *aac = ASPEED_ADC_GET_CLASS(obj);
+> +    uint32_t nr_channels = ASPEED_ADC_NR_CHANNELS / aac->nr_engines;
+> +
+> +    for (int i = 0; i < aac->nr_engines; i++) {
+> +        AspeedADCEngineState *engine = &s->engines[i];
+> +        object_initialize_child(obj, "engine[*]", engine,
+> +                                TYPE_ASPEED_ADC_ENGINE);
+> +        qdev_prop_set_uint32(DEVICE(engine), "engine-id", i);
+
+Why have you moved the property initialization in the instance_init routine ?
+
+Thanks,
+
+C.
+
+> +        qdev_prop_set_uint32(DEVICE(engine), "nr-channels", nr_channels);
+> +    }
+> +}
+> +
+> +static void aspeed_adc_set_irq(void *opaque, int n, int level)
+> +{
+> +    AspeedADCState *s = opaque;
+> +    AspeedADCClass *aac = ASPEED_ADC_GET_CLASS(s);
+> +    uint32_t pending = 0;
+> +
+> +    /* TODO: update Global IRQ status register on AST2600 (Need specs) */
+> +    for (int i = 0; i < aac->nr_engines; i++) {
+> +        uint32_t irq_status = s->engines[i].regs[INTERRUPT_CONTROL] & 0xFF;
+> +        pending |= irq_status << (i * 8);
+> +    }
+> +
+> +    qemu_set_irq(s->irq, !!pending);
+> +}
+> +
+> +static void aspeed_adc_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedADCState *s = ASPEED_ADC(dev);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    AspeedADCClass *aac = ASPEED_ADC_GET_CLASS(dev);
+> +
+> +    qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_adc_set_irq,
+> +                                        s, NULL, aac->nr_engines);
+> +
+> +    sysbus_init_irq(sbd, &s->irq);
+> +
+> +    memory_region_init(&s->mmio, OBJECT(s), TYPE_ASPEED_ADC, 0x1000);
+> +
+> +    sysbus_init_mmio(sbd, &s->mmio);
+> +
+> +    for (int i = 0; i < aac->nr_engines; i++) {
+> +        Object *eng = OBJECT(&s->engines[i]);
+> +
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(eng), errp)) {
+> +            return;
+> +        }
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(eng), 0,
+> +                           qdev_get_gpio_in(DEVICE(sbd), i));
+> +        memory_region_add_subregion(&s->mmio, i * 0x100, &s->engines[i].mmio);
+> +    }
+> +}
+> +
+> +static void aspeed_adc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
+> +
+> +    dc->realize = aspeed_adc_realize;
+> +    dc->desc = "Aspeed Analog-to-Digital Converter";
+> +    aac->nr_engines = 1;
+> +}
+> +
+> +static void aspeed_2600_adc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2600 ADC Controller";
+> +    aac->nr_engines = 2;
+> +}
+> +
+> +static const TypeInfo aspeed_adc_info = {
+> +    .name = TYPE_ASPEED_ADC,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_init = aspeed_adc_instance_init,
+> +    .instance_size = sizeof(AspeedADCState),
+> +    .class_init = aspeed_adc_class_init,
+> +    .class_size = sizeof(AspeedADCClass),
+> +    .abstract   = true,
+> +};
+> +
+> +static const TypeInfo aspeed_2400_adc_info = {
+> +    .name = TYPE_ASPEED_2400_ADC,
+> +    .parent = TYPE_ASPEED_ADC,
+> +};
+> +
+> +static const TypeInfo aspeed_2500_adc_info = {
+> +    .name = TYPE_ASPEED_2500_ADC,
+> +    .parent = TYPE_ASPEED_ADC,
+> +};
+> +
+> +static const TypeInfo aspeed_2600_adc_info = {
+> +    .name = TYPE_ASPEED_2600_ADC,
+> +    .parent = TYPE_ASPEED_ADC,
+> +    .class_init = aspeed_2600_adc_class_init,
+> +};
+> +
+> +static void aspeed_adc_register_types(void)
+> +{
+> +    type_register_static(&aspeed_adc_engine_info);
+> +    type_register_static(&aspeed_adc_info);
+> +    type_register_static(&aspeed_2400_adc_info);
+> +    type_register_static(&aspeed_2500_adc_info);
+> +    type_register_static(&aspeed_2600_adc_info);
+> +}
+> +
+> +type_init(aspeed_adc_register_types);
+> diff --git a/hw/adc/meson.build b/hw/adc/meson.build
+> index ac4f093fea..b29ac7ccdf 100644
+> --- a/hw/adc/meson.build
+> +++ b/hw/adc/meson.build
+> @@ -1,4 +1,5 @@
+>   softmmu_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
+> +softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_adc.c'))
+>   softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
+>   softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq-xadc.c'))
+>   softmmu_ss.add(when: 'CONFIG_MAX111X', if_true: files('max111x.c'))
+> diff --git a/hw/adc/trace-events b/hw/adc/trace-events
+> index 456f21c8f4..5a4c444d77 100644
+> --- a/hw/adc/trace-events
+> +++ b/hw/adc/trace-events
+> @@ -3,3 +3,6 @@
+>   # npcm7xx_adc.c
+>   npcm7xx_adc_read(const char *id, uint64_t offset, uint32_t value) " %s offset: 0x%04" PRIx64 " value 0x%04" PRIx32
+>   npcm7xx_adc_write(const char *id, uint64_t offset, uint32_t value) "%s offset: 0x%04" PRIx64 " value 0x%04" PRIx32
+> +
+> +aspeed_adc_engine_read(uint32_t engine_id, uint64_t addr, uint64_t value) "engine[%u] 0x%" PRIx64 " 0x%" PRIx64
+> +aspeed_adc_engine_write(uint32_t engine_id, uint64_t addr, uint64_t value) "engine[%u] 0x%" PRIx64 " 0x%" PRIx64
+> diff --git a/include/hw/adc/aspeed_adc.h b/include/hw/adc/aspeed_adc.h
+> new file mode 100644
+> index 0000000000..2f166e8be1
+> --- /dev/null
+> +++ b/include/hw/adc/aspeed_adc.h
+> @@ -0,0 +1,55 @@
+> +/*
+> + * Aspeed ADC
+> + *
+> + * Copyright 2017-2021 IBM Corp.
+> + *
+> + * Andrew Jeffery <andrew@aj.id.au>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_ADC_ASPEED_ADC_H
+> +#define HW_ADC_ASPEED_ADC_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_ASPEED_ADC "aspeed.adc"
+> +#define TYPE_ASPEED_2400_ADC TYPE_ASPEED_ADC "-ast2400"
+> +#define TYPE_ASPEED_2500_ADC TYPE_ASPEED_ADC "-ast2500"
+> +#define TYPE_ASPEED_2600_ADC TYPE_ASPEED_ADC "-ast2600"
+> +OBJECT_DECLARE_TYPE(AspeedADCState, AspeedADCClass, ASPEED_ADC)
+> +
+> +#define TYPE_ASPEED_ADC_ENGINE "aspeed.adc.engine"
+> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedADCEngineState, ASPEED_ADC_ENGINE)
+> +
+> +#define ASPEED_ADC_NR_CHANNELS 16
+> +#define ASPEED_ADC_NR_REGS     (0xD0 >> 2)
+> +
+> +struct AspeedADCEngineState {
+> +    /* <private> */
+> +    SysBusDevice parent;
+> +
+> +    MemoryRegion mmio;
+> +    qemu_irq irq;
+> +    uint32_t engine_id;
+> +    uint32_t nr_channels;
+> +    uint32_t regs[ASPEED_ADC_NR_REGS];
+> +};
+> +
+> +struct AspeedADCState {
+> +    /* <private> */
+> +    SysBusDevice parent;
+> +
+> +    MemoryRegion mmio;
+> +    qemu_irq irq;
+> +
+> +    AspeedADCEngineState engines[2];
+> +};
+> +
+> +struct AspeedADCClass {
+> +    SysBusDeviceClass parent_class;
+> +
+> +    uint32_t nr_engines;
+> +};
+> +
+> +#endif /* HW_ADC_ASPEED_ADC_H */
+> 
+

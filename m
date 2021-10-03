@@ -1,242 +1,301 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2999882lfp;
-        Sun, 3 Oct 2021 06:57:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzrv3zs31lE6gRd7KvtijD7xe6gkdXDquv1QGB6Aq4Oe5GySac+X9CQZM962KVLivcKOrh6
-X-Received: by 2002:a05:6638:1b2:: with SMTP id b18mr6949868jaq.95.1633269474004;
-        Sun, 03 Oct 2021 06:57:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633269474; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3119282lfp;
+        Sun, 3 Oct 2021 10:04:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4CPLJhbvz1erww+blGaNnBQj8EKSnSlAUvKpJ+U7EbU2w0RGIHyz2w7tXquDXmFSA6mfn
+X-Received: by 2002:a37:f607:: with SMTP id y7mr6711513qkj.425.1633280658547;
+        Sun, 03 Oct 2021 10:04:18 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1633280658; cv=pass;
         d=google.com; s=arc-20160816;
-        b=BEIpHcUtkisabv3+K9aY/wJWg09iMG4UKffL5Z9oBTMcElgfe3hOUov2JciNKSwLK+
-         XeLao6ylBjnVYHzvws5Opw48fJPsmWMicHKLYk92MpG0cuvmRw9b/f5OHvCnwjQIr0RE
-         TSoSsk86xhZHQunA8v2YR2dWfU8ThLCW86XSM6WwIh0igEr93n6A0fwcN5LGz7W9tWNi
-         TtM0/nk42A7nlBHmd6ooUWZLSBMOZe2iDajRFbVyyj82QPChNYPt5XoIYWxgtY2UPUST
-         L4q4LFmuUsLdGX6eOnBYQ0oyVy1hajSsLeiSj9j7dru0RbAdDMhPWNqWxovBPTMV3RGy
-         hXMQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=6QC1wilP8LIokeumdubUxNd2WgXOHT7QtSJRsxTPZE8=;
-        b=f+N9UUyWsq0JSDAxGjKT3N9bnBFfXu3VUbmQkrljuY2v+62GzFDp74P+qsnLVVIgXT
-         oxCDoXNbtpR3XVJ3lDP8moWuQ3lJ6g6TUF9s4gT/QozCRAcjGNz22TtyYsIPUX47MA/b
-         Q2yV3P3UkaqKW6USqBQRe5sQxiZlcadz2SovS3pX63rnaSv2KX0IJMsmnG+BKYS3eaP1
-         FXXb6K8E+zPwTmK8oXIlX7BvGR5E/DUsA+2GCuSePrDkzzzlH7h4FuAzRkbY0zEweZn3
-         slYFIysUsoaGQPCD4oMx20KE+yGg/AladUm8voI1fi93VHbAJodBg76oBhiAUQKKWcva
-         rOzw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+        b=V0PvjWfHpridsfc5lkt3hYpKZz92O/2IA14Zac4Gsl6gqe27IMkbMy4Ot9dpPkjvz+
+         YvC9+Sb8h4NKuMmFJTXjJ8OGqg1e34BcEeMydMM8VA4Xqug/PSja0hGo8/dX4Ho+Ss/2
+         +qcCvAMNdh1Qd16p/tquGU0iY+ENhJZh9eAx21l8bXCsY/5nNR0CxasVHJnPwLDKZloB
+         Sk14zbtyQfFmWei2N/ZPl+AsHFUjCPBBhuVZBW3wYAG8IMOgYO4MmNoucOJL88fVOCPn
+         1kw9jLMsmUltlH+nM8ki2iHs3b7nrWnUHr5kNZWLbXyiWJrqfI7VDxEjAlsEQWvTO/w4
+         UmUw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=lVyz17ORtKkHDq/9mmG3lhdIx4OAM4SN/Zzqu3zZ3QY=;
+        b=Iv7F9DQ4ag3lddLkFdPPyk+dakP002IimWE3d+NgCPcA6UsthBDtoVnSYLvumITRxr
+         C3SRIwE08J2lb3M0E6oCcrQFh3XMBMw1liTyiWdVJGFrGsSx7Uy1rR3lbcc9+MULKlsO
+         PDtE1+B8zwmIMDyhVSFi1oIre5XV04+TmD2DfffD+PePaiBo3/BEfiZY4o6TLsi1APcd
+         gsNS4gzy3EBlFRq2MKVh0M30NCEFFDcIH4eocWqvzmx49FOW031QKPMQ5mCvxQOWjKS0
+         kxtbroMs1pJ+RneB9ZiQw9SbO0oWQjhaZpRCmULHEppZl0RDXVrMTs8G2miYqeoudVla
+         2eAw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@fb.com header.s=facebook header.b=CdzULeZb;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si20115023iow.110.2021.10.03.06.57.53
+        by mx.google.com with ESMTPS id 11si8101006qvx.117.2021.10.03.10.04.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Oct 2021 06:57:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Oct 2021 10:04:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54168 helo=lists1p.gnu.org)
+       dkim=pass header.i=@fb.com header.s=facebook header.b=CdzULeZb;
+       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:44112 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mX201-0001qo-Bd
-	for alex.bennee@linaro.org; Sun, 03 Oct 2021 09:57:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51740)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mX4uP-0006bn-PQ
+	for alex.bennee@linaro.org; Sun, 03 Oct 2021 13:04:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mX1yj-0000Vp-TU
- for qemu-devel@nongnu.org; Sun, 03 Oct 2021 09:56:33 -0400
-Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117]:58687)
+ (Exim 4.90_1) (envelope-from <prvs=9910b4adaa=pdel@fb.com>)
+ id 1mX4u9-0006bI-6u; Sun, 03 Oct 2021 13:04:01 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:56124)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mX1yh-0007nt-8j
- for qemu-devel@nongnu.org; Sun, 03 Oct 2021 09:56:33 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.216])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id C36D820D89;
- Sun,  3 Oct 2021 13:56:27 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <prvs=9910b4adaa=pdel@fb.com>)
+ id 1mX4u6-0002dX-D0; Sun, 03 Oct 2021 13:04:00 -0400
+Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 193Eoemd001474; 
+ Sun, 3 Oct 2021 10:03:42 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : cc : subject
+ : date : message-id : references : in-reply-to : content-type : content-id
+ : content-transfer-encoding : mime-version; s=facebook;
+ bh=lVyz17ORtKkHDq/9mmG3lhdIx4OAM4SN/Zzqu3zZ3QY=;
+ b=CdzULeZb0kY53lzGnlGFN/fxiujUEtJ4Zh52hIc3+NtlMkvf9hnlKeIdQrl7Uhn7a/aa
+ nUIBQDTJcPJovv8+ZBbcjv4ZaQ+TOk5yn4PXyRsiBmKeZDMikfJ4C1xKKqj9Rr9ul62D
+ cBBPQGfI7EaWz7RIb3fPdmDKi0Z3GrR76OY= 
+Received: from maileast.thefacebook.com ([163.114.130.16])
+ by mx0a-00082601.pphosted.com with ESMTP id 3bfbsr191j-18
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Sun, 03 Oct 2021 10:03:41 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (100.104.31.183)
+ by o365-in.thefacebook.com (100.104.36.103) with Microsoft SMTP
+ Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.14; Sun, 3 Oct 2021 10:03:40 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=V08tgBnLVFiRJU6rNfzV4cKfT7w306o8c7PyvbUqeSnrkrcnoIdhH6aK6zzwuhZ0teqTV2NQYeBWQ8CfymtYKu41a5qimm4PB46yqr0+ID3OsJt8qW74pLApjo8vy+7rnBzoNfPGEdlsiY+jPY0UkcxEpjORZiD5TCv4GHNUKnrQN8DIi6/JrDkmyJrSvW8SUTfuZfttqjHar6UpQSK2KOkz+W1M5q90dFslKwGZKzvdGQTTW+OXFFqcRCvMSHummPvxMR6lxqlnwJDYgezQa0+12ZNQLBjawKgJHjQIdFlDZ7RjSd2laGrPsD6cb5AU/jBjSmp/sRso2Lk/pjUGbw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=lVyz17ORtKkHDq/9mmG3lhdIx4OAM4SN/Zzqu3zZ3QY=;
+ b=jDuS/yalWzrvhHhDElhblrxOGyNz4AdBas/eCRcXz5Z5xei0uW2iuksT0DHSpVRm8nH11Zjh6n8BSgzrSb7aDEwkozW4HD4CTmHvxnh82o+9bnSytTm8EEUCT3E/sY22LNX3oWp0qM092OQxG+FzxjMZdOTeCamSnK2vyI5yzk105Jd1WDckUtyDyI+xwcwQpAX1k2lv2al2zwbu/OvffhnZhKxEAxUPNDqDMfaOASPa1DSHG5NJikqkD5cL9+f721qQeKG+32KVI0mnQAvyjwJFCRH2mQPRgN4E0N6sktli01ygKYoRNMt9CSQFmYJoDjTeSx28bpE1MQ5tY+vVWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
+ header.d=fb.com; arc=none
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
+ by SJ0PR15MB4597.namprd15.prod.outlook.com (2603:10b6:a03:37a::9)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Sun, 3 Oct
- 2021 15:56:26 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R00476540788-92e9-4ce8-9a40-b4e7b7173965,
- 56C86F9822E7E9F8B10CEC01D5C891B794C43A82) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.76.222.244
-Message-ID: <f553afbb-f29f-6837-8815-334a77c8e7f8@kaod.org>
-Date: Sun, 3 Oct 2021 15:56:26 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.19; Sun, 3 Oct
+ 2021 17:03:39 +0000
+Received: from BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::38da:f6f6:bb5c:dd5f]) by BYAPR15MB3032.namprd15.prod.outlook.com
+ ([fe80::38da:f6f6:bb5c:dd5f%7]) with mapi id 15.20.4566.022; Sun, 3 Oct 2021
+ 17:03:39 +0000
+From: Peter Delevoryas <pdel@fb.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
+CC: Alistair Francis <alistair@alistair23.me>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>, Cameron Esfahani via
+ <qemu-devel@nongnu.org>, "patrick@stwcx.xyz" <patrick@stwcx.xyz>, Dan Zhang
+ <zhdaniel@fb.com>
 Subject: Re: [PATCH 0/2] hw/adc: Add basic Aspeed ADC model
-Content-Language: en-US
-To: <pdel@fb.com>
+Thread-Topic: [PATCH 0/2] hw/adc: Add basic Aspeed ADC model
+Thread-Index: AQHXt9apw0iVTOFVykm6c4kOezOaFqvBTTwAgAA0TgA=
+Date: Sun, 3 Oct 2021 17:03:39 +0000
+Message-ID: <764A61F4-4299-4F07-A932-4FD14C32736B@fb.com>
 References: <20211002214414.2858382-1-pdel@fbc.om>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20211002214414.2858382-1-pdel@fbc.om>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: e0e7181a-b7b9-46c1-94e6-92183aaabc2f
-X-Ovh-Tracer-Id: 13153607140591831855
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudeltddgieelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhephefhgfeuteeuveffleeufedtffetiefhgeejudeufeetuddutdegffduhfegheefnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopeiihhgurghnihgvlhesfhgsrdgtohhm
-Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
- helo=1.mo552.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <f553afbb-f29f-6837-8815-334a77c8e7f8@kaod.org>
+In-Reply-To: <f553afbb-f29f-6837-8815-334a77c8e7f8@kaod.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: kaod.org; dkim=none (message not signed)
+ header.d=none;kaod.org; dmarc=none action=none header.from=fb.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: b481d3e9-09f7-4368-07bb-08d9868fbf0e
+x-ms-traffictypediagnostic: SJ0PR15MB4597:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SJ0PR15MB4597FFFD9C04C2A59BD2660FACAD9@SJ0PR15MB4597.namprd15.prod.outlook.com>
+x-fb-source: Internal
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: CYLM1wk0WLSlQ6uoxdsk1C++LKU+4lpcDPzSRvsSMvkscNt8u+QN7G+RL9LZlkLg9US2sGblxixz5a2pDYsCnbqxMGGlvy+o53BghsLkH5N9FNpFN1YWOmgTXip9HxOyTsG501h9o+/1uD18sHzIz/+yn0fs/hAR5PVy7L6H7ICevSPL9bWE2OGooW1GYhawGUW+vvMABt7PN7xl7d4mxym6ylZ75TtytHPchLwv7oT2kvsliBgLOfaDhziGUgME314pLdR+zKw6Zdmdtq8/HuOGE1KKKoYhejdF8lDsFj/iURZ7A3ki8ohkzcmEybjpzNZGuptR0fd17pC1z6xoQaH6JvwwGbHujFCXCu0rBEnFLWaxL/3W6D0x9G94TNfoBRpOgzPhyaXA7NSG0K3OSrO9nUu8Fetde3WG57PVN55PXNUPBtxwmstqWPzXBLiXDfutJvNGZycJM24Fd5AfNAUuExyOcZ+5j4xl5aHLg9q4u96bkXFpd6diey8+WmusasvT3rufjprpRF6bl00H902g33ulViwnIC7nD/H4FiMSFW99wM9gJ/nrfVwPvtcH1Ae2REdCUHOSLeKP0LfOz4vsZdgQdQlqsQPhyNOtMFUXTx6WQg6fWBJhAltjmOSvvziaFRONr9MymKTZEv9MoCoVgmwl8/7LSAA+1OJMaE9+i17urxBWKWoK6jCx6lcOwp/nD83gzi+M2PDd4u6IdIA7Ggf2nnn55sLiQwzTcrmg5ux4j7JjP63OvKrFvKtcXQzMQYllxIRi0BnfLMFj4p7eSRX5k1Kph0D6bA4I3zp18tG5r64+sztmd77l060T2hlH+M1by/uOfrW7g22p5RPdhhIHiA/AnGGiCI2klGQI4B7pIj1+bbYxCLMQTab4
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(508600001)(5660300002)(122000001)(83380400001)(86362001)(36756003)(6512007)(966005)(54906003)(316002)(71200400001)(33656002)(2616005)(38070700005)(6916009)(186003)(38100700002)(6506007)(66556008)(66476007)(2906002)(64756008)(66446008)(66946007)(8936002)(76116006)(66574015)(8676002)(4326008)(6486002)(53546011)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Wk95UWJmRmxVMWNQK2R3bEZCSzBKYkMxVUpNaWhweHRFaGVaMzEvWnY3bUtC?=
+ =?utf-8?B?MjNObXZ3ZDZlcUpxTW9ZVkp0dzNsZnU2RGFWZzRROE5VdG0rcnVRbTVrWnQ4?=
+ =?utf-8?B?cDZHNVNVc010Q01DZXJSaGRyS0FPTHRWd0VqR3dmT1phR0svcDdXNk9vOGkr?=
+ =?utf-8?B?a1R1bjMyVm11LzFaakdNVkZTSkNsZFVMK0IxWU5BbC9zaEVzaWh5NnNxamEw?=
+ =?utf-8?B?NTdBb0JIc0xXWlI1VjVrUlFtQVhaYmpTRUFsdUE2bWR2M1pVQ2RTdlBNMkhH?=
+ =?utf-8?B?eldyTCtKdWtUQ2lLV1FxMnZ2YXVteTMyUUQwc212ak5jSTY3MHFsb3ZVTjNI?=
+ =?utf-8?B?dkxFbHVVNFJ5YXZUZzJ2RVZDVGd0aE1PVThTRytlWXd2TVZUeVlYZVlyUWpC?=
+ =?utf-8?B?TDJ4a2lPaCtUbnBaUEtzbVZ1Vmp4d3oxY2xqWmd0RzBPQllkbFV1d2V4a3px?=
+ =?utf-8?B?ZGRGbHFKbVFub1JhTXc5TjFJT3ZTYWxSZkhCMXVZWkF4blZiOVZsQ29FUURr?=
+ =?utf-8?B?dUljQUJKL2l6Z08rUjhzdlJFWDYwYlJGY2dIRXAydUVmTHA1WFlGV1lGN3ZT?=
+ =?utf-8?B?cFIzdjErM2xISm53cDY0QTlLVTlQMDlEcTE1RmZDbkxiQk96N09HY21GcXkz?=
+ =?utf-8?B?dHRMY3FYeXRmZUhRT3MwL2pNaERJajRmZ2pkMUxacy9ySUh6bVViSjZYSFRv?=
+ =?utf-8?B?K0xIZEpDR3VvYlVYT1F0VWR4a0JKV3hOSndPb0Nlc1hCMDUzNnk1UzFKVVBV?=
+ =?utf-8?B?OE42Q3VLSXF2dFpaQmdMWG5rN1BveWlFcmRvaUhPZXRTWEJPVFU5cE1TSDZR?=
+ =?utf-8?B?Q1lSK2ZNNkFqN09IZS95MVJ3Vmt4eUZGSnFXV3VJdm1CZGVqSmZPSkEwS2Vj?=
+ =?utf-8?B?QWVBY1dvSGE2WG8vZlAxU016VVZyTC9mb1djTUxhNFFLRXhHcGpNSWFYczJV?=
+ =?utf-8?B?VkZYOG1EOFBjRlZzUTVvTTROUWcxRGpYS0prQUUydEtIQUQyS2JLWDUwd01J?=
+ =?utf-8?B?VHg5L0tKbkQ1dTZwazNJckRRZENQQTByVGR3dDIzaVZ6SXQ0QTErSXkzVmkz?=
+ =?utf-8?B?WmFYdGlXcTJaRU9nSEhvbDVoM2FoWXFYazdWOVRYakZNakV2ak53UWFhck4r?=
+ =?utf-8?B?ZHE3Q1ltMzJqSmgzRk5hR2lNQ04yWGJhUVBpeTFJY1g3eERMVFU1Ukl4dzJk?=
+ =?utf-8?B?MlBmaS9KNzZWQXQvdkhyVElKRk1rODYvc3pIaUZDMTJXM3pzMnBhSTBmQWpV?=
+ =?utf-8?B?cmxjVWU3SDhwa2lUSDZBaWkwNnZYakwwSHM5M1Z6Y0RVaGFRY3dmM1J1NDhi?=
+ =?utf-8?B?TlFTQnorSGxwU1FZbUVEYjZremNZUlgrYTJTUFY3Qk9Fdmh0QmlGVnFibEdh?=
+ =?utf-8?B?dWtVUUg4aGpxVEZ3Yy9WV2o3MDNsdVluWkJZNHI4a3B3MkVxb0YyZVFzQ3Rt?=
+ =?utf-8?B?bm16MDZvZHRmOEZsc0VkUGQ1LzVmd1RhWTVGSkU4SzFlS1JVWVZIT2QvYTBW?=
+ =?utf-8?B?TmNXaW5UK0szSGwwbHFzRVRuclZCWGhrUHd4MC9neW1vb0lqRG9KZitlbVNG?=
+ =?utf-8?B?RFFTdHZQSEd1SmgwYUhXOWhaMzV0cHBCeW5CZlNiOEhZbG9JeHgzNkM4Wmdw?=
+ =?utf-8?B?bVkwZytucEt0QmcwQWYwWkR0YTNVRVRwNzY2bHdrbDE3TE1NWXROTDVvMmhP?=
+ =?utf-8?B?MDF3Tm5GVlJkMUNoZ2E4cytDbjlSY1dEU1BIWFdvaldlZ3Zqbk9Ea1BXZG51?=
+ =?utf-8?B?NWpCLzlXRGszYXFEaVZWcytNSE82dWR1WjFHU1VTMG5uYWxuMUFwNUNqNEwx?=
+ =?utf-8?Q?vkKUYuzDmPzD1qTclR4ExdflTUF+UnJOzLqHs=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <CBB6975C9445DE419BC43AF2B2107A9A@namprd15.prod.outlook.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b481d3e9-09f7-4368-07bb-08d9868fbf0e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Oct 2021 17:03:39.1639 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ejbVsXI58FsaQjxuPxaK2Cj0uGNFM45osV8Cv8oUj9oEaImoiN4hDA/yzihofD4G
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR15MB4597
+X-OriginatorOrg: fb.com
+X-Proofpoint-GUID: 4jabS5etpZwUhGYR8SkCyxPZaFMJVNOo
+X-Proofpoint-ORIG-GUID: 4jabS5etpZwUhGYR8SkCyxPZaFMJVNOo
+Content-Transfer-Encoding: base64
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.391,FMLib:17.0.607.475
+ definitions=2021-10-03_08,2021-10-01_02,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
+ lowpriorityscore=0
+ impostorscore=0 priorityscore=1501 mlxscore=0 bulkscore=0 malwarescore=0
+ spamscore=0 suspectscore=0 mlxlogscore=999 adultscore=0 clxscore=1015
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2109230001 definitions=main-2110030122
+X-FB-Internal: deliver
+Received-SPF: pass client-ip=67.231.145.42;
+ envelope-from=prvs=9910b4adaa=pdel@fb.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.055,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, alistair@alistair23.me,
- qemu-devel@nongnu.org, patrick@stwcx.xyz, qemu-arm@nongnu.org, joel@jms.id.au,
- Peter Delevoryas <pdel@fb.com>, zhdaniel@fb.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wzt3yftsgwiC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tjVe4GdSzU9s
 
-On 10/2/21 23:44, pdel@fbc.om wrote:
-> From: Peter Delevoryas <pdel@fb.com>
-> 
-> Following up from
-> 
-> https://lore.kernel.org/qemu-devel/20210930004235.1656003-1-pdel@fb.com/
-> 
-> This is a resubmission of Andrew Jeffery's ADC model, but with the
-> registers converted from typed-member-fields to a regs[] array.
-> Otherwise, it should be pretty much equivalent.
-
-Thanks for taking over.
-
-> 
-> References to the original patches from Andrew:
-> 
-> https://github.com/legoater/qemu/commit/1eff7b1cf10d1777635f7d2cef8ecb441cc607c4
-> https://github.com/legoater/qemu/commit/3052f9d8ccdaf78b753e53574b7e8cc2ee01429f
-> 
-> I did A/B "--trace aspeed_adc_engine_*" testing and the output from the
-> boot sequence was equivalent, and I tested that the channel simulation
-> code produces the same sequence of values.
-> 
-> Here's the initialization sequence:
-> 
-> aspeed_adc_engine_write engine[0] 0x0 0xf  ; Engine init
-> aspeed_adc_engine_read engine[0] 0x0 0x10f ; bit 8 set
-> aspeed_adc_engine_write engine[0] 0x0 0x2f ; Auto compensating sensing mode
-> aspeed_adc_engine_read engine[0] 0x0 0x10f ; bit 8 set (redoing engine init, lol), bit 5 reset
-> 
-> Here's some of the channel simulation:
-> 
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x00070005
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x000e000a
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x0015000f
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x001c0014
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x00230019
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x002a001e
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x00310023
-> (qemu) xp 0x1e6e9010
-> 000000001e6e9010: 0x00380028
-> 
-> This was tested with a Fuji OpenBMC image:
-> 
-> https://github.com/peterdelevoryas/openbmc/releases/download/fuji.mtd.0/fuji.mtd
-> 
-> My refactoring was kinda awkward, it took me a few tries to finally get
-> something that made sense to me. In particular, I don't know if you guys
-> realized this previously, but in the AST2600, there's 2 engines, but
-> still only 16 channels: each engine only has half the registers, as far
-> as I understand.
-
-yes.
-
-  
-> That's why I added the "nr-channels" property to the engine. I also
-> tried to add guest-error logs when a driver tries to read or write to
-> the upper-eight channel registers in the 2600 engines. For example:
-> 
-> (qemu) xp 0x1e6e9000
-> 000000001e6e9000: 0xffff010f
-> (qemu) xp 0x1e6e9020
-> aspeed_adc_engine_read: engine[0]: data register 4 invalid, only 0...3 valid
-> 000000001e6e9020: 0x00000000
-> (qemu) xp 0x1e6e9030
-> 000000001e6e9030: 0x00000000
-> (qemu) xp 0x1e6e9040
-> 000000001e6e9040: 0x00000000
-> (qemu) xp 0x1e6e9050
-> aspeed_adc_engine_read: engine[0]: bounds register 8 invalid, only 0...7 valid
-> 000000001e6e9050: 0x00000000
-> (qemu) xp 0x1e6e9060
-> aspeed_adc_engine_read: engine[0]: bounds register 12 invalid, only 0...7 valid
-> 000000001e6e9060: 0x00000000
-> (qemu) xp 0x1e6e9070
-> 000000001e6e9070: 0x00000000
-> (qemu) xp 0x1e6e9080
-> 000000001e6e9080: 0x00000000
-> (qemu) xp 0x1e6e9090
-> aspeed_adc_engine_read: engine[0]: hysteresis register 8 invalid, only 0...7 valid
-> 000000001e6e9090: 0x00000000
-> (qemu) xp 0x1e6e90a0
-> aspeed_adc_engine_read: engine[0]: hysteresis register 12 invalid, only 0...7 valid
-> 000000001e6e90a0: 0x00000000
-
-This looks nice.
-
-> 
-> It might turn out that we should just stick with a closer version of
-> Andrew's original patch, and that would be totally fine with me, I just
-> want to get the ADC support merged one way or another.
-
-
-Do you have a test case we could include in qtest ? This is not a
-requirement but it's always good to have.
-
-Thanks,
-
-C.
-
-> Also, I'm interested in resubmitting Andrew's work on supporting
-> unaligned accesses for models that only implement aligned access, to
-> make supporting 8-bit and 16-bit reads transparent to this model, but
-> I'll submit that separately.
->
-> 
-> Reference: https://lore.kernel.org/qemu-devel/20170630030058.28943-1-andrew@aj.id.au/
-> 
-> Thanks,
-> Peter
-> 
-> Andrew Jeffery (2):
->    hw/adc: Add basic Aspeed ADC model
->    hw/arm: Integrate ADC model into Aspeed SoC
-> 
->   hw/adc/aspeed_adc.c         | 416 ++++++++++++++++++++++++++++++++++++
->   hw/adc/meson.build          |   1 +
->   hw/adc/trace-events         |   3 +
->   hw/arm/aspeed_ast2600.c     |  11 +
->   hw/arm/aspeed_soc.c         |  11 +
->   include/hw/adc/aspeed_adc.h |  55 +++++
->   include/hw/arm/aspeed_soc.h |   2 +
->   7 files changed, 499 insertions(+)
->   create mode 100644 hw/adc/aspeed_adc.c
->   create mode 100644 include/hw/adc/aspeed_adc.h
-> 
-
+DQo+IE9uIE9jdCAzLCAyMDIxLCBhdCA2OjU2IEFNLCBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGth
+b2Qub3JnPiB3cm90ZToNCj4gDQo+IE9uIDEwLzIvMjEgMjM6NDQsIHBkZWxAZmJjLm9tIHdyb3Rl
+Og0KPj4gRnJvbTogUGV0ZXIgRGVsZXZvcnlhcyA8cGRlbEBmYi5jb20+DQo+PiBGb2xsb3dpbmcg
+dXAgZnJvbQ0KPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIxMDkzMDAw
+NDIzNS4xNjU2MDAzLTEtcGRlbEBmYi5jb20vDQo+PiBUaGlzIGlzIGEgcmVzdWJtaXNzaW9uIG9m
+IEFuZHJldyBKZWZmZXJ5J3MgQURDIG1vZGVsLCBidXQgd2l0aCB0aGUNCj4+IHJlZ2lzdGVycyBj
+b252ZXJ0ZWQgZnJvbSB0eXBlZC1tZW1iZXItZmllbGRzIHRvIGEgcmVnc1tdIGFycmF5Lg0KPj4g
+T3RoZXJ3aXNlLCBpdCBzaG91bGQgYmUgcHJldHR5IG11Y2ggZXF1aXZhbGVudC4NCj4gDQo+IFRo
+YW5rcyBmb3IgdGFraW5nIG92ZXIuDQo+IA0KPj4gUmVmZXJlbmNlcyB0byB0aGUgb3JpZ2luYWwg
+cGF0Y2hlcyBmcm9tIEFuZHJldzoNCj4+IGh0dHBzOi8vZ2l0aHViLmNvbS9sZWdvYXRlci9xZW11
+L2NvbW1pdC8xZWZmN2IxY2YxMGQxNzc3NjM1ZjdkMmNlZjhlY2I0NDFjYzYwN2M0DQo+PiBodHRw
+czovL2dpdGh1Yi5jb20vbGVnb2F0ZXIvcWVtdS9jb21taXQvMzA1MmY5ZDhjY2RhZjc4Yjc1M2U1
+MzU3NGI3ZThjYzJlZTAxNDI5Zg0KPj4gSSBkaWQgQS9CICItLXRyYWNlIGFzcGVlZF9hZGNfZW5n
+aW5lXyoiIHRlc3RpbmcgYW5kIHRoZSBvdXRwdXQgZnJvbSB0aGUNCj4+IGJvb3Qgc2VxdWVuY2Ug
+d2FzIGVxdWl2YWxlbnQsIGFuZCBJIHRlc3RlZCB0aGF0IHRoZSBjaGFubmVsIHNpbXVsYXRpb24N
+Cj4+IGNvZGUgcHJvZHVjZXMgdGhlIHNhbWUgc2VxdWVuY2Ugb2YgdmFsdWVzLg0KPj4gSGVyZSdz
+IHRoZSBpbml0aWFsaXphdGlvbiBzZXF1ZW5jZToNCj4+IGFzcGVlZF9hZGNfZW5naW5lX3dyaXRl
+IGVuZ2luZVswXSAweDAgMHhmICA7IEVuZ2luZSBpbml0DQo+PiBhc3BlZWRfYWRjX2VuZ2luZV9y
+ZWFkIGVuZ2luZVswXSAweDAgMHgxMGYgOyBiaXQgOCBzZXQNCj4+IGFzcGVlZF9hZGNfZW5naW5l
+X3dyaXRlIGVuZ2luZVswXSAweDAgMHgyZiA7IEF1dG8gY29tcGVuc2F0aW5nIHNlbnNpbmcgbW9k
+ZQ0KPj4gYXNwZWVkX2FkY19lbmdpbmVfcmVhZCBlbmdpbmVbMF0gMHgwIDB4MTBmIDsgYml0IDgg
+c2V0IChyZWRvaW5nIGVuZ2luZSBpbml0LCBsb2wpLCBiaXQgNSByZXNldA0KPj4gSGVyZSdzIHNv
+bWUgb2YgdGhlIGNoYW5uZWwgc2ltdWxhdGlvbjoNCj4+IChxZW11KSB4cCAweDFlNmU5MDEwDQo+
+PiAwMDAwMDAwMDFlNmU5MDEwOiAweDAwMDcwMDA1DQo+PiAocWVtdSkgeHAgMHgxZTZlOTAxMA0K
+Pj4gMDAwMDAwMDAxZTZlOTAxMDogMHgwMDBlMDAwYQ0KPj4gKHFlbXUpIHhwIDB4MWU2ZTkwMTAN
+Cj4+IDAwMDAwMDAwMWU2ZTkwMTA6IDB4MDAxNTAwMGYNCj4+IChxZW11KSB4cCAweDFlNmU5MDEw
+DQo+PiAwMDAwMDAwMDFlNmU5MDEwOiAweDAwMWMwMDE0DQo+PiAocWVtdSkgeHAgMHgxZTZlOTAx
+MA0KPj4gMDAwMDAwMDAxZTZlOTAxMDogMHgwMDIzMDAxOQ0KPj4gKHFlbXUpIHhwIDB4MWU2ZTkw
+MTANCj4+IDAwMDAwMDAwMWU2ZTkwMTA6IDB4MDAyYTAwMWUNCj4+IChxZW11KSB4cCAweDFlNmU5
+MDEwDQo+PiAwMDAwMDAwMDFlNmU5MDEwOiAweDAwMzEwMDIzDQo+PiAocWVtdSkgeHAgMHgxZTZl
+OTAxMA0KPj4gMDAwMDAwMDAxZTZlOTAxMDogMHgwMDM4MDAyOA0KPj4gVGhpcyB3YXMgdGVzdGVk
+IHdpdGggYSBGdWppIE9wZW5CTUMgaW1hZ2U6DQo+PiBodHRwczovL2dpdGh1Yi5jb20vcGV0ZXJk
+ZWxldm9yeWFzL29wZW5ibWMvcmVsZWFzZXMvZG93bmxvYWQvZnVqaS5tdGQuMC9mdWppLm10ZA0K
+Pj4gTXkgcmVmYWN0b3Jpbmcgd2FzIGtpbmRhIGF3a3dhcmQsIGl0IHRvb2sgbWUgYSBmZXcgdHJp
+ZXMgdG8gZmluYWxseSBnZXQNCj4+IHNvbWV0aGluZyB0aGF0IG1hZGUgc2Vuc2UgdG8gbWUuIElu
+IHBhcnRpY3VsYXIsIEkgZG9uJ3Qga25vdyBpZiB5b3UgZ3V5cw0KPj4gcmVhbGl6ZWQgdGhpcyBw
+cmV2aW91c2x5LCBidXQgaW4gdGhlIEFTVDI2MDAsIHRoZXJlJ3MgMiBlbmdpbmVzLCBidXQNCj4+
+IHN0aWxsIG9ubHkgMTYgY2hhbm5lbHM6IGVhY2ggZW5naW5lIG9ubHkgaGFzIGhhbGYgdGhlIHJl
+Z2lzdGVycywgYXMgZmFyDQo+PiBhcyBJIHVuZGVyc3RhbmQuDQo+IA0KPiB5ZXMuDQo+IA0KPiAN
+Cj4+IFRoYXQncyB3aHkgSSBhZGRlZCB0aGUgIm5yLWNoYW5uZWxzIiBwcm9wZXJ0eSB0byB0aGUg
+ZW5naW5lLiBJIGFsc28NCj4+IHRyaWVkIHRvIGFkZCBndWVzdC1lcnJvciBsb2dzIHdoZW4gYSBk
+cml2ZXIgdHJpZXMgdG8gcmVhZCBvciB3cml0ZSB0bw0KPj4gdGhlIHVwcGVyLWVpZ2h0IGNoYW5u
+ZWwgcmVnaXN0ZXJzIGluIHRoZSAyNjAwIGVuZ2luZXMuIEZvciBleGFtcGxlOg0KPj4gKHFlbXUp
+IHhwIDB4MWU2ZTkwMDANCj4+IDAwMDAwMDAwMWU2ZTkwMDA6IDB4ZmZmZjAxMGYNCj4+IChxZW11
+KSB4cCAweDFlNmU5MDIwDQo+PiBhc3BlZWRfYWRjX2VuZ2luZV9yZWFkOiBlbmdpbmVbMF06IGRh
+dGEgcmVnaXN0ZXIgNCBpbnZhbGlkLCBvbmx5IDAuLi4zIHZhbGlkDQo+PiAwMDAwMDAwMDFlNmU5
+MDIwOiAweDAwMDAwMDAwDQo+PiAocWVtdSkgeHAgMHgxZTZlOTAzMA0KPj4gMDAwMDAwMDAxZTZl
+OTAzMDogMHgwMDAwMDAwMA0KPj4gKHFlbXUpIHhwIDB4MWU2ZTkwNDANCj4+IDAwMDAwMDAwMWU2
+ZTkwNDA6IDB4MDAwMDAwMDANCj4+IChxZW11KSB4cCAweDFlNmU5MDUwDQo+PiBhc3BlZWRfYWRj
+X2VuZ2luZV9yZWFkOiBlbmdpbmVbMF06IGJvdW5kcyByZWdpc3RlciA4IGludmFsaWQsIG9ubHkg
+MC4uLjcgdmFsaWQNCj4+IDAwMDAwMDAwMWU2ZTkwNTA6IDB4MDAwMDAwMDANCj4+IChxZW11KSB4
+cCAweDFlNmU5MDYwDQo+PiBhc3BlZWRfYWRjX2VuZ2luZV9yZWFkOiBlbmdpbmVbMF06IGJvdW5k
+cyByZWdpc3RlciAxMiBpbnZhbGlkLCBvbmx5IDAuLi43IHZhbGlkDQo+PiAwMDAwMDAwMDFlNmU5
+MDYwOiAweDAwMDAwMDAwDQo+PiAocWVtdSkgeHAgMHgxZTZlOTA3MA0KPj4gMDAwMDAwMDAxZTZl
+OTA3MDogMHgwMDAwMDAwMA0KPj4gKHFlbXUpIHhwIDB4MWU2ZTkwODANCj4+IDAwMDAwMDAwMWU2
+ZTkwODA6IDB4MDAwMDAwMDANCj4+IChxZW11KSB4cCAweDFlNmU5MDkwDQo+PiBhc3BlZWRfYWRj
+X2VuZ2luZV9yZWFkOiBlbmdpbmVbMF06IGh5c3RlcmVzaXMgcmVnaXN0ZXIgOCBpbnZhbGlkLCBv
+bmx5IDAuLi43IHZhbGlkDQo+PiAwMDAwMDAwMDFlNmU5MDkwOiAweDAwMDAwMDAwDQo+PiAocWVt
+dSkgeHAgMHgxZTZlOTBhMA0KPj4gYXNwZWVkX2FkY19lbmdpbmVfcmVhZDogZW5naW5lWzBdOiBo
+eXN0ZXJlc2lzIHJlZ2lzdGVyIDEyIGludmFsaWQsIG9ubHkgMC4uLjcgdmFsaWQNCj4+IDAwMDAw
+MDAwMWU2ZTkwYTA6IDB4MDAwMDAwMDANCj4gDQo+IFRoaXMgbG9va3MgbmljZS4NCj4gDQo+PiBJ
+dCBtaWdodCB0dXJuIG91dCB0aGF0IHdlIHNob3VsZCBqdXN0IHN0aWNrIHdpdGggYSBjbG9zZXIg
+dmVyc2lvbiBvZg0KPj4gQW5kcmV3J3Mgb3JpZ2luYWwgcGF0Y2gsIGFuZCB0aGF0IHdvdWxkIGJl
+IHRvdGFsbHkgZmluZSB3aXRoIG1lLCBJIGp1c3QNCj4+IHdhbnQgdG8gZ2V0IHRoZSBBREMgc3Vw
+cG9ydCBtZXJnZWQgb25lIHdheSBvciBhbm90aGVyLg0KPiANCj4gDQo+IERvIHlvdSBoYXZlIGEg
+dGVzdCBjYXNlIHdlIGNvdWxkIGluY2x1ZGUgaW4gcXRlc3QgPyBUaGlzIGlzIG5vdCBhDQo+IHJl
+cXVpcmVtZW50IGJ1dCBpdCdzIGFsd2F5cyBnb29kIHRvIGhhdmUuDQoNClllYWggYWJzb2x1dGVs
+eSEgSSBoYXZlIHRvIGdvIGxvb2sgbW9yZSBhdCBxdGVzdCBhIGxpdHRsZSwgYnV0IEnigJltIHN1
+cmUgSQ0KY2FuIGFkZCBzb21lIGtpbmQgb2YgdGVzdCBmb3IgdGhpcy4NCg0KPiANCj4gVGhhbmtz
+LA0KPiANCj4gQy4NCj4gDQo+PiBBbHNvLCBJJ20gaW50ZXJlc3RlZCBpbiByZXN1Ym1pdHRpbmcg
+QW5kcmV3J3Mgd29yayBvbiBzdXBwb3J0aW5nDQo+PiB1bmFsaWduZWQgYWNjZXNzZXMgZm9yIG1v
+ZGVscyB0aGF0IG9ubHkgaW1wbGVtZW50IGFsaWduZWQgYWNjZXNzLCB0bw0KPj4gbWFrZSBzdXBw
+b3J0aW5nIDgtYml0IGFuZCAxNi1iaXQgcmVhZHMgdHJhbnNwYXJlbnQgdG8gdGhpcyBtb2RlbCwg
+YnV0DQo+PiBJJ2xsIHN1Ym1pdCB0aGF0IHNlcGFyYXRlbHkuDQo+PiANCj4+IFJlZmVyZW5jZTog
+aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDE3MDYzMDAzMDA1OC4yODk0My0x
+LWFuZHJld0Bhai5pZC5hdS8NCj4+IFRoYW5rcywNCj4+IFBldGVyDQo+PiBBbmRyZXcgSmVmZmVy
+eSAoMik6DQo+PiAgIGh3L2FkYzogQWRkIGJhc2ljIEFzcGVlZCBBREMgbW9kZWwNCj4+ICAgaHcv
+YXJtOiBJbnRlZ3JhdGUgQURDIG1vZGVsIGludG8gQXNwZWVkIFNvQw0KPj4gIGh3L2FkYy9hc3Bl
+ZWRfYWRjLmMgICAgICAgICB8IDQxNiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysNCj4+ICBody9hZGMvbWVzb24uYnVpbGQgICAgICAgICAgfCAgIDEgKw0KPj4gIGh3L2FkYy90
+cmFjZS1ldmVudHMgICAgICAgICB8ICAgMyArDQo+PiAgaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmMg
+ICAgIHwgIDExICsNCj4+ICBody9hcm0vYXNwZWVkX3NvYy5jICAgICAgICAgfCAgMTEgKw0KPj4g
+IGluY2x1ZGUvaHcvYWRjL2FzcGVlZF9hZGMuaCB8ICA1NSArKysrKw0KPj4gIGluY2x1ZGUvaHcv
+YXJtL2FzcGVlZF9zb2MuaCB8ICAgMiArDQo+PiAgNyBmaWxlcyBjaGFuZ2VkLCA0OTkgaW5zZXJ0
+aW9ucygrKQ0KPj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBody9hZGMvYXNwZWVkX2FkYy5jDQo+PiAg
+Y3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvaHcvYWRjL2FzcGVlZF9hZGMuaA0KDQo=

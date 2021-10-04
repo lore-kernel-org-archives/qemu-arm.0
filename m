@@ -1,152 +1,114 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3073129lfp;
-        Sun, 3 Oct 2021 08:52:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxvX8+mcEc+SoltYkiV+gMok8kdRBsE/oE4WBoUhrO1PQYg1Eqrj60XFZGGQpaMiPCaxGNH
-X-Received: by 2002:a92:c56e:: with SMTP id b14mr6464073ilj.71.1633276357368;
-        Sun, 03 Oct 2021 08:52:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633276357; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3598027lfp;
+        Mon, 4 Oct 2021 00:53:32 -0700 (PDT)
+X-Received: by 2002:a05:600c:4148:: with SMTP id h8mr17119911wmm.2.1633334012158;
+        Mon, 04 Oct 2021 00:53:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633334012; cv=none;
         d=google.com; s=arc-20160816;
-        b=VUIqbR9B8yFhmhi4whIZNiTlDkGwXsYfwSMqUFX0nCqj6oQg0kC70PwNCPGHzUdIBZ
-         hhBn0lYxjIeuJ9jddawAWbD63UK3az1sYLP5ndGF49aAJkIz49KFOdv2vyoderj7gQMl
-         B7eUZQlr++Qe4IlqrN5yUIhirjzUwE7L2Wk3jBAMxAUozm6BoL4zeGpOdZBmhai5ggOH
-         kxWYe2P97dNzxMKkwuy8g91lJOje0H1ETt7M2wTjdy9RQfLRvr9K36ZjDUzQJ62G3L07
-         aE0Zwt2Pwd5D7qdqpTarJWkwXpkWWAA9pfEXb+viQObk6vvza4jJO1DVypg6heuEL8dm
-         HVew==
+        b=vhDRl0v+3KhWCePPtzm81WNeG1ag2hbBhSJS0ZD+vR+o8S8PmBF5cr/lGDhdfgZ1xZ
+         aI/0pczvwGo13B7aK6EhudwOAG0VUQFuzTCMEY7nEdQSVSePvn1or6Dm4Hsj8agEaj6N
+         xS+Ts9WJ8llLwLPCBx7WA3raUHTOkl0gz2Pz61A0OnyZDOkG16trwvqES10Z1YQ2jOFm
+         1Ig26ng3xu8HVvtJlMlV9wBIjsWdegYEJAuN9oJx4KYj0taXNKS9PqTMj4XWiF0C88cE
+         RzMbOVhNCZ5gD3ykoGTNas/Rex0ji8KfdMkIs4a9sM6klOc0mbTB2bX63cRngPTiUM4v
+         UgXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=GrljlbyY6tla5jUqlP1QNdPaZPzSb5mbpaF/Zs2PVuA=;
-        b=QN/tMcfzzVAHxEcmAL35H6T23wNblohDcnDaOrCbP9BJPmTs7IhNXcw6PfPLtUiCHE
-         L65MuY3r4xcb9HE3a2g+/ybHddrtdeGjmXJXkglDAm3Vqp/qzD99/xGWoszn6m5J4xCq
-         WglmulgjslvK6gr/40Pq71FsRf63Ex4V8fPgRJLYqrbqgW3AQEwjHB/f1UjBKiANPrWk
-         VaHNoy42C85vhi5wUIgPUGiBQYqYD4A+VtCtkpWncvP1f5bXH+0/GBoUhJZOiIqh/nmh
-         EsDfxiip2h1lJYE34TnGy9htwE46PZwmQtygQ9qciUIYZ2X3dpNz63Yg2ougQey37N9r
-         8jYw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:dkim-signature;
+        bh=r//XP1lP00GFemry2tO/FQC/7ePT3oIBKh6OtpkgF8I=;
+        b=OTTVgieZXDEzzmD6t8pKwt3KJcGsZRLEPG9YO1w4Gtmxgw5qk7ugwgJdIZWtfPjp2w
+         XluhQpiffesvIJHt2sMvPb+h15x1zObsxnw0H0LxSSdRBGSZ63VaMm3O4Azr1iSmwgXd
+         d+P+xameIHgkDbYaVTvDJFO+49pw/n1PF8RvndR/u4Pn08RZaXgJS92czXxmmb9zNQVP
+         G9Wul3Il3TFrjXS4V7+rYAkWBQrdQSDMvxFi1gd40SyRhrprGslXw+qcl8Fiq3VigG7A
+         Px2g23orVU4pHKmu7+FpYiM+sw6gndSr0FLFmvJykMiwrgz9skNnwWPcFdhv1B4Kw56i
+         NJfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lucb1tME;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10si2865789jaa.15.2021.10.03.08.52.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Oct 2021 08:52:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=H8svKU3x;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m5sor8056412wrs.37.2021.10.04.00.53.32
+        (Google Transport Security);
+        Mon, 04 Oct 2021 00:53:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=lucb1tME;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33522 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mX3n2-0007EN-NR
-	for alex.bennee@linaro.org; Sun, 03 Oct 2021 11:52:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38202)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mX3mc-0007BG-Kk; Sun, 03 Oct 2021 11:52:10 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:43733)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mX3mb-0002mB-67; Sun, 03 Oct 2021 11:52:10 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id r7so10195911wrc.10;
- Sun, 03 Oct 2021 08:52:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=GrljlbyY6tla5jUqlP1QNdPaZPzSb5mbpaF/Zs2PVuA=;
- b=lucb1tME0x5XBuP/BF5EBNIzdgIYY1B++Ql/mJSGKu44M0tcs57Je4hwlvitLJdPqJ
- TecyJ8i3ziKuyU/T42OUdKN4P/lPP88kqB+pRpmbcaqb02MUFj73aoOupeXpRIV+W+l4
- REeNHIysIeDSMYWuHHU8449lQqz5ehNbHaF14V2ZZjgRqOfAqvcCB4krdBctW7i2lRLE
- gUvmPOnP65LqOR/r4qPcK7KXaReycoEB9Y717Zdpe2nuWbDk3AACVsFDptoFF0R8/un8
- VhlkJM3PCR5EeUqTPnBl0RiiX1fS2qXSHHO9pK1B9kQcSHNN2jnmbQg0CUZ9Qul34eo8
- 7XVA==
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=H8svKU3x;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=sender:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=r//XP1lP00GFemry2tO/FQC/7ePT3oIBKh6OtpkgF8I=;
+        b=H8svKU3xJSIJm4RK84+pYQ6eNmrLTgRg7eHdjCIMu1/MBzV7s6Lrt4LG2KTyyWIeKO
+         P2jM1W4WFFbzGS5l7eMqansH3DxlirLa1i8VbvRCBHstwCfN97Y08cytqTYkb+XisM4H
+         yc0Vx/MKchkv1V9m5mH3JCRTtTXDanY6mndpzRWBctbUMVag9b6u3ZrCwNqKtriwnZAR
+         IUWP8H8rZgdKctBSUHYp6T+nFWsX0L+1dh/iQH1J0SLd0sNXoPYe+SMuE6IdQcu/pNR1
+         Vi1ElLmPlHIc0SRgjSxDAkERyx7A9SwvK8m9+f0uNRqhVU2C2IhXtaUt+CSwallairH5
+         RGhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=GrljlbyY6tla5jUqlP1QNdPaZPzSb5mbpaF/Zs2PVuA=;
- b=npdwEz4msAt7YG12vcqsvr7EnpldCkfW292u/NNuVlRHYEqiCBtWrPZCeHjFWX7k8U
- j1dJ4hT0P6+FeyW7DqIHonGQdsWJUyukw/dbtPH9tKzyw/jLHhuTySOGU8lc4ZeO+XMo
- d3wYPy9rwzR8lQ4EirC6Eb9fih0c9cys78P1sE/Ta2Gg808xCFHw5KeLrL6R9TBpVDfQ
- 7oasy2bKSctYBMv/lpqmTr4jMAtvc0Rb/9gI0hsNHxlj3O4T63D1QPzHlJRNETsoB9ep
- Vy5+EC9Id/PeW1l7QUKQ97TWQ6EkWwI44SeiCs/gtNxazFsch/E/fhUIhoep07/5e4gG
- xkbA==
-X-Gm-Message-State: AOAM530JDQh43ctyUkKZ5XXIWTqnY9vaRa2NuTaumHdNnwl3xdv+ZEiv
- gj4GwuGvlHu6rcXmvkL0oJs=
-X-Received: by 2002:adf:a4c8:: with SMTP id h8mr4309578wrb.227.1633276327332; 
- Sun, 03 Oct 2021 08:52:07 -0700 (PDT)
-Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id p18sm489171wrt.96.2021.10.03.08.52.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Oct 2021 08:52:06 -0700 (PDT)
-Message-ID: <b29ac0be-3761-1550-9b86-a3f4f7475764@amsat.org>
-Date: Sun, 3 Oct 2021 17:52:06 +0200
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+         :subject:content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=r//XP1lP00GFemry2tO/FQC/7ePT3oIBKh6OtpkgF8I=;
+        b=a3E3KHmV/S6PwrnwP3UxYkwOJfOmoT08bFX07ZkSsfGU2UL2FgEJogBW52uZIWF18K
+         LI90VQ3uGcnr89omtNcVBBoJhaBLdJ3VbGO5N5UAl/E7QaRrxZUqwL38DP68dyye2Dzp
+         pzR/U2/8STtkrZPuzcJCMCYQCBWboAz3zLK0em4oCeZawesXBCIjC8MTwx50bTR49Mx2
+         rrohHoEx/J3jN3BySlLkE/dVA2Vb1fUbnviNtz9+HRlem30eplSHvEcIsTH9Nh7mn9n/
+         1McmV/NBOR0CKYCojAeOvU/bbV4fVgaF78THvhAkXUR+vfPhF7KlgUAyG5xfn6EpFPtH
+         R30g==
+X-Gm-Message-State: AOAM5326j5LDySQFQXqKoY42eODvOvG3GpeINThnUwByp3DR4m10sd+h
+	ASIV8Raw54WcsGZaPBerovJBioT2nRo=
+X-Google-Smtp-Source: ABdhPJz0/+JeR8/mTuHWS5cmLN0PWikRxF40R7zyTHRcHTedJRrwBSCwtaTFbj7ozVexT12/XvQbaA==
+X-Received: by 2002:adf:bbc2:: with SMTP id z2mr11204655wrg.359.1633334011650;
+        Mon, 04 Oct 2021 00:53:31 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
+        by smtp.gmail.com with ESMTPSA id d70sm13725677wmd.3.2021.10.04.00.53.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Oct 2021 00:53:31 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Message-ID: <f9c512eb-bada-5755-6927-3b6aa2a51fa2@amsat.org>
+Date: Mon, 4 Oct 2021 09:53:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.1.0
-Subject: Re: [PATCH 2/3] target/arm: Introduce store_cpu_field_constant()
- helper
+Subject: Re: [RFC PATCH] hw/arm: fix the position of vcram for raspi
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20211003143901.3681356-1-f4bug@amsat.org>
- <20211003143901.3681356-3-f4bug@amsat.org>
- <bf1c7cfa-6a0a-586c-58a2-8886402952a2@linaro.org>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Michael Bishop <cleverca22@gmail.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org
+References: <20211001174243.128157-1-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <bf1c7cfa-6a0a-586c-58a2-8886402952a2@linaro.org>
+In-Reply-To: <20211001174243.128157-1-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: amYSwFPajbjh
+X-TUID: FOHWQ2YHymaa
 
-On 10/3/21 17:35, Richard Henderson wrote:
-> On 10/3/21 10:39 AM, Philippe Mathieu-Daudé wrote:
->> -static inline void store_cpu_offset(TCGv_i32 var, int offset)
->> +static inline void store_cpu_offset(TCGv_i32 var, int offset, bool
->> is_temp)
->>   {
->>       tcg_gen_st_i32(var, cpu_env, offset);
->> -    tcg_temp_free_i32(var);
->> +    if (is_temp) {
->> +        tcg_temp_free_i32(var);
->> +    }
->>   }
->>     #define store_cpu_field(var, name) \
->> -    store_cpu_offset(var, offsetof(CPUARMState, name))
->> +    store_cpu_offset(var, offsetof(CPUARMState, name), true)
->> +
->> +#define store_cpu_field_constant(val, name) \
->> +    store_cpu_offset(tcg_const_i32(val), offsetof(CPUARMState, name),
->> false)
->>   
+On 10/1/21 19:42, Alex Bennée wrote:
+> The previous calculation fell over when I tried to create a 8gb Pi 4
+> because the values where only 32 bit. However the quirk of the Pi
+
+Typo 'where' -> 'were'?
+
+> hardware is the vcram can only appear in the first 1gb of address
+> space. This also limits where the initial kernel and DTB can be
+> loaded (notice the DTS for the 8gb Pi4 still only uses 32 bit sizes).
+> Fix this cleaning up setup_boot to directly use vcram_base and
+> documenting what is going on.
 > 
-> You missed out on using tcg_constant_i32 in the end.
+> NB: the aliases are confusing.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Michael Bishop <cleverca22@gmail.com>
+> Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/arm/bcm2835_peripherals.c | 14 +++++++++++---
+>  hw/arm/bcm2836.c             |  2 ++
+>  hw/arm/raspi.c               | 19 ++++++++++++-------
+>  3 files changed, 25 insertions(+), 10 deletions(-)
 
-Oops... thanks :)
+LGTM:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

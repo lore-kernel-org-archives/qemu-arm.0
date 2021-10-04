@@ -1,86 +1,87 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3987825lfp;
-        Mon, 4 Oct 2021 08:51:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwj6tpbLoWodmxliHw3mRuwjO+ZWcoi1BC9Q4pqeegqgM17xhhfLK4+l74fWYxcl8ULgQd6
-X-Received: by 2002:ae9:e897:: with SMTP id a145mr10505366qkg.297.1633362692478;
-        Mon, 04 Oct 2021 08:51:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633362692; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp3988042lfp;
+        Mon, 4 Oct 2021 08:51:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHM7AVYD8uKKRtDslKHVFSbnPiZG6m8CzBleHN9qJ0e2RNEngPPCxObftSLa19FL4VSxJ3
+X-Received: by 2002:a05:6e02:1847:: with SMTP id b7mr10598176ilv.180.1633362709640;
+        Mon, 04 Oct 2021 08:51:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633362709; cv=none;
         d=google.com; s=arc-20160816;
-        b=xFU/4khXoRKXkYRMclTKeIC+CUgaUqOWx8emxCNAS2uSNRH7P03zwowXtc/fp0+IcO
-         bCcbA/H4TiVcFG9kMWPt7zbSANzNQaFojOsA2JoJnr1P7ZcQ75N7UO14rWf/FvuQqqir
-         x7y0ZoT0Ba4lkzlTNysxXnSmhPcf7+aXHA3jMapP9gRVY5PjN4Mq7vkVgJXAvoXXJe8F
-         y6QgrqjHRVuMTfJtUxJ6zAg//5OvcmVCdXk1lkkdP9lr4vZ/QSrfw66AOJRjNjSPU0Bs
-         FGhFAnLgF8qLl2nYvGK1riaW4xO3q2dpfC2liMij72W63I+Pp3rs35Z1d62zRyvPruhu
-         6VUw==
+        b=P//S47YO+uCfq/WwsFY/v+fcm7ROuuUIupRY3YRTfwAVEbC0Ci/jSKbauSSmIa0Y9v
+         NBDGVdplOYJiHGySUeJn4hAjk+bonHGoF6x5m7aZgrpTmL3ZunxeNKIKGWgIM/8E9vh7
+         Ez54aHPzWo6ZB/2OPWd4GxA6prrfMFFFCzeXYVFq2HEcVtL0rPzPmBAzmyNllqlGnJjW
+         rMLDWOYt2vNsHjK3H/9nS3N6ymk7Al9Yqn85zx/o8iYpreiGrCjz0lAM3z4s3AxBKzzp
+         Rr/IRTNx6HNWWFbJgN+k+oewnninWxQ6kYz7x03MbvCl1Rr47lEA4MR7tv5UnvLGD5eT
+         DaZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=Zt1CZN8GKp0F5OJm8XtQVToB3ZtiI1TIP69orl50sQg=;
-        b=nLy/H+/DGSZOocunq3qsIeidgHilrkLflYFS2e84s/B3GzXYgUiue3UTwKvFYXOZZb
-         inf8pYwrqQft+aVG7YlBq+up2yzVx9PP2FW1qFRBkoIslkqftZAjcSU3xAaLG+8pTW52
-         Gesj7k7YZwFju+XB+76oxqEBsQNGF2Sxam/tOjBC9ERGecqPNGmbcG3FAd8IZ3bPq2KC
-         nms9Vzhi3QbJcqnnGAxAcjj36DBjY5Se7/E+ysL1cO/oAHLnzkq1vfoFV0CPeaxqnb5S
-         KK3rGrflaJKnIb0VMkUlMYtcA1wjwoyknm+dSps+5NY7y/9H3voP46lVbM8HVhZ6c8Cs
-         bKWQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=wshiogC/suNojkRZuNxzI9xcYAdb7RJYByzf8iGejCM=;
+        b=Syf1D82Rq8eUIvN8QE3Py2+bhwcTVZjKnZ49Sg5OSX01A8xWQScoB8ezvJgvNXsXRY
+         PYkv3sOpper48m/4APHCznRSuZCmXSw9sXwlBGraw1fptDcEfUOHh039UFPn104l3twQ
+         Ty4R+lPEjWQB1VeEMxI9c85stdZyltvFMu06RLbLqvVg6eykwB4xwJoqJv8LEMufYfSa
+         bpDnTR1q0ZF3tlHe5ubythJ0mchOqwDbgaW/vq17zcEaZ6dhTIjksIARf422GnJUPhSy
+         UAKls/Pq4YahBm/pxETRoDl+5odhp/E1uQsSwwEmtCNP90RrT8R9nmWwciLxMA+OZXHe
+         MMKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17si10199703qtb.311.2021.10.04.08.51.32
+        by mx.google.com with ESMTPS id m22si16038100jaa.56.2021.10.04.08.51.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Oct 2021 08:51:32 -0700 (PDT)
+        Mon, 04 Oct 2021 08:51:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60618 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33274 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mXQFX-0006Uo-RT
-	for alex.bennee@linaro.org; Mon, 04 Oct 2021 11:51:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44544)
+	id 1mXQFo-0007Bf-Uq
+	for alex.bennee@linaro.org; Mon, 04 Oct 2021 11:51:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44546)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mXQB0-0001B9-UJ
- for qemu-arm@nongnu.org; Mon, 04 Oct 2021 11:46:50 -0400
-Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:39439)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mXQB1-0001BQ-2a
+ for qemu-arm@nongnu.org; Mon, 04 Oct 2021 11:46:51 -0400
+Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220]:32897)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mXQAy-0001CZ-1u
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mXQAx-0001Cr-Q8
  for qemu-arm@nongnu.org; Mon, 04 Oct 2021 11:46:50 -0400
 Received: from mxplan5.mail.ovh.net (unknown [10.108.16.17])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id D414321ABC;
- Mon,  4 Oct 2021 15:46:36 +0000 (UTC)
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 2E12D21BD4;
+ Mon,  4 Oct 2021 15:46:38 +0000 (UTC)
 Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Mon, 4 Oct
- 2021 17:46:36 +0200
+ 2021 17:46:37 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002a91b2e3d-af22-4da8-8225-9874c57d7b9a,
+ (GARM-98R002d00afd69-ff90-481c-b980-8ca82c3bad5c,
  32296DFA07ABF8CFA5B750E6C0B5925FEAD98EF4) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 0/4] aspeed/smc: Improve support for the alternate boot
- function
-Date: Mon, 4 Oct 2021 17:46:31 +0200
-Message-ID: <20211004154635.394258-1-clg@kaod.org>
+Subject: [PATCH 3/4] aspeed/wdt: Add an alias for the MMIO region
+Date: Mon, 4 Oct 2021 17:46:34 +0200
+Message-ID: <20211004154635.394258-4-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211004154635.394258-1-clg@kaod.org>
+References: <20211004154635.394258-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.98]
 X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: b76390c4-a03e-4caf-a19e-0f37c5433b23
-X-Ovh-Tracer-Id: 2439825100510563110
+X-Ovh-Tracer-GUID: 69f4c91a-2a74-40d1-9b49-03a19d521310
+X-Ovh-Tracer-Id: 2440106575108737897
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudelvddgledtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfedvuedtvdeikeekuefhkedujeejgffggffhtefglefgveevfeeghfdvgedtleevnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
- helo=8.mo552.mail-out.ovh.net
-X-Spam_score_int: 0
-X-Spam_score: -0.0
-X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_DNSWL_NONE=-0.0001,
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrudelvddgledtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
+ helo=5.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -95,54 +96,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mBbaCU4oZwqt
+X-TUID: 3p7Iv+Vq4OxA
 
-Hello,
+Initialize the region in the instance_init handler because we will
+want to link this region in the FMC object before the WDT object is
+realized.
 
-The Aspeed SoCs have a dual boot function for firmware fail-over
-recovery. The system auto-reboots from the second flash if the main
-flash does not boot successfully within a certain amount of time. This
-function is called alternate boot (ABR) in the FMC controllers.
-
-On the AST2600, the ABR registers controlling the 2nd watchdog timer
-were moved from the watchdog register to the FMC controller. To
-control WDT2 through the FMC model register set, this series creates a
-local address space on top of WDT2 memory region.
-
-To test on the fuji-bmc machine, run :
-
-    devmem 0x1e620064
-    devmem 0x1e78504C 
-
-    devmem 0x1e620064 32 0xffffffff
-    devmem 0x1e620064
-    devmem 0x1e78504C
-    
-Thanks
-
-C.
-
-
-Cédric Le Goater (4):
-  aspeed/wdt: Add trace events
-  aspeed/smc: Dump address offset in trace events
-  aspeed/wdt: Add an alias for the MMIO region
-  aspeed/smc: Improve support for the alternate boot function
-
- include/hw/ssi/aspeed_smc.h      |  3 ++
+Cc: Peter Delevoryas <pdel@fb.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
  include/hw/watchdog/wdt_aspeed.h |  1 +
- hw/arm/aspeed_ast2600.c          |  2 +
- hw/ssi/aspeed_smc.c              | 84 ++++++++++++++++++++++++++++++--
- hw/watchdog/wdt_aspeed.c         | 20 ++++++--
- hw/ssi/trace-events              |  1 +
- hw/watchdog/trace-events         |  4 ++
- 7 files changed, 107 insertions(+), 8 deletions(-)
+ hw/watchdog/wdt_aspeed.c         | 15 ++++++++++++---
+ 2 files changed, 13 insertions(+), 3 deletions(-)
 
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index f945cd6c5833..008e7d9b498c 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -29,6 +29,7 @@ struct AspeedWDTState {
+ 
+     /*< public >*/
+     MemoryRegion iomem;
++    MemoryRegion iomem_alias;
+     uint32_t regs[ASPEED_WDT_REGS_MAX];
+ 
+     AspeedSCUState *scu;
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 146ffcd71301..6426f3a77494 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -261,6 +261,16 @@ static void aspeed_wdt_timer_expired(void *dev)
+ 
+ #define PCLK_HZ 24000000
+ 
++static void aspeed_wdt_instance_init(Object *obj)
++{
++    AspeedWDTState *s = ASPEED_WDT(obj);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
++                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
++    memory_region_init_alias(&s->iomem_alias, OBJECT(s),
++                             TYPE_ASPEED_WDT ".alias",
++                             &s->iomem, 0, ASPEED_WDT_REGS_MAX * 4);
++}
+ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
+ {
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+@@ -275,9 +285,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
+      */
+     s->pclk_freq = PCLK_HZ;
+ 
+-    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
+-                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
+-    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_mmio(sbd, &s->iomem_alias);
+ }
+ 
+ static Property aspeed_wdt_properties[] = {
+@@ -301,6 +309,7 @@ static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo aspeed_wdt_info = {
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .name  = TYPE_ASPEED_WDT,
++    .instance_init  = aspeed_wdt_instance_init,
+     .instance_size  = sizeof(AspeedWDTState),
+     .class_init = aspeed_wdt_class_init,
+     .class_size    = sizeof(AspeedWDTClass),
 -- 
 2.31.1
 

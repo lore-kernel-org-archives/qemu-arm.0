@@ -1,112 +1,111 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5229754lfp;
-        Tue, 5 Oct 2021 12:39:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwCXuLqLUnLoVtFNH6txO+sF5AX5X2Mr6CEAgJXiHM6jqBa14GHZ7XOZMx2OrPs3PlCUOc6
-X-Received: by 2002:ac8:18c:: with SMTP id x12mr21407485qtf.378.1633462759253;
-        Tue, 05 Oct 2021 12:39:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633462759; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5231580lfp;
+        Tue, 5 Oct 2021 12:41:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwC3OlAV5P3ODoUqRgA3F1uXdwMdplD7TxFe43KCb455f0mHx5gvpsWbuocwCAFiVz0POM+
+X-Received: by 2002:a37:b7c6:: with SMTP id h189mr2955358qkf.377.1633462904349;
+        Tue, 05 Oct 2021 12:41:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633462904; cv=none;
         d=google.com; s=arc-20160816;
-        b=ejLv6bJZV6h7/af8M4W9BkHWgnRntSlEYLCW5KERBIB6jxkuxv36Izm/aj2+7xjziP
-         eJ//0ctd5yDvp9e+JuU48wtZ7Q4DhQWzsc7ZCOzfyg9HRaqFg3dpR6K7oRWaduzo4DQP
-         N8LxU90lWKmeXr8Vm+JDV11Ry1R2LVYouwszQV7vU6n4AiN0A8SnaTnw/pOHI+tYWvAe
-         rBMjXNNNMpW/n5NZpODqiySjTmc9D6S8lV+sQSIoFqMVYclaT3qptN0vXn3JZXcAkhVn
-         wEjYE4T64zlHsl9G5rlh4R9qQSJdaKCbALg32OTdeyplmkb31XEnPXUq2xRhIWgY7NXd
-         bASw==
+        b=YDwwbdwdH8E/RGGDoRCPBwdNP9vgweD0sD0SUPwFvoUahPc0myOeN+WfYeMFMe38nB
+         JLZu3rIVMWKMFnRn5srAvrjTpSJEYkdrJPg021+fHf4ODw1NHfs7HC1VR/UaGVds0IXo
+         tguwTb/t3VRrlr0cMHjIlzGA0t8OSpBxf6GklYswUnSVDecAJ3yV64Wrt/GhfRsW/Ct0
+         eRa5/HSqv8OVpjCCLgqvDrV8Z3bB9v8uyn1KA1I9Jxqe2QXBOoXzr3EMv18Ds4+C38Jh
+         f2c20Rr79Y5ccrFpElPelWDjqp2Y/lokByeDpIn5gfQryKOi53DbMlfQDI6W/W2R3W9W
+         24Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=y6Q06zG60cHh6k1SzwElQstJ18anZb4XfsmLDORUjSc=;
-        b=zq696WVbPMy4QcehIYK6DTkeHPbTY+L0aG+RYhMDfLHOkA/F6PHm40sNjVshSpHnrY
-         p5CGWo5ojWfJXeskdWHvav2q3LJOdMNHtxeRoTpb7tg747JGxVv5DFfjs1HbfvvetA/C
-         zsB5BF5/psXCf1zUrJPm9oCIICz+5mWN44eAeM7OcM/MqgwFiCj819ngH0YrVIPFtCid
-         V3ds4RNkAD0816Bg1F3pMjzh/3Ktca9fAC0Qq2w7M9l9axcsYaPmTI17vDETxaXlsGB9
-         Utb038vrRgebmkIvPHzpUqT7XeFqYdl92DnbO6wXJ1E67UrafyOQnB7eNsJNGOQE6f4c
-         OOAg==
+        bh=RMbV8nhPdJh+Tj+5bauxglLgvBkliNLvzzUT5d7cjbE=;
+        b=Qlpn7C6yvY6IPNfW2GPROQ46Uv6hb6DK6Uz93E/zSh+edsqlH/FbfOhRvvCYpHVjkU
+         VTvPYfWyXLIRM9yjgop8R/ys5vvJ2ozMweG/dNDhPPkagJ0V2KbGKSehh4LOrfUJf6WO
+         IRzF1Jatoq+YVpt+qU082hDfA4ynEHCZYS/VmIqG+lp0yh8KGDkPUXQgBdYUtjastp1T
+         oMmueTEIepji8cb+ieYuOen5WZ3hUN0gc7fSRPVzZT3EdVPT4p59G98r3Y+3LQ23mrvx
+         pk64L7qRctofmt4SkcOtxlWfofWexev8TeYrOgpmD/8E2mrXZwFHqMfHFh2D8l5JhkmK
+         BvzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A4jlxKQj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ehCuIp9m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gv4si5620553qvb.40.2021.10.05.12.39.19
+        by mx.google.com with ESMTPS id t20si2611814qtx.227.2021.10.05.12.41.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Oct 2021 12:39:19 -0700 (PDT)
+        Tue, 05 Oct 2021 12:41:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A4jlxKQj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ehCuIp9m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48104 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mXqHW-0001Sk-Ls
-	for alex.bennee@linaro.org; Tue, 05 Oct 2021 15:39:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45612)
+	id 1mXqJq-0003VO-PS
+	for alex.bennee@linaro.org; Tue, 05 Oct 2021 15:41:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46170)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mXqGg-0001Il-SM
- for qemu-arm@nongnu.org; Tue, 05 Oct 2021 15:38:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39364)
+ id 1mXqJF-0003QH-K5
+ for qemu-arm@nongnu.org; Tue, 05 Oct 2021 15:41:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:55269)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mXqGa-0006Mh-5W
- for qemu-arm@nongnu.org; Tue, 05 Oct 2021 15:38:24 -0400
+ id 1mXqJB-0002Aq-GW
+ for qemu-arm@nongnu.org; Tue, 05 Oct 2021 15:41:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633462698;
+ s=mimecast20190719; t=1633462860;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=y6Q06zG60cHh6k1SzwElQstJ18anZb4XfsmLDORUjSc=;
- b=A4jlxKQj9GxflrDocHFSU9pfuvZc7+aMfx1b76AblnBuyyTeDQ0D+quexgpG9CBnuBI4k/
- gDbikW9xthwEdgXa9erWKUlC+l8MRvqdiE+/ph29USMrBcTqXejdJ/COjIV6MCaML5Jcm0
- +C+rvhMeXqWK0s+I1OUnxoSZIf+TeC0=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-585-32BwBg8KNeONQJ9GFzNaew-1; Tue, 05 Oct 2021 15:38:18 -0400
-X-MC-Unique: 32BwBg8KNeONQJ9GFzNaew-1
-Received: by mail-wr1-f70.google.com with SMTP id
- e12-20020a056000178c00b001606927de88so152175wrg.10
- for <qemu-arm@nongnu.org>; Tue, 05 Oct 2021 12:38:17 -0700 (PDT)
+ bh=RMbV8nhPdJh+Tj+5bauxglLgvBkliNLvzzUT5d7cjbE=;
+ b=ehCuIp9m9aURETa1ZCWGIufsKSuV5OkOdZbYdcmdiD1NzXscwzd9KusOXixCG2PKXCzVyH
+ uqrZumli1+1xVvvbRO5AK84/wOGc15NT8YzjB3sf6HCsTxhKAwEJLN3dZ/FnmylewhjRtV
+ Is3/Wt3fi70Ify7y8C/x17EeyozybYA=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-43-ELkNWVY8PbiBJqt3nlO6pA-1; Tue, 05 Oct 2021 15:40:57 -0400
+X-MC-Unique: ELkNWVY8PbiBJqt3nlO6pA-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ r21-20020adfa155000000b001608162e16dso154663wrr.15
+ for <qemu-arm@nongnu.org>; Tue, 05 Oct 2021 12:40:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:reply-to:subject:to:cc:references:from
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-transfer-encoding:content-language;
- bh=y6Q06zG60cHh6k1SzwElQstJ18anZb4XfsmLDORUjSc=;
- b=R4uBeplW/dpKIZdt8rYzFqqNi2piCcn8HjziqweMmbeaEVgwObGgZl7xS18iOuV/PI
- pkP4khyuWK40c7VwkqFgYFLJXvwfsPJkq1wJTYvyhRpW1BkYNQuEuvnLp/Gd895lC2+3
- oRo0UpUUmqJau6MBa/b0Zm7XMvFkrUBcUfaQwRbVuyS+4/iXI2m86+EWoMYnR6Mc1Gcu
- s12si0gxmzNglOu4hbGsD0PLxs/J/PX05wJMDBKKElpCPZFuvL0xynXZS5Osgac2hx8k
- pHbpPRHUb06DawenXAPODIes1YWOMBG/HJN7b18DtDCqJEoV3smRV2yeCvBAc2pChqjz
- Ts9A==
-X-Gm-Message-State: AOAM531rKyz4v4uLSI0l1o/HanE9azQ6Q0zGyoNmCg112bBbhjDYUKtJ
- HKtBH9oDUXkiqzOYD5ZISMCNITRzG9DarV5fK/VeBWX3sqU7qHw9TX+LB5ihODPRrshLWirdGfF
- /NPdjSk5jmHjPNmBrrIbQa4jeLA/N1Xwn7rrdxUSHhj3JDAAMNqUbgBuRIai8/NrOe+Q=
-X-Received: by 2002:adf:a34b:: with SMTP id d11mr18820483wrb.107.1633462696301; 
- Tue, 05 Oct 2021 12:38:16 -0700 (PDT)
-X-Received: by 2002:adf:a34b:: with SMTP id d11mr18820443wrb.107.1633462696003; 
- Tue, 05 Oct 2021 12:38:16 -0700 (PDT)
+ bh=RMbV8nhPdJh+Tj+5bauxglLgvBkliNLvzzUT5d7cjbE=;
+ b=6b7DvCUumuEW1zOr0uQ3p5ISnyhBES0zni2w77sGaQ3BPJfiFQD3xKk1B0dFETVT8d
+ qfHSNgF03jX2BTvcw6tFYuV822sErGxfmAoNWq8rkKw0vzdtj1WV8bl7bXsg9uxodPSg
+ 7nlqLLAMSu9ESGiEuwHq1KPa0zPRNgmOci9sUouh0YXmgnouhKo3l6FGhJaT9uJQDN2t
+ lhM6N17+ZxGv/OGrWA4F+9n7BbZRd3Wckkc01lEeknndnpKMs80XdCJoXqtCKjtTvSgO
+ v/sh5hcAMVHH3NT5yJBGPdraNB9OH5jds6SvLOJrBHYk/hEWJj3XeDP3Cc7p+ys3mwUR
+ McDA==
+X-Gm-Message-State: AOAM530P+ATlZOyCR9t8s7G2XalA88MamUhq37kjCxaqjTPBoNgkTlmx
+ fUWqX1LYjrHFDVilbQU5TVv2OKMlgmKswa3v3freECqfH4M7M1TT1kNhen8PcD35bM2Dr7Jv415
+ G10/Kxz2DrUs0UGtmGPtP9Ad3nLEj/AQODebu9Li6yIA3/IiS4e/Ji++7AkZAEdeWUgs=
+X-Received: by 2002:a1c:a558:: with SMTP id o85mr5457257wme.110.1633462855932; 
+ Tue, 05 Oct 2021 12:40:55 -0700 (PDT)
+X-Received: by 2002:a1c:a558:: with SMTP id o85mr5457227wme.110.1633462855729; 
+ Tue, 05 Oct 2021 12:40:55 -0700 (PDT)
 Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id k128sm3113799wme.41.2021.10.05.12.38.14
+ by smtp.gmail.com with ESMTPSA id m21sm3144587wmq.37.2021.10.05.12.40.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Oct 2021 12:38:15 -0700 (PDT)
-Subject: Re: [PATCH v4 10/11] tests/acpi: add expected blob for VIOT test on
- virt machine
+ Tue, 05 Oct 2021 12:40:55 -0700 (PDT)
+Subject: Re: [PATCH v4 09/11] tests/acpi: add test cases for VIOT
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>, imammedo@redhat.com
 References: <20211001173358.863017-1-jean-philippe@linaro.org>
- <20211001173358.863017-11-jean-philippe@linaro.org>
+ <20211001173358.863017-10-jean-philippe@linaro.org>
 From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <f5293d9e-10b1-6a85-a35f-66b12680cdd2@redhat.com>
-Date: Tue, 5 Oct 2021 21:38:13 +0200
+Message-ID: <4350da17-9675-2cde-c571-6b5952b75f31@redhat.com>
+Date: Tue, 5 Oct 2021 21:40:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20211001173358.863017-11-jean-philippe@linaro.org>
+In-Reply-To: <20211001173358.863017-10-jean-philippe@linaro.org>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -114,15 +113,16 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.066,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -142,81 +142,85 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H1516v9TifMV
+X-TUID: /235r8Zr5X38
 
-Hi Jean,
+
 
 On 10/1/21 7:33 PM, Jean-Philippe Brucker wrote:
-> The VIOT blob contains the following:
->
-> [000h 0000   4]                    Signature : "VIOT"    [Virtual I/O Translation Table]
-> [004h 0004   4]                 Table Length : 00000058
-> [008h 0008   1]                     Revision : 00
-> [009h 0009   1]                     Checksum : 66
-> [00Ah 0010   6]                       Oem ID : "BOCHS "
-> [010h 0016   8]                 Oem Table ID : "BXPC    "
-> [018h 0024   4]                 Oem Revision : 00000001
-> [01Ch 0028   4]              Asl Compiler ID : "BXPC"
-> [020h 0032   4]        Asl Compiler Revision : 00000001
->
-> [024h 0036   2]                   Node count : 0002
-> [026h 0038   2]                  Node offset : 0030
-> [028h 0040   8]                     Reserved : 0000000000000000
->
-> [030h 0048   1]                         Type : 03 [VirtIO-PCI IOMMU]
-> [031h 0049   1]                     Reserved : 00
-> [032h 0050   2]                       Length : 0010
->
-> [034h 0052   2]                  PCI Segment : 0000
-> [036h 0054   2]               PCI BDF number : 0008
-> [038h 0056   8]                     Reserved : 0000000000000000
->
-> [040h 0064   1]                         Type : 01 [PCI Range]
-> [041h 0065   1]                     Reserved : 00
-> [042h 0066   2]                       Length : 0018
->
-> [044h 0068   4]               Endpoint start : 00000000
-> [048h 0072   2]            PCI Segment start : 0000
-> [04Ah 0074   2]              PCI Segment end : 0000
-> [04Ch 0076   2]                PCI BDF start : 0000
-> [04Eh 0078   2]                  PCI BDF end : 00FF
-> [050h 0080   2]                  Output node : 0030
-> [052h 0082   6]                     Reserved : 000000000000
-I noticed the spec does not clearly say the virtio-iommu-pci BDF does
-not need to be excluded from the PCI range.
-Shouldn't it be clarified?
-
-Besides
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
-
-
-
+> Add two test cases for VIOT, one on the q35 machine and the other on
+> virt. To test complex topologies the q35 test has two PCIe buses that
+> bypass the IOMMU (and are therefore not described by VIOT), and two
+> buses that are translated by virtio-iommu.
 >
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 > ---
->  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
->  tests/data/acpi/virt/VIOT                   | Bin 0 -> 88 bytes
->  2 files changed, 1 deletion(-)
+>  tests/qtest/bios-tables-test.c | 38 ++++++++++++++++++++++++++++++++++
+>  1 file changed, 38 insertions(+)
 >
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index 29b5b1eabc..fa213e4738 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1,4 +1,3 @@
->  /* List of comma-separated changed AML files to ignore */
-> -"tests/data/acpi/virt/VIOT",
->  "tests/data/acpi/q35/DSDT.viot",
->  "tests/data/acpi/q35/VIOT.viot",
-> diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/VIOT
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..921f40d88c28ba2171a4d664e119914335309e7d 100644
-> GIT binary patch
-> literal 88
-> zcmWIZ^bd((0D?3pe`k+i1*eDrX9XZ&1PX!JAexE60Hgv8m>C3sGzXN&z`)2L0cSHX
-> I{D-Rq0Q5fy0RR91
->
-> literal 0
-> HcmV?d00001
->
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 4f11d03055..b6cb383bd9 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -1403,6 +1403,42 @@ static void test_acpi_virt_tcg(void)
+>      free_test_data(&data);
+>  }
+>  
+> +static void test_acpi_q35_viot(void)
+> +{
+> +    test_data data = {
+> +        .machine = MACHINE_Q35,
+> +        .variant = ".viot",
+> +    };
+> +
+> +    /*
+> +     * To keep things interesting, two buses bypass the IOMMU.
+> +     * VIOT should only describes the other two buses.
+> +     */
+> +    test_acpi_one("-machine default_bus_bypass_iommu=on "
+> +                  "-device virtio-iommu "
+may be better to use virtio-iommu-pci?
+> +                  "-device pxb-pcie,bus_nr=0x10,id=pcie.100,bus=pcie.0 "
+> +                  "-device pxb-pcie,bus_nr=0x20,id=pcie.200,bus=pcie.0,bypass_iommu=on "
+> +                  "-device pxb-pcie,bus_nr=0x30,id=pcie.300,bus=pcie.0",
+> +                  &data);
+> +    free_test_data(&data);
+> +}
+> +
+> +static void test_acpi_virt_viot(void)
+> +{
+> +    test_data data = {
+> +        .machine = "virt",
+> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
+> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
+> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
+> +        .ram_start = 0x40000000ULL,
+> +        .scan_len = 128ULL * 1024 * 1024,
+> +    };
+> +
+> +    test_acpi_one("-cpu cortex-a57 "
+> +                  "-device virtio-iommu", &data);
+> +    free_test_data(&data);
+> +}
+> +
+>  static void test_oem_fields(test_data *data)
+>  {
+>      int i;
+> @@ -1567,12 +1603,14 @@ int main(int argc, char *argv[])
+>          if (strcmp(arch, "x86_64") == 0) {
+>              qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
+>          }
+> +        qtest_add_func("acpi/q35/viot", test_acpi_q35_viot);
+>      } else if (strcmp(arch, "aarch64") == 0) {
+>          qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+>          qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
+>          qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
+>          qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
+>          qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt);
+> +        qtest_add_func("acpi/virt/viot", test_acpi_virt_viot);
+>      }
+>      ret = g_test_run();
+>      boot_sector_cleanup(disk);
+Besides
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Eric
 

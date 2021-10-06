@@ -1,96 +1,117 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp967602lfp;
-        Wed, 6 Oct 2021 20:45:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRTlXW/5koG5zK7rTQf5vcESnLzjp7nX2KMvfycHqgAxeFtcQCcrh1wHyvV1dy+9tNGVLj
-X-Received: by 2002:a05:622a:18a:: with SMTP id s10mr2306680qtw.141.1633578350178;
-        Wed, 06 Oct 2021 20:45:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633578350; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp219956lfp;
+        Wed, 6 Oct 2021 04:59:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxe4/qx/5rjUc+UKhleQhu21ZTXvsucqoRznhDTXrqnM/dRd6jDwdJrXVzSE0/zgmKoNH+Q
+X-Received: by 2002:a05:6602:487:: with SMTP id y7mr1487710iov.0.1633521548715;
+        Wed, 06 Oct 2021 04:59:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633521548; cv=none;
         d=google.com; s=arc-20160816;
-        b=bd90357vzWjCi49YHyD+YLHqHv27mQji0oe1/EsS1P6t798yw7AOhohQ8OS7FuUt4C
-         htHBcYgDvnzV46GVvFlUEeelUlrJWeV5+Vo6uxK5QMlffNI2Kmn8rrw0TnZHOR+vpofG
-         AlCdEIGt5Z7L95PK5C78mM8Cf1jrKKsl+i0HxPO4TTZ9+8u3LHjyMM5e8q5/mm/epxWD
-         CQme+7GxGy8eJa7SQXmR/DcMP1T6heNJh/kW0KwpLRgAn8YwCG39sinhbHyZVZg3tXsU
-         9IBDjtF0wqh4A9LIDgLXLf68rEYrfkGprm9QhwZA9XJztx8KmEV/x5evSwQ+6RN8nGbJ
-         8r8A==
+        b=AcSbjxNP1+6YpLN0gV1rnOa7Ma3A+IiyNIvTzcFQjNJzMvIzwMsm75bhbEJ0HgXUcA
+         flPR7Agk0ycwBeebAK1Z03+8+pC5DHY+XHjAx5re6xcBw2E59ObHvp0YwgqJJ5Kqgm7F
+         wU65DXLJp6Q2tQJFuluvpZJoLQvaHGHprxkASZhSQP586PoLx5aah2V3XoH6puG2IzNG
+         dXAJCiCj0dvqWhHJE1hGW4j+Ecg+eeIGyXpxwioq8MbIqKqYPixaKaZskxkxUFiN2ALJ
+         kFeO1XW8+jYOkyJ5IRi6rjrIhg3vFXopC1BpqmHz9pplkxv54iy+NSMpWj5BsSmwaH8C
+         buIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=6uysWHLvz6ldTLSPSUy9nbBbkgI8VU2QyHavvKfvVDA=;
-        b=Wkq0v1fJZnXKWAv9Ng88IspzmpJ+DQ4Pl+1zsuQcMVjccQdCixrGH8nYQhyGZktpqt
-         +O8sVXT8yR+O98UFYn4Jjq115rcGklCzSxRk2YVe9yUT4SKcJcTw2jyA0WcrJZyzRs2W
-         GvjmISelwgdwQnGBUoh37nykBoRgslC5M0zuijhEf245EozPe/qdZNJUz8WNtKxd9cp3
-         iylm/YBawL1QJzpoIqJ96VU0AyqK4oMxAkqMbpmQMquvgXHYZ3Hni1d7K/zJjumGX+Jh
-         Dr6EssMKrA8m/u7MSoMc3W9AGuon0Xzs8cIloN+EF9ShRHsERFIo5pfxw4qdyAejkeaK
-         W1Ig==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=hlDcCTOKOHqELQG0J9ELx1bzgh5+4e7b57/RbQy+ZIk=;
+        b=BEY5ZduJUrZSbEbizQY6oI/lK/bKKekb8jaSr3eBFPnJJ4RtLuIQ4pHlExcKSd8GiV
+         L/4J18ciIjSwaCub5YxRKnpAgNlswJ8K9qFIiYo556q4hDK9dSUUUKEjux2VuZLl9pWQ
+         lJBNTb1Eu/HGYpaNT7ePhCWU3wgnnGl9U5cNUROnEIK+cHTbsxzNXbgOr2/YUXo85xuu
+         TdVfpIdTsM0EbwMsHFVImyigMZQMgfyyaa9Oi/J9uGksEabB9yggH4iBAWn/2I5ckQ/J
+         VcRe3Rk4ZyNrRneiCLszVr8o0APtRr3Gvpry0W7mtpmKg6hHqJRx0HU0HpAAc33tm2rW
+         yS1w==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ut7Ck/VV";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g9si4309856qtj.85.2021.10.06.20.45.49
+        by mx.google.com with ESMTPS id t13si15998269ilu.120.2021.10.06.04.59.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Oct 2021 20:45:50 -0700 (PDT)
+        Wed, 06 Oct 2021 04:59:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ut7Ck/VV";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:55932 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mYKLt-0005ZV-GQ
-	for alex.bennee@linaro.org; Wed, 06 Oct 2021 23:45:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32784)
+	id 1mY5Zj-0006bJ-Vf
+	for alex.bennee@linaro.org; Wed, 06 Oct 2021 07:59:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mYKL1-0005Yj-ER; Wed, 06 Oct 2021 23:44:55 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2875)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mY5ZR-0006Zd-SE
+ for qemu-arm@nongnu.org; Wed, 06 Oct 2021 07:58:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42275)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mYKKy-00076q-On; Wed, 06 Oct 2021 23:44:55 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.55])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4HPxxH0TX1z1DHHx;
- Thu,  7 Oct 2021 11:43:15 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Thu, 7 Oct 2021 11:44:44 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.8; Thu, 7 Oct 2021 11:44:43 +0800
-Subject: Re: [PATCH v12 16/16] machine: Make smp_parse return a boolean
-To: Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20210929025816.21076-1-wangyanan55@huawei.com>
- <20210929025816.21076-17-wangyanan55@huawei.com>
- <0343d17f-bb46-a266-7ba4-20bdf30631d0@redhat.com>
- <YVdCRYvRHIio6MZe@redhat.com>
- <afa63e10-2999-4073-e440-a5d87fd6da49@redhat.com>
- <87bl47ll9l.fsf@dusky.pond.sub.org>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <0c458d28-563a-1c12-3b9e-2fd86ae576a6@huawei.com>
-Date: Thu, 7 Oct 2021 11:44:42 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mY5XU-0007mU-Lv
+ for qemu-arm@nongnu.org; Wed, 06 Oct 2021 07:58:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1633521407;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=hlDcCTOKOHqELQG0J9ELx1bzgh5+4e7b57/RbQy+ZIk=;
+ b=Ut7Ck/VV6l7ebvtqsn0vsp+4lSk1FzhCPDCFDOiSzfoJGs3RR7cImKtZLWDFBvqxAzhDD3
+ X0jnMxgV6hBO2MerndnNwwXsEk3jSgzuMsu86VIdXjVVF41v/rUXtGXyTBjgBgQJ09EwJQ
+ 8CHOdji7V0vImHH3hUxRhT+Bis9wyOk=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-556-SakXQ-VdNliVsR5w0hFyew-1; Wed, 06 Oct 2021 07:56:46 -0400
+X-MC-Unique: SakXQ-VdNliVsR5w0hFyew-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ r11-20020aa7cfcb000000b003d4fbd652b9so371720edy.14
+ for <qemu-arm@nongnu.org>; Wed, 06 Oct 2021 04:56:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=hlDcCTOKOHqELQG0J9ELx1bzgh5+4e7b57/RbQy+ZIk=;
+ b=Q2AIPz8RHiXsSNb1WNbwOf7CdftqT0Yd+77UoyiDA06+Bu6TP4pnY6b87sqGJg9Eqw
+ LRJRUGL8OErd94GN1KkvECEZpVCfCPcSpVcrl9myQ1FNNFsO4uqWcHHumr6qfnq/XTl4
+ v3bDECrpHhETEj/BdQ2Y5YxvT2xvsS+rD8npubudruS1FVXeoIymvP1epqOmBnbhpNZA
+ kIrHcck16s+AlgbzojYiVCbQk1pDI0pf+T4Lcw0woXBDnfrpN4ge4rFuQJ65fT/sK+Ko
+ 3uxu/wb0aS1nATO27oi52BkAgbhA9EobKjMvP5MyEV5hxLEMd7o1id1VtSmcBLf2b75r
+ /VzQ==
+X-Gm-Message-State: AOAM532WE6otwPwRB5Nq/Zjp3Pvu+iFlSNcTFMhOHirInbY20ovXuOAz
+ iIB9BaBXaOgtwytXb6lSNBSI3KpKcuE4Sbulf2GJpgsmq7Kz3sT3VF/SLGigOWVqhKikrkJt7vP
+ FMxVKU5B9WsOV
+X-Received: by 2002:a17:906:3192:: with SMTP id
+ 18mr31646008ejy.246.1633521405533; 
+ Wed, 06 Oct 2021 04:56:45 -0700 (PDT)
+X-Received: by 2002:a17:906:3192:: with SMTP id
+ 18mr31645971ejy.246.1633521405190; 
+ Wed, 06 Oct 2021 04:56:45 -0700 (PDT)
+Received: from gator.home (cst2-174-28.cust.vodafone.cz. [31.30.174.28])
+ by smtp.gmail.com with ESMTPSA id l16sm8749479eje.67.2021.10.06.04.56.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Oct 2021 04:56:44 -0700 (PDT)
+Date: Wed, 6 Oct 2021 13:56:43 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH 1/2] numa: Set default distance map if needed
+Message-ID: <20211006115643.p5b2qcoi4eagluqc@gator.home>
+References: <20211006102209.6989-1-gshan@redhat.com>
+ <20211006102209.6989-2-gshan@redhat.com>
+ <20211006103529.25vjtmkmijmomq4u@gator.home>
+ <688560f5-19a4-7a08-41ec-132266f76725@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87bl47ll9l.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme717-chm.china.huawei.com (10.1.199.113) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -61
-X-Spam_score: -6.2
-X-Spam_bar: ------
-X-Spam_report: (-6.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.964,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
+In-Reply-To: <688560f5-19a4-7a08-41ec-132266f76725@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,148 +123,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>, Eduardo
- Habkost <ehabkost@redhat.com>, Pierre Morel <pmorel@linux.ibm.com>, Pankaj
- Gupta <pankaj.gupta.linux@gmail.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- wanghaibin.wang@huawei.com,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: peter.maydell@linaro.org, marcel.apfelbaum@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, shan.gavin@gmail.com, ehabkost@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FB6c13ggkDaP
+X-TUID: MXhFVO/ReTWa
 
+On Wed, Oct 06, 2021 at 10:03:25PM +1100, Gavin Shan wrote:
+> Hi Drew,
+> 
+> On 10/6/21 9:35 PM, Andrew Jones wrote:
+> > On Wed, Oct 06, 2021 at 06:22:08PM +0800, Gavin Shan wrote:
+> > > The following option is used to specify the distance map. It's
+> > > possible the option isn't provided by user. In this case, the
+> > > distance map isn't populated and exposed to platform. On the
+> > > other hand, the empty NUMA node, where no memory resides, is
+> > > allowed on ARM64 virt platform. For these empty NUMA nodes,
+> > > their corresponding device-tree nodes aren't populated, but
+> > > their NUMA IDs should be included in the "/distance-map"
+> > > device-tree node, so that kernel can probe them properly if
+> > > device-tree is used.
+> > > 
+> > >    -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
+> > > 
+> > > So when user doesn't specify distance map, we need to generate
+> > > the default distance map, where the local and remote distances
+> > > are 10 and 20 separately. This adds an extra parameter to the
+> > > exiting complete_init_numa_distance() to generate the default
+> > > distance map for this case.
+> > > 
+> > > Signed-off-by: Gavin Shan <gshan@redhat.com>
+> > > ---
+> > >   hw/core/numa.c | 13 +++++++++++--
+> > >   1 file changed, 11 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/hw/core/numa.c b/hw/core/numa.c
+> > > index 510d096a88..fdb3a4aeca 100644
+> > > --- a/hw/core/numa.c
+> > > +++ b/hw/core/numa.c
+> > > @@ -594,7 +594,7 @@ static void validate_numa_distance(MachineState *ms)
+> > >       }
+> > >   }
+> > > -static void complete_init_numa_distance(MachineState *ms)
+> > > +static void complete_init_numa_distance(MachineState *ms, bool is_default)
+> > >   {
+> > >       int src, dst;
+> > >       NodeInfo *numa_info = ms->numa_state->nodes;
+> > > @@ -609,6 +609,8 @@ static void complete_init_numa_distance(MachineState *ms)
+> > >               if (numa_info[src].distance[dst] == 0) {
+> > >                   if (src == dst) {
+> > >                       numa_info[src].distance[dst] = NUMA_DISTANCE_MIN;
+> > > +                } else if (is_default) {
+> > > +                    numa_info[src].distance[dst] = NUMA_DISTANCE_DEFAULT;
+> > >                   } else {
+> > >                       numa_info[src].distance[dst] = numa_info[dst].distance[src];
+> > >                   }
+> > > @@ -716,13 +718,20 @@ void numa_complete_configuration(MachineState *ms)
+> > >            * A->B != distance B->A, then that means the distance table is
+> > >            * asymmetric. In this case, the distances for both directions
+> > >            * of all node pairs are required.
+> > > +         *
+> > > +         * The default node pair distances, which are 10 and 20 for the
+> > > +         * local and remote nodes separatly, are provided if user doesn't
+> > > +         * specify any node pair distances.
+> > >            */
+> > >           if (ms->numa_state->have_numa_distance) {
+> > >               /* Validate enough NUMA distance information was provided. */
+> > >               validate_numa_distance(ms);
+> > >               /* Validation succeeded, now fill in any missing distances. */
+> > > -            complete_init_numa_distance(ms);
+> > > +            complete_init_numa_distance(ms, false);
+> > > +        } else {
+> > > +            complete_init_numa_distance(ms, true);
+> > > +            ms->numa_state->have_numa_distance = true;
+> > >           }
+> > >       }
+> > >   }
+> > > -- 
+> > > 2.23.0
+> > > 
+> > 
+> > With this patch we'll always generate a distance map when there's a numa
+> > config now. Is there any reason a user would not want to do that? I.e.
+> > should we still give the user the choice of presenting a distance map?
+> > Also, does the addition of a distance map in DTs for compat machine types
+> > matter?
+> > 
+> > Otherwise patch looks good to me.
+> > 
+> 
+> Users needn't specify the distance map when the default one in kernel,
+> whose distances are 10 and 20 for local and remote nodes in linux for
+> all architectures and machines, is used. The following option is still
+> usable to specify the distance map.
+> 
+>   -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
+> 
+> When the empty NUMA nodes are concerned, the distance map is mandatory
+> because their NUMA IDs are identified from there. So we always generate
+> the distance map as this patch does :)
+>
 
-On 2021/10/2 19:27, Markus Armbruster wrote:
-> Paolo Bonzini <pbonzini@redhat.com> writes:
->
->> On 01/10/21 19:15, Daniel P. Berrangé wrote:
->>> On Fri, Oct 01, 2021 at 07:08:51PM +0200, Paolo Bonzini wrote:
->>>> On 29/09/21 04:58, Yanan Wang wrote:
->>>>> @@ -933,8 +935,7 @@ static void machine_set_smp(Object *obj, Visitor *v, const char *name,
->>>>>             return;
->>>>>         }
->>>>> -    smp_parse(ms, config, errp);
->>>>> -    if (*errp) {
->>>>> +    if (!smp_parse(ms, config, errp)) {
->>>>>             qapi_free_SMPConfiguration(config);
->>>>>         }
->>>>>     }
->>>>>
->>>> This is actually a leak, so I'm replacing this patch with
->>> This patch isn't adding a leak, as there's no change in
->>> control flow / exit paths.  AFAICT, the leak was introduced
->>> in patch 15 instead, so the code below shoudl be squashed
->>> into that, and this patch left as-is.
->> Yes, even better make it a separate patch and fix the conflict in patch
->> 15.  But I'm still not sure of the wisdom of this patch.
->>
->> At this point smp_parse has exactly one caller and it doesn't care about
->> the return value.  The "return a boolean" rule adds some complexity (and
->> a possibility for things to be wrong/inconsistent) to the function for
->> the benefit of the callers.
-> Yes, but returning something is only a minor burden.  It also makes
-> success vs. failure obvious at a glance.
->
-> I'm not worrying about inconsistency anymore.  In a way, void functions
-> are an exception.  Many non-void functions return a distinct error value
-> on failure, like NULL.  The only kind of inconsistency I can remember
-> seeing in these functions is forgetting to set an error.  Can be screwed
-> up in a void function just as easily.
->
->>                               If there is only one caller, as is the case
->> here or for virtual functions, the benefit can well be zero (this case)
->> or negative (virtual functions).
-> Two small benefits here:
->
-> 1. No need for ERRP_GUARD().
->
-> 2. Conforms to the rules.  Rules are not laws, but let's stick to them
-> when it's as easy as it is here.
->
-> For what it's worth, GLib always advised users of GError to return a
-> value.  We chose to deviate for our Error, then spent nine years
-> learning how that leads to cumbersome code, leading us to:
->
-> commit e3fe3988d7851cac30abffae06d2f555ff7bee62
-> Author: Markus Armbruster <armbru@redhat.com>
-> Date:   Tue Jul 7 18:05:31 2020 +0200
->
->      error: Document Error API usage rules
->      
->      This merely codifies existing practice, with one exception: the rule
->      advising against returning void, where existing practice is mixed.
->      
->      When the Error API was created, we adopted the (unwritten) rule to
->      return void when the function returns no useful value on success,
->      unlike GError, which recommends to return true on success and false on
->      error then.
->      
->      When a function returns a distinct error value, say false, a checked
->      call that passes the error up looks like
->      
->          if (!frobnicate(..., errp)) {
->              handle the error...
->          }
->      
->      When it returns void, we need
->      
->          Error *err = NULL;
->      
->          frobnicate(..., &err);
->          if (err) {
->              handle the error...
->              error_propagate(errp, err);
->          }
->      
->      Not only is this more verbose, it also creates an Error object even
->      when @errp is null, &error_abort or &error_fatal.
->      
->      People got tired of the additional boilerplate, and started to ignore
->      the unwritten rule.  The result is confusion among developers about
->      the preferred usage.
->      
->      Make the rule advising against returning void official by putting it
->      in writing.  This will hopefully reduce confusion.
->      
->      Update the examples accordingly.
->      
->      The remainder of this series will update a substantial amount of code
->      to honor the rule.
->      
->      Signed-off-by: Markus Armbruster <armbru@redhat.com>
->      Reviewed-by: Eric Blake <eblake@redhat.com>
->      Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
->      Reviewed-by: Greg Kurz <groug@kaod.org>
->      Message-Id: <20200707160613.848843-4-armbru@redhat.com>
->      [Tweak prose as per advice from Eric]
->
-Hi,
+Yup, I knew all that already :-) I'm asking if we want to ensure the user
+can still control whether or not this distance map is generated at all. If
+a user doesn't want empty numa nodes or a distance map, then, with this
+patch, they cannot avoid the map's generation. That configurability
+question also relates to machine compatibility. Do we want to start
+generating this distance map on old, numa configured machine types? This
+patch will do that too.
 
-Thanks for the fix, Paolo!
+But, it might be OK to just start generating this new DT node for all numa
+configured machine types and not allow the user to opt out. I do know that
+we allow hardware descriptions to be changed without compat code.  Also, a
+disable-auto-distance-map option may be considered useless and therefore
+not worth maintaining. The conservative in me says it's worth debating
+these things first though.
 
-I notice that with Paolo's fix applied first and then Patch15 removing
-the sanity checks out, machine_set_smp() at last simply becomes:
-
-static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp)
-{
-     MachineState *ms = MACHINE(obj);
-     g_autoptr(SMPConfiguration) config = NULL;
-
-     if (!visit_type_SMPConfiguration(v, name, &config, errp)) {
-return;
-}
-
-     smp_parse(ms, config, errp);
-}
-
-It looks good currently, neither the returned boolean nor the errp needs to
-be checked here now, and smp_parse is only called here. So in this case,
-we may avoid the boolean until we need to use it and honor the rule. :）
+(Note, empty numa nodes have never worked with QEMU, so it's OK to start
+ erroring out when empty numa nodes and a disable-auto-distance-map option
+ are given together.)
 
 Thanks,
-Yanan
+drew
 

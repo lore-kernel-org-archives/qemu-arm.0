@@ -1,106 +1,107 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp5670289lfp;
-        Tue, 5 Oct 2021 23:36:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJztJfc5e9S6klh5tAca79zCME0RjVS3onkNFMb2tTFyT6FzUxbjyRpzFV9J4glRQMlESsbZ
-X-Received: by 2002:a05:6638:35ac:: with SMTP id v44mr5771426jal.48.1633502183353;
-        Tue, 05 Oct 2021 23:36:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633502183; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp22834lfp;
+        Wed, 6 Oct 2021 00:20:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLUIhl9gQbPpiu5wVLKTTmGXwTwcQso/JTxW1r5vTMGgDfVIAMbt6VcN2x5RPwTZlQNhz5
+X-Received: by 2002:a5e:c701:: with SMTP id f1mr5209278iop.185.1633504830923;
+        Wed, 06 Oct 2021 00:20:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633504830; cv=none;
         d=google.com; s=arc-20160816;
-        b=FwflMDqYx3LdJQk77hDurqGzZYNskVdqb8e94fgFARhzZFDG8MhoIUdh9xbJoTrPvQ
-         Gi+j3iWt0AZn6QIkvh3r9oOKRWyQTHU01mXSPhza7SLIG/Jzu3LtoLz+1ap1Fx+GoCrv
-         RqhaEhRp/8kGLirpK8hcTdIYgBBgOCmRTi/JO3Fzo//3ZppdhMl7FLDtz2T713ei2Vgt
-         5Qo3Lc5RCOs2kJQh/HOJOZ4p7HeydbFuISxSWCkeo6X85jZXvXdU7dduSkm/0YKxHZBq
-         h7XrK0p5r3LpXjtVXoHW5gwVHsQ+D4BUUszhWYJqnSDQ2BICTzJO8cPkIR0R3LIs6XFi
-         ve2w==
+        b=jBmzOz9G793Kpm1rXZ+vkesNSeRx2Lyth0pTYcR9gJ06R3AhvHirAq8iNZNw5DIXJy
+         TnXwAsnRXJ+ovv6p51j15DN/06XK2DeQ6gmisOz62qEjltVO4joblR7H/HT+IxAotUtM
+         MR6zQQHMGYeXgi06AuS6Ok3lMk9jdSJjUMXZZUr55Td1ga063YOoHfvROBphwch2sCSF
+         O5FBCL32p3CMMO04WR6y85Nzr2Oo/sx4flUucdYALZcltIYxJsrwTmfXVZ63AkJiL8u/
+         s1OaBYVFHnGIcVSqZIqy7+6LzpvSkW8/cSxCQKnpr/dLDBVQU6/Co19HvfGRdkr0aPg2
+         RYIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=2l9E43JkOrZMuVpdd8mAX/XuX5CbJ3P/IZfh7LCORXU=;
-        b=eKP/PSX4t7KzPmI8Ts8i9PSdOBgY3pkz6XNid0HPCGKUqqEQTCWCniWZTMY5UBHX0W
-         wOsSufBbvUFWjE8G8LB7QI3OZ1xM3wA0ReHIAyPv8geT5PdLN/A+zRGyckelj99qvnkW
-         J6D5krT6Nm2TdYc/212i9pwHdPlwujW212Tuuoxih9SCtgO0l5zIc6tlqsXp2R/Hgykt
-         AbQFWqJM+fkzU68Nkf2BYISI0wlc+s0qnq9I3eY7R0yhijrZItBflFfNNyEACViSxeqP
-         LwyJBKUVc5bPS7mbBFxSee2lYNw9Dp3RvG1P7xXmJjqLGwb18R7MLVKEgkWZIYSdz4cD
-         Mgtw==
+        bh=6ZZ2h0iPrzfJBHIpihTgNbWuUDfm3yIdfpScTfpp7G4=;
+        b=HqQYQwCWaPQMtwsV1Wm8yM0zyp63WSuDZ8PkQUNJggfiGAEOyGlz48KrVRrgL5vWmi
+         cM8C21oJwqCUS6cJapYrgtAzuijHIl9oSMaRWphrRJzTtpihLXsiIi8RFw6Hmsf8vVQE
+         OaRentDlHP4uu3E69tCFCWDGAzvKQ7MpZwZyEH9fLP71C9L1yixxzaS5Ab60WVucmGqr
+         J50FFzzzEBs9bIozF64/2xI5VoKB6RL+zdTomOazwMSqkUid0iluKj7rMDCiH8sX6g7X
+         Hwc76C94pLui2p2d3dVRJu51QlCQDxLFAvtnQCSJvYZygtO/qBEOHx6mQekneEGF0olc
+         3XCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J9YICGzS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pff1LMAn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16si9720640ilr.38.2021.10.05.23.36.23
+        by mx.google.com with ESMTPS id w62si6141630jaw.68.2021.10.06.00.20.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Oct 2021 23:36:23 -0700 (PDT)
+        Wed, 06 Oct 2021 00:20:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J9YICGzS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pff1LMAn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46910 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38704 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mY0XO-0005tt-Kj
-	for alex.bennee@linaro.org; Wed, 06 Oct 2021 02:36:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38346)
+	id 1mY1E6-0004i1-5E
+	for alex.bennee@linaro.org; Wed, 06 Oct 2021 03:20:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mY0XB-0005r2-Th
- for qemu-arm@nongnu.org; Wed, 06 Oct 2021 02:36:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20584)
+ id 1mY1De-0004hh-Lt
+ for qemu-arm@nongnu.org; Wed, 06 Oct 2021 03:20:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46763)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mY0XA-0003Y8-CY
- for qemu-arm@nongnu.org; Wed, 06 Oct 2021 02:36:09 -0400
+ id 1mY1Db-0001W7-Sr
+ for qemu-arm@nongnu.org; Wed, 06 Oct 2021 03:20:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633502167;
+ s=mimecast20190719; t=1633504798;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2l9E43JkOrZMuVpdd8mAX/XuX5CbJ3P/IZfh7LCORXU=;
- b=J9YICGzSECE7TUUM3Y9KUaWFfalGBN4pbkRdKPLeCxil92kUyGbADghovu2gmeuAN+AW7C
- 1t6XP5dNc373wMeTQfftu/BPI36mI8ab50skU4/kPNrwXNUYvgm0T9p8ZLVAPMsZD5BPDG
- oENVCKRUvP0wGk6zhSGrzfPNWA9Zb0I=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-441-I-1uvAsVO8W1Ub-oS2Y7hw-1; Wed, 06 Oct 2021 02:36:06 -0400
-X-MC-Unique: I-1uvAsVO8W1Ub-oS2Y7hw-1
-Received: by mail-wr1-f69.google.com with SMTP id
- v15-20020adfa1cf000000b00160940b17a2so1154269wrv.19
- for <qemu-arm@nongnu.org>; Tue, 05 Oct 2021 23:36:06 -0700 (PDT)
+ bh=6ZZ2h0iPrzfJBHIpihTgNbWuUDfm3yIdfpScTfpp7G4=;
+ b=Pff1LMAnSSyyMX9bxJCd9wC5BWCqzlJifclh/JpHh3NCCSVLnl1UG267raFSl5jnDrZM0H
+ CcbRYG022SSMnwlEAk9WovuVwNJTbW8jncN2HfW1uJn5rC5YLHhIP35aAHKuUuRcw6+Xys
+ 82RGSxCLm98BwtZPKK4JWZP6KcNmiog=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-453-s7lGFJcaO_OnMR8jIk288A-1; Wed, 06 Oct 2021 03:19:57 -0400
+X-MC-Unique: s7lGFJcaO_OnMR8jIk288A-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ r21-20020adfa155000000b001608162e16dso1240069wrr.15
+ for <qemu-arm@nongnu.org>; Wed, 06 Oct 2021 00:19:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2l9E43JkOrZMuVpdd8mAX/XuX5CbJ3P/IZfh7LCORXU=;
- b=KSlnpGw2KcFcv9/UlUkuYBRGTNRgHIzrDmP0p4t9fWaP/B0vTuxFU8BOedwNR4Gbf4
- 8b/BrhAvZJ2444ZDyE82LCiNqgrGJumxW020mKVV5DCV6MlrRzim/l21K4AUvVxUlgNJ
- 7aCJEwl1l1AFu0P12hHC23fl7KD1YTZd69geE0ljxTKKw8UGIYQNmqH2p1hMjkOxcnb5
- iEidYZdfknahjhlJ5Aamx2U+h/ofloUreKQGVSNEniKMXsaoUf1FIpsPQuX9/EF/6kWB
- VB2cF5YLmVjPVrS1UMOwY7McfoTZYqkgK3w83Uiuth+oVSZyfr+imMoBvYSRfNL8V/5z
- b1Yw==
-X-Gm-Message-State: AOAM530nFb2RcYBdW/BGsa45c7PUXOB1HwdE2I6QfRfCJ+1vX4g1XEhi
- gHPKAUhc5eszDoZdZh2L+bjSa+LiP68x5oz64/cRrXhY3Gk39qPrgwsDgm/EPeeNGMqTBMT1bbn
- TG3jWO0gm65q0
-X-Received: by 2002:a7b:c24a:: with SMTP id b10mr7745942wmj.11.1633502165750; 
- Tue, 05 Oct 2021 23:36:05 -0700 (PDT)
-X-Received: by 2002:a7b:c24a:: with SMTP id b10mr7745924wmj.11.1633502165620; 
- Tue, 05 Oct 2021 23:36:05 -0700 (PDT)
+ bh=6ZZ2h0iPrzfJBHIpihTgNbWuUDfm3yIdfpScTfpp7G4=;
+ b=oVG8V0qrNrc8TY/SdLexUwoFY+/MAxR36UgUhV1V28wK82p/J8rUlAN+8+ooDIFkE7
+ Kpc7P4TPKj/yn3+zbHQOq25yNAdx054uIelwegO1Z5+4019ECO9mCHCc4V/FrTcbmhFV
+ F3+nDrj2v4rS5BknxWIHZ+8fat3Dx9Aa0P2VzXgJ//nFKTTbg3y+MMgpzf5qI1uBDanV
+ VUvtUH+cVNXi4MOSSu3+mwew5yRsInMZkag304DKL45vlV0orF0+IBsDPDioCpy1fLcC
+ yMsA1yDNJY+dKRQ46IS698aqjq9RCeGemo8xhTtGCDjMFN/5cbqZxCVX+1yGhYmRCEno
+ F8+A==
+X-Gm-Message-State: AOAM530Qv3P/juMyEeP957K9SbGEbiBdSwIpyvUQi3RQO9jxnYTtLOQ8
+ O8EgjeO+fowYXkuQA5zZjvuOdch1OHwtjJced2vogr0BNsm0ytZ4JfVGFU+P/ArH7NIuImrOd88
+ rvw7V66ocemea
+X-Received: by 2002:a05:600c:c3:: with SMTP id
+ u3mr8037082wmm.137.1633504796702; 
+ Wed, 06 Oct 2021 00:19:56 -0700 (PDT)
+X-Received: by 2002:a05:600c:c3:: with SMTP id
+ u3mr8037040wmm.137.1633504796379; 
+ Wed, 06 Oct 2021 00:19:56 -0700 (PDT)
 Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id l11sm5403075wms.45.2021.10.05.23.36.04
+ by smtp.gmail.com with ESMTPSA id n11sm4601771wmq.19.2021.10.06.00.19.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Oct 2021 23:36:05 -0700 (PDT)
-Date: Wed, 6 Oct 2021 08:36:04 +0200
+ Wed, 06 Oct 2021 00:19:56 -0700 (PDT)
+Date: Wed, 6 Oct 2021 09:19:54 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: Re: [PATCH v4 05/11] hw/arm/virt: Use object_property_set instead
- of qdev_prop_set
-Message-ID: <20211006083604.4ce3cee3@redhat.com>
-In-Reply-To: <20211001173358.863017-6-jean-philippe@linaro.org>
+Subject: Re: [PATCH v4 07/11] pc: Allow instantiating a virtio-iommu device
+Message-ID: <20211006091954.79fd0a8d@redhat.com>
+In-Reply-To: <20211001173358.863017-8-jean-philippe@linaro.org>
 References: <20211001173358.863017-1-jean-philippe@linaro.org>
- <20211001173358.863017-6-jean-philippe@linaro.org>
+ <20211001173358.863017-8-jean-philippe@linaro.org>
 X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -136,38 +137,161 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
  ani@anisinha.ca, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ysfhj+eGuuPh
+X-TUID: ocuzkCys1CtW
 
-On Fri,  1 Oct 2021 18:33:53 +0100
+On Fri,  1 Oct 2021 18:33:55 +0100
 Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
 
-> To propagate errors to the caller of the pre_plug callback, use the
-> object_poperty_set*() functions directly instead of the qdev_prop_set*()
-> helpers.
+> Allow instantiating a virtio-iommu device by adding an ACPI Virtual I/O
+> Translation table (VIOT), which describes the relation between the
+> virtio-iommu and the endpoints it manages.
 > 
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Add a hotplug handler for virtio-iommu on x86 and set the necessary
+> reserved region property. On x86, the [0xfee00000, 0xfeefffff] DMA
+> region is reserved for MSIs. DMA transactions to this range either
+> trigger IRQ remapping in the IOMMU or bypasses IOMMU translation.
+> 
+> Although virtio-iommu does not support IRQ remapping it must be informed
+> of the reserved region so that it can forward DMA transactions targeting
+> this region.
+> 
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
 > ---
->  hw/arm/virt.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  include/hw/i386/pc.h |  2 ++
+>  hw/i386/acpi-build.c |  5 +++++
+>  hw/i386/pc.c         | 24 ++++++++++++++++++++++--
+>  hw/i386/Kconfig      |  1 +
+>  4 files changed, 30 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 36f0261ef4..ac307b6030 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2465,8 +2465,9 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->                                          db_start, db_end,
->                                          VIRTIO_IOMMU_RESV_MEM_T_MSI);
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 82cf7b7e30..f3ba1ee4c0 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -45,6 +45,8 @@ typedef struct PCMachineState {
+>      bool pit_enabled;
+>      bool hpet_enabled;
+>      bool default_bus_bypass_iommu;
+> +    bool virtio_iommu;
+> +    uint16_t virtio_iommu_bdf;
+>      uint64_t max_fw_size;
 >  
-> -        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
-> -        qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
+>      /* ACPI Memory hotplug IO base address */
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index d1c28440f4..4e46585709 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -71,6 +71,7 @@
+>  
+>  #include "hw/acpi/ipmi.h"
+>  #include "hw/acpi/hmat.h"
+> +#include "hw/acpi/viot.h"
+>  
+>  /* These are used to size the ACPI tables for -M pc-i440fx-1.7 and
+>   * -M pc-i440fx-2.0.  Even if the actual amount of AML generated grows
+> @@ -2593,6 +2594,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>              build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
+>                             x86ms->oem_table_id);
+>          }
+> +    } else if (pcms->virtio_iommu) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_viot(machine, tables_blob, tables->linker, pcms->virtio_iommu_bdf,
+I'd drop PCMachineState::virtio_iommu_bdf and s/pcms->virtio_iommu_bdf/pci_get_bdf(iommu)/
+
+> +                   x86ms->oem_id, x86ms->oem_table_id);
+>      }
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 789ccb6ef4..31710bc4fb 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -83,6 +83,7 @@
+>  #include "hw/i386/intel_iommu.h"
+>  #include "hw/net/ne2000-isa.h"
+>  #include "standard-headers/asm-x86/bootparam.h"
+> +#include "hw/virtio/virtio-iommu.h"
+>  #include "hw/virtio/virtio-pmem-pci.h"
+>  #include "hw/virtio/virtio-mem-pci.h"
+>  #include "hw/mem/memory-device.h"
+> @@ -1367,8 +1368,11 @@ static void pc_virtio_md_pci_unplug(HotplugHandler *hotplug_dev,
+>  static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>                                            DeviceState *dev, Error **errp)
+>  {
+> -    if (object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE) &&
+> -        x86_iommu_get_default()) {
+> +    PCMachineState *pcms = PC_MACHINE(hotplug_dev);
+> +
+> +    if ((object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE) ||
+> +         object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) &&
+> +        (x86_iommu_get_default() || pcms->virtio_iommu)) {
+
+this check is getting uglier,
+may be instead of introducing pcms->virtio_iommu boolean, better approach
+would be adding 'Device* PCMachineState::iommu' and setting it to IOMMU
+so the check would reduce to:
+      if ((object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE) ||
+           object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)))
+      {
+          if (pcms->iommu)
+            err
+          else set pcms->iommu in plug handler or here
+      }
+      
+that also will let to cleanup/get rid of x86_iommu_[s|g]et_default()
+and x86_iommu_default 'global'.
+Maybe replace previous patch with one that would remove
+x86_iommu_[s|g]et_default().
+
+>          error_setg(errp, "QEMU does not support multiple vIOMMUs "
+>                     "for x86 yet.");
+>          return;
+> @@ -1381,6 +1385,15 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+>                 object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+>          pc_virtio_md_pci_pre_plug(hotplug_dev, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        /* Declare the APIC range as the reserved MSI region */
+> +        char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
+> +                                              VIRTIO_IOMMU_RESV_MEM_T_MSI);
+> +
 > +        object_property_set_uint(OBJECT(dev), "len-reserved-regions", 1, errp);
 > +        object_property_set_str(OBJECT(dev), "reserved-regions[0]",
 > +                                resv_prop_str, errp);
->          g_free(resv_prop_str);
+> +        g_free(resv_prop_str);
 >      }
 >  }
+>  
+> @@ -1394,6 +1407,12 @@ static void pc_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+>                 object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+>          pc_virtio_md_pci_plug(hotplug_dev, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        PCMachineState *pcms = PC_MACHINE(hotplug_dev);
+> +        PCIDevice *pdev = PCI_DEVICE(dev);
+> +
+> +        pcms->virtio_iommu = true;
+> +        pcms->virtio_iommu_bdf = pci_get_bdf(pdev);
+>      }
+>  }
+>  
+> @@ -1436,6 +1455,7 @@ static HotplugHandler *pc_get_hotplug_handler(MachineState *machine,
+>          object_dynamic_cast(OBJECT(dev), TYPE_CPU) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI) ||
+> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE)) {
+>          return HOTPLUG_HANDLER(machine);
+>      }
+> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+> index ddedcef0b2..13db05d557 100644
+> --- a/hw/i386/Kconfig
+> +++ b/hw/i386/Kconfig
+> @@ -54,6 +54,7 @@ config PC_ACPI
+>      select ACPI_X86
+>      select ACPI_CPU_HOTPLUG
+>      select ACPI_MEMORY_HOTPLUG
+> +    select ACPI_VIOT
+>      select SMBUS_EEPROM
+>      select PFLASH_CFI01
+>      depends on ACPI_SMBUS
 

@@ -1,131 +1,137 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1571730lfp;
-        Thu, 7 Oct 2021 09:28:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyAqPQnIHMurQirsW4A3ACcd91WNWOuYqz3Pp6VnQeyzhzYnkXRUl7HH9Pm0hwBwQ0y6K4w
-X-Received: by 2002:a1c:1dcb:: with SMTP id d194mr5724491wmd.156.1633624104016;
-        Thu, 07 Oct 2021 09:28:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633624104; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1701485lfp;
+        Thu, 7 Oct 2021 11:59:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxjoldiAIrXR+sspKyH1fBVcWx3MovVryArAUYV4EgpMmWzhbeGf5jrU6N/ZSqpxUPLMlrZ
+X-Received: by 2002:a05:600c:35d0:: with SMTP id r16mr6512776wmq.26.1633633145731;
+        Thu, 07 Oct 2021 11:59:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633633145; cv=none;
         d=google.com; s=arc-20160816;
-        b=NSPjzPd61HK/V+IQnbvJ0JOCEbZpFdABJANZkw2XVwkiIOmQHaJVyHMgek9U8yxsdD
-         2VGmb3154nkzBXpELcbeimGcXeepeO7BtKETBeJgf8DnqATilucnoNSb/TBjxZmIpTS7
-         1jYGKqHHiT0cbObVbfQ8USCoDyqpi6LFQpNaPuAAfxfdsmTNw8HHi/x/JGq8czEThs7z
-         RsorSy2hkh/bSz4hHzjKzAe0LGyzo49FYTHh5rC3FWfnm+ymGeeZ2yH/J0CMi1szmrHq
-         zUQJJzQSkgOgo1KsH4ZbmyiGhKm6SML+kcPHNVy3NbJ5vaAN6gp41XOr0+eME8LaVXDM
-         Wo+Q==
+        b=b8CpUx6wFGBhHbtKvX99eyetBmcB93GnW1kZbBLcxVDTkD/FReI1JBPGYs6jp4994q
+         vHLfPhDR36RyHO6XEbjXZGvq125ylw8wTZstTGFKP3W8Emi8htmNsYVS7LKzBiyCnuAo
+         COhqvnY9JPj5adMifsGt1wrAI0udpf9lEgjizjFoY9mzYZzO7I+VaEFr8GPrBlpK8MC5
+         0F6vMM72qdCfLtR9v3rhOf6Y8Oe/KVyviwUWt5CMpkGEJMx3ilYqIaKaDI/+eXEraofA
+         DR7f95kzJwTBD9KRyHuYwwGsKDqT/ep/uKrFB6kMs2BzIu5bYmNbKVdl2iEATd3P2/1D
+         ZepQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=OKWZiJ/YLPCaQ5fAPYAC7lX9yvWUh7d5o5+k85W+ul0=;
-        b=bI/aPuz03OCrneuYBELT8DtGAuuPqzxUXieskrHtYJ1Y1PU/jafYsPWZxOXmZGntVN
-         rPGb6libFckPIO9a7vh5z8zunAKl2TpL/ufW0cLvdLCMA4lJNwnuh4FKLp7bY8jHFnnX
-         OTuR9AYD9zoB6gLqnDPtyHa99Bd9LjNqgO8kmFDK+aHmed5STyYvZEg+g7DVMlKKz/TB
-         U76QPpGlCewFjjTKnAKfwW/eE4gS122B4pYjd8kIBLCzNQsFpOsrDB7q/5jSv6xKcZFZ
-         XOwgl67sSNNXnd9iw0ibCRJJhqByG32dT2eCarhkbzMeIKbCm+dzZ1+htXdPSzqwpbZu
-         /vMg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:subject:from:references:cc:to;
+        bh=DK26kQ8uXvJG8era21IMQ9X2mtth7qBwuNiZCbegIAw=;
+        b=dfHmHfLxB07/a4Ry/Dwg+oCo2S8Uet2Q6TrLMZeWZxJq6AwbbgVJeQWMv2kTUihENP
+         sZGjj1329nEh2rBhSwa0LBBSiCO+U6+lOyPejCeygXVE5DovymCRNXOsXC7fxuBupFaj
+         VQcUdOdDZwnrODF97ui/5supN3L0Cqoohdww7HTJQAZ1Zq68Awwqh19EH4P1Faty0gIo
+         6FoNeSGMM4m87rjiJh6qjnJWIZT6/x8ZGykxP81+olCc+VdHkC5NELCNTwn5ipOCz43i
+         apSPeXyByZ7gvK4zVHKFMVofxHNYTx4osS+Q18/+A/3UCMXfgn/byYI08pat3Q3i5m59
+         cigg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.75])
-        by mx.google.com with ESMTPS id a9si208488wri.365.2021.10.07.09.28.23
+       spf=neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Return-Path: <laurent@vivier.eu>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.73])
+        by mx.google.com with ESMTPS id c2si325666wrd.507.2021.10.07.11.59.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Oct 2021 09:28:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=217.72.192.75;
+        Thu, 07 Oct 2021 11:59:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=217.72.192.73;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from mail-wr1-f49.google.com ([209.85.221.49]) by
- mrelayeu.kundenserver.de (mreue106 [213.165.67.113]) with ESMTPSA (Nemesis)
- id 1N7hrw-1mu9y90jLe-014nNA; Thu, 07 Oct 2021 18:28:23 +0200
-Received: by mail-wr1-f49.google.com with SMTP id o20so20789737wro.3;
-        Thu, 07 Oct 2021 09:28:23 -0700 (PDT)
-X-Gm-Message-State: AOAM532ymCLMfrmo58pJ51jsFhbjWjJ1VzjSQ1dn1boAck/tbByXra0B
-	R4n097Y1+qrqwi/ggm3LoHP07rJsqhviOeyetxQ=
-X-Received: by 2002:a05:6000:1561:: with SMTP id 1mr6490031wrz.369.1633624102697;
- Thu, 07 Oct 2021 09:28:22 -0700 (PDT)
-MIME-Version: 1.0
+       spf=neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Received: from [192.168.100.1] ([82.142.3.114]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N1Oft-1mw2V21q8p-012nGx; Thu, 07 Oct 2021 20:59:03 +0200
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, assad.hashmi@linaro.org,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>,
+ Arnd Bergmann <arnd.bergmann@linaro.org>
 References: <877deoevj8.fsf@linaro.org>
-In-Reply-To: <877deoevj8.fsf@linaro.org>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Thu, 7 Oct 2021 18:28:06 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a3rKZLq3UuE=w9W5A9G9tfmPvc-ObnWVX=PJKQKrTX5dA@mail.gmail.com>
-Message-ID: <CAK8P3a3rKZLq3UuE=w9W5A9G9tfmPvc-ObnWVX=PJKQKrTX5dA@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
 Subject: Re: Approaches for same-on-same linux-user execve?
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>, Richard Henderson <richard.henderson@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, assad.hashmi@linaro.org, 
-	"Eric W. Biederman" <ebiederm@xmission.com>, 
-	James Bottomley <James.Bottomley@hansenpartnership.com>, 
-	Arnd Bergmann <arnd.bergmann@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:vK98dCcsw9nXEZePXSN6Zg9xQGF3aEtSKCQkwCgzOsE2iyVbaOK
- S0VWEu3tKhglJH83gkIyWohJWSdDL3kWLhpzYeEDtckYHcPSisbbUu+0BuWZto7cfYFN6B/
- GCj9AqI7Hz2v8C3/zOUHGAXzaNAC3NCDRa63NprgjnFSfldB4Viua7NMy9KCnkNhu6WhL50
- a4o3UUE1Z0TqfJmoFyygA==
+Message-ID: <d8dc40c8-73bf-9d8d-e23b-f7054dc06292@vivier.eu>
+Date: Thu, 7 Oct 2021 20:59:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <877deoevj8.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:D7ZWfmsf4Dm+3g3vz8Hi00yHHRP7z53LkHrfGGKk/KtPfyZu8eD
+ O4jC4X9KeE0XCU0h6Vj+zyHh0/HNIPfmMxSxoZllTvUH2hFTHy5LxSkcWRJWTl2eOgCEKCQ
+ Ra9Z+pSg5veKnfFCBC+F4+NwKNjuQkQ2bKmdfzpOEjh/Ns/4Ci5zsfGSt0T64PMoc4tZSog
+ Qn3voLVHmGwLCR/MuSA/w==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:feTJHqLHFKo=:QbVxgNXfADYOZPWtBYju+P
- jV3U7bo45CrVvoUqquKMAd6Qy8yMsFIPoeJxl2QNgwr2ESDgUnDNgJmay3CupQJ3bLMcmuSXd
- 4iO2CeOqpaoBnqH9JA4PdcVOSGPiFq0zhj9R319ZSHW19gGIaXMAAcoHCGjh4XWE0Ntelb3A4
- HuEu4Fuy8bVx0vOgGQ2hhQ0ejkoxFnff6t3QiY4Dm2wJXz4D9JgzZFNE3zZUlQ35VffadRjGD
- +3rhtVSGTrBcGENhvIu1NHxLjjVY6YxabhoYpR51JpL5QpHVpvhyGqDOS9q9cyq8IyKgaPmsS
- ofwrSdc2TkmjWSJerV662oVoeFDBkYZK2AqNKIcABgk2fYQa4zLCyk9OmmDijLn3XKrZjQO07
- rooHminuHYcvCNbqTxdry9BD5zEY0sWrbOdz2ZUcbPfKWsWLrTtX2v/Jb4G74lltTmFUOvjMh
- Fykdg18mGDHb9eC/FbGWsVVOkWBvrZTHcyQpLB4HUYQYgG1dg9J8RkHGqYG2f7SxRKGcTFVke
- UvSUza8xgju2nAzc1gasQmisiFWsAdiZnoN2OiukTHtRsGgYPx5I3UbHqNccU+aYCqDqdzP3P
- loIRvUWCNB34s9czF0FDzJ+fSTHMq9KBJs+qU/EBb4jZ8MT4eF6HkD/USHr/WhmWmQW1qVX4N
- edJ6G5uLnP9J2d6a+Fiu5O+PjSVoV6HQ7Kl7NkjIOvJ/BCPGjYDljweYGxsXBg0J9HSJYaLkN
- QwQAJpkjwJgAok4LQl5Pq6WyV45UgVpJtTcMqQ==
-X-TUID: aRER8Q3jCsCd
+X-UI-Out-Filterresults: notjunk:1;V03:K0:nLovi1u1NII=:OzfrnMsdyUFtYHzV/pVcx3
+ Zl2lM+wdAym2VDadmpJSxr4JH2f6TeuXXJmQcet1vzg99Ld2JkF7lWYJ+3EoZosxswOdHaPZ0
+ wqkADAthyXKxw4rFZJ2zBsuQfH4s91AkBOs8Pcx77Sh5i0DcrHpn3V9EPQqXGTgixtR2I1XB2
+ VD/AlK6U7pezvfTOzPopY/gEQ44MLjElIimXMCuVjhV0U17AugDg3LZ+tFsGPnERjQyurRabB
+ 960VaBD29l1dHfVJksAmkLCfkzlLDVH8U+oyl4kpn8ru2BMR8fjQyS7nnr4x68KE6iUgyn7cy
+ WE2DvDFh61YGkrOxdcHrXqonBYLlbUR2+t93t0bTrq8IlzxqhCxijzamOT9R0tVDK/PE9zxzU
+ Nqz80OYm1pTNE8akRfk5qMnWOFv7Qff4rjFyfzSOD2Eu/pLFMijRjgpqoGzfs5hD6I0k6nQZ9
+ 9gAiSv9Qi3Z8U2RD54r0MDq+oTah1X4doQTEy6BChglrxPcD+uUY5A+Y3QZMMGQKfNORTdP1P
+ ZPzncGiQtfIWkKXkkm8dRXwWQJuBjGUm1vm1D4go+E964cU6b3j3UPWYmqbsKoSMKHNHe9d/A
+ DRI5JzyLGA5bmBurD5tf4zhCQj34SUtJMztjSIqmC08SEdDWeM49yz44dZYJbUoZpyfZQXatD
+ YuV62YYuErJkS864mUHFSOGEPSjTnPF+CzdNChhvizUjp2TCB6hkiJuFgOYRnAw3IAukUzb16
+ 4vGa8TX/SvdALQtHR8lxgFBe7hK7CqJEayPvFw==
+X-TUID: OFXd25FLSChK
 
-On Thu, Oct 7, 2021 at 4:32 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->
+Le 07/10/2021 à 16:32, Alex Bennée a écrit :
+> Hi,
+> 
 > I came across a use-case this week for ARM although this may be also
 > applicable to architectures where QEMU's emulation is ahead of the
 > hardware currently widely available - for example if you want to
 > exercise SVE code on AArch64. When the linux-user architecture is not
 > the same as the host architecture then binfmt_misc works perfectly fine.
->
+> 
 > However in the case you are running same-on-same you can't use
 > binfmt_misc to redirect execution to using QEMU because any attempt to
 > trap native binaries will cause your userspace to hang as binfmt_misc
 > will be invoked to run the QEMU binary needed to run your application
 > and a deadlock ensues.
-
-Can you clarify how the code would run in this case? Does qemu-user
-still emulate every single instruction, both the compatible and the incompa=
-tible
-ones, or is the idea here to run as much as possible natively and only
-emulate the instructions that are not available natively, using either
-SIGILL or searching through the object code for those instructions?
-
+> 
+> There are some hacks you can apply at a local level like tweaking the
+> elf header of the binaries you want to run under emulation and adjusting
+> the binfmt_mask appropriately. This works but is messy and a faff to
+> set-up.
+> 
+> An ideal setup would be would be for the kernel to catch a SIGILL from a
+> failing user space program and then to re-launch the process using QEMU
+> with the old processes maps and execution state so it could continue.
+> However I suspect there are enough moving parts to make this very
+> fragile (e.g. what happens to the results of library feature probing
+> code). So two approaches I can think of are:
+> 
 > Trap execve in QEMU linux-user
 > ------------------------------
->
+> 
 > We could add a flag to QEMU so at the point of execve it manually
 > invokes the new process with QEMU, passing on the flag to persist this
 > behaviour.
 
-This sounds like the obvious approach if you already do a full
-instruction emulation. You'd still need to run the parent process
-by calling qemu-user manually, but I suppose you need to do
-something like this in any case.
+Another approach can be to use ptrace(PTRACE_SYSEMU) to catch syscalls.
 
+We need a wrapper that loads the first target binary and fork, it attach a ptrace() process and
+intercept the syscalls to emulate them as we do in usermode linux.
+
+I was thinking to this solution for instance to execute big-endian program (like ppc64) on
+little-endian system (ppc64le).
+
+But I'm not sure it fits in what you need...
+
+
+> 
 > Add path mask to binfmt_misc
 > ----------------------------
->
+> 
 > The other option would be to extend binfmt_misc to have a path mask so
 > it only applies it's alternative execution scheme to binaries in a
 > particular section of the file-system (or maybe some sort of pattern?).
-
-The main downside I see here is that it requires kernel modification, so
-it would not work for old kernels.
-
+> 
 > Are there any other approaches you could take? Which do you think has
 > the most merit?
 
-If we modify binfmt_misc in the kernel, it might be helpful to do it
-by extending it with namespace support, so it could be constrained
-to a single container without having to do the emulation outside.
-Unfortunately that does not solve the problem of preventing the
-qemu-user binary from triggering the binfmt_misc lookup.
+I don't know if it can apply to what you want, but I wrote years ago a binfmt namespace that applies
+binfmt configuration only on a container but I didn't finish the work (it seems there can be some
+security issues in what I did):
 
-       Arnd
+https://lore.kernel.org/lkml/20191216091220.465626-2-laurent@vivier.eu/T/
+
+Thanks,
+Laurent

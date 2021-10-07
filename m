@@ -1,80 +1,82 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp946944lfp;
-        Wed, 6 Oct 2021 20:08:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRakqF8rMVgEjp7NqkBXvZEhe/sHDHq6+IFXXN0RfOoTQJuu4haKfLhCfzKTRnXToaNs5S
-X-Received: by 2002:a02:84ca:: with SMTP id f68mr1030605jai.50.1633576108033;
-        Wed, 06 Oct 2021 20:08:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633576108; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp947209lfp;
+        Wed, 6 Oct 2021 20:08:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyMzsyp8ZbAyJaxnV0GUmSxpaOghMhVuiwhtSuimuy9KaCsvANxknUS7NfcJNGl3/A/7lrM
+X-Received: by 2002:a05:6e02:164f:: with SMTP id v15mr1324797ilu.171.1633576131041;
+        Wed, 06 Oct 2021 20:08:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633576131; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dMynulXvafA1UNQR/+HMNM6E8AmV5lL7SGvx3V69m2n9zN1cp+PfIXoPLG6sOWtSE
-         U4IdML0O3wDDhv3W7omP2l/t4znH5TGpoBsjto+3GqZXAFZKlribdb6TE4uL3voOU8M1
-         zETnqHMWfd4heiX7+MJ3HRg0lvhi8AlHbmpLsyHf6FDUm2EOktZk59BLDwVr+aLFm9bj
-         MfnumSBJ9msTfpf8ckCXGAYNIDCteDadSpnR1CXUul5s/YovHVVSsacDy0wSbnx+j+y0
-         rtugKa3q1EGHibsC88MhOU/i7rI138lEn+lB5OvG8fYS9AMKOXQhn+xFoY4NNvMB0o7k
-         M9IQ==
+        b=DbBoFfMOzxa7vBBD7Ap2f+D7u8gIbU5mmKdAfviNs17WmG89o0r5gDotGAcUG00JG6
+         WO3U56dQRX3CMad1ZnoC8DJzkr8eMZUr0fwOGNkA/6mPf9ZdGY8OfALPf6rVJjmCvPeR
+         T/XgrK6bpbrKXOn9FHoPRwV0+UqKRqOyIxnqkDsNKIzk1MzCK5okDNoEyvOxT7A5F4nF
+         9ckZcEQ5pqHjG2LufIZA9u4Hcn1HkbgHR1StxEReQo0GsDD4vbC3gW8GhrxgegzV9erw
+         8NdnLTTZbl8gGNs/6GRd0GXOiaBw2kmlFfKK8tgggy16c2kyRrGM3evr++hkqsMvGr0s
+         Pllg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=c7MuQETo0n5MeQkuIIEOT8lgo2ggUBDo624jQRuox1o=;
-        b=p+CjdSAPY+Y9FYx7NSLywhFkPk83xT6tVInh4UDgNx5iFUdKDu+vMWph9nbKHTpdR5
-         wkS1l2LogYyC7ElENuFfNrbdsODDUgl4Y5V4PFo/8CwsML8anCie4PrhlRNltRPKsAa8
-         S4Fs6irupLLvOTwo7NVVS5ziBMASU9VHLoDOu/cPa5E4FW5qO/HYExgMhRhuFUzyXbZ8
-         7siJU/Ew5dxe07JjO4Y2eHlmFq6mWrIe1mjUQM6PkmKZ6JHdkHE31OVb7BSLD5rjwOZS
-         CdcMNiNhAOCG70y0LNQmSkM+GEghd1WKq48bZS9iHemPBqG8YG6OqJ2ZpE/VlsAu014a
-         GhYg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=3YQoZJoMIuNs4ttI463B0hdRSTN7Y5x81t6FyhwxCzw=;
+        b=O6Q9TyfuaMyjzijveK7qLFnfHzzEqLRljkj+wNsn1UhkoCM5VKrOUxFNR2c0+8MGda
+         MIS1J/zxoZ60S1G9h64OSTPVvw5rEdHVGIBgCkGkM+v96kot8tpzOOhHsV8Tev6j7RC+
+         5aHxV6QXKBiV9P+9iM3BrDQsob0Trt8KzLCCtakq0Q7nIkfkrbHeGsnO5e2XOSQEr25F
+         oumxtch3I5ziyxRUhQs1OUlt8JKnvQCPCehy5tpVVJGXZaBmoCp1/t3ayjVTt8rqCeFK
+         nXLc/rssMKpJbSPkhWOEPkxDRGWvjeXaYBT80cf4SfskRqg8Ydtcz5+LlQJnJo0tfirH
+         l9QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si22753737iog.32.2021.10.06.20.08.27
+        by mx.google.com with ESMTPS id u11si3930309ill.105.2021.10.06.20.08.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Oct 2021 20:08:28 -0700 (PDT)
+        Wed, 06 Oct 2021 20:08:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:60484 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33174 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mYJlj-0004ne-C1
-	for alex.bennee@linaro.org; Wed, 06 Oct 2021 23:08:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51486)
+	id 1mYJm5-0005SQ-EH
+	for alex.bennee@linaro.org; Wed, 06 Oct 2021 23:08:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mYJlR-0004gD-3N; Wed, 06 Oct 2021 23:08:09 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3480)
+ id 1mYJlP-0004f5-5G; Wed, 06 Oct 2021 23:08:07 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2818)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mYJlL-00011L-ET; Wed, 06 Oct 2021 23:08:08 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HPx6j17pDzWkcd;
- Thu,  7 Oct 2021 11:06:21 +0800 (CST)
+ id 1mYJlL-00012V-Dw; Wed, 06 Oct 2021 23:08:06 -0400
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HPx3P2GF8zbcxZ;
+ Thu,  7 Oct 2021 11:03:29 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Thu, 7 Oct 2021 11:07:50 +0800
+ 15.1.2308.8; Thu, 7 Oct 2021 11:07:52 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Thu, 7 Oct 2021 11:07:49 +0800
+ 15.1.2308.8; Thu, 7 Oct 2021 11:07:51 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
  <imammedo@redhat.com>
-Subject: [PATCH v7 0/8] hw/arm/virt: Introduce cpu topology support
-Date: Thu, 7 Oct 2021 11:07:38 +0800
-Message-ID: <20211007030746.10420-1-wangyanan55@huawei.com>
+Subject: [PATCH v7 2/8] device_tree: Add qemu_fdt_add_path
+Date: Thu, 7 Oct 2021 11:07:40 +0800
+Message-ID: <20211007030746.10420-3-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20211007030746.10420-1-wangyanan55@huawei.com>
+References: <20211007030746.10420-1-wangyanan55@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -99,100 +101,99 @@ Cc: qemu-devel@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g7dPTg8Z4s05
+X-TUID: vc04XZ3bVAEb
 
-Hi,
+qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except it
+also adds all missing subnodes from the given path. We'll use it
+in a coming patch where we will add cpu-map to the device tree.
 
-This is a new version rebased on top of master (commit ca61fa4b80).
-Since both the SMP parsing improvement patchset and the ACPI refactoring
-patchset have been merged into master, now it's a proper time to respin
-this series which had some dependency on them. Thanks for reviewing.
+And we also tweak an error message of qemu_fdt_add_subnode().
 
-Description of this series:
-Once the view of an accurate virtual cpu topology is provided to guest,
-with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
-e.g., the scheduling performance improvement. See Dario Faggioli's
-research and the related performance tests in [1] for reference.
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: Alistair Francis <alistair.francis@wdc.com>
+Co-developed-by: Andrew Jones <drjones@redhat.com>
+Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+---
+ include/sysemu/device_tree.h |  1 +
+ softmmu/device_tree.c        | 44 ++++++++++++++++++++++++++++++++++--
+ 2 files changed, 43 insertions(+), 2 deletions(-)
 
-This patch series introduces cpu topology support for Arm platform.
-Both cpu-map in DT and ACPI PPTT table are introduced to store the
-topology information. And we only describe the topology information
-to 6.2 and newer virt machines, considering compatibility.
-
-[1] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines
--friend-or-foe-dario-faggioli-suse
-
-Series tested locally on Arm64 machines kunpeng920.
-After booting a Linux guest with "-smp 16,sockets=4,cores=4,threads=1,maxcpus=16",
-through lscpu we will see the information about CPU topology like:
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              16
-On-line CPU(s) list: 0-15
-Thread(s) per core:  1
-Core(s) per socket:  4
-Socket(s):           4
-NUMA node(s):        1
-Vendor ID:           0x48
-Model:               0
-Stepping:            0x1
-BogoMIPS:            200.00
-NUMA node0 CPU(s):   0-15
-
-and with "-smp 16" we will see:
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              16
-On-line CPU(s) list: 0-15
-Thread(s) per core:  1
-Core(s) per socket:  16
-Socket(s):           1
-NUMA node(s):        1
-Vendor ID:           0x48
-Model:               0
-Stepping:            0x1
-BogoMIPS:            200.00
-NUMA node0 CPU(s):   0-15
-
-Changelog:
-
-v6->v7:
-- rebased on top of master (commit ca61fa4b80)
-- use newly introduced acpi_table_begin/acpi_table_end APIs to build PPTT
-  (patch #5 updated)
-- add reference files for PPTT to fix broken bios-table-test for Aarch64
-  virt machine (patch #6-#8 added)
-- v6: https://lore.kernel.org/qemu-devel/20210824122016.144364-1-wangyanan55@huawei.com/
-
-Andrew Jones (2):
-  hw/arm/virt: Add cpu-map to device tree
-  hw/acpi/aml-build: Add PPTT table
-
-Yanan Wang (6):
-  hw/arm/virt: Only describe cpu topology since virt-6.2
-  device_tree: Add qemu_fdt_add_path
-  hw/acpi/aml-build: Add Processor hierarchy node structure
-  tests/data/acpi/virt: Add empty binary files for PPTT
-  hw/arm/virt-acpi-build: Generate PPTT table
-  tests/data/acpi/virt: Update binary files for PPTT
-
- hw/acpi/aml-build.c               |  86 ++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c          |   8 ++-
- hw/arm/virt.c                     |  71 ++++++++++++++++++++----
- include/hw/acpi/aml-build.h       |   7 +++
- include/hw/arm/virt.h             |   4 +-
- include/sysemu/device_tree.h      |   1 +
- softmmu/device_tree.c             |  44 ++++++++++++++-
- tests/data/acpi/virt/PPTT         | Bin 0 -> 76 bytes
- tests/data/acpi/virt/PPTT.memhp   | Bin 0 -> 76 bytes
- tests/data/acpi/virt/PPTT.numamem | Bin 0 -> 76 bytes
- tests/data/acpi/virt/PPTT.pxb     | Bin 0 -> 76 bytes
- 11 files changed, 207 insertions(+), 14 deletions(-)
- create mode 100644 tests/data/acpi/virt/PPTT
- create mode 100644 tests/data/acpi/virt/PPTT.memhp
- create mode 100644 tests/data/acpi/virt/PPTT.numamem
- create mode 100644 tests/data/acpi/virt/PPTT.pxb
-
---
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index 8a2fe55622..ef060a9759 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -121,6 +121,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
+ uint32_t qemu_fdt_alloc_phandle(void *fdt);
+ int qemu_fdt_nop_node(void *fdt, const char *node_path);
+ int qemu_fdt_add_subnode(void *fdt, const char *name);
++int qemu_fdt_add_path(void *fdt, const char *path);
+ 
+ #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
+     do {                                                                      \
+diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+index b621f63fba..3965c834ca 100644
+--- a/softmmu/device_tree.c
++++ b/softmmu/device_tree.c
+@@ -540,8 +540,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+ 
+     retval = fdt_add_subnode(fdt, parent, basename);
+     if (retval < 0) {
+-        error_report("FDT: Failed to create subnode %s: %s", name,
+-                     fdt_strerror(retval));
++        error_report("%s: Failed to create subnode %s: %s",
++                     __func__, name, fdt_strerror(retval));
+         exit(1);
+     }
+ 
+@@ -549,6 +549,46 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+     return retval;
+ }
+ 
++/*
++ * qemu_fdt_add_path: Like qemu_fdt_add_subnode(), but will add
++ * all missing subnodes from the given path.
++ */
++int qemu_fdt_add_path(void *fdt, const char *path)
++{
++    const char *name;
++    const char *p = path;
++    int namelen, retval;
++    int parent = 0;
++
++    if (path[0] != '/') {
++        return -1;
++    }
++
++    while (p) {
++        name = p + 1;
++        p = strchr(name, '/');
++        namelen = p != NULL ? p - name : strlen(name);
++
++        retval = fdt_subnode_offset_namelen(fdt, parent, name, namelen);
++        if (retval < 0 && retval != -FDT_ERR_NOTFOUND) {
++            error_report("%s: Unexpected error in finding subnode %.*s: %s",
++                         __func__, namelen, name, fdt_strerror(retval));
++            exit(1);
++        } else if (retval == -FDT_ERR_NOTFOUND) {
++            retval = fdt_add_subnode_namelen(fdt, parent, name, namelen);
++            if (retval < 0) {
++                error_report("%s: Failed to create subnode %.*s: %s",
++                             __func__, namelen, name, fdt_strerror(retval));
++                exit(1);
++            }
++        }
++
++        parent = retval;
++    }
++
++    return retval;
++}
++
+ void qemu_fdt_dumpdtb(void *fdt, int size)
+ {
+     const char *dumpdtb = current_machine->dumpdtb;
+-- 
 2.19.1
 

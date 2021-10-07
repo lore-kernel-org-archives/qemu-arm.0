@@ -1,180 +1,265 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1153123lfp;
-        Thu, 7 Oct 2021 01:33:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwJvOkAwK8SstB+RtDsEzDoBebk4pLjPR53IvsUo8//frXGGWYI/UUXdDVgpxZBl7bRSwpc
-X-Received: by 2002:a05:6e02:de2:: with SMTP id m2mr2257505ilj.56.1633595622485;
-        Thu, 07 Oct 2021 01:33:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633595622; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1267626lfp;
+        Thu, 7 Oct 2021 04:09:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyF2IlszU49U1QOffEhSU5tSzxF95wXgiOUUwgZEcxD+c9ur5GKoBMEosAgtJReS8WA8VC/
+X-Received: by 2002:a1f:9ec3:: with SMTP id h186mr2789460vke.5.1633604997142;
+        Thu, 07 Oct 2021 04:09:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633604997; cv=none;
         d=google.com; s=arc-20160816;
-        b=zbz1JXagjXKbcKqMVtKkGaB9TJ5zfMpv94boTVNhOFfKC3ZcUNaIWPMH/c4gYZU4HX
-         Jnduyx50Q+aYVfMn+qHezo4rxt71COzvS4ZraW8WA8iCPjRyi4QjO4PRzEJiS7BY04ON
-         V/bJBONob9d5o4niTykn/TZ+Z4zUFFgRbu2Zt6mMFVFjthdLWN+4Dui8jziYrDB4hOrT
-         OBhhhbJ6XtElO+F+QFJNVdUFlbxb8wPBIc1wRiSnU8TsM7jsA53UW/199xJqXXQUfR1S
-         MwPbxgbwVZEcsF8BBgCj/AQp6quqeWpiPXSYF98z0rWA+1fTN44q2qMo/sZ2IRdYHWsb
-         1/Pg==
+        b=QcA+2d43N4HE3YXFyvwuewBm27L/wBS9ZMhizTnabTI+k1M/0iqM/HQzqTFPHzM9bL
+         b3Q6UC/FAwqsYIFq783vvLHdL9VnpdR/TlSvCs7jaB0IxM4t8bGatT6Tif5PoL9EyITX
+         m0y3/O0TSMSK2V/RXdFPoqDXFkAnIP+xnOXYxl2UXwlvPWABaTdnfWIX+VzZ3W4MjpzE
+         qFXZRW/qRRzmmKwrIKfBKYy68ZFeBshIFW5LQVZLXkXeQAflju4L73EOshebHqrmL/6H
+         D9Tbg3GMglYvP8AdtkFP+Couc1kuvFKScItok3+uYGlmFy+c3lnUEorNIZOv2Cen9gVL
+         SElA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=n73ZjtKUTg6zPo7MIbmbXxplgJbEGVrFoNYtidJvC7c=;
-        b=IiPp/YH8jjI2jrQoZs2hA2+8pJbvzps8w3hJrmm+oPrapzEJ0XszsOrZBqxeDvA+JI
-         3g0aD+oKiV8DQHMSUVlsBTlhlbkPZ5/sEz+PvjlZoc870sLOOwkF9z2YlAAa6HR1oKR8
-         rtTxf5/RuZ0qN70Vq520AdLfvqfyTeucn3DD4h51qh/GNHDYIeoI3TcOYS0lWDHOhKhO
-         GT2Nkz7ma+2IFvDh3wWIVZ04xn7asPAPQJ9TpZ5XudQmsHBlVXtnalRVbusEEluVoauT
-         2ObXOtD0WElqV1QiR2kUHYiozAyS7oHxm7/qrAeTXyvF4xvh4nsFTJt51lbY1Mh9WIKU
-         TJjg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=37jVCLtiWIcTOaLes31gpJA4yIbvxPRqQeRkOSGMNK4=;
+        b=NYXIYpF8PlNi2BB27QVAi/T0oM5v+jdqafYE4jZ7y41GxKlQ/uz9tYEwBg7ad6u66G
+         dRXzjWsr6wEcx7wcV8IJnz4De3E5ihA9I6JsFi/43KL89oRV5gLN3c8XfcKZ48UCFQW9
+         W2V+T24xMr/u2YH64L4yTuOvLG8Ncs+fhcde6wvfPd1GowybiMQd5cwVCAxRLNrJO9aj
+         6Y1NLjTiy6Ezf3uBbieEV/2h/WgESKQw79ekNyZiu0+SDSv9zwUFyLh2dIAH+LgxoHKY
+         010VMDox3K9nwvk6qkZ5tXp4iZ3ipuY87HEtpgHt1UX2pVO+tzzXWFms0zvh3zkS+S41
+         mF+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="S7/L0BA6";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BlyInefo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4si19375703ilq.0.2021.10.07.01.33.42
+        by mx.google.com with ESMTPS id w13si8655951uar.115.2021.10.07.04.09.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Oct 2021 01:33:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Oct 2021 04:09:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="S7/L0BA6";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BlyInefo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46728 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54042 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mYOqT-0003c9-Qp
-	for alex.bennee@linaro.org; Thu, 07 Oct 2021 04:33:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51412)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mYRHg-0001Xy-CA
+	for alex.bennee@linaro.org; Thu, 07 Oct 2021 07:09:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57618)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mYOnO-0000V8-QV
- for qemu-devel@nongnu.org; Thu, 07 Oct 2021 04:30:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23891)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mYRGR-0007uZ-Lr
+ for qemu-arm@nongnu.org; Thu, 07 Oct 2021 07:08:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35702)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mYOnI-0003L3-Tf
- for qemu-devel@nongnu.org; Thu, 07 Oct 2021 04:30:29 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mYRGL-0001XN-PC
+ for qemu-arm@nongnu.org; Thu, 07 Oct 2021 07:08:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633595422;
+ s=mimecast20190719; t=1633604912;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=n73ZjtKUTg6zPo7MIbmbXxplgJbEGVrFoNYtidJvC7c=;
- b=S7/L0BA6JG8Oa/q6xx9Nqns/1VrvUFIJtyk563o10XNDMzP/WSNDoFiAA2z1KAGyC+2AqB
- DpknN99oKhj7JRcs6dKA7cphjiNp/fBAr45q0kcUpjgFr0suMPC0ADGN7IRE0VGrbhuafq
- Py00uaPf683mW1bPAKD3kQVKLa/oXSg=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-405-GCyzx5D2PzaEDK6js6xhjQ-1; Thu, 07 Oct 2021 04:30:21 -0400
-X-MC-Unique: GCyzx5D2PzaEDK6js6xhjQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- 2-20020a508e02000000b003d871759f5dso5178347edw.10
- for <qemu-devel@nongnu.org>; Thu, 07 Oct 2021 01:30:21 -0700 (PDT)
+ bh=37jVCLtiWIcTOaLes31gpJA4yIbvxPRqQeRkOSGMNK4=;
+ b=BlyInefoGyn6zf2gLzu0YWeOK4BrqUtiap7UVbn+C/9rU574wLaTEF7H96S1bQhsBnHq5G
+ 0JDnged17kVsdoUMtSWuK3Iv8zfb/UrOfoYP0I+qLqq2S7cmzYdb5Sslu2D2V9iBzZDGPQ
+ 0aV0rZNRDBEv3g/7o1LCJtoPx+KXu9Q=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-191-FgzB1BAGMFiFwPkZJ5pFZw-1; Thu, 07 Oct 2021 07:08:31 -0400
+X-MC-Unique: FgzB1BAGMFiFwPkZJ5pFZw-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ o2-20020a5d4a82000000b00160c6b7622aso4308187wrq.12
+ for <qemu-arm@nongnu.org>; Thu, 07 Oct 2021 04:08:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=n73ZjtKUTg6zPo7MIbmbXxplgJbEGVrFoNYtidJvC7c=;
- b=fK+0x5TXy8EHwQs44IFbeg9uXXvJALGiXlcExmSWI2oNDQ23TVQYbDmNEIAvow5kSa
- EYGFga/5m6se/MSFZZmLp73I1fPTKFnh3c+r9+FHxCWDM319kxJzrICqj/wgUk+j+j8L
- EeCeb0GcThCjV6ms6XsFyjJWNxV2X+OGDRtCr3O/J39hgkmvuEIehcj3jOvbZjmcRdKm
- 1dltxx3OVIyZSoGm6NAVPEwYiHuIdD0vup5OirBMAAbxr428ZXzBJhzF3dOGuZiQ56lW
- uJgGTLeEae5Ix7nEVZcvTJo8jVQHWELfGVVHOckXktzwp9bALn0YVuThpB4t3IyZBeT9
- A9iA==
-X-Gm-Message-State: AOAM532o+G9/sZR8T1+wcQeQ4xuHDszsen4egIyD8NoHpbO4xVfJg97H
- D2866rR+zQx7r0RgRIM86yR+durk8MbAKQo2vw5rNr6QhUrE2awLNil8nbFhMGuR3Gu7/PcPv/2
- 3W2v/cuO8kIPQ2Mk=
-X-Received: by 2002:a50:9dc4:: with SMTP id l4mr4374087edk.208.1633595420343; 
- Thu, 07 Oct 2021 01:30:20 -0700 (PDT)
-X-Received: by 2002:a50:9dc4:: with SMTP id l4mr4374064edk.208.1633595420185; 
- Thu, 07 Oct 2021 01:30:20 -0700 (PDT)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id z8sm9895103ejd.94.2021.10.07.01.30.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Oct 2021 01:30:19 -0700 (PDT)
-Message-ID: <da4821ff-892a-2de5-ce5b-e11080ef820a@redhat.com>
-Date: Thu, 7 Oct 2021 10:30:17 +0200
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=37jVCLtiWIcTOaLes31gpJA4yIbvxPRqQeRkOSGMNK4=;
+ b=uW0A4WiG+bqwxiMhR7PNsttLrF2D7qKsbTZvCaURXr27v7HR7vEiv7p3mOlHvE2SSo
+ NRIiUBC07sVoNcniH9FDeYZjnODCP2z2Gu3rC4zpIgLuXho6s0FBjcIUYFGsTcTGvRjG
+ VGq7KT6QgQbRwbI721dvYKj1iUeY2IC/yDuKgKvayDspnaGAQVlqgyQaif1OqfsujjwJ
+ KxHhjWD41dhPcJZPFFz0o4Quo3rNJUvb5oNJMkBdhUk6tC7Z7V0RuRSksbvvUZkUPvTO
+ VzGm8Sy2jewJ1hVXagH1o0/yhXTHYI6wPQ7f9WzoXvNOXfRJC/DQ/TEcpXdvQrkwpYXB
+ rv5w==
+X-Gm-Message-State: AOAM533a6EhMYFyz0I9HZpldFYVV8q4Cp9CrafVRvujoqEcALIXVAjMO
+ pUR61KgQG6M6cDYtJczK5/VD/BlAblA7yn+/sPD7CwkHv2PHKt8A/yb0HVJ6MZlXsgYiEdxpN1g
+ 9dRlEY0Jl1jde
+X-Received: by 2002:adf:9084:: with SMTP id i4mr4571973wri.304.1633604910756; 
+ Thu, 07 Oct 2021 04:08:30 -0700 (PDT)
+X-Received: by 2002:adf:9084:: with SMTP id i4mr4571953wri.304.1633604910552; 
+ Thu, 07 Oct 2021 04:08:30 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id 36sm21823832wrc.92.2021.10.07.04.08.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Oct 2021 04:08:30 -0700 (PDT)
+Date: Thu, 7 Oct 2021 13:08:29 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v4 2/3] hw/arm/virt_acpi_build: Generate DBG2 table
+Message-ID: <20211007130829.52bf119c@redhat.com>
+In-Reply-To: <20211007072922.655330-3-eric.auger@redhat.com>
+References: <20211007072922.655330-1-eric.auger@redhat.com>
+ <20211007072922.655330-3-eric.auger@redhat.com>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH v12 16/16] machine: Make smp_parse return a boolean
-To: "wangyanan (Y)" <wangyanan55@huawei.com>,
- Markus Armbruster <armbru@redhat.com>
-References: <20210929025816.21076-1-wangyanan55@huawei.com>
- <20210929025816.21076-17-wangyanan55@huawei.com>
- <0343d17f-bb46-a266-7ba4-20bdf30631d0@redhat.com>
- <YVdCRYvRHIio6MZe@redhat.com>
- <afa63e10-2999-4073-e440-a5d87fd6da49@redhat.com>
- <87bl47ll9l.fsf@dusky.pond.sub.org>
- <0c458d28-563a-1c12-3b9e-2fd86ae576a6@huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <0c458d28-563a-1c12-3b9e-2fd86ae576a6@huawei.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.964, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Pierre Morel <pmorel@linux.ibm.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, wanghaibin.wang@huawei.com,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: grpNrjnPcwMH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, gshan@redhat.com,
+ mst@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, philmd@redhat.com, ardb@kernel.org,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EzATXCz6TvN9
 
-On 07/10/21 05:44, wangyanan (Y) wrote:
-> 
-> I notice that with Paolo's fix applied first and then Patch15 removing
-> the sanity checks out, machine_set_smp() at last simply becomes:
-> 
-> static void machine_set_smp(Object *obj, Visitor *v, const char *name,
->                              void *opaque, Error **errp)
-> {
->      MachineState *ms = MACHINE(obj);
->      g_autoptr(SMPConfiguration) config = NULL;
-> 
->      if (!visit_type_SMPConfiguration(v, name, &config, errp)) {
-> return;
-> }
-> 
->      smp_parse(ms, config, errp);
-> }
-> 
-> It looks good currently, neither the returned boolean nor the errp needs to
-> be checked here now, and smp_parse is only called here. So in this case,
-> we may avoid the boolean until we need to use it and honor the rule. :）
+On Thu,  7 Oct 2021 09:29:21 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-Even inlining smp_parse is a possibility now.
+> ARM SBBR specification mandates DBG2 table (Debug Port Table 2)
+> since v1.0 (ARM DEN0044F 8.3.1.7 DBG2).
+> 
+> The DBG2 table allows to describe one or more debug ports.
+> 
+> Generate an DBG2 table featuring a single debug port, the PL011.
+> 
+> The DBG2 specification can be found at
+> "Microsoft Debug Port Table 2 (DBG2)"
+> https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table?redirectedfrom=MSDN
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-Paolo
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> 
+> ---
+> 
+> v3 -> v4:
+> - Change the revision in the header (0), + vs comments,
+>   s/0x1000/vms->memmap[VIRT_UART].size
+> - Added Michael's A-b
+> 
+> v2 -> v3:
+> Took into account all comments from Igor on v2:
+> mostly style adjustment, revision references
+> 
+> v1 -> v2:
+> - rebased on Igor's refactoring
+> ---
+>  hw/arm/virt-acpi-build.c | 63 +++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 62 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 6cec97352b..dd17a48c00 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -616,6 +616,64 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      acpi_table_end(linker, &table);
+>  }
+>  
+> +/* Debug Port Table 2 (DBG2) */
+> +static void
+> +build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> +{
+> +    AcpiTable table = { .sig = "DBG2", .rev = 0, .oem_id = vms->oem_id,
+> +                        .oem_table_id = vms->oem_table_id };
+> +    int dbg2devicelength;
+> +    const char name[] = "COM0";
+> +    const int namespace_length = sizeof(name);
+> +
+> +    acpi_table_begin(&table, table_data);
+> +
+> +    dbg2devicelength = 22 + /* BaseAddressRegister[] offset */
+> +                       12 + /* BaseAddressRegister[] */
+> +                       4 + /* AddressSize[] */
+> +                       namespace_length /* NamespaceString[] */;
+> +
+> +    /* OffsetDbgDeviceInfo */
+> +    build_append_int_noprefix(table_data, 44, 4);
+> +    /* NumberDbgDeviceInfo */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +
+> +    /* Table 2. Debug Device Information structure format */
+> +    build_append_int_noprefix(table_data, 0, 1); /* Revision */
+> +    build_append_int_noprefix(table_data, dbg2devicelength, 2); /* Length */
+> +    /* NumberofGenericAddressRegisters */
+> +    build_append_int_noprefix(table_data, 1, 1);
+> +    /* NameSpaceStringLength */
+> +    build_append_int_noprefix(table_data, namespace_length, 2);
+> +    build_append_int_noprefix(table_data, 38, 2); /* NameSpaceStringOffset */
+> +    build_append_int_noprefix(table_data, 0, 2); /* OemDataLength */
+> +    /* OemDataOffset (0 means no OEM data) */
+> +    build_append_int_noprefix(table_data, 0, 2);
+> +
+> +    /* Port Type */
+> +    build_append_int_noprefix(table_data, 0x8000 /* Serial */, 2);
+> +    /* Port Subtype */
+> +    build_append_int_noprefix(table_data, 0x3 /* ARM PL011 UART */, 2);
+> +    build_append_int_noprefix(table_data, 0, 2); /* Reserved */
+> +    /* BaseAddressRegisterOffset */
+> +    build_append_int_noprefix(table_data, 22, 2);
+> +    /* AddressSizeOffset */
+> +    build_append_int_noprefix(table_data, 34, 2);
+> +
+> +    /* BaseAddressRegister[] */
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
+> +                     vms->memmap[VIRT_UART].base);
+> +
+> +    /* AddressSize[] */
+> +    build_append_int_noprefix(table_data,
+> +                              vms->memmap[VIRT_UART].size, 4);
+> +
+> +    /* NamespaceString[] */
+> +    g_array_append_vals(table_data, name, namespace_length);
+> +
+> +    acpi_table_end(linker, &table);
+> +};
+> +
+>  /*
+>   * ACPI spec, Revision 5.1 Errata A
+>   * 5.2.12 Multiple APIC Description Table (MADT)
+> @@ -875,7 +933,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      dsdt = tables_blob->len;
+>      build_dsdt(tables_blob, tables->linker, vms);
+>  
+> -    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
+> +    /* FADT MADT GTDT MCFG SPCR DBG2 pointed to by RSDT */
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+>  
+> @@ -898,6 +956,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_spcr(tables_blob, tables->linker, vms);
+>  
+> +    acpi_add_table(table_offsets, tables_blob);
+> +    build_dbg2(tables_blob, tables->linker, vms);
+> +
+>      if (vms->ras) {
+>          build_ghes_error_table(tables->hardware_errors, tables->linker);
+>          acpi_add_table(table_offsets, tables_blob);
 

@@ -1,151 +1,98 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2373525lfp;
-        Fri, 8 Oct 2021 04:01:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPpyCrdGHExADItsJ0pevaRnDiREzC0Zjh4EAPiL5sTd0FAyXqIlDqG226CVzotg8YZ1dw
-X-Received: by 2002:a17:906:c015:: with SMTP id e21mr3406844ejz.113.1633690886867;
-        Fri, 08 Oct 2021 04:01:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633690886; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2390739lfp;
+        Fri, 8 Oct 2021 04:20:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkEDTI+0r1+yNkRadZi8gpPzpnKqTZkpuxeyF8YyMtTMb9HnOYsHpX9ZXv5uB9vuwM7vom
+X-Received: by 2002:a05:6000:1acd:: with SMTP id i13mr3204132wry.351.1633692032304;
+        Fri, 08 Oct 2021 04:20:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633692032; cv=none;
         d=google.com; s=arc-20160816;
-        b=L3DsXcMfpN9RPfND5xLl2NbOednpFMQ7CVvOSPvkw6Q3dga22I6OUNYZZ0dO/ZH32e
-         7Gr3vBvx+4LMaZ71rgiYYxuTCC/yMfHw3lkfwQK4wpXze4RkfW4r6PCtarhbxfMTOn4H
-         l+xheazFGSQxb3n0C39NWPp/8XW1vpXk1nkeBflbDRKz1DBtRS6olvREFtbMT8P6VojG
-         jt7h2+Kx2PviYDmo3e1LIEhMoD0cXbBj66q1Yu7x9JqV7izSrL83nBDpt8pDZdJHGp/n
-         5PW+bZ9tRPydQd8wzyn9KGgHWyzE5QbiVMrZzHgd7e+jKf6CCUo1FMyw86S6ykwJzQrR
-         CKNw==
+        b=OKRma9KwHAj/7Vxkw30adoy3jLPP20He1OCIuahOMjQRN6LYQS5KeWpc3Jp3fbaoKW
+         2icLuXaLDIcMHbo2acvsoUdjVdWsizTgTaR279u//Eu7O3KXyA2yN1oqntJQQI/AYxUu
+         IQSlShi0GDAuFHtyb74G31qZq7TvmiRXYmOfFfJGlYffCfR4saefCK5H0Yk9HGNe7F+o
+         JTatn3oV3KrrGNVaPprf1pH5B02DcDOeCds6B9NJ2GF0IE59NfB1Ifpa5uiKXDb9cJCz
+         7ieyxQd1VkB/eD6AouirN5g8//+BHItzMOdzolK/qamDE7VDJBJWLdB0UuM59RRGLRyf
+         E1wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=S3Le4MG/sH+0J17/DA3PcBuwRRGIPbf8AqLU211Mo2w=;
-        b=y2C9SGgvEv6ivcj0ncWIsJLSa+aMSHeF4m99IJ3XmLvFleQ6M0aiF/SVnBI0lD5mql
-         ukQUAFnYhM7IkMLk5wXogBB/FzP8FtOv8YLlkuhDVyOgBp1Mvvh1KskTg0acK7Bvf0f0
-         5HT3hn5aq3Cg7foQbao09up7c6k+axs+swUvTjUMkrdtUj06yh9B2fPx7QuwDW/GsTln
-         78btewVM+nrUisd/ILiE6YCzZ1JF+QYNhx0UOQXbRkJ4sSOrY7KaCcGxqvkz0B1A5yLh
-         ODXElauBquSS9P5kpp4vm1vExWb2EmfOJQ6U7clOippRc4gKrlsom5drNrdcb+2fznfu
-         icjA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=njdwS3qA9HYLmO7MOo128edRCaGaQP5rQMro/Xs8WiY=;
+        b=CgY5vJph3tj4ajG4l7g9XEQ04EkWjuD5HS97fCiTqMWZVJCYETfAnyOKVKwB0gZSh2
+         9O+isMpd5HOMWPBCRZqLGLF8hKpNESSHrKpoG0RNwZFc/UxyozHvQukTRncwEs/IvhZc
+         6XMkUqIrB/+ZSDA3EGE2wfTGUT22HqGIC7HIFThb7gEsJix3t2BbdUF9GVANI86uR9NH
+         iQJ4Ld3k3x4AdUkv88mwxgQiBBV+9h312jgUoSalpJBcfFyw8RdaVGssZJrwdej8MQLR
+         RBo3FmaVCmmBUy8sMZquSxV/aGPgpksw1sJvqP0UWm1x3kIQ+l6AvyJjMbAkhs2LURQW
+         L1Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXPtT5kg;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id h2si3044863ejj.419.2021.10.08.04.01.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Oct 2021 04:01:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=neutral (google.com: 217.72.192.74 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.74])
+        by mx.google.com with ESMTPS id s13si3241961wrv.193.2021.10.08.04.20.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Oct 2021 04:20:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 217.72.192.74 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=217.72.192.74;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXPtT5kg;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1633690885;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=S3Le4MG/sH+0J17/DA3PcBuwRRGIPbf8AqLU211Mo2w=;
-	b=LXPtT5kgK75NpiDC6y4WGEttvdcSqK+gRkr4vSX+XIFtEhri0pQ3t2Be1uyWcFd3nkb0iL
-	68q3jbl3KmcP1r0ROm5SSBKklUD9KPQIKKDNBa26scknsq41sKPBG1kM+o5MLUQ4BvFrAY
-	NhKgrSa1s7obIx1degaw9YmavH/oR4U=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-386-mIx1sSxjM12PXwYVWlgFNg-1; Fri, 08 Oct 2021 07:01:14 -0400
-X-MC-Unique: mIx1sSxjM12PXwYVWlgFNg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D06CC802CB5;
-	Fri,  8 Oct 2021 11:01:12 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.195.17])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5205460CCC;
-	Fri,  8 Oct 2021 11:01:10 +0000 (UTC)
-Date: Fri, 8 Oct 2021 12:01:07 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	assad.hashmi@linaro.org, qemu-devel@nongnu.org,
-	James Bottomley <James.Bottomley@hansenpartnership.com>,
-	qemu-arm@nongnu.org, "Eric W. Biederman" <ebiederm@xmission.com>,
-	Arnd Bergmann <arnd.bergmann@linaro.org>
-Subject: Re: Approaches for same-on-same linux-user execve?
-Message-ID: <YWAk88MtPDufjzmK@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <877deoevj8.fsf@linaro.org>
+       spf=neutral (google.com: 217.72.192.74 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from mail-wr1-f50.google.com ([209.85.221.50]) by
+ mrelayeu.kundenserver.de (mreue107 [213.165.67.113]) with ESMTPSA (Nemesis)
+ id 1MGygv-1mVDHI2rA3-00EA0l; Fri, 08 Oct 2021 13:20:31 +0200
+Received: by mail-wr1-f50.google.com with SMTP id t8so28901272wri.1;
+        Fri, 08 Oct 2021 04:20:31 -0700 (PDT)
+X-Gm-Message-State: AOAM533lcUDMrmo2Ansd1VBvnKB4UypNH5APbgNFRDMP/ZS6aucZHf9K
+	i9lpFNe2UoFH+Vxkz38FAx8shX64PWw98H1JfpI=
+X-Received: by 2002:adf:f481:: with SMTP id l1mr3209844wro.411.1633692031269;
+ Fri, 08 Oct 2021 04:20:31 -0700 (PDT)
 MIME-Version: 1.0
+References: <877deoevj8.fsf@linaro.org>
 In-Reply-To: <877deoevj8.fsf@linaro.org>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: N3K+p5ne6TTN
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Fri, 8 Oct 2021 13:20:15 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a09c2wFUMargRkonYQA6mUMnGK-+Lmrt4rDGEog5M3+6w@mail.gmail.com>
+Message-ID: <CAK8P3a09c2wFUMargRkonYQA6mUMnGK-+Lmrt4rDGEog5M3+6w@mail.gmail.com>
+Subject: Re: Approaches for same-on-same linux-user execve?
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Laurent Vivier <laurent@vivier.eu>, Richard Henderson <richard.henderson@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, assad.hashmi@linaro.org, 
+	"Eric W. Biederman" <ebiederm@xmission.com>, 
+	James Bottomley <James.Bottomley@hansenpartnership.com>, 
+	Arnd Bergmann <arnd.bergmann@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:2U6gW095DVeUQSX2SGx8hs3E/eQ94EIzZsM2DUwvgC6kqUZoYzy
+ Y7lrg7OJpuS+s4WhbJA3p/4lhgySSaTkBi8VzdhyhCNVx964gfpWOMgImthGuS0w6Hguv1/
+ qPm7uZlcZb/ifEwiZTj17B6wHx8CGxg9gTI8QTDL7hzUeDn8f2ez4bxCFAcjZ7W2BF2HENr
+ YGaghrq28HPDp2cZ8uusw==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4WSSLnnvX3Y=:++3z6EmfKdclcSV40ykaOK
+ WRP0OLnZ8QexJbGeFmvZRdH+5Q93n1karYu7VMM5eJ2USk2iHmjMkHAfPEqKCYruhbpY4F2/z
+ 4aiQLhpTq09yHBEIvjgCoxPD1TyRTtwnHqnoy7cqMDob5qSWS8E0+fSFxHjNPGZv8RzLnbdAJ
+ eVW9wrhDWLgqSE/idgU1DN7VL+iSEDOku3tE1EJnhMjwNo0jBmrkgGEriAINq6bBfp6fnE9QC
+ j+HEfLA6PFA6EEXIexlj2Ua7gGK2OnqyXMUr4thF0ts/WAX0zxS5d0rPqaZzZCx6QtIpndCZb
+ Ri1C2zJsz3TTv92sBUAVmWTk7CvVkjChH7/NorILHUlEKMPODpXhh1dARCQKpV9ij9tBh+6wn
+ HUL38sYma6B4EQ0uKwctWeiJLgA+NTiXVINVSpWnYJ/idEAhnB4ZJfcNHj9equaG+0w0AoxrF
+ Z+8N/73bsvwf0xkAWyv5FMPDYa1AAJtJF4QlP5LOTgAWsm4ejtsyrVsCkBSqyi/sV7AzMkoUf
+ Hus9W/8RgbV+CIAbrlZxDUjWyeR2DiNnrNDRbdTH4glKKYWqgKUPWn2CyA+qYvNnxgt8T7Fzj
+ OKUhC9bLRAbX1dwpc4Ut11meOIfabfRX9VJGRFcT57+iNEN79uzR7CPI00sCo5AW6875RjYLe
+ hkusPMKrO6PxfTLTmL+MvMOwI8TpvwM59TQN+saGd3UAa/QddcNG0yREexZ7uxYtE6uL16+OF
+ D7V07hZXW435/c2aGiN6X0BOH0l5BIJdPCjnIQ==
+X-TUID: UOSbfQungyaG
 
-On Thu, Oct 07, 2021 at 03:32:19PM +0100, Alex Bennée wrote:
-> Hi,
-> 
-> I came across a use-case this week for ARM although this may be also
-> applicable to architectures where QEMU's emulation is ahead of the
-> hardware currently widely available - for example if you want to
-> exercise SVE code on AArch64. When the linux-user architecture is not
-> the same as the host architecture then binfmt_misc works perfectly fine.
-> 
-> However in the case you are running same-on-same you can't use
-> binfmt_misc to redirect execution to using QEMU because any attempt to
-> trap native binaries will cause your userspace to hang as binfmt_misc
-> will be invoked to run the QEMU binary needed to run your application
-> and a deadlock ensues.
-> 
-> There are some hacks you can apply at a local level like tweaking the
-> elf header of the binaries you want to run under emulation and adjusting
-> the binfmt_mask appropriately. This works but is messy and a faff to
-> set-up.
-> 
-> An ideal setup would be would be for the kernel to catch a SIGILL from a
-> failing user space program and then to re-launch the process using QEMU
-> with the old processes maps and execution state so it could continue.
-> However I suspect there are enough moving parts to make this very
-> fragile (e.g. what happens to the results of library feature probing
-> code). So two approaches I can think of are:
-> 
-> Trap execve in QEMU linux-user
-> ------------------------------
-> 
-> We could add a flag to QEMU so at the point of execve it manually
-> invokes the new process with QEMU, passing on the flag to persist this
-> behaviour.
-> 
-> 
-> Add path mask to binfmt_misc
-> ----------------------------
-> 
-> The other option would be to extend binfmt_misc to have a path mask so
-> it only applies it's alternative execution scheme to binaries in a
-> particular section of the file-system (or maybe some sort of pattern?).
-> 
+On Thu, Oct 7, 2021 at 4:32 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
+ote:
+>
 > Are there any other approaches you could take? Which do you think has
 > the most merit?
 
-Could a new Linux personality flag be useful in combination with a
-new flag in binfmt_misc.
+Reading through the ELF loader code in the kernel, I had another idea:
+If qemu-user could be turned into a replacement for /lilb/ld.so and act
+as an ELF interpreter rather than a binfmt-misc helper, this might address
+a lot of the issues automatically.
 
-eg a flag "E" for binfmt_misc which indicates the rule must only be
-applied if the process is execve()d with PER_USE_BINFMT personality
-set.
+It would need to be a statically linked binary so it doesn't itself require
+an interpreter. It would have to do the job of ld.so in addition to
+the emulation, but it could do that by finding the real ld.so somewhere
+else and running that in emulation mode. It would also not work at
+all for statically linked executables.
 
-That would let you add a native match rule to binfmt_misc without
-it affecting your system initially. To then run native binaries via
-qemu-user you just need to set the personality() flag and the only
-that  sub-process tree gets redirected.
+Not sure if that makes the tradeoffs better than your other suggestions,
+but it seemed worth bringing up.
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+       Arnd

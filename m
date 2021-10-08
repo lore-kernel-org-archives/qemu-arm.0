@@ -1,256 +1,126 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp1715036lfp;
-        Thu, 7 Oct 2021 12:13:58 -0700 (PDT)
-X-Received: by 2002:ab0:3447:: with SMTP id a7mr6864532uaq.56.1633634038452;
-        Thu, 07 Oct 2021 12:13:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633634038; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2219201lfp;
+        Fri, 8 Oct 2021 00:19:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyD5f8X3q3K+ufmpFmoCDAFPUzYmYtyfNh3FhCoB4O1zEBT2SRMhqsONmPw/2yoC7MwDHEB
+X-Received: by 2002:a37:4014:: with SMTP id n20mr1534397qka.304.1633677592627;
+        Fri, 08 Oct 2021 00:19:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633677592; cv=none;
         d=google.com; s=arc-20160816;
-        b=kG3yESmoQ4dYNUHKakC2SX8DZAcN+uVgSJ3mDDUGp54rWbkRWdQB2nRNmlk28pvgB+
-         i1vCdJF0tG7I9zhAM8+Lf5BOcAyRj+OPiLFBtK0mNUlHS+2VyRxcCRH4OWECNwXN0fbN
-         pMhP68C0hRSit1pH9chMKw0OvMY/PlvsU4ZoKbErgAtOTOe6OkKXJ2tzWRbyo/ZUuD6P
-         cQxHAv0VIdZb+zatIgzwlV0dmoqscJAyWwQ6GaDmRyH+JVjRkDpCqbh0u9xjJsf1Zctx
-         YeAG1DCNbjRJTvB/Q2RadJ7noFUIp0FU4m9xGyrSj4/EPqPFsHaxdneswUGb9Wfa1QIJ
-         C2tw==
+        b=Lqn7taGZe5amJ9YrOGEcB/s5rgphfhhTKimgd6Oy5GI6qyBnneU5pWErOgOWhiJx+Y
+         yYb3tZMjuG/Rl7YASZn207tttapjElmNOAfTqa3w6Dq8d2+sKgjbLxkBAKprzjn/D5a4
+         TJGnsSumdgrov42yoMvULuZF3Xzk4iX2qNwB5VIhKsSHOwkWRiZVbAjk8rGIgtgwMygF
+         sU6jfk3n4mt6oociJcs7QI1rdcKPO+DG9JN2dlHW+hPYS/rGzsnQUhau6LN8QdCsV5nu
+         ZdCMKdkmdXj7oYmQ4UYMzRs6sr8FfWR3vSDBdXX8ZUvC0fV1e/IM81zjEZIepNZY8X6b
+         Ujog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=sLO8+pn561TQaEFUhic8fW50Ob4vja96RRtossVKiUk=;
-        b=sh9p5PxNKqZAjOX6sWjmwUCjQcPsvP0D9DVDviif7JKi04VGeKFJZLZhusG2rplzOS
-         pwk4aamvpbFWK8Fc+zJDXh7Br3I62IXIeVw7ZKNBwqOTPgakfqrrxgv9y3xC7+rdMhcj
-         IsmmKvRVgk8y+O8ZV6aOTuWuZif+zQPgTK+dUw8aJIeXrjalCf1WOtm6I8K5UlBcX1T1
-         qPfbVHCSVaJIElty4qgbFUtQR2vKxl3YthavvGB7Wk/Ny1MENnThzJh0zjA5rSVRGMsH
-         vRteSI++D9UxVV4NUokSmzmEKa1R3tw7eDdQ2rBGsSBp9/a9Vqgk9nhuU8avau893I3Q
-         y5Kw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:ironport-sdr;
+        bh=2TwA6Mv2YZYuNLE16nfiGnnOiDMc7WeRgLZx4VUApEo=;
+        b=PTetNJ/Go0nKF7Ycbr9YpLuPDF7qlwB098DVP7iU2lVO7yD+IIMWHeKgsBn6fiT6Mb
+         q3v4ApB3mOv9OV+PP0XMdxd4XummUe9lZ8FSF3LTqyO/82lUr+biUixbJXlZHLgDbmFM
+         /R2GJ0IJOkL/DIrQMEzNUHmDcK9bl28QQs3dU5ptgTFnLgDxxat61/0F/0819Gp698nV
+         nkEu7qWH1AJPQAQtvGw77BmlXbFU7/DJXGNp3X8Kjtc8VkfRpHrdO52ZQBf4L/GYxH2Q
+         2IJinUJOs/xEUp0Ajui0C2cy2vMdIWvEPlewtopfOiWQh+467Ogmt/QxqiJEZYJqWJ4t
+         mrLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=JdLVYmsl;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
-Return-Path: <wlosh@bsdimp.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x25sor77518vsg.122.2021.10.07.12.13.58
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d17si1399694qtm.187.2021.10.08.00.19.52
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 07 Oct 2021 12:13:58 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 08 Oct 2021 00:19:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=JdLVYmsl;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=sLO8+pn561TQaEFUhic8fW50Ob4vja96RRtossVKiUk=;
-        b=JdLVYmslqizrUlqvWgCQA375NWi5CyJq2TBDPNdPufwZtLsjK6dlCseDleP7fE3jvE
-         aFWXwArZU+jUJ+rX3Y4KO540CcTmevR7mgoNPcqkjyp84L3hQDL6QDrBea20g9KuVJ10
-         M8bxlKAj9rX/m0+U/rCj34l48dgyKcCq5LVNcIdJVN8VvOuK+x22rAr4Cqbp2UL2KmSG
-         JBCuQPJtWNPE/3ZzRA2cLpQbtLP06EIiJQL7U6haX1CcGGsbtRuqQVf4ScYLwjsPEB/z
-         Q6LFLdL3soIXwWNYlaSJjzWkC4fWpehlqraersaId6rVKYp/2mc97WqpZEy9R00iiNRK
-         hZGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=sLO8+pn561TQaEFUhic8fW50Ob4vja96RRtossVKiUk=;
-        b=LHinEIu7ofH8up4vo65lg9vaw3NNkIaCxmQTcohaOKDcUgDN41X2eNgLqqFBoxlqGp
-         DCA3rGuriWe05Ga5XReV+1iatKmzlzTkhbgzLMCc/QwslohsGeta4sXIU+TvYZwdIRtU
-         vALDsiEVIe8LZ/BM4f/YzmLa/KepU+fvPNiFQ4fgUXiVPWwHg5TlgACMSOXi/NH450Rd
-         QZFGyfwFaW8UrlKHXbVzXkQRFjd2kWqZ7fFtCmf/sCv63PgMfwkPuDQm5im1GTRaR2Nn
-         gBuHogmXUkcdyu9gISfBtLjtw7z1JGHujJdjiJZVID4VvDdZ6IicLOvNSwkI01NvIuPw
-         HDiw==
-X-Gm-Message-State: AOAM533XymyIeXHAqKsl2a1XwI8MuM5Y7FhEwI+/aupJ21hG/FACn8ux
-	grVqw3ZDq3yacFT+p/2LnfNSHUunuO59Y5vo4Q/0ogT5Oqg=
-X-Google-Smtp-Source: ABdhPJyCkXVSSAGRs2B3ROhMT7MkS82ZWuvmhC+79vkWPXFdXGeGRzQWbr0d9ssL10g/IJw519UtmC31BXd6bybXf50=
-X-Received: by 2002:a67:ab48:: with SMTP id k8mr6447930vsh.30.1633634035004;
- Thu, 07 Oct 2021 12:13:55 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fujitsu.com
+Received: from localhost ([::1]:39180 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mYkAa-00068i-06
+	for alex.bennee@linaro.org; Fri, 08 Oct 2021 03:19:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44310)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mYk9o-00068G-Vj; Fri, 08 Oct 2021 03:19:05 -0400
+Received: from esa2.hc1455-7.c3s2.iphmx.com ([207.54.90.48]:13407)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
+ id 1mYk9m-0006wO-Hx; Fri, 08 Oct 2021 03:19:04 -0400
+IronPort-SDR: 0kEfAWRuW+vmy4p89OyM+5vJ5N1N71L388vl2pzSNVR1M9gjzY6ee4mN3Ez6/kUht9gW0WrYb0
+ nY/yPhxlrs3mKeHcGuvjxsjUwtUEQOnRJ2EK5uhONtV1FSoQq2mFMEcoPaVetvXeVWiNQjKNMv
+ K6qm+LXPg9Xve4QyXyxmGrwBbpavB/EFr5IHTjZtDxLvnrwdJ2fN2xWyEmJOIsbTxfoBLmM89Q
+ PZRBdpQflmOu40AREc01NlhziL3Vc9ukkWw9J56qLT26HqQxsO47NMFVpbln8lMGvj2vIuCzme
+ /gXGMSHo95am0X15B8YFLMqo
+X-IronPort-AV: E=McAfee;i="6200,9189,10130"; a="48082856"
+X-IronPort-AV: E=Sophos;i="5.85,356,1624287600"; d="scan'208";a="48082856"
+Received: from unknown (HELO oym-r1.gw.nic.fujitsu.com) ([210.162.30.89])
+ by esa2.hc1455-7.c3s2.iphmx.com with ESMTP; 08 Oct 2021 16:18:55 +0900
+Received: from oym-m3.gw.nic.fujitsu.com (oym-nat-oym-m3.gw.nic.fujitsu.com
+ [192.168.87.60])
+ by oym-r1.gw.nic.fujitsu.com (Postfix) with ESMTP id 974FFE7572;
+ Fri,  8 Oct 2021 16:18:53 +0900 (JST)
+Received: from oym-om4.fujitsu.com (oym-om4.o.css.fujitsu.com [10.85.58.164])
+ by oym-m3.gw.nic.fujitsu.com (Postfix) with ESMTP id E0DEBDAA15;
+ Fri,  8 Oct 2021 16:18:52 +0900 (JST)
+Received: from localhost.localdomain (n3235113.np.ts.nmh.cs.fujitsu.co.jp
+ [10.123.235.113])
+ by oym-om4.fujitsu.com (Postfix) with ESMTP id F0DDE4022E247;
+ Fri,  8 Oct 2021 16:18:51 +0900 (JST)
+From: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+To: rad@semihalf.com,
+	peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH] hw/arm/sbsa-ref: Fixed cpu type error message typo.
+Date: Fri,  8 Oct 2021 15:36:04 +0900
+Message-Id: <20211008063604.670699-1-ishii.shuuichir@fujitsu.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-References: <877deoevj8.fsf@linaro.org>
-In-Reply-To: <877deoevj8.fsf@linaro.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 7 Oct 2021 13:13:44 -0600
-Message-ID: <CANCZdfoZ55XfNy9dnhgRrzi=QM5SqLgHrioqTK6J7R=jju-E6g@mail.gmail.com>
-Subject: Re: Approaches for same-on-same linux-user execve?
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>, Richard Henderson <richard.henderson@linaro.org>, 
-	assad.hashmi@linaro.org, QEMU Developers <qemu-devel@nongnu.org>, 
-	James Bottomley <James.Bottomley@hansenpartnership.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	"Eric W. Biederman" <ebiederm@xmission.com>, Arnd Bergmann <arnd.bergmann@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000005a563305cdc8102a"
-X-TUID: vGVh+W0YwB2B
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+Received-SPF: pass client-ip=207.54.90.48;
+ envelope-from=ishii.shuuichir@fujitsu.com; helo=esa2.hc1455-7.c3s2.iphmx.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, ishii.shuuichir@fujitsu.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6GtjGOVrz6Ic
 
---0000000000005a563305cdc8102a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
+---
+ hw/arm/sbsa-ref.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Thu, Oct 7, 2021 at 8:56 AM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 509c5f09b4..358714bd3e 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -670,7 +670,7 @@ static void sbsa_ref_init(MachineState *machine)
+     int n, sbsa_max_cpus;
+ 
+     if (!cpu_type_valid(machine->cpu_type)) {
+-        error_report("mach-virt: CPU type %s not supported", machine->cpu_type);
++        error_report("sbsa-ref: CPU type %s not supported", machine->cpu_type);
+         exit(1);
+     }
+ 
+-- 
+2.27.0
 
-> Hi,
->
-> I came across a use-case this week for ARM although this may be also
-> applicable to architectures where QEMU's emulation is ahead of the
-> hardware currently widely available - for example if you want to
-> exercise SVE code on AArch64. When the linux-user architecture is not
-> the same as the host architecture then binfmt_misc works perfectly fine.
->
-> However in the case you are running same-on-same you can't use
-> binfmt_misc to redirect execution to using QEMU because any attempt to
-> trap native binaries will cause your userspace to hang as binfmt_misc
-> will be invoked to run the QEMU binary needed to run your application
-> and a deadlock ensues.
->
-> There are some hacks you can apply at a local level like tweaking the
-> elf header of the binaries you want to run under emulation and adjusting
-> the binfmt_mask appropriately. This works but is messy and a faff to
-> set-up.
->
-> An ideal setup would be would be for the kernel to catch a SIGILL from a
-> failing user space program and then to re-launch the process using QEMU
-> with the old processes maps and execution state so it could continue.
-> However I suspect there are enough moving parts to make this very
-> fragile (e.g. what happens to the results of library feature probing
-> code). So two approaches I can think of are:
->
-
-32-bit arm had an 'eabi' section in ELF binaries. There it would have been
-possible
-to look at that and make a decision before the binary starts executing to
-see whether
-it should just run, or fork the linux-user binary. It would take kernel
-changes, though.
-
-
-> Trap execve in QEMU linux-user
-> ------------------------------
->
-> We could add a flag to QEMU so at the point of execve it manually
-> invokes the new process with QEMU, passing on the flag to persist this
-> behaviour.
->
-
-The bsd-user code differs a little from linux-user in that it looks at the
-binary being exec'd to determine what to do. It works OK, but isn't really
-for this situation (we use it to optimize our package builds with additiona=
-l
-path processing for our mixed binary situation where we have native binarie=
-s
-execing emulated binaries that then exec native binaries again. It is a bit
-of a hack, though, and I'm not completely happy with it.
-
-Add path mask to binfmt_misc
-> ----------------------------
->
-> The other option would be to extend binfmt_misc to have a path mask so
-> it only applies it's alternative execution scheme to binaries in a
-> particular section of the file-system (or maybe some sort of pattern?).
->
-> Are there any other approaches you could take? Which do you think has
-> the most merit?
->
-
-In by-gone times, brandelf has bene used for situations where you wanted
-to run an ELF binary with one emulation that looks like another. But that's
-also
-kernel hacks and also touching the local binary.
-
-There's also the option of doing a VM86-like thing that allowed people to
-run 16-bit x86 binaries on 32-bit processors. There the system calls would
-SEGV
-and you'd decode them inline, execute the emulation and move the IP to
-execute
-the next instruction after the INT XX system call. You could create a
-loader that
-knows how to load load the binaries and catch SIGILL and then emulate the
-new
-instructions on the old processor, but that's somewhat different than how
-qemu
-user-mode works today. But knowing you'd need to do this is hard,
-potentially.
-But one could expand the kernel to load in SIGILL handlers on-demand for
-programs that do this, but that wouldn't work with old kernels and just
-feels
-weird...
-
-Warner
-
---0000000000005a563305cdc8102a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 7, 2021 at 8:56 AM Alex B=
-enn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org" target=3D"_blank">=
-alex.bennee@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
-04);padding-left:1ex">Hi,<br>
-<br>
-I came across a use-case this week for ARM although this may be also<br>
-applicable to architectures where QEMU&#39;s emulation is ahead of the<br>
-hardware currently widely available - for example if you want to<br>
-exercise SVE code on AArch64. When the linux-user architecture is not<br>
-the same as the host architecture then binfmt_misc works perfectly fine.<br=
->
-<br>
-However in the case you are running same-on-same you can&#39;t use<br>
-binfmt_misc to redirect execution to using QEMU because any attempt to<br>
-trap native binaries will cause your userspace to hang as binfmt_misc<br>
-will be invoked to run the QEMU binary needed to run your application<br>
-and a deadlock ensues.<br>
-<br>
-There are some hacks you can apply at a local level like tweaking the<br>
-elf header of the binaries you want to run under emulation and adjusting<br=
->
-the binfmt_mask appropriately. This works but is messy and a faff to<br>
-set-up.<br>
-<br>
-An ideal setup would be would be for the kernel to catch a SIGILL from a<br=
->
-failing user space program and then to re-launch the process using QEMU<br>
-with the old processes maps and execution state so it could continue.<br>
-However I suspect there are enough moving parts to make this very<br>
-fragile (e.g. what happens to the results of library feature probing<br>
-code). So two approaches I can think of are:<br></blockquote><div><br></div=
-><div>32-bit arm had an &#39;eabi&#39; section in ELF binaries. There it wo=
-uld have been possible</div><div>to look at that and make a decision before=
- the binary starts executing to see whether</div><div>it should just run, o=
-r fork the linux-user binary. It would take kernel changes, though.</div><d=
-iv>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-Trap execve in QEMU linux-user<br>
-------------------------------<br>
-<br>
-We could add a flag to QEMU so at the point of execve it manually<br>
-invokes the new process with QEMU, passing on the flag to persist this<br>
-behaviour.<br></blockquote><div><br></div><div>The bsd-user code differs a =
-little from linux-user in that it looks at the</div><div>binary being exec&=
-#39;d to determine what to do. It works OK, but isn&#39;t really</div><div>=
-for this situation (we use it to optimize our package builds with additiona=
-l</div><div>path processing for our mixed binary situation where we have na=
-tive binaries</div><div>execing emulated binaries that then exec native bin=
-aries again. It is a bit</div><div>of a hack, though, and I&#39;m not compl=
-etely happy with it.</div><div><br></div><blockquote class=3D"gmail_quote" =
-style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
-dding-left:1ex">
-Add path mask to binfmt_misc<br>
-----------------------------<br>
-<br>
-The other option would be to extend binfmt_misc to have a path mask so<br>
-it only applies it&#39;s alternative execution scheme to binaries in a<br>
-particular section of the file-system (or maybe some sort of pattern?).<br>
-<br>
-Are there any other approaches you could take? Which do you think has<br>
-the most merit?<br></blockquote><div><br></div><div>In by-gone times, brand=
-elf has bene used for situations where you wanted</div><div>to run an ELF b=
-inary with one emulation that looks like another. But that&#39;s also</div>=
-<div>kernel hacks and also touching the local binary.</div><div><br></div><=
-div>There&#39;s also the option of doing a VM86-like thing that allowed peo=
-ple to</div><div>run 16-bit x86 binaries on 32-bit processors. There the sy=
-stem calls would SEGV</div><div>and you&#39;d decode them inline, execute t=
-he=C2=A0emulation and move the=C2=A0IP to execute</div><div>the next instru=
-ction after the INT XX system call. You could create a loader that</div><di=
-v>knows how to load load the binaries and catch SIGILL and then emulate the=
- new</div><div>instructions on the old processor, but that&#39;s somewhat d=
-ifferent than how qemu</div><div>user-mode works today. But knowing you&#39=
-;d need to do this is hard, potentially.</div><div>But one could expand the=
- kernel to load in SIGILL handlers on-demand for</div><div>programs that do=
- this, but that wouldn&#39;t work with old kernels and just feels</div><div=
->weird...</div><div><br></div><div>Warner</div></div></div>
-
---0000000000005a563305cdc8102a--

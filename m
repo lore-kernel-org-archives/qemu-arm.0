@@ -1,127 +1,151 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2373168lfp;
-        Fri, 8 Oct 2021 04:01:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmW3AQ/5c+4Gq1cldO/0DDH146mNYaGPNXXY4S84617hLNE6uTYHkwSLX+f1glAPmc3nC9
-X-Received: by 2002:a92:d090:: with SMTP id h16mr569573ilh.56.1633690868244;
-        Fri, 08 Oct 2021 04:01:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633690868; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2373525lfp;
+        Fri, 8 Oct 2021 04:01:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxPpyCrdGHExADItsJ0pevaRnDiREzC0Zjh4EAPiL5sTd0FAyXqIlDqG226CVzotg8YZ1dw
+X-Received: by 2002:a17:906:c015:: with SMTP id e21mr3406844ejz.113.1633690886867;
+        Fri, 08 Oct 2021 04:01:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633690886; cv=none;
         d=google.com; s=arc-20160816;
-        b=DE/QmCwBf/SRJ2/eKa+BUlljzUeA/jvCVMVC26WzvCGSvXlR5DxK/ylSQMszMLAclo
-         8UbtLwAYm3cJlemVo5IUISNuaJDefbVKoymQB8B1gvQe1MUaM/pv6NKTGJDijn/dw5g2
-         Eki4y7EjXkCbPGeXgBJ9imUOXNXpD2ZN3NZeCOayR6CJpl8J7/5o8pbl1j21EhyrfHxF
-         7wEqjQOd2uHfSzvKvYVhURztJP39lJG3N01wd+L6vnt8nlIbjmey6BCm5ujX18DGQr/u
-         uKuVFw5mwFIJ7HZb9Hkq01jSxkui8sRql07yX6l1KEM1p11xOO/DMyhogb9GY55TZkOo
-         uyJQ==
+        b=L3DsXcMfpN9RPfND5xLl2NbOednpFMQ7CVvOSPvkw6Q3dga22I6OUNYZZ0dO/ZH32e
+         7Gr3vBvx+4LMaZ71rgiYYxuTCC/yMfHw3lkfwQK4wpXze4RkfW4r6PCtarhbxfMTOn4H
+         l+xheazFGSQxb3n0C39NWPp/8XW1vpXk1nkeBflbDRKz1DBtRS6olvREFtbMT8P6VojG
+         jt7h2+Kx2PviYDmo3e1LIEhMoD0cXbBj66q1Yu7x9JqV7izSrL83nBDpt8pDZdJHGp/n
+         5PW+bZ9tRPydQd8wzyn9KGgHWyzE5QbiVMrZzHgd7e+jKf6CCUo1FMyw86S6ykwJzQrR
+         CKNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=mEsZKC++1PpuTLnz4RbDzhIVALTMM7ZZzn8swN4cwLI=;
-        b=JhrAyZ2WhCEjlh7AoGVHKBr1GROpRvXK7rm0112wLq5AvCcGJ6SwyRJNocA3LSeHYy
-         RUYdH61tfNwHWhdPBI12dSNAFFSb4rhZBdSrrvgShfugh+ZJTAqVVEoL4Fz2RnSg0RX2
-         7B8LTTSS7IpYdHnCL4ost6fZcnjeTFVIAbecGbCqSncJZ4uSo5iIucmIdiHsjq1aSIYW
-         WbKSoU992l5BKbRVJ+LTfK9F1Eu/0sLXtAqV5FidkekxeSUXy3LdoLqehmbByqYZUH/P
-         y6eGKIMAyZfPzI2tlcuPMy5VL6Q3wCzphEKErZPb3q2P9zYAOitRRS0cjLrw7gifJ7vu
-         Yt2Q==
+        h=content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=S3Le4MG/sH+0J17/DA3PcBuwRRGIPbf8AqLU211Mo2w=;
+        b=y2C9SGgvEv6ivcj0ncWIsJLSa+aMSHeF4m99IJ3XmLvFleQ6M0aiF/SVnBI0lD5mql
+         ukQUAFnYhM7IkMLk5wXogBB/FzP8FtOv8YLlkuhDVyOgBp1Mvvh1KskTg0acK7Bvf0f0
+         5HT3hn5aq3Cg7foQbao09up7c6k+axs+swUvTjUMkrdtUj06yh9B2fPx7QuwDW/GsTln
+         78btewVM+nrUisd/ILiE6YCzZ1JF+QYNhx0UOQXbRkJ4sSOrY7KaCcGxqvkz0B1A5yLh
+         ODXElauBquSS9P5kpp4vm1vExWb2EmfOJQ6U7clOippRc4gKrlsom5drNrdcb+2fznfu
+         icjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y7si2503456ilb.100.2021.10.08.04.01.08
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXPtT5kg;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id h2si3044863ejj.419.2021.10.08.04.01.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Oct 2021 04:01:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Oct 2021 04:01:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:41318 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mYnch-0004nt-K9
-	for alex.bennee@linaro.org; Fri, 08 Oct 2021 07:01:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40414)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mYnbg-0004nc-Ce; Fri, 08 Oct 2021 07:00:05 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:3150)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mYnba-0005My-Ts; Fri, 08 Oct 2021 07:00:04 -0400
-Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.55])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HQlT439KTz902w;
- Fri,  8 Oct 2021 18:55:04 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Fri, 8 Oct 2021 18:59:50 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.8; Fri, 8 Oct 2021 18:59:50 +0800
-Subject: Re: [PATCH] hw/arm/sbsa-ref: Fixed cpu type error message typo.
-To: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-References: <20211008063604.670699-1-ishii.shuuichir@fujitsu.com>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <2e2cb98b-eeb8-729a-299c-bd945204032a@huawei.com>
-Date: Fri, 8 Oct 2021 18:59:49 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXPtT5kg;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1633690885;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=S3Le4MG/sH+0J17/DA3PcBuwRRGIPbf8AqLU211Mo2w=;
+	b=LXPtT5kgK75NpiDC6y4WGEttvdcSqK+gRkr4vSX+XIFtEhri0pQ3t2Be1uyWcFd3nkb0iL
+	68q3jbl3KmcP1r0ROm5SSBKklUD9KPQIKKDNBa26scknsq41sKPBG1kM+o5MLUQ4BvFrAY
+	NhKgrSa1s7obIx1degaw9YmavH/oR4U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-386-mIx1sSxjM12PXwYVWlgFNg-1; Fri, 08 Oct 2021 07:01:14 -0400
+X-MC-Unique: mIx1sSxjM12PXwYVWlgFNg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D06CC802CB5;
+	Fri,  8 Oct 2021 11:01:12 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.195.17])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5205460CCC;
+	Fri,  8 Oct 2021 11:01:10 +0000 (UTC)
+Date: Fri, 8 Oct 2021 12:01:07 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Laurent Vivier <laurent@vivier.eu>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	assad.hashmi@linaro.org, qemu-devel@nongnu.org,
+	James Bottomley <James.Bottomley@hansenpartnership.com>,
+	qemu-arm@nongnu.org, "Eric W. Biederman" <ebiederm@xmission.com>,
+	Arnd Bergmann <arnd.bergmann@linaro.org>
+Subject: Re: Approaches for same-on-same linux-user execve?
+Message-ID: <YWAk88MtPDufjzmK@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <877deoevj8.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20211008063604.670699-1-ishii.shuuichir@fujitsu.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme715-chm.china.huawei.com (10.1.199.111) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, rad@semihalf.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iaTZ1cxpfoIZ
+In-Reply-To: <877deoevj8.fsf@linaro.org>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-TUID: N3K+p5ne6TTN
 
+On Thu, Oct 07, 2021 at 03:32:19PM +0100, Alex Bennée wrote:
+> Hi,
+> 
+> I came across a use-case this week for ARM although this may be also
+> applicable to architectures where QEMU's emulation is ahead of the
+> hardware currently widely available - for example if you want to
+> exercise SVE code on AArch64. When the linux-user architecture is not
+> the same as the host architecture then binfmt_misc works perfectly fine.
+> 
+> However in the case you are running same-on-same you can't use
+> binfmt_misc to redirect execution to using QEMU because any attempt to
+> trap native binaries will cause your userspace to hang as binfmt_misc
+> will be invoked to run the QEMU binary needed to run your application
+> and a deadlock ensues.
+> 
+> There are some hacks you can apply at a local level like tweaking the
+> elf header of the binaries you want to run under emulation and adjusting
+> the binfmt_mask appropriately. This works but is messy and a faff to
+> set-up.
+> 
+> An ideal setup would be would be for the kernel to catch a SIGILL from a
+> failing user space program and then to re-launch the process using QEMU
+> with the old processes maps and execution state so it could continue.
+> However I suspect there are enough moving parts to make this very
+> fragile (e.g. what happens to the results of library feature probing
+> code). So two approaches I can think of are:
+> 
+> Trap execve in QEMU linux-user
+> ------------------------------
+> 
+> We could add a flag to QEMU so at the point of execve it manually
+> invokes the new process with QEMU, passing on the flag to persist this
+> behaviour.
+> 
+> 
+> Add path mask to binfmt_misc
+> ----------------------------
+> 
+> The other option would be to extend binfmt_misc to have a path mask so
+> it only applies it's alternative execution scheme to binaries in a
+> particular section of the file-system (or maybe some sort of pattern?).
+> 
+> Are there any other approaches you could take? Which do you think has
+> the most merit?
 
-On 2021/10/8 14:36, Shuuichirou Ishii wrote:
-> Signed-off-by: Shuuichirou Ishii <ishii.shuuichir@fujitsu.com>
-> ---
->   hw/arm/sbsa-ref.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index 509c5f09b4..358714bd3e 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -670,7 +670,7 @@ static void sbsa_ref_init(MachineState *machine)
->       int n, sbsa_max_cpus;
->   
->       if (!cpu_type_valid(machine->cpu_type)) {
-> -        error_report("mach-virt: CPU type %s not supported", machine->cpu_type);
-> +        error_report("sbsa-ref: CPU type %s not supported", machine->cpu_type);
->           exit(1);
->       }
->   
-Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+Could a new Linux personality flag be useful in combination with a
+new flag in binfmt_misc.
 
+eg a flag "E" for binfmt_misc which indicates the rule must only be
+applied if the process is execve()d with PER_USE_BINFMT personality
+set.
+
+That would let you add a native match rule to binfmt_misc without
+it affecting your system initially. To then run native binaries via
+qemu-user you just need to set the personality() flag and the only
+that  sub-process tree gets redirected.
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

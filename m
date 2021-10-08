@@ -1,105 +1,104 @@
-Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp1803913qvp;
-        Fri, 8 Oct 2021 08:27:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwTV7fuvfKWvAj/mbdbrHWuFV1d7ganuvLkn42j0hRo9Pd0T/Zh+LqBtwTzcVasDWKOS/xB
-X-Received: by 2002:a05:6214:6ed:: with SMTP id bk13mr10803174qvb.47.1633706831414;
-        Fri, 08 Oct 2021 08:27:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633706831; cv=none;
+Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp1805295qvp;
+        Fri, 8 Oct 2021 08:28:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiNxbhajGH10Pb8tnFsTGXWu3vNNKhqy/YMv/u1LnVDuOASc3tTUAmcEmziSN/U0gJl75I
+X-Received: by 2002:a05:6214:506:: with SMTP id v6mr10071437qvw.52.1633706923565;
+        Fri, 08 Oct 2021 08:28:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633706923; cv=none;
         d=google.com; s=arc-20160816;
-        b=rkTqvbYNiq1YQPecwxBqd+HejzyitAlC5dj8Jk6aiy9pImqH28J7TkZN11T1qX5MDH
-         w9c/YLdVq9P6kndaQSifHWtk2JKl0nCMUYM1synEM1pqCN5CkVygd3fM61wEx8T+VTyh
-         EEfQqh2uSBgibWYWTKOw9tM0xGK5lCUtLti1MmlDDHQmfTRdNlcjDGaXwioXd6wnFVT4
-         irP3oyO0LlTtl6Eyy86PLxK2E1a1AilYxRSMgyyDCVsSFJS0ZA0aYOT0vlW7XD8QhHTx
-         aghdKAb6VqG0yyS1NedD+nKEsDAS+eEWaD0fCb9RN+ZSSjaP+P0abX05hKL0d1r44oZj
-         KSZQ==
+        b=k7sPVW2mMMgmvaJVdkNCcMn+UlgiBRfI+z2ZpPosztE+pucXKF0ri0YdDvxIJiFeuo
+         HCfydA1PzxNP10eO6FdVUAIzFnRT7eCHSlUVmObSEUSPG5j62GCx4I8+JzFyglXJH/ja
+         l2gSaoIZlvyG3EQOcx5lsXNa7adjIKDV/rvBceQiXlQNVSrpx8lXnbz3BMYenFf5pgMi
+         5MRURdAw27f2KXSfO7ZxRjX2lZ8tcw8rfY23vnQh4JGnVwnNu5O2UQbpfaosTH8X8zVu
+         qmwd6dbRvjJXItXy32tgVCmfbugxW56y9t6oPSS0PzqMOH9qxr58bjCcf+F+OlwunF7x
+         0rXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=wcWyrvxOKLEpdq6q7EwxjxFJw9h5PmcqB4+2loQL3ls=;
-        b=x6gxrww9jTxMqH1WAmy3YoMcCpmzktp9wktnn4xksvUWGZICaCbpEFQYVi0HRnlA3Y
-         PCPhXUs5eKjcy659i4VBYtIQAXeFd3oOt36O3eSi12IcmIaHDy0ZLawIQ+MJt89vMDLh
-         vnuHN78VsYLFckDa8vMlECGxpTTLYTfdpXrz9bQnwfg4wz/OFwnFhZomTpqGOIxneN4k
-         eVEA/XuLwkvnHdw5lqe3lbjP+0/Yz256xgsHiGYKoKhqycaJYniFSkGFxBlQPbRspjSE
-         9QpP9DXA3yxUUDoSQtYL1h/HyZ9I7j3WK5N04DHiV0wsvm0caELO/EUjkhF9EO0P2UmT
-         mJlw==
+        bh=XM92KNyY8ssiKhgafzShXuuJk+BtFgYt61/l12lThvs=;
+        b=p51jC7JAkClqdTw4SuCTAhlcWTeXKH5/zuA5abS/0Ciju0OfcJua46YFnivkazZnN1
+         edB7poHUWcu4IBAzGB6UhCszlDnhsMek3nzMp3Vd9ObBEDqQPO8lAmb9qezUudf9LPnA
+         ZA3oAOzaWjJrik+McqAK8DmDjpeHvbBgyXcOi3hcB7GIpm9isRQpcVe2y0lRU+HXc0QA
+         qnbKDlocqQUQdRlqu4r4AIKKnY04T/z4NaXgeGwlfjLLEjtgHtSvrula6tq5PiMGQvDL
+         h1PE6WVWzp/GoturBHQyCzQHzuXJMe/100/pe/uAFiON9XKGKaySCseqpP5cKmBkQBuT
+         FdWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tzivasKi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eskSE94d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o10si2254466qtg.377.2021.10.08.08.27.11
+        by mx.google.com with ESMTPS id m15si1931234qvb.69.2021.10.08.08.28.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Oct 2021 08:27:11 -0700 (PDT)
+        Fri, 08 Oct 2021 08:28:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tzivasKi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eskSE94d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32992 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mYrmA-00006d-UK
-	for alex.bennee@linaro.org; Fri, 08 Oct 2021 11:27:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40270)
+	id 1mYrnf-0003H7-4b
+	for alex.bennee@linaro.org; Fri, 08 Oct 2021 11:28:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40410)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mYrlp-00005H-3h
- for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:26:49 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:39466)
+ id 1mYrmZ-00011z-E8
+ for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:27:36 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:33523)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mYrlm-0006YD-TO
- for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:26:48 -0400
-Received: by mail-wr1-x434.google.com with SMTP id r18so31016356wrg.6
- for <qemu-arm@nongnu.org>; Fri, 08 Oct 2021 08:26:46 -0700 (PDT)
+ id 1mYrmX-00079N-B3
+ for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:27:34 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id m22so31078401wrb.0
+ for <qemu-arm@nongnu.org>; Fri, 08 Oct 2021 08:27:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=wcWyrvxOKLEpdq6q7EwxjxFJw9h5PmcqB4+2loQL3ls=;
- b=tzivasKij+So4F0iZc1QDLAFUrbjwWWTXQVezttHk4Hz6HSCEnDXvlFiC0DQoUASuS
- T0nDLv5QJWoumOn/wK07hfVPUIHvh058o+ALc7tMHD9TCtAG2cUd53BUzo6ZvdGCxQFI
- JbcZQtQj7zZfQiSfTqACfljfi5agctOo2eVxUtKRqUCD7SP4xmSwU4Veaag17wIp/IIR
- p1yg9TnH/EEiky4fSJh8rvMer5niH65eetGLZi/5bqTfITJSofpPIfLH26E4pj75j43M
- qoNVlL4ShmtdjRfa6VObEJk9Q3D4dcBjKkqTl9XQnsV3LIHtDWdvLb3iWxTKykaJP0VE
- BJvg==
+ bh=XM92KNyY8ssiKhgafzShXuuJk+BtFgYt61/l12lThvs=;
+ b=eskSE94d3+G8To9qWjp6BEBZ3NGhaaKC/cULyYhcej8RdQd3CG4ZVbUnkSiKO3vyR6
+ jO8VhBeUTBUZuis/f2RU8Ai1ZRZnYozOiTkQEeNdDyPSh54IOXBF23847gglz/CcrmsJ
+ x3/1LzQm3BnDgd3t6EL8S0HnTVnT0vkSWewz7w0E3LC3BB/5DhtFx3SqTEri5MP21F61
+ y9D4/hZKz+fhDp3p78B6qBrguKAYbgzoQFyD9JJ/DpbnwbOGUzH40f8gXXcUKpTf9eK7
+ IOCmoojdnETNf2/tXed844zhXiDhvsBx5XC6PtJMcKmoYIlO5VLF1j4EIGLNP088ABzM
+ zUQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=wcWyrvxOKLEpdq6q7EwxjxFJw9h5PmcqB4+2loQL3ls=;
- b=NDKD1UvE++R7YL6N2eGVQ+T5MdiKPySTzj46J2gV8r5VAKgFW2ljOi8IO+OBnspm8O
- G8na63931eU5xcx1k/tYbLcCu7TwOuenfr2JhgBSEFHgsLg7zt83uUnntAjQukB6g8lJ
- wx4AYxpmWpprfCfClv6FEtd77FzHDeYeDs+0Y2feoD7zRejK6713yAjmSkUYDeu2FxLA
- jMlMXfBSastfX3prA/ZJSWkmuuESsmoi6m1G64DdiMKWA3T0YfY0dJGHuHs5DQuxrLne
- Es2sZcV1tMXnRVtu8jU5We/+J6JJRrjtPXBXEHagnpvInJiAAkrpifrtE8VDaPEvroWe
- Blpg==
-X-Gm-Message-State: AOAM530YEozK6yXk2g42aT3HpF+VovbzHNAUcwpxB97+J23Bkw4bb+jX
- F0Xt8eVBaSI5yrbRtVh6V+47BQ==
-X-Received: by 2002:adf:a35d:: with SMTP id d29mr4718159wrb.318.1633706804956; 
- Fri, 08 Oct 2021 08:26:44 -0700 (PDT)
+ bh=XM92KNyY8ssiKhgafzShXuuJk+BtFgYt61/l12lThvs=;
+ b=eSgQf3tdJ1rrSS3DgpEOEoC4XGLEWfrJKwKApbd/8k0R5nqiyJpx9Kcb+Em1uYhDeG
+ XXm6ja51+PWjBkTKCglKqnhTa+c6CY39cQyyjOLaa8vtSj9qSU8pBT5xfqTNjhmS6hgu
+ /Wz2oE33XBbaYxXenPtdUJ+NyId9rrZeUN6hT6QTn9ZJnrlUidiOc5PmGb7NnZruNrdR
+ RafjcgAj9QfpADrp56/QfAxAaHgjXBdxr9J234vv1YNQbUFBIMaVOoEnyLwcJ9XgAqaF
+ HLPJNcI1NsIBgsuZquGjaGMK6Lpbzzbni/GNtfrbVi+cM149Ak9p467oruoKqLC0fEYv
+ /g2w==
+X-Gm-Message-State: AOAM532XLZ0yB4DGtC9CD8uzoLGzH0SF0Uy0dthrrjhFyiFcdgIoh8Gs
+ rudfZsgZtOwbMa0GQ2oFrjsq0g==
+X-Received: by 2002:a1c:e901:: with SMTP id q1mr4047378wmc.185.1633706850928; 
+ Fri, 08 Oct 2021 08:27:30 -0700 (PDT)
 Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
  [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id v23sm2777723wmj.4.2021.10.08.08.26.44
+ by smtp.gmail.com with ESMTPSA id l124sm12193068wml.8.2021.10.08.08.27.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Oct 2021 08:26:44 -0700 (PDT)
-Date: Fri, 8 Oct 2021 16:26:22 +0100
+ Fri, 08 Oct 2021 08:27:30 -0700 (PDT)
+Date: Fri, 8 Oct 2021 16:27:08 +0100
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH v4 08/11] tests/acpi: allow updates of VIOT expected data
- files
-Message-ID: <YWBjHrELdZIBXcOD@myrica>
+To: Ani Sinha <ani@anisinha.ca>
+Subject: Re: [PATCH v4 09/11] tests/acpi: add test cases for VIOT
+Message-ID: <YWBjTODTiGc/vTTU@myrica>
 References: <20211001173358.863017-1-jean-philippe@linaro.org>
- <20211001173358.863017-9-jean-philippe@linaro.org>
- <20211006101215.24414401@redhat.com>
+ <20211001173358.863017-10-jean-philippe@linaro.org>
+ <alpine.DEB.2.22.394.2110051556270.820442@anisinha-lenovo>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20211006101215.24414401@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x434.google.com
+In-Reply-To: <alpine.DEB.2.22.394.2110051556270.820442@anisinha-lenovo>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,55 +121,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
  mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
  eric.auger@redhat.com, qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com,
- ani@anisinha.ca, pbonzini@redhat.com
+ pbonzini@redhat.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8bgpzKKDRomJ
+X-TUID: Df5NzaOVH1NW
 
-On Wed, Oct 06, 2021 at 10:12:15AM +0200, Igor Mammedov wrote:
-> On Fri,  1 Oct 2021 18:33:56 +0100
-> Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
+On Tue, Oct 05, 2021 at 03:57:17PM +0530, Ani Sinha wrote:
 > 
-> > Create empty data files and allow updates for the upcoming VIOT tests.
-> > 
+> 
+> On Fri, 1 Oct 2021, Jean-Philippe Brucker wrote:
+> 
+> > Add two test cases for VIOT, one on the q35 machine and the other on
+> > virt. To test complex topologies the q35 test has two PCIe buses that
+> > bypass the IOMMU (and are therefore not described by VIOT), and two
+> > buses that are translated by virtio-iommu.
+> >
 > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > ---
-> >  tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
-> >  tests/data/acpi/q35/DSDT.viot               | 0
 > 
-> does default tests/data/acpi/q35/DSDT differs from
-> DSDT.viot?
+> This might be a stupid question but what about virtio-mmio and single mmio
+> cases? I see none of your tables has nodes for those and here too you do
+> not add test cases for it.
 
-Yes the VIOT test has one more PCI device (virtio-iommu) and PXB devices,
-so there are additional descriptors in the DSDT
+No it's a good question, there is no support for either at the moment.
+virtio-mmio based virtio-iommu is relatively easy to implement, just
+requires a little more machine support. QEMU doesn't support putting MMIO
+endpoints behind an IOMMU at the moment, and implementing that is more
+complicated.
+
+To test the Linux VIOT driver I did both prototypes, but I don't have a
+compelling reason or time to upstream them at the moment
+https://jpbrucker.net/git/qemu/log/?h=virtio-iommu/acpi-2021-06-02
 
 Thanks,
 Jean
 
-> 
-> >  tests/data/acpi/q35/VIOT.viot               | 0
-> >  tests/data/acpi/virt/VIOT                   | 0
-> >  4 files changed, 3 insertions(+)
-> >  create mode 100644 tests/data/acpi/q35/DSDT.viot
-> >  create mode 100644 tests/data/acpi/q35/VIOT.viot
-> >  create mode 100644 tests/data/acpi/virt/VIOT
-> > 
-> > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> > index dfb8523c8b..29b5b1eabc 100644
-> > --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> > @@ -1 +1,4 @@
-> >  /* List of comma-separated changed AML files to ignore */
-> > +"tests/data/acpi/virt/VIOT",
-> > +"tests/data/acpi/q35/DSDT.viot",
-> > +"tests/data/acpi/q35/VIOT.viot",
-> > diff --git a/tests/data/acpi/q35/DSDT.viot b/tests/data/acpi/q35/DSDT.viot
-> > new file mode 100644
-> > index 0000000000..e69de29bb2
-> > diff --git a/tests/data/acpi/q35/VIOT.viot b/tests/data/acpi/q35/VIOT.viot
-> > new file mode 100644
-> > index 0000000000..e69de29bb2
-> > diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/VIOT
-> > new file mode 100644
-> > index 0000000000..e69de29bb2
-> 

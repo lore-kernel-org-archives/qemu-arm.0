@@ -1,106 +1,105 @@
-Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp1808427qvp;
-        Fri, 8 Oct 2021 08:32:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRX/ucSBu/2/bYK49aK97HJBvGrkzekFc1N//1prtADnaX3hNb7ZifNrVxjoELLtRTpjAM
-X-Received: by 2002:a05:622a:587:: with SMTP id c7mr12812009qtb.204.1633707121555;
-        Fri, 08 Oct 2021 08:32:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633707121; cv=none;
+Received: by 2002:a0c:90cc:0:0:0:0:0 with SMTP id p70csp1810707qvp;
+        Fri, 8 Oct 2021 08:34:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWFZMdOGQKmMSkPHsdLoQ4GNE4ik50vj4ViU0fO808UxHOyEOObN1s8VhBj5+hXi8dSn1R
+X-Received: by 2002:ae9:dec5:: with SMTP id s188mr3473322qkf.48.1633707263197;
+        Fri, 08 Oct 2021 08:34:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633707263; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jc6OEV/udnq7Z6RswSrGz+9y32jyQjgX9/E1eUayWhjWjzINE/cNh2DZRhn28aN0C2
-         aUxxbqIL8Jd3fUEXYVeU2Zq59A6VWYxY4YTRIH1RNYiy4xFWbqWjXBl0pgiGOemOb/Ra
-         Bgy/XdPy4vWCheGZ+ejsLPbDyKyj8WFC636DN7auc/W/1tWBkk9HmY8yFxmIGkcsUS3p
-         7S3LbQFzGyssN23TmKrNN3Ktpa1Ly82zblNQeuRNfWPMDVwU8dAjVjLym5hO/2pxEa8M
-         DIaaxyL0WTn5LFUHqbVwrx/NHRm0gCHon2XJMJvkWcALR0KakThlr8mDRb3jse9eZYpX
-         Ezfg==
+        b=PepcfoEXWefKLgEe29L++m1gg3f38xDlt+xr6YRtadXMIc16aoXoa3xtrWxXpp3Z54
+         C3dI/b4XYSOHFXAExhG1qpluCQ8vjhTcZOcMPNctmuvIXBbNE74BRwaW7s9AmT0Kpyv9
+         j5409neUYM3JRGhLjCTKWsHWuJbQZzaXBzOl8fFBI7UJqKp0wE3lPc6hOl0o6blArlTh
+         KccM5HL2LWdIhhRq78fosu0gD0hSndw5SpiH2mUcxVkQSoteGLcnV0HE3CVxmfbywGY1
+         8QEApWVQy+YgzlIjiN+k4Q+QlitlKUHHzHc3DaZLwCxKBWmNRd+KHntzAxQ68/myg3ds
+         lbYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=bwwiKFsHy4N2r8I++KMRDAwlT3fDo4NGnqHTIh6JNsM=;
-        b=Lnw2DfZz6VMxgeu2RP/rUe6fkm36S6NEBTb9/9WDkj2eUJU7so05Al8P7CcZSdo1ST
-         X+ZWx3xO6lPsS6gNZqnC5ccEYOUuzY0gw+7ViYc1/AsTCbabSWI+zfTT5G0r2e1mudAu
-         kik8irMB8VAiVOj5dLMbpaAEuJTTD4QRPyERcWeT6yqY7ghFjlkmvcbe3ijG6cy1NJvf
-         wz3lEJbOACR7DqkTIxU5U+VEnaeuRDW5VX7rHFXsjqVTwDMAak3uk2wY53lExwwG9AKs
-         q6WQFQxalCZhRamCJJ9/fwQ16/ts8+kG9C64yxiO4/H7aHa7/qOQaEJJXBmCXh0IiVp/
-         3Pow==
+        bh=TgxX5dR3hV1a5Hu1oGqFbjg6jROCYDGxMzPV+J2OHcw=;
+        b=L3G6/z5hwKqqvU8BjGltArgfPiF7gbkGNuJeCgKSD5bTnCDvzvWsrd2LFJCZQLPmce
+         SCWj8K9Xf1xL4C/z91ovA1FkuFWqu2ZekGqJtksSUdSySw7pSBaid3yKt8phQ49dlwHr
+         /TVNSGqb0MNMdUgyBiG9bR6MeChSLOo9unQ+dIJ8OCHfQLKn0d5Ti5gdG7VaFdZMGHPL
+         1guCPrgr7Wb9x2b2eady3Wlx6aPx1rPzNLUNbCUq1QWJ2yn1w2TYy1VFE5KD3a/b9iG6
+         aF2rcZF+LKXj5UU+8yDxrjwXXy6ns+DbMaerX6BycewQrAZh6L71H3O4G29qWdtNlGKq
+         ADVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bW6B4WGP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=om+jGEql;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m15si1935875qvb.69.2021.10.08.08.32.01
+        by mx.google.com with ESMTPS id g14si2017522qtm.415.2021.10.08.08.34.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Oct 2021 08:32:01 -0700 (PDT)
+        Fri, 08 Oct 2021 08:34:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bW6B4WGP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=om+jGEql;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41114 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mYrqr-0005k8-4r
-	for alex.bennee@linaro.org; Fri, 08 Oct 2021 11:32:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41204)
+	id 1mYrt8-00070N-Oz
+	for alex.bennee@linaro.org; Fri, 08 Oct 2021 11:34:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mYrpN-0004b8-CG
- for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:30:29 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:37859)
+ id 1mYrsu-0006zV-R6
+ for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:34:08 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:40810)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mYrpL-0001Mi-4z
- for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:30:28 -0400
-Received: by mail-wr1-x433.google.com with SMTP id e12so30991723wra.4
- for <qemu-arm@nongnu.org>; Fri, 08 Oct 2021 08:30:26 -0700 (PDT)
+ id 1mYrsr-0004eT-Oj
+ for qemu-arm@nongnu.org; Fri, 08 Oct 2021 11:34:08 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id i12so18399869wrb.7
+ for <qemu-arm@nongnu.org>; Fri, 08 Oct 2021 08:34:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=bwwiKFsHy4N2r8I++KMRDAwlT3fDo4NGnqHTIh6JNsM=;
- b=bW6B4WGPKOKstqk2PpsP5lY+4oKzx4EoPyF5UuRIFhsjibgZaFv/P6lTQT1W6kbdyR
- +d0Ll4fI7iJOKQGbhRKlX0x0ZndvAMNZ5MG3SmuiqrwmM/ysJZjMIdVEqF3lCthoHNtS
- DvqxcJhoaRCvGJos3A1O+yGfPTndpmcJATEzQEdjOUoN5thzeJhOk2/uat5c1Te/UP2q
- mPGPbnaIZrRCFqwb3BR4QWginIdaP//sljwKI3fJTXejKlLv3t257ZdexO8+cLkZ7bTB
- l7lNvATo8u6gh8dMTOc2QZVBlquaIgBu7jeqp5iRXsVmvCLdRX55VPTCfZUY3fsfwL8G
- TAIg==
+ bh=TgxX5dR3hV1a5Hu1oGqFbjg6jROCYDGxMzPV+J2OHcw=;
+ b=om+jGEqlYMK88Lwz2SkzhdbH3M6uHQ0aEvxgshdpenUcGibXFCcEwp+s3C0NABqg/B
+ iAHe0ylLNZ18tED53HsXo8vTccDgCvsvG/eFqfv7dZo+iOsPZMknNpAm2TdxfO1ocpBU
+ 5ZhBo4zbHhYQ03Q1PQfQ7eT944DLYxOnCd3neMZzwCpOToZ5smf+UlTlU5VElAjhZ6V8
+ jYncmaJMBQ/rkiTeqbFxm0CpLisfe5Y2qyXYB9fQd2FheoPzoJn/WWmW8mSV5liypkyE
+ hEnuZoGsH4lbnnFeGRbohyNAjN7iSE/Hzd7Z7rCsOtbVCdnfQOGBrYm/FLJoEYCLbKyw
+ aC2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=bwwiKFsHy4N2r8I++KMRDAwlT3fDo4NGnqHTIh6JNsM=;
- b=tgL20Hzl9qKOGO66UikSVzgiO80HSkan9rYT58ukmoVQyoHZNcqPl9OIgwJiRt7HCE
- ijGyKY2q4B9RSmUNgMm5B4dpq5qJjTw145s0jIBiMmNYOC9PcFh4jmcVF5gG5LL6Op8l
- vqyRLK2RrVhlLPqjNT47EyoyYcz8OTkbbNcGWmIXMpQn1ISn4PP5LPrC3GOI22CcdBic
- kGsP4LRlkSn4ibkWRi+fqT+nvy0neufcxLCjCKGEO2GPBs++7W/UVCKykFu34YlJPlAG
- WJJY3XUIM0VK5hLW4YiqgvRAo/NZcaxS+CHbRkTRv6xOkDCMldSQDOKt/MJ/eR1boqtB
- puCA==
-X-Gm-Message-State: AOAM532sXqZkxgmFK1Gjy0HOrWJSOb/SneNBTenSyjPdOfO8deI4Fg/Z
- O4VumkMrwvuxTeBDN+7TptcvRw==
-X-Received: by 2002:a05:6000:154f:: with SMTP id
- 15mr5022339wry.254.1633707025430; 
- Fri, 08 Oct 2021 08:30:25 -0700 (PDT)
+ bh=TgxX5dR3hV1a5Hu1oGqFbjg6jROCYDGxMzPV+J2OHcw=;
+ b=fNH/+5CJSZsIfxjxhFFr4TrMUDAdFgvvsmP4tD7j7xXeuQ4FY+9t9GtU99mkzs4FU8
+ LGvkAOclKPY4QbyItoBC/e1KjI+L1W0XBJlA00wJgOysE5Rqvv/nePmxbC0OFyTIiEfQ
+ EEhC9bKKf4YRj9xFxvnNgba4bD2se8q8dghQIDM0mOpyMgvcdE96mXSrmGgNDEZQLA7v
+ ZKyv8wEXRkUZl6uNu3cpuuH1R/82Vxq8ukeU1qkh58Pb2XY5xyu1W+I8J5O/O2MvSDoi
+ ADbG7uiKDDTG8OQo2qZ6lbqpigK+LmhCo9OzLA/vSBJPN3mp8mwtISSDB4cac7uTdNED
+ qE3g==
+X-Gm-Message-State: AOAM530pkUMrfkUTjO0HBW6opiBJMtt2STvzxvpdm+/h/+w11twLIJL7
+ vAlo676pKdGnPOdHrrf1KqQUgw==
+X-Received: by 2002:a7b:c386:: with SMTP id s6mr4228801wmj.183.1633707242346; 
+ Fri, 08 Oct 2021 08:34:02 -0700 (PDT)
 Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
  [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id c17sm2697324wrq.4.2021.10.08.08.30.24
+ by smtp.gmail.com with ESMTPSA id o19sm2849275wrg.60.2021.10.08.08.34.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Oct 2021 08:30:24 -0700 (PDT)
-Date: Fri, 8 Oct 2021 16:30:02 +0100
+ Fri, 08 Oct 2021 08:34:01 -0700 (PDT)
+Date: Fri, 8 Oct 2021 16:33:39 +0100
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
+To: Ani Sinha <ani@anisinha.ca>
 Subject: Re: [PATCH v4 10/11] tests/acpi: add expected blob for VIOT test on
  virt machine
-Message-ID: <YWBj+ngyUL3QSCwn@myrica>
+Message-ID: <YWBk0887TuK1fIR2@myrica>
 References: <20211001173358.863017-1-jean-philippe@linaro.org>
  <20211001173358.863017-11-jean-philippe@linaro.org>
- <f5293d9e-10b1-6a85-a35f-66b12680cdd2@redhat.com>
+ <alpine.DEB.2.22.394.2110051532450.820442@anisinha-lenovo>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <f5293d9e-10b1-6a85-a35f-66b12680cdd2@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x433.google.com
+In-Reply-To: <alpine.DEB.2.22.394.2110051532450.820442@anisinha-lenovo>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,18 +119,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
- ani@anisinha.ca, imammedo@redhat.com
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
+ mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com,
+ pbonzini@redhat.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MedXG0O0AKZC
+X-TUID: eL252J6MWmdY
 
-On Tue, Oct 05, 2021 at 09:38:13PM +0200, Eric Auger wrote:
-> Hi Jean,
+On Tue, Oct 05, 2021 at 03:34:57PM +0530, Ani Sinha wrote:
 > 
-> On 10/1/21 7:33 PM, Jean-Philippe Brucker wrote:
+> 
+> On Fri, 1 Oct 2021, Jean-Philippe Brucker wrote:
+> 
 > > The VIOT blob contains the following:
 > >
 > > [000h 0000   4]                    Signature : "VIOT"    [Virtual I/O Translation Table]
@@ -167,16 +167,48 @@ On Tue, Oct 05, 2021 at 09:38:13PM +0200, Eric Auger wrote:
 > > [04Eh 0078   2]                  PCI BDF end : 00FF
 > > [050h 0080   2]                  Output node : 0030
 > > [052h 0082   6]                     Reserved : 000000000000
-> I noticed the spec does not clearly say the virtio-iommu-pci BDF does
-> not need to be excluded from the PCI range.
-> Shouldn't it be clarified?
+> >
+> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> 
+> Acked-by: Ani Sinha <ani@anisinha.ca>
+> 
+> Without looking at the other patches, the disassembly looks good (with
+> latest iasl from upstream git).
+> One suggestion : maybe also add the raw table data as well of length 88.
 
-Possibly, but I didn't want to complicate things. As the spec doesn't
-specify any exception the driver should handle it
+Hmm, the raw VIOT table is included at the end of the patch (encoded by
+git in base85). Or did you mean any other data?
+
+Thanks,
+Jean
 
 > 
-> Besides
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks!
-Jean
+> 
+> > ---
+> >  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+> >  tests/data/acpi/virt/VIOT                   | Bin 0 -> 88 bytes
+> >  2 files changed, 1 deletion(-)
+> >
+> > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> > index 29b5b1eabc..fa213e4738 100644
+> > --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> > @@ -1,4 +1,3 @@
+> >  /* List of comma-separated changed AML files to ignore */
+> > -"tests/data/acpi/virt/VIOT",
+> >  "tests/data/acpi/q35/DSDT.viot",
+> >  "tests/data/acpi/q35/VIOT.viot",
+> > diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/VIOT
+> > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..921f40d88c28ba2171a4d664e119914335309e7d 100644
+> > GIT binary patch
+> > literal 88
+> > zcmWIZ^bd((0D?3pe`k+i1*eDrX9XZ&1PX!JAexE60Hgv8m>C3sGzXN&z`)2L0cSHX
+> > I{D-Rq0Q5fy0RR91
+> >
+> > literal 0
+> > HcmV?d00001
+> >
+> > --
+> > 2.33.0
+> >
+> >

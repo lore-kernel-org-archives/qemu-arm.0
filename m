@@ -1,117 +1,126 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2086996lfp;
-        Thu, 7 Oct 2021 20:36:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgt0HsiZ+MYty//hmbdQF0f+OGADYXskbCIuULdShC/tUwZsbrnSeU4dJY0Rikfc/s5QQw
-X-Received: by 2002:a05:6214:c8d:: with SMTP id r13mr5542046qvr.24.1633664210269;
-        Thu, 07 Oct 2021 20:36:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633664210; cv=none;
+Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2174322lfp;
+        Thu, 7 Oct 2021 23:07:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwI2CtVNuUh3hMmqgEjkgkiaMtg9XQ2cmnPo4GcPxf7/kGmsTTOw0EOSvCgLz++b6Y6kZ7/
+X-Received: by 2002:a37:a714:: with SMTP id q20mr1330258qke.251.1633673265301;
+        Thu, 07 Oct 2021 23:07:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633673265; cv=none;
         d=google.com; s=arc-20160816;
-        b=i5VO79+5FPw8q9YDRFVk5P/j2EH9iBUKersgsh6PgWRyRok6MjYLf/NB3j6zBvY0Lz
-         tgRCMZn6bxPfTLskb1OHwTiz0wP1P+eQ1yWAn4Lamt0SKQBhtNfF1MEyJtsJ/v9M+nE8
-         5kKMYzbWEDqWddesycLh0eDypyhiPI1s23fgDfd6A+ZuLjCOv5EIAgkGjuP8Ty1hWsQq
-         uoDt8cTbdTEJq0/IL0DUBRgvSJjZByVQGB5lOTlA5O+e0L/WLS4AAwlxVlGf//T/NxrF
-         GzKi++b3wGf5pPLp0AqNiZ0Qs8Ndeo+Jr0bBnDQSqSUikhOBo93DrIqAe83/t4KiW/u2
-         ugzA==
+        b=nXs2Ui6/1l/0fD/l0/d1dc1mLsXbnvwJHlKhDUKuFgdH+QlM96nJmXI/vy3rq2Q0xM
+         0OrNioOVXWu86lDTOUdYztBk4B+15tLUqnIWXWF0gNKr05NRoG6A3zu0FMUVtT5Nv+Xb
+         LWOkW8m/4nV/nZsnbaq6CYxOBwvXonzEAtVyW9YPWljH1jiAr9kdrnFvlt9g7kGMD6Xc
+         GZoxQRzVcplLXlIyiTG4qTbYE3q3vpdZwiQEoP8+Id0dScxD5Y0UGm/s0KjBLWfUma96
+         4C5vhFKx2GutwgkxE8+1g9c7y9vBX/YcCNDphPsmaN9j6D1104xf34HvfAswOqZLDLLz
+         GiyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=xd1X6Cgdy+VGIVrxX9Zc6btG76QjSYwgaoVL0Yoq88U=;
-        b=td5/vJn7vxJQARzi7/9Jh7SrYAlYqkhzrc3U8QU4n2y3bve154XRT6MixS4W7BF7HX
-         y2KMarLt/LXwJqOyPenIiMhXStXBamwvk4x2krzfvSGw1dacAocxm1aA6Iy+RMCOWUWt
-         53I9mR5q99XDOcqkARntaa85w3mWOU9xZfIZPwgQBkBIACh+BSZdbuSXSHt610hK2q3y
-         bMDPo9fkoJozZQUfoeo4BneRWjTYMLNWwJMIRn/HFDsjty2iDyYIGPRUXJAJz1hZoJoD
-         IAfrBegXiZhqdu9IFFxQ2MLDmAmUHD1kz3G+T2EdAU6vkYNLGayFf0kOvUB2jIyqCMEJ
-         V1yw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=EGdDR6+cDiZhd3Lv9mMorzquJImKSfm/HcA87Kerc48=;
+        b=KRqY2TPDitmAwf4HWgCTXuiBAt9AW2XapGL9mrqC+RJtP8SeT4+60dWPpDZi/d94YM
+         hTWrgrEBsMCcxCcInVu6iU8kd86AdxOC/L9vSz5s5+1nN1I3yH7XcSHQ8s7f5fKc8vQ2
+         CisrbUPddq1jSvJ+xYCEEhq8NsQX/W9L5VvFLmhAqKZEAGEZr0heTRZczNbB1Lz1JScd
+         I0dRbEo9lStinOmPV8zFmnwZKiyehDx20qVz68V+2NNnHdG1uWguMHuaydwZ4/N/KEsW
+         7kH9w99cW9mBagy5+h4LgFrMZ/27oB9/T408jGAVv4/ViLllKJWx3G7EY7EzttVDFyA0
+         mMyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=VMvcWDn9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dY6DXrus;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l197si978620qke.272.2021.10.07.20.36.50
+        by mx.google.com with ESMTPS id x24si1195398qto.177.2021.10.07.23.07.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Oct 2021 20:36:50 -0700 (PDT)
+        Thu, 07 Oct 2021 23:07:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=VMvcWDn9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dY6DXrus;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:43200 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mYggj-0001KX-Js
-	for alex.bennee@linaro.org; Thu, 07 Oct 2021 23:36:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45842)
+	id 1mYj2m-0007wi-Lb
+	for alex.bennee@linaro.org; Fri, 08 Oct 2021 02:07:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=991596d384=pdel@fb.com>)
- id 1mYgfN-0000cd-8N
- for qemu-arm@nongnu.org; Thu, 07 Oct 2021 23:35:26 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:56616)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mYj2c-0007wC-K2
+ for qemu-arm@nongnu.org; Fri, 08 Oct 2021 02:07:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21297)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=991596d384=pdel@fb.com>)
- id 1mYgfB-0005cb-Rc
- for qemu-arm@nongnu.org; Thu, 07 Oct 2021 23:35:24 -0400
-Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 19827RdI015782
- for <qemu-arm@nongnu.org>; Thu, 7 Oct 2021 20:35:11 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=facebook;
- bh=xd1X6Cgdy+VGIVrxX9Zc6btG76QjSYwgaoVL0Yoq88U=;
- b=VMvcWDn95/SfO3UCcL0jTIU7Oj7bdA0rkX83E9zTankYVUeVGGKppLHdRyQnrrdZ7tHw
- XD4MzXqjX/OMqoKbzvbc7SBaWtoCs+3QkRiCw4j6hkGuaGR9qkhceHhKhv/dPqEaLIPp
- GwvvIzJUxW9i4zyPh/iJzwOd7tHkqF4o8p8= 
-Received: from mail.thefacebook.com ([163.114.132.120])
- by mx0a-00082601.pphosted.com with ESMTP id 3bjcwqgmar-8
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 07 Oct 2021 20:35:11 -0700
-Received: from intmgw002.46.prn1.facebook.com (2620:10d:c085:108::8) by
- mail.thefacebook.com (2620:10d:c085:11d::4) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Thu, 7 Oct 2021 20:35:10 -0700
-Received: by devvm660.prn0.facebook.com (Postfix, from userid 385188)
- id B73235733F5E; Thu,  7 Oct 2021 20:35:06 -0700 (PDT)
-From: <pdel@fb.com>
-To: 
-CC: <clg@kaod.org>, <peter.maydell@linaro.org>,
- <andrew.aj.id.au@devvm660.prn0.facebook.com>, <joel@jms.id.au>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Peter Delevoryas
- <pdel@fb.com>
-Subject: [PATCH v2 1/1] hw: aspeed_gpio: Fix GPIO array indexing
-Date: Thu, 7 Oct 2021 20:35:01 -0700
-Message-ID: <20211008033501.934729-2-pdel@fb.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211008033501.934729-1-pdel@fb.com>
-References: <20211008033501.934729-1-pdel@fb.com>
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mYj2Y-0006Nq-GN
+ for qemu-arm@nongnu.org; Fri, 08 Oct 2021 02:07:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1633673248;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=EGdDR6+cDiZhd3Lv9mMorzquJImKSfm/HcA87Kerc48=;
+ b=dY6DXrusp66u2tUrRUGtyKOFf6G6p5FdLESa/Q8/OSkrZRfEFUcvM6VAR8X7/rxiVlCUSU
+ uplOF0BP8jIqc0EJYAD3aYMjjWfuiR/o2Dde5RmAmpHpeEjHWHFrS+G9ETLXcsXE0vfN3y
+ QRUKdqeDjAlJCP9EHxASGnzrcNwA3aw=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-48-lnhFfsP0Pg2xxI6ZgmuOIQ-1; Fri, 08 Oct 2021 02:07:27 -0400
+X-MC-Unique: lnhFfsP0Pg2xxI6ZgmuOIQ-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ f4-20020a50e084000000b003db585bc274so2581140edl.17
+ for <qemu-arm@nongnu.org>; Thu, 07 Oct 2021 23:07:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=EGdDR6+cDiZhd3Lv9mMorzquJImKSfm/HcA87Kerc48=;
+ b=CdYf3bMFOn0Of/UjndEtJyIVr2iujqFeUKGN5YnRCissALDs41Uyuh9PlYmwkbO+hv
+ kJ8GgdKXdrmw+RA/8Ax1SE/tfYT3bXyVl8MSgnt8XT98ynpwGbamqJJfWBgnWdHDIu6S
+ Jf/e9NdwxmxoZzPCuCUHOZNPYU3UWM2uy46hxGk0yfVQNpJoq7eW4FA+DNJYmSFZYqpQ
+ TwTxBCvD3p4sZlgtAralzbMryE+uTUe9rPxhfKoC5mnSIHVmLdEHKP3wMe2dYeN9bS1p
+ 3uDe+hmdnKayfwIhAUqsn4utlMjN1iqUKmx77seQIrug8KXg+2k46Lkf6uOyMNg7oKbB
+ hUkA==
+X-Gm-Message-State: AOAM533uXjdLqr8xfzU9zkfTEifpoVvmFWGSt9/E1OjT+8fXmteXBWlu
+ aPXr7ZixFbjlgXHEHfuSxVleBGVXYTdeb6Av2VjJBcUxfOOhPJBf9+bhsA++o6iNr0Qib0Y0spX
+ mlctt4JuAEj5K
+X-Received: by 2002:a05:6402:5112:: with SMTP id
+ m18mr4531558edd.101.1633673245913; 
+ Thu, 07 Oct 2021 23:07:25 -0700 (PDT)
+X-Received: by 2002:a05:6402:5112:: with SMTP id
+ m18mr4531524edd.101.1633673245638; 
+ Thu, 07 Oct 2021 23:07:25 -0700 (PDT)
+Received: from gator.home (cst2-174-28.cust.vodafone.cz. [31.30.174.28])
+ by smtp.gmail.com with ESMTPSA id l8sm535430ejn.103.2021.10.07.23.07.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Oct 2021 23:07:25 -0700 (PDT)
+Date: Fri, 8 Oct 2021 08:07:23 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH 1/2] numa: Set default distance map if needed
+Message-ID: <20211008060723.i7wxmuzi5g25r42n@gator.home>
+References: <20211006102209.6989-1-gshan@redhat.com>
+ <20211006102209.6989-2-gshan@redhat.com>
+ <20211006103529.25vjtmkmijmomq4u@gator.home>
+ <688560f5-19a4-7a08-41ec-132266f76725@redhat.com>
+ <20211006115643.p5b2qcoi4eagluqc@gator.home>
+ <9e51e29e-8792-18e7-7b38-68af15a3fdf5@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-FB-Internal: Safe
-Content-Type: text/plain
-X-FB-Source: Intern
-X-Proofpoint-ORIG-GUID: e2alsfy5zSVsGv9qTG3NPI8uenf1cOUF
-X-Proofpoint-GUID: e2alsfy5zSVsGv9qTG3NPI8uenf1cOUF
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.391,FMLib:17.0.607.475
- definitions=2021-10-07_05,2021-10-07_02,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- clxscore=1015
- malwarescore=0 spamscore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0
- phishscore=0 suspectscore=0 mlxlogscore=925 priorityscore=1501
- adultscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2109230001 definitions=main-2110080019
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=991596d384=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+In-Reply-To: <9e51e29e-8792-18e7-7b38-68af15a3fdf5@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,282 +133,191 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, marcel.apfelbaum@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, shan.gavin@gmail.com, ehabkost@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r7iKakDsPwVO
+X-TUID: KnUcMQ86TPQE
 
-From: Peter Delevoryas <pdel@fb.com>
+On Fri, Oct 08, 2021 at 10:51:24AM +1100, Gavin Shan wrote:
+> Hi Drew,
+> 
+> On 10/6/21 10:56 PM, Andrew Jones wrote:
+> > On Wed, Oct 06, 2021 at 10:03:25PM +1100, Gavin Shan wrote:
+> > > On 10/6/21 9:35 PM, Andrew Jones wrote:
+> > > > On Wed, Oct 06, 2021 at 06:22:08PM +0800, Gavin Shan wrote:
+> > > > > The following option is used to specify the distance map. It's
+> > > > > possible the option isn't provided by user. In this case, the
+> > > > > distance map isn't populated and exposed to platform. On the
+> > > > > other hand, the empty NUMA node, where no memory resides, is
+> > > > > allowed on ARM64 virt platform. For these empty NUMA nodes,
+> > > > > their corresponding device-tree nodes aren't populated, but
+> > > > > their NUMA IDs should be included in the "/distance-map"
+> > > > > device-tree node, so that kernel can probe them properly if
+> > > > > device-tree is used.
+> > > > > 
+> > > > >     -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
+> > > > > 
+> > > > > So when user doesn't specify distance map, we need to generate
+> > > > > the default distance map, where the local and remote distances
+> > > > > are 10 and 20 separately. This adds an extra parameter to the
+> > > > > exiting complete_init_numa_distance() to generate the default
+> > > > > distance map for this case.
+> > > > > 
+> > > > > Signed-off-by: Gavin Shan <gshan@redhat.com>
+> > > > > ---
+> > > > >    hw/core/numa.c | 13 +++++++++++--
+> > > > >    1 file changed, 11 insertions(+), 2 deletions(-)
+> > > > > 
+> > > > > diff --git a/hw/core/numa.c b/hw/core/numa.c
+> > > > > index 510d096a88..fdb3a4aeca 100644
+> > > > > --- a/hw/core/numa.c
+> > > > > +++ b/hw/core/numa.c
+> > > > > @@ -594,7 +594,7 @@ static void validate_numa_distance(MachineState *ms)
+> > > > >        }
+> > > > >    }
+> > > > > -static void complete_init_numa_distance(MachineState *ms)
+> > > > > +static void complete_init_numa_distance(MachineState *ms, bool is_default)
+> > > > >    {
+> > > > >        int src, dst;
+> > > > >        NodeInfo *numa_info = ms->numa_state->nodes;
+> > > > > @@ -609,6 +609,8 @@ static void complete_init_numa_distance(MachineState *ms)
+> > > > >                if (numa_info[src].distance[dst] == 0) {
+> > > > >                    if (src == dst) {
+> > > > >                        numa_info[src].distance[dst] = NUMA_DISTANCE_MIN;
+> > > > > +                } else if (is_default) {
+> > > > > +                    numa_info[src].distance[dst] = NUMA_DISTANCE_DEFAULT;
+> > > > >                    } else {
+> > > > >                        numa_info[src].distance[dst] = numa_info[dst].distance[src];
+> > > > >                    }
+> > > > > @@ -716,13 +718,20 @@ void numa_complete_configuration(MachineState *ms)
+> > > > >             * A->B != distance B->A, then that means the distance table is
+> > > > >             * asymmetric. In this case, the distances for both directions
+> > > > >             * of all node pairs are required.
+> > > > > +         *
+> > > > > +         * The default node pair distances, which are 10 and 20 for the
+> > > > > +         * local and remote nodes separatly, are provided if user doesn't
+> > > > > +         * specify any node pair distances.
+> > > > >             */
+> > > > >            if (ms->numa_state->have_numa_distance) {
+> > > > >                /* Validate enough NUMA distance information was provided. */
+> > > > >                validate_numa_distance(ms);
+> > > > >                /* Validation succeeded, now fill in any missing distances. */
+> > > > > -            complete_init_numa_distance(ms);
+> > > > > +            complete_init_numa_distance(ms, false);
+> > > > > +        } else {
+> > > > > +            complete_init_numa_distance(ms, true);
+> > > > > +            ms->numa_state->have_numa_distance = true;
+> > > > >            }
+> > > > >        }
+> > > > >    }
+> > > > > -- 
+> > > > > 2.23.0
+> > > > > 
+> > > > 
+> > > > With this patch we'll always generate a distance map when there's a numa
+> > > > config now. Is there any reason a user would not want to do that? I.e.
+> > > > should we still give the user the choice of presenting a distance map?
+> > > > Also, does the addition of a distance map in DTs for compat machine types
+> > > > matter?
+> > > > 
+> > > > Otherwise patch looks good to me.
+> > > > 
+> > > 
+> > > Users needn't specify the distance map when the default one in kernel,
+> > > whose distances are 10 and 20 for local and remote nodes in linux for
+> > > all architectures and machines, is used. The following option is still
+> > > usable to specify the distance map.
+> > > 
+> > >    -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
+> > > 
+> > > When the empty NUMA nodes are concerned, the distance map is mandatory
+> > > because their NUMA IDs are identified from there. So we always generate
+> > > the distance map as this patch does :)
+> > > 
+> > 
+> > Yup, I knew all that already :-) I'm asking if we want to ensure the user
+> > can still control whether or not this distance map is generated at all. If
+> > a user doesn't want empty numa nodes or a distance map, then, with this
+> > patch, they cannot avoid the map's generation. That configurability
+> > question also relates to machine compatibility. Do we want to start
+> > generating this distance map on old, numa configured machine types? This
+> > patch will do that too.
+> > 
+> > But, it might be OK to just start generating this new DT node for all numa
+> > configured machine types and not allow the user to opt out. I do know that
+> > we allow hardware descriptions to be changed without compat code.  Also, a
+> > disable-auto-distance-map option may be considered useless and therefore
+> > not worth maintaining. The conservative in me says it's worth debating
+> > these things first though.
+> > 
+> > (Note, empty numa nodes have never worked with QEMU, so it's OK to start
+> >   erroring out when empty numa nodes and a disable-auto-distance-map option
+> >   are given together.)
+> > 
+> 
+> Sorry for the delay. I didn't fully understand "machine compatibility" even
+> after checking the code around. Could you please provide more details? I'm
+> not sure if the enforced distance-map for empty NUMA nodes will cause any
+> issues?
 
-The gpio array is declared as a dense array:
+On QEMU, currently booting/running VMs on machine type X should not notice
+when QEMU has been updated and they are still boot with machine type X.
+That's what the "compat machine types" stuff means and what I'm referring
+to above. I think it may be fine to boot a VM that never had a
+distance-map before on an updated QEMU with machine type X and suddenly
+get a distance-map, because we claim this is similar to a firmware update
+that will change hardware descriptions on reboot. We expect guest kernels
+to be tolerant of that. That said, there's always some risk, so we need
+to consciously make that decision. Also, if we choose to expose a switch
+to disable to the auto-distance-map to the user, then it's pretty trivial
+to automatically set that on older machine types in order to avoid the
+concern. So, do we think we need to expose a disable-auto-distance-map
+type of option? Or would that be a useless burden? Also, if the decision
+is to not worry about it, then the commit message should be updated to
+add the rationale for that decision.
 
-  qemu_irq gpios[ASPEED_GPIO_NR_PINS];
+> 
+> Yes, the empty NUMA node never worked with QEMU if device-tree is used.
+> We still need to figure out a way to support memory hotplug through
+> device-tree, similar thing as to what IBM's pSeries platform has.
 
-(AST2500 has 228, AST2400 has 216, AST2600 has 208)
+That's for the guest kernel to figure out. I doubt it'll be a high
+priority, though, because, as you've shown below, memory hotplug works
+with ACPI, which is what Arm servers use. I don't expect smaller DT
+platforms to care much about memory hotplug.
 
-However, this array is used like a matrix of GPIO sets
-(e.g. gpio[NR_SETS][NR_PINS_PER_SET] =3D gpio[8][32])
+Thanks,
+drew
 
-  size_t offset =3D set * GPIOS_PER_SET + gpio;
-  qemu_set_irq(s->gpios[offset], !!(new & mask));
-
-This can result in an out-of-bounds access to "s->gpios" because the
-gpio sets do _not_ have the same length. Some of the groups (e.g.
-GPIOAB) only have 4 pins. 228 !=3D 8 * 32 =3D=3D 256.
-
-To fix this, I converted the gpio array from dense to sparse, to that
-match both the hardware layout and this existing indexing code.
-
-Fixes: 4b7f956862dc2db4c5c ("hw/gpio: Add basic Aspeed GPIO model for AST=
-2400 and AST2500")
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
----
- hw/gpio/aspeed_gpio.c         | 80 +++++++++++++++--------------------
- include/hw/gpio/aspeed_gpio.h |  5 +--
- 2 files changed, 35 insertions(+), 50 deletions(-)
-
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 33a40a624a..911d21c8cf 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -16,11 +16,7 @@
- #include "hw/irq.h"
- #include "migration/vmstate.h"
-=20
--#define GPIOS_PER_REG 32
--#define GPIOS_PER_SET GPIOS_PER_REG
--#define GPIO_PIN_GAP_SIZE 4
- #define GPIOS_PER_GROUP 8
--#define GPIO_GROUP_SHIFT 3
-=20
- /* GPIO Source Types */
- #define ASPEED_CMD_SRC_MASK         0x01010101
-@@ -259,7 +255,7 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GP=
-IOSets *regs,
-=20
-     diff =3D old ^ new;
-     if (diff) {
--        for (gpio =3D 0; gpio < GPIOS_PER_REG; gpio++) {
-+        for (gpio =3D 0; gpio < ASPEED_GPIOS_PER_SET; gpio++) {
-             uint32_t mask =3D 1 << gpio;
-=20
-             /* If the gpio needs to be updated... */
-@@ -283,8 +279,7 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GP=
-IOSets *regs,
-             if (direction & mask) {
-                 /* ...trigger the line-state IRQ */
-                 ptrdiff_t set =3D aspeed_gpio_set_idx(s, regs);
--                size_t offset =3D set * GPIOS_PER_SET + gpio;
--                qemu_set_irq(s->gpios[offset], !!(new & mask));
-+                qemu_set_irq(s->gpios[set][gpio], !!(new & mask));
-             } else {
-                 /* ...otherwise if we meet the line's current IRQ policy=
-... */
-                 if (aspeed_evaluate_irq(regs, old & mask, gpio)) {
-@@ -297,21 +292,6 @@ static void aspeed_gpio_update(AspeedGPIOState *s, G=
-PIOSets *regs,
-     qemu_set_irq(s->irq, !!(s->pending));
- }
-=20
--static uint32_t aspeed_adjust_pin(AspeedGPIOState *s, uint32_t pin)
--{
--    AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
--    /*
--     * The 2500 has a 4 pin gap in group AB and the 2400 has a 4 pin
--     * gap in group Y (and only four pins in AB but this is the last gro=
-up so
--     * it doesn't matter).
--     */
--    if (agc->gap && pin >=3D agc->gap) {
--        pin +=3D GPIO_PIN_GAP_SIZE;
--    }
--
--    return pin;
--}
--
- static bool aspeed_gpio_get_pin_level(AspeedGPIOState *s, uint32_t set_i=
-dx,
-                                       uint32_t pin)
- {
-@@ -367,7 +347,7 @@ static uint32_t update_value_control_source(GPIOSets =
-*regs, uint32_t old_value,
-     uint32_t new_value =3D 0;
-=20
-     /* for each group in set */
--    for (i =3D 0; i < GPIOS_PER_REG; i +=3D GPIOS_PER_GROUP) {
-+    for (i =3D 0; i < ASPEED_GPIOS_PER_SET; i +=3D GPIOS_PER_GROUP) {
-         cmd_source =3D extract32(regs->cmd_source_0, i, 1)
-                 | (extract32(regs->cmd_source_1, i, 1) << 1);
-=20
-@@ -637,7 +617,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr of=
-fset, uint64_t data,
-          *   bidirectional  |   1       |   1        |  data
-          *   input only     |   1       |   0        |   0
-          *   output only    |   0       |   1        |   1
--         *   no pin / gap   |   0       |   0        |   0
-+         *   no pin         |   0       |   0        |   0
-          *
-          *  which is captured by:
-          *  data =3D ( data | ~input) & output;
-@@ -779,7 +759,7 @@ static void aspeed_gpio_set_pin(Object *obj, Visitor =
-*v, const char *name,
- }
-=20
- /****************** Setup functions ******************/
--static const GPIOSetProperties ast2400_set_props[] =3D {
-+static const GPIOSetProperties ast2400_set_props[ASPEED_GPIO_MAX_NR_SETS=
-] =3D {
-     [0] =3D {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] =3D {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] =3D {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -789,7 +769,7 @@ static const GPIOSetProperties ast2400_set_props[] =3D=
- {
-     [6] =3D {0x0000000f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
- };
-=20
--static const GPIOSetProperties ast2500_set_props[] =3D {
-+static const GPIOSetProperties ast2500_set_props[ASPEED_GPIO_MAX_NR_SETS=
-] =3D {
-     [0] =3D {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] =3D {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] =3D {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -800,7 +780,7 @@ static const GPIOSetProperties ast2500_set_props[] =3D=
- {
-     [7] =3D {0x000000ff,  0x000000ff,  {"AC"} },
- };
-=20
--static GPIOSetProperties ast2600_3_3v_set_props[] =3D {
-+static GPIOSetProperties ast2600_3_3v_set_props[ASPEED_GPIO_MAX_NR_SETS]=
- =3D {
-     [0] =3D {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] =3D {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] =3D {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -810,7 +790,7 @@ static GPIOSetProperties ast2600_3_3v_set_props[] =3D=
- {
-     [6] =3D {0x0000ffff,  0x0000ffff,  {"Y", "Z"} },
- };
-=20
--static GPIOSetProperties ast2600_1_8v_set_props[] =3D {
-+static GPIOSetProperties ast2600_1_8v_set_props[ASPEED_GPIO_MAX_NR_SETS]=
- =3D {
-     [0] =3D {0xffffffff,  0xffffffff,  {"18A", "18B", "18C", "18D"} },
-     [1] =3D {0x0000000f,  0x0000000f,  {"18E"} },
- };
-@@ -836,14 +816,20 @@ static void aspeed_gpio_realize(DeviceState *dev, E=
-rror **errp)
-     AspeedGPIOState *s =3D ASPEED_GPIO(dev);
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-     AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
--    int pin;
-=20
-     /* Interrupt parent line */
-     sysbus_init_irq(sbd, &s->irq);
-=20
-     /* Individual GPIOs */
--    for (pin =3D 0; pin < agc->nr_gpio_pins; pin++) {
--        sysbus_init_irq(sbd, &s->gpios[pin]);
-+    for (int i =3D 0; i < ASPEED_GPIO_MAX_NR_SETS; i++) {
-+        const GPIOSetProperties *props =3D &agc->props[i];
-+        uint32_t skip =3D ~(props->input | props->output);
-+        for (int j =3D 0; j < ASPEED_GPIOS_PER_SET; j++) {
-+            if (skip >> j & 1) {
-+                continue;
-+            }
-+            sysbus_init_irq(sbd, &s->gpios[i][j]);
-+        }
-     }
-=20
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
-@@ -856,20 +842,22 @@ static void aspeed_gpio_init(Object *obj)
- {
-     AspeedGPIOState *s =3D ASPEED_GPIO(obj);
-     AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
--    int pin;
--
--    for (pin =3D 0; pin < agc->nr_gpio_pins; pin++) {
--        char *name;
--        int set_idx =3D pin / GPIOS_PER_SET;
--        int pin_idx =3D aspeed_adjust_pin(s, pin) - (set_idx * GPIOS_PER=
-_SET);
--        int group_idx =3D pin_idx >> GPIO_GROUP_SHIFT;
--        const GPIOSetProperties *props =3D &agc->props[set_idx];
--
--        name =3D g_strdup_printf("gpio%s%d", props->group_label[group_id=
-x],
--                               pin_idx % GPIOS_PER_GROUP);
--        object_property_add(obj, name, "bool", aspeed_gpio_get_pin,
--                            aspeed_gpio_set_pin, NULL, NULL);
--        g_free(name);
-+
-+    for (int i =3D 0; i < ASPEED_GPIO_MAX_NR_SETS; i++) {
-+        const GPIOSetProperties *props =3D &agc->props[i];
-+        uint32_t skip =3D ~(props->input | props->output);
-+        for (int j =3D 0; j < ASPEED_GPIOS_PER_SET; j++) {
-+            if (skip >> j & 1) {
-+                continue;
-+            }
-+            int group_idx =3D j / GPIOS_PER_GROUP;
-+            int pin_idx =3D j % GPIOS_PER_GROUP;
-+            const char *group =3D &props->group_label[group_idx][0];
-+            char *name =3D g_strdup_printf("gpio%s%d", group, pin_idx);
-+            object_property_add(obj, name, "bool", aspeed_gpio_get_pin,
-+                                aspeed_gpio_set_pin, NULL, NULL);
-+            g_free(name);
-+        }
-     }
- }
-=20
-@@ -926,7 +914,6 @@ static void aspeed_gpio_ast2400_class_init(ObjectClas=
-s *klass, void *data)
-     agc->props =3D ast2400_set_props;
-     agc->nr_gpio_pins =3D 216;
-     agc->nr_gpio_sets =3D 7;
--    agc->gap =3D 196;
-     agc->reg_table =3D aspeed_3_3v_gpios;
- }
-=20
-@@ -937,7 +924,6 @@ static void aspeed_gpio_2500_class_init(ObjectClass *=
-klass, void *data)
-     agc->props =3D ast2500_set_props;
-     agc->nr_gpio_pins =3D 228;
-     agc->nr_gpio_sets =3D 8;
--    agc->gap =3D 220;
-     agc->reg_table =3D aspeed_3_3v_gpios;
- }
-=20
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.=
-h
-index e1636ce7fe..801846befb 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -17,9 +17,9 @@
- OBJECT_DECLARE_TYPE(AspeedGPIOState, AspeedGPIOClass, ASPEED_GPIO)
-=20
- #define ASPEED_GPIO_MAX_NR_SETS 8
-+#define ASPEED_GPIOS_PER_SET 32
- #define ASPEED_REGS_PER_BANK 14
- #define ASPEED_GPIO_MAX_NR_REGS (ASPEED_REGS_PER_BANK * ASPEED_GPIO_MAX_=
-NR_SETS)
--#define ASPEED_GPIO_NR_PINS 228
- #define ASPEED_GROUPS_PER_SET 4
- #define ASPEED_GPIO_NR_DEBOUNCE_REGS 3
- #define ASPEED_CHARS_PER_GROUP_LABEL 4
-@@ -60,7 +60,6 @@ struct AspeedGPIOClass {
-     const GPIOSetProperties *props;
-     uint32_t nr_gpio_pins;
-     uint32_t nr_gpio_sets;
--    uint32_t gap;
-     const AspeedGPIOReg *reg_table;
- };
-=20
-@@ -72,7 +71,7 @@ struct AspeedGPIOState {
-     MemoryRegion iomem;
-     int pending;
-     qemu_irq irq;
--    qemu_irq gpios[ASPEED_GPIO_NR_PINS];
-+    qemu_irq gpios[ASPEED_GPIO_MAX_NR_SETS][ASPEED_GPIOS_PER_SET];
-=20
- /* Parallel GPIO Registers */
-     uint32_t debounce_regs[ASPEED_GPIO_NR_DEBOUNCE_REGS];
---=20
-2.30.2
+> However, it works when ACPI table is used. Taking the following
+> command line as an example, the hot-added memory is always put
+> into the last NUMA node (3). The last NUMA node can be empty node
+> after changing the code to allow to export ACPI SRAT table to include
+> the empty NUMA nodes.
+> 
+>    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+>    -accel kvm -machine virt,gic-version=host               \
+>    -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+>    -m 1024M,slots=16,maxmem=64G                            \
+>    -object memory-backend-ram,id=mem0,size=512M            \
+>    -object memory-backend-ram,id=mem1,size=512M            \
+>    -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+>    -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+>    -numa node,nodeid=2                                     \
+>    -numa node,nodeid=3
+>      :
+>      :
+>    guest# cat /sys/devices/system/node/node3/meminfo | grep MemTotal
+>    Node 3 MemTotal:              0 kB
+>    (qemu) object_add memory-backend-ram,id=hpmem0,size=1G
+>    (qemu) device_add pc-dimm,id=dimm1,memdev=hpmem0,node=3
+>    guest# cat /sys/devices/system/node/node3/meminfo | grep MemTotal
+>    Node 3 MemTotal:        1048576 kB
+> 
+> Thanks,
+> Gavin
+> 
+> 
+> 
 

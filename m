@@ -1,153 +1,221 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp366719lfc;
-        Sun, 10 Oct 2021 21:27:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnYkKjes89iz1C0h2cHbBUK7rF7lZDMNwXit4wBXaOzAM2y6e5vrW1HvbQ/YUSvn3HufKw
-X-Received: by 2002:a05:6e02:17c8:: with SMTP id z8mr17895516ilu.161.1633926433080;
-        Sun, 10 Oct 2021 21:27:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633926433; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp576237lfc;
+        Mon, 11 Oct 2021 03:12:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzTktHGLsZjxKEGaU7oVbGps95YDbzH1oTmfrQP2U6zr98t/LzRV2UzyfHkfbBN7EG4yk2L
+X-Received: by 2002:a25:dac8:: with SMTP id n191mr19778718ybf.390.1633947154845;
+        Mon, 11 Oct 2021 03:12:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633947154; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZAM39ivBlafypLmHs3OCg5od4mkPDvH6qvDKZMy/AC90a+PFbT8jFqpuIRdIfOb8Rh
-         qAB2B8O2TyrmQxnwYMh/2xctE3P2YDjsMSfETkSkvG0riwLJgbKoa/0LyIS1eDfOSVNs
-         l7MAgTRu93pnw/2jeYZrooDtp1+GUxNuQCddHCFmqJySW6fnFgfGGBB+AbR4NHcCh/Tq
-         w3Q68aDgjv7ROFac4BvkeOsWIoZ14P2fX4BKk5QVzzemOPm+tOQnCOLh8FrdQ3Uzr+dF
-         9R2dqwcqqOSrQWqyNnmoJ8UOpfz7rs0AsHTtGPClR1SA9n9do+BWT9VvbM8LZYt2MCbW
-         kN6Q==
+        b=NTwFlL3rcLyHMofy8NBbeyq5WhX2JuUJBcr7qfB+mmPBFVNBT+OLR/3mQzgIR/Fcj5
+         NpARTcxEEkRvLxjKY4QullbxLOshZRGh65dj1w58u2/c8s2MU5YKDqZYnwhuMqEdKoDm
+         ZFtWxeIwnjtMzAskQ4R0i9hFwxBO/BgG+Cuinpqicj5hhDZvQ2IP2OKKiildI6OXYVyR
+         jGbrmSsvxyk7O9NmNZ8KN1zNdjC5NKTif8efRbymVOEc18TXUFhpTSwkhJT/oHpJzCmp
+         Q1Qd6JgZlNc75O4QDctRdgfDrvGavJN9avFzb1pTLIfpgphYBD3tPX77DeGPzPC68Fu1
+         GgeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=oNmOg4sGeWjFGv+5zDYPizo7TmeEMMQmbTOi5NfWolU=;
-        b=H2ujVUa9Xw5JKV4xUgtll7g6HwWW8KNxUKhv1o16V7jMfwR0WYcE5E9ZVCoVR2GJeH
-         hHjEmEb+QxgdL+dUCP3JpwDJZ2Yf1MAmLOJRyg7R6xvTLmbbfvoT9fA34W0wfRkB+7kd
-         Fa2hbUPDcpxtMvMXuhtGTVcHR/ku/OOpLIF7YoHJKU+8jyJaYAeVKAvVpsV+6OOhaada
-         c+Ziv9CJc/imPYw/knRlFWBXW+gI9L7PxkfHBatboBLdTTTKI3O+jnRIg0geMgR2WOuo
-         DnbsELp63tATeggFR+i7NtV88WcKqZ5ktNtEeM5RnEPZ5G1ywrUEOPuLWrtFsMAakro8
-         23vg==
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+5UfrrzHwZLzsu2JJhKXeDjwcfI2VtXJV+HVf1rY21Q=;
+        b=Y9Cu0SDf5MVGCTJVUJR6x/CQgemEd+07ZZDEpsj0EYFXNRMMfBvxUsWFq7xA2ize6a
+         5WJ0dtsyqbPYHrcqX0gtkPUN1vH1p9cr3cGxhkWbO9uSjhtHk62YpyAu4tUOl0x1JwTF
+         d9Bnq1mPu3QkunhOt3QZ677SLMhHIdzJO36cgqNcayD+3OgIM3rHYFcddTi5BZOVJelC
+         p4k5L4IiweUINEXYevBKql7Gzr4Pkk/iRby0iWSFv2AP4R42AdCrXvbOTSsMKouq9tLD
+         LNK96HPa/S+QWF5/L94OqkAqNDjOvS20J2Lo0/uarsixJr+Kw1zA4x9a6vCztf+wNZ7D
+         i2NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pzOp7Igv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dCQA3TCl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4si8987048ilv.29.2021.10.10.21.27.12
+        by mx.google.com with ESMTPS id n204si9134228ybb.451.2021.10.11.03.12.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Oct 2021 21:27:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Oct 2021 03:12:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pzOp7Igv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55336 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dCQA3TCl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mZmu8-00008Q-Gh
-	for alex.bennee@linaro.org; Mon, 11 Oct 2021 00:27:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44318)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mZsIM-0006ww-7u
+	for alex.bennee@linaro.org; Mon, 11 Oct 2021 06:12:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <irakatz51@gmail.com>)
- id 1mZmu0-000082-Ln
- for qemu-arm@nongnu.org; Mon, 11 Oct 2021 00:27:04 -0400
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131]:46011)
+ (Exim 4.90_1) (envelope-from <lihaiwei.kernel@gmail.com>)
+ id 1mZsGE-00061U-Ll; Mon, 11 Oct 2021 06:10:22 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:39908)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <irakatz51@gmail.com>)
- id 1mZmtz-000128-0X
- for qemu-arm@nongnu.org; Mon, 11 Oct 2021 00:27:04 -0400
-Received: by mail-lf1-x131.google.com with SMTP id u18so67986362lfd.12
- for <qemu-arm@nongnu.org>; Sun, 10 Oct 2021 21:27:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <lihaiwei.kernel@gmail.com>)
+ id 1mZsGC-0003l0-Nq; Mon, 11 Oct 2021 06:10:22 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id ec8so15992885edb.6;
+ Mon, 11 Oct 2021 03:10:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:from:date:message-id:subject:to;
- bh=oNmOg4sGeWjFGv+5zDYPizo7TmeEMMQmbTOi5NfWolU=;
- b=pzOp7Igv4pV501X9Jn6ZtbbAgJMpXUf6RwI1KQ87DccCyfRy1T2I4BPGsfI9YGhdTG
- p5UgTuhJSle4i2iQngyMOATfUgHJMqs2mb9KJaIuQSy8FXTkOwt82o2Gc7m7KHn36B9l
- 4+CD9+F8wYhZJBH+LcTMaLLv04fZWVfduKhSqf1RrBcvuVfDtEtFtCfd957TYSSogp7F
- CYCnkRAfcVQR0rwxnrLbKrsI+5+lI5tJko4dExuW90yBgztULO0vSL+DG7UvaPBIXfPh
- kHW7NUezkVCYPV9T2fUZNyCwiV4aQvH0jM1gJ5YxmL2CboBEdc1WPW7cYVSv+sely3GD
- sKIA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+5UfrrzHwZLzsu2JJhKXeDjwcfI2VtXJV+HVf1rY21Q=;
+ b=dCQA3TCllX3IFtVjG6rwClF9rJAhvNr0laPD0WSJf3wz7z3frc8MLUW0QZf24hWKLN
+ 4WP0QIauNmcp3OgDbfHLFXl4IIWAsMBxfEfmq5mf+EX53bS5PykQxycEVmvX0zGyjGPy
+ BS7nsvuknjC9dht3KXdWKgFyazSXH+fBw3YbhhsterT4iv/i9VqNWnaGoGU0R6y8nRfa
+ NgetvoI2IeXXZ1j2x1ST2fATxPT+Bb+De3y+YgBdH3WQva8vimxhQDSSj4C7r6GFLYL3
+ WEhElbXOEvn+Z4K7het8vX04NwoeXKKCGaw6HN/CFDxmxP061MPycnBz7g1b8c6fDG+M
+ KZQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=oNmOg4sGeWjFGv+5zDYPizo7TmeEMMQmbTOi5NfWolU=;
- b=K4UpWbi4Gp14x0o5B8jsoreFb9awF161a8yY5FsXexyibkBcWUZp9UNlf35e01lAOq
- ypveOMcacK2CG+k0n3rbX9Qtnp3giIBEBogid6OWbkFerUxkA0JIpVIt53nU1Y59X3rG
- eg+MmP3hZfsrX89fGma+DBOPF+JPWB5jcbDkDfCB1m8/cf0CkT91z76+fqzq1xDqiA7C
- l6AI0HAGz4yQwScPe+cw5zDtQBHKpAnNlouhVI8ujn7OF397yHMc/ZRJMm6jcghpEQRS
- 5J1sImOi0OzmwimsE8SNTe6xWE534kEYM93dMh7i8dMhd6UGMzr1V4Fi2KFwDFuJAv0p
- ASKw==
-X-Gm-Message-State: AOAM5311GWPBJea0UL5+CqivNrWiN8WzqCX84b8wFp2YFOltNOkkbboj
- tFczFjRMf4imdJwfMgLvbZNCVC5XjCMawysyjirq+cS2CWo=
-X-Received: by 2002:a05:651c:38c:: with SMTP id
- e12mr20182335ljp.292.1633926419972; 
- Sun, 10 Oct 2021 21:26:59 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+5UfrrzHwZLzsu2JJhKXeDjwcfI2VtXJV+HVf1rY21Q=;
+ b=MSCi9SLFfrUnbIYGf2zzzfPEvx8ISzI4NOdMioXm4cd0zUwvkZ4nlPPO3KWhd0VpsQ
+ /m/lX7C+2niHKgnVUTrzyyjblYyZDsV4EAgGG2km3uUicfeb9TYwrxM/UxAZEsAqoqds
+ c11xrpEakkzB2C2Y210fVeOopv5fARvA/dFr5yxLkrKMPWuYwOjfdP+UYwrBq/zKmDRv
+ qCi/9VclusxPR35BmFg+mZYPdUXkeG6bHx01UyYLh36OjvlcNVSDajuVM7Ndlfh9Me3/
+ Z1kUM5tiPdbRIE5lNl0+PGvl22EaE6aIZcIa8EmVnQhpKisHJXUZ6UIGJDblUdmuqola
+ U5Kg==
+X-Gm-Message-State: AOAM532Hst0qTA93eCMAxHhVfNYCbRq7XSDVdSj+1vjpY+OI64nE+Z+r
+ aVDMi9fa9ouOHqJFfcSIt2vcZqgrhhfF9HJFkw==
+X-Received: by 2002:a05:6402:410:: with SMTP id
+ q16mr40022298edv.286.1633947018498; 
+ Mon, 11 Oct 2021 03:10:18 -0700 (PDT)
 MIME-Version: 1.0
-From: Chenxu Wang <irakatz51@gmail.com>
-Date: Mon, 11 Oct 2021 12:26:49 +0800
-Message-ID: <CAFLP=uBqHJdUva0TBzt08+1Z0Ydd0ovd9W29sBfnLZbieKJLZQ@mail.gmail.com>
-Subject: How to run multiple VMs on ARM FVP?
-To: qemu-arm <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000da05b205ce0c230c"
-Received-SPF: pass client-ip=2a00:1450:4864:20::131;
- envelope-from=irakatz51@gmail.com; helo=mail-lf1-x131.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+References: <20211001173358.863017-1-jean-philippe@linaro.org>
+ <20211005113719-mutt-send-email-mst@kernel.org> <YWBhEQxM4wRyZWzs@myrica>
+In-Reply-To: <YWBhEQxM4wRyZWzs@myrica>
+From: Haiwei Li <lihaiwei.kernel@gmail.com>
+Date: Mon, 11 Oct 2021 18:10:07 +0800
+Message-ID: <CAB5KdOa4aLUq_d5RBws1cp_cfq55fw8_FhLY-HPV-1iVyFYKQQ@mail.gmail.com>
+Subject: Re: [PATCH v4 00/11] virtio-iommu: Add ACPI support
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=lihaiwei.kernel@gmail.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w4ReA5xmQI9s
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
+ "Michael S. Tsirkin" <mst@redhat.com>, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ eric.auger@redhat.com, Paolo Bonzini <pbonzini@redhat.com>, ani@anisinha.ca,
+ imammedo@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HChB5CibgIHQ
 
---000000000000da05b205ce0c230c
-Content-Type: text/plain; charset="UTF-8"
+On Fri, Oct 8, 2021 at 11:18 PM Jean-Philippe Brucker
+<jean-philippe@linaro.org> wrote:
+>
+> On Tue, Oct 05, 2021 at 11:45:42AM -0400, Michael S. Tsirkin wrote:
+> > Looks like this can not be applied yet because the bypass bit
+> > isn't in yet. what's up with that?
+>
+> The boot-bypass bit isn't a hard dependency for this series, but it will
+> be needed for full support eventually. It will be delayed by spec and
+> Linux header changes
+>
+> In the meantime we can work around the problem by having the boot disks
+> bypass the IOMMU (virtio without iommu-platform, or iommu-bypass bus).
 
-Hi all,
+Hi Jean,
 
-I want to run multiple VMs on ARM FVP with QEMU 2.9. Currently, I can only
-run 1 VM (no filesystem) with the following commands.
+I have tested on x86 platform with environment:
 
-./qemu-system-aarch64 -nographic -kernel Image -initrd ramdisk.img -m 512
--machine virt,accel=kvm -cpu host -append "console=ttyAMA0 init=/linuxrc
-root=/dev/ram0 rw rootfstype=ext4"
+qemu, your personal repo: http://jpbrucker.net/git/qemu, branch:
+virtio-iommu/acpi-2021-10-01
+linux kernel, 5.14
+qemu command, with '-device virtio-iommu' and boot disk
+'virtio-blk-pci,iommu_platform=off'
 
-Then it boots the VM in the current console (ttyAMA0).
+But the guest boot failed. The print is as follows:
 
-Now I want to run at least 2 VMs with QEMU. Specifically, I wish they can
-boot in two different consoles, so I can type to insmod some modules on
-them.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... [    7.490238] Btrfs
+loaded, crc32c=crc32c-generic, zoned=no
+Scanning for Btrfs filesystems
+done.
+[   10.593238] _warn_unseeded_randomness: 300 callbacks suppressed
+[   10.593243] random: get_random_u32 called from
+bucket_table_alloc.isra.0+0x123/0x430 with crng_init=0
+[   37.534015] random: get_random_u64 called from
+dup_task_struct+0x415/0xa10 with crng_init=0
+[   37.539950] random: get_random_u64 called from
+arch_pick_mmap_layout+0x411/0x5e0 with crng_init=0
+[   37.539973] random: get_random_u64 called from
+arch_pick_mmap_layout+0x381/0x5e0 with crng_init=0
+Begin: Waiting for root file system ... [   38.624374]
+_warn_unseeded_randomness: 38 callbacks suppressed
+[   38.624389] random: get_random_u64 called from
+dup_task_struct+0x415/0xa10 with crng_init=0
+Begin: Running /scripts/local-block ... [   38.630760] random:
+get_random_u64 called from arch_pick_mmap_layout+0x410
+[   38.630767] random: get_random_u64 called from
+arch_pick_mmap_layout+0x381/0x5e0 with crng_init=0
+mdadm: No arrays found in config file or automatically
+done.
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+[   39.633914] _warn_unseeded_randomness: 1278 callbacks suppressed
+[   39.633918] random: get_random_u64 called from
+dup_task_struct+0x415/0xa10 with crng_init=0
+[   39.634867] random: get_random_u64 called from
+arch_pick_mmap_layout+0x411/0x5e0 with crng_init=0
+[   39.634875] random: get_random_u64 called from
+arch_pick_mmap_layout+0x381/0x5e0 with crng_init=0
+mdadm: error opening /dev/md?*: No such file or directory
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+mdadm: No arrays found in config file or automatically
+done.
+Gave up waiting for root file system device.  Common problems:
+ - Boot args (cat /proc/cmdline)
+   - Check rootdelay= (did the system wait long enough?)
+ - Missing modules (cat /proc/modules; ls /dev)
+ALERT!  UUID=3caf26b5-4d08-43e0-8634-7573269c4f70 does not exist.
+Dropping to a shell!
 
-How to do it?
+Any suggestions? Thanks.
 
-Sincerely,
-Wang Chenxu
-
---000000000000da05b205ce0c230c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi all,<div><br></div><div>I want to run multiple VMs on A=
-RM FVP with QEMU 2.9. Currently, I can only run 1 VM (no filesystem) with t=
-he following commands.</div><div><br></div><div>./qemu-system-aarch64 -nogr=
-aphic -kernel Image -initrd ramdisk.img -m 512 -machine virt,accel=3Dkvm -c=
-pu host -append &quot;console=3DttyAMA0 init=3D/linuxrc root=3D/dev/ram0 rw=
- rootfstype=3Dext4&quot;</div><div><br></div><div>Then it boots the VM in t=
-he current console (ttyAMA0).</div><div><br></div><div>Now I want to run at=
- least 2 VMs with QEMU. Specifically, I wish they can boot in two different=
- consoles, so I can type to insmod some modules on them.</div><div><br></di=
-v><div>How to do it?</div><div><br></div><div>Sincerely,</div><div>Wang Che=
-nxu</div></div>
-
---000000000000da05b205ce0c230c--
+--
+Haiwei

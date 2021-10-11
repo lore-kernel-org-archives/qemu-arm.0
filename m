@@ -1,108 +1,107 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp847259lfc;
-        Mon, 11 Oct 2021 08:16:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrAf0kaZc5eW+oUfO9cfcoWk4Z1fFWFGyOgXe2GHZkMv8cX0RKCmsNySA0FrRg+qu+ycRP
-X-Received: by 2002:ac8:de:: with SMTP id d30mr14878597qtg.377.1633965395728;
-        Mon, 11 Oct 2021 08:16:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633965395; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp889455lfc;
+        Mon, 11 Oct 2021 09:03:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQxxyCgtBE33yg9cwxYvIc1yHjK4m3fg9swjDwPaOGeakOt0ZacneWULv7PuehCDWhf56C
+X-Received: by 2002:a05:6214:188:: with SMTP id q8mr3461796qvr.5.1633968207208;
+        Mon, 11 Oct 2021 09:03:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633968207; cv=none;
         d=google.com; s=arc-20160816;
-        b=RqWcxTSH9ZQKmdNQDdVEyXq9Mh+jjLT7Olp1XpnQo6dH9G+Qpq4kYQk2BiAeh/sNs7
-         vAEM/2i0aH/zWWBsCJnPrFPdfRjt/qmt6vcTc3PoZC83Pd0Rf9WdN46K2LXWyYQriWYc
-         XA0hpxXKKsBq97Uc7mEsH0hj4ETGF/srMuRgUmwErvh/RgFpqbtCztOwP9wASG6q0XFC
-         z9tx6TcmSw5yYsruHjtuYGjL0M1WrtQc6N3tkkmW8qcIv8RaFYgVlCpF/U8VqVmeAUJ8
-         zvFM4gc9PkWABepVzwcPM26RqJnJwBgFnjugv5NTqP+AwZtvl5dMgCL96jw6T+ZXLtDZ
-         Cy+g==
+        b=V+1rPWiup2oe0lPY4ldQK13QgrvOOmqLCKSHrMHfz1Rl623NJJWLmdEt7dMzTQAjms
+         hGpBB0IwVHingCjSeHlbLczYsEv9xAj6o3Aw4Gko6Hh4UV2v+xC2Mb4LmedDS5n3hEwi
+         l9pr4Bk8cqHMM4WQWPKPCnBCf/MU7AmZFpr3W6E5eRJKqUEW42H2S4sYWxOE/5eqacPJ
+         5TTDvVULF8slb9ZWYWgapNRLgmYeGjlYud8tkafM5SRnrfBlXf8abjYkTtcQSUhgpHeD
+         FHv/XnwVQqjT8kfr03Q75oYlK0gUrGNo9sZivSnPEZ5/XfOcxXblsD2+0F0TpyYseyVC
+         thvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=m2OpKnDLnAJno+Zesxx72oqTPwWxOzALKGR8YQeCyPI=;
-        b=Xao1qmW/7+KDlIm7zDxXca7LbsB0Slpl8dglV/TetIzM68JQaVV1mV442TVAbRKiQR
-         vKU943RLMsHmRSCLoxrKVsWjI7dR8x8G36wv+EcaXBMtw9f6g6fbww+LWKSwwfywqxhC
-         YeFCfEXf3RKcp9vWhp2t5aTPSXw8xwcVbl7cUy1LmDJ6zj+VCxq7jf36k0Kh5xH4lnPs
-         GzwSPZ3E4LvtHi2ApJ89rO8FqTnsEFAP7OCnKThKUd4I+C1IxhmsjNg1ehejAJ2w4C0y
-         e9plYM7VOOQPzStLUbmzLLZT4qhvpb3U3ubVLLK86oCAxpTqCam7j36PawZMrYfBt967
-         EskA==
+        bh=f7J8ErIyYnJFcKyKhyY+pn7w6HQ5L7yIOoHmuELwx4w=;
+        b=UnIrmmIAJhEdd2XbWVz2TtqcJKRd7m76/uL5foCFKrYZx2qAIM7GC5I7QLxgeLJYQo
+         MLHcfnhQkgmCTaiwRSjjJ7AILimgNVE8bxcAeKR0x40mclBcToqX17BEpriLYPFpYVCT
+         VV7E9/kF69YnuoaVGJn+rZzXhlOjvwR8aQpGZ4LGRWE251lLDrDIxGKNmARvTB9GdUBf
+         IyW9v+n4lPGmoZulMpF1S6VECcZb6gDHD5/LyT3nk7w2TeLXVGX3HQWKY5ZuYiwVXWJD
+         yMS1jwd5e2xyr4Mxv4jlhZC/x+IeovUhLo4vhU3thdlxOMiLOJtvhXaE7s4rXtQHFjIs
+         yOWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aDa038vD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IN1IZ2mQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x11si4486278qvb.224.2021.10.11.08.16.35
+        by mx.google.com with ESMTPS id e11si2529527qtw.176.2021.10.11.09.03.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Oct 2021 08:16:35 -0700 (PDT)
+        Mon, 11 Oct 2021 09:03:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aDa038vD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IN1IZ2mQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48434 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mZx2Z-0002bf-36
-	for alex.bennee@linaro.org; Mon, 11 Oct 2021 11:16:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54288)
+	id 1mZxlu-0002ZN-Ic
+	for alex.bennee@linaro.org; Mon, 11 Oct 2021 12:03:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mZx27-0002bL-HX
- for qemu-arm@nongnu.org; Mon, 11 Oct 2021 11:16:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23312)
+ id 1mZxep-0005Jd-OU
+ for qemu-arm@nongnu.org; Mon, 11 Oct 2021 11:56:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21486)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mZx23-0005kA-W0
- for qemu-arm@nongnu.org; Mon, 11 Oct 2021 11:16:06 -0400
+ id 1mZxem-0004nk-RT
+ for qemu-arm@nongnu.org; Mon, 11 Oct 2021 11:56:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633965363;
+ s=mimecast20190719; t=1633967764;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=m2OpKnDLnAJno+Zesxx72oqTPwWxOzALKGR8YQeCyPI=;
- b=aDa038vDFXmTCU5uAsTgSylIT6ZQfnq0AS3z9PodYawL3I7WQDUq7aGUE0Aaft6sg8FeFe
- iz/41eNOdPoFL7tKDoVWTG6K34n6XHLLN8eJk8xjOXv+dT3jylnSuaJnLPhcyyRbyga5DP
- k+rxTAbabEkGHdYc9VvWniETmnmAQlc=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-365-7CXpzKP6M3CCcEgKIYB5Dw-1; Mon, 11 Oct 2021 11:16:00 -0400
-X-MC-Unique: 7CXpzKP6M3CCcEgKIYB5Dw-1
-Received: by mail-ed1-f69.google.com with SMTP id
- t18-20020a056402021200b003db9e6b0e57so1937705edv.10
- for <qemu-arm@nongnu.org>; Mon, 11 Oct 2021 08:15:59 -0700 (PDT)
+ bh=f7J8ErIyYnJFcKyKhyY+pn7w6HQ5L7yIOoHmuELwx4w=;
+ b=IN1IZ2mQrg21e+2G6s/QIKWGZc0ourtv3+xlQYeBq61Z7jGOq2VX4/y0LvHiZGXX1xntcz
+ w0ZIzFa0n9FEhUqtyeSWUQegKkwfYbefn1eHhLLEFbz+BZAEas7g0s3/SOUup8JYkFBRyG
+ v1K+smzZxT7BzSTLm1HR8nTZwSqkT94=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-16-URuurl76NH2eWR7XxqUEFw-1; Mon, 11 Oct 2021 11:56:03 -0400
+X-MC-Unique: URuurl76NH2eWR7XxqUEFw-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ h19-20020aa7de13000000b003db6ad5245bso7685879edv.9
+ for <qemu-arm@nongnu.org>; Mon, 11 Oct 2021 08:56:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=m2OpKnDLnAJno+Zesxx72oqTPwWxOzALKGR8YQeCyPI=;
- b=qeH4WRH3QnNCW4FlvpJ6PBwck2IhNncIw9rNoZ+H5VmNG3QHKSTcWFjqX37W1kStfy
- WPY+wnP1fUXeUThel9byvAV67aqTM9odkeQ93Ohu8JMiQXzyj0W9N0BhTp8a7LC9aYLP
- hSiaivL/x3GyXP1z6v2V4C8Npi67Z9eOK4qDS4gXmZL69ukChsDj2U5Mcr44K4AeAOjR
- kJa866GYUo5iowIwVulwn1a+BgveL8fnmERFbkgCZDTdpmJxV10n6oiWMZ1iBjQ9nL5V
- IRCjQqeUs8BN+8GpFhxgzKcg4Eukq0Z6AQB4+HkU6lsTeQ36S+fMYUujZBKJxuRWOXUk
- sLMQ==
-X-Gm-Message-State: AOAM531peBy4JqbIAVxwGaywPZf4f0buf4K8d2C8poTvJOtV52ZWGszx
- h0hNxigAFjxmx9B4/eqMpAfQlrQpZd8r1rX8wx1NQfudzCfjmZreBfAwoQCrks7P27f3/X5f6XE
- yf2lbwEEVcIXW
-X-Received: by 2002:a05:6402:1e8e:: with SMTP id
- f14mr5415342edf.27.1633965358903; 
- Mon, 11 Oct 2021 08:15:58 -0700 (PDT)
-X-Received: by 2002:a05:6402:1e8e:: with SMTP id
- f14mr5415283edf.27.1633965358563; 
- Mon, 11 Oct 2021 08:15:58 -0700 (PDT)
+ bh=f7J8ErIyYnJFcKyKhyY+pn7w6HQ5L7yIOoHmuELwx4w=;
+ b=vv5+jBfMMADevKchE1HH/nbM5HroCudHbMhicbASxCC6OcxOR55BQers0ISDtiBJVV
+ SM7AI7YCLV2C8qWK0I11jxyAT4AMW6s2eChbh70w+/F0IE3h4eIQoJMTbZdgjvE4Uv5G
+ QiCRQg1ycveZACSa3F+IfRytqkuYgIfXflf4ILsd0kHTiAQQma9gK4Laa40SFA9t2Jly
+ hnSK0bromUYyU0mdmmZ7TVUbYo3xZCeyr7NwVec1NCx7tKZxoReP6OlWfeo40fs1F7Jc
+ fLz1cIFEz+zAayNxwc7GfwmEHSvWbmFlQ+JWBoyLza8r3ntmWopIHlBruyH+JI2lajkr
+ 6xHg==
+X-Gm-Message-State: AOAM532tX4PnrIh20lgBmcsK+1jUHFknAT1pvzQOxgYBdKIabJxnediI
+ MPxfxA9UKc84nPmuOxJkyzJO17fwhEnK0u/Qrmw8H/2l3nZjljPXoDhT5FHvknuPQABy5+dI9w2
+ ChNpYq0fFqGyP
+X-Received: by 2002:a50:d809:: with SMTP id o9mr42724364edj.149.1633967761581; 
+ Mon, 11 Oct 2021 08:56:01 -0700 (PDT)
+X-Received: by 2002:a50:d809:: with SMTP id o9mr42724332edj.149.1633967761412; 
+ Mon, 11 Oct 2021 08:56:01 -0700 (PDT)
 Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id u19sm4429423edv.40.2021.10.11.08.15.57
+ by smtp.gmail.com with ESMTPSA id lm14sm3673760ejb.24.2021.10.11.08.56.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Oct 2021 08:15:58 -0700 (PDT)
-Date: Mon, 11 Oct 2021 17:15:57 +0200
+ Mon, 11 Oct 2021 08:56:00 -0700 (PDT)
+Date: Mon, 11 Oct 2021 17:55:59 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [RFC v2 1/2] hw/pci-host/gpex: Allow to generate preserve boot
- config DSM #5
-Message-ID: <20211011171557.416c1fc6@redhat.com>
-In-Reply-To: <20211005085313.493858-2-eric.auger@redhat.com>
-References: <20211005085313.493858-1-eric.auger@redhat.com>
- <20211005085313.493858-2-eric.auger@redhat.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: Re: [PATCH v4 08/11] tests/acpi: allow updates of VIOT expected
+ data files
+Message-ID: <20211011175559.3d10bab3@redhat.com>
+In-Reply-To: <YWBjHrELdZIBXcOD@myrica>
+References: <20211001173358.863017-1-jean-philippe@linaro.org>
+ <20211001173358.863017-9-jean-philippe@linaro.org>
+ <20211006101215.24414401@redhat.com> <YWBjHrELdZIBXcOD@myrica>
 X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -111,7 +110,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -119,7 +118,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -132,94 +131,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, gshan@redhat.com,
- jean-philippe@linaro.org, qemu-devel@nongnu.org,
- shameerali.kolothum.thodi@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, philmd@redhat.com, ardb@kernel.org,
- eric.auger.pro@gmail.com
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, shannon.zhaosl@gmail.com,
+ mst@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com,
+ ani@anisinha.ca, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: klRGWc5+r0BX
+X-TUID: wQBnYsROXida
 
-On Tue,  5 Oct 2021 10:53:12 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+On Fri, 8 Oct 2021 16:26:22 +0100
+Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
 
-> Add a 'preserve_config' field in struct GPEXConfig and
-> if set generate the DSM #5 for preserving PCI boot configurations.
-> The DSM presence is needed to expose RMRs.
+> On Wed, Oct 06, 2021 at 10:12:15AM +0200, Igor Mammedov wrote:
+> > On Fri,  1 Oct 2021 18:33:56 +0100
+> > Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
+> >   
+> > > Create empty data files and allow updates for the upcoming VIOT tests.
+> > > 
+> > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > > ---
+> > >  tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
+> > >  tests/data/acpi/q35/DSDT.viot               | 0  
+> > 
+> > does default tests/data/acpi/q35/DSDT differs from
+> > DSDT.viot?  
+> 
+> Yes the VIOT test has one more PCI device (virtio-iommu) and PXB devices,
+> so there are additional descriptors in the DSDT
 
-here should be pointers to spec and location within it
-where it says preserving PCI boot configuration is necessary
-or in absence of that a bit more detailed explanation
-why it's necessary.
+
+also see tests/qtest/bios-tables-test.c step 6
+(---include diff--- part)
 
 > 
-> At the moment the DSM generation is not yet enabled.
+> Thanks,
+> Jean
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  include/hw/pci-host/gpex.h |  1 +
->  hw/pci-host/gpex-acpi.c    | 12 ++++++++++++
->  2 files changed, 13 insertions(+)
+> >   
+> > >  tests/data/acpi/q35/VIOT.viot               | 0
+> > >  tests/data/acpi/virt/VIOT                   | 0
+> > >  4 files changed, 3 insertions(+)
+> > >  create mode 100644 tests/data/acpi/q35/DSDT.viot
+> > >  create mode 100644 tests/data/acpi/q35/VIOT.viot
+> > >  create mode 100644 tests/data/acpi/virt/VIOT
+> > > 
+> > > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> > > index dfb8523c8b..29b5b1eabc 100644
+> > > --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> > > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> > > @@ -1 +1,4 @@
+> > >  /* List of comma-separated changed AML files to ignore */
+> > > +"tests/data/acpi/virt/VIOT",
+> > > +"tests/data/acpi/q35/DSDT.viot",
+> > > +"tests/data/acpi/q35/VIOT.viot",
+> > > diff --git a/tests/data/acpi/q35/DSDT.viot b/tests/data/acpi/q35/DSDT.viot
+> > > new file mode 100644
+> > > index 0000000000..e69de29bb2
+> > > diff --git a/tests/data/acpi/q35/VIOT.viot b/tests/data/acpi/q35/VIOT.viot
+> > > new file mode 100644
+> > > index 0000000000..e69de29bb2
+> > > diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/VIOT
+> > > new file mode 100644
+> > > index 0000000000..e69de29bb2  
+> >   
 > 
-> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-> index fcf8b63820..3f8f8ec38d 100644
-> --- a/include/hw/pci-host/gpex.h
-> +++ b/include/hw/pci-host/gpex.h
-> @@ -64,6 +64,7 @@ struct GPEXConfig {
->      MemMapEntry pio;
->      int         irq;
->      PCIBus      *bus;
-> +    bool        preserve_config;
-s/^^^/preserve_fw_config/
-
->  };
->  
->  int gpex_set_irq_num(GPEXHost *s, int index, int gsi);
-> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-> index e7e162a00a..7dab259379 100644
-> --- a/hw/pci-host/gpex-acpi.c
-> +++ b/hw/pci-host/gpex-acpi.c
-> @@ -164,6 +164,12 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->                  aml_append(dev, aml_name_decl("_PXM", aml_int(numa_node)));
->              }
->  
-
-
-> +            if (cfg->preserve_config) {
-> +                method = aml_method("_DSM", 5, AML_SERIALIZED);
-> +                aml_append(method, aml_return(aml_int(0)));
-> +                aml_append(dev, method);
-> +            }
-> +
->              acpi_dsdt_add_pci_route_table(dev, cfg->irq);
->  
->              /*
-> @@ -191,6 +197,12 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
->      aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
->      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
->  
-> +    if (cfg->preserve_config) {
-> +        method = aml_method("_DSM", 5, AML_SERIALIZED);
-> +        aml_append(method, aml_return(aml_int(0)));
-> +        aml_append(dev, method);
-> +    }
-> +
-
-
-these ones seem to wrong ,
-it adds duplicate _DSM methods with wrong ARGs number.
-
-virt board already has _DSM defined, see
-
-  acpi_dsdt_add_pci_osc()
-    E5C937D0-3553-4D7A-9117-EA4D19C3434D
-
-you need to modify that one (and possibly move out DSM into a separate function),
-also preserving config might regress what commit 40c3472a29c9a was fixing.
-
-
->      acpi_dsdt_add_pci_route_table(dev, cfg->irq);
->  
->      method = aml_method("_CBA", 0, AML_NOTSERIALIZED);
 

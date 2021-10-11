@@ -1,108 +1,108 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp810917lfc;
-        Mon, 11 Oct 2021 07:39:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1Xo3mbK5cS8hsaK2Q2ZijUHDIPq2jooXi65+N14W1SiGnbiJvILQ3mmoP6aNNKMuJ9ZAq
-X-Received: by 2002:a05:622a:189f:: with SMTP id v31mr8043886qtc.376.1633963179509;
-        Mon, 11 Oct 2021 07:39:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633963179; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp812215lfc;
+        Mon, 11 Oct 2021 07:41:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyx/p1bWd5Z4otiEl501tt2zplnAJIKoM0hZC8Xp3Rs8rt1a0SAFvMrUNai4MNeP93PFGaQ
+X-Received: by 2002:a05:620a:532:: with SMTP id h18mr7235575qkh.132.1633963265831;
+        Mon, 11 Oct 2021 07:41:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633963265; cv=none;
         d=google.com; s=arc-20160816;
-        b=T3Fs1tihfGIUZPakZVHtsTgiOdbiO6N9Lt928IkyqFiRcFLoWUJNzI8NYqEMPeJVSk
-         E18ycRgIKy5dmy+8CIdYUZ5HBmItlT9HkcuJ3RycB36MzSsOP1856IaiJfRxtAORHY8A
-         29Eyh7n5+IKJetBmZaKUPFjlR7L3Rnoeoe32cxDAREuHJ4yVV0FYX2VU4ywbU4aiuW7v
-         l7Ki8OVPLp3+ytSVWHLV1O/zmZee12lEtTw2tphlpeFU31K2t53NIAvq+0ySAk4SwESp
-         Oymvw+5Fub/kN+/bfFhddL1WrlF1fxTZYQ/rWPZnUjJMOnwOvKRxOG0aSyxvnEmfvNIO
-         JRXA==
+        b=mA6+++Q9+gX2K+E/bRC2s05bbVKhP3fPNfWEzXVkzHzf8bqI89w+PjkYLtnJlzGqRZ
+         LoNZZTCyleqJjRyp0bZndNRRPgw/RBRokx7GkcNY6yPUqCQjONCrJA+/OWax0P1Ivwbv
+         LJ+w0fssKmJqCJwWKCSYREBn16yrkEu7euc+ywIWoYD1j1WhkipJtt3Rt9XIQxiES9Uo
+         2ADeGImeqh9+1h3vBnPeya3e9s1XnTOSW/DKfzxiDDDScpMAs3GZ5L9xgxo8SIA02FS9
+         VaKTkpJOfIXOlFie7THyEeyjkz+myGQNEYETCCnsv7f9fhlNX6+MvHCmKaa6/yDlSu02
+         IHyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=S0ptSPALtC9JFB0bevsnnbdhOUgczz7Po1AotF9xbzs=;
-        b=mjpMer5RmNVYykIIcybJDQ00nnl2ypLwEICyRatKpRQExFSuBk3OT19gNNOoKounCn
-         ig8Uoey9Zy2EWVZciumv8ZMVDANo177nt7+s19CTqlpoDYTAGrej9aX6tHDn0AsubpwC
-         vZTAoGCn7XmPDvfVPbmluYxV1Ip0o+X9O9PlvjJW7SQpWb0ZXoBfdl/0y0oADV4YgRvh
-         tmGke0z+ghZ72Z0RFfKQSwVl3jNwj6pbE1M+C8v83Obwh9rPcXDcmXN1s6GqNM465wRO
-         5oAv2UoSAHiMFvC8I9JfEIBLS6ur7t9llMQA3v170wvAop4Ic9705UArcCKbAlQP22yk
-         hEMg==
+        bh=H/cG52eUfC2yHg7ry4MRG9pUHfjEckgwLM5wHmFfLbg=;
+        b=jyhKCXnPCvYzl7yYbSZ7UPZSPmpfzj8ROuGGE9C20DePSZTy5t4JcE/fovx7l2PGCq
+         AiFycMVeQtL8Gi7LCc5f8vxn5LrVBNCE4ehqrPiQaPxKtQwPLg3BxfGs5RbvOPgJPxhT
+         GRK3HMjHw7XDjlLSaf//CkXAcEE6b8JC+OWjhzWOF6lJXBeRmDz7wVSUkEvS7zQDim93
+         c7O+gI3n2n/jDPOsGSXe4HlQxO+L6xiGrgIxCojNZNOC6ZXRmYoUz93agPY4SdpaWf6c
+         dC4qW4WTVyGaThd5d2NjjolEH8vtYfpwIM/XXYywED9QQ6z7UhsrfvQNFowUXRn0b96/
+         el6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NLK5h3Wz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NyjjXfKZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o2si4766086qvi.123.2021.10.11.07.39.39
+        by mx.google.com with ESMTPS id a13si5349319qta.173.2021.10.11.07.41.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Oct 2021 07:39:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Oct 2021 07:41:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NLK5h3Wz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NyjjXfKZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43790 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45170 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mZwSo-0004Hz-TM
-	for alex.bennee@linaro.org; Mon, 11 Oct 2021 10:39:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46620)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mZwUD-0005FB-9X
+	for alex.bennee@linaro.org; Mon, 11 Oct 2021 10:41:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mZwRa-0003Tn-CM
- for qemu-devel@nongnu.org; Mon, 11 Oct 2021 10:38:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38648)
+ id 1mZwTm-0005DK-C3
+ for qemu-arm@nongnu.org; Mon, 11 Oct 2021 10:40:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35093)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mZwRW-0002Co-Hm
- for qemu-devel@nongnu.org; Mon, 11 Oct 2021 10:38:20 -0400
+ id 1mZwTk-0003Ge-Hd
+ for qemu-arm@nongnu.org; Mon, 11 Oct 2021 10:40:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633963096;
+ s=mimecast20190719; t=1633963235;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=S0ptSPALtC9JFB0bevsnnbdhOUgczz7Po1AotF9xbzs=;
- b=NLK5h3Wz2Kpv6scpGpHtPP5fFOcWnMeWlL2M3VfCh6hhn5fFNX1BiSky0yRAbZJpyGTxSE
- 617kJ/PKY7Uemh19w0sE7r9E8UUAR3gQZ2GNiAD05GnGMr1Mm5PbIZ0/IBW8ZzYtl2Q05d
- Vv3KMckVY9GkQZ/HNouMVm+bv8KBCaE=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-521-xI6nRQVmO2WG-SC5fm6iFw-1; Mon, 11 Oct 2021 10:38:15 -0400
-X-MC-Unique: xI6nRQVmO2WG-SC5fm6iFw-1
-Received: by mail-ed1-f70.google.com with SMTP id
- u24-20020aa7db98000000b003db57b1688aso10704257edt.6
- for <qemu-devel@nongnu.org>; Mon, 11 Oct 2021 07:38:15 -0700 (PDT)
+ bh=H/cG52eUfC2yHg7ry4MRG9pUHfjEckgwLM5wHmFfLbg=;
+ b=NyjjXfKZbWZWUwv/nNjpH5teaQhjxy8zxeDE1ly+DHQW84Z9gMkzkdrvZQCu8ljXFfTroF
+ htKlzGJ9Fes4lEHMMKBnZVFlRkC0BPa9KpolJPB3BLM26hELYHZOaP8I4TlqFHv1n0sjyE
+ ejVAAdzzt3OrTV7TPaffwzSYUECC9wM=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-243-7NuGglBxO6SxLhBRvYVrhw-1; Mon, 11 Oct 2021 10:40:33 -0400
+X-MC-Unique: 7NuGglBxO6SxLhBRvYVrhw-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ z23-20020aa7cf97000000b003db7be405e1so5195035edx.13
+ for <qemu-arm@nongnu.org>; Mon, 11 Oct 2021 07:40:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=S0ptSPALtC9JFB0bevsnnbdhOUgczz7Po1AotF9xbzs=;
- b=zVOShkR2Y8JZCj8QAlUBxvpNFJb0sCYRf4OHpAszAsF+8r00kX1GSrnoCcYBPBgxxJ
- 5O4As8B0dq9NJPhzlPdEeCDdArb5vkxeWp72LPJbwcQ+9iVjNbxdBk1Ggaid9xtN2PZj
- DRLLDFLiLEp0nfFRDWHrISmsHhSaVDQ4GAqC/qru4uRzBqxkFLmmei6wY0/hx2pBXZAf
- OLks2wFu8TxKQv88KESAmbUWH3Ftx0yWinM6js9usAIELWwTXquCe2qYM4R9ZelPjEsE
- dlSIS70CRtb0EZ32oAy8VFA2Zk4nB5jE5AzmdxgnQ1rAn1lcXbEc72bj8J5bbKbv+exq
- pzhA==
-X-Gm-Message-State: AOAM530uSzRg1ZfEhdw/Mvy9TyvgmPijKBYLpqmhw28pkiR+Mxd97et5
- JQW4aKUE3eYbhaDF8dBLaSFPuFNYp317LEM42WOCIDIa6SAmLpNzqGnIf6dLlVF4xLg2Tak5Zs4
- AMKioeGuUXsHCIDY=
-X-Received: by 2002:a17:907:20d0:: with SMTP id
- qq16mr22063452ejb.168.1633963094360; 
- Mon, 11 Oct 2021 07:38:14 -0700 (PDT)
-X-Received: by 2002:a17:907:20d0:: with SMTP id
- qq16mr22063402ejb.168.1633963093993; 
- Mon, 11 Oct 2021 07:38:13 -0700 (PDT)
+ bh=H/cG52eUfC2yHg7ry4MRG9pUHfjEckgwLM5wHmFfLbg=;
+ b=EKINznjxTS4DrFSCgirsUuuZBl6rNBM5Bkh48P2NiaHFaQe1w+qomhAYnk7dNgi2bP
+ OTrfq9YbcSO+55SN6oM4HgPeeeO4kcrRW2wnC91GWMRwjWQSqmreVND74FoeoC42pCRI
+ DmCut1RVhusVLUNCtZB5j7kmmyMiEUNyMPlmhEy3Rr+sZdzXmMnpEi2aHxi2vdNTC6Pg
+ epSzd0h33qOPFh4fMX+298ywB565ZugP/CTfX+Gcvjfb1TLAUCYikl/IdIH5bjkK/zyi
+ oaUHynEkZbBjWCai7YH893w6jXrGZ9zuvrzo8gXD3mfAgHEvt6SqxXGrE5zIgaTZbkoC
+ 1eDQ==
+X-Gm-Message-State: AOAM532L8TaSgIloZvQgyZFdm+2fpQmoFVlQ+hank2E2Fa6lgwsfpWIh
+ zdTymffK2lzsU1rk1IAmxCBeZkVVr3vWGcpROax3yT37obkjqJm2S+Lh4OQ9RDg3molDjOucXng
+ 96Tu24fIKe/uH
+X-Received: by 2002:a17:906:38ce:: with SMTP id
+ r14mr25429592ejd.268.1633963232801; 
+ Mon, 11 Oct 2021 07:40:32 -0700 (PDT)
+X-Received: by 2002:a17:906:38ce:: with SMTP id
+ r14mr25429561ejd.268.1633963232605; 
+ Mon, 11 Oct 2021 07:40:32 -0700 (PDT)
 Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id p6sm4311163edi.18.2021.10.11.07.38.13
+ by smtp.gmail.com with ESMTPSA id lb12sm3709190ejc.28.2021.10.11.07.40.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Oct 2021 07:38:13 -0700 (PDT)
-Date: Mon, 11 Oct 2021 16:38:12 +0200
+ Mon, 11 Oct 2021 07:40:32 -0700 (PDT)
+Date: Mon, 11 Oct 2021 16:40:31 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v2 2/3] hw/arm/virt-acpi-build: IORT upgrade up to
- revision E.b
-Message-ID: <20211011163812.26b76bae@redhat.com>
-In-Reply-To: <20211005083805.493456-3-eric.auger@redhat.com>
+Subject: Re: [PATCH v2 3/3] tests/acpi: Generate reference blob for IORT rev
+ E.b
+Message-ID: <20211011164031.0db6bdce@redhat.com>
+In-Reply-To: <20211005083805.493456-4-eric.auger@redhat.com>
 References: <20211005083805.493456-1-eric.auger@redhat.com>
- <20211005083805.493456-3-eric.auger@redhat.com>
+ <20211005083805.493456-4-eric.auger@redhat.com>
 X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -121,193 +121,92 @@ X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, gshan@redhat.com,
  qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
  philmd@redhat.com, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1CtxNPHt9flK
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1iP8raA6Bm7R
 
-On Tue,  5 Oct 2021 10:38:04 +0200
+On Tue,  5 Oct 2021 10:38:05 +0200
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> Upgrade the IORT table from B to E.b specification
-> revision (ARM DEN 0049E.b).
+> Re-generate reference blobs with rebuild-expected-aml.sh.
+
+commit message should have diff old vs new,
+if dis is the same/similar for various variants,
+it's fine to provide only one variant  diff here.
+
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-with nit below fixed:
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-> 
 > ---
+>  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+>  tests/data/acpi/virt/IORT                   | Bin 124 -> 128 bytes
+>  tests/data/acpi/virt/IORT.memhp             | Bin 124 -> 128 bytes
+>  tests/data/acpi/virt/IORT.numamem           | Bin 124 -> 128 bytes
+>  tests/data/acpi/virt/IORT.pxb               | Bin 124 -> 128 bytes
+>  5 files changed, 1 deletion(-)
 > 
-> v1 -> v2:
-> - Fix Revision value for ITS node and SMMUv3 node
-> - increment an identifier
-> ---
->  hw/arm/virt-acpi-build.c | 48 ++++++++++++++++++++++++----------------
->  1 file changed, 29 insertions(+), 19 deletions(-)
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> index 9a5a923d6b..dfb8523c8b 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1,2 +1 @@
+>  /* List of comma-separated changed AML files to ignore */
+> -"tests/data/acpi/virt/IORT",
+> diff --git a/tests/data/acpi/virt/IORT b/tests/data/acpi/virt/IORT
+> index 521acefe9ba66706c5607321a82d330586f3f280..7efd0ce8a6b3928efa7e1373f688ab4c5f50543b 100644
+> GIT binary patch
+> literal 128
+> zcmebD4+?2uU|?Y0?Bwt45v<@85#X!<1dKp25F11@0kHuPgMkDCNC*yK93~3}W)K^M
+> VRiHGGVg_O`aDdYP|3ers^8jQz3IPBB
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 257d0fee17..789bac3134 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -241,19 +241,20 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
->  #endif
->  
->  #define ID_MAPPING_ENTRY_SIZE 20
-> -#define SMMU_V3_ENTRY_SIZE 60
-> -#define ROOT_COMPLEX_ENTRY_SIZE 32
-> +#define SMMU_V3_ENTRY_SIZE 68
-> +#define ROOT_COMPLEX_ENTRY_SIZE 36
->  #define IORT_NODE_OFFSET 48
->  
->  static void build_iort_id_mapping(GArray *table_data, uint32_t input_base,
->                                    uint32_t id_count, uint32_t out_ref)
->  {
-> -    /* Identity RID mapping covering the whole input RID range */
-> +    /* Table 4 ID mapping format */
->      build_append_int_noprefix(table_data, input_base, 4); /* Input base */
->      build_append_int_noprefix(table_data, id_count, 4); /* Number of IDs */
->      build_append_int_noprefix(table_data, input_base, 4); /* Output base */
->      build_append_int_noprefix(table_data, out_ref, 4); /* Output Reference */
-> -    build_append_int_noprefix(table_data, 0, 4); /* Flags */
-> +    /* Flags */
-> +    build_append_int_noprefix(table_data, 0 /* Single mapping */, 4);
->  }
->  
->  struct AcpiIortIdMapping {
-> @@ -298,7 +299,7 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
->  /*
->   * Input Output Remapping Table (IORT)
->   * Conforms to "IO Remapping Table System Software on ARM Platforms",
-> - * Document number: ARM DEN 0049B, October 2015
-> + * Document number: ARM DEN 0049E, Feb 2021
->   */
->  static void
->  build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> @@ -307,10 +308,11 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      const uint32_t iort_node_offset = IORT_NODE_OFFSET;
->      size_t node_size, smmu_offset = 0;
->      AcpiIortIdMapping *idmap;
-> +    uint32_t id = 0;
-
-It's probably worth mentioning in commit message that
-IDs are generated in sequential order, to make sure that
-different nodes unique but otherwise IDs are not referenced/used.
-
-If we were to actually use IDs, I'd prefer explicit naming for
-static nodes (i.e. something like SMMUv3_ID = #).
-
-
-
->      GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->      GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
->  
-> -    AcpiTable table = { .sig = "IORT", .rev = 0, .oem_id = vms->oem_id,
-> +    AcpiTable table = { .sig = "IORT", .rev = 3, .oem_id = vms->oem_id,
->                          .oem_table_id = vms->oem_table_id };
->      /* Table 2 The IORT */
->      acpi_table_begin(&table, table_data);
-> @@ -358,12 +360,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
->      build_append_int_noprefix(table_data, 0, 4); /* Reserved */
->  
-> -    /* 3.1.1.3 ITS group node */
-> +    /* Table 12 ITS Group Format */
->      build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
->      node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
->      build_append_int_noprefix(table_data, node_size, 2); /* Length */
-> -    build_append_int_noprefix(table_data, 0, 1); /* Revision */
-> -    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
-> +    build_append_int_noprefix(table_data, 1, 1); /* Revision */
-> +    build_append_int_noprefix(table_data, id++, 4); /* Identifier */
->      build_append_int_noprefix(table_data, 0, 4); /* Number of ID mappings */
->      build_append_int_noprefix(table_data, 0, 4); /* Reference to ID Array */
->      build_append_int_noprefix(table_data, 1, 4); /* Number of ITSs */
-> @@ -374,19 +376,19 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
->  
->          smmu_offset = table_data->len - table.table_offset;
-> -        /* 3.1.1.2 SMMUv3 */
-> +        /* Table 9 SMMUv3 Format */
->          build_append_int_noprefix(table_data, 4 /* SMMUv3 */, 1); /* Type */
->          node_size =  SMMU_V3_ENTRY_SIZE + ID_MAPPING_ENTRY_SIZE;
->          build_append_int_noprefix(table_data, node_size, 2); /* Length */
-> -        build_append_int_noprefix(table_data, 0, 1); /* Revision */
-> -        build_append_int_noprefix(table_data, 0, 4); /* Reserved */
-> +        build_append_int_noprefix(table_data, 4, 1); /* Revision */
-> +        build_append_int_noprefix(table_data, id++, 4); /* Identifier */
->          build_append_int_noprefix(table_data, 1, 4); /* Number of ID mappings */
->          /* Reference to ID Array */
->          build_append_int_noprefix(table_data, SMMU_V3_ENTRY_SIZE, 4);
->          /* Base address */
->          build_append_int_noprefix(table_data, vms->memmap[VIRT_SMMU].base, 8);
->          /* Flags */
-> -        build_append_int_noprefix(table_data, 1 /* COHACC OverrideNote */, 4);
-> +        build_append_int_noprefix(table_data, 1 /* COHACC Override */, 4);
->          build_append_int_noprefix(table_data, 0, 4); /* Reserved */
->          build_append_int_noprefix(table_data, 0, 8); /* VATOS address */
->          /* Model */
-> @@ -395,35 +397,43 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          build_append_int_noprefix(table_data, irq + 1, 4); /* PRI */
->          build_append_int_noprefix(table_data, irq + 3, 4); /* GERR */
->          build_append_int_noprefix(table_data, irq + 2, 4); /* Sync */
-> +        build_append_int_noprefix(table_data, 0, 4); /* Proximity domain */
-> +        /* DeviceID mapping index (ignored since interrupts are GSIV based) */
-> +        build_append_int_noprefix(table_data, 0, 4);
->  
->          /* output IORT node is the ITS group node (the first node) */
->          build_iort_id_mapping(table_data, 0, 0xFFFF, IORT_NODE_OFFSET);
->      }
->  
-> -    /* Table 16 Root Complex Node */
-> +    /* Table 17 Root Complex Node */
->      build_append_int_noprefix(table_data, 2 /* Root complex */, 1); /* Type */
->      node_size =  ROOT_COMPLEX_ENTRY_SIZE +
->                   ID_MAPPING_ENTRY_SIZE * rc_mapping_count;
->      build_append_int_noprefix(table_data, node_size, 2); /* Length */
-> -    build_append_int_noprefix(table_data, 0, 1); /* Revision */
-> -    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
-> +    build_append_int_noprefix(table_data, 3, 1); /* Revision */
-> +    build_append_int_noprefix(table_data, id++, 4); /* Identifier */
->      /* Number of ID mappings */
->      build_append_int_noprefix(table_data, rc_mapping_count, 4);
->      /* Reference to ID Array */
->      build_append_int_noprefix(table_data, ROOT_COMPLEX_ENTRY_SIZE, 4);
->  
-> -    /* Table 13 Memory access properties */
-> +    /* Table 14 Memory access properties */
->      /* CCA: Cache Coherent Attribute */
->      build_append_int_noprefix(table_data, 1 /* fully coherent */, 4);
->      build_append_int_noprefix(table_data, 0, 1); /* AH: Note Allocation Hints */
->      build_append_int_noprefix(table_data, 0, 2); /* Reserved */
-> -    /* MAF: Note Memory Access Flags */
-> -    build_append_int_noprefix(table_data, 0x3 /* CCA = CPM = DCAS = 1 */, 1);
-> +    /* Table 15 Memory Access Flags */
-> +    build_append_int_noprefix(table_data, 0x3 /* CCA = CPM = DACS = 1 */, 1);
->  
->      build_append_int_noprefix(table_data, 0, 4); /* ATS Attribute */
->      /* MCFG pci_segment */
->      build_append_int_noprefix(table_data, 0, 4); /* PCI Segment number */
->  
-> +    /* Memory address size limit */
-> +    build_append_int_noprefix(table_data, 64, 1);
-> +
-> +    build_append_int_noprefix(table_data, 0, 3); /* Reserved */
-> +
->      /* Output Reference */
->      if (vms->iommu == VIRT_IOMMU_SMMUV3) {
->          AcpiIortIdMapping *range;
+> literal 124
+> zcmebD4+^Pa00MR=e`k+i1*eDrX9XZ&1PX!JAesq?4S*O7Bw!2(4Uz`|CKCt^;wu0#
+> QRGb+i3L*dhhtM#y0PN=p0RR91
+> 
+> diff --git a/tests/data/acpi/virt/IORT.memhp b/tests/data/acpi/virt/IORT.memhp
+> index 521acefe9ba66706c5607321a82d330586f3f280..7efd0ce8a6b3928efa7e1373f688ab4c5f50543b 100644
+> GIT binary patch
+> literal 128
+> zcmebD4+?2uU|?Y0?Bwt45v<@85#X!<1dKp25F11@0kHuPgMkDCNC*yK93~3}W)K^M
+> VRiHGGVg_O`aDdYP|3ers^8jQz3IPBB
+> 
+> literal 124
+> zcmebD4+^Pa00MR=e`k+i1*eDrX9XZ&1PX!JAesq?4S*O7Bw!2(4Uz`|CKCt^;wu0#
+> QRGb+i3L*dhhtM#y0PN=p0RR91
+> 
+> diff --git a/tests/data/acpi/virt/IORT.numamem b/tests/data/acpi/virt/IORT.numamem
+> index 521acefe9ba66706c5607321a82d330586f3f280..7efd0ce8a6b3928efa7e1373f688ab4c5f50543b 100644
+> GIT binary patch
+> literal 128
+> zcmebD4+?2uU|?Y0?Bwt45v<@85#X!<1dKp25F11@0kHuPgMkDCNC*yK93~3}W)K^M
+> VRiHGGVg_O`aDdYP|3ers^8jQz3IPBB
+> 
+> literal 124
+> zcmebD4+^Pa00MR=e`k+i1*eDrX9XZ&1PX!JAesq?4S*O7Bw!2(4Uz`|CKCt^;wu0#
+> QRGb+i3L*dhhtM#y0PN=p0RR91
+> 
+> diff --git a/tests/data/acpi/virt/IORT.pxb b/tests/data/acpi/virt/IORT.pxb
+> index 521acefe9ba66706c5607321a82d330586f3f280..7efd0ce8a6b3928efa7e1373f688ab4c5f50543b 100644
+> GIT binary patch
+> literal 128
+> zcmebD4+?2uU|?Y0?Bwt45v<@85#X!<1dKp25F11@0kHuPgMkDCNC*yK93~3}W)K^M
+> VRiHGGVg_O`aDdYP|3ers^8jQz3IPBB
+> 
+> literal 124
+> zcmebD4+^Pa00MR=e`k+i1*eDrX9XZ&1PX!JAesq?4S*O7Bw!2(4Uz`|CKCt^;wu0#
+> QRGb+i3L*dhhtM#y0PN=p0RR91
+> 
 

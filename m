@@ -1,122 +1,89 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1486885lfc;
-        Mon, 11 Oct 2021 23:41:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKTe0pXXnAWqB4u+F5ggjfelBHGj/TdJSh/xWsSvdiQuK/MKVQBosXvAA8YFQVn3nzrE9f
-X-Received: by 2002:ac8:7f44:: with SMTP id g4mr8742726qtk.130.1634020867594;
-        Mon, 11 Oct 2021 23:41:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634020867; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1521607lfc;
+        Tue, 12 Oct 2021 00:39:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRq+hrh+mPaMYacnEpPCmRyhOGnkDGzVxN4+a6DWtG4OylvT5BJB8F2cp4g/Jfi9OnXrB7
+X-Received: by 2002:a0c:8bc9:: with SMTP id a9mr19997716qvc.1.1634024360609;
+        Tue, 12 Oct 2021 00:39:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634024360; cv=none;
         d=google.com; s=arc-20160816;
-        b=ahZWhC+zC/PVG6uPhVmO9vDbFP4OiOyVwnR8UC1tGyjOd14a6kEAsRYGFcvEwlaB3A
-         usoH+Rk1UVmHT3Oh/9n9155pTu0lUQfWL0VXKMzZzw8tPSdMkFtGAzZanJJ7x/NSAqXR
-         vjJ2bWPEzoy86qvqa+W87FXdtuFSyDZqhYPnMZwuicZIYJbyVpV+jVF7dCWCJzkdz3jZ
-         6zm3B/ImK6enYPiZiR+gIdkG85AKydBqsTA4wJEZ6ps88E9LWK9a2g8d203Vxrb51MRq
-         J5taE5s4fz/Uo+NwFsgDFIr+EQvIqYiCDj4QfrtCAL5pz4PGXUSpcn65RGKBuixxZLez
-         p/1A==
+        b=YYiQ5Xf+3hiQTWY4O+dGih7DNria6HlE90tziCU1qhLU7Dvl1D31RUiEiEQ72NeQkM
+         PWWnQxG0j3zXWMDNthI31UyEOgRukOLPYmOCeEGSFPKq/Lr7yLs8/HYM9pUlVWMtejPb
+         2lU8tH7tbXE36fmTx9+hvgUZ/3HvlZ16bXwBv8yREun4Fl11UofBezBeKQ9lyduEUgiX
+         YGyCfMZJBqcKo5A0Vxmq36qgF8HGBJ5w2oMUPwPdYZjRKwqkuNHzNP9QlCtepzQPmwpZ
+         LrzbOylgnMdIOMsQxoqjfplGwbDIvok2QIxbsSMyQ8LQyOiySUU1NReBfIHwN7xz/dCk
+         0o3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Sg0ZUIe2qujzGohFbDm5tFYCs8RdfXL+QYfcG1lJnYs=;
-        b=enAxKwmnMsnCEVkaP8pzh8a0rwQTJ70mJauQcpkId4T25gPKp90i4aFZ5ccdV/Qj8B
-         q5ANgKnBCEtsOnzl2rjWTYC5MgScuNyDYe6fONj8wmv62KQ6CZmieGD0X++tHczoyLa3
-         bk39CEleJfMQ7+K80RKl7tvZruv82hvE0kqzEm3nph/VP3VVbEPy5rN4KVbxxNZsctpy
-         oz/CBA26aDx8D5ZmACtAzUGi45nklHDOyIvqbRLW+woSzxQHxzKLJGiPbjA/t2Rato7x
-         wd5eQTFvmTKaHDUZwEXATRWGE02LKwu4wq0aew8Gs50/Rkjhnwfgmx+zhPRnU/zMvL9y
-         Sifw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=szq87xEv1QEFX1WbtjvhD3YaYXa7isS8ATXuSQRwL+8=;
+        b=LH0oC38bDV28DMU5VTlsG0dcdzZnp2hHV5Kq+Ioqayz7/Phgah9ajyzOUqyYX3rnx9
+         UpbQBbHjpmY0NDzPW3uIvpKjPer7Wa3zfoOItvt6cEmvpYIP8sxqZXlWCYcU3HhGT8Pt
+         EcZ3CZIHl8/5SeYTxG+G3KjCxJLbdkWhZDA/U8oGMZHOec6AGLdR/9EgxfFeoWrsugsM
+         nluUiCtRu2TOPi1WIuzCdYQAEK2KX8bpkYKZxYSDqVlu5Mvc3V443t9N8Yb9OEZUMnpf
+         FGPgmGsbt0rYQtFha9Lzm1AGBhAHsr9tVws0xWeU8eH6V21JTXbatfwKZNFK25x+p5ft
+         b+jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PUhcG7qx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w19si6188981qto.396.2021.10.11.23.41.07
+        by mx.google.com with ESMTPS id c13si6847045qvb.17.2021.10.12.00.39.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Oct 2021 23:41:07 -0700 (PDT)
+        Tue, 12 Oct 2021 00:39:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PUhcG7qx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56732 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35580 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maBTG-0007ui-SE
-	for alex.bennee@linaro.org; Tue, 12 Oct 2021 02:41:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35086)
+	id 1maCNb-0002QG-T3
+	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:39:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1maBSD-0007t1-2Z
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 02:40:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41481)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM8-0000Pb-Ha
+ for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:48 -0400
+Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156]:45495)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1maBSA-0001dN-96
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 02:40:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634020797;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Sg0ZUIe2qujzGohFbDm5tFYCs8RdfXL+QYfcG1lJnYs=;
- b=PUhcG7qxb0dbrR7b+Yg8iiMyg81sV96tem+VvVoBmXDaCZBFn4UTtqVu166UVrwIUyfdzT
- 4YFhv+HOvPKhyKQgst9VGkbJFo1XJ9vT7GEaZZGjS1rDjswiD4hKSjLbJ4Xojr/M5OadA7
- xBXXt2PbHoV+kR8nbFA4ZOZ5azkedGo=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-329-cIe9jlrSPiOZDsmGcpi5-g-1; Tue, 12 Oct 2021 02:39:54 -0400
-X-MC-Unique: cIe9jlrSPiOZDsmGcpi5-g-1
-Received: by mail-ed1-f71.google.com with SMTP id
- i7-20020a50d747000000b003db0225d219so18056221edj.0
- for <qemu-arm@nongnu.org>; Mon, 11 Oct 2021 23:39:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Sg0ZUIe2qujzGohFbDm5tFYCs8RdfXL+QYfcG1lJnYs=;
- b=h+k98lhDzHFQNXuaz6y7gu7rX4/pPP8THjPqADMQY8azFEEAmv7ojXNPlAXXssbOaB
- Pj5tpZyEA/tFZb9730L9wiw7Bnf303aO5cAbCnK+bsVfZ7cDdsHIB6loIHrywhLWQ9Zs
- E4bzUd4rFDDJLR5OgS0ETpKXvh7dJi1px7XN/s8nG0Iddv5ow3BK9x9/az31sw1zVdYn
- qSRP8v8yb+MwZ+gA2Pvs4nsY46dOTlIgLxdMOsGSfOYC+vU0QcYNODkTP9K5heofho6h
- Vaudrc8sve8s7YThtRzmxze1XOb5FT63zTFU/FCdnXdJ3gTu3LQ82HgwuX5AVYuU0loY
- KpPQ==
-X-Gm-Message-State: AOAM533VODEPYJl4M1C+YLYUL3rnqdw+0p0DQ6LfIZwXgXktFRCNxytX
- L/Lnp4IM+gmjDNX0zT4tUAvnuBkSyBTEVlf/wAb3MMTzZ77rQoyHhPtUe9k88Z1MlG/e7DtjD9h
- BkwyYqTV8L5j5
-X-Received: by 2002:a05:6402:354a:: with SMTP id
- f10mr44808288edd.365.1634020793417; 
- Mon, 11 Oct 2021 23:39:53 -0700 (PDT)
-X-Received: by 2002:a05:6402:354a:: with SMTP id
- f10mr44808263edd.365.1634020793172; 
- Mon, 11 Oct 2021 23:39:53 -0700 (PDT)
-Received: from gator.home (cst2-174-28.cust.vodafone.cz. [31.30.174.28])
- by smtp.gmail.com with ESMTPSA id n23sm5328248edw.75.2021.10.11.23.39.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Oct 2021 23:39:52 -0700 (PDT)
-Date: Tue, 12 Oct 2021 08:39:51 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v2 1/2] numa: Set default distance map if needed
-Message-ID: <20211012063951.iopcrftqtw67exln@gator.home>
-References: <20211012063603.166255-1-gshan@redhat.com>
- <20211012063603.166255-2-gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM0-00052G-Kx
+ for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:48 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.5])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 6C9C421A51;
+ Tue, 12 Oct 2021 07:37:38 +0000 (UTC)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 12 Oct
+ 2021 09:37:37 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R006eeafb683-62c9-4e81-b6b7-4ba7d74a99f0,
+ B93E5558764F88B003587FF4B0B721A638511A69) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 15/18] hw/adc: Add basic Aspeed ADC model
+Date: Tue, 12 Oct 2021 09:37:25 +0200
+Message-ID: <20211012073728.257748-16-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211012073728.257748-1-clg@kaod.org>
+References: <20211012073728.257748-1-clg@kaod.org>
 MIME-Version: 1.0
-In-Reply-To: <20211012063603.166255-2-gshan@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 2ef14759-8b55-471e-98f7-e57a7fefd074
+X-Ovh-Tracer-Id: 4269693922482883433
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
+ helo=8.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -129,42 +96,553 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, marcel.apfelbaum@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, shan.gavin@gmail.com, ehabkost@redhat.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U3fs4hoyW+AH
+X-TUID: klblWf3SygAf
 
-On Tue, Oct 12, 2021 at 02:36:02PM +0800, Gavin Shan wrote:
-> The following option is used to specify the distance map. It's
-> possible the option isn't provided by user. In this case, the
-> distance map isn't populated and exposed to platform. On the
-> other hand, the empty NUMA node, where no memory resides, is
-> allowed on ARM64 virt platform. For these empty NUMA nodes,
-> their corresponding device-tree nodes aren't populated, but
-> their NUMA IDs should be included in the "/distance-map"
-> device-tree node, so that kernel can probe them properly if
-> device-tree is used.
-> 
->   -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
-> 
-> So when user doesn't specify distance map, we need to generate
-> the default distance map, where the local and remote distances
-> are 10 and 20 separately. However, this is going to change the
-> hardware description of the guest in this particular scenario.
-> It's fine as the guest should be tolerant to ignore the distance
-> map completely or parse it properly by following the device-tree
-> specification.
-> 
-> This introduces an extra parameter to the exiting function
-> complete_init_numa_distance() to generate the default distance
-> map when no node pair distances are provided by user.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->  hw/core/numa.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
->
+From: Andrew Jeffery <andrew@aj.id.au>
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+This model implements enough behaviour to do basic functionality tests
+such as device initialisation and read out of dummy sample values. The
+sample value generation strategy is similar to the STM ADC already in
+the tree.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+[clg : support for multiple engines (AST2600) ]
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+[pdel : refactored engine register struct fields to regs[] array field]
+[pdel : added guest-error checking for upper-8 channel regs in AST2600]
+[pdel : allow 16-bit reads of the channel data registers]
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+Message-Id: <20211005052604.1674891-2-pdel@fb.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ include/hw/adc/aspeed_adc.h |  55 +++++
+ hw/adc/aspeed_adc.c         | 427 ++++++++++++++++++++++++++++++++++++
+ hw/adc/meson.build          |   1 +
+ hw/adc/trace-events         |   3 +
+ 4 files changed, 486 insertions(+)
+ create mode 100644 include/hw/adc/aspeed_adc.h
+ create mode 100644 hw/adc/aspeed_adc.c
+
+diff --git a/include/hw/adc/aspeed_adc.h b/include/hw/adc/aspeed_adc.h
+new file mode 100644
+index 000000000000..2f166e8be111
+--- /dev/null
++++ b/include/hw/adc/aspeed_adc.h
+@@ -0,0 +1,55 @@
++/*
++ * Aspeed ADC
++ *
++ * Copyright 2017-2021 IBM Corp.
++ *
++ * Andrew Jeffery <andrew@aj.id.au>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_ADC_ASPEED_ADC_H
++#define HW_ADC_ASPEED_ADC_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_ASPEED_ADC "aspeed.adc"
++#define TYPE_ASPEED_2400_ADC TYPE_ASPEED_ADC "-ast2400"
++#define TYPE_ASPEED_2500_ADC TYPE_ASPEED_ADC "-ast2500"
++#define TYPE_ASPEED_2600_ADC TYPE_ASPEED_ADC "-ast2600"
++OBJECT_DECLARE_TYPE(AspeedADCState, AspeedADCClass, ASPEED_ADC)
++
++#define TYPE_ASPEED_ADC_ENGINE "aspeed.adc.engine"
++OBJECT_DECLARE_SIMPLE_TYPE(AspeedADCEngineState, ASPEED_ADC_ENGINE)
++
++#define ASPEED_ADC_NR_CHANNELS 16
++#define ASPEED_ADC_NR_REGS     (0xD0 >> 2)
++
++struct AspeedADCEngineState {
++    /* <private> */
++    SysBusDevice parent;
++
++    MemoryRegion mmio;
++    qemu_irq irq;
++    uint32_t engine_id;
++    uint32_t nr_channels;
++    uint32_t regs[ASPEED_ADC_NR_REGS];
++};
++
++struct AspeedADCState {
++    /* <private> */
++    SysBusDevice parent;
++
++    MemoryRegion mmio;
++    qemu_irq irq;
++
++    AspeedADCEngineState engines[2];
++};
++
++struct AspeedADCClass {
++    SysBusDeviceClass parent_class;
++
++    uint32_t nr_engines;
++};
++
++#endif /* HW_ADC_ASPEED_ADC_H */
+diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
+new file mode 100644
+index 000000000000..c5fcae29f635
+--- /dev/null
++++ b/hw/adc/aspeed_adc.c
+@@ -0,0 +1,427 @@
++/*
++ * Aspeed ADC
++ *
++ * Copyright 2017-2021 IBM Corp.
++ *
++ * Andrew Jeffery <andrew@aj.id.au>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties.h"
++#include "migration/vmstate.h"
++#include "hw/adc/aspeed_adc.h"
++#include "trace.h"
++
++#define ASPEED_ADC_MEMORY_REGION_SIZE           0x1000
++#define ASPEED_ADC_ENGINE_MEMORY_REGION_SIZE    0x100
++#define  ASPEED_ADC_ENGINE_CH_EN_MASK           0xffff0000
++#define   ASPEED_ADC_ENGINE_CH_EN(x)            ((BIT(x)) << 16)
++#define  ASPEED_ADC_ENGINE_INIT                 BIT(8)
++#define  ASPEED_ADC_ENGINE_AUTO_COMP            BIT(5)
++#define  ASPEED_ADC_ENGINE_COMP                 BIT(4)
++#define  ASPEED_ADC_ENGINE_MODE_MASK            0x0000000e
++#define   ASPEED_ADC_ENGINE_MODE_OFF            (0b000 << 1)
++#define   ASPEED_ADC_ENGINE_MODE_STANDBY        (0b001 << 1)
++#define   ASPEED_ADC_ENGINE_MODE_NORMAL         (0b111 << 1)
++#define  ASPEED_ADC_ENGINE_EN                   BIT(0)
++#define ASPEED_ADC_HYST_EN                      BIT(31)
++
++#define ASPEED_ADC_L_MASK       ((1 << 10) - 1)
++#define ASPEED_ADC_L(x)         ((x) & ASPEED_ADC_L_MASK)
++#define ASPEED_ADC_H(x)         (((x) >> 16) & ASPEED_ADC_L_MASK)
++#define ASPEED_ADC_LH_MASK      (ASPEED_ADC_L_MASK << 16 | ASPEED_ADC_L_MASK)
++#define LOWER_CHANNEL_MASK      ((1 << 10) - 1)
++#define LOWER_CHANNEL_DATA(x)   ((x) & LOWER_CHANNEL_MASK)
++#define UPPER_CHANNEL_DATA(x)   (((x) >> 16) & LOWER_CHANNEL_MASK)
++
++#define TO_REG(addr) (addr >> 2)
++
++#define ENGINE_CONTROL              TO_REG(0x00)
++#define INTERRUPT_CONTROL           TO_REG(0x04)
++#define VGA_DETECT_CONTROL          TO_REG(0x08)
++#define CLOCK_CONTROL               TO_REG(0x0C)
++#define DATA_CHANNEL_1_AND_0        TO_REG(0x10)
++#define DATA_CHANNEL_7_AND_6        TO_REG(0x1C)
++#define DATA_CHANNEL_9_AND_8        TO_REG(0x20)
++#define DATA_CHANNEL_15_AND_14      TO_REG(0x2C)
++#define BOUNDS_CHANNEL_0            TO_REG(0x30)
++#define BOUNDS_CHANNEL_7            TO_REG(0x4C)
++#define BOUNDS_CHANNEL_8            TO_REG(0x50)
++#define BOUNDS_CHANNEL_15           TO_REG(0x6C)
++#define HYSTERESIS_CHANNEL_0        TO_REG(0x70)
++#define HYSTERESIS_CHANNEL_7        TO_REG(0x8C)
++#define HYSTERESIS_CHANNEL_8        TO_REG(0x90)
++#define HYSTERESIS_CHANNEL_15       TO_REG(0xAC)
++#define INTERRUPT_SOURCE            TO_REG(0xC0)
++#define COMPENSATING_AND_TRIMMING   TO_REG(0xC4)
++
++static inline uint32_t update_channels(uint32_t current)
++{
++    return ((((current >> 16) & ASPEED_ADC_L_MASK) + 7) << 16) |
++        ((current + 5) & ASPEED_ADC_L_MASK);
++}
++
++static bool breaks_threshold(AspeedADCEngineState *s, int reg)
++{
++    assert(reg >= DATA_CHANNEL_1_AND_0 &&
++           reg < DATA_CHANNEL_1_AND_0 + s->nr_channels / 2);
++
++    int a_bounds_reg = BOUNDS_CHANNEL_0 + (reg - DATA_CHANNEL_1_AND_0) * 2;
++    int b_bounds_reg = a_bounds_reg + 1;
++    uint32_t a_and_b = s->regs[reg];
++    uint32_t a_bounds = s->regs[a_bounds_reg];
++    uint32_t b_bounds = s->regs[b_bounds_reg];
++    uint32_t a = ASPEED_ADC_L(a_and_b);
++    uint32_t b = ASPEED_ADC_H(a_and_b);
++    uint32_t a_lower = ASPEED_ADC_L(a_bounds);
++    uint32_t a_upper = ASPEED_ADC_H(a_bounds);
++    uint32_t b_lower = ASPEED_ADC_L(b_bounds);
++    uint32_t b_upper = ASPEED_ADC_H(b_bounds);
++
++    return (a < a_lower || a > a_upper) ||
++           (b < b_lower || b > b_upper);
++}
++
++static uint32_t read_channel_sample(AspeedADCEngineState *s, int reg)
++{
++    assert(reg >= DATA_CHANNEL_1_AND_0 &&
++           reg < DATA_CHANNEL_1_AND_0 + s->nr_channels / 2);
++
++    /* Poor man's sampling */
++    uint32_t value = s->regs[reg];
++    s->regs[reg] = update_channels(s->regs[reg]);
++
++    if (breaks_threshold(s, reg)) {
++        s->regs[INTERRUPT_CONTROL] |= BIT(reg - DATA_CHANNEL_1_AND_0);
++        qemu_irq_raise(s->irq);
++    }
++
++    return value;
++}
++
++static uint64_t aspeed_adc_engine_read(void *opaque, hwaddr addr,
++                                       unsigned int size)
++{
++    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(opaque);
++    int reg = TO_REG(addr);
++    uint32_t value = 0;
++
++    switch (reg) {
++    case BOUNDS_CHANNEL_8 ... BOUNDS_CHANNEL_15:
++        if (s->nr_channels <= 8) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
++                          "bounds register %u invalid, only 0...7 valid\n",
++                          __func__, s->engine_id, reg - BOUNDS_CHANNEL_0);
++            break;
++        }
++        /* fallthrough */
++    case HYSTERESIS_CHANNEL_8 ... HYSTERESIS_CHANNEL_15:
++        if (s->nr_channels <= 8) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
++                          "hysteresis register %u invalid, only 0...7 valid\n",
++                          __func__, s->engine_id, reg - HYSTERESIS_CHANNEL_0);
++            break;
++        }
++        /* fallthrough */
++    case BOUNDS_CHANNEL_0 ... BOUNDS_CHANNEL_7:
++    case HYSTERESIS_CHANNEL_0 ... HYSTERESIS_CHANNEL_7:
++    case ENGINE_CONTROL:
++    case INTERRUPT_CONTROL:
++    case VGA_DETECT_CONTROL:
++    case CLOCK_CONTROL:
++    case INTERRUPT_SOURCE:
++    case COMPENSATING_AND_TRIMMING:
++        value = s->regs[reg];
++        break;
++    case DATA_CHANNEL_9_AND_8 ... DATA_CHANNEL_15_AND_14:
++        if (s->nr_channels <= 8) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
++                          "data register %u invalid, only 0...3 valid\n",
++                          __func__, s->engine_id, reg - DATA_CHANNEL_1_AND_0);
++            break;
++        }
++        /* fallthrough */
++    case DATA_CHANNEL_1_AND_0 ... DATA_CHANNEL_7_AND_6:
++        value = read_channel_sample(s, reg);
++        /* Allow 16-bit reads of the data registers */
++        if (addr & 0x2) {
++            assert(size == 2);
++            value >>= 16;
++        }
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: engine[%u]: 0x%" HWADDR_PRIx "\n",
++                      __func__, s->engine_id, addr);
++        break;
++    }
++
++    trace_aspeed_adc_engine_read(s->engine_id, addr, value);
++    return value;
++}
++
++static void aspeed_adc_engine_write(void *opaque, hwaddr addr, uint64_t value,
++                                    unsigned int size)
++{
++    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(opaque);
++    int reg = TO_REG(addr);
++    uint32_t init = 0;
++
++    trace_aspeed_adc_engine_write(s->engine_id, addr, value);
++
++    switch (reg) {
++    case ENGINE_CONTROL:
++        init = !!(value & ASPEED_ADC_ENGINE_EN);
++        init *= ASPEED_ADC_ENGINE_INIT;
++
++        value &= ~ASPEED_ADC_ENGINE_INIT;
++        value |= init;
++
++        value &= ~ASPEED_ADC_ENGINE_AUTO_COMP;
++        break;
++    case INTERRUPT_CONTROL:
++    case VGA_DETECT_CONTROL:
++    case CLOCK_CONTROL:
++        break;
++    case DATA_CHANNEL_9_AND_8 ... DATA_CHANNEL_15_AND_14:
++        if (s->nr_channels <= 8) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
++                          "data register %u invalid, only 0...3 valid\n",
++                          __func__, s->engine_id, reg - DATA_CHANNEL_1_AND_0);
++            return;
++        }
++        /* fallthrough */
++    case BOUNDS_CHANNEL_8 ... BOUNDS_CHANNEL_15:
++        if (s->nr_channels <= 8) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
++                          "bounds register %u invalid, only 0...7 valid\n",
++                          __func__, s->engine_id, reg - BOUNDS_CHANNEL_0);
++            return;
++        }
++        /* fallthrough */
++    case DATA_CHANNEL_1_AND_0 ... DATA_CHANNEL_7_AND_6:
++    case BOUNDS_CHANNEL_0 ... BOUNDS_CHANNEL_7:
++        value &= ASPEED_ADC_LH_MASK;
++        break;
++    case HYSTERESIS_CHANNEL_8 ... HYSTERESIS_CHANNEL_15:
++        if (s->nr_channels <= 8) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
++                          "hysteresis register %u invalid, only 0...7 valid\n",
++                          __func__, s->engine_id, reg - HYSTERESIS_CHANNEL_0);
++            return;
++        }
++        /* fallthrough */
++    case HYSTERESIS_CHANNEL_0 ... HYSTERESIS_CHANNEL_7:
++        value &= (ASPEED_ADC_HYST_EN | ASPEED_ADC_LH_MASK);
++        break;
++    case INTERRUPT_SOURCE:
++        value &= 0xffff;
++        break;
++    case COMPENSATING_AND_TRIMMING:
++        value &= 0xf;
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: engine[%u]: "
++                      "0x%" HWADDR_PRIx " 0x%" PRIx64 "\n",
++                      __func__, s->engine_id, addr, value);
++        break;
++    }
++
++    s->regs[reg] = value;
++}
++
++static const MemoryRegionOps aspeed_adc_engine_ops = {
++    .read = aspeed_adc_engine_read,
++    .write = aspeed_adc_engine_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 2,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
++
++static const uint32_t aspeed_adc_resets[ASPEED_ADC_NR_REGS] = {
++    [ENGINE_CONTROL]     = 0x00000000,
++    [INTERRUPT_CONTROL]  = 0x00000000,
++    [VGA_DETECT_CONTROL] = 0x0000000f,
++    [CLOCK_CONTROL]      = 0x0000000f,
++};
++
++static void aspeed_adc_engine_reset(DeviceState *dev)
++{
++    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(dev);
++
++    memcpy(s->regs, aspeed_adc_resets, sizeof(aspeed_adc_resets));
++}
++
++static void aspeed_adc_engine_realize(DeviceState *dev, Error **errp)
++{
++    AspeedADCEngineState *s = ASPEED_ADC_ENGINE(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    g_autofree char *name = g_strdup_printf(TYPE_ASPEED_ADC_ENGINE ".%d",
++                                            s->engine_id);
++
++    assert(s->engine_id < 2);
++
++    sysbus_init_irq(sbd, &s->irq);
++
++    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_adc_engine_ops, s, name,
++                          ASPEED_ADC_ENGINE_MEMORY_REGION_SIZE);
++
++    sysbus_init_mmio(sbd, &s->mmio);
++}
++
++static const VMStateDescription vmstate_aspeed_adc_engine = {
++    .name = TYPE_ASPEED_ADC,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, AspeedADCEngineState, ASPEED_ADC_NR_REGS),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static Property aspeed_adc_engine_properties[] = {
++    DEFINE_PROP_UINT32("engine-id", AspeedADCEngineState, engine_id, 0),
++    DEFINE_PROP_UINT32("nr-channels", AspeedADCEngineState, nr_channels, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void aspeed_adc_engine_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = aspeed_adc_engine_realize;
++    dc->reset = aspeed_adc_engine_reset;
++    device_class_set_props(dc, aspeed_adc_engine_properties);
++    dc->desc = "Aspeed Analog-to-Digital Engine";
++    dc->vmsd = &vmstate_aspeed_adc_engine;
++}
++
++static const TypeInfo aspeed_adc_engine_info = {
++    .name = TYPE_ASPEED_ADC_ENGINE,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AspeedADCEngineState),
++    .class_init = aspeed_adc_engine_class_init,
++};
++
++static void aspeed_adc_instance_init(Object *obj)
++{
++    AspeedADCState *s = ASPEED_ADC(obj);
++    AspeedADCClass *aac = ASPEED_ADC_GET_CLASS(obj);
++    uint32_t nr_channels = ASPEED_ADC_NR_CHANNELS / aac->nr_engines;
++
++    for (int i = 0; i < aac->nr_engines; i++) {
++        AspeedADCEngineState *engine = &s->engines[i];
++        object_initialize_child(obj, "engine[*]", engine,
++                                TYPE_ASPEED_ADC_ENGINE);
++        qdev_prop_set_uint32(DEVICE(engine), "engine-id", i);
++        qdev_prop_set_uint32(DEVICE(engine), "nr-channels", nr_channels);
++    }
++}
++
++static void aspeed_adc_set_irq(void *opaque, int n, int level)
++{
++    AspeedADCState *s = opaque;
++    AspeedADCClass *aac = ASPEED_ADC_GET_CLASS(s);
++    uint32_t pending = 0;
++
++    /* TODO: update Global IRQ status register on AST2600 (Need specs) */
++    for (int i = 0; i < aac->nr_engines; i++) {
++        uint32_t irq_status = s->engines[i].regs[INTERRUPT_CONTROL] & 0xFF;
++        pending |= irq_status << (i * 8);
++    }
++
++    qemu_set_irq(s->irq, !!pending);
++}
++
++static void aspeed_adc_realize(DeviceState *dev, Error **errp)
++{
++    AspeedADCState *s = ASPEED_ADC(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    AspeedADCClass *aac = ASPEED_ADC_GET_CLASS(dev);
++
++    qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_adc_set_irq,
++                                        s, NULL, aac->nr_engines);
++
++    sysbus_init_irq(sbd, &s->irq);
++
++    memory_region_init(&s->mmio, OBJECT(s), TYPE_ASPEED_ADC,
++                       ASPEED_ADC_MEMORY_REGION_SIZE);
++
++    sysbus_init_mmio(sbd, &s->mmio);
++
++    for (int i = 0; i < aac->nr_engines; i++) {
++        Object *eng = OBJECT(&s->engines[i]);
++
++        if (!sysbus_realize(SYS_BUS_DEVICE(eng), errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(eng), 0,
++                           qdev_get_gpio_in(DEVICE(sbd), i));
++        memory_region_add_subregion(&s->mmio,
++                                    i * ASPEED_ADC_ENGINE_MEMORY_REGION_SIZE,
++                                    &s->engines[i].mmio);
++    }
++}
++
++static void aspeed_adc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
++
++    dc->realize = aspeed_adc_realize;
++    dc->desc = "Aspeed Analog-to-Digital Converter";
++    aac->nr_engines = 1;
++}
++
++static void aspeed_2600_adc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
++
++    dc->desc = "ASPEED 2600 ADC Controller";
++    aac->nr_engines = 2;
++}
++
++static const TypeInfo aspeed_adc_info = {
++    .name = TYPE_ASPEED_ADC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_init = aspeed_adc_instance_init,
++    .instance_size = sizeof(AspeedADCState),
++    .class_init = aspeed_adc_class_init,
++    .class_size = sizeof(AspeedADCClass),
++    .abstract   = true,
++};
++
++static const TypeInfo aspeed_2400_adc_info = {
++    .name = TYPE_ASPEED_2400_ADC,
++    .parent = TYPE_ASPEED_ADC,
++};
++
++static const TypeInfo aspeed_2500_adc_info = {
++    .name = TYPE_ASPEED_2500_ADC,
++    .parent = TYPE_ASPEED_ADC,
++};
++
++static const TypeInfo aspeed_2600_adc_info = {
++    .name = TYPE_ASPEED_2600_ADC,
++    .parent = TYPE_ASPEED_ADC,
++    .class_init = aspeed_2600_adc_class_init,
++};
++
++static void aspeed_adc_register_types(void)
++{
++    type_register_static(&aspeed_adc_engine_info);
++    type_register_static(&aspeed_adc_info);
++    type_register_static(&aspeed_2400_adc_info);
++    type_register_static(&aspeed_2500_adc_info);
++    type_register_static(&aspeed_2600_adc_info);
++}
++
++type_init(aspeed_adc_register_types);
+diff --git a/hw/adc/meson.build b/hw/adc/meson.build
+index ac4f093fea7c..b29ac7ccdf53 100644
+--- a/hw/adc/meson.build
++++ b/hw/adc/meson.build
+@@ -1,4 +1,5 @@
+ softmmu_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
++softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_adc.c'))
+ softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
+ softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq-xadc.c'))
+ softmmu_ss.add(when: 'CONFIG_MAX111X', if_true: files('max111x.c'))
+diff --git a/hw/adc/trace-events b/hw/adc/trace-events
+index 456f21c8f438..5a4c444d773a 100644
+--- a/hw/adc/trace-events
++++ b/hw/adc/trace-events
+@@ -3,3 +3,6 @@
+ # npcm7xx_adc.c
+ npcm7xx_adc_read(const char *id, uint64_t offset, uint32_t value) " %s offset: 0x%04" PRIx64 " value 0x%04" PRIx32
+ npcm7xx_adc_write(const char *id, uint64_t offset, uint32_t value) "%s offset: 0x%04" PRIx64 " value 0x%04" PRIx32
++
++aspeed_adc_engine_read(uint32_t engine_id, uint64_t addr, uint64_t value) "engine[%u] 0x%" PRIx64 " 0x%" PRIx64
++aspeed_adc_engine_write(uint32_t engine_id, uint64_t addr, uint64_t value) "engine[%u] 0x%" PRIx64 " 0x%" PRIx64
+-- 
+2.31.1
 

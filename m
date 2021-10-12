@@ -1,67 +1,67 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1522783lfc;
-        Tue, 12 Oct 2021 00:41:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyI0ChTKm5mtFPKZPJV0DQL/a112Y1URFu4YUc36a2hO+RTXi3LK3WYCXjL2ylQ7JhAaQBw
-X-Received: by 2002:a25:e792:: with SMTP id e140mr26763024ybh.416.1634024483434;
-        Tue, 12 Oct 2021 00:41:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634024483; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1522822lfc;
+        Tue, 12 Oct 2021 00:41:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzIZa4JHz8Swhd92vjlGlY1KMC3sRDVvptENAnsbM95upSjuNLWIh8BBdnUMJhn0AVNCAGL
+X-Received: by 2002:a25:1c02:: with SMTP id c2mr28187967ybc.218.1634024488422;
+        Tue, 12 Oct 2021 00:41:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634024488; cv=none;
         d=google.com; s=arc-20160816;
-        b=Te3OkenxkhrDIQ82I2ixip2b16Mz9a54MpgKAwfgw98zUO7DaLllkYVGqeeUqsSll3
-         8v7FLl7p+arJ9XbCTjeWE5HpCneABgSSFDZuZHx+giSMC5UdwbbnPclLUQEEdp301ysn
-         idfG7ys3ZdrorbmmM9jLdutOQ/ihEK8Mt8M7Fn/EK+qCYvOtRDU2lVSCYTPKP5woLJ7w
-         K+bIB0VNyBP8vYaThl8XzZXi6PXW9Mg3H7KTgCchGdIk2V0xU8PNYGglDyQBnQtnmugM
-         Ac4uMGMkNaUyeZ7bCstlKnwcuSAeG/3tflsYvr8ENpXrZ2Jvb15EeUxiMUy7qpcU3Y11
-         TBTA==
+        b=MpM/xXD2ssHaw74XyWSfEwoRhF6N83Tmy1Uy8I/14mqiA03lNUIDfIuwhNlzJtGZPy
+         WtxgElguDwhV4QlEx6FUzZS1j+kHKYcB5EbY5RmVQkZYxegkxRBMO7/2Q6hSbBYKPOAA
+         tDhNoRFvrSwMKlgcQXXImCU2e/CwWt/WCBJgPfeqmZ8RVVmcnDbcK/EMKQAPCvxFytni
+         L16bDK+t+BL3rtVef5ubE8l/469NTKO3lq+pSDUE4RGxx+kvqZTJphze70FBY1Qv1gSU
+         lkIQvuTzbga5aYkbyEwgFBMf+ZOm9vjJICR/lm+dE2FOt0/g5OfwQTIIO4WXwl7aZ2+Q
+         KLAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=cXivWC6LXJXMKcnnG4qEtbzJ5T4nTDzddUdU2fu3gZ0=;
-        b=Mjt8KGrIsogUXap2bbhL3G37bY7fu3GcHkQadb236Lvmm52sySX+9bE9VHLbGoUWJf
-         NheYI0GqdK5l4IDd3eEX9T6BrCrLJT2UdVNKEhWjDaGFBDG95ufPasM6ABpzcNVFZRu2
-         8o5N1Nj1NxNLES1KrxsmtQDC6ZmpO2W/otGMTXf6h8/wa8BnI5HX7IZt4ip2c9W5zlfx
-         E0p5iziz/br6q1kVNBr1fyjNf2X33hYdANn8htgvUZMSckRda50tTF1t4jJtWCRX84uA
-         pACyGYzO7L7sS7GrCW8EPqQA5T12GjONHcWHO3fuHMJvIzZ1fdF4U2Ali+d8SzX6uSpq
-         mJ4g==
+        bh=lmGl5+NuB9RXYnggEX5ZV7OV/bVhdoexqjg8xbZtmzA=;
+        b=tlXvyfURMpkYGv6xR7BdsBxfeqO2WejWqhI3wiIgUHBACW/I5qQAwG94LZYoljZUsI
+         jREIjs/wdmdh3mGu8RWV1G43XVEiUzZYUt8iWMAD2R23yHF9BEY/f8Ff8q0r5yBYCs0e
+         vEwZEd6AeEUmTWfSmCysvgoKmCfnB6McsXF3XXPje6u1ejvx4DUp2xh1spQyvFXlppxV
+         GQYpd7Mjx2q0UXOw+9kTpN9FULXU7b/erHVViXDWuxc5jTWmK9BSf2EcgsjZs/LRQSTW
+         qP+GrmJ/QAQ5982yQkM8jf6lRtUkT0cc06FL6bFjyD4piRlFqHHMYyM3CjrcQpiigpGq
+         5g2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14si17031042ybu.446.2021.10.12.00.41.23
+        by mx.google.com with ESMTPS id d3si12115102ybr.397.2021.10.12.00.41.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Oct 2021 00:41:23 -0700 (PDT)
+        Tue, 12 Oct 2021 00:41:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41438 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maCPY-0006PC-Ox
-	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:41:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44064)
+	id 1maCPf-0006d4-Pc
+	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:41:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM8-0000PY-Gq
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:48 -0400
-Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222]:60885)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM0-0000K2-VV
+ for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:41 -0400
+Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213]:56439)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM0-00052E-Ka
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:47 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.5])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 54F3421E9A;
- Tue, 12 Oct 2021 07:37:38 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCLy-0004zI-Di
+ for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:40 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.228])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 524BA21119;
+ Tue, 12 Oct 2021 07:37:35 +0000 (UTC)
 Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 12 Oct
- 2021 09:37:36 +0200
+ 2021 09:37:34 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0060199f69e-3a94-4e08-8453-898e4d9d1b31,
+ (GARM-106R006912a3c59-b66f-4693-b4d7-a21e14d78a72,
  B93E5558764F88B003587FF4B0B721A638511A69) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 14/18] hw: aspeed_gpio: Fix GPIO array indexing
-Date: Tue, 12 Oct 2021 09:37:24 +0200
-Message-ID: <20211012073728.257748-15-clg@kaod.org>
+Subject: [PULL 09/18] aspeed/smc: Add default reset values
+Date: Tue, 12 Oct 2021 09:37:19 +0200
+Message-ID: <20211012073728.257748-10-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211012073728.257748-1-clg@kaod.org>
 References: <20211012073728.257748-1-clg@kaod.org>
@@ -71,13 +71,13 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.106]
 X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 9809bfe2-3c81-457e-8616-e21f4db6a991
-X-Ovh-Tracer-Id: 4269693922953366377
+X-Ovh-Tracer-GUID: 830aae41-55fd-4742-b85e-914d524150a7
+X-Ovh-Tracer-Id: 4269130975834835750
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
- helo=6.mo552.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpeegnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
+ helo=5.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -96,263 +96,156 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Delevoryas <pdel@fb.com>, Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ypPmML17g7xq
+X-TUID: xXQw1bAYADRi
 
-From: Peter Delevoryas <pdel@fb.com>
+This simplifies the reset handler and has the benefit to remove some
+"bad" use of the segments array as an identifier of the controller model.
 
-The gpio array is declared as a dense array:
-
-  qemu_irq gpios[ASPEED_GPIO_NR_PINS];
-
-(AST2500 has 228, AST2400 has 216, AST2600 has 208)
-
-However, this array is used like a matrix of GPIO sets
-(e.g. gpio[NR_SETS][NR_PINS_PER_SET] = gpio[8][32])
-
-  size_t offset = set * GPIOS_PER_SET + gpio;
-  qemu_set_irq(s->gpios[offset], !!(new & mask));
-
-This can result in an out-of-bounds access to "s->gpios" because the
-gpio sets do _not_ have the same length. Some of the groups (e.g.
-GPIOAB) only have 4 pins. 228 != 8 * 32 == 256.
-
-To fix this, I converted the gpio array from dense to sparse, to that
-match both the hardware layout and this existing indexing code.
-
-Fixes: 4b7f956862dc2db4c5c ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
-Signed-off-by: Peter Delevoryas <pdel@fb.com>
-Message-Id: <20211008033501.934729-2-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/gpio/aspeed_gpio.h |  5 +--
- hw/gpio/aspeed_gpio.c         | 80 +++++++++++++++--------------------
- 2 files changed, 35 insertions(+), 50 deletions(-)
+ include/hw/ssi/aspeed_smc.h |  1 +
+ hw/ssi/aspeed_smc.c         | 52 +++++++++++++++++++------------------
+ 2 files changed, 28 insertions(+), 25 deletions(-)
 
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-index e1636ce7fea9..801846befb3b 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -17,9 +17,9 @@
- OBJECT_DECLARE_TYPE(AspeedGPIOState, AspeedGPIOClass, ASPEED_GPIO)
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index ee943228b96f..a1ca0e65c405 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -98,6 +98,7 @@ struct AspeedSMCClass {
+     uint8_t nregs_timings;
+     uint8_t conf_enable_w0;
+     uint8_t max_peripherals;
++    const uint32_t *resets;
+     const AspeedSegments *segments;
+     hwaddr flash_window_base;
+     uint32_t flash_window_size;
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index c534e9bf87ee..8cc7ccf45591 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -196,12 +196,9 @@
+  * controller. These can be changed when board is initialized with the
+  * Segment Address Registers.
+  */
+-static const AspeedSegments aspeed_2400_fmc_segments[];
+ static const AspeedSegments aspeed_2400_spi1_segments[];
+-static const AspeedSegments aspeed_2500_fmc_segments[];
+ static const AspeedSegments aspeed_2500_spi1_segments[];
+ static const AspeedSegments aspeed_2500_spi2_segments[];
+-static const AspeedSegments aspeed_2600_fmc_segments[];
  
- #define ASPEED_GPIO_MAX_NR_SETS 8
-+#define ASPEED_GPIOS_PER_SET 32
- #define ASPEED_REGS_PER_BANK 14
- #define ASPEED_GPIO_MAX_NR_REGS (ASPEED_REGS_PER_BANK * ASPEED_GPIO_MAX_NR_SETS)
--#define ASPEED_GPIO_NR_PINS 228
- #define ASPEED_GROUPS_PER_SET 4
- #define ASPEED_GPIO_NR_DEBOUNCE_REGS 3
- #define ASPEED_CHARS_PER_GROUP_LABEL 4
-@@ -60,7 +60,6 @@ struct AspeedGPIOClass {
-     const GPIOSetProperties *props;
-     uint32_t nr_gpio_pins;
-     uint32_t nr_gpio_sets;
--    uint32_t gap;
-     const AspeedGPIOReg *reg_table;
- };
+ #define ASPEED_SMC_FEATURE_DMA       0x1
+ #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
+@@ -686,7 +683,11 @@ static void aspeed_smc_reset(DeviceState *d)
+     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+     int i;
  
-@@ -72,7 +71,7 @@ struct AspeedGPIOState {
-     MemoryRegion iomem;
-     int pending;
-     qemu_irq irq;
--    qemu_irq gpios[ASPEED_GPIO_NR_PINS];
-+    qemu_irq gpios[ASPEED_GPIO_MAX_NR_SETS][ASPEED_GPIOS_PER_SET];
+-    memset(s->regs, 0, sizeof s->regs);
++    if (asc->resets) {
++        memcpy(s->regs, asc->resets, sizeof s->regs);
++    } else {
++        memset(s->regs, 0, sizeof s->regs);
++    }
  
- /* Parallel GPIO Registers */
-     uint32_t debounce_regs[ASPEED_GPIO_NR_DEBOUNCE_REGS];
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 33a40a624ac4..911d21c8cfbe 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -16,11 +16,7 @@
- #include "hw/irq.h"
- #include "migration/vmstate.h"
+     /* Unselect all peripherals */
+     for (i = 0; i < s->num_cs; ++i) {
+@@ -700,27 +701,6 @@ static void aspeed_smc_reset(DeviceState *d)
+                     asc->segment_to_reg(s, &asc->segments[i]));
+     }
  
--#define GPIOS_PER_REG 32
--#define GPIOS_PER_SET GPIOS_PER_REG
--#define GPIO_PIN_GAP_SIZE 4
- #define GPIOS_PER_GROUP 8
--#define GPIO_GROUP_SHIFT 3
- 
- /* GPIO Source Types */
- #define ASPEED_CMD_SRC_MASK         0x01010101
-@@ -259,7 +255,7 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
- 
-     diff = old ^ new;
-     if (diff) {
--        for (gpio = 0; gpio < GPIOS_PER_REG; gpio++) {
-+        for (gpio = 0; gpio < ASPEED_GPIOS_PER_SET; gpio++) {
-             uint32_t mask = 1 << gpio;
- 
-             /* If the gpio needs to be updated... */
-@@ -283,8 +279,7 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-             if (direction & mask) {
-                 /* ...trigger the line-state IRQ */
-                 ptrdiff_t set = aspeed_gpio_set_idx(s, regs);
--                size_t offset = set * GPIOS_PER_SET + gpio;
--                qemu_set_irq(s->gpios[offset], !!(new & mask));
-+                qemu_set_irq(s->gpios[set][gpio], !!(new & mask));
-             } else {
-                 /* ...otherwise if we meet the line's current IRQ policy... */
-                 if (aspeed_evaluate_irq(regs, old & mask, gpio)) {
-@@ -297,21 +292,6 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-     qemu_set_irq(s->irq, !!(s->pending));
- }
- 
--static uint32_t aspeed_adjust_pin(AspeedGPIOState *s, uint32_t pin)
--{
--    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
--    /*
--     * The 2500 has a 4 pin gap in group AB and the 2400 has a 4 pin
--     * gap in group Y (and only four pins in AB but this is the last group so
--     * it doesn't matter).
--     */
--    if (agc->gap && pin >= agc->gap) {
--        pin += GPIO_PIN_GAP_SIZE;
+-    /* HW strapping flash type for the AST2600 controllers  */
+-    if (asc->segments == aspeed_2600_fmc_segments) {
+-        /* flash type is fixed to SPI for all */
+-        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0);
+-        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1);
+-        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE2);
 -    }
 -
--    return pin;
--}
+-    /* HW strapping flash type for FMC controllers  */
+-    if (asc->segments == aspeed_2500_fmc_segments) {
+-        /* flash type is fixed to SPI for CE0 and CE1 */
+-        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0);
+-        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1);
+-    }
 -
- static bool aspeed_gpio_get_pin_level(AspeedGPIOState *s, uint32_t set_idx,
-                                       uint32_t pin)
- {
-@@ -367,7 +347,7 @@ static uint32_t update_value_control_source(GPIOSets *regs, uint32_t old_value,
-     uint32_t new_value = 0;
- 
-     /* for each group in set */
--    for (i = 0; i < GPIOS_PER_REG; i += GPIOS_PER_GROUP) {
-+    for (i = 0; i < ASPEED_GPIOS_PER_SET; i += GPIOS_PER_GROUP) {
-         cmd_source = extract32(regs->cmd_source_0, i, 1)
-                 | (extract32(regs->cmd_source_1, i, 1) << 1);
- 
-@@ -637,7 +617,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
-          *   bidirectional  |   1       |   1        |  data
-          *   input only     |   1       |   0        |   0
-          *   output only    |   0       |   1        |   1
--         *   no pin / gap   |   0       |   0        |   0
-+         *   no pin         |   0       |   0        |   0
-          *
-          *  which is captured by:
-          *  data = ( data | ~input) & output;
-@@ -779,7 +759,7 @@ static void aspeed_gpio_set_pin(Object *obj, Visitor *v, const char *name,
+-    /* HW strapping for AST2400 FMC controllers (SCU70). Let's use the
+-     * configuration of the palmetto-bmc machine */
+-    if (asc->segments == aspeed_2400_fmc_segments) {
+-        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0);
+-    }
+-
+     s->snoop_index = SNOOP_OFF;
+     s->snoop_dummies = 0;
  }
- 
- /****************** Setup functions ******************/
--static const GPIOSetProperties ast2400_set_props[] = {
-+static const GPIOSetProperties ast2400_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
-     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -789,7 +769,7 @@ static const GPIOSetProperties ast2400_set_props[] = {
-     [6] = {0x0000000f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
+@@ -1352,6 +1332,14 @@ static const TypeInfo aspeed_2400_smc_info = {
+     .class_init = aspeed_2400_smc_class_init,
  };
  
--static const GPIOSetProperties ast2500_set_props[] = {
-+static const GPIOSetProperties ast2500_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
-     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -800,7 +780,7 @@ static const GPIOSetProperties ast2500_set_props[] = {
-     [7] = {0x000000ff,  0x000000ff,  {"AC"} },
- };
- 
--static GPIOSetProperties ast2600_3_3v_set_props[] = {
-+static GPIOSetProperties ast2600_3_3v_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
-     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-     [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-@@ -810,7 +790,7 @@ static GPIOSetProperties ast2600_3_3v_set_props[] = {
-     [6] = {0x0000ffff,  0x0000ffff,  {"Y", "Z"} },
- };
- 
--static GPIOSetProperties ast2600_1_8v_set_props[] = {
-+static GPIOSetProperties ast2600_1_8v_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
-     [0] = {0xffffffff,  0xffffffff,  {"18A", "18B", "18C", "18D"} },
-     [1] = {0x0000000f,  0x0000000f,  {"18E"} },
- };
-@@ -836,14 +816,20 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
-     AspeedGPIOState *s = ASPEED_GPIO(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
--    int pin;
- 
-     /* Interrupt parent line */
-     sysbus_init_irq(sbd, &s->irq);
- 
-     /* Individual GPIOs */
--    for (pin = 0; pin < agc->nr_gpio_pins; pin++) {
--        sysbus_init_irq(sbd, &s->gpios[pin]);
-+    for (int i = 0; i < ASPEED_GPIO_MAX_NR_SETS; i++) {
-+        const GPIOSetProperties *props = &agc->props[i];
-+        uint32_t skip = ~(props->input | props->output);
-+        for (int j = 0; j < ASPEED_GPIOS_PER_SET; j++) {
-+            if (skip >> j & 1) {
-+                continue;
-+            }
-+            sysbus_init_irq(sbd, &s->gpios[i][j]);
-+        }
-     }
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
-@@ -856,20 +842,22 @@ static void aspeed_gpio_init(Object *obj)
- {
-     AspeedGPIOState *s = ASPEED_GPIO(obj);
-     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
--    int pin;
--
--    for (pin = 0; pin < agc->nr_gpio_pins; pin++) {
--        char *name;
--        int set_idx = pin / GPIOS_PER_SET;
--        int pin_idx = aspeed_adjust_pin(s, pin) - (set_idx * GPIOS_PER_SET);
--        int group_idx = pin_idx >> GPIO_GROUP_SHIFT;
--        const GPIOSetProperties *props = &agc->props[set_idx];
--
--        name = g_strdup_printf("gpio%s%d", props->group_label[group_idx],
--                               pin_idx % GPIOS_PER_GROUP);
--        object_property_add(obj, name, "bool", aspeed_gpio_get_pin,
--                            aspeed_gpio_set_pin, NULL, NULL);
--        g_free(name);
++static const uint32_t aspeed_2400_fmc_resets[ASPEED_SMC_R_MAX] = {
++    /*
++     * CE0 and CE1 types are HW strapped in SCU70. Do it here to
++     * simplify the model.
++     */
++    [R_CONF] = CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0,
++};
 +
-+    for (int i = 0; i < ASPEED_GPIO_MAX_NR_SETS; i++) {
-+        const GPIOSetProperties *props = &agc->props[i];
-+        uint32_t skip = ~(props->input | props->output);
-+        for (int j = 0; j < ASPEED_GPIOS_PER_SET; j++) {
-+            if (skip >> j & 1) {
-+                continue;
-+            }
-+            int group_idx = j / GPIOS_PER_GROUP;
-+            int pin_idx = j % GPIOS_PER_GROUP;
-+            const char *group = &props->group_label[group_idx][0];
-+            char *name = g_strdup_printf("gpio%s%d", group, pin_idx);
-+            object_property_add(obj, name, "bool", aspeed_gpio_get_pin,
-+                                aspeed_gpio_set_pin, NULL, NULL);
-+            g_free(name);
-+        }
+ static const AspeedSegments aspeed_2400_fmc_segments[] = {
+     { 0x20000000, 64 * MiB }, /* start address is readonly */
+     { 0x24000000, 32 * MiB },
+@@ -1374,6 +1362,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass *klass, void *data)
+     asc->conf_enable_w0    = CONF_ENABLE_W0;
+     asc->max_peripherals   = 5;
+     asc->segments          = aspeed_2400_fmc_segments;
++    asc->resets            = aspeed_2400_fmc_resets;
+     asc->flash_window_base = 0x20000000;
+     asc->flash_window_size = 0x10000000;
+     asc->features          = ASPEED_SMC_FEATURE_DMA;
+@@ -1424,6 +1413,11 @@ static const TypeInfo aspeed_2400_spi1_info = {
+     .class_init = aspeed_2400_spi1_class_init,
+ };
+ 
++static const uint32_t aspeed_2500_fmc_resets[ASPEED_SMC_R_MAX] = {
++    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
++                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
++};
++
+ static const AspeedSegments aspeed_2500_fmc_segments[] = {
+     { 0x20000000, 128 * MiB }, /* start address is readonly */
+     { 0x28000000,  32 * MiB },
+@@ -1444,6 +1438,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
+     asc->conf_enable_w0    = CONF_ENABLE_W0;
+     asc->max_peripherals   = 3;
+     asc->segments          = aspeed_2500_fmc_segments;
++    asc->resets            = aspeed_2500_fmc_resets;
+     asc->flash_window_base = 0x20000000;
+     asc->flash_window_size = 0x10000000;
+     asc->features          = ASPEED_SMC_FEATURE_DMA;
+@@ -1569,6 +1564,12 @@ static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
      }
  }
  
-@@ -926,7 +914,6 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
-     agc->props = ast2400_set_props;
-     agc->nr_gpio_pins = 216;
-     agc->nr_gpio_sets = 7;
--    agc->gap = 196;
-     agc->reg_table = aspeed_3_3v_gpios;
- }
- 
-@@ -937,7 +924,6 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-     agc->props = ast2500_set_props;
-     agc->nr_gpio_pins = 228;
-     agc->nr_gpio_sets = 8;
--    agc->gap = 220;
-     agc->reg_table = aspeed_3_3v_gpios;
- }
- 
++static const uint32_t aspeed_2600_fmc_resets[ASPEED_SMC_R_MAX] = {
++    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
++                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1 |
++                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE2),
++};
++
+ static const AspeedSegments aspeed_2600_fmc_segments[] = {
+     { 0x0, 128 * MiB }, /* start address is readonly */
+     { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
+@@ -1589,6 +1590,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass *klass, void *data)
+     asc->conf_enable_w0    = CONF_ENABLE_W0;
+     asc->max_peripherals   = 3;
+     asc->segments          = aspeed_2600_fmc_segments;
++    asc->resets            = aspeed_2600_fmc_resets;
+     asc->flash_window_base = 0x20000000;
+     asc->flash_window_size = 0x10000000;
+     asc->features          = ASPEED_SMC_FEATURE_DMA |
 -- 
 2.31.1
 

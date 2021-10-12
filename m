@@ -1,67 +1,67 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1525194lfc;
-        Tue, 12 Oct 2021 00:45:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyNoobMp/9v0C93ujiwtRKcmHNfHri7k4T6jiapjUlrng2CV30Rsq98cA74DC0TQwig2ybf
-X-Received: by 2002:a37:6706:: with SMTP id b6mr18880595qkc.339.1634024722724;
-        Tue, 12 Oct 2021 00:45:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634024722; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1526581lfc;
+        Tue, 12 Oct 2021 00:47:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwxBmW40pENiCF3YdoRL0e0QgU07KKAny/rKKNVNDYRG+U5dNtQSvAlNsI/rnUdIm2sIevV
+X-Received: by 2002:a05:622a:170f:: with SMTP id h15mr19182614qtk.176.1634024850262;
+        Tue, 12 Oct 2021 00:47:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634024850; cv=none;
         d=google.com; s=arc-20160816;
-        b=XtJaCUsnrnEMVMryVBjVqyEffV+t7k2SWzumHolFWUT9oYzQhspkX9GU7WhkKQ4FZR
-         DRiApvst1My64UCbgY/KNA0d81aihk5WRuCv3HrmrBAccHnHFUe8c+6D5+9JQMeTbZJK
-         bGAfRdqZwfPfB0LrpelIbctw3QDMWA29fURzFeYjz7c00od8gqprJMr2CxYYV9SfNftN
-         BqBpZshwKO3EpOsyLNQaxMg6FVXPQA1mvnllKT2YVbDcNeT5PFbhpm5Yephg5tBwFiQk
-         b+abY0eJlWo4H4Vh7hi4/7xlPr6OJQmz4Mj3OrmkkyW7YnbjNdaCbyaOMtfunE3TU9mF
-         EVFg==
+        b=I7fyQM618Jzo9du4+4I/OXaCY3dpWRMc5tpQC3q5Je7eakD/5abyuhgpFQKTBQ0Lnb
+         M3tTmdLGNCdbouZ3VhwC8m/k2o6ypGdMR1E5PeMezfRuavI46qTb2mwPPxh9Ko+7s8QS
+         XOOXzqLUE5pnEqDLD+GMGVxKD4hxbBDu2pmZPpETMG9eWUZbF5kjNe9YVarsnRhxRg7Q
+         EnZQUtYAeEz+chtWARDgTupS2Q79+VZX1JNtABcphBrfAXtlp9kXg+aw4I4GG/Te7f5Y
+         B55ambXkAXqsAbf3rX27C1i6Rt7L8CVZtj0V+gDunMjFbwdB+MPq+dN/1D1Tb+VLG2gP
+         Y/jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=2VnojTo9Zk1jksGDo8T+0GADVp8GbvLc1/IdHAaJZX8=;
-        b=Q887cCYpWo2zC/MkODAEqpCpYlGfdl49AxD/c53EtPTYmBHLBQsEAJt6zBNFjfSfkj
-         EiAlJxNj4x0JhITy++VyMueHheTwtXFf21ui7m2JfMhWiFo7NSyq1SAdyKec+9I+vRAz
-         CrYLbiUYMoWlB3dqxRUTv+mA16B4TzlGza49zMI439gfWClVztnWYj7aF0Cu2hRNTxaH
-         F+0cifS4yqgSh9y3Z5j2AMdO78GuSCggdkywdnKKu+1pFRNgBu22iUFc3Fey5vcR9I5r
-         H64NHupkrXV6+5E5r6FcOZdhRyTdBzgK52NySbIFC2/TfVYGnDjWzoxaicpSRXpVPJ+3
-         NOgw==
+        bh=mE+kUurqBDl883uzGK3LMNxHAx1zE1lkQY3joVer0pA=;
+        b=JS2hLGBMaKQkvULB2ariO100pnjfiYs7SQ1skrPbDgZ0790aJ/QS3ERw0DTMm5htQf
+         FTogS9zWTlGDtxWzJvOlNpMHYemY1ESE+8LTOWoMNqA+yb6I8sdXy4sAuDOiAAFYskNQ
+         rtt+fClIypgcIZl7sGfSsaDaN6tie/80wgIaB3N+7ew5QsyMvfisb1Su8SPh5htr2/XA
+         Li3tuJIo4hasjRtJU0bFEurqZZn9bUYa8hFWArdWQr8vRp12QuR/rvV/MsI1O3hTudd9
+         ck6LLzY9a+XmER9WNHE32def26fBZUve3oyhgwKgtJxIuv6Hr2GXVrRJEa5Skfh73lvn
+         cSUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f1si8659203qvd.109.2021.10.12.00.45.22
+        by mx.google.com with ESMTPS id d77si7302542qkg.83.2021.10.12.00.47.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Oct 2021 00:45:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Oct 2021 00:47:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55176 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58766 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maCTR-00074x-Sq
-	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:45:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44252)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1maCVV-00018C-Jj
+	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:47:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44106)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCMF-0000XZ-Rp
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:58 -0400
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:38191)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM9-0000Qp-E9
+ for qemu-devel@nongnu.org; Tue, 12 Oct 2021 03:37:50 -0400
+Received: from 10.mo552.mail-out.ovh.net ([87.98.187.244]:40065)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM8-00050B-8y
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:55 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.188])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 40035C407CFE;
- Tue, 12 Oct 2021 09:37:36 +0200 (CEST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM0-00052C-Tb
+ for qemu-devel@nongnu.org; Tue, 12 Oct 2021 03:37:49 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.5])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 1C40021D20;
+ Tue, 12 Oct 2021 07:37:37 +0000 (UTC)
 Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 12 Oct
- 2021 09:37:35 +0200
+ 2021 09:37:36 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0060d1b9907-1efe-4121-bea1-1e17cc836bdf,
+ (GARM-106R006790c14c4-7504-4b07-8b94-effe6ada1987,
  B93E5558764F88B003587FF4B0B721A638511A69) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 11/18] aspeed/smc: Remove unused attribute 'irqline'
-Date: Tue, 12 Oct 2021 09:37:21 +0200
-Message-ID: <20211012073728.257748-12-clg@kaod.org>
+Subject: [PULL 13/18] hw: aspeed_gpio: Fix pin I/O type declarations
+Date: Tue, 12 Oct 2021 09:37:23 +0200
+Message-ID: <20211012073728.257748-14-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211012073728.257748-1-clg@kaod.org>
 References: <20211012073728.257748-1-clg@kaod.org>
@@ -71,55 +71,100 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.106]
 X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: b037ea75-e0a0-4c47-afba-49027d97f4b6
-X-Ovh-Tracer-Id: 4269412447663065894
+X-Ovh-Tracer-GUID: f74e55bc-02b7-4991-9520-01baab35bf4d
+X-Ovh-Tracer-Id: 4269412447473208111
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
+Received-SPF: pass client-ip=87.98.187.244; envelope-from=clg@kaod.org;
+ helo=10.mo552.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xOLr9f3cBL2Q
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Peter Delevoryas <pdel@fb.com>, Rashmica Gupta <rashmica.g@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BdzuNyI/7uWL
 
+From: Peter Delevoryas <pdel@fb.com>
+
+Some of the pin declarations in the Aspeed GPIO module were incorrect,
+probably because of confusion over which bits in the input and output
+uint32_t's correspond to which groups in the label array. Since the
+uint32_t literals are in big endian, it's sort of the opposite of what
+would be intuitive. The least significant bit in ast2500_set_props[6]
+corresponds to GPIOY0, not GPIOAB7.
+
+GPIOxx indicates input and output capabilities, GPIxx indicates only
+input, GPOxx indicates only output.
+
+AST2500:
+- Previously had GPIW0..GPIW7 and GPIX0..GPIX7, that's correct.
+- Previously had GPIOY0..GPIOY3, should have been GPIOY0..GPIOY7.
+- Previously had GPIOAB0..GPIOAB3 and GPIAB4..GPIAB7, should only have
+  been GPIOAB0..GPIOAB3.
+
+AST2600:
+- GPIOT0..GPIOT7 should have been GPIT0..GPIT7.
+- GPIOU0..GPIOU7 should have been GPIU0..GPIU7.
+- GPIW0..GPIW7 should have been GPIOW0..GPIOW7.
+- GPIOY0..GPIOY7 and GPIOZ0...GPIOZ7 were disabled.
+
+Fixes: 4b7f956862dc2db4c5c ("hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500")
+Fixes: 36d737ee82b2972167e ("hw/gpio: Add in AST2600 specific implementation")
+Signed-off-by: Peter Delevoryas <pdel@fb.com>
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+Reviewed-by: Rashmica Gupta <rashmica.g@gmail.com>
+Message-Id: <20210928032456.3192603-2-pdel@fb.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/ssi/aspeed_smc.h | 1 -
- 1 file changed, 1 deletion(-)
+ hw/gpio/aspeed_gpio.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 8dc81294988e..75bc793bd269 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -56,7 +56,6 @@ struct AspeedSMCState {
-     MemoryRegion mmio_flash_alias;
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index dfa6d6cb40a9..33a40a624ac4 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -796,7 +796,7 @@ static const GPIOSetProperties ast2500_set_props[] = {
+     [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
+     [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
+     [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
+-    [6] = {0xffffff0f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
++    [6] = {0x0fffffff,  0x0fffffff,  {"Y", "Z", "AA", "AB"} },
+     [7] = {0x000000ff,  0x000000ff,  {"AC"} },
+ };
  
-     qemu_irq irq;
--    int irqline;
+@@ -805,9 +805,9 @@ static GPIOSetProperties ast2600_3_3v_set_props[] = {
+     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
+     [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
+     [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
+-    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
+-    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
+-    [6] = {0xffff0000,  0x0fff0000,  {"Y", "Z", "", ""} },
++    [4] = {0xffffffff,  0x00ffffff,  {"Q", "R", "S", "T"} },
++    [5] = {0xffffffff,  0xffffff00,  {"U", "V", "W", "X"} },
++    [6] = {0x0000ffff,  0x0000ffff,  {"Y", "Z"} },
+ };
  
-     uint32_t num_cs;
-     qemu_irq *cs_lines;
+ static GPIOSetProperties ast2600_1_8v_set_props[] = {
 -- 
 2.31.1
 

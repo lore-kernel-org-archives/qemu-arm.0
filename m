@@ -1,182 +1,235 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1531810lfc;
-        Tue, 12 Oct 2021 00:56:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwLu4iAwGIh3ZqkU/WQaVtAaBthxGLlBJOxQlAiwFwDH8w3/E3HF5qRh80dAPTPps1A74hO
-X-Received: by 2002:a5d:8ac1:: with SMTP id e1mr22780618iot.40.1634025410925;
-        Tue, 12 Oct 2021 00:56:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634025410; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1662103lfc;
+        Tue, 12 Oct 2021 03:58:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYgseKqxXF8xC8j8BgZnQVHk4fnWkgfOKGezMNkh+IcNSm7fqLyQdGol8LTWFAf+K5NBR1
+X-Received: by 2002:a9f:24c4:: with SMTP id 62mr20434586uar.95.1634036298581;
+        Tue, 12 Oct 2021 03:58:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634036298; cv=none;
         d=google.com; s=arc-20160816;
-        b=LY6nGG3vrLj9QjuzeDaokVfbHJPmxIZERQVQj54SkyBoVzPjObCdwXY3D6SdOeBRR2
-         PbMXco0eytSrYgnBifABoDuPUhufqCWJ5oLzQpFsXq2xdcMuxomOw6c/gPhwRiNG+u+P
-         jRiIaZx4QYNNzp+LahlJ27fGLmiGOpFFHX7ShflB61q1Rdl7/earcauJtoywXGIW23N6
-         Bh6SpQGBcVgI+1gef2PcR0cH3N5dmmxAIPpAacXu1BDQfkj0XdiWEm2wIHWML4Az1+E9
-         A0Jr7Yrr6Yv8+PbJyp7/rV5rUUzLVlRyLUnXanf/YqmOfqX8uH9ux+0sHdJ3MkDRECC4
-         37BA==
+        b=FL+vV9NhR3QFOYDhUKsCS4tzoWjrjRmKJKdfxMhifRPTY+kdbYMEliPgphrwFLf1yo
+         Bf2VXz/gjb7YRb8DoTVHvOw6Zx8/fh/ZbPRNl94WUOcbHBeZCVzut7+3xF6yxxwlE9vl
+         Uyk5rAhEhUunVgDvMJgsUgZ2LLbCALoScjTmkfhM/uqk3ZFgcKvXgmAUe4DrnOEMaWwc
+         xVnyv72cLKqseap1PSh3RbGEl8lyJ6l3SEAadfuiPCfx3dS0ZtF4R6d8x0d0Y/7t5Nhh
+         2EkSi5gOdjUUNM1fjl60UGtM6th4m0vH/gsHekzvdE/fHtbdRGnBk6vOseKp9HTRTXpe
+         ufpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=7R68UIsk3oxOp+ClUMX1wBw8IWP0IitdNhccfmwgqkg=;
-        b=0NPfhFvoifNCw0nb5xcqIteTirnsyiS092XArBmy3z4FSqAg9MtDsMsdDLepC2IeQo
-         bbd0sTlaQDGXW8yvRLUxVIpIsR+KlVM2j/RsXQRcpZDne8pYJ8/ppQ1jdIA6GQpz1uUX
-         Q1wEudsLREKhFwl2RDcn8yFGD1c8ouQWKJB6CAHCxv+IeVrS81uXzgxCFczhpagBO7At
-         3U9hkoik55IoCm9V72ZLvoIJ6/0I2RjZH25+9gxvra0uZ5CxMPLEaKC43q10B+9qEY9E
-         CdklPI4K/UhMAItzJqtwwrgFCbRiSQqZGHc+Lp7fvuiofTGd3IqXTIfFMZzef3Lk4Guk
-         dKiA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=2CfvhTvaFR8DXj4UsvvZLpGjYF00QztWvN84rWyvDGI=;
+        b=vbQMvvb0dozSQB3O6BkVYC+qPFn/YoqzWi55TiDcMsLFKwzQMEzUqPaIl+SbINrnwt
+         iLOpSnyZ2/JGaCeDxp8BAXZp1Mb/vSk0a+bFnfMn6Oaan1hUFJY6HBnuOppTuuSAgXyl
+         YHTUY9XhHSlz9vC13TYWMs80+ypQ6cM45cLJtqNSb/JBlGKlKd8QgWJ+PrHwVvnYAZy+
+         qbS0JBP9iovExhvZPyd7TvsR87A4UtjEgya1Y7U2spUeIAsYvTNEuRxQJ+9POu9sqT1Z
+         ZM2RDX+Zmx4q2z7Mo6AmdLj7jpZdkoFFr2V8SFmBUY+mBExkfnl8mbrPZIQX8QOlXcYn
+         qdLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XcNTICi1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p31si13515048jac.95.2021.10.12.00.56.50
+        by mx.google.com with ESMTPS id j7si7613969vsg.357.2021.10.12.03.58.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Oct 2021 00:56:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Oct 2021 03:58:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57422 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XcNTICi1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48970 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maCeY-0002U5-BM
-	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:56:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44182)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1maFU9-0003ky-Rv
+	for alex.bennee@linaro.org; Tue, 12 Oct 2021 06:58:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCMC-0000VX-Gh
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:52 -0400
-Received: from 7.mo548.mail-out.ovh.net ([46.105.33.25]:57563)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1maF4u-00050X-Dw
+ for qemu-devel@nongnu.org; Tue, 12 Oct 2021 06:32:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:45130)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM3-0004xL-2w
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:52 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.177])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id B1D33210D1;
- Tue, 12 Oct 2021 07:37:32 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 12 Oct
- 2021 09:37:32 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006784a2ab1-6c3b-4001-8803-c81408938d6a,
- B93E5558764F88B003587FF4B0B721A638511A69) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 03/18] aspeed/smc: Stop using the model name for the memory
- regions
-Date: Tue, 12 Oct 2021 09:37:13 +0200
-Message-ID: <20211012073728.257748-4-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211012073728.257748-1-clg@kaod.org>
-References: <20211012073728.257748-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1maF4p-0005AB-AT
+ for qemu-devel@nongnu.org; Tue, 12 Oct 2021 06:32:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1634034725;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2CfvhTvaFR8DXj4UsvvZLpGjYF00QztWvN84rWyvDGI=;
+ b=XcNTICi1mFaHFf5QqeBKZLbwPDUTXHF6KSnBBL/A5bj7z6BzCyW6EHPAkJ/MAEKP4ce/y1
+ 5b7tg+6ogNh8Vp8S3O4HK/adf7jtIZH8B3vdBwlibcI6Pc3Vv5eNz+o7+RZnfCVYmywB7h
+ kC59nIycJLW5wY1jHZj9qwR5zlrEaSs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-59-FEpMRNOuMI2gQUToohzoIw-1; Tue, 12 Oct 2021 06:32:04 -0400
+X-MC-Unique: FEpMRNOuMI2gQUToohzoIw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3C07C80158D;
+ Tue, 12 Oct 2021 10:32:03 +0000 (UTC)
+Received: from [10.64.54.56] (vpn2-54-56.bne.redhat.com [10.64.54.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 087FA1972D;
+ Tue, 12 Oct 2021 10:31:58 +0000 (UTC)
+Subject: Re: [PATCH 1/2] numa: Set default distance map if needed
+To: Igor Mammedov <imammedo@redhat.com>
+References: <20211006102209.6989-1-gshan@redhat.com>
+ <20211006102209.6989-2-gshan@redhat.com> <20211012114016.6f4a0c10@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <669adddb-5603-ed67-bc75-21bf4f68f186@redhat.com>
+Date: Tue, 12 Oct 2021 21:31:55 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 3a45a03a-55a3-4142-a99f-93aa657a8856
-X-Ovh-Tracer-Id: 4268286549068057382
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=46.105.33.25; envelope-from=clg@kaod.org;
- helo=7.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20211012114016.6f4a0c10@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lHpUsMNfupDU
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, ehabkost@redhat.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, shan.gavin@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tGiGY+KPJKaw
 
-There is no real reason to use this name. It's simply nice to have in
-the monitor output but it's a burden for the following patch which
-removes the AspeedSMCController structure describing the controller.
+Hi Igor,
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/ssi/aspeed_smc.c | 25 ++++++++++---------------
- 1 file changed, 10 insertions(+), 15 deletions(-)
+On 10/12/21 8:40 PM, Igor Mammedov wrote:
+> On Wed,  6 Oct 2021 18:22:08 +0800
+> Gavin Shan <gshan@redhat.com> wrote:
+> 
+>> The following option is used to specify the distance map. It's
+>> possible the option isn't provided by user. In this case, the
+>> distance map isn't populated and exposed to platform. On the
+>> other hand, the empty NUMA node, where no memory resides, is
+>> allowed on ARM64 virt platform. For these empty NUMA nodes,
+>> their corresponding device-tree nodes aren't populated, but
+>> their NUMA IDs should be included in the "/distance-map"
+>> device-tree node, so that kernel can probe them properly if
+>> device-tree is used.
+>>
+>>    -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
+>>
+>> So when user doesn't specify distance map, we need to generate
+>> the default distance map, where the local and remote distances
+>> are 10 and 20 separately. This adds an extra parameter to the
+>> exiting complete_init_numa_distance() to generate the default
+>> distance map for this case.
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> 
+> 
+> how about error-ing out if distance map is required but
+> not provided by user explicitly and asking user to fix
+> command line?
+> 
+> Reasoning behind this that defaults are hard to maintain
+> and will require compat hacks and being raod blocks down
+> the road.
+> Approach I was taking with generic NUMA code, is deprecating
+> defaults and replacing them with sanity checks, which bail
+> out on incorrect configuration and ask user to correct command line.
+> Hence I dislike approach taken in this patch.
+> 
+> If you really wish to provide default, push it out of
+> generic code into ARM specific one
+> (then I won't oppose it that much (I think PPC does
+> some magic like this))
+> Also behavior seems to be ARM specific so generic
+> NUMA code isn't a place for it anyways
+> 
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index def1cb4c74c0..612040493cf1 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -1392,20 +1392,15 @@ static const MemoryRegionOps aspeed_smc_ops = {
-  */
- static void aspeed_smc_dma_setup(AspeedSMCState *s, Error **errp)
- {
--    char *name;
--
-     if (!s->dram_mr) {
-         error_setg(errp, TYPE_ASPEED_SMC ": 'dram' link not set");
-         return;
-     }
- 
--    name = g_strdup_printf("%s-dma-flash", s->ctrl->name);
--    address_space_init(&s->flash_as, &s->mmio_flash, name);
--    g_free(name);
--
--    name = g_strdup_printf("%s-dma-dram", s->ctrl->name);
--    address_space_init(&s->dram_as, s->dram_mr, name);
--    g_free(name);
-+    address_space_init(&s->flash_as, &s->mmio_flash,
-+                       TYPE_ASPEED_SMC ".dma-flash");
-+    address_space_init(&s->dram_as, s->dram_mr,
-+                       TYPE_ASPEED_SMC ".dma-dram");
- }
- 
- static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-@@ -1446,7 +1441,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
- 
-     /* The memory region for the controller registers */
-     memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_ops, s,
--                          s->ctrl->name, s->ctrl->nregs * 4);
-+                          TYPE_ASPEED_SMC, s->ctrl->nregs * 4);
-     sysbus_init_mmio(sbd, &s->mmio);
- 
-     /*
-@@ -1454,12 +1449,12 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-      * window in which the flash modules are mapped. The size and
-      * address depends on the SoC model and controller type.
-      */
--    snprintf(name, sizeof(name), "%s.flash", s->ctrl->name);
--
-     memory_region_init_io(&s->mmio_flash, OBJECT(s),
--                          &aspeed_smc_flash_default_ops, s, name,
-+                          &aspeed_smc_flash_default_ops, s,
-+                          TYPE_ASPEED_SMC ".flash",
-                           s->ctrl->flash_window_size);
--    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s), name,
-+    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s),
-+                             TYPE_ASPEED_SMC ".flash",
-                              &s->mmio_flash, 0, s->ctrl->flash_window_size);
-     sysbus_init_mmio(sbd, &s->mmio_flash_alias);
- 
-@@ -1475,7 +1470,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < s->ctrl->max_peripherals; ++i) {
-         AspeedSMCFlash *fl = &s->flashes[i];
- 
--        snprintf(name, sizeof(name), "%s.%d", s->ctrl->name, i);
-+        snprintf(name, sizeof(name), TYPE_ASPEED_SMC ".flash.%d", i);
- 
-         fl->id = i;
-         fl->controller = s;
--- 
-2.31.1
+Thanks for your comments.
+
+Yep, Lets move the logic into hw/arm/virt in v3 because I think simply
+error-ing out will block the existing configuration where the distance
+map isn't provided by user. After moving the logic to hw/arm/virt,
+this patch is consistent with PATCH[02/02] and the specific platform
+is affected only.
+
+
+>> ---
+>>   hw/core/numa.c | 13 +++++++++++--
+>>   1 file changed, 11 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/core/numa.c b/hw/core/numa.c
+>> index 510d096a88..fdb3a4aeca 100644
+>> --- a/hw/core/numa.c
+>> +++ b/hw/core/numa.c
+>> @@ -594,7 +594,7 @@ static void validate_numa_distance(MachineState *ms)
+>>       }
+>>   }
+>>   
+>> -static void complete_init_numa_distance(MachineState *ms)
+>> +static void complete_init_numa_distance(MachineState *ms, bool is_default)
+>>   {
+>>       int src, dst;
+>>       NodeInfo *numa_info = ms->numa_state->nodes;
+>> @@ -609,6 +609,8 @@ static void complete_init_numa_distance(MachineState *ms)
+>>               if (numa_info[src].distance[dst] == 0) {
+>>                   if (src == dst) {
+>>                       numa_info[src].distance[dst] = NUMA_DISTANCE_MIN;
+>> +                } else if (is_default) {
+>> +                    numa_info[src].distance[dst] = NUMA_DISTANCE_DEFAULT;
+>>                   } else {
+>>                       numa_info[src].distance[dst] = numa_info[dst].distance[src];
+>>                   }
+>> @@ -716,13 +718,20 @@ void numa_complete_configuration(MachineState *ms)
+>>            * A->B != distance B->A, then that means the distance table is
+>>            * asymmetric. In this case, the distances for both directions
+>>            * of all node pairs are required.
+>> +         *
+>> +         * The default node pair distances, which are 10 and 20 for the
+>> +         * local and remote nodes separatly, are provided if user doesn't
+>> +         * specify any node pair distances.
+>>            */
+>>           if (ms->numa_state->have_numa_distance) {
+>>               /* Validate enough NUMA distance information was provided. */
+>>               validate_numa_distance(ms);
+>>   
+>>               /* Validation succeeded, now fill in any missing distances. */
+>> -            complete_init_numa_distance(ms);
+>> +            complete_init_numa_distance(ms, false);
+>> +        } else {
+>> +            complete_init_numa_distance(ms, true);
+>> +            ms->numa_state->have_numa_distance = true;
+>>           }
+>>       }
+>>   }
+> 
+
+Thanks,
+Gavin
 

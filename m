@@ -1,67 +1,67 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1522822lfc;
-        Tue, 12 Oct 2021 00:41:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzIZa4JHz8Swhd92vjlGlY1KMC3sRDVvptENAnsbM95upSjuNLWIh8BBdnUMJhn0AVNCAGL
-X-Received: by 2002:a25:1c02:: with SMTP id c2mr28187967ybc.218.1634024488422;
-        Tue, 12 Oct 2021 00:41:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634024488; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1523129lfc;
+        Tue, 12 Oct 2021 00:42:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKPEBZI1YFeubxGZRvnz79yfxDcfU3NUHhKXzsOeg8w55hLjJQMpRAGXZPzOUx8Q/Q0nc0
+X-Received: by 2002:a25:aa6d:: with SMTP id s100mr27366115ybi.331.1634024521534;
+        Tue, 12 Oct 2021 00:42:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634024521; cv=none;
         d=google.com; s=arc-20160816;
-        b=MpM/xXD2ssHaw74XyWSfEwoRhF6N83Tmy1Uy8I/14mqiA03lNUIDfIuwhNlzJtGZPy
-         WtxgElguDwhV4QlEx6FUzZS1j+kHKYcB5EbY5RmVQkZYxegkxRBMO7/2Q6hSbBYKPOAA
-         tDhNoRFvrSwMKlgcQXXImCU2e/CwWt/WCBJgPfeqmZ8RVVmcnDbcK/EMKQAPCvxFytni
-         L16bDK+t+BL3rtVef5ubE8l/469NTKO3lq+pSDUE4RGxx+kvqZTJphze70FBY1Qv1gSU
-         lkIQvuTzbga5aYkbyEwgFBMf+ZOm9vjJICR/lm+dE2FOt0/g5OfwQTIIO4WXwl7aZ2+Q
-         KLAQ==
+        b=pcp3VrtYIN5BMKBrj4ntu+Lz3dWeN0Vg9FoxrVLq8kbcZwvH4ULpg7D3fSRadp7oY5
+         rbok1PB3+m6Q+SGjXyEpup5C9v51+EpMGCJ8G85k/J7mEgSbcIoufCoXg73arBi2TWRQ
+         BP+/YGgEy/zRzgTyIZjwI9aBI4IQPmzu7f6ljfGlsbvjW1tVVhfseGawnOpaqosB3NRg
+         ZBsjlpPy1MoP1iwh9WtQyrvYWoPSswFoCarQi7br0YbbVxr1wXuH5qRV6fThpV4ZgdGo
+         jgXRftU4Qdv9ByIkR63Zcjw3sG3ILekMCKALBLuCzhLu5PKv8vzP+oRt5xzhFr9xyYUJ
+         k+5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=lmGl5+NuB9RXYnggEX5ZV7OV/bVhdoexqjg8xbZtmzA=;
-        b=tlXvyfURMpkYGv6xR7BdsBxfeqO2WejWqhI3wiIgUHBACW/I5qQAwG94LZYoljZUsI
-         jREIjs/wdmdh3mGu8RWV1G43XVEiUzZYUt8iWMAD2R23yHF9BEY/f8Ff8q0r5yBYCs0e
-         vEwZEd6AeEUmTWfSmCysvgoKmCfnB6McsXF3XXPje6u1ejvx4DUp2xh1spQyvFXlppxV
-         GQYpd7Mjx2q0UXOw+9kTpN9FULXU7b/erHVViXDWuxc5jTWmK9BSf2EcgsjZs/LRQSTW
-         qP+GrmJ/QAQ5982yQkM8jf6lRtUkT0cc06FL6bFjyD4piRlFqHHMYyM3CjrcQpiigpGq
-         5g2Q==
+        bh=YTuYgBlFgcYmxbtha5/22557oNqt3FfxCCVQ5sGM60U=;
+        b=Uxo9QjIvfRF0AcuvAsM0Y6q5IB52RkP5ZaWCkAYgIZnpuuiN0cLsDxFIPRYiEZWo/N
+         66KKcPNCyU5iTs0Phf1KIp1x+AnZeX6AcIalLfbgCO77ZF/bCL6hduGDeZjyeY6UPnH6
+         BqVNsvR8B5r2haFrkMwo05pQUnDkiSLfe+7V4RtH3RX30fcjbsCXV9Ej+moHAIEYiZ02
+         /EDeFVyTpWWdxwglg5fkMW315mdQivpWm8LZFYRDgAlHcGQH2KPiqx2fFKvIIcn/V6tr
+         0Nd9HyeUPYShpGKCJtKRf9BGVTFC0Cf3iXG+NYm5X9tRPsZUlriEuvSx0+CrupkvKxfr
+         qMIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si12115102ybr.397.2021.10.12.00.41.28
+        by mx.google.com with ESMTPS id 186si10768131ybe.489.2021.10.12.00.42.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Oct 2021 00:41:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Oct 2021 00:42:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41786 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41902 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maCPf-0006d4-Pc
-	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:41:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43930)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1maCQC-0006i0-Rx
+	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:42:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44114)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM0-0000K2-VV
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:41 -0400
-Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213]:56439)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM9-0000R1-LD
+ for qemu-devel@nongnu.org; Tue, 12 Oct 2021 03:37:50 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:46379)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCLy-0004zI-Di
- for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:40 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.228])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 524BA21119;
- Tue, 12 Oct 2021 07:37:35 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCLy-0004z6-Kt
+ for qemu-devel@nongnu.org; Tue, 12 Oct 2021 03:37:49 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id CEF28C407CF2;
+ Tue, 12 Oct 2021 09:37:34 +0200 (CEST)
 Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 12 Oct
- 2021 09:37:34 +0200
+ 2021 09:37:33 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006912a3c59-b66f-4693-b4d7-a21e14d78a72,
+ (GARM-106R006c06c3e76-1195-4e45-992e-2dcdd11963cb,
  B93E5558764F88B003587FF4B0B721A638511A69) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 09/18] aspeed/smc: Add default reset values
-Date: Tue, 12 Oct 2021 09:37:19 +0200
-Message-ID: <20211012073728.257748-10-clg@kaod.org>
+Subject: [PULL 07/18] aspeed/smc: Rename AspeedSMCFlash 'id' to 'cs'
+Date: Tue, 12 Oct 2021 09:37:17 +0200
+Message-ID: <20211012073728.257748-8-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211012073728.257748-1-clg@kaod.org>
 References: <20211012073728.257748-1-clg@kaod.org>
@@ -71,181 +71,184 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.106]
 X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 830aae41-55fd-4742-b85e-914d524150a7
-X-Ovh-Tracer-Id: 4269130975834835750
+X-Ovh-Tracer-GUID: 23fd6bff-7443-4965-9083-f028f83a0e41
+X-Ovh-Tracer-Id: 4268849496881597289
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpeegnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
- helo=5.mo548.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xXQw1bAYADRi
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QXFRFLe95rBd
 
-This simplifies the reset handler and has the benefit to remove some
-"bad" use of the segments array as an identifier of the controller model.
+'cs' is a more appropriate name to index SPI flash devices.
 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/ssi/aspeed_smc.h |  1 +
- hw/ssi/aspeed_smc.c         | 52 +++++++++++++++++++------------------
- 2 files changed, 28 insertions(+), 25 deletions(-)
+ include/hw/ssi/aspeed_smc.h |  2 +-
+ hw/ssi/aspeed_smc.c         | 30 +++++++++++++++---------------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
 
 diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index ee943228b96f..a1ca0e65c405 100644
+index 097bb6aaf5f8..40b6926b3e02 100644
 --- a/include/hw/ssi/aspeed_smc.h
 +++ b/include/hw/ssi/aspeed_smc.h
-@@ -98,6 +98,7 @@ struct AspeedSMCClass {
-     uint8_t nregs_timings;
-     uint8_t conf_enable_w0;
-     uint8_t max_peripherals;
-+    const uint32_t *resets;
-     const AspeedSegments *segments;
-     hwaddr flash_window_base;
-     uint32_t flash_window_size;
+@@ -33,7 +33,7 @@ struct AspeedSMCState;
+ typedef struct AspeedSMCFlash {
+     struct AspeedSMCState *controller;
+ 
+-    uint8_t id;
++    uint8_t cs;
+ 
+     MemoryRegion mmio;
+ } AspeedSMCFlash;
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index c534e9bf87ee..8cc7ccf45591 100644
+index 3e4221311a6d..643cde832396 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -196,12 +196,9 @@
-  * controller. These can be changed when board is initialized with the
-  * Segment Address Registers.
-  */
--static const AspeedSegments aspeed_2400_fmc_segments[];
- static const AspeedSegments aspeed_2400_spi1_segments[];
--static const AspeedSegments aspeed_2500_fmc_segments[];
- static const AspeedSegments aspeed_2500_spi1_segments[];
- static const AspeedSegments aspeed_2500_spi2_segments[];
--static const AspeedSegments aspeed_2600_fmc_segments[];
+@@ -352,20 +352,20 @@ static inline int aspeed_smc_flash_mode(const AspeedSMCFlash *fl)
+ {
+     const AspeedSMCState *s = fl->controller;
  
- #define ASPEED_SMC_FEATURE_DMA       0x1
- #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
-@@ -686,7 +683,11 @@ static void aspeed_smc_reset(DeviceState *d)
+-    return s->regs[s->r_ctrl0 + fl->id] & CTRL_CMD_MODE_MASK;
++    return s->regs[s->r_ctrl0 + fl->cs] & CTRL_CMD_MODE_MASK;
+ }
+ 
+ static inline bool aspeed_smc_is_writable(const AspeedSMCFlash *fl)
+ {
+     const AspeedSMCState *s = fl->controller;
+ 
+-    return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->id));
++    return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->cs));
+ }
+ 
+ static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
+ {
+     const AspeedSMCState *s = fl->controller;
+-    int cmd = (s->regs[s->r_ctrl0 + fl->id] >> CTRL_CMD_SHIFT) & CTRL_CMD_MASK;
++    int cmd = (s->regs[s->r_ctrl0 + fl->cs] >> CTRL_CMD_SHIFT) & CTRL_CMD_MASK;
+ 
+     /*
+      * In read mode, the default SPI command is READ (0x3). In other
+@@ -393,7 +393,7 @@ static inline int aspeed_smc_flash_is_4byte(const AspeedSMCFlash *fl)
+     if (asc->segments == aspeed_2400_spi1_segments) {
+         return s->regs[s->r_ctrl0] & CTRL_AST2400_SPI_4BYTE;
+     } else {
+-        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl->id));
++        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl->cs));
+     }
+ }
+ 
+@@ -401,9 +401,9 @@ static void aspeed_smc_flash_do_select(AspeedSMCFlash *fl, bool unselect)
+ {
+     AspeedSMCState *s = fl->controller;
+ 
+-    trace_aspeed_smc_flash_select(fl->id, unselect ? "un" : "");
++    trace_aspeed_smc_flash_select(fl->cs, unselect ? "un" : "");
+ 
+-    qemu_set_irq(s->cs_lines[fl->id], unselect);
++    qemu_set_irq(s->cs_lines[fl->cs], unselect);
+ }
+ 
+ static void aspeed_smc_flash_select(AspeedSMCFlash *fl)
+@@ -423,11 +423,11 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
      AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+     AspeedSegments seg;
+ 
+-    asc->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->id], &seg);
++    asc->reg_to_segment(s, s->regs[R_SEG_ADDR0 + fl->cs], &seg);
+     if ((addr % seg.size) != addr) {
+         aspeed_smc_error("invalid address 0x%08x for CS%d segment : "
+                          "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]",
+-                         addr, fl->id, seg.addr, seg.addr + seg.size);
++                         addr, fl->cs, seg.addr, seg.addr + seg.size);
+         addr %= seg.size;
+     }
+ 
+@@ -437,7 +437,7 @@ static uint32_t aspeed_smc_check_segment_addr(const AspeedSMCFlash *fl,
+ static int aspeed_smc_flash_dummies(const AspeedSMCFlash *fl)
+ {
+     const AspeedSMCState *s = fl->controller;
+-    uint32_t r_ctrl0 = s->regs[s->r_ctrl0 + fl->id];
++    uint32_t r_ctrl0 = s->regs[s->r_ctrl0 + fl->cs];
+     uint32_t dummy_high = (r_ctrl0 >> CTRL_DUMMY_HIGH_SHIFT) & 0x1;
+     uint32_t dummy_low = (r_ctrl0 >> CTRL_DUMMY_LOW_SHIFT) & 0x3;
+     uint32_t dummies = ((dummy_high << 2) | dummy_low) * 8;
+@@ -506,7 +506,7 @@ static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigned size)
+         aspeed_smc_error("invalid flash mode %d", aspeed_smc_flash_mode(fl));
+     }
+ 
+-    trace_aspeed_smc_flash_read(fl->id, addr, size, ret,
++    trace_aspeed_smc_flash_read(fl->cs, addr, size, ret,
+                                 aspeed_smc_flash_mode(fl));
+     return ret;
+ }
+@@ -563,7 +563,7 @@ static bool aspeed_smc_do_snoop(AspeedSMCFlash *fl,  uint64_t data,
+     AspeedSMCState *s = fl->controller;
+     uint8_t addr_width = aspeed_smc_flash_is_4byte(fl) ? 4 : 3;
+ 
+-    trace_aspeed_smc_do_snoop(fl->id, s->snoop_index, s->snoop_dummies,
++    trace_aspeed_smc_do_snoop(fl->cs, s->snoop_index, s->snoop_dummies,
+                               (uint8_t) data & 0xff);
+ 
+     if (s->snoop_index == SNOOP_OFF) {
+@@ -616,7 +616,7 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
+     AspeedSMCState *s = fl->controller;
      int i;
  
--    memset(s->regs, 0, sizeof s->regs);
-+    if (asc->resets) {
-+        memcpy(s->regs, asc->resets, sizeof s->regs);
-+    } else {
-+        memset(s->regs, 0, sizeof s->regs);
-+    }
+-    trace_aspeed_smc_flash_write(fl->id, addr, size, data,
++    trace_aspeed_smc_flash_write(fl->cs, addr, size, data,
+                                  aspeed_smc_flash_mode(fl));
  
-     /* Unselect all peripherals */
-     for (i = 0; i < s->num_cs; ++i) {
-@@ -700,27 +701,6 @@ static void aspeed_smc_reset(DeviceState *d)
-                     asc->segment_to_reg(s, &asc->segments[i]));
+     if (!aspeed_smc_is_writable(fl)) {
+@@ -668,12 +668,12 @@ static void aspeed_smc_flash_update_ctrl(AspeedSMCFlash *fl, uint32_t value)
+     unselect = (value & CTRL_CMD_MODE_MASK) != CTRL_USERMODE;
+ 
+     /* A change of CTRL_CE_STOP_ACTIVE from 0 to 1, unselects the CS */
+-    if (!(s->regs[s->r_ctrl0 + fl->id] & CTRL_CE_STOP_ACTIVE) &&
++    if (!(s->regs[s->r_ctrl0 + fl->cs] & CTRL_CE_STOP_ACTIVE) &&
+         value & CTRL_CE_STOP_ACTIVE) {
+         unselect = true;
      }
  
--    /* HW strapping flash type for the AST2600 controllers  */
--    if (asc->segments == aspeed_2600_fmc_segments) {
--        /* flash type is fixed to SPI for all */
--        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0);
--        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1);
--        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE2);
--    }
--
--    /* HW strapping flash type for FMC controllers  */
--    if (asc->segments == aspeed_2500_fmc_segments) {
--        /* flash type is fixed to SPI for CE0 and CE1 */
--        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0);
--        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1);
--    }
--
--    /* HW strapping for AST2400 FMC controllers (SCU70). Let's use the
--     * configuration of the palmetto-bmc machine */
--    if (asc->segments == aspeed_2400_fmc_segments) {
--        s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0);
--    }
--
-     s->snoop_index = SNOOP_OFF;
-     s->snoop_dummies = 0;
- }
-@@ -1352,6 +1332,14 @@ static const TypeInfo aspeed_2400_smc_info = {
-     .class_init = aspeed_2400_smc_class_init,
- };
+-    s->regs[s->r_ctrl0 + fl->id] = value;
++    s->regs[s->r_ctrl0 + fl->cs] = value;
  
-+static const uint32_t aspeed_2400_fmc_resets[ASPEED_SMC_R_MAX] = {
-+    /*
-+     * CE0 and CE1 types are HW strapped in SCU70. Do it here to
-+     * simplify the model.
-+     */
-+    [R_CONF] = CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0,
-+};
-+
- static const AspeedSegments aspeed_2400_fmc_segments[] = {
-     { 0x20000000, 64 * MiB }, /* start address is readonly */
-     { 0x24000000, 32 * MiB },
-@@ -1374,6 +1362,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass *klass, void *data)
-     asc->conf_enable_w0    = CONF_ENABLE_W0;
-     asc->max_peripherals   = 5;
-     asc->segments          = aspeed_2400_fmc_segments;
-+    asc->resets            = aspeed_2400_fmc_resets;
-     asc->flash_window_base = 0x20000000;
-     asc->flash_window_size = 0x10000000;
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-@@ -1424,6 +1413,11 @@ static const TypeInfo aspeed_2400_spi1_info = {
-     .class_init = aspeed_2400_spi1_class_init,
- };
+     s->snoop_index = unselect ? SNOOP_OFF : SNOOP_START;
  
-+static const uint32_t aspeed_2500_fmc_resets[ASPEED_SMC_R_MAX] = {
-+    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
-+                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
-+};
-+
- static const AspeedSegments aspeed_2500_fmc_segments[] = {
-     { 0x20000000, 128 * MiB }, /* start address is readonly */
-     { 0x28000000,  32 * MiB },
-@@ -1444,6 +1438,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
-     asc->conf_enable_w0    = CONF_ENABLE_W0;
-     asc->max_peripherals   = 3;
-     asc->segments          = aspeed_2500_fmc_segments;
-+    asc->resets            = aspeed_2500_fmc_resets;
-     asc->flash_window_base = 0x20000000;
-     asc->flash_window_size = 0x10000000;
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-@@ -1569,6 +1564,12 @@ static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
-     }
- }
+@@ -1184,7 +1184,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
  
-+static const uint32_t aspeed_2600_fmc_resets[ASPEED_SMC_R_MAX] = {
-+    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
-+                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1 |
-+                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE2),
-+};
-+
- static const AspeedSegments aspeed_2600_fmc_segments[] = {
-     { 0x0, 128 * MiB }, /* start address is readonly */
-     { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
-@@ -1589,6 +1590,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass *klass, void *data)
-     asc->conf_enable_w0    = CONF_ENABLE_W0;
-     asc->max_peripherals   = 3;
-     asc->segments          = aspeed_2600_fmc_segments;
-+    asc->resets            = aspeed_2600_fmc_resets;
-     asc->flash_window_base = 0x20000000;
-     asc->flash_window_size = 0x10000000;
-     asc->features          = ASPEED_SMC_FEATURE_DMA |
+         snprintf(name, sizeof(name), TYPE_ASPEED_SMC ".flash.%d", i);
+ 
+-        fl->id = i;
++        fl->cs = i;
+         fl->controller = s;
+         memory_region_init_io(&fl->mmio, OBJECT(s), &aspeed_smc_flash_ops,
+                               fl, name, asc->segments[i].size);
 -- 
 2.31.1
 

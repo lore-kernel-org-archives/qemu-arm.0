@@ -1,67 +1,67 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1522052lfc;
-        Tue, 12 Oct 2021 00:40:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVKPfHmCYTo6NgxuvBpK0ICvylzm/8pbNHUQtwnUeqXtaBnBGtptc5ulPrRVEfCgQovKMr
-X-Received: by 2002:a92:c565:: with SMTP id b5mr23502003ilj.13.1634024402524;
-        Tue, 12 Oct 2021 00:40:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634024402; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1522697lfc;
+        Tue, 12 Oct 2021 00:41:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxjOeNr8+zTOOorszj3nQJYM8/pHMnGIJudVq2PXqfmlSPgutwhLaudfX+2AjD55mQPxxl7
+X-Received: by 2002:a05:6602:2c07:: with SMTP id w7mr22658808iov.122.1634024472170;
+        Tue, 12 Oct 2021 00:41:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634024472; cv=none;
         d=google.com; s=arc-20160816;
-        b=CFBhEsHqqxjD7GXlPVlYyabueAVsIDHG91YGmDiui3+C3csFcHltzv7t68dEBD6v1r
-         b2PQSB6Ms0pcXvWg9S0AIpt4nQGc8JNEA4MFegsJ9l8UjUhnYKRQhmJGnlrtmkfj92El
-         BnHbmLJhaBkEs6riUK1SySVWRxTeMx7igihnAC9wz802tpyBKIbpllBqLHIRjY4fHhXR
-         +M3BJVPupyEyrO2I9T+EglBqsTnEX8NAi2PfzarU+ApTaqVKfVh3BJlDc5jYwoXbSTyH
-         RCnmcG7D50Lp1AzaBfTM2kvGRi+FAU1BMg2p0hiGjQjduiUk54ZprpxClM/Ng2a2LHvp
-         tuDQ==
+        b=oVHlj9xNpJiiOIYKFxdTGD/DTy3LRJkBwaxCfyPspjPXkTqA4DseHzcADFYdvWu42Q
+         giD1gIlvqDCp4mBqHYn0MhEo9t/9nMFlwF2M8/d4lBhH1wXehabMqxQsJikc3OHkyW7r
+         QGDNPV592wpRnywW9brhym8zF0YmE24Gj+MScuyo2ta3z0+817BEgVGwOMfKoJ6wVw2w
+         HwquTVikhWa+yGY8x0/cvOLo5aq9u3WFG3JHbWtz5wy7vKrX67czA09o7bY/yoqlHYnP
+         L2NLH2n4lXZbUBBCLmN9kBqBH6aNHWbFXZXc4bpkHINwiBMASna/sScUPdxVma3mCyxR
+         E4+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=qL+Z6i9P0dI9PbQlFGUH1mx9qqUPDI5Tjf7mCl2SrRs=;
-        b=sZkAjIAHn8+oN/5G9MWKw7M1Q9cO/32k/dsBIN2CUCeNRS28Q611C8+Pv1yBnZTKes
-         zboZEHzsbSfsY0qWMeKPUbD6+E7MeFlS+cjq6uwGrUDCo/To8YygBshpi8AVPExc6TV2
-         ilxvnRCaGwJP6xQXAOlmNhory0OnzK+c1gdoxGD7ldbzo1W60BYttHV6HAb2mXS+i5jR
-         L5Qgw5+EPjV7aK9KXFF6WlERg9/Ch+wgBpMnFzPNAtdw+vOnIdhLsaF1vjP0IyF4ZHEq
-         uYtMNZHK534qEJ8RKDeaCvRP+qoxoVEUPy0wdzln4bRpsKYrnOgjBZxY81mkxoPWe8KO
-         8mfw==
+        bh=QRdoe+WmR1TGCHwVi6CIBpoVaC1+GPF9GekiUt51Svo=;
+        b=vgieGPSJBecAbOIE6/F7FsKN1x3I4gY6T6mZxDJSAHQeLSe5vooX1U2u5PdzgOMrkw
+         uM7fvykjjafko65WIciKTFjbu0s9v2JcAeQh/XoDhm8oDTFmOPI8UV4Pz64L71BDSp7Q
+         eVFqU9etb5korM+iDGSdvV1sbstRu9Ch3CHVQcpiz02Es3bSw7hVtIe62f4RYkaQyO5Z
+         CjoBjsitMJO6ZXXSph553enEyBQxgNNyAS9fvAWDDPN30XR7wrArPhNA+fiCZbH8sDoK
+         vDqNy08Kv9snCW994JvbnS93UN3eJFMooNlGfJl6XIEHRmePfy8IbuNLZM23aItPCYCM
+         PDBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o3si12997711ilk.81.2021.10.12.00.40.02
+        by mx.google.com with ESMTPS id i6si7877445iow.73.2021.10.12.00.41.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Oct 2021 00:40:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Oct 2021 00:41:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36942 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maCOH-0003JN-Q1
-	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:40:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44018)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1maCPP-0005vl-G6
+	for alex.bennee@linaro.org; Tue, 12 Oct 2021 03:41:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM3-0000La-SQ
- for qemu-devel@nongnu.org; Tue, 12 Oct 2021 03:37:43 -0400
-Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19]:50933)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM1-0000KV-0N
+ for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:41 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:39975)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCM0-000534-N4
- for qemu-devel@nongnu.org; Tue, 12 Oct 2021 03:37:43 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.193])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 5508E210D2;
- Tue, 12 Oct 2021 07:37:39 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1maCLy-00050n-Fi
+ for qemu-arm@nongnu.org; Tue, 12 Oct 2021 03:37:40 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.11])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 8EA41C407D01;
+ Tue, 12 Oct 2021 09:37:36 +0200 (CEST)
 Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.14; Tue, 12 Oct
- 2021 09:37:38 +0200
+ 2021 09:37:36 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0064dccca85-9cfd-49e6-8499-2f13dcbacafb,
+ (GARM-106R00680e21fa2-d8fb-43a7-807a-974c3eb8c9f2,
  B93E5558764F88B003587FF4B0B721A638511A69) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 18/18] aspeed/smc: Dump address offset in trace events
-Date: Tue, 12 Oct 2021 09:37:28 +0200
-Message-ID: <20211012073728.257748-19-clg@kaod.org>
+Subject: [PULL 12/18] aspeed/i2c: QOMify AspeedI2CBus
+Date: Tue, 12 Oct 2021 09:37:22 +0200
+Message-ID: <20211012073728.257748-13-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211012073728.257748-1-clg@kaod.org>
 References: <20211012073728.257748-1-clg@kaod.org>
@@ -71,72 +71,242 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.106]
 X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 0717d916-357d-4bb6-b914-86dc1c1258ce
-X-Ovh-Tracer-Id: 4270256872521501545
+X-Ovh-Tracer-GUID: 06e29efb-e746-43cd-b911-f70a27246768
+X-Ovh-Tracer-Id: 4269412447050763046
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpeegnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
- helo=2.mo548.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddtjedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- Francisco Iglesias <frasse.iglesias@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g2gIdTrikMaj
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RJ8EzTvFrz26
 
-The register index is currently printed and this is confusing.
+Introduce an AspeedI2CBus SysBusDevice model and attach the associated
+memory region and IRQ to the newly instantiated objects.
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Before this change, the I2C bus IRQs were all attached to the
+SysBusDevice model of the I2C controller. Adapt the AST2600 SoC
+realize routine to take into account this change.
+
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/hw/i2c/aspeed_i2c.h |   8 ++-
+ hw/arm/aspeed_ast2600.c     |   7 +--
+ hw/i2c/aspeed_i2c.c         | 101 +++++++++++++++++++++++++++++-------
+ 3 files changed, 91 insertions(+), 25 deletions(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 7129341c129e..8a988c167604 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -728,7 +728,7 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
-          addr < R_SEG_ADDR0 + asc->max_peripherals) ||
-         (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + asc->max_peripherals)) {
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index 565f83306624..4b9be09274c7 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -36,7 +36,11 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
  
--        trace_aspeed_smc_read(addr, size, s->regs[addr]);
-+        trace_aspeed_smc_read(addr << 2, size, s->regs[addr]);
+ struct AspeedI2CState;
  
-         return s->regs[addr];
-     } else {
-@@ -1029,10 +1029,10 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
-     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-     uint32_t value = data;
- 
--    addr >>= 2;
--
-     trace_aspeed_smc_write(addr, size, data);
- 
-+    addr >>= 2;
+-typedef struct AspeedI2CBus {
++#define TYPE_ASPEED_I2C_BUS "aspeed.i2c.bus"
++OBJECT_DECLARE_SIMPLE_TYPE(AspeedI2CBus, ASPEED_I2C_BUS)
++struct AspeedI2CBus {
++    SysBusDevice parent_obj;
 +
-     if (addr == s->r_conf ||
-         (addr >= s->r_timings &&
-          addr < s->r_timings + asc->nregs_timings) ||
+     struct AspeedI2CState *controller;
+ 
+     MemoryRegion mr;
+@@ -54,7 +58,7 @@ typedef struct AspeedI2CBus {
+     uint32_t pool_ctrl;
+     uint32_t dma_addr;
+     uint32_t dma_len;
+-} AspeedI2CBus;
++};
+ 
+ struct AspeedI2CState {
+     SysBusDevice parent_obj;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index c69f27dff62a..a70e4c48a73c 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -337,11 +337,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < ASPEED_I2C_GET_CLASS(&s->i2c)->num_busses; i++) {
+         qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore),
+                                         sc->irqmap[ASPEED_DEV_I2C] + i);
+-        /*
+-         * The AST2600 SoC has one IRQ per I2C bus. Skip the common
+-         * IRQ (AST2400 and AST2500) and connect all bussses.
+-         */
+-        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), i + 1, irq);
++        /* The AST2600 I2C controller has one IRQ per bus. */
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
+     }
+ 
+     /* FMC, The number of CS is set at the board level */
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 8d276d9ed391..03a4f5a91010 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -740,20 +740,20 @@ static const VMStateDescription aspeed_i2c_vmstate = {
+ 
+ static void aspeed_i2c_reset(DeviceState *dev)
+ {
+-    int i;
+     AspeedI2CState *s = ASPEED_I2C(dev);
+-    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
+ 
+     s->intr_status = 0;
++}
++
++static void aspeed_i2c_instance_init(Object *obj)
++{
++    AspeedI2CState *s = ASPEED_I2C(obj);
++    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
++    int i;
+ 
+     for (i = 0; i < aic->num_busses; i++) {
+-        s->busses[i].intr_ctrl = 0;
+-        s->busses[i].intr_status = 0;
+-        s->busses[i].cmd = 0;
+-        s->busses[i].buf = 0;
+-        s->busses[i].dma_addr = 0;
+-        s->busses[i].dma_len = 0;
+-        i2c_end_transfer(s->busses[i].bus);
++        object_initialize_child(obj, "bus[*]", &s->busses[i],
++                                TYPE_ASPEED_I2C_BUS);
+     }
+ }
+ 
+@@ -791,17 +791,21 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(sbd, &s->iomem);
+ 
+     for (i = 0; i < aic->num_busses; i++) {
+-        char name[32];
++        Object *bus = OBJECT(&s->busses[i]);
+         int offset = i < aic->gap ? 1 : 5;
+ 
+-        sysbus_init_irq(sbd, &s->busses[i].irq);
+-        snprintf(name, sizeof(name), "aspeed.i2c.%d", i);
+-        s->busses[i].controller = s;
+-        s->busses[i].id = i;
+-        s->busses[i].bus = i2c_init_bus(dev, name);
+-        memory_region_init_io(&s->busses[i].mr, OBJECT(dev),
+-                              &aspeed_i2c_bus_ops, &s->busses[i], name,
+-                              aic->reg_size);
++        if (!object_property_set_link(bus, "controller", OBJECT(s), errp)) {
++            return;
++        }
++
++        if (!object_property_set_uint(bus, "bus-id", i, errp)) {
++            return;
++        }
++
++        if (!sysbus_realize(SYS_BUS_DEVICE(bus), errp)) {
++            return;
++        }
++
+         memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offset),
+                                     &s->busses[i].mr);
+     }
+@@ -841,12 +845,72 @@ static void aspeed_i2c_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo aspeed_i2c_info = {
+     .name          = TYPE_ASPEED_I2C,
+     .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = aspeed_i2c_instance_init,
+     .instance_size = sizeof(AspeedI2CState),
+     .class_init    = aspeed_i2c_class_init,
+     .class_size = sizeof(AspeedI2CClass),
+     .abstract   = true,
+ };
+ 
++static void aspeed_i2c_bus_reset(DeviceState *dev)
++{
++    AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
++
++    s->intr_ctrl = 0;
++    s->intr_status = 0;
++    s->cmd = 0;
++    s->buf = 0;
++    s->dma_addr = 0;
++    s->dma_len = 0;
++    i2c_end_transfer(s->bus);
++}
++
++static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
++{
++    AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
++    AspeedI2CClass *aic;
++    g_autofree char *name = g_strdup_printf(TYPE_ASPEED_I2C_BUS ".%d", s->id);
++
++    if (!s->controller) {
++        error_setg(errp, TYPE_ASPEED_I2C_BUS ": 'controller' link not set");
++        return;
++    }
++
++    aic = ASPEED_I2C_GET_CLASS(s->controller);
++
++    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
++
++    s->bus = i2c_init_bus(dev, name);
++
++    memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
++                          s, name, aic->reg_size);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
++}
++
++static Property aspeed_i2c_bus_properties[] = {
++    DEFINE_PROP_UINT8("bus-id", AspeedI2CBus, id, 0),
++    DEFINE_PROP_LINK("controller", AspeedI2CBus, controller, TYPE_ASPEED_I2C,
++                     AspeedI2CState *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void aspeed_i2c_bus_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "Aspeed I2C Bus";
++    dc->realize = aspeed_i2c_bus_realize;
++    dc->reset = aspeed_i2c_bus_reset;
++    device_class_set_props(dc, aspeed_i2c_bus_properties);
++}
++
++static const TypeInfo aspeed_i2c_bus_info = {
++    .name           = TYPE_ASPEED_I2C_BUS,
++    .parent         = TYPE_SYS_BUS_DEVICE,
++    .instance_size  = sizeof(AspeedI2CBus),
++    .class_init     = aspeed_i2c_bus_class_init,
++};
++
+ static qemu_irq aspeed_2400_i2c_bus_get_irq(AspeedI2CBus *bus)
+ {
+     return bus->controller->irq;
+@@ -951,6 +1015,7 @@ static const TypeInfo aspeed_2600_i2c_info = {
+ 
+ static void aspeed_i2c_register_types(void)
+ {
++    type_register_static(&aspeed_i2c_bus_info);
+     type_register_static(&aspeed_i2c_info);
+     type_register_static(&aspeed_2400_i2c_info);
+     type_register_static(&aspeed_2500_i2c_info);
 -- 
 2.31.1
 

@@ -1,130 +1,104 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2734168lfc;
-        Wed, 13 Oct 2021 02:48:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2XTVwvutIvWuPpSiZAKOH3Fzo3OMPoTzVZsdVmK6dnx5IsGWXd10Dr2hpGdah0SdnX4jn
-X-Received: by 2002:a25:59d5:: with SMTP id n204mr32518030ybb.189.1634118514590;
-        Wed, 13 Oct 2021 02:48:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634118514; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2739522lfc;
+        Wed, 13 Oct 2021 02:56:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyq8rVkG+LCw0L/kQzlQjDnvSStG//LFzmgVLwiTLPQa21EyWb8Td6YNqClv74Mm6w8q04W
+X-Received: by 2002:a67:d209:: with SMTP id y9mr34157649vsi.26.1634119009170;
+        Wed, 13 Oct 2021 02:56:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634119009; cv=none;
         d=google.com; s=arc-20160816;
-        b=lSdAWMaZ9x06mTXy/fl+cvjPx+nH9KYK7fpGRtNri++zXeR3admofM1UOQ43ya7lCQ
-         Ac3EuMZpRTru1tKkQHsNcZ/W33VVLeH4JWGtIXXjQ0/1vKSwh6ir3gm38f2ygsM3XrTC
-         aitRGt/ILFPjG+3brf2pR9+xe3zUrnKi3xrWC9XujAZl3ehUSuC0HV65E7LvVIXx9pSe
-         IhGSEh2cGcFkkO+Sh5rrMHcHW0xkb3vwUzzxTQ/ZUosJ8EsqZS4QZUlHWsutG50qFxPI
-         9NbjbdeDUZv12tu1ZilqNJMBoBP72eQkUdaAIM4bQEZAJi0FQKKn8ggjPGI6BVQmkXSi
-         NITQ==
+        b=kPnKXA3Cx6G6aqwJH0TphlAleePBHkvyVU+7Wy42k5u6gUUWoj/HKeiIYufGxHX+pc
+         +qkvGQLXkfBYD3jB+Vv66+wSGO0djGiYL1NoKCqmBAbh54b/4p6pCxgaHWtL8RLW51ED
+         sIiwNma1SX6OtB30IVkTDPeWFs8QuGbol5oWbTlyPsn4rRZgE9k41oDmJ6xRAwDicrEi
+         hlOLLAwAX/H2QFwEyhOpcKNLHaEja70VrgsPRHNmFikwFjYO8fClBLY80gupi5kaqZLx
+         zqLpQLq0a+LgI7LkD6GIVP4XdCMaN8NYTdb9jDCfPLscZRYtrRkdUACbfdekHlvmNPRd
+         FAiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=BsSLs0sDhwaPCXVgg1b6AUYYbx5kgOMTYAO9Sm9tXOE=;
-        b=l/sO4glYWuXRDjFIpTGexQviOt9J4swWyqG9GzrWH1qxzA3Em8sZcfSYTSl1reEJzk
-         YDdwH0LTqE/BBYeuaKv7CPehynpomwL+JG9tPc8Tj3PqtaNf/e/wmr0JwDwKFmDSW6ir
-         F2HDkRXRnN+cQApQ3hS9kp2o59kaOvxphPBHBhNEtUHRQshUKlR+4VrAOiGevVzpwDAo
-         dsavOq+SKy9QFT8IyGbH4wz2iZWFB/MQyqU9vloFPR4300VhiAzLPUNf1fNCyKjMKo8w
-         67n5TTrs/CxzYQwAXx7PwUOFywNxJe1kvSyGQxtqwCePonJ65v1kz/GtvOLM+/BNzqOX
-         TUwg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=wVvjaP0b6BjDDsb2dY0WSiL5klTEpnk0APTTGcF06f4=;
+        b=EfyOUCWqZSzvckg8nfgjKYBPcmKoDb2cRsGGvz/1JjtufSP6xvbrYLm0oDfOTMUOVB
+         PK4sCra9wb0lChMoVWXIpglhbaFXUZ6R0MkcDpwTItLgwsuIpiQfaw934krCc2J0uZeX
+         R0ro0e2SlHQfbx8iTjaZUF2h/1S3CJujb2B5Qf9KC+dkrnkVrn9AvO6Sc3urS0y4jESC
+         l1aT4jrLbwrXGS1ictX/1LTShO1+WYNVEmObcebpvVCSbB9DBYbSWWFuRYlfHDFzXzze
+         JG0fRPDn/vqvliNISBtVubpam+fEwlAwukSbAdd34EHzuXWTvo5izqGwvn+t28aXwmQx
+         z+BQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Cd8c0T7z;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D70iGbx7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si12395072ybc.23.2021.10.13.02.48.34
+        by mx.google.com with ESMTPS id p15si11200807vsh.275.2021.10.13.02.56.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Oct 2021 02:48:34 -0700 (PDT)
+        Wed, 13 Oct 2021 02:56:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Cd8c0T7z;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D70iGbx7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43666 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35784 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maasD-00071f-U3
-	for alex.bennee@linaro.org; Wed, 13 Oct 2021 05:48:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59698)
+	id 1mab0C-0004DM-F6
+	for alex.bennee@linaro.org; Wed, 13 Oct 2021 05:56:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35990)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1maacw-00024q-K8
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 05:32:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32698)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1maaze-00048o-MA
+ for qemu-arm@nongnu.org; Wed, 13 Oct 2021 05:56:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:28256)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1maacs-0005as-NW
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 05:32:45 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1maazd-0007zV-2e
+ for qemu-arm@nongnu.org; Wed, 13 Oct 2021 05:56:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634117561;
+ s=mimecast20190719; t=1634118971;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BsSLs0sDhwaPCXVgg1b6AUYYbx5kgOMTYAO9Sm9tXOE=;
- b=Cd8c0T7z3gev43COvgQFrQTVGbXylrlku5zosNsm7FSxsvd5Z2naeT0wK91/shhxbsTIF0
- VlZmiC95qWrj51yJtCnCq7hIolBbJS3n2uRBgLfDrlpoHQlkfS3MNmF1bPQ5i5lzPW32kV
- 0X1umFTvpUWQLcMPIb3mKBq7oV+13pk=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-460-q-Ri89KwPWGQu0wysg1NxA-1; Wed, 13 Oct 2021 05:32:39 -0400
-X-MC-Unique: q-Ri89KwPWGQu0wysg1NxA-1
-Received: by mail-ed1-f70.google.com with SMTP id
- v9-20020a50d849000000b003db459aa3f5so1676003edj.15
- for <qemu-arm@nongnu.org>; Wed, 13 Oct 2021 02:32:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=BsSLs0sDhwaPCXVgg1b6AUYYbx5kgOMTYAO9Sm9tXOE=;
- b=vhhJpy0/+5Vvj4MPIoRcQLHob3lQKigV6iAGU5oi5hfL1De8OA+tND8mv0ATt6oFtz
- R7gZmm0VMpmjkd6sioGUQo5MeIqxRYd3gyhHllCPyTVb0lbnuB4QGMWLLVJVWdsrZ8k5
- XbPRi1OVMJxOqiJOUB7tg+7Qd49mUSWkslKnt5IidEX1FNDwtcGVyaarlD30b8YuU1Qy
- IUeU6ZD0qv+ieGnr6xWorASAADFrjKJpmONrn3G185P9cBOjNjDQHQtF191EsYlWLP/0
- CoJGbOBXTQL7Oj53fAfAiefydUwnEIo3Tnyjh/8vrP12yjysaWJAGP261v7C3zN3sRbL
- b8vg==
-X-Gm-Message-State: AOAM531WsV1W3PyDkHQw/cfwNB6D6wlorXp04A3wglVyl/mmQ9zL9mYH
- knk2/Sb7kLbIBI0fWRtJoxINTTMsSPUHxPB/NSXXl8dQOaZ2EKSHV/mEHbUizobEQuvnwa5GMXB
- +HssCoabFqUdh
-X-Received: by 2002:a05:6402:21d2:: with SMTP id
- bi18mr7877621edb.21.1634117558348; 
- Wed, 13 Oct 2021 02:32:38 -0700 (PDT)
-X-Received: by 2002:a05:6402:21d2:: with SMTP id
- bi18mr7877577edb.21.1634117558048; 
- Wed, 13 Oct 2021 02:32:38 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id bt24sm6373793ejb.77.2021.10.13.02.32.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Oct 2021 02:32:37 -0700 (PDT)
-Date: Wed, 13 Oct 2021 11:32:36 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH 1/2] numa: Set default distance map if needed
-Message-ID: <20211013113236.0253d248@redhat.com>
-In-Reply-To: <eed6bdaf-e52e-0bc6-7669-7a65e75a4b08@redhat.com>
-References: <20211006102209.6989-1-gshan@redhat.com>
- <20211006102209.6989-2-gshan@redhat.com>
- <20211012114016.6f4a0c10@redhat.com>
- <20211012103754.kbyd3du26rpsi3ie@gator.home>
- <20211012142754.1c4e5071@redhat.com>
- <20211012131308.45j7ofd4xwk42epv@gator>
- <20211012155321.256e8867@redhat.com>
- <eed6bdaf-e52e-0bc6-7669-7a65e75a4b08@redhat.com>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=wVvjaP0b6BjDDsb2dY0WSiL5klTEpnk0APTTGcF06f4=;
+ b=D70iGbx7Q5Z0tQWocI6qI+PMsSVpoU0o6rns3sy2oagVuahcxP5XLw0XcXATq/An4huvx1
+ R9FtmSPhcKCVhK0gauoUYCAh6iMos/DeMvyvdqeBSNDkTGf9HMx/EI50d0nQQUkD3mSlte
+ QVScjIrFii8b4LGqoITyEkCigtYH0dM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-17-tYu-iwJVN5OlQhmRhNTZfg-1; Wed, 13 Oct 2021 05:56:10 -0400
+X-MC-Unique: tYu-iwJVN5OlQhmRhNTZfg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43CC81927809;
+ Wed, 13 Oct 2021 09:56:09 +0000 (UTC)
+Received: from virtlab-arm04.virt.lab.eng.bos.redhat.com
+ (virtlab-arm04.virt.lab.eng.bos.redhat.com [10.19.152.244])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8574F196F9;
+ Wed, 13 Oct 2021 09:56:08 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, mst@redhat.com, cohuck@redhat.com,
+ peter.maydell@linaro.org
+Subject: [PATCH] virtio-iommu: Remove non transitional name
+Date: Wed, 13 Oct 2021 05:55:54 -0400
+Message-Id: <20211013095554.758806-1-eric.auger@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) DKIMWL_WL_HIGH=-0.049, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -137,188 +111,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
- ehabkost@redhat.com, robh@kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, shan.gavin@gmail.com
+Cc: jean-philippe@linaro.org, abologna@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x6UZOeiikpte
+X-TUID: dw9pe307k+1o
 
-On Wed, 13 Oct 2021 10:32:18 +1100
-Gavin Shan <gshan@redhat.com> wrote:
+Remove non transitional name for virtio iommu. Like other
+devices introduced after 1.0 spec, the virtio-iommu does
+not need it.
 
-> Hi Igor,
-> 
-> On 10/13/21 12:53 AM, Igor Mammedov wrote:
-> > On Tue, 12 Oct 2021 15:13:08 +0200
-> > Andrew Jones <drjones@redhat.com> wrote:   
-> >> On Tue, Oct 12, 2021 at 02:27:54PM +0200, Igor Mammedov wrote:  
-> >>> On Tue, 12 Oct 2021 12:37:54 +0200
-> >>> Andrew Jones <drjones@redhat.com> wrote:     
-> >>>> On Tue, Oct 12, 2021 at 11:40:16AM +0200, Igor Mammedov wrote:  
-> >>>>> On Wed,  6 Oct 2021 18:22:08 +0800
-> >>>>> Gavin Shan <gshan@redhat.com> wrote:
-> >>>>>        
-> >>>>>> The following option is used to specify the distance map. It's
-> >>>>>> possible the option isn't provided by user. In this case, the
-> >>>>>> distance map isn't populated and exposed to platform. On the
-> >>>>>> other hand, the empty NUMA node, where no memory resides, is
-> >>>>>> allowed on ARM64 virt platform. For these empty NUMA nodes,
-> >>>>>> their corresponding device-tree nodes aren't populated, but
-> >>>>>> their NUMA IDs should be included in the "/distance-map"
-> >>>>>> device-tree node, so that kernel can probe them properly if
-> >>>>>> device-tree is used.
-> >>>>>>
-> >>>>>>    -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
-> >>>>>>
-> >>>>>> So when user doesn't specify distance map, we need to generate
-> >>>>>> the default distance map, where the local and remote distances
-> >>>>>> are 10 and 20 separately. This adds an extra parameter to the
-> >>>>>> exiting complete_init_numa_distance() to generate the default
-> >>>>>> distance map for this case.
-> >>>>>>
-> >>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>  
-> >>>>>
-> >>>>>
-> >>>>> how about error-ing out if distance map is required but
-> >>>>> not provided by user explicitly and asking user to fix
-> >>>>> command line?
-> >>>>>
-> >>>>> Reasoning behind this that defaults are hard to maintain
-> >>>>> and will require compat hacks and being raod blocks down
-> >>>>> the road.
-> >>>>> Approach I was taking with generic NUMA code, is deprecating
-> >>>>> defaults and replacing them with sanity checks, which bail
-> >>>>> out on incorrect configuration and ask user to correct command line.
-> >>>>> Hence I dislike approach taken in this patch.
-> >>>>>
-> >>>>> If you really wish to provide default, push it out of
-> >>>>> generic code into ARM specific one
-> >>>>> (then I won't oppose it that much (I think PPC does
-> >>>>> some magic like this))
-> >>>>> Also behavior seems to be ARM specific so generic
-> >>>>> NUMA code isn't a place for it anyways  
-> >>>>
-> >>>> The distance-map DT node and the default 10/20 distance-map values
-> >>>> aren't arch-specific. RISCV is using it too.
-> >>>>
-> >>>> I'm on the fence with this. I see erroring-out to require users
-> >>>> to provide explicit command lines as a good thing, but I also
-> >>>> see it as potentially an unnecessary burden for those that want
-> >>>> the default map anyway. The optional nature of the distance-map
-> >>>> node and the specification of the default map is here [1]
-> >>>>
-> >>>> [1] Linux source: Documentation/devicetree/bindings/numa.txt  
-> >>>
-> >>> Looking at proposed linux patches [ https://lkml.org/lkml/2021/9/27/31 ],
-> >>> using optional distance table as source for numa-node-ids,
-> >>> looks like a hack around kernel's inability to fish them out
-> >>> from CPU &| PCI nodes (using those nodes as source should
-> >>> cover memory-less node use-case).
-> >>>
-> >>> I consider including optional node as a policy decision.
-> >>> So user shall include it explicitly on QEMU command line
-> >>> if necessary (that works just fine for x86), or guest OS
-> >>> can make up defaults on its own in absence of data.  
-> >>
-> >> OK, so erroring-out on configs that must provide distance-maps, rather
-> >> than automatically generating them for all configs is better.
-> >>  
-> >>>      
-> >>>> So, my r-b stands for this patch, but I also wouldn't complain
-> >>>> about respinning it to error out instead.  
-> >>>      
-> >>>> I would complain about
-> >>>> moving the logic to Arm specific code, though, since RISCV would
-> >>>> then need to duplicate it.  
-> >>>
-> >>> Instead of putting workaround in QEMU and then making them generic,
-> >>> I'd prefer to:
-> >>>   1. make QEMU to be able generate DT with memory-less nodes  
-> >>
-> >> How? DT syntax doesn't allow this, because each node needs a unique
-> >> name which is derived from its base address, which an empty numa  
-> > you are talking about memory@foo nodes, aren't you?
-> >   
-> >> node doesn't have.  
-> > 
-> > Looking at Documentation/devicetree/bindings/numa.txt
-> > 
-> > mem/cpu/pci nodes also contain numa-node-id attribute,
-> > so idea is to collect IDs from all present sources
-> > instead of abusing distance map.
-> >   
-> > That would allow QEMU to skip memory@foo elements for
-> > memory-less nodes because they obviously do not exist
-> > and there is no way to describe them using 'memory' nodes.
-> >   
-> 
-> I don't think it's feasible because it's hard to elaborate NUMA node IDs
-> from this sort of sources. Apart from mem/cpu/pci, the NUMA node IDs
-> can be included into platform devices, which could be vendor specific
-> sometimes. Other type of devices, which I don't know, could include
-> NUMA node IDs either.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reported-by: Andrea Bolognani <abologna@redhat.com>
+---
+ hw/virtio/virtio-iommu-pci.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Most likely mem/cpu(/pci) nodes are sufficient to get node ids
-(as they can be node forming entities, not sure about PCI)
-So forcing QEMU to provide the yet another optional node
-to describe numa-ids that could be figured out from already
-present nodes doesn't look like a good idea. Sure thing it's
-a simple one from guest kernel pov (though I doubt that it's
-any harder to parse cpu nodes in addition to memory ones
-to get numa-ids), but otherwise it puts unnecessary
-restrictions on QEMU. As for hotplug see comment below.
-
- 
-> Besides, things become more complicated when hotplug is considered.
-> For example, the hot-added CPU is associated with a non-existing
-> NUMA node. The CPU hot-add fails until the associated NUMA node
-> is initialized. This means CPU/mem hotplug have to be twisted.
-
-Is hotplug even a thing with device tree (I don't thinks so)?
-With QEMU we use ACPI for hotplug, so from arm/virt machine
-point of view we probably do not care about theoretical
-hotplug with device-tree.
-
-
-> So the point is to elaborate the NUMA node IDs from the limited
-> source: mem/cpu/distance-map. The distance-map is optional in
-> current Linux implementation.
-> 
-> >>>   2. fix guest to get numa-node-id from CPU/PCI nodes if
-> >>>      memory node isn't present,  
-> >>
-> >> I'm not sure that's possible with DT. If it is, then proposing it
-> >> upstream to Linux DT maintainers would be the next step.  
-> > Added Rob to CC.
-> >   
-> 
-> As explained above.
-> 
-> >>  
-> >>> or use ACPI tables which can
-> >>>      describe memory-less NUMA nodes if fixing how DT is
-> >>>      parsed unfeasible.  
-> >>
-> >> We use ACPI already for our guests, but we also generate a DT (which
-> >> edk2 consumes). We can't generate a valid DT when empty numa nodes  
-> > does edk2 actually uses numa info from QEMU?
-> >   
-> >> are put on the command line unless we follow a DT spec saying how
-> >> to do that. The current spec says we should have a distance-map
-> >> that contains those nodes.  
-> > 
-> > can you point out to the spec and place within it, pls?
-> >  
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?h=next-20211012&id=58ae0b51506802713aa0e9956d1853ba4c722c98
-> ("Documentation, dt, numa: Add note to empty NUMA node")
-
-that's not something set in stone, it's description of
-a possible implementation introduced for the sake of
-this patch. And can be changed.
-
-> Thanks,
-> Gavin
-> 
+diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
+index 770c286be7..86fa4e6c28 100644
+--- a/hw/virtio/virtio-iommu-pci.c
++++ b/hw/virtio/virtio-iommu-pci.c
+@@ -100,7 +100,6 @@ static void virtio_iommu_pci_instance_init(Object *obj)
+ static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info = {
+     .base_name             = TYPE_VIRTIO_IOMMU_PCI,
+     .generic_name          = "virtio-iommu-pci",
+-    .non_transitional_name = "virtio-iommu-pci-non-transitional",
+     .instance_size = sizeof(VirtIOIOMMUPCI),
+     .instance_init = virtio_iommu_pci_instance_init,
+     .class_init    = virtio_iommu_pci_class_init,
+-- 
+2.27.0
 

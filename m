@@ -1,98 +1,170 @@
-Received: by 2002:ac2:5978:0:0:0:0:0 with SMTP id h24csp2390739lfp;
-        Fri, 8 Oct 2021 04:20:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkEDTI+0r1+yNkRadZi8gpPzpnKqTZkpuxeyF8YyMtTMb9HnOYsHpX9ZXv5uB9vuwM7vom
-X-Received: by 2002:a05:6000:1acd:: with SMTP id i13mr3204132wry.351.1633692032304;
-        Fri, 08 Oct 2021 04:20:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633692032; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2540720lfc;
+        Tue, 12 Oct 2021 21:58:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUz29Csg5YIu7mQdUFp2LsfqhpFXB4/SS32qsiLgBB2HNH6YKOwme8pcdUiPBUIEiwZWWv
+X-Received: by 2002:a25:ae66:: with SMTP id g38mr31426185ybe.536.1634101120398;
+        Tue, 12 Oct 2021 21:58:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634101120; cv=none;
         d=google.com; s=arc-20160816;
-        b=OKRma9KwHAj/7Vxkw30adoy3jLPP20He1OCIuahOMjQRN6LYQS5KeWpc3Jp3fbaoKW
-         2icLuXaLDIcMHbo2acvsoUdjVdWsizTgTaR279u//Eu7O3KXyA2yN1oqntJQQI/AYxUu
-         IQSlShi0GDAuFHtyb74G31qZq7TvmiRXYmOfFfJGlYffCfR4saefCK5H0Yk9HGNe7F+o
-         JTatn3oV3KrrGNVaPprf1pH5B02DcDOeCds6B9NJ2GF0IE59NfB1Ifpa5uiKXDb9cJCz
-         7ieyxQd1VkB/eD6AouirN5g8//+BHItzMOdzolK/qamDE7VDJBJWLdB0UuM59RRGLRyf
-         E1wA==
+        b=n1Usm5emGF0Ges1ilkKm3h7CmEO/YrZpYVUgzyh7KwhKZi+DYxMfXhQjOMpFwW229g
+         DR/lhZU6xSroHaA/AYjYfrY2DRaSrZWNkvmS/oIOLWCl5L/7lMBRAZTm+mVg+yZsX+EA
+         CG786IAgggsWTJCY8gtnv8JCokIOBzrPBWCJyQXWhiwtSZCOAo0Hqu1bK0Q+SeUpH8eM
+         FnxUaDgNhi5ayKW0zrciqYBCEDFrC0Y6l0IVauuHaRPfj05a9c7SeqDXvSXVCoy0ODVJ
+         Ux9sYQepu1N3O8qQ/91N++wjq3SNvhXWRDlnFT174DS3dYN3kktQHqhFTgGz9toRQ2Fj
+         DHMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=njdwS3qA9HYLmO7MOo128edRCaGaQP5rQMro/Xs8WiY=;
-        b=CgY5vJph3tj4ajG4l7g9XEQ04EkWjuD5HS97fCiTqMWZVJCYETfAnyOKVKwB0gZSh2
-         9O+isMpd5HOMWPBCRZqLGLF8hKpNESSHrKpoG0RNwZFc/UxyozHvQukTRncwEs/IvhZc
-         6XMkUqIrB/+ZSDA3EGE2wfTGUT22HqGIC7HIFThb7gEsJix3t2BbdUF9GVANI86uR9NH
-         iQJ4Ld3k3x4AdUkv88mwxgQiBBV+9h312jgUoSalpJBcfFyw8RdaVGssZJrwdej8MQLR
-         RBo3FmaVCmmBUy8sMZquSxV/aGPgpksw1sJvqP0UWm1x3kIQ+l6AvyJjMbAkhs2LURQW
-         L1Cw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=qnSLuY2lflgjwZuZwik2uOYIB3j3gAfJ/I+UIsnpFww=;
+        b=tav6zVxhGAMJg7Me5ogL2LePBHthiHL+c1cMbadolSgj0n7B95xBeosh0kjpFOfnU3
+         8urhtsxUdVkG2mw1uxKi7kqqyFuPKGrFh62Vk618yMQbqeFR+cBp3y5uQkKekuCw8HY9
+         tzFSO6IUEqFg9CJ+++z7yTSwDYpaoXcYofC+6PgLb7Nkl3iEmRwzmGtiVgPET1naM3tc
+         drznu1bIj6wNKZKfFbPQxqQ7Fu5h6ZKNd4fJmu1WrdyqhaxXdHAS7uqqHYJ8R4NmLoP4
+         HmUQPi33snD0VPYT6KIVjFKNpXzW+3+L1+dO0utmza+CVSaFO+ZMLZ+te6Ka/DXUqUWN
+         cI1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 217.72.192.74 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.74])
-        by mx.google.com with ESMTPS id s13si3241961wrv.193.2021.10.08.04.20.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Oct 2021 04:20:32 -0700 (PDT)
-Received-SPF: neutral (google.com: 217.72.192.74 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=217.72.192.74;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IFw1de5D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d126si14863689ybh.22.2021.10.12.21.58.40
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Oct 2021 21:58:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 217.72.192.74 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from mail-wr1-f50.google.com ([209.85.221.50]) by
- mrelayeu.kundenserver.de (mreue107 [213.165.67.113]) with ESMTPSA (Nemesis)
- id 1MGygv-1mVDHI2rA3-00EA0l; Fri, 08 Oct 2021 13:20:31 +0200
-Received: by mail-wr1-f50.google.com with SMTP id t8so28901272wri.1;
-        Fri, 08 Oct 2021 04:20:31 -0700 (PDT)
-X-Gm-Message-State: AOAM533lcUDMrmo2Ansd1VBvnKB4UypNH5APbgNFRDMP/ZS6aucZHf9K
-	i9lpFNe2UoFH+Vxkz38FAx8shX64PWw98H1JfpI=
-X-Received: by 2002:adf:f481:: with SMTP id l1mr3209844wro.411.1633692031269;
- Fri, 08 Oct 2021 04:20:31 -0700 (PDT)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IFw1de5D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59334 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1maWLf-0002NB-QQ
+	for alex.bennee@linaro.org; Wed, 13 Oct 2021 00:58:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47044)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1maWLU-0002Mn-C2
+ for qemu-arm@nongnu.org; Wed, 13 Oct 2021 00:58:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42485)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1maWLQ-0004gp-Sq
+ for qemu-arm@nongnu.org; Wed, 13 Oct 2021 00:58:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1634101104;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=qnSLuY2lflgjwZuZwik2uOYIB3j3gAfJ/I+UIsnpFww=;
+ b=IFw1de5DTNB6fsIddDSDApSr4SoydAVTTZHMwzLz2Tf86hRgOIMjZ6LfyYyfkdKDe19tDw
+ AiEA9P9+JRkUcOJDKCSn2QZZMTxpe5xDOPX9AyiRlSTlq2Npk8dFMVqp5zry9voV8dKd24
+ O8FWKdR9Vzz/Vb2MeY+EeV+BpUxMjlk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-240-ZQ3WVVLYPkWNla4e8VxHBQ-1; Wed, 13 Oct 2021 00:58:21 -0400
+X-MC-Unique: ZQ3WVVLYPkWNla4e8VxHBQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D24B01006AA3;
+ Wed, 13 Oct 2021 04:58:19 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-56.bne.redhat.com [10.64.54.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 104985D9C6;
+ Wed, 13 Oct 2021 04:58:13 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Subject: [PATCH v3 0/2] hw/arm/virt: Fix qemu booting failure on device-tree
+Date: Wed, 13 Oct 2021 12:58:03 +0800
+Message-Id: <20211013045805.192165-1-gshan@redhat.com>
 MIME-Version: 1.0
-References: <877deoevj8.fsf@linaro.org>
-In-Reply-To: <877deoevj8.fsf@linaro.org>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Fri, 8 Oct 2021 13:20:15 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a09c2wFUMargRkonYQA6mUMnGK-+Lmrt4rDGEog5M3+6w@mail.gmail.com>
-Message-ID: <CAK8P3a09c2wFUMargRkonYQA6mUMnGK-+Lmrt4rDGEog5M3+6w@mail.gmail.com>
-Subject: Re: Approaches for same-on-same linux-user execve?
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>, Richard Henderson <richard.henderson@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, assad.hashmi@linaro.org, 
-	"Eric W. Biederman" <ebiederm@xmission.com>, 
-	James Bottomley <James.Bottomley@hansenpartnership.com>, 
-	Arnd Bergmann <arnd.bergmann@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:2U6gW095DVeUQSX2SGx8hs3E/eQ94EIzZsM2DUwvgC6kqUZoYzy
- Y7lrg7OJpuS+s4WhbJA3p/4lhgySSaTkBi8VzdhyhCNVx964gfpWOMgImthGuS0w6Hguv1/
- qPm7uZlcZb/ifEwiZTj17B6wHx8CGxg9gTI8QTDL7hzUeDn8f2ez4bxCFAcjZ7W2BF2HENr
- YGaghrq28HPDp2cZ8uusw==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4WSSLnnvX3Y=:++3z6EmfKdclcSV40ykaOK
- WRP0OLnZ8QexJbGeFmvZRdH+5Q93n1karYu7VMM5eJ2USk2iHmjMkHAfPEqKCYruhbpY4F2/z
- 4aiQLhpTq09yHBEIvjgCoxPD1TyRTtwnHqnoy7cqMDob5qSWS8E0+fSFxHjNPGZv8RzLnbdAJ
- eVW9wrhDWLgqSE/idgU1DN7VL+iSEDOku3tE1EJnhMjwNo0jBmrkgGEriAINq6bBfp6fnE9QC
- j+HEfLA6PFA6EEXIexlj2Ua7gGK2OnqyXMUr4thF0ts/WAX0zxS5d0rPqaZzZCx6QtIpndCZb
- Ri1C2zJsz3TTv92sBUAVmWTk7CvVkjChH7/NorILHUlEKMPODpXhh1dARCQKpV9ij9tBh+6wn
- HUL38sYma6B4EQ0uKwctWeiJLgA+NTiXVINVSpWnYJ/idEAhnB4ZJfcNHj9equaG+0w0AoxrF
- Z+8N/73bsvwf0xkAWyv5FMPDYa1AAJtJF4QlP5LOTgAWsm4ejtsyrVsCkBSqyi/sV7AzMkoUf
- Hus9W/8RgbV+CIAbrlZxDUjWyeR2DiNnrNDRbdTH4glKKYWqgKUPWn2CyA+qYvNnxgt8T7Fzj
- OKUhC9bLRAbX1dwpc4Ut11meOIfabfRX9VJGRFcT57+iNEN79uzR7CPI00sCo5AW6875RjYLe
- hkusPMKrO6PxfTLTmL+MvMOwI8TpvwM59TQN+saGd3UAa/QddcNG0yREexZ7uxYtE6uL16+OF
- D7V07hZXW435/c2aGiN6X0BOH0l5BIJdPCjnIQ==
-X-TUID: UOSbfQungyaG
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: robh@kernel.org, drjones@redhat.com, ehabkost@redhat.com,
+ peter.maydell@linaro.org, qemu-devel@nongnu.org, shan.gavin@gmail.com,
+ imammedo@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cdFB+7M4geZu
 
-On Thu, Oct 7, 2021 at 4:32 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->
-> Are there any other approaches you could take? Which do you think has
-> the most merit?
+The empty NUMA nodes, where no memory resides, are allowed on ARM64 virt
+platform. However, QEMU fails to boot because the device-tree can't be
+populated due to the conflicting device-tree node names of these empty
+NUMA nodes. For example, QEMU fails to boot and the following error
+message reported when below command line is used.
 
-Reading through the ELF loader code in the kernel, I had another idea:
-If qemu-user could be turned into a replacement for /lilb/ld.so and act
-as an ELF interpreter rather than a binfmt-misc helper, this might address
-a lot of the issues automatically.
+  /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+  -accel kvm -machine virt,gic-version=host               \
+  -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+  -m 1024M,slots=16,maxmem=64G                            \
+  -object memory-backend-ram,id=mem0,size=512M            \
+  -object memory-backend-ram,id=mem1,size=512M            \
+  -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+  -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+  -numa node,nodeid=2                                     \
+  -numa node,nodeid=3                                     \
+    :
+  qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: FDT_ERR_EXISTS
 
-It would need to be a statically linked binary so it doesn't itself require
-an interpreter. It would have to do the job of ld.so in addition to
-the emulation, but it could do that by finding the real ld.so somewhere
-else and running that in emulation mode. It would also not work at
-all for statically linked executables.
+The lastest device-tree specification doesn't indicate how the device-tree
+nodes should be populated for these empty NUMA nodes. The proposed way
+to handle this is documented in linux kernel. The linux kernel patches
+have been acknoledged and merged to upstream pretty soon.
 
-Not sure if that makes the tradeoffs better than your other suggestions,
-but it seemed worth bringing up.
+  https://lkml.org/lkml/2021/9/27/31
 
-       Arnd
+This series follows the suggestion, which is included in linux kernel
+patches, to resolve the QEMU boot failure issue: The corresponding
+device-tree nodes aren't created for the empty NUMA nodes, but their
+distance map matrix should be provided by users so that the empty
+NUMA node IDs can be parsed properly.
+
+Changelog
+=========
+v3:
+   * Require users to provide distance map matrix when empty
+     NUMA node is included. The default distance map won't
+     be generated any more                                        (Igor/Drew)
+v2:
+   * Amend PATCH[01/02]'s changelog to explain why we needn't
+     switch to disable generating the default distance map        (Drew)
+
+Gavin Shan (2):
+  numa: Require distance map when empty node exists
+  hw/arm/virt: Don't create device-tree node for empty NUMA node
+
+ hw/arm/boot.c         |  4 ++++
+ hw/core/machine.c     |  4 ++++
+ hw/core/numa.c        | 24 ++++++++++++++++++++++++
+ include/sysemu/numa.h |  1 +
+ 4 files changed, 33 insertions(+)
+
+-- 
+2.23.0
+

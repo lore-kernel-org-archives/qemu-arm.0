@@ -1,95 +1,100 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2933653lfc;
-        Wed, 13 Oct 2021 06:31:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgqRww36hSXuN91e+SQ0BnZJJrNe2VF6abJ8s1Ck1fAtYqTnyVGvNymsI0k5J6Od54Yf5h
-X-Received: by 2002:a05:622a:1a24:: with SMTP id f36mr20034515qtb.321.1634131862366;
-        Wed, 13 Oct 2021 06:31:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634131862; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2936857lfc;
+        Wed, 13 Oct 2021 06:34:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyI58pk+QVqWvbuJ4Ld4vvVBC8ohhsPr0ttYfpEmF/xz2ef2Lo0xI/IDfhPFI4gpdtDGMa4
+X-Received: by 2002:a05:620a:235:: with SMTP id u21mr14312366qkm.347.1634132060726;
+        Wed, 13 Oct 2021 06:34:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634132060; cv=none;
         d=google.com; s=arc-20160816;
-        b=PWbgnIxHnmjLyyWJRRjTg9irM2SPiClSzx28W+W1HXSqqIhdNK36dchJX3QTdy8zF2
-         O5t6zO5MFm2YmRULpJ8afZFdfeXx2sN3YkNSuIEIuILdagGuCads88Bu+ZN9ZBsMptFR
-         bf6/WArU1nv5aBdaPIYT9WC4OI2ozquOG7gBDSFVvW2ABUtI8H3Qu8DGX1q3jQsbAsM5
-         ySiFZ7Rc57da4aRbDXN6/jGAp0gqaXKiCnw3FXdHV/S2pvMJTud+6HS8XRIJE0Rx1DaU
-         oPbo9fntF3edl36Lm7ZS1JZqKhYZ9OZAqLKrkOAOT8CPhd1Io4WH1WUc4gssle+Bkroe
-         lSvw==
+        b=SuN2NtBFWGop46ZsxuLN0OvfszSv7likDseO7owINEFxJUQ3vlyrv+ujjsAYmKBN9x
+         5ViRKbYWQUKu0MAskx2MrHgruLTxmDBMkMsmTG/nUoTd8H8nMDiR51bLa+LLs6THVj/J
+         JZ9MMlZkkJGyMsSsFCDNvZ8ILEWGX+DGVG7wS2KVjWcVPW9KBdSyp2zj3aQvT0WM8i3J
+         nEHXW9MiDPsSp9254c0vu693J7Oxv5etcgs8LCw6erHh4hhl+iWaxtoGxqadFx88Wiwc
+         g7LwsH5d+GXIHgL4H4NiRO2TY4MoNX9yvYvyhRJ9LN3tJED0CZzrVAnxdSMti83lYuze
+         mpWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Q04YolgQ2guANTX8EzdsZIAc8PLaO9lclWMEquEb4C0=;
-        b=wtccCeqEE5tA8mg538mVWreeZUEXdy04LRzl03YbJdN2y2KoDo8S34Gu2LMlZl2syn
-         G+rFuqljQq8Zs29XRzQD8nrRk26PWFKCcB+Nzj9wWAKK3LiVjK4vpkyHavr5FKSVAHtc
-         /nmjkvFeafzgym1tBivzNIrTB2AeUffJDcAZWJ9fmdXNMSkmIU152CjCK+K2oxY9dXPj
-         EqNg6Co5B313M6PnYuRcXF8wWruDsXGynfnYV5aMNqVhyvacHc90+vvOTXRvy267Ftea
-         rGKCunzxfIGyqxKvWKg9PhTiQ2djsaBmGMXfWA5WwrCStipe5rglUp0xZvdNSzX/kCLX
-         mLTg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=cu71r+msydeNM6iUsua0SVZqSyX3/DBDUuYF5GbaFDA=;
+        b=KqlW4ocpPaZp050YZKE37BLpL0bSsuh0XgBVH186Hwqa4/P/r+qWJ9c64RuNnQczMI
+         Wyr+q5yjHnPWPTBRW/XQqVoKxIu7b+asneHd4mF+xCmRLETlI8xhBGk14elXB8TS4wbl
+         XZ1fyydBsVmLsM+MT1mHmErMQQ6j/ReP6rNnaBPhEx/xpZja1gEJO30rHYWlnP2vPKDE
+         9K5b46Xmv6T1ihwMhcJgJ1eR0sIfH092hwbXX6Et9GJJhb3sZC/NjdHZms6Aoi5/gG9J
+         FXK3RVJbAl6ztyHMPQLKh5LAB9zshKxsPBZrp92pweFZk8774AJ3BBWUphHGZz9MJvak
+         ddOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=jDULCEEM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="l/FCdsOq";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si1999375qko.325.2021.10.13.06.31.02
+        by mx.google.com with ESMTPS id w5si5625740qkp.288.2021.10.13.06.34.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Oct 2021 06:31:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Oct 2021 06:34:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=jDULCEEM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="l/FCdsOq";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50674 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maeLV-0006Bj-NX
-	for alex.bennee@linaro.org; Wed, 13 Oct 2021 09:31:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48080)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1maeOi-0001H7-5E
+	for alex.bennee@linaro.org; Wed, 13 Oct 2021 09:34:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47476)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangzq.jn@gmail.com>)
- id 1maYio-0007Ek-23; Wed, 13 Oct 2021 03:30:44 -0400
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941]:40612)
+ id 1maYeZ-0005Kf-43; Wed, 13 Oct 2021 03:26:19 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:40700)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <wangzq.jn@gmail.com>)
- id 1maYim-0004I0-1v; Wed, 13 Oct 2021 03:30:41 -0400
-Received: by mail-ua1-x941.google.com with SMTP id e2so2654266uax.7;
- Wed, 13 Oct 2021 00:30:39 -0700 (PDT)
+ id 1maYeX-00032F-CC; Wed, 13 Oct 2021 03:26:18 -0400
+Received: by mail-pf1-x441.google.com with SMTP id o133so1654968pfg.7;
+ Wed, 13 Oct 2021 00:26:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Q04YolgQ2guANTX8EzdsZIAc8PLaO9lclWMEquEb4C0=;
- b=jDULCEEMlZ8x4NBnGFvmnU5RTg2l/QSJK9SKmhlbNZmPZHUOxWOM3xssVMl+RuwHzf
- bFvEHxy1tf4z77Uh5UNSUEGc2Yo765rpcIv49f2eVp2DJcNb27DZPt7v1pITFRqjCqh/
- T1UuYg7oEjPUfcKAp+3k2e5gpgjLtTVAhEeMxvWwKbKJaolXshQRxWgezQrlSPNFtVTt
- +PP+IArCbCtvyvSLNK0b10OP5YZudo9cl8U9XXWO5wFKdTc4S2wDB3jrhO0JIQ9I03IX
- q/u2vd2p3y5dyTcdiNKV4erFTuDNnSECAQ47nBlarzmMfTuVyeQx+cuuEdKib/SNmiFQ
- AcGQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cu71r+msydeNM6iUsua0SVZqSyX3/DBDUuYF5GbaFDA=;
+ b=l/FCdsOqX1HsQ0yWQNC5eZ7nGuloDJNSNPeWFZEtYLcIY9Bmqg7wa80xWvXa+psRq8
+ nl9+y6yb2BLc4sOhAYDBMU6JQHSS//F2Vd3qgltJg2RtGGamXmBRLg6zpraPAW8hKSbj
+ 576b2/h1PDXEvbDzte8qHZVWHBsfMrZbm88kl1OoOoIDfihJFwk3cP38emX2mDb3wV4V
+ lHUa2WNqodTcj7Cidw8+2OX1+bgQ4iK9xRoa8iq1dLEgTHraEaODME8eGk+5RKqyteZ6
+ eh/Ee2WqnVhQmUXCpMfh7BKnZ2g8ZxVOUNK7ouWSvgkW75mpJ9hSVPgyrkbNJC38EGBi
+ dY/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Q04YolgQ2guANTX8EzdsZIAc8PLaO9lclWMEquEb4C0=;
- b=RJ/jU2lQIHYCZ3PfevD3Ta5U4yEc98yudiHjrik5fz43gIprVDsT+Fi9jeNq+InO0e
- BqnslCBbFuYobeGpz/Zxq132zx8O37aRecWdd/xIoHG9vcGj9+GfrIktbefmZzDPvRBd
- FArzEKOPwjZ05+xQPhalvIHv48F+GoUOISj7zf36EIpp478Bp5mdJ5aJ3ESgBar67lqH
- +R8Ls0DfMHATVT41AgRHXjzxoMETPRx+ZtRM0OGcFthB/lwRfrXNfCKt8iBE2+R73A+R
- v5/exfGSXCwBwbQgktUeAwPt3qLBe9hTBMsoYId3JIse/kw4i6q8aHTeutp8xS4R705G
- UOpw==
-X-Gm-Message-State: AOAM5322lf9yzR1UEcKAgqGQ73A0690ryp0Ti1n3A++I1xargEMFB/pg
- ue1hsROGU1Lby4Rhu0+q8Om8CLKzTN73sSuwIDg=
-X-Received: by 2002:a67:cb91:: with SMTP id h17mr37860751vsl.30.1634110238496; 
- Wed, 13 Oct 2021 00:30:38 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cu71r+msydeNM6iUsua0SVZqSyX3/DBDUuYF5GbaFDA=;
+ b=Svo1/QkswoZDvTmk0DfMhy42v/NoKE1Pm17DjeQ+2BYlINuER1e/zIuIvb4T3dJr+x
+ 9stm6UEJ+8Byy7tJbgeatt3PN6oY37psRhE/VOhAfOG4XYbXgv8AhEwDoLLuhcPXF3qz
+ iYUdqnhh/v5gWI2BBscfgQWSawyJDN7hP83Nf1SFRf019qOYfUoSCkSyfK7m2eWC8JXc
+ cyHWXnq424pO5wwHpzMGw3lVgCdUjtO2utjE8OqKsYJi1Vb+zBnVa3qyvdMIa0ws3Goo
+ 1O0lmY2KDDBsmXGlbZOKR6sH2zV82ZE5qg6AqpjYDviTdXGrol3SM0KlcR361QfSSF4R
+ beiQ==
+X-Gm-Message-State: AOAM532tYTaylPyUn2JY1yQYPt6Nnnhxj7UCOolmBjQ+0Hf6zF97j14w
+ KgUhqGUQBHh/mXRYmk+N1rs=
+X-Received: by 2002:a63:83c7:: with SMTP id
+ h190mr11137822pge.440.1634109971024; 
+ Wed, 13 Oct 2021 00:26:11 -0700 (PDT)
+Received: from localhost (95.169.4.245.16clouds.com. [95.169.4.245])
+ by smtp.gmail.com with ESMTPSA id y22sm4915238pjj.33.2021.10.13.00.26.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Oct 2021 00:26:10 -0700 (PDT)
+From: John Wang <wangzq.jn@gmail.com>
+X-Google-Original-From: John Wang <wangzhiqiang02@inspur.com>
+To: lintao.lc@inspur.com,
+	liuxiwei@inspur.com,
+	duanzhijia01@inspur.com
+Subject: [PATCH] aspeed: Add support for the fp5280g2-bmc board
+Date: Wed, 13 Oct 2021 15:26:07 +0800
+Message-Id: <20211013072607.783612-1-wangzhiqiang02@inspur.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-References: <20211013072607.783612-1-wangzhiqiang02@inspur.com>
-In-Reply-To: <20211013072607.783612-1-wangzhiqiang02@inspur.com>
-From: =?UTF-8?B?546L5b+X5by6?= <wangzq.jn@gmail.com>
-Date: Wed, 13 Oct 2021 15:30:27 +0800
-Message-ID: <CAHwNHZV7BcXE3g=oXcbwVA3gXXOKkp23Cem=OqdvdTF937iQzw@mail.gmail.com>
-Subject: Re: [PATCH] aspeed: Add support for the fp5280g2-bmc board
-To: lintao.lc@inspur.com, liuxiwei@inspur.com, duanzhijia01@inspur.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::941;
- envelope-from=wangzq.jn@gmail.com; helo=mail-ua1-x941.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=wangzq.jn@gmail.com; helo=mail-pf1-x441.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,143 +103,117 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 13 Oct 2021 09:30:21 -0400
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Wed, 13 Oct 2021 09:30:48 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2TWfxEn2YBUM
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DdpvX8i7u1qV
 
-This patch is based on https://github.com/openbmc/qemu (commit id:
-2856503299534aab7602de2aaa88dd9ee7e9d61a)=EF=BC=8Cnot  qemu/qemu.
+The fp5280g2-bmc is supported by OpenBMC, It's
+based on the following device tree
 
-John Wang <wangzq.jn@gmail.com> =E4=BA=8E2021=E5=B9=B410=E6=9C=8813=E6=97=
-=A5=E5=91=A8=E4=B8=89 =E4=B8=8B=E5=8D=883:26=E5=86=99=E9=81=93=EF=BC=9A
->
-> The fp5280g2-bmc is supported by OpenBMC, It's
-> based on the following device tree
->
-> https://github.com/openbmc/linux/blob/dev-5.10/arch/arm/boot/dts/aspeed-b=
-mc-inspur-fp5280g2.dts
->
-> Signed-off-by: John Wang <wangzhiqiang02@inspur.com>
-> ---
->  hw/arm/aspeed.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 01c1747972..3587788f63 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -141,6 +141,21 @@ struct AspeedMachineState {
->          SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              =
-\
->          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
->
-> +/* FP5280G2 hardware value: 0XF100D286 */
-> +#define FP5280G2_BMC_HW_STRAP1 (                                      \
-> +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     =
-\
-> +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        =
-\
-> +        SCU_AST2500_HW_STRAP_UART_DEBUG |                               =
-\
-> +        SCU_AST2500_HW_STRAP_RESERVED28 |                               =
-\
-> +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              =
-\
-> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   =
-\
-> +        SCU_HW_STRAP_LPC_RESET_PIN |                                    =
-\
-> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                =
-\
-> +        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     =
-\
-> +        SCU_HW_STRAP_MAC1_RGMII |                                       =
-\
-> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
-\
-> +        SCU_AST2500_HW_STRAP_RESERVED1)
-> +
->  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
-/
->  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
->
-> @@ -717,6 +732,17 @@ static void g220a_bmc_i2c_init(AspeedMachineState *b=
-mc)
->                            eeprom_buf);
->  }
->
-> +static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc =3D &bmc->soc;
-> +
-> +    /* The fp5280g2 expects a TMP112 but a TMP105 is compatible */
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP10=
-5,
-> +                     0x48);
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP10=
-5,
-> +                     0x49);
-> +}
-> +
->  static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->  {
->      AspeedSoCState *soc =3D &bmc->soc;
-> @@ -1082,6 +1108,24 @@ static void aspeed_machine_g220a_class_init(Object=
-Class *oc, void *data)
->          aspeed_soc_num_cpus(amc->soc_name);
->  };
->
-> +static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc, void *da=
-ta)
-> +{
-> +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc       =3D "Inspur FP5280G2 BMC (ARM1176)";
-> +    amc->soc_name  =3D "ast2500-a1";
-> +    amc->hw_strap1 =3D FP5280G2_BMC_HW_STRAP1;
-> +    amc->fmc_model =3D "n25q512a";
-> +    amc->spi_model =3D "mx25l25635e";
-> +    amc->num_cs    =3D 2;
-> +    amc->macs_mask  =3D ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-> +    amc->i2c_init  =3D fp5280g2_bmc_i2c_init;
-> +    mc->default_ram_size =3D 512 * MiB;
-> +    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-> +        aspeed_soc_num_cpus(amc->soc_name);
-> +};
-> +
->  static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *dat=
-a)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> @@ -1146,6 +1190,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
->          .name          =3D MACHINE_TYPE_NAME("g220a-bmc"),
->          .parent        =3D TYPE_ASPEED_MACHINE,
->          .class_init    =3D aspeed_machine_g220a_class_init,
-> +    }, {
-> +        .name          =3D MACHINE_TYPE_NAME("fp5280g2-bmc"),
-> +        .parent        =3D TYPE_ASPEED_MACHINE,
-> +        .class_init    =3D aspeed_machine_fp5280g2_class_init,
->      }, {
->          .name          =3D MACHINE_TYPE_NAME("quanta-q71l-bmc"),
->          .parent        =3D TYPE_ASPEED_MACHINE,
-> --
-> 2.30.2
->
+https://github.com/openbmc/linux/blob/dev-5.10/arch/arm/boot/dts/aspeed-bmc-inspur-fp5280g2.dts
+
+Signed-off-by: John Wang <wangzhiqiang02@inspur.com>
+---
+ hw/arm/aspeed.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 01c1747972..3587788f63 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -141,6 +141,21 @@ struct AspeedMachineState {
+         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
+         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+ 
++/* FP5280G2 hardware value: 0XF100D286 */
++#define FP5280G2_BMC_HW_STRAP1 (                                      \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
++        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
++        SCU_HW_STRAP_MAC1_RGMII |                                       \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
++        SCU_AST2500_HW_STRAP_RESERVED1)
++
+ /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+ #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+ 
+@@ -717,6 +732,17 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+                           eeprom_buf);
+ }
+ 
++static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = &bmc->soc;
++
++    /* The fp5280g2 expects a TMP112 but a TMP105 is compatible */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
++                     0x48);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
++                     0x49);
++}
++
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = &bmc->soc;
+@@ -1082,6 +1108,24 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Inspur FP5280G2 BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = FP5280G2_BMC_HW_STRAP1;
++    amc->fmc_model = "n25q512a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = fp5280g2_bmc_i2c_init;
++    mc->default_ram_size = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1146,6 +1190,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_g220a_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_fp5280g2_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+-- 
+2.30.2
+

@@ -1,245 +1,143 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp3227532lfc;
-        Wed, 13 Oct 2021 11:39:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJym5eHCPl5IK2TD3BfmlqimKDO6600dKcaTwdt6fi1I1bmjPsbQM3nxsz8Meb8lwtjIR3nB
-X-Received: by 2002:a37:5f43:: with SMTP id t64mr856366qkb.82.1634150365311;
-        Wed, 13 Oct 2021 11:39:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634150365; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp3263400lfc;
+        Wed, 13 Oct 2021 12:19:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8kJMBaEvhts09KhuaYs4QnjyafRZ97bLFNoCqHV+ebQ0jNXJ+VKxbUwE4fmttx8Geld3z
+X-Received: by 2002:a05:6214:21ac:: with SMTP id t12mr1101418qvc.18.1634152779774;
+        Wed, 13 Oct 2021 12:19:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634152779; cv=none;
         d=google.com; s=arc-20160816;
-        b=OBqmoI5vxxiPbiL2adxw716S9j2+7oFuXxfaF9Kktg6UCfRaDuIbKO8EiwnMF3emon
-         dcev4Sf6mGIUQsjxYp76fcixQlks173ml3hhZzXihDRHMfxN1LVJcsRh1sDVJjlP0VNQ
-         oMijQ2dqsmvJbnR8oJuWBMY+0IeOYCGtXbSoYqCh0bzq/7vKM6+jgzymb7CC/H5/no04
-         4wHbbICUeOQ91XPhm6BzihZTFUz6vkqSqvbeU5bx9ekPghhKriytuWLe9Fpyk4sfuoGv
-         V1BKcAZmvaguX7SciRiAcsDSh2LohvgZarM75IaNLhAJ727kQ4thF5cGFcNabSUi7UnR
-         bPmg==
+        b=rK0dMKTpKZ7DhP7M9XLXN7wC3X5hGIXsR+80p7BfqNtdGiS6czUjOSs8bTdVyeX/M5
+         syrEatENh4KSjfRK8IQxXc0E8n8hCj7WsPONo8JrhM9n2K2CdUa0jsNG2+vrYmV76G+q
+         AlOOeLAx7llJeSelFJIC9BWoYwPQ825xEOC66fKazMlwOQJ9qsjlBc74rcMCv3wkcbFj
+         +C18Hv4BfZ5T67HHWozrBUrh4JOH8k0O7/uzHAmCaVggIioeAIPLvth/hjz9OgsMWgJT
+         05/68153K8COotvFY0YAQ5ATM/HWukODcyJo8fJGNCvcNKAe4bP1PBQxZEu66MK/aeey
+         WKkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=56pglvy67AYwWdSDilcVWIN0xfuG/5o2eEFwbxuVXXQ=;
-        b=TREVwuFGXTmqGKQbdbxU4HPGkGaqgwoOAYFn8ilW7ekfkz7raaBoDoNb8OmXvJjhns
-         YK/3LqWB32FFV9ikXHbuxfGGdpo8CPrXqt3XBIl0BSejPUHPn3j3ag0fy3CbjJ+sEc0C
-         nf0Cpt2I9a8Y/i/chPgr9Okoig5ItuiY3qI5ev3p0+GxKUoBcHVGphqTlAl/zgz/48On
-         WxCK80nM69FWI/+6/ZCV1Twxr6gVaJIf8Ca0KYafn00O4r4yXAlnqVfIgTDfZjVuku3T
-         /L8PlgkfzN4QpO8l/VVRlJuMD8qzbTOvlCyTZ6nYPtNGMS/2Og9pLQF4F730gvAhCjqj
-         K7BA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=7E98pIX7+2rmaMAnEyh504U6I0RF7bicTJi1EYcpGM8=;
+        b=XMe8H5NcQ/98FZU9HNZGMhIk8lVdoBr40ag2igc8trbBQnJ15rGJLosqPrsRpXUmn9
+         +ZiWEvihlL5o19LEEdcYugvhuHeiUUi+0v0RTjE+g0zfc4cckCkL8XHZgZEltQI4H1dI
+         1k0Jxv8eLB+J8+6dv6aXlVRNQPJaJfzLTxRK7qBVtUMifv7OgFvOfOrUxPFP/zIxcrTo
+         88006H0PVCpP1nRcJuE+wcvTyyadd5fNfjv6rvDC3OixF7oOwIgSUlRalAhK+tXGIFGo
+         h19u8xyuAyUR87l/eWtKEiu6mGNPyhEKh1yd5eT3JtqQeH/OD0vjOb4pjFJFd+IjFnh5
+         ac3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SSXRDsZn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N7JfGn9n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u9si182224qko.326.2021.10.13.11.39.25
+        by mx.google.com with ESMTPS id s22si263470qko.381.2021.10.13.12.19.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Oct 2021 11:39:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Oct 2021 12:19:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SSXRDsZn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48594 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N7JfGn9n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1maj9w-00014v-Md
-	for alex.bennee@linaro.org; Wed, 13 Oct 2021 14:39:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36916)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1majmt-0005zd-7b
+	for alex.bennee@linaro.org; Wed, 13 Oct 2021 15:19:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1maiu4-0004B5-O6
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 14:23:00 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529]:47014)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1maiu2-00038G-Gt
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 14:23:00 -0400
-Received: by mail-pg1-x529.google.com with SMTP id m21so3115208pgu.13
- for <qemu-arm@nongnu.org>; Wed, 13 Oct 2021 11:22:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=56pglvy67AYwWdSDilcVWIN0xfuG/5o2eEFwbxuVXXQ=;
- b=SSXRDsZn264P/rWpUOoftMdyJO6C2kEpAc/xGX12fiqP6wrLPWbPf+AKD6WTBPrMd/
- WNL+21nv90HtiJZubI5lkWuJN+hakS0D2x/eu1UuR/H73tN2izgQNJ3QSG0x1kQhnGor
- 9uPcYNmlfNHM6S8P0KiXH0Kek5zWPJ2XYcM3Fkc2AsSUUjd2Ddv1U37ic4Xd9CKF2fwm
- +G8hrVT0OsvjCQsi8TCSzdxwOzjs6mnV6FAyx6I+V3QzjUZtqxZbX0dJt3GHZdj7qlRt
- kqifxxHqps0Am8X8BGrJQRvuEOSSf1EZ0ZmXoYWG7WREPEoWaC/V/o0DhP7tA6J7cvnh
- 6Krw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=56pglvy67AYwWdSDilcVWIN0xfuG/5o2eEFwbxuVXXQ=;
- b=eLe6bPw90Zl0Nein3Rf66eCWCEHO/u1JPWzB4eMAw9L9RrPc7Al9I85QKcJA5yBMCL
- PSOWoyZi9Z1uAYuZFVgbA1+R8LvJiqJpA6PT1LUZfWpvPVq60ZtQPEWjMvMud7Gnbmzs
- 0Hwyo2iU5rcqIRkC088tCTEhsKC+MsSDbDenNexJZDgruc7yyfHuaaYuj6ZNIQ2nGQaD
- 1SUowi8f/y5ID9DLNZ/8CiCOBsJvbU9Gg+sMimQcahMBs9vdEK9vFUHLYj97nOnBD15E
- tiPGnKYffPLMhQE8IzQHSdRgrsy6mYNCUKQEvPXpYkZJmdcnpgRF7pVRV/5yMKX9Kcij
- J89A==
-X-Gm-Message-State: AOAM533eerdZZp+yVvFrmqybDvxGX06bxHvJ7LfIJa5h6AEax3DLB3h2
- cpNveByg6Ta9hnOGeXA7mU82IaoC5wbFUA==
-X-Received: by 2002:a63:d94b:: with SMTP id e11mr559496pgj.295.1634149377007; 
- Wed, 13 Oct 2021 11:22:57 -0700 (PDT)
-Received: from localhost.localdomain ([71.212.134.125])
- by smtp.gmail.com with ESMTPSA id z2sm177140pfe.210.2021.10.13.11.22.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Oct 2021 11:22:56 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PULL 13/15] target/arm: Use cpu_*_mmu instead of helper_*_mmu
-Date: Wed, 13 Oct 2021 11:22:37 -0700
-Message-Id: <20211013182239.991127-14-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211013182239.991127-1-richard.henderson@linaro.org>
-References: <20211013182239.991127-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1majlO-00041X-1D
+ for qemu-devel@nongnu.org; Wed, 13 Oct 2021 15:18:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34191)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1majlK-0003do-NZ
+ for qemu-devel@nongnu.org; Wed, 13 Oct 2021 15:18:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1634152682;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=7E98pIX7+2rmaMAnEyh504U6I0RF7bicTJi1EYcpGM8=;
+ b=N7JfGn9ninLccPkosVb+3hlM46bL7KWSx9fO1egpiIrV7IRTYnQOBTjlSIApc7lhI34yqF
+ JCaqfv3Fnim2BXVfPrxjNgIjIQX/zDf6gtiLdkSewSAQgg8MwS1M87MU7YLKrRFAOL3URK
+ uZVriZLmVBnpGRyCfDF5Y39to1ythE8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-358-LPoLQC73PeS66K_sVxg_4Q-1; Wed, 13 Oct 2021 15:17:59 -0400
+X-MC-Unique: LPoLQC73PeS66K_sVxg_4Q-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 02F44DF8A0;
+ Wed, 13 Oct 2021 19:17:58 +0000 (UTC)
+Received: from virtlab-arm04.virt.lab.eng.bos.redhat.com
+ (virtlab-arm04.virt.lab.eng.bos.redhat.com [10.19.152.244])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3528860CA1;
+ Wed, 13 Oct 2021 19:17:57 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, mst@redhat.com, cohuck@redhat.com,
+ peter.maydell@linaro.org
+Subject: [PATCH v3 0/2] virtio-iommu: Name Tweaks
+Date: Wed, 13 Oct 2021 15:17:53 -0400
+Message-Id: <20211013191755.767468-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +LibelfZyrKR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: jean-philippe@linaro.org, abologna@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UQsulXtvT84k
 
-The helper_*_mmu functions were the only thing available
-when this code was written.  This could have been adjusted
-when we added cpu_*_mmuidx_ra, but now we can most easily
-use the newest set of interfaces.
+This small series removes the non transitional name, drop the base_name
+and change the generic_name into  "virtio-iommu-pci".
 
-Cc: qemu-arm@nongnu.org
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper-a64.c | 52 +++++++----------------------------------
- target/arm/m_helper.c   |  6 ++---
- 2 files changed, 11 insertions(+), 47 deletions(-)
+History:
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index b110c57956..5ae2ecb0f3 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -512,37 +512,19 @@ uint64_t HELPER(paired_cmpxchg64_le)(CPUARMState *env, uint64_t addr,
-     uintptr_t ra = GETPC();
-     uint64_t o0, o1;
-     bool success;
--
--#ifdef CONFIG_USER_ONLY
--    /* ??? Enforce alignment.  */
--    uint64_t *haddr = g2h(env_cpu(env), addr);
--
--    set_helper_retaddr(ra);
--    o0 = ldq_le_p(haddr + 0);
--    o1 = ldq_le_p(haddr + 1);
--    oldv = int128_make128(o0, o1);
--
--    success = int128_eq(oldv, cmpv);
--    if (success) {
--        stq_le_p(haddr + 0, int128_getlo(newv));
--        stq_le_p(haddr + 1, int128_gethi(newv));
--    }
--    clear_helper_retaddr();
--#else
-     int mem_idx = cpu_mmu_index(env, false);
-     MemOpIdx oi0 = make_memop_idx(MO_LEQ | MO_ALIGN_16, mem_idx);
-     MemOpIdx oi1 = make_memop_idx(MO_LEQ, mem_idx);
- 
--    o0 = helper_le_ldq_mmu(env, addr + 0, oi0, ra);
--    o1 = helper_le_ldq_mmu(env, addr + 8, oi1, ra);
-+    o0 = cpu_ldq_le_mmu(env, addr + 0, oi0, ra);
-+    o1 = cpu_ldq_le_mmu(env, addr + 8, oi1, ra);
-     oldv = int128_make128(o0, o1);
- 
-     success = int128_eq(oldv, cmpv);
-     if (success) {
--        helper_le_stq_mmu(env, addr + 0, int128_getlo(newv), oi1, ra);
--        helper_le_stq_mmu(env, addr + 8, int128_gethi(newv), oi1, ra);
-+        cpu_stq_le_mmu(env, addr + 0, int128_getlo(newv), oi1, ra);
-+        cpu_stq_le_mmu(env, addr + 8, int128_gethi(newv), oi1, ra);
-     }
--#endif
- 
-     return !success;
- }
-@@ -582,37 +564,19 @@ uint64_t HELPER(paired_cmpxchg64_be)(CPUARMState *env, uint64_t addr,
-     uintptr_t ra = GETPC();
-     uint64_t o0, o1;
-     bool success;
--
--#ifdef CONFIG_USER_ONLY
--    /* ??? Enforce alignment.  */
--    uint64_t *haddr = g2h(env_cpu(env), addr);
--
--    set_helper_retaddr(ra);
--    o1 = ldq_be_p(haddr + 0);
--    o0 = ldq_be_p(haddr + 1);
--    oldv = int128_make128(o0, o1);
--
--    success = int128_eq(oldv, cmpv);
--    if (success) {
--        stq_be_p(haddr + 0, int128_gethi(newv));
--        stq_be_p(haddr + 1, int128_getlo(newv));
--    }
--    clear_helper_retaddr();
--#else
-     int mem_idx = cpu_mmu_index(env, false);
-     MemOpIdx oi0 = make_memop_idx(MO_BEQ | MO_ALIGN_16, mem_idx);
-     MemOpIdx oi1 = make_memop_idx(MO_BEQ, mem_idx);
- 
--    o1 = helper_be_ldq_mmu(env, addr + 0, oi0, ra);
--    o0 = helper_be_ldq_mmu(env, addr + 8, oi1, ra);
-+    o1 = cpu_ldq_be_mmu(env, addr + 0, oi0, ra);
-+    o0 = cpu_ldq_be_mmu(env, addr + 8, oi1, ra);
-     oldv = int128_make128(o0, o1);
- 
-     success = int128_eq(oldv, cmpv);
-     if (success) {
--        helper_be_stq_mmu(env, addr + 0, int128_gethi(newv), oi1, ra);
--        helper_be_stq_mmu(env, addr + 8, int128_getlo(newv), oi1, ra);
-+        cpu_stq_be_mmu(env, addr + 0, int128_gethi(newv), oi1, ra);
-+        cpu_stq_be_mmu(env, addr + 8, int128_getlo(newv), oi1, ra);
-     }
--#endif
- 
-     return !success;
- }
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 62aa12c9d8..2c9922dc29 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -1947,9 +1947,9 @@ static bool do_v7m_function_return(ARMCPU *cpu)
-          * do them as secure, so work out what MMU index that is.
-          */
-         mmu_idx = arm_v7m_mmu_idx_for_secstate(env, true);
--        oi = make_memop_idx(MO_LE, arm_to_core_mmu_idx(mmu_idx));
--        newpc = helper_le_ldul_mmu(env, frameptr, oi, 0);
--        newpsr = helper_le_ldul_mmu(env, frameptr + 4, oi, 0);
-+        oi = make_memop_idx(MO_LEUL, arm_to_core_mmu_idx(mmu_idx));
-+        newpc = cpu_ldl_le_mmu(env, frameptr, oi, 0);
-+        newpsr = cpu_ldl_le_mmu(env, frameptr + 4, oi, 0);
- 
-         /* Consistency checks on new IPSR */
-         newpsr_exc = newpsr & XPSR_EXCP;
+v2 -> v3:
+- fixed duplicate in commit msg
+- added Connie's R-b
+
+v1 -> v2:
+- drop the base_name and change the generic_name into  "virtio-iommu-pci"
+  (Connie)
+
+
+Eric Auger (2):
+  virtio-iommu: Remove the non transitional name
+  virtio-iommu: Drop base_name and change generic_name
+
+ hw/virtio/virtio-iommu-pci.c     | 4 +---
+ include/hw/virtio/virtio-iommu.h | 2 +-
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
 -- 
-2.25.1
+2.27.0
 

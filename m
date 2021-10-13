@@ -1,125 +1,104 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2884457lfc;
-        Wed, 13 Oct 2021 05:40:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysGuA1tPaF5Ge6Em6LTQ5u2Vu+HPvC9PhLQeZxNuz4De7dUJa808hB6Dj05rc6Brdv2FKA
-X-Received: by 2002:a67:ec41:: with SMTP id z1mr17485168vso.11.1634128802489;
-        Wed, 13 Oct 2021 05:40:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634128802; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2911382lfc;
+        Wed, 13 Oct 2021 06:08:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy27gvY5W+eh3/W3weqt1/MUxV34hd4y5C21sdpTuMZ9apc/uSURdvXOqnYSh238tXvGJd2
+X-Received: by 2002:a37:6c83:: with SMTP id h125mr24786878qkc.486.1634130522963;
+        Wed, 13 Oct 2021 06:08:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634130522; cv=none;
         d=google.com; s=arc-20160816;
-        b=T7j5ch2/TblN6kzEnkmmt/mmdP3bIz4NdUVkC1znulmKQp66hS1dvapOOkEksprZX6
-         BkODQMAZ14ar8/WLV+sujae7WHl45fi1k/9BngSHuBzdIwtroP9TNa0gBuOk/gkEebRr
-         ljRQK/ladGwD1KeVXvudmfaGvOSa10pHNl7qN3q/G7UAMPwBDF2H6mq7w41H4K4hMHHf
-         ElmzF+wOWHU+fAS8CJAXC0ljFDV0guS4lTp7Hy0D4Slacv2x7Rap0nRh37rtMLpjgZXL
-         leBW++kvsNWcXyrwuyamPT535ofnyyI92Smy2hpoEeWdMFrFx0SJqwjzgqyawtArLtMW
-         AEaQ==
+        b=RlySPEbVq7Ng64+EW+mbdym/V6gea3XJVITR31wUy9Ud3Z9yB9rbB3XHNj+X7ShRCW
+         t015LmgrmOYJfj+R15PjTHocwkOO4VKJpWL8W5VDiPVhQHrhTiSMKSv2mZISfq+FNBaV
+         MyFy4x43kxOX7BiMsvAt4uWJ1gneXrd1oRyYNt8mO3r1MBaDD256R6qT+o5CbaCJEhEW
+         j3sTCvrsLct36RQOlqcRd6Fp95OO3uXM+2nj9xsYl1H57JUL8xB7yEopyhurqBhus4C5
+         iUEbdZeSTBTZxi+neHwOt9avTfoGCwuto/EK1la4DQtRqROY9pNDAQ5ZYjkf5Pb2oBcV
+         pw/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=QF+y/fDxPqS/AOzvc0b8v3SefDrXA3/3cyWRve1RPWw=;
-        b=FMzpNPohU59uXridY1u1fo5qBNTtpFtqixyQqjFtw5hUXIsuYV5xnWhD8dA/WI9t/l
-         aqD8rt/DGcgsvABtp3ok8mynT9ltfSasqraJ3mre0n2KWOlGRGgHPkPUfQbmD/CqmllD
-         yADENhCFP6k4HJO5epXy11GlGa0sAAz9seZNaShcAMBvmPrw96tkNJm7Qu+sMRQOp+Rf
-         rlZ/f09UoIkaO6I0r3qqG/+oVrHrmN4X2OqxZsmRJ+GK0cfQOuRTNUuy8nn/fLnF2iOu
-         S7e0/eLF9ZzMGK/vhaJFsh0a8uz2/mVKElBqToErfu4jTXrPfGlI89OIyF7qe4TH5/Kw
-         v+Yw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=5zdIfNn4BepjBj13NWTxEvhuHUrmxtCi4XL6SIgw0Lc=;
+        b=R5MfEXTPF4Y2V38qUYhodiLYHkugqWYcmqY6v8ZYHNLn+WV3OlB+qJW3rzku4hVY6p
+         VSv8hbjAExmOMD0WbI4yJ2L7xgpBpqGw8LSz3PaqSu4arvXVFm6/sqNALsW0Q/JLsKJ/
+         A+h3LLE4DG67S0G06fTMQtqUV6QNQxKkcLi+SQwGWbXwR6NHCh+F2YOX7NvjkHtpPWaG
+         tXLvaQSIcMyO+OjfCDtnJiKBbhJeOaZtmJyWgltpHc1Z5f9I56RS734a90dBVV4AklM/
+         rxbBqsY2M9vRlDU0+qdDzzg9Wx8+zA/KmWA1RkQ8+YKXC3EgHsRKHOhi6txgz0I6raeN
+         RlOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H0sv97Cj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gK1u3Alf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o16si81215vkf.80.2021.10.13.05.40.02
+        by mx.google.com with ESMTPS id 4si12258269qvf.144.2021.10.13.06.08.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Oct 2021 05:40:02 -0700 (PDT)
+        Wed, 13 Oct 2021 06:08:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H0sv97Cj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gK1u3Alf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52312 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45256 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1madY9-0006SF-Q9
-	for alex.bennee@linaro.org; Wed, 13 Oct 2021 08:40:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47136)
+	id 1madzu-0007rG-EB
+	for alex.bennee@linaro.org; Wed, 13 Oct 2021 09:08:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54042)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1madXo-0006ON-Tg
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 08:39:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43642)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1madXk-000557-Og
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 08:39:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634128775;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QF+y/fDxPqS/AOzvc0b8v3SefDrXA3/3cyWRve1RPWw=;
- b=H0sv97CjTFYps4H3no3q25kODBmpUwKPKjyLHVca6egEs6cKRqvjbttfFdu03Ah4zh9SLx
- DLiTyZ9wH1cAXpgwt/t/k8TjzCu0Q9adQm9D9bZXMVtCQTHizJivbKL0ikpzFAuND6eHZO
- sCcQrFRE+Mjobv0rYl0xquHBPo18DnE=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-504-sMDXOWG5OQiH6mTPE6NbaA-1; Wed, 13 Oct 2021 08:39:32 -0400
-X-MC-Unique: sMDXOWG5OQiH6mTPE6NbaA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- j19-20020adfb313000000b00160a9de13b3so1874651wrd.8
- for <qemu-arm@nongnu.org>; Wed, 13 Oct 2021 05:39:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <francois.ozog@linaro.org>)
+ id 1madyB-0004kc-Ot
+ for qemu-arm@nongnu.org; Wed, 13 Oct 2021 09:06:57 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:35546)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <francois.ozog@linaro.org>)
+ id 1mady9-0007I3-7V
+ for qemu-arm@nongnu.org; Wed, 13 Oct 2021 09:06:55 -0400
+Received: by mail-ed1-x530.google.com with SMTP id w19so10132866edd.2
+ for <qemu-arm@nongnu.org>; Wed, 13 Oct 2021 06:06:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5zdIfNn4BepjBj13NWTxEvhuHUrmxtCi4XL6SIgw0Lc=;
+ b=gK1u3AlfOI+LlwuspJVLhNsvyTwZ3Myll0RN/WRtDFPTmp0Aw1SkqDpcyaa+LvE31N
+ qr1xYOp2HzZjTd3j1WfNCoExnWoVzMarHSTRdHkl2DxL4TBwV5V5brDBDMheTDgndiPe
+ Ju00QsYKchdeY+WRwyxIfB9DoDOmUzfwKBo2DhfipPipUIDsBVQje1DsrRQTNIjdkfy+
+ O6dGTViVQaU8Am4WGLoSOj3vNVERDwlQW0X/iM9Bb1UZ++0VaIH6t4Jp1ApvLo03rxx6
+ 2M63MGuakJVDO+BGi07LE7btP4Qtw6W25dcfk78LPhsYgw1qJf0e96LnZv0LsZpYlaHV
+ hqHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=QF+y/fDxPqS/AOzvc0b8v3SefDrXA3/3cyWRve1RPWw=;
- b=jkUdMAAjH2WdtziWdRUtn4TN9S9fqpR8JQEm0ASVWV2hiMKpHE6Q5dhmZfy0PGH0yj
- NTByf0rmlkHYUyWNnrnnankBVAYAKV4NvxWu0mA3APCV3IIuZJCLR7L5DxWjY2+NNYEp
- Ckt+YMcWSIFVnWNpCwLW1PkSlkszKQuV/C7bWgrY1/9nOCz0KC/VuKr9I5JJqamlyMye
- g1oABX4TBetIf9LIMZnC0v1fh4yugC1Y+2/RhGXV3hWwukMMI9HygOIvqBM2dNDTZqk3
- HTBaGsGZfIT62e3LHic1NpvOyFmj3DuldG6yDawylvtmfBAGhwkCwkFoFL1EpoGCyysZ
- fHfA==
-X-Gm-Message-State: AOAM533aCsotnGmputcbjOpkpMPug79kkZqsMCpvU1hXUXfFAGMgmEZR
- DTY/+RAg1y3mo/FlezpGBSYolDeAOVlucEeG4U/Pe4oLWUbZAoA9Bidil8xKxx9PJiVpj96VfxT
- 2H7CQT5RgT1qV
-X-Received: by 2002:a5d:43c3:: with SMTP id v3mr29875669wrr.22.1634128770879; 
- Wed, 13 Oct 2021 05:39:30 -0700 (PDT)
-X-Received: by 2002:a5d:43c3:: with SMTP id v3mr29875596wrr.22.1634128770598; 
- Wed, 13 Oct 2021 05:39:30 -0700 (PDT)
-Received: from [192.168.1.36] (213.red-81-36-146.dynamicip.rima-tde.net.
- [81.36.146.213])
- by smtp.gmail.com with ESMTPSA id r205sm5380159wma.3.2021.10.13.05.39.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Oct 2021 05:39:29 -0700 (PDT)
-Message-ID: <1c51724b-7789-f402-818f-1044053ee0fa@redhat.com>
-Date: Wed, 13 Oct 2021 14:39:26 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5zdIfNn4BepjBj13NWTxEvhuHUrmxtCi4XL6SIgw0Lc=;
+ b=xy1LCpCyXR+cLqYlkUMiCddLJL04FXx68iNgDzi+4ke52/dXgNIqFVKbnVeQbn3pAk
+ 9E0U1ypMzJnnNIBql0yJRXy31PSpG5kz3nOvEbqFXeMwNJR+/npwJnsouCLNXEbDI1uk
+ b+k7upeTD5CJKE4WLyXIQ8FFibG6pW6VHbaLnIm5YetIZBDdb2kU+N98xMobHNHGqSLQ
+ hf2TIxW7RNx/2h8vygmuE2DwgkBecUJrsNLVwBIW1yGPvghGo2bS7q/WoUsfoWUiJnJF
+ LLMdT62/Hkk2nEwtjMPXZk9PutK9dTUSdnBm/JYhpiVRMrCQygvmbf0ZrbouXs3H5q9V
+ qkVA==
+X-Gm-Message-State: AOAM532uzQSSyAD0NYjFkycp2xBiPoGyL9tpBc8fTouHUHfJ4d6bgE/j
+ 8Kajsmyk0Zt3bXmfu1hN/3b6OnHd2mSQMeAmPTLzEg==
+X-Received: by 2002:a17:906:7d09:: with SMTP id
+ u9mr20906219ejo.120.1634130408771; 
+ Wed, 13 Oct 2021 06:06:48 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH 00/16] fdt: Make OF_BOARD a boolean option
-To: Bin Meng <bmeng.cn@gmail.com>, Simon Glass <sjg@chromium.org>,
- qemu-arm <qemu-arm@nongnu.org>
 References: <20211013010120.96851-1-sjg@chromium.org>
  <CAEUhbmWY5gKmqbipurcDQ0DuNJyv8cLWsnyqx5h+tFqeVng8Ag@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <CAEUhbmWY5gKmqbipurcDQ0DuNJyv8cLWsnyqx5h+tFqeVng8Ag@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+ <1c51724b-7789-f402-818f-1044053ee0fa@redhat.com>
+In-Reply-To: <1c51724b-7789-f402-818f-1044053ee0fa@redhat.com>
+From: =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>
+Date: Wed, 13 Oct 2021 15:06:38 +0200
+Message-ID: <CAHFG_=VY_OXRz-K8tQue0hT8dczo+Fv=vQC-VKhqYCuJWJX+Og@mail.gmail.com>
+Subject: Re: [PATCH 00/16] fdt: Make OF_BOARD a boolean option
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000008847e005ce3ba216"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=francois.ozog@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -133,116 +112,269 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Liviu Dudau <liviu.dudau@foss.arm.com>,
- Neil Armstrong <narmstrong@baylibre.com>, Rick Chen <rick@andestech.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
  Vladimir Oltean <vladimir.oltean@nxp.com>,
  Linus Walleij <linus.walleij@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  Kever Yang <kever.yang@rock-chips.com>, Sean Anderson <seanga2@gmail.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>, Zong Li <zong.li@sifive.com>,
+ Atish Patra <atish.patra@wdc.com>, Zong Li <zong.li@sifive.com>,
  Stefan Roese <sr@denx.de>, Fabio Estevam <festevam@gmail.com>,
  Rainer Boschung <rainer.boschung@hitachi-powergrids.com>,
  Tom Rini <trini@konsulko.com>, Stephen Warren <swarren@nvidia.com>,
  Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
- Green Wan <green.wan@sifive.com>, Heinrich Schuchardt <xypron.glpk@gmx.de>,
- Niel Fourie <lusus@denx.de>, Michal Simek <michal.simek@xilinx.com>,
- =?UTF-8?Q?Marek_Beh=c3=ban?= <marek.behun@nic.cz>,
+ Heinrich Schuchardt <xypron.glpk@gmx.de>, Niel Fourie <lusus@denx.de>,
+ Michal Simek <michal.simek@xilinx.com>,
+ =?UTF-8?B?TWFyZWsgQmVow7pu?= <marek.behun@nic.cz>,
  Jerry Van Baren <vanbaren@cideas.com>, Ramon Fried <rfried.dev@gmail.com>,
- Jagan Teki <jagan@amarulasolutions.com>, Heiko Schocher <hs@denx.de>,
- Peter Robinson <pbrobinson@gmail.com>,
- Anastasiia Lukianenko <anastasiia_lukianenko@epam.com>,
- Thomas Fitzsimmons <fitzsim@fitzsim.org>, Wolfgang Denk <wd@denx.de>,
- Stephen Warren <swarren@wwwdotorg.org>,
- Andre Przywara <andre.przywara@arm.com>, Tim Harvey <tharvey@gateworks.com>,
- Ashok Reddy Soma <ashok.reddy.soma@xilinx.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alexander Graf <agraf@csgraf.de>,
+ Jagan Teki <jagan@amarulasolutions.com>,
  Valentin Longchamp <valentin.longchamp@hitachi-powergrids.com>,
- T Karthik Reddy <t.karthik.reddy@xilinx.com>, Sinan Akman <sinan@writeme.com>,
+ Heiko Schocher <hs@denx.de>, Peter Robinson <pbrobinson@gmail.com>,
+ Sinan Akman <sinan@writeme.com>, Thomas Fitzsimmons <fitzsim@fitzsim.org>,
+ Wolfgang Denk <wd@denx.de>, Stephen Warren <swarren@wwwdotorg.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Andre Przywara <andre.przywara@arm.com>, Tim Harvey <tharvey@gateworks.com>,
+ Ashok Reddy Soma <ashok.reddy.soma@xilinx.com>, Rick Chen <rick@andestech.com>,
+ Alexander Graf <agraf@csgraf.de>, Green Wan <green.wan@sifive.com>,
+ T Karthik Reddy <t.karthik.reddy@xilinx.com>,
+ Anastasiia Lukianenko <anastasiia_lukianenko@epam.com>,
  Albert Aribaud <albert.u.boot@aribaud.net>, Michal Simek <monstr@monstr.eu>,
  Matthias Brugger <mbrugger@suse.com>, Leo <ycliang@andestech.com>,
- Tero Kristo <kristo@kernel.org>, Atish Patra <atish.patra@wdc.com>,
+ Tero Kristo <kristo@kernel.org>, U-Boot Mailing List <u-boot@lists.denx.de>,
  David Abdurachmanov <david.abdurachmanov@sifive.com>,
- Priyanka Jain <priyanka.jain@nxp.com>,
+ Priyanka Jain <priyanka.jain@nxp.com>, Simon Glass <sjg@chromium.org>,
  Ilias Apalodimas <ilias.apalodimas@linaro.org>,
  Christian Hewitt <christianshewitt@gmail.com>,
  Aaron Williams <awilliams@marvell.com>,
- Tuomas Tynkkynen <tuomas.tynkkynen@iki.fi>,
+ Tuomas Tynkkynen <tuomas.tynkkynen@iki.fi>, qemu-arm <qemu-arm@nongnu.org>,
  Heinrich Schuchardt <heinrich.schuchardt@canonical.com>,
- Tianrui Wei <tianrui-wei@outlook.com>,
- =?UTF-8?Q?Pali_Roh=c3=a1r?= <pali@kernel.org>,
+ Tianrui Wei <tianrui-wei@outlook.com>, Bin Meng <bmeng.cn@gmail.com>,
+ =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
  Dimitri John Ledkov <dimitri.ledkov@canonical.com>,
  Padmarao Begari <padmarao.begari@microchip.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xSPZ21UneVoq
+X-TUID: Os3OpwORu6Ks
 
-Hi Simon,
+--0000000000008847e005ce3ba216
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 10/13/21 03:29, Bin Meng wrote:
-> On Wed, Oct 13, 2021 at 9:01 AM Simon Glass <sjg@chromium.org> wrote:
->>
->> With Ilias' efforts we have dropped OF_PRIOR_STAGE and OF_HOSTFILE so
->> there are only three ways to obtain a devicetree:
->>
->>    - OF_SEPARATE - the normal way, where the devicetree is built and
->>       appended to U-Boot
->>    - OF_EMBED - for development purposes, the devicetree is embedded in
->>       the ELF file (also used for EFI)
->>    - OF_BOARD - the board figures it out on its own
->>
->> The last one is currently set up so that no devicetree is needed at all
->> in the U-Boot tree. Most boards do provide one, but some don't. Some
->> don't even provide instructions on how to boot on the board.
->>
->> The problems with this approach are documented at [1].
->>
->> In practice, OF_BOARD is not really distinct from OF_SEPARATE. Any board
->> can obtain its devicetree at runtime, even it is has a devicetree built
->> in U-Boot. This is because U-Boot may be a second-stage bootloader and its
->> caller may have a better idea about the hardware available in the machine.
->> This is the case with a few QEMU boards, for example.
->>
->> So it makes no sense to have OF_BOARD as a 'choice'. It should be an
->> option, available with either OF_SEPARATE or OF_EMBED.
->>
->> This series makes this change, adding various missing devicetree files
->> (and placeholders) to make the build work.
-> 
-> Adding device trees that are never used sounds like a hack to me.
-> 
-> For QEMU, device tree is dynamically generated on the fly based on
-> command line parameters, and the device tree you put in this series
-> has various hardcoded <phandle> values which normally do not show up
-> in hand-written dts files.
+Le mer. 13 oct. 2021 =C3=A0 14:42, Philippe Mathieu-Daud=C3=A9 <philmd@redh=
+at.com> a
+=C3=A9crit :
 
-Besides, QEMU generates these dtb at runtime on purpose: it gives
-emulated machines the freedom to evolve by adding new devices,
-mapping/wiring peripherals differently.
+> Hi Simon,
+>
+> On 10/13/21 03:29, Bin Meng wrote:
+> > On Wed, Oct 13, 2021 at 9:01 AM Simon Glass <sjg@chromium.org> wrote:
+> >>
+> >> With Ilias' efforts we have dropped OF_PRIOR_STAGE and OF_HOSTFILE so
+> >> there are only three ways to obtain a devicetree:
+> >>
+> >>    - OF_SEPARATE - the normal way, where the devicetree is built and
+> >>       appended to U-Boot
+> >>    - OF_EMBED - for development purposes, the devicetree is embedded i=
+n
+> >>       the ELF file (also used for EFI)
+> >>    - OF_BOARD - the board figures it out on its own
+> >>
+> >> The last one is currently set up so that no devicetree is needed at al=
+l
+> >> in the U-Boot tree. Most boards do provide one, but some don't. Some
+> >> don't even provide instructions on how to boot on the board.
+> >>
+> >> The problems with this approach are documented at [1].
+> >>
+> >> In practice, OF_BOARD is not really distinct from OF_SEPARATE. Any boa=
+rd
+> >> can obtain its devicetree at runtime, even it is has a devicetree buil=
+t
+> >> in U-Boot. This is because U-Boot may be a second-stage bootloader and
+> its
+> >> caller may have a better idea about the hardware available in the
+> machine.
+> >> This is the case with a few QEMU boards, for example.
+> >>
+> >> So it makes no sense to have OF_BOARD as a 'choice'. It should be an
+> >> option, available with either OF_SEPARATE or OF_EMBED.
+> >>
+> >> This series makes this change, adding various missing devicetree files
+> >> (and placeholders) to make the build work.
+> >
+> > Adding device trees that are never used sounds like a hack to me.
+> >
+> > For QEMU, device tree is dynamically generated on the fly based on
+> > command line parameters, and the device tree you put in this series
+> > has various hardcoded <phandle> values which normally do not show up
+> > in hand-written dts files.
+>
+> Besides, QEMU generates these dtb at runtime on purpose: it gives
+> emulated machines the freedom to evolve by adding new devices,
+> mapping/wiring peripherals differently.
+>
+> By adding static dtb this gives QEMU users false expectations the
+> machine hardware is stable, or force QEMU to have this interface
+> become a stable API.
+>
+> From QEMU perspective this seems counter-productive.
+>
++1
 
-By adding static dtb this gives QEMU users false expectations the
-machine hardware is stable, or force QEMU to have this interface
-become a stable API.
+>
+> Digging a bit I see this has already been discussed on qemu-devel@
+> mailing list recently:
+>
+>
+> https://lore.kernel.org/qemu-devel/CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-zyh=
+=3DN8rqm4vOcGZA@mail.gmail.com/
+>
+> > I am not sure I understand the whole point of this.
+> >
+> >>
+> >> It also provides a few qemu clean-ups discovered along the way.
+> >>
+> >> This series is based on Ilias' two series for OF_HOSTFILE and
+> >> OF_PRIOR_STAGE removal.
+> >>
+> >> It is available at u-boot-dm/ofb-working
+> >>
+> >> [1]
+> https://patchwork.ozlabs.org/project/uboot/patch/20210919215111.3830278-3=
+-sjg@chromium.org/
+> >>
+> >
+> > Regards,
+> > Bin
+> >
+>
+> --
+Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog | *Director Business Development*
+T: +33.67221.6485
+francois.ozog@linaro.org | Skype: ffozog
 
-From QEMU perspective this seems counter-productive.
+--0000000000008847e005ce3ba216
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Digging a bit I see this has already been discussed on qemu-devel@
-mailing list recently:
+<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">Le=C2=A0mer. 13 oct. 2021 =C3=A0 14:42, Philippe Mathieu-Da=
+ud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt;=
+ a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hi Simon,<br>
+<br>
+On 10/13/21 03:29, Bin Meng wrote:<br>
+&gt; On Wed, Oct 13, 2021 at 9:01 AM Simon Glass &lt;<a href=3D"mailto:sjg@=
+chromium.org" target=3D"_blank">sjg@chromium.org</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; With Ilias&#39; efforts we have dropped OF_PRIOR_STAGE and OF_HOST=
+FILE so<br>
+&gt;&gt; there are only three ways to obtain a devicetree:<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 - OF_SEPARATE - the normal way, where the devicetree =
+is built and<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0appended to U-Boot<br>
+&gt;&gt;=C2=A0 =C2=A0 - OF_EMBED - for development purposes, the devicetree=
+ is embedded in<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0the ELF file (also used for EFI)<br>
+&gt;&gt;=C2=A0 =C2=A0 - OF_BOARD - the board figures it out on its own<br>
+&gt;&gt;<br>
+&gt;&gt; The last one is currently set up so that no devicetree is needed a=
+t all<br>
+&gt;&gt; in the U-Boot tree. Most boards do provide one, but some don&#39;t=
+. Some<br>
+&gt;&gt; don&#39;t even provide instructions on how to boot on the board.<b=
+r>
+&gt;&gt;<br>
+&gt;&gt; The problems with this approach are documented at [1].<br>
+&gt;&gt;<br>
+&gt;&gt; In practice, OF_BOARD is not really distinct from OF_SEPARATE. Any=
+ board<br>
+&gt;&gt; can obtain its devicetree at runtime, even it is has a devicetree =
+built<br>
+&gt;&gt; in U-Boot. This is because U-Boot may be a second-stage bootloader=
+ and its<br>
+&gt;&gt; caller may have a better idea about the hardware available in the =
+machine.<br>
+&gt;&gt; This is the case with a few QEMU boards, for example.<br>
+&gt;&gt;<br>
+&gt;&gt; So it makes no sense to have OF_BOARD as a &#39;choice&#39;. It sh=
+ould be an<br>
+&gt;&gt; option, available with either OF_SEPARATE or OF_EMBED.<br>
+&gt;&gt;<br>
+&gt;&gt; This series makes this change, adding various missing devicetree f=
+iles<br>
+&gt;&gt; (and placeholders) to make the build work.<br>
+&gt; <br>
+&gt; Adding device trees that are never used sounds like a hack to me.<br>
+&gt; <br>
+&gt; For QEMU, device tree is dynamically generated on the fly based on<br>
+&gt; command line parameters, and the device tree you put in this series<br=
+>
+&gt; has various hardcoded &lt;phandle&gt; values which normally do not sho=
+w up<br>
+&gt; in hand-written dts files.<br>
+<br>
+Besides, QEMU generates these dtb at runtime on purpose: it gives<br>
+emulated machines the freedom to evolve by adding new devices,<br>
+mapping/wiring peripherals differently.<br>
+<br>
+By adding static dtb this gives QEMU users false expectations the<br>
+machine hardware is stable, or force QEMU to have this interface<br>
+become a stable API.<br>
+<br>
+From QEMU perspective this seems counter-productive.<br>
+</blockquote><div dir=3D"auto">+1</div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
+Digging a bit I see this has already been discussed on qemu-devel@<br>
+mailing list recently:<br>
+<br>
+<a href=3D"https://lore.kernel.org/qemu-devel/CAFEAcA_QNcAHtdxUPLpmyzMYgb9Y=
+zhcE0-zyh=3DN8rqm4vOcGZA@mail.gmail.com/" rel=3D"noreferrer" target=3D"_bla=
+nk">https://lore.kernel.org/qemu-devel/CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-z=
+yh=3DN8rqm4vOcGZA@mail.gmail.com/</a><br>
+<br>
+&gt; I am not sure I understand the whole point of this.<br>
+&gt; <br>
+&gt;&gt;<br>
+&gt;&gt; It also provides a few qemu clean-ups discovered along the way.<br=
+>
+&gt;&gt;<br>
+&gt;&gt; This series is based on Ilias&#39; two series for OF_HOSTFILE and<=
+br>
+&gt;&gt; OF_PRIOR_STAGE removal.<br>
+&gt;&gt;<br>
+&gt;&gt; It is available at u-boot-dm/ofb-working<br>
+&gt;&gt;<br>
+&gt;&gt; [1] <a href=3D"https://patchwork.ozlabs.org/project/uboot/patch/20=
+210919215111.3830278-3-sjg@chromium.org/" rel=3D"noreferrer" target=3D"_bla=
+nk">https://patchwork.ozlabs.org/project/uboot/patch/20210919215111.3830278=
+-3-sjg@chromium.org/</a><br>
+&gt;&gt;<br>
+&gt; <br>
+&gt; Regards,<br>
+&gt; Bin<br>
+&gt; <br>
+<br>
+</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
+data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><=
+div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div =
+dir=3D"ltr"><div><div dir=3D"ltr"><div><div><div><div dir=3D"ltr"><div dir=
+=3D"ltr"><div dir=3D"ltr"><table style=3D"font-size:small" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0"><tbody><tr><td style=3D"padding-right:10px=
+" valign=3D"top"><img src=3D"https://static.linaro.org/common/images/linaro=
+-logo-web.png"></td><td valign=3D"top"><table border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0"><tbody><tr><td style=3D"font-family:Arial,Helvetica,&qu=
+ot;Sans Serif&quot;;white-space:nowrap;font-size:9pt;padding-top:0px;color:=
+rgb(87,87,87)" valign=3D"top"><span style=3D"font-weight:bold">Fran=C3=A7oi=
+s-Fr=C3=A9d=C3=A9ric Ozog</span>=C2=A0<span style=3D"color:rgb(161,161,161)=
+">|</span>=C2=A0<i>Director Business Development</i></td></tr><tr><td style=
+=3D"font-family:Arial,Helvetica,&quot;Sans Serif&quot;;white-space:nowrap;f=
+ont-size:9pt;padding-top:2px;color:rgb(87,87,87)" valign=3D"top">T:=C2=A0<a=
+ value=3D"+393384075993" style=3D"color:rgb(17,85,204)">+33.67221.6485</a><=
+br><a href=3D"mailto:francois.ozog@linaro.org" style=3D"color:rgb(87,87,87)=
+;text-decoration:none" target=3D"_blank">francois.ozog@linaro.org</a>=C2=A0=
+<span style=3D"color:rgb(161,161,161)">|</span>=C2=A0Skype:=C2=A0ffozog</td=
+></tr></tbody></table></td></tr></tbody></table></div></div></div></div></d=
+iv><div><div><br style=3D"font-size:small"></div></div></div></div></div></=
+div></div></div></div></div></div></div></div></div></div></div></div>
 
-https://lore.kernel.org/qemu-devel/CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-zyh=N8rqm4vOcGZA@mail.gmail.com/
-
-> I am not sure I understand the whole point of this.
-> 
->>
->> It also provides a few qemu clean-ups discovered along the way.
->>
->> This series is based on Ilias' two series for OF_HOSTFILE and
->> OF_PRIOR_STAGE removal.
->>
->> It is available at u-boot-dm/ofb-working
->>
->> [1] https://patchwork.ozlabs.org/project/uboot/patch/20210919215111.3830278-3-sjg@chromium.org/
->>
-> 
-> Regards,
-> Bin
-> 
-
+--0000000000008847e005ce3ba216--

@@ -1,103 +1,85 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2911382lfc;
-        Wed, 13 Oct 2021 06:08:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy27gvY5W+eh3/W3weqt1/MUxV34hd4y5C21sdpTuMZ9apc/uSURdvXOqnYSh238tXvGJd2
-X-Received: by 2002:a37:6c83:: with SMTP id h125mr24786878qkc.486.1634130522963;
-        Wed, 13 Oct 2021 06:08:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634130522; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp4045220lfc;
+        Thu, 14 Oct 2021 06:27:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+A6xfbDXXXWRFCOBCN94B865V3Jz9WMoWXr04g3ivDUsBnZkg4LDn3qrFV2Ml3MuciJAp
+X-Received: by 2002:ac8:d3:: with SMTP id d19mr6440728qtg.94.1634218060886;
+        Thu, 14 Oct 2021 06:27:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634218060; cv=none;
         d=google.com; s=arc-20160816;
-        b=RlySPEbVq7Ng64+EW+mbdym/V6gea3XJVITR31wUy9Ud3Z9yB9rbB3XHNj+X7ShRCW
-         t015LmgrmOYJfj+R15PjTHocwkOO4VKJpWL8W5VDiPVhQHrhTiSMKSv2mZISfq+FNBaV
-         MyFy4x43kxOX7BiMsvAt4uWJ1gneXrd1oRyYNt8mO3r1MBaDD256R6qT+o5CbaCJEhEW
-         j3sTCvrsLct36RQOlqcRd6Fp95OO3uXM+2nj9xsYl1H57JUL8xB7yEopyhurqBhus4C5
-         iUEbdZeSTBTZxi+neHwOt9avTfoGCwuto/EK1la4DQtRqROY9pNDAQ5ZYjkf5Pb2oBcV
-         pw/g==
+        b=kKkvymwwDZUbsJJu1KTLSYgpRZpRyBe/92JIN61oCSkp/zJF+l6jyoF/SspAdlkhRo
+         hXMyGOEJWBgtMnBQZDI/GcNRxJDK6xqj1XJUCexMSpmvK72tGcLHTI5FWnvLXecVbTuU
+         f415aQohC8PaZ9eVDOgW+UO6PWQMKY3bTjabeaRYVW1BvjAZQ+7YNfS4L5B6jGLACkT4
+         veBk/oUispnmAL3NVrZfBWKnd5fNJA3Nw3yZeLWrYmkT0F6SJF/cpVJuzZu54xBBYLzE
+         M0D//iAzGH2J1eEM0Y0r8trRI9z/kutWn00oJb1YseNCqqwgr/B9eI5txJ4xgEDLoXHT
+         7KNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=5zdIfNn4BepjBj13NWTxEvhuHUrmxtCi4XL6SIgw0Lc=;
-        b=R5MfEXTPF4Y2V38qUYhodiLYHkugqWYcmqY6v8ZYHNLn+WV3OlB+qJW3rzku4hVY6p
-         VSv8hbjAExmOMD0WbI4yJ2L7xgpBpqGw8LSz3PaqSu4arvXVFm6/sqNALsW0Q/JLsKJ/
-         A+h3LLE4DG67S0G06fTMQtqUV6QNQxKkcLi+SQwGWbXwR6NHCh+F2YOX7NvjkHtpPWaG
-         tXLvaQSIcMyO+OjfCDtnJiKBbhJeOaZtmJyWgltpHc1Z5f9I56RS734a90dBVV4AklM/
-         rxbBqsY2M9vRlDU0+qdDzzg9Wx8+zA/KmWA1RkQ8+YKXC3EgHsRKHOhi6txgz0I6raeN
-         RlOg==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=wYWhTSQZo0WrNC3BbVGEZxUEoCt8pF+TIc6rBy+BArA=;
+        b=B9kQtv6fiB80z3OqKzY0YV5K7I1yXRro6T4B59ZelE9yHm2ka/nif+Bq1V/aQf3X6Q
+         kcXUab5fYhrB6vQEt8fBYMJJhnAsqOLgXF98gUxx9zG+U5k/EdcvcctRLTs+N9ub1K42
+         xHTWGOcfcxVOFASpmypgBH/NPuoSl6vUAVxStnBLXGVcr3esf7Zafc6emp+j+neQbDj4
+         28MrrBExnuyrLv4Nnla6l/Ml9XoNEA7XGofjlHSr62sXpclgRaUCQYfdAWlFGeby01tP
+         UAK/zOOMbXxxB+N5ojlF4BFoD9c4QqfYmGr8FGG5tki7lPpd8r9MQh5UnTi3bmO608nj
+         H5Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gK1u3Alf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4si12258269qvf.144.2021.10.13.06.08.42
+        by mx.google.com with ESMTPS id k3si2897749qko.334.2021.10.14.06.27.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Oct 2021 06:08:42 -0700 (PDT)
+        Thu, 14 Oct 2021 06:27:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gK1u3Alf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45256 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:38790 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1madzu-0007rG-EB
-	for alex.bennee@linaro.org; Wed, 13 Oct 2021 09:08:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54042)
+	id 1mb0lo-0007KO-Ay
+	for alex.bennee@linaro.org; Thu, 14 Oct 2021 09:27:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francois.ozog@linaro.org>)
- id 1madyB-0004kc-Ot
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 09:06:57 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:35546)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <francois.ozog@linaro.org>)
- id 1mady9-0007I3-7V
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 09:06:55 -0400
-Received: by mail-ed1-x530.google.com with SMTP id w19so10132866edd.2
- for <qemu-arm@nongnu.org>; Wed, 13 Oct 2021 06:06:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5zdIfNn4BepjBj13NWTxEvhuHUrmxtCi4XL6SIgw0Lc=;
- b=gK1u3AlfOI+LlwuspJVLhNsvyTwZ3Myll0RN/WRtDFPTmp0Aw1SkqDpcyaa+LvE31N
- qr1xYOp2HzZjTd3j1WfNCoExnWoVzMarHSTRdHkl2DxL4TBwV5V5brDBDMheTDgndiPe
- Ju00QsYKchdeY+WRwyxIfB9DoDOmUzfwKBo2DhfipPipUIDsBVQje1DsrRQTNIjdkfy+
- O6dGTViVQaU8Am4WGLoSOj3vNVERDwlQW0X/iM9Bb1UZ++0VaIH6t4Jp1ApvLo03rxx6
- 2M63MGuakJVDO+BGi07LE7btP4Qtw6W25dcfk78LPhsYgw1qJf0e96LnZv0LsZpYlaHV
- hqHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=5zdIfNn4BepjBj13NWTxEvhuHUrmxtCi4XL6SIgw0Lc=;
- b=xy1LCpCyXR+cLqYlkUMiCddLJL04FXx68iNgDzi+4ke52/dXgNIqFVKbnVeQbn3pAk
- 9E0U1ypMzJnnNIBql0yJRXy31PSpG5kz3nOvEbqFXeMwNJR+/npwJnsouCLNXEbDI1uk
- b+k7upeTD5CJKE4WLyXIQ8FFibG6pW6VHbaLnIm5YetIZBDdb2kU+N98xMobHNHGqSLQ
- hf2TIxW7RNx/2h8vygmuE2DwgkBecUJrsNLVwBIW1yGPvghGo2bS7q/WoUsfoWUiJnJF
- LLMdT62/Hkk2nEwtjMPXZk9PutK9dTUSdnBm/JYhpiVRMrCQygvmbf0ZrbouXs3H5q9V
- qkVA==
-X-Gm-Message-State: AOAM532uzQSSyAD0NYjFkycp2xBiPoGyL9tpBc8fTouHUHfJ4d6bgE/j
- 8Kajsmyk0Zt3bXmfu1hN/3b6OnHd2mSQMeAmPTLzEg==
-X-Received: by 2002:a17:906:7d09:: with SMTP id
- u9mr20906219ejo.120.1634130408771; 
- Wed, 13 Oct 2021 06:06:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mb0gm-0003cI-UE; Thu, 14 Oct 2021 09:22:29 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2941)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mb0gh-0001OD-Kn; Thu, 14 Oct 2021 09:22:28 -0400
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HVVLq401wzbmbd;
+ Thu, 14 Oct 2021 21:17:39 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Thu, 14 Oct 2021 21:22:08 +0800
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.8; Thu, 14 Oct 2021 21:22:07 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
+ <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>
+Subject: [PATCH v8 0/8] hw/arm/virt: Introduce cpu topology support
+Date: Thu, 14 Oct 2021 21:21:58 +0800
+Message-ID: <20211014132206.19220-1-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-References: <20211013010120.96851-1-sjg@chromium.org>
- <CAEUhbmWY5gKmqbipurcDQ0DuNJyv8cLWsnyqx5h+tFqeVng8Ag@mail.gmail.com>
- <1c51724b-7789-f402-818f-1044053ee0fa@redhat.com>
-In-Reply-To: <1c51724b-7789-f402-818f-1044053ee0fa@redhat.com>
-From: =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>
-Date: Wed, 13 Oct 2021 15:06:38 +0200
-Message-ID: <CAHFG_=VY_OXRz-K8tQue0hT8dczo+Fv=vQC-VKhqYCuJWJX+Og@mail.gmail.com>
-Subject: Re: [PATCH 00/16] fdt: Make OF_BOARD a boolean option
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000008847e005ce3ba216"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=francois.ozog@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,270 +93,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Liviu Dudau <liviu.dudau@foss.arm.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Linus Walleij <linus.walleij@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- Kever Yang <kever.yang@rock-chips.com>, Sean Anderson <seanga2@gmail.com>,
- Atish Patra <atish.patra@wdc.com>, Zong Li <zong.li@sifive.com>,
- Stefan Roese <sr@denx.de>, Fabio Estevam <festevam@gmail.com>,
- Rainer Boschung <rainer.boschung@hitachi-powergrids.com>,
- Tom Rini <trini@konsulko.com>, Stephen Warren <swarren@nvidia.com>,
- Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
- Heinrich Schuchardt <xypron.glpk@gmx.de>, Niel Fourie <lusus@denx.de>,
- Michal Simek <michal.simek@xilinx.com>,
- =?UTF-8?B?TWFyZWsgQmVow7pu?= <marek.behun@nic.cz>,
- Jerry Van Baren <vanbaren@cideas.com>, Ramon Fried <rfried.dev@gmail.com>,
- Jagan Teki <jagan@amarulasolutions.com>,
- Valentin Longchamp <valentin.longchamp@hitachi-powergrids.com>,
- Heiko Schocher <hs@denx.de>, Peter Robinson <pbrobinson@gmail.com>,
- Sinan Akman <sinan@writeme.com>, Thomas Fitzsimmons <fitzsim@fitzsim.org>,
- Wolfgang Denk <wd@denx.de>, Stephen Warren <swarren@wwwdotorg.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Andre Przywara <andre.przywara@arm.com>, Tim Harvey <tharvey@gateworks.com>,
- Ashok Reddy Soma <ashok.reddy.soma@xilinx.com>, Rick Chen <rick@andestech.com>,
- Alexander Graf <agraf@csgraf.de>, Green Wan <green.wan@sifive.com>,
- T Karthik Reddy <t.karthik.reddy@xilinx.com>,
- Anastasiia Lukianenko <anastasiia_lukianenko@epam.com>,
- Albert Aribaud <albert.u.boot@aribaud.net>, Michal Simek <monstr@monstr.eu>,
- Matthias Brugger <mbrugger@suse.com>, Leo <ycliang@andestech.com>,
- Tero Kristo <kristo@kernel.org>, U-Boot Mailing List <u-boot@lists.denx.de>,
- David Abdurachmanov <david.abdurachmanov@sifive.com>,
- Priyanka Jain <priyanka.jain@nxp.com>, Simon Glass <sjg@chromium.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Christian Hewitt <christianshewitt@gmail.com>,
- Aaron Williams <awilliams@marvell.com>,
- Tuomas Tynkkynen <tuomas.tynkkynen@iki.fi>, qemu-arm <qemu-arm@nongnu.org>,
- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>,
- Tianrui Wei <tianrui-wei@outlook.com>, Bin Meng <bmeng.cn@gmail.com>,
- =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
- Dimitri John Ledkov <dimitri.ledkov@canonical.com>,
- Padmarao Begari <padmarao.begari@microchip.com>
+Cc: qemu-devel@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, wanghaibin.wang@huawei.com,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Os3OpwORu6Ks
+X-TUID: lwwNOKNdgXFP
 
---0000000000008847e005ce3ba216
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-Le mer. 13 oct. 2021 =C3=A0 14:42, Philippe Mathieu-Daud=C3=A9 <philmd@redh=
-at.com> a
-=C3=A9crit :
+This is the latest v8 with update in patch #6 and #8. Now only one
+generic reference file for PPTT is added in tests/data/acpi/virt.
+Machiel and Igor, please help to have a look, thanks!
 
-> Hi Simon,
->
-> On 10/13/21 03:29, Bin Meng wrote:
-> > On Wed, Oct 13, 2021 at 9:01 AM Simon Glass <sjg@chromium.org> wrote:
-> >>
-> >> With Ilias' efforts we have dropped OF_PRIOR_STAGE and OF_HOSTFILE so
-> >> there are only three ways to obtain a devicetree:
-> >>
-> >>    - OF_SEPARATE - the normal way, where the devicetree is built and
-> >>       appended to U-Boot
-> >>    - OF_EMBED - for development purposes, the devicetree is embedded i=
-n
-> >>       the ELF file (also used for EFI)
-> >>    - OF_BOARD - the board figures it out on its own
-> >>
-> >> The last one is currently set up so that no devicetree is needed at al=
-l
-> >> in the U-Boot tree. Most boards do provide one, but some don't. Some
-> >> don't even provide instructions on how to boot on the board.
-> >>
-> >> The problems with this approach are documented at [1].
-> >>
-> >> In practice, OF_BOARD is not really distinct from OF_SEPARATE. Any boa=
-rd
-> >> can obtain its devicetree at runtime, even it is has a devicetree buil=
-t
-> >> in U-Boot. This is because U-Boot may be a second-stage bootloader and
-> its
-> >> caller may have a better idea about the hardware available in the
-> machine.
-> >> This is the case with a few QEMU boards, for example.
-> >>
-> >> So it makes no sense to have OF_BOARD as a 'choice'. It should be an
-> >> option, available with either OF_SEPARATE or OF_EMBED.
-> >>
-> >> This series makes this change, adding various missing devicetree files
-> >> (and placeholders) to make the build work.
-> >
-> > Adding device trees that are never used sounds like a hack to me.
-> >
-> > For QEMU, device tree is dynamically generated on the fly based on
-> > command line parameters, and the device tree you put in this series
-> > has various hardcoded <phandle> values which normally do not show up
-> > in hand-written dts files.
->
-> Besides, QEMU generates these dtb at runtime on purpose: it gives
-> emulated machines the freedom to evolve by adding new devices,
-> mapping/wiring peripherals differently.
->
-> By adding static dtb this gives QEMU users false expectations the
-> machine hardware is stable, or force QEMU to have this interface
-> become a stable API.
->
-> From QEMU perspective this seems counter-productive.
->
-+1
+Description of this series:
+Once the view of an accurate virtual cpu topology is provided to guest,
+with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
+e.g., the scheduling performance improvement. See Dario Faggioli's
+research and the related performance tests in [1] for reference.
 
->
-> Digging a bit I see this has already been discussed on qemu-devel@
-> mailing list recently:
->
->
-> https://lore.kernel.org/qemu-devel/CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-zyh=
-=3DN8rqm4vOcGZA@mail.gmail.com/
->
-> > I am not sure I understand the whole point of this.
-> >
-> >>
-> >> It also provides a few qemu clean-ups discovered along the way.
-> >>
-> >> This series is based on Ilias' two series for OF_HOSTFILE and
-> >> OF_PRIOR_STAGE removal.
-> >>
-> >> It is available at u-boot-dm/ofb-working
-> >>
-> >> [1]
-> https://patchwork.ozlabs.org/project/uboot/patch/20210919215111.3830278-3=
--sjg@chromium.org/
-> >>
-> >
-> > Regards,
-> > Bin
-> >
->
-> --
-Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog | *Director Business Development*
-T: +33.67221.6485
-francois.ozog@linaro.org | Skype: ffozog
+This patch series introduces cpu topology support for Arm platform.
+Both cpu-map in DT and ACPI PPTT table are introduced to store the
+topology information. And we only describe the topology information
+to 6.2 and newer virt machines, considering compatibility.
 
---0000000000008847e005ce3ba216
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+[1] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines
+-friend-or-foe-dario-faggioli-suse
 
-<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">Le=C2=A0mer. 13 oct. 2021 =C3=A0 14:42, Philippe Mathieu-Da=
-ud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt;=
- a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hi Simon,<br>
-<br>
-On 10/13/21 03:29, Bin Meng wrote:<br>
-&gt; On Wed, Oct 13, 2021 at 9:01 AM Simon Glass &lt;<a href=3D"mailto:sjg@=
-chromium.org" target=3D"_blank">sjg@chromium.org</a>&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; With Ilias&#39; efforts we have dropped OF_PRIOR_STAGE and OF_HOST=
-FILE so<br>
-&gt;&gt; there are only three ways to obtain a devicetree:<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 - OF_SEPARATE - the normal way, where the devicetree =
-is built and<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0appended to U-Boot<br>
-&gt;&gt;=C2=A0 =C2=A0 - OF_EMBED - for development purposes, the devicetree=
- is embedded in<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0the ELF file (also used for EFI)<br>
-&gt;&gt;=C2=A0 =C2=A0 - OF_BOARD - the board figures it out on its own<br>
-&gt;&gt;<br>
-&gt;&gt; The last one is currently set up so that no devicetree is needed a=
-t all<br>
-&gt;&gt; in the U-Boot tree. Most boards do provide one, but some don&#39;t=
-. Some<br>
-&gt;&gt; don&#39;t even provide instructions on how to boot on the board.<b=
-r>
-&gt;&gt;<br>
-&gt;&gt; The problems with this approach are documented at [1].<br>
-&gt;&gt;<br>
-&gt;&gt; In practice, OF_BOARD is not really distinct from OF_SEPARATE. Any=
- board<br>
-&gt;&gt; can obtain its devicetree at runtime, even it is has a devicetree =
-built<br>
-&gt;&gt; in U-Boot. This is because U-Boot may be a second-stage bootloader=
- and its<br>
-&gt;&gt; caller may have a better idea about the hardware available in the =
-machine.<br>
-&gt;&gt; This is the case with a few QEMU boards, for example.<br>
-&gt;&gt;<br>
-&gt;&gt; So it makes no sense to have OF_BOARD as a &#39;choice&#39;. It sh=
-ould be an<br>
-&gt;&gt; option, available with either OF_SEPARATE or OF_EMBED.<br>
-&gt;&gt;<br>
-&gt;&gt; This series makes this change, adding various missing devicetree f=
-iles<br>
-&gt;&gt; (and placeholders) to make the build work.<br>
-&gt; <br>
-&gt; Adding device trees that are never used sounds like a hack to me.<br>
-&gt; <br>
-&gt; For QEMU, device tree is dynamically generated on the fly based on<br>
-&gt; command line parameters, and the device tree you put in this series<br=
->
-&gt; has various hardcoded &lt;phandle&gt; values which normally do not sho=
-w up<br>
-&gt; in hand-written dts files.<br>
-<br>
-Besides, QEMU generates these dtb at runtime on purpose: it gives<br>
-emulated machines the freedom to evolve by adding new devices,<br>
-mapping/wiring peripherals differently.<br>
-<br>
-By adding static dtb this gives QEMU users false expectations the<br>
-machine hardware is stable, or force QEMU to have this interface<br>
-become a stable API.<br>
-<br>
-From QEMU perspective this seems counter-productive.<br>
-</blockquote><div dir=3D"auto">+1</div><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
-Digging a bit I see this has already been discussed on qemu-devel@<br>
-mailing list recently:<br>
-<br>
-<a href=3D"https://lore.kernel.org/qemu-devel/CAFEAcA_QNcAHtdxUPLpmyzMYgb9Y=
-zhcE0-zyh=3DN8rqm4vOcGZA@mail.gmail.com/" rel=3D"noreferrer" target=3D"_bla=
-nk">https://lore.kernel.org/qemu-devel/CAFEAcA_QNcAHtdxUPLpmyzMYgb9YzhcE0-z=
-yh=3DN8rqm4vOcGZA@mail.gmail.com/</a><br>
-<br>
-&gt; I am not sure I understand the whole point of this.<br>
-&gt; <br>
-&gt;&gt;<br>
-&gt;&gt; It also provides a few qemu clean-ups discovered along the way.<br=
->
-&gt;&gt;<br>
-&gt;&gt; This series is based on Ilias&#39; two series for OF_HOSTFILE and<=
-br>
-&gt;&gt; OF_PRIOR_STAGE removal.<br>
-&gt;&gt;<br>
-&gt;&gt; It is available at u-boot-dm/ofb-working<br>
-&gt;&gt;<br>
-&gt;&gt; [1] <a href=3D"https://patchwork.ozlabs.org/project/uboot/patch/20=
-210919215111.3830278-3-sjg@chromium.org/" rel=3D"noreferrer" target=3D"_bla=
-nk">https://patchwork.ozlabs.org/project/uboot/patch/20210919215111.3830278=
--3-sjg@chromium.org/</a><br>
-&gt;&gt;<br>
-&gt; <br>
-&gt; Regards,<br>
-&gt; Bin<br>
-&gt; <br>
-<br>
-</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
-data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><=
-div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div =
-dir=3D"ltr"><div><div dir=3D"ltr"><div><div><div><div dir=3D"ltr"><div dir=
-=3D"ltr"><div dir=3D"ltr"><table style=3D"font-size:small" border=3D"0" cel=
-lpadding=3D"0" cellspacing=3D"0"><tbody><tr><td style=3D"padding-right:10px=
-" valign=3D"top"><img src=3D"https://static.linaro.org/common/images/linaro=
--logo-web.png"></td><td valign=3D"top"><table border=3D"0" cellpadding=3D"0=
-" cellspacing=3D"0"><tbody><tr><td style=3D"font-family:Arial,Helvetica,&qu=
-ot;Sans Serif&quot;;white-space:nowrap;font-size:9pt;padding-top:0px;color:=
-rgb(87,87,87)" valign=3D"top"><span style=3D"font-weight:bold">Fran=C3=A7oi=
-s-Fr=C3=A9d=C3=A9ric Ozog</span>=C2=A0<span style=3D"color:rgb(161,161,161)=
-">|</span>=C2=A0<i>Director Business Development</i></td></tr><tr><td style=
-=3D"font-family:Arial,Helvetica,&quot;Sans Serif&quot;;white-space:nowrap;f=
-ont-size:9pt;padding-top:2px;color:rgb(87,87,87)" valign=3D"top">T:=C2=A0<a=
- value=3D"+393384075993" style=3D"color:rgb(17,85,204)">+33.67221.6485</a><=
-br><a href=3D"mailto:francois.ozog@linaro.org" style=3D"color:rgb(87,87,87)=
-;text-decoration:none" target=3D"_blank">francois.ozog@linaro.org</a>=C2=A0=
-<span style=3D"color:rgb(161,161,161)">|</span>=C2=A0Skype:=C2=A0ffozog</td=
-></tr></tbody></table></td></tr></tbody></table></div></div></div></div></d=
-iv><div><div><br style=3D"font-size:small"></div></div></div></div></div></=
-div></div></div></div></div></div></div></div></div></div></div></div>
+Series tested locally on Arm64 machines kunpeng920.
+After booting a Linux guest with "-smp 16,sockets=4,cores=4,threads=1,maxcpus=16",
+through lscpu we will see the information about CPU topology like:
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              16
+On-line CPU(s) list: 0-15
+Thread(s) per core:  1
+Core(s) per socket:  4
+Socket(s):           4
+NUMA node(s):        1
+Vendor ID:           0x48
+Model:               0
+Stepping:            0x1
+BogoMIPS:            200.00
+NUMA node0 CPU(s):   0-15
 
---0000000000008847e005ce3ba216--
+and with "-smp 16" we will see:
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              16
+On-line CPU(s) list: 0-15
+Thread(s) per core:  1
+Core(s) per socket:  16
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           0x48
+Model:               0
+Stepping:            0x1
+BogoMIPS:            200.00
+NUMA node0 CPU(s):   0-15
+
+Changelog:
+v7->v8:
+- rebased on top of master (commit e5b2333f24)
+- only add one generic expected file for PPTT instead of four, which works
+  fine enough for now (patch #6 and #8 updated)
+- v7: https://lore.kernel.org/qemu-devel/20211007030746.10420-1-wangyanan55@huawei.com/
+
+v6->v7:
+- rebased on top of master (commit ca61fa4b80)
+- use newly introduced acpi_table_begin/acpi_table_end APIs to build PPTT
+  (patch #5 updated)
+- add reference files for PPTT to fix broken bios-table-test for Aarch64
+  virt machine (patch #6-#8 added)
+- v6: https://lore.kernel.org/qemu-devel/20210824122016.144364-1-wangyanan55@huawei.com/
+
+Andrew Jones (2):
+  hw/arm/virt: Add cpu-map to device tree
+  hw/acpi/aml-build: Add PPTT table
+
+Yanan Wang (6):
+  hw/arm/virt: Only describe cpu topology since virt-6.2
+  device_tree: Add qemu_fdt_add_path
+  hw/acpi/aml-build: Add Processor hierarchy node structure
+  tests/data/acpi/virt: Add an empty expected file for PPTT
+  hw/arm/virt-acpi-build: Generate PPTT table
+  tests/data/acpi/virt: Update the empty expected file for PPTT
+
+ hw/acpi/aml-build.c          |  86 +++++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c     |   8 +++-
+ hw/arm/virt.c                |  71 +++++++++++++++++++++++++----
+ include/hw/acpi/aml-build.h  |   7 +++
+ include/hw/arm/virt.h        |   4 +-
+ include/sysemu/device_tree.h |   1 +
+ softmmu/device_tree.c        |  44 +++++++++++++++++-
+ tests/data/acpi/virt/PPTT    | Bin 0 -> 76 bytes
+ 8 files changed, 207 insertions(+), 14 deletions(-)
+ create mode 100644 tests/data/acpi/virt/PPTT
+
+--
+2.19.1
+

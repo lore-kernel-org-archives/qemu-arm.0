@@ -1,704 +1,251 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp3289027lfc;
-        Wed, 13 Oct 2021 12:51:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwLLvUCJDNPyTWNvBfTtxnSR0/QpFbIOAocvCN7vzQQK7vAWmKezHUQyglL5eleN/0wPQCC
-X-Received: by 2002:a37:658c:: with SMTP id z134mr1064644qkb.153.1634154670245;
-        Wed, 13 Oct 2021 12:51:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634154670; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp3732825lfc;
+        Wed, 13 Oct 2021 23:48:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfpdoJFqDhPwo2jaEiQQBMB6RSNcvDHVq4ezfvkCHXrIVBDeXMYBve9htZgEXfMOO5O1Xv
+X-Received: by 2002:a5b:381:: with SMTP id k1mr4622013ybp.271.1634194096342;
+        Wed, 13 Oct 2021 23:48:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634194096; cv=none;
         d=google.com; s=arc-20160816;
-        b=WO5cY6riwMkekeGyLjU/NHCFLPkIeztR/1l4iorXDKq8eO9VpRsTK839Bu1z24LBI2
-         XkyLdFermXwmgb22xna+QXiHKlh9liwm3/Cu2bvBjbqETSeJdKzAbTKouC/0s87bba2B
-         yqddOrwYh80gizqiaKPPrsya0vpsA6wnsIqPcdk9YPTn5OeqPLcbcobAuUKz8Nomss4t
-         MfW5xIf7GCsbbiXD8CPGUlloeL6uWtnCACsLk+nXOUQDUGMsNIRkQd00EjfaC7vGbITH
-         /ClsvdGLBwVNrAIdBtUSrx48fk5p7/zIMFNu0NXRc/gaAwL4ABKdKfCeS4I1s7gI1nJ4
-         ajMg==
+        b=y+kAGP6/hqb7KsHS2bjKlDyyYnB9OLJcfbD4lj+PMR3pppqh8rbmgT1d4ZPVh7QZsB
+         Dt/1mXdmnWvVrw6MRtEoDXcDls0Du0Cs1BlkEwEq7IHXQ7+VxUJ/NBJy1wImKEI8nSoy
+         /Rcu7nN3pShysp6oIHTxSHaOJFWrRFdO907rS1B78oxh3L6O1tv4utoxHZs11IeZx6kU
+         pIfUaEAd1hnedEHSIuJscYNJeM+4uj34EXwrZLPn7pnE7npWmVavitEWe8RGh+xIB1e+
+         e8uyht+X5TKNjStruW/k5vOyUeifx+1DR9SNbSmcZhmyqyPxt7zwEVJskX6hiSkh8sbR
+         2WZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=sf+Q+C9dSR7bWYsqChAVXKjjk3E/zFYHbTJHhJ6NuPQ=;
-        b=vnC8JPE73gDShWa+rNdSfLMZTJOglPhfYqIlXjj/mm4AUA6nwsTbVsfU8WsPnFligZ
-         jzWCrJ9IwtoJ8o2KgbRgFLohTB/vYq6rj3bjlkvOz5/67pAWCgITClrLR6FZLYqIxbGx
-         mAzqLXh3Yr7XhOKFyzFi4OwGjKO8M9Twf+KLcfXHl6ci4j9ksPZPv9nCyR7P9gaH/Vei
-         oYS+MeTC5grsQaXH37vm9kxxzQRsGsVU+SuI5TxELbj+AYA4k/4VHp6d/TXE9Ltf0UvK
-         vReICN83Sv1s5PtXm0yQMjGFOcwH0F8KmnNh1iXfcoRkZeZDgtxLz9n+mOMucy5EB86p
-         OQ6Q==
+        bh=ZU1A7z7GSu62T5DXpbQO3k4fuKL5jrIa8WJwRlfA1GE=;
+        b=lTWCtwwQCWd/7lbsopT/BZCnPtD4Xbms4LmOb1b1c928UHCEs50IxW8PPNBCAe/hec
+         eZRHQPYA3Rr6zvpq1sLa/D0C8eHo2Hs4sEm5V9nGsQj63vOhJnoL4J+vAddphDAkQPck
+         ln4SX+bV6FeSxx2CinBMaq0fA0UCbdJWIKx2A5iilrobuMZUjtrsv+dAUCKQKHJNVtWD
+         /vqDCXDGSRN1JB+ZLooigtU+laqzjJ/x3NLkEZqrA34vW+K+QSqv4osUUcmKPg9eIebs
+         lir3j2kgOXXC8dkN0TpNobTKp0SPDHIDv/8Cc0wWrxksKItnrzFLz4COpxWNo8EKqGLl
+         kYJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDWUHVRz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=HhOlq3VR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f10si320909qkp.289.2021.10.13.12.51.10
+        by mx.google.com with ESMTPS id k10si3558682ybt.234.2021.10.13.23.48.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Oct 2021 12:51:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Oct 2021 23:48:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDWUHVRz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47280 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=HhOlq3VR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52116 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1makHN-0007TT-N3
-	for alex.bennee@linaro.org; Wed, 13 Oct 2021 15:51:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52096)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mauXH-0007mP-MZ
+	for alex.bennee@linaro.org; Thu, 14 Oct 2021 02:48:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1makGx-0007T1-Dg
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 15:50:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55112)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1makGt-00082l-De
- for qemu-arm@nongnu.org; Wed, 13 Oct 2021 15:50:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634154638;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=sf+Q+C9dSR7bWYsqChAVXKjjk3E/zFYHbTJHhJ6NuPQ=;
- b=eDWUHVRzgaVgs/pbKm8KZl6SGsxkvAnQwq/ta8MCTbRhVl5zO/yQtzBmSUYd9hQqfM+M3O
- GhkhnGUBpftWCENvu6G7PYFdQIE4osBC8TU/AB7XJfy5ZLSG3vHIFmknf4+uVXPHfT+Fwy
- sWTv7r+4IsjyDl7e4DQhLfTuU8iyBZI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-442-6K7fLcM2OOC6RL_-Sd_OBA-1; Wed, 13 Oct 2021 15:50:37 -0400
-X-MC-Unique: 6K7fLcM2OOC6RL_-Sd_OBA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0AAC1802575;
- Wed, 13 Oct 2021 19:50:36 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.236])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C2AE35FC13;
- Wed, 13 Oct 2021 19:50:13 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
- pbonzini@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, jean-philippe@linaro.org
-Subject: [PATCH v2] tests: qtest: Add virtio-iommu test
-Date: Wed, 13 Oct 2021 21:50:10 +0200
-Message-Id: <20211013195010.737789-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <wangzq.jn@gmail.com>)
+ id 1mauV2-00066J-7Z; Thu, 14 Oct 2021 02:45:56 -0400
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:54928)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wangzq.jn@gmail.com>)
+ id 1mauV0-0003oq-FN; Thu, 14 Oct 2021 02:45:55 -0400
+Received: by mail-pj1-x1041.google.com with SMTP id np13so4001831pjb.4;
+ Wed, 13 Oct 2021 23:45:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZU1A7z7GSu62T5DXpbQO3k4fuKL5jrIa8WJwRlfA1GE=;
+ b=HhOlq3VRHbICHIMMk52pv/cg9rQEEyOW/lRUe9fFJjn2fnbWoBzktR/X3+n53WzRd3
+ tbcoAsklVwCnWpIBb+wBsQh+2xwXmGoAw5f5TEHAExdeuXcgCakbdWIPK159JBipf6I4
+ OgcKpPZ0XuUnw16QYMIaXKLQy2y15MY252g0BvC8WKcKYbaY2rdGrIro7iOFFvDW7G5O
+ M/Oo1pMe9kAvLKBZhds7oG2dv8xl3PwO8Qniwk/ePEKz5z/iVGMYphZlFsa1dCk+xjty
+ pijYTfzBf/Mp+nZRlX9v4KPRBL6i03KRo733hbiC2kXpTtOKJVeDHmx1775RAKQuqe3P
+ 0KzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZU1A7z7GSu62T5DXpbQO3k4fuKL5jrIa8WJwRlfA1GE=;
+ b=sqyN4bUzB6UNQedUJO5NWX/2SnIadKGVTu7rd3y9wvRkwRawVgWifbgtpJt9pzdFrm
+ ny/m1ibvUSf985BL3jpyL0UmeEzsseuyvKFIA8HZEe2n7JNA2hJfGV8xpg4/ZvP42yvK
+ fJFW7usSPU019wo5X7UthRIrXkMQZH3nlrxklwr88LB1uD/3zMYbMM4ZjkfL7RqhFnQi
+ uMwEekQGxWO3mXPtq4p5zqtUy4XwHS32iS72XV6M/SBRBUthD5G46aGZCzVbDthV7CWr
+ f8KyDIH//JN4TF3i6zPkwaUzjGAmdVnU+iNJS8k+N66yTC/1EAAINPAqpVJ0ik6nqTDC
+ lF4w==
+X-Gm-Message-State: AOAM532M3/qepee0iFhyvDPo2xhmUVNsrCzjZTXOKjm6AhABsETt4/Wg
+ DGkztUtMNHup2QfWMtu9mK4=
+X-Received: by 2002:a17:90a:4812:: with SMTP id
+ a18mr18442880pjh.40.1634193952612; 
+ Wed, 13 Oct 2021 23:45:52 -0700 (PDT)
+Received: from localhost (95.169.4.245.16clouds.com. [95.169.4.245])
+ by smtp.gmail.com with ESMTPSA id p4sm1377251pgc.15.2021.10.13.23.45.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Oct 2021 23:45:52 -0700 (PDT)
+From: John Wang <wangzq.jn@gmail.com>
+X-Google-Original-From: John Wang <wangzhiqiang02@inspur.com>
+To: lintao.lc@inspur.com,
+	liuxiwei@inspur.com,
+	duanzhijia01@inspur.com
+Subject: [PATCH v2] aspeed: Add support for the fp5280g2-bmc board
+Date: Thu, 14 Oct 2021 14:45:48 +0800
+Message-Id: <20211014064548.934799-1-wangzhiqiang02@inspur.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
+ envelope-from=wangzq.jn@gmail.com; helo=mail-pj1-x1041.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2HFpXivA/xlz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b1+njAv/P5I9
 
-Add the framework to test the virtio-iommu-pci device
-and tests exercising the attach/detach, map/unmap API.
+The fp5280g2-bmc is supported by OpenBMC, It's
+based on the following device tree
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+https://github.com/openbmc/linux/blob/dev-5.10/arch/arm/boot/dts/aspeed-bmc-inspur-fp5280g2.dts
 
+Signed-off-by: John Wang <wangzhiqiang02@inspur.com>
 ---
+ hw/arm/aspeed.c | 74 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
 
-This applies on top of jean-Philippe's
-[PATCH v4 00/11] virtio-iommu: Add ACPI support
-branch can be found at:
-https://github.com/eauger/qemu.git
-branch qtest-virtio-iommu-v2
-
-To run the tests:
-make tests/qtest/qos-test
-cd build
-QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon QTEST_QEMU_BINARY=x86_64-softmmu/qemu-system-x86_64  tests/qtest/qos-test
-
-v1 -> v2:
-- fix the license info (Thomas)
-- use UINT64_MAX (Philippe)
----
- tests/qtest/libqos/meson.build    |   1 +
- tests/qtest/libqos/virtio-iommu.c | 172 +++++++++++++++++
- tests/qtest/libqos/virtio-iommu.h |  40 ++++
- tests/qtest/meson.build           |   1 +
- tests/qtest/virtio-iommu-test.c   | 299 ++++++++++++++++++++++++++++++
- 5 files changed, 513 insertions(+)
- create mode 100644 tests/qtest/libqos/virtio-iommu.c
- create mode 100644 tests/qtest/libqos/virtio-iommu.h
- create mode 100644 tests/qtest/virtio-iommu-test.c
-
-diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
-index 1f5c8f10539..ba90bbe2b81 100644
---- a/tests/qtest/libqos/meson.build
-+++ b/tests/qtest/libqos/meson.build
-@@ -40,6 +40,7 @@ libqos_srcs = files('../libqtest.c',
-         'virtio-rng.c',
-         'virtio-scsi.c',
-         'virtio-serial.c',
-+        'virtio-iommu.c',
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 01c1747972..21b690334e 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -141,6 +141,21 @@ struct AspeedMachineState {
+         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
+         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
  
-         # qgraph machines:
-         'aarch64-xlnx-zcu102-machine.c',
-diff --git a/tests/qtest/libqos/virtio-iommu.c b/tests/qtest/libqos/virtio-iommu.c
-new file mode 100644
-index 00000000000..fd355ff0a4b
---- /dev/null
-+++ b/tests/qtest/libqos/virtio-iommu.c
-@@ -0,0 +1,172 @@
-+/*
-+ * libqos driver virtio-iommu-pci framework
-+ *
-+ * Copyright (c) 2021 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
-+ * option) any later version.  See the COPYING file in the top-level directory.
-+ *
-+ */
++/* FP5280G2 hardware value: 0XF100D286 */
++#define FP5280G2_BMC_HW_STRAP1 (                                      \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
++        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
++        SCU_HW_STRAP_MAC1_RGMII |                                       \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
++        SCU_AST2500_HW_STRAP_RESERVED1)
 +
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "qemu/module.h"
-+#include "qgraph.h"
-+#include "virtio-iommu.h"
-+#include "hw/virtio/virtio-iommu.h"
-+
-+static QGuestAllocator *alloc;
-+
-+/* virtio-iommu-device */
-+static void *qvirtio_iommu_get_driver(QVirtioIOMMU *v_iommu,
-+                                      const char *interface)
+ /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+ #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+ 
+@@ -456,6 +471,15 @@ static void aspeed_machine_init(MachineState *machine)
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
+ }
+ 
++static void at24c_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
 +{
-+    if (!g_strcmp0(interface, "virtio-iommu")) {
-+        return v_iommu;
-+    }
-+    if (!g_strcmp0(interface, "virtio")) {
-+        return v_iommu->vdev;
-+    }
++    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
++    DeviceState *dev = DEVICE(i2c_dev);
 +
-+    fprintf(stderr, "%s not present in virtio-iommu-device\n", interface);
-+    g_assert_not_reached();
++    qdev_prop_set_uint32(dev, "rom-size", rsize);
++    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
 +}
 +
-+static void *qvirtio_iommu_device_get_driver(void *object,
-+                                             const char *interface)
+ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = &bmc->soc;
+@@ -717,6 +741,34 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+                           eeprom_buf);
+ }
+ 
++static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
 +{
-+    QVirtioIOMMUDevice *v_iommu = object;
-+    return qvirtio_iommu_get_driver(&v_iommu->iommu, interface);
++    AspeedSoCState *soc = &bmc->soc;
++    I2CSlave *i2c_mux;
++
++    /* The at24c256 */
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x50, 32768);
++
++    /* The fp5280g2 expects a TMP112 but a TMP105 is compatible */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
++                     0x48);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
++                     0x49);
++
++    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
++                     "pca9546", 0x70);
++    /* It expects a TMP112 but a TMP105 is compatible */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), TYPE_TMP105,
++                     0x4a);
++
++    /* It expects a ds3232 but a ds1338 is good enough */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "ds1338", 0x68);
++
++    /* It expects a pca9555 but a pca9552 is compatible */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_PCA9552,
++                     0x20);
 +}
 +
-+static void virtio_iommu_cleanup(QVirtioIOMMU *interface)
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = &bmc->soc;
+@@ -1082,6 +1134,24 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc, void *data)
 +{
-+    qvirtqueue_cleanup(interface->vdev->bus, interface->vq, alloc);
-+}
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+static void virtio_iommu_setup(QVirtioIOMMU *interface)
-+{
-+    QVirtioDevice *vdev = interface->vdev;
-+    uint64_t features;
-+
-+    features = qvirtio_get_features(vdev);
-+    features &= ~(QVIRTIO_F_BAD_FEATURE |
-+                  (1ull << VIRTIO_RING_F_INDIRECT_DESC) |
-+                  (1ull << VIRTIO_RING_F_EVENT_IDX) |
-+                  (1ull << VIRTIO_IOMMU_F_BYPASS));
-+    qvirtio_set_features(vdev, features);
-+    interface->vq = qvirtqueue_setup(interface->vdev, alloc, 0);
-+    qvirtio_set_driver_ok(interface->vdev);
-+}
-+
-+static void qvirtio_iommu_device_destructor(QOSGraphObject *obj)
-+{
-+    QVirtioIOMMUDevice *v_iommu = (QVirtioIOMMUDevice *) obj;
-+    QVirtioIOMMU *iommu = &v_iommu->iommu;
-+
-+    virtio_iommu_cleanup(iommu);
-+}
-+
-+static void qvirtio_iommu_device_start_hw(QOSGraphObject *obj)
-+{
-+    QVirtioIOMMUDevice *v_iommu = (QVirtioIOMMUDevice *) obj;
-+    QVirtioIOMMU *iommu = &v_iommu->iommu;
-+
-+    virtio_iommu_setup(iommu);
-+}
-+
-+static void *virtio_iommu_device_create(void *virtio_dev,
-+                                        QGuestAllocator *t_alloc,
-+                                        void *addr)
-+{
-+    QVirtioIOMMUDevice *virtio_rdevice = g_new0(QVirtioIOMMUDevice, 1);
-+    QVirtioIOMMU *interface = &virtio_rdevice->iommu;
-+
-+    interface->vdev = virtio_dev;
-+    alloc = t_alloc;
-+
-+    virtio_rdevice->obj.get_driver = qvirtio_iommu_device_get_driver;
-+    virtio_rdevice->obj.destructor = qvirtio_iommu_device_destructor;
-+    virtio_rdevice->obj.start_hw = qvirtio_iommu_device_start_hw;
-+
-+    return &virtio_rdevice->obj;
-+}
-+
-+/* virtio-iommu-pci */
-+static void *qvirtio_iommu_pci_get_driver(void *object, const char *interface)
-+{
-+    QVirtioIOMMUPCI *v_iommu = object;
-+    if (!g_strcmp0(interface, "pci-device")) {
-+        return v_iommu->pci_vdev.pdev;
-+    }
-+    return qvirtio_iommu_get_driver(&v_iommu->iommu, interface);
-+}
-+
-+static void qvirtio_iommu_pci_destructor(QOSGraphObject *obj)
-+{
-+    QVirtioIOMMUPCI *iommu_pci = (QVirtioIOMMUPCI *) obj;
-+    QVirtioIOMMU *interface = &iommu_pci->iommu;
-+    QOSGraphObject *pci_vobj =  &iommu_pci->pci_vdev.obj;
-+
-+    virtio_iommu_cleanup(interface);
-+    qvirtio_pci_destructor(pci_vobj);
-+}
-+
-+static void qvirtio_iommu_pci_start_hw(QOSGraphObject *obj)
-+{
-+    QVirtioIOMMUPCI *iommu_pci = (QVirtioIOMMUPCI *) obj;
-+    QVirtioIOMMU *interface = &iommu_pci->iommu;
-+    QOSGraphObject *pci_vobj =  &iommu_pci->pci_vdev.obj;
-+
-+    qvirtio_pci_start_hw(pci_vobj);
-+    virtio_iommu_setup(interface);
-+}
-+
-+
-+static void *virtio_iommu_pci_create(void *pci_bus, QGuestAllocator *t_alloc,
-+                                   void *addr)
-+{
-+    QVirtioIOMMUPCI *virtio_rpci = g_new0(QVirtioIOMMUPCI, 1);
-+    QVirtioIOMMU *interface = &virtio_rpci->iommu;
-+    QOSGraphObject *obj = &virtio_rpci->pci_vdev.obj;
-+
-+    virtio_pci_init(&virtio_rpci->pci_vdev, pci_bus, addr);
-+    interface->vdev = &virtio_rpci->pci_vdev.vdev;
-+    alloc = t_alloc;
-+
-+    obj->get_driver = qvirtio_iommu_pci_get_driver;
-+    obj->start_hw = qvirtio_iommu_pci_start_hw;
-+    obj->destructor = qvirtio_iommu_pci_destructor;
-+
-+    return obj;
-+}
-+
-+static void virtio_iommu_register_nodes(void)
-+{
-+    QPCIAddress addr = {
-+        .devfn = QPCI_DEVFN(4, 0),
-+    };
-+
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "addr=04.0",
-+    };
-+
-+    /* virtio-iommu-device */
-+    qos_node_create_driver("virtio-iommu-device", virtio_iommu_device_create);
-+    qos_node_consumes("virtio-iommu-device", "virtio-bus", NULL);
-+    qos_node_produces("virtio-iommu-device", "virtio");
-+    qos_node_produces("virtio-iommu-device", "virtio-iommu");
-+
-+    /* virtio-iommu-pci */
-+    add_qpci_address(&opts, &addr);
-+    qos_node_create_driver("virtio-iommu-pci", virtio_iommu_pci_create);
-+    qos_node_consumes("virtio-iommu-pci", "pci-bus", &opts);
-+    qos_node_produces("virtio-iommu-pci", "pci-device");
-+    qos_node_produces("virtio-iommu-pci", "virtio");
-+    qos_node_produces("virtio-iommu-pci", "virtio-iommu");
-+}
-+
-+libqos_init(virtio_iommu_register_nodes);
-diff --git a/tests/qtest/libqos/virtio-iommu.h b/tests/qtest/libqos/virtio-iommu.h
-new file mode 100644
-index 00000000000..d753761958a
---- /dev/null
-+++ b/tests/qtest/libqos/virtio-iommu.h
-@@ -0,0 +1,40 @@
-+/*
-+ * libqos driver virtio-iommu-pci framework
-+ *
-+ * Copyright (c) 2021 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
-+ * option) any later version.  See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#ifndef TESTS_LIBQOS_VIRTIO_IOMMU_H
-+#define TESTS_LIBQOS_VIRTIO_IOMMU_H
-+
-+#include "qgraph.h"
-+#include "virtio.h"
-+#include "virtio-pci.h"
-+
-+typedef struct QVirtioIOMMU QVirtioIOMMU;
-+typedef struct QVirtioIOMMUPCI QVirtioIOMMUPCI;
-+typedef struct QVirtioIOMMUDevice QVirtioIOMMUDevice;
-+
-+struct QVirtioIOMMU {
-+    QVirtioDevice *vdev;
-+    QVirtQueue *vq;
++    mc->desc       = "Inspur FP5280G2 BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = FP5280G2_BMC_HW_STRAP1;
++    amc->fmc_model = "n25q512a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = fp5280g2_bmc_i2c_init;
++    mc->default_ram_size = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
 +};
 +
-+struct QVirtioIOMMUPCI {
-+    QVirtioPCIDevice pci_vdev;
-+    QVirtioIOMMU iommu;
-+};
-+
-+struct QVirtioIOMMUDevice {
-+    QOSGraphObject obj;
-+    QVirtioIOMMU iommu;
-+};
-+
-+#endif
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index c9d8458062f..982ffb3e38d 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -230,6 +230,7 @@ qos_test_ss.add(
-   'virtio-rng-test.c',
-   'virtio-scsi-test.c',
-   'virtio-serial-test.c',
-+  'virtio-iommu-test.c',
-   'vmxnet3-test.c',
- )
- if have_virtfs
-diff --git a/tests/qtest/virtio-iommu-test.c b/tests/qtest/virtio-iommu-test.c
-new file mode 100644
-index 00000000000..2f0deb522b6
---- /dev/null
-+++ b/tests/qtest/virtio-iommu-test.c
-@@ -0,0 +1,299 @@
-+/*
-+ * QTest testcase for VirtIO IOMMU
-+ *
-+ * Copyright (c) 2021 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
-+ * option) any later version.  See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+#include "qemu/module.h"
-+#include "libqos/qgraph.h"
-+#include "libqos/virtio-iommu.h"
-+#include "hw/virtio/virtio-iommu.h"
-+
-+#define PCI_SLOT_HP             0x06
-+#define QVIRTIO_IOMMU_TIMEOUT_US (30 * 1000 * 1000)
-+
-+static QGuestAllocator *alloc;
-+
-+static void pci_config(void *obj, void *data, QGuestAllocator *t_alloc)
-+{
-+    QVirtioIOMMU *v_iommu = obj;
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    uint64_t input_range_start = qvirtio_config_readq(dev, 8);
-+    uint64_t input_range_end = qvirtio_config_readq(dev, 16);
-+    uint32_t domain_range_start = qvirtio_config_readl(dev, 24);
-+    uint32_t domain_range_end = qvirtio_config_readl(dev, 28);
-+
-+    g_assert_cmpint(input_range_start, ==, 0);
-+    g_assert_cmphex(input_range_end, ==, UINT64_MAX);
-+    g_assert_cmpint(domain_range_start, ==, 0);
-+    g_assert_cmpint(domain_range_end, ==, 32);
-+}
-+
-+/**
-+ * send_attach_detach - Send an attach/detach command to the device
-+ * @type: VIRTIO_IOMMU_T_ATTACH/VIRTIO_IOMMU_T_DETACH
-+ * @domain: domain the end point is attached to
-+ * @ep: end-point
-+ */
-+static int send_attach_detach(QTestState *qts, QVirtioIOMMU *v_iommu,
-+                              uint8_t type, uint32_t domain, uint32_t ep)
-+{
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    QVirtQueue *vq = v_iommu->vq;
-+    uint64_t ro_addr, wr_addr;
-+    uint32_t free_head;
-+    struct virtio_iommu_req_attach req; /* same layout as detach */
-+    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
-+    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
-+    char buffer[64];
-+    int ret;
-+
-+    req.head.type = type;
-+    req.domain = domain;
-+    req.endpoint = ep;
-+
-+    ro_addr = guest_alloc(alloc, ro_size);
-+    wr_addr = guest_alloc(alloc, wr_size);
-+
-+    qtest_memwrite(qts, ro_addr, &req, ro_size);
-+    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
-+    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
-+    qvirtqueue_kick(qts, dev, vq, free_head);
-+    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
-+                           QVIRTIO_IOMMU_TIMEOUT_US);
-+    qtest_memread(qts, wr_addr, buffer, wr_size);
-+    ret = ((struct virtio_iommu_req_tail *)buffer)->status;
-+    guest_free(alloc, ro_addr);
-+    guest_free(alloc, wr_addr);
-+    return ret;
-+}
-+
-+/**
-+ * send_map - Send a map command to the device
-+ * @domain: domain the new binding is attached to
-+ * @virt_start: iova start
-+ * @virt_end: iova end
-+ * @phys_start: base physical address
-+ * @flags: mapping flags
-+ */
-+static int send_map(QTestState *qts, QVirtioIOMMU *v_iommu,
-+                    uint32_t domain, uint64_t virt_start, uint64_t virt_end,
-+                    uint64_t phys_start, uint32_t flags)
-+{
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    QVirtQueue *vq = v_iommu->vq;
-+    uint64_t ro_addr, wr_addr;
-+    uint32_t free_head;
-+    struct virtio_iommu_req_map req;
-+    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
-+    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
-+    char buffer[64];
-+    int ret;
-+
-+    req.head.type = VIRTIO_IOMMU_T_MAP;
-+    req.domain = domain;
-+    req.virt_start = virt_start;
-+    req.virt_end = virt_end;
-+    req.phys_start = phys_start;
-+    req.flags = flags;
-+
-+    ro_addr = guest_alloc(alloc, ro_size);
-+    wr_addr = guest_alloc(alloc, wr_size);
-+
-+    qtest_memwrite(qts, ro_addr, &req, ro_size);
-+    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
-+    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
-+    qvirtqueue_kick(qts, dev, vq, free_head);
-+    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
-+                           QVIRTIO_IOMMU_TIMEOUT_US);
-+    memread(wr_addr, buffer, wr_size);
-+    ret = ((struct virtio_iommu_req_tail *)buffer)->status;
-+    guest_free(alloc, ro_addr);
-+    guest_free(alloc, wr_addr);
-+    return ret;
-+}
-+
-+/**
-+ * send_unmap - Send an unmap command to the device
-+ * @domain: domain the new binding is attached to
-+ * @virt_start: iova start
-+ * @virt_end: iova end
-+ */
-+static int send_unmap(QTestState *qts, QVirtioIOMMU *v_iommu,
-+                      uint32_t domain, uint64_t virt_start, uint64_t virt_end)
-+{
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    QVirtQueue *vq = v_iommu->vq;
-+    uint64_t ro_addr, wr_addr;
-+    uint32_t free_head;
-+    struct virtio_iommu_req_unmap req;
-+    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
-+    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
-+    char buffer[64];
-+    int ret;
-+
-+    req.head.type = VIRTIO_IOMMU_T_UNMAP;
-+    req.domain = domain;
-+    req.virt_start = virt_start;
-+    req.virt_end = virt_end;
-+
-+    ro_addr = guest_alloc(alloc, ro_size);
-+    wr_addr = guest_alloc(alloc, wr_size);
-+
-+    qtest_memwrite(qts, ro_addr, &req, ro_size);
-+    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
-+    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
-+    qvirtqueue_kick(qts, dev, vq, free_head);
-+    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
-+                           QVIRTIO_IOMMU_TIMEOUT_US);
-+    memread(wr_addr, buffer, wr_size);
-+    ret = ((struct virtio_iommu_req_tail *)buffer)->status;
-+    guest_free(alloc, ro_addr);
-+    guest_free(alloc, wr_addr);
-+    return ret;
-+}
-+
-+/* Test unmap scenari documented in the spec v0.12 */
-+static void test_attach_detach(void *obj, void *data, QGuestAllocator *t_alloc)
-+{
-+    QVirtioIOMMU *v_iommu = obj;
-+    QTestState *qts = global_qtest;
-+    int ret;
-+
-+    alloc = t_alloc;
-+
-+    /* type, domain, ep */
-+
-+    /* attach ep0 to domain 0 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* attach a non existing device (1) */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 444);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    /* detach a non existing device (1) */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 1);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    /* move ep0 from domain 0 to domain 1 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* detach ep0 to domain 0 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 0);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL);
-+
-+    /* detach ep0 from domain 1 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 0x0, 0xFFF, 0xa1000,
-+                   VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 0x2000, 0x2FFF, 0xb1000,
-+                   VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+}
-+
-+static void test_map_unmap(void *obj, void *data, QGuestAllocator *t_alloc)
-+{
-+    QVirtioIOMMU *v_iommu = obj;
-+    QTestState *qts = global_qtest;
-+    int ret;
-+
-+    alloc = t_alloc;
-+
-+    /* attach ep0 to domain 1 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    ret = send_map(qts, v_iommu, 0, 0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    /* domain, virt start, virt end, phys start, flags */
-+    ret = send_map(qts, v_iommu, 1, 0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    ret = send_unmap(qts, v_iommu, 4, 0x10, 0xFFF);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    ret = send_unmap(qts, v_iommu, 1, 0x10, 0xFFF);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE);
-+
-+    ret = send_unmap(qts, v_iommu, 1, 0, 0x1000);
-+    g_assert_cmpint(ret, ==, 0); /* unmap everything */
-+
-+    /* Spec example sequence */
-+
-+    /* 1 */
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, 0); /* doesn't unmap anything */
-+
-+    /* 2 */
-+    send_map(qts, v_iommu, 1, 0, 9, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 9);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,9] */
-+
-+    /* 3 */
-+    send_map(qts, v_iommu, 1, 0, 4, 0xb1000, VIRTIO_IOMMU_MAP_F_READ);
-+    send_map(qts, v_iommu, 1, 5, 9, 0xb2000, VIRTIO_IOMMU_MAP_F_READ);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 9);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [5,9] */
-+
-+    /* 4 */
-+    send_map(qts, v_iommu, 1, 0, 9, 0xc1000, VIRTIO_IOMMU_MAP_F_READ);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE); /* doesn't unmap anything */
-+
-+    ret = send_unmap(qts, v_iommu, 1, 0, 10);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* 5 */
-+    send_map(qts, v_iommu, 1, 0, 4, 0xd1000, VIRTIO_IOMMU_MAP_F_READ);
-+    send_map(qts, v_iommu, 1, 5, 9, 0xd2000, VIRTIO_IOMMU_MAP_F_READ);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
-+
-+    ret = send_unmap(qts, v_iommu, 1, 5, 9);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* 6 */
-+    send_map(qts, v_iommu, 1, 0, 4, 0xe2000, VIRTIO_IOMMU_MAP_F_READ);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 9);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
-+
-+    /* 7 */
-+    send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
-+    send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 14);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [10,14] */
-+
-+    send_unmap(qts, v_iommu, 1, 0, 100);
-+    send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
-+    send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [10,14] */
-+}
-+
-+static void register_virtio_iommu_test(void)
-+{
-+    qos_add_test("config", "virtio-iommu", pci_config, NULL);
-+    qos_add_test("attach_detach", "virtio-iommu", test_attach_detach, NULL);
-+    qos_add_test("map_unmap", "virtio-iommu", test_map_unmap, NULL);
-+}
-+
-+libqos_init(register_virtio_iommu_test);
+ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1146,6 +1216,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_g220a_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_fp5280g2_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
 -- 
-2.26.3
+2.30.2
 

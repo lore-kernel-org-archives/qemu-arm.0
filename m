@@ -1,196 +1,190 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp4045220lfc;
-        Thu, 14 Oct 2021 06:27:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+A6xfbDXXXWRFCOBCN94B865V3Jz9WMoWXr04g3ivDUsBnZkg4LDn3qrFV2Ml3MuciJAp
-X-Received: by 2002:ac8:d3:: with SMTP id d19mr6440728qtg.94.1634218060886;
-        Thu, 14 Oct 2021 06:27:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634218060; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp4017976lfc;
+        Thu, 14 Oct 2021 06:02:10 -0700 (PDT)
+X-Received: by 2002:a2e:9891:: with SMTP id b17mr6010169ljj.391.1634216530464;
+        Thu, 14 Oct 2021 06:02:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634216530; cv=none;
         d=google.com; s=arc-20160816;
-        b=kKkvymwwDZUbsJJu1KTLSYgpRZpRyBe/92JIN61oCSkp/zJF+l6jyoF/SspAdlkhRo
-         hXMyGOEJWBgtMnBQZDI/GcNRxJDK6xqj1XJUCexMSpmvK72tGcLHTI5FWnvLXecVbTuU
-         f415aQohC8PaZ9eVDOgW+UO6PWQMKY3bTjabeaRYVW1BvjAZQ+7YNfS4L5B6jGLACkT4
-         veBk/oUispnmAL3NVrZfBWKnd5fNJA3Nw3yZeLWrYmkT0F6SJF/cpVJuzZu54xBBYLzE
-         M0D//iAzGH2J1eEM0Y0r8trRI9z/kutWn00oJb1YseNCqqwgr/B9eI5txJ4xgEDLoXHT
-         7KNA==
+        b=PCHNDTkz2loUH5o2srBdqWzPlqQ2iaiM+RNmx4SIuYMy4vWabk7ByqRq96YjIgv6xd
+         VzpBpDpBXezQplgJumEGE7IYdsOn3aKmz8saq/7rHzSwi/cdzlTa++3IpVwWmKI6xp5i
+         4lKQJJkRUi+1rKEHAFFpCHEgQqRYA/KKNYGKxbxqQSDBMJM11Nyl0cs6dpEckUe/cGS+
+         6Q1FA9wqKWWpjZmivYevZz08mH6ZlQdhiNQPoZepEN5vuEzKWdRR3FHqrX+Ow1bt5qqZ
+         91iuCW4Z8gNbcn5yB77Rp3CHAtcMevvrUH+0tUmKP6pnBVoUeBtFnrXFbrduj0LUX0ww
+         jJZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=wYWhTSQZo0WrNC3BbVGEZxUEoCt8pF+TIc6rBy+BArA=;
-        b=B9kQtv6fiB80z3OqKzY0YV5K7I1yXRro6T4B59ZelE9yHm2ka/nif+Bq1V/aQf3X6Q
-         kcXUab5fYhrB6vQEt8fBYMJJhnAsqOLgXF98gUxx9zG+U5k/EdcvcctRLTs+N9ub1K42
-         xHTWGOcfcxVOFASpmypgBH/NPuoSl6vUAVxStnBLXGVcr3esf7Zafc6emp+j+neQbDj4
-         28MrrBExnuyrLv4Nnla6l/Ml9XoNEA7XGofjlHSr62sXpclgRaUCQYfdAWlFGeby01tP
-         UAK/zOOMbXxxB+N5ojlF4BFoD9c4QqfYmGr8FGG5tki7lPpd8r9MQh5UnTi3bmO608nj
-         H5Dw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=DVv/5E+aGIy7AtFpmIH2uJcBNUgX7AvHJrI1vISAJQ4=;
+        b=Qsr4Eck6CTe30BEeBAG6qfO4+bj07To/Ar+b8lUBpfjxnDu3iKY6vzBwArYz9+amVF
+         xwgW9q5eOjOzUExMVpm420adVdwbqXYXTTdy0MgUBH64btjziZIoGHjQJ+nMNg5tEUNg
+         21elElnpbkd74HmsuKwtMp9OU64egpQMXmOwj8Yibk1/pQGuDvOFznU+EF9cISYw23WY
+         Ls0nZPJoZIh/EUfB/+rFhplu9UI9sDqc6Fwqnm1g7t9+C3l7LcHjCCgjZ/piPIee745o
+         ZazL+86uZLtbWyRaJ7qyW/ZoUo3BYs7gO8LujRlLwIU7Iqx2h0BbTSiWbJd+WqiccDmv
+         yqFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si2897749qko.334.2021.10.14.06.27.40
+       dkim=pass header.i=@linaro.org header.s=google header.b=AawzyBoX;
+       spf=pass (google.com: domain of assad.hashmi@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=assad.hashmi@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <assad.hashmi@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w11sor634093lfu.64.2021.10.14.06.02.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Oct 2021 06:27:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 14 Oct 2021 06:02:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of assad.hashmi@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:38790 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mb0lo-0007KO-Ay
-	for alex.bennee@linaro.org; Thu, 14 Oct 2021 09:27:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35126)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mb0gm-0003cI-UE; Thu, 14 Oct 2021 09:22:29 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2941)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mb0gh-0001OD-Kn; Thu, 14 Oct 2021 09:22:28 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.56])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HVVLq401wzbmbd;
- Thu, 14 Oct 2021 21:17:39 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Thu, 14 Oct 2021 21:22:08 +0800
-Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Thu, 14 Oct 2021 21:22:07 +0800
-From: Yanan Wang <wangyanan55@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
- <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
- <imammedo@redhat.com>
-Subject: [PATCH v8 0/8] hw/arm/virt: Introduce cpu topology support
-Date: Thu, 14 Oct 2021 21:21:58 +0800
-Message-ID: <20211014132206.19220-1-wangyanan55@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=AawzyBoX;
+       spf=pass (google.com: domain of assad.hashmi@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=assad.hashmi@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=DVv/5E+aGIy7AtFpmIH2uJcBNUgX7AvHJrI1vISAJQ4=;
+        b=AawzyBoXwnxZRATY4FZrrBaoUqGl1qAMVsssxpTfh8HJ1JGaN+jbkw7NDhj86xtMfV
+         8hOGjP0xdxMV72EYRxibmhGZCNFInNzBBCrovzmlViXlHPygHHvpI3pccHxmPmW0JSi9
+         q1p9M67aUZ8SxMJLa5h0aHYP4c7fnPOMCnSXhp3Bd1URiByQAkjihA3TGcJdMb6k6Oex
+         0yDfAXHxdh0EHfxQQjRehM9jngy8LT30URRQ/h/GDRxXIMa+Pd3r83GqvdrbByaie1bJ
+         Fhd+02AQD6iEw3tMPskaJ9Ryytnpl42bo7rE65yp7jpXbNWvRxaRBfgz2k+rjFQ3DYvl
+         KiaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=DVv/5E+aGIy7AtFpmIH2uJcBNUgX7AvHJrI1vISAJQ4=;
+        b=ZesDjdNeUeoCbqQgIFEBpAPOJaOq2OkW/YNzFC7TT7BNX9oJ8PYz0mBrOjOUNn1Uip
+         KjsXalEmj4eSyz/lTotFT32nTZCoaFE2PU2j7eGAo//vEwC9NDlIMkMQ0Vbs9mrHIPEN
+         YphlLYFZeywgTu+CFOky4gXCZ0/YLsQWb4dapE4zpOc2AtzjTQdrcCOrylmtOr2dp7Nk
+         eIYATispPNX4h3+xDeUsFZ4DSmXznqZkweJ71TSdHvDe6a0e0qWqnmZLC5AfoqGEDaoX
+         Gi9yyTJ5X7E0LT9F2YwlLLEkmt8T5RZAUIQTNdGZjKGjJP9EbFIbqaPPY0bMMVUclA57
+         BM/g==
+X-Gm-Message-State: AOAM532EMOCT/C7ALmnieM1KPJPYiB4XGFiHCBjNilHp4zq7G6dIfGne
+	syBV6LpoOfQkz1BoBUcmkYjops1mcFBf6/5fJdVrsRaeI/JSIFMZ
+X-Google-Smtp-Source: ABdhPJy8mwveF/2DHNm6VyEjPrUPiH4yoO614RysIeySIGgaNYGVLHoaBKxpiQSHkKjmjfLNF5rExS3OY9D5ENJYp5M=
+X-Received: by 2002:ac2:41c8:: with SMTP id d8mr4879121lfi.616.1634216527104;
+ Thu, 14 Oct 2021 06:02:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>, wanghaibin.wang@huawei.com,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lwwNOKNdgXFP
+References: <877deoevj8.fsf@linaro.org> <CAK8P3a3rKZLq3UuE=w9W5A9G9tfmPvc-ObnWVX=PJKQKrTX5dA@mail.gmail.com>
+ <87lf33dc58.fsf@linaro.org>
+In-Reply-To: <87lf33dc58.fsf@linaro.org>
+From: Assad Hashmi <assad.hashmi@linaro.org>
+Date: Thu, 14 Oct 2021 14:01:56 +0100
+Message-ID: <CAEVS6HrENq-J4q5H20VMK02zNNsSkQ4M5o2ntv4OHNG83wgAOA@mail.gmail.com>
+Subject: Re: Approaches for same-on-same linux-user execve?
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Laurent Vivier <laurent@vivier.eu>, 
+	Richard Henderson <richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, "Eric W. Biederman" <ebiederm@xmission.com>, 
+	James Bottomley <James.Bottomley@hansenpartnership.com>, 
+	Arnd Bergmann <arnd.bergmann@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 2HxNfD3gbVe/
 
-Hi,
+> ARM's armie takes a different approach with the trap and emulate of
+> SIGILL instructions. This works well for the occasional "new"
+> instruction but will be less efficient overall if your instruction
+> stream is entirely novel.
 
-This is the latest v8 with update in patch #6 and #8. Now only one
-generic reference file for PPTT is added in tests/data/acpi/virt.
-Machiel and Igor, please help to have a look, thanks!
+To clarify: earlier versions of armie did use the SIGILL trap-and-emulate
+method, which was limited. Recent versions, including the latest release ar=
+e
+based on the DynamoRIO platform which enables full emulation and
+instrumentation (https://dynamorio.org). By default, DynamoRIO and by exten=
+sion
+armie, follow all child processes, see
+https://dynamorio.org/page_deploy.html#op_children.
 
-Description of this series:
-Once the view of an accurate virtual cpu topology is provided to guest,
-with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
-e.g., the scheduling performance improvement. See Dario Faggioli's
-research and the related performance tests in [1] for reference.
+As new Arm architecture features are added to QEMU, e.g. SVE, SVE2, SME etc=
+.
+there is an expectation in the Arm community that QEMU can run large Arm
+user-space applications on Arm hardware, making lack of same-on-same execve=
+ a
+not insignificant blocker.
 
-This patch series introduces cpu topology support for Arm platform.
-Both cpu-map in DT and ACPI PPTT table are introduced to store the
-topology information. And we only describe the topology information
-to 6.2 and newer virt machines, considering compatibility.
+AIUI, given the open-source licensing of QEMU and DynamoRIO, there would be=
+ no
+legal reason for QEMU not to borrow from DynamoRIO.
 
-[1] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines
--friend-or-foe-dario-faggioli-suse
 
-Series tested locally on Arm64 machines kunpeng920.
-After booting a Linux guest with "-smp 16,sockets=4,cores=4,threads=1,maxcpus=16",
-through lscpu we will see the information about CPU topology like:
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              16
-On-line CPU(s) list: 0-15
-Thread(s) per core:  1
-Core(s) per socket:  4
-Socket(s):           4
-NUMA node(s):        1
-Vendor ID:           0x48
-Model:               0
-Stepping:            0x1
-BogoMIPS:            200.00
-NUMA node0 CPU(s):   0-15
-
-and with "-smp 16" we will see:
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              16
-On-line CPU(s) list: 0-15
-Thread(s) per core:  1
-Core(s) per socket:  16
-Socket(s):           1
-NUMA node(s):        1
-Vendor ID:           0x48
-Model:               0
-Stepping:            0x1
-BogoMIPS:            200.00
-NUMA node0 CPU(s):   0-15
-
-Changelog:
-v7->v8:
-- rebased on top of master (commit e5b2333f24)
-- only add one generic expected file for PPTT instead of four, which works
-  fine enough for now (patch #6 and #8 updated)
-- v7: https://lore.kernel.org/qemu-devel/20211007030746.10420-1-wangyanan55@huawei.com/
-
-v6->v7:
-- rebased on top of master (commit ca61fa4b80)
-- use newly introduced acpi_table_begin/acpi_table_end APIs to build PPTT
-  (patch #5 updated)
-- add reference files for PPTT to fix broken bios-table-test for Aarch64
-  virt machine (patch #6-#8 added)
-- v6: https://lore.kernel.org/qemu-devel/20210824122016.144364-1-wangyanan55@huawei.com/
-
-Andrew Jones (2):
-  hw/arm/virt: Add cpu-map to device tree
-  hw/acpi/aml-build: Add PPTT table
-
-Yanan Wang (6):
-  hw/arm/virt: Only describe cpu topology since virt-6.2
-  device_tree: Add qemu_fdt_add_path
-  hw/acpi/aml-build: Add Processor hierarchy node structure
-  tests/data/acpi/virt: Add an empty expected file for PPTT
-  hw/arm/virt-acpi-build: Generate PPTT table
-  tests/data/acpi/virt: Update the empty expected file for PPTT
-
- hw/acpi/aml-build.c          |  86 +++++++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c     |   8 +++-
- hw/arm/virt.c                |  71 +++++++++++++++++++++++++----
- include/hw/acpi/aml-build.h  |   7 +++
- include/hw/arm/virt.h        |   4 +-
- include/sysemu/device_tree.h |   1 +
- softmmu/device_tree.c        |  44 +++++++++++++++++-
- tests/data/acpi/virt/PPTT    | Bin 0 -> 76 bytes
- 8 files changed, 207 insertions(+), 14 deletions(-)
- create mode 100644 tests/data/acpi/virt/PPTT
-
---
-2.19.1
-
+On Fri, 8 Oct 2021 at 11:49, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+>
+> Arnd Bergmann <arnd@arndb.de> writes:
+>
+> > On Thu, Oct 7, 2021 at 4:32 PM Alex Benn=C3=A9e <alex.bennee@linaro.org=
+> wrote:
+> >>
+> >> I came across a use-case this week for ARM although this may be also
+> >> applicable to architectures where QEMU's emulation is ahead of the
+> >> hardware currently widely available - for example if you want to
+> >> exercise SVE code on AArch64. When the linux-user architecture is not
+> >> the same as the host architecture then binfmt_misc works perfectly fin=
+e.
+> >>
+> >> However in the case you are running same-on-same you can't use
+> >> binfmt_misc to redirect execution to using QEMU because any attempt to
+> >> trap native binaries will cause your userspace to hang as binfmt_misc
+> >> will be invoked to run the QEMU binary needed to run your application
+> >> and a deadlock ensues.
+> >
+> > Can you clarify how the code would run in this case? Does qemu-user
+> > still emulate every single instruction, both the compatible and the inc=
+ompatible
+> > ones, or is the idea here to run as much as possible natively and only
+> > emulate the instructions that are not available natively, using either
+> > SIGILL or searching through the object code for those instructions?
+>
+> qemu-user only every does a complete translation. The hope is of course
+> our translator is "fairly efficient" so for example integer SVE
+> operations should get unrolled into a series of AdvSIMD instructions on
+> the backend.
+>
+> ARM's armie takes a different approach with the trap and emulate of
+> SIGILL instructions. This works well for the occasional "new"
+> instruction but will be less efficient overall if your instruction
+> stream is entirely novel.
+>
+> >> Trap execve in QEMU linux-user
+> >> ------------------------------
+> >>
+> >> We could add a flag to QEMU so at the point of execve it manually
+> >> invokes the new process with QEMU, passing on the flag to persist this
+> >> behaviour.
+> >
+> > This sounds like the obvious approach if you already do a full
+> > instruction emulation. You'd still need to run the parent process
+> > by calling qemu-user manually, but I suppose you need to do
+> > something like this in any case.
+> >
+> >> Add path mask to binfmt_misc
+> >> ----------------------------
+> >>
+> >> The other option would be to extend binfmt_misc to have a path mask so
+> >> it only applies it's alternative execution scheme to binaries in a
+> >> particular section of the file-system (or maybe some sort of pattern?)=
+.
+> >
+> > The main downside I see here is that it requires kernel modification, s=
+o
+> > it would not work for old kernels.
+> >
+> >> Are there any other approaches you could take? Which do you think has
+> >> the most merit?
+> >
+> > If we modify binfmt_misc in the kernel, it might be helpful to do it
+> > by extending it with namespace support, so it could be constrained
+> > to a single container without having to do the emulation outside.
+> > Unfortunately that does not solve the problem of preventing the
+> > qemu-user binary from triggering the binfmt_misc lookup.
+>
+> I wonder how that would interact with the persistent ("P") mode of
+> binfmt_misc. The backend is identified at the start and gets re-used
+> rather than looked up each time.
+>
+> >
+> >        Arnd
+>
+>
+> --
+> Alex Benn=C3=A9e

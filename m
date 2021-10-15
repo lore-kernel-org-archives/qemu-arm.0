@@ -1,147 +1,114 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp499420lfc;
-        Fri, 15 Oct 2021 13:39:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWiOZv4aZrHSG5Dd5JMqF44EEGwwFHnEg38aKTD6mOuONJgz/N5JPwwo5CD02E8wXEbgka
-X-Received: by 2002:a67:eec9:: with SMTP id o9mr16370675vsp.53.1634330358707;
-        Fri, 15 Oct 2021 13:39:18 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1634330358; cv=pass;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp623077lfc;
+        Fri, 15 Oct 2021 16:32:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwaK4aw2GSDomZEkWkEmcOCso7nqtoLJ+wXdnprrKFlgfx3WOe4CB4DOzRlLYPvKvSwHiub
+X-Received: by 2002:a67:fdd3:: with SMTP id l19mr17649261vsq.37.1634340724658;
+        Fri, 15 Oct 2021 16:32:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634340724; cv=none;
         d=google.com; s=arc-20160816;
-        b=kfKG+Umzmn4ZNpxkwqJV0sxh5xseRqwwdJhZFrOnBRSZHO/YSziAtOG6yIcCVhAZeb
-         ZM0fUTsLcFlS9ZBRtzYs0w3YJ9WtrheUOzlYjdVOI2DDQeEnF9XlfnbcCJac0rZMAo8e
-         kepwID0k9yZThMsH59j8BEhZBoeEJFCFTOzrMSrhiVSGHG9bSpKTn6Y4RssXsIBMMEaU
-         rW3uXw91eN4cjh4N3vh8q96Upyl7lm5DoImtqMbsdXgPNX1vJ5sX09BKezNEcir1qnB9
-         YOdP9GvIZDDsmq/mcbILbTCXSp1nnUyTEcdpBOMHVANbZSpaDlysJACIUDIbEAIeppYE
-         4zgQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=wVb34XBJQ1GPpOpqihUXyq0AZp1lEcLNgIeHSbc3WKaQEFxJfyaQUr3JRj2TmXhrB1
+         S2qO42mXzccG/P1tCbAoRJVz8+WC12Ic9Nmi5K9xw7T/4ZE2pVx6m66Ngw5rX+uLDwfo
+         eA3uUIJDQOzDD0d2guwlmUwZ2ZVQgIncGvV/JxUD0F0eTwujTjl4qQ71ltJ916hkeyos
+         lfsDoTpN988wlbYoNqFhHGnAEibYNW5E797tRSSG39VRO/YUe4fNxVKfFKxVZgE1io2+
+         yKLivsIcxmg/GX47FWBT5JsjmAm+xVVsCIUB7WnkEvXmegKVycbwtR6/0lFCw0Zb4gYK
+         vjtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=I3KWTabP03ClI+yX9/i8IP+n+U06HUu7XfK852+fWR0=;
-        b=Rebv8z4jhvIXW09c8QOUYItZ3W7RBkj3EIp+X0GB+edbjixZnsqHlIjwfFgfqIbSQ2
-         UlVPtVSCCmqHnYrFF10+590fjo5KHp9YuTmB2/ahqdIvNBuF1+bq+P1I7bdDLn4gdrM3
-         R5zg6u/WeIfqvhWGnxsRcQSiweKalGcPfqi3zt1IF/dPUt3rcVwcjZtDtwormuFIV/St
-         V/KdEbZXhqvq/19oTI4+SvjSTvfg8kyLWU4e4fUaIGuoeRlHoTrX1fuyf0zZ9218F8CN
-         Vm9uOtgD24DRXKcij4GiXsgBwtP9E24jcOs9qjwcEcAf9okxVCITHTWNTykq189sZ0BP
-         awYw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=NaDwKK0s;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=J+L1utn27MGlQ35iulW095bePFsQG+QxIx1adp1qiTg=;
+        b=NctmbHr7eQejgWwul4l54SmKsCIM7YPuMUVTphSLOiOPWz1LxSvH1gCOKsYDJVVWRJ
+         M1LbHgXlOKXu43JBTrbs2AEExcjLR1Zbfbg493KJWj7bqdtgiiKr5S1sAetRS8StZnSG
+         5x9/ONxj2ziQZTQHOkAjyy3hbu9MMz35WgWBfqhT4+QCwMsnXM9s1GCXQk2GqwCrfqLn
+         T+fyvwjCA9t+X97fHX7roPaYdgfq06iM5kfVtEWDL9R6VvMYC8K+aYKvuhZQfWdXmDkQ
+         aa3ro83w3aKdOSLwWbpwQ/LrVSFi/vBNYw/MDz6HFY6W5ZolupguiB8lk5vkrOiDeFZ/
+         ZlFQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LGE3BySf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3si7683080vse.75.2021.10.15.13.39.18
+        by mx.google.com with ESMTPS id h15si7945099ual.57.2021.10.15.16.32.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Oct 2021 13:39:18 -0700 (PDT)
+        Fri, 15 Oct 2021 16:32:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=NaDwKK0s;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=LGE3BySf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:35174 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mbTz3-0002oJ-Ve
-	for alex.bennee@linaro.org; Fri, 15 Oct 2021 16:39:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34950)
+	id 1mbWgF-0000Nv-W8
+	for alex.bennee@linaro.org; Fri, 15 Oct 2021 19:32:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mbTvh-0005yW-76; Fri, 15 Oct 2021 16:35:49 -0400
-Received: from mail-dm6nam11on2041.outbound.protection.outlook.com
- ([40.107.223.41]:24008 helo=NAM11-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tongh@xilinx.com>)
- id 1mbTvX-0002zl-Gt; Fri, 15 Oct 2021 16:35:48 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=d/4PPCBBC35hj1RuUL//NXNtsXCCvqGl2GZqB/pCaU21TVuNmlxSBYLKJb0DOq5Wg1PGOkS+WtHC7G5YZ4cA5PkO8Q5okUPmLOC5GDm20rGTWzLgJZqRGyLlOpnOVgAlcYo/Gc+en5GLMsatVZnQNA79TkZ/ikbaHI8pAIlEq59ljBhaMu1Edc/nun55LjiJChPEcDZXh0BitxofaQcxN9OEsofbxjTLAW0wviZtfl2FgpeHj2Jv5sckmKN9L/LLkYVss8G4RY/LKWtR6MiNFO0EbHorr7yoeRbgf6c9RSBCj76KjknNGxbW57zqzbDxp7fTH7YxU9lkFEUONDfMkg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=I3KWTabP03ClI+yX9/i8IP+n+U06HUu7XfK852+fWR0=;
- b=kQzdeisfZLNyzPA32BUVKZN6JDOafizplwH4yGUBC5U8w9A0WAYgG2RMf1TaOPGTzAsuHRf2iF3x8yQGkjwwJbU5QVHF9Kxs3xWWxbj0By0HFVP5J94MAhP2sf6KzkldgZzs6vrtoz58m6mXbDA9DMC4pnwVQwo+X4fhjddyPpBxgGOywZQU3/GZf37ecxW45LqugFEzEvDSHG7byEpXO6vL5VVvlKEB27PINmHdi7HIQG7p3edWNPqCup2uTDdfyvHMT5J3x/lVrriQFsiaw4BDr34W8yUYL0Ex9DTUYzYVuNw/lTkizrzizHPefYFkW6uRm9ZVFry8FRe+Yf1Imw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=I3KWTabP03ClI+yX9/i8IP+n+U06HUu7XfK852+fWR0=;
- b=NaDwKK0sMmeVpvCrlK7W3esyFYy6pcatpAnpSybYpf8Xwu8INowisyOmQSRQgJuVCoFfg8yqB3W2L1rGe25sNUHUYL7oSXommgLB0teBz+qL1WT1PKlcnTr5/Y8/lUpd4DnCQQbN2dsqt52kXA3Ci9b+hvDpPeXMaNpe+RXIZoA=
-Received: from SN6PR08CA0031.namprd08.prod.outlook.com (2603:10b6:805:66::44)
- by BYAPR02MB4088.namprd02.prod.outlook.com (2603:10b6:a02:fc::30)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.24; Fri, 15 Oct
- 2021 20:35:33 +0000
-Received: from SN1NAM02FT0036.eop-nam02.prod.protection.outlook.com
- (2603:10b6:805:66:cafe::9a) by SN6PR08CA0031.outlook.office365.com
- (2603:10b6:805:66::44) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4608.14 via Frontend
- Transport; Fri, 15 Oct 2021 20:35:32 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
-Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
- SN1NAM02FT0036.mail.protection.outlook.com (10.97.4.102) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4608.15 via Frontend Transport; Fri, 15 Oct 2021 20:35:32 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Fri, 15 Oct 2021 13:35:32 -0700
-Received: from smtp.xilinx.com (172.19.127.96) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.14 via Frontend Transport; Fri, 15 Oct 2021 13:35:32 -0700
-Received: from [172.19.2.40] (port=43112 helo=xsjtongh40.xilinx.com)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <tong.ho@xilinx.com>)
- id 1mbTvQ-000G9T-32; Fri, 15 Oct 2021 13:35:32 -0700
-From: Tong Ho <tong.ho@xilinx.com>
-To: <qemu-arm@nongnu.org>
-Subject: [PATCH 0/3] hw/nvram: Fix Memory Leaks in Xilinx eFUSE
-Date: Fri, 15 Oct 2021 13:35:29 -0700
-Message-ID: <20211015203532.2463705-1-tong.ho@xilinx.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mbWg4-0000NH-Gn
+ for qemu-arm@nongnu.org; Fri, 15 Oct 2021 19:31:52 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:34696)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mbWg2-0002Um-QM
+ for qemu-arm@nongnu.org; Fri, 15 Oct 2021 19:31:52 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ q2-20020a17090a2e0200b001a0fd4efd49so3575652pjd.1
+ for <qemu-arm@nongnu.org>; Fri, 15 Oct 2021 16:31:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=J+L1utn27MGlQ35iulW095bePFsQG+QxIx1adp1qiTg=;
+ b=LGE3BySfYXyWi7ah3iBw3Ddb7IrL25CErAshQVgRYsyTeVF7XgKR+uj02MxFxrjo/x
+ 2TegCpFWukh5/064OO22WObFlF+fbV5SSpms25CFf+ipifvZfeUOkQ1YwSfroRti6eu6
+ RpOjhxhqk5wK7WoDkerMUwtgpADd0uQivgkAjMUIM5sppoSCoespi0ke/WwYr3gBHAfy
+ HsAhIw/3G9Xn6BtoPSPQHXxMn3e65R+0mFIDaOK5KtUJFS+GMHlbcbhqplwPpZ48A8Xz
+ lncGt9UFYDHabJqJVI223Q+TZtJeUOnA1M4UIae7/GCMc2lhVeKlQgSsK4lWJFQxQcAk
+ zD2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=J+L1utn27MGlQ35iulW095bePFsQG+QxIx1adp1qiTg=;
+ b=2WO+JGRlp5zDogAoJPMAxpMV5UYrWLC0yjcgv8z8igybGa3RLZ/y+q5fWl0dDvozN4
+ OT/GkHYbNU1iX2AVH7y8u9qxMAfRFOFuIKG+iIbFdk1D5HFGq8Pag8axpDm4lIKmVFbO
+ uthNdt8A+ijtq7LCjmYT4CR8JcwZvzNPlh+o35Qy1NGoFfLBoLg7Je8YnLWqAdzDwJ+x
+ 3YeYCDbJ4dlKilP2VXy5zbcHfXiknYmDYYbOgOiszAcphM/ZMRyksXD/iff9rsXqfv3H
+ WBm7w4thTcXGjqy/U86ZT7XyvRIrPVZcJZCRNjEEtHcTwuSa5Eas1JNlxKN+nVHcuZh7
+ fheg==
+X-Gm-Message-State: AOAM5319Ca9WOz1B3fti0wZG/P2KeweK80jwzOPDeRWPLW8AAWEjlRky
+ eYfCV57qQo8S7ZrJ2gZR9cpapA==
+X-Received: by 2002:a17:90b:4f4b:: with SMTP id
+ pj11mr17103951pjb.4.1634340708825; 
+ Fri, 15 Oct 2021 16:31:48 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.134.125])
+ by smtp.gmail.com with ESMTPSA id u193sm5419487pgc.34.2021.10.15.16.31.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 Oct 2021 16:31:48 -0700 (PDT)
+Subject: Re: [PATCH v5] hw/arm/virt: Don't create device-tree node for empty
+ NUMA node
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+References: <20211015124246.23073-1-gshan@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <adc064ec-b068-cb91-a883-27e4ed77ee88@linaro.org>
+Date: Fri, 15 Oct 2021 16:31:46 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 299f0496-44d8-4e3a-80d2-08d9901b55bd
-X-MS-TrafficTypeDiagnostic: BYAPR02MB4088:
-X-Microsoft-Antispam-PRVS: <BYAPR02MB40889705E82B4466AB157758CDB99@BYAPR02MB4088.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: B28mTZbXjyhodKLfshp/eP+A49aS/9oW11slPKkZoROCMOQ1hsIvElLSNBLoJLT9qfGgVmz9I6L+CYaoGrqM6ilEDMzYLpstdCUOS9VVx5bhbyChlf/oDeoS/SMsBJxAOewO3aC1fxPkXmHLI/RgNeHIpQQPneHLvOGPORbowVzKd+3P7pYMvRQLT30BLKj3VQr88FobnS4IGF/BbOPsWd745+46E+Zl3HWVuV0SF3x/uEVz8k4ASK343ZKK0gXvbgnD/hE5AFMcm5NeDsUijgdHP6BoMNWHApKIo8KnOuE8+MU6y5QE6c6XeP5c+Lzii+SnTIvUJNim/7M/gMt0Weqqbp9JC410wIYY1RRIBXTm7DogDRaPl53byphZMMBBrk4W2/uiwoeFgDEw0saYFuWpRUeULut/kz5zLzCbm8PqSNja8q82Rz6S95q5NkyQSR3lR7jSQIP9IlGIpcuUyCX5pIs2rNK3xJGbNJPsB4EFdccT/fq6jvTmGzj2gQrxTJrWaRD6hJUX85oIK2DED3ezyoOqP2cdcssNrqdUfUkDITQKOgMF7mlt5HP5lKjOfZuVJB1aPhjHvINZyVFKqAn5/tkw9PBvsxT/wBj/yC5s6GKnf8mWR0BQ9yusV3wiVwHo18h24M7HD24UYRsio2Xc3cbutZH15Sc5sHjagfaEWal45gZpRbJn9vPIQXq1JT+U6VoWOmfsAXv5z8CifHt4k8SzHNqR9xYyJ/E1vu4=
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(46966006)(36840700001)(54906003)(6666004)(47076005)(70206006)(316002)(7636003)(2906002)(8936002)(36756003)(44832011)(82310400003)(36906005)(186003)(336012)(1076003)(70586007)(8676002)(6916009)(2616005)(426003)(508600001)(7696005)(356005)(107886003)(36860700001)(83380400001)(26005)(9786002)(4326008)(4744005)(5660300002)(102446001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Oct 2021 20:35:32.5835 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 299f0496-44d8-4e3a-80d2-08d9901b55bd
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch02.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1NAM02FT0036.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB4088
-Received-SPF: pass client-ip=40.107.223.41; envelope-from=tongh@xilinx.com;
- helo=NAM11-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, SPF_HELO_PASS=-0.001,
+In-Reply-To: <20211015124246.23073-1-gshan@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -155,28 +122,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: alistair@alistair23.me, tong.ho@xilinx.com, qemu-devel@nongnu.org,
- peter.maydell@linaro.org
+Cc: robh@kernel.org, drjones@redhat.com, qemu-riscv@nongnu.org,
+ ehabkost@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ shan.gavin@gmail.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bCUTVbkY7df4
+X-TUID: RXI6n9719QCp
 
-This series fixes memory leaks in Xilinx eFUSE devices for
-the Versal and ZynqMP product families.
+On 10/15/21 5:42 AM, Gavin Shan wrote:
+> The empty NUMA node, where no memory resides, are allowed. For
+> example, the following command line specifies two empty NUMA nodes.
+> With this, QEMU fails to boot because of the conflicting device-tree
+> node names, as the following error message indicates.
+> 
+>    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+>    -accel kvm -machine virt,gic-version=host               \
+>    -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+>    -m 1024M,slots=16,maxmem=64G                            \
+>    -object memory-backend-ram,id=mem0,size=512M            \
+>    -object memory-backend-ram,id=mem1,size=512M            \
+>    -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+>    -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+>    -numa node,nodeid=2                                     \
+>    -numa node,nodeid=3
+>      :
+>    qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: FDT_ERR_EXISTS
+> 
+> As specified by linux device-tree binding document, the device-tree
+> nodes for these empty NUMA nodes shouldn't be generated. However,
+> the corresponding NUMA node IDs should be included in the distance
+> map. The memory hotplug through device-tree on ARM64 isn't existing
+> so far and it's not necessary to require the user to provide a distance
+> map. Furthermore, the default distance map Linux generates may even be
+> sufficient. So this simply skips populating the device-tree nodes for
+> these empty NUMA nodes to avoid the error, so that QEMU can be started
+> successfully.
+> 
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+> v5: Improved commit log and comments as Drew suggested.
 
-The leaks result from failing to free memory allocated
-by object_get_canonical_path().
+Queued to target-arm, thanks.
 
-Tong Ho (3):
-  hw/nvram: Fix Memory Leak in Xilinx eFuse QOM
-  hw/nvram: Fix Memory Leak in Xilinx Versal eFuse device
-  hw/nvram: Fix Memory Leak in Xilinx ZynqMP eFuse device
 
- hw/nvram/xlnx-efuse.c             |  9 ++++++---
- hw/nvram/xlnx-versal-efuse-ctrl.c | 20 +++++++++++++++-----
- hw/nvram/xlnx-zynqmp-efuse.c      | 18 ++++++++++++------
- 3 files changed, 33 insertions(+), 14 deletions(-)
-
--- 
-2.25.1
-
+r~

@@ -1,120 +1,110 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp32617lfc;
-        Fri, 15 Oct 2021 05:23:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzeCMDQiYRyYWZTYALx1546sBh3f2ErdPdwQJ8EwrnTXs5crH6i+jH+HNw8ZByo2cyXhHVc
-X-Received: by 2002:a05:6102:3f4c:: with SMTP id l12mr13515676vsv.7.1634300614680;
-        Fri, 15 Oct 2021 05:23:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634300614; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp64689lfc;
+        Fri, 15 Oct 2021 05:51:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxf8ngNTFL3RhaidCFGUh91R+Fe3hVNC8M2fcfWb53L3GeAm4b7NAGyhi9koa7mAR4Gnaz6
+X-Received: by 2002:a67:e15b:: with SMTP id o27mr13434542vsl.22.1634302306412;
+        Fri, 15 Oct 2021 05:51:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634302306; cv=none;
         d=google.com; s=arc-20160816;
-        b=fNXuc84lIx91HdA9YrctxNSzkRq1ZHlvU3JCVflrJIB1XQTUZ/Cxpr203/fRmKHcJq
-         ZiUW37bJXdjAZygKXcw8KmAtuwJjc/67j+P6QyRPYq4PLMvFcq36M9J13+EYRSJMn2lL
-         TvTPlkVDJYBS3YE6mCMQoI5UdrMOswm8k3ZvglZAL9OsMwWf/tnc2CJ2+np112JMvW67
-         2hMCyCFsOLfAUY4/Wey0oU8+fQJjFqAeWJc4JBBerHRDU5wH2jkm/iaZoMl6iQDNrUDD
-         Nw8doFL+BEoDxd3M5XuKryMBuDjiSh5Ch2/WzRy7ILDatFV6P57AdGX1NG01YJkOOCn0
-         Lm7Q==
+        b=c4CdiR2h/+AEs3GgSaAZt2NxCB0HndIJBNxUpaODoWZbmG5IPBfjRqI/tSjzgr1lbn
+         hx4t8VR5Q99xJ+vkLDxhFDNwj6fEvRybHmL5VqVzDVK54Nhj1AoUmIzoMeBPw7feSU7U
+         lQ98Rrqp8nuFOb6e9oj6ABo8sq0HtNw8P8rRlbjIJkY0FUxqyvAp/WYw4+bMc2+SmEP9
+         VhwmO3oU3vigW6lUZ2A5Wrj/eRgzSFQcEkqOVXQPEuatvWobHvVA/ahY6Qx5legFj15G
+         UlZgMPkm4PIhrfsEhyCCDkuBDnw2tTyboOOjONpQZfGgis29+pjE0RBO8jACJhBK8G3e
+         h0Ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
          :dkim-signature;
-        bh=X+x9BScqdGty8iclCmqSRltRG2OtvTpe4Lmba3DYdls=;
-        b=kl+AajuUuZAHFPGqqmuTv8ELUXOmnQ2M/wKTOxXik1NXWKHFmzSBldwC8gD+wyHGNt
-         Oxytr4ZLESkNAr9nFNFOhILVfutmJ2V4AoghS7Z65syPZLs6hBTLlP5mGU4iX5Ad126x
-         p5JM3eQcjbbSqXLeYv3YIfL1AuFnoyk0pOcd/F9cCfUMFoZFS0TQqFZNj1cJl5EalDhY
-         GguBrgUzR9tLH8FwbBZBsgy87ITLNL5lgVXmlQJEuk+S+IpqGxoE5vIelApDErvTizSj
-         ERRnX0dTzh/YzEoQCvGxEzI7mD2tmIls48bpEZsl/R8xWWJeJs1EP9xDHFQMLRYX+PKU
-         C+0w==
+        bh=0JJHpMoZ4+R/6vb2n7LPOIpvKupQDTcDUzlAXHSBF9w=;
+        b=aO6iaq5lZeaxWstRLN/pqxpuMJE3t7RzJlxRJwsKzK5sUwmTTwoI73eHkHy2zc1YNu
+         1vDc8ldQj0Uo7q3b46LJnMkzRyg615SgBZQ0wmw9xA4kc8D4KMJVbJTDHN9H8gyXGx7f
+         S3OJd9eOipx52d7V5VFKIC2WMGvoeav7vJjN+8M/M10ksT5LDiUd3sYbl1XNV51qqkG3
+         aSXh4ihiVw7owoZQLkcuAXiVwJQZAbmYvwu0cM3jqNAUgLkrtWisDWHNcWJDkiPDvoO1
+         iHPSOimitWKwqLjoTYcfxDPHI8+7IEpKgPFPwb3BXLJXaGJp9gMvCsoxBn+RId7qeBob
+         AI/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LZTbraSs;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=filsfUsd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n3si6370769uad.172.2021.10.15.05.23.34
+        by mx.google.com with ESMTPS id y24si5947339vsi.454.2021.10.15.05.51.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Oct 2021 05:23:34 -0700 (PDT)
+        Fri, 15 Oct 2021 05:51:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LZTbraSs;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=filsfUsd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58974 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mbMFJ-0008Q3-W7
-	for alex.bennee@linaro.org; Fri, 15 Oct 2021 08:23:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52030)
+	id 1mbMgb-0003gq-Nw
+	for alex.bennee@linaro.org; Fri, 15 Oct 2021 08:51:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mbMEe-0008Nu-2o
- for qemu-arm@nongnu.org; Fri, 15 Oct 2021 08:22:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36859)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mbMZ8-0004mp-63
+ for qemu-arm@nongnu.org; Fri, 15 Oct 2021 08:44:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27782)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mbMES-0005An-GK
- for qemu-arm@nongnu.org; Fri, 15 Oct 2021 08:22:48 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mbMZ3-0007by-S6
+ for qemu-arm@nongnu.org; Fri, 15 Oct 2021 08:44:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634300551;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1634301837;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=X+x9BScqdGty8iclCmqSRltRG2OtvTpe4Lmba3DYdls=;
- b=LZTbraSsDBwN9E6Ue/8xoZp9Y/mtqBnuj3ZxEZu5URUGKoq8Yvv+Yc6eyraLn6BewUAmgr
- I6wVOjSAFtphckR+woIjjO4RRiYwfkOS7B3Aa03YTrBiCxFiiAQ16paoD2C18c50kXiNQx
- F4bP91hS7Vwt2Fgc2gZrQ+uL6XY/J58=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-28-FdzcA0klMI29A47gxnW-bw-1; Fri, 15 Oct 2021 08:22:30 -0400
-X-MC-Unique: FdzcA0klMI29A47gxnW-bw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- f1-20020a5d64c1000000b001611832aefeso5867661wri.17
- for <qemu-arm@nongnu.org>; Fri, 15 Oct 2021 05:22:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=X+x9BScqdGty8iclCmqSRltRG2OtvTpe4Lmba3DYdls=;
- b=dGM0yfERkvpBt5U22J7jQt7wVQDxn5gFgsX08lU6R8lJesaZ92k+FiXbEfLGFkK1Id
- QcvqbNrvZzjpdFzUmYoeOAEQ2ZAM89ikQI06AJ7X+bR78edTMj5R+BBeOfhFUmXhbRSv
- J5NZuumDQsIskoLJPJKksyBQKGW5grju4xBxr0IYcQ9h0aQx5GUJjY5T7UiYiqRIh6jI
- k7N2OqMO2cHy/6pe/DsOjF+eYr68LU0d4WdkVFCqM+h3n6qn90+hxk7wfGjLPrUZmRlI
- zB8nGLMlzJPibFul6qjxoCKfV/f27GzBKeBvdAT+G47UN563mAOqK6nQygMaoWKSJFGX
- KGlQ==
-X-Gm-Message-State: AOAM530eoiB7i6PisqMfhLPB/UPh41TWTg3JNK/rJS+N8SM26E6pBopm
- TdOsIrS8rYEl7maxQEMYig6yqXeWMfaV+WxgfbIVJfOnsrmC8b75/Z15rNVyiiYus0TSGILfxWM
- kHs3gq4lo0UJ3
-X-Received: by 2002:a7b:c856:: with SMTP id c22mr25723739wml.116.1634300548797; 
- Fri, 15 Oct 2021 05:22:28 -0700 (PDT)
-X-Received: by 2002:a7b:c856:: with SMTP id c22mr25723696wml.116.1634300548422; 
- Fri, 15 Oct 2021 05:22:28 -0700 (PDT)
-Received: from gator (nat-pool-brq-u.redhat.com. [213.175.37.12])
- by smtp.gmail.com with ESMTPSA id d24sm4496850wmb.35.2021.10.15.05.22.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Oct 2021 05:22:28 -0700 (PDT)
-Date: Fri, 15 Oct 2021 14:22:26 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
+ bh=0JJHpMoZ4+R/6vb2n7LPOIpvKupQDTcDUzlAXHSBF9w=;
+ b=filsfUsdGtoufXpyCfvnja5pC6DdLar+gT5+Nf08zKCQCFyMhJ5b1tMWOq13x3N3fHbHOB
+ 9izuL1z+M5/DZawSWFGrDC/1qOg3ihqkYFHKYYNGD5vfSICnpZ1iiUczxDJHDxSHugNGqB
+ AEHBOCYLj5wfw/JxUELJuf8ET3lq8wk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-307-RWqnnLnjMVeXRF1r0CGw5A-1; Fri, 15 Oct 2021 08:43:54 -0400
+X-MC-Unique: RWqnnLnjMVeXRF1r0CGw5A-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B1D22CC621;
+ Fri, 15 Oct 2021 12:43:52 +0000 (UTC)
+Received: from [10.64.54.38] (vpn2-54-38.bne.redhat.com [10.64.54.38])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 797D260C05;
+ Fri, 15 Oct 2021 12:43:49 +0000 (UTC)
 Subject: Re: [PATCH v4] hw/arm/virt: Don't create device-tree node for empty
  NUMA node
-Message-ID: <20211015122226.g42zu7hsbc2fey27@gator>
+To: Andrew Jones <drjones@redhat.com>
 References: <20211015104909.16722-1-gshan@redhat.com>
+ <20211015122226.g42zu7hsbc2fey27@gator>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <246933b4-86d7-c7d5-54f5-a65b8002f273@redhat.com>
+Date: Fri, 15 Oct 2021 23:43:46 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20211015104909.16722-1-gshan@redhat.com>
+In-Reply-To: <20211015122226.g42zu7hsbc2fey27@gator>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -127,105 +117,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
 Cc: robh@kernel.org, qemu-riscv@nongnu.org, ehabkost@redhat.com,
  peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  shan.gavin@gmail.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qSD+4/iB4bw4
+X-TUID: 7RcsoenMs+Bn
 
-On Fri, Oct 15, 2021 at 06:49:09PM +0800, Gavin Shan wrote:
-> The empty NUMA node, where no memory resides, are allowed. For
-> example, the following command line specifies two empty NUMA nodes.
-> With this, QEMU fails to boot because of the conflicting device-tree
-> node names, as the following error message indicates.
+On 10/15/21 11:22 PM, Andrew Jones wrote:
+> On Fri, Oct 15, 2021 at 06:49:09PM +0800, Gavin Shan wrote:
+>> The empty NUMA node, where no memory resides, are allowed. For
+>> example, the following command line specifies two empty NUMA nodes.
+>> With this, QEMU fails to boot because of the conflicting device-tree
+>> node names, as the following error message indicates.
+>>
+>>    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+>>    -accel kvm -machine virt,gic-version=host               \
+>>    -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+>>    -m 1024M,slots=16,maxmem=64G                            \
+>>    -object memory-backend-ram,id=mem0,size=512M            \
+>>    -object memory-backend-ram,id=mem1,size=512M            \
+>>    -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+>>    -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+>>    -numa node,nodeid=2                                     \
+>>    -numa node,nodeid=3
+>>      :
+>>    qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: FDT_ERR_EXISTS
+>>
+>> As specified by linux device-tree binding document, the device-tree
+>> nodes for these empty NUMA nodes shouldn't be generated. However,
+>> the corresponding NUMA node IDs should be included in the distance
+>> map. As the memory hotplug through device-tree on ARM64 isn't existing
+>> so far, it's pointless to expose the empty NUMA nodes through device-tree.
 > 
->   /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
->   -accel kvm -machine virt,gic-version=host               \
->   -cpu host -smp 4,sockets=2,cores=2,threads=1            \
->   -m 1024M,slots=16,maxmem=64G                            \
->   -object memory-backend-ram,id=mem0,size=512M            \
->   -object memory-backend-ram,id=mem1,size=512M            \
->   -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
->   -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
->   -numa node,nodeid=2                                     \
->   -numa node,nodeid=3
->     :
->   qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: FDT_ERR_EXISTS
+> Instead of "it's pointless to expose the empty NUMA nodes through
+> device-tree", how about
 > 
-> As specified by linux device-tree binding document, the device-tree
-> nodes for these empty NUMA nodes shouldn't be generated. However,
-> the corresponding NUMA node IDs should be included in the distance
-> map. As the memory hotplug through device-tree on ARM64 isn't existing
-> so far, it's pointless to expose the empty NUMA nodes through device-tree.
-
-Instead of "it's pointless to expose the empty NUMA nodes through
-device-tree", how about
-
- it's not necessary to require the user to provide a distance map.
- Furthermore, the default distance map Linux generates may even be
- sufficient.
-
-> So this simply skips populating the device-tree nodes for these empty
-> NUMA nodes to avoid the error, so that QEMU can be started successfully.
+>   it's not necessary to require the user to provide a distance map.
+>   Furthermore, the default distance map Linux generates may even be
+>   sufficient.
 > 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
-> v4: Drop patch to enforce distance-map as memory hotplug through
->     device-tree is never supported on ARM64. It's pointless to
->     expose these empty NUMA nodes. Besides, comments added to
->     explain the code changes included in this patch as Drew
->     suggested.
-> ---
->  hw/arm/boot.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+
+Yes, much better.
+
+>> So this simply skips populating the device-tree nodes for these empty
+>> NUMA nodes to avoid the error, so that QEMU can be started successfully.
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>> v4: Drop patch to enforce distance-map as memory hotplug through
+>>      device-tree is never supported on ARM64. It's pointless to
+>>      expose these empty NUMA nodes. Besides, comments added to
+>>      explain the code changes included in this patch as Drew
+>>      suggested.
+>> ---
+>>   hw/arm/boot.c | 14 ++++++++++++++
+>>   1 file changed, 14 insertions(+)
+>>
+>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>> index 57efb61ee4..e05c1c149c 100644
+>> --- a/hw/arm/boot.c
+>> +++ b/hw/arm/boot.c
+>> @@ -599,10 +599,24 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>>       }
+>>       g_strfreev(node_path);
+>>   
+>> +    /*
+>> +     * According to Linux NUMA binding document, the device tree nodes
+>> +     * for the empty NUMA nodes shouldn't be generated, but their NUMA
+>> +     * node IDs should be included in the distance map instead. However,
+>> +     * it's pointless to expose the empty NUMA nodes as memory hotplug
+>> +     * through device tree is never supported. We simply skip generating
+>> +     * their device tree nodes to avoid the unexpected device tree
+>> +     * generating failure due to the duplicated names of these empty
+>> +     * NUMA nodes.
+>> +     */
 > 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 57efb61ee4..e05c1c149c 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -599,10 +599,24 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->      }
->      g_strfreev(node_path);
->  
-> +    /*
-> +     * According to Linux NUMA binding document, the device tree nodes
-> +     * for the empty NUMA nodes shouldn't be generated, but their NUMA
-> +     * node IDs should be included in the distance map instead. However,
-> +     * it's pointless to expose the empty NUMA nodes as memory hotplug
-> +     * through device tree is never supported. We simply skip generating
-> +     * their device tree nodes to avoid the unexpected device tree
-> +     * generating failure due to the duplicated names of these empty
-> +     * NUMA nodes.
-> +     */
+>      /*
+>       * We drop all the memory nodes which correspond to empty NUMA nodes from
+>       * the device tree, because the Linux NUMA binding document states they
+>       * should not be generated.  Linux will get the NUMA node IDs of the empty
+>       * NUMA nodes from the distance map if they are needed.  This means QEMU
+>       * users may be obliged to provide command lines which configure distance
+>       * maps when the empty NUMA node IDs are needed and Linux's default
+>       * distance map isn't sufficient.
+>       */
+> 
 
-    /*
-     * We drop all the memory nodes which correspond to empty NUMA nodes from
-     * the device tree, because the Linux NUMA binding document states they
-     * should not be generated.  Linux will get the NUMA node IDs of the empty
-     * NUMA nodes from the distance map if they are needed.  This means QEMU
-     * users may be obliged to provide command lines which configure distance
-     * maps when the empty NUMA node IDs are needed and Linux's default
-     * distance map isn't sufficient.
-     */
+Thanks, Drew. Copy-and-posted to v5 :)
 
-
-
->      if (ms->numa_state != NULL && ms->numa_state->num_nodes > 0) {
->          mem_base = binfo->loader_start;
->          for (i = 0; i < ms->numa_state->num_nodes; i++) {
->              mem_len = ms->numa_state->nodes[i].node_mem;
-> +            if (!mem_len) {
-> +                continue;
-> +            }
-> +
->              rc = fdt_add_memory_node(fdt, acells, mem_base,
->                                       scells, mem_len, i);
->              if (rc < 0) {
-> -- 
-> 2.23.0
->
+> 
+> 
+>>       if (ms->numa_state != NULL && ms->numa_state->num_nodes > 0) {
+>>           mem_base = binfo->loader_start;
+>>           for (i = 0; i < ms->numa_state->num_nodes; i++) {
+>>               mem_len = ms->numa_state->nodes[i].node_mem;
+>> +            if (!mem_len) {
+>> +                continue;
+>> +            }
+>> +
+>>               rc = fdt_add_memory_node(fdt, acells, mem_base,
+>>                                        scells, mem_len, i);
+>>               if (rc < 0) {
 
 Thanks,
-drew 
+Gavin
 

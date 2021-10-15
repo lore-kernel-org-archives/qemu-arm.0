@@ -1,560 +1,342 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp4873483lfc;
-        Fri, 15 Oct 2021 00:17:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCFhtT5UMpm/S8eB2DrEZda5RqD0250mvf9c7qbGrna4q5yo3OATAHa79Arcu3MI0Xwzhg
-X-Received: by 2002:a92:ca0c:: with SMTP id j12mr2954543ils.50.1634282263754;
-        Fri, 15 Oct 2021 00:17:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634282263; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp4939782lfc;
+        Fri, 15 Oct 2021 02:04:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9a9vQJTyifJcXBlCuuHYEwUGFZaLxel/U5i/Qs2Jf2vextE5d9Z5NqMLaWDp5pYQ4fOtz
+X-Received: by 2002:a05:6e02:100f:: with SMTP id n15mr2922399ilj.174.1634288644975;
+        Fri, 15 Oct 2021 02:04:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634288644; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wlcgj5enhy6Cy+XDcRMYwsjkVy1GZ2tjSNpH6vIdBXnpGKqqU96TlcgQk7tYdC3O37
-         MQz2gMgjlhagIQWfaPhZoovJrzhB+TrQSxolNwu9BuPj5P66oOxcL+Wr4Op/Ynx4bn+S
-         2VMJZx0o3CfHcaKgEBPx2rLdHJLRp+d5FW3LVP/WzOBrtpr30Z9mU5/U+bKb2tisgbgm
-         naYa/QTlfg7FyqzgerCBdBmdnJd8XWaQs7WzZQe4QApCNnT74TMmlI2gKcuxXV8AdOo0
-         K7BmEyggcrFfEVpl5jrntsk3Xil6SGlrrl4TeiVWjtyxkA5aJJdbF2txNlQh1+xEBS2O
-         IGwg==
+        b=gM+6FF+CTU+eTrsI2dXnioTf+JAFZoNNKoPl5cqV8HUnRq6Y9vs0EAlVg1dO0hnhod
+         t0ZjUL/fZxEbVsAK33kIeIcBVEp+hz53A4keHmroaxYPPj7G0EnInkhwk6mZufvzJcAL
+         eFWEAHbA/BSmsTqqO4CgwoIIbg4LL2c5KGmm4sU9vu/qfJzksGI187daftK4bwbwBMQT
+         zsX6ZiUJq9vXd8h3ePgMWwnR4ehSrfPjLK+QUzCCjLYcJ3USdcIENlLUw7CiWkoOkPLQ
+         hWoTLxcct1o9yAjLNjlkgUWdALw5qpsFJMqP1zbUmHj3xHDYTvihz2/DjHw8SNm4TrQt
+         692g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=OxMjMC/6kIZcd9HDx+mteSvYvMiKJLzi5zCaRp/XoJ4=;
-        b=ToqrRl2+h+1CrhWXsmlGKGb+NXxsavWsfH/qt4gVa5FVCwA+AQQJblXdqKZe93l+qE
-         hCfuJrM002iGNEV+vYGhsGagsCAGRIz57vTUb75J3cHSwgRS+yqKkFm7b0KX/Zjz7eqS
-         LI0DSKkBDcZ9DEQkkjtpnbLWcJAacDeE/HFRT0xTSLnb+xpu/ADgLBB6XWrGuc2ir18Z
-         NEBVz7TTM34097cnXxhPzTU3akvacom1G9+d57REUtFBK3DKQgYrfX/9glKjOhbeMHlp
-         GCZQXNEtMSlszfgeYlyZYFaLWThJZuyhO7LB8OgQBdYZyMjL6uWBoKhEoLKonfXgMTEJ
-         XnBA==
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=w1YnX7ccJ8G+ltNPFKXvSRpla/i6TiRawkLgXdG8nu4=;
+        b=TN0L1CYmiqUlfhqQWKZMdMSmKf0WUGD0kR3aRj0ddBJwMyxgM32lenvVxBqfEZB46U
+         eEFXkJ5ySAtxxwsciXWL3IKo/bhiRIffKu6dP56g10ago9kFOGqBSjrPz+TE20VFk0Fz
+         78qHSowB5xrjdazs6nVtiKXgMuPay3i0SOUoKVSh0oNqyp9Ybe+fainisZki/z2mQ4YO
+         gdxKi0fgmDth7Dqzx+S96joSgSMAWyfqD3/EYs4LvyAQFUq7qWmi0Cch3L4OIhDpKaLL
+         AuRmgV4y6OUmyWbdnFr+NjFvcqfxKCjd927zsOTfJiWvI0vvsmfZEF5mmLstqfqvMyQF
+         sEtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bTZmamM+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GPT0eiOC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id az15si5508698jab.109.2021.10.15.00.17.43
+        by mx.google.com with ESMTPS id o2si6114160iop.5.2021.10.15.02.04.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Oct 2021 00:17:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 15 Oct 2021 02:04:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bTZmamM+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GPT0eiOC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mbHTL-0004Zb-37
-	for alex.bennee@linaro.org; Fri, 15 Oct 2021 03:17:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39320)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mbJ8G-0007QK-1a
+	for alex.bennee@linaro.org; Fri, 15 Oct 2021 05:04:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mbHTB-0004WW-2C
- for qemu-arm@nongnu.org; Fri, 15 Oct 2021 03:17:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45415)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mbIU0-0001OI-OY
+ for qemu-devel@nongnu.org; Fri, 15 Oct 2021 04:22:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28558)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mbHT6-0003bw-Ei
- for qemu-arm@nongnu.org; Fri, 15 Oct 2021 03:17:32 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mbITx-0003lh-QS
+ for qemu-devel@nongnu.org; Fri, 15 Oct 2021 04:22:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634282247;
+ s=mimecast20190719; t=1634286144;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OxMjMC/6kIZcd9HDx+mteSvYvMiKJLzi5zCaRp/XoJ4=;
- b=bTZmamM+XsthT1F4nm6NQK5DOZ68zYXAFkpudSnI4wPyGQke7FH5d+dYDw9JGWfQOZ5h+y
- 4xzXETWPdxkVpnwejASBlWFq5TRFzn+qKzV5XAK79FrTWpL3/wodAU5Mq+sewz/uTDsP7F
- a3to7btLzpv8cUC9C3smKBc7S3GBHNI=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-454-_YbEY8AKOAaOGCegdi5I9Q-1; Fri, 15 Oct 2021 03:17:23 -0400
-X-MC-Unique: _YbEY8AKOAaOGCegdi5I9Q-1
-Received: by mail-wm1-f69.google.com with SMTP id
- h22-20020a7bc936000000b0030d998aa15eso541996wml.4
- for <qemu-arm@nongnu.org>; Fri, 15 Oct 2021 00:17:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-transfer-encoding:content-language;
- bh=OxMjMC/6kIZcd9HDx+mteSvYvMiKJLzi5zCaRp/XoJ4=;
- b=ElzveByKgq6X8tR6u37q/9cR4kPsqk7J+5LW++lEkbFaBQp94f/Lgod/i8nZykFZQi
- t31mr/uranBL5X5VwzFS818XFxLO7Dr3/MlA4X4TVBJ+Taeh1Ot7GSWqu23eHaAYGw44
- ksSNOjDlPzW+qzZWXMiLtu9xVPKQ4jbCyWpofCheD73J+hqQpwk3ruB1C1NVSK8UnHjg
- /IxYkXEdB6wVKfWuAUg9uhlJyNCVnMDtUAJbCVPRmAlqFi+EQhxlgAsReXCl0Uhh9iTj
- PtLQ9qozrfU1j4hoqclvTaGhPE1KzRdJ3xI+RwAl2J75rXepZAV0XPnizG/Ntw34e0ZF
- KqVQ==
-X-Gm-Message-State: AOAM5334t1eViH87CTsxQ0xDpIk+X5JFI85wovYIb/jqjy44GUq4GvMD
- MY7mJjQKMxSFtWOPE+SjBPjGm9+pTdqa58fzqIsV1wtjzjZXXn5EhUwuKHon/XGeD9rVHA5+KNj
- Wc43Hu3GuW7Y0
-X-Received: by 2002:a7b:c0d6:: with SMTP id s22mr11001926wmh.135.1634282241881; 
- Fri, 15 Oct 2021 00:17:21 -0700 (PDT)
-X-Received: by 2002:a7b:c0d6:: with SMTP id s22mr11001887wmh.135.1634282241419; 
- Fri, 15 Oct 2021 00:17:21 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id a81sm4431542wmd.30.2021.10.15.00.17.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 15 Oct 2021 00:17:20 -0700 (PDT)
-Subject: Re: [PATCH v3] tests: qtest: Add virtio-iommu test
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20211014083405.918151-1-eric.auger@redhat.com>
- <YWgedX6i96mC3ssy@myrica>
-From: Eric Auger <eric.auger@redhat.com>
-Message-ID: <9a14e951-b187-b90b-f161-1cfe3214d6e3@redhat.com>
-Date: Fri, 15 Oct 2021 09:17:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ bh=w1YnX7ccJ8G+ltNPFKXvSRpla/i6TiRawkLgXdG8nu4=;
+ b=GPT0eiOCtexK+nsJZODsHtx3CNogW39XCohq3cUK+ITF6ve0EMAvC9DAkPF5x6qZaOBjZf
+ 3PRS6csqyxK/3+UYu0DY/LbjgukzLhuk/chTid4AcjmRiJmfXD6Sr2sfIZVq5eovvWIk7k
+ 7Zx5ch0SVAXgDAuS+73ut8eJh5WZC+U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-457-Ly_qLy-gNU2QzYSfqcNwHw-1; Fri, 15 Oct 2021 04:22:21 -0400
+X-MC-Unique: Ly_qLy-gNU2QzYSfqcNwHw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5DC1A362FB;
+ Fri, 15 Oct 2021 08:22:20 +0000 (UTC)
+Received: from [10.64.54.38] (vpn2-54-38.bne.redhat.com [10.64.54.38])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4F3C169119;
+ Fri, 15 Oct 2021 08:22:11 +0000 (UTC)
+Subject: Re: [PATCH v3 1/2] numa: Require distance map when empty node exists
+To: Andrew Jones <drjones@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+References: <20211013045805.192165-1-gshan@redhat.com>
+ <20211013045805.192165-2-gshan@redhat.com>
+ <20211013133011.62b8812d@redhat.com>
+ <20211013113544.4xrfagduw4nlbvou@gator.home>
+ <20211013135346.3a8f6c9a@redhat.com>
+ <20211013121125.sdewyrxcipsi3o22@gator.home>
+ <20211013122840.fi4ufle4czyzegtb@gator.home>
+ <20211014171417.541c9bee@redhat.com> <20211014153609.pzndx7um3dfdgelo@gator>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <2399ce27-0663-6780-5453-3ee773563352@redhat.com>
+Date: Fri, 15 Oct 2021 19:22:05 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <YWgedX6i96mC3ssy@myrica>
+In-Reply-To: <20211014153609.pzndx7um3dfdgelo@gator>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -9
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) DKIMWL_WL_HIGH=-0.049, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: lvivier@redhat.com, thuth@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, pbonzini@redhat.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p2TQzSsxwart
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-riscv@nongnu.org, ehabkost@redhat.com,
+ robh@kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ shan.gavin@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: utU6nxWgo7pR
 
-Hi Jean,
+Hi Drew,
 
-On 10/14/21 2:11 PM, Jean-Philippe Brucker wrote:
-> Hi Eric,
->
-> On Thu, Oct 14, 2021 at 04:34:05AM -0400, Eric Auger wrote:
->> Add the framework to test the virtio-iommu-pci device
->> and tests exercising the attach/detach, map/unmap API.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Acked-by: Thomas Huth <thuth@redhat.com>
->>
->> ---
->>
->> This applies on top of jean-Philippe's
->> [PATCH v4 00/11] virtio-iommu: Add ACPI support
->> branch can be found at:
->> https://github.com/eauger/qemu.git
->> branch qtest-virtio-iommu-v3
->>
->> To run the tests:
->> make tests/qtest/qos-test
->> cd build
->> QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon QTEST_QEMU_BINARY=x86_64-softmmu/qemu-system-x86_64  tests/qtest/qos-test
-> Looks like some archs cannot run the test:
->
-> $ make check	# built with all targets
-> qemu-system-arm: -device virtio-iommu-device: VIRTIO-IOMMU is not attached to any PCI bus!
-> Broken pipe
-> ERROR qtest-arm/qos-test - too few tests run (expected 80, got 75)
->
-> Also, should the test run on aarch64?
+On 10/15/21 2:36 AM, Andrew Jones wrote:
+> On Thu, Oct 14, 2021 at 05:14:17PM +0200, Igor Mammedov wrote:
+>> On Wed, 13 Oct 2021 14:28:40 +0200
+>> Andrew Jones <drjones@redhat.com> wrote:
+>>> On Wed, Oct 13, 2021 at 02:11:25PM +0200, Andrew Jones wrote:
+>>>> On Wed, Oct 13, 2021 at 01:53:46PM +0200, Igor Mammedov wrote:
+>>>>> On Wed, 13 Oct 2021 13:35:44 +0200
+>>>>> Andrew Jones <drjones@redhat.com> wrote:  
+>>>>>> On Wed, Oct 13, 2021 at 01:30:11PM +0200, Igor Mammedov wrote:
+>>>>>>> On Wed, 13 Oct 2021 12:58:04 +0800
+>>>>>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>>>>>      
+>>>>>>>> The following option is used to specify the distance map. It's
+>>>>>>>> possible the option isn't provided by user. In this case, the
+>>>>>>>> distance map isn't populated and exposed to platform. On the
+>>>>>>>> other hand, the empty NUMA node, where no memory resides, is
+>>>>>>>> allowed on platforms like ARM64 virt. For these empty NUMA
+>>>>>>>> nodes, their corresponding device-tree nodes aren't populated,
+>>>>>>>> but their NUMA IDs should be included in the "/distance-map"
+>>>>>>>> device-tree node, so that kernel can probe them properly if
+>>>>>>>> device-tree is used.
+>>>>>>>>
+>>>>>>>>    -numa,dist,src=<numa_id>,dst=<numa_id>,val=<distance>
+>>>>>>>>
+>>>>>>>> This adds extra check after the machine is initialized, to
+>>>>>>>> ask for the distance map from user when empty nodes exist in
+>>>>>>>> device-tree.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>>>>>> ---
+>>>>>>>>   hw/core/machine.c     |  4 ++++
+>>>>>>>>   hw/core/numa.c        | 24 ++++++++++++++++++++++++
+>>>>>>>>   include/sysemu/numa.h |  1 +
+>>>>>>>>   3 files changed, 29 insertions(+)
+>>>>>>>>
+>>>>>>>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>>>>>>>> index b8d95eec32..c0765ad973 100644
+>>>>>>>> --- a/hw/core/machine.c
+>>>>>>>> +++ b/hw/core/machine.c
+>>>>>>>> @@ -1355,6 +1355,10 @@ void machine_run_board_init(MachineState *machine)
+>>>>>>>>       accel_init_interfaces(ACCEL_GET_CLASS(machine->accelerator));
+>>>>>>>>       machine_class->init(machine);
+>>>>>>>>       phase_advance(PHASE_MACHINE_INITIALIZED);
+>>>>>>>> +
+>>>>>>>> +    if (machine->numa_state) {
+>>>>>>>> +        numa_complete_validation(machine);
+>>>>>>>> +    }
+>>>>>>>>   }
+>>>>>>>>   
+>>>>>>>>   static NotifierList machine_init_done_notifiers =
+>>>>>>>> diff --git a/hw/core/numa.c b/hw/core/numa.c
+>>>>>>>> index 510d096a88..7404b7dd38 100644
+>>>>>>>> --- a/hw/core/numa.c
+>>>>>>>> +++ b/hw/core/numa.c
+>>>>>>>> @@ -727,6 +727,30 @@ void numa_complete_configuration(MachineState *ms)
+>>>>>>>>       }
+>>>>>>>>   }
+>>>>>>>>   
+>>>>>>>> +/*
+>>>>>>>> + * When device-tree is used by the machine, the empty node IDs should
+>>>>>>>> + * be included in the distance map. So we need provide pairs of distances
+>>>>>>>> + * in this case.
+>>>>>>>> + */
+>>>>>>>> +void numa_complete_validation(MachineState *ms)
+>>>>>>>> +{
+>>>>>>>> +    NodeInfo *numa_info = ms->numa_state->nodes;
+>>>>>>>> +    int nb_numa_nodes = ms->numa_state->num_nodes;
+>>>>>>>> +    int i;
+>>>>>>>> +
+>>>>>>>> +    if (!ms->fdt || ms->numa_state->have_numa_distance) {
+>>>>>>>
+>>>>>>> also skip check/limitation when VM is launched with ACPI enabled?
+>>>
+>>> On second thought, I guess it's a good idea to not error out when ACPI is
+>>> enabled. There's no point in burdening the ACPI user.
+>>>
 
-I don't think it is possible to run on aarch64 because there is some
-test infrastructure missing (in the past I started to work on this
-enablement but struggled on some libqos subtleties and surrendered due
-to lack of time
-<https://www.linguee.fr/anglais-francais/traduction/subtlety.html>) and
-that must be the same for arm. However I would have expected make check
-to work and sort out the tests according to the arch. I need to further
-look at it then.
+Yup, for platform like hw/arm/virt, the device-tree and ACPI table are
+used at same time can't bypass the check/limitation. Instead, x86 won't be
+affected as device-tree isn't used there.
 
-I will address your other virtio-iommu specific comments below asap.
-Thank you for the detailed review!
-
-Eric
->
->
-> [...]
->> diff --git a/tests/qtest/virtio-iommu-test.c b/tests/qtest/virtio-iommu-test.c
->> new file mode 100644
->> index 0000000000..ac4d38c779
->> --- /dev/null
->> +++ b/tests/qtest/virtio-iommu-test.c
->> @@ -0,0 +1,299 @@
->> +/*
->> + * QTest testcase for VirtIO IOMMU
->> + *
->> + * Copyright (c) 2021 Red Hat, Inc.
->> + *
->> + * Authors:
->> + *  Eric Auger <eric.auger@redhat.com>
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 or (at your
->> + * option) any later version.  See the COPYING file in the top-level directory.
->> + *
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "libqtest-single.h"
->> +#include "qemu/module.h"
->> +#include "libqos/qgraph.h"
->> +#include "libqos/virtio-iommu.h"
->> +#include "hw/virtio/virtio-iommu.h"
->> +
->> +#define PCI_SLOT_HP             0x06
->> +#define QVIRTIO_IOMMU_TIMEOUT_US (30 * 1000 * 1000)
->> +
->> +static QGuestAllocator *alloc;
->> +
->> +static void pci_config(void *obj, void *data, QGuestAllocator *t_alloc)
->> +{
->> +    QVirtioIOMMU *v_iommu = obj;
->> +    QVirtioDevice *dev = v_iommu->vdev;
->> +    uint64_t input_range_start = qvirtio_config_readq(dev, 8);
->> +    uint64_t input_range_end = qvirtio_config_readq(dev, 16);
->> +    uint32_t domain_range_start = qvirtio_config_readl(dev, 24);
->> +    uint32_t domain_range_end = qvirtio_config_readl(dev, 28);
->> +
->> +    g_assert_cmpint(input_range_start, ==, 0);
->> +    g_assert_cmphex(input_range_end, ==, UINT64_MAX);
->> +    g_assert_cmpint(domain_range_start, ==, 0);
->> +    g_assert_cmpint(domain_range_end, ==, 32);
-> By the way, this value seems to be left from when the config declared a
-> number of domain bits. It's now a range so the value could be UINT32_MAX.
-> Right now the driver can't manage more than 32 endpoints at a time.
-> I have a patch changing that but planning to send later, it doesn't feel
-> urgent.
->
->> +}
->> +
->> +/**
->> + * send_attach_detach - Send an attach/detach command to the device
->> + * @type: VIRTIO_IOMMU_T_ATTACH/VIRTIO_IOMMU_T_DETACH
->> + * @domain: domain the end point is attached to
->> + * @ep: end-point
-> ("endpoint"?)
->
->> + */
->> +static int send_attach_detach(QTestState *qts, QVirtioIOMMU *v_iommu,
->> +                              uint8_t type, uint32_t domain, uint32_t ep)
->> +{
->> +    QVirtioDevice *dev = v_iommu->vdev;
->> +    QVirtQueue *vq = v_iommu->vq;
->> +    uint64_t ro_addr, wr_addr;
->> +    uint32_t free_head;
->> +    struct virtio_iommu_req_attach req; /* same layout as detach */
-> Should the reserved fields be initialized to zero?
->
-> The test fails here with my recent bypass patch, which sanity-checks the
-> new flags field. But I could change the test in the bypass series, since
-> the test doesn't fail as is.
->
-> On a related note, the spec says that the device MUST reject the request
-> if field reserved is not zero. I can also send a patch for that.
->
->> +    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
->> +    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
->> +    struct virtio_iommu_req_tail buffer;
->> +    int ret;
->> +
->> +    req.head.type = type;
->> +    req.domain = domain;
->> +    req.endpoint = ep;
-> A driver would explicitly write little-endian in there with cpu_to_le*().
-> I guess that also matters here if the test could run on a big-endian host?
->
->> +
->> +    ro_addr = guest_alloc(alloc, ro_size);
->> +    wr_addr = guest_alloc(alloc, wr_size);
->> +
->> +    qtest_memwrite(qts, ro_addr, &req, ro_size);
->> +    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
->> +    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
->> +    qvirtqueue_kick(qts, dev, vq, free_head);
->> +    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
->> +                           QVIRTIO_IOMMU_TIMEOUT_US);
->> +    qtest_memread(qts, wr_addr, &buffer, wr_size);
->> +    ret = buffer.status;
-> Could check that the rest of the buffer is still 0
->
->> +    guest_free(alloc, ro_addr);
->> +    guest_free(alloc, wr_addr);
->> +    return ret;
->> +}
->> +
->> +/**
->> + * send_map - Send a map command to the device
->> + * @domain: domain the new binding is attached to
-> (what is the new binding?)
->
->> + * @virt_start: iova start
->> + * @virt_end: iova end
->> + * @phys_start: base physical address
->> + * @flags: mapping flags
->> + */
->> +static int send_map(QTestState *qts, QVirtioIOMMU *v_iommu,
->> +                    uint32_t domain, uint64_t virt_start, uint64_t virt_end,
->> +                    uint64_t phys_start, uint32_t flags)
->> +{
->> +    QVirtioDevice *dev = v_iommu->vdev;
->> +    QVirtQueue *vq = v_iommu->vq;
->> +    uint64_t ro_addr, wr_addr;
->> +    uint32_t free_head;
->> +    struct virtio_iommu_req_map req;
->> +    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
->> +    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
->> +    struct virtio_iommu_req_tail buffer;
->> +    int ret;
->> +
->> +    req.head.type = VIRTIO_IOMMU_T_MAP;
->> +    req.domain = domain;
->> +    req.virt_start = virt_start;
->> +    req.virt_end = virt_end;
->> +    req.phys_start = phys_start;
->> +    req.flags = flags;
->> +
->> +    ro_addr = guest_alloc(alloc, ro_size);
->> +    wr_addr = guest_alloc(alloc, wr_size);
->> +
->> +    qtest_memwrite(qts, ro_addr, &req, ro_size);
->> +    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
->> +    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
->> +    qvirtqueue_kick(qts, dev, vq, free_head);
->> +    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
->> +                           QVIRTIO_IOMMU_TIMEOUT_US);
->> +    qtest_memread(qts, wr_addr, &buffer, wr_size);
->> +    ret = buffer.status;
->> +    guest_free(alloc, ro_addr);
->> +    guest_free(alloc, wr_addr);
->> +    return ret;
->> +}
->> +
->> +/**
->> + * send_unmap - Send an unmap command to the device
->> + * @domain: domain the new binding is attached to
->> + * @virt_start: iova start
->> + * @virt_end: iova end
->> + */
->> +static int send_unmap(QTestState *qts, QVirtioIOMMU *v_iommu,
->> +                      uint32_t domain, uint64_t virt_start, uint64_t virt_end)
->> +{
->> +    QVirtioDevice *dev = v_iommu->vdev;
->> +    QVirtQueue *vq = v_iommu->vq;
->> +    uint64_t ro_addr, wr_addr;
->> +    uint32_t free_head;
->> +    struct virtio_iommu_req_unmap req;
->> +    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
->> +    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
->> +    struct virtio_iommu_req_tail buffer;
->> +    int ret;
->> +
->> +    req.head.type = VIRTIO_IOMMU_T_UNMAP;
->> +    req.domain = domain;
->> +    req.virt_start = virt_start;
->> +    req.virt_end = virt_end;
->> +
->> +    ro_addr = guest_alloc(alloc, ro_size);
->> +    wr_addr = guest_alloc(alloc, wr_size);
->> +
->> +    qtest_memwrite(qts, ro_addr, &req, ro_size);
->> +    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
->> +    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
->> +    qvirtqueue_kick(qts, dev, vq, free_head);
->> +    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
->> +                           QVIRTIO_IOMMU_TIMEOUT_US);
->> +    qtest_memread(qts, wr_addr, &buffer, wr_size);
->> +    ret = buffer.status;
->> +    guest_free(alloc, ro_addr);
->> +    guest_free(alloc, wr_addr);
->> +    return ret;
->> +}
->> +
->> +/* Test unmap scenari documented in the spec v0.12 */
->> +static void test_attach_detach(void *obj, void *data, QGuestAllocator *t_alloc)
->> +{
->> +    QVirtioIOMMU *v_iommu = obj;
->> +    QTestState *qts = global_qtest;
->> +    int ret;
->> +
->> +    alloc = t_alloc;
->> +
->> +    /* type, domain, ep */
->> +
->> +    /* attach ep0 to domain 0 */
-> By the way, what endpoint is this, the host bridge?  I'm still trying to
-> understand the test framework, how do we know that ep 0 exists and ep 1
-> doesn't?
->
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 0);
->> +    g_assert_cmpint(ret, ==, 0);
->> +
->> +    /* attach a non existing device (1) */
-> (444)?
->
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 444);
->> +    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
->> +
->> +    /* detach a non existing device (1) */
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 1);
->> +    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
->> +
->> +    /* move ep0 from domain 0 to domain 1 */
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
->> +    g_assert_cmpint(ret, ==, 0);
->> +
->> +    /* detach ep0 to domain 0 */
-> from
->
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 0);
->> +    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL);
->> +
->> +    /* detach ep0 from domain 1 */
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
->> +    g_assert_cmpint(ret, ==, 0);
->> +
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
->> +    g_assert_cmpint(ret, ==, 0);
->> +    ret = send_map(qts, v_iommu, 1, 0x0, 0xFFF, 0xa1000,
->> +                   VIRTIO_IOMMU_MAP_F_READ);
->> +    g_assert_cmpint(ret, ==, 0);
-> I was going to say that success here depends on the minimum page size
-> offered by the device (if the page size if 64k this request would fail),
-> but there is no check for page alignment at the moment.
->
-> It's just a SHOULD in the spec so we don't have to add the check, but it
-> may help with the VFIO integration - even though VFIO will fail unaligned
-> MAP ioctls, we report success to the driver. So I've added alignment
-> checks to my TODO list, but nothing urgent
->
->> +    ret = send_map(qts, v_iommu, 1, 0x2000, 0x2FFF, 0xb1000,
->> +                   VIRTIO_IOMMU_MAP_F_READ);
->> +    g_assert_cmpint(ret, ==, 0);
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
->> +    g_assert_cmpint(ret, ==, 0);
->> +}
->> +
->> +static void test_map_unmap(void *obj, void *data, QGuestAllocator *t_alloc)
->> +{
->> +    QVirtioIOMMU *v_iommu = obj;
->> +    QTestState *qts = global_qtest;
->> +    int ret;
->> +
->> +    alloc = t_alloc;
->> +
->> +    /* attach ep0 to domain 1 */
->> +    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
->> +    g_assert_cmpint(ret, ==, 0);
->> +
->> +    ret = send_map(qts, v_iommu, 0, 0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
->> +    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
->> +
->> +    /* domain, virt start, virt end, phys start, flags */
->> +    ret = send_map(qts, v_iommu, 1, 0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
->> +    g_assert_cmpint(ret, ==, 0);
-> Could you also check that resending the map returns INVAL?
->
->> +
->> +    ret = send_unmap(qts, v_iommu, 4, 0x10, 0xFFF);
->> +    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
->> +
->> +    ret = send_unmap(qts, v_iommu, 1, 0x10, 0xFFF);
->> +    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE);
->> +
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 0x1000);
->> +    g_assert_cmpint(ret, ==, 0); /* unmap everything */
->> +
->> +    /* Spec example sequence */
->> +
->> +    /* 1 */
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 4);
->> +    g_assert_cmpint(ret, ==, 0); /* doesn't unmap anything */
->> +
->> +    /* 2 */
->> +    send_map(qts, v_iommu, 1, 0, 9, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
-> Same as above, the IOVAs aren't aligned on page size (the example assumes
-> a 1-byte granule, which arguably isn't the best idea but seemed easier to
-> read). The device currently accepts this but it would be better to write
-> the test to comply with page alignment. I can also change that when I get
-> to the alignment checks.
->
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 9);
->> +    g_assert_cmpint(ret, ==, 0); /* unmaps [0,9] */
->> +
->> +    /* 3 */
->> +    send_map(qts, v_iommu, 1, 0, 4, 0xb1000, VIRTIO_IOMMU_MAP_F_READ);
->> +    send_map(qts, v_iommu, 1, 5, 9, 0xb2000, VIRTIO_IOMMU_MAP_F_READ);
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 9);
->> +    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [5,9] */
->> +
->> +    /* 4 */
->> +    send_map(qts, v_iommu, 1, 0, 9, 0xc1000, VIRTIO_IOMMU_MAP_F_READ);
-> Could check the return values: INVAL here means the previous unmap didn't
-> actually work
->
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 4);
->> +    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE); /* doesn't unmap anything */
->> +
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 10);
->> +    g_assert_cmpint(ret, ==, 0);
->> +
->> +    /* 5 */
->> +    send_map(qts, v_iommu, 1, 0, 4, 0xd1000, VIRTIO_IOMMU_MAP_F_READ);
->> +    send_map(qts, v_iommu, 1, 5, 9, 0xd2000, VIRTIO_IOMMU_MAP_F_READ);
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 4);
->> +    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
->> +
->> +    ret = send_unmap(qts, v_iommu, 1, 5, 9);
->> +    g_assert_cmpint(ret, ==, 0);
->> +
->> +    /* 6 */
->> +    send_map(qts, v_iommu, 1, 0, 4, 0xe2000, VIRTIO_IOMMU_MAP_F_READ);
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 9);
->> +    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
->> +
->> +    /* 7 */
->> +    send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
->> +    send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 14);
->> +    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [10,14] */
->> +
->> +    send_unmap(qts, v_iommu, 1, 0, 100);
-> Shouldn't be needed?
->
->> +    send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
->> +    send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
->> +    ret = send_unmap(qts, v_iommu, 1, 0, 4);
->> +    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [10,14] */
-> Only unmaps [0,4]
->
-> Thanks,
-> Jean
->
->> +}
->> +
->> +static void register_virtio_iommu_test(void)
->> +{
->> +    qos_add_test("config", "virtio-iommu", pci_config, NULL);
->> +    qos_add_test("attach_detach", "virtio-iommu", test_attach_detach, NULL);
->> +    qos_add_test("map_unmap", "virtio-iommu", test_map_unmap, NULL);
->> +}
->> +
->> +libqos_init(register_virtio_iommu_test);
->> -- 
->> 2.30.1
+>>>>>>
+>>>>>> Even with ACPI enabled we generate a DT and would like that DT to be as
+>>>>>> complete as possible. Of course we should generate a SLIT table with
+>>>>>
+>>>>> Guest will work just fine without distance map as SRAT describes
+>>>>> all numa nodes.
+>>>>> You are forcing VM to have SLIT just for the sake of 'completeness'
+>>>>> that's practically unused.
+>>>>>
+>>>>> I'm still unsure about pushing all of this in generic numa code,
+>>>>> as this will be used only by ARM for now. It's better to keep it
+>>>>> ARM specific, and when RISCV machine will start using this, it
+>>>>> could be moved to generic code.
+>>>
+>>> I think RISCV could start using it now. Linux shares the mem/numa DT
+>>> parsing code between Arm and RISCV. If RISCV QEMU wanted to start
+>>> exposing NUMA nodes, then they might as well support empty ones from
+>>> the start.
 >>
+>> When RISCV will start using memory-less nodes, we can move this check to
+>> generic code.
+>> So far 2/2 takes care of ARM only, as result I don't see
+>> a good reason to generalize it now. (CCing RISCV folks to see if
+>> there is any plans to impl. that)
+>>
+>>>> I don't see a problem in providing this DT node / ACPI table to guests
+>>>> with empty NUMA nodes. I don't even see a problem with providing the
+>>>> distance information unconditionally. Can you explain why we should
+>>>> prefer not to provide optional HW descriptions?
+>>>
+>>> I'm still curious why we should be so reluctant to add HW descriptions.
+>>> I agree we should be reluctant to error out, though.
+>>
+>> If distance map were the only way to figure out present node-ids,
+>> I wouldn't mind making it non-optional.
+>>
+>> However guest can already get node-ids from mem/cpu/pci nodes
+>> with current device-tree that QEMU generates and
+>> forcing optional distance-map (with duplicate info) on user
+>> creates non must-have CLI requirements/inconvenience that
+>> will eventually propagate to higher layers, I'd rather avoid
+>> that if possible.
+>>
+>> So question is if an idea of fetching numa-ids from cpu nodes
+>> in addition to memory nodes (which should cover QEMU needs)
+>> have been considered and why it didn't work out?
+> 
+> Thinking about it some more. I think we only need patch 2/2 of this
+> series. We should double check, but if when Linux generates its
+> default distance-map it already generates a map using the numa-ids
+> in the cpu nodes of the DT, then I guess the resulting Linux generated
+> distance-map will be sufficient to represent the empty NUMA nodes and
+> could be used for DT memory hotplug if Linux ever tried to implement
+> that.
+> 
+> Gavin, can you check if we can just drop patch 1/2 and then when
+> booting a DT guest with empty numa nodes we get the distance
+> map we wanted to enforce anyway?
+> 
+
+It's possible that the empty NUMA nodes aren't referred by any CPUs,
+as the following command line indicate. In this case, the empty NUMA
+node IDs aren't existing in device-tree CPU nodes. So we still need
+the distance-map.
+
+In the following example, The empty NUMA node #2 and #3 aren't
+referred by any CPUs. So their NUMA node IDs won't be included
+to device-tree CPU nodes.
+
+    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+    -accel kvm -machine virt,gic-version=host               \
+    -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+    -m 1024M,slots=16,maxmem=64G                            \
+    -object memory-backend-ram,id=mem0,size=512M            \
+    -object memory-backend-ram,id=mem1,size=512M            \
+    -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+    -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+    -numa node,nodeid=2                                     \
+    -numa node,nodeid=3
+      :
+
+However, I would like to drop this (PATCH[01/02]) in v4. The memory
+hotplug through device-tree on ARM64 isn't existing. We might have
+alternative ways to present the empty NUMA nodes when it's supported,
+or we needn't it for ever because ACPI is enough to support the
+memory hotplug.
+
+Thanks,
+Gavin
+
+  
+>>>>>>>      
+>>>>>>>> +        return;
+>>>>>>>> +    }
+>>>>>>>> +
+>>>>>>>> +    for (i = 0; i < nb_numa_nodes; i++) {
+>>>>>>>> +        if (numa_info[i].present && !numa_info[i].node_mem) {
+>>>>>>>> +            error_report("Empty node %d found, please provide "
+>>>>>>>> +                         "distance map.", i);
+>>>>>>>> +            exit(EXIT_FAILURE);
+>>>>>>>> +        }
+>>>>>>>> +    }
+>>>>>>>> +}
+>>>>>>>> +
+>>>>>>>>   void parse_numa_opts(MachineState *ms)
+>>>>>>>>   {
+>>>>>>>>       qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, ms, &error_fatal);
+>>>>>>>> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+>>>>>>>> index 4173ef2afa..80f25ab830 100644
+>>>>>>>> --- a/include/sysemu/numa.h
+>>>>>>>> +++ b/include/sysemu/numa.h
+>>>>>>>> @@ -104,6 +104,7 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
+>>>>>>>>   void parse_numa_hmat_cache(MachineState *ms, NumaHmatCacheOptions *node,
+>>>>>>>>                              Error **errp);
+>>>>>>>>   void numa_complete_configuration(MachineState *ms);
+>>>>>>>> +void numa_complete_validation(MachineState *ms);
+>>>>>>>>   void query_numa_node_mem(NumaNodeMem node_mem[], MachineState *ms);
+>>>>>>>>   extern QemuOptsList qemu_numa_opts;
+>>>>>>>>   void numa_cpu_pre_plug(const struct CPUArchId *slot, DeviceState *dev,
+>>>>>>>      
+>>>>>>    
+>>>>>    
+>>>
+>>>
+>>
+> 
 

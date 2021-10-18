@@ -1,105 +1,105 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2777446lfc;
-        Mon, 18 Oct 2021 01:57:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy8TqzOqgHUQsCtj+Iu9ehHz7UQEWsplkAznfYVOTC+WlTw42tVht2FQ/G/lIORG7SXVcpf
-X-Received: by 2002:a25:3845:: with SMTP id f66mr31213041yba.469.1634547476740;
-        Mon, 18 Oct 2021 01:57:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634547476; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2777868lfc;
+        Mon, 18 Oct 2021 01:58:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxpibeo5d/XvVIg8GCMYUtoswgPydPQXONZEq1Ap1v3h4+F4Qkp3/2PE3j4USEK7K/nWSHl
+X-Received: by 2002:a25:b29a:: with SMTP id k26mr27161412ybj.451.1634547510689;
+        Mon, 18 Oct 2021 01:58:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634547510; cv=none;
         d=google.com; s=arc-20160816;
-        b=u94SfU1P2603gEAh9PZ9kBGx9giGgEFfY9Tqlmh7kgu0+fsiAp3W1BvaaqEDAvOWzB
-         Yol2FTn9ZMmAcYLmsZdIMMBsans5bvwDcKYzv6E9EfMKx4XadjA+qbSqXfitVtstHFBR
-         HQjO/xFtLdwZd0hqPUlFbBykBv3xojPfJVEckFQgIAaSfBElzu0kWlYxQIONlbW//YMs
-         33Z23z0noljhXFXaFgNutDyRsToRRzsLBrtN7ojUEaIYtVKo9XaZS8c9BJPoIotmYapg
-         KxAqpQP9UdZ+fQgqOOHbOJaknPx0+InxwOSDbD2sEzSYPp+whBqOzozAY3/iQu4Vu/I9
-         eVlg==
+        b=ljPqkzpHsInzGzhB1c8LWTkBZ+P17eetASS977rraGPsYL1YCq6kEiO43EZL54bv1X
+         kHwAUCNgL/e3qUJ2N04yHtgoOZiG8M7QrfOkWYm6GGGbvCojl8rDXYlIJibcFo19di+N
+         S8CyJTwjo3o7O8ICxzQaPL18gQucnnDLt8oZgJeuE38d2xuiA31XDFAFOmrUtFtiFTYL
+         u4PpnKcZ1guf4kgaFFkYlrbsF1R5JsjPvj+IyzOX5uMT6gHlY8BnkPWkT2geCUcnpGIJ
+         6t6Luumcqd+69NQPdjmxmjdbTHUjXwmFYLre5/n+JPMr4LHSiRDHHrEu1CRo5bH/DlET
+         pDig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=kZsvhk5OmAGcsOZUO6hNEvq1KPk0VFMf7f+fTabcrB8=;
-        b=h4bbvsz+LjGjKY+GtyYcVQE+g05+X286wN8tebaGCc9Jyv96LGP8KSZ2BIR2VLQTFL
-         ZOPDBR+LrPEiFpTUyFQ5tWbfxnUG6ORrQ2BT9X1EtplhJkPNqJHj3dwSeo8V417vGTy7
-         VSBRR3O/h9I0x9TIIOUWt9LArASctH7NGbMLP7LLR6MjCHZXieOSZqlIxjgcSMDPN+Xe
-         EWzmYEh4XgWFZ0Qyt/FV4SwaDHufa+h0LA1I7/z7WyJ/IrKILyLDuUs1bXyibTFaAwEa
-         8l8A6w2r9KwjL0Rojn7F9eVP7OVN1l44GvbxgzO7tOALXbQzqUC04JstdMm7AxyV0mKK
-         KUPA==
+        bh=B7PZu9Ahb8gb+bA346ZFbHFjascQVf52lha+yTBf0JQ=;
+        b=WN1gi7zP8lI6asf1pCnqksIu7uwVoc8a5R5b+tB8RTsMjiqoxuu6yc7mmZTWh7KvG3
+         seGecEFEsSNZRJ8ptVidYMlxbMrQ2w2xDuwtK90769m+I7xtZjHK5+dpQug21pRH8I/8
+         lUa/my/Nb5nIREXzry9FskCno8Tlt0jB3oD3sPdryS932tQETVG7vQjJ0x8+L2Xc/GHk
+         9+l4FKmIIiZ/j1l4Jpgwduwi0wJ2eJ632m3oou0WY30Ay67ZRrLDBBEwgLHskN2vJXIc
+         f5wDhW/364jMsPDEBMuHw+8LUsk03b726Fr4I1fmEj5xt4EfDzne5fma7AJQ29v61uNX
+         YCQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dgaHwthB;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=PMk9XjBR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q186si17382596ybq.432.2021.10.18.01.57.56
+        by mx.google.com with ESMTPS id y129si16864445ybf.273.2021.10.18.01.58.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Oct 2021 01:57:56 -0700 (PDT)
+        Mon, 18 Oct 2021 01:58:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=dgaHwthB;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=PMk9XjBR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41984 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43408 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mcOSy-0000NA-0X
-	for alex.bennee@linaro.org; Mon, 18 Oct 2021 04:57:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40658)
+	id 1mcOTW-0001Lk-2i
+	for alex.bennee@linaro.org; Mon, 18 Oct 2021 04:58:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mcOSn-0000Lf-Ey; Mon, 18 Oct 2021 04:57:45 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:36856)
+ id 1mcOTL-0001Jt-RG; Mon, 18 Oct 2021 04:58:19 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:38674)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mcOSl-0000kl-Hg; Mon, 18 Oct 2021 04:57:45 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id o20so40030331wro.3;
- Mon, 18 Oct 2021 01:57:42 -0700 (PDT)
+ id 1mcOTK-0001Dc-GM; Mon, 18 Oct 2021 04:58:19 -0400
+Received: by mail-wr1-x435.google.com with SMTP id u18so40090226wrg.5;
+ Mon, 18 Oct 2021 01:58:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=kZsvhk5OmAGcsOZUO6hNEvq1KPk0VFMf7f+fTabcrB8=;
- b=dgaHwthBxIxLs/Qh2bhd0ShQPLgLe+C71nm8td72XgGzvAzfZJS0J4OpQ3oSYd5ldd
- QNWa3Jqk7G3K75HQutKDhav/ZUv0cknPl3I7/xTu0uYM3oqXKL13gd9uzl1uOgS32bRu
- Vh9R4gIFJFXypsKFWKfDQyB+A2OuxR2XVgSIYNV0KubKJIdIxHFSaqCNDUnFD3z+zsXP
- lUJUJ8dFi1+IOJYqJqPh1wYEVr2vIRVEIKEY02BvL4IQpE7OnV75ITFQRxGek5g9nMzw
- MJYxJwnks3TqzUevlVslnW4blsXrhZr6DtHCYnZfDsyw5gs6Wkv+gHCODrudlJei1yc/
- l7WQ==
+ bh=B7PZu9Ahb8gb+bA346ZFbHFjascQVf52lha+yTBf0JQ=;
+ b=PMk9XjBRtl/r8Hl495dKARsTVV/XeBPYHotFOB7uAZi+YomttU08mFWUz41kUAZ1BF
+ meIpuzOeGx6kB/sn2p4aunjUiIYOEkD2Nje4Y/bdGSSSeg0V4GLNU5MsRaGmP+SsCxmL
+ 7pTUMdQy/Tf/RxoEhefBXZpvaFbQQoDNVPlsjS1VALBCm7Uj8QIt9AmQ7eYZaHPSFzZq
+ vUuRHzekeb/tsUiHXbDFLuyv00p1tVUxxU8rGUfNV6gSmgqXmU0b6oLSBxcnaDQFrFPb
+ wTgjZExI7K4uLpTAEUWvsQwNKXq2cpvwlHKfaaD5NiPq7OmzHtM9vKSymDd18vXxi7hH
+ TbJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=kZsvhk5OmAGcsOZUO6hNEvq1KPk0VFMf7f+fTabcrB8=;
- b=EbnUOkoteouN0JC/c/9aarNtl3VT97mWp5abkLULCKiq9GdUlPHE84g5De6yilD5Mt
- jRs9rGdTM5kmYUYsvAjJ/Eum1oUTsAkMkKrqv3ivvG9+7H5Lvsq97XaTyNPZ1n+gcerG
- SJUk4jwdjUzqqlnuYPccTjkLWUhHqRwWdX3Gtcjii5kM1uU2LdIwC2QenAr+cHJp0phK
- q0BZgZsIOtRCNPFXWsQi/VefCnjEPXCUPbKETq4F5bRXjgSOgjsanEwqOORnduaDfpcA
- 2A2baOCfB5uknoN/uohSVOmYPoPma/kGhCnyKL8bp6qYbUAGbHYkz+rXYa687FY056yD
- qtHg==
-X-Gm-Message-State: AOAM533+Bft5dtKf4mYQjZjDI/JgFqmPxU2Vu3rKISazqZTjjc4pkjCI
- skHgmVVlT0sxJPhtXKAJ+pk=
-X-Received: by 2002:a5d:59ae:: with SMTP id p14mr34211057wrr.76.1634547461614; 
- Mon, 18 Oct 2021 01:57:41 -0700 (PDT)
+ bh=B7PZu9Ahb8gb+bA346ZFbHFjascQVf52lha+yTBf0JQ=;
+ b=RcKMpJS+8xOw3gj3j+n6ACv1D8afZuJCtwVyRkBgA8Oy0qu0Ft8KOdYtYriNmbISou
+ QCySxC2Cvgb1rhmdhLr7p4DGpi4pnz41OWHDDaDecJqrg4Wo607Z9jH0sIHsIAcmHuh6
+ rFBQw7lpFB2kkO8cS9y8UODYOb5mr8HdlD3a/JJr2YmiNj3XT6wAOtChHcj9/kNsRIh0
+ 9HuWmV7h/lnTYbpC3qVwuxes3jUYGzn8fUY1Z4peD9AOTRUM1nFN475hIjBeSbj79PXh
+ zg1GmRdyqG0Qb+mrkD1PqtxTujOk7U7ZcOgQr3mOP7GrV/zyXj+L+SRiYIwzDBC7G0JS
+ XxVA==
+X-Gm-Message-State: AOAM533AVqWLkdShp//IUewE71CfwB5g+t2UXC59Cobx+uGmr1n+ntur
+ U6ZHMbpPjrzzY0WLjHJtsAE=
+X-Received: by 2002:adf:b1c5:: with SMTP id r5mr33843836wra.357.1634547496719; 
+ Mon, 18 Oct 2021 01:58:16 -0700 (PDT)
 Received: from [192.168.1.36] (213.red-81-36-146.dynamicip.rima-tde.net.
  [81.36.146.213])
- by smtp.gmail.com with ESMTPSA id j15sm12012769wrr.8.2021.10.18.01.57.40
+ by smtp.gmail.com with ESMTPSA id q204sm17977152wme.10.2021.10.18.01.58.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Oct 2021 01:57:41 -0700 (PDT)
-Message-ID: <5c2c6afc-e854-11ee-f3be-0b5dd222b205@amsat.org>
-Date: Mon, 18 Oct 2021 10:57:39 +0200
+ Mon, 18 Oct 2021 01:58:16 -0700 (PDT)
+Message-ID: <f62220b0-9e00-aafd-c7f1-3c64d9204d2e@amsat.org>
+Date: Mon, 18 Oct 2021 10:58:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.1.0
-Subject: Re: [PATCH 1/4] aspeed/wdt: Add trace events
+Subject: Re: [PATCH 2/4] aspeed/smc: Dump address offset in trace events
 Content-Language: en-US
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20211004154635.394258-1-clg@kaod.org>
- <20211004154635.394258-2-clg@kaod.org>
+ <20211004154635.394258-3-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211004154635.394258-2-clg@kaod.org>
+In-Reply-To: <20211004154635.394258-3-clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -124,19 +124,14 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ilRJGDCKwcQ/
+X-TUID: zp0l++Q+Y+pY
 
 On 10/4/21 17:46, Cédric Le Goater wrote:
+> The register index is currently printed and this is confusing.
+> 
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->  hw/watchdog/wdt_aspeed.c | 5 +++++
->  hw/watchdog/trace-events | 4 ++++
->  2 files changed, 9 insertions(+)
-
-> +# wdt-aspeed.c
-> +aspeed_wdt_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-> +aspeed_wdt_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-
-"size=%u", otherwise:
+>  hw/ssi/aspeed_smc.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

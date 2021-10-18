@@ -1,97 +1,92 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2625948lfc;
-        Sun, 17 Oct 2021 21:57:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyEQeA54mY1twoIRYlyaN4gI1OV1lo7GgK+tApuUKgiXKQ/3x3V+P4bbYQJ3AFWjO2oyfHE
-X-Received: by 2002:a25:378e:: with SMTP id e136mr29200595yba.26.1634533068801;
-        Sun, 17 Oct 2021 21:57:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634533068; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2775911lfc;
+        Mon, 18 Oct 2021 01:55:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJycM132yomLyiN8X9uK3NLe0TSHIm61TizgxNGU/bD+yNVz3mvsyUYtmgZTfORr6cJtra2N
+X-Received: by 2002:a25:541:: with SMTP id 62mr27883858ybf.165.1634547326185;
+        Mon, 18 Oct 2021 01:55:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634547326; cv=none;
         d=google.com; s=arc-20160816;
-        b=pU8PWeGDkSfkrcN6O1Mq1rwCL/w4bD5s9g69MBmD7I4kpcQz0Tu/ELbaXBnjbWcUwT
-         SuckZs6Bqfne+WH+QH2282aWbJIApiWudBTPRAClqpDXu9+x705it6fHnZwbRB2V1s0E
-         MHmyjPIXhCL+7Pc7Pd9Dfx4a+7WumohIBFRywYrSlPCsemSqPUw0sFLN9YfbMShV0JQ8
-         lw2Eu1Kh27B20beTSglp20FI55DrEdbqX2ISLU4W1N9VRFi+dL4G939dVudebDIhD25U
-         7uwnyMCh+H7ysDpXijQ/c8QoLbR0pT5JXGcONVP5w6GguI2s1Yx7YJq9/GZnMJBXmVrV
-         Dcrw==
+        b=nkhSYPZVs0SJE5w14NzLlRSfz41LqjoGMX8rt6Zi9sydvpDHjoEJ1mdG2a5qssnqZl
+         BxODDz4AnJ7ZPH/3NBy/lP9M3JWmJ1cvFxyF1cOPPXX44SB49crIYTBl2SzAhFUNioJD
+         FvSZg1DwMOJdOIaR5V9KHIFcHGd1vDCh01yT0fc3mqLytaDTo4sjua0aUEiSOfl8vNXl
+         o/h/VYiKTvSilpwV22LZWhG+CAuZatTvDAXNoKqPywYTRsXyoN/dpQm2aPy/JOMwxlrI
+         Gat+b6ma6eZqSynQMf8/kDlAs0VywsX+aY0xQ+HpFil/HQfdrADzUel6BzuIEEtK8jg1
+         RPZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=GtaziyCnqfG5Xjo/j6TeduCvP6NnpHRolRfWiiKaqW0=;
-        b=UD84HzJvWbXDPoscztd9keb+s+xaCkFi/h7jegQidteFGh37kq7tqG5zaDMDO0j2pq
-         S06crfSUjh286Z/shNX7DOa60Qbp3tb6mCBy1UprUr1IfGtwyoujPghH19xDUYT43JC2
-         4mB+otPtC1CnSTOSopFyR4K7mnM88TPmfyPpwecFIA4WChTwQIfVpRJohsSf2N7LuVMX
-         nkFG1AeqZKygPl9yu03pD4/UPnJJyDAmp5EDVZiS1sNnmn6uL4EKbA5ia/m8IhYsN+JP
-         45lkqn1WdLPzP/R771b4+eTjked/XicwYC1Svekaks66cXGMIFgQ7n1ujyFjGD3kyFBI
-         mDbg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=4z4ACcV6wIYUN8+G3OmKK0+jON3rxYaxqwJU3gUAkCE=;
+        b=vAlPxBAEhDePH9tPjWqB9v4TgzY+y3knmerZUGuplVFyu7Asorf1AIRzBDMcCY19/Z
+         baF5OeU3hInGtJA8VyErurhjJnV845FSBB9nthyFH714fzdlLf+rfLMAHtjZWo/kAzvD
+         64UhqShaEL/tFa1Iwn3yvTOUEoKr5XjUg4schQV0Km1BoJwFp81jx6lVDvCaVThGGapx
+         FJlmUAWMlvsMcMEgmL62obgnmMj6JsIownHwreBM3Hk2kqwjBeHkWkArnnoPrVeXlMOZ
+         zxWh3qV9VR/HCA1cn3BuRwWkixPyJvdXawBPEnxqqg/uASyaMpoTQbM8+abPp0FGoQCH
+         dFvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@zx2c4.com header.s=20210105 header.b=NYF2ksRH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b81si15805286ybc.201.2021.10.17.21.57.48
+        by mx.google.com with ESMTPS id i6si15523856ybi.120.2021.10.18.01.55.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Oct 2021 21:57:48 -0700 (PDT)
+        Mon, 18 Oct 2021 01:55:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@zx2c4.com header.s=20210105 header.b=NYF2ksRH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
-Received: from localhost ([::1]:48348 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38992 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mcKia-0004Cd-6S
-	for alex.bennee@linaro.org; Mon, 18 Oct 2021 00:57:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48520)
+	id 1mcOQX-0006eB-HF
+	for alex.bennee@linaro.org; Mon, 18 Oct 2021 04:55:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <SRS0=/m5+=PG=zx2c4.com=Jason@kernel.org>)
- id 1mcKNP-0005F3-04
- for qemu-arm@nongnu.org; Mon, 18 Oct 2021 00:35:55 -0400
-Received: from mail.kernel.org ([198.145.29.99]:42154)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mcOQH-0006dt-LB
+ for qemu-arm@nongnu.org; Mon, 18 Oct 2021 04:55:09 -0400
+Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235]:59591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <SRS0=/m5+=PG=zx2c4.com=Jason@kernel.org>)
- id 1mcKNL-00007b-AH
- for qemu-arm@nongnu.org; Mon, 18 Oct 2021 00:35:54 -0400
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 124876127C
- for <qemu-arm@nongnu.org>; Mon, 18 Oct 2021 04:35:48 +0000 (UTC)
-Authentication-Results: mail.kernel.org;
- dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
- header.b="NYF2ksRH"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105; 
- t=1634531746;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type;
- bh=GtaziyCnqfG5Xjo/j6TeduCvP6NnpHRolRfWiiKaqW0=;
- b=NYF2ksRHe6AKXVO9N65l9eIXZQ65mt51IEAgxG1RLEYkrA5kJbvQV+uuYT1gFNco5K5G6C
- wts9NA7MzaT7d2yUfLZJCONXANL7xZfKc70ZJt9+9guRrww6pwTN8s22/XHxsGGNN1n8yP
- 1Qc0FjuDD0mLsmRLRWYheYLOf/uvHHU=
-Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 79c8c911
- (TLSv1.3:AEAD-AES256-GCM-SHA384:256:NO) for <qemu-arm@nongnu.org>;
- Mon, 18 Oct 2021 04:35:46 +0000 (UTC)
-Received: by mail-yb1-f177.google.com with SMTP id g6so700824ybb.3
- for <qemu-arm@nongnu.org>; Sun, 17 Oct 2021 21:35:46 -0700 (PDT)
-X-Gm-Message-State: AOAM5310mDz8H8kmGgeJcvnyZ0wnkkksTqmqcGWM3tHN1NKavVnIJ+ik
- hdxwmtSDlX6mPB/h0tqVttCkVB70Qd3Z0zqmcXQ=
-X-Received: by 2002:a25:bcd1:: with SMTP id l17mr1219630ybm.449.1634531745841; 
- Sun, 17 Oct 2021 21:35:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mcOQF-0006kM-AH
+ for qemu-arm@nongnu.org; Mon, 18 Oct 2021 04:55:09 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.44])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 157A61FFB0;
+ Mon, 18 Oct 2021 08:54:53 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Mon, 18 Oct
+ 2021 10:54:52 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G004f7323a95-aad4-4790-8c2e-f46c28792758,
+ 87243DFB5E7D9912E7F5CCDD2980C2FEBA95BD79) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <0b06bada-4f7e-1d22-a81f-8c0241a9dcdc@kaod.org>
+Date: Mon, 18 Oct 2021 10:54:51 +0200
 MIME-Version: 1.0
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Date: Sun, 17 Oct 2021 22:35:35 -0600
-X-Gmail-Original-Message-ID: <CAHmME9pA1vOzOocjMGBp0JeQEzYHjEy6qQjbnQM4eukzrSaWfg@mail.gmail.com>
-Message-ID: <CAHmME9pA1vOzOocjMGBp0JeQEzYHjEy6qQjbnQM4eukzrSaWfg@mail.gmail.com>
-Subject: tcg emulation of arm64, running windows, emulating x86
-To: qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=198.145.29.99;
- envelope-from=SRS0=/m5+=PG=zx2c4.com=Jason@kernel.org; helo=mail.kernel.org
-X-Spam_score_int: -67
-X-Spam_score: -6.8
-X-Spam_bar: ------
-X-Spam_report: (-6.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH 0/4] aspeed/smc: Improve support for the alternate boot
+ function
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20211004154635.394258-1-clg@kaod.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20211004154635.394258-1-clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: f34e59e1-1df0-401a-8a3a-e985de4eb487
+X-Ovh-Tracer-Id: 3917005778477091622
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvtddgtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepueevledvjeetgeetfeeiveeftefffedvvdeikeetveelfeeglefgueetvdefvdefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphguvghlsehfsgdrtghomh
+Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
+ helo=10.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,36 +100,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: rth@twiddle.net
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Peter Delevoryas <pdel@fb.com>,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rIXCA5LxHJF0
+X-TUID: frFd+Tj/75TJ
 
-Hi,
+On 10/4/21 17:46, Cédric Le Goater wrote:
+> Hello,
+> 
+> The Aspeed SoCs have a dual boot function for firmware fail-over
+> recovery. The system auto-reboots from the second flash if the main
+> flash does not boot successfully within a certain amount of time. This
+> function is called alternate boot (ABR) in the FMC controllers.
+> 
+> On the AST2600, the ABR registers controlling the 2nd watchdog timer
+> were moved from the watchdog register to the FMC controller. To
+> control WDT2 through the FMC model register set, this series creates a
+> local address space on top of WDT2 memory region.
+> 
+> To test on the fuji-bmc machine, run :
+> 
+>      devmem 0x1e620064
+>      devmem 0x1e78504C
+> 
+>      devmem 0x1e620064 32 0xffffffff
+>      devmem 0x1e620064
+>      devmem 0x1e78504C
+>      
+> Thanks
+> 
+> C.
+> 
+> 
+> Cédric Le Goater (4):
+>    aspeed/wdt: Add trace events
+>    aspeed/smc: Dump address offset in trace events
+>    aspeed/wdt: Add an alias for the MMIO region
+>    aspeed/smc: Improve support for the alternate boot function
 
-QEMU appears to successfully run Windows on ARM64. This works
-especially well with kvm when there's real hardware, but it also works
-using TCG.
 
-Windows on ARM64 itself has an emulator for x86 inside of it, which is
-more or less essential, as the OS hasn't been fully ported to ARM64
-(e.g. .NET 4.5 binaries). This emulator works fine in KVM with real
-hardware. It worked fine in TCG, through Windows build 1709, but after
-that Windows build it no longer works. Instead, x86 programs hang with
-100% cpu usage at some point during their emulation. Presumably some
-new feature is being used that TCG does not implement or implements
-incorrectly. I would like to find out what that is.
+Andrew, Peter D., Joel,
 
-There are a number of things I could investigate to better understand this:
-- Debugging the Windows emulator at runtime and seeing where it's
-stuck in a loop.
-- Debugging QEMU and seeing what the TCG code gen is doing.
-- Carefully diff'ing xtajit.dll from 1709 and from after 1709.
+Would you have time to tell me what you think about the last 2 patches ?
+It would be a nice extension for the Fuji in QEMU 6.2.
 
-But I thought it'd be helpful if I asked here first about potential
-"hints". For example, does anybody know of some feature TCG doesn't
-implement that an x86 emulator on arm64 is likely to use? Any pointers
-or intuitions?
+Here are some images for tests.
 
-Thank you,
-Jason
+   https://github.com/peterdelevoryas/openbmc/releases/download/fuji-v0.1-alpha/fuji.mtd
+
+This one is recent :
+
+   https://github.com/peterdelevoryas/openbmc/releases/download/fuji.mtd.0/fuji.mtd
+
+
+   U-Boot 2019.04 fuji-bd6ee58668 (Sep 13 2021 - 21:29:46 +0000)
+   [    0.000000] Linux version 5.10.23-fuji (oe-user@oe-host) (arm-fb-linux-gnueabi-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 SMP Thu Sep 9 23:22:29 UTC 2021
+
+
+Thanks,
+
+C.
+
+
+> 
+>   include/hw/ssi/aspeed_smc.h      |  3 ++
+>   include/hw/watchdog/wdt_aspeed.h |  1 +
+>   hw/arm/aspeed_ast2600.c          |  2 +
+>   hw/ssi/aspeed_smc.c              | 84 ++++++++++++++++++++++++++++++--
+>   hw/watchdog/wdt_aspeed.c         | 20 ++++++--
+>   hw/ssi/trace-events              |  1 +
+>   hw/watchdog/trace-events         |  4 ++
+>   7 files changed, 107 insertions(+), 8 deletions(-)
+> 
+

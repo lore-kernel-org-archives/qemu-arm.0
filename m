@@ -1,232 +1,207 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp154406lfc;
-        Tue, 19 Oct 2021 01:11:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJykLvu+fBxVkXwgH5Sy28vZvO7Y4aQRIuBru2W9gWJWQO2VBQ9IUqvM6jRoHO2WfleLVakY
-X-Received: by 2002:a37:a944:: with SMTP id s65mr25849766qke.263.1634631107852;
-        Tue, 19 Oct 2021 01:11:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634631107; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp307769lfc;
+        Tue, 19 Oct 2021 04:33:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHi23/hBxYTa9xer7KlsajZ8S6zQxGCoGKi7bSS4pUjwsBO2gKKdM6/Tg3TKPDEg5UvdBl
+X-Received: by 2002:a4a:3bc8:: with SMTP id s191mr4308075oos.88.1634643202751;
+        Tue, 19 Oct 2021 04:33:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634643202; cv=none;
         d=google.com; s=arc-20160816;
-        b=BTFTWPL4RY1la8WZ36o764Cb+fdwD3s/XoOTfIe27oANszqhBG7cfDMqcnoykByWJJ
-         brnAgYdmaNaLNrBdwqFxXbep1wFWMREhojLplTw+wSbBdKt0Q4hCH9K3xmdDAF4hLe8o
-         PwRmpAv5HiMd1OME7QnDe/90i8ZZqp/cPo5RbRmcREF6pcMdPXHT8+olmPE8WuXujq8j
-         5SvpSHTg4GFX+PzJP/JmBv2sE6pMiYFHkoiqkeJ2UpJortZdpsYaPyR5cFUTfLPp+86C
-         7fVkH/7YdD1VrzuLMgKMmu2wxGU8Z7hjFaHAJQM6o8GTXOWahNKIoNg0HQpMzg4jGZt+
-         GcBg==
+        b=RDWczJjLsv5k4P9HilWdlTnqZtLqAgrnRX9TDFWn6vxXU/zZzfkW8CiPugSP36lf9i
+         eoHrrmczP7JbNQ9Bzjh0GPXHlXiPX2PxQ1trdHOUtEF0NbV1WrRD7CwPkZadAJl2uXVk
+         fCoKIaEZH6jpDL7TZ15rZcIyLoQ+hkgoNhLfzT3H+8t+vFukLCjDtcCPfhiPIU72g7oH
+         tHrdJrCvlmBTjJ5py4H4xgS55+AjEljyxz9TujQFkgmIJ6WgziXYtNQAq22nbDVJ5t0J
+         fO9S6PpelErvZMsi+T5n+7XvzCJx+QcKqi4o39510UQsgXZEp0e7cEkNtCF3LOh3StFT
+         BruQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=zKLTd6OOu3MagQZJmRM543Uno1fF5cqdFuW3oUqOJug=;
-        b=F5DZpIjuwGOhNdfqgf/9uSxVLYuXWYu+1GAfwm0eGoxHffhQDlwtgrjKlP/p1KOl1M
-         wXAeepah6DvU7EArK2w2rT0OpKq2xucN9VhFdp//pGUylhJJRhriZihnIKO3dA4RjW+P
-         Bnal//ipNalPspZfPdufZgSpA9xorEYMD+jFx9z1+HFYG8voKTtL+vrAJsmN2XtarVw3
-         RXxz8ZQmP0OSTKt8E12xGiBkK7iqg+icZzE9+zns/9QUL6FmPe7A8oeXYsO5TYIx+TqV
-         fdLkBJ84vFQmkqU8wKCCPpDbYdSS761NWbZc5C5l40mnyq24bxV58p83tPdYYUvRVXNE
-         9r4A==
+        bh=X5r2KJQH0mFVuWmoeGDJsGfJGfPX7snxmFOMGZkQyOY=;
+        b=DkIw3folyO7zT6k4QUZp7WiSCmh8GalrTEIy8uJBOxQc/a10Pli28RbuXOEvWfPSTN
+         LVvt08s02pQzDzT02b/mAFEYPb6pHvwff9YZjQW9SuwYwOF6ckpUcIMfhBcL6HDrsGuJ
+         hr+VkxgSS+rs9xBPxr5LH5fMRAPq5uqgjm6DohUE8m7CQmM/vAuBSov0pJ9YJQ7CdpaT
+         GcJDUC/I5ua3FtW2URmufDCs4oDEv8xQcyeRwlbqT9gv7ifHAIuD2qYq/eZ+LMSGzvcl
+         r8ulPmXZOM7fapzah3AfWhHmcsXxulYUkE+Lfcw4AKNrJMVBOVLmVH0HlzXiG3IDgHHR
+         92oA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LiFcPTTH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hXQgUmYK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u19si15076479qkp.345.2021.10.19.01.11.47
+        by mx.google.com with ESMTPS id r10si17844077oig.46.2021.10.19.04.33.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Oct 2021 01:11:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Oct 2021 04:33:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LiFcPTTH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38224 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hXQgUmYK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mckDr-0003zC-0h
-	for alex.bennee@linaro.org; Tue, 19 Oct 2021 04:11:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36080)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mcnMv-00047j-N5
+	for alex.bennee@linaro.org; Tue, 19 Oct 2021 07:33:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mck4R-0002sh-Az
- for qemu-devel@nongnu.org; Tue, 19 Oct 2021 04:02:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38780)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mcnAY-0000Ct-BL
+ for qemu-arm@nongnu.org; Tue, 19 Oct 2021 07:20:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45282)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mck4K-00020O-Vr
- for qemu-devel@nongnu.org; Tue, 19 Oct 2021 04:02:02 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mcnAP-0002Cm-4W
+ for qemu-arm@nongnu.org; Tue, 19 Oct 2021 07:20:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634630516;
+ s=mimecast20190719; t=1634642422;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zKLTd6OOu3MagQZJmRM543Uno1fF5cqdFuW3oUqOJug=;
- b=LiFcPTTH8fFcjr+Vd22FQWhRf/Px8YmV4tkB+HthzgdAmt7dl9fymDeqQJ2zCdC0OmmNl4
- MBNaIyPiIH8pET7WD3ELpHslepL1bfc2PVpLrBv04yPVyNyRyt8mri7dMYGSh/u77jdhy8
- YgKjK9jlwp+MFYyKR8H8LiTCkmMNQ+8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-498-anT-YokJMX2nJmJx3VJ33g-1; Tue, 19 Oct 2021 04:01:53 -0400
-X-MC-Unique: anT-YokJMX2nJmJx3VJ33g-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C6F0218125C0;
- Tue, 19 Oct 2021 08:01:51 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.193.154])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5EA545DAA5;
- Tue, 19 Oct 2021 08:01:46 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, mst@redhat.com,
- imammedo@redhat.com, richard.henderson@linaro.org, philmd@redhat.com,
- peter.maydell@linaro.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, ardb@kernel.org, drjones@redhat.com
-Subject: [PATCH v5 2/3] hw/arm/virt_acpi_build: Generate DBG2 table
-Date: Tue, 19 Oct 2021 10:00:36 +0200
-Message-Id: <20211019080037.930641-3-eric.auger@redhat.com>
-In-Reply-To: <20211019080037.930641-1-eric.auger@redhat.com>
-References: <20211019080037.930641-1-eric.auger@redhat.com>
+ bh=X5r2KJQH0mFVuWmoeGDJsGfJGfPX7snxmFOMGZkQyOY=;
+ b=hXQgUmYKWtKoCxwc733IQKbAXnTDb7PP1TrATfTlfkLcbbMG6IWPTtMb+NRk3tM+kmMU01
+ U1WHm9swRtqk5W0EMx8pbDqFCkVs49IJ2DL/GGeuPwVoR5a9qeaX7FPnIXylrh2Dg/dfW8
+ 9zAimxKL/wFkj/LWKfqM3hEoHDCRSbk=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-180-8Hsyy8gVMnmlBg2ExZ-c7A-1; Tue, 19 Oct 2021 07:20:21 -0400
+X-MC-Unique: 8Hsyy8gVMnmlBg2ExZ-c7A-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ t18-20020a056402021200b003db9e6b0e57so17278449edv.10
+ for <qemu-arm@nongnu.org>; Tue, 19 Oct 2021 04:20:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=X5r2KJQH0mFVuWmoeGDJsGfJGfPX7snxmFOMGZkQyOY=;
+ b=kuKcmveE/U5hYFdmweWU0QFCxYG4QPmvcIKY9TOXXhJ8o+3U83CJTpYe5W0pwOv3v5
+ gHDCHhPTtJWzJ1LxtHZScZAlNG+5t8BBeZ6d9BpR6ZAljdBBEBrw+H/SMBx3RdqLpqbU
+ B+CAlBvJaVKE6SHeR8YjM6DdlXrfDErREUg1xEiVo15oMfGeVM8ijRDwDG2K5ffU5rsU
+ UwjiaWf3QuvSRapcqrkLs0gzjdpUjLxOfuh0r0RMP9Dmqyt8cXRB4j3whlw2hZRqLp16
+ aGU+lYb55xuohT68bt8BtPb63PwXejTHseP61L3/H+0KycNA8K64eUEx12mpFBiiAWJW
+ nQPg==
+X-Gm-Message-State: AOAM531WKZ4EhUH+/WX4iVdkfjITMjL1Kr23O0O5dQ3+m0XemwQFGKYS
+ WlXbD0ReZpSFFZHI8hEumtyQEGqpxZ7KtbE84VFO4nd49XpXBdESxrERXUgaew63feRpx3LXekw
+ hhHcPhkPlyynQ
+X-Received: by 2002:a05:6402:35d6:: with SMTP id
+ z22mr52043846edc.227.1634642419893; 
+ Tue, 19 Oct 2021 04:20:19 -0700 (PDT)
+X-Received: by 2002:a05:6402:35d6:: with SMTP id
+ z22mr52043824edc.227.1634642419679; 
+ Tue, 19 Oct 2021 04:20:19 -0700 (PDT)
+Received: from redhat.com ([2.55.24.172])
+ by smtp.gmail.com with ESMTPSA id p13sm7328179ejn.12.2021.10.19.04.20.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Oct 2021 04:20:19 -0700 (PDT)
+Date: Tue, 19 Oct 2021 07:20:16 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 13/29] tests: arm-cpu-features: use qtest_has_kvm() API
+Message-ID: <20211019111923.679826-14-mst@redhat.com>
+References: <20211019111923.679826-1-mst@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20211019111923.679826-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: gshan@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u/Q4uUcwn4+Y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: H+LI9++KcWGB
 
-ARM SBBR specification mandates DBG2 table (Debug Port Table 2)
-since v1.0 (ARM DEN0044F 8.3.1.7 DBG2).
+From: Igor Mammedov <imammedo@redhat.com>
 
-The DBG2 table allows to describe one or more debug ports.
+and drop custom function that were doing the job
 
-Generate an DBG2 table featuring a single debug port, the PL011.
-
-The DBG2 specification can be found at
-"Microsoft Debug Port Table 2 (DBG2)"
-https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/acpi-debug-port-table?redirectedfrom=MSDN
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <20210902113551.461632-14-imammedo@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/arm/virt-acpi-build.c | 63 +++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 62 insertions(+), 1 deletion(-)
+ tests/qtest/arm-cpu-features.c | 29 +++++------------------------
+ 1 file changed, 5 insertions(+), 24 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6cec97352b..dd17a48c00 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -616,6 +616,64 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     acpi_table_end(linker, &table);
- }
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 90a87f0ea9..f76652143a 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -26,21 +26,6 @@
+                     "  'arguments': { 'type': 'full', "
+ #define QUERY_TAIL  "}}"
  
-+/* Debug Port Table 2 (DBG2) */
-+static void
-+build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-+{
-+    AcpiTable table = { .sig = "DBG2", .rev = 0, .oem_id = vms->oem_id,
-+                        .oem_table_id = vms->oem_table_id };
-+    int dbg2devicelength;
-+    const char name[] = "COM0";
-+    const int namespace_length = sizeof(name);
-+
-+    acpi_table_begin(&table, table_data);
-+
-+    dbg2devicelength = 22 + /* BaseAddressRegister[] offset */
-+                       12 + /* BaseAddressRegister[] */
-+                       4 + /* AddressSize[] */
-+                       namespace_length /* NamespaceString[] */;
-+
-+    /* OffsetDbgDeviceInfo */
-+    build_append_int_noprefix(table_data, 44, 4);
-+    /* NumberDbgDeviceInfo */
-+    build_append_int_noprefix(table_data, 1, 4);
-+
-+    /* Table 2. Debug Device Information structure format */
-+    build_append_int_noprefix(table_data, 0, 1); /* Revision */
-+    build_append_int_noprefix(table_data, dbg2devicelength, 2); /* Length */
-+    /* NumberofGenericAddressRegisters */
-+    build_append_int_noprefix(table_data, 1, 1);
-+    /* NameSpaceStringLength */
-+    build_append_int_noprefix(table_data, namespace_length, 2);
-+    build_append_int_noprefix(table_data, 38, 2); /* NameSpaceStringOffset */
-+    build_append_int_noprefix(table_data, 0, 2); /* OemDataLength */
-+    /* OemDataOffset (0 means no OEM data) */
-+    build_append_int_noprefix(table_data, 0, 2);
-+
-+    /* Port Type */
-+    build_append_int_noprefix(table_data, 0x8000 /* Serial */, 2);
-+    /* Port Subtype */
-+    build_append_int_noprefix(table_data, 0x3 /* ARM PL011 UART */, 2);
-+    build_append_int_noprefix(table_data, 0, 2); /* Reserved */
-+    /* BaseAddressRegisterOffset */
-+    build_append_int_noprefix(table_data, 22, 2);
-+    /* AddressSizeOffset */
-+    build_append_int_noprefix(table_data, 34, 2);
-+
-+    /* BaseAddressRegister[] */
-+    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
-+                     vms->memmap[VIRT_UART].base);
-+
-+    /* AddressSize[] */
-+    build_append_int_noprefix(table_data,
-+                              vms->memmap[VIRT_UART].size, 4);
-+
-+    /* NamespaceString[] */
-+    g_array_append_vals(table_data, name, namespace_length);
-+
-+    acpi_table_end(linker, &table);
-+};
-+
- /*
-  * ACPI spec, Revision 5.1 Errata A
-  * 5.2.12 Multiple APIC Description Table (MADT)
-@@ -875,7 +933,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     dsdt = tables_blob->len;
-     build_dsdt(tables_blob, tables->linker, vms);
+-static bool kvm_enabled(QTestState *qts)
+-{
+-    QDict *resp, *qdict;
+-    bool enabled;
+-
+-    resp = qtest_qmp(qts, "{ 'execute': 'query-kvm' }");
+-    g_assert(qdict_haskey(resp, "return"));
+-    qdict = qdict_get_qdict(resp, "return");
+-    g_assert(qdict_haskey(qdict, "enabled"));
+-    enabled = qdict_get_bool(qdict, "enabled");
+-    qobject_unref(resp);
+-
+-    return enabled;
+-}
+-
+ static QDict *do_query_no_props(QTestState *qts, const char *cpu_type)
+ {
+     return qtest_qmp(qts, QUERY_HEAD "'model': { 'name': %s }"
+@@ -506,14 +491,6 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
  
--    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
-+    /* FADT MADT GTDT MCFG SPCR DBG2 pointed to by RSDT */
-     acpi_add_table(table_offsets, tables_blob);
-     build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+     qts = qtest_init(MACHINE_KVM "-cpu max");
  
-@@ -898,6 +956,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     acpi_add_table(table_offsets, tables_blob);
-     build_spcr(tables_blob, tables->linker, vms);
- 
-+    acpi_add_table(table_offsets, tables_blob);
-+    build_dbg2(tables_blob, tables->linker, vms);
-+
-     if (vms->ras) {
-         build_ghes_error_table(tables->hardware_errors, tables->linker);
-         acpi_add_table(table_offsets, tables_blob);
+-    /*
+-     * These tests target the 'host' CPU type, so KVM must be enabled.
+-     */
+-    if (!kvm_enabled(qts)) {
+-        qtest_quit(qts);
+-        return;
+-    }
+-
+     /* Enabling and disabling kvm-no-adjvtime should always work. */
+     assert_has_feature_disabled(qts, "host", "kvm-no-adjvtime");
+     assert_set_feature(qts, "host", "kvm-no-adjvtime", true);
+@@ -637,7 +614,11 @@ int main(int argc, char **argv)
+      * order avoid attempting to run an AArch32 QEMU with KVM on
+      * AArch64 hosts. That won't work and isn't easy to detect.
+      */
+-    if (g_str_equal(qtest_get_arch(), "aarch64")) {
++    if (g_str_equal(qtest_get_arch(), "aarch64") && qtest_has_accel("kvm")) {
++        /*
++         * This tests target the 'host' CPU type, so register it only if
++         * KVM is available.
++         */
+         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
+                             NULL, test_query_cpu_model_expansion_kvm);
+     }
 -- 
-2.26.3
+MST
 

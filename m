@@ -1,111 +1,111 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1831562lfc;
-        Wed, 20 Oct 2021 10:36:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLQb+NmLtdFrcj0R72wPavvGFxvP7IRBUdIohSo3a+gfduqAKFyiRf+cYJ7HXI9X85YQG6
-X-Received: by 2002:ab0:344e:: with SMTP id a14mr720068uaq.63.1634751360446;
-        Wed, 20 Oct 2021 10:36:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634751360; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1832035lfc;
+        Wed, 20 Oct 2021 10:36:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyTSRU26qOyNTqhAEdvABDQFj09HcgqIx7kK5t0cnXpbollMuNqNJvBf1Ai9x0KmEEGRhJw
+X-Received: by 2002:a67:cb04:: with SMTP id b4mr433557vsl.17.1634751394665;
+        Wed, 20 Oct 2021 10:36:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634751394; cv=none;
         d=google.com; s=arc-20160816;
-        b=QalXxKHau2JsriYpPBQZeCzizoF7GgzptGGYVli2WfZ+vp+WZlSf1UK1EFGGsvm8zG
-         Kj/kMzqAKL443PIscGC28yYXqnQA/ybkLQLDh+DyYeZns+pJ2QLKugZ+akYB1CMdoqXl
-         JYxr+LbMJDNFUv2/66oFOMA6B6ZhHfnfIwB5y7cx5FONIvzSrRs5DQn/2xVirn9/RqQ/
-         4l059YrywvOtVIOJMQ3iD30af/dhK9ozGD6qy4IFaUX/E42K7HzyN+5GuyW3E8+irdBv
-         0+AHfABINSx9H/kr/NruwE2iNn6rTl1ePpWFsLhVBze6hUGEmpNtOZh6ub4Vhdb5zcIG
-         qnsA==
+        b=ztSb2LuitQUx0R9shWXQLEfduMpV07yE/PNmewh1ygK31n4HgTWoIIfV+35Pkb/nSp
+         VJacoS8scVWMzC4apBMTwlit8gGOi3ysfVMejOOYEckG+FbkDdTEmQQJxCj+vbhxrPAT
+         gf5fJpIhsYMq2K0C29sy20tKixbcEc35z8rvXm2HtwNlZp6DPvFH5J67eYFWuaPAu4jz
+         5BxnrfhISQidjkbjBCoLybEemvZVVLZ78EpcaUHOc6EEj8o1SJ+3ta1yFo5JQuuV2i3C
+         YCL46KXNdiN8Cdg92QvppQsATf7ZMDB9AZRNbspDiULocEYHGWLsOA734UmEYdvN4A+T
+         OBDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=i19WYEt+XB11rUrQQOBD1fOttTO4Ul1mLLVvAi2QvL0=;
-        b=ysiPkicqyvHGOj1i3lpJMwJETKH1OI0oNlghT38VXj7S9FnRM5PF/rtHoHMx8Gcvvs
-         J78+MDuzRplDSbMrz/Oo+N2++znO6SbbOJGudaDZ47HlAsSKEYfmsmVlx+LIvac12RLn
-         EDg16ETHbNYlL3Ww8KJ6iMjVrC2RhyjYGDDPQuDYXEKjXf7NKC+1asiQgCkyXGpRF3g2
-         Jqqno05XN4WNd46az4XauWwprfl/KBwXAvHZRq0XF5+CEiJotmXywa3jayPjL+wfNEVu
-         rpsr+lvKmaPgG0611gMXL3+UJfnJt/7TxI9oFrt5XWH0zd5cAgAVmD+BWcGwKdNroL1B
-         7gXw==
+        bh=v0Q7UmquKNnlNjJfzVAqtJId7snjF4fwvfjyxqNqrCM=;
+        b=UEKQ4Vb07C1LbAPxstqIWmqLam/J+631yiQYgLBHSx+rViIKs9YyZiwdjzJBbI//2+
+         lAZvpqGdY6tpcr9odXeMrOYihhG3io9/O+JdoFPZVqrJGzZ/OmKawJf0LoH/wCrQitm7
+         CQdLnmvBq2O1FEt9tZTaBwvzokIncCLOvFg3V4XDxFzgJxtFRxYWa8QJV1bKM+8h/Bay
+         tEuHknYZW+kiyHGbuUZg5is08+dieda67tAsJ1j76YtQNRvPKkx61mhentR9YYeGHZDG
+         XY+yPF/hxPN0hV+Cx/CusZX78ebxUEUD4vJ1AdN0D0340vqkOyUIcX2tJBLvkDp+V7W1
+         b2Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Oqel96G8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WuM9Itxj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d18si3073054vsj.393.2021.10.20.10.36.00
+        by mx.google.com with ESMTPS id g11si1917265vsm.202.2021.10.20.10.36.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Oct 2021 10:36:00 -0700 (PDT)
+        Wed, 20 Oct 2021 10:36:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Oqel96G8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WuM9Itxj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdFVP-0005oU-HC
-	for alex.bennee@linaro.org; Wed, 20 Oct 2021 13:35:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37354)
+	id 1mdFVx-0006m3-T8
+	for alex.bennee@linaro.org; Wed, 20 Oct 2021 13:36:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mdFUV-00050K-GU
- for qemu-arm@nongnu.org; Wed, 20 Oct 2021 13:35:03 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:46949)
+ id 1mdFUX-00055D-UA
+ for qemu-arm@nongnu.org; Wed, 20 Oct 2021 13:35:05 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:43752)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mdFUS-0002Wz-Ee
- for qemu-arm@nongnu.org; Wed, 20 Oct 2021 13:35:03 -0400
-Received: by mail-wr1-x432.google.com with SMTP id k7so39153wrd.13
- for <qemu-arm@nongnu.org>; Wed, 20 Oct 2021 10:34:59 -0700 (PDT)
+ id 1mdFUU-0002ZY-Hx
+ for qemu-arm@nongnu.org; Wed, 20 Oct 2021 13:35:05 -0400
+Received: by mail-wr1-x430.google.com with SMTP id r7so48563982wrc.10
+ for <qemu-arm@nongnu.org>; Wed, 20 Oct 2021 10:35:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=i19WYEt+XB11rUrQQOBD1fOttTO4Ul1mLLVvAi2QvL0=;
- b=Oqel96G8KkMs+V7uijvFVKlNu1aAI7tWMVk4ngzBBJGugNrbTAFYNvr5K90O/XOa4g
- TfG/1REB07tikL1t5f1iUoFPIO4Zi6031P0NEogqtmtjqlEAePTXAhT4psk95NtfTUad
- S3KGk8YJgNgwjIcpIzKYnFrE52vQcaHRr/xoGUWYpeVopul2zKACocy/Zp8fm9TTyRw3
- kXNXW8oMJ8xoeRg+OlN+kudVXGl52ZsWuRX1y4d2JeSuHU9Ofy77NNrikMBiUM1KfyO9
- 1Rhie/kGkTgnD+61LRujP+ZKkU6Wie7RXNWROBgyJ/1x7XKXssD85qTR0I/SegZyjhBt
- 1iwg==
+ bh=v0Q7UmquKNnlNjJfzVAqtJId7snjF4fwvfjyxqNqrCM=;
+ b=WuM9ItxjRNslon9TCgB2tPO03npX3Jx4ovnWK1CKkuvR9/gF+9HxFRmArRBtJiCVwF
+ rsHZU5L+TVXtqfXvh66vbSUd0BMzVmFHp73vytsGuE+54u+TEIZ02z9hrKNEL1H/Gxce
+ 8zM5ROZTtHlHdbZ3Ipn7hAkdJhHu8F9RthwNJtal3ncIXWc9LnDm5DYNWapizoJS+EMr
+ IvMFhxpl8+52eAAYZS6YGYneq0sD+Pm61gxhE7RB7a1gIxDmHLqZDdUtlyMOl9Pxy/MH
+ YwbC5upb8YYLhRtbFwRO1vsST/CNceCf7OWT/+pbpKTSDpuSeoElXG25C4n0752M0yR1
+ 9E3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=i19WYEt+XB11rUrQQOBD1fOttTO4Ul1mLLVvAi2QvL0=;
- b=RceQmWygHheRi0tBYXPygZF/jsgYOP4vbKtxqj10d11QFqtqBLE/HQ5oZnxqcU82HJ
- Gbzdd55ncbbi6OGIJx1hMlzVQMYWzzrBWsE/C2GdwJ/ywHvW6XF82s1jkSpgrSXokZcF
- ZhXJkWtgIVwal/MWdpT1dncQukhILcTlkPv/F74BCNvWI472BFoxkRzTa2eQ0sp+fNS2
- crXjfHxElsa8YbnXmFiWbgJ/wtr3UiYmi/0BtHKVKHrMvVg8UGH7C0+OQhBWCYGdPZ1R
- y9TmMQu89ToTnyWCzSFaipwYF7eG890pDZCxXckO23iOGsCSavJSVQ95FtQqXNg0BdLB
- LGzA==
-X-Gm-Message-State: AOAM530xCQSkFlY2mpMJKFNSngFUTnAcX15G61E74UtJXRIJ0178XYIW
- MpW+FvySweAGTrO+bFE3UQXCZw==
-X-Received: by 2002:adf:bc12:: with SMTP id s18mr756123wrg.328.1634751298973; 
- Wed, 20 Oct 2021 10:34:58 -0700 (PDT)
+ bh=v0Q7UmquKNnlNjJfzVAqtJId7snjF4fwvfjyxqNqrCM=;
+ b=N5cBpoZm9lrvarnlKNFMfESnR9p6azEX2sgr0rlGby18xNFYOQlI7gYTGqTlVMa8AP
+ P6cn/t55GSZjblH0wxGhN2FMsy2wVqa9DrKtkQxcVCMO9cHDe5xomMDe1HA5m1mFSa14
+ A8txdbtowkwDPdr7/V3W6xZoY/te05mOhTqHkw+E5J7d1bxgMYQ6+oaG0uqDbmJOlhWD
+ MakxsgupNxnt3j4eYq13ggGrxTIongB2SZnRanyNIDqAvxIOtNB0XVzMnsodXR/jCTbS
+ 7stZcL1PixSD7lqXPQ4B+6Xe1/Jo/3VfJKx5spnx5c2rvZPrMFjlW8mB2yvSCSVjTzug
+ Cf6w==
+X-Gm-Message-State: AOAM531rsSRvqnWbqItoXcQ6TERYHDE2Qwm3w1By4t0GxHq54shWCGTN
+ mSRgBP3ovAhGUcxGcIwoU4KPQg==
+X-Received: by 2002:adf:bd91:: with SMTP id l17mr679556wrh.261.1634751301187; 
+ Wed, 20 Oct 2021 10:35:01 -0700 (PDT)
 Received: from localhost.localdomain
  (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id n7sm2662270wrp.17.2021.10.20.10.34.57
+ by smtp.gmail.com with ESMTPSA id n7sm2662270wrp.17.2021.10.20.10.35.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Oct 2021 10:34:58 -0700 (PDT)
+ Wed, 20 Oct 2021 10:35:00 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: mst@redhat.com,
 	imammedo@redhat.com,
 	peter.maydell@linaro.org
-Subject: [PATCH v5 02/12] hw/i386/pc: Remove x86_iommu_get_type()
-Date: Wed, 20 Oct 2021 18:27:36 +0100
-Message-Id: <20211020172745.620101-3-jean-philippe@linaro.org>
+Subject: [PATCH v5 04/12] hw/i386/pc: Allow instantiating a virtio-iommu device
+Date: Wed, 20 Oct 2021 18:27:38 +0100
+Message-Id: <20211020172745.620101-5-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211020172745.620101-1-jean-philippe@linaro.org>
 References: <20211020172745.620101-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,159 +125,121 @@ Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, ehabkost@redhat.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CZOW0TC3W4k1
+X-TUID: lRicEoadTNr8
 
-To generate the IOMMU ACPI table, acpi-build.c can use base QEMU types
-instead of a special IommuType value.
+Allow instantiating a virtio-iommu device by adding an ACPI Virtual I/O
+Translation table (VIOT), which describes the relation between the
+virtio-iommu and the endpoints it manages.
 
+Add a hotplug handler for virtio-iommu on x86 and set the necessary
+reserved region property. On x86, the [0xfee00000, 0xfeefffff] DMA
+region is reserved for MSIs. DMA transactions to this range either
+trigger IRQ remapping in the IOMMU or bypasses IOMMU translation.
+
+Although virtio-iommu does not support IRQ remapping it must be informed
+of the reserved region so that it can forward DMA transactions targeting
+this region.
+
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- include/hw/i386/x86-iommu.h | 12 ------------
- hw/i386/acpi-build.c        | 20 +++++++++-----------
- hw/i386/amd_iommu.c         |  2 --
- hw/i386/intel_iommu.c       |  3 ---
- hw/i386/x86-iommu-stub.c    |  5 -----
- hw/i386/x86-iommu.c         |  5 -----
- 6 files changed, 9 insertions(+), 38 deletions(-)
+ hw/i386/acpi-build.c | 10 +++++++++-
+ hw/i386/pc.c         | 16 +++++++++++++++-
+ hw/i386/Kconfig      |  1 +
+ 3 files changed, 25 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/i386/x86-iommu.h b/include/hw/i386/x86-iommu.h
-index 9de92d33a1..5ba0c056d6 100644
---- a/include/hw/i386/x86-iommu.h
-+++ b/include/hw/i386/x86-iommu.h
-@@ -33,12 +33,6 @@ OBJECT_DECLARE_TYPE(X86IOMMUState, X86IOMMUClass, X86_IOMMU_DEVICE)
- typedef struct X86IOMMUIrq X86IOMMUIrq;
- typedef struct X86IOMMU_MSIMessage X86IOMMU_MSIMessage;
- 
--typedef enum IommuType {
--    TYPE_INTEL,
--    TYPE_AMD,
--    TYPE_NONE
--} IommuType;
--
- struct X86IOMMUClass {
-     SysBusDeviceClass parent;
-     /* Intel/AMD specific realize() hook */
-@@ -71,7 +65,6 @@ struct X86IOMMUState {
-     OnOffAuto intr_supported;   /* Whether vIOMMU supports IR */
-     bool dt_supported;          /* Whether vIOMMU supports DT */
-     bool pt_supported;          /* Whether vIOMMU supports pass-through */
--    IommuType type;             /* IOMMU type - AMD/Intel     */
-     QLIST_HEAD(, IEC_Notifier) iec_notifiers; /* IEC notify list */
- };
- 
-@@ -140,11 +133,6 @@ struct X86IOMMU_MSIMessage {
-  */
- X86IOMMUState *x86_iommu_get_default(void);
- 
--/*
-- * x86_iommu_get_type - get IOMMU type
-- */
--IommuType x86_iommu_get_type(void);
--
- /**
-  * x86_iommu_iec_register_notifier - register IEC (Interrupt Entry
-  *                                   Cache) notifiers
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 81418b7911..ab49e799ff 100644
+index ab49e799ff..3ca6cc8118 100644
 --- a/hw/i386/acpi-build.c
 +++ b/hw/i386/acpi-build.c
-@@ -2488,6 +2488,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+@@ -68,9 +68,11 @@
+ #include "qom/qom-qobject.h"
+ #include "hw/i386/amd_iommu.h"
+ #include "hw/i386/intel_iommu.h"
++#include "hw/virtio/virtio-iommu.h"
+ 
+ #include "hw/acpi/ipmi.h"
+ #include "hw/acpi/hmat.h"
++#include "hw/acpi/viot.h"
+ 
+ /* These are used to size the ACPI tables for -M pc-i440fx-1.7 and
+  * -M pc-i440fx-2.0.  Even if the actual amount of AML generated grows
+@@ -2488,7 +2490,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
      PCMachineState *pcms = PC_MACHINE(machine);
      PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
      X86MachineState *x86ms = X86_MACHINE(machine);
-+    X86IOMMUState *iommu = x86_iommu_get_default();
+-    X86IOMMUState *iommu = x86_iommu_get_default();
++    DeviceState *iommu = pcms->iommu;
      GArray *table_offsets;
      unsigned facs, dsdt, rsdt, fadt;
      AcpiPmInfo pm;
-@@ -2604,17 +2605,14 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-         build_mcfg(tables_blob, tables->linker, &mcfg, x86ms->oem_id,
-                    x86ms->oem_table_id);
-     }
--    if (x86_iommu_get_default()) {
--        IommuType IOMMUType = x86_iommu_get_type();
--        if (IOMMUType == TYPE_AMD) {
--            acpi_add_table(table_offsets, tables_blob);
--            build_amd_iommu(tables_blob, tables->linker, x86ms->oem_id,
--                            x86ms->oem_table_id);
--        } else if (IOMMUType == TYPE_INTEL) {
--            acpi_add_table(table_offsets, tables_blob);
--            build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
--                           x86ms->oem_table_id);
--        }
-+    if (object_dynamic_cast(OBJECT(iommu), TYPE_AMD_IOMMU_DEVICE)) {
+@@ -2613,6 +2615,12 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+         acpi_add_table(table_offsets, tables_blob);
+         build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
+                        x86ms->oem_table_id);
++    } else if (object_dynamic_cast(OBJECT(iommu), TYPE_VIRTIO_IOMMU_PCI)) {
++        PCIDevice *pdev = PCI_DEVICE(iommu);
++
 +        acpi_add_table(table_offsets, tables_blob);
-+        build_amd_iommu(tables_blob, tables->linker, x86ms->oem_id,
-+                        x86ms->oem_table_id);
-+    } else if (object_dynamic_cast(OBJECT(iommu), TYPE_INTEL_IOMMU_DEVICE)) {
-+        acpi_add_table(table_offsets, tables_blob);
-+        build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
-+                       x86ms->oem_table_id);
++        build_viot(machine, tables_blob, tables->linker, pci_get_bdf(pdev),
++                   x86ms->oem_id, x86ms->oem_table_id);
      }
      if (machine->nvdimms_state->is_enabled) {
          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 9242a0d3ed..91fe34ae58 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -1538,7 +1538,6 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
- {
-     int ret = 0;
-     AMDVIState *s = AMD_IOMMU_DEVICE(dev);
--    X86IOMMUState *x86_iommu = X86_IOMMU_DEVICE(dev);
-     MachineState *ms = MACHINE(qdev_get_machine());
-     PCMachineState *pcms = PC_MACHINE(ms);
-     X86MachineState *x86ms = X86_MACHINE(ms);
-@@ -1548,7 +1547,6 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
-                                      amdvi_uint64_equal, g_free, g_free);
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index fcbf328e8d..f47f7866c7 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -83,6 +83,7 @@
+ #include "hw/i386/intel_iommu.h"
+ #include "hw/net/ne2000-isa.h"
+ #include "standard-headers/asm-x86/bootparam.h"
++#include "hw/virtio/virtio-iommu.h"
+ #include "hw/virtio/virtio-pmem-pci.h"
+ #include "hw/virtio/virtio-mem-pci.h"
+ #include "hw/mem/memory-device.h"
+@@ -1330,7 +1331,19 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+                object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+         pc_virtio_md_pci_pre_plug(hotplug_dev, dev, errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE)) {
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
++        /* Declare the APIC range as the reserved MSI region */
++        char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
++                                              VIRTIO_IOMMU_RESV_MEM_T_MSI);
++
++        object_property_set_uint(OBJECT(dev), "len-reserved-regions", 1, errp);
++        object_property_set_str(OBJECT(dev), "reserved-regions[0]",
++                                resv_prop_str, errp);
++        g_free(resv_prop_str);
++    }
++
++    if (object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE) ||
++        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+         PCMachineState *pcms = PC_MACHINE(hotplug_dev);
  
-     /* This device should take care of IOMMU PCI properties */
--    x86_iommu->type = TYPE_AMD;
-     if (!qdev_realize(DEVICE(&s->pci), &bus->qbus, errp)) {
-         return;
+         if (pcms->iommu) {
+@@ -1394,6 +1407,7 @@ static HotplugHandler *pc_get_hotplug_handler(MachineState *machine,
+         object_dynamic_cast(OBJECT(dev), TYPE_CPU) ||
+         object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+         object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI) ||
++        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI) ||
+         object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE)) {
+         return HOTPLUG_HANDLER(machine);
      }
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 75f075547f..c27b20090e 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -3806,9 +3806,6 @@ static void vtd_realize(DeviceState *dev, Error **errp)
-     X86MachineState *x86ms = X86_MACHINE(ms);
-     PCIBus *bus = pcms->bus;
-     IntelIOMMUState *s = INTEL_IOMMU_DEVICE(dev);
--    X86IOMMUState *x86_iommu = X86_IOMMU_DEVICE(dev);
--
--    x86_iommu->type = TYPE_INTEL;
- 
-     if (!vtd_decide_config(s, errp)) {
-         return;
-diff --git a/hw/i386/x86-iommu-stub.c b/hw/i386/x86-iommu-stub.c
-index c5ba077f9d..781b5ff922 100644
---- a/hw/i386/x86-iommu-stub.c
-+++ b/hw/i386/x86-iommu-stub.c
-@@ -36,8 +36,3 @@ bool x86_iommu_ir_supported(X86IOMMUState *s)
- {
-     return false;
- }
--
--IommuType x86_iommu_get_type(void)
--{
--    abort();
--}
-diff --git a/hw/i386/x86-iommu.c b/hw/i386/x86-iommu.c
-index 86ad03972e..dc968c7a53 100644
---- a/hw/i386/x86-iommu.c
-+++ b/hw/i386/x86-iommu.c
-@@ -98,11 +98,6 @@ X86IOMMUState *x86_iommu_get_default(void)
-     return x86_iommu_default;
- }
- 
--IommuType x86_iommu_get_type(void)
--{
--    return x86_iommu_default->type;
--}
--
- static void x86_iommu_realize(DeviceState *dev, Error **errp)
- {
-     X86IOMMUState *x86_iommu = X86_IOMMU_DEVICE(dev);
+diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+index 962d2c981b..d22ac4a4b9 100644
+--- a/hw/i386/Kconfig
++++ b/hw/i386/Kconfig
+@@ -59,6 +59,7 @@ config PC_ACPI
+     select ACPI_X86
+     select ACPI_CPU_HOTPLUG
+     select ACPI_MEMORY_HOTPLUG
++    select ACPI_VIOT
+     select SMBUS_EEPROM
+     select PFLASH_CFI01
+     depends on ACPI_SMBUS
 -- 
 2.33.0
 

@@ -1,203 +1,94 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1202502lfc;
-        Tue, 19 Oct 2021 22:06:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyN6FV22KDns+9L99R3rJeBTri6lTckFWhyXY0sUbj7tcE44bOewAXCRgwwIc7lpuy0qHGj
-X-Received: by 2002:a67:fb42:: with SMTP id e2mr39419940vsr.46.1634706365825;
-        Tue, 19 Oct 2021 22:06:05 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1634706365; cv=pass;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1333806lfc;
+        Wed, 20 Oct 2021 01:27:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyrOQEd7Uu/+nsG5MAHjyjvZjXGO8Yv/Lq/vEoxcvMXNy54nGSdcaVrNbsBV67OjbUipfee
+X-Received: by 2002:a05:6602:1651:: with SMTP id y17mr22594373iow.114.1634718446841;
+        Wed, 20 Oct 2021 01:27:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634718446; cv=none;
         d=google.com; s=arc-20160816;
-        b=iTo2cV8gJGYr06o18QzWacMPEpideiixC+uGkb59/pgBDIdMh1me3dFRN4d80My40m
-         9iyHQoBbZleaqOhJgM7JF+YHKxtz6Mi8XrXgiGun+Qa/he+REmQengwO3Qs4A2mvNKMY
-         XxzSvpdbqbS7go1Y1WIMydS0NO1a+icm2NU77+Ei3MGNfjb2fdGw7plrpgUKjWvUXGC+
-         TlyjrirShYq1MCZxmUm8SJGnIUOcq6AdHoPfip/6Xel1KI965WTOO59SM+9ow+NjGu4/
-         yOd/CLrEZGceLCEfjyrU5l1im8gOR+qcLzsF0fzi4+CYl5o5KkkAkwCKF4I4CPWs0lEJ
-         iX1A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:from:dkim-signature;
-        bh=fDH0FMe6Cf8P5arCmqCABSepkSr1vJGqKT8DZZOB5EU=;
-        b=o+ik0vahsC+rtpV2yl2Z4aSCWzAFvNZofU//5nfZmrb5lWbOaSvwBjrOD9Cenh7+4W
-         V8ruB7xW6WjhaO9zTS3pemIn17JoK22IYs4+ANlO0p6P3rfIkHli5KiyFnXko+vPEH5x
-         mjn2qNUtULBARoCZnk7tZvu7+7Gl0HUFg1YaAsrDI65Jx58EwoCIE0MSWHqmBz6t7xmj
-         uq2RdnAoGpwWcAfJw7zn1O0OWIJXTUACU2K8ge2fgviOIgJlI+21/BDz1p0QmUi4zIHv
-         RHlyIGQWml/pZHHLgxI1X8fnn1eQ9k6Tdw4HKXj0bY9JM9vQ3wbIiRDMBZp9zTXMO8aY
-         V+9w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=nvlxXoZm;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
+        b=S3CEhpQTVKM0ldVtzNYsMuVxK6iCD9SOmbZdMh2X2j0NzgKAKeCTCBUtn9S/DSMhKW
+         YUxoxlsh3QheSy/8/V/lwbcD1hGULdIfuuobglbxfDof1MYf9yy/o2CLhBcjuXtm8uPg
+         C9cyrRlOsYJgXcFTJ55EPApQ3rJLxd+VAqJEx/SY4FHxATjvOJ1tDrs2E+Xx6zXR7DMX
+         LAJQcNWQeand/1bQE0lm/A+Zhe35Omb0DKGnSmC3Wu39IpUzaqqaANck7QKKQ9BAs2vd
+         m4q4XNkuZ9kWjUflusviSRvsjYTlHw7bK309n5YEFNQgA7ZhY3IiiakO/ihl4XRPQMU+
+         VaSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=HER+vON+Pi9f9/odu4KA0zn8GHUo2R32ti4E7VrHCN8=;
+        b=slnvICvpRf2NdacGgA7OxIf5YcOdrooZ3yjwxqTaJMfzPrPmAydfS1pxXECuf3jEGm
+         bQ6rB4kTwE7DkyiS5TQ9/wXuHC1ENhfPnjWizkYXBO/GyWttCc/EMgw+PUQYqY3fTf5b
+         BKsYgzD6IAFQEeIHPA53xPfKfLn0UKLh2YIzBKmx9g3RjukpwcEcRPRbflTJVhBGFUgk
+         3azKbWpM6PutbH8YGXO1ZJkvseRSNALWM3kiIjqBdfazp6GUcXIyjHbDILUGN9fjVX+x
+         fz8FvPUuDXUI8MR9HXJQGT+Uz8YOmazShL59ITf3nCv0L6bNd8xJMw4q+o+NZMTxZ+9u
+         cs5Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1si1215116vsh.265.2021.10.19.22.06.05
+        by mx.google.com with ESMTPS id y10si2474071ill.39.2021.10.20.01.27.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Oct 2021 22:06:05 -0700 (PDT)
+        Wed, 20 Oct 2021 01:27:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fb.com header.s=facebook header.b=nvlxXoZm;
-       arc=pass (i=1 spf=pass spfdomain=fb.com dkim=pass dkdomain=fb.com dmarc=pass fromdomain=fb.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:51830 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34162 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1md3ng-0000iU-UR
-	for alex.bennee@linaro.org; Wed, 20 Oct 2021 01:06:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33590)
+	id 1md6wY-00029H-11
+	for alex.bennee@linaro.org; Wed, 20 Oct 2021 04:27:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=99270d430e=pdel@fb.com>)
- id 1md3fX-000414-73; Wed, 20 Oct 2021 00:57:40 -0400
-Received: from mx0b-00082601.pphosted.com ([67.231.153.30]:28016
- helo=mx0a-00082601.pphosted.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1md6wG-00027P-3s; Wed, 20 Oct 2021 04:27:09 -0400
+Received: from 10.mo552.mail-out.ovh.net ([87.98.187.244]:50609)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=99270d430e=pdel@fb.com>)
- id 1md3fV-0000AP-93; Wed, 20 Oct 2021 00:57:38 -0400
-Received: from pps.filterd (m0001303.ppops.net [127.0.0.1])
- by m0001303.ppops.net (8.16.1.2/8.16.1.2) with SMTP id 19K1Xhs6021494;
- Tue, 19 Oct 2021 21:57:23 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : cc : subject :
- date : message-id : references : in-reply-to : content-type : content-id :
- content-transfer-encoding : mime-version; s=facebook;
- bh=fDH0FMe6Cf8P5arCmqCABSepkSr1vJGqKT8DZZOB5EU=;
- b=nvlxXoZmLJD+W60NEue/vxp6G6kebuA5QDmmVXjMhaw0Rhq9dmhRm4+8N16IcD3kPeFP
- xkyNtS06WJ7vBJ94ynJYN0z69BP9lq5+nsP2QeRHS5cX1R3sGnv+hZqGsGpzI0/QCNvo
- mypj9fXKp3ewOfbVQ2D13ZGrhU5WzYf5YYo= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by m0001303.ppops.net with ESMTP id 3bt9j50txm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Tue, 19 Oct 2021 21:57:22 -0700
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (100.104.31.183)
- by o365-in.thefacebook.com (100.104.35.172) with Microsoft SMTP
- Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Tue, 19 Oct 2021 21:57:22 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=C2I/RUl4T8fMT5EgxPjRM80bQcyKyZGIPjfzxVHrFmC+KByU5yXrZ5SCLuMxYtkqUH9Px0SHx4nSm3IA+nZYKTdqfCVhhcjJIMoYtCK2zgtH9aP3J8fe7uvjY+Y+dfK4GNHnUB2Gdna5hrjwsWzs8hHUVWkud9CHnMbBwem4GNu3cNul4925OcaMXSV/P3nFIFWNTZKk5fAzHKOxY1/7BM+e2p+obE9yffLChQleAUIHA2HvPIH20Z4ZJL+ZjKedhivhE94Vc3/mltnRj6nFJrLluxtAPFGswXxYIm7uJxPtA2BQ5CasqXSVySVQ+Sa4LAUdErPNHh2054ZR3ruroA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fDH0FMe6Cf8P5arCmqCABSepkSr1vJGqKT8DZZOB5EU=;
- b=LHoOs0m4SXGu9ry+keGARxLXv4ATzvYHkUwj9WpEFqM6ER0C04qDCVxhHpzXu/ScLm7xhTZmmeO2AI8FeIyg8o2leoDW3SRh6JnUU1yLx6JaceopG17mZpomsJkcsl7mvaHhmykON1hcJ0Li167R9S4H9m7olICJG4fECLKcLxqi4VRR7jhiomNv8UbYW5wNqS9Qy7+hy3xTcrhxy4a1Y+awj5H0IdZN0tN6Kq8gd1cenvmpv8q9KgwcnkMvF4LagBEVxihL9xOtmtdMyATurm0MDUjRQwWC1kxb0kUcklnpX+d+/B26j0HksG8/46IdzdwwD3d/ifHBnfxNKAUzuA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com (2603:10b6:a03:ff::11)
- by SJ0PR15MB4405.namprd15.prod.outlook.com (2603:10b6:a03:35a::19)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1md6w9-0008Mo-GM; Wed, 20 Oct 2021 04:27:04 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.144])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 44D8820386;
+ Wed, 20 Oct 2021 08:26:57 +0000 (UTC)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4608.17; Wed, 20 Oct
- 2021 04:57:21 +0000
-Received: from BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::e034:cb74:cc86:7f89]) by BYAPR15MB3032.namprd15.prod.outlook.com
- ([fe80::e034:cb74:cc86:7f89%6]) with mapi id 15.20.4608.018; Wed, 20 Oct 2021
- 04:57:21 +0000
-From: Peter Delevoryas <pdel@fb.com>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm
- <qemu-arm@nongnu.org>, =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?=
- <philmd@redhat.com>, Joel Stanley <joel@jms.id.au>,
- =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Wed, 20 Oct
+ 2021 10:26:56 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R0063a189efb-6948-4089-a117-928ae1924440,
+ 92A7CFA44A7A8A14732DBB4BB7777608D4B8F25C) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <2c54310f-2800-33ac-7c47-500a24f88b8f@kaod.org>
+Date: Wed, 20 Oct 2021 10:26:56 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
 Subject: Re: [PATCH v2 0/5] aspeed/smc: Improve support for the alternate boot
  function
-Thread-Topic: [PATCH v2 0/5] aspeed/smc: Improve support for the alternate
- boot function
-Thread-Index: AQHXxW72jbkRiQFizkyIML431+7yTg==
-Date: Wed, 20 Oct 2021 04:57:20 +0000
-Message-ID: <DDD67A99-FA65-4671-ACE6-5D3BACE3F45A@fb.com>
-References: <20211018132609.160008-1-clg@kaod.org>
-In-Reply-To: <20211018132609.160008-1-clg@kaod.org>
-Accept-Language: en-US
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: linaro.org; dkim=none (message not signed)
- header.d=none;linaro.org; dmarc=none action=none header.from=fb.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: db557129-c4f4-4365-035a-08d99386196f
-x-ms-traffictypediagnostic: SJ0PR15MB4405:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <SJ0PR15MB4405A7DDF4BDF6F45BFAB7EEACBE9@SJ0PR15MB4405.namprd15.prod.outlook.com>
-x-fb-source: Internal
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ZF6w6iibdrczu1SaoKQW4ogNgvVQ22j7Wh6gzbbwDoFBm1iEAAJj7VOPIaZf0IEgtB3TK9vsz26sJyvzhEqQXHCBQ1ymihzuqiYUWz/M66os9Je4XPDunRWVuTY/umo2ZQu6xSxzKYDYtcKvg+SpjodvrKUNxyiwxEo/DuulKETnWY4QqkvbdqlEQa3oehlC73qwiwKEO2QvdI/ff5PAKckvXvXesE+0KTkXNXTjcmKS9l5iMUJZyhUq3Uwo9oPrYpPJF+/aOBsxVFhyhtsG4FH+wlP7Qn/Fz5X5E2kXfW01NVSQawzdUqMBNaNMEh9MWUdQXxIXCqnisyBX+KALwx1bRRt0IQMDbwES4JFcclcDqeihAxFi02qBHfyo649dkVSkrDphvORzb43izaGihkvHpimgThxB++Br+hjO9c0CMBwRYwG722DtSyeGvIF63Ef7MnsfR78YsizwiZS1NXxr085IAoSe7YPtUJc+vSnO1Kjgmbf4460AohHSfsXW1wIoMpEG7uWb4RkreVJ7Eb+Aop0+WS6nSUM0wxdW9eHv309RS6MH1FnnvNU3vImnV9rm89YIj4ES+51Z98CSeEGsbkotGwOOeIqNOcmC5oDzWBXpmUhBmOD2n3qQHIq5nCUz42Yn6CncKjXhRCPefihzAvGQ3n+/URbLdOJrD+vhg2+wDaUUw8iwueoRu0Cb1xds0wm9aBSR+vNVvc3lyqb4jlRKgqGgFgStRXAWwM4=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB3032.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(86362001)(316002)(54906003)(6512007)(4326008)(6506007)(53546011)(83380400001)(8936002)(38100700002)(109986005)(66574015)(91956017)(2906002)(2616005)(66476007)(66446008)(33656002)(8676002)(71200400001)(6486002)(5660300002)(38070700005)(122000001)(36756003)(66556008)(76116006)(66946007)(64756008)(508600001)(186003)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WmVxckg4ajhJKzlZa01hc2pXbVd1ODNwSDdxNzhkdDN2bVdoR1Z4cm1qM1M5?=
- =?utf-8?B?NjBsNkJsVkIzemxtVGhQUG9tT2NWd25LbGM4SVdtMEdiZ2txN0xFbUE0djJl?=
- =?utf-8?B?WGtvdktsNkZ3Y09NZFZCcDBVaElEdkMxclc3OFArM1NERzlTVGJkMWhOQmIr?=
- =?utf-8?B?WnNodkRsNG1FZEcwUFczM3loME82Kys5UjM2bk00OVJ4Z0VJb2NLMmVHYWRP?=
- =?utf-8?B?aFVLc0d0cEkyTk1LdEV0cytVWUY3dGhxNktkdGhsaXJ2N09JNC8vQU9nNHEz?=
- =?utf-8?B?TFIxVm5pQnJkZVlBUTh0dnFiUlM4VVgxZXBQQjNUM29YOUJIdVFXR09YcWh4?=
- =?utf-8?B?NFNHbTlpeTVCRkRpR3RmN1c5dGJIN1pEdnY2YnVieEhIZkhTbFlaeUVUM0pV?=
- =?utf-8?B?RVlOS3FsMktYbDd3ckNNY1BaTUdQSUUzdlZlRmpVNld5RVdZY0pER0FnMTJi?=
- =?utf-8?B?elo1WlZDeEdzTlEvRWgyaGQrSjd3V1UrTDNaMDQ2Zk0vSStlTlpaTTdnSi92?=
- =?utf-8?B?QkFPOEtMbjBuK3E1MERid3hjS2lhYmJma3lOWDRSaTE3S1RXMFdMc2V3ditN?=
- =?utf-8?B?RWRwbXNPUHV0dU1XZS9SSmxCSDRWYjN2a2xBaVczcXRpcWkvTU5WeUlSbVRl?=
- =?utf-8?B?Q3VEZDJoN2l0aTM1aGtLMW9Sb3h3SU4wRThoUzJrUnlZY1orUitYUzJvQkRV?=
- =?utf-8?B?YXVjSmVsODZNaklxTXRQYjArWWdjeldlZkVZbGdVMEgxN1kreDBoRkhlb3pX?=
- =?utf-8?B?S3lkdjAxQ1RnM1hJb1I2M21Yb1RuczFDYTdvU0p3T3p1dkFpSFR0OXNONENX?=
- =?utf-8?B?KzhkNEwxNVhyYkJ2UnNtSHdiSGxUSmxEcDNkOUVhcWc5VXZCemoraGdESUZK?=
- =?utf-8?B?MU1ibFdYRW5lL0xjL3BESU1WRkZISXNPdGVDQkNYWE5sRlgxU0JqT0VRMS9Q?=
- =?utf-8?B?a2E2SGVYNWExVHEzemFFNnVha3gyNXBLbjNGREczNGJYeVVUUStIdnh4aTRN?=
- =?utf-8?B?T3FWaHdzai83L05jQjFFdGZiZk83aWlQSDdGMXFBN014dklKQ3h1K0FUZzFS?=
- =?utf-8?B?VG55WitkL0lsUCtuQTI4NWdNZGhjR01vaTNkQVcyU2NXSHg2Sy9SNmNUMXFt?=
- =?utf-8?B?S1lBUmFYTW44TmxIbUF3WUJ2eDlsa3RDd1dFdUdwNGtGYUV3ZzJ5UjU0d2Z1?=
- =?utf-8?B?UzV6SDB5TUJaS3NXSHNObmx1Y3hGbE43MVpXMkd4ME4vcUMyakFPankwbWZG?=
- =?utf-8?B?VFcwNmJNSGh6TFhjeGo4aUtFUVRKR0p5blFPTDFWVEh4Y3ZvdXdrM01iSG1s?=
- =?utf-8?B?OFdTU2NMQVVmWVNrNUhKZlQwd3Z3UVZnQXQyTXhsd293UzFxVzVaK0ErU21W?=
- =?utf-8?B?bzJZeDAxaDErUzFPRzNFK2tXdndNK0ZGbm9MNUJKcFh5eHp6ajdTcWVUa3d4?=
- =?utf-8?B?RUlxbGd0bDVaVzBqQWhKV2dIUE1EV2NhTGdmaHd0a21DZVFRY0lKUmsrTUox?=
- =?utf-8?B?ZzB4UUlVWFpwNnZIYzJEYzZoa0I4cXFpSnYydkE1b05UdEF2cUpiWllJRHBm?=
- =?utf-8?B?UlZocU01bjhBRG8ra21BYWxaVi9VN1d4bGlOckR3SmJSNGxHYmppamFCSHN4?=
- =?utf-8?B?d1F1OWRjUkg0eTZlb3ZGU3REMWlCTStraFp3cU11ZU85akQ0djBTWWdJMmRG?=
- =?utf-8?B?czFxRTc3NitVYlNIUUpXTHkrWlZtdkVBTGttR0dJTHRpenlwWHVBS2dQVjY2?=
- =?utf-8?B?NlRSYytDcnZGbzZrUk83RVdYNm5PcXB0ZUNjTXdtUkF2aEI2L2QzMWdTTHJa?=
- =?utf-8?Q?3ZkykAayPLzk4joMzJbAr3bjovcUrUdi9lxVQ=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <57940F4A92BC504ABF6416E462B1D3C4@namprd15.prod.outlook.com>
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR15MB3032.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: db557129-c4f4-4365-035a-08d99386196f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Oct 2021 04:57:20.8903 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ngM+W5IOG+5p1S/muFHdDqfeVlUoZTvAbJuiG9qbhUUM+dUh0TwKYftgxZ0XlV/4
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR15MB4405
-X-OriginatorOrg: fb.com
-X-Proofpoint-ORIG-GUID: 9CSSstROgtzKB_gcggoh8pjYed-mQL22
-X-Proofpoint-GUID: 9CSSstROgtzKB_gcggoh8pjYed-mQL22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
- definitions=2021-10-20_01,2021-10-19_01,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- impostorscore=0
- priorityscore=1501 suspectscore=0 mlxlogscore=969 lowpriorityscore=0
- clxscore=1011 spamscore=0 malwarescore=0 mlxscore=0 adultscore=0
- phishscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2109230001 definitions=main-2110200025
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.153.30;
- envelope-from=prvs=99270d430e=pdel@fb.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- MISSING_HEADERS=1.021, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+To: Peter Delevoryas <pdel@fb.com>
+References: <20211018132609.160008-1-clg@kaod.org>
+ <DDD67A99-FA65-4671-ACE6-5D3BACE3F45A@fb.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <DDD67A99-FA65-4671-ACE6-5D3BACE3F45A@fb.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 7baec4d8-74f6-4904-90a2-dedc32a66c49
+X-Ovh-Tracer-Id: 15190923019149675369
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvgedgtdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
+Received-SPF: pass client-ip=87.98.187.244; envelope-from=clg@kaod.org;
+ helo=10.mo552.mail-out.ovh.net
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.074,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -210,76 +101,186 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XsCmnVHdPupL
+X-TUID: 0axpqlkRCjvL
 
-DQoNCj4gT24gT2N0IDE4LCAyMDIxLCBhdCA2OjI2IEFNLCBDw6lkcmljIExlIEdvYXRlciA8Y2xn
-QGthb2Qub3JnPiB3cm90ZToNCj4gDQo+IEhlbGxvLA0KPiANCj4gVGhlIEFzcGVlZCBTb0NzIGhh
-dmUgYSBkdWFsIGJvb3QgZnVuY3Rpb24gZm9yIGZpcm13YXJlIGZhaWwtb3Zlcg0KPiByZWNvdmVy
-eS4gVGhlIHN5c3RlbSBhdXRvLXJlYm9vdHMgZnJvbSB0aGUgc2Vjb25kIGZsYXNoIGlmIHRoZSBt
-YWluDQo+IGZsYXNoIGRvZXMgbm90IGJvb3Qgc3VjY2Vzc2Z1bGx5IHdpdGhpbiBhIGNlcnRhaW4g
-YW1vdW50IG9mIHRpbWUuIFRoaXMNCj4gZnVuY3Rpb24gaXMgY2FsbGVkIGFsdGVybmF0ZSBib290
-IChBQlIpIGluIHRoZSBGTUMgY29udHJvbGxlcnMuDQo+IA0KPiBPbiB0aGUgQVNUMjYwMCwgdGhl
-IEFCUiByZWdpc3RlcnMgY29udHJvbGxpbmcgdGhlIDJuZCB3YXRjaGRvZyB0aW1lcg0KPiB3ZXJl
-IG1vdmVkIGZyb20gdGhlIHdhdGNoZG9nIHJlZ2lzdGVyIHRvIHRoZSBGTUMgY29udHJvbGxlci4g
-VG8NCj4gY29udHJvbCBXRFQyIHRocm91Z2ggdGhlIEZNQyBtb2RlbCByZWdpc3RlciBzZXQsIHRo
-aXMgc2VyaWVzIGNyZWF0ZXMgYQ0KPiBsb2NhbCBhZGRyZXNzIHNwYWNlIG9uIHRvcCBvZiBXRFQy
-IG1lbW9yeSByZWdpb24uDQo+IA0KPiBUbyB0ZXN0IG9uIHRoZSBmdWppLWJtYyBtYWNoaW5lLCBy
-dW4gOg0KPiANCj4gICAgZGV2bWVtIDB4MWU2MjAwNjQNCj4gICAgZGV2bWVtIDB4MWU3ODUwNEMg
-DQo+IA0KPiAgICBkZXZtZW0gMHgxZTYyMDA2NCAzMiAweGZmZmZmZmZmDQo+ICAgIGRldm1lbSAw
-eDFlNjIwMDY0DQo+ICAgIGRldm1lbSAweDFlNzg1MDRDDQoNClRoaXMgbG9va3MgZ29vZCB0byBt
-ZSEgSSBsb29rZWQgYXQgdGhlIHdob2xlDQpwYXRjaCBzZXJpZXMsIEkgdGhpbmsgYWxsIHRoZSBj
-aGFuZ2VzIGxvb2sgcmlnaHQuDQoNCkJ5IHRoZSB3YXksIGp1c3QgdG8gbWFrZSBzdXJlIEnigJlt
-IHVuZGVyc3RhbmRpbmcgY29ycmVjdGx5Og0KDQpUaGUgQVNUMjQwMCBkYXRhc2hlZXQgc2hvd3Mg
-b25seSAyIHdhdGNoZG9nIHRpbWVycywgYW5kDQp0aGUgZmlyc3QgdG8gYmUgdXNlZCBhcyB0aGUg
-cHJpbWFyeSBzeXN0ZW0gZGVhZGxvY2sNCnJlc2V0IChidXQgc3RpbGwgcmVib290IGZyb20gdGhl
-IHByaW1hcnkgZmxhc2gpLCBhbmQgdGhlDQpzZWNvbmQgd2F0Y2hkb2cgaXMgZGVzaWduYXRlZCBh
-cyBhbiBhbHRlcm5hdGUgYm9vdA0Kd2F0Y2hkb2csIHdoaWNoIHJlYm9vdHMgZnJvbSBzZWNvbmRh
-cnkgZmxhc2ggYW5kIGlzDQpvbmx5IGVuYWJsZWQgaWYgdGhlcmXigJlzIGEgc3BlY2lmaWMgaHcg
-c3RyYXAgcGluIGVuYWJsZWQsDQphbmQgdGhlIHNlY29uZCB3YXRjaGRvZyBpcyB1c3VhbGx5IGRp
-c2FibGVkIG9uY2UgYm9vdGluZw0KaXMgc3VjY2Vzc2Z1bCwgcmlnaHQ/DQoNClRoZSBBU1QyNjAw
-IGRhdGFzaGVldCBzaG93cyB0aGVyZeKAmXMgOCB3YXRjaGRvZ3MgKGJ1dA0Kd2Ugb25seSBoYXZl
-IDQgZGVjbGFyZWQgaW4gUUVNVT8gSSBzZWUgb25seSB0aGUgZmlyc3QNCmZvdXIgc3VwcG9ydCBl
-eHRlcm5hbCByZXNldCBzaWduYWxzLCBtYXliZSB0aGF04oCZcyB3aHk/KQ0KYnV0IGl0IGRvZXNu
-4oCZdCBzZWVtIHRvIHNheSBleHBsaWNpdGx5IHRoYXQgdGhlIDJuZA0Kd2F0Y2hkb2cgaXMgdGhl
-IGFsdGVybmF0ZSBib290IHdhdGNoZG9nLCBpdOKAmXMgcHJvYmFibHkNCmp1c3QgaW1wbGllZCB0
-aGF0IHRoZSB1c2VyIHJlYWQgdGhlIEFTVDI0MDAvQVNUMjUwMCBkb2NzDQpyaWdodD8gQW5kIHRo
-ZSBGTUMgcmVnaXN0ZXJzIGFyZSBqdXN0IGFuIGFsaWFzIHRvIHdyaXRlDQp0byB0aGVzZSB3YXRj
-aGRvZyAyIHJlZ2lzdGVycz8gSnVzdCBjdXJpb3VzLCBpcyBpdA0Kc3RyaWN0bHkgbmVjZXNzYXJ5
-IHRvIHVzZSB0aGUgRk1DIHJlZ2lzdGVycyB0byBkaXNhYmxlDQp0aGUgYWx0ZXJuYXRlIGJvb3Qg
-d2F0Y2hkb2csIG9yIGNvdWxkIHlvdSBqdXN0IHVzZSB0aGUNCm9sZCBhZGRyZXNzLCAweDFlNzg1
-MDRDPyBJbiBvdXIgT3BlbkJNQyBpbml0aWFsaXphdGlvbg0KZm9yIEZ1amksIHdl4oCZcmUgdXNp
-bmcgdGhlIEZNQyByZWdpc3RlcnMsIGJ1dCB3b3VsZA0KaXQgc3RpbGwgd29yayBpZiB3ZSB1c2Vk
-IHRoZSBvbGQgYWRkcmVzc2VzPyBKdXN0IGN1cmlvdXMsDQp0aGUgbW9yZSBJIHRoaW5rIGFib3V0
-IGl0LCBpdCBzZWVtcyBvZGQgdG8gbWUgdGhhdCB0aGVzZQ0KRk1DIHdhdGNoZG9nIHJlZ2lzdGVy
-cyBleGlzdCBpZiB0aGV54oCZcmUganVzdCBhbiBhbGlhcy4NCg0KQWxzbywgSSB3YXMgd29uZGVy
-aW5nOiBkb2VzIHRoZSBhbHRlcm5hdGUgYm9vdA0Kd2F0Y2hkb2cgYWN0dWFsbHkgc3dpdGNoIHRo
-ZSBmbGFzaCBkZXZpY2Ugb3IgZmxhc2gNCnJlZ2lvbiB0aGF0IHdlIGJvb3QgZnJvbSwgb3IgZG9l
-cyBpdCBqdXN0IHJlYm9vdCBmcm9tDQp0aGUgcHJpbWFyeSBwYXJ0aXRpb24/IEkgZG9u4oCZdCBz
-ZWUgYW55dGhpbmcgaW4NCndhdGNoZG9nX3BlcmZvcm1fYWN0aW9uKCkgdGhhdCBvYnZpb3VzbHkg
-aW5kaWNhdGVzIHdl4oCZcmUNCmFjdHVhbGx5IHN3aXRjaGluZyB0byBhIHNlY29uZGFyeSBmbGFz
-aCwgc28gSSB3YXMgY3VyaW91cw0KYWJvdXQgdGhhdC4NCg0KVGhhbmtzIGZvciBhZGRpbmcgdGhp
-cyB0aG91Z2ghIFRoaXMgaXMgdmVyeSB1c2VmdWwsIHdl4oCZcmUNCnVzaW5nIFFFTVUgbW9yZSBh
-bmQgbW9yZSBmb3IgdGVzdGluZywgZXNwZWNpYWxseSB0aGUNCmJvb3QgcHJvY2Vzcywgc28gbW9y
-ZSBhY2N1cmF0ZSBlbXVsYXRpb24gb2YgdGhpcyBmdW5jdGlvbmFsaXR5DQppcyBncmVhdC4NCg0K
-VGhhbmtzLA0KUGV0ZXINCg0KUmV2aWV3ZWQtYnk6IFBldGVyIERlbGV2b3J5YXMgPHBkZWxAZmIu
-Y29tPg0KDQo+IA0KPiBUaGFua3MNCj4gDQo+IEMuDQo+IA0KPiBDaGFuZ2VzIHNpbmNlIHYyOg0K
-PiANCj4gLSBpbnRyb2R1Y2UgYSBjb250YWluZXIgcmVnaW9uIGZvciB0aGUgV0RUMiByZWdpc3Rl
-ciBhZGRyZXNzIHNwYWNlDQo+IC0gaW50cm9kdWNlIGEgY29udGFpbmVyIHJlZ2lvbiBmb3IgdGhl
-IGZsYXNoIG1taW8gYWRkcmVzcyBzcGFjZQ0KPiANCj4gQ8ODwqlkcmljIExlIEdvYXRlciAoNSk6
-DQo+ICBhc3BlZWQvd2R0OiBJbnRyb2R1Y2UgYSBjb250YWluZXIgZm9yIHRoZSBNTUlPIHJlZ2lv
-bg0KPiAgYXNwZWVkOiBJbml0aWFsaXplIHRoZSB3YXRjaGRvZyBkZXZpY2UgbW9kZWxzIGJlZm9y
-ZSB0aGUgRk1DIG1vZGVscw0KPiAgYXNwZWVkL3NtYzogSW1wcm92ZSBzdXBwb3J0IGZvciB0aGUg
-YWx0ZXJuYXRlIGJvb3QgZnVuY3Rpb24NCj4gIGFzcGVlZC9zbWM6IFVzZSBhIGNvbnRhaW5lciBm
-b3IgdGhlIGZsYXNoIG1taW8gYWRkcmVzcyBzcGFjZQ0KPiAgc3BlZWQvc2RoY2k6IEFkZCB0cmFj
-ZSBldmVudHMNCj4gDQo+IGluY2x1ZGUvaHcvc3NpL2FzcGVlZF9zbWMuaCAgICAgIHwgIDUgKy0N
-Cj4gaW5jbHVkZS9ody93YXRjaGRvZy93ZHRfYXNwZWVkLmggfCAgMSArDQo+IGh3L2FybS9hc3Bl
-ZWRfYXN0MjYwMC5jICAgICAgICAgIHwgMzggKysrKysrKy0tLS0tLS0NCj4gaHcvYXJtL2FzcGVl
-ZF9zb2MuYyAgICAgICAgICAgICAgfCAzNiArKysrKystLS0tLS0tDQo+IGh3L3NkL2FzcGVlZF9z
-ZGhjaS5jICAgICAgICAgICAgIHwgIDUgKysNCj4gaHcvc3NpL2FzcGVlZF9zbWMuYyAgICAgICAg
-ICAgICAgfCA4OSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLQ0KPiBody93YXRjaGRv
-Zy93ZHRfYXNwZWVkLmMgICAgICAgICB8ICA2ICsrLQ0KPiBody9zZC90cmFjZS1ldmVudHMgICAg
-ICAgICAgICAgICB8ICA0ICsrDQo+IGh3L3NzaS90cmFjZS1ldmVudHMgICAgICAgICAgICAgIHwg
-IDEgKw0KPiA5IGZpbGVzIGNoYW5nZWQsIDE0MSBpbnNlcnRpb25zKCspLCA0NCBkZWxldGlvbnMo
-LSkNCj4gDQo+IC0tIA0KPiAyLjMxLjENCj4gDQo+IA0KPiANCg0K
+On 10/20/21 06:57, Peter Delevoryas wrote:
+> 
+> 
+>> On Oct 18, 2021, at 6:26 AM, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> Hello,
+>>
+>> The Aspeed SoCs have a dual boot function for firmware fail-over
+>> recovery. The system auto-reboots from the second flash if the main
+>> flash does not boot successfully within a certain amount of time. This
+>> function is called alternate boot (ABR) in the FMC controllers.
+>>
+>> On the AST2600, the ABR registers controlling the 2nd watchdog timer
+>> were moved from the watchdog register to the FMC controller. To
+>> control WDT2 through the FMC model register set, this series creates a
+>> local address space on top of WDT2 memory region.
+>>
+>> To test on the fuji-bmc machine, run :
+>>
+>>     devmem 0x1e620064
+>>     devmem 0x1e78504C
+>>
+>>     devmem 0x1e620064 32 0xffffffff
+>>     devmem 0x1e620064
+>>     devmem 0x1e78504C
+> 
+> This looks good to me! I looked at the whole
+> patch series, I think all the changes look right.
+> 
+> By the way, just to make sure I’m understanding correctly:
+> 
+> The AST2400 datasheet shows only 2 watchdog timers, and
+> the first to be used as the primary system deadlock
+> reset (but still reboot from the primary flash), and the
+> second watchdog is designated as an alternate boot
+> watchdog, which reboots from secondary flash and is
+> only enabled if there’s a specific hw strap pin enabled,
+> and the second watchdog is usually disabled once booting
+> is successful, right?
+
+Yes. I think WDT2 was activated in uboot on these platforms.
+
+> The AST2600 datasheet shows there’s 8 watchdogs (but
+> we only have 4 declared in QEMU? I see only the first
+> four support external reset signals, maybe that’s why?)
+
+Indeed. The datasheet also says :
+
+   Watchdog Timer (WDT) includes 4 sets of 32-bit decrement
+   counters,
+
+which might have induced us in error :) I will include a fix
+for it.
+
+> but it doesn’t seem to say explicitly that the 2nd
+> watchdog is the alternate boot watchdog, 
+
+True. That's my assumption for the model and we could also
+instantiate a new watchdog in the SMC/FMC model.
+
+> it’s probably
+> just implied that the user read the AST2400/AST2500 docs right? 
+
+I think Aspeed is cleaning up the WDT logic by moving "exotic"
+features to other controllers. that would be why some registers
+of WDT1 and WDT2 are exposed in the FMC register space for 4B
+detection and alternate boot :
+
+   FMC60: FMC WDT1 Control/Status Register for Address Mode Detection
+   FMC64: FMC WDT2 Control/Status Register for Alternate Boot
+   FMC68: FMC WDT2 Timer Reload Value Register
+   FMC6C: FMC WDT2 Timer Restart Register
+
+and the FMC also has a new signal/pin : GPIOY6/FWSPIABR to handle ABR.
+That's the most important change.
+
+
+> And the FMC registers are just an alias to write
+> to these watchdog 2 registers? 
+
+If this is the same watchdog mapped into the FMC, I would say yes
+and the logic generate load/stores transactions on the AHB bus.
+Adding an address space for the WDT registers in the model is the
+closer we can get without implementing the bus protocol.
+
+> Just curious, is it
+> strictly necessary to use the FMC registers to disable
+> the alternate boot watchdog, or could you just use the
+> old address, 0x1e78504C? 
+
+Hey, this is something to try on HW and check how both register
+sets evolve. Would you have time ?
+
+> In our OpenBMC initialization
+> for Fuji, we’re using the FMC registers, but would
+> it still work if we used the old addresses? Just curious,
+> the more I think about it, it seems odd to me that these
+> FMC watchdog registers exist if they’re just an alias.
+
+We should ask the HW designers.
+
+> Also, I was wondering: does the alternate boot
+> watchdog actually switch the flash device or flash
+> region that we boot from, or does it just reboot from
+> the primary partition? 
+
+No. This is not modeled.
+
+> I don’t see anything in
+> watchdog_perform_action() that obviously indicates we’re
+> actually switching to a secondary flash, so I was curious
+> about that.
+
+It is certainly feasible but it would require some thinking on
+how the models interact with one another.
+
+If a FMC_WDT2 watchdog model is owned by the SMC model, it would
+be simpler. That's seem to be going in the direction of your
+questions :)
+
+> Thanks for adding this though! This is very useful, we’re
+> using QEMU more and more for testing, especially the
+> boot process, so more accurate emulation of this functionality
+> is great.
+
+Good. That's the goal.
+
+> Thanks,
+> Peter
+> 
+> Reviewed-by: Peter Delevoryas <pdel@fb.com>
+
+It's worth checking with the HW designers before pushing anything.
+
+Thanks,
+
+C.
+
+
+> 
+>>
+>> Thanks
+>>
+>> C.
+>>
+>> Changes since v2:
+>>
+>> - introduce a container region for the WDT2 register address space
+>> - introduce a container region for the flash mmio address space
+>>
+>> CÃ©dric Le Goater (5):
+>>   aspeed/wdt: Introduce a container for the MMIO region
+>>   aspeed: Initialize the watchdog device models before the FMC models
+>>   aspeed/smc: Improve support for the alternate boot function
+>>   aspeed/smc: Use a container for the flash mmio address space
+>>   speed/sdhci: Add trace events
+>>
+>> include/hw/ssi/aspeed_smc.h      |  5 +-
+>> include/hw/watchdog/wdt_aspeed.h |  1 +
+>> hw/arm/aspeed_ast2600.c          | 38 +++++++-------
+>> hw/arm/aspeed_soc.c              | 36 ++++++-------
+>> hw/sd/aspeed_sdhci.c             |  5 ++
+>> hw/ssi/aspeed_smc.c              | 89 +++++++++++++++++++++++++++++---
+>> hw/watchdog/wdt_aspeed.c         |  6 ++-
+>> hw/sd/trace-events               |  4 ++
+>> hw/ssi/trace-events              |  1 +
+>> 9 files changed, 141 insertions(+), 44 deletions(-)
+>>
+>> -- 
+>> 2.31.1
+>>
+>>
+>>
+> 
+

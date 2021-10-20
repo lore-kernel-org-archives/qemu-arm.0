@@ -1,79 +1,79 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1395082lfc;
-        Wed, 20 Oct 2021 02:52:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyQglt5XXI70GQZ6Y/fZ/4SrZ0tobt+6KjUtEypU5+vsRunkOXjYxQk7iRiNkfNjpzyiNJW
-X-Received: by 2002:a05:6830:1c6b:: with SMTP id s11mr9623583otg.209.1634723539786;
-        Wed, 20 Oct 2021 02:52:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634723539; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1395197lfc;
+        Wed, 20 Oct 2021 02:52:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1jKR1UZ14j4PGyenhogsOYj8d/aLPSoFcekk04EnTn8F1FZIHt+5codk35bXGSSUGyHHW
+X-Received: by 2002:a05:6830:402c:: with SMTP id i12mr9982671ots.319.1634723550731;
+        Wed, 20 Oct 2021 02:52:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634723550; cv=none;
         d=google.com; s=arc-20160816;
-        b=obBe3UKM/PifABc1na5sRBh0VE4kocUwXoP8/Hzau6aXheXvg8u1aXy5pl55q/+sAU
-         PJkeMKcPvNwNSLx41iFa4KMO4OBmwvsWfsXaljON/FzxLS8rmSkIpEJl7AAXfvaCGp4C
-         oagRESJ92MItFOudslPEhVmPU347aXcwZzi2p7TeeEa+yAP6NFwNkoqlPNllwjPTmM+2
-         238XGqi+pdfntLufp1Odx5Op0+qemx7mtj3Ndvc6pqKAT4YAirjn3qBFt1xHyff4dTjC
-         a1U3XcqDmwP6bzxn3rNX5+pjxshJcqzlwOhxE2erHt4QinY8q9EMhZWdKSRHDnEj1Fsg
-         b7Sw==
+        b=E5388NY2Ve1vn06yPm14G//p0oc45AEmouOzm3QhGXwpY2nAeBmm9gOPU3ctQUcjFS
+         GfxuTPAhoAbghMiaKQnyqFXcbFaZ+FWoO984WhXsVnSyqcsVpTjknpPvbGcGXv7l9K0j
+         hsprHqf7LFN/uHLgkHnArs7qC14P12icIHGezfDwdJn/NjOZugGmufMl3FqA2Eo6HBP1
+         33/mw2SvL1ONIZse4tvjFQ/xHoFxrINUhVC6tm45jNa16Z/tiFOeA+YTqvf3DKAhTG2J
+         KTOMZvL7zd3NaeRguwhinYtiAG9BfLle94rLvj95drueaymSbN0qVYBPoL5nPYBFjpvD
+         4sjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=3K1gWERmSpSTeXkYdyZqNPw9PtG9MseejkmsdRDj9DE=;
-        b=088MfEf+KpQEoR2Rf0jgG3hSqRAZ20x3HTU9rkyXRoidBVUa3bxCGmwc6sLp/vQWiP
-         JMurRVDVjEpwDKkbfl4tCHQw1OjqW8B/VTqquynxrKwR4+v1gik8L0wJriRjf3bOIya5
-         vmQeslQ4UzhSF/pL+MkKr9hEU6KVQOHsLfcgrmoZRQDFOGUjLy8MTEQfPq+mQ+9F3nTX
-         ///cpr55RRlLMc88IwJqDh718PmSPlQgCsgY+k54ajshoRauZIy0Py53vVjFCXFQPOmD
-         fGoEjnVoaaU38QgOZjd+4P5hh+fo8Jf0SgwlaZPqS/q/NOWTKz0Arlj9RMYZETdgy+b1
-         YTiQ==
+        bh=l1/NwvHQWLJgEftxtJ7SxmNSX0O8BWcBrRQofysKG7k=;
+        b=XZBu1D7/Iv8vyqSUC0frUrwdJR18WVON9LzZoUVr3S5ZwSyV1Yzr4CaZBPQFr2ZTdx
+         D7yPUSN7XPuGxnRVY8agq5pgt4rzUfvM1ZsAGqXAl8CDG+v1m21jtbW0PawjQklHVTub
+         cY5E0Ktu9CcEEDJiJV5+UUmIhOii1mXClxWfB+G3mILN9Wq66XCxt11QNPjZNsHUABoL
+         J8jtbc1WffY1e0hUHWUCEae4NrewExqxDG/huFYD+8+SCDbsOEnYtobUZ6Gwg6G4GAj7
+         JKN3ieF3jbAY9NVnFl4IswB+q1uOkou1lkpajhbt8tYuw5mRH0BZmBTXiYbvYhBnwHnb
+         7kRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si3372334ots.65.2021.10.20.02.52.19
+        by mx.google.com with ESMTPS id c16si3038616oiw.159.2021.10.20.02.52.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Oct 2021 02:52:19 -0700 (PDT)
+        Wed, 20 Oct 2021 02:52:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:59054 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1md8Gg-0001jI-VN
-	for alex.bennee@linaro.org; Wed, 20 Oct 2021 05:52:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40320)
+	id 1md8Gr-0002IN-VX
+	for alex.bennee@linaro.org; Wed, 20 Oct 2021 05:52:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1md8GH-0001ew-VX; Wed, 20 Oct 2021 05:51:53 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2831)
+ id 1md8GJ-0001i8-Ei; Wed, 20 Oct 2021 05:51:55 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2832)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1md8GE-0004kl-D0; Wed, 20 Oct 2021 05:51:53 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HZ5P41jmKzbhH6;
- Wed, 20 Oct 2021 17:47:04 +0800 (CST)
+ id 1md8GH-0004vF-OF; Wed, 20 Oct 2021 05:51:55 -0400
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HZ5PJ3k0yzbhGf;
+ Wed, 20 Oct 2021 17:47:16 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.15; Wed, 20 Oct 2021 17:51:36 +0800
+ 15.1.2308.15; Wed, 20 Oct 2021 17:51:50 +0800
 Received: from [10.174.187.128] (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.15; Wed, 20 Oct 2021 17:51:35 +0800
-Subject: Re: [PATCH v8 5/8] hw/acpi/aml-build: Add PPTT table
+ 15.1.2308.15; Wed, 20 Oct 2021 17:51:49 +0800
+Subject: Re: [PATCH v8 7/8] hw/arm/virt-acpi-build: Generate PPTT table
 To: Eric Auger <eauger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
  Andrew Jones <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, 
  Igor Mammedov <imammedo@redhat.com>
 References: <20211014132206.19220-1-wangyanan55@huawei.com>
- <20211014132206.19220-6-wangyanan55@huawei.com>
- <316edbd3-2235-efb1-7176-e3f477aec6a4@redhat.com>
+ <20211014132206.19220-8-wangyanan55@huawei.com>
+ <66786f13-6603-1cdd-7ce7-b1c77f617ac8@redhat.com>
 From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <1f4eaecf-8718-fc8a-5366-7e32945b9953@huawei.com>
-Date: Wed, 20 Oct 2021 17:51:35 +0800
+Message-ID: <d1242aa5-9809-46bf-2815-3e3b898e3798@huawei.com>
+Date: Wed, 20 Oct 2021 17:51:49 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <316edbd3-2235-efb1-7176-e3f477aec6a4@redhat.com>
+In-Reply-To: <66786f13-6603-1cdd-7ce7-b1c77f617ac8@redhat.com>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
@@ -106,199 +106,55 @@ Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
  wanghaibin.wang@huawei.com, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bz7LQvhD9AZF
+X-TUID: AzPVUF4MLnJc
 
-Hi Eric,
 
-On 2021/10/20 16:02, Eric Auger wrote:
-> Hi,
+On 2021/10/20 16:05, Eric Auger wrote:
+> Hi
 >
 > On 10/14/21 3:22 PM, Yanan Wang wrote:
->> From: Andrew Jones <drjones@redhat.com>
->>
->> Add the Processor Properties Topology Table (PPTT) used to
->> describe CPU topology information to ACPI guests.
->>
->> Note, a DT-boot Linux guest with a non-flat CPU topology will
->> see socket and core IDs being sequential integers starting
->> from zero, which is different from ACPI-boot Linux guest,
->> e.g. with -smp 4,sockets=2,cores=2,threads=1
->>
->> a DT boot produces:
->>
->>   cpu:  0 package_id:  0 core_id:  0
->>   cpu:  1 package_id:  0 core_id:  1
->>   cpu:  2 package_id:  1 core_id:  0
->>   cpu:  3 package_id:  1 core_id:  1
->>
->> an ACPI boot produces:
->>
->>   cpu:  0 package_id: 36 core_id:  0
->>   cpu:  1 package_id: 36 core_id:  1
->>   cpu:  2 package_id: 96 core_id:  2
->>   cpu:  3 package_id: 96 core_id:  3
->>
->> This is due to several reasons:
->>
->>   1) DT cpu nodes do not have an equivalent field to what the PPTT
->>      ACPI Processor ID must be, i.e. something equal to the MADT CPU
->>      UID or equal to the UID of an ACPI processor container. In both
->>      ACPI cases those are platform dependant IDs assigned by the
->>      vendor.
->>
->>   2) While QEMU is the vendor for a guest, if the topology specifies
->>      SMT (> 1 thread), then, with ACPI, it is impossible to assign a
->>      core-id the same value as a package-id, thus it is not possible
->>      to have package-id=0 and core-id=0. This is because package and
->>      core containers must be in the same ACPI namespace and therefore
->>      must have unique UIDs.
->>
->>   3) ACPI processor containers are not mandatorily required for PPTT
->>      tables to be used and, due to the limitations of which IDs are
->>      selected described above in (2), they are not helpful for QEMU,
->>      so we don't build them with this patch. In the absence of them,
->>      Linux assigns its own unique IDs. The maintainers have chosen not
->>      to use counters from zero, but rather ACPI table offsets, which
->>      explains why the numbers are so much larger than with DT.
->>
->>   4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
->>      match the logical CPU IDs, because these IDs must be equal to the
->>      MADT CPU UID (as no processor containers are present), and QEMU
->>      uses the logical CPU ID for these MADT IDs.
->>
->> So in summary, with QEMU as the vendor for the guests, we simply
->> use sequential integers starting from zero for the non-leaf nodes
->> but with ID-valid flag unset, so that guest will ignore them and
->> use table offsets as unique container IDs. And we use logical CPU
->> IDs for the leaf nodes with the ID-valid flag set, which will be
->> consistent with MADT.
->>
->> Signed-off-by: Andrew Jones <drjones@redhat.com>
->> Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
->> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
->> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
->> ---
->>   hw/acpi/aml-build.c         | 60 +++++++++++++++++++++++++++++++++++++
->>   include/hw/acpi/aml-build.h |  3 ++
->>   2 files changed, 63 insertions(+)
->>
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index b7b9db6888..0d50e88e9d 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -1990,6 +1990,66 @@ void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
->>       }
->>   }
->>   
->> +/* ACPI 6.2: 5.2.29 Processor Properties Topology Table (PPTT) */
->> +void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->> +                const char *oem_id, const char *oem_table_id)
->> +{
->> +    int pptt_start = table_data->len;
->> +    int uid = 0;
->> +    int socket;
->> +    AcpiTable table = { .sig = "PPTT", .rev = 2,
->> +                        .oem_id = oem_id, .oem_table_id = oem_table_id };
-> Table 5-149 of 6.2 spec (6.2 May 2017) tells the rev shall be 1. Or is
-> it an erratum somewhere I did miss?
-Yes, the revision in 6.2 spec is 1. And it's 2 in spec 6.3.
-So just to be sure, should I use the oldest revision ?
-> I would also add the spec version in the commit msg.
->> +
->> +    acpi_table_begin(&table, table_data);
->> +
->> +    for (socket = 0; socket < ms->smp.sockets; socket++) {
->> +        uint32_t socket_offset = table_data->len - pptt_start;
->> +        int core;
->> +
->> +        build_processor_hierarchy_node(
->> +            table_data,
->> +            /*
->> +             * ACPI 6.2 - Physical package
->> +             * represents the boundary of a physical package
->> +             */
->> +            (1 << 0),
->> +            0, socket, NULL, 0);
-> I see we set an ACPI process ID but in the meantime the ACPI processor
-> ID valid flag is not set. I am not sure I fully catch the meaning of
-> this latter but just to double check if this is done on purpose.
-Yes, it's on purpose.
-> Maybe
-> wort a general comment as this also happens below.
-The ID of the container node is invalid and ID of the leaf node is valid.
-The commit message by Andrew has explained why (reason 3). I think
-it may be clear enough to explain there why we don't need a valid ID
-for the container node.
->> +
->> +        for (core = 0; core < ms->smp.cores; core++) {
->> +            uint32_t core_offset = table_data->len - pptt_start;
->> +            int thread;
->> +
->> +            if (ms->smp.threads > 1) {
->> +                build_processor_hierarchy_node(
->> +                    table_data,
->> +                    /*
->> +                     * ACPI 6.2 - Physical package
->> +                     * doesn't represent the boundary of a physical package
->> +                     */
->> +                    (0 << 0),
-> would rather say (0 << 0) /* not a physical package */ and same elsewhere
-Ok, thanks.
->> +                    socket_offset, core, NULL, 0);
->> +
->> +                for (thread = 0; thread < ms->smp.threads; thread++) {
->> +                    build_processor_hierarchy_node(
->> +                        table_data,
->> +                        (1 << 1) | /* ACPI 6.2 - ACPI Processor ID valid */
->> +                        (1 << 2) | /* ACPI 6.3 - Processor is a Thread */
-> So the references look globaly confusing to me. Either it complies to
-> 6.2 or to 6.3. Looks ir rather complies with 6.3. To me, this needs to
-> be clarified.
-ACPI 6.2 in the comment means the flag is introduced in the spec since 6.2.
-The same, ACPI 6.3 means the flag is introduced since 6.3. Maybe I should
-just drop all the version-prefix in the comment ?
-> I would also add the reference it complies to in the
-> commit msg.
-Ok, sure.
+>> Generate PPTT table for Arm virt machines.
+> Generate the Processor Properties Topology Table (PPTT) for ARM virt
+> machines supporting it (>= 6.2)
+Ok, much clearer. I will add it to the commit msg.
 
 Thanks,
 Yanan
 .
->> +                        (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
->> +                        core_offset, uid++, NULL, 0);
->> +                }
->> +            } else {
->> +                build_processor_hierarchy_node(
->> +                    table_data,
->> +                    (1 << 1) | /* ACPI 6.2 - ACPI Processor ID valid */
->> +                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
->> +                    socket_offset, uid++, NULL, 0);
->> +            }
->> +        }
+>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+>> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>> ---
+>>   hw/arm/virt-acpi-build.c | 8 +++++++-
+>>   1 file changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 6cec97352b..658a0a5d39 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -875,13 +875,19 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>>       dsdt = tables_blob->len;
+>>       build_dsdt(tables_blob, tables->linker, vms);
+>>   
+>> -    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
+>> +    /* FADT MADT PPTT GTDT MCFG SPCR pointed to by RSDT */
+>>       acpi_add_table(table_offsets, tables_blob);
+>>       build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+>>   
+>>       acpi_add_table(table_offsets, tables_blob);
+>>       build_madt(tables_blob, tables->linker, vms);
+>>   
+>> +    if (!vmc->no_cpu_topology) {
+>> +        acpi_add_table(table_offsets, tables_blob);
+>> +        build_pptt(tables_blob, tables->linker, ms,
+>> +                   vms->oem_id, vms->oem_table_id);
 >> +    }
 >> +
->> +    acpi_table_end(linker, &table);
->> +}
->> +
->>   /* build rev1/rev3/rev5.1 FADT */
->>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
->>                   const char *oem_id, const char *oem_table_id)
->> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
->> index 2c457c8f17..b92706388c 100644
->> --- a/include/hw/acpi/aml-build.h
->> +++ b/include/hw/acpi/aml-build.h
->> @@ -493,6 +493,9 @@ void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
->>                                       uint32_t parent, uint32_t id,
->>                                       uint32_t *priv_rsrc, uint32_t priv_num);
->>   
->> +void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
->> +                const char *oem_id, const char *oem_table_id);
->> +
->>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
->>                   const char *oem_id, const char *oem_table_id);
+>>       acpi_add_table(table_offsets, tables_blob);
+>>       build_gtdt(tables_blob, tables->linker, vms);
 >>   
 >>
-> Thanks
+> Besides
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 >
 > Eric
 >

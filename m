@@ -1,72 +1,72 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1640589lfc;
-        Wed, 20 Oct 2021 07:23:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwReKS+lT45gywoi6CUSwbVcTeDCDeQAk5kREiw8SU1cPFehVRMIlg2zCW4Uj/gh2op2Dja
-X-Received: by 2002:a05:6808:188a:: with SMTP id bi10mr9614015oib.9.1634739826043;
-        Wed, 20 Oct 2021 07:23:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634739826; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1640630lfc;
+        Wed, 20 Oct 2021 07:23:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyDK4tfggcmlfEph7z5TsxxERIk4jEVLCastWEUZ04I6PmnlZoyyfidtbgB9+PE3Seyp8Ku
+X-Received: by 2002:a05:6830:90e:: with SMTP id v14mr178751ott.14.1634739828219;
+        Wed, 20 Oct 2021 07:23:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634739828; cv=none;
         d=google.com; s=arc-20160816;
-        b=cILkDFprlYWmK5PMhzKk5N1Yb3gLp8cr19vN/sf3mRw613UtSXW7ufe8qhDIdf9YnO
-         Mgh1jIHZaP1JYymAU29nzJK0lIA0xcFnC63epqDqgVQJQaTaRUsW3RZhfkUcPRR/6ws/
-         pHiRrG+4gK2dOdf4FRDSxSd4xRMrHnK2E54ry247I+zMn43pVfrf+FPW74nuIXMy4Fvu
-         eNsuYMCftBonE5dDJBUUPj4T8iXqcns0zdlHGS46OZh8w3gCT2p3syBvUB7foBJNEiGR
-         aYkpu3Pl/HH98YNLAH6xriPHnhu0WhBiryDfS7AZbRkSFN5tciFJpMs0QCvSQzlMVED3
-         ttgA==
+        b=MWeUJEbypHK6W8EJg/8r24tuX0bMtzipUfYnPWE8mu/gLUIcjuiAG8WR7s2aLcPZFj
+         dEG05nKjROW4GxuYnW0JGSuYZFEm+RcUCrFMyjPG7hHSpP0byhZYbBFuLjhk5ECy5uEW
+         RLll0OQ8egDmP47G8xENtvclzeY1SLDlvmrNFPGr8t6/AAt7n6msLNnvTY7HxB3J4z6j
+         d9fyRnfL3cSsQizOC37PbScp/WBB7rB5G8uR+8Nok1AIe5X2TCTvPriQUBplvgH7JhZl
+         PSXtoV5EGyCTFdu9/x1NPjuGPV9XKsnULtk51dtbWKSkXBgjGRHbPZaWghBYES9ytami
+         P01A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=Zm1MgJdybp3Y0bsjiM9XvJWoeKTVVD5eJrKeIrJzsuY=;
-        b=DWt0CwBqiqeshJpW6FEgTB3U4fS02lmAVVRWn/RHw0ZE1Ib3UJqq7pmWJiPSRW+cGC
-         XPAxQm2FvrwszJbOKvCC2eIq44TTdmUb4u8L0gko+JB/lCb3PXfhCWCuecfDBHlEMDW9
-         9utvT+csTN8ecPV6Z0ECCuwVV6RnmbGTHUzB7/TybMzGZaB5Rnvi4J+xIacL9QImP6Z3
-         VUxMZlZGEvY3HqaTd5F/xZuivk3ClrALb6K1xs8W2zXWnZGrRSWj7keGZ2Tcez0FnYw1
-         TT7QajZNkQJY/TGBUJY59NNCFEbpNZr3xgVDc5YrB1O54b5iQ8Pm5GjOJMBPOBjhwtUk
-         VGpw==
+        bh=3YQoZJoMIuNs4ttI463B0hdRSTN7Y5x81t6FyhwxCzw=;
+        b=So4kObCdN4uC9pfpK3qKZ+hLC/8aZJl0Nfd+HVP20MXz/tXkDbl8TtXxRXosbee0/v
+         y+RCzGCevOfF+cuXvwk29vv3CAXLVKhtQouOXFoCQVdh6Bm5ukan+tsCW5MQFzCsiwfw
+         25Un2YD8Fv8nLhfur/R7QJvXOPbUKdn0VN251H2M1Giw481qt5H9GbyRjuO0g1wIs6SR
+         jkupKr0sISEcCl7n0di8Keo/RCG2aF2Lonqemerzad7xdZSGiUjiSxZxi2g65rwgV7fU
+         0kY8SHsbdcX5hNN4Q/Z+o8whIUY2bh+kfX0B/nNWZgj0vi+pUZutoqg0RiN1NUcy0Jhw
+         7Low==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k8si1332319oil.295.2021.10.20.07.23.45
+        by mx.google.com with ESMTPS id r1si3373851oiw.242.2021.10.20.07.23.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Oct 2021 07:23:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Oct 2021 07:23:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:45406 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44128 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdCVN-00024U-5g
-	for alex.bennee@linaro.org; Wed, 20 Oct 2021 10:23:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45646)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mdCVP-0001BJ-FO
+	for alex.bennee@linaro.org; Wed, 20 Oct 2021 10:23:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mdCTN-0006v5-AK; Wed, 20 Oct 2021 10:21:42 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2833)
+ id 1mdCTN-0006vA-BM; Wed, 20 Oct 2021 10:21:42 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2943)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mdCTI-0002DW-Ur; Wed, 20 Oct 2021 10:21:39 -0400
+ id 1mdCTI-0002Bd-6u; Wed, 20 Oct 2021 10:21:41 -0400
 Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.54])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HZCNW2R4NzcffG;
- Wed, 20 Oct 2021 22:16:59 +0800 (CST)
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HZCNS3jP8zbnCF;
+ Wed, 20 Oct 2021 22:16:56 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
  dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.15; Wed, 20 Oct 2021 22:21:33 +0800
+ 15.1.2308.15; Wed, 20 Oct 2021 22:21:30 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.15; Wed, 20 Oct 2021 22:21:32 +0800
+ 15.1.2308.15; Wed, 20 Oct 2021 22:21:29 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Peter Maydell <peter.maydell@linaro.org>, Richard Henderson
  <richard.henderson@linaro.org>, Eric Auger <eauger@redhat.com>, Andrew Jones
  <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
  <imammedo@redhat.com>
-Subject: [PATCH v9 5/8] hw/acpi/aml-build: Add PPTT table
-Date: Wed, 20 Oct 2021 22:21:22 +0800
-Message-ID: <20211020142125.7516-6-wangyanan55@huawei.com>
+Subject: [PATCH v9 2/8] device_tree: Add qemu_fdt_add_path
+Date: Wed, 20 Oct 2021 22:21:19 +0800
+Message-ID: <20211020142125.7516-3-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20211020142125.7516-1-wangyanan55@huawei.com>
 References: <20211020142125.7516-1-wangyanan55@huawei.com>
@@ -76,190 +76,125 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-devel@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
  Alistair Francis <alistair.francis@wdc.com>, wanghaibin.wang@huawei.com,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XIgaBQD4aHFn
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nhpJhNMci5KC
 
-From: Andrew Jones <drjones@redhat.com>
+qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except it
+also adds all missing subnodes from the given path. We'll use it
+in a coming patch where we will add cpu-map to the device tree.
 
-Add the Processor Properties Topology Table (PPTT) used to
-describe CPU topology information to ACPI guests.
+And we also tweak an error message of qemu_fdt_add_subnode().
 
-Note, a DT-boot Linux guest with a non-flat CPU topology will
-see socket and core IDs being sequential integers starting
-from zero, which is different from ACPI-boot Linux guest,
-e.g. with -smp 4,sockets=2,cores=2,threads=1
-
-a DT boot produces:
-
- cpu:  0 package_id:  0 core_id:  0
- cpu:  1 package_id:  0 core_id:  1
- cpu:  2 package_id:  1 core_id:  0
- cpu:  3 package_id:  1 core_id:  1
-
-an ACPI boot produces:
-
- cpu:  0 package_id: 36 core_id:  0
- cpu:  1 package_id: 36 core_id:  1
- cpu:  2 package_id: 96 core_id:  2
- cpu:  3 package_id: 96 core_id:  3
-
-This is due to several reasons:
-
- 1) DT cpu nodes do not have an equivalent field to what the PPTT
-    ACPI Processor ID must be, i.e. something equal to the MADT CPU
-    UID or equal to the UID of an ACPI processor container. In both
-    ACPI cases those are platform dependant IDs assigned by the
-    vendor.
-
- 2) While QEMU is the vendor for a guest, if the topology specifies
-    SMT (> 1 thread), then, with ACPI, it is impossible to assign a
-    core-id the same value as a package-id, thus it is not possible
-    to have package-id=0 and core-id=0. This is because package and
-    core containers must be in the same ACPI namespace and therefore
-    must have unique UIDs.
-
- 3) ACPI processor containers are not mandatorily required for PPTT
-    tables to be used and, due to the limitations of which IDs are
-    selected described above in (2), they are not helpful for QEMU,
-    so we don't build them with this patch. In the absence of them,
-    Linux assigns its own unique IDs. The maintainers have chosen not
-    to use counters from zero, but rather ACPI table offsets, which
-    explains why the numbers are so much larger than with DT.
-
- 4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
-    match the logical CPU IDs, because these IDs must be equal to the
-    MADT CPU UID (as no processor containers are present), and QEMU
-    uses the logical CPU ID for these MADT IDs.
-
-So in summary, with QEMU as the vendor for the guests, we simply
-use sequential integers starting from zero for the non-leaf nodes
-but with ID-valid flag unset, so that guest will ignore them and
-use table offsets as unique container IDs. And we use logical CPU
-IDs for the leaf nodes with the ID-valid flag set, which will be
-consistent with MADT.
-
-Currently the implementation of PPTT generation complies with ACPI
-specification 5.2.29 (Revision 6.3). The 6.3 spec can be found at:
-https://uefi.org/sites/default/files/resources/ACPI_6_3_May16.pdf
-
-Signed-off-by: Andrew Jones <drjones@redhat.com>
-Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: Alistair Francis <alistair.francis@wdc.com>
+Co-developed-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/acpi/aml-build.c         | 59 +++++++++++++++++++++++++++++++++++++
- include/hw/acpi/aml-build.h |  3 ++
- 2 files changed, 62 insertions(+)
+ include/sysemu/device_tree.h |  1 +
+ softmmu/device_tree.c        | 44 ++++++++++++++++++++++++++++++++++--
+ 2 files changed, 43 insertions(+), 2 deletions(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 5195324585..b3b3310df3 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -1994,6 +1994,65 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index 8a2fe55622..ef060a9759 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -121,6 +121,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
+ uint32_t qemu_fdt_alloc_phandle(void *fdt);
+ int qemu_fdt_nop_node(void *fdt, const char *node_path);
+ int qemu_fdt_add_subnode(void *fdt, const char *name);
++int qemu_fdt_add_path(void *fdt, const char *path);
+ 
+ #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
+     do {                                                                      \
+diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+index b621f63fba..3965c834ca 100644
+--- a/softmmu/device_tree.c
++++ b/softmmu/device_tree.c
+@@ -540,8 +540,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+ 
+     retval = fdt_add_subnode(fdt, parent, basename);
+     if (retval < 0) {
+-        error_report("FDT: Failed to create subnode %s: %s", name,
+-                     fdt_strerror(retval));
++        error_report("%s: Failed to create subnode %s: %s",
++                     __func__, name, fdt_strerror(retval));
+         exit(1);
      }
+ 
+@@ -549,6 +549,46 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+     return retval;
  }
  
 +/*
-+ * ACPI spec, Revision 6.3
-+ * 5.2.29 Processor Properties Topology Table (PPTT)
++ * qemu_fdt_add_path: Like qemu_fdt_add_subnode(), but will add
++ * all missing subnodes from the given path.
 + */
-+void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-+                const char *oem_id, const char *oem_table_id)
++int qemu_fdt_add_path(void *fdt, const char *path)
 +{
-+    int pptt_start = table_data->len;
-+    int uid = 0;
-+    int socket;
-+    AcpiTable table = { .sig = "PPTT", .rev = 2,
-+                        .oem_id = oem_id, .oem_table_id = oem_table_id };
++    const char *name;
++    const char *p = path;
++    int namelen, retval;
++    int parent = 0;
 +
-+    acpi_table_begin(&table, table_data);
-+
-+    for (socket = 0; socket < ms->smp.sockets; socket++) {
-+        uint32_t socket_offset = table_data->len - pptt_start;
-+        int core;
-+
-+        build_processor_hierarchy_node(
-+            table_data,
-+            /*
-+             * Physical package - represents the boundary
-+             * of a physical package
-+             */
-+            (1 << 0),
-+            0, socket, NULL, 0);
-+
-+        for (core = 0; core < ms->smp.cores; core++) {
-+            uint32_t core_offset = table_data->len - pptt_start;
-+            int thread;
-+
-+            if (ms->smp.threads > 1) {
-+                build_processor_hierarchy_node(
-+                    table_data,
-+                    (0 << 0), /* not a physical package */
-+                    socket_offset, core, NULL, 0);
-+
-+                for (thread = 0; thread < ms->smp.threads; thread++) {
-+                    build_processor_hierarchy_node(
-+                        table_data,
-+                        (1 << 1) | /* ACPI Processor ID valid */
-+                        (1 << 2) | /* Processor is a Thread */
-+                        (1 << 3),  /* Node is a Leaf */
-+                        core_offset, uid++, NULL, 0);
-+                }
-+            } else {
-+                build_processor_hierarchy_node(
-+                    table_data,
-+                    (1 << 1) | /* ACPI Processor ID valid */
-+                    (1 << 3),  /* Node is a Leaf */
-+                    socket_offset, uid++, NULL, 0);
-+            }
-+        }
++    if (path[0] != '/') {
++        return -1;
 +    }
 +
-+    acpi_table_end(linker, &table);
++    while (p) {
++        name = p + 1;
++        p = strchr(name, '/');
++        namelen = p != NULL ? p - name : strlen(name);
++
++        retval = fdt_subnode_offset_namelen(fdt, parent, name, namelen);
++        if (retval < 0 && retval != -FDT_ERR_NOTFOUND) {
++            error_report("%s: Unexpected error in finding subnode %.*s: %s",
++                         __func__, namelen, name, fdt_strerror(retval));
++            exit(1);
++        } else if (retval == -FDT_ERR_NOTFOUND) {
++            retval = fdt_add_subnode_namelen(fdt, parent, name, namelen);
++            if (retval < 0) {
++                error_report("%s: Failed to create subnode %.*s: %s",
++                             __func__, namelen, name, fdt_strerror(retval));
++                exit(1);
++            }
++        }
++
++        parent = retval;
++    }
++
++    return retval;
 +}
 +
- /* build rev1/rev3/rev5.1 FADT */
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id)
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index 3cf6f2c1b9..8346003a22 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -489,6 +489,9 @@ void build_srat_memory(GArray *table_data, uint64_t base,
- void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-                 const char *oem_id, const char *oem_table_id);
- 
-+void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-+                const char *oem_id, const char *oem_table_id);
-+
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id);
- 
+ void qemu_fdt_dumpdtb(void *fdt, int size)
+ {
+     const char *dumpdtb = current_machine->dumpdtb;
 -- 
 2.19.1
 

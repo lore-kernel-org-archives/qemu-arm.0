@@ -1,105 +1,107 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1838222lfc;
-        Wed, 20 Oct 2021 10:42:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyWDbA8wfJU4ho5o7WmssNdC/DnQlPexwi1g0jKv7rzqyYIGgdh7UTGtlSP4Q8TiX+7rN9Z
-X-Received: by 2002:a05:6102:2913:: with SMTP id cz19mr1079519vsb.36.1634751765741;
-        Wed, 20 Oct 2021 10:42:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634751765; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1838576lfc;
+        Wed, 20 Oct 2021 10:43:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyNZHukdRonJopf0U12q5empUEUSyLL4IO9oE3ggHGFlLQt3J7AdREZMi26/Vua2iU2Gv8h
+X-Received: by 2002:a05:6830:1c74:: with SMTP id s20mr548331otg.235.1634751793816;
+        Wed, 20 Oct 2021 10:43:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634751793; cv=none;
         d=google.com; s=arc-20160816;
-        b=uyWRtcz21x9z8TRc6qFe15U0Y/WBm322glNmf+x7T5dJARq0hBju3nw86fgN/93FCy
-         vamoZPoZCp97bNQ3FZlzsjhxxG1N4UrpZlf6qsMKXJbOwOtmOPvod6zKVMhlR1TMHHsd
-         8pC8R4PNBwgW1MQ0Uy931WM6bmdBLbhWBQ03g0LLzAfxAx+BlMu7j34fms0kvly60hHT
-         yL/hZN6gGEon/s7y3GxqYlBwdlS5kM61zhpjubZXMpBTq/ouhWqdbsZrKsAf4vqWLVy2
-         NB+a1KHhJeKK9uuSDp4oRT9HEhlqxtD0WjXFV3xf3tVkeyawQ/7tdvN6ZnnBeaQOlaH8
-         9SVw==
+        b=C6qHZ2/Qwny5n8IDM/Th336E73tppnRrq5SkBKUb0G6dRkTo+8Hpszh8zHyflBpu/3
+         Kbn+LHFPLU1oW+JKKUw24q5sse/FyHD4icamAjeFJ7f6nWSKSk/IozkgFGWB2YZppDyx
+         WsPvW81Go2+/0eEDDZVzH/gnHaYUH4oYGF9zYobxZgGubUiU3rH07/0K6/uOSSwK/ySw
+         4pC+NSMais6hPmtEq0Xc+P6GoUnEIzxCcayHbtyKo62BD1KAU682H7qK6rGI/ANm8UND
+         zQGfNP5zs8QyJXjnMStpz0vazQrrPNz+S4AUvNW6HdSnrEugbEGKF2KHmAMXhlXzONQw
+         rDnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=b6FkINxR9TYPTnIwt4QFR5QO1CjWz4r+7L+WyL24pqY=;
-        b=lN/A5PSkrPGzGeI299tQet8Fzk281J0VDy8vjPGVN7OqruAzvSDtHyotM3XLYnNRqP
-         Vkhcpqi4DQn9Dn7OxayJuyJc52xazhl3Qv/yvHU9oSM/L7/bOLHZgA+E9IhUu62z7ivR
-         pnxlupn346PpJ19xxNxbYG9TiL+ycEU5yEFssy368rKNmyG9Ec7cU6k0DGcC/Lns+zmh
-         Z2S56oGr1ZCqSAZ7fBSaG9YO5GdrGvWSLzZxmDlocsIWE49yIel40tGXfqjyeZKyV2/B
-         p0TEIUQYjz9dLps+/AEITHTQQSf5eTDjOL6p8rQvfq1TJFlNCLMqBlJvbnecv9CfCukq
-         XbBw==
+        bh=MQaHeRwjBXtlwH+HWJdlO988bBQFl1PSkeW02oBI2yE=;
+        b=zcWj72reH8wIIlFn+HbMuTY9Yf5nuV2T75xTtGSobbyWzrKTt8EBtI9R+HTI8H9rQu
+         q+jakrkz+M7B8EHIAir7qZjLFEnzktjScii9WxO7IwQZECv32tzRBc46onI2dGujLZoL
+         0rrwZvZKe+gqj0SIB7U4jNyrK1rmA3M66ID9KEqQ6QHD2HVgyqquE3KMdMoV6pe2AgT5
+         Ls/EsD9OLy3GCBr4yhJvVbdBTxKf6cPW5OmZ1YM9DjTxXbixt2wmIQIHuWs5S4mYvi0F
+         TpCh7UyOA+7XaO65KEAmS2/aDe9BVOlHh6kHQBeA2wHhaYGi1PL+WHE189Hgu/Phvp68
+         3zFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TUt58ZwL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=cnvSmzp5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ba8si3422162uab.64.2021.10.20.10.42.45
+        by mx.google.com with ESMTPS id l206si3186326oif.57.2021.10.20.10.43.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Oct 2021 10:42:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Oct 2021 10:43:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TUt58ZwL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=cnvSmzp5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47582 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48368 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdFbx-0005i0-1T
-	for alex.bennee@linaro.org; Wed, 20 Oct 2021 13:42:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37614)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mdFcO-0006EW-1P
+	for alex.bennee@linaro.org; Wed, 20 Oct 2021 13:43:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mdFUf-0005S4-Qk
- for qemu-arm@nongnu.org; Wed, 20 Oct 2021 13:35:14 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:51195)
+ id 1mdFUb-0005FL-HG
+ for qemu-devel@nongnu.org; Wed, 20 Oct 2021 13:35:09 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:37571)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mdFUc-0002hw-JJ
- for qemu-arm@nongnu.org; Wed, 20 Oct 2021 13:35:13 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id o24so13032948wms.0
- for <qemu-arm@nongnu.org>; Wed, 20 Oct 2021 10:35:09 -0700 (PDT)
+ id 1mdFUZ-0002eu-P7
+ for qemu-devel@nongnu.org; Wed, 20 Oct 2021 13:35:09 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ g79-20020a1c2052000000b00323023159e1so3419162wmg.2
+ for <qemu-devel@nongnu.org>; Wed, 20 Oct 2021 10:35:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=b6FkINxR9TYPTnIwt4QFR5QO1CjWz4r+7L+WyL24pqY=;
- b=TUt58ZwLOXqIzqa7Z8fjADGTOnCKRNIroPpeCTpryE1y7pUkb6zTXOqDaT500SzV/K
- G9XMxhJOneCzhTeegp0gDEyrQOUqarpJ3KAPHQZZdSiOjBKug0hzb4kCuKoXovs8/JfM
- CLg5RBo2vLpaIOIrNbAnj3o3DusDMutYDen5zNnqhXJf+wsEhBBgXZ+m6+zKCcGyQYA3
- f+lUNNFMmZMze3BVQXyjrJx5HXvo6xYcu38XJsKqxmoXjVMF7SNXzLtxt2opggS1Yx4B
- onQMRZzCTuOlPgQZterx98AftbkNBtt/E9fOVd7RTRc8XA8Fp8xK10Stj05/jf1awryr
- GJ/g==
+ bh=MQaHeRwjBXtlwH+HWJdlO988bBQFl1PSkeW02oBI2yE=;
+ b=cnvSmzp5Q5I2fhVe8VKQflUG8EBRmB7TnGd+GGy+RlewS6eQFKzYmUXNbh4AxF91Hp
+ 5UT4MA6u6aC7nkqjsvkvVZemBaagF26NqnCjPBjsnNGF8r/7pW1nsfFgaf39t0yOINr/
+ /k7kMl85EU0lV2wE5s1SeQPesy5JbtnJ2GNmNAZqRCtji+ISFur4/0jdltyQyIU+JKfO
+ H9aUWbvrQXYetFarD+02xCWEPRHy+z/CqFkjrylyC34oDIfc8G8Lt0ZfKa2l2kdeqCRd
+ MLpM3TOnP/8GlM1677chK4nA0pvLSZlJlnyg3TP2LZQlRebKK4vN4cPdzj4NOD1BtT5O
+ pVXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=b6FkINxR9TYPTnIwt4QFR5QO1CjWz4r+7L+WyL24pqY=;
- b=PxHrU0ynRGFgb7QTfmJOZF274FffiRdAyQPJpfiJOmfixVZmbRHiaQtxs/d1dPrKsh
- Ps4pht21BFSXDdz/VLCg11DhCoDX5PGmS7KaZg1n28r/XPhr71NjvLSrasJK7YsHNFlK
- V7A7q1YLOH8iAhropiiGXDND6V2nmfiIE6T9U1wSPB3JIxdA7IYgRhiBDOr3bqSdibaW
- RQXaF5wZXz+y0BgKxhaH8Gssnymc45B7gcstEvyXRXISjTmvIyBvuRFZLcIsISci1EvM
- Vbrg/DHNPzkTobKmy5fgogrvlE+ktHu7O38R7Xr+rI3eCqqnPlysndsd84MK9xCHfhkA
- Z6QQ==
-X-Gm-Message-State: AOAM533Uy7VOAKd+UqOArKBlNHnvziU46uT1V4GxGBs+/PApeMYntV6X
- GX/D8H8mkbn9KskLi7hKM4PNlg==
-X-Received: by 2002:a05:600c:1c10:: with SMTP id
- j16mr713499wms.28.1634751309034; 
- Wed, 20 Oct 2021 10:35:09 -0700 (PDT)
+ bh=MQaHeRwjBXtlwH+HWJdlO988bBQFl1PSkeW02oBI2yE=;
+ b=PPflgwACaTAjV0Rr+BlPr+bSQJuq9sXj9HgQc4ukBmguQ8lMmoUxyXaCylcK05r1Em
+ RcqOS4JCmfO80CGGPpLZ1oryHbN4ZmtYpvuUDE5g9JFf0ARAAupK0E8suaUSgdrvbIZT
+ DxeLe+RtgfqBiyC9a1C8ikT1nvTH7ptqovEYk0mq1GLv7Pbd7ZmqfxXXLqqLV9z3nado
+ Jc+Xa3sFsPFbAlXnFjsHXSbKpSvqHPTJFzzk0tXlEVZxDFUcwXV6SmRswgJC8zodoEW1
+ sBEAQzeuaV1vMbxRpbW2Vl5wzr5tAHUhcpQO/Xq3zOw0Dr95Mz//6M1e0epytYOOpax/
+ WZNg==
+X-Gm-Message-State: AOAM530y3iO+WEc2SnneIj8KmrEC9SrWMELjMBwij40KJ0AhFmrvHsFf
+ J1/31i+/yq5Q1e26goZbsZyXWA==
+X-Received: by 2002:a05:600c:1d19:: with SMTP id
+ l25mr671862wms.119.1634751306327; 
+ Wed, 20 Oct 2021 10:35:06 -0700 (PDT)
 Received: from localhost.localdomain
  (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id n7sm2662270wrp.17.2021.10.20.10.35.08
+ by smtp.gmail.com with ESMTPSA id n7sm2662270wrp.17.2021.10.20.10.35.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Oct 2021 10:35:08 -0700 (PDT)
+ Wed, 20 Oct 2021 10:35:05 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: mst@redhat.com,
 	imammedo@redhat.com,
 	peter.maydell@linaro.org
-Subject: [PATCH v5 10/12] tests/acpi: add test cases for VIOT
-Date: Wed, 20 Oct 2021 18:27:44 +0100
-Message-Id: <20211020172745.620101-11-jean-philippe@linaro.org>
+Subject: [PATCH v5 08/12] hw/arm/virt: Use object_property_set instead of
+ qdev_prop_set
+Date: Wed, 20 Oct 2021 18:27:42 +0100
+Message-Id: <20211020172745.620101-9-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211020172745.620101-1-jean-philippe@linaro.org>
 References: <20211020172745.620101-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,100 +110,53 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, ehabkost@redhat.com,
  eric.auger@redhat.com, jasowang@redhat.com, richard.henderson@linaro.org,
  qemu-devel@nongnu.org, peterx@redhat.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com, ani@anisinha.ca,
- pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jmbXKnsob2tk
+ qemu-arm@nongnu.org, ani@anisinha.ca, pbonzini@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jasBFE6U6a6s
 
-Add two test cases for VIOT, one on the q35 machine and the other on
-virt. To test complex topologies the q35 test has two PCIe buses that
-bypass the IOMMU (and are therefore not described by VIOT), and two
-buses that are translated by virtio-iommu.
+To propagate errors to the caller of the pre_plug callback, use the
+object_poperty_set*() functions directly instead of the qdev_prop_set*()
+helpers.
 
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- tests/qtest/bios-tables-test.c | 38 ++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ hw/arm/virt.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 4f11d03055..599b155201 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1403,6 +1403,42 @@ static void test_acpi_virt_tcg(void)
-     free_test_data(&data);
- }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 25db8d4262..7a061ab401 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2465,8 +2465,9 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+                                         db_start, db_end,
+                                         VIRTIO_IOMMU_RESV_MEM_T_MSI);
  
-+static void test_acpi_q35_viot(void)
-+{
-+    test_data data = {
-+        .machine = MACHINE_Q35,
-+        .variant = ".viot",
-+    };
-+
-+    /*
-+     * To keep things interesting, two buses bypass the IOMMU.
-+     * VIOT should only describes the other two buses.
-+     */
-+    test_acpi_one("-machine default_bus_bypass_iommu=on "
-+                  "-device virtio-iommu-pci "
-+                  "-device pxb-pcie,bus_nr=0x10,id=pcie.100,bus=pcie.0 "
-+                  "-device pxb-pcie,bus_nr=0x20,id=pcie.200,bus=pcie.0,bypass_iommu=on "
-+                  "-device pxb-pcie,bus_nr=0x30,id=pcie.300,bus=pcie.0",
-+                  &data);
-+    free_test_data(&data);
-+}
-+
-+static void test_acpi_virt_viot(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 128ULL * 1024 * 1024,
-+    };
-+
-+    test_acpi_one("-cpu cortex-a57 "
-+                  "-device virtio-iommu-pci", &data);
-+    free_test_data(&data);
-+}
-+
- static void test_oem_fields(test_data *data)
- {
-     int i;
-@@ -1567,12 +1603,14 @@ int main(int argc, char *argv[])
-         if (strcmp(arch, "x86_64") == 0) {
-             qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
-         }
-+        qtest_add_func("acpi/q35/viot", test_acpi_q35_viot);
-     } else if (strcmp(arch, "aarch64") == 0) {
-         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
-         qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
-         qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
-         qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
-         qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt);
-+        qtest_add_func("acpi/virt/viot", test_acpi_virt_viot);
+-        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
+-        qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
++        object_property_set_uint(OBJECT(dev), "len-reserved-regions", 1, errp);
++        object_property_set_str(OBJECT(dev), "reserved-regions[0]",
++                                resv_prop_str, errp);
+         g_free(resv_prop_str);
      }
-     ret = g_test_run();
-     boot_sector_cleanup(disk);
+ }
 -- 
 2.33.0
 

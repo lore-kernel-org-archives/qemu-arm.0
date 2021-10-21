@@ -1,115 +1,116 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1407486lfc;
-        Wed, 20 Oct 2021 03:07:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+EokmIkxPmn+8rmqgS4mZtmiCL+tIQ0EeP2S3ybwNp0ggPKLC+STtIN8CG5Nr3d2ZrBO/
-X-Received: by 2002:a9d:7998:: with SMTP id h24mr10379635otm.181.1634724467060;
-        Wed, 20 Oct 2021 03:07:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634724467; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp327072lfc;
+        Thu, 21 Oct 2021 06:30:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYIjtZee4eA2jRPxk6LDDNorB8wP1/rcKwMd+cbUvHrsJtLGwDTNb0uXudC7meWZIDgLEf
+X-Received: by 2002:a4a:d8da:: with SMTP id c26mr4545133oov.38.1634823016277;
+        Thu, 21 Oct 2021 06:30:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634823016; cv=none;
         d=google.com; s=arc-20160816;
-        b=mVdffprhKRngEbzBHX5Btc+0th8GUspB6vtNKfRzFYc+25g3xgyUAoOrn0I7PN7Eik
-         X/eJ9zOwyA2sLu3uJkGJSBaLBFz8VJ+JCnEEsOf2uy+sxx+2YNSoa2E94w3Ek9sRFK6O
-         AzxeS7HPbFCI/tWOTpnHH72SBUbRtjZ/cAzXdsMJnquTBEf7qdKYw+gJbOxhGMpLlByG
-         7t9ETYhFGcjYUUrMofn+HFkfaWbGdUvH6nTyD9/4//zm141bScVkVmfg+etRREgoBDRW
-         ohZwt1SSoi+Ovf76G5lxr9vLJeqzowLrdJYmN18HgmVYwnzRVJXjiPZJ067UoVNRoHay
-         J8iw==
+        b=P34vlhyYJpijUFs3z+WSJdSSAL++2VB7ap/RG6bHW/+uRA8NQJvoMqM+c3C88HQWsy
+         zbjIwinPB3y1rGdCSQlmCPoFCfduOb8WRNgqZnTDIGmDaYmndaDD4JsFuzEJNBU7asB+
+         clKa8VarcVjUPDqurEeCxhKLG/WH6n27si5pADhHsW8w+vZwqzOHcB7NnKyNfkrT7TnL
+         oGgbYJkMOCZqhQ4CLj5n5vNatjiE8L0FU7xWCahvaYHI7qu60HQIyP7VABpwoDGXi9BM
+         nwOv6BepewBDxSvFNOt4t6MTr1WCiNLU03NEx/XE8QtWuUUHMI81jhNJhtYHfCh+Qs4p
+         9uKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=0asX/LIiyEZCJeCGjmvKvPU3uZwMWTG+h7gxhqUSxu0=;
-        b=GWFxNzfcesuv2LHSMgph8chHZkkkvTHksek3m2pq1P78D9nCc9kLuL6sI7a/sTeUC2
-         N/w5t2JqH54WGYPSYfJ2s2DT5C4xHsoLMcjOQcXB+aUri5IOJ6rPWj0Hahznt57ouq/q
-         MFCszEugA52+pxHEht52or44TpMak0CJ3mWTDuDZ3hru91E6mu2SWUkIgSR3fR3c4K2u
-         IctnjgEuolNVcebW3/9Jhre0swmaHgksvKd3c4VVVZCfN5/rlUNEQuIvHhTfwxsvv3zW
-         SqeVKwrA7fnDSczrqOCxUo7jhe0g48RVavRHl1QOzW3XLTxoNwugjDiBP1Er1ZGTNSQI
-         EL4g==
+        bh=pw+fqHWiLgylJMx+AQvyoaUGWS9TdC/5B7lKsHL/UC4=;
+        b=TMwqIWNjPo/StdBtXyLALP0vqcrmNhaTsQw41TZgN3c4npb1DyuEAT1dTTpG8cg9OP
+         +tqDqsAxXIQwmYvMyOBB2kJQyECwfo/rgFqVTBzWhhBxJ9qQnsjfLF3Q/1VvxZI1DZc9
+         /9DhG5r5jwyjNBg2ysbwcL9FKkMr3UifK011oXtDsQYZKFmNa3gweMXDskMWISOUJHF7
+         F+yeVu1eBPz59Yl0ulXSZt8BZfPhJQ2d64dNgRsGKyKt/tmgg9QpwFZvhwVtOaR8PqKm
+         J+72bLhM6HExUCFTGi4N0Mu5SGUfdr3mAPOzUWtphETkHUWOi5olS9E0orbRT3ckgxz9
+         Vw5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="i/n3idon";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bOsKyVHR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j27si2210809oob.53.2021.10.20.03.07.46
+        by mx.google.com with ESMTPS id l132si5139005oia.1.2021.10.21.06.30.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Oct 2021 03:07:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Oct 2021 06:30:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="i/n3idon";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bOsKyVHR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1md8Ve-0000Ms-7B
-	for alex.bennee@linaro.org; Wed, 20 Oct 2021 06:07:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43030)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mdY99-0004i7-FG
+	for alex.bennee@linaro.org; Thu, 21 Oct 2021 09:30:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45556)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1md8SH-00062s-Iv
- for qemu-devel@nongnu.org; Wed, 20 Oct 2021 06:04:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:32111)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mdY8x-0004hn-0Z
+ for qemu-arm@nongnu.org; Thu, 21 Oct 2021 09:30:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51559)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1md8SF-0002RF-J2
- for qemu-devel@nongnu.org; Wed, 20 Oct 2021 06:04:17 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mdY8t-0002UC-Lp
+ for qemu-arm@nongnu.org; Thu, 21 Oct 2021 09:30:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634724255;
+ s=mimecast20190719; t=1634822997;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0asX/LIiyEZCJeCGjmvKvPU3uZwMWTG+h7gxhqUSxu0=;
- b=i/n3idonv6EzYdEGb3oUDcBXSFh6nBTykdfAiOwKcimL9JGrUrlnCMCIzx/L55XQFqIGTe
- JaGdwFl1W1euIy6DKEnpwdqhqIkJqpTtGj3p39yUbmyKxD6a+LuKGZXIdkEl83sxeQNsZd
- 5esoIhmBuAWB84irqTg9YeDPr7qwI3U=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-221-3T7OZ-_dPlOWBSGxeVTXFQ-1; Wed, 20 Oct 2021 06:04:13 -0400
-X-MC-Unique: 3T7OZ-_dPlOWBSGxeVTXFQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- l10-20020a056402230a00b003db6977b694so20467372eda.23
- for <qemu-devel@nongnu.org>; Wed, 20 Oct 2021 03:04:13 -0700 (PDT)
+ bh=pw+fqHWiLgylJMx+AQvyoaUGWS9TdC/5B7lKsHL/UC4=;
+ b=bOsKyVHRiiLiMClbsDX80dbAcsatU2vyOkBVqIldkwdEyyz5cp4Kl07/bO2SEjYTy3rB0/
+ jzHX7Y550ZF9MqVjKkHy39gb61SRddtQQ2fARjrb4tYKb3fcpxpbS6mzh0EjaAObXw5m4N
+ 2quMYMav1lZpSjNhOgu+ZSLy0j210WE=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-588-wUyq2-x0NcSsvZgptsk0bg-1; Thu, 21 Oct 2021 09:29:54 -0400
+X-MC-Unique: wUyq2-x0NcSsvZgptsk0bg-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ t28-20020a508d5c000000b003dad7fc5caeso326433edt.11
+ for <qemu-arm@nongnu.org>; Thu, 21 Oct 2021 06:29:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=0asX/LIiyEZCJeCGjmvKvPU3uZwMWTG+h7gxhqUSxu0=;
- b=6iSAQox9Q09/RI3UO4OOV5VUBqfHkWOWLoMH4XJAmcOXTrwmnu97TSons+8MzefEkJ
- yBO0T6A9HxpNqaSFoFArWmj/du+bVqDautAmL50k7cP4pWh6BoLiVpKiLHm43sXDwi0Q
- k8EXlVIxNTIJuAIiB03XAm0EgMq7Zp5uD4rI5KzAtg4jqkFoWMOPB8HHkWASrom0q3bE
- TjrFD2OVCs4ymoyp0NUgbjcFD4Nn1IZ/Mnkjm1b+vkqtM74h3CzX8iMhkRpTGgaiaVMq
- /nkAjT3eskSZl3YdserociHQBwAI51JoAHPD5KjErWDTNGm4S/OMROGfnSIdXRdjX06g
- yovg==
-X-Gm-Message-State: AOAM533OkiFF/joTWmRVJzbR2K8PogjsKAt/XvyJB6f3O6sCDaFHZFzr
- R251BSXmLTY3L8738g36Uaur3f4R0/EJu+azds2pOZ9valxcYFILJrLomNmLirQ5Krgt+P6FT4v
- RjRBEpaevNL6wNuc=
-X-Received: by 2002:a17:906:c248:: with SMTP id
- bl8mr43503388ejb.360.1634724252487; 
- Wed, 20 Oct 2021 03:04:12 -0700 (PDT)
-X-Received: by 2002:a17:906:c248:: with SMTP id
- bl8mr43503349ejb.360.1634724252140; 
- Wed, 20 Oct 2021 03:04:12 -0700 (PDT)
-Received: from redhat.com ([2.55.24.172])
- by smtp.gmail.com with ESMTPSA id b22sm926544edj.83.2021.10.20.03.04.09
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=pw+fqHWiLgylJMx+AQvyoaUGWS9TdC/5B7lKsHL/UC4=;
+ b=QNrWR7VuH+7v9+DUMRktICuCPckKgBc8N6uRaN4qSIeEDwE1MFZZCraNtKC3maK9T4
+ llDkf/iMmZ+V5HY0o3GElSjiRjJD7ytaQ2sRE5zj5O7Peedc0QAui64SVQSegohDfEM/
+ cPqrBxVjOZYt0yWq2xxDV2RdeJkO5SS6TjECHm42UN4xxUl7wFUMw855B+mqncr+ASpc
+ lfA7BtHG6xipyH4yFtR0s3h1/XbsqDh5l9xJVn4jzqHEdWio9R/gFAoCkmKtsXGcXJXR
+ TZAbnyNuevcd0Lp/4zhfjSPuHw1VRat2KjqXdLon6Xjk3qCmE6JEU+w6+qPtVY2Zlb9w
+ FTUQ==
+X-Gm-Message-State: AOAM5310WXs2DwR4sldX71ess3Gpn1hXKPs9nZ/yFrYSeNR/pXkHe6zB
+ 3H9QbC4jqdJOJujoEy9oQgH7dKz0dHr9g9U4WhjjJkgWIA57aoXPxBrRlQVuZc/JS21BodszSZ+
+ LOg8g3piorvV0
+X-Received: by 2002:a05:6402:34f:: with SMTP id
+ r15mr7749939edw.111.1634822992990; 
+ Thu, 21 Oct 2021 06:29:52 -0700 (PDT)
+X-Received: by 2002:a05:6402:34f:: with SMTP id
+ r15mr7749898edw.111.1634822992730; 
+ Thu, 21 Oct 2021 06:29:52 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id hp3sm2148346ejc.61.2021.10.21.06.29.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Oct 2021 03:04:11 -0700 (PDT)
-Date: Wed, 20 Oct 2021 06:04:08 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: "wangyanan (Y)" <wangyanan55@huawei.com>
-Subject: Re: [PATCH v8 4/8] hw/acpi/aml-build: Add Processor hierarchy node
- structure
-Message-ID: <20211020060349-mutt-send-email-mst@kernel.org>
-References: <20211014132206.19220-1-wangyanan55@huawei.com>
- <20211014132206.19220-5-wangyanan55@huawei.com>
- <3089e3c8-0eb0-3360-357d-4ba82ede8952@redhat.com>
- <f8f361b6-33b5-6314-cf07-e71efe8e362e@huawei.com>
+ Thu, 21 Oct 2021 06:29:52 -0700 (PDT)
+Date: Thu, 21 Oct 2021 15:29:51 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: Re: [PATCH v5 02/12] hw/i386/pc: Remove x86_iommu_get_type()
+Message-ID: <20211021152951.6582b98f@redhat.com>
+In-Reply-To: <20211020172745.620101-3-jean-philippe@linaro.org>
+References: <20211020172745.620101-1-jean-philippe@linaro.org>
+ <20211020172745.620101-3-jean-philippe@linaro.org>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <f8f361b6-33b5-6314-cf07-e71efe8e362e@huawei.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -117,117 +118,183 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- Eric Auger <eauger@redhat.com>, wanghaibin.wang@huawei.com,
- Igor Mammedov <imammedo@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fuveb6iXr2Tp
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ jasowang@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ peterx@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ marcel.apfelbaum@gmail.com, ani@anisinha.ca, pbonzini@redhat.com,
+ eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4gObX4VySpLn
 
-On Wed, Oct 20, 2021 at 05:51:46PM +0800, wangyanan (Y) wrote:
+On Wed, 20 Oct 2021 18:27:36 +0100
+Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
+
+> To generate the IOMMU ACPI table, acpi-build.c can use base QEMU types
+> instead of a special IommuType value.
 > 
-> On 2021/10/20 15:43, Eric Auger wrote:
-> > Hi
-> > 
-> > On 10/14/21 3:22 PM, Yanan Wang wrote:
-> > > Add a generic API to build Processor hierarchy node structure (Type 0),
-> > > which is strictly consistent with descriptions in ACPI 6.2: 5.2.29.1.
-> > > 
-> > > This function will be used to build ACPI PPTT table for cpu topology.
-> > > 
-> > > Co-developed-by: Ying Fang <fangying1@huawei.com>
-> > > Co-developed-by: Henglong Fan <fanhenglong@huawei.com>
-> > > Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
-> > > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-> > > Reviewed-by: Andrew Jones <drjones@redhat.com>
-> > > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> > > ---
-> > >   hw/acpi/aml-build.c         | 26 ++++++++++++++++++++++++++
-> > >   include/hw/acpi/aml-build.h |  4 ++++
-> > >   2 files changed, 30 insertions(+)
-> > > 
-> > > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > > index 76af0ebaf9..b7b9db6888 100644
-> > > --- a/hw/acpi/aml-build.c
-> > > +++ b/hw/acpi/aml-build.c
-> > > @@ -1964,6 +1964,32 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> > >       acpi_table_end(linker, &table);
-> > >   }
-> > > +/* ACPI 6.2: 5.2.29.1 Processor hierarchy node structure (Type 0) */
-> > > +void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
-> > > +                                    uint32_t parent, uint32_t id,
-> > > +                                    uint32_t *priv_rsrc, uint32_t priv_num)
-> > > +{
-> > > +    int i;
-> > > +
-> > > +    build_append_byte(tbl, 0);                 /* Type 0 - processor */
-> > nit: I think Igor would generally prefer
-> > build_append_byte(tbl, 0 /* processor structure */);  /* Type */
-> > although it generates checkpatch warnings
-> Ok.
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-I think it's ok as is. Right Igor?
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-> > 
-> > > +    build_append_byte(tbl, 20 + priv_num * 4); /* Length */
-> > > +    build_append_int_noprefix(tbl, 0, 2);      /* Reserved */
-> > > +    build_append_int_noprefix(tbl, flags, 4);  /* Flags */
-> > > +    build_append_int_noprefix(tbl, parent, 4); /* Parent */
-> > > +    build_append_int_noprefix(tbl, id, 4);     /* ACPI Processor ID */
-> > > +
-> > > +    /* Number of private resources */
-> > > +    build_append_int_noprefix(tbl, priv_num, 4);
-> > > +
-> > > +    /* Private resources[N] */
-> > > +    if (priv_num > 0) {
-> > > +        assert(priv_rsrc);
-> > > +        for (i = 0; i < priv_num; i++) {
-> > > +            build_append_int_noprefix(tbl, priv_rsrc[i], 4);
-> > > +        }
-> > > +    }
-> > > +}
-> > > +
-> > >   /* build rev1/rev3/rev5.1 FADT */
-> > >   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-> > >                   const char *oem_id, const char *oem_table_id)
-> > > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> > > index 3cf6f2c1b9..2c457c8f17 100644
-> > > --- a/include/hw/acpi/aml-build.h
-> > > +++ b/include/hw/acpi/aml-build.h
-> > > @@ -489,6 +489,10 @@ void build_srat_memory(GArray *table_data, uint64_t base,
-> > >   void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> > >                   const char *oem_id, const char *oem_table_id);
-> > > +void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
-> > > +                                    uint32_t parent, uint32_t id,
-> > > +                                    uint32_t *priv_rsrc, uint32_t priv_num);
-> > > +
-> > >   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-> > >                   const char *oem_id, const char *oem_table_id);
-> > > 
-> > Besides
-> > Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Thanks for your review!
+> ---
+>  include/hw/i386/x86-iommu.h | 12 ------------
+>  hw/i386/acpi-build.c        | 20 +++++++++-----------
+>  hw/i386/amd_iommu.c         |  2 --
+>  hw/i386/intel_iommu.c       |  3 ---
+>  hw/i386/x86-iommu-stub.c    |  5 -----
+>  hw/i386/x86-iommu.c         |  5 -----
+>  6 files changed, 9 insertions(+), 38 deletions(-)
 > 
-> Yanan
-> .
-> > 
-> > Eric
-> > 
-> > .
+> diff --git a/include/hw/i386/x86-iommu.h b/include/hw/i386/x86-iommu.h
+> index 9de92d33a1..5ba0c056d6 100644
+> --- a/include/hw/i386/x86-iommu.h
+> +++ b/include/hw/i386/x86-iommu.h
+> @@ -33,12 +33,6 @@ OBJECT_DECLARE_TYPE(X86IOMMUState, X86IOMMUClass, X86_IOMMU_DEVICE)
+>  typedef struct X86IOMMUIrq X86IOMMUIrq;
+>  typedef struct X86IOMMU_MSIMessage X86IOMMU_MSIMessage;
+>  
+> -typedef enum IommuType {
+> -    TYPE_INTEL,
+> -    TYPE_AMD,
+> -    TYPE_NONE
+> -} IommuType;
+> -
+>  struct X86IOMMUClass {
+>      SysBusDeviceClass parent;
+>      /* Intel/AMD specific realize() hook */
+> @@ -71,7 +65,6 @@ struct X86IOMMUState {
+>      OnOffAuto intr_supported;   /* Whether vIOMMU supports IR */
+>      bool dt_supported;          /* Whether vIOMMU supports DT */
+>      bool pt_supported;          /* Whether vIOMMU supports pass-through */
+> -    IommuType type;             /* IOMMU type - AMD/Intel     */
+>      QLIST_HEAD(, IEC_Notifier) iec_notifiers; /* IEC notify list */
+>  };
+>  
+> @@ -140,11 +133,6 @@ struct X86IOMMU_MSIMessage {
+>   */
+>  X86IOMMUState *x86_iommu_get_default(void);
+>  
+> -/*
+> - * x86_iommu_get_type - get IOMMU type
+> - */
+> -IommuType x86_iommu_get_type(void);
+> -
+>  /**
+>   * x86_iommu_iec_register_notifier - register IEC (Interrupt Entry
+>   *                                   Cache) notifiers
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 81418b7911..ab49e799ff 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2488,6 +2488,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>      PCMachineState *pcms = PC_MACHINE(machine);
+>      PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+>      X86MachineState *x86ms = X86_MACHINE(machine);
+> +    X86IOMMUState *iommu = x86_iommu_get_default();
+>      GArray *table_offsets;
+>      unsigned facs, dsdt, rsdt, fadt;
+>      AcpiPmInfo pm;
+> @@ -2604,17 +2605,14 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>          build_mcfg(tables_blob, tables->linker, &mcfg, x86ms->oem_id,
+>                     x86ms->oem_table_id);
+>      }
+> -    if (x86_iommu_get_default()) {
+> -        IommuType IOMMUType = x86_iommu_get_type();
+> -        if (IOMMUType == TYPE_AMD) {
+> -            acpi_add_table(table_offsets, tables_blob);
+> -            build_amd_iommu(tables_blob, tables->linker, x86ms->oem_id,
+> -                            x86ms->oem_table_id);
+> -        } else if (IOMMUType == TYPE_INTEL) {
+> -            acpi_add_table(table_offsets, tables_blob);
+> -            build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
+> -                           x86ms->oem_table_id);
+> -        }
+> +    if (object_dynamic_cast(OBJECT(iommu), TYPE_AMD_IOMMU_DEVICE)) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_amd_iommu(tables_blob, tables->linker, x86ms->oem_id,
+> +                        x86ms->oem_table_id);
+> +    } else if (object_dynamic_cast(OBJECT(iommu), TYPE_INTEL_IOMMU_DEVICE)) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
+> +                       x86ms->oem_table_id);
+>      }
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
+> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+> index 9242a0d3ed..91fe34ae58 100644
+> --- a/hw/i386/amd_iommu.c
+> +++ b/hw/i386/amd_iommu.c
+> @@ -1538,7 +1538,6 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
+>  {
+>      int ret = 0;
+>      AMDVIState *s = AMD_IOMMU_DEVICE(dev);
+> -    X86IOMMUState *x86_iommu = X86_IOMMU_DEVICE(dev);
+>      MachineState *ms = MACHINE(qdev_get_machine());
+>      PCMachineState *pcms = PC_MACHINE(ms);
+>      X86MachineState *x86ms = X86_MACHINE(ms);
+> @@ -1548,7 +1547,6 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
+>                                       amdvi_uint64_equal, g_free, g_free);
+>  
+>      /* This device should take care of IOMMU PCI properties */
+> -    x86_iommu->type = TYPE_AMD;
+>      if (!qdev_realize(DEVICE(&s->pci), &bus->qbus, errp)) {
+>          return;
+>      }
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 75f075547f..c27b20090e 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -3806,9 +3806,6 @@ static void vtd_realize(DeviceState *dev, Error **errp)
+>      X86MachineState *x86ms = X86_MACHINE(ms);
+>      PCIBus *bus = pcms->bus;
+>      IntelIOMMUState *s = INTEL_IOMMU_DEVICE(dev);
+> -    X86IOMMUState *x86_iommu = X86_IOMMU_DEVICE(dev);
+> -
+> -    x86_iommu->type = TYPE_INTEL;
+>  
+>      if (!vtd_decide_config(s, errp)) {
+>          return;
+> diff --git a/hw/i386/x86-iommu-stub.c b/hw/i386/x86-iommu-stub.c
+> index c5ba077f9d..781b5ff922 100644
+> --- a/hw/i386/x86-iommu-stub.c
+> +++ b/hw/i386/x86-iommu-stub.c
+> @@ -36,8 +36,3 @@ bool x86_iommu_ir_supported(X86IOMMUState *s)
+>  {
+>      return false;
+>  }
+> -
+> -IommuType x86_iommu_get_type(void)
+> -{
+> -    abort();
+> -}
+> diff --git a/hw/i386/x86-iommu.c b/hw/i386/x86-iommu.c
+> index 86ad03972e..dc968c7a53 100644
+> --- a/hw/i386/x86-iommu.c
+> +++ b/hw/i386/x86-iommu.c
+> @@ -98,11 +98,6 @@ X86IOMMUState *x86_iommu_get_default(void)
+>      return x86_iommu_default;
+>  }
+>  
+> -IommuType x86_iommu_get_type(void)
+> -{
+> -    return x86_iommu_default->type;
+> -}
+> -
+>  static void x86_iommu_realize(DeviceState *dev, Error **errp)
+>  {
+>      X86IOMMUState *x86_iommu = X86_IOMMU_DEVICE(dev);
 

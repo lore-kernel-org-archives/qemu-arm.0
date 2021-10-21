@@ -1,104 +1,104 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp640464lfc;
-        Thu, 21 Oct 2021 11:48:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzO+cdsGWB0ELwVadU2EJTuY7bkkTz/jlPSqpt8r6mcNQW0bGh/175w9OFM5DHtsdAX5+iw
-X-Received: by 2002:a9d:7109:: with SMTP id n9mr6061745otj.24.1634842087512;
-        Thu, 21 Oct 2021 11:48:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634842087; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp641840lfc;
+        Thu, 21 Oct 2021 11:49:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw4m82uDtAl9wc0O4xm4iEDamXa006G5jd6BE2wEj/33w7gUkGHSP8/7k6LAqnLtnlD4Sdt
+X-Received: by 2002:a4a:ca96:: with SMTP id x22mr5573946ooq.74.1634842176422;
+        Thu, 21 Oct 2021 11:49:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634842176; cv=none;
         d=google.com; s=arc-20160816;
-        b=wiqy1+HsI53uyww/gnUTJRLPkVRk0gdbNgn4i8yefLk+YfyTnfM18MTMd6PAgP4SDh
-         c6ov27DFEjCKr7O5AMJFCSufn8upa4rysfu16rLrGwUIs1UFiFdEsCtNsQ8ALoDNJMe4
-         Xk2DqK3ozvjyCx1FiieJaH3cVEX+JhQhAVgl4Wyhf8BCFFegA+zTRZOxYNPS3gSE1SA4
-         8n8RjSFp+3jPX+xX0WK5xHRtvfSeunzF1cEf+cbO0q7XE7uXkq5yNa5XDwrQG3YKtoyE
-         Nt/kf/Q1AiFCT98U9odC94bdl0A7trs78xJotnAfpCRMBa+SNPgbqXLXdx/7O8/P5GWa
-         Fh2A==
+        b=OKL/SofG6GKZG081AWvergIHjhy7+71MkrxuQSh0hSGasyPHARQdomV+brcZl6zLq4
+         nsUHpTQ2CBy5prov1ItPOuE34e2e7ZEWzfJi4b71ds2VuVZb1DR6ob1TkdSFyuDBj2Tq
+         OcDkuhbz2duqvJwADooSqZEQ30Oa7puN9r6tzupuViNIsg1z/pb6kObCSaRePASoa40q
+         b8gK/rfxcKvqxMWviYkFMDF3dOAtsW9ka66nBaMe7td3ECqXkQW/oo+aOfdvGWLL8KFi
+         T5mz7hNAe/RAUWkHrDYZVbUn748MvIsNg5gbye9nZA4Z7PZHzaAhl7Q2o18CYvBH7YLV
+         8Qrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=sFeWotbATGCBS+Vm4EPPVmJiHPouAImlbzZwfeR8ZU4=;
-        b=vnNMpdrWPYBeT0Qz2+2nIqS/ARhC8y87PNkrGREVxQomW4B02d5Z6kI5mae3wa8g49
-         /ymLXoEwd0TmtGhc4bWj4G3FOJL3Umuse4vF1X9h6+lybbWvkoRUVQJG0HsPtFHak5mX
-         N36f0H4MTYjW8J9Nvht594VkZRmagkyUa9RqBujDoeNcBHG+3E2d/35QNQ1C6PtvpHnu
-         piemxTLnWknhjoyzd+bQrqBWmGPmO976x8zblkreJljkDX7WDM4Uj8DQSQJVyEjNpdMc
-         RfWw2QB8p2QjQanfo8ef92pizBoCshmcjYl5lMTr8kE23mC2kdOLMJZDigwAWsOTJgGl
-         6Ozw==
+        bh=gsgS+O+ZnQJT7cHjvt2nqC1oppN/KoIkhcZMh9EV80E=;
+        b=ePvfqWWQMz/L0cQjW41a10XrSGXGwPb7kTDSS8GgIR+3+WqQ4h+aW1LvlMwpzaVUkb
+         WivUGLH2l6aCscbCmDxGqb7DSyXc4XQBdWXXNvce2Vi+1r94qmAhF/ZREvUzYv9C36XQ
+         nUv0jBnMNqKRFT+1OcXnMM/nirVJd5vPg+MV/Lsn9LO9i0vRex1FF1uOWnmb79kLSE+y
+         1Wi/M/EHYF5rmV2Ran2IH4ZVVd1pUFqWmghYiF+vSPD8ll91Ev3VhmaW8UOoq3eYwqil
+         mEakP6Fdur7Lki2sJnOrtqG8h2HULtuXM5lKxCsq8mD9r7D7sN7sYMD2Ul2OsLMmCS2z
+         eU2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=kzA6SMeG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=DEN1RpXu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h92si5993195oth.186.2021.10.21.11.48.07
+        by mx.google.com with ESMTPS id b23si6995476ooq.40.2021.10.21.11.49.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Oct 2021 11:48:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Oct 2021 11:49:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=kzA6SMeG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=DEN1RpXu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:35914 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdd6k-00060c-Md
-	for alex.bennee@linaro.org; Thu, 21 Oct 2021 14:48:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49374)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mdd8B-0007oZ-1C
+	for alex.bennee@linaro.org; Thu, 21 Oct 2021 14:49:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3GLRxYQgKCFkNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com>)
- id 1mdczW-0005Hb-KI
- for qemu-arm@nongnu.org; Thu, 21 Oct 2021 14:40:39 -0400
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049]:46046)
+ <3HbRxYQgKCl4SQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
+ id 1mdcza-0005KS-Pl
+ for qemu-devel@nongnu.org; Thu, 21 Oct 2021 14:40:43 -0400
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a]:53053)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3GLRxYQgKCFkNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com>)
- id 1mdczM-0003Me-Qa
- for qemu-arm@nongnu.org; Thu, 21 Oct 2021 14:40:30 -0400
-Received: by mail-pj1-x1049.google.com with SMTP id
- mw18-20020a17090b4d1200b001a194edeeb2so298901pjb.0
- for <qemu-arm@nongnu.org>; Thu, 21 Oct 2021 11:40:25 -0700 (PDT)
+ <3HbRxYQgKCl4SQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
+ id 1mdczU-0003d4-9W
+ for qemu-devel@nongnu.org; Thu, 21 Oct 2021 14:40:42 -0400
+Received: by mail-pj1-x104a.google.com with SMTP id
+ m2-20020a17090a158200b001a18e07bfc0so851787pja.2
+ for <qemu-devel@nongnu.org>; Thu, 21 Oct 2021 11:40:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=sFeWotbATGCBS+Vm4EPPVmJiHPouAImlbzZwfeR8ZU4=;
- b=kzA6SMeGRFmINTqMvfFCGDb4pKj7WsKRaC1t4Yx1IagxtJGT3TWDjN1InWcE0kMdVx
- +0lixEtUTBkoq2Knj6leTDd0rbGOoE70ngO4wQM2FuRCvjqV8n5NjowK7ldEdAFcXxDR
- 34TOZEa0jEIrwt06pXHIv2zQRcG1pzxvRLqJS60yiHYkLca6FlRKZieBxGoZ7TJCIwG6
- 4I4x6LHJRq+aY9XL3s/NWB30jBuyH1lQxy26W+U9fsMbyQyubFVKUUKHKCaIYDUeRzSH
- 5xtkicAgqF4uuaQB1bYsUp+7U0IBK4gI6ELggxZYHKLFAa3BBMWn2Twcwe3RC3jQoVO4
- 0bIw==
+ :cc; bh=gsgS+O+ZnQJT7cHjvt2nqC1oppN/KoIkhcZMh9EV80E=;
+ b=DEN1RpXuJ84cLn3R3buhE8QzacxLK+sdpZq2cfvoWpxYXAeO5XZn3rr86eecHzHxbi
+ HzI56kUO5cvWy3EuIUWUXf/0BRhOX1nMK3dMb9jowDVHblA3773RPTju8Uem8dd2KdIP
+ 8m7c0tAVgPaCRbBcHF1+3z2jDv8y2ocHqdKFlp39Pa6kCC5wkq6XH4PQou4fEHYPajEs
+ CETKELzIfCFRP1K0Y6whc5u4jgoYWkBeMwHGIhfQwWnL74a9XR/qObk8AP+eVeeGAUvJ
+ wwTHZlLEm4R/4DHwVQitpCmUzJvOEDsAJtkRGa2grflln+P7Dlo0u8N0VpU3oRwTTc2x
+ djGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=sFeWotbATGCBS+Vm4EPPVmJiHPouAImlbzZwfeR8ZU4=;
- b=l5UqxEcueoW6P5y3fNva/oBKQApkqcQVg6NBO+F8fGBDrn3jbpFrwDBIgNzK8GnMDS
- b8yN2z6pYyaK6VxjdwS+TV9q9FCqT2pRxih+5DuHpMkekeCoqBxB2TJ0loBsO2n4F1+V
- qqLdsTBRb8bp6buC52hMxzfyS78FSU+JNVdUAhtABoBI03lsMXU6qXdpK0FdXEwuQAQP
- dYj+vy+fw+iapiRU3SYP0qSDiEZPB1xsnRbCEBdxWRanpM3JUxB5WEZxCeq1+8RwC10N
- CmMY1qYCxXCTHpx6Un1Lb8ez7b21el1QR6HaWEvwR6sc9QQsmf2MvfU7jans5oQGfhQs
- vRjw==
-X-Gm-Message-State: AOAM533XJtXmkIndWJx5uL/Lq8SUSSjVmVOrPohi5mliKDiTDtENnfGV
- MYRKAMoHNIfkmJVa6KNasKYrK50og4rMiQ==
+ bh=gsgS+O+ZnQJT7cHjvt2nqC1oppN/KoIkhcZMh9EV80E=;
+ b=j5mETtQgzWfTW26Iow9EiKqSj9Xrga7cyqAOGch11pRmjbG9rLuPgvBDh2npR9P0xM
+ AtmCN9735RpQ4NcrdLdpVs1cb5omlmsZgQlLr7rFeiJ1bxcMVeBNZErzxBFH6Z2kCvYd
+ QKjk4GIjxG17WCMSzM1rg7aCVEmYgR94Y8RtPrMfCSOH8kb/L1+qFoQuVtOlLmStgjrU
+ S9K7qv1kFlUDRuZk8ff2VOr2jK0pbtW7xYwZC5LNvHJRAfvcG0NBMBbwbb/Hj9X92ABU
+ xw6UEj214cO/KNWQN5eYLPD/VTXZcOgGI5O3ox+Lax2oLjlsnMVD+yoib2chkFBxlgjj
+ kLyA==
+X-Gm-Message-State: AOAM532TtznUdcEssxrxK1Y6BbGrKfTfm5ZDna/iK/jQ6guZnvCXA5KK
+ pOZA5/Kqc4v+GBylbyHW++iRTWTq2iyORA==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a05:6a00:acc:b0:44b:ff29:621b with SMTP
- id c12-20020a056a000acc00b0044bff29621bmr7362396pfl.32.1634841624479; Thu, 21
- Oct 2021 11:40:24 -0700 (PDT)
-Date: Thu, 21 Oct 2021 11:39:53 -0700
+ (user=wuhaotsh job=sendgmr) by 2002:a05:6a00:138a:b0:44c:b200:38d7 with SMTP
+ id t10-20020a056a00138a00b0044cb20038d7mr7294064pfg.5.1634841629377; Thu, 21
+ Oct 2021 11:40:29 -0700 (PDT)
+Date: Thu, 21 Oct 2021 11:39:56 -0700
 In-Reply-To: <20211021183956.920822-1-wuhaotsh@google.com>
-Message-Id: <20211021183956.920822-5-wuhaotsh@google.com>
+Message-Id: <20211021183956.920822-8-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20211021183956.920822-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.33.0.1079.g6e70778dc9-goog
-Subject: [PATCH v2 4/7] hw/adc: Make adci[*] R/W in NPCM7XX ADC
+Subject: [PATCH v2 7/7] hw/arm: Add ID for NPCM7XX SMBus
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
  venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, Titus Rwantare <titusr@google.com>
+ hskinnemoen@google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3GLRxYQgKCFkNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
+ envelope-from=3HbRxYQgKCl4SQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pj1-x104a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -107,44 +107,41 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TkvTvls3yU+L
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Oz+6Ws+9yF9U
 
-Our sensor test requires both reading and writing from a sensor's
-QOM property. So we need to make the input of ADC module R/W instead
-of read only for that to work.
+The ID can be used to indicate SMBus modules when adding
+dynamic devices to them.
 
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Titus Rwantare <titusr@google.com>
 ---
- hw/adc/npcm7xx_adc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/npcm7xx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/adc/npcm7xx_adc.c b/hw/adc/npcm7xx_adc.c
-index 47fb9e5f74..bc6f3f55e6 100644
---- a/hw/adc/npcm7xx_adc.c
-+++ b/hw/adc/npcm7xx_adc.c
-@@ -242,7 +242,7 @@ static void npcm7xx_adc_init(Object *obj)
- 
-     for (i = 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
-         object_property_add_uint32_ptr(obj, "adci[*]",
--                &s->adci[i], OBJ_PROP_FLAG_WRITE);
-+                &s->adci[i], OBJ_PROP_FLAG_READWRITE);
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 2ab0080e0b..72953d65ef 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -421,6 +421,7 @@ static void npcm7xx_init(Object *obj)
+     for (i = 0; i < ARRAY_SIZE(s->smbus); i++) {
+         object_initialize_child(obj, "smbus[*]", &s->smbus[i],
+                                 TYPE_NPCM7XX_SMBUS);
++        DEVICE(&s->smbus[i])->id = g_strdup_printf("smbus[%d]", i);
      }
-     object_property_add_uint32_ptr(obj, "vref",
-             &s->vref, OBJ_PROP_FLAG_WRITE);
+ 
+     object_initialize_child(obj, "ehci", &s->ehci, TYPE_NPCM7XX_EHCI);
 -- 
 2.33.0.1079.g6e70778dc9-goog
 

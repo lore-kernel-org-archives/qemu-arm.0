@@ -1,109 +1,111 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp2097490lfc;
-        Wed, 20 Oct 2021 15:54:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwqYcs7xGd55dIy/autbzaX5ZgUuVr3Ry9hQeO3qELW9DVi40zR5wFQLcHf3hpyr+XVjiWm
-X-Received: by 2002:a02:cac6:: with SMTP id f6mr1398460jap.81.1634770482437;
-        Wed, 20 Oct 2021 15:54:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634770482; cv=none;
+Received: by 2002:a05:6214:13e2:0:0:0:0 with SMTP id ch2csp1959414qvb;
+        Thu, 21 Oct 2021 00:26:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKf2+jo+djyBw4GM3LyYNarToF2eFShrusQQ/JZQ1eM1cB3YR3PNwRa3popP55VnjQNtDH
+X-Received: by 2002:a5b:802:: with SMTP id x2mr4388599ybp.164.1634801176527;
+        Thu, 21 Oct 2021 00:26:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634801176; cv=none;
         d=google.com; s=arc-20160816;
-        b=bzehkFNV0RFguk7Giy48EkLtjEYTZdGoFTAIpF6BAA6e9gjdNIHVBlpMgRTtE2U7by
-         LARs7J4SoEXkGZ2dv7N8J3mRYo2mtIu/qJuUWK5KSb1YCqXCsu4DzfLIzsqJCWe5fmQg
-         7UPmsbvWSO5aKMF7MwbYnW3vouQjG+Nd230WWIc4/IQUAKauRSCCMS7JMZOYG2iZH/rk
-         R2jzS8vIm4AGm8bMDGBPf/DTx+O2cU8q6AkPpDUuk2jluZcGHOKvdF5qe2TTgGM7jbMw
-         vLCDH/dcI+xGKo4yGdnfNGXup4xk9cqGamUHE0UCNONmSB37Tr71zpkxTplWZse3QC1Z
-         R1gg==
+        b=e/bjQge5qegXm9MA2zP/z8FBDXdLtxls47AipjBIWer/lz0UEZl+zEK/zyJspQiFvh
+         KLgaI4UI2/qX3vQUNAPPQgXjkdVMwtByNY5QYyfaCfDGrFIxGT6GKQA9Up4C4hyVmMkb
+         GyPiXh9LPK3jNzFD8Ucpqs3ZLUVxPL18+Hv0HrAuRGG/vWu/Uwey0Ma3Z6G2P875/4ba
+         /uuZE9XJf0407k1FPsKV3QCYupS7eIYd8O8xu2hdOz252cSD3qCAwIPHvHV2tHUnSlGu
+         pa/xdide6uCwXa7QnRjBBUB9LoTRqlHH6Rtb8Q8GNWRgCs/uIIhPBa03megr1+GgKrVD
+         i9xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:to:from:date:dkim-signature;
-        bh=WJGUh3ufkJv6o8JVZjrsDao7FRPF19t3sg2L2kpnvvw=;
-        b=gd2IJo8lON5oVFHtpBkLCrlhvuNmpKQGRpEPtJZ3uhal56iv0SBr1dK1RUAsDHHnlc
-         YbsLq8JOIV2ccS9mtYTn4gkQxaTXRxOYmNXc8Dm3p8EthsdxNEEBpl5S+zjD6Gi3OFtt
-         yLJAZypUIeRJTQc1E8+1TfAtZ5+aoVLQ+Z88DL1i0Cf/2/tB0lyZZvH+qgTo/0SyinPV
-         l95FS0bUiWUHOXYpy9yD5ZpdwYJp52Fpmf48WtxdYSfeCyEBWMc9JeJoivHi/5qIN7Z8
-         rWvOfTpYLzaANaljVxC+QiMgz+nCUWrueDUVofkliQIjH5sBGRqs/0or53999M9Z1y/M
-         X2LA==
+        bh=pD002zJYWYqGlmtmb/t7NDLdy5h3nUcoNRUVEMoNxss=;
+        b=IbMpMe86YPFFYow92JnVwuXSUxBPEOmWEXAdyz5MvR2KLtDkPu/Q72DBX1wzAD7Rjw
+         ZyrcG2FNLRDFa42+pAgWJTHRY8uPJqRD/otO/6QgyottJS7xW5Z4U1drDP75yNDskNF+
+         htzlIuGONS/ritljS5ClL9jl8Yxk8fpZB6z3AlmiPe8ovAhfwi8sJh/O53iot+s0nU1c
+         HtsbPXEbz19zJfd7wBDdrtuOXSk9A3v7DFcc6cD8VLvUkSkMwgzymDTqbinVy8SJTj6J
+         DSGZIT7Rv6Q98BfASmF91NoFf/WU1u1ODX03ZbfbNjSp5fa2fuK4ssoy9Furqez0AXld
+         mM4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=h+HwM2lS;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=FWvPB0CW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g124si3426036jab.72.2021.10.20.15.54.42
+        by mx.google.com with ESMTPS id 17si4723907ybx.433.2021.10.21.00.26.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Oct 2021 15:54:42 -0700 (PDT)
+        Thu, 21 Oct 2021 00:26:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=h+HwM2lS;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=FWvPB0CW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43416 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54892 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdKTo-0002Yh-N7
-	for alex.bennee@linaro.org; Wed, 20 Oct 2021 18:54:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42832)
+	id 1mdSSt-0007Qe-Un
+	for alex.bennee@linaro.org; Thu, 21 Oct 2021 03:26:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1mdKB1-0003eo-Jb; Wed, 20 Oct 2021 18:35:15 -0400
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236]:36824)
+ id 1mdSSE-0007MG-RS; Thu, 21 Oct 2021 03:25:34 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c]:36832)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1mdKAq-0003g9-1f; Wed, 20 Oct 2021 18:35:14 -0400
-Received: by mail-lj1-x236.google.com with SMTP id q16so276048ljg.3;
- Wed, 20 Oct 2021 15:35:00 -0700 (PDT)
+ id 1mdSSA-0003L7-Rt; Thu, 21 Oct 2021 03:25:34 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id g36so849564lfv.3;
+ Thu, 21 Oct 2021 00:25:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=WJGUh3ufkJv6o8JVZjrsDao7FRPF19t3sg2L2kpnvvw=;
- b=h+HwM2lSTVU46+bQkqi3ebb+7FbKA+KZ7ywd7Ce/lg7mnsriXYdNuL7iEq2h6CiHO/
- dSZJFdIXJmKIbaX+84UUGJA0VHrzhvcfOGA1okOCTp0jBKuUo0gh1lugomOFEGfNun/e
- 9VMiNldevu53kn2qocicnpf6fC31yd4rBVkGrouqSWXats8pfl50ZSQVR3jHdPXb0jGV
- GzJ0/CkLC+YfU2REB8X/B0jCmzsmLpmnY168+d+8fVYID92wmntDaTxVibws9BKhlNGT
- m9UmGwGzm7/sgXKchu2BLJw81jB7awNlSo0Udmv7I6Ly1uKYYkNS0wTipnjj7/8r69lO
- WkjQ==
+ :user-agent; bh=pD002zJYWYqGlmtmb/t7NDLdy5h3nUcoNRUVEMoNxss=;
+ b=FWvPB0CWtQWOrZsi1JlZAGySTzSWa+GmYsmU7nAk//OPa09PEA/pz/UGgeZh3rIeIP
+ N9+dhXPLb/4jqyK8szdUXaUsNOQAGEBwOsi24/U9Hxj0azeZYbt9/pSZ+KQ+dFb3y4rC
+ 5Ffn8tepXxlrLJxENVMflBp3RoRKwBBb6SHjpfyU3Ffizes7mX5KXTLetOtEIjhGUqc6
+ iOCj5Ye3PMiht06V3w4z9U8hh1c6ZRrcy6rFKkls41nKotc2+1vFUNAi1z0XY//2dS2y
+ Ll30RE9nADuZTu77fWTcalkoABjaWxbh0RKwYOLn1l3fwj8YMZcIdHGwwYwiUKHKKEeF
+ CUjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to:user-agent;
- bh=WJGUh3ufkJv6o8JVZjrsDao7FRPF19t3sg2L2kpnvvw=;
- b=NGuTP5zKeWM9DDUI+uP3NBrpdhAuJ6LVzRbXzYbqsEnRRfU6+vC9tBHyw6vFwjnfug
- Bd+Lzxzjn12Q80+x0WF29zCKjdJchEQivfg7/GiHx7fV0Hgzg7x5A/OWnEPzriQX+gXf
- z9Qu9n8B3iP8JPCI868fL3x85OMtsY4MYXA1SG+YHo4Kjcf2so1W++0WNwpqf1ND6Xow
- ymK9/ARjzY1gZkCzKeB0g6/AXfoLNDUdUhCUCMRQ5cMsOm1N7SK04jK47gOTlKNKsP/S
- LyHxegRD9XYdnnOEgzJylz90ulpY4/9vCiD1ZjDdbKbp345WE51l+lVuXdVG/zTh2j32
- UIpw==
-X-Gm-Message-State: AOAM532wNaauGKjzLcEBMl+GX9rAXc46jxCqd0q8KeJQQjEfHZmNzNm0
- U6PA1NzAT26P7VFvdjVxOFA=
-X-Received: by 2002:a2e:9c8d:: with SMTP id x13mr1889804lji.29.1634769299103; 
- Wed, 20 Oct 2021 15:34:59 -0700 (PDT)
+ bh=pD002zJYWYqGlmtmb/t7NDLdy5h3nUcoNRUVEMoNxss=;
+ b=nExMFn+cElTKYFR68KBtACtS67cHYnXyW7/M3V/Xhrqy/Wu2G3/WPdn6QZ9QhmXKLd
+ Fefy7QmJRqrlXoj15rrizFJIh3kI7sO2m2G9QhvEgsOQ4hUOznw+ozpmUDqpW1u64DCU
+ iebCyivy4H3mViXdBIXh2KNBPwnxpvfth6T0dMMcJyML7Yg/G6BNBv2yQm4ti00MFLbd
+ tv1ttoH9tUJsmgGKqZeyi5sf5AZ82XexvETwJeFl2bAlH/M8f0a7/lZWr7Fk1UWKCHW+
+ Lm8UkbJC8qy1XULD5K6J8IEnqG315BH20IeiSSJhmunefvERhmWC1Zzv7en2cImxn639
+ A9LA==
+X-Gm-Message-State: AOAM53334wv7wfqzOmOJofMnSTMvWnThoy4y06VzXbHqMR4v6hZb01aX
+ sJMCk3obaTa+slzkLhq4r8Y=
+X-Received: by 2002:a05:6512:2341:: with SMTP id
+ p1mr3900062lfu.204.1634801128484; 
+ Thu, 21 Oct 2021 00:25:28 -0700 (PDT)
 Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
  by smtp.gmail.com with ESMTPSA id
- c21sm294317lfi.192.2021.10.20.15.34.58
+ x20sm385258lfu.196.2021.10.21.00.25.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Oct 2021 15:34:58 -0700 (PDT)
-Date: Thu, 21 Oct 2021 00:34:57 +0200
+ Thu, 21 Oct 2021 00:25:28 -0700 (PDT)
+Date: Thu, 21 Oct 2021 09:25:26 +0200
 From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH v2 5/5] speed/sdhci: Add trace events
-Message-ID: <20211020223456.GF23846@fralle-msi>
+Subject: Re: [PATCH v2 1/5] aspeed/wdt: Introduce a container for the MMIO
+ region
+Message-ID: <20211021072525.GG23846@fralle-msi>
 References: <20211018132609.160008-1-clg@kaod.org>
- <20211018132609.160008-6-clg@kaod.org>
+ <20211018132609.160008-2-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20211018132609.160008-6-clg@kaod.org>
+In-Reply-To: <20211018132609.160008-2-clg@kaod.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::236;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x236.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12c.google.com
+X-Spam_score_int: -1001
+X-Spam_score: -100.2
 X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_report: (-100.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_WELCOMELIST=-0.01,
  USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
@@ -124,65 +126,54 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: roTEHHfR2wU+
+X-TUID: kVtKAOmODatJ
 
-Hi Cedric,
-
-On the subject s/speed/aspeed/. Otherwise:
+On [2021 Oct 18] Mon 15:26:05, Cédric Le Goater wrote:
+> On the AST2600, the 2nd watchdog timer can be controlled through the
+> FMC controller to disable the alternate boot function. Next changes
+> will map the WDT2 registers in the AST2600 FMC memory region. Add a
+> container on top of the register region for this purpose.
+> 
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
-/BR
-
-On [2021 Oct 18] Mon 15:26:09, Cédric Le Goater wrote:
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->  hw/sd/aspeed_sdhci.c | 5 +++++
->  hw/sd/trace-events   | 4 ++++
->  2 files changed, 9 insertions(+)
+>  include/hw/watchdog/wdt_aspeed.h | 1 +
+>  hw/watchdog/wdt_aspeed.c         | 6 +++++-
+>  2 files changed, 6 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-> index 3299844de6dc..df1bdf1fa4ed 100644
-> --- a/hw/sd/aspeed_sdhci.c
-> +++ b/hw/sd/aspeed_sdhci.c
-> @@ -14,6 +14,7 @@
->  #include "hw/irq.h"
->  #include "migration/vmstate.h"
->  #include "hw/qdev-properties.h"
-> +#include "trace.h"
+> diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+> index f945cd6c5833..14e91acb1284 100644
+> --- a/include/hw/watchdog/wdt_aspeed.h
+> +++ b/include/hw/watchdog/wdt_aspeed.h
+> @@ -28,6 +28,7 @@ struct AspeedWDTState {
+>      QEMUTimer *timer;
 >  
->  #define ASPEED_SDHCI_INFO            0x00
->  #define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
-> @@ -60,6 +61,8 @@ static uint64_t aspeed_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
->          }
->      }
+>      /*< public >*/
+> +    MemoryRegion iomem_container;
+>      MemoryRegion iomem;
+>      uint32_t regs[ASPEED_WDT_REGS_MAX];
 >  
-> +    trace_aspeed_sdhci_read(addr, size, (uint64_t) val);
+> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+> index 146ffcd71301..803e861a9c61 100644
+> --- a/hw/watchdog/wdt_aspeed.c
+> +++ b/hw/watchdog/wdt_aspeed.c
+> @@ -275,9 +275,13 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
+>       */
+>      s->pclk_freq = PCLK_HZ;
+>  
+> +    memory_region_init(&s->iomem_container, OBJECT(s),
+> +                       TYPE_ASPEED_WDT ".container", ASPEED_WDT_REGS_MAX * 4);
+> +    sysbus_init_mmio(sbd, &s->iomem_container);
 > +
->      return (uint64_t)val;
+>      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
+>                            TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
+> -    sysbus_init_mmio(sbd, &s->iomem);
+> +    memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
 >  }
 >  
-> @@ -68,6 +71,8 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
->  {
->      AspeedSDHCIState *sdhci = opaque;
->  
-> +    trace_aspeed_sdhci_write(addr, size, val);
-> +
->      switch (addr) {
->      case ASPEED_SDHCI_INFO:
->          /* The RESET bit automatically clears. */
-> diff --git a/hw/sd/trace-events b/hw/sd/trace-events
-> index 3cc2ef89ba6b..94a00557b26f 100644
-> --- a/hw/sd/trace-events
-> +++ b/hw/sd/trace-events
-> @@ -68,3 +68,7 @@ pl181_fifo_push(uint32_t data) "FIFO push 0x%08" PRIx32
->  pl181_fifo_pop(uint32_t data) "FIFO pop 0x%08" PRIx32
->  pl181_fifo_transfer_complete(void) "FIFO transfer complete"
->  pl181_data_engine_idle(void) "data engine idle"
-> +
-> +# aspeed_sdhci.c
-> +aspeed_sdhci_read(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
-> +aspeed_sdhci_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
+>  static Property aspeed_wdt_properties[] = {
 > -- 
 > 2.31.1
 > 

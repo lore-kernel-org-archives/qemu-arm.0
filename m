@@ -1,108 +1,108 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp357159lfc;
-        Thu, 21 Oct 2021 07:01:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy71ykBSBzuLmP4Mhj4hmFBVEqlE7PoIi/sF7kE+EgOCgSKvAGxsgFnzvU15AGxN2JeBzbl
-X-Received: by 2002:a05:6808:2127:: with SMTP id r39mr4644622oiw.124.1634824898309;
-        Thu, 21 Oct 2021 07:01:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634824898; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp331887lfc;
+        Thu, 21 Oct 2021 06:34:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcl5ob/0Bgb9ojLXFC30QOKfekEuM3N6Tlsm1v4qXwoxbDsKixsTHqJrORsacryJfs87hy
+X-Received: by 2002:a05:6808:1287:: with SMTP id a7mr4360755oiw.92.1634823282448;
+        Thu, 21 Oct 2021 06:34:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634823282; cv=none;
         d=google.com; s=arc-20160816;
-        b=WTfSeqwHbeDLT1nVWg8SGIJ+Zc6Sj9uzRC2TdG0e3FHQ1RRWJSuDbCKyHemPQ1oWR3
-         kdB6ik2alP4uuEW6/YoZS8OgWEIlUA+MsQenM6E37yxwvZCXwznmaoOc6k3cyjw6SR7I
-         +BhY0GNuOPRtPwzV6iqqP2NUzvy4Q5xik31WXIv5hnAG2iWd1gQbL3z+JRVkMIKnJJ7A
-         wlKMGc/W8VejICZcB6qY3CXLdtO0LwcjAC/n977vrCUjd2Qsik6rOfpB3BIFLH6xmW6q
-         FjxuAL5W0L5H8gEotaqgJVde+V0Nr5Hbh2lL6O+wT2O84VIIMhpxcwWkv26Axj2xfnDL
-         cUvQ==
+        b=gzOBKrz1ci4DE3yelSQHELw78pExgQDkeHL99z/+Vl+XZXnd16BvWIhct3M7ewP3qh
+         CiixONaRwm2WieP3E2RS2rdOOUHhOLZxo3rXlkfarKjpBVF8SpqX3ZXyZU82xpzsHkvn
+         B2F0xTOIsBwiC31LKh0GsMwhLW5OMa0vLb90GiqTVvX+QFt59E+dPJmG6vN6eywHBl33
+         /6q+Y7xeMEOoIRDeAqApIocpM//FAYyqOfwsPlUWBg93FpO9+zalbtmoUXfoAs7airsU
+         1dOTeIUB0tEmj5uti7AHRdw3Ys3KlhiH/+yLmQMo6w3aEpyalYsdPyMWSDjo9bScv+s6
+         a1kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=VdaqRsTxIcorfz6kht5/IWl3Xn2FlVJupR/VWOEiuns=;
-        b=KdeGfFiLHInp12ysObjsDV20P11IMwyfMlubAVvKAt0apmA6kmTx9H/2eySW729/PU
-         SFttXISbbtQhVD4GaMzzFtnksXlAySxI1WXrlibgaEQZmwKJml03QN5oKkBDxtj6aPBu
-         VMXo33CCnDocSmVmHXCH7iuYlODlY75rPFIwYxRD86fD8wacYZjxUhxm0z4tfdrl6juU
-         1m6/RzXlcq4A/ieWHQ2c1LCp4/DaDagUUXgxnRhP35FTcgPrBemmVJq4PDhKGVssa3CV
-         4rnzMTXxOkbLjv+qBhV4BVJQ6MuaX+63tcZFBpzMnL1M4oUNtESu13I9OLGdDX7P/6Ny
-         YAlg==
+        bh=g3mLcux7jZj4mWCVnWCeCwIte0mY9b/6kM8JkmAPZ2o=;
+        b=UDjZ5DrUchAdY8tnYcLZZ09LA7uXzL8y+y+9raTBmmTXc/berBGb/yyzc17gxH0AJo
+         Qb1FoB31XqHHzfcMb5MS3XXW5EBwCkeJ/12/Ntsl4rVhUvJAWxsLXh26jv0dTsxFEJoS
+         EXzPBfqCpz9J6M5KSDb6oEF9jzNFvzp085RiW0A0nPWpYgC71ktbAl+wfG9P1GCcPmGr
+         X8EiRkNDNYGUifXhH412J4yt/jDFWcailM5yOmqVE/fxhQnIjlqOX6W9t5B6K+yOP7Mx
+         Uw2uvn6yX4d9qakxteUIqf4yiggjvJPxRPBvbogHyWhsBkmc9IwfE10KT+vF+heqw9RK
+         Z0Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRFavyUl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hb3wQby3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e129si5542921oia.150.2021.10.21.07.01.38
+        by mx.google.com with ESMTPS id y1si5209427ooq.61.2021.10.21.06.34.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Oct 2021 07:01:38 -0700 (PDT)
+        Thu, 21 Oct 2021 06:34:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRFavyUl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hb3wQby3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43448 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34832 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdYdV-0008HQ-Al
-	for alex.bennee@linaro.org; Thu, 21 Oct 2021 10:01:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55522)
+	id 1mdYDR-0006nX-KF
+	for alex.bennee@linaro.org; Thu, 21 Oct 2021 09:34:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47550)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mdYd2-0008GT-6F
- for qemu-arm@nongnu.org; Thu, 21 Oct 2021 10:01:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42515)
+ id 1mdYDF-0006nF-Mp
+ for qemu-arm@nongnu.org; Thu, 21 Oct 2021 09:34:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:45688)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mdYd0-0008Lt-8G
- for qemu-arm@nongnu.org; Thu, 21 Oct 2021 10:01:07 -0400
+ id 1mdYDD-0000S1-Em
+ for qemu-arm@nongnu.org; Thu, 21 Oct 2021 09:34:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634824856;
+ s=mimecast20190719; t=1634823266;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VdaqRsTxIcorfz6kht5/IWl3Xn2FlVJupR/VWOEiuns=;
- b=BRFavyUlxoH9EzRwpuO+GLMspYJOV0NNI2weWHUe158i3N+H9usMQ8nM7kdeRMFkFLQC7o
- hjNxm/1M/ZTvWV93vcvUlCd9lP04v7jrZwM05ssa77lZGvlJhVReWEMKsOtyZQM0ONjZid
- 4eomuiZpLbgjRBgY021fHfCdQWMXvXM=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-122-uSIZsxuKMgmo2G0-ZOBWFw-1; Thu, 21 Oct 2021 10:00:52 -0400
-X-MC-Unique: uSIZsxuKMgmo2G0-ZOBWFw-1
-Received: by mail-ed1-f70.google.com with SMTP id
- g28-20020a50d0dc000000b003dae69dfe3aso445980edf.7
- for <qemu-arm@nongnu.org>; Thu, 21 Oct 2021 07:00:52 -0700 (PDT)
+ bh=g3mLcux7jZj4mWCVnWCeCwIte0mY9b/6kM8JkmAPZ2o=;
+ b=hb3wQby3+zeJIY3MoXSRNwHM0q2L7aIuYXNnXeAhj3wZv/SVjI2pQGsMbgMVusIQqqf1Ys
+ AX9E12lzDrwB2XMxo0hzB+RWOaX87yLKdaLBQy0jU9xrVc4x9P52R/xSlCZaN1LDlb7X07
+ lsTMos0ya5MOXz9n6ZC8zxYltEPTGOk=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-55-8sNtJNjSOdWkeNjzmN0q_Q-1; Thu, 21 Oct 2021 09:34:25 -0400
+X-MC-Unique: 8sNtJNjSOdWkeNjzmN0q_Q-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ e14-20020a056402088e00b003db6ebb9526so294545edy.22
+ for <qemu-arm@nongnu.org>; Thu, 21 Oct 2021 06:34:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=VdaqRsTxIcorfz6kht5/IWl3Xn2FlVJupR/VWOEiuns=;
- b=Ed/Ht0otwAmguW5uAT443GhxjDcr5TTpvC9zAa4oygNlrtzPpw0fLjta8adTJ1DUCi
- qEsYC9ePk8GInT2dUOgR5ynDYa9m+nqy+2R+/xzGOK1HPuqtzD9vFFK1Bdrdz3tSy032
- /YTB+MmG9vL9ZbW3MjSs08rlmHHEfUWMNH+hSl2af/hq9LSOeXlIIZL4cATsYWBx8ZAL
- aN5ohzz98sGSLZ5KSIaQTT+xvrx9LPDA3euxWQZST3ljUIuOya28bI31jSrATDJ0OLdR
- qxDdokPLa3ycIuSfs2ijpWUlYzvckNcQMYYMHBqWjZd3Q25EhaZ+8gOwzJnd2No+2QuL
- 7vqg==
-X-Gm-Message-State: AOAM533v6GXWazgr5bEL222J6YMhMnD3T6KlYHb2RCf8a4AM0f083SqS
- x9OTabIYjavn8aiinw+lrB2YNhJC6KusCaabyIowkZ2xjrsCe0u6f27gGLi2bfXB0PiYB23uUA0
- R1NjamU6ge8w4
-X-Received: by 2002:a17:906:1706:: with SMTP id
- c6mr7755601eje.343.1634824851677; 
- Thu, 21 Oct 2021 07:00:51 -0700 (PDT)
-X-Received: by 2002:a17:906:1706:: with SMTP id
- c6mr7755538eje.343.1634824851072; 
- Thu, 21 Oct 2021 07:00:51 -0700 (PDT)
+ bh=g3mLcux7jZj4mWCVnWCeCwIte0mY9b/6kM8JkmAPZ2o=;
+ b=ApcjiLLoRJvgJP7X2rNMr6bx62yfSoaiQXJchwxzmfe2Ese4BCfpc41iV8ekqvRIFl
+ iLP1AxpvCjBISW2KIqu3a1+Ooi0RXORSa6Ef9TH5W5DU3gxo1BTZreHF9FV+5WXNidiA
+ rLsMZkZQIHxcfiuP2QrRALlyZrPF3QRO3IA9xkHhSU/X1lngtk29Z8ZKqzsaOdefXi9g
+ oAAekWnc2z/FyEUZPTZuvqGV7f6sYy4UFOAj94YFHIGsHUl8sHja2cvNjbb8fRVbig+y
+ cO6vVXCTLq2CB1FNOlkqSJPYri9LYS9fdMCh3Uhir33qo8qnjiDSGMPFzIKTiqWCp7OQ
+ zZ1g==
+X-Gm-Message-State: AOAM531scfZ8HX9dWkR6+rR5fKq+loEc2yklBOUvgJg7pvfM3E8XfiQC
+ gstB6gKW2i4vi552nKNBAoeQMSiwdirsDfj/rC05ft1o29/6Qujab2SBvzo5SKfuVzdhiDykhsr
+ L7wH55qP/DF4I
+X-Received: by 2002:a17:906:c1c9:: with SMTP id
+ bw9mr7260670ejb.3.1634823264063; 
+ Thu, 21 Oct 2021 06:34:24 -0700 (PDT)
+X-Received: by 2002:a17:906:c1c9:: with SMTP id
+ bw9mr7260632ejb.3.1634823263730; 
+ Thu, 21 Oct 2021 06:34:23 -0700 (PDT)
 Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id j15sm2946407edl.34.2021.10.21.07.00.50
+ by smtp.gmail.com with ESMTPSA id kw5sm2554132ejc.110.2021.10.21.06.34.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Oct 2021 07:00:50 -0700 (PDT)
-Date: Thu, 21 Oct 2021 16:00:49 +0200
+ Thu, 21 Oct 2021 06:34:23 -0700 (PDT)
+Date: Thu, 21 Oct 2021 15:34:22 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: Re: [PATCH v5 09/12] tests/acpi: allow updates of VIOT expected
- data files
-Message-ID: <20211021160049.4f7659c4@redhat.com>
-In-Reply-To: <20211020172745.620101-10-jean-philippe@linaro.org>
+Subject: Re: [PATCH v5 03/12] hw/i386/pc: Move IOMMU singleton into
+ PCMachineState
+Message-ID: <20211021153422.5399a4dc@redhat.com>
+In-Reply-To: <20211020172745.620101-4-jean-philippe@linaro.org>
 References: <20211020172745.620101-1-jean-philippe@linaro.org>
- <20211020172745.620101-10-jean-philippe@linaro.org>
+ <20211020172745.620101-4-jean-philippe@linaro.org>
 X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -111,15 +111,15 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -139,42 +139,118 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
  eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7LJ0dyQuKLO4
+X-TUID: eyfQTHxCtlXB
 
-On Wed, 20 Oct 2021 18:27:43 +0100
+On Wed, 20 Oct 2021 18:27:37 +0100
 Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
 
-> Create empty data files and allow updates for the upcoming VIOT tests.
+> We're about to support a third vIOMMU for x86, virtio-iommu which
+> doesn't inherit X86IOMMUState. Move the IOMMU singleton into
+> PCMachineState, so it can be shared between all three vIOMMUs.
+> 
+> The x86_iommu_get_default() helper is still needed by KVM and IOAPIC to
+> fetch the default IRQ-remapping IOMMU. Since virtio-iommu doesn't
+> support IRQ remapping, this interface doesn't need to change for the
+> moment. We could later replace X86IOMMUState with an "IRQ remapping
+> IOMMU" interface if necessary.
 > 
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
->  tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
->  tests/data/acpi/q35/DSDT.viot               | 0
->  tests/data/acpi/q35/VIOT.viot               | 0
->  tests/data/acpi/virt/VIOT                   | 0
->  4 files changed, 3 insertions(+)
->  create mode 100644 tests/data/acpi/q35/DSDT.viot
->  create mode 100644 tests/data/acpi/q35/VIOT.viot
->  create mode 100644 tests/data/acpi/virt/VIOT
-> 
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index dfb8523c8b..29b5b1eabc 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1 +1,4 @@
->  /* List of comma-separated changed AML files to ignore */
-> +"tests/data/acpi/virt/VIOT",
-> +"tests/data/acpi/q35/DSDT.viot",
-> +"tests/data/acpi/q35/VIOT.viot",
-> diff --git a/tests/data/acpi/q35/DSDT.viot b/tests/data/acpi/q35/DSDT.viot
-> new file mode 100644
-> index 0000000000..e69de29bb2
-> diff --git a/tests/data/acpi/q35/VIOT.viot b/tests/data/acpi/q35/VIOT.viot
-> new file mode 100644
-> index 0000000000..e69de29bb2
-> diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/VIOT
-> new file mode 100644
-> index 0000000000..e69de29bb2
 
-Acked-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  include/hw/i386/pc.h |  1 +
+>  hw/i386/pc.c         | 12 +++++++++++-
+>  hw/i386/x86-iommu.c  | 26 ++++++++------------------
+>  3 files changed, 20 insertions(+), 19 deletions(-)
+> 
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 11426e26dc..b72e5bf9d1 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -35,6 +35,7 @@ typedef struct PCMachineState {
+>      I2CBus *smbus;
+>      PFlashCFI01 *flash[2];
+>      ISADevice *pcspk;
+> +    DeviceState *iommu;
+>  
+>      /* Configuration options: */
+>      uint64_t max_ram_below_4g;
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 54e4c00dce..fcbf328e8d 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1330,6 +1330,15 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>      } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+>                 object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+>          pc_virtio_md_pci_pre_plug(hotplug_dev, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE)) {
+> +        PCMachineState *pcms = PC_MACHINE(hotplug_dev);
+> +
+> +        if (pcms->iommu) {
+> +            error_setg(errp, "QEMU does not support multiple vIOMMUs "
+> +                       "for x86 yet.");
+> +            return;
+> +        }
+> +        pcms->iommu = dev;
+>      }
+>  }
+>  
+> @@ -1384,7 +1393,8 @@ static HotplugHandler *pc_get_hotplug_handler(MachineState *machine,
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_CPU) ||
+>          object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+> -        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI) ||
+> +        object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE)) {
+>          return HOTPLUG_HANDLER(machine);
+>      }
+>  
+> diff --git a/hw/i386/x86-iommu.c b/hw/i386/x86-iommu.c
+> index dc968c7a53..01d11325a6 100644
+> --- a/hw/i386/x86-iommu.c
+> +++ b/hw/i386/x86-iommu.c
+> @@ -77,25 +77,17 @@ void x86_iommu_irq_to_msi_message(X86IOMMUIrq *irq, MSIMessage *msg_out)
+>      msg_out->data = msg.msi_data;
+>  }
+>  
+> -/* Default X86 IOMMU device */
+> -static X86IOMMUState *x86_iommu_default = NULL;
+> -
+> -static void x86_iommu_set_default(X86IOMMUState *x86_iommu)
+> +X86IOMMUState *x86_iommu_get_default(void)
+>  {
+> -    assert(x86_iommu);
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+> +    PCMachineState *pcms =
+> +        PC_MACHINE(object_dynamic_cast(OBJECT(ms), TYPE_PC_MACHINE));
+>  
+> -    if (x86_iommu_default) {
+> -        error_report("QEMU does not support multiple vIOMMUs "
+> -                     "for x86 yet.");
+> -        exit(1);
+> +    if (pcms &&
+> +        object_dynamic_cast(OBJECT(pcms->iommu), TYPE_X86_IOMMU_DEVICE)) {
+> +        return X86_IOMMU_DEVICE(pcms->iommu);
+>      }
+> -
+> -    x86_iommu_default = x86_iommu;
+> -}
+> -
+> -X86IOMMUState *x86_iommu_get_default(void)
+> -{
+> -    return x86_iommu_default;
+> +    return NULL;
+>  }
+>  
+>  static void x86_iommu_realize(DeviceState *dev, Error **errp)
+> @@ -131,8 +123,6 @@ static void x86_iommu_realize(DeviceState *dev, Error **errp)
+>      if (x86_class->realize) {
+>          x86_class->realize(dev, errp);
+>      }
+> -
+> -    x86_iommu_set_default(X86_IOMMU_DEVICE(dev));
+>  }
+>  
+>  static Property x86_iommu_properties[] = {
 

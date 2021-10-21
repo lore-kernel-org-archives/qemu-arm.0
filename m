@@ -1,111 +1,111 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp641840lfc;
-        Thu, 21 Oct 2021 11:49:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4m82uDtAl9wc0O4xm4iEDamXa006G5jd6BE2wEj/33w7gUkGHSP8/7k6LAqnLtnlD4Sdt
-X-Received: by 2002:a4a:ca96:: with SMTP id x22mr5573946ooq.74.1634842176422;
-        Thu, 21 Oct 2021 11:49:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634842176; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp644017lfc;
+        Thu, 21 Oct 2021 11:52:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwBEVlf1WvXjE3QVsLAicbVuV3CER3CFpdfuSw7f+Z7lOj1fTWK9SUNvnuQxWlu4p+gzLm8
+X-Received: by 2002:a05:6808:b02:: with SMTP id s2mr5873573oij.19.1634842339662;
+        Thu, 21 Oct 2021 11:52:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634842339; cv=none;
         d=google.com; s=arc-20160816;
-        b=OKL/SofG6GKZG081AWvergIHjhy7+71MkrxuQSh0hSGasyPHARQdomV+brcZl6zLq4
-         nsUHpTQ2CBy5prov1ItPOuE34e2e7ZEWzfJi4b71ds2VuVZb1DR6ob1TkdSFyuDBj2Tq
-         OcDkuhbz2duqvJwADooSqZEQ30Oa7puN9r6tzupuViNIsg1z/pb6kObCSaRePASoa40q
-         b8gK/rfxcKvqxMWviYkFMDF3dOAtsW9ka66nBaMe7td3ECqXkQW/oo+aOfdvGWLL8KFi
-         T5mz7hNAe/RAUWkHrDYZVbUn748MvIsNg5gbye9nZA4Z7PZHzaAhl7Q2o18CYvBH7YLV
-         8Qrg==
+        b=W0G183MuBlM0HLb9VpzU31vLDZKboTK0GkMwVPpyprp4qVy1jzE1CTp9xzEKJWRCKd
+         RGRrGvka5p+pmvYufngD6mEhMrcvSVsF0aISxGqEwDg5aDIyK9z29CP8jt91xk/fS4Jb
+         +IgmywbU6ZqOe+DNUK4vmwK4yxJHz0rp8AXte4gBXVZ/b6H6UZE54/ELnGAwsGyhEjgD
+         BdAI5OYW5m+U3UZxoGVHoTSOeoZ7iroNx9vWxgqd14f4IRf0r6KlEExfjebWF43cF+b8
+         ZWVzCNRAr8YZ6xjmCSHjUm23LP2rwr86hohgb1zogr8+MI0mkPGvSCUqbkOSQ+GK5yco
+         qDkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=gsgS+O+ZnQJT7cHjvt2nqC1oppN/KoIkhcZMh9EV80E=;
-        b=ePvfqWWQMz/L0cQjW41a10XrSGXGwPb7kTDSS8GgIR+3+WqQ4h+aW1LvlMwpzaVUkb
-         WivUGLH2l6aCscbCmDxGqb7DSyXc4XQBdWXXNvce2Vi+1r94qmAhF/ZREvUzYv9C36XQ
-         nUv0jBnMNqKRFT+1OcXnMM/nirVJd5vPg+MV/Lsn9LO9i0vRex1FF1uOWnmb79kLSE+y
-         1Wi/M/EHYF5rmV2Ran2IH4ZVVd1pUFqWmghYiF+vSPD8ll91Ev3VhmaW8UOoq3eYwqil
-         mEakP6Fdur7Lki2sJnOrtqG8h2HULtuXM5lKxCsq8mD9r7D7sN7sYMD2Ul2OsLMmCS2z
-         eU2A==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=49U2Swa+Y+jYNZ+7cnA8LbU+0BoYUUxLzrIHy8E+U2c=;
+        b=ZVQQBwQrhfhz/As4l603HSRq1McnQZnNr24gvZaC56sqkoDPE8kF6GlQSVYnL7N86N
+         dw8cHKRPSfnArYWJGzc9DKVxmjpcTppfK408lq9FIuB3xX0KQBK9/kOEhBLf+XAAKq91
+         jOnA07IBCiI7B6/U9gZc0GsAMWT9X5u4WpfDq6z6zcQslGmIf3t1sWvqBCTLZbpluPJA
+         uAAFZNtuV4vVJW/gWJiFI0/V0DNh1kA8hJ24hciFASXIEpB8bSwO5NAcTogr+KuqCOn5
+         kT6dXoqyGeXxRLX18D/sizwVHjScOlAxRP6xfK234l+c9bdXXiKZlRPpbVcxuByUdm9d
+         un+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=DEN1RpXu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=DgoPhqRo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b23si6995476ooq.40.2021.10.21.11.49.36
+        by mx.google.com with ESMTPS id v139si5911218oie.132.2021.10.21.11.52.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Oct 2021 11:49:36 -0700 (PDT)
+        Thu, 21 Oct 2021 11:52:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=DEN1RpXu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:38614 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=DgoPhqRo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdd8B-0007oZ-1C
-	for alex.bennee@linaro.org; Thu, 21 Oct 2021 14:49:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49438)
+	id 1mddAo-0003iy-Rd
+	for alex.bennee@linaro.org; Thu, 21 Oct 2021 14:52:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50854)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3HbRxYQgKCl4SQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
- id 1mdcza-0005KS-Pl
- for qemu-devel@nongnu.org; Thu, 21 Oct 2021 14:40:43 -0400
-Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a]:53053)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1mdd8z-0001e5-Mv; Thu, 21 Oct 2021 14:50:26 -0400
+Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c]:36553)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3HbRxYQgKCl4SQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
- id 1mdczU-0003d4-9W
- for qemu-devel@nongnu.org; Thu, 21 Oct 2021 14:40:42 -0400
-Received: by mail-pj1-x104a.google.com with SMTP id
- m2-20020a17090a158200b001a18e07bfc0so851787pja.2
- for <qemu-devel@nongnu.org>; Thu, 21 Oct 2021 11:40:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=gsgS+O+ZnQJT7cHjvt2nqC1oppN/KoIkhcZMh9EV80E=;
- b=DEN1RpXuJ84cLn3R3buhE8QzacxLK+sdpZq2cfvoWpxYXAeO5XZn3rr86eecHzHxbi
- HzI56kUO5cvWy3EuIUWUXf/0BRhOX1nMK3dMb9jowDVHblA3773RPTju8Uem8dd2KdIP
- 8m7c0tAVgPaCRbBcHF1+3z2jDv8y2ocHqdKFlp39Pa6kCC5wkq6XH4PQou4fEHYPajEs
- CETKELzIfCFRP1K0Y6whc5u4jgoYWkBeMwHGIhfQwWnL74a9XR/qObk8AP+eVeeGAUvJ
- wwTHZlLEm4R/4DHwVQitpCmUzJvOEDsAJtkRGa2grflln+P7Dlo0u8N0VpU3oRwTTc2x
- djGA==
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1mdd8w-0004bt-6M; Thu, 21 Oct 2021 14:50:25 -0400
+Received: by mail-qt1-x82c.google.com with SMTP id b12so1415178qtq.3;
+ Thu, 21 Oct 2021 11:50:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:date:from:to:cc:subject:message-id:reply-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=49U2Swa+Y+jYNZ+7cnA8LbU+0BoYUUxLzrIHy8E+U2c=;
+ b=DgoPhqRoEUijUebfE1YBxv/srpWvCJ26+z1QYUEE7WbKPGe0FU4X66QOPXbMJAK8lG
+ E69zNuXIjWdba5++oMlHGn2fbRXy0pHKHbKi9jgg+RnAdtSLsI8Xpj5tijad0M3pALBe
+ XNAYkWeUH2o9yJopEqdUlLP+fNsxUbOFwmB1r0ma4or5iGT1FQ03P0AORCx3BjncalcN
+ 20a+WTeirvXuzeHzHFwRmK1fQdFbKQJLlevzkRTmLZtRorZdZ1RmvpMzOltc+Mcj33o9
+ HxT5hN12HE0D8KBSM0enPB3QfhqwdBRBU+QvGpeZbdrt+UmYz6uxSMbXX2X3x9eej4kJ
+ RhWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=gsgS+O+ZnQJT7cHjvt2nqC1oppN/KoIkhcZMh9EV80E=;
- b=j5mETtQgzWfTW26Iow9EiKqSj9Xrga7cyqAOGch11pRmjbG9rLuPgvBDh2npR9P0xM
- AtmCN9735RpQ4NcrdLdpVs1cb5omlmsZgQlLr7rFeiJ1bxcMVeBNZErzxBFH6Z2kCvYd
- QKjk4GIjxG17WCMSzM1rg7aCVEmYgR94Y8RtPrMfCSOH8kb/L1+qFoQuVtOlLmStgjrU
- S9K7qv1kFlUDRuZk8ff2VOr2jK0pbtW7xYwZC5LNvHJRAfvcG0NBMBbwbb/Hj9X92ABU
- xw6UEj214cO/KNWQN5eYLPD/VTXZcOgGI5O3ox+Lax2oLjlsnMVD+yoib2chkFBxlgjj
- kLyA==
-X-Gm-Message-State: AOAM532TtznUdcEssxrxK1Y6BbGrKfTfm5ZDna/iK/jQ6guZnvCXA5KK
- pOZA5/Kqc4v+GBylbyHW++iRTWTq2iyORA==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a05:6a00:138a:b0:44c:b200:38d7 with SMTP
- id t10-20020a056a00138a00b0044cb20038d7mr7294064pfg.5.1634841629377; Thu, 21
- Oct 2021 11:40:29 -0700 (PDT)
-Date: Thu, 21 Oct 2021 11:39:56 -0700
-In-Reply-To: <20211021183956.920822-1-wuhaotsh@google.com>
-Message-Id: <20211021183956.920822-8-wuhaotsh@google.com>
-Mime-Version: 1.0
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :reply-to:references:mime-version:content-disposition:in-reply-to;
+ bh=49U2Swa+Y+jYNZ+7cnA8LbU+0BoYUUxLzrIHy8E+U2c=;
+ b=uz5sVhiqrbF7VCqXwm3VBWWG3oY4nijjDdlCKivnyjmS77z779WZtrS9sZeGz9iJMV
+ SlzsbmVXxugh2S18N/+nkwon/18Dxdffuz0ORDZaGfuBs3AcKSA0JNXOxyXHJSeXS8LH
+ ZZ7Vjeyrj1iTGf6Ik6wwlsevyqlWrB5ZagntMKIKGUFqU78tAg7ExsQe0Px66U37Y1DL
+ tT9YVkw5tuSBoqRlsI6D/5rr6kl0OVqQ8UHEGCRio1D0yy9fUCzRm4ZW777ryQbxJqgC
+ D2CDF2I2buYPiwz3uqhCbyojhd0p2+nyeRt2gESFr2et36dAGDPjfcpQL5g4tkMxS4td
+ yxfg==
+X-Gm-Message-State: AOAM532bCG6l/tlMtq3Z7VcymAXT8m2H3nVCksK+j+bWX5W1JdXsqZVi
+ bO4hqgobTLazJc70UhCn365nAs/n+T/l
+X-Received: by 2002:ac8:5cc2:: with SMTP id s2mr8082428qta.362.1634842219651; 
+ Thu, 21 Oct 2021 11:50:19 -0700 (PDT)
+Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
+ by smtp.gmail.com with ESMTPSA id x16sm2798761qtp.56.2021.10.21.11.50.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Oct 2021 11:50:19 -0700 (PDT)
+Received: from minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:b816:2692:1867:c58b])
+ by serve.minyard.net (Postfix) with ESMTPSA id 6772118000C;
+ Thu, 21 Oct 2021 18:50:18 +0000 (UTC)
+Date: Thu, 21 Oct 2021 13:50:17 -0500
+From: Corey Minyard <minyard@acm.org>
+To: Hao Wu <wuhaotsh@google.com>
+Subject: Re: [PATCH v2 2/7] hw/i2c: Read FIFO during RXF_CTL change in
+ NPCM7XX SMBus
+Message-ID: <20211021185017.GA66936@minyard.net>
 References: <20211021183956.920822-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.33.0.1079.g6e70778dc9-goog
-Subject: [PATCH v2 7/7] hw/arm: Add ID for NPCM7XX SMBus
-From: Hao Wu <wuhaotsh@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
- envelope-from=3HbRxYQgKCl4SQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x104a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ <20211021183956.920822-3-wuhaotsh@google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20211021183956.920822-3-wuhaotsh@google.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82c;
+ envelope-from=tcminyard@gmail.com; helo=mail-qt1-x82c.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,30 +118,57 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
+Cc: peter.maydell@linaro.org, Titus Rwantare <titusr@google.com>,
+ venture@google.com, qemu-devel@nongnu.org, hskinnemoen@google.com,
+ kfting@nuvoton.com, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oz+6Ws+9yF9U
+X-TUID: grfGhVDPlJY2
 
-The ID can be used to indicate SMBus modules when adding
-dynamic devices to them.
+On Thu, Oct 21, 2021 at 11:39:51AM -0700, Hao Wu wrote:
+> Originally we read in from SMBus when RXF_STS is cleared. However,
+> the driver clears RXF_STS before setting RXF_CTL, causing the SM bus
+> module to read incorrect amount of bytes in FIFO mode when the number
+> of bytes read changed. This patch fixes this issue.
+> 
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> Reviewed-by: Titus Rwantare <titusr@google.com>
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
----
- hw/arm/npcm7xx.c | 1 +
- 1 file changed, 1 insertion(+)
+This looks ok.  I assume you can take this in with the rest of the
+patches.
 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 2ab0080e0b..72953d65ef 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -421,6 +421,7 @@ static void npcm7xx_init(Object *obj)
-     for (i = 0; i < ARRAY_SIZE(s->smbus); i++) {
-         object_initialize_child(obj, "smbus[*]", &s->smbus[i],
-                                 TYPE_NPCM7XX_SMBUS);
-+        DEVICE(&s->smbus[i])->id = g_strdup_printf("smbus[%d]", i);
-     }
- 
-     object_initialize_child(obj, "ehci", &s->ehci, TYPE_NPCM7XX_EHCI);
--- 
-2.33.0.1079.g6e70778dc9-goog
+Acked-by: Corey Minyard <cminyard@mvista.com>
 
+> ---
+>  hw/i2c/npcm7xx_smbus.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
+> index f18e311556..1435daea94 100644
+> --- a/hw/i2c/npcm7xx_smbus.c
+> +++ b/hw/i2c/npcm7xx_smbus.c
+> @@ -637,9 +637,6 @@ static void npcm7xx_smbus_write_rxf_sts(NPCM7xxSMBusState *s, uint8_t value)
+>  {
+>      if (value & NPCM7XX_SMBRXF_STS_RX_THST) {
+>          s->rxf_sts &= ~NPCM7XX_SMBRXF_STS_RX_THST;
+> -        if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
+> -            npcm7xx_smbus_recv_fifo(s);
+> -        }
+>      }
+>  }
+>  
+> @@ -651,6 +648,9 @@ static void npcm7xx_smbus_write_rxf_ctl(NPCM7xxSMBusState *s, uint8_t value)
+>          new_ctl = KEEP_OLD_BIT(s->rxf_ctl, new_ctl, NPCM7XX_SMBRXF_CTL_LAST);
+>      }
+>      s->rxf_ctl = new_ctl;
+> +    if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
+> +        npcm7xx_smbus_recv_fifo(s);
+> +    }
+>  }
+>  
+>  static uint64_t npcm7xx_smbus_read(void *opaque, hwaddr offset, unsigned size)
+> -- 
+> 2.33.0.1079.g6e70778dc9-goog
+> 
+> 

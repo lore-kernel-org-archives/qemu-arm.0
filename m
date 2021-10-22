@@ -1,84 +1,81 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1231092lfc;
-        Fri, 22 Oct 2021 00:57:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8PhbSnRdgt2Luu7pV7y1tWq7bSvU9NSYXG57PQwD8lOfY08bLY5/VK3REjs1bioc9pBjs
-X-Received: by 2002:aca:d6d2:: with SMTP id n201mr8038868oig.120.1634889475221;
-        Fri, 22 Oct 2021 00:57:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634889475; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1231266lfc;
+        Fri, 22 Oct 2021 00:58:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVFSKmF6P5kFi0yLAeBsOXqEP2vKBQSSmQUl3k39pA3hzU6LvHLe4SOrMKpHDDYXc7BWOn
+X-Received: by 2002:a9d:1c8f:: with SMTP id l15mr8617363ota.337.1634889489571;
+        Fri, 22 Oct 2021 00:58:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634889489; cv=none;
         d=google.com; s=arc-20160816;
-        b=IBpa/jvo40/ykyBTesYv21OWIO4VQfm2xGh33QnwWtgNn3wqRzwZ2K2VYkSFK+p40Y
-         aGIlhVHwvBU9b0P3OyGXpna0Ulqkg0oTcu7q682QLdjUZ3gIQefcVEIuLZWHteuYNKQ5
-         funuuyFsqEuq8XeX1gdtEe4UKvxiX9XySkgnLt6sxWmUKL+AueP39HYjjaybFBM5K0wX
-         ssQhAqVjB3st/HB732FIcV2UYzj6JQa7rMy1SCtdmyp/it/PweLP0KqOHhk5jh4nK43V
-         pC7CixP+gK0ruy4fn1q9SKysH71Gs96AIEu1XUL8lt0JyDNRxeHpUAtkrZNEbrlBH5iG
-         q15g==
+        b=e3UPg8vmSHX+tC2B6HUkkeSRpXqE8TkSl2FX79sNECN/5laaC5Ins2mSzJ44gLY+R7
+         De/cipJeJdznsD+WgyvVjFA94KlEnLge24nxRgyP0MVE8GJmIrWM7jxyQ7cjYynpQRxy
+         o4u+WJ5fnOlDkv5pdTOLW1Z2YVslIazD3sAxSGpkTMWphheFSwM6NiUfQnlEl+eG3Nku
+         zHcFE4FePeVRBOGMNj7qhytoEMdGOH81xNhVkpA64icguPSTJZu1ICzkBKA2JqVnvKej
+         l4dd0XaedgxJ12Gzn4cpb13wnW5SY5yhipICbf1eeoYUYtl1YaYz38s6/yf74LumQteY
+         8tUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=X5+Z0D2kOIvmvBmTjnUYZKGCZQ47YV6zpXoIt+SHpmw=;
-        b=VRP5GOffCtKb2zkne2kqLXFIp/I0hiCIq1KGayG6a1F2dYBFeIzWbFm/NB6c9JQvtP
-         S0HoFVih2A45YRECoPIqCGtbwXwXhKP8v6S0Fxcw9Hx1T0guQVsm1WKd0njm5A7Uwkq1
-         CVJ/ulLIRb7pxrhG3LGkAPd64SH429Ky5lWP4ltS6ue+gbQwxbUxBmq6+nEtulb0bqg+
-         /NiY5uiS6TaCNjYY3jyBtZOb+bj+xkQj17M8ODf+QlAB2IKWGJJuq+wiUdbf+smcML+A
-         nto/i4WWvWQrPH0cc50dsrmHyL/AhfLRyqEGqTVHxW5yAlt8qA9VeWM6b5c6P7sc6m4z
-         aZbw==
+         :mime-version:message-id:date:subject:to:from;
+        bh=38W0B9QHaCtx+lbq8XKxViuRWt7w4uUuFCKL6JzkcV8=;
+        b=rOR3y3Y51R3DmNjVhwGcUwAo67rwFYloGBe5PrGMvl/x0nSNPvSvJeZKbGi8EemrmD
+         hYbKZm26O2u8yybMMo3LKxhhRu2JYK7ZKSfOBZJMoPY1BLVsxf4tf4aIb5VWHBdmuDO9
+         jfTPacNruCI0sjUi/OQ7/FrNDubTklykeADAHvKGO/fmotZu/z/CZqPa3HpwWk48dbqF
+         P4v7QayTkXuv27AJ9qHvfbdmMRF1yeshrZSFFI+7O/oWYfY/vVtu0rXYPxHDMCHd4UsJ
+         A2/znZqdyN6gcIfN+l3eSoo5Z3LLiFitScNBn2K82pnxBx8Qhq+YKejySPkCe/M5RvEL
+         1YoA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4si9349613otq.334.2021.10.22.00.57.55
+        by mx.google.com with ESMTPS id 68si8915941ott.135.2021.10.22.00.58.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Oct 2021 00:57:55 -0700 (PDT)
+        Fri, 22 Oct 2021 00:58:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57476 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58304 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdpR4-0004Kz-CR
-	for alex.bennee@linaro.org; Fri, 22 Oct 2021 03:57:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40956)
+	id 1mdpRI-0004x2-QS
+	for alex.bennee@linaro.org; Fri, 22 Oct 2021 03:58:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQq-0004Io-87
- for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:40 -0400
-Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235]:50181)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQq-0004JT-Sl
+ for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:41 -0400
+Received: from 4.mo548.mail-out.ovh.net ([188.165.42.229]:37015)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQm-0002u5-KJ
- for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:38 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQm-0002rR-PK
+ for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:40 -0400
 Received: from mxplan5.mail.ovh.net (unknown [10.109.143.210])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 0D6C0211E3;
- Fri, 22 Oct 2021 07:57:34 +0000 (UTC)
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id B119F21104;
+ Fri, 22 Oct 2021 07:57:32 +0000 (UTC)
 Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Fri, 22 Oct
- 2021 09:57:32 +0200
+ 2021 09:57:31 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-100R0034c0fc9d5-17eb-4631-a24f-ab34967c2a0d,
+ (GARM-100R003ee643519-0c25-41ca-939b-08e5286bc203,
  74C1FF3A6B8BFE8186BF38A421BAA83045AEA3E9) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 2/3] aspeed/smc: Use a container for the flash mmio address
- space
-Date: Fri, 22 Oct 2021 09:57:29 +0200
-Message-ID: <20211022075730.484692-3-clg@kaod.org>
+Subject: [PULL 0/3] aspeed queue
+Date: Fri, 22 Oct 2021 09:57:27 +0200
+Message-ID: <20211022075730.484692-1-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211022075730.484692-1-clg@kaod.org>
-References: <20211022075730.484692-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.100]
 X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: b813db52-52ff-4042-b17e-438c42607b89
-X-Ovh-Tracer-Id: 7993044915532106604
+X-Ovh-Tracer-GUID: 57722aff-18f6-4b15-8057-6321ce2553c4
+X-Ovh-Tracer-Id: 7992763441195158310
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvjedguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddttdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
- helo=10.mo548.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvjedguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeutdeikeeklefguddvieejueejhfehfeejtdelgedtheetjeetuddutdejfeejkeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=188.165.42.229; envelope-from=clg@kaod.org;
+ helo=4.mo548.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -98,72 +95,41 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2UnQ3pqvQYHf
+X-TUID: sjLcQ17Z5fzs
 
-Because AddressSpaces must not be sysbus-mapped, commit e9c568dbc225
-("hw/arm/aspeed: Do not sysbus-map mmio flash region directly, use
-alias") introduced an alias for the flash mmio region.
+The following changes since commit afc9fcde55296b83f659de9da3cdf044812a6eeb:
 
-Using a container is cleaner.
+  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2021-10-20 06:10:51 -0700)
 
-Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Message-Id: <20211018132609.160008-5-clg@kaod.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
+are available in the Git repository at:
+
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20211022
+
+for you to fetch changes up to b12fa6118f4d838d19720ec6476a1666a1b43474:
+
+  speed/sdhci: Add trace events (2021-10-22 09:52:17 +0200)
+
+----------------------------------------------------------------
+Aspeed patches :
+
+* New fp5280g2-bmc board (John)
+* Small cleanup in Aspeed SMC model (Cedric)
+
+----------------------------------------------------------------
+Cédric Le Goater (2):
+      aspeed/smc: Use a container for the flash mmio address space
+      speed/sdhci: Add trace events
+
+John Wang (1):
+      aspeed: Add support for the fp5280g2-bmc board
+
  include/hw/ssi/aspeed_smc.h |  2 +-
- hw/ssi/aspeed_smc.c         | 11 +++++++----
- 2 files changed, 8 insertions(+), 5 deletions(-)
-
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 75bc793bd269..e26555581996 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -52,8 +52,8 @@ struct AspeedSMCState {
-     SysBusDevice parent_obj;
- 
-     MemoryRegion mmio;
-+    MemoryRegion mmio_flash_container;
-     MemoryRegion mmio_flash;
--    MemoryRegion mmio_flash_alias;
- 
-     qemu_irq irq;
- 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 8a988c167604..ff154eb84f85 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -1151,14 +1151,17 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-      * window in which the flash modules are mapped. The size and
-      * address depends on the SoC model and controller type.
-      */
-+    memory_region_init(&s->mmio_flash_container, OBJECT(s),
-+                       TYPE_ASPEED_SMC ".container",
-+                       asc->flash_window_size);
-+    sysbus_init_mmio(sbd, &s->mmio_flash_container);
-+
-     memory_region_init_io(&s->mmio_flash, OBJECT(s),
-                           &aspeed_smc_flash_default_ops, s,
-                           TYPE_ASPEED_SMC ".flash",
-                           asc->flash_window_size);
--    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s),
--                             TYPE_ASPEED_SMC ".flash",
--                             &s->mmio_flash, 0, asc->flash_window_size);
--    sysbus_init_mmio(sbd, &s->mmio_flash_alias);
-+    memory_region_add_subregion(&s->mmio_flash_container, 0x0,
-+                                &s->mmio_flash);
- 
-     /*
-      * Let's create a sub memory region for each possible peripheral. All
--- 
-2.31.1
-
+ hw/arm/aspeed.c             | 74 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/sd/aspeed_sdhci.c        |  5 +++
+ hw/ssi/aspeed_smc.c         | 11 ++++---
+ hw/sd/trace-events          |  4 +++
+ 5 files changed, 91 insertions(+), 5 deletions(-)

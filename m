@@ -1,110 +1,115 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1664267lfc;
-        Fri, 22 Oct 2021 08:41:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJww3yrHPn7fsrl3aPZ6kU/UtDK6siIlgNT2mH3jcQf3cvCA8TZrSga17A57VihWKNMSBtJ5
-X-Received: by 2002:a05:6808:1a05:: with SMTP id bk5mr10869200oib.108.1634917314529;
-        Fri, 22 Oct 2021 08:41:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634917314; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1788239lfc;
+        Fri, 22 Oct 2021 10:49:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwVUwJ4/3YQMySPLygAi2eKIE/1pSlZwYqhMcX/YA/zTWoHNecdoukULwWCIpxzuepIzVxM
+X-Received: by 2002:a9d:4c98:: with SMTP id m24mr1061261otf.48.1634924975316;
+        Fri, 22 Oct 2021 10:49:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634924975; cv=none;
         d=google.com; s=arc-20160816;
-        b=mLAH9cdKHGL1EesAir1TJvINLZ3mGD1+arxho4Gy/YxxsZcFRVvOuXL4Hdh1J/staQ
-         IA3mI4ND/tWueWkIb6AFTy4xzF74OIQiKJrZuYy2WDkFGHvvn0/AMG2PesFignXEpBJh
-         ORmUn6IywEaQWY5IKTBmATJi29/bq4kzGDs13lPmxUVUoIk8c+2Em+kuflSZkRmxxGZG
-         Zs3CbDgyPogouQbjwo9TDH12hejZ9wvPfZCS6AWaAWUSNaixtQ+cNEIb5RibaWW/Rqsa
-         ecVznHtuEmdf+dHQo/5tDbrRQJ+aimFi1a6XsZmzgUwF1CX8ZjFln4et3dqHeCr7zIGB
-         T8Bw==
+        b=m2TrEMMUXnzT3dkSHt8lEkLzVZJ11dLnHFbUUR0VWUGMUJFKcJBSFfLWahi6l4W76b
+         upRnzYxq1h3aLcvg2302/z08NG0qi/gQyYU9nb/r0YSwp+bCNUL6mqwhmGgcdWDh4Xzk
+         VIZk2/FoHbGYUMutzXe4u01D1+RHNoSpJA70Oki48CV4uv4xtlljRi2jr/8nc//oBg0X
+         Q7IQktBeM1KKMq5s+uXssfA/aI6ojEkfHqRO8ux320f7RakvdJlhaRMJxUsFGEP3Xb+M
+         66gjmjDbnzWSllO7JJCZ/1ON36FIlOnikdpGfpWmzWi7zogepA2ZjR6OL9RX1C3+ve1J
+         q5Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=1PZdL8GMTNxlY/SAqXEHFEtcGavyS8A598IJOB1TNRM=;
-        b=ptL4FByKwcwDxmP2zA/Uql8p1ATCGGvI1x0JYXFw1EL6UxNiW31btZ6zMZO4yjaIhx
-         qOUG6k6qYBE5EunRud3L+4CYcSOGv93SBNifZJMCqRjl36TYhxWWEbWQZ0aAJ73aLugS
-         QFQGjjPAouxqAFr/XmE2pt/z8v5x2v+r4EMqCup8C9vwin4rX8O4CvPd8YBSSWSdBxxO
-         YZGBnNP3hqa7F3BnnuE+oeSbmSRz+6CZq+XpP0y14H4JDr2LuDsMISdvERGvAtgc5xMX
-         3s/Dwhb+7HJFeoUz8041jjbAPKsV+B8PD4ExkCHH6UAdQ5L+bmpuGz4WP1GAsR8+u+xa
-         PAKQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=+qdx7TQBz0OHzu/+r/S2nWFPVbG1MWWPDrN/PubMRyc=;
+        b=Ll7maY52q1CptVwfYMtzVVvDpck7eB/IJbewYd0b6C/mPreXYrVaCyJPv4FSDeqlvw
+         dPNPx6/1DjuPFNIu8rQokqIPqiUdJ3EQQut5sWQdcJUpfU4zKGAyEf6YxfPPPVE2S9qV
+         b4OB3Exc8wA6GBJdR11MxVTK+1YEmxhczBUSxGzVgWr2lfxSmZ9jS3S8H1Sj4jeF63xy
+         2YfULRMvMyh5cY+TCst9zmveTU0+rkY+K3ALVI5Lc/RxjdDtqlW4aJq0RHzVJowpBYUO
+         SM+leiwe3Q9TTveTDTThni2Iwbvy4Pvj7iX6n/L+8+Wx8eF7yVDOiqwpqpAFplhxu9k5
+         Uxtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xCtsgVNz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s7XxUUKk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c26si11176912otu.6.2021.10.22.08.41.54
+        by mx.google.com with ESMTPS id s11si9222849oia.106.2021.10.22.10.49.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Oct 2021 08:41:54 -0700 (PDT)
+        Fri, 22 Oct 2021 10:49:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xCtsgVNz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s7XxUUKk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57708 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdwg5-0001eX-PA
-	for alex.bennee@linaro.org; Fri, 22 Oct 2021 11:41:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33668)
+	id 1mdyfe-0007Gb-HE
+	for alex.bennee@linaro.org; Fri, 22 Oct 2021 13:49:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mdwfg-0001YQ-MI
- for qemu-arm@nongnu.org; Fri, 22 Oct 2021 11:41:30 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:39487)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mdySp-0007Ag-6G
+ for qemu-arm@nongnu.org; Fri, 22 Oct 2021 13:36:19 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:36602)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mdwff-00026y-2F
- for qemu-arm@nongnu.org; Fri, 22 Oct 2021 11:41:28 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- y22-20020a1c7d16000000b003231ea3d705so3815751wmc.4
- for <qemu-arm@nongnu.org>; Fri, 22 Oct 2021 08:41:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mdySm-0007lC-W3
+ for qemu-arm@nongnu.org; Fri, 22 Oct 2021 13:36:18 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ s61-20020a17090a69c300b0019f663cfcd1so6320620pjj.1
+ for <qemu-arm@nongnu.org>; Fri, 22 Oct 2021 10:36:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=1PZdL8GMTNxlY/SAqXEHFEtcGavyS8A598IJOB1TNRM=;
- b=xCtsgVNz3bT/9k3yOzDuCAnUmuCTYx+Om6Plm7erUmd1MRkfLPeL8zNtT54/RDGhmV
- hzUhFIe3czUEVCCD2Mcoi6I15FTvBrgQis3U28tHpzGvU+lMaoICMe/Gd+rn8uVjqlgm
- JoghaWL6+WYBLuz+zWP+maurxxUFJ3q9ydJwUKpVk3T6RLaBw2W+RGlc0LFDwbjEmBCL
- U8dZPyuYGJLY2Q56WnlwiP1AP7Ttiwxf+ja3mgPI3UQHaHz0FVtwPxzFW79mvWpYWrVX
- V27aFw+BwZxE3p6iqNS4QSuW0fK3KZrUB2+1ApX2Recy78PeTgTSprh/deeXgXwDoGqw
- nL2w==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=+qdx7TQBz0OHzu/+r/S2nWFPVbG1MWWPDrN/PubMRyc=;
+ b=s7XxUUKk3t7FWtdJLbjQiFeBiTpEXNwGVCjSDdOceFxN/FvR2MzM5ht2e4BQHc4Or9
+ QcON+DxRFGIIrY7QcZkLGuFmnbKn+RU9HNsT0KjAyLc38bjYHAvvC4iDHGvo6d3+z5Nt
+ 336DeGKUuEF802w06ds90fE1jDAbrXj+hBDUs8TdP/wRmxUwHsc33YS20NURIye7Ro/G
+ PXJNXPU3tMiUUSbDeKh980ZS9skw5kUbs0B+NYI74Hrpa6+Y0VdJi5gMbOgmRdsaXV9/
+ nuJzoVH8sKriCDtsNTlcFPTvYZZTzUwEJLhM1OhMAD9hVg+kdnO7WvDdCnarE+Qthi3c
+ 91dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=1PZdL8GMTNxlY/SAqXEHFEtcGavyS8A598IJOB1TNRM=;
- b=noDvcnE8uMjy1JiLK3ZP1j0rsclw9KI9dwo8JmDlV2O6Cl37+K/TKg33VGN6iaGrEF
- HDF5m09KTnfqpq48XsVx2oYv5yPvzNQF84vxdlFMd/kbdVcMGxV3pSq4We7lmDkFAQfJ
- YK2rQWC4bxiAvMbeIn0l48zt9VfgOahBNmjeiihiTqpXcs3+aCPLpJzp3r3IMl/VirRK
- jgSc9jO/6pvKES3WE+Au8QVDrIIrn4usoJxG5eVJggBJpPty2ThZv4nVTxTWtSEzgW8R
- ROekbAvCs0ayEtUKQnA/nQ/QfQf2tB4IEhy6GmYBldroOSHmiO1rWXy+n4T4DdtITaII
- jorw==
-X-Gm-Message-State: AOAM530N/3oy0k3iF311aXPyyqTvxttpH/D7QX6QTAcPQCOrZVQ+Z18Z
- fF1GzdZGALQqTTOIk6RqyiY2ow==
-X-Received: by 2002:a05:600c:19d3:: with SMTP id
- u19mr28839754wmq.164.1634917284745; 
- Fri, 22 Oct 2021 08:41:24 -0700 (PDT)
-Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
- [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id o194sm901237wme.40.2021.10.22.08.41.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Oct 2021 08:41:24 -0700 (PDT)
-Date: Fri, 22 Oct 2021 16:41:02 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v4] tests: qtest: Add virtio-iommu test
-Message-ID: <YXLbjh9S6jmkQK97@myrica>
-References: <20211019063755.917506-1-eric.auger@redhat.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+qdx7TQBz0OHzu/+r/S2nWFPVbG1MWWPDrN/PubMRyc=;
+ b=sffC4zMPpcOCmq95h8XgkDqbxEi7cnD3qgqyDhh7JQahqNHog9EaK62IGG8fYspHdh
+ F+0ZhMyQ/ns3X7dFOfL1ZuD6Ex6ccB60EGHUDYC5PPzAIRSgEjWFFD6ruKuQPeLaoYg9
+ 0mpYQ5wqY+JPigBjOZ/m5spFC/yq674L21b54VblxTpVI1PWxWJAI8fJsvM6nXqbfKBV
+ QM34qjG2V7LAIEl38+1JW96yo+24oyeHy61AaJmkWTixp8QUNmGgRG1u2ryhpDvk7AhT
+ 6MsTMBSZz7j4oJAtnHP85gOaxghw9Lh/wuBAu82EtXe/mxFReYFr7OrD3of2YgwlEOpq
+ tuAQ==
+X-Gm-Message-State: AOAM5301E5+/Lw1i5opQL8PzmEbSBLHGe9haka60uYZESdnBmvVa8vDg
+ 8MvF8Gic6SO+PMvp6Ds9gi2exA==
+X-Received: by 2002:a17:903:18c:b0:13f:255:9dca with SMTP id
+ z12-20020a170903018c00b0013f02559dcamr1315229plg.37.1634924175172; 
+ Fri, 22 Oct 2021 10:36:15 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.134.125])
+ by smtp.gmail.com with ESMTPSA id u12sm3888409pfi.217.2021.10.22.10.36.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 22 Oct 2021 10:36:14 -0700 (PDT)
+Subject: Re: [PULL 0/3] aspeed queue
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20211022075730.484692-1-clg@kaod.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <01b5e7fc-3310-532b-8607-5bd6867d7773@linaro.org>
+Date: Fri, 22 Oct 2021 10:36:13 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20211019063755.917506-1-eric.auger@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20211022075730.484692-1-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.742,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,44 +122,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: lvivier@redhat.com, thuth@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, pbonzini@redhat.com, eric.auger.pro@gmail.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ciIChuUPdp6c
+X-TUID: vvCyzb/pwY1q
 
-On Tue, Oct 19, 2021 at 08:37:55AM +0200, Eric Auger wrote:
-> +static void pci_config(void *obj, void *data, QGuestAllocator *t_alloc)
-> +{
-> +    QVirtioIOMMU *v_iommu = obj;
-> +    QVirtioDevice *dev = v_iommu->vdev;
-> +    uint64_t input_range_start = qvirtio_config_readq(dev, 8);
-> +    uint64_t input_range_end = qvirtio_config_readq(dev, 16);
-> +    uint32_t domain_range_start = qvirtio_config_readl(dev, 24);
-> +    uint32_t domain_range_end = qvirtio_config_readl(dev, 28);
-> +    printf("%s  domain_range_end = %d\n", __func__, domain_range_end);
+On 10/22/21 12:57 AM, Cédric Le Goater wrote:
+> The following changes since commit afc9fcde55296b83f659de9da3cdf044812a6eeb:
+> 
+>    Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2021-10-20 06:10:51 -0700)
+> 
+> are available in the Git repository at:
+> 
+>    https://github.com/legoater/qemu/ tags/pull-aspeed-20211022
+> 
+> for you to fetch changes up to b12fa6118f4d838d19720ec6476a1666a1b43474:
+> 
+>    speed/sdhci: Add trace events (2021-10-22 09:52:17 +0200)
+> 
+> ----------------------------------------------------------------
+> Aspeed patches :
+> 
+> * New fp5280g2-bmc board (John)
+> * Small cleanup in Aspeed SMC model (Cedric)
+> 
+> ----------------------------------------------------------------
+> Cédric Le Goater (2):
+>        aspeed/smc: Use a container for the flash mmio address space
+>        speed/sdhci: Add trace events
+> 
+> John Wang (1):
+>        aspeed: Add support for the fp5280g2-bmc board
+> 
+>   include/hw/ssi/aspeed_smc.h |  2 +-
+>   hw/arm/aspeed.c             | 74 +++++++++++++++++++++++++++++++++++++++++++++
+>   hw/sd/aspeed_sdhci.c        |  5 +++
+>   hw/ssi/aspeed_smc.c         | 11 ++++---
+>   hw/sd/trace-events          |  4 +++
+>   5 files changed, 91 insertions(+), 5 deletions(-)
 
-Looks like a debug leftover
+Applied, thanks.
 
-> +
-> +    g_assert_cmpint(input_range_start, ==, 0);
-> +    g_assert_cmphex(input_range_end, ==, UINT64_MAX);
-> +    g_assert_cmpint(domain_range_start, ==, 0);
-> +    g_assert_cmpint(domain_range_end, ==, 32);
-> +}
+r~
 
-[...]
-> +/* Test unmap scenari documented in the spec v0.12 */
-
-Comment seems in the wrong place (also v0.12 was just to keep track during
-development)
-
-Apart from that it looks good to me. The mappings should normally be
-aligned on the page granule, but as the device doesn't do alignment checks
-the tests are not incorrect. I'll update them when adding the alignment
-checks.
-
-With the printf removed:
-
-Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>

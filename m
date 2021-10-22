@@ -1,94 +1,89 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1156622lfc;
-        Thu, 21 Oct 2021 23:12:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJymnOtAhbo+UDmomzBMrtyQPgwHjWYpzNpU7/z3BKpRL8WwTVkXyAn5F2/ABxjb+uOtFuZ5
-X-Received: by 2002:a05:6830:43a5:: with SMTP id s37mr8353680otv.246.1634883134336;
-        Thu, 21 Oct 2021 23:12:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634883134; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1231092lfc;
+        Fri, 22 Oct 2021 00:57:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8PhbSnRdgt2Luu7pV7y1tWq7bSvU9NSYXG57PQwD8lOfY08bLY5/VK3REjs1bioc9pBjs
+X-Received: by 2002:aca:d6d2:: with SMTP id n201mr8038868oig.120.1634889475221;
+        Fri, 22 Oct 2021 00:57:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634889475; cv=none;
         d=google.com; s=arc-20160816;
-        b=QK7D1v/dS7fotBDJWfs7M8gf/qnoqgbGCDGKVKR5WN5PSGmWyER7EoY37m+UQTA+ix
-         J8mYReMod6BKOekLNbCVxO+SzZUUClknTEwPNFDQ4OY+45Lcsjx9xktEHJF5d6ZIyXCe
-         517CDOefyKuqlSeu1R1J9v0gSpdS2x5khs/TYu2v7RDkm8bNe1ThwNNEnVEvDyABkQmD
-         Voepg+uUmYwNGzHkVLloByX1ph2rRyYSJxI2ZzYE7R1o5BJLQIN49vhIbyWSpCgQY3gK
-         pt2gCK5xZ49asy3civHmhOwobrMzmh0VFcxnmgb9gPNZIBhSruDpOHHZtM5sjBi/unyg
-         5zRg==
+        b=IBpa/jvo40/ykyBTesYv21OWIO4VQfm2xGh33QnwWtgNn3wqRzwZ2K2VYkSFK+p40Y
+         aGIlhVHwvBU9b0P3OyGXpna0Ulqkg0oTcu7q682QLdjUZ3gIQefcVEIuLZWHteuYNKQ5
+         funuuyFsqEuq8XeX1gdtEe4UKvxiX9XySkgnLt6sxWmUKL+AueP39HYjjaybFBM5K0wX
+         ssQhAqVjB3st/HB732FIcV2UYzj6JQa7rMy1SCtdmyp/it/PweLP0KqOHhk5jh4nK43V
+         pC7CixP+gK0ruy4fn1q9SKysH71Gs96AIEu1XUL8lt0JyDNRxeHpUAtkrZNEbrlBH5iG
+         q15g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:to:from:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=756RNuos+VrLHMv+4+9Wjoou7neMg/y36uVajFGnuSM=;
-        b=Ra7pudUsSUvOxSPtr3gHzIN7zWmFcFlS0LInLW/hV0Zu2dFVtfTlR+nu+uvqrUR5sb
-         Yr9nLmYsjvw6ouIub++wvmWXljY6V8IExyMYbPm/yzCVE6MCwz16rltMTgDPCX9V4zsb
-         yPWskN0dzetZq0ATvnksX9eI5Mi2F4iPe1ZIg7EzP/1tuYPMRFrR4wU9ZbB4wh8mD1e0
-         OvGdD4+5hMxyPqGik13bpQFDHEf4qQjHZc/Hce6b2yiKFLpXDZVZijRBU3/K1aQ6U81Q
-         0reN0x3apJxW/LoXsdgQulVuNc17DVuXOxFXuoVTnDoQGTnAAx7sFrVTejj2EN1VBKGt
-         rOwA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=X5+Z0D2kOIvmvBmTjnUYZKGCZQ47YV6zpXoIt+SHpmw=;
+        b=VRP5GOffCtKb2zkne2kqLXFIp/I0hiCIq1KGayG6a1F2dYBFeIzWbFm/NB6c9JQvtP
+         S0HoFVih2A45YRECoPIqCGtbwXwXhKP8v6S0Fxcw9Hx1T0guQVsm1WKd0njm5A7Uwkq1
+         CVJ/ulLIRb7pxrhG3LGkAPd64SH429Ky5lWP4ltS6ue+gbQwxbUxBmq6+nEtulb0bqg+
+         /NiY5uiS6TaCNjYY3jyBtZOb+bj+xkQj17M8ODf+QlAB2IKWGJJuq+wiUdbf+smcML+A
+         nto/i4WWvWQrPH0cc50dsrmHyL/AhfLRyqEGqTVHxW5yAlt8qA9VeWM6b5c6P7sc6m4z
+         aZbw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i66si8334574oif.184.2021.10.21.23.12.14
+        by mx.google.com with ESMTPS id l4si9349613otq.334.2021.10.22.00.57.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Oct 2021 23:12:14 -0700 (PDT)
+        Fri, 22 Oct 2021 00:57:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46764 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdnmn-0001mO-Ii
-	for alex.bennee@linaro.org; Fri, 22 Oct 2021 02:12:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49064)
+	id 1mdpR4-0004Kz-CR
+	for alex.bennee@linaro.org; Fri, 22 Oct 2021 03:57:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mdnmX-0001jj-Kt; Fri, 22 Oct 2021 02:11:59 -0400
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:47771)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQq-0004Io-87
+ for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:40 -0400
+Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235]:50181)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mdnmR-0003ss-P8; Fri, 22 Oct 2021 02:11:55 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.148])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 43093C63803B;
- Fri, 22 Oct 2021 08:11:39 +0200 (CEST)
-Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQm-0002u5-KJ
+ for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:38 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.210])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 0D6C0211E3;
+ Fri, 22 Oct 2021 07:57:34 +0000 (UTC)
+Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Fri, 22 Oct
- 2021 08:11:38 +0200
+ 2021 09:57:32 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002ee799bff-900b-4c40-9879-1a9c17108f09,
- 972C48F4C85068776659E713CFF049F78FAA73AB) smtp.auth=clg@kaod.org
+ (GARM-100R0034c0fc9d5-17eb-4631-a24f-ab34967c2a0d,
+ 74C1FF3A6B8BFE8186BF38A421BAA83045AEA3E9) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <c898783c-50e1-df8d-2246-c16e85db6c0f@kaod.org>
-Date: Fri, 22 Oct 2021 08:11:38 +0200
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 2/3] aspeed/smc: Use a container for the flash mmio address
+ space
+Date: Fri, 22 Oct 2021 09:57:29 +0200
+Message-ID: <20211022075730.484692-3-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211022075730.484692-1-clg@kaod.org>
+References: <20211022075730.484692-1-clg@kaod.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH v2 0/5] aspeed/smc: Improve support for the alternate boot
- function
-Content-Language: en-US
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-To: Peter Delevoryas <pdel@fb.com>
-References: <20211018132609.160008-1-clg@kaod.org>
- <DDD67A99-FA65-4671-ACE6-5D3BACE3F45A@fb.com>
- <2c54310f-2800-33ac-7c47-500a24f88b8f@kaod.org>
-In-Reply-To: <2c54310f-2800-33ac-7c47-500a24f88b8f@kaod.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.100]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 9b8e23c4-81ea-42a7-b41f-8fdbaeb55e8f
-X-Ovh-Tracer-Id: 6204552912246115177
+X-Ovh-Tracer-GUID: b813db52-52ff-4042-b17e-438c42607b89
+X-Ovh-Tracer-Id: 7993044915532106604
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvjedguddttdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuhffvfhgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeihfefffffgedtkeegtdekffevudeggfegffethfffhefhhfevhfdtudejhfdvieenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.867,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvjedguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddttdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
+ helo=10.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,45 +97,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yaTHhs7HZdEM
+X-TUID: 2UnQ3pqvQYHf
 
->> And the FMC registers are just an alias to write
->> to these watchdog 2 registers? 
-> 
-> If this is the same watchdog mapped into the FMC, I would say yes
-> and the logic generate load/stores transactions on the AHB bus.
-> Adding an address space for the WDT registers in the model is the
-> closer we can get without implementing the bus protocol.
-> 
->> Just curious, is it
->> strictly necessary to use the FMC registers to disable
->> the alternate boot watchdog, or could you just use the
->> old address, 0x1e78504C? 
-> 
-> Hey, this is something to try on HW and check how both register
-> sets evolve. Would you have time ?
+Because AddressSpaces must not be sysbus-mapped, commit e9c568dbc225
+("hw/arm/aspeed: Do not sysbus-map mmio flash region directly, use
+alias") introduced an alias for the flash mmio region.
 
-Andrew did some experiments in the past and the two register sets
-were evolving independently.
+Using a container is cleaner.
 
->> In our OpenBMC initialization
->> for Fuji, we’re using the FMC registers, but would
->> it still work if we used the old addresses? Just curious,
->> the more I think about it, it seems odd to me that these
->> FMC watchdog registers exist if they’re just an alias.
-> 
-> We should ask the HW designers.
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20211018132609.160008-5-clg@kaod.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ include/hw/ssi/aspeed_smc.h |  2 +-
+ hw/ssi/aspeed_smc.c         | 11 +++++++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
 
-Aspeed tells me its an independent logic. So, I will drop the
-model from this patchset.
-
-Thanks,
-
-C.
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 75bc793bd269..e26555581996 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -52,8 +52,8 @@ struct AspeedSMCState {
+     SysBusDevice parent_obj;
+ 
+     MemoryRegion mmio;
++    MemoryRegion mmio_flash_container;
+     MemoryRegion mmio_flash;
+-    MemoryRegion mmio_flash_alias;
+ 
+     qemu_irq irq;
+ 
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 8a988c167604..ff154eb84f85 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1151,14 +1151,17 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+      * window in which the flash modules are mapped. The size and
+      * address depends on the SoC model and controller type.
+      */
++    memory_region_init(&s->mmio_flash_container, OBJECT(s),
++                       TYPE_ASPEED_SMC ".container",
++                       asc->flash_window_size);
++    sysbus_init_mmio(sbd, &s->mmio_flash_container);
++
+     memory_region_init_io(&s->mmio_flash, OBJECT(s),
+                           &aspeed_smc_flash_default_ops, s,
+                           TYPE_ASPEED_SMC ".flash",
+                           asc->flash_window_size);
+-    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s),
+-                             TYPE_ASPEED_SMC ".flash",
+-                             &s->mmio_flash, 0, asc->flash_window_size);
+-    sysbus_init_mmio(sbd, &s->mmio_flash_alias);
++    memory_region_add_subregion(&s->mmio_flash_container, 0x0,
++                                &s->mmio_flash);
+ 
+     /*
+      * Let's create a sub memory region for each possible peripheral. All
+-- 
+2.31.1
 

@@ -1,135 +1,162 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1231266lfc;
-        Fri, 22 Oct 2021 00:58:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVFSKmF6P5kFi0yLAeBsOXqEP2vKBQSSmQUl3k39pA3hzU6LvHLe4SOrMKpHDDYXc7BWOn
-X-Received: by 2002:a9d:1c8f:: with SMTP id l15mr8617363ota.337.1634889489571;
-        Fri, 22 Oct 2021 00:58:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634889489; cv=none;
+Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1232276lfc;
+        Fri, 22 Oct 2021 00:59:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHX3uvqZxhgE+BtzxxSA7C1ZXTFIotKSkNoqPpGMKGtrKp8+8vahUlH1E873ftQh8KgSwB
+X-Received: by 2002:a05:6808:10ca:: with SMTP id s10mr8005620ois.62.1634889579508;
+        Fri, 22 Oct 2021 00:59:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634889579; cv=none;
         d=google.com; s=arc-20160816;
-        b=e3UPg8vmSHX+tC2B6HUkkeSRpXqE8TkSl2FX79sNECN/5laaC5Ins2mSzJ44gLY+R7
-         De/cipJeJdznsD+WgyvVjFA94KlEnLge24nxRgyP0MVE8GJmIrWM7jxyQ7cjYynpQRxy
-         o4u+WJ5fnOlDkv5pdTOLW1Z2YVslIazD3sAxSGpkTMWphheFSwM6NiUfQnlEl+eG3Nku
-         zHcFE4FePeVRBOGMNj7qhytoEMdGOH81xNhVkpA64icguPSTJZu1ICzkBKA2JqVnvKej
-         l4dd0XaedgxJ12Gzn4cpb13wnW5SY5yhipICbf1eeoYUYtl1YaYz38s6/yf74LumQteY
-         8tUA==
+        b=r7NnAV4KdwcSjGJCdw2NT7CzBnGfk5OlDqet+pNn3+PXiAUctXlWr5wP8aR2nz6hP9
+         9vaKD6JCrxmF3WuedOOcs6++xa8Baf4X87ZAkeL3Cl05prb56vUQvMctmqEzOixVeLiO
+         zDPh6yoyDK5v85XB4BsGP0sKWuFuLc33gAfsy4Eie2qG2mGrVHD0f84BKKbz4A1yRcwT
+         CDTOfpd8vnclLblmHcyOi1UCZTqvGak1mW8yEszXPDuqt9kBSvZUNShY4T4qFHL+6SLM
+         IGkGGhxy5vG73xyd94xVyi1BUo1zsqCZod1Q/oRcf9JpdU9TxaOvKYZuYrU4cbyXz6Zw
+         7ADw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=38W0B9QHaCtx+lbq8XKxViuRWt7w4uUuFCKL6JzkcV8=;
-        b=rOR3y3Y51R3DmNjVhwGcUwAo67rwFYloGBe5PrGMvl/x0nSNPvSvJeZKbGi8EemrmD
-         hYbKZm26O2u8yybMMo3LKxhhRu2JYK7ZKSfOBZJMoPY1BLVsxf4tf4aIb5VWHBdmuDO9
-         jfTPacNruCI0sjUi/OQ7/FrNDubTklykeADAHvKGO/fmotZu/z/CZqPa3HpwWk48dbqF
-         P4v7QayTkXuv27AJ9qHvfbdmMRF1yeshrZSFFI+7O/oWYfY/vVtu0rXYPxHDMCHd4UsJ
-         A2/znZqdyN6gcIfN+l3eSoo5Z3LLiFitScNBn2K82pnxBx8Qhq+YKejySPkCe/M5RvEL
-         1YoA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=P48TIkynsU9XfWAr1GUmtSYTHKJaMItJEmmbogF//GA=;
+        b=k5eZuUs6ZLW6eHB2pClJNklDnrdOr8bvoENqQjjOHsLpRSU2ADBnWZ0gYQqLTaV7Pv
+         Q5mKHCvI1s1nI0w6d3n1HXD8O0A8lV9uqyMh5nKslvf9nVXyEcPp7XwtqdIF25F3tD+S
+         QA9yxDhv3RqgadRfZXN40Uu4Yy1AlMkjIiYFQcEgNbBcDQPo/4h7gGnC7sSCnwWggFBA
+         YqDe+kgppWc/EsY+zEobRW8oRGlNUYCM0BRdEzH8zaMhsMRJsDtTz+wWV30AlTMKCu4A
+         5VSsYRVhjgOiu1v35dsE+YxvGgeOM+M/lQL2j2HIqHQHWKv/6+y4wKCk+jGcU5uxan0d
+         KtRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 68si8915941ott.135.2021.10.22.00.58.09
+        by mx.google.com with ESMTPS id m16si12381814oiw.275.2021.10.22.00.59.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Oct 2021 00:58:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Oct 2021 00:59:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58304 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdpRI-0004x2-QS
-	for alex.bennee@linaro.org; Fri, 22 Oct 2021 03:58:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40968)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mdpSk-0007To-Mp
+	for alex.bennee@linaro.org; Fri, 22 Oct 2021 03:59:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41042)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQq-0004JT-Sl
- for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:41 -0400
-Received: from 4.mo548.mail-out.ovh.net ([188.165.42.229]:37015)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQy-0004WK-TB
+ for qemu-devel@nongnu.org; Fri, 22 Oct 2021 03:57:48 -0400
+Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231]:44421)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQm-0002rR-PK
- for qemu-arm@nongnu.org; Fri, 22 Oct 2021 03:57:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQm-0002u7-My
+ for qemu-devel@nongnu.org; Fri, 22 Oct 2021 03:57:48 -0400
 Received: from mxplan5.mail.ovh.net (unknown [10.109.143.210])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id B119F21104;
- Fri, 22 Oct 2021 07:57:32 +0000 (UTC)
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 3B2A321254;
+ Fri, 22 Oct 2021 07:57:34 +0000 (UTC)
 Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Fri, 22 Oct
- 2021 09:57:31 +0200
+ 2021 09:57:33 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003ee643519-0c25-41ca-939b-08e5286bc203,
+ (GARM-100R0035341de25-87ff-4429-958e-2b2dc9f332c6,
  74C1FF3A6B8BFE8186BF38A421BAA83045AEA3E9) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 0/3] aspeed queue
-Date: Fri, 22 Oct 2021 09:57:27 +0200
-Message-ID: <20211022075730.484692-1-clg@kaod.org>
+Subject: [PULL 3/3] speed/sdhci: Add trace events
+Date: Fri, 22 Oct 2021 09:57:30 +0200
+Message-ID: <20211022075730.484692-4-clg@kaod.org>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211022075730.484692-1-clg@kaod.org>
+References: <20211022075730.484692-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.100]
 X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 57722aff-18f6-4b15-8057-6321ce2553c4
-X-Ovh-Tracer-Id: 7992763441195158310
+X-Ovh-Tracer-GUID: 1d5129bf-bcef-4604-a633-773c270a8075
+X-Ovh-Tracer-Id: 7993044914382736236
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvjedguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeutdeikeeklefguddvieejueejhfehfeejtdelgedtheetjeetuddutdejfeejkeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=188.165.42.229; envelope-from=clg@kaod.org;
- helo=4.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvjedguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddttdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
+ helo=8.mo548.mail-out.ovh.net
+X-Spam_score_int: 0
+X-Spam_score: -0.0
+X-Spam_bar: /
+X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sjLcQ17Z5fzs
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AcNcLjPxuOFV
 
-The following changes since commit afc9fcde55296b83f659de9da3cdf044812a6eeb:
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20211018132609.160008-6-clg@kaod.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/sd/aspeed_sdhci.c | 5 +++++
+ hw/sd/trace-events   | 4 ++++
+ 2 files changed, 9 insertions(+)
 
-  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2021-10-20 06:10:51 -0700)
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index 3299844de6dc..df1bdf1fa4ed 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -14,6 +14,7 @@
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
+ #include "hw/qdev-properties.h"
++#include "trace.h"
+ 
+ #define ASPEED_SDHCI_INFO            0x00
+ #define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
+@@ -60,6 +61,8 @@ static uint64_t aspeed_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
+         }
+     }
+ 
++    trace_aspeed_sdhci_read(addr, size, (uint64_t) val);
++
+     return (uint64_t)val;
+ }
+ 
+@@ -68,6 +71,8 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+ {
+     AspeedSDHCIState *sdhci = opaque;
+ 
++    trace_aspeed_sdhci_write(addr, size, val);
++
+     switch (addr) {
+     case ASPEED_SDHCI_INFO:
+         /* The RESET bit automatically clears. */
+diff --git a/hw/sd/trace-events b/hw/sd/trace-events
+index 3cc2ef89ba6b..94a00557b26f 100644
+--- a/hw/sd/trace-events
++++ b/hw/sd/trace-events
+@@ -68,3 +68,7 @@ pl181_fifo_push(uint32_t data) "FIFO push 0x%08" PRIx32
+ pl181_fifo_pop(uint32_t data) "FIFO pop 0x%08" PRIx32
+ pl181_fifo_transfer_complete(void) "FIFO transfer complete"
+ pl181_data_engine_idle(void) "data engine idle"
++
++# aspeed_sdhci.c
++aspeed_sdhci_read(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
++aspeed_sdhci_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
+-- 
+2.31.1
 
-are available in the Git repository at:
-
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20211022
-
-for you to fetch changes up to b12fa6118f4d838d19720ec6476a1666a1b43474:
-
-  speed/sdhci: Add trace events (2021-10-22 09:52:17 +0200)
-
-----------------------------------------------------------------
-Aspeed patches :
-
-* New fp5280g2-bmc board (John)
-* Small cleanup in Aspeed SMC model (Cedric)
-
-----------------------------------------------------------------
-Cédric Le Goater (2):
-      aspeed/smc: Use a container for the flash mmio address space
-      speed/sdhci: Add trace events
-
-John Wang (1):
-      aspeed: Add support for the fp5280g2-bmc board
-
- include/hw/ssi/aspeed_smc.h |  2 +-
- hw/arm/aspeed.c             | 74 +++++++++++++++++++++++++++++++++++++++++++++
- hw/sd/aspeed_sdhci.c        |  5 +++
- hw/ssi/aspeed_smc.c         | 11 ++++---
- hw/sd/trace-events          |  4 +++
- 5 files changed, 91 insertions(+), 5 deletions(-)

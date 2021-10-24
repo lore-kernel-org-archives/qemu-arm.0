@@ -1,99 +1,100 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp317652lfn;
-        Sun, 24 Oct 2021 09:19:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyerMtIxADj7eBVmAklu1aaoDXmAm/wzX1ryosVM2PxrkbX8Qie1Qbi85O88N5xsSCAvdCu
-X-Received: by 2002:a4a:a645:: with SMTP id j5mr8638948oom.93.1635092388531;
-        Sun, 24 Oct 2021 09:19:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635092388; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp319175lfn;
+        Sun, 24 Oct 2021 09:21:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLKj8Og4ePcAE/xyAFNEy4CANIcXh5wHqSsHxuzfhZZO7UWQNpj/rmnPphMm5Eo5Q9hKwg
+X-Received: by 2002:aca:41d5:: with SMTP id o204mr19194334oia.41.1635092508207;
+        Sun, 24 Oct 2021 09:21:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635092508; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pj8G0mDmEOyIkxpNrUp5SJJ7pzrA+Cs6+3GBbvkZZDoK+xrZPmzSuE67qQ+SfhXPY+
-         aF567D15u8kR2ARPaZ154PWKcJUxqAGG6lNBTB0oxBmm+KZudMUkE9ZgTPJtATyQ4fYP
-         Q4bO/2/FVKgfoFzDCrsxUMjikOy5la4cEzNtqk60qPrQx8MFTuTjv8zsRrLFmtrFe7MF
-         oglMB2f9K/X1zLdGLYTx8ymCwENcdCdyNTYE7+e/Jae0c/viWR8d5UgKj3lMNDkojeeA
-         RyDIEai3m8zdnvPY06xues3+yzDOXtOyWkPgtpcn+oSsR9x9IEFNyPnSiny6+1hj+sMn
-         ikDw==
+        b=W6bTrRtxOhtbnXzypOcB5IHo59zu/DusgwO+VtgNsfPXD+T8pS3lwzjr0tIF0fl+NP
+         3hBowY8dMVIGSA1tTeemPvvtoVmwmtfF07mSun8enwehTJ/c7NKfkofLPvoN0NSxcDQT
+         eijm6IMdZu0iyV47Pv9wvk8Fbw74SSQIy8KB9/9wt8ZZ+1+h+dQm+Kdnoolz7bS9Mszk
+         fhFuA5NEUtsmzL4KOvwa1sSCTFDQTxeDsUbIZd0BEFZNS7V/wpVWkfVd+m8h3OjvL6vj
+         iBWftcaiSZhwL9ssdG/n9hsHIsdukG523uop56iSEMHVnBnjWHHqU5yElQIOsD8fXzHp
+         8A0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+eCufxrSs/JG/dcQv3XIP+vKdVUBYPST3YpjCTe8HCs=;
-        b=dqP/jvy2BqKwmFOHlnA7+t2ek0Zbeg/RJDVL/nS3C40drKdMnDlW0bob8D9KK14inS
-         +NB410siAAoI9Bg/9kGItY9n5AJKV3JB8dbE/k+tZZ8ZFHoK5rG/EkuEY7hilLyPKKkg
-         L2BAFAiDhYzU8AltPjxd+eFjjOqyY2VzyC9lu27xKYF0g99Is+8rrHaAbuHtNOI5ISee
-         0oG68ayT+fHvS4XLRcI4w6Q/EN8+Mbo1si+mEnxpHdvlG9mCGAgRXcmQVYrJymflcjko
-         rWisqg3upCE0GehyEiLzepEfdOiRIZtGefZKsyA6L87C82R/wq+1IwETAWCyvKp6BAIa
-         Dtlw==
+        bh=9VeXic0fs8CIZcPeph0iPU6CO4mvSNbwetSuj8mQ6Wc=;
+        b=IX881I4bzvIFTtHAxoZR+Y7DnjX0xMOTto7i8ptswHePmROdczmVMsMHtLMvGvAJB/
+         3KzP9J8e1UD1/wmTesSoFcF0j4u+UW0UUb4uxUVA2R1nYoQ1zD3mQLTdiYsM1+eHOEJ4
+         mt1nWWuEsJ+YqPu8Re42G2GqSS3SeeLxFJTGXZWQHxvWmis9K9LM6FeWsr0dt/UNXnz7
+         8Jt57XCbbuhm5ru8KqUWZWsC1sHPr4pAvqR5nbCU4j0ukzvVfbrZqudBfmCcm4fH0UcA
+         Yz47Gy81Qn7Ph682KvrTSeM1hQmkpGU12/yn53GhakPxW4dTEtekYWNdSt+3XNx8Jo57
+         7bGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=epGvdkQe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JjPgRwFX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h5si16487000otq.114.2021.10.24.09.19.48
+        by mx.google.com with ESMTPS id j84si14966218oif.199.2021.10.24.09.21.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 Oct 2021 09:19:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 24 Oct 2021 09:21:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=epGvdkQe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57176 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=JjPgRwFX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59770 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1megDr-0003th-MO
-	for alex.bennee@linaro.org; Sun, 24 Oct 2021 12:19:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45744)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1megFn-0005lN-EK
+	for alex.bennee@linaro.org; Sun, 24 Oct 2021 12:21:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1megB6-0006Zk-AY; Sun, 24 Oct 2021 12:16:56 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:45036)
+ id 1megAi-0005ob-6T; Sun, 24 Oct 2021 12:16:32 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:37608)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1megAu-0008G0-IA; Sun, 24 Oct 2021 12:16:56 -0400
-Received: by mail-wr1-x433.google.com with SMTP id d13so5584616wrf.11;
- Sun, 24 Oct 2021 09:16:43 -0700 (PDT)
+ id 1megAg-00087E-0R; Sun, 24 Oct 2021 12:16:31 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ b133-20020a1c808b000000b0032ca4d18aebso6508414wmd.2; 
+ Sun, 24 Oct 2021 09:16:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+eCufxrSs/JG/dcQv3XIP+vKdVUBYPST3YpjCTe8HCs=;
- b=epGvdkQeWhmvp0rdLyNV1/H5Iwe7YgjE/OBdHIdA+L1cWsSYUhDLDbh1886G+TDf4a
- 0nioy9xlwZD6hnk+7iqodm49DC25+lFfXpioEWhd9pdn/NWIqQ3gWiwA8ScUJ/pmpz9c
- LGxiyKcvOLbEh3WCUsktPox9bwKVuA/c+pVaFLFyDEmMV40iEH+EOVXo9BtJuZnUnVwW
- 1jzLdIXkGQfT3HqveeV6j/1eh3PFQZ7HGi3NPVDD1Iehjgglyiqy7p898uGZYn5jQyIQ
- q/YQuEQuhAjm1j6OfU/v3hCA0R0q0Z+UY/xU1QWdBrIkL/SCeVHVhb84DynumjtVKOAt
- /C1w==
+ bh=9VeXic0fs8CIZcPeph0iPU6CO4mvSNbwetSuj8mQ6Wc=;
+ b=JjPgRwFXXmRAQMRY1Xw/f8qgythrTAU7QWpeVE++uzfedbXv08PaokKHaK5FNG3xcQ
+ 7xrVa7Kisr6yBhgW2xtoPJPfM8CRylMm2/a0CP9wc+AJbYiLpudTuIwTMDOwYz4KRGX6
+ DUUXM3MPCC7wmVvUdHnSjGXHvP7rxQxr9OmMBEe3wUrzRlXDPhgKvYXxvUKJpS5qUlue
+ 8Utk62ToamYemtWx0YB+5s3kKxNRDN1ZjiYp4jQbLh6zJdx4GC5kaxGe8o+1OG5RfvOK
+ H5lxdlTfFF1xBu1u6Ca3ecOKfQXFFWfWgUHf4v3IdRSQ6RtqD6eeYGoW0g6+TuApkxud
+ qP4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=+eCufxrSs/JG/dcQv3XIP+vKdVUBYPST3YpjCTe8HCs=;
- b=IVOtrM/iFlUr9jYTN46Fv4lvS9IBBJviloxjMKmS6Et2waBulksvSd8GZSsn+tPIWj
- cE2hc3fUQTJ1i09FZOkbsBuZibCE3KidMEssI96xtDewgGmjiH7c7H70kAS6YEdcd2ny
- XrRLCR6dVJ/3cnYJwtYLskjn+gImbfOpQH7Br5g51txR3Yq9xsInZ/G1izxZP5eipiEi
- dv2dkxzJNSJtNkE7UxW0F44cHGQXDEb7rcjGaaqEosh0A7E+hWJKXhAelnIeZdNZnNHv
- VPucJtMkrmC+hBvqUWevlpBlOhqijz5Ty9ITj6DQY5NGzgSPNfBTKgkR14Z6y3kyLK0u
- Gn+Q==
-X-Gm-Message-State: AOAM533MPM+wPYhRsHgL1oGzB/BwgXVD8LoqXcXjWyxvJzXhWmRN0eif
- n5jHKIKjl6fc3/8njGAyzq54U8vyE3E=
-X-Received: by 2002:adf:80cd:: with SMTP id 71mr16052364wrl.429.1635092201670; 
- Sun, 24 Oct 2021 09:16:41 -0700 (PDT)
+ bh=9VeXic0fs8CIZcPeph0iPU6CO4mvSNbwetSuj8mQ6Wc=;
+ b=aLvEbVJ6XQVDhd8zYaA8xqyhSR+DSTpr5SRYk37ydiX7C7fdt0aNTYtart23ZsfqEW
+ 35rSJXeaI3ZM8ce0W0+qDNP4LMzuvH9YDUAOtJ3BR0cVRiQbCj0wErIgzv0DbkiX/DIp
+ PKqlE3PkZg50BfpFObl/jLfx4FzuIdvbwJlY2XdYXE5HGtwGq0pZyjjmsFZepgQaP1l/
+ utvW/5JYKvHujatMEUUARzsAcjmsHs/ZrnhSWdIy3LIdD0UOxvstAqCMjImD0Y4QPZX7
+ vsUHAm6jPP02lwZ4kE/uvrVn5YYQCx1pBFjey2t3i+cHJoBwPcSVMA9k+c6vzeCc7Rq5
+ Ud5g==
+X-Gm-Message-State: AOAM530V5mamIiFq4ZxCVeesttPblXueCBjHlIwl0IfyWRU5sM/+AxFs
+ jJImKQBt8OnDVg38vWNGHsQ18ViFNko=
+X-Received: by 2002:a1c:9ac7:: with SMTP id c190mr18390509wme.2.1635092187627; 
+ Sun, 24 Oct 2021 09:16:27 -0700 (PDT)
 Received: from x1w.. (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
  by smtp.gmail.com with ESMTPSA id
- f7sm12480929wmg.14.2021.10.24.09.16.40
+ m2sm5472303wrb.58.2021.10.24.09.16.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 Oct 2021 09:16:41 -0700 (PDT)
+ Sun, 24 Oct 2021 09:16:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 4/4] target/ppc: Use tcg_constant_i32() in gen_ld/st()
-Date: Sun, 24 Oct 2021 18:16:19 +0200
-Message-Id: <20211024161619.325903-5-f4bug@amsat.org>
+Subject: [PATCH 1/4] target/alpha: Use tcg_constant_i64() in gen_call_pal()
+Date: Sun, 24 Oct 2021 18:16:16 +0200
+Message-Id: <20211024161619.325903-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211024161619.325903-1-f4bug@amsat.org>
 References: <20211024161619.325903-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -103,103 +104,62 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OJdY3k2hVz3T
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 66HAkcUsyaLx
 
-Avoid using a TCG temporary by moving the MemOp index
-to the constant pool.
+Avoid using a TCG temporary by moving the flag and
+exception address to the constant pool.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/ppc/translate.c | 29 +++++++++++++----------------
- 1 file changed, 13 insertions(+), 16 deletions(-)
+ target/alpha/translate.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-index 507f6699f47..9a4ae61a39d 100644
---- a/target/ppc/translate.c
-+++ b/target/ppc/translate.c
-@@ -3347,15 +3347,14 @@ static void gen_lq(DisasContext *ctx)
+diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+index a4c3f43e720..326d4216aad 100644
+--- a/target/alpha/translate.c
++++ b/target/alpha/translate.c
+@@ -1191,20 +1191,17 @@ static DisasJumpType gen_call_pal(DisasContext *ctx, int palcode)
+     return gen_excp(ctx, EXCP_CALL_PAL, palcode);
+ #else
+     {
+-        TCGv tmp = tcg_temp_new();
+         uint64_t exc_addr = ctx->base.pc_next;
+         uint64_t entry = ctx->palbr;
  
-     if (tb_cflags(ctx->base.tb) & CF_PARALLEL) {
-         if (HAVE_ATOMIC128) {
--            TCGv_i32 oi = tcg_temp_new_i32();
-+            TCGv_i32 oi;
-             if (ctx->le_mode) {
--                tcg_gen_movi_i32(oi, make_memop_idx(MO_LEQ, ctx->mem_idx));
-+                oi = tcg_constant_i32(make_memop_idx(MO_LEQ, ctx->mem_idx));
-                 gen_helper_lq_le_parallel(lo, cpu_env, EA, oi);
-             } else {
--                tcg_gen_movi_i32(oi, make_memop_idx(MO_BEQ, ctx->mem_idx));
-+                oi = tcg_constant_i32(make_memop_idx(MO_BEQ, ctx->mem_idx));
-                 gen_helper_lq_be_parallel(lo, cpu_env, EA, oi);
-             }
--            tcg_temp_free_i32(oi);
-             tcg_gen_ld_i64(hi, cpu_env, offsetof(CPUPPCState, retxh));
+         if (ctx->tbflags & ENV_FLAG_PAL_MODE) {
+             exc_addr |= 1;
          } else {
-             /* Restart with exclusive lock.  */
-@@ -3458,17 +3457,16 @@ static void gen_std(DisasContext *ctx)
+-            tcg_gen_movi_i64(tmp, 1);
+-            st_flag_byte(tmp, ENV_FLAG_PAL_SHIFT);
++            st_flag_byte(tcg_constant_i64(1), ENV_FLAG_PAL_SHIFT);
+         }
  
-         if (tb_cflags(ctx->base.tb) & CF_PARALLEL) {
-             if (HAVE_ATOMIC128) {
--                TCGv_i32 oi = tcg_temp_new_i32();
-+                TCGv_i32 oi;
-                 if (ctx->le_mode) {
--                    tcg_gen_movi_i32(oi, make_memop_idx(MO_LE | MO_128,
--                                                        ctx->mem_idx));
-+                    oi = tcg_constant_i32(make_memop_idx(MO_LE | MO_128,
-+                                                         ctx->mem_idx));
-                     gen_helper_stq_le_parallel(cpu_env, EA, lo, hi, oi);
-                 } else {
--                    tcg_gen_movi_i32(oi, make_memop_idx(MO_BE | MO_128,
--                                                        ctx->mem_idx));
-+                    oi = tcg_constant_i32(make_memop_idx(MO_BE | MO_128,
-+                                                         ctx->mem_idx));
-                     gen_helper_stq_be_parallel(cpu_env, EA, lo, hi, oi);
-                 }
--                tcg_temp_free_i32(oi);
-             } else {
-                 /* Restart with exclusive lock.  */
-                 gen_helper_exit_atomic(cpu_env);
-@@ -4065,17 +4063,16 @@ static void gen_lqarx(DisasContext *ctx)
+-        tcg_gen_movi_i64(tmp, exc_addr);
+-        tcg_gen_st_i64(tmp, cpu_env, offsetof(CPUAlphaState, exc_addr));
+-        tcg_temp_free(tmp);
++        tcg_gen_st_i64(tcg_constant_i64(exc_addr),
++                       cpu_env, offsetof(CPUAlphaState, exc_addr));
  
-     if (tb_cflags(ctx->base.tb) & CF_PARALLEL) {
-         if (HAVE_ATOMIC128) {
--            TCGv_i32 oi = tcg_temp_new_i32();
-+            TCGv_i32 oi;
-             if (ctx->le_mode) {
--                tcg_gen_movi_i32(oi, make_memop_idx(MO_LE | MO_128 | MO_ALIGN,
--                                                    ctx->mem_idx));
-+                oi = tcg_constant_i32(make_memop_idx(MO_LE | MO_128 | MO_ALIGN,
-+                                                     ctx->mem_idx));
-                 gen_helper_lq_le_parallel(lo, cpu_env, EA, oi);
-             } else {
--                tcg_gen_movi_i32(oi, make_memop_idx(MO_BE | MO_128 | MO_ALIGN,
--                                                    ctx->mem_idx));
-+                oi = tcg_constant_i32(make_memop_idx(MO_BE | MO_128 | MO_ALIGN,
-+                                                     ctx->mem_idx));
-                 gen_helper_lq_be_parallel(lo, cpu_env, EA, oi);
-             }
--            tcg_temp_free_i32(oi);
-             tcg_gen_ld_i64(hi, cpu_env, offsetof(CPUPPCState, retxh));
-         } else {
-             /* Restart with exclusive lock.  */
+         entry += (palcode & 0x80
+                   ? 0x2000 + (palcode - 0x80) * 64
 -- 
 2.31.1
 

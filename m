@@ -1,112 +1,112 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp88448lfn;
-        Mon, 25 Oct 2021 04:26:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZWZkaREqrzAhfYQsBc34ObkNTAUsOf7pFN8cxpZXJObku0/KqEpAXPBzeB1Q5PLd0RSGG
-X-Received: by 2002:a4a:b544:: with SMTP id s4mr6630774ooo.94.1635161185832;
-        Mon, 25 Oct 2021 04:26:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635161185; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp230791lfn;
+        Mon, 25 Oct 2021 06:46:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyxdwcvLSxbJblcR8o52e755A3xkxEsqCfeOOsPXVsxxAG/ua0pP+somMdXYjhc6+ZV6/Z
+X-Received: by 2002:a05:6102:3a56:: with SMTP id c22mr14669026vsu.26.1635169611056;
+        Mon, 25 Oct 2021 06:46:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635169611; cv=none;
         d=google.com; s=arc-20160816;
-        b=sRRc2CoJJn71qS0839lJCEzH5cFoDQfljavWY43kGeVZK1IZYWXf2Yy3ey2Cif/oe6
-         PdvjcmoziecWK76n5nx9QZEm7PXXoxnDYFKtEYZDmvSPPP6hKbG4il0Q8MSU1ozy/qZL
-         ms40ugg2Cn/8fj2L3rGY5Zz7bnR73fNDfRlCWuC1drXQIfcF+ziSGrToEm4kIGk25ArL
-         13IOBqrk07i+YDltNHmwFN6Y9sRC1SixP/m+zamdRqKB+PmFx6Gybpe/AokKbq+Woxjk
-         Nreos2CFt8kDHQmGvJcdTRRT+x6hsDxhtpxg/FH6DOsndRU9THAR77t+Qhr0BC5T0/1n
-         fktA==
+        b=v76DtX1NVbwzDXP/dq3BFWxGHlCFgQmBI55K2hcqj0Si+NIsTVka4lO8DHwFvzO9pz
+         s3dWTtCP5Hx9SpxQusSf7ta5zle6vqoLBOAWzhZFZ8/MPBNqoK84wGOECWX1weLMKC/Q
+         of5PqEK3J59/kPDu4NI3gzFpRPeUqM820wYBXkXVdjYDoegebS6a+4JGRyDALu6ijxd7
+         QuQVfM2nfsCWA8NmdngE0QXZiys0nYzAkIgjhXOpIrYRsrIeE814eZKBxp3EpoG415js
+         8bhU6pwJDEQdJUErhvhDTkV8A3zshcWwDahYiBGAy7EkmMkKuPP4wdbhrkhzuIoA8Xla
+         qrAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=f/BAa9sp94NqKP5B4c9amJsD3bi6NZ608OY5VYA4uqE=;
-        b=uRufIOWlCeAWTGE0onDwXjVFwmbtfR7Fjmmfd/7HFdeS/hncbWo/kEGKqXkabwrGUN
-         +BsXtcvaC63NjQN4Cl9gp5IgmuomBZRRbXTOxLQrzsfUtLl0zS6DrWwD4nLV5U3iQ9+p
-         s3TiQu7v1XTkltntkytH/NHrFlJ+OgNdTpogYxJejKKfjHMspmEpEn4ktlMhscDE42qX
-         YemRJsypJr8AF8m/YbYwtLxp2hxtX4ePHkxcimF25forfvVy+bk0vHcDuZTrs/jhAMwb
-         U4/DQ938pqPWwPePLRhLehEM0wmkKdrga3qloXfGT4E3AnFVbxe8FSTiViTk2zF/OiyW
-         CBiQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=4r5ESUFk6fj0BmLyk28sgPzkuPAWkSScjkoN3mQuycc=;
+        b=VM8TtLeZJ3zk2nLFzBQOVT44x1PGh77yeAtwp5sVdY4lm5KIHw/a9175t6nazcLuCf
+         bfNHX9pMARmkfDk6QApArjUQlWBTK5FLv/vZ7IvfoQDz5cufrEC+TCXj46em8EYWYGWc
+         aHfeTgyekuAMIOU15JifknODSEMg5/fg/jAdDCmcvYC9FgnR1ntRPOAM472uu8xS1bWa
+         usvk+0iUpaMuH+gYe2MRQvxYKe+LYTMdPp4deJlHuBPGewSiP/usM3yqjILvYzvqN5Qa
+         OD2LB5r097JQWVZXtb2n1MyNwxGIuij8f8n49kYI4c5QyYXaKK+7VStIyv9ydzU4qfNt
+         kEgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=o1OGSyCJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=go9enP1A;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r206si18878568oib.52.2021.10.25.04.26.25
+        by mx.google.com with ESMTPS id q2si5149376ual.91.2021.10.25.06.46.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Oct 2021 04:26:25 -0700 (PDT)
+        Mon, 25 Oct 2021 06:46:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=o1OGSyCJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58276 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=go9enP1A;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mey7V-0002l1-2i
-	for alex.bennee@linaro.org; Mon, 25 Oct 2021 07:26:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38294)
+	id 1mf0JO-0004l0-8L
+	for alex.bennee@linaro.org; Mon, 25 Oct 2021 09:46:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47412)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mey5M-0001lv-JR
- for qemu-devel@nongnu.org; Mon, 25 Oct 2021 07:24:12 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:43822)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mf0H4-0001yN-W7; Mon, 25 Oct 2021 09:44:27 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:54845)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1mey5K-0005Y1-NX
- for qemu-devel@nongnu.org; Mon, 25 Oct 2021 07:24:12 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id p14so6223163wrd.10
- for <qemu-devel@nongnu.org>; Mon, 25 Oct 2021 04:24:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=f/BAa9sp94NqKP5B4c9amJsD3bi6NZ608OY5VYA4uqE=;
- b=o1OGSyCJNkg1a7pxKx9kbTn9TVAJuVA8ju/EIaC8BXlVnigqhnzGL7/MJhQWH+EhQN
- 2UEPkPVZL4XOdJD3q5HjQSJsJfKcq1qgW9iSqu54Zgvwmx351SEDaXkKUZ+n+7cMfNmu
- 45MkKGOtZdciD9pQqcB4d9uPJ3jmXXhhp4+RbpWr8BE5EcjhpCOd95pvvTPxifrxj4Sc
- QaSvNW4e4RvWU08QVo7aP2lRA0VYm4CgQfSx6N4HhSvvEm/NetOMqr3wworBwJ+QEwF2
- ugIrP4VzKTVZyGKgMVBc7xpgJGXhhHmbZVzBBzc/fYHfiIoIccwQnBm+QezxANEFwW9n
- ZftA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mf0H2-00085r-Lw; Mon, 25 Oct 2021 09:44:26 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id g141so10763321wmg.4;
+ Mon, 25 Oct 2021 06:44:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=4r5ESUFk6fj0BmLyk28sgPzkuPAWkSScjkoN3mQuycc=;
+ b=go9enP1AQmjYd8gAF4mRP2O93WWtMJt7T3+kb1vOyGUsX530GUyQTAE03qkePuTdTI
+ FaGAjZe+wHRLu1VMHy31nbNuRW0CbStK9gUOdHQ+oeY2NTjyF1E4l8YZnSwT0Yx24JNC
+ dbCvp/n0g3OW8jt6m8I52S34kcPbxBeeRDmp98Tyg30Wvlk7nMBMjxO8ExkwqjrjZ76N
+ wNc2zhhHpm66Xqv6tetwcuSxG8cWhlYrrhpH6X4JnoPtGzwcHkZn+hn+xTVoPJbMG2Ue
+ MupcG4fw3NIJzJwp8oGODNAlZtSYF6W046ijy4IVNmMwPUMCFtMPvg3S71Gt6bCz9b+S
+ jtGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=f/BAa9sp94NqKP5B4c9amJsD3bi6NZ608OY5VYA4uqE=;
- b=XwZxgD1TUFAUa5y0azJumDPv68TrDwR8XbEUQ4gWxU6HqWaQYT3SB6hSTgltMNtAZ2
- 79JWY1de9VrKbxGW44B2VP9obdG7Dv3ZZVWje0FXjXmEjHb6fDL0b3qrwVQNydRWqoH2
- zTgSFJztdqH7VYmpSHRMuCKIDu+0LWoSCssMLqR7X7GSBCUoM/Ix8SFx0g2pKXJX1kS5
- ZK2cc3ChjUKWARvBggQpDb/lm3k1IEkRmTp+DSIcjj1Cg6X+FD+ExEg2y8ifE03n2ywk
- e6rZo/ltVLNorOTXpZnoGGNNgPO31B4iPI5M00ic6rQXGanX7wu3c22xe/yh1C4VuHFS
- XBlw==
-X-Gm-Message-State: AOAM531S1+56nPZAIUQTVdQwlic+c2cpE6R0ViVsmH1n4THBJgD24ISY
- nKLyWJqj1pZqBKolfc7JWc0kFw==
-X-Received: by 2002:adf:ec03:: with SMTP id x3mr16034800wrn.281.1635161048942; 
- Mon, 25 Oct 2021 04:24:08 -0700 (PDT)
-Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net.
- [82.27.106.168])
- by smtp.gmail.com with ESMTPSA id n25sm3555479wms.10.2021.10.25.04.24.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Oct 2021 04:24:08 -0700 (PDT)
-Date: Mon, 25 Oct 2021 12:23:46 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH v5 04/12] hw/i386/pc: Allow instantiating a virtio-iommu
- device
-Message-ID: <YXaTwq35j67PlPVh@myrica>
-References: <20211020172745.620101-1-jean-philippe@linaro.org>
- <20211020172745.620101-5-jean-philippe@linaro.org>
- <20211021154709.14da294a@redhat.com>
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=4r5ESUFk6fj0BmLyk28sgPzkuPAWkSScjkoN3mQuycc=;
+ b=TVSR0Ajha46K0JpVKZ4Js+rRRh6weod6PcCuZ9YXvhOtpJ7es/T2Zk3ptGKtNs1TrP
+ NlDXZjuedctJ8KSg4HM1smVbjvRmnRHhMlgBWTCnR+PJHmEQwb5444K6y/OwSTJfJ/iB
+ N0U20Wo9jBknMT/QFtJbZIc/WskwiXqTuwDN9QJiM32bGXughOKCwXWDlLjfpGWvtSZn
+ 3T7T4+fH2EPO9OPnOZJpmKZv4DtRpm1nm4BdWnsuvGoPpqLjvcH1qxKjz4k+t3FSG8Re
+ Tn6K66114Szrb8H276NPlGSUoPLVk/L+GS0/OZf2R1SKD7A4KsUJA48aX85l0fsiTMqz
+ PYrA==
+X-Gm-Message-State: AOAM531Cok02Rot4/RVMYOmkWTPzFc6YxerZXZkRx2/gNU7kNalWvMNe
+ 64roYw0KYAWkdlArilGlyvB3+kQZHsA=
+X-Received: by 2002:a05:600c:20f:: with SMTP id
+ 15mr19874319wmi.58.1635169462460; 
+ Mon, 25 Oct 2021 06:44:22 -0700 (PDT)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id f7sm15342590wmg.14.2021.10.25.06.44.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Oct 2021 06:44:21 -0700 (PDT)
+Message-ID: <05d74be9-acb6-b682-c869-1f5580580a37@amsat.org>
+Date: Mon, 25 Oct 2021 15:44:20 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20211021154709.14da294a@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v4 0/6] tests/acceptance: Add bFLT loader linux-user test
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+References: <20210927163116.1998349-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20210927163116.1998349-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.846,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,44 +119,69 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- jasowang@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- peterx@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- ani@anisinha.ca, pbonzini@redhat.com, eric.auger@redhat.com
+Cc: Laurent Vivier <laurent@vivier.eu>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Willian Rampazzo <willianr@redhat.com>, qemu-arm@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Warner Losh <imp@bsdimp.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vob6WGTnE1i2
+X-TUID: aD9rp9nZA8QW
 
-On Thu, Oct 21, 2021 at 03:47:09PM +0200, Igor Mammedov wrote:
-> On Wed, 20 Oct 2021 18:27:38 +0100
-> Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
+Almost one month passed... ping?
+
+(adding Cleber who wasn't Cc'ed)
+
+On 9/27/21 18:31, Philippe Mathieu-Daudé wrote:
+> Since v3:
+> - rebased
+> - addressed Wainer review comments from v2
+> - rename avocado_qemu.Test -> QemuSystemTest
 > 
-> > Allow instantiating a virtio-iommu device by adding an ACPI Virtual I/O
-> > Translation table (VIOT), which describes the relation between the
-> > virtio-iommu and the endpoints it manages.
-> > 
-> > Add a hotplug handler for virtio-iommu on x86 and set the necessary
-> > reserved region property. On x86, the [0xfee00000, 0xfeefffff] DMA
-> > region is reserved for MSIs. DMA transactions to this range either
-> > trigger IRQ remapping in the IOMMU or bypasses IOMMU translation.
+> Since v2:
+> - rebased tests/acceptance/avocado_qemu/__init__.py patches
+> - extract has_cmd() from virtiofs_submounts.py
+> - check cpio availability with has_cmd()
 > 
-> shouldn't above be "IO remapping"?
-
-No it is IRQ remapping: DMA writes to this address range are interrupt
-requests and the IOMMU may either perform interrupt remapping or pass it
-to the APIC directly
-
+> Philippe Mathieu-Daudé (6):
+>   tests/acceptance: Extract QemuBaseTest from Test
+>   tests/acceptance: Make pick_default_qemu_bin() more generic
+>   tests/acceptance: Introduce QemuUserTest base class
+>   tests/acceptance: Share useful helpers from virtiofs_submounts test
+>   tests/acceptance: Add bFLT loader linux-user test
+>   tests/acceptance: Rename avocado_qemu.Test -> QemuSystemTest
 > 
-> > Although virtio-iommu does not support IRQ remapping it must be informed
-> > of the reserved region so that it can forward DMA transactions targeting
-> > this region.
-> > 
-> > Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> > Tested-by: Eric Auger <eric.auger@redhat.com>
-> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>  tests/acceptance/avocado_qemu/__init__.py    | 158 ++++++++++++++-----
+>  tests/acceptance/boot_linux_console.py       |   4 +-
+>  tests/acceptance/cpu_queries.py              |   4 +-
+>  tests/acceptance/empty_cpu_model.py          |   4 +-
+>  tests/acceptance/info_usernet.py             |   4 +-
+>  tests/acceptance/linux_initrd.py             |   4 +-
+>  tests/acceptance/linux_ssh_mips_malta.py     |   5 +-
+>  tests/acceptance/load_bflt.py                |  54 +++++++
+>  tests/acceptance/machine_arm_canona1100.py   |   4 +-
+>  tests/acceptance/machine_arm_integratorcp.py |   4 +-
+>  tests/acceptance/machine_arm_n8x0.py         |   4 +-
+>  tests/acceptance/machine_avr6.py             |   4 +-
+>  tests/acceptance/machine_m68k_nextcube.py    |   4 +-
+>  tests/acceptance/machine_microblaze.py       |   4 +-
+>  tests/acceptance/machine_mips_fuloong2e.py   |   4 +-
+>  tests/acceptance/machine_mips_loongson3v.py  |   4 +-
+>  tests/acceptance/machine_mips_malta.py       |   4 +-
+>  tests/acceptance/machine_ppc.py              |   4 +-
+>  tests/acceptance/machine_rx_gdbsim.py        |   4 +-
+>  tests/acceptance/machine_s390_ccw_virtio.py  |   4 +-
+>  tests/acceptance/machine_sparc_leon3.py      |   4 +-
+>  tests/acceptance/migration.py                |   4 +-
+>  tests/acceptance/multiprocess.py             |   4 +-
+>  tests/acceptance/pc_cpu_hotplug_props.py     |   4 +-
+>  tests/acceptance/ppc_prep_40p.py             |   4 +-
+>  tests/acceptance/version.py                  |   4 +-
+>  tests/acceptance/virtio-gpu.py               |   4 +-
+>  tests/acceptance/virtio_check_params.py      |   4 +-
+>  tests/acceptance/virtio_version.py           |   4 +-
+>  tests/acceptance/virtiofs_submounts.py       |  59 +------
+>  tests/acceptance/vnc.py                      |   4 +-
+>  tests/acceptance/x86_cpu_model_versions.py   |   4 +-
+>  32 files changed, 235 insertions(+), 153 deletions(-)
+>  create mode 100644 tests/acceptance/load_bflt.py
 > 
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-Thanks!
-Jean
-

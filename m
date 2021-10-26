@@ -1,123 +1,123 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp1251291lfn;
-        Tue, 26 Oct 2021 02:50:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyj25kezQPGVkOaDicW43XIlqa0xEJrIkA2xhrR29hPNDi+V/3ZLUZR7zme0E+vvmP4wU91
-X-Received: by 2002:aca:3e8a:: with SMTP id l132mr15705211oia.95.1635241805288;
-        Tue, 26 Oct 2021 02:50:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635241805; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp1296373lfn;
+        Tue, 26 Oct 2021 03:43:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxvsIXzaSUoVC7ywJQnMRJzInEM5EVwud/om52xTnbhVAVnIm7QJ5SSKzl6Mw0CAobrvHNf
+X-Received: by 2002:a05:6830:240e:: with SMTP id j14mr18086375ots.354.1635244981652;
+        Tue, 26 Oct 2021 03:43:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635244981; cv=none;
         d=google.com; s=arc-20160816;
-        b=EsCUnd5yXk6VC0JbELXqiAgzVJw9jMCmcRA3c+QaRjSmsD7nu4SPzUwCrGm2EK0gMy
-         Kut2b2WTD0kriu1yBmTC/cv/xvxd18MCNmU74B6fBpGYdl0zrrjT145kTBi8zTrXMIXr
-         hfBHhdSRHAtU+99WerQjT6nSJTAY8exepqHuPU40HGSeXqNm4ergTwPUDilkkS1EIyFq
-         kgMQlLXENWWcXdzsU4M/Foyp5djgyTkuIhd3FkwgxapMkd4LRAookd8AoiSeKwaTNWpa
-         /5dTAi83k+T1zsohAMkMc1FX2UIsPJQ93/VP1cZawChitrITe9xVTfxuP7qChNj3Lp1K
-         ZSLg==
+        b=QctWiz2HLt545Eh9+LlcT6TA2EhREdDpwt336Qc5B61qrDEit14TlEnjVezq7VH11k
+         15J0Mml7LLDKAzIlvvEQ+ncD0oJPebK+OJ9wM1YpGrqFMn7mlXOppzJW6Fd6dRp0xTaG
+         LH0zT2+PYQm2SnWxQeV+XgXORWPEKb8btdjIWMld9/f5QlbXV9dyquHumAsVncruV/9y
+         InZLSnjaXvVULIfGuVtnmK2cN8vErtWw+wQF/NZPh32+Pr+nhmjJ+EZBSx9vrsRgZm8L
+         Wcx6al3XbPS/a6qBbslut3pZkgrx9l+avgvIxCRxUffLYYiItlWIJr0IQasVcds+weJg
+         AurQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=gyMDuOEc7FDOanj+B/3W81R+WGSSdcmOgXxWyAqVHl4=;
-        b=G/O05eJ02SvktcUPjnp+cMl1a+lWH6WS0IjoJMWdwSZWbkrfrlqgsgTuu9mx5nmQen
-         WO9P9Dk8koCabdSypCSehwK2Vsha+oeMoeQCf5Nnho8vxlj2KIZUgoTQVxZkOoOtxti1
-         6U9gyApelpo8INOcQuw7coFoFRsfMeNjqpQwuQThj+TFk7mNlmINWH+UnMX01CuZff0L
-         dcOFfTzwlwfzsVmaoV14v/IKLzLeUPE68Xk2EOkbVtqGcP35OMx7WyF9u7fceAZ5s4ZV
-         ztHY5m+Tzt6aUIq4L7/OGzW+LbuCgAO4HN5XiOuZM2eBesB6E0Ww1qu78jE77mAGh35s
-         JbhA==
+         :content-language:in-reply-to:from:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=TpqPQkhd+ArBORs2KZDqdXyKr8UCY+zKb+A/SAc4ums=;
+        b=Naa9W8jkDTrZPH1dZB/DsjZSNToZjVTZ0R1BJuoYW/8FA5VWhkb+09T+aG6ohrO5w3
+         c/YvfGdHjv9onLIXxH1l+TNjjTlbA/BHg5LE8XSdfA1I8VQDYsnZZWfyv8gTAocA4Cim
+         Nml6xxAPPEYAdlhtL0TLtfLIxuic1ypmbenYzBW02M32zykFw4NE/4MOlI5Yzn7cp/rU
+         tuHa4QVooNp1AOMyT9/9HcMlDNp9wK3P7WqCN3kpgLbIFf/BaghT/5DEoJ3q3Q1iFBIA
+         7JeU0XacWJvUet/Njp5Gz/YAgWvp1qTTAeCzfNoBItZDipSUI7nO26I0MTTq913LrJKu
+         sJig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QwJgBeci;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BIb8fjPN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l15si25056772otk.204.2021.10.26.02.50.05
+        by mx.google.com with ESMTPS id j6si34415459otu.343.2021.10.26.03.43.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Oct 2021 02:50:05 -0700 (PDT)
+        Tue, 26 Oct 2021 03:43:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QwJgBeci;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BIb8fjPN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58690 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mfJ5o-00063f-FI
-	for alex.bennee@linaro.org; Tue, 26 Oct 2021 05:50:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44170)
+	id 1mfJv2-0002Tz-PM
+	for alex.bennee@linaro.org; Tue, 26 Oct 2021 06:43:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53784)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mfJ3m-0004aG-8X
- for qemu-devel@nongnu.org; Tue, 26 Oct 2021 05:47:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44380)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mfJkr-0000A5-M0
+ for qemu-devel@nongnu.org; Tue, 26 Oct 2021 06:32:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:32342)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mfJ3k-0007YZ-Kk
- for qemu-devel@nongnu.org; Tue, 26 Oct 2021 05:47:57 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mfJkp-0005DN-LH
+ for qemu-devel@nongnu.org; Tue, 26 Oct 2021 06:32:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635241675;
+ s=mimecast20190719; t=1635244347;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gyMDuOEc7FDOanj+B/3W81R+WGSSdcmOgXxWyAqVHl4=;
- b=QwJgBeciRqA2kTY5GNADF4Mt6HgQ+pwLxTM38uuBRL3/DI0TIC0hd+DFSgsOTarRcVRkfO
- 9Eds5JDK6YpNSneBmez7+gYHTnvsF1Z51B6xi/Z2fQcJA7D2Ho0FXwvfh92u5plQeRqgy4
- xmfw++73S2YISkibNaD0TOeo3JkJRJQ=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-188-C5yZDn_sMKKKwL3dbigWRQ-1; Tue, 26 Oct 2021 05:47:54 -0400
-X-MC-Unique: C5yZDn_sMKKKwL3dbigWRQ-1
-Received: by mail-ed1-f70.google.com with SMTP id
- y3-20020a056402358300b003dd490c775cso3280444edc.22
- for <qemu-devel@nongnu.org>; Tue, 26 Oct 2021 02:47:54 -0700 (PDT)
+ bh=TpqPQkhd+ArBORs2KZDqdXyKr8UCY+zKb+A/SAc4ums=;
+ b=BIb8fjPNnUbNgoJOmrFG7dF/TaGKaC/bQyGX/0aEi+xIfmvGEaf2mdV10h/Zdz2hPf3TjH
+ ndSpKdLhi2IN03fOzm2mfY8zf25/etiiAg29+8NUyuXAY8MvczFjjl7CIlyozkB23jEir5
+ WWL88xZEBUaEN1ZvDWE3mnCBtfG/3j0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-367--tCVh3ZDPXCI67Kkiy8_3A-1; Tue, 26 Oct 2021 06:32:25 -0400
+X-MC-Unique: -tCVh3ZDPXCI67Kkiy8_3A-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ z17-20020a7bc7d1000000b0032cafafaf79so745207wmk.5
+ for <qemu-devel@nongnu.org>; Tue, 26 Oct 2021 03:32:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=gyMDuOEc7FDOanj+B/3W81R+WGSSdcmOgXxWyAqVHl4=;
- b=x4OCG4NYT9ojTC+LVAa4T5/iKSdF9e0umAgbwWcXSh3m9oXZjQoQC2w16SNUbdbkKw
- Dhb34YlI2wdFeSQhc2LadDPljlPTgWISYMF79nQZUGNPhU9hecvzYVCesXJHY8bSt782
- oGt2BJo11gsH9TDBjpUoAh0mmvIJtRDd7buGD6iVvbCxW5JyBW02toGkLEtjdrMXo/An
- y9+AGB8uEUZz5JWs+JFi5DPQgt8QCA9WkJJAGLMuGz/EwmhcZH9PevuNsv28ZxPGY96J
- V5VdRZ+3p7f5YJjGIwYTLLfaM4VxC8FHS7Uf7oIPR8vxh/FpdrVAXXOukCiQMyOUO6Jq
- D+rw==
-X-Gm-Message-State: AOAM533rrBWM9CJpJUUjQjAhHAOjKUkZkHiZFbUpmBCu8d4Z1QqUfRaI
- t/unkVXN2HRtVrszu5ONYSwD0DG8ltR9nG1mzzL4zEzZIiU1hqDFvE6RDoeZWDdyqxoa7d9JaPq
- 85CNxiKiSLN9x83Q=
-X-Received: by 2002:a17:907:3f17:: with SMTP id
- hq23mr28907213ejc.312.1635241673282; 
- Tue, 26 Oct 2021 02:47:53 -0700 (PDT)
-X-Received: by 2002:a17:907:3f17:: with SMTP id
- hq23mr28907193ejc.312.1635241673045; 
- Tue, 26 Oct 2021 02:47:53 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id yd8sm4120930ejb.33.2021.10.26.02.47.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Oct 2021 02:47:52 -0700 (PDT)
-Date: Tue, 26 Oct 2021 11:47:51 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH] hw/arm/virt: Expose empty NUMA nodes through ACPI
-Message-ID: <20211026114751.427205bc@redhat.com>
-In-Reply-To: <20211025234101.224705-1-gshan@redhat.com>
-References: <20211025234101.224705-1-gshan@redhat.com>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=TpqPQkhd+ArBORs2KZDqdXyKr8UCY+zKb+A/SAc4ums=;
+ b=aYlhbANzdM94dPpGoquUtDQlSR+wZzsTB16a5J93V3fWTLBvJuIN+TP6PDf+y/PT/z
+ uMDg7iQZQ23LbYgL9hlQlJ+H5SslDi00G4OvggvTioYvygSiBEzJGRzu7KwG6yBHnNNT
+ ugGqKNFii7HkKL//4qugclZi0W8AGOyjsLb8wnawkAn5ozDDsmY5IKmOo3J62CsjXKUc
+ 4PFTbMXxj0bkYBINbTyewi3pGX3WYE7M/88wp9I7So9C3ig3vpSJpRsZY0vdLAhCLjb7
+ 6p3VCbMl3uHRIrz6Rvj3WK2p7ONqo6F7ZNxKogC31GSh5e5fTKEnuElSsRryM3pE2v5V
+ MJQg==
+X-Gm-Message-State: AOAM530DwrsXB2rLRn+98NAy/VT1RMupSgOB+oKdarsW/hDswsow2dnD
+ rBETazlE5R7W91IAL6b1ZJmgQmH5tvyKLgbN4GCxU/T1BAj0I+r8LvhvsKxz0UN+xv5UxJLtIU3
+ gLuBmOxQIiFQvNQw=
+X-Received: by 2002:a1c:7c0e:: with SMTP id x14mr26471488wmc.128.1635244344599; 
+ Tue, 26 Oct 2021 03:32:24 -0700 (PDT)
+X-Received: by 2002:a1c:7c0e:: with SMTP id x14mr26471464wmc.128.1635244344417; 
+ Tue, 26 Oct 2021 03:32:24 -0700 (PDT)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id p21sm221427wmc.11.2021.10.26.03.32.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 Oct 2021 03:32:24 -0700 (PDT)
+Message-ID: <eca5afd7-cd1b-2877-494f-6b0c441f5ac5@redhat.com>
+Date: Tue, 26 Oct 2021 12:32:23 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v2] hw/arm/virt: Rename default_bus_bypass_iommu
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
+References: <20211026093733.2144161-1-jean-philippe@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <20211026093733.2144161-1-jean-philippe@linaro.org>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.215, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,92 +130,61 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, ehabkost@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- shan.gavin@gmail.com
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DbYomllasqij
+X-TUID: mEiczmwxYvOw
 
-On Tue, 26 Oct 2021 07:41:01 +0800
-Gavin Shan <gshan@redhat.com> wrote:
-
-> The empty NUMA nodes, where no memory resides, aren't exposed
-> through ACPI SRAT table. It's not user preferred behaviour because
-> the corresponding memory node devices are missed from the guest
-> kernel as the following example shows, and memory can't be hot
-> added to these empty NUMA nodes at later point.
-
-a error message one gets would be useful here.
-
-btw:
-memory hotplug seems to work for x86 without adding empty nodes.
-So it beg a question, if absence of empty nodes is the issue here.
-
+On 10/26/21 11:37, Jean-Philippe Brucker wrote:
+> Since commit d8fb7d0969d5 ("vl: switch -M parsing to keyval"), machine
+> parameter definitions cannot use underscores, because keyval_dashify()
+> transforms them to dashes and the parser doesn't find the parameter.
 > 
->   /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
->   -accel kvm -machine virt,gic-version=host               \
->   -cpu host -smp 4,sockets=2,cores=2,threads=1            \
->   -m 1024M,slots=16,maxmem=64G                            \
->   -object memory-backend-ram,id=mem0,size=512M            \
->   -object memory-backend-ram,id=mem1,size=512M            \
->   -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
->   -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
->   -numa node,nodeid=2                                     \
->   -numa node,nodeid=3                                     \
->      :
->   guest# ls /sys/devices/system/node | grep node
->   node0
->   node1
->   node2
+> This affects option default_bus_bypass_iommu which was introduced in the
+> same release:
 > 
-> This exposes these empty NUMA nodes through ACPI SRAT table. With
-> this applied, the corresponding memory node devices can be found
-> from the guest. Note that the hotpluggable capability is explicitly
-> given to these empty NUMA nodes for sake of completeness.
+> $ qemu-system-aarch64 -M virt,default_bus_bypass_iommu=on
+> qemu-system-aarch64: Property 'virt-6.1-machine.default-bus-bypass-iommu' not found
 > 
->   guest# ls /sys/devices/system/node | grep node
->   node0
->   node1
->   node2
->   node3
+> Rename the parameter to "default-bus-bypass-iommu". Passing
+> "default_bus_bypass_iommu" is still valid since the underscore are
+> transformed automatically.
 > 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
+
+Cc: qemu-stable@nongnu.org
+
+> Fixes: 6d7a85483a06 ("hw/arm/virt: Add default_bus_bypass_iommu machine option")
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Tested-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 > ---
->  hw/arm/virt-acpi-build.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
+> v2: Resending to be merged separately from the equivalent x86 fix,
+>     already queued by Paolo [2]. No change other than added review tag.
+> v1: https://lore.kernel.org/qemu-devel/20211013160607.649990-2-jean-philippe@linaro.org/
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 674f902652..a4c95b2f64 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -526,6 +526,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(ms);
->      AcpiTable table = { .sig = "SRAT", .rev = 3, .oem_id = vms->oem_id,
->                          .oem_table_id = vms->oem_table_id };
-> +    MemoryAffinityFlags flags;
+> [2] https://lore.kernel.org/qemu-devel/55e7387a-4bc0-1743-1013-19c38a6ceb77@redhat.com/
+> ---
+>  hw/arm/virt.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ca433adb5b..369552ad45 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2737,10 +2737,10 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>                                            "Set the IOMMU type. "
+>                                            "Valid values are none and smmuv3");
 >  
->      acpi_table_begin(&table, table_data);
->      build_append_int_noprefix(table_data, 1, 4); /* Reserved */
-> @@ -547,12 +548,15 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> -    object_class_property_add_bool(oc, "default_bus_bypass_iommu",
+> +    object_class_property_add_bool(oc, "default-bus-bypass-iommu",
+>                                     virt_get_default_bus_bypass_iommu,
+>                                     virt_set_default_bus_bypass_iommu);
+> -    object_class_property_set_description(oc, "default_bus_bypass_iommu",
+> +    object_class_property_set_description(oc, "default-bus-bypass-iommu",
+>                                            "Set on/off to enable/disable "
+>                                            "bypass_iommu for default root bus");
 >  
->      mem_base = vms->memmap[VIRT_MEM].base;
->      for (i = 0; i < ms->numa_state->num_nodes; ++i) {
-> -        if (ms->numa_state->nodes[i].node_mem > 0) {
-> -            build_srat_memory(table_data, mem_base,
-> -                              ms->numa_state->nodes[i].node_mem, i,
-> -                              MEM_AFFINITY_ENABLED);
-> -            mem_base += ms->numa_state->nodes[i].node_mem;
-> +        if (ms->numa_state->nodes[i].node_mem) {
-> +            flags = MEM_AFFINITY_ENABLED;
-> +        } else {
-> +            flags = MEM_AFFINITY_ENABLED | MEM_AFFINITY_HOTPLUGGABLE;
->          }
-> +
-> +        build_srat_memory(table_data, mem_base,
-> +                          ms->numa_state->nodes[i].node_mem, i, flags);
-> +        mem_base += ms->numa_state->nodes[i].node_mem;
->      }
->  
->      if (ms->nvdimms_state->is_enabled) {
+> 
 

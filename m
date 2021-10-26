@@ -1,124 +1,99 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp1549913lfn;
-        Tue, 26 Oct 2021 08:21:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwlQ7LOUIZT7S0PUhR+3JiVVwSQV4y1yhf3tKW/IbU6O9bbkJm/H0lflUS2/oLLG1UXIlv5
-X-Received: by 2002:ab0:684f:: with SMTP id a15mr23664951uas.142.1635261686687;
-        Tue, 26 Oct 2021 08:21:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635261686; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp1550211lfn;
+        Tue, 26 Oct 2021 08:22:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwA1RA4Mi7fe+MrqeB3H96qJL/Qxz8bz1bQKyuq07SYzqu8UpNi05bCuYt4vWIYNYOOn0sM
+X-Received: by 2002:a05:6808:14c2:: with SMTP id f2mr18323230oiw.99.1635261713974;
+        Tue, 26 Oct 2021 08:21:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635261713; cv=none;
         d=google.com; s=arc-20160816;
-        b=RL46rULw5lgw0STeIraZb+PKOlIAJGrtpYgiXBnnB+Csz9YEPprJeos3YB+i7qsM2C
-         +jxyEwC20JpEyZJBN8h/8xzsazt+FXSWtRYshRlCz88uPgRcVgKgD+ewkL67DJmZ0lGp
-         ZIN/FAQWYBiQJYhEl29gs3p9FG2NRWvCEX7Lev2tiPsogAW4lrNgxZlk4mPbBlbzM2x/
-         gQHgweO02LEmfdt46+B3usZ+Z55Bihp/CYuNa8UgC7snwrGqvDI2y+XiJqCsMrrC61MQ
-         WZ8xzwBITriNNrxA5IAGdk1zCKtD4pEGF4jeTNP+EQz4bsDGZo4yoHHwHBpJH30/h4OA
-         tezw==
+        b=lY6JlNoHauQIZzDBbq2Gy19KD/A7CDyIriWqijSuT2eo9avKIEYg+INAIYBz4CXtCG
+         /5e8qCiIDJW6nH7hIfqTq3pjjeP9dpPaKNnCJUZXAl6ZzC5d7ak0JfWmJErenEh89gIx
+         /rMHksq/ZHhoyPzGzO0+RXsVbBdlxJK/FpVL+LXkkekw1M+ZH5EcFmAeCoskTSzsikVJ
+         lVUKnqiTjsTPcDyFBx1/2ahdsmn9lVyQ21DKkFdOi3n/8HLSdJfeALIBwKw2iZhowIKx
+         lQwL9k2K9b4yVioKCCxEj27kxj6479JQ/dbaO1CmjDyHBHTHmQYF/vgRtSoS2EcD+OOC
+         ZoDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=ykTal0/5+S/liv+W7/qzcM/9C/Hy2XT7+1ke8mWd3e4=;
-        b=V0r7TyDCRLW/TJi4dIQY/YwgJRl1Jpbr2RaUS+HkZTdrF+15zF8Em6KrHs/nj8xDEF
-         Smg4WiDWZmO0kusi2swiuxnezb+mX7U42E146IGwAHW2pszCa4rxtqXPh6KHARWD8pwN
-         vUh+sd6/XOu8V7BFq2RbEtxWf+gHcFD7CBj14fVfoRXYJTCsDKdNMMD53yie2X107z3d
-         qUIjaq57eXex/zwaQ+lRALUYJdCi+bKS6RGMDm1FVJ0WP1mED3PXsBJGzW9dkBBc4Zgq
-         bIwN2fYh+4yIBjaI74Ks3tH5Jyq2ooZjmQGXgMtcA5MkxQCOT0KUZwHHQoosBVUQ6zfc
-         XOWA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=efmC0iabVdGP6DYqFeqJHJTFiGBWq12ZJql3cELBfVw=;
+        b=Fgc7WF50JWonYlOXH05+kS76mT25wJYr7x5TTdbRcKcBJEFIoP1iR2fDfCJmuPDQBC
+         XFkJw3OA+Eg5byuJkBku5tHzo62PdLP1usTk134eypPXvVBvyp9rSUbimmS4l4oM0mYK
+         h5VQjpYzQcJwFP/wTKGz099t56caT2qamC7RAMkbACqFZXmUzhIbUmGEFR5eh+l7JUzv
+         LICCatbAJKaaDG7gJCMoNj0Jw6zKZTQYXUVt+RRJVMFMMNN434t466mudSelvbCpxihJ
+         xwKxJcdQ2zLmqWyNkcfNnRx+mvKZENDwvaVZIgbDETP4hdkd3jcUbQKBnQhbrv20lp51
+         7Y6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRyABnj0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=C4JoKWxU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l6si3666009vkg.33.2021.10.26.08.21.20
+        by mx.google.com with ESMTPS id m14si2485773oih.16.2021.10.26.08.21.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Oct 2021 08:21:26 -0700 (PDT)
+        Tue, 26 Oct 2021 08:21:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRyABnj0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=C4JoKWxU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36640 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38014 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mfOGO-000659-4V
-	for alex.bennee@linaro.org; Tue, 26 Oct 2021 11:21:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44664)
+	id 1mfOGv-000723-4Y
+	for alex.bennee@linaro.org; Tue, 26 Oct 2021 11:21:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mfO98-0005K3-Fn
- for qemu-devel@nongnu.org; Tue, 26 Oct 2021 11:13:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42704)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1mfO6a-0001NP-40
+ for qemu-devel@nongnu.org; Tue, 26 Oct 2021 11:11:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60992)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mfO96-0003QK-Je
- for qemu-devel@nongnu.org; Tue, 26 Oct 2021 11:13:50 -0400
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1mfO6V-0004DW-IU
+ for qemu-devel@nongnu.org; Tue, 26 Oct 2021 11:11:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635261228;
+ s=mimecast20190719; t=1635261065;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ykTal0/5+S/liv+W7/qzcM/9C/Hy2XT7+1ke8mWd3e4=;
- b=BRyABnj01ddPZf8b0wRdZmXzG56+IpEH8pXpc+/uKvRjVRpC6H8oelOErB21Rgka/XdcuL
- TR4dpyAWQKgD0nOVldY9gS85KkKT9agipn8Jf+POoKU91GOEgPI25nlHO8vCJlXj42+zsN
- YfViwtQ2P34qNMewwI/4fIkKubjQYSQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-597-9-h7WVI3MtGS8NmjDfkaxw-1; Tue, 26 Oct 2021 11:13:46 -0400
-X-MC-Unique: 9-h7WVI3MtGS8NmjDfkaxw-1
-Received: by mail-wm1-f71.google.com with SMTP id
- i187-20020a1c3bc4000000b0032ccd252cf3so306729wma.7
- for <qemu-devel@nongnu.org>; Tue, 26 Oct 2021 08:13:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=ykTal0/5+S/liv+W7/qzcM/9C/Hy2XT7+1ke8mWd3e4=;
- b=SiaHd6c7UTUwEGEAx0ZVAplKsOUUsuvzf1JqrcSoUxoC+8GwfDX0hoo1Abq9d/Exlv
- 44cKfl4IgV7n4Pk+jDcHkgahPow4At2YVOe8CHqggGo5faQ8gKGQV7Qcnkvc6dXKf7/H
- YBfZCo49je0hpTe6TOgomcaHSoVAv3kbt0GtMzK7EVpqODyT+2Ndz5xNP6nI5sOObNCo
- XnBGmzXZPLwu+8v2vAtowZ/NgPNSEwWLo1KdPYPTzNLsTM7AyFUQmpclq1ZWotZuQjKW
- selHS4bhNqNu3AoHb/LrbWN2zsIzEbBeu0Lg2WtR/BfUfvdsJwbr+JWrxxbxczzTX2v4
- nEtw==
-X-Gm-Message-State: AOAM532/AJszz2eUnhNdZ6wvChf5kskKU/qgUrVXQbCXpFvTD1paHzFv
- Sh7/fX7JZOcum3Re1LdoC3ZMBN3/aUFFc52PdHkttpYKbOWhwzZySs5alSrSd9jO+zkev0qhcjg
- BZARuvslcp4iT1IU=
-X-Received: by 2002:a05:600c:35d0:: with SMTP id
- r16mr57207608wmq.97.1635261225521; 
- Tue, 26 Oct 2021 08:13:45 -0700 (PDT)
-X-Received: by 2002:a05:600c:35d0:: with SMTP id
- r16mr57207580wmq.97.1635261225291; 
- Tue, 26 Oct 2021 08:13:45 -0700 (PDT)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id f17sm11943327wrv.89.2021.10.26.08.13.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Oct 2021 08:13:44 -0700 (PDT)
-Message-ID: <72b6e6d9-8e4e-de18-3617-da3ff9690b2d@redhat.com>
-Date: Tue, 26 Oct 2021 17:13:43 +0200
+ content-transfer-encoding:content-transfer-encoding;
+ bh=efmC0iabVdGP6DYqFeqJHJTFiGBWq12ZJql3cELBfVw=;
+ b=C4JoKWxUJkblhbF9JU/eBzpYYtikdwT5XYDgXRyd9Tsfk1eH7Go3IdkZwaBTTWyg0iH7Oc
+ 8hcNJoRWUzkA4cG2UyxBVBhRdOG34X8G254qgTsqav/SnW9ZdxBSm0LL3DfelfSHHtdI8y
+ pGuo9ufHj0TUoTPzZjpx5V2Eo1qQtwQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-569-Agm69IODN_qJNw71ORYjVQ-1; Tue, 26 Oct 2021 11:11:03 -0400
+X-MC-Unique: Agm69IODN_qJNw71ORYjVQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 126118735C2;
+ Tue, 26 Oct 2021 15:11:02 +0000 (UTC)
+Received: from localhost (unknown [10.22.17.166])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 76A5919D9D;
+ Tue, 26 Oct 2021 15:11:01 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 0/3] pc: Support configuration of SMBIOS entry point type
+Date: Tue, 26 Oct 2021 11:10:57 -0400
+Message-Id: <20211026151100.1691925-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v3 1/3] smbios: Rename SMBIOS_ENTRY_POINT_* enums
-To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
-References: <20211026151100.1691925-1-ehabkost@redhat.com>
- <20211026151100.1691925-2-ehabkost@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <20211026151100.1691925-2-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.215,
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -135,51 +110,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Daniel P. Berrange" <berrange@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eric Blake <eblake@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Igor Mammedov <imammedo@redhat.com>, Eric Blake <eblake@redhat.com>
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3RTwVMz6V1sA
+X-TUID: AxVxAVZwIJis
 
-On 10/26/21 17:10, Eduardo Habkost wrote:
-> Rename the enums to match the naming style used by QAPI, and to
-> use "32" and "64" instead of "20" and "31".  This will allow us
-> to more easily move the enum to the QAPI schema later.
-> 
-> About the naming choice: "SMBIOS 2.1 entry point"/"SMBIO 3.0
-> entry point" and "32-bit entry point"/"64-bit entry point" are
-> synonymous in the SMBIOS specification.  However, the phrases
-> "32-bit entry point" and "64-bit entry point" are used more often.
-> 
-> The new names also avoid confusion between the entry point format
-> and the actual SMBIOS version reported in the entry point
-> structure.  For example: currently the 32-bit entry point
-> actually report SMBIOS 2.8 support, not 2.1.
-> 
-> Based on portions of a patch submitted by Daniel P. Berrangé.
-> 
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
-> First version of this code was submitted at:
-> https://lore.kernel.org/qemu-devel/20200908165438.1008942-5-berrange@redhat.com
-> 
-> Changes from v2:
-> * Use "32" and "64" instead of "2_0" and "3_1"
-> 
-> Changes from v1:
-> * Patch was split in two
-> * Hunks included this patch are not changed from v1
-> ---
->  include/hw/firmware/smbios.h | 4 ++--
->  hw/arm/virt.c                | 2 +-
->  hw/i386/pc_piix.c            | 2 +-
->  hw/i386/pc_q35.c             | 2 +-
->  hw/smbios/smbios.c           | 8 ++++----
->  5 files changed, 9 insertions(+), 9 deletions(-)
+This includes code previously submitted[1] by Daniel P. Berrangé
+to add a "smbios-ep" machine property on PC.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+SMBIOS 3.0 is necessary to support more than ~720 VCPUs, as a
+large number of VCPUs can easily hit the table size limit of
+SMBIOS 2.1 entry points.
+
+Changes from v2:
+* Renamed option to "smbios-entry-point-type" for clarity
+* Renamed option values to "32" and "64", for two reasons:
+  * The option is not about reporting an exact SMBIOS
+    version, but just the entry point format.
+    FWIW, the SMBIOS specification uses the phrases "32-bit entry
+    point" and "64-bit entry point" more often than "2.1 entry
+    point" and "3.0 entry point".
+  * QAPI doesn't allow us to use enum member names with dots
+    or underscores
+
+[1] https://lore.kernel.org/qemu-devel/20200908165438.1008942-5-berrange@redhat.com
+    https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@redhat.com
+
+Eduardo Habkost (3):
+  smbios: Rename SMBIOS_ENTRY_POINT_* enums
+  hw/smbios: Use qapi for SmbiosEntryPointType
+  hw/i386: expose a "smbios-entry-point-type" PC machine property
+
+ include/hw/firmware/smbios.h | 10 ++--------
+ include/hw/i386/pc.h         |  4 ++++
+ hw/arm/virt.c                |  2 +-
+ hw/i386/pc.c                 | 26 ++++++++++++++++++++++++++
+ hw/i386/pc_piix.c            |  2 +-
+ hw/i386/pc_q35.c             |  2 +-
+ hw/smbios/smbios.c           |  8 ++++----
+ qapi/machine.json            | 12 ++++++++++++
+ 8 files changed, 51 insertions(+), 15 deletions(-)
+
+-- 
+2.32.0
 

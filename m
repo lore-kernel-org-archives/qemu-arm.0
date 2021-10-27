@@ -1,100 +1,99 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp2175176lfn;
-        Tue, 26 Oct 2021 21:58:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwpENNl+CiemDE2VD97IlRFeh6/aTQquMZ2h/kk4ACNUzQLKfeVyKaFpa0GaRiU9p/PwA2D
-X-Received: by 2002:a4a:d84e:: with SMTP id g14mr20326413oov.62.1635310682837;
-        Tue, 26 Oct 2021 21:58:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635310682; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp2175632lfn;
+        Tue, 26 Oct 2021 21:58:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHd2oMi9OVUX3egxtl6g8Wv1kzLGJUrOfuJ9kNclhgYQv1icQCiPLoOByPfJnaUgh93gY+
+X-Received: by 2002:a05:6808:56e:: with SMTP id j14mr2072810oig.177.1635310731127;
+        Tue, 26 Oct 2021 21:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635310731; cv=none;
         d=google.com; s=arc-20160816;
-        b=ILbhhb3mjjYkHTHw3eJDNhd2q/EiU6A6SWeTi6p4CzDUMCLebB0NUCbG5PSPg57OsG
-         QTgQmHtiFFFvlJoIgrnIaWLHwUmIGnW9izw7nUJuSaa3WEyG23MTYuJJvhWegqKIfhth
-         p/3Fjok0Z0vd2MW/YIfKIpYf8l06cDTWCtJU75xOfQQNwLgA+KjLcko4eLEJ6u5pGCa7
-         Gd63AmDZOVvqHCH7SLBJ+uyJ6qVDC6d2I3bndCKwGgBNfoc278r6kyn+XLa6fDdHSqfE
-         tcADMkOKxubg3Ra7u+Wt1NFuhenpNqHgz2BNihd2WXYHK/BUFqIQTb4TP+4ssGR0duQ7
-         hGVg==
+        b=gaXywmvWpMmldZEPQugIrb7kNDPaQwCzMAi/yDS3mjiDJHUigXv5FEiEQvH04nxi8h
+         txWCRGa34a4wpuEPlYN/xC0f+ZUe96p6SsbWN5UpO/n/yq75qEzvYVY14YNz1LjJB6/5
+         /ZTf5mRVD3KxipztjQFX68Jv3YiwJR6ApVQ+EZiZNsTrwrVjd3hE1xtRSAPuYT+nThsk
+         YrbpMJwiUEBgIBDuaUx9ZqRvcGqm8M3d4q0PEpQn2Y68vGvjdIItWsO5yMo1FMqrVMmU
+         N5J83ekzqIzWE2d8pMu50iEH5G6Om33ah87nX937rguLYE4HlO1F276Wv5w3RykvI3jB
+         vYCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=MY9quCqJ/2Bz6tK8Zx9ZzguPdmzXrHRSyEOAkDlUTqE=;
-        b=YU6p7xY5vFbkiLJ4/t8V+4PNbIA5vt9z6MFESq5CYf+odoVXoC6+AoIpjB21meGOCl
-         9fDc9eVuh+Hwq3fI+jBlNQkEmKxbpxceoryy58WCF06CnvVMcbNvu6WBqpQJcggfmmkT
-         lV4yvn6+0uhwQOlJM8HtkcUvEU9Uv3f6fAPA3/hj9coki8RfAN3vWVMTgHfZez0cJyaF
-         1CFEL95qyqzJtVXlFWOVRDVp3JHS4P7qY/W3/ZmR0dT0L3MVZVsfS6tDQDGaciA9dORh
-         515JdFRbzuhYcIgJqVQgKaqYxKPqI3jjU3H/yqGHmu8vuLXxzj2BhKV2FtXys6Vd7Ey/
-         o28A==
+        bh=Xgqwxzvm1yoHh/fzT0KNAI1LNIKM1+1SON195Vhqr/o=;
+        b=iqvtrwLgvXP5qAxGrimfeHO9371ZuTIluMvCR3AJWEzWqemPeKL8jtT4qDTfAO//rG
+         t5SCMk4XQBwM0WWiJgk85sEoF4v0x6Hnew2AEPz5I92SGdTd+BgLHIDQUADZQzGuuhEl
+         OVGJyjX0800bTdr0Uekg6AHEvGRzw5Qgk8YzlwJzySxHl36kzaBEQjjIgId/iUHDZSUe
+         GL+O8ChNAdE9/Uz4eadKUyAzjMjTt/41n5zW6dnqo2Je5DVqxIA6Pbm7JBS6CT5qnA0i
+         MHcs/QgvIrJ9SwdAalLzznoVwKh2ObCjwL41xm3Z+2djItDZT0isrdq89L5oLqeVg1tX
+         9p9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=X8rD3XRQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="UIt/DChP";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q5si26179952otk.209.2021.10.26.21.58.02
+        by mx.google.com with ESMTPS id d2si1240981oia.268.2021.10.26.21.58.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Oct 2021 21:58:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 26 Oct 2021 21:58:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=X8rD3XRQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44108 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b="UIt/DChP";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mfb0k-0006tF-00
-	for alex.bennee@linaro.org; Wed, 27 Oct 2021 00:58:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53456)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mfb1W-00080K-AD
+	for alex.bennee@linaro.org; Wed, 27 Oct 2021 00:58:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfazJ-0005ZP-AE; Wed, 27 Oct 2021 00:56:34 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:38507)
+ id 1mfazA-0005I1-KM; Wed, 27 Oct 2021 00:56:24 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:51101)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfazH-0005cC-4e; Wed, 27 Oct 2021 00:56:33 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id u18so1901474wrg.5;
- Tue, 26 Oct 2021 21:56:30 -0700 (PDT)
+ id 1mfaz7-0005CN-SD; Wed, 27 Oct 2021 00:56:24 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id b71so651542wmd.0;
+ Tue, 26 Oct 2021 21:56:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MY9quCqJ/2Bz6tK8Zx9ZzguPdmzXrHRSyEOAkDlUTqE=;
- b=X8rD3XRQQbIQ8SMC/Nk5M7bQ94j/6zB4N/OuCASoFwtlzKH8rAcjVvxlTB3WNO1pAl
- NEk8LaRchiDAKnkJiFrjG5qMyiz0R1rq0Gc7uSLuVmRlcdOdXRUgo34B3LWixMOHF3A2
- s1xqzxYWWNyd4q02U1VuoZ8LS5c02P1gSihtYK2kjBTzQyL4rZEYBncs97H8HnmY43yZ
- Z6nx8Xd3UAJrr4Sjs9BYdCZcP6stKAj09adf9C0My9P80o9npiVGxJNLGihGdbatV6MO
- Sgm7vQ/a8vnrYXBG3IVLCm5rdiLWkKQZcMeHeOJ9ISKbX1OwGpUOjtjdv5dT6SE0lNNU
- USMg==
+ bh=Xgqwxzvm1yoHh/fzT0KNAI1LNIKM1+1SON195Vhqr/o=;
+ b=UIt/DChPhUSIG3lPRxfquQIOiN8e1V2Th5+2iNdfQj7m3mYpVBQQqAYP2M2LCr6BYY
+ gRMA8o/+e/70yDg4rCkYg2bzYmTHrZdG5Zx2vddBTSa1urIsbPiz2F5TnaTTfTeps4MH
+ rT6/QuqxOUbBgunO03a5iIVxNwtji6BQLsZt0VxB6ynhdHcRB+PERGTA/qFCC0Gckqof
+ Bkgrc76D82hMdY43vpI5nsOTyrIExwSidVj1P7uk8Qga2Y4prQ+bBtRJ5RmNNu7K5jMv
+ Y6GqrLu+ecKgF0UTmKHqY7zK41kYULWr6Gu4IK9BrnTP1aSVF4jIiPHPWWZEar9Bx64f
+ w/EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=MY9quCqJ/2Bz6tK8Zx9ZzguPdmzXrHRSyEOAkDlUTqE=;
- b=RuZQ4sV16MDqz3Bv38yYKk7LXOQboRNdQYPTS/e5KXdNFfM8512kjckZpmsnnQpbTZ
- 02UjuMTBT0IIMr7I8B+lojBa2A+dqFdrNPx27i+mTZOlgrpdma4Pz0itOm7KWcaGHD0D
- 4b8hh1M8vWKcl0wHE9tUG8SY3YGPNdNFGRyV7ZXURcKDUpvqQG77M/YpxZPcEXxut8zo
- aKkWXc4UiWW0IEB60/FETcO70IXmYUBO3G/WDJSPyqWtAU+kgmX6CYVR32kFJ3tWujpv
- /8N2niEI836jcn3hh0ZIzDxARoqLCICFRP91+cG/1OPIZ1gDRtO7XQJ6mXl+z2zQCmn9
- TMSg==
-X-Gm-Message-State: AOAM532i953Xqv1LSElKjyLMzmss4ykPSttLJgKAxM15S9K9C2o8r9TH
- k5VA0XfPNVr596aeZA93k8oeOP1U3Wo=
-X-Received: by 2002:adf:dc0e:: with SMTP id t14mr38656196wri.277.1635310589374; 
- Tue, 26 Oct 2021 21:56:29 -0700 (PDT)
+ bh=Xgqwxzvm1yoHh/fzT0KNAI1LNIKM1+1SON195Vhqr/o=;
+ b=IdyejG1GBsz/aqZJcdugp04p0p0oxzUS6sVXsK+qszKlKEHUVE0mp4sFcNeBHU7viA
+ F5rVdVQdlXXW8WD+Lc7FG3tT3JSm5aw4EmPWFvbOoh/q/ZUM8uD2pW0Y1OewnxV9UAmd
+ zTSbsP846nj133KSToG0H8PIXV/CU8JNZ7L11ESknkHzGgo/k7w+wDur3Tsurs4cWxsK
+ 8sB1rUFVxL6XAj1jqPfc6cdEijsvg+APXp7oXTKiWvwRh9CEM+DrMvW1vN3x1y+AmH3y
+ 1L8msSwuJ4yGIfrQ3TZOGLUvIUk0xV48M6PT20CZEI6o7xd7szteXkdBWrvCyYXwcg94
+ 0xWA==
+X-Gm-Message-State: AOAM530rSc5m/vcqyvS3OVnrRoSWWuzpbvEfSUp/L78J9FfvxU+eOxMd
+ B5tcaVfwb7ecO+eIjOg8hh60ldaBiaQ=
+X-Received: by 2002:a7b:c927:: with SMTP id h7mr3288597wml.68.1635310579926;
+ Tue, 26 Oct 2021 21:56:19 -0700 (PDT)
 Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
  [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id b15sm2251061wmj.22.2021.10.26.21.56.28
+ by smtp.gmail.com with ESMTPSA id d3sm21667468wrb.36.2021.10.26.21.56.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Oct 2021 21:56:29 -0700 (PDT)
+ Tue, 26 Oct 2021 21:56:19 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 4/4] target/arm: Use tcg_constant_i64() in
- do_sat_addsub_64()
-Date: Wed, 27 Oct 2021 06:56:07 +0200
-Message-Id: <20211027045607.1261526-5-f4bug@amsat.org>
+Subject: [PATCH v2 2/4] target/arm: Introduce store_cpu_field_constant() helper
+Date: Wed, 27 Oct 2021 06:56:05 +0200
+Message-Id: <20211027045607.1261526-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211027045607.1261526-1-f4bug@amsat.org>
 References: <20211027045607.1261526-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -104,89 +103,77 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GotU8VVJ4pa2
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q6Ibl6YCvY7k
 
-The immediate value used for comparison is constant and
-read-only. Move it to the constant pool. This frees a
-TCG temporary for unsigned saturation opcodes.
+Similarly to the store_cpu_field() helper which takes a TCG
+temporary, store its value to the CPUState, introduce the
+store_cpu_field_constant() helper which store a constant to
+CPUState (without using any TCG temporary).
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Update the single store_cpu_offset() user in do_coproc_insn().
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/translate-sve.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ target/arm/translate-a32.h | 11 ++++++++---
+ target/arm/translate.c     |  2 +-
+ 2 files changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index bc91a641711..76b5fe9f313 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -1943,20 +1943,20 @@ static void do_sat_addsub_32(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
- static void do_sat_addsub_64(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
+diff --git a/target/arm/translate-a32.h b/target/arm/translate-a32.h
+index 88f15df60e8..2e708ca3dbc 100644
+--- a/target/arm/translate-a32.h
++++ b/target/arm/translate-a32.h
+@@ -61,14 +61,19 @@ static inline TCGv_i32 load_cpu_offset(int offset)
+ 
+ #define load_cpu_field(name) load_cpu_offset(offsetof(CPUARMState, name))
+ 
+-static inline void store_cpu_offset(TCGv_i32 var, int offset)
++static inline void store_cpu_offset(TCGv_i32 var, int offset, bool is_temp)
  {
-     TCGv_i64 t0 = tcg_temp_new_i64();
--    TCGv_i64 t1 = tcg_temp_new_i64();
-     TCGv_i64 t2;
- 
-     if (u) {
-         if (d) {
-             tcg_gen_sub_i64(t0, reg, val);
--            tcg_gen_movi_i64(t1, 0);
--            tcg_gen_movcond_i64(TCG_COND_LTU, reg, reg, val, t1, t0);
-+            t2 = tcg_constant_i64(0);
-+            tcg_gen_movcond_i64(TCG_COND_LTU, reg, reg, val, t2, t0);
-         } else {
-             tcg_gen_add_i64(t0, reg, val);
--            tcg_gen_movi_i64(t1, -1);
--            tcg_gen_movcond_i64(TCG_COND_LTU, reg, t0, reg, t1, t0);
-+            t2 = tcg_constant_i64(-1);
-+            tcg_gen_movcond_i64(TCG_COND_LTU, reg, t0, reg, t2, t0);
-         }
-     } else {
-+        TCGv_i64 t1 = tcg_temp_new_i64();
-         if (d) {
-             /* Detect signed overflow for subtraction.  */
-             tcg_gen_xor_i64(t0, reg, val);
-@@ -1966,7 +1966,7 @@ static void do_sat_addsub_64(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
- 
-             /* Bound the result.  */
-             tcg_gen_movi_i64(reg, INT64_MIN);
--            t2 = tcg_const_i64(0);
-+            t2 = tcg_constant_i64(0);
-             tcg_gen_movcond_i64(TCG_COND_LT, reg, t0, t2, reg, t1);
-         } else {
-             /* Detect signed overflow for addition.  */
-@@ -1977,13 +1977,12 @@ static void do_sat_addsub_64(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
- 
-             /* Bound the result.  */
-             tcg_gen_movi_i64(t1, INT64_MAX);
--            t2 = tcg_const_i64(0);
-+            t2 = tcg_constant_i64(0);
-             tcg_gen_movcond_i64(TCG_COND_LT, reg, t0, t2, t1, reg);
-         }
--        tcg_temp_free_i64(t2);
-+        tcg_temp_free_i64(t1);
-     }
-     tcg_temp_free_i64(t0);
--    tcg_temp_free_i64(t1);
+     tcg_gen_st_i32(var, cpu_env, offset);
+-    tcg_temp_free_i32(var);
++    if (is_temp) {
++        tcg_temp_free_i32(var);
++    }
  }
  
- /* Similarly with a vector and a scalar operand.  */
+ #define store_cpu_field(var, name) \
+-    store_cpu_offset(var, offsetof(CPUARMState, name))
++    store_cpu_offset(var, offsetof(CPUARMState, name), true)
++
++#define store_cpu_field_constant(val, name) \
++    store_cpu_offset(tcg_constant_i32(val), offsetof(CPUARMState, name), false)
+ 
+ /* Create a new temporary and set it to the value of a CPU register.  */
+ static inline TCGv_i32 load_reg(DisasContext *s, int reg)
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 083a6d6ed77..5061e55f2c0 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -4855,7 +4855,7 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+                     tcg_temp_free_i32(tmp);
+                 } else {
+                     TCGv_i32 tmp = load_reg(s, rt);
+-                    store_cpu_offset(tmp, ri->fieldoffset);
++                    store_cpu_offset(tmp, ri->fieldoffset, true);
+                 }
+             }
+         }
 -- 
 2.31.1
 

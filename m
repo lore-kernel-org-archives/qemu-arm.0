@@ -1,176 +1,253 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp379493lfn;
-        Wed, 27 Oct 2021 08:12:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3gddtfSjbI3150KF3k3ZseGW5Dnq9WVZFWE6omIa0ZAHvL5UdgfZOF4jywfFa40iuHcXc
-X-Received: by 2002:a05:6102:6d0:: with SMTP id m16mr3822068vsg.51.1635347524419;
-        Wed, 27 Oct 2021 08:12:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635347524; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp385940lfn;
+        Wed, 27 Oct 2021 08:17:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgBXXIpbRqDw+aPECDVRxvhESMteEPQ1kbMmHEKyKXXttLgr/A7hgdQ/4q6Au9HdvZEUml
+X-Received: by 2002:a05:6808:aaa:: with SMTP id r10mr4144816oij.11.1635347861801;
+        Wed, 27 Oct 2021 08:17:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635347861; cv=none;
         d=google.com; s=arc-20160816;
-        b=mgUHnyzUZyScMW5yQ5oywR6Q5+DfcIfKVi4T3JuhiYcuLgegDTkcCJidc8owXf5Vpa
-         nUlRXAy8ez3AaV2WTE9Zs63B4SVrRByhSfXDsClxO5jcdq+nsGDccCBGoa0vRC4y/m+7
-         ag1CgjtHs9zPnznFIza26S2kWN4PjiH63pWbJ7//tyCcTj6SflaAKqogZsAzVznsFHvd
-         gcQpXG/H/JnHa9KYWQ6Wa2Ehh1lLK/+gg81etGBuWE1chXK58BhVuLSGNTKuPbqePeOX
-         pXN7NX730PZlzZlHPRSgFl4UoUETFf6wv79HkWnwMeodEn8NRd9aJ4GuYoMTgmYBQJK2
-         uygA==
+        b=S48blrvwOQHJCWDLp5XnlDe2jpo8uUSrPi7NveuIZluPHpRpbwfRL6k9g2R2DW8nzX
+         k9CH5ugHHLIKoe+C9pHV6MaGg5yfgBWVlLh49bmRgJtK8fAjj7iJA35aW1coHEXxolZP
+         R4+PS+52Yfc9KYvRmJq8ABVwMaqL8ryiNMOBzEtksFx1Tft/nJEyhlpmAKj2n0xN0nD4
+         VrGPp+HcTeiR/Px6AO24u7+Qtxn+RInoaPwUFK4GjvZxeLold2BIcROEcr/x4tQizDiG
+         AR8LUNRX1rNqtKNr4+K4Cq8xMyi3g62gFr/IpacxZ8uLXl/WKJEO1NbdUI0E6oYGLoMp
+         Ay8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=PnIdW+DHvgHFNRa+Ue3gGMMML41h2EqhG4MYKV4I+7c=;
-        b=lV4xj9+l4ZM9J55rj23BZgzQg3MoWedyvE0+o4SB1X7DlOAdY0c9yHYc5z5BpVTV4C
-         3dcU21agKL0c4QCO3Wz5qgD4nYEjOzt9gJxQ4Jo6b5vQCRlDjj06dt9ycnlSegyMNstg
-         yXZZJoUaqrvTiiNz+LEihq3cfIAkMeqCr6p/97zMj6VjIdcCb3RT1FtMAa7muFDvcglc
-         2v7ITpM8xBJkUG8RKQfcHUlrTUpD++PxOn0crTLqpw+jpROCUAenptj8zFRg3gm0698k
-         ApwUpcr70i/XAI5feTYWSlLG2cvskZlMGmbiAGwK2LVLpcmsFXhvmRTDKQwjfJhZXdcX
-         9NPg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=coChYFomU7o4Ce+HeCP18IomfCTFSt1HNUC3K53689g=;
+        b=n7C/2w1yUPNGp/MABw96L5Yp0KqSG/M1oHVQl8DBYAxzrhvZBrVvCYKJYSaEV/6+lf
+         3p7OzE6tZ5PUG5Sq36kgqWYhRfMdZgXUqoVPi3rMO7LgJZaFyAmS1anYydnEM30rXhzK
+         RTTSZDlP++JEm/p5yMfWN4ErH8cZy6ABqx7iePBxwtzudercWOBDW2ZyIBvCRaK5dP2H
+         GefjYVq2oDXOiFw5qW9oRJcoeacDcdUoPSc2R+FuvHgnjXGrzdTBiLWp47t5wE6jctto
+         oj/8tSD9Vrrdo/UEpFH5NXMfZ1+qI9vUv+SZCoo0Yv485o73qtgqdyDwL0ShG6q0x42O
+         WD3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bypd0dCM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XOgsEJ8c;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s28si330091vsj.437.2021.10.27.08.12.04
+        by mx.google.com with ESMTPS id bi35si353261oib.19.2021.10.27.08.17.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Oct 2021 08:12:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Oct 2021 08:17:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bypd0dCM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XOgsEJ8c;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42706 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mfkax-0006lA-HC
-	for alex.bennee@linaro.org; Wed, 27 Oct 2021 11:12:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47252)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mfkgO-00070D-Ur
+	for alex.bennee@linaro.org; Wed, 27 Oct 2021 11:17:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mfjqI-0004IH-Tb
- for qemu-arm@nongnu.org; Wed, 27 Oct 2021 10:23:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55471)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mfjxn-00048a-CT
+ for qemu-devel@nongnu.org; Wed, 27 Oct 2021 10:31:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:25143)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mfjqF-0007UX-51
- for qemu-arm@nongnu.org; Wed, 27 Oct 2021 10:23:49 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mfjxi-0000v2-B9
+ for qemu-devel@nongnu.org; Wed, 27 Oct 2021 10:31:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635344625;
+ s=mimecast20190719; t=1635345088;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=PnIdW+DHvgHFNRa+Ue3gGMMML41h2EqhG4MYKV4I+7c=;
- b=bypd0dCMghqwmaJfD4/D3T15tmCe88Sol2FBn1r76WwyRilIWeIyBYWnt5CmSlPFyfizfI
- s7ynj7t0fhZpnSHQWzF0k0NzPuUovOuwTMWP46oGoJrXKrq/nbKZ0aPARK7zUduSF7sTZN
- pBkmajAb3jSB8akUE4IuIH6jEi4jp1I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-581-lWrYexuGO8WjWYstOZbzsw-1; Wed, 27 Oct 2021 10:23:43 -0400
-X-MC-Unique: lWrYexuGO8WjWYstOZbzsw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C1A8410247AB;
- Wed, 27 Oct 2021 14:23:41 +0000 (UTC)
-Received: from localhost (unknown [10.22.17.166])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 803511002D6A;
- Wed, 27 Oct 2021 14:23:29 +0000 (UTC)
-Date: Wed, 27 Oct 2021 10:23:29 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH v3 1/3] smbios: Rename SMBIOS_ENTRY_POINT_* enums
-Message-ID: <20211027142329.lcsday3kbet6pplz@habkost.net>
-References: <20211026151100.1691925-1-ehabkost@redhat.com>
- <20211026151100.1691925-2-ehabkost@redhat.com>
- <20211027034303-mutt-send-email-mst@kernel.org>
+ bh=coChYFomU7o4Ce+HeCP18IomfCTFSt1HNUC3K53689g=;
+ b=XOgsEJ8cmQoeeoN5AIsUEvOTNvpZgeg+hCJqfszkRdvjxAJmJSyZuCbFKsQqbXHj+GliuD
+ E5UozDXtflDVGJ0fGodhgvtj9LNzQ/UzwjLFGqAphCL0CubwtyfiSl349aeTvCcwqpuxgk
+ /2GW7XvBNHtQCCYFllSdVv+hSJ4Hl64=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-88-oFWq_lIaMT6ohZTWL6Q9VA-1; Wed, 27 Oct 2021 10:31:27 -0400
+X-MC-Unique: oFWq_lIaMT6ohZTWL6Q9VA-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ s18-20020a056402521200b003dd5902f4f3so2433005edd.23
+ for <qemu-devel@nongnu.org>; Wed, 27 Oct 2021 07:31:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=coChYFomU7o4Ce+HeCP18IomfCTFSt1HNUC3K53689g=;
+ b=6VEhs4JB9lWGKKevk875sz9r16RtvCqAwenuCYHxXzG8znvK8oTz9SZhz2ktWUfK4A
+ /qgq6Uay/q0JbK0lqmS+OSq42+f+iBcaEuY7HQ78oE44aLcmGXMVbZk3t8e7HNRvq9vk
+ P/dMJWKEZI0sfTxWdEeXKudUDhhOmyij68bv4sPszn88NqvYqCu980EWmKQ+up3LdX9e
+ lkKKEHghOg84JEUGn7awdHEPet1j2XlXUBOuWLpgezC5SutPWnw/i7F0MhLIE4SCSmYv
+ 2Ug521fD+lfeY3yy/QZ2UltIOUuzeEuLASzIFWzhTr19rDr1treEuQDi7nosQ01CX9cy
+ A4Pg==
+X-Gm-Message-State: AOAM531TmYUMc11fZo4D59i79Jkh9SfYK5B5QGttIt1ZrCTvaAnuWvJE
+ L6OJ7Xo8tGTksj3ftdE+7l1CX73Lvp/gx4omFu9lYd8H1zWAv7MTeItidxfYyfnCvuI7yaBqHGK
+ C4ptR9c4EeQt1I+A=
+X-Received: by 2002:a17:906:4fd6:: with SMTP id
+ i22mr38846713ejw.92.1635345085492; 
+ Wed, 27 Oct 2021 07:31:25 -0700 (PDT)
+X-Received: by 2002:a17:906:4fd6:: with SMTP id
+ i22mr38846660ejw.92.1635345085118; 
+ Wed, 27 Oct 2021 07:31:25 -0700 (PDT)
+Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id qa16sm21795ejc.120.2021.10.27.07.31.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Oct 2021 07:31:24 -0700 (PDT)
+Date: Wed, 27 Oct 2021 16:31:23 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH] hw/arm/virt: Expose empty NUMA nodes through ACPI
+Message-ID: <20211027163123.270d077b@redhat.com>
+In-Reply-To: <b7b100dc-0555-774a-5b98-2ebc4f2645b0@redhat.com>
+References: <20211025234101.224705-1-gshan@redhat.com>
+ <20211026114751.427205bc@redhat.com>
+ <b7b100dc-0555-774a-5b98-2ebc4f2645b0@redhat.com>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20211027034303-mutt-send-email-mst@kernel.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Igor Mammedov <imammedo@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i8wuP9mldRI4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, ehabkost@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ shan.gavin@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DmJNuj6RuaXs
 
-On Wed, Oct 27, 2021 at 03:43:43AM -0400, Michael S. Tsirkin wrote:
-> On Tue, Oct 26, 2021 at 11:10:58AM -0400, Eduardo Habkost wrote:
-> > Rename the enums to match the naming style used by QAPI, and to
-> > use "32" and "64" instead of "20" and "31".  This will allow us
-> > to more easily move the enum to the QAPI schema later.
+On Wed, 27 Oct 2021 16:20:30 +1100
+Gavin Shan <gshan@redhat.com> wrote:
+
+> On 10/26/21 8:47 PM, Igor Mammedov wrote:
+> > On Tue, 26 Oct 2021 07:41:01 +0800
+> > Gavin Shan <gshan@redhat.com> wrote:
+> >   
+> >> The empty NUMA nodes, where no memory resides, aren't exposed
+> >> through ACPI SRAT table. It's not user preferred behaviour because
+> >> the corresponding memory node devices are missed from the guest
+> >> kernel as the following example shows, and memory can't be hot
+> >> added to these empty NUMA nodes at later point.  
 > > 
-> > About the naming choice: "SMBIOS 2.1 entry point"/"SMBIO 3.0
+> > a error message one gets would be useful here.
+> > 
+> > btw:
+> > memory hotplug seems to work for x86 without adding empty nodes.
+> > So it beg a question, if absence of empty nodes is the issue here.
+> >   
 > 
-> typo in commit log
+> Yes, the memory can be still hot added even the empty NUMA nodes
+> aren't exposed. However, we still need to expose them so that
+> the guest kernel has the information as the users specifies.
 
-I'll fix it, thanks!
+commit message says that memory can't be hotplugged though ...
+so what doesn't work/is broken currently.
 
-> 
-> > entry point" and "32-bit entry point"/"64-bit entry point" are
-> > synonymous in the SMBIOS specification.  However, the phrases
-> > "32-bit entry point" and "64-bit entry point" are used more often.
-> > 
-> > The new names also avoid confusion between the entry point format
-> > and the actual SMBIOS version reported in the entry point
-> > structure.  For example: currently the 32-bit entry point
-> > actually report SMBIOS 2.8 support, not 2.1.
-> > 
-> > Based on portions of a patch submitted by Daniel P. Berrangé.
-> 
-> I think you need the original S.O.B here too then.
+Question is why do we need to expose empty nodes
+that aren't warranted by any present hardware (cpu/mem)?
+(so far I see it as extra burden on qemu without any gain)
 
-I'm not sure it is appropriate here, as zero lines of code from
-the original patch remain here.
+SRAT is typically used to describe startup configuration,
+any changes to topology later during runtime are
+made using _PXM objects.
+
+
 
 > 
-> > 
-> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> > ---
-> > First version of this code was submitted at:
-> > https://lore.kernel.org/qemu-devel/20200908165438.1008942-5-berrange@redhat.com
-> > 
-> > Changes from v2:
-> > * Use "32" and "64" instead of "2_0" and "3_1"
-> > 
-> > Changes from v1:
-> > * Patch was split in two
-> > * Hunks included this patch are not changed from v1
-
--- 
-Eduardo
+> I will make the commit log more precise in v2.
+> 
+> >>
+> >>    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+> >>    -accel kvm -machine virt,gic-version=host               \
+> >>    -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+> >>    -m 1024M,slots=16,maxmem=64G                            \
+> >>    -object memory-backend-ram,id=mem0,size=512M            \
+> >>    -object memory-backend-ram,id=mem1,size=512M            \
+> >>    -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+> >>    -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+> >>    -numa node,nodeid=2                                     \
+> >>    -numa node,nodeid=3                                     \
+> >>       :
+> >>    guest# ls /sys/devices/system/node | grep node
+> >>    node0
+> >>    node1
+> >>    node2
+> >>
+> >> This exposes these empty NUMA nodes through ACPI SRAT table. With
+> >> this applied, the corresponding memory node devices can be found
+> >> from the guest. Note that the hotpluggable capability is explicitly
+> >> given to these empty NUMA nodes for sake of completeness.
+> >>
+> >>    guest# ls /sys/devices/system/node | grep node
+> >>    node0
+> >>    node1
+> >>    node2
+> >>    node3
+> >>
+> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> >> ---
+> >>   hw/arm/virt-acpi-build.c | 14 +++++++++-----
+> >>   1 file changed, 9 insertions(+), 5 deletions(-)
+> >>
+> >> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> >> index 674f902652..a4c95b2f64 100644
+> >> --- a/hw/arm/virt-acpi-build.c
+> >> +++ b/hw/arm/virt-acpi-build.c
+> >> @@ -526,6 +526,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>       const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(ms);
+> >>       AcpiTable table = { .sig = "SRAT", .rev = 3, .oem_id = vms->oem_id,
+> >>                           .oem_table_id = vms->oem_table_id };
+> >> +    MemoryAffinityFlags flags;
+> >>   
+> >>       acpi_table_begin(&table, table_data);
+> >>       build_append_int_noprefix(table_data, 1, 4); /* Reserved */
+> >> @@ -547,12 +548,15 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>   
+> >>       mem_base = vms->memmap[VIRT_MEM].base;
+> >>       for (i = 0; i < ms->numa_state->num_nodes; ++i) {
+> >> -        if (ms->numa_state->nodes[i].node_mem > 0) {
+> >> -            build_srat_memory(table_data, mem_base,
+> >> -                              ms->numa_state->nodes[i].node_mem, i,
+> >> -                              MEM_AFFINITY_ENABLED);
+> >> -            mem_base += ms->numa_state->nodes[i].node_mem;
+> >> +        if (ms->numa_state->nodes[i].node_mem) {
+> >> +            flags = MEM_AFFINITY_ENABLED;
+> >> +        } else {
+> >> +            flags = MEM_AFFINITY_ENABLED | MEM_AFFINITY_HOTPLUGGABLE;
+> >>           }
+> >> +
+> >> +        build_srat_memory(table_data, mem_base,
+> >> +                          ms->numa_state->nodes[i].node_mem, i, flags);
+> >> +        mem_base += ms->numa_state->nodes[i].node_mem;
+> >>       }
+> >>   
+> >>       if (ms->nvdimms_state->is_enabled) {  
+> >   
+> 
+> Thanks,
+> Gavin
+> 
 

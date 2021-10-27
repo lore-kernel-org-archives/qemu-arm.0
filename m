@@ -1,104 +1,109 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp2181955lfn;
-        Tue, 26 Oct 2021 22:07:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6gbM+W5Y/h7z1PtEk3HpmUlR8XOTmm9dacCx4SSrj1+oMGIlQq83C4CwAMCGFAkY0JOqI
-X-Received: by 2002:a9d:66d5:: with SMTP id t21mr4938975otm.4.1635311243192;
-        Tue, 26 Oct 2021 22:07:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635311243; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp2188218lfn;
+        Tue, 26 Oct 2021 22:16:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyfyopCrvS6jQwOyXQi600m0P8JiTnRhLqiAmsfUKQdvG646JfZZN8/j8v8TONZkWUACrrC
+X-Received: by 2002:a05:6830:2685:: with SMTP id l5mr19981621otu.268.1635311795841;
+        Tue, 26 Oct 2021 22:16:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635311795; cv=none;
         d=google.com; s=arc-20160816;
-        b=PkZ+SvI/1bfa1Xc0i+ubwo10JGh4BL88DbFvJAO2WjWh129hecg938YRSxOiUUXv+R
-         u+mXPwLhF+5mT5JACdsYBoLCB09l+rqxLi9K/mHU2UzogFyxiMPv1qWJUQlQIbM1rsux
-         h2imQ7Wkrb0BPeUDmwQLvDYZ4OqI33LIWeSBZ+vWmwRwq58ZhzVeip+slFOjg5TZUXqn
-         AEr3n2j83wTZqIR7u/wpnTxqd1wpdISIu3vP4ZD7w6AWrLdkq207WxfxKLO2WtDBzzmm
-         zBy6n+vg8P+BwPxg/LLCRsj0HBWyCwJWLJMU3fsaEJNsc52g/ZFXTfEtDPba0DYw/13j
-         v7og==
+        b=b5CrFGX4HU5HQKy4PefZv7IQUpsHYm003i5H0oBtmh5z/aIdHGeF5S2/PrvY0d4mXl
+         71+dPsPpIfFuuH5JC7+Pj/1UYSPlHo5ifDDtFfpjNGhuhspbcb0RhStAkV9JHoi0LXtd
+         bOlrqIkRFW6nJ2rd4mYwa4dNVzaxlLivZcpuQQw+1c+LmBDyo3c9eN9Xevfo4G27kHLf
+         yL9Ottph3sjjVh70wJsndY6ESbmV+2TPHZ/K5XUg1F9dRPEbUtVQsAYmY3Saj2d1Hh40
+         PoCVeMy4rk0aNvCFPug4Uit04hBHBp8m9Wgj3fMG4DWWAMtYwd5gVjsEdu4uYFZLTYtS
+         DkSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=P2zY8VnMxEj7Q/Oh++PVCEOCyr1gbKSTWGTaCnhCWj8=;
-        b=KfYv2tZeUFy2sydiDIEZY+PUCyTgbRthi5xFSPPtsyqbyxcovS4MQYMvg1ovb/UJqY
-         qDps7FTf1AuLQvNYoaw1TCiHHitkrn7qdPBppVGf6xSKNei9FshCkla1pfz0VqGkE2Sm
-         1eZOkI+qqjS00hi1xrppKApI5EDpd8UJtWUPFavGtWSSa6Szp+tE9dWiQRaXWr5O++6c
-         O1DDZj960R8dZeldQFbz+BG3kgOZ48lvHEsI7//m+th35sw2GfkqRJAPIyyFLNfY/oix
-         Hm9k/UgHBpZCdDLVExcUwzE3ZuMZ/d/Yte0A1YcoBdV/jWAgLLcglA8JLSd/75CGO5P4
-         D+iw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=9VRPWwwpjAw70W3UfdX/uMVJKvaG6SKNzbULtzXfAAY=;
+        b=bWRKXmU94VScUlSR9LpSf+/Dc5Grr3D87/OkyjKTKDh8/ho/79/uJk0xlYytDe+p0O
+         yDhewMntH+zv3Czfq/UDMjAgl8SZ+cMEToMAg6I6M3VHsiKi4gcmpnZYnq8QNSknXIkc
+         9aiUB58YljyqwnIOqCpfZcShMMK+jJl6B7MAAiDnq3MrCS9ZtuVcn23N9SvqxTm//ANN
+         Zzcil7DvQEkXVZX5KlIhFq9GXx9l0kB6o/A0xZ0XtZa9BkdgKOP8XftlLCTg8rYcyAAK
+         a7ZqGSR0ieAfJHKSeRcJbzCqOhUIj5BXohaw/w9XQtjcj81W5BVMWlxsvKNM23Lm0zKd
+         C5YQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=E0p1treh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YlfhYgpm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i7si4636781ots.14.2021.10.26.22.07.22
+        by mx.google.com with ESMTPS id e26si33884256otf.53.2021.10.26.22.16.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Oct 2021 22:07:23 -0700 (PDT)
+        Tue, 26 Oct 2021 22:16:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=E0p1treh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56184 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YlfhYgpm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mfb9m-0006r8-B9
-	for alex.bennee@linaro.org; Wed, 27 Oct 2021 01:07:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54804)
+	id 1mfbIh-0005C0-39
+	for alex.bennee@linaro.org; Wed, 27 Oct 2021 01:16:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfb8x-0006nr-TI; Wed, 27 Oct 2021 01:06:31 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:36417)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfb8v-0000y2-RC; Wed, 27 Oct 2021 01:06:31 -0400
-Received: by mail-wr1-x436.google.com with SMTP id i9so1952830wrc.3;
- Tue, 26 Oct 2021 22:06:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=P2zY8VnMxEj7Q/Oh++PVCEOCyr1gbKSTWGTaCnhCWj8=;
- b=E0p1trehGn+hj2JwiD6m5mprUH35LV/NXJXR3Tkfds0iocOXu0e6UOcajuBGE4670P
- jZ4dcLIUQ5SoaEoU1ifp7R8hBVOGQrYoRX0Rd89yj+aNogj5EDePo6C0bRGvFa9k9uH0
- lfKiLikyZeRGM3MrSKi39fgHp1WEqGuDNCmHlxuov+Q/DWqjK1xoZthdQ+2THtzVqb3c
- FeuzrXmKokW9wKlIs6m1M+JNx9vMobXeA/8g429STCPajiVZAfQI+ogZVAgx2Oa3x4h3
- 45jTv1vK5O72DOOaFQ0+5BJD3h/eeeTg7Dh2eelpSRe+T/wZjiVDWUItRMO/uS79fcTY
- ygdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=P2zY8VnMxEj7Q/Oh++PVCEOCyr1gbKSTWGTaCnhCWj8=;
- b=Mvd+BJYo9tHrWqxSxXqJTK3dp9g/u3F1ti6/1kal6fn1GcEHm66eRf9TDynL5WGtnh
- Zy1rNi6uDGrZTIeakYXzTpDJJt4DN/bptYMMQyMMabVDFaviTfO58HLWKk6b2Q4HhFhw
- BW8u9o9/1gq2CM4JDczhyJaS2oy1BVTLzYosQcuDDPSy0+FQnZxI2UFyoCoNxC4j5pFj
- YACPTS0KGg22ywewZltYBI6WOkvDT4+1omH672RuMccNlfTlpxwpVqLTpmVVV8Bvi5Xz
- ff15vEyi+7wfW7QwJ3HC1pAKoB1dCMf/JYBcxL3v0swI1duLi9p91gD+LR2qVYtPebmu
- buSw==
-X-Gm-Message-State: AOAM530JBfq4SwAk+Mn5QuCSaFpVcjawNP+0E9b6hfcz7x5zaJtqAyFb
- zcQinGmhgUQ2y8SI8VL82OxAjEECDi8=
-X-Received: by 2002:adf:a118:: with SMTP id o24mr37122936wro.15.1635311187492; 
- Tue, 26 Oct 2021 22:06:27 -0700 (PDT)
-Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id g3sm23758947wri.45.2021.10.26.22.06.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Oct 2021 22:06:26 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2] hw: Add a 'Sensor devices' qdev category
-Date: Wed, 27 Oct 2021 07:06:25 +0200
-Message-Id: <20211027050625.1265828-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mfbIW-0005Ab-MB
+ for qemu-arm@nongnu.org; Wed, 27 Oct 2021 01:16:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:28210)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mfbIS-00056s-0C
+ for qemu-arm@nongnu.org; Wed, 27 Oct 2021 01:16:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1635311776;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9VRPWwwpjAw70W3UfdX/uMVJKvaG6SKNzbULtzXfAAY=;
+ b=YlfhYgpm+kocwk/XcIAGd3uai872hW4EqlYfmZaALr7R3BsEi1jA1sKAl7bGGsYBThUB9P
+ wNAz4+sHCdLsX/8VbC/ivCCfCpVjmH90u242TwigOD7RQmHBl6nG5VxBWEAB4ZtaIg56Sx
+ bf09qLK3G3jdzx4+oTTQPOxO0OMi8YI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-496-2pZ8mDS7MIiCmBuayzaheQ-1; Wed, 27 Oct 2021 01:16:12 -0400
+X-MC-Unique: 2pZ8mDS7MIiCmBuayzaheQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5F5441006AA2;
+ Wed, 27 Oct 2021 05:16:11 +0000 (UTC)
+Received: from [10.64.54.187] (vpn2-54-187.bne.redhat.com [10.64.54.187])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 415D4101E692;
+ Wed, 27 Oct 2021 05:16:03 +0000 (UTC)
+Subject: Re: [PATCH] hw/arm/virt: Expose empty NUMA nodes through ACPI
+To: Andrew Jones <drjones@redhat.com>
+References: <20211025234101.224705-1-gshan@redhat.com>
+ <20211026062523.xjsnwl64hte3zphi@gator.home>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <ebbf0627-7865-3128-6e5e-bed4ba1eafd5@redhat.com>
+Date: Wed, 27 Oct 2021 16:16:01 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20211026062523.xjsnwl64hte3zphi@gator.home>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.215, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,136 +116,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Hao Wu <wuhaotsh@google.com>, qemu-trivial@nongnu.org,
- John Wang <wangzhiqiang.bj@bytedance.com>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, shan.gavin@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d/k6q114u+SS
+X-TUID: twFBVraRjlBX
 
-Sensors models are listed in the 'Misc devices' category.
-Move them to their own category.
+On 10/26/21 5:25 PM, Andrew Jones wrote:
+> On Tue, Oct 26, 2021 at 07:41:01AM +0800, Gavin Shan wrote:
+>> The empty NUMA nodes, where no memory resides, aren't exposed
+>> through ACPI SRAT table. It's not user preferred behaviour because
+>> the corresponding memory node devices are missed from the guest
+>> kernel as the following example shows, and memory can't be hot
+>> added to these empty NUMA nodes at later point.
+>>
+>>    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+>>    -accel kvm -machine virt,gic-version=host               \
+>>    -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+>>    -m 1024M,slots=16,maxmem=64G                            \
+>>    -object memory-backend-ram,id=mem0,size=512M            \
+>>    -object memory-backend-ram,id=mem1,size=512M            \
+>>    -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+>>    -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+>>    -numa node,nodeid=2                                     \
+>>    -numa node,nodeid=3                                     \
+>>       :
+>>    guest# ls /sys/devices/system/node | grep node
+>>    node0
+>>    node1
+>>    node2
+> 
+> node2 shouldn't be in this list, should it?
+> 
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-v2: Only include hw/sensor/, removed AER915 device from hw/arm/z2.c
----
- include/hw/qdev-core.h | 1 +
- hw/sensor/adm1272.c    | 1 +
- hw/sensor/dps310.c     | 1 +
- hw/sensor/emc141x.c    | 1 +
- hw/sensor/max34451.c   | 2 ++
- hw/sensor/tmp105.c     | 1 +
- hw/sensor/tmp421.c     | 1 +
- softmmu/qdev-monitor.c | 1 +
- 8 files changed, 9 insertions(+)
+Yes, the list shouldn't include node2. I'll amend the commit
+log in v2.
 
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 1bad07002df..2fd6b73bd8b 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -26,6 +26,7 @@ typedef enum DeviceCategory {
-     DEVICE_CATEGORY_SOUND,
-     DEVICE_CATEGORY_MISC,
-     DEVICE_CATEGORY_CPU,
-+    DEVICE_CATEGORY_SENSOR,
-     DEVICE_CATEGORY_MAX
- } DeviceCategory;
- 
-diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
-index 7310c769be2..2942ac75f90 100644
---- a/hw/sensor/adm1272.c
-+++ b/hw/sensor/adm1272.c
-@@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
- 
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->desc = "Analog Devices ADM1272 Hot Swap controller";
-     dc->vmsd = &vmstate_adm1272;
-     k->write_data = adm1272_write_data;
-diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
-index d60a18ac41b..1e24a499b38 100644
---- a/hw/sensor/dps310.c
-+++ b/hw/sensor/dps310.c
-@@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass, void *data)
-     k->send = dps310_tx;
-     dc->reset = dps310_reset;
-     dc->vmsd = &vmstate_dps310;
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
- }
- 
- static const TypeInfo dps310_info = {
-diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c
-index 7ce8f4e9794..4202d8f185a 100644
---- a/hw/sensor/emc141x.c
-+++ b/hw/sensor/emc141x.c
-@@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->reset = emc141x_reset;
-     k->event = emc141x_event;
-     k->recv = emc141x_rx;
-diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
-index a91d8bd487c..8300bf4ff43 100644
---- a/hw/sensor/max34451.c
-+++ b/hw/sensor/max34451.c
-@@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass, void *data)
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
-+
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->desc = "Maxim MAX34451 16-Channel V/I monitor";
-     dc->vmsd = &vmstate_max34451;
-     k->write_data = max34451_write_data;
-diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-index 20564494899..43d79b9eeec 100644
---- a/hw/sensor/tmp105.c
-+++ b/hw/sensor/tmp105.c
-@@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->realize = tmp105_realize;
-     k->event = tmp105_event;
-     k->recv = tmp105_rx;
-diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-index a3db57dcb5a..c328978af9c 100644
---- a/hw/sensor/tmp421.c
-+++ b/hw/sensor/tmp421.c
-@@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-     TMP421Class *sc = TMP421_CLASS(klass);
- 
-+    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
-     dc->realize = tmp421_realize;
-     k->event = tmp421_event;
-     k->recv = tmp421_rx;
-diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-index 4851de51a5c..a411af03c5c 100644
---- a/softmmu/qdev-monitor.c
-+++ b/softmmu/qdev-monitor.c
-@@ -164,6 +164,7 @@ static void qdev_print_devinfos(bool show_no_user)
-         [DEVICE_CATEGORY_SOUND]   = "Sound",
-         [DEVICE_CATEGORY_MISC]    = "Misc",
-         [DEVICE_CATEGORY_CPU]     = "CPU",
-+        [DEVICE_CATEGORY_SENSOR]  = "Sensor",
-         [DEVICE_CATEGORY_MAX]     = "Uncategorized",
-     };
-     GSList *list, *elt;
--- 
-2.31.1
+>>
+>> This exposes these empty NUMA nodes through ACPI SRAT table. With
+>> this applied, the corresponding memory node devices can be found
+>> from the guest. Note that the hotpluggable capability is explicitly
+>> given to these empty NUMA nodes for sake of completeness.
+>>
+>>    guest# ls /sys/devices/system/node | grep node
+>>    node0
+>>    node1
+>>    node2
+>>    node3
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   hw/arm/virt-acpi-build.c | 14 +++++++++-----
+>>   1 file changed, 9 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 674f902652..a4c95b2f64 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -526,6 +526,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>       const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(ms);
+>>       AcpiTable table = { .sig = "SRAT", .rev = 3, .oem_id = vms->oem_id,
+>>                           .oem_table_id = vms->oem_table_id };
+>> +    MemoryAffinityFlags flags;
+>>   
+>>       acpi_table_begin(&table, table_data);
+>>       build_append_int_noprefix(table_data, 1, 4); /* Reserved */
+>> @@ -547,12 +548,15 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>   
+>>       mem_base = vms->memmap[VIRT_MEM].base;
+>>       for (i = 0; i < ms->numa_state->num_nodes; ++i) {
+>> -        if (ms->numa_state->nodes[i].node_mem > 0) {
+>> -            build_srat_memory(table_data, mem_base,
+>> -                              ms->numa_state->nodes[i].node_mem, i,
+>> -                              MEM_AFFINITY_ENABLED);
+>> -            mem_base += ms->numa_state->nodes[i].node_mem;
+>> +        if (ms->numa_state->nodes[i].node_mem) {
+>> +            flags = MEM_AFFINITY_ENABLED;
+>> +        } else {
+>> +            flags = MEM_AFFINITY_ENABLED | MEM_AFFINITY_HOTPLUGGABLE;
+>>           }
+>> +
+>> +        build_srat_memory(table_data, mem_base,
+>> +                          ms->numa_state->nodes[i].node_mem, i, flags);
+>> +        mem_base += ms->numa_state->nodes[i].node_mem;
+>>       }
+>>   
+>>       if (ms->nvdimms_state->is_enabled) {
+>> -- 
+>> 2.23.0
+>>
+> 
+> Besides the possible issue with the commit message,
+> 
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+> 
+
+Thanks,
+Gavin
 

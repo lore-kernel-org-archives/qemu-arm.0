@@ -1,102 +1,96 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp2176756lfn;
-        Tue, 26 Oct 2021 22:00:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFI0fFaC1mOpymhIUtZlGX+rqpzmEadVB+ANNcFer5jRpGWJI9Hso20+RjBL6DklzvBFB9
-X-Received: by 2002:aca:bf06:: with SMTP id p6mr2111367oif.42.1635310835286;
-        Tue, 26 Oct 2021 22:00:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635310835; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp2181955lfn;
+        Tue, 26 Oct 2021 22:07:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz6gbM+W5Y/h7z1PtEk3HpmUlR8XOTmm9dacCx4SSrj1+oMGIlQq83C4CwAMCGFAkY0JOqI
+X-Received: by 2002:a9d:66d5:: with SMTP id t21mr4938975otm.4.1635311243192;
+        Tue, 26 Oct 2021 22:07:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635311243; cv=none;
         d=google.com; s=arc-20160816;
-        b=A0SAXaSC7BUrj2NiUuFdQxx9sbf+lT8N/BPAHht6sLnhEuhgzpvcXPksEHoxU0OAdx
-         dNS1PEk2BjiBaurSKh9Fq9qW/WBbg2p0QPQrSU5ud+O4CzNwyySOEZKvqmkwqaHd0LLa
-         oQkJSIRGlWu7RMPrNNOJN2uAw5rFT/crbviAQt37jZsBWOXEWBTWQbrlmFm6hGlSCrbY
-         46N+rXkF0/x2XUdMDKNVVc/hbPpyJtqZ14jvH+phLdXVgcDIfwh4vDRxQ/zu6hMWBQ2a
-         4hUmCJu6BB8JwXB1JHTfZY/SBfXBVCaVrMAfV5o05xxXVNJxnscGudG90xf8KlV1QZMq
-         BHXg==
+        b=PkZ+SvI/1bfa1Xc0i+ubwo10JGh4BL88DbFvJAO2WjWh129hecg938YRSxOiUUXv+R
+         u+mXPwLhF+5mT5JACdsYBoLCB09l+rqxLi9K/mHU2UzogFyxiMPv1qWJUQlQIbM1rsux
+         h2imQ7Wkrb0BPeUDmwQLvDYZ4OqI33LIWeSBZ+vWmwRwq58ZhzVeip+slFOjg5TZUXqn
+         AEr3n2j83wTZqIR7u/wpnTxqd1wpdISIu3vP4ZD7w6AWrLdkq207WxfxKLO2WtDBzzmm
+         zBy6n+vg8P+BwPxg/LLCRsj0HBWyCwJWLJMU3fsaEJNsc52g/ZFXTfEtDPba0DYw/13j
+         v7og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=aUWK5GIvdKJkNgsviIlVDW6DDcBmHOa3/s4hjVgxLIw=;
-        b=sHHr/hlS53Ec1MJCN0T7MMAhYfbHHgcVGPP2c6uKI2q2nfCHPr0wV1gybuXuUGK8Fy
-         LlTEFmsFFvNhAdAlQ2SzPjjTocdfqX+J9UKkTlp5XGhogSj8QegzEHIl63OoUxNMhpb0
-         mulmcjbjaGTxqEWoRPtyBQLdTjKtWjq57Bc5W9V4c7KtjIsWZPZwKxiZlp4clK0vlgcv
-         Q3Do3BujhSmFQzlGnw+BvNkW6VFr8nLKSoCzss5/XrcW3vqLH/RnlekgMIALV8NH4sm8
-         goGLsYxPofn9fBdskMIWrY/joThHEGwc1ud6SIE5DIH4pgE5+Nlp6NceZrZ58jmOIhgO
-         w7Og==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=P2zY8VnMxEj7Q/Oh++PVCEOCyr1gbKSTWGTaCnhCWj8=;
+        b=KfYv2tZeUFy2sydiDIEZY+PUCyTgbRthi5xFSPPtsyqbyxcovS4MQYMvg1ovb/UJqY
+         qDps7FTf1AuLQvNYoaw1TCiHHitkrn7qdPBppVGf6xSKNei9FshCkla1pfz0VqGkE2Sm
+         1eZOkI+qqjS00hi1xrppKApI5EDpd8UJtWUPFavGtWSSa6Szp+tE9dWiQRaXWr5O++6c
+         O1DDZj960R8dZeldQFbz+BG3kgOZ48lvHEsI7//m+th35sw2GfkqRJAPIyyFLNfY/oix
+         Hm9k/UgHBpZCdDLVExcUwzE3ZuMZ/d/Yte0A1YcoBdV/jWAgLLcglA8JLSd/75CGO5P4
+         D+iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WNcyyKAO;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=E0p1treh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13si26333739oig.23.2021.10.26.22.00.35
+        by mx.google.com with ESMTPS id i7si4636781ots.14.2021.10.26.22.07.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Oct 2021 22:00:35 -0700 (PDT)
+        Tue, 26 Oct 2021 22:07:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=WNcyyKAO;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=E0p1treh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50546 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56184 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mfb3C-0002m0-HG
-	for alex.bennee@linaro.org; Wed, 27 Oct 2021 01:00:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53438)
+	id 1mfb9m-0006r8-B9
+	for alex.bennee@linaro.org; Wed, 27 Oct 2021 01:07:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfazE-0005Sv-HT; Wed, 27 Oct 2021 00:56:28 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:37463)
+ id 1mfb8x-0006nr-TI; Wed, 27 Oct 2021 01:06:31 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:36417)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfazC-0005Ly-H7; Wed, 27 Oct 2021 00:56:28 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 82-20020a1c0055000000b0032ccc3ad5c1so3155432wma.2; 
- Tue, 26 Oct 2021 21:56:25 -0700 (PDT)
+ id 1mfb8v-0000y2-RC; Wed, 27 Oct 2021 01:06:31 -0400
+Received: by mail-wr1-x436.google.com with SMTP id i9so1952830wrc.3;
+ Tue, 26 Oct 2021 22:06:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=aUWK5GIvdKJkNgsviIlVDW6DDcBmHOa3/s4hjVgxLIw=;
- b=WNcyyKAOyKM2YG9mLLHAoUI/rb1qWiiLyA753qocH5gbs5OXE2iiV76u2YCQPwgaW9
- 1oWhYMTcskLUI4FJApUynN2/ZTdrpTLzVqDFnV2PxSCvkljhm/8S8CPwsn7jgBEzTpYd
- +Ut3sBHfx/GlFr+fQ/CilAwstsLZ4yq18oOetNrDShw6j5Na51e1QtfXAKA3R6idNNLW
- v1gudQNkNjLjSxeyOrGuvK/9PtxKt+gU3Yfr5iAWy8NV66dUjo89xFY8CxSkkBzV0w37
- eFBNFVf+CRJcYsWYHPxnTRwHglkRqg8ATaj1eeEs20hgn0fJXoqmxarALun1Gh3YzSCT
- rnrQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P2zY8VnMxEj7Q/Oh++PVCEOCyr1gbKSTWGTaCnhCWj8=;
+ b=E0p1trehGn+hj2JwiD6m5mprUH35LV/NXJXR3Tkfds0iocOXu0e6UOcajuBGE4670P
+ jZ4dcLIUQ5SoaEoU1ifp7R8hBVOGQrYoRX0Rd89yj+aNogj5EDePo6C0bRGvFa9k9uH0
+ lfKiLikyZeRGM3MrSKi39fgHp1WEqGuDNCmHlxuov+Q/DWqjK1xoZthdQ+2THtzVqb3c
+ FeuzrXmKokW9wKlIs6m1M+JNx9vMobXeA/8g429STCPajiVZAfQI+ogZVAgx2Oa3x4h3
+ 45jTv1vK5O72DOOaFQ0+5BJD3h/eeeTg7Dh2eelpSRe+T/wZjiVDWUItRMO/uS79fcTY
+ ygdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=aUWK5GIvdKJkNgsviIlVDW6DDcBmHOa3/s4hjVgxLIw=;
- b=tEgdkXT2qfsnzHE5m5K3fiYLEwZovzjRTuaHPQ31N4q9txQbRqZuD2blcbAiZdSB34
- oqKChoGF2lVnbfnBtoBYqUtoxNPYUY1TDCwBS2Y2N/jvUyZGBqc6rPRQ5puoFJcDTEOj
- OmmmWPEh9beN5dNMHcntUykjHE18E/8ztKCbB2A8jqqOnlT3T7YN6rJt79E8xQACWNxs
- /FOo6cgIrkWfUGtSHzv7MkYKXoF8ozZkqIymN1P6/v12226XKqyCu79+GxgduHb1/ha0
- mQjjtgeSxIzhN4PjAUnIomul01tEb8iQiY9T+caYvi7h9QYf2/kzu958ZEiaRhfFY4bL
- HQPg==
-X-Gm-Message-State: AOAM533En0/aXRL6egYaWfacg3kQYw0uanjhWDt1WtLFSD/UH9CirmJU
- M2kmivq4A4xlWOm9il8YS5gFA5KFLsU=
-X-Received: by 2002:a05:600c:4f81:: with SMTP id
- n1mr3289012wmq.63.1635310584729; 
- Tue, 26 Oct 2021 21:56:24 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=P2zY8VnMxEj7Q/Oh++PVCEOCyr1gbKSTWGTaCnhCWj8=;
+ b=Mvd+BJYo9tHrWqxSxXqJTK3dp9g/u3F1ti6/1kal6fn1GcEHm66eRf9TDynL5WGtnh
+ Zy1rNi6uDGrZTIeakYXzTpDJJt4DN/bptYMMQyMMabVDFaviTfO58HLWKk6b2Q4HhFhw
+ BW8u9o9/1gq2CM4JDczhyJaS2oy1BVTLzYosQcuDDPSy0+FQnZxI2UFyoCoNxC4j5pFj
+ YACPTS0KGg22ywewZltYBI6WOkvDT4+1omH672RuMccNlfTlpxwpVqLTpmVVV8Bvi5Xz
+ ff15vEyi+7wfW7QwJ3HC1pAKoB1dCMf/JYBcxL3v0swI1duLi9p91gD+LR2qVYtPebmu
+ buSw==
+X-Gm-Message-State: AOAM530JBfq4SwAk+Mn5QuCSaFpVcjawNP+0E9b6hfcz7x5zaJtqAyFb
+ zcQinGmhgUQ2y8SI8VL82OxAjEECDi8=
+X-Received: by 2002:adf:a118:: with SMTP id o24mr37122936wro.15.1635311187492; 
+ Tue, 26 Oct 2021 22:06:27 -0700 (PDT)
 Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
  [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id i14sm2206763wmb.48.2021.10.26.21.56.23
+ by smtp.gmail.com with ESMTPSA id g3sm23758947wri.45.2021.10.26.22.06.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Oct 2021 21:56:24 -0700 (PDT)
+ Tue, 26 Oct 2021 22:06:26 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/4] target/arm: Use the constant variant of
- store_cpu_field() when possible
-Date: Wed, 27 Oct 2021 06:56:06 +0200
-Message-Id: <20211027045607.1261526-4-f4bug@amsat.org>
+Subject: [PATCH v2] hw: Add a 'Sensor devices' qdev category
+Date: Wed, 27 Oct 2021 07:06:25 +0200
+Message-Id: <20211027050625.1265828-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211027045607.1261526-1-f4bug@amsat.org>
-References: <20211027045607.1261526-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -117,96 +111,136 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare <titusr@google.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Hao Wu <wuhaotsh@google.com>, qemu-trivial@nongnu.org,
+ John Wang <wangzhiqiang.bj@bytedance.com>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Bin Meng <bmeng.cn@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tb1M3LSJcTtd
+X-TUID: d/k6q114u+SS
 
-When using a constant variable, we can replace the store_cpu_field()
-call by store_cpu_field_constant() which avoid using TCG temporaries.
+Sensors models are listed in the 'Misc devices' category.
+Move them to their own category.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/translate.c | 21 ++++++---------------
- 1 file changed, 6 insertions(+), 15 deletions(-)
+v2: Only include hw/sensor/, removed AER915 device from hw/arm/z2.c
+---
+ include/hw/qdev-core.h | 1 +
+ hw/sensor/adm1272.c    | 1 +
+ hw/sensor/dps310.c     | 1 +
+ hw/sensor/emc141x.c    | 1 +
+ hw/sensor/max34451.c   | 2 ++
+ hw/sensor/tmp105.c     | 1 +
+ hw/sensor/tmp421.c     | 1 +
+ softmmu/qdev-monitor.c | 1 +
+ 8 files changed, 9 insertions(+)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 5061e55f2c0..484b0eed0cb 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -364,8 +364,7 @@ void clear_eci_state(DisasContext *s)
-      * multiple insn executes.
-      */
-     if (s->eci) {
--        TCGv_i32 tmp = tcg_const_i32(0);
--        store_cpu_field(tmp, condexec_bits);
-+        store_cpu_field_constant(0, condexec_bits);
-         s->eci = 0;
-     }
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 1bad07002df..2fd6b73bd8b 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -26,6 +26,7 @@ typedef enum DeviceCategory {
+     DEVICE_CATEGORY_SOUND,
+     DEVICE_CATEGORY_MISC,
+     DEVICE_CATEGORY_CPU,
++    DEVICE_CATEGORY_SENSOR,
+     DEVICE_CATEGORY_MAX
+ } DeviceCategory;
+ 
+diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
+index 7310c769be2..2942ac75f90 100644
+--- a/hw/sensor/adm1272.c
++++ b/hw/sensor/adm1272.c
+@@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
+ 
++    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+     dc->desc = "Analog Devices ADM1272 Hot Swap controller";
+     dc->vmsd = &vmstate_adm1272;
+     k->write_data = adm1272_write_data;
+diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
+index d60a18ac41b..1e24a499b38 100644
+--- a/hw/sensor/dps310.c
++++ b/hw/sensor/dps310.c
+@@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass, void *data)
+     k->send = dps310_tx;
+     dc->reset = dps310_reset;
+     dc->vmsd = &vmstate_dps310;
++    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
  }
-@@ -740,9 +739,8 @@ void gen_set_condexec(DisasContext *s)
- {
-     if (s->condexec_mask) {
-         uint32_t val = (s->condexec_cond << 4) | (s->condexec_mask >> 1);
--        TCGv_i32 tmp = tcg_temp_new_i32();
--        tcg_gen_movi_i32(tmp, val);
--        store_cpu_field(tmp, condexec_bits);
+ 
+ static const TypeInfo dps310_info = {
+diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c
+index 7ce8f4e9794..4202d8f185a 100644
+--- a/hw/sensor/emc141x.c
++++ b/hw/sensor/emc141x.c
+@@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+ 
++    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+     dc->reset = emc141x_reset;
+     k->event = emc141x_event;
+     k->recv = emc141x_rx;
+diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
+index a91d8bd487c..8300bf4ff43 100644
+--- a/hw/sensor/max34451.c
++++ b/hw/sensor/max34451.c
+@@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass, void *data)
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
 +
-+        store_cpu_field_constant(val, condexec_bits);
-     }
- }
++    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+     dc->desc = "Maxim MAX34451 16-Channel V/I monitor";
+     dc->vmsd = &vmstate_max34451;
+     k->write_data = max34451_write_data;
+diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
+index 20564494899..43d79b9eeec 100644
+--- a/hw/sensor/tmp105.c
++++ b/hw/sensor/tmp105.c
+@@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
  
-@@ -8362,8 +8360,6 @@ static bool trans_BL(DisasContext *s, arg_i *a)
++    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+     dc->realize = tmp105_realize;
+     k->event = tmp105_event;
+     k->recv = tmp105_rx;
+diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
+index a3db57dcb5a..c328978af9c 100644
+--- a/hw/sensor/tmp421.c
++++ b/hw/sensor/tmp421.c
+@@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+     TMP421Class *sc = TMP421_CLASS(klass);
  
- static bool trans_BLX_i(DisasContext *s, arg_BLX_i *a)
- {
--    TCGv_i32 tmp;
--
-     /*
-      * BLX <imm> would be useless on M-profile; the encoding space
-      * is used for other insns from v8.1M onward, and UNDEFs before that.
-@@ -8377,8 +8373,7 @@ static bool trans_BLX_i(DisasContext *s, arg_BLX_i *a)
-         return false;
-     }
-     tcg_gen_movi_i32(cpu_R[14], s->base.pc_next | s->thumb);
--    tmp = tcg_const_i32(!s->thumb);
--    store_cpu_field(tmp, thumb);
-+    store_cpu_field_constant(!s->thumb, thumb);
-     gen_jmp(s, (read_pc(s) & ~3) + a->imm);
-     return true;
- }
-@@ -8677,7 +8672,6 @@ static bool trans_LCTP(DisasContext *s, arg_LCTP *a)
-      * doesn't cache branch information, all we need to do is reset
-      * FPSCR.LTPSIZE to 4.
-      */
--    TCGv_i32 ltpsize;
- 
-     if (!dc_isar_feature(aa32_lob, s) ||
-         !dc_isar_feature(aa32_mve, s)) {
-@@ -8688,8 +8682,7 @@ static bool trans_LCTP(DisasContext *s, arg_LCTP *a)
-         return true;
-     }
- 
--    ltpsize = tcg_const_i32(4);
--    store_cpu_field(ltpsize, v7m.ltpsize);
-+    store_cpu_field_constant(4, v7m.ltpsize);
-     return true;
- }
- 
-@@ -9487,9 +9480,7 @@ static void arm_tr_tb_start(DisasContextBase *dcbase, CPUState *cpu)
-     /* Reset the conditional execution bits immediately. This avoids
-        complications trying to do it at the end of the block.  */
-     if (dc->condexec_mask || dc->condexec_cond) {
--        TCGv_i32 tmp = tcg_temp_new_i32();
--        tcg_gen_movi_i32(tmp, 0);
--        store_cpu_field(tmp, condexec_bits);
-+        store_cpu_field_constant(0, condexec_bits);
-     }
- }
- 
++    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+     dc->realize = tmp421_realize;
+     k->event = tmp421_event;
+     k->recv = tmp421_rx;
+diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+index 4851de51a5c..a411af03c5c 100644
+--- a/softmmu/qdev-monitor.c
++++ b/softmmu/qdev-monitor.c
+@@ -164,6 +164,7 @@ static void qdev_print_devinfos(bool show_no_user)
+         [DEVICE_CATEGORY_SOUND]   = "Sound",
+         [DEVICE_CATEGORY_MISC]    = "Misc",
+         [DEVICE_CATEGORY_CPU]     = "CPU",
++        [DEVICE_CATEGORY_SENSOR]  = "Sensor",
+         [DEVICE_CATEGORY_MAX]     = "Uncategorized",
+     };
+     GSList *list, *elt;
 -- 
 2.31.1
 

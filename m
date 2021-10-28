@@ -1,249 +1,155 @@
-Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp450595lfn;
-        Wed, 27 Oct 2021 09:17:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrC+wM859IsYYGIXs/oc5GV/04ob++Ev2vYZBcb9GkUzkfCCWXspjDTaOjGzjo6jwlA+gi
-X-Received: by 2002:a4a:aacd:: with SMTP id e13mr7769461oon.67.1635351455665;
-        Wed, 27 Oct 2021 09:17:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635351455; cv=none;
+Received: by 2002:ac2:5bdb:0:0:0:0:0 with SMTP id u27csp935789lfn;
+        Wed, 27 Oct 2021 18:18:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwavMKXtJnAylAHJscaRHP7n8+cXmcdLfVyki9xxUsDRJePn4d8Fgy4n56m0tu/OBUYvQ9/
+X-Received: by 2002:a4a:c015:: with SMTP id v21mr851423oop.17.1635383918861;
+        Wed, 27 Oct 2021 18:18:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635383918; cv=none;
         d=google.com; s=arc-20160816;
-        b=i07+s95t0juZ0D6rZSmYCqBndnefsRIvTjatgCB09xY9tLg7FioqZh7vGwNsZ/HQsD
-         BFI4p3UU4m8o71iIYvfaGWXj+uIBxrtn7KgUdoFUQezmoblDnZvnQ7tCjJgIygeK6DkM
-         NIPnd1wUlZ3fXoVcK6oHGRKdEjLfRuFd8u05aieYvqffGr9OrC1LvosjPnQrHyAqVtSq
-         RAx50UGKxalDYypX0IlPNzpBRQYIOV8vDEqNVGm1YnCXXJdcfhLvlwaX/OVu0SH+/4sA
-         aGFZLHbC6Jjem0nLP5ifkB0D2zyLoJTLeq2ByHP65Z8bm4xprecj8nEhpnewnRcRAgC6
-         FyDA==
+        b=omz1vvRXxpUoEJpYqkJSzbt/MUrsErB5Qdpk5e2f1Ze/3X9rxgqxEIYTU1q9YpHx8L
+         9qO7ZXr1DThxY3yltXQakZ2IXyqyTLIRVTTzPoGynzTV4OyeenETb1wlK0bD4A6UtcuN
+         WE2IW039q7kZlpsUlmN0Fc+3Swmgqm7aCeHrJbAp8VNWBY8RsgJNwJvAmrThW8KFqaEN
+         Ul1ZjjfRxzEn3s10//3uzy03QjU/wWxUiMvTIzXmF+3GuUjn/FLcrpdhNJ9drhnm8NZk
+         DhE8+DsAXUJpaGasIgwK6hjoHQVoNoYQRpUg+wi2r9niEHai6ADusFw52mq29ccoHp6v
+         vZHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=WW8JNbKaYWgKbKMAzLi3WEvCv45Hrsz4KQyCTn+SwdQ=;
-        b=tTBZeZOTdtQa+nQQ0UKSkX/7p4O6oYhmz9nMYPvNLOrj48hNRvPiSYLZgOPvtFxz/W
-         66Bx7GUAvjHTfVhKgc+ZZ8xiOlrt/P8GcvKNr5GssiKxkhm1ylzGM8hbhpi/CEoHlctb
-         k7Ah+O1K9cabQw3dflAkL/HY+gl+ql5pgu4sPRYEEOh/o1azbixFCHMoZrAx/GFTEmRs
-         rWyi42ihtJ2aAIMRMkm3I5i7WxbHD1hMkqiSzgLjxfAxivvDOSJ/VMlBcEYqVqCa8Isq
-         9ueC8beLWa7nwgMb0/bszqz3RMjIuVTpMa6BH/+aOUFvB/IgNMKSJRtWtGUHktIfll2f
-         SS1A==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=erN9jX02oR/oPE/aO3CyXsOg2hUB6blYy9Nukrz1qw0=;
+        b=W2w8Inw6f/kKyCqKiXWPHVM3ZuoggxDDVg/n5v1L7DOVrIpxL2JjIAL67iapL3lEaN
+         l5yekkRCx/miqxMRGPWP7a3cAOGLjwNFzDuMpnWwWbufvsrJg9hs9UsEli8ndRbFemjC
+         N0XIXZEVtmOpitBB9LTuligOokLeXWkJK2j6zOkoQr2uxJ3ltjdmPDPKnZYRnEy41z6w
+         nvwm4T6wuBtTAZJPTkAi+mzRnEiEF6w3cudZukf7q7CgJHzSMzAQQEVGNFs3tyewep58
+         bG0KwNMK2IEWDyGqIWr7UHuYMqtw41jbza1zjGPerwnQtW0kZ8fzdDY1Uao6aZ8fu5L3
+         ybNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YprtzIcO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=IZdryRib;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o25si522544otk.221.2021.10.27.09.17.35
+        by mx.google.com with ESMTPS id s22si1898266oij.34.2021.10.27.18.18.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Oct 2021 09:17:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Oct 2021 18:18:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YprtzIcO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40446 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=IZdryRib;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48444 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mflcM-0001NF-PC
-	for alex.bennee@linaro.org; Wed, 27 Oct 2021 12:17:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36200)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mfu3y-0001Q6-5v
+	for alex.bennee@linaro.org; Wed, 27 Oct 2021 21:18:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mfl2h-0005lE-H3
- for qemu-devel@nongnu.org; Wed, 27 Oct 2021 11:40:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42021)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1mfl2f-0007SC-07
- for qemu-devel@nongnu.org; Wed, 27 Oct 2021 11:40:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635349234;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WW8JNbKaYWgKbKMAzLi3WEvCv45Hrsz4KQyCTn+SwdQ=;
- b=YprtzIcOzBqNCVQj/DJsTnjSilLmh5ISZb+zJEZiM3mr9neN+/V5zGBFxZELiAgTFGpJxg
- w6ONoiHtufkaPs/CsaeXBLAQ9TNwKIzAXjV5RkXgEBxpemnYjri01H2L9HYaP73iEwUR7d
- U7UhV3OZ2+HX4Gquv2ncc9y+S4ujFZU=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-587-sy1H5LgSNMOmgLJKuU8Vzw-1; Wed, 27 Oct 2021 11:40:30 -0400
-X-MC-Unique: sy1H5LgSNMOmgLJKuU8Vzw-1
-Received: by mail-ed1-f70.google.com with SMTP id
- i9-20020a508709000000b003dd4b55a3caso2679565edb.19
- for <qemu-devel@nongnu.org>; Wed, 27 Oct 2021 08:40:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mfu3A-0001Pf-Lp
+ for qemu-arm@nongnu.org; Wed, 27 Oct 2021 21:17:48 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435]:39432)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mfu39-0006S0-2A
+ for qemu-arm@nongnu.org; Wed, 27 Oct 2021 21:17:48 -0400
+Received: by mail-pf1-x435.google.com with SMTP id b1so883483pfm.6
+ for <qemu-arm@nongnu.org>; Wed, 27 Oct 2021 18:17:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=erN9jX02oR/oPE/aO3CyXsOg2hUB6blYy9Nukrz1qw0=;
+ b=IZdryRibBktWR0UOio/j43OwHtXFrcydqD0v9rAefJFrMvpD6nEbmaCaKZfTotHgHA
+ j0Ua5GuhnY74cDIihuAyVTFv0kkL48OAUwYI6emkZaVOBBJY9PvseCYaXVGB/v9EXqwn
+ s7DaB75aUslqw6IasWXVcuG5l3mXg7yYtssl2Aw3VSjClKEOKDD1g46hzZdMoQzOUr8K
+ Vwv8ZJcTjwlNul8lEWZcDvHaAtlNdLHAbQFZYaaAawuIPqvBkalvxguJ4nOH67tkyU2r
+ M6IqbiremkUvzdNpkqubhE53t49G0jIyTOo95q4nQwa45TOBfnhw6sXDfzHmTTcmrSpJ
+ Q3Xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=WW8JNbKaYWgKbKMAzLi3WEvCv45Hrsz4KQyCTn+SwdQ=;
- b=aZzCstKjvfLcr6GVuDJtHDimJ18KiSJDMzwGFqPVF7waJmdS88LuRoyxSXKhyTxWyZ
- dgwRJ71oN28WweSrjVrto9VJDN1W2s3+2/9G+zTVtv4w6Z68+6WSwE/p12yvkHomqipS
- wZaoyMoJa1jeARSxxKOZMnFxbfEEgM3a5SJrW9M79o6cxvuaiAVc+PDcPf9Gps4DPQFU
- 5lfLXNNGczspIjiDdC4WOwnHGxJyuihODBbMj5g8Q/LUn2izEx8uaJdaSzdlnj5HOPhg
- oLnqN3PH6mOUps19in35KLCye5Ey/I2zXtecPo/Onni4gXtv+nCz/+bsEMruiml9/nLj
- bQoQ==
-X-Gm-Message-State: AOAM531pkVCNKV80t5TqtB61V1S4OQWdVaTqmzC8kNEVlhG6p8oztpUZ
- NEIIBm5fgLnbYw5IRk+chv9ZtEr/KnbRcwgVvhUbMJaukTP3kUk75t0zISQa4Y0db5AP//An8wr
- J5ALnShnNaWqcIRw=
-X-Received: by 2002:aa7:c941:: with SMTP id h1mr46650268edt.128.1635349229759; 
- Wed, 27 Oct 2021 08:40:29 -0700 (PDT)
-X-Received: by 2002:aa7:c941:: with SMTP id h1mr46650229edt.128.1635349229507; 
- Wed, 27 Oct 2021 08:40:29 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id f22sm133905ejh.74.2021.10.27.08.40.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Oct 2021 08:40:29 -0700 (PDT)
-Date: Wed, 27 Oct 2021 17:40:28 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v2] hw/arm/virt: Expose empty NUMA nodes through ACPI
-Message-ID: <20211027174028.1f16fcfb@redhat.com>
-In-Reply-To: <20211027052958.280741-1-gshan@redhat.com>
-References: <20211027052958.280741-1-gshan@redhat.com>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=erN9jX02oR/oPE/aO3CyXsOg2hUB6blYy9Nukrz1qw0=;
+ b=15lPfDJQ8BLtITgDpVOIUvU1lWtVA8SJE/a7oOI7WCbvffahDSGH3a8Rbt8KL5JaBK
+ Oa/ioAR0Ac+2SgzJZasy2fQcbj2nmSmoM8GJl1uDNFW7Ynu1F3geIeoh6oVDI3Ij+1wE
+ 9r2Jx/6/ERMqqjy3RK0rl64a48focNQPz+jVnsCJ2RN1fjtgWzBauo76SNp3+H+ICvWS
+ hCUj3giqOIqKwZW+co9BLpqZHY50N7yTVS/0QZCusX5bKVHBqAzLGYCGqOGjGG6WgPCi
+ r/mov9U96JXAj6rlipdXyNzuFHtmP8c6O+8fK1HV9hAcI/4YRCbiGYBejC60/JpkLrwd
+ Z1kQ==
+X-Gm-Message-State: AOAM530/05o+oWEmRutDJZizeuKcAirNOBBA5klfAPP7eE1yAuzX+C1P
+ m6IUL08kzU2PMiAq3MEQiwoUQA==
+X-Received: by 2002:a05:6a00:16c6:b029:32d:e190:9dd0 with SMTP id
+ l6-20020a056a0016c6b029032de1909dd0mr1193133pfc.70.1635383865388; 
+ Wed, 27 Oct 2021 18:17:45 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.134.125])
+ by smtp.gmail.com with ESMTPSA id h3sm1163157pfi.207.2021.10.27.18.17.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 27 Oct 2021 18:17:44 -0700 (PDT)
+Subject: Re: [PATCH v2 2/4] target/arm: Introduce store_cpu_field_constant()
+ helper
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20211027045607.1261526-1-f4bug@amsat.org>
+ <20211027045607.1261526-3-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <267b4bdc-8311-cc18-afeb-5e98aea5a3ea@linaro.org>
+Date: Wed, 27 Oct 2021 18:17:43 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20211027045607.1261526-3-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.847,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, ehabkost@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- shan.gavin@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NsECqtmbibxg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rh/jOtjAAibf
 
-On Wed, 27 Oct 2021 13:29:58 +0800
-Gavin Shan <gshan@redhat.com> wrote:
+On 10/26/21 9:56 PM, Philippe Mathieu-Daudé wrote:
+> -static inline void store_cpu_offset(TCGv_i32 var, int offset)
+> +static inline void store_cpu_offset(TCGv_i32 var, int offset, bool is_temp)
+>   {
+>       tcg_gen_st_i32(var, cpu_env, offset);
+> -    tcg_temp_free_i32(var);
+> +    if (is_temp) {
+> +        tcg_temp_free_i32(var);
+> +    }
+>   }
 
-> The empty NUMA nodes, where no memory resides, aren't exposed
-> through ACPI SRAT table. It's not user preferred behaviour because
-> the corresponding memory node devices are missed from the guest
-> kernel as the following example shows. It means the guest kernel
-> doesn't have the node information as user specifies. However,
-> memory can be still hot added to these empty NUMA nodes when
-> they're not exposed.
-> 
->   /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
->   -accel kvm -machine virt,gic-version=host               \
->   -cpu host -smp 4,sockets=2,cores=2,threads=1            \
->   -m 1024M,slots=16,maxmem=64G                            \
->   -object memory-backend-ram,id=mem0,size=512M            \
->   -object memory-backend-ram,id=mem1,size=512M            \
->   -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
->   -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
->   -numa node,nodeid=2                                     \
->   -numa node,nodeid=3                                     \
->      :
->   guest# ls /sys/devices/system/node | grep node
->   node0
->   node1
->   (qemu) object_add memory-backend-ram,id=hp-mem0,size=1G
->   (qemu) device_add pc-dimm,id=hp-dimm0,node=3,memdev=hp-mem0
->   guest# ls /sys/devices/system/node | grep node
->   node0
->   node1
->   node2
->   guest# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
->   Node 2 MemTotal:    1048576 kB
-> 
-> This exposes these empty NUMA nodes through ACPI SRAT table. With
-> this applied, the corresponding memory node devices can be found
-> from the guest. Note that the hotpluggable capability is explicitly
-> given to these empty NUMA nodes for sake of completeness.
-> 
->   guest# ls /sys/devices/system/node | grep node
->   node0
->   node1
->   node2
->   node3
->   guest# cat /sys/devices/system/node/node3/meminfo | grep MemTotal
->   Node 3 MemTotal:    0 kB
->   (qemu) object_add memory-backend-ram,id=hp-mem0,size=1G
->   (qemu) device_add pc-dimm,id=hp-dimm0,node=3,memdev=hp-mem0
->   guest# cat /sys/devices/system/node/node3/meminfo | grep MemTotal
->   Node 3 MemTotal:    1048576 kB
+You don't need to change the function interface; tcg_constant_* is ignored by free.
 
-I'm still not sure why this is necessary and if it's a good idea,
-is there a real hardware that have such nodes?
+> +#define store_cpu_field_constant(val, name) \
+> +    store_cpu_offset(tcg_constant_i32(val), offsetof(CPUARMState, name), false)
 
-SRAT is used to assign resources to nodes, I haven't seen it being
-used  as means to describe an empty node anywhere in the spec.
-(perhaps we should not allow empty nodes on QEMU CLI at all).
+But this could become simply
 
-Then if we really need this, why it's done for ARM only
-and not for x86?
+     tcg_gen_st_i32(tcg_constant_i32(val), cpu_env,
+                    offsetof(CPUARMState, name))
 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
-> ---
-> v2: Improved commit log as suggested by Drew and Igor.
-> ---
->  hw/arm/virt-acpi-build.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 674f902652..a4c95b2f64 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -526,6 +526,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(ms);
->      AcpiTable table = { .sig = "SRAT", .rev = 3, .oem_id = vms->oem_id,
->                          .oem_table_id = vms->oem_table_id };
-> +    MemoryAffinityFlags flags;
->  
->      acpi_table_begin(&table, table_data);
->      build_append_int_noprefix(table_data, 1, 4); /* Reserved */
-> @@ -547,12 +548,15 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  
->      mem_base = vms->memmap[VIRT_MEM].base;
->      for (i = 0; i < ms->numa_state->num_nodes; ++i) {
-> -        if (ms->numa_state->nodes[i].node_mem > 0) {
-> -            build_srat_memory(table_data, mem_base,
-> -                              ms->numa_state->nodes[i].node_mem, i,
-> -                              MEM_AFFINITY_ENABLED);
-> -            mem_base += ms->numa_state->nodes[i].node_mem;
-> +        if (ms->numa_state->nodes[i].node_mem) {
-> +            flags = MEM_AFFINITY_ENABLED;
-> +        } else {
-> +            flags = MEM_AFFINITY_ENABLED | MEM_AFFINITY_HOTPLUGGABLE;
->          }
-> +
-> +        build_srat_memory(table_data, mem_base,
-> +                          ms->numa_state->nodes[i].node_mem, i, flags);
-that will create 0 length memory range, which is "Enabled",
-I'm not sure it's safe thing to do.
+without the wrapper inline.
 
-As side effect this will also create empty ranges for memory-less
-nodes that have only CPUs, where it's not necessary.
 
-I'd really try avoid adding empty ranges unless it hard requirement,
-described somewhere or fixes a bug that can't be fixed elsewhere.
-
-> +        mem_base += ms->numa_state->nodes[i].node_mem;
->      }
->  
->      if (ms->nvdimms_state->is_enabled) {
-
+r~

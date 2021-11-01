@@ -1,114 +1,104 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp644017lfc;
-        Thu, 21 Oct 2021 11:52:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBEVlf1WvXjE3QVsLAicbVuV3CER3CFpdfuSw7f+Z7lOj1fTWK9SUNvnuQxWlu4p+gzLm8
-X-Received: by 2002:a05:6808:b02:: with SMTP id s2mr5873573oij.19.1634842339662;
-        Thu, 21 Oct 2021 11:52:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634842339; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2239016lfv;
+        Mon, 1 Nov 2021 09:07:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxQWlz1yM/iSYhaESAeHXHaCqlKNc1RE2MDnzcsmwCfux6wNQzO+j/wjPBMprJD1kqehIk
+X-Received: by 2002:a4a:b5c3:: with SMTP id u3mr19676196ooo.64.1635782878752;
+        Mon, 01 Nov 2021 09:07:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635782878; cv=none;
         d=google.com; s=arc-20160816;
-        b=W0G183MuBlM0HLb9VpzU31vLDZKboTK0GkMwVPpyprp4qVy1jzE1CTp9xzEKJWRCKd
-         RGRrGvka5p+pmvYufngD6mEhMrcvSVsF0aISxGqEwDg5aDIyK9z29CP8jt91xk/fS4Jb
-         +IgmywbU6ZqOe+DNUK4vmwK4yxJHz0rp8AXte4gBXVZ/b6H6UZE54/ELnGAwsGyhEjgD
-         BdAI5OYW5m+U3UZxoGVHoTSOeoZ7iroNx9vWxgqd14f4IRf0r6KlEExfjebWF43cF+b8
-         ZWVzCNRAr8YZ6xjmCSHjUm23LP2rwr86hohgb1zogr8+MI0mkPGvSCUqbkOSQ+GK5yco
-         qDkw==
+        b=0qQuM7s5k86p0Orqh+ItS6pFX2MvzS7HCAqBNHfcg1TYET/g34B0t4/LrqWeuiWV3J
+         I1KBuOJV8RWvvlCjJjLMgH0vB2VOv/z9z55pTD4+KFs/KpD+cRl6SoOYSP+OcHBIOLAJ
+         n49ICmvK7h1kkJhrseS1t1vmig54iGtrAmx9l1RvfUe7mM92umkoZnyLGNBt9ckkbodj
+         OQb/lVV/JmVPvRg9XODkEvVlQqNBGRDjQZI5GgobVdDnJd8hS3zfWhvorH71dNiI/xZi
+         Mfyb7ejYQEzaq+MNWExBcbk5iWKLIXCh1AOEFskl2EONlLdMAhXwi4YGJaav0JPhXZil
+         IiPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=49U2Swa+Y+jYNZ+7cnA8LbU+0BoYUUxLzrIHy8E+U2c=;
-        b=ZVQQBwQrhfhz/As4l603HSRq1McnQZnNr24gvZaC56sqkoDPE8kF6GlQSVYnL7N86N
-         dw8cHKRPSfnArYWJGzc9DKVxmjpcTppfK408lq9FIuB3xX0KQBK9/kOEhBLf+XAAKq91
-         jOnA07IBCiI7B6/U9gZc0GsAMWT9X5u4WpfDq6z6zcQslGmIf3t1sWvqBCTLZbpluPJA
-         uAAFZNtuV4vVJW/gWJiFI0/V0DNh1kA8hJ24hciFASXIEpB8bSwO5NAcTogr+KuqCOn5
-         kT6dXoqyGeXxRLX18D/sizwVHjScOlAxRP6xfK234l+c9bdXXiKZlRPpbVcxuByUdm9d
-         un+Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=j9BjVxvpbqA+GnjOJfPUlZZl3rcN+UbWEbMo/gVEwe4=;
+        b=CAOxDcMx1N3epbRVsNZCMPt/XBQhLnsRiRVisjapF/0suTJKZ6VOhbsl78QbZyqVUr
+         g18cgDOt0jhBd3LkNPVj+N6dvofrYuf8gBjcL+4owQMkjnUvVu8NYgQjkk2MtwNJ32lB
+         YvVO+kS3D7Ei9ovO9Jw47RjY2XA2W0NdEn9zIZ2NWK3zfSzKIs+RKoAKudV2HaSzadFm
+         TcUoH7lLHMIBhO+4aon6uBskFtvdpsAOlFTi5mdV35UcF9fnEOmV7hwMeNM5I29rH2UU
+         dR/emQ2bZiEFBiSqRUOwBU57pJ1ajQvbCk/r6CsG0IqudUg/GHKrrtmXyQvNothiL+pU
+         2g4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=DgoPhqRo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=FBJMasdR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v139si5911218oie.132.2021.10.21.11.52.19
+        by mx.google.com with ESMTPS id l7si4729204otv.180.2021.11.01.09.07.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Oct 2021 11:52:19 -0700 (PDT)
+        Mon, 01 Nov 2021 09:07:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20210112 header.b=DgoPhqRo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44700 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=FBJMasdR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mddAo-0003iy-Rd
-	for alex.bennee@linaro.org; Thu, 21 Oct 2021 14:52:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50854)
+	id 1mhZqo-0001fe-3l
+	for alex.bennee@linaro.org; Mon, 01 Nov 2021 12:07:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1mdd8z-0001e5-Mv; Thu, 21 Oct 2021 14:50:26 -0400
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c]:36553)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mhZnh-0006LK-1E
+ for qemu-devel@nongnu.org; Mon, 01 Nov 2021 12:04:45 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:44713)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1mdd8w-0004bt-6M; Thu, 21 Oct 2021 14:50:25 -0400
-Received: by mail-qt1-x82c.google.com with SMTP id b12so1415178qtq.3;
- Thu, 21 Oct 2021 11:50:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=49U2Swa+Y+jYNZ+7cnA8LbU+0BoYUUxLzrIHy8E+U2c=;
- b=DgoPhqRoEUijUebfE1YBxv/srpWvCJ26+z1QYUEE7WbKPGe0FU4X66QOPXbMJAK8lG
- E69zNuXIjWdba5++oMlHGn2fbRXy0pHKHbKi9jgg+RnAdtSLsI8Xpj5tijad0M3pALBe
- XNAYkWeUH2o9yJopEqdUlLP+fNsxUbOFwmB1r0ma4or5iGT1FQ03P0AORCx3BjncalcN
- 20a+WTeirvXuzeHzHFwRmK1fQdFbKQJLlevzkRTmLZtRorZdZ1RmvpMzOltc+Mcj33o9
- HxT5hN12HE0D8KBSM0enPB3QfhqwdBRBU+QvGpeZbdrt+UmYz6uxSMbXX2X3x9eej4kJ
- RhWw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mhZnb-0001EF-M6
+ for qemu-devel@nongnu.org; Mon, 01 Nov 2021 12:04:41 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id d13so28818847wrf.11
+ for <qemu-devel@nongnu.org>; Mon, 01 Nov 2021 09:04:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=j9BjVxvpbqA+GnjOJfPUlZZl3rcN+UbWEbMo/gVEwe4=;
+ b=FBJMasdREXWFMEcO/Og733/w8H8FcDros9ovHYSCIzhjF108BvniQpK20iFNFlxTAx
+ a3+T8P3N6+GErpjZn5c/NfW5yU0rOMtIlKsUw9qugF4+noGmnkIJa3m2KM4xsdXZKgq5
+ 83qKSbW3n1FUYwur06D41a2jjKRe1g15AmE3d0F9sezuClAnrO3pQWZI/SJXhp1b3uSt
+ cIH8/tqYiBLYK3U8BkItqPV/5VdBCPaQ+FLmbnn0QjCujviHE7MId7sv6CZOE1fOLIYW
+ sG2ZifbRui6tX5rZe7O5j+fQOq0gvdyG2dIycggEb8SuzYCBi7wnfQToekO8Ak3lYg1E
+ +P8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to;
- bh=49U2Swa+Y+jYNZ+7cnA8LbU+0BoYUUxLzrIHy8E+U2c=;
- b=uz5sVhiqrbF7VCqXwm3VBWWG3oY4nijjDdlCKivnyjmS77z779WZtrS9sZeGz9iJMV
- SlzsbmVXxugh2S18N/+nkwon/18Dxdffuz0ORDZaGfuBs3AcKSA0JNXOxyXHJSeXS8LH
- ZZ7Vjeyrj1iTGf6Ik6wwlsevyqlWrB5ZagntMKIKGUFqU78tAg7ExsQe0Px66U37Y1DL
- tT9YVkw5tuSBoqRlsI6D/5rr6kl0OVqQ8UHEGCRio1D0yy9fUCzRm4ZW777ryQbxJqgC
- D2CDF2I2buYPiwz3uqhCbyojhd0p2+nyeRt2gESFr2et36dAGDPjfcpQL5g4tkMxS4td
- yxfg==
-X-Gm-Message-State: AOAM532bCG6l/tlMtq3Z7VcymAXT8m2H3nVCksK+j+bWX5W1JdXsqZVi
- bO4hqgobTLazJc70UhCn365nAs/n+T/l
-X-Received: by 2002:ac8:5cc2:: with SMTP id s2mr8082428qta.362.1634842219651; 
- Thu, 21 Oct 2021 11:50:19 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
- by smtp.gmail.com with ESMTPSA id x16sm2798761qtp.56.2021.10.21.11.50.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Oct 2021 11:50:19 -0700 (PDT)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:b816:2692:1867:c58b])
- by serve.minyard.net (Postfix) with ESMTPSA id 6772118000C;
- Thu, 21 Oct 2021 18:50:18 +0000 (UTC)
-Date: Thu, 21 Oct 2021 13:50:17 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Hao Wu <wuhaotsh@google.com>
-Subject: Re: [PATCH v2 2/7] hw/i2c: Read FIFO during RXF_CTL change in
- NPCM7XX SMBus
-Message-ID: <20211021185017.GA66936@minyard.net>
-References: <20211021183956.920822-1-wuhaotsh@google.com>
- <20211021183956.920822-3-wuhaotsh@google.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=j9BjVxvpbqA+GnjOJfPUlZZl3rcN+UbWEbMo/gVEwe4=;
+ b=GwMGLO2Nw0Y0eKupNebkhr4h5AvaDQPjq1iBWBcLfIdngi14VhAdIEpYGtojy2E8ei
+ Vc8/EzSf3dsWsB3R5N2+QXW11LEgkwSIsibwA2THJ0nEhokj/i4NuObVPwGoWM0C5oKO
+ btPySTQDv5W75IO2LNzOQ4jom5IM8ieVG7JRXM5I7MeO6LR3ZFeAny97pm9OWfyuqCPM
+ ny40RsLx/EyZpTQ0G7k1RNPcKgjrC7uR3QMcydfqi9R4rLwtvEeIUU+2m9WLbpeT8kD5
+ KT8mfegMY9llSo513Xr2VqaxfvYPm54u8WqlJjoI7Av98EFFSGhW8IHgp/HBQW/aVRuw
+ qxdA==
+X-Gm-Message-State: AOAM531uxP63Xn2AENtA6voFgfMYe3Lm7duILZUX56bTaFHGyFVRw47H
+ WAKdd4lflonp3sjnOASbeEMcPq50KMB5IZE41NJ0Tg==
+X-Received: by 2002:adf:e984:: with SMTP id h4mr35166102wrm.149.1635782677891; 
+ Mon, 01 Nov 2021 09:04:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20211021183956.920822-3-wuhaotsh@google.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82c;
- envelope-from=tcminyard@gmail.com; helo=mail-qt1-x82c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20210920122535.269988-1-eric.auger@redhat.com>
+ <CAFEAcA-8497+XS0PU3RAkGsrf7PGVm=oGymuHznE3iuopMHbKg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-8497+XS0PU3RAkGsrf7PGVm=oGymuHznE3iuopMHbKg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 1 Nov 2021 16:04:26 +0000
+Message-ID: <CAFEAcA8tbJ3jbHghvqk3hmUOZmQEzYva2Qqbq49i4dC93bQXCA@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/rtc/pl031: Send RTC_CHANGE QMP event
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Mailman-Version: 2.1.29
 Precedence: list
 List-Id: <qemu-devel.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
@@ -118,57 +108,39 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: peter.maydell@linaro.org, Titus Rwantare <titusr@google.com>,
- venture@google.com, qemu-devel@nongnu.org, hskinnemoen@google.com,
- kfting@nuvoton.com, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
+Cc: Andrew Jones <drjones@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: grfGhVDPlJY2
+X-TUID: sR2w/3Yvj0KG
 
-On Thu, Oct 21, 2021 at 11:39:51AM -0700, Hao Wu wrote:
-> Originally we read in from SMBus when RXF_STS is cleared. However,
-> the driver clears RXF_STS before setting RXF_CTL, causing the SM bus
-> module to read incorrect amount of bytes in FIFO mode when the number
-> of bytes read changed. This patch fixes this issue.
-> 
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Titus Rwantare <titusr@google.com>
+On Thu, 23 Sept 2021 at 14:29, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Mon, 20 Sept 2021 at 13:25, Eric Auger <eric.auger@redhat.com> wrote:
+> >
+> > The PL031 currently is not able to report guest RTC change to the QMP
+> > monitor as opposed to mc146818 or spapr RTCs. This patch adds the call
+> > to qapi_event_send_rtc_change() when the Load Register is written. The
+> > value which is reported corresponds to the difference between the guest
+> > reference time and the reference time kept in softmmu/rtc.c.
+> >
+> > For instance adding 20s to the guest RTC value will report 20. Adding
+> > an extra 20s to the guest RTC value will report 20 + 20 = 40.
+> >
+> > The inclusion of qapi/qapi-types-misc-target.h in hw/rtl/pl031.c
+> > require to compile the PL031 with specific_ss.add() to avoid
+> > ./qapi/qapi-types-misc-target.h:18:13: error: attempt to use poisoned
+> > "TARGET_<ARCH>".
+> >
+> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Thanks. This looks plausible to me (well, it would ;-)) but
+> I would appreciate review from Paolo or somebody else who
+> understands the rtc_change feature and handling.
 
-This looks ok.  I assume you can take this in with the rest of the
-patches.
+Ping? Review from somebody who understands rtc_change would
+still be nice...
 
-Acked-by: Corey Minyard <cminyard@mvista.com>
-
-> ---
->  hw/i2c/npcm7xx_smbus.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
-> index f18e311556..1435daea94 100644
-> --- a/hw/i2c/npcm7xx_smbus.c
-> +++ b/hw/i2c/npcm7xx_smbus.c
-> @@ -637,9 +637,6 @@ static void npcm7xx_smbus_write_rxf_sts(NPCM7xxSMBusState *s, uint8_t value)
->  {
->      if (value & NPCM7XX_SMBRXF_STS_RX_THST) {
->          s->rxf_sts &= ~NPCM7XX_SMBRXF_STS_RX_THST;
-> -        if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
-> -            npcm7xx_smbus_recv_fifo(s);
-> -        }
->      }
->  }
->  
-> @@ -651,6 +648,9 @@ static void npcm7xx_smbus_write_rxf_ctl(NPCM7xxSMBusState *s, uint8_t value)
->          new_ctl = KEEP_OLD_BIT(s->rxf_ctl, new_ctl, NPCM7XX_SMBRXF_CTL_LAST);
->      }
->      s->rxf_ctl = new_ctl;
-> +    if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
-> +        npcm7xx_smbus_recv_fifo(s);
-> +    }
->  }
->  
->  static uint64_t npcm7xx_smbus_read(void *opaque, hwaddr offset, unsigned size)
-> -- 
-> 2.33.0.1079.g6e70778dc9-goog
-> 
-> 
+-- PMM

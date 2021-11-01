@@ -1,99 +1,95 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2240702lfv;
-        Mon, 1 Nov 2021 09:09:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnLguqq7Z2A09WkkG2zda/HGRnMXYLhvnDITJ0zemhjA6zQgxqs8Hzyz46zOrFl1eTsfc7
-X-Received: by 2002:a9d:d15:: with SMTP id 21mr16547241oti.34.1635782969038;
-        Mon, 01 Nov 2021 09:09:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635782969; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2314782lfv;
+        Mon, 1 Nov 2021 10:18:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx0/KvceNVJqZ8OQ4OclFp0elLkzqaU2FiteqrOdHAE4OESv4MsrdhPz6aexmLCc/W1UWNd
+X-Received: by 2002:a05:6808:14c5:: with SMTP id f5mr204661oiw.53.1635787108082;
+        Mon, 01 Nov 2021 10:18:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635787108; cv=none;
         d=google.com; s=arc-20160816;
-        b=nLibtAPXnruPN4fLxgdRGCsil1BTuNLsOkQhQalyuA7o/dcuXA1DyU6VtnmEsMgtbH
-         uinTBu2N+rUmcYH8tEYt1XNuz8m4ezvE9i9kvxFIn2bta1Ljx/JZP2PuAzNY1ZLcGF/n
-         lIuPS1W0z5QLFaIpYa2U8mHKZlX4j117TCtCb4CeaJhUcSD9q5GPNuVwUfIuPlpAWEgu
-         wJKDRGc6aS/jDl4EEXsOrQaWjyVJbSSOW6hHV/2eWgMZiTc5cnil61+DLdkLiAf1jIiQ
-         Q+z+TvmFrf9WlHWnKfugdls6QOveqZIiNvoOfab+jAVd7WuV3Xqc+vQPXQ6qMBKu/t04
-         tkWg==
+        b=Xn/sYNO9Z/yrU8DcWCKYF/ULujYrCUGq2pTeYd7PKeLJKvtFWnnCoaGC+XKEv9UW8d
+         fhEk75vCFCXxgx47ckS6gnuaHU5W8pg+3qOnquBaa94RS01bC8gKhOXzDLh7xd+ezmKc
+         ANj6SSk3G0jVBaOAE+1zxfTErsfSUbLIZkJDkCxDdaCzoUPOBP8X+Mmge+Jp8aA91DSo
+         LhmYi5WR+cQbEOh32cprFtCmAlCk1GeGOZdbMdlaRQpuYeTpsace+rwh5Rd1VjGOiS/N
+         HgfR/i9FcOQ4TIFMkwt15UOmYxe7hFxuNxYA1PnmuDvTTdEDKLjeHmWI9xwYitWHlbDV
+         Wdtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Lz0bed1C0VkGRnr0JjHV0yoHub3q8oPcfjfRG+4+a0U=;
-        b=LuWQFmyh57ZISJmwhiUtC4m5xxzqJMM/8xoNs7JlNNQV6OLjy8F5xdNfEB3aTAY3wa
-         yJtwfsnDskE4BBEYhVdvGCFt96jEsgUZB/aqhbQag3LsB9/ncDyLnIl2cJoP7yvh53uJ
-         aN4+YpELutTXY3jdw0rtKoyCOkqL14MfS8XkPZq8KVtZQtC0DxnNNLtY0wenvZT7DcjB
-         ZAO3dzGvYw7n+hbUiL1RmvXcVksL1qbNgFmE1oA8sJ6PTwT0i89Dav+Ckvh6GYwc/P02
-         r4mp6PV7H5PvuBlfJQ1KztOxFa6R0mvtxVLEgrEAuoa0OZWg2U5P+PYQ4YZMGZYbbviI
-         Pvmg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nFa1gXjSxM9Z1kTYtlHHNqkwm2zp5HC7+2V+Wud23qU=;
+        b=xtJXBpzVa9BUBE+8qR3zjxEHLI1oMGo5dU/DwnHZh6IEMryNaT9sRBdpof77BxlJ61
+         PfNZSk2/6unEQCo5SGwSCd5GQGZuyFT+jPGV+sudq/YxlTjw/L0QZrIlD3jOMyrnCsbj
+         HsY+KBv/tPjaYUjLbL54R7iu49Yo/ltNYAo+BolrSffxchzmjhOCB8DK2EbH6jiF7N9w
+         cNvN5raauKBVaaJ0t1Vdl2PF3+BN2b860+/ZWRhvdALVb9irY0Hvs5eq02rHwWTbYuVQ
+         FEV1/mZuN89YvqgP/hDYoP4B5fVLUxKLPmFaU3ufZOktpfQoSmYXiocKPnwMnbyUW8CL
+         a6yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pEVpmAN9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MQne79Cy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si15077761oob.48.2021.11.01.09.09.28
+        by mx.google.com with ESMTPS id p8si16631854ots.49.2021.11.01.10.18.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Nov 2021 09:09:29 -0700 (PDT)
+        Mon, 01 Nov 2021 10:18:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pEVpmAN9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MQne79Cy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47634 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42392 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mhZsG-0004AQ-3U
-	for alex.bennee@linaro.org; Mon, 01 Nov 2021 12:09:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39664)
+	id 1mhax1-0000Xp-Dz
+	for alex.bennee@linaro.org; Mon, 01 Nov 2021 13:18:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55146)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mhZrA-0003Cb-S0
- for qemu-arm@nongnu.org; Mon, 01 Nov 2021 12:08:20 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:45842)
+ id 1mhauh-0005cQ-KU
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 13:16:03 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:41535)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mhZr8-0002F1-4n
- for qemu-arm@nongnu.org; Mon, 01 Nov 2021 12:08:20 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id o14so28743498wra.12
- for <qemu-arm@nongnu.org>; Mon, 01 Nov 2021 09:08:17 -0700 (PDT)
+ id 1mhaue-0006oZ-Mo
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 13:16:02 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id d3so29088887wrh.8
+ for <qemu-arm@nongnu.org>; Mon, 01 Nov 2021 10:16:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Lz0bed1C0VkGRnr0JjHV0yoHub3q8oPcfjfRG+4+a0U=;
- b=pEVpmAN9n6H7Nd04ZbjP5f20Wc3UK3PS67ccc+cWQtnH3E3vM9h+qOdS7grzHuj2PQ
- CGji7PquGWmhpe6e7ubRekQMW3d26MP+VSjZSxI6efmP6NTWbwCqqujYmFhjyDPUChRl
- iWRHQUNpBUUj811DkC3/klNpZoM/006LTR2RUNaJd8cbzAS4FhO1y8ziMrDX/rtQj9Ug
- jiqsc8mQiaBN3MYgZtmy7JrFx3fPX80MAvgXSb4W1R0MPkmJQbdLlrN0sSijrwc/cVKc
- Q3FoWElC4m3C24fhZjEuRYDwcW4ZpEMnJp0y4o9d4L69tbqpDT+rXWSVcXCKIwXAg9g+
- SdNg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nFa1gXjSxM9Z1kTYtlHHNqkwm2zp5HC7+2V+Wud23qU=;
+ b=MQne79CyTjrNtV8iZk5w4JoylwxeBnwdJMqhTeLZA2q/McYOrL1ue+INOhXDLhD0zw
+ 1ZMyWtvKzGIDz2kUcqsb1V4MNsn7nssl/Xof47WT+pok4Aq2gZ6kUxzrv3ppH5pGYw/u
+ dRWc64+RYeiaZY/nimrfF0elz4/bCHkKm90BxU9F5l83rSqxvr01+cmFU30xHnpQk6sx
+ DntT4ZhNcknANQycPai5sY6QH0nqK19x13qPCOuGucvl1V+yD5bCoLyOeDsmE5KOyyWW
+ sXCs86L2sjD+HLq/wIqceKMVXf9P5aw1oudixnyI3oSQlps3cbQJA845Gv/QZsE+w5aZ
+ r54g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Lz0bed1C0VkGRnr0JjHV0yoHub3q8oPcfjfRG+4+a0U=;
- b=UKednzyALnZSClVZ4OpHRfevuo/s9jmCObgqeISWpQsiOYWxwHPyud5OtxF92/ymS7
- w0cspaIJJxOP/Mq1Zy0w3x2ZyKyeDfuCZolAIeXylrNr/UsnLGpXaX96Vd7CrKdVPsG7
- bx+WYKoQvPBND0+71fp6Q0Wq9pbEiJ7/gutP2E41Q0KswnulXCv12m0UFBSEAsbGLszb
- xgqXcvQITu6n/ajicZ/5XIOVsF+cZs16TPXkUYDTmGE6DF///XQAch247A0mI9ujN6qP
- GR4OH2NtVKh5FpLsDCocKuBwnSwgu9jYR/CqoOGc0wBv8awQkZsHCD7/JTd2M5MDLB+S
- ZQjA==
-X-Gm-Message-State: AOAM533oD64ywmRaZ0gXeQhocpYobLHNywxdD/NgJVtqpPu6EUBzDfF8
- 1mq3WyoKcaJAQEcYgAHP/UlZkTbRUggEHA==
-X-Received: by 2002:adf:ee0c:: with SMTP id y12mr36351072wrn.82.1635782896392; 
- Mon, 01 Nov 2021 09:08:16 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id w1sm16212935wmc.19.2021.11.01.09.08.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Nov 2021 09:08:16 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 for-6.2] target/arm: Advertise MVE to gdb when present
-Date: Mon,  1 Nov 2021 16:08:14 +0000
-Message-Id: <20211101160814.5103-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nFa1gXjSxM9Z1kTYtlHHNqkwm2zp5HC7+2V+Wud23qU=;
+ b=JHXTtwZDbinDxEHb5CMj/C/7KnkNW9/LkyglSN8/mH1p+bMU2CK0tV+lmXLtEUN+Uy
+ HraYHtOidabNDR9h0kfMUEdr9/dPda3Q8v0EBdRKoQaMpB35MLDip4kKauZotpgYAPn5
+ L7OdK3F0tR0pl8kcqI7jWJ1OWvymU3YyxF6A6xW70VuuPYIAvgep0h3S1N02W1ME28hn
+ /XBoDA52avZvV/mWI36DqABsPaAaNMj6lCM7tq4bQJkWWYeMYf8xNcuSY/nuRHCHIUyl
+ vXiQg/0HEk5X7Nh4TIlWevQ8CAU7++Njir+3EwrKj/+pVwrRzZYjlkf/9AjTE7Z32fhd
+ wBUw==
+X-Gm-Message-State: AOAM531RcKqjhdEa5I18XgxkuKPTahxvGJNiyEYdZegrJWSlKtf+3GMy
+ PYDt/hhbLnD7vg/8xapvdhbYPU9AiLpdXJS6xzUHrQ==
+X-Received: by 2002:adf:c40f:: with SMTP id v15mr29968881wrf.302.1635786958861; 
+ Mon, 01 Nov 2021 10:15:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+References: <20211008002628.1958285-1-wuhaotsh@google.com>
+ <20211008002628.1958285-3-wuhaotsh@google.com>
+In-Reply-To: <20211008002628.1958285-3-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 1 Nov 2021 17:15:47 +0000
+Message-ID: <CAFEAcA8NRJQDcfXf8DTOL=XXQWUrn1Ud1mY_WVNRCBhsLHWXnA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/5] hw/arm: Add Nuvoton SD module to board
+To: Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,151 +109,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-block@nongnu.org, venture@google.com, Shengtan Mao <stmao@google.com>,
+ bin.meng@windriver.com, hskinnemoen@google.com, qemu-devel@nongnu.org,
+ kfting@nuvoton.com, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com,
+ maoshengtan2011@gmail.com, Chris Rauer <crauer@google.com>, f4bug@amsat.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5AZmuIMnrlAJ
+X-TUID: 8aOWuLXUuEGj
 
-Cortex-M CPUs with MVE should advertise this fact to gdb, using the
-org.gnu.gdb.arm.m-profile-mve XML feature, which defines the VPR
-register.  Presence of this feature also tells gdb to create
-pseudo-registers Q0..Q7, so we do not need to tell gdb about them
-separately.
+On Fri, 8 Oct 2021 at 01:26, Hao Wu <wuhaotsh@google.com> wrote:
+>
+> From: Shengtan Mao <stmao@google.com>
+>
+> Signed-off-by: Shengtan Mao <stmao@google.com>
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Reviewed-by: Chris Rauer <crauer@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
 
-Note that unless you have a very recent GDB that includes this fix:
-http://patches-tcwg.linaro.org/patch/58133/ gdb will mis-print the
-individual fields of the VPR register as zero (but showing the whole
-thing as hex, eg with "print /x $vpr" will give the correct value).
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
-Reposting this unchanged except to remove the 'RFC' tag, as
-the gdb patches have now gone upstream and the XML layout is
-therefore finalized.
----
- configs/targets/aarch64-softmmu.mak  |  2 +-
- configs/targets/arm-linux-user.mak   |  2 +-
- configs/targets/arm-softmmu.mak      |  2 +-
- configs/targets/armeb-linux-user.mak |  2 +-
- target/arm/gdbstub.c                 | 25 +++++++++++++++++++++++++
- gdb-xml/arm-m-profile-mve.xml        | 19 +++++++++++++++++++
- 6 files changed, 48 insertions(+), 4 deletions(-)
- create mode 100644 gdb-xml/arm-m-profile-mve.xml
-
-diff --git a/configs/targets/aarch64-softmmu.mak b/configs/targets/aarch64-softmmu.mak
-index 13d40b55e6d..d489e6da830 100644
---- a/configs/targets/aarch64-softmmu.mak
-+++ b/configs/targets/aarch64-softmmu.mak
-@@ -1,5 +1,5 @@
- TARGET_ARCH=aarch64
- TARGET_BASE_ARCH=arm
- TARGET_SUPPORTS_MTTCG=y
--TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
-+TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/arm-linux-user.mak b/configs/targets/arm-linux-user.mak
-index acecc339e38..3e10d6b15d5 100644
---- a/configs/targets/arm-linux-user.mak
-+++ b/configs/targets/arm-linux-user.mak
-@@ -1,6 +1,6 @@
- TARGET_ARCH=arm
- TARGET_SYSTBL_ABI=common,oabi
- TARGET_SYSTBL=syscall.tbl
--TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
-+TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml
- TARGET_HAS_BFLT=y
- CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-diff --git a/configs/targets/arm-softmmu.mak b/configs/targets/arm-softmmu.mak
-index f6c95ba07a4..92c8349b964 100644
---- a/configs/targets/arm-softmmu.mak
-+++ b/configs/targets/arm-softmmu.mak
-@@ -1,4 +1,4 @@
- TARGET_ARCH=arm
- TARGET_SUPPORTS_MTTCG=y
--TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
-+TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/armeb-linux-user.mak b/configs/targets/armeb-linux-user.mak
-index 662c73d8fbd..f81e5bf1fe4 100644
---- a/configs/targets/armeb-linux-user.mak
-+++ b/configs/targets/armeb-linux-user.mak
-@@ -2,6 +2,6 @@ TARGET_ARCH=arm
- TARGET_SYSTBL_ABI=common,oabi
- TARGET_SYSTBL=syscall.tbl
- TARGET_WORDS_BIGENDIAN=y
--TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
-+TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml
- TARGET_HAS_BFLT=y
- CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index e0dcb33e325..134da0d0ae3 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -199,6 +199,27 @@ static int vfp_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0;
- }
- 
-+static int mve_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
-+{
-+    switch (reg) {
-+    case 0:
-+        return gdb_get_reg32(buf, env->v7m.vpr);
-+    default:
-+        return 0;
-+    }
-+}
-+
-+static int mve_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-+{
-+    switch (reg) {
-+    case 0:
-+        env->v7m.vpr = ldl_p(buf);
-+        return 4;
-+    default:
-+        return 0;
-+    }
-+}
-+
- /**
-  * arm_get/set_gdb_*: get/set a gdb register
-  * @env: the CPU state
-@@ -468,6 +489,10 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-                                      2, "arm-vfp-sysregs.xml", 0);
-         }
-     }
-+    if (cpu_isar_feature(aa32_mve, cpu)) {
-+        gdb_register_coprocessor(cs, mve_gdb_get_reg, mve_gdb_set_reg,
-+                                 1, "arm-m-profile-mve.xml", 0);
-+    }
-     gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
-                              arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
-                              "system-registers.xml", 0);
-diff --git a/gdb-xml/arm-m-profile-mve.xml b/gdb-xml/arm-m-profile-mve.xml
-new file mode 100644
-index 00000000000..cba664c4c5b
---- /dev/null
-+++ b/gdb-xml/arm-m-profile-mve.xml
-@@ -0,0 +1,19 @@
-+<?xml version="1.0"?>
-+<!-- Copyright (C) 2021 Free Software Foundation, Inc.
-+
-+     Copying and distribution of this file, with or without modification,
-+     are permitted in any medium without royalty provided the copyright
-+     notice and this notice are preserved.  -->
-+
-+<!DOCTYPE feature SYSTEM "gdb-target.dtd">
-+<feature name="org.gnu.gdb.arm.m-profile-mve">
-+  <flags id="vpr_reg" size="4">
-+    <!-- ARMv8.1-M and MVE: Unprivileged and privileged Access.  -->
-+    <field name="P0" start="0" end="15"/>
-+    <!-- ARMv8.1-M: Privileged Access only.  -->
-+    <field name="MASK01" start="16" end="19"/>
-+    <!-- ARMv8.1-M: Privileged Access only.  -->
-+    <field name="MASK23" start="20" end="23"/>
-+  </flags>
-+  <reg name="vpr" bitsize="32" type="vpr_reg"/>
-+</feature>
--- 
-2.20.1
-
+thanks
+-- PMM

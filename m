@@ -1,102 +1,110 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2498304lfv;
-        Mon, 1 Nov 2021 13:12:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyj6uNsAyJgFFBk0+WRy5oM1s2lyQ4QjTfZGlMybKFzBp4DoR6n3v5MY7236y3ohM7wKFt2
-X-Received: by 2002:a05:6830:13c5:: with SMTP id e5mr22199715otq.374.1635797573798;
-        Mon, 01 Nov 2021 13:12:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635797573; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2702048lfv;
+        Mon, 1 Nov 2021 16:55:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwMHanCCnseX1XmbMHmJGawSFhgGxUami/Ip54RDYn7GbivU4v8VHNtfhidOZXdP45rYVt5
+X-Received: by 2002:a05:6808:2221:: with SMTP id bd33mr1943061oib.175.1635810909301;
+        Mon, 01 Nov 2021 16:55:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635810909; cv=none;
         d=google.com; s=arc-20160816;
-        b=vJ1vKd1Mmek8z9tjzgQh8tF1fCM+A+0qpusnx/mO5YH7DRlKNJxdPHp+JhukWAsb9m
-         5kSOPcxfRvxn4RmkTPRVr7A2QDJN6IaaixuNOIqw+dbQ+n98TmpNqs9Ys9I3EULzkggj
-         SeBg97/SRrKgq3ZXeW1K0x9eUoit8gJWgS5dxizEjt4B0m0ZJVmWHAcDkQIUnYSrhcB1
-         MtPUH5rO0oGIxVh6MWwtet1gmeT+VYcLrCaetIZ1yvP30SR/TvuH4ZQbOhYP9qAW5V03
-         Sv/qthhBTBmNJZeK1Eqhycbu6uLgurw9VSHcC0goTUvokq7jUCfzZlbwvdI7TW7XoVeo
-         6WvA==
+        b=YOM2Iii0pAkAYEpwY9gUa/yseFc0IR33l4pyuJesTo1YeqJ3L0v7AQdwRETd6spbCe
+         p1DUD3aGZwCoxFqP1Klr4NLwkWRfwYny4Z7c8sAoPgBmsqu/3uQA3tRJXFpN9567spho
+         gghrTY0AOfBlLoTCfiwQqg1hXUeNd+TZsdQrh+wEdXwCmAcViYUpxKkTAH1t3Tp44WBz
+         WEsYXPAtKlv5dg+Moebxxtd+QVaJz0xIAzroiXUR4TSby3+kRHbry5MXCU6yshOrqV3a
+         N3vBM53N6+YrkYfMo2Mcro5cTKuSZH2tFCzfBgq0e1pyG4JwSYTxwqw7UzGTZRIYcrtW
+         foXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=xEyRJSB1WfKc1hxrIIjzvBmb3RHiHblv6srUheYUS7Q=;
-        b=bjPYj5t5wgy2G2TBLGljf5Q883NtcgH2aitUgrti1T3UONQVffoPmjnaZB7YbZzeJw
-         cNglGjBho3gwSLVrqSQONzZAui+uORQqb48zdClxhWEnBjve9t3Y2mthrqB2PjyBS+p+
-         nocslcl1SvmWAd+0fHcB/Vg1EqMVvCpziEBPKtJC8T6T11m0GSrSxd1Wj9LIO3pMfrQm
-         cFcNn/sULH6A3ZaEmQebkCXimBcImn+V8JAQjwy5LQ5mADu2gQshzUtau61W5ofDqWgg
-         jfdp2/M29Lde2ulA/BA0Luooj36PjwOMIQ1F4NDf+/Fppt9fVArDWXhtwUp6DbaqhDSP
-         z1Fg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=24nsF4ZtaCyzRKg197wRJW9Z98ZF+IBhr+7cVNt8by8=;
+        b=EboeRhgb+Qfbta3BzxU2zV5g1BV+liMrRDZ+nhA/pFWAjpQmt1J1TzBKaOGx+v22uE
+         Rk4U7e3bqtHi603gUE/ApvHY6zQp7czkjpjog5rGRdPknndiZy2nrYhEMwxWHhdV7KTh
+         p29DNvVyPlrsO84Ga7vbkCwEnNnCWTuIfTp28RMBce8rjm30uxkwsWCOkYIFaVy8hLil
+         YF+jR9uKuz0s8vmiYHotMlORB6tiKZekuDihqQciXhLW8IwaqPdbLzhzGO7jfwZf8Pqm
+         /mek1HuCVu3Hjesp0Ww9JNvYgYKOVRJtduIW9a7roU2K7/SKhlooeNF4yaSp1tf3PjMd
+         n/yQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KmfEBonp;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AP12uIt7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w3si8422884otm.187.2021.11.01.13.12.53
+        by mx.google.com with ESMTPS id p1si20666290oiv.238.2021.11.01.16.55.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Nov 2021 13:12:53 -0700 (PDT)
+        Mon, 01 Nov 2021 16:55:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KmfEBonp;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AP12uIt7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36900 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34050 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mhdfp-0002Jk-1J
-	for alex.bennee@linaro.org; Mon, 01 Nov 2021 16:12:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57716)
+	id 1mhh8u-0000eQ-G1
+	for alex.bennee@linaro.org; Mon, 01 Nov 2021 19:55:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mhcMz-0005Vf-7B
- for qemu-arm@nongnu.org; Mon, 01 Nov 2021 14:49:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21082)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mhgz0-000251-GA
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 19:44:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:25217)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1mhcMu-0000iP-QD
- for qemu-arm@nongnu.org; Mon, 01 Nov 2021 14:49:19 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1mhgyt-0004H9-Cm
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 19:44:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635792555;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=xEyRJSB1WfKc1hxrIIjzvBmb3RHiHblv6srUheYUS7Q=;
- b=KmfEBonptnEMMWCnxtkQOzgVDy8JirlawaHK78sr0PVtWhcAFwRTMz/m5c++utlJdDqC5s
- HNlIYiEq02itdBMgtNuBOgKDrb3HhW47mG4QJDN9TqibdtwtiaZ8rCdIZ41iXDR8jbhT4M
- tc4LmRcZi3mUfUf4tFFMULkJNP5dS+U=
+ s=mimecast20190719; t=1635810286;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=24nsF4ZtaCyzRKg197wRJW9Z98ZF+IBhr+7cVNt8by8=;
+ b=AP12uIt7nAaNUzH9+OKCR+aJobGseYYg7SS/SUnfxEvEcI68WvdA/3+LfpL8nRVFo27ofP
+ I28Dn+Qam5h0Oa11Ws9W81S1y8GVbWfDh4qRnq+cRJJ1J+akNqik6ZUOG7FVwQexixqiHE
+ xW+ZOoyj1GQRpHXHCDsI8iy/tzzjd80=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-53-V5p8ajv4ObOblv3gdFGCnw-1; Mon, 01 Nov 2021 14:49:12 -0400
-X-MC-Unique: V5p8ajv4ObOblv3gdFGCnw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-588-UBm2_NHVMMOmf35hYOLQJg-1; Mon, 01 Nov 2021 19:44:40 -0400
+X-MC-Unique: UBm2_NHVMMOmf35hYOLQJg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 385C018125C1;
- Mon,  1 Nov 2021 18:49:11 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.74])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A804A60862;
- Mon,  1 Nov 2021 18:49:07 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
- pbonzini@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, jean-philippe@linaro.org
-Subject: [PATCH v5] tests: qtest: Add virtio-iommu test
-Date: Mon,  1 Nov 2021 19:48:58 +0100
-Message-Id: <20211101184858.15223-1-eric.auger@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DCA1580668A;
+ Mon,  1 Nov 2021 23:44:39 +0000 (UTC)
+Received: from [10.64.54.26] (vpn2-54-26.bne.redhat.com [10.64.54.26])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 40BEB79446;
+ Mon,  1 Nov 2021 23:44:10 +0000 (UTC)
+Subject: Re: [PATCH v2] hw/arm/virt: Expose empty NUMA nodes through ACPI
+To: Igor Mammedov <imammedo@redhat.com>
+References: <20211027052958.280741-1-gshan@redhat.com>
+ <20211027174028.1f16fcfb@redhat.com>
+ <fecb9351-ae78-8fcd-e377-623243ef80df@redhat.com>
+ <20211101094431.71e1a50a@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <47dc3a95-ed77-6c0e-d024-27cb22c338eb@redhat.com>
+Date: Tue, 2 Nov 2021 10:44:08 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20211101094431.71e1a50a@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.734,
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -46
+X-Spam_score: -4.7
+X-Spam_bar: ----
+X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.734,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ NICE_REPLY_A=-1.14, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -110,567 +118,259 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, ehabkost@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ shan.gavin@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7N89VizHmWBU
+X-TUID: rPCe2yq7WsoA
 
-Add the framework to test the virtio-iommu-pci device
-and tests exercising the attach/detach, map/unmap API.
+On 11/1/21 7:44 PM, Igor Mammedov wrote:
+> On Thu, 28 Oct 2021 22:32:09 +1100
+> Gavin Shan <gshan@redhat.com> wrote: 
+>> On 10/28/21 2:40 AM, Igor Mammedov wrote:
+>>> On Wed, 27 Oct 2021 13:29:58 +0800
+>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>    
+>>>> The empty NUMA nodes, where no memory resides, aren't exposed
+>>>> through ACPI SRAT table. It's not user preferred behaviour because
+>>>> the corresponding memory node devices are missed from the guest
+>>>> kernel as the following example shows. It means the guest kernel
+>>>> doesn't have the node information as user specifies. However,
+>>>> memory can be still hot added to these empty NUMA nodes when
+>>>> they're not exposed.
+>>>>
+>>>>     /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+>>>>     -accel kvm -machine virt,gic-version=host               \
+>>>>     -cpu host -smp 4,sockets=2,cores=2,threads=1            \
+>>>>     -m 1024M,slots=16,maxmem=64G                            \
+>>>>     -object memory-backend-ram,id=mem0,size=512M            \
+>>>>     -object memory-backend-ram,id=mem1,size=512M            \
+>>>>     -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+>>>>     -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+>>>>     -numa node,nodeid=2                                     \
+>>>>     -numa node,nodeid=3                                     \
+>>>>        :
+>>>>     guest# ls /sys/devices/system/node | grep node
+>>>>     node0
+>>>>     node1
+>>>>     (qemu) object_add memory-backend-ram,id=hp-mem0,size=1G
+>>>>     (qemu) device_add pc-dimm,id=hp-dimm0,node=3,memdev=hp-mem0
+>>>>     guest# ls /sys/devices/system/node | grep node
+>>>>     node0
+>>>>     node1
+>>>>     node2
+>>>>     guest# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
+>>>>     Node 2 MemTotal:    1048576 kB
+>>>>
+>>>> This exposes these empty NUMA nodes through ACPI SRAT table. With
+>>>> this applied, the corresponding memory node devices can be found
+>>>> from the guest. Note that the hotpluggable capability is explicitly
+>>>> given to these empty NUMA nodes for sake of completeness.
+>>>>
+>>>>     guest# ls /sys/devices/system/node | grep node
+>>>>     node0
+>>>>     node1
+>>>>     node2
+>>>>     node3
+>>>>     guest# cat /sys/devices/system/node/node3/meminfo | grep MemTotal
+>>>>     Node 3 MemTotal:    0 kB
+>>>>     (qemu) object_add memory-backend-ram,id=hp-mem0,size=1G
+>>>>     (qemu) device_add pc-dimm,id=hp-dimm0,node=3,memdev=hp-mem0
+>>>>     guest# cat /sys/devices/system/node/node3/meminfo | grep MemTotal
+>>>>     Node 3 MemTotal:    1048576 kB
+>>>
+>>> I'm still not sure why this is necessary and if it's a good idea,
+>>> is there a real hardware that have such nodes?
+>>>
+>>> SRAT is used to assign resources to nodes, I haven't seen it being
+>>> used  as means to describe an empty node anywhere in the spec.
+>>> (perhaps we should not allow empty nodes on QEMU CLI at all).
+>>>
+>>> Then if we really need this, why it's done for ARM only
+>>> and not for x86?
+>>>    
+>>
+>> I think this case exists in real hardware where the memory DIMM
+>> isn't plugged, but the node is still probed.
+> Then please, provide SRAT table from such hw
+> (a lot of them (to justify it as defacto 'standard')?
+> since such hw firmware could be buggy as well).
+> 
+> BTW, fake memory node doesn't have to be present to make guest
+> notice an existing numa node. it can be represented by affinity
+> entries as well (see chapter:System Resource Affinity Table (SRAT)
+> in the spec).
+> 
+> At the moment, I'm totally unconvinced that empty numa nodes
+> are valid to provide.
+> 
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Igor, thanks for your continuous review. I don't have strong sense
+the fake nodes should be presented. So please ignore this patch
+until it's needed by virtio-mem. In that time, I can revisit this.
+More context is provided as below to make the discussion complete.
 
----
+> 
+>> Besides, this patch
+>> addresses two issues:
+>>
+>> (1) To make the information contained in guest kernel consistent
+>>       to the command line as the user expects. It means the sysfs
+>>       entries for these empty NUMA nodes in guest kernel reflects
+>>       what user provided.
+> -numa/SRAT describe boot time configuration.
+> So if you do not specify empty nodes on CLI, then number of nodes
+> would be consistent.
+> 
 
-v4 -> v5:
-- remove printf and move a comment
-- Added Jean-Philippe's T-b and R-b
----
- tests/qtest/libqos/meson.build    |   1 +
- tests/qtest/libqos/virtio-iommu.c | 126 ++++++++++++
- tests/qtest/libqos/virtio-iommu.h |  40 ++++
- tests/qtest/meson.build           |   1 +
- tests/qtest/virtio-iommu-test.c   | 326 ++++++++++++++++++++++++++++++
- 5 files changed, 494 insertions(+)
- create mode 100644 tests/qtest/libqos/virtio-iommu.c
- create mode 100644 tests/qtest/libqos/virtio-iommu.h
- create mode 100644 tests/qtest/virtio-iommu-test.c
+Correct.
 
-diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
-index 1f5c8f1053..ba90bbe2b8 100644
---- a/tests/qtest/libqos/meson.build
-+++ b/tests/qtest/libqos/meson.build
-@@ -40,6 +40,7 @@ libqos_srcs = files('../libqtest.c',
-         'virtio-rng.c',
-         'virtio-scsi.c',
-         'virtio-serial.c',
-+        'virtio-iommu.c',
- 
-         # qgraph machines:
-         'aarch64-xlnx-zcu102-machine.c',
-diff --git a/tests/qtest/libqos/virtio-iommu.c b/tests/qtest/libqos/virtio-iommu.c
-new file mode 100644
-index 0000000000..18cba4ca36
---- /dev/null
-+++ b/tests/qtest/libqos/virtio-iommu.c
-@@ -0,0 +1,126 @@
-+/*
-+ * libqos driver virtio-iommu-pci framework
-+ *
-+ * Copyright (c) 2021 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
-+ * option) any later version.  See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "qemu/module.h"
-+#include "qgraph.h"
-+#include "virtio-iommu.h"
-+#include "hw/virtio/virtio-iommu.h"
-+
-+static QGuestAllocator *alloc;
-+
-+/* virtio-iommu-device */
-+static void *qvirtio_iommu_get_driver(QVirtioIOMMU *v_iommu,
-+                                      const char *interface)
-+{
-+    if (!g_strcmp0(interface, "virtio-iommu")) {
-+        return v_iommu;
-+    }
-+    if (!g_strcmp0(interface, "virtio")) {
-+        return v_iommu->vdev;
-+    }
-+
-+    fprintf(stderr, "%s not present in virtio-iommu-device\n", interface);
-+    g_assert_not_reached();
-+}
-+
-+static void virtio_iommu_cleanup(QVirtioIOMMU *interface)
-+{
-+    qvirtqueue_cleanup(interface->vdev->bus, interface->vq, alloc);
-+}
-+
-+static void virtio_iommu_setup(QVirtioIOMMU *interface)
-+{
-+    QVirtioDevice *vdev = interface->vdev;
-+    uint64_t features;
-+
-+    features = qvirtio_get_features(vdev);
-+    features &= ~(QVIRTIO_F_BAD_FEATURE |
-+                  (1ull << VIRTIO_RING_F_INDIRECT_DESC) |
-+                  (1ull << VIRTIO_RING_F_EVENT_IDX) |
-+                  (1ull << VIRTIO_IOMMU_F_BYPASS));
-+    qvirtio_set_features(vdev, features);
-+    interface->vq = qvirtqueue_setup(interface->vdev, alloc, 0);
-+    qvirtio_set_driver_ok(interface->vdev);
-+}
-+
-+/* virtio-iommu-pci */
-+static void *qvirtio_iommu_pci_get_driver(void *object, const char *interface)
-+{
-+    QVirtioIOMMUPCI *v_iommu = object;
-+    if (!g_strcmp0(interface, "pci-device")) {
-+        return v_iommu->pci_vdev.pdev;
-+    }
-+    return qvirtio_iommu_get_driver(&v_iommu->iommu, interface);
-+}
-+
-+static void qvirtio_iommu_pci_destructor(QOSGraphObject *obj)
-+{
-+    QVirtioIOMMUPCI *iommu_pci = (QVirtioIOMMUPCI *) obj;
-+    QVirtioIOMMU *interface = &iommu_pci->iommu;
-+    QOSGraphObject *pci_vobj =  &iommu_pci->pci_vdev.obj;
-+
-+    virtio_iommu_cleanup(interface);
-+    qvirtio_pci_destructor(pci_vobj);
-+}
-+
-+static void qvirtio_iommu_pci_start_hw(QOSGraphObject *obj)
-+{
-+    QVirtioIOMMUPCI *iommu_pci = (QVirtioIOMMUPCI *) obj;
-+    QVirtioIOMMU *interface = &iommu_pci->iommu;
-+    QOSGraphObject *pci_vobj =  &iommu_pci->pci_vdev.obj;
-+
-+    qvirtio_pci_start_hw(pci_vobj);
-+    virtio_iommu_setup(interface);
-+}
-+
-+
-+static void *virtio_iommu_pci_create(void *pci_bus, QGuestAllocator *t_alloc,
-+                                   void *addr)
-+{
-+    QVirtioIOMMUPCI *virtio_rpci = g_new0(QVirtioIOMMUPCI, 1);
-+    QVirtioIOMMU *interface = &virtio_rpci->iommu;
-+    QOSGraphObject *obj = &virtio_rpci->pci_vdev.obj;
-+
-+    virtio_pci_init(&virtio_rpci->pci_vdev, pci_bus, addr);
-+    interface->vdev = &virtio_rpci->pci_vdev.vdev;
-+    alloc = t_alloc;
-+
-+    obj->get_driver = qvirtio_iommu_pci_get_driver;
-+    obj->start_hw = qvirtio_iommu_pci_start_hw;
-+    obj->destructor = qvirtio_iommu_pci_destructor;
-+
-+    return obj;
-+}
-+
-+static void virtio_iommu_register_nodes(void)
-+{
-+    QPCIAddress addr = {
-+        .devfn = QPCI_DEVFN(4, 0),
-+    };
-+
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "addr=04.0",
-+    };
-+
-+    /* virtio-iommu-pci */
-+    add_qpci_address(&opts, &addr);
-+    qos_node_create_driver("virtio-iommu-pci", virtio_iommu_pci_create);
-+    qos_node_consumes("virtio-iommu-pci", "pci-bus", &opts);
-+    qos_node_produces("virtio-iommu-pci", "pci-device");
-+    qos_node_produces("virtio-iommu-pci", "virtio");
-+    qos_node_produces("virtio-iommu-pci", "virtio-iommu");
-+}
-+
-+libqos_init(virtio_iommu_register_nodes);
-diff --git a/tests/qtest/libqos/virtio-iommu.h b/tests/qtest/libqos/virtio-iommu.h
-new file mode 100644
-index 0000000000..d753761958
---- /dev/null
-+++ b/tests/qtest/libqos/virtio-iommu.h
-@@ -0,0 +1,40 @@
-+/*
-+ * libqos driver virtio-iommu-pci framework
-+ *
-+ * Copyright (c) 2021 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
-+ * option) any later version.  See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#ifndef TESTS_LIBQOS_VIRTIO_IOMMU_H
-+#define TESTS_LIBQOS_VIRTIO_IOMMU_H
-+
-+#include "qgraph.h"
-+#include "virtio.h"
-+#include "virtio-pci.h"
-+
-+typedef struct QVirtioIOMMU QVirtioIOMMU;
-+typedef struct QVirtioIOMMUPCI QVirtioIOMMUPCI;
-+typedef struct QVirtioIOMMUDevice QVirtioIOMMUDevice;
-+
-+struct QVirtioIOMMU {
-+    QVirtioDevice *vdev;
-+    QVirtQueue *vq;
-+};
-+
-+struct QVirtioIOMMUPCI {
-+    QVirtioPCIDevice pci_vdev;
-+    QVirtioIOMMU iommu;
-+};
-+
-+struct QVirtioIOMMUDevice {
-+    QOSGraphObject obj;
-+    QVirtioIOMMU iommu;
-+};
-+
-+#endif
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index c9d8458062..982ffb3e38 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -230,6 +230,7 @@ qos_test_ss.add(
-   'virtio-rng-test.c',
-   'virtio-scsi-test.c',
-   'virtio-serial-test.c',
-+  'virtio-iommu-test.c',
-   'vmxnet3-test.c',
- )
- if have_virtfs
-diff --git a/tests/qtest/virtio-iommu-test.c b/tests/qtest/virtio-iommu-test.c
-new file mode 100644
-index 0000000000..42390eb2b7
---- /dev/null
-+++ b/tests/qtest/virtio-iommu-test.c
-@@ -0,0 +1,326 @@
-+/*
-+ * QTest testcase for VirtIO IOMMU
-+ *
-+ * Copyright (c) 2021 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
-+ * option) any later version.  See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+#include "qemu/module.h"
-+#include "libqos/qgraph.h"
-+#include "libqos/virtio-iommu.h"
-+#include "hw/virtio/virtio-iommu.h"
-+
-+#define PCI_SLOT_HP             0x06
-+#define QVIRTIO_IOMMU_TIMEOUT_US (30 * 1000 * 1000)
-+
-+static QGuestAllocator *alloc;
-+
-+static void pci_config(void *obj, void *data, QGuestAllocator *t_alloc)
-+{
-+    QVirtioIOMMU *v_iommu = obj;
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    uint64_t input_range_start = qvirtio_config_readq(dev, 8);
-+    uint64_t input_range_end = qvirtio_config_readq(dev, 16);
-+    uint32_t domain_range_start = qvirtio_config_readl(dev, 24);
-+    uint32_t domain_range_end = qvirtio_config_readl(dev, 28);
-+
-+    g_assert_cmpint(input_range_start, ==, 0);
-+    g_assert_cmphex(input_range_end, ==, UINT64_MAX);
-+    g_assert_cmpint(domain_range_start, ==, 0);
-+    g_assert_cmpint(domain_range_end, ==, 32);
-+}
-+
-+static int read_tail_status(struct virtio_iommu_req_tail *buffer)
-+{
-+    int i;
-+
-+    for (i = 0; i < 3; i++) {
-+        g_assert_cmpint(buffer->reserved[i], ==, 0);
-+    }
-+    return buffer->status;
-+}
-+
-+/**
-+ * send_attach_detach - Send an attach/detach command to the device
-+ * @type: VIRTIO_IOMMU_T_ATTACH/VIRTIO_IOMMU_T_DETACH
-+ * @domain: domain the endpoint is attached to
-+ * @ep: endpoint
-+ */
-+static int send_attach_detach(QTestState *qts, QVirtioIOMMU *v_iommu,
-+                              uint8_t type, uint32_t domain, uint32_t ep)
-+{
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    QVirtQueue *vq = v_iommu->vq;
-+    uint64_t ro_addr, wr_addr;
-+    uint32_t free_head;
-+    struct virtio_iommu_req_attach req = {}; /* same layout as detach */
-+    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
-+    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
-+    struct virtio_iommu_req_tail buffer;
-+    int ret;
-+
-+    req.head.type = type;
-+    req.domain = cpu_to_le32(domain);
-+    req.endpoint = cpu_to_le32(ep);
-+
-+    ro_addr = guest_alloc(alloc, ro_size);
-+    wr_addr = guest_alloc(alloc, wr_size);
-+
-+    qtest_memwrite(qts, ro_addr, &req, ro_size);
-+    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
-+    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
-+    qvirtqueue_kick(qts, dev, vq, free_head);
-+    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
-+                           QVIRTIO_IOMMU_TIMEOUT_US);
-+    qtest_memread(qts, wr_addr, &buffer, wr_size);
-+    ret = read_tail_status(&buffer);
-+    guest_free(alloc, ro_addr);
-+    guest_free(alloc, wr_addr);
-+    return ret;
-+}
-+
-+/**
-+ * send_map - Send a map command to the device
-+ * @domain: domain the new mapping is attached to
-+ * @virt_start: iova start
-+ * @virt_end: iova end
-+ * @phys_start: base physical address
-+ * @flags: mapping flags
-+ */
-+static int send_map(QTestState *qts, QVirtioIOMMU *v_iommu,
-+                    uint32_t domain, uint64_t virt_start, uint64_t virt_end,
-+                    uint64_t phys_start, uint32_t flags)
-+{
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    QVirtQueue *vq = v_iommu->vq;
-+    uint64_t ro_addr, wr_addr;
-+    uint32_t free_head;
-+    struct virtio_iommu_req_map req;
-+    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
-+    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
-+    struct virtio_iommu_req_tail buffer;
-+    int ret;
-+
-+    req.head.type = VIRTIO_IOMMU_T_MAP;
-+    req.domain = cpu_to_le32(domain);
-+    req.virt_start = cpu_to_le64(virt_start);
-+    req.virt_end = cpu_to_le64(virt_end);
-+    req.phys_start = cpu_to_le64(phys_start);
-+    req.flags = cpu_to_le32(flags);
-+
-+    ro_addr = guest_alloc(alloc, ro_size);
-+    wr_addr = guest_alloc(alloc, wr_size);
-+
-+    qtest_memwrite(qts, ro_addr, &req, ro_size);
-+    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
-+    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
-+    qvirtqueue_kick(qts, dev, vq, free_head);
-+    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
-+                           QVIRTIO_IOMMU_TIMEOUT_US);
-+    qtest_memread(qts, wr_addr, &buffer, wr_size);
-+    ret = read_tail_status(&buffer);
-+    guest_free(alloc, ro_addr);
-+    guest_free(alloc, wr_addr);
-+    return ret;
-+}
-+
-+/**
-+ * send_unmap - Send an unmap command to the device
-+ * @domain: domain the new binding is attached to
-+ * @virt_start: iova start
-+ * @virt_end: iova end
-+ */
-+static int send_unmap(QTestState *qts, QVirtioIOMMU *v_iommu,
-+                      uint32_t domain, uint64_t virt_start, uint64_t virt_end)
-+{
-+    QVirtioDevice *dev = v_iommu->vdev;
-+    QVirtQueue *vq = v_iommu->vq;
-+    uint64_t ro_addr, wr_addr;
-+    uint32_t free_head;
-+    struct virtio_iommu_req_unmap req;
-+    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
-+    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
-+    struct virtio_iommu_req_tail buffer;
-+    int ret;
-+
-+    req.head.type = VIRTIO_IOMMU_T_UNMAP;
-+    req.domain = cpu_to_le32(domain);
-+    req.virt_start = cpu_to_le64(virt_start);
-+    req.virt_end = cpu_to_le64(virt_end);
-+
-+    ro_addr = guest_alloc(alloc, ro_size);
-+    wr_addr = guest_alloc(alloc, wr_size);
-+
-+    qtest_memwrite(qts, ro_addr, &req, ro_size);
-+    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
-+    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
-+    qvirtqueue_kick(qts, dev, vq, free_head);
-+    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
-+                           QVIRTIO_IOMMU_TIMEOUT_US);
-+    qtest_memread(qts, wr_addr, &buffer, wr_size);
-+    ret = read_tail_status(&buffer);
-+    guest_free(alloc, ro_addr);
-+    guest_free(alloc, wr_addr);
-+    return ret;
-+}
-+
-+static void test_attach_detach(void *obj, void *data, QGuestAllocator *t_alloc)
-+{
-+    QVirtioIOMMU *v_iommu = obj;
-+    QTestState *qts = global_qtest;
-+    int ret;
-+
-+    alloc = t_alloc;
-+
-+    /* type, domain, ep */
-+
-+    /* attach ep0 to domain 0 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* attach a non existing device */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 444);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    /* detach a non existing device (1) */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 1);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    /* move ep0 from domain 0 to domain 1 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* detach ep0 from domain 0 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 0);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL);
-+
-+    /* detach ep0 from domain 1 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 0x0, 0xFFF, 0xa1000,
-+                   VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 0x2000, 0x2FFF, 0xb1000,
-+                   VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+}
-+
-+/* Test map/unmap scenari documented in the spec */
-+static void test_map_unmap(void *obj, void *data, QGuestAllocator *t_alloc)
-+{
-+    QVirtioIOMMU *v_iommu = obj;
-+    QTestState *qts = global_qtest;
-+    int ret;
-+
-+    alloc = t_alloc;
-+
-+    /* attach ep0 to domain 1 */
-+    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    ret = send_map(qts, v_iommu, 0, 0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    /* domain, virt start, virt end, phys start, flags */
-+    ret = send_map(qts, v_iommu, 1, 0x0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* send a new mapping overlapping the previous one */
-+    ret = send_map(qts, v_iommu, 1, 0, 0xFFFF, 0xb1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL);
-+
-+    ret = send_unmap(qts, v_iommu, 4, 0x10, 0xFFF);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
-+
-+    ret = send_unmap(qts, v_iommu, 1, 0x10, 0xFFF);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE);
-+
-+    ret = send_unmap(qts, v_iommu, 1, 0, 0x1000);
-+    g_assert_cmpint(ret, ==, 0); /* unmap everything */
-+
-+    /* Spec example sequence */
-+
-+    /* 1 */
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, 0); /* doesn't unmap anything */
-+
-+    /* 2 */
-+    ret = send_map(qts, v_iommu, 1, 0, 9, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 9);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,9] */
-+
-+    /* 3 */
-+    ret = send_map(qts, v_iommu, 1, 0, 4, 0xb1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 5, 9, 0xb2000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 9);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [5,9] */
-+
-+    /* 4 */
-+    ret = send_map(qts, v_iommu, 1, 0, 9, 0xc1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE); /* doesn't unmap anything */
-+
-+    ret = send_unmap(qts, v_iommu, 1, 0, 10);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* 5 */
-+    ret = send_map(qts, v_iommu, 1, 0, 4, 0xd1000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 5, 9, 0xd2000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
-+
-+    ret = send_unmap(qts, v_iommu, 1, 5, 9);
-+    g_assert_cmpint(ret, ==, 0);
-+
-+    /* 6 */
-+    ret = send_map(qts, v_iommu, 1, 0, 4, 0xe2000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 9);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
-+
-+    /* 7 */
-+    ret = send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 14);
-+    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [10,14] */
-+
-+    ret = send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, 0);
-+    ret = send_unmap(qts, v_iommu, 1, 0, 4);
-+    g_assert_cmpint(ret, ==, 0); /* only unmaps [0,4] */
-+    ret = send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
-+    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL); /* 10-14 still is mapped */
-+}
-+
-+static void register_virtio_iommu_test(void)
-+{
-+    qos_add_test("config", "virtio-iommu", pci_config, NULL);
-+    qos_add_test("attach_detach", "virtio-iommu", test_attach_detach, NULL);
-+    qos_add_test("map_unmap", "virtio-iommu", test_map_unmap, NULL);
-+}
-+
-+libqos_init(register_virtio_iommu_test);
--- 
-2.26.3
+>> (2) Without this patch, the node number can be twisted from user's
+>>       perspective. As the example included in the commit log, node3
+>>       should be created, but node2 is actually created. The patch
+>>       reserves the NUMA node IDs in advance to avoid the issue.
+>>
+>>       /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+>>          :
+>>       -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+>>       -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+>>       -numa node,nodeid=2                                     \
+>>       -numa node,nodeid=3                                     \
+>>       guest# ls /sys/devices/system/node | grep node
+>>       node0  node1
+>>       (qemu) object_add memory-backend-ram,id=hp-mem0,size=1G
+>>       (qemu) device_add pc-dimm,id=hp-dimm0,node=3,memdev=hp-mem0
+>>       guest# ls /sys/devices/system/node | grep node
+>>       node0  node1  node2
+> 
+> The same node numbering on guest side and QEMU CLI works only
+> by accident not by design. In short numbers may not match
+> (in linux kernel case it depends on the order the nodes
+> are enumerated), if you really want numbers to match then fix
+> guest kernel to use proximity domain for numbering.
+> 
+> The important thing here is that resources are grouped
+> together, according to proximity domain.
+> 
+
+Linux ACPI driver avoids to take the proximity domain as node number,
+meaning Linux kernel doesn't support discrete node IDs.
+
+>> We definitely need empty NUMA nodes from QEMU CLI. One case I heard
+>> of is kdump developer specify NUMA nodes and corresponding pc-dimm
+>> objects for memory hot-add and test the memory usability.
+> 
+> Question is if the node has to be absolutely empty for this?
+> It should be possible to use a node that has CPUs assigned to it.
+> 
+> Or add pc-dimm at runtime, which should dynamically create
+> a numa node for it if the node wasn't described before.
+> 
+
+Yes, I think so.
+
+>> I'm not
+>> familiar with ACPI specification, but linux kernel fetches NUMA
+>> node IDs from the following ACPI tables on ARM64. It's possible
+>> the empty NUMA node IDs are parsed from GENERIC_AFFINITY or SLIT
+>> tables if they exist in the corresponding ACPI tables.
+>>
+>>       ACPI_SRAT_TYPE_MEMORY_AFFINITY
+>>       ACPI_SRAT_TYPE_GENERIC_AFFINITY
+> any possible entry type can be a source for numa node,
+> if guest doesn't do this it's guest's bug to fix.
+> 
+>>       ACPI_SIG_SLIT                          # if it exists
+> that's a recent addition tied to [1].
+> 1) https://www.mail-archive.com/qemu-devel@nongnu.org/msg843453.html
+> If I recall correctly, related QEMU patch was dropped.
+> 
+>> So I think other architectures including x86 needs similar mechanism
+>> to expose NUMA node IDs through ACPI table. If you agree, I can post
+>> additional patches to do this after this one is settled and merged.
+> 
+> I do not agree to bogus entries approach at all.
+> Sometimes, we merge 'out of spec' changes but that should be
+> baked by 'must have' justification and tested with wide
+> range of guest OSes (if Windows (with its more strict ACPI impl.)
+> boots on virt-arm machine it should be tested as well).
+> 
+> So far I don't see 'must have' aspect in bogus nodes,
+> only a convenience one (with 'works by accident' caveat).
+> 
+> I'm sorry for being stingy about out of spec things,
+> but that is typical source of regressions on ACPI side
+> which is noticed too late when users come back with broken
+> guest after release.
+> 
+
+Yeah, I agree. I don't have strong sense to expose these empty nodes
+for now. Please ignore the patch.
+
+>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>>>> ---
+>>>> v2: Improved commit log as suggested by Drew and Igor.
+>>>> ---
+>>>>    hw/arm/virt-acpi-build.c | 14 +++++++++-----
+>>>>    1 file changed, 9 insertions(+), 5 deletions(-)
+>>>>
+>>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>>> index 674f902652..a4c95b2f64 100644
+>>>> --- a/hw/arm/virt-acpi-build.c
+>>>> +++ b/hw/arm/virt-acpi-build.c
+>>>> @@ -526,6 +526,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>>>        const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(ms);
+>>>>        AcpiTable table = { .sig = "SRAT", .rev = 3, .oem_id = vms->oem_id,
+>>>>                            .oem_table_id = vms->oem_table_id };
+>>>> +    MemoryAffinityFlags flags;
+>>>>    
+>>>>        acpi_table_begin(&table, table_data);
+>>>>        build_append_int_noprefix(table_data, 1, 4); /* Reserved */
+>>>> @@ -547,12 +548,15 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>>>    
+>>>>        mem_base = vms->memmap[VIRT_MEM].base;
+>>>>        for (i = 0; i < ms->numa_state->num_nodes; ++i) {
+>>>> -        if (ms->numa_state->nodes[i].node_mem > 0) {
+>>>> -            build_srat_memory(table_data, mem_base,
+>>>> -                              ms->numa_state->nodes[i].node_mem, i,
+>>>> -                              MEM_AFFINITY_ENABLED);
+>>>> -            mem_base += ms->numa_state->nodes[i].node_mem;
+>>>> +        if (ms->numa_state->nodes[i].node_mem) {
+>>>> +            flags = MEM_AFFINITY_ENABLED;
+>>>> +        } else {
+>>>> +            flags = MEM_AFFINITY_ENABLED | MEM_AFFINITY_HOTPLUGGABLE;
+>>>>            }
+>>>> +
+>>>> +        build_srat_memory(table_data, mem_base,
+>>>> +                          ms->numa_state->nodes[i].node_mem, i, flags);
+>>> that will create 0 length memory range, which is "Enabled",
+>>> I'm not sure it's safe thing to do.
+>>>
+>>> As side effect this will also create empty ranges for memory-less
+>>> nodes that have only CPUs, where it's not necessary.
+>>>
+>>> I'd really try avoid adding empty ranges unless it hard requirement,
+>>> described somewhere or fixes a bug that can't be fixed elsewhere.
+>>>    
+>>
+>> It's safe to Linux at least as I tested on ARM64. The (zero) memory
+>> block doesn't affect anything. Besides, the memory block which has
+>> been marked as hotpluggable won't be handled in Linux on ARM64
+>> actually.
+>>
+>> Yes, the empty NUMA nodes are meaningless to CPUs until memory is
+>> hot added into them.
+>>
+>>>> +        mem_base += ms->numa_state->nodes[i].node_mem;
+>>>>        }
+>>>>    
+>>>>        if (ms->nvdimms_state->is_enabled) {
+>>>    
+>>
+
+Thanks,
+Gavin
 

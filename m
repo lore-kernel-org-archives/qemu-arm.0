@@ -1,270 +1,676 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2484171lfv;
-        Mon, 1 Nov 2021 13:00:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSskHQvSDTDAcHTSBvEg1jf+a0eLckJcv7u1nTzxlTVV7ZRL449QC/vf0K3Az0s9NITfaX
-X-Received: by 2002:a05:6830:4033:: with SMTP id i19mr22289696ots.320.1635796804681;
-        Mon, 01 Nov 2021 13:00:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635796804; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2498304lfv;
+        Mon, 1 Nov 2021 13:12:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyj6uNsAyJgFFBk0+WRy5oM1s2lyQ4QjTfZGlMybKFzBp4DoR6n3v5MY7236y3ohM7wKFt2
+X-Received: by 2002:a05:6830:13c5:: with SMTP id e5mr22199715otq.374.1635797573798;
+        Mon, 01 Nov 2021 13:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635797573; cv=none;
         d=google.com; s=arc-20160816;
-        b=I+N45OPvnO/CYx6yIhN7tJIpJZpdaaGb9vM/fe93th7bd0LnAlTZAdCiQbu/J/XhxJ
-         WUAFR63D7Jem6z2jpfS5XNTLFML+gJrmXe63P6T2KnWXErfQWXVhElR2U6yFwXmlojsS
-         j/+Mq7PqvAEV0zWouslWNR9K/Oihsm7Gm1or8tlGlHQKp8Xnh7dRUZG55Fyd8HhWNTkU
-         o9z4lC+Wmgnec01+7+i9lxdZKEeK3s+R1EtifLHp86xY8Tw/SdVjqTMn76eTRBgkEGp5
-         36I8xQ9fp2Pa3wDwG14hPzwA2DkW8FL9lJjUjapK6XVtBd21xBpZYDCBcI34gpyBT1DN
-         Fn8w==
+        b=vJ1vKd1Mmek8z9tjzgQh8tF1fCM+A+0qpusnx/mO5YH7DRlKNJxdPHp+JhukWAsb9m
+         5kSOPcxfRvxn4RmkTPRVr7A2QDJN6IaaixuNOIqw+dbQ+n98TmpNqs9Ys9I3EULzkggj
+         SeBg97/SRrKgq3ZXeW1K0x9eUoit8gJWgS5dxizEjt4B0m0ZJVmWHAcDkQIUnYSrhcB1
+         MtPUH5rO0oGIxVh6MWwtet1gmeT+VYcLrCaetIZ1yvP30SR/TvuH4ZQbOhYP9qAW5V03
+         Sv/qthhBTBmNJZeK1Eqhycbu6uLgurw9VSHcC0goTUvokq7jUCfzZlbwvdI7TW7XoVeo
+         6WvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=i9WkKzGBhUfHJBsn8eoz69jlkrm1w9B2P/vzjoQrRQY=;
-        b=mvsjih8WGZfv+MuEejl3SI2vj0qOBzmguQkqY9XYXdrOro//EFaeUTeutLec3N7Ac6
-         5HlxcuFamfJdd5/ln51d3E11g3NbMlPvdbhj9ArpIor+EirT96g2uMoGXsbld+t7M2a0
-         0t29lL2nT4Y9GoPd5jQR+A0pRKJC650jodNcorJOWDzZn5XJzCrHJJi5QlxLRWHOJWBl
-         CzEU09PhsFS3xhcBkonbitm0+6soLccn+WHUF0tO+IXXtFYUX66UPP84OYIgv9x+vPzJ
-         Nok32ro0YlaLUg3Vu39i6b3at8EhfJ2iNIdggXWZIWjwlei5ozsIqZu/SmhiAeos47OG
-         J7yA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=xEyRJSB1WfKc1hxrIIjzvBmb3RHiHblv6srUheYUS7Q=;
+        b=bjPYj5t5wgy2G2TBLGljf5Q883NtcgH2aitUgrti1T3UONQVffoPmjnaZB7YbZzeJw
+         cNglGjBho3gwSLVrqSQONzZAui+uORQqb48zdClxhWEnBjve9t3Y2mthrqB2PjyBS+p+
+         nocslcl1SvmWAd+0fHcB/Vg1EqMVvCpziEBPKtJC8T6T11m0GSrSxd1Wj9LIO3pMfrQm
+         cFcNn/sULH6A3ZaEmQebkCXimBcImn+V8JAQjwy5LQ5mADu2gQshzUtau61W5ofDqWgg
+         jfdp2/M29Lde2ulA/BA0Luooj36PjwOMIQ1F4NDf+/Fppt9fVArDWXhtwUp6DbaqhDSP
+         z1Fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="acUWoz/l";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KmfEBonp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10si9658206oth.142.2021.11.01.13.00.04
+        by mx.google.com with ESMTPS id w3si8422884otm.187.2021.11.01.13.12.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Nov 2021 13:00:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Nov 2021 13:12:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="acUWoz/l";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41564 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KmfEBonp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36900 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mhdTP-0002q8-RE
-	for alex.bennee@linaro.org; Mon, 01 Nov 2021 16:00:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36026)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mhdfp-0002Jk-1J
+	for alex.bennee@linaro.org; Mon, 01 Nov 2021 16:12:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57716)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1mhcjA-0000fn-Cy
- for qemu-devel@nongnu.org; Mon, 01 Nov 2021 15:12:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20644)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mhcMz-0005Vf-7B
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 14:49:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21082)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1mhcj7-00073F-B5
- for qemu-devel@nongnu.org; Mon, 01 Nov 2021 15:12:15 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1mhcMu-0000iP-QD
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 14:49:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635793932;
+ s=mimecast20190719; t=1635792555;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=i9WkKzGBhUfHJBsn8eoz69jlkrm1w9B2P/vzjoQrRQY=;
- b=acUWoz/lJbu7j18yCTQUODxGhO6t0lvK9oOhaIQCKAYFE+W6o8r/P75OexyoAinKXkisO+
- 0oIjKYrzrpx/4DgxpPS9ZvmXH5RhA74sPCQsUfPdF/5uyN+53sQJX/AZaodVibR/YQzcra
- BCTAzuz5nzKwuNtJK/9CIo6py+T69UI=
-Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
- [209.85.210.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-367-ksgjj431PCSasxhHTqAyxw-1; Mon, 01 Nov 2021 15:12:09 -0400
-X-MC-Unique: ksgjj431PCSasxhHTqAyxw-1
-Received: by mail-pf1-f197.google.com with SMTP id
- m26-20020a62a21a000000b0041361973ba7so9817438pff.15
- for <qemu-devel@nongnu.org>; Mon, 01 Nov 2021 12:12:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=i9WkKzGBhUfHJBsn8eoz69jlkrm1w9B2P/vzjoQrRQY=;
- b=7FVBd5WLBkGVXlDsW3yyi7oLPKOaXvBfylcLsyPMnk15dIKoAk2AKB7/B8NsCjX8rJ
- fN/sPH2g9Kqx4FB2zEfJvA5QJsGaSr7O3Qg6MogbJ+2rRABHtwB9l5ypLOHHgOuqCs+Y
- gBG0yTCcuWnQdds1WYH3LyUtRpLGyrzkGNwyijeo9M/NRFqRM/Y6Yx2wOGaKrklU3QzK
- Dpc1oqi+4COjQMRhPVjJuYykXJBUSC1bz2tqAiohOxhJQ17r6Alr7dpRU85B6ogQctZ6
- Xu85tHDQZZmVMIqRFdc7bEfxy5y+CdNv5HDu2nX9hNg6ro4yQ03BGVo2ChrLbmPY+yly
- 0hiw==
-X-Gm-Message-State: AOAM533Q+f3FXw5fGspY9xPgyj5w3QcwQEMGH3q0QJRYb/9Oxwfb5V1a
- P/5Nf0IucazEOp9HqUZktq3I4HTWRwo0Fx/BQFggJodeeWx70HAC/XxULODwIaIVm7ix6HPBBUg
- PA7chs53fkx+fGa3ur56YB7G1Q0uQBzc=
-X-Received: by 2002:a17:90b:615:: with SMTP id
- gb21mr968162pjb.10.1635793928208; 
- Mon, 01 Nov 2021 12:12:08 -0700 (PDT)
-X-Received: by 2002:a17:90b:615:: with SMTP id
- gb21mr968130pjb.10.1635793927987; 
- Mon, 01 Nov 2021 12:12:07 -0700 (PDT)
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=xEyRJSB1WfKc1hxrIIjzvBmb3RHiHblv6srUheYUS7Q=;
+ b=KmfEBonptnEMMWCnxtkQOzgVDy8JirlawaHK78sr0PVtWhcAFwRTMz/m5c++utlJdDqC5s
+ HNlIYiEq02itdBMgtNuBOgKDrb3HhW47mG4QJDN9TqibdtwtiaZ8rCdIZ41iXDR8jbhT4M
+ tc4LmRcZi3mUfUf4tFFMULkJNP5dS+U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-53-V5p8ajv4ObOblv3gdFGCnw-1; Mon, 01 Nov 2021 14:49:12 -0400
+X-MC-Unique: V5p8ajv4ObOblv3gdFGCnw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 385C018125C1;
+ Mon,  1 Nov 2021 18:49:11 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.74])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A804A60862;
+ Mon,  1 Nov 2021 18:49:07 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, thuth@redhat.com,
+ pbonzini@redhat.com, lvivier@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, jean-philippe@linaro.org
+Subject: [PATCH v5] tests: qtest: Add virtio-iommu test
+Date: Mon,  1 Nov 2021 19:48:58 +0100
+Message-Id: <20211101184858.15223-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20210927163116.1998349-1-f4bug@amsat.org>
- <20210927163116.1998349-7-f4bug@amsat.org>
-In-Reply-To: <20210927163116.1998349-7-f4bug@amsat.org>
-From: Willian Rampazzo <wrampazz@redhat.com>
-Date: Mon, 1 Nov 2021 16:11:42 -0300
-Message-ID: <CAKJDGDaXZ-rT-MECCVBH5H7_=fj9tjA1Z_R-iGGgHZR-iFN4nA@mail.gmail.com>
-Subject: Re: [PATCH v4 6/6] tests/acceptance: Rename avocado_qemu.Test ->
- QemuSystemTest
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=wrampazz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.734,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Warner Losh <imp@bsdimp.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-devel <qemu-devel@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r0gA/SQIePSm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7N89VizHmWBU
 
-On Mon, Sep 27, 2021 at 1:32 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> To run user-mode emulation tests, we introduced the
-> avocado_qemu.QemuUserTest which inherits from avocado_qemu.QemuBaseTest.
-> System-mode emulation tests are based on the avocado_qemu.Test class,
-> which also inherits avocado_qemu.QemuBaseTest. To avoid confusion,
-> rename it as avocado_qemu.QemuSystemTest.
->
-> Suggested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  tests/acceptance/avocado_qemu/__init__.py    | 21 +++++++++-----------
->  tests/acceptance/boot_linux_console.py       |  4 ++--
->  tests/acceptance/cpu_queries.py              |  4 ++--
->  tests/acceptance/empty_cpu_model.py          |  4 ++--
->  tests/acceptance/info_usernet.py             |  4 ++--
->  tests/acceptance/linux_initrd.py             |  4 ++--
->  tests/acceptance/linux_ssh_mips_malta.py     |  5 +++--
->  tests/acceptance/machine_arm_canona1100.py   |  4 ++--
->  tests/acceptance/machine_arm_integratorcp.py |  4 ++--
->  tests/acceptance/machine_arm_n8x0.py         |  4 ++--
->  tests/acceptance/machine_avr6.py             |  4 ++--
->  tests/acceptance/machine_m68k_nextcube.py    |  4 ++--
->  tests/acceptance/machine_microblaze.py       |  4 ++--
->  tests/acceptance/machine_mips_fuloong2e.py   |  4 ++--
->  tests/acceptance/machine_mips_loongson3v.py  |  4 ++--
->  tests/acceptance/machine_mips_malta.py       |  4 ++--
->  tests/acceptance/machine_ppc.py              |  4 ++--
->  tests/acceptance/machine_rx_gdbsim.py        |  4 ++--
->  tests/acceptance/machine_s390_ccw_virtio.py  |  4 ++--
->  tests/acceptance/machine_sparc_leon3.py      |  4 ++--
->  tests/acceptance/migration.py                |  4 ++--
->  tests/acceptance/multiprocess.py             |  4 ++--
->  tests/acceptance/pc_cpu_hotplug_props.py     |  4 ++--
->  tests/acceptance/ppc_prep_40p.py             |  4 ++--
->  tests/acceptance/version.py                  |  4 ++--
->  tests/acceptance/virtio-gpu.py               |  4 ++--
->  tests/acceptance/virtio_check_params.py      |  4 ++--
->  tests/acceptance/virtio_version.py           |  4 ++--
->  tests/acceptance/vnc.py                      |  4 ++--
->  tests/acceptance/x86_cpu_model_versions.py   |  4 ++--
->  30 files changed, 68 insertions(+), 70 deletions(-)
->
-> diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance=
-/avocado_qemu/__init__.py
-> index a497a24f823..1abec2abaca 100644
-> --- a/tests/acceptance/avocado_qemu/__init__.py
-> +++ b/tests/acceptance/avocado_qemu/__init__.py
-> @@ -183,7 +183,7 @@ def interrupt_interactive_console_until_pattern(test,=
- success_message,
->
->      :param test: an Avocado test containing a VM that will have its cons=
-ole
->                   read and probed for a success or failure message
-> -    :type test: :class:`avocado_qemu.Test`
-> +    :type test: :class:`avocado_qemu.QemuSystemTest`
->      :param success_message: if this message appears, test succeeds
->      :param failure_message: if this message appears, test fails
->      :param interrupt_string: a string to send to the console before tryi=
-ng
-> @@ -199,7 +199,7 @@ def wait_for_console_pattern(test, success_message, f=
-ailure_message=3DNone,
->
->      :param test: an Avocado test containing a VM that will have its cons=
-ole
->                   read and probed for a success or failure message
-> -    :type test: :class:`avocado_qemu.Test`
-> +    :type test: :class:`avocado_qemu.QemuSystemTest`
->      :param success_message: if this message appears, test succeeds
->      :param failure_message: if this message appears, test fails
->      """
-> @@ -211,7 +211,7 @@ def exec_command(test, command):
->      the content.
->
->      :param test: an Avocado test containing a VM.
-> -    :type test: :class:`avocado_qemu.Test`
-> +    :type test: :class:`avocado_qemu.QemuSystemTest`
->      :param command: the command to send
->      :type command: str
->      """
-> @@ -226,7 +226,7 @@ def exec_command_and_wait_for_pattern(test, command,
->
->      :param test: an Avocado test containing a VM that will have its cons=
-ole
->                   read and probed for a success or failure message
-> -    :type test: :class:`avocado_qemu.Test`
-> +    :type test: :class:`avocado_qemu.QemuSystemTest`
->      :param command: the command to send
->      :param success_message: if this message appears, test succeeds
->      :param failure_message: if this message appears, test fails
-> @@ -269,16 +269,13 @@ def fetch_asset(self, name,
->                          cancel_on_missing=3Dcancel_on_missing)
->
->
-> -class Test(QemuBaseTest):
-> -    """Facilitates system emulation tests.
-> -
-> -    TODO: Rename this class as `QemuSystemTest`.
-> -    """
-> +class QemuSystemTest(QemuBaseTest):
-> +    """Facilitates system emulation tests."""
->
->      def setUp(self):
->          self._vms =3D {}
->
-> -        super(Test, self).setUp('qemu-system-')
-> +        super(QemuSystemTest, self).setUp('qemu-system-')
+Add the framework to test the virtio-iommu-pci device
+and tests exercising the attach/detach, map/unmap API.
 
-If you take my suggestion in one of the previous patches, you don't
-need this change here.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
->
->          self.machine =3D self.params.get('machine',
->                                         default=3Dself._get_unique_tag_va=
-l('machine'))
-> @@ -515,11 +512,11 @@ def default_kernel_params(self):
->          return self._info.get('kernel_params', None)
->
->
-> -class LinuxTest(Test, LinuxSSHMixIn):
-> +class LinuxTest(QemuSystemTest, LinuxSSHMixIn):
->      """Facilitates having a cloud-image Linux based available.
->
->      For tests that indend to interact with guests, this is a better choi=
-ce
+---
 
-If you touch this patch again, please, s/indend/intend/
+v4 -> v5:
+- remove printf and move a comment
+- Added Jean-Philippe's T-b and R-b
+---
+ tests/qtest/libqos/meson.build    |   1 +
+ tests/qtest/libqos/virtio-iommu.c | 126 ++++++++++++
+ tests/qtest/libqos/virtio-iommu.h |  40 ++++
+ tests/qtest/meson.build           |   1 +
+ tests/qtest/virtio-iommu-test.c   | 326 ++++++++++++++++++++++++++++++
+ 5 files changed, 494 insertions(+)
+ create mode 100644 tests/qtest/libqos/virtio-iommu.c
+ create mode 100644 tests/qtest/libqos/virtio-iommu.h
+ create mode 100644 tests/qtest/virtio-iommu-test.c
 
-So far, looks good to me
-
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
+index 1f5c8f1053..ba90bbe2b8 100644
+--- a/tests/qtest/libqos/meson.build
++++ b/tests/qtest/libqos/meson.build
+@@ -40,6 +40,7 @@ libqos_srcs = files('../libqtest.c',
+         'virtio-rng.c',
+         'virtio-scsi.c',
+         'virtio-serial.c',
++        'virtio-iommu.c',
+ 
+         # qgraph machines:
+         'aarch64-xlnx-zcu102-machine.c',
+diff --git a/tests/qtest/libqos/virtio-iommu.c b/tests/qtest/libqos/virtio-iommu.c
+new file mode 100644
+index 0000000000..18cba4ca36
+--- /dev/null
++++ b/tests/qtest/libqos/virtio-iommu.c
+@@ -0,0 +1,126 @@
++/*
++ * libqos driver virtio-iommu-pci framework
++ *
++ * Copyright (c) 2021 Red Hat, Inc.
++ *
++ * Authors:
++ *  Eric Auger <eric.auger@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
++ * option) any later version.  See the COPYING file in the top-level directory.
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/module.h"
++#include "qgraph.h"
++#include "virtio-iommu.h"
++#include "hw/virtio/virtio-iommu.h"
++
++static QGuestAllocator *alloc;
++
++/* virtio-iommu-device */
++static void *qvirtio_iommu_get_driver(QVirtioIOMMU *v_iommu,
++                                      const char *interface)
++{
++    if (!g_strcmp0(interface, "virtio-iommu")) {
++        return v_iommu;
++    }
++    if (!g_strcmp0(interface, "virtio")) {
++        return v_iommu->vdev;
++    }
++
++    fprintf(stderr, "%s not present in virtio-iommu-device\n", interface);
++    g_assert_not_reached();
++}
++
++static void virtio_iommu_cleanup(QVirtioIOMMU *interface)
++{
++    qvirtqueue_cleanup(interface->vdev->bus, interface->vq, alloc);
++}
++
++static void virtio_iommu_setup(QVirtioIOMMU *interface)
++{
++    QVirtioDevice *vdev = interface->vdev;
++    uint64_t features;
++
++    features = qvirtio_get_features(vdev);
++    features &= ~(QVIRTIO_F_BAD_FEATURE |
++                  (1ull << VIRTIO_RING_F_INDIRECT_DESC) |
++                  (1ull << VIRTIO_RING_F_EVENT_IDX) |
++                  (1ull << VIRTIO_IOMMU_F_BYPASS));
++    qvirtio_set_features(vdev, features);
++    interface->vq = qvirtqueue_setup(interface->vdev, alloc, 0);
++    qvirtio_set_driver_ok(interface->vdev);
++}
++
++/* virtio-iommu-pci */
++static void *qvirtio_iommu_pci_get_driver(void *object, const char *interface)
++{
++    QVirtioIOMMUPCI *v_iommu = object;
++    if (!g_strcmp0(interface, "pci-device")) {
++        return v_iommu->pci_vdev.pdev;
++    }
++    return qvirtio_iommu_get_driver(&v_iommu->iommu, interface);
++}
++
++static void qvirtio_iommu_pci_destructor(QOSGraphObject *obj)
++{
++    QVirtioIOMMUPCI *iommu_pci = (QVirtioIOMMUPCI *) obj;
++    QVirtioIOMMU *interface = &iommu_pci->iommu;
++    QOSGraphObject *pci_vobj =  &iommu_pci->pci_vdev.obj;
++
++    virtio_iommu_cleanup(interface);
++    qvirtio_pci_destructor(pci_vobj);
++}
++
++static void qvirtio_iommu_pci_start_hw(QOSGraphObject *obj)
++{
++    QVirtioIOMMUPCI *iommu_pci = (QVirtioIOMMUPCI *) obj;
++    QVirtioIOMMU *interface = &iommu_pci->iommu;
++    QOSGraphObject *pci_vobj =  &iommu_pci->pci_vdev.obj;
++
++    qvirtio_pci_start_hw(pci_vobj);
++    virtio_iommu_setup(interface);
++}
++
++
++static void *virtio_iommu_pci_create(void *pci_bus, QGuestAllocator *t_alloc,
++                                   void *addr)
++{
++    QVirtioIOMMUPCI *virtio_rpci = g_new0(QVirtioIOMMUPCI, 1);
++    QVirtioIOMMU *interface = &virtio_rpci->iommu;
++    QOSGraphObject *obj = &virtio_rpci->pci_vdev.obj;
++
++    virtio_pci_init(&virtio_rpci->pci_vdev, pci_bus, addr);
++    interface->vdev = &virtio_rpci->pci_vdev.vdev;
++    alloc = t_alloc;
++
++    obj->get_driver = qvirtio_iommu_pci_get_driver;
++    obj->start_hw = qvirtio_iommu_pci_start_hw;
++    obj->destructor = qvirtio_iommu_pci_destructor;
++
++    return obj;
++}
++
++static void virtio_iommu_register_nodes(void)
++{
++    QPCIAddress addr = {
++        .devfn = QPCI_DEVFN(4, 0),
++    };
++
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "addr=04.0",
++    };
++
++    /* virtio-iommu-pci */
++    add_qpci_address(&opts, &addr);
++    qos_node_create_driver("virtio-iommu-pci", virtio_iommu_pci_create);
++    qos_node_consumes("virtio-iommu-pci", "pci-bus", &opts);
++    qos_node_produces("virtio-iommu-pci", "pci-device");
++    qos_node_produces("virtio-iommu-pci", "virtio");
++    qos_node_produces("virtio-iommu-pci", "virtio-iommu");
++}
++
++libqos_init(virtio_iommu_register_nodes);
+diff --git a/tests/qtest/libqos/virtio-iommu.h b/tests/qtest/libqos/virtio-iommu.h
+new file mode 100644
+index 0000000000..d753761958
+--- /dev/null
++++ b/tests/qtest/libqos/virtio-iommu.h
+@@ -0,0 +1,40 @@
++/*
++ * libqos driver virtio-iommu-pci framework
++ *
++ * Copyright (c) 2021 Red Hat, Inc.
++ *
++ * Authors:
++ *  Eric Auger <eric.auger@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
++ * option) any later version.  See the COPYING file in the top-level directory.
++ *
++ */
++
++#ifndef TESTS_LIBQOS_VIRTIO_IOMMU_H
++#define TESTS_LIBQOS_VIRTIO_IOMMU_H
++
++#include "qgraph.h"
++#include "virtio.h"
++#include "virtio-pci.h"
++
++typedef struct QVirtioIOMMU QVirtioIOMMU;
++typedef struct QVirtioIOMMUPCI QVirtioIOMMUPCI;
++typedef struct QVirtioIOMMUDevice QVirtioIOMMUDevice;
++
++struct QVirtioIOMMU {
++    QVirtioDevice *vdev;
++    QVirtQueue *vq;
++};
++
++struct QVirtioIOMMUPCI {
++    QVirtioPCIDevice pci_vdev;
++    QVirtioIOMMU iommu;
++};
++
++struct QVirtioIOMMUDevice {
++    QOSGraphObject obj;
++    QVirtioIOMMU iommu;
++};
++
++#endif
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index c9d8458062..982ffb3e38 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -230,6 +230,7 @@ qos_test_ss.add(
+   'virtio-rng-test.c',
+   'virtio-scsi-test.c',
+   'virtio-serial-test.c',
++  'virtio-iommu-test.c',
+   'vmxnet3-test.c',
+ )
+ if have_virtfs
+diff --git a/tests/qtest/virtio-iommu-test.c b/tests/qtest/virtio-iommu-test.c
+new file mode 100644
+index 0000000000..42390eb2b7
+--- /dev/null
++++ b/tests/qtest/virtio-iommu-test.c
+@@ -0,0 +1,326 @@
++/*
++ * QTest testcase for VirtIO IOMMU
++ *
++ * Copyright (c) 2021 Red Hat, Inc.
++ *
++ * Authors:
++ *  Eric Auger <eric.auger@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or (at your
++ * option) any later version.  See the COPYING file in the top-level directory.
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "qemu/module.h"
++#include "libqos/qgraph.h"
++#include "libqos/virtio-iommu.h"
++#include "hw/virtio/virtio-iommu.h"
++
++#define PCI_SLOT_HP             0x06
++#define QVIRTIO_IOMMU_TIMEOUT_US (30 * 1000 * 1000)
++
++static QGuestAllocator *alloc;
++
++static void pci_config(void *obj, void *data, QGuestAllocator *t_alloc)
++{
++    QVirtioIOMMU *v_iommu = obj;
++    QVirtioDevice *dev = v_iommu->vdev;
++    uint64_t input_range_start = qvirtio_config_readq(dev, 8);
++    uint64_t input_range_end = qvirtio_config_readq(dev, 16);
++    uint32_t domain_range_start = qvirtio_config_readl(dev, 24);
++    uint32_t domain_range_end = qvirtio_config_readl(dev, 28);
++
++    g_assert_cmpint(input_range_start, ==, 0);
++    g_assert_cmphex(input_range_end, ==, UINT64_MAX);
++    g_assert_cmpint(domain_range_start, ==, 0);
++    g_assert_cmpint(domain_range_end, ==, 32);
++}
++
++static int read_tail_status(struct virtio_iommu_req_tail *buffer)
++{
++    int i;
++
++    for (i = 0; i < 3; i++) {
++        g_assert_cmpint(buffer->reserved[i], ==, 0);
++    }
++    return buffer->status;
++}
++
++/**
++ * send_attach_detach - Send an attach/detach command to the device
++ * @type: VIRTIO_IOMMU_T_ATTACH/VIRTIO_IOMMU_T_DETACH
++ * @domain: domain the endpoint is attached to
++ * @ep: endpoint
++ */
++static int send_attach_detach(QTestState *qts, QVirtioIOMMU *v_iommu,
++                              uint8_t type, uint32_t domain, uint32_t ep)
++{
++    QVirtioDevice *dev = v_iommu->vdev;
++    QVirtQueue *vq = v_iommu->vq;
++    uint64_t ro_addr, wr_addr;
++    uint32_t free_head;
++    struct virtio_iommu_req_attach req = {}; /* same layout as detach */
++    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
++    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
++    struct virtio_iommu_req_tail buffer;
++    int ret;
++
++    req.head.type = type;
++    req.domain = cpu_to_le32(domain);
++    req.endpoint = cpu_to_le32(ep);
++
++    ro_addr = guest_alloc(alloc, ro_size);
++    wr_addr = guest_alloc(alloc, wr_size);
++
++    qtest_memwrite(qts, ro_addr, &req, ro_size);
++    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
++    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
++    qvirtqueue_kick(qts, dev, vq, free_head);
++    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
++                           QVIRTIO_IOMMU_TIMEOUT_US);
++    qtest_memread(qts, wr_addr, &buffer, wr_size);
++    ret = read_tail_status(&buffer);
++    guest_free(alloc, ro_addr);
++    guest_free(alloc, wr_addr);
++    return ret;
++}
++
++/**
++ * send_map - Send a map command to the device
++ * @domain: domain the new mapping is attached to
++ * @virt_start: iova start
++ * @virt_end: iova end
++ * @phys_start: base physical address
++ * @flags: mapping flags
++ */
++static int send_map(QTestState *qts, QVirtioIOMMU *v_iommu,
++                    uint32_t domain, uint64_t virt_start, uint64_t virt_end,
++                    uint64_t phys_start, uint32_t flags)
++{
++    QVirtioDevice *dev = v_iommu->vdev;
++    QVirtQueue *vq = v_iommu->vq;
++    uint64_t ro_addr, wr_addr;
++    uint32_t free_head;
++    struct virtio_iommu_req_map req;
++    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
++    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
++    struct virtio_iommu_req_tail buffer;
++    int ret;
++
++    req.head.type = VIRTIO_IOMMU_T_MAP;
++    req.domain = cpu_to_le32(domain);
++    req.virt_start = cpu_to_le64(virt_start);
++    req.virt_end = cpu_to_le64(virt_end);
++    req.phys_start = cpu_to_le64(phys_start);
++    req.flags = cpu_to_le32(flags);
++
++    ro_addr = guest_alloc(alloc, ro_size);
++    wr_addr = guest_alloc(alloc, wr_size);
++
++    qtest_memwrite(qts, ro_addr, &req, ro_size);
++    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
++    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
++    qvirtqueue_kick(qts, dev, vq, free_head);
++    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
++                           QVIRTIO_IOMMU_TIMEOUT_US);
++    qtest_memread(qts, wr_addr, &buffer, wr_size);
++    ret = read_tail_status(&buffer);
++    guest_free(alloc, ro_addr);
++    guest_free(alloc, wr_addr);
++    return ret;
++}
++
++/**
++ * send_unmap - Send an unmap command to the device
++ * @domain: domain the new binding is attached to
++ * @virt_start: iova start
++ * @virt_end: iova end
++ */
++static int send_unmap(QTestState *qts, QVirtioIOMMU *v_iommu,
++                      uint32_t domain, uint64_t virt_start, uint64_t virt_end)
++{
++    QVirtioDevice *dev = v_iommu->vdev;
++    QVirtQueue *vq = v_iommu->vq;
++    uint64_t ro_addr, wr_addr;
++    uint32_t free_head;
++    struct virtio_iommu_req_unmap req;
++    size_t ro_size = sizeof(req) - sizeof(struct virtio_iommu_req_tail);
++    size_t wr_size = sizeof(struct virtio_iommu_req_tail);
++    struct virtio_iommu_req_tail buffer;
++    int ret;
++
++    req.head.type = VIRTIO_IOMMU_T_UNMAP;
++    req.domain = cpu_to_le32(domain);
++    req.virt_start = cpu_to_le64(virt_start);
++    req.virt_end = cpu_to_le64(virt_end);
++
++    ro_addr = guest_alloc(alloc, ro_size);
++    wr_addr = guest_alloc(alloc, wr_size);
++
++    qtest_memwrite(qts, ro_addr, &req, ro_size);
++    free_head = qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
++    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
++    qvirtqueue_kick(qts, dev, vq, free_head);
++    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
++                           QVIRTIO_IOMMU_TIMEOUT_US);
++    qtest_memread(qts, wr_addr, &buffer, wr_size);
++    ret = read_tail_status(&buffer);
++    guest_free(alloc, ro_addr);
++    guest_free(alloc, wr_addr);
++    return ret;
++}
++
++static void test_attach_detach(void *obj, void *data, QGuestAllocator *t_alloc)
++{
++    QVirtioIOMMU *v_iommu = obj;
++    QTestState *qts = global_qtest;
++    int ret;
++
++    alloc = t_alloc;
++
++    /* type, domain, ep */
++
++    /* attach ep0 to domain 0 */
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 0);
++    g_assert_cmpint(ret, ==, 0);
++
++    /* attach a non existing device */
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 444);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
++
++    /* detach a non existing device (1) */
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 1);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
++
++    /* move ep0 from domain 0 to domain 1 */
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
++    g_assert_cmpint(ret, ==, 0);
++
++    /* detach ep0 from domain 0 */
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 0, 0);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL);
++
++    /* detach ep0 from domain 1 */
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
++    g_assert_cmpint(ret, ==, 0);
++
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_map(qts, v_iommu, 1, 0x0, 0xFFF, 0xa1000,
++                   VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_map(qts, v_iommu, 1, 0x2000, 0x2FFF, 0xb1000,
++                   VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_DETACH, 1, 0);
++    g_assert_cmpint(ret, ==, 0);
++}
++
++/* Test map/unmap scenari documented in the spec */
++static void test_map_unmap(void *obj, void *data, QGuestAllocator *t_alloc)
++{
++    QVirtioIOMMU *v_iommu = obj;
++    QTestState *qts = global_qtest;
++    int ret;
++
++    alloc = t_alloc;
++
++    /* attach ep0 to domain 1 */
++    ret = send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 0);
++    g_assert_cmpint(ret, ==, 0);
++
++    ret = send_map(qts, v_iommu, 0, 0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
++
++    /* domain, virt start, virt end, phys start, flags */
++    ret = send_map(qts, v_iommu, 1, 0x0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++
++    /* send a new mapping overlapping the previous one */
++    ret = send_map(qts, v_iommu, 1, 0, 0xFFFF, 0xb1000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL);
++
++    ret = send_unmap(qts, v_iommu, 4, 0x10, 0xFFF);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_NOENT);
++
++    ret = send_unmap(qts, v_iommu, 1, 0x10, 0xFFF);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE);
++
++    ret = send_unmap(qts, v_iommu, 1, 0, 0x1000);
++    g_assert_cmpint(ret, ==, 0); /* unmap everything */
++
++    /* Spec example sequence */
++
++    /* 1 */
++    ret = send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, ==, 0); /* doesn't unmap anything */
++
++    /* 2 */
++    ret = send_map(qts, v_iommu, 1, 0, 9, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_unmap(qts, v_iommu, 1, 0, 9);
++    g_assert_cmpint(ret, ==, 0); /* unmaps [0,9] */
++
++    /* 3 */
++    ret = send_map(qts, v_iommu, 1, 0, 4, 0xb1000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_map(qts, v_iommu, 1, 5, 9, 0xb2000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_unmap(qts, v_iommu, 1, 0, 9);
++    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [5,9] */
++
++    /* 4 */
++    ret = send_map(qts, v_iommu, 1, 0, 9, 0xc1000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++
++    ret = send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_RANGE); /* doesn't unmap anything */
++
++    ret = send_unmap(qts, v_iommu, 1, 0, 10);
++    g_assert_cmpint(ret, ==, 0);
++
++    /* 5 */
++    ret = send_map(qts, v_iommu, 1, 0, 4, 0xd1000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_map(qts, v_iommu, 1, 5, 9, 0xd2000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
++
++    ret = send_unmap(qts, v_iommu, 1, 5, 9);
++    g_assert_cmpint(ret, ==, 0);
++
++    /* 6 */
++    ret = send_map(qts, v_iommu, 1, 0, 4, 0xe2000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_unmap(qts, v_iommu, 1, 0, 9);
++    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] */
++
++    /* 7 */
++    ret = send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_unmap(qts, v_iommu, 1, 0, 14);
++    g_assert_cmpint(ret, ==, 0); /* unmaps [0,4] and [10,14] */
++
++    ret = send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, 0);
++    ret = send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, ==, 0); /* only unmaps [0,4] */
++    ret = send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
++    g_assert_cmpint(ret, ==, VIRTIO_IOMMU_S_INVAL); /* 10-14 still is mapped */
++}
++
++static void register_virtio_iommu_test(void)
++{
++    qos_add_test("config", "virtio-iommu", pci_config, NULL);
++    qos_add_test("attach_detach", "virtio-iommu", test_attach_detach, NULL);
++    qos_add_test("map_unmap", "virtio-iommu", test_map_unmap, NULL);
++}
++
++libqos_init(register_virtio_iommu_test);
+-- 
+2.26.3
 

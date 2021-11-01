@@ -1,251 +1,133 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2472491lfv;
-        Mon, 1 Nov 2021 12:48:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjDtcc0b9OcgxuNnvW3DLONl3MzcQa4C82SCSLbHCDSGOCGhX/biP9T57b1ktWwwtj7mZC
-X-Received: by 2002:a05:6830:1dd6:: with SMTP id a22mr23101671otj.201.1635796107385;
-        Mon, 01 Nov 2021 12:48:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635796107; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2522911lfv;
+        Mon, 1 Nov 2021 13:38:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw+hY1ieeqp6J6orWcusVwA9HigBk7rXUV7Za/3Asz/MvTCNrJ03lVZhY619G6sQDPr3Qvm
+X-Received: by 2002:a05:6808:6c2:: with SMTP id m2mr1207364oih.8.1635799118132;
+        Mon, 01 Nov 2021 13:38:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635799118; cv=none;
         d=google.com; s=arc-20160816;
-        b=xSIUBn/8YGdlu2fDta/QA17iWVw/jU1dn8jL6zxtBIGMnkUUrzv+ATHhkf4PvIbvnF
-         DUFViRvQgwff9KZ6G1P46zhF2z4LACmpad2mktt/MXIOZ+Dn9GF85PTPTe/1nRDaSTxH
-         qB7xo8wJslmySWmrrIRg2ZQVwuJeZgFMcWov8ziUBv48SpUjG3NIdOgeVymaW+scriGM
-         b0HHxMDQ/belPT86vWh8xQMq07AiWacPGdnwXHtWeI2pJzoW35HpkBJjbas6QNfeT+Qt
-         EfyoJwsmvUYpj8WqA2sqXsrV+wcPZqlJJ8G4hJZrqAiujMe9ojgkC0Wd7gc31GhHvryv
-         3Y4w==
+        b=iaeJFPvUeNo/2VGFw+DQPgWB9kcZElpHhLSqc0nr+ZOg6fqcztQxTowAh+6LUm+rBH
+         YohqKvHsB4qUda7L+SU/n+vMf3edpXv6C3R1YbZ3HrdQajoEhzbhJuiiosnOoJnjjS2j
+         3ttdt5BkAzPudOZEne88BjHD9lIQGvp2MJpddAwbSmkzRLlR2kE0Im6m5DfSdJ7xW3/o
+         zH1CNOnpRvkWiHzGjER3x3UNG6Fv1phYjKiFuLNjVGVE64IYeunuXnk0zx9CPlYEXR4A
+         hWEsUHay3rcMweoGgA4QiieSN+z4p512xTmBIqD4GVy9tkECCErwXtzLFFmWmu32CgtM
+         NyPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cOI7edm04zo0CgaYXL2bz6OtjJJlDjkbTWnIHiarVq8=;
-        b=nAzgHDtba/MZeM6aEARBSF/I1cuTPbPFjHaXAiLhlX2Cg+/Dd6HRCQIaeIIdQw9Jt5
-         2A8naCgZtAC//ew8Rnm+bqicCN8HBVkuNXBDfqfZURmk9M/1jIIniFns7pw31pE3CPa2
-         VbYwkvPn3nJ6yrzEc+w9GNDUdmZYbbiY+UnwxvMUONt968cjI7h6XmaoUnmY/4J5LFjH
-         2wVzKjJ/LKQ01x4jVUBx4FvyrDPN8SyRPyCXrts9C/HTZUaIn6QHEHT6RtJbdIQsxavo
-         UQ4N580n1ML+7jbREgNEq/SjNA8B6ORARZnknVnuUnSfdMayZaz7vYHTFmhxDEYVbObm
-         Tmkw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=bg60rQOoKJwJXfRb99Rm6leB0FUc+kj7O2SjBHjOrMg=;
+        b=iwfsEUPPq09q3RkaSN9Dvo69yI+n3ZZ0/D2GIMyPuuW3P8JfflHup0YfQJS9WFPlfK
+         uD+vjdZQj4KsBIdctDLPbrxL3DDjM1gJF096cjPDUwr0d5H9Sl4VfqtJRgfZUqC3a+2w
+         eUqIsn3XDf47DCCED4g1Vsox2e2kA5g74Le7DccJaNMhe/IEBj19SYk+jYBeyQtmrXLW
+         C2AbaBvpN5LSSr2ehGk3/gyjPMe/Hgu/jvuU945wsGTOlHzkn1n2Rp0V1ak1YVRhIpoY
+         BCAbELj2y96n/O71O46wSvSXCt9pRi+9AzLjFjyx275+nmAAZS6g+xdD/UpG2SNx48v+
+         wMRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="DbYthG/f";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 97si14016521otj.80.2021.11.01.12.48.27
+        by mx.google.com with ESMTPS id k8si19811766oil.295.2021.11.01.13.38.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Nov 2021 12:48:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Nov 2021 13:38:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b="DbYthG/f";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:41888 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mhdIA-0000ZG-LX
-	for alex.bennee@linaro.org; Mon, 01 Nov 2021 15:48:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36486)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mhe4i-0004AJ-5c
+	for alex.bennee@linaro.org; Mon, 01 Nov 2021 16:38:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1mhbPU-0005sp-5D
- for qemu-devel@nongnu.org; Mon, 01 Nov 2021 13:47:52 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134]:38553)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1mhbPR-000802-2T
- for qemu-devel@nongnu.org; Mon, 01 Nov 2021 13:47:51 -0400
-Received: by mail-lf1-x134.google.com with SMTP id x27so37829560lfu.5
- for <qemu-devel@nongnu.org>; Mon, 01 Nov 2021 10:47:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cOI7edm04zo0CgaYXL2bz6OtjJJlDjkbTWnIHiarVq8=;
- b=DbYthG/fHvqAMcqF49APPjHP/VPsc4YJhQg63l9z9PiipJXhpcDbRUyI2VTxqWbj/j
- DG9tliPE2Aa6gqYz73QribRLsVS/ONESmUS0n/bqGVUW8DYa50s4sfG6kQou1rCytrA8
- TNwROKS9ae6J5CIiWWT3KpqkXg7+c/3yAxhUHADJVohYs9Wvg5W/5bn+SHmGVkFgsRmx
- VQE8NDJAZRQ73vMu7V+hPSEuZW80sq+AWOSX0yqesiIzroe/RTk6zv9Ts4OPa/i9TK7y
- 5NIwwcZrNQiODEb9SqxnR2MvueXy18KOSL9JntcjSiw+LqxlgytOavG68Go9Y2bG8LIE
- n14A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cOI7edm04zo0CgaYXL2bz6OtjJJlDjkbTWnIHiarVq8=;
- b=YgbvkPI7bmnxRDeqIN+vTKl6nn0YZ7pkqFz7DJetAR0/FALwQcoQeRT6E9VI0lAMTS
- b0C+WQB8cRtt7n1Ldgqz4/FPbfEc1fWCzJl6/bHvZlZzR/GzQ5L75JBArxTKK41rMq0x
- Iml5YPi/AHZCBvbgFoTwnHlUR9MC9HSBaIyTV5UkZ0/3EJRYBJPPBtjwecPfUeyi77jn
- uXDtb3JiVfqXtEXGL1/aX8L1BOkvpw6uS/kJV/T59z/8JyvnYR57MmAK1B32hunhRJxs
- RD4Q6elyMpAd+p6NXEDlz5TCGTK1rwu/lc+1QKkOWXnwrjC49w2Edv8OXon8bW74xOKC
- MtLw==
-X-Gm-Message-State: AOAM531FFriUOAAjM9M8W93Fcu3itQONcHatwRnnm4oVfqZMufAZXJEJ
- ZqWaCDmfoMMx3ZobtjuU+aK75oM46eiQZi+xdaSw7A==
-X-Received: by 2002:ac2:5f0d:: with SMTP id 13mr29574587lfq.334.1635788865273; 
- Mon, 01 Nov 2021 10:47:45 -0700 (PDT)
-MIME-Version: 1.0
-References: <20211021183956.920822-1-wuhaotsh@google.com>
- <20211021183956.920822-6-wuhaotsh@google.com>
- <CAFEAcA8mwXkPSMubBjmqzFkK6ghmyW_ngz9AejeoF-GKkqSL6A@mail.gmail.com>
-In-Reply-To: <CAFEAcA8mwXkPSMubBjmqzFkK6ghmyW_ngz9AejeoF-GKkqSL6A@mail.gmail.com>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Mon, 1 Nov 2021 10:47:23 -0700
-Message-ID: <CAGcCb13jV8r6nRspELZOai_HYJ4t6E1OfOYSx7-wCjaAX8Fodg@mail.gmail.com>
-Subject: Re: [PATCH v2 5/7] hw/nvram: Update at24c EEPROM init function in
- NPCM7xx boards
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mhc6G-0000S8-6e
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 14:32:05 -0400
+Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253]:57551)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mhc6B-0003F1-Nc
+ for qemu-arm@nongnu.org; Mon, 01 Nov 2021 14:32:03 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.36])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id C4C3F20B1C;
+ Mon,  1 Nov 2021 18:31:47 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Mon, 1 Nov
+ 2021 19:31:47 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G0046ec24ab5-77db-45a8-8f94-7e61cfe2ffba,
+ 19968099C3D5961E0A9C4B5796ED635FC82F5468) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com, 
- Avi.Fishman@nuvoton.com, KFTING@nuvoton.com, hskinnemoen@google.com
-Content-Type: multipart/alternative; boundary="0000000000003ebbae05cfbdc61d"
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=wuhaotsh@google.com; helo=mail-lf1-x134.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Subject: [PATCH] MAINTAINERS: Change status to Odd Fixes
+Date: Mon, 1 Nov 2021 19:31:46 +0100
+Message-ID: <20211101183146.684471-1-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 529cebba-7ef7-4331-a0c5-6f9e888c38db
+X-Ovh-Tracer-Id: 3644256524635179814
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvdehvddgudduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefvdeutddvieekkeeuhfekudejjefggffghfetgfelgfevveefgefhvdegtdelveenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
+ helo=7.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AuCGeVMEqP+5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jXXnPHlYK4Ta
 
---0000000000003ebbae05cfbdc61d
-Content-Type: text/plain; charset="UTF-8"
+I haven't done any Aspeed development for a couple of years now and
+maintaining the Aspeed QEMU machines has been a side project since.
+I don't have time anymore.
 
-On Mon, Nov 1, 2021 at 10:41 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ MAINTAINERS | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> On Thu, 21 Oct 2021 at 19:40, Hao Wu <wuhaotsh@google.com> wrote:
-> >
-> > We made 3 changes to the at24c_eeprom_init function in
-> > npcm7xx_boards.c:
-> >
-> > 1. We allow the function to take a I2CBus* as parameter. This allows
-> >    us to attach an EEPROM device behind an I2C mux which is not
-> >    possible with the old method.
-> >
-> > 2. We make at24c EEPROMs are backed by drives so that we can
-> >    specify the content of the EEPROMs.
-> >
-> > 3. Instead of using i2c address as unit number, This patch assigns
-> >    unique unit numbers for each eeproms in each board. This avoids
-> >    conflict in providing multiple eeprom contents with the same address.
-> >    In the old method if we specify two drives with the same unit number,
-> >    the following error will occur: `Device with id 'none85' exists`.
-> >
-> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> > ---
-> >  hw/arm/npcm7xx_boards.c | 15 ++++++++++-----
-> >  1 file changed, 10 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> > index a656169f61..cdb52b9922 100644
-> > --- a/hw/arm/npcm7xx_boards.c
-> > +++ b/hw/arm/npcm7xx_boards.c
-> > @@ -107,13 +107,18 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState
-> *soc, uint32_t num)
-> >      return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]),
-> "i2c-bus"));
-> >  }
-> >
-> > -static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
-> > -                              uint32_t rsize)
-> > +static void at24c_eeprom_init(I2CBus *i2c_bus, int bus, uint8_t addr,
-> > +                              uint32_t rsize, int unit_number)
-> >  {
-> > -    I2CBus *i2c_bus = npcm7xx_i2c_get_bus(soc, bus);
-> >      I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
-> >      DeviceState *dev = DEVICE(i2c_dev);
-> > +    BlockInterfaceType type = IF_NONE;
->
-> Why make this a variable? We only use it in one place...
->
-You're right, we can actually inline it.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 05a3451f115b..193e5c908a29 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1036,12 +1036,11 @@ F: hw/arm/msf2-som.c
+ F: docs/system/arm/emcraft-sf2.rst
+ 
+ ASPEED BMCs
+-M: Cédric Le Goater <clg@kaod.org>
+ M: Peter Maydell <peter.maydell@linaro.org>
+ R: Andrew Jeffery <andrew@aj.id.au>
+ R: Joel Stanley <joel@jms.id.au>
+ L: qemu-arm@nongnu.org
+-S: Maintained
++S: Odd Fixes
+ F: hw/*/*aspeed*
+ F: hw/misc/pca9552.c
+ F: include/hw/*/*aspeed*
+-- 
+2.31.1
 
->
-> -- PMM
->
-
---0000000000003ebbae05cfbdc61d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Nov 1, 2021 at 10:41 AM Peter=
- Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
-ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On Thu, 21 Oct 2021 at 19:40, Hao Wu &lt;<a href=3D"mailto:wuhaotsh@g=
-oogle.com" target=3D"_blank">wuhaotsh@google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; We made 3 changes to the at24c_eeprom_init function in<br>
-&gt; npcm7xx_boards.c:<br>
-&gt;<br>
-&gt; 1. We allow the function to take a I2CBus* as parameter. This allows<b=
-r>
-&gt;=C2=A0 =C2=A0 us to attach an EEPROM device behind an I2C mux which is =
-not<br>
-&gt;=C2=A0 =C2=A0 possible with the old method.<br>
-&gt;<br>
-&gt; 2. We make at24c EEPROMs are backed by drives so that we can<br>
-&gt;=C2=A0 =C2=A0 specify the content of the EEPROMs.<br>
-&gt;<br>
-&gt; 3. Instead of using i2c address as unit number, This patch assigns<br>
-&gt;=C2=A0 =C2=A0 unique unit numbers for each eeproms in each board. This =
-avoids<br>
-&gt;=C2=A0 =C2=A0 conflict in providing multiple eeprom contents with the s=
-ame address.<br>
-&gt;=C2=A0 =C2=A0 In the old method if we specify two drives with the same =
-unit number,<br>
-&gt;=C2=A0 =C2=A0 the following error will occur: `Device with id &#39;none=
-85&#39; exists`.<br>
-&gt;<br>
-&gt; Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" targe=
-t=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/arm/npcm7xx_boards.c | 15 ++++++++++-----<br>
-&gt;=C2=A0 1 file changed, 10 insertions(+), 5 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c<br>
-&gt; index a656169f61..cdb52b9922 100644<br>
-&gt; --- a/hw/arm/npcm7xx_boards.c<br>
-&gt; +++ b/hw/arm/npcm7xx_boards.c<br>
-&gt; @@ -107,13 +107,18 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState =
-*soc, uint32_t num)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 return I2C_BUS(qdev_get_child_bus(DEVICE(&amp;soc-=
-&gt;smbus[num]), &quot;i2c-bus&quot;));<br>
-&gt;=C2=A0 }<br>
-&gt;<br>
-&gt; -static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t add=
-r,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t rsize)<br>
-&gt; +static void at24c_eeprom_init(I2CBus *i2c_bus, int bus, uint8_t addr,=
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t rsize, int unit_number)<br>
-&gt;=C2=A0 {<br>
-&gt; -=C2=A0 =C2=A0 I2CBus *i2c_bus =3D npcm7xx_i2c_get_bus(soc, bus);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 I2CSlave *i2c_dev =3D i2c_slave_new(&quot;at24c-ee=
-prom&quot;, addr);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 DeviceState *dev =3D DEVICE(i2c_dev);<br>
-&gt; +=C2=A0 =C2=A0 BlockInterfaceType type =3D IF_NONE;<br>
-<br>
-Why make this a variable? We only use it in one place...<br></blockquote><d=
-iv>You&#39;re right, we can actually inline it.=C2=A0</div><blockquote clas=
-s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
-gb(204,204,204);padding-left:1ex">
-<br>
--- PMM<br>
-</blockquote></div></div>
-
---0000000000003ebbae05cfbdc61d--

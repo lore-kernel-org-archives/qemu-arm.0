@@ -1,123 +1,114 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2631907lfv;
-        Mon, 1 Nov 2021 15:37:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxQbw5BOXiOK+V1lrenfP4N288vH/67WDhN0mLTbHRfKi/jFvi607EIztc/jzZH/Np7ImXY
-X-Received: by 2002:a05:6808:120e:: with SMTP id a14mr1633584oil.122.1635806249409;
-        Mon, 01 Nov 2021 15:37:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635806249; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2636007lfv;
+        Mon, 1 Nov 2021 15:42:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPRuyVVvSjOEJK6VKELG5GcQrsdNJxWo1VgOGk1aRQ9x2nL0SqVgErvkM/e03fcSt3aU88
+X-Received: by 2002:a05:6122:d0e:: with SMTP id az14mr26605904vkb.17.1635806543192;
+        Mon, 01 Nov 2021 15:42:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635806543; cv=none;
         d=google.com; s=arc-20160816;
-        b=TtlzquCtnhVjftmNUocegoIwSVkWapt44gwHXowsFsyA4k2WrneRpJTuEX7sB+CBRX
-         I0NXuBwNnzfT+4uxIohCdojmShRk/txJ8x2vMa1qC8QcNilm7/775V6q2YNPO4vEtScV
-         o3jzGuCTYxmfqkEOEnPn7wphk0n2yZrYFsL5O/5v0Bz0NPuVUgkypnuHEJj4aDIExbfw
-         bQsngN3cVkzLmq4JJtojFLPRrm5yT7UPh/OjxhRDYkNr9ODfkxCOrRzdYq4QH03sQapT
-         BQOV+EQ2IC6jzznCL7LbAaBlKyd45Nh9sVnYN1Ip0wQ0VJAPXC2oHBUyz8GfpDkPqcSd
-         7LAA==
+        b=C5VkXR23qC3YuEfGGn0HOoyqNFg4/qg5/KzGlCUb0Npc1Wlql25cqFk9FwiCFp7CBL
+         RmVhudpCPF30UIeL1q48XfvnhUIblio50n5DdbyTwaI4KXN19cRTuh0MH+eWOKhzMSeV
+         TaqIVu9vD/p5fhMqM8jRUy6PmJCISaL3c5u3TylP2EmUJe2ES6ID/9+LDjI6xDMDB6hw
+         3fqX8BMp/ZTIGCAdLoCahuw2aN4KRd2uy5yrFKl3igu0qAG6o29X4x3/dRVRXCif/F9X
+         5Wbd7+2t3RcIed17BxsphKT5keYy7INB/QE4n6wnhFhrN+Vu0ne5kqhEffqaGFyp/UiA
+         TL3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=lSjWElxRcx23/d0nb2Eu8vOPj+3TJ9xNFCzK4HtKMdw=;
-        b=0pg+SCbRsy7sPa2fRxMcEw64jLoECYxEO6s2SEW0uF4wg7asGWL+bmi89A1qLGJFlw
-         kC1KNiEfpzYIXPqMD/YC4kX5Ri0GahhOBub/Wef+Y6Bi8EQKyw+PjwRueulwp4J7xCQr
-         XaSSo++EexI1EyUhNHWpwAZZpkrhO5LBXN+9X+vA8VejLQUVpOMaAY2zKdAtNggei6S+
-         T6nBraj13m/tj/TiVuYkd3mE+TdUhRG5NR5wBYvUFdz8cPSMpMdNhGXFFSfzBJ6V0MzD
-         7IYa2R3w7ZiwMN8DpsuEwK5C9kPVwSkg3q8hY20mOfyFHJkgYzEtejg4yBdlGpTFWvCt
-         248A==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=RgDdsgLklMz6z4o8iyUI5puXxSVAMsXfZzKmALZeDqM=;
+        b=QuKiz5s0Rshf0mJGMPg8/EqhkqhP7wqo0KyLwIHzoEwOo3h/w2EvPJXUBFgni+WPMo
+         0bLrr1rWe4Ehbl4TIwp3rfDSsyqD+Sst+IC9djsk1UMMifdcUAZQQTwSgLGgH37UB1/t
+         Pw38W+ShEDv6ZPCqDrMOjOnDQVlNuRmU+sDJ2L5ep645GHSytnYEr8Xu9Qn7E9jvi3DQ
+         eJAaH8OlbpLciOkjpoGDofJQMy6rtYqDF3uqN29SHaDFzODmcV6uMoETBz3bXduK5AnM
+         lrjcoHGXCTTRnAawWQ7DXHOfyZthC1E+ONaZCBN5RYqKy7lrwvMykVjbL6FK982o1gYF
+         3Npg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KEg0tcGR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UnO0hGrP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v19si5988756otn.290.2021.11.01.15.37.29
+        by mx.google.com with ESMTPS id f7si4113629vso.44.2021.11.01.15.42.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Nov 2021 15:37:29 -0700 (PDT)
+        Mon, 01 Nov 2021 15:42:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KEg0tcGR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40766 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=UnO0hGrP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mhfvk-0001ep-MS
-	for alex.bennee@linaro.org; Mon, 01 Nov 2021 18:37:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59694)
+	id 1mhg0S-00082k-MT
+	for alex.bennee@linaro.org; Mon, 01 Nov 2021 18:42:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33258)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mhfrG-0006sX-GE
- for qemu-arm@nongnu.org; Mon, 01 Nov 2021 18:32:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:29063)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mhfrD-0000TG-Rj
- for qemu-arm@nongnu.org; Mon, 01 Nov 2021 18:32:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635805967;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lSjWElxRcx23/d0nb2Eu8vOPj+3TJ9xNFCzK4HtKMdw=;
- b=KEg0tcGRIYd5/l1amDwvErQGOmmIMPbwCx4uDD676vmBKAi9PzhCo/Rg/v/tHvqcqeEDRI
- OCYeq1b3llYb2yCw4s2jwB4IIJFqKKEny6Gf4jNctz9NB5RsTfJHxtLXfG7ZVM4gg+Z1lL
- 3yrQ34RtobctNSsnwVTaMQER9CIL7Ao=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-546-Awvs2gELP6Cseg4d1ayVuw-1; Mon, 01 Nov 2021 18:32:46 -0400
-X-MC-Unique: Awvs2gELP6Cseg4d1ayVuw-1
-Received: by mail-ed1-f69.google.com with SMTP id
- w26-20020a056402071a00b003e28a389d04so4636016edx.4
- for <qemu-arm@nongnu.org>; Mon, 01 Nov 2021 15:32:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mhg0B-00080v-Vs; Mon, 01 Nov 2021 18:42:03 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:33442)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mhg0A-000597-AE; Mon, 01 Nov 2021 18:42:03 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ r9-20020a7bc089000000b00332f4abf43fso624412wmh.0; 
+ Mon, 01 Nov 2021 15:42:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=RgDdsgLklMz6z4o8iyUI5puXxSVAMsXfZzKmALZeDqM=;
+ b=UnO0hGrPSHNy5EskmD+hN7xirmF9mPH0BeYxNpvUgVWRWL6HsNxUFNWhGuGWhCEbhm
+ c+hUXmRHpKLKqOb/N/u2Cqh6LNsmPov+dO35OdC98Dzf04sq01mQXmz0h8CtLe1sGVQc
+ vmB+z4UE6Z1ET9t7J1uN6qw4iweUhInvyis6tN6KbNvpr4MtS59BbS6d4JjNaB6UnA7S
+ fy7CSg+JBhYHeAq97KUvb1Nnwo4Q59q+oc7oQW/1nmtG0LiD5qArTYooYraFWeNouQOI
+ qLMIrlAo1JTtVoulakr8GzxapUa+wbUE1RE2FEpZyucuI592af2rACEMs4zhptHty/PF
+ D+EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=lSjWElxRcx23/d0nb2Eu8vOPj+3TJ9xNFCzK4HtKMdw=;
- b=F+zafZ74SBf8ZZJ+zY88XIdSFB+a5IqI869CYjKA9ognuZnSP0TwHzJ1CEUvhG7N2/
- KvieHpT/MCPQMTRLuxQ+Xz7UyE1ZSlzfmR/2GO5czC7yXz32eBV27TTTPlveTp0YEUmu
- R+uQC+7T6CYOVpZ5MINoA5RLCV2+KCyYetdkJEQpUUu/7/psPzYy7u2zuD1vZiTM9yYd
- QIxIF6J5EKgy6V8ILSfBgzvGX/kWZvI+lgCNfi6acohYw40xL/kUeo56voDXMczcTOXl
- DRku2WiQDsQ7/vUeiCf+WkTynbNZ+93Qk94Lw8/ECMrmhdOMcdWGugwjOeRLGU6Viuou
- 58yA==
-X-Gm-Message-State: AOAM531rQrluuyoSv8tXyU8X31WTR2KlRXvr4vdxoKu75WptVY7zKd3F
- HB7U7RKB/7CGhwpB8PgxtKvgWTza1Jh/HIb9oh/0tZU0ceksykdyVgObJhwe4EHEl3MJozIuZ3x
- csmYTv9nn4TmB
-X-Received: by 2002:a17:907:6e26:: with SMTP id
- sd38mr22936642ejc.90.1635805964963; 
- Mon, 01 Nov 2021 15:32:44 -0700 (PDT)
-X-Received: by 2002:a17:907:6e26:: with SMTP id
- sd38mr22936606ejc.90.1635805964783; 
- Mon, 01 Nov 2021 15:32:44 -0700 (PDT)
-Received: from redhat.com ([2.55.156.42])
- by smtp.gmail.com with ESMTPSA id qf9sm850185ejc.18.2021.11.01.15.32.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Nov 2021 15:32:44 -0700 (PDT)
-Date: Mon, 1 Nov 2021 18:32:40 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH v3 0/3] pc: Support configuration of SMBIOS entry point
- type
-Message-ID: <20211101183224-mutt-send-email-mst@kernel.org>
-References: <20211026151100.1691925-1-ehabkost@redhat.com>
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=RgDdsgLklMz6z4o8iyUI5puXxSVAMsXfZzKmALZeDqM=;
+ b=PDFJffM8wh4iFIqwCm5QlWaWqinBSrkfX/M3uBoHgFUaNIEMkxVy0ZVUdzX8fyEOz7
+ AsbEtGBcgDcwZMWiz1WFZd7RhPXQ5Ld9Dzh0cUU4T1kuXFEGEMDfVkrLblfctEKKkfAU
+ RYIo6jNMufJv8A96OmyyEHejTGESQ1eYUXMCek/p/Cwd0Gxq4xFUwmPUiHAOLD9XmzXh
+ GZat7ttiFYy9fBNvQFyhXpCzzLtobjrZ4HKikxdjGGmI8YyqKhox8BKVSi64J+1YUmfT
+ Di34+yM/GOEhUMgd6PBn5lSupUlw5IQUunx6eIwiCClVkmQDpOBYK1axRfwiDyZI/HjL
+ Aj5Q==
+X-Gm-Message-State: AOAM533RAyIJvHOweyVonHNJ7O2HFrtB3hmjX6HJ5lb3OfMSWfBbDKpK
+ w7jWN/gmJ2QY49GqkXRBtxk=
+X-Received: by 2002:a1c:770e:: with SMTP id t14mr2049110wmi.173.1635806519910; 
+ Mon, 01 Nov 2021 15:41:59 -0700 (PDT)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id a4sm666841wmb.39.2021.11.01.15.41.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Nov 2021 15:41:59 -0700 (PDT)
+Message-ID: <243f4bb4-7d74-635d-de5c-6485e558c09f@amsat.org>
+Date: Mon, 1 Nov 2021 23:41:57 +0100
 MIME-Version: 1.0
-In-Reply-To: <20211026151100.1691925-1-ehabkost@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v4 5/6] tests/acceptance: Add bFLT loader linux-user test
+Content-Language: en-US
+To: Willian Rampazzo <wrampazz@redhat.com>
+References: <20210927163116.1998349-1-f4bug@amsat.org>
+ <20210927163116.1998349-6-f4bug@amsat.org>
+ <CAKJDGDb81ST8YyYw-8KV+jx0mjaqdd9siKL2sFM4yaFwG5769w@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <CAKJDGDb81ST8YyYw-8KV+jx0mjaqdd9siKL2sFM4yaFwG5769w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.734,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.14,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,59 +121,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Igor Mammedov <imammedo@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-devel <qemu-devel@nongnu.org>, Warner Losh <imp@bsdimp.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s6x9SOLNXKcK
+X-TUID: 6d4mk1NWWWup
 
-On Tue, Oct 26, 2021 at 11:10:57AM -0400, Eduardo Habkost wrote:
-> This includes code previously submitted[1] by Daniel P. Berrang�
-> to add a "smbios-ep" machine property on PC.
+On 11/1/21 18:51, Willian Rampazzo wrote:
+> Hi, Phill,
 > 
-> SMBIOS 3.0 is necessary to support more than ~720 VCPUs, as a
-> large number of VCPUs can easily hit the table size limit of
-> SMBIOS 2.1 entry points.
+> On Mon, Sep 27, 2021 at 1:31 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> Add a very quick test that runs a busybox binary in bFLT format:
+>>
+>>   $ AVOCADO_ALLOW_UNTRUSTED_CODE=1 \
+>>     avocado --show=app run -t linux_user tests/acceptance/load_bflt.py
+>>   JOB ID     : db94d5960ce564c50904d666a7e259148c27e88f
+>>   JOB LOG    : ~/avocado/job-results/job-2019-06-25T10.52-db94d59/job.log
+>>    (1/1) tests/acceptance/load_bflt.py:LoadBFLT.test_stm32: PASS (0.15 s)
+>>   RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
+>>   JOB TIME   : 0.54 s
+>>
+>> Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  tests/acceptance/load_bflt.py | 54 +++++++++++++++++++++++++++++++++++
+>>  1 file changed, 54 insertions(+)
+>>  create mode 100644 tests/acceptance/load_bflt.py
+>>
+>> diff --git a/tests/acceptance/load_bflt.py b/tests/acceptance/load_bflt.py
+>> new file mode 100644
+>> index 00000000000..f071a979d8e
+>> --- /dev/null
+>> +++ b/tests/acceptance/load_bflt.py
+>> @@ -0,0 +1,54 @@
+>> +# Test the bFLT loader format
+>> +#
+>> +# Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> +#
+>> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> +
+>> +import os
+>> +import bz2
+>> +import subprocess
+>> +
+>> +from avocado import skipUnless
+>> +from avocado_qemu import QemuUserTest
+>> +from avocado_qemu import has_cmd
+>> +
+>> +
+>> +class LoadBFLT(QemuUserTest):
+>> +
+>> +    def extract_cpio(self, cpio_path):
+>> +        """
+>> +        Extracts a cpio archive into the test workdir
+>> +
+>> +        :param cpio_path: path to the cpio archive
+>> +        """
+>> +        cwd = os.getcwd()
+>> +        os.chdir(self.workdir)
+>> +        with bz2.open(cpio_path, 'rb') as archive_cpio:
+>> +            subprocess.run(['cpio', '-i'], input=archive_cpio.read(),
+>> +                           stderr=subprocess.DEVNULL)
+>> +        os.chdir(cwd)
+>> +
+>> +    @skipUnless(*has_cmd('cpio'))
+>> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
+>> +    def test_stm32(self):
+>> +        """
+>> +        :avocado: tags=arch:arm
+>> +        :avocado: tags=linux_user
+>> +        :avocado: tags=quick
+>> +        """
+>> +        # See https://elinux.org/STM32#User_Space
+>> +        rootfs_url = ('https://elinux.org/images/5/51/'
+>> +                      'Stm32_mini_rootfs.cpio.bz2')
+>> +        rootfs_hash = '9f065e6ba40cce7411ba757f924f30fcc57951e6'
+>> +        rootfs_path_bz2 = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
+>> +        busybox_path = self.workdir + "/bin/busybox"
+> 
+> If there are other changes to this patch, also, change this to use the
+> `os` library:
+> 
+> busybox_path = os.path.join(self.workdir, "/bin/busybox")
 
-
-We need acks from QAPI supporters on this.
-
-> Changes from v2:
-> * Renamed option to "smbios-entry-point-type" for clarity
-> * Renamed option values to "32" and "64", for two reasons:
->   * The option is not about reporting an exact SMBIOS
->     version, but just the entry point format.
->     FWIW, the SMBIOS specification uses the phrases "32-bit entry
->     point" and "64-bit entry point" more often than "2.1 entry
->     point" and "3.0 entry point".
->   * QAPI doesn't allow us to use enum member names with dots
->     or underscores
-> 
-> [1] https://lore.kernel.org/qemu-devel/20200908165438.1008942-5-berrange@redhat.com
->     https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@redhat.com
-> 
-> Eduardo Habkost (3):
->   smbios: Rename SMBIOS_ENTRY_POINT_* enums
->   hw/smbios: Use qapi for SmbiosEntryPointType
->   hw/i386: expose a "smbios-entry-point-type" PC machine property
-> 
->  include/hw/firmware/smbios.h | 10 ++--------
->  include/hw/i386/pc.h         |  4 ++++
->  hw/arm/virt.c                |  2 +-
->  hw/i386/pc.c                 | 26 ++++++++++++++++++++++++++
->  hw/i386/pc_piix.c            |  2 +-
->  hw/i386/pc_q35.c             |  2 +-
->  hw/smbios/smbios.c           |  8 ++++----
->  qapi/machine.json            | 12 ++++++++++++
->  8 files changed, 51 insertions(+), 15 deletions(-)
-> 
-> -- 
-> 2.32.0
-
+OK, I'll update.

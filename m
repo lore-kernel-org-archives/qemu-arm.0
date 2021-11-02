@@ -1,94 +1,94 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp4023042lfv;
-        Tue, 2 Nov 2021 15:50:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJweRmhdUhNMkqwMMUh+6JtT1iZEVwS9HRV06cyVX87OtOB3ucSR3DSYCSHJNhjtteinn5Db
-X-Received: by 2002:a9d:6346:: with SMTP id y6mr30816948otk.154.1635893459138;
-        Tue, 02 Nov 2021 15:50:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635893459; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp4024744lfv;
+        Tue, 2 Nov 2021 15:53:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytlv0pR8X6LEI0LcAIxZyKAaDsm8IKR+lbi6qot7aeKY10//R4/AiyW4MXSuWKn3iZ1JYF
+X-Received: by 2002:a9d:37a5:: with SMTP id x34mr28021563otb.2.1635893593129;
+        Tue, 02 Nov 2021 15:53:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635893593; cv=none;
         d=google.com; s=arc-20160816;
-        b=g69m3LbPxkgO14uwIPjksMZPKd7pz5oGGu2yWo+Ys2lR5ALLX6FSK7tAml7MrpVM6k
-         Ch4pmNSMdQtllG1/d+Og0htNoGzSkEJT3PFYMLJpaVLOLysEybLZIhyKp+hS5WUDcOiV
-         9FKCTRqUTwf9NgKdvDOfplKKHkrjCQoe7RJ507gw0Y5ALNLlxpoNkNa0wns4gNzteJ/c
-         XaGsZ+vm1QsIi/ETRm9rL7lJYeyZw4Ar0wQ7ZRjSpJd60xu2E3T3iBW8mItpjJiyfEv7
-         mbgjocg2zZa6+rk+ALjAzlgJx+E7TUGWyw2TcHQMHVch0xLDO/unSUEmyGi+dGFCOZT0
-         D9Cw==
+        b=zNpBrMMF3HD0ieCaNwb0/5w8qWIpTnWmnwfT9b2W+VPZpU4RydTJ6kk4X0N75cdCRP
+         3NjxAB2JAqEVsJbVy4EQLOfgSperO7LuSagHsWafrwp6f5Eilgz1Uxb315SXF+3Ty6et
+         2JKq8GYXp9MJtnXREihKuTIhlHkfjauv5wxjte7xqD8vh/pfSyozdrQCdArY8YFi0Fa6
+         9KQsUaZZlUJvDRgcfJgYZo1dZvFF9xXF35tuzs//Hx6HdTiG/v/jT+MuJdjevhv3+Bpi
+         Im/jpXAcHrsGaSr2EDT1wQC1DdsYPsDmaYePehZm02ziX6T5sbPJJYrKE0/h6APJKy2l
+         MEkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
          :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=Dh6lLd3kW4ekavLFMnJxd6EMIooNZ2ySdXhGaXI8BYk=;
-        b=UrtT1sveFrWklE1sbED/T2j0WQB6y58WvFb3+ksCdWgMRLd0anJm/slBKtQJWHrCCn
-         xzzE+UCn/kw5HlYt9jXembPRY5s8dW25Awjo5SJ7HU21pyHMiKUW9egUlhNh6UmxplGN
-         529KJF6v2R0gLU+SiNWekTfg1X7J3db1Ke2bfyCXm8IdE7nX/R7WNykGvL3y+1QucMKF
-         fdtFZQiOHtLOC1/S4caETUt/gDdfCRUvL5ChSzlc7yiZvHptzGEErcGgrF7yaEXrM4vx
-         EU1ZeR726SqzG8rRwGjpdLqPdrcNhT9Wq0EIFB2P4mpqKUkNiI/1L67f3R2xz0p4p0Tz
-         Tl+Q==
+        bh=hUKQVdaYuIsPrVpNonjvoxeLawnP0iMKcoPduvKsK1w=;
+        b=ssghb8xzIOP5Z7zmeSthFW79rxpUHgdcWxFZOa4e2uEkx3y3GuUlzOPFNbVY2MnqFc
+         /rjcDZ+9Zb4qtn5X+I5W8XUudXotLE27j+qu1kNUBwPfRQOaI+BT0+ZOvftcyOYfApix
+         aM5sJl67GaFn5jxWDV5s4xpdnwRG8eVbwaVBAnI4qP8sIjo0IGuGvkTRFWKEygOCZV2r
+         8U5BVPdQgDdMBCgnWnq8WndYUyLZuTzT/7/NneqkvJIF0d5QiPJuZkc1q018kXG+0jwj
+         qrGq2SoMrpY1xRge1YGVfVuoxQ7tcVIZQpIQ8aE+2XEypyBKtV1YM17Gmet0B5zK6npt
+         lMlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=Q1Kt9MU2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=OWUCwfaY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14si680768oiu.109.2021.11.02.15.50.58
+        by mx.google.com with ESMTPS id y11si569474ood.56.2021.11.02.15.53.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Nov 2021 15:50:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Nov 2021 15:53:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=Q1Kt9MU2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=OWUCwfaY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:36038 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39802 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mi2cM-0001ha-E4
-	for alex.bennee@linaro.org; Tue, 02 Nov 2021 18:50:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43516)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mi2eW-0004DG-DR
+	for alex.bennee@linaro.org; Tue, 02 Nov 2021 18:53:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3gMCBYQgKCBsNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com>)
- id 1mi2bC-0000nW-0v
- for qemu-arm@nongnu.org; Tue, 02 Nov 2021 18:49:46 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:49800)
+ <3hMCBYQgKCh8RPC5JONCBJJBG9.7JHL9HP-89Q9GIJIBIP.JMB@flex--wuhaotsh.bounces.google.com>)
+ id 1mi2bC-0000o4-4H
+ for qemu-devel@nongnu.org; Tue, 02 Nov 2021 18:49:46 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a]:44800)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3gMCBYQgKCBsNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com>)
- id 1mi2b8-0001G5-51
- for qemu-arm@nongnu.org; Tue, 02 Nov 2021 18:49:45 -0400
-Received: by mail-pl1-x649.google.com with SMTP id
- y13-20020a1709029b8d00b0013dc7c668e2so398237plp.16
- for <qemu-arm@nongnu.org>; Tue, 02 Nov 2021 15:49:37 -0700 (PDT)
+ <3hMCBYQgKCh8RPC5JONCBJJBG9.7JHL9HP-89Q9GIJIBIP.JMB@flex--wuhaotsh.bounces.google.com>)
+ id 1mi2b8-0001Gh-EV
+ for qemu-devel@nongnu.org; Tue, 02 Nov 2021 18:49:45 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id
+ s4-20020a627704000000b00481101730b1so287452pfc.11
+ for <qemu-devel@nongnu.org>; Tue, 02 Nov 2021 15:49:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=Dh6lLd3kW4ekavLFMnJxd6EMIooNZ2ySdXhGaXI8BYk=;
- b=Q1Kt9MU25wMrJmO0bfkFhhxg0mGMV8zMbwRbH3nqGHtJZnIwHj9S+KB0qep1RufNTU
- jvNcKiXAsyTVtX78rGrHB1WUAgOM70iXqOAxpS+xHbB4gscPGCjM9mqmkg+u75gb+TY3
- 6zLvmFx81HmV3e/STnsv8MC31HhEYdkNOTVCBfHY5MKlWXlX4jIZIN2FWuXfscSQ58Ms
- nOlW2CfONfLlNPJjZnapL7ayEsF+aGwxxwegsU4M3OoLohtr5TAHcrGCAUkBGMfi2XA/
- nFTCV08sgsSUslgK6xXL5GfoXP0gWcNAc2FDfQLDeJIMi/Fo3SNtOhiFMYWryhdMMJC7
- cAFg==
+ :cc; bh=hUKQVdaYuIsPrVpNonjvoxeLawnP0iMKcoPduvKsK1w=;
+ b=OWUCwfaYMXgKNC1tvsq1riNzkEGRuxioF4S5swNEpX7iv3nM89jWtwfM3SaN1Y8Lud
+ PKbiVTAksX6EFmZzytpaiVXAH44OqEsUphQIx5k02c3sgfs05zroPXwRbU/0MNg9Fbqu
+ l9GI1E/E42FtSJa6xUONs8Gyaqz1NCKz5akWnSX0a+49jngM1JbDEt2SKWTOnXNCcyOe
+ PjTwXqtCPrkWsd7eESLhcZ5i8QOE0a0N5HVDdADV7hbBbaTf4C9ugrtpLslXoUj13r/T
+ 65rZ3qqHBaaUvRLSKx78KCW+7jOeWPq3k96nNNh7/TuS8g1cO0itWiTSe6PAwM0HognH
+ DjIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=Dh6lLd3kW4ekavLFMnJxd6EMIooNZ2ySdXhGaXI8BYk=;
- b=pUSz/bG4txGgeKdbnHSjypmJ7RfBViOJL+/e2ExC6u+aNo42m2AvKJzKODL+JsfOwY
- R6toqmpmlKShNqY3et+zvIhlVhfBRA7/G7eTpSuozlNjAEmRGN3H7ZiLrTJINanNCD03
- Gs06v1r05cz0BxtQ2PjnnEiaVuLIcW/UIMM9xD5sCKKTFDvpaItpqG22TVap/MTfHc/7
- FP0UKd/bjBwulPEURbiwipJrs8j3Dfi9pxPBuG6pyQqueFl+LBI/EQGvDKS2iMnOwhOf
- /NvXhLcafqJ0CBPpNkHI6JzhpmZvTnxrqdsmIz2hMZDjmaN2vHOLD4+Tky7vNFlQbvFG
- Vcow==
-X-Gm-Message-State: AOAM532+3uLoSmDeBBXxwH/ORljaSmwspKsvu9Jg5VbkTopKvHCuvFNq
- /SYk1IFli8QONhszKxCGKVTwfgkcuier/A==
+ bh=hUKQVdaYuIsPrVpNonjvoxeLawnP0iMKcoPduvKsK1w=;
+ b=12zZQFt0ZFto/AHK+/JRCr2m8wP1ttX76fgwRCiPCTH6oa7rC10+n//QzVPg1SHNlN
+ sZZMy+yWUZ1J5E1aewfC/64s5J2nm9OZTyb42U5Myua/nv4Nfz2xRsZqea3rOYVLr/8h
+ vsyN2G9hFSxz5fl7uubublUgk/MNI/fqSIUGOtKEIPcxKAIKl2Vz/Ovov0oqEdRpvKhc
+ dFrLDuMoK8nB5xKy+Za/n/4ZNRBoMd7FeJajpCzNrF7HHRlbfxlTws6n7hq1zLZXRnXM
+ TfmvE7QDXOuf8a5Q7/UuaWazKE5gStM+Rr9dUSWAQnpJOlAioWL+SOlJkahkctSZrVhO
+ gJow==
+X-Gm-Message-State: AOAM533kdwY3DR/W5XwHPkMdU7bAMMC6xKnB2ag5n/04LRahT/qhGSxl
+ tDsN1LOLNNj2GksqQ7BYL4m7/GWx9UzZPw==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90a:5285:: with SMTP id
- w5mr257829pjh.1.1635893376854; Tue, 02 Nov 2021 15:49:36 -0700 (PDT)
-Date: Tue,  2 Nov 2021 15:49:21 -0700
+ (user=wuhaotsh job=sendgmr) by 2002:a63:5664:: with SMTP id
+ g36mr19362111pgm.243.1635893380517; Tue, 02 Nov 2021 15:49:40 -0700 (PDT)
+Date: Tue,  2 Nov 2021 15:49:23 -0700
 In-Reply-To: <20211102224924.1244946-1-wuhaotsh@google.com>
-Message-Id: <20211102224924.1244946-3-wuhaotsh@google.com>
+Message-Id: <20211102224924.1244946-5-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20211102224924.1244946-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.33.1.1089.g2158813163f-goog
-Subject: [PATCH v3 2/5] hw/arm: Add Nuvoton SD module to board
+Subject: [PATCH v3 4/5] tests/qtest/libqos: add SDHCI commands
 From: Hao Wu <wuhaotsh@google.com>
 To: richard.henderson@linaro.org
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
@@ -97,31 +97,31 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  bin.meng@windriver.com, qemu-block@nongnu.org, maoshengtan2011@gmail.com, 
  Shengtan Mao <stmao@google.com>, Chris Rauer <crauer@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3gMCBYQgKCBsNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com;
- helo=mail-pl1-x649.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3hMCBYQgKCh8RPC5JONCBJJBG9.7JHL9HP-89Q9GIJIBIP.JMB@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WFcIhbqNLy3u
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NEwVZbSViA2d
 
 From: Shengtan Mao <stmao@google.com>
 
@@ -132,81 +132,223 @@ Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/npcm7xx.c         | 12 +++++++++++-
- include/hw/arm/npcm7xx.h |  2 ++
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ tests/qtest/libqos/meson.build |   1 +
+ tests/qtest/libqos/sdhci-cmd.c | 116 +++++++++++++++++++++++++++++++++
+ tests/qtest/libqos/sdhci-cmd.h |  70 ++++++++++++++++++++
+ 3 files changed, 187 insertions(+)
+ create mode 100644 tests/qtest/libqos/sdhci-cmd.c
+ create mode 100644 tests/qtest/libqos/sdhci-cmd.h
 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 2ab0080e0b..878c2208e0 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -63,6 +63,8 @@
- #define NPCM7XX_ROM_BA          (0xffff0000)
- #define NPCM7XX_ROM_SZ          (64 * KiB)
+diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
+index 1f5c8f1053..4af1f04787 100644
+--- a/tests/qtest/libqos/meson.build
++++ b/tests/qtest/libqos/meson.build
+@@ -5,6 +5,7 @@ libqos_srcs = files('../libqtest.c',
+         'fw_cfg.c',
+         'malloc.c',
+         'libqos.c',
++        'sdhci-cmd.c',
  
-+/* SDHCI Modules */
-+#define NPCM7XX_MMC_BA          (0xf0842000)
- 
- /* Clock configuration values to be fixed up when bypassing bootloader */
- 
-@@ -83,6 +85,7 @@ enum NPCM7xxInterrupt {
-     NPCM7XX_UART3_IRQ,
-     NPCM7XX_EMC1RX_IRQ          = 15,
-     NPCM7XX_EMC1TX_IRQ,
-+    NPCM7XX_MMC_IRQ             = 26,
-     NPCM7XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
-     NPCM7XX_TIMER1_IRQ,
-     NPCM7XX_TIMER2_IRQ,
-@@ -443,6 +446,8 @@ static void npcm7xx_init(Object *obj)
-     for (i = 0; i < ARRAY_SIZE(s->emc); i++) {
-         object_initialize_child(obj, "emc[*]", &s->emc[i], TYPE_NPCM7XX_EMC);
-     }
+         # spapr
+         'malloc-spapr.c',
+diff --git a/tests/qtest/libqos/sdhci-cmd.c b/tests/qtest/libqos/sdhci-cmd.c
+new file mode 100644
+index 0000000000..2d9e518341
+--- /dev/null
++++ b/tests/qtest/libqos/sdhci-cmd.c
+@@ -0,0 +1,116 @@
++/*
++ * MMC Host Controller Commands
++ *
++ * Copyright (c) 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
 +
-+    object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
- }
- 
- static void npcm7xx_realize(DeviceState *dev, Error **errp)
-@@ -707,6 +712,12 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-                            &error_abort);
-     memory_region_add_subregion(get_system_memory(), NPCM7XX_ROM_BA, &s->irom);
- 
-+    /* SDHCI */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->mmc), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc), 0, NPCM7XX_MMC_BA);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc), 0,
-+            npcm7xx_irq(s, NPCM7XX_MMC_IRQ));
++#include "qemu/osdep.h"
++#include "sdhci-cmd.h"
++#include "libqtest.h"
 +
-     create_unimplemented_device("npcm7xx.shm",          0xc0001000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * KiB);
-@@ -736,7 +747,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.usbd[8]",      0xf0838000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.usbd[9]",      0xf0839000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.sd",           0xf0840000,   8 * KiB);
--    create_unimplemented_device("npcm7xx.mmc",          0xf0842000,   8 * KiB);
-     create_unimplemented_device("npcm7xx.pcimbx",       0xf0848000, 512 * KiB);
-     create_unimplemented_device("npcm7xx.aes",          0xf0858000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.des",          0xf0859000,   4 * KiB);
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 61ecc57ab9..ce593235d9 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -35,6 +35,7 @@
- #include "hw/usb/hcd-ehci.h"
- #include "hw/usb/hcd-ohci.h"
- #include "target/arm/cpu.h"
-+#include "hw/sd/npcm7xx_sdhci.h"
- 
- #define NPCM7XX_MAX_NUM_CPUS    (2)
- 
-@@ -103,6 +104,7 @@ typedef struct NPCM7xxState {
-     OHCISysBusState     ohci;
-     NPCM7xxFIUState     fiu[2];
-     NPCM7xxEMCState     emc[2];
-+    NPCM7xxSDHCIState   mmc;
- } NPCM7xxState;
- 
- #define TYPE_NPCM7XX    "npcm7xx"
++static ssize_t read_fifo(QTestState *qts, uint64_t reg, char *msg, size_t count)
++{
++    uint32_t mask = 0xff;
++    size_t index = 0;
++    uint32_t msg_frag;
++    int size;
++    while (index < count) {
++        size = count - index;
++        if (size > 4) {
++            size = 4;
++        }
++        msg_frag = qtest_readl(qts, reg);
++        while (size > 0) {
++            msg[index] = msg_frag & mask;
++            if (msg[index++] == 0) {
++                return index;
++            }
++            msg_frag >>= 8;
++            --size;
++        }
++    }
++    return index;
++}
++
++static void write_fifo(QTestState *qts, uint64_t reg, const char *msg,
++                       size_t count)
++{
++    size_t index = 0;
++    uint32_t msg_frag;
++    int size;
++    int frag_i;
++    while (index < count) {
++        size = count - index;
++        if (size > 4) {
++            size = 4;
++        }
++        msg_frag = 0;
++        frag_i = 0;
++        while (frag_i < size) {
++            msg_frag |= ((uint32_t)msg[index++]) << (frag_i * 8);
++            ++frag_i;
++        }
++        qtest_writel(qts, reg, msg_frag);
++    }
++}
++
++static void fill_block(QTestState *qts, uint64_t reg, int count)
++{
++    while (--count >= 0) {
++        qtest_writel(qts, reg, 0);
++    }
++}
++
++void sdhci_cmd_regs(QTestState *qts, uint64_t base_addr, uint16_t blksize,
++                    uint16_t blkcnt, uint32_t argument, uint16_t trnmod,
++                    uint16_t cmdreg)
++{
++    qtest_writew(qts, base_addr + SDHC_BLKSIZE, blksize);
++    qtest_writew(qts, base_addr + SDHC_BLKCNT, blkcnt);
++    qtest_writel(qts, base_addr + SDHC_ARGUMENT, argument);
++    qtest_writew(qts, base_addr + SDHC_TRNMOD, trnmod);
++    qtest_writew(qts, base_addr + SDHC_CMDREG, cmdreg);
++}
++
++ssize_t sdhci_read_cmd(QTestState *qts, uint64_t base_addr, char *msg,
++                       size_t count)
++{
++    sdhci_cmd_regs(qts, base_addr, count, 1, 0,
++                   SDHC_TRNS_MULTI | SDHC_TRNS_READ | SDHC_TRNS_BLK_CNT_EN,
++                   SDHC_READ_MULTIPLE_BLOCK | SDHC_CMD_DATA_PRESENT);
++
++    /* read sd fifo_buffer */
++    ssize_t bytes_read = read_fifo(qts, base_addr + SDHC_BDATA, msg, count);
++
++    sdhci_cmd_regs(qts, base_addr, 0, 0, 0,
++                   SDHC_TRNS_MULTI | SDHC_TRNS_READ | SDHC_TRNS_BLK_CNT_EN,
++                   SDHC_STOP_TRANSMISSION);
++
++    return bytes_read;
++}
++
++void sdhci_write_cmd(QTestState *qts, uint64_t base_addr, const char *msg,
++                     size_t count, size_t blksize)
++{
++    sdhci_cmd_regs(qts, base_addr, blksize, 1, 0,
++                   SDHC_TRNS_MULTI | SDHC_TRNS_WRITE | SDHC_TRNS_BLK_CNT_EN,
++                   SDHC_WRITE_MULTIPLE_BLOCK | SDHC_CMD_DATA_PRESENT);
++
++    /* write to sd fifo_buffer */
++    write_fifo(qts, base_addr + SDHC_BDATA, msg, count);
++    fill_block(qts, base_addr + SDHC_BDATA, (blksize - count) / 4);
++
++    sdhci_cmd_regs(qts, base_addr, 0, 0, 0,
++                   SDHC_TRNS_MULTI | SDHC_TRNS_WRITE | SDHC_TRNS_BLK_CNT_EN,
++                   SDHC_STOP_TRANSMISSION);
++}
+diff --git a/tests/qtest/libqos/sdhci-cmd.h b/tests/qtest/libqos/sdhci-cmd.h
+new file mode 100644
+index 0000000000..64763c5a2a
+--- /dev/null
++++ b/tests/qtest/libqos/sdhci-cmd.h
+@@ -0,0 +1,70 @@
++/*
++ * MMC Host Controller Commands
++ *
++ * Copyright (c) 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "libqtest.h"
++
++/* more details at hw/sd/sdhci-internal.h */
++#define SDHC_BLKSIZE 0x04
++#define SDHC_BLKCNT 0x06
++#define SDHC_ARGUMENT 0x08
++#define SDHC_TRNMOD 0x0C
++#define SDHC_CMDREG 0x0E
++#define SDHC_BDATA 0x20
++#define SDHC_PRNSTS 0x24
++#define SDHC_BLKGAP 0x2A
++#define SDHC_CLKCON 0x2C
++#define SDHC_SWRST 0x2F
++#define SDHC_CAPAB 0x40
++#define SDHC_MAXCURR 0x48
++#define SDHC_HCVER 0xFE
++
++/* TRNSMOD Reg */
++#define SDHC_TRNS_BLK_CNT_EN 0x0002
++#define SDHC_TRNS_READ 0x0010
++#define SDHC_TRNS_WRITE 0x0000
++#define SDHC_TRNS_MULTI 0x0020
++
++/* CMD Reg */
++#define SDHC_CMD_DATA_PRESENT (1 << 5)
++#define SDHC_ALL_SEND_CID (2 << 8)
++#define SDHC_SEND_RELATIVE_ADDR (3 << 8)
++#define SDHC_SELECT_DESELECT_CARD (7 << 8)
++#define SDHC_SEND_CSD (9 << 8)
++#define SDHC_STOP_TRANSMISSION (12 << 8)
++#define SDHC_READ_MULTIPLE_BLOCK (18 << 8)
++#define SDHC_WRITE_MULTIPLE_BLOCK (25 << 8)
++#define SDHC_APP_CMD (55 << 8)
++
++/* SWRST Reg */
++#define SDHC_RESET_ALL 0x01
++
++/* CLKCTRL Reg */
++#define SDHC_CLOCK_INT_EN 0x0001
++#define SDHC_CLOCK_INT_STABLE 0x0002
++#define SDHC_CLOCK_SDCLK_EN (1 << 2)
++
++/* Set registers needed to send commands to SD */
++void sdhci_cmd_regs(QTestState *qts, uint64_t base_addr, uint16_t blksize,
++                    uint16_t blkcnt, uint32_t argument, uint16_t trnmod,
++                    uint16_t cmdreg);
++
++/* Read at most 1 block of SD using non-DMA  */
++ssize_t sdhci_read_cmd(QTestState *qts, uint64_t base_addr, char *msg,
++                       size_t count);
++
++/* Write at most 1 block of SD using non-DMA  */
++void sdhci_write_cmd(QTestState *qts, uint64_t base_addr, const char *msg,
++                     size_t count, size_t blksize);
 -- 
 2.33.1.1089.g2158813163f-goog
 

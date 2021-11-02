@@ -1,117 +1,122 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp3318379lfv;
-        Tue, 2 Nov 2021 05:06:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwoTFxmMa7f06B0KT4NK9DTtWbcs2Ia4C9mW+FcD2XFoH7UOd97vkuv4zCytJvWwvDJy9fo
-X-Received: by 2002:a9d:a4c:: with SMTP id 70mr27301979otg.40.1635854814358;
-        Tue, 02 Nov 2021 05:06:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635854814; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp3330173lfv;
+        Tue, 2 Nov 2021 05:17:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmHOi3TZJA2tj75xSKs0A70us+9ZKXi8yT04K/kbfRaFw0DPGdnOYMPdMZA5TWtB+xP9iv
+X-Received: by 2002:a05:6808:130d:: with SMTP id y13mr4818239oiv.160.1635855445336;
+        Tue, 02 Nov 2021 05:17:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635855445; cv=none;
         d=google.com; s=arc-20160816;
-        b=ebHqoU53edgOf0Dgom4LW7iKaMOWnfvk6FEgqNvrEOAvQWM7m5KJFS/oi35B4Tbc+3
-         vD560a7WNPJPslZnldEObOVN1EQOD4IBk10H1Ck0Wx2kJPu0aT4IuzVtveukZMr57pcG
-         rrqPIzVlX6bYZsgvv5Uw3x+GR6AiB5wELca6MwLFl8NZ838vFq7Ouv/qGQZ1WXn1EJdQ
-         xEQHoiRhkO5tQWPpdSYgJk/UT55s5UbyQlqrtK8rYFbOafimepSZ6xOitDIBKUIpISr5
-         k/4T7xKrFoKbDkz1AA6zQUXLXsCExxZ8Dr/RZyoy7JESnfsC/rCSuTv0v8uKDfzR/16b
-         S47A==
+        b=i/hjWZXCnCfA+mWSHBO0kydenXbCWntKvPNBoe2r875e42feymWULBAdj8HjDzmjzh
+         rHQDrZKkkeBqDkzpLjNt+qW+bKBDVE+BRnMJO2OqbRejO70InjOnzmUHwBJUNzOcmlsN
+         iXnB2wvUhy51Y0ed7waBqW4Lq7rkHI4X5PMEbLfZ/NeLPYoT6hPNeIWkpS5mfmuO/IA8
+         qH87gg+cwoAN8MorF1tXfuygPZosFAi9x80ZItoCdADAUU00CAcjZ5EKJzq+yKzXz0se
+         9AljhKD7RYp607MuYsWTfmCYC3ln4htdbG+KA9Wu2BgMwR5YGmSgF7+A8sVGxAgrg3A7
+         KbRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=6TlcMPKIxgAcOzhbpuxUmgGUV+AvJ65qkkKScJosyfM=;
-        b=ecaXLhrASzgkF5gspVmNqXDf9IBT+2QDPDfDzY88S8vLDsAoijE4zcs+u1YuXJ7H0u
-         Kk7Z1oul7EnmdyglKdGn6NIRp7sCdjB6lu1w926HOW/O0Dm3+og9XNGTb4SY+dfEhzM1
-         0YFVYiD2qgxoQ8tQ4dhp5o+7iAzPbhMEULLqJV298/WnBl0WwImFp0Nx6j1stbbKR8FD
-         LzX0/uhkkMV7NnUH+bg2Xo/swilw/rrZN+arfDLmd5Wcy2wucUDp5b8EJBI4SW3BdBFf
-         4kAve1trwLegrp/LcjoSE+0xHaY7b7PtOhPMGwbVh/S/ZxWYae2gDvAh14a9Pl6x/OMv
-         msOg==
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=N+vJnvhjVhxzWqkJCLJUN/bU5S1pXKsSpjbV1scpaMI=;
+        b=K+NE/7h+y1DobyCyLGW3ocfF95enp0BZjz7ngZfKSQ+ij8JNY4L4ODDIHxlLOJ5Z2C
+         Wca7uBiXAY9zDgYoukVxVhyyyqbESFGEe7sv1hluDhUAZJxao6lH09lBOz7o/4L3Ugga
+         B2n0vuRtWWRDpxsB6bOchuZgD6cWGIYgA0PdcWubbaxVmevBAZBG25DCKZv+OG37M62+
+         ONZk1nVUiM4RX0qykufRvIMxyDmOnxo+PjRJXgiLyZroN6i/vipC8siAMiVrzcMRCagm
+         a8D6f4TbaYH3RCeRe5/G1sQzsUy2zAFBpWh8QVCxDZLwBn9TMDVXpgNXavwsIqWsFXt/
+         aUVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eCoi4wlO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jUBHn8+A;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q13si21804827otg.25.2021.11.02.05.06.54
+        by mx.google.com with ESMTPS id a5si9049486oiw.168.2021.11.02.05.17.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Nov 2021 05:06:54 -0700 (PDT)
+        Tue, 02 Nov 2021 05:17:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eCoi4wlO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jUBHn8+A;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40544 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mhsZ3-00071F-LL
-	for alex.bennee@linaro.org; Tue, 02 Nov 2021 08:06:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46172)
+	id 1mhsjE-0002J1-Im
+	for alex.bennee@linaro.org; Tue, 02 Nov 2021 08:17:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48922)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mhrmE-0002P3-1b
- for qemu-devel@nongnu.org; Tue, 02 Nov 2021 07:16:26 -0400
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730]:42882)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mhrmB-00045R-RZ
- for qemu-devel@nongnu.org; Tue, 02 Nov 2021 07:16:25 -0400
-Received: by mail-qk1-x730.google.com with SMTP id bm28so4121126qkb.9
- for <qemu-devel@nongnu.org>; Tue, 02 Nov 2021 04:16:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=6TlcMPKIxgAcOzhbpuxUmgGUV+AvJ65qkkKScJosyfM=;
- b=eCoi4wlOCgW4drQyg5Cskt1SdLIgVq8hqFP8yMCbnW4KHn7F+9TLUN1olXAX7ZXAVJ
- Kc3EVjwc4NbyuIF/wey8r+ZNpm4ZtBIj2sVpolhRkcpK9R+DCQELTYA34R8thmHeN4XB
- q1PCa/0xgm1Hn8Zq/YC2O0v6yPiQYa3wamYqyEMcmMJ1v8C+MBYZJxkgnO7bxTKuzvTG
- UuuVJGl6iHdCJ5T5qRiFDjhlTWeW/NeeEnMVnh0kBXuL0XEdp4LM08xwj3Se4cCC5kpy
- KJxjGMyFjz737VZRcyfl9/J1aetghELJf4boIl8BK9Q8CWk+jLLcE0HOvqhEa0a7OIL+
- NC9g==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mhrv7-0002UH-3d
+ for qemu-devel@nongnu.org; Tue, 02 Nov 2021 07:25:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31622)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mhrv5-0001Y7-Lj
+ for qemu-devel@nongnu.org; Tue, 02 Nov 2021 07:25:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1635852335;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=N+vJnvhjVhxzWqkJCLJUN/bU5S1pXKsSpjbV1scpaMI=;
+ b=jUBHn8+AYrH4R4EqYiQqbIE3edNc2zU03VXVcoDm2kmSQqzQiW8tVt9oJMgXOBBhtr+b0B
+ xYGU4Uu1f/SIbYsvtFVYeyfytTObdTHZEbCGhiEjLj8vDd0P/+v4hKdGJxE7FjypdnTqkC
+ SCrxhZs4VAgRFlphgOoeskl6WDEPH6s=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-262-rbGw1n-cNtG6w8MrDB3_OQ-1; Tue, 02 Nov 2021 07:25:34 -0400
+X-MC-Unique: rbGw1n-cNtG6w8MrDB3_OQ-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ o22-20020a056402439600b003dd4f228451so18478657edc.16
+ for <qemu-devel@nongnu.org>; Tue, 02 Nov 2021 04:25:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6TlcMPKIxgAcOzhbpuxUmgGUV+AvJ65qkkKScJosyfM=;
- b=sInhawEuArx0r2TC33PRsNt6LC99P5/rtRz1+9IMh02pjYccnv94xxFKuEjRjL3pcY
- CvUAOV7dxhwwdLJ5Nmc875RfhhoQ6cPhvK4Uk1IB/mZn/62J+kF64pxmVFMLiYQ+wbFM
- qUDWRKy4iDzo+lHFBQNE9S++FOQUuPlAY2LoDKsTSF3uTRVLpLmMOIDWmrCIBTVjM+ZZ
- 6AO4TOccWNNT5abirjnI8fw4O+8hwhCp0ihnfCyz9UML2T6ZFIwh0ZDiznLDRcg3B3JU
- wuoPkrGgqcWJxnHGd+vyckvoRtOse6qPKm+nYqTbviHkOZsVz/u/u2YAz2oYXbfKpVXu
- F67w==
-X-Gm-Message-State: AOAM533cVu7dlVDW4ZOINhNjINg9oU86qZM5zhc8ArRW1Zsv2yn50PQH
- 5uJ9DT/5+NyIq06b7q90d6g/xQ==
-X-Received: by 2002:a05:620a:2402:: with SMTP id
- d2mr28063614qkn.202.1635851781915; 
- Tue, 02 Nov 2021 04:16:21 -0700 (PDT)
-Received: from [172.20.81.179] (rrcs-172-254-253-57.nyc.biz.rr.com.
- [172.254.253.57])
- by smtp.gmail.com with ESMTPSA id h8sm8126364qkn.17.2021.11.02.04.16.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Nov 2021 04:16:21 -0700 (PDT)
-Subject: Re: [PATCH v2 0/5] hw/arm: Add NPCM7XX Tachometer Device
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210311180855.149764-1-wuhaotsh@google.com>
- <CAFXwXrnm2yveebfyq0cPPZBAeW33_sVu0jrkpbNQNUDBRBFQUQ@mail.gmail.com>
- <CAGcCb10wR6sfZCD_1N+jV9gi6f5Vq=0q9mHzky844nDwkzb7yg@mail.gmail.com>
- <3d2a1f82-a32d-a423-ee6c-12a842bbf6c8@linaro.org>
- <CAFEAcA8VnBS=V9BUqGPHg-mXS975SPCsDXQobyJ7P=AwGLeMhQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <2e957178-789f-2deb-04b9-86ca251498c5@linaro.org>
-Date: Tue, 2 Nov 2021 07:16:20 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=N+vJnvhjVhxzWqkJCLJUN/bU5S1pXKsSpjbV1scpaMI=;
+ b=P/gUU5AvF1vyNRr2JyVAxbFLHmSRJE8FMwFvtLMmQCGCW+3HIIvxVWs03PeYgW/m7E
+ aa4TlvLFB9dJNIhNluQvDWW6ITuPnO3J6cStA1mv/53ny1ESc/DAI6tQttjzQsjcG923
+ CmlbAjre8OtkQGCnxSilMiAZPtF/FlqisyprUnLChh5Vc9XkWLvBiGffai64nUkfOv/V
+ liYlNGQAHT2j7hR2m69YMGGKlQIWdCJJmiClylmZSUzXrhnlzpKDYjQ+LjpU8I2bu4hG
+ +IZC/3DcOVvE3BaTfEmLl4VPY456fwhqlwC5sIVElvby812N8Xpv8W0MzfjA4NksET7h
+ Xfsg==
+X-Gm-Message-State: AOAM530TPpUsJBxrkvamq7a13f/E108ZVr3qh+6C6l+mhvxE/ZZyWLTh
+ ihl5A/eA3SxDqAkuh2xUimausw4wFiS4M6Qyrk+Krn2NhlrQpbhOxtIrsFps28VRGTB/vEte67+
+ wK1anNe+IvnD1GtE=
+X-Received: by 2002:aa7:cf8d:: with SMTP id z13mr15241897edx.5.1635852333043; 
+ Tue, 02 Nov 2021 04:25:33 -0700 (PDT)
+X-Received: by 2002:aa7:cf8d:: with SMTP id z13mr15241836edx.5.1635852332694; 
+ Tue, 02 Nov 2021 04:25:32 -0700 (PDT)
+Received: from redhat.com ([2a03:c5c0:207e:c1:107d:c1da:65:fcb8])
+ by smtp.gmail.com with ESMTPSA id f25sm5365080edv.90.2021.11.02.04.25.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Nov 2021 04:25:31 -0700 (PDT)
+Date: Tue, 2 Nov 2021 07:25:25 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH v3 3/3] hw/i386: expose a "smbios-entry-point-type" PC
+ machine property
+Message-ID: <20211102072349-mutt-send-email-mst@kernel.org>
+References: <20211026151100.1691925-1-ehabkost@redhat.com>
+ <20211026151100.1691925-4-ehabkost@redhat.com>
+ <a2618cf2-a2a6-53f6-a7f0-8bb3a72d32e9@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8VnBS=V9BUqGPHg-mXS975SPCsDXQobyJ7P=AwGLeMhQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::730;
- envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x730.google.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.549,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <a2618cf2-a2a6-53f6-a7f0-8bb3a72d32e9@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.702,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -125,29 +130,60 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: venture@google.com, hskinnemoen@google.com, qemu-devel@nongnu.org,
- Hao Wu <wuhaotsh@google.com>, kfting@nuvoton.com, qemu-arm@nongnu.org,
- Avi.Fishman@nuvoton.com, dje@google.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Igor Mammedov <imammedo@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o+xam9VzYPuc
+X-TUID: KOYrW2MYlNnH
 
-On 11/2/21 6:44 AM, Peter Maydell wrote:
-> On Tue, 2 Nov 2021 at 10:03, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 11/1/21 1:50 PM, Hao Wu wrote:
->>> Is this reply to a wrong thread? I thought it was applied a long time ago.
->>
->> Probably.
+On Tue, Nov 02, 2021 at 09:51:35AM +0100, Philippe Mathieu-Daudé wrote:
+> On 10/26/21 17:11, Eduardo Habkost wrote:
+> > The i440fx and Q35 machine types are both hardcoded to use the
+> > legacy SMBIOS 2.1 (32-bit) entry point. This is a sensible
+> > conservative choice because SeaBIOS only supports SMBIOS 2.1
+> > 
+> > EDK2, however, can also support SMBIOS 3.0 (64-bit) entry points,
+> > and QEMU already uses this on the ARM virt machine type.
+> > 
+> > This adds a property to allow the choice of SMBIOS entry point
+> > versions For example to opt in to 64-bit SMBIOS entry point:
+> > 
+> >    $QEMU -machine q35,smbios-entry-point-type=64
 > 
-> Possibly you meant this 5-patch NPCM7xx series ?
-> https://patchew.org/QEMU/20211008002628.1958285-1-wuhaotsh@google.com/
-> ("[PATCH v2 0/5] hw/arm: Add MMC device for NPCM7XX boards")
+> It would be nice to have a test for this...
 > 
-> which has been reviewed and is ready to go in I think.
+> Otherwise,
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Yep, that's the one.
+Can we update seabios and the switch the default?
+Maybe just for q35?
+Or are there more considerations?
 
 
-r~
+> > Based on a patch submitted by Daniel Berrangé.
+> > 
+> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> > ---
+> > This is patch was previously submitted at:
+> > https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@redhat.com
+> > 
+> > Changes from v2:
+> > * Rename "smbios-ep" to "smbios-entry-point-type"
+> > 
+> > Changes from v1:
+> > * Include qapi-visit-smbios.h instead of qapi-visit-machine.h
+> > * Commit message fix: s/smbios_ep/smbios-ep/
+> > ---
+> >  include/hw/i386/pc.h |  4 ++++
+> >  hw/i386/pc.c         | 26 ++++++++++++++++++++++++++
+> >  hw/i386/pc_piix.c    |  2 +-
+> >  hw/i386/pc_q35.c     |  2 +-
+> >  4 files changed, 32 insertions(+), 2 deletions(-)
+

@@ -1,92 +1,121 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp3670704lfv;
-        Tue, 2 Nov 2021 10:02:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTk9x27x1tOYbM9xp6ghbjIEp2J8MfmBNsk3ViWRACeIC7C5Zk8sfMO810srqm30CdW2NX
-X-Received: by 2002:a05:6808:118a:: with SMTP id j10mr5932478oil.101.1635872524665;
-        Tue, 02 Nov 2021 10:02:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635872524; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp4009857lfv;
+        Tue, 2 Nov 2021 15:35:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz12rQWGwAAqYu7GbBgAaddDlwZQUsjD9Yy/bV4vhvMWgRjA0F6Pqv6aB+u38cKOolXp0QV
+X-Received: by 2002:a9d:338:: with SMTP id 53mr3702934otv.107.1635892559706;
+        Tue, 02 Nov 2021 15:35:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635892559; cv=none;
         d=google.com; s=arc-20160816;
-        b=zoDNIoDZWDynSeiG4XiyesAOvjjwb/ChOEco2Lxu2NsYq6Ab3V0bufCr7NtuWgA7Ww
-         xCX6f0vGx+63nHHwlFExCDNjwhgZIztlVOanxVDiQkiH3d/TqAzR3DouybADGajX4xUM
-         HojvSSRKkadw6FicBxNOzDO5Pgvj9cuuxAwcvmvwY/RmfogRCb7KMTLEjhEKD6gahS+e
-         ZmLZamkvna22/TcchoIs9P2IJK8njmqBdRWd/pKyz14SED59aDzgfdnaarji6rsVDU41
-         7yxZPvVMmBcU4sohbN19uudR+bxLIkSv/AcMlIwPCewF2jP1i4NONWUpcXCNNn1yg8wI
-         tecA==
+        b=D2Nzgof0An43k83k2XCYoOONyfOeuUKMdjbY99rNvXs/VtkkPKMhPQbZYjmrbcRC9e
+         FD6tX2DuzRUGgXT6n3bs4esfM8U88xWizyJQmXo+0o7Z9M3vjK8Bvwio1K1MTPwo9u1m
+         LTTsCyBgpnk28GWHrKG6Ze4AFexhQqHgwuBZKJ6hdosRY5H+ju8ctm+GrLF/kwXDq/FC
+         WxQqimR8e3E8u6+YponkMmzQFo/nBjcCEoz5JeezRgr3sN9wCTBdqVHnZbgAEJFxNCHL
+         wnnGA/fqksV8Wyev//WW3UrTu8cjhADrBMuL0sH8nHSKgfY+c6WP56ppLs6kPv3CQAbH
+         nVig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=D4emukhoCN+Enh8/AnrFEhe4PDpKje06oPNISKIUfq4=;
-        b=ow0WxVXZ/mgMQH7OeCZ/O/L1rwXS3rWz78uQqN+FhxgTYQ1wg6dxAJ6d/HjtTTFDwV
-         zAjzocvZGeNtsEP9Y7RYO9JkachtkHt9k8+5GfeGzIoIOd8tcZl73WwrqjX/0Sbi1aAD
-         JcudGm1OHdUMb/nTB/8Wx61YD9h4YdrdbgW+YtPOrYZbJc6z4I4QEDRa+b4w3jsMhnBp
-         71Vm5BZfMnRjQvFwoGK53Xkoe4U+AC6awwqf7TyOFCRjEo+/+Vec9kE6nV+CUIzXIFMz
-         uRmnXCdeUe4S1SOlLSGCzFCs3D9KVeK/WuOxGcFOo7uikC+nJl7Sfe917hjwRygV7tSZ
-         MZMw==
+         :subject:to:from:date:references:in-reply-to:message-id:mime-version
+         :user-agent:dkim-signature:dkim-signature;
+        bh=tVKcxUieixHcpss2NytjUuobSlajEkYAIZQS2oH2Q64=;
+        b=RbbHCMnrGu0GdfToBgs4YLCGg3i4+XuIAfNgeb9KpCIwIxFHR+4jK9LHZ6/BGDy4Au
+         /r+JxbyOPHdYi79KTR+vp7eq5kBBy9eeD5Fuk1EOx2HlqpiGcL0tk9Q/Xk6JhANnmtLD
+         pCWF3mGdU/AxGlfHm4B/N8nOCSKqh+488nPTBXZf8e966Yy1pemENTVJknnSoi3NhoP6
+         cintoldQqCnkBdQzQ6l8yCHkDMiWVvHO5AIQytdskPiTOPC/DK17kTiy4EzlbRxLrNjR
+         NCeCF1VQT70SVnr9RsGbp9X1M1MbvEN3I7kHkUDlLUwXNvEZke09/8ork994enFQ/Pzg
+         JoFg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=GGxhvNmD;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=cBKCOTTG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12si8005434otq.244.2021.11.02.10.02.04
+        by mx.google.com with ESMTPS id i15si449384ota.149.2021.11.02.15.35.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Nov 2021 10:02:04 -0700 (PDT)
+        Tue, 02 Nov 2021 15:35:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=GGxhvNmD;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=cBKCOTTG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56020 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mhxAi-0005qL-0i
-	for alex.bennee@linaro.org; Tue, 02 Nov 2021 13:02:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36644)
+	id 1mi2Nr-0005S1-3h
+	for alex.bennee@linaro.org; Tue, 02 Nov 2021 18:35:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41112)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mhwrg-0001cf-Os; Tue, 02 Nov 2021 12:42:24 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220]:33043)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1mi2NS-0005Ro-Fz; Tue, 02 Nov 2021 18:35:34 -0400
+Received: from out3-smtp.messagingengine.com ([66.111.4.27]:39481)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1mhwre-0003hC-N1; Tue, 02 Nov 2021 12:42:24 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.21])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4559FC8D0B8E;
- Tue,  2 Nov 2021 17:42:18 +0100 (CET)
-Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Tue, 2 Nov
- 2021 17:42:17 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00112361067-4083-4f14-9435-dcced5980dc6,
- B20104FC050451C2D6F35AC557110BE97BB9458B) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 129.41.46.1
-Message-ID: <e60b830f-aaf5-a465-c85f-17aee56bb1d0@kaod.org>
-Date: Tue, 2 Nov 2021 17:42:16 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH] MAINTAINERS: Change status to Odd Fixes
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1mi2NQ-0003Fo-Fq; Tue, 02 Nov 2021 18:35:34 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+ by mailout.nyi.internal (Postfix) with ESMTP id C85E35C00E8;
+ Tue,  2 Nov 2021 18:35:29 -0400 (EDT)
+Received: from imap43 ([10.202.2.93])
+ by compute2.internal (MEProxy); Tue, 02 Nov 2021 18:35:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type:content-transfer-encoding; s=fm1; bh=tVKcx
+ UieixHcpss2NytjUuobSlajEkYAIZQS2oH2Q64=; b=GGxhvNmDY6UCHOIP7whDR
+ fvqta9KHQHHSohZuNxHEQGyX3MzeeUnhxhRhYEvS6KcRF/iEkoMk8n7TJHgqATht
+ m97e+Fo7gorRgiOU4C4TBwntC+vo7PIx26yQp51JrijZoQXqsMcwNnD6CTbE8n+B
+ xhb2w9EtTgaApgqlDvBznf3ILXU+v5h+6wyPAyNk3egN7D6uWREDHUBb9De5jVRi
+ nyGaUOUX8gA046L+b0wkKVwK7Fs3Jo1LWAXL86fbwF6HOSABH0UNMNOI+awQRhCi
+ YCjvj7Q6xWxUFlcPpxvGzejqIsq9fXiq5jGwmd3Wrv5bylPAEt4X4ja58k8CxxNE
+ g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; bh=tVKcxUieixHcpss2NytjUuobSlajEkYAIZQS2oH2Q
+ 64=; b=cBKCOTTGaoeMNr9ThOJev4eE/irdQofQ+slA8fIR7enUw8LKdDkEeFITR
+ BZkVLp945CXNug4SOwWHLFMmQXRk8vmF70EsY8c9EznyMd+peaECEhOng8Frrg/g
+ n+rIkg9nSKYbUyTpOy3QgylnV2qb5zeKuIVpV1vhaXqW83JK3k9fW6bHzCZFglG1
+ +Ikni3M75H2Po15YUl9MsmhINayw1w4nRz27yPsHOylVXG3uMgJuRDWBadhtKovV
+ Htu2u1JuXw72d7Z1d5Kci03NUCLegepQhLRoQRQnC0G57rMUYXiUIuob9KYp9qV5
+ DD/HhEI1oN8SqKfTn2JFO0kyDPd5g==
+X-ME-Sender: <xms:Mb2BYdoOFOVIPHb6yjL2XZkpFkABic8dx-hBedaplkygSLxlRsPp1w>
+ <xme:Mb2BYfpK0JOJgNUfkV7ZvlgahysE7HmzJGnarvY6mrl9xH1FysHoTCRO7YTFwYrfl
+ DeaS4_315_BfTekcQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrtddtgddufeeiucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
+ ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
+ frrghtthgvrhhnpedvgeekheegfedvhfethefhudetteegueeggfeiieegueehkedugedt
+ kefglefgheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+ hmpegrnhgurhgvfiesrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:Mb2BYaPg5PTQgo5r66hqF3R_mUX4Kdayu-ToP0h0DXt4kr_2qjgdQQ>
+ <xmx:Mb2BYY6DbZwZ8w3ZPk_gMG9r3d28ThCnsY8jN9eCzNCQDylrA1sPgA>
+ <xmx:Mb2BYc5b_qUp16883_AFsXcJRcH5ibKwsyRFlEnAKpanXvry22gQhA>
+ <xmx:Mb2BYcHUX1TXxCQ7E1yZZ7aMTbvpNAdh8LQs8y6Wrqr9ieiM4KOzkA>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 98B71AC0DD1; Tue,  2 Nov 2021 18:35:29 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.5.0-alpha0-1369-gd055fb5e7c-fm-20211018.002-gd055fb5e
+Mime-Version: 1.0
+Message-Id: <c97b0423-a5bb-4ca0-ab79-14120223f368@www.fastmail.com>
+In-Reply-To: <CAFEAcA__8Rmrie2FSf+WOs987wZf4pa8rC5JXuyMA3WBQVe=Bw@mail.gmail.com>
 References: <20211101183146.684471-1-clg@kaod.org>
  <CAFEAcA__8Rmrie2FSf+WOs987wZf4pa8rC5JXuyMA3WBQVe=Bw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAFEAcA__8Rmrie2FSf+WOs987wZf4pa8rC5JXuyMA3WBQVe=Bw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 52ad7b89-dd24-48eb-b708-7daacbeb756b
-X-Ovh-Tracer-Id: 7667941318011882403
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvuddrtddtgdeiiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigedvffekgeeftedutddttdevudeihfegudffkeeitdekkeetkefhffelveelleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.549,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Date: Wed, 03 Nov 2021 09:05:08 +1030
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: "Peter Maydell" <peter.maydell@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Subject: Re: [PATCH] MAINTAINERS: Change status to Odd Fixes
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=66.111.4.27; envelope-from=andrew@aj.id.au;
+ helo=out3-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,37 +129,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0h0jGGKWWQrU
+X-TUID: IpAJa7MI/a5c
 
-On 11/2/21 17:18, Peter Maydell wrote:
-> On Mon, 1 Nov 2021 at 18:31, Cédric Le Goater <clg@kaod.org> wrote:
+
+
+On Wed, 3 Nov 2021, at 02:48, Peter Maydell wrote:
+> On Mon, 1 Nov 2021 at 18:31, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
+e:
 >>
 >> I haven't done any Aspeed development for a couple of years now and
 >> maintaining the Aspeed QEMU machines has been a side project since.
 >> I don't have time anymore.
-> 
+>
 > Thanks for the work you've done on this over the years.
-> 
+
+Second this!
+
+>
 > I guess this means I should start picking up aspeed-related
 > patches into the target-arm queue again ?
 
-Yes. I think that's better. Unless someone volunteers.
+I'd struggle taking it on - my qemu development is pretty sporadic and=20
+hackish at best and my patches need the review. Unless Joel wants to=20
+take the role I think it would be best if our patches went via=20
+target-arm again.
 
-> Are there any currently on-list aspeed patches that I
-> should put into my to-review queue, or are we up to date
-> at the moment?
+A general thanks for your help here too Peter :)
 
-My last PR for 6.2 should have captured them all.
-
-I kept the FMC WDT2 patches in my aspeed-6.2 branch because I had
-information from Aspeed on their logic and my modelling is wrong.
-Other patches are not ready for upstream, eMMC for instance.
-
-Thanks,
-
-C.
-
+Andrew

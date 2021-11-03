@@ -1,335 +1,281 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp4298752lfv;
-        Tue, 2 Nov 2021 21:11:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwomGOHzr6B2sV6pWRN7w/+E+XNV5Cd96/g/9NRePZy7zu7zt495yXDgzFrYRVGxPFthzLu
-X-Received: by 2002:aca:4b45:: with SMTP id y66mr4043884oia.72.1635912660874;
-        Tue, 02 Nov 2021 21:11:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635912660; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp4596577lfv;
+        Wed, 3 Nov 2021 03:17:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfhENIQlBrlUG0/EHLE9/a7MfnsLlz0AqeuAOZGHLCpdrnQ/aZOFWX9cs4OqDt16maXTYV
+X-Received: by 2002:a05:6830:1516:: with SMTP id k22mr19578676otp.280.1635934636241;
+        Wed, 03 Nov 2021 03:17:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635934636; cv=none;
         d=google.com; s=arc-20160816;
-        b=VC3BkatIuQ5u8l8S0WOsA89R96KUAhLdrPqjEWZtE9FnYCABag3mamfPklwVF2P40w
-         0hLgdOH9kVUrU6O3JnrFIvZZogzVAvg4fsmP1CmyOpxl4VQ16dzmHo7LBq8A86A4SFAu
-         88UEhIVE3db85rBG1CQ/bE4xCrYssURXIAr360F0GEswpzZ67bAFmTV3qHTzJJJvyjBZ
-         fWeJ6hhmQMH+XhKWqBgQW7Ur4PeEE75cVhxCIDDqBaLXj+TY4NxYjCbq0XHmqMW/YgN8
-         BM2b3ejrlHu//0Qj/CXogKUfdmIPOH/nH5TCA9HZ60cYr4aAWTGGXA/qUlynP3J0Qj3S
-         Tsow==
+        b=H6S8ZKCfc1HCGMvFhHc3OWIkhtCG4FxEjJHXt1oka49KDSw9oL7FW3kOJH3c7xuam9
+         m3OIZYr8zgNFAQ2D68vO6YZuEJLJzUgHvquR35YZJRIU5k3SaETFAdIL9LWgN/8gyprP
+         AlNWcfvqeg6U6zH/2xn1S9NgNxecW9gSS5Jla39Oop3bpgS2yVeasR6ULfa3H7KE7NZJ
+         9E/jRY1ScK7gRXXXv+frhjMwDJ6cogGP9znmn7lBJnQkWa3ZCkVrNLf2eW5iIJ5hBm9w
+         Mp5apI1SWC6l9+88MuqCsopBu1V3n4k+tWGKixCQoCBn0xq82JzyW+l7trFLC/OvMheS
+         Z3gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=baj/I/Bz1wNfmusOUpoAH2XUyOJ1rLb4eb+amBeVoKQ=;
-        b=qu3ytznrKCMNRGED/vZXNjGCOllkgizvcJVQ2fB+FlRibfiNlerzAXI7as/EhVhFWw
-         gW/QW3ZIWL76oM1a1Cvb6U4ln2e0JRkin5NCaCbjYwkdbTLoUfWgn7LPaPl5uagBKU9D
-         7ToI7DCx3fsKl1J+J9OnmmVqiLoAYXJ98EhLwqTP/6cd15fRRodd8H00HvgVOw8q4qDQ
-         Sf0kYp48I63ztLCxaxRgyd0B96Yujhzfg0rEbQ5ktK6naz5rXUOuLSXiob66l8CfTvya
-         wS7uEZVpaNnKYAx9NUG8jJpILldnXhzzlnqeiEie7eOfE4qScfkNmfR0/orEJdJAF6a4
-         2/LA==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=1Zk0KtCz1ltimjIccaCjrTN+Iz3yJqGWmXGZ62os6pQ=;
+        b=NQPkzE2fNhALrRt07iCptwocHPRDQtnD1PHPU16RqgchGW7LrgZ/jeGMTew7M/rQBp
+         WhhUqsFYVpHO0EuF53/ozZTBEHkE1PRtPT9J5nOobA0SeihWxb6fRcRvF4TzxCyCYjRP
+         zbBU4J+JinGWwTOuRICDr49NWBunXkWOWZbEaA01TsdlB0fLgQp4s8OydNecFzeAAqGz
+         /a+bEBFUVkCNisV1BM0V4nq6eU2V7KZafnT5X/b2WtnfTVOY5m9NxkuEcfmIRU0f6TuJ
+         RpcA+sm1suGGNe/lJEs2i+j5AmhukJudUSQxtkFVYThT34b2ulgkEWajdqgqvJmXs4yf
+         Du3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NmUMYFsf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jz7STjvj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16si1312886otm.189.2021.11.02.21.11.00
+        by mx.google.com with ESMTPS id x35si2293825otr.70.2021.11.03.03.17.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Nov 2021 21:11:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Nov 2021 03:17:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NmUMYFsf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59296 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jz7STjvj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48532 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mi7c4-0003PV-3m
-	for alex.bennee@linaro.org; Wed, 03 Nov 2021 00:11:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46746)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1miDKV-0000xr-BM
+	for alex.bennee@linaro.org; Wed, 03 Nov 2021 06:17:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39022)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mi7VL-0005FV-RK
- for qemu-devel@nongnu.org; Wed, 03 Nov 2021 00:04:05 -0400
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733]:45638)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mi7VH-0000vQ-GX
- for qemu-devel@nongnu.org; Wed, 03 Nov 2021 00:04:02 -0400
-Received: by mail-qk1-x733.google.com with SMTP id n15so1092690qkp.12
- for <qemu-devel@nongnu.org>; Tue, 02 Nov 2021 21:03:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=baj/I/Bz1wNfmusOUpoAH2XUyOJ1rLb4eb+amBeVoKQ=;
- b=NmUMYFsf96tTM2wLwmrZnuxrGwGcb7LQ0dJNN9fKJ4RFnzpmCiMxdCOGN/ez3PpG2M
- 7vcYXHAFOk2lUrqnp0L704eL34i7I6V6gn00NU28BpmNKya+GiAV/lsA+j6MQqViq5l8
- Mq6XRLISWEiKwWr8m/WZKmebLBb476kOrJS/xO84CpUl7dMNJ4pIBcpCcMzygj1QLVVr
- U1Vo+SoyGfFkqqCBWTbsGJw4TagvT3QRoXwun1/PgiG0CGr024YFZH0/V23gGqpVtzFR
- fbsUfVxwWT4En0XwZKnPVYQGsT3ZdwycFun/iLBQSgrfRp+1otnxm19J41ksXoeHM4wI
- GQIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=baj/I/Bz1wNfmusOUpoAH2XUyOJ1rLb4eb+amBeVoKQ=;
- b=3EEfldETbUW+p0Ab2qG2PRmOjkmRqPbPAW4AxIQ3shPvSdjl8JxajCVIrq6yzfiyk2
- B6B+p33QPdHjkv2L6h6gzhcOSF4kKKxOJFBUwj+RoKr1WPlodY/yZWQuB265fEntDfKr
- oLDA61FkEDR4EiYAhdI+xD65MxxPf5YJCQAKk+QM6T4gAMKAZ5kMiK4vh0ZXaik/IxrW
- zgBcd59++iwU07UdrYY1/z+sNUmlcINrTp752HYT94J7q/C2PghPOFoDDgRrldxqrhWZ
- en6/2PFqLW4upcKvS5dlI8mia4EJIm33GIs4CkBoFO8gqkVUNSQaFj8/H5LJ87UFwUBq
- KTLQ==
-X-Gm-Message-State: AOAM530TtQdMR7cdnXayP9vsXU9Bbg06jrNbEHxjEaXKMwMlyoXPBikB
- ypdc5nwDU1G18z8r6sDtffNIdPrST/nwIA==
-X-Received: by 2002:a37:b781:: with SMTP id h123mr5521240qkf.491.1635912238492; 
- Tue, 02 Nov 2021 21:03:58 -0700 (PDT)
-Received: from localhost.localdomain (rrcs-172-254-253-57.nyc.biz.rr.com.
- [172.254.253.57])
- by smtp.gmail.com with ESMTPSA id br20sm730408qkb.104.2021.11.02.21.03.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Nov 2021 21:03:58 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 07/10] target/arm: Take an exception if PC is misaligned
-Date: Wed,  3 Nov 2021 00:03:49 -0400
-Message-Id: <20211103040352.373688-8-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211103040352.373688-1-richard.henderson@linaro.org>
-References: <20211103040352.373688-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1miDKO-0000xQ-35
+ for qemu-arm@nongnu.org; Wed, 03 Nov 2021 06:17:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54273)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1miDKK-0005NT-QQ
+ for qemu-arm@nongnu.org; Wed, 03 Nov 2021 06:17:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1635934624;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1Zk0KtCz1ltimjIccaCjrTN+Iz3yJqGWmXGZ62os6pQ=;
+ b=Jz7STjvj8Z4JUQhDHBs7uDk7h5obTKCb7FQbz22ZmpucuS3n5J57Xs4ss5GZ07QuRtEQpz
+ C0MUGThAyN97JrSvOf2i1oHyYAgw8ssmrSpIfH0iK/600qVzVE7r6gkuFVTmipxHbNl8mi
+ aanpbLcsXDplpcgdNeL1ahf/WHIPXqg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-222-q_TJWbhpO5a4SyHQnmdmEg-1; Wed, 03 Nov 2021 06:16:58 -0400
+X-MC-Unique: q_TJWbhpO5a4SyHQnmdmEg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1C91F180831A;
+ Wed,  3 Nov 2021 10:16:57 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 44B3057CD3;
+ Wed,  3 Nov 2021 10:16:56 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C210B11380A7; Wed,  3 Nov 2021 11:16:54 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v2 7/7] hw/arm: Add ID for NPCM7XX SMBus
+References: <20211021183956.920822-1-wuhaotsh@google.com>
+ <20211021183956.920822-8-wuhaotsh@google.com>
+ <CAFEAcA8B9uKOyVycq7+kbOSVSfXD9-xsAuBaNowy56CvZKpTUQ@mail.gmail.com>
+ <e2afad0e-8116-a1b0-f473-7c44ba32112f@amsat.org>
+Date: Wed, 03 Nov 2021 11:16:54 +0100
+In-Reply-To: <e2afad0e-8116-a1b0-f473-7c44ba32112f@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 2 Nov 2021 09:55:17
+ +0100")
+Message-ID: <87tugtilwp.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::733;
- envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x733.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.702,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xmbwO+LsWTew
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, venture@google.com,
+ hskinnemoen@google.com, qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>,
+ kfting@nuvoton.com, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KcPCLTqI9mph
 
-For A64, any input to an indirect branch can cause this.
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-For A32, many indirect branch paths force the branch to be aligned,
-but BXWritePC does not.  This includes the BX instruction but also
-other interworking changes to PC.  Prior to v8, this case is UNDEFINED.
-With v8, this is CONSTRAINED UNPREDICTABLE and may either raise an
-exception or force align the PC.
+> +Markus/Eduardo
+>
+> On 11/1/21 18:33, Peter Maydell wrote:
+>> On Thu, 21 Oct 2021 at 19:40, Hao Wu <wuhaotsh@google.com> wrote:
+>>>
+>>> The ID can be used to indicate SMBus modules when adding
+>>> dynamic devices to them.
+>>>
+>>> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+>>> ---
+>>>  hw/arm/npcm7xx.c | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+>>> index 2ab0080e0b..72953d65ef 100644
+>>> --- a/hw/arm/npcm7xx.c
+>>> +++ b/hw/arm/npcm7xx.c
+>>> @@ -421,6 +421,7 @@ static void npcm7xx_init(Object *obj)
+>>>      for (i =3D 0; i < ARRAY_SIZE(s->smbus); i++) {
+>>>          object_initialize_child(obj, "smbus[*]", &s->smbus[i],
+>>>                                  TYPE_NPCM7XX_SMBUS);
+>>> +        DEVICE(&s->smbus[i])->id =3D g_strdup_printf("smbus[%d]", i);
+>>>      }
+>>=20
+>> This one looks weird to me -- I'm pretty sure we shouldn't be messing
+>> about with the DeviceState id string like that. It's supposed to be
+>> internal to the QOM/qdev code.
 
-We choose to raise an exception because we have the infrastructure,
-it makes the generated code for gen_bx simpler, and it has the
-possibility of catching more guest bugs.
+It's meant for the user.  Devices created by code shouldn't set it.  Not
+least because any ID they pick could clash with the user's.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.h           |  1 +
- target/arm/syndrome.h         |  5 ++++
- linux-user/aarch64/cpu_loop.c | 46 ++++++++++++++++++++---------------
- target/arm/tlb_helper.c       | 18 ++++++++++++++
- target/arm/translate-a64.c    | 15 ++++++++++++
- target/arm/translate.c        | 22 ++++++++++++++++-
- 6 files changed, 87 insertions(+), 20 deletions(-)
+> I agree with you, however:
+>
+> $ git grep -F -- '->id =3D g_strdup' hw
+> hw/arm/virt.c:1512:    dev->id =3D g_strdup(TYPE_PLATFORM_BUS_DEVICE);
+> hw/block/xen-block.c:761:    drive->id =3D g_strdup(id);
+> hw/block/xen-block.c:853:    iothread->id =3D g_strdup(id);
+> hw/core/machine-qmp-cmds.c:169:        m->id =3D g_strdup(object_get_cano=
+nical_path_component(obj));
+> hw/mem/pc-dimm.c:244:        di->id =3D g_strdup(dev->id);
+> hw/pci-bridge/pci_expander_bridge.c:248:        bds->id =3D g_strdup(dev_=
+name);
+> hw/ppc/e500.c:1009:        dev->id =3D g_strdup(TYPE_PLATFORM_BUS_DEVICE)=
+;
+> hw/s390x/s390-pci-bus.c:1003:            dev->id =3D g_strdup_printf("aut=
+o_%02x:%02x.%01x",
+> hw/sh4/sh7750.c:819:    dev->id =3D g_strdup("sci");
+> hw/sh4/sh7750.c:836:    dev->id =3D g_strdup("scif");
+> hw/virtio/virtio-mem-pci.c:69:        vi->id =3D g_strdup(dev->id);
+> hw/virtio/virtio-pmem-pci.c:74:        vi->id =3D g_strdup(dev->id);
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 448a86edfd..b463d9343b 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -47,6 +47,7 @@ DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
- DEF_HELPER_2(exception_internal, void, env, i32)
- DEF_HELPER_4(exception_with_syndrome, void, env, i32, i32, i32)
- DEF_HELPER_2(exception_bkpt_insn, void, env, i32)
-+DEF_HELPER_2(exception_pc_alignment, noreturn, env, tl)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_1(wfe, void, env)
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index f30f4130a2..8cde8e7243 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -282,4 +282,9 @@ static inline uint32_t syn_illegalstate(void)
-     return (EC_ILLEGALSTATE << ARM_EL_EC_SHIFT) | ARM_EL_IL;
- }
- 
-+static inline uint32_t syn_pcalignment(void)
-+{
-+    return (EC_PCALIGNMENT << ARM_EL_EC_SHIFT) | ARM_EL_IL;
-+}
-+
- #endif /* TARGET_ARM_SYNDROME_H */
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index 97e0728b67..f9f3473288 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -113,27 +113,35 @@ void cpu_loop(CPUARMState *env)
-             break;
-         case EXCP_PREFETCH_ABORT:
-         case EXCP_DATA_ABORT:
--            /* We should only arrive here with EC in {DATAABORT, INSNABORT}. */
-             ec = syn_get_ec(env->exception.syndrome);
--            assert(ec == EC_DATAABORT || ec == EC_INSNABORT);
--
--            /* Both EC have the same format for FSC, or close enough. */
--            fsc = extract32(env->exception.syndrome, 0, 6);
--            switch (fsc) {
--            case 0x04 ... 0x07: /* Translation fault, level {0-3} */
--                si_signo = TARGET_SIGSEGV;
--                si_code = TARGET_SEGV_MAPERR;
-+            switch (ec) {
-+            case EC_DATAABORT:
-+            case EC_INSNABORT:
-+                /* Both EC have the same format for FSC, or close enough. */
-+                fsc = extract32(env->exception.syndrome, 0, 6);
-+                switch (fsc) {
-+                case 0x04 ... 0x07: /* Translation fault, level {0-3} */
-+                    si_signo = TARGET_SIGSEGV;
-+                    si_code = TARGET_SEGV_MAPERR;
-+                    break;
-+                case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
-+                case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
-+                    si_signo = TARGET_SIGSEGV;
-+                    si_code = TARGET_SEGV_ACCERR;
-+                    break;
-+                case 0x11: /* Synchronous Tag Check Fault */
-+                    si_signo = TARGET_SIGSEGV;
-+                    si_code = TARGET_SEGV_MTESERR;
-+                    break;
-+                case 0x21: /* Alignment fault */
-+                    si_signo = TARGET_SIGBUS;
-+                    si_code = TARGET_BUS_ADRALN;
-+                    break;
-+                default:
-+                    g_assert_not_reached();
-+                }
-                 break;
--            case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
--            case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
--                si_signo = TARGET_SIGSEGV;
--                si_code = TARGET_SEGV_ACCERR;
--                break;
--            case 0x11: /* Synchronous Tag Check Fault */
--                si_signo = TARGET_SIGSEGV;
--                si_code = TARGET_SEGV_MTESERR;
--                break;
--            case 0x21: /* Alignment fault */
-+            case EC_PCALIGNMENT:
-                 si_signo = TARGET_SIGBUS;
-                 si_code = TARGET_BUS_ADRALN;
-                 break;
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index 4cacb9658f..b79004e0cc 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -9,6 +9,7 @@
- #include "cpu.h"
- #include "internals.h"
- #include "exec/exec-all.h"
-+#include "exec/helper-proto.h"
- 
- static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-                                             unsigned int target_el,
-@@ -134,6 +135,23 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-     arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
- }
- 
-+void helper_exception_pc_alignment(CPUARMState *env, target_ulong pc)
-+{
-+    ARMMMUFaultInfo fi = { .type = ARMFault_Alignment };
-+    int target_el = exception_target_el(env);
-+    int mmu_idx = cpu_mmu_index(env, true);
-+    uint32_t fsc;
-+
-+    env->exception.vaddress = pc;
-+
-+    /*
-+     * Note that the fsc is not applicable to this exception,
-+     * since any syndrome is pcalignment not insn_abort.
-+     */
-+    env->exception.fsr = compute_fsr_fsc(env, &fi, target_el, mmu_idx, &fsc);
-+    raise_exception(env, EXCP_PREFETCH_ABORT, syn_pcalignment(), target_el);
-+}
-+
- #if !defined(CONFIG_USER_ONLY)
- 
- /*
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 2986fe1393..130a9ff8d5 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14753,6 +14753,7 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     uint64_t pc = s->base.pc_next;
-     uint32_t insn;
- 
-+    /* Singlestep exceptions have the highest priority. */
-     if (s->ss_active && !s->pstate_ss) {
-         /* Singlestep state is Active-pending.
-          * If we're in this state at the start of a TB then either
-@@ -14771,6 +14772,20 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         return;
-     }
- 
-+    if (pc & 3) {
-+        /*
-+         * PC alignment fault.  This has priority over the instruction abort
-+         * that we would receive from a translation fault via arm_ldl_code.
-+         * This should only be possible after an indirect branch, at the
-+         * start of the TB.
-+         */
-+        assert(s->base.num_insns == 1);
-+        gen_helper_exception_pc_alignment(cpu_env, tcg_constant_tl(pc));
-+        s->base.is_jmp = DISAS_NORETURN;
-+        s->base.pc_next = QEMU_ALIGN_UP(pc, 4);
-+        return;
-+    }
-+
-     s->pc_curr = pc;
-     insn = arm_ldl_code(env, &s->base, pc, s->sctlr_b);
-     s->insn = insn;
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 82d4e24c27..828fb328ee 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -9566,7 +9566,27 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     uint32_t pc = dc->base.pc_next;
-     unsigned int insn;
- 
--    if (arm_check_ss_active(dc) || arm_check_kernelpage(dc)) {
-+    /* Singlestep exceptions have the highest priority. */
-+    if (arm_check_ss_active(dc)) {
-+        dc->base.pc_next = pc + 4;
-+        return;
-+    }
-+
-+    if (pc & 3) {
-+        /*
-+         * PC alignment fault.  This has priority over the instruction abort
-+         * that we would receive from a translation fault via arm_ldl_code
-+         * (or the execution of the kernelpage entrypoint). This should only
-+         * be possible after an indirect branch, at the start of the TB.
-+         */
-+        assert(dc->base.num_insns == 1);
-+        gen_helper_exception_pc_alignment(cpu_env, tcg_constant_tl(pc));
-+        dc->base.is_jmp = DISAS_NORETURN;
-+        dc->base.pc_next = QEMU_ALIGN_UP(pc, 4);
-+        return;
-+    }
-+
-+    if (arm_check_kernelpage(dc)) {
-         dc->base.pc_next = pc + 4;
-         return;
-     }
--- 
-2.25.1
+This includes false positives, i.e. assignments to members of structs
+other than DeviceState.  It also misses other ways to mess with
+DeviceState member id.
+
+Compiling with
+
+    diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+    index 1bad07002d..b17ccd6065 100644
+    --- a/include/hw/qdev-core.h
+    +++ b/include/hw/qdev-core.h
+    @@ -176,7 +176,7 @@ struct DeviceState {
+         Object parent_obj;
+         /*< public >*/
+
+    -    char *id;
+    +    char *const id;
+         char *canonical_path;
+         bool realized;
+         bool pending_deleted_event;
+
+ferrets out the actual assignments.  I got:
+
+../hw/ppc/spapr_vio.c: In function =E2=80=98spapr_vio_busdev_realize=E2=80=
+=99:
+../hw/ppc/spapr_vio.c:505:22: error: assignment of read-only member =E2=80=
+=98id=E2=80=99
+  505 |         dev->qdev.id =3D id;
+      |                      ^
+
+This supplies a default ID to a vio-spapr-device.  Feels like a bad
+idea.
+
+../softmmu/qdev-monitor.c: In function =E2=80=98qdev_set_id=E2=80=99:
+../softmmu/qdev-monitor.c:593:21: error: assignment of read-only member =E2=
+=80=98id=E2=80=99
+  593 |             dev->id =3D id;
+      |                     ^
+
+This assigns the user-supplied ID.
+
+../hw/dma/xlnx-zdma.c: In function =E2=80=98zdma_realize=E2=80=99:
+../hw/dma/xlnx-zdma.c:777:12: error: assignment of read-only location =E2=
+=80=98*r=E2=80=99
+  777 |         *r =3D (RegisterInfo) {
+      |            ^
+
+This *clobbers* the DeviceState embedded in *r, including its member id.
+Suspicious.
+
+../hw/pci-bridge/pci_expander_bridge.c: In function =E2=80=98pxb_dev_realiz=
+e_common=E2=80=99:
+../hw/pci-bridge/pci_expander_bridge.c:248:17: error: assignment of read-on=
+ly member =E2=80=98id=E2=80=99
+  248 |         bds->id =3D g_strdup(dev_name);
+      |                 ^
+
+This creates a pci-bridge device and gives it the same ID as the pxb
+device being realized.  Doesn't this result in duplicate IDs?!?
+
+../hw/arm/virt.c: In function =E2=80=98create_platform_bus=E2=80=99:
+../hw/arm/virt.c:1512:13: error: assignment of read-only member =E2=80=98id=
+=E2=80=99
+ 1512 |     dev->id =3D g_strdup(TYPE_PLATFORM_BUS_DEVICE);
+      |             ^
+
+Helper function to create a platform-bus-device.  ID is set to
+"platform-bus-device".  Feels like a bad idea.
+
+../hw/ppc/e500.c: In function =E2=80=98ppce500_init=E2=80=99:
+../hw/ppc/e500.c:1009:17: error: assignment of read-only member =E2=80=98id=
+=E2=80=99
+ 1009 |         dev->id =3D g_strdup(TYPE_PLATFORM_BUS_DEVICE);
+      |                 ^
+
+Likewise.
+
+../hw/s390x/s390-pci-bus.c: In function =E2=80=98s390_pcihost_plug=E2=80=99=
+:
+../hw/s390x/s390-pci-bus.c:1003:21: error: assignment of read-only member =
+=E2=80=98id=E2=80=99
+ 1003 |             dev->id =3D g_strdup_printf("auto_%02x:%02x.%01x",
+      |                     ^
+
+This supplies a default ID to a the device being plugged (I think).
+Feels like a bad idea.
+
+../hw/sh4/sh7750.c: In function =E2=80=98sh7750_init=E2=80=99:
+../hw/sh4/sh7750.c:819:13: error: assignment of read-only member =E2=80=98i=
+d=E2=80=99
+  819 |     dev->id =3D g_strdup("sci");
+      |             ^
+../hw/sh4/sh7750.c:836:13: error: assignment of read-only member =E2=80=98i=
+d=E2=80=99
+  836 |     dev->id =3D g_strdup("scif");
+      |             ^
+
+
+These create sh-serial devices.  Their IDs are set to "sci" and "scif",
+respectively.  Feels like a bad idea.
 

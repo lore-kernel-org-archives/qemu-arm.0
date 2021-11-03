@@ -1,92 +1,111 @@
-Received: by 2002:ac2:5f6a:0:0:0:0:0 with SMTP id c10csp1233651lfc;
-        Fri, 22 Oct 2021 01:01:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxn5LG4qqMd8MwVFzrEC4WhevtGY18+4f+8dY2d/vEOGqadvSmLXgyIcwq6owPCGVItwGi
-X-Received: by 2002:a9d:611b:: with SMTP id i27mr8640332otj.323.1634889677556;
-        Fri, 22 Oct 2021 01:01:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634889677; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp4585058lfv;
+        Wed, 3 Nov 2021 03:05:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQMniqp2CXc36iQKQxfAAYzkQpy9lOlh/iVcO0+xlkIiF0cfdEw7BcQdH3WWCVvE3oLcYC
+X-Received: by 2002:a05:6830:923:: with SMTP id v35mr15422387ott.116.1635933957402;
+        Wed, 03 Nov 2021 03:05:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635933957; cv=none;
         d=google.com; s=arc-20160816;
-        b=S/gOLbCDwizzfENGrv3EndL96ZgPMkmROTlPKMgb25B9znhzUPz6KxakMTGFJ0oab1
-         hxkCNlUgnTpQBwKkH9t9pq0JEvvcrsVy2O0nkLP/R2GmWVSIEep3PZdjudqSy3dDTvkI
-         ee8SeT/LVbl1EXy4fwDC/KGyBJiQlnEKrFpPyvCJ9hDB1p/l8HgLj/oLPYJ2A2nQLx7R
-         pqgVrA7T5U2538TdktITj5mMflwkb4v3InKdHvFAFjG42SIuqfGGoaFZ3J/PsSRYZPOl
-         oCIXK+nNa9M8rxq/KDG7KvmdZov4WO59hYBgmRMhew2487CyuL9BeLCyyQ24Piy/VB5F
-         3jKg==
+        b=bqGgU11D/VBkvPiA5D0xjuVyfsNlJB3D+lJm5asCCiw0flgSFppwJYe2BLOyl5nGqu
+         ZeR7fzVHc6JALaTIwCO8/debTcspywyavZukq2Qs7pOpgqprLZWTz/QoOTerVzWOQxWn
+         YYYsCFxpEBA/+HdEwtatShaKLjCMmo5uuLuQAN4fOElqKv4bK61NvygOral4u2Nq4UST
+         V2puEeP1JgtIqnXjohgOKTfEGptBhiFXSWMJWL8saLpFgI+Oz99+Y/KXjVuDvSDuuaQL
+         cSush8pM4TWWh2oLnAJFi/9T1O42/xJ7ZsERgFNAhsy0055S7d/NmRmLxe4ADrKp6G2E
+         4r+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=HeWcAhxNqRahM14S3aZ3doQeQhS/npP4MUYH+ua5UZU=;
-        b=krWKT3KFpUqmxiLuJoKnNOnVPaAMQyZKkDbz579cgE69qj3k7jOevYHzU/eOSM6iKL
-         4mDyPD7nHnD8865AscDWXDghPstr4dS4kINq6mqlcYDqP//RjmoVljLAMagoZx/kxLNm
-         uF1iHp1c9korWrOdxspTx2JeIcFk5I9InCuICHej/SuTRMCC3IrYHbCbsLfBL8xrSVVO
-         vvIj6oADDj6ihlvOQ/w/52VasHddGkPyfAIEEeX/kMnmpn87IuM0Zc8pFQ4KqnW5zRJ8
-         pDmmGAy/87PatDIx5ZFtpgZpxTbMGp10giSEn115eym+Pe7vhgjQnGWYxpBL0efea51T
-         zkJQ==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=X3SUb7Fjdwor15ZACjqiHIn3lB4/XFopZGF4O6nL4Po=;
+        b=MWb6DScRjy2LNu0yfXdOinygytHEwVPGd4OnO5d/S7vdbONRaufq2Kt1uS0rDmgeIr
+         D7qYByw2R5QjBILjfzK0nM2YZwHy7GCQ0OHiQRif+8etdl+20mqplmFNwsPPOyK3C6Ig
+         WJbbi9grJ+lL6JCGLCn3MuZqcWEf84Z3iKNl+8LY7/NBbN1B7FzpATlVKk6sYOlRRdHs
+         VNcqG/fazr5UUAw1jOlI37sFVt6UF2UK4hglp6OEyVJTL0gFkZ+dtCSEVwy7OEeMg2mB
+         bHiStKGUtURtJnwd3RCGsZ4F3shqp6AeKldSwY/bltXsgua+HGYUpBShEuD3eYoeyq+t
+         FKLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fguIjCBe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6si13165392ots.51.2021.10.22.01.01.17
+        by mx.google.com with ESMTPS id o8si1861077oia.92.2021.11.03.03.05.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Oct 2021 01:01:17 -0700 (PDT)
+        Wed, 03 Nov 2021 03:05:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36418 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fguIjCBe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mdpUK-0000kY-Ml
-	for alex.bennee@linaro.org; Fri, 22 Oct 2021 04:01:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40944)
+	id 1miD9Y-0005gS-MT
+	for alex.bennee@linaro.org; Wed, 03 Nov 2021 06:05:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQp-0004HI-FR
- for qemu-devel@nongnu.org; Fri, 22 Oct 2021 03:57:39 -0400
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137]:38867)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1miD7t-0003TI-4c
+ for qemu-devel@nongnu.org; Wed, 03 Nov 2021 06:04:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51259)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1mdpQm-0002tL-KL
- for qemu-devel@nongnu.org; Fri, 22 Oct 2021 03:57:39 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.210])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id A516F209DC;
- Fri, 22 Oct 2021 07:57:33 +0000 (UTC)
-Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.15; Fri, 22 Oct
- 2021 09:57:32 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R0039fa987a3-f07b-4e1e-8495-c7da812b3470,
- 74C1FF3A6B8BFE8186BF38A421BAA83045AEA3E9) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 1/3] aspeed: Add support for the fp5280g2-bmc board
-Date: Fri, 22 Oct 2021 09:57:28 +0200
-Message-ID: <20211022075730.484692-2-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211022075730.484692-1-clg@kaod.org>
-References: <20211022075730.484692-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1miD7r-0006Ri-G0
+ for qemu-devel@nongnu.org; Wed, 03 Nov 2021 06:04:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1635933850;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=X3SUb7Fjdwor15ZACjqiHIn3lB4/XFopZGF4O6nL4Po=;
+ b=fguIjCBeB3w17gTVQFKpIsJyHUIImhKVrfCtsNjmJ9dcMRCo4r8sylAiW56EOQY0lUF9hS
+ GGce6imbnaH9KJOm3eYOkw+Y++nwnW3+cj6sGo+ihZvaV7LnOrEbWiY2kFuT2Po+uIz+4i
+ g4nsmT13vp8MBQ90uF+QHIL8VK5ysp8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-372-4fC5r-JOMW6gQF1cuY-MaA-1; Wed, 03 Nov 2021 06:04:07 -0400
+X-MC-Unique: 4fC5r-JOMW6gQF1cuY-MaA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9F7AC100CCC0;
+ Wed,  3 Nov 2021 10:04:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D118D7086C;
+ Wed,  3 Nov 2021 10:03:52 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7D8CF11380A7; Wed,  3 Nov 2021 11:03:51 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [PATCH v3 2/3] hw/smbios: Use qapi for SmbiosEntryPointType
+References: <20211026151100.1691925-1-ehabkost@redhat.com>
+ <20211026151100.1691925-3-ehabkost@redhat.com>
+Date: Wed, 03 Nov 2021 11:03:51 +0100
+In-Reply-To: <20211026151100.1691925-3-ehabkost@redhat.com> (Eduardo Habkost's
+ message of "Tue, 26 Oct 2021 11:10:59 -0400")
+Message-ID: <87y265imig.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.100]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 9e85db79-08af-4c3b-9f74-943fabed07ab
-X-Ovh-Tracer-Id: 7992763442807671660
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvjedguddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeigfdvvdffffevleefgefhheegtedutdfgueevfeffleegledvuefhteetueekjeenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
-X-Spam_score_int: 0
-X-Spam_score: -0.0
-X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.702,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Mailman-Version: 2.1.29
 Precedence: list
 List-Id: <qemu-devel.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
@@ -96,142 +115,52 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- John Wang <wangzhiqiang02@inspur.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, John Wang <wangzq.jn@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, "Daniel
+ P. Berrange" <berrange@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eric Blake <eblake@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Philippe =?utf-8?Q?Mathi?= =?utf-8?Q?eu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XAAyhVl5C1iM
+X-TUID: M8HtIHVnldzU
 
-From: John Wang <wangzq.jn@gmail.com>
+Eduardo Habkost <ehabkost@redhat.com> writes:
 
-The fp5280g2-bmc is supported by OpenBMC, It's
-based on the following device tree
+> This prepares for exposing the SMBIOS entry point type as a
+> machine property on x86.
+>
+> Based on a patch from Daniel P. Berrang=C3=A9.
+>
+> Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> ---
 
-https://github.com/openbmc/linux/blob/dev-5.10/arch/arm/boot/dts/aspeed-bmc-inspur-fp5280g2.dts
+[...]
 
-Signed-off-by: John Wang <wangzhiqiang02@inspur.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20211014064548.934799-1-wangzhiqiang02@inspur.com>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 74 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 74 insertions(+)
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index 5db54df298f..0a13579275f 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -1411,3 +1411,15 @@
+>       '*cores': 'int',
+>       '*threads': 'int',
+>       '*maxcpus': 'int' } }
+> +
+> +##
+> +# @SmbiosEntryPointType:
+> +#
+> +# @32: SMBIOS version 2.1 (32-bit) Entry Point
+> +#
+> +# @64: SMBIOS version 3.0 (64-bit) Entry Point
+> +#
+> +# Since: 6.1
+> +##
+> +{ 'enum': 'SmbiosEntryPointType',
+> +  'data': [ '32', '64' ] }
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index f5916e81262e..a77f46b3adba 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -131,6 +131,21 @@ struct AspeedMachineState {
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
-         SCU_AST2500_HW_STRAP_RESERVED1)
- 
-+/* FP5280G2 hardware value: 0XF100D286 */
-+#define FP5280G2_BMC_HW_STRAP1 (                                      \
-+        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-+        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-+        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
-+        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-+        SCU_HW_STRAP_MAC1_RGMII |                                       \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-+        SCU_AST2500_HW_STRAP_RESERVED1)
-+
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
- 
-@@ -430,6 +445,15 @@ static void aspeed_machine_init(MachineState *machine)
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
- }
- 
-+static void at24c_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
-+{
-+    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
-+    DeviceState *dev = DEVICE(i2c_dev);
-+
-+    qdev_prop_set_uint32(dev, "rom-size", rsize);
-+    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
-+}
-+
- static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -689,6 +713,34 @@ static void aspeed_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
-     i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
- }
- 
-+static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    I2CSlave *i2c_mux;
-+
-+    /* The at24c256 */
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x50, 32768);
-+
-+    /* The fp5280g2 expects a TMP112 but a TMP105 is compatible */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
-+                     0x49);
-+
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
-+                     "pca9546", 0x70);
-+    /* It expects a TMP112 but a TMP105 is compatible */
-+    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), TYPE_TMP105,
-+                     0x4a);
-+
-+    /* It expects a ds3232 but a ds1338 is good enough */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "ds1338", 0x68);
-+
-+    /* It expects a pca9555 but a pca9552 is compatible */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_PCA9552,
-+                     0x20);
-+}
-+
- static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -1140,6 +1192,24 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
-+static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Inspur FP5280G2 BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = FP5280G2_BMC_HW_STRAP1;
-+    amc->fmc_model = "n25q512a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-+    amc->i2c_init  = fp5280g2_bmc_i2c_init;
-+    mc->default_ram_size = 512 * MiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1227,6 +1297,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_g220a_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_fp5280g2_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
--- 
-2.31.1
+QAPI schema
+Acked-by: Markus Armbruster <armbru@redhat.com>
 

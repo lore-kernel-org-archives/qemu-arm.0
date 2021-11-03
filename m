@@ -1,101 +1,106 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp116804lfv;
-        Wed, 3 Nov 2021 15:05:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRMOe5z0Outr6Ggz1uqMEZDzrdKmzbIyFspn8aSYMMmp65/lLJ1WxL6QTvP1KPOaPWfRw6
-X-Received: by 2002:a4a:e292:: with SMTP id k18mr832763oot.80.1635977106337;
-        Wed, 03 Nov 2021 15:05:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635977106; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp116982lfv;
+        Wed, 3 Nov 2021 15:05:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzKEqvYXK0A99cCQRJ6C+nyLbtma6QGyS5d5xxqpavXvNNrujSpNzJBk5R+K9FiuBNO9U9C
+X-Received: by 2002:a05:6808:1cc:: with SMTP id x12mr12519465oic.88.1635977116803;
+        Wed, 03 Nov 2021 15:05:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635977116; cv=none;
         d=google.com; s=arc-20160816;
-        b=BbUfnfbyX+fz9OikePXk0xlOOoP8dPD/iN/6+22KfLcmJkfkElMRto69E+JgyxIjUo
-         OVAQyJ8PFeUlsWQ/Po/7bijT1fK0r6DhGQ2zPMhg+G0ceH/AM9AN7B35SVgHGPT8zcyO
-         Q8m+MGcyk4Rot9BCFPxXJrWLBvToGki+yvSPGXnx9bjJNyMTSzafE6iDKKwgMI6vjQxw
-         dqNR5wAWXd1Ncms45ANcpr5Lpj73Aemg9wI0ohjp5WmU/e7z45xjdJbxzC9vc6vUuNAe
-         xbDn0qW4qA/9aQmET2ulLAmtyXxo0FlsX0esPn+S36g/uxFUD07CmqkNS41+PbuJ2WRg
-         oSiw==
+        b=ogYanMYxtqRd98q6u7yyjmWjQ2pKj2CirA0cLnCCboShAeB15MEQ21upoY9VeCTWjs
+         YYXW5xqOcDs89TjLAeNmTxO7pLzDWUIKpJex6/2sgzu8ULG7CBgRC6j32rHkeU4crzKo
+         aGq9wXeqc1Fln2YIXm1pPj6L/ta8RDRXxy9Rua+38o0L/EBo29QF6pL1qKqciNkX2Vy0
+         fIjk3Qnq1UfYdvIBHoaC7ZgWToTcldMBsoJjqN3rJg1RRq8MTafVoi6NwuA1JbGrOo1k
+         yX/n7MZALKiCHVOFZbF8nhTmUpw9k2SLoxWvh7Xoysw5XCd4rkZy/xU0XmKRDEfAH/r9
+         W6Ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=bKJei08DT04/YwixoaO1f72n6dow55G1ly6RMX+KkRA=;
-        b=hPz7xt1mp9+eV0StEiFsuaOAV8WAvLi5XKvcWvdEI9wswRkcSNBtC0CDU9yKNxqFUI
-         0eMYKfLEpxLKvx7GJw2gdGBrJSjmz3UwkgksJ92sq09V0uir8oln9+iIpBXRLLsIZ5Er
-         icqZzwfUimbG9W3+uu0Cl2L8Fujq99DzasFHvfH0wgAqFvZmrKw5VAir9Tof6DbCtTCV
-         UNjxTq/qwG6c9EaXjvSfi6olzMeJeUQRKVvJ9+YfeANTqlYam8RH8P9FNcQRk5QGgtB4
-         3iZ3B7wVIzQFSWylX/gE486JvQgjaqAbK4TV+TCjX9OdBtcRWkQlTfAD67BxQjgUbTQ2
-         FcyQ==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=pXfgJHvome9hq7DD3kgavdSisX+d0Zxf80aI+vn8Zlk=;
+        b=XJih5UWYnOuHrqWCmgmIPsJCks5gXcakz7+da8n1VUZ3okgAjtF78D2ZpGtO8KIW8B
+         TC5Qa2HsRCYwtwXzMYrA6RXY4Vv6wlbKIYelJqmaUpdfzZ180RDKW5JT+cuKJf5GiUk0
+         8FwvhWM3a8+Dqq67SrTywHWV/iitHA+JTYfaHiFEVkKsxpMzivk6rADebQTtxBMO9F6F
+         0mStDq0b+oeH1sDnzzpaSThsxzxB0Ph1DN7AY73NR4iNqRWmDZ11Nh/6c9r3XZJwk1cn
+         Kk3NSl/HphKf/6xtV+bIgG4l+CnqydrXU5H7bS2O3a7kUX/BIF2YioUKCjG+IoAFP22N
+         5BrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=CZdkbcv0;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=N57HLd44;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9si4642900otn.245.2021.11.03.15.05.06
+        by mx.google.com with ESMTPS id l8si3658196oia.49.2021.11.03.15.05.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Nov 2021 15:05:06 -0700 (PDT)
+        Wed, 03 Nov 2021 15:05:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=CZdkbcv0;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=N57HLd44;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:59944 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1miONV-0000Af-MO
-	for alex.bennee@linaro.org; Wed, 03 Nov 2021 18:05:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53196)
+	id 1miONg-0000cf-31
+	for alex.bennee@linaro.org; Wed, 03 Nov 2021 18:05:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3awaDYQgKCpYMK70EJI76EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--wuhaotsh.bounces.google.com>)
- id 1miOIq-0000nE-Kw
- for qemu-devel@nongnu.org; Wed, 03 Nov 2021 18:00:16 -0400
-Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a]:38455)
+ <3bwaDYQgKCpoQOB4INMBAIIAF8.6IGK8GO-78P8FHIHAHO.ILA@flex--wuhaotsh.bounces.google.com>)
+ id 1miOIt-0000ur-9Q
+ for qemu-devel@nongnu.org; Wed, 03 Nov 2021 18:00:19 -0400
+Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a]:44932)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3awaDYQgKCpYMK70EJI76EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--wuhaotsh.bounces.google.com>)
- id 1miOIo-0001FR-Ez
- for qemu-devel@nongnu.org; Wed, 03 Nov 2021 18:00:16 -0400
+ <3bwaDYQgKCpoQOB4INMBAIIAF8.6IGK8GO-78P8FHIHAHO.ILA@flex--wuhaotsh.bounces.google.com>)
+ id 1miOIr-0001K6-Hc
+ for qemu-devel@nongnu.org; Wed, 03 Nov 2021 18:00:18 -0400
 Received: by mail-pl1-x64a.google.com with SMTP id
- u22-20020a170902a61600b00141ab5dd25dso1762218plq.5
- for <qemu-devel@nongnu.org>; Wed, 03 Nov 2021 15:00:12 -0700 (PDT)
+ m5-20020a170902bb8500b0013a2b785187so1745292pls.11
+ for <qemu-devel@nongnu.org>; Wed, 03 Nov 2021 15:00:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=bKJei08DT04/YwixoaO1f72n6dow55G1ly6RMX+KkRA=;
- b=CZdkbcv09Nhd1JEi2RpTedvL0tiiNo4ZczzURICOPvG5sQjzkSpILkGZd0TNkDyBmM
- ffus8UTz6cVAViTcSc0933HQpDnqtLyfiVRkiAt/fGL0RydlMB30DBRx5Kuc4lXeBPVg
- GuYzfG2kxmjKn9Kx1A92QN7iHp1X7mnW5jyPXpzefi5edB4dQahW0ryzMIrMyaUeGxDO
- gduVWmS8oNFIQzkdbZ4rLi2wRrGkHustoebzn4+X4s0TRuMqLBJNnj7wdVIuwf7mfGQW
- Q137fKo1ceFH2Ukqmsimry9amy+DNVru25/ofciDLY3fTHexvFysxGhVfzO01f6TP/PO
- dKdg==
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=pXfgJHvome9hq7DD3kgavdSisX+d0Zxf80aI+vn8Zlk=;
+ b=N57HLd44e2ihGy27+ZU+s8olg+tWgamGXaZRP4whEIS7iU7CZJTK5A9yKHoYNKxoFT
+ KPotifQO8vEn8MfrEVSK5HoqOKBahNHgJxqLTepu8nLlWTvwzggbLGQ+917U/6WvNzuv
+ lYb+Ahepg+8Z6uxy6hTAocSGZJHL6DmVURV+FpHYzDkJnNqtHhCW8C0lkkuu1FJwOCPZ
+ Vvyocg/dY5XyiB56oRaSs7uLatdY03MixQ8A9AR6n1qpSRjnUIgJvZMreezmlmGCX18Q
+ EMAKvPPQkfBFztttdSaPmu8lbeZkIE+yqjdA5CVOGVD8HV36OUWtIVvtRoUi3CSEgM7t
+ UchQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=bKJei08DT04/YwixoaO1f72n6dow55G1ly6RMX+KkRA=;
- b=XHOSFXFkuQAUJvBYumJit0Ud1SfS9VKUAoUOXtXcuY522/QAZaxA7VP/GuD5e4h83B
- AiXfz0hZZKB9kf1x3ehcsbie7WjWlEov/YN9HETshZPAVwG5dInSSotZjj33gUCmfq+N
- TArHsQ1YlFu3MEqu1u497LkNAqjssPpz6qzoRo3Y3gIp+5eqrtEocFs9ykUWhuH1xru5
- pgjJGKvTtGqHuPC8DwSMhi9pHUfPfwE0Ms4BlboiFdvniUEk+ZslHO5kFtcs7+AFHY5m
- Tfh+uMGvZsLJXdyVcmlB1sDz6T4TvEuDrBViIpLzCJgLVw7VAWDxYX41Fp9QrjiAyk3B
- lX+A==
-X-Gm-Message-State: AOAM532Wf/VgrWnKUUXgW9FvweqnORC0TImYACc/PBIeOf3Z4h7GL5FC
- aXsk13+cJsD9x/gJ7VAtSkaRFKntPsfrIw==
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=pXfgJHvome9hq7DD3kgavdSisX+d0Zxf80aI+vn8Zlk=;
+ b=4HK9eriuVgUBJuXoHSk0tjSp/lEOB6ZUQ1EZaS7Do+CkqnBv6wW+R/H1Nuqx3Qu0AD
+ bMCKCgoKvQH7W7nU+KjQDHnXuC4TOrbpCvZJvHHbTHdrvbc2gobmSTWORzTorTlUf2lp
+ nixEjBtpUDikINWdwJQ2cbpTjn3I25T6o0WTzCSGdYEMQtaHd4oWVWGKiluXoPbJejJr
+ j/ZvDHHpw9s9LK/bGwjuAFSVJXoWTBxbHGKSSUdj8grCORLu9tlLnq1p6EmRK7LSCfG6
+ KJ7GeJNCL1R+/cVDJgHRR0XJ8pGnFKCbd0McrinUHUncUTGF7OzQk785OO/VfpXhIkuc
+ A+rA==
+X-Gm-Message-State: AOAM531jOx6Jd1gOCHaHNfn6Ld+3c2fDV1U7viXptQCz1saCqeD9E0od
+ EQyu0C0JkdJLRxVu6NwAvCjtnTAPNNe/Ag==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90a:5285:: with SMTP id
- w5mr214535pjh.1.1635976811312; Wed, 03 Nov 2021 15:00:11 -0700 (PDT)
-Date: Wed,  3 Nov 2021 14:59:47 -0700
-Message-Id: <20211103215954.1401805-1-wuhaotsh@google.com>
+ (user=wuhaotsh job=sendgmr) by 2002:a63:5f56:: with SMTP id
+ t83mr4504327pgb.432.1635976815259; Wed, 03 Nov 2021 15:00:15 -0700 (PDT)
+Date: Wed,  3 Nov 2021 14:59:49 -0700
+In-Reply-To: <20211103215954.1401805-1-wuhaotsh@google.com>
+Message-Id: <20211103215954.1401805-3-wuhaotsh@google.com>
 Mime-Version: 1.0
+References: <20211103215954.1401805-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.33.1.1089.g2158813163f-goog
-Subject: [PATCH v4 0/7] Misc NPCM7XX patches
+Subject: [PATCH v4 2/7] hw/i2c: Read FIFO during RXF_CTL change in NPCM7XX
+ SMBus
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  wuhaotsh@google.com, venture@google.com, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, hskinnemoen@google.com, f4bug@amsat.org, 
  bin.meng@windriver.com, qemu-block@nongnu.org, armbru@redhat.com, 
- thuth@redhat.com
+ thuth@redhat.com, Titus Rwantare <titusr@google.com>,
+ Corey Minyard <cminyard@mvista.com>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
- envelope-from=3awaDYQgKCpYMK70EJI76EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--wuhaotsh.bounces.google.com;
+ envelope-from=3bwaDYQgKCpoQOB4INMBAIIAF8.6IGK8GO-78P8FHIHAHO.ILA@flex--wuhaotsh.bounces.google.com;
  helo=mail-pl1-x64a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
@@ -103,7 +108,7 @@ X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,63 +123,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mO/kj4Ja3x2i
+X-TUID: foTyMoecTTnF
 
-This patch set contains a few bug fixes and I2C devices for some
-NPCM7XX boards.
+Originally we read in from SMBus when RXF_STS is cleared. However,
+the driver clears RXF_STS before setting RXF_CTL, causing the SM bus
+module to read incorrect amount of bytes in FIFO mode when the number
+of bytes read changed. This patch fixes this issue.
 
-Patch 1~2 fix a problem that causes the SMBus module to behave
-incorrectly when it's in FIFO mode and trying to receive more than
-16 bytes at a time.
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Reviewed-by: Titus Rwantare <titusr@google.com>
+Acked-by: Corey Minyard <cminyard@mvista.com>
+---
+ hw/i2c/npcm7xx_smbus.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Patch 3 fixes a error in a register for ADC module.
-
-Patch 4 makes the ADC input to be R/W instead of write only. It allows
-a test system to read these via QMP and has no negative effect.
-
-Patch 5 adds a new blockdev IF type IF_OTHER.
-
-Patch 6 modifies at24c_eeprom_init in NPCM7xx boards so that it can fit
-more use cases.
-
-Patch 7 uses the function defined in patch 5 to add the EEPROM and other
-I2C devices for Quanta GBS board.
-
--- Changes since v3:
-1. Add a new blockdev IF type IF_OTHER.
-2. Use IF_OTHER instead of IF_NONE.
-
--- Changes since v2:
-1. Dropped patch 7.
-2. Drop an extra variable in patch 5.
-
--- Changes since v1:
-1. Rewrote patch 5 to implement the function in NPCM7xx board file instead
-   of the EEPROM device file.
-2. Slightly modify patch 6 to adapt to the changes and QEMU comment style.
-3. Squash patch 7 into patch 5 to make it compile.
-4. Add a new patch 7.
-
-Hao Wu (6):
-  hw/i2c: Clear ACK bit in NPCM7xx SMBus module
-  hw/i2c: Read FIFO during RXF_CTL change in NPCM7XX SMBus
-  hw/adc: Fix CONV bit in NPCM7XX ADC CON register
-  hw/adc: Make adci[*] R/W in NPCM7XX ADC
-  blockdev: Add a new IF type IF_OTHER
-  hw/nvram: Update at24c EEPROM init function in NPCM7xx boards
-
-Patrick Venture (1):
-  hw/arm: quanta-gbs-bmc add i2c devices
-
- blockdev.c                     |  3 +-
- hw/adc/npcm7xx_adc.c           |  4 +-
- hw/arm/npcm7xx_boards.c        | 96 ++++++++++++++++++++--------------
- hw/i2c/npcm7xx_smbus.c         |  8 +--
- include/sysemu/blockdev.h      |  1 +
- meson                          |  2 +-
- tests/qtest/npcm7xx_adc-test.c |  2 +-
- 7 files changed, 69 insertions(+), 47 deletions(-)
-
+diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
+index f18e311556..1435daea94 100644
+--- a/hw/i2c/npcm7xx_smbus.c
++++ b/hw/i2c/npcm7xx_smbus.c
+@@ -637,9 +637,6 @@ static void npcm7xx_smbus_write_rxf_sts(NPCM7xxSMBusState *s, uint8_t value)
+ {
+     if (value & NPCM7XX_SMBRXF_STS_RX_THST) {
+         s->rxf_sts &= ~NPCM7XX_SMBRXF_STS_RX_THST;
+-        if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
+-            npcm7xx_smbus_recv_fifo(s);
+-        }
+     }
+ }
+ 
+@@ -651,6 +648,9 @@ static void npcm7xx_smbus_write_rxf_ctl(NPCM7xxSMBusState *s, uint8_t value)
+         new_ctl = KEEP_OLD_BIT(s->rxf_ctl, new_ctl, NPCM7XX_SMBRXF_CTL_LAST);
+     }
+     s->rxf_ctl = new_ctl;
++    if (s->status == NPCM7XX_SMBUS_STATUS_RECEIVING) {
++        npcm7xx_smbus_recv_fifo(s);
++    }
+ }
+ 
+ static uint64_t npcm7xx_smbus_read(void *opaque, hwaddr offset, unsigned size)
 -- 
 2.33.1.1089.g2158813163f-goog
 

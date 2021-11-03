@@ -1,423 +1,480 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp4784791lfv;
-        Wed, 3 Nov 2021 06:17:23 -0700 (PDT)
-X-Received: by 2002:a17:907:96a4:: with SMTP id hd36mr20362936ejc.407.1635945443024;
-        Wed, 03 Nov 2021 06:17:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635945443; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp130635lfv;
+        Wed, 3 Nov 2021 15:19:35 -0700 (PDT)
+X-Received: by 2002:a17:90b:1e0e:: with SMTP id pg14mr17494512pjb.143.1635977975143;
+        Wed, 03 Nov 2021 15:19:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635977975; cv=none;
         d=google.com; s=arc-20160816;
-        b=CzNDdZQSPK6yDuH8mykHVAhtMcqk6bfgFYRXJKU9BFRopysE1dYz723SXzQNp5vo8K
-         8ESM7E0h3l6OwWa01URie5064zqnlhljcgg0Ka1/7LSfVlJOwwVK1T4tCSGlJf5AYtwl
-         HFng0OWzqqXFr1IqWqJHrPhU0NoFRHOaH2odyo5g2/ibaazMfiLLs62eh2Eg1Cxdt+g6
-         DETS7HwEpexu3gkk3OuzZ1Ta1k7WbNmP9OB8sdLKefsAm9IXzrNibsItGg99TKaslaVD
-         cN8NMwbsTw0eaGGmv3zWTiv5826OXeAFUvDN3b4QiK26PZORZedunDL7D72dIRcdFU50
-         ADOA==
+        b=friQNS6WT2Uagwu+nLYPgdrHnnYVRJkyKc0ePRX8IoHsEYl+eiZNi/l1pRitlCCunq
+         g9b9lM70WY5mYInSZ5aXkbZpthqddz4pzTkw4DpPv/cSU1ee1w7wyM0P+Juk1NcrUh3g
+         WvA1gR/Oj7EocNwZ5to/IlFJ/4HQnW8C4Hg2j/w2qcQ6F/avNiJpPh1xIn1NCPescl/c
+         pd2HuVA4TzSqaELeZd01Ur39zcO/pJrLMNvGi2euYX0mr7mlUlBVM1ez3HM2NhIg9Zun
+         EnxU3ozhGQyeX9zlzKDrQ0FnK3ztKqU9fGbkxF8m8OfDZqz5smtyWzieW49N6rKIW6NH
+         uXPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=to3VWalT1oF8s8W0kCuV93KO1EvHg21dh734ZDF3AaA=;
-        b=c3Jdr0cF8osnZH2VMqegfgi6Y/0Tuf7nTNcNG1A0ucqzFrL+R5kKCDBR6gYCVB/8rM
-         FwCUmbQPHrYGps595Qxofc582tyPdkwPi0H5rPaKso0AjpghvlbmyMcMPYASa+8SVn1W
-         vXE170n+7qHmvP7tp4vhSMf0hEzoAAiLNbZKWmZSJSh1SdR0BRh4QCAgNjsETeRwqy8S
-         UEQw0vZ86pWf0/YV0dHsbc+FMpvtla2PhKxo9vpdzZTHpXbCpsNsaSUWI0QP6p6l5OaO
-         Zyf5jFf9TyXMXS+Bo56SgCHtfEtruXIkH1hrMwse7MvqomJZDwc5DuCEs+6trrJHB+2R
-         C/5A==
+        bh=HpKGD1/YQAzrLzLvCFCuoI39gFi3w1OnNEmpr9hkwgc=;
+        b=J+hJJjdR7/YyslEfFkrofN2S970iqBu1obpugmxBLCiuv8HazPEe6fkX++r9NatNiR
+         +JAyGH1CVVBG8iAxwmt1yqZ8F4xrdPd7XR2G0AMmMW1sqiNxsiOBYzC9zsWnEkV6jH38
+         BLdlOYVtkM1vhltzvmkAMuR1cnpJw63H9HtQadTiMr3t67cC6jjDq3UwfQbYGIO+TRoa
+         k8X63w3G4k+XpKp8GsSeOCktiuVED6AV+PedO+dHxKZ11nSgcJ5fr1VB6xiqHw3UlVok
+         AtRmA48/B+NWHRAtHKHwZFiccl5XyXkwjBbLCNEe1TJCFJo24cA/u0vui+fv/Jm+MIm0
+         TmRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oo9j4sQC;
-       spf=pass (google.com: domain of francois.ozog@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=francois.ozog@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <francois.ozog@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=iPPbNcQf;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y19sor153589edc.20.2021.11.03.06.17.22
+        by mx.google.com with SMTPS id t2sor2030431pfg.53.2021.11.03.15.19.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 03 Nov 2021 06:17:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of francois.ozog@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 03 Nov 2021 15:19:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oo9j4sQC;
-       spf=pass (google.com: domain of francois.ozog@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=francois.ozog@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=iPPbNcQf;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=to3VWalT1oF8s8W0kCuV93KO1EvHg21dh734ZDF3AaA=;
-        b=oo9j4sQCKbP5KcU2bPOd3CAA5jliX7rShMdbIDLJ25RUxikTN9+nzO7lRWVjmOb//s
-         xxObJCGSOvelf01MxPpKOrg50eUAQLq8L72aab1DfmwzRQKPeV3xSRt0eMxqSkAAeuBD
-         jZMQwYlKMZs9DnyylUB/rvp02+vQacnjqjHT8uakVQO+YId7xisHgYkyvBm5SlVba52d
-         vMMXBm3AfRJyLHncYX0l2WAIk+rjx6TrIx75ROaJF7tZ+K8762r61/xai+apfxmX5HcG
-         TuJjkOGIBDXHiy3rjtzq57vx7i27wR2OMqxVZujxK8GWDUFmw636LFyfQu6yb6Q20mpe
-         26cQ==
+        bh=HpKGD1/YQAzrLzLvCFCuoI39gFi3w1OnNEmpr9hkwgc=;
+        b=iPPbNcQf7rvfDuS0Y/8PntqTs5it0GiuQb2/7f3ke5k560Xsr5912juIcYoPh7C8R3
+         e6kLjLleWPXwQ/sHNXW4K2QyDzKVH+NHc3lWsAV7jw2IkIPR9WcPhsGYB8PhAvx9KHoj
+         yUPwWd21QQF4kzCskCo+TtFYpFQaWXxe2wWoT9PGKWCGMv/2w+M0HbStAoyNs2ntAyMg
+         xjJwi1qhnyuf/erZiAm51jKnVNJMP7Vdjik3TGNXFKelgxxCSThgW/+q4eOt9tc3JBLo
+         Z/yCZVDQELY3ZoNKmAgWkeFxDElcQgR2uQ0Rv7UJkGmNSD+BSewpDIgD+7N3gojL/l++
+         xXyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=to3VWalT1oF8s8W0kCuV93KO1EvHg21dh734ZDF3AaA=;
-        b=tjZ3lH6XYdplz1C/AHdV+Xo3BtOThwnG287t1j0ONQZLMGzse9vdf76fYJYZYT4vYd
-         Y3tPRJ9DyVX4H/GyShLyR+lK4sPoYpRqPo1zmolNE4DwwEvbU+Payf4ME35t1dQeQ1Ul
-         w0lb8i/hGDGGqVItLnHMJapnfzgSjzV7PudtxLHB9Y/pTRMKTNQqIUIELwxEnqz68Q9V
-         Z97w+TTqdSfKtkYP8fFrk/0BjO9ItA98aLLYUdqdUh92AoyGuRTM+65xvyLMQ+wKk6UT
-         RgkByoODsL18LiLh0zs8V9YI+Ke8F1ee+9kvDUk/ptPfRRO732BpcOzQ8shTwBuM3V+s
-         KJgw==
-X-Gm-Message-State: AOAM530J1LJ+lKsMEGW+Yv34t1H1iX5y8NW7tSfKAH7kxzDSDhJMnZZJ
-	t8Tu+VsKpV9dpvvphyuPTYD8aeQ9qTFiH1fzCeAf7z7KB6UUqmlK
-X-Google-Smtp-Source: ABdhPJyHubuDOvvl030FWLo8+pqEXE6ssozLlSN4us8fQx2VpTXE2RN81N4g3riFy816kMm8x/c9aKR9LtA+1eSW6DU=
-X-Received: by 2002:a05:6402:2707:: with SMTP id y7mr6527730edd.26.1635945442589;
- Wed, 03 Nov 2021 06:17:22 -0700 (PDT)
+        bh=HpKGD1/YQAzrLzLvCFCuoI39gFi3w1OnNEmpr9hkwgc=;
+        b=wkM9bQ6m1v97HZTu9TO3YIkfB0xTxPTTqPsoTTcOYPeyEGTW5tNU4IoCotEx3IHl1k
+         I/opwxt5M1/kD+l43A6HHQOk2E3W8ndE/O4IA9JpxQ0gk8hTE5EQn7fSQNoKNLU4uuqA
+         J1GUXWq/X1Lv6gN4EkYStAnQuCpiLNSbJ96xLakocpBOhA9IDr5znlvrlUHyuwpWbCXB
+         ZYjZObeMsmYAdQm4VNZ5OUijJ/zwg5c28Yhhil67xXI+9OHRRIPU8qxu62pGLw303VWT
+         y6nGIYsi9w0dL1PyG+nIPefLQvMVLSeB9X24Ms7EZp4WYrecMocr5GzTRTKuM0akyJaR
+         yyEQ==
+X-Gm-Message-State: AOAM532nH1/P09Blf+PXEnT2zDirfKfRl/b96k2ECTwEu9CMhBVD1iE9
+	grWIGuFzvsfZXBbtO3WxReWOrV6aw8JaqOq8J7w=
+X-Google-Smtp-Source: ABdhPJy/4BY22mu/e6Gd9z+P1Y2OmO7VZg63vcXOXqc7Gg9eEFZl8Z6UohZwR+nFNe0xKrN9moI/ilJ5pPXM1uPwMhc=
+X-Received: by 2002:a05:6a00:1901:b0:44b:e041:f07f with SMTP id
+ y1-20020a056a00190100b0044be041f07fmr47371070pfi.52.1635977974688; Wed, 03
+ Nov 2021 15:19:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210926183410.256484-1-sjg@chromium.org> <CAFEAcA8S2=7rOKxeqcW+kw0BVPO3PUJGSUH-ioN7=c=U7zQxvg@mail.gmail.com>
- <CAPnjgZ2NCRVxKULWR1JjZU+D9saJ7fbZ=yHmWTSr3ufHxLYg-g@mail.gmail.com>
- <CAFEAcA9n+2JDFv8BezeEMA4e2Zhr0ENAvzLjBS6YXRoW9P-JXQ@mail.gmail.com>
- <CAPnjgZ1AO8575LYbwmuouNR5=dgNam6EFDC1_bai=8xAHdw7-Q@mail.gmail.com>
- <CAFEAcA8FsPcBELEZxiRMuFbKtmKTFgDHABePQ33hdxYRq0C0ig@mail.gmail.com> <87ilx9jw7t.fsf@linaro.org>
-In-Reply-To: <87ilx9jw7t.fsf@linaro.org>
-From: =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>
-Date: Wed, 3 Nov 2021 14:17:11 +0100
-Message-ID: <CAHFG_=VYK3=bCfiFW9aYZRMbHApPzg3+Zj4NDbArmjs0uzFvvQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Allow additions to the generated device tree
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Simon Glass <sjg@chromium.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000fa63aa05cfe23afb"
-X-TUID: TLbg1w26d3iv
+References: <20211103211404.79953-1-willianr@redhat.com>
+In-Reply-To: <20211103211404.79953-1-willianr@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 3 Nov 2021 23:19:23 +0100
+Message-ID: <CAPan3WpHasiF6+Vs=4Aqpq+FWZ7gYtcW17vgkTi0BmruudPD_w@mail.gmail.com>
+Subject: Re: [PATCH 0/1] tests/acceptance: rename tests acceptance to tests avocado
+To: Willian Rampazzo <willianr@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-ppc@nongnu.org, 
+	John Snow <jsnow@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, 
+	Michael Rolnik <mrolnik@gmail.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="0000000000000ab1bf05cfe9cef5"
+X-TUID: bK4+6oE/CDzJ
 
---000000000000fa63aa05cfe23afb
+--0000000000000ab1bf05cfe9cef5
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi,
+Hi Willian,
 
-Thanks Alex to patch me in.
+For the Orange Pi PC documentation:
 
-I'd like to present another perspective on the motivation as I can't really
-comment on the actual "how".
-
-On real Arm boards, firmware is often assembled into a FIP.
-That FIP can contain quite a good deal of things, including an
-NT_FW_CONFIG, NonTrusted_FirmWare_CONFIGuration (NT_FW =3D BL33 which is
-U-Boot in our case).
-So the expected typical content for that section is a DT fragment/overlay.
-That section is to be used in different ways but one is
-https://trustedfirmware-a.readthedocs.io/en/latest/components/fconf/index.h=
-tml
-.
-For SystemReady systems we will almost inevitably put a device tree
-fragment in this section and have BL2 merge it with the board DT before
-handing it over to BL33 (U-Boot is one of them).
-In some real world examples based on carrier board + som for instance, it
-may contain SerDes configuration for U-Boot that will result in appropriate
-PCI lanes or MDIO lanes for the booted OS.
-
-So I could say there is precedence in Simon's effort.
-
-In any case, when we will have made the changes in TFA for the SystemReady
-boards we work on, booting the full SystemReady stack (TFA, OP-TEE, U-Boot)
-on Qemu will allow that late merge based through the FIP.
-
-Other boot flows such as VBE (without TFA but with TPL/SPL/U-Boot proper)
-need a similar facility.
-
-Hence I am supporting Simon's proposal at least on the intent. On the how
-exactly, that is outside my skillset.
-
-future comments below
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
 
-On Wed, 3 Nov 2021 at 12:48, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
+Op wo 3 nov. 2021 22:14 schreef Willian Rampazzo <willianr@redhat.com>:
 
+> In the discussion about renaming the `tests/acceptance` [1], the
+> conclusion was that the folders inside `tests` are related to the
+> framework running the tests and not directly related to the type of
+> the tests.
 >
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> This changes the folder to `tests/avocado` and adjusts the MAKEFILE, the
+> CI related files and the documentation.
 >
-> > On Mon, 27 Sept 2021 at 16:18, Simon Glass <sjg@chromium.org> wrote:
-> >> On Mon, 27 Sept 2021 at 02:48, Peter Maydell <peter.maydell@linaro.org=
+> [1] https://lists.gnu.org/archive/html/qemu-devel/2021-05/msg06553.html
 >
-> wrote:
-> >> > So what is missing in the QEMU-provided DTB that it needs?
-> >>
-> >> Quite a lot. Here are some examples:
-> >>
-> >> U-Boot has limited pre-relocation memory so tries to avoid
-> >> binding/probing devices that are not used before relocation:
-> >>
-> >>
-> https://u-boot.readthedocs.io/en/latest/develop/driver-model/design.html#=
-pre-relocation-support
-> >
-> > It's up to u-boot to decide what it wants to touch and
-> > what it does not. QEMU tells u-boot what all the available
-> > devices are; I don't think we should have extra stuff saying
-> > "and if you are u-boot, do something odd".
-> >
-> >> There is a configuration node (which is likely to change form in
-> >> future releases, but will still be there)
-> >>
-> >>
-> https://github.com/u-boot/u-boot/blob/master/doc/device-tree-bindings/con=
-fig.txt
-> >
-> > I think u-boot should be storing this kind of thing somewhere
-> > else (e.g. as part of the binary blob that is u-boot itself,
-> > or stored in flash or RAM as a separate blob).
-> >
-> >> Then there are various features which put things in U-Boot's control
-> >> dtb, such as verified boot, which adds public keys during signing:
-> >>
-> >>
-> https://github.com/u-boot/u-boot/blob/master/doc/uImage.FIT/signature.txt=
-#L135
-> >>
-> >> More generally, the U-Boot tree has hundreds of files which add
-> >> properties for each board, since we try to keep the U-Boot-specific
-> >> things out of the Linux tree:
-> >>
-> >> $ find . -name *u-boot.dtsi |wc -l
-> >> 398
-> >
-> > If any of this is actual information about the hardware then you
-> > should sort out getting the bindings documented officially
-> > (which I think is still in the Linux tree), and then QEMU can
-> > provide them.
-> >
-> >> Quite a bit of this is to do with SPL and so far it seems that QEMU
-> >> mostly runs U-Boot proper only, although I see that SPL is starting to
-> >> creep in too in the U-Boot CI.
-> >>
-> >> So at present QEMU is not able to support U-Boot fully.
-> >
-> > My take is that this is u-boot doing weird custom things with
-> > the DTB that aren't "describe the hardware". You should be able
-> > to boot u-boot by putting those custom DTB extra things in a
-> > separate blob and having u-boot combine that with the
-> > actual DTB when it starts.
+> GitLab pipeline with new naming:
+> https://gitlab.com/willianrampazzo/qemu/-/pipelines/401431592
+> Signed-off-by: Willian Rampazzo <willianr@redhat.com>
 >
-> It's not entirely without precedent - for SPL (which I hope is secondary
-> program loading) we have things like the guest loader which expands the
-> plain HW DTB with some information needed by the bootloader and the
-> primary OS to load additional blobs which have been put into memory.
+> Willian Rampazzo (1):
+>   tests/acceptance: rename tests acceptance to tests avocado
 >
-> In effect the DTB is being expanded as a signalling mechanism similar to
-> things like fw_cfg and other things we use to control boot up. Whether
-> this affects the "purity" of DTB as a "just the HW" description is
-> probably a philosophical question.
->
-> More than a philosophical question: a key aspect of supply chain that nee=
-d
-change from
-quite inflexible and tightly coupled to loosely coupled.
- A key aspect of it is to maintain "pure" hardware description DTBs at rest=
-.
-Composition of DTBs at build time (for products) or runtime (for
-development boards) should be a simple thing.
-Another aspect to take into account is System Device Trees. U-Boot only
-deal with Cortex-As on a platform,
-so there are multiple device trees for each compute domain. Communities are
-working on System Device Tree
-to define the overall platform with its power and clock domains. A tool
-"lopper" is being developed to slide the SDT into diverse domain DTs.
-One of them being included into the FIP as the basis for the computing
-element (Carrier, SoM...).
-Those attempts to cleanup passed DTBs from configuration data (drivers,
-bootloaders...) is not incompatible
-with merging fragments at runtime (for dev boards) or build time (for
-products).
-
-> I agree with Peter that just allowing the merging of arbitrary data into
-> the QEMU generated DTB is going to lead to confusion and breakages.
-> Indeed I wrote the guest-loader because instructions for booting Xen up
-> until that point involved dumpdtb and hand hacking the data which was
-> silly because this is stuff QEMU already knew about.
->
-> >
-> > -- PMM
->
+>  .gitlab-ci.d/buildtest-template.yml           |  2 +-
+>  .gitlab-ci.d/buildtest.yml                    | 56 +++++++++----------
+>  MAINTAINERS                                   | 52 ++++++++---------
+>  configure                                     |  2 +-
+>  docs/devel/build-system.rst                   |  2 +-
+>  docs/devel/ci-definitions.rst.inc             |  2 +-
+>  docs/devel/testing.rst                        | 49 ++++++++--------
+>  docs/system/arm/orangepi.rst                  |  8 +--
+>  python/qemu/machine/README.rst                |  2 +-
+>  python/qemu/qmp/README.rst                    |  2 +-
+>  python/qemu/utils/README.rst                  |  2 +-
+>  tests/Makefile.include                        | 14 ++---
+>  tests/acceptance/README.rst                   | 10 ----
+>  tests/avocado/README.rst                      | 10 ++++
+>  .../avocado_qemu/__init__.py                  |  2 +-
+>  tests/{acceptance => avocado}/boot_linux.py   |  0
+>  .../boot_linux_console.py                     |  0
+>  tests/{acceptance => avocado}/boot_xen.py     |  0
+>  tests/{acceptance => avocado}/cpu_queries.py  |  0
+>  .../empty_cpu_model.py                        |  0
+>  tests/{acceptance => avocado}/hotplug_cpu.py  |  0
+>  tests/{acceptance => avocado}/info_usernet.py |  0
+>  tests/{acceptance => avocado}/intel_iommu.py  |  0
+>  tests/{acceptance => avocado}/linux_initrd.py |  2 +-
+>  .../linux_ssh_mips_malta.py                   |  0
+>  .../machine_arm_canona1100.py                 |  0
+>  .../machine_arm_integratorcp.py               |  0
+>  .../machine_arm_n8x0.py                       |  0
+>  tests/{acceptance => avocado}/machine_avr6.py |  2 +-
+>  .../machine_m68k_nextcube.py                  |  0
+>  .../machine_microblaze.py                     |  0
+>  .../machine_mips_fuloong2e.py                 |  0
+>  .../machine_mips_loongson3v.py                |  0
+>  .../machine_mips_malta.py                     |  0
+>  .../machine_rx_gdbsim.py                      |  0
+>  .../machine_s390_ccw_virtio.py                |  0
+>  .../machine_sparc64_sun4u.py                  |  0
+>  .../machine_sparc_leon3.py                    |  0
+>  tests/{acceptance => avocado}/migration.py    |  0
+>  tests/{acceptance => avocado}/multiprocess.py |  0
+>  .../pc_cpu_hotplug_props.py                   |  0
+>  tests/{acceptance => avocado}/ppc_405.py      |  0
+>  tests/{acceptance => avocado}/ppc_bamboo.py   |  0
+>  .../{acceptance => avocado}/ppc_mpc8544ds.py  |  0
+>  tests/{acceptance => avocado}/ppc_prep_40p.py | 12 ++--
+>  tests/{acceptance => avocado}/ppc_pseries.py  |  0
+>  .../ppc_virtex_ml507.py                       |  0
+>  .../{acceptance => avocado}/replay_kernel.py  |  0
+>  tests/{acceptance => avocado}/replay_linux.py |  0
+>  .../reverse_debugging.py                      |  0
+>  tests/{acceptance => avocado}/smmu.py         |  0
+>  tests/{acceptance => avocado}/tcg_plugins.py  |  0
+>  .../tesseract_utils.py                        |  0
+>  tests/{acceptance => avocado}/version.py      |  0
+>  tests/{acceptance => avocado}/virtio-gpu.py   |  0
+>  .../virtio_check_params.py                    |  0
+>  .../{acceptance => avocado}/virtio_version.py |  0
+>  .../virtiofs_submounts.py                     |  0
+>  .../virtiofs_submounts.py.data/cleanup.sh     |  0
+>  .../guest-cleanup.sh                          |  0
+>  .../virtiofs_submounts.py.data/guest.sh       |  0
+>  .../virtiofs_submounts.py.data/host.sh        |  0
+>  tests/{acceptance => avocado}/vnc.py          |  0
+>  .../x86_cpu_model_versions.py                 |  0
+>  64 files changed, 113 insertions(+), 118 deletions(-)
+>  delete mode 100644 tests/acceptance/README.rst
+>  create mode 100644 tests/avocado/README.rst
+>  rename tests/{acceptance => avocado}/avocado_qemu/__init__.py (99%)
+>  rename tests/{acceptance => avocado}/boot_linux.py (100%)
+>  rename tests/{acceptance => avocado}/boot_linux_console.py (100%)
+>  rename tests/{acceptance => avocado}/boot_xen.py (100%)
+>  rename tests/{acceptance => avocado}/cpu_queries.py (100%)
+>  rename tests/{acceptance => avocado}/empty_cpu_model.py (100%)
+>  rename tests/{acceptance => avocado}/hotplug_cpu.py (100%)
+>  rename tests/{acceptance => avocado}/info_usernet.py (100%)
+>  rename tests/{acceptance => avocado}/intel_iommu.py (100%)
+>  rename tests/{acceptance => avocado}/linux_initrd.py (99%)
+>  rename tests/{acceptance => avocado}/linux_ssh_mips_malta.py (100%)
+>  rename tests/{acceptance => avocado}/machine_arm_canona1100.py (100%)
+>  rename tests/{acceptance => avocado}/machine_arm_integratorcp.py (100%)
+>  rename tests/{acceptance => avocado}/machine_arm_n8x0.py (100%)
+>  rename tests/{acceptance => avocado}/machine_avr6.py (98%)
+>  rename tests/{acceptance => avocado}/machine_m68k_nextcube.py (100%)
+>  rename tests/{acceptance => avocado}/machine_microblaze.py (100%)
+>  rename tests/{acceptance => avocado}/machine_mips_fuloong2e.py (100%)
+>  rename tests/{acceptance => avocado}/machine_mips_loongson3v.py (100%)
+>  rename tests/{acceptance => avocado}/machine_mips_malta.py (100%)
+>  rename tests/{acceptance => avocado}/machine_rx_gdbsim.py (100%)
+>  rename tests/{acceptance => avocado}/machine_s390_ccw_virtio.py (100%)
+>  rename tests/{acceptance => avocado}/machine_sparc64_sun4u.py (100%)
+>  rename tests/{acceptance => avocado}/machine_sparc_leon3.py (100%)
+>  rename tests/{acceptance => avocado}/migration.py (100%)
+>  rename tests/{acceptance => avocado}/multiprocess.py (100%)
+>  rename tests/{acceptance => avocado}/pc_cpu_hotplug_props.py (100%)
+>  rename tests/{acceptance => avocado}/ppc_405.py (100%)
+>  rename tests/{acceptance => avocado}/ppc_bamboo.py (100%)
+>  rename tests/{acceptance => avocado}/ppc_mpc8544ds.py (100%)
+>  rename tests/{acceptance => avocado}/ppc_prep_40p.py (92%)
+>  rename tests/{acceptance => avocado}/ppc_pseries.py (100%)
+>  rename tests/{acceptance => avocado}/ppc_virtex_ml507.py (100%)
+>  rename tests/{acceptance => avocado}/replay_kernel.py (100%)
+>  rename tests/{acceptance => avocado}/replay_linux.py (100%)
+>  rename tests/{acceptance => avocado}/reverse_debugging.py (100%)
+>  rename tests/{acceptance => avocado}/smmu.py (100%)
+>  rename tests/{acceptance => avocado}/tcg_plugins.py (100%)
+>  rename tests/{acceptance => avocado}/tesseract_utils.py (100%)
+>  rename tests/{acceptance => avocado}/version.py (100%)
+>  rename tests/{acceptance => avocado}/virtio-gpu.py (100%)
+>  rename tests/{acceptance => avocado}/virtio_check_params.py (100%)
+>  rename tests/{acceptance => avocado}/virtio_version.py (100%)
+>  rename tests/{acceptance => avocado}/virtiofs_submounts.py (100%)
+>  rename tests/{acceptance =>
+> avocado}/virtiofs_submounts.py.data/cleanup.sh (100%)
+>  rename tests/{acceptance =>
+> avocado}/virtiofs_submounts.py.data/guest-cleanup.sh (100%)
+>  rename tests/{acceptance => avocado}/virtiofs_submounts.py.data/guest.sh
+> (100%)
+>  rename tests/{acceptance => avocado}/virtiofs_submounts.py.data/host.sh
+> (100%)
+>  rename tests/{acceptance => avocado}/vnc.py (100%)
+>  rename tests/{acceptance => avocado}/x86_cpu_model_versions.py (100%)
 >
 > --
-> Alex Benn=C3=A9e
+> 2.33.1
+>
+>
 >
 
-
---=20
-Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog | *Director Business Development*
-T: +33.67221.6485
-francois.ozog@linaro.org | Skype: ffozog
-
---000000000000fa63aa05cfe23afb
+--0000000000000ab1bf05cfe9cef5
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi,<div><br></div><div>Thanks Alex to pat=
-ch me in.</div><div><br></div><div>I&#39;d like to present another perspect=
-ive on the motivation as I can&#39;t really comment on the actual &quot;how=
-&quot;.</div><div><br></div><div>On real Arm boards, firmware is often asse=
-mbled into a FIP.=C2=A0</div><div>That FIP can contain quite a good deal of=
- things, including an NT_FW_CONFIG, NonTrusted_FirmWare_CONFIGuration (NT_F=
-W =3D BL33 which is U-Boot in our case).</div><div>So the expected typical =
-content for that section is a DT fragment/overlay.</div><div>That section i=
-s to be used in different ways but one is=C2=A0<a href=3D"https://trustedfi=
-rmware-a.readthedocs.io/en/latest/components/fconf/index.html" target=3D"_b=
-lank">https://trustedfirmware-a.readthedocs.io/en/latest/components/fconf/i=
-ndex.html</a>.</div><div>For SystemReady systems we will almost inevitably =
-put a device tree fragment in this section and have BL2 merge it with the b=
-oard DT before handing it over to BL33 (U-Boot is one of them).</div><div>I=
-n some real world examples based on carrier board + som for instance, it ma=
-y contain SerDes configuration for U-Boot that will result in appropriate P=
-CI lanes or MDIO lanes for the booted OS.</div><div><br></div><div>So I cou=
-ld say there is precedence in Simon&#39;s effort.</div><div><br></div><div>=
-In any case, when we will have made the changes in TFA for the SystemReady =
-boards we work on, booting the full SystemReady stack=C2=A0(TFA, OP-TEE, U-=
-Boot) on Qemu will allow that late merge based through the FIP.</div><div><=
-br></div><div>Other boot flows such as VBE (without TFA but with TPL/SPL/U-=
-Boot proper) need a similar facility.=C2=A0</div><div><br></div><div>Hence =
-I am supporting Simon&#39;s proposal at least on the intent. On the how exa=
-ctly, that is outside my skillset.</div><div><br></div><div>future comments=
- below</div><div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D=
-"ltr" class=3D"gmail_attr">On Wed, 3 Nov 2021 at 12:48, Alex Benn=C3=A9e &l=
-t;<a href=3D"mailto:alex.bennee@linaro.org" target=3D"_blank">alex.bennee@l=
-inaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;=
-border-left-color:rgb(204,204,204);padding-left:1ex"><br>
-Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_bl=
-ank">peter.maydell@linaro.org</a>&gt; writes:<br>
+<div dir=3D"auto"><div>Hi Willian,</div><div dir=3D"auto"><br></div><div di=
+r=3D"auto">For the Orange Pi PC documentation:</div><div dir=3D"auto"><br><=
+/div><div dir=3D"auto">Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:n=
+ieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><div dir=3D"=
+auto"><br></div><div dir=3D"auto"><br><div class=3D"gmail_quote" dir=3D"aut=
+o"><div dir=3D"ltr" class=3D"gmail_attr">Op wo 3 nov. 2021 22:14 schreef Wi=
+llian Rampazzo &lt;<a href=3D"mailto:willianr@redhat.com">willianr@redhat.c=
+om</a>&gt;:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 =
+0 .8ex;border-left:1px #ccc solid;padding-left:1ex">In the discussion about=
+ renaming the `tests/acceptance` [1], the<br>
+conclusion was that the folders inside `tests` are related to the<br>
+framework running the tests and not directly related to the type of<br>
+the tests.<br>
 <br>
-&gt; On Mon, 27 Sept 2021 at 16:18, Simon Glass &lt;<a href=3D"mailto:sjg@c=
-hromium.org" target=3D"_blank">sjg@chromium.org</a>&gt; wrote:<br>
-&gt;&gt; On Mon, 27 Sept 2021 at 02:48, Peter Maydell &lt;<a href=3D"mailto=
-:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&g=
-t; wrote:<br>
-&gt;&gt; &gt; So what is missing in the QEMU-provided DTB that it needs?<br=
+This changes the folder to `tests/avocado` and adjusts the MAKEFILE, the<br=
 >
-&gt;&gt;<br>
-&gt;&gt; Quite a lot. Here are some examples:<br>
-&gt;&gt;<br>
-&gt;&gt; U-Boot has limited pre-relocation memory so tries to avoid<br>
-&gt;&gt; binding/probing devices that are not used before relocation:<br>
-&gt;&gt;<br>
-&gt;&gt; <a href=3D"https://u-boot.readthedocs.io/en/latest/develop/driver-=
-model/design.html#pre-relocation-support" rel=3D"noreferrer" target=3D"_bla=
-nk">https://u-boot.readthedocs.io/en/latest/develop/driver-model/design.htm=
-l#pre-relocation-support</a><br>
-&gt;<br>
-&gt; It&#39;s up to u-boot to decide what it wants to touch and<br>
-&gt; what it does not. QEMU tells u-boot what all the available<br>
-&gt; devices are; I don&#39;t think we should have extra stuff saying<br>
-&gt; &quot;and if you are u-boot, do something odd&quot;.<br>
-&gt;<br>
-&gt;&gt; There is a configuration node (which is likely to change form in<b=
+CI related files and the documentation.<br>
+<br>
+[1] <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2021-05/msg065=
+53.html" rel=3D"noreferrer noreferrer" target=3D"_blank">https://lists.gnu.=
+org/archive/html/qemu-devel/2021-05/msg06553.html</a><br>
+<br>
+GitLab pipeline with new naming: <a href=3D"https://gitlab.com/willianrampa=
+zzo/qemu/-/pipelines/401431592" rel=3D"noreferrer noreferrer" target=3D"_bl=
+ank">https://gitlab.com/willianrampazzo/qemu/-/pipelines/401431592</a><br>
+Signed-off-by: Willian Rampazzo &lt;<a href=3D"mailto:willianr@redhat.com" =
+target=3D"_blank" rel=3D"noreferrer">willianr@redhat.com</a>&gt;<br>
+<br>
+Willian Rampazzo (1):<br>
+=C2=A0 tests/acceptance: rename tests acceptance to tests avocado<br>
+<br>
+=C2=A0.gitlab-ci.d/buildtest-template.yml=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0|=C2=A0 2 +-<br>
+=C2=A0.gitlab-ci.d/buildtest.yml=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 56 +++++++++----------<br>
+=C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 52 +=
++++++++---------<br>
+=C2=A0configure=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 2 +-<br>
+=C2=A0docs/devel/build-system.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 +-<br>
+=C2=A0docs/devel/ci-definitions.rst.inc=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0|=C2=A0 2 +-<br>
+=C2=A0docs/devel/testing.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 49 ++++++++--------<br>
+=C2=A0docs/system/arm/orangepi.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 |=C2=A0 8 +--<br>
+=C2=A0python/qemu/machine/README.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A0python/qemu/qmp/README.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A0python/qemu/utils/README.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A0tests/Makefile.include=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 14 ++---<br>
+=C2=A0tests/acceptance/README.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0| 10 ----<br>
+=C2=A0tests/avocado/README.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 10 ++++<br>
+=C2=A0.../avocado_qemu/__init__.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/boot_linux.py=C2=A0 =C2=A0|=C2=A0 =
+0<br>
+=C2=A0.../boot_linux_console.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/boot_xen.py=C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/cpu_queries.py=C2=A0 |=C2=A0 0<br>
+=C2=A0.../empty_cpu_model.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/hotplug_cpu.py=C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/info_usernet.py |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/intel_iommu.py=C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/linux_initrd.py |=C2=A0 2 +-<br>
+=C2=A0.../linux_ssh_mips_malta.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../machine_arm_canona1100.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../machine_arm_integratorcp.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../machine_arm_n8x0.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/machine_avr6.py |=C2=A0 2 +-<br>
+=C2=A0.../machine_m68k_nextcube.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0.../machine_microblaze.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../machine_mips_fuloong2e.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../machine_mips_loongson3v.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0.../machine_mips_malta.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../machine_rx_gdbsim.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0.../machine_s390_ccw_virtio.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0.../machine_sparc64_sun4u.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0.../machine_sparc_leon3.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/migration.py=C2=A0 =C2=A0 |=C2=A0 =
+0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/multiprocess.py |=C2=A0 0<br>
+=C2=A0.../pc_cpu_hotplug_props.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/ppc_405.py=C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/ppc_bamboo.py=C2=A0 =C2=A0|=C2=A0 =
+0<br>
+=C2=A0.../{acceptance =3D&gt; avocado}/ppc_mpc8544ds.py=C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/ppc_prep_40p.py | 12 ++--<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/ppc_pseries.py=C2=A0 |=C2=A0 0<br>
+=C2=A0.../ppc_virtex_ml507.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../{acceptance =3D&gt; avocado}/replay_kernel.py=C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/replay_linux.py |=C2=A0 0<br>
+=C2=A0.../reverse_debugging.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/smmu.py=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0|=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/tcg_plugins.py=C2=A0 |=C2=A0 0<br>
+=C2=A0.../tesseract_utils.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/version.py=C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/virtio-gpu.py=C2=A0 =C2=A0|=C2=A0 =
+0<br>
+=C2=A0.../virtio_check_params.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0.../{acceptance =3D&gt; avocado}/virtio_version.py |=C2=A0 0<br>
+=C2=A0.../virtiofs_submounts.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A0.../virtiofs_submounts.py.data/cleanup.sh=C2=A0 =C2=A0 =C2=A0|=C2=A0 =
+0<br>
+=C2=A0.../guest-cleanup.sh=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 0<br>
+=C2=A0.../virtiofs_submounts.py.data/guest.sh=C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 0<br>
+=C2=A0.../virtiofs_submounts.py.data/host.sh=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 0<br>
+=C2=A0tests/{acceptance =3D&gt; avocado}/vnc.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 0<br>
+=C2=A0.../x86_cpu_model_versions.py=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 0<br>
+=C2=A064 files changed, 113 insertions(+), 118 deletions(-)<br>
+=C2=A0delete mode 100644 tests/acceptance/README.rst<br>
+=C2=A0create mode 100644 tests/avocado/README.rst<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/avocado_qemu/__init__.py (9=
+9%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/boot_linux.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/boot_linux_console.py (100%=
+)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/boot_xen.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/cpu_queries.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/empty_cpu_model.py (100%)<b=
 r>
-&gt;&gt; future releases, but will still be there)<br>
-&gt;&gt;<br>
-&gt;&gt; <a href=3D"https://github.com/u-boot/u-boot/blob/master/doc/device=
--tree-bindings/config.txt" rel=3D"noreferrer" target=3D"_blank">https://git=
-hub.com/u-boot/u-boot/blob/master/doc/device-tree-bindings/config.txt</a><b=
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/hotplug_cpu.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/info_usernet.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/intel_iommu.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/linux_initrd.py (99%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/linux_ssh_mips_malta.py (10=
+0%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_arm_canona1100.py (=
+100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_arm_integratorcp.py=
+ (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_arm_n8x0.py (100%)<=
+br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_avr6.py (98%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_m68k_nextcube.py (1=
+00%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_microblaze.py (100%=
+)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_mips_fuloong2e.py (=
+100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_mips_loongson3v.py =
+(100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_mips_malta.py (100%=
+)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_rx_gdbsim.py (100%)=
+<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_s390_ccw_virtio.py =
+(100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_sparc64_sun4u.py (1=
+00%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/machine_sparc_leon3.py (100=
+%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/migration.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/multiprocess.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/pc_cpu_hotplug_props.py (10=
+0%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/ppc_405.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/ppc_bamboo.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/ppc_mpc8544ds.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/ppc_prep_40p.py (92%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/ppc_pseries.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/ppc_virtex_ml507.py (100%)<=
+br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/replay_kernel.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/replay_linux.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/reverse_debugging.py (100%)=
+<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/smmu.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/tcg_plugins.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/tesseract_utils.py (100%)<b=
 r>
-&gt;<br>
-&gt; I think u-boot should be storing this kind of thing somewhere<br>
-&gt; else (e.g. as part of the binary blob that is u-boot itself,<br>
-&gt; or stored in flash or RAM as a separate blob).<br>
-&gt;<br>
-&gt;&gt; Then there are various features which put things in U-Boot&#39;s c=
-ontrol<br>
-&gt;&gt; dtb, such as verified boot, which adds public keys during signing:=
-<br>
-&gt;&gt;<br>
-&gt;&gt; <a href=3D"https://github.com/u-boot/u-boot/blob/master/doc/uImage=
-.FIT/signature.txt#L135" rel=3D"noreferrer" target=3D"_blank">https://githu=
-b.com/u-boot/u-boot/blob/master/doc/uImage.FIT/signature.txt#L135</a><br>
-&gt;&gt;<br>
-&gt;&gt; More generally, the U-Boot tree has hundreds of files which add<br=
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/version.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtio-gpu.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtio_check_params.py (100=
+%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtio_version.py (100%)<br=
 >
-&gt;&gt; properties for each board, since we try to keep the U-Boot-specifi=
-c<br>
-&gt;&gt; things out of the Linux tree:<br>
-&gt;&gt;<br>
-&gt;&gt; $ find . -name *u-boot.dtsi |wc -l<br>
-&gt;&gt; 398<br>
-&gt;<br>
-&gt; If any of this is actual information about the hardware then you<br>
-&gt; should sort out getting the bindings documented officially<br>
-&gt; (which I think is still in the Linux tree), and then QEMU can<br>
-&gt; provide them.<br>
-&gt;<br>
-&gt;&gt; Quite a bit of this is to do with SPL and so far it seems that QEM=
-U<br>
-&gt;&gt; mostly runs U-Boot proper only, although I see that SPL is startin=
-g to<br>
-&gt;&gt; creep in too in the U-Boot CI.<br>
-&gt;&gt;<br>
-&gt;&gt; So at present QEMU is not able to support U-Boot fully.<br>
-&gt;<br>
-&gt; My take is that this is u-boot doing weird custom things with<br>
-&gt; the DTB that aren&#39;t &quot;describe the hardware&quot;. You should =
-be able<br>
-&gt; to boot u-boot by putting those custom DTB extra things in a<br>
-&gt; separate blob and having u-boot combine that with the<br>
-&gt; actual DTB when it starts.<br>
-<br>
-It&#39;s not entirely without precedent - for SPL (which I hope is secondar=
-y<br>
-program loading) we have things like the guest loader which expands the<br>
-plain HW DTB with some information needed by the bootloader and the<br>
-primary OS to load additional blobs which have been put into memory.<br>
-<br>
-In effect the DTB is being expanded as a signalling mechanism similar to<br=
->
-things like fw_cfg and other things we use to control boot up. Whether<br>
-this affects the &quot;purity&quot; of DTB as a &quot;just the HW&quot; des=
-cription is<br>
-probably a philosophical question.<br>
-<br></blockquote><div>More than a philosophical question: a key aspect of s=
-upply chain that need change from</div><div>quite inflexible and tightly co=
-upled to loosely coupled.</div><div>=C2=A0A key aspect of it is to maintain=
- &quot;pure&quot; hardware description DTBs at rest.</div><div>Composition =
-of DTBs at build time (for products) or runtime (for development boards) sh=
-ould be a simple thing.</div><div>Another aspect to take into account is Sy=
-stem Device Trees. U-Boot only deal with Cortex-As on a platform,=C2=A0</di=
-v><div>so there are multiple device trees for each compute domain. Communit=
-ies are working on System Device Tree</div><div>to define the overall platf=
-orm with its power and clock domains. A tool &quot;lopper&quot; is being de=
-veloped to slide the SDT into diverse domain DTs.</div><div>One of them bei=
-ng included into the FIP as the basis for the computing element (Carrier, S=
-oM...).</div><div>Those attempts to cleanup passed DTBs from configuration =
-data (drivers, bootloaders...) is not incompatible=C2=A0</div><div>with mer=
-ging fragments at runtime (for dev boards) or build time (for products).</d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
-er-left-width:1px;border-left-style:solid;border-left-color:rgb(204,204,204=
-);padding-left:1ex">
-I agree with Peter that just allowing the merging of arbitrary data into<br=
->
-the QEMU generated DTB is going to lead to confusion and breakages.<br>
-Indeed I wrote the guest-loader because instructions for booting Xen up<br>
-until that point involved dumpdtb and hand hacking the data which was<br>
-silly because this is stuff QEMU already knew about.<br>
-<br>
-&gt;<br>
-&gt; -- PMM<br>
-<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtiofs_submounts.py (100%=
+)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtiofs_submounts.py.data/=
+cleanup.sh (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtiofs_submounts.py.data/=
+guest-cleanup.sh (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtiofs_submounts.py.data/=
+guest.sh (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/virtiofs_submounts.py.data/=
+host.sh (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/vnc.py (100%)<br>
+=C2=A0rename tests/{acceptance =3D&gt; avocado}/x86_cpu_model_versions.py (=
+100%)<br>
 <br>
 -- <br>
-Alex Benn=C3=A9e<br>
-</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
-><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=
-=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr">=
-<div><div><div><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><table st=
-yle=3D"font-size:small" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><t=
-body><tr><td style=3D"padding-right:10px" valign=3D"top"><img src=3D"https:=
-//static.linaro.org/common/images/linaro-logo-web.png"></td><td valign=3D"t=
-op"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tbody><tr><td =
-style=3D"font-family:Arial,Helvetica,&quot;Sans Serif&quot;;white-space:now=
-rap;font-size:9pt;padding-top:0px;color:rgb(87,87,87)" valign=3D"top"><span=
- style=3D"font-weight:bold">Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog</span>=C2=
-=A0<span style=3D"color:rgb(161,161,161)">|</span>=C2=A0<i>Director Busines=
-s Development</i></td></tr><tr><td style=3D"font-family:Arial,Helvetica,&qu=
-ot;Sans Serif&quot;;white-space:nowrap;font-size:9pt;padding-top:2px;color:=
-rgb(87,87,87)" valign=3D"top">T:=C2=A0<a value=3D"+393384075993" style=3D"c=
-olor:rgb(17,85,204)">+33.67221.6485</a><br><a href=3D"mailto:francois.ozog@=
-linaro.org" style=3D"color:rgb(87,87,87);text-decoration:none" target=3D"_b=
-lank">francois.ozog@linaro.org</a>=C2=A0<span style=3D"color:rgb(161,161,16=
-1)">|</span>=C2=A0Skype:=C2=A0ffozog</td></tr></tbody></table></td></tr></t=
-body></table></div></div></div></div></div><div><div><br style=3D"font-size=
-:small"></div></div></div></div></div></div></div></div></div></div></div><=
-/div></div></div></div></div></div>
-</div>
+2.33.1<br>
+<br>
+<br>
+</blockquote></div></div></div>
 
---000000000000fa63aa05cfe23afb--
+--0000000000000ab1bf05cfe9cef5--

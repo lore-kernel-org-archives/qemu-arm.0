@@ -1,219 +1,134 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2175973lfv;
-        Fri, 5 Nov 2021 05:48:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytn+4a8Pegifn+YRS+DAGimjndSC3uL5HfJqLfYke39fJFPS4rkpG/JJ0puW3oCsG9X97G
-X-Received: by 2002:a9d:6c44:: with SMTP id g4mr6558090otq.177.1636116488627;
-        Fri, 05 Nov 2021 05:48:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1636116488; cv=none;
+Received: by 2002:a0c:e741:0:0:0:0:0 with SMTP id g1csp1853960qvn;
+        Fri, 5 Nov 2021 09:19:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyrcnxYeoyhCJ4LiUgGKOtz5ecGrGcZQRkUXYML9iSXQiZAq7RdzaVDCXe/HgmfcK6kuSO
+X-Received: by 2002:a17:907:7f90:: with SMTP id qk16mr12461011ejc.169.1636129184576;
+        Fri, 05 Nov 2021 09:19:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1636129184; cv=none;
         d=google.com; s=arc-20160816;
-        b=YMmk7LyiiRRkKYgAYNW+MgTOAPHZhM/uSKxN2OnLvdxTxUARxeUFkJPgknMYOUIfpz
-         ovVkJqcChtiRA6U7/GwMkX9l5kUToRsOUs4DJK9JWmL4der4c2orsVVBFwtrS01x19dp
-         KpyGLmWQ2fEEOsd0h8TOHbcsZo6cE3eRHgFzJQeC0XvfKG3nQKCgv0upH7uxYswFMYDf
-         imDGmebo77E52AE8cfnYPBUn2EHlMZ+lwFyKRbo2Lf4eT3+XmQDppnx1vFfTODADt+T4
-         JtVK3PuYowbC9/wg0CQrrVVryJQ5JMjKiYkAu3fe5HDaxgtXZ9sgjVJQ/KmI/gSPRYsT
-         qVvA==
+        b=kK/Jb8o/hVlksPxDuh2Mkdk+USBixci9OtJ7qIfniy2ij5vsZxk5pNkvCEoj/TchjZ
+         IJuHCkvcQSSQ6XY4YvOK/8VbPgkR30zjdA9Re+51DH42DM6vwyF1tHTHFRpjEAJSO4JU
+         YbMD9HVdDXr18AO98ZQMYLrxh4rTbrkoeP/6EXfnIJwDDp5clShEk7AdBjlxZsdHK8Op
+         eOwdtrLfbgFlSVfQ/SzmkBA53wHysUpRPbp2LmUl+97iYlMIiJ+HiBq1tb8ywQHxFvep
+         ndZO2P87+T3cHkC7IqmtFYglp6ZWy9zScejwJM30VqQMQJdKkTX3TtLd9I2qxCPbLega
+         0LIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=UoSM/62d82M77mRNIO4+H6iltV2oGoSzDR/YF/qDEKM=;
-        b=bG0kA4R9oa59zgjYqzR2lq37LhO5YoK4ZR3xfUWkZmELb+/20+R/E3cF11uZUDuvqx
-         897kJG1VS4kreV18dvCVW71HguemRLpC5bSagiWhHVGet/Db4O9hyk0yDaOFTyh+NrVT
-         HEWuzmLYE3z4H+EahZswxB6n9x2fZKjMq3eeTJxLzuaxhLmRt7QXwFtXw/fuhpJftfJs
-         8ybufXOQmjJCsRLZQIC5PfKuqO2PtgFWzo3tdxYtXLofHtSZUJW9Bi1TJ+TnD7LIB8Th
-         qekCfkFsf/zEFkc+z4HAZrF0Il51BwiHUyLVGauy9xTtBF1l0uYDJ78w/uVyLS5X+P0G
-         fI6g==
+        bh=TDNbqPJ8a/Az0zn+2YxIGgzz/QKquWqg/kHPO/ej/5w=;
+        b=vvddqyilYqZnUnwiBsP9O/Z8AKQQ/WO80QUJh3dqdAN9LyAsHbxbIbCwHWYFkSKCO6
+         t9kJ6iWg5o6i8rqZHXfeSGToWaFg51UgHnt08tDObSp6Ze/oKhUkICVbtYXNM1C5Q888
+         foX+gASmXiyyaT/XfMFwp/TKhJE8xGgLgyrOU+oMaolY17NmIqNMfQpkHBjpiNAP6lIj
+         v3fsaj0vCCQ3gkh7LmlSCXIo4rZpPmdG5yKxK2wXCdgazKrcV7HiZxCEHNlQdY3RWzKG
+         AsSMdW494UVYdMPesL8gwDiaGOX5QecCZK1yNhxe99i6ic69G4L9vExIAJgyrWWIDzwu
+         IJzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ig8lr8vl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l26si6988535otq.252.2021.11.05.05.48.08
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QZmDY0uJ;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id nb21si16252518ejc.63.2021.11.05.09.19.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Nov 2021 05:48:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 05 Nov 2021 09:19:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ig8lr8vl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49466 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1miydb-0007cz-Op
-	for alex.bennee@linaro.org; Fri, 05 Nov 2021 08:48:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34904)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1miydO-0007Us-3m
- for qemu-arm@nongnu.org; Fri, 05 Nov 2021 08:47:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51317)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1miydK-0002ZS-2D
- for qemu-arm@nongnu.org; Fri, 05 Nov 2021 08:47:51 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QZmDY0uJ;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636116469;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UoSM/62d82M77mRNIO4+H6iltV2oGoSzDR/YF/qDEKM=;
- b=Ig8lr8vlvPB6M4sTLAP8UE8sTQcJNphQe7PquPzZ1G990nC2NCVqui44mME/nDJbPEm62Z
- I2WK9Qi0FxZeaneGgyKTRhFY/yLWwx1emf+6oh3VF/hERBW0l3MT8fvroyedu9iG6GKt/J
- xoLek47nIp+SFsnKrQfP4SsY6CaXqIg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-532-Pe4h1IQINVK3hDhcEDbj7Q-1; Fri, 05 Nov 2021 08:47:46 -0400
-X-MC-Unique: Pe4h1IQINVK3hDhcEDbj7Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4FEBD879500;
- Fri,  5 Nov 2021 12:47:45 +0000 (UTC)
-Received: from [10.64.54.99] (vpn2-54-99.bne.redhat.com [10.64.54.99])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 54E3A5F4ED;
- Fri,  5 Nov 2021 12:47:41 +0000 (UTC)
-Subject: Re: [PATCH v2] hw/arm/virt: Expose empty NUMA nodes through ACPI
-To: Andrew Jones <drjones@redhat.com>
-References: <20211027052958.280741-1-gshan@redhat.com>
- <20211027174028.1f16fcfb@redhat.com>
- <fecb9351-ae78-8fcd-e377-623243ef80df@redhat.com>
- <20211101094431.71e1a50a@redhat.com>
- <47dc3a95-ed77-6c0e-d024-27cb22c338eb@redhat.com>
- <20211102073948.am3p3hcqqd3cfvru@gator.home>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <b8ed4687-e30a-d70f-0816-bd8ba490ceb7@redhat.com>
-Date: Fri, 5 Nov 2021 23:47:37 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+	s=mimecast20190719; t=1636129183;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TDNbqPJ8a/Az0zn+2YxIGgzz/QKquWqg/kHPO/ej/5w=;
+	b=QZmDY0uJJXj5gToBeKYvBbmqkAdorKhTaLCYe86A+bnzorPoHm5BT2q0IcjygyvC2T4O1u
+	/l1ILpS3ZojHbWPRU9QIXtFWfLPi/BDB6R76OQTiw8PZIGZA8Yus83a3htHa9Cc6oqXElX
+	VvO0aZ/3LPE4w8m9dQifCNc0m9J9SW8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-14-VWo9Kv7AN32w5a9KXYgb0A-1; Fri, 05 Nov 2021 12:19:42 -0400
+X-MC-Unique: VWo9Kv7AN32w5a9KXYgb0A-1
+Received: by mail-wm1-f70.google.com with SMTP id j193-20020a1c23ca000000b003306ae8bfb7so3466309wmj.7
+        for <alex.bennee@linaro.org>; Fri, 05 Nov 2021 09:19:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=TDNbqPJ8a/Az0zn+2YxIGgzz/QKquWqg/kHPO/ej/5w=;
+        b=rLPCyYXGGeISWgp2faNadZeZHLaNun4MlEOngqrsUjb2BUbin10lDBoz17Zyg+tpoS
+         9QlYqKgjJLJ/hmioPMH2QWdFmPYvcD/aLK7HCdseYM7oDPl+27cV8qWX3d9sX20Kpfi2
+         wn9JHaEnMcq7UAOpj9wOEj9s2oYiayuYvWMw9ah1WO9e7ATNlM5u8uPc7cSAH9qr0xsP
+         WxGECLaXWhl9Bo5F4ALzxOu2oFb1Pw8laHtb8Z9gHq+NCcpbpnFCUx7EdueOoXQ0HISf
+         x2ursH0a0yObPjcN2k90Dai4KK54Yt1frWq3rIp+cWmTxnb3XsRV4a+jiw2nnjThCzxr
+         jcpg==
+X-Gm-Message-State: AOAM532+K5op2yzgymUueY8hqRB1JDdniVBhZ3nfFlQhqxGGx2s1Oar8
+	Fcau4xY/G1yH/oNQkYKEC17L/ImEekGsYRYfPZMqyKPmorL5Un03ecFtYt6xxu1IfFVBTUnlU9n
+	0TERQPDM0Blqs0+H7
+X-Received: by 2002:a05:600c:3b1b:: with SMTP id m27mr22998873wms.125.1636129180714;
+        Fri, 05 Nov 2021 09:19:40 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b1b:: with SMTP id m27mr22998852wms.125.1636129180530;
+        Fri, 05 Nov 2021 09:19:40 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
+        by smtp.gmail.com with ESMTPSA id v185sm11590507wme.35.2021.11.05.09.19.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 Nov 2021 09:19:40 -0700 (PDT)
+Message-ID: <4f8f6425-7b5f-644c-6b80-bd5432d08015@redhat.com>
+Date: Fri, 5 Nov 2021 17:19:38 +0100
 MIME-Version: 1.0
-In-Reply-To: <20211102073948.am3p3hcqqd3cfvru@gator.home>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v2 1/2] tests/acceptance: introduce new check-avocado
+ tartget
+To: Willian Rampazzo <willianr@redhat.com>, qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ John Snow <jsnow@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, libvir-list@redhat.com,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+References: <20211105155354.154864-1-willianr@redhat.com>
+ <20211105155354.154864-2-willianr@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <20211105155354.154864-2-willianr@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.648,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.093, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, shan.gavin@gmail.com,
- Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vzvRfEjIqWN2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: /0H7U0SnZC+T
 
-Hi Drew and Igor,
-
-On 11/2/21 6:39 PM, Andrew Jones wrote:
-> On Tue, Nov 02, 2021 at 10:44:08AM +1100, Gavin Shan wrote:
->>
->> Yeah, I agree. I don't have strong sense to expose these empty nodes
->> for now. Please ignore the patch.
->>
+On 11/5/21 16:53, Willian Rampazzo wrote:
+> This introduces a new `make` target, `check-avocado`, and adds a
+> deprecation message about the `check-acceptance` target. This is
+> a preparation for renaming the `tests/acceptance` folder to
+>  `tests/avocado`.
 > 
-> So were describing empty numa nodes on the command line ever a reasonable
-> thing to do? What happens on x86 machine types when describing empty numa
-> nodes? I'm starting to think that the solution all along was just to
-> error out when a numa node has memory size = 0...
+> The plan is to remove the call to the `check-avocado` target one
+> or two months after the release and leave the warning to force
+> people to move to the new `check-avocado` target.
 > 
+> Later, the `check-acceptance` target can be removed. The intent
+> is to avoid a direct impact during the current soft freeze.
+> 
+> Suggested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Willian Rampazzo <willianr@redhat.com>
+> ---
+>  docs/about/deprecated.rst | 13 +++++++++++++
+>  tests/Makefile.include    | 17 ++++++++++++-----
+>  2 files changed, 25 insertions(+), 5 deletions(-)
 
-Sorry for the delay as I spent a few days looking into linux virtio-mem
-driver. I'm afraid we still need this patch for ARM64. I don't think x86
-has this issue even though I didn't experiment on X86. For example, I
-have the following command lines. The hot added memory is put into node#0
-instead of node#2, which is wrong.
+Typo "target" in subject (no need to respin).
 
-There are several bitmaps tracking the node states in Linux kernel. One of
-them is @possible_map, which tracks the nodes available, but don't have to
-be online. @passible_map is sorted out from the following ACPI table.
-
-   ACPI_SRAT_TYPE_MEMORY_AFFINITY
-   ACPI_SRAT_TYPE_GENERIC_AFFINITY
-   ACPI_SIG_SLIT                          # if it exists when optional distance map
-                                          # is provided on QEMU side.
-
-Note: Drew might ask why we have node#2 in "/sys/devices/system/node" again.
-hw/arm/virt-acpi-build.c::build_srat() creates additional node in ACPI SRAT
-table and the node's PXM is 3 ((ms->numa_state->num_nodes - 1)) in this case,
-but linux kernel assigns node#2 to it.
-
-   /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
-   -accel kvm -machine virt,gic-version=host               \
-   -cpu host -smp 4,sockets=2,cores=2,threads=1            \
-   -m 1024M,slots=16,maxmem=64G                            \
-   -object memory-backend-ram,id=mem0,size=512M            \
-   -object memory-backend-ram,id=mem1,size=512M            \
-   -numa node,nodeid=0,cpus=0-1,memdev=mem0                \
-   -numa node,nodeid=1,cpus=2-3,memdev=mem1                \
-   -numa node,nodeid=2 -numa node,nodeid=3                 \
-   -object memory-backend-ram,id=vmem0,size=512M           \
-   -device virtio-mem-pci,id=vm0,memdev=vmem0,node=2,requested-size=0 \
-   -object memory-backend-ram,id=vmem1,size=512M           \
-   -device virtio-mem-pci,id=vm1,memdev=vmem1,node=3,requested-size=0
-      :
-   # ls  /sys/devices/system/node | grep node
-   node0
-   node1
-   node2
-   # cat /proc/meminfo | grep MemTotal\:
-   MemTotal:        1003104 kB
-   # cat /sys/devices/system/node/node0/meminfo | grep MemTotal\:
-   Node 0 MemTotal: 524288 kB
-
-   (qemu) qom-set vm0 requested-size 512M
-   # cat /proc/meminfo | grep MemTotal\:
-   MemTotal:        1527392 kB
-   # cat /sys/devices/system/node/node0/meminfo | grep MemTotal\:
-   Node 0 MemTotal: 1013652 kB
-
-Try above test after the patch is applied. The hot added memory is
-put into node#2 correctly as the user expected.
-
-   # ls  /sys/devices/system/node | grep node
-   node0
-   node1
-   node2
-   node3
-   # cat /proc/meminfo | grep MemTotal\:
-   MemTotal:        1003100 kB
-   # cat /sys/devices/system/node/node2/meminfo | grep MemTotal\:
-   Node 2 MemTotal: 0 kB
-
-   (qemu) qom-set vm0 requested-size 512M
-   # cat /proc/meminfo | grep MemTotal\:
-   MemTotal:        1527388 kB
-   # cat /sys/devices/system/node/node2/meminfo | grep MemTotal\:
-   Node 2 MemTotal: 524288 kB
-
-Thanks,
-Gavin
-
-
-   
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>

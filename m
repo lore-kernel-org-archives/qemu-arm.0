@@ -1,153 +1,157 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp390328lfk;
-        Mon, 8 Nov 2021 06:51:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx7AO4NGnaylgIhdb3TXiszqZiZ5Z67GLLH/eusyKF8dKuVFGJIs39lBGlhgIWIxHo7WwpG
-X-Received: by 2002:a67:fa93:: with SMTP id f19mr531076vsq.43.1636383073204;
-        Mon, 08 Nov 2021 06:51:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636383073; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp2231330lfv;
+        Fri, 5 Nov 2021 06:35:33 -0700 (PDT)
+X-Received: by 2002:a9d:6e8:: with SMTP id 95mr16468013otx.35.1636119333101;
+        Fri, 05 Nov 2021 06:35:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1636119333; cv=none;
         d=google.com; s=arc-20160816;
-        b=y1J6A+5TzdU5J92l6emcWSFjc/u6S9KuHzepOhELVolw3ltQzthSma6XR8AHN6ep9A
-         2j8ZJ5eEdFicYiWYxkp1jCy5qZWFP2iWwCa7+nmkVMmrFYXM2t9EAoqCKDG5N3Uii+02
-         YOXYMkQ5x8Mi2NW/sO75ZEQeQMXxEQFWX4+otqEC8inQThfYl+1M4b8OuHptsoqzVoQV
-         i5dy0F/VTaOt0I8g5++ti01QMoYcTsC1bA0yltsZdizJH8iBIcjQYaPHxVZXAukmf8N7
-         qS1I33rmbUzcIGlSEZX1O5S+g1g5zdJ9z5bnrjyWAdXBhEAm13X1w+UMUzph28/LW1OU
-         0yAw==
+        b=FefvN3MYltuDhrp9PnjAbygKG10RkZ0q3GscfLoPE+KwUh6f68pcjqMU1rkR7iMVAE
+         AH2AwBRnH4trpWy9LcMNOggGmlShL90TTZ+pEveBJzxqMicGz9Oaza/LfJu2eEzYzgSc
+         G/sBK9pVZPW+AMkTCrk4bkC99UIFBIRnFt2kihRy+Ll/AuVFsR3TAlga4no5fgnQWsbR
+         PnzhVphfTNhyVHsFFNXx0VINugz7/RnZzZJuSViPE55mY1kQ3nzaG5YKT59onUTIAZIJ
+         x9uu3ynAvSbHN8IW23reOIdHAMrThMM1drz9ptX/n/GK3B7bfj/6rNTzdV+NEpiJaswo
+         MoXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:cc:to:from:subject
          :dkim-signature;
-        bh=VRzp0FWK8MYVZPdHdcEq6rLwLfL7m6N+xRuLlCo5WmA=;
-        b=TQHxWU6I0fN9fMV/Qls8+Ys5tKj3WtNejNQQvJ6PJKcc5gxPLB8ypx1LT7Py5oMVEf
-         9F4767AT31xwQqyIvYQGLwP3cGPJbjUgickrE9+32Gdpp+IZT9kMd1C1IFkCtS/16ZlY
-         iWqJ36fz5Er1b+cEsWdi0cVwKGkn36mWlKXRh/cYktmyFNlaCnrldmyMdUeiAm6sogpb
-         9146Zz8N6hLN+hBpkonOeOPUBsRQCI6X2nmeiNlB77b7Fk3qraVaX+haFQ2Q+XoAfaMN
-         DG/Zw+b938tPyIa95UYRzKZB/hz29kzcuquf1s9aIfQaKYcUPEmxxtnIJop59qd5NS5l
-         31qQ==
+        bh=2IwfNa/a6/UL5nRTIBeHB/zXygWLK0fdNTUwqG1u4sg=;
+        b=Ob7YXT1W9rJxbZqCyhcUvOKmyNlA4FwqzhYF/ufqSK1Z1C7GEU1yNjkBVx3Jn6z6oq
+         3/lAUWw/ZABtuXrABQMP4S7RP9EfsN1uQNeR2hCyDGEzCxxhZvXIERdSL6h319YPYh1m
+         4cXDKtdLJcelNZA384YF1eaEjIzujJ59bhPl9u8Ly7F5AKeaJf+7FPCSLck3LQhO6Tp9
+         YB6WretWFuC+uxD1hFnW415qEbAU7Iz6Ulevn+nu6c6bC6b4hWdiTa+vM4VCFma65nih
+         Ht3VBHHJVNrMNXxETNd/7qyt+oI5j2fkV8V8HjGeE/+Blu8ayq+qsOj2nw1maBpFy97K
+         lXiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ex3QiOh/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JhJkMWU6;
+       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6si14641210uar.51.2021.11.08.06.51.13
+Return-Path: <luis.machado@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f26sor1873373oti.98.2021.11.05.06.35.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Nov 2021 06:51:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 05 Nov 2021 06:35:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ex3QiOh/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JhJkMWU6;
+       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59048 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mk5zM-0004Z3-IS
-	for alex.bennee@linaro.org; Mon, 08 Nov 2021 09:51:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35902)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mk5yd-0004Yg-NT
- for qemu-arm@nongnu.org; Mon, 08 Nov 2021 09:50:28 -0500
-Received: from [2a00:1450:4864:20::430] (port=39455
- helo=mail-wr1-x430.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mk5yb-0005c0-NV
- for qemu-arm@nongnu.org; Mon, 08 Nov 2021 09:50:27 -0500
-Received: by mail-wr1-x430.google.com with SMTP id d27so27353027wrb.6
- for <qemu-arm@nongnu.org>; Mon, 08 Nov 2021 06:50:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=VRzp0FWK8MYVZPdHdcEq6rLwLfL7m6N+xRuLlCo5WmA=;
- b=ex3QiOh/4Hu71GdjoT9pJdao9Mje6JBDgCmjbmVVqrcBHzl37/fl2pkesOFN5yUtHM
- lLOMs5ZczoQ2zeClt35NqfGJRVaQhKTmRfYzZsXWbLqy2yq634Uq+N1G36p58u5+napr
- 4oxPAcANfQQqkHUcnwgNS/IOIbpdGX5yBDaJH/eJWHumK3SV2ahUGaDuYEpKJ4IK7iAh
- FVAg80svdKptqw1pXGB6OQMRmpQ7pmQ0YCRhWvXEDFutE2i5dx1FKG/G/d2fr1DwNQeK
- 6TfQC0bygdrFyJSgbgML12s8upnjvMY+y5jbL+s3PxzaKcfYbFDKmaFp9pviDHWLdf4S
- Tp0A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:from:to:cc:references:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=2IwfNa/a6/UL5nRTIBeHB/zXygWLK0fdNTUwqG1u4sg=;
+        b=JhJkMWU6FmPRqcl1E7KroiCE74D0tIy5jXsYS4AbEivb/7UGAhzbIoTkurjnlnllsG
+         xIBut4h0ssM/RiB5vMQ0jY7BVAbVIZ3w4CiYHUPTm2MGuVcNx0Mvjp3uguoeEYXp1tS+
+         cm8+WeTxZwLc98VjnqAgHrAliobTlkXQeTN5ufd4Fbiw2IbTVbbA9BKQxHaAeoL3kALx
+         AUGNeKp6nYIj7NN8YyhmiWPGuAFbIngOp93JvYIVB+2Ko65OaZqPL5K9a1idCZQAhqTk
+         //pwjrLSBnn5ejVV7hpJqeg7qtYe0ld8H3Cxc5xj7GhDn4q0bOaMbCd4OYDJz8fFuhUc
+         sBWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=VRzp0FWK8MYVZPdHdcEq6rLwLfL7m6N+xRuLlCo5WmA=;
- b=cEgSuT6QH2lxJrjsyGymnSp5MeF6/zvkRzoakEVQQVMDAld2GTwJkEdjNGfewfQW2s
- 1r+rpeSUqRqNjugnGj5KnXMO6vNYUMrOA5pwlkg57p7ADHX3yDqqL4+/dd9ozqte11T1
- JtVPQr44T7akghLH4zRCditivuLcuR52bC7j3RERXXwQPjH1tIA0xNwAYCOugdEYbmnD
- zsOMT9BcMmxx2jb1wJwDJOdxE1ckT7pExPhB1FR71hLjLmGvpzYiMCrMAHHJWc/iahrq
- 1Oz6abpiXUXVYvL2MKz5SkSsRxLjbstO2vNEYBRxwSS1vhfD+YmCE2yEZeBR8aYJeGmA
- /koQ==
-X-Gm-Message-State: AOAM530l1s95y0cQpPgkBsFQrNgV9yPsIpOTl+cVzfYyHlMZmXmXJheP
- oeQr4mpS99Rc+rSE4BJJLAe5pTVeaWG8RuXOHOOsTw==
-X-Received: by 2002:a05:6000:186e:: with SMTP id
- d14mr347046wri.376.1636383024139; 
- Mon, 08 Nov 2021 06:50:24 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=2IwfNa/a6/UL5nRTIBeHB/zXygWLK0fdNTUwqG1u4sg=;
+        b=nAM7CVyovpyBe3QUmGH5rNh/AhZm1gZIQs2h5ZmwUt7sQ9jzn2R1fbbPIcus1CsrCA
+         JRePc8xKbM16DhZmeVRDeL+7E5NdFcw/UF+IQkOBYQsDEUFi5xf4aKysHOwpZl7fjil4
+         JrK/dJrvVVE6jB9fFezl4o7R28dh59ZmhZq3ROMpSAY83gd4e+0/vTWu5VWHJdYfbCeg
+         msDLHr7lrwVPC5fNmijKMfg173u7cwEy2NwcxYx0NbOADQiSSoiqBbtpaC3YspgzYM87
+         q4KAZPfoBc42jPCdWrivJWQ4zpCBB46LH2nV/2RbrxM9gtWFPZua5NnBWB/MFn6eXW4d
+         u8hw==
+X-Gm-Message-State: AOAM531mUBGnGAX7T1NjIUVoQeHrvQiddDjCZ3LVUWhDLTKFq5o4suKY
+	drvREE5OqIsTT0KgdHKdc/G9goTA
+X-Google-Smtp-Source: ABdhPJzQQsmgkAGmyAVEEKilRwYNEtmt3bzcLTEDzAiz93ylP0nHEnu/rlrHJqbkT+KweaxfPlbFXA==
+X-Received: by 2002:a9d:3634:: with SMTP id w49mr37118160otb.84.1636119331203;
+        Fri, 05 Nov 2021 06:35:31 -0700 (PDT)
+Return-Path: <luis.machado@linaro.org>
+Received: from ?IPv6:2804:7f0:4841:487c:5509:2e45:5dfe:a087? ([2804:7f0:4841:487c:5509:2e45:5dfe:a087])
+        by smtp.gmail.com with ESMTPSA id h3sm2425269oih.23.2021.11.05.06.35.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 Nov 2021 06:35:30 -0700 (PDT)
+Subject: Re: [PULL 21/30] target/arm: use official org.gnu.gdb.aarch64.sve
+ layout for registers
+From: Luis Machado <luis.machado@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Claudio Fontana <cfontana@suse.de>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+References: <20210115130828.23968-1-alex.bennee@linaro.org>
+ <20210115130828.23968-22-alex.bennee@linaro.org>
+ <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de> <874kjdugip.fsf@linaro.org>
+ <8cb88b76-caa3-ba26-b288-4d87b06f56ec@suse.de> <871regvs0w.fsf@linaro.org>
+ <CAFEAcA9FKA9k3ePEVALXnRcfd4ygybMrmpD=ZjV1A==at+w9Uw@mail.gmail.com>
+ <3c1521e5-5182-18f3-b5bf-9340745ec92f@linaro.org>
+ <e7c11bc8-e7ba-8192-e4ba-887c38f27b15@linaro.org>
+Message-ID: <1b2ee804-6360-c77f-45f2-8fe39e39f9d9@linaro.org>
+Date: Fri, 5 Nov 2021 10:35:27 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-References: <07e63acb-b756-2586-2ba2-b54b837f7fc8@tribudubois.net>
- <CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com>
- <c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net>
- <d19f6d2c-7505-b326-3a67-48c336f111e9@tribudubois.net>
- <dd45f94c-6110-7251-4f9f-5b4e1fbb73a4@tribudubois.net>
- <e0a1b786-4b1c-c608-495b-3fb839de2376@tribudubois.net>
-In-Reply-To: <e0a1b786-4b1c-c608-495b-3fb839de2376@tribudubois.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Nov 2021 14:50:12 +0000
-Message-ID: <CAFEAcA-DnbocsRHC3cUM_uX=kGn-KJa3q42TCyaB=isxKTS-Sg@mail.gmail.com>
-Subject: Re: Qemu and ARM secure state.
-To: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1b7wD1EaRQEo
+In-Reply-To: <e7c11bc8-e7ba-8192-e4ba-887c38f27b15@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: pYvIxbmIQ7re
 
-On Sat, 6 Nov 2021 at 18:11, Jean-Christophe DUBOIS <jcd@tribudubois.net> w=
-rote:
->
-> One small question/remark:
->
-> According to the the "Arm Power State Coordinate Interface" (DEN0022D.b) =
-document (chapter 5) PSCI calls can only be issued by "normal world" (EL1 o=
-r EL2). Therefore, should we be adding a test for the current secure state =
-in the arm_is_psci_call() function? This would prevent calling the built-in=
- Qemu PSCI function if SMC is issued  from secure state.
+On 11/4/21 6:03 PM, Luis Machado wrote:
+> On 10/4/21 3:44 PM, Luis Machado wrote:
+>> Hi,
+>>
+>> On 9/21/21 10:55 AM, Peter Maydell wrote:
+>>> On Tue, 19 Jan 2021 at 15:57, Alex Bennée <alex.bennee@linaro.org> 
+>>> wrote:
+>>>>
+>>>>
+>>>> Claudio Fontana <cfontana@suse.de> writes:
+>>>>
+>>>>> On 1/19/21 3:50 PM, Alex Bennée wrote:
+>>>>>>
+>>>>>> Claudio Fontana <cfontana@suse.de> writes:
+>>>>>>> qemu-system-aarch64: -gdb 
+>>>>>>> unix:path=/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server: 
+>>>>>>> info: QEMU waiting for connection on: 
+>>>>>>> disconnected:unix:/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server
+>>>>>>> warning: while parsing target description (at line 47): Vector 
+>>>>>>> "svevhf" references undefined type "ieee_half"
+>>>>>>> warning: Could not load XML target description; ignoring
+>>>>>>> qemu-system-aarch64: QEMU: Terminated via GDBstub
+>>>>>>>
+>>>>>>> Seems to indicate it is "ieee_half" -related?
+>>>
+>>>> So it looks like TDESC_TYPE_IEEE_HALF was only implemented in GDB 9.1
+>>>> and there is no probing possible during the gdbstub connection. I guess
+>>>> I can either go back to stubbing it out (which would break gdb's SVE
+>>>> understanding) or up our minimum GDB version check for running tests.
+>>>> That would mean less people test GDB (or at least until the distros
+>>>> catch up) but considering it was zero people not too long ago maybe
+>>>> that's acceptable?
+>>>
+>>> I just ran into this trying to connect qemu-aarch64 to the
+>>> Ubuntu gdb-multiarch. I don't care about SVE at all in this
+>>> case, but the 'max' CPU includes SVE by default, so we report
+>>> it to gdb even if the guest program being run doesn't use SVE at all.
+>>> This effectively means that usecases that used to work no longer do :-(
+>>>
+>>> Luis: do we really have to report to gdb all the possible
+>>> data types that might be in SVE vector registers? Won't
+>>> gdb autogenerate pseudoregisters the way it does with
+>>> Neon d0..d31 ?
+>>>
+>>> thanks
+>>> -- PMM
+>>>
+>>
+>> I'll check what can be done here.
+> 
+> Apologies. I got sidetracked with a few other things. I'm getting back 
+> to this one.
+> 
+> I'm guessing the less painful solution would be for QEMU to report a 
+> more compact XML description for SVE, supported by the oldest GDB we 
+> would like to validate things on, and leave it to GDB (newer releases) 
+> to add whatever pseudo-registers it deems appropriate.
 
-This shouldn't matter, because if the machine model is configured
-to execute guest code in EL3 at all then it should not be enabling
-QEMU's internal PSCI support. The internal PSCI stuff is only
-there as a kind of "emulated firmware" for when we're running
-guest code that starts at EL2 (notably, when directly booting
-a Linux kernel).
-
-The problem seems to be that fsl_imx6ul_realize() and
-fsl_imx7_realize() unconditionally enable PSCI-via-SMC.
-The imx7 code also puts all the secondaries into
-PSCI-powered-off mode -- this should be checked to
-work out what the right thing is if we're not doing
-emulated PSCI and instead starting the guest at EL3.
-
--- PMM
+Is it only the ieee_half type that is causing issues here? Or are there 
+other types?

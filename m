@@ -1,89 +1,90 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp3181878lfv;
-        Fri, 5 Nov 2021 23:47:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkAD2bODxKolzOjvyEGJq4L2gA2nYVrtVmrizsINcHUojgGlbTsD+O4IdEwR9AszNvVNTQ
-X-Received: by 2002:a9d:5911:: with SMTP id t17mr50378314oth.30.1636181268762;
-        Fri, 05 Nov 2021 23:47:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1636181268; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp3185808lfv;
+        Fri, 5 Nov 2021 23:54:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxEvotP1OciTNvp2EFQd0SJnn5VB9n8EwfyCBo9NaZUl9nAyKsg4ffsq1CIz5Ji1R6J3gJG
+X-Received: by 2002:a05:6830:14c9:: with SMTP id t9mr35819447otq.24.1636181663021;
+        Fri, 05 Nov 2021 23:54:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1636181663; cv=none;
         d=google.com; s=arc-20160816;
-        b=mEA5wRov/Vv49v1+1GonNeXg7ISw9Q9fmMzIj4S9V2s9HNG6AjUicBpFXk3UwNLEaE
-         ro5WPeV4EMt1ZpHIef6bsLgcOoBvqUJ5vLQCheMi285w9/ZG5CID7c9LDhRZZFm6Ah5S
-         Mip5JsJ7vzrlVNncv/Nkdw24hZG32A7gGCjvounMpDp/S06Sw2d4niLfz9w5/G3wiDDh
-         Mv7bLjBQRT3sv11XoZvBClISi1btfjgk43v95Dut3dUPDHR1NzhLlRehz1cqMQXytolq
-         A/xLwWU1vB1DvG+HOFzqXotSi2+aGh+QoewYwMUccrSfKrNB9YiFi8v7nE8qszrSM9sc
-         WwyQ==
+        b=pp65HXBAVGiRWCRzERAQtVKRQ9mJZdgySDEmNjfCSTuMlQsyOqfGy2727xzFxZlH5V
+         de108u8Fp2QtQbDDl4LX1AlBWcCOr7n9Iqrma2b6MXzYuzUV7CuIg74jo8H7dyarenno
+         E5Zy8ctWiex52JHhlFIo9PR5J0JztxCX3Vee5JrILBxdX5S1R1+Hkt+fk8vIBW3H8+n/
+         T5VobaJGY0nkxJ3ogxEL5IL/pK/Mug36sCpbpn7aGY0N0QTiPa9Ov2KGHa7qIypkp1Vg
+         TfoVydd0BoGEYxj8mUAG800NZFW2mv36/f2LavjQeDl/Nv/SD7pcmDoC2LG+8Kf0BBvl
+         FL+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :message-id:in-reply-to:date:references:subject:to:from
          :dkim-signature;
-        bh=qHL6sFGBhTbmtq5+bOM1xMu7YSyQXKymidsSZqIY/CE=;
-        b=rPxb0cUaSeJ+/GcvS7x7gad4wsqaKOTZ7qhrIhSpZb5XNIGrWoKODkA7QPNZvFTU9B
-         0NgW8VXFkhotMz9WW1yJCuFEw17V/2JcN1Bq98Lk1HxlxJD5ndKV3vGy+xVRDiP7Rhc0
-         QkzKm+HO+TYn0XPJLgTh1cUCW9gkf+KWg3CrIEXwyR6LuOKhl5s3GYNuEjOwnPLb9jl6
-         fhSL7bZWqAHgt4TTo2rWL62U0Vrc3hNhJDHnc+BkP0MQ6xCpADXBCUoURzwvaV+ytHZR
-         dDHwapb2zmUXjxS1X0LDkcWitzGh/FXlC4bDv8mMpIR4jA/VpXHJip7VyMYlD+jn5AKz
-         236A==
+        bh=nrZeeMZnRP3ApwNiz0fVlan+bBxZbOO1iTZjX9rbwPY=;
+        b=iw6EPPNzkwlTdBHiUImWBgBZw76BRe+eoD9jwfo515oW8G6xt5gffy3vFbyAnTJd91
+         7Dg/0fvmKwsiBVyv9SJdZ87yxk7LJ3g1PwqaxiljJnw6+j18F9YTtzPJXJatbILnjbPd
+         zoapuE3qXOXt0knuHLKD0/qVngOWowWEE+MMvHyWMbGe/y/AyOp2OxVP+CwCniuByAb4
+         u7y/niNawFh1hyV33oFIXVsg+6JFkhFgzp0zyhnKkIz0iKyBnRtO/ySjEWwdWSYB+BIy
+         Nvaq2Pw/dy1VCWPJOEI37aZ+WXcVIsP4ytBRxQJ+YcRFQ1iuol6pmhiB3oR7QstqYmdY
+         kmKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UkDUbpsz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RlIryiYM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp12si1743961oib.242.2021.11.05.23.47.48
+        by mx.google.com with ESMTPS id v2si4572333ott.173.2021.11.05.23.54.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Nov 2021 23:47:48 -0700 (PDT)
+        Fri, 05 Nov 2021 23:54:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UkDUbpsz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RlIryiYM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50768 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53472 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mjFUR-0006oJ-Eu
-	for alex.bennee@linaro.org; Sat, 06 Nov 2021 02:47:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48440)
+	id 1mjFao-0000Rs-BB
+	for alex.bennee@linaro.org; Sat, 06 Nov 2021 02:54:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mjFU2-0006nO-2F
- for qemu-arm@nongnu.org; Sat, 06 Nov 2021 02:47:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45585)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mjFa5-0000Qd-RN
+ for qemu-arm@nongnu.org; Sat, 06 Nov 2021 02:53:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36577)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mjFTz-0007Pg-Qk
- for qemu-arm@nongnu.org; Sat, 06 Nov 2021 02:47:21 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mjFa4-000810-DZ
+ for qemu-arm@nongnu.org; Sat, 06 Nov 2021 02:53:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636181238;
+ s=mimecast20190719; t=1636181615;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=qHL6sFGBhTbmtq5+bOM1xMu7YSyQXKymidsSZqIY/CE=;
- b=UkDUbpszZTrTWHYtG3LJzuJM+o76ZdPA+3bsjQXsRbRv/2WHW7eCQoLCYHE/08/6inRkWm
- 5dAr0seXrIfUplLCjc/BmepahmdzpXti1Jq0wmJl9QHAv35Y9eePKOkcIWSnEHf2sb/U4L
- 1n1o5+9Hv6TGBEhbZnB/B8ZdPrcqMbI=
+ bh=nrZeeMZnRP3ApwNiz0fVlan+bBxZbOO1iTZjX9rbwPY=;
+ b=RlIryiYMZwN+p+2+3TtqsqPXPJpaEe1aDuZgswhk17aBTdJwE2/5eelOKWmDNSMMbEgLxi
+ DzXzo4QZCONNpNgZeeiu2OtKnF+KP+zV9SJd1Z87za79cySgetvhYjISvfn/Cmn5+m+I/T
+ 4qPeyDHmZ5rvmhfCl5NDnWnlgujKlIk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-458-W45dxtA8P7KwoerKgCKD3Q-1; Sat, 06 Nov 2021 02:47:15 -0400
-X-MC-Unique: W45dxtA8P7KwoerKgCKD3Q-1
+ us-mta-592-ikE5YByzNXiyCrvwtztPvA-1; Sat, 06 Nov 2021 02:53:31 -0400
+X-MC-Unique: ikE5YByzNXiyCrvwtztPvA-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 85145800053;
- Sat,  6 Nov 2021 06:47:13 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 74D02800053;
+ Sat,  6 Nov 2021 06:53:29 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B345360C17;
- Sat,  6 Nov 2021 06:47:12 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A7C8C60C17;
+ Sat,  6 Nov 2021 06:53:28 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 328A211380A7; Sat,  6 Nov 2021 07:47:11 +0100 (CET)
+ id 379ED11380A7; Sat,  6 Nov 2021 07:53:27 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: Hao Wu <wuhaotsh@google.com>
-Subject: Re: [PATCH v4 5/7] blockdev: Add a new IF type IF_OTHER
+Subject: Re: [PATCH v4 6/7] hw/nvram: Update at24c EEPROM init function in
+ NPCM7xx boards
 References: <20211103220133.1422879-1-wuhaotsh@google.com>
- <20211103220133.1422879-3-wuhaotsh@google.com>
-Date: Sat, 06 Nov 2021 07:47:11 +0100
-In-Reply-To: <20211103220133.1422879-3-wuhaotsh@google.com> (Hao Wu's message
- of "Wed, 3 Nov 2021 15:01:31 -0700")
-Message-ID: <87a6ihvl00.fsf@dusky.pond.sub.org>
+ <20211103220133.1422879-4-wuhaotsh@google.com>
+Date: Sat, 06 Nov 2021 07:53:27 +0100
+In-Reply-To: <20211103220133.1422879-4-wuhaotsh@google.com> (Hao Wu's message
+ of "Wed, 3 Nov 2021 15:01:32 -0700")
+Message-ID: <874k8pvkpk.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
@@ -100,7 +101,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.735,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,66 +117,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, thuth@redhat.com, qemu-block@nongnu.org,
  venture@google.com, bin.meng@windriver.com, richard.henderson@linaro.org,
  qemu-devel@nongnu.org, hskinnemoen@google.com, kfting@nuvoton.com,
- qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, f4bug@amsat.org
+ qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, armbru@redhat.com,
+ f4bug@amsat.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GcQNWGKKu/i9
+X-TUID: sl81HxNXdY31
 
 Hao Wu <wuhaotsh@google.com> writes:
 
-> This type is used to represent block devs that are not suitable to
-> be represented by other existing types.
+> We made 3 changes to the at24c_eeprom_init function in
+> npcm7xx_boards.c:
+>
+> 1. We allow the function to take a I2CBus* as parameter. This allows
+>    us to attach an EEPROM device behind an I2C mux which is not
+>    possible with the old method.
+>
+> 2. We make at24c EEPROMs are backed by drives so that we can
+>    specify the content of the EEPROMs.
+>
+> 3. Instead of using i2c address as unit number, This patch assigns
+>    unique unit numbers for each eeproms in each board. This avoids
+>    conflict in providing multiple eeprom contents with the same address.
+>    In the old method if we specify two drives with the same unit number,
+>    the following error will occur: `Device with id 'none85' exists`.
 
-Hinting at intended use wouldn't hurt: ", such as <mumble>"
+When a commit does three things, chances are splitting it into three
+commits would be an improvement.  This is *not* a demand.
 
 >
-> Signed-of-by: Hao Wu <wuhaotsh@google.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
 > ---
->  blockdev.c                | 3 ++-
->  include/sysemu/blockdev.h | 1 +
->  meson                     | 2 +-
->  3 files changed, 4 insertions(+), 2 deletions(-)
+>  hw/arm/npcm7xx_boards.c | 14 +++++++++-----
+>  1 file changed, 9 insertions(+), 5 deletions(-)
 >
-> diff --git a/blockdev.c b/blockdev.c
-> index b35072644e..c26cbcc422 100644
-> --- a/blockdev.c
-> +++ b/blockdev.c
-> @@ -80,6 +80,7 @@ static const char *const if_name[IF_COUNT] = {
->      [IF_MTD] = "mtd",
->      [IF_SD] = "sd",
->      [IF_VIRTIO] = "virtio",
-> +    [IF_OTHER] = "other",
->      [IF_XEN] = "xen",
->  };
+> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+> index dec7d16ae5..9121e081fa 100644
+> --- a/hw/arm/npcm7xx_boards.c
+> +++ b/hw/arm/npcm7xx_boards.c
+> @@ -126,13 +126,17 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState *soc, uint32_t num)
+>      return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
+>  }
 >  
-> @@ -739,7 +740,7 @@ QemuOptsList qemu_legacy_drive_opts = {
->          },{
->              .name = "if",
->              .type = QEMU_OPT_STRING,
-> -            .help = "interface (ide, scsi, sd, mtd, floppy, pflash, virtio)",
-> +            .help = "interface (ide, scsi, sd, mtd, floppy, pflash, virtio, other)",
->          },{
->              .name = "file",
->              .type = QEMU_OPT_STRING,
-> diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
-> index 32c2d6023c..bce6aab573 100644
-> --- a/include/sysemu/blockdev.h
-> +++ b/include/sysemu/blockdev.h
-> @@ -24,6 +24,7 @@ typedef enum {
->       */
->      IF_NONE = 0,
->      IF_IDE, IF_SCSI, IF_FLOPPY, IF_PFLASH, IF_MTD, IF_SD, IF_VIRTIO, IF_XEN,
-> +    IF_OTHER,
->      IF_COUNT
->  } BlockInterfaceType;
->  
-> diff --git a/meson b/meson
-> index b25d94e7c7..776acd2a80 160000
-> --- a/meson
-> +++ b/meson
-> @@ -1 +1 @@
-> -Subproject commit b25d94e7c77fda05a7fdfe8afe562cf9760d69da
-> +Subproject commit 776acd2a805c9b42b4f0375150977df42130317f
+> -static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
+> -                              uint32_t rsize)
+> +static void at24c_eeprom_init(I2CBus *i2c_bus, int bus, uint8_t addr,
+> +                              uint32_t rsize, int unit_number)
 
-Oopsie :)
+I'd keep bus and unit number together.
+
+I'd name the new parameter @unit, to match drive_get().
+
+>  {
+> -    I2CBus *i2c_bus = npcm7xx_i2c_get_bus(soc, bus);
+>      I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+>      DeviceState *dev = DEVICE(i2c_dev);
+> +    DriveInfo *dinfo;
+>  
+> +    dinfo = drive_get(IF_OTHER, bus, unit_number);
+> +    if (dinfo) {
+> +        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
+> +    }
+>      qdev_prop_set_uint32(dev, "rom-size", rsize);
+>      i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
+>  }
+> @@ -239,8 +243,8 @@ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
+>      i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
+>      i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
+>  
+> -    at24c_eeprom_init(soc, 9, 0x55, 8192);
+> -    at24c_eeprom_init(soc, 10, 0x55, 8192);
+> +    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 9), 9, 0x55, 8192, 0);
+> +    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 10), 10, 0x55, 8192, 1);
+>  
+>      /*
+>       * i2c-11:
 

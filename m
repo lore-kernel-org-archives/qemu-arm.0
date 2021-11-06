@@ -1,169 +1,384 @@
-Received: by 2002:a0c:e741:0:0:0:0:0 with SMTP id g1csp1863323qvn;
-        Fri, 5 Nov 2021 09:29:24 -0700 (PDT)
-X-Received: by 2002:a05:6830:2714:: with SMTP id j20mr31502909otu.104.1636129764294;
-        Fri, 05 Nov 2021 09:29:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1636129764; cv=none;
+Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp3781009lfv;
+        Sat, 6 Nov 2021 11:11:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzUC88KhysW5EsIoQtas6b7Flbeo3m0cp0GO71+c/pAJRRdf1t2ZOMvYtOnX4uiH3X4MFyw
+X-Received: by 2002:a4a:7601:: with SMTP id t1mr12896869ooc.45.1636222308118;
+        Sat, 06 Nov 2021 11:11:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1636222308; cv=none;
         d=google.com; s=arc-20160816;
-        b=Go+4XxQbVDnk4Svg7EKIWqHXSQh+/w8OuSHp6k/0pmbsTVph6h+2hi/U5Ghu9u+DTG
-         FXqoXGuxAWIJich1oLssT9Asq0Ytnst5tn1kjyAOPJvkWLOWu8s9kAuLIQIWu9TnSUdm
-         ODLZtH6/CRRzFbJ/zVsoL6d94jcMe2g9pyCsGzHOrGSBRT5ZSBH6Oc24gJzzTVL84KjN
-         e+MGpBBOPSuPLALcHdU/ppCi1gpVjsqWVxyDKcsRc7soY7VyrDQ8Dqlm9qX+RNg2oWSD
-         6tF/bwNkdYcASZrvPxL7GD9lc4ODvNd9RMSTVVYn/p2oBnSmRbuZyHy1XI/uUdIw4P2b
-         bRNg==
+        b=oJbtU2JPwatL0OQHH8pJBeaB5rXJpZF6OiD2OkgKt/A9sIWCIHclwwVbts7oqLFU30
+         5JnC8K9DaQe04vZ+2uHLMlb6VwH/NwV+Ggky+3w7FcSu1eBgAfGFE3swl2I8I7ovLuCQ
+         t0Q2PnHZCozbApCow5qgG3XBZLc7z0Xv6qiubeYmGSaKHh6wT5SZvi6YC0J8soU3uz/b
+         bSD5UmN6Bgy6Sn4y+6zIb6DOCqOkW5CLlT085K2GvHIRkd6U4+1SvxB33zP9fY49o7xB
+         Kjc6y0kXIzm4O1BGM1WPnDIvXn7kLUqZyJ2ZcVd9ut9wP/9ZkHWN3prrTupdk+XjOeZa
+         SzQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=mfjAIJbhKDA/sTBSPUr6RQoDjgmSlvzr65p+yJK5Wrc=;
-        b=YentfE6/6U+WA67RrzHN429e0Vjdx3NESeoBMp9O6fVlBCcE8XHxmbYobA4GqgaGkR
-         3ms4H6px+mIXBddYXSHda7AC2aHQ/x9jS75MnktY7cIqL3HJCLYBnPMKU3bzrk5yXpRr
-         0M6x8WI0Pi8In79H6cLKrBIhh5/94phJqn/4IiU7p9rV+dB4ir+9IZMv1Z1Tc7W5K8Vv
-         ZzXafTlZgytq8Xe/aXCT5RD02uySe2+GjwSYFgZZJrbCH/7c6P1+T1EwtAbVl1TklB2t
-         Lee9GrgPhaPs1e4rx0wHAKRmT1Zu/8wO3bLdEBEpEVf/PpsL1KcO8A/RY1QGA2dfe5K+
-         63NQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:references:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=WUEOzmkb9JESioXFoR++yXxTmmlYTcO0KlbbzjVGusA=;
+        b=VhCjzpBC7wetbIj9Ab12iVbZ584Eze4KhZ+33sT783IyBhgW9lHc2KmIXaK7+Udj5D
+         jq/8SUN4/fsnNSRk3+Rg6Ncph9HDdS9JSI5EfaDZfBi03q1mQmi5Z9PK323jV86QdbqL
+         /VqGzHS/87+vizliAoq1kEvk1XTxyUnG6NRpAH1tGnHXk34qhIGpFtvskjywgtYgT/CI
+         NnJhnYUDfSt4odJSGsfoC0WiYC+KMxk2Xi8LgEtDefE67nZE4dsLrrbcRye9jZRwusm2
+         rZTvn0vu5KiMK/XuZyzN5Jl+0jhlFLDDA8N9Ni7JhQfCv88JdckJS/q5KCBrY5EEHdI5
+         rjFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O6qBvOB5;
-       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <luis.machado@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k18sor1176703oij.41.2021.11.05.09.29.24
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f16si7312776oiw.186.2021.11.06.11.11.47
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 05 Nov 2021 09:29:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 06 Nov 2021 11:11:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O6qBvOB5;
-       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=mfjAIJbhKDA/sTBSPUr6RQoDjgmSlvzr65p+yJK5Wrc=;
-        b=O6qBvOB5aCCsVk47Y8KnjY+GXAM0szYcls1YTEMd+2aXJwrI3gNWCF7peLR8yVG6uC
-         R4RmvKNw6IzwgatZ1BAcaP2qvAOsRJjrZC/KxrLdXl8NxmtwKNNw8GwwRF1GE+JRnndU
-         NUIFqe23yqp8+VA4qzjdM2srhHZ+aH7Z1Mk1a7J/q5sf59ygrTo+7ZqypI9xfIsec6uH
-         lk2Lxw6K5qzO5KLSiuA4ORuQchbikVpu9Exb0tf9bwnOiH1mcuDblbhCloYE2iIC7zPV
-         8SGMQXzARQyhtbkJn2I0NguJG1UpkEbJVjvr0oWkNIf+dkyMfnuzlaOykUsGS1FRt4I1
-         6ePw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=mfjAIJbhKDA/sTBSPUr6RQoDjgmSlvzr65p+yJK5Wrc=;
-        b=uIgCIjjLcJj2084kSsIomfx+LdjlmHADYEUo4uhVm71QXuJ00DVGTEAvQeQz170oGm
-         xQiGlu5TeAlmzM08cpzq+wJFZtYnlB4fxcoIp2T7N6Mjf1fR855dqxBoUhAKB+UegXo5
-         ZGF6/JxKDwtKtfHI6sWM/c50FATa7xAQwa+ITmHv8ICtQWuc9LclICHZH8kBauolTnYe
-         7S9Be4gprbH2Tsk7t3P4/7KKHT8LBaR/3xtThhIf/QZoePaBxGjRs6XbpLRt5mW+cBRM
-         bKgsjB2oAwDPkwsjew8uEq5N0Zjuf+Q6Tj7wbHQkcQFjZ6drIjvWpnwWD90ex/pP+pEx
-         1Wvg==
-X-Gm-Message-State: AOAM533ymp4ZKDmu6uDvU+7iKrAECo9faXr23YQy+rz8kyTgBquiJu4i
-	S8oVsnJplkAHAR5DduivLd9ZJhVx
-X-Google-Smtp-Source: ABdhPJyf3BlSvJnJHAhATbRIw/X6YNwgSS8ssg9QzCiBjvgxwKU7K0Z1OdYLxnumkq3kMPucZfaPMQ==
-X-Received: by 2002:a05:6808:1444:: with SMTP id x4mr22735887oiv.79.1636129763855;
-        Fri, 05 Nov 2021 09:29:23 -0700 (PDT)
-Return-Path: <luis.machado@linaro.org>
-Received: from ?IPv6:2804:7f0:4841:487c:5509:2e45:5dfe:a087? ([2804:7f0:4841:487c:5509:2e45:5dfe:a087])
-        by smtp.gmail.com with ESMTPSA id a13sm2633510oiy.9.2021.11.05.09.29.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 Nov 2021 09:29:23 -0700 (PDT)
-Subject: Re: [PULL 21/30] target/arm: use official org.gnu.gdb.aarch64.sve
- layout for registers
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Claudio Fontana <cfontana@suse.de>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-References: <20210115130828.23968-1-alex.bennee@linaro.org>
- <20210115130828.23968-22-alex.bennee@linaro.org>
- <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de> <874kjdugip.fsf@linaro.org>
- <8cb88b76-caa3-ba26-b288-4d87b06f56ec@suse.de> <871regvs0w.fsf@linaro.org>
- <CAFEAcA9FKA9k3ePEVALXnRcfd4ygybMrmpD=ZjV1A==at+w9Uw@mail.gmail.com>
- <3c1521e5-5182-18f3-b5bf-9340745ec92f@linaro.org>
- <e7c11bc8-e7ba-8192-e4ba-887c38f27b15@linaro.org>
- <1b2ee804-6360-c77f-45f2-8fe39e39f9d9@linaro.org> <87v916h937.fsf@linaro.org>
-From: Luis Machado <luis.machado@linaro.org>
-Message-ID: <71c392eb-f333-89cf-d5e0-313d564dce4a@linaro.org>
-Date: Fri, 5 Nov 2021 13:29:20 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48758 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mjQAN-0004Yj-Av
+	for alex.bennee@linaro.org; Sat, 06 Nov 2021 14:11:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46296)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1mjQA1-0004YW-Qq; Sat, 06 Nov 2021 14:11:25 -0400
+Received: from relay4-d.mail.gandi.net ([217.70.183.196]:55041)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1mjQ9t-00087W-NH; Sat, 06 Nov 2021 14:11:20 -0400
+Received: (Authenticated sender: jcd@tribudubois.net)
+ by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id A7514E000B;
+ Sat,  6 Nov 2021 18:11:12 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary="------------oFQuK9EeA3dsND7r6e96dJt7"
+Message-ID: <e0a1b786-4b1c-c608-495b-3fb839de2376@tribudubois.net>
+Date: Sat, 6 Nov 2021 19:11:11 +0100
 MIME-Version: 1.0
-In-Reply-To: <87v916h937.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.2
+Subject: Re: Qemu and ARM secure state.
 Content-Language: en-US
+From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <07e63acb-b756-2586-2ba2-b54b837f7fc8@tribudubois.net>
+ <CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com>
+ <c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net>
+ <d19f6d2c-7505-b326-3a67-48c336f111e9@tribudubois.net>
+ <dd45f94c-6110-7251-4f9f-5b4e1fbb73a4@tribudubois.net>
+In-Reply-To: <dd45f94c-6110-7251-4f9f-5b4e1fbb73a4@tribudubois.net>
+Received-SPF: pass client-ip=217.70.183.196; envelope-from=jcd@tribudubois.net;
+ helo=relay4-d.mail.gandi.net
+X-Spam_score_int: -59
+X-Spam_score: -6.0
+X-Spam_bar: ------
+X-Spam_report: (-6.0 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ NICE_REPLY_A=-3.407, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jGtiysLq1zwn
+
+This is a multi-part message in MIME format.
+--------------oFQuK9EeA3dsND7r6e96dJt7
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: aiWVbwA+s4mT
 
-On 11/5/21 1:15 PM, Alex Bennée wrote:
-> 
-> Luis Machado <luis.machado@linaro.org> writes:
-> 
->> On 11/4/21 6:03 PM, Luis Machado wrote:
->>> On 10/4/21 3:44 PM, Luis Machado wrote:
->>>> Hi,
->>>>
->>>> On 9/21/21 10:55 AM, Peter Maydell wrote:
->>>>> On Tue, 19 Jan 2021 at 15:57, Alex Bennée <alex.bennee@linaro.org>
->>>>> wrote:
->>>>>>
->>>>>>
->>>>>> Claudio Fontana <cfontana@suse.de> writes:
->>>>>>
->>>>>>> On 1/19/21 3:50 PM, Alex Bennée wrote:
->>>>>>>>
->>>>>>>> Claudio Fontana <cfontana@suse.de> writes:
->>>>>>>>> qemu-system-aarch64: -gdb
->>>>>>>>> unix:path=/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server:
->>>>>>>>> info: QEMU waiting for connection on:
->>>>>>>>> disconnected:unix:/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server
->>>>>>>>> warning: while parsing target description (at line 47): Vector
->>>>>>>>> "svevhf" references undefined type "ieee_half"
->>>>>>>>> warning: Could not load XML target description; ignoring
->>>>>>>>> qemu-system-aarch64: QEMU: Terminated via GDBstub
->>>>>>>>>
->>>>>>>>> Seems to indicate it is "ieee_half" -related?
->>>>>
->>>>>> So it looks like TDESC_TYPE_IEEE_HALF was only implemented in GDB 9.1
->>>>>> and there is no probing possible during the gdbstub connection. I guess
->>>>>> I can either go back to stubbing it out (which would break gdb's SVE
->>>>>> understanding) or up our minimum GDB version check for running tests.
->>>>>> That would mean less people test GDB (or at least until the distros
->>>>>> catch up) but considering it was zero people not too long ago maybe
->>>>>> that's acceptable?
->>>>>
->>>>> I just ran into this trying to connect qemu-aarch64 to the
->>>>> Ubuntu gdb-multiarch. I don't care about SVE at all in this
->>>>> case, but the 'max' CPU includes SVE by default, so we report
->>>>> it to gdb even if the guest program being run doesn't use SVE at all.
->>>>> This effectively means that usecases that used to work no longer do :-(
->>>>>
->>>>> Luis: do we really have to report to gdb all the possible
->>>>> data types that might be in SVE vector registers? Won't
->>>>> gdb autogenerate pseudoregisters the way it does with
->>>>> Neon d0..d31 ?
->>>>>
->>>>> thanks
->>>>> -- PMM
->>>>>
->>>>
->>>> I'll check what can be done here.
->>> Apologies. I got sidetracked with a few other things. I'm getting
->>> back to this one.
->>> I'm guessing the less painful solution would be for QEMU to report a
->>> more compact XML description for SVE, supported by the oldest GDB we
->>> would like to validate things on, and leave it to GDB (newer
->>> releases) to add whatever pseudo-registers it deems appropriate.
+One small question/remark:
+
+According to the the "Arm Power State Coordinate Interface" (DEN0022D.b) 
+document (chapter 5) PSCI calls can only be issued by "normal world" 
+(EL1 or EL2). Therefore, should we be adding a test for the current 
+secure state in the arm_is_psci_call() function? This would prevent 
+calling the built-in Qemu PSCI function if SMC is issued  from secure state.
+
+Regards.
+
+JC
+
+Le 06/11/2021 à 14:04, Jean-Christophe DUBOIS a écrit :
+> So it seems that what is needed is a way to choose on the command line 
+> if we want to enable the Qemu built-in PSCI implementation (because we 
+> are booting linux for example) or if we really want a bare metal 
+> processor (because we are booting a trustedOS like optee).
+>
+> The "virt" platform allows to dynamically choose one or the other. 
+> Other platforms seems to need the same feature.
+>
+> JC
+>
+> Le 06/11/2021 à 11:04, Jean-Christophe DUBOIS a écrit :
+>> So, I am trying to understand:
 >>
->> Is it only the ieee_half type that is causing issues here? Or are
->> there other types?
-> 
-> That was the only one I noticed - which makes sense as it's a fairly new
-> type.
-> 
-> 
+>> Contrary to what I said, In my case the SMC instruction is not really 
+>> a "no-op" as it sets R0 to -1 (0xffffffff) to indicate an unknown 
+>> PSCI service (by the Qemu internal PSCI handler).
+>>
+>> With the new code introduced by the "arm: tcg: Adhere to SMCCC 1.3 
+>> section 5.2" commit, once a processor/platform configure things to 
+>> have PSCI requests handled by Qemu code (with "psci-conduit" 
+>> attribute set to QEMU_PSCI_CONDUIT_SMC for example), then any 
+>> exception raised by an "SMC" instruction will be only handled by the 
+>> Qemu internal code and will no call the monitor related code in the 
+>> guest/OS application. This seems to be why my SMC monitor handler is 
+>> not called anymore in my case.
+>>
+>> As my i.MX6UL is a mono-processor platform I don't really need to set 
+>> the "psci-conduit" attribute (which really makes sense when you have 
+>> a cluster of 2 or more cores I guess). As a matter of fact if I 
+>> remove the "psci-conduit" attribute setting from the i.MX6UL 
+>> processor file, my application is working again on main/latest.
+>>
+>> But this still raises the question to know if the current behavior 
+>> for processors with "psci-conduit" set to SMC or HVC is correct. For 
+>> example an i.MX7 based platform (with up to 4 cortex A7 cores) would 
+>> not be able to trigger OS SMC handler as the exception would be 
+>> entirely processed by the Qemu internal code (with CR generally set 
+>> to -1 in R0 to indicate unknown PSCI request).
+>>
+>> Is there something I am missing?
+>>
+>> Regards
+>>
+>> JC
+>>
+>> Le 04/11/2021 à 22:11, Jean-Christophe DUBOIS a écrit :
+>>> Le 04/11/2021 à 12:11, Peter Maydell a écrit :
+>>>> On Wed, 3 Nov 2021 at 13:27, Jean-Christophe DUBOIS<jcd@tribudubois.net>  wrote:
+>>>>> I have a little application that is designed to work on the i.MX6UL processor.
+>>>>>
+>>>>> I developed it and tested it on the mcimx6ul-evk platform emulated by Qemu.
+>>>>>
+>>>>> This application used to work "flawlessly" on Qemu 5.0.50 and is working on Qemu 6.0.0 (available as a pre-built package on the latest Ubuntu).
+>>>>>
+>>>>> But when I try to run the exact same command line on a Qemu version I compile myself from main/latest of github (Qemu 6.1.50), my application fails to start.
+>>>>>
+>>>>> So a little background:
+>>>>>
+>>>>> My application expects to start in "secure" state and supervisor mode (which is the default state of i.MX6UL when booting barebone [without u-boot]).
+>>>>>
+>>>>> >From this state the application tries to get to "non secure" / hypervisor mode which imply going to the "secure" / monitor state before being able to drop to "non secure" / hypervisor. To do so is runs a "smc 0" operand (from "secure" / supervisor).
+>>>>>
+>>>>> This "smc" instruction is processed "as expected" by Qemu 5.0.50 and Qemu 6.0.0 (getting to "secure" / monitor mode) but on Qemu 6.1.50 (latest from github) it is as if the smc operand was a no-op. It doesn't trigger any exception and the processor just get to the next instruction after the "smc" instruction. So I am a bit puzzled.
+>>>>>
+>>>>> Is there something that changed in Qemu (since Qemu 6.0.0) when it comes to the "secure" world/state?
+>>>>> Is there some additional command line parameters to use (I search in the documentation but without luck) to get secure world behavior ?
+>>>>> Is it necessary to "adapt" the emulated platform (i.MX6UL/mcimx6ul-evk) in some way (it looks like the "virt" machine with "secure=on" does work for arm platform)?
+>>>> Could you try doing a bisect to find the QEMU commit that caused
+>>>> your guest to stop working ?
+>>>
+>>> OK, I did the bisect and the commit that break the i.MX6UL behavior 
+>>> for my program is commit 9fcd15b9193e819b6cc2fd0a45e3506148812bb4 
+>>> (arm: tcg: Adhere to SMCCC 1.3 section 5.2).
+>>>
+>>> Before it the SMC instruction would trigger a monitor exception.
+>>>
+>>> After it the SMC instruction is acting like a no-op.
+>>>
+>>> Thanks
+>>>
+>>> JC
+>>>
+>>>
+>>>> thanks
+>>>> -- PMM
+>>>>
+>>>
+>>
+>
 
-Ok. I'm considering dialing down the number of subtypes for SVE Z 
-registers, which would greatly simplify the generation of the XML for 
-SVE features. But I still need to do some more investigation.
+--------------oFQuK9EeA3dsND7r6e96dJt7
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <div class="moz-cite-prefix">One small question/remark:</div>
+    <div class="moz-cite-prefix"><br>
+    </div>
+    <div class="moz-cite-prefix">According to the the "Arm Power State
+      Coordinate Interface" (DEN0022D.b) document (chapter 5) PSCI calls
+      can only be issued by "normal world" (EL1 or EL2). Therefore,
+      should we be adding a test for the current secure state in the
+      arm_is_psci_call() function? This would prevent calling the
+      built-in Qemu PSCI function if SMC is issued  from secure state.<br>
+    </div>
+    <div class="moz-cite-prefix"><br>
+    </div>
+    <div class="moz-cite-prefix">Regards.</div>
+    <div class="moz-cite-prefix"><br>
+    </div>
+    <div class="moz-cite-prefix">JC</div>
+    <div class="moz-cite-prefix"><br>
+    </div>
+    <div class="moz-cite-prefix">Le 06/11/2021 à 14:04, Jean-Christophe
+      DUBOIS a écrit :<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:dd45f94c-6110-7251-4f9f-5b4e1fbb73a4@tribudubois.net">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <div class="moz-cite-prefix">So it seems that what is needed is a
+        way to choose on the command line if we want to enable the Qemu
+        built-in PSCI implementation (because we are booting linux for
+        example) or if we really want a bare metal processor (because we
+        are booting a trustedOS like optee).</div>
+      <div class="moz-cite-prefix"><br>
+      </div>
+      <div class="moz-cite-prefix">The "virt" platform allows to
+        dynamically choose one or the other. Other platforms seems to
+        need the same feature.</div>
+      <div class="moz-cite-prefix"><br>
+      </div>
+      <div class="moz-cite-prefix">JC</div>
+      <div class="moz-cite-prefix"><br>
+      </div>
+      <div class="moz-cite-prefix">Le 06/11/2021 à 11:04,
+        Jean-Christophe DUBOIS a écrit :<br>
+      </div>
+      <blockquote type="cite"
+        cite="mid:d19f6d2c-7505-b326-3a67-48c336f111e9@tribudubois.net">
+        <meta http-equiv="Content-Type" content="text/html;
+          charset=UTF-8">
+        <div class="moz-cite-prefix">So, I am trying to understand:</div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">Contrary to what I said, In my case
+          the SMC instruction is not really a "no-op" as it sets R0 to
+          -1 (0xffffffff) to indicate an unknown PSCI service (by the
+          Qemu internal PSCI handler).<br>
+        </div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">With the new code introduced by the
+          "arm: tcg: Adhere to SMCCC 1.3 section 5.2" commit, once a
+          processor/platform configure things to have PSCI requests
+          handled by Qemu code (with "psci-conduit" attribute set to
+          QEMU_PSCI_CONDUIT_SMC for example), then any exception raised
+          by an "SMC" instruction will be only handled by the Qemu
+          internal code and will no call the monitor related code in the
+          guest/OS application. This seems to be why my SMC monitor
+          handler is not called anymore in my case.</div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">As my i.MX6UL is a mono-processor
+          platform I don't really need to set the "psci-conduit"
+          attribute (which really makes sense when you have a cluster of
+          2 or more cores I guess). As a matter of fact if I remove the
+          "psci-conduit" attribute setting from the i.MX6UL processor
+          file, my application is working again on main/latest.</div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">But this still raises the question
+          to know if the current behavior for processors with
+          "psci-conduit" set to SMC or HVC is correct. For example an
+          i.MX7 based platform (with up to 4 cortex A7 cores) would not
+          be able to trigger OS SMC handler as the exception would be
+          entirely processed by the Qemu internal code (with CR
+          generally set to -1 in R0 to indicate unknown PSCI request).</div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">Is there something I am missing?<br>
+        </div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">Regards</div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">JC<br>
+        </div>
+        <div class="moz-cite-prefix"><br>
+        </div>
+        <div class="moz-cite-prefix">Le 04/11/2021 à 22:11,
+          Jean-Christophe DUBOIS a écrit :<br>
+        </div>
+        <blockquote type="cite"
+          cite="mid:c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net">
+          <meta http-equiv="Content-Type" content="text/html;
+            charset=UTF-8">
+          <div class="moz-cite-prefix">Le 04/11/2021 à 12:11, Peter
+            Maydell a écrit :<br>
+          </div>
+          <blockquote type="cite"
+cite="mid:CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com">
+            <pre class="moz-quote-pre" wrap="">On Wed, 3 Nov 2021 at 13:27, Jean-Christophe DUBOIS <a class="moz-txt-link-rfc2396E" href="mailto:jcd@tribudubois.net" moz-do-not-send="true">&lt;jcd@tribudubois.net&gt;</a> wrote:
+</pre>
+            <blockquote type="cite">
+              <pre class="moz-quote-pre" wrap="">I have a little application that is designed to work on the i.MX6UL processor.
+
+I developed it and tested it on the mcimx6ul-evk platform emulated by Qemu.
+
+This application used to work "flawlessly" on Qemu 5.0.50 and is working on Qemu 6.0.0 (available as a pre-built package on the latest Ubuntu).
+
+But when I try to run the exact same command line on a Qemu version I compile myself from main/latest of github (Qemu 6.1.50), my application fails to start.
+
+So a little background:
+
+My application expects to start in "secure" state and supervisor mode (which is the default state of i.MX6UL when booting barebone [without u-boot]).
+
+&gt;From this state the application tries to get to "non secure" / hypervisor mode which imply going to the "secure" / monitor state before being able to drop to "non secure" / hypervisor. To do so is runs a "smc 0" operand (from "secure" / supervisor).
+
+This "smc" instruction is processed "as expected" by Qemu 5.0.50 and Qemu 6.0.0 (getting to "secure" / monitor mode) but on Qemu 6.1.50 (latest from github) it is as if the smc operand was a no-op. It doesn't trigger any exception and the processor just get to the next instruction after the "smc" instruction. So I am a bit puzzled.
+
+Is there something that changed in Qemu (since Qemu 6.0.0) when it comes to the "secure" world/state?
+Is there some additional command line parameters to use (I search in the documentation but without luck) to get secure world behavior ?
+Is it necessary to "adapt" the emulated platform (i.MX6UL/mcimx6ul-evk) in some way (it looks like the "virt" machine with "secure=on" does work for arm platform)?
+</pre>
+            </blockquote>
+            <pre class="moz-quote-pre" wrap="">Could you try doing a bisect to find the QEMU commit that caused
+your guest to stop working ?</pre>
+          </blockquote>
+          <p>OK, I did the bisect and the commit that break the i.MX6UL
+            behavior for my program is commit <span class="sha-block"><span
+                class="sha user-select-contain">9fcd15b9193e819b6cc2fd0a45e3506148812bb4
+                (</span></span>arm: tcg: Adhere to SMCCC 1.3 section
+            5.2).</p>
+          <p>Before it the SMC instruction would trigger a monitor
+            exception.</p>
+          <p>After it the SMC instruction is acting like a no-op.<br>
+          </p>
+          <p>Thanks</p>
+          <p>JC<br>
+          </p>
+          <p><span class="sha-block"><span class="sha
+                user-select-contain"></span></span></p>
+          <p><span class="sha-block"><span class="sha
+                user-select-contain"><br>
+              </span></span></p>
+          <blockquote type="cite"
+cite="mid:CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com">
+            <pre class="moz-quote-pre" wrap="">thanks
+-- PMM
+
+</pre>
+          </blockquote>
+          <p><br>
+          </p>
+        </blockquote>
+        <p><br>
+        </p>
+      </blockquote>
+      <p><br>
+      </p>
+    </blockquote>
+    <p><br>
+    </p>
+  </body>
+</html>
+--------------oFQuK9EeA3dsND7r6e96dJt7--
+

@@ -1,76 +1,113 @@
-Received: by 2002:a05:6512:b9e:0:0:0:0 with SMTP id b30csp1388844lfv;
-        Thu, 4 Nov 2021 14:11:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwANz6ah9M+DdTdU/MPqFNbj7Vh0CXYKzVavFdwb7c5tvbGXSxjAaSi4MDd8gahYtMEfVeM
-X-Received: by 2002:a05:6808:2221:: with SMTP id bd33mr18671423oib.175.1636060310967;
-        Thu, 04 Nov 2021 14:11:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1636060310; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp390328lfk;
+        Mon, 8 Nov 2021 06:51:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx7AO4NGnaylgIhdb3TXiszqZiZ5Z67GLLH/eusyKF8dKuVFGJIs39lBGlhgIWIxHo7WwpG
+X-Received: by 2002:a67:fa93:: with SMTP id f19mr531076vsq.43.1636383073204;
+        Mon, 08 Nov 2021 06:51:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636383073; cv=none;
         d=google.com; s=arc-20160816;
-        b=q0546D8AFhzqbyO0Yuvh/+OU3iFAPUoWNZZND1wQ6joqf3gxbqfsU3xBu9Ieg5GRIp
-         vhFWkdzfHQX1GdhhF2SoLXLBJuiB3ViPRJ51q+vWUqq41STXCzPJiW6zZVVTYnTE7V5a
-         D34Z5VY4FDUMzo6Y+JBibdC4E7dridmS7PdWUT6h3djthVipoDXIFDQWYYzSRU3r+kV1
-         AexF+0rFGhx1xxpdwOTYtcV5tTUhQ6pfg2SjEKi3yn+DR/PpXz1LC8CB6tESqq5dCuGe
-         GNIj8y0uyR+NFdnA+o6qQiZGqLgfTuVeQfdQkIuGNrJzc+Lqu84YjV3uFToIqTxoiSin
-         MPxg==
+        b=y1J6A+5TzdU5J92l6emcWSFjc/u6S9KuHzepOhELVolw3ltQzthSma6XR8AHN6ep9A
+         2j8ZJ5eEdFicYiWYxkp1jCy5qZWFP2iWwCa7+nmkVMmrFYXM2t9EAoqCKDG5N3Uii+02
+         YOXYMkQ5x8Mi2NW/sO75ZEQeQMXxEQFWX4+otqEC8inQThfYl+1M4b8OuHptsoqzVoQV
+         i5dy0F/VTaOt0I8g5++ti01QMoYcTsC1bA0yltsZdizJH8iBIcjQYaPHxVZXAukmf8N7
+         qS1I33rmbUzcIGlSEZX1O5S+g1g5zdJ9z5bnrjyWAdXBhEAm13X1w+UMUzph28/LW1OU
+         0yAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=OMDuTYi2xh4lLXJhQTkfcfDsY3Csk8CkrUHrQINYJnk=;
-        b=IsBWmwQhZoUdmyo5UwMWyN5BcqReZvfdjIbGVsLEEdj6HVuk4MIApoktv6UFlDOytL
-         vMAWhAHbDgHr8ZxYAvaLkUWpD7bF7tfQUiwwPBFd+gL0GYo002sRl+TAvgFK/PvTLxt2
-         RFXlkc/kDV6Zu0PaQmzlQBz9ri0WxLyzHtxRa3r6V5XxLtzQCQ2tpef+ZWIso/8cZY3R
-         wnlqtoAOiEcNqjioP8nuXwfzXgBlo++BCHLERgzCOOwejPtSd1GamKWSZwpwADGOpykx
-         KEnQEZiufRZ4bQXcuPkawIVJGhRQcJk6KD6v5LdZvzxmlWTOdT3Kb0EKpdV2D1RtFsrn
-         Em5g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=VRzp0FWK8MYVZPdHdcEq6rLwLfL7m6N+xRuLlCo5WmA=;
+        b=TQHxWU6I0fN9fMV/Qls8+Ys5tKj3WtNejNQQvJ6PJKcc5gxPLB8ypx1LT7Py5oMVEf
+         9F4767AT31xwQqyIvYQGLwP3cGPJbjUgickrE9+32Gdpp+IZT9kMd1C1IFkCtS/16ZlY
+         iWqJ36fz5Er1b+cEsWdi0cVwKGkn36mWlKXRh/cYktmyFNlaCnrldmyMdUeiAm6sogpb
+         9146Zz8N6hLN+hBpkonOeOPUBsRQCI6X2nmeiNlB77b7Fk3qraVaX+haFQ2Q+XoAfaMN
+         DG/Zw+b938tPyIa95UYRzKZB/hz29kzcuquf1s9aIfQaKYcUPEmxxtnIJop59qd5NS5l
+         31qQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="ex3QiOh/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x5si11810998ooe.36.2021.11.04.14.11.50
+        by mx.google.com with ESMTPS id t6si14641210uar.51.2021.11.08.06.51.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Nov 2021 14:11:50 -0700 (PDT)
+        Mon, 08 Nov 2021 06:51:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60568 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="ex3QiOh/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mik1W-00081l-7s
-	for alex.bennee@linaro.org; Thu, 04 Nov 2021 17:11:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50588)
+	id 1mk5zM-0004Z3-IS
+	for alex.bennee@linaro.org; Mon, 08 Nov 2021 09:51:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35902)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1mik1E-000807-Ec; Thu, 04 Nov 2021 17:11:32 -0400
-Received: from relay9-d.mail.gandi.net ([217.70.183.199]:50079)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1mik1B-00074j-Md; Thu, 04 Nov 2021 17:11:31 -0400
-Received: (Authenticated sender: jcd@tribudubois.net)
- by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 7EEEBFF805;
- Thu,  4 Nov 2021 21:11:23 +0000 (UTC)
-Content-Type: multipart/alternative;
- boundary="------------jC5hRl0UNJFFVHOI7HwStT30"
-Message-ID: <c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net>
-Date: Thu, 4 Nov 2021 22:11:22 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mk5yd-0004Yg-NT
+ for qemu-arm@nongnu.org; Mon, 08 Nov 2021 09:50:28 -0500
+Received: from [2a00:1450:4864:20::430] (port=39455
+ helo=mail-wr1-x430.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mk5yb-0005c0-NV
+ for qemu-arm@nongnu.org; Mon, 08 Nov 2021 09:50:27 -0500
+Received: by mail-wr1-x430.google.com with SMTP id d27so27353027wrb.6
+ for <qemu-arm@nongnu.org>; Mon, 08 Nov 2021 06:50:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=VRzp0FWK8MYVZPdHdcEq6rLwLfL7m6N+xRuLlCo5WmA=;
+ b=ex3QiOh/4Hu71GdjoT9pJdao9Mje6JBDgCmjbmVVqrcBHzl37/fl2pkesOFN5yUtHM
+ lLOMs5ZczoQ2zeClt35NqfGJRVaQhKTmRfYzZsXWbLqy2yq634Uq+N1G36p58u5+napr
+ 4oxPAcANfQQqkHUcnwgNS/IOIbpdGX5yBDaJH/eJWHumK3SV2ahUGaDuYEpKJ4IK7iAh
+ FVAg80svdKptqw1pXGB6OQMRmpQ7pmQ0YCRhWvXEDFutE2i5dx1FKG/G/d2fr1DwNQeK
+ 6TfQC0bygdrFyJSgbgML12s8upnjvMY+y5jbL+s3PxzaKcfYbFDKmaFp9pviDHWLdf4S
+ Tp0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=VRzp0FWK8MYVZPdHdcEq6rLwLfL7m6N+xRuLlCo5WmA=;
+ b=cEgSuT6QH2lxJrjsyGymnSp5MeF6/zvkRzoakEVQQVMDAld2GTwJkEdjNGfewfQW2s
+ 1r+rpeSUqRqNjugnGj5KnXMO6vNYUMrOA5pwlkg57p7ADHX3yDqqL4+/dd9ozqte11T1
+ JtVPQr44T7akghLH4zRCditivuLcuR52bC7j3RERXXwQPjH1tIA0xNwAYCOugdEYbmnD
+ zsOMT9BcMmxx2jb1wJwDJOdxE1ckT7pExPhB1FR71hLjLmGvpzYiMCrMAHHJWc/iahrq
+ 1Oz6abpiXUXVYvL2MKz5SkSsRxLjbstO2vNEYBRxwSS1vhfD+YmCE2yEZeBR8aYJeGmA
+ /koQ==
+X-Gm-Message-State: AOAM530l1s95y0cQpPgkBsFQrNgV9yPsIpOTl+cVzfYyHlMZmXmXJheP
+ oeQr4mpS99Rc+rSE4BJJLAe5pTVeaWG8RuXOHOOsTw==
+X-Received: by 2002:a05:6000:186e:: with SMTP id
+ d14mr347046wri.376.1636383024139; 
+ Mon, 08 Nov 2021 06:50:24 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.2
-Subject: Re: Qemu and ARM secure state.
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
 References: <07e63acb-b756-2586-2ba2-b54b837f7fc8@tribudubois.net>
  <CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com>
-From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-In-Reply-To: <CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com>
-Received-SPF: pass client-ip=217.70.183.199; envelope-from=jcd@tribudubois.net;
- helo=relay9-d.mail.gandi.net
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- NICE_REPLY_A=-2.093, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net>
+ <d19f6d2c-7505-b326-3a67-48c336f111e9@tribudubois.net>
+ <dd45f94c-6110-7251-4f9f-5b4e1fbb73a4@tribudubois.net>
+ <e0a1b786-4b1c-c608-495b-3fb839de2376@tribudubois.net>
+In-Reply-To: <e0a1b786-4b1c-c608-495b-3fb839de2376@tribudubois.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Nov 2021 14:50:12 +0000
+Message-ID: <CAFEAcA-DnbocsRHC3cUM_uX=kGn-KJa3q42TCyaB=isxKTS-Sg@mail.gmail.com>
+Subject: Re: Qemu and ARM secure state.
+To: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,122 +123,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Svzv1WMJ/9XF
+X-TUID: 1b7wD1EaRQEo
 
-This is a multi-part message in MIME format.
---------------jC5hRl0UNJFFVHOI7HwStT30
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-
-Le 04/11/2021 à 12:11, Peter Maydell a écrit :
-> On Wed, 3 Nov 2021 at 13:27, Jean-Christophe DUBOIS<jcd@tribudubois.net>  wrote:
->> I have a little application that is designed to work on the i.MX6UL processor.
->>
->> I developed it and tested it on the mcimx6ul-evk platform emulated by Qemu.
->>
->> This application used to work "flawlessly" on Qemu 5.0.50 and is working on Qemu 6.0.0 (available as a pre-built package on the latest Ubuntu).
->>
->> But when I try to run the exact same command line on a Qemu version I compile myself from main/latest of github (Qemu 6.1.50), my application fails to start.
->>
->> So a little background:
->>
->> My application expects to start in "secure" state and supervisor mode (which is the default state of i.MX6UL when booting barebone [without u-boot]).
->>
->>  From this state the application tries to get to "non secure" / hypervisor mode which imply going to the "secure" / monitor state before being able to drop to "non secure" / hypervisor. To do so is runs a "smc 0" operand (from "secure" / supervisor).
->>
->> This "smc" instruction is processed "as expected" by Qemu 5.0.50 and Qemu 6.0.0 (getting to "secure" / monitor mode) but on Qemu 6.1.50 (latest from github) it is as if the smc operand was a no-op. It doesn't trigger any exception and the processor just get to the next instruction after the "smc" instruction. So I am a bit puzzled.
->>
->> Is there something that changed in Qemu (since Qemu 6.0.0) when it comes to the "secure" world/state?
->> Is there some additional command line parameters to use (I search in the documentation but without luck) to get secure world behavior ?
->> Is it necessary to "adapt" the emulated platform (i.MX6UL/mcimx6ul-evk) in some way (it looks like the "virt" machine with "secure=on" does work for arm platform)?
-> Could you try doing a bisect to find the QEMU commit that caused
-> your guest to stop working ?
-
-OK, I did the bisect and the commit that break the i.MX6UL behavior for 
-my program is commit 9fcd15b9193e819b6cc2fd0a45e3506148812bb4 (arm: tcg: 
-Adhere to SMCCC 1.3 section 5.2).
-
-Before it the SMC instruction would trigger a monitor exception.
-
-After it the SMC instruction is acting like a no-op.
-
-Thanks
-
-JC
-
-
+On Sat, 6 Nov 2021 at 18:11, Jean-Christophe DUBOIS <jcd@tribudubois.net> w=
+rote:
 >
-> thanks
-> -- PMM
+> One small question/remark:
 >
+> According to the the "Arm Power State Coordinate Interface" (DEN0022D.b) =
+document (chapter 5) PSCI calls can only be issued by "normal world" (EL1 o=
+r EL2). Therefore, should we be adding a test for the current secure state =
+in the arm_is_psci_call() function? This would prevent calling the built-in=
+ Qemu PSCI function if SMC is issued  from secure state.
 
---------------jC5hRl0UNJFFVHOI7HwStT30
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+This shouldn't matter, because if the machine model is configured
+to execute guest code in EL3 at all then it should not be enabling
+QEMU's internal PSCI support. The internal PSCI stuff is only
+there as a kind of "emulated firmware" for when we're running
+guest code that starts at EL2 (notably, when directly booting
+a Linux kernel).
 
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  </head>
-  <body>
-    <div class="moz-cite-prefix">Le 04/11/2021 à 12:11, Peter Maydell a
-      écrit :<br>
-    </div>
-    <blockquote type="cite"
-cite="mid:CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com">
-      <pre class="moz-quote-pre" wrap="">On Wed, 3 Nov 2021 at 13:27, Jean-Christophe DUBOIS <a class="moz-txt-link-rfc2396E" href="mailto:jcd@tribudubois.net">&lt;jcd@tribudubois.net&gt;</a> wrote:
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">I have a little application that is designed to work on the i.MX6UL processor.
+The problem seems to be that fsl_imx6ul_realize() and
+fsl_imx7_realize() unconditionally enable PSCI-via-SMC.
+The imx7 code also puts all the secondaries into
+PSCI-powered-off mode -- this should be checked to
+work out what the right thing is if we're not doing
+emulated PSCI and instead starting the guest at EL3.
 
-I developed it and tested it on the mcimx6ul-evk platform emulated by Qemu.
-
-This application used to work "flawlessly" on Qemu 5.0.50 and is working on Qemu 6.0.0 (available as a pre-built package on the latest Ubuntu).
-
-But when I try to run the exact same command line on a Qemu version I compile myself from main/latest of github (Qemu 6.1.50), my application fails to start.
-
-So a little background:
-
-My application expects to start in "secure" state and supervisor mode (which is the default state of i.MX6UL when booting barebone [without u-boot]).
-
-From this state the application tries to get to "non secure" / hypervisor mode which imply going to the "secure" / monitor state before being able to drop to "non secure" / hypervisor. To do so is runs a "smc 0" operand (from "secure" / supervisor).
-
-This "smc" instruction is processed "as expected" by Qemu 5.0.50 and Qemu 6.0.0 (getting to "secure" / monitor mode) but on Qemu 6.1.50 (latest from github) it is as if the smc operand was a no-op. It doesn't trigger any exception and the processor just get to the next instruction after the "smc" instruction. So I am a bit puzzled.
-
-Is there something that changed in Qemu (since Qemu 6.0.0) when it comes to the "secure" world/state?
-Is there some additional command line parameters to use (I search in the documentation but without luck) to get secure world behavior ?
-Is it necessary to "adapt" the emulated platform (i.MX6UL/mcimx6ul-evk) in some way (it looks like the "virt" machine with "secure=on" does work for arm platform)?
-</pre>
-      </blockquote>
-      <pre class="moz-quote-pre" wrap="">
-Could you try doing a bisect to find the QEMU commit that caused
-your guest to stop working ?</pre>
-    </blockquote>
-    <p>OK, I did the bisect and the commit that break the i.MX6UL
-      behavior for my program is commit <span class="sha-block"><span
-          class="sha user-select-contain">9fcd15b9193e819b6cc2fd0a45e3506148812bb4
-          (</span></span>arm: tcg: Adhere to SMCCC 1.3 section 5.2).</p>
-    <p>Before it the SMC instruction would trigger a monitor exception.</p>
-    <p>After it the SMC instruction is acting like a no-op.<br>
-    </p>
-    <p>Thanks</p>
-    <p>JC<br>
-    </p>
-    <p><span class="sha-block"><span class="sha user-select-contain"></span></span></p>
-    <p><span class="sha-block"><span class="sha user-select-contain"><br>
-        </span></span></p>
-    <blockquote type="cite"
-cite="mid:CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com">
-      <pre class="moz-quote-pre" wrap="">
-
-thanks
 -- PMM
-
-</pre>
-    </blockquote>
-    <p><br>
-    </p>
-  </body>
-</html>
---------------jC5hRl0UNJFFVHOI7HwStT30--
-

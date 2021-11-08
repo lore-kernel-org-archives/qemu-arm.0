@@ -1,174 +1,150 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp196273lfk;
-        Mon, 8 Nov 2021 03:57:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxYHz0Wqent4EaIi18ZvpdIANNGkgEJ7uzzdRuQikzrdTijG9RtvCwUfCxd6E5xhWTMe3CH
-X-Received: by 2002:ab0:6883:: with SMTP id t3mr83795360uar.66.1636372663773;
-        Mon, 08 Nov 2021 03:57:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636372663; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp200419lfk;
+        Mon, 8 Nov 2021 04:01:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzEqiduSAzgfPoQHAmY1J8JG6eUckHKChTZlalNjPa+/ED5zBGQg4eAMU7kzsmT7OR2wPAt
+X-Received: by 2002:ab0:66cd:: with SMTP id d13mr74491118uaq.140.1636372891856;
+        Mon, 08 Nov 2021 04:01:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636372891; cv=none;
         d=google.com; s=arc-20160816;
-        b=xTTA8142NSHB2LRxF7z/8VMHd+4eYx47to62ol8FPb+VBcGjBleoYltKwQhHAhaTW0
-         /M0cgzesMp8YoX7U2otMqPGCd+URX4nU+LwK553Vb4dqD1inVKWsFyZH629I4c2t8wri
-         75ys4ALkfr1fXVab/FGapyyUGE5oFQyUkqQYS1CabRCI8aRzqw8rGXerCcvNLZ3J7Sgw
-         MFrEQEk/BFAWeHr4Su7ycuCmgAfMwYDH+CTzc35XqFGvUnd1aSQnpMGfNy8c5vq8T2E6
-         f5FiesDbUNgXjxs9NufJMsVEOFb75TTm8OL2iR7BAn9U4M+OF4yuNQ2lGamKDsXnU/Jr
-         fecw==
+        b=pNqHMMF0bS9iCCQi9ee6l8Wuxt1awONYiw4Fdlwutg9Q7fLEjcbB9rZHigIVG0HNSh
+         618xcq83+wTIe6/QcZ5OdzJo/3PedBqwEvMAzngt6kNhqZ7wu2Zrjg51spHHJBR/1/oq
+         z/WLBbb+OuUO8lceaWYkxyg131wBaoihj1qkeiWSHIkNnv5KTwENy8VPeMTFIRAtIUeb
+         P/WnhrTwr50C32WZHPevTwO3ghyRctvP+VlqczUNWN/i4XrxLyV+Osn60EusnThuVUdZ
+         fr7FlFV6sOR0EgEeGJloLiIexEnNT1t2Dmpy8dit/uyctK7wUEsLgi1wFCV1tuOGHSkJ
+         49fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=X4RW1zLyughl4DWgQO4RHNdWsaPHQa2528Lym9xiBzo=;
-        b=gy1BPHR51mglM7X5bUYDtHNfnozYmOdwfEDov85h0l2uoiJQXoNmXdFpv8QaxxrYFk
-         f82b1mlTS92yRhnqSeDKcKMJSf9cSVD587WDJqnWuotGNtMFDPc4ePNZNRGEPQ4exGx3
-         JEn5oDhY3IMv+UX+xdr8cuhqSo14eMfQCWprIxuTI6iZBfuro1IAKq1RRzlhBuiX2g4K
-         NXE56653irCwSrIRJaPEM+YRuQj9TwwRvM63vEtCgmsikSilhgYGIxDvomXr8vgPnP+e
-         b8rKmqg2w4wTWwG4t6Cvg9T8fPsBPRhdQs9D1qVC1lM4/OV2B2J8MxCbesh5Fon7Cchp
-         SX0g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=Q1e0pj0QRspW0P19A5xbXdf92/5UqtyLuZaFkHWSYWA=;
+        b=eqKhNbTfjnroWKpCk2nJ/QZQ9xqDpD5v+yZcE5RMfi7/YzUuM1B6lJ4xhyV38WmV0T
+         +wKEwYRqfxvNPqjbWrJiRsFCD/TMvdQieaB3lQNmof887l0HN7/01lOJYJVejYFCT/8I
+         HpBx4d3qsM4njTJigsDwlpTP4bTVgkz7F7zGg8oc8A3JEXXBcZfZ9Ml0KmK8Y1UURHfe
+         fnqZcSKXABU0P+iTWqSaTh4wJjSxA2Fs/KoA8bJQlvSUD3gSy3ZF8NcwzPKaiGAvcAj1
+         UmaeCVDhxE9mYayf+0aueDDXqZFzDlyBeydOhpxJmma9Rz9jG/efNgHaGFhGCzt1y6j4
+         F8zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P4+et3qQ;
-       spf=pass (google.com: domain of wrampazz@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=wrampazz@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <wrampazz@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id cd15si32080325vsb.144.2021.11.08.03.57.43
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m24si25608595vsp.62.2021.11.08.04.01.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 08 Nov 2021 03:57:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of wrampazz@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 08 Nov 2021 04:01:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P4+et3qQ;
-       spf=pass (google.com: domain of wrampazz@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=wrampazz@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1636372663;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=X4RW1zLyughl4DWgQO4RHNdWsaPHQa2528Lym9xiBzo=;
-	b=P4+et3qQoPDYZnNox7UlDo5zm7sAgpbBoTIiU9ebiW8jIEb5zGHW5WckCw++PhS/vjrKb2
-	RVFVEEYKdzTQK8FpQZTJMleRsg5VibiHnmmpzh1ixueDtiKR2CQb8EaDcrpvo4ppRElioJ
-	iXWsLgkrUSEI+3fSQG9dd71AK8VbbXQ=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-195-GXLOZR4qNzqSEclyFUByiQ-1; Mon, 08 Nov 2021 06:57:40 -0500
-X-MC-Unique: GXLOZR4qNzqSEclyFUByiQ-1
-Received: by mail-pj1-f72.google.com with SMTP id x3-20020a17090a1f8300b001a285b9f2cbso4706908pja.6
-        for <alex.bennee@linaro.org>; Mon, 08 Nov 2021 03:57:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=X4RW1zLyughl4DWgQO4RHNdWsaPHQa2528Lym9xiBzo=;
-        b=63By9K+ySAE39XGOMXHuxqaggxCY6ZxzmBGc67KHaT+73ZEXeEXosQvk+pON67+S2T
-         IMKMoy8eUUyIpv+5aUkHB9yD5cpXO0HJWSt3elUC3gS5v/lA7r+ZkBv5cVFQ4W/lN1Lu
-         s3woHQp7lXHOe82GDAiEyb24ummWZkfbQitdgqTOFxhVx4JZgUk9DOSLfbf1l5hZj5XJ
-         wYrUUZaMGsUj7s99R1sgdxPD574OX3mYskeHBXe5WkiljkPrjlL0t1zTk2Q6APxLocgM
-         uPjtzVdbTNsSNR1K0DHwmrBSe7OvobmVMKRDRHig1McXr5bIjraTxzu93GTtuhZIj16P
-         qB1A==
-X-Gm-Message-State: AOAM5312S7mnaosIkG4fvSzxmqmN54djSX8S66rFwmiikC7qLUUZnbIi
-	96iJdFz+vk4f6fb/BMOf8iQFLMzYY0+s53+J0JVo+QdzggI4/1H11w98rA1vCofg24wnyLlFNoa
-	opgcSUAsWI6w2JLNkS9rKYPQZb9Aoe2lU
-X-Received: by 2002:a05:6a00:1583:b0:49f:dc1c:a0fe with SMTP id u3-20020a056a00158300b0049fdc1ca0femr5314999pfk.46.1636372659307;
-        Mon, 08 Nov 2021 03:57:39 -0800 (PST)
-X-Received: by 2002:a05:6a00:1583:b0:49f:dc1c:a0fe with SMTP id
- u3-20020a056a00158300b0049fdc1ca0femr5314971pfk.46.1636372658991; Mon, 08 Nov
- 2021 03:57:38 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45558 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1mk3L9-0007q8-80
+	for alex.bennee@linaro.org; Mon, 08 Nov 2021 07:01:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47496)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <me@xcancerberox.com.ar>)
+ id 1mk3Ky-0007pu-Ip; Mon, 08 Nov 2021 07:01:20 -0500
+Received: from eastern.birch.relay.mailchannels.net ([23.83.209.55]:9854)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <me@xcancerberox.com.ar>)
+ id 1mk3Kw-0006px-AA; Mon, 08 Nov 2021 07:01:20 -0500
+X-Sender-Id: duplika|x-authuser|me@xcancerberox.com.ar
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+ by relay.mailchannels.net (Postfix) with ESMTP id 780DC620643;
+ Mon,  8 Nov 2021 12:00:32 +0000 (UTC)
+Received: from cloud.estebanecheverria.gob.ar (unknown [127.0.0.6])
+ (Authenticated sender: duplika)
+ by relay.mailchannels.net (Postfix) with ESMTPA id EB24362132E;
+ Mon,  8 Nov 2021 12:00:26 +0000 (UTC)
+X-Sender-Id: duplika|x-authuser|me@xcancerberox.com.ar
+Received: from cloud.estebanecheverria.gob.ar (cloud.estebanecheverria.gob.ar
+ [67.227.157.153])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384)
+ by 100.109.184.200 (trex/6.4.3); Mon, 08 Nov 2021 12:00:32 +0000
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: duplika|x-authuser|me@xcancerberox.com.ar
+X-MailChannels-Auth-Id: duplika
+X-Skirt-Scare: 6070d8342f30e116_1636372830208_2672660993
+X-MC-Loop-Signature: 1636372830208:172738923
+X-MC-Ingress-Time: 1636372830207
+Received: from ipbcc2ffad.dynamic.kabel-deutschland.de
+ ([188.194.255.173]:60276 helo=[192.168.1.216])
+ by cloud.estebanecheverria.gob.ar with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
+ (envelope-from <me@xcancerberox.com.ar>)
+ id 1mk3K4-0007GS-SO; Mon, 08 Nov 2021 09:00:24 -0300
+Message-ID: <2303675e-ebec-9acd-af58-0f9feee5728c@xcancerberox.com.ar>
+Date: Mon, 8 Nov 2021 13:00:21 +0100
 MIME-Version: 1.0
-References: <20211105155354.154864-1-willianr@redhat.com> <20211105155354.154864-2-willianr@redhat.com>
- <e7d8e96b-cfca-c41f-257c-a70cb899ca9a@redhat.com> <YYjsvY3W27a1jUCD@redhat.com>
- <3aae05e7-823e-2761-0442-7fd92f3931c5@redhat.com>
-In-Reply-To: <3aae05e7-823e-2761-0442-7fd92f3931c5@redhat.com>
-From: Willian Rampazzo <wrampazz@redhat.com>
-Date: Mon, 8 Nov 2021 08:57:13 -0300
-Message-ID: <CAKJDGDY8_hvpqFeXfC=KpUHmyCVju1Z-LLdnw9JhibnQ2yeysQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] tests/acceptance: introduce new check-avocado tartget
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Thomas Huth <thuth@redhat.com>, qemu-devel <qemu-devel@nongnu.org>, 
-	Michael Rolnik <mrolnik@gmail.com>, Niek Linnenbank <nieklinnenbank@gmail.com>, 
-	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
-	John Snow <jsnow@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-ppc@nongnu.org, 
-	qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>, libvir-list@redhat.com
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: WMd9boh3gLfp
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH] tests/avocado: Remove p7zip binary availability check
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20211106091059.465109-1-philmd@redhat.com>
+From: Joaquin de Andres <me@xcancerberox.com.ar>
+In-Reply-To: <20211106091059.465109-1-philmd@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-AuthUser: me@xcancerberox.com.ar
+Received-SPF: pass client-ip=23.83.209.55; envelope-from=me@xcancerberox.com.ar;
+ helo=eastern.birch.relay.mailchannels.net
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.06,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Willian Rampazzo <willianr@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZrEsUxcN6tsv
 
-On Mon, Nov 8, 2021 at 6:49 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> On 11/8/21 10:24, Daniel P. Berrang=C3=A9 wrote:
-> > On Mon, Nov 08, 2021 at 08:59:51AM +0100, Thomas Huth wrote:
-> >> On 05/11/2021 16.53, Willian Rampazzo wrote:
-> >>> This introduces a new `make` target, `check-avocado`, and adds a
-> >>> deprecation message about the `check-acceptance` target. This is
-> >>> a preparation for renaming the `tests/acceptance` folder to
-> >>>   `tests/avocado`.
-> >>>
-> >>> The plan is to remove the call to the `check-avocado` target one
-> >>> or two months after the release and leave the warning to force
-> >>> people to move to the new `check-avocado` target.
-> >>>
-> >>> Later, the `check-acceptance` target can be removed. The intent
-> >>> is to avoid a direct impact during the current soft freeze.
-> >>>
-> >>> Suggested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >>> Signed-off-by: Willian Rampazzo <willianr@redhat.com>
-> >>> ---
-> >>>   docs/about/deprecated.rst | 13 +++++++++++++
-> >>>   tests/Makefile.include    | 17 ++++++++++++-----
-> >>>   2 files changed, 25 insertions(+), 5 deletions(-)
-> >>>
-> >>> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> >>> index 56f9ad15ab..7bf8da8325 100644
-> >>> --- a/docs/about/deprecated.rst
-> >>> +++ b/docs/about/deprecated.rst
-> >>> @@ -410,3 +410,16 @@ nanoMIPS ISA
-> >>>   The ``nanoMIPS`` ISA has never been upstreamed to any compiler tool=
-chain.
-> >>>   As it is hard to generate binaries for it, declare it deprecated.
-> >>> +
-> >>> +Testing
-> >>> +-------
-> >>> +
-> >>> +Renaming of the acceptance folder to avocado
-> >>> +''''''''''''''''''''''''''''''''''''''''''''
-> >>> +
-> >>> +The ``tests/acceptance`` folder was never used to store acceptance t=
-ests
-> >>> +in terms of software engineering. This naming can confuse developers
-> >>> +adding tests using the Avocado Framework to this folder. The folder
-> >>> +name change to ``tests/avocado`` also changed the ``make`` target fr=
-om
-> >>> +``check-acceptance`` to ``check-avocado``. In this case, the use of =
-the
-> >>> +``check-acceptance`` target is deprecated.
-> >>
-> >> Not sure whether we need  to document this in deprecated.rst, too, sin=
-ce
-> >> we're normally only listing the things here that affect the users of t=
-he
-> >> qemu binaries, not the people who want to recompile and run the tests.=
-..
-> >> OTOH, I don't mind too much either if we list it here... Anybody else =
-got an
-> >> opinion on this?
-> >
-> > Deprecations are only things for user facing changes in the apps.
->
-> OK.
->
-> > For build system changes we don't bother with any deprecation cycle.
-> > Just make the change immediately and document it in the release notes.
->
-> Understood.
->
-> Willian, do you mind updating the release notes?
-> https://wiki.qemu.org/ChangeLog/6.2#Testing_and_CI
->
+On 11/6/21 10:10, Philippe Mathieu-Daudé wrote:
+> The single use of the 7z binary has been removed in commit a30e114f3
+> ("tests/acceptance: remove Armbian 19.11.3 test for orangepi-pc"),
+> we don't need to check for this binary availability anymore.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> Based-on: <20211105155354.154864-1-willianr@redhat.com>
+> ---
+>   tests/avocado/boot_linux_console.py | 7 -------
+>   1 file changed, 7 deletions(-)
+> 
+> diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+> index 4ed01ed7893..9c618d4809f 100644
+> --- a/tests/avocado/boot_linux_console.py
+> +++ b/tests/avocado/boot_linux_console.py
+> @@ -22,13 +22,6 @@
+>   from avocado_qemu import wait_for_console_pattern
+>   from avocado.utils import process
+>   from avocado.utils import archive
+> -from avocado.utils.path import find_command, CmdNotFoundError
+> -
+> -P7ZIP_AVAILABLE = True
+> -try:
+> -    find_command('7z')
+> -except CmdNotFoundError:
+> -    P7ZIP_AVAILABLE = False
+>   
+>   """
+>   Round up to next power of 2
+> 
 
-Sure, I can do that, but I think I need to wait for the patch to be
-merged, right?
+Reviewed-by: Joaquin de Andres <me@xcancerberox.com.ar>

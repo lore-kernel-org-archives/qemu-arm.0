@@ -1,422 +1,174 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1419411lfk;
-        Tue, 9 Nov 2021 11:06:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxr4DcxM/S/zbmIznuri64G9F9kThBYhTiGWY3WPuj4YDRGPeWvUUn/7J2GmhttcT9Pvvit
-X-Received: by 2002:a05:6102:953:: with SMTP id a19mr8084040vsi.28.1636484816622;
-        Tue, 09 Nov 2021 11:06:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636484816; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1532545lfk;
+        Tue, 9 Nov 2021 12:42:52 -0800 (PST)
+X-Received: by 2002:adf:f209:: with SMTP id p9mr12831535wro.191.1636490572816;
+        Tue, 09 Nov 2021 12:42:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636490572; cv=none;
         d=google.com; s=arc-20160816;
-        b=mrtjciCFysy+Z81O6i9IGmWc3HmCCcQADr7bHn4Qf7vyNcxDrGX15lYHWudYwAAAAR
-         KwyffHa7aG/vuXzmYarXV8Gtewoj1Busj6C+wEywWO5tNUMMBJPgV+lXv/9pAvPAxraV
-         t8etIE8Xf35LjJcnWJZh3amG9magm1YEa7DjiGOyFcFlen8f1d5SPiEmPrTOYTtVjf/U
-         xwTOEMH93ovy1nY/cJ0gfdhqDyPAz9ajr942Cxu8w40RbyQ1lcf740rg9fg/4qVbZJyt
-         DwOtoc6DwoDlNav2yHunas4myYzk8GNqQAb5rb8HkfnLZ3PK/9jjHRecvHK5WevIPtcX
-         cRxA==
+        b=Gk0P73+rd0sPvhuit7trBZJDConHsAMMj8/v/mm+CXnH4tAp2mjreCU06o20ezU+DC
+         ucYeYif2sx2crwgFlAIfgXZCeiJfuUoiSzxugF+QU2JoBAm8o5NWtLv+Qrv/c9OjvPBS
+         VD/sCi8dyDNoGEPl0GkcyGxot0xOto1gAv/m98FHp8dNSP5f2tpaTtFDqZI3NaVbxywO
+         MCqM+1AIdMZ1gdcnFuFW2uizCX0kSyf42tXCCAzpiirzx2zWdGxp59htrCqeHAHwtlMD
+         iOXraxd1I8sLxKakrumjVtdscvc4YobbEyjqChHQQlPjb8UbeAGZsFO8AdvIjMhSR5CP
+         Tl5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=BgdzUUOBfNMtZfn9HBzyyZEaVov/AJSeNwPOAySDoD4=;
-        b=idvLx+ntEh9lBzx1KT29SSGvSLZ1pQuGpHUXCS5gwtlqIF/30pIWWWMhoCQlTBNJt9
-         TnkqCFRbfQV3mb9+RnXQ3GfLkIj9uNnFTsGhCpjMRKwgh7rqxgDrCj6FDpo+kxmcRHst
-         G9UY63jFTClTaVPdhB5Y6spaKZWDl/vAKWS1Wv3F5bntfqdbEBabM3EXBlPgrDsA/edt
-         hZMT5r6swHZ6MTS1wsRWFx2wqIxHMj2BJ/SJhO5Y2YlimlJi9fFyQfyogNIomOPiUEe/
-         08owtvknYjOeT7qih+n6WZpTNAjwYaXoMCt0jRAwdMs4aX84ximZshJGX8ryrWEp+GVo
-         Ud2Q==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=k/vTwMDMR4QyIkK24vhqvKCKCIJcbcTGzA/yBTZftXQ=;
+        b=CNbd78T0u1W6L04OmkYqur1+x8bLPR7k7FB7hRHbN0x2WwXCzW9PJc+YiMbwFZs5Xo
+         7r07wuhMBWepwa3/ouQKwkoMcbgFpv2zdf/8DIkPRsKirb0grn3Tkr35QPYSv1TRO/p4
+         3Roll6I0U4ndvqat3ACd40xWTM/QsQeEnGNnmyJrFnonrZT/x8xln98phy4KiviKflmA
+         ONc3FXf5no7eh/qu9XIGlAGpqeNRQ1NpBBcFvI/hZ05RLJ0euHksYL+YtQEQvKP/tMe1
+         FDYAGiPrZiFkwy/2ZqIXFSJFkWzUX9cFUxQHLQWEKDXsA/klF61MTaQJRzpEbU0k06sx
+         cckw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n9si24330758uap.211.2021.11.09.11.06.56
+       dkim=pass header.i=@nuviainc-com.20210112.gappssmtp.com header.s=20210112 header.b=SK2upagK;
+       spf=pass (google.com: domain of leif@nuviainc.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=leif@nuviainc.com
+Return-Path: <leif@nuviainc.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l11sor2431285wmq.22.2021.11.09.12.42.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Nov 2021 11:06:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 09 Nov 2021 12:42:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of leif@nuviainc.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53338 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mkWSN-0007Zu-UK
-	for alex.bennee@linaro.org; Tue, 09 Nov 2021 14:06:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37468)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1mkWSE-0007ZY-Bg; Tue, 09 Nov 2021 14:06:46 -0500
-Received: from relay10.mail.gandi.net ([217.70.178.230]:45681)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1mkWS9-0000uZ-Ro; Tue, 09 Nov 2021 14:06:46 -0500
-Received: (Authenticated sender: jcd@tribudubois.net)
- by relay10.mail.gandi.net (Postfix) with ESMTPSA id 71F57240002;
- Tue,  9 Nov 2021 19:06:36 +0000 (UTC)
-Content-Type: multipart/alternative;
- boundary="------------Llope4Ps9cnCJ4e9YXeYc3I0"
-Message-ID: <d1175f18-ba8a-3022-916f-395e0937b92e@tribudubois.net>
-Date: Tue, 9 Nov 2021 20:06:35 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.2
-Subject: Re: Qemu and ARM secure state.
-Content-Language: en-US
+       dkim=pass header.i=@nuviainc-com.20210112.gappssmtp.com header.s=20210112 header.b=SK2upagK;
+       spf=pass (google.com: domain of leif@nuviainc.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=leif@nuviainc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=nuviainc-com.20210112.gappssmtp.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=k/vTwMDMR4QyIkK24vhqvKCKCIJcbcTGzA/yBTZftXQ=;
+        b=SK2upagKKWjYU4zCBFV6O/SrUdku/GcA2wQ9mLDuCQmDNR2nRC7FIsCw9gmanUamRu
+         45bYnvTFfBhaZZmLENIUXyTNsQA9NaK40SQ8Z5fo5i3aSFS6NHktXwGB+8mWyhrgRPXE
+         92cBZ7XvRh088+ZFbip5nPeP3gXv/EbiOcePCNR8c5r8+PP960xvaPxKPVM4A8XkQ77l
+         NmUIvg50r0fVPGe0vx5RUfkcslY82KdQZEcwGSwlFE9cENl1oxit8Dw4DPvkf98EWVQ3
+         uuVxTPN4XwpnKGkrt1HYY61IIQbnNQPowH7v9nqhmMu0bp+doR+gsa74g3whRKE35hkc
+         yepQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=k/vTwMDMR4QyIkK24vhqvKCKCIJcbcTGzA/yBTZftXQ=;
+        b=C96aH5GqQyK9ToX2P3VKMllA8smfghlxZhSQ3yO9gH+ldyybu/h8d47gnP4FkHL46V
+         jEHtn+lxYJ+OhDiayYKxEEbLNbmFfVe8Q9HitQuDHVsEoUvE7YwWAyLoSZegne27K1+z
+         DLStxz8TB4pJTys0hbmbxmuu11L8BySpDeBSbPP1HxJmcxV0MjKX6b3/hjF5+ppiU59a
+         tqjop2Y79uxHeraUkSVWfCrEFAwIZXO51OcjwecEfSkfIZcHZxRcRcWFiH4UyXK/3+Qp
+         XJ0USKGbEWpd0zoLvmebqKm3ihV3tq+Dk7umvILNu61ynyjx8tfVaUty8j5JUXsTZDtK
+         AY6g==
+X-Gm-Message-State: AOAM533O7d0Q8rtB1AGizXDei11P6ZJYNAA7g0ZT8yegjuLZ//I1mmAp
+	lv0giu37BsynK8LYbC4gM1tD8w==
+X-Google-Smtp-Source: ABdhPJxtx/MuWT8vk0YkUZAQBaNKy6mNE/e3h/6qtcEsT6es9AdFFdTHBhVBBO5mzUKTthWymUMnVw==
+X-Received: by 2002:a05:600c:4ec7:: with SMTP id g7mr10471850wmq.138.1636490572469;
+        Tue, 09 Nov 2021 12:42:52 -0800 (PST)
+Return-Path: <leif@nuviainc.com>
+Received: from leviathan (cpc92314-cmbg19-2-0-cust559.5-4.cable.virginm.net. [82.11.186.48])
+        by smtp.gmail.com with ESMTPSA id a22sm3452736wme.19.2021.11.09.12.42.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Nov 2021 12:42:51 -0800 (PST)
+Date: Tue, 9 Nov 2021 20:42:49 +0000
+From: Leif Lindholm <leif@nuviainc.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <07e63acb-b756-2586-2ba2-b54b837f7fc8@tribudubois.net>
- <CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com>
- <c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net>
- <d19f6d2c-7505-b326-3a67-48c336f111e9@tribudubois.net>
- <dd45f94c-6110-7251-4f9f-5b4e1fbb73a4@tribudubois.net>
- <e0a1b786-4b1c-c608-495b-3fb839de2376@tribudubois.net>
- <CAFEAcA-DnbocsRHC3cUM_uX=kGn-KJa3q42TCyaB=isxKTS-Sg@mail.gmail.com>
- <ec74f093-9508-c0fc-3e06-2e8abf8655c6@tribudubois.net>
- <CAFEAcA8RU3=owBnCwJ7ePKW6Sm2GBU6er7o44iQd4Rs19TQs9Q@mail.gmail.com>
-From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-In-Reply-To: <CAFEAcA8RU3=owBnCwJ7ePKW6Sm2GBU6er7o44iQd4Rs19TQs9Q@mail.gmail.com>
-Received-SPF: pass client-ip=217.70.178.230; envelope-from=jcd@tribudubois.net;
- helo=relay10.mail.gandi.net
-X-Spam_score_int: -59
-X-Spam_score: -6.0
-X-Spam_bar: ------
-X-Spam_report: (-6.0 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- NICE_REPLY_A=-3.364, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IYVHEuTaMVyo
+Cc: Shashi Mallela <shashi.mallela@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Eric Auger <eric.auger@redhat.com>, narmstrong@baylibre.com,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: Re: [PATCH v8 07/10] hw/arm/sbsa-ref: add ITS support in SBSA GIC
+Message-ID: <20211109204249.usvfatm3frar3u7a@leviathan>
+References: <20210812165341.40784-1-shashi.mallela@linaro.org>
+ <20210812165341.40784-8-shashi.mallela@linaro.org>
+ <CAFEAcA9WVu+kjfCWwfGQV00yKgmdFDCSUpxNOu1BEBM3AZCWXg@mail.gmail.com>
+ <20210902124258.mqjhx7lqqvkczf6a@leviathan>
+ <CAFEAcA-KeBzOCP1CHVWPHbHzG=KbS_HJmXoYo7B2VBz=oGSd3w@mail.gmail.com>
+ <20211015122351.vc55mwzjbevl6wjy@leviathan>
+ <CAFEAcA-Xe2u8n+og4TMyZSSvdBm8nrma3z4GkVjEJHPdJu8Fnw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-Xe2u8n+og4TMyZSSvdBm8nrma3z4GkVjEJHPdJu8Fnw@mail.gmail.com>
+X-TUID: W14OgcNb3SdN
 
-This is a multi-part message in MIME format.
---------------Llope4Ps9cnCJ4e9YXeYc3I0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+On Tue, Nov 09, 2021 at 13:43:50 +0000, Peter Maydell wrote:
+> On Fri, 15 Oct 2021 at 13:23, Leif Lindholm <leif@nuviainc.com> wrote:
+> > (Apologies for delay. Alex also tells me you are currently away, but
+> > there is no strong urgency here.)
+> 
+> (Thanks for the ping via Alex -- I missed this email when I was
+> scanning through my qemu-devel mail backlog after my holiday...)
+> 
+> > On Thu, Sep 23, 2021 at 17:00:35 +0100, Peter Maydell wrote:
+> > > Leif, what's your plan/preferences here ?
+> >
+> > I discussed this with Alex/Shashi.
+> >
+> > One further complicating aspect is that the EDK2 GIC driver currently
+> > relies on GIC addresses being known at compile-time.
+> >
+> > > Presumably somebody also needs to do the system-software side
+> > > of things to handle the ITS being present and the redistributor
+> > > frames moving...
+> >
+> > Since it *would* be useful to get this support in, I think the most
+> > pragmatic plan would be:
+> > - Add ITS in the location originally proposed by Shashi.
+> > - Add information to DT:
+> >   - Platform version (1).
+> >   - GICD, GICR, and ITS base addresses.
+> > - edk2: Convert GIC driver to support dynamic block addresses.
+> > - TF-A: Parse the DT and add SIP SVC calls:
+> >   - to retrieve it (or return not supported if not found).
+> >   - to retrieve base addresses for GICD, GICR, and ITS.
+> > - edk2-platforms: Query TF-A for platform version.
+> >   If platform version >= 1, request base addresses for GICD, GICR, and
+> >   ITS.
+> >   - Generate IORT if ITS present.
+> > - Update GIC frame layout to match an ARM GIC-?00. (Platform version 2)
+> >
+> > Unrelated to the ITS question, and not requiring any intervention on
+> > the QEMU side, we can then also transition the CPU and DRAM discovery
+> > to SIP SVC calls, and stop sharing the DT with edk2 completely.
+> >
+> > And some way further down the line we could do the SCP thing, which
+> > would let us support different GIC-layouts/configurations based on
+> > platform command line options. (Platform version 3.)
+> > (TF-A makes SCP calls if version >= 3)
+> > This would then require no changes to edk2-platforms.
+> 
+> This sounds good to me.
+> 
+> > (Numeric values described as incrementing integer rather than trying
+> > to guess at specific qemu release numbers.)
+> 
+> This is kind of mixing up two separate things. The above describes
+> three "versions" of this machine type, which you might consider
+> as like revision A/B/C of hardware (and where firmware might for
+> instance read a 'board revision' register or something to tell
+> them apart). QEMU release numbers and versioned board types like virt-6.0
+> are a very specific thing that is taking on a guarantee about
+> maintaining version compatibility of the same board type between
+> different QEMU versions. We can make sbsa-ref a versioned machine
+> type in that sense if you really want to do it, but it makes future
+> changes to the machine rather more painful (everything new
+> immediately needs flags and properties and so on so that it can be
+> added only for newer versions of the machine type and not for the
+> old one -- at a rough count at least  10% of hw/arm/virt.c is purely
+> boilerplate and machinery for versioned machine types).
+> So it's not something we should do for sbsa-ref unless we have a good
+> reason I think.
 
-Le 09/11/2021 à 11:55, Peter Maydell a écrit :
-> On Mon, 8 Nov 2021 at 22:09, Jean-Christophe DUBOIS<jcd@tribudubois.net>  wrote:
->> OK, so one problem seems to be that PSCI-via-SMC is enabled on i.MX6UL
->> when there is no built in PSCI related function on this processor.
->>
->> According the Linux DTS, i.MX7 (solo and dual) processors have a
->> somewhat PSCI related "entry-method"
->> (https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/imx7s.dtsi).
->> But it is not clear to me how this is used and this seems a bit strange
->> as "entry-method" seems to be mostly used on arm64 and there is no other
->> PSCI related information in the i.MX7 DTS files.
-> Yeah, PSCI was an interface introduced mostly with aarch64. In the
-> 32-bit world bringing up multiple CPUs was complete anarchy -- the
-> way the kernel told the secure firmware that it should start up
-> a secondary core was entirely determined by the firmware, and
-> the kernel had to have board-specific code to do this. (For the
-> 32-bit imx boards I think this is in arch/arm/mach-imx/src.c.)
-> For aarch64 we had a clean slate and took the opportunity to insist
-> that all boards did it the same way, ie using PSCI. (There are other
-> useful things PSCI allows, but standardising secondary boot is the
-> one that matters for this discussion.) So if a platform's firmware
-> implements PSCI, all the dts file has to do is say so, and then
-> there's no need for board-specific "start secondary CPUs" code.
-> PSCI does define an aarch32 interface, but there are a lot of
-> legacy older boards (and new flavours of boards in long-standing
-> design families) which still do things the old way in aarch32 land.
->
-> Typically the top-level "PSCI is available" node is added by the firmware.
-> (QEMU will do this too when it's emulating PSCI firmware) -- if the
-> board code enables the psci-conduit it will add an appropriate psci
-> node in the hw/arm/boot.c code.)
->
->> As a matter of fact
->> previous quad or dual i.MX6 were not supporting PSCI. Instead they were
->> using a proprietary method through the internal SRC device (and i.MX7
->> also has a similar internal SRC device). But let's assume Linux on i.mx7
->> is actually using PSCI to handle processors.
->>
->> Thinking about it, I guess this might be u-boot that sets an EL3 monitor
->> software that is able to handle PSCI requests for the Linux kernel. If
->> this is the case, it make sense that Qemu emulates the PSCI services
->> normally provided by u-boot to be able to boot linux directly (without
->> booting a real u-boot prior to linux). All  is well and nice.
-> Yes, that's the way it works. The EL3 firmware is supposed to provide
-> PSCI.
->
-> For aarch64 the kernel is never entered in EL3 -- it will always run at EL2
-> or EL1. (This is unlike aarch32, where in some cases you might run the
-> kernel in secure-SVC, although even there starting the kernel in
-> NS-SVC or NS-Hyp is more common.)
->
->> But then if I want to boot and test the u-boot binary (or any trusted OS
->> for the matter) on a Qemu emulated i.MX7 (to later boot an hypervisor or
->> an OS), it would be rather strange that any PSCI related service
->> requested by the hypervisor/OS  would be handled by Qemu directly and
->> not by the u-boot code (or any other EL3 code) running on the processor.
-> Exactly. This is why the board code is supposed to set things
-> up so that if we are starting the guest code in EL1 or EL2
-> then we enable the PSCI-via-SMC support, and if we're starting
-> the guest code in EL3 then we do not.
->
->> How is it supposed to work? How can I tell Qemu (dynamically?) if I want
->> it to provide (or not) the PSCI services (and more generally SMC/HVC
->> services).
-> If you want PSCI via SMC or HVC, then set the psci-conduit
-> property on the CPUs to QEMU_PSCI_CONDUIT_SMC or QEMU_PSCI_CONDUIT_HVC.
-> If you do not want QEMU to provide PSCI, then leave psci-conduit
-> at its default (which is QEMU_PSCI_CONDUIT_DISABLED).
->
-> How can I tell it that I want to handle all SMC/EL3 services
->> by myself even if the "psci-conduit" is already set to SMC in Qemu?
-> It's the imx7 code that's setting psci-conduit, so it should
-> not do that if it doesn't want that (and also should either
-> start or not start the secondary cpus powered off, depending
-> on what the hardware-to-firmware interface is supposed to be.)
-> This is a bit awkward, because the boards we initially wanted
-> PSCI for (notably virt) don't have an SoC object, so the code
-> creating CPUs is in the same source file as the code that knows
-> whether it's booting a kernel directly or not, and so it just
-> open-codes the decision logic. With the imx, the CPU creation
-> is in the source code for the SoC object which is abstracted
-> away from the board model code. So we'd need to sort out how
-> to plumb that information into the SoC object (or have the SoC
-> object's code that creates the CPUs call some function to find out).
+Hmm, right. So you're thinking containing the versioning fully in the
+interfaces presented by the model:
+- Is the version node present?
+  - If so, is it greater than X?
+    - If so, is it great enough to support the SCP interface?
+And let the firmware deal with that?
 
-Thanks Peter,
+I was kind of thinking it was expected for incompatible machine
+versions to be qemu versioned. But I'm good with skipping that bit if
+it's not.
 
-So basically the Qemu i.MX7 processor code needs to set psci-conduit to 
-SMC because we want to be able to boot the Linux kernel directly 
-(without u-boot) with Qemu emulating the PSCI services when an SMC 
-instruction is triggered.
-
-As I see it we also need a way to disable this Qemu PSCI emulation in 
-case we want to boot an EL3 software (u-boot, optee or other).
-
-We could certainly pass a command line option to explicitly tell Qemu to 
-disable the PCSI emulation. But this would be a bit cumbersome as the 
-board level code would then need to call to the SOC code to disable the 
-psci setting on all cores.
-
-So I am wondering if we could be more "clever" solution and have things 
-sorted out automatically. I would like to suggest 2 solutions;
-
- 1. The first solution could be based on the mode of the processor when
-    it starts executing the provided software. If I remember correctly
-    what you explained, if an ELF file is provided then the processor
-    boots in the highest level (EL3 for i.MX6/i.MX7) while if a non ELF
-    file is provided (uImage ...) then the processor boots in EL2 (or
-    lower depending on the processor) to emulate the uboot behavior.
-     1. if the processor starts the software in EL3 then we need to
-        disable the "psci-conduit" through SMC (if set) because the EL3
-        software should install/provide the necessary firmware.
-     2. If the processor starts the software in EL2 then we need to
-        disable the "psci-conduit" through HVC (if set) because the EL2
-        software should install/provide the necessary firmware.
- 2. The other solution is to check if the booted software has installed
-    an EL3 or EL2 exception vector table.
-     1. if the software has installed an EL3 (monitor) exception vector
-        table then we need to disable the "psci-conduit" through SMC (if
-        set).
-     2. if the software has installed an EL2 (hypervisor) exception
-        vector table then we need to disable the "psci-conduit" through
-        HVC (if set).
-
-Is any of these proposals reasonable in your point of view? This would 
-apply for any (ARM) target and this seems generic enough.
-
-Thanks
-
-JC
-
->
-> -- PMM
->
-
---------------Llope4Ps9cnCJ4e9YXeYc3I0
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  </head>
-  <body>
-    <div class="moz-cite-prefix">Le 09/11/2021 à 11:55, Peter Maydell a
-      écrit :<br>
-    </div>
-    <blockquote type="cite"
-cite="mid:CAFEAcA8RU3=owBnCwJ7ePKW6Sm2GBU6er7o44iQd4Rs19TQs9Q@mail.gmail.com">
-      <pre class="moz-quote-pre" wrap="">On Mon, 8 Nov 2021 at 22:09, Jean-Christophe DUBOIS <a class="moz-txt-link-rfc2396E" href="mailto:jcd@tribudubois.net">&lt;jcd@tribudubois.net&gt;</a> wrote:
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">OK, so one problem seems to be that PSCI-via-SMC is enabled on i.MX6UL
-when there is no built in PSCI related function on this processor.
-
-According the Linux DTS, i.MX7 (solo and dual) processors have a
-somewhat PSCI related "entry-method"
-(<a class="moz-txt-link-freetext" href="https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/imx7s.dtsi">https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/imx7s.dtsi</a>).
-But it is not clear to me how this is used and this seems a bit strange
-as "entry-method" seems to be mostly used on arm64 and there is no other
-PSCI related information in the i.MX7 DTS files.
-</pre>
-      </blockquote>
-      <pre class="moz-quote-pre" wrap="">
-Yeah, PSCI was an interface introduced mostly with aarch64. In the
-32-bit world bringing up multiple CPUs was complete anarchy -- the
-way the kernel told the secure firmware that it should start up
-a secondary core was entirely determined by the firmware, and
-the kernel had to have board-specific code to do this. (For the
-32-bit imx boards I think this is in arch/arm/mach-imx/src.c.)
-For aarch64 we had a clean slate and took the opportunity to insist
-that all boards did it the same way, ie using PSCI. (There are other
-useful things PSCI allows, but standardising secondary boot is the
-one that matters for this discussion.) So if a platform's firmware
-implements PSCI, all the dts file has to do is say so, and then
-there's no need for board-specific "start secondary CPUs" code.
-PSCI does define an aarch32 interface, but there are a lot of
-legacy older boards (and new flavours of boards in long-standing
-design families) which still do things the old way in aarch32 land.
-
-Typically the top-level "PSCI is available" node is added by the firmware.
-(QEMU will do this too when it's emulating PSCI firmware) -- if the
-board code enables the psci-conduit it will add an appropriate psci
-node in the hw/arm/boot.c code.)
-
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">As a matter of fact
-previous quad or dual i.MX6 were not supporting PSCI. Instead they were
-using a proprietary method through the internal SRC device (and i.MX7
-also has a similar internal SRC device). But let's assume Linux on i.mx7
-is actually using PSCI to handle processors.
-
-Thinking about it, I guess this might be u-boot that sets an EL3 monitor
-software that is able to handle PSCI requests for the Linux kernel. If
-this is the case, it make sense that Qemu emulates the PSCI services
-normally provided by u-boot to be able to boot linux directly (without
-booting a real u-boot prior to linux). All  is well and nice.
-</pre>
-      </blockquote>
-      <pre class="moz-quote-pre" wrap="">
-Yes, that's the way it works. The EL3 firmware is supposed to provide
-PSCI.
-
-For aarch64 the kernel is never entered in EL3 -- it will always run at EL2
-or EL1. (This is unlike aarch32, where in some cases you might run the
-kernel in secure-SVC, although even there starting the kernel in
-NS-SVC or NS-Hyp is more common.)
-
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">But then if I want to boot and test the u-boot binary (or any trusted OS
-for the matter) on a Qemu emulated i.MX7 (to later boot an hypervisor or
-an OS), it would be rather strange that any PSCI related service
-requested by the hypervisor/OS  would be handled by Qemu directly and
-not by the u-boot code (or any other EL3 code) running on the processor.
-</pre>
-      </blockquote>
-      <pre class="moz-quote-pre" wrap="">
-Exactly. This is why the board code is supposed to set things
-up so that if we are starting the guest code in EL1 or EL2
-then we enable the PSCI-via-SMC support, and if we're starting
-the guest code in EL3 then we do not.
-
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">How is it supposed to work? How can I tell Qemu (dynamically?) if I want
-it to provide (or not) the PSCI services (and more generally SMC/HVC
-services).
-</pre>
-      </blockquote>
-      <pre class="moz-quote-pre" wrap="">
-If you want PSCI via SMC or HVC, then set the psci-conduit
-property on the CPUs to QEMU_PSCI_CONDUIT_SMC or QEMU_PSCI_CONDUIT_HVC.
-If you do not want QEMU to provide PSCI, then leave psci-conduit
-at its default (which is QEMU_PSCI_CONDUIT_DISABLED).
-
-How can I tell it that I want to handle all SMC/EL3 services
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">by myself even if the "psci-conduit" is already set to SMC in Qemu?
-</pre>
-      </blockquote>
-      <pre class="moz-quote-pre" wrap="">
-It's the imx7 code that's setting psci-conduit, so it should
-not do that if it doesn't want that (and also should either
-start or not start the secondary cpus powered off, depending
-on what the hardware-to-firmware interface is supposed to be.)
-This is a bit awkward, because the boards we initially wanted
-PSCI for (notably virt) don't have an SoC object, so the code
-creating CPUs is in the same source file as the code that knows
-whether it's booting a kernel directly or not, and so it just
-open-codes the decision logic. With the imx, the CPU creation
-is in the source code for the SoC object which is abstracted
-away from the board model code. So we'd need to sort out how
-to plumb that information into the SoC object (or have the SoC
-object's code that creates the CPUs call some function to find out).</pre>
-    </blockquote>
-    <p>Thanks Peter,</p>
-    <p>So basically the Qemu i.MX7 processor code needs to set
-      psci-conduit to SMC because we want to be able to boot the Linux
-      kernel directly (without u-boot) with Qemu emulating the PSCI
-      services when an SMC instruction is triggered.</p>
-    <p>As I see it we also need a way to disable this Qemu PSCI
-      emulation in case we want to boot an EL3 software (u-boot, optee
-      or other).</p>
-    <p>We could certainly pass a command line option to explicitly tell
-      Qemu to disable the PCSI emulation. But this would be a bit
-      cumbersome as the board level code would then need to call to the
-      SOC code to disable the psci setting on all cores.<br>
-    </p>
-    <p>So I am wondering if we could be more "clever" solution and have
-      things sorted out automatically. I would like to suggest 2
-      solutions;</p>
-    <ol>
-      <li>The first solution could be based on the mode of the processor
-        when it starts executing the provided software. If I remember
-        correctly what you explained, if an ELF file is provided then
-        the processor boots in the highest level (EL3 for i.MX6/i.MX7)
-        while if a non ELF file is provided (uImage ...) then the
-        processor boots in EL2 (or lower depending on the processor) to
-        emulate the uboot behavior.</li>
-      <ol>
-        <li>if the processor starts the software in EL3 then we need to
-          disable the "psci-conduit" through SMC (if set) because the
-          EL3 software should install/provide the necessary firmware.</li>
-        <li>If the processor starts the software in EL2 then we need to
-          disable the "psci-conduit" through HVC (if set) because the
-          EL2 software should install/provide the necessary firmware.</li>
-      </ol>
-      <li>The other solution is to check if the booted software has
-        installed an EL3 or EL2 exception vector table.</li>
-      <ol>
-        <li>if the software has installed an EL3 (monitor) exception
-          vector table then we need to disable the "psci-conduit"
-          through SMC (if set).</li>
-        <li>if the software has installed an EL2 (hypervisor) exception
-          vector table then we need to disable the "psci-conduit"
-          through HVC (if set).</li>
-      </ol>
-    </ol>
-    <p>Is any of these proposals reasonable in your point of view? This
-      would apply for any (ARM) target and this seems generic enough.</p>
-    <p>Thanks</p>
-    <p>JC<br>
-    </p>
-    <blockquote type="cite"
-cite="mid:CAFEAcA8RU3=owBnCwJ7ePKW6Sm2GBU6er7o44iQd4Rs19TQs9Q@mail.gmail.com">
-      <pre class="moz-quote-pre" wrap="">
-
--- PMM
-
-</pre>
-    </blockquote>
-    <p><br>
-    </p>
-  </body>
-</html>
---------------Llope4Ps9cnCJ4e9YXeYc3I0--
-
+/
+    Leif

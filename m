@@ -1,217 +1,151 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp801848lfk;
-        Tue, 9 Nov 2021 02:56:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyNc/ATmdSnxIBUe5bNFT14m6wzig63C6yDaXq0mwSjlkLS8tRmTrcsRvmHbRidrMze9+ub
-X-Received: by 2002:a67:fa93:: with SMTP id f19mr114686855vsq.48.1636455383062;
-        Tue, 09 Nov 2021 02:56:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636455383; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp999572lfk;
+        Tue, 9 Nov 2021 05:44:01 -0800 (PST)
+X-Received: by 2002:a5d:5988:: with SMTP id n8mr9448513wri.309.1636465441764;
+        Tue, 09 Nov 2021 05:44:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636465441; cv=none;
         d=google.com; s=arc-20160816;
-        b=KBYRm2WHuz8/Lkw2zsMMOyt8SDi2E3jgN/vp8Fuz0tnH+M3VTph26n0npCyj9nfRWf
-         fa/79KhRBBvVVZY1xtY8pYIXPCEDbaNYm6R+ldi8p0o7tnaMA5v4aEhu4pRRF2P6czur
-         nLieN0kBMWXbNH6vmiVPBpeXqmV219r9B5ZdoOY9S7PXqSTjfWUstuxUcIKAkBgAwyQ/
-         +EG3+tNxKrYBJuSAA0UNgMSRBHb9FbGDn0aWyP/vrO6QJJGuY3BGFKxY4EfwqOCSiB2L
-         W+51POoCX5B0MD/iTyMASZuSyneTyujVETBU7df49bMSOooN6biV2O9+HCcxncBr4gLB
-         FIOQ==
+        b=HqEgZIcatsR7c1J2GTgLPQY9bwYrB/T6KX/pVMo72vzGyNqN9SS6Fg1rqvz1VDhp5y
+         p04kjRVizvOsCiT26yD75a/2DBxWK+BS7rd2FSQF/vlVW1PIgmR6rjOnvkh4Pg12TFVJ
+         R10Pqsmgk77rxpdP68jN2wMSvyc3aGGaLs2gJCnl4FNp7zR84PY4lX9+6pnqKNfFwb7k
+         eX7hhUnowkoU/zHFAvKhThocR6T0ptZniKGIYZhWPor1oF6kbKK6p8YopqLReu12U3zq
+         numCJFdi+HMETNpbdEAo2EO/zrnCgKn9h1F1sMX/4ojpzP8Z8prU3tJj1iAn8s7XBFq8
+         nsCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PEvAXg6mNWbCNX/oINhvCyPDS4AFu8lL2cIfW1xA5+w=;
-        b=NrF4FEKQNXty0k9aP7h9dfbhvkn2KnZ1Skg5gZMT8zG0B0ZGaSGmtvyJiw36gKekP8
-         /WK6Dutq6uqfZQpWYoJLvOeC5bA6ZUqJNhS6UmU5F2EjZCN2Bag/AA5x+3Pe3wsE0Zf3
-         A7eQ5euWc+daSZzUn/3wWBKxjq/TOGOiNKtPALYVyLkfFn64+bEygbdRW0iQyaXjiQPb
-         eyeXYRlYr5lpBK0T40Yh/7nBP89tjamnPKAxtWGZ1Eqht730Yy5D0XWx1mlfHafNPjHz
-         VjSPhu5lAVrmHy6z1lEwj1n2kYfBLiS0ECHfiSwC1bVE2cxt5CjTTkSk63pZ5EbC00rH
-         6aXw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=OMPwNn0OGGRDPgI/eeHJw7lVn7x9CkhqUobjvoDQuhc=;
+        b=Gj7ab+BNv7TvUXJPORb1AghgidAsGEUbr0yOfDcTyXF/zVzL32LVbwGGOHYR4e+UL+
+         rj0aMAJoV9FjCklG1s23HMiFbQpq7MiHvLnbcQXRFLCoznaO1KY7VCM2Y604G9L2PZzC
+         JWFhQIFreIb4eGzyuUMypjT5STTZcg0O0AAyhiuDlOpO5Epgktx2nxvkcpOo3M1wo+Qa
+         sGksDQq/+UOoM3IpWy34SXsWmq4UY8+IgSOOBH/n9zJDIq78up9QVsYm6ctlPmLQNlER
+         YpZbY1RoHk6lz350MCUP4gjRAU2wKk4vt1kFJnU5+PKznz0qVF7uoLjtd+YlFy0gCGse
+         Hpfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C9a2GPE8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=sskDnS7a;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z67si2623258vkd.3.2021.11.09.02.56.22
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id z3sor1624606wmp.10.2021.11.09.05.44.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Nov 2021 02:56:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 09 Nov 2021 05:44:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C9a2GPE8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=sskDnS7a;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34866 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mkOne-0005DQ-CV
-	for alex.bennee@linaro.org; Tue, 09 Nov 2021 05:56:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43882)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mkOnL-0005Cs-LI
- for qemu-arm@nongnu.org; Tue, 09 Nov 2021 05:56:05 -0500
-Received: from [2a00:1450:4864:20::329] (port=42607
- helo=mail-wm1-x329.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mkOnI-0008Th-Kp
- for qemu-arm@nongnu.org; Tue, 09 Nov 2021 05:56:03 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- d72-20020a1c1d4b000000b00331140f3dc8so1939014wmd.1
- for <qemu-arm@nongnu.org>; Tue, 09 Nov 2021 02:56:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PEvAXg6mNWbCNX/oINhvCyPDS4AFu8lL2cIfW1xA5+w=;
- b=C9a2GPE8SwTFz9fzYuqJHyINsqDV0fp8S4rXJHo+wPPOFd776XzMXaaqaVAGK0a6aF
- wBladg980OdSIaZgESM+M8t6+J3KHDI8e/1K5u9/tGsJwSx0Tbm4ywZ8foKn6MBidUS/
- dx7ywJAjoJU/3C4le+O4fQOIgD2Zl+8eDRwsXRSPqSO57raS8DPOJ6r18FqlQTLOS9ld
- vk3HipGXcZtYnShVu5L8jf9LVR9rqnMVKgBkCxRTi8uwWiVlaHAFiI2r2lIcrutbyohh
- P+eZyMeR+i0qDPhOjjRfRZwSUKjI07FY6ydvCUYgjvrZ6hJu6QL/P8MnBz9gpe1kNODa
- P0ng==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=OMPwNn0OGGRDPgI/eeHJw7lVn7x9CkhqUobjvoDQuhc=;
+        b=sskDnS7ahjntlhNX48uoFC5e0MT+VPa8xgTcwo5tjOx/7VwJn0Lwqdtwn8SOSAJ7nc
+         e5OCPrR3a14HPfSjQKjyj9EMhS0D53P4/dL/zmUA83auo6YDLpjm58hYq9+HeQe3IES1
+         7a/xYNWP63JmF5sFahdUs5Fmg52PfCY4OqgjgHL2tEcAvkhrIBS9RASE+hHLe5y8wPtk
+         pvcPqKgCuOcSCeDeVXc1m2fwok9+MesDJIXfC4pVBRJQ9RGv1Ar4REg84blLleDNiEbh
+         rjxJYhXJnrSMJwjMhwCcIJzja0Z45BvglHQye7i0uSMkjU5oLSi/0NGZ+r8xmftSOTy/
+         lWsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PEvAXg6mNWbCNX/oINhvCyPDS4AFu8lL2cIfW1xA5+w=;
- b=nWPTTHTo0uEH+Gdz9qJGPTa+lOMxhWL2z/SN/mbNukr0Lalwz+qKFr7UJzouoe1kBP
- GjdIGWhDtr5aaUI8i7Dpo3S0I+HaLJeSRyTHfGz2SVtHo+IGmv34mtl44V3sXFg4xsEr
- yvyHIbwQJS6AgDW9ObpQxvFK2AOFLQydiLDc04+yMNu/H2PJcyRPrmY0SqLRhdKNHyrS
- eV104oueT0T3hcszUmSGq1jtstrx1lb3DXB8nzQC0ytXo80QLRl3sbNURadPMW2Cvh+t
- RZL3PJ1SfRNc6TTKSb9jOo71JwoNI5Uv5hAJKpMHSkfAFbdIWM1tHs4+8JzuHbUJwzD8
- Rypw==
-X-Gm-Message-State: AOAM5308Vf4blEBqbem5Sw3VRbEaBJUK0FBG7Zvy5fJgYK7JM5ds0V8Z
- gryX13/B0bYn4n15SKVqGcK5hK3yTg9K2GoQq0HFzQ==
-X-Received: by 2002:a05:600c:1993:: with SMTP id
- t19mr6135654wmq.21.1636455358844; 
- Tue, 09 Nov 2021 02:55:58 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=OMPwNn0OGGRDPgI/eeHJw7lVn7x9CkhqUobjvoDQuhc=;
+        b=A7ArORfr1EPFL9GOPCgCVMayYvTm3NyixaQz7q4xUa4HP8YvFOgHLdCHIpCz5rt8r2
+         F1l2HbiOdNDuP9IGXz0npsP403TUq7in+jZXFatTY5t8gH0RFs9k/i+VV5S3GcPOYxeA
+         ova6LeUX/z0+K7OZdFEWfgVi5yXVneHTAi3Fv0bBmApGezepzLZCbXd6ZdncNXcCxHkV
+         tIBrvqNRqDytwsaQUvuqufEcUqttr7gsh0jVSLdOKpKLk+kCjqYoaI+1iBxcNt5XwZ18
+         G4L+nwRQOPI6R4HFnuJloxjGcHz907uPH2DvqlBm5GnJzSqx+ePv+jE9Izl+cgj4m4LH
+         iN/Q==
+X-Gm-Message-State: AOAM533WHWCtlrib5+G1xmStVMV2lTwn6XnMbuc8DXQ0BR9U7TT917g6
+	+ox71C6mPESm/fWnH9SqH9pPXe83z6QLgWRD3P3Ru08N
+X-Google-Smtp-Source: ABdhPJxGfmz2NCCmcjMM3EezbQ7INVlcZLLoEcgxdx8SnH5fQezlWtDhEz93NiT+hmvF8u1Kc4abYI8SU5tpYkAxk6M=
+X-Received: by 2002:a05:600c:1993:: with SMTP id t19mr7357975wmq.21.1636465441361;
+ Tue, 09 Nov 2021 05:44:01 -0800 (PST)
 MIME-Version: 1.0
-References: <07e63acb-b756-2586-2ba2-b54b837f7fc8@tribudubois.net>
- <CAFEAcA89YQ_vN-JpCeB+L==F5g1hM=CNMBzjaf5c3EHF19NVyQ@mail.gmail.com>
- <c8b89685-7490-328b-51a3-48711c140a84@tribudubois.net>
- <d19f6d2c-7505-b326-3a67-48c336f111e9@tribudubois.net>
- <dd45f94c-6110-7251-4f9f-5b4e1fbb73a4@tribudubois.net>
- <e0a1b786-4b1c-c608-495b-3fb839de2376@tribudubois.net>
- <CAFEAcA-DnbocsRHC3cUM_uX=kGn-KJa3q42TCyaB=isxKTS-Sg@mail.gmail.com>
- <ec74f093-9508-c0fc-3e06-2e8abf8655c6@tribudubois.net>
-In-Reply-To: <ec74f093-9508-c0fc-3e06-2e8abf8655c6@tribudubois.net>
+References: <20210812165341.40784-1-shashi.mallela@linaro.org>
+ <20210812165341.40784-8-shashi.mallela@linaro.org> <CAFEAcA9WVu+kjfCWwfGQV00yKgmdFDCSUpxNOu1BEBM3AZCWXg@mail.gmail.com>
+ <20210902124258.mqjhx7lqqvkczf6a@leviathan> <CAFEAcA-KeBzOCP1CHVWPHbHzG=KbS_HJmXoYo7B2VBz=oGSd3w@mail.gmail.com>
+ <20211015122351.vc55mwzjbevl6wjy@leviathan>
+In-Reply-To: <20211015122351.vc55mwzjbevl6wjy@leviathan>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Nov 2021 10:55:47 +0000
-Message-ID: <CAFEAcA8RU3=owBnCwJ7ePKW6Sm2GBU6er7o44iQd4Rs19TQs9Q@mail.gmail.com>
-Subject: Re: Qemu and ARM secure state.
-To: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+Date: Tue, 9 Nov 2021 13:43:50 +0000
+Message-ID: <CAFEAcA-Xe2u8n+og4TMyZSSvdBm8nrma3z4GkVjEJHPdJu8Fnw@mail.gmail.com>
+Subject: Re: [PATCH v8 07/10] hw/arm/sbsa-ref: add ITS support in SBSA GIC
+To: Leif Lindholm <leif@nuviainc.com>
+Cc: Shashi Mallela <shashi.mallela@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Eric Auger <eric.auger@redhat.com>, narmstrong@baylibre.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::329
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KphwVgC8ZOgR
+X-TUID: GEynoLg137f0
 
-On Mon, 8 Nov 2021 at 22:09, Jean-Christophe DUBOIS <jcd@tribudubois.net> wrote:
-> OK, so one problem seems to be that PSCI-via-SMC is enabled on i.MX6UL
-> when there is no built in PSCI related function on this processor.
+On Fri, 15 Oct 2021 at 13:23, Leif Lindholm <leif@nuviainc.com> wrote:
+> (Apologies for delay. Alex also tells me you are currently away, but
+> there is no strong urgency here.)
+
+(Thanks for the ping via Alex -- I missed this email when I was
+scanning through my qemu-devel mail backlog after my holiday...)
+
+> On Thu, Sep 23, 2021 at 17:00:35 +0100, Peter Maydell wrote:
+> > Leif, what's your plan/preferences here ?
 >
-> According the Linux DTS, i.MX7 (solo and dual) processors have a
-> somewhat PSCI related "entry-method"
-> (https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/imx7s.dtsi).
-> But it is not clear to me how this is used and this seems a bit strange
-> as "entry-method" seems to be mostly used on arm64 and there is no other
-> PSCI related information in the i.MX7 DTS files.
-
-Yeah, PSCI was an interface introduced mostly with aarch64. In the
-32-bit world bringing up multiple CPUs was complete anarchy -- the
-way the kernel told the secure firmware that it should start up
-a secondary core was entirely determined by the firmware, and
-the kernel had to have board-specific code to do this. (For the
-32-bit imx boards I think this is in arch/arm/mach-imx/src.c.)
-For aarch64 we had a clean slate and took the opportunity to insist
-that all boards did it the same way, ie using PSCI. (There are other
-useful things PSCI allows, but standardising secondary boot is the
-one that matters for this discussion.) So if a platform's firmware
-implements PSCI, all the dts file has to do is say so, and then
-there's no need for board-specific "start secondary CPUs" code.
-PSCI does define an aarch32 interface, but there are a lot of
-legacy older boards (and new flavours of boards in long-standing
-design families) which still do things the old way in aarch32 land.
-
-Typically the top-level "PSCI is available" node is added by the firmware.
-(QEMU will do this too when it's emulating PSCI firmware) -- if the
-board code enables the psci-conduit it will add an appropriate psci
-node in the hw/arm/boot.c code.)
-
-> As a matter of fact
-> previous quad or dual i.MX6 were not supporting PSCI. Instead they were
-> using a proprietary method through the internal SRC device (and i.MX7
-> also has a similar internal SRC device). But let's assume Linux on i.mx7
-> is actually using PSCI to handle processors.
+> I discussed this with Alex/Shashi.
 >
-> Thinking about it, I guess this might be u-boot that sets an EL3 monitor
-> software that is able to handle PSCI requests for the Linux kernel. If
-> this is the case, it make sense that Qemu emulates the PSCI services
-> normally provided by u-boot to be able to boot linux directly (without
-> booting a real u-boot prior to linux). All  is well and nice.
+> One further complicating aspect is that the EDK2 GIC driver currently
+> relies on GIC addresses being known at compile-time.
+>
+> > Presumably somebody also needs to do the system-software side
+> > of things to handle the ITS being present and the redistributor
+> > frames moving...
+>
+> Since it *would* be useful to get this support in, I think the most
+> pragmatic plan would be:
+> - Add ITS in the location originally proposed by Shashi.
+> - Add information to DT:
+>   - Platform version (1).
+>   - GICD, GICR, and ITS base addresses.
+> - edk2: Convert GIC driver to support dynamic block addresses.
+> - TF-A: Parse the DT and add SIP SVC calls:
+>   - to retrieve it (or return not supported if not found).
+>   - to retrieve base addresses for GICD, GICR, and ITS.
+> - edk2-platforms: Query TF-A for platform version.
+>   If platform version >= 1, request base addresses for GICD, GICR, and
+>   ITS.
+>   - Generate IORT if ITS present.
+> - Update GIC frame layout to match an ARM GIC-?00. (Platform version 2)
+>
+> Unrelated to the ITS question, and not requiring any intervention on
+> the QEMU side, we can then also transition the CPU and DRAM discovery
+> to SIP SVC calls, and stop sharing the DT with edk2 completely.
+>
+> And some way further down the line we could do the SCP thing, which
+> would let us support different GIC-layouts/configurations based on
+> platform command line options. (Platform version 3.)
+> (TF-A makes SCP calls if version >= 3)
+> This would then require no changes to edk2-platforms.
 
-Yes, that's the way it works. The EL3 firmware is supposed to provide
-PSCI.
+This sounds good to me.
 
-For aarch64 the kernel is never entered in EL3 -- it will always run at EL2
-or EL1. (This is unlike aarch32, where in some cases you might run the
-kernel in secure-SVC, although even there starting the kernel in
-NS-SVC or NS-Hyp is more common.)
+> (Numeric values described as incrementing integer rather than trying
+> to guess at specific qemu release numbers.)
 
-> But then if I want to boot and test the u-boot binary (or any trusted OS
-> for the matter) on a Qemu emulated i.MX7 (to later boot an hypervisor or
-> an OS), it would be rather strange that any PSCI related service
-> requested by the hypervisor/OS  would be handled by Qemu directly and
-> not by the u-boot code (or any other EL3 code) running on the processor.
-
-Exactly. This is why the board code is supposed to set things
-up so that if we are starting the guest code in EL1 or EL2
-then we enable the PSCI-via-SMC support, and if we're starting
-the guest code in EL3 then we do not.
-
-> How is it supposed to work? How can I tell Qemu (dynamically?) if I want
-> it to provide (or not) the PSCI services (and more generally SMC/HVC
-> services).
-
-If you want PSCI via SMC or HVC, then set the psci-conduit
-property on the CPUs to QEMU_PSCI_CONDUIT_SMC or QEMU_PSCI_CONDUIT_HVC.
-If you do not want QEMU to provide PSCI, then leave psci-conduit
-at its default (which is QEMU_PSCI_CONDUIT_DISABLED).
-
-How can I tell it that I want to handle all SMC/EL3 services
-> by myself even if the "psci-conduit" is already set to SMC in Qemu?
-
-It's the imx7 code that's setting psci-conduit, so it should
-not do that if it doesn't want that (and also should either
-start or not start the secondary cpus powered off, depending
-on what the hardware-to-firmware interface is supposed to be.)
-This is a bit awkward, because the boards we initially wanted
-PSCI for (notably virt) don't have an SoC object, so the code
-creating CPUs is in the same source file as the code that knows
-whether it's booting a kernel directly or not, and so it just
-open-codes the decision logic. With the imx, the CPU creation
-is in the source code for the SoC object which is abstracted
-away from the board model code. So we'd need to sort out how
-to plumb that information into the SoC object (or have the SoC
-object's code that creates the CPUs call some function to find out).
+This is kind of mixing up two separate things. The above describes
+three "versions" of this machine type, which you might consider
+as like revision A/B/C of hardware (and where firmware might for
+instance read a 'board revision' register or something to tell
+them apart). QEMU release numbers and versioned board types like virt-6.0
+are a very specific thing that is taking on a guarantee about
+maintaining version compatibility of the same board type between
+different QEMU versions. We can make sbsa-ref a versioned machine
+type in that sense if you really want to do it, but it makes future
+changes to the machine rather more painful (everything new
+immediately needs flags and properties and so on so that it can be
+added only for newer versions of the machine type and not for the
+old one -- at a rough count at least  10% of hw/arm/virt.c is purely
+boilerplate and machinery for versioned machine types).
+So it's not something we should do for sbsa-ref unless we have a good
+reason I think.
 
 -- PMM

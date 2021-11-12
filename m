@@ -1,102 +1,123 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp877002lfk;
-        Wed, 10 Nov 2021 14:07:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwCdTQXPgyZU7rIBtm39VV1+iH5EInvOy2ZRNbH2IC4Y0D0x5AOtl6s1B/UzX5WFKQuR3Of
-X-Received: by 2002:a05:6122:d08:: with SMTP id az8mr3319702vkb.15.1636582035077;
-        Wed, 10 Nov 2021 14:07:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636582035; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp1697255lfk;
+        Fri, 12 Nov 2021 05:28:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxuvxdapa9hoLwQnvWW2e2IVYLacsprNE7BuGUndBXWscZMTE86VnLBVjPpwR4pT5MHSdwq
+X-Received: by 2002:a9f:3d85:: with SMTP id c5mr22713645uai.12.1636723690674;
+        Fri, 12 Nov 2021 05:28:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636723690; cv=none;
         d=google.com; s=arc-20160816;
-        b=IBgCqrnWizLvBcNJGJDx5ilXBzoN1ntNjPuYqj/9odRl7cCjwkIH+2zwr+3xcUBgN8
-         CPiT2dcwtjgAVJZDnU2vS3coV2IsLdo/1q1Xpbt/aqxxZRgO9cOVxa5oVYf/sJ7CqIpP
-         OYFChdoiDOqtUEPvdB4OUAN/2DnWUI6xGVReEOaxFAFjEvFvef71WXKY00DMdaZStVgz
-         U5Mi4KHlBIPg8SJhj/pko0f1uovLHCVWlpuNIsDduCDNo2hi42x3ciapkMlCgDYwRfja
-         Dvny5SHrxDgQZ/GhV6PSpaXICn9FDUYf3A4XVhZa+aYqcSovgz5NmSvDV4rJkXh+XycB
-         o8AQ==
+        b=n2YW4IdOEZNflI2A9oHLikz5Eh7z8LQjNV60T7FdVfHtVOXKE3AhaS1gTenyX33wnp
+         KQ7FjERrrUeDMv3S0Sc/tfOVPQgCEnePQp7oDZ4C5gMDjrSUQB7fPWLoNtULcqrDjcmO
+         u7OGtnwRmwaihf29P9VF5O+7vT+wgOlw4nE7j7KhWZ1w7Jf5AEcNfTl+rJGCEBs45Q/T
+         X7OGAJuBO/RCKsd65Adm8f9CMwmPtYhWQjUGTea1hC/kZ7D8fddSBFmATr8SBk/U7cq/
+         IIvryOon/VriH43TqDGr3L9iyWTbhdjYw4s5kSeM4xBcH9k1zYEHM31+4glxKHtzgEX2
+         3XdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=ZB8enz9LI4/KJ8LpLCq66hdNo6gP/ctW2YC5VFWy3hk=;
-        b=rCHVDkKtw7GNUeZw2ijnLHmo/ANS/FXvKWxPL/E4pT8wxMi2IRdf8Zd6l/lV68Hcwa
-         vE1YZrPeso3WuwklK/fnSMDSq60DLrMtjbmYluYOAzJsrnsSCxzjZGS9KMHNyaJ1KTlD
-         2zY7gbXMvkJqE+WjNiPMc4n5hFDWf6FZ/egiP8MbTD0X7ZuryAaJlmzxTU1R5RnbVa+6
-         xfRllXupvtVXhPSsHRIZhQhL5FJo82H4yFzD13XXlfoNcxXgCDVUvlZ5tpsteTEDuEBI
-         lE6cFIDSkRusGY9bNVl7fBBT+YJYdyn8Tsr+zLxoV5+xIc9NmclZevT2A4w9QbHkRu3T
-         nEpg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=dFzVPbMHKlplAqZ9XZ7dRJkRoxUC1hib/gV8XU6YgKs=;
+        b=aGniK6OWSVpwUM/CLaH+5UsyW4FrCsC3SewyEG0xnPkwyv2nzXiRT9GwalQ3hkYGBs
+         QnPyX8auSUqUNCEkmy4Ckjkhg9LScaHKke6H1hJ23I8uuGUAuWBuLFbnunqp1yNysVah
+         S/HakeHfF6t7JcjnySDCqDnolPnQB4NDiAfj6Kq4x2dXP1dwBOfNBPGLw8YKbo12VUrF
+         +JBo98CMf7HR5whmMmYSbBxkD1rziBi8JWbtxvGgSJOB2rXqsdC1qKxVEHwBUWV9TlRA
+         NEXw4LKCrFjKN690NUTdNslnk4j3UVoEPhHpnj3dolIxAoEW06a5rvZtrrAcCGRaEuKo
+         mpDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g9kIn8g3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GWW4KmS5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k11si1985943uao.212.2021.11.10.14.07.14
+        by mx.google.com with ESMTPS id u1si13443783vsh.67.2021.11.12.05.28.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Nov 2021 14:07:15 -0800 (PST)
+        Fri, 12 Nov 2021 05:28:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g9kIn8g3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GWW4KmS5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36898 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44850 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1mkvkQ-0006Nb-Bu
-	for alex.bennee@linaro.org; Wed, 10 Nov 2021 17:07:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46536)
+	id 1mlWbC-00042t-0l
+	for alex.bennee@linaro.org; Fri, 12 Nov 2021 08:28:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36404)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mkvjx-0006M6-Cp
- for qemu-arm@nongnu.org; Wed, 10 Nov 2021 17:06:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26463)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mlWb1-000411-OC
+ for qemu-arm@nongnu.org; Fri, 12 Nov 2021 08:27:59 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26651)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1mkvju-0000hy-AG
- for qemu-arm@nongnu.org; Wed, 10 Nov 2021 17:06:44 -0500
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1mlWaz-00010q-0l
+ for qemu-arm@nongnu.org; Fri, 12 Nov 2021 08:27:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636582000;
+ s=mimecast20190719; t=1636723676;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZB8enz9LI4/KJ8LpLCq66hdNo6gP/ctW2YC5VFWy3hk=;
- b=g9kIn8g3kHuTJt+cRJFYmiyd8dHMFptDhVc2VRo9V0lCJO2CNl/zyQs8Zx6Z/81or5f3lY
- Pbk1ayjCzgpvg6ur6b2uNnJlOR+PkLZevSXzCGRDNgL1glKaTBfkHJmv6zg5riGNNtqnay
- OyYvSBkkGxM95ixw2b/SxJbzlBXS6kU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-109-pkFadyoRPu6XHQtZt12TcA-1; Wed, 10 Nov 2021 17:06:37 -0500
-X-MC-Unique: pkFadyoRPu6XHQtZt12TcA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 31DC615721;
- Wed, 10 Nov 2021 22:06:36 +0000 (UTC)
-Received: from localhost (unknown [10.22.16.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BC0B660843;
- Wed, 10 Nov 2021 22:06:32 +0000 (UTC)
-Date: Wed, 10 Nov 2021 17:06:32 -0500
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH v3 3/3] hw/i386: expose a "smbios-entry-point-type" PC
- machine property
-Message-ID: <20211110220632.xaazf2s647r63qm7@habkost.net>
-References: <20211026151100.1691925-1-ehabkost@redhat.com>
- <20211026151100.1691925-4-ehabkost@redhat.com>
- <a2618cf2-a2a6-53f6-a7f0-8bb3a72d32e9@redhat.com>
- <20211102072349-mutt-send-email-mst@kernel.org>
+ bh=dFzVPbMHKlplAqZ9XZ7dRJkRoxUC1hib/gV8XU6YgKs=;
+ b=GWW4KmS5GLHtK1skBvOUOBnns+JJBg7wTyr5L61oGYPSO3B/dnze4eaZ8K2SSZjNu1vZcz
+ Or5b5bDKZiUVDaqiH2BuvK4UdjmLYClZJdXtJ9v4PWcj44b3UD/ctfK1kMkjLsGEESnVpw
+ nxeqTK6jMiEyOCcILKPlONgDMLFz1yQ=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-359-FQhyrnNdO8KT7r0edL9Lqg-1; Fri, 12 Nov 2021 08:27:55 -0500
+X-MC-Unique: FQhyrnNdO8KT7r0edL9Lqg-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ f4-20020a50e084000000b003db585bc274so8198223edl.17
+ for <qemu-arm@nongnu.org>; Fri, 12 Nov 2021 05:27:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=dFzVPbMHKlplAqZ9XZ7dRJkRoxUC1hib/gV8XU6YgKs=;
+ b=5vKnZtA4tgw0omnQu6eh37XeVi2A7mhoQKFnl5GnLQysPO2420RAS5xhXmzi+JogMZ
+ H7Lujl4XgUscJYXE4InLHjPfUwpa/AzWUT3GVWwj25MZW6moZqK1pvbUfPlvaXO8poyx
+ L7svH/e06uACSdK5lNk4XojB31bhHE8w8qAnepxCuj7MQ0r3ugOu3Tp9bbfm23vWohXu
+ uFW0un9bSRgV6exhctfNGHFt+Nkem7U3hEuHM4XXYFK9n/TFf4kQGnxZ2bJoc0u1WSGZ
+ kpsphODow1vO/JbDiK4e9Jh0VLoKDTwLnMmPy0lblw4I+AcdnnqQlpPcIvA4hgDLW/Ts
+ 8xaw==
+X-Gm-Message-State: AOAM533J0qeXknwtWzLSdvAhqghsQHbXVBLTeh/jr3kxi0oMlQXnqwb8
+ IxtG/7/MgWyUXrMHRcFKSvV4kc1wGStMlOYyEfmRJzNoupyfV7bJlhXRqYdjd5oIZoBbntL+ckH
+ vxnZjBZpAkP4g
+X-Received: by 2002:a17:906:6a0a:: with SMTP id
+ qw10mr18891889ejc.547.1636723673931; 
+ Fri, 12 Nov 2021 05:27:53 -0800 (PST)
+X-Received: by 2002:a17:906:6a0a:: with SMTP id
+ qw10mr18891853ejc.547.1636723673651; 
+ Fri, 12 Nov 2021 05:27:53 -0800 (PST)
+Received: from localhost ([185.140.112.229])
+ by smtp.gmail.com with ESMTPSA id jg32sm2673956ejc.43.2021.11.12.05.27.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Nov 2021 05:27:52 -0800 (PST)
+Date: Fri, 12 Nov 2021 14:27:51 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v2] hw/arm/virt: Expose empty NUMA nodes through ACPI
+Message-ID: <20211112142751.4807ab50@redhat.com>
+In-Reply-To: <5180ecee-62e2-cd6f-d595-c7c29eff6039@redhat.com>
+References: <20211027052958.280741-1-gshan@redhat.com>
+ <20211027174028.1f16fcfb@redhat.com>
+ <fecb9351-ae78-8fcd-e377-623243ef80df@redhat.com>
+ <20211101094431.71e1a50a@redhat.com>
+ <47dc3a95-ed77-6c0e-d024-27cb22c338eb@redhat.com>
+ <20211102073948.am3p3hcqqd3cfvru@gator.home>
+ <b8ed4687-e30a-d70f-0816-bd8ba490ceb7@redhat.com>
+ <20211110113304.2d713d4a@redhat.com>
+ <5180ecee-62e2-cd6f-d595-c7c29eff6039@redhat.com>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20211102072349-mutt-send-email-mst@kernel.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=ehabkost@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
@@ -104,7 +125,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,78 +138,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Igor Mammedov <imammedo@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
+ Gavin Shan <gshan@redhat.com>, ehabkost@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ shan.gavin@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H0Zjibl/LYZM
+X-TUID: /yoy9g4rlv1u
 
-On Tue, Nov 02, 2021 at 07:25:25AM -0400, Michael S. Tsirkin wrote:
-> On Tue, Nov 02, 2021 at 09:51:35AM +0100, Philippe Mathieu-Daudé wrote:
-> > On 10/26/21 17:11, Eduardo Habkost wrote:
-> > > The i440fx and Q35 machine types are both hardcoded to use the
-> > > legacy SMBIOS 2.1 (32-bit) entry point. This is a sensible
-> > > conservative choice because SeaBIOS only supports SMBIOS 2.1
-> > > 
-> > > EDK2, however, can also support SMBIOS 3.0 (64-bit) entry points,
-> > > and QEMU already uses this on the ARM virt machine type.
-> > > 
-> > > This adds a property to allow the choice of SMBIOS entry point
-> > > versions For example to opt in to 64-bit SMBIOS entry point:
-> > > 
-> > >    $QEMU -machine q35,smbios-entry-point-type=64
+On Wed, 10 Nov 2021 12:01:11 +0100
+David Hildenbrand <david@redhat.com> wrote:
+
+> On 10.11.21 11:33, Igor Mammedov wrote:
+> > On Fri, 5 Nov 2021 23:47:37 +1100
+> > Gavin Shan <gshan@redhat.com> wrote:
+> >   
+> >> Hi Drew and Igor,
+> >>
+> >> On 11/2/21 6:39 PM, Andrew Jones wrote:  
+> >>> On Tue, Nov 02, 2021 at 10:44:08AM +1100, Gavin Shan wrote:    
+> >>>>
+> >>>> Yeah, I agree. I don't have strong sense to expose these empty nodes
+> >>>> for now. Please ignore the patch.
+> >>>>    
+> >>>
+> >>> So were describing empty numa nodes on the command line ever a reasonable
+> >>> thing to do? What happens on x86 machine types when describing empty numa
+> >>> nodes? I'm starting to think that the solution all along was just to
+> >>> error out when a numa node has memory size = 0...  
 > > 
-> > It would be nice to have a test for this...
+> > memory less nodes are fine as long as there is another type of device
+> > that describes  a node (apic/gic/...).
+> > But there is no way in spec to describe completely empty nodes,
+> > and I dislike adding out of spec entries just to fake an empty node.
+> >   
+> 
+> There are reasonable *upcoming* use cases for initially completely empty
+> NUMA nodes with virtio-mem: being able to expose a dynamic amount of
+> performance-differentiated memory to a VM. I don't know of any existing
+> use cases that would require that as of now.
+> 
+> Examples include exposing HBM or PMEM to the VM. Just like on real HW,
+> this memory is exposed via cpu-less, special nodes. In contrast to real
+> HW, the memory is hotplugged later (I don't think HW supports hotplug
+> like that yet, but it might just be a matter of time).
+
+I suppose some of that maybe covered by GENERIC_AFFINITY entries in SRAT
+some by MEMORY entries. Or nodes created dynamically like with normal
+hotplug memory.
+
+
+> The same should be true when using DIMMs instead of virtio-mem in this
+> example.
+> 
+> >   
+> >> Sorry for the delay as I spent a few days looking into linux virtio-mem
+> >> driver. I'm afraid we still need this patch for ARM64. I don't think x86  
 > > 
-> > Otherwise,
-> > Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> > does it behave the same way is using pc-dimm hotplug instead of virtio-mem?
+> > 
+> > CCing David
+> > as it might be virtio-mem issue.  
 > 
-> Can we update seabios and the switch the default?
-> Maybe just for q35?
-> Or are there more considerations?
-
-We can switch the default, but SeaBIOS maintainers won't include
-the SMBIOS 3.0 code I had submitted[1] until this is supported by
-QEMU.
-
-After we patch SeaBIOS to support SMBIOS 3.0 and update the
-SeaBIOS binaries in the QEMU tree, we can switch the default in
-Q35 and/or i440fx to SMBIOS 3.0.
-
-[1] https://www.mail-archive.com/seabios@seabios.org/msg12415.html
-    https://www.mail-archive.com/seabios@seabios.org/msg12438.html
-
+> Can someone share the details why it's a problem on arm64 but not on
+> x86-64? I assume this really only applies when having a dedicated, empty
+> node -- correct?
 > 
+> > 
+> > PS:
+> > maybe for virtio-mem-pci, we need to add GENERIC_AFFINITY entry into SRAT
+> > and describe it as PCI device (we don't do that yet if I'm no mistaken).  
 > 
-> > > Based on a patch submitted by Daniel Berrangé.
-> > > 
-> > > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> > > ---
-> > > This is patch was previously submitted at:
-> > > https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@redhat.com
-> > > 
-> > > Changes from v2:
-> > > * Rename "smbios-ep" to "smbios-entry-point-type"
-> > > 
-> > > Changes from v1:
-> > > * Include qapi-visit-smbios.h instead of qapi-visit-machine.h
-> > > * Commit message fix: s/smbios_ep/smbios-ep/
-> > > ---
-> > >  include/hw/i386/pc.h |  4 ++++
-> > >  hw/i386/pc.c         | 26 ++++++++++++++++++++++++++
-> > >  hw/i386/pc_piix.c    |  2 +-
-> > >  hw/i386/pc_q35.c     |  2 +-
-> > >  4 files changed, 32 insertions(+), 2 deletions(-)
+> virtio-mem exposes the PXM itself, and avoids exposing it memory via any
+> kind of platform specific firmware maps. The PXM gets translated in the
+> guest accordingly. For now there was no need to expose this in SRAT --
+> the SRAT is really only used to expose the maximum possible PFN to the
+> VM, just like it would have to be used to expose "this is a possible node".
 > 
+> Of course, we could use any other paravirtualized interface to expose
+> both information. For example, on s390x, I'll have to introduce a new
+> hypercall to query the "device memory region" to detect the maximum
+> possible PFN, because existing interfaces don't allow for that. For now
+> we're ruinning SRAT to expose "maximum possible PFN" simply because it's
+> easy to re-use.
+> 
+> But I assume that hotplugging a DIMM to an empty node will have similar
+> issues on arm64.
+> 
+> >   
+> >> has this issue even though I didn't experiment on X86. For example, I
+> >> have the following command lines. The hot added memory is put into node#0
+> >> instead of node#2, which is wrong.  
+> 
+> I assume Linux will always fallback to node 0 if node X is not possible
+> when translating the PXM.
 
--- 
-Eduardo
+I tested how x86 behaves, with pc-dimm, and it seems that
+fc43 guest works only sometimes.
+cmd:
+  -numa node,memdev=mem,cpus=0 -numa node,cpus=1 -numa node -numa node
+
+1: hotplug into the empty last node creates a new node dynamically 
+2: hotplug into intermediate empty node (last-1) is broken, memory goes into the first node
+
+We should check if it possible to fix guest instead of adding bogus SRAT entries.
 

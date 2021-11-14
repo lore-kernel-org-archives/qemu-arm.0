@@ -1,98 +1,97 @@
-Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp5669735lfk;
-        Mon, 15 Nov 2021 02:46:41 -0800 (PST)
-X-Received: by 2002:adf:e5c7:: with SMTP id a7mr43740330wrn.318.1636973201538;
-        Mon, 15 Nov 2021 02:46:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636973201; cv=none;
+Received: by 2002:ac2:5544:0:0:0:0:0 with SMTP id l4csp4314199lfk;
+        Sun, 14 Nov 2021 02:56:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwlneKhkP4xvdEDvxWRgRlr3G22dhUs96cRZEApW0V0Yxt2FmFyCrdh51yf6dUn/+I86pG7
+X-Received: by 2002:a05:600c:4f14:: with SMTP id l20mr48833553wmq.164.1636887406991;
+        Sun, 14 Nov 2021 02:56:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636887406; cv=none;
         d=google.com; s=arc-20160816;
-        b=cLWiIZzuJ1mvyQIrQAG5XUfmVJPvHkPnFWIdH0d8iT+MhJRCZuHV2sDuxNtxrEpFZ5
-         w5M3f7a6hLELDtdjlA2x4mW6/iFwTzMWT8NASE7UOsy3gtbo3N3ggHAEgtDn4RA4gJZr
-         +Wi0U7iL/7LqgUG47NhYtUpe0bCgyd10ONvp7otbwHWk7pxwYW80X0Jnfkv6Hg/DewJC
-         kq6xq22/CK3rY2zQvkzAcNAqDPpJ90mOAF3vo6jV7FmPUvSN9wsPiW5lsCtTce/O7bey
-         cB/KDhncZC/NHr2qbrateusFSaFdjuhJlodj6exZH5kAf/f+GGuB3493NC8qudSXgnG8
-         6icA==
+        b=LLVC1QZl0uWGJktWR8imH/Jr+b4LbnsQCh0Uq0OSK/I/OzYPOkeh5eFGbh8wk3eRcp
+         c9cs20wcB12O8oWX/NVF3wxop6H0sg0FkVjgxc8vmd+dhX5dYhPCgAzPO985tkiZhjQH
+         NSSHyBVn4Va3WAexxDGEorsjghx+vozQMxmoTArDr7WA0czdSlGm5fzhrYlXjnuymTFQ
+         UyBd+dohKPGVyBsPmeaVIF3Mr+lZ06omDQRB9llkZCMMN9iiqYoGskEC7OiztnpPesLi
+         AA2d24ojDg1I0bHIYmSy8yA4fNYXFwpW3LrlbXOnXrW/5seUlPtTWq6r5Mx1XbmXmsGy
+         DUDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=8EJG14aFip/4vbpZSE2jJAwy2phleNBO8/XT+k2kP3g=;
-        b=Sf34o98TBfXwqdZt+bMGAuuToGdtWdpDFaH8lUUxOhGFLabChRJ1VcgyUxqrIaczkl
-         vMZiNLBMQ7pOJsMM8lvuj5qFcIijbWEZk42VNnqJNH3w27ypIzWnL7dFpwgBVIyU12X7
-         /ivhv/OwA/TF9N2eUPcYj6tNnssWgyy1r7ymUoqmmd9wOh8K8CCVVYS/8v4d33q7skhE
-         yUK9ABroCOc77vkmWu09/KztMaNVNBr17zCnfmG8yNkM1+OKm1iBPZMl5jfNhVDeHHIF
-         29yHsYocktMNaK8tgBTivh2O57D14k1PuCndKpmpvrW1kHJK5vQ356KgcgDuksBCvgf/
-         ei1Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=bHHIgW1obRBGQUJLy7bqvG3nmvmp5Fye1AGaBQMPyss=;
+        b=Gq/Z60jcoATW42dhfFs3GXpEFT/smCxYEWASsmOJWqkRdaVO6sLDQypDPqqK6NpcPS
+         N6TT1YQ7NUjzTN72QIw7fY2N7foqXtdTHsCIWE9MRfPA2Wm0MOnmpDbDWdB5dJzRVtm3
+         0nP1hgfOsqjXANAmzilSdDmNb1y2CS9OJFJEchIFmHGIYBMlXxLqh+cqeEscnmUjB2XQ
+         zxVPuePwJlHnsLZaCUccXo4cQsiWt+RfD4yo8osXAACbK+FpwQ9Uyvg1u8VC9ELTceh5
+         fJDwc4A3jyw1K8a0uLRDsgqttUMDlkC4Nx5cBCiqfC3mLJVecxG1P2knAA/VRuQLcbAs
+         Oznw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pCFZRjRF;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v12sor8200787wrm.50.2021.11.15.02.46.41
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 15 Nov 2021 02:46:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Return-Path: <agraf@csgraf.de>
+Received: from zulu616.server4you.de (mail.csgraf.de. [85.25.223.15])
+        by mx.google.com with ESMTP id i82si20653192wma.126.2021.11.14.02.56.46;
+        Sun, 14 Nov 2021 02:56:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) client-ip=85.25.223.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pCFZRjRF;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=8EJG14aFip/4vbpZSE2jJAwy2phleNBO8/XT+k2kP3g=;
-        b=pCFZRjRFEyiJGUdw8kVFO4MyCflGf/oT7152aQUm/mYNav3wCf/KIp+dDD3ycSvy+I
-         Lc2bnCgOEvagADqGnaL1HV+ny+OSExbouPRMAff/k4kIyy+lGRdgA80LmZ8yrQDol+Vu
-         FiZ0vtN3zuOezkSAkQGpBt71KR/m9RU5Qme0BT+i2RlNWygCLMuVlgUNHf7qkYscXyo8
-         nOLRBbmkiOB4eCSi9v4zIMEDm9AkEMNS4363L1lou3PtHQHxjNmHQrKjPc2bN71uAcCv
-         qK6y1kEbaPfHkSkDRXTZan//TFDtoFyskrPVlRnI/G0BpTtWPKVlJJwBCxPaeYiidl7+
-         UVxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=8EJG14aFip/4vbpZSE2jJAwy2phleNBO8/XT+k2kP3g=;
-        b=i4R6C7jmnooLC/GLM08M6r639DY1TW2QIt34dbwZJHtYUD1emFZ91Ndd8t+JIi59Jg
-         IJg8pCgABwjcAGLWwMevUISEgdOz8c0lefnMuicWXsCCD4PbOMH62kzkxhmUYGZF0/Ar
-         WufTr+d+O3ytQiT9EgNHJlMxvBGerJYq+FhxPnaKT13qvPkoYTFiIzm4y3xW9qBDrSZr
-         aaGTLS+lJFHcdoUUiIySHYIw7it6CyNywObDz9mnqTFPyHmptVnNIvF95wDaZwEabi96
-         i0FdTN+H80zvYVF3iyAX2vzH2M5araiNQaLxX5ZllcAns0OscxdM6kjeCHRIhIMbwDKv
-         amEQ==
-X-Gm-Message-State: AOAM5323Db1Y2NgV0PwkowBVbx6qRNyb+h38wc+3kxxCZ2nZg0MZNbaD
-	Ahno2BRPcRkeO70ythqZOrRfqlLSnIyKCHsykWYDxfRm
-X-Google-Smtp-Source: ABdhPJypmN7jH0I/LsD4hcdgmVyI37Kku5pUL57WailFpJqY+l7W1NNq8928wXHpAqML6U2VA8wrFzqx1s7kFsxvROk=
-X-Received: by 2002:adf:e984:: with SMTP id h4mr46566631wrm.149.1636973201245;
- Mon, 15 Nov 2021 02:46:41 -0800 (PST)
-MIME-Version: 1.0
-References: <CAFEAcA8vRNC8RTAAxgYzZsGdqGfzDSr3m0UXmeZoF115z=6N3Q@mail.gmail.com>
- <8639608F-1685-48B8-B965-255D30B213F8@csgraf.de>
-In-Reply-To: <8639608F-1685-48B8-B965-255D30B213F8@csgraf.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Nov 2021 10:46:30 +0000
-Message-ID: <CAFEAcA_SzCtyDJfnJLLT57Xuf-TdJHRLEW00E7tQkdresxokMg@mail.gmail.com>
-Subject: Re: [PATCH] arm: Don't remove EL3 exposure for SMC conduit
-To: Alexander Graf <agraf@csgraf.de>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Received: from localhost.localdomain (dynamic-095-118-029-131.95.118.pool.telefonica.de [95.118.29.131])
+	by csgraf.de (Postfix) with ESMTPSA id 27F376080090;
+	Sun, 14 Nov 2021 11:56:46 +0100 (CET)
+From: Alexander Graf <agraf@csgraf.de>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Andrei Warkentin <andrey.warkentin@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: MOR6jAyIQlxP
+Subject: [PATCH] arm: Don't remove EL3 exposure for SMC conduit
+Date: Sun, 14 Nov 2021 11:56:45 +0100
+Message-Id: <20211114105645.16841-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.30.1 (Apple Git-130)
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: yDHdNiafRgYO
 
-On Sun, 14 Nov 2021 at 17:41, Alexander Graf <agraf@csgraf.de> wrote:
->
->
->
-> > Am 14.11.2021 um 18:20 schrieb Peter Maydell <peter.maydell@linaro.org>:
-> > This is tricky, because we use the cpu->isar values to determine whether
-> > we should be emulating things. So this change means we now create an
-> > inconsistent CPU which in some ways claims to have EL3 (the ISAR ID
-> > bits say so) and in some ways does not (the ARM_FEATURE_EL3 flag is
-> > unset), and depending on which of the two "do we have EL3?" methods
-> > any bit of the TCG code is using will give different results...
->
-> Do you think it would be sufficient to go through all readers of the isar bits and guard them behind an ARM_FEATURE_EL3 check in addition? I'll be happy to do so then! :)
+When we expose an SMC conduit, we're implicitly telling the guest that
+there is EL3 available because it needs to call it. While that EL3 then
+is not backed by the emulated CPU, from the guest's EL2 point of view,
+it still means there is an EL3 to call into.
 
-That would be a big reverse-course on a design choice we made that
-the preference is to look at the ID registers and phase out the
-use of ARM_FEATURE bits where possible.
+This is a problem for VMware ESXi, which validates EL3 availability before
+doing SMC calls. With this patch, VMware ESXi works with SMP in TCG.
 
--- PMM
+Reported-by: Andrei Warkentin <andrey.warkentin@gmail.com>
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ target/arm/cpu.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index a211804fd3..21092c5242 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1782,11 +1782,21 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+          */
+         unset_feature(env, ARM_FEATURE_EL3);
+ 
+-        /* Disable the security extension feature bits in the processor feature
+-         * registers as well. These are id_pfr1[7:4] and id_aa64pfr0[15:12].
+-         */
+-        cpu->isar.id_pfr1 &= ~0xf0;
+-        cpu->isar.id_aa64pfr0 &= ~0xf000;
++        if (cpu->psci_conduit == QEMU_PSCI_CONDUIT_SMC) {
++            /*
++             * We tell the guest to use SMC calls into EL3 for PSCI calls, so
++             * there has to be EL3 available. We merely execute it on the host
++             * in QEMU rather than in actual EL3 inside the guest.
++             */
++        } else {
++            /*
++             * Disable the security extension feature bits in the processor
++             * feature registers as well. These are id_pfr1[7:4] and
++             * id_aa64pfr0[15:12].
++             */
++            cpu->isar.id_pfr1 &= ~0xf0;
++            cpu->isar.id_aa64pfr0 &= ~0xf000;
++        }
+     }
+ 
+     if (!cpu->has_el2) {
+-- 
+2.30.1 (Apple Git-130)
